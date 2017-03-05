@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>my.edu.umk.pams</groupId>
-    <artifactId>intake-data</artifactId>
+    <artifactId>academic-data</artifactId>
     <version>1.0-SNAPSHOT</version>
     
     <properties>
@@ -242,15 +242,15 @@
 
                 <executions>
                     <execution>
-                        <id>demo_intake</id>
+                        <id>demo_academic</id>
                         <goals>
                             <goal>execute</goal>
                         </goals>
                         <configuration>
                             <driver>org.postgresql.Driver</driver>
-                            <url>jdbc:postgresql://localhost:5432/intake</url>
-                            <username>intake</username>
-                            <password>intake</password>
+                            <url>jdbc:postgresql://localhost:5432/academic</url>
+                            <username>academic</username>
+                            <password>academic</password>
 
                             <autocommit>true</autocommit>
                             <srcFiles>
@@ -259,7 +259,7 @@
                                 <srcFile>src/test/resources/schema/ddl/ACL.POSTGRES.sql</srcFile>
                                 <srcFile>src/test/resources/schema/ddl/ACT.POSTGRES.sql</srcFile>
                                 <srcFile>src/test/resources/schema/ddl/BAT.POSTGRES.sql</srcFile>
-                                <srcFile>src/test/resources/schema/data/in_pcpl.sql</srcFile>
+                                <srcFile>src/test/resources/schema/data/AD_PCPL.sql</srcFile>
                             </srcFiles>
                         </configuration>
                     </execution>
