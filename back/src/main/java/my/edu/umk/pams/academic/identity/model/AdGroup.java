@@ -4,7 +4,6 @@ import java.util.Set;
 
 /**
  * @author canang technologies
- * @since 1/27/14
  */
 public interface AdGroup extends AdPrincipal {
 

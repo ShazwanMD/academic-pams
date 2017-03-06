@@ -27,9 +27,6 @@ public class CommonServiceImpl implements CommonService {
     private AdDistrictCodeDao districtCodeDao;
 
     @Autowired
-    private AdProgramCodeDao programCodeDao;
-
-    @Autowired
     private AdFieldCodeDao fieldCodeDao;
 
     @Autowired
@@ -448,63 +445,6 @@ public class CommonServiceImpl implements CommonService {
 
     //====================================================================================================
     // PROGRAM CODE
-    //====================================================================================================
-
-    @Override
-    public AdProgramCode findProgramCodeById(Long id) {
-        return programCodeDao.findById(id);
-    }
-
-    @Override
-    public AdProgramCode findProgramCodeByCode(String code) {
-        return programCodeDao.findByCode(code);
-    }
-
-    @Override
-    public AdProgramCode findProgramCodeByUpuCode(String upuCode) {
-        return programCodeDao.findByUpuCode(upuCode);
-    }
-
-    @Override
-    public List<AdProgramCode> findProgramCodes() {
-        return programCodeDao.find();
-    }
-
-    @Override
-    public List<AdProgramCode> findProgramCodes(String filter, Integer offset, Integer limit) {
-        return programCodeDao.find(filter, offset, limit);
-    }
-
-    @Override
-    public Integer countProgramCode() {
-        return programCodeDao.count();
-    }
-
-    @Override
-    public Integer countProgramCode(String filter) {
-        return programCodeDao.count(filter);
-    }
-
-    @Override
-    public void saveProgramCode(AdProgramCode programCode) {
-        programCodeDao.save(programCode, Util.getCurrentUser());
-        sessionFactory.getCurrentSession().flush();
-    }
-
-    @Override
-    public void updateProgramCode(AdProgramCode programCode) {
-        programCodeDao.update(programCode, Util.getCurrentUser());
-        sessionFactory.getCurrentSession().flush();
-    }
-
-    @Override
-    public void removeProgramCode(AdProgramCode programCode) {
-        programCodeDao.remove(programCode, Util.getCurrentUser());
-        sessionFactory.getCurrentSession().flush();
-    }
-
-    //====================================================================================================
-    // FIELD CODE
     //====================================================================================================
 
     @Override

@@ -189,30 +189,6 @@ public interface CommonService {
 
 
     //====================================================================================================
-    // PROGRAM CODE
-    //====================================================================================================
-
-    AdProgramCode findProgramCodeById(Long id);
-
-    AdProgramCode findProgramCodeByCode(String code);
-
-    AdProgramCode findProgramCodeByUpuCode(String upuCode);
-
-    List<AdProgramCode> findProgramCodes();
-
-    List<AdProgramCode> findProgramCodes(String filter, Integer offset, Integer limit);
-
-    Integer countProgramCode();
-
-    Integer countProgramCode(String filter);
-
-    void saveProgramCode(AdProgramCode programCode);
-
-    void updateProgramCode(AdProgramCode programCode);
-
-    void removeProgramCode(AdProgramCode programCode);
-
-    //====================================================================================================
     // FIELD CODE
     //====================================================================================================
 

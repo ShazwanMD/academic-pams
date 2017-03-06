@@ -3,7 +3,8 @@
 - Study Plan : Curriculum/Structure
 - Offering : Offering
 - Application : Admission and Enrollment 
-- Assessment 
+- Assessment : Assessment
+- Graduation : Graduation
 
 **Naming Convention**
 - AD - Academic
@@ -14,9 +15,10 @@
 - FK - Foreign Key
 
 **Module Naming Convention**
-- PLC - POLICY
-- APL - APPLICATION
-- AMS - ADMISSION
+- PFL - PROFILE
+- SPL - STUDYPLAN
+- OFG - OFFERING
+- ASM - ASSESSMENT
 
 **Domain Convention**
 - CRTR = CRITERIA

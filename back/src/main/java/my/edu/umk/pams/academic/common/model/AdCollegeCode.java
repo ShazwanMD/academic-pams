@@ -10,9 +10,9 @@ public interface AdCollegeCode extends AdMetaObject {
 
     String getDescription();
 
-    AdCampusCode getCampusCode();
+    AdStudyCenter getCampusCode();
 
-    void setCampusCode(AdCampusCode campusCode);
+    void setCampusCode(AdStudyCenter campusCode);
 
     void setDescription(String description);
 

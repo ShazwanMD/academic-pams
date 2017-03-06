@@ -23,9 +23,9 @@ public class AdCollegeCodeImpl implements AdCollegeCode {
     @Column(name = "DESCRIPTION", nullable = false)
     private String description;
 
-    @ManyToOne(targetEntity = AdCampusCodeImpl.class)
+    @ManyToOne(targetEntity = AdStudyCenterImpl.class)
     @JoinColumn(name = "CAMPUS_ID", nullable = false)
-    private AdCampusCode campusCode;
+    private AdStudyCenter campusCode;
 
     @Embedded
     private AdMetadata metadata;
@@ -55,12 +55,12 @@ public class AdCollegeCodeImpl implements AdCollegeCode {
     }
 
     @Override
-    public AdCampusCode getCampusCode() {
+    public AdStudyCenter getCampusCode() {
         return campusCode;
     }
 
     @Override
-    public void setCampusCode(AdCampusCode campusCode) {
+    public void setCampusCode(AdStudyCenter campusCode) {
         this.campusCode = campusCode;
     }
 

@@ -41,7 +41,7 @@ public class TableNameSequencePostgresDialect extends PostgreSQL82Dialect {
                     || params.getProperty(SEQUENCE).length() == 0) {
                 String tableName = params.getProperty(PersistentIdentifierGenerator.TABLE);
                 if (tableName != null) {
-                    params.setProperty(SEQUENCE, "seq_" + tableName);
+                    params.setProperty(SEQUENCE, "SQ_" + tableName);
                 }
             }
             super.configure(type, params, dialect);
