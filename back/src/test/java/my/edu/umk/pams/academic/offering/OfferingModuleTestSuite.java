@@ -1,4 +1,4 @@
-package my.edu.umk.pams.academic.identity;
+package my.edu.umk.pams.academic.offering;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
@@ -8,6 +8,7 @@ import org.junit.runners.Suite;
  */
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
+        US_AC_OFG_0001.class
 })
-public class IdentityTestSuite {
+public class OfferingModuleTestSuite {
 }

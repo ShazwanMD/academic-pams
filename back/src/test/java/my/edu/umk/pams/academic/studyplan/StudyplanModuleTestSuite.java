@@ -1,4 +1,4 @@
-package my.edu.umk.pams.academic.offering;
+package my.edu.umk.pams.academic.studyplan;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
@@ -8,7 +8,6 @@ import org.junit.runners.Suite;
  */
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-        US_AC_OFG_0001.class
 })
-public class OfferingTestSuite {
+public class StudyplanModuleTestSuite {
 }

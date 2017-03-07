@@ -1,4 +1,4 @@
-package my.edu.umk.pams.academic.studyplan;
+package my.edu.umk.pams.academic.identity;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
@@ -9,5 +9,5 @@ import org.junit.runners.Suite;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
 })
-public class StudyplanTestSuite {
+public class IdentityModuleTestSuite {
 }
