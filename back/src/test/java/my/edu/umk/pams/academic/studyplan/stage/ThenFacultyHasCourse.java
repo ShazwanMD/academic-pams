@@ -1,4 +1,4 @@
-package my.edu.umk.pams.academic.studyplan;
+package my.edu.umk.pams.academic.studyplan.stage;
 
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;

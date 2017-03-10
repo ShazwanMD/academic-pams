@@ -2,6 +2,7 @@ package my.edu.umk.pams.academic.studyplan;
 
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.academic.config.TestAppConfiguration;
+import my.edu.umk.pams.academic.studyplan.stage.ThenFacultyHasCourse;
 import my.edu.umk.pams.bdd.stage.GivenIAmPPSAdministrator;
 import org.junit.After;
 import org.junit.Before;
