@@ -53,12 +53,4 @@ public class TestAppConfiguration {
         final String value = env.getProperty(key) == null ? "true" : env.getProperty(key);
         return System.setProperty(key, value);
     }
-
-    // todo: do we need this?
-    @Bean
-    public BeanNameAutoProxyCreator jGivenBeanNameAutoProxyCreator(){
-        BeanNameAutoProxyCreator beanNameAutoProxyCreator = new BeanNameAutoProxyCreator();
-        beanNameAutoProxyCreator.setInterceptorNames(new String[]{"springStepMethodInterceptor"});
-        return beanNameAutoProxyCreator;
-    }
 }
