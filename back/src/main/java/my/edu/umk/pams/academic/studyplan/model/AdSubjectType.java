@@ -1,6 +1,7 @@
 package my.edu.umk.pams.academic.studyplan.model;
 
 /**
+ * subject type
  * @author PAMS
  */
 public enum AdSubjectType {
