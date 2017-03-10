@@ -6,7 +6,7 @@
     <groupId>my.edu.umk.pams</groupId>
     <artifactId>academic-data</artifactId>
     <version>1.0-SNAPSHOT</version>
-    
+
     <properties>
         <spring.version>4.3.7.RELEASE</spring.version>
         <spring-batch.version>3.0.0.RC2</spring-batch.version>
@@ -242,7 +242,24 @@
 
                 <executions>
                     <execution>
-                        <id>demo_academic</id>
+                        <!-- Warning: This Drops Everything!!! -->
+                        <id>reset-drop-all</id>
+                        <!-- Warning: This Drops Everything!!! -->
+                        <goals>
+                            <goal>execute</goal>
+                        </goals>
+                        <configuration>
+                            <driver>org.postgresql.Driver</driver>
+                            <url>jdbc:postgresql://localhost:5432/postgres</url>
+                            <settingsKey>postgres-dev</settingsKey>
+                            <autocommit>true</autocommit>
+                            <srcFiles>
+                                <srcFile>src/test/resources/SCHEMA.sql</srcFile>
+                            </srcFiles>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>create-tables-seed</id>
                         <goals>
                             <goal>execute</goal>
                         </goals>
@@ -254,7 +271,7 @@
 
                             <autocommit>true</autocommit>
                             <srcFiles>
-                                <srcFile>src/test/resources/ddl/DROP.sql</srcFile>
+                                <!--<srcFile>src/test/resources/ddl/DROP.sql</srcFile>-->
                                 <srcFile>src/test/resources/ddl/CREATE.sql</srcFile>
                                 <srcFile>src/test/resources/ddl/ACL.POSTGRES.sql</srcFile>
                                 <srcFile>src/test/resources/ddl/ACT.POSTGRES.sql</srcFile>
@@ -262,6 +279,8 @@
                                 <srcFile>src/test/resources/data/AD_PCPL.sql</srcFile>
                                 <srcFile>src/test/resources/data/AD_GNDR_CODE.sql</srcFile>
                                 <srcFile>src/test/resources/data/AD_FCTY.sql</srcFile>
+                                <srcFile>src/test/resources/data/AD_PRGM.sql</srcFile>
+                                <srcFile>src/test/resources/data/AD_CRSE.sql</srcFile>
                             </srcFiles>
                         </configuration>
                     </execution>
@@ -271,7 +290,7 @@
     </build>
     <scm>
         <connection>
-		
+
         </connection>
     </scm>
 </project>

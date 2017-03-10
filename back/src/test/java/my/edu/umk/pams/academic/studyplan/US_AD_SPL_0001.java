@@ -17,7 +17,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- * User Story: As an admin academic, i want to set up all of program for a faculty, so that a new program is introduced
+ * User Story: As an admin academic, i want to set up a program for a faculty, so that a new program is introduced
  * @author PAMS
  */
 @RunWith(SpringJUnit4ClassRunner.class)
