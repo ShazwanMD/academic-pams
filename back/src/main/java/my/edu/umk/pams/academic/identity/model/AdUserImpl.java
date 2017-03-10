@@ -9,7 +9,7 @@ import static my.edu.umk.pams.academic.identity.model.AdPrincipalType.USER;
  * @author canang technologies
  * @since 1/31/14
  */
-@Entity(name = "InUser")
+@Entity(name = "AdUser")
 @Table(name = "AD_USER")
 public class AdUserImpl extends AdPrincipalImpl implements AdUser {
 

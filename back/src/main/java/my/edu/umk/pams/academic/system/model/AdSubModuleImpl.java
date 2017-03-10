@@ -10,7 +10,7 @@ import java.io.Serializable;
  * @author canang technologies
  * @since 4/18/14
  */
-@Entity(name = "InSubModule")
+@Entity(name = "AdSubModule")
 @Table(name = "AD_SMDL")
 public class AdSubModuleImpl implements AdSubModule, Serializable {
 

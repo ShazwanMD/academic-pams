@@ -27,6 +27,10 @@ public class GivenIAmPPSAdministrator extends Stage<GivenIAmPPSAdministrator> {
     @ProvidedScenarioState
     AdAcademicSession academicSession;
 
+    public void I_am_a_PPS_administrator(){
+        loginAsPPS();
+    }
+
     public void I_am_a_PPS_administrator_in_$_academic_session(String academicSessionCode){
         loginAsPPS();
         academicSession = studyplanService.findAcademicSessionByCode(academicSessionCode);

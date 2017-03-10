@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull;
  * @author canang technologies
  * @since 3/8/14
  */
-@Entity(name = "InAudit")
+@Entity(name = "AdAudit")
 @Table(name = "AD_AUDT")
 public class AdAuditImpl implements AdAudit {
 

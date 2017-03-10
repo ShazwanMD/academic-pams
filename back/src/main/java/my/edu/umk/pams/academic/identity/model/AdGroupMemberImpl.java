@@ -9,7 +9,7 @@ import javax.persistence.*;
  * @author canang technologies
  * @since 1/31/14
  */
-@Entity(name = "InGroupMember")
+@Entity(name = "AdGroupMember")
 @Table(name = "AD_GROP_MMBR")
 public class AdGroupMemberImpl implements AdGroupMember {
 

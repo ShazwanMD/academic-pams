@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository("inCampusCodeDao")
+@Repository("adCampusCodeDao")
 public class AdStudyCenterDaoImpl extends GenericDaoSupport<Long, AdStudyCenter> implements AdStudyCenterDao {
 
     private static final Logger LOG = LoggerFactory.getLogger(AdStudyCenterDaoImpl.class);

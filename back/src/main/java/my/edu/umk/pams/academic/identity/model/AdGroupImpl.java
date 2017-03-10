@@ -9,7 +9,7 @@ import static my.edu.umk.pams.academic.identity.model.AdPrincipalType.GROUP;
  * @author canang technologies
  * @since 1/31/14
  */
-@Entity(name = "InGroup")
+@Entity(name = "AdGroup")
 @Table(name = "AD_GROP")
 public class AdGroupImpl extends AdPrincipalImpl implements AdGroup {
 

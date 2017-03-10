@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * @author PAMS
  */
-@Entity(name = "AcProgram")
+@Entity(name = "AdProgram")
 @Table(name = "AD_PRGM")
 public class AdProgramImpl implements AdProgram {
 
@@ -21,9 +21,6 @@ public class AdProgramImpl implements AdProgram {
 
     @Column(name = "CODE", nullable = false, unique = true)
     private String code;
-
-    @Column(name = "UPU_CODE", nullable = false, unique = true)
-    private String upuCode;
 
     @Column(name = "TITLE", nullable = false)
     private String title;
@@ -64,16 +61,6 @@ public class AdProgramImpl implements AdProgram {
     @Override
     public void setCode(String code) {
         this.code = code;
-    }
-
-    @Override
-    public String getUpuCode() {
-        return upuCode;
-    }
-
-    @Override
-    public void setUpuCode(String upuCode) {
-        this.upuCode = upuCode;
     }
 
     @Override

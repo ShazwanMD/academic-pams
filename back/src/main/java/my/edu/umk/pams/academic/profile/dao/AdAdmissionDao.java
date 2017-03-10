@@ -1,9 +1,9 @@
-package my.edu.umk.pams.academic.offering.dao;
+package my.edu.umk.pams.academic.profile.dao;
 
 
 import my.edu.umk.pams.academic.core.GenericDao;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
-import my.edu.umk.pams.academic.offering.model.AdAdmission;
+import my.edu.umk.pams.academic.profile.model.AdAdmission;
 import my.edu.umk.pams.academic.studyplan.model.AdAcademicSession;
 import my.edu.umk.pams.academic.studyplan.model.AdProgram;
 

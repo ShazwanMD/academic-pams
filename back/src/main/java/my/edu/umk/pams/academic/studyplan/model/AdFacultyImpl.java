@@ -34,9 +34,6 @@ public class AdFacultyImpl implements AdFaculty {
     @Embedded
     private AdMetadata metadata;
 
-    @Transient
-    private boolean configured;
-
     public AdFacultyImpl() {
     }
 

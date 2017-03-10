@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull;
  * @author canang.technologies
  * @since 7/26/14
  */
-@Entity(name = "InWatch")
+@Entity(name = "AdWatch")
 @Table(name = "AD_WTCH")
 public class AdWatchImpl implements AdWatch {
 

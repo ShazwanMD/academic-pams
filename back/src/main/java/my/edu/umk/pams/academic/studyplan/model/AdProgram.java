@@ -14,10 +14,6 @@ public interface AdProgram extends AdMetaObject {
 
     void setCode(String code);
 
-    String getUpuCode();
-
-    void setUpuCode(String upuCode);
-
     String getTitle();
 
     void setTitle(String title);

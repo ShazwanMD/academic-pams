@@ -100,28 +100,6 @@ public interface CommonService {
     void removeCityCode(AdCityCode cityCode);
 
     //====================================================================================================
-    // FACULTY CODE
-    //====================================================================================================
-
-    AdFacultyCode findFacultyCodeById(Long id);
-
-    AdFacultyCode findFacultyCodeByCode(String code);
-
-    List<AdFacultyCode> findFacultyCodes();
-
-    List<AdFacultyCode> findFacultyCodes(String filter, Integer offset, Integer limit);
-
-    Integer countFacultyCode();
-
-    Integer countFacultyCode(String filter);
-
-    void saveFacultyCode(AdFacultyCode facultyCode);
-
-    void updateFacultyCode(AdFacultyCode facultyCode);
-
-    void removeFacultyCode(AdFacultyCode facultyCode);
-
-    //====================================================================================================
     // STUDY CENTER CODE
     //====================================================================================================
 

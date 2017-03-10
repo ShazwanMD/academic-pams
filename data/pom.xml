@@ -254,12 +254,14 @@
 
                             <autocommit>true</autocommit>
                             <srcFiles>
-                                <srcFile>src/test/resources/schema/ddl/DROP.sql</srcFile>
-                                <srcFile>src/test/resources/schema/ddl/CREATE.sql</srcFile>
-                                <srcFile>src/test/resources/schema/ddl/ACL.POSTGRES.sql</srcFile>
-                                <srcFile>src/test/resources/schema/ddl/ACT.POSTGRES.sql</srcFile>
-                                <srcFile>src/test/resources/schema/ddl/BAT.POSTGRES.sql</srcFile>
-                                <srcFile>src/test/resources/schema/data/AD_PCPL.sql</srcFile>
+                                <srcFile>src/test/resources/ddl/DROP.sql</srcFile>
+                                <srcFile>src/test/resources/ddl/CREATE.sql</srcFile>
+                                <srcFile>src/test/resources/ddl/ACL.POSTGRES.sql</srcFile>
+                                <srcFile>src/test/resources/ddl/ACT.POSTGRES.sql</srcFile>
+                                <srcFile>src/test/resources/ddl/BAT.POSTGRES.sql</srcFile>
+                                <srcFile>src/test/resources/data/AD_PCPL.sql</srcFile>
+                                <srcFile>src/test/resources/data/AD_GNDR_CODE.sql</srcFile>
+                                <srcFile>src/test/resources/data/AD_FCTY.sql</srcFile>
                             </srcFiles>
                         </configuration>
                     </execution>

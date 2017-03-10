@@ -62,9 +62,6 @@ public class AdCurriculumImpl implements AdCurriculum {
     @Column(name = "OTHERS", nullable = false)
     private Integer othersCredit;
 
-    @Column(name = "UPU_CODE", nullable = false)
-    private String upuCode;
-
     @Column(name = "PERIOD", nullable = false)
     private Integer period;
 
@@ -212,14 +209,6 @@ public class AdCurriculumImpl implements AdCurriculum {
     @Override
     public void setOthersCredit(Integer othersCredit) {
         this.othersCredit = othersCredit;
-    }
-
-    public String getUpuCode() {
-        return upuCode;
-    }
-
-    public void setUpuCode(String upuCode) {
-        this.upuCode = upuCode;
     }
 
     @Override

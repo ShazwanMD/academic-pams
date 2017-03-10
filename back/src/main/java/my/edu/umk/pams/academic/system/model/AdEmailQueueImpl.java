@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull;
  * @author canang technologies
  * @since 1/31/14
  */
-@Entity(name = "InEmailQueue")
+@Entity(name = "AdEmailQueue")
 @Table(name = "AD_EMAL_QUEU")
 public class AdEmailQueueImpl implements AdEmailQueue {
 

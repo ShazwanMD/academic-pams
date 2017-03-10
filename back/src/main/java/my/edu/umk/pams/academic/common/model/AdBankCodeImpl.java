@@ -5,7 +5,7 @@ import my.edu.umk.pams.academic.core.AdMetadata;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
-@Entity(name = "InBankCode")
+@Entity(name = "AdBankCode")
 @Table(name = "AD_BANK_CODE")
 public class AdBankCodeImpl implements AdBankCode {
 

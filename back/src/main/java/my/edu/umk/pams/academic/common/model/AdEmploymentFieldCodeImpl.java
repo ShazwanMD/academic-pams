@@ -5,7 +5,7 @@ import my.edu.umk.pams.academic.core.AdMetadata;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
-@Entity(name = "InEmploymentFieldCode")
+@Entity(name = "AdEmploymentFieldCode")
 @Table(name = "AD_EMPT_FILD_CODE")
 public class AdEmploymentFieldCodeImpl implements AdEmploymentFieldCode {
 

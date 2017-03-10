@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull;
  * @author canang technologies
  * @since 1/31/14
  */
-@Entity(name = "InReferenceNo")
+@Entity(name = "AdReferenceNo")
 @Table(name = "AD_RFRN_NO")
 public class AdReferenceNoImpl implements AdReferenceNo {
 

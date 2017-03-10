@@ -6,7 +6,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 
-@Entity(name = "InGradeCode")
+@Entity(name = "AdGradeCode")
 @Table(name = "AD_GRDE_CODE")
 public class AdGradeCodeImpl implements AdGradeCode {
 

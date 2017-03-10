@@ -1,10 +1,10 @@
-package my.edu.umk.pams.academic.offering.dao;
+package my.edu.umk.pams.academic.profile.dao;
 
 import my.edu.umk.pams.academic.core.AdMetaState;
 import my.edu.umk.pams.academic.core.GenericDaoSupport;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
-import my.edu.umk.pams.academic.offering.model.AdAdmission;
-import my.edu.umk.pams.academic.offering.model.AdAdmissionImpl;
+import my.edu.umk.pams.academic.profile.model.AdAdmission;
+import my.edu.umk.pams.academic.profile.model.AdAdmissionImpl;
 import my.edu.umk.pams.academic.studyplan.model.AdAcademicSession;
 import my.edu.umk.pams.academic.studyplan.model.AdProgram;
 import org.hibernate.Query;

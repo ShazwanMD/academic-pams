@@ -5,7 +5,7 @@ import my.edu.umk.pams.academic.core.AdMetadata;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
-@Entity(name = "InResidencyCode")
+@Entity(name = "AdResidencyCode")
 @Table(name = "AD_RSCY_CODE")
 public class AdResidencyCodeImpl implements AdResidencyCode {
 

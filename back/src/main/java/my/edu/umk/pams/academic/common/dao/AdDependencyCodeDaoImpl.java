@@ -13,7 +13,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 
-@Repository("inDependencyCodeDao")
+@Repository("adDependencyCodeDao")
 public class AdDependencyCodeDaoImpl extends GenericDaoSupport<Long, AdDependencyCode> implements AdDependencyCodeDao {
 
     private static final Logger LOG = LoggerFactory.getLogger(AdDependencyCodeDaoImpl.class);

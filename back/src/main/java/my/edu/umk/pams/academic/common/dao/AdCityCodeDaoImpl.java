@@ -13,7 +13,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository("inCityCodeDao")
+@Repository("adCityCodeDao")
 public class AdCityCodeDaoImpl extends GenericDaoSupport<Long, AdCityCode> implements AdCityCodeDao {
 
     private static final Logger LOG = LoggerFactory.getLogger(AdCityCodeDaoImpl.class);

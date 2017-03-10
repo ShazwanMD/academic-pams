@@ -20,8 +20,6 @@ public interface AdFacultyDao extends GenericDao<Long, AdFaculty> {
 
     AdFaculty findByCode(String code);
 
-    List<AdFaculty> find();
-
     List<AdFaculty> find(String filter, Integer offset, Integer limit);
 
     // ====================================================================================================

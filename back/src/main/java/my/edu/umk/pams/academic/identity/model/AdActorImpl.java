@@ -10,7 +10,7 @@ import javax.validation.constraints.NotNull;
  * @author canang.technologies
  * @since 2/11/2014
  */
-@Entity(name = "InActor")
+@Entity(name = "AdActor")
 @Table(name = "AD_ACTR")
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class AdActorImpl implements AdActor {

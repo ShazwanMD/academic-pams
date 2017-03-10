@@ -9,7 +9,7 @@ import javax.persistence.*;
  * @since 1/31/14
  */
 @Table(name = "AD_PCPL_ROLE")
-@Entity(name = "InPrincipalRole")
+@Entity(name = "AdPrincipalRole")
 public class AdPrincipalRoleImpl implements AdPrincipalRole {
 
     @Id

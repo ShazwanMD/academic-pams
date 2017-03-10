@@ -72,9 +72,6 @@ public class CommonServiceImpl implements CommonService {
     private AdResidencyCodeDao residenceCodeDao;
 
     @Autowired
-    private AdFacultyCodeDao facultyCodeDao;
-
-    @Autowired
     private AdStudyCenterCodeDao studyCenterCodeDao;
 
     @Autowired
@@ -914,57 +911,6 @@ public class CommonServiceImpl implements CommonService {
     @Override
     public void removeSchoolCode(AdSchoolCode schoolCode) {
         schoolCodeDao.remove(schoolCode, Util.getCurrentUser());
-        sessionFactory.getCurrentSession().flush();
-    }
-
-    //====================================================================================================
-    // FACULTY CODE
-    //====================================================================================================
-    @Override
-    public AdFacultyCode findFacultyCodeById(Long id) {
-        return facultyCodeDao.findById(id);
-    }
-
-    @Override
-    public AdFacultyCode findFacultyCodeByCode(String code) {
-        return facultyCodeDao.findByCode(code);
-    }
-
-    @Override
-    public List<AdFacultyCode> findFacultyCodes() {
-        return facultyCodeDao.find();
-    }
-
-    @Override
-    public List<AdFacultyCode> findFacultyCodes(String filter, Integer offset, Integer limit) {
-        return facultyCodeDao.find(filter, offset, limit);
-    }
-
-    @Override
-    public Integer countFacultyCode() {
-        return facultyCodeDao.count();
-    }
-
-    @Override
-    public Integer countFacultyCode(String filter) {
-        return facultyCodeDao.count(filter);
-    }
-
-    @Override
-    public void saveFacultyCode(AdFacultyCode facultyCode) {
-        facultyCodeDao.save(facultyCode, Util.getCurrentUser());
-        sessionFactory.getCurrentSession().flush();
-    }
-
-    @Override
-    public void updateFacultyCode(AdFacultyCode facultyCode) {
-        facultyCodeDao.update(facultyCode, Util.getCurrentUser());
-        sessionFactory.getCurrentSession().flush();
-    }
-
-    @Override
-    public void removeFacultyCode(AdFacultyCode facultyCode) {
-        facultyCodeDao.remove(facultyCode, Util.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 

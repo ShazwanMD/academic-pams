@@ -5,7 +5,7 @@ import my.edu.umk.pams.academic.core.AdMetadata;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
-@Entity(name = "InDependencyCode")
+@Entity(name = "AdDependencyCode")
 @Table(name = "AD_DPCY_CODE")
 public class AdDependencyCodeImpl implements AdDependencyCode {
 

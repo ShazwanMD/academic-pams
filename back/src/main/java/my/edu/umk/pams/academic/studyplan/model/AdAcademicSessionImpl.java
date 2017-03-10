@@ -32,8 +32,8 @@ public class AdAcademicSessionImpl implements AdAcademicSession {
     @Temporal(TemporalType.DATE)
     private Date endDate;
 
-    @Column(name = "ONGOING", nullable = false)
-    private boolean ongoing;
+    @Column(name = "CURRENT_", nullable = false)
+    private boolean current;
 
     @Column(name = "STATUS", nullable = false)
     private AdAcademicStatus status;
@@ -96,12 +96,12 @@ public class AdAcademicSessionImpl implements AdAcademicSession {
         this.endDate = endDate;
     }
 
-    public boolean isOngoing() {
-        return ongoing;
+    public boolean isCurrent() {
+        return current;
     }
 
-    public void setOngoing(boolean ongoing) {
-        this.ongoing = ongoing;
+    public void setCurrent(boolean current) {
+        this.current = current;
     }
 
     @Override
@@ -180,7 +180,7 @@ public class AdAcademicSessionImpl implements AdAcademicSession {
                 "code='" + code + '\'' +
                 ", startDate=" + startDate +
                 ", endDate=" + endDate +
-                ", ongoing=" + ongoing +
+                ", current=" + current +
                 '}';
     }
 

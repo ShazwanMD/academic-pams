@@ -1,4 +1,4 @@
-package my.edu.umk.pams.academic.offering.model;
+package my.edu.umk.pams.academic.profile.model;
 
 
 import my.edu.umk.pams.academic.common.model.AdStudyCenter;

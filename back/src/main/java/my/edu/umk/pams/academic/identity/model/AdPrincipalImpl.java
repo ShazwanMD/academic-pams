@@ -9,7 +9,7 @@ import java.util.Set;
  * @author canang technologies
  * @since 1/31/14
  */
-@Entity(name = "InPrincipal")
+@Entity(name = "AdPrincipal")
 @Table(name = "AD_PCPL")
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class AdPrincipalImpl implements AdPrincipal {

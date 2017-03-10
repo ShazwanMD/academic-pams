@@ -10,7 +10,7 @@ import java.math.BigDecimal;
  * @author canang technologies
  * @since 1/31/14
  */
-@Entity(name = "InConfiguration")
+@Entity(name = "AdConfiguration")
 @Table(name = "AD_CNFG")
 public class AdConfigurationImpl implements AdConfiguration {
 

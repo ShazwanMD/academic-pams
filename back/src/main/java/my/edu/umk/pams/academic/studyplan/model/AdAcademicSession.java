@@ -18,9 +18,9 @@ public interface AdAcademicSession extends AdMetaObject {
 
     void setDescription(String description);
 
-    boolean isOngoing();
+    boolean isCurrent();
 
-    void setOngoing(boolean ongoing);
+    void setCurrent(boolean current);
 
     Date getStartDate();
 

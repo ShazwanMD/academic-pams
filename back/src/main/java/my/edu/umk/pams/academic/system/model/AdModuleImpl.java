@@ -9,7 +9,7 @@ import java.io.Serializable;
  * @author canang technologies
  * @since 4/18/14
  */
-@Entity(name = "InModule")
+@Entity(name = "AdModule")
 @Table(name = "AD_MODL")
 public class AdModuleImpl implements AdModule, Serializable {
 

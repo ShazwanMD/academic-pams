@@ -9,7 +9,7 @@ import javax.persistence.*;
  * @author canang technologies
  * @since 9/4/2016.
  */
-@Entity(name = "InEmailTemplate")
+@Entity(name = "AdEmailTemplate")
 @Table(name = "AD_EMIL_TMPT")
 public class AdEmailTemplateImpl implements AdEmailTemplate {
 

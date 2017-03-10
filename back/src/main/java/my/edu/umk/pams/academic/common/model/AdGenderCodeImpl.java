@@ -5,7 +5,7 @@ import my.edu.umk.pams.academic.core.AdMetadata;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
-@Entity(name = "InGenderCode")
+@Entity(name = "AdGenderCode")
 @Table(name = "AD_GNDR_CODE")
 public class AdGenderCodeImpl implements AdGenderCode {
 

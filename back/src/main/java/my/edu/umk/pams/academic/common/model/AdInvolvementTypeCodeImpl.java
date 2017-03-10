@@ -5,7 +5,7 @@ import my.edu.umk.pams.academic.core.AdMetadata;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
-@Entity(name = "InInvolvementTypeCode")
+@Entity(name = "AdInvolvementTypeCode")
 @Table(name = "AD_INVT_TYPE_CODE")
 public class AdInvolvementTypeCodeImpl implements AdInvolvementTypeCode {
 

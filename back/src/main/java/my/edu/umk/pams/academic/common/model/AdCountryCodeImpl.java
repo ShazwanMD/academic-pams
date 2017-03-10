@@ -6,7 +6,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 
-@Entity(name = "InCountryCode")
+@Entity(name = "AdCountryCode")
 @Table(name = "AD_CNTY_CODE")
 public class AdCountryCodeImpl implements AdCountryCode {
 

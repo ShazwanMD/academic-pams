@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository("inCountryCode")
+@Repository("adCountryCode")
 public class AdCountryCodeDaoImpl extends GenericDaoSupport<Long, AdCountryCode> implements AdCountryCodeDao {
 
     private static final Logger LOG = LoggerFactory.getLogger(AdCountryCodeDaoImpl.class);

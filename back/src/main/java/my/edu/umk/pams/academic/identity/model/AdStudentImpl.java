@@ -7,7 +7,7 @@ import javax.persistence.Table;
  * @author canang technologies
  * @since 1/31/14
  */
-@Entity(name = "InApplication")
+@Entity(name = "AdApplication")
 @Table(name = "AD_APCN")
 public class AdStudentImpl extends AdActorImpl implements AdStudent {
 

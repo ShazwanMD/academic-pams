@@ -14,10 +14,6 @@ public interface AdCurriculum extends AdMetaObject {
 
     void setCode(String code);
 
-    String getUpuCode();
-
-    void setUpuCode(String upuCode);
-
     Integer getOrdinal();
 
     void setOrdinal(Integer ordinal);
