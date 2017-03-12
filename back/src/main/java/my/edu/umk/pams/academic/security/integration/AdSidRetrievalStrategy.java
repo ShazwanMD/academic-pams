@@ -44,7 +44,7 @@ public class AdSidRetrievalStrategy extends SidRetrievalStrategyImpl {
         List<Sid> sids = new ArrayList<Sid>();
         sids.addAll(super.getSids(authentication));
 
-        // find all groups by username
+        // findAddresses all groups by username
         if (authentication.getPrincipal() instanceof UserDetails) {
             String username = ((UserDetails) authentication.getPrincipal()).getUsername();
             AdUser user = userDao.findByUsername(username);

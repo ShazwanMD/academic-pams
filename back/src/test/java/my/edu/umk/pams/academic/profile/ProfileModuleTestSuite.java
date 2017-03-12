@@ -7,7 +7,9 @@ import org.junit.runners.Suite;
  * @author PAMS
  */
 @RunWith(Suite.class)
-@Suite.SuiteClasses({})
+@Suite.SuiteClasses({
+        US_AD_PFL_0001.class,
+})
 public class ProfileModuleTestSuite {
 
 }

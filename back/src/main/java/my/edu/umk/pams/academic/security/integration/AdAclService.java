@@ -69,7 +69,7 @@ public class AdAclService implements AclService {
         Map map = readAclsById(Arrays.asList(object), sids);
 
         if (map.size() == 0) {
-            throw new NotFoundException("Could not find ACL");
+            throw new NotFoundException("Could not findAddresses ACL");
         } else {
             return (Acl) map.get(object);
         }

@@ -136,7 +136,7 @@ public class AdMutableAclService extends AdAclService implements MutableAclServi
      * Retrieves the primary key from acl_class, creating a new row if needed and the allowCreate
      * property is true.
      *
-     * @param clazz       to find or create an entry for (this implementation uses the fully-qualified class
+     * @param clazz       to findAddresses or create an entry for (this implementation uses the fully-qualified class
      *                    name String)
      * @param allowCreate true if creation is permitted if not found
      * @return the primary key or null if not found
@@ -168,7 +168,7 @@ public class AdMutableAclService extends AdAclService implements MutableAclServi
      * Retrieves the primary key from acl_sid, creating a new row if needed and the allowCreate
      * property is true.
      *
-     * @param sid         to find or create
+     * @param sid         to findAddresses or create
      * @param allowCreate true if creation is permitted if not found
      * @return the primary key or null if not found
      * @throws IllegalArgumentException DOCUMENT ME!
@@ -292,7 +292,7 @@ public class AdMutableAclService extends AdAclService implements MutableAclServi
      * Unlike some other methods in this implementation, this method will NOT create a row (use
      * {@link #createObjectIdentity(ObjectIdentity, Sid)} instead).
      *
-     * @param oid to find
+     * @param oid to findAddresses
      * @return the object identity or null if not found
      */
     protected Long retrieveObjectIdentityPrimaryKey(ObjectIdentity oid) {

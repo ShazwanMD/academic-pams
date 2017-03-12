@@ -3,6 +3,9 @@ package my.edu.umk.pams.bdd.stage;
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
+import my.edu.umk.pams.academic.identity.model.AdStudent;
+import my.edu.umk.pams.academic.identity.model.AdUser;
+import my.edu.umk.pams.academic.security.integration.AdUserDetails;
 import my.edu.umk.pams.academic.studyplan.model.AdAcademicSession;
 import my.edu.umk.pams.academic.studyplan.service.StudyplanService;
 import org.slf4j.Logger;
@@ -27,6 +30,9 @@ public class GivenIAmStudent extends Stage<GivenIAmStudent> {
     @ProvidedScenarioState
     AdAcademicSession academicSession;
 
+    @ProvidedScenarioState
+    private AdStudent student;
+
     public void I_am_a_student_in_$_academic_session(String academicSessionCode){
         loginAsStudent();
         academicSession = studyplanService.findAcademicSessionByCode(academicSessionCode);
@@ -40,7 +46,10 @@ public class GivenIAmStudent extends Stage<GivenIAmStudent> {
     private void loginAsStudent() {
         UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken("student1", "abc123");
         Authentication authed = authenticationManager.authenticate(token);
+        AdUser user = ((AdUserDetails) authed.getPrincipal()).getUser();
+        student = (AdStudent) user.getActor();
         SecurityContextHolder.getContext().setAuthentication(authed);
+
     }
 
 

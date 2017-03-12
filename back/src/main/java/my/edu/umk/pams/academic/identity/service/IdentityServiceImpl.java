@@ -483,7 +483,7 @@ public class IdentityServiceImpl implements IdentityService {
 
     @Override
     public List<AdStudent> findStudents(String filter, Integer offset, Integer limit) {
-        return studentDao.find(filter, offset, limit);
+        return studentDao.findAddresses(filter, offset, limit);
     }
 
     @Override

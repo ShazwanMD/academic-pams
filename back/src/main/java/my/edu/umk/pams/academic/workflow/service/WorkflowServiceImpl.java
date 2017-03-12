@@ -80,7 +80,7 @@ public class WorkflowServiceImpl implements WorkflowService {
     }
 
     /**
-     * find task given task id
+     * findAddresses task given task id
      *
      * @param taskId task id
      * @return single result
@@ -92,7 +92,7 @@ public class WorkflowServiceImpl implements WorkflowService {
     }
 
     /**
-     * find task given variable and value
+     * findAddresses task given variable and value
      *
      * @param variable var name
      * @param value    value
@@ -105,7 +105,7 @@ public class WorkflowServiceImpl implements WorkflowService {
     }
 
     /**
-     * find tasks per taskname
+     * findAddresses tasks per taskname
      *
      * @param taskName
      * @return
@@ -129,7 +129,7 @@ public class WorkflowServiceImpl implements WorkflowService {
 
 
     /**
-     * find task
+     * findAddresses task
      *
      * @return
      */
@@ -144,7 +144,7 @@ public class WorkflowServiceImpl implements WorkflowService {
     }
 
     /**
-     * find assigned task
+     * findAddresses assigned task
      *
      * @param taskPrefix
      * @param offset
@@ -188,7 +188,7 @@ public class WorkflowServiceImpl implements WorkflowService {
     }
 
     /**
-     * find pooled task
+     * findAddresses pooled task
      *
      * @param taskPrefix
      * @return
@@ -205,7 +205,7 @@ public class WorkflowServiceImpl implements WorkflowService {
     }
 
     /**
-     * find pooled task
+     * findAddresses pooled task
      *
      * @param taskPrefix
      * @param offset
