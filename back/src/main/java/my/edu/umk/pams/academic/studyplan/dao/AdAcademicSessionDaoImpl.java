@@ -41,9 +41,9 @@ public class AdAcademicSessionDaoImpl extends GenericDaoSupport<Long, AdAcademic
     public AdAcademicSession findCurrentSession() {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select s from AdAcademicSession s where " +
-                "s.ongoing = :ongoing " +
+                "s.current = :current " +
                 "and s.metadata.state = :state");
-        query.setBoolean("ongoing", true);
+        query.setBoolean("current", true);
         query.setInteger("state", AdMetaState.ACTIVE.ordinal());
         query.setCacheable(true);
         return (AdAcademicSession) query.uniqueResult();
@@ -139,7 +139,7 @@ public class AdAcademicSessionDaoImpl extends GenericDaoSupport<Long, AdAcademic
     public boolean isCurrent() {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select count(s) from AdAcademicSession s where " +
-                "s.ongoing = true " +
+                "s.current = true " +
                 "and s.metadata.state = :state ");
         return ((Long) query.uniqueResult()).intValue() == 1;
     }
