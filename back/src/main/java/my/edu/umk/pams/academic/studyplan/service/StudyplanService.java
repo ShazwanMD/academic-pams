@@ -1,6 +1,7 @@
 package my.edu.umk.pams.academic.studyplan.service;
 
 import my.edu.umk.pams.academic.identity.model.AdStudent;
+import my.edu.umk.pams.academic.offering.model.AdOffering;
 import my.edu.umk.pams.academic.profile.model.AdAdmission;
 import my.edu.umk.pams.academic.studyplan.model.*;
 

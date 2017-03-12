@@ -1,7 +1,8 @@
-package my.edu.umk.pams.academic.studyplan.dao;
+package my.edu.umk.pams.academic.offering.dao;
 
 import my.edu.umk.pams.academic.core.GenericDao;
 import my.edu.umk.pams.academic.identity.model.AdUser;
+import my.edu.umk.pams.academic.offering.model.AdOffering;
 import my.edu.umk.pams.academic.studyplan.model.*;
 
 import java.util.List;

@@ -3,6 +3,7 @@ package my.edu.umk.pams.bdd.stage;
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
+import my.edu.umk.pams.academic.core.AdMetadata;
 import my.edu.umk.pams.academic.studyplan.model.AdAcademicSession;
 import my.edu.umk.pams.academic.studyplan.service.StudyplanService;
 import org.slf4j.Logger;

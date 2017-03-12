@@ -1,6 +1,7 @@
 package my.edu.umk.pams.academic.studyplan.model;
 
 import my.edu.umk.pams.academic.core.AdMetaObject;
+import my.edu.umk.pams.academic.offering.model.AdOffering;
 
 import java.math.BigDecimal;
 

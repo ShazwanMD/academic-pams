@@ -5,7 +5,7 @@ import my.edu.umk.pams.academic.core.GenericDao;
 import my.edu.umk.pams.academic.offering.model.AdEnrollment;
 import my.edu.umk.pams.academic.offering.model.AdGradebook;
 import my.edu.umk.pams.academic.studyplan.model.AdAssessment;
-import my.edu.umk.pams.academic.studyplan.model.AdOffering;
+import my.edu.umk.pams.academic.offering.model.AdOffering;
 import my.edu.umk.pams.academic.studyplan.model.AdSection;
 
 import java.util.List;

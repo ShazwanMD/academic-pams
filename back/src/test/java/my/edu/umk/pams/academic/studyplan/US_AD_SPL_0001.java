@@ -17,7 +17,9 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- * User Story: As an admin academic, i want to set up a program for a faculty, so that a new program is introduced
+ * As an admin academic,
+ *  U want to set up a program for a faculty
+ *      so that a new program is introduced
  * @author PAMS
  */
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -37,7 +39,7 @@ public class US_AD_SPL_0001 extends SpringScenarioTest<GivenIAmPPSAdministrator,
 
     @Test
     @Rollback(true)
-    public void testScenario1() {
+    public void scenario1() {
         given().I_am_a_PPS_administrator();
         when().I_add_a_program_for_$_faculty("45");
         then().program_is_introduced();

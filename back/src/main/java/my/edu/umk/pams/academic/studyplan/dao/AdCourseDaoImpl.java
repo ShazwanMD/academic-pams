@@ -98,7 +98,8 @@ public class AdCourseDaoImpl extends GenericDaoSupport<Long, AdCourse> implement
     @Override
     public List<AdCourse> findAvailable(AdAcademicSession academicSession, Integer offset, Integer limit) {
         Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery("select distinct s.offering from AcSection s where " +
+        Query query = session.createQuery("select distinct s.offering " +
+                "from AcSection s where " +
                 "s.session = :academicSession " +
                 "and s.metadata.state = :state " +
                 "order by s.code asc");

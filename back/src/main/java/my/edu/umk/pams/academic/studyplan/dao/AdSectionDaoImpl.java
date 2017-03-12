@@ -6,6 +6,7 @@ import my.edu.umk.pams.academic.core.GenericDaoSupport;
 import my.edu.umk.pams.academic.identity.model.AdStaff;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.identity.model.AdUser;
+import my.edu.umk.pams.academic.offering.model.AdOffering;
 import my.edu.umk.pams.academic.profile.model.AdAdmission;
 import my.edu.umk.pams.academic.offering.model.AdAppointment;
 import my.edu.umk.pams.academic.offering.model.AdEnrollment;

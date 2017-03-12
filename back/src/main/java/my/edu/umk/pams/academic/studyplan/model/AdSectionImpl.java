@@ -4,6 +4,8 @@ package my.edu.umk.pams.academic.studyplan.model;
 import my.edu.umk.pams.academic.core.AdMetadata;
 import my.edu.umk.pams.academic.offering.model.AdEnrollment;
 import my.edu.umk.pams.academic.offering.model.AdEnrollmentImpl;
+import my.edu.umk.pams.academic.offering.model.AdOffering;
+import my.edu.umk.pams.academic.offering.model.AdOfferingImpl;
 
 import javax.persistence.*;
 import java.util.List;
