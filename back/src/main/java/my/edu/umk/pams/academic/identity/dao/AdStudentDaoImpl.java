@@ -1,15 +1,15 @@
 package my.edu.umk.pams.academic.identity.dao;
 
-import my.edu.umk.pams.academic.core.GenericDaoSupport;
 import my.edu.umk.pams.academic.core.AdMetaState;
-import my.edu.umk.pams.academic.identity.model.AdAddress;
-import my.edu.umk.pams.academic.identity.model.AdAddressImpl;
-import my.edu.umk.pams.academic.identity.model.AdStudent;
-import my.edu.umk.pams.academic.identity.model.AdStudentImpl;
+import my.edu.umk.pams.academic.core.AdMetadata;
+import my.edu.umk.pams.academic.core.GenericDaoSupport;
+import my.edu.umk.pams.academic.identity.model.*;
+import org.apache.commons.lang.Validate;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 /**
@@ -53,8 +53,13 @@ public class AdStudentDaoImpl extends GenericDaoSupport<Long, AdStudent> impleme
 
     @Override
     public List<AdAddress> findAddresses(AdStudent student) {
-        // todo(sam): add impl i.e AdProgramDao.addOffering
-        return null;
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select o from AdAddress o where " +
+                "o.student = :student " +
+                "and o.metadata.state = :state");
+        query.setEntity("student", student);
+        query.setInteger("state", AdMetaState.ACTIVE.ordinal());
+        return query.list();
     }
 
     @Override
@@ -76,18 +81,38 @@ public class AdStudentDaoImpl extends GenericDaoSupport<Long, AdStudent> impleme
     }
 
     @Override
-    public void addAddress(AdStudent student, AdAddress address) {
-        // todo(sam): add impl
+    public void addAddress(AdStudent student, AdAddress address, AdUser user) {
+        Validate.notNull(user, "User cannot be null");
+        Validate.notNull(student, "student cannot be null");
+        Validate.notNull(address, "address cannot be null");
+        Session session = sessionFactory.getCurrentSession();
+        address.setStudent(student);
 
+        // prepare metadata
+        AdMetadata metadata = new AdMetadata();
+        metadata.setCreatedDate(new Timestamp(System.currentTimeMillis()));
+        metadata.setCreatorId(user.getId());
+        metadata.setState(AdMetaState.ACTIVE);
+        address.setMetadata(metadata);
+        session.save(address);
     }
 
     @Override
-    public void updateAddress(AdStudent student, AdAddress address) {
-        // todo(sam): add impl
+    public void updateAddress(AdStudent student, AdAddress address, AdUser user) {
+        Validate.notNull(user, "User cannot be null");
+        Session session = sessionFactory.getCurrentSession();
+        address.setStudent(student);
+
+        // prepare metadata
+        AdMetadata metadata = address.getMetadata();
+        metadata.setModifiedDate(new Timestamp(System.currentTimeMillis()));
+        metadata.setModifierId(user.getId());
+        address.setMetadata(metadata);
+        session.update(address);
     }
 
     @Override
-    public void removeAddress(AdStudent student, AdAddress address) {
+    public void removeAddress(AdStudent student, AdAddress address, AdUser user) {
         // todo(sam): add impl
 
     }

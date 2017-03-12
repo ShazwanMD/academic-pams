@@ -1,6 +1,8 @@
 package my.edu.umk.pams.academic.identity.model;
 
 import my.edu.umk.pams.academic.common.model.AdCountryCode;
+import my.edu.umk.pams.academic.common.model.AdDunCode;
+import my.edu.umk.pams.academic.common.model.AdParliamentCode;
 import my.edu.umk.pams.academic.common.model.AdStateCode;
 import my.edu.umk.pams.academic.core.AdMetaObject;
 
@@ -34,12 +36,15 @@ public interface AdAddress extends AdMetaObject {
 
     void setStateCode(AdStateCode stateCode);
 
-	String getDun();
+    AdDunCode getDunCode();
 
-	void setDun(String dun);
+    void setDunCode(AdDunCode dunCode);
 
-	String getParlimen();
+    AdParliamentCode getParliamentCode();
 
-	void setParlimen(String parlimen);
+    void setParliamentCode(AdParliamentCode parliamentCode);
 
+    AdStudent getStudent();
+
+    void setStudent(AdStudent student);
 }

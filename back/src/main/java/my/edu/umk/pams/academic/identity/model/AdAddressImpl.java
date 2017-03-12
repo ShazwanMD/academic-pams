@@ -1,10 +1,7 @@
 package my.edu.umk.pams.academic.identity.model;
 
 
-import my.edu.umk.pams.academic.common.model.AdCountryCode;
-import my.edu.umk.pams.academic.common.model.AdCountryCodeImpl;
-import my.edu.umk.pams.academic.common.model.AdStateCode;
-import my.edu.umk.pams.academic.common.model.AdStateCodeImpl;
+import my.edu.umk.pams.academic.common.model.*;
 import my.edu.umk.pams.academic.core.AdMetadata;
 
 import javax.persistence.*;
@@ -34,12 +31,6 @@ public class AdAddressImpl implements AdAddress {
     @Column(name = "POSTCODE")
     private String postCode;
     
-    @Column (name="DUN")
-    private String dun;
-    
-    @Column (name="PARLIMEN")
-    private String parlimen;
-
     @NotNull
     @Enumerated(EnumType.ORDINAL)
     @Column(name = "ADDRESS_TYPE")
@@ -52,6 +43,18 @@ public class AdAddressImpl implements AdAddress {
     @OneToOne(targetEntity = AdCountryCodeImpl.class)
     @JoinColumn(name = "COUNTRY_CODE_ID")
     private AdCountryCode countryCode;
+
+    @OneToOne(targetEntity = AdDunCodeImpl.class)
+    @JoinColumn(name = "DUN_CODE_ID")
+    private AdDunCode dunCode;
+
+    @OneToOne(targetEntity = AdParliamentCodeImpl.class)
+    @JoinColumn(name = "PARLIAMENT_CODE_ID")
+    private AdParliamentCode parliamentCode;
+
+    @ManyToOne(targetEntity = AdStudentImpl.class)
+    @JoinColumn(name = "STUDENT_ID")
+    private AdStudent student;
 
     @Embedded
     private AdMetadata metadata;
@@ -95,27 +98,6 @@ public class AdAddressImpl implements AdAddress {
         this.address3 = address3;
     }
 
-
-    @Override
-    public String getDun() {
-        return dun;
-    }
-
-    @Override
-    public void setDun(String dun) {
-        this.dun = dun;
-    }
-
-    @Override
-    public String getParlimen() {
-        return parlimen;
-    }
-
-    @Override
-    public void setParlimen(String parlimen) {
-        this.parlimen = parlimen;
-    }
-
     @Override
     public AdAddressType getType() {
         return type;
@@ -155,10 +137,42 @@ public class AdAddressImpl implements AdAddress {
         this.countryCode = countryCode;
     }
 
+    @Override
+    public AdDunCode getDunCode() {
+        return dunCode;
+    }
+
+    @Override
+    public void setDunCode(AdDunCode dunCode) {
+        this.dunCode = dunCode;
+    }
+
+    @Override
+    public AdParliamentCode getParliamentCode() {
+        return parliamentCode;
+    }
+
+    @Override
+    public void setParliamentCode(AdParliamentCode parliamentCode) {
+        this.parliamentCode = parliamentCode;
+    }
+
+    @Override
+    public AdStudent getStudent() {
+        return student;
+    }
+
+    @Override
+    public void setStudent(AdStudent student) {
+        this.student = student;
+    }
+
+    @Override
     public AdMetadata getMetadata() {
         return metadata;
     }
 
+    @Override
     public void setMetadata(AdMetadata metadata) {
         this.metadata = metadata;
     }

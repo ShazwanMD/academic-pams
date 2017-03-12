@@ -9,12 +9,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 /**
  * @author PAMS
  */
+@Transactional
 @Service("profileService")
 public class ProfileServiceImpl implements ProfileService {
 
@@ -32,17 +34,24 @@ public class ProfileServiceImpl implements ProfileService {
     @Override
     public void updateStudent(AdStudent student) {
         studentDao.update(student, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
+
+    @Override
+    public void addAddress(AdStudent student, AdAddress address) {
+        studentDao.addAddress(student, address, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void updateAddress(AdStudent student, AdAddress address) {
-        studentDao.updateAddress(student, address);
+        studentDao.updateAddress(student, address, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void removeAddress(AdStudent student, AdAddress address) {
-        studentDao.removeAddress(student, address);
+        studentDao.removeAddress(student, address, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 

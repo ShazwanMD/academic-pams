@@ -4,6 +4,7 @@ package my.edu.umk.pams.academic.identity.dao;
 import my.edu.umk.pams.academic.core.GenericDao;
 import my.edu.umk.pams.academic.identity.model.AdAddress;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
+import my.edu.umk.pams.academic.identity.model.AdUser;
 
 import java.util.List;
 
@@ -25,10 +26,10 @@ public interface AdStudentDao extends GenericDao<Long, AdStudent> {
 
     Integer countAddress(AdStudent student);
 
-    void addAddress(AdStudent student, AdAddress address);
+    void addAddress(AdStudent student, AdAddress address, AdUser user);
 
-    void updateAddress(AdStudent student, AdAddress address);
+    void updateAddress(AdStudent student, AdAddress address, AdUser user);
 
-    void removeAddress(AdStudent student, AdAddress address);
+    void removeAddress(AdStudent student, AdAddress address, AdUser user);
 
 }

@@ -1,5 +1,5 @@
-drop sequence seq_AD_cnty_code;
-create sequence seq_AD_cnty_code start with 1;
+-- drop sequence seq_AD_cnty_code;
+-- create sequence seq_AD_cnty_code start with 1;
 insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'AF', 'Afghanistan', null, 0, null, null, null, null, 1);
 insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'AX', '�land Islands', null, 0, null, null, null, null, 1);
 insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'AL', 'Albania', null, 0, null, null, null, null, 1);

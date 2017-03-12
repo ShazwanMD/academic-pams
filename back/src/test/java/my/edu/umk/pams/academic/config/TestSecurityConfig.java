@@ -44,5 +44,4 @@ public class TestSecurityConfig extends WebSecurityConfigurerAdapter {
                 .userDetailsService(userDetailService)
                 .passwordEncoder(new PlaintextPasswordEncoder());
     }
-
 }

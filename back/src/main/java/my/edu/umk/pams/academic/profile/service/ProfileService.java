@@ -16,6 +16,8 @@ public interface ProfileService {
 
     void updateStudent(AdStudent student);
 
+    void addAddress(AdStudent student, AdAddress address);
+
     void updateAddress(AdStudent student, AdAddress adAddress);
 
     void removeAddress(AdStudent student, AdAddress adAddress);

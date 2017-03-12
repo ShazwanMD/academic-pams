@@ -49,7 +49,6 @@ public class GivenIAmStudent extends Stage<GivenIAmStudent> {
         AdUser user = ((AdUserDetails) authed.getPrincipal()).getUser();
         student = (AdStudent) user.getActor();
         SecurityContextHolder.getContext().setAuthentication(authed);
-
     }
 
 

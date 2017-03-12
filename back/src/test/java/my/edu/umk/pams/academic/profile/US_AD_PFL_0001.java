@@ -1,11 +1,20 @@
 package my.edu.umk.pams.academic.profile;
 
-import com.tngtech.jgiven.annotation.ScenarioStage;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
+import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.profile.stage.ThenMyAddressUpdated;
-import my.edu.umk.pams.academic.profile.stage.WhenIUpdateMyBillingAddress;
 import my.edu.umk.pams.academic.profile.stage.WhenIUpdateMyMailingAddress;
 import my.edu.umk.pams.bdd.stage.GivenIAmStudent;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.test.annotation.Rollback;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * As a student
@@ -15,18 +24,26 @@ import my.edu.umk.pams.bdd.stage.GivenIAmStudent;
  *
  * @author PAMS
  */
-
-
+@RunWith(SpringJUnit4ClassRunner.class)
+@Transactional
+@ContextConfiguration(classes = TestAppConfiguration.class)
 public class US_AD_PFL_0001 extends SpringScenarioTest<GivenIAmStudent, WhenIUpdateMyMailingAddress, ThenMyAddressUpdated> {
 
-    @ScenarioStage
-    private WhenIUpdateMyBillingAddress additionalState;
+    private static final Logger LOG = LoggerFactory.getLogger(US_AD_PFL_0001.class);
 
-    public void testScenario01() {
+    @Before
+    public void before() {
+    }
+
+    @After
+    public void after() {
+    }
+
+    @Test
+    @Rollback(true)
+    public void scenario01() {
         given().I_am_a_student_in_current_academic_session();
-        when().I_update_my_home_address();
-        additionalState.and().I_update_my_billing_address();
+        when().I_update_my_mailing_address();
         then().my_address_on_file_is_current();
-
     }
 }
