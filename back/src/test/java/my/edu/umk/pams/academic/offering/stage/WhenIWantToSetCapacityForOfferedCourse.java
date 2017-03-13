@@ -14,7 +14,7 @@ import my.edu.umk.pams.academic.studyplan.model.AdCourse;
 import my.edu.umk.pams.academic.studyplan.service.StudyplanService;
 
 /**
- * @author asyikin.mr and ziana
+ * @author asyikin.mr@umk and ziana
  */
 
 @JGivenStage
@@ -35,7 +35,7 @@ public class WhenIWantToSetCapacityForOfferedCourse extends Stage<WhenIWantToSet
 	public WhenIWantToSetCapacityForOfferedCourse I_set_offering_capacity() {
 
 		// offer a course
-		AdCourse course = studyplanService.findCourseByCode("DDA2113");
+		AdCourse course = studyplanService.findCourseByCode("DDA2043");
 
 		// set offering capacity
 		AdOffering offering = new AdOfferingImpl();
