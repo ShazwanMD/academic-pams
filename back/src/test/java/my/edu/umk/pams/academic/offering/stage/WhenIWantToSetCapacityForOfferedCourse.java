@@ -14,7 +14,7 @@ import my.edu.umk.pams.academic.studyplan.model.AdCourse;
 import my.edu.umk.pams.academic.studyplan.service.StudyplanService;
 
 /**
- * @author asyikin.mr@umk and ziana
+ * @author asyikin.mr and ziana
  */
 
 @JGivenStage
@@ -40,8 +40,8 @@ public class WhenIWantToSetCapacityForOfferedCourse extends Stage<WhenIWantToSet
 		// set offering capacities
 		AdOffering offering = new AdOfferingImpl();
         offering.setCapacity(10);
-        offering.setCode("XX");
-        offering.setCanonicalCode("ss");
+        offering.setCode("ASASA");
+        offering.setCanonicalCode("01Q");
         offering.setTitle("vv");
         offering.setCourse(course);
                 
