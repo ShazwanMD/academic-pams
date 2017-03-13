@@ -27,6 +27,10 @@ public interface AdOffering extends AdMetaObject {
 
     void setTitle(String title);
 
+    Integer getCapacity();
+
+    void setCapacity(Integer capacity);
+
     AdProgram getProgram();
 
     void setProgram(AdProgram program);

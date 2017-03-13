@@ -1,8 +1,6 @@
 package my.edu.umk.pams.academic.studyplan.service;
 
 import my.edu.umk.pams.academic.identity.model.AdStudent;
-import my.edu.umk.pams.academic.offering.model.AdOffering;
-import my.edu.umk.pams.academic.profile.model.AdAdmission;
 import my.edu.umk.pams.academic.studyplan.model.*;
 
 import java.util.List;
@@ -200,8 +198,6 @@ public interface StudyplanService {
     Integer countAvailableCourse(AdAcademicSession academicSession);
 
     boolean isCourseExists(String code, AdFaculty faculty);
-
-
 
 
 }

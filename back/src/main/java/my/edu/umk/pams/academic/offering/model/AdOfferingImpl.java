@@ -29,6 +29,10 @@ public class AdOfferingImpl implements AdOffering {
     @Column(name = "TITLE", nullable = false)
     private String title;
 
+    @Column(name = "CAPACITY", nullable = false)
+    private Integer capacity = 0;
+
+
     @ManyToOne(targetEntity = AdProgramImpl.class)
     @JoinColumn(name = "PROGRAM_ID")
     private AdProgram program;
@@ -83,6 +87,16 @@ public class AdOfferingImpl implements AdOffering {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    @Override
+    public Integer getCapacity() {
+        return capacity;
+    }
+
+    @Override
+    public void setCapacity(Integer capacity) {
+        this.capacity = capacity;
     }
 
     public AdProgram getProgram() {
