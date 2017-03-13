@@ -18,8 +18,8 @@ public interface ProfileService {
 
     void addAddress(AdStudent student, AdAddress address);
 
-    void updateAddress(AdStudent student, AdAddress adAddress);
+    void updateAddress(AdStudent student, AdAddress address);
 
-    void removeAddress(AdStudent student, AdAddress adAddress);
+    void removeAddress(AdStudent student, AdAddress address);
 
 }

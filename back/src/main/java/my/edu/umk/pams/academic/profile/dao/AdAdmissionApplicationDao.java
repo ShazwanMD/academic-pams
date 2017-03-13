@@ -4,8 +4,11 @@ package my.edu.umk.pams.academic.profile.dao;
 import my.edu.umk.pams.academic.core.GenericDao;
 import my.edu.umk.pams.academic.identity.model.AdStaff;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
+import my.edu.umk.pams.academic.identity.model.AdUser;
+import my.edu.umk.pams.academic.offering.model.AdOffering;
 import my.edu.umk.pams.academic.profile.model.AdAdmissionApplication;
 import my.edu.umk.pams.academic.studyplan.model.AdAcademicSession;
+import my.edu.umk.pams.academic.studyplan.model.AdAssessment;
 
 import java.util.List;
 
@@ -46,4 +49,5 @@ public interface AdAdmissionApplicationDao extends GenericDao<Long, AdAdmissionA
     // ====================================================================================================
     // CRUD
     // ====================================================================================================
+
 }
