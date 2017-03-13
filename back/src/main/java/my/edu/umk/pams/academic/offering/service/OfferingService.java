@@ -55,6 +55,8 @@ public interface OfferingService {
     Integer countOfferingWithSection(boolean authorized, String filter, AdAcademicSession session);
 
     boolean isOfferingExists(AdProgram program, AdCourse course);
+    
+    void saveOffering(AdOffering offering);
 
     //====================================================================================================
     // SECTION
