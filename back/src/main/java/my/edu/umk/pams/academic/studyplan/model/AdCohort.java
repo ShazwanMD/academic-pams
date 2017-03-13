@@ -22,10 +22,6 @@ public interface AdCohort extends AdMetaObject {
 
     void setClassification(AdAcademicClassification classification);
 
-    AdCohort getParent();
-
-    void setParent(AdCohort cohort);
-
     AdCurriculum getCurriculum();
 
     void setCurriculum(AdCurriculum curriculum);

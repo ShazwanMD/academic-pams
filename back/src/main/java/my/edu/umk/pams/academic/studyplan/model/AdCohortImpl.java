@@ -26,10 +26,6 @@ public class AdCohortImpl implements AdCohort {
     @Column(name = "CLASSIFICATION", nullable = false)
     private AdAcademicClassification classification;
 
-    @ManyToOne(targetEntity = AdCohortImpl.class)
-    @JoinColumn(name = "PARENT_ID")
-    private AdCohort parent;
-
     @ManyToOne(targetEntity = AdProgramImpl.class, optional = true)
     @JoinColumn(name = "PROGRAM_ID")
     private AdProgram program;
@@ -75,16 +71,6 @@ public class AdCohortImpl implements AdCohort {
 
     public void setClassification(AdAcademicClassification classification) {
         this.classification = classification;
-    }
-
-    @Override
-    public AdCohort getParent() {
-        return parent;
-    }
-
-    @Override
-    public void setParent(AdCohort parent) {
-        this.parent = parent;
     }
 
     public AdProgram getProgram() {

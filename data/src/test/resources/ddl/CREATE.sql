@@ -304,7 +304,6 @@ create table AD_CHRT (
     M_ID int8,
     M_ST int4,
     CURRICULUM_ID int8,
-    PARENT_ID int8,
     PROGRAM_ID int8,
     primary key (ID)
 );
@@ -1473,11 +1472,6 @@ alter table AD_CHRT
     add constraint FKE7D8DC035176A943
 foreign key (CURRICULUM_ID)
 references AD_CRLM;
-
-alter table AD_CHRT
-    add constraint FKE7D8DC03C467D1AE
-foreign key (PARENT_ID)
-references AD_CHRT;
 
 alter table AD_CHRT
     add constraint FKE7D8DC03F5E26B71
