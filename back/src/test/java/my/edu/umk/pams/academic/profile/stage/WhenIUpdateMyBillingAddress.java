@@ -5,11 +5,15 @@ import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 import my.edu.umk.pams.academic.common.service.CommonService;
 import my.edu.umk.pams.academic.identity.dao.AdStudentDao;
+import my.edu.umk.pams.academic.identity.model.AdAddress;
 import my.edu.umk.pams.academic.identity.model.AdAddressImpl;
 import my.edu.umk.pams.academic.identity.model.AdAddressType;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.profile.service.ProfileService;
 import my.edu.umk.pams.academic.security.service.SecurityService;
+
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,15 +35,32 @@ public class WhenIUpdateMyBillingAddress extends Stage<WhenIUpdateMyBillingAddre
 	@ExpectedScenarioState
 	private AdStudent student;
 
-	public WhenIUpdateMyBillingAddress I_update_my_billing_address() {
-		AdAddressImpl address = new AdAddressImpl();
+	public WhenIUpdateMyBillingAddress I_add_my_billing_address() {
+		AdAddress address = new AdAddressImpl();
 		address.setType(AdAddressType.BILLING);
-		address.setAddress1("Jalan Rumah");
-		address.setAddress2("Bestari Jaya");
+		address.setAddress1("Jalan Petaling");
+		address.setAddress2("Petaling Jaya");
 		address.setStateCode(commonService.findStateCodeByCode("MY-01"));
 		address.setCountryCode(commonService.findCountryCodeByCode("MY"));
 		profileService.addAddress(student, address);
 
 		return self();
 	}
+
+	public WhenIUpdateMyBillingAddress I_update_my_billing_address() {
+
+		List<AdAddress> addresses = profileService.findAddresses(student);
+		for (AdAddress address : addresses) {
+			if (address.getType().equals(AdAddressType.BILLING)) {
+				address.setAddress1("Jalan Rumah");
+				address.setAddress2("Bestari Jaya");
+				address.setStateCode(commonService.findStateCodeByCode("MY-01"));
+				address.setCountryCode(commonService.findCountryCodeByCode("MY"));
+				profileService.updateAddress(student, address);
+			}
+		}
+
+		return self();
+	}
+
 }
