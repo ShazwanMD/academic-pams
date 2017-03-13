@@ -37,7 +37,7 @@ public class WhenIWantToSetCapacityForOfferedCourse extends Stage<WhenIWantToSet
 		// offer a course
 		AdCourse course = studyplanService.findCourseByCode("DDA1163");
 
-		// set offering capacity
+		// set offering capacities
 		AdOffering offering = new AdOfferingImpl();
         offering.setCapacity(10);
         offering.setCode("XX");
