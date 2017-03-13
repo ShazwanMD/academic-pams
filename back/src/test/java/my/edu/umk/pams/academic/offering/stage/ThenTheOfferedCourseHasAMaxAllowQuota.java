@@ -1,5 +1,7 @@
 package my.edu.umk.pams.academic.offering.stage;
-
+/**
+ * @author asyikin.mr and ziana
+ */
 import com.tngtech.jgiven.Stage;
 
 public class ThenTheOfferedCourseHasAMaxAllowQuota  extends Stage<ThenTheOfferedCourseHasAMaxAllowQuota>{

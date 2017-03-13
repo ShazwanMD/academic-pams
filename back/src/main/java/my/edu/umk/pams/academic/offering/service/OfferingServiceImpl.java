@@ -159,6 +159,7 @@ public class OfferingServiceImpl implements OfferingService {
 	public boolean isOfferingExists(AdProgram program, AdCourse course) {
 		return offeringDao.isExists(program, course);
 	}
+	
 
 	@Override
 	public void saveOffering(AdOffering offering) {

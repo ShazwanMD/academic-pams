@@ -14,7 +14,7 @@ import my.edu.umk.pams.academic.studyplan.model.AdCourse;
 import my.edu.umk.pams.academic.studyplan.service.StudyplanService;
 
 /**
- * @author asyikin and ziana
+ * @author asyikin.mr and ziana
  */
 
 @JGivenStage
