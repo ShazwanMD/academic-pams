@@ -20,32 +20,26 @@ import org.springframework.beans.factory.annotation.Autowired;
 @JGivenStage
 public class WhenIUpdateMyBillingAddress extends Stage<WhenIUpdateMyBillingAddress> {
 
-    private static final Logger LOG = LoggerFactory.getLogger(WhenIUpdateMyBillingAddress.class);
+	private static final Logger LOG = LoggerFactory.getLogger(WhenIUpdateMyBillingAddress.class);
 
-    @Autowired
-    private ProfileService profileService;
+	@Autowired
+	private ProfileService profileService;
 
-    @Autowired
-    private SecurityService securityService;
+	@Autowired
+	private CommonService commonService;
 
-    @Autowired
-    private CommonService commonService;
+	@ExpectedScenarioState
+	private AdStudent student;
 
-    @Autowired
-    private AdStudentDao studentDao;
+	public WhenIUpdateMyBillingAddress I_update_my_billing_address() {
+		AdAddressImpl address = new AdAddressImpl();
+		address.setType(AdAddressType.BILLING);
+		address.setAddress1("Jalan Rumah");
+		address.setAddress2("Bestari Jaya");
+		address.setStateCode(commonService.findStateCodeByCode("MY-01"));
+		address.setCountryCode(commonService.findCountryCodeByCode("MY"));
+		profileService.addAddress(student, address);
 
-    @ExpectedScenarioState
-    private AdStudent student;
-
-    public WhenIUpdateMyBillingAddress I_update_my_billing_address() {
-        AdAddressImpl address = new AdAddressImpl();
-        address.setType(AdAddressType.BILLING);
-        address.setAddress1("Jalan Rumah");
-        address.setAddress2("Bestari Jaya");
-        address.setStateCode(commonService.findStateCodeByCode("MY-01"));
-        address.setCountryCode(commonService.findCountryCodeByCode("MY"));
-        profileService.updateAddress(student, address);
-
-        return self();
-    }
+		return self();
+	}
 }
