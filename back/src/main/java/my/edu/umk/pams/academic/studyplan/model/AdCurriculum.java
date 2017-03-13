@@ -46,8 +46,6 @@ public interface AdCurriculum extends AdMetaObject {
 
     void setCohorts(List<AdCohort> cohorts);
 
-
-
     List<AdSubject> getSubjects();
 
     void setSubjects(List<AdSubject> subjects);

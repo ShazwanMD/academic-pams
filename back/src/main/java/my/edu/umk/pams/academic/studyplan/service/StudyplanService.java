@@ -36,6 +36,59 @@ public interface StudyplanService {
 
     void removeAcademicSession(AdAcademicSession academicSession);
 
+    //====================================================================================================
+    // CURRICULUM
+    //====================================================================================================
+
+    AdCurriculum findCurriculumById(Long id);
+
+    AdCurriculum findCurriculumByCode(String code);
+
+    AdSubject findSubjectById(Long id);
+
+    AdSubject findSubjectByCurriculumAndCourse(AdCurriculum curriculum, AdCourse course);
+
+    List<AdCurriculum> findCurriculums(Integer offset, Integer limit);
+
+    List<AdCurriculum> findCurriculums(String filter, Integer offset, Integer limit);
+
+    List<AdCurriculum> findCurriculums(AdProgram program);
+
+    List<AdCurriculum> findCurriculums(AdProgram program, Integer offset, Integer limit);
+
+    List<AdSubject> findSubjects(AdCurriculum curriculum);
+
+    List<AdSubject> findSubjects(String filter, AdCurriculum curriculum);
+
+    List<AdSubject> findSubjectByCourse(AdCourse course);
+
+    Integer countCurriculum();
+
+    Integer countCurriculum(String filter);
+
+    Integer countSubject(AdCurriculum curriculum);
+
+    boolean isCurriculumExists(String code);
+
+    boolean isSubjectExists(AdCourse course, AdCurriculum curriculum);
+
+    boolean hasCurriculum(AdProgram program);
+
+    void saveCurriculum(AdCurriculum curriculum);
+
+    void updateCurriculum(AdCurriculum curriculum);
+
+    void removeCurriculum(AdCurriculum curriculum);
+
+    void addSubject(AdCurriculum curriculum, AdSubject subject);
+
+    void updateSubject(AdCurriculum curriculum, AdSubject subject);
+
+    void deleteSubject(AdCurriculum curriculum, AdSubject subject);
+
+    void addSubjectPart(AdBundleSubject subject, AdBundleSubjectPart part);
+
+    void deleteSubjectPart(AdBundleSubject subject, AdBundleSubjectPart part);
 
     //====================================================================================================
     // COHORT

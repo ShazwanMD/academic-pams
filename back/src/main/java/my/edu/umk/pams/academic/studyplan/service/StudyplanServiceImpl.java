@@ -2,8 +2,6 @@ package my.edu.umk.pams.academic.studyplan.service;
 
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.offering.dao.AdOfferingDao;
-import my.edu.umk.pams.academic.offering.model.AdOffering;
-import my.edu.umk.pams.academic.profile.model.AdAdmission;
 import my.edu.umk.pams.academic.security.service.SecurityService;
 import my.edu.umk.pams.academic.studyplan.dao.*;
 import my.edu.umk.pams.academic.studyplan.model.*;
@@ -14,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 
 /**
  * @author PAMS
@@ -43,6 +42,9 @@ public class StudyplanServiceImpl implements StudyplanService {
 
     @Autowired
     private AdCohortDao cohortDao;
+
+    @Autowired
+    private AdCurriculumDao curriculumDao;
 
     @Autowired
     private AdSectionDao sectionDao;
@@ -117,6 +119,147 @@ public class StudyplanServiceImpl implements StudyplanService {
         academicSessionDao.remove(academicSession, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
+
+
+    //====================================================================================================
+    // CURRICULUM
+    //====================================================================================================
+
+    @Override
+    public AdCurriculum findCurriculumById(Long id) {
+        return curriculumDao.findById(id);
+    }
+
+    @Override
+    public AdCurriculum findCurriculumByCode(String code) {
+        return curriculumDao.findByCode(code);
+    }
+
+    @Override
+    public AdSubject findSubjectById(Long id) {
+        return curriculumDao.findSubjectById(id);
+    }
+
+    @Override
+    public AdSubject findSubjectByCurriculumAndCourse(AdCurriculum curriculum, AdCourse course) {
+        return null;
+    }
+
+    @Override
+    public List<AdCurriculum> findCurriculums(Integer offset, Integer limit) {
+        return null;
+    }
+
+    @Override
+    public List<AdCurriculum> findCurriculums(String filter, Integer offset, Integer limit) {
+        return null;
+    }
+
+    @Override
+    public List<AdCurriculum> findCurriculums(AdProgram program) {
+        return null;
+    }
+
+    @Override
+    public List<AdCurriculum> findCurriculums(AdProgram program, Integer offset, Integer limit) {
+        return null;
+    }
+
+    @Override
+    public List<AdSubject> findSubjects(AdCurriculum curriculum) {
+        return null;
+    }
+
+    @Override
+    public List<AdSubject> findSubjects(String filter, AdCurriculum curriculum) {
+        return null;
+    }
+
+    @Override
+    public List<AdSubject> findSubjectByCourse(AdCourse course) {
+        return null;
+    }
+
+    @Override
+    public Integer countCurriculum() {
+        return null;
+    }
+
+    @Override
+    public Integer countCurriculum(String filter) {
+        return null;
+    }
+
+    @Override
+    public Integer countSubject(AdCurriculum curriculum) {
+        return null;
+    }
+
+    @Override
+    public boolean isCurriculumExists(String code) {
+        return false;
+    }
+
+    @Override
+    public boolean isSubjectExists(AdCourse course, AdCurriculum curriculum) {
+        return false;
+    }
+
+    @Override
+    public boolean hasCurriculum(AdProgram program) {
+        return false;
+    }
+
+    @Override
+    public void saveCurriculum(AdCurriculum curriculum) {
+        curriculumDao.save(curriculum, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
+
+    @Override
+    public void updateCurriculum(AdCurriculum curriculum) {
+        curriculumDao.update(curriculum, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
+
+    @Override
+    public void removeCurriculum(AdCurriculum curriculum) {
+        curriculumDao.remove(curriculum, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
+
+    @Override
+    public void addSubject(AdCurriculum curriculum, AdSubject subject) {
+        curriculumDao.addSubject(curriculum, subject, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
+
+    @Override
+    public void updateSubject(AdCurriculum curriculum, AdSubject subject) {
+        curriculumDao.updateSubject(curriculum, subject, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
+
+    @Override
+    public void deleteSubject(AdCurriculum curriculum, AdSubject subject) {
+        curriculumDao.deleteSubject(curriculum, subject, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
+
+    @Override
+    public void addSubjectPart(AdBundleSubject subject, AdBundleSubjectPart part) {
+        curriculumDao.addSubjectPart(subject, part, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
+
+    @Override
+    public void deleteSubjectPart(AdBundleSubject subject, AdBundleSubjectPart part) {
+        curriculumDao.deleteSubjectPart(subject, part, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
+
+
+
 
     //====================================================================================================
     // COHORT
