@@ -10,8 +10,6 @@ import java.math.BigDecimal;
  */
 public interface AdAssessment extends AdMetaObject {
 
-    // TODO: canonicalCode
-
     String getCode();
 
     void setCode(String code);

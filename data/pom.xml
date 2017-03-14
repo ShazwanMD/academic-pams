@@ -275,6 +275,7 @@
                                 <srcFile>src/test/resources/ddl/ACL.POSTGRES.sql</srcFile>
                                 <srcFile>src/test/resources/ddl/ACT.POSTGRES.sql</srcFile>
                                 <srcFile>src/test/resources/ddl/BAT.POSTGRES.sql</srcFile>
+                                <srcFile>src/test/resources/data/AD_RFRN_NO.sql</srcFile>
                                 <srcFile>src/test/resources/data/AD_PCPL.sql</srcFile>
                                 <srcFile>src/test/resources/data/AD_ACTR.sql</srcFile>
                                 <srcFile>src/test/resources/data/AD_GNDR_CODE.sql</srcFile>
