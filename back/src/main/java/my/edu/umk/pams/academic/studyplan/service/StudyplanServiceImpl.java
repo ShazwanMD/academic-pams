@@ -286,8 +286,13 @@ public class StudyplanServiceImpl implements StudyplanService {
     }
 
     @Override
-    public List<AdCohort> findCohorts(AdCohort parent, Integer offset, Integer limit) {
-        return cohortDao.find(parent, offset, limit);
+    public List<AdCohort> findCohorts(AdCurriculum curriculum, Integer offset, Integer limit) {
+        return cohortDao.find(curriculum, offset, limit);
+    }
+
+    @Override
+    public List<AdCohort> findCohorts(AdProgram program, Integer offset, Integer limit) {
+        return cohortDao.find(program, offset, limit);
     }
 
     @Override

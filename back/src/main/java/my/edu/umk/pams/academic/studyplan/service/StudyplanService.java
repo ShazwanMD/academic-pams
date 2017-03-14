@@ -102,7 +102,9 @@ public interface StudyplanService {
 
     List<AdCohort> findCohorts(String filter, Integer offset, Integer limit);
 
-    List<AdCohort> findCohorts(AdCohort parent, Integer offset, Integer limit);
+    List<AdCohort> findCohorts(AdCurriculum curriculum, Integer offset, Integer limit);
+
+    List<AdCohort> findCohorts(AdProgram program, Integer offset, Integer limit);
 
     List<AdStudent> findStudents(AdCohort cohort);
 
