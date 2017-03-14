@@ -19,7 +19,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * @author PAMS
+ * @author asyikin.mr and ziana
  */
 @Service("offeringServie")
 public class OfferingServiceImpl implements OfferingService {
