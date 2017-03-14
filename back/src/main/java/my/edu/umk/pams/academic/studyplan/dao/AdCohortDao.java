@@ -4,6 +4,7 @@ package my.edu.umk.pams.academic.studyplan.dao;
 import my.edu.umk.pams.academic.core.GenericDao;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.studyplan.model.AdCohort;
+import my.edu.umk.pams.academic.studyplan.model.AdCurriculum;
 import my.edu.umk.pams.academic.studyplan.model.AdIntakeCode;
 import my.edu.umk.pams.academic.studyplan.model.AdProgram;
 
@@ -32,9 +33,9 @@ public interface AdCohortDao extends GenericDao<Long, AdCohort> {
 
     List<AdCohort> find(String filter, Integer offset, Integer limit);
 
-    List<AdCohort> find(AdCohort parent, Integer offset, Integer limit);
-
     List<AdCohort> find(AdProgram program, Integer offset, Integer limit);
+
+    List<AdCohort> find(AdCurriculum curriculum, Integer offset, Integer limit);
 
     List<AdCohort> find(String filter, AdProgram program);
 
@@ -65,4 +66,5 @@ public interface AdCohortDao extends GenericDao<Long, AdCohort> {
     Integer countStudent(String filter, AdCohort cohort);
 
     boolean isExists(String code);
+
 }

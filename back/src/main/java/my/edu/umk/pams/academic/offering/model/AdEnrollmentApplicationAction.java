@@ -1,7 +1,7 @@
 package my.edu.umk.pams.academic.offering.model;
 
 /**
- * @author rafizan.baharum@canang.com.my
+ * @author PAMS
  */
 public enum AdEnrollmentApplicationAction {
 

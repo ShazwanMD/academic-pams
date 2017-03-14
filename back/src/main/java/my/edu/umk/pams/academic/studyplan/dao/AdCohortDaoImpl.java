@@ -115,20 +115,6 @@ public class AdCohortDaoImpl extends GenericDaoSupport<Long, AdCohort> implement
     }
 
     @Override
-    public List<AdCohort> find(AdCohort parent, Integer offset, Integer limit) {
-        Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery("select s from AdCohort s where " +
-                "s.parent = :parent " +
-                "and s.metadata.state = :state ");
-        query.setEntity("parent", parent);
-        query.setInteger("state", AdMetaState.ACTIVE.ordinal());
-        query.setFirstResult(offset);
-        query.setMaxResults(limit);
-        query.setCacheable(true);
-        return (List<AdCohort>) query.list();
-    }
-
-    @Override
     public List<AdCohort> find(AdProgram program, Integer offset, Integer limit) {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select s from AdCohort s where " +
@@ -136,6 +122,21 @@ public class AdCohortDaoImpl extends GenericDaoSupport<Long, AdCohort> implement
                 "and s.metadata.state = :state ");
         query.setInteger("state", AdMetaState.ACTIVE.ordinal());
         query.setEntity("program", program);
+        query.setFirstResult(offset);
+        query.setMaxResults(limit);
+        query.setCacheable(true);
+        return (List<AdCohort>) query.list();
+    }
+
+
+    @Override
+    public List<AdCohort> find(AdCurriculum curriculum, Integer offset, Integer limit) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select s from AdCohort s where " +
+                "s.curriculum = :curriculum " +
+                "and s.metadata.state = :state ");
+        query.setInteger("state", AdMetaState.ACTIVE.ordinal());
+        query.setEntity("curriculum", curriculum);
         query.setFirstResult(offset);
         query.setMaxResults(limit);
         query.setCacheable(true);

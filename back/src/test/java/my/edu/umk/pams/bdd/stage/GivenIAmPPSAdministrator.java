@@ -3,7 +3,9 @@ package my.edu.umk.pams.bdd.stage;
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
-import my.edu.umk.pams.academic.core.AdMetadata;
+import my.edu.umk.pams.academic.identity.model.AdStaff;
+import my.edu.umk.pams.academic.identity.model.AdUser;
+import my.edu.umk.pams.academic.security.integration.AdUserDetails;
 import my.edu.umk.pams.academic.studyplan.model.AdAcademicSession;
 import my.edu.umk.pams.academic.studyplan.service.StudyplanService;
 import org.slf4j.Logger;
@@ -26,7 +28,10 @@ public class GivenIAmPPSAdministrator extends Stage<GivenIAmPPSAdministrator> {
     private StudyplanService studyplanService;
 
     @ProvidedScenarioState
-    AdAcademicSession academicSession;
+    private AdAcademicSession academicSession;
+
+    @ProvidedScenarioState
+    private AdStaff staff;
 
     public void I_am_a_PPS_administrator(){
         loginAsPPS();
@@ -46,5 +51,9 @@ public class GivenIAmPPSAdministrator extends Stage<GivenIAmPPSAdministrator> {
         UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken("pps", "abc123");
         Authentication authed = authenticationManager.authenticate(token);
         SecurityContextHolder.getContext().setAuthentication(authed);
+
+        // retrieve staff from user
+        AdUser user = ((AdUserDetails) authed.getPrincipal()).getUser();
+        staff = (AdStaff) user.getActor();
     }
 }
