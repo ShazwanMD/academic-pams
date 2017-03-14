@@ -10,7 +10,7 @@ import my.edu.umk.pams.academic.studyplan.model.AdSection;
 import java.util.List;
 
 /**
- * @author PAMS
+ * @author asyikin.mr and ziana
  */
 public interface OfferingService {
 
@@ -55,8 +55,10 @@ public interface OfferingService {
     Integer countOfferingWithSection(boolean authorized, String filter, AdAcademicSession session);
 
     boolean isOfferingExists(AdProgram program, AdCourse course);
+    
+    void saveOffering(AdOffering offering);
 
-    //====================================================================================================
+    //==========+==========================================================================================
     // SECTION
     //====================================================================================================
 
