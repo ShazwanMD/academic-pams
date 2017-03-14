@@ -40,8 +40,13 @@ public class WhenIAdACohort extends Stage<WhenIAdACohort> {
 	    	program = studyplanService.findProgramByCode("MEM");
 	        
 	    	AdCurriculum curriculum = new AdCurriculumImpl();
+	    	
 	    	curriculum.setCode("01611B");
+	    	curriculum.setTitleMs("englishTitle");
+	    	
 	    	curriculum.setCoreCredit(10);
+	    	curriculum.setTitleEn("malayTitle");
+	    	
 	    	curriculum.setCurriculumCredit(10);
 	    	curriculum.setTotalCredit(10);
 	    	curriculum.setElectiveCredit(0);
