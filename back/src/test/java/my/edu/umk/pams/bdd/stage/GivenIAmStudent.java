@@ -28,7 +28,7 @@ public class GivenIAmStudent extends Stage<GivenIAmStudent> {
     private StudyplanService studyplanService;
 
     @ProvidedScenarioState
-    AdAcademicSession academicSession;
+    private AdAcademicSession academicSession;
 
     @ProvidedScenarioState
     private AdStudent student;
@@ -46,10 +46,10 @@ public class GivenIAmStudent extends Stage<GivenIAmStudent> {
     private void loginAsStudent() {
         UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken("student1", "abc123");
         Authentication authed = authenticationManager.authenticate(token);
+        SecurityContextHolder.getContext().setAuthentication(authed);
+
+        // retrieve student from user
         AdUser user = ((AdUserDetails) authed.getPrincipal()).getUser();
         student = (AdStudent) user.getActor();
-        SecurityContextHolder.getContext().setAuthentication(authed);
     }
-
-
 }

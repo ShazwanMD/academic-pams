@@ -25,7 +25,7 @@ public class GivenIAmSystem extends Stage<GivenIAmSystem> {
     private StudyplanService studyplanService;
 
     @ProvidedScenarioState
-    AdAcademicSession academicSession;
+    private AdAcademicSession academicSession;
 
     public void I_am_a_system_in_$_academic_session(String academicSessionCode){
         UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken("system", "abc123");
