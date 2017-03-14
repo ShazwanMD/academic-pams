@@ -3,7 +3,7 @@ package my.edu.umk.pams.academic.studyplan.model;
 import java.util.List;
 
 /**
- * @author rafizan.baharum@canang.com.my
+ * @author PAMS
  */
 public interface AdBundleSubject extends AdSubject {
 

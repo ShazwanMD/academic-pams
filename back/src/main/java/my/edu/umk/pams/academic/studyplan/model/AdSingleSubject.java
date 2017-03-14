@@ -1,7 +1,7 @@
 package my.edu.umk.pams.academic.studyplan.model;
 
 /**
- * @author rafizan.baharum@canang.com.my
+ * @author PAMS
  */
 public interface AdSingleSubject extends AdSubject {
 
