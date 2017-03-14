@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * @author PAMS
  */
-@Entity(name = "AcSection")
+@Entity(name = "AdSection")
 @Table(name = "AD_SCTN")
 public class AdSectionImpl implements AdSection {
 

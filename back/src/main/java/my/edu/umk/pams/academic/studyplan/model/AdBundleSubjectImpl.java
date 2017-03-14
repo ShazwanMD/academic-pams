@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * @author PAMS
  */
-@Entity(name = "AcBundleSubject")
+@Entity(name = "AdBundleSubject")
 @Table(name = "AD_BNDL_SBJT")
 public class AdBundleSubjectImpl extends AdSubjectImpl implements AdBundleSubject {
 

@@ -8,7 +8,7 @@ import javax.persistence.*;
 /**
  * @author PAMS
  */
-@Entity(name = "AcIntakeCode")
+@Entity(name = "AdIntakeCode")
 @Table(name = "AD_INTK_CODE")
 public class AdIntakeCodeImpl implements AdIntakeCode {
 

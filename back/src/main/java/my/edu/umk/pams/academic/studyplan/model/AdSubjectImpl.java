@@ -8,7 +8,7 @@ import javax.persistence.*;
 /**
  * @author PAMS
  */
-@Entity(name = "AcSubject")
+@Entity(name = "AdSubject")
 @Table(name = "AD_SBJT")
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class AdSubjectImpl implements AdSubject {

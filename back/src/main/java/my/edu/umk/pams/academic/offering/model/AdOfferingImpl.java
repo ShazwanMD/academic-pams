@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * @author PAMS
  */
-@Entity(name = "AcOffering")
+@Entity(name = "AdOffering")
 @Table(name = "AD_OFRG")
 public class AdOfferingImpl implements AdOffering {
 

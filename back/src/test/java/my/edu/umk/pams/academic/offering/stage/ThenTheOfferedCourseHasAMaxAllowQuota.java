@@ -1,39 +1,34 @@
 /**
- * @author asyikin.mr@umk and ziana
-
+ * @author PAMS
  */
 
 package my.edu.umk.pams.academic.offering.stage;
-import java.util.List;
 
+import com.tngtech.jgiven.Stage;
+import com.tngtech.jgiven.annotation.ExpectedScenarioState;
+import com.tngtech.jgiven.integration.spring.JGivenStage;
+import io.jsonwebtoken.lang.Assert;
+import my.edu.umk.pams.academic.offering.model.AdOffering;
+import my.edu.umk.pams.academic.offering.service.OfferingService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import com.tngtech.jgiven.Stage;
-import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 
-import io.jsonwebtoken.lang.Assert;
-import my.edu.umk.pams.academic.identity.model.AdAddress;
-import my.edu.umk.pams.academic.studyplan.model.AdCourse;
-import my.edu.umk.pams.academic.studyplan.service.StudyplanService;
-
+@JGivenStage
 public class ThenTheOfferedCourseHasAMaxAllowQuota extends Stage<ThenTheOfferedCourseHasAMaxAllowQuota> {
 
-	private static final Logger LOG = LoggerFactory.getLogger(ThenTheOfferedCourseHasAMaxAllowQuota.class);
+    private static final Logger LOG = LoggerFactory.getLogger(ThenTheOfferedCourseHasAMaxAllowQuota.class);
 
-	@Autowired
-	private StudyplanService studyplanService;
+    @Autowired
+    private OfferingService offeringService;
 
-	@ExpectedScenarioState
-	private AdCourse course;
+    @ExpectedScenarioState
+    private String canonicalCode;
 
-	public ThenTheOfferedCourseHasAMaxAllowQuota the_offered_course_has_a_maximum_quota() {
-		
-		// ada error pada findCourseByCode(code)
-		List<AdCourse> courses = studyplanService.findCourseByCode(code);
-	        Assert.notEmpty(courses);
-		
-	        return self();
-		
-	}
+    public ThenTheOfferedCourseHasAMaxAllowQuota the_offered_course_has_a_maximum_quota() {
+        LOG.debug("canonicalCode: {}", canonicalCode);
+        AdOffering offering = offeringService.findOfferingByCanonicalCode(canonicalCode);
+        Assert.isTrue(offering.getCapacity() > 0 , "Capacity should be greater than zero");
+        return self();
+    }
 }

@@ -278,6 +278,7 @@
                                 <srcFile>src/test/resources/data/AD_PCPL.sql</srcFile>
                                 <srcFile>src/test/resources/data/AD_ACTR.sql</srcFile>
                                 <srcFile>src/test/resources/data/AD_GNDR_CODE.sql</srcFile>
+                                <srcFile>src/test/resources/data/AD_ACDM_SESN.sql</srcFile>
                                 <srcFile>src/test/resources/data/AD_FCTY.sql</srcFile>
                                 <srcFile>src/test/resources/data/AD_PRGM.sql</srcFile>
                                 <srcFile>src/test/resources/data/AD_CRSE.sql</srcFile>

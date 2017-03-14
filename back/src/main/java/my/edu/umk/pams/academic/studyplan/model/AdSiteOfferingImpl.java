@@ -8,7 +8,7 @@ import javax.persistence.*;
 /**
  * @author PAMS
  */
-@Entity(name = "AcSiteOffering")
+@Entity(name = "AdSiteOffering")
 @Table(name = "AD_SITE_OFRG")
 public class AdSiteOfferingImpl implements AdSiteOffering {
 

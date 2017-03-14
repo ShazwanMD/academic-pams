@@ -1,17 +1,19 @@
 package my.edu.umk.pams.academic.offering.stage;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
-
 import my.edu.umk.pams.academic.offering.model.AdOffering;
 import my.edu.umk.pams.academic.offering.model.AdOfferingImpl;
 import my.edu.umk.pams.academic.offering.service.OfferingService;
 import my.edu.umk.pams.academic.studyplan.model.AdAcademicSession;
 import my.edu.umk.pams.academic.studyplan.model.AdCourse;
+import my.edu.umk.pams.academic.studyplan.model.AdFaculty;
 import my.edu.umk.pams.academic.studyplan.service.StudyplanService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * @author asyikin.mr@umk and ziana
@@ -20,33 +22,48 @@ import my.edu.umk.pams.academic.studyplan.service.StudyplanService;
 @JGivenStage
 public class WhenIWantToSetCapacityForOfferedCourse extends Stage<WhenIWantToSetCapacityForOfferedCourse> {
 
-	@Autowired
-	private OfferingService offeringService;
+    private static final Logger LOG = LoggerFactory.getLogger(WhenIWantToSetCapacityForOfferedCourse.class);
 
-	@Autowired
-	private StudyplanService studyplanService;
+    public static final String COURSE_CODE = "DDA2113";
 
-	@ProvidedScenarioState
-	private AdCourse course;
+    @Autowired
+    private OfferingService offeringService;
 
-	@ExpectedScenarioState
-	AdAcademicSession academicSession;
+    @Autowired
+    private StudyplanService studyplanService;
 
-	public WhenIWantToSetCapacityForOfferedCourse I_set_offering_capacity() {
+    @ExpectedScenarioState
+    private AdAcademicSession academicSession;
 
-		// offer a course
-		AdCourse course = studyplanService.findCourseByCode("DDA1163");
+    @ExpectedScenarioState
+    private AdOffering offering;
 
-		// set offering capacities
-		AdOffering offering = new AdOfferingImpl();
+    @ProvidedScenarioState
+    private AdCourse course;
+
+    @ProvidedScenarioState
+    private String code;
+
+    @ProvidedScenarioState
+    private String canonicalCode;
+
+    public WhenIWantToSetCapacityForOfferedCourse I_set_offering_capacity() {
+        // offer a course
+        course = studyplanService.findCourseByCode(COURSE_CODE);
+        AdFaculty faculty = course.getFaculty();
+
+        // set offering properties
+        code = course.getCode() + "/" + academicSession.getCode();  // course/session
+        canonicalCode = faculty.getCode() + "/" + course.getCode() + "/" + academicSession.getCode(); // fac/course/session
+        offering = new AdOfferingImpl();
+        offering.setCode(code);
+        offering.setCanonicalCode(canonicalCode);
         offering.setCapacity(10);
-        offering.setCode("ASASA");
-        offering.setCanonicalCode("01Q");
-        offering.setTitle("vv");
+        offering.setTitle("Kursus Asasi");
         offering.setCourse(course);
-                
-		// save offering
+
+        // save offering
         offeringService.saveOffering(offering);
-		return self();
-	}
+        return self();
+    }
 }
