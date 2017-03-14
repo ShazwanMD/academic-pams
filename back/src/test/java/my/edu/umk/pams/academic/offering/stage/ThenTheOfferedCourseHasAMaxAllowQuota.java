@@ -1,6 +1,6 @@
 package my.edu.umk.pams.academic.offering.stage;
 /**
- * @author asyikin.mr and ziana
+ * @author asyikin.mr@umk and ziana
  */
 import com.tngtech.jgiven.Stage;
 

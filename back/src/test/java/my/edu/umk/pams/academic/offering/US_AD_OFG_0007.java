@@ -17,7 +17,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- * @author asyikin.mr and ziana
+ * @author asyikin.mr@umk and ziana
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional

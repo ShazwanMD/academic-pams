@@ -10,7 +10,7 @@ import my.edu.umk.pams.academic.studyplan.model.AdSection;
 import java.util.List;
 
 /**
- * @author PAMS
+ * @author asyikin.mr and ziana
  */
 public interface OfferingService {
 
