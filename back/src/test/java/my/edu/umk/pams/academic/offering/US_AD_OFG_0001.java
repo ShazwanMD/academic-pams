@@ -18,7 +18,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- * example
  * @author PAMS
  */
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -44,4 +43,3 @@ public class US_AD_OFG_0001 extends SpringScenarioTest<GivenIAmPPSAdministrator,
         then().the_course_is_ready_for_setup();
     }
 }
-
