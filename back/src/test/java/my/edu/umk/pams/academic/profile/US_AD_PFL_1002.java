@@ -27,9 +27,9 @@ import my.edu.umk.pams.bdd.stage.GivenIAmStudent;
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
-public class US_AD_PFL_0002 extends SpringScenarioTest<GivenIAmStudent, WhenIUpdateMyBillingAddress, ThenMyBillingAddressUpdated> {
+public class US_AD_PFL_1002 extends SpringScenarioTest<GivenIAmStudent, WhenIUpdateMyBillingAddress, ThenMyBillingAddressUpdated> {
 
-	private static final Logger LOG = LoggerFactory.getLogger(US_AD_PFL_0002.class);
+	private static final Logger LOG = LoggerFactory.getLogger(US_AD_PFL_1002.class);
 
 	@Before
 	public void before() {
