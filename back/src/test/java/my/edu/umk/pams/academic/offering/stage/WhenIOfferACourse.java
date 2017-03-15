@@ -1,7 +1,6 @@
 package my.edu.umk.pams.academic.offering.stage;
 
 import java.util.List;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,12 +20,12 @@ import my.edu.umk.pams.academic.studyplan.model.AdSection;
 import my.edu.umk.pams.academic.studyplan.service.StudyplanService;
 
 /**
- * @author asyikin.mr and ziana
+ * @author asyikin.mr@umk and ziana
  */
 @JGivenStage
 public class WhenIOfferACourse extends Stage<WhenIOfferACourse> {
 
-	private static final Logger LOG = LoggerFactory.getLogger(WhenIWantToSetCapacityForOfferedCourse.class);
+	private static final Logger LOG = LoggerFactory.getLogger(WhenIOfferACourse.class);
 
 	@Autowired
 	private OfferingService offeringService;
