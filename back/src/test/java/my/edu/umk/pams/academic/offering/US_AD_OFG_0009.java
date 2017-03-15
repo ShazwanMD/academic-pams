@@ -39,7 +39,7 @@ public class US_AD_OFG_0009 extends SpringScenarioTest<GivenIAmStudent, WhenIWan
     @Test
     @Rollback(true)
     public void scenario1() {
-        given().I_am_student();
+        given().I_am_a_student_in_current_academic_session();
         when().I_want_to_view_the_offered_courses_by_academic_session();
         then().i_can_choose();
     }
