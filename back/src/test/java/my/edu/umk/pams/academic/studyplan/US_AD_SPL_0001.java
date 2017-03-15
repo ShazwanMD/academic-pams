@@ -1,5 +1,6 @@
 package my.edu.umk.pams.academic.studyplan;
 
+import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.studyplan.stage.ThenProgramIsIntroduced;
@@ -37,11 +38,16 @@ public class US_AD_SPL_0001 extends SpringScenarioTest<GivenIAmPPSAdministrator,
     public void after() {
     }
 
+    private String FACULTY_CODE = "45";
+
+    @ProvidedScenarioState
+    private String PROGRAM_CODE = "PRGM-1234";
+
     @Test
     @Rollback(true)
     public void scenario1() {
         given().I_am_a_PPS_administrator();
-        when().I_add_a_program_for_$_faculty("45");
-        then().program_is_introduced();
+        when().I_add_a_program_for_faculty_$(FACULTY_CODE);
+        then().the_program_$_is_introduced_for_faculty_$(PROGRAM_CODE, FACULTY_CODE);
     }
 }

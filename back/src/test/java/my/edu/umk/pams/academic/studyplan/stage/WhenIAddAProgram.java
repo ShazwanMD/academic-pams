@@ -1,8 +1,10 @@
 package my.edu.umk.pams.academic.studyplan.stage;
 
 import com.tngtech.jgiven.Stage;
+import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
+import io.jsonwebtoken.lang.Assert;
 import my.edu.umk.pams.academic.common.service.CommonService;
 import my.edu.umk.pams.academic.studyplan.model.AdFaculty;
 import my.edu.umk.pams.academic.studyplan.model.AdProgram;
@@ -30,16 +32,22 @@ public class WhenIAddAProgram extends Stage<WhenIAddAProgram> {
     @ProvidedScenarioState
     private AdFaculty faculty;
 
-    public WhenIAddAProgram I_add_a_program_for_$_faculty(String code) {
-        faculty = studyplanService.findFacultyByCode(code);
+    @ExpectedScenarioState
+    private String PROGRAM_CODE;
+
+    public WhenIAddAProgram I_add_a_program_for_faculty_$(String facultyCode) {
+        faculty = studyplanService.findFacultyByCode(facultyCode);
+        Assert.notNull(faculty, "faculty CANNOT be null");
+
         AdProgram program = new AdProgramImpl();
-        program.setCode("PRGM-1234");
+        program.setCode(PROGRAM_CODE);
         program.setFaculty(faculty);
         program.setProgramType(AdProgramType.MASTER);
         program.setTitle("Master of Enterpreneurship");
         program.setTitleEn("Master of Enterpreneurship");
         program.setTitleMs("Master of Enterpreneurship");
         studyplanService.saveProgram(program);
+
         return self();
     }
 
