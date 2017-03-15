@@ -75,7 +75,7 @@ public class WhenIOfferACourse extends Stage<WhenIOfferACourse> {
 		
 		offering.setCode(code);
 		offering.setCanonicalCode(canonicalCode);
-		offering.setTitle(title);
+		offering.setTitle("my sample title "); // @ProvidedScenarioState title above is null
 		offering.setMetadata(metadata);
 		offering.setCapacity(50);
 		offering.setSectionCount(3);
