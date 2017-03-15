@@ -1,5 +1,7 @@
 package my.edu.umk.pams.academic.offering;
-
+/**
+ * @author ziana
+ */
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
