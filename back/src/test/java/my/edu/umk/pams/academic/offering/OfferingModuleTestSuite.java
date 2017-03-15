@@ -8,7 +8,12 @@ import org.junit.runners.Suite;
  */
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-        US_AD_OFG_0001.class
+        US_AD_OFG_0001.class,
+        US_AD_OFG_0002.class,
+        US_AD_OFG_0007.class,
+        US_AD_OFG_0009.class,
+        US_AD_OFG_1009.class,
+        US_AD_OFG_10001.class
 })
 public class OfferingModuleTestSuite {
 }
