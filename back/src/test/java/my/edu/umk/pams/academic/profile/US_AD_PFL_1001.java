@@ -26,9 +26,9 @@ import org.springframework.transaction.annotation.Transactional;
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
-public class US_AD_PFL_0001 extends SpringScenarioTest<GivenIAmStudent, WhenIUpdateMyMailingAddress, ThenMyAddressUpdated> {
+public class US_AD_PFL_1001 extends SpringScenarioTest<GivenIAmStudent, WhenIUpdateMyMailingAddress, ThenMyAddressUpdated> {
 
-    private static final Logger LOG = LoggerFactory.getLogger(US_AD_PFL_0001.class);
+    private static final Logger LOG = LoggerFactory.getLogger(US_AD_PFL_1001.class);
 
     @Before
     public void before() {

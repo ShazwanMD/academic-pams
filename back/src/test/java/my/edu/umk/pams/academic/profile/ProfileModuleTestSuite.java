@@ -8,7 +8,7 @@ import org.junit.runners.Suite;
  */
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-        US_AD_PFL_0001.class,
+       
 })
 public class ProfileModuleTestSuite {
 
