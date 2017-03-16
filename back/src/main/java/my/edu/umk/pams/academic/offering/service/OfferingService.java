@@ -104,4 +104,14 @@ public interface OfferingService {
 
     boolean isSectionExists(String canonicalCode);
 
+    // todo(uda): addEnrollment
+
+    //==========+==========================================================================================
+    // ENROLLMENT
+    //====================================================================================================
+
+
+    // todo(uda): findEnrollment
+
+
 }
