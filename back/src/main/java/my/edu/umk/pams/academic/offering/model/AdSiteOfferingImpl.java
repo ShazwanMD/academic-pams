@@ -1,7 +1,11 @@
-package my.edu.umk.pams.academic.studyplan.model;
+package my.edu.umk.pams.academic.offering.model;
 
 
 import my.edu.umk.pams.academic.core.AdMetadata;
+import my.edu.umk.pams.academic.studyplan.model.AdProgram;
+import my.edu.umk.pams.academic.studyplan.model.AdProgramImpl;
+import my.edu.umk.pams.academic.studyplan.model.AdSite;
+import my.edu.umk.pams.academic.studyplan.model.AdSiteImpl;
 
 import javax.persistence.*;
 

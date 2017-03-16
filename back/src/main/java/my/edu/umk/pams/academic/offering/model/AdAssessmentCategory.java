@@ -1,4 +1,4 @@
-package my.edu.umk.pams.academic.studyplan.model;
+package my.edu.umk.pams.academic.offering.model;
 
 /**
  * @author PAMS

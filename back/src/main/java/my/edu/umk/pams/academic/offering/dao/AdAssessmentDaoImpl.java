@@ -1,8 +1,8 @@
-package my.edu.umk.pams.academic.studyplan.dao;
+package my.edu.umk.pams.academic.offering.dao;
 
 import my.edu.umk.pams.academic.core.AdMetaState;
 import my.edu.umk.pams.academic.core.GenericDaoSupport;
-import my.edu.umk.pams.academic.offering.model.AdOffering;
+import my.edu.umk.pams.academic.offering.model.*;
 import my.edu.umk.pams.academic.studyplan.model.*;
 import org.hibernate.Query;
 import org.hibernate.Session;

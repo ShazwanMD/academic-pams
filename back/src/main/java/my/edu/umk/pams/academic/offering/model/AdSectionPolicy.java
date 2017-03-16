@@ -1,7 +1,9 @@
-package my.edu.umk.pams.academic.studyplan.model;
+package my.edu.umk.pams.academic.offering.model;
 
 
 import my.edu.umk.pams.academic.core.AdMetaObject;
+import my.edu.umk.pams.academic.offering.model.AdSection;
+import my.edu.umk.pams.academic.studyplan.model.AdFaculty;
 
 /**
  * @author PAMS

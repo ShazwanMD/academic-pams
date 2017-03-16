@@ -2,8 +2,6 @@ package my.edu.umk.pams.academic.offering.model;
 
 
 import my.edu.umk.pams.academic.core.AdMetadata;
-import my.edu.umk.pams.academic.studyplan.model.AdSection;
-import my.edu.umk.pams.academic.studyplan.model.AdSectionImpl;
 
 import javax.persistence.*;
 

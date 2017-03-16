@@ -7,7 +7,6 @@ import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.profile.model.AdAdmission;
 import my.edu.umk.pams.academic.studyplan.model.AdEnrollmentStanding;
 import my.edu.umk.pams.academic.studyplan.model.AdEnrollmentStatus;
-import my.edu.umk.pams.academic.studyplan.model.AdSection;
 
 /**
  *

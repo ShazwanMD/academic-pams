@@ -16,7 +16,7 @@ import my.edu.umk.pams.academic.studyplan.model.AdAcademicSession;
 import my.edu.umk.pams.academic.studyplan.model.AdCourse;
 import my.edu.umk.pams.academic.studyplan.model.AdFaculty;
 import my.edu.umk.pams.academic.studyplan.model.AdProgram;
-import my.edu.umk.pams.academic.studyplan.model.AdSection;
+import my.edu.umk.pams.academic.offering.model.AdSection;
 import my.edu.umk.pams.academic.studyplan.service.StudyplanService;
 
 /**

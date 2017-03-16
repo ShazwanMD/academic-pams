@@ -5,8 +5,6 @@ import my.edu.umk.pams.academic.core.AdMetadata;
 import my.edu.umk.pams.academic.identity.model.AdStaff;
 import my.edu.umk.pams.academic.identity.model.AdStaffImpl;
 import my.edu.umk.pams.academic.studyplan.model.AdAppointmentStatus;
-import my.edu.umk.pams.academic.studyplan.model.AdSection;
-import my.edu.umk.pams.academic.studyplan.model.AdSectionImpl;
 
 import javax.persistence.*;
 

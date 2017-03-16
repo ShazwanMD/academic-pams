@@ -6,6 +6,11 @@ import my.edu.umk.pams.academic.core.AdMetaObject;
 import java.util.Date;
 
 /**
+ * STARTING<br/>
+ * STARTED<br/>
+ * CLOSING<br/>
+ * CLOSED<br/>
+
  * @author PAMS
  */
 public interface AdAcademicSession extends AdMetaObject {

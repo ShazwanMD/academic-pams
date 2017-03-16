@@ -1,16 +1,22 @@
 package my.edu.umk.pams.academic.offering.service;
 
-import my.edu.umk.pams.academic.offering.model.AdOffering;
+import my.edu.umk.pams.academic.identity.model.AdStaff;
+import my.edu.umk.pams.academic.identity.model.AdStudent;
+import my.edu.umk.pams.academic.offering.model.*;
 import my.edu.umk.pams.academic.profile.model.AdAdmission;
 import my.edu.umk.pams.academic.studyplan.model.AdAcademicSession;
 import my.edu.umk.pams.academic.studyplan.model.AdCourse;
+import my.edu.umk.pams.academic.studyplan.model.AdEnrollmentStatus;
 import my.edu.umk.pams.academic.studyplan.model.AdProgram;
-import my.edu.umk.pams.academic.studyplan.model.AdSection;
 
 import java.util.List;
 
 /**
- * @author asyikin.mr and ziana
+ * Enroll = student enrollment into section<br/>
+ * Withdraw = student withdraw from section<br/>
+ * </p>
+
+ * @author PAMS
  */
 public interface OfferingService {
 
@@ -110,8 +116,105 @@ public interface OfferingService {
     // ENROLLMENT
     //====================================================================================================
 
+    //====================================================================================================
+    // ENROLLMENT APPLICATION
+    //====================================================================================================
 
-    // todo(uda): findEnrollment
+    AdEnrollmentApplication findEnrollmentApplicationById(Long id);
+
+    AdEnrollmentApplication findEnrollmentApplicationByReferenceNo(String referenceNo);
+
+    AdEnrollmentApplication findEnrollmentApplicationByTaskId(String taskId);
+
+    AdEnrollmentApplicationItem findEnrollmentApplicationItemById(Long id);
+
+    List<AdEnrollmentApplication> findEnrollmentApplications(AdAcademicSession session);
+
+    List<AdEnrollmentApplication> findEnrollmentApplications(AdAcademicSession session, Integer offset, Integer limit);
+
+    List<AdEnrollmentApplication> findEnrollmentApplications(String filter, AdAcademicSession session, Integer offset, Integer limit);
+
+    List<AdEnrollmentApplication> findEnrollmentApplications(String filter, AdAcademicSession session, AdStudent student, Integer offset, Integer limit);
+
+    List<AdEnrollmentApplication> findEnrollmentApplications(String filter, AdAcademicSession session, AdStaff advisor, Integer offset, Integer limit);
+
+    List<AdEnrollmentApplicationItem> findEnrollmentApplicationItems(AdEnrollmentApplication application);
+
+    Integer countEnrollmentApplication(AdAcademicSession session);
+
+    Integer countEnrollmentApplication(String filter, AdAcademicSession session);
+
+    Integer countEnrollmentApplication(String filter, AdAcademicSession session, AdStudent student);
+
+    Integer countEnrollmentApplication(String filter, AdAcademicSession session, AdStaff staff);
+
+    //====================================================================================================
+    // ENROLLMENT
+    //====================================================================================================
+
+    AdEnrollment findEnrollmentById(Long id);
+
+    AdEnrollment findEnrollmentBySectionAndStudent(AdSection section, AdStudent student);
+
+    AdEnrollment findEnrollmentByMatricNoAndOffering(String matricNo, AdOffering offering);
+
+    List<AdEnrollment> findEnrollments(AdAcademicSession academicSession);
+
+    List<AdEnrollment> findEnrollments(AdAcademicSession academicSession, AdProgram program);
+
+    List<AdEnrollment> findEnrollments(AdProgram program);
+
+    List<AdEnrollment> findEnrollments(AdOffering offering);
+
+    List<AdEnrollment> findEnrollments(AdSection section);
+
+    List<AdEnrollment> findEnrollments(AdStudent student);
+
+    List<AdEnrollment> findEnrollments(AdAdmission admission);
+
+    List<AdEnrollment> findEnrollments(AdOffering offering, Integer offset, Integer limit);
+
+    List<AdEnrollment> findEnrollments(String filter, AdOffering offering, Integer offset, Integer limit);
+
+    List<AdEnrollment> findEnrollments(String filter, AdAcademicSession academicSession, AdOffering offering, Integer offset, Integer limit);
+
+    List<AdEnrollment> findEnrollments(AdAcademicSession academicSession, AdOffering offering);
+
+    List<AdEnrollment> findEnrollments(AdAcademicSession academicSession, AdStudent student);
+
+    List<AdEnrollment> findEnrollments(AdAcademicSession academicSession, AdOffering offering, Integer offset, Integer limit);
+
+    List<AdEnrollment> findEnrollments(AdStudent student, Integer offset, Integer limit);
+
+    List<AdEnrollment> findEnrollments(AdSection section, Integer offset, Integer limit);
+
+    List<AdEnrollment> findEnrollments(String filter, AdSection section, Integer offset, Integer limit);
+
+    Integer countEnrollment(AdOffering offering);
+
+    Integer countEnrollment(AdAcademicSession academicSession, AdOffering offering);
+
+    Integer countEnrollment(String filter, AdOffering offering);
+
+    Integer countEnrollment(String filter, AdAcademicSession academicSession, AdOffering offering);
+
+    Integer countEnrollment(AdSection section);
+
+    Integer countEnrollment(AdEnrollmentStatus status, AdSection section);
+
+    Integer countEnrollment(String filter, AdSection section);
+
+    Integer countEnrollment(AdStudent student);
+
+    Integer countEnrollment(AdAdmission admission);
+
+    boolean isAnyEnrollmentExists(AdAcademicSession academicSession, AdOffering offering, AdStudent student);
+
+    boolean isEnrollmentExists(AdSection section, AdStudent student);
+
+    boolean hasEnrollment(AdSection section);
+
+    boolean hasExceededEnrollment(AdSection section);
 
 
 }

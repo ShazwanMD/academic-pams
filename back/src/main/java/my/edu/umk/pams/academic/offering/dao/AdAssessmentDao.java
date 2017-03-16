@@ -1,12 +1,16 @@
-package my.edu.umk.pams.academic.studyplan.dao;
+package my.edu.umk.pams.academic.offering.dao;
 
 import my.edu.umk.pams.academic.core.GenericDao;
+import my.edu.umk.pams.academic.offering.model.AdAssessment;
+import my.edu.umk.pams.academic.offering.model.AdAssessmentType;
 import my.edu.umk.pams.academic.offering.model.AdOffering;
+import my.edu.umk.pams.academic.offering.model.AdSection;
 import my.edu.umk.pams.academic.studyplan.model.*;
 
 import java.util.List;
 
 /**
+ * todo(uda): assessment belongs to offering??
  * @author PAMS
  */
 public interface AdAssessmentDao extends GenericDao<Long, AdAssessment> {

@@ -4,6 +4,7 @@ import my.edu.umk.pams.academic.core.AdMetaState;
 import my.edu.umk.pams.academic.core.GenericDaoSupport;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.offering.model.AdOffering;
+import my.edu.umk.pams.academic.offering.model.AdSection;
 import my.edu.umk.pams.academic.profile.model.AdAdmission;
 import my.edu.umk.pams.academic.offering.model.AdEnrollment;
 import my.edu.umk.pams.academic.offering.model.AdEnrollmentImpl;
