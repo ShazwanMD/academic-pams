@@ -1,6 +1,7 @@
 package my.edu.umk.pams.academic.offering.stage;
 
 import org.slf4j.Logger;
+
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -14,13 +15,13 @@ import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.offering.model.AdEnrollment;
 import my.edu.umk.pams.academic.offering.model.AdEnrollmentImpl;
 import my.edu.umk.pams.academic.offering.model.AdOffering;
+import my.edu.umk.pams.academic.offering.model.AdSection;
 import my.edu.umk.pams.academic.offering.service.OfferingService;
 import my.edu.umk.pams.academic.profile.model.AdAdmission;
 import my.edu.umk.pams.academic.studyplan.model.AdCourse;
 import my.edu.umk.pams.academic.studyplan.model.AdEnrollmentStanding;
 import my.edu.umk.pams.academic.studyplan.model.AdEnrollmentStatus;
 import my.edu.umk.pams.academic.studyplan.model.AdProgram;
-import my.edu.umk.pams.academic.studyplan.model.AdSection;
 
 @JGivenStage
 public class WhenIWantToViewTheOfferedCoursesByAcademicSession
