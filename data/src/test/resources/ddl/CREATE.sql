@@ -1,4 +1,3 @@
-
 create table AD_ACDM_AREA (
     ID int8 not null,
     CODE varchar(255) not null,
@@ -840,6 +839,7 @@ create table AD_NTLY_CODE (
 create table AD_OFRG (
     ID int8 not null,
     CANONICAL_CODE varchar(255) not null,
+    CAPACITY int4 not null,
     CODE varchar(255) not null,
     C_TS timestamp,
     C_ID int8,
