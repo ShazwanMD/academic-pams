@@ -8,6 +8,7 @@ import my.edu.umk.pams.academic.studyplan.model.AdAcademicSession;
 import my.edu.umk.pams.academic.studyplan.model.AdCourse;
 import my.edu.umk.pams.academic.studyplan.model.AdEnrollmentStatus;
 import my.edu.umk.pams.academic.studyplan.model.AdProgram;
+import org.activiti.engine.task.Task;
 
 import java.util.List;
 
@@ -124,8 +125,6 @@ public interface OfferingService {
 
     AdEnrollmentApplication findEnrollmentApplicationByReferenceNo(String referenceNo);
 
-    AdEnrollmentApplication findEnrollmentApplicationByTaskId(String taskId);
-
     AdEnrollmentApplicationItem findEnrollmentApplicationItemById(Long id);
 
     List<AdEnrollmentApplication> findEnrollmentApplications(AdAcademicSession session);
@@ -216,5 +215,47 @@ public interface OfferingService {
 
     boolean hasExceededEnrollment(AdSection section);
 
+    void saveEnrollment(AdEnrollment enrollment);
+
+    void updateEnrollment(AdEnrollment enrollment);
+
+    void deleteEnrollment(AdEnrollment enrollment);
+
+
+    //====================================================================================================
+    // ENROLLMENT APPLICATION
+    //====================================================================================================
+
+    AdEnrollmentApplication findEnrollmentApplicationByTaskId(String taskId);
+
+    List<Task> findAssignedEnrollmentApplicationTasks(Integer offset, Integer limit);
+
+    List<Task> findCandidateEnrollmentApplicationTasks(Integer offset, Integer limit);
+
+    Integer countAssignedEnrollmentApplicationTasks();
+
+    Integer countCandidateEnrollmentApplicationTasks();
+
+    String processEnrollmentApplication(AdEnrollmentApplication application);
+
+    void updateEnrollmentApplication(AdEnrollmentApplication application);
+
+    void cancelEnrollmentApplication(AdEnrollmentApplication application);
+
+    void addEnrollmentApplicationItem(AdEnrollmentApplication application, AdEnrollmentApplicationItem item);
+
+    void updateEnrollmentApplicationItem(AdEnrollmentApplication application, AdEnrollmentApplicationItem item);
+
+    void deleteEnrollmentApplicationItem(AdEnrollmentApplication application, AdEnrollmentApplicationItem item);
+
+    void serializeToEnrollment(AdEnrollmentApplication application);
+
+    void enroll(boolean override, AdSection section, AdStudent student, AdAdmission admission) ; // throws
+
+    void withdraw(boolean override, AdSection section, AdStudent student, AdAdmission admission) ; // throws
+
+    void addGradebooks(AdSection section, AdEnrollment enrollment);
+
+    void addGradebooks(AdSection section, AdAssessment assessment);
 
 }

@@ -1,19 +1,11 @@
-package my.utm.acad.ac.biz.pko.event;
-
-import my.utm.acad.ac.core.das.model.*;
-import my.utm.acad.ac.core.sys.model.AcStudent;
-import my.utm.acad.proto.core.EnrollmentEventType;
-import my.utm.acad.proto.core.EnrollmentPayload;
-
-import static my.utm.acad.ac.biz.integration.IntegrationUtils.toData;
+package my.edu.umk.pams.academic.offering.event;
 
 /**
- * @author team utmacad
- * @since 8/6/2015.
+ * @author PAMS
  */
 public class EnrollmentWithdrawnEvent extends EnrollmentEvent {
 
-    public EnrollmentWithdrawnEvent(AcAcademicSession session, AcProgram program, AcCampus campus, AcSite site, AcCohort cohort, AcStudent student, AcSection section) {
-        super(new EnrollmentPayload(EnrollmentEventType.CONFIRMED, toData(session), toData(program), toData(campus), toData(site), toData(cohort), toData(student), toData(section)));
+    public EnrollmentWithdrawnEvent() {
+        super();
     }
 }

@@ -1,9 +1,9 @@
 package my.edu.umk.pams.academic.identity.model;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import my.edu.umk.pams.academic.studyplan.model.AdCohort;
+import my.edu.umk.pams.academic.studyplan.model.AdCohortImpl;
+
+import javax.persistence.*;
 import java.util.List;
 
 /**
@@ -13,6 +13,10 @@ import java.util.List;
 @Entity(name = "AdApplication")
 @Table(name = "AD_APCN")
 public class AdStudentImpl extends AdActorImpl implements AdStudent {
+
+    @ManyToOne(targetEntity = AdCohortImpl.class)
+    @JoinColumn(name = "COHORT_ID", nullable = true) // todo(uda): nullable = false
+    private AdCohort cohort;
 
     @OneToMany(targetEntity = AdAddressImpl.class, mappedBy = "student", fetch = FetchType.LAZY)
     private List<AdAddress> addresses;
@@ -25,6 +29,16 @@ public class AdStudentImpl extends AdActorImpl implements AdStudent {
     @Override
     public void setMatricNo(String matricNo) {
         setIdentityNo(matricNo);
+    }
+
+    @Override
+    public AdCohort getCohort() {
+        return cohort;
+    }
+
+    @Override
+    public void setCohort(AdCohort cohort) {
+        this.cohort = cohort;
     }
 
     @Override

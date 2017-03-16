@@ -1,30 +1,37 @@
 package my.edu.umk.pams.academic.offering.service;
 
+import my.edu.umk.pams.academic.common.model.AdStudyCenter;
 import my.edu.umk.pams.academic.identity.dao.AdStaffDao;
 import my.edu.umk.pams.academic.identity.dao.AdStudentDao;
 import my.edu.umk.pams.academic.identity.model.AdStaff;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.offering.dao.*;
+import my.edu.umk.pams.academic.offering.event.EnrollmentConfirmedEvent;
+import my.edu.umk.pams.academic.offering.event.EnrollmentWithdrawnEvent;
 import my.edu.umk.pams.academic.offering.model.*;
 import my.edu.umk.pams.academic.profile.model.AdAdmission;
 import my.edu.umk.pams.academic.security.service.SecurityService;
 import my.edu.umk.pams.academic.studyplan.dao.*;
-import my.edu.umk.pams.academic.studyplan.model.AdAcademicSession;
-import my.edu.umk.pams.academic.studyplan.model.AdCourse;
-import my.edu.umk.pams.academic.studyplan.model.AdEnrollmentStatus;
-import my.edu.umk.pams.academic.studyplan.model.AdProgram;
+import my.edu.umk.pams.academic.studyplan.model.*;
+import my.edu.umk.pams.academic.system.service.SystemService;
+import my.edu.umk.pams.academic.workflow.service.WorkflowConstants;
 import my.edu.umk.pams.academic.workflow.service.WorkflowService;
 import org.activiti.engine.task.Task;
+import org.apache.commons.lang.Validate;
 import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import static my.edu.umk.pams.academic.AcademicConstants.ENROLLMENT_APPLICATION_ID;
+import static my.edu.umk.pams.academic.AcademicConstants.ENROLLMENT_APPLICATION_REFERENCE_NO;
+import static my.edu.umk.pams.academic.core.AdFlowState.DRAFTED;
 
 /**
  * @author PAMS
@@ -86,10 +93,16 @@ public class OfferingServiceImpl implements OfferingService {
 	private SecurityService securityService;
 
     @Autowired
+	private SystemService systemService;
+
+    @Autowired
 	private WorkflowService workflowService;
 
 	@Autowired
 	private SessionFactory sessionFactory;
+
+	@Autowired
+	private ApplicationContext applicationContext;
 
 	// ====================================================================================================
 	// OFFERING
@@ -330,13 +343,6 @@ public class OfferingServiceImpl implements OfferingService {
     }
 
     @Override
-    public AdEnrollmentApplication findEnrollmentApplicationByTaskId(String taskId) {
-        Task task = workflowService.findTask(taskId);
-        Map<String, Object> vars = workflowService.getVariables(task.getExecutionId());
-        return findEnrollmentApplicationById((Long) vars.get(ENROLLMENT_APPLICATION_ID));
-    }
-
-    @Override
     public AdEnrollmentApplicationItem findEnrollmentApplicationItemById(Long id) {
         return enrollmentApplicationDao.findItemById(id);
     }
@@ -557,5 +563,248 @@ public class OfferingServiceImpl implements OfferingService {
 
         if (confirmedEnrollment >= capacity) return true;
         else return false;
+    }
+
+    //====================================================================================================
+    // ENROLLMENT
+    //====================================================================================================
+
+    @Override
+    public void saveEnrollment(AdEnrollment enrollment) {
+        enrollmentDao.save(enrollment, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
+
+    @Override
+    public void updateEnrollment(AdEnrollment enrollment) {
+        enrollmentDao.update(enrollment, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
+
+    @Override
+    public void deleteEnrollment(AdEnrollment enrollment) {
+        enrollmentDao.delete(enrollment, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
+
+    @Override
+    public String processEnrollmentApplication(AdEnrollmentApplication application) {
+
+	    // todo(uda): param
+	    HashMap<String,Object> param = new HashMap<String,Object>();
+        String refNo = systemService
+                .generateFormattedReferenceNo(ENROLLMENT_APPLICATION_REFERENCE_NO, param);
+        application.setReferenceNo(refNo);
+
+        enrollmentApplicationDao.save(application, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+        sessionFactory.getCurrentSession().refresh(application);
+
+        // trigger workflow
+        workflowService.processWorkflow(application, prepareVariables(application));
+        return refNo;
+
+    }
+
+    @Override
+    public void updateEnrollmentApplication(AdEnrollmentApplication application) {
+        enrollmentApplicationDao.update(application, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
+
+    @Override
+    public void cancelEnrollmentApplication(AdEnrollmentApplication application) {
+        Validate.notNull(application, "EnrollmentApplication cannot be null");
+        Validate.isTrue(DRAFTED.equals(application.getFlowdata().getState()), "EnrollmentApplication can only be cancelled in DRAFTED state");
+        enrollmentApplicationDao.update(application, securityService.getCurrentUser());
+    }
+
+    @Override
+    public void addEnrollmentApplicationItem(AdEnrollmentApplication application, AdEnrollmentApplicationItem item) {
+        Validate.notNull(application, "EnrollmentApplication cannot be null");
+        Validate.notNull(item, "Item cannot be null");
+        Validate.isTrue(DRAFTED.equals(application.getFlowdata().getState()), "EnrollmentApplication can only be configured in DRAFTED state");
+        enrollmentApplicationDao.addItem(application, item, securityService.getCurrentUser());
+    }
+
+    @Override
+    public void updateEnrollmentApplicationItem(AdEnrollmentApplication application, AdEnrollmentApplicationItem item) {
+        Validate.notNull(application, "EnrollmentApplication cannot be null");
+        Validate.notNull(item, "Item cannot be null");
+        Validate.isTrue(DRAFTED.equals(application.getFlowdata().getState()), "EnrollmentApplication can only be configured in DRAFTED state");
+        enrollmentApplicationDao.updateItem(application, item, securityService.getCurrentUser());
+    }
+
+    @Override
+    public void deleteEnrollmentApplicationItem(AdEnrollmentApplication application, AdEnrollmentApplicationItem item) {
+        Validate.notNull(application, "EnrollmentApplication cannot be null");
+        Validate.notNull(item, "Item cannot be null");
+        Validate.isTrue(DRAFTED.equals(application.getFlowdata().getState()), "EnrollmentApplication can only be configured in DRAFTED state");
+        enrollmentApplicationDao.deleteItem(application, item, securityService.getCurrentUser());
+    }
+
+    @Override
+    public AdEnrollmentApplication findEnrollmentApplicationByTaskId(String taskId) {
+        Task task = workflowService.findTask(taskId);
+        Map<String, Object> map = workflowService.getVariables(task.getExecutionId());
+        return enrollmentApplicationDao.findById((Long) map.get(ENROLLMENT_APPLICATION_ID));
+    }
+
+    @Override
+    public List<Task> findAssignedEnrollmentApplicationTasks(Integer offset, Integer limit) {
+        return workflowService.findAssignedTasks(AdEnrollmentApplication.class.getName(), offset, limit);
+    }
+
+    @Override
+    public List<Task> findCandidateEnrollmentApplicationTasks(Integer offset, Integer limit) {
+        return workflowService.findPooledTasks(AdEnrollmentApplication.class.getName(), offset, limit);
+    }
+
+    @Override
+    public Integer countAssignedEnrollmentApplicationTasks() {
+        return workflowService.countAssignedTask(AdEnrollmentApplication.class.getName());
+    }
+
+    @Override
+    public Integer countCandidateEnrollmentApplicationTasks() {
+        return workflowService.countPooledTask(AdEnrollmentApplication.class.getName());
+    }
+
+    //    public AcGroup getAdminGroup() {
+//        return groupDao.findByName();
+//    }
+
+
+    //====================================================================================================
+    // BUSINESS PROCESS
+    //====================================================================================================
+
+    @Override
+    public void serializeToEnrollment(AdEnrollmentApplication application) {
+        Validate.notNull(application, "Application cannot be null");
+        List<AdEnrollmentApplicationItem> items = findEnrollmentApplicationItems(application);
+        for (AdEnrollmentApplicationItem item : items) {
+            if (AdEnrollmentApplicationAction.ADD.equals(item.getAction()))
+                enroll(true, item.getSection(), application.getStudent(), application.getAdmission());
+            else if (AdEnrollmentApplicationAction.DROP.equals(item.getAction()))
+                withdraw(true, item.getSection(), application.getStudent(), application.getAdmission());
+            else
+                LOG.warn("Not supposed to happen");
+        }
+    }
+
+    @Override
+    public void enroll(boolean override, AdSection section, AdStudent student, AdAdmission admission) {
+        LOG.debug("enrolling student #{} into section #{}", student.getMatricNo(), section.getCanonicalCode());
+        Validate.notNull(section, "Section cannot be null");
+        Validate.notNull(student, "Student cannot be null");
+
+        if (isEnrollmentExists(section, student)) // todo(uda): throw something here OfferingException
+
+        // todo(uda): close for now
+//        if (!override && mapManager.hasExceededCredit(dasFinder.findCurrentAcademicSession(), student)) {
+//            throw new EnrollmentException("Student exceed allowed credit count");
+//        }
+
+//        if (override && mapManager.hasExceededCredit(dasFinder.findCurrentAcademicSession(), student)) {
+//            throw new EnrollmentException("Student exceed allowed credit count");
+//        }
+
+        LOG.debug("section id: {}", section.getId());
+
+        // find admission
+        AdAcademicSession session = section.getSession();
+        AdOffering offering = section.getOffering();
+
+        // create enrollment
+        AdEnrollment enrollment = new AdEnrollmentImpl();
+        enrollment.setAdmission(admission);
+        enrollment.setStudent(student);
+        enrollment.setSection(section);
+        enrollment.setStatus(AdEnrollmentStatus.CONFIRMED);
+        saveEnrollment(enrollment);
+        sessionFactory.getCurrentSession().refresh(enrollment);
+
+        // TODO: check process calendar
+        // TODO: PRA, WAJIB, BERDENDA
+        AdAcademicSession academicSession = section.getSession();
+        AdProgram program = admission.getProgram();
+        AdStudyCenter studyCenter = admission.getStudyCenter();
+        EnrollmentConfirmedEvent event = new EnrollmentConfirmedEvent();
+        applicationContext.publishEvent(event);
+
+    }
+
+    @Override
+    public void withdraw(boolean override, AdSection section, AdStudent student, AdAdmission admission) {
+        // TODO: check process calendar
+        // TODO: PRA, WAJIB, BERDENDA
+        LOG.debug("withdrawing student #{} from section #{}", student.getMatricNo(), section.getCanonicalCode());
+
+        AdEnrollment enrollment = findEnrollmentBySectionAndStudent(section, student);
+        enrollment.setStatus(AdEnrollmentStatus.WITHDRAWN);
+        updateEnrollment(enrollment);
+
+        AdAcademicSession academicSession = section.getSession();
+        AdProgram program = admission.getProgram();
+        AdStudyCenter studyCenter = admission.getStudyCenter();
+        AdCohort cohort = student.getCohort();
+        EnrollmentWithdrawnEvent event = new EnrollmentWithdrawnEvent();
+        applicationContext.publishEvent(event);
+    }
+
+
+    public void addGradebooks(AdSection section, AdEnrollment enrollment) {
+        AdOffering offering = section.getOffering();
+        AdAcademicSession session = section.getSession();
+        Validate.notNull(offering, "Offering cannot be null");
+        Validate.notNull(session, "Session cannot be null");
+
+//        List<AdAssessment> assessments = findAssessments(session, offering);
+//        LOG.debug("assessments found: " + assessments.size());
+//        for (AcAssessment assessment : assessments) {
+//            if (!assessmentService.isGradebookExists(assessment, enrollment)) {
+//                LOG.debug("section: " + section.getId());
+//                AcGradebook gradebook = new AcGradebookImpl();
+//                gradebook.setAssessment(assessment);
+//                gradebook.setEnrollment(enrollment);
+//                gradebook.setSection(section);
+//                ptkManager.saveGradebook(gradebook);
+//            }
+//        }
+    }
+
+    public void addGradebooks(AdSection section, AdAssessment assessment) {
+        AdOffering offering = section.getOffering();
+        AdAcademicSession session = section.getSession();
+        Validate.notNull(offering, "Offering cannot be null");
+        Validate.notNull(session, "Session cannot be null");
+        List<AdEnrollment> enrollments = findEnrollments(section);
+        LOG.debug("assessments found: " + enrollments.size());
+        // todo(uda): figure out assessment
+//        for (AdEnrollment enrollment : enrollments) {
+//            if (!assessmentService.isGradebookExists(assessment, enrollment)) {
+//                LOG.debug("section: " + section.getId());
+//                AdGradebook gradebook = new AdGradebookImpl();
+//                gradebook.setAssessment(assessment);
+//                gradebook.setEnrollment(enrollment);
+//                gradebook.setSection(section);
+//                saveGradebook(gradebook);
+//            }
+//        }
+    }
+
+    //====================================================================================================
+    // PRIVATE METHODS
+    //====================================================================================================
+
+    private  Map<String, Object> prepareVariables(AdEnrollmentApplication application) {
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put(ENROLLMENT_APPLICATION_ID, application.getId());
+        map.put(WorkflowConstants.USER_CREATOR, securityService.getCurrentUser().getName());
+        map.put(WorkflowConstants.REFERENCE_NO, application.getReferenceNo());
+        map.put(WorkflowConstants.REMOVE_DECISION, false);
+        map.put(WorkflowConstants.CANCEL_DECISION, false);
+        return map;
     }
 }
