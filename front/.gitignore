@@ -141,6 +141,7 @@ local.properties
 .scala_dependencies
 .worksheet
 
+
 # Node templates
 # Logs
 logs
