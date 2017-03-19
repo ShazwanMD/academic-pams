@@ -27,9 +27,9 @@ public interface AdProgram extends AdMetaObject {
 
     void setTitleMs(String titleMs);
 
-    AdProgramType getProgramType();
+    AdProgramLevel getProgramLevel();
 
-    void setProgramType(AdProgramType programType);
+    void setProgramLevel(AdProgramLevel programLevel);
 
     AdFaculty getFaculty();
 

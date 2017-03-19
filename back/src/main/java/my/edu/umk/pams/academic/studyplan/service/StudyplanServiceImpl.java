@@ -34,6 +34,9 @@ public class StudyplanServiceImpl implements StudyplanService {
     private AdFacultyDao facultyDao;
 
     @Autowired
+    private AdProgramLevelDao programLevelDao;
+
+    @Autowired
     private AdProgramDao programDao;
 
     @Autowired
@@ -465,6 +468,63 @@ public class StudyplanServiceImpl implements StudyplanService {
     @Override
     public void removeCourse(AdFaculty faculty, AdCourse course) {
         facultyDao.removeCourse(faculty, course, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
+
+    //====================================================================================================
+    // PROGRAM LEVEL
+    //====================================================================================================
+
+    @Override
+    public AdProgramLevel findProgramLevelById(Long id) {
+        return programLevelDao.findById(id);
+    }
+
+    @Override
+    public AdProgramLevel findProgramLevelByCode(String code) {
+        return programLevelDao.findByCode(code);
+    }
+
+    @Override
+    public List<AdProgramLevel> findProgramLevels() {
+        return programLevelDao.find();
+    }
+
+    @Override
+    public List<AdProgramLevel> findProgramLevels(Integer offset, Integer limit) {
+        return programLevelDao.find(offset, limit);
+    }
+
+    @Override
+    public List<AdProgramLevel> findProgramLevels(String filter, Integer offset, Integer limit) {
+        return programLevelDao.find(filter, offset, limit);
+    }
+
+    @Override
+    public Integer countProgramLevel() {
+        return programLevelDao.count();
+    }
+
+    @Override
+    public Integer countProgramLevel(String filter) {
+        return programLevelDao.count(filter);
+    }
+
+    @Override
+    public void saveProgramLevel(AdProgramLevel level) {
+        programLevelDao.save(level, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
+
+    @Override
+    public void updateProgramLevel(AdProgramLevel level) {
+        programLevelDao.update(level, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
+
+    @Override
+    public void removeProgramLevel(AdProgramLevel level) {
+        programLevelDao.remove(level, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 

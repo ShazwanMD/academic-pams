@@ -6,5 +6,4 @@ public class ThenICanPlanWhatToManageScheduleDetail {
 		// TODO Auto-generated method stub
 		
 	}
-
 }

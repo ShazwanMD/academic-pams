@@ -20,13 +20,13 @@ import javax.validation.constraints.NotNull;
  * @author PAMS
  */
 @Entity(name = "AdAdmissionApplication")
-@Table(name = "AD_ADMN_APPL")
+@Table(name = "AD_ADMN_APLN")
 public class AdAdmissionApplicationImpl implements AdAdmissionApplication {
 
     @Id
     @Column(name = "ID", nullable = false)
-    @GeneratedValue(generator = "SQ_AD_ADMN_APPL")
-    @SequenceGenerator(name = "SQ_AD_ADMN_APPL", sequenceName = "SQ_AD_ADMN_APPL", allocationSize = 1)
+    @GeneratedValue(generator = "SQ_AD_ADMN_APLN")
+    @SequenceGenerator(name = "SQ_AD_ADMN_APLN", sequenceName = "SQ_AD_ADMN_APLN", allocationSize = 1)
     private Long id;
 
     @NotNull
