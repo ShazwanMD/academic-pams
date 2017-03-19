@@ -1,7 +1,6 @@
 package my.edu.umk.pams.academic.profile;
 
 import org.junit.After;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,20 +14,21 @@ import org.springframework.transaction.annotation.Transactional;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 
 import my.edu.umk.pams.academic.config.TestAppConfiguration;
-import my.edu.umk.pams.academic.profile.stage.ThenCurrentStudentProfileInfoIsUpdated;
-import my.edu.umk.pams.academic.profile.stage.WhenIUpdateStudentProfileInfo;
-import my.edu.umk.pams.bdd.stage.GivenIAmAdministrator;
+import my.edu.umk.pams.academic.profile.stage.ThenICanUpdateMyCurrentStatus;
+import my.edu.umk.pams.academic.profile.stage.WhenIUpdateStudentActivationStatus;
+import my.edu.umk.pams.bdd.stage.GivenIAmStudent;
 
-
-/*As an PPS/MGSEB admin,
-		I want to update student profile info,
-		so that I can know current student profile info is updated.
+/*As student,
+I want to view student activation status,
+so that I know current status	
 */
+
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
-public class US_AD_PFL_2002 extends SpringScenarioTest<GivenIAmAdministrator, WhenIUpdateStudentProfileInfo, ThenCurrentStudentProfileInfoIsUpdated> {
+
+public class US_AD_PFL_1004 extends SpringScenarioTest<GivenIAmStudent, WhenIUpdateStudentActivationStatus, ThenICanUpdateMyCurrentStatus> {
 
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_PFL_2002.class);
 
@@ -40,14 +40,13 @@ public class US_AD_PFL_2002 extends SpringScenarioTest<GivenIAmAdministrator, Wh
 	public void after() {
 	}
 	
-	     @Test
-    @Rollback(true)
-    public void scenario01() {
-        given().I_am_a_PPS_administrator_in_current_academic_session();
-        when().I_update_student_profile_info();
-        then().current_student_profile_info_is_updated();
-        
-
-    }
+	@Test
+	@Rollback(true)
+	public void scenario01() {
+       given().I_am_a_student_in_current_academic_session();
+       when().I_update_student_activation_status();
+       then().I_can_update_my_current_status();
+	     }   
 
 }
+
