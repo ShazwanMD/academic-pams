@@ -50,7 +50,7 @@ public class US_AD_SPL_2002 extends
 	public void scenari2002() {
 		given().I_am_a_student_in_current_academic_session();
 		when().I_Want_To_View_The_Course_For_My_Program_$("45");
-		then().I_Can_Plan_WhaI_Can_Plan_What_To_Manage_Schedule_Detailt();
+		then().I_Can_Plan_What_To_Manage_Schedule_Detailt();
 	}
 
 }
