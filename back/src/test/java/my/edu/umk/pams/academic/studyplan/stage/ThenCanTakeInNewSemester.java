@@ -1,5 +1,7 @@
 package my.edu.umk.pams.academic.studyplan.stage;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +11,7 @@ import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 
+import my.edu.umk.pams.academic.studyplan.model.AdCourse;
 import my.edu.umk.pams.academic.studyplan.model.AdFaculty;
 import my.edu.umk.pams.academic.studyplan.model.AdProgram;
 import my.edu.umk.pams.academic.studyplan.service.StudyplanService;
@@ -16,7 +19,7 @@ import my.edu.umk.pams.academic.studyplan.service.StudyplanService;
 @JGivenStage
 public class ThenCanTakeInNewSemester  extends Stage<ThenCanTakeInNewSemester>{
 
-	private static final Logger LOG = LoggerFactory.getLogger(ThenProgramIsIntroduced.class);
+	private static final Logger LOG = LoggerFactory.getLogger(ThenCanTakeInNewSemester.class);
 
     @Autowired
     private StudyplanService studyplanService;
@@ -24,21 +27,11 @@ public class ThenCanTakeInNewSemester  extends Stage<ThenCanTakeInNewSemester>{
     @ExpectedScenarioState
     AdFaculty faculty;
     
-	public ThenCanTakeInNewSemester Can_take_in_new_semester(String programCode, String expectedFacultyCode) {
+	public ThenCanTakeInNewSemester Can_take_in_new_semester() {
 		
-		AdProgram program = studyplanService.findProgramByCode(programCode);
-        String message1 = "program code must be " + programCode;
-        Assert.isTrue(programCode.equalsIgnoreCase(program.getCode()), message1);
-        String actualFacultyCode = program.getFaculty().getCode();
-        String message2 = "program facultyCode must be " + expectedFacultyCode;
-        Assert.isTrue( expectedFacultyCode.equals(actualFacultyCode), message2);
-		
+		 List<AdProgram> programs = studyplanService.findPrograms(faculty);
+		 Assert.notEmpty(programs, "programs should not be empty");
 		return self();
-		
-		
-		
-		
+	}
 		
 	}
-
-}
