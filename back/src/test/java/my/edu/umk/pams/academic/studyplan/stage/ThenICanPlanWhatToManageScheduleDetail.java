@@ -22,7 +22,7 @@ public class ThenICanPlanWhatToManageScheduleDetail extends Stage<ThenICanPlanWh
 	    AdFaculty faculty;
 
 
-	    public ThenICanPlanWhatToManageScheduleDetail I_Can_Plan_What_To_Manage_Schedule_Detail() {
+	    public ThenICanPlanWhatToManageScheduleDetail I_can_plan_what_to_manage_schedule_detail() {
 //	        List<AdCourse> Course = studyplanService.findCourses(faculty);
 //	        Assert.notEmpty(Course, "Course should not be empty");
 	        return self();

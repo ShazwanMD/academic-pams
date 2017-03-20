@@ -26,11 +26,11 @@ public class AdCohortImpl implements AdCohort {
     @Column(name = "CLASSIFICATION", nullable = false)
     private AdAcademicClassification classification;
 
-    @ManyToOne(targetEntity = AdProgramImpl.class, optional = true)
+    @ManyToOne(targetEntity = AdProgramImpl.class)
     @JoinColumn(name = "PROGRAM_ID")
     private AdProgram program;
 
-    @ManyToOne(targetEntity = AdCurriculumImpl.class, optional = true)
+    @ManyToOne(targetEntity = AdCurriculumImpl.class)
     @JoinColumn(name = "CURRICULUM_ID")
     private AdCurriculum curriculum;
 

@@ -7,6 +7,7 @@ import my.edu.umk.pams.academic.identity.model.AdStaff;
 import my.edu.umk.pams.academic.identity.model.AdUser;
 import my.edu.umk.pams.academic.security.integration.AdUserDetails;
 import my.edu.umk.pams.academic.studyplan.model.AdAcademicSession;
+import my.edu.umk.pams.academic.studyplan.model.AdFaculty;
 import my.edu.umk.pams.academic.studyplan.service.StudyplanService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,18 +34,28 @@ public class GivenIAmPPSAdministrator extends Stage<GivenIAmPPSAdministrator> {
     @ProvidedScenarioState
     private AdStaff staff;
 
+    @ProvidedScenarioState
+    private AdFaculty faculty;
+
     public void I_am_a_PPS_administrator(){
         loginAsPPS();
     }
 
-    public void I_am_a_PPS_administrator_in_$_academic_session(String academicSessionCode){
+    public GivenIAmPPSAdministrator I_am_a_PPS_administrator_in_$_academic_session(String academicSessionCode){
         loginAsPPS();
         academicSession = studyplanService.findAcademicSessionByCode(academicSessionCode);
+        return self();
     }
 
-    public void I_am_a_PPS_administrator_in_current_academic_session(){
+    public GivenIAmPPSAdministrator I_am_a_PPS_administrator_in_current_academic_session(){
         loginAsPPS();
         academicSession = studyplanService.findCurrentAcademicSession();
+        return self();
+    }
+
+    public GivenIAmPPSAdministrator I_pick_faculty_$(String code){
+        faculty = studyplanService.findFacultyByCode(code);
+        return self();
     }
 
     private void loginAsPPS() {

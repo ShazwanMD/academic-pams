@@ -25,15 +25,6 @@ public class AdCurriculumImpl implements AdCurriculum {
     @Column(name = "ORDINAL", nullable = false)
     private Integer ordinal;
 
-    @Column(name = "TITLE_MS", nullable = false, unique = true)
-    private String titleMs;
-
-    @Column(name = "TITLE_EN", nullable = false, unique = true)
-    private String titleEn;
-
-    @Column(name = "SHORT_TITLE", nullable = false, unique = true)
-    private String shortTitle;
-
     // teras fakulti
     @Column(name = "CORE", nullable = false)
     private Integer coreCredit;
@@ -62,14 +53,14 @@ public class AdCurriculumImpl implements AdCurriculum {
     @Column(name = "OTHERS", nullable = false)
     private Integer othersCredit;
 
+    @Column(name = "TOTAL_CREDIT", nullable = false)
+    private Integer totalCredit;
+
     @Column(name = "PERIOD", nullable = false)
     private Integer period;
 
     @Column(name = "MAX_PERIOD", nullable = false)
     private Integer maxPeriod;
-
-    @Column(name = "TOTAL_CREDIT", nullable = false)
-    private Integer totalCredit;
 
     @ManyToOne(targetEntity = AdProgramImpl.class)
     @JoinColumn(name = "PROGRAM_ID")
@@ -109,36 +100,6 @@ public class AdCurriculumImpl implements AdCurriculum {
     @Override
     public void setCode(String code) {
         this.code = code;
-    }
-
-    @Override
-    public String getTitleMs() {
-        return titleMs;
-    }
-
-    @Override
-    public void setTitleMs(String titleMs) {
-        this.titleMs = titleMs;
-    }
-
-    @Override
-    public String getTitleEn() {
-        return titleEn;
-    }
-
-    @Override
-    public void setTitleEn(String titleEn) {
-        this.titleEn = titleEn;
-    }
-
-    @Override
-    public String getShortTitle() {
-        return shortTitle;
-    }
-
-    @Override
-    public void setShortTitle(String shortTitle) {
-        this.shortTitle = shortTitle;
     }
 
     @Override

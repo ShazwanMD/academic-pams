@@ -32,7 +32,7 @@ public class US_AD_SPL_0004 extends SpringScenarioTest<GivenIAmPPSAdministrator,
 
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_SPL_0004.class);
 
-    private static final String facultyCode ="45";
+    private static final String FACULTY_CODE ="FKP";
 	
 	@Before
 	public void before() {
@@ -42,13 +42,11 @@ public class US_AD_SPL_0004 extends SpringScenarioTest<GivenIAmPPSAdministrator,
 	public void after() {
 	}
 
-	
-	
 	@Test
 	@Rollback(true)
 	public void scenario0004() {
 		given().I_am_a_PPS_administrator_in_current_academic_session();
-		when().I_want_to_view_program_for_$_faculty(facultyCode);
+		when().I_want_to_view_program_for_faculty_$(FACULTY_CODE);
 		then().I_know_program_details();
 	}
 }

@@ -18,18 +18,6 @@ public interface AdCurriculum extends AdMetaObject {
 
     void setOrdinal(Integer ordinal);
 
-    String getTitleMs();
-
-    void setTitleMs(String englishTitle);
-
-    String getTitleEn();
-
-    void setTitleEn(String malayTitle);
-
-    String getShortTitle();
-
-    void setShortTitle(String shortTitle);
-
     Integer getPeriod();
 
     void setPeriod(Integer period);

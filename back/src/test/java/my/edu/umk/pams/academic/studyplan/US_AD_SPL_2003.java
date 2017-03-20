@@ -21,9 +21,9 @@ import my.edu.umk.pams.academic.studyplan.stage.WhenIWantToViewTheCourseForMyPro
 import my.edu.umk.pams.bdd.stage.GivenIAmStudent;
 
 /**
- * As a student, 
- *   i want to view the course for my program
- *       so that I can plan what to manage schedule detail.
+ * As a student,
+ * i want to view the course for my program
+ * so that I can plan what to manage schedule detail.
  *
  * @author zaida
  */
@@ -33,25 +33,23 @@ import my.edu.umk.pams.bdd.stage.GivenIAmStudent;
 @ContextConfiguration(classes = TestAppConfiguration.class)
 public class US_AD_SPL_2003 extends SpringScenarioTest<GivenIAmStudent, WhenIWantToViewTheCourseForMyProgram, ThenICanPlanWhatToManageScheduleDetail> {
 
-private static final Logger LOG = LoggerFactory.getLogger(US_AD_SPL_2003.class);
+    private static final Logger LOG = LoggerFactory.getLogger(US_AD_SPL_2003.class);
 
+    private static final String FACULTY_CODE = "FKP";
 
-private static final String FACULTY_NO = "45";
+    @Before
+    public void before() {
+    }
 
-@Before
-public void before() {
-}
+    @After
+    public void after() {
+    }
 
-@After
-public void after() {
-}
-
-@Test
-@Rollback(false)
-public void scenario2003() {
-	
-given().I_am_a_student_in_current_academic_session();
-when().I_Want_To_View_The_Course_$(FACULTY_NO);
-then().I_Can_Plan_What_To_Manage_Schedule_Detail();
-}
+    @Test
+    @Rollback(false)
+    public void scenario2003() {
+        given().I_am_a_student_in_current_academic_session();
+        when().I_want_to_view_the_course_for_faculty_$(FACULTY_CODE);
+        then().I_can_plan_what_to_manage_schedule_detail();
+    }
 }

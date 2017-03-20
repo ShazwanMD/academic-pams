@@ -1,3 +1,4 @@
+
 create table AD_ACDM_AREA (
     ID int8 not null,
     CODE varchar(255) not null,
@@ -180,6 +181,8 @@ create table AD_ADMN_APLN (
 );
 
 create table AD_APCN (
+    COHORT varchar(255),
+    MATRIC_NO varchar(255),
     ID int8 not null,
     COHORT_ID int8,
     primary key (ID)
@@ -404,9 +407,6 @@ create table AD_CRLM (
     OTHERS int4 not null,
     PERIOD int4 not null,
     REQUIRED int4 not null,
-    SHORT_TITLE varchar(255) not null,
-    TITLE_EN varchar(255) not null,
-    TITLE_MS varchar(255) not null,
     TOTAL_CREDIT int4 not null,
     PROGRAM_ID int8,
     primary key (ID)
@@ -1522,15 +1522,6 @@ alter table AD_CNTY_CODE
 
 alter table AD_CRLM
     add constraint uc_AD_CRLM_1 unique (CODE);
-
-alter table AD_CRLM
-    add constraint uc_AD_CRLM_2 unique (SHORT_TITLE);
-
-alter table AD_CRLM
-    add constraint uc_AD_CRLM_3 unique (TITLE_EN);
-
-alter table AD_CRLM
-    add constraint uc_AD_CRLM_4 unique (TITLE_MS);
 
 alter table AD_CRLM
     add constraint FKE7D900CCF5E26B71

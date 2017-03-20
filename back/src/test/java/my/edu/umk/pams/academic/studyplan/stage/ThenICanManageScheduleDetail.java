@@ -31,7 +31,7 @@ public class ThenICanManageScheduleDetail extends Stage<ThenICanManageScheduleDe
 
 	private boolean exists;
 
-	public ThenICanManageScheduleDetail I_Can_Manage_Schedule_Detail() {
+	public ThenICanManageScheduleDetail I_can_manage_schedule_detail() {
 
 		return self();
 	}

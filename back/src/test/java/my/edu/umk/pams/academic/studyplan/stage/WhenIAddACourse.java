@@ -30,7 +30,7 @@ public class WhenIAddACourse extends Stage<WhenIAddACourse> {
     @ProvidedScenarioState
     private AdFaculty faculty;
 
-    public WhenIAddACourse I_add_a_course_to_faculty_code_$a(String code) {
+    public WhenIAddACourse I_add_a_course_to_faculty_code_$(String code) {
         faculty = studyplanService.findFacultyByCode(code);
         AdCourse course = new AdCourseImpl();
         course.setCode("PRGM-1234");

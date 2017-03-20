@@ -36,10 +36,8 @@ public class ThenStudentCourseInfoIsCurrent extends Stage<ThenStudentCourseInfoI
 	@ExpectedScenarioState
 	private AdFaculty faculty;
 
-	public ThenStudentCourseInfoIsCurrent Student_course_info_is_current() {
-
-		boolean exists = studyplanService.isProgramExists("MEM", faculty);
-		
+	public ThenStudentCourseInfoIsCurrent student_course_info_is_current() {
+		boolean exists = studyplanService.isProgramExists("FIAT/PHD/0001", faculty);
 		Assert.isTrue(exists, "exists");
 		return self();
 	}

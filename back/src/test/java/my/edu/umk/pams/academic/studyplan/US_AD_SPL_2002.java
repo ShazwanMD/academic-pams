@@ -35,7 +35,7 @@ public class US_AD_SPL_2002
 	@SuppressWarnings("unused")
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_SPL_2002.class);
 
-	private static final String FACULTY_NO = "45";
+	private static final String FACULTY_CODE = "FKP";
 
 	@Before
 	public void before() {
@@ -49,7 +49,7 @@ public class US_AD_SPL_2002
 	@Rollback(true)
 	public void scenari2002() {
 		given().I_am_a_student_in_current_academic_session();
-		when().I_Want_To_View_Program_$_by_Faculty(FACULTY_NO);
-		then().I_Can_Manage_Schedule_Detail();
+		when().I_want_to_view_program_by_faculty_$(FACULTY_CODE);
+		then().I_can_manage_schedule_detail();
 	}
 }

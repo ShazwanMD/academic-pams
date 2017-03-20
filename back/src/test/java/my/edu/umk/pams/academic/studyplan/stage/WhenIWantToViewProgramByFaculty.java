@@ -42,7 +42,7 @@ public class WhenIWantToViewProgramByFaculty extends Stage<WhenIWantToViewProgra
 
 	}
 
-	public WhenIWantToViewProgramByFaculty I_Want_To_View_Program_$_by_Faculty(String code) {
+	public WhenIWantToViewProgramByFaculty I_want_to_view_program_by_faculty_$(String code) {
 
 		faculty = studyplanService.findFacultyByCode(code);
 		List<AdProgram> program = studyplanService.findPrograms(faculty);

@@ -35,7 +35,7 @@ public class ThenInformationIsCurrent extends Stage<ThenInformationIsCurrent> {
 	@ExpectedScenarioState
 	private AdFaculty faculty;
 
-	public ThenInformationIsCurrent Course_info_is_current() {
+	public ThenInformationIsCurrent course_info_is_current() {
 
 		boolean exists = studyplanService.isCourseExists("DDA2113", faculty);
 

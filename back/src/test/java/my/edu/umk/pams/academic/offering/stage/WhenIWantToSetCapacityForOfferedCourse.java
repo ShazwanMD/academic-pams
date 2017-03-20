@@ -35,11 +35,14 @@ public class WhenIWantToSetCapacityForOfferedCourse extends Stage<WhenIWantToSet
     @ExpectedScenarioState
     private AdAcademicSession academicSession;
 
-    @ExpectedScenarioState
+    @ProvidedScenarioState
     private AdOffering offering;
 
     @ProvidedScenarioState
     private AdCourse course;
+
+    @ExpectedScenarioState
+    private AdFaculty faculty;
 
     @ProvidedScenarioState
     private String code;
@@ -50,7 +53,6 @@ public class WhenIWantToSetCapacityForOfferedCourse extends Stage<WhenIWantToSet
     public WhenIWantToSetCapacityForOfferedCourse I_set_offering_capacity() {
         // offer a course
         course = studyplanService.findCourseByCode(COURSE_CODE);
-        AdFaculty faculty = course.getFaculty();
 
         // set offering properties
         code = course.getCode() + "/" + academicSession.getCode();  // course/session

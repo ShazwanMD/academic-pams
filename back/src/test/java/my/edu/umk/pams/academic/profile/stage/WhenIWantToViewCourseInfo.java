@@ -42,7 +42,7 @@ public class WhenIWantToViewCourseInfo extends Stage<WhenIWantToViewCourseInfo> 
 		AdFaculty faculty = new AdFacultyImpl();
 	}
 
-	public WhenIWantToViewCourseInfo I_view_course_$_info(String code) {
+	public WhenIWantToViewCourseInfo I_view_course_info_for_faculty_$(String code) {
 		faculty = studyplanService.findFacultyByCode(code);
 		
 		course = studyplanService.findCourses(faculty);
