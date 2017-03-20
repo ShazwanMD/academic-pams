@@ -1,6 +1,7 @@
 package my.edu.umk.pams.academic.profile.stage;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.Assert;
 
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
@@ -36,6 +37,9 @@ public class ThenInformationIsCurrent extends Stage<ThenInformationIsCurrent> {
 
 	public ThenInformationIsCurrent Course_info_is_current() {
 
+		boolean exists = studyplanService.isCourseExists("DDA2113", faculty);
+
+		Assert.isTrue(exists, "exists");
 		return self();
 	}
 }
