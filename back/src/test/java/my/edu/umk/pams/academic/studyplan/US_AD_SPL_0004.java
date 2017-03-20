@@ -16,22 +16,24 @@ import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.studyplan.stage.ThenIKnowProgramDetails;
 import my.edu.umk.pams.academic.studyplan.stage.WhenIViewProgramFaculty;
-import my.edu.umk.pams.bdd.stage.GivenIAmAdministrator;
+import my.edu.umk.pams.bdd.stage.GivenIAmPPSAdministrator;
 
 
-/*
+/**
  * As an admin academic, 
  * I want to view program faculty, 
  * so that I can know program details
- */
+ **/
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
-public class US_AD_SPL_0004 extends SpringScenarioTest<GivenIAmAdministrator, WhenIViewProgramFaculty, ThenIKnowProgramDetails> {
+public class US_AD_SPL_0004 extends SpringScenarioTest<GivenIAmPPSAdministrator, WhenIViewProgramFaculty, ThenIKnowProgramDetails> {
 
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_SPL_0004.class);
 
+    private static final String facultyCode ="45";
+	
 	@Before
 	public void before() {
 	}
@@ -40,11 +42,13 @@ public class US_AD_SPL_0004 extends SpringScenarioTest<GivenIAmAdministrator, Wh
 	public void after() {
 	}
 
+	
+	
 	@Test
 	@Rollback(true)
-	public void scenario01() {
+	public void scenario0004() {
 		given().I_am_a_PPS_administrator_in_current_academic_session();
-		when().I_view_program_faculty();
+		when().I_want_to_view_program_for_$_faculty(facultyCode);
 		then().I_know_program_details();
 	}
 }
