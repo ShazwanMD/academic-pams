@@ -127,7 +127,7 @@ create table AD_ADMN (
     primary key (ID)
 );
 
-create table AD_ADMN_APPL (
+create table AD_ADMN_APLN (
     ID int8 not null,
     AUDIT_NO varchar(255),
     CANCEL_COMMENT varchar(255) not null,
@@ -181,6 +181,7 @@ create table AD_ADMN_APPL (
 
 create table AD_APCN (
     ID int8 not null,
+    COHORT_ID int8,
     primary key (ID)
 );
 
@@ -613,6 +614,58 @@ create table AD_ENMT (
     primary key (ID)
 );
 
+create table AD_ENMT_APLN (
+    ID int8 not null,
+    AUDIT_NO varchar(255),
+    CANCEL_COMMENT varchar(255) not null,
+    DESCRIPTION varchar(255) not null,
+    AV_TS timestamp,
+    AV_ID int8,
+    CL_ID int8,
+    CL_TS timestamp,
+    CK_TS timestamp,
+    CK_ID int8,
+    DT_TS timestamp,
+    DT_ID int8,
+    EV_TS timestamp,
+    EV_ID int8,
+    PR_TS timestamp,
+    PR_ID int8,
+    PS_TS timestamp,
+    PS_ID int8,
+    RG_TS timestamp,
+    RG_ID int8,
+    RM_TS timestamp,
+    RM_ID int8,
+    RQ_TS timestamp,
+    RQ_ID int8,
+    SL_TS timestamp,
+    SL_ID int8,
+    FD_ST int4,
+    UP_TS timestamp,
+    UP_ID int8,
+    UV_TS timestamp,
+    UV_ID int8,
+    VF_TS timestamp,
+    VF_ID int8,
+    C_TS timestamp,
+    C_ID int8,
+    D_TS timestamp,
+    D_ID int8,
+    M_TS timestamp,
+    M_ID int8,
+    M_ST int4,
+    REFERENCE_NO varchar(255) not null,
+    REMOVE_COMMENT varchar(255) not null,
+    SOURCE_NO varchar(255),
+    APPLICATION_TYPE int4,
+    ADMISSION_ID int8,
+    ADVISOR_ID int8,
+    SESSION_ID int8,
+    STUDENT_ID int8,
+    primary key (ID)
+);
+
 create table AD_ENMT_APPL_ITEM (
     ID int8 not null,
     ACTION int4,
@@ -954,11 +1007,25 @@ create table AD_PRGM (
     M_TS timestamp,
     M_ID int8,
     M_ST int4,
-    PROGRAM_TYPE int4 not null,
     TITLE varchar(255) not null,
     TITLE_EN varchar(255) not null,
     TITLE_MS varchar(255) not null,
     FACULTY_ID int8,
+    LEVEL_ID int8,
+    primary key (ID)
+);
+
+create table AD_PRGM_LEVL (
+    ID int8 not null,
+    CODE varchar(255) not null,
+    DESCRIPTION varchar(255) not null,
+    C_TS timestamp,
+    C_ID int8,
+    D_TS timestamp,
+    D_ID int8,
+    M_TS timestamp,
+    M_ID int8,
+    M_ST int4,
     primary key (ID)
 );
 
@@ -1235,58 +1302,6 @@ create table AD_WTCH (
     primary key (ID)
 );
 
-create table Ad_ENMT_APPL (
-    ID int8 not null,
-    AUDIT_NO varchar(255),
-    CANCEL_COMMENT varchar(255) not null,
-    DESCRIPTION varchar(255) not null,
-    AV_TS timestamp,
-    AV_ID int8,
-    CL_ID int8,
-    CL_TS timestamp,
-    CK_TS timestamp,
-    CK_ID int8,
-    DT_TS timestamp,
-    DT_ID int8,
-    EV_TS timestamp,
-    EV_ID int8,
-    PR_TS timestamp,
-    PR_ID int8,
-    PS_TS timestamp,
-    PS_ID int8,
-    RG_TS timestamp,
-    RG_ID int8,
-    RM_TS timestamp,
-    RM_ID int8,
-    RQ_TS timestamp,
-    RQ_ID int8,
-    SL_TS timestamp,
-    SL_ID int8,
-    FD_ST int4,
-    UP_TS timestamp,
-    UP_ID int8,
-    UV_TS timestamp,
-    UV_ID int8,
-    VF_TS timestamp,
-    VF_ID int8,
-    C_TS timestamp,
-    C_ID int8,
-    D_TS timestamp,
-    D_ID int8,
-    M_TS timestamp,
-    M_ID int8,
-    M_ST int4,
-    REFERENCE_NO varchar(255) not null,
-    REMOVE_COMMENT varchar(255) not null,
-    SOURCE_NO varchar(255),
-    APPLICATION_TYPE int4,
-    ADMISSION_ID int8,
-    ADVISOR_ID int8,
-    SESSION_ID int8,
-    STUDENT_ID int8,
-    primary key (ID)
-);
-
 alter table AD_ACDM_AREA
     add constraint uc_AD_ACDM_AREA_1 unique (CODE);
 
@@ -1370,30 +1385,35 @@ alter table AD_ADMN
 foreign key (STUDY_CENTER_ID)
 references AD_STDY_CNTR;
 
-alter table AD_ADMN_APPL
-    add constraint FKD8FEDBAAAAEC85C7
+alter table AD_ADMN_APLN
+    add constraint FKD8FEDB30AAEC85C7
 foreign key (ADVISOR_ID)
 references AD_STAF;
 
-alter table AD_ADMN_APPL
-    add constraint FKD8FEDBAAF5E26B71
+alter table AD_ADMN_APLN
+    add constraint FKD8FEDB30F5E26B71
 foreign key (PROGRAM_ID)
 references AD_PRGM;
 
-alter table AD_ADMN_APPL
-    add constraint FKD8FEDBAAEE2B2AAA
+alter table AD_ADMN_APLN
+    add constraint FKD8FEDB30EE2B2AAA
 foreign key (SESSION_ID)
 references AD_ACDM_SESN;
 
-alter table AD_ADMN_APPL
-    add constraint FKD8FEDBAA54FCB007
+alter table AD_ADMN_APLN
+    add constraint FKD8FEDB3054FCB007
 foreign key (STUDENT_ID)
 references AD_APCN;
 
-alter table AD_ADMN_APPL
-    add constraint FKD8FEDBAA680A6167
+alter table AD_ADMN_APLN
+    add constraint FKD8FEDB30680A6167
 foreign key (STUDY_CENTER_ID)
 references AD_STDY_CNTR;
+
+alter table AD_APCN
+    add constraint FKE7D80F76EB892683
+foreign key (COHORT_ID)
+references AD_CHRT;
 
 alter table AD_APCN
     add constraint FKE7D80F767BECED7D
@@ -1401,7 +1421,7 @@ foreign key (ID)
 references AD_ACTR;
 
 alter table AD_APMT
-    add constraint FKE7D810B2F3D96B51
+    add constraint FKE7D810B2B41E3E0F
 foreign key (SECTION_ID)
 references AD_SCTN;
 
@@ -1583,7 +1603,7 @@ foreign key (GRADE_CODE_ID)
 references AD_GRDE_CODE;
 
 alter table AD_ENMT
-    add constraint FKE7D9DAACF3D96B51
+    add constraint FKE7D9DAACB41E3E0F
 foreign key (SECTION_ID)
 references AD_SCTN;
 
@@ -1592,13 +1612,33 @@ alter table AD_ENMT
 foreign key (STUDENT_ID)
 references AD_APCN;
 
+alter table AD_ENMT_APLN
+    add constraint FK43196BA472AE81C8
+foreign key (ADMISSION_ID)
+references AD_ADMN;
+
+alter table AD_ENMT_APLN
+    add constraint FK43196BA4AAEC85C7
+foreign key (ADVISOR_ID)
+references AD_STAF;
+
+alter table AD_ENMT_APLN
+    add constraint FK43196BA4EE2B2AAA
+foreign key (SESSION_ID)
+references AD_ACDM_SESN;
+
+alter table AD_ENMT_APLN
+    add constraint FK43196BA454FCB007
+foreign key (STUDENT_ID)
+references AD_APCN;
+
 alter table AD_ENMT_APPL_ITEM
     add constraint FK4878A294BE2A004B
 foreign key (APPLICATION_ID)
-references Ad_ENMT_APPL;
+references AD_ENMT_APLN;
 
 alter table AD_ENMT_APPL_ITEM
-    add constraint FK4878A294F3D96B51
+    add constraint FK4878A294B41E3E0F
 foreign key (SECTION_ID)
 references AD_SCTN;
 
@@ -1615,7 +1655,7 @@ alter table AD_GNDR_CODE
     add constraint uc_AD_GNDR_CODE_1 unique (CODE);
 
 alter table AD_GRBK
-    add constraint FKE7DAD11011072C63
+    add constraint FKE7DAD1109A0F78E5
 foreign key (ASSESSMENT_ID)
 references AD_ASMT;
 
@@ -1625,7 +1665,7 @@ foreign key (ENROLLMENT_ID)
 references AD_ENMT;
 
 alter table AD_GRBK
-    add constraint FKE7DAD110F3D96B51
+    add constraint FKE7DAD110B41E3E0F
 foreign key (SECTION_ID)
 references AD_SCTN;
 
@@ -1721,6 +1761,14 @@ alter table AD_PRGM
 foreign key (FACULTY_ID)
 references AD_FCTY;
 
+alter table AD_PRGM
+    add constraint FKE7DEE904A47D3BBF
+foreign key (LEVEL_ID)
+references AD_PRGM_LEVL;
+
+alter table AD_PRGM_LEVL
+    add constraint uc_AD_PRGM_LEVL_1 unique (CODE);
+
 alter table AD_RACE_CODE
     add constraint uc_AD_RACE_CODE_1 unique (CODE);
 
@@ -1763,7 +1811,7 @@ foreign key (FACULTY_ID)
 references AD_FCTY;
 
 alter table AD_SCTN_PLCY
-    add constraint FK503FDCABF3D96B51
+    add constraint FK503FDCABB41E3E0F
 foreign key (SECTION_ID)
 references AD_SCTN;
 
@@ -1830,26 +1878,6 @@ references AD_PCPL;
 alter table AD_VENU_CODE
     add constraint uc_AD_VENU_CODE_1 unique (CODE);
 
-alter table Ad_ENMT_APPL
-    add constraint FKDFAFC43E72AE81C8
-foreign key (ADMISSION_ID)
-references AD_ADMN;
-
-alter table Ad_ENMT_APPL
-    add constraint FKDFAFC43EAAEC85C7
-foreign key (ADVISOR_ID)
-references AD_STAF;
-
-alter table Ad_ENMT_APPL
-    add constraint FKDFAFC43EEE2B2AAA
-foreign key (SESSION_ID)
-references AD_ACDM_SESN;
-
-alter table Ad_ENMT_APPL
-    add constraint FKDFAFC43E54FCB007
-foreign key (STUDENT_ID)
-references AD_APCN;
-
 create sequence SQ_AD_ACDM_AREA;
 
 create sequence SQ_AD_ACDM_CLDR;
@@ -1864,7 +1892,7 @@ create sequence SQ_AD_ADDR;
 
 create sequence SQ_AD_ADMN;
 
-create sequence SQ_AD_ADMN_APPL;
+create sequence SQ_AD_ADMN_APLN;
 
 create sequence SQ_AD_APMT;
 
@@ -1960,6 +1988,8 @@ create sequence SQ_AD_PRCS_CLDR;
 
 create sequence SQ_AD_PRGM;
 
+create sequence SQ_AD_PRGM_LEVL;
+
 create sequence SQ_AD_RACE_CODE;
 
 create sequence SQ_AD_RFRN_NO;
@@ -1992,6 +2022,6 @@ create sequence SQ_AD_VENU_CODE;
 
 create sequence SQ_AD_WTCH;
 
-create sequence SQ_Ad_ENMT_APPL;
+create sequence SQ_Ad_ENMT_APLN;
 
 create sequence SQ_CNG_SBJT;

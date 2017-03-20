@@ -33,8 +33,9 @@ public class AdProgramImpl implements AdProgram {
     @Column(name = "TITLE_EN", nullable = false)
     private String titleEn;
 
-    @Column(name = "PROGRAM_TYPE", nullable = false)
-    private AdProgramType programType = AdProgramType.BACHELOR;
+    @ManyToOne(targetEntity = AdProgramLevelImpl.class)
+    @JoinColumn(name = "LEVEL_ID")
+    private AdProgramLevel programLevel;
 
     @ManyToOne(targetEntity = AdFacultyImpl.class)
     @JoinColumn(name = "FACULTY_ID")
@@ -96,13 +97,13 @@ public class AdProgramImpl implements AdProgram {
     }
 
     @Override
-    public AdProgramType getProgramType() {
-        return programType;
+    public AdProgramLevel getProgramLevel() {
+        return programLevel;
     }
 
     @Override
-    public void setProgramType(AdProgramType programType) {
-        this.programType = programType;
+    public void setProgramLevel(AdProgramLevel programLevel) {
+        this.programLevel = programLevel;
     }
 
     @Override

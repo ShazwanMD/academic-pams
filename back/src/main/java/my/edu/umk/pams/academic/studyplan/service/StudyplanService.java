@@ -173,6 +173,31 @@ public interface StudyplanService {
     void removeCourse(AdFaculty faculty, AdCourse course);
 
     //====================================================================================================
+    // INTAKE LEVEL
+    //====================================================================================================
+
+    AdProgramLevel findProgramLevelById(Long id);
+
+    AdProgramLevel findProgramLevelByCode(String code);
+
+    List<AdProgramLevel> findProgramLevels();
+
+    List<AdProgramLevel> findProgramLevels(Integer offset, Integer limit);
+
+    List<AdProgramLevel> findProgramLevels(String filter, Integer offset, Integer limit);
+
+    Integer countProgramLevel();
+
+    Integer countProgramLevel(String filter);
+
+    void saveProgramLevel(AdProgramLevel level);
+
+    void updateProgramLevel(AdProgramLevel level);
+
+    void removeProgramLevel(AdProgramLevel level);
+
+    
+    //====================================================================================================
     // PROGRAM
     //====================================================================================================
 

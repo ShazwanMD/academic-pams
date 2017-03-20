@@ -20,13 +20,13 @@ import java.util.List;
  * @author PAMS
  */
 @Entity(name = "AdEnrollmentApplication")
-@Table(name = "Ad_ENMT_APPL")
+@Table(name = "AD_ENMT_APLN")
 public class AdEnrollmentApplicationImpl implements AdEnrollmentApplication {
 
     @Id
     @Column(name = "ID", nullable = false)
-    @GeneratedValue(generator = "SQ_Ad_ENMT_APPL")
-    @SequenceGenerator(name = "SQ_Ad_ENMT_APPL", sequenceName = "SQ_Ad_ENMT_APPL", allocationSize = 1)
+    @GeneratedValue(generator = "SQ_Ad_ENMT_APLN")
+    @SequenceGenerator(name = "SQ_Ad_ENMT_APLN", sequenceName = "SQ_Ad_ENMT_APLN", allocationSize = 1)
     private Long id;
 
     @NotNull
