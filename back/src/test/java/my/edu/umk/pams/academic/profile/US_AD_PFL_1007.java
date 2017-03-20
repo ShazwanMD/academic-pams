@@ -1,4 +1,4 @@
-package my.edu.umk.pams.academic.studyplan;
+package my.edu.umk.pams.academic.profile;
 
 import org.junit.After;
 import org.junit.Before;
@@ -14,28 +14,26 @@ import org.springframework.transaction.annotation.Transactional;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 
 import my.edu.umk.pams.academic.config.TestAppConfiguration;
-import my.edu.umk.pams.academic.studyplan.stage.ThenICanManageScheduleDetail;
-import my.edu.umk.pams.academic.studyplan.stage.WhenIWantToViewProgramByFaculty;
+import my.edu.umk.pams.academic.profile.stage.ThenProgramInfoIsCurrent;
+import my.edu.umk.pams.academic.profile.stage.WhenIWantToViewProgramInfo;
 import my.edu.umk.pams.bdd.stage.GivenIAmStudent;
 
 /**
- * As a student, i want to view the course for my program so that I can plan
- * what to manage schedule detail.
- *
- * @author ain
- */
+
+As a student, 
+	I want to view programme info, 
+		so that I can view my registered programme 
+**/
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
+public class US_AD_PFL_1007 extends SpringScenarioTest<GivenIAmStudent, WhenIWantToViewProgramInfo, ThenProgramInfoIsCurrent> {
 
-public class US_AD_SPL_2002 extends
-		SpringScenarioTest<GivenIAmStudent, WhenIWantToViewProgramByFaculty, ThenICanManageScheduleDetail> {
-
-	@SuppressWarnings("unused")
-	private static final Logger LOG = LoggerFactory.getLogger(US_AD_SPL_2002.class);
-
-	private static final String FACULTY_NO = "21";
+	private static final Logger LOG = LoggerFactory.getLogger(US_AD_PFL_1007.class);
+	
+	private static final String FACULTY_NO = "45";	
+	
 	
 	@Before
 	public void before() {
@@ -44,12 +42,15 @@ public class US_AD_SPL_2002 extends
 	@After
 	public void after() {
 	}
-
+	
 	@Test
 	@Rollback(true)
-	public void scenari2002() {
+	public void scenario1007(){
+		
 		given().I_am_a_student_in_current_academic_session();
-		when().I_Want_To_View_Program_by_Faculty_$("21");
-		then().I_Can_Manage_Schedule_Detail();
+		when(). I_view_program_$_info(FACULTY_NO);
+		then().Program_info_is_current();
 	}
+	
+	
 }
