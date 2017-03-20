@@ -19,7 +19,6 @@ import my.edu.umk.pams.academic.profile.stage.ThenCurrentStudentProfileInfoIsUpd
 import my.edu.umk.pams.academic.profile.stage.WhenIUpdateStudentProfileInfo;
 import my.edu.umk.pams.bdd.stage.GivenIAmAdministrator;
 
-
 /*As an PPS/MGSEB admin,
 		I want to update student profile info,
 		so that I can know current student profile info is updated.
@@ -28,7 +27,8 @@ import my.edu.umk.pams.bdd.stage.GivenIAmAdministrator;
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
-public class US_AD_PFL_2002 extends SpringScenarioTest<GivenIAmAdministrator, WhenIUpdateStudentProfileInfo, ThenCurrentStudentProfileInfoIsUpdated> {
+public class US_AD_PFL_2002 extends
+		SpringScenarioTest<GivenIAmAdministrator, WhenIUpdateStudentProfileInfo, ThenCurrentStudentProfileInfoIsUpdated> {
 
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_PFL_2002.class);
 
@@ -39,15 +39,14 @@ public class US_AD_PFL_2002 extends SpringScenarioTest<GivenIAmAdministrator, Wh
 	@After
 	public void after() {
 	}
-	
-	     @Test
-    @Rollback(true)
-    public void scenario01() {
-        given().I_am_a_PPS_administrator_in_current_academic_session();
-        when().I_update_student_profile_info();
-        then().current_student_profile_info_is_updated();
-        
 
-    }
+	@Test
+	@Rollback(true)
+	public void scenario01() {
+		given().I_am_a_PPS_administrator_in_current_academic_session();
+		when().I_update_student_profile_info();
+		then().current_student_profile_info_is_updated();
+
+	}
 
 }
