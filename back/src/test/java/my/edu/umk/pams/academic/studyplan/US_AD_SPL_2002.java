@@ -29,14 +29,14 @@ import my.edu.umk.pams.bdd.stage.GivenIAmStudent;
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 
-public class US_AD_SPL_2002 extends
-		SpringScenarioTest<GivenIAmStudent, WhenIWantToViewProgramByFaculty, ThenICanManageScheduleDetail> {
+public class US_AD_SPL_2002
+		extends SpringScenarioTest<GivenIAmStudent, WhenIWantToViewProgramByFaculty, ThenICanManageScheduleDetail> {
 
 	@SuppressWarnings("unused")
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_SPL_2002.class);
 
-	private static final String FACULTY_NO = "21";
-	
+	private static final String FACULTY_NO = "45";
+
 	@Before
 	public void before() {
 	}
@@ -49,7 +49,7 @@ public class US_AD_SPL_2002 extends
 	@Rollback(true)
 	public void scenari2002() {
 		given().I_am_a_student_in_current_academic_session();
-		when().I_Want_To_View_Program_by_Faculty_$("21");
+		when().I_Want_To_View_Program_$_by_Faculty(FACULTY_NO);
 		then().I_Can_Manage_Schedule_Detail();
 	}
 }

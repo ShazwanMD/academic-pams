@@ -1,6 +1,7 @@
 package my.edu.umk.pams.academic.profile.stage;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.Assert;
 
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
@@ -29,7 +30,7 @@ public class ThenCurrentStudentProfileUpdate extends Stage<ThenCurrentStudentPro
 	
 	public ThenCurrentStudentProfileUpdate Current_student_profile_is_updated(){
 		
-
+		Assert.isNull(actor, "shazwan");
 		
 		
 		return self();

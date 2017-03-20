@@ -15,7 +15,8 @@ import my.edu.umk.pams.academic.studyplan.model.AdFaculty;
 import my.edu.umk.pams.academic.studyplan.service.StudyplanService;
 
 @JGivenStage
-public class ThenInformationIsCurrent extends Stage<ThenInformationIsCurrent> {
+public class ThenStudentCourseInfoIsCurrent extends Stage<ThenStudentCourseInfoIsCurrent> {
+
 
 	@Autowired
 	private ProfileService profileService;
@@ -35,10 +36,10 @@ public class ThenInformationIsCurrent extends Stage<ThenInformationIsCurrent> {
 	@ExpectedScenarioState
 	private AdFaculty faculty;
 
-	public ThenInformationIsCurrent Course_info_is_current() {
+	public ThenStudentCourseInfoIsCurrent Student_course_info_is_current() {
 
-		boolean exists = studyplanService.isCourseExists("DDA2113", faculty);
-
+		boolean exists = studyplanService.isProgramExists("MEM", faculty);
+		
 		Assert.isTrue(exists, "exists");
 		return self();
 	}
