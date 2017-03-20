@@ -9,11 +9,13 @@ import com.tngtech.jgiven.integration.spring.JGivenStage;
 
 import my.edu.umk.pams.academic.common.service.CommonService;
 import my.edu.umk.pams.academic.identity.model.AdActor;
+import my.edu.umk.pams.academic.identity.model.AdActorImpl;
 import my.edu.umk.pams.academic.identity.model.AdActorType;
 import my.edu.umk.pams.academic.identity.model.AdStaff;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.identity.model.AdStudentImpl;
 import my.edu.umk.pams.academic.identity.service.IdentityService;
+import my.edu.umk.pams.academic.studyplan.service.StudyplanService;
 
 @JGivenStage
 public class WhenIAddStudentProfile extends Stage<WhenIAddStudentProfile> {
@@ -23,6 +25,10 @@ public class WhenIAddStudentProfile extends Stage<WhenIAddStudentProfile> {
 
 	@Autowired
 	private CommonService commonService;
+	
+
+	@Autowired
+	private StudyplanService studyplanService;
 
 	@ExpectedScenarioState
 	private AdStudent student;
@@ -30,17 +36,26 @@ public class WhenIAddStudentProfile extends Stage<WhenIAddStudentProfile> {
 	@ExpectedScenarioState
 	private AdStaff staff;
 
-	@ProvidedScenarioState
+	@ExpectedScenarioState
 	private AdActor actor;
+	
+	
 
 	public WhenIAddStudentProfile I_add_student_profile() {
+	
 		AdStudent student = new AdStudentImpl();
-
-		student.setActorType(AdActorType.STUDENT);
-		student.setIdentityNo("11111");
-		student.setName("STUDENT ONE");
-
+		
+		student.setName("sam");
+		student.setPhone("0179282817");
+		student.setIdentityNo("01607B");
+		student.setFax("079449205");
+		student.setEmail("shazwan.md@umk.edu.my");
+		student.setMobile("0123");
+		student.setMatricNo("1111");
+	
+		
 		identityService.saveStudent(student);
+		
 
 		return self();
 	}

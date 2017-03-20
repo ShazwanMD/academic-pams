@@ -21,6 +21,12 @@ public class AdStudentImpl extends AdActorImpl implements AdStudent {
     @OneToMany(targetEntity = AdAddressImpl.class, mappedBy = "student", fetch = FetchType.LAZY)
     private List<AdAddress> addresses;
 
+    @Column(name = "MATRIC_NO")
+    private String matricNo;
+    
+    @Column(name = "COHORT")
+    private String Cohort;
+    
     @Override
     public String getMatricNo() {
         return getIdentityNo();

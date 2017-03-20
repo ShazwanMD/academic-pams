@@ -25,6 +25,7 @@ public class US_AD_PFL_2001 extends SpringScenarioTest<GivenIAmPPSAdministrator,
 
 	   private static final Logger LOG = LoggerFactory.getLogger(US_AD_PFL_2001.class);
 
+
 	    @Before
 	    public void before() {
 	    }
@@ -34,7 +35,7 @@ public class US_AD_PFL_2001 extends SpringScenarioTest<GivenIAmPPSAdministrator,
 	    }
 
 	    @Test
-	    @Rollback(true)
+	    @Rollback(false)
 	    public void scenario1() {
 	        given().I_am_a_PPS_administrator_in_current_academic_session();
 	        when().I_add_student_profile();
