@@ -14,16 +14,15 @@ import org.springframework.transaction.annotation.Transactional;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 
 import my.edu.umk.pams.academic.config.TestAppConfiguration;
-import my.edu.umk.pams.academic.studyplan.stage.ThenICanPlanWhatToManageScheduleDetail;
-import my.edu.umk.pams.academic.studyplan.stage.WhenIWantToViewTheCourseForMyProgram;
+import my.edu.umk.pams.academic.studyplan.stage.ThenICanManageScheduleDetail;
+import my.edu.umk.pams.academic.studyplan.stage.WhenIWantToViewProgramByFaculty;
 import my.edu.umk.pams.bdd.stage.GivenIAmStudent;
 
 /**
- * As a student, 
- *   i want to view the course for my program
- *       so that I can plan what to manage schedule detail.
+ * As a student, i want to view the course for my program so that I can plan
+ * what to manage schedule detail.
  *
- * @author zaida
+ * @author ain
  */
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -31,10 +30,13 @@ import my.edu.umk.pams.bdd.stage.GivenIAmStudent;
 @ContextConfiguration(classes = TestAppConfiguration.class)
 
 public class US_AD_SPL_2002 extends
-		SpringScenarioTest<GivenIAmStudent, WhenIWantToViewTheCourseForMyProgram, ThenICanPlanWhatToManageScheduleDetail> {
+		SpringScenarioTest<GivenIAmStudent, WhenIWantToViewProgramByFaculty, ThenICanManageScheduleDetail> {
+
 	@SuppressWarnings("unused")
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_SPL_2002.class);
 
+	private static final String FACULTY_NO = "21";
+	
 	@Before
 	public void before() {
 	}
@@ -47,7 +49,7 @@ public class US_AD_SPL_2002 extends
 	@Rollback(true)
 	public void scenari2002() {
 		given().I_am_a_student_in_current_academic_session();
-		when().I_Want_To_View_The_Course_For_My_Program_$("45");
-		then().I_Can_Plan_What_To_Manage_Schedule_Detail();
+		when().I_Want_To_View_Program_by_Faculty_$("21");
+		then().I_Can_Manage_Schedule_Detail();
 	}
 }
