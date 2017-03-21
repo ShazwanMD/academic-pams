@@ -14,23 +14,23 @@ import org.springframework.transaction.annotation.Transactional;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 
 import my.edu.umk.pams.academic.config.TestAppConfiguration;
-import my.edu.umk.pams.academic.profile.stage.ThenICanUpdateMyCurrentStatus;
-import my.edu.umk.pams.academic.profile.stage.WhenIUpdateStudentActivationStatus;
+import my.edu.umk.pams.academic.profile.stage.ThenMyContactNumberIsUpdated;
+import my.edu.umk.pams.academic.profile.stage.WhenIUpdateMyContactNumber;
 import my.edu.umk.pams.bdd.stage.GivenIAmStudent;
 
-/*As student,
-I want to view student activation status,
-so that I know current status	
-*/
+/*As a student, 
+ * I want to update my contact number, 
+ * so that my contact number on file is current
+ */
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 
-public class US_AD_PFL_1004 extends SpringScenarioTest<GivenIAmStudent, WhenIUpdateStudentActivationStatus, ThenICanUpdateMyCurrentStatus> {
+public class US_AD_PFL_1004 extends SpringScenarioTest<GivenIAmStudent, WhenIUpdateMyContactNumber, ThenMyContactNumberIsUpdated> {
 
-	private static final Logger LOG = LoggerFactory.getLogger(US_AD_PFL_2002.class);
+	private static final Logger LOG = LoggerFactory.getLogger(US_AD_PFL_1004.class);
 
 	@Before
 	public void before() {
@@ -39,13 +39,14 @@ public class US_AD_PFL_1004 extends SpringScenarioTest<GivenIAmStudent, WhenIUpd
 	@After
 	public void after() {
 	}
+
 	
 	@Test
-	@Rollback(true)
-	public void scenario01() {
+	@Rollback(false)
+	public void scenario1004() {
        given().I_am_a_student_in_current_academic_session();
-       when().I_update_student_activation_status();
-       then().I_can_update_my_current_status();
+       when().I_update_my_contact_number();
+       then().my_contact_number_is_updated();
 	     }   
 
 }
