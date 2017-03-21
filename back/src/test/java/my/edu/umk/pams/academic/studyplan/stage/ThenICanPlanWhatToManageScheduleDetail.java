@@ -1,9 +1,30 @@
 package my.edu.umk.pams.academic.studyplan.stage;
 
-public class ThenICanPlanWhatToManageScheduleDetail {
+import org.springframework.beans.factory.annotation.Autowired;
+import com.tngtech.jgiven.Stage;
+import com.tngtech.jgiven.annotation.ExpectedScenarioState;
+import com.tngtech.jgiven.integration.spring.JGivenStage;
 
-	public void I_Can_Plan_What_To_Manage_Schedule_Detail() {
-		// TODO Auto-generated method stub
-		
-	}
+import my.edu.umk.pams.academic.studyplan.model.AdCourse;
+import my.edu.umk.pams.academic.studyplan.model.AdFaculty;
+import my.edu.umk.pams.academic.studyplan.service.StudyplanService;
+
+@JGivenStage
+public class ThenICanPlanWhatToManageScheduleDetail extends Stage<ThenICanPlanWhatToManageScheduleDetail>{
+	
+	 @Autowired
+	    private StudyplanService studyplanService;
+
+	    @ExpectedScenarioState
+	    AdCourse course;
+	    
+	    @ExpectedScenarioState
+	    AdFaculty faculty;
+
+
+	    public ThenICanPlanWhatToManageScheduleDetail I_can_plan_what_to_manage_schedule_detail() {
+//	        List<AdCourse> Course = studyplanService.findCourses(faculty);
+//	        Assert.notEmpty(Course, "Course should not be empty");
+	        return self();
+	    }
 }

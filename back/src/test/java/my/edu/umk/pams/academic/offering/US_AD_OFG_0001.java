@@ -26,6 +26,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class US_AD_OFG_0001 extends SpringScenarioTest<GivenIAmPPSAdministrator, WhenIOfferACourse, ThenTheOfferingIsReadyForSetup> {
 
     private static final Logger LOG = LoggerFactory.getLogger(US_AD_SPL_0001.class);
+    public static final String FACULTY_CODE = "FKP";
 
     @Before
     public void before() {
@@ -38,7 +39,8 @@ public class US_AD_OFG_0001 extends SpringScenarioTest<GivenIAmPPSAdministrator,
     @Test
     @Rollback(true)
     public void scenario1() {
-        given().I_am_a_PPS_administrator_in_current_academic_session();
+        given().I_am_a_PPS_administrator_in_current_academic_session()
+                .and().I_pick_faculty_$(FACULTY_CODE);
         when().I_offer_a_course();
         then().the_course_is_ready_for_setup();
     }

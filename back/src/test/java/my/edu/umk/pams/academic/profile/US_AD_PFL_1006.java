@@ -28,10 +28,9 @@ As a student,
 @ContextConfiguration(classes = TestAppConfiguration.class)
 public class US_AD_PFL_1006 extends SpringScenarioTest<GivenIAmStudent, WhenIWantToViewCourseInfo, ThenInformationIsCurrent> {
 
-	
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_PFL_1006.class);
 	
-	private static final String FACULTY_NO = "45";
+	private static final String FACULTY_CODE = "FKP";
 	
 	@Before
 	public void before() {
@@ -46,8 +45,8 @@ public class US_AD_PFL_1006 extends SpringScenarioTest<GivenIAmStudent, WhenIWan
 	public void scenario1006(){
 		
 		given().I_am_a_student_in_current_academic_session();
-		when(). I_view_course_$_info(FACULTY_NO);
-		then().Course_info_is_current();
+		when().I_view_course_info_for_faculty_$(FACULTY_CODE);
+		then().course_info_is_current();
 	}
 	
 }

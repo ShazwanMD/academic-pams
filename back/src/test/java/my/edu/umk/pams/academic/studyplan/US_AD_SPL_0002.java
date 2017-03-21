@@ -29,6 +29,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class US_AD_SPL_0002 extends SpringScenarioTest<GivenIAmPPSAdministrator, WhenIAddACourse, ThenFacultyHasCourse> {
 
     private static final Logger LOG = LoggerFactory.getLogger(US_AD_SPL_0002.class);
+    public static final String FACULTY_CODE = "FKP";
 
     @Before
     public void before() {
@@ -42,7 +43,7 @@ public class US_AD_SPL_0002 extends SpringScenarioTest<GivenIAmPPSAdministrator,
     @Rollback(true)
     public void scenario1 () {
         given().I_am_a_PPS_administrator();
-        when().I_add_a_course_to_faculty_code_$a("45");
+        when().I_add_a_course_to_faculty_code_$(FACULTY_CODE);
         then().faculty_has_courses();
     }
 }

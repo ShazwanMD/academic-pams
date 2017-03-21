@@ -41,7 +41,7 @@ public class WhenIWantToViewProgramInfo extends Stage<WhenIWantToViewProgramInfo
 		AdProgram program = new AdProgramImpl();
 	}
 
-	public  WhenIWantToViewProgramInfo I_view_program_$_info(String code ) {
+	public  WhenIWantToViewProgramInfo I_view_program_info_for_faculty_$(String code ) {
 	
 		faculty = studyplanService.findFacultyByCode(code);
 		List<AdProgram> program = studyplanService.findPrograms(faculty);

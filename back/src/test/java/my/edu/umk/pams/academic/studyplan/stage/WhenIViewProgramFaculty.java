@@ -10,46 +10,42 @@ import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 
-import my.edu.umk.pams.academic.identity.model.AdStudent;
-import my.edu.umk.pams.academic.studyplan.model.AdCourse;
 import my.edu.umk.pams.academic.studyplan.model.AdFaculty;
 import my.edu.umk.pams.academic.studyplan.model.AdFacultyImpl;
+import my.edu.umk.pams.academic.studyplan.model.AdProgram;
 import my.edu.umk.pams.academic.studyplan.service.StudyplanService;
 
+
 @JGivenStage
-public class WhenIWantToViewTheCourseForMyProgram extends Stage<WhenIWantToViewTheCourseForMyProgram> {
+public class WhenIViewProgramFaculty extends Stage<WhenIViewProgramFaculty> {
 
-	private static final Logger LOG = LoggerFactory.getLogger(WhenIWantToViewTheCourseForMyProgram.class);
-
+	private static final Logger LOG = LoggerFactory.getLogger(WhenIViewProgramFaculty.class);
+	
 	@Autowired
 	private StudyplanService studyplanService;
-
-	@ExpectedScenarioState
-	private AdStudent student;
-
-	@ExpectedScenarioState
-	private List<AdCourse> course;
-
-	@ExpectedScenarioState
-	private String code;
-
+	
 	@ExpectedScenarioState
 	private AdFaculty faculty;
 
-	public WhenIWantToViewTheCourseForMyProgram() {
+	@ExpectedScenarioState
+	private List<AdProgram> program;
+
+	
+	public WhenIViewProgramFaculty(){
 		AdFaculty faculty = new AdFacultyImpl();
 	}
-
-	public WhenIWantToViewTheCourseForMyProgram I_want_to_view_the_course_for_faculty_$(String code) {
-
+	
+	public WhenIViewProgramFaculty I_want_to_view_program_for_faculty_$(String code) {
+		
 		faculty = studyplanService.findFacultyByCode(code);
-
-		course = studyplanService.findCourses(faculty);
-
-		for (AdCourse course : course) {
-			LOG.debug(course.getTitle());
+		
+		program = studyplanService.findPrograms(faculty);
+		
+		for (AdProgram program : program) {
+			LOG.debug(program.getTitle());
 		}
 		return self();
+				
 	}
 
 }

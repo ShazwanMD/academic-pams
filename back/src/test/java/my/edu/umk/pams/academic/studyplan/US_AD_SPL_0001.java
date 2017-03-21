@@ -38,7 +38,7 @@ public class US_AD_SPL_0001 extends SpringScenarioTest<GivenIAmPPSAdministrator,
     public void after() {
     }
 
-    private String FACULTY_CODE = "45";
+    private String FACULTY_CODE = "FKP";
 
     @ProvidedScenarioState
     private String PROGRAM_CODE = "PRGM-1234";

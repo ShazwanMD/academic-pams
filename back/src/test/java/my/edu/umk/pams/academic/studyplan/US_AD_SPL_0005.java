@@ -19,34 +19,34 @@ import my.edu.umk.pams.academic.studyplan.stage.WhenIAdACohort;
 import my.edu.umk.pams.bdd.stage.GivenIAmPPSAdministrator;
 
 /**
- *  As an admin academic,
- *  	i want to set up cohort for a faculty, 
- *  		so that i can group student in the schedule by intake code.
- * 
- *     
+ * As an admin academic,
+ * i want to set up cohort for a faculty,
+ * so that i can group student in the schedule by intake code.
+ *
  * @author PAMS
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 public class US_AD_SPL_0005 extends SpringScenarioTest<GivenIAmPPSAdministrator, WhenIAdACohort, ThenGroupScheduleByIntakeCode> {
-	
-	private static final Logger LOG = LoggerFactory.getLogger(US_AD_SPL_0005.class);
 
-	    @Before
-	    public void before() {
-	    }
+    private static final Logger LOG = LoggerFactory.getLogger(US_AD_SPL_0005.class);
+    public static final String PROGRAM_CODE = "FIAT/PHD/0001";
 
-	    @After
-	    public void after() {
-	    }
+    @Before
+    public void before() {
+    }
 
-	    @Test
-	    @Rollback(true)
-	    public void scenario1() {
-	        given().I_am_a_PPS_administrator();
-	        when().I_want_to_set_up_cohort_for_$_faculty("45");
-	        then().group_students_in_the_schedule_by_intake_code();
-	    }
+    @After
+    public void after() {
+    }
+
+    @Test
+    @Rollback(true)
+    public void scenario1() {
+        given().I_am_a_PPS_administrator();
+        when().I_want_to_set_up_cohort_for_$_program(PROGRAM_CODE);
+        then().group_students_in_the_schedule_by_intake_code();
+    }
 
 }

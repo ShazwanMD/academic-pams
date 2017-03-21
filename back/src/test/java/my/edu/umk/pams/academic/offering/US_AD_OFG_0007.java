@@ -24,21 +24,23 @@ import org.springframework.transaction.annotation.Transactional;
 @ContextConfiguration(classes = TestAppConfiguration.class)
 public class US_AD_OFG_0007 extends SpringScenarioTest<GivenIAmPPSAdministrator, WhenIWantToSetCapacityForOfferedCourse, ThenTheOfferedCourseHasAMaxAllowQuota> {
 
-	 private static final Logger LOG = LoggerFactory.getLogger(US_AD_OFG_0007.class);
+    private static final Logger LOG = LoggerFactory.getLogger(US_AD_OFG_0007.class);
+    public static final String FACULTY_CODE = "FKP";
 
-	    @Before
-	    public void before() {
-	    }
+    @Before
+    public void before() {
+    }
 
-	    @After
-	    public void after() {
-	    }
+    @After
+    public void after() {
+    }
 
-	    @Test
-	    @Rollback(true)
-	    public void scenario1() {
-	        given().I_am_a_PPS_administrator_in_current_academic_session();
-	        when().I_set_offering_capacity();
-	        then().the_offered_course_has_a_maximum_quota();
-	    }
-	}
+    @Test
+    @Rollback(true)
+    public void scenario1() {
+        given().I_am_a_PPS_administrator_in_current_academic_session()
+                .and().I_pick_faculty_$(FACULTY_CODE);
+        when().I_set_offering_capacity();
+        then().the_offered_course_has_a_maximum_quota();
+    }
+}
