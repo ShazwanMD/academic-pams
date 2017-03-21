@@ -1,5 +1,7 @@
 package my.edu.umk.pams.academic.profile.stage;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,11 +49,29 @@ public class WhenIWantToAddProgramInfo extends Stage<WhenIWantToAddProgramInfo> 
         program.setTitleEn("Master of SAM");
         program.setTitleMs("Master of SAM");
         studyplanService.saveProgram(program);
-
-		
-		
 		
 		return self();
 	}
+	
+	public WhenIWantToAddProgramInfo I_view_program_info_$(String facultyCode){
+		
+		faculty = studyplanService.findFacultyByCode(facultyCode);
+		List<AdProgram> program = studyplanService.findPrograms(faculty);
 
+		for (AdProgram programs : program) {
+			LOG.debug(programs.getTitle());
+		}
+		
+		for (AdProgram programs : program) {
+			LOG.debug(programs.getTitleEn());
+		}
+		
+		for (AdProgram programs : program) {
+			LOG.debug(programs.getTitleMs());
+		}
+		return self() ;
+		
+	}
+
+		
 }
