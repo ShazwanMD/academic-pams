@@ -35,4 +35,6 @@ public interface AdActor extends AdMetaObject {
     AdActorType getActorType();
 
     void setActorType(AdActorType actorType);
+
+
 }
