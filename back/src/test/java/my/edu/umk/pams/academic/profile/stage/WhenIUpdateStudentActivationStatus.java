@@ -1,5 +1,6 @@
 package my.edu.umk.pams.academic.profile.stage;
 
+import com.tngtech.jgiven.annotation.Pending;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +27,7 @@ public class WhenIUpdateStudentActivationStatus extends Stage<WhenIUpdateStudent
 	@ProvidedScenarioState
 	private AdStudent student;
 	
-	
+	@Pending
 	public WhenIUpdateStudentActivationStatus I_update_student_activation_status() {
 		
 		//todo

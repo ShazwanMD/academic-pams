@@ -1,6 +1,6 @@
 package my.edu.umk.pams.academic.studyplan.stage;
 
-import org.junit.Assert;
+import com.tngtech.jgiven.annotation.Pending;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.tngtech.jgiven.Stage;
@@ -31,6 +31,7 @@ public class ThenICanManageScheduleDetail extends Stage<ThenICanManageScheduleDe
 
 	private boolean exists;
 
+	@Pending
 	public ThenICanManageScheduleDetail I_can_manage_schedule_detail() {
 
 		return self();

@@ -1,5 +1,6 @@
 package my.edu.umk.pams.academic.studyplan.stage;
 
+import com.tngtech.jgiven.annotation.Pending;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.tngtech.jgiven.Stage;
@@ -27,6 +28,7 @@ public class ThenCoursesUpdated extends Stage<ThenCoursesUpdated> {
 	@ExpectedScenarioState
     private AdCourse course;
 
+	@Pending
 	public ThenCoursesUpdated new_courses_information_updated() {
 		
 	 

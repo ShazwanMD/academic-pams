@@ -1,5 +1,6 @@
 package my.edu.umk.pams.academic.studyplan.stage;
 
+import com.tngtech.jgiven.annotation.Pending;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
@@ -21,7 +22,7 @@ public class ThenICanPlanWhatToManageScheduleDetail extends Stage<ThenICanPlanWh
 	    @ExpectedScenarioState
 	    AdFaculty faculty;
 
-
+	    @Pending
 	    public ThenICanPlanWhatToManageScheduleDetail I_can_plan_what_to_manage_schedule_detail() {
 //	        List<AdCourse> Course = studyplanService.findCourses(faculty);
 //	        Assert.notEmpty(Course, "Course should not be empty");

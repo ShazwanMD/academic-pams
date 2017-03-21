@@ -1,6 +1,5 @@
 package my.edu.umk.pams.academic.offering.stage;
 
-import io.jsonwebtoken.lang.Assert;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +10,7 @@ import my.edu.umk.pams.academic.offering.model.AdOffering;
 import my.edu.umk.pams.academic.offering.service.OfferingService;
 import my.edu.umk.pams.academic.studyplan.model.AdCourse;
 import my.edu.umk.pams.academic.studyplan.model.AdProgram;
+import org.springframework.util.Assert;
 
 /**
  * @author asyikin.mr@umk and ziana

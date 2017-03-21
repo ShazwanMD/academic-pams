@@ -2,6 +2,7 @@ package my.edu.umk.pams.academic.studyplan.stage;
 
 import java.util.List;
 
+import com.tngtech.jgiven.annotation.Pending;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +41,7 @@ public class WhenIUpdateCourses extends Stage<WhenIUpdateCourses> {
 	@ProvidedScenarioState
 	private AdCourse course;
 
+	@Pending
 	public WhenIUpdateCourses I_update_courses_to_faculty_code_$a(String code) {
 
 		return self();

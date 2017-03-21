@@ -4,13 +4,13 @@ import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
-import io.jsonwebtoken.lang.Assert;
 import my.edu.umk.pams.academic.common.service.CommonService;
 import my.edu.umk.pams.academic.studyplan.model.*;
 import my.edu.umk.pams.academic.studyplan.service.StudyplanService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.Assert;
 
 /**
  * @author PAMS
