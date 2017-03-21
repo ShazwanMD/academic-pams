@@ -2,6 +2,7 @@ package my.edu.umk.pams.academic.studyplan.model;
 
 
 import my.edu.umk.pams.academic.core.AdMetaObject;
+import my.edu.umk.pams.academic.identity.model.AdAddressType;
 
 /**
  * DIPLOMA
@@ -22,5 +23,10 @@ public interface AdProgramLevel extends AdMetaObject {
     String getDescription();
 
     void setDescription(String description);
+    
+    AdProgramType getType();
+
+    void setType(AdProgramType  type);
+
 
 }

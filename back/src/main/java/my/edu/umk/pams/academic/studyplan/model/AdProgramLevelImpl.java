@@ -1,6 +1,7 @@
 package my.edu.umk.pams.academic.studyplan.model;
 
 import my.edu.umk.pams.academic.core.AdMetadata;
+import my.edu.umk.pams.academic.identity.model.AdAddressType;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -22,6 +23,11 @@ public class AdProgramLevelImpl implements AdProgramLevel {
     @NotNull
     @Column(name = "DESCRIPTION", nullable = false)
     private String description;
+    
+    @NotNull
+    @Enumerated(EnumType.ORDINAL)
+    @Column(name = "ADPROGRAM_TYPE")
+    private AdProgramType type;
 
     @Embedded
     private AdMetadata metadata;
@@ -68,4 +74,13 @@ public class AdProgramLevelImpl implements AdProgramLevel {
     public Class<?> getInterfaceClass() {
         return AdProgramLevel.class;
     }
+
+    @Override
+    public AdProgramType getType() {
+        return type;
+    }
+
+    public void setType(AdProgramType type) {
+        this.type = type;
+	}
 }
