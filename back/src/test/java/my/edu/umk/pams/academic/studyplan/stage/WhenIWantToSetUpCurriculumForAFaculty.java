@@ -17,6 +17,13 @@ import my.edu.umk.pams.academic.studyplan.model.AdCurriculumImpl;
 import my.edu.umk.pams.academic.studyplan.model.AdFaculty;
 import my.edu.umk.pams.academic.studyplan.service.StudyplanService;
 
+/*
+ * As an admin academic, 
+ * i want to set up curriculum for a faculty, 
+ * so that i can manage schedule by program.
+ * @author zaida
+ */
+
 public class WhenIWantToSetUpCurriculumForAFaculty extends Stage<WhenIWantToSetUpCurriculumForAFaculty> {
 	
 	private static final Logger LOG = LoggerFactory.getLogger(WhenIWantToSetUpCurriculumForAFaculty.class);
