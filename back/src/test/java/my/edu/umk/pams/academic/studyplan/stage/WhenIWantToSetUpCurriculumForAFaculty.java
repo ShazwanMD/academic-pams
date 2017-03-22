@@ -41,7 +41,7 @@ public class WhenIWantToSetUpCurriculumForAFaculty extends Stage<WhenIWantToSetU
         Curriculum.getOrdinal();
         Curriculum.getPeriod();
         Curriculum.getProgram();
-        studyplanService.adcurriculum(faculty, Curriculum);
+        studyplanService.saveCurriculum(Curriculum);
         return self();
         
     }
