@@ -28,7 +28,7 @@ public class ThenFacultyHasCourse extends Stage<ThenFacultyHasCourse> {
     AdFaculty faculty;
 
     // todo(uda): better ways to assert
-    public ThenFacultyHasCourse faculty_has_courses(){
+    public ThenFacultyHasCourse faculty_has_courses() {
         List<AdCourse> courses = studyplanService.findCourses(faculty);
         Assert.notEmpty(courses, "courses cannot be empty");
         return self();

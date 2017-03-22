@@ -23,23 +23,23 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 public class US_AD_OFG_1002 extends
-		SpringScenarioTest<GivenIAmPPSAdministrator, WhenIUpdateAcademicSessionStatus, ThenTheStatusIsUpdated> {
+        SpringScenarioTest<GivenIAmPPSAdministrator, WhenIUpdateAcademicSessionStatus, ThenTheStatusIsUpdated> {
 
-	private static final Logger LOG = LoggerFactory.getLogger(US_AD_OFG_1002.class);
+    private static final Logger LOG = LoggerFactory.getLogger(US_AD_OFG_1002.class);
 
-	@Before
-	public void before() {
-	}
+    @Before
+    public void before() {
+    }
 
-	@After
-	public void after() {
-	}
+    @After
+    public void after() {
+    }
 
-	@Test
-	@Rollback(true)
-	public void scenario1() {
-		given().I_am_a_PPS_administrator_in_current_academic_session();
-		when().I_update_academic_session_status();
-		then().the_status_is_updated();
-	}
+    @Test
+    @Rollback(true)
+    public void scenario1() {
+        given().I_am_a_PPS_administrator_in_current_academic_session();
+        when().I_update_academic_session_status();
+        then().the_status_is_updated();
+    }
 }

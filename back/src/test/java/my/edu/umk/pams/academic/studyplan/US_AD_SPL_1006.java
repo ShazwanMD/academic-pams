@@ -1,5 +1,10 @@
 package my.edu.umk.pams.academic.studyplan;
 
+import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
+import my.edu.umk.pams.academic.config.TestAppConfiguration;
+import my.edu.umk.pams.academic.studyplan.stage.ThenICanManageScheduleByProgram;
+import my.edu.umk.pams.academic.studyplan.stage.WhenIWantToSetUpCurriculumForAFaculty;
+import my.edu.umk.pams.bdd.stage.GivenIAmAdministrator;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -10,13 +15,6 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
-
-import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
-
-import my.edu.umk.pams.academic.config.TestAppConfiguration;
-import my.edu.umk.pams.academic.studyplan.stage.ThenICanManageScheduleByProgram;
-import my.edu.umk.pams.academic.studyplan.stage.WhenIWantToSetUpCurriculumForAFaculty;
-import my.edu.umk.pams.bdd.stage.GivenIAmAdministrator;
 
 /*
  * As an admin academic, 
@@ -29,8 +27,8 @@ import my.edu.umk.pams.bdd.stage.GivenIAmAdministrator;
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 public class US_AD_SPL_1006 extends SpringScenarioTest<GivenIAmAdministrator, WhenIWantToSetUpCurriculumForAFaculty, ThenICanManageScheduleByProgram> {
-	
-	private static final Logger LOG = LoggerFactory.getLogger(US_AD_SPL_1006.class);
+
+    private static final Logger LOG = LoggerFactory.getLogger(US_AD_SPL_1006.class);
 
     private static final String FACULTY_CODE = "FKP";
 
@@ -50,5 +48,5 @@ public class US_AD_SPL_1006 extends SpringScenarioTest<GivenIAmAdministrator, Wh
         then().I_can_manage_schedule_by_program();
     }
 }
-	
+
 	

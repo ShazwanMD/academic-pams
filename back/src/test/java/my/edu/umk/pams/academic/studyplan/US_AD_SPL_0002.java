@@ -18,8 +18,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 /**
  * As an admin academic,
- *  I want to set up courses for a faculty,
- *      so that a faculty will be populated with courses
+ * I want to set up courses for a faculty,
+ * so that a faculty will be populated with courses
  *
  * @author PAMS
  */
@@ -41,7 +41,7 @@ public class US_AD_SPL_0002 extends SpringScenarioTest<GivenIAmPPSAdministrator,
 
     @Test
     @Rollback(true)
-    public void scenario1 () {
+    public void scenario1() {
         given().I_am_a_PPS_administrator();
         when().I_add_a_course_to_faculty_code_$(FACULTY_CODE);
         then().faculty_has_courses();

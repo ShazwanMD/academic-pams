@@ -27,7 +27,7 @@ public class GivenIAmSystem extends Stage<GivenIAmSystem> {
     @ProvidedScenarioState
     private AdAcademicSession academicSession;
 
-    public void I_am_a_system_in_$_academic_session(String academicSessionCode){
+    public void I_am_a_system_in_$_academic_session(String academicSessionCode) {
         UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken("system", "abc123");
         Authentication authed = authenticationManager.authenticate(token);
         SecurityContextHolder.getContext().setAuthentication(authed);
@@ -35,7 +35,7 @@ public class GivenIAmSystem extends Stage<GivenIAmSystem> {
         academicSession = studyplanService.findAcademicSessionByCode(academicSessionCode);
     }
 
-    public void I_am_a_system_in_current_academic_session(){
+    public void I_am_a_system_in_current_academic_session() {
         UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken("system", "abc123");
         Authentication authed = authenticationManager.authenticate(token);
         SecurityContextHolder.getContext().setAuthentication(authed);

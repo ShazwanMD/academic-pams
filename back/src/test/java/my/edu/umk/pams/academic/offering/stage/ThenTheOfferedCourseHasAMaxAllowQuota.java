@@ -28,7 +28,7 @@ public class ThenTheOfferedCourseHasAMaxAllowQuota extends Stage<ThenTheOfferedC
     public ThenTheOfferedCourseHasAMaxAllowQuota the_offered_course_has_a_maximum_quota() {
         LOG.debug("canonicalCode: {}", canonicalCode);
         AdOffering offering = offeringService.findOfferingByCanonicalCode(canonicalCode);
-        Assert.isTrue(offering.getCapacity() > 0 , "Capacity should be greater than zero");
+        Assert.isTrue(offering.getCapacity() > 0, "Capacity should be greater than zero");
         return self();
     }
 }

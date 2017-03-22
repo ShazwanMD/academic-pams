@@ -1,31 +1,30 @@
 package my.edu.umk.pams.academic.studyplan.stage;
 
-import com.tngtech.jgiven.annotation.Pending;
-import org.springframework.beans.factory.annotation.Autowired;
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
+import com.tngtech.jgiven.annotation.Pending;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
-
 import my.edu.umk.pams.academic.studyplan.model.AdCourse;
 import my.edu.umk.pams.academic.studyplan.model.AdFaculty;
 import my.edu.umk.pams.academic.studyplan.service.StudyplanService;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @JGivenStage
-public class ThenICanPlanWhatToManageScheduleDetail extends Stage<ThenICanPlanWhatToManageScheduleDetail>{
-	
-	 @Autowired
-	    private StudyplanService studyplanService;
+public class ThenICanPlanWhatToManageScheduleDetail extends Stage<ThenICanPlanWhatToManageScheduleDetail> {
 
-	    @ExpectedScenarioState
-	    AdCourse course;
-	    
-	    @ExpectedScenarioState
-	    AdFaculty faculty;
+    @Autowired
+    private StudyplanService studyplanService;
 
-	    @Pending
-	    public ThenICanPlanWhatToManageScheduleDetail I_can_plan_what_to_manage_schedule_detail() {
+    @ExpectedScenarioState
+    AdCourse course;
+
+    @ExpectedScenarioState
+    AdFaculty faculty;
+
+    @Pending
+    public ThenICanPlanWhatToManageScheduleDetail I_can_plan_what_to_manage_schedule_detail() {
 //	        List<AdCourse> Course = studyplanService.findCourses(faculty);
 //	        Assert.notEmpty(Course, "Course should not be empty");
-	        return self();
-	    }
+        return self();
+    }
 }

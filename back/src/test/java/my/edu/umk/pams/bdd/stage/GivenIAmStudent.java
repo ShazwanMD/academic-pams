@@ -49,29 +49,29 @@ public class GivenIAmStudent extends Stage<GivenIAmStudent> {
     @ProvidedScenarioState
     private AdSection section;
 
-    public GivenIAmStudent I_am_a_student_in_$_academic_session(String academicSessionCode){
+    public GivenIAmStudent I_am_a_student_in_$_academic_session(String academicSessionCode) {
         loginAsStudent();
         academicSession = studyplanService.findAcademicSessionByCode(academicSessionCode);
         return self();
     }
 
-    public GivenIAmStudent I_am_a_student_in_current_academic_session(){
+    public GivenIAmStudent I_am_a_student_in_current_academic_session() {
         loginAsStudent();
         academicSession = studyplanService.findCurrentAcademicSession();
         return self();
     }
 
-    public GivenIAmStudent I_pick_program_$(String code){
+    public GivenIAmStudent I_pick_program_$(String code) {
         program = studyplanService.findProgramByCode(code);
         return self();
     }
 
-    public GivenIAmStudent I_pick_offering_$(String canonicalCode){
+    public GivenIAmStudent I_pick_offering_$(String canonicalCode) {
         offering = offeringService.findOfferingByCanonicalCode(canonicalCode);
         return self();
     }
 
-    public GivenIAmStudent I_pick_section_$(String canonicalCode){
+    public GivenIAmStudent I_pick_section_$(String canonicalCode) {
         section = offeringService.findSectionByCanonicalCode(canonicalCode);
         return self();
     }

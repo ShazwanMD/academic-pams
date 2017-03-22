@@ -1,5 +1,10 @@
 package my.edu.umk.pams.academic.studyplan;
 
+import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
+import my.edu.umk.pams.academic.config.TestAppConfiguration;
+import my.edu.umk.pams.academic.studyplan.stage.ThenCourseHasPrerequisite;
+import my.edu.umk.pams.academic.studyplan.stage.WhenIAddACoursePrerequisite;
+import my.edu.umk.pams.bdd.stage.GivenIAmAdministrator;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -8,13 +13,6 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
-
-import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
-
-import my.edu.umk.pams.academic.config.TestAppConfiguration;
-import my.edu.umk.pams.academic.studyplan.stage.ThenCourseHasPrerequisite;
-import my.edu.umk.pams.academic.studyplan.stage.WhenIAddACoursePrerequisite;
-import my.edu.umk.pams.bdd.stage.GivenIAmAdministrator;
 
 /*
  * As an admin academic, 
@@ -27,7 +25,7 @@ import my.edu.umk.pams.bdd.stage.GivenIAmAdministrator;
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 
-public class US_AD_SPL_1007 extends SpringScenarioTest<GivenIAmAdministrator, WhenIAddACoursePrerequisite, ThenCourseHasPrerequisite > {
+public class US_AD_SPL_1007 extends SpringScenarioTest<GivenIAmAdministrator, WhenIAddACoursePrerequisite, ThenCourseHasPrerequisite> {
 
     @Before
     public void before() {
@@ -36,7 +34,7 @@ public class US_AD_SPL_1007 extends SpringScenarioTest<GivenIAmAdministrator, Wh
     @After
     public void after() {
     }
-    
+
     @Test
     @Rollback(false)
     public void scenario1007() {
@@ -44,5 +42,5 @@ public class US_AD_SPL_1007 extends SpringScenarioTest<GivenIAmAdministrator, Wh
         when().I_want_add_course_prerequisite("MBA");
         then().Course_has_prerequisite();
     }
-	
+
 }

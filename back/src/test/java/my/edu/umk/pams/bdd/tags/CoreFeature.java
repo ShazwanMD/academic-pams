@@ -8,6 +8,6 @@ import java.lang.annotation.RetentionPolicy;
 
 
 @IsTag
-@Retention( RetentionPolicy.RUNTIME )
+@Retention(RetentionPolicy.RUNTIME)
 public @interface CoreFeature {
 }

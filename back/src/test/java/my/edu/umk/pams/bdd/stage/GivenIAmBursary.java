@@ -61,17 +61,17 @@ public class GivenIAmBursary extends Stage<GivenIAmBursary> {
         return self();
     }
 
-    public GivenIAmBursary I_pick_faculty_$(String code){
+    public GivenIAmBursary I_pick_faculty_$(String code) {
         faculty = studyplanService.findFacultyByCode(code);
         return self();
     }
 
-    public GivenIAmBursary I_pick_program_$(String code){
+    public GivenIAmBursary I_pick_program_$(String code) {
         program = studyplanService.findProgramByCode(code);
         return self();
     }
 
-    public GivenIAmBursary I_pick_offering_$(String canonicalCode){
+    public GivenIAmBursary I_pick_offering_$(String canonicalCode) {
         offering = offeringService.findOfferingByCanonicalCode(canonicalCode);
         return self();
     }

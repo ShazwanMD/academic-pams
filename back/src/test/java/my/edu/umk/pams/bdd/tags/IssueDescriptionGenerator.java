@@ -11,9 +11,9 @@ import java.lang.annotation.Annotation;
 public class IssueDescriptionGenerator implements TagDescriptionGenerator {
     @Override
     public String generateDescription(TagConfiguration tagConfiguration,
-                                      Annotation annotation, Object value ) {
+                                      Annotation annotation, Object value) {
         return String.format(
                 "<a href='http://jira.umk.edu.my:8080/PAMI/issues/%s'>Issue %s</a>",
-                value, value );
+                value, value);
     }
 }

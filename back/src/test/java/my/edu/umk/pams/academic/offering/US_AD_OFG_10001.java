@@ -18,30 +18,30 @@ import org.springframework.transaction.annotation.Transactional;
 
 /**
  * example
- * 
+ *
  * @author asyikin and ziana
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 public class US_AD_OFG_10001
-		extends SpringScenarioTest<GivenIAmPPSAdministrator, WhenIOfferACourse, ThenTheOfferingIsReadyForSetup> {
+        extends SpringScenarioTest<GivenIAmPPSAdministrator, WhenIOfferACourse, ThenTheOfferingIsReadyForSetup> {
 
-	private static final Logger LOG = LoggerFactory.getLogger(US_AD_OFG_10001.class);
+    private static final Logger LOG = LoggerFactory.getLogger(US_AD_OFG_10001.class);
 
-	@Before
-	public void before() {
-	}
+    @Before
+    public void before() {
+    }
 
-	@After
-	public void after() {
-	}
+    @After
+    public void after() {
+    }
 
-	@Test
-	@Rollback(true)
-	public void scenario1() {
-		given().I_am_a_PPS_administrator_in_current_academic_session();
-		when().I_offer_all_courses_under_program_faculty();
-		then().the_offering_is_ready_for_setup();
-	}
+    @Test
+    @Rollback(true)
+    public void scenario1() {
+        given().I_am_a_PPS_administrator_in_current_academic_session();
+        when().I_offer_all_courses_under_program_faculty();
+        then().the_offering_is_ready_for_setup();
+    }
 }

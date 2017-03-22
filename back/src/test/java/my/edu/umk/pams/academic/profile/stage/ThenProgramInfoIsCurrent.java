@@ -16,36 +16,36 @@ import org.springframework.util.Assert;
 @JGivenStage
 public class ThenProgramInfoIsCurrent extends Stage<ThenProgramInfoIsCurrent> {
 
-	@Autowired
-	private ProfileService profileService;
+    @Autowired
+    private ProfileService profileService;
 
-	@Autowired
-	private CommonService commonService;
+    @Autowired
+    private CommonService commonService;
 
-	@Autowired
-	private StudyplanService studyplanService;
+    @Autowired
+    private StudyplanService studyplanService;
 
-	@ExpectedScenarioState
-	private AdStudent student;
+    @ExpectedScenarioState
+    private AdStudent student;
 
-	@ExpectedScenarioState
-	private AdCourse course;
+    @ExpectedScenarioState
+    private AdCourse course;
 
-	@ExpectedScenarioState
-	private AdFaculty faculty;
-	
-	@ExpectedScenarioState
-	private AdProgram program;
-	
-	@ExpectedScenarioState
-	private String code;
-	
+    @ExpectedScenarioState
+    private AdFaculty faculty;
 
-	private boolean exists;
+    @ExpectedScenarioState
+    private AdProgram program;
 
-	public ThenProgramInfoIsCurrent Program_info_is_current() {
-		exists = studyplanService.isProgramExists("FIAT/PHD/0001", faculty);
-		Assert.isTrue(exists, "program exists");
-		return self();
-	}
+    @ExpectedScenarioState
+    private String code;
+
+
+    private boolean exists;
+
+    public ThenProgramInfoIsCurrent Program_info_is_current() {
+        exists = studyplanService.isProgramExists("FIAT/PHD/0001", faculty);
+        Assert.isTrue(exists, "program exists");
+        return self();
+    }
 }

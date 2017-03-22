@@ -41,10 +41,10 @@ public class US_AD_SPL_0003 extends SpringScenarioTest<GivenIAmPPSAdministrator,
     @After
     public void after() {
     }
-	
+
     @Test
     @Rollback(true)
-    public void scenario1 () {
+    public void scenario1() {
         given().I_am_a_PPS_administrator();
         when().I_update_courses_to_faculty_code_$a(FACULTY_CODE);
         then().new_courses_information_updated();

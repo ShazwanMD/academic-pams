@@ -49,33 +49,33 @@ public class GivenIAmPPSAdministrator extends Stage<GivenIAmPPSAdministrator> {
     @ProvidedScenarioState
     private AdOffering offering;
 
-    public void I_am_a_PPS_administrator(){
+    public void I_am_a_PPS_administrator() {
         loginAsPPS();
     }
 
-    public GivenIAmPPSAdministrator I_am_a_PPS_administrator_in_$_academic_session(String academicSessionCode){
+    public GivenIAmPPSAdministrator I_am_a_PPS_administrator_in_$_academic_session(String academicSessionCode) {
         loginAsPPS();
         academicSession = studyplanService.findAcademicSessionByCode(academicSessionCode);
         return self();
     }
 
-    public GivenIAmPPSAdministrator I_am_a_PPS_administrator_in_current_academic_session(){
+    public GivenIAmPPSAdministrator I_am_a_PPS_administrator_in_current_academic_session() {
         loginAsPPS();
         academicSession = studyplanService.findCurrentAcademicSession();
         return self();
     }
 
-    public GivenIAmPPSAdministrator I_pick_faculty_$(String code){
+    public GivenIAmPPSAdministrator I_pick_faculty_$(String code) {
         faculty = studyplanService.findFacultyByCode(code);
         return self();
     }
 
-    public GivenIAmPPSAdministrator I_pick_program_$(String code){
+    public GivenIAmPPSAdministrator I_pick_program_$(String code) {
         program = studyplanService.findProgramByCode(code);
         return self();
     }
 
-    public GivenIAmPPSAdministrator I_pick_offering_$(String canonicalCode){
+    public GivenIAmPPSAdministrator I_pick_offering_$(String canonicalCode) {
         offering = offeringService.findOfferingByCanonicalCode(canonicalCode);
         return self();
     }

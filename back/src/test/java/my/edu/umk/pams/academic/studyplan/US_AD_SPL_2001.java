@@ -2,8 +2,8 @@ package my.edu.umk.pams.academic.studyplan;
 
 /**
  * As an admin academic,
- *  I am a student in current academic session,
- *     so that Can take in new semester.
+ * I am a student in current academic session,
+ * so that Can take in new semester.
  *
  * @author zaida
  */
@@ -31,32 +31,32 @@ import org.springframework.transaction.annotation.Transactional;
 
 public class US_AD_SPL_2001 extends SpringScenarioTest<GivenIAmStudent, WhenIWantToViewTheProgramForEachLevelOfStudy, ThenCanTakeInNewSemester> {
 
-	@SuppressWarnings("unused")
-	private static final Logger LOG = LoggerFactory.getLogger(US_AD_SPL_2001.class);
+    @SuppressWarnings("unused")
+    private static final Logger LOG = LoggerFactory.getLogger(US_AD_SPL_2001.class);
 
-	private String FACULTY_CODE="10";
+    private String FACULTY_CODE = "10";
 
-	@ProvidedScenarioState
-	private String PROGRAM_CODE="PGRAM_231";
+    @ProvidedScenarioState
+    private String PROGRAM_CODE = "PGRAM_231";
 
-	@Before
-	public void before() {
-	}
+    @Before
+    public void before() {
+    }
 
-	@After
-	public void after() {
-	}
-	
+    @After
+    public void after() {
+    }
 
-	@Test
-	@Rollback(true)
-	public void scenari2001() {
-		given().I_am_a_student_in_current_academic_session();
-		when().I_want_to_view_the_program_$_for_each_level_of_study(FACULTY_CODE);
-		then().Can_take_in_new_semester();
-	}    
+
+    @Test
+    @Rollback(true)
+    public void scenari2001() {
+        given().I_am_a_student_in_current_academic_session();
+        when().I_want_to_view_the_program_$_for_each_level_of_study(FACULTY_CODE);
+        then().Can_take_in_new_semester();
+    }
 }
-	
+
 	
 
 

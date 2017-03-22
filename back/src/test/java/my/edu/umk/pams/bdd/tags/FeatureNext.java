@@ -7,11 +7,11 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
 @CoreNext
-@IsTag( style = "background-color: white; " +
+@IsTag(style = "background-color: white; " +
         "color: green;" +
         "border: 1px solid green",
         description = "This is a Feature")
-@Retention( RetentionPolicy.RUNTIME )
+@Retention(RetentionPolicy.RUNTIME)
 public @interface FeatureNext {
     String value();
 }

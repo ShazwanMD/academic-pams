@@ -18,8 +18,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 /**
  * As a student
- *  I want to update my mailing address
- *      so that my address on file is current
+ * I want to update my mailing address
+ * so that my address on file is current
  *
  * @author PAMS
  */

@@ -16,25 +16,25 @@ import java.util.List;
 
 @JGivenStage
 public class WhenIWantToViewTheOfferedCoursesByAcademicSession
-		extends Stage<WhenIWantToViewTheOfferedCoursesByAcademicSession> {
+        extends Stage<WhenIWantToViewTheOfferedCoursesByAcademicSession> {
 
-	private static final Logger LOG = LoggerFactory.getLogger(WhenIWantToViewTheOfferedCoursesByAcademicSession.class);
+    private static final Logger LOG = LoggerFactory.getLogger(WhenIWantToViewTheOfferedCoursesByAcademicSession.class);
 
-	@Autowired
-	private OfferingService offeringService;
+    @Autowired
+    private OfferingService offeringService;
 
-	@ExpectedScenarioState
-	private AdProgram program;
+    @ExpectedScenarioState
+    private AdProgram program;
 
-	@ExpectedScenarioState
-	private AdStudent student;
+    @ExpectedScenarioState
+    private AdStudent student;
 
-	@ProvidedScenarioState
-	private List<AdOffering> offerings;
+    @ProvidedScenarioState
+    private List<AdOffering> offerings;
 
-	public WhenIWantToViewTheOfferedCoursesByAcademicSession I_browse_the_offered_courses_by_program_I_picked() {
-		// list all offering for program
-		List<AdOffering> offerings = offeringService.findOfferings(program);
-		return self();
-	}
+    public WhenIWantToViewTheOfferedCoursesByAcademicSession I_browse_the_offered_courses_by_program_I_picked() {
+        // list all offering for program
+        List<AdOffering> offerings = offeringService.findOfferings(program);
+        return self();
+    }
 }

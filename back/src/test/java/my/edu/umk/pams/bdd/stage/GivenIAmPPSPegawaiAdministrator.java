@@ -33,12 +33,12 @@ public class GivenIAmPPSPegawaiAdministrator extends Stage<GivenIAmPPSPegawaiAdm
     @ProvidedScenarioState
     private AdStaff staff;
 
-    public void I_am_a_PPS_administrator_in_$_academic_session(String academicSessionCode){
+    public void I_am_a_PPS_administrator_in_$_academic_session(String academicSessionCode) {
         loginAsPPS();
         academicSession = studyplanService.findAcademicSessionByCode(academicSessionCode);
     }
 
-    public void I_am_a_PPS_administrator_in_current_academic_session(){
+    public void I_am_a_PPS_administrator_in_current_academic_session() {
         loginAsPPS();
         academicSession = studyplanService.findCurrentAcademicSession();
     }

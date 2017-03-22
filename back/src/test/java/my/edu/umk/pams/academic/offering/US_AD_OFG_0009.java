@@ -2,6 +2,12 @@ package my.edu.umk.pams.academic.offering;
 /**
  * @author ziana
  */
+
+import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
+import my.edu.umk.pams.academic.config.TestAppConfiguration;
+import my.edu.umk.pams.academic.offering.stage.ThenICanChoose;
+import my.edu.umk.pams.academic.offering.stage.WhenIWantToViewTheOfferedCoursesByAcademicSession;
+import my.edu.umk.pams.bdd.stage.GivenIAmStudent;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -12,13 +18,6 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
-
-import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
-
-import my.edu.umk.pams.academic.config.TestAppConfiguration;
-import my.edu.umk.pams.academic.offering.stage.ThenICanChoose;
-import my.edu.umk.pams.academic.offering.stage.WhenIWantToViewTheOfferedCoursesByAcademicSession;
-import my.edu.umk.pams.bdd.stage.GivenIAmStudent;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional

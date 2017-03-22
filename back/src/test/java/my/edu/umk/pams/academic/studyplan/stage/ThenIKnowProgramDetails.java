@@ -14,25 +14,25 @@ import java.util.List;
 
 
 @JGivenStage
-public class ThenIKnowProgramDetails  extends Stage<ThenIKnowProgramDetails> {
+public class ThenIKnowProgramDetails extends Stage<ThenIKnowProgramDetails> {
 
-	@Autowired
-	private StudyplanService studyplanService;
-	
-	
-	@ExpectedScenarioState
-	private AdFaculty faculty;
+    @Autowired
+    private StudyplanService studyplanService;
 
 
-	@ExpectedScenarioState
-	private List<AdProgram> program;
+    @ExpectedScenarioState
+    private AdFaculty faculty;
 
-	public ThenIKnowProgramDetails I_know_program_details() {
-		boolean exists = studyplanService.isProgramExists("FIAT/PHD/0001", faculty);
 
-		Assert.isTrue(exists, "exists");
-		return self();
-	}
+    @ExpectedScenarioState
+    private List<AdProgram> program;
+
+    public ThenIKnowProgramDetails I_know_program_details() {
+        boolean exists = studyplanService.isProgramExists("FIAT/PHD/0001", faculty);
+
+        Assert.isTrue(exists, "exists");
+        return self();
+    }
 
 
 }

@@ -11,8 +11,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
 
-import java.util.List;
-
 /**
  * @author PAMS
  */
@@ -27,7 +25,7 @@ public class ThenProgramIsIntroduced extends Stage<ThenProgramIsIntroduced> {
     @ExpectedScenarioState
     AdFaculty faculty;
 
-    public ThenProgramIsIntroduced the_program_$_is_introduced_for_faculty_$(String programCode, String expectedFacultyCode){
+    public ThenProgramIsIntroduced the_program_$_is_introduced_for_faculty_$(String programCode, String expectedFacultyCode) {
         AdProgram program = studyplanService.findProgramByCode(programCode);
 
         String message1 = "program code must be " + programCode;
@@ -35,7 +33,7 @@ public class ThenProgramIsIntroduced extends Stage<ThenProgramIsIntroduced> {
 
         String actualFacultyCode = program.getFaculty().getCode();
         String message2 = "program facultyCode must be " + expectedFacultyCode;
-        Assert.isTrue( expectedFacultyCode.equals(actualFacultyCode), message2);
+        Assert.isTrue(expectedFacultyCode.equals(actualFacultyCode), message2);
 
         return self();
     }
