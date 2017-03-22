@@ -1,0 +1,48 @@
+package my.edu.umk.pams.academic.studyplan;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.test.annotation.Rollback;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
+
+import my.edu.umk.pams.academic.config.TestAppConfiguration;
+import my.edu.umk.pams.academic.studyplan.stage.ThenCourseHasPrerequisite;
+import my.edu.umk.pams.academic.studyplan.stage.WhenIAddACoursePrerequisite;
+import my.edu.umk.pams.bdd.stage.GivenIAmAdministrator;
+
+/*
+ * As an admin academic, 
+ *  i want to set up  course prerequisite
+ *    so that courses has a prerequisite
+ * @author ain
+ */
+
+@RunWith(SpringJUnit4ClassRunner.class)
+@Transactional
+@ContextConfiguration(classes = TestAppConfiguration.class)
+
+public class US_AD_SPL_1007 extends SpringScenarioTest<GivenIAmAdministrator, WhenIAddACoursePrerequisite, ThenCourseHasPrerequisite > {
+
+    @Before
+    public void before() {
+    }
+
+    @After
+    public void after() {
+    }
+    
+    @Test
+    @Rollback(false)
+    public void scenario1007() {
+        given().I_am_a_PPS_administrator_in_current_academic_session();
+        when().I_want_add_course_prerequisite("MBA");
+        then().Course_has_prerequisite();
+    }
+	
+}
