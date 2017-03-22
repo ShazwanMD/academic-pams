@@ -71,7 +71,7 @@ public class WhenIOfferACourse extends Stage<WhenIOfferACourse> {
 		
 		offering.setCode(code);
 		offering.setCanonicalCode(canonicalCode);
-		offering.setTitle("GST5021-ECONOMICS & BUSINESS ENVIRONMENT"); 
+		offering.setTitle("MBA-ECONOMICS & BUSINESS ENVIRONMENT"); 
 		offering.setCapacity(50);
 		offering.setSectionCount(3);
 		offering.setCourse(course);
