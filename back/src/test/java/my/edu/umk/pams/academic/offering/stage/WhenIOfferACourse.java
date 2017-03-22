@@ -1,6 +1,7 @@
 package my.edu.umk.pams.academic.offering.stage;
 
 import com.tngtech.jgiven.Stage;
+
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
@@ -20,7 +21,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 
 /**
- * @author asyikin.mr@umk and ziana
+ * @author asyikin.mr and ziana
  */
 @JGivenStage
 public class WhenIOfferACourse extends Stage<WhenIOfferACourse> {
@@ -62,7 +63,7 @@ public class WhenIOfferACourse extends Stage<WhenIOfferACourse> {
 
 	public WhenIOfferACourse I_offer_a_course() {
 		program = studyplanService.findProgramByCode("FIAT/PHD/0001");
-		course = studyplanService.findCourseByCode("DDA2113");
+		course = studyplanService.findCourseByCode("GST5021");
 	    code = course.getCode() + "/" + academicSession.getCode();
 		canonicalCode = faculty.getCode() + "/" + course.getCode() + "/" + academicSession.getCode(); 
 		
@@ -70,7 +71,7 @@ public class WhenIOfferACourse extends Stage<WhenIOfferACourse> {
 		
 		offering.setCode(code);
 		offering.setCanonicalCode(canonicalCode);
-		offering.setTitle("my sample title "); // todo(syikin) @ProvidedScenarioState title above is null
+		offering.setTitle("GST5021-ECONOMICS & BUSINESS ENVIRONMENT"); 
 		offering.setCapacity(50);
 		offering.setSectionCount(3);
 		offering.setCourse(course);
