@@ -5,6 +5,9 @@ import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.identity.model.AdUser;
+import my.edu.umk.pams.academic.offering.model.AdOffering;
+import my.edu.umk.pams.academic.offering.model.AdSection;
+import my.edu.umk.pams.academic.offering.service.OfferingService;
 import my.edu.umk.pams.academic.security.integration.AdUserDetails;
 import my.edu.umk.pams.academic.studyplan.model.AdAcademicSession;
 import my.edu.umk.pams.academic.studyplan.model.AdProgram;
@@ -28,6 +31,9 @@ public class GivenIAmStudent extends Stage<GivenIAmStudent> {
     @Autowired
     private StudyplanService studyplanService;
 
+    @Autowired
+    private OfferingService offeringService;
+
     @ProvidedScenarioState
     private AdAcademicSession academicSession;
 
@@ -36,6 +42,12 @@ public class GivenIAmStudent extends Stage<GivenIAmStudent> {
 
     @ProvidedScenarioState
     private AdProgram program;
+
+    @ProvidedScenarioState
+    private AdOffering offering;
+
+    @ProvidedScenarioState
+    private AdSection section;
 
     public GivenIAmStudent I_am_a_student_in_$_academic_session(String academicSessionCode){
         loginAsStudent();
@@ -49,9 +61,18 @@ public class GivenIAmStudent extends Stage<GivenIAmStudent> {
         return self();
     }
 
-
     public GivenIAmStudent I_pick_program_$(String code){
         program = studyplanService.findProgramByCode(code);
+        return self();
+    }
+
+    public GivenIAmStudent I_pick_offering_$(String canonicalCode){
+        offering = offeringService.findOfferingByCanonicalCode(canonicalCode);
+        return self();
+    }
+
+    public GivenIAmStudent I_pick_section_$(String canonicalCode){
+        section = offeringService.findSectionByCanonicalCode(canonicalCode);
         return self();
     }
 

@@ -10,9 +10,9 @@ import org.junit.runners.Suite;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
         IdentityModuleTestSuite.class,
-        OfferingModuleTestSuite.class,
         ProfileModuleTestSuite.class,
         StudyplanModuleTestSuite.class,
+        OfferingModuleTestSuite.class,
 })
 public class AcademicTestSuite {
 }

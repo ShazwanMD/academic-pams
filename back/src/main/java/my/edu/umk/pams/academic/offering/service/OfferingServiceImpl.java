@@ -38,13 +38,14 @@ import static my.edu.umk.pams.academic.core.AdFlowState.DRAFTED;
 /**
  * @author PAMS
  */
-@Service("offeringServie")
+// todo(uda): rename as TermService
+@Service("offeringService")
 public class OfferingServiceImpl implements OfferingService {
 
-	private static final Logger LOG = LoggerFactory.getLogger(OfferingServiceImpl.class);
+    private static final Logger LOG = LoggerFactory.getLogger(OfferingServiceImpl.class);
 
-	@Autowired
-	private AdAcademicSessionDao academicSessionDao;
+    @Autowired
+    private AdAcademicSessionDao academicSessionDao;
 
     @Autowired
     private AdAcademicYearDao academicYearDao;
@@ -92,242 +93,242 @@ public class OfferingServiceImpl implements OfferingService {
     private AdStaffDao staffDao;
 
     @Autowired
-	private SecurityService securityService;
+    private SecurityService securityService;
 
     @Autowired
-	private SystemService systemService;
+    private SystemService systemService;
 
     @Autowired
-	private WorkflowService workflowService;
+    private WorkflowService workflowService;
 
-	@Autowired
-	private SessionFactory sessionFactory;
+    @Autowired
+    private SessionFactory sessionFactory;
 
-	@Autowired
-	private ApplicationContext applicationContext;
+    @Autowired
+    private ApplicationContext applicationContext;
 
-	// ====================================================================================================
-	// OFFERING
-	// ====================================================================================================
+    // ====================================================================================================
+    // OFFERING
+    // ====================================================================================================
 
-	@Override
-	public AdOffering findOfferingById(Long id) {
-		return offeringDao.findById(id);
-	}
+    @Override
+    public AdOffering findOfferingById(Long id) {
+        return offeringDao.findById(id);
+    }
 
-	@Override
-	public AdOffering findOfferingByCanonicalCode(String canonicalCode) {
-		return offeringDao.findByCanonicalCode(canonicalCode);
-	}
+    @Override
+    public AdOffering findOfferingByCanonicalCode(String canonicalCode) {
+        return offeringDao.findByCanonicalCode(canonicalCode);
+    }
 
-	@Override
-	public AdOffering findOfferingByProgramAndCourse(AdProgram program, AdCourse course) {
-		return offeringDao.findByProgramAndCourse(program, course);
-	}
+    @Override
+    public AdOffering findOfferingByProgramAndCourse(AdProgram program, AdCourse course) {
+        return offeringDao.findByProgramAndCourse(program, course);
+    }
 
-	@Override
-	public AdAcademicSession findLastOfferedOffering(AdAcademicSession current, AdCourse course) {
-		return null;
-	}
+    @Override
+    public AdAcademicSession findLastOfferedOffering(AdAcademicSession current, AdCourse course) {
+        return null;
+    }
 
-	@Override
-	public List<AdOffering> findOfferings(Integer offset, Integer limit) {
-		return offeringDao.find(offset, limit);
-	}
+    @Override
+    public List<AdOffering> findOfferings(Integer offset, Integer limit) {
+        return offeringDao.find(offset, limit);
+    }
 
-	@Override
-	public List<AdOffering> findOfferings(String filter, Integer offset, Integer limit) {
-		return offeringDao.find(filter, offset, limit);
-	}
+    @Override
+    public List<AdOffering> findOfferings(String filter, Integer offset, Integer limit) {
+        return offeringDao.find(filter, offset, limit);
+    }
 
-	@Override
-	public List<AdOffering> findOfferings(AdProgram program) {
-		return offeringDao.find(program);
-	}
+    @Override
+    public List<AdOffering> findOfferings(AdProgram program) {
+        return offeringDao.find(program);
+    }
 
-	@Override
-	public List<AdOffering> findOfferings(AdProgram program, Integer offset, Integer limit) {
-		return offeringDao.find(program, offset, limit);
-	}
+    @Override
+    public List<AdOffering> findOfferings(AdProgram program, Integer offset, Integer limit) {
+        return offeringDao.find(program, offset, limit);
+    }
 
-	@Override
-	public List<AdOffering> findOfferings(String filter, AdAcademicSession academicSession, Integer offset,
-			Integer limit) {
-		return offeringDao.find(filter, offset, limit);
-	}
+    @Override
+    public List<AdOffering> findOfferings(String filter, AdAcademicSession academicSession, Integer offset,
+                                          Integer limit) {
+        return offeringDao.find(filter, offset, limit);
+    }
 
-	@Override
-	public List<AdOffering> findOfferings(String filter, AdAcademicSession academicSession, AdProgram program,
-			Integer offset, Integer limit) {
-		return offeringDao.find(filter, academicSession, program, offset, limit);
-	}
+    @Override
+    public List<AdOffering> findOfferings(String filter, AdAcademicSession academicSession, AdProgram program,
+                                          Integer offset, Integer limit) {
+        return offeringDao.find(filter, academicSession, program, offset, limit);
+    }
 
-	@Override
-	public List<AdOffering> findRunningOfferings(AdAcademicSession session) {
-		return null; // TODO;
-	}
+    @Override
+    public List<AdOffering> findRunningOfferings(AdAcademicSession session) {
+        return null; // TODO;
+    }
 
-	@Override
-	public Integer countOffering(String filter) {
-		return offeringDao.count(filter);
-	}
+    @Override
+    public Integer countOffering(String filter) {
+        return offeringDao.count(filter);
+    }
 
-	@Override
-	public Integer countOffering(AdProgram program) {
-		return offeringDao.count(program);
-	}
+    @Override
+    public Integer countOffering(AdProgram program) {
+        return offeringDao.count(program);
+    }
 
-	@Override
-	public Integer countOffering(AdCourse course) {
-		return offeringDao.count(course);
-	}
+    @Override
+    public Integer countOffering(AdCourse course) {
+        return offeringDao.count(course);
+    }
 
-	@Override
-	public Integer countOffering(boolean authorized, String filter) {
-		return offeringDao.count(filter); // todo(uda): auth
-	}
+    @Override
+    public Integer countOffering(boolean authorized, String filter) {
+        return offeringDao.count(filter); // todo(uda): auth
+    }
 
-	@Override
-	public Integer countOffering(boolean authorized, String filter, AdProgram program) {
-		return offeringDao.count(filter, program); // todo(uda): auth
-	}
+    @Override
+    public Integer countOffering(boolean authorized, String filter, AdProgram program) {
+        return offeringDao.count(filter, program); // todo(uda): auth
+    }
 
-	@Override
-	public Integer countOfferingWithSection(boolean authorized, String filter) {
-		return offeringDao.countWithSection(filter); // todo(uda): auth
-	}
+    @Override
+    public Integer countOfferingWithSection(boolean authorized, String filter) {
+        return offeringDao.countWithSection(filter); // todo(uda): auth
+    }
 
-	@Override
-	public Integer countOfferingWithSection(boolean authorized, String filter, AdAcademicSession academicSession) {
-		return offeringDao.countWithSection(filter, academicSession); // todo(uda): auth
-	}
+    @Override
+    public Integer countOfferingWithSection(boolean authorized, String filter, AdAcademicSession academicSession) {
+        return offeringDao.countWithSection(filter, academicSession); // todo(uda): auth
+    }
 
-	@Override
-	public boolean isOfferingExists(AdProgram program, AdCourse course) {
-		return offeringDao.isExists(program, course);
-	}
-	
+    @Override
+    public boolean isOfferingExists(AdProgram program, AdCourse course) {
+        return offeringDao.isExists(program, course);
+    }
 
-	@Override
-	public void saveOffering(AdOffering offering) {
-		offeringDao.save(offering, securityService.getCurrentUser());
-		sessionFactory.getCurrentSession().flush();
 
-	}
+    @Override
+    public void saveOffering(AdOffering offering) {
+        offeringDao.save(offering, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
 
-	// ====================================================================================================
-	// SECTION
-	// ====================================================================================================
+    }
 
-	@Override
-	public AdSection findSectionById(Long id) {
-		return sectionDao.findById(id);
-	}
+    // ====================================================================================================
+    // SECTION
+    // ====================================================================================================
 
-	@Override
-	public AdSection findSectionByCanonicalCode(String canonicalCode) {
-		return sectionDao.findByCanonicalCode(canonicalCode);
-	}
+    @Override
+    public AdSection findSectionById(Long id) {
+        return sectionDao.findById(id);
+    }
 
-	@Override
-	public List<AdSection> findSections(Integer offset, Integer limit) {
-		return sectionDao.find(offset, limit);
-	}
+    @Override
+    public AdSection findSectionByCanonicalCode(String canonicalCode) {
+        return sectionDao.findByCanonicalCode(canonicalCode);
+    }
 
-	// todo: decorate
-	@Override
-	public List<AdSection> findSections(String filter, AdAcademicSession academicSession, Integer offset,
-			Integer limit) {
-		return sectionDao.find(filter, academicSession, offset, limit);
-	}
+    @Override
+    public List<AdSection> findSections(Integer offset, Integer limit) {
+        return sectionDao.find(offset, limit);
+    }
 
-	@Override
-	public List<AdSection> findSections(AdOffering offering) {
-		return sectionDao.find(offering);
-	}
+    // todo: decorate
+    @Override
+    public List<AdSection> findSections(String filter, AdAcademicSession academicSession, Integer offset,
+                                        Integer limit) {
+        return sectionDao.find(filter, academicSession, offset, limit);
+    }
 
-	@Override
-	public List<AdSection> findSections(AdAcademicSession academicSession) {
-		return sectionDao.find(academicSession);
-	}
+    @Override
+    public List<AdSection> findSections(AdOffering offering) {
+        return sectionDao.find(offering);
+    }
 
-	@Override
-	public List<AdSection> findSections(AdAcademicSession academicSession, Integer offset, Integer limit) {
-		return sectionDao.find(academicSession, offset, limit);
-	}
+    @Override
+    public List<AdSection> findSections(AdAcademicSession academicSession) {
+        return sectionDao.find(academicSession);
+    }
 
-	// todo: decorate
-	@Override
-	public List<AdSection> findSections(AdAcademicSession academicSession, AdOffering offering) {
-		return sectionDao.find(academicSession, offering);
-	}
+    @Override
+    public List<AdSection> findSections(AdAcademicSession academicSession, Integer offset, Integer limit) {
+        return sectionDao.find(academicSession, offset, limit);
+    }
 
-	@Override
-	public List<AdSection> findSections(AdAcademicSession academicSession, AdOffering offering, Integer offset,
-			Integer limit) {
-		return sectionDao.find(academicSession, offering, offset, limit);
-	}
+    // todo(uda): decorate
+    @Override
+    public List<AdSection> findSections(AdAcademicSession academicSession, AdOffering offering) {
+        return sectionDao.find(academicSession, offering);
+    }
 
-	@Override
-	public List<AdSection> findSections(String filter, AdAcademicSession academicSession, AdAdmission admission,
-			Integer offset, Integer limit) {
-		return sectionDao.find(filter, academicSession, admission, offset, limit);
-	}
+    @Override
+    public List<AdSection> findSections(AdAcademicSession academicSession, AdOffering offering, Integer offset,
+                                        Integer limit) {
+        return sectionDao.find(academicSession, offering, offset, limit);
+    }
 
-	@Override
-	public Integer countSection() {
-		return sectionDao.count();
-	}
+    @Override
+    public List<AdSection> findSections(String filter, AdAcademicSession academicSession, AdAdmission admission,
+                                        Integer offset, Integer limit) {
+        return sectionDao.find(filter, academicSession, admission, offset, limit);
+    }
 
-	@Override
-	public Integer countSection(String filter, AdAcademicSession academicSession) {
-		return sectionDao.count(filter, academicSession);
-	}
+    @Override
+    public Integer countSection() {
+        return sectionDao.count();
+    }
 
-	@Override
-	public Integer countSection(AdOffering offering) {
-		return sectionDao.count(offering);
-	}
+    @Override
+    public Integer countSection(String filter, AdAcademicSession academicSession) {
+        return sectionDao.count(filter, academicSession);
+    }
 
-	@Override
-	public Integer countSection(AdAcademicSession academicSession) {
-		return sectionDao.count(academicSession);
-	}
+    @Override
+    public Integer countSection(AdOffering offering) {
+        return sectionDao.count(offering);
+    }
 
-	@Override
-	public Integer countSection(AdAcademicSession academicSession, AdOffering offering) {
-		return sectionDao.count(academicSession, offering);
-	}
+    @Override
+    public Integer countSection(AdAcademicSession academicSession) {
+        return sectionDao.count(academicSession);
+    }
 
-	@Override
-	public Integer countSection(String filter, AdAcademicSession academicSession, AdAdmission admission) {
-		return sectionDao.count(filter, academicSession, admission);
-	}
+    @Override
+    public Integer countSection(AdAcademicSession academicSession, AdOffering offering) {
+        return sectionDao.count(academicSession, offering);
+    }
 
-	@Override
-	public Integer countAvailableStaff(AdOffering offering) {
-		return sectionDao.countAvailableStaff(offering);
-	}
+    @Override
+    public Integer countSection(String filter, AdAcademicSession academicSession, AdAdmission admission) {
+        return sectionDao.count(filter, academicSession, admission);
+    }
 
-	@Override
-	public Integer countAvailableStaff(AdAcademicSession academicSession, AdOffering offering) {
-		return sectionDao.countAvailableStaff(academicSession, offering);
-	}
+    @Override
+    public Integer countAvailableStaff(AdOffering offering) {
+        return sectionDao.countAvailableStaff(offering);
+    }
 
-	@Override
-	public boolean hasSection(AdAcademicSession academicSession) {
-		return sectionDao.hasSection(academicSession);
-	}
+    @Override
+    public Integer countAvailableStaff(AdAcademicSession academicSession, AdOffering offering) {
+        return sectionDao.countAvailableStaff(academicSession, offering);
+    }
 
-	@Override
-	public boolean hasSection(AdAcademicSession academicSession, AdOffering offering) {
-		return sectionDao.hasSection(academicSession, offering);
-	}
+    @Override
+    public boolean hasSection(AdAcademicSession academicSession) {
+        return sectionDao.hasSection(academicSession);
+    }
 
-	@Override
-	public boolean isSectionExists(String canonicalCode) {
-		return sectionDao.isExists(canonicalCode);
-	}
+    @Override
+    public boolean hasSection(AdAcademicSession academicSession, AdOffering offering) {
+        return sectionDao.hasSection(academicSession, offering);
+    }
+
+    @Override
+    public boolean isSectionExists(String canonicalCode) {
+        return sectionDao.isExists(canonicalCode);
+    }
 
     @Override
     public void openSection(AdSection section) {
@@ -353,7 +354,6 @@ public class OfferingServiceImpl implements OfferingService {
         SectionClosedEvent event = new SectionClosedEvent();
         applicationContext.publishEvent(event);
     }
-
 
     @Override
     public void saveSection(AdSection section) {
@@ -634,9 +634,8 @@ public class OfferingServiceImpl implements OfferingService {
 
     @Override
     public String processEnrollmentApplication(AdEnrollmentApplication application) {
-
-	    // todo(uda): param
-	    HashMap<String,Object> param = new HashMap<String,Object>();
+        // todo(uda): param
+        HashMap<String, Object> param = new HashMap<String, Object>();
         String refNo = systemService
                 .generateFormattedReferenceNo(ENROLLMENT_APPLICATION_REFERENCE_NO, param);
         application.setReferenceNo(refNo);
@@ -746,7 +745,7 @@ public class OfferingServiceImpl implements OfferingService {
 
         if (isEnrollmentExists(section, student)) // todo(uda): throw something here OfferingException
 
-        // todo(uda): close for now
+            // todo(uda): close for now
 //        if (!override && mapManager.hasExceededCredit(dasFinder.findCurrentAcademicSession(), student)) {
 //            throw new EnrollmentException("Student exceed allowed credit count");
 //        }
@@ -755,7 +754,7 @@ public class OfferingServiceImpl implements OfferingService {
 //            throw new EnrollmentException("Student exceed allowed credit count");
 //        }
 
-        LOG.debug("section id: {}", section.getId());
+            LOG.debug("section id: {}", section.getId());
 
         // find admission
         AdAcademicSession session = section.getSession();
@@ -798,7 +797,7 @@ public class OfferingServiceImpl implements OfferingService {
         applicationContext.publishEvent(event);
     }
 
-
+    @Override
     public void addGradebooks(AdSection section, AdEnrollment enrollment) {
         AdOffering offering = section.getOffering();
         AdAcademicSession session = section.getSession();
@@ -819,6 +818,7 @@ public class OfferingServiceImpl implements OfferingService {
 //        }
     }
 
+    @Override
     public void addGradebooks(AdSection section, AdAssessment assessment) {
         AdOffering offering = section.getOffering();
         AdAcademicSession session = section.getSession();
@@ -843,7 +843,7 @@ public class OfferingServiceImpl implements OfferingService {
     // PRIVATE METHODS
     //====================================================================================================
 
-    private  Map<String, Object> prepareVariables(AdEnrollmentApplication application) {
+    private Map<String, Object> prepareVariables(AdEnrollmentApplication application) {
         Map<String, Object> map = new HashMap<String, Object>();
         map.put(ENROLLMENT_APPLICATION_ID, application.getId());
         map.put(WorkflowConstants.USER_CREATOR, securityService.getCurrentUser().getName());

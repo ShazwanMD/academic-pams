@@ -36,6 +36,7 @@ public class AdAppointmentImpl implements AdAppointment {
     @Embedded
     private AdMetadata metadata;
 
+    @Override
     public Long getId() {
         return id;
     }
@@ -54,26 +55,32 @@ public class AdAppointmentImpl implements AdAppointment {
         this.status = status;
     }
 
+    @Override
     public AdStaff getStaff() {
         return staff;
     }
 
+    @Override
     public void setStaff(AdStaff staff) {
         this.staff = staff;
     }
 
+    @Override
     public AdSection getSection() {
         return section;
     }
 
+    @Override
     public void setSection(AdSection section) {
         this.section = section;
     }
 
+    @Override
     public AdMetadata getMetadata() {
         return metadata;
     }
 
+    @Override
     public void setMetadata(AdMetadata metadata) {
         this.metadata = metadata;
     }

@@ -1,45 +1,40 @@
 package my.edu.umk.pams.academic.offering.stage;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
-import my.edu.umk.pams.academic.offering.model.AdEnrollment;
 import my.edu.umk.pams.academic.offering.model.AdOffering;
 import my.edu.umk.pams.academic.offering.model.AdSection;
 import my.edu.umk.pams.academic.offering.service.OfferingService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
+
+import java.util.List;
 
 @JGivenStage
 public class ThenICanChoose extends Stage<ThenICanChoose> {
 
-	@Autowired
-	private OfferingService offeringService;
+    @Autowired
+    private OfferingService offeringService;
 
-	@ExpectedScenarioState
-	private AdEnrollment enrollment;
+    @ExpectedScenarioState
+    private List<AdOffering> offerings;
 
-	@ExpectedScenarioState
-	private AdOffering offering;
+    private static final Logger LOG = LoggerFactory.getLogger(ThenICanChoose.class);
 
-	@ExpectedScenarioState
-	private AdSection section;
-
-	private static final Logger LOG = LoggerFactory.getLogger(ThenICanChoose.class);
-
-	public ThenICanChoose i_can_choose() {
-
-		String canonicalCode = "123";
-		LOG.debug("section {} ", section);
-		AdSection section = offeringService.findSectionByCanonicalCode(canonicalCode);
-		Assert.notNull(section, "The data must not be null");
-
-		offering.getCourse().getCode();
-
-		return self();
-
-	}
-
+    public ThenICanChoose i_can_choose_which_section_to_enroll() {
+        // iterate thru expected offerings
+        // try to find section to enroll
+        for (AdOffering offering : offerings) {
+            List<AdSection> sections = offeringService.findSections(offering);
+            for (AdSection section : sections) {
+                // check if section has exceeded capacity
+                boolean exceededEnrollment = offeringService.hasExceededEnrollment(section);
+                Assert.isTrue(!exceededEnrollment, "Section is full");
+            }
+        }
+        return self();
+    }
 }

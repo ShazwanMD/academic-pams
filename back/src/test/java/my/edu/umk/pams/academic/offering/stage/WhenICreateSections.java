@@ -26,8 +26,7 @@ public class WhenICreateSections extends Stage<WhenICreateSections> {
 	
 	@Autowired
 	private OfferingService offeringService;
-	
-	
+
 	@ProvidedScenarioState
 	private AdSection section;
 	
@@ -42,18 +41,17 @@ public class WhenICreateSections extends Stage<WhenICreateSections> {
 	
 	@ExpectedScenarioState
 	private AdProgram program;
-	
+
+	@ExpectedScenarioState
+	private AdOffering offering;
+
 	@ExpectedScenarioState
 	private AdAcademicSession academicSession;
-	
-	@ProvidedScenarioState
-	private AdOffering offering;
-	
+
 	@ProvidedScenarioState
 	private String code;
 	
-	public WhenICreateSections I_create_sections() {
-		
+	public WhenICreateSections I_create_sections_for_offering() {
 		offering = offeringService.findOfferingByCanonicalCode("FIAT/PHD/0001");
 		canonicalCode = faculty.getCode() + "/" + program.getCode() + "/"  + academicSession.getCode();
 		code= program.getCode() + "/" + academicSession.getCode();

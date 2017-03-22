@@ -8,6 +8,8 @@ import my.edu.umk.pams.academic.studyplan.model.AdProgram;
 import java.util.List;
 
 /**
+ * Offering canonical Code
+ * <PROGRAM>/<COURSE>/<ACADMIC_SESSION>
  * @author PAMS
  */
 public interface AdOffering extends AdMetaObject {
@@ -21,7 +23,6 @@ public interface AdOffering extends AdMetaObject {
 
     void setCanonicalCode(String canonicalCode);
 
-    // TODO: removed??
     String getTitle();
 
     void setTitle(String title);

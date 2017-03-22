@@ -46,7 +46,7 @@ public class US_AD_SPL_2003 extends SpringScenarioTest<GivenIAmStudent, WhenIWan
     }
 
     @Test
-    @Rollback(false)
+    @Rollback(true)
     public void scenario2003() {
         given().I_am_a_student_in_current_academic_session();
         when().I_want_to_view_the_course_for_faculty_$(FACULTY_CODE);

@@ -25,8 +25,9 @@ import my.edu.umk.pams.bdd.stage.GivenIAmStudent;
 @ContextConfiguration(classes = TestAppConfiguration.class)
 public class US_AD_OFG_0009 extends SpringScenarioTest<GivenIAmStudent, WhenIWantToViewTheOfferedCoursesByAcademicSession, ThenICanChoose> {
 
-	private static final Logger LOG = LoggerFactory.getLogger(US_AD_OFG_0009.class);
-	
+    private static final Logger LOG = LoggerFactory.getLogger(US_AD_OFG_0009.class);
+
+    public static final String PROGRAM_CODE = "FKP/PHD/0001";
 
     @Before
     public void before() {
@@ -40,8 +41,8 @@ public class US_AD_OFG_0009 extends SpringScenarioTest<GivenIAmStudent, WhenIWan
     @Rollback(true)
     public void scenario1() {
         given().I_am_a_student_in_current_academic_session()
-                .and().I_pick_program_$("FIAT/PHD/0001");
-        when().I_want_to_view_the_offered_courses_by_academic_session();
-        then().i_can_choose();
+                .and().I_pick_program_$(PROGRAM_CODE);
+        when().I_browse_the_offered_courses_by_program_I_picked();
+        then().i_can_choose_which_section_to_enroll();
     }
 }

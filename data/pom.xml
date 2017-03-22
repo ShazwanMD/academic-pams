@@ -273,10 +273,16 @@
                                 <srcFile>src/test/resources/ddl/ACL.POSTGRES.sql</srcFile>
                                 <srcFile>src/test/resources/ddl/ACT.POSTGRES.sql</srcFile>
                                 <srcFile>src/test/resources/ddl/BAT.POSTGRES.sql</srcFile>
-                                <srcFile>src/test/resources/data/AD_RFRN_NO.sql</srcFile>
                                 <srcFile>src/test/resources/data/AD_PCPL.sql</srcFile>
                                 <srcFile>src/test/resources/data/AD_ACTR.sql</srcFile>
+                                <srcFile>src/test/resources/data/AD_RFRN_NO.sql</srcFile>
+
                                 <srcFile>src/test/resources/data/AD_GNDR_CODE.sql</srcFile>
+                                <srcFile>src/test/resources/data/AD_PLMT_CODE.sql</srcFile>
+                                <srcFile>src/test/resources/data/AD_DUN_CODE.sql</srcFile>
+                                <srcFile>src/test/resources/data/AD_CNTY_CODE.sql</srcFile>
+                                <srcFile>src/test/resources/data/AD_STTE_CODE.sql</srcFile>
+
                                 <srcFile>src/test/resources/data/AD_ACDM_SESN.sql</srcFile>
                                 <srcFile>src/test/resources/data/AD_FCTY.sql</srcFile>
                                 <srcFile>src/test/resources/data/AD_PRGM_LEVL.sql</srcFile>
@@ -284,10 +290,6 @@
                                 <srcFile>src/test/resources/data/AD_CRLM.sql</srcFile>
                                 <srcFile>src/test/resources/data/AD_CHRT.sql</srcFile>
                                 <srcFile>src/test/resources/data/AD_CRSE.sql</srcFile>
-                                <srcFile>src/test/resources/data/AD_PLMT_CODE.sql</srcFile>
-                                <srcFile>src/test/resources/data/AD_DUN_CODE.sql</srcFile>
-                                <srcFile>src/test/resources/data/AD_CNTY_CODE.sql</srcFile>
-                                <srcFile>src/test/resources/data/AD_STTE_CODE.sql</srcFile>
                             </srcFiles>
                         </configuration>
                     </execution>

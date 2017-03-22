@@ -43,7 +43,7 @@ public class US_AD_SPL_1006 extends SpringScenarioTest<GivenIAmAdministrator, Wh
     }
 
     @Test
-    @Rollback(false)
+    @Rollback(true)
     public void scenario1006() {
         given().I_am_a_PPS_administrator_in_current_academic_session();
         when().I_want_to_set_up_curriculum_for_a_faculty_$(FACULTY_CODE);

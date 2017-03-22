@@ -1,13 +1,10 @@
 package my.edu.umk.pams.academic.offering.stage;
 
 import com.tngtech.jgiven.Stage;
-
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
-import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 import my.edu.umk.pams.academic.offering.model.AdOffering;
 import my.edu.umk.pams.academic.offering.model.AdOfferingImpl;
-import my.edu.umk.pams.academic.offering.model.AdSection;
 import my.edu.umk.pams.academic.offering.service.OfferingService;
 import my.edu.umk.pams.academic.studyplan.model.AdAcademicSession;
 import my.edu.umk.pams.academic.studyplan.model.AdCourse;
@@ -26,58 +23,41 @@ import java.util.List;
 @JGivenStage
 public class WhenIOfferACourse extends Stage<WhenIOfferACourse> {
 
-	private static final Logger LOG = LoggerFactory.getLogger(WhenIOfferACourse.class);
+    private static final Logger LOG = LoggerFactory.getLogger(WhenIOfferACourse.class);
 
-	@Autowired
-	private OfferingService offeringService;
+    @Autowired
+    private OfferingService offeringService;
 
-	@Autowired
-	private StudyplanService studyplanService;
+    @Autowired
+    private StudyplanService studyplanService;
 
-	@ExpectedScenarioState
-	private AdAcademicSession academicSession;
+    @ExpectedScenarioState
+    private AdAcademicSession academicSession;
 
-	@ProvidedScenarioState
-	private String code;
+    @ExpectedScenarioState
+    private AdProgram program;
 
-	@ProvidedScenarioState
-	private String title;
+    public WhenIOfferACourse I_offer_all_courses_under_program_faculty() {
+        // find faculty of the program
+        AdFaculty faculty = program.getFaculty();
 
-	@ProvidedScenarioState
-	private List<AdSection> sections;
-
-	@ProvidedScenarioState
-	private AdOffering offering;
-
-	@ExpectedScenarioState
-	private AdProgram program;
-	
-	@ExpectedScenarioState
-	private AdFaculty faculty;
-	
-	@ProvidedScenarioState
-	private AdCourse course;
-	
-	@ProvidedScenarioState
-	private String canonicalCode;
-
-	public WhenIOfferACourse I_offer_a_course() {
-		program = studyplanService.findProgramByCode("FIAT/PHD/0001");
-		course = studyplanService.findCourseByCode("GST5021");
-	    code = course.getCode() + "/" + academicSession.getCode();
-		canonicalCode = faculty.getCode() + "/" + course.getCode() + "/" + academicSession.getCode(); 
-		
-		offering = new AdOfferingImpl();
-		
-		offering.setCode(code);
-		offering.setCanonicalCode(canonicalCode);
-		offering.setTitle("MBA-ECONOMICS & BUSINESS ENVIRONMENT"); 
-		offering.setCapacity(50);
-		offering.setSectionCount(3);
-		offering.setCourse(course);
-		offering.setProgram(program);
-		offeringService.saveOffering(offering);
-		
-		return self();
-	}
+        // find ALL courses under this faculty
+        // to be offered by this program
+        List<AdCourse> courses = studyplanService.findCourses(faculty);
+        for (AdCourse course : courses) {
+            String code = program.getCode() + "/" + course.getCode();
+            String canonicalCode = program.getCode() + "/" + course.getCode() + "/" + academicSession.getCode();
+            LOG.debug("course: {}", course.getCode());
+            AdOffering offering = new AdOfferingImpl();
+            offering.setCode(code);
+            offering.setCanonicalCode(canonicalCode);
+            offering.setTitle(course.getTitle());
+            offering.setCapacity(50);
+            offering.setCourse(course);
+            offering.setProgram(program);
+            // todo(uda): setSession ???
+            offeringService.saveOffering(offering);
+        }
+        return self();
+    }
 }

@@ -39,7 +39,7 @@ public class US_AD_OFG_0002 extends SpringScenarioTest<GivenIAmPPSAdministrator,
     @Rollback(true)
     public void scenario1() {
         given().I_am_a_PPS_administrator_in_current_academic_session();
-        when().I_offer_a_course();
-        then().the_course_is_ready_for_setup();
+        when().I_offer_all_courses_under_program_faculty();
+        then().the_offering_is_ready_for_setup();
     }
 }

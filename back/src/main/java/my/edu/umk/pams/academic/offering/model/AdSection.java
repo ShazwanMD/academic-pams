@@ -42,9 +42,9 @@ public interface AdSection extends AdMetaObject {
 
     void setEnrollments(List<AdEnrollment> enrollments);
 
-//    List<AdAppointment> getAppointments();
-//
-//    void setAppointments(List<AdAppointment> appointments);
+    List<AdAppointment> getAppointments();
+
+    void setAppointments(List<AdAppointment> appointments);
 
     Integer getAppointmentCount();
 

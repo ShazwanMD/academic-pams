@@ -30,24 +30,23 @@ import my.edu.umk.pams.bdd.stage.GivenIAmStudent;
 
 public class US_AD_PFL_1004 extends SpringScenarioTest<GivenIAmStudent, WhenIUpdateMyContactNumber, ThenMyContactNumberIsUpdated> {
 
-	private static final Logger LOG = LoggerFactory.getLogger(US_AD_PFL_1004.class);
+    private static final Logger LOG = LoggerFactory.getLogger(US_AD_PFL_1004.class);
 
-	@Before
-	public void before() {
-	}
+    @Before
+    public void before() {
+    }
 
-	@After
-	public void after() {
-	}
+    @After
+    public void after() {
+    }
 
-	
-	@Test
-	@Rollback(false)
-	public void scenario1004() {
-       given().I_am_a_student_in_current_academic_session();
-       when().I_update_my_contact_number();
-       then().my_contact_number_is_updated();
-	     }   
 
+    @Test
+    @Rollback(true)
+    public void scenario1004() {
+        given().I_am_a_student_in_current_academic_session();
+        when().I_update_my_contact_number();
+        then().my_contact_number_is_updated();
+    }
 }
 

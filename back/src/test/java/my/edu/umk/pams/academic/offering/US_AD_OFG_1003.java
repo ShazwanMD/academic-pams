@@ -1,4 +1,5 @@
 package my.edu.umk.pams.academic.offering;
+
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.offering.stage.ThenTheStudentCanEnrol;
@@ -22,22 +23,23 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 public class US_AD_OFG_1003 extends SpringScenarioTest<GivenIAmPPSAdministrator, WhenICreateSections, ThenTheStudentCanEnrol> {
-	 private static final Logger LOG = LoggerFactory.getLogger(US_AD_OFG_1003.class);
-	 
-	 
-	 @Before
-	    public void before() {
-	    }
+    private static final Logger LOG = LoggerFactory.getLogger(US_AD_OFG_1003.class);
+    public static final String PROGRAM_CODE = "FKP/PHD/0001";
 
-	    @After
-	    public void after() {
-	    }
+    @Before
+    public void before() {
+    }
 
-	    @Test
-	    @Rollback(true)
-	    public void scenario1() {
-	        given().I_am_a_PPS_administrator_in_current_academic_session();
-	        when().I_create_sections();
-            then().the_student_can_enrol();
-}
+    @After
+    public void after() {
+    }
+
+    @Test
+    @Rollback(true)
+    public void scenario1() {
+        given().I_am_a_PPS_administrator_in_current_academic_session()
+                .and().I_pick_program_$(PROGRAM_CODE);
+        when().I_create_sections_for_offering();
+        then().the_student_can_enrol();
+    }
 }

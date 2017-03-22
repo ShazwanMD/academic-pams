@@ -1,4 +1,3 @@
-
 create table AD_ACDM_AREA (
     ID int8 not null,
     CODE varchar(255) not null,
@@ -427,7 +426,7 @@ create table AD_CRSE (
     TITLE varchar(255) not null,
     TITLE_EN varchar(255) not null,
     TITLE_MS varchar(255) not null,
-    FACULTY_ID int8,
+    FACULTY_ID int8 not null,
     primary key (ID)
 );
 
@@ -1026,6 +1025,7 @@ create table AD_PRGM_LEVL (
     M_TS timestamp,
     M_ID int8,
     M_ST int4,
+    ADPROGRAM_TYPE int4,
     primary key (ID)
 );
 

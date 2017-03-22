@@ -21,10 +21,11 @@ public class AdSectionImpl implements AdSection {
     @SequenceGenerator(name = "SQ_AD_SCTN", sequenceName = "SQ_AD_SCTN", allocationSize = 1)
     private Long id;
 
+    // academicSession.code/ordinal
     @Column(name = "CODE", nullable = false)
     private String code;
 
-    // academicSession.code/offering.canonicalCode/ordinal
+    // offering.canonicalCode/academicSession.code/ordinal
     @Column(name = "CANONICAL_CODE", nullable = false, unique = true)
     private String canonicalCode;
 
@@ -48,8 +49,8 @@ public class AdSectionImpl implements AdSection {
     @OneToMany(targetEntity = AdEnrollmentImpl.class, mappedBy = "section", fetch = FetchType.LAZY)
     private List<AdEnrollment> enrollments;
 
-//    @OneToMany(targetEntity = AdAppointmentImpl.class, mappedBy = "section", fetch = FetchType.LAZY)
-//    private List<AdAppointment> appointments;
+    @OneToMany(targetEntity = AdAppointmentImpl.class, mappedBy = "section", fetch = FetchType.LAZY)
+    private List<AdAppointment> appointments;
 
     @Embedded
     private AdMetadata metadata;
@@ -151,15 +152,15 @@ public class AdSectionImpl implements AdSection {
         this.enrollments = enrollments;
     }
 
-//    @Override
-//    public List<AdAppointment> getAppointments() {
-//        return appointments;
-//    }
-//
-//    @Override
-//    public void setAppointments(List<AdAppointment> appointments) {
-//        this.appointments = appointments;
-//    }
+    @Override
+    public List<AdAppointment> getAppointments() {
+        return appointments;
+    }
+
+    @Override
+    public void setAppointments(List<AdAppointment> appointments) {
+        this.appointments = appointments;
+    }
 
     @Override
     public AdMetadata getMetadata() {

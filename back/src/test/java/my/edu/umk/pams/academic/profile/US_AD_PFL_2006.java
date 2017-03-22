@@ -48,7 +48,7 @@ public class US_AD_PFL_2006
 	private String PROGRAM_CODE = "PRGM-101";
 
 	@Test
-	@Rollback(false)
+	@Rollback(true)
 	public void scenario01() {
 		given().I_am_a_PPS_administrator_in_current_academic_session();
 		when().I_add_program_info_$(FACULTY_CODE).and().when().I_view_program_info_$(FACULTY_CODE);

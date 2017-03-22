@@ -1,16 +1,18 @@
 package my.edu.umk.pams.academic.offering.stage;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 import my.edu.umk.pams.academic.offering.model.AdOffering;
 import my.edu.umk.pams.academic.offering.service.OfferingService;
-import my.edu.umk.pams.academic.studyplan.model.AdCourse;
+import my.edu.umk.pams.academic.studyplan.model.AdAcademicSession;
 import my.edu.umk.pams.academic.studyplan.model.AdProgram;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
+
+import java.util.List;
 
 /**
  * @author asyikin.mr@umk and ziana
@@ -18,22 +20,23 @@ import org.springframework.util.Assert;
 @JGivenStage
 public class ThenTheOfferingIsReadyForSetup extends Stage<ThenTheOfferingIsReadyForSetup> {
 
-	@Autowired
-	private OfferingService offeringService;
+    private static final Logger LOG = LoggerFactory.getLogger(ThenTheOfferingIsReadyForSetup.class);
 
-	@ExpectedScenarioState
-	private AdProgram program;
+    @Autowired
+    private OfferingService offeringService;
 
-	@ExpectedScenarioState
-	private AdCourse course;
+    @ExpectedScenarioState
+    private AdAcademicSession academicSession;
 
-	private static final Logger LOG = LoggerFactory.getLogger(ThenTheOfferingIsReadyForSetup.class);
+    @ExpectedScenarioState
+    private AdProgram program;
 
-	public ThenTheOfferingIsReadyForSetup the_course_is_ready_for_setup() {
-		LOG.debug("course {} ", course);
-		AdOffering offering = offeringService.findOfferingByProgramAndCourse(program, course);
-		Assert.notNull(offering, "The data must not be null");
-		return self();
-
-	}
+    public ThenTheOfferingIsReadyForSetup the_offering_is_ready_for_setup() {
+        List<AdOffering> offerings = offeringService.findOfferings(program);
+        for (AdOffering offering : offerings) {
+            boolean hasSection = offeringService.hasSection(academicSession, offering);
+            Assert.isTrue(!hasSection, "Offering does not have section and ready to be setup");
+        }
+        return self();
+    }
 }

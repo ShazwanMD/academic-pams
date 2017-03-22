@@ -40,7 +40,7 @@ public class AdCourseImpl implements AdCourse {
     private AdAcademicClassification classification;
 
     @ManyToOne(targetEntity = AdFacultyImpl.class)
-    @JoinColumn(name = "FACULTY_ID")
+    @JoinColumn(name = "FACULTY_ID", nullable = false)
     private AdFaculty faculty;
 
     @OneToMany(targetEntity = AdCoursePrerequisiteImpl.class, mappedBy = "course", fetch = FetchType.LAZY)
