@@ -3,9 +3,9 @@ package my.edu.umk.pams.academic.studyplan;
 /**
  * As an admin academic,
  *  I am a student in current academic session,
- *      Can take in new semester
+ *     so that Can take in new semester.
  *
- * @author zaida_ain
+ * @author zaida
  */
 
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
