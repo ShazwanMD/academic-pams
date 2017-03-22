@@ -8,6 +8,8 @@ import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.offering.dao.*;
 import my.edu.umk.pams.academic.offering.event.EnrollmentConfirmedEvent;
 import my.edu.umk.pams.academic.offering.event.EnrollmentWithdrawnEvent;
+import my.edu.umk.pams.academic.offering.event.SectionClosedEvent;
+import my.edu.umk.pams.academic.offering.event.SectionOpenedEvent;
 import my.edu.umk.pams.academic.offering.model.*;
 import my.edu.umk.pams.academic.profile.model.AdAdmission;
 import my.edu.umk.pams.academic.security.service.SecurityService;
@@ -327,6 +329,49 @@ public class OfferingServiceImpl implements OfferingService {
 		return sectionDao.isExists(canonicalCode);
 	}
 
+    @Override
+    public void openSection(AdSection section) {
+        // todo(uda): exception = Section already exists
+
+        sectionDao.save(section, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+        sessionFactory.getCurrentSession().refresh(section);
+
+        SectionOpenedEvent event = new SectionOpenedEvent();
+        applicationContext.publishEvent(event);
+    }
+
+    @Override
+    public void closeSection(AdSection section) {
+        //todo(uda): exception- Section has enrollment. Please remove enrollment first;
+        List<AdEnrollment> enrollments = findEnrollments(section);
+        // todo(uda): remove gradebook
+        // todo(uda): remove enrollment
+        // todo(uda): remove appointment
+        // todo(uda): remove auth
+
+        SectionClosedEvent event = new SectionClosedEvent();
+        applicationContext.publishEvent(event);
+    }
+
+
+    @Override
+    public void saveSection(AdSection section) {
+        sectionDao.save(section, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
+
+    @Override
+    public void updateSection(AdSection section) {
+        sectionDao.update(section, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
+
+    @Override
+    public void removeSection(AdSection section) {
+        sectionDao.remove(section, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
 
     // ====================================================================================================
     // OFFERING

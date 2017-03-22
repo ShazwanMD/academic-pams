@@ -16,7 +16,7 @@ import java.util.List;
  * Enroll = student enrollment into section<br/>
  * Withdraw = student withdraw from section<br/>
  * </p>
-
+ *
  * @author PAMS
  */
 public interface OfferingService {
@@ -62,7 +62,7 @@ public interface OfferingService {
     Integer countOfferingWithSection(boolean authorized, String filter, AdAcademicSession session);
 
     boolean isOfferingExists(AdProgram program, AdCourse course);
-    
+
     void saveOffering(AdOffering offering);
 
     //==========+==========================================================================================
@@ -110,6 +110,16 @@ public interface OfferingService {
     boolean hasSection(AdAcademicSession academicSession, AdOffering offering);
 
     boolean isSectionExists(String canonicalCode);
+
+    void openSection(AdSection section); // todo(uda): throws SectionException;
+
+    void closeSection(AdSection section);// todo(uda): throws SectionException;
+
+    void saveSection(AdSection section);
+
+    void updateSection(AdSection section);
+
+    void removeSection(AdSection section);
 
     // todo(uda): addEnrollment
 
@@ -250,9 +260,9 @@ public interface OfferingService {
 
     void serializeToEnrollment(AdEnrollmentApplication application);
 
-    void enroll(boolean override, AdSection section, AdStudent student, AdAdmission admission) ; // throws
+    void enroll(boolean override, AdSection section, AdStudent student, AdAdmission admission); // throws
 
-    void withdraw(boolean override, AdSection section, AdStudent student, AdAdmission admission) ; // throws
+    void withdraw(boolean override, AdSection section, AdStudent student, AdAdmission admission); // throws
 
     void addGradebooks(AdSection section, AdEnrollment enrollment);
 

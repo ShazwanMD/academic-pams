@@ -24,6 +24,5 @@ public class EnrollmentListener implements ApplicationListener<EnrollmentEvent> 
 
         // todo(uda): on enrollmentconfirmed
         // todo(uda): add gradebook
-
     }
 }
