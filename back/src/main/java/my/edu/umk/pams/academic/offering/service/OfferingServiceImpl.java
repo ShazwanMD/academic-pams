@@ -6,10 +6,7 @@ import my.edu.umk.pams.academic.identity.dao.AdStudentDao;
 import my.edu.umk.pams.academic.identity.model.AdStaff;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.offering.dao.*;
-import my.edu.umk.pams.academic.offering.event.EnrollmentConfirmedEvent;
-import my.edu.umk.pams.academic.offering.event.EnrollmentWithdrawnEvent;
-import my.edu.umk.pams.academic.offering.event.SectionClosedEvent;
-import my.edu.umk.pams.academic.offering.event.SectionOpenedEvent;
+import my.edu.umk.pams.academic.offering.event.*;
 import my.edu.umk.pams.academic.offering.model.*;
 import my.edu.umk.pams.academic.profile.model.AdAdmission;
 import my.edu.umk.pams.academic.security.service.SecurityService;
@@ -618,6 +615,65 @@ public class OfferingServiceImpl implements OfferingService {
     //====================================================================================================
 
     @Override
+    public void enroll(boolean override, AdSection section, AdStudent student, AdAdmission admission) {
+        LOG.debug("enrolling student #{} into section #{}", student.getMatricNo(), section.getCanonicalCode());
+        Validate.notNull(section, "Section cannot be null");
+        Validate.notNull(student, "Student cannot be null");
+
+        if (isEnrollmentExists(section, student)) // todo(uda): throw something here OfferingException
+
+            // todo(uda): close for now
+//        if (!override && mapManager.hasExceededCredit(dasFinder.findCurrentAcademicSession(), student)) {
+//            throw new EnrollmentException("Student exceed allowed credit count");
+//        }
+
+//        if (override && mapManager.hasExceededCredit(dasFinder.findCurrentAcademicSession(), student)) {
+//            throw new EnrollmentException("Student exceed allowed credit count");
+//        }
+
+            LOG.debug("section id: {}", section.getId());
+
+        // find admission
+        AdAcademicSession session = section.getSession();
+        AdOffering offering = section.getOffering();
+
+        // create enrollment
+        AdEnrollment enrollment = new AdEnrollmentImpl();
+        enrollment.setAdmission(admission);
+        enrollment.setStudent(student);
+        enrollment.setSection(section);
+        enrollment.setStatus(AdEnrollmentStatus.CONFIRMED);
+        saveEnrollment(enrollment);
+        sessionFactory.getCurrentSession().refresh(enrollment);
+
+        // TODO: check process calendar
+        // TODO: PRA, WAJIB, BERDENDA
+        AdAcademicSession academicSession = section.getSession();
+        AdProgram program = admission.getProgram();
+        AdStudyCenter studyCenter = admission.getStudyCenter();
+        EnrollmentConfirmedEvent event = new EnrollmentConfirmedEvent();
+        applicationContext.publishEvent(event);
+    }
+
+    @Override
+    public void withdraw(boolean override, AdSection section, AdStudent student, AdAdmission admission) {
+        // TODO: check process calendar
+        // TODO: PRA, WAJIB, BERDENDA
+        LOG.debug("withdrawing student #{} from section #{}", student.getMatricNo(), section.getCanonicalCode());
+
+        AdEnrollment enrollment = findEnrollmentBySectionAndStudent(section, student);
+        enrollment.setStatus(AdEnrollmentStatus.WITHDRAWN);
+        updateEnrollment(enrollment);
+
+        AdAcademicSession academicSession = section.getSession();
+        AdProgram program = admission.getProgram();
+        AdStudyCenter studyCenter = admission.getStudyCenter();
+        AdCohort cohort = student.getCohort();
+        EnrollmentWithdrawnEvent event = new EnrollmentWithdrawnEvent();
+        applicationContext.publishEvent(event);
+    }
+
+    @Override
     public void saveEnrollment(AdEnrollment enrollment) {
         enrollmentDao.save(enrollment, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
@@ -740,65 +796,6 @@ public class OfferingServiceImpl implements OfferingService {
     }
 
     @Override
-    public void enroll(boolean override, AdSection section, AdStudent student, AdAdmission admission) {
-        LOG.debug("enrolling student #{} into section #{}", student.getMatricNo(), section.getCanonicalCode());
-        Validate.notNull(section, "Section cannot be null");
-        Validate.notNull(student, "Student cannot be null");
-
-        if (isEnrollmentExists(section, student)) // todo(uda): throw something here OfferingException
-
-            // todo(uda): close for now
-//        if (!override && mapManager.hasExceededCredit(dasFinder.findCurrentAcademicSession(), student)) {
-//            throw new EnrollmentException("Student exceed allowed credit count");
-//        }
-
-//        if (override && mapManager.hasExceededCredit(dasFinder.findCurrentAcademicSession(), student)) {
-//            throw new EnrollmentException("Student exceed allowed credit count");
-//        }
-
-            LOG.debug("section id: {}", section.getId());
-
-        // find admission
-        AdAcademicSession session = section.getSession();
-        AdOffering offering = section.getOffering();
-
-        // create enrollment
-        AdEnrollment enrollment = new AdEnrollmentImpl();
-        enrollment.setAdmission(admission);
-        enrollment.setStudent(student);
-        enrollment.setSection(section);
-        enrollment.setStatus(AdEnrollmentStatus.CONFIRMED);
-        saveEnrollment(enrollment);
-        sessionFactory.getCurrentSession().refresh(enrollment);
-
-        // TODO: check process calendar
-        // TODO: PRA, WAJIB, BERDENDA
-        AdAcademicSession academicSession = section.getSession();
-        AdProgram program = admission.getProgram();
-        AdStudyCenter studyCenter = admission.getStudyCenter();
-        EnrollmentConfirmedEvent event = new EnrollmentConfirmedEvent();
-        applicationContext.publishEvent(event);
-    }
-
-    @Override
-    public void withdraw(boolean override, AdSection section, AdStudent student, AdAdmission admission) {
-        // TODO: check process calendar
-        // TODO: PRA, WAJIB, BERDENDA
-        LOG.debug("withdrawing student #{} from section #{}", student.getMatricNo(), section.getCanonicalCode());
-
-        AdEnrollment enrollment = findEnrollmentBySectionAndStudent(section, student);
-        enrollment.setStatus(AdEnrollmentStatus.WITHDRAWN);
-        updateEnrollment(enrollment);
-
-        AdAcademicSession academicSession = section.getSession();
-        AdProgram program = admission.getProgram();
-        AdStudyCenter studyCenter = admission.getStudyCenter();
-        AdCohort cohort = student.getCohort();
-        EnrollmentWithdrawnEvent event = new EnrollmentWithdrawnEvent();
-        applicationContext.publishEvent(event);
-    }
-
-    @Override
     public void addGradebooks(AdSection section, AdEnrollment enrollment) {
         AdOffering offering = section.getOffering();
         AdAcademicSession session = section.getSession();
@@ -912,6 +909,35 @@ public class OfferingServiceImpl implements OfferingService {
     @Override
     public boolean isAnyAppointmentExists(AdAcademicSession academicSession, AdOffering offering, AdStaff staff) {
         return appointmentDao.isAnyExists(academicSession, offering, staff);
+    }
+
+    @Override
+    public void appoint(AdSection section, AdStaff staff) {
+        // todo(uda): throw error on appointment exists
+        // todo(uda): throw error on appointment clash
+
+        AdAppointment appointment = new AdAppointmentImpl();
+        appointment.setStaff(staff);
+        appointment.setSection(section);
+        appointment.setStatus(AdAppointmentStatus.CONFIRMED);
+        sectionDao.addAppointment(section, appointment, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+        sessionFactory.getCurrentSession().refresh(appointment);
+
+        AppointmentConfirmedEvent event = new AppointmentConfirmedEvent();
+        applicationContext.publishEvent(event);
+    }
+
+    @Override
+    public void dismiss(AdSection section, AdStaff staff) {
+        // todo(uda): throw error on appointment not exists
+
+        AdAppointment appointment = appointmentDao.findBySectionAndStaff(section, staff);
+        appointment.setStatus(AdAppointmentStatus.DISMISSED);
+        sectionDao.updateAppointment(section, appointment, securityService.getCurrentUser());
+
+        AppointmentDismissedEvent event = new AppointmentDismissedEvent();
+        applicationContext.publishEvent(event);
     }
 
     @Override

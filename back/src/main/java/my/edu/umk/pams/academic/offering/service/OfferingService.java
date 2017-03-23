@@ -227,6 +227,10 @@ public interface OfferingService {
 
     boolean hasExceededEnrollment(AdSection section);
 
+    void enroll(boolean override, AdSection section, AdStudent student, AdAdmission admission); // throws
+
+    void withdraw(boolean override, AdSection section, AdStudent student, AdAdmission admission); // throws
+
     // todo(uda): business method is enroll()
     void saveEnrollment(AdEnrollment enrollment);
 
@@ -261,10 +265,6 @@ public interface OfferingService {
     void deleteEnrollmentApplicationItem(AdEnrollmentApplication application, AdEnrollmentApplicationItem item);
 
     void serializeToEnrollment(AdEnrollmentApplication application);
-
-    void enroll(boolean override, AdSection section, AdStudent student, AdAdmission admission); // throws
-
-    void withdraw(boolean override, AdSection section, AdStudent student, AdAdmission admission); // throws
 
     void addGradebooks(AdSection section, AdEnrollment enrollment);
 
@@ -301,6 +301,10 @@ public interface OfferingService {
     boolean isAppointmentExists(AdSection section, AdStaff staff);
 
     boolean isAnyAppointmentExists(AdAcademicSession academicSession, AdOffering offering, AdStaff staff);
+
+    void appoint(AdSection section, AdStaff staff);
+
+    void dismiss(AdSection section, AdStaff staff);
 
     // todo(uda): business method is appoint()
     void saveAppointment(AdAppointment appointment);
