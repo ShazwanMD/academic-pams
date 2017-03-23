@@ -1,7 +1,7 @@
 **Modules**
 - Common : shared object
 - Study Plan : Curriculum/Structure
-- Offering : Offering
+- Term : Term
 - Application : Admission and Enrollment 
 - Assessment : Assessment
 - Graduation : Graduation
@@ -17,8 +17,9 @@
 **Module Naming Convention**
 - PFL - PROFILE
 - SPL - STUDYPLAN
-- OFG - OFFERING
+- TRM - TERM
 - ASM - ASSESSMENT
+- GRD - GRADUATION
 
 **Domain Convention**
 - CRTR = CRITERIA

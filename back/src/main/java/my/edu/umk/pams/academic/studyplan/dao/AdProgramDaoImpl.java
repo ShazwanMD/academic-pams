@@ -5,7 +5,7 @@ import my.edu.umk.pams.academic.core.AdMetaState;
 import my.edu.umk.pams.academic.core.AdMetadata;
 import my.edu.umk.pams.academic.core.GenericDaoSupport;
 import my.edu.umk.pams.academic.identity.model.AdUser;
-import my.edu.umk.pams.academic.offering.model.AdOffering;
+import my.edu.umk.pams.academic.term.model.AdOffering;
 import my.edu.umk.pams.academic.studyplan.model.*;
 import org.apache.commons.lang.Validate;
 import org.hibernate.Query;

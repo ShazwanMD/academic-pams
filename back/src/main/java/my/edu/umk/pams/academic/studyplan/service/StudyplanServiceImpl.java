@@ -1,9 +1,9 @@
 package my.edu.umk.pams.academic.studyplan.service;
 
 import my.edu.umk.pams.academic.identity.model.AdStudent;
-import my.edu.umk.pams.academic.offering.dao.AdAssessmentDao;
-import my.edu.umk.pams.academic.offering.dao.AdOfferingDao;
-import my.edu.umk.pams.academic.offering.dao.AdSectionDao;
+import my.edu.umk.pams.academic.term.dao.AdAssessmentDao;
+import my.edu.umk.pams.academic.term.dao.AdOfferingDao;
+import my.edu.umk.pams.academic.term.dao.AdSectionDao;
 import my.edu.umk.pams.academic.security.service.SecurityService;
 import my.edu.umk.pams.academic.studyplan.dao.*;
 import my.edu.umk.pams.academic.studyplan.model.*;
