@@ -81,6 +81,9 @@ public class OfferingServiceImpl implements OfferingService {
     private AdEnrollmentDao enrollmentDao;
 
     @Autowired
+    private AdAppointmentDao appointmentDao;
+
+    @Autowired
     private AdAssessmentDao assessmentDao;
 
     @Autowired
@@ -718,7 +721,6 @@ public class OfferingServiceImpl implements OfferingService {
 //        return groupDao.findByName();
 //    }
 
-
     //====================================================================================================
     // BUSINESS PROCESS
     //====================================================================================================
@@ -838,6 +840,28 @@ public class OfferingServiceImpl implements OfferingService {
 //            }
 //        }
     }
+
+    //====================================================================================================
+    // APPOINTMENT
+    //====================================================================================================
+    @Override
+    public void saveAppointment(AdAppointment appointment) {
+        appointmentDao.save(appointment, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
+
+    @Override
+    public void updateAppointment(AdAppointment appointment) {
+        appointmentDao.update(appointment, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
+
+    @Override
+    public void deleteAppointment(AdAppointment appointment) {
+        appointmentDao.delete(appointment, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
+
 
     //====================================================================================================
     // PRIVATE METHODS

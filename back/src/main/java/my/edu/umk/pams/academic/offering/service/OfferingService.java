@@ -225,12 +225,12 @@ public interface OfferingService {
 
     boolean hasExceededEnrollment(AdSection section);
 
+    // todo(uda): business method is enroll()
     void saveEnrollment(AdEnrollment enrollment);
 
     void updateEnrollment(AdEnrollment enrollment);
 
     void deleteEnrollment(AdEnrollment enrollment);
-
 
     //====================================================================================================
     // ENROLLMENT APPLICATION
@@ -268,4 +268,15 @@ public interface OfferingService {
 
     void addGradebooks(AdSection section, AdAssessment assessment);
 
+
+    //====================================================================================================
+    // ENROLLMENT
+    //====================================================================================================
+
+    // todo(uda): business method is appoint()
+    void saveAppointment(AdAppointment appointment);
+
+    void updateAppointment(AdAppointment appointment);
+
+    void deleteAppointment(AdAppointment appointment);
 }
