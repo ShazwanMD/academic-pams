@@ -7,6 +7,7 @@ package my.edu.umk.pams.academic.studyplan.stage;
  * @author ain_zaida
  */
 
+import com.tngtech.jgiven.annotation.Pending;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
@@ -29,14 +30,15 @@ public class WhenIAddACoursePrerequisite extends Stage<WhenIAddACoursePrerequisi
 
 	    @ProvidedScenarioState
 	    private AdCourse course;
-	
+
+	@Pending
     public WhenIAddACoursePrerequisite I_want_add_course_prerequisite_$(String courseCode) {
 
     	course = studyplanService.findCourseByCode(courseCode);
     	AdCoursePrerequisite  prerequisites = new AdCoursePrerequisiteImpl();
     	prerequisites.setCourse(course);
     	prerequisites.setPrerequisite(course);
-    	studyplanService.savePrerequisites(prerequisites);
+//    	studyplanService.savePrerequisites(prerequisites);
     	
         return self();
 
