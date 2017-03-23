@@ -1,5 +1,7 @@
 package my.edu.umk.pams.academic.offering.stage;
-
+/**
+ * @author asyikin.mr
+ */
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
@@ -26,16 +28,7 @@ public class WhenIUpdateAcademicSessionStatus extends Stage<WhenIUpdateAcademicS
     private String code;
 
     @ExpectedScenarioState
-    private AdCourse course;
-
-    @ExpectedScenarioState
     private AdMetadata metadata;
-
-    @ExpectedScenarioState
-    private AdAcademicYear academicYear;
-
-    @ExpectedScenarioState
-    private AdAcademicSemester academicSemester;
 
     @ExpectedScenarioState
     private AdAcademicSession previous;
@@ -44,19 +37,15 @@ public class WhenIUpdateAcademicSessionStatus extends Stage<WhenIUpdateAcademicS
 
         Calendar now = Calendar.getInstance();
         code = (now.get(Calendar.MONTH) + 1) + "/" + now.get(Calendar.YEAR);
-        // to do asyikin and uda tolong tengok tak siap lagi =)
+                
         academicSession = new AdAcademicSessionImpl();
         academicSession.setCode(code);
         academicSession.setCurrent(true);
         academicSession.setDescription("Sesi 09/2017/2018");
-        academicSession.setEndDate(null);
         academicSession.setMetadata(metadata);
-        academicSession.setPrevious(previous);
         academicSession.setStatus(AdAcademicStatus.NEW);
-        academicSession.setStartDate(null);
-        academicSession.setYear(academicYear);
-        academicSession.setSemester(academicSemester);
-
+        
+        
         studyplanService.updateAcademicSession(academicSession);
 
         LOG.debug("academicSession {} ", academicSession);

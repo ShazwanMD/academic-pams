@@ -41,7 +41,7 @@ public class WhenICreateSections extends Stage<WhenICreateSections> {
     @ExpectedScenarioState
     private AdProgram program;
 
-    @ExpectedScenarioState
+    @ProvidedScenarioState
     private AdOffering offering;
 
     @ExpectedScenarioState
@@ -62,7 +62,7 @@ public class WhenICreateSections extends Stage<WhenICreateSections> {
         section.setSession(academicSession);
         section.setOffering(offering);
         offeringService.saveSection(section);
-        ;
+        
 
         return self();
     }
