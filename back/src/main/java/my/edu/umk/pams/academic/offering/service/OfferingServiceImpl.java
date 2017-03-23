@@ -778,7 +778,6 @@ public class OfferingServiceImpl implements OfferingService {
         AdStudyCenter studyCenter = admission.getStudyCenter();
         EnrollmentConfirmedEvent event = new EnrollmentConfirmedEvent();
         applicationContext.publishEvent(event);
-
     }
 
     @Override
@@ -844,6 +843,77 @@ public class OfferingServiceImpl implements OfferingService {
     //====================================================================================================
     // APPOINTMENT
     //====================================================================================================
+
+    @Override
+    public AdAppointment findAppointmentById(Long id) {
+        return appointmentDao.findById(id);
+    }
+
+    @Override
+    public AdAppointment findAppointmentBySectionAndStaff(AdSection section, AdStaff staff) {
+        return appointmentDao.findBySectionAndStaff(section, staff);
+    }
+
+    @Override
+    public List<AdAppointment> findAppointments(AdOffering offering) {
+        return appointmentDao.find(offering);
+    }
+
+    @Override
+    public List<AdAppointment> findAppointments(AdSection section) {
+        return appointmentDao.find(section);
+    }
+
+    @Override
+    public List<AdAppointment> findAppointments(AdAcademicSession academicSession, AdOffering offering) {
+        return appointmentDao.find(academicSession, offering);
+    }
+
+    @Override
+    public List<AdAppointment> findAppointments(AdAcademicSession academicSession, AdStaff staff) {
+        return appointmentDao.find(academicSession, staff);
+    }
+
+    @Override
+    public List<AdAppointment> findAppointments(AdAcademicSession academicSession, AdStaff staff, Integer offset, Integer limit) {
+        return appointmentDao.find(academicSession, staff, offset, limit);
+    }
+
+    @Override
+    public List<AdAppointment> findAppointments(AdSection section, Integer offset, Integer limit) {
+        return appointmentDao.find(section, offset, limit);
+    }
+
+    @Override
+    public Integer countAppointment(AdSection section) {
+        return appointmentDao.count(section);
+    }
+
+    @Override
+    public Integer countAppointment(AdAcademicSession academicSession, AdOffering offering) {
+        return appointmentDao.count(academicSession, offering);
+    }
+
+    @Override
+    public Integer countAppointment(AdAcademicSession academicSession, AdStaff staff) {
+        return appointmentDao.count(academicSession, staff);
+    }
+
+    @Override
+    public boolean hasAppointment(AdSection section) {
+        return appointmentDao.hasAppointment(section);
+    }
+
+    @Override
+    public boolean isAppointmentExists(AdSection section, AdStaff staff) {
+        return appointmentDao.isExists(section, staff);
+    }
+
+    @Override
+    public boolean isAnyAppointmentExists(AdAcademicSession academicSession, AdOffering offering, AdStaff staff) {
+        return appointmentDao.isAnyExists(academicSession, offering, staff);
+    }
+
     @Override
     public void saveAppointment(AdAppointment appointment) {
         appointmentDao.save(appointment, securityService.getCurrentUser());
@@ -861,7 +931,6 @@ public class OfferingServiceImpl implements OfferingService {
         appointmentDao.delete(appointment, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
-
 
     //====================================================================================================
     // PRIVATE METHODS

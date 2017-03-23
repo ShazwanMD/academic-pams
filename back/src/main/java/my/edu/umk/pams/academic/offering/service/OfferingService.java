@@ -13,9 +13,11 @@ import org.activiti.engine.task.Task;
 import java.util.List;
 
 /**
- * Enroll = student enrollment into section<br/>
- * Withdraw = student withdraw from section<br/>
- * </p>
+ * Enroll = student enrolled into section<br/>
+ * Withdraw = student withdrawn from section<br/>
+ *
+ * Appoint = staff appointed into section<br/>
+ * Dismiss = staff dismissed from section<br/>
  *
  * @author PAMS
  */
@@ -268,10 +270,37 @@ public interface OfferingService {
 
     void addGradebooks(AdSection section, AdAssessment assessment);
 
+    //====================================================================================================
+    // APPOINTMENT
+    //====================================================================================================
 
-    //====================================================================================================
-    // ENROLLMENT
-    //====================================================================================================
+    AdAppointment findAppointmentById(Long id);
+
+    AdAppointment findAppointmentBySectionAndStaff(AdSection section, AdStaff staff);
+
+    List<AdAppointment> findAppointments(AdOffering offering);
+
+    List<AdAppointment> findAppointments(AdSection section);
+
+    List<AdAppointment> findAppointments(AdAcademicSession academicSession, AdOffering offering);
+
+    List<AdAppointment> findAppointments(AdAcademicSession academicSession, AdStaff staff);
+
+    List<AdAppointment> findAppointments(AdAcademicSession academicSession, AdStaff staff, Integer offset, Integer limit);
+
+    List<AdAppointment> findAppointments(AdSection section, Integer offset, Integer limit);
+
+    Integer countAppointment(AdSection section);
+
+    Integer countAppointment(AdAcademicSession academicSession, AdOffering offering);
+
+    Integer countAppointment(AdAcademicSession academicSession, AdStaff staff);
+
+    boolean hasAppointment(AdSection section);
+
+    boolean isAppointmentExists(AdSection section, AdStaff staff);
+
+    boolean isAnyAppointmentExists(AdAcademicSession academicSession, AdOffering offering, AdStaff staff);
 
     // todo(uda): business method is appoint()
     void saveAppointment(AdAppointment appointment);
