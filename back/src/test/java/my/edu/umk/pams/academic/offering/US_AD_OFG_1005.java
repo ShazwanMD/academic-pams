@@ -14,7 +14,7 @@ import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.offering.stage.ThenTheSectionsHaveAppointedStaff;
 import my.edu.umk.pams.academic.offering.stage.WhenIAppointStaffToSections;
-import my.edu.umk.pams.bdd.stage.GivenIAmPPSAdministrator;
+import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
 
 /**
  * @author asyikin.mr
@@ -24,7 +24,7 @@ import my.edu.umk.pams.bdd.stage.GivenIAmPPSAdministrator;
 @ContextConfiguration(classes = TestAppConfiguration.class)
 
 public class US_AD_OFG_1005 extends
-		SpringScenarioTest<GivenIAmPPSAdministrator, WhenIAppointStaffToSections, ThenTheSectionsHaveAppointedStaff> {
+		SpringScenarioTest<GivenIAmCPSAdministrator, WhenIAppointStaffToSections, ThenTheSectionsHaveAppointedStaff> {
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_OFG_1005.class);
 	public static final String PROGRAM_CODE = "FKP/PHD/0001";
 
@@ -39,7 +39,7 @@ public class US_AD_OFG_1005 extends
 	@Test
 	@Rollback(true)
 	public void scenario1() {
-		given().I_am_a_PPS_administrator_in_current_academic_session().and().I_pick_program_$(PROGRAM_CODE);
+		given().I_am_a_CPS_administrator_in_current_academic_session().and().I_pick_program_$(PROGRAM_CODE);
 		when().I_appoint_staff_for_sections();
 		then().the_sections_have_appointed_staff();
 	}

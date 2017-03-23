@@ -4,7 +4,7 @@ import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.studyplan.stage.ThenCourseHasPrerequisite;
 import my.edu.umk.pams.academic.studyplan.stage.WhenIAddACoursePrerequisite;
-import my.edu.umk.pams.bdd.stage.GivenIAmAdministrator;
+import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -27,7 +27,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 
-public class US_AD_SPL_1007 extends SpringScenarioTest<GivenIAmAdministrator, WhenIAddACoursePrerequisite, ThenCourseHasPrerequisite> {
+public class US_AD_SPL_1007 extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenIAddACoursePrerequisite, ThenCourseHasPrerequisite> {
 
 private static final Logger LOG = LoggerFactory.getLogger(US_AD_SPL_1007.class);
 
@@ -44,9 +44,9 @@ private static final Logger LOG = LoggerFactory.getLogger(US_AD_SPL_1007.class);
     @Test
     @Rollback(false)
     public void scenario1007() {
-        given().I_am_a_PPS_administrator_in_current_academic_session();
-        when().I_want_add_course_prerequisite_$("COURSE_CODE");
-        then().Course_has_prerequisite();
+        given().I_am_a_CPS_administrator_in_current_academic_session();
+        when().I_want_add_course_prerequisite_$(COURSE_CODE);
+        then().course_has_prerequisite();
     }
 
 }

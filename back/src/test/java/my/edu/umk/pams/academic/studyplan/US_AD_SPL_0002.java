@@ -4,7 +4,7 @@ import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.studyplan.stage.ThenFacultyHasCourse;
 import my.edu.umk.pams.academic.studyplan.stage.WhenIAddACourse;
-import my.edu.umk.pams.bdd.stage.GivenIAmPPSAdministrator;
+import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -26,7 +26,7 @@ import org.springframework.transaction.annotation.Transactional;
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
-public class US_AD_SPL_0002 extends SpringScenarioTest<GivenIAmPPSAdministrator, WhenIAddACourse, ThenFacultyHasCourse> {
+public class US_AD_SPL_0002 extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenIAddACourse, ThenFacultyHasCourse> {
 
     private static final Logger LOG = LoggerFactory.getLogger(US_AD_SPL_0002.class);
     public static final String FACULTY_CODE = "FKP";
@@ -42,7 +42,7 @@ public class US_AD_SPL_0002 extends SpringScenarioTest<GivenIAmPPSAdministrator,
     @Test
     @Rollback(true)
     public void scenario1() {
-        given().I_am_a_PPS_administrator();
+        given().I_am_a_CPS_administrator();
         when().I_add_a_course_to_faculty_code_$(FACULTY_CODE);
         then().faculty_has_courses();
     }

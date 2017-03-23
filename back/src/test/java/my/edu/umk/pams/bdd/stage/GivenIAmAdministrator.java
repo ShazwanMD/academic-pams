@@ -27,12 +27,12 @@ public class GivenIAmAdministrator extends Stage<GivenIAmAdministrator> {
     @ProvidedScenarioState
     AdAcademicSession academicSession;
 
-    public void I_am_a_PPS_administrator_in_$_academic_session(String academicSessionCode) {
+    public void I_am_a_administrator_in_$_academic_session(String academicSessionCode) {
         loginAsAdmin();
         academicSession = studyplanService.findAcademicSessionByCode(academicSessionCode);
     }
 
-    public void I_am_a_PPS_administrator_in_current_academic_session() {
+    public void I_am_a_administrator_in_current_academic_session() {
         loginAsAdmin();
         academicSession = studyplanService.findCurrentAcademicSession();
     }

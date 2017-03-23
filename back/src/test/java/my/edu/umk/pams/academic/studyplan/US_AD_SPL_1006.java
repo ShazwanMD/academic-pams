@@ -4,7 +4,7 @@ import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.studyplan.stage.ThenICanManageScheduleByProgram;
 import my.edu.umk.pams.academic.studyplan.stage.WhenIWantToSetUpCurriculumForAFaculty;
-import my.edu.umk.pams.bdd.stage.GivenIAmAdministrator;
+import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -26,7 +26,7 @@ import org.springframework.transaction.annotation.Transactional;
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
-public class US_AD_SPL_1006 extends SpringScenarioTest<GivenIAmAdministrator, WhenIWantToSetUpCurriculumForAFaculty, ThenICanManageScheduleByProgram> {
+public class US_AD_SPL_1006 extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenIWantToSetUpCurriculumForAFaculty, ThenICanManageScheduleByProgram> {
 
     private static final Logger LOG = LoggerFactory.getLogger(US_AD_SPL_1006.class);
 
@@ -43,7 +43,7 @@ public class US_AD_SPL_1006 extends SpringScenarioTest<GivenIAmAdministrator, Wh
     @Test
     @Rollback(true)
     public void scenario1006() {
-        given().I_am_a_PPS_administrator_in_current_academic_session();
+        given().I_am_a_CPS_administrator();
         when().I_want_to_set_up_curriculum_for_a_faculty_$(FACULTY_CODE);
         then().I_can_manage_schedule_by_program();
     }

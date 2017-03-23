@@ -4,7 +4,7 @@ import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.studyplan.stage.ThenGroupScheduleByIntakeCode;
 import my.edu.umk.pams.academic.studyplan.stage.WhenIAdACohort;
-import my.edu.umk.pams.bdd.stage.GivenIAmPPSAdministrator;
+import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -26,7 +26,7 @@ import org.springframework.transaction.annotation.Transactional;
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
-public class US_AD_SPL_0005 extends SpringScenarioTest<GivenIAmPPSAdministrator, WhenIAdACohort, ThenGroupScheduleByIntakeCode> {
+public class US_AD_SPL_0005 extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenIAdACohort, ThenGroupScheduleByIntakeCode> {
 
     private static final Logger LOG = LoggerFactory.getLogger(US_AD_SPL_0005.class);
     public static final String PROGRAM_CODE = "FIAT/PHD/0001";
@@ -42,7 +42,7 @@ public class US_AD_SPL_0005 extends SpringScenarioTest<GivenIAmPPSAdministrator,
     @Test
     @Rollback(true)
     public void scenario1() {
-        given().I_am_a_PPS_administrator();
+        given().I_am_a_CPS_administrator();
         when().I_want_to_set_up_cohort_for_$_program(PROGRAM_CODE);
         then().group_students_in_the_schedule_by_intake_code();
     }

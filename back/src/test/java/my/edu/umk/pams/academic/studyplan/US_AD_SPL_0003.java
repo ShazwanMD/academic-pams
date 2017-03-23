@@ -4,7 +4,7 @@ import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.studyplan.stage.ThenCoursesUpdated;
 import my.edu.umk.pams.academic.studyplan.stage.WhenIUpdateCourses;
-import my.edu.umk.pams.bdd.stage.GivenIAmPPSAdministrator;
+import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -27,7 +27,7 @@ so that its information of new course for each programmes is updated
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 
-public class US_AD_SPL_0003 extends SpringScenarioTest<GivenIAmPPSAdministrator, WhenIUpdateCourses, ThenCoursesUpdated> {
+public class US_AD_SPL_0003 extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenIUpdateCourses, ThenCoursesUpdated> {
 
     private static final Logger LOG = LoggerFactory.getLogger(US_AD_SPL_0003.class);
 
@@ -45,7 +45,7 @@ public class US_AD_SPL_0003 extends SpringScenarioTest<GivenIAmPPSAdministrator,
     @Test
     @Rollback(true)
     public void scenario1() {
-        given().I_am_a_PPS_administrator();
+        given().I_am_a_CPS_administrator();
         when().I_update_courses_to_faculty_code_$a(FACULTY_CODE);
         then().new_courses_information_updated();
     }

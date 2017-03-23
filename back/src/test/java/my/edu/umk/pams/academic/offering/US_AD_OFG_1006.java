@@ -16,7 +16,7 @@ import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.offering.stage.ThenTheStatusOfAppointmentIsUpdated;
 import my.edu.umk.pams.academic.offering.stage.WhenIUpdateAppointmentStatus;
-import my.edu.umk.pams.bdd.stage.GivenIAmPPSAdministrator;
+import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
 
 /**
  * @author asyikin.mr
@@ -25,7 +25,7 @@ import my.edu.umk.pams.bdd.stage.GivenIAmPPSAdministrator;
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 public class US_AD_OFG_1006 extends
-        SpringScenarioTest<GivenIAmPPSAdministrator, WhenIUpdateAppointmentStatus, ThenTheStatusOfAppointmentIsUpdated> {
+        SpringScenarioTest<GivenIAmCPSAdministrator, WhenIUpdateAppointmentStatus, ThenTheStatusOfAppointmentIsUpdated> {
     private static final Logger LOG = LoggerFactory.getLogger(US_AD_OFG_1006.class);
 
 
@@ -40,7 +40,7 @@ public class US_AD_OFG_1006 extends
     @Test
     @Rollback(true)
     public void scenario1() {
-        given().I_am_a_PPS_administrator_in_current_academic_session().and()
+        given().I_am_a_CPS_administrator_in_current_academic_session().and()
                 .I_pick_offering_$("");
         when().I_appoint_a_staff_$_into_all_section_for_the_offering("01001A");
         then().the_number_of_appointed_staff_increased();

@@ -32,7 +32,7 @@ public class ThenCourseHasPrerequisite extends Stage<ThenCourseHasPrerequisite> 
 	    private AdCourse course;
 
 	    @Pending
-	    public ThenCourseHasPrerequisite Course_has_prerequisite() {
+	    public ThenCourseHasPrerequisite course_has_prerequisite() {
 //	        List<AdCoursePrerequisite > prerequisites = studyplanService.findPrerequisites(course);
 //	        Assert.notEmpty(prerequisites, "courseprerequisite should not be empty");
 	        return self();

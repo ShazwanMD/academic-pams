@@ -5,7 +5,7 @@ import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.offering.stage.ThenTheOfferingIsReadyForSetup;
 import my.edu.umk.pams.academic.offering.stage.WhenIOfferACourse;
 import my.edu.umk.pams.academic.studyplan.US_AD_SPL_0001;
-import my.edu.umk.pams.bdd.stage.GivenIAmPPSAdministrator;
+import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -23,7 +23,7 @@ import org.springframework.transaction.annotation.Transactional;
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
-public class US_AD_OFG_0001 extends SpringScenarioTest<GivenIAmPPSAdministrator, WhenIOfferACourse, ThenTheOfferingIsReadyForSetup> {
+public class US_AD_OFG_0001 extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenIOfferACourse, ThenTheOfferingIsReadyForSetup> {
 
     private static final Logger LOG = LoggerFactory.getLogger(US_AD_SPL_0001.class);
     public static final String PROGRAM_CODE = "FKP/PHD/0001";
@@ -39,7 +39,7 @@ public class US_AD_OFG_0001 extends SpringScenarioTest<GivenIAmPPSAdministrator,
     @Test
     @Rollback(true)
     public void scenario1() {
-        given().I_am_a_PPS_administrator_in_current_academic_session()
+        given().I_am_a_CPS_administrator_in_current_academic_session()
                 .and().I_pick_program_$(PROGRAM_CODE);
         when().I_offer_all_courses_under_program_faculty();
         then().the_offering_is_ready_for_setup();

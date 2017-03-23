@@ -4,7 +4,7 @@ import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.offering.stage.ThenTheStatusIsUpdated;
 import my.edu.umk.pams.academic.offering.stage.WhenIUpdateAcademicSessionStatus;
-import my.edu.umk.pams.bdd.stage.GivenIAmPPSAdministrator;
+import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -23,7 +23,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 public class US_AD_OFG_1002 extends
-        SpringScenarioTest<GivenIAmPPSAdministrator, WhenIUpdateAcademicSessionStatus, ThenTheStatusIsUpdated> {
+        SpringScenarioTest<GivenIAmCPSAdministrator, WhenIUpdateAcademicSessionStatus, ThenTheStatusIsUpdated> {
 
     private static final Logger LOG = LoggerFactory.getLogger(US_AD_OFG_1002.class);
 
@@ -38,7 +38,7 @@ public class US_AD_OFG_1002 extends
     @Test
     @Rollback(true)
     public void scenario1() {
-        given().I_am_a_PPS_administrator_in_current_academic_session();
+        given().I_am_a_CPS_administrator_in_current_academic_session();
         when().I_update_academic_session_status();
         then().the_status_is_updated();
     }

@@ -1,11 +1,10 @@
 package my.edu.umk.pams.academic.profile;
 
-import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.profile.stage.ThenAdminProgramInfoIsCurrent;
 import my.edu.umk.pams.academic.profile.stage.WhenIWantToAddProgramInfo;
-import my.edu.umk.pams.bdd.stage.GivenIAmAdministrator;
+import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -26,7 +25,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 public class US_AD_PFL_2006
-        extends SpringScenarioTest<GivenIAmAdministrator, WhenIWantToAddProgramInfo, ThenAdminProgramInfoIsCurrent> {
+        extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenIWantToAddProgramInfo, ThenAdminProgramInfoIsCurrent> {
 
     private static final Logger LOG = LoggerFactory.getLogger(US_AD_PFL_2006.class);
 
@@ -39,13 +38,11 @@ public class US_AD_PFL_2006
     }
 
     private String FACULTY_CODE = "FKP";
-    @ProvidedScenarioState
-    private String PROGRAM_CODE = "PRGM-101";
 
     @Test
     @Rollback(true)
     public void scenario01() {
-        given().I_am_a_PPS_administrator_in_current_academic_session();
+        given().I_am_a_CPS_administrator_in_current_academic_session();
         when().I_add_program_info_$(FACULTY_CODE).and().when().I_view_program_info_$(FACULTY_CODE);
         then().the_program_is_current_for_$(FACULTY_CODE);
     }

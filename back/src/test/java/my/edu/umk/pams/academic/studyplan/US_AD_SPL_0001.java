@@ -5,7 +5,7 @@ import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.studyplan.stage.ThenProgramIsIntroduced;
 import my.edu.umk.pams.academic.studyplan.stage.WhenIAddAProgram;
-import my.edu.umk.pams.bdd.stage.GivenIAmPPSAdministrator;
+import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -27,7 +27,7 @@ import org.springframework.transaction.annotation.Transactional;
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
-public class US_AD_SPL_0001 extends SpringScenarioTest<GivenIAmPPSAdministrator, WhenIAddAProgram, ThenProgramIsIntroduced> {
+public class US_AD_SPL_0001 extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenIAddAProgram, ThenProgramIsIntroduced> {
 
     private static final Logger LOG = LoggerFactory.getLogger(US_AD_SPL_0001.class);
 
@@ -47,7 +47,7 @@ public class US_AD_SPL_0001 extends SpringScenarioTest<GivenIAmPPSAdministrator,
     @Test
     @Rollback(true)
     public void scenario1() {
-        given().I_am_a_PPS_administrator();
+        given().I_am_a_CPS_administrator();
         when().I_add_a_program_for_faculty_$(FACULTY_CODE);
         then().the_program_$_is_introduced_for_faculty_$(PROGRAM_CODE, FACULTY_CODE);
     }

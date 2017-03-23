@@ -4,7 +4,7 @@ import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.profile.stage.ThenStudentCourseInfoIsCurrent;
 import my.edu.umk.pams.academic.profile.stage.WhenIWantToViewStudentCourseInfo;
-import my.edu.umk.pams.bdd.stage.GivenIAmAdministrator;
+import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -24,7 +24,7 @@ import org.springframework.transaction.annotation.Transactional;
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
-public class US_AD_PFL_2004 extends SpringScenarioTest<GivenIAmAdministrator, WhenIWantToViewStudentCourseInfo, ThenStudentCourseInfoIsCurrent> {
+public class US_AD_PFL_2004 extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenIWantToViewStudentCourseInfo, ThenStudentCourseInfoIsCurrent> {
 
     private static final Logger LOG = LoggerFactory.getLogger(US_AD_PFL_2004.class);
 
@@ -41,7 +41,7 @@ public class US_AD_PFL_2004 extends SpringScenarioTest<GivenIAmAdministrator, Wh
     @Test
     @Rollback(true)
     public void scenario1006() {
-        given().I_am_a_PPS_administrator_in_current_academic_session();
+        given().I_am_a_CPS_administrator_in_current_academic_session();
         when().I_view_student_course_info_for_faculty_$(FACULTY_CODE);
         then().student_course_info_is_current();
     }
