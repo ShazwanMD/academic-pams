@@ -931,7 +931,6 @@ public class OfferingServiceImpl implements OfferingService {
     @Override
     public void dismiss(AdSection section, AdStaff staff) {
         // todo(uda): throw error on appointment not exists
-
         AdAppointment appointment = appointmentDao.findBySectionAndStaff(section, staff);
         appointment.setStatus(AdAppointmentStatus.DISMISSED);
         sectionDao.updateAppointment(section, appointment, securityService.getCurrentUser());

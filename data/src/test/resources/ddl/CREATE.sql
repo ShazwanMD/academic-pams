@@ -179,14 +179,6 @@ create table AD_ADMN_APLN (
     primary key (ID)
 );
 
-create table AD_APCN (
-    COHORT varchar(255),
-    MATRIC_NO varchar(255),
-    ID int8 not null,
-    COHORT_ID int8,
-    primary key (ID)
-);
-
 create table AD_APMT (
     ID int8 not null,
     C_TS timestamp,
@@ -1221,6 +1213,14 @@ create table AD_STAF (
     primary key (ID)
 );
 
+create table AD_STDN (
+    COHORT varchar(255),
+    MATRIC_NO varchar(255),
+    ID int8 not null,
+    COHORT_ID int8,
+    primary key (ID)
+);
+
 create table AD_STDY_CNTR (
     ID int8 not null,
     CODE varchar(255) not null,
@@ -1357,7 +1357,7 @@ references AD_STTE_CODE;
 alter table AD_ADDR
     add constraint FKE7D7E28D54FCB007
 foreign key (STUDENT_ID)
-references AD_APCN;
+references AD_STDN;
 
 alter table AD_ADMN
     add constraint uc_AD_ADMN_1 unique (CGPA);
@@ -1378,7 +1378,7 @@ references AD_ACDM_SESN;
 alter table AD_ADMN
     add constraint FKE7D7E3A054FCB007
 foreign key (STUDENT_ID)
-references AD_APCN;
+references AD_STDN;
 
 alter table AD_ADMN
     add constraint FKE7D7E3A0680A6167
@@ -1403,22 +1403,12 @@ references AD_ACDM_SESN;
 alter table AD_ADMN_APLN
     add constraint FKD8FEDB3054FCB007
 foreign key (STUDENT_ID)
-references AD_APCN;
+references AD_STDN;
 
 alter table AD_ADMN_APLN
     add constraint FKD8FEDB30680A6167
 foreign key (STUDY_CENTER_ID)
 references AD_STDY_CNTR;
-
-alter table AD_APCN
-    add constraint FKE7D80F76EB892683
-foreign key (COHORT_ID)
-references AD_CHRT;
-
-alter table AD_APCN
-    add constraint FKE7D80F767BECED7D
-foreign key (ID)
-references AD_ACTR;
 
 alter table AD_APMT
     add constraint FKE7D810B2B41E3E0F
@@ -1601,7 +1591,7 @@ references AD_SCTN;
 alter table AD_ENMT
     add constraint FKE7D9DAAC54FCB007
 foreign key (STUDENT_ID)
-references AD_APCN;
+references AD_STDN;
 
 alter table AD_ENMT_APLN
     add constraint FK43196BA472AE81C8
@@ -1621,7 +1611,7 @@ references AD_ACDM_SESN;
 alter table AD_ENMT_APLN
     add constraint FK43196BA454FCB007
 foreign key (STUDENT_ID)
-references AD_APCN;
+references AD_STDN;
 
 alter table AD_ENMT_APPL_ITEM
     add constraint FK4878A294BE2A004B
@@ -1836,6 +1826,16 @@ references AD_SBJT;
 
 alter table AD_STAF
     add constraint FKE7E04CE27BECED7D
+foreign key (ID)
+references AD_ACTR;
+
+alter table AD_STDN
+    add constraint FKE7E04D47EB892683
+foreign key (COHORT_ID)
+references AD_CHRT;
+
+alter table AD_STDN
+    add constraint FKE7E04D477BECED7D
 foreign key (ID)
 references AD_ACTR;
 

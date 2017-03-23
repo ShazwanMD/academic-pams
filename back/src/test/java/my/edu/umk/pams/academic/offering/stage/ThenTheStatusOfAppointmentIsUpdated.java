@@ -19,24 +19,24 @@ import my.edu.umk.pams.academic.offering.service.OfferingService;
  */
 @JGivenStage
 public class ThenTheStatusOfAppointmentIsUpdated extends Stage<ThenTheStatusOfAppointmentIsUpdated> {
-	private static final Logger LOG = LoggerFactory.getLogger(ThenTheStatusOfAppointmentIsUpdated.class);
-	
-	@Autowired
-	private OfferingService offeringService;
-	
-	@ExpectedScenarioState
-	private AdAppointment appointment;
-	
-	@ExpectedScenarioState
-	private AdSection section;
+    private static final Logger LOG = LoggerFactory.getLogger(ThenTheStatusOfAppointmentIsUpdated.class);
 
-	@ExpectedScenarioState
-	private AdStaff staff;
-	
-	public ThenTheStatusOfAppointmentIsUpdated the_status_of_appointment_is_updated() {
-		LOG.debug("appointment {} ", appointment.getStatus());
-		 AdAppointment appointment = offeringService.findAppointmentBySectionAndStaff(section, staff);
-		 Assert.notNull(appointment, "The data must not be null");
-		return self();
-	}
+    @Autowired
+    private OfferingService offeringService;
+
+    @ExpectedScenarioState
+    private AdAppointment appointment;
+
+    @ExpectedScenarioState
+    private AdSection section;
+
+    @ExpectedScenarioState
+    private AdStaff staff;
+
+    public ThenTheStatusOfAppointmentIsUpdated the_number_of_appointed_staff_increased() {
+        LOG.debug("appointment {} ", appointment.getStatus());
+        Integer count = offeringService.countAppointment(section);
+        Assert.isTrue(count > 0, "Appointment is bigger than zero");
+        return self();
+    }
 }

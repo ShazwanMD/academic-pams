@@ -7,11 +7,10 @@ import javax.persistence.*;
 import java.util.List;
 
 /**
- * @author canang technologies
- * @since 1/31/14
+ * @author PAMS
  */
-@Entity(name = "AdApplication")
-@Table(name = "AD_APCN")
+@Entity(name = "AdStudent")
+@Table(name = "AD_STDN")
 public class AdStudentImpl extends AdActorImpl implements AdStudent {
 
     @ManyToOne(targetEntity = AdCohortImpl.class)
@@ -21,12 +20,6 @@ public class AdStudentImpl extends AdActorImpl implements AdStudent {
     @OneToMany(targetEntity = AdAddressImpl.class, mappedBy = "student", fetch = FetchType.LAZY)
     private List<AdAddress> addresses;
 
-    @Column(name = "MATRIC_NO")
-    private String matricNo;
-    
-    @Column(name = "COHORT")
-    private String Cohort;
-    
     @Override
     public String getMatricNo() {
         return getIdentityNo();

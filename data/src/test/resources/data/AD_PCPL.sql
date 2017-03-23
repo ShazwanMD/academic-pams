@@ -46,6 +46,14 @@ INSERT INTO AD_PCPL (ID, NAME, ENABLED, LOCKED, PRINCIPAL_TYPE, M_ST, C_ID, C_TS
 INSERT INTO AD_USER (ID, REAL_NAME, EMAIL, PASSWORD)
 VALUES (currval('SQ_AD_PCPL'), 'PAMS Student2', 'student2@umk.edu.my', 'abc123');
 
+INSERT INTO AD_PCPL (ID, NAME, ENABLED, LOCKED, PRINCIPAL_TYPE, M_ST, C_ID, C_TS) VALUES (nextval('SQ_AD_PCPL'), 'Lecturer1', TRUE, TRUE, 0, 1, 1, CURRENT_TIMESTAMP);
+INSERT INTO AD_USER (ID, REAL_NAME, EMAIL, PASSWORD)
+VALUES (currval('SQ_AD_PCPL'), 'PAMS Lecturer1', 'Lecturer1@umk.edu.my', 'abc123');
+
+INSERT INTO AD_PCPL (ID, NAME, ENABLED, LOCKED, PRINCIPAL_TYPE, M_ST, C_ID, C_TS) VALUES (nextval('SQ_AD_PCPL'), 'Lecturer2', TRUE, TRUE, 0, 1, 1, CURRENT_TIMESTAMP);
+INSERT INTO AD_USER (ID, REAL_NAME, EMAIL, PASSWORD)
+VALUES (currval('SQ_AD_PCPL'), 'PAMS Lecturer2', 'Lecturer2@umk.edu.my', 'abc123');
+
 ---------------------------------------------------------
 -- GROUP START
 ---------------------------------------------------------

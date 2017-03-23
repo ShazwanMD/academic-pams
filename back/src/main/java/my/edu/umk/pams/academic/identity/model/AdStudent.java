@@ -5,8 +5,7 @@ import my.edu.umk.pams.academic.studyplan.model.AdCohort;
 import java.util.List;
 
 /**
- * @author canang technologies
- * @since 1/27/14
+ * @author PAMS
  */
 public interface AdStudent extends AdActor {
 

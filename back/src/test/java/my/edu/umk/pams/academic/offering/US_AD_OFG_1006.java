@@ -25,24 +25,24 @@ import my.edu.umk.pams.bdd.stage.GivenIAmPPSAdministrator;
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 public class US_AD_OFG_1006 extends
-		SpringScenarioTest<GivenIAmPPSAdministrator, WhenIUpdateAppointmentStatus, ThenTheStatusOfAppointmentIsUpdated> {
-	private static final Logger LOG = LoggerFactory.getLogger(US_AD_OFG_1006.class);
-	
+        SpringScenarioTest<GivenIAmPPSAdministrator, WhenIUpdateAppointmentStatus, ThenTheStatusOfAppointmentIsUpdated> {
+    private static final Logger LOG = LoggerFactory.getLogger(US_AD_OFG_1006.class);
 
-	@Before
-	public void before() {
-	}
 
-	@After
-	public void after() {
-	}
+    @Before
+    public void before() {
+    }
 
-	@Test
-	@Rollback(true)
-	public void scenario1() {
-		given().I_am_a_PPS_administrator_in_current_academic_session();
-		when().I_update_appointment_status_under_program_faculty();
-		then().the_status_of_appointment_is_updated();
+    @After
+    public void after() {
+    }
 
-	}
+    @Test
+    @Rollback(true)
+    public void scenario1() {
+        given().I_am_a_PPS_administrator_in_current_academic_session().and()
+                .I_pick_offering_$("");
+        when().I_appoint_a_staff_$_into_all_section_for_the_offering("01001A");
+        then().the_number_of_appointed_staff_increased();
+    }
 }

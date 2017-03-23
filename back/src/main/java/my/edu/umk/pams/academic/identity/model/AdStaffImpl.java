@@ -4,8 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 /**
- * @author canang technologies
- * @since 7/2/2015.
+ * @author PAMS
  */
 @Entity(name = "AdStaff")
 @Table(name = "AD_STAF")
