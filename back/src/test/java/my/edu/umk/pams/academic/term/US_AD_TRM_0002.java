@@ -26,7 +26,7 @@ public class US_AD_TRM_0002 extends SpringScenarioTest<GivenIAmCPSAdministrator,
     private static final Logger LOG = LoggerFactory.getLogger(US_AD_SPL_0001.class);
 
     @Test
-    @Rollback(true)
+    @Rollback
     public void scenario1() {
         given().I_am_a_CPS_administrator_in_current_academic_session();
         when().I_offer_all_courses_under_program_faculty();

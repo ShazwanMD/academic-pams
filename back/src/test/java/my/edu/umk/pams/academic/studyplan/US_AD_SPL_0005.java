@@ -30,7 +30,7 @@ public class US_AD_SPL_0005 extends SpringScenarioTest<GivenIAmCPSAdministrator,
     public static final String PROGRAM_CODE = "FIAT/PHD/0001";
 
     @Test
-    @Rollback(true)
+    @Rollback
     public void scenario1() {
         given().I_am_a_CPS_administrator();
         when().I_want_to_set_up_cohort_for_$_program(PROGRAM_CODE);

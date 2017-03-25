@@ -29,7 +29,7 @@ public class US_AD_PFL_1003 extends SpringScenarioTest<GivenIAmStudent, WhenIVie
     private static final Logger LOG = LoggerFactory.getLogger(US_AD_PFL_2002.class);
 
     @Test
-    @Rollback(true)
+    @Rollback
     public void scenario01() {
         given().I_am_a_student_in_current_academic_session();
         when().I_view_student_activation_status();

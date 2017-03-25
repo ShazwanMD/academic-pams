@@ -28,7 +28,7 @@ public class US_AD_PFL_2002 extends
     private static final Logger LOG = LoggerFactory.getLogger(US_AD_PFL_2002.class);
 
     @Test
-    @Rollback(true)
+    @Rollback
     public void scenario01() {
         given().I_am_a_CPS_administrator_in_current_academic_session();
         when().I_update_student_profile_info();

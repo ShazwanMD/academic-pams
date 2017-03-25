@@ -38,7 +38,7 @@ public class US_AD_SPL_2001 extends SpringScenarioTest<GivenIAmStudent, WhenIWan
     private String PROGRAM_CODE = "PGRAM_231";
 
     @Test
-    @Rollback(true)
+    @Rollback
     public void scenari2001() {
         given().I_am_a_student_in_current_academic_session();
         when().I_want_to_view_the_program_$_for_each_level_of_study(FACULTY_CODE);

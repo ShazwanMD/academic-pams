@@ -29,7 +29,7 @@ public class US_AD_PFL_2004 extends SpringScenarioTest<GivenIAmCPSAdministrator,
     private static final String FACULTY_CODE = "FKP";
 
     @Test
-    @Rollback(true)
+    @Rollback
     public void scenario1006() {
         given().I_am_a_CPS_administrator_in_current_academic_session();
         when().I_view_student_course_info_for_faculty_$(FACULTY_CODE);

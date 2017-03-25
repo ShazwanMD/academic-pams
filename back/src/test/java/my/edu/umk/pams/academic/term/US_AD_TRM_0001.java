@@ -27,7 +27,7 @@ public class US_AD_TRM_0001 extends SpringScenarioTest<GivenIAmCPSAdministrator,
     public static final String PROGRAM_CODE = "FKP/PHD/0001";
 
     @Test
-    @Rollback(true)
+    @Rollback
     public void scenario1() {
         given().I_am_a_CPS_administrator_in_current_academic_session()
                 .and().I_pick_program_$(PROGRAM_CODE);

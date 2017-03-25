@@ -28,7 +28,7 @@ public class US_AD_TRM_1006 extends
     public static final String STAFF_NO = "01001A";
 
     @Test
-    @Rollback(true)
+    @Rollback
     public void scenario1() {
         given().I_am_a_CPS_administrator_in_current_academic_session().and()
                 .I_pick_offering_$("TODO");

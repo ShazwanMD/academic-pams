@@ -34,7 +34,7 @@ public class US_AD_SPL_2002
     private static final String FACULTY_CODE = "FKP";
 
     @Test
-    @Rollback(true)
+    @Rollback
     public void scenari2002() {
         given().I_am_a_student_in_current_academic_session();
         when().I_want_to_view_program_by_faculty_$(FACULTY_CODE);

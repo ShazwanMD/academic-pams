@@ -30,7 +30,7 @@ public class US_AD_PFL_1007 extends SpringScenarioTest<GivenIAmStudent, WhenIWan
     private static final String FACULTY_CODE = "FKP";
 
     @Test
-    @Rollback(true)
+    @Rollback
     public void scenario1007() {
         given().I_am_a_student_in_current_academic_session();
         when().I_view_program_info_for_faculty_$(FACULTY_CODE);

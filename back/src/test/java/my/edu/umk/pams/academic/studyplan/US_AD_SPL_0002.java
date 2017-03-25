@@ -30,7 +30,7 @@ public class US_AD_SPL_0002 extends SpringScenarioTest<GivenIAmCPSAdministrator,
     public static final String FACULTY_CODE = "FKP";
 
     @Test
-    @Rollback(true)
+    @Rollback
     public void scenario1() {
         given().I_am_a_CPS_administrator();
         when().I_add_a_course_to_faculty_code_$(FACULTY_CODE);

@@ -35,7 +35,7 @@ public class US_AD_SPL_0001 extends SpringScenarioTest<GivenIAmCPSAdministrator,
     private String PROGRAM_CODE = "PRGM-1234";
 
     @Test
-    @Rollback(true)
+    @Rollback
     public void scenario1() {
         given().I_am_a_CPS_administrator();
         when().I_add_a_program_for_faculty_$(FACULTY_CODE);
