@@ -24,7 +24,9 @@ import org.springframework.transaction.annotation.Transactional;
 public class US_AD_TRM_0001 extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenIOfferACourse, ThenTheOfferingIsReadyForSetup> {
 
     private static final Logger LOG = LoggerFactory.getLogger(US_AD_SPL_0001.class);
-    public static final String PROGRAM_CODE = "FKP/PHD/0001";
+
+    // from AD_PRGM.sql, doesn't have any offering or section
+    public static final String PROGRAM_CODE = "FIAT/PHD/0001";
 
     @Test
     @Rollback

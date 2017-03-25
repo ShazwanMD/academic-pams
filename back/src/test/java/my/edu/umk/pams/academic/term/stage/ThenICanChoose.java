@@ -20,20 +20,20 @@ public class ThenICanChoose extends Stage<ThenICanChoose> {
     private TermService termService;
 
     @ExpectedScenarioState
-    private List<AdOffering> offerings;
+    private AdOffering offering;
+
+    @ExpectedScenarioState
+    private List<AdSection> sections;
 
     private static final Logger LOG = LoggerFactory.getLogger(ThenICanChoose.class);
 
     public ThenICanChoose i_can_choose_which_section_to_enroll() {
         // iterate thru expected offerings
         // try to find section to enroll
-        for (AdOffering offering : offerings) {
-            List<AdSection> sections = termService.findSections(offering);
-            for (AdSection section : sections) {
-                // check if section has exceeded capacity
-                boolean exceededEnrollment = termService.hasExceededEnrollment(section);
-                Assert.isTrue(!exceededEnrollment, "Section is full");
-            }
+        for (AdSection section : sections) {
+            // check if section has exceeded capacity
+            boolean exceededEnrollment = termService.hasExceededEnrollment(section);
+            Assert.isTrue(!exceededEnrollment, "Section is full");
         }
         return self();
     }

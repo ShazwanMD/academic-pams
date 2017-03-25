@@ -2,11 +2,14 @@ package my.edu.umk.pams.academic.term.stage;
 /**
  * @author asyikin.mr
  */
+
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
-import my.edu.umk.pams.academic.core.AdMetadata;
-import my.edu.umk.pams.academic.studyplan.model.*;
+import com.tngtech.jgiven.integration.spring.JGivenStage;
+import my.edu.umk.pams.academic.studyplan.model.AdAcademicSession;
+import my.edu.umk.pams.academic.studyplan.model.AdAcademicSessionImpl;
+import my.edu.umk.pams.academic.studyplan.model.AdAcademicStatus;
 import my.edu.umk.pams.academic.studyplan.service.StudyplanService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Calendar;
 
+@JGivenStage
 public class WhenIUpdateAcademicSessionStatus extends Stage<WhenIUpdateAcademicSessionStatus> {
 
     private static final Logger LOG = LoggerFactory.getLogger(WhenIUpdateAcademicSessionStatus.class);
@@ -28,24 +32,19 @@ public class WhenIUpdateAcademicSessionStatus extends Stage<WhenIUpdateAcademicS
     private String code;
 
     @ExpectedScenarioState
-    private AdMetadata metadata;
-
-    @ExpectedScenarioState
     private AdAcademicSession previous;
 
     public WhenIUpdateAcademicSessionStatus I_update_academic_session_status() {
 
         Calendar now = Calendar.getInstance();
         code = (now.get(Calendar.MONTH) + 1) + "/" + now.get(Calendar.YEAR);
-                
+
         academicSession = new AdAcademicSessionImpl();
         academicSession.setCode(code);
         academicSession.setCurrent(true);
         academicSession.setDescription("Sesi 09/2017/2018");
-        academicSession.setMetadata(metadata);
         academicSession.setStatus(AdAcademicStatus.NEW);
-        
-        
+
         studyplanService.updateAcademicSession(academicSession);
 
         LOG.debug("academicSession {} ", academicSession);

@@ -24,14 +24,14 @@ public class US_AD_TRM_1009 extends SpringScenarioTest<GivenIAmStudent, WhenIWan
 
     private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_1009.class);
 
-    public static final String PROGRAM_CODE = "FKP/PHD/0001";
+    public static final String OFFERING_CANONICAL_CODE = "FKP/PHD/0001/DDA2113";
 
     @Test
     @Rollback
     public void scenario1() {
         given().I_am_a_student_in_current_academic_session()
-                .and().I_pick_program_$(PROGRAM_CODE);
-        when().I_browse_the_offered_courses_by_program_I_picked();
+                .and().I_pick_offering_$(OFFERING_CANONICAL_CODE);
+        when().I_browse_the_offered_course_by_program_I_picked();
         then().i_can_choose_which_section_to_enroll();
     }
 }

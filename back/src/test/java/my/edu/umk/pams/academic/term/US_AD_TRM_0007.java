@@ -7,8 +7,6 @@ import my.edu.umk.pams.academic.term.stage.WhenIWantToSetCapacityForOfferedCours
 import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -22,7 +20,6 @@ import org.springframework.transaction.annotation.Transactional;
 @ContextConfiguration(classes = TestAppConfiguration.class)
 public class US_AD_TRM_0007 extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenIWantToSetCapacityForOfferedCourse, ThenTheOfferedCourseHasAMaxAllowQuota> {
 
-    private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_0007.class);
     public static final String FACULTY_CODE = "FKP";
 
     @Test
