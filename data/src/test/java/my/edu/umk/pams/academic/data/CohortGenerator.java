@@ -7,8 +7,6 @@ import org.springframework.test.annotation.Rollback;
 
 import java.io.FileWriter;
 import java.io.IOException;
-import java.text.DecimalFormat;
-import java.text.NumberFormat;
 import java.util.List;
 
 /**
@@ -18,10 +16,8 @@ import java.util.List;
 public class CohortGenerator extends GeneratorSupport {
 
     private static final Logger LOG = LoggerFactory.getLogger(CohortGenerator.class);
-    private static final String SEQUENCE_FORMAT = "000";
 
     private final String SOURCE_FILE = "data/csv/AD_PRGM.csv";
-    private final NumberFormat numberFormat = new DecimalFormat(SEQUENCE_FORMAT);
 
     private final String TEMPLATE = "INSERT INTO AD_CHRT (\n" +
             "  ID,\n" +

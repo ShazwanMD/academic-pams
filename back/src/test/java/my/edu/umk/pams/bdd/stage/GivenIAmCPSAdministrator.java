@@ -5,13 +5,14 @@ import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 import my.edu.umk.pams.academic.identity.model.AdStaff;
 import my.edu.umk.pams.academic.identity.model.AdUser;
-import my.edu.umk.pams.academic.term.model.AdOffering;
-import my.edu.umk.pams.academic.term.service.OfferingService;
 import my.edu.umk.pams.academic.security.integration.AdUserDetails;
 import my.edu.umk.pams.academic.studyplan.model.AdAcademicSession;
 import my.edu.umk.pams.academic.studyplan.model.AdFaculty;
 import my.edu.umk.pams.academic.studyplan.model.AdProgram;
 import my.edu.umk.pams.academic.studyplan.service.StudyplanService;
+import my.edu.umk.pams.academic.term.model.AdOffering;
+import my.edu.umk.pams.academic.term.model.AdSection;
+import my.edu.umk.pams.academic.term.service.OfferingService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,6 +50,9 @@ public class GivenIAmCPSAdministrator extends Stage<GivenIAmCPSAdministrator> {
     @ProvidedScenarioState
     private AdOffering offering;
 
+    @ProvidedScenarioState
+    private AdSection section;
+
     public void I_am_a_CPS_administrator() {
         loginAsCPS();
     }
@@ -77,6 +81,11 @@ public class GivenIAmCPSAdministrator extends Stage<GivenIAmCPSAdministrator> {
 
     public GivenIAmCPSAdministrator I_pick_offering_$(String canonicalCode) {
         offering = offeringService.findOfferingByCanonicalCode(canonicalCode);
+        return self();
+    }
+
+    public GivenIAmCPSAdministrator I_pick_section_$(String canonicalCode) {
+        section = offeringService.findSectionByCanonicalCode(canonicalCode);
         return self();
     }
 

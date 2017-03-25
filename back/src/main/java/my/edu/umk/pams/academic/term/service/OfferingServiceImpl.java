@@ -782,7 +782,7 @@ public class OfferingServiceImpl implements OfferingService {
     //====================================================================================================
 
     @Override
-    public void serializeToEnrollment(AdEnrollmentApplication application) {
+    public void publishToEnrollment(AdEnrollmentApplication application) {
         Validate.notNull(application, "Application cannot be null");
         List<AdEnrollmentApplicationItem> items = findEnrollmentApplicationItems(application);
         for (AdEnrollmentApplicationItem item : items) {

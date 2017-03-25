@@ -21,6 +21,7 @@ import java.util.List;
  *
  * @author PAMS
  */
+// todo(uda): rename to TermService
 public interface OfferingService {
 
     //====================================================================================================
@@ -264,7 +265,7 @@ public interface OfferingService {
 
     void deleteEnrollmentApplicationItem(AdEnrollmentApplication application, AdEnrollmentApplicationItem item);
 
-    void serializeToEnrollment(AdEnrollmentApplication application);
+    void publishToEnrollment(AdEnrollmentApplication application);
 
     void addGradebooks(AdSection section, AdEnrollment enrollment);
 

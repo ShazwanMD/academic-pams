@@ -50,7 +50,7 @@ public class WhenIWantToSetCapacityForOfferedCourse extends Stage<WhenIWantToSet
     @ProvidedScenarioState
     private String canonicalCode;
 
-    public WhenIWantToSetCapacityForOfferedCourse I_set_offering_capacity() {
+    public WhenIWantToSetCapacityForOfferedCourse I_create_and_set_offering_capacity() {
         // offer a course
         course = studyplanService.findCourseByCode(COURSE_CODE);
 
