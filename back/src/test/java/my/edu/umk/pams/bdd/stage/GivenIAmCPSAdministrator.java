@@ -12,7 +12,7 @@ import my.edu.umk.pams.academic.studyplan.model.AdProgram;
 import my.edu.umk.pams.academic.studyplan.service.StudyplanService;
 import my.edu.umk.pams.academic.term.model.AdOffering;
 import my.edu.umk.pams.academic.term.model.AdSection;
-import my.edu.umk.pams.academic.term.service.OfferingService;
+import my.edu.umk.pams.academic.term.service.TermService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +33,7 @@ public class GivenIAmCPSAdministrator extends Stage<GivenIAmCPSAdministrator> {
     private StudyplanService studyplanService;
 
     @Autowired
-    private OfferingService offeringService;
+    private TermService termService;
 
     @ProvidedScenarioState
     private AdAcademicSession academicSession;
@@ -80,12 +80,12 @@ public class GivenIAmCPSAdministrator extends Stage<GivenIAmCPSAdministrator> {
     }
 
     public GivenIAmCPSAdministrator I_pick_offering_$(String canonicalCode) {
-        offering = offeringService.findOfferingByCanonicalCode(canonicalCode);
+        offering = termService.findOfferingByCanonicalCode(canonicalCode);
         return self();
     }
 
     public GivenIAmCPSAdministrator I_pick_section_$(String canonicalCode) {
-        section = offeringService.findSectionByCanonicalCode(canonicalCode);
+        section = termService.findSectionByCanonicalCode(canonicalCode);
         return self();
     }
 

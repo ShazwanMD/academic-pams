@@ -6,7 +6,7 @@ import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 import my.edu.umk.pams.academic.term.model.AdSection;
 import my.edu.umk.pams.academic.term.model.AdSectionImpl;
-import my.edu.umk.pams.academic.term.service.OfferingService;
+import my.edu.umk.pams.academic.term.service.TermService;
 import my.edu.umk.pams.academic.studyplan.model.AdAcademicSession;
 
 import org.slf4j.Logger;
@@ -21,7 +21,7 @@ public class WhenIUpdateSections extends Stage<WhenIUpdateSections> {
 	private static final Logger LOG = LoggerFactory.getLogger(WhenIUpdateSections.class);
 
 	@Autowired
-	private OfferingService offeringService;
+	private TermService termService;
 
 	@ExpectedScenarioState
 	private AdAcademicSession academicSession;
@@ -39,7 +39,7 @@ public class WhenIUpdateSections extends Stage<WhenIUpdateSections> {
 		section.setEnrollmentCount(1);
 		section.setOrdinal(1);
 
-		offeringService.updateSection(section);
+		termService.updateSection(section);
 
 		return self();
 	}

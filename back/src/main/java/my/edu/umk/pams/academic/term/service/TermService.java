@@ -21,8 +21,7 @@ import java.util.List;
  *
  * @author PAMS
  */
-// todo(uda): rename to TermService
-public interface OfferingService {
+public interface TermService {
 
     //====================================================================================================
     // OFFERING

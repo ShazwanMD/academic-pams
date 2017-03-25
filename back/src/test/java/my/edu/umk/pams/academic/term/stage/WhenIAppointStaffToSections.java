@@ -14,7 +14,7 @@ import my.edu.umk.pams.academic.identity.model.AdStaff;
 import my.edu.umk.pams.academic.term.model.AdAppointment;
 import my.edu.umk.pams.academic.term.model.AdAppointmentImpl;
 import my.edu.umk.pams.academic.term.model.AdSection;
-import my.edu.umk.pams.academic.term.service.OfferingService;
+import my.edu.umk.pams.academic.term.service.TermService;
 import my.edu.umk.pams.academic.studyplan.model.AdAcademicSession;
 import my.edu.umk.pams.academic.studyplan.model.AdAppointmentStatus;
 import my.edu.umk.pams.academic.studyplan.model.AdCourse;
@@ -28,7 +28,7 @@ public class WhenIAppointStaffToSections extends Stage<WhenIAppointStaffToSectio
 	private static final Logger LOG = LoggerFactory.getLogger(WhenIAppointStaffToSections.class);
 
 	@Autowired
-	private OfferingService offeringService;
+	private TermService termService;
 
 	@ProvidedScenarioState
 	private AdAppointment appointment;
@@ -59,7 +59,7 @@ public class WhenIAppointStaffToSections extends Stage<WhenIAppointStaffToSectio
 		LOG.debug("appointment: {}", appointment.getStaff());
 
 		canonicalCode = faculty.getCode() + "/" + course.getCode() + "/" + academicSession.getCode();
-		section = offeringService.findSectionByCanonicalCode(canonicalCode);
+		section = termService.findSectionByCanonicalCode(canonicalCode);
 
 		appointment = new AdAppointmentImpl();
 		appointment.setSection(section);
@@ -67,7 +67,7 @@ public class WhenIAppointStaffToSections extends Stage<WhenIAppointStaffToSectio
 		appointment.setStatus(AdAppointmentStatus.NEW);
 		appointment.setMetadata(metadata);
 		
-		offeringService.saveAppointment(appointment);
+		termService.saveAppointment(appointment);
 
 		return self();
 	}

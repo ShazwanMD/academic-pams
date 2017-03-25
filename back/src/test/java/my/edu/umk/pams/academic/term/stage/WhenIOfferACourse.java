@@ -5,7 +5,7 @@ import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 import my.edu.umk.pams.academic.term.model.AdOffering;
 import my.edu.umk.pams.academic.term.model.AdOfferingImpl;
-import my.edu.umk.pams.academic.term.service.OfferingService;
+import my.edu.umk.pams.academic.term.service.TermService;
 import my.edu.umk.pams.academic.studyplan.model.AdAcademicSession;
 import my.edu.umk.pams.academic.studyplan.model.AdCourse;
 import my.edu.umk.pams.academic.studyplan.model.AdFaculty;
@@ -26,7 +26,7 @@ public class WhenIOfferACourse extends Stage<WhenIOfferACourse> {
     private static final Logger LOG = LoggerFactory.getLogger(WhenIOfferACourse.class);
 
     @Autowired
-    private OfferingService offeringService;
+    private TermService termService;
 
     @Autowired
     private StudyplanService studyplanService;
@@ -56,7 +56,7 @@ public class WhenIOfferACourse extends Stage<WhenIOfferACourse> {
             offering.setCourse(course);
             offering.setProgram(program);
             // todo(uda): setSession ???
-            offeringService.saveOffering(offering);
+            termService.saveOffering(offering);
         }
         return self();
     }

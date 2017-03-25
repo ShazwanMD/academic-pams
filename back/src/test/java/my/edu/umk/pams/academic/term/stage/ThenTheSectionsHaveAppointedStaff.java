@@ -9,7 +9,7 @@ import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 import my.edu.umk.pams.academic.term.model.AdAppointment;
-import my.edu.umk.pams.academic.term.service.OfferingService;
+import my.edu.umk.pams.academic.term.service.TermService;
 
 /**
  * @author asyikin.mr
@@ -19,7 +19,7 @@ public class ThenTheSectionsHaveAppointedStaff extends Stage<ThenTheSectionsHave
 	private static final Logger LOG = LoggerFactory.getLogger(ThenTheSectionsHaveAppointedStaff.class);
 
 	@Autowired
-	private OfferingService offeringService;
+	private TermService termService;
 
 	@ExpectedScenarioState
 	private AdAppointment appointment;
@@ -30,7 +30,7 @@ public class ThenTheSectionsHaveAppointedStaff extends Stage<ThenTheSectionsHave
 	public ThenTheSectionsHaveAppointedStaff the_sections_have_appointed_staff() {
 		LOG.debug("appointment {} ", appointment.getStaff());
 		 
-		AdAppointment appointment = (AdAppointment) offeringService.findSectionByCanonicalCode(canonicalCode);
+		AdAppointment appointment = (AdAppointment) termService.findSectionByCanonicalCode(canonicalCode);
 		Assert.notNull(appointment, "The data must not be null");
 
 		return self();

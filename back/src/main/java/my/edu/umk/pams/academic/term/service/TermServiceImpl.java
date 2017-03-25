@@ -35,11 +35,10 @@ import static my.edu.umk.pams.academic.core.AdFlowState.DRAFTED;
 /**
  * @author PAMS
  */
-// todo(uda): rename as TermService
-@Service("offeringService")
-public class OfferingServiceImpl implements OfferingService {
+@Service("termService")
+public class TermServiceImpl implements TermService {
 
-    private static final Logger LOG = LoggerFactory.getLogger(OfferingServiceImpl.class);
+    private static final Logger LOG = LoggerFactory.getLogger(TermServiceImpl.class);
 
     @Autowired
     private AdAcademicSessionDao academicSessionDao;

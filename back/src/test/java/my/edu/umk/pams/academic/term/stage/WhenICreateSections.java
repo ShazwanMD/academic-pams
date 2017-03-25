@@ -11,7 +11,7 @@ import my.edu.umk.pams.academic.term.model.AdOffering;
 import my.edu.umk.pams.academic.term.model.AdSection;
 import my.edu.umk.pams.academic.term.model.AdSectionImpl;
 import my.edu.umk.pams.academic.term.model.AdSectionPolicy;
-import my.edu.umk.pams.academic.term.service.OfferingService;
+import my.edu.umk.pams.academic.term.service.TermService;
 import my.edu.umk.pams.academic.studyplan.model.AdAcademicSession;
 import my.edu.umk.pams.academic.studyplan.model.AdCourse;
 import my.edu.umk.pams.academic.studyplan.model.AdFaculty;
@@ -31,7 +31,7 @@ public class WhenICreateSections extends Stage<WhenICreateSections> {
     private static final Logger LOG = LoggerFactory.getLogger(WhenICreateSections.class);
 
     @Autowired
-    private OfferingService offeringService;
+    private TermService termService;
 
     @ProvidedScenarioState
     private AdSection section;
@@ -67,7 +67,7 @@ public class WhenICreateSections extends Stage<WhenICreateSections> {
     private List<AdSectionPolicy> policies;
 
     public WhenICreateSections I_create_sections_for_offering() {
-        offering = offeringService.findOfferingByCanonicalCode("FIAT/PHD/0001");
+        offering = termService.findOfferingByCanonicalCode("FIAT/PHD/0001");
         canonicalCode = faculty.getCode() + "/" + program.getCode() + "/" + academicSession.getCode();
         code = program.getCode() + "/" + academicSession.getCode();
 
@@ -84,7 +84,7 @@ public class WhenICreateSections extends Stage<WhenICreateSections> {
         section.setOrdinal(1);
         section.setPolicies(policies);
                      
-        offeringService.saveSection(section);
+        termService.saveSection(section);
         
 
         return self();

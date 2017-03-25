@@ -6,7 +6,7 @@ import com.tngtech.jgiven.integration.spring.JGivenStage;
 import my.edu.umk.pams.academic.identity.model.AdStaff;
 import my.edu.umk.pams.academic.identity.model.AdUser;
 import my.edu.umk.pams.academic.term.model.AdOffering;
-import my.edu.umk.pams.academic.term.service.OfferingService;
+import my.edu.umk.pams.academic.term.service.TermService;
 import my.edu.umk.pams.academic.security.integration.AdUserDetails;
 import my.edu.umk.pams.academic.studyplan.model.AdAcademicSession;
 import my.edu.umk.pams.academic.studyplan.model.AdFaculty;
@@ -32,7 +32,7 @@ public class GivenIAmBursary extends Stage<GivenIAmBursary> {
     private StudyplanService studyplanService;
 
     @Autowired
-    private OfferingService offeringService;
+    private TermService termService;
 
     @ProvidedScenarioState
     private AdAcademicSession academicSession;
@@ -72,7 +72,7 @@ public class GivenIAmBursary extends Stage<GivenIAmBursary> {
     }
 
     public GivenIAmBursary I_pick_offering_$(String canonicalCode) {
-        offering = offeringService.findOfferingByCanonicalCode(canonicalCode);
+        offering = termService.findOfferingByCanonicalCode(canonicalCode);
         return self();
     }
 

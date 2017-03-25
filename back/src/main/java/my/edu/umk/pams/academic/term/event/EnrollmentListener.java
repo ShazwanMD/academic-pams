@@ -1,6 +1,6 @@
 package my.edu.umk.pams.academic.term.event;
 
-import my.edu.umk.pams.academic.term.service.OfferingService;
+import my.edu.umk.pams.academic.term.service.TermService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +16,7 @@ public class EnrollmentListener implements ApplicationListener<EnrollmentEvent> 
     private static final Logger LOG = LoggerFactory.getLogger(EnrollmentListener.class);
 
     @Autowired
-    private OfferingService offeringService;
+    private TermService termService;
 
     @Override
     public void onApplicationEvent(EnrollmentEvent event) {

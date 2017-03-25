@@ -10,7 +10,7 @@ import my.edu.umk.pams.academic.studyplan.model.AdAppointmentStatus;
 import my.edu.umk.pams.academic.term.model.AdAppointment;
 import my.edu.umk.pams.academic.term.model.AdAppointmentImpl;
 import my.edu.umk.pams.academic.term.model.AdSection;
-import my.edu.umk.pams.academic.term.service.OfferingService;
+import my.edu.umk.pams.academic.term.service.TermService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +23,7 @@ public class WhenIAppointStaffIntoSection extends Stage<WhenIAppointStaffIntoSec
     private static final Logger LOG = LoggerFactory.getLogger(WhenIAppointStaffIntoSection.class);
 
     @Autowired
-    private OfferingService offeringService;
+    private TermService termService;
 
     @Autowired
     private IdentityService identityService;
@@ -46,7 +46,7 @@ public class WhenIAppointStaffIntoSection extends Stage<WhenIAppointStaffIntoSec
         appointment.setStatus(AdAppointmentStatus.CONFIRMED);
         appointment.setStaff(staff);
         appointment.setSection(section);
-        offeringService.saveAppointment(appointment);
+        termService.saveAppointment(appointment);
 
         return self();
     }

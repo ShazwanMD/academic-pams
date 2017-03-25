@@ -5,7 +5,7 @@ import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 import my.edu.umk.pams.academic.term.model.AdOffering;
 import my.edu.umk.pams.academic.term.model.AdSection;
-import my.edu.umk.pams.academic.term.service.OfferingService;
+import my.edu.umk.pams.academic.term.service.TermService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +17,7 @@ import java.util.List;
 public class ThenICanChoose extends Stage<ThenICanChoose> {
 
     @Autowired
-    private OfferingService offeringService;
+    private TermService termService;
 
     @ExpectedScenarioState
     private List<AdOffering> offerings;
@@ -28,10 +28,10 @@ public class ThenICanChoose extends Stage<ThenICanChoose> {
         // iterate thru expected offerings
         // try to find section to enroll
         for (AdOffering offering : offerings) {
-            List<AdSection> sections = offeringService.findSections(offering);
+            List<AdSection> sections = termService.findSections(offering);
             for (AdSection section : sections) {
                 // check if section has exceeded capacity
-                boolean exceededEnrollment = offeringService.hasExceededEnrollment(section);
+                boolean exceededEnrollment = termService.hasExceededEnrollment(section);
                 Assert.isTrue(!exceededEnrollment, "Section is full");
             }
         }

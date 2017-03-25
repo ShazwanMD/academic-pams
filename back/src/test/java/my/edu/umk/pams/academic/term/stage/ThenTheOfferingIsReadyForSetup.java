@@ -4,7 +4,7 @@ import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 import my.edu.umk.pams.academic.term.model.AdOffering;
-import my.edu.umk.pams.academic.term.service.OfferingService;
+import my.edu.umk.pams.academic.term.service.TermService;
 import my.edu.umk.pams.academic.studyplan.model.AdAcademicSession;
 import my.edu.umk.pams.academic.studyplan.model.AdProgram;
 import org.slf4j.Logger;
@@ -23,7 +23,7 @@ public class ThenTheOfferingIsReadyForSetup extends Stage<ThenTheOfferingIsReady
     private static final Logger LOG = LoggerFactory.getLogger(ThenTheOfferingIsReadyForSetup.class);
 
     @Autowired
-    private OfferingService offeringService;
+    private TermService termService;
 
     @ExpectedScenarioState
     private AdAcademicSession academicSession;
@@ -32,9 +32,9 @@ public class ThenTheOfferingIsReadyForSetup extends Stage<ThenTheOfferingIsReady
     private AdProgram program;
 
     public ThenTheOfferingIsReadyForSetup the_offering_is_ready_for_setup() {
-        List<AdOffering> offerings = offeringService.findOfferings(program);
+        List<AdOffering> offerings = termService.findOfferings(program);
         for (AdOffering offering : offerings) {
-            boolean hasSection = offeringService.hasSection(academicSession, offering);
+            boolean hasSection = termService.hasSection(academicSession, offering);
             Assert.isTrue(!hasSection, "Offering does not have section and ready to be setup");
         }
         return self();

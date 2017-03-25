@@ -6,7 +6,7 @@ import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 import my.edu.umk.pams.academic.term.model.AdOffering;
 import my.edu.umk.pams.academic.term.model.AdOfferingImpl;
-import my.edu.umk.pams.academic.term.service.OfferingService;
+import my.edu.umk.pams.academic.term.service.TermService;
 import my.edu.umk.pams.academic.studyplan.model.AdAcademicSession;
 import my.edu.umk.pams.academic.studyplan.model.AdCourse;
 import my.edu.umk.pams.academic.studyplan.model.AdFaculty;
@@ -27,7 +27,7 @@ public class WhenIWantToSetCapacityForOfferedCourse extends Stage<WhenIWantToSet
     public static final String COURSE_CODE = "DDA2113";
 
     @Autowired
-    private OfferingService offeringService;
+    private TermService termService;
 
     @Autowired
     private StudyplanService studyplanService;
@@ -65,7 +65,7 @@ public class WhenIWantToSetCapacityForOfferedCourse extends Stage<WhenIWantToSet
         offering.setCourse(course);
 
         // save term
-        offeringService.saveOffering(offering);
+        termService.saveOffering(offering);
         return self();
     }
 }

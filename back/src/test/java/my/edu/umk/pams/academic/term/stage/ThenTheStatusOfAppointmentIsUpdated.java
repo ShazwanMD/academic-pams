@@ -12,7 +12,7 @@ import com.tngtech.jgiven.integration.spring.JGivenStage;
 import my.edu.umk.pams.academic.identity.model.AdStaff;
 import my.edu.umk.pams.academic.term.model.AdAppointment;
 import my.edu.umk.pams.academic.term.model.AdSection;
-import my.edu.umk.pams.academic.term.service.OfferingService;
+import my.edu.umk.pams.academic.term.service.TermService;
 
 /**
  * @author asyikin.mr
@@ -22,7 +22,7 @@ public class ThenTheStatusOfAppointmentIsUpdated extends Stage<ThenTheStatusOfAp
     private static final Logger LOG = LoggerFactory.getLogger(ThenTheStatusOfAppointmentIsUpdated.class);
 
     @Autowired
-    private OfferingService offeringService;
+    private TermService termService;
 
     @ExpectedScenarioState
     private AdAppointment appointment;
@@ -35,7 +35,7 @@ public class ThenTheStatusOfAppointmentIsUpdated extends Stage<ThenTheStatusOfAp
 
     public ThenTheStatusOfAppointmentIsUpdated the_number_of_appointed_staff_increased() {
         LOG.debug("appointment {} ", appointment.getStatus());
-        Integer count = offeringService.countAppointment(section);
+        Integer count = termService.countAppointment(section);
         Assert.isTrue(count > 0, "Appointment is bigger than zero");
         return self();
     }

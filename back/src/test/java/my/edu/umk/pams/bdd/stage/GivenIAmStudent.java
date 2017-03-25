@@ -7,7 +7,7 @@ import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.identity.model.AdUser;
 import my.edu.umk.pams.academic.term.model.AdOffering;
 import my.edu.umk.pams.academic.term.model.AdSection;
-import my.edu.umk.pams.academic.term.service.OfferingService;
+import my.edu.umk.pams.academic.term.service.TermService;
 import my.edu.umk.pams.academic.security.integration.AdUserDetails;
 import my.edu.umk.pams.academic.studyplan.model.AdAcademicSession;
 import my.edu.umk.pams.academic.studyplan.model.AdProgram;
@@ -32,7 +32,7 @@ public class GivenIAmStudent extends Stage<GivenIAmStudent> {
     private StudyplanService studyplanService;
 
     @Autowired
-    private OfferingService offeringService;
+    private TermService termService;
 
     @ProvidedScenarioState
     private AdAcademicSession academicSession;
@@ -67,12 +67,12 @@ public class GivenIAmStudent extends Stage<GivenIAmStudent> {
     }
 
     public GivenIAmStudent I_pick_offering_$(String canonicalCode) {
-        offering = offeringService.findOfferingByCanonicalCode(canonicalCode);
+        offering = termService.findOfferingByCanonicalCode(canonicalCode);
         return self();
     }
 
     public GivenIAmStudent I_pick_section_$(String canonicalCode) {
-        section = offeringService.findSectionByCanonicalCode(canonicalCode);
+        section = termService.findSectionByCanonicalCode(canonicalCode);
         return self();
     }
 
