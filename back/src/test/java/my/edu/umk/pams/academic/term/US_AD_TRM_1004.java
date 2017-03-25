@@ -6,8 +6,6 @@ import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.term.stage.ThenTheSectionsIsUpdated;
 import my.edu.umk.pams.academic.term.stage.WhenIUpdateSections;
 import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -28,14 +26,6 @@ public class US_AD_TRM_1004
 		extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenIUpdateSections, ThenTheSectionsIsUpdated> {
 
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_1004.class);
-
-	@Before
-	public void before() {
-	}
-
-	@After
-	public void after() {
-	}
 
 	@Test
 	    @Rollback(true)

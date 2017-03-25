@@ -5,8 +5,6 @@ import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.studyplan.stage.ThenCourseHasPrerequisite;
 import my.edu.umk.pams.academic.studyplan.stage.WhenIAddACoursePrerequisite;
 import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -33,14 +31,6 @@ private static final Logger LOG = LoggerFactory.getLogger(US_AD_SPL_1007.class);
 
 	private static final String COURSE_CODE = "DDA2103";
 	private static final String PREREQ_CODE = "DDA2113";
-
-    @Before
-    public void before() {
-    }
-
-    @After
-    public void after() {
-    }
 
     @Test
     @Rollback

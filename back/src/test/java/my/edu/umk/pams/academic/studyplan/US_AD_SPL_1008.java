@@ -6,8 +6,6 @@ import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.studyplan.stage.ThenProgramLevelIntroduced;
 import my.edu.umk.pams.academic.studyplan.stage.WhenIAddProgramLevel;
 import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -31,14 +29,6 @@ import org.springframework.transaction.annotation.Transactional;
 public class US_AD_SPL_1008 extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenIAddProgramLevel, ThenProgramLevelIntroduced> {
 
     private static final Logger LOG = LoggerFactory.getLogger(US_AD_SPL_1008.class);
-
-    @Before
-    public void before() {
-    }
-
-    @After
-    public void after() {
-    }
 
     private String FACULTY_CODE = "FKP";
 

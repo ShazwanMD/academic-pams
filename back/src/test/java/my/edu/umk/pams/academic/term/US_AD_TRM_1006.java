@@ -1,7 +1,5 @@
 package my.edu.umk.pams.academic.term;
 
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -28,15 +26,6 @@ public class US_AD_TRM_1006 extends
         SpringScenarioTest<GivenIAmCPSAdministrator, WhenIUpdateAppointmentStatus, ThenTheStatusOfAppointmentIsUpdated> {
     private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_1006.class);
     public static final String STAFF_NO = "01001A";
-
-
-    @Before
-    public void before() {
-    }
-
-    @After
-    public void after() {
-    }
 
     @Test
     @Rollback(true)

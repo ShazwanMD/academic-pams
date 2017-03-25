@@ -5,8 +5,6 @@ import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.studyplan.stage.ThenCoursesUpdated;
 import my.edu.umk.pams.academic.studyplan.stage.WhenIUpdateCourses;
 import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -33,14 +31,6 @@ public class US_AD_SPL_0003 extends SpringScenarioTest<GivenIAmCPSAdministrator,
 
     // refer to data/AD_FCTY.sql
     public static final String FACULTY_CODE = "FKP";
-
-    @Before
-    public void before() {
-    }
-
-    @After
-    public void after() {
-    }
 
     @Test
     @Rollback(true)

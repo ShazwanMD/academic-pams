@@ -14,8 +14,6 @@ import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.studyplan.stage.ThenCanTakeInNewSemester;
 import my.edu.umk.pams.academic.studyplan.stage.WhenIWantToViewTheProgramForEachLevelOfStudy;
 import my.edu.umk.pams.bdd.stage.GivenIAmStudent;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -38,15 +36,6 @@ public class US_AD_SPL_2001 extends SpringScenarioTest<GivenIAmStudent, WhenIWan
 
     @ProvidedScenarioState
     private String PROGRAM_CODE = "PGRAM_231";
-
-    @Before
-    public void before() {
-    }
-
-    @After
-    public void after() {
-    }
-
 
     @Test
     @Rollback(true)

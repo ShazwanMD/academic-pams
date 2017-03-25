@@ -5,8 +5,6 @@ import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.profile.stage.ThenAdminProgramInfoIsCurrent;
 import my.edu.umk.pams.academic.profile.stage.WhenIWantToAddProgramInfo;
 import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -28,14 +26,6 @@ public class US_AD_PFL_2006
         extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenIWantToAddProgramInfo, ThenAdminProgramInfoIsCurrent> {
 
     private static final Logger LOG = LoggerFactory.getLogger(US_AD_PFL_2006.class);
-
-    @Before
-    public void before() {
-    }
-
-    @After
-    public void after() {
-    }
 
     private String FACULTY_CODE = "FKP";
 

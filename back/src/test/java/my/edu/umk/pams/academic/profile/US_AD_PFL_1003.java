@@ -5,8 +5,6 @@ import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.profile.stage.ThenIKnowMyCurrentStatus;
 import my.edu.umk.pams.academic.profile.stage.WhenIViewStudentActivationStatus;
 import my.edu.umk.pams.bdd.stage.GivenIAmStudent;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -29,14 +27,6 @@ import org.springframework.transaction.annotation.Transactional;
 public class US_AD_PFL_1003 extends SpringScenarioTest<GivenIAmStudent, WhenIViewStudentActivationStatus, ThenIKnowMyCurrentStatus> {
 
     private static final Logger LOG = LoggerFactory.getLogger(US_AD_PFL_2002.class);
-
-    @Before
-    public void before() {
-    }
-
-    @After
-    public void after() {
-    }
 
     @Test
     @Rollback(true)

@@ -5,8 +5,6 @@ import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.profile.stage.ThenMyContactNumberIsUpdated;
 import my.edu.umk.pams.academic.profile.stage.WhenIUpdateMyContactNumber;
 import my.edu.umk.pams.bdd.stage.GivenIAmStudent;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -29,15 +27,6 @@ import org.springframework.transaction.annotation.Transactional;
 public class US_AD_PFL_1004 extends SpringScenarioTest<GivenIAmStudent, WhenIUpdateMyContactNumber, ThenMyContactNumberIsUpdated> {
 
     private static final Logger LOG = LoggerFactory.getLogger(US_AD_PFL_1004.class);
-
-    @Before
-    public void before() {
-    }
-
-    @After
-    public void after() {
-    }
-
 
     @Test
     @Rollback(true)

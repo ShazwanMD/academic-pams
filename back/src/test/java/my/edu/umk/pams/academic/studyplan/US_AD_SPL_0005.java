@@ -5,8 +5,6 @@ import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.studyplan.stage.ThenGroupScheduleByIntakeCode;
 import my.edu.umk.pams.academic.studyplan.stage.WhenIAdACohort;
 import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -30,14 +28,6 @@ public class US_AD_SPL_0005 extends SpringScenarioTest<GivenIAmCPSAdministrator,
 
     private static final Logger LOG = LoggerFactory.getLogger(US_AD_SPL_0005.class);
     public static final String PROGRAM_CODE = "FIAT/PHD/0001";
-
-    @Before
-    public void before() {
-    }
-
-    @After
-    public void after() {
-    }
 
     @Test
     @Rollback(true)

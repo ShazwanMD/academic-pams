@@ -5,8 +5,6 @@ import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.profile.stage.ThenCurrentStudentProfileInfoIsUpdated;
 import my.edu.umk.pams.academic.profile.stage.WhenIUpdateStudentProfileInfo;
 import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -28,14 +26,6 @@ public class US_AD_PFL_2002 extends
         SpringScenarioTest<GivenIAmCPSAdministrator, WhenIUpdateStudentProfileInfo, ThenCurrentStudentProfileInfoIsUpdated> {
 
     private static final Logger LOG = LoggerFactory.getLogger(US_AD_PFL_2002.class);
-
-    @Before
-    public void before() {
-    }
-
-    @After
-    public void after() {
-    }
 
     @Test
     @Rollback(true)

@@ -8,8 +8,6 @@ import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.term.stage.ThenICanChoose;
 import my.edu.umk.pams.academic.term.stage.WhenIWantToViewTheOfferedCoursesByAcademicSession;
 import my.edu.umk.pams.bdd.stage.GivenIAmStudent;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -27,15 +25,6 @@ public class US_AD_TRM_1009 extends SpringScenarioTest<GivenIAmStudent, WhenIWan
     private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_1009.class);
 
     public static final String PROGRAM_CODE = "FKP/PHD/0001";
-
-    @Before
-    public void before() {
-
-    }
-
-    @After
-    public void after() {
-    }
 
     @Test
     @Rollback(true)

@@ -6,8 +6,6 @@ import my.edu.umk.pams.academic.term.stage.ThenTheOfferingIsReadyForSetup;
 import my.edu.umk.pams.academic.term.stage.WhenIOfferACourse;
 import my.edu.umk.pams.academic.studyplan.US_AD_SPL_0001;
 import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -26,14 +24,6 @@ import org.springframework.transaction.annotation.Transactional;
 public class US_AD_TRM_0002 extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenIOfferACourse, ThenTheOfferingIsReadyForSetup> {
 
     private static final Logger LOG = LoggerFactory.getLogger(US_AD_SPL_0001.class);
-
-    @Before
-    public void before() {
-    }
-
-    @After
-    public void after() {
-    }
 
     @Test
     @Rollback(true)
