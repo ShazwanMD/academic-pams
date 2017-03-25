@@ -2,10 +2,8 @@ package my.edu.umk.pams.academic.studyplan.dao;
 
 
 import my.edu.umk.pams.academic.core.GenericDao;
-import my.edu.umk.pams.academic.studyplan.model.AdAcademicSession;
-import my.edu.umk.pams.academic.studyplan.model.AdCourse;
-import my.edu.umk.pams.academic.studyplan.model.AdFaculty;
-import my.edu.umk.pams.academic.studyplan.model.AdProgram;
+import my.edu.umk.pams.academic.identity.model.AdUser;
+import my.edu.umk.pams.academic.studyplan.model.*;
 
 import java.util.List;
 
@@ -42,4 +40,8 @@ public interface AdCourseDao extends GenericDao<Long, AdCourse> {
     Integer count(AdProgram program);
 
     boolean isExists(String code, AdFaculty faculty);
+
+    boolean isPrerequisite(AdCourse course, AdCourse prerequisite);
+
+    void addPrerequisites(AdCourse course, AdUser user, AdCourse... prerequisites);
 }

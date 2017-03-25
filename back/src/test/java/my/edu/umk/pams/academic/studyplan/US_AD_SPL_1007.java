@@ -32,7 +32,8 @@ public class US_AD_SPL_1007 extends SpringScenarioTest<GivenIAmCPSAdministrator,
 private static final Logger LOG = LoggerFactory.getLogger(US_AD_SPL_1007.class);
 
 	private static final String COURSE_CODE = "DDA2103";
-	
+	private static final String PREREQ_CODE = "DDA2113";
+
     @Before
     public void before() {
     }
@@ -42,11 +43,11 @@ private static final Logger LOG = LoggerFactory.getLogger(US_AD_SPL_1007.class);
     }
 
     @Test
-    @Rollback(false)
+    @Rollback
     public void scenario1007() {
         given().I_am_a_CPS_administrator_in_current_academic_session();
-        when().I_want_add_course_prerequisite_$(COURSE_CODE);
-        then().course_has_prerequisite();
+        when().I_add_prereq_$_to_course_$(PREREQ_CODE, COURSE_CODE);
+        then().course_$_is_a_prereq_for_course_$(PREREQ_CODE, COURSE_CODE);
     }
 
 }

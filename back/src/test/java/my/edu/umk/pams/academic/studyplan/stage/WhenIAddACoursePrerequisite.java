@@ -7,16 +7,11 @@ package my.edu.umk.pams.academic.studyplan.stage;
  * @author ain_zaida
  */
 
-import com.tngtech.jgiven.annotation.Pending;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.tngtech.jgiven.Stage;
-import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 
-import my.edu.umk.pams.academic.common.service.CommonService;
 import my.edu.umk.pams.academic.studyplan.model.AdCourse;
-import my.edu.umk.pams.academic.studyplan.model.AdCoursePrerequisite;
-import my.edu.umk.pams.academic.studyplan.model.AdCoursePrerequisiteImpl;
 import my.edu.umk.pams.academic.studyplan.service.StudyplanService;
 
 @JGivenStage
@@ -25,20 +20,12 @@ public class WhenIAddACoursePrerequisite extends Stage<WhenIAddACoursePrerequisi
 	    @Autowired
 	    private StudyplanService studyplanService;
 
-	    @Autowired
-	    private CommonService commonService;
+	public WhenIAddACoursePrerequisite I_add_prereq_$_to_course_$(String courseCodePrereq, String courseCode) {
 
-	    @ProvidedScenarioState
-	    private AdCourse course;
+		AdCourse course = studyplanService.findCourseByCode(courseCode);
+		AdCourse prereqCourse = studyplanService.findCourseByCode(courseCodePrereq);
 
-	@Pending
-    public WhenIAddACoursePrerequisite I_want_add_course_prerequisite_$(String courseCode) {
-
-    	course = studyplanService.findCourseByCode(courseCode);
-    	AdCoursePrerequisite  prerequisites = new AdCoursePrerequisiteImpl();
-    	prerequisites.setCourse(course);
-    	prerequisites.setPrerequisite(course);
-//    	studyplanService.savePrerequisites(prerequisites);
+    	studyplanService.addPrerequisites(course, prereqCourse);
     	
         return self();
 

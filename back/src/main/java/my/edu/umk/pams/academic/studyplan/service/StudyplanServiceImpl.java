@@ -263,6 +263,11 @@ public class StudyplanServiceImpl implements StudyplanService {
         sessionFactory.getCurrentSession().flush();
     }
 
+    @Override
+    public void addPrerequisites(AdCourse course, AdCourse... prereqCourses) {
+        courseDao.addPrerequisites(course, securityService.getCurrentUser(), prereqCourses);
+        sessionFactory.getCurrentSession().flush();
+    }
 
 
 

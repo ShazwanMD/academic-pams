@@ -1,12 +1,19 @@
 package my.edu.umk.pams.academic.studyplan.dao;
 
 import my.edu.umk.pams.academic.core.AdMetaState;
+import my.edu.umk.pams.academic.core.AdMetadata;
 import my.edu.umk.pams.academic.core.GenericDaoSupport;
+import my.edu.umk.pams.academic.identity.model.AdUser;
 import my.edu.umk.pams.academic.studyplan.model.*;
+import org.apache.commons.lang.Validate;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
+import java.sql.Timestamp;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -14,6 +21,8 @@ import java.util.List;
  */
 @Repository("acCourseDao")
 public class AdCourseDaoImpl extends GenericDaoSupport<Long, AdCourse> implements AdCourseDao {
+
+    private static final Logger LOG = LoggerFactory.getLogger(AdCourseDaoImpl.class);
 
     public AdCourseDaoImpl() {
         super(AdCourseImpl.class);
@@ -178,5 +187,48 @@ public class AdCourseDaoImpl extends GenericDaoSupport<Long, AdCourse> implement
         query.setEntity("faculty", faculty);
         query.setInteger("state", AdMetaState.ACTIVE.ordinal());
         return 0 < ((Long) query.uniqueResult()).intValue();
+    }
+
+    @Override
+    public boolean isPrerequisite(AdCourse course, AdCourse prerequisite) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select count(*) from AdCoursePrerequisite s where " +
+                "s.prerequisite = :prerequisite " +
+                "and s.metadata.state = :state ");
+        query.setEntity("prerequisite", prerequisite);
+        query.setInteger("state", AdMetaState.ACTIVE.ordinal());
+        return 0 < ((Long) query.uniqueResult()).intValue();
+    }
+
+    @Override
+    public void addPrerequisites(AdCourse course, AdUser user, AdCourse... prereqCourses) {
+
+        Validate.notNull(user, "User cannot be null");
+        Validate.notNull(course, "Course cannot be null");
+        Validate.notNull(prereqCourses, "prereqCourses cannot be null");
+        Validate.notEmpty(prereqCourses, "prereqCourses cannot be empty");
+        Session session = sessionFactory.getCurrentSession();
+
+        Arrays.asList(prereqCourses).forEach(prereqCourse -> {
+            if (isPrerequisite(course, prereqCourse)) {
+                LOG.debug("Course " + prereqCourse.getCode() + " is already a prerequisite for course " + course.getCode());
+            } else {
+                AdCoursePrerequisiteImpl prerequisite = new AdCoursePrerequisiteImpl();
+                prerequisite.setCourse(course);
+                prerequisite.setPrerequisite(prereqCourse);
+
+                // prepare metadata
+                AdMetadata metadata = new AdMetadata();
+                metadata.setCreatedDate(new Timestamp(System.currentTimeMillis()));
+                metadata.setCreatorId(user.getId());
+                metadata.setState(AdMetaState.ACTIVE);
+                prerequisite.setMetadata(metadata);
+                session.save(prerequisite);
+            }
+
+        });
+
+
+
     }
 }

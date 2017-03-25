@@ -90,6 +90,8 @@ public interface StudyplanService {
 
     void deleteSubjectPart(AdBundleSubject subject, AdBundleSubjectPart part);
 
+    void addPrerequisites(AdCourse course, AdCourse... prerequisites);
+
     //====================================================================================================
     // COHORT
     //====================================================================================================
