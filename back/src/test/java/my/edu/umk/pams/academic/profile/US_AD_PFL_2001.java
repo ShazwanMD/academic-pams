@@ -24,7 +24,7 @@ public class US_AD_PFL_2001 extends SpringScenarioTest<GivenIAmCPSAdministrator,
 
     @Test
     @Rollback
-    public void scenario1() {
+    public void scenario2001() {
         given().I_am_a_CPS_administrator_in_current_academic_session();
         when().I_add_student_profile();
         then().Current_student_profile_is_updated();

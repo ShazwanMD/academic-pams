@@ -30,7 +30,7 @@ public class US_AD_PFL_1003 extends SpringScenarioTest<GivenIAmStudent, WhenIVie
 
     @Test
     @Rollback
-    public void scenario01() {
+    public void scenario1003() {
         given().I_am_a_student_in_current_academic_session();
         when().I_view_student_activation_status();
         then().I_know_my_current_status();
