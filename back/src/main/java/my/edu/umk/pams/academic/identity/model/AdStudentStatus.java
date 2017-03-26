@@ -1,11 +1,8 @@
 package my.edu.umk.pams.academic.identity.model;
 
 public enum AdStudentStatus {
-	
-	MATRICULATED, 
+	MATRICULATED,
 	ACTIVE,
 	BARRED,
 	INACTIVE,
-	
-
 }

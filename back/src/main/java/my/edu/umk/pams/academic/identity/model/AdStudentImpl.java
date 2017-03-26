@@ -13,16 +13,15 @@ import java.util.List;
 @Table(name = "AD_STDN")
 public class AdStudentImpl extends AdActorImpl implements AdStudent {
 
+	@Column(name = "STUDENT_STATUS")
+	private AdStudentStatus studentStatus;
+
 	@ManyToOne(targetEntity = AdCohortImpl.class)
 	@JoinColumn(name = "COHORT_ID", nullable = true) // todo(uda): nullable =
-														// false
 	private AdCohort cohort;
 
 	@OneToMany(targetEntity = AdAddressImpl.class, mappedBy = "student", fetch = FetchType.LAZY)
 	private List<AdAddress> addresses;
-
-	@Column(name = "STUDENT_STATUS")
-	private AdStudentStatus studentStatus;
 
 	@Override
 	public String getMatricNo() {
@@ -32,6 +31,16 @@ public class AdStudentImpl extends AdActorImpl implements AdStudent {
 	@Override
 	public void setMatricNo(String matricNo) {
 		setIdentityNo(matricNo);
+	}
+
+	@Override
+	public AdStudentStatus getStudentStatus() {
+		return studentStatus;
+	}
+
+	@Override
+	public void setStudentStatus(AdStudentStatus studentStatus) {
+		this.studentStatus = studentStatus;
 	}
 
 	@Override
@@ -57,17 +66,6 @@ public class AdStudentImpl extends AdActorImpl implements AdStudent {
 	@Override
 	public Class<?> getInterfaceClass() {
 		return AdStudent.class;
-	}
-
-	@Override
-	public AdStudentStatus getStudentStatus() {
-		return studentStatus;
-	}
-
-	@Override
-	public void setStudentStatus(AdStudentStatus studentStatus) {
-		this.studentStatus = studentStatus;
-
 	}
 
 }

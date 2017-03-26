@@ -1,3 +1,4 @@
+
 create table AD_ACDM_AREA (
     ID int8 not null,
     CODE varchar(255) not null,
@@ -1214,8 +1215,7 @@ create table AD_STAF (
 );
 
 create table AD_STDN (
-    COHORT varchar(255),
-    MATRIC_NO varchar(255),
+    STUDENT_STATUS int4,
     ID int8 not null,
     COHORT_ID int8,
     primary key (ID)
@@ -1411,7 +1411,7 @@ foreign key (STUDY_CENTER_ID)
 references AD_STDY_CNTR;
 
 alter table AD_APMT
-    add constraint FKE7D810B2B41E3E0F
+    add constraint FKE7D810B241D87DF5
 foreign key (SECTION_ID)
 references AD_SCTN;
 
@@ -1424,7 +1424,7 @@ alter table AD_ASMT
     add constraint uc_AD_ASMT_1 unique (CANONICAL_CODE);
 
 alter table AD_ASMT
-    add constraint FKE7D81BF5F6EDCF25
+    add constraint FKE7D81BF5207B8BFF
 foreign key (OFFERING_ID)
 references AD_OFRG;
 
@@ -1584,7 +1584,7 @@ foreign key (GRADE_CODE_ID)
 references AD_GRDE_CODE;
 
 alter table AD_ENMT
-    add constraint FKE7D9DAACB41E3E0F
+    add constraint FKE7D9DAAC41D87DF5
 foreign key (SECTION_ID)
 references AD_SCTN;
 
@@ -1614,12 +1614,12 @@ foreign key (STUDENT_ID)
 references AD_STDN;
 
 alter table AD_ENMT_APPL_ITEM
-    add constraint FK4878A294BE2A004B
+    add constraint FK4878A29478AB75B1
 foreign key (APPLICATION_ID)
 references AD_ENMT_APLN;
 
 alter table AD_ENMT_APPL_ITEM
-    add constraint FK4878A294B41E3E0F
+    add constraint FK4878A29441D87DF5
 foreign key (SECTION_ID)
 references AD_SCTN;
 
@@ -1636,17 +1636,17 @@ alter table AD_GNDR_CODE
     add constraint uc_AD_GNDR_CODE_1 unique (CODE);
 
 alter table AD_GRBK
-    add constraint FKE7DAD1109A0F78E5
+    add constraint FKE7DAD1109721673F
 foreign key (ASSESSMENT_ID)
 references AD_ASMT;
 
 alter table AD_GRBK
-    add constraint FKE7DAD1102ADA08A5
+    add constraint FKE7DAD11027EBF6FF
 foreign key (ENROLLMENT_ID)
 references AD_ENMT;
 
 alter table AD_GRBK
-    add constraint FKE7DAD110B41E3E0F
+    add constraint FKE7DAD11041D87DF5
 foreign key (SECTION_ID)
 references AD_SCTN;
 
@@ -1777,7 +1777,7 @@ alter table AD_SCTN
     add constraint uc_AD_SCTN_1 unique (CANONICAL_CODE);
 
 alter table AD_SCTN
-    add constraint FKE7E00F66F6EDCF25
+    add constraint FKE7E00F66207B8BFF
 foreign key (OFFERING_ID)
 references AD_OFRG;
 
@@ -1792,7 +1792,7 @@ foreign key (FACULTY_ID)
 references AD_FCTY;
 
 alter table AD_SCTN_PLCY
-    add constraint FK503FDCABB41E3E0F
+    add constraint FK503FDCAB41D87DF5
 foreign key (SECTION_ID)
 references AD_SCTN;
 
