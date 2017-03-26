@@ -29,11 +29,13 @@ public class US_AD_PFL_1005 extends SpringScenarioTest<GivenIAmStudent, WhenIWan
 
     private static final Logger LOG = LoggerFactory.getLogger(US_AD_PFL_1005.class);
 
+    public static final String FACULTY_CODE = "FKP";
+    
     @Test
     @Rollback
     public void scenario1005() {
         given().I_am_a_student_in_current_academic_session();
-        when().I_update_course_to_faculty_code_$a("26");
+        when().I_update_course_to_faculty_code_$a(FACULTY_CODE);
         then().Information_updated();
     }
 
