@@ -29,7 +29,7 @@ public class US_AD_PFL_2002 extends
 
     @Test
     @Rollback
-    public void scenario01() {
+    public void scenario2002() {
         given().I_am_a_CPS_administrator_in_current_academic_session();
         when().I_update_student_profile_info();
         then().current_student_profile_info_is_updated();

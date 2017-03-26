@@ -29,7 +29,9 @@ public class WhenIWantToAddProgramInfo extends Stage<WhenIWantToAddProgramInfo> 
     private AdFaculty faculty;
 
     @ExpectedScenarioState
-    private String PROGRAM_CODE;
+    private String facultyCode;
+    
+
 
 
     public WhenIWantToAddProgramInfo I_add_program_info_$(String facultyCode) {
@@ -40,12 +42,14 @@ public class WhenIWantToAddProgramInfo extends Stage<WhenIWantToAddProgramInfo> 
 
 
         AdProgram program = new AdProgramImpl();
-        program.setCode(PROGRAM_CODE);
+        
+        program.setCode(facultyCode);
         program.setFaculty(faculty);
         program.setProgramLevel(programLevel);
         program.setTitle("Master of SAM");
         program.setTitleEn("Master of SAM");
         program.setTitleMs("Master of SAM");
+   
         studyplanService.saveProgram(program);
 
         return self();

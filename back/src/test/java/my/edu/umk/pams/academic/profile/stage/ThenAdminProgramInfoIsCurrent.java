@@ -19,7 +19,7 @@ public class ThenAdminProgramInfoIsCurrent extends Stage<ThenAdminProgramInfoIsC
 
     public ThenAdminProgramInfoIsCurrent the_program_is_current_for_$(String facultyCode) {
 
-        boolean exists = studyplanService.isProgramExists("PRGM-101", faculty);
+        boolean exists = studyplanService.isProgramExists("FKP", faculty);
         Assert.isTrue(exists, "cool");
 
         return self();

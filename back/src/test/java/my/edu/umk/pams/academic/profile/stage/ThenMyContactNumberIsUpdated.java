@@ -11,22 +11,21 @@ import org.springframework.util.Assert;
 @JGivenStage
 public class ThenMyContactNumberIsUpdated extends Stage<ThenMyContactNumberIsUpdated> {
 
-    @Autowired
-    private IdentityService identityService;
+	@Autowired
+	private IdentityService identityService;
 
-    @ExpectedScenarioState
-    private AdActor actor;
+	@ExpectedScenarioState
+	private AdActor actor;
 
-    @ExpectedScenarioState
-    private String identityNo;
+	@ExpectedScenarioState
+	private String identityNo;
 
-    public ThenMyContactNumberIsUpdated my_contact_number_is_updated() {
+	@SuppressWarnings("deprecation")
+	public ThenMyContactNumberIsUpdated my_contact_number_is_updated() {
 
-        AdActor actor = identityService.findActorByIdentityNo(identityNo);
-        Assert.notNull(actor, "and current");
+		Assert.notNull(actor);
+		return self();
 
-        return self();
-
-    }
+	}
 
 }

@@ -29,7 +29,7 @@ public class US_AD_PFL_1002 extends SpringScenarioTest<GivenIAmStudent, WhenIUpd
 
     @Test
     @Rollback
-    public void scenario01() {
+    public void scenario1002() {
         given().I_am_a_student_in_current_academic_session();
         when().I_add_my_billing_address().and().when().I_update_my_billing_address();
         then().my_billing_address_on_file_is_current();
