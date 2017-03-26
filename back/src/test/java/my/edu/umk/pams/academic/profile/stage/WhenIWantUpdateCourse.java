@@ -30,14 +30,17 @@ public class WhenIWantUpdateCourse extends Stage<WhenIWantUpdateCourse> {
 
     @ExpectedScenarioState
     private AdStudent students;
+    
+    @ExpectedScenarioState
+    private String FACULTY_CODE;
 
-    public WhenIWantUpdateCourse I_update_course_to_faculty_code_$a(String code) {
+    public WhenIWantUpdateCourse I_update_course_to_faculty_code_$a(String FACULTY_CODE) {
 
-        faculty = studyplanService.findFacultyByCode(code);
+        faculty = studyplanService.findFacultyByCode(FACULTY_CODE);
 
         AdCourse courses = new AdCourseImpl();
 
-        courses.setCode("DDA1177");
+        courses.setCode("DDA1155");
         courses.setFaculty(faculty);
         courses.setClassification(AdAcademicClassification.LEVEL_000);
         courses.setTitle("LUKISAN SAM");
@@ -45,7 +48,8 @@ public class WhenIWantUpdateCourse extends Stage<WhenIWantUpdateCourse> {
         courses.setTitleMs("LUKISAN SAM");
 
         studyplanService.addCourse(faculty, courses);
-
+        
+  
         return self();
     }
 
