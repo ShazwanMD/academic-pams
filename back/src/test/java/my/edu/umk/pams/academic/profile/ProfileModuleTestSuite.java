@@ -14,11 +14,11 @@ import org.junit.runners.Suite;
 //        US_AD_PFL_1004.class,
 //        US_AD_PFL_1005.class,
         US_AD_PFL_1006.class,
-//        US_AD_PFL_1007.class,
+        US_AD_PFL_1007.class,
         
         US_AD_PFL_2001.class,
         US_AD_PFL_2002.class,
-//        US_AD_PFL_2004.class,
+        US_AD_PFL_2004.class,
 //        US_AD_PFL_2006.class,
   
 })
