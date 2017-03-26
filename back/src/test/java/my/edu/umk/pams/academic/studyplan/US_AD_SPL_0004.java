@@ -28,7 +28,7 @@ public class US_AD_SPL_0004 extends SpringScenarioTest<GivenIAmCPSAdministrator,
 
     private static final Logger LOG = LoggerFactory.getLogger(US_AD_SPL_0004.class);
 
-    private static final String FACULTY_CODE = "FKP";
+    private static final String FACULTY_CODE = "FIAT";
 
     @Test
     @Rollback

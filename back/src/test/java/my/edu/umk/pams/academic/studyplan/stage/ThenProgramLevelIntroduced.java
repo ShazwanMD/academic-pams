@@ -23,9 +23,15 @@ public class ThenProgramLevelIntroduced extends Stage<ThenProgramLevelIntroduced
 
     @ExpectedScenarioState
     private AdProgram program;
+    
+    @ExpectedScenarioState
+    private String PROGRAM_CODE;
+    
+    @ExpectedScenarioState
+    private String FACULTY_CODE;
 
 
-    public ThenProgramLevelIntroduced program_level_$_introduced(String PROGRAM_CODE) {
+    public ThenProgramLevelIntroduced program_level_$_introduced(String FACULTY_CODE) {
 
         List<AdProgramLevel> ProgramLevels = studyplanService.findProgramLevels();
         Assert.notEmpty(ProgramLevels);

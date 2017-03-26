@@ -30,10 +30,10 @@ public class US_AD_SPL_1008 extends SpringScenarioTest<GivenIAmCPSAdministrator,
 
     private static final Logger LOG = LoggerFactory.getLogger(US_AD_SPL_1008.class);
 
-    private String FACULTY_CODE = "FKP";
+    private String FACULTY_CODE = "FIAT";
 
     @ProvidedScenarioState
-    private String PROGRAM_CODE = "MASTER";
+    private String PROGRAM_CODE = "FIAT/PHD/0001";
 
     @Test
     @Rollback
