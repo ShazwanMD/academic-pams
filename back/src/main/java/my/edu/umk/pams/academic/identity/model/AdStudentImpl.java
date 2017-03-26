@@ -13,46 +13,61 @@ import java.util.List;
 @Table(name = "AD_STDN")
 public class AdStudentImpl extends AdActorImpl implements AdStudent {
 
-    @ManyToOne(targetEntity = AdCohortImpl.class)
-    @JoinColumn(name = "COHORT_ID", nullable = true) // todo(uda): nullable = false
-    private AdCohort cohort;
+	@ManyToOne(targetEntity = AdCohortImpl.class)
+	@JoinColumn(name = "COHORT_ID", nullable = true) // todo(uda): nullable =
+														// false
+	private AdCohort cohort;
 
-    @OneToMany(targetEntity = AdAddressImpl.class, mappedBy = "student", fetch = FetchType.LAZY)
-    private List<AdAddress> addresses;
+	@OneToMany(targetEntity = AdAddressImpl.class, mappedBy = "student", fetch = FetchType.LAZY)
+	private List<AdAddress> addresses;
 
-    @Override
-    public String getMatricNo() {
-        return getIdentityNo();
-    }
+	@Column(name = "STUDENT_STATUS")
+	private AdStudentStatus studentStatus;
 
-    @Override
-    public void setMatricNo(String matricNo) {
-        setIdentityNo(matricNo);
-    }
+	@Override
+	public String getMatricNo() {
+		return getIdentityNo();
+	}
 
-    @Override
-    public AdCohort getCohort() {
-        return cohort;
-    }
+	@Override
+	public void setMatricNo(String matricNo) {
+		setIdentityNo(matricNo);
+	}
 
-    @Override
-    public void setCohort(AdCohort cohort) {
-        this.cohort = cohort;
-    }
+	@Override
+	public AdCohort getCohort() {
+		return cohort;
+	}
 
-    @Override
-    public List<AdAddress> getAddresses() {
-        return addresses;
-    }
+	@Override
+	public void setCohort(AdCohort cohort) {
+		this.cohort = cohort;
+	}
 
-    @Override
-    public void setAddresses(List<AdAddress> addresses) {
-        this.addresses = addresses;
-    }
+	@Override
+	public List<AdAddress> getAddresses() {
+		return addresses;
+	}
 
-    @Override
-    public Class<?> getInterfaceClass() {
-        return AdStudent.class;
-    }
+	@Override
+	public void setAddresses(List<AdAddress> addresses) {
+		this.addresses = addresses;
+	}
+
+	@Override
+	public Class<?> getInterfaceClass() {
+		return AdStudent.class;
+	}
+
+	@Override
+	public AdStudentStatus getStudentStatus() {
+		return studentStatus;
+	}
+
+	@Override
+	public void setStudentStatus(AdStudentStatus studentStatus) {
+		this.studentStatus = studentStatus;
+
+	}
 
 }
