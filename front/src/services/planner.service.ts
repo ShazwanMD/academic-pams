@@ -3,7 +3,7 @@ import { Response } from '@angular/http';
 import { HttpInterceptorService } from '@covalent/http';
 
 @Injectable()
-export class StudyplanService {
+export class PlannerService {
 
   constructor(private _http: HttpInterceptorService) {
   }
