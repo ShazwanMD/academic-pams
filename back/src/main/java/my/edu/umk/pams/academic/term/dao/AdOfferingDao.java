@@ -4,7 +4,7 @@ import my.edu.umk.pams.academic.core.GenericDao;
 import my.edu.umk.pams.academic.identity.model.AdUser;
 import my.edu.umk.pams.academic.term.model.AdAssessment;
 import my.edu.umk.pams.academic.term.model.AdOffering;
-import my.edu.umk.pams.academic.studyplan.model.*;
+import my.edu.umk.pams.academic.planner.model.*;
 
 import java.util.List;
 

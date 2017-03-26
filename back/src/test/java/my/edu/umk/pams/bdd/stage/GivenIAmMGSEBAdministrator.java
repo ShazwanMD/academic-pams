@@ -6,8 +6,8 @@ import com.tngtech.jgiven.integration.spring.JGivenStage;
 import my.edu.umk.pams.academic.identity.model.AdStaff;
 import my.edu.umk.pams.academic.identity.model.AdUser;
 import my.edu.umk.pams.academic.security.integration.AdUserDetails;
-import my.edu.umk.pams.academic.studyplan.model.AdAcademicSession;
-import my.edu.umk.pams.academic.studyplan.service.StudyplanService;
+import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
+import my.edu.umk.pams.academic.planner.service.PlannerService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +25,7 @@ public class GivenIAmMGSEBAdministrator extends Stage<GivenIAmMGSEBAdministrator
     private AuthenticationManager authenticationManager;
 
     @Autowired
-    private StudyplanService studyplanService;
+    private PlannerService plannerService;
 
     @ProvidedScenarioState
     private AdAcademicSession academicSession;
@@ -35,12 +35,12 @@ public class GivenIAmMGSEBAdministrator extends Stage<GivenIAmMGSEBAdministrator
 
     public void I_am_a_MGSEB_administrator_in_$_academic_session(String academicSessionCode) {
         loginAsMGSEB();
-        academicSession = studyplanService.findAcademicSessionByCode(academicSessionCode);
+        academicSession = plannerService.findAcademicSessionByCode(academicSessionCode);
     }
 
     public void I_am_a_MGSEB_administrator_in_current_academic_session() {
         loginAsMGSEB();
-        academicSession = studyplanService.findCurrentAcademicSession();
+        academicSession = plannerService.findCurrentAcademicSession();
     }
 
     private void loginAsMGSEB() {

@@ -4,7 +4,7 @@ package my.edu.umk.pams.academic.term.model;
 import my.edu.umk.pams.academic.core.AdMetadata;
 import my.edu.umk.pams.academic.identity.model.AdStaff;
 import my.edu.umk.pams.academic.identity.model.AdStaffImpl;
-import my.edu.umk.pams.academic.studyplan.model.AdAppointmentStatus;
+import my.edu.umk.pams.academic.planner.model.AdAppointmentStatus;
 
 import javax.persistence.*;
 

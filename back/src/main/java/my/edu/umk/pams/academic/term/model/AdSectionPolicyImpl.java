@@ -2,8 +2,8 @@ package my.edu.umk.pams.academic.term.model;
 
 
 import my.edu.umk.pams.academic.core.AdMetadata;
-import my.edu.umk.pams.academic.studyplan.model.AdFaculty;
-import my.edu.umk.pams.academic.studyplan.model.AdFacultyImpl;
+import my.edu.umk.pams.academic.planner.model.AdFaculty;
+import my.edu.umk.pams.academic.planner.model.AdFacultyImpl;
 
 import javax.persistence.*;
 

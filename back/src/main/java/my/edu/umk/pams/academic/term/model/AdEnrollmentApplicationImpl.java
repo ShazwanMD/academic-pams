@@ -8,8 +8,8 @@ import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.identity.model.AdStudentImpl;
 import my.edu.umk.pams.academic.profile.model.AdAdmission;
 import my.edu.umk.pams.academic.profile.model.AdAdmissionImpl;
-import my.edu.umk.pams.academic.studyplan.model.AdAcademicSession;
-import my.edu.umk.pams.academic.studyplan.model.AdAcademicSessionImpl;
+import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
+import my.edu.umk.pams.academic.planner.model.AdAcademicSessionImpl;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;

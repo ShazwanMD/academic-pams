@@ -3,7 +3,7 @@ package my.edu.umk.pams.academic.term.dao;
 import my.edu.umk.pams.academic.core.AdMetaState;
 import my.edu.umk.pams.academic.core.GenericDaoSupport;
 import my.edu.umk.pams.academic.term.model.*;
-import my.edu.umk.pams.academic.studyplan.model.*;
+import my.edu.umk.pams.academic.planner.model.*;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.springframework.stereotype.Repository;

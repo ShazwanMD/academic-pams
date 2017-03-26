@@ -12,17 +12,17 @@ import my.edu.umk.pams.academic.term.model.AdOffering;
 import my.edu.umk.pams.academic.term.model.AdOfferingImpl;
 import my.edu.umk.pams.academic.term.model.AdSection;
 import my.edu.umk.pams.academic.term.service.TermService;
-import my.edu.umk.pams.academic.studyplan.model.AdCourse;
-import my.edu.umk.pams.academic.studyplan.model.AdFaculty;
-import my.edu.umk.pams.academic.studyplan.model.AdProgram;
-import my.edu.umk.pams.academic.studyplan.service.StudyplanService;
+import my.edu.umk.pams.academic.planner.model.AdCourse;
+import my.edu.umk.pams.academic.planner.model.AdFaculty;
+import my.edu.umk.pams.academic.planner.model.AdProgram;
+import my.edu.umk.pams.academic.planner.service.PlannerService;
 
 @JGivenStage
 public class WhenIViewTheDetailsOfOfferedCourses extends Stage<WhenIViewTheDetailsOfOfferedCourses> {
 	private static final Logger LOG = LoggerFactory.getLogger(WhenIViewTheDetailsOfOfferedCourses.class);
 
 	@Autowired
-	private StudyplanService studyplanService;
+	private PlannerService plannerService;
 	
 	@Autowired
 	private TermService termService;
@@ -51,11 +51,11 @@ public class WhenIViewTheDetailsOfOfferedCourses extends Stage<WhenIViewTheDetai
 	
 	public WhenIViewTheDetailsOfOfferedCourses I_view_the_details_offered_courses_for_program_$(String code) {
 	
-		program = studyplanService.findProgramByCode(code);
+		program = plannerService.findProgramByCode(code);
         offering = termService.findOfferings(program);
         String code1 = "FKP"; 
-        AdFaculty faculty = studyplanService.findFacultyByCode(code1);
-        List<AdCourse> courses = studyplanService.findCourses(faculty);
+        AdFaculty faculty = plannerService.findFacultyByCode(code1);
+        List<AdCourse> courses = plannerService.findCourses(faculty);
               
         for (AdOffering offering : offering) {
             LOG.debug(offering.getTitle());

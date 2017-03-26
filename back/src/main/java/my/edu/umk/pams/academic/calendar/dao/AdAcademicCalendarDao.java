@@ -5,7 +5,7 @@ import my.edu.umk.pams.academic.calendar.model.AdAcademicCalendar;
 import my.edu.umk.pams.academic.calendar.model.AdAcademicCalendarType;
 import my.edu.umk.pams.academic.common.model.AdStudyCenter;
 import my.edu.umk.pams.academic.core.GenericDao;
-import my.edu.umk.pams.academic.studyplan.model.AdAcademicSession;
+import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
 
 import java.util.Date;
 import java.util.List;

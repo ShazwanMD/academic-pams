@@ -6,7 +6,7 @@ import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.identity.model.AdUser;
 import my.edu.umk.pams.academic.term.model.AdEnrollmentApplication;
 import my.edu.umk.pams.academic.term.model.AdEnrollmentApplicationItem;
-import my.edu.umk.pams.academic.studyplan.model.AdAcademicSession;
+import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
 
 import java.util.List;
 

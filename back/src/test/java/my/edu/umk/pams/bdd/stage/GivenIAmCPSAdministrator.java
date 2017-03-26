@@ -6,10 +6,10 @@ import com.tngtech.jgiven.integration.spring.JGivenStage;
 import my.edu.umk.pams.academic.identity.model.AdStaff;
 import my.edu.umk.pams.academic.identity.model.AdUser;
 import my.edu.umk.pams.academic.security.integration.AdUserDetails;
-import my.edu.umk.pams.academic.studyplan.model.AdAcademicSession;
-import my.edu.umk.pams.academic.studyplan.model.AdFaculty;
-import my.edu.umk.pams.academic.studyplan.model.AdProgram;
-import my.edu.umk.pams.academic.studyplan.service.StudyplanService;
+import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
+import my.edu.umk.pams.academic.planner.model.AdFaculty;
+import my.edu.umk.pams.academic.planner.model.AdProgram;
+import my.edu.umk.pams.academic.planner.service.PlannerService;
 import my.edu.umk.pams.academic.term.model.AdOffering;
 import my.edu.umk.pams.academic.term.model.AdSection;
 import my.edu.umk.pams.academic.term.service.TermService;
@@ -30,7 +30,7 @@ public class GivenIAmCPSAdministrator extends Stage<GivenIAmCPSAdministrator> {
     private AuthenticationManager authenticationManager;
 
     @Autowired
-    private StudyplanService studyplanService;
+    private PlannerService plannerService;
 
     @Autowired
     private TermService termService;
@@ -59,23 +59,23 @@ public class GivenIAmCPSAdministrator extends Stage<GivenIAmCPSAdministrator> {
 
     public GivenIAmCPSAdministrator I_am_a_CPS_administrator_in_$_academic_session(String academicSessionCode) {
         loginAsCPS();
-        academicSession = studyplanService.findAcademicSessionByCode(academicSessionCode);
+        academicSession = plannerService.findAcademicSessionByCode(academicSessionCode);
         return self();
     }
 
     public GivenIAmCPSAdministrator I_am_a_CPS_administrator_in_current_academic_session() {
         loginAsCPS();
-        academicSession = studyplanService.findCurrentAcademicSession();
+        academicSession = plannerService.findCurrentAcademicSession();
         return self();
     }
 
     public GivenIAmCPSAdministrator I_pick_faculty_$(String code) {
-        faculty = studyplanService.findFacultyByCode(code);
+        faculty = plannerService.findFacultyByCode(code);
         return self();
     }
 
     public GivenIAmCPSAdministrator I_pick_program_$(String code) {
-        program = studyplanService.findProgramByCode(code);
+        program = plannerService.findProgramByCode(code);
         return self();
     }
 

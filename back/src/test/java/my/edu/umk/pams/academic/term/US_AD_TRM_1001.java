@@ -4,7 +4,6 @@ import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.term.stage.ThenTheOfferingIsReadyForSetup;
 import my.edu.umk.pams.academic.term.stage.WhenIOfferACourse;
-import my.edu.umk.pams.academic.studyplan.US_AD_SPL_0001;
 import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -23,7 +22,7 @@ import org.springframework.transaction.annotation.Transactional;
 @ContextConfiguration(classes = TestAppConfiguration.class)
 public class US_AD_TRM_1001 extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenIOfferACourse, ThenTheOfferingIsReadyForSetup> {
 
-    private static final Logger LOG = LoggerFactory.getLogger(US_AD_SPL_0001.class);
+    private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_1001.class);
     public static final String FACULTY_CODE = "FKP";
 
     @Test

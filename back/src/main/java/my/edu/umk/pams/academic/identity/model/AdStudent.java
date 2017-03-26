@@ -1,6 +1,6 @@
 package my.edu.umk.pams.academic.identity.model;
 
-import my.edu.umk.pams.academic.studyplan.model.AdCohort;
+import my.edu.umk.pams.academic.planner.model.AdCohort;
 
 import java.util.List;
 

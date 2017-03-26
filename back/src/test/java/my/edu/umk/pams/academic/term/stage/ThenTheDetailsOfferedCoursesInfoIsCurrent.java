@@ -8,7 +8,7 @@ import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 import my.edu.umk.pams.academic.term.model.AdOffering;
 import my.edu.umk.pams.academic.term.service.TermService;
-import my.edu.umk.pams.academic.studyplan.model.AdProgram;
+import my.edu.umk.pams.academic.planner.model.AdProgram;
 
 @JGivenStage
 public class ThenTheDetailsOfferedCoursesInfoIsCurrent extends Stage<ThenTheDetailsOfferedCoursesInfoIsCurrent> {

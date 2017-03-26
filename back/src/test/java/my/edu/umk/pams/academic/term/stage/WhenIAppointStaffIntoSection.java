@@ -6,7 +6,7 @@ import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 import my.edu.umk.pams.academic.identity.model.AdStaff;
 import my.edu.umk.pams.academic.identity.service.IdentityService;
-import my.edu.umk.pams.academic.studyplan.model.AdAppointmentStatus;
+import my.edu.umk.pams.academic.planner.model.AdAppointmentStatus;
 import my.edu.umk.pams.academic.term.model.AdAppointment;
 import my.edu.umk.pams.academic.term.model.AdAppointmentImpl;
 import my.edu.umk.pams.academic.term.model.AdSection;

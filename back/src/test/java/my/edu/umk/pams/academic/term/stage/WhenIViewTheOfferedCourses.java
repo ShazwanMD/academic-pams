@@ -15,8 +15,8 @@ import my.edu.umk.pams.academic.term.model.AdOffering;
 import my.edu.umk.pams.academic.term.model.AdOfferingImpl;
 import my.edu.umk.pams.academic.term.model.AdSection;
 import my.edu.umk.pams.academic.term.service.TermService;
-import my.edu.umk.pams.academic.studyplan.model.AdProgram;
-import my.edu.umk.pams.academic.studyplan.service.StudyplanService;
+import my.edu.umk.pams.academic.planner.model.AdProgram;
+import my.edu.umk.pams.academic.planner.service.PlannerService;
 
 @JGivenStage
 public class WhenIViewTheOfferedCourses extends Stage<WhenIViewTheOfferedCourses> {
@@ -24,7 +24,7 @@ public class WhenIViewTheOfferedCourses extends Stage<WhenIViewTheOfferedCourses
 	private static final Logger LOG = LoggerFactory.getLogger(WhenIViewTheOfferedCourses.class);
 
 	@Autowired
-	private StudyplanService studyplanService;
+	private PlannerService plannerService;
 
 	@Autowired
 	private TermService termService;
@@ -46,7 +46,7 @@ public class WhenIViewTheOfferedCourses extends Stage<WhenIViewTheOfferedCourses
 	}
 
 	public WhenIViewTheOfferedCourses I_view_the_offered_courses_for_program_$(String code) {
-		program = studyplanService.findProgramByCode(code);
+		program = plannerService.findProgramByCode(code);
 		offering = termService.findOfferings(program);
 
 		for (AdOffering offering : offering) {

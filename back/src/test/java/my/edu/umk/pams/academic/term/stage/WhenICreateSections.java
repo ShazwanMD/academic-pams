@@ -12,10 +12,10 @@ import my.edu.umk.pams.academic.term.model.AdSection;
 import my.edu.umk.pams.academic.term.model.AdSectionImpl;
 import my.edu.umk.pams.academic.term.model.AdSectionPolicy;
 import my.edu.umk.pams.academic.term.service.TermService;
-import my.edu.umk.pams.academic.studyplan.model.AdAcademicSession;
-import my.edu.umk.pams.academic.studyplan.model.AdCourse;
-import my.edu.umk.pams.academic.studyplan.model.AdFaculty;
-import my.edu.umk.pams.academic.studyplan.model.AdProgram;
+import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
+import my.edu.umk.pams.academic.planner.model.AdCourse;
+import my.edu.umk.pams.academic.planner.model.AdFaculty;
+import my.edu.umk.pams.academic.planner.model.AdProgram;
 
 import java.util.List;
 

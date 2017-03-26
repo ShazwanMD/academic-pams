@@ -11,7 +11,7 @@ import my.edu.umk.pams.academic.term.model.AdEnrollmentApplication;
 import my.edu.umk.pams.academic.term.model.AdEnrollmentApplicationImpl;
 import my.edu.umk.pams.academic.term.model.AdEnrollmentApplicationItem;
 import my.edu.umk.pams.academic.term.model.AdEnrollmentApplicationItemImpl;
-import my.edu.umk.pams.academic.studyplan.model.AdAcademicSession;
+import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
 import org.apache.commons.lang.Validate;
 import org.hibernate.Query;
 import org.hibernate.Session;

@@ -1,7 +1,7 @@
 package my.edu.umk.pams.academic.identity.model;
 
-import my.edu.umk.pams.academic.studyplan.model.AdCohort;
-import my.edu.umk.pams.academic.studyplan.model.AdCohortImpl;
+import my.edu.umk.pams.academic.planner.model.AdCohort;
+import my.edu.umk.pams.academic.planner.model.AdCohortImpl;
 
 import javax.persistence.*;
 import java.util.List;
@@ -22,6 +22,11 @@ public class AdStudentImpl extends AdActorImpl implements AdStudent {
 
 	@OneToMany(targetEntity = AdAddressImpl.class, mappedBy = "student", fetch = FetchType.LAZY)
 	private List<AdAddress> addresses;
+
+	public AdStudentImpl() {
+		super();
+		setActorType(AdActorType.STUDENT);
+	}
 
 	@Override
 	public String getMatricNo() {

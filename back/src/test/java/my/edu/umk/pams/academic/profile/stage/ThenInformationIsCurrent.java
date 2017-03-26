@@ -6,9 +6,9 @@ import com.tngtech.jgiven.integration.spring.JGivenStage;
 import my.edu.umk.pams.academic.common.service.CommonService;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.profile.service.ProfileService;
-import my.edu.umk.pams.academic.studyplan.model.AdCourse;
-import my.edu.umk.pams.academic.studyplan.model.AdFaculty;
-import my.edu.umk.pams.academic.studyplan.service.StudyplanService;
+import my.edu.umk.pams.academic.planner.model.AdCourse;
+import my.edu.umk.pams.academic.planner.model.AdFaculty;
+import my.edu.umk.pams.academic.planner.service.PlannerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
 
@@ -22,7 +22,7 @@ public class ThenInformationIsCurrent extends Stage<ThenInformationIsCurrent> {
     private CommonService commonService;
 
     @Autowired
-    private StudyplanService studyplanService;
+    private PlannerService plannerService;
 
     @ExpectedScenarioState
     private AdStudent student;
@@ -35,7 +35,7 @@ public class ThenInformationIsCurrent extends Stage<ThenInformationIsCurrent> {
 
     public ThenInformationIsCurrent course_info_is_current() {
 
-        boolean exists = studyplanService.isCourseExists("DDA2113", faculty);
+        boolean exists = plannerService.isCourseExists("DDA2113", faculty);
 
         Assert.isTrue(exists, "exists");
         return self();

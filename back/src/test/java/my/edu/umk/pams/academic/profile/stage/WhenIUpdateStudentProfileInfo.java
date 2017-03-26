@@ -34,8 +34,6 @@ public class WhenIUpdateStudentProfileInfo extends Stage<WhenIUpdateStudentProfi
     public WhenIUpdateStudentProfileInfo I_update_student_profile_info() {
 
         AdStudent student = new AdStudentImpl();
-
-        student.setActorType(AdActorType.STUDENT);
         student.setName("sam");
         student.setEmail("sam@umk.edu.my");
         student.setIdentityNo("123456789");

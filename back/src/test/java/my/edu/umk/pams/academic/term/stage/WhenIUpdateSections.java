@@ -7,7 +7,7 @@ import com.tngtech.jgiven.integration.spring.JGivenStage;
 import my.edu.umk.pams.academic.term.model.AdSection;
 import my.edu.umk.pams.academic.term.model.AdSectionImpl;
 import my.edu.umk.pams.academic.term.service.TermService;
-import my.edu.umk.pams.academic.studyplan.model.AdAcademicSession;
+import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -4,13 +4,13 @@ import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
+import my.edu.umk.pams.academic.planner.service.PlannerService;
 import my.edu.umk.pams.academic.term.model.AdOffering;
 import my.edu.umk.pams.academic.term.model.AdOfferingImpl;
 import my.edu.umk.pams.academic.term.service.TermService;
-import my.edu.umk.pams.academic.studyplan.model.AdAcademicSession;
-import my.edu.umk.pams.academic.studyplan.model.AdCourse;
-import my.edu.umk.pams.academic.studyplan.model.AdFaculty;
-import my.edu.umk.pams.academic.studyplan.service.StudyplanService;
+import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
+import my.edu.umk.pams.academic.planner.model.AdCourse;
+import my.edu.umk.pams.academic.planner.model.AdFaculty;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +30,7 @@ public class WhenIWantToSetCapacityForOfferedCourse extends Stage<WhenIWantToSet
     private TermService termService;
 
     @Autowired
-    private StudyplanService studyplanService;
+    private PlannerService plannerService;
 
     @ExpectedScenarioState
     private AdAcademicSession academicSession;
@@ -52,7 +52,7 @@ public class WhenIWantToSetCapacityForOfferedCourse extends Stage<WhenIWantToSet
 
     public WhenIWantToSetCapacityForOfferedCourse I_create_and_set_offering_capacity() {
         // offer a course
-        course = studyplanService.findCourseByCode(COURSE_CODE);
+        course = plannerService.findCourseByCode(COURSE_CODE);
 
         // set term properties
         code = course.getCode() + "/" + academicSession.getCode();  // course/session

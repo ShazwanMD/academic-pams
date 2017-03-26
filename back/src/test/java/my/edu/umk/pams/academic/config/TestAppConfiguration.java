@@ -31,7 +31,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
         // modules
         "my.edu.umk.pams.academic.common",
         "my.edu.umk.pams.academic.profile",
-        "my.edu.umk.pams.academic.studyplan",
+        "my.edu.umk.pams.academic.planner",
         "my.edu.umk.pams.academic.term",
         "my.edu.umk.pams.academic.enrollment",
 })

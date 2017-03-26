@@ -3,8 +3,8 @@ package my.edu.umk.pams.bdd.stage;
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
-import my.edu.umk.pams.academic.studyplan.model.AdAcademicSession;
-import my.edu.umk.pams.academic.studyplan.service.StudyplanService;
+import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
+import my.edu.umk.pams.academic.planner.service.PlannerService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,19 +22,19 @@ public class GivenIAmAdministrator extends Stage<GivenIAmAdministrator> {
     private AuthenticationManager authenticationManager;
 
     @Autowired
-    private StudyplanService studyplanService;
+    private PlannerService plannerService;
 
     @ProvidedScenarioState
     AdAcademicSession academicSession;
 
     public void I_am_a_administrator_in_$_academic_session(String academicSessionCode) {
         loginAsAdmin();
-        academicSession = studyplanService.findAcademicSessionByCode(academicSessionCode);
+        academicSession = plannerService.findAcademicSessionByCode(academicSessionCode);
     }
 
     public void I_am_a_administrator_in_current_academic_session() {
         loginAsAdmin();
-        academicSession = studyplanService.findCurrentAcademicSession();
+        academicSession = plannerService.findCurrentAcademicSession();
     }
 
     private void loginAsAdmin() {

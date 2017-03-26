@@ -16,7 +16,7 @@
 
 **Module Naming Convention**
 - PFL - PROFILE
-- SPL - STUDYPLAN
+- PNR - PLANNER
 - TRM - TERM
 - ASM - ASSESSMENT
 - GRD - GRADUATION

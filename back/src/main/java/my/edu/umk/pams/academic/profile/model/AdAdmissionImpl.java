@@ -6,7 +6,7 @@ import my.edu.umk.pams.academic.common.model.AdStudyCenterImpl;
 import my.edu.umk.pams.academic.core.AdMetadata;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.identity.model.AdStudentImpl;
-import my.edu.umk.pams.academic.studyplan.model.*;
+import my.edu.umk.pams.academic.planner.model.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;

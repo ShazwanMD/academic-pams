@@ -7,6 +7,7 @@ import com.tngtech.jgiven.integration.spring.JGivenStage;
 import my.edu.umk.pams.academic.identity.model.AdActor;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.identity.model.AdStudentImpl;
+import my.edu.umk.pams.academic.identity.model.AdStudentStatus;
 import my.edu.umk.pams.academic.identity.service.IdentityService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -36,8 +37,8 @@ public class WhenIAddStudentProfile extends Stage<WhenIAddStudentProfile> {
         student.setFax("079449205");
         student.setEmail("shazwan.md@umk.edu.my");
         student.setMobile("0123");
-        student.setMatricNo("1111111r");
         student.setMatricNo("1111" + System.currentTimeMillis()); // append some random number
+        student.setStudentStatus(AdStudentStatus.ACTIVE);
         identityService.saveStudent(student);
 
         return self();

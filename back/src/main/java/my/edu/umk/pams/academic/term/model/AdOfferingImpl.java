@@ -1,7 +1,7 @@
 package my.edu.umk.pams.academic.term.model;
 
 import my.edu.umk.pams.academic.core.AdMetadata;
-import my.edu.umk.pams.academic.studyplan.model.*;
+import my.edu.umk.pams.academic.planner.model.*;
 
 import javax.persistence.*;
 import java.util.List;

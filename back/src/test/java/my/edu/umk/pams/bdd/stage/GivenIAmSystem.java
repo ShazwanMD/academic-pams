@@ -3,8 +3,8 @@ package my.edu.umk.pams.bdd.stage;
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
-import my.edu.umk.pams.academic.studyplan.model.AdAcademicSession;
-import my.edu.umk.pams.academic.studyplan.service.StudyplanService;
+import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
+import my.edu.umk.pams.academic.planner.service.PlannerService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +22,7 @@ public class GivenIAmSystem extends Stage<GivenIAmSystem> {
     private AuthenticationManager authenticationManager;
 
     @Autowired
-    private StudyplanService studyplanService;
+    private PlannerService plannerService;
 
     @ProvidedScenarioState
     private AdAcademicSession academicSession;
@@ -32,7 +32,7 @@ public class GivenIAmSystem extends Stage<GivenIAmSystem> {
         Authentication authed = authenticationManager.authenticate(token);
         SecurityContextHolder.getContext().setAuthentication(authed);
 
-        academicSession = studyplanService.findAcademicSessionByCode(academicSessionCode);
+        academicSession = plannerService.findAcademicSessionByCode(academicSessionCode);
     }
 
     public void I_am_a_system_in_current_academic_session() {
@@ -40,6 +40,6 @@ public class GivenIAmSystem extends Stage<GivenIAmSystem> {
         Authentication authed = authenticationManager.authenticate(token);
         SecurityContextHolder.getContext().setAuthentication(authed);
 
-        academicSession = studyplanService.findCurrentAcademicSession();
+        academicSession = plannerService.findCurrentAcademicSession();
     }
 }

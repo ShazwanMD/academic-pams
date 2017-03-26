@@ -7,7 +7,7 @@ import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.identity.model.AdUser;
 import my.edu.umk.pams.academic.term.model.*;
 import my.edu.umk.pams.academic.profile.model.AdAdmission;
-import my.edu.umk.pams.academic.studyplan.model.*;
+import my.edu.umk.pams.academic.planner.model.*;
 
 import java.util.List;
 

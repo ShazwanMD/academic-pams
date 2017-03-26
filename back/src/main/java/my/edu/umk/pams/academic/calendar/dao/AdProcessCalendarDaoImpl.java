@@ -6,7 +6,7 @@ import my.edu.umk.pams.academic.calendar.model.AdProcessCalendarType;
 import my.edu.umk.pams.academic.common.model.AdStudyCenter;
 import my.edu.umk.pams.academic.core.AdMetaState;
 import my.edu.umk.pams.academic.core.GenericDaoSupport;
-import my.edu.umk.pams.academic.studyplan.model.AdAcademicSession;
+import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.slf4j.Logger;

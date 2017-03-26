@@ -4,10 +4,10 @@ import my.edu.umk.pams.academic.identity.model.AdStaff;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.term.model.*;
 import my.edu.umk.pams.academic.profile.model.AdAdmission;
-import my.edu.umk.pams.academic.studyplan.model.AdAcademicSession;
-import my.edu.umk.pams.academic.studyplan.model.AdCourse;
-import my.edu.umk.pams.academic.studyplan.model.AdEnrollmentStatus;
-import my.edu.umk.pams.academic.studyplan.model.AdProgram;
+import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
+import my.edu.umk.pams.academic.planner.model.AdCourse;
+import my.edu.umk.pams.academic.planner.model.AdEnrollmentStatus;
+import my.edu.umk.pams.academic.planner.model.AdProgram;
 import org.activiti.engine.task.Task;
 
 import java.util.List;

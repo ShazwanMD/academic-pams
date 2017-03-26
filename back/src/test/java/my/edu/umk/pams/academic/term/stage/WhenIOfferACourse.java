@@ -3,14 +3,14 @@
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
+import my.edu.umk.pams.academic.planner.service.PlannerService;
 import my.edu.umk.pams.academic.term.model.AdOffering;
 import my.edu.umk.pams.academic.term.model.AdOfferingImpl;
 import my.edu.umk.pams.academic.term.service.TermService;
-import my.edu.umk.pams.academic.studyplan.model.AdAcademicSession;
-import my.edu.umk.pams.academic.studyplan.model.AdCourse;
-import my.edu.umk.pams.academic.studyplan.model.AdFaculty;
-import my.edu.umk.pams.academic.studyplan.model.AdProgram;
-import my.edu.umk.pams.academic.studyplan.service.StudyplanService;
+import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
+import my.edu.umk.pams.academic.planner.model.AdCourse;
+import my.edu.umk.pams.academic.planner.model.AdFaculty;
+import my.edu.umk.pams.academic.planner.model.AdProgram;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +29,7 @@ public class WhenIOfferACourse extends Stage<WhenIOfferACourse> {
     private TermService termService;
 
     @Autowired
-    private StudyplanService studyplanService;
+    private PlannerService plannerService;
 
     @ExpectedScenarioState
     private AdAcademicSession academicSession;
@@ -43,7 +43,7 @@ public class WhenIOfferACourse extends Stage<WhenIOfferACourse> {
 
         // find ALL courses under this faculty
         // to be offered by this program
-        List<AdCourse> courses = studyplanService.findCourses(faculty);
+        List<AdCourse> courses = plannerService.findCourses(faculty);
         for (AdCourse course : courses) {
             String code = program.getCode() + "/" + course.getCode();
             String canonicalCode = program.getCode() + "/" + course.getCode() + "/" + academicSession.getCode();

@@ -4,10 +4,10 @@ import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
-import my.edu.umk.pams.academic.studyplan.model.AdCourse;
-import my.edu.umk.pams.academic.studyplan.model.AdFaculty;
-import my.edu.umk.pams.academic.studyplan.model.AdFacultyImpl;
-import my.edu.umk.pams.academic.studyplan.service.StudyplanService;
+import my.edu.umk.pams.academic.planner.model.AdCourse;
+import my.edu.umk.pams.academic.planner.model.AdFaculty;
+import my.edu.umk.pams.academic.planner.model.AdFacultyImpl;
+import my.edu.umk.pams.academic.planner.service.PlannerService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +20,7 @@ public class WhenIWantToViewCourseInfo extends Stage<WhenIWantToViewCourseInfo> 
     private static final Logger LOG = LoggerFactory.getLogger(WhenIWantToViewCourseInfo.class);
 
     @Autowired
-    private StudyplanService studyplanService;
+    private PlannerService plannerService;
 
     @ExpectedScenarioState
     private AdStudent student;
@@ -40,9 +40,9 @@ public class WhenIWantToViewCourseInfo extends Stage<WhenIWantToViewCourseInfo> 
     }
 
     public WhenIWantToViewCourseInfo I_view_course_info_for_faculty_$(String code) {
-        faculty = studyplanService.findFacultyByCode(code);
+        faculty = plannerService.findFacultyByCode(code);
 
-        course = studyplanService.findCourses(faculty);
+        course = plannerService.findCourses(faculty);
 
         for (AdCourse course : course) {
             LOG.debug(course.getTitle());

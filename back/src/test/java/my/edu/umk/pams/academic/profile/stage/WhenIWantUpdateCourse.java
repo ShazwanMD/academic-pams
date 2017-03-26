@@ -5,11 +5,11 @@ import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
-import my.edu.umk.pams.academic.studyplan.model.AdAcademicClassification;
-import my.edu.umk.pams.academic.studyplan.model.AdCourse;
-import my.edu.umk.pams.academic.studyplan.model.AdCourseImpl;
-import my.edu.umk.pams.academic.studyplan.model.AdFaculty;
-import my.edu.umk.pams.academic.studyplan.service.StudyplanService;
+import my.edu.umk.pams.academic.planner.model.AdAcademicClassification;
+import my.edu.umk.pams.academic.planner.model.AdCourse;
+import my.edu.umk.pams.academic.planner.model.AdCourseImpl;
+import my.edu.umk.pams.academic.planner.model.AdFaculty;
+import my.edu.umk.pams.academic.planner.service.PlannerService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +20,7 @@ public class WhenIWantUpdateCourse extends Stage<WhenIWantUpdateCourse> {
     private static final Logger LOG = LoggerFactory.getLogger(WhenIWantUpdateCourse.class);
 
     @Autowired
-    private StudyplanService studyplanService;
+    private PlannerService plannerService;
 
     @ProvidedScenarioState
     private AdCourse course;
@@ -36,7 +36,7 @@ public class WhenIWantUpdateCourse extends Stage<WhenIWantUpdateCourse> {
 
     public WhenIWantUpdateCourse I_update_course_to_faculty_code_$a(String FACULTY_CODE) {
 
-        faculty = studyplanService.findFacultyByCode(FACULTY_CODE);
+        faculty = plannerService.findFacultyByCode(FACULTY_CODE);
 
         AdCourse courses = new AdCourseImpl();
 
@@ -47,7 +47,7 @@ public class WhenIWantUpdateCourse extends Stage<WhenIWantUpdateCourse> {
         courses.setTitleEn("ENGINEERING SAM");
         courses.setTitleMs("LUKISAN SAM");
 
-        studyplanService.addCourse(faculty, courses);
+        plannerService.addCourse(faculty, courses);
         
   
         return self();

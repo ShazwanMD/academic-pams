@@ -2,8 +2,8 @@ package my.edu.umk.pams.academic.term.model;
 
 
 import my.edu.umk.pams.academic.core.AdMetaObject;
-import my.edu.umk.pams.academic.studyplan.model.AdCourse;
-import my.edu.umk.pams.academic.studyplan.model.AdProgram;
+import my.edu.umk.pams.academic.planner.model.AdCourse;
+import my.edu.umk.pams.academic.planner.model.AdProgram;
 
 import java.util.List;
 

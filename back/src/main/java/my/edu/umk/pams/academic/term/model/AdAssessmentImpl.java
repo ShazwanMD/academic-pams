@@ -2,8 +2,8 @@ package my.edu.umk.pams.academic.term.model;
 
 
 import my.edu.umk.pams.academic.core.AdMetadata;
-import my.edu.umk.pams.academic.studyplan.model.AdAcademicSession;
-import my.edu.umk.pams.academic.studyplan.model.AdAcademicSessionImpl;
+import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
+import my.edu.umk.pams.academic.planner.model.AdAcademicSessionImpl;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
