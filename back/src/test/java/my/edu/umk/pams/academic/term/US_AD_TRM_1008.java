@@ -17,17 +17,18 @@ import my.edu.umk.pams.academic.term.stage.WhenIViewTheOfferedCourses;
 import my.edu.umk.pams.bdd.stage.GivenIAmStudent;
 
 /**
- * @author asyikin.mr
+ * @author asyikin.mr and ziana
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
-public class US_AD_TRM_1008 extends SpringScenarioTest<GivenIAmStudent, WhenIViewTheOfferedCourses, ThenOfferedCoursesInfoIsCurrent> {
-	
+public class US_AD_TRM_1008
+		extends SpringScenarioTest<GivenIAmStudent, WhenIViewTheOfferedCourses, ThenOfferedCoursesInfoIsCurrent> {
+
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_1008.class);
 
-	private static final String PROGRAM_CODE = "FKP/PHD/0001";//program-id 65
-	 
+	private static final String PROGRAM_CODE = "FKP/PHD/0001";
+
 	@Before
 	public void before() {
 	}
