@@ -9,15 +9,24 @@ import java.util.List;
  */
 public interface AdStudent extends AdActor {
 
-    String getMatricNo();
+	String getMatricNo();
 
-    void setMatricNo(String matricNo);
+	void setMatricNo(String matricNo);
 
-    AdCohort getCohort();
+	AdCohort getCohort();
 
-    void setCohort(AdCohort cohort);
+	void setCohort(AdCohort cohort);
 
-    List<AdAddress> getAddresses();
+	List<AdAddress> getAddresses();
 
-    void setAddresses(List<AdAddress> addresses);
+	void setAddresses(List<AdAddress> addresses);
+
+	// =========================================================
+	// STUDENT STATUS
+	// =========================================================
+
+	AdStudentStatus getStudentStatus();
+
+	void setStudentStatus(AdStudentStatus studentStatus);
+
 }
