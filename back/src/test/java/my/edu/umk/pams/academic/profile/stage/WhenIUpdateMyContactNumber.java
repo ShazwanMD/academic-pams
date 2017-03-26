@@ -32,9 +32,10 @@ public class WhenIUpdateMyContactNumber extends Stage<WhenIUpdateMyContactNumber
         actor = identityService.findActorByIdentityNo("A17P001");
 
         actor.setActorType(AdActorType.STUDENT);
-        actor.setMobile("0129090123");
-        actor.setPhone("097420000");
-        identityService.saveStudent(student);
+        actor.setMobile("0111");
+        actor.setPhone("01111");
+        identityService.updateStudent(student);
+        
         return self();
 
     }
