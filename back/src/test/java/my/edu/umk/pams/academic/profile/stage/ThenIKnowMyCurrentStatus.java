@@ -32,9 +32,7 @@ public class ThenIKnowMyCurrentStatus extends Stage<ThenIKnowMyCurrentStatus> {
     	String studentNo = "A17P001";
     	
     	AdStudent student = identityService.findStudentByStudentNo(studentNo);
-    	
-    	AdStudentStatus studentStatus = student.getStudentStatus();
-    	
+    	AdStudentStatus studentStatus = student.getStudentStatus();    	
     	Assert.isTrue(studentStatus.equals(studentStatus), "true");
     	
         return self();

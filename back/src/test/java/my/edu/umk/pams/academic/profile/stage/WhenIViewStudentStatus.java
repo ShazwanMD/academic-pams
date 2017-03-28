@@ -1,41 +1,46 @@
 package my.edu.umk.pams.academic.profile.stage;
 
 import com.tngtech.jgiven.Stage;
-import com.tngtech.jgiven.annotation.Pending;
+
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
+
+import my.edu.umk.pams.academic.identity.model.AdActor;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
+import my.edu.umk.pams.academic.identity.model.AdStudentStatus;
 import my.edu.umk.pams.academic.identity.service.IdentityService;
-import my.edu.umk.pams.academic.profile.service.ProfileService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 @JGivenStage
-public class WhenIViewStudentActivationStatus extends Stage<WhenIViewStudentActivationStatus> {
+public class WhenIViewStudentStatus extends Stage<WhenIViewStudentStatus> {
 
-    private static final Logger LOG = LoggerFactory.getLogger(WhenIUpdateMyBillingAddress.class);
-
-    @Autowired
-    private ProfileService profileService;
+    private static final Logger LOG = LoggerFactory.getLogger(WhenIViewStudentStatus.class);
 
     @Autowired
     private IdentityService identityService;
 
     @ProvidedScenarioState
     private AdStudent student;
+    
+    @ProvidedScenarioState
+    private AdStudentStatus studentStatus;
 
-    @Pending
-    public WhenIViewStudentActivationStatus I_view_student_activation_status() {
-
-        //AdStatus status= new AdStatusImpl();
-
-        //status.setType(AdStatusType.BILLING);
-
-
-        return self();
-    }
-
+    @ProvidedScenarioState
+    private AdActor actor;
+    
+	public WhenIViewStudentStatus I_view_student_status() {
+	
+		AdStudent student = identityService.findStudentByStudentNo("A17P001");
+		AdStudentStatus studentStatus = student.getStudentStatus();
+		
+		LOG.debug("Student's status: {}", studentStatus.name());
+		LOG.debug("Student's status: {}", studentStatus.ordinal());
+		
+		
+	     return self();
+	}
 
 }
 
