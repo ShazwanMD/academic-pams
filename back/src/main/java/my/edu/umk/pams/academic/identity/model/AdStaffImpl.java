@@ -1,5 +1,6 @@
 package my.edu.umk.pams.academic.identity.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
@@ -9,8 +10,21 @@ import javax.persistence.Table;
 @Entity(name = "AdStaff")
 @Table(name = "AD_STAF")
 public class AdStaffImpl extends AdActorImpl implements AdStaff {
+	
+    @Column(name = "STAFF_TYPE")
+    private AdStaffType staffType;
+    
+    @Override
+    public AdStaffType getStaffType() {
+		return staffType;
+	}
 
-    public AdStaffImpl() {
+    @Override
+	public void setStaffType(AdStaffType staffType) {
+		this.staffType = staffType;
+	}
+
+	public AdStaffImpl() {
         super();
         setActorType(AdActorType.STAFF);
     }
@@ -29,5 +43,7 @@ public class AdStaffImpl extends AdActorImpl implements AdStaff {
     public Class<?> getInterfaceClass() {
         return AdStaff.class;
     }
+
+	
 
 }

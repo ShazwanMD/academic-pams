@@ -1211,6 +1211,7 @@ create table AD_SNGL_SBJT (
 
 create table AD_STAF (
     ID int8 not null,
+    STAFF_TYPE int4,
     primary key (ID)
 );
 

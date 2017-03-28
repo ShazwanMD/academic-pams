@@ -28,7 +28,7 @@ VALUES
   (nextval('SQ_AD_ACTR'), '01001A', 'lecturer ONE', 'lecturer1@umk.edu.my', NULL, NULL, NULL, 1,
                           CURRENT_TIMESTAMP, 1, 1);
 
-INSERT INTO AD_STDN (ID, STUDENT_STATUS) VALUES (currval('SQ_AD_ACTR'), 1);
+INSERT INTO AD_STAF (ID, STAFF_TYPE) VALUES (currval('SQ_AD_ACTR'), 0);
 
 UPDATE AD_user
 SET actor_id = currval('SQ_AD_ACTR')
@@ -40,7 +40,8 @@ VALUES
   (nextval('SQ_AD_ACTR'), '01002A', 'lecturer TWO', 'lecturer2@umk.edu.my', NULL, NULL, NULL, 1,
                           CURRENT_TIMESTAMP, 1, 1);
 
-INSERT INTO AD_STAF (ID) VALUES (currval('SQ_AD_ACTR'));
+INSERT INTO AD_STAF (ID,STAFF_TYPE) VALUES (currval('SQ_AD_ACTR'), 0);
+
 
 UPDATE AD_user
 SET actor_id = currval('SQ_AD_ACTR')

@@ -6,4 +6,7 @@ public interface AdStaff extends AdActor {
 
     void setStaffNo(String staffNo);
 
+    AdStaffType getStaffType();
+
+    void setStaffType(AdStaffType staffType);
 }
