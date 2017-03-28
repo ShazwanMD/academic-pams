@@ -16,7 +16,7 @@ VALUES
   (nextval('SQ_AD_ACTR'), 'A17P002', 'STUDENT TWO', 'student2@umk.edu.my', NULL, NULL, NULL, 1,
                           CURRENT_TIMESTAMP, 1, 1);
 
-INSERT INTO AD_STDN (ID, STUDENT_STATUS) VALUES (currval('SQ_AD_ACTR'), 2);
+INSERT INTO AD_STDN (ID, STUDENT_STATUS) VALUES (currval('SQ_AD_ACTR'), 1);
 
 UPDATE AD_user
 SET actor_id = currval('SQ_AD_ACTR')

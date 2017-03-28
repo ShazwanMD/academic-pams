@@ -1,7 +1,6 @@
 package my.edu.umk.pams.academic.planner.stage;
-
-/** 
- * (check with AcademicSessionImpl for previous_id and year_id which is must be not null)
+/**
+ * todo: zaida (check with AcademicSessionImpl for previous_id and year_id which is must be not null)
 
  */
 import com.tngtech.jgiven.Stage;
@@ -51,7 +50,7 @@ public class WhenICreateAcademicSession extends Stage<WhenICreateAcademicSession
 		
 		
 		
-		plannerService.saveAcademicSession(academicSession);
+		plannerService.updateAcademicSession(academicSession);
 		LOG.debug("academicSession {} ", academicSession);
 
 		return self();

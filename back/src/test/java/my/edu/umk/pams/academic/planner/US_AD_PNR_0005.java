@@ -26,7 +26,7 @@ import org.springframework.transaction.annotation.Transactional;
 @ContextConfiguration(classes = TestAppConfiguration.class)
 public class US_AD_PNR_0005 extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenIAdACohort, ThenGroupScheduleByIntakeCode> {
 
-    private static final Logger LOG = LoggerFactory.getLogger(US_AD_PNR_1005.class);
+    private static final Logger LOG = LoggerFactory.getLogger(US_AD_PNR_0005.class);
     public static final String PROGRAM_CODE = "FIAT/PHD/0001";
 
     @Test

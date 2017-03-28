@@ -16,7 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
 
 /**
- * @author zaida.n
+ * @author asyikin.mr
  */
 @JGivenStage
 public class ThenTheAcademicSessionIsCreated extends Stage<ThenTheAcademicSessionIsCreated> {
