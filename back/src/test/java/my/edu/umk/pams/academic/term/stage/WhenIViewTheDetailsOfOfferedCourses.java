@@ -23,56 +23,56 @@ public class WhenIViewTheDetailsOfOfferedCourses extends Stage<WhenIViewTheDetai
 
 	@Autowired
 	private PlannerService plannerService;
-	
+
 	@Autowired
 	private TermService termService;
-	
+
 	@ProvidedScenarioState
 	private AdProgram program;
-	
+
 	@ProvidedScenarioState
 	private AdSection section;
-	
+
 	@ProvidedScenarioState
 	private List<AdOffering> offering;
-	
+
 	@ProvidedScenarioState
 	private AdCourse course;
 
 	@ExpectedScenarioState
 	private String code;
-	
+
 	@ProvidedScenarioState
 	private AdFaculty faculty;
 
 	public WhenIViewTheDetailsOfOfferedCourses() {
 		AdOffering offering = new AdOfferingImpl();
 	}
-	
+
 	public WhenIViewTheDetailsOfOfferedCourses I_view_the_details_offered_courses_for_program_$(String code) {
-	
+
 		program = plannerService.findProgramByCode(code);
-        offering = termService.findOfferings(program);
-        String code1 = "FKP"; 
-        AdFaculty faculty = plannerService.findFacultyByCode(code1);
-        List<AdCourse> courses = plannerService.findCourses(faculty);
-              
-        for (AdOffering offering : offering) {
-            LOG.debug(offering.getTitle());
-        }
-        
-        for (AdOffering offering : offering) {
-            LOG.debug(offering.getCode());
-        }
-        
-        for (AdCourse course : courses) {
-            LOG.debug(course.getTitleEn());
-        }
-        
-        for (AdCourse course : courses) {
-           LOG.debug("  credit:  "+ course.getCredit());
-        }
-        
-        return self();
+		offering = termService.findOfferings(program);
+		String code1 = "FKP";
+		AdFaculty faculty = plannerService.findFacultyByCode(code1);
+		List<AdCourse> courses = plannerService.findCourses(faculty);
+
+		for (AdOffering offering : offering) {
+			LOG.debug(offering.getTitle());
+		}
+
+		for (AdOffering offering : offering) {
+			LOG.debug(offering.getCode());
+		}
+
+		for (AdCourse course : courses) {
+			LOG.debug(course.getTitleEn());
+		}
+
+		for (AdCourse course : courses) {
+			LOG.debug("  credit:  " + course.getCredit());
+		}
+
+		return self();
 	}
 }

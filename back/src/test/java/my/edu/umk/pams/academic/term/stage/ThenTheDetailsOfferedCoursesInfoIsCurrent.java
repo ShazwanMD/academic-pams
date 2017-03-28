@@ -24,8 +24,7 @@ public class ThenTheDetailsOfferedCoursesInfoIsCurrent extends Stage<ThenTheDeta
 	
 	public ThenTheDetailsOfferedCoursesInfoIsCurrent the_details_offered_courses_info_is_current() {
 	
-List<AdOffering> offering = termService.findOfferings(program);
-		
+		List<AdOffering> offering = termService.findOfferings(program);
 		Assert.notNull(offering, "Not Null");
 		 
 		return self();
