@@ -27,7 +27,7 @@ public class WhenIViewStudentStatus extends Stage<WhenIViewStudentStatus> {
 		AdStudent student = identityService.findStudentByStudentNo("A17P001");
 		AdStudentStatus studentStatus = student.getStudentStatus();
 		
-		//try commit sekali-sekalo..var lala
+		//try commit sekali-sekalo..var lalala
 		LOG.debug("Student's status: {}", studentStatus.name());
 		LOG.debug("Student's status: {}", studentStatus.ordinal());
 		
