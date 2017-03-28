@@ -32,20 +32,22 @@ public class WhenIUpdateCourses extends Stage<WhenIUpdateCourses> {
     @ProvidedScenarioState
     private AdFaculty faculty;
    
-    //@ProvidedScenarioState
-    //private AdCourse course;
-    
     @ExpectedScenarioState
     private AdCourse course;
     
+    private String facultyCode;
 
-    @Pending
-    public WhenIUpdateCourses I_update_courses_to_faculty_code_$a(String code) {
+ 
+    public WhenIUpdateCourses I_update_courses_to_faculty_code_$a(String facultyCode) {
     	
-        AdCourse course = new AdCourseImpl();
-        course.setFaculty(plannerService.findFacultyByCode(code));
-        course.setCode("GST8013");
-
+    	faculty = plannerService.findFacultyByCode(facultyCode);
+        
+    	
+        course.setTitle("Sustainability & Environmental Economics");
+        course.setTitleEn("Sustainability & Environmental Economics");
+        course.setTitleMs("Sustainability & Environmental Economics");
+        
+        plannerService.updateCourse(faculty, course);
         return self();
     }
 }
