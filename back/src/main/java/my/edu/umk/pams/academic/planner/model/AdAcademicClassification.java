@@ -15,14 +15,14 @@ package my.edu.umk.pams.academic.planner.model;
  */
 public enum AdAcademicClassification {
 
-    LEVEL_000,
-    LEVEL_100, // baru
-    LEVEL_200, // baru
-    LEVEL_300, // kanan
-    LEVEL_400, // kanan
-    LEVEL_GRADUATED, // kanan
-	LEVEL_MASTER,//MASTER
-	LEVEL_DOCTORATE;//PHD
+    LEVEL_000, //0
+    LEVEL_100, // 1-baru
+    LEVEL_200, // 2-baru
+    LEVEL_300, // 3-kanan
+    LEVEL_400, // 4-kanan
+    LEVEL_GRADUATED, // 5-kanan
+	LEVEL_MASTER,// 6-MASTER
+	LEVEL_DOCTORATE;// 7-PHD
 
     public static AdAcademicClassification get(int index) {
         return values()[index];
