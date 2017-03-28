@@ -1,14 +1,15 @@
+/**
+ * @author asyikin.mr
+ */
 package my.edu.umk.pams.academic.term.stage;
 
 import org.slf4j.Logger;
-
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
-
 import my.edu.umk.pams.academic.core.AdMetadata;
 import my.edu.umk.pams.academic.identity.model.AdStaff;
 import my.edu.umk.pams.academic.term.model.AdAppointment;
@@ -20,9 +21,6 @@ import my.edu.umk.pams.academic.planner.model.AdAppointmentStatus;
 import my.edu.umk.pams.academic.planner.model.AdCourse;
 import my.edu.umk.pams.academic.planner.model.AdFaculty;
 
-/**
- * @author asyikin.mr
- */
 @JGivenStage
 public class WhenIAppointStaffToSections extends Stage<WhenIAppointStaffToSections> {
 	private static final Logger LOG = LoggerFactory.getLogger(WhenIAppointStaffToSections.class);
@@ -66,7 +64,7 @@ public class WhenIAppointStaffToSections extends Stage<WhenIAppointStaffToSectio
 		appointment.setStaff(staff);
 		appointment.setStatus(AdAppointmentStatus.NEW);
 		appointment.setMetadata(metadata);
-		
+
 		termService.saveAppointment(appointment);
 
 		return self();
