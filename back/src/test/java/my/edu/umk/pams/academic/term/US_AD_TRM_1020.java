@@ -33,8 +33,7 @@ public class US_AD_TRM_1020 extends SpringScenarioTest<GivenIAmStudent, WhenIWan
 	
 	@After
 	public void after() {
-		
-		
+			
 	}
 	
 	@ProvidedScenarioState
