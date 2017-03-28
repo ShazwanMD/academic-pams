@@ -4,7 +4,6 @@ import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 import my.edu.umk.pams.academic.planner.model.AdFaculty;
-import my.edu.umk.pams.academic.planner.model.AdFacultyImpl;
 import my.edu.umk.pams.academic.planner.model.AdProgram;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
 import org.slf4j.Logger;
@@ -26,24 +25,16 @@ public class WhenIViewProgramFaculty extends Stage<WhenIViewProgramFaculty> {
     private AdFaculty faculty;
 
     @ExpectedScenarioState
-    private List<AdProgram> program;
-
+    private List<AdProgram> programs;
 
     public WhenIViewProgramFaculty() {
-        AdFaculty faculty = new AdFacultyImpl();
     }
 
-    public WhenIViewProgramFaculty I_want_to_view_program_for_faculty_$(String code) {
-
-        faculty = plannerService.findFacultyByCode(code);
-
-        program = plannerService.findPrograms(faculty);
-
-        for (AdProgram program : program) {
+    public WhenIViewProgramFaculty I_want_to_view_program_for_that_faculty_$() {
+        programs = plannerService.findPrograms(faculty);
+        for (AdProgram program : programs) {
             LOG.debug(program.getTitle());
         }
         return self();
-
     }
-
 }

@@ -33,8 +33,9 @@ public class US_AD_PNR_0004 extends SpringScenarioTest<GivenIAmCPSAdministrator,
     @Test
     @Rollback
     public void scenario0004() {
-        given().I_am_a_CPS_administrator_in_current_academic_session();
-        when().I_want_to_view_program_for_faculty_$(FACULTY_CODE);
-        then().I_know_program_details();
+        given().I_am_a_CPS_administrator_in_current_academic_session()
+                .I_pick_faculty_$(FACULTY_CODE);
+        when().I_want_to_view_program_for_that_faculty_$();
+        then().I_can_see_program_details();
     }
 }

@@ -11,9 +11,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 @JGivenStage
-public class WhenIAdACohort extends Stage<WhenIAdACohort> {
+public class WhenIAddACohort extends Stage<WhenIAddACohort> {
 
-    private static final Logger LOG = LoggerFactory.getLogger(WhenIAdACohort.class);
+    private static final Logger LOG = LoggerFactory.getLogger(WhenIAddACohort.class);
 
     @Autowired
     private PlannerService plannerService;
@@ -27,7 +27,7 @@ public class WhenIAdACohort extends Stage<WhenIAdACohort> {
     @ProvidedScenarioState
     private AdCurriculum curriculum;
 
-    public WhenIAdACohort I_want_to_set_up_cohort_for_$_program(String code) {
+    public WhenIAddACohort I_want_to_set_up_cohort_for_$_program(String code) {
         program = plannerService.findProgramByCode(code);
 
         // find existing curriculum
