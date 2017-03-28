@@ -20,7 +20,9 @@ public enum AdAcademicClassification {
     LEVEL_200, // baru
     LEVEL_300, // kanan
     LEVEL_400, // kanan
-    LEVEL_GRADUATED; // kanan
+    LEVEL_GRADUATED, // kanan
+	LEVEL_MASTER,//MASTER
+	LEVEL_DOCTORATE;//PHD
 
     public static AdAcademicClassification get(int index) {
         return values()[index];

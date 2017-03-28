@@ -16,13 +16,13 @@ package my.edu.umk.pams.academic.profile;
 
 	import my.edu.umk.pams.academic.config.TestAppConfiguration;
 	import my.edu.umk.pams.academic.profile.stage.ThenStudentStatusCurrent;
-	import my.edu.umk.pams.academic.profile.stage.WhenIWantViewStudentStatus;
+	import my.edu.umk.pams.academic.profile.stage.WhenIViewStudentStatus;
 	import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
 
 	@RunWith(SpringJUnit4ClassRunner.class)
 	@Transactional
 	@ContextConfiguration(classes = TestAppConfiguration.class)
-	public class US_AD_PFL_2003 extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenIWantViewStudentStatus, ThenStudentStatusCurrent> {
+	public class US_AD_PFL_2003 extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenIViewStudentStatus, ThenStudentStatusCurrent> {
 
 		
 		private static final Logger LOG = LoggerFactory.getLogger(US_AD_PFL_2003.class);

@@ -14,9 +14,9 @@ import my.edu.umk.pams.academic.identity.model.AdStudentStatus;
 import my.edu.umk.pams.academic.identity.service.IdentityService;
 
 @JGivenStage
-public class WhenIWantViewStudentStatus extends Stage<WhenIWantViewStudentStatus> {
+public class WhenIViewStudentStatus extends Stage<WhenIViewStudentStatus> {
 	
-	private static final Logger LOG = LoggerFactory.getLogger(WhenIWantViewStudentStatus.class);
+	private static final Logger LOG = LoggerFactory.getLogger(WhenIViewStudentStatus.class);
 
 	
 	@Autowired
@@ -37,7 +37,7 @@ public class WhenIWantViewStudentStatus extends Stage<WhenIWantViewStudentStatus
 
 	
 	
-	public WhenIWantViewStudentStatus I_view_student_current_status_for_$(String identityNo){
+	public WhenIViewStudentStatus I_view_student_current_status_for_$(String identityNo){
 		
 	
 		AdStudent student = identityService.findStudentByStudentNo("A17P001");
