@@ -16,7 +16,6 @@ public class WhenIWantToEnrollAdditionalOfferingCoursesToRepeatCourses extends S
 
 	public void I_want_to_enroll_additional_offering_courses_to_repeat_courses() {
 	
-		
 	}
 	
 

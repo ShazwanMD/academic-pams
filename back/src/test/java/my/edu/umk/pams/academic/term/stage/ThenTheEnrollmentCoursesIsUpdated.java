@@ -10,7 +10,6 @@ public class ThenTheEnrollmentCoursesIsUpdated extends Stage<ThenTheEnrollmentCo
 	private static final Logger LOG = LoggerFactory.getLogger(ThenTheEnrollmentCoursesIsUpdated.class);
 
 	public void the_enrollment_courses_is_updated() {
-		
-		
+			
 	}
 }
