@@ -1,6 +1,7 @@
 package my.edu.umk.pams.academic.profile;
 
 import org.junit.Test;
+
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,6 +14,7 @@ import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 
 import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.profile.stage.ThenStudentStatusCurrent;
+import my.edu.umk.pams.academic.profile.stage.WhenIViewStudentStatus;
 import my.edu.umk.pams.academic.profile.stage.WhenIWantViewStudentStatus;
 import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
 
