@@ -1,8 +1,8 @@
 package my.edu.umk.pams.academic.profile.stage;
 
-public class WhenIViewStudentStatus {
+public class ThenIKnowStudentCurrentStatus {
 
-	public void I_view_student_status() {
+	public void I_know_student_current_status() {
 		// TODO Auto-generated method stub
 		
 	}
