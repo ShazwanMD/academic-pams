@@ -7,6 +7,7 @@ import my.edu.umk.pams.academic.identity.model.AdStaff;
 import my.edu.umk.pams.academic.identity.model.AdUser;
 import my.edu.umk.pams.academic.security.integration.AdUserDetails;
 import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
+import my.edu.umk.pams.academic.planner.model.AdCourse;
 import my.edu.umk.pams.academic.planner.model.AdFaculty;
 import my.edu.umk.pams.academic.planner.model.AdProgram;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
@@ -52,9 +53,13 @@ public class GivenIAmCPSAdministrator extends Stage<GivenIAmCPSAdministrator> {
 
     @ProvidedScenarioState
     private AdSection section;
+    
+    @ProvidedScenarioState
+    private AdCourse course;
 
-    public void I_am_a_CPS_administrator() {
+    public GivenIAmCPSAdministrator I_am_a_CPS_administrator() {
         loginAsCPS();
+        return self();
     }
 
     public GivenIAmCPSAdministrator I_am_a_CPS_administrator_in_$_academic_session(String academicSessionCode) {
@@ -86,6 +91,11 @@ public class GivenIAmCPSAdministrator extends Stage<GivenIAmCPSAdministrator> {
 
     public GivenIAmCPSAdministrator I_pick_section_$(String canonicalCode) {
         section = termService.findSectionByCanonicalCode(canonicalCode);
+        return self();
+    }
+    
+    public GivenIAmCPSAdministrator I_pick_course_$(String code) {
+        course = plannerService.findCourseByCode(code);
         return self();
     }
 

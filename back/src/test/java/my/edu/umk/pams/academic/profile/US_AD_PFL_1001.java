@@ -2,7 +2,7 @@ package my.edu.umk.pams.academic.profile;
 
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.academic.config.TestAppConfiguration;
-import my.edu.umk.pams.academic.profile.stage.ThenMyAddressUpdated;
+import my.edu.umk.pams.academic.profile.stage.ThenMyMailingAddressUpdated;
 import my.edu.umk.pams.academic.profile.stage.WhenIUpdateMyMailingAddress;
 import my.edu.umk.pams.bdd.stage.GivenIAmStudent;
 import org.junit.Test;
@@ -24,7 +24,7 @@ import org.springframework.transaction.annotation.Transactional;
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
-public class US_AD_PFL_1001 extends SpringScenarioTest<GivenIAmStudent, WhenIUpdateMyMailingAddress, ThenMyAddressUpdated> {
+public class US_AD_PFL_1001 extends SpringScenarioTest<GivenIAmStudent, WhenIUpdateMyMailingAddress, ThenMyMailingAddressUpdated> {
 
     private static final Logger LOG = LoggerFactory.getLogger(US_AD_PFL_1001.class);
 

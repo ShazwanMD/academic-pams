@@ -10,7 +10,6 @@ import org.junit.runners.Suite;
 @Suite.SuiteClasses({
         US_AD_PNR_0001.class,
         US_AD_PNR_0002.class,
-        US_AD_PNR_0003.class,
         US_AD_PNR_0004.class,
         US_AD_PNR_0005.class,
         US_AD_PNR_1001.class,

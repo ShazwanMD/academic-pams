@@ -8,6 +8,7 @@ import my.edu.umk.pams.academic.planner.model.AdCourse;
 import my.edu.umk.pams.academic.planner.model.AdFaculty;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.Assert;
 
 /**
  * @author PAMS
@@ -25,10 +26,13 @@ public class ThenCoursesUpdated extends Stage<ThenCoursesUpdated> {
     @ExpectedScenarioState
     private AdCourse course;
 
-    @Pending
+    
     public ThenCoursesUpdated new_courses_information_updated() {
 
-
+    	
+    	boolean exists = plannerService.isCourseExists("DDA2113", faculty);
+    	 Assert.isTrue(exists, "exists");
+    	
         return self();
 
     }

@@ -24,14 +24,16 @@ public class US_AD_PFL_2003
 
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_PFL_2003.class);
 
+
 	private String IDENTITY_NO = "A17P001";
 
 	@Test
 	@Rollback
-	public void scenario2003() {
-
+	public void scenario2003(){
+		
 		given().I_am_a_CPS_administrator_in_current_academic_session();
 		when().I_view_student_current_status_for_$(IDENTITY_NO);
 		then().Student_status_is_current();
 	}
-}
+	}
+
