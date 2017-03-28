@@ -10,21 +10,11 @@ import javax.persistence.Table;
 @Entity(name = "AdStaff")
 @Table(name = "AD_STAF")
 public class AdStaffImpl extends AdActorImpl implements AdStaff {
-	
+
     @Column(name = "STAFF_TYPE")
     private AdStaffType staffType;
-    
-    @Override
-    public AdStaffType getStaffType() {
-		return staffType;
-	}
 
-    @Override
-	public void setStaffType(AdStaffType staffType) {
-		this.staffType = staffType;
-	}
-
-	public AdStaffImpl() {
+    public AdStaffImpl() {
         super();
         setActorType(AdActorType.STAFF);
     }
@@ -40,10 +30,17 @@ public class AdStaffImpl extends AdActorImpl implements AdStaff {
     }
 
     @Override
+    public AdStaffType getStaffType() {
+        return staffType;
+    }
+
+    @Override
+    public void setStaffType(AdStaffType staffType) {
+        this.staffType = staffType;
+    }
+
+    @Override
     public Class<?> getInterfaceClass() {
         return AdStaff.class;
     }
-
-	
-
 }

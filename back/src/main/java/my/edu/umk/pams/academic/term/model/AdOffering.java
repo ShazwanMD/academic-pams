@@ -43,6 +43,8 @@ public interface AdOffering extends AdMetaObject {
 
     void setSections(List<AdSection> sections);
 
+    // transient
+
     Integer getSectionCount();
 
     void setSectionCount(Integer sectionCount);

@@ -21,8 +21,9 @@ import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 
-public class US_AD_TRM_1005 extends
+public class US_AD_OFG_1004 extends
 		SpringScenarioTest<GivenIAmCPSAdministrator, WhenIAppointStaffToSections, ThenTheSectionsHaveAppointedStaff> {
+
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_1005.class);
 	public static final String PROGRAM_CODE = "FKP/PHD/0001";
 
