@@ -18,7 +18,7 @@ public class ThenTheEnrollmentCoursesIsUpdated extends Stage<ThenTheEnrollmentCo
 
 	public ThenTheEnrollmentCoursesIsUpdated the_enrollment_courses_is_updated() {
 
-		LOG.debug("enrollment for repeated course is {} ", enrollment.getStatus());
+		LOG.debug("Enrollment for repeated course is {} ", enrollment.getStatus());
 		Assert.notNull(enrollment, "Enrollment data should be inserted");
 
 		return self();

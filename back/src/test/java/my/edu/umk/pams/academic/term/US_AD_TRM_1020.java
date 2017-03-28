@@ -1,4 +1,5 @@
 package my.edu.umk.pams.academic.term;
+
 /**
  * @author asyikin.mr and ziana
  */
@@ -12,7 +13,6 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
-import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.term.stage.ThenTheEnrollmentCoursesIsUpdated;
@@ -22,21 +22,19 @@ import my.edu.umk.pams.bdd.stage.GivenIAmStudent;
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
-public class US_AD_TRM_1020 extends SpringScenarioTest<GivenIAmStudent, WhenIWantToEnrollAdditionalOfferingCoursesToRepeatCourses, ThenTheEnrollmentCoursesIsUpdated>  {
+public class US_AD_TRM_1020 extends
+		SpringScenarioTest<GivenIAmStudent, WhenIWantToEnrollAdditionalOfferingCoursesToRepeatCourses, ThenTheEnrollmentCoursesIsUpdated> {
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_1020.class);
 	private static final String PROGRAM_CODE = "FKP/MASTER/0001";
 
 	@Before
 	public void before() {
 	}
-	
+
 	@After
 	public void after() {
-			
+
 	}
-	
-	@ProvidedScenarioState
-	private String faculty = "FKP";
 
 	@Test
 	@Rollback(true)
@@ -48,7 +46,3 @@ public class US_AD_TRM_1020 extends SpringScenarioTest<GivenIAmStudent, WhenIWan
 	}
 
 }
-
-	
-	
-

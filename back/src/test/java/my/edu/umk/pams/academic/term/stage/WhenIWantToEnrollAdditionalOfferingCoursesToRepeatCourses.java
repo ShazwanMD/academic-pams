@@ -44,18 +44,13 @@ public class WhenIWantToEnrollAdditionalOfferingCoursesToRepeatCourses
 	@ExpectedScenarioState
 	private AdStudent student;
 
-	private String canonicalCode;
-
 	public WhenIWantToEnrollAdditionalOfferingCoursesToRepeatCourses I_want_to_enroll_additional_offering_courses_to_repeat_courses_for_program_$(
 			String code) {
 
-		canonicalCode = "FKP/PHD/0001/DDA2113/201720181";
-		String studentNo = "A17P002";
-		
-		section = termService.findSectionByCanonicalCode(canonicalCode);
+		section = termService.findSectionByCanonicalCode("FKP/PHD/0001/DDA2113/201720181");
 		LOG.debug("A section{}", section);
-		
-		student = identityService.findStudentByStudentNo(studentNo);
+
+		student = identityService.findStudentByStudentNo("A17P002");
 		LOG.debug("B student{}", student);
 
 		enrollment = new AdEnrollmentImpl();
@@ -66,6 +61,6 @@ public class WhenIWantToEnrollAdditionalOfferingCoursesToRepeatCourses
 		termService.saveEnrollment(enrollment);
 
 		return self();
-		
+
 	}
 }
