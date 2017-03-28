@@ -15,3 +15,9 @@ values (nextval('SQ_AD_FCTY'), 'PBI', 'CENTER FOR LANGUAGE STUDIES AND GENERIC D
 
 insert into AD_FCTY (ID, CODE, NAME, M_ST, C_ID, C_TS)
 values (nextval('SQ_AD_FCTY'), 'FSB', 'FACULTY OF EARTH SCIENCE', 1, 0, CURRENT_TIMESTAMP);
+
+insert into AD_FCTY (ID, CODE, NAME, M_ST, C_ID, C_TS)
+values (nextval('SQ_AD_FCTY'), 'MGSEB', 'MGSEB', 1, 0, CURRENT_TIMESTAMP);
+
+insert into AD_FCTY (ID, CODE, NAME, M_ST, C_ID, C_TS)
+values (nextval('SQ_AD_FCTY'), 'CPS', 'CPS', 1, 0, CURRENT_TIMESTAMP);
