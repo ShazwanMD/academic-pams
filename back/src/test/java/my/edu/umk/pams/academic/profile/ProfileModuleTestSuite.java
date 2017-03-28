@@ -18,6 +18,7 @@ import org.junit.runners.Suite;
         
         US_AD_PFL_2001.class,
         US_AD_PFL_2002.class,
+        US_AD_PFL_2003.class,
         US_AD_PFL_2004.class,
         US_AD_PFL_2006.class,
   
