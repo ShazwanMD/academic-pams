@@ -3,7 +3,7 @@ package my.edu.umk.pams.academic.profile;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.profile.stage.ThenStudentCourseInfoIsCurrent;
-import my.edu.umk.pams.academic.profile.stage.WhenIWantToViewStudentCourseInfo;
+import my.edu.umk.pams.academic.profile.stage.WhenIViewStudentCourseInfo;
 import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -22,7 +22,7 @@ import org.springframework.transaction.annotation.Transactional;
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
-public class US_AD_PFL_2004 extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenIWantToViewStudentCourseInfo, ThenStudentCourseInfoIsCurrent> {
+public class US_AD_PFL_2004 extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenIViewStudentCourseInfo, ThenStudentCourseInfoIsCurrent> {
 
     private static final Logger LOG = LoggerFactory.getLogger(US_AD_PFL_2004.class);
 
