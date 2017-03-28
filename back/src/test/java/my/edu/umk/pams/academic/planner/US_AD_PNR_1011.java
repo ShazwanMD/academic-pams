@@ -23,13 +23,14 @@
 	import my.edu.umk.pams.academic.config.TestAppConfiguration;
 	import my.edu.umk.pams.academic.planner.stage.ThenAcademicSessionUpdated;
 	import my.edu.umk.pams.academic.planner.stage.WhenIUpdateAcademicSession;
-	import my.edu.umk.pams.bdd.stage.GivenIAmMGSEBAdministrator;
+import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
+import my.edu.umk.pams.bdd.stage.GivenIAmMGSEBAdministrator;
 
 	@RunWith(SpringJUnit4ClassRunner.class)
 	@Transactional
 	@ContextConfiguration(classes = TestAppConfiguration.class)
 
-	public class US_AD_PNR_1011 extends SpringScenarioTest<GivenIAmMGSEBAdministrator, WhenIUpdateAcademicSession, ThenAcademicSessionUpdated>{
+	public class US_AD_PNR_1011 extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenIUpdateAcademicSession, ThenAcademicSessionUpdated>{
 		
 		 @SuppressWarnings("unused")
 		  private static final Logger LOG = LoggerFactory.getLogger(US_AD_PNR_1011.class);
@@ -37,9 +38,8 @@
 		 @Test
 		 @Rollback(true)
 		 public void scenario1() {
-
 			 
-			 given().I_am_a_MGSEB_administrator_in_current_academic_session();
+			 given().I_am_a_CPS_administrator_in_current_academic_session();
 		     when().I_update_academic_session();
 		     then().the_academic_session_is_updated();
 		 }
