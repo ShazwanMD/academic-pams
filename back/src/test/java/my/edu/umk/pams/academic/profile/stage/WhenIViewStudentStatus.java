@@ -1,54 +1,10 @@
 package my.edu.umk.pams.academic.profile.stage;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
+public class WhenIViewStudentStatus {
 
-import com.tngtech.jgiven.Stage;
-import com.tngtech.jgiven.annotation.ExpectedScenarioState;
-import com.tngtech.jgiven.integration.spring.JGivenStage;
-
-import my.edu.umk.pams.academic.identity.model.AdActor;
-import my.edu.umk.pams.academic.identity.model.AdStudent;
-import my.edu.umk.pams.academic.identity.model.AdStudentStatus;
-import my.edu.umk.pams.academic.identity.service.IdentityService;
-
-@JGivenStage
-public class WhenIViewStudentStatus extends Stage<WhenIViewStudentStatus> {
-	
-	private static final Logger LOG = LoggerFactory.getLogger(WhenIViewStudentStatus.class);
-
-	
-	@Autowired
-	private IdentityService identityService;
-	
-	@ExpectedScenarioState
-	private AdStudent student;
-	
-	@ExpectedScenarioState
-	private AdActor actor;
-	
-	@ExpectedScenarioState
-	private String identityNo;
-	
-	@ExpectedScenarioState
-	private AdStudentStatus studentStatus;
-	
-
-	
-	
-	public WhenIViewStudentStatus I_view_student_current_status_for_$(String identityNo){
+	public void I_view_student_status() {
+		// TODO Auto-generated method stub
 		
-	
-		AdStudent student = identityService.findStudentByStudentNo("A17P001");
-		      AdStudentStatus studentStatus = student.getStudentStatus();
-		        
-		        LOG.debug("Student's status: {}", studentStatus.name());
-		        LOG.debug("Student's status: {}", studentStatus.ordinal());
-	
-		
-		
-		return self();
 	}
-	
+
 }
