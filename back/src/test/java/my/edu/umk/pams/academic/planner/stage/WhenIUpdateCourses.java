@@ -46,6 +46,7 @@ public class WhenIUpdateCourses extends Stage<WhenIUpdateCourses> {
         course.setTitle("Sustainability & Environmental Economics");
         course.setTitleEn("Sustainability & Environmental Economics");
         course.setTitleMs("Sustainability & Environmental Economics");
+        course.setCredit(5);
         
         plannerService.updateCourse(faculty, course);
         return self();
