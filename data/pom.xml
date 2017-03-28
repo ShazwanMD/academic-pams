@@ -276,7 +276,7 @@
                                 <srcFile>src/test/resources/data/AD_PCPL.sql</srcFile>
                                 <srcFile>src/test/resources/data/AD_ACTR.sql</srcFile>
                                 <srcFile>src/test/resources/data/AD_RFRN_NO.sql</srcFile>
-
+								<srcFile>src/test/resources/data/AD_CNFG.sql</srcFile>
                                 <srcFile>src/test/resources/data/AD_GNDR_CODE.sql</srcFile>
                                 <srcFile>src/test/resources/data/AD_PLMT_CODE.sql</srcFile>
                                 <srcFile>src/test/resources/data/AD_DUN_CODE.sql</srcFile>
