@@ -1,10 +1,9 @@
 package my.edu.umk.pams.academic.profile.stage;
 
 import com.tngtech.jgiven.Stage;
-import com.tngtech.jgiven.annotation.ExpectedScenarioState;
+
+import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
-import my.edu.umk.pams.academic.identity.model.AdActor;
-import my.edu.umk.pams.academic.identity.model.AdActorType;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.identity.service.IdentityService;
 import org.slf4j.Logger;
@@ -20,24 +19,32 @@ public class WhenIUpdateMyContactNumber extends Stage<WhenIUpdateMyContactNumber
     @Autowired
     private IdentityService identityService;
 
-    @ExpectedScenarioState
-    private AdActor actor;
 
-    @ExpectedScenarioState
+    @ProvidedScenarioState
     private AdStudent student;
 
 
-    public WhenIUpdateMyContactNumber I_update_my_contact_number() {
 
-        actor = identityService.findActorByIdentityNo("A17P001");
-
-        actor.setActorType(AdActorType.STUDENT);
-        actor.setMobile("0111");
-        actor.setPhone("01111");
-        identityService.updateStudent(student);
+	public WhenIUpdateMyContactNumber I_add_my_contact_number() {
+	      
+		AdStudent student = identityService.findStudentByStudentNo("A17P002");
+        student.setMobile("0148040444");
+        student.setPhone("097777177");
+        
+        identityService.saveStudent(student);
         
         return self();
 
-    }
+	}
 
+    public WhenIUpdateMyContactNumber I_update_my_contact_number() {
+       
+    	AdStudent student = identityService.findStudentByStudentNo("A17P001");
+        student.setMobile("0148040400");
+        student.setPhone("097777111");
+        
+        identityService.updateStudent(student);
+        
+        return self();
+    }
 }

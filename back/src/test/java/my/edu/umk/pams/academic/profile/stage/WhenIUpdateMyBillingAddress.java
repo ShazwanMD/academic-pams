@@ -36,9 +36,8 @@ public class WhenIUpdateMyBillingAddress extends Stage<WhenIUpdateMyBillingAddre
     private AdAddress address;
 
     public WhenIUpdateMyBillingAddress I_add_my_billing_address() {
-        List<AdAddress> addresses = profileService.findAddresses(student);
-
-        AdAddress address = new AdAddressImpl();
+        
+    	AdAddress address = new AdAddressImpl();
 
         address.setType(AdAddressType.BILLING);
         address.setAddress1("Jalan Petaling");
@@ -46,8 +45,7 @@ public class WhenIUpdateMyBillingAddress extends Stage<WhenIUpdateMyBillingAddre
         address.setStateCode(commonService.findStateCodeByCode("MY-01"));
         address.setCountryCode(commonService.findCountryCodeByCode("MY"));
         profileService.addAddress(student, address);
-        profileService.updateAddress(student, address);
-
+     
         return self();
     }
 
