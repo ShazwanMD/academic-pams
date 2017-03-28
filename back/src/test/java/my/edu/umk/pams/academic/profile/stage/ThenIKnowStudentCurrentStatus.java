@@ -31,6 +31,7 @@ public class ThenIKnowStudentCurrentStatus extends Stage<ThenIKnowStudentCurrent
     	
     	String studentNo = "A17P001";
     	
+    	//hmm ni kawe buat ni
     	AdStudent student = identityService.findStudentByStudentNo(studentNo);
     	AdStudentStatus studentStatus = student.getStudentStatus();    	
     	Assert.isTrue(studentStatus.equals(studentStatus), "true");
