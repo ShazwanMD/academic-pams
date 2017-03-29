@@ -3,8 +3,8 @@ package my.edu.umk.pams.academic.profile;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 
 import my.edu.umk.pams.academic.config.TestAppConfiguration;
-import my.edu.umk.pams.academic.profile.stage.ThenMyMailingAddressUpdated;
-import my.edu.umk.pams.academic.profile.stage.WhenIUpdateMyMailingAddress;
+import my.edu.umk.pams.academic.profile.stage.ThenMailingAddressUpdated;
+import my.edu.umk.pams.academic.profile.stage.WhenIUpdateMailingAddress;
 import my.edu.umk.pams.bdd.stage.GivenIAmStudent;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -25,7 +25,7 @@ import org.springframework.transaction.annotation.Transactional;
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
-public class US_AD_PFL_1001 extends SpringScenarioTest<GivenIAmStudent, WhenIUpdateMyMailingAddress, ThenMyMailingAddressUpdated> {
+public class US_AD_PFL_1001 extends SpringScenarioTest<GivenIAmStudent, WhenIUpdateMailingAddress, ThenMailingAddressUpdated> {
 
     private static final Logger LOG = LoggerFactory.getLogger(US_AD_PFL_1001.class);
 
@@ -33,7 +33,7 @@ public class US_AD_PFL_1001 extends SpringScenarioTest<GivenIAmStudent, WhenIUpd
     @Rollback
     public void scenario1001() {
         given().I_am_a_student_in_current_academic_session();
-        when().I_update_my_mailing_address();
-        then().my_address_on_file_is_current();
+        when().I_update_mailing_address();
+        then().Mailing_address_updated();
     }
 }
