@@ -30,7 +30,7 @@ public class WhenIViewProgramFaculty extends Stage<WhenIViewProgramFaculty> {
     public WhenIViewProgramFaculty() {
     }
 
-    public WhenIViewProgramFaculty I_want_to_view_program_for_that_faculty_$() {
+    public WhenIViewProgramFaculty I_want_to_view_program_for_that_faculty_$(String faculty) {
         programs = plannerService.findPrograms(faculty);
         for (AdProgram program : programs) {
             LOG.debug(program.getTitle());
