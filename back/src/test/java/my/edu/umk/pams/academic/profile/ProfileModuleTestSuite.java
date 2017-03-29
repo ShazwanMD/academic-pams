@@ -24,11 +24,13 @@ import org.junit.runners.Suite;
         US_AD_PFL_2007.class,
         
         
-        
+        US_AD_PFL_3001.class,
         US_AD_PFL_3002.class,
         US_AD_PFL_3003.class,
   
 })
+
+
 public class ProfileModuleTestSuite {
 
 }
