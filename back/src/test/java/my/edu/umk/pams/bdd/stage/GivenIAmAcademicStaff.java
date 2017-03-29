@@ -48,6 +48,7 @@ public class GivenIAmAcademicStaff extends Stage<GivenIAmAcademicStaff> {
     @ProvidedScenarioState
     private AdSection section;
 
+    @ProvidedScenarioState
     private AdActor staff;
 
     public GivenIAmAcademicStaff I_am_a_staff_in_$_academic_session(String academicSessionCode) {
