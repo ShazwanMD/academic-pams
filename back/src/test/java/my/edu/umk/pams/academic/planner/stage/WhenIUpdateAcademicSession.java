@@ -1,6 +1,8 @@
 
 package my.edu.umk.pams.academic.planner.stage;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.slf4j.Logger;
@@ -9,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
+import com.tngtech.jgiven.integration.spring.JGivenStage;
 
 import my.edu.umk.pams.academic.planner.model.AdAcademicSemester;
 import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
@@ -16,36 +19,51 @@ import my.edu.umk.pams.academic.planner.model.AdAcademicSessionImpl;
 import my.edu.umk.pams.academic.planner.model.AdAcademicStatus;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
 
-
+@JGivenStage
 public class WhenIUpdateAcademicSession extends Stage<WhenIUpdateAcademicSession> {
-	
-	private static final Logger LOG = LoggerFactory.getLogger(WhenIUpdateAcademicSession .class);
+
+	private static final Logger LOG = LoggerFactory.getLogger(WhenIUpdateAcademicSession.class);
 
 	@Autowired
 	private PlannerService plannerService;
 
 	@ProvidedScenarioState
 	private AdAcademicSession academicSession;
+	
+	private String startDate;
+	private String endDate;
 
-	@ProvidedScenarioState
-	private String code;
 	
 	public WhenIUpdateAcademicSession I_update_academic_session() {
 		
-		academicSession = new AdAcademicSessionImpl();
-		academicSession.setCode("201820191");
-		academicSession.setDescription("SESSION FEB 2017");
-		academicSession.setStartDate(new Date());
-		academicSession.setEndDate(new Date());
-		academicSession.setStatus(AdAcademicStatus.NEW);
-		academicSession.setCurrent(true);
-		academicSession.setSemester(AdAcademicSemester.SEMESTER_2);
+		startDate = "01/04/2017";
+		endDate = "10/04/2017";
+
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/M/yyyy");
+		Date dateStart = null;
+		try {
+			dateStart = sdf.parse(startDate);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		Date dateEnd = null;
+		try {
+			dateEnd = sdf.parse(endDate);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		};
 		
-		plannerService.updateAcademicSession(academicSession);
-		LOG.debug("academicSession {} ", academicSession);
+		AdAcademicSession adAcademicSession = academicSession;
 		
+		adAcademicSession.setDescription("SESSION FEB 2017");
+		adAcademicSession.setStartDate(dateStart);
+		adAcademicSession.setEndDate(dateEnd);
+		adAcademicSession.setSemester(AdAcademicSemester.SEMESTER_2);
+
+		plannerService.updateAcademicSession(adAcademicSession);
+
 		return self();
-		
+
 	}
 
 }
