@@ -19,9 +19,9 @@ import java.util.List;
  * @author PAMS
  */
 @JGivenStage
-public class WhenIUpdateMyBillingAddress extends Stage<WhenIUpdateMyBillingAddress> {
+public class WhenIUpdateBillingAddress extends Stage<WhenIUpdateBillingAddress> {
 
-    private static final Logger LOG = LoggerFactory.getLogger(WhenIUpdateMyBillingAddress.class);
+    private static final Logger LOG = LoggerFactory.getLogger(WhenIUpdateBillingAddress.class);
 
     @Autowired
     private ProfileService profileService;
@@ -35,7 +35,7 @@ public class WhenIUpdateMyBillingAddress extends Stage<WhenIUpdateMyBillingAddre
     @ProvidedScenarioState
     private AdAddress address;
 
-    public WhenIUpdateMyBillingAddress I_add_my_billing_address() {
+    public WhenIUpdateBillingAddress I_add_my_billing_address() {
         
     	AdAddress address = new AdAddressImpl();
 
@@ -49,7 +49,7 @@ public class WhenIUpdateMyBillingAddress extends Stage<WhenIUpdateMyBillingAddre
         return self();
     }
 
-    public WhenIUpdateMyBillingAddress I_update_my_billing_address() {
+    public WhenIUpdateBillingAddress I_update_billing_address() {
         List<AdAddress> addresses = profileService.findAddresses(student);
         for (AdAddress address : addresses) {
             if (address.getType().equals(AdAddressType.BILLING)) {
