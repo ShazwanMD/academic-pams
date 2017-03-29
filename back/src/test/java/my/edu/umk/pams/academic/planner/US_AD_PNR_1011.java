@@ -4,7 +4,7 @@ package my.edu.umk.pams.academic.planner;
 import org.junit.Test;
 
 /**
- * As an admin academic,
+ * As an admin academic,,
  *   I want to up date new academic semester info,
  *      so that the new academic semester info is created
  * @author ain
