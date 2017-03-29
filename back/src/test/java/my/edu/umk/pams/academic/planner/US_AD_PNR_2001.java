@@ -1,9 +1,9 @@
 package my.edu.umk.pams.academic.planner;
 
 /**
- * As an admin academic,
- * I am a student in current academic session,
- * so that Can take in new semester.
+ * As an a student,
+ *  i want to view level of study 
+ *  	so that I know my level of studies
  *
  * @author zaida
  */
@@ -11,8 +11,8 @@ package my.edu.umk.pams.academic.planner;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.academic.config.TestAppConfiguration;
-import my.edu.umk.pams.academic.planner.stage.ThenCanTakeInNewSemester;
-import my.edu.umk.pams.academic.planner.stage.WhenIWantToViewTheProgramForEachLevelOfStudy;
+import my.edu.umk.pams.academic.planner.stage.ThenProgramLevelReviewed;
+import my.edu.umk.pams.academic.planner.stage.WhenIReviewProgramLevel;
 import my.edu.umk.pams.bdd.stage.GivenIAmStudent;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -27,7 +27,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 
-public class US_AD_PNR_2001 extends SpringScenarioTest<GivenIAmStudent, WhenIWantToViewTheProgramForEachLevelOfStudy, ThenCanTakeInNewSemester> {
+public class US_AD_PNR_2001 extends SpringScenarioTest<GivenIAmStudent, WhenIReviewProgramLevel, ThenProgramLevelReviewed> {
 
     @SuppressWarnings("unused")
     private static final Logger LOG = LoggerFactory.getLogger(US_AD_PNR_2001.class);
@@ -41,8 +41,8 @@ public class US_AD_PNR_2001 extends SpringScenarioTest<GivenIAmStudent, WhenIWan
     @Rollback
     public void scenari2001() {
         given().I_am_a_student_in_current_academic_session();
-        when().I_want_to_view_the_program_$_for_each_level_of_study(FACULTY_CODE);
-        then().Can_take_in_new_semester();
+        when().I_review_program_level_$(FACULTY_CODE);
+        then().Program_level_introduced();
     }
 }
 
