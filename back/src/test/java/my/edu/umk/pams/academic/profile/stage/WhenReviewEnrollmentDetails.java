@@ -13,7 +13,6 @@ import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 
 import my.edu.umk.pams.academic.identity.model.AdActor;
-import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.identity.service.IdentityService;
 import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
 import my.edu.umk.pams.academic.planner.model.AdProgram;
@@ -60,8 +59,6 @@ public class WhenReviewEnrollmentDetails extends Stage<WhenReviewEnrollmentDetai
 
 	@Pending
 	public WhenReviewEnrollmentDetails review_enrollment_details() {
-    	
-		
 		
 		actor = identityService.findActorByIdentityNo("01001A");
 		enrollments = termService.findEnrollments(offering, 0, 100);
