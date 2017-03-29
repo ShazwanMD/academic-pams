@@ -2,8 +2,8 @@ package my.edu.umk.pams.academic.profile;
 
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.academic.config.TestAppConfiguration;
-import my.edu.umk.pams.academic.profile.stage.ThenMyContactNumberIsUpdated;
-import my.edu.umk.pams.academic.profile.stage.WhenIUpdateMyContactNumber;
+import my.edu.umk.pams.academic.profile.stage.ThenContactNumberUpdated;
+import my.edu.umk.pams.academic.profile.stage.WhenIUpdateContactNumber;
 import my.edu.umk.pams.bdd.stage.GivenIAmStudent;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -24,7 +24,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 
-public class US_AD_PFL_1004 extends SpringScenarioTest<GivenIAmStudent, WhenIUpdateMyContactNumber, ThenMyContactNumberIsUpdated> {
+public class US_AD_PFL_1004 extends SpringScenarioTest<GivenIAmStudent, WhenIUpdateContactNumber, ThenContactNumberUpdated> {
 
     private static final Logger LOG = LoggerFactory.getLogger(US_AD_PFL_1004.class);
 
@@ -32,7 +32,7 @@ public class US_AD_PFL_1004 extends SpringScenarioTest<GivenIAmStudent, WhenIUpd
     @Rollback
     public void scenario1004() {
         given().I_am_a_student_in_current_academic_session();
-        when().I_add_my_contact_number().and().when().I_update_my_contact_number();
-        then().my_contact_number_is_updated();
+        when().I_add_my_contact_number().and().when().I_update_contact_number();
+        then().Contact_number_updated();
     }
 }

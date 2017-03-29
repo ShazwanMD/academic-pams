@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
 
 @JGivenStage
-public class ThenMyContactNumberIsUpdated extends Stage<ThenMyContactNumberIsUpdated> {
+public class ThenContactNumberUpdated extends Stage<ThenContactNumberUpdated> {
 
 	@Autowired
 	private IdentityService identityService;
@@ -19,7 +19,7 @@ public class ThenMyContactNumberIsUpdated extends Stage<ThenMyContactNumberIsUpd
 	@ExpectedScenarioState
 	private String identityNo;
 
-	public ThenMyContactNumberIsUpdated my_contact_number_is_updated() {
+	public ThenContactNumberUpdated Contact_number_updated() {
 
    	
     	AdStudent student = identityService.findStudentByStudentNo("A17P001");

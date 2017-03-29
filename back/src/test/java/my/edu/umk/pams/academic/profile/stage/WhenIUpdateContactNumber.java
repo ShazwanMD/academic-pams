@@ -12,9 +12,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 
 @JGivenStage
-public class WhenIUpdateMyContactNumber extends Stage<WhenIUpdateMyContactNumber> {
+public class WhenIUpdateContactNumber extends Stage<WhenIUpdateContactNumber> {
 
-    private static final Logger LOG = LoggerFactory.getLogger(WhenIUpdateMyContactNumber.class);
+    private static final Logger LOG = LoggerFactory.getLogger(WhenIUpdateContactNumber.class);
 
     @Autowired
     private IdentityService identityService;
@@ -25,7 +25,7 @@ public class WhenIUpdateMyContactNumber extends Stage<WhenIUpdateMyContactNumber
 
 
 
-	public WhenIUpdateMyContactNumber I_add_my_contact_number() {
+	public WhenIUpdateContactNumber I_add_my_contact_number() {
 	      
 		AdStudent student = identityService.findStudentByStudentNo("A17P002");
         student.setMobile("0148040444");
@@ -37,7 +37,7 @@ public class WhenIUpdateMyContactNumber extends Stage<WhenIUpdateMyContactNumber
 
 	}
 
-    public WhenIUpdateMyContactNumber I_update_my_contact_number() {
+    public WhenIUpdateContactNumber I_update_contact_number() {
        
     	AdStudent student = identityService.findStudentByStudentNo("A17P001");
         student.setMobile("0148040400");
