@@ -16,32 +16,29 @@ import org.springframework.beans.factory.annotation.Autowired;
 @JGivenStage
 public class WhenIReviewActivationStatus extends Stage<WhenIReviewActivationStatus> {
 
-    private static final Logger LOG = LoggerFactory.getLogger(WhenIReviewActivationStatus.class);
+	private static final Logger LOG = LoggerFactory.getLogger(WhenIReviewActivationStatus.class);
 
-    @Autowired
-    private IdentityService identityService;
+	@Autowired
+	private IdentityService identityService;
 
-    @ProvidedScenarioState
-    private AdStudent student;
-    
-    @ProvidedScenarioState
-    private AdStudentStatus studentStatus;
+	@ProvidedScenarioState
+	private AdStudent student;
 
-    @ProvidedScenarioState
-    private AdActor actor;
-    
-	public WhenIReviewActivationStatus I_review_activation_status() {
+	@ProvidedScenarioState
+	private AdStudentStatus studentStatus;
 	
-		AdStudent student = identityService.findStudentByStudentNo("A17P001");
+	@ProvidedScenarioState
+	private String identityNo = "A17P001";
+
+	public WhenIReviewActivationStatus I_review_activation_status_$(String identityNo) {
+
+		student = identityService.findStudentByStudentNo(identityNo);
 		AdStudentStatus studentStatus = student.getStudentStatus();
 		
 		LOG.debug("Student's status: {}", studentStatus.name());
 		LOG.debug("Student's status: {}", studentStatus.ordinal());
-		
-		
-	     return self();
+
+		return self();
 	}
 
 }
-
-

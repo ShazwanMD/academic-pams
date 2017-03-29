@@ -3,6 +3,7 @@ package my.edu.umk.pams.academic.profile.stage;
 import com.tngtech.jgiven.Stage;
 
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
+import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 
 import io.jsonwebtoken.lang.Assert;
@@ -26,14 +27,18 @@ public class ThenActivationStatusReviewed extends Stage<ThenActivationStatusRevi
     
 	@ExpectedScenarioState
 	private AdStudentStatus studentStatus;
+	
+	@ExpectedScenarioState
+	private String identityNo = "A17P001";
 
     public ThenActivationStatusReviewed Activation_status_reviewed() {
 
-    	String studentNo = "A17P001";
+    	student.getIdentityNo();
     	
-    	AdStudent student = identityService.findStudentByStudentNo(studentNo);
-    	AdStudentStatus studentStatus = student.getStudentStatus();    	
-    	Assert.isTrue(studentStatus.equals(studentStatus), "true");
+    	AdStudentStatus expectedStatus = student.getStudentStatus();
+    	AdStudentStatus actualStatus = student.getStudentStatus();
+    	
+    	Assert.isTrue(expectedStatus.equals(actualStatus), "exists");
     	
         return self();
     }
