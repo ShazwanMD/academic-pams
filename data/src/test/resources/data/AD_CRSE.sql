@@ -33,7 +33,7 @@ INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE, TITLE_MS, TITLE_EN, CREDIT, CL
 VALUES
   (nextval('SQ_AD_CRSE'), (SELECT ID
                            FROM AD_FCTY F
-                           WHERE F.CODE = 'FKP'), 'DDA2022', 'UKUR KEJURUTERAAN II', 'UKUR KEJURUTERAAN II',
+                           WHERE F.CODE = 'FIAT'), 'DDA2022', 'UKUR KEJURUTERAAN II', 'UKUR KEJURUTERAAN II',
                           'ENGINEERING SURVEYING II', 2,
                           1, 1, 0, CURRENT_TIMESTAMP);
 
