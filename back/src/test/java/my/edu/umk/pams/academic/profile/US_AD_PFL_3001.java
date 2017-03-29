@@ -34,7 +34,8 @@ public class US_AD_PFL_3001 extends SpringScenarioTest<GivenIAmBursary, WhenIVie
     @Rollback
     public void scenario3001() {
 		given().I_am_a_bursary_in_$_academic_session("201720181");
-		when().I_view_student_course_registration().and().when().I_view_student_payment_status();
+		when().I_view_student_course_registration().
+			and().when().I_view_student_payment_status();
 		then().student_registered_courses_and_payment_status_is_viewed();
 		
 	

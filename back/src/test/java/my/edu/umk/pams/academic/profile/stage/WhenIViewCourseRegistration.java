@@ -36,10 +36,8 @@ public class WhenIViewCourseRegistration extends Stage<WhenIViewCourseRegistrati
 	
 	private AdFaculty faculty;
 	
-	private String code;
 	
 	public WhenIViewCourseRegistration I_view_student_course_registration() {
-		//student = identityService.findStudentByStudentNo("A17P002");
 		
 		faculty = plannerService.findFacultyByCode("FKP");
 		course = plannerService.findCourses(faculty);
