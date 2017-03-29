@@ -19,7 +19,7 @@ public class ThenContactNumberUpdated extends Stage<ThenContactNumberUpdated> {
 	@ExpectedScenarioState
 	private String identityNo;
 
-	public ThenContactNumberUpdated Contact_number_updated() {
+	public ThenContactNumberUpdated my_contact_number_is_updated() {
 
    	
     	AdStudent student = identityService.findStudentByStudentNo("A17P001");

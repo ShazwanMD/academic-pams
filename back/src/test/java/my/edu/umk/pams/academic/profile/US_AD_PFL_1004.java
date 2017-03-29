@@ -33,6 +33,6 @@ public class US_AD_PFL_1004 extends SpringScenarioTest<GivenIAmStudent, WhenIUpd
     public void scenario1004() {
         given().I_am_a_student_in_current_academic_session();
         when().I_add_my_contact_number().and().when().I_update_contact_number();
-        then().Contact_number_updated();
+        then().my_contact_number_is_updated();
     }
 }
