@@ -13,7 +13,7 @@ import my.edu.umk.pams.academic.identity.service.IdentityService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 @JGivenStage
-public class ThenIKnowMyCurrentStatus extends Stage<ThenIKnowMyCurrentStatus> {
+public class ThenActivationStatusReviewed extends Stage<ThenActivationStatusReviewed> {
 
     @Autowired
     private IdentityService identityService;
@@ -27,7 +27,7 @@ public class ThenIKnowMyCurrentStatus extends Stage<ThenIKnowMyCurrentStatus> {
 	@ExpectedScenarioState
 	private AdStudentStatus studentStatus;
 
-    public ThenIKnowMyCurrentStatus I_know_my_current_status() {
+    public ThenActivationStatusReviewed Activation_status_reviewed() {
 
     	String studentNo = "A17P001";
     	
