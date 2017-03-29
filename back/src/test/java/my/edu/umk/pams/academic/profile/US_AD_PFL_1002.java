@@ -2,8 +2,8 @@ package my.edu.umk.pams.academic.profile;
 
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.academic.config.TestAppConfiguration;
-import my.edu.umk.pams.academic.profile.stage.ThenMyBillingAddressUpdated;
-import my.edu.umk.pams.academic.profile.stage.WhenIUpdateMyBillingAddress;
+import my.edu.umk.pams.academic.profile.stage.ThenBillingAddressUpdated;
+import my.edu.umk.pams.academic.profile.stage.WhenIUpdateBillingAddress;
 import my.edu.umk.pams.bdd.stage.GivenIAmStudent;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -23,7 +23,7 @@ import org.springframework.transaction.annotation.Transactional;
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
-public class US_AD_PFL_1002 extends SpringScenarioTest<GivenIAmStudent, WhenIUpdateMyBillingAddress, ThenMyBillingAddressUpdated> {
+public class US_AD_PFL_1002 extends SpringScenarioTest<GivenIAmStudent, WhenIUpdateBillingAddress, ThenBillingAddressUpdated> {
 
     private static final Logger LOG = LoggerFactory.getLogger(US_AD_PFL_1002.class);
 
@@ -31,7 +31,7 @@ public class US_AD_PFL_1002 extends SpringScenarioTest<GivenIAmStudent, WhenIUpd
     @Rollback
     public void scenario1002() {
         given().I_am_a_student_in_current_academic_session();
-        when().I_add_my_billing_address().and().when().I_update_my_billing_address();
-        then().my_billing_address_on_file_is_current();
+        when().I_add_my_billing_address().and().when().I_update_billing_address();
+        then().Billing_address_updated();
     }
 }

@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.tngtech.jgiven.Stage;
+import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 
@@ -22,7 +23,11 @@ public class WhenIViewStudentStatus extends Stage<WhenIViewStudentStatus> {
 
     @ProvidedScenarioState
     private AdStudent student;
-    public WhenIViewStudentStatus I_view_students_status() {
+    
+	@ExpectedScenarioState
+	private String identityNo;
+    
+    public WhenIViewStudentStatus I_view_student_$_status(String identityNo) {
     	
 		AdStudent student = identityService.findStudentByStudentNo("A17P001");
 		AdStudentStatus studentStatus = student.getStudentStatus();

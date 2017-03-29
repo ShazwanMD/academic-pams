@@ -14,9 +14,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 @JGivenStage
-public class WhenIViewMyStudentStatus extends Stage<WhenIViewMyStudentStatus> {
+public class WhenIReviewActivationStatus extends Stage<WhenIReviewActivationStatus> {
 
-    private static final Logger LOG = LoggerFactory.getLogger(WhenIViewMyStudentStatus.class);
+    private static final Logger LOG = LoggerFactory.getLogger(WhenIReviewActivationStatus.class);
 
     @Autowired
     private IdentityService identityService;
@@ -30,7 +30,7 @@ public class WhenIViewMyStudentStatus extends Stage<WhenIViewMyStudentStatus> {
     @ProvidedScenarioState
     private AdActor actor;
     
-	public WhenIViewMyStudentStatus I_view_student_status() {
+	public WhenIReviewActivationStatus I_review_activation_status() {
 	
 		AdStudent student = identityService.findStudentByStudentNo("A17P001");
 		AdStudentStatus studentStatus = student.getStudentStatus();

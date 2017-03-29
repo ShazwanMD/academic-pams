@@ -1,47 +1,47 @@
 
-	package my.edu.umk.pams.academic.planner;
+package my.edu.umk.pams.academic.planner;
 
-	import org.junit.Test;
+import org.junit.Test;
 
-	/**
-	 * As an admin academic,
-	 *   I want to up date new academic semester info,
-	 *   so that the new academic semester info is created
-	 * @author ain
-	 */
-	 
-	import org.junit.runner.RunWith;
-	import org.slf4j.Logger;
-	import org.slf4j.LoggerFactory;
-	import org.springframework.test.annotation.Rollback;
-	import org.springframework.test.context.ContextConfiguration;
-	import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-	import org.springframework.transaction.annotation.Transactional;
+/**
+ * As an admin academic,,
+ *   I want to up date new academic semester info,
+ *      so that the new academic semester info is created
+ * @author ain
+ */
 
-	import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
+import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.test.annotation.Rollback;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.transaction.annotation.Transactional;
 
-	import my.edu.umk.pams.academic.config.TestAppConfiguration;
-	import my.edu.umk.pams.academic.planner.stage.ThenAcademicSessionUpdated;
-	import my.edu.umk.pams.academic.planner.stage.WhenIUpdateAcademicSession;
+import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
+
+import my.edu.umk.pams.academic.config.TestAppConfiguration;
+import my.edu.umk.pams.academic.planner.stage.ThenAcademicSessionUpdated;
+import my.edu.umk.pams.academic.planner.stage.WhenIUpdateAcademicSession;
 import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
-import my.edu.umk.pams.bdd.stage.GivenIAmMGSEBAdministrator;
 
-	@RunWith(SpringJUnit4ClassRunner.class)
-	@Transactional
-	@ContextConfiguration(classes = TestAppConfiguration.class)
+@RunWith(SpringJUnit4ClassRunner.class)
+@Transactional
+@ContextConfiguration(classes = TestAppConfiguration.class)
 
-	public class US_AD_PNR_1011 extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenIUpdateAcademicSession, ThenAcademicSessionUpdated>{
-		
-		 @SuppressWarnings("unused")
-		  private static final Logger LOG = LoggerFactory.getLogger(US_AD_PNR_1011.class);
+public class US_AD_PNR_1011
+		extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenIUpdateAcademicSession, ThenAcademicSessionUpdated> {
 
-		 @Test
-		 @Rollback(true)
-		 public void scenario1() {
-			 
-			 given().I_am_a_CPS_administrator_in_current_academic_session();
-		     when().I_update_academic_session();
-		     then().the_academic_session_is_updated();
-		 }
-		
+	
+	private static final Logger LOG = LoggerFactory.getLogger(US_AD_PNR_1011.class);
+
+	@Test
+	@Rollback(false)
+	public void scenario1() {
+
+		given().I_am_a_CPS_administrator_in_current_academic_session();
+		when().I_update_academic_session();
+		then().the_academic_session_is_updated();
 	}
+
+}

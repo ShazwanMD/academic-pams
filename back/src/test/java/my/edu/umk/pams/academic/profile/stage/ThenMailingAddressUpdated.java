@@ -15,7 +15,7 @@ import java.util.List;
  * @author PAMS
  */
 @JGivenStage
-public class ThenMyMailingAddressUpdated extends Stage<ThenMyMailingAddressUpdated> {
+public class ThenMailingAddressUpdated extends Stage<ThenMailingAddressUpdated> {
 
     @Autowired
     private ProfileService profileService;
@@ -23,7 +23,7 @@ public class ThenMyMailingAddressUpdated extends Stage<ThenMyMailingAddressUpdat
     @ExpectedScenarioState
     AdStudent student;
 
-    public ThenMyMailingAddressUpdated my_address_on_file_is_current() {
+    public ThenMailingAddressUpdated Mailing_address_updated() {
         List<AdAddress> addresses = profileService.findAddresses(student);
         Assert.notEmpty(addresses, "Addresses cannot be empty");
         return self();

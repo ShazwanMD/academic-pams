@@ -19,9 +19,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 
 @JGivenStage
-public class WhenIUpdateMyMailingAddress extends Stage<WhenIUpdateMyMailingAddress> {
+public class WhenIUpdateMailingAddress extends Stage<WhenIUpdateMailingAddress> {
 
-    private static final Logger LOG = LoggerFactory.getLogger(WhenIUpdateMyMailingAddress.class);
+    private static final Logger LOG = LoggerFactory.getLogger(WhenIUpdateMailingAddress.class);
 
     @Autowired
     private ProfileService profileService;
@@ -32,7 +32,7 @@ public class WhenIUpdateMyMailingAddress extends Stage<WhenIUpdateMyMailingAddre
     @ExpectedScenarioState
     private AdStudent student;
 
-    public WhenIUpdateMyMailingAddress I_update_my_mailing_address() {
+    public WhenIUpdateMailingAddress I_update_mailing_address() {
         AdAddress address = new AdAddressImpl();
         address.setType(AdAddressType.MAILING);
         address.setAddress1("Jalan Petaling");

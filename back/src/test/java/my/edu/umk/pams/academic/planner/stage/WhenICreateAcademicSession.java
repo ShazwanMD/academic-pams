@@ -1,9 +1,9 @@
 package my.edu.umk.pams.academic.planner.stage;
 
-/** 
- * (check with AcademicSessionImpl for previous_id and year_id which is must be not null)
-
+/**
+ * @author zaida.n
  */
+
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
@@ -32,25 +32,22 @@ public class WhenICreateAcademicSession extends Stage<WhenICreateAcademicSession
 
 	@ProvidedScenarioState
 	private String code;
-	
 
 	public WhenICreateAcademicSession I_create_academic_session() {
 
-		//AdAcademicYear academicYear = ""; 
-		//AdAcademicSession previous = "";
+		// AdAcademicYear academicYear = "";
+		// AdAcademicSession previous = "";
 		academicSession = new AdAcademicSessionImpl();
-		academicSession.setCode("201820191");
-		academicSession.setDescription("SESSION 201820191");
+		academicSession.setCode("20192020");
+		academicSession.setDescription("SESSION 20182019100");
 		academicSession.setStartDate(new Date());
 		academicSession.setEndDate(new Date());
 		academicSession.setStatus(AdAcademicStatus.NEW);
 		academicSession.setCurrent(true);
-		academicSession.setSemester(AdAcademicSemester.SEMESTER_1);
-		//academicSession.setPrevious(previous);
-		//academicSession.setYear(academicYear);
-		
-		
-		
+		academicSession.setSemester(AdAcademicSemester.SEMESTER_2);
+		// academicSession.setPrevious(previous);
+		// academicSession.setYear(academicYear);
+
 		plannerService.saveAcademicSession(academicSession);
 		LOG.debug("academicSession {} ", academicSession);
 

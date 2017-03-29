@@ -5,6 +5,7 @@
 //}
 
 package my.edu.umk.pams.academic.planner.stage;
+
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
@@ -21,21 +22,22 @@ import org.springframework.util.Assert;
 @JGivenStage
 public class ThenTheAcademicSessionIsCreated extends Stage<ThenTheAcademicSessionIsCreated> {
 
-    @ExpectedScenarioState
-    private AdAcademicSession academicSession;
+	@ExpectedScenarioState
+	private AdAcademicSession academicSession;
 
-    @Autowired
-    private PlannerService plannerService;
+	@Autowired
+	private PlannerService plannerService;
 
-    private static final Logger LOG = LoggerFactory.getLogger(ThenTheAcademicSessionIsCreated.class);
+	private static final Logger LOG = LoggerFactory.getLogger(ThenTheAcademicSessionIsCreated.class);
 
-    public ThenTheAcademicSessionIsCreated the_academic_session_is_created() {
+	public ThenTheAcademicSessionIsCreated the_academic_session_is_created() {
 
-        LOG.debug("academicSession {} ", academicSession);
-        AdAcademicSession academicSession = plannerService.findCurrentAcademicSession();
-        Assert.notNull(academicSession, "The data must not be null");
+		LOG.debug("academicSession {} ", academicSession);
+		// AdAcademicSession academicSession =
+		// plannerService.findCurrentAcademicSession();
+		Assert.notNull(academicSession, "The data must not be null");
 
-        return self();
+		return self();
 
-    }
+	}
 }
