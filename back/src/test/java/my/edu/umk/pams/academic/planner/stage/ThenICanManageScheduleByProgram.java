@@ -3,6 +3,8 @@ package my.edu.umk.pams.academic.planner.stage;
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.annotation.Pending;
+
+import io.jsonwebtoken.lang.Assert;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.planner.model.AdFaculty;
 import my.edu.umk.pams.academic.planner.model.AdProgram;
@@ -15,22 +17,12 @@ public class ThenICanManageScheduleByProgram extends Stage<ThenICanManageSchedul
 	private PlannerService plannerService;
 
 	@ExpectedScenarioState
-	private AdStudent student;
-
-	@ExpectedScenarioState
 	private AdProgram program;
-
-	@ExpectedScenarioState
-	private AdFaculty faculty;
-
-	@ExpectedScenarioState
-	private String code;
-
-	private boolean exists;
 
 	@Pending
 	public ThenICanManageScheduleByProgram I_can_manage_schedule_by_program() {
-
+		boolean exists = plannerService.isCurriculumExists(program.getCode() + "/CRLM/0002");
+		Assert.isTrue(exists, "Program does not have curriculum");
 		return self();
 	}
 

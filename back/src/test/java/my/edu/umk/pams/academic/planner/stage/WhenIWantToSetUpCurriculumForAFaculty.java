@@ -1,6 +1,7 @@
 package my.edu.umk.pams.academic.planner.stage;
 
 import com.tngtech.jgiven.Stage;
+import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 
@@ -29,32 +30,26 @@ public class WhenIWantToSetUpCurriculumForAFaculty extends Stage<WhenIWantToSetU
 	@Autowired
 	private CommonService commonService;
 
-	@ProvidedScenarioState
-	private AdFaculty faculty;
+	@ExpectedScenarioState
+	private AdProgram program;
 
-	public WhenIWantToSetUpCurriculumForAFaculty I_want_to_set_up_curriculum_for_a_faculty_$(String code) {
-
-		faculty = plannerService.findFacultyByCode("FKP");
-
-		AdCurriculum Curriculum = new AdCurriculumImpl();
-
-		AdProgram program = plannerService.findProgramByCode("FKP/MASTER/0001/CRLM/0001");
-
-		Curriculum.setCode(code);
-		Curriculum.setOrdinal(1);
-		Curriculum.setCoreCredit(3);
-		Curriculum.setElectiveCredit(3);
-		Curriculum.setGeneralCredit(3);
-		Curriculum.setRequiredCredit(3);
-		Curriculum.setLanguageCredit(3);
-		Curriculum.setCurriculumCredit(1);
-		Curriculum.setOthersCredit(1);
-		Curriculum.setTotalCredit(3);
-		Curriculum.setMaxPeriod(5);
-		Curriculum.setPeriod(4);
-		Curriculum.setProgram(program);
-
-		plannerService.saveCurriculum(Curriculum);
+	public WhenIWantToSetUpCurriculumForAFaculty I_set_up_curriculum_for_that_program() {
+		// setting up curriculum
+		AdCurriculum curriculum = new AdCurriculumImpl();
+		curriculum.setCode(program.getCode() + "/CRLM/0002");
+		curriculum.setOrdinal(1);
+		curriculum.setCoreCredit(3);
+		curriculum.setElectiveCredit(3);
+		curriculum.setGeneralCredit(3);
+		curriculum.setRequiredCredit(3);
+		curriculum.setLanguageCredit(3);
+		curriculum.setCurriculumCredit(1);
+		curriculum.setOthersCredit(1);
+		curriculum.setTotalCredit(3);
+		curriculum.setMaxPeriod(5);
+		curriculum.setPeriod(4);
+		curriculum.setProgram(program);
+		plannerService.saveCurriculum(curriculum);
 
 		return self();
 
