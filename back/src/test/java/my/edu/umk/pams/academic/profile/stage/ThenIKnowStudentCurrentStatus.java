@@ -15,11 +15,6 @@ import my.edu.umk.pams.academic.identity.service.IdentityService;
 @JGivenStage
 public class ThenIKnowStudentCurrentStatus extends Stage<ThenIKnowStudentCurrentStatus>{
 
-    @Autowired
-    private IdentityService identityService;
-	
-    @ExpectedScenarioState
-	private AdActor actor;
 
     @ExpectedScenarioState
     private AdStudent student;
@@ -27,13 +22,11 @@ public class ThenIKnowStudentCurrentStatus extends Stage<ThenIKnowStudentCurrent
 	@ExpectedScenarioState
 	private AdStudentStatus studentStatus;
 	
-    public ThenIKnowStudentCurrentStatus I_know_student_current_status() {
+    public ThenIKnowStudentCurrentStatus I_know_student_$_current_status_$(String identityNo, String status) {
     	
-    	String studentNo = "A17P001";
-    	
-    	//hmm ni kawe buat ni
-    	AdStudent student = identityService.findStudentByStudentNo(studentNo);
-    	AdStudentStatus studentStatus = student.getStudentStatus();    	
+//    	hmm ni kawe buat ni
+
+    	studentStatus = student.getStudentStatus();    	
     	Assert.isTrue(studentStatus.equals(studentStatus), "true");
     	
         return self();

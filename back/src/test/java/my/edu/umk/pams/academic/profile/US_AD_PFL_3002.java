@@ -32,14 +32,15 @@ public class US_AD_PFL_3002
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_PFL_3002.class);
 
 	private static final String IDENTITY_NO = "A17P001";
-
+	private static final String STATUS = "";
+	
 	@Test
 	@Rollback
 	public void scenario3002() {
 		
 		given().I_am_a_bursary_in_current_academic_session();
 		when().I_view_student_$_status(IDENTITY_NO);
-		then().I_know_student_current_status();
+		then().I_know_student_$_current_status_$(IDENTITY_NO,STATUS);
 	}
 
 }

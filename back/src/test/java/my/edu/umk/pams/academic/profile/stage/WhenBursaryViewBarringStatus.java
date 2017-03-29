@@ -24,15 +24,13 @@ public class WhenBursaryViewBarringStatus extends Stage<WhenBursaryViewBarringSt
 
 	@ExpectedScenarioState
 	private AdStudent student;
-	
-	@ExpectedScenarioState
-	private String identityNo;
+
 
 
 
 	public WhenBursaryViewBarringStatus I_view_barring_status_$(String identityNo) {
 		
-		AdStudent student = identityService.findStudentByStudentNo("A17P002");
+		student = identityService.findStudentByStudentNo("A17P002");
 		AdStudentStatus studentStatus = student.getStudentStatus();
 
 		LOG.debug("Student's status: {}", studentStatus.name());

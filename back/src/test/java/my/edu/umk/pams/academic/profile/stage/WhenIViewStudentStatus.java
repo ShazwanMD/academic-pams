@@ -21,18 +21,18 @@ public class WhenIViewStudentStatus extends Stage<WhenIViewStudentStatus> {
     @Autowired
     private IdentityService identityService;
 
-    @ProvidedScenarioState
+    @ExpectedScenarioState
     private AdStudent student;
-    
-	@ExpectedScenarioState
-	private String identityNo;
     
     public WhenIViewStudentStatus I_view_student_$_status(String identityNo) {
     	
-		AdStudent student = identityService.findStudentByStudentNo("A17P001");
-		AdStudentStatus studentStatus = student.getStudentStatus();
+	 student = identityService.findStudentByStudentNo(identityNo);
+		
+	 AdStudentStatus studentStatus = student.getStudentStatus();
 		
 		//try commit sekali-sekalo..var lalala
+		LOG.debug("Student's name: {}", student.getMatricNo());
+		LOG.debug("Student's name: {}", student.getName());
 		LOG.debug("Student's status: {}", studentStatus.name());
 		LOG.debug("Student's status: {}", studentStatus.ordinal());
 		
