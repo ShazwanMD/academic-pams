@@ -24,19 +24,19 @@ import org.springframework.transaction.annotation.Transactional;
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
-public class US_AD_PNR_1006 extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenIWantToSetUpCurriculumForAFaculty, ThenICanManageScheduleByProgram> {
+public class US_AD_PNR_1006 extends
+		SpringScenarioTest<GivenIAmCPSAdministrator, WhenIWantToSetUpCurriculumForAFaculty, ThenICanManageScheduleByProgram> {
 
-    private static final Logger LOG = LoggerFactory.getLogger(US_AD_PNR_1006.class);
+	private static final Logger LOG = LoggerFactory.getLogger(US_AD_PNR_1006.class);
 
-    private static final String FACULTY_CODE = "FKP";
+	private static final String PROGRAM_CODE = "FKP/MASTER/0001";
 
-    @Test
-    @Rollback
-    public void scenario1006() {
-        given().I_am_a_CPS_administrator();
-        when().I_want_to_set_up_curriculum_for_a_faculty_$(FACULTY_CODE);
-        then().I_can_manage_schedule_by_program();
-    }
+	@Test
+	@Rollback
+	public void scenario1006() {
+		given().I_am_a_CPS_administrator()
+			.and().I_pick_program_$(PROGRAM_CODE);
+		when().I_set_up_curriculum_for_that_program();
+		then().I_can_manage_schedule_by_program();
+	}
 }
-
-	
