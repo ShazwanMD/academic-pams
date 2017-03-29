@@ -5,7 +5,7 @@ package my.edu.umk.pams.academic.planner;
  *  i want to view level of study 
  *  	so that I know my level of studies
  *
- * @author zaida
+ * @author zaida_ain
  */
 
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;

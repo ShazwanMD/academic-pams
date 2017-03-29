@@ -1,5 +1,8 @@
 package my.edu.umk.pams.academic.planner.stage;
 
+/**
+ * @author zaida_ain
+ */
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
