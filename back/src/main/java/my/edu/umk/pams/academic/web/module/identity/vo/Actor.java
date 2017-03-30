@@ -1,7 +1,11 @@
 package my.edu.umk.pams.academic.web.module.identity.vo;
 
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import my.edu.umk.pams.academic.web.module.core.vo.MetaObject;
+
+import java.io.IOException;
 
 /**
  * @author PAMS
@@ -81,5 +85,18 @@ public class Actor extends MetaObject {
 
     public void setActorType(ActorType actorType) {
         this.actorType = actorType;
+    }
+
+
+    @JsonCreator
+    public static Actor create(String jsonString) {
+        Actor o = null;
+        try {
+            ObjectMapper mapper = new ObjectMapper();
+            o = mapper.readValue(jsonString, Actor.class);
+        } catch (IOException e) {
+            // handle
+        }
+        return o;
     }
 }

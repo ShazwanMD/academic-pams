@@ -8,15 +8,14 @@ import java.io.IOException;
 /**
  * @author PAMS
  */
-public class Staff extends Actor {
-
+public class Student extends Actor {
 
     @JsonCreator
-    public static Staff create(String jsonString) {
-        Staff o = null;
+    public static Student create(String jsonString) {
+        Student o = null;
         try {
             ObjectMapper mapper = new ObjectMapper();
-            o = mapper.readValue(jsonString, Staff.class);
+            o = mapper.readValue(jsonString, Student.class);
         } catch (IOException e) {
             // handle
         }

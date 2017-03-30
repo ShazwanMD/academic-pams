@@ -2,8 +2,10 @@ package my.edu.umk.pams.academic.web.module.identity.controller;
 
 import my.edu.umk.pams.academic.identity.model.AdActor;
 import my.edu.umk.pams.academic.identity.model.AdStaff;
+import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.web.module.identity.vo.Actor;
 import my.edu.umk.pams.academic.web.module.identity.vo.Staff;
+import my.edu.umk.pams.academic.web.module.identity.vo.Student;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -28,9 +30,30 @@ public class IdentityTransformer {
         return m;
     }
 
+
+    public Student toStudentVo(AdStudent student) {
+        Student m = new Student();
+        m.setId(student.getId());
+        m.setIdentityNo(student.getIdentityNo());
+        m.setName(student.getName());
+        m.setEmail(student.getEmail());
+        m.setMobile(student.getMobile());
+        m.setPhone(student.getPhone());
+        m.setFax(student.getFax());
+        return m;
+    }
+
     public List<Staff> toStaffVos(List<AdStaff> staffs) {
         List<Staff> vos = staffs.stream()
                 .map((staff) -> toStaffVo(staff))
+                .collect(toList());
+        return vos;
+    }
+
+
+    public List<Student> toStudentVos(List<AdStudent> students) {
+        List<Student> vos = students.stream()
+                .map((student) -> toStudentVo(student))
                 .collect(toList());
         return vos;
     }
