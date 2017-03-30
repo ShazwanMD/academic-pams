@@ -67,6 +67,7 @@ public class AdStudentDaoImpl extends GenericDaoSupport<Long, AdStudent> impleme
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select count(s) from AdStudent s where " +
                 "(upper(s.identityNo) like upper(:filter) " +
+                
                 "or upper(s.name) like upper(:filter)) " +
                 "and s.metadata.state = :state ");
         query.setString("filter", WILDCARD + filter + WILDCARD);

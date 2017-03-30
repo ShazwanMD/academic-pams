@@ -16,30 +16,38 @@ import org.springframework.security.core.context.SecurityContextHolder;
 @JGivenStage
 public class GivenIAmAdministrator extends Stage<GivenIAmAdministrator> {
 
-    private static final Logger LOG = LoggerFactory.getLogger(GivenIAmAdministrator.class);
+	private static final Logger LOG = LoggerFactory.getLogger(GivenIAmAdministrator.class);
 
-    @Autowired
-    private AuthenticationManager authenticationManager;
+	@Autowired
+	private AuthenticationManager authenticationManager;
 
-    @Autowired
-    private PlannerService plannerService;
+	@Autowired
+	private PlannerService plannerService;
 
-    @ProvidedScenarioState
-    AdAcademicSession academicSession;
+	@ProvidedScenarioState
+	AdAcademicSession academicSession;
 
-    public void I_am_a_administrator_in_$_academic_session(String academicSessionCode) {
-        loginAsAdmin();
-        academicSession = plannerService.findAcademicSessionByCode(academicSessionCode);
-    }
 
-    public void I_am_a_administrator_in_current_academic_session() {
-        loginAsAdmin();
-        academicSession = plannerService.findCurrentAcademicSession();
-    }
+	public void I_am_a_$_administrator_in_$_academic_session(String academicSessionCode,String username, String password) {
+		loginAsAdmin(username,password);
+		academicSession = plannerService.findAcademicSessionByCode(academicSessionCode);
+	}
 
-    private void loginAsAdmin() {
-        UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken("admin", "abc123");
-        Authentication authed = authenticationManager.authenticate(token);
-        SecurityContextHolder.getContext().setAuthentication(authed);
-    }
+	public void I_am_a_$_administrator_in_current_academic_session(String username, String password) {
+		loginAsAdmin(username,password);
+		academicSession = plannerService.findCurrentAcademicSession();
+	}
+
+
+	private void loginAsAdmin(String username, String password) {
+		UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(username, password);
+
+		Authentication authed = authenticationManager.authenticate(token);
+
+		SecurityContextHolder.getContext().setAuthentication(authed);
+
+	}
+
+
+
 }
