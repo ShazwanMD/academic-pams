@@ -10,6 +10,7 @@ public class WhenReviewCourseRegistrationDetails extends Stage<WhenReviewCourseR
 	@Pending
 	public WhenReviewCourseRegistrationDetails supervisor_review_course_registration_info() {
 		
+		
 		return self();
 	}
 
