@@ -406,7 +406,7 @@
                 <artifactId>maven-war-plugin</artifactId>
                 <version>2.1.1</version>
                 <configuration>
-                    <warName>sagacity-rental</warName>
+                    <warName>academic-back</warName>
                 </configuration>
             </plugin>
             <plugin>

@@ -13,7 +13,7 @@
             overflowToDisk="true"
     />
 
-    <!--<cache name="my.edu.umk.pams.academic.profile.InAcademicSessionImpl"-->
+    <!--<cache name="my.edu.umk.pams.academic.planner.AdAcademicSessionImpl"-->
     <!--maxElementsInMemory="200"-->
     <!--eternal="false"-->
     <!--timeToIdleSeconds="0"-->

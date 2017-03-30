@@ -3,6 +3,8 @@ package my.edu.umk.pams.academic.web.module.planner.controller;
 import my.edu.umk.pams.academic.common.model.AdStudyCenter;
 import my.edu.umk.pams.academic.planner.model.*;
 import my.edu.umk.pams.academic.web.module.planner.vo.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -14,6 +16,8 @@ import static java.util.stream.Collectors.toList;
  */
 @Component("plannerTransformer")
 public class PlannerTransformer {
+
+    private static final Logger LOG = LoggerFactory.getLogger(PlannerTransformer.class);
 
     public AcademicSession toAcademicSessionVo(AdAcademicSession academicSession) {
         AcademicSession m = new AcademicSession();

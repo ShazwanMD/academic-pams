@@ -63,7 +63,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         ;
     }
 
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
@@ -74,15 +73,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests()
-                .antMatchers("/api/common/**").hasRole("USER")
-                .antMatchers("/api/dashboard/**").hasRole("USER")
-                .antMatchers("/api/identity/**").hasRole("USER")
-                .antMatchers("/api/ledger/**").hasRole("USER")
-                .antMatchers("/api/payable/**").hasRole("USER")
-                .antMatchers("/api/receivable/**").hasRole("USER")
-                .antMatchers("/api/billing/**").hasRole("USER")
-                .antMatchers("/api/disbursement/**").hasRole("USER")
-                .antMatchers("/download/**").hasRole("USER")
+                .antMatchers("/api/common/**").permitAll()  //todo(uda): .hasRole("USER")
+                .antMatchers("/api/dashboard/**").permitAll()
+                .antMatchers("/api/identity/**").permitAll()
+                .antMatchers("/api/planner/**").permitAll()
+                .antMatchers("/api/term/**").permitAll()
+                .antMatchers("/api/graduation/**").permitAll()
+                .antMatchers("/download/**").permitAll()
                 .antMatchers("/login").permitAll()
                 .anyRequest().permitAll()
                 .and()
