@@ -57,28 +57,28 @@ INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE, TITLE_MS, TITLE_EN, CREDIT, CL
 VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
                                 FROM AD_FCTY F
                                 WHERE F.CODE = 'MGSEB'),
-                               'MBD/GST 5013', 'Economics & Business Environment', 'Ekonomi & Persekitaran Perniagaan', 'Economics & Business Environment', 3, 1, 1, 0,
+                               'MBA/GST 5013', 'Economics & Business Environment', 'Ekonomi & Persekitaran Perniagaan', 'Economics & Business Environment', 3, 1, 1, 0,
                                CURRENT_TIMESTAMP);
 
 INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE, TITLE_MS, TITLE_EN, CREDIT, CLASSIFICATION, M_ST, C_ID, C_TS)
 VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
                                 FROM AD_FCTY F
                                 WHERE F.CODE = 'MGSEB'),
-                               'MBD/GST 5023', 'Organizational Design', 'Design Organisasi', 'Organizational Design', 3, 1, 1, 0,
+                               'MBA/GST 5023', 'Organizational Design', 'Design Organisasi', 'Organizational Design', 3, 1, 1, 0,
                                CURRENT_TIMESTAMP);
                                
 INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE, TITLE_MS, TITLE_EN, CREDIT, CLASSIFICATION, M_ST, C_ID, C_TS)
 VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
                                 FROM AD_FCTY F
                                 WHERE F.CODE = 'MGSEB'),
-                               'MBD/GST 5033', 'Financial Reporting & Control', 'Laporan Kewangan & Kawalan', 'Financial Reporting & Control', 3, 1, 1, 0,
+                               'MBA/GST 5033', 'Financial Reporting & Control', 'Laporan Kewangan & Kawalan', 'Financial Reporting & Control', 3, 1, 1, 0,
                                CURRENT_TIMESTAMP);
 
 INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE, TITLE_MS, TITLE_EN, CREDIT, CLASSIFICATION, M_ST, C_ID, C_TS)
 VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
                                 FROM AD_FCTY F
                                 WHERE F.CODE = 'MGSEB'),
-                               'MBD/GST 5043', 'Operations Analysis', 
+                               'MBA/GST 5043', 'Operations Analysis', 
 								'Analisis Operasi', 'Operations Analysis', 3, 1, 1, 0,
                                CURRENT_TIMESTAMP);
                                
@@ -86,7 +86,7 @@ INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE, TITLE_MS, TITLE_EN, CREDIT, CL
 VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
                                 FROM AD_FCTY F
                                 WHERE F.CODE = 'MGSEB'),
-                               'MBD/GST 5053', 'Human Resource Management', 
+                               'MBA/GST 5053', 'Human Resource Management', 
 								'Pengurusan Sumber Manusia', 'Human Resource Management', 3, 1, 1, 0,
                                CURRENT_TIMESTAMP);                               
                                
@@ -94,7 +94,7 @@ INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE, TITLE_MS, TITLE_EN, CREDIT, CL
 VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
                                 FROM AD_FCTY F
                                 WHERE F.CODE = 'MGSEB'),
-                               'MBD/GST 5063', 'Financial Management', 
+                               'MBA/GST 5063', 'Financial Management', 
 								'Pengurusan kewangan', 'Financial Management', 3, 1, 1, 0,
                                CURRENT_TIMESTAMP);                                  
                                
@@ -102,7 +102,7 @@ INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE, TITLE_MS, TITLE_EN, CREDIT, CL
 VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
                                 FROM AD_FCTY F
                                 WHERE F.CODE = 'MGSEB'),
-                               'MBD/GST 5073', 'Marketing Management', 
+                               'MBA/GST 5073', 'Marketing Management', 
 								'Pengurusan pemasaran', 'Marketing Management', 3, 1, 1, 0,
                                CURRENT_TIMESTAMP);                               
                                
@@ -110,28 +110,28 @@ INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE, TITLE_MS, TITLE_EN, CREDIT, CL
 VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
                                 FROM AD_FCTY F
                                 WHERE F.CODE = 'MGSEB'),
-                               'MBD/GST 5083', 'Information Systems & Electronic Commerce', 'Sistem Maklumat & Perdagangan elektronik', 'Information Systems & Electronic Commerce', 3, 1, 1, 0,
+                               'MBA/GST 5083', 'Information Systems & Electronic Commerce', 'Sistem Maklumat & Perdagangan elektronik', 'Information Systems & Electronic Commerce', 3, 1, 1, 0,
                                CURRENT_TIMESTAMP);                                 
                                
 INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE, TITLE_MS, TITLE_EN, CREDIT, CLASSIFICATION, M_ST, C_ID, C_TS)
 VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
                                 FROM AD_FCTY F
                                 WHERE F.CODE = 'MGSEB'),
-                               'MBD/GST 5093', 'Business Law', 'Undang-undang perniagaan', 'Business Law', 3, 1, 1, 0,
+                               'MBA/GST 5093', 'Business Law', 'Undang-undang perniagaan', 'Business Law', 3, 1, 1, 0,
                                CURRENT_TIMESTAMP);  
                                
 INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE, TITLE_MS, TITLE_EN, CREDIT, CLASSIFICATION, M_ST, C_ID, C_TS)
 VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
                                 FROM AD_FCTY F
                                 WHERE F.CODE = 'MGSEB'),
-                               'MBD/GST 5103', 'Strategic Management', 'Pengurusan strategik', 'Strategic Management', 3, 1, 1, 0,
+                               'MBA/GST 5103', 'Strategic Management', 'Pengurusan strategik', 'Strategic Management', 3, 1, 1, 0,
                                CURRENT_TIMESTAMP);                                
                                
 INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE, TITLE_MS, TITLE_EN, CREDIT, CLASSIFICATION, M_ST, C_ID, C_TS)
 VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
                                 FROM AD_FCTY F
                                 WHERE F.CODE = 'MGSEB'),
-                               'MBD/CORE/GSK 6153', 'Launching Global New Business Ventures', 
+                               'MBA/CORE/GSK 6153', 'Launching Global New Business Ventures', 
 								'Melancarkan Ventures Perniagaan Global Baharu', 'Launching Global New Business Ventures', 3, 1, 1, 0,
                                CURRENT_TIMESTAMP);                                
                                
@@ -139,28 +139,28 @@ INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE, TITLE_MS, TITLE_EN, CREDIT, CL
 VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
                                 FROM AD_FCTY F
                                 WHERE F.CODE = 'MGSEB'),
-                               'MBD/CORE/GSK 6163', 'Managing Entrepreneurial Thought & Action', 'Urusan Keusahawanan Pemikiran Tindakan', 'Managing Entrepreneurial Thought & Action', 3, 1, 1, 0,
+                               'MBA/CORE/GSK 6163', 'Managing Entrepreneurial Thought & Action', 'Urusan Keusahawanan Pemikiran Tindakan', 'Managing Entrepreneurial Thought & Action', 3, 1, 1, 0,
                                CURRENT_TIMESTAMP);                                  
                                
 INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE, TITLE_MS, TITLE_EN, CREDIT, CLASSIFICATION, M_ST, C_ID, C_TS)
 VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
                                 FROM AD_FCTY F
                                 WHERE F.CODE = 'MGSEB'),
-                               'MBD/CORE/GSK 6173', 'Enterprise Competitive Positioning Strategy', 'Enterprise kompetitif Strategi Positioning', 'Enterprise Competitive Positioning Strategy', 3, 1, 1, 0,
+                               'MBA/CORE/GSK 6173', 'Enterprise Competitive Positioning Strategy', 'Enterprise kompetitif Strategi Positioning', 'Enterprise Competitive Positioning Strategy', 3, 1, 1, 0,
                                CURRENT_TIMESTAMP);                                
  
 INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE, TITLE_MS, TITLE_EN, CREDIT, CLASSIFICATION, M_ST, C_ID, C_TS)
 VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
                                 FROM AD_FCTY F
                                 WHERE F.CODE = 'MGSEB'),
-                               'MBD/ELECTIVE/GSE6013', 'Social Entrepreneurship', 'Keusahawanan sosial', 'Social Entrepreneurship', 3, 1, 1, 0,
+                               'MBA/ELECTIVE/GSE6013', 'Social Entrepreneurship', 'Keusahawanan sosial', 'Social Entrepreneurship', 3, 1, 1, 0,
                                CURRENT_TIMESTAMP);                                
                                
 INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE, TITLE_MS, TITLE_EN, CREDIT, CLASSIFICATION, M_ST, C_ID, C_TS)
 VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
                                 FROM AD_FCTY F
                                 WHERE F.CODE = 'MGSEB'),
-                               'MBD/PROJECTPAPER/GST5113', 'Business Research Methodology', '
+                               'MBA/PROJECTPAPER/GST5113', 'Business Research Methodology', '
 								Kaedah Penyelidikan Perniagaan', 'Business Research Methodology', 3, 1, 1, 0,
                                CURRENT_TIMESTAMP);                                
                                
@@ -168,7 +168,7 @@ INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE, TITLE_MS, TITLE_EN, CREDIT, CL
 VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
                                 FROM AD_FCTY F
                                 WHERE F.CODE = 'MGSEB'),
-                               'MBD/PROJECTPAPER/GST5123', 'Project Paper', 'Kertas projek', 'Project Paper', 3, 1, 1, 0,
+                               'MBA/PROJECTPAPER/GST5123', 'Project Paper', 'Kertas projek', 'Project Paper', 3, 1, 1, 0,
                                CURRENT_TIMESTAMP);                                
                                
 INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE, TITLE_MS, TITLE_EN, CREDIT, CLASSIFICATION, M_ST, C_ID, C_TS)
