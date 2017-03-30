@@ -12,8 +12,8 @@ import org.springframework.transaction.annotation.Transactional;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 
 import my.edu.umk.pams.academic.config.TestAppConfiguration;
-import my.edu.umk.pams.academic.profile.stage.ThenStudentProfileReviewed;
-import my.edu.umk.pams.academic.profile.stage.WhenReviewStudentProfileInfo;
+import my.edu.umk.pams.academic.profile.stage.ThenCourseRegistrationDetailReviewed;
+import my.edu.umk.pams.academic.profile.stage.WhenReviewCourseRegistrationDetails;
 import my.edu.umk.pams.bdd.stage.GivenIAmAcademicStaff;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -22,23 +22,25 @@ import my.edu.umk.pams.bdd.stage.GivenIAmAcademicStaff;
 
 /*
  * As a supervisor,
- * 		I want to view student profile information,
- * 			so that I know my student profile info for supervision purpose.
+ * 		I want to view course registration details,
+ * 			so that I know my student registered courses for supervision purpose.
 */
 
 
-public class US_AD_PFL_5001 extends SpringScenarioTest <GivenIAmAcademicStaff, WhenReviewStudentProfileInfo, ThenStudentProfileReviewed> {
+public class US_AD_PFL_5002 extends SpringScenarioTest<GivenIAmAcademicStaff, WhenReviewCourseRegistrationDetails, ThenCourseRegistrationDetailReviewed> {
 
-	private static final Logger LOG = LoggerFactory.getLogger(US_AD_PFL_5001.class);
+	private static final Logger LOG = LoggerFactory.getLogger(US_AD_PFL_5002.class);
 	
 	private static String StudentNo = "A17P001";
 	
 	@Test
 	@Rollback
-	public void scenario5001(){
+	public void scenario5002(){
 		given().I_am_a_staff_in_current_academic_session();
-			when().supervisor_review_student_profile(StudentNo);
-				then().student_profile_reviewed();
+			when().supervisor_review_course_registration_info();
+				then().course_registration_details_reviewed();
+		
+		
 	}
 	
 }
