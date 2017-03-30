@@ -21,5 +21,4 @@ public class Student extends Actor {
         }
         return o;
     }
-
 }

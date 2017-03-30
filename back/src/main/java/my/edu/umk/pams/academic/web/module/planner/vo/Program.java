@@ -1,6 +1,10 @@
 package my.edu.umk.pams.academic.web.module.planner.vo;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import my.edu.umk.pams.academic.web.module.core.vo.MetaObject;
+
+import java.io.IOException;
 
 /**
  * @author PAMS
@@ -50,5 +54,17 @@ public class Program extends MetaObject{
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    @JsonCreator
+    public static Program create(String jsonString) {
+        Program o = null;
+        try {
+            ObjectMapper mapper = new ObjectMapper();
+            o = mapper.readValue(jsonString, Program.class);
+        } catch (IOException e) {
+            // handle
+        }
+        return o;
     }
 }

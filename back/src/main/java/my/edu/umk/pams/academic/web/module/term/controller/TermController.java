@@ -9,6 +9,7 @@ import my.edu.umk.pams.academic.workflow.service.WorkflowService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,6 +17,7 @@ import java.util.List;
 /**
  * @author PAMS
  */
+@Transactional
 @RestController
 @RequestMapping("/api/term")
 public class TermController {
@@ -226,5 +228,4 @@ public class TermController {
     public ResponseEntity<List<Offering>> addEnrollment(@PathVariable String canonicalCode, @RequestBody Enrollment enrollment) {
         throw new UnsupportedOperationException();
     }
-
 }
