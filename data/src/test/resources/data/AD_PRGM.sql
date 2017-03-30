@@ -718,3 +718,19 @@ INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, 
    (SELECT ID
     FROM AD_FCTY F
     WHERE F.CODE = 'FKP'), CURRENT_TIMESTAMP, 0, 1);
+    
+INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'MGSEB',
+   'Master of Economics & Business Environment',
+   'Master of Economics & Business Environment',
+   'Master of Economics & Business Environment',
+   (SELECT ID
+    FROM AD_PRGM_LEVL PL
+    WHERE PL.CODE = 'MASTER'),
+   (SELECT ID
+    FROM AD_FCTY F
+    WHERE F.CODE = 'MGSEB'), CURRENT_TIMESTAMP, 0, 1);    
+    
+    
+    
+    
+    
