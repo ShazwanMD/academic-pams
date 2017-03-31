@@ -33,7 +33,7 @@ public class US_AD_PFL_4002 extends SpringScenarioTest<GivenIAmAcademicStaff, Wh
     @Test
     @Rollback
     public void scenario4002(){
-	given().I_am_a_staff_in_current_academic_session();
+	given().i_am_a_staff_in_current_academic_session();
     when().I_view_student_current_status_for_$(IDENTITY_NO);
     then().I_know_student_status_current();
 

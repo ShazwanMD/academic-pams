@@ -36,7 +36,7 @@ public class US_AD_PFL_5001 extends SpringScenarioTest <GivenIAmAcademicStaff, W
 	@Test
 	@Rollback
 	public void scenario5001(){
-		given().I_am_a_staff_in_current_academic_session();
+		given().i_am_a_staff_in_current_academic_session();
 			when().supervisor_review_student_profile(StudentNo);
 				then().student_profile_reviewed();
 	}

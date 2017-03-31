@@ -28,12 +28,12 @@ public class GivenIAmAdministrator extends Stage<GivenIAmAdministrator> {
 	AdAcademicSession academicSession;
 
 
-	public void I_am_a_$_administrator_in_$_academic_session(String academicSessionCode,String username, String password) {
+	public void i_am_a_$_administrator_in_$_academic_session(String academicSessionCode, String username, String password) {
 		loginAsAdmin(username,password);
 		academicSession = plannerService.findAcademicSessionByCode(academicSessionCode);
 	}
 
-	public void I_am_a_$_administrator_in_current_academic_session(String username, String password) {
+	public void i_am_a_$_administrator_in_current_academic_session(String username, String password) {
 		loginAsAdmin(username,password);
 		academicSession = plannerService.findCurrentAcademicSession();
 	}
