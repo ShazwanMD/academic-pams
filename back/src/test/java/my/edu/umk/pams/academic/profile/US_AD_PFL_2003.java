@@ -13,17 +13,18 @@ import org.springframework.transaction.annotation.Transactional;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 
 import my.edu.umk.pams.academic.config.TestAppConfiguration;
-import my.edu.umk.pams.academic.profile.stage.ThenStudentStatusCurrent;
-import my.edu.umk.pams.academic.profile.stage.WhenIViewStudentStatus;
-import my.edu.umk.pams.academic.profile.stage.WhenIWantViewStudentStatus;
+import my.edu.umk.pams.academic.profile.stage.ThenIGetCurrentStudentStatus;
+import my.edu.umk.pams.academic.profile.stage.WhenIAccessStudentStatus;
 import my.edu.umk.pams.bdd.stage.GivenIAmAdministrator;
-import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
 
+// As an admin,
+// I want to view student activation status,
+// so that I know student activation status.
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 public class US_AD_PFL_2003
-		extends SpringScenarioTest<GivenIAmAdministrator, WhenIWantViewStudentStatus, ThenStudentStatusCurrent> {
+		extends SpringScenarioTest<GivenIAmAdministrator, WhenIAccessStudentStatus, ThenIGetCurrentStudentStatus> {
 
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_PFL_2003.class);
 
@@ -31,19 +32,21 @@ public class US_AD_PFL_2003
 
 	@Test
 	@Rollback
-	public void scenarioCPS() {
-
-		given().I_am_a_$_administrator_in_current_academic_session("cps","abc123");
-		when().I_view_student_current_status_for_$(IDENTITY_NO);
-		then().Student_status_is_current();
+	public void access_student_status_by_CPS() {
+		String username  = "cps";
+		String password  = "abc123";
+		given().i_am_a_$_administrator_in_current_academic_session(username, password);
+		when().i_access_student_status(IDENTITY_NO);
+		then().i_get_the_students_current_status();
 	}
 
 	@Test
 	@Rollback
-	public void scenarioMGSEB() {
-
-		given().I_am_a_$_administrator_in_current_academic_session("mgseb","abc123");
-		when().I_view_student_current_status_for_$(IDENTITY_NO);
-		then().Student_status_is_current();
+	public void access_student_status_by_MGSEB() {
+		String username  = "mgseb";
+		String password  = "abc123";
+		given().i_am_a_$_administrator_in_current_academic_session(username, password);
+		when().i_access_student_status(IDENTITY_NO);
+		then().i_get_the_students_current_status();
 	}
 }

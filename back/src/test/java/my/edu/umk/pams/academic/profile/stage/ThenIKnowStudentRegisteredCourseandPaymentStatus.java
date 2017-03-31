@@ -1,5 +1,7 @@
 package my.edu.umk.pams.academic.profile.stage;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.tngtech.jgiven.Stage;
@@ -18,7 +20,8 @@ import my.edu.umk.pams.academic.planner.service.PlannerService;
 @JGivenStage
 public class ThenIKnowStudentRegisteredCourseandPaymentStatus extends Stage<ThenIKnowStudentRegisteredCourseandPaymentStatus> {
 
-	
+	private static final Logger LOG = LoggerFactory.getLogger(ThenIKnowStudentRegisteredCourseandPaymentStatus.class);
+
 	@Autowired
 	private IdentityService identityService;
 
@@ -38,8 +41,8 @@ public class ThenIKnowStudentRegisteredCourseandPaymentStatus extends Stage<Then
 	
 	@Pending
 	public ThenIKnowStudentRegisteredCourseandPaymentStatus student_registered_courses_and_payment_status_is_viewed() {
-		
-		
+
+
 		return self();
 	}
 
