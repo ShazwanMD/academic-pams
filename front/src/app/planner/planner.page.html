@@ -1,0 +1,31 @@
+<td-layout-nav>
+  <td-layout-manage-list #list title="Toolbar Title" logo="path/to/toolbar-logo.svg">
+    <md-nav-list list-items dense>
+      <h3 md-subheader>Planner</h3>
+      <a md-list-item [routerLink]="['/planner/faculties']">
+        <md-icon>label</md-icon>
+        Faculty
+      </a>
+      <a md-list-item [routerLink]="['/planner/programs']">
+        <md-icon>label</md-icon>
+        Programs
+      </a>
+      <a md-list-item [routerLink]="['/planner/courses']">
+        <md-icon>label</md-icon>
+        Courses
+      </a>
+      <md-divider></md-divider>
+      <h3 md-subheader>Shortcuts</h3>
+    </md-nav-list>
+    <div toolbar-buttons layout="row" layout-align="start center" flex>
+      <span flex></span>
+      <button md-button class="md-icon-button">
+        <md-icon class="md-24">settings</md-icon>
+      </button>
+      <button md-button class="md-icon-button">
+        <md-icon class="md-24">more_vert</md-icon>
+      </button>
+    </div>
+
+  </td-layout-manage-list>
+</td-layout-nav>

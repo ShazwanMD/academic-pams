@@ -16,7 +16,9 @@ import {appRoutes, appRoutingProviders} from './app.routes';
 import {RequestInterceptor} from '../config/interceptors/request.interceptor';
 
 import {NgxChartsModule} from '@swimlane/ngx-charts';
-
+import {PlannerModule} from "./planner/index";
+import {HomeComponent} from "./home/home.component";
+import {StoreDevtoolsModule} from "@ngrx/store-devtools";
 const httpInterceptorProviders: Type<any>[] = [
   RequestInterceptor,
 ];
@@ -26,6 +28,7 @@ const httpInterceptorProviders: Type<any>[] = [
     AppComponent,
     MainComponent,
     DashboardComponent,
+    HomeComponent,
     LoginComponent,
   ], // directives, components, and pipes owned by this NgModule
   imports: [
@@ -41,6 +44,8 @@ const httpInterceptorProviders: Type<any>[] = [
     CovalentMarkdownModule.forRoot(),
     appRoutes,
     NgxChartsModule,
+    PlannerModule.forRoot(),
+
   ], // modules needed to run this module
   providers: [
     appRoutingProviders,

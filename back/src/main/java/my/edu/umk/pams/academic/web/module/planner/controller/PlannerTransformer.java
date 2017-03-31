@@ -83,6 +83,13 @@ public class PlannerTransformer {
         return vos;
     }
 
+    public List<Faculty> toFacultyVos(List<AdFaculty> faculties) {
+        List<Faculty> vos = faculties.stream()
+                .map((faculty) -> toFacultyVo(faculty))
+                .collect(toList());
+        return vos;
+    }
+
     public List<Program> toProgramVos(List<AdProgram> programs) {
         List<Program> vos = programs.stream()
                 .map((program) -> toProgramVo(program))

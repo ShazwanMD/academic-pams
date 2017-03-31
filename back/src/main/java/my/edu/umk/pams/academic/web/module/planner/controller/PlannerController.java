@@ -1,5 +1,6 @@
 package my.edu.umk.pams.academic.web.module.planner.controller;
 
+import my.edu.umk.pams.academic.planner.model.AdFaculty;
 import my.edu.umk.pams.academic.planner.model.AdProgram;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
 import my.edu.umk.pams.academic.web.module.planner.vo.*;
@@ -80,7 +81,9 @@ public class PlannerController {
 
     @RequestMapping(value = "/faculties", method = RequestMethod.GET)
     public ResponseEntity<List<Faculty>> findFaculties() {
-        throw new UnsupportedOperationException();
+        List<AdFaculty> faculties = plannerService.findFaculties(0, 100);
+        return new ResponseEntity<List<Faculty>>(plannerTransformer
+                .toFacultyVos(faculties), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/faculties/page/{pageNo}", method = RequestMethod.GET)
@@ -89,8 +92,10 @@ public class PlannerController {
     }
 
     @RequestMapping(value = "/faculties/{code}", method = RequestMethod.GET)
-    public ResponseEntity<Faculty> findFacultyByCode(@PathVariable String code) {
-        throw new UnsupportedOperationException();
+    public ResponseEntity<Faculty> findFacultyByCode(@PathVariable String code) throws UnsupportedEncodingException {
+        code = URLDecoder.decode(code, StandardCharsets.UTF_8.toString());
+        return new ResponseEntity<Faculty>(plannerTransformer
+                .toFacultyVo(plannerService.findFacultyByCode(code)), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/faculties/{code}/programs", method = RequestMethod.GET)
@@ -110,7 +115,7 @@ public class PlannerController {
         throw new UnsupportedOperationException();
     }
 
-    @RequestMapping(value = "/faculties/{code}/update", method = RequestMethod.POST)
+    @RequestMapping(value = "/faculties/{code}", method = RequestMethod.PUT)
     public void updateFaculty(@PathVariable String code, @RequestBody Faculty faculty) {
         throw new UnsupportedOperationException();
     }
