@@ -57,8 +57,10 @@ public class PlannerTransformer {
         Course m = new Course();
         m.setId(course.getId());
         m.setCode(course.getCode());
+        m.setTitle(course.getTitle());
         m.setTitleMs(course.getTitleMs());
         m.setTitleEn(course.getTitleEn());
+        m.setCredit(course.getCredit());
         return m;
     }
 

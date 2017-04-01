@@ -3,8 +3,9 @@ import {Routes, RouterModule} from '@angular/router';
 import {MainComponent} from './main/main.component';
 import {DashboardComponent} from './dashboard/dashboard.component';
 import {LoginComponent} from './login/login.component';
-import {PlannerModuleRoutes} from "./planner/planner-module.routes";
 import {HomeModuleRoutes} from "./home/home-module.routes";
+import {TermModuleRoutes} from "./term/term-module.routes";
+import {PlannerModuleRoutes} from "./planner/planner-module.routes";
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -13,6 +14,7 @@ const routes: Routes = [
     children: [
       ...HomeModuleRoutes,
       ...PlannerModuleRoutes,
+      ...TermModuleRoutes,
     ]
   },
 ];

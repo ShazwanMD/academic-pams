@@ -3,7 +3,7 @@ import {Title}     from '@angular/platform-browser';
 import {TdLoadingService, TdDigitsPipe} from '@covalent/core';
 
 @Component({
-  selector: 'qs-dashboard',
+  selector: 'pams-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
   viewProviders: [],

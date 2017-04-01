@@ -3,14 +3,14 @@ package my.edu.umk.pams.academic.term.model;
 /**
  * @author PAMS
  */
-public enum AdEnrollmentApplicationAction {
+    public enum AdEnrollmentApplicationAction {
 
-    ADD,
-    DROP;
+        ADD,
+        DROP;
 
-    public static AdEnrollmentApplicationAction get(int index) {
-        return values()[index];
+        public static AdEnrollmentApplicationAction get(int index) {
+            return values()[index];
+        }
+
+
     }
-
-
-}

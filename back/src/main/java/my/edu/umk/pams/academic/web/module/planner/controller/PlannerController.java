@@ -198,6 +198,13 @@ public class PlannerController {
         throw new UnsupportedOperationException();
     }
 
+    @RequestMapping(value = "/courses/{code}", method = RequestMethod.GET)
+    public ResponseEntity<Course> findCourseByCode(@PathVariable String code) throws UnsupportedEncodingException {
+        code = URLDecoder.decode(code, StandardCharsets.UTF_8.toString());
+        return new ResponseEntity<Course>(plannerTransformer
+                .toCourseVo(plannerService.findCourseByCode(code)), HttpStatus.OK);
+    }
+
     @RequestMapping(value = "/courses/create", method = RequestMethod.POST)
     public ResponseEntity<Course> createCourse(@RequestBody Course course) {
         throw new UnsupportedOperationException();

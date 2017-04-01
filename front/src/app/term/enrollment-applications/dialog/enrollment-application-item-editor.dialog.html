@@ -1,0 +1,27 @@
+<h2 md-dialog-title>Enrollment Item Editor</h2>
+<md-dialog-content>
+  <form [formGroup]="editForm">
+    <div layout="row" class="pad-bottom">
+      <md-input-container  style="width: 100%">
+        <input md-input #description
+               placeholder="description"
+               formControlName="description"
+               value="Description"
+               flex/>
+      </md-input-container>
+    </div>
+    <div layout="row" class="pad-bottom">
+      <md-select formControlName="section" [(ngModel)]="selectedSection" placeholder="Sodo Code"
+                 style="width: 100%">
+        <md-option *ngFor="let section of sections" [value]="section">
+          {{section.code}}: {{section.description}}
+        </md-option>
+      </md-select>
+    </div>
+  </form>
+</md-dialog-content>
+<md-dialog-actions align="end">
+  <button md-button color="primary" (click)="goBack()">Back</button>
+  <button md-raised-button color="accent" (click)="save(editForm.value, newForm.valid)">Save</button>
+</md-dialog-actions>
+

@@ -6,26 +6,18 @@
 
   <td-layout-manage-list #list title="Toolbar Title" logo="path/to/toolbar-logo.svg">
     <md-nav-list list-items dense>
-      <h3 md-subheader>Planner</h3>
-      <a md-list-item [routerLink]="['/planner/academic-sessions']">
+      <h3 md-subheader>Term</h3>
+      <a md-list-item [routerLink]="['/term/offerings']">
         <md-icon>label</md-icon>
-        Academic Session
+        Offering
       </a>
-      <a md-list-item [routerLink]="['/planner/faculties']">
+      <a md-list-item [routerLink]="['/term/enrollment-applications']">
         <md-icon>label</md-icon>
-        Faculty
+        Admission Task
       </a>
-      <a md-list-item [routerLink]="['/planner/programs']">
+      <a md-list-item [routerLink]="['/term/admission-applications']">
         <md-icon>label</md-icon>
-        Programs
-      </a>
-      <a md-list-item [routerLink]="['/planner/courses']">
-        <md-icon>label</md-icon>
-        Courses
-      </a>
-      <a md-list-item [routerLink]="['/planner/cohorts']">
-        <md-icon>label</md-icon>
-        Cohorts
+        Enrollment Task
       </a>
       <md-divider></md-divider>
       <h3 md-subheader>Shortcuts</h3>

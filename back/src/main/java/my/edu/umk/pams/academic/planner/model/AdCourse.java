@@ -15,6 +15,7 @@ public interface AdCourse extends AdMetaObject {
 
     void setCode(String code);
 
+    // todo(uda): extraneous??
     String getTitle();
 
     void setTitle(String title);

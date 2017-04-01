@@ -19,6 +19,7 @@ import {NgxChartsModule} from '@swimlane/ngx-charts';
 import {PlannerModule} from "./planner/index";
 import {HomeComponent} from "./home/home.component";
 import {StoreDevtoolsModule} from "@ngrx/store-devtools";
+import {TermModule} from "./term/index";
 const httpInterceptorProviders: Type<any>[] = [
   RequestInterceptor,
 ];
@@ -45,6 +46,7 @@ const httpInterceptorProviders: Type<any>[] = [
     appRoutes,
     NgxChartsModule,
     PlannerModule.forRoot(),
+    TermModule.forRoot(),
 
   ], // modules needed to run this module
   providers: [

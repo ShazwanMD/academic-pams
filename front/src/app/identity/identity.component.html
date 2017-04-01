@@ -1,0 +1,74 @@
+<td-layout-nav title="SagaCity Finance" logo="assets:canang_logo">
+  <td-layout-card-over>
+    <div layout="row" layout-align="start center">
+      <div>
+        <md-card-title>Identity Configuration</md-card-title>
+        <md-card-subtitle>View and configure your system</md-card-subtitle>
+      </div>
+    </div>
+    <md-divider></md-divider>
+
+    <div layout="row" layout-wrap hide-xs hide-sm class="push-sm">
+      <div flex-gt-md="50" layout="column">
+        <md-card flex>
+          <md-card-title>Users</md-card-title>
+          <md-card-subtitle>Configure users</md-card-subtitle>
+          <md-divider></md-divider>
+          <md-card-content>
+            <div layout="column" layout-padding>
+              <md-nav-list list-items>
+                <a md-list-item [routerLink]="['users']">
+                  <md-icon>chevron_right</md-icon>
+                  List all users
+                </a>
+                <a md-list-item [routerLink]="['users-create']">
+                  <md-icon>chevron_right</md-icon>
+                  Create new user
+                </a>
+              </md-nav-list>
+            </div>
+          </md-card-content>
+          <!--<md-divider></md-divider>-->
+          <!--<md-card-actions>-->
+          <!--<a md-button color="primary" class="text-upper" [routerLink]="['leaves-center']">-->
+          <!--<span>View More</span>-->
+          <!--</a>-->
+          <!--</md-card-actions>-->
+        </md-card>
+      </div>
+      <div flex-gt-md="50" layout="column">
+        <md-card flex>
+          <md-card-title>Groups</md-card-title>
+          <md-card-subtitle>Configure groups</md-card-subtitle>
+          <md-divider></md-divider>
+          <md-card-content>
+            <div layout="column" layout-padding>
+              <md-nav-list list-items>
+                <a md-list-item [routerLink]="['groups']">
+                  <md-icon>chevron_right</md-icon>
+                  List all groups
+                </a>
+                <a md-list-item [routerLink]="['groups-create']">
+                  <md-icon>chevron_right</md-icon>
+                  Create new group
+                </a>
+              </md-nav-list>
+            </div>
+          </md-card-content>
+          <!--<md-divider></md-divider>-->
+          <!--<md-card-actions>-->
+          <!--<a md-button color="primary" class="text-upper" [routerLink]="['leaves-center']">-->
+          <!--<span>View More</span>-->
+          <!--</a>-->
+          <!--</md-card-actions>-->
+        </md-card>
+      </div>
+    </div>
+    <md-divider></md-divider>
+    <md-card-actions>
+      <a href="http://www.canang.com.my" target="_blank" md-button color="primary">Contact Canang
+        Technologies</a>
+    </md-card-actions>
+  </td-layout-card-over>
+
+</td-layout-nav>

@@ -11,6 +11,7 @@ import java.io.IOException;
  */
 public class Course extends MetaObject{
     private String code;
+    private String title;
     private String titleMs;
     private String titleEn;
     private Integer credit;
@@ -22,6 +23,14 @@ public class Course extends MetaObject{
 
     public void setCode(String code) {
         this.code = code;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getTitleMs() {

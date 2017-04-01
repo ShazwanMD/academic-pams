@@ -22,18 +22,25 @@ import {facultyReducer, FacultyState} from "./faculties/faculty.reducer";
 import {facultyListReducer, FacultyListState} from "./faculties/faculty-list.reducer";
 import {FacultyModule} from "./faculties/index";
 import {FacultyEffects} from "./faculties/faculty.effect";
+import {CourseListState, courseListReducer} from "./courses/course-list.reducer";
+import {CourseState, courseReducer} from "./courses/course.reducer";
+import {CourseModule} from "./courses/index";
+import {CourseEffects} from "./courses/course.effect";
 
 export interface PlannerState {
-  programs: ProgramListState;
-  program: ProgramState;
   faculties: FacultyListState;
   faculty: FacultyState;
+  programs: ProgramListState;
+  program: ProgramState;
+  courses: CourseListState;
+  course: CourseState;
 }
 ;
 
 const plannerReducer = combineReducers({
-  programs: programListReducer, program: programReducer,
   faculties:facultyListReducer, faculty:facultyReducer,
+  programs: programListReducer, program: programReducer,
+  courses: courseListReducer, course: courseReducer,
 });
 
 
@@ -45,13 +52,15 @@ const plannerReducer = combineReducers({
     appRoutes,
 
     // our modules
-    ProgramModule.forRoot(),
     FacultyModule.forRoot(),
+    ProgramModule.forRoot(),
+    CourseModule.forRoot(),
 
     // ngrx
     StoreModule.provideStore(plannerReducer),
-    EffectsModule.run(ProgramEffects),
     EffectsModule.run(FacultyEffects),
+    EffectsModule.run(ProgramEffects),
+    EffectsModule.run(CourseEffects),
     StoreDevtoolsModule.instrumentOnlyWithExtension(),
   ],
   declarations: [
