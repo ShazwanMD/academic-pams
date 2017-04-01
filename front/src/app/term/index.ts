@@ -33,10 +33,7 @@ const termReducer = combineReducers({
     appRoutes,
 
     // our modules
-
     // ngrx
-    StoreModule.provideStore(termReducer),
-    StoreDevtoolsModule.instrumentOnlyWithExtension(),
   ],
   declarations: [
     // page

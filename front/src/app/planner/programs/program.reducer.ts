@@ -13,12 +13,12 @@ const initialState: ProgramState = {
 };
 
 export function programReducer(state = initialState, action: Action): ProgramState {
-  console.log("action: " + action);
+  console.log("action: " + action.type);
   switch (action.type) {
-    case ProgramActions.RESET_BLANK_PROGRAM: {
+    case ProgramActions.RESET_PROGRAM: {
       return initialState;
     }
-    case ProgramActions.GET_PROGRAM_SUCCESS: {
+    case ProgramActions.FIND_PROGRAM_SUCCESS: {
       return action.payload;
     }
     default: {

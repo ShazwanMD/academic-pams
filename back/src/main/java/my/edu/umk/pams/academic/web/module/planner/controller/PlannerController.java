@@ -1,7 +1,10 @@
 package my.edu.umk.pams.academic.web.module.planner.controller;
 
+import my.edu.umk.pams.academic.common.service.CommonService;
+import my.edu.umk.pams.academic.identity.service.IdentityService;
 import my.edu.umk.pams.academic.planner.model.AdFaculty;
 import my.edu.umk.pams.academic.planner.model.AdProgram;
+import my.edu.umk.pams.academic.planner.model.AdProgramImpl;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
 import my.edu.umk.pams.academic.web.module.planner.vo.*;
 import org.slf4j.Logger;
@@ -9,6 +12,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,6 +36,15 @@ import static my.edu.umk.pams.academic.util.Util.toOffset;
 public class PlannerController {
 
     private static final Logger LOG = LoggerFactory.getLogger(PlannerController.class);
+
+    @Autowired
+    private AuthenticationManager authenticationManager;
+
+    @Autowired
+    private CommonService commonService;
+
+    @Autowired
+    private IdentityService identityService;
 
     @Autowired
     private PlannerService plannerService;
@@ -164,22 +180,35 @@ public class PlannerController {
     // business methods
 
     @RequestMapping(value = "/programs/create", method = RequestMethod.POST)
-    public ResponseEntity<Program> createProgram(@RequestBody Program program) {
-        throw new UnsupportedOperationException();
+    public void createProgram(@RequestBody Program model) {
+        dummyLogin();
+        AdFaculty faculty = plannerService.findFacultyByCode(model.getFaculty().getCode());
+        AdProgram program = new AdProgramImpl();
+        program.setTitle(model.getTitle());
+        program.setProgramLevel(plannerService.findProgramLevelByCode("MASTER"));
+        program.setTitleMs(model.getTitleMs());
+        program.setTitleEn(model.getTitleEn());
+        program.setTitleEn(model.getTitleEn());
+        plannerService.addProgram(faculty, program);
     }
 
-    @RequestMapping(value = "/programs/{code}/update", method = RequestMethod.POST)
-    public ResponseEntity<Program> updateProgram(@PathVariable String code, @RequestBody Program program) {
-        throw new UnsupportedOperationException();
+    @RequestMapping(value = "/programs/{code}/", method = RequestMethod.PUT)
+    public void updateProgram(@PathVariable String code, @RequestBody Program model) {
+        dummyLogin();
+        AdProgram program = plannerService.findProgramByCode(code);
+        program.setTitle(model.getTitle());
+        program.setTitleMs(model.getTitleMs());
+        program.setTitleEn(model.getTitleEn());
+        plannerService.updateProgram(program);
     }
 
     @RequestMapping(value = "/programs/{code}/activate", method = RequestMethod.POST)
-    public ResponseEntity<Program> activateProgram(@PathVariable String code) {
+    public void activateProgram(@PathVariable String code) {
         throw new UnsupportedOperationException();
     }
 
     @RequestMapping(value = "/programs/{code}/deactivate", method = RequestMethod.POST)
-    public ResponseEntity<Program> deactivateProgram(@PathVariable String code) {
+    public void deactivateProgram(@PathVariable String code) {
         throw new UnsupportedOperationException();
     }
 
@@ -223,5 +252,11 @@ public class PlannerController {
     @RequestMapping(value = "/courses/{code}/deactivate", method = RequestMethod.POST)
     public ResponseEntity<Course> deactivateCourse(@PathVariable String code, @RequestBody Course course) {
         throw new UnsupportedOperationException();
+    }
+
+    private void dummyLogin(){
+        UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken("root", "abc123");
+        Authentication authed = authenticationManager.authenticate(token);
+        SecurityContextHolder.getContext().setAuthentication(authed);
     }
 }

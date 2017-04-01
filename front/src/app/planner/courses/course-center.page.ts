@@ -46,7 +46,7 @@ export class CourseCenterPage implements OnInit {
   }
 
   ngOnInit(): void {
-    this.store.dispatch(this._actions.loadCourses());
+    this.store.dispatch(this._actions.findCourses());
   }
 }
 

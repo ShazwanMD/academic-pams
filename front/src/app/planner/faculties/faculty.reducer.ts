@@ -13,10 +13,10 @@ const initialState: FacultyState = {
 export function facultyReducer(state = initialState, action: Action): FacultyState {
   console.log("action: " + action);
   switch (action.type) {
-    case FacultyActions.RESET_BLANK_FACULTY: {
+    case FacultyActions.RESET_FACULTY: {
       return initialState;
     }
-    case FacultyActions.GET_FACULTY_SUCCESS: {
+    case FacultyActions.FIND_FACULTY_SUCCESS: {
       return action.payload;
     }
     default: {

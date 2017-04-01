@@ -16,10 +16,17 @@ import {appRoutes, appRoutingProviders} from './app.routes';
 import {RequestInterceptor} from '../config/interceptors/request.interceptor';
 
 import {NgxChartsModule} from '@swimlane/ngx-charts';
-import {PlannerModule} from "./planner/index";
+import {PlannerModule, plannerReducer} from "./planner/index";
 import {HomeComponent} from "./home/home.component";
 import {StoreDevtoolsModule} from "@ngrx/store-devtools";
 import {TermModule} from "./term/index";
+import {StoreModule} from "@ngrx/store";
+import {EffectsModule} from "@ngrx/effects";
+import {FacultyEffects} from "./planner/faculties/faculty.effect";
+import {ProgramEffects} from "./planner/programs/program.effect";
+import {CourseEffects} from "./planner/courses/course.effect";
+import {CustomUrlSerializer} from "./common/custom-url-serializer";
+import {UrlSerializer} from "@angular/router";
 const httpInterceptorProviders: Type<any>[] = [
   RequestInterceptor,
 ];
@@ -48,11 +55,20 @@ const httpInterceptorProviders: Type<any>[] = [
     PlannerModule.forRoot(),
     TermModule.forRoot(),
 
+    // ngrx
+    StoreModule.provideStore(plannerReducer),
+    EffectsModule.run(FacultyEffects),
+    EffectsModule.run(ProgramEffects),
+    EffectsModule.run(CourseEffects),
+    StoreDevtoolsModule.instrumentOnlyWithExtension(),
+
+
   ], // modules needed to run this module
   providers: [
     appRoutingProviders,
     httpInterceptorProviders,
     Title,
+    {provide: UrlSerializer, useClass: CustomUrlSerializer}
   ], // additional providers needed for this module
   entryComponents: [],
   bootstrap: [AppComponent],

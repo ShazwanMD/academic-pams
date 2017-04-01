@@ -4,41 +4,43 @@ import {Action} from '@ngrx/store';
 @Injectable()
 export class ProgramActions {
 
-  static LOAD_PROGRAMS = '[Program] Load Programs';
-  loadPrograms(): Action {
+  static FIND_PROGRAMS = '[Program] Find Programs';
+  findPrograms(): Action {
     return {
-      type: ProgramActions.LOAD_PROGRAMS
+      type: ProgramActions.FIND_PROGRAMS
     };
   }
 
-  static LOAD_PROGRAMS_SUCCESS = '[Program] Load Programs Success';
-  loadProgramsSuccess(programs): Action {
+  static FIND_PROGRAMS_SUCCESS = '[Program] Find Programs Success';
+  findProgramsSuccess(programs): Action {
+    console.log("findProgramsSuccess");
+    console.log("programs: " + programs.length);
     return {
-      type: ProgramActions.LOAD_PROGRAMS_SUCCESS,
+      type: ProgramActions.FIND_PROGRAMS_SUCCESS,
       payload: programs
     };
   }
 
-  static GET_PROGRAM = '[Program] Get Program';
-  getProgram(code): Action {
+  static FIND_PROGRAM = '[Program] Find Program';
+  findProgram(code): Action {
     return {
-      type: ProgramActions.GET_PROGRAM,
+      type: ProgramActions.FIND_PROGRAM,
       payload: code
     };
   }
 
-  static GET_PROGRAM_SUCCESS = '[Program] Get Program Success';
+  static FIND_PROGRAM_SUCCESS = '[Program] Find Program Success';
   getProgramSuccess(program): Action {
     return {
-      type: ProgramActions.GET_PROGRAM_SUCCESS,
+      type: ProgramActions.FIND_PROGRAM_SUCCESS,
       payload: program
     };
   }
 
-  static RESET_BLANK_PROGRAM = '[Program] Reset Blank Program';
-  resetBlankProgram(): Action {
+  static RESET_PROGRAM = '[Program] Reset Blank Program';
+  resetProgram(): Action {
     return {
-      type: ProgramActions.RESET_BLANK_PROGRAM
+      type: ProgramActions.RESET_PROGRAM
     };
   }
 
@@ -58,8 +60,24 @@ export class ProgramActions {
     };
   }
 
+  static UPDATE_PROGRAM = '[Program] Update Program';
+  updateProgram(program): Action {
+    return {
+      type: ProgramActions.UPDATE_PROGRAM,
+      payload: program
+    };
+  }
+
+  static UPDATE_PROGRAM_SUCCESS = '[Program] Update Program Success';
+  updateProgramSuccess(program): Action {
+    return {
+      type: ProgramActions.UPDATE_PROGRAM_SUCCESS,
+      payload: program
+    };
+  }
+
   static CREATE_PROGRAM = '[Program] Create Program';
-  addProgram(program): Action {
+  createProgram(program): Action {
     return {
       type: ProgramActions.CREATE_PROGRAM,
       payload: program
@@ -67,25 +85,25 @@ export class ProgramActions {
   }
 
   static CREATE_PROGRAM_SUCCESS = '[Program] Create Program Success';
-  addProgramSuccess(program): Action {
+  createProgramSuccess(program): Action {
     return {
       type: ProgramActions.CREATE_PROGRAM_SUCCESS,
       payload: program
     };
   }
 
-  static DELETE_PROGRAM = '[Program] Delete Program';
-  deleteProgram(program): Action {
+  static REMOVE_PROGRAM = '[Program] Remove Program';
+  removeProgram(program): Action {
     return {
-      type: ProgramActions.DELETE_PROGRAM,
+      type: ProgramActions.REMOVE_PROGRAM,
       payload: program
     };
   }
 
-  static DELETE_PROGRAM_SUCCESS = '[Program] Delete Program Success';
-  deleteProgramSuccess(program): Action {
+  static REMOVE_PROGRAM_SUCCESS = '[Program] Remove Program Success';
+  removeProgramSuccess(program): Action {
     return {
-      type: ProgramActions.DELETE_PROGRAM_SUCCESS,
+      type: ProgramActions.REMOVE_PROGRAM_SUCCESS,
       payload: program
     };
   }

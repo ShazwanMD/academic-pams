@@ -12,9 +12,8 @@ const initialState: FacultyListState = <Faculty[]>[];
 export function facultyListReducer(state = initialState, action: Action): FacultyListState {
   console.log("action: " + action);
   switch (action.type) {
-    case FacultyActions.LOAD_FACULTIES_SUCCESS: {
-      console.log("load faculties success");
-      console.log("length: " + action.payload.length);
+    case FacultyActions.FIND_FACULTIES_SUCCESS: {
+      console.log("find faculties success");
       return action.payload;
     }
     case FacultyActions.CREATE_FACULTY_SUCCESS: {
@@ -31,7 +30,7 @@ export function facultyListReducer(state = initialState, action: Action): Facult
       }
       return state;
     }
-    case FacultyActions.DELETE_FACULTY_SUCCESS: {
+    case FacultyActions.REMOVE_FACULTY_SUCCESS: {
       return state.filter(faculty => {
         return faculty.id !== action.payload.id;
       });

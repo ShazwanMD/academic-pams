@@ -12,8 +12,8 @@ const initialState: ProgramListState = <Program[]>[];
 export function programListReducer(state = initialState, action: Action): ProgramListState {
   console.log("action: " + action);
   switch (action.type) {
-    case ProgramActions.LOAD_PROGRAMS_SUCCESS: {
-      console.log("load programs success");
+    case ProgramActions.FIND_PROGRAMS_SUCCESS: {
+      console.log("reducer find programs success");
       console.log("length: " + action.payload.length);
       return action.payload;
     }
@@ -31,7 +31,7 @@ export function programListReducer(state = initialState, action: Action): Progra
       }
       return state;
     }
-    case ProgramActions.DELETE_PROGRAM_SUCCESS: {
+    case ProgramActions.REMOVE_PROGRAM_SUCCESS: {
       return state.filter(program => {
         return program.id !== action.payload.id;
       });

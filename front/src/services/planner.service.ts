@@ -6,6 +6,7 @@ import {environment} from "../environments/environment";
 import {Program} from "../app/planner/programs/program.interface";
 import {Faculty} from "../app/planner/faculties/faculty.interface";
 import {Course} from "../app/planner/courses/course.interface";
+import {escape} from "querystring";
 
 @Injectable()
 export class PlannerService {
@@ -13,6 +14,10 @@ export class PlannerService {
   constructor(private http: Http,
               private _http: HttpInterceptorService) {
   }
+
+  // ====================================================================================================
+  // FACULTY
+  // ====================================================================================================
 
   findFaculties(): Observable<Faculty[]> {
     console.log("findFaculties");
@@ -29,22 +34,38 @@ export class PlannerService {
       .map((res: Response) =><Faculty>res.json());
   }
 
+  // ====================================================================================================
+  // PROGRAM
+  // ====================================================================================================
+
   findPrograms(): Observable<Program[]> {
     console.log("findPrograms");
-    let headers = new Headers({'Authorization': 'Bearer TODO'});
-    let options = new RequestOptions({headers: headers});
-    return this.http.get(environment.endpoint + '/api/planner/programs', options)
+    // let headers = new Headers({'Authorization': 'Bearer TODO'});
+    // let options = new RequestOptions({headers: headers});
+    return this.http.get(environment.endpoint + '/api/planner/programs')
       .map((res: Response) => <Program[]>res.json());
   }
 
   findProgramByCode(code: string): Observable<Program> {
-    let headers = new Headers({'Authorization': 'Bearer TODO'});
-    let options = new RequestOptions({headers: headers});
-    return this.http.get(environment.endpoint + '/api/planner/programs/' + code, options)
-      .map((res: Response) => {
-        return <Program>res.json();
-      });
+    // let headers = new Headers({'Authorization': 'Bearer TODO'});
+    // let options = new RequestOptions({headers: headers});
+    return this.http.get(environment.endpoint + '/api/planner/programs/' + encodeURI (code))
+      .map((res: Response) => <Program>res.json());
   }
+
+  saveProgram(program: Program): Observable<Boolean> {
+    return this.http.post(environment.endpoint + '/api/planner/programs', JSON.stringify(program))
+      .flatMap(data => Observable.of(true));
+  }
+
+  updateProgram(program: Program): Observable<Boolean> {
+    return this.http.put(environment.endpoint + '/api/planner/programs', JSON.stringify(program))
+      .flatMap(data => Observable.of(true));
+  }
+
+  // ====================================================================================================
+  // COURSE
+  // ====================================================================================================
 
   findCourses(): Observable<Course[]> {
     console.log("findCourses");

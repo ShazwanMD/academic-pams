@@ -12,6 +12,8 @@ import {IdentityService} from '../../../services';
 import {ProgramCenterPage} from "./program-center.page";
 import {ProgramListComponent} from "./component/program-list.component";
 import {ProgramActions} from "./program.action";
+import {ProgramDetailPage} from "./program-detail.page";
+import {ProgramComponent} from "./component/program.component";
 
 @NgModule({
   imports: [
@@ -24,10 +26,11 @@ import {ProgramActions} from "./program.action";
 
     // page
     ProgramCenterPage,
-    // ProgramDetailPage,
+    ProgramDetailPage,
 
     // component
     ProgramListComponent,
+    ProgramComponent,
   ],
   exports: [],
 })
@@ -41,7 +44,6 @@ export class ProgramModule {
         PlannerService,
         IdentityService,
         CommonService,
-        ProgramActions,
       ],
     };
   }

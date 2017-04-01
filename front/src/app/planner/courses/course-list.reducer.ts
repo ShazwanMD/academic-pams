@@ -12,9 +12,7 @@ const initialState: CourseListState = <Course[]>[];
 export function courseListReducer(state = initialState, action: Action): CourseListState {
   console.log("action: " + action);
   switch (action.type) {
-    case CourseActions.LOAD_COURSES_SUCCESS: {
-      console.log("load courses success");
-      console.log("length: " + action.payload.length);
+    case CourseActions.FIND_COURSES_SUCCESS: {
       return action.payload;
     }
     case CourseActions.CREATE_COURSE_SUCCESS: {
@@ -31,7 +29,7 @@ export function courseListReducer(state = initialState, action: Action): CourseL
       }
       return state;
     }
-    case CourseActions.DELETE_COURSE_SUCCESS: {
+    case CourseActions.REMOVE_COURSE_SUCCESS: {
       return state.filter(course => {
         return course.id !== action.payload.id;
       });

@@ -15,6 +15,7 @@ public class Program extends MetaObject{
     private String titleMs;
     private String titleEn;
     private String description;
+    private Faculty faculty;
 
     public String getCode() {
         return code;
@@ -54,6 +55,14 @@ public class Program extends MetaObject{
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Faculty getFaculty() {
+        return faculty;
+    }
+
+    public void setFaculty(Faculty faculty) {
+        this.faculty = faculty;
     }
 
     @JsonCreator

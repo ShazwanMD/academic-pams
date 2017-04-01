@@ -10,11 +10,11 @@ import {ProgramActions} from "./program.action";
 import {PlannerState} from "../index";
 
 @Component({
-  selector: 'pams-program-center',
-  templateUrl: './program-center.page.html',
+  selector: 'pams-program-detail',
+  templateUrl: './program-detail.page.html',
 })
 
-export class ProgramCenterPage implements OnInit {
+export class ProgramDetailPage implements OnInit {
 
   private _identityService: IdentityService;
   private _commonService: CommonService;
@@ -22,7 +22,7 @@ export class ProgramCenterPage implements OnInit {
   private _route: ActivatedRoute;
   private _actions: ProgramActions;
   private store: Store<PlannerState>;
-  private programs$: Observable<Program[]>;
+  private program$: Observable<Program>;
 
   constructor(router: Router,
               route: ActivatedRoute,
@@ -37,21 +37,19 @@ export class ProgramCenterPage implements OnInit {
     this._commonService = commonService;
     this._actions = actions;
     this.store = store;
-    this.programs$ = this.store.select('programs');
+    this.program$ = this.store.select('program');
+  }
+
+  ngOnInit(): void {
+    this._route.params.subscribe((params: {code: string}) => {
+      let code: string = params.code;
+      console.log("Code in pdp: " + code);
+      this.store.dispatch(this._actions.findProgram(code));
+    });
   }
 
   goBack(route: string): void {
     this._router.navigate(['/programs']);
-  }
-
-  viewProgram(program: Program) {
-    console.log("program: " + program.id);
-    this._router.navigate(['/programs-detail', program.id]);
-  }
-
-  ngOnInit(): void {
-    console.log("find programs");
-    this.store.dispatch(this._actions.findPrograms());
   }
 }
 

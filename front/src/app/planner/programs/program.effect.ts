@@ -11,33 +11,38 @@ export class ProgramEffects {
               private plannerService: PlannerService,) {
   }
 
-  @Effect() loadPrograms$ = this.actions$
-    .ofType(ProgramActions.LOAD_PROGRAMS)
+  @Effect() findPrograms$ = this.actions$
+    .ofType(ProgramActions.FIND_PROGRAMS)
     .switchMap(() => this.plannerService.findPrograms())
-    .map(programs =>
-       this.programActions.loadProgramsSuccess(programs));
+    .map(programs => this.programActions.findProgramsSuccess(programs));
 
-  // @Effect() getProgram$ = this.actions$
-  //   .ofType(ProgramActions.GET_PROGRAM)
-  //   .map<string>(action => action.payload)
-  //   .switchMap(code => this.plannerService.findProgramByCode(code))
-  //   .map(program => this.programActions.getProgramSuccess(program));
+  @Effect() findProgram$ = this.actions$
+    .ofType(ProgramActions.FIND_PROGRAM)
+    .map(action => action.payload)
+    .switchMap(code => this.plannerService.findProgramByCode(code))
+    .map(program => this.programActions.getProgramSuccess(program));
 
-  // @Effect() saveProgram$ = this.actions$
-  //   .ofType(ProgramActions.SAVE_PROGRAM)
-  //   .map(action => action.payload)
-  //   .switchMap(program => this.svc.saveProgram(program))
-  //   .map(program => this.programActions.saveProgramSuccess(program));
-  //
+  @Effect() saveProgram$ = this.actions$
+    .ofType(ProgramActions.SAVE_PROGRAM)
+    .map(action => action.payload)
+    .switchMap(program => this.plannerService.saveProgram(program))
+    .map(program => this.programActions.saveProgramSuccess(program));
+
+  @Effect() updateProgram$ = this.actions$
+    .ofType(ProgramActions.UPDATE_PROGRAM)
+    .map(action => action.payload)
+    .switchMap(program => this.plannerService.updateProgram(program))
+    .map(program => this.programActions.updateProgramSuccess(program));
+
   // @Effect() createProgram = this.actions$
   //   .ofType(ProgramActions.CREATE_PROGRAM)
   //   .map(action => action.payload)
-  //   .switchMap(program => this.svc.saveProgram(program))
+  //   .switchMap(program => this.plannerService.saveProgram(program))
   //   .map(program => this.programActions.addProgramSuccess(program));
   //
   // @Effect() deleteProgram$ = this.actions$
   //   .ofType(ProgramActions.DELETE_PROGRAM)
   //   .map(action => action.payload)
-  //   .switchMap(program => this.svc.deleteProgram(program))
+  //   .switchMap(program => this.plannerService.deleteProgram(program))
   //   .map(program => this.programActions.deleteProgramSuccess(program));
 }

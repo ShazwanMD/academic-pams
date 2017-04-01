@@ -4,41 +4,41 @@ import {Action} from '@ngrx/store';
 @Injectable()
 export class CourseActions {
 
-  static LOAD_COURSES = '[Course] Load Courses';
-  loadCourses(): Action {
+  static FIND_COURSES = '[Course] Find Courses';
+  findCourses(): Action {
     return {
-      type: CourseActions.LOAD_COURSES
+      type: CourseActions.FIND_COURSES
     };
   }
 
-  static LOAD_COURSES_SUCCESS = '[Course] Load Courses Success';
-  loadCoursesSuccess(courses): Action {
+  static FIND_COURSES_SUCCESS = '[Course] Find Courses Success';
+  findCoursesSuccess(courses): Action {
     return {
-      type: CourseActions.LOAD_COURSES_SUCCESS,
+      type: CourseActions.FIND_COURSES_SUCCESS,
       payload: courses
     };
   }
 
-  static GET_COURSE = '[Course] Get Course';
-  getCourse(code): Action {
+  static FIND_COURSE = '[Course] Find Course';
+  findCourse(code): Action {
     return {
-      type: CourseActions.GET_COURSE,
+      type: CourseActions.FIND_COURSE,
       payload: code
     };
   }
 
-  static GET_COURSE_SUCCESS = '[Course] Get Course Success';
-  getCoursesuccess(course): Action {
+  static FIND_COURSE_SUCCESS = '[Course] Find Course Success';
+  findCoursesuccess(course): Action {
     return {
-      type: CourseActions.GET_COURSE_SUCCESS,
+      type: CourseActions.FIND_COURSE_SUCCESS,
       payload: course
     };
   }
 
-  static RESET_BLANK_COURSE = '[Course] Reset Blank Course';
-  resetBlankCourse(): Action {
+  static RESET_COURSE = '[Course] Reset Course';
+  resetCourse(): Action {
     return {
-      type: CourseActions.RESET_BLANK_COURSE
+      type: CourseActions.RESET_COURSE
     };
   }
 
@@ -51,7 +51,7 @@ export class CourseActions {
   }
 
   static SAVE_COURSE_SUCCESS = '[Course] Save Course Success';
-  saveCoursesuccess(course): Action {
+  saveCourseSuccess(course): Action {
     return {
       type: CourseActions.SAVE_COURSE_SUCCESS,
       payload: course
@@ -59,7 +59,7 @@ export class CourseActions {
   }
 
   static CREATE_COURSE = '[Course] Create Course';
-  addCourse(course): Action {
+  createCourse(course): Action {
     return {
       type: CourseActions.CREATE_COURSE,
       payload: course
@@ -67,25 +67,25 @@ export class CourseActions {
   }
 
   static CREATE_COURSE_SUCCESS = '[Course] Create Course Success';
-  addCoursesuccess(course): Action {
+  createCourseSuccess(course): Action {
     return {
       type: CourseActions.CREATE_COURSE_SUCCESS,
       payload: course
     };
   }
 
-  static DELETE_COURSE = '[Course] Delete Course';
-  deleteCourse(course): Action {
+  static REMOVE_COURSE = '[Course] Remove Course';
+  removeCourse(course): Action {
     return {
-      type: CourseActions.DELETE_COURSE,
+      type: CourseActions.REMOVE_COURSE,
       payload: course
     };
   }
 
-  static DELETE_COURSE_SUCCESS = '[Course] Delete Course Success';
-  deleteCoursesuccess(course): Action {
+  static REMOVE_COURSE_SUCCESS = '[Course] Remove Course Success';
+  removeCourseSuccess(course): Action {
     return {
-      type: CourseActions.DELETE_COURSE_SUCCESS,
+      type: CourseActions.REMOVE_COURSE_SUCCESS,
       payload: course
     };
   }

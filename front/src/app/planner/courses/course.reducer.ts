@@ -16,10 +16,10 @@ const initialState: CourseState = {
 export function courseReducer(state = initialState, action: Action): CourseState {
   console.log("action: " + action);
   switch (action.type) {
-    case CourseActions.RESET_BLANK_COURSE: {
+    case CourseActions.RESET_COURSE: {
       return initialState;
     }
-    case CourseActions.GET_COURSE_SUCCESS: {
+    case CourseActions.FIND_COURSE_SUCCESS: {
       return action.payload;
     }
     default: {

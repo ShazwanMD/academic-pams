@@ -46,7 +46,7 @@ export class FacultyCenterPage implements OnInit {
   }
 
   ngOnInit(): void {
-    this.store.dispatch(this._actions.loadFaculties());
+    this.store.dispatch(this._actions.findFaculties());
   }
 }
 

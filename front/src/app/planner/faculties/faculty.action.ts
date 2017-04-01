@@ -4,41 +4,41 @@ import {Action} from '@ngrx/store';
 @Injectable()
 export class FacultyActions {
 
-  static LOAD_FACULTIES = '[Faculty] Load Faculties';
-  loadFaculties(): Action {
+  static FIND_FACULTIES = '[Faculty] Find Faculties';
+  findFaculties(): Action {
     return {
-      type: FacultyActions.LOAD_FACULTIES
+      type: FacultyActions.FIND_FACULTIES
     };
   }
 
-  static LOAD_FACULTIES_SUCCESS = '[Faculty] Load Faculties Success';
-  loadFacultiesSuccess(faculties): Action {
+  static FIND_FACULTIES_SUCCESS = '[Faculty] Find Faculties Success';
+  findFacultiesSuccess(faculties): Action {
     return {
-      type: FacultyActions.LOAD_FACULTIES_SUCCESS,
+      type: FacultyActions.FIND_FACULTIES_SUCCESS,
       payload: faculties
     };
   }
 
-  static GET_FACULTY = '[Faculty] Get Faculty';
+  static FIND_FACULTY = '[Faculty] Find Faculty';
   getFaculty(code): Action {
     return {
-      type: FacultyActions.GET_FACULTY,
+      type: FacultyActions.FIND_FACULTY,
       payload: code
     };
   }
 
-  static GET_FACULTY_SUCCESS = '[Faculty] Get Faculty Success';
+  static FIND_FACULTY_SUCCESS = '[Faculty] Find Faculty Success';
   getFacultIESuccess(faculty): Action {
     return {
-      type: FacultyActions.GET_FACULTY_SUCCESS,
+      type: FacultyActions.FIND_FACULTY_SUCCESS,
       payload: faculty
     };
   }
 
-  static RESET_BLANK_FACULTY = '[Faculty] Reset Blank Faculty';
+  static RESET_FACULTY = '[Faculty] Reset Faculty';
   resetBlankFaculty(): Action {
     return {
-      type: FacultyActions.RESET_BLANK_FACULTY
+      type: FacultyActions.RESET_FACULTY
     };
   }
 
@@ -51,7 +51,7 @@ export class FacultyActions {
   }
 
   static SAVE_FACULTY_SUCCESS = '[Faculty] Save Faculty Success';
-  saveFacultIESuccess(faculty): Action {
+  saveFacultySuccess(faculty): Action {
     return {
       type: FacultyActions.SAVE_FACULTY_SUCCESS,
       payload: faculty
@@ -59,7 +59,7 @@ export class FacultyActions {
   }
 
   static CREATE_FACULTY = '[Faculty] Create Faculty';
-  addFaculty(faculty): Action {
+  createFaculty(faculty): Action {
     return {
       type: FacultyActions.CREATE_FACULTY,
       payload: faculty
@@ -67,25 +67,25 @@ export class FacultyActions {
   }
 
   static CREATE_FACULTY_SUCCESS = '[Faculty] Create Faculty Success';
-  addFacultIESuccess(faculty): Action {
+  createFacultySuccess(faculty): Action {
     return {
       type: FacultyActions.CREATE_FACULTY_SUCCESS,
       payload: faculty
     };
   }
 
-  static DELETE_FACULTY = '[Faculty] Delete Faculty';
-  deleteFaculty(faculty): Action {
+  static REMOVE_FACULTY = '[Faculty] Remove Faculty';
+  removeFaculty(faculty): Action {
     return {
-      type: FacultyActions.DELETE_FACULTY,
+      type: FacultyActions.REMOVE_FACULTY,
       payload: faculty
     };
   }
 
-  static DELETE_FACULTY_SUCCESS = '[Faculty] Delete Faculty Success';
-  deleteFacultIESuccess(faculty): Action {
+  static REMOVE_FACULTY_SUCCESS = '[Faculty] Remove Faculty Success';
+  removeFacultySuccess(faculty): Action {
     return {
-      type: FacultyActions.DELETE_FACULTY_SUCCESS,
+      type: FacultyActions.REMOVE_FACULTY_SUCCESS,
       payload: faculty
     };
   }

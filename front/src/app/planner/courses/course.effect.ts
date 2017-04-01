@@ -11,11 +11,10 @@ export class CourseEffects {
               private plannerService: PlannerService,) {
   }
 
-  @Effect() loadCourses$ = this.actions$
-    .ofType(CourseActions.LOAD_COURSES)
+  @Effect() findCourses$ = this.actions$
+    .ofType(CourseActions.FIND_COURSES)
     .switchMap(() => this.plannerService.findCourses())
-    .map(courses =>
-       this.courseActions.loadCoursesSuccess(courses));
+    .map(courses => this.courseActions.findCoursesSuccess(courses));
 
   // @Effect() getCourse$ = this.actions$
   //   .ofType(CourseActions.GET_COURSE)

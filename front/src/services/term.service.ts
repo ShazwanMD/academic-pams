@@ -2,7 +2,9 @@ import {Injectable} from '@angular/core';
 import {Response, Http} from '@angular/http';
 import {Headers, RequestOptions} from '@angular/http';
 import {HttpInterceptorService} from '@covalent/http';
-import {Observable} from "rxjs";
+import {Observable} from 'rxjs/Observable';
+import * as Rx from 'rxjs/Rx';
+import 'rxjs/add/operator/filter';
 import {environment} from "../environments/environment";
 import {EnrollmentApplication} from "../app/term/enrollment-applications/enrollment-application.interface";
 import {EnrollmentApplicationItem} from "../app/term/enrollment-applications/enrollment-application-item.interface";
@@ -37,9 +39,10 @@ export class TermService {
   }
 
   startEnrollmentApplicationTask(enrollmentApplication: EnrollmentApplication): Observable<Boolean> {
-    return this.http.post(
-      environment.endpoint + '/api/term/enrollmentApplications',
-      JSON.stringify(enrollmentApplication))
+    let headers = new Headers({'Authorization': 'Bearer TODO'});
+    let options = new RequestOptions({headers: headers});
+    let url = environment.endpoint + '/api/term/enrollmentApplications';
+    return this.http.post(url,JSON.stringify(enrollmentApplication), options)
       .flatMap(data => Observable.of(true));
   }
 

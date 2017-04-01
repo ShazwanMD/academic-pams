@@ -26,6 +26,9 @@ import {CourseListState, courseListReducer} from "./courses/course-list.reducer"
 import {CourseState, courseReducer} from "./courses/course.reducer";
 import {CourseModule} from "./courses/index";
 import {CourseEffects} from "./courses/course.effect";
+import {FacultyActions} from "./faculties/faculty.action";
+import {CourseActions} from "./courses/course.action";
+import {ProgramActions} from "./programs/program.action";
 
 export interface PlannerState {
   faculties: FacultyListState;
@@ -37,7 +40,7 @@ export interface PlannerState {
 }
 ;
 
-const plannerReducer = combineReducers({
+export const plannerReducer = combineReducers({
   faculties:facultyListReducer, faculty:facultyReducer,
   programs: programListReducer, program: programReducer,
   courses: courseListReducer, course: courseReducer,
@@ -55,13 +58,6 @@ const plannerReducer = combineReducers({
     FacultyModule.forRoot(),
     ProgramModule.forRoot(),
     CourseModule.forRoot(),
-
-    // ngrx
-    StoreModule.provideStore(plannerReducer),
-    EffectsModule.run(FacultyEffects),
-    EffectsModule.run(ProgramEffects),
-    EffectsModule.run(CourseEffects),
-    StoreDevtoolsModule.instrumentOnlyWithExtension(),
   ],
   declarations: [
     // page
@@ -78,6 +74,9 @@ export class PlannerModule {
         IdentityService,
         CommonService,
         PlannerService,
+        ProgramActions,
+        FacultyActions,
+        CourseActions,
       ],
     };
   }
