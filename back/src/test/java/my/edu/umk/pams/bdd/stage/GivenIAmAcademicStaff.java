@@ -51,29 +51,29 @@ public class GivenIAmAcademicStaff extends Stage<GivenIAmAcademicStaff> {
     @ProvidedScenarioState
     private AdActor staff;
 
-    public GivenIAmAcademicStaff I_am_a_staff_in_$_academic_session(String academicSessionCode) {
+    public GivenIAmAcademicStaff i_am_a_staff_in_$_academic_session(String academicSessionCode) {
         loginAsStaff();
         academicSession = plannerService.findAcademicSessionByCode(academicSessionCode);
         return self();
     }
 
-    public GivenIAmAcademicStaff I_am_a_staff_in_current_academic_session() {
+    public GivenIAmAcademicStaff i_am_a_staff_in_current_academic_session() {
         loginAsStaff();
         academicSession = plannerService.findCurrentAcademicSession();
         return self();
     }
 
-    public GivenIAmAcademicStaff I_pick_program_$(String code) {
+    public GivenIAmAcademicStaff i_pick_program_$(String code) {
         program = plannerService.findProgramByCode(code);
         return self();
     }
 
-    public GivenIAmAcademicStaff I_pick_offering_$(String canonicalCode) {
+    public GivenIAmAcademicStaff i_pick_offering_$(String canonicalCode) {
         offering = termService.findOfferingByCanonicalCode(canonicalCode);
         return self();
     }
 
-    public GivenIAmAcademicStaff I_pick_section_$(String canonicalCode) {
+    public GivenIAmAcademicStaff i_pick_section_$(String canonicalCode) {
         section = termService.findSectionByCanonicalCode(canonicalCode);
         return self();
     }

@@ -32,7 +32,7 @@ public class WhenIViewCourseRegistration extends Stage<WhenIViewCourseRegistrati
 	private	AdStudent student;
 	
 	@ProvidedScenarioState
-	private List<AdCourse> course;
+	private List<AdCourse> courses;
 	
 	private AdFaculty faculty;
 	
@@ -40,9 +40,9 @@ public class WhenIViewCourseRegistration extends Stage<WhenIViewCourseRegistrati
 	public WhenIViewCourseRegistration I_view_student_course_registration() {
 		
 		faculty = plannerService.findFacultyByCode("FKP");
-		course = plannerService.findCourses(faculty);
+		courses = plannerService.findCourses(faculty);
 
-		for (AdCourse course : course) {
+		for (AdCourse course : courses) {
 			LOG.debug(course.getTitle());
 		}
 		

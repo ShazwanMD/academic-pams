@@ -37,9 +37,9 @@ public class US_AD_PFL_4001 extends SpringScenarioTest <GivenIAmAcademicStaff, W
 	@Test
 	@Rollback
 	public void scenario4001() {
-		given().I_am_a_staff_in_current_academic_session().
-			and().I_pick_offering_$(OFRG_canonicalCode).
-				and().I_pick_section_$(SCTN_canonicalCode);
+		given().i_am_a_staff_in_current_academic_session().
+			and().i_pick_offering_$(OFRG_canonicalCode).
+				and().i_pick_section_$(SCTN_canonicalCode);
 		
 		when().review_enrollment_details();
 		then().I_view_students_registered_in_my_class();
