@@ -871,7 +871,8 @@ create table AD_MRTL_CODE (
 create table AD_NTLY_CODE (
   ID int8 not null,
   CODE varchar(255),
-  DESCRIPTION varchar(255),
+  DESCRIPTION_MS varchar(255),
+  DESCRIPTION_EN varchar(255),
   C_TS timestamp,
   C_ID int8,
   D_TS timestamp,
@@ -880,6 +881,17 @@ create table AD_NTLY_CODE (
   M_ID int8,
   M_ST int4,
   primary key (ID)
+);
+
+create table AD_NLTY_CODE(
+	ID int8 not null,
+	CODE varchar(255),
+	DESCRIPTION VARCHAR(255),
+	M_ST int4,
+	C_ID int8,
+	C_TS TIMESTAMP,
+
+	primary key(ID)
 );
 
 create table AD_OFRG (
