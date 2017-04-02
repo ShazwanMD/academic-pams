@@ -24,8 +24,8 @@ import my.edu.umk.pams.bdd.stage.GivenIAmStudent;
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
-public class US_AD_TRM_1012 extends SpringScenarioTest<GivenIAmStudent, WhenIEnrollTheCourses, ThenTheEnrollmentIsCurrent> {
-	private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_1012.class);
+public class US_AD_TRM_1017 extends SpringScenarioTest<GivenIAmStudent, WhenIEnrollTheCourses, ThenTheEnrollmentIsCurrent> {
+	private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_1017.class);
 	private static final String PROGRAM_CODE = "FKP/MASTER/0001";//program-id 65
 	
 	@Before
