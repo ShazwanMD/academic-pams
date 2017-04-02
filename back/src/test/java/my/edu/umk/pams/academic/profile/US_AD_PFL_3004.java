@@ -24,7 +24,7 @@ public class US_AD_PFL_3004 extends SpringScenarioTest<GivenIAmBursary, WhenBurs
 
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_PFL_3004.class);
 	
-    private static final String IDENTITY_NO = "A17P001";
+    private static final String IDENTITY_NO = "A17P005";
 	
 	@Test
 	@Rollback
