@@ -1,19 +1,33 @@
 package my.edu.umk.pams.academic.profile.stage;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import com.tngtech.jgiven.Stage;
-import com.tngtech.jgiven.annotation.Pending;
+import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
+
+import io.jsonwebtoken.lang.Assert;
+import my.edu.umk.pams.academic.identity.model.AdStudent;
+import my.edu.umk.pams.academic.identity.model.AdStudentStatus;
 
 @JGivenStage
 public class ThenLecturerReviewedStudentGraduationStatus extends Stage<ThenLecturerReviewedStudentGraduationStatus> {
 
-	private static final Logger LOG = LoggerFactory.getLogger(ThenLecturerReviewedStudentGraduationStatus.class);
+    @ExpectedScenarioState
+    private AdStudent student;
+    
+	@ExpectedScenarioState
+	private AdStudentStatus studentStatus;
 	
-	@Pending
-	public ThenLecturerReviewedStudentGraduationStatus Lecturer_reviewed_student_graduation_status() {
+	public ThenLecturerReviewedStudentGraduationStatus lecturer_reviewed_student_graduation_status() {
+		
+		student.getIdentityNo();
+    	
+    	AdStudentStatus expectedStatus = student.getStudentStatus();
+    	AdStudentStatus actualStatus = student.getStudentStatus();
+    	
+    	Assert.isTrue(expectedStatus.equals(actualStatus), "exists");
+		
+		
 		
 		return self();
 		

@@ -25,12 +25,14 @@ public class US_AD_PFL_5006 extends SpringScenarioTest<GivenIAmAcademicStaff, Wh
 	
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_PFL_5006.class);
 	
+    private static final String IDENTITY_NO = "A17P005";
+	
 	@Test
 	@Rollback
 	public void scenario5006(){
 		given().i_am_a_staff_in_current_academic_session();
-		when().Lecturer_review_student_graduation_status();
-		then().Lecturer_reviewed_student_graduation_status();
+		when().lecturer_review_student_graduation_status(IDENTITY_NO);
+		then().lecturer_reviewed_student_graduation_status();
 		
 	}
 }
