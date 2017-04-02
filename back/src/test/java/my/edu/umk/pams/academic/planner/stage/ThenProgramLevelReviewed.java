@@ -7,6 +7,7 @@ import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 import my.edu.umk.pams.academic.planner.model.AdFaculty;
 import my.edu.umk.pams.academic.planner.model.AdProgram;
+import my.edu.umk.pams.academic.planner.model.AdProgramLevel;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,11 +25,11 @@ public class ThenProgramLevelReviewed extends Stage<ThenProgramLevelReviewed> {
     private PlannerService plannerService;
 
     @ExpectedScenarioState
-    AdFaculty faculty;
+    AdProgram Level;
 
     public ThenProgramLevelReviewed Program_level_introduced() {
-        List<AdProgram> programs = plannerService.findPrograms(faculty);
-        Assert.notEmpty(programs, "programs should not be empty");
+        List<AdProgramLevel> programLevel = plannerService.findProgramLevels();
+        Assert.notEmpty(programLevel, "programs should not be empty");
         return self();
     }
 }

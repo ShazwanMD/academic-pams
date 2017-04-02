@@ -32,16 +32,14 @@ public class US_AD_PNR_2001 extends SpringScenarioTest<GivenIAmStudent, WhenIRev
     @SuppressWarnings("unused")
     private static final Logger LOG = LoggerFactory.getLogger(US_AD_PNR_2001.class);
 
-    private String FACULTY_CODE = "10";
-
     @ProvidedScenarioState
-    private String PROGRAM_CODE = "PGRAM_231";
+    private String code;
 
     @Test
     @Rollback
     public void scenari2001() {
         given().I_am_a_student_in_current_academic_session();
-        when().I_review_program_level_$(FACULTY_CODE);
+        when().I_review_program_level_$(code);
         then().Program_level_introduced();
     }
 }

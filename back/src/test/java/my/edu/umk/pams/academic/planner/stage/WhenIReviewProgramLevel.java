@@ -31,36 +31,26 @@ public class WhenIReviewProgramLevel extends Stage<WhenIReviewProgramLevel> {
     @Autowired
     private PlannerService plannerService;
 
-    @Autowired
-    private CommonService commonService;
-
     @ProvidedScenarioState
     private AdFaculty faculty;
-    
+  
     @ExpectedScenarioState
-    private AdProgramLevel programLevel;
-   
-    private String Code;
+    private List<AdProgramLevel> programLevels;
 
-    public WhenIReviewProgramLevel I_review_program_level_$(String Code) {
-        //faculty = plannerService.findFacultyByCode(Code);
-        
-         programLevel = plannerService.findProgramLevelByCode(Code);
-       
-     //   for (AdProgramLevel programLevels : programLevel) {
-        	 LOG.debug(programLevel.getCode());
-        
-
-       /* AdProgram program = new AdProgramImpl();
-        program.setCode("code");
-        program.setFaculty(faculty);
-        program.setProgramLevel(programLevel);
-        program.setTitle("Master Business Administration ");
-        program.setTitleEn("Master of Enterpreneurship (Management)");
-        program.setTitleMs("Master of Enterpreneurship(Finance)");
-        plannerService.saveProgram(program);*/
-
-        return self();
+    
+    public WhenIReviewProgramLevel() {
     }
 
-}
+    public WhenIReviewProgramLevel I_review_program_level_$(String code) {
+        
+         programLevels = plannerService.findProgramLevels();
+       
+      for (AdProgramLevel programLevel : programLevels) {
+        	 LOG.debug(programLevel.getCode());
+      }
+        return self();
+    }}
+
+
+
+
