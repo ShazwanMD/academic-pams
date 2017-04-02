@@ -22,11 +22,11 @@ import org.springframework.transaction.annotation.Transactional;
 @ContextConfiguration(classes = TestAppConfiguration.class)
 public class US_AD_TRM_1002 extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenICreateSections, ThenTheStudentCanEnrol> {
 
-    private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_1003.class);
+    private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_1002.class);
     public static final String PROGRAM_CODE = "FKP/PHD/0001";
 
     @Test
-    @Rollback
+    @Rollback(true)
     public void scenario1() {
         given().I_am_a_CPS_administrator_in_current_academic_session()
                 .and().I_pick_program_$(PROGRAM_CODE);

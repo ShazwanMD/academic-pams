@@ -2,6 +2,7 @@
  * @author asyikin.mr
  */
 package my.edu.umk.pams.academic.term.stage;
+
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
@@ -53,6 +54,8 @@ public class WhenICreateSections extends Stage<WhenICreateSections> {
 	@ProvidedScenarioState
 	private String code;
 
+	private String codeOffering;
+
 	@ProvidedScenarioState
 	private List<AdAppointment> appointments;
 
@@ -63,9 +66,10 @@ public class WhenICreateSections extends Stage<WhenICreateSections> {
 	private List<AdSectionPolicy> policies;
 
 	public WhenICreateSections I_create_sections_for_offering() {
-		offering = termService.findOfferingByCanonicalCode("FIAT/PHD/0001");
-		canonicalCode = faculty.getCode() + "/" + program.getCode() + "/" + academicSession.getCode();
-		code = program.getCode() + "/" + academicSession.getCode();
+		offering = termService.findOfferingByCanonicalCode("MGSEB/MBA/GST 5013");
+		//codeOffering = "DDA2113";
+		canonicalCode = offering.getCanonicalCode() + "/" + academicSession.getCode(); //FKP/PHD/0001/DDA2113/201720181
+		code = "GST 5013";
 
 		section = new AdSectionImpl();
 		section.setCanonicalCode(canonicalCode);
@@ -73,12 +77,7 @@ public class WhenICreateSections extends Stage<WhenICreateSections> {
 		section.setCode(code);
 		section.setSession(academicSession);
 		section.setOffering(offering);
-		section.setAppointments(appointments);
-		section.setAppointmentCount(1);
-		section.setEnrollmentCount(1);
-		section.setEnrollments(enrollments);
 		section.setOrdinal(1);
-		section.setPolicies(policies);
 
 		termService.saveSection(section);
 

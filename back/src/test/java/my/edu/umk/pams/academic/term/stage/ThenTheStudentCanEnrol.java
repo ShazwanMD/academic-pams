@@ -1,5 +1,6 @@
 /**
  * @author asyikin.mr
+
  */
 package my.edu.umk.pams.academic.term.stage;
 import com.tngtech.jgiven.Stage;
@@ -26,7 +27,7 @@ public class ThenTheStudentCanEnrol extends Stage<ThenTheStudentCanEnrol> {
 	private String canonicalCode;
 
 	public ThenTheStudentCanEnrol the_student_can_enrol() {
-		LOG.debug("section {} ", section);
+		LOG.debug("section {} ", section.getCanonicalCode());
 		AdSection section = termService.findSectionByCanonicalCode(canonicalCode);
 		Assert.notNull(section, "The data must not be null");
 		return self();
