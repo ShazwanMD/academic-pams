@@ -1,5 +1,11 @@
 package my.edu.umk.pams.academic.planner.stage;
 
+/**
+ * I Am Student
+ * I Review Course Info
+ * Course Information Reviewed
+ * @author zaida
+ */
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.annotation.Pending;
@@ -12,21 +18,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 @JGivenStage
 public class ThenCourseInformationReviewed extends Stage<ThenCourseInformationReviewed> {
 
-    @Autowired
-    private PlannerService plannerService;
+	@Autowired
+	private PlannerService plannerService;
 
-    @ExpectedScenarioState
-    AdCourse course;
+	@ExpectedScenarioState
+	AdCourse course;
 
-    @ExpectedScenarioState
-    AdFaculty faculty;
+	@ExpectedScenarioState
+	AdFaculty faculty;
 
-    @Pending
-    public ThenCourseInformationReviewed course_information_reviewed() {
-//	        List<AdCourse> Course = plannerService.findCourses(faculty);
-//	        Assert.notEmpty(Course, "Course should not be empty");
-        return self();
-    }
-
-		
+	@Pending
+	public ThenCourseInformationReviewed course_information_reviewed() {
+		// List<AdCourse> Course = plannerService.findCourses(faculty);
+		// Assert.notEmpty(Course, "Course should not be empty");
+		return self();
 	}
+
+}

@@ -1,5 +1,11 @@
 package my.edu.umk.pams.academic.planner.stage;
 
+/**
+ * I Am Student
+ * I Review Course Info
+ * Course Information Reviewed
+ * @author zaida
+ */
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
