@@ -1,6 +1,6 @@
 package my.edu.umk.pams.academic.term;
 /**
- * @author ziana
+ * @author asyikin.mr and ziana
  */
 
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
@@ -20,9 +20,9 @@ import org.springframework.transaction.annotation.Transactional;
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
-public class US_AD_TRM_1009 extends SpringScenarioTest<GivenIAmStudent, WhenIWantToViewTheOfferedCoursesByAcademicSession, ThenICanChoose> {
+public class US_AD_TRM_1014 extends SpringScenarioTest<GivenIAmStudent, WhenIWantToViewTheOfferedCoursesByAcademicSession, ThenICanChoose> {
 
-    private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_1009.class);
+    private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_1014.class);
 
     public static final String OFFERING_CANONICAL_CODE = "FKP/PHD/0001/DDA2113";
 
