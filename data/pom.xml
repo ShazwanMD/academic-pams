@@ -283,6 +283,7 @@
                                 <srcFile>src/test/resources/data/AD_CNTY_CODE.sql</srcFile>
                                 <srcFile>src/test/resources/data/AD_MRTL_CODE.sql</srcFile>
                                 <srcFile>src/test/resources/data/AD_STTE_CODE.sql</srcFile>
+                                <srcFile>src/test/resources/data/AD_NLTY_CODE.sql</srcFile>
 
                                 <srcFile>src/test/resources/data/AD_ACDM_SESN.sql</srcFile>
                                 <srcFile>src/test/resources/data/AD_FCTY.sql</srcFile>
