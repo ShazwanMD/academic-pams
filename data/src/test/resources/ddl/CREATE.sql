@@ -1038,7 +1038,8 @@ create table AD_PRGM_LEVL (
 create table AD_RACE_CODE (
   ID int8 not null,
   CODE varchar(255),
-  DESCRIPTION varchar(255),
+  DESCRIPTION_MS varchar(255),
+  DESCRIPTION_EN varchar(255),
   C_TS timestamp,
   C_ID int8,
   D_TS timestamp,
