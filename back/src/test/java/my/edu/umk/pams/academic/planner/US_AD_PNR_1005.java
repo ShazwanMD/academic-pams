@@ -34,8 +34,8 @@ public class US_AD_PNR_1005
 	@Rollback
 	public void scenario1() {
 		given().I_am_a_CPS_administrator();
-		//when().I_setup_cohort_for_a_faculty(PROGRAM_CODE);
-		//then().cohort_is_introduced();
+		when().I_setup_cohort_for_a_faculty(PROGRAM_CODE);
+		then().cohort_is_introduced();
 	}
 
 }
