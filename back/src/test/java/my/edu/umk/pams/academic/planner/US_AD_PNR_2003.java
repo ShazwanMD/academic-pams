@@ -3,6 +3,7 @@ package my.edu.umk.pams.academic.planner;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.planner.stage.ThenCourseInformationReviewed;
+import my.edu.umk.pams.academic.planner.stage.WhenIViewCourseInfomation;
 import my.edu.umk.pams.academic.profile.stage.WhenIViewCourseInfo;
 import my.edu.umk.pams.bdd.stage.GivenIAmStudent;
 import org.junit.Test;
@@ -22,7 +23,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 public class US_AD_PNR_2003
-		extends SpringScenarioTest<GivenIAmStudent, WhenIViewCourseInfo, ThenCourseInformationReviewed> {
+		extends SpringScenarioTest<GivenIAmStudent, WhenIViewCourseInfomation, ThenCourseInformationReviewed> {
 
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_PNR_2003.class);
 
@@ -32,7 +33,9 @@ public class US_AD_PNR_2003
 	@Rollback
 	public void scenario2003() {
 		given().I_am_a_student_in_current_academic_session();
-		when().I_view_course_info_$(FACULTY_CODE);
+		when().I_view_course_infomation_$(FACULTY_CODE);
 		then().course_information_reviewed();
 	}
 }
+
+
