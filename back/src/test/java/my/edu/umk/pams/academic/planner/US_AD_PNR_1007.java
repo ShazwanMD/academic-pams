@@ -2,7 +2,7 @@ package my.edu.umk.pams.academic.planner;
 
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.academic.config.TestAppConfiguration;
-import my.edu.umk.pams.academic.planner.stage.ThenCourseHasPrerequisite;
+import my.edu.umk.pams.academic.planner.stage.ThenCoursePrerequisiteAdded;
 import my.edu.umk.pams.academic.planner.stage.WhenIAddACoursePrerequisite;
 import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
 import org.junit.Test;
@@ -18,14 +18,14 @@ import org.springframework.transaction.annotation.Transactional;
  * As an admin academic, 
  *  i want to set up  course prerequisite
  *    so that courses has a prerequisite
- * @author ain_zaida
+ * @author ain
  */
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 
-public class US_AD_PNR_1007 extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenIAddACoursePrerequisite, ThenCourseHasPrerequisite> {
+public class US_AD_PNR_1007 extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenIAddACoursePrerequisite, ThenCoursePrerequisiteAdded> {
 
 private static final Logger LOG = LoggerFactory.getLogger(US_AD_PNR_1007.class);
 

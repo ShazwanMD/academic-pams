@@ -4,7 +4,8 @@ package my.edu.umk.pams.academic.planner.stage;
  * As an admin academic, 
  *  i want to set up  course prerequisite
  *    so that courses has a prerequisite
- * @author ain_zaida
+ *    
+ * @author ain
  */
 
 import org.springframework.beans.factory.annotation.Autowired;
