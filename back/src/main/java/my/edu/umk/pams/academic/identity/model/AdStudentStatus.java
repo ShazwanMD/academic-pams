@@ -5,4 +5,5 @@ public enum AdStudentStatus {
 	ACTIVE,
 	BARRED,
 	INACTIVE,
+	GRADUATED,
 }
