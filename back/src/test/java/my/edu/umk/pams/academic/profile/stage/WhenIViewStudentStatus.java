@@ -24,11 +24,16 @@ public class WhenIViewStudentStatus extends Stage<WhenIViewStudentStatus> {
     @ExpectedScenarioState
     private AdStudent student;
     
+   // @ProvidedScenarioState
+   // private String status;
+    
     public WhenIViewStudentStatus I_view_student_$_status(String identityNo) {
     	
 	 student = identityService.findStudentByStudentNo(identityNo);
 		
 	 AdStudentStatus studentStatus = student.getStudentStatus();
+	 
+	 //status = studentStatus.name();
 		
 		//try commit sekali-sekalo..var lalala
 		LOG.debug("Student's name: {}", student.getMatricNo());

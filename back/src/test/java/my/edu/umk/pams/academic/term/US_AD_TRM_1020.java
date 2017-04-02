@@ -26,7 +26,7 @@ public class US_AD_TRM_1020 extends SpringScenarioTest<GivenIAmStudent, WhenDrop
 	
 	
 	@Test
-	@Rollback(false)
+	@Rollback(true)
 	public void scenario01() {
 		
 		

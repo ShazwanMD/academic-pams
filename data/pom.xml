@@ -281,7 +281,15 @@
                                 <srcFile>src/test/resources/data/AD_PLMT_CODE.sql</srcFile>
                                 <srcFile>src/test/resources/data/AD_DUN_CODE.sql</srcFile>
                                 <srcFile>src/test/resources/data/AD_CNTY_CODE.sql</srcFile>
+                                <srcFile>src/test/resources/data/AD_MRTL_CODE.sql</srcFile>
                                 <srcFile>src/test/resources/data/AD_STTE_CODE.sql</srcFile>
+                               <srcFile>src/test/resources/data/AD_NTLY_CODE.sql</srcFile>
+                               <srcFile>src/test/resources/data/AD_NLTY_CODE.sql</srcFile>
+                              <srcFile>src/test/resources/data/AD_RACE_CODE.sql</srcFile>
+                               <srcFile>src/test/resources/data/AD_RLGN_CODE.sql</srcFile>
+                                <srcFile>src/test/resources/data/AD_RSCY_CODE.sql</srcFile>
+                                <srcFile>src/test/resources/data/AD_STDY_CNTR_CODE.sql</srcFile>
+                             
 
                                 <srcFile>src/test/resources/data/AD_ACDM_SESN.sql</srcFile>
                                 <srcFile>src/test/resources/data/AD_FCTY.sql</srcFile>

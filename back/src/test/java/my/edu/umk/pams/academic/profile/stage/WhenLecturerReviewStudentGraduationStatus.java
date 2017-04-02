@@ -14,9 +14,9 @@ import my.edu.umk.pams.academic.identity.model.AdStudentStatus;
 import my.edu.umk.pams.academic.identity.service.IdentityService;
 
 @JGivenStage
-public class WhenBursaryReviewStudentGraduationStatus extends Stage<WhenBursaryReviewStudentGraduationStatus> {
+public class WhenLecturerReviewStudentGraduationStatus extends Stage<WhenLecturerReviewStudentGraduationStatus> {
 
-	private static final Logger LOG = LoggerFactory.getLogger(WhenBursaryReviewStudentGraduationStatus.class);
+	private static final Logger LOG = LoggerFactory.getLogger(WhenLecturerReviewStudentGraduationStatus.class);
 	
 	@Autowired
 	private IdentityService identityService;
@@ -26,9 +26,8 @@ public class WhenBursaryReviewStudentGraduationStatus extends Stage<WhenBursaryR
 	
 	@ExpectedScenarioState
 	private AdStudentStatus studentStatus;
-	
-	
-	public WhenBursaryReviewStudentGraduationStatus bursary_review_student_graduation_status(String identityNo) {
+
+	public WhenLecturerReviewStudentGraduationStatus lecturer_review_student_graduation_status (String identityNo) {
 	
 		student = identityService.findStudentByStudentNo(identityNo);
 		AdStudentStatus studentStatus = student.getStudentStatus();
@@ -37,8 +36,9 @@ public class WhenBursaryReviewStudentGraduationStatus extends Stage<WhenBursaryR
 		LOG.debug("Student's status: {}", studentStatus.name());
 		LOG.debug("Student's status: {}", studentStatus.ordinal());
 		
+		
 		return self();
-	
+		
 	}
 
 }
