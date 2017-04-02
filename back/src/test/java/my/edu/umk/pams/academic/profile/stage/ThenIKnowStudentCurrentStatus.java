@@ -22,7 +22,7 @@ public class ThenIKnowStudentCurrentStatus extends Stage<ThenIKnowStudentCurrent
 	@ExpectedScenarioState
 	private AdStudentStatus studentStatus;
 	
-    public ThenIKnowStudentCurrentStatus I_know_student_$_current_status_$(String identityNo, String status) {
+    public ThenIKnowStudentCurrentStatus I_know_student_$_current_status(String identityNo) {
     	
 //    	hmm ni kawe buat ni
 
