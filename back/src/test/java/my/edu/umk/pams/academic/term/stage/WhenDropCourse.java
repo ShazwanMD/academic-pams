@@ -6,16 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
-import my.edu.umk.pams.academic.common.service.CommonService;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.identity.service.IdentityService;
-import my.edu.umk.pams.academic.planner.service.PlannerService;
 import my.edu.umk.pams.academic.term.model.AdEnrollment;
 import my.edu.umk.pams.academic.term.model.AdEnrollmentImpl;
-import my.edu.umk.pams.academic.term.model.AdOffering;
 import my.edu.umk.pams.academic.term.model.AdSection;
 import my.edu.umk.pams.academic.term.service.TermService;
-
 
 @JGivenStage
 public class WhenDropCourse extends Stage<WhenDropCourse> {
@@ -42,7 +38,6 @@ public class WhenDropCourse extends Stage<WhenDropCourse> {
 		String identityNo = "A17P002";
 		student = (AdStudent) identityService.findActorByIdentityNo(identityNo);
 		section = termService.findSectionByCanonicalCode("FKP/PHD/0001/DDA2113/201720181");
-		
 		enrollment = new AdEnrollmentImpl();
 		enrollment.setStudent(student);
 		enrollment.setSection(section);

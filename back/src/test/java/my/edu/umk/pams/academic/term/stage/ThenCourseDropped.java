@@ -1,12 +1,8 @@
 package my.edu.umk.pams.academic.term.stage;
 
-import java.util.List;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-
-//todo asyikin
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
@@ -25,7 +21,7 @@ public class ThenCourseDropped extends Stage<ThenCourseDropped> {
 	private TermService termService;
 
 	@ProvidedScenarioState
-	private List<AdEnrollment> enrollment;
+	private AdEnrollment enrollment;
 
 	@ExpectedScenarioState
 	private AdStudent student;
@@ -36,14 +32,12 @@ public class ThenCourseDropped extends Stage<ThenCourseDropped> {
 	public ThenCourseDropped() {
 		AdEnrollment enrollment = new AdEnrollmentImpl();
 	}
-	
+
 	public ThenCourseDropped The_course_enrollment_are_dropped() {
 
-		AdEnrollment enrollment = termService.findEnrollmentBySectionAndStudent(section, student);
+		enrollment = termService.findEnrollmentBySectionAndStudent(section, student);
 
-		//for (AdEnrollment enrollment1 : enrollments) {
-			LOG.debug("Deleted:" + enrollment);
-		//}
+		LOG.debug("Deleted:" + enrollment.getSection());
 
 		return self();
 

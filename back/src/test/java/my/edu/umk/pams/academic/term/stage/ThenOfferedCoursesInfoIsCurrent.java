@@ -4,6 +4,8 @@ package my.edu.umk.pams.academic.term.stage;
  * @author asyikin.mr and ziana
  */
 import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
 import com.tngtech.jgiven.Stage;
@@ -15,7 +17,8 @@ import my.edu.umk.pams.academic.planner.model.AdProgram;
 
 @JGivenStage
 public class ThenOfferedCoursesInfoIsCurrent extends Stage<ThenOfferedCoursesInfoIsCurrent> {
-
+	private static final Logger LOG = LoggerFactory.getLogger(ThenOfferedCoursesInfoIsCurrent.class);
+	
 	@Autowired
 	private TermService termService;
 
