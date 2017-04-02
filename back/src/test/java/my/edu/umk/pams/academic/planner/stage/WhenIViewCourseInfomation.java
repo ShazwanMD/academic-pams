@@ -46,6 +46,4 @@ public class WhenIViewCourseInfomation extends Stage<WhenIViewCourseInfomation> 
 		}
 		return self();
 	}
-
-	}
-
+}

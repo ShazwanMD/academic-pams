@@ -28,6 +28,5 @@ public class ThenCourseInformationReviewed extends Stage<ThenCourseInformationRe
         return self();
     }
 
-
 		
 	}
