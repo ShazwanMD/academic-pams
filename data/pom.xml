@@ -281,6 +281,7 @@
                                 <srcFile>src/test/resources/data/AD_PLMT_CODE.sql</srcFile>
                                 <srcFile>src/test/resources/data/AD_DUN_CODE.sql</srcFile>
                                 <srcFile>src/test/resources/data/AD_CNTY_CODE.sql</srcFile>
+                                <srcFile>src/test/resources/data/AD_MRTL_CODE.sql</srcFile>
                                 <srcFile>src/test/resources/data/AD_STTE_CODE.sql</srcFile>
 
                                 <srcFile>src/test/resources/data/AD_ACDM_SESN.sql</srcFile>

@@ -18,6 +18,7 @@ import my.edu.umk.pams.bdd.stage.GivenIAmAcademicStaff;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
+
 @ContextConfiguration(classes = TestAppConfiguration.class)
 public class US_AD_PFL_5006 extends SpringScenarioTest<GivenIAmAcademicStaff, WhenLecturerReviewStudentGraduationStatus, ThenLecturerReviewedStudentGraduationStatus> {
 
