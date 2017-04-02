@@ -287,7 +287,7 @@
                                <srcFile>src/test/resources/data/AD_NLTY_CODE.sql</srcFile>
                               <srcFile>src/test/resources/data/AD_RACE_CODE.sql</srcFile>
                                <srcFile>src/test/resources/data/AD_RLGN_CODE.sql</srcFile>
-                                
+                                <srcFile>src/test/resources/data/AD_RSCY_CODE.sql</srcFile>
                                 
                              
 
