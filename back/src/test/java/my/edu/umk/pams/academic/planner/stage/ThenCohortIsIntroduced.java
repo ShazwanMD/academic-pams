@@ -13,7 +13,7 @@ import java.util.List;
 
 
 @JGivenStage
-public class ThenGroupScheduleByIntakeCode extends Stage<ThenGroupScheduleByIntakeCode> {
+public class ThenCohortIsIntroduced extends Stage<ThenCohortIsIntroduced> {
 
     @Autowired
     private PlannerService plannerService;
@@ -21,9 +21,11 @@ public class ThenGroupScheduleByIntakeCode extends Stage<ThenGroupScheduleByInta
     @ExpectedScenarioState
     private AdProgram program;
 
-    public ThenGroupScheduleByIntakeCode group_students_in_the_schedule_by_intake_code() {
+    public ThenCohortIsIntroduced cohort_is_introduced() {
         List<AdCohort> cohort = plannerService.findCohorts(program, 0, 100);
         Assert.notEmpty(cohort, "Cohort should not be empty");
         return self();
     }
+
+
 }
