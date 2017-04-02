@@ -1,6 +1,7 @@
 package my.edu.umk.pams.academic.profile;
 
 import org.junit.Test;
+
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,13 +24,14 @@ public class US_AD_PFL_3004 extends SpringScenarioTest<GivenIAmBursary, WhenBurs
 
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_PFL_3004.class);
 	
+    private static final String IDENTITY_NO = "A17P001";
 	
 	@Test
 	@Rollback
 	public void scenario3004(){
 		given().I_am_a_bursary_in_current_academic_session();
-		when().Bursary_Review_Student_Graduation_Status();
-		then().Student_Graduation_Status_Reviewed();
+		when().bursary_review_student_graduation_status(IDENTITY_NO);
+		then().student_graduation_status_reviewed();
 		
 	}
 }
