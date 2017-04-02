@@ -31,13 +31,13 @@ public class US_AD_PFL_5002 extends SpringScenarioTest<GivenIAmAcademicStaff, Wh
 
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_PFL_5002.class);
 	
-	private static String StudentNo = "A17P001";
+	private static String STUDENT_NO = "A17P001";
 	
 	@Test
 	@Rollback
 	public void scenario5002(){
 		given().i_am_a_staff_in_current_academic_session();
-			when().supervisor_review_course_registration_info();
+			when().supervisor_review_course_registration_info_for_$(STUDENT_NO);
 				then().course_registration_details_reviewed();
 		
 		

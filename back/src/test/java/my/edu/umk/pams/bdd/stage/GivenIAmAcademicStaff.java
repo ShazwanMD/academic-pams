@@ -13,8 +13,11 @@ import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 
 import my.edu.umk.pams.academic.identity.model.AdActor;
+import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.identity.model.AdUser;
+import my.edu.umk.pams.academic.identity.service.IdentityService;
 import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
+import my.edu.umk.pams.academic.planner.model.AdCourse;
 import my.edu.umk.pams.academic.planner.model.AdProgram;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
 import my.edu.umk.pams.academic.security.integration.AdUserDetails;
@@ -30,6 +33,9 @@ public class GivenIAmAcademicStaff extends Stage<GivenIAmAcademicStaff> {
     @Autowired
     private AuthenticationManager authenticationManager;
 
+    @Autowired
+	private IdentityService identityService;
+	
     @Autowired
     private PlannerService plannerService;
 
@@ -50,6 +56,12 @@ public class GivenIAmAcademicStaff extends Stage<GivenIAmAcademicStaff> {
 
     @ProvidedScenarioState
     private AdActor staff;
+    
+    @ProvidedScenarioState
+	AdStudent student;
+	
+	@ProvidedScenarioState
+	AdCourse course;
 
     public GivenIAmAcademicStaff i_am_a_staff_in_$_academic_session(String academicSessionCode) {
         loginAsStaff();
