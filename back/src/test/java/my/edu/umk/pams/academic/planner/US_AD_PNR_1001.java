@@ -4,7 +4,7 @@ import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.planner.stage.ThenProgramIsIntroduced;
-import my.edu.umk.pams.academic.planner.stage.WhenIAddAProgram;
+import my.edu.umk.pams.academic.planner.stage.WhenAdminAddAProgram;
 import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -24,7 +24,7 @@ import org.springframework.transaction.annotation.Transactional;
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
-public class US_AD_PNR_1001 extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenIAddAProgram, ThenProgramIsIntroduced> {
+public class US_AD_PNR_1001 extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenAdminAddAProgram, ThenProgramIsIntroduced> {
 
     private static final Logger LOG = LoggerFactory.getLogger(US_AD_PNR_1001.class);
 
