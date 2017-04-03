@@ -39,8 +39,10 @@ public class WhenAdminAddCourse extends Stage<WhenAdminAddCourse> {
         course.setTitle("Master of Enterpreneurship");
         course.setTitleEn("Master of Enterpreneurship");
         course.setTitleMs("Master of Enterpreneurship");
+        course.setCredit(3);
         plannerService.addCourse(faculty, course);
         return self();
+        
     }
 
 }
