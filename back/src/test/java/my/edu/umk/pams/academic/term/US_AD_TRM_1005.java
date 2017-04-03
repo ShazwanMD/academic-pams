@@ -1,6 +1,5 @@
 /**
  * @author asyikin.mr 
- * todo:asyikin
  */
 package my.edu.umk.pams.academic.term;
 
@@ -21,14 +20,15 @@ import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
-public class US_AD_TRM_1005 extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenIWantToUpdateAppointmentStatus, ThenTheStatusAppointmentIsUpdated> {
+public class US_AD_TRM_1005 extends
+		SpringScenarioTest<GivenIAmCPSAdministrator, WhenIWantToUpdateAppointmentStatus, ThenTheStatusAppointmentIsUpdated> {
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_1005.class);
-	
-	 @Test
-	    @Rollback
-	    public void scenario1() {
-	        given().I_am_a_CPS_administrator_in_current_academic_session();
-	        when().I_update_appointment_status();
-	        then().the_appointment_status_is_updated();
-	    }
+
+	@Test
+	@Rollback(true)
+	public void scenario1() {
+		given().I_am_a_CPS_administrator_in_current_academic_session();
+		when().I_update_appointment_status();
+		then().the_appointment_status_is_updated();
 	}
+}
