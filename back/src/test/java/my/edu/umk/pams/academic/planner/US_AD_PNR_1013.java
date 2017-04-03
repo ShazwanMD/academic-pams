@@ -13,7 +13,8 @@ import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 
 import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.planner.stage.ThenNewCohortIsUpdated;
-import my.edu.umk.pams.academic.planner.stage.WhenAdminAddCohort;
+
+import my.edu.umk.pams.academic.planner.stage.WhenAdminUpdateCohort;
 import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
 
 /*Given : I Am Admin
@@ -27,7 +28,7 @@ Then :  New Cohort Is Updated.
 @ContextConfiguration(classes = TestAppConfiguration.class)
 
 public class US_AD_PNR_1013
-		extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenAdminAddCohort, ThenNewCohortIsUpdated> {
+		extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenAdminUpdateCohort, ThenNewCohortIsUpdated> {
 
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_PNR_1013.class);
 
