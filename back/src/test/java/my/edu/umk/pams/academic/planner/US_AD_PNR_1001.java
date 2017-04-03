@@ -16,10 +16,9 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- * As an admin academic,
- * U want to set up a program for a faculty
- * so that a new program is introduced
- *
+ *Given : I Am Admin
+ *When : Admin Add Program
+ *Then : New Program Is Introduced
  * @author zaida_ain
  */
 @RunWith(SpringJUnit4ClassRunner.class)
