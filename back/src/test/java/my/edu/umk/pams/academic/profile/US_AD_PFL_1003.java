@@ -34,7 +34,7 @@ public class US_AD_PFL_1003 extends SpringScenarioTest<GivenIAmStudent, WhenIRev
     public void scenario1003() {
         given().I_am_a_student_in_current_academic_session();
         when().I_review_activation_status_$(IDENTITY_NO);
-        then().Activation_status_reviewed();
+        then().activation_status_reviewed();
     }
 
 }

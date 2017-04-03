@@ -20,18 +20,10 @@ public class ThenActivationStatusReviewed extends Stage<ThenActivationStatusRevi
     private IdentityService identityService;
 	
     @ExpectedScenarioState
-	private AdActor actor;
-
-    @ExpectedScenarioState
     private AdStudent student;
-    
-	@ExpectedScenarioState
-	private AdStudentStatus studentStatus;
+   
 	
-	@ExpectedScenarioState
-	private String identityNo = "A17P001";
-
-    public ThenActivationStatusReviewed Activation_status_reviewed() {
+    public ThenActivationStatusReviewed activation_status_reviewed() {
 
     	student.getIdentityNo();
     	

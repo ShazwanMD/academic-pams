@@ -1,11 +1,9 @@
 package my.edu.umk.pams.academic.profile.stage;
 
 import com.tngtech.jgiven.Stage;
-
-import com.tngtech.jgiven.annotation.ProvidedScenarioState;
+import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 
-import my.edu.umk.pams.academic.identity.model.AdActor;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.identity.model.AdStudentStatus;
 import my.edu.umk.pams.academic.identity.service.IdentityService;
@@ -21,14 +19,12 @@ public class WhenIReviewActivationStatus extends Stage<WhenIReviewActivationStat
 	@Autowired
 	private IdentityService identityService;
 
-	@ProvidedScenarioState
+    @ExpectedScenarioState
 	private AdStudent student;
 
-	@ProvidedScenarioState
+    @ExpectedScenarioState
 	private AdStudentStatus studentStatus;
-	
-	@ProvidedScenarioState
-	private String identityNo = "A17P001";
+
 
 	public WhenIReviewActivationStatus I_review_activation_status_$(String identityNo) {
 
