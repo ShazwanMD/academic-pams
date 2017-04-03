@@ -36,4 +36,4 @@ public class US_AD_PNR_1002 extends SpringScenarioTest<GivenIAmCPSAdministrator,
         then().faculty_has_courses();
     }
 }
-bhgyughbuhjhuhS
+
