@@ -33,6 +33,7 @@ import org.junit.runners.Suite;
         
         US_AD_PFL_4001.class,
         US_AD_PFL_4002.class,
+        US_AD_PFL_4003.class,
         
         US_AD_PFL_5001.class,        
         US_AD_PFL_5002.class,
