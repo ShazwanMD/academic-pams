@@ -272,35 +272,110 @@ VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
                                'DBA/YEAR3/SEMESTER6/Module 14', 'Dissertation ( Part 3)', 'Disertasi (Bahagian 3)', 'Dissertation ( Part 3)', 15, 1, 1, 0,
                                CURRENT_TIMESTAMP);                               
                                
+INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE, TITLE_MS, TITLE_EN, CREDIT, CLASSIFICATION, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
+                                FROM AD_FCTY F
+                                WHERE F.CODE = 'CPS'),
+                               'MAM', 'Management', 'Pengurusan', 'Management', 50, 1, 1, 0,
+                               CURRENT_TIMESTAMP); 
                                
+INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE, TITLE_MS, TITLE_EN, CREDIT, CLASSIFICATION, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
+                                FROM AD_FCTY F
+                                WHERE F.CODE = 'CPS'),
+                               'PAM', 'Management', 'Pengurusan', 'Management', 50, 1, 1, 0,
+                               CURRENT_TIMESTAMP);                               
                                
+INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE, TITLE_MS, TITLE_EN, CREDIT, CLASSIFICATION, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
+                                FROM AD_FCTY F
+                                WHERE F.CODE = 'CPS'),
+                               'MAF', 'Finance', 'Kewangan', 'Finance', 50, 1, 1, 0,
+                               CURRENT_TIMESTAMP);                                
                                
+INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE, TITLE_MS, TITLE_EN, CREDIT, CLASSIFICATION, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
+                                FROM AD_FCTY F
+                                WHERE F.CODE = 'CPS'),
+                               'PAF', 'Finance', 'Kewangan', 'Finance', 50, 1, 1, 0,
+                               CURRENT_TIMESTAMP);                                
                                
+INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE, TITLE_MS, TITLE_EN, CREDIT, CLASSIFICATION, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
+                                FROM AD_FCTY F
+                                WHERE F.CODE = 'CPS'),
+                               'MAA', 'Accounting', 'Perakaunan', 'Accounting', 50, 1, 1, 0,
+                               CURRENT_TIMESTAMP);                               
                                
+INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE, TITLE_MS, TITLE_EN, CREDIT, CLASSIFICATION, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
+                                FROM AD_FCTY F
+                                WHERE F.CODE = 'CPS'),
+                               'PAA', 'Accounting', 'Perakaunan', 'Accounting', 50, 1, 1, 0,
+                               CURRENT_TIMESTAMP);                               
                                
+INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE, TITLE_MS, TITLE_EN, CREDIT, CLASSIFICATION, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
+                                FROM AD_FCTY F
+                                WHERE F.CODE = 'CPS'),
+                               'MAR', 'Retail', 'Peruncitan', 'Retail', 50, 1, 1, 0,
+                               CURRENT_TIMESTAMP);                               
                                
+INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE, TITLE_MS, TITLE_EN, CREDIT, CLASSIFICATION, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
+                                FROM AD_FCTY F
+                                WHERE F.CODE = 'CPS'),
+                               'PAR', 'Retail', 'Peruncitan', 'Retail', 50, 1, 1, 0,
+                               CURRENT_TIMESTAMP);                                
                                
+INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE, TITLE_MS, TITLE_EN, CREDIT, CLASSIFICATION, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
+                                FROM AD_FCTY F
+                                WHERE F.CODE = 'CPS'),
+                               'MAK', 'Commerce', 'Perdagangan', 'Commerce', 50, 1, 1, 0,
+                               CURRENT_TIMESTAMP);                                 
                                
-                               
-                               
-                               
-                               
-                               
-                               
-                               
-                               
-                               
-                               
+INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE, TITLE_MS, TITLE_EN, CREDIT, CLASSIFICATION, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
+                                FROM AD_FCTY F
+                                WHERE F.CODE = 'CPS'),
+                               'PAK', 'Commerce', 'Perdagangan', 'Commerce', 50, 1, 1, 0,
+                               CURRENT_TIMESTAMP);                                
                                                          
+INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE, TITLE_MS, TITLE_EN, CREDIT, CLASSIFICATION, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
+                                FROM AD_FCTY F
+                                WHERE F.CODE = 'CPS'),
+                               'MAW', 'Health Entrepreneurship', 'Keusahawan Kesihatan', 'Health Entrepreneurship', 50, 1, 1, 0,
+                               CURRENT_TIMESTAMP);                          
                           
+INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE, TITLE_MS, TITLE_EN, CREDIT, CLASSIFICATION, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
+                                FROM AD_FCTY F
+                                WHERE F.CODE = 'CPS'),
+                               'PAW', 'Health Entrepreneurship', 'Keusahawan Kesihatan', 'Health Entrepreneurship', 50, 1, 1, 0,
+                               CURRENT_TIMESTAMP);                          
                           
+INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE, TITLE_MS, TITLE_EN, CREDIT, CLASSIFICATION, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
+                                FROM AD_FCTY F
+                                WHERE F.CODE = 'CPS'),
+                               'MAH', 'Hospitality', 'Hospitaliti', 'Hospitality', 50, 1, 1, 0,
+                               CURRENT_TIMESTAMP);                           
                           
+INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE, TITLE_MS, TITLE_EN, CREDIT, CLASSIFICATION, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
+                                FROM AD_FCTY F
+                                WHERE F.CODE = 'CPS'),
+                               'PAH', 'Hospitality', 'Hospitaliti', 'Hospitality', 50, 1, 1, 0,
+                               CURRENT_TIMESTAMP);                          
                           
-                          
-                          
-                          
-                          
-                          
+INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE, TITLE_MS, TITLE_EN, CREDIT, CLASSIFICATION, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
+                                FROM AD_FCTY F
+                                WHERE F.CODE = 'CPS'),
+                               'MAP', 'Tourism', 'Pelancongan', 'Tourism', 50, 1, 1, 0,
+                               CURRENT_TIMESTAMP);                           
                           
                           
                           
