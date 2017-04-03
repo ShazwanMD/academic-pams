@@ -10,11 +10,13 @@ import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import my.edu.umk.pams.academic.config.TestAppConfiguration;
-import my.edu.umk.pams.academic.planner.stage.ThenTheAcademicSessionIsCreated;
-import my.edu.umk.pams.academic.planner.stage.WhenICreateAcademicSession;
+import my.edu.umk.pams.academic.planner.stage.ThenNewAcademicSessionInfoIsCreated;
+import my.edu.umk.pams.academic.planner.stage.WhenIAddNewAcademicSessionInfo;
 import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
 
-/**
+/** I Am Admin
+ * I Add New Academic Session Info
+ * New Academic Session Info Is Created
  * @author zaida.n
  */
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -22,7 +24,7 @@ import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
 @ContextConfiguration(classes = TestAppConfiguration.class)
 
 public class US_AD_PNR_1010 extends
-		SpringScenarioTest<GivenIAmCPSAdministrator, WhenICreateAcademicSession, ThenTheAcademicSessionIsCreated> {
+		SpringScenarioTest<GivenIAmCPSAdministrator, WhenIAddNewAcademicSessionInfo, ThenNewAcademicSessionInfoIsCreated> {
 
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_PNR_1010.class);
 
@@ -30,7 +32,7 @@ public class US_AD_PNR_1010 extends
 	@Rollback(false)
 	public void scenario1() {
 		given().I_am_a_CPS_administrator_in_current_academic_session();
-		when().I_create_academic_session();
-		then().the_academic_session_is_created();
+		when().I_add_new_academic_session_info();
+		then().New_academic_session_info_is_created();
 	}
 }
