@@ -19,9 +19,9 @@ import org.springframework.util.Assert;
  * @author PAMS
  */
 @JGivenStage
-public class WhenIAddAProgram extends Stage<WhenIAddAProgram> {
+public class WhenAdminAddAProgram extends Stage<WhenAdminAddAProgram> {
 
-    private static final Logger LOG = LoggerFactory.getLogger(WhenIAddAProgram.class);
+    private static final Logger LOG = LoggerFactory.getLogger(WhenAdminAddAProgram.class);
 
     @Autowired
     private PlannerService plannerService;
@@ -35,7 +35,7 @@ public class WhenIAddAProgram extends Stage<WhenIAddAProgram> {
     @ExpectedScenarioState
     private String PROGRAM_CODE;
 
-    public WhenIAddAProgram Admin_add_a_program_for_faculty_$(String facultyCode) {
+    public WhenAdminAddAProgram Admin_add_a_program_for_faculty_$(String facultyCode) {
         faculty = plannerService.findFacultyByCode(facultyCode);
         AdProgramLevel programLevel = plannerService.findProgramLevelByCode("MASTER");
         Assert.notNull(faculty, "faculty CANNOT be null");

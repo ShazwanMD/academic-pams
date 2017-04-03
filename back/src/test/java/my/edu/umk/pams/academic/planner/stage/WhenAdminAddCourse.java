@@ -17,9 +17,9 @@ import org.springframework.beans.factory.annotation.Autowired;
  * @author PAMS
  */
 @JGivenStage
-public class WhenIAddACourse extends Stage<WhenIAddACourse> {
+public class WhenAdminAddCourse extends Stage<WhenAdminAddCourse> {
 
-    private static final Logger LOG = LoggerFactory.getLogger(WhenIAddACourse.class);
+    private static final Logger LOG = LoggerFactory.getLogger(WhenAdminAddCourse.class);
 
     @Autowired
     private PlannerService plannerService;
@@ -30,7 +30,7 @@ public class WhenIAddACourse extends Stage<WhenIAddACourse> {
     @ProvidedScenarioState
     private AdFaculty faculty;
 
-    public WhenIAddACourse I_add_a_course_to_faculty_code_$(String code) {
+    public WhenAdminAddCourse Admin_add_a_course_to_faculty_code_$(String code) {
         faculty = plannerService.findFacultyByCode(code);
         AdCourse course = new AdCourseImpl();
         course.setCode("PRGM-1234");
