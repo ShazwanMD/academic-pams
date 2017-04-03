@@ -6,11 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
+import com.tngtech.jgiven.integration.spring.JGivenStage;
 
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.identity.model.AdStudentStatus;
 import my.edu.umk.pams.academic.identity.service.IdentityService;
 
+@JGivenStage
 public class WhenReviewStudentStatus extends Stage<WhenReviewStudentStatus> {
 	
 	private static final Logger LOG = LoggerFactory.getLogger(WhenReviewStudentStatus.class);
