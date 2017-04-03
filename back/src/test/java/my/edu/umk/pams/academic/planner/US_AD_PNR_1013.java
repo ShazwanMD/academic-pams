@@ -13,7 +13,7 @@ import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 
 import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.planner.stage.ThenNewCohortIsUpdated;
-import my.edu.umk.pams.academic.planner.stage.WhenAdminAddCohort;
+
 import my.edu.umk.pams.academic.planner.stage.WhenAdminUpdateCohort;
 import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
 
