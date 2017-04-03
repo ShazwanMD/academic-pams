@@ -23,13 +23,13 @@ public class US_AD_PFL_1008 extends SpringScenarioTest<GivenIAmStudent, WhenIRev
 
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_PFL_1008.class);
 	
-	
+	private static String COURSE_CODE = "MAP";
 	@Test
 	@Rollback
 	public void scenario1008(){
 		
 		given().I_am_a_student_in_current_academic_session();
-		when().I_review_research_info();
-		then().Research_info_is_current();
+		when().I_review_research_info_for_$(COURSE_CODE);
+		then().Research_info_for_$_is_current(COURSE_CODE);
 	}
 }
