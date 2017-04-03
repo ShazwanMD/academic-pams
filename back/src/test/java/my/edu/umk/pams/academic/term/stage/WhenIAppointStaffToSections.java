@@ -1,5 +1,6 @@
 /**
  * @author asyikin.mr
+
  */
 package my.edu.umk.pams.academic.term.stage;
 
@@ -10,8 +11,8 @@ import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
-import my.edu.umk.pams.academic.core.AdMetadata;
 import my.edu.umk.pams.academic.identity.model.AdStaff;
+import my.edu.umk.pams.academic.identity.service.IdentityService;
 import my.edu.umk.pams.academic.term.model.AdAppointment;
 import my.edu.umk.pams.academic.term.model.AdAppointmentImpl;
 import my.edu.umk.pams.academic.term.model.AdSection;
@@ -20,6 +21,7 @@ import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
 import my.edu.umk.pams.academic.planner.model.AdAppointmentStatus;
 import my.edu.umk.pams.academic.planner.model.AdCourse;
 import my.edu.umk.pams.academic.planner.model.AdFaculty;
+import my.edu.umk.pams.academic.planner.model.AdProgram;
 
 @JGivenStage
 public class WhenIAppointStaffToSections extends Stage<WhenIAppointStaffToSections> {
@@ -27,6 +29,9 @@ public class WhenIAppointStaffToSections extends Stage<WhenIAppointStaffToSectio
 
 	@Autowired
 	private TermService termService;
+	
+	@Autowired
+	private IdentityService identityService;
 
 	@ProvidedScenarioState
 	private AdAppointment appointment;
@@ -37,34 +42,22 @@ public class WhenIAppointStaffToSections extends Stage<WhenIAppointStaffToSectio
 	@ProvidedScenarioState
 	private AdSection section;
 
-	@ProvidedScenarioState
-	private String canonicalCode;
-
-	@ProvidedScenarioState
-	private AdMetadata metadata;
-
 	@ExpectedScenarioState
-	private AdFaculty faculty;
-
-	@ProvidedScenarioState
-	private AdCourse course;
+	private AdProgram program;
 
 	@ExpectedScenarioState
 	private AdAcademicSession academicSession;
 
 	public WhenIAppointStaffToSections I_appoint_staff_for_sections() {
 
-		LOG.debug("appointment: {}", appointment.getStaff());
-
-		canonicalCode = faculty.getCode() + "/" + course.getCode() + "/" + academicSession.getCode();
-		section = termService.findSectionByCanonicalCode(canonicalCode);
+		section = termService.findSectionByCanonicalCode("FKP/PHD/0001/DDA2113/201720181");
+		staff = identityService.findStaffByStaffNo("01001A");
 
 		appointment = new AdAppointmentImpl();
 		appointment.setSection(section);
 		appointment.setStaff(staff);
 		appointment.setStatus(AdAppointmentStatus.NEW);
-		appointment.setMetadata(metadata);
-
+		
 		termService.saveAppointment(appointment);
 
 		return self();
