@@ -14,10 +14,9 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-/*As an admin academic, 
-i can update courses for a faculty, 
-so that its information of new course for each programmes is updated 
-
+/*Given : I Am Admin
+When : Admin Update Courses
+Then :  New courses Is Updated.
 @author PAMS - Rodziah Mohamad Nor
 */
 
