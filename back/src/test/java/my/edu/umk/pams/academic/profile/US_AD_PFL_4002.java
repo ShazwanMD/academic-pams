@@ -18,7 +18,7 @@ import my.edu.umk.pams.bdd.stage.GivenIAmAcademicStaff;
 
 /*As a lecturer,
 I want to view student activation status 
-So that I can know my students current status under my lectures..
+So that I can know my students current status under my lectures
 */
 
 @RunWith(SpringJUnit4ClassRunner.class)
