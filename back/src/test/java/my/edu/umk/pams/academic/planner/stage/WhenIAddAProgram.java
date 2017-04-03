@@ -35,7 +35,7 @@ public class WhenIAddAProgram extends Stage<WhenIAddAProgram> {
     @ExpectedScenarioState
     private String PROGRAM_CODE;
 
-    public WhenIAddAProgram I_add_a_program_for_faculty_$(String facultyCode) {
+    public WhenIAddAProgram Admin_add_a_program_for_faculty_$(String facultyCode) {
         faculty = plannerService.findFacultyByCode(facultyCode);
         AdProgramLevel programLevel = plannerService.findProgramLevelByCode("MASTER");
         Assert.notNull(faculty, "faculty CANNOT be null");
