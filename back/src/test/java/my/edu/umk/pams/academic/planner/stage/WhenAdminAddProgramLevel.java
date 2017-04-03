@@ -27,7 +27,7 @@ public class WhenAdminAddProgramLevel extends Stage<WhenAdminAddProgramLevel> {
     @ExpectedScenarioState
     private String PROGRAM_CODE;
 
-    public WhenAdminAddProgramLevel I_add_a_program_level_for_faculty_$(String facultycode) {
+    public WhenAdminAddProgramLevel Admin_add_a_program_level_for_faculty_$(String facultycode) {
 
         faculty = plannerService.findFacultyByCode(facultycode);
         
