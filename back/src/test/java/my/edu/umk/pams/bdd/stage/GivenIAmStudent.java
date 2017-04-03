@@ -3,6 +3,8 @@ package my.edu.umk.pams.bdd.stage;
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
+
+import my.edu.umk.pams.academic.identity.model.AdAddress;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.identity.model.AdUser;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
@@ -49,6 +51,9 @@ public class GivenIAmStudent extends Stage<GivenIAmStudent> {
     @ProvidedScenarioState
     private AdSection section;
 
+    @ProvidedScenarioState
+    private AdAddress address;
+    
     public GivenIAmStudent I_am_a_student_in_$_academic_session(String academicSessionCode) {
         loginAsStudent();
         academicSession = plannerService.findAcademicSessionByCode(academicSessionCode);

@@ -8,6 +8,7 @@ import my.edu.umk.pams.academic.identity.model.AdAddress;
 import my.edu.umk.pams.academic.identity.model.AdAddressImpl;
 import my.edu.umk.pams.academic.identity.model.AdAddressType;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
+import my.edu.umk.pams.academic.identity.service.IdentityService;
 import my.edu.umk.pams.academic.profile.service.ProfileService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,22 +26,36 @@ public class WhenIUpdateMailingAddress extends Stage<WhenIUpdateMailingAddress> 
 
     @Autowired
     private ProfileService profileService;
+    
+    @Autowired
+    private IdentityService identityService;
 
     @Autowired
     private CommonService commonService;
 
     @ExpectedScenarioState
     private AdStudent student;
+    
+    @ExpectedScenarioState
+    private AdAddress address;
 
     public WhenIUpdateMailingAddress I_update_mailing_address() {
-        AdAddress address = new AdAddressImpl();
-        address.setType(AdAddressType.MAILING);
-        address.setAddress1("Jalan Petaling");
-        address.setAddress2("Petaling Jaya");
-        address.setStateCode(commonService.findStateCodeByCode("MY-01"));
-        address.setCountryCode(commonService.findCountryCodeByCode("MY"));
-        profileService.addAddress(student, address);
 
+    	student = identityService.findStudentByStudentNo("A17P001");
+    	
+    	address = profileService.findAddress(student);
+    	
+    	address.setAddress1("LOT 431");
+    	address.setAddress2("Jalan SK Bunut Payong");
+    	address.setAddress3("Jalan Kuala Krai");
+    	address.setPostCode("15150");
+    	address.setType(AdAddressType.MAILING);
+    	address.setCountryCode(commonService.findCountryCodeByCode("MY"));
+    	address.setStateCode(commonService.findStateCodeByCode("MY-01"));
+    	
+    	profileService.updateAddress(student, address);
+    	
+    	
         return self();
     }
 
