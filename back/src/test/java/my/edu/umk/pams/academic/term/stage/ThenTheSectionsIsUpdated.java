@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
+import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 import my.edu.umk.pams.academic.term.model.AdSection;
 import my.edu.umk.pams.academic.term.service.TermService;
@@ -23,13 +24,16 @@ public class ThenTheSectionsIsUpdated extends Stage<ThenTheSectionsIsUpdated> {
 	private AdSection section;
 
 	@ExpectedScenarioState
-	private String canonicalCode;
+	private String canonical_code;
 
 	public ThenTheSectionsIsUpdated the_sections_is_updated() {
 
 		LOG.debug("section {} ", section.getCanonicalCode());
 
-		AdSection section = termService.findSectionByCanonicalCode(canonicalCode);
+		AdSection section = termService.findSectionByCanonicalCode(canonical_code);
+		
+		LOG.debug("section {} ", section.getCanonicalCode());
+		
 		Assert.notNull(section, "The data must not be null");
 
 		return self();
