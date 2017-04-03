@@ -298,6 +298,7 @@
                                 <srcFile>src/test/resources/data/AD_CRLM.sql</srcFile>
                                 <srcFile>src/test/resources/data/AD_CHRT.sql</srcFile>
                                 <srcFile>src/test/resources/data/AD_ACTR.sql</srcFile>
+                                <srcFile>src/test/resources/data/AD_ADDR.sql</srcFile>
                                 <srcFile>src/test/resources/data/AD_CRSE.sql</srcFile>
                                 <srcFile>src/test/resources/data/AD_OFRG.sql</srcFile>
                                 <srcFile>src/test/resources/data/AD_SCTN.sql</srcFile>
