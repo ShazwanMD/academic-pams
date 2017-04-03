@@ -28,7 +28,7 @@ public class US_AD_TRM_1003
     private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_1003.class);
 
     @Test
-    @Rollback
+    @Rollback(true)
     public void scenario1() {
         given().I_am_a_CPS_administrator_in_current_academic_session();
         when().I_update_sections_for_offering();
