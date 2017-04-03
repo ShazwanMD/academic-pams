@@ -24,24 +24,25 @@ public class US_AD_PFL_2005 extends SpringScenarioTest<GivenIAmAdministrator, Wh
 	
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_PFL_2005.class);
 	
+	
+	
 	@Test
 	@Rollback
 	public void scenarioCPS(){
 		
 		given().i_am_a_$_administrator_in_current_academic_session("cps", "abc123");
 		when().Admin_update_student_research_title();
-		then().Student_research_title_updated_by_admin();
+		then().Student_research_title_updated_by_admin_cps();
 		
 	}
-	
-	
+
 	@Test
 	@Rollback
 	public void scenarioMGSEB(){
 		
 		given().i_am_a_$_administrator_in_current_academic_session("mgseb", "abc123");
-		when().Admin_update_student_research_title();
-		then().Student_research_title_updated_by_admin();
+		when().Admin_update_student_research_titles();
+		then().Student_research_title_updated_by_admin_mgseb();
 		
 	}
 }
