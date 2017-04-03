@@ -10,15 +10,15 @@ import java.io.IOException;
  */
 public class Student extends Actor {
 
-    @JsonCreator
-    public static Student create(String jsonString) {
-        Student o = null;
-        try {
-            ObjectMapper mapper = new ObjectMapper();
-            o = mapper.readValue(jsonString, Student.class);
-        } catch (IOException e) {
-            // handle
+        @JsonCreator
+        public static Student create(String jsonString) {
+            Student o = null;
+            try {
+                ObjectMapper mapper = new ObjectMapper();
+                o = mapper.readValue(jsonString, Student.class);
+            } catch (IOException e) {
+                // handle
+            }
+            return o;
         }
-        return o;
-    }
 }

@@ -74,9 +74,6 @@ export class PlannerModule {
         IdentityService,
         CommonService,
         PlannerService,
-        ProgramActions,
-        FacultyActions,
-        CourseActions,
       ],
     };
   }

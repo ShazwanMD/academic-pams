@@ -10,10 +10,9 @@ export type FacultyListState = Faculty[];
 const initialState: FacultyListState = <Faculty[]>[];
 
 export function facultyListReducer(state = initialState, action: Action): FacultyListState {
-  console.log("action: " + action);
+  console.log("action: " + action.type);
   switch (action.type) {
     case FacultyActions.FIND_FACULTIES_SUCCESS: {
-      console.log("find faculties success");
       return action.payload;
     }
     case FacultyActions.CREATE_FACULTY_SUCCESS: {

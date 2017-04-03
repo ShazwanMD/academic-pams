@@ -883,17 +883,6 @@ create table AD_NTLY_CODE (
   primary key (ID)
 );
 
-create table AD_NLTY_CODE(
-	ID int8 not null,
-	CODE varchar(255),
-	DESCRIPTION VARCHAR(255),
-	M_ST int4,
-	C_ID int8,
-	C_TS TIMESTAMP,
-
-	primary key(ID)
-);
-
 create table AD_OFRG (
   ID int8 not null,
   CANONICAL_CODE varchar(255) not null,
@@ -1323,7 +1312,7 @@ alter table AD_ACDM_AREA
 
 alter table AD_ACDM_CLDR
   add constraint FK9351992F3C7922CA
-foreign key (SESSION_ID )
+foreign key (SESSION_ID)
 references AD_ACDM_SESN;
 
 alter table AD_ACDM_CLDR

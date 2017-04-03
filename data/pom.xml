@@ -273,35 +273,44 @@
                                 <srcFile>src/test/resources/ddl/ACL.POSTGRES.sql</srcFile>
                                 <srcFile>src/test/resources/ddl/ACT.POSTGRES.sql</srcFile>
                                 <srcFile>src/test/resources/ddl/BAT.POSTGRES.sql</srcFile>
-                                <srcFile>src/test/resources/data/AD_PCPL.sql</srcFile>
-                             
+
+                                <!--SYSTEM-->
                                 <srcFile>src/test/resources/data/AD_RFRN_NO.sql</srcFile>
-								<srcFile>src/test/resources/data/AD_CNFG.sql</srcFile>
+                                <srcFile>src/test/resources/data/AD_CNFG.sql</srcFile>
+
+                                <!--IDENTITY-->
+                                <srcFile>src/test/resources/data/AD_PCPL.sql</srcFile>
+
+                                <!--COMMON-->
                                 <srcFile>src/test/resources/data/AD_GNDR_CODE.sql</srcFile>
                                 <srcFile>src/test/resources/data/AD_PLMT_CODE.sql</srcFile>
                                 <srcFile>src/test/resources/data/AD_DUN_CODE.sql</srcFile>
                                 <srcFile>src/test/resources/data/AD_CNTY_CODE.sql</srcFile>
                                 <srcFile>src/test/resources/data/AD_MRTL_CODE.sql</srcFile>
                                 <srcFile>src/test/resources/data/AD_STTE_CODE.sql</srcFile>
-                               <srcFile>src/test/resources/data/AD_NTLY_CODE.sql</srcFile>
-                               <srcFile>src/test/resources/data/AD_NLTY_CODE.sql</srcFile>
-                              <srcFile>src/test/resources/data/AD_RACE_CODE.sql</srcFile>
-                               <srcFile>src/test/resources/data/AD_RLGN_CODE.sql</srcFile>
+                                <srcFile>src/test/resources/data/AD_NTLY_CODE.sql</srcFile>
+                                <srcFile>src/test/resources/data/AD_RACE_CODE.sql</srcFile>
+                                <srcFile>src/test/resources/data/AD_RLGN_CODE.sql</srcFile>
                                 <srcFile>src/test/resources/data/AD_RSCY_CODE.sql</srcFile>
                                 <srcFile>src/test/resources/data/AD_STDY_CNTR_CODE.sql</srcFile>
-                             
 
+                                <!--PLANNER-->
                                 <srcFile>src/test/resources/data/AD_ACDM_SESN.sql</srcFile>
                                 <srcFile>src/test/resources/data/AD_FCTY.sql</srcFile>
                                 <srcFile>src/test/resources/data/AD_PRGM_LEVL.sql</srcFile>
                                 <srcFile>src/test/resources/data/AD_PRGM.sql</srcFile>
                                 <srcFile>src/test/resources/data/AD_CRLM.sql</srcFile>
                                 <srcFile>src/test/resources/data/AD_CHRT.sql</srcFile>
-                                <srcFile>src/test/resources/data/AD_ACTR.sql</srcFile>
-                                <srcFile>src/test/resources/data/AD_ADDR.sql</srcFile>
+                                <srcFile>src/test/resources/data/AD_ACTR.sql</srcFile> <!-- need cohort -->
                                 <srcFile>src/test/resources/data/AD_CRSE.sql</srcFile>
+
+                                <!--TERM-->
                                 <srcFile>src/test/resources/data/AD_OFRG.sql</srcFile>
                                 <srcFile>src/test/resources/data/AD_SCTN.sql</srcFile>
+
+                                <!--PROFILE-->
+                                <srcFile>src/test/resources/data/AD_ADDR.sql</srcFile>
+
                             </srcFiles>
                         </configuration>
                     </execution>

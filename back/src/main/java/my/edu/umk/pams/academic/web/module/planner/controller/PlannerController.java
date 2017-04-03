@@ -90,7 +90,6 @@ public class PlannerController {
         throw new UnsupportedOperationException();
     }
 
-
     //====================================================================================================
     // FACULTY
     //====================================================================================================
@@ -253,6 +252,25 @@ public class PlannerController {
     public ResponseEntity<Course> deactivateCourse(@PathVariable String code, @RequestBody Course course) {
         throw new UnsupportedOperationException();
     }
+
+    //====================================================================================================
+    // COHORT
+    //====================================================================================================
+
+    @RequestMapping(value = "/cohorts", method = RequestMethod.GET)
+    public ResponseEntity<List<Cohort>> findCohorts() {
+        return new ResponseEntity<List<Cohort>>(plannerTransformer
+                .toCohortVos(plannerService.findCohorts("%",0, 100)), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/cohorts/page/{pageNo}", method = RequestMethod.GET)
+    public ResponseEntity<List<Cohort>> findCohorts(@PathVariable Integer pageNo) {
+        throw new UnsupportedOperationException();
+    }
+
+    //====================================================================================================
+    // PRIVATE METHODS
+    //====================================================================================================
 
     private void dummyLogin(){
         UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken("root", "abc123");

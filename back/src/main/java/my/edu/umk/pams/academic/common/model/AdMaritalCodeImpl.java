@@ -21,12 +21,17 @@ public class AdMaritalCodeImpl implements AdMaritalCode {
     private String code;
 
     @NotNull
-    @Column(name = "DESCRIPTION")
-    private String description;
+    @Column(name = "DESCRIPTION_MS")
+    private String descriptionMs;
+
+    @NotNull
+    @Column(name = "DESCRIPTION_EN")
+    private String descriptionEn;
 
     @Embedded
     private AdMetadata metadata;
 
+    @Override
     public Long getId() { return id; }
 
     public void setId(Long id) { this.id = id; }
@@ -42,19 +47,31 @@ public class AdMaritalCodeImpl implements AdMaritalCode {
     }
 
     @Override
-    public String getDescription() {
-        return description;
+    public String getDescriptionEn() {
+        return descriptionEn;
     }
 
     @Override
-    public void setDescription(String description) {
-        this.description = description;
+    public void setDescriptionEn(String descriptionEn) {
+        this.descriptionEn = descriptionEn;
     }
 
+    @Override
+    public String getDescriptionMs() {
+        return descriptionMs;
+    }
+
+    @Override
+    public void setDescriptionMs(String descriptionMs) {
+        this.descriptionMs = descriptionMs;
+    }
+
+    @Override
     public AdMetadata getMetadata() {
         return metadata;
     }
 
+    @Override
     public void setMetadata(AdMetadata metadata) {
         this.metadata = metadata;
     }

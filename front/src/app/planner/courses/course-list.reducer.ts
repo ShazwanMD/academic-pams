@@ -10,7 +10,7 @@ export type CourseListState = Course[];
 const initialState: CourseListState = <Course[]>[];
 
 export function courseListReducer(state = initialState, action: Action): CourseListState {
-  console.log("action: " + action);
+  console.log("action: " + action.type);
   switch (action.type) {
     case CourseActions.FIND_COURSES_SUCCESS: {
       return action.payload;

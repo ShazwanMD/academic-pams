@@ -49,6 +49,7 @@ export class PlannerService {
   findProgramByCode(code: string): Observable<Program> {
     // let headers = new Headers({'Authorization': 'Bearer TODO'});
     // let options = new RequestOptions({headers: headers});
+    console.log("encoded uri: " + encodeURI (code))
     return this.http.get(environment.endpoint + '/api/planner/programs/' + encodeURI (code))
       .map((res: Response) => <Program>res.json());
   }

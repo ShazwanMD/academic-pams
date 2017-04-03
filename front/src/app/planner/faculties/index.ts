@@ -12,13 +12,16 @@ import {IdentityService} from '../../../services';
 import {FacultyCenterPage} from "./faculty-center.page";
 import {FacultyListComponent} from "./component/faculty-list.component";
 import {FacultyActions} from "./faculty.action";
+import {EffectsModule} from "@ngrx/effects";
+import {FacultyEffects} from "./faculty.effect";
 
 @NgModule({
   imports: [
+    appRoutes,
     BrowserModule,
     ReactiveFormsModule,
     CovalentCoreModule.forRoot(),
-    appRoutes,
+    EffectsModule.run(FacultyEffects),
   ],
   declarations: [
 

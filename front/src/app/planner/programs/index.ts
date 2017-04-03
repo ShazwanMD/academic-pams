@@ -14,13 +14,16 @@ import {ProgramListComponent} from "./component/program-list.component";
 import {ProgramActions} from "./program.action";
 import {ProgramDetailPage} from "./program-detail.page";
 import {ProgramComponent} from "./component/program.component";
+import {EffectsModule} from "@ngrx/effects";
+import {ProgramEffects} from "./program.effect";
 
 @NgModule({
   imports: [
+    appRoutes,
     BrowserModule,
     ReactiveFormsModule,
     CovalentCoreModule.forRoot(),
-    appRoutes,
+    EffectsModule.run(ProgramEffects),
   ],
   declarations: [
 
@@ -44,6 +47,7 @@ export class ProgramModule {
         PlannerService,
         IdentityService,
         CommonService,
+        ProgramActions,
       ],
     };
   }

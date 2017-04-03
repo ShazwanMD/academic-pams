@@ -20,7 +20,7 @@ export interface TermState {
 }
 ;
 
-const termReducer = combineReducers({
+export const termReducer = combineReducers({
   // todo
 });
 
