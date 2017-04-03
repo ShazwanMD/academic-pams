@@ -16,7 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
 
 /**
- * @author PAMS
+ * @author ZAIDA_AIN
  */
 @JGivenStage
 public class WhenAdminAddAProgram extends Stage<WhenAdminAddAProgram> {

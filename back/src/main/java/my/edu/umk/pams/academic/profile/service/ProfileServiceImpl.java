@@ -64,4 +64,9 @@ public class ProfileServiceImpl implements ProfileService {
     public List<AdAddress> findAddresses(AdStudent student) {
         return studentDao.findAddresses(student);
     }
+    
+    @Override
+    public AdAddress findAddress(AdStudent student) {
+        return studentDao.findAddress(student);
+    }
 }
