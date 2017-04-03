@@ -61,6 +61,17 @@ public class AdStudentDaoImpl extends GenericDaoSupport<Long, AdStudent> impleme
         query.setInteger("state", AdMetaState.ACTIVE.ordinal());
         return query.list();
     }
+    
+    @Override
+    public AdAddress findAddress(AdStudent student) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select o from AdAddress o where " +
+                "o.student = :student " +
+                "and o.metadata.state = :state");
+        query.setEntity("student", student);
+        query.setInteger("state", AdMetaState.ACTIVE.ordinal());
+        return (AdAddress)query.uniqueResult();
+    }
 
     @Override
     public Integer count(String filter) {

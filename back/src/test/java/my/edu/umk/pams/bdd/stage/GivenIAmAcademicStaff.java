@@ -13,6 +13,7 @@ import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 
 import my.edu.umk.pams.academic.identity.model.AdActor;
+import my.edu.umk.pams.academic.identity.model.AdAddress;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.identity.model.AdUser;
 import my.edu.umk.pams.academic.identity.service.IdentityService;
@@ -62,6 +63,9 @@ public class GivenIAmAcademicStaff extends Stage<GivenIAmAcademicStaff> {
 	
 	@ProvidedScenarioState
 	AdCourse course;
+	
+	@ProvidedScenarioState
+	AdAddress address;
 
     public GivenIAmAcademicStaff i_am_a_staff_in_$_academic_session(String academicSessionCode) {
         loginAsStaff();

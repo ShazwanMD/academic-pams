@@ -21,6 +21,8 @@ public interface AdStudentDao extends GenericDao<Long, AdStudent> {
     List<AdStudent> findAddresses(String filter, Integer offset, Integer limit);
 
     List<AdAddress> findAddresses(AdStudent student);
+    
+    AdAddress findAddress(AdStudent student);
 
     Integer count(String filter);
 

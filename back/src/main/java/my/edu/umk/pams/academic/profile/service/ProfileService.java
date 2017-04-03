@@ -13,6 +13,8 @@ public interface ProfileService {
     AdAddress findById(Long id);
 
     List<AdAddress> findAddresses(AdStudent student);
+    
+    AdAddress findAddress(AdStudent student);
 
     void updateStudent(AdStudent student);
 
