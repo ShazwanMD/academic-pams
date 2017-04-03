@@ -39,6 +39,6 @@ public class WhenAdminUpdateCohort extends Stage<WhenAdminUpdateCohort>{
 	private AdCurriculum curriculum;
 
 	public void Admin_update_cohort_to_faculty_code_$(String facultyCode) {
-
-}
+		
+	}
 }
