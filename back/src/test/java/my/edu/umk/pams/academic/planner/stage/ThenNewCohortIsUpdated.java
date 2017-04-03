@@ -34,4 +34,5 @@ public class ThenNewCohortIsUpdated extends Stage<ThenNewCohortIsUpdated >{
 	        Assert.notEmpty(cohort, "Cohort should not be empty");
 	        return self();
 	    }
+
 }

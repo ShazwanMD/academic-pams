@@ -12,6 +12,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.tngtech.jgiven.Stage;
+import com.tngtech.jgiven.annotation.Pending;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 
@@ -38,6 +39,7 @@ public class WhenAdminUpdateCohort extends Stage<WhenAdminUpdateCohort>{
 	@ProvidedScenarioState
 	private AdCurriculum curriculum;
 
+	@Pending
 	public void Admin_update_cohort_to_faculty_code_$(String facultyCode) {
 		
 	}
