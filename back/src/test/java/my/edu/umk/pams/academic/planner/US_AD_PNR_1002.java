@@ -15,10 +15,9 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- * As an admin academic,
- * I want to set up courses for a faculty,
- * so that a faculty will be populated with courses
- *
+ * Given : I Am Admin
+ * When : Admin Add Courses
+ * Then : Faculty Populated With Courses
  * @author zaida_ain
  */
 @RunWith(SpringJUnit4ClassRunner.class)
