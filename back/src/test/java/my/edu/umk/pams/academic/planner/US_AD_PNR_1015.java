@@ -33,7 +33,7 @@ public class US_AD_PNR_1015 extends SpringScenarioTest<GivenIAmCPSAdministrator,
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_PNR_1015.class);
 
 	@ProvidedScenarioState
-	private String CODE = "OTHERS";
+	private String CODE = "MASTER";
 	
 
 

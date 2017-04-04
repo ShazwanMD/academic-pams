@@ -26,7 +26,7 @@ public class ThenProgramLevelUpdated extends Stage<ThenProgramLevelUpdated> {
 
 
     	AdProgramLevel exists = plannerService.findProgramLevelByCode(code);
-    	 Assert.notNull(exists, "exists");
+    	 Assert.notNull(exists, "existss");
 		
 		
     	

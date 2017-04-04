@@ -40,7 +40,7 @@ public class WhenAdminUpdateProgramLevel extends Stage<WhenAdminUpdateProgramLev
 	public WhenAdminUpdateProgramLevel Admin_update_program_level(String code) {
 		
 		   programLevel = plannerService.findProgramLevelByCode(code);
-		   programLevel.setType(programType.MASTER);	
+		   programLevel.setType(programType.BACHELOR);	
 		   programLevel.setDescription("CURRENT");
 
 		   plannerService.updateProgramLevel(programLevel);
