@@ -15,6 +15,7 @@ import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.identity.model.AdStudentStatus;
 import my.edu.umk.pams.academic.identity.service.IdentityService;
 import my.edu.umk.pams.academic.planner.model.AdCourse;
+import my.edu.umk.pams.academic.planner.model.AdCreditType;
 import my.edu.umk.pams.academic.planner.model.AdFaculty;
 import my.edu.umk.pams.academic.planner.model.AdProgram;
 import my.edu.umk.pams.academic.planner.model.AdProgramLevel;
@@ -84,7 +85,10 @@ public class WhenIWantViewStudentRegisteredCourse extends Stage<WhenIWantViewStu
 			LOG.debug("Course Taken : {}", course.getTitleEn());
 
 			LOG.debug("Course Taken : {}", course.getTitleMs());
+			
 		}
+
+		
 		
 		return self();
 

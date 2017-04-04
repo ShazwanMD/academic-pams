@@ -303,6 +303,8 @@
                                 <srcFile>src/test/resources/data/AD_CHRT.sql</srcFile>
                                 <srcFile>src/test/resources/data/AD_ACTR.sql</srcFile> <!-- need cohort -->
                                 <srcFile>src/test/resources/data/AD_CRSE.sql</srcFile>
+                                <srcFile>src/test/resources/data/AD_STDY_MODE.sql</srcFile>
+                                
 
                                 <!--TERM-->
                                 <srcFile>src/test/resources/data/AD_OFRG.sql</srcFile>

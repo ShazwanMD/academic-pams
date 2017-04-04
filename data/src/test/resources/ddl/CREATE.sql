@@ -1254,6 +1254,22 @@ create table AD_STDY_CNTR_CODE (
   primary key (ID)
 );
 
+create table AD_STDY_MODE (
+  ID int8 not null,
+  CODE varchar(255) not null,
+  DESCRIPTION_EN varchar(255) not null,
+  DESCRIPTION_MS varchar(255) not null,
+  C_TS timestamp,
+  C_ID int8,
+  D_TS timestamp,
+  D_ID int8,
+  M_TS timestamp,
+  M_ID int8,
+  M_ST int4,
+  PREFIX varchar(255) not null,
+  primary key (ID)
+);
+
 create table AD_STTE_CODE (
   ID int8 not null,
   CODE varchar(255) not null,
@@ -2013,6 +2029,8 @@ create sequence SQ_AD_STDY_CNTR;
 create sequence SQ_AD_STDY_CNTR_CODE;
 
 create sequence SQ_AD_STTE_CODE;
+
+create sequence SQ_AD_STDY_MODE;
 
 create sequence SQ_AD_VENU_CODE;
 

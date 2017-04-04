@@ -377,7 +377,12 @@ VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
                                'MAP', 'Tourism', 'Pelancongan', 'Tourism', 50, 1, 1, 0,
                                CURRENT_TIMESTAMP);                           
                           
-                          
+INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE, TITLE_MS, TITLE_EN, CREDIT, CLASSIFICATION, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
+                                FROM AD_FCTY F
+                                WHERE F.CODE = 'CPS'),
+                               'PAP', 'Tourism', 'Pelancongan', 'Tourism', 50, 1, 1, 0,
+                               CURRENT_TIMESTAMP);                          
                           
                           
                           
