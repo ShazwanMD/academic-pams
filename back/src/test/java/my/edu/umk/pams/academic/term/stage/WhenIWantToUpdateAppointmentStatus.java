@@ -37,8 +37,8 @@ public class WhenIWantToUpdateAppointmentStatus extends Stage<WhenIWantToUpdateA
 
 	public WhenIWantToUpdateAppointmentStatus I_update_appointment_status() {
 
-		section = termService.findSectionByCanonicalCode("FKP/PHD/0001/DDA2022/201720181");
-		staff = identityService.findStaffByStaffNo("01002A");
+		section = termService.findSectionByCanonicalCode("FKP/PHD/0001/DDA2113/201720181");
+		staff = identityService.findStaffByStaffNo("01001A");
 		appointment = termService.findAppointmentBySectionAndStaff(section, staff);
 
 		LOG.debug("section {} ", section.getCanonicalCode());

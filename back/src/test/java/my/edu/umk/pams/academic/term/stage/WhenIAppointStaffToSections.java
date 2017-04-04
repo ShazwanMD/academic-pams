@@ -50,8 +50,8 @@ public class WhenIAppointStaffToSections extends Stage<WhenIAppointStaffToSectio
 
 	public WhenIAppointStaffToSections I_appoint_staff_for_sections() {
 
-		section = termService.findSectionByCanonicalCode("FKP/PHD/0001/DDA2113/201720181");
-		staff = identityService.findStaffByStaffNo("01001A");
+		section = termService.findSectionByCanonicalCode("MGSEB/MBA/GST 5013/201720181");
+		staff = identityService.findStaffByStaffNo("01002A");
 
 		appointment = new AdAppointmentImpl();
 		appointment.setSection(section);
