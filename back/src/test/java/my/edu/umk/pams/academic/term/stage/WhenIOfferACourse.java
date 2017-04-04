@@ -2,6 +2,7 @@
 
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
+import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
 import my.edu.umk.pams.academic.term.model.AdOffering;
@@ -34,20 +35,42 @@ public class WhenIOfferACourse extends Stage<WhenIOfferACourse> {
     @ExpectedScenarioState
     private AdAcademicSession academicSession;
 
-    @ExpectedScenarioState
+    @ProvidedScenarioState
     private AdProgram program;
-
+    
+    @ExpectedScenarioState
+    private AdFaculty faculty;
+    
+    @ProvidedScenarioState
+    private AdCourse course;
+    
     public WhenIOfferACourse I_offer_all_courses_under_program_faculty() {
         // find faculty of the program
-        AdFaculty faculty = program.getFaculty();
+    	
+       // AdFaculty faculty = program.getFaculty();
+       // LOG.debug("faculty: {}", faculty.getCode());
+        
+    	List<AdCourse> courses = plannerService.findCourses(faculty);
+    	 for (AdCourse course : courses) {
+    		 LOG.debug("course: {}", course.getCode());
+    		 
+    	 }
 
         // find ALL courses under this faculty
         // to be offered by this program
+    	/*
         List<AdCourse> courses = plannerService.findCourses(faculty);
-        for (AdCourse course : courses) {
-            String code = program.getCode() + "/" + course.getCode();
-            String canonicalCode = program.getCode() + "/" + course.getCode() + "/" + academicSession.getCode();
-            LOG.debug("course: {}", course.getCode());
+        for (AdCourse course : courses) {}*/
+        	
+           // String code = program.getCode() + "/" + course.getCode();
+        	//String canonicalCode = program.getCode() + "/" + course.getCode() + "/" + academicSession.getCode();//"FKP/PHD/0001/DDA2113"
+        	
+        	//String code = course.getCode();
+           // String canonicalCode = program.getCode() + "/" + course.getCode();
+            
+           
+            
+            /*
             AdOffering offering = new AdOfferingImpl();
             offering.setCode(code);
             offering.setCanonicalCode(canonicalCode);
@@ -57,7 +80,8 @@ public class WhenIOfferACourse extends Stage<WhenIOfferACourse> {
             offering.setProgram(program);
             // todo(uda): setSession ???
             termService.saveOffering(offering);
-        }
+            */
+       // }
         return self();
     }
 }
