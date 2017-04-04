@@ -16,23 +16,19 @@ import my.edu.umk.pams.academic.term.stage.ThenCourseDropped;
 import my.edu.umk.pams.academic.term.stage.WhenDropCourse;
 import my.edu.umk.pams.bdd.stage.GivenIAmStudent;
 
-
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
-public class US_AD_TRM_1020 extends SpringScenarioTest<GivenIAmStudent, WhenDropCourse, ThenCourseDropped>
-{
+public class US_AD_TRM_1020 extends SpringScenarioTest<GivenIAmStudent, WhenDropCourse, ThenCourseDropped> {
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_1020.class);
-	
-	
+
 	@Test
 	@Rollback(true)
 	public void scenario01() {
-		
-		
+
 		given().I_am_a_student_in_current_academic_session();
-		when(). I_want_to_drop_enrollment_course();
+		when().I_want_to_drop_enrollment_course();
 		then().The_course_enrollment_are_dropped();
-	
+
 	}
 }

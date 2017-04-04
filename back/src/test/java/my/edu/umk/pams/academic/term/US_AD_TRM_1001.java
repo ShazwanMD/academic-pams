@@ -20,17 +20,17 @@ import org.springframework.transaction.annotation.Transactional;
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
-public class US_AD_TRM_1001 extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenIOfferACourse, ThenTheOfferingIsReadyForSetup> {
+public class US_AD_TRM_1001
+		extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenIOfferACourse, ThenTheOfferingIsReadyForSetup> {
 
-    private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_1001.class);
-    public static final String FACULTY_CODE = "FKP";
+	private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_1001.class);
+	public static final String FACULTY_CODE = "FKP";
 
-    @Test
-    @Rollback(true)
-    public void scenario1() {
-        given().I_am_a_CPS_administrator_in_current_academic_session()
-                .and().I_pick_faculty_$(FACULTY_CODE);
-        when().I_offer_all_courses_under_program_faculty();
-        then().the_offering_is_ready_for_setup();
-    }
+	@Test
+	@Rollback(true)
+	public void scenario1() {
+		given().I_am_a_CPS_administrator_in_current_academic_session().and().I_pick_faculty_$(FACULTY_CODE);
+		when().I_offer_all_courses_under_program_faculty();
+		then().the_offering_is_ready_for_setup();
+	}
 }

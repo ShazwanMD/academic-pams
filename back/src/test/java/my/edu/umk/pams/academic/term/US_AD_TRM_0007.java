@@ -18,16 +18,16 @@ import org.springframework.transaction.annotation.Transactional;
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
-public class US_AD_TRM_0007 extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenIWantToSetCapacityForOfferedCourse, ThenTheOfferedCourseHasAMaxAllowQuota> {
+public class US_AD_TRM_0007 extends
+		SpringScenarioTest<GivenIAmCPSAdministrator, WhenIWantToSetCapacityForOfferedCourse, ThenTheOfferedCourseHasAMaxAllowQuota> {
 
-    public static final String FACULTY_CODE = "FKP";
+	public static final String FACULTY_CODE = "FKP";
 
-    @Test
-    @Rollback
-    public void scenario1() {
-        given().I_am_a_CPS_administrator_in_current_academic_session()
-                .and().I_pick_faculty_$(FACULTY_CODE);
-        when().I_create_and_set_offering_capacity();
-        then().the_offered_course_has_a_maximum_quota();
-    }
+	@Test
+	@Rollback
+	public void scenario1() {
+		given().I_am_a_CPS_administrator_in_current_academic_session().and().I_pick_faculty_$(FACULTY_CODE);
+		when().I_create_and_set_offering_capacity();
+		then().the_offered_course_has_a_maximum_quota();
+	}
 }

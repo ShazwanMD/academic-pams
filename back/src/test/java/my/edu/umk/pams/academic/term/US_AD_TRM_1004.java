@@ -1,4 +1,5 @@
 package my.edu.umk.pams.academic.term;
+
 /**
  * @author asyikin.mr
 */

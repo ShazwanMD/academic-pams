@@ -1,4 +1,5 @@
 package my.edu.umk.pams.academic.term;
+
 /**
  * @author asyikin.mr and ziana
  */
@@ -17,6 +18,7 @@ import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.term.stage.ThenOfferedCoursesInfoIsCurrent;
 import my.edu.umk.pams.academic.term.stage.WhenIViewTheOfferedCourses;
 import my.edu.umk.pams.bdd.stage.GivenIAmStudent;
+
 /**
  * @author asyikin.mr and ziana
  */

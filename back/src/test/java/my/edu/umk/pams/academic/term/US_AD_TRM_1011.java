@@ -1,4 +1,5 @@
 package my.edu.umk.pams.academic.term;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -24,10 +25,11 @@ import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 @Pending
-public class US_AD_TRM_1011 extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenIOpenTheEnrollmentDate,ThenTheEnrollmentDateIsOpen> {
+public class US_AD_TRM_1011
+		extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenIOpenTheEnrollmentDate, ThenTheEnrollmentDateIsOpen> {
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_1011.class);
 	private static final String PROGRAM_CODE = "FKP/PHD/0001";
-	
+
 	@Before
 	public void before() {
 	}
@@ -46,4 +48,3 @@ public class US_AD_TRM_1011 extends SpringScenarioTest<GivenIAmCPSAdministrator,
 	}
 
 }
-

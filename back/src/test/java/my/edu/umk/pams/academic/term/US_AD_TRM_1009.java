@@ -15,16 +15,18 @@ import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.term.stage.ThenTheEnrollmentStatusIsUpdated;
 import my.edu.umk.pams.academic.term.stage.WhenIUpdateEnrollmentStatus;
 import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
+
 /**
  * @author asyikin.mr and ziana
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
-public class US_AD_TRM_1009 extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenIUpdateEnrollmentStatus, ThenTheEnrollmentStatusIsUpdated> {
+public class US_AD_TRM_1009 extends
+		SpringScenarioTest<GivenIAmCPSAdministrator, WhenIUpdateEnrollmentStatus, ThenTheEnrollmentStatusIsUpdated> {
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_1009.class);
 	private static final String PROGRAM_CODE = "FKP/PHD/0001";
-	
+
 	@Before
 	public void before() {
 	}
@@ -42,5 +44,4 @@ public class US_AD_TRM_1009 extends SpringScenarioTest<GivenIAmCPSAdministrator,
 
 	}
 
-	
 }

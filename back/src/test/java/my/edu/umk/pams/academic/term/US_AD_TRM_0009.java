@@ -20,18 +20,18 @@ import org.springframework.transaction.annotation.Transactional;
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
-public class US_AD_TRM_0009 extends SpringScenarioTest<GivenIAmStudent, WhenIWantToViewTheOfferedCoursesByAcademicSession, ThenICanChoose> {
+public class US_AD_TRM_0009
+		extends SpringScenarioTest<GivenIAmStudent, WhenIWantToViewTheOfferedCoursesByAcademicSession, ThenICanChoose> {
 
-    private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_0009.class);
+	private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_0009.class);
 
-    public static final String PROGRAM_CODE = "FKP/PHD/0001";
+	public static final String PROGRAM_CODE = "FKP/PHD/0001";
 
-    @Test
-    @Rollback
-    public void scenario1() {
-        given().I_am_a_student_in_current_academic_session()
-                .and().I_pick_program_$(PROGRAM_CODE);
-        when().I_browse_the_offered_course_by_program_I_picked();
-        then().i_can_choose_which_section_to_enroll();
-    }
+	@Test
+	@Rollback
+	public void scenario1() {
+		given().I_am_a_student_in_current_academic_session().and().I_pick_program_$(PROGRAM_CODE);
+		when().I_browse_the_offered_course_by_program_I_picked();
+		then().i_can_choose_which_section_to_enroll();
+	}
 }

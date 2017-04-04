@@ -18,17 +18,17 @@ import org.springframework.transaction.annotation.Transactional;
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
-public class US_AD_TRM_0002 extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenIOfferACourse, ThenTheOfferingIsReadyForSetup> {
+public class US_AD_TRM_0002
+		extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenIOfferACourse, ThenTheOfferingIsReadyForSetup> {
 
-    // from AD_PRGM.sql, doesn't have any offering or section
-    public static final String PROGRAM_CODE = "FIAT/PHD/0001";
+	// from AD_PRGM.sql, doesn't have any offering or section
+	public static final String PROGRAM_CODE = "FIAT/PHD/0001";
 
-    @Test
-    @Rollback
-    public void scenario1() {
-        given().I_am_a_CPS_administrator_in_current_academic_session()
-                .and().I_pick_program_$(PROGRAM_CODE);
-        when().I_offer_all_courses_under_program_faculty();
-        then().the_offering_is_ready_for_setup();
-    }
+	@Test
+	@Rollback
+	public void scenario1() {
+		given().I_am_a_CPS_administrator_in_current_academic_session().and().I_pick_program_$(PROGRAM_CODE);
+		when().I_offer_all_courses_under_program_faculty();
+		then().the_offering_is_ready_for_setup();
+	}
 }

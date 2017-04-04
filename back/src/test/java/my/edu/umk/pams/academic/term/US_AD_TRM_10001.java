@@ -23,15 +23,15 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 public class US_AD_TRM_10001
-        extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenIOfferACourse, ThenTheOfferingIsReadyForSetup> {
+		extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenIOfferACourse, ThenTheOfferingIsReadyForSetup> {
 
-    private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_10001.class);
+	private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_10001.class);
 
-    @Test
-    @Rollback
-    public void scenario1() {
-        given().I_am_a_CPS_administrator_in_current_academic_session();
-        when().I_offer_all_courses_under_program_faculty();
-        then().the_offering_is_ready_for_setup();
-    }
+	@Test
+	@Rollback
+	public void scenario1() {
+		given().I_am_a_CPS_administrator_in_current_academic_session();
+		when().I_offer_all_courses_under_program_faculty();
+		then().the_offering_is_ready_for_setup();
+	}
 }

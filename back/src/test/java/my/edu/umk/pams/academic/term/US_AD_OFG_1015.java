@@ -23,12 +23,12 @@ import my.edu.umk.pams.bdd.stage.GivenIAmStudent;
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
-public class US_AD_OFG_1015 extends SpringScenarioTest<GivenIAmStudent, WhenIViewTheDetailsOfOfferedCourses, ThenTheDetailsOfferedCoursesInfoIsCurrent> {
+public class US_AD_OFG_1015 extends
+		SpringScenarioTest<GivenIAmStudent, WhenIViewTheDetailsOfOfferedCourses, ThenTheDetailsOfferedCoursesInfoIsCurrent> {
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_OFG_1015.class);
-	
+
 	private static final String PROGRAM_CODE = "FKP/MASTER/0001";
-	
-	 
+
 	@Before
 	public void before() {
 	}
@@ -36,7 +36,7 @@ public class US_AD_OFG_1015 extends SpringScenarioTest<GivenIAmStudent, WhenIVie
 	@After
 	public void after() {
 	}
-	
+
 	@ProvidedScenarioState
 	private String faculty = "FKP";
 
