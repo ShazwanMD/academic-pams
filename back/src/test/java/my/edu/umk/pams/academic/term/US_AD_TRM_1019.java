@@ -22,9 +22,9 @@ import my.edu.umk.pams.bdd.stage.GivenIAmStudent;
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
-public class US_AD_OFG_1019 extends
+public class US_AD_TRM_1019 extends
 		SpringScenarioTest<GivenIAmStudent, WhenIWantToEnrollAdditionalOfferingCoursesToRepeatCourses, ThenTheEnrollmentCoursesIsUpdated> {
-	private static final Logger LOG = LoggerFactory.getLogger(US_AD_OFG_1019.class);
+	private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_1019.class);
 	private static final String PROGRAM_CODE = "FKP/MASTER/0001";
 
 	@Before
