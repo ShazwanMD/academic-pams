@@ -1,5 +1,4 @@
 package my.edu.umk.pams.academic.term;
-
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.term.stage.ThenTheOfferingIsReadyForSetup;
