@@ -12,7 +12,9 @@ import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 
+import my.edu.umk.pams.academic.identity.model.AdActor;
 import my.edu.umk.pams.academic.identity.model.AdStaff;
+import my.edu.umk.pams.academic.identity.service.IdentityService;
 import my.edu.umk.pams.academic.term.model.AdAppointment;
 import my.edu.umk.pams.academic.term.model.AdSection;
 import my.edu.umk.pams.academic.term.service.TermService;
@@ -24,9 +26,12 @@ public class ThenTheSectionsHaveAppointedStaff extends Stage<ThenTheSectionsHave
 	@Autowired
 	private TermService termService;
 
+	@Autowired
+	private IdentityService identityService;
+
 	@ExpectedScenarioState
 	private AdAppointment appointment;
-	
+
 	@ExpectedScenarioState
 	private AdStaff staff;
 
@@ -34,13 +39,14 @@ public class ThenTheSectionsHaveAppointedStaff extends Stage<ThenTheSectionsHave
 	private AdSection section;
 
 	public ThenTheSectionsHaveAppointedStaff the_sections_have_appointed_staff() {
-		LOG.debug("appointment {} ", appointment.getStaff());
 
 		AdAppointment appointment = termService.findAppointmentBySectionAndStaff(section, staff);
-		
-		LOG.debug("section {} ", section.getCanonicalCode());
-		LOG.debug("staff {} ", staff.getIdentityNo());
-		
+
+		AdActor actor = identityService.findActorByIdentityNo(staff.getIdentityNo());
+		LOG.debug("Staff name appointed is: {} ", actor.getName());
+		LOG.debug("For section: {} ", section.getCanonicalCode());
+		LOG.debug("For status of appointment: {} ", appointment.getStatus());
+
 		Assert.notNull(appointment, "The data must not be null");
 
 		return self();

@@ -27,7 +27,7 @@ public class US_AD_TRM_1014 extends SpringScenarioTest<GivenIAmStudent, WhenIWan
     public static final String OFFERING_CANONICAL_CODE = "FKP/PHD/0001/DDA2113";
 
     @Test
-    @Rollback
+    @Rollback(true)
     public void scenario1() {
         given().I_am_a_student_in_current_academic_session()
                 .and().I_pick_offering_$(OFFERING_CANONICAL_CODE);
