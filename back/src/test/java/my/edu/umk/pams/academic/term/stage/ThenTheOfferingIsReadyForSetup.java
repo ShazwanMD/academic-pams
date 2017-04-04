@@ -40,13 +40,24 @@ public class ThenTheOfferingIsReadyForSetup extends Stage<ThenTheOfferingIsReady
     
         public ThenTheOfferingIsReadyForSetup the_offering_is_ready_for_setup() {
     	
-    	program = plannerService.findProgramByCode("FKP/PHD/0001") ;
+    	program = plannerService.findProgramByCode("FKP/MASTER/0001") ; 
     	
         List<AdOffering> offerings = termService.findOfferings(program);
+        
+        
         for (AdOffering offering : offerings) {
-            boolean hasSection = termService.hasSection(academicSession, offering);
+           
+        	LOG.debug("Listed code: {}", offering.getCanonicalCode());
+        	LOG.debug("Listed title: {}", offering.getTitle());
+        	
+        	
+        	boolean hasSection = termService.hasSection(academicSession, offering);
             Assert.isTrue(!hasSection, "Offering does not have section and ready to be setup");
+            
+       
         }
+        
+       
         return self();
     }
 }
