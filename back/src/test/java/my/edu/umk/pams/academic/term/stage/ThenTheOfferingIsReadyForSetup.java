@@ -19,7 +19,7 @@ import org.springframework.util.Assert;
 import java.util.List;
 
 /**
- * @author asyikin.mr@umk and ziana
+ * @author asyikin.mr@umk and ZIANA
  */
 @JGivenStage
 public class ThenTheOfferingIsReadyForSetup extends Stage<ThenTheOfferingIsReadyForSetup> {
