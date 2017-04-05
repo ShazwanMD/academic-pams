@@ -31,11 +31,29 @@ public class ProfileServiceImpl implements ProfileService {
     @Autowired
     private SessionFactory sessionFactory;
 
+    //====================================================================================================
+    // STUDENT
+    //====================================================================================================
+
+    @Override
+    public void activateStudent(AdStudent student) {
+
+    }
+
+    @Override
+    public void deactivateStudent(AdStudent student) {
+
+    }
+
     @Override
     public void updateStudent(AdStudent student) {
         studentDao.update(student, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
+
+    //====================================================================================================
+    // STUDENT
+    //====================================================================================================
 
     @Override
     public void addAddress(AdStudent student, AdAddress address) {
@@ -45,13 +63,15 @@ public class ProfileServiceImpl implements ProfileService {
 
     @Override
     public void updateAddress(AdStudent student, AdAddress address) {
-        studentDao.updateAddress(student, address, securityService.getCurrentUser());
+        // todo(uda): xxx
+//        studentDao.updateAddress(student, address, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void removeAddress(AdStudent student, AdAddress address) {
-        studentDao.removeAddress(student, address, securityService.getCurrentUser());
+        // todo(uda): xxx
+//        studentDao.removeAddress(student, address, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
@@ -64,9 +84,5 @@ public class ProfileServiceImpl implements ProfileService {
     public List<AdAddress> findAddresses(AdStudent student) {
         return studentDao.findAddresses(student);
     }
-    
-    @Override
-    public AdAddress findAddress(AdStudent student) {
-        return studentDao.findAddress(student);
-    }
+
 }

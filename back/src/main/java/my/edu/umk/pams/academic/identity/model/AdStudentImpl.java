@@ -23,6 +23,16 @@ public class AdStudentImpl extends AdActorImpl implements AdStudent {
 	@OneToMany(targetEntity = AdAddressImpl.class, mappedBy = "student", fetch = FetchType.LAZY)
 	private List<AdAddress> addresses;
 
+	@OneToMany(targetEntity = AdContactImpl.class, mappedBy = "student", fetch = FetchType.LAZY)
+	private List<AdContact> contacts;
+
+	@OneToMany(targetEntity = AdGuardianImpl.class, mappedBy = "student")
+	private List<AdGuardian> guardians;
+
+	@OneToMany(targetEntity = AdGuarantorImpl.class, mappedBy = "student")
+	private List<AdGuarantor> guarantors;
+
+
 	public AdStudentImpl() {
 		super();
 		setActorType(AdActorType.STUDENT);
@@ -66,6 +76,36 @@ public class AdStudentImpl extends AdActorImpl implements AdStudent {
 	@Override
 	public void setAddresses(List<AdAddress> addresses) {
 		this.addresses = addresses;
+	}
+
+	@Override
+	public List<AdContact> getContacts() {
+		return contacts;
+	}
+
+	@Override
+	public void setContacts(List<AdContact> contacts) {
+		this.contacts = contacts;
+	}
+
+	@Override
+	public List<AdGuardian> getGuardians() {
+		return guardians;
+	}
+
+	@Override
+	public void setGuardians(List<AdGuardian> guardians) {
+		this.guardians = guardians;
+	}
+
+	@Override
+	public List<AdGuarantor> getGuarantors() {
+		return guarantors;
+	}
+
+	@Override
+	public void setGuarantors(List<AdGuarantor> guarantors) {
+		this.guarantors = guarantors;
 	}
 
 	@Override

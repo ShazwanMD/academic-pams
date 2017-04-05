@@ -13,9 +13,9 @@ import java.sql.Timestamp;
 import java.util.List;
 
 /**
- * @author canang technologies
- * @since 1/31/14
- */
+ * @author PAMS
+ * fac
+ * */
 @SuppressWarnings({"unchecked"})
 @Repository("studentDao")
 public class AdStudentDaoImpl extends GenericDaoSupport<Long, AdStudent> implements AdStudentDao {
@@ -40,15 +40,53 @@ public class AdStudentDaoImpl extends GenericDaoSupport<Long, AdStudent> impleme
     }
 
     @Override
-    public List<AdStudent> findAddresses(String filter, Integer offset, Integer limit) {
-        Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery("select s from AdStudent s where " +
-                "(upper(s.identityNo) like upper(:filter) " +
-                "or upper(s.name) like upper(:filter)) " +
-                "and s.metadata.state = :state ");
-        query.setString("filter", WILDCARD + filter + WILDCARD);
-        query.setInteger("state", AdMetaState.ACTIVE.ordinal());
-        return query.list();
+    public AdGuarantor findGuarantorById(Long id) {
+        return null;
+    }
+
+    @Override
+    public AdGuardian findGuardianById(Long id) {
+        return null;
+    }
+
+    @Override
+    public AdContact findContactById(Long id) {
+        return null;
+    }
+
+    @Override
+    public AdGuarantor findGuarantorByType(AdGuarantorType type, AdStudent student) {
+        return null;
+    }
+
+    @Override
+    public AdGuardian findGuardianByType(AdGuardianType guardianType, AdStudent student) {
+        return null;
+    }
+
+    @Override
+    public AdContact findContactByType(AdContactType type, AdStudent student) {
+        return null;
+    }
+
+    @Override
+    public AdAddress findAddressByType(AdAddressType type, AdStudent student) {
+        return null;
+    }
+
+    @Override
+    public List<AdGuarantor> findGuarantors(AdStudent student) {
+        return null;
+    }
+
+    @Override
+    public List<AdGuardian> findGuardians(AdStudent student) {
+        return null;
+    }
+
+    @Override
+    public List<AdContact> findContacts(AdStudent student) {
+        return null;
     }
 
     @Override
@@ -61,24 +99,13 @@ public class AdStudentDaoImpl extends GenericDaoSupport<Long, AdStudent> impleme
         query.setInteger("state", AdMetaState.ACTIVE.ordinal());
         return query.list();
     }
-    
-    @Override
-    public AdAddress findAddress(AdStudent student) {
-        Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery("select o from AdAddress o where " +
-                "o.student = :student " +
-                "and o.metadata.state = :state");
-        query.setEntity("student", student);
-        query.setInteger("state", AdMetaState.ACTIVE.ordinal());
-        return (AdAddress)query.uniqueResult();
-    }
 
     @Override
     public Integer count(String filter) {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select count(s) from AdStudent s where " +
                 "(upper(s.identityNo) like upper(:filter) " +
-                
+
                 "or upper(s.name) like upper(:filter)) " +
                 "and s.metadata.state = :state ");
         query.setString("filter", WILDCARD + filter + WILDCARD);
@@ -90,6 +117,36 @@ public class AdStudentDaoImpl extends GenericDaoSupport<Long, AdStudent> impleme
     public Integer countAddress(AdStudent student) {
         // todo(sam): add impl i.e AdProgramDao
         return null;
+    }
+
+    @Override
+    public void addGuardian(AdStudent student, AdGuardian guardian, AdUser user) {
+
+    }
+
+    @Override
+    public void deleteGuardian(AdStudent student, AdGuardian guardian, AdUser user) {
+
+    }
+
+    @Override
+    public void addGuarantor(AdStudent student, AdGuarantor guarantor, AdUser user) {
+
+    }
+
+    @Override
+    public void deleteGuarantor(AdStudent student, AdGuarantor guarantor, AdUser user) {
+
+    }
+
+    @Override
+    public void addContact(AdStudent student, AdContact contact, AdUser user) {
+
+    }
+
+    @Override
+    public void deleteContact(AdStudent student, AdContact contact, AdUser user) {
+
     }
 
     @Override
@@ -110,6 +167,10 @@ public class AdStudentDaoImpl extends GenericDaoSupport<Long, AdStudent> impleme
     }
 
     @Override
+    public void deleteAddress(AdStudent student, AdAddress address, AdUser user) {
+
+    }
+
     public void updateAddress(AdStudent student, AdAddress address, AdUser user) {
         Validate.notNull(user, "User cannot be null");
         Session session = sessionFactory.getCurrentSession();
@@ -121,11 +182,5 @@ public class AdStudentDaoImpl extends GenericDaoSupport<Long, AdStudent> impleme
         metadata.setModifierId(user.getId());
         address.setMetadata(metadata);
         session.update(address);
-    }
-
-    @Override
-    public void removeAddress(AdStudent student, AdAddress address, AdUser user) {
-        // todo(sam): add impl
-
     }
 }

@@ -13,6 +13,10 @@ public interface AdStudent extends AdActor {
 
 	void setMatricNo(String matricNo);
 
+	AdStudentStatus getStudentStatus();
+
+	void setStudentStatus(AdStudentStatus studentStatus);
+
 	AdCohort getCohort();
 
 	void setCohort(AdCohort cohort);
@@ -21,12 +25,15 @@ public interface AdStudent extends AdActor {
 
 	void setAddresses(List<AdAddress> addresses);
 
-	// =========================================================
-	// STUDENT STATUS
-	// =========================================================
+	List<AdContact> getContacts();
 
-	AdStudentStatus getStudentStatus();
+	void setContacts(List<AdContact> contactes);
 
-	void setStudentStatus(AdStudentStatus studentStatus);
+	List<AdGuardian> getGuardians();
 
+	void setGuardians(List<AdGuardian> guardians);
+
+	List<AdGuarantor> getGuarantors();
+
+	void setGuarantors(List<AdGuarantor> guarantors);
 }

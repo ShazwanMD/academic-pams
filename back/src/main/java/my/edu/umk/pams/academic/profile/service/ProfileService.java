@@ -14,6 +14,10 @@ public interface ProfileService {
     // STUDENT
     //====================================================================================================
 
+    void activateStudent(AdStudent student);
+
+    void deactivateStudent(AdStudent student);
+
     void updateStudent(AdStudent student);
 
     //====================================================================================================
@@ -22,15 +26,12 @@ public interface ProfileService {
 
     AdAddress findAddressById(Long id);
 
-    // todo(sam) : find list of addresses
-    AdAddress findAddress(AdStudent student);
-
     List<AdAddress> findAddresses(AdStudent student);
 
     void addAddress(AdStudent student, AdAddress address);
 
     void updateAddress(AdStudent student, AdAddress address);
 
-    void removeAddress(AdStudent student, AdAddress address);
+     void removeAddress(AdStudent student, AdAddress address);
 
 }
