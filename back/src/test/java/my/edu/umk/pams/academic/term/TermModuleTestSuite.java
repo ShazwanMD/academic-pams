@@ -9,8 +9,6 @@ import org.junit.runners.Suite;
  */
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-        US_AD_TRM_0001.class,
-        US_AD_TRM_0002.class,
         US_AD_TRM_0009.class,
         US_AD_TRM_1001.class,
         US_AD_TRM_1002.class,
