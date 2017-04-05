@@ -26,7 +26,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class US_AD_PNR_2002
         extends SpringScenarioTest<GivenIAmStudent, WhenIReviewProgramInfomation, ThenProgramInfomationReviewed> {
 
-    private static final String FACULTY_CODE = "FKP";
+    private static final String FACULTY_CODE = "A01";
 
     @Test
     @Rollback
