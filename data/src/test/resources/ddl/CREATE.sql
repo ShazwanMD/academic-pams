@@ -690,6 +690,7 @@ create table AD_ETNY_CODE (
 create table AD_FCTY (
   ID int8 not null,
   CODE varchar(255) not null,
+  NAME varchar(255) not null,
   DESCRIPTION varchar(255) not null,
   C_TS timestamp,
   C_ID int8,

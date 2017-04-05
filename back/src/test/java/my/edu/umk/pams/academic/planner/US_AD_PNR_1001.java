@@ -28,7 +28,7 @@ public class US_AD_PNR_1001 extends SpringScenarioTest<GivenIAmCPSAdministrator,
 
     private static final Logger LOG = LoggerFactory.getLogger(US_AD_PNR_1001.class);
 
-    private String FACULTY_CODE = "FKP";
+    private String FACULTY_CODE = "A01";
 
     @ProvidedScenarioState
     private String PROGRAM_CODE = "PRGM-1234";

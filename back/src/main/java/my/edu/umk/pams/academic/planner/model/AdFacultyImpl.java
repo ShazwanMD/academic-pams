@@ -21,8 +21,11 @@ public class AdFacultyImpl implements AdFaculty {
 
     @Column(name = "CODE", nullable = false, unique = true)
     private String code;
+    
+    @Column(name = "NAME", nullable = false)
+    private String name;
 
-    @Column(name = "DESCRIPTION", nullable = false)
+    @Column(name = "DESCRIPTION", nullable = true)
     private String description;
 
     @OneToMany(targetEntity = AdProgramImpl.class, mappedBy = "faculty", fetch = FetchType.LAZY)
@@ -37,9 +40,9 @@ public class AdFacultyImpl implements AdFaculty {
     public AdFacultyImpl() {
     }
 
-    public AdFacultyImpl(String code, String description) {
+    public AdFacultyImpl(String code, String name) {
         this.code = code;
-        this.description = description;
+        this.name = name;
     }
 
     public Long getId() {
@@ -62,7 +65,15 @@ public class AdFacultyImpl implements AdFaculty {
         return description;
     }
 
-    public void setDescription(String description) {
+    public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setDescription(String description) {
         this.description = description;
     }
 
