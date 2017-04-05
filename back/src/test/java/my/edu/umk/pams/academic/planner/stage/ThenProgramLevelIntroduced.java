@@ -33,7 +33,7 @@ public class ThenProgramLevelIntroduced extends Stage<ThenProgramLevelIntroduced
 
     public ThenProgramLevelIntroduced program_level_$_introduced(String PROGRAM_CODE) {
 
-        List<AdProgramLevel> ProgramLevels = plannerService.findProgramLevels();
+//        List<AdProgramLevel> ProgramLevels = plannerService.findProgramLevels();
        // Assert.notEmpty(ProgramLevels);
 
         return self();
