@@ -8,6 +8,9 @@ import com.tngtech.jgiven.integration.spring.JGivenStage;
 import my.edu.umk.pams.academic.common.service.CommonService;
 import my.edu.umk.pams.academic.planner.model.*;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
+
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,8 +35,19 @@ public class WhenAdminAddCurriculum extends Stage<WhenAdminAddCurriculum> {
 
 	@ExpectedScenarioState
 	private AdProgram program;
+	
+	@ExpectedScenarioState
+	private AdFaculty faculty;
+	
+	@ExpectedScenarioState
+	private AdProgramLevel level;
 
-	public WhenAdminAddCurriculum Admin_add_curriculu() {
+	@ExpectedScenarioState
+	private AdCourse course;
+	
+	public String program_code;
+	
+	public WhenAdminAddCurriculum Admin_add_curriculum() {
 		// setting up curriculum
 		AdCurriculum curriculum = new AdCurriculumImpl();
 		curriculum.setCode(program.getCode() + "/CRLM/0002");
@@ -50,6 +64,31 @@ public class WhenAdminAddCurriculum extends Stage<WhenAdminAddCurriculum> {
 		curriculum.setPeriod(4);
 		curriculum.setProgram(program);
 		plannerService.saveCurriculum(curriculum);
+		
+		AdProgram program =  plannerService.findProgramByCode("FKP/MASTER/0008");
+		AdFaculty faculty = plannerService.findFacultyByCode("FKP");
+		AdProgramLevel level = plannerService.findProgramLevelByCode("PHD");
+		
+		LOG.debug("Faculty : {}", faculty.getName());
+		LOG.debug("Program Level : {}",level.getCode());
+		LOG.debug("Program Level : {}",level.getDescription());
+		LOG.debug("Program : {}", program.getTitle());
+		LOG.debug("Program : {}", program.getTitleEn());
+		LOG.debug("Program : {}", program.getTitleMs());
+		
+		
+		faculty = plannerService.findFacultyByCode("FKP");
+		List<AdCourse> courses = plannerService.findCourses(faculty);
+		
+		for(AdCourse course : courses){
+			
+			LOG.debug("Course Taken : {}", course.getTitle());
+
+			LOG.debug("Course Taken : {}", course.getTitleEn());
+
+			LOG.debug("Course Taken : {}", course.getTitleMs());
+			
+		}
 
 		return self();
 

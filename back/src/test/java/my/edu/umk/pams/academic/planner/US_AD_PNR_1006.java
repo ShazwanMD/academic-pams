@@ -39,7 +39,7 @@ public class US_AD_PNR_1006 extends
 	public void scenario1006() {
 		given().I_am_a_CPS_administrator()
 			.and().I_pick_program_$(PROGRAM_CODE);
-		when().Admin_add_curriculu();
+		when().Admin_add_curriculum();
 		then().Curriculum_has_added();
 	}
 }
