@@ -39,8 +39,8 @@ public class WhenLecturerReviewCourseInfoAndResearchInfo extends Stage<WhenLectu
 		student = identityService.findStudentByStudentNo(identityNo);
 		LOG.debug("Student's Name :{}", student.getName());
 		
-		faculty = plannerService.findFacultyByCode("MGSEB");
-		LOG.debug("Faculty's Details :{}", faculty.getName());
+		faculty = plannerService.findFacultyByCode("A10");
+		LOG.debug("Faculty's Details :{}", faculty.getDescription());
 		
 		course = plannerService.findCourseByCodeAndFaculty("MBA/GST 5013", faculty);
 		LOG.debug("Course's Details :{}", course.getCode());
@@ -60,7 +60,7 @@ public class WhenLecturerReviewCourseInfoAndResearchInfo extends Stage<WhenLectu
 		LOG.debug("Student's Name :{}", student.getName());
 		
 		faculty = plannerService.findFacultyByCode("CPS");
-		LOG.debug("Faculty's Details :{}", faculty.getName());
+		LOG.debug("Faculty's Details :{}", faculty.getDescription());
 		
 		course = plannerService.findCourseByCodeAndFaculty("MAP", faculty);
 		LOG.debug("Research's Details :{}", course.getCode());

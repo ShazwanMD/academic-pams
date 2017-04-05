@@ -55,11 +55,11 @@ public class WhenReviewCourseRegistrationDetails extends Stage<WhenReviewCourseR
 		student = identityService.findStudentByStudentNo(studentNo);
 		LOG.debug("Student_Name :{}", student.getName());
 		
-		program = plannerService.findProgramByCode("FIAT/PHD/0001");
+		program = plannerService.findProgramByCode("A07/PHD/0001");
 		LOG.debug("Program Code :{}", program.getCode());
 		LOG.debug("Program Title:{}",program.getTitle());
 			
-		faculty = plannerService.findFacultyByCode("FKP");
+		faculty = plannerService.findFacultyByCode("A01");
 		
 		List<AdCourse> courses = plannerService.findCourses(faculty);
 		for (AdCourse course : courses)

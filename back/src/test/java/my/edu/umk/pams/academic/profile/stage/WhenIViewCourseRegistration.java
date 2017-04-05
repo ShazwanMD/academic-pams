@@ -39,7 +39,7 @@ public class WhenIViewCourseRegistration extends Stage<WhenIViewCourseRegistrati
 	
 	public WhenIViewCourseRegistration I_view_student_course_registration() {
 		
-		faculty = plannerService.findFacultyByCode("FKP");
+		faculty = plannerService.findFacultyByCode("A01");
 		courses = plannerService.findCourses(faculty);
 
 		for (AdCourse course : courses) {

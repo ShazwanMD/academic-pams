@@ -29,7 +29,7 @@ public class US_AD_PNR_1010 extends
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_PNR_1010.class);
 
 	@Test
-	@Rollback(false)
+	@Rollback
 	public void scenario1() {
 		given().I_am_a_CPS_administrator_in_current_academic_session();
 		when().I_add_new_academic_session_info();

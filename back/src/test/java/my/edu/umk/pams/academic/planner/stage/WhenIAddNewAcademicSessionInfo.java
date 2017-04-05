@@ -43,7 +43,7 @@ public class WhenIAddNewAcademicSessionInfo extends Stage<WhenIAddNewAcademicSes
 		academicSession.setStartDate(new Date());
 		academicSession.setEndDate(new Date());
 		academicSession.setStatus(AdAcademicStatus.NEW);
-		academicSession.setCurrent(true);
+		academicSession.setCurrent(false);
 		academicSession.setSemester(AdAcademicSemester.SEMESTER_2);
 		// academicSession.setPrevious(previous);
 		// academicSession.setYear(academicYear);

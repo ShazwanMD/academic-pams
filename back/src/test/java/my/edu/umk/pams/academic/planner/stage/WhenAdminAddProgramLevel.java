@@ -15,10 +15,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class WhenAdminAddProgramLevel extends Stage<WhenAdminAddProgramLevel> {
 
     private static final Logger LOG = LoggerFactory.getLogger(WhenAdminAddProgramLevel.class);
+    
     @Autowired
     private PlannerService plannerService;
 
-    @ProvidedScenarioState
+    @ExpectedScenarioState
     private AdFaculty faculty;
 
     @ProvidedScenarioState

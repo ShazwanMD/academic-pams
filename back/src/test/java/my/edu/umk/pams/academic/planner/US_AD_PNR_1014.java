@@ -32,13 +32,13 @@ public class US_AD_PNR_1014
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_PNR_1014.class);
 
 	@ProvidedScenarioState
-	private String PROGRAM_CODE = "FSB/PHD/0001/CRLM/0001";
+	private String CODE = "A07/PHD/0002/CRLM/0001";
 
 	@Test
-	@Rollback(false)
+	@Rollback
 	public void scenario1() {
 		given().I_am_a_CPS_administrator();
-		when().Admin_update_curriculum_$(PROGRAM_CODE);
+		when().Admin_update_curriculum_$(CODE);
 		then().new_curriculum_is_updated();
 
 	}

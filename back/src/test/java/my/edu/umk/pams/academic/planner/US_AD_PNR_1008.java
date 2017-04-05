@@ -17,7 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 /**
  * As an admin academic,
- *  I Set Up Level Of Sudy For Faculty
+ *  I Set Up Level Of Study For Faculty
  *   New Level Of Study Is Introduced
  * @author ain
  */
@@ -29,13 +29,13 @@ public class US_AD_PNR_1008 extends SpringScenarioTest<GivenIAmCPSAdministrator,
 
     private static final Logger LOG = LoggerFactory.getLogger(US_AD_PNR_1008.class);
 
-    private String FACULTY_CODE = "FIAT";
+    private String FACULTY_CODE = "A07";
 
     @ProvidedScenarioState
-    private String PROGRAM_CODE = "FIAT/PHD/0001";
+    private String PROGRAM_CODE = "A07/PHD/0009";
 
     @Test
-    @Rollback(false)
+    @Rollback
     public void scenario1008() {
         given().I_am_a_CPS_administrator();
         when().Admin_add_a_program_level_for_faculty_$(FACULTY_CODE);

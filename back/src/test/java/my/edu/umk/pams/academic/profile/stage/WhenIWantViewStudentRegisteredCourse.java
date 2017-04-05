@@ -65,17 +65,17 @@ public class WhenIWantViewStudentRegisteredCourse extends Stage<WhenIWantViewStu
 		LOG.debug("Student's email : {}", actor.getEmail());
 		LOG.debug("Student's status: {}", studentStatus.name());
 
-		AdProgram program = plannerService.findProgramByCode("FKP/MASTER/0008");
-		AdFaculty faculty = plannerService.findFacultyByCode("FKP");
+		AdProgram program = plannerService.findProgramByCode("A01/MASTER/0008");
+		AdFaculty faculty = plannerService.findFacultyByCode("A01");
 		AdProgramLevel level = plannerService.findProgramLevelByCode("PHD");
-		LOG.debug("Faculty : {}", faculty.getName());
+		LOG.debug("Faculty : {}", faculty.getDescription());
 		LOG.debug("Program Level : {}",level.getCode());
 		LOG.debug("Program Level : {}",level.getDescription());
 		LOG.debug("Program : {}", program.getTitle());
 		LOG.debug("Program : {}", program.getTitleEn());
 		LOG.debug("Program : {}", program.getTitleMs());
 		
-		faculty = plannerService.findFacultyByCode("FKP");
+		faculty = plannerService.findFacultyByCode("A01");
 		List<AdCourse> courses = plannerService.findCourses(faculty);
 		
 		for(AdCourse course : courses){

@@ -27,7 +27,7 @@ public class US_AD_PFL_2006
 
     private static final Logger LOG = LoggerFactory.getLogger(US_AD_PFL_2006.class);
 
-    private String FACULTY_CODE = "FKP";
+    private String FACULTY_CODE = "A01";
 
     @Test
     @Rollback

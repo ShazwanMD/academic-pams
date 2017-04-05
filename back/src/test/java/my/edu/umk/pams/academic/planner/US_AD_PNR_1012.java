@@ -26,13 +26,13 @@ public class US_AD_PNR_1012
 
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_PNR_1012.class);
 
-	public static final String FACULTY_CODE = "FKP";
+	public static final String FACULTY_CODE = "A01";
 
-	@ProvidedScenarioState
-	private String PROGRAM_CODE = "FKP/MASTER/0010";
+
+	private static final String PROGRAM_CODE = "A01/MASTER/0008";
 
 	@Test
-	@Rollback(false)
+	@Rollback
 	public void scenario1() {
 
 		given().I_am_a_CPS_administrator().I_pick_program_$(PROGRAM_CODE);
