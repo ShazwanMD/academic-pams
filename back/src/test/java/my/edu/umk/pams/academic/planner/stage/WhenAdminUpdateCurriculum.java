@@ -35,13 +35,16 @@ public class WhenAdminUpdateCurriculum extends Stage<WhenAdminUpdateCurriculum> 
 	@ExpectedScenarioState
 	private AdCurriculum curriculum;
 
-	public WhenAdminUpdateCurriculum Admin_update_curriculum_$(String Code) {
+	public WhenAdminUpdateCurriculum Admin_update_curriculum_$(String code) {
 
-		curriculum = plannerService.findCurriculumByCode("A07/PHD/0001/CRLM/0001");
+		curriculum = plannerService.findCurriculumByCode(code);
+		
+		
+		
 
 		
 		// setting up curriculum
-		curriculum.setCode("A07/PHD/0001/CRLM/CRLM/0003");
+		curriculum.setCode(code);
 		curriculum.setOrdinal(1);
 		curriculum.setCoreCredit(2);
 		curriculum.setElectiveCredit(3);
