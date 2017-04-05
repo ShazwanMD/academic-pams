@@ -12,7 +12,9 @@ import com.tngtech.jgiven.integration.spring.JGivenStage;
 import my.edu.umk.pams.academic.common.service.CommonService;
 import my.edu.umk.pams.academic.planner.model.AdFaculty;
 import my.edu.umk.pams.academic.planner.model.AdProgram;
+import my.edu.umk.pams.academic.planner.model.AdProgramImpl;
 import my.edu.umk.pams.academic.planner.model.AdProgramLevel;
+import my.edu.umk.pams.academic.planner.model.AdProgramType;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
 
 
@@ -35,23 +37,19 @@ public class WhenAdminUpdateProgram extends Stage<WhenAdminUpdateProgram> {
 	    @ExpectedScenarioState
 	    private AdProgram program;
 	    
-	    @ProvidedScenarioState
-		private String PROGRAM_CODE = "MGSEB";
-	    
-	    
+	    @ExpectedScenarioState
+	    private AdProgramLevel programLevel;
+	   
 	    public WhenAdminUpdateProgram Admin_update_program_for_faculty_$(String facultyCode) {
-	    	
-	    	AdProgramLevel programLevel = plannerService.findProgramLevelByCode("MASTER");
-	    	faculty = plannerService.findFacultyByCode(facultyCode);
-	    
-	         program.setCode("FKP/MASTER/0011");
-	         program.setFaculty(faculty);
-	         program.setProgramLevel(programLevel);
+	 	
+	    	  
+	         program.setCode("A01/MASTER/00111");
+	         program.setFaculty(plannerService.findFacultyByCode(facultyCode));
 	         program.setTitle("Master of management(it)");
 	         program.setTitleEn("Master of management(it)");
 	         program.setTitleMs("Master of management(it)");
 	         
-	         plannerService.updateProgram(faculty, program);
+	         plannerService.updateProgram(program);
 	    	
 	    	return self();
 
