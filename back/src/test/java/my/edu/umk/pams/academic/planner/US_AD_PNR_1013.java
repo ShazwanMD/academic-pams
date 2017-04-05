@@ -35,7 +35,7 @@ public class US_AD_PNR_1013
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_PNR_1013.class);
 
 	@ProvidedScenarioState
-	private String PROGRAM_CODE = "FIAT/PHD/0002";
+	private String PROGRAM_CODE = "A07/PHD/0002";
 
 	@Test
 	@Rollback(false)

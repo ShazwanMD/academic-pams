@@ -49,7 +49,7 @@ public class WhenAdminUpdateCohort extends Stage<WhenAdminUpdateCohort> {
 		program = plannerService.findProgramByCode(Code);
 		LOG.debug("program code: {}", program.getCode());
 
-		AdCohort cohort = plannerService.findCohortByCode("FSB/PHD/0006/CHRT/0001");
+		AdCohort cohort = plannerService.findCohortByCode("A08/PHD/0006/CHRT/0001");
 		LOG.debug("cohort: {}", cohort.getDescription());
 
 		cohort.setCode("/CHRT/2019");
