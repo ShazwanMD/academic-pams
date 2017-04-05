@@ -8,7 +8,7 @@ import {EnrollmentApplicationTask} from "../enrollment-application-task.interfac
 
 
 @Component({
-  selector: 'cng-enrollmentApplication-register-task',
+  selector: 'pams-enrollmentApplication-register-task',
   templateUrl: './enrollmentApplication-register-task.panel.html',
 })
 
