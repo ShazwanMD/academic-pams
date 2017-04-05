@@ -37,10 +37,6 @@ public class WhenIReviewProgramLevel extends Stage<WhenIReviewProgramLevel> {
     @ExpectedScenarioState
     private List<AdProgramLevel> programLevels;
 
-    
-    public WhenIReviewProgramLevel() {
-    }
-
     public WhenIReviewProgramLevel I_review_program_level_$(String code) {
         
          programLevels = plannerService.findProgramLevels();

@@ -47,8 +47,8 @@ public class WhenAdminAddCurriculum extends Stage<WhenAdminAddCurriculum> {
 
 	public WhenAdminAddCurriculum Admin_add_curriculum() {
 
-		AdProgram program = plannerService.findProgramByCode("FKP/MASTER/0008");
-		AdFaculty faculty = plannerService.findFacultyByCode("FKP");
+		AdProgram program = plannerService.findProgramByCode("A01/MASTER/0008");
+		AdFaculty faculty = plannerService.findFacultyByCode("A01");
 		AdProgramLevel level = plannerService.findProgramLevelByCode("PHD");
 
 		// setting up curriculum

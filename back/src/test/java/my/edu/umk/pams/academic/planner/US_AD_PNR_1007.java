@@ -5,6 +5,7 @@ import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.planner.stage.ThenCoursePrerequisiteAdded;
 import my.edu.umk.pams.academic.planner.stage.WhenAdminAddCoursePrerequisite;
 import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
