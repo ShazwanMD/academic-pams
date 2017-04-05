@@ -18,9 +18,18 @@ import org.junit.runners.Suite;
         US_AD_PNR_1006.class,
         US_AD_PNR_1007.class,
         US_AD_PNR_1008.class,
+        US_AD_PNR_1009.class,
+        US_AD_PNR_1010.class,
+        US_AD_PNR_1011.class,
+        US_AD_PNR_1012.class,
+        US_AD_PNR_1013.class,
+        US_AD_PNR_1014.class,
+        US_AD_PNR_1015.class,
+
         US_AD_PNR_2001.class,
         US_AD_PNR_2002.class,
         US_AD_PNR_2003.class,
+        
 })
 public class PlannerModuleTestSuite {
 }
