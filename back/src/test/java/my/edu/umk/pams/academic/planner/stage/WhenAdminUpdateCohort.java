@@ -44,15 +44,15 @@ public class WhenAdminUpdateCohort extends Stage<WhenAdminUpdateCohort> {
 	@ProvidedScenarioState
 	private AdCohort cohort;
 
-	public WhenAdminUpdateCohort Admin_update_cohort_to_faculty_code_$(String Code) {
+	public WhenAdminUpdateCohort Admin_update_cohort_to_faculty_code_$(String code) {
 
-		program = plannerService.findProgramByCode(Code);
+		program = plannerService.findProgramByCode("A01/MASTER/0008");
 		LOG.debug("program code: {}", program.getCode());
 
-		AdCohort cohort = plannerService.findCohortByCode("A08/PHD/0006/CHRT/0001");
+		AdCohort cohort = plannerService.findCohortByCode(code);
 		LOG.debug("cohort: {}", cohort.getDescription());
 
-		cohort.setCode("/CHRT/2019");
+		cohort.setCode(code);
 		cohort.setDescription("FIRSTt COHORTll FOR PROGRAM ");
 		cohort.setClassification(AdAcademicClassification.LEVEL_000);
 		cohort.setCurriculum(curriculum);
