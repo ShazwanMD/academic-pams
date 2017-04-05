@@ -42,14 +42,14 @@ public class WhenAdminAddCurriculum extends Stage<WhenAdminAddCurriculum> {
 	@ExpectedScenarioState
 	private AdCourse course;
 
-	@ProvidedScenarioState
+	@ExpectedScenarioState
 	private AdCurriculum curriculum;
 
 	public WhenAdminAddCurriculum Admin_add_curriculum() {
 
-		AdProgram program = plannerService.findProgramByCode("FKP/MASTER/0008");
-		AdFaculty faculty = plannerService.findFacultyByCode("FKP");
-		AdProgramLevel level = plannerService.findProgramLevelByCode("PHD");
+		program = plannerService.findProgramByCode("FKP/MASTER/0008");
+		faculty = plannerService.findFacultyByCode("FKP");
+		level = plannerService.findProgramLevelByCode("PHD");
 
 		// setting up curriculum
 		curriculum = new AdCurriculumImpl();

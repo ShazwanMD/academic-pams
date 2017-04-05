@@ -1,7 +1,9 @@
 package my.edu.umk.pams.academic.planner.stage;
 
-/**
- * @author zaida_Ain
+/*Given : I Am Admin
+ * When : Admin Set Credit
+ * Then :  Set Credit Has Introduced.
+ * @author zaida
  */
 
 import org.slf4j.Logger;
@@ -12,6 +14,7 @@ import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 
 import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
+import my.edu.umk.pams.academic.planner.model.AdFaculty;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
 
 public class WhenISetCreditForAFaculty extends Stage<WhenISetCreditForAFaculty> {
@@ -25,9 +28,14 @@ public class WhenISetCreditForAFaculty extends Stage<WhenISetCreditForAFaculty> 
 	private AdAcademicSession academicSession;
 
 	@ProvidedScenarioState
+	private AdFaculty faculty;
+
+	@ProvidedScenarioState
 	private String code;
-	
-	public WhenISetCreditForAFaculty I_set_credit_for_a_faculty(){
+
+	public WhenISetCreditForAFaculty I_set_credit_for_a_faculty() {
+		faculty = plannerService.findFacultyByCode(code);
+
 		return null;
 
 	}
