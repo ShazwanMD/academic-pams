@@ -1,5 +1,5 @@
 package my.edu.umk.pams.academic.term;
-
+//@author:asyikin
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
