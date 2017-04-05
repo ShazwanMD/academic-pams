@@ -56,7 +56,7 @@ public class ProfileServiceImpl implements ProfileService {
     }
 
     @Override
-    public AdAddress findById(Long id) {
+    public AdAddress findAddressById(Long id) {
         return studentDao.findAddressById(id);
     }
 

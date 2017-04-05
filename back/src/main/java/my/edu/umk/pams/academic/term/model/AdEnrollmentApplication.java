@@ -13,27 +13,50 @@ import java.util.List;
  */
 public interface AdEnrollmentApplication extends AdDocument {
 
-    // TODO: removed
+    /**
+     *
+     * @return
+     */
     AdEnrollmentApplicationType getType();
 
     void setType(AdEnrollmentApplicationType type);
 
+    /**
+     *
+     * @return
+     */
     AdStudent getStudent();
 
     void setStudent(AdStudent student);
 
+    /**
+     *
+     * @return
+     */
     AdAdmission getAdmission();
 
     void setAdmission(AdAdmission admission);
 
+    /**
+     * todo:removed, for UG only
+     * @return
+     */
     AdStaff getAdvisor();
 
     void setAdvisor(AdStaff advisor);
 
+    /**
+     *
+     * @return
+     */
     AdAcademicSession getSession();
 
     void setSession(AdAcademicSession session);
 
+    /**
+     *
+     * @return
+     */
     List<AdEnrollmentApplicationItem> getItems();
 
     void setItems(List<AdEnrollmentApplicationItem> items);

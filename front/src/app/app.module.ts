@@ -10,6 +10,7 @@ import {CovalentMarkdownModule} from '@covalent/markdown';
 import {CovalentChartsModule} from '@covalent/charts';
 import {NgxChartsModule} from '@swimlane/ngx-charts';
 import {StoreDevtoolsModule} from "@ngrx/store-devtools";
+import {StoreModule, combineReducers} from "@ngrx/store";
 
 import {AppComponent} from './app.component';
 import {MainComponent} from './main/main.component';
@@ -21,7 +22,6 @@ import {appRoutes, appRoutingProviders} from './app.routes';
 import {PlannerModule, plannerReducer} from "./planner/index";
 import {HomeComponent} from "./home/home.component";
 import {TermModule, termReducer} from "./term/index";
-import {StoreModule, combineReducers} from "@ngrx/store";
 import {CustomUrlSerializer} from "./common/custom-url-serializer";
 import {UrlSerializer} from "@angular/router";
 const httpInterceptorProviders: Type<any>[] = [

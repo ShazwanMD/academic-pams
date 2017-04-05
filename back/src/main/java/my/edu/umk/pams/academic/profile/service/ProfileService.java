@@ -10,13 +10,22 @@ import java.util.List;
  */
 public interface ProfileService {
 
-    AdAddress findById(Long id);
-
-    List<AdAddress> findAddresses(AdStudent student);
-    
-    AdAddress findAddress(AdStudent student);
+    //====================================================================================================
+    // STUDENT
+    //====================================================================================================
 
     void updateStudent(AdStudent student);
+
+    //====================================================================================================
+    // ADDRESS
+    //====================================================================================================
+
+    AdAddress findAddressById(Long id);
+
+    // todo(sam): find list of addresses
+    AdAddress findAddress(AdStudent student);
+
+    List<AdAddress> findAddresses(AdStudent student);
 
     void addAddress(AdStudent student, AdAddress address);
 
