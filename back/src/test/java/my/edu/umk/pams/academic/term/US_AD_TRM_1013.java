@@ -25,10 +25,10 @@ import my.edu.umk.pams.bdd.stage.GivenIAmStudent;
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
-public class US_AD_TRM_1008
+public class US_AD_TRM_1013
 		extends SpringScenarioTest<GivenIAmStudent, WhenIViewTheOfferedCourses, ThenOfferedCoursesInfoIsCurrent> {
 
-	private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_1008.class);
+	private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_1013.class);
 
 	private static final String PROGRAM_CODE = "FKP/PHD/0001";
 
