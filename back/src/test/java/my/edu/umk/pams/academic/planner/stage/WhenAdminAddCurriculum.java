@@ -30,27 +30,30 @@ public class WhenAdminAddCurriculum extends Stage<WhenAdminAddCurriculum> {
 	@Autowired
 	private PlannerService plannerService;
 
-	@Autowired
-	private CommonService commonService;
-
 	@ExpectedScenarioState
 	private AdProgram program;
-	
+
 	@ExpectedScenarioState
 	private AdFaculty faculty;
-	
+
 	@ExpectedScenarioState
 	private AdProgramLevel level;
 
 	@ExpectedScenarioState
 	private AdCourse course;
-	
-	public String program_code;
-	
+
+	@ProvidedScenarioState
+	private AdCurriculum curriculum;
+
 	public WhenAdminAddCurriculum Admin_add_curriculum() {
+
+		AdProgram program = plannerService.findProgramByCode("FKP/MASTER/0008");
+		AdFaculty faculty = plannerService.findFacultyByCode("FKP");
+		AdProgramLevel level = plannerService.findProgramLevelByCode("PHD");
+
 		// setting up curriculum
-		AdCurriculum curriculum = new AdCurriculumImpl();
-		curriculum.setCode(program.getCode() + "/CRLM/0002");
+		curriculum = new AdCurriculumImpl();
+		curriculum.setCode(program.getCode() + "/" + "CRLM/0005"); // FKP/MASTER/0008/CRLM/0001
 		curriculum.setOrdinal(1);
 		curriculum.setCoreCredit(3);
 		curriculum.setElectiveCredit(3);
@@ -64,31 +67,31 @@ public class WhenAdminAddCurriculum extends Stage<WhenAdminAddCurriculum> {
 		curriculum.setPeriod(4);
 		curriculum.setProgram(program);
 		plannerService.saveCurriculum(curriculum);
-		
-		AdProgram program =  plannerService.findProgramByCode("FKP/MASTER/0008");
-		AdFaculty faculty = plannerService.findFacultyByCode("FKP");
-		AdProgramLevel level = plannerService.findProgramLevelByCode("PHD");
-		
-		LOG.debug("Faculty : {}", faculty.getName());
-		LOG.debug("Program Level : {}",level.getCode());
-		LOG.debug("Program Level : {}",level.getDescription());
-		LOG.debug("Program : {}", program.getTitle());
-		LOG.debug("Program : {}", program.getTitleEn());
-		LOG.debug("Program : {}", program.getTitleMs());
-		
-		
-		faculty = plannerService.findFacultyByCode("FKP");
-		List<AdCourse> courses = plannerService.findCourses(faculty);
-		
-		for(AdCourse course : courses){
-			
-			LOG.debug("Course Taken : {}", course.getTitle());
 
-			LOG.debug("Course Taken : {}", course.getTitleEn());
+		LOG.debug("curriculum : {}", curriculum.getCode());
 
-			LOG.debug("Course Taken : {}", course.getTitleMs());
-			
-		}
+		/*
+		 * LOG.debug("Faculty : {}", faculty.getName());
+		 * LOG.debug("Program Level : {}",level.getCode());
+		 * LOG.debug("Program Level : {}",level.getDescription());
+		 * LOG.debug("Program : {}", program.getTitle());
+		 * LOG.debug("Program : {}", program.getTitleEn());
+		 * LOG.debug("Program : {}", program.getTitleMs());
+		 * 
+		 * 
+		 * faculty = plannerService.findFacultyByCode("FKP"); List<AdCourse>
+		 * courses = plannerService.findCourses(faculty);
+		 * 
+		 * for(AdCourse course : courses){
+		 * 
+		 * LOG.debug("Course Taken : {}", course.getTitle());
+		 * 
+		 * LOG.debug("Course Taken : {}", course.getTitleEn());
+		 * 
+		 * LOG.debug("Course Taken : {}", course.getTitleMs());
+		 * 
+		 * }
+		 */
 
 		return self();
 

@@ -35,7 +35,7 @@ public class US_AD_PNR_1006 extends
 	private static final String PROGRAM_CODE = "FKP/MASTER/0001";
 
 	@Test
-	@Rollback
+	@Rollback(true)
 	public void scenario1006() {
 		given().I_am_a_CPS_administrator()
 			.and().I_pick_program_$(PROGRAM_CODE);
