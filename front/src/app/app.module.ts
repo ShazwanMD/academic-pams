@@ -1,4 +1,3 @@
-import {compose} from "@ngrx/core/compose";
 import {NgModule, Type} from '@angular/core';
 import {BrowserModule, Title}  from '@angular/platform-browser';
 import {RequestInterceptor} from '../config/interceptors/request.interceptor';
@@ -17,7 +16,6 @@ import {MainComponent} from './main/main.component';
 import {DashboardComponent} from './dashboard/dashboard.component';
 import {LoginComponent} from './login/login.component';
 import {appRoutes, appRoutingProviders} from './app.routes';
-
 
 import {PlannerModule, plannerReducer} from "./planner/index";
 import {HomeComponent} from "./home/home.component";
@@ -49,9 +47,9 @@ const httpInterceptorProviders: Type<any>[] = [
     CovalentHighlightModule.forRoot(),
     CovalentMarkdownModule.forRoot(),
     NgxChartsModule,
+
     PlannerModule.forRoot(),
     TermModule.forRoot(),
-
     // note:temporary solution
     StoreModule.provideStore(plannerReducer),
     StoreDevtoolsModule.instrumentOnlyWithExtension(),

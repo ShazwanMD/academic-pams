@@ -6,7 +6,7 @@ import {environment} from "../environments/environment";
 import {Program} from "../app/planner/programs/program.interface";
 import {Faculty} from "../app/planner/faculties/faculty.interface";
 import {Course} from "../app/planner/courses/course.interface";
-import {escape} from "querystring";
+import {Cohort} from "../app/planner/cohorts/cohort.interface";
 
 @Injectable()
 export class PlannerService {
@@ -81,5 +81,24 @@ export class PlannerService {
     let options = new RequestOptions({headers: headers});
     return this.http.get(environment.endpoint + '/api/payable/invoices?offset=&limit=', options)
       .map((res: Response) => <Course>res.json());
+  }
+
+  // ====================================================================================================
+  // COHORT
+  // ====================================================================================================
+
+  findCohorts(): Observable<Cohort[]> {
+    console.log("findCohorts");
+    let headers = new Headers({'Authorization': 'Bearer TODO'});
+    let options = new RequestOptions({headers: headers});
+    return this.http.get(environment.endpoint + '/api/planner/cohorts', options)
+      .map(res => {return <Cohort[]>res.json();})
+  }
+
+  findCohortByCode(code: string): Observable<Cohort> {
+    let headers = new Headers({'Authorization': 'Bearer TODO'});
+    let options = new RequestOptions({headers: headers});
+    return this.http.get(environment.endpoint + '/api/planner/cohorts/' + code, options)
+      .map((res: Response) =><Cohort>res.json());
   }
 }

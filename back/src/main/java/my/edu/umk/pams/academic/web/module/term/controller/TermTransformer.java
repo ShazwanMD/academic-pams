@@ -8,6 +8,10 @@ import my.edu.umk.pams.academic.term.model.AdSection;
 import my.edu.umk.pams.academic.web.module.term.vo.*;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
+import static java.util.stream.Collectors.toList;
+
 /**
  * @author PAMS
  */
@@ -44,4 +48,35 @@ public class TermTransformer {
         m.setId(section.getId());
         return m;
     }
+
+    public List<Admission> toAdmissionVos(List<AdAdmission> admissions) {
+        List<Admission> vos = admissions.stream()
+                .map((admission) -> toAdmissionVo(admission))
+                .collect(toList());
+        return vos;
+    }
+
+    public List<Enrollment> toEnrollmentVos(List<AdEnrollment> enrollments) {
+        List<Enrollment> vos = enrollments.stream()
+                .map((enrollment) -> toEnrollmentVo(enrollment))
+                .collect(toList());
+        return vos;
+    }
+
+
+    public List<Offering> toOfferingVos(List<AdOffering> offerings) {
+        List<Offering> vos = offerings.stream()
+                .map((offering) -> toOfferingVo(offering))
+                .collect(toList());
+        return vos;
+    }
+
+
+    public List<Section> toSEctionVos(List<AdSection> sections) {
+        List<Section> vos = sections.stream()
+                .map((section) -> toSectionVo(section))
+                .collect(toList());
+        return vos;
+    }
+
 }

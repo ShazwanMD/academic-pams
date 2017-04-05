@@ -6,6 +6,7 @@ import my.edu.umk.pams.academic.web.module.core.vo.MetaObject;
  * @author PAMS
  */
 public class AcademicSession extends MetaObject {
+
     private String code;
     private String description;
     private boolean current;
