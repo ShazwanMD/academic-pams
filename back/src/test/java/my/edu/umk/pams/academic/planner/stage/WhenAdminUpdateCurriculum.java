@@ -37,11 +37,11 @@ public class WhenAdminUpdateCurriculum extends Stage<WhenAdminUpdateCurriculum> 
 
 	public WhenAdminUpdateCurriculum Admin_update_curriculum_$(String Code) {
 
-		curriculum = plannerService.findCurriculumByCode("FIAT/PHD/0001/CRLM/0001");
+		curriculum = plannerService.findCurriculumByCode("A07/PHD/0001/CRLM/0001");
 
 		
 		// setting up curriculum
-		curriculum.setCode("FIAT/PHD/0001/CRLM/CRLM/0003");
+		curriculum.setCode("A07/PHD/0001/CRLM/CRLM/0003");
 		curriculum.setOrdinal(1);
 		curriculum.setCoreCredit(2);
 		curriculum.setElectiveCredit(3);
