@@ -19,7 +19,7 @@ public class ThenProgramInfoIsUpdated extends Stage<ThenProgramInfoIsUpdated> {
 
     public ThenProgramInfoIsUpdated the_program_is_current_for_$(String facultyCode) {
 
-        boolean exists = plannerService.isProgramExists("FKP", faculty);
+        boolean exists = plannerService.isProgramExists("A01", faculty);
         Assert.isTrue(exists, "cool");
 
         return self();

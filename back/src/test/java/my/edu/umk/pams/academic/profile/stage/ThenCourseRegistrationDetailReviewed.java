@@ -47,7 +47,7 @@ public class ThenCourseRegistrationDetailReviewed extends Stage<ThenCourseRegist
 	private String studentNo = "A17P001";
 	
 	public ThenCourseRegistrationDetailReviewed  course_registration_details_reviewed() {
-		faculty = plannerService.findFacultyByCode("FKP");
+		faculty = plannerService.findFacultyByCode("A01");
 		List<AdCourse> courses = plannerService.findCourses(faculty);
 		
 		Assert.notEmpty(courses, "Not Registered Courses");

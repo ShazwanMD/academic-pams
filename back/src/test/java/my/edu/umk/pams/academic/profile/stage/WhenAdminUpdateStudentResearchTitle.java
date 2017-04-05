@@ -63,7 +63,7 @@ public class WhenAdminUpdateStudentResearchTitle extends Stage<WhenAdminUpdateSt
 
 	public WhenAdminUpdateStudentResearchTitle Admin_update_student_research_titles() {
 		
-		AdFaculty faculty = plannerService.findFacultyByCode("MGSEB");
+		AdFaculty faculty = plannerService.findFacultyByCode("A10");
 		AdCourse course = plannerService.findCourseByCode("DBA/YEAR3/SEMESTER6/Module 14");
 		
 		course.setFaculty(faculty);

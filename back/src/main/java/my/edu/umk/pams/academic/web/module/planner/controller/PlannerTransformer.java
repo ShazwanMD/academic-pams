@@ -39,7 +39,7 @@ public class PlannerTransformer {
         Faculty m = new Faculty();
         m.setId(faculty.getId());
         m.setCode(faculty.getCode());
-        m.setName(faculty.getName());
+        m.setName(faculty.getDescription());
         return m;
     }
 

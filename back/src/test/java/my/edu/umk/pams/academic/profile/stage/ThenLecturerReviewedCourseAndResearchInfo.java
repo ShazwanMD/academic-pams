@@ -36,7 +36,7 @@ private static final Logger LOG = LoggerFactory.getLogger(ThenLecturerReviewedCo
 	AdFaculty faculty;	
 	
 	public ThenLecturerReviewedCourseAndResearchInfo Lecturer_review_course(){
-		faculty = plannerService.findFacultyByCode("MGSEB");
+		faculty = plannerService.findFacultyByCode("A10");
 		boolean exists = plannerService.isCourseExists("MBA/GST 5013", faculty);
 		
 		Assert.isTrue(exists, "is not exists");

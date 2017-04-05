@@ -26,7 +26,7 @@ public class US_AD_PFL_1006 extends SpringScenarioTest<GivenIAmStudent, WhenIVie
 
     private static final Logger LOG = LoggerFactory.getLogger(US_AD_PFL_1006.class);
 
-    private static final String FACULTY_CODE = "FKP";
+    private static final String FACULTY_CODE = "A01";
 
     @Test
     @Rollback

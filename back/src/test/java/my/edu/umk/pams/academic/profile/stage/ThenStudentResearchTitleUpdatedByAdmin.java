@@ -45,7 +45,7 @@ public class ThenStudentResearchTitleUpdatedByAdmin extends Stage<ThenStudentRes
 		
 	}
 	public ThenStudentResearchTitleUpdatedByAdmin Student_research_title_updated_by_admin_mgseb() {
-		 faculty = plannerService.findFacultyByCode("MGSEB");
+		 faculty = plannerService.findFacultyByCode("A10");
 		 course = plannerService.findCourseByCode("DBA/YEAR3/SEMESTER6/Module 145");
 		
 		boolean exists = plannerService.isCourseExists("DBA/YEAR3/SEMESTER6/Module 145", faculty);
