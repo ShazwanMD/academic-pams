@@ -699,7 +699,7 @@ create table AD_FCTY (
   M_TS timestamp,
   M_ID int8,
   M_ST int4,
-  ID_PREFIX varchar(255),
+  PREFIX varchar(255),
   primary key (ID)
 );
 
