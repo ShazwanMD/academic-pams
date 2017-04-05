@@ -18,7 +18,7 @@ public class WhenAdminAddProgramLevel extends Stage<WhenAdminAddProgramLevel> {
     @Autowired
     private PlannerService plannerService;
 
-    @ProvidedScenarioState
+    @ExpectedScenarioState
     private AdFaculty faculty;
 
     @ProvidedScenarioState
