@@ -22,7 +22,7 @@ public interface ProfileService {
 
     AdAddress findAddressById(Long id);
 
-    // todo(sam): find list of addresses
+    // todo(sam) : find list of addresses
     AdAddress findAddress(AdStudent student);
 
     List<AdAddress> findAddresses(AdStudent student);

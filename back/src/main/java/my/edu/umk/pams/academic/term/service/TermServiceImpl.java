@@ -1,18 +1,16 @@
 package my.edu.umk.pams.academic.term.service;
 
 import my.edu.umk.pams.academic.common.model.AdStudyCenter;
-import my.edu.umk.pams.academic.identity.dao.AdStaffDao;
-import my.edu.umk.pams.academic.identity.dao.AdStudentDao;
 import my.edu.umk.pams.academic.identity.model.AdStaff;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
+import my.edu.umk.pams.academic.planner.model.*;
+import my.edu.umk.pams.academic.planner.service.PlannerService;
+import my.edu.umk.pams.academic.profile.model.AdAdmission;
+import my.edu.umk.pams.academic.security.service.SecurityService;
+import my.edu.umk.pams.academic.system.service.SystemService;
 import my.edu.umk.pams.academic.term.dao.*;
 import my.edu.umk.pams.academic.term.event.*;
 import my.edu.umk.pams.academic.term.model.*;
-import my.edu.umk.pams.academic.profile.model.AdAdmission;
-import my.edu.umk.pams.academic.security.service.SecurityService;
-import my.edu.umk.pams.academic.planner.dao.*;
-import my.edu.umk.pams.academic.planner.model.*;
-import my.edu.umk.pams.academic.system.service.SystemService;
 import my.edu.umk.pams.academic.workflow.service.WorkflowConstants;
 import my.edu.umk.pams.academic.workflow.service.WorkflowService;
 import org.activiti.engine.task.Task;
@@ -41,31 +39,7 @@ public class TermServiceImpl implements TermService {
     private static final Logger LOG = LoggerFactory.getLogger(TermServiceImpl.class);
 
     @Autowired
-    private AdAcademicSessionDao academicSessionDao;
-
-    @Autowired
-    private AdAcademicYearDao academicYearDao;
-
-    @Autowired
-    private AdIntakeCodeDao intakeCodeDao;
-
-    @Autowired
-    private AdFacultyDao facultyDao;
-
-    @Autowired
-    private AdProgramDao programDao;
-
-    @Autowired
-    private AdCurriculumDao curriculumDao;
-
-    @Autowired
-    private AdCourseDao courseDao;
-
-    @Autowired
     private AdOfferingDao offeringDao;
-
-    @Autowired
-    private AdCohortDao cohortDao;
 
     @Autowired
     private AdSectionDao sectionDao;
@@ -86,10 +60,7 @@ public class TermServiceImpl implements TermService {
     private AdGradebookDao gradebookDao;
 
     @Autowired
-    private AdStudentDao studentDao;
-
-    @Autowired
-    private AdStaffDao staffDao;
+    private PlannerService plannerService;
 
     @Autowired
     private SecurityService securityService;
@@ -373,8 +344,93 @@ public class TermServiceImpl implements TermService {
     }
 
     // ====================================================================================================
-    // OFFERING
+    // ENROLLMENT APPLICATION
     // ====================================================================================================
+
+    @Override
+    public AdEnrollmentApplication findEnrollmentApplicationByTaskId(String taskId) {
+        Task task = workflowService.findTask(taskId);
+        Map<String, Object> map = workflowService.getVariables(task.getExecutionId());
+        return enrollmentApplicationDao.findById((Long) map.get(ENROLLMENT_APPLICATION_ID));
+    }
+
+    @Override
+    public Task findEnrollmentApplicationTaskByTaskId(String taskId) {
+        return workflowService.findTask(taskId);
+    }
+
+    @Override
+    public List<Task> findAssignedEnrollmentApplicationTasks(Integer offset, Integer limit) {
+        return workflowService.findAssignedTasks(AdEnrollmentApplication.class.getName(), offset, limit);
+    }
+
+    @Override
+    public List<Task> findPooledEnrollmentApplicationTasks(Integer offset, Integer limit) {
+        return workflowService.findPooledTasks(AdEnrollmentApplication.class.getName(), offset, limit);
+    }
+
+    @Override
+    public Integer countAssignedEnrollmentApplicationTasks() {
+        return workflowService.countAssignedTask(AdEnrollmentApplication.class.getName());
+    }
+
+    @Override
+    public Integer countPooledEnrollmentApplicationTasks() {
+        return workflowService.countPooledTask(AdEnrollmentApplication.class.getName());
+    }
+
+    @Override
+    public void startEnrollmentApplicationTask(AdEnrollmentApplication application) {
+        // todo(uda): param
+        HashMap<String, Object> param = new HashMap<String, Object>();
+        param.put("academicSession", plannerService.findCurrentAcademicSession());
+        String refNo = systemService.generateFormattedReferenceNo(ENROLLMENT_APPLICATION_REFERENCE_NO, param);
+        application.setReferenceNo(refNo);
+
+        enrollmentApplicationDao.save(application, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+        sessionFactory.getCurrentSession().refresh(application);
+
+        // trigger workflow
+        workflowService.processWorkflow(application, prepareVariables(application));
+    }
+
+    @Override
+    public void updateEnrollmentApplication(AdEnrollmentApplication application) {
+        enrollmentApplicationDao.update(application, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
+
+    @Override
+    public void cancelEnrollmentApplication(AdEnrollmentApplication application) {
+        Validate.notNull(application, "EnrollmentApplication cannot be null");
+        Validate.isTrue(DRAFTED.equals(application.getFlowdata().getState()), "EnrollmentApplication can only be cancelled in DRAFTED state");
+        enrollmentApplicationDao.update(application, securityService.getCurrentUser());
+    }
+
+    @Override
+    public void addEnrollmentApplicationItem(AdEnrollmentApplication application, AdEnrollmentApplicationItem item) {
+        Validate.notNull(application, "EnrollmentApplication cannot be null");
+        Validate.notNull(item, "Item cannot be null");
+        Validate.isTrue(DRAFTED.equals(application.getFlowdata().getState()), "EnrollmentApplication can only be configured in DRAFTED state");
+        enrollmentApplicationDao.addItem(application, item, securityService.getCurrentUser());
+    }
+
+    @Override
+    public void updateEnrollmentApplicationItem(AdEnrollmentApplication application, AdEnrollmentApplicationItem item) {
+        Validate.notNull(application, "EnrollmentApplication cannot be null");
+        Validate.notNull(item, "Item cannot be null");
+        Validate.isTrue(DRAFTED.equals(application.getFlowdata().getState()), "EnrollmentApplication can only be configured in DRAFTED state");
+        enrollmentApplicationDao.updateItem(application, item, securityService.getCurrentUser());
+    }
+
+    @Override
+    public void deleteEnrollmentApplicationItem(AdEnrollmentApplication application, AdEnrollmentApplicationItem item) {
+        Validate.notNull(application, "EnrollmentApplication cannot be null");
+        Validate.notNull(item, "Item cannot be null");
+        Validate.isTrue(DRAFTED.equals(application.getFlowdata().getState()), "EnrollmentApplication can only be configured in DRAFTED state");
+        enrollmentApplicationDao.deleteItem(application, item, securityService.getCurrentUser());
+    }
 
     @Override
     public AdEnrollmentApplication findEnrollmentApplicationById(Long id) {
@@ -690,87 +746,6 @@ public class TermServiceImpl implements TermService {
         sessionFactory.getCurrentSession().flush();
     }
 
-    @Override
-    public String processEnrollmentApplication(AdEnrollmentApplication application) {
-        // todo(uda): param
-        HashMap<String, Object> param = new HashMap<String, Object>();
-        String refNo = systemService
-                .generateFormattedReferenceNo(ENROLLMENT_APPLICATION_REFERENCE_NO, param);
-        application.setReferenceNo(refNo);
-
-        enrollmentApplicationDao.save(application, securityService.getCurrentUser());
-        sessionFactory.getCurrentSession().flush();
-        sessionFactory.getCurrentSession().refresh(application);
-
-        // trigger workflow
-        workflowService.processWorkflow(application, prepareVariables(application));
-        return refNo;
-
-    }
-
-    @Override
-    public void updateEnrollmentApplication(AdEnrollmentApplication application) {
-        enrollmentApplicationDao.update(application, securityService.getCurrentUser());
-        sessionFactory.getCurrentSession().flush();
-    }
-
-    @Override
-    public void cancelEnrollmentApplication(AdEnrollmentApplication application) {
-        Validate.notNull(application, "EnrollmentApplication cannot be null");
-        Validate.isTrue(DRAFTED.equals(application.getFlowdata().getState()), "EnrollmentApplication can only be cancelled in DRAFTED state");
-        enrollmentApplicationDao.update(application, securityService.getCurrentUser());
-    }
-
-    @Override
-    public void addEnrollmentApplicationItem(AdEnrollmentApplication application, AdEnrollmentApplicationItem item) {
-        Validate.notNull(application, "EnrollmentApplication cannot be null");
-        Validate.notNull(item, "Item cannot be null");
-        Validate.isTrue(DRAFTED.equals(application.getFlowdata().getState()), "EnrollmentApplication can only be configured in DRAFTED state");
-        enrollmentApplicationDao.addItem(application, item, securityService.getCurrentUser());
-    }
-
-    @Override
-    public void updateEnrollmentApplicationItem(AdEnrollmentApplication application, AdEnrollmentApplicationItem item) {
-        Validate.notNull(application, "EnrollmentApplication cannot be null");
-        Validate.notNull(item, "Item cannot be null");
-        Validate.isTrue(DRAFTED.equals(application.getFlowdata().getState()), "EnrollmentApplication can only be configured in DRAFTED state");
-        enrollmentApplicationDao.updateItem(application, item, securityService.getCurrentUser());
-    }
-
-    @Override
-    public void deleteEnrollmentApplicationItem(AdEnrollmentApplication application, AdEnrollmentApplicationItem item) {
-        Validate.notNull(application, "EnrollmentApplication cannot be null");
-        Validate.notNull(item, "Item cannot be null");
-        Validate.isTrue(DRAFTED.equals(application.getFlowdata().getState()), "EnrollmentApplication can only be configured in DRAFTED state");
-        enrollmentApplicationDao.deleteItem(application, item, securityService.getCurrentUser());
-    }
-
-    @Override
-    public AdEnrollmentApplication findEnrollmentApplicationByTaskId(String taskId) {
-        Task task = workflowService.findTask(taskId);
-        Map<String, Object> map = workflowService.getVariables(task.getExecutionId());
-        return enrollmentApplicationDao.findById((Long) map.get(ENROLLMENT_APPLICATION_ID));
-    }
-
-    @Override
-    public List<Task> findAssignedEnrollmentApplicationTasks(Integer offset, Integer limit) {
-        return workflowService.findAssignedTasks(AdEnrollmentApplication.class.getName(), offset, limit);
-    }
-
-    @Override
-    public List<Task> findCandidateEnrollmentApplicationTasks(Integer offset, Integer limit) {
-        return workflowService.findPooledTasks(AdEnrollmentApplication.class.getName(), offset, limit);
-    }
-
-    @Override
-    public Integer countAssignedEnrollmentApplicationTasks() {
-        return workflowService.countAssignedTask(AdEnrollmentApplication.class.getName());
-    }
-
-    @Override
-    public Integer countCandidateEnrollmentApplicationTasks() {
-        return workflowService.countPooledTask(AdEnrollmentApplication.class.getName());
-    }
 
     //    public AcGroup getAdminGroup() {
 //        return groupDao.findByName();
