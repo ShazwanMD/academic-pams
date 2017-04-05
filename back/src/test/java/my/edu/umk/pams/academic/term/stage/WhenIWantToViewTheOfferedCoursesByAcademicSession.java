@@ -6,6 +6,7 @@ import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.planner.model.AdProgram;
+import my.edu.umk.pams.academic.planner.service.PlannerService;
 import my.edu.umk.pams.academic.term.model.AdOffering;
 import my.edu.umk.pams.academic.term.service.TermService;
 import org.slf4j.Logger;
@@ -22,6 +23,9 @@ public class WhenIWantToViewTheOfferedCoursesByAcademicSession
 
     @Autowired
     private TermService termService;
+    
+    @Autowired
+    private PlannerService plannerService;
 
     @ExpectedScenarioState
     private AdProgram program;
@@ -37,7 +41,15 @@ public class WhenIWantToViewTheOfferedCoursesByAcademicSession
 
     public WhenIWantToViewTheOfferedCoursesByAcademicSession I_browse_the_offered_course_by_program_I_picked() {
         // list all term for program
+    	
+    	program = plannerService.findProgramByCode("MGSEB");
+    	LOG.debug("For program: {}", program.getTitle());
+    	
         offerings = termService.findOfferings(program);
+        
+        for (AdOffering offering : offerings) {
+			LOG.debug(offering.getTitle());
+		}
         return self();
     }
 }

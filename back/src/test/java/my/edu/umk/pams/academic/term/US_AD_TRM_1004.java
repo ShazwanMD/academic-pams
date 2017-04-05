@@ -22,9 +22,9 @@ import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
-public class US_AD_TRM_1006 extends
+public class US_AD_TRM_1004 extends
 		SpringScenarioTest<GivenIAmCPSAdministrator, WhenIAppointStaffIntoSection, ThenTheStatusOfAppointmentIsUpdated> {
-	private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_1006.class);
+	private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_1004.class);
 
 	// from data/AD_ACTR.sql
 	public static final String STAFF_NO = "01001A";

@@ -3,6 +3,8 @@ package my.edu.umk.pams.academic.term.stage;
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
+
+import my.edu.umk.pams.academic.planner.model.AdProgram;
 import my.edu.umk.pams.academic.term.model.AdOffering;
 import my.edu.umk.pams.academic.term.model.AdSection;
 import my.edu.umk.pams.academic.term.service.TermService;
@@ -20,14 +22,22 @@ public class ThenICanChoose extends Stage<ThenICanChoose> {
     private TermService termService;
 
     @ExpectedScenarioState
-    private AdOffering offering;
+    private List<AdOffering> offerings;
 
     @ExpectedScenarioState
     private List<AdSection> sections;
+    
+    @ExpectedScenarioState
+    private AdProgram program;
 
     private static final Logger LOG = LoggerFactory.getLogger(ThenICanChoose.class);
 
     public ThenICanChoose i_can_choose_which_section_to_enroll() {
+    	
+    	offerings = termService.findOfferings(program);
+    	
+    	/*
+    	AdSection section = termService.findSections(offering);
         // iterate thru expected offerings
         // try to find section to enroll
         for (AdSection section : sections) {
@@ -35,6 +45,7 @@ public class ThenICanChoose extends Stage<ThenICanChoose> {
             boolean exceededEnrollment = termService.hasExceededEnrollment(section);
             Assert.isTrue(!exceededEnrollment, "Section is full");
         }
+        */
         return self();
     }
 }
