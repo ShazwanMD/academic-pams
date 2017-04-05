@@ -35,7 +35,7 @@ public class US_AD_PNR_1008 extends SpringScenarioTest<GivenIAmCPSAdministrator,
     private String PROGRAM_CODE = "A07/PHD/0009";
 
     @Test
-    @Rollback(false)
+    @Rollback
     public void scenario1008() {
         given().I_am_a_CPS_administrator();
         when().Admin_add_a_program_level_for_faculty_$(FACULTY_CODE);
