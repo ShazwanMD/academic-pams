@@ -29,7 +29,7 @@ public class US_AD_PNR_1004 extends SpringScenarioTest<GivenIAmCPSAdministrator,
 
     private static final Logger LOG = LoggerFactory.getLogger(US_AD_PNR_1004.class);
 
-    private static final String FACULTY_CODE = "FIAT";
+    private static final String FACULTY_CODE = "A07";
 
     @Test
     @Rollback
