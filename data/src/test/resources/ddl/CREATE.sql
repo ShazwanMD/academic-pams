@@ -707,7 +707,9 @@ create table AD_ETNY_CODE (
 create table AD_FCTY (
   ID int8 not null,
   CODE varchar(255) not null,
+  NAME varchar(255) not null,
   DESCRIPTION varchar(255),
+  PREFIX varchar(255),
   C_TS timestamp,
   C_ID int8,
   D_TS timestamp,
@@ -715,7 +717,7 @@ create table AD_FCTY (
   M_TS timestamp,
   M_ID int8,
   M_ST int4,
-  NAME varchar(255) not null,
+
   primary key (ID)
 );
 
@@ -1288,6 +1290,22 @@ create table AD_STDY_CNTR (
   M_TS timestamp,
   M_ID int8,
   M_ST int4,
+  primary key (ID)
+);
+
+create table AD_STDY_MODE (
+  ID int8 not null,
+  CODE varchar(255) not null,
+  DESCRIPTION_EN varchar(255) not null,
+  DESCRIPTION_MS varchar(255) not null,
+  C_TS timestamp,
+  C_ID int8,
+  D_TS timestamp,
+  D_ID int8,
+  M_TS timestamp,
+  M_ID int8,
+  M_ST int4,
+  PREFIX varchar(255) not null,
   primary key (ID)
 );
 
@@ -1915,6 +1933,9 @@ alter table AD_STDY_CNTR
 
 alter table AD_STDY_CNTR_CODE
   add constraint uc_AD_STDY_CNTR_CODE_1 unique (CODE);
+  
+ alter table AD_STDY_MODE
+  add constraint uc_AD_STDY_MODE_1 unique (CODE);
 
 alter table AD_STTE_CODE
   add constraint uc_AD_STTE_CODE_1 unique (CODE);
@@ -2083,6 +2104,8 @@ create sequence SQ_AD_SMDL;
 create sequence SQ_AD_STDY_CNTR;
 
 create sequence SQ_AD_STDY_CNTR_CODE;
+
+create sequence SQ_AD_STDY_MODE;
 
 create sequence SQ_AD_STTE_CODE;
 
