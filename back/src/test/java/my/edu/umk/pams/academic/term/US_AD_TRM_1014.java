@@ -32,7 +32,7 @@ public class US_AD_TRM_1014
 	public void scenario1() {
 		given().I_am_a_student_in_current_academic_session().and().I_pick_offering_$(OFFERING_CANONICAL_CODE);
 		when().I_browse_the_offered_course_by_program_I_picked();
-		then().i_can_choose_which_section_to_enroll();
+		then().i_can_choose_which_section_to_enroll(); 
 	}
 }
 
