@@ -43,7 +43,7 @@ public class WhenIAppointStaffIntoSection extends Stage<WhenIAppointStaffIntoSec
 
         // add appointment of staff to section
         appointment = new AdAppointmentImpl();
-        appointment.setStatus(AdAppointmentStatus.CONFIRMED);
+        appointment.setStatus(AdAppointmentStatus.NEW);
         appointment.setStaff(staff);
         appointment.setSection(section);
         termService.saveAppointment(appointment);

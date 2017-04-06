@@ -21,7 +21,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class US_AD_TRM_1006 extends
 		SpringScenarioTest<GivenIAmCPSAdministrator, WhenIWantToSetCapacityForOfferedCourse, ThenTheOfferedCourseHasAMaxAllowQuota> {
 
-	public static final String FACULTY_CODE = "FKP";
+	public static final String FACULTY_CODE = "A01";
 
 	@Test
 	@Rollback

@@ -53,7 +53,7 @@ public class WhenIViewTheDetailsOfOfferedCourses extends Stage<WhenIViewTheDetai
 
 		program = plannerService.findProgramByCode(code);
 		offering = termService.findOfferings(program);
-		String code1 = "FKP";
+		String code1 = "A01";
 		AdFaculty faculty = plannerService.findFacultyByCode(code1);
 		List<AdCourse> courses = plannerService.findCourses(faculty);
 
