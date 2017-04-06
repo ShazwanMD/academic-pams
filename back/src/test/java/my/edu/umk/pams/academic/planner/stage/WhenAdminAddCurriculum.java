@@ -22,7 +22,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  * As an admin academic, 
  * i want to set up curriculum for a faculty, 
  * so that i can manage schedule by program.
- * @author zaida
+ * @author zaida_ain
  */
 
 @JGivenStage
@@ -65,6 +65,7 @@ public class WhenAdminAddCurriculum extends Stage<WhenAdminAddCurriculum> {
 		curriculum.setMaxPeriod(5);
 		curriculum.setPeriod(4);
 		curriculum.setProgram(program);
+		
 		plannerService.saveCurriculum(curriculum);
 
 		LOG.debug("curriculum : {}", curriculum.getCode());

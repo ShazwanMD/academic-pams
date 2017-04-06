@@ -32,7 +32,6 @@ public class US_AD_PNR_1006 extends
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_PNR_1006.class);
 
 	private static final String PROGRAM_CODE = "A10";
-
 	
 	@Test
 	@Rollback(true)

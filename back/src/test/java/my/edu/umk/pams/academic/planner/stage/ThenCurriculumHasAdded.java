@@ -39,7 +39,6 @@ public class ThenCurriculumHasAdded extends Stage<ThenCurriculumHasAdded> {
 	@ExpectedScenarioState
 	private AdCurriculum curriculum;
 
-	@ExpectedScenarioState
 	private String code;
 	
 	public ThenCurriculumHasAdded Curriculum_has_added() {
