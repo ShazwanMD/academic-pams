@@ -73,6 +73,9 @@ public class CommonServiceImpl implements CommonService {
 
     @Autowired
     private AdStudyCenterCodeDao studyCenterCodeDao;
+    
+    @Autowired
+    private AdStudyCenterDao studyCenterDao;
 
     @Autowired
     private AdVenueCodeDao venueCodeDao;
@@ -915,6 +918,16 @@ public class CommonServiceImpl implements CommonService {
     }
 
     //====================================================================================================
+    // STUDY CENTER
+    //====================================================================================================
+
+    @Override
+   	public AdStudyCenter findStudyCenterByCode(String code) {
+       	 return studyCenterDao.findByCode(code);
+   		
+   	}
+    
+    //====================================================================================================
     // STUDY CENTER CODE
     //====================================================================================================
 
@@ -922,7 +935,7 @@ public class CommonServiceImpl implements CommonService {
     public AdStudyCenterCode findStudyCenterCodeById(Long id) {
         return studyCenterCodeDao.findById(id);
     }
-
+    
     @Override
     public AdStudyCenterCode findStudyCenterCodeByCode(String code) {
         return studyCenterCodeDao.findByCode(code);
@@ -1522,6 +1535,8 @@ public class CommonServiceImpl implements CommonService {
         employmentSectorCodeDao.remove(employmentSectorCode, Util.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
+
+	
 
 
     //====================================================================================================

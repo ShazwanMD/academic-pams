@@ -67,8 +67,8 @@ public class WhenIRegisterAdmissionInNewSemester extends Stage<WhenIRegisterAdmi
 		String sourceNo = "sourceNo";
 		String auditNo = "auditNo";
 		String description = "description";
-		String removeComment = "";
-		String cancelComment = "";
+		String removeComment = "removeComment";
+		String cancelComment = "cancelComment";
 
 		LOG.debug("student {}", student.getName());
 		LOG.debug("advisor {}", advisor.getName());

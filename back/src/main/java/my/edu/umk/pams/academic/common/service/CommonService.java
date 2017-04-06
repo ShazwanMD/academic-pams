@@ -106,6 +106,8 @@ public interface CommonService {
     AdStudyCenterCode findStudyCenterCodeById(Long id);
 
     AdStudyCenterCode findStudyCenterCodeByCode(String code);
+    
+    AdStudyCenter findStudyCenterByCode(String code);
 
     List<AdStudyCenterCode> findStudyCenterCodes();
 
