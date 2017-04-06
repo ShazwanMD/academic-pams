@@ -25,7 +25,7 @@ public class US_AD_TRM_1014
 
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_1014.class);
 
-	public static final String OFFERING_CANONICAL_CODE = "FKP/PHD/0001/DDA2113";
+	public static final String OFFERING_CANONICAL_CODE = "A01/PHD/0001/DDA2113";
 
 	@Test
 	@Rollback(true)
