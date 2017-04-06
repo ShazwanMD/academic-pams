@@ -21,9 +21,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 
 @JGivenStage
-public class WhenIOfferACourse extends Stage<WhenIOfferACourse> {
+public class WhenIOfferCourse extends Stage<WhenIOfferCourse> {
 
-	private static final Logger LOG = LoggerFactory.getLogger(WhenIOfferACourse.class);
+	private static final Logger LOG = LoggerFactory.getLogger(WhenIOfferCourse.class);
 
 	@Autowired
 	private TermService termService;
@@ -43,11 +43,10 @@ public class WhenIOfferACourse extends Stage<WhenIOfferACourse> {
 	@ProvidedScenarioState
 	private AdCourse course;
 
-	public WhenIOfferACourse I_offer_all_courses_under_program_faculty() {
+	public WhenIOfferCourse I_create_course_offerings_for_the_program() {
 
 		// find faculty of the program
 		LOG.debug("Pick faculty: {}", faculty.getCode());
-		AdProgram program = plannerService.findProgramByCode("A01/MASTER/0001");
 
 		// find ALL courses under this faculty to be offered by this program
 		List<AdCourse> courses = plannerService.findCourses(faculty);
@@ -62,17 +61,14 @@ public class WhenIOfferACourse extends Stage<WhenIOfferACourse> {
 
 			LOG.debug("Listed canonicalCode offering : {}", canonicalCode);
 
-			AdCourse course1 = plannerService.findCourseById(course.getId());
-			AdProgram program1 = plannerService.findProgramById(program.getId());
-
 			// Add offer courses into offering table
 			AdOffering offering = new AdOfferingImpl();
 			offering.setCode(course.getCode());
 			offering.setCanonicalCode(canonicalCode);
 			offering.setTitle(course.getTitle());
 			offering.setCapacity(30);
-			offering.setCourse(course1);
-			offering.setProgram(program1);
+			offering.setCourse(course);
+			offering.setProgram(program);
 
 			termService.saveOffering(offering);
 

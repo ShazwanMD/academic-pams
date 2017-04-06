@@ -19,9 +19,9 @@ import org.springframework.util.Assert;
 import java.util.List;
 
 @JGivenStage
-public class ThenTheOfferingIsReadyForSetup extends Stage<ThenTheOfferingIsReadyForSetup> {
+public class ThenOfferingMayHaveSection extends Stage<ThenOfferingMayHaveSection> {
 
-	private static final Logger LOG = LoggerFactory.getLogger(ThenTheOfferingIsReadyForSetup.class);
+	private static final Logger LOG = LoggerFactory.getLogger(ThenOfferingMayHaveSection.class);
 
 	@Autowired
 	private TermService termService;
@@ -35,7 +35,7 @@ public class ThenTheOfferingIsReadyForSetup extends Stage<ThenTheOfferingIsReady
 	@ProvidedScenarioState
 	private AdProgram program;
 
-	public ThenTheOfferingIsReadyForSetup the_offering_is_ready_for_setup() {
+	public ThenOfferingMayHaveSection the_offerings_may_begin_to_have_sections() {
 		program = plannerService.findProgramByCode("A01/MASTER/0001");
 
 		List<AdOffering> offerings = termService.findOfferings(program);
