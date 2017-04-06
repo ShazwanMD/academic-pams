@@ -16,6 +16,11 @@ import my.edu.umk.pams.academic.profile.stage.ThenStudentResearchTitleUpdatedByA
 import my.edu.umk.pams.academic.profile.stage.WhenAdminUpdateStudentResearchTitle;
 import my.edu.umk.pams.bdd.stage.GivenIAmAdministrator;
 
+/*As an admin, 
+	I want to update student research title, 
+	so that research title is current
+*/
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
