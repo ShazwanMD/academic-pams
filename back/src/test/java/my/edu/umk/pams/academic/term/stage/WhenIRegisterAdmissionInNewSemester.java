@@ -5,7 +5,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
-import com.tngtech.jgiven.annotation.Pending;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 import my.edu.umk.pams.academic.common.model.AdStudyCenter;
@@ -58,11 +57,13 @@ public class WhenIRegisterAdmissionInNewSemester extends Stage<WhenIRegisterAdmi
 	public WhenIRegisterAdmissionInNewSemester I_register_admission_in_new_semester() {
 		// process flow of admission
 
-		String code = "A";
+		String code = "B";
 		student = identityService.findStudentByStudentNo("A17P001");
 		advisor = identityService.findStaffByStaffNo("01001A");
 		program = plannerService.findProgramByCode("A01/MASTER/0001");
 		studyCenterCode = commonService.findStudyCenterCodeByCode(code);
+		//studyCenter = commonService.findStudyCenterByCode(code);
+		
 		String referenceNo = "referenceNo";
 		String sourceNo = "sourceNo";
 		String auditNo = "auditNo";
