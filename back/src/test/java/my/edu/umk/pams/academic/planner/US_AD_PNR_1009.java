@@ -12,8 +12,8 @@ import org.springframework.transaction.annotation.Transactional;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 
 import my.edu.umk.pams.academic.config.TestAppConfiguration;
-import my.edu.umk.pams.academic.planner.stage.ThenSetCreditHasIntroduced;
-import my.edu.umk.pams.academic.planner.stage.WhenISetCreditForAFaculty;
+import my.edu.umk.pams.academic.planner.stage.ThenCreditHoursApplied;
+import my.edu.umk.pams.academic.planner.stage.WhenEnterCreditHours;
 import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
 
 /*Given : I Am Admin
@@ -25,19 +25,21 @@ import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
-
-
+//As an admin academic,i want to set credit  for a faculty, so that the credit for each courses introduced
 public class US_AD_PNR_1009 extends
-SpringScenarioTest<GivenIAmCPSAdministrator, WhenISetCreditForAFaculty, ThenSetCreditHasIntroduced>{
+SpringScenarioTest<GivenIAmCPSAdministrator, WhenEnterCreditHours, ThenCreditHoursApplied>{
 	
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_PNR_1009.class);
+	private static final String FACULTY_CODE = "A01";
+	private static final Integer COURSE_CREDIT = 3;
 
 	@Test
 	@Rollback(false)
 	public void scenario1() {
-		given().I_am_a_CPS_administrator();
-		when().I_set_credit_for_a_faculty();
-		then().set_credit_has_introduced();
+		given().I_am_a_CPS_administrator()
+		.and().I_pick_faculty_$(FACULTY_CODE);
+		when().I_set_course_credit_hours(COURSE_CREDIT);
+		then().course_credit_hours_are_applied(COURSE_CREDIT);
 
 }
 	
