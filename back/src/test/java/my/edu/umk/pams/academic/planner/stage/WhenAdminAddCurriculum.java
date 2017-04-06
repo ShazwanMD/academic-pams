@@ -6,6 +6,9 @@ import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 
 import my.edu.umk.pams.academic.common.service.CommonService;
+import my.edu.umk.pams.academic.identity.model.AdActor;
+import my.edu.umk.pams.academic.identity.model.AdStudent;
+import my.edu.umk.pams.academic.identity.model.AdStudentStatus;
 import my.edu.umk.pams.academic.planner.model.*;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
 
@@ -45,11 +48,7 @@ public class WhenAdminAddCurriculum extends Stage<WhenAdminAddCurriculum> {
 	@ProvidedScenarioState
 	private AdCurriculum curriculum;
 
-	public WhenAdminAddCurriculum Admin_add_curriculum() {
-
-		AdProgram program = plannerService.findProgramByCode("A01/MASTER/0008");
-		AdFaculty faculty = plannerService.findFacultyByCode("A01");
-		AdProgramLevel level = plannerService.findProgramLevelByCode("PHD");
+	public WhenAdminAddCurriculum Admin_add_curriculum()  {
 
 		// setting up curriculum
 		curriculum = new AdCurriculumImpl();
@@ -70,31 +69,37 @@ public class WhenAdminAddCurriculum extends Stage<WhenAdminAddCurriculum> {
 
 		LOG.debug("curriculum : {}", curriculum.getCode());
 
-		/*
-		 * LOG.debug("Faculty : {}", faculty.getName());
-		 * LOG.debug("Program Level : {}",level.getCode());
-		 * LOG.debug("Program Level : {}",level.getDescription());
-		 * LOG.debug("Program : {}", program.getTitle());
-		 * LOG.debug("Program : {}", program.getTitleEn());
-		 * LOG.debug("Program : {}", program.getTitleMs());
-		 * 
-		 * 
-		 * faculty = plannerService.findFacultyByCode("FKP"); List<AdCourse>
-		 * courses = plannerService.findCourses(faculty);
-		 * 
-		 * for(AdCourse course : courses){
-		 * 
-		 * LOG.debug("Course Taken : {}", course.getTitle());
-		 * 
-		 * LOG.debug("Course Taken : {}", course.getTitleEn());
-		 * 
-		 * LOG.debug("Course Taken : {}", course.getTitleMs());
-		 * 
-		 * }
-		 */
+		// review set curriculum
+		
+		AdAcademicSession academicSession= plannerService.findAcademicSessionByCode("201720181");
+		AdProgram program = plannerService.findProgramByCode("A10");
+		AdFaculty faculty = plannerService.findFacultyByCode("A10");
+		AdProgramLevel level = plannerService.findProgramLevelByCode("PHD");
+		LOG.debug("AcademicSession :{}", academicSession.getSemester());
+		LOG.debug("Faculty : {}", faculty.getDescription());
+		LOG.debug("Program Level : {}", level.getCode());
+		LOG.debug("Program Level : {}", level.getDescription());
+		LOG.debug("Program : {}", program.getTitle());
+		LOG.debug("Program : {}", program.getTitleEn());
+		LOG.debug("Program : {}", program.getTitleMs());
+
+	
+		faculty = plannerService.findFacultyByCode("A10");
+
+		List<AdCourse> courses = plannerService.findCourses(faculty);
+
+		for (AdCourse course : courses) {
+
+			LOG.debug("Course Taken : {}", course.getTitle());
+
+			LOG.debug("Course Taken : {}", course.getTitleEn());
+
+			LOG.debug("Course Taken : {}", course.getTitleMs());
+
+		}
 
 		return self();
-
+		
 	}
 
 }

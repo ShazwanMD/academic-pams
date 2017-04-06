@@ -20,7 +20,7 @@ import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
  *I Am Admin
  *Admin Add Curriculum 
  *Curriculum Has Added
- * @author zaida
+ * @author zaida_AIN
  */
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -32,7 +32,7 @@ public class US_AD_PNR_1006 extends
 
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_PNR_1006.class);
 
-	private static final String PROGRAM_CODE = "A01/MASTER/0001";
+	private static final String PROGRAM_CODE = "A10";
 
 	@Test
 	@Rollback(true)
@@ -41,5 +41,6 @@ public class US_AD_PNR_1006 extends
 			.and().I_pick_program_$(PROGRAM_CODE);
 		when().Admin_add_curriculum();
 		then().Curriculum_has_added();
+		
 	}
 }
