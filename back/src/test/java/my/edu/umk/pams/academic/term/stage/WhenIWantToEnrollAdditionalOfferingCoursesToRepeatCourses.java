@@ -47,7 +47,7 @@ public class WhenIWantToEnrollAdditionalOfferingCoursesToRepeatCourses
 	public WhenIWantToEnrollAdditionalOfferingCoursesToRepeatCourses I_want_to_enroll_additional_offering_courses_to_repeat_courses_for_program_$(
 			String code) {
 
-		section = termService.findSectionByCanonicalCode("FKP/PHD/0001/DDA2113/201720181");
+		section = termService.findSectionByCanonicalCode("A01/PHD/0001/DDA2113/201720181");
 		LOG.debug("A section{}", section);
 
 		student = identityService.findStudentByStudentNo("A17P002");

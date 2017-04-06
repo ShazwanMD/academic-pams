@@ -26,8 +26,7 @@ import my.edu.umk.pams.bdd.stage.GivenIAmStudent;
 public class US_AD_TRM_1017
 		extends SpringScenarioTest<GivenIAmStudent, WhenIEnrollTheCourses, ThenTheEnrollmentIsCurrent> {
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_1017.class);
-	private static final String PROGRAM_CODE = "FKP/MASTER/0001";// program-id
-																	// 65
+	private static final String PROGRAM_CODE = "A01/MASTER/0001";
 
 	@Before
 	public void before() {
@@ -38,7 +37,7 @@ public class US_AD_TRM_1017
 	}
 
 	@ProvidedScenarioState
-	private String faculty = "FKP";
+	private String faculty = "A01";
 
 	@Test
 	@Rollback(true)

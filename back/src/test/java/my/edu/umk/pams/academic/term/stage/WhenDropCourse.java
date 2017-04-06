@@ -37,7 +37,7 @@ public class WhenDropCourse extends Stage<WhenDropCourse> {
 		
 		String identityNo = "A17P002";
 		student = (AdStudent) identityService.findActorByIdentityNo(identityNo);
-		section = termService.findSectionByCanonicalCode("FKP/PHD/0001/DDA2113/201720181");
+		section = termService.findSectionByCanonicalCode("A01/PHD/0001/DDA2113/201720181");
 		enrollment = new AdEnrollmentImpl();
 		enrollment.setStudent(student);
 		enrollment.setSection(section);

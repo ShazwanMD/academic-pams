@@ -24,7 +24,7 @@ public class US_AD_TRM_1002
 		extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenICreateSections, ThenTheStudentCanEnrol> {
 
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_1002.class);
-	public static final String PROGRAM_CODE = "FKP/PHD/0001";
+	public static final String PROGRAM_CODE = "A01/PHD/0001";
 
 	@Test
 	@Rollback(true)

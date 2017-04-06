@@ -18,7 +18,7 @@ import my.edu.umk.pams.academic.planner.model.AdProgram;
 @JGivenStage
 public class ThenOfferedCoursesInfoIsCurrent extends Stage<ThenOfferedCoursesInfoIsCurrent> {
 	private static final Logger LOG = LoggerFactory.getLogger(ThenOfferedCoursesInfoIsCurrent.class);
-	
+
 	@Autowired
 	private TermService termService;
 
