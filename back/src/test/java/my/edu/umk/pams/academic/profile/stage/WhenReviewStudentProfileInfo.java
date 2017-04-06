@@ -3,6 +3,7 @@ package my.edu.umk.pams.academic.profile.stage;
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
+
 import my.edu.umk.pams.academic.common.service.CommonService;
 import my.edu.umk.pams.academic.identity.model.AdAddress;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
@@ -23,8 +24,7 @@ public class WhenReviewStudentProfileInfo extends Stage<WhenReviewStudentProfile
     private IdentityService identityService;
     @Autowired
     private ProfileService profileService;
-    @Autowired
-    private CommonService commonService;
+
 
     @ExpectedScenarioState
     private AdStudent student;
@@ -35,6 +35,8 @@ public class WhenReviewStudentProfileInfo extends Stage<WhenReviewStudentProfile
     public WhenReviewStudentProfileInfo supervisor_review_student_profile(String studentNo) {
         student = identityService.findStudentByStudentNo(studentNo);
         addresses = profileService.findAddresses(student);
+        
+       
         for (AdAddress address : addresses) {
             LOG.debug(address.getAddress1());
             LOG.debug(address.getAddress2());
@@ -48,7 +50,10 @@ public class WhenReviewStudentProfileInfo extends Stage<WhenReviewStudentProfile
             LOG.debug("Student's mobile number : {}", student.getMobile());
             LOG.debug("Student's phone number : {}", student.getPhone());
             LOG.debug("Student's status	: {}", student.getStudentStatus());
+      
         }
+
+        
 
         return self();
     }

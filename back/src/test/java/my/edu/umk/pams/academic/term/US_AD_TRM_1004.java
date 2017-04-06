@@ -30,9 +30,10 @@ public class US_AD_TRM_1004 extends
 	public static final String STAFF_NO = "01001A";
 	// from data/AD_OFRG.sql
 	public static final String SECTION_CANONICAL_CODE = "A01/PHD/0001/DDA2113/201720181";
+	
 
 	@Test
-	@Rollback
+	@Rollback(true)
 	public void scenario1() {
 		given().I_am_a_CPS_administrator_in_current_academic_session().and().I_pick_section_$(SECTION_CANONICAL_CODE);
 		when().I_appoint_a_staff_$_into_section(STAFF_NO);

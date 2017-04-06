@@ -37,7 +37,7 @@ public class WhenIWantToUpdateAppointmentStatus extends Stage<WhenIWantToUpdateA
 
 	public WhenIWantToUpdateAppointmentStatus I_update_appointment_status() {
 
-		section = termService.findSectionByCanonicalCode("FKP/PHD/0001/DDA2113/201720181");
+		section = termService.findSectionByCanonicalCode("A01/PHD/0001/DDA2113/201720181");
 		staff = identityService.findStaffByStaffNo("01001A");
 		appointment = termService.findAppointmentBySectionAndStaff(section, staff);
 
@@ -45,7 +45,7 @@ public class WhenIWantToUpdateAppointmentStatus extends Stage<WhenIWantToUpdateA
 		LOG.debug("staff {} ", staff.getIdentityNo());
 		LOG.debug("appointment {} ", appointment.getId());
 
-		appointment.setStatus(AdAppointmentStatus.CONFIRMED);
+		appointment.setStatus(AdAppointmentStatus.DISMISSED);
 		termService.updateAppointment(appointment);
 
 		return self();

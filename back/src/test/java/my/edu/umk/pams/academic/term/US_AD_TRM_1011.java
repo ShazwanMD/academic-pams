@@ -28,7 +28,7 @@ import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
 public class US_AD_TRM_1011
 		extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenIOpenTheEnrollmentDate, ThenTheEnrollmentDateIsOpen> {
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_1011.class);
-	private static final String PROGRAM_CODE = "FKP/PHD/0001";
+	private static final String PROGRAM_CODE = "A01/PHD/0001";
 
 	@Before
 	public void before() {

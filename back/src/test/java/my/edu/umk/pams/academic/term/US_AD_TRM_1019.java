@@ -25,7 +25,7 @@ import my.edu.umk.pams.bdd.stage.GivenIAmStudent;
 public class US_AD_TRM_1019 extends
 		SpringScenarioTest<GivenIAmStudent, WhenIWantToEnrollAdditionalOfferingCoursesToRepeatCourses, ThenTheEnrollmentCoursesIsUpdated> {
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_1019.class);
-	private static final String PROGRAM_CODE = "FKP/MASTER/0001";
+	private static final String PROGRAM_CODE = "A01/MASTER/0001";
 
 	@Before
 	public void before() {
