@@ -25,10 +25,9 @@ import {FacultyEffects} from "./faculties/faculty.effect";
 import {CourseListState, courseListReducer} from "./courses/course-list.reducer";
 import {CourseState, courseReducer} from "./courses/course.reducer";
 import {CourseModule} from "./courses/index";
-import {CourseEffects} from "./courses/course.effect";
-import {FacultyActions} from "./faculties/faculty.action";
-import {CourseActions} from "./courses/course.action";
-import {ProgramActions} from "./programs/program.action";
+import {CohortModule} from "./cohorts/index";
+import {CohortState, cohortReducer} from "./cohorts/cohort.reducer";
+import {CohortListState, cohortListReducer} from "./cohorts/cohort-list.reducer";
 
 export interface PlannerState {
   faculties: FacultyListState;
@@ -37,6 +36,8 @@ export interface PlannerState {
   program: ProgramState;
   courses: CourseListState;
   course: CourseState;
+  cohorts: CohortListState;
+  cohort: CohortState;
 }
 ;
 
@@ -44,6 +45,7 @@ export const plannerReducer = combineReducers({
   faculties:facultyListReducer, faculty:facultyReducer,
   programs: programListReducer, program: programReducer,
   courses: courseListReducer, course: courseReducer,
+  cohorts: cohortListReducer, cohort: cohortReducer,
 });
 
 
@@ -58,6 +60,7 @@ export const plannerReducer = combineReducers({
     FacultyModule.forRoot(),
     ProgramModule.forRoot(),
     CourseModule.forRoot(),
+    CohortModule.forRoot(),
   ],
   declarations: [
     // page
