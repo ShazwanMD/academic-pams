@@ -40,15 +40,15 @@ public class WhenIUpdateEnrollmentStatus extends Stage<WhenIUpdateEnrollmentStat
 
 	public WhenIUpdateEnrollmentStatus I_update_enrollment_status_for_program_$(String code) {
 
-		student = identityService.findStudentByStudentNo("A17P002");
-		section = termService.findSectionByCanonicalCode("FKP/PHD/0001/DDA2113/201720181");
+		student = identityService.findStudentByStudentNo("A17P001");
+		section = termService.findSectionByCanonicalCode("A01/PHD/0001/DDA2113/201720181");
 		enrollment = termService.findEnrollmentBySectionAndStudent(section, student);
 		
 		LOG.debug("Student:{}", student.getIdentityNo());
 		LOG.debug("Section:{}", section.getCanonicalCode());
 		LOG.debug("Enrollment status:{}", enrollment.getStatus());
 
-		enrollment.setStatus(AdEnrollmentStatus.CONFIRMED);
+		enrollment.setStatus(AdEnrollmentStatus.WAIT_LISTED);
 		termService.updateEnrollment(enrollment);
 
 		return self();

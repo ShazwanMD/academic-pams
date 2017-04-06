@@ -30,7 +30,7 @@ public class US_AD_TRM_1013
 
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_1013.class);
 
-	private static final String PROGRAM_CODE = "FKP/PHD/0001";
+	private static final String PROGRAM_CODE = "A01/PHD/0001";
 
 	@Before
 	public void before() {

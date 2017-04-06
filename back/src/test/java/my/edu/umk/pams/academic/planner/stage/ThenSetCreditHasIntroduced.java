@@ -1,7 +1,9 @@
 package my.edu.umk.pams.academic.planner.stage;
 
-/**
- * @author zaida_Ain
+/*Given : I Am Admin
+ * When : Admin Set Credit
+ * Then :  Set Credit Has Introduced.
+ * @author zaida
  */
 
 import org.slf4j.Logger;

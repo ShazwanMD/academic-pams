@@ -20,7 +20,7 @@ import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
  *I Am Admin
  *Admin Add Curriculum 
  *Curriculum Has Added
- * @author zaida_AIN
+ * @author zaida
  */
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -29,10 +29,11 @@ import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
 public class US_AD_PNR_1006 extends
 		SpringScenarioTest<GivenIAmCPSAdministrator, WhenAdminAddCurriculum, ThenCurriculumHasAdded>{
 
+
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_PNR_1006.class);
 
-	private static final String PROGRAM_CODE = "A10";
-	
+	private static final String PROGRAM_CODE = "A01/MASTER/0001";
+
 	@Test
 	@Rollback(true)
 	public void scenario1006() {
@@ -40,6 +41,5 @@ public class US_AD_PNR_1006 extends
 			.and().I_pick_program_$(PROGRAM_CODE);
 		when().Admin_add_curriculum();
 		then().Curriculum_has_added();
-		
 	}
 }

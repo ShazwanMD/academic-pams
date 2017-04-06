@@ -16,8 +16,10 @@ import my.edu.umk.pams.academic.planner.stage.ThenSetCreditHasIntroduced;
 import my.edu.umk.pams.academic.planner.stage.WhenISetCreditForAFaculty;
 import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
 
-/*
- * @author zaida_ain
+/*Given : I Am Admin
+ * When : Admin Set Credit
+ * Then :  Set Credit Has Introduced.
+ * @author zaida
  */
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -34,8 +36,8 @@ SpringScenarioTest<GivenIAmCPSAdministrator, WhenISetCreditForAFaculty, ThenSetC
 	@Rollback(false)
 	public void scenario1() {
 		given().I_am_a_CPS_administrator();
-	//	when().I_set_credit_for_a_faculty();
-	//	then().set_credit_has_introduced();
+		when().I_set_credit_for_a_faculty();
+		then().set_credit_has_introduced();
 
 }
 	

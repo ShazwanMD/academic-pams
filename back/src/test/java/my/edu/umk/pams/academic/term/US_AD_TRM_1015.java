@@ -27,7 +27,7 @@ public class US_AD_TRM_1015 extends
 		SpringScenarioTest<GivenIAmStudent, WhenIViewTheDetailsOfOfferedCourses, ThenTheDetailsOfferedCoursesInfoIsCurrent> {
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_1015.class);
 
-	private static final String PROGRAM_CODE = "FKP/MASTER/0001";
+	private static final String PROGRAM_CODE = "A01/MASTER/0001";
 
 	@Before
 	public void before() {
@@ -38,7 +38,7 @@ public class US_AD_TRM_1015 extends
 	}
 
 	@ProvidedScenarioState
-	private String faculty = "FKP";
+	private String faculty = "A01";
 
 	@Test
 	@Rollback(true)
@@ -48,5 +48,5 @@ public class US_AD_TRM_1015 extends
 		then().the_details_offered_courses_info_is_current();
 
 	}
-
 }
+

@@ -6,8 +6,6 @@ import my.edu.umk.pams.academic.common.model.AdGradeCodeImpl;
 import my.edu.umk.pams.academic.core.AdMetadata;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.identity.model.AdStudentImpl;
-import my.edu.umk.pams.academic.profile.model.AdAdmission;
-import my.edu.umk.pams.academic.profile.model.AdAdmissionImpl;
 import my.edu.umk.pams.academic.planner.model.AdEnrollmentStanding;
 import my.edu.umk.pams.academic.planner.model.AdEnrollmentStatus;
 

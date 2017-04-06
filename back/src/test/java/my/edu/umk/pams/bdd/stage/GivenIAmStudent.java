@@ -1,6 +1,7 @@
 package my.edu.umk.pams.bdd.stage;
 
 import com.tngtech.jgiven.Stage;
+
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 

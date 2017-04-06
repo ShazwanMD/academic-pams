@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.tngtech.jgiven.Stage;
+import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 import my.edu.umk.pams.academic.term.model.AdEnrollment;
@@ -33,15 +34,15 @@ public class WhenIEnrollTheCourses extends Stage<WhenIEnrollTheCourses> {
 	@ProvidedScenarioState
 	private AdEnrollment enrollment;
 
-	@ProvidedScenarioState
+	@ExpectedScenarioState
 	private AdStudent student;
 
 	private String canonicalCode;
 
 	public WhenIEnrollTheCourses I_enroll_the_courses_for_program_$(String code) {
 
-		canonicalCode = "FKP/PHD/0001/DDA2113/201720181";
-		String StudentNo = "A17P002";
+		canonicalCode = "A01/PHD/0001/DDA2113/201720181";
+		String StudentNo = "A17P001"; 
 		section = termService.findSectionByCanonicalCode(canonicalCode);
 		student = identityService.findStudentByStudentNo(StudentNo);
 

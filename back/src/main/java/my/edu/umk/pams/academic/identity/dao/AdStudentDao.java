@@ -2,15 +2,12 @@ package my.edu.umk.pams.academic.identity.dao;
 
 
 import my.edu.umk.pams.academic.core.GenericDao;
-import my.edu.umk.pams.academic.identity.model.AdAddress;
-import my.edu.umk.pams.academic.identity.model.AdStudent;
-import my.edu.umk.pams.academic.identity.model.AdUser;
+import my.edu.umk.pams.academic.identity.model.*;
 
 import java.util.List;
 
 /**
- * @author canang technologies
- * @since 1/30/14
+ * @author PAMS
  */
 public interface AdStudentDao extends GenericDao<Long, AdStudent> {
 
@@ -18,20 +15,48 @@ public interface AdStudentDao extends GenericDao<Long, AdStudent> {
 
     AdAddress findAddressById(Long id);
 
-    List<AdStudent> findAddresses(String filter, Integer offset, Integer limit);
+    AdGuarantor findGuarantorById(Long id);
+
+    AdGuardian findGuardianById(Long id);
+
+    AdContact findContactById(Long id);
+
+    AdGuarantor findGuarantorByType(AdGuarantorType type, AdStudent student);
+
+    AdGuardian findGuardianByType(AdGuardianType guardianType, AdStudent student);
+
+    AdContact findContactByType(AdContactType type, AdStudent student);
+
+    AdAddress findAddressByType(AdAddressType type, AdStudent student);
+
+    List<AdGuarantor> findGuarantors(AdStudent student);
+
+    List<AdGuardian> findGuardians(AdStudent student);
+
+    List<AdContact> findContacts(AdStudent student);
 
     List<AdAddress> findAddresses(AdStudent student);
-    
-    AdAddress findAddress(AdStudent student);
 
+
+    // helper
     Integer count(String filter);
 
     Integer countAddress(AdStudent student);
 
+    void addGuardian(AdStudent student, AdGuardian guardian, AdUser user);
+
+    void deleteGuardian(AdStudent student, AdGuardian guardian, AdUser user);
+
+    void addGuarantor(AdStudent student, AdGuarantor guarantor, AdUser user);
+
+    void deleteGuarantor(AdStudent student, AdGuarantor guarantor, AdUser user);
+
+    void addContact(AdStudent student, AdContact contact, AdUser user);
+
+    void deleteContact(AdStudent student, AdContact contact, AdUser user);
+
     void addAddress(AdStudent student, AdAddress address, AdUser user);
 
-    void updateAddress(AdStudent student, AdAddress address, AdUser user);
-
-    void removeAddress(AdStudent student, AdAddress address, AdUser user);
+    void deleteAddress(AdStudent student, AdAddress address, AdUser user);
 
 }

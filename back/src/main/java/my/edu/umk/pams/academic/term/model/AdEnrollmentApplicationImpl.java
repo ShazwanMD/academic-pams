@@ -6,8 +6,6 @@ import my.edu.umk.pams.academic.identity.model.AdStaff;
 import my.edu.umk.pams.academic.identity.model.AdStaffImpl;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.identity.model.AdStudentImpl;
-import my.edu.umk.pams.academic.profile.model.AdAdmission;
-import my.edu.umk.pams.academic.profile.model.AdAdmissionImpl;
 import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
 import my.edu.umk.pams.academic.planner.model.AdAcademicSessionImpl;
 

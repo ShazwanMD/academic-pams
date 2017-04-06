@@ -1,14 +1,10 @@
-package my.edu.umk.pams.academic.profile.dao;
-
-
+package my.edu.umk.pams.academic.term.dao;
 import my.edu.umk.pams.academic.core.GenericDao;
 import my.edu.umk.pams.academic.identity.model.AdStaff;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
-import my.edu.umk.pams.academic.profile.model.AdAdmissionApplication;
+import my.edu.umk.pams.academic.term.model.AdAdmissionApplication;
 import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
-
 import java.util.List;
-
 /**
  * @author PAMS
  */

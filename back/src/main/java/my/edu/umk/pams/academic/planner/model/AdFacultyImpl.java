@@ -22,6 +22,9 @@ public class AdFacultyImpl implements AdFaculty {
     @Column(name = "CODE", nullable = false, unique = true)
     private String code;
     
+    @Column(name = "PREFIX", nullable = false, unique = true)
+    private String prefix;
+
     @Column(name = "NAME", nullable = false)
     private String name;
 
@@ -59,6 +62,16 @@ public class AdFacultyImpl implements AdFaculty {
 
     public void setCode(String code) {
         this.code = code;
+    }
+
+    @Override
+    public String getPrefix() {
+        return prefix;
+    }
+
+    @Override
+    public void setPrefix(String prefix) {
+        this.prefix = prefix;
     }
 
     public String getDescription() {

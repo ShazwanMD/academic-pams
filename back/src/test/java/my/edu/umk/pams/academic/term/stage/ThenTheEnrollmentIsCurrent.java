@@ -8,12 +8,11 @@ import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 import my.edu.umk.pams.academic.term.model.AdEnrollment;
 
-
 @JGivenStage
 public class ThenTheEnrollmentIsCurrent extends Stage<ThenTheEnrollmentIsCurrent> {
 
 	private static final Logger LOG = LoggerFactory.getLogger(ThenTheEnrollmentIsCurrent.class);
-	
+
 	@ExpectedScenarioState
 	private AdEnrollment enrollment;
 

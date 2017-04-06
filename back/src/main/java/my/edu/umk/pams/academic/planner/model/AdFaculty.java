@@ -14,6 +14,10 @@ public interface AdFaculty extends AdMetaObject {
 
     void setCode(String code);
     
+    String getPrefix();
+
+    void setPrefix(String prefix);
+    
     String getName();
 
     void setName(String name);

@@ -68,6 +68,7 @@ public class PlannerTransformer {
         Cohort m = new Cohort();
         m.setId(cohort.getId());
         m.setCode(cohort.getCode());
+        m.setDescription(cohort.getDescription());
         return m;
     }
 

@@ -2,12 +2,13 @@ package my.edu.umk.pams.academic.term.service;
 
 import my.edu.umk.pams.academic.identity.model.AdStaff;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
-import my.edu.umk.pams.academic.term.model.*;
-import my.edu.umk.pams.academic.profile.model.AdAdmission;
 import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
 import my.edu.umk.pams.academic.planner.model.AdCourse;
 import my.edu.umk.pams.academic.planner.model.AdEnrollmentStatus;
 import my.edu.umk.pams.academic.planner.model.AdProgram;
+import my.edu.umk.pams.academic.term.model.AdAdmission;
+import my.edu.umk.pams.academic.term.model.AdAdmissionApplication;
+import my.edu.umk.pams.academic.term.model.*;
 import org.activiti.engine.task.Task;
 
 import java.util.List;
@@ -132,6 +133,37 @@ public interface TermService {
     //====================================================================================================
     // ENROLLMENT APPLICATION
     //====================================================================================================
+    // workflow
+
+    AdEnrollmentApplication findEnrollmentApplicationByTaskId(String taskId);
+
+    Task findEnrollmentApplicationTaskByTaskId(String taskId);
+
+    List<Task> findAssignedEnrollmentApplicationTasks(Integer offset, Integer limit);
+
+    List<Task> findPooledEnrollmentApplicationTasks(Integer offset, Integer limit);
+
+    Integer countAssignedEnrollmentApplicationTasks();
+
+    Integer countPooledEnrollmentApplicationTasks();
+
+    void startEnrollmentApplicationTask(AdEnrollmentApplication application);
+
+    void updateEnrollmentApplication(AdEnrollmentApplication application);
+
+    void cancelEnrollmentApplication(AdEnrollmentApplication application);
+
+    void addEnrollmentApplicationItem(AdEnrollmentApplication application, AdEnrollmentApplicationItem item);
+
+    void updateEnrollmentApplicationItem(AdEnrollmentApplication application, AdEnrollmentApplicationItem item);
+
+    void deleteEnrollmentApplicationItem(AdEnrollmentApplication application, AdEnrollmentApplicationItem item);
+
+    void publishToEnrollment(AdEnrollmentApplication application);
+
+    //====================================================================================================
+    // ENROLLMENT APPLICATION
+    //====================================================================================================
 
     AdEnrollmentApplication findEnrollmentApplicationById(Long id);
 
@@ -159,6 +191,7 @@ public interface TermService {
 
     Integer countEnrollmentApplication(String filter, AdAcademicSession session, AdStaff staff);
 
+    
     //====================================================================================================
     // ENROLLMENT
     //====================================================================================================
@@ -239,40 +272,18 @@ public interface TermService {
 
     void deleteEnrollment(AdEnrollment enrollment);
 
-    //====================================================================================================
-    // ENROLLMENT APPLICATION
-    //====================================================================================================
-    // workflow
-
-
-    AdEnrollmentApplication findEnrollmentApplicationByTaskId(String taskId);
-
-    List<Task> findAssignedEnrollmentApplicationTasks(Integer offset, Integer limit);
-
-    List<Task> findCandidateEnrollmentApplicationTasks(Integer offset, Integer limit);
-
-    Integer countAssignedEnrollmentApplicationTasks();
-
-    Integer countCandidateEnrollmentApplicationTasks();
-
-    String processEnrollmentApplication(AdEnrollmentApplication application);
-
-    void updateEnrollmentApplication(AdEnrollmentApplication application);
-
-    void cancelEnrollmentApplication(AdEnrollmentApplication application);
-
-    void addEnrollmentApplicationItem(AdEnrollmentApplication application, AdEnrollmentApplicationItem item);
-
-    void updateEnrollmentApplicationItem(AdEnrollmentApplication application, AdEnrollmentApplicationItem item);
-
-    void deleteEnrollmentApplicationItem(AdEnrollmentApplication application, AdEnrollmentApplicationItem item);
-
-    void publishToEnrollment(AdEnrollmentApplication application);
-
     void addGradebooks(AdSection section, AdEnrollment enrollment);
 
     void addGradebooks(AdSection section, AdAssessment assessment);
 
+    
+  //====================================================================================================
+    // ADMISSION
+    //====================================================================================================
+
+    void saveAdmission(AdAdmissionApplication admissionApplication); 
+    
+    
     //====================================================================================================
     // APPOINTMENT
     //====================================================================================================
@@ -305,6 +316,7 @@ public interface TermService {
 
     boolean isAnyAppointmentExists(AdAcademicSession academicSession, AdOffering offering, AdStaff staff);
 
+    // business
     void appoint(AdSection section, AdStaff staff);
 
     void dismiss(AdSection section, AdStaff staff);

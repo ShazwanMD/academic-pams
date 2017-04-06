@@ -13,7 +13,7 @@ import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.identity.service.IdentityService;
 import my.edu.umk.pams.academic.planner.model.AdEnrollmentStanding;
 import my.edu.umk.pams.academic.planner.model.AdEnrollmentStatus;
-import my.edu.umk.pams.academic.profile.model.AdAdmission;
+import my.edu.umk.pams.academic.term.model.AdAdmission;
 import my.edu.umk.pams.academic.term.model.AdEnrollment;
 import my.edu.umk.pams.academic.term.model.AdEnrollmentImpl;
 import my.edu.umk.pams.academic.term.model.AdSection;
@@ -47,7 +47,7 @@ public class WhenIWantToEnrollAdditionalOfferingCoursesToRepeatCourses
 	public WhenIWantToEnrollAdditionalOfferingCoursesToRepeatCourses I_want_to_enroll_additional_offering_courses_to_repeat_courses_for_program_$(
 			String code) {
 
-		section = termService.findSectionByCanonicalCode("FKP/PHD/0001/DDA2113/201720181");
+		section = termService.findSectionByCanonicalCode("A01/PHD/0001/DDA2113/201720181");
 		LOG.debug("A section{}", section);
 
 		student = identityService.findStudentByStudentNo("A17P002");

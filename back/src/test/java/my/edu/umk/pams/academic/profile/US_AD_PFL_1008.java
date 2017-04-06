@@ -1,5 +1,6 @@
 package my.edu.umk.pams.academic.profile;
 
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -15,6 +16,13 @@ import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.profile.stage.ThenResearchInfoIsCurrent;
 import my.edu.umk.pams.academic.profile.stage.WhenIReviewResearchInfo;
 import my.edu.umk.pams.bdd.stage.GivenIAmStudent;
+
+
+/*
+	As a student, 
+	I want to view thesis info, 
+	so that I can view the thesis info
+ */
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional

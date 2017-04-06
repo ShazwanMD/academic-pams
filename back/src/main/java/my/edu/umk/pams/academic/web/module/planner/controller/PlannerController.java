@@ -2,6 +2,7 @@ package my.edu.umk.pams.academic.web.module.planner.controller;
 
 import my.edu.umk.pams.academic.common.service.CommonService;
 import my.edu.umk.pams.academic.identity.service.IdentityService;
+import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
 import my.edu.umk.pams.academic.planner.model.AdFaculty;
 import my.edu.umk.pams.academic.planner.model.AdProgram;
 import my.edu.umk.pams.academic.planner.model.AdProgramImpl;
@@ -57,22 +58,28 @@ public class PlannerController {
     //====================================================================================================
     @RequestMapping(value = "/academicSessions", method = RequestMethod.GET)
     public ResponseEntity<List<AcademicSession>> findAcademicSessions() {
-        throw new UnsupportedOperationException();
+        List<AdAcademicSession> faculties = plannerService.findAcademicSessions(0, 100);
+        return new ResponseEntity<List<AcademicSession>>(plannerTransformer
+                .toAcademicSessionVos(faculties), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/academicSessions/page/{pageNo}", method = RequestMethod.GET)
     public ResponseEntity<List<AcademicSession>> findAcademicSessions(@PathVariable Integer pageNo) {
-        throw new UnsupportedOperationException();
+        List<AdAcademicSession> faculties = plannerService.findAcademicSessions(0, 100);
+        return new ResponseEntity<List<AcademicSession>>(plannerTransformer
+                .toAcademicSessionVos(faculties), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/academicSessions/current", method = RequestMethod.GET)
     public ResponseEntity<AcademicSession> findCurrentAcademicSessions() {
-        throw new UnsupportedOperationException();
+        return new ResponseEntity<AcademicSession>(plannerTransformer
+                .toAcademicSessionVo(plannerService.findCurrentAcademicSession()), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/academicSessions/{code}", method = RequestMethod.GET)
     public ResponseEntity<AcademicSession> findAcademicSessionByCode(@PathVariable String code) {
-        throw new UnsupportedOperationException();
+        return new ResponseEntity<AcademicSession>(plannerTransformer
+                .toAcademicSessionVo(plannerService.findAcademicSessionByCode(code)), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/academicSessions/{code}", method = RequestMethod.POST)
