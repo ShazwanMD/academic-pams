@@ -29,7 +29,6 @@ import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
 public class US_AD_PNR_1006 extends
 		SpringScenarioTest<GivenIAmCPSAdministrator, WhenAdminAddCurriculum, ThenCurriculumHasAdded>{
 
-
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_PNR_1006.class);
 
 	private static final String PROGRAM_CODE = "A10";

@@ -66,7 +66,6 @@ public class WhenAdminAddCurriculum extends Stage<WhenAdminAddCurriculum> {
 		curriculum.setPeriod(4);
 		curriculum.setProgram(program);
 		plannerService.saveCurriculum(curriculum);
-		
 
 		LOG.debug("curriculum : {}", curriculum.getCode());
 
