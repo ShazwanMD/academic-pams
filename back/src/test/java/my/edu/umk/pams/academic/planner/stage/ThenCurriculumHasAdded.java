@@ -55,6 +55,7 @@ public class ThenCurriculumHasAdded extends Stage<ThenCurriculumHasAdded> {
 //		
 //		 Assert.isTrue(curriculum.equals(curriculum), "true");
 
+		
 		return self();
 		
 	}

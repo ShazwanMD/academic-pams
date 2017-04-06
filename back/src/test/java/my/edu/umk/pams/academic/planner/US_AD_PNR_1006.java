@@ -34,6 +34,7 @@ public class US_AD_PNR_1006 extends
 
 	private static final String PROGRAM_CODE = "A10";
 
+	
 	@Test
 	@Rollback(true)
 	public void scenario1006() {
