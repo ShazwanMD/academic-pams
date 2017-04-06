@@ -7,6 +7,7 @@ import my.edu.umk.pams.academic.planner.model.AdCourse;
 import my.edu.umk.pams.academic.planner.model.AdEnrollmentStatus;
 import my.edu.umk.pams.academic.planner.model.AdProgram;
 import my.edu.umk.pams.academic.profile.model.AdAdmission;
+import my.edu.umk.pams.academic.profile.model.AdAdmissionApplication;
 import my.edu.umk.pams.academic.term.model.*;
 import org.activiti.engine.task.Task;
 
@@ -275,6 +276,14 @@ public interface TermService {
 
     void addGradebooks(AdSection section, AdAssessment assessment);
 
+    
+  //====================================================================================================
+    // ADMISSION
+    //====================================================================================================
+
+    void saveAdmission(AdAdmissionApplication admissionApplication); 
+    
+    
     //====================================================================================================
     // APPOINTMENT
     //====================================================================================================

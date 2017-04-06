@@ -16,7 +16,6 @@ public class ThenTheAdmissionWillBeReviewed extends Stage<ThenTheAdmissionWillBe
 	@Autowired
 	private TermService termService;
 
-	@Pending
 	public ThenTheAdmissionWillBeReviewed The_admission_will_be_reviewed() {
 
 		//process reviewed
