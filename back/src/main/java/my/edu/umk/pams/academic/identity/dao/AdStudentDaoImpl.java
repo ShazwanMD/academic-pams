@@ -115,8 +115,12 @@ public class AdStudentDaoImpl extends GenericDaoSupport<Long, AdStudent> impleme
 
     @Override
     public Integer countAddress(AdStudent student) {
-        // todo(sam): add impl i.e AdProgramDao
-        return null;
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select count(s) from AdAddress s where" +
+        "s.student = : student" + "and s.metadata.state = :state" );
+        query.setEntity("student",student);
+        query.setInteger("state",AdMetaState.ACTIVE.ordinal());
+        return (Integer) query.uniqueResult();
     }
 
     @Override
