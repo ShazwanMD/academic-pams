@@ -48,5 +48,5 @@ public class US_AD_TRM_1015 extends
 		then().the_details_offered_courses_info_is_current();
 
 	}
-
 }
+
