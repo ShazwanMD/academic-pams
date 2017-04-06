@@ -66,7 +66,7 @@ public class WhenICreateSections extends Stage<WhenICreateSections> {
 	private List<AdSectionPolicy> policies;
 
 	public WhenICreateSections I_create_sections_for_offering() {
-		offering = termService.findOfferingByCanonicalCode("FKP/PHD/0001/DDA2062");
+		offering = termService.findOfferingByCanonicalCode("A01/PHD/0001/DDA2062");
 		canonicalCode = offering.getCanonicalCode() + "/" + academicSession.getCode(); //FKP/PHD/0001/DDA2113/201720181
 		code = "GST 5013";
 

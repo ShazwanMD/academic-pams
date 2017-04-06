@@ -29,7 +29,7 @@ public class US_AD_TRM_1004 extends
 	// from data/AD_ACTR.sql
 	public static final String STAFF_NO = "01001A";
 	// from data/AD_OFRG.sql
-	public static final String SECTION_CANONICAL_CODE = "FKP/PHD/0001/DDA2113/201720181";
+	public static final String SECTION_CANONICAL_CODE = "A01/PHD/0001/DDA2113/201720181";
 
 	@Test
 	@Rollback

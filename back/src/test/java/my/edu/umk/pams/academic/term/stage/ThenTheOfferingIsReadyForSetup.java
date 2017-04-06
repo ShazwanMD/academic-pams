@@ -36,7 +36,7 @@ public class ThenTheOfferingIsReadyForSetup extends Stage<ThenTheOfferingIsReady
 	private AdProgram program;
 
 	public ThenTheOfferingIsReadyForSetup the_offering_is_ready_for_setup() {
-		program = plannerService.findProgramByCode("FKP/MASTER/0001");
+		program = plannerService.findProgramByCode("A01/MASTER/0001");
 
 		List<AdOffering> offerings = termService.findOfferings(program);
 

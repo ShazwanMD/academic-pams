@@ -47,7 +47,7 @@ public class WhenIOfferACourse extends Stage<WhenIOfferACourse> {
 
 		// find faculty of the program
 		LOG.debug("Pick faculty: {}", faculty.getCode());
-		AdProgram program = plannerService.findProgramByCode("FKP/MASTER/0001");
+		AdProgram program = plannerService.findProgramByCode("A01/MASTER/0001");
 
 		// find ALL courses under this faculty to be offered by this program
 		List<AdCourse> courses = plannerService.findCourses(faculty);
