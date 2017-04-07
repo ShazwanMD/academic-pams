@@ -1,5 +1,6 @@
 package my.edu.umk.pams.academic.planner;
 
+import com.tngtech.jgiven.annotation.As;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.planner.stage.ThenCoursePrerequisiteAdded;
@@ -15,17 +16,11 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-/*
- * As an admin academic, 
- *  i want to set up  course prerequisite
- *    so that courses has a prerequisite
- * @author ain
- */
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
-
+@As("As an academic administrator, i want to set up  course prerequisite so that courses has a prerequisite")
 public class US_AD_PNR_1007 extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenAdminAddCoursePrerequisite, ThenCoursePrerequisiteAdded> {
 
 private static final Logger LOG = LoggerFactory.getLogger(US_AD_PNR_1007.class);

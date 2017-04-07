@@ -1,5 +1,6 @@
 package my.edu.umk.pams.academic.planner;
 
+import com.tngtech.jgiven.annotation.As;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.planner.stage.ThenProgramInfomationReviewed;
@@ -12,17 +13,11 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-/**
- * As a student, i want to view the course for my program so that I can plan
- * what to manage schedule detail.
- *
- * @author ain
- */
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
-
+@As("As a student, i want to view program by faculty so that i can manage schedule detail")
 public class US_AD_PNR_2002
         extends SpringScenarioTest<GivenIAmStudent, WhenIReviewProgramInfomation, ThenProgramInfomationReviewed> {
 

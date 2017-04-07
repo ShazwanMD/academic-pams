@@ -1,5 +1,6 @@
 package my.edu.umk.pams.academic.planner;
 
+import com.tngtech.jgiven.annotation.As;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.planner.stage.ThenCohortIsAdded;
@@ -14,15 +15,11 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-/**
- *  Given : I Am Admin
- *  When : Admin Add Cohort
- *  Then : Cohort Is Added
- * @author zaida
- */
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
+@As("As an academic administrator, i want to set up cohort for a faculty so that i can group student in the schedule by intake code.")
 public class US_AD_PNR_1005
 		extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenAdminAddCohortForAFaculty, ThenCohortIsAdded> {
 

@@ -1,5 +1,6 @@
 package my.edu.umk.pams.academic.profile;
 
+import com.tngtech.jgiven.annotation.As;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.profile.stage.ThenBillingAddressUpdated;
@@ -14,15 +15,11 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-/**
- * As a student I want to update my billing address so that my address on file
- * is current
- *
- * @author PAMS
- */
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
+@As("As a student, I want to update my billing address so that my address on file is current")
 public class US_AD_PFL_1002 extends SpringScenarioTest<GivenIAmStudent, WhenIUpdateBillingAddress, ThenBillingAddressUpdated> {
 
     private static final Logger LOG = LoggerFactory.getLogger(US_AD_PFL_1002.class);

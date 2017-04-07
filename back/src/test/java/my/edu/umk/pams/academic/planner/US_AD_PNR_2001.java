@@ -1,14 +1,6 @@
 package my.edu.umk.pams.academic.planner;
 
-/**
- * As an a student,
- *  i want to view level of study 
- *  	so that I know my level of studies
- *
- * @author zaida_ain
- */
-
-import com.tngtech.jgiven.annotation.ProvidedScenarioState;
+import com.tngtech.jgiven.annotation.As;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.planner.stage.ThenProgramLevelReviewed;
@@ -23,16 +15,14 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
-
+@As("As a student, i want to view level of study so that I know my level of studies")
 public class US_AD_PNR_2001 extends SpringScenarioTest<GivenIAmStudent, WhenIReviewProgramLevel, ThenProgramLevelReviewed> {
 
-    @SuppressWarnings("unused")
     private static final Logger LOG = LoggerFactory.getLogger(US_AD_PNR_2001.class);
-
-    
     private static final String CODE = "DIPLOMA";
 
     @Test

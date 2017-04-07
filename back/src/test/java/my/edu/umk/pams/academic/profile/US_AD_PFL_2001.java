@@ -1,5 +1,6 @@
 package my.edu.umk.pams.academic.profile;
 
+import com.tngtech.jgiven.annotation.As;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.profile.stage.ThenCurrentStudentProfileUpdate;
@@ -14,9 +15,11 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
+@As("As an academic administrator, I want to add student profile information so that student profile is updated")
 public class US_AD_PFL_2001 extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenIAddStudentProfile, ThenCurrentStudentProfileUpdate> {
 
     private static final Logger LOG = LoggerFactory.getLogger(US_AD_PFL_2001.class);

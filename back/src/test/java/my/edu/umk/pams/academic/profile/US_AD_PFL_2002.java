@@ -1,5 +1,6 @@
 package my.edu.umk.pams.academic.profile;
 
+import com.tngtech.jgiven.annotation.As;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.profile.stage.ThenCurrentStudentProfileInfoIsUpdated;
@@ -14,14 +15,11 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-/*As an CPS/MGSEB admin,
-        I want to update student profile info,
-		so that I can know current student profile info is updated.
-*/
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
+@As("As an academic administrator, I want to update student profile information so that student current personal information updated")
 public class US_AD_PFL_2002 extends
         SpringScenarioTest<GivenIAmCPSAdministrator, WhenIUpdateStudentProfileInfo, ThenCurrentStudentProfileInfoIsUpdated> {
 

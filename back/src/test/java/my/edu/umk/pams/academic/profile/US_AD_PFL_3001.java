@@ -8,6 +8,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.tngtech.jgiven.annotation.As;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 
 import org.slf4j.Logger;
@@ -17,15 +18,11 @@ import my.edu.umk.pams.academic.profile.stage.ThenIKnowStudentRegisteredCoursean
 import my.edu.umk.pams.academic.profile.stage.WhenIViewCourseRegistration;
 import my.edu.umk.pams.bdd.stage.GivenIAmBursary;
 
-/*As a bursary, I want to view course registration details,
- * 		so that I know student registered courses 
- *			 and their payment status
- */
-
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
+@As("As a bursary, I want to view course registration details so that I know student registered courses and their payment status")
 public class US_AD_PFL_3001 extends SpringScenarioTest<GivenIAmBursary, WhenIViewCourseRegistration, ThenIKnowStudentRegisteredCourseandPaymentStatus> {
 
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_PFL_3001.class);

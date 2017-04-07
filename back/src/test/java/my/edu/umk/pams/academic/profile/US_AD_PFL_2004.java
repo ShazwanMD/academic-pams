@@ -1,5 +1,6 @@
 package my.edu.umk.pams.academic.profile;
 
+import com.tngtech.jgiven.annotation.As;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.profile.stage.ThenStudentCourseInfoIsCurrent;
@@ -14,14 +15,11 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-/**
- * As an admin,
- * I want to view course info,
- * so that course info is current
- */
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
+@As("As an academic administrator, I want to view course info so that I know course info is current")
 public class US_AD_PFL_2004 extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenIViewStudentCourseInfo, ThenStudentCourseInfoIsCurrent> {
 
     private static final Logger LOG = LoggerFactory.getLogger(US_AD_PFL_2004.class);

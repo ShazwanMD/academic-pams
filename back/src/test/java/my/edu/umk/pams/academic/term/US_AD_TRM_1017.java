@@ -11,30 +11,22 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
+import com.tngtech.jgiven.annotation.As;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.term.stage.ThenTheEnrollmentIsCurrent;
 import my.edu.umk.pams.academic.term.stage.WhenIEnrollTheCourses;
 import my.edu.umk.pams.bdd.stage.GivenIAmStudent;
 
-/**
- * @author asyikin.mr
- */
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
+@As("As a student, I want to enroll the classes so that I can view the current enrollment info")
 public class US_AD_TRM_1017
 		extends SpringScenarioTest<GivenIAmStudent, WhenIEnrollTheCourses, ThenTheEnrollmentIsCurrent> {
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_1017.class);
 	private static final String PROGRAM_CODE = "A01/MASTER/0001";
-
-	@Before
-	public void before() {
-	}
-
-	@After
-	public void after() {
-	}
 
 	@ProvidedScenarioState
 	private String faculty = "A01";

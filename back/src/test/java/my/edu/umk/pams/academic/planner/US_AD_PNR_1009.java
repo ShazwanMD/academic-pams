@@ -9,6 +9,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.tngtech.jgiven.annotation.As;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 
 import my.edu.umk.pams.academic.config.TestAppConfiguration;
@@ -16,16 +17,11 @@ import my.edu.umk.pams.academic.planner.stage.ThenCreditHoursApplied;
 import my.edu.umk.pams.academic.planner.stage.WhenEnterCreditHours;
 import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
 
-/*Given : I Am Admin
- * When : Admin Set Credit
- * Then :  Set Credit Has Introduced.
- * @author zaida
- */
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
-//As an admin academic,i want to set credit  for a faculty, so that the credit for each courses introduced
+@As("As an academic administrator,i want to set credit  for a faculty so that the credit for each courses introduced")
 public class US_AD_PNR_1009 extends
 SpringScenarioTest<GivenIAmCPSAdministrator, WhenEnterCreditHours, ThenCreditHoursApplied>{
 	

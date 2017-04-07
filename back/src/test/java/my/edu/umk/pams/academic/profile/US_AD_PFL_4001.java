@@ -9,6 +9,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.tngtech.jgiven.annotation.As;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 
 import my.edu.umk.pams.academic.config.TestAppConfiguration;
@@ -16,17 +17,11 @@ import my.edu.umk.pams.academic.profile.stage.ThenOfferedCoursesAndStudentsAreVi
 import my.edu.umk.pams.academic.profile.stage.WhenReviewEnrollmentDetails;
 import my.edu.umk.pams.bdd.stage.GivenIAmAcademicStaff;
 
-/* As a lecturer/academic staff,
- * 		I review enrollment details,
- * 			so that I know offered courses registered by the students under my classes
- */
-
-
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration (classes = TestAppConfiguration.class)
-
+@As("As a lecturer, I review enrollment details so that I can know the offered courses registered by the students under my classes")
 public class US_AD_PFL_4001 extends SpringScenarioTest <GivenIAmAcademicStaff, WhenReviewEnrollmentDetails, ThenOfferedCoursesAndStudentsAreViewed>{
 
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_PFL_4001.class);
@@ -44,6 +39,5 @@ public class US_AD_PFL_4001 extends SpringScenarioTest <GivenIAmAcademicStaff, W
 		when().review_enrollment_details();
 		then().I_view_students_registered_in_my_class();
 	}
-	
-	
+
 }

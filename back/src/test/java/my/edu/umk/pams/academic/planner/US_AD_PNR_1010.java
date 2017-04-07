@@ -6,6 +6,7 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
+import com.tngtech.jgiven.annotation.As;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,15 +15,11 @@ import my.edu.umk.pams.academic.planner.stage.ThenNewAcademicSessionInfoIsCreate
 import my.edu.umk.pams.academic.planner.stage.WhenIAddNewAcademicSessionInfo;
 import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
 
-/** I Am Admin
- * I Add New Academic Session Info
- * New Academic Session Info Is Created
- * @author zaida.n
- */
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
-
+@As("As an academic administrator, I want to create new academic session info so that the new academic session info is created.")
 public class US_AD_PNR_1010 extends
 		SpringScenarioTest<GivenIAmCPSAdministrator, WhenIAddNewAcademicSessionInfo, ThenNewAcademicSessionInfoIsCreated> {
 

@@ -1,4 +1,5 @@
 package my.edu.umk.pams.academic.term;
+import com.tngtech.jgiven.annotation.As;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.term.stage.ThenOfferingMayHaveSection;
@@ -13,13 +14,11 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-/**
- * @author asyikin.mr and ziana
- */
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
-// As a academic administrator, I want to offer the courses to student , so that the offered courses are ready for setup.
+@As("As a academic administrator, I want to offer the courses to student so that the offered courses are ready for setup")
 public class US_AD_TRM_1001
 		extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenIOfferCourse, ThenOfferingMayHaveSection> {
 

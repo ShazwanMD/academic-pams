@@ -15,28 +15,23 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.tngtech.jgiven.annotation.Pending;
+import com.tngtech.jgiven.annotation.As;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.term.stage.ThenTheEnrollmentDateIsOpen;
 import my.edu.umk.pams.academic.term.stage.WhenIOpenTheEnrollmentDate;
 import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
 
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 @Pending
+@As("As academic admininstrator, I want to open the enrollment date so that the date of enrolment is open")
 public class US_AD_TRM_1011
 		extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenIOpenTheEnrollmentDate, ThenTheEnrollmentDateIsOpen> {
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_1011.class);
 	private static final String PROGRAM_CODE = "A01/PHD/0001";
-
-	@Before
-	public void before() {
-	}
-
-	@After
-	public void after() {
-	}
 
 	@Test
 	@Rollback(true)

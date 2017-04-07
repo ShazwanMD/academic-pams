@@ -9,6 +9,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.tngtech.jgiven.annotation.As;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 
 import my.edu.umk.pams.academic.config.TestAppConfiguration;
@@ -16,15 +17,14 @@ import my.edu.umk.pams.academic.profile.stage.ThenStudentActivationStatusReviewe
 import my.edu.umk.pams.academic.profile.stage.WhenReviewStudentActivationStatus;
 import my.edu.umk.pams.bdd.stage.GivenIAmAcademicStaff;
 
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration (classes = TestAppConfiguration.class)
-
-
+@As("As a supervisor, I want to view student activation status so that I can know my student current status under my supervision")
 public class US_AD_PFL_5003 extends SpringScenarioTest<GivenIAmAcademicStaff, WhenReviewStudentActivationStatus, ThenStudentActivationStatusReviewed>{
 	
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_PFL_5003.class);
-
     private static final String IDENTITY_NO = "A17P001";
 	
 	@Test
