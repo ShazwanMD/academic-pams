@@ -472,8 +472,8 @@ public class IdentityServiceImpl implements IdentityService {
     }
 
     @Override
-    public AdStudent findStudentByStudentNo(String StudentNo) {
-        return studentDao.findByStudentNo(StudentNo);
+    public AdStudent findStudentByMatricNo(String matricNo) {
+        return studentDao.findByStudentNo(matricNo);
     }
 
     @Override

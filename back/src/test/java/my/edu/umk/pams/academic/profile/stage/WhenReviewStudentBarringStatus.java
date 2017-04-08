@@ -31,7 +31,7 @@ public class WhenReviewStudentBarringStatus extends Stage<WhenReviewStudentBarri
     
 	public WhenReviewStudentBarringStatus I_view_student_$_barring_status(String identityNo){
 		
-		student = identityService.findStudentByStudentNo(identityNo);
+		student = identityService.findStudentByMatricNo(identityNo);
 		AdStudentStatus studentStatus = student.getStudentStatus();
 		
 		LOG.debug("Student's name: {}", student.getName());

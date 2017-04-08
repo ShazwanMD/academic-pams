@@ -8,9 +8,7 @@ import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 
-import my.edu.umk.pams.academic.identity.model.AdActorType;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
-import my.edu.umk.pams.academic.identity.model.AdStudentImpl;
 import my.edu.umk.pams.academic.identity.model.AdStudentStatus;
 import my.edu.umk.pams.academic.identity.service.IdentityService;
 
@@ -30,7 +28,7 @@ public class WhenBursaryViewBarringStatus extends Stage<WhenBursaryViewBarringSt
 
 	public WhenBursaryViewBarringStatus I_view_barring_status_$(String identityNo) {
 		
-		student = identityService.findStudentByStudentNo("A17P002");
+		student = identityService.findStudentByMatricNo("A17P002");
 		AdStudentStatus studentStatus = student.getStudentStatus();
 
 		LOG.debug("Student's status: {}", studentStatus.name());

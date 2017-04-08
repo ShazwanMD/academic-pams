@@ -1,2 +1,2 @@
-export enum EnrollmentApplicationAction {
+export enum AdmissionApplicationAction {
  }

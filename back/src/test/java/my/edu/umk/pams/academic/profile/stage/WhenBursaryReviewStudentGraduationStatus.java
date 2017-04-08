@@ -30,7 +30,7 @@ public class WhenBursaryReviewStudentGraduationStatus extends Stage<WhenBursaryR
 	
 	public WhenBursaryReviewStudentGraduationStatus bursary_review_student_graduation_status(String identityNo) {
 	
-		student = identityService.findStudentByStudentNo(identityNo);
+		student = identityService.findStudentByMatricNo(identityNo);
 		AdStudentStatus studentStatus = student.getStudentStatus();
 		
 		LOG.debug("Student's name: {}", student.getName());

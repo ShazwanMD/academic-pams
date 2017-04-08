@@ -92,6 +92,6 @@ public class IdentityController {
     @RequestMapping(value = "/students/{identityNo}", method = RequestMethod.GET)
     public ResponseEntity<Student> findStudentByIdentityNo(@PathVariable String identityNo) {
         return new ResponseEntity<Student>(identityTransformer
-                .toStudentVo(identityService.findStudentByStudentNo(identityNo)), HttpStatus.OK);
+                .toStudentVo(identityService.findStudentByMatricNo(identityNo)), HttpStatus.OK);
     }
 }

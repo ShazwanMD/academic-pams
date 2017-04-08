@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
-import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 
 import my.edu.umk.pams.academic.identity.model.AdStudent;
@@ -29,7 +28,7 @@ public class WhenIViewStudentStatus extends Stage<WhenIViewStudentStatus> {
     
     public WhenIViewStudentStatus I_view_student_$_status(String identityNo) {
     	
-	 student = identityService.findStudentByStudentNo(identityNo);
+	 student = identityService.findStudentByMatricNo(identityNo);
 		
 	 AdStudentStatus studentStatus = student.getStudentStatus();
 	 

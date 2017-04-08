@@ -50,7 +50,7 @@ public class ThenStudentRegisteredCourse extends Stage<ThenStudentRegisteredCour
 	public ThenStudentRegisteredCourse Student_registered_course() {
 		String studentNo = "A17P001";
 
-		AdStudent student = identityService.findStudentByStudentNo(studentNo);
+		AdStudent student = identityService.findStudentByMatricNo(studentNo);
 
 		AdStudentStatus studentStatus = student.getStudentStatus();
 

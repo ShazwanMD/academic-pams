@@ -22,7 +22,7 @@ public class ThenContactNumberUpdated extends Stage<ThenContactNumberUpdated> {
 	public ThenContactNumberUpdated my_contact_number_is_updated() {
 
    	
-    	AdStudent student = identityService.findStudentByStudentNo("A17P001");
+    	AdStudent student = identityService.findStudentByMatricNo("A17P001");
        	Assert.isTrue(student.equals(student),"true");
        			
 		return self();

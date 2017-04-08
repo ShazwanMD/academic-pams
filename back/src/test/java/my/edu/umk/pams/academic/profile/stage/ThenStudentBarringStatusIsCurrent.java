@@ -33,7 +33,7 @@ public class ThenStudentBarringStatusIsCurrent extends Stage<ThenStudentBarringS
 
 		String studentNo = "A17P002";
 
-		AdStudent student = identityService.findStudentByStudentNo(studentNo);
+		AdStudent student = identityService.findStudentByMatricNo(studentNo);
 
 		AdStudentStatus studentStatus = student.getStudentStatus();
 

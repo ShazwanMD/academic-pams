@@ -50,7 +50,7 @@ public class WhenIWantToEnrollAdditionalOfferingCoursesToRepeatCourses
 		section = termService.findSectionByCanonicalCode("A01/PHD/0001/DDA2113/201720181");
 		LOG.debug("A section{}", section);
 
-		student = identityService.findStudentByStudentNo("A17P002");
+		student = identityService.findStudentByMatricNo("A17P002");
 		LOG.debug("B student{}", student);
 
 		enrollment = new AdEnrollmentImpl();

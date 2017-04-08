@@ -27,7 +27,7 @@ public class WhenLecturerReviewStudentBarredStatus extends Stage<WhenLecturerRev
 	
 	public WhenLecturerReviewStudentBarredStatus Lecturer_review_student_$_barred_status(String identityNo) {
 		
-		student = identityService.findStudentByStudentNo(identityNo);
+		student = identityService.findStudentByMatricNo(identityNo);
 		AdStudentStatus studentStatus = student.getStudentStatus();
 		
 		LOG.debug("Student's name: {}", student.getName());

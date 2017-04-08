@@ -2,7 +2,6 @@ import {NgModule, ModuleWithProviders} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {ReactiveFormsModule} from '@angular/forms';
 import {appRoutes, appRoutingProviders} from '../app.routes';
-import {environment} from '../../environments/environment';
 
 import {CovalentCoreModule} from '@covalent/core';
 
@@ -15,19 +14,16 @@ import {ProgramModule} from "./programs/index";
 import {programReducer, ProgramState} from "./programs/program.reducer";
 import {programListReducer, ProgramListState} from "./programs/program-list.reducer";
 import {combineReducers, StoreModule} from "@ngrx/store";
-import {StoreDevtoolsModule} from "@ngrx/store-devtools";
-import {ProgramEffects} from "./programs/program.effect";
-import {EffectsModule} from "@ngrx/effects";
 import {facultyReducer, FacultyState} from "./faculties/faculty.reducer";
 import {facultyListReducer, FacultyListState} from "./faculties/faculty-list.reducer";
 import {FacultyModule} from "./faculties/index";
-import {FacultyEffects} from "./faculties/faculty.effect";
 import {CourseListState, courseListReducer} from "./courses/course-list.reducer";
 import {CourseState, courseReducer} from "./courses/course.reducer";
 import {CourseModule} from "./courses/index";
 import {CohortModule} from "./cohorts/index";
 import {CohortState, cohortReducer} from "./cohorts/cohort.reducer";
 import {CohortListState, cohortListReducer} from "./cohorts/cohort-list.reducer";
+import {compose} from "@ngrx/core/compose";
 
 export interface PlannerState {
   faculties: FacultyListState;
@@ -41,7 +37,7 @@ export interface PlannerState {
 }
 ;
 
-export const plannerReducer = combineReducers({
+export const plannerReducer = compose(combineReducers)({
   faculties:facultyListReducer, faculty:facultyReducer,
   programs: programListReducer, program: programReducer,
   courses: courseListReducer, course: courseReducer,

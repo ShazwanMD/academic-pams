@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
-import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 
 import my.edu.umk.pams.academic.identity.model.AdStudent;
@@ -52,7 +51,7 @@ public class WhenReviewCourseRegistrationDetails extends Stage<WhenReviewCourseR
 	
 	public WhenReviewCourseRegistrationDetails supervisor_review_course_registration_info_for_$(String studentNo){
 		
-		student = identityService.findStudentByStudentNo(studentNo);
+		student = identityService.findStudentByMatricNo(studentNo);
 		LOG.debug("Student_Name :{}", student.getName());
 		
 		program = plannerService.findProgramByCode("A07/PHD/0001");

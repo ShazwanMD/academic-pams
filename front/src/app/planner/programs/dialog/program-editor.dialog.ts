@@ -1,3 +1,4 @@
+
 import {Component, ViewContainerRef, OnInit} from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
 import {FormBuilder} from '@angular/forms';
@@ -39,12 +40,7 @@ export class ProgramEditorDialog implements OnInit {
     this._plannerService = plannerService;
   }
 
-  set program(value: Program) {
-    this.program = value;
-  }
-
   ngOnInit(): void {
-
     this.editForm = this._formBuilder.group(<Program>{
       id: null,
       code:'',

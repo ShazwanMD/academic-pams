@@ -18,13 +18,10 @@ export class EnrollmentApplicationCenterPage implements OnInit {
   private _commonService: CommonService;
   private _router: Router;
   private _route: ActivatedRoute;
-
-  private store: Store<State>;
   private enrollmentApplications$: Observable<EnrollmentApplication[]>;
 
   constructor(router: Router,
               route: ActivatedRoute,
-              store: Store<State>,
               identityService: IdentityService,
               commonService: CommonService) {
 
@@ -32,8 +29,7 @@ export class EnrollmentApplicationCenterPage implements OnInit {
     this._route = route;
     this._identityService = identityService;
     this._commonService = commonService;
-    this.store = store;
-    this.enrollmentApplications$ = this.store.select('enrollmentApplications');
+    // this.enrollmentApplications$ = this.store.select('enrollmentApplications');
   }
 
   goBack(route: string): void {

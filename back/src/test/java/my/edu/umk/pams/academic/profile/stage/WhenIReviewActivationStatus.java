@@ -28,7 +28,7 @@ public class WhenIReviewActivationStatus extends Stage<WhenIReviewActivationStat
 
 	public WhenIReviewActivationStatus I_review_activation_status_$(String identityNo) {
 
-		student = identityService.findStudentByStudentNo(identityNo);
+		student = identityService.findStudentByMatricNo(identityNo);
 		AdStudentStatus studentStatus = student.getStudentStatus();
 		
 		LOG.debug("Student's status: {}", studentStatus.name());

@@ -7,6 +7,7 @@ import {CommonService} from "../../../../services/common.service";
 import {TermService} from "../../../../services/term.service";
 import {Section} from "../../sections/section.interface";
 import {EnrollmentApplicationItem} from "../enrollment-application-item.interface";
+import {EnrollmentApplicationAction} from "../enrollment-application-action.enum";
 
 
 @Component({
@@ -54,6 +55,8 @@ export class EnrollmentApplicationItemEditorDialog implements OnInit {
       enrollmentNo:'',
       enrollmentDate:null,
       amount: 0,
+      action:EnrollmentApplicationAction.ADD,
+      section:null
     });
 
     this.editForm.patchValue(this._item);

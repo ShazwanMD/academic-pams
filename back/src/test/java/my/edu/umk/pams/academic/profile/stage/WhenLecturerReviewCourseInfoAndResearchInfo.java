@@ -36,7 +36,7 @@ public class WhenLecturerReviewCourseInfoAndResearchInfo extends Stage<WhenLectu
 	
 	public WhenLecturerReviewCourseInfoAndResearchInfo Lecturer_review_course_info_for_$(String identityNo){
 		
-		student = identityService.findStudentByStudentNo(identityNo);
+		student = identityService.findStudentByMatricNo(identityNo);
 		LOG.debug("Student's Name :{}", student.getName());
 		
 		faculty = plannerService.findFacultyByCode("A10");
@@ -56,7 +56,7 @@ public class WhenLecturerReviewCourseInfoAndResearchInfo extends Stage<WhenLectu
 	
 	public WhenLecturerReviewCourseInfoAndResearchInfo Lecturer_review_research_info_for_$(String identityNo2){
 		
-		student = identityService.findStudentByStudentNo(identityNo2);
+		student = identityService.findStudentByMatricNo(identityNo2);
 		LOG.debug("Student's Name :{}", student.getName());
 		
 		faculty = plannerService.findFacultyByCode("CPS");

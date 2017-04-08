@@ -175,7 +175,7 @@ public interface IdentityService {
 
     AdStudent findStudentById(Long id);
 
-    AdStudent findStudentByStudentNo(String StudentNo);
+    AdStudent findStudentByMatricNo(String matricNo);
 
     List<AdStudent> findStudents(Integer offset, Integer limit);
 

@@ -29,9 +29,9 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     {
       this.items = [{
-        title: 'Dashboard',
-        route: '/dashboard',
-        icon: 'dashboard',
+        title: 'Profile',
+        route: '/profile',
+        icon: 'assignment',
         color: 'blue-700',
         description: '',
       },

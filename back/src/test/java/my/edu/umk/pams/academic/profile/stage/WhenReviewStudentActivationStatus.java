@@ -29,7 +29,7 @@ public class WhenReviewStudentActivationStatus extends Stage <WhenReviewStudentA
 	
 	public WhenReviewStudentActivationStatus supervisor_review_student_activation_status(String identityNo) {
 		
-		student = identityService.findStudentByStudentNo(identityNo);
+		student = identityService.findStudentByMatricNo(identityNo);
 		AdStudentStatus studentStatus = student.getStudentStatus();
 		
 		LOG.debug("Student's name: {}", student.getName());

@@ -15,7 +15,6 @@ import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.identity.model.AdStudentStatus;
 import my.edu.umk.pams.academic.identity.service.IdentityService;
 import my.edu.umk.pams.academic.planner.model.AdCourse;
-import my.edu.umk.pams.academic.planner.model.AdCreditType;
 import my.edu.umk.pams.academic.planner.model.AdFaculty;
 import my.edu.umk.pams.academic.planner.model.AdProgram;
 import my.edu.umk.pams.academic.planner.model.AdProgramLevel;
@@ -58,7 +57,7 @@ public class WhenIWantViewStudentRegisteredCourse extends Stage<WhenIWantViewStu
 	public WhenIWantViewStudentRegisteredCourse I_want_view_student_registered_course_$(String identityNo) {
 
 		AdActor actor = identityService.findActorByIdentityNo(identityNo);
-		AdStudent student = identityService.findStudentByStudentNo(identityNo);
+		AdStudent student = identityService.findStudentByMatricNo(identityNo);
 		AdStudentStatus studentStatus = student.getStudentStatus();
 
 		LOG.debug("Student's name : {}", actor.getName());

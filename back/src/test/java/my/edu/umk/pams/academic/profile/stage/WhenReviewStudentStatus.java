@@ -28,7 +28,7 @@ public class WhenReviewStudentStatus extends Stage<WhenReviewStudentStatus> {
 	
 	public WhenReviewStudentStatus I_view_student_current_status_for_$(String identityNo) {
 		
-		student = identityService.findStudentByStudentNo(identityNo);
+		student = identityService.findStudentByMatricNo(identityNo);
 		AdStudentStatus studentStatus = student.getStudentStatus();
 		
 		LOG.debug("Student's status: {}", studentStatus.name());

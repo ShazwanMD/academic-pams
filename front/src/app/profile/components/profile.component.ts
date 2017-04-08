@@ -1,0 +1,17 @@
+import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy} from '@angular/core';
+import {Student} from "../../identity/student.interface";
+
+
+@Component({
+  selector: 'pams-profile',
+  templateUrl: 'profile.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class ProfileComponent {
+
+  @Input() profile: Student;
+  // @Output() addGuardian = new EventEmitter<Guardian>();
+  // @Output() addGuarantor = new EventEmitter<Guarantor>();
+  // @Output() addContact = new EventEmitter<Contact>();
+  // @Output() addAddress = new EventEmitter<Address>();
+}

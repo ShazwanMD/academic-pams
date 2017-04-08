@@ -44,7 +44,7 @@ public class WhenIEnrollTheCourses extends Stage<WhenIEnrollTheCourses> {
 		canonicalCode = "A01/PHD/0001/DDA2113/201720181";
 		String StudentNo = "A17P001"; 
 		section = termService.findSectionByCanonicalCode(canonicalCode);
-		student = identityService.findStudentByStudentNo(StudentNo);
+		student = identityService.findStudentByMatricNo(StudentNo);
 
 		enrollment = new AdEnrollmentImpl();
 		enrollment.setSection(section);

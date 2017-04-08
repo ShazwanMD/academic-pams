@@ -3,7 +3,6 @@ import {Router, ActivatedRoute} from '@angular/router';
 
 import {IdentityService} from '../../../services';
 import {CommonService} from '../../../services';
-import {Store, State} from "@ngrx/store";
 import {Observable} from "rxjs";
 import {AdmissionApplication} from "./admission-application.interface";
 
@@ -18,13 +17,10 @@ export class AdmissionApplicationCenterPage implements OnInit {
   private _commonService: CommonService;
   private _router: Router;
   private _route: ActivatedRoute;
-
-  private store: Store<State>;
   private admissionApplications$: Observable<AdmissionApplication[]>;
 
   constructor(router: Router,
               route: ActivatedRoute,
-              store: Store<State>,
               identityService: IdentityService,
               commonService: CommonService) {
 
@@ -32,8 +28,7 @@ export class AdmissionApplicationCenterPage implements OnInit {
     this._route = route;
     this._identityService = identityService;
     this._commonService = commonService;
-    this.store = store;
-    this.admissionApplications$ = this.store.select('admissionApplications');
+    // this.admissionApplications$ = this.store.select('admissionApplications');
   }
 
   goBack(route: string): void {

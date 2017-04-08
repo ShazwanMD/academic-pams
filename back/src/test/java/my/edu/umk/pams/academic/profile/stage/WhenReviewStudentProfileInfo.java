@@ -4,7 +4,6 @@ import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 
-import my.edu.umk.pams.academic.common.service.CommonService;
 import my.edu.umk.pams.academic.identity.model.AdAddress;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.identity.service.IdentityService;
@@ -33,7 +32,7 @@ public class WhenReviewStudentProfileInfo extends Stage<WhenReviewStudentProfile
     private List<AdAddress> addresses;
 
     public WhenReviewStudentProfileInfo supervisor_review_student_profile(String studentNo) {
-        student = identityService.findStudentByStudentNo(studentNo);
+        student = identityService.findStudentByMatricNo(studentNo);
         addresses = profileService.findAddresses(student);
         
        

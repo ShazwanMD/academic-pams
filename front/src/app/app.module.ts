@@ -9,7 +9,7 @@ import {CovalentMarkdownModule} from '@covalent/markdown';
 import {CovalentChartsModule} from '@covalent/charts';
 import {NgxChartsModule} from '@swimlane/ngx-charts';
 import {StoreDevtoolsModule} from "@ngrx/store-devtools";
-import {StoreModule, combineReducers} from "@ngrx/store";
+import {StoreModule} from "@ngrx/store";
 
 import {AppComponent} from './app.component';
 import {MainComponent} from './main/main.component';
@@ -22,6 +22,7 @@ import {HomeComponent} from "./home/home.component";
 import {TermModule, termReducer} from "./term/index";
 import {CustomUrlSerializer} from "./common/custom-url-serializer";
 import {UrlSerializer} from "@angular/router";
+import {ProfileModule} from "./profile/index";
 const httpInterceptorProviders: Type<any>[] = [
   RequestInterceptor,
 ];
@@ -50,7 +51,7 @@ const httpInterceptorProviders: Type<any>[] = [
 
     PlannerModule.forRoot(),
     TermModule.forRoot(),
-    // note:temporary solution
+    ProfileModule.forRoot(),
     StoreModule.provideStore(plannerReducer),
     StoreDevtoolsModule.instrumentOnlyWithExtension(),
 

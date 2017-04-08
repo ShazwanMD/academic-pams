@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
-import com.tngtech.jgiven.annotation.Pending;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 
 import my.edu.umk.pams.academic.identity.model.AdStudent;
@@ -33,7 +32,7 @@ public class WhenIReviewResearchInfo extends Stage<WhenIReviewResearchInfo>	{
 	
 
 	public WhenIReviewResearchInfo I_review_research_info_for_$(String courseCode){
-		student = identityService.findStudentByStudentNo("A17P001");
+		student = identityService.findStudentByMatricNo("A17P001");
 		student.getStudentStatus();
 		LOG.debug("Student's Name : {}", student.getName());
 		LOG.debug("Student's Status :{}", student.getStudentStatus());

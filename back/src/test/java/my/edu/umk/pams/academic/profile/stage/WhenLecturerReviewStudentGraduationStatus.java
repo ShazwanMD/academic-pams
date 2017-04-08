@@ -29,7 +29,7 @@ public class WhenLecturerReviewStudentGraduationStatus extends Stage<WhenLecture
 
 	public WhenLecturerReviewStudentGraduationStatus lecturer_review_student_graduation_status (String identityNo) {
 	
-		student = identityService.findStudentByStudentNo(identityNo);
+		student = identityService.findStudentByMatricNo(identityNo);
 		AdStudentStatus studentStatus = student.getStudentStatus();
 		
 		LOG.debug("Student's name: {}", student.getName());

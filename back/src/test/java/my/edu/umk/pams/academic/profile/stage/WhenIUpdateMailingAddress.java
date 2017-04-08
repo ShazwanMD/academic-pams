@@ -41,7 +41,7 @@ public class WhenIUpdateMailingAddress extends Stage<WhenIUpdateMailingAddress> 
     private List<AdAddress> addresses;
 
     public WhenIUpdateMailingAddress I_update_mailing_address() {
-        student = identityService.findStudentByStudentNo("A17P001");
+        student = identityService.findStudentByMatricNo("A17P001");
         addresses = profileService.findAddresses(student);
         for (AdAddress address : addresses) {
             address.setAddress1("LOT 431");

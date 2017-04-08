@@ -2,7 +2,6 @@ import {NgModule, ModuleWithProviders} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {ReactiveFormsModule} from '@angular/forms';
 import {appRoutes, appRoutingProviders} from '../app.routes';
-import {environment} from '../../environments/environment';
 
 import {CovalentCoreModule} from '@covalent/core';
 
@@ -12,15 +11,14 @@ import {TermService} from "../../services/term.service";
 
 import {TermPage} from "./term.page";
 import {combineReducers, StoreModule} from "@ngrx/store";
-import {StoreDevtoolsModule} from "@ngrx/store-devtools";
-import {EffectsModule} from "@ngrx/effects";
+import {compose} from "@ngrx/core/compose";
 
 export interface TermState {
   // todo
 }
 ;
 
-export const termReducer = combineReducers({
+export const termReducer = compose(combineReducers)({
   // todo
 });
 
