@@ -48,8 +48,8 @@ public class TermServiceImpl implements TermService {
 
 	@Autowired
 	private AdAdmissionApplicationDao admissionApplicationDao;
-	
-		@Autowired
+
+	@Autowired
 	private AdEnrollmentApplicationDao enrollmentApplicationDao;
 
 	@Autowired
@@ -97,6 +97,12 @@ public class TermServiceImpl implements TermService {
 	@Override
 	public AdAdmissionApplication findAdmissionApplicationByProgramAndStudent(AdProgram program, AdStudent student) {
 		return admissionApplicationDao.findByProgramAndStudent(program, student);
+	}
+
+	@Override
+	public AdAdmission findAdmissionBySessionProgramAndStudent(AdAcademicSession academicSession, AdProgram program,
+			AdStudent student) {
+		return admissionApplicationDao.findBySessionProgramAndStudent(academicSession, program, student);
 	}
 
 	// ====================================================================================================

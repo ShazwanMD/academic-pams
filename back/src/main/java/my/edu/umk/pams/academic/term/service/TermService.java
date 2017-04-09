@@ -282,6 +282,8 @@ public interface TermService {
     //====================================================================================================
 
    AdAdmissionApplication findAdmissionApplicationByProgramAndStudent(AdProgram program, AdStudent student);
+   
+   AdAdmission findAdmissionBySessionProgramAndStudent(AdAcademicSession academicSession, AdProgram program, AdStudent student);
  
    void saveAdmission(AdAdmissionApplication admissionApplication); 
     

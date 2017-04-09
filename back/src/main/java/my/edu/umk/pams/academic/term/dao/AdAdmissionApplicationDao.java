@@ -3,6 +3,7 @@ package my.edu.umk.pams.academic.term.dao;
 import my.edu.umk.pams.academic.core.GenericDao;
 import my.edu.umk.pams.academic.identity.model.AdStaff;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
+import my.edu.umk.pams.academic.term.model.AdAdmission;
 import my.edu.umk.pams.academic.term.model.AdAdmissionApplication;
 import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
 import my.edu.umk.pams.academic.planner.model.AdProgram;
@@ -21,6 +22,8 @@ public interface AdAdmissionApplicationDao extends GenericDao<Long, AdAdmissionA
 	AdAdmissionApplication findByReferenceNo(String referenceNo);
 
 	AdAdmissionApplication findByProgramAndStudent(AdProgram program, AdStudent student);
+	
+	AdAdmission findBySessionProgramAndStudent(AdAcademicSession academicSession, AdProgram program, AdStudent student);
 
 	List<AdAdmissionApplication> find(AdAcademicSession session);
 
