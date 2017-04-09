@@ -18,6 +18,7 @@ import my.edu.umk.pams.academic.planner.stage.WhenAdminAddCurriculum;
 import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
 
 
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
