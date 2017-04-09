@@ -42,7 +42,7 @@ public class WhenIWantToViewTheOfferedCoursesByAcademicSession
     public WhenIWantToViewTheOfferedCoursesByAcademicSession I_browse_the_offered_course_by_program_I_picked() {
         // list all term for program
     	
-    	program = plannerService.findProgramByCode("MGSEB");
+    	program = plannerService.findProgramByCode("A10");
     	LOG.debug("For program: {}", program.getTitle());
     	
         offerings = termService.findOfferings(program);

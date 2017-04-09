@@ -34,18 +34,21 @@ public class ThenICanChoose extends Stage<ThenICanChoose> {
 
     public ThenICanChoose i_can_choose_which_section_to_enroll() {
     	
-    	offerings = termService.findOfferings(program);
+    	 offerings = termService.findOfferings(program);
+         
+         for (AdOffering offering : offerings) {
+ 			LOG.debug(offering.getTitle());
+ 			
+ 		 List<AdSection> sections = termService.findSections(offering);
+ 		 for (AdSection section1 : sections) {
+             // check if section has exceeded capacity
+             boolean exceededEnrollment = termService.hasExceededEnrollment(section1);
+             Assert.isTrue(!exceededEnrollment, "Section is full");
+         }
+ 		}
+         
+        
+         return self();
     	
-    	/*
-    	AdSection section = termService.findSections(offering);
-        // iterate thru expected offerings
-        // try to find section to enroll
-        for (AdSection section : sections) {
-            // check if section has exceeded capacity
-            boolean exceededEnrollment = termService.hasExceededEnrollment(section);
-            Assert.isTrue(!exceededEnrollment, "Section is full");
-        }
-        */
-        return self();
-    }
+    	}
 }
