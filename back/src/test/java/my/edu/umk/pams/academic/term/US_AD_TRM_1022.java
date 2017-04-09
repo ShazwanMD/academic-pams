@@ -1,7 +1,5 @@
 package my.edu.umk.pams.academic.term;
-
-import org.junit.After;
-import org.junit.Before;
+//@author:asyikin
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -10,33 +8,27 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
-
 import com.tngtech.jgiven.annotation.As;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
-
 import my.edu.umk.pams.academic.config.TestAppConfiguration;
-import my.edu.umk.pams.academic.term.stage.ThenICanViewTheWithdrawnCourse;
-import my.edu.umk.pams.academic.term.stage.ThenTheEnrollmentCoursesIsUpdated;
-import my.edu.umk.pams.academic.term.stage.WhenIWantToEnrollAdditionalOfferingCoursesToRepeatCourses;
-import my.edu.umk.pams.academic.term.stage.WhenWithdrawEnrollmentCourse;
+import my.edu.umk.pams.academic.term.stage.ThenIViewTheCurrentEnrollmentCourses;
+import my.edu.umk.pams.academic.term.stage.WhenIAddEnrollmentCourses;
 import my.edu.umk.pams.bdd.stage.GivenIAmStudent;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
-@As("As a student,I want to withdraw an enrollment course so that I can view the withdrawn course.")
-public class US_AD_TRM_1022  extends
-SpringScenarioTest<GivenIAmStudent, WhenWithdrawEnrollmentCourse, ThenICanViewTheWithdrawnCourse>  {
-	private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_1022.class);
+@As("As a student,I want to add an enrollment course so that I can view the added course")
+public class US_AD_TRM_1021
+		extends SpringScenarioTest<GivenIAmStudent, WhenIAddEnrollmentCourses, ThenIViewTheCurrentEnrollmentCourses> {
+	private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_1021.class);
 
 	@Test
 	@Rollback
 	public void scenario01() {
 		given().I_am_a_student_in_current_academic_session();
-		when().I_withdraw_enrollment_course();
-		then().i_can_view_the_withdrawn_course();
-   }
+		when().I_add_enrollment_courses();
+		then().I_view_the_current_enrollment_courses();
+	}
 }
-
-
