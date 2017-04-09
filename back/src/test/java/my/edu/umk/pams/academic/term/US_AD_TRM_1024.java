@@ -20,9 +20,9 @@ import my.edu.umk.pams.bdd.stage.GivenIAmStudent;
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 @As("As a student, I want to register admission in new semester so that the admission will be reviewed")
-public class US_AD_TRM_1023 extends
+public class US_AD_TRM_1024 extends
 		SpringScenarioTest<GivenIAmStudent, WhenIRegisterAdmissionInNewSemester, ThenTheAdmissionWillBeReviewed> {
-	private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_1023.class);
+	private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_1024.class);
 
 	@Test
 	@Rollback(true)

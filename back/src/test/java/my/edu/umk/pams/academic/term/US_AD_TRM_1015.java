@@ -23,10 +23,10 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 @As("As a student in current academic session and I pick program, I browse the offered courses by program I picked, then  i can choose which section to enroll")
-public class US_AD_TRM_1014
+public class US_AD_TRM_1015
 		extends SpringScenarioTest<GivenIAmStudent, WhenIWantToViewTheOfferedCoursesByAcademicSession, ThenICanChoose> {
 
-	private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_1014.class);
+	private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_1015.class);
 	public static final String OFFERING_CANONICAL_CODE = "A01/PHD/0001/DDA2113";
 
 	@Test

@@ -26,9 +26,9 @@ import my.edu.umk.pams.bdd.stage.GivenIAmStudent;
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 @As("As a student,I want to withdraw an enrollment course so that I can view the withdrawn course.")
-public class US_AD_TRM_1022  extends
+public class US_AD_TRM_1023  extends
 SpringScenarioTest<GivenIAmStudent, WhenWithdrawEnrollmentCourse, ThenICanViewTheWithdrawnCourse>  {
-	private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_1022.class);
+	private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_1023.class);
 
 	@Test
 	@Rollback

@@ -21,8 +21,8 @@ import my.edu.umk.pams.bdd.stage.GivenIAmStudent;
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 @As("As a student,I want to drop an enrollment course so that I can view the dropped course")
-public class US_AD_TRM_1020 extends SpringScenarioTest<GivenIAmStudent, WhenDropCourse, ThenCourseDropped> {
-	private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_1020.class);
+public class US_AD_TRM_1021 extends SpringScenarioTest<GivenIAmStudent, WhenDropCourse, ThenCourseDropped> {
+	private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_1021.class);
 
 	@Test
 	@Rollback

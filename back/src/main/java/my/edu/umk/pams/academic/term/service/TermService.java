@@ -278,10 +278,12 @@ public interface TermService {
 
     
   //====================================================================================================
-    // ADMISSION
+    // ADMISSION APPLICATION
     //====================================================================================================
 
-    void saveAdmission(AdAdmissionApplication admissionApplication); 
+   AdAdmissionApplication findAdmissionApplicationByProgramAndStudent(AdProgram program, AdStudent student);
+ 
+   void saveAdmission(AdAdmissionApplication admissionApplication); 
     
     
     //====================================================================================================

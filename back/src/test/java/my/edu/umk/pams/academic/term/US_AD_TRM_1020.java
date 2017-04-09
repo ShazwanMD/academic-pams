@@ -20,9 +20,9 @@ import my.edu.umk.pams.bdd.stage.GivenIAmStudent;
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 @As("As a student, I want to enroll additional offering courses to repeat courses so that the enrollment courses is updated")
-public class US_AD_TRM_1019 extends
+public class US_AD_TRM_1020 extends
 		SpringScenarioTest<GivenIAmStudent, WhenIWantToEnrollAdditionalOfferingCoursesToRepeatCourses, ThenTheEnrollmentCoursesIsUpdated> {
-	private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_1019.class);
+	private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_1020.class);
 	private static final String PROGRAM_CODE = "A01/MASTER/0001";
 
 	@Test

@@ -20,9 +20,9 @@ import my.edu.umk.pams.bdd.stage.GivenIAmStudent;
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 @As("As a student,I want to add an enrollment course so that I can view the added course")
-public class US_AD_TRM_1021
+public class US_AD_TRM_1022
 		extends SpringScenarioTest<GivenIAmStudent, WhenIAddEnrollmentCourses, ThenIViewTheCurrentEnrollmentCourses> {
-	private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_1021.class);
+	private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_1022.class);
 
 	@Test
 	@Rollback

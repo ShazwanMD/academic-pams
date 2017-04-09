@@ -25,10 +25,10 @@ import my.edu.umk.pams.bdd.stage.GivenIAmStudent;
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 @As("As a student, I want to view the offered courses by academic semester so that I know the current offered courses")
-public class US_AD_TRM_1013
+public class US_AD_TRM_1014
 		extends SpringScenarioTest<GivenIAmStudent, WhenIViewTheOfferedCourses, ThenOfferedCoursesInfoIsCurrent> {
 
-	private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_1013.class);
+	private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_1014.class);
 	private static final String PROGRAM_CODE = "A01/PHD/0001";
 
 	@Test
