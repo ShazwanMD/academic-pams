@@ -107,8 +107,6 @@ public interface CommonService {
 
 	List<AdStudyCenterCode> findStudyCenterCodes();
 
-	AdStudyCenter findStudyCenterByCode(String code);
-
 	List<AdStudyCenterCode> findStudyCenterCodes(String filter, Integer offset, Integer limit);
 
 	Integer countStudyCenterCode();
