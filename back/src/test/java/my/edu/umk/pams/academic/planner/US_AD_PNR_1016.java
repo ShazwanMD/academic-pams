@@ -8,15 +8,13 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
-
 import com.tngtech.jgiven.annotation.As;
-import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
-
 import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.planner.stage.ThenStudyCenterIsIntroduced;
 import my.edu.umk.pams.academic.planner.stage.WhenAdminSetUpStudyCenter;
 import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
+
 /**
  * @author zaida_nawi
  **/
@@ -25,19 +23,17 @@ import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
 @ContextConfiguration(classes = TestAppConfiguration.class)
 @As("As an admin academic,I want to set up study center, so that the study center is intoduced.")
 
-public class US_AD_PNR_1016 extends SpringScenarioTest<GivenIAmCPSAdministrator,WhenAdminSetUpStudyCenter, ThenStudyCenterIsIntroduced>{
+public class US_AD_PNR_1016
+		extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenAdminSetUpStudyCenter, ThenStudyCenterIsIntroduced> {
 
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_PNR_1016.class);
 
 	@Test
 	@Rollback
-	public void scenario1() { 
+	public void scenario1() {
 		given().I_am_a_CPS_administrator();
 		when().Admin_set_up_study_center();
 		then().study_center_is_intoduced();
 
-
+	}
 }
-}
-
-	
