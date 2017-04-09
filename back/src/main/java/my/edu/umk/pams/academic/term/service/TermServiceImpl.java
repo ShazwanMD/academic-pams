@@ -48,6 +48,9 @@ public class TermServiceImpl implements TermService {
 
 	@Autowired
 	private AdAdmissionApplicationDao admissionApplicationDao;
+	
+	@Autowired
+	private AdAdmissionDao admissionDao;
 
 	@Autowired
 	private AdEnrollmentApplicationDao enrollmentApplicationDao;
@@ -90,6 +93,13 @@ public class TermServiceImpl implements TermService {
 	public void saveAdmission(AdAdmissionApplication admissionApplication) {
 
 		admissionApplicationDao.save(admissionApplication, securityService.getCurrentUser());
+		sessionFactory.getCurrentSession().flush();
+
+	}
+	
+	@Override
+	public void saveAdmissionAdmin(AdAdmission admission) {
+		admissionDao.save(admission, securityService.getCurrentUser());
 		sessionFactory.getCurrentSession().flush();
 
 	}
