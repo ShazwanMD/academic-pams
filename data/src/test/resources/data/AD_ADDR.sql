@@ -4,3 +4,6 @@ VALUES
   (nextval('SQ_AD_ACTR'), 'LOT 89 TAMAN NADIRA', 'SEKSYEN 3', 'SHAH ALAM', '12345', 0, 128, 1, 1, 10, (SELECT ID
                                 FROM AD_ACTR A
                                 WHERE A.IDENTITY_NO = 'A17P001'), CURRENT_TIMESTAMP, 1, 1);
+
+                                
+     

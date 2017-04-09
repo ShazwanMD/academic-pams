@@ -45,6 +45,10 @@ public class WhenIUpdateContactNumber extends Stage<WhenIUpdateContactNumber> {
         
         identityService.updateStudent(student);
         
+        LOG.debug("Student's mobile: {}", student.getMobile());
+		LOG.debug("Student's phone: {}", student.getPhone());
+
+        
         return self();
     }
 }
