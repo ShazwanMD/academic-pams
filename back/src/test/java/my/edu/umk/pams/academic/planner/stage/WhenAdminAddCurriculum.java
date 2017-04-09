@@ -41,9 +41,10 @@ public class WhenAdminAddCurriculum extends Stage<WhenAdminAddCurriculum> {
 	@ProvidedScenarioState
 	private AdCurriculum curriculum;
 
-	public WhenAdminAddCurriculum Admin_add_curriculum()  {
+	public WhenAdminAddCurriculum Admin_add_curriculum(){
 
 		// setting up curriculum
+		AdProgram program = plannerService.findProgramByCode("A10");
 		curriculum = new AdCurriculumImpl();
 		curriculum.setCode(program.getCode() + "/" + "CRLM/0005"); // FKP/MASTER/0008/CRLM/0001
 		curriculum.setOrdinal(1);
@@ -62,13 +63,20 @@ public class WhenAdminAddCurriculum extends Stage<WhenAdminAddCurriculum> {
 		plannerService.saveCurriculum(curriculum);
 
 		LOG.debug("curriculum : {}", curriculum.getCode());
+		LOG.debug("curriculum has added: {}", curriculum.getCode());
+		
+		
+		  return self();
+    }
+	
+	
+	public WhenAdminAddCurriculum I_review_set_curriculum(){
 
 		// review set curriculum
-		
-		AdAcademicSession academicSession= plannerService.findAcademicSessionByCode("201720181");
-		AdProgram program = plannerService.findProgramByCode("A10");
 		AdFaculty faculty = plannerService.findFacultyByCode("A10");
+		AdAcademicSession academicSession= plannerService.findAcademicSessionByCode("201720181");
 		AdProgramLevel level = plannerService.findProgramLevelByCode("PHD");
+		AdProgram program = plannerService.findProgramByCode("A10");
 		LOG.debug("AcademicSession :{}", academicSession.getSemester());
 		LOG.debug("Faculty : {}", faculty.getDescription());
 		LOG.debug("Program Level : {}", level.getCode());
@@ -93,7 +101,6 @@ public class WhenAdminAddCurriculum extends Stage<WhenAdminAddCurriculum> {
 		}
 
 		return self();
-		
 	}
 
 }

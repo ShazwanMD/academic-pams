@@ -1,4 +1,5 @@
 package my.edu.umk.pams.academic.planner.stage;
+
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
@@ -15,9 +16,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
 
 public class ThenCurriculumHasAdded extends Stage<ThenCurriculumHasAdded> {
-	
+
 	private static final Logger LOG = LoggerFactory.getLogger(ThenCurriculumHasAdded.class);
-	
+
 	@Autowired
 	private PlannerService plannerService;
 
@@ -32,17 +33,26 @@ public class ThenCurriculumHasAdded extends Stage<ThenCurriculumHasAdded> {
 
 	@ExpectedScenarioState
 	private AdCourse course;
-	
+
 	@ExpectedScenarioState
 	private AdCurriculum curriculum;
 
 	public ThenCurriculumHasAdded Curriculum_has_added() {
-		
-		LOG.debug("New curriculum has been added: {} ", curriculum.getCode());
+
+//		LOG.debug("New curriculum has been added: {} ", curriculum.getCode());
 		Assert.notNull(curriculum, "curriculum data has been added");
-		
-		//boolean exists = plannerService.isCurriculumExists(curriculum.getCode());
-		//Assert.isTrue(exists, "program does not have curriculum");
+		return self();
+
+	}
+
+	public ThenCurriculumHasAdded Curriculum_has_reviewed() {
+
+		LOG.debug("Curriculum has been reviewed: {} ", curriculum.getCode());
+		Assert.notNull(curriculum, "curriculum data has been reviewed");
+
+		// boolean exists =
+		// plannerService.isCurriculumExists(curriculum.getCode());
+		// Assert.isTrue(exists, "program does not have curriculum");
 		return self();
 	}
 

@@ -27,14 +27,14 @@ public class US_AD_PNR_1006 extends
 		SpringScenarioTest<GivenIAmCPSAdministrator, WhenAdminAddCurriculum, ThenCurriculumHasAdded>{
 
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_PNR_1006.class);
-	private static final String PROGRAM_CODE = "A01/MASTER/0001";
+	private static final String FACULTY_CODE = "A10";
 
 	@Test
 	@Rollback
 	public void scenario1006() {
 		given().I_am_a_CPS_administrator()
-			.and().I_pick_program_$(PROGRAM_CODE);
-		when().Admin_add_curriculum();
-		then().Curriculum_has_added();
+			.and().I_pick_faculty_$(FACULTY_CODE);
+		when().Admin_add_curriculum().and().I_review_set_curriculum();
+		then().Curriculum_has_added().and().Curriculum_has_reviewed();
 	}
 }
