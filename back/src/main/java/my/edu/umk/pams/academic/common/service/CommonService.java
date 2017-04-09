@@ -1,603 +1,598 @@
 package my.edu.umk.pams.academic.common.service;
 
 import my.edu.umk.pams.academic.common.model.*;
-
 import java.util.List;
 
 public interface CommonService {
 
-    //====================================================================================================
-    // COUNTRY CODE
-    //====================================================================================================
+	// ====================================================================================================
+	// COUNTRY CODE
+	// ====================================================================================================
 
-    AdCountryCode findCountryCodeById(Long id);
+	AdCountryCode findCountryCodeById(Long id);
 
-    AdCountryCode findCountryCodeByCode(String code);
+	AdCountryCode findCountryCodeByCode(String code);
 
-    List<AdCountryCode> findCountryCodes(String filter, Integer offset, Integer limit);
+	List<AdCountryCode> findCountryCodes(String filter, Integer offset, Integer limit);
 
-    Integer countCountryCode(String filter);
+	Integer countCountryCode(String filter);
 
-    void saveCountryCode(AdCountryCode countryCode);
+	void saveCountryCode(AdCountryCode countryCode);
 
-    void updateCountryCode(AdCountryCode countryCode);
+	void updateCountryCode(AdCountryCode countryCode);
 
-    void removeCountryCode(AdCountryCode countryCode);
+	void removeCountryCode(AdCountryCode countryCode);
 
+	// ====================================================================================================
+	// STATE CODE
+	// ====================================================================================================
 
-    //====================================================================================================
-    // STATE CODE
-    //====================================================================================================
+	AdStateCode findStateCodeById(Long id);
 
-    AdStateCode findStateCodeById(Long id);
+	AdStateCode findStateCodeByCode(String code);
 
-    AdStateCode findStateCodeByCode(String code);
+	List<AdStateCode> findStateCodes(Integer offset, Integer limit);
 
-    List<AdStateCode> findStateCodes(Integer offset, Integer limit);
+	List<AdStateCode> findStateCodes(String filter, Integer offset, Integer limit);
 
-    List<AdStateCode> findStateCodes(String filter, Integer offset, Integer limit);
+	List<AdStateCode> findStateCodes(AdCountryCode countryCode, Integer offset, Integer limit);
 
-    List<AdStateCode> findStateCodes(AdCountryCode countryCode, Integer offset, Integer limit);
+	List<AdStateCode> findStateCodes(String filter, AdCountryCode countryCode, Integer offset, Integer limit);
 
-    List<AdStateCode> findStateCodes(String filter, AdCountryCode countryCode, Integer offset, Integer limit);
+	Integer countStateCode();
 
-    Integer countStateCode();
+	Integer countStateCode(String filter);
 
-    Integer countStateCode(String filter);
+	Integer countStateCode(AdCountryCode countryCode);
 
-    Integer countStateCode(AdCountryCode countryCode);
+	Integer countStateCode(String filter, AdCountryCode countryCode);
 
-    Integer countStateCode(String filter, AdCountryCode countryCode);
+	void saveStateCode(AdStateCode stateCode);
 
-    void saveStateCode(AdStateCode stateCode);
+	void updateStateCode(AdStateCode stateCode);
 
-    void updateStateCode(AdStateCode stateCode);
+	void removeStateCode(AdStateCode stateCode);
 
-    void removeStateCode(AdStateCode stateCode);
+	// ====================================================================================================
+	// DISTRICT CODE
+	// ====================================================================================================
 
-    //====================================================================================================
-    // DISTRICT CODE
-    //====================================================================================================
+	AdDistrictCode findDistrictCodeById(Long id);
 
-    AdDistrictCode findDistrictCodeById(Long id);
+	AdDistrictCode findDistrictCodeByCode(String code);
 
-    AdDistrictCode findDistrictCodeByCode(String code);
+	List<AdDistrictCode> findDistrictCodes(AdStateCode stateCod, Integer offset, Integer limit);
 
-    List<AdDistrictCode> findDistrictCodes(AdStateCode stateCod, Integer offset, Integer limit);
+	List<AdDistrictCode> findDistrictCodes(String filter, AdStateCode stateCode, Integer offset, Integer limit);
 
-    List<AdDistrictCode> findDistrictCodes(String filter, AdStateCode stateCode, Integer offset, Integer limit);
+	Integer countDistrictCode(AdStateCode stateCode);
 
-    Integer countDistrictCode(AdStateCode stateCode);
+	Integer countDistrictCode(String filter, AdStateCode stateCode);
 
-    Integer countDistrictCode(String filter, AdStateCode stateCode);
+	void saveDistrictCode(AdDistrictCode districtCode);
 
-    void saveDistrictCode(AdDistrictCode districtCode);
+	void updateDistrictCode(AdDistrictCode districtCode);
 
-    void updateDistrictCode(AdDistrictCode districtCode);
+	void removeDistrictCode(AdDistrictCode districtCode);
 
-    void removeDistrictCode(AdDistrictCode districtCode);
+	// ====================================================================================================
+	// CITY CODE
+	// ====================================================================================================
 
-    //====================================================================================================
-    // CITY CODE
-    //====================================================================================================
+	AdCityCode findCityCodeById(Long id);
 
-    AdCityCode findCityCodeById(Long id);
+	AdCityCode findCityCodeByCode(String code);
 
-    AdCityCode findCityCodeByCode(String code);
+	List<AdCityCode> findCityCodes(AdStateCode stateCode, Integer offset, Integer limit);
 
-    List<AdCityCode> findCityCodes(AdStateCode stateCode, Integer offset, Integer limit);
+	List<AdCityCode> findCityCodes(String filter, AdStateCode stateCode, Integer offset, Integer limit);
 
-    List<AdCityCode> findCityCodes(String filter, AdStateCode stateCode, Integer offset, Integer limit);
+	Integer countCityCode(AdStateCode stateCode);
 
-    Integer countCityCode(AdStateCode stateCode);
+	Integer countCityCode(String filter, AdStateCode stateCode);
 
-    Integer countCityCode(String filter, AdStateCode stateCode);
+	void saveCityCode(AdCityCode cityCode);
 
-    void saveCityCode(AdCityCode cityCode);
+	void updateCityCode(AdCityCode cityCode);
 
-    void updateCityCode(AdCityCode cityCode);
+	void removeCityCode(AdCityCode cityCode);
 
-    void removeCityCode(AdCityCode cityCode);
+	// ====================================================================================================
+	// STUDY CENTER CODE
+	// ====================================================================================================
 
-    //====================================================================================================
-    // STUDY CENTER CODE
-    //====================================================================================================
+	AdStudyCenterCode findStudyCenterCodeById(Long id);
 
-    AdStudyCenterCode findStudyCenterCodeById(Long id);
+	AdStudyCenterCode findStudyCenterCodeByCode(String code);
 
-    AdStudyCenterCode findStudyCenterCodeByCode(String code);
+	List<AdStudyCenterCode> findStudyCenterCodes();
 
-    List<AdStudyCenterCode> findStudyCenterCodes();
+	List<AdStudyCenterCode> findStudyCenterCodes(String filter, Integer offset, Integer limit);
 
-    List<AdStudyCenterCode> findStudyCenterCodes(String filter, Integer offset, Integer limit);
+	Integer countStudyCenterCode();
 
-    Integer countStudyCenterCode();
+	Integer countStudyCenterCode(String filter);
 
-    Integer countStudyCenterCode(String filter);
+	void saveStudyCenterCode(AdStudyCenterCode studyCenterCode);
 
-    void saveStudyCenterCode(AdStudyCenterCode studyCenterCode);
+	void updateStudyCenterCode(AdStudyCenterCode studyCenterCode);
 
-    void updateStudyCenterCode(AdStudyCenterCode studyCenterCode);
+	void removeStudyCenterCode(AdStudyCenterCode studyCenterCode);
 
-    void removeStudyCenterCode(AdStudyCenterCode studyCenterCode);
+	// ====================================================================================================
+	// VENUE CODE
+	// ====================================================================================================
 
-    //====================================================================================================
-    // VENUE CODE
-    //====================================================================================================
+	AdVenueCode findVenueCodeById(Long id);
 
-    AdVenueCode findVenueCodeById(Long id);
+	AdVenueCode findVenueCodeByCode(String code);
 
-    AdVenueCode findVenueCodeByCode(String code);
+	List<AdVenueCode> findVenueCodes();
 
-    List<AdVenueCode> findVenueCodes();
+	List<AdVenueCode> findVenueCodes(String filter, Integer offset, Integer limit);
 
-    List<AdVenueCode> findVenueCodes(String filter, Integer offset, Integer limit);
+	Integer countVenueCode();
 
-    Integer countVenueCode();
+	Integer countVenueCode(String filter);
 
-    Integer countVenueCode(String filter);
+	void saveVenueCode(AdVenueCode venueCode);
 
-    void saveVenueCode(AdVenueCode venueCode);
+	void updateVenueCode(AdVenueCode venueCode);
 
-    void updateVenueCode(AdVenueCode venueCode);
+	void removeVenueCode(AdVenueCode venueCode);
 
-    void removeVenueCode(AdVenueCode venueCode);
+	// ====================================================================================================
+	// BANK CODE
+	// ====================================================================================================
 
-    //====================================================================================================
-    // BANK CODE
-    //====================================================================================================
+	AdBankCode findBankCodeById(Long id);
 
-    AdBankCode findBankCodeById(Long id);
+	AdBankCode findBankCodeByCode(String code);
 
-    AdBankCode findBankCodeByCode(String code);
+	List<AdBankCode> findBankCodes();
 
-    List<AdBankCode> findBankCodes();
+	List<AdBankCode> findBankCodes(String filter, Integer offset, Integer limit);
 
-    List<AdBankCode> findBankCodes(String filter, Integer offset, Integer limit);
+	Integer countBankCode();
 
-    Integer countBankCode();
+	Integer countBankCode(String filter);
 
-    Integer countBankCode(String filter);
+	void saveBankCode(AdBankCode bankCode);
 
-    void saveBankCode(AdBankCode bankCode);
+	void updateBankCode(AdBankCode bankCode);
 
-    void updateBankCode(AdBankCode bankCode);
+	void removeBankCode(AdBankCode bankCode);
 
-    void removeBankCode(AdBankCode bankCode);
+	// ====================================================================================================
+	// FIELD CODE
+	// ====================================================================================================
 
+	AdFieldCode findFieldCodeById(Long id);
 
-    //====================================================================================================
-    // FIELD CODE
-    //====================================================================================================
+	AdFieldCode findFieldCodeByCode(String code);
 
-    AdFieldCode findFieldCodeById(Long id);
+	List<AdFieldCode> findFieldCodes();
 
-    AdFieldCode findFieldCodeByCode(String code);
+	List<AdFieldCode> findFieldCodes(Integer offset, Integer limit);
 
-    List<AdFieldCode> findFieldCodes();
+	List<AdFieldCode> findFieldCodes(String filter, Integer offset, Integer limit);
 
-    List<AdFieldCode> findFieldCodes(Integer offset, Integer limit);
+	Integer countFieldCode();
 
-    List<AdFieldCode> findFieldCodes(String filter, Integer offset, Integer limit);
+	Integer countFieldCode(String filter);
 
-    Integer countFieldCode();
+	void saveFieldCode(AdFieldCode fieldCode);
 
-    Integer countFieldCode(String filter);
+	void updateFieldCode(AdFieldCode fieldCode);
 
-    void saveFieldCode(AdFieldCode fieldCode);
+	void removeFieldCode(AdFieldCode fieldCode);
 
-    void updateFieldCode(AdFieldCode fieldCode);
+	// ====================================================================================================
+	// RELIGION CODE
+	// ====================================================================================================
 
-    void removeFieldCode(AdFieldCode fieldCode);
+	AdReligionCode findReligionCodeById(Long id);
 
-    //====================================================================================================
-    // RELIGION CODE
-    //====================================================================================================
+	AdReligionCode findReligionCodeByCode(String code);
 
-    AdReligionCode findReligionCodeById(Long id);
+	List<AdReligionCode> findReligionCodes();
 
-    AdReligionCode findReligionCodeByCode(String code);
+	List<AdReligionCode> findReligionCodes(String filter, Integer offset, Integer limit);
 
-    List<AdReligionCode> findReligionCodes();
+	Integer countReligionCode();
 
-    List<AdReligionCode> findReligionCodes(String filter, Integer offset, Integer limit);
+	Integer countReligionCode(String filter);
 
-    Integer countReligionCode();
+	void saveReligionCode(AdReligionCode religionCode);
 
-    Integer countReligionCode(String filter);
+	void updateReligionCode(AdReligionCode religionCode);
 
-    void saveReligionCode(AdReligionCode religionCode);
+	void removeReligionCode(AdReligionCode religionCode);
 
-    void updateReligionCode(AdReligionCode religionCode);
+	// ====================================================================================================
+	// SUBJECT CODE
+	// ====================================================================================================
 
-    void removeReligionCode(AdReligionCode religionCode);
+	AdSubjectCode findSubjectCodeById(Long id);
 
-    //====================================================================================================
-    // SUBJECT CODE
-    //====================================================================================================
+	AdSubjectCode findSubjectCodeByCode(String code);
 
-    AdSubjectCode findSubjectCodeById(Long id);
+	List<AdSubjectCode> findSubjectCodes();
 
-    AdSubjectCode findSubjectCodeByCode(String code);
+	List<AdSubjectCode> findSubjectCodes(Integer offset, Integer limit);
 
-    List<AdSubjectCode> findSubjectCodes();
+	List<AdSubjectCode> findSubjectCodes(String filter, Integer offset, Integer limit);
 
-    List<AdSubjectCode> findSubjectCodes(Integer offset, Integer limit);
+	Integer countSubjectCode();
 
-    List<AdSubjectCode> findSubjectCodes(String filter, Integer offset, Integer limit);
+	Integer countSubjectCode(String filter);
 
-    Integer countSubjectCode();
+	void saveSubjectCode(AdSubjectCode subjectCode);
 
-    Integer countSubjectCode(String filter);
+	void updateSubjectCode(AdSubjectCode subjectCode);
 
-    void saveSubjectCode(AdSubjectCode subjectCode);
+	void removeSubjectCode(AdSubjectCode subjectCode);
 
-    void updateSubjectCode(AdSubjectCode subjectCode);
+	// ====================================================================================================
+	// GRADE CODE
+	// ====================================================================================================
 
-    void removeSubjectCode(AdSubjectCode subjectCode);
+	AdGradeCode findGradeCodeById(Long id);
 
-    //====================================================================================================
-    // GRADE CODE
-    //====================================================================================================
+	AdGradeCode findGradeCodeByCode(String code);
 
-    AdGradeCode findGradeCodeById(Long id);
+	List<AdGradeCode> findGradeCodes();
 
-    AdGradeCode findGradeCodeByCode(String code);
+	List<AdGradeCode> findGradeCodes(Integer offset, Integer limit);
 
-    List<AdGradeCode> findGradeCodes();
+	List<AdGradeCode> findGradeCodes(String filter, Integer offset, Integer limit);
 
-    List<AdGradeCode> findGradeCodes(Integer offset, Integer limit);
+	Integer countGradeCode();
 
-    List<AdGradeCode> findGradeCodes(String filter, Integer offset, Integer limit);
+	Integer countGradeCode(String filter);
 
-    Integer countGradeCode();
+	void saveGradeCode(AdGradeCode gradeCode);
 
-    Integer countGradeCode(String filter);
+	void updateGradeCode(AdGradeCode gradeCode);
 
-    void saveGradeCode(AdGradeCode gradeCode);
+	void removeGradeCode(AdGradeCode gradeCode);
 
-    void updateGradeCode(AdGradeCode gradeCode);
+	// ====================================================================================================
+	// GENDER CODE
+	// ====================================================================================================
 
-    void removeGradeCode(AdGradeCode gradeCode);
+	AdGenderCode findGenderCodeById(Long id);
 
-    //====================================================================================================
-    // GENDER CODE
-    //====================================================================================================
+	AdGenderCode findGenderCodeByCode(String code);
 
-    AdGenderCode findGenderCodeById(Long id);
+	List<AdGenderCode> findGenderCodes();
 
-    AdGenderCode findGenderCodeByCode(String code);
+	List<AdGenderCode> findGenderCodes(String filter, Integer offset, Integer limit);
 
-    List<AdGenderCode> findGenderCodes();
+	Integer countGenderCode();
 
-    List<AdGenderCode> findGenderCodes(String filter, Integer offset, Integer limit);
+	Integer countGenderCode(String filter);
 
-    Integer countGenderCode();
+	void saveGenderCode(AdGenderCode genderCode);
 
-    Integer countGenderCode(String filter);
+	void updateGenderCode(AdGenderCode genderCode);
 
-    void saveGenderCode(AdGenderCode genderCode);
+	void removeGenderCode(AdGenderCode genderCode);
 
-    void updateGenderCode(AdGenderCode genderCode);
+	// ====================================================================================================
+	// RACE CODE
+	// ====================================================================================================
 
-    void removeGenderCode(AdGenderCode genderCode);
+	AdRaceCode findRaceCodeById(Long id);
 
-    //====================================================================================================
-    // RACE CODE
-    //====================================================================================================
+	AdRaceCode findRaceCodeByCode(String code);
 
+	List<AdRaceCode> findRaceCodes();
 
-    AdRaceCode findRaceCodeById(Long id);
+	List<AdRaceCode> findRaceCodes(String filter, Integer offset, Integer limit);
 
-    AdRaceCode findRaceCodeByCode(String code);
+	Integer countRaceCode();
 
-    List<AdRaceCode> findRaceCodes();
+	Integer countRaceCode(String filter);
 
-    List<AdRaceCode> findRaceCodes(String filter, Integer offset, Integer limit);
+	void saveRaceCode(AdRaceCode raceCode);
 
-    Integer countRaceCode();
+	void updateRaceCode(AdRaceCode raceCode);
 
-    Integer countRaceCode(String filter);
+	void removeRaceCode(AdRaceCode raceCode);
 
-    void saveRaceCode(AdRaceCode raceCode);
+	// ====================================================================================================
+	// ETHNICITY CODE
+	// ====================================================================================================
 
-    void updateRaceCode(AdRaceCode raceCode);
+	AdEthnicityCode findEthnicityCodeById(Long id);
 
-    void removeRaceCode(AdRaceCode raceCode);
+	AdEthnicityCode findEthnicityCodeByCode(String code);
 
-    //====================================================================================================
-    // ETHNICITY CODE
-    //====================================================================================================
+	List<AdEthnicityCode> findEthnicityCodes();
 
-    AdEthnicityCode findEthnicityCodeById(Long id);
+	List<AdEthnicityCode> findEthnicityCodes(String filter, Integer offset, Integer limit);
 
-    AdEthnicityCode findEthnicityCodeByCode(String code);
+	Integer countEthnicityCode();
 
-    List<AdEthnicityCode> findEthnicityCodes();
+	Integer countEthnicityCode(String filter);
 
-    List<AdEthnicityCode> findEthnicityCodes(String filter, Integer offset, Integer limit);
+	void saveEthnicityCode(AdEthnicityCode ethnicityCode);
 
-    Integer countEthnicityCode();
+	void updateEthnicityCode(AdEthnicityCode ethnicityCode);
 
-    Integer countEthnicityCode(String filter);
+	void removeEthnicityCode(AdEthnicityCode ethnicityCode);
 
-    void saveEthnicityCode(AdEthnicityCode ethnicityCode);
+	// ====================================================================================================
+	// MARITAL CODE
+	// ====================================================================================================
 
-    void updateEthnicityCode(AdEthnicityCode ethnicityCode);
+	AdMaritalCode findMaritalCodeById(Long id);
 
-    void removeEthnicityCode(AdEthnicityCode ethnicityCode);
+	AdMaritalCode findMaritalCodeByCode(String code);
 
-    //====================================================================================================
-    // MARITAL CODE
-    //====================================================================================================
+	List<AdMaritalCode> findMaritalCodes();
 
-    AdMaritalCode findMaritalCodeById(Long id);
+	List<AdMaritalCode> findMaritalCodes(String filter, Integer offset, Integer limit);
 
-    AdMaritalCode findMaritalCodeByCode(String code);
+	Integer countMaritalCode();
 
-    List<AdMaritalCode> findMaritalCodes();
+	Integer countMaritalCode(String filter);
 
-    List<AdMaritalCode> findMaritalCodes(String filter, Integer offset, Integer limit);
+	void saveMaritalCode(AdMaritalCode maritalCode);
 
-    Integer countMaritalCode();
+	void updateMaritalCode(AdMaritalCode maritalCode);
 
-    Integer countMaritalCode(String filter);
+	void removeMaritalCode(AdMaritalCode maritalCode);
 
-    void saveMaritalCode(AdMaritalCode maritalCode);
+	// ====================================================================================================
+	// DEPENDENCY CODE
+	// ====================================================================================================
 
-    void updateMaritalCode(AdMaritalCode maritalCode);
+	AdDependencyCode findDependencyCodeById(Long id);
 
-    void removeMaritalCode(AdMaritalCode maritalCode);
+	AdDependencyCode findDependencyCodeByCode(String code);
 
-    //====================================================================================================
-    // DEPENDENCY CODE
-    //====================================================================================================
+	List<AdDependencyCode> findDependencyCodes();
 
-    AdDependencyCode findDependencyCodeById(Long id);
+	List<AdDependencyCode> findDependencyCodes(String filter, Integer offset, Integer limit);
 
-    AdDependencyCode findDependencyCodeByCode(String code);
+	Integer countDependencyCode();
 
-    List<AdDependencyCode> findDependencyCodes();
+	Integer countDependencyCode(String filter);
 
-    List<AdDependencyCode> findDependencyCodes(String filter, Integer offset, Integer limit);
+	void saveDependencyCode(AdDependencyCode dependencyCode);
 
-    Integer countDependencyCode();
+	void updateDependencyCode(AdDependencyCode dependencyCode);
 
-    Integer countDependencyCode(String filter);
+	void removeDependencyCode(AdDependencyCode dependencyCode);
 
-    void saveDependencyCode(AdDependencyCode dependencyCode);
+	// ====================================================================================================
+	// DISABILITY CODE
+	// ====================================================================================================
 
-    void updateDependencyCode(AdDependencyCode dependencyCode);
+	AdDisabilityCode findDisabilityCodeById(Long id);
 
-    void removeDependencyCode(AdDependencyCode dependencyCode);
+	AdDisabilityCode findDisabilityCodeByCode(String code);
 
-    //====================================================================================================
-    // DISABILITY CODE
-    //====================================================================================================
+	List<AdDisabilityCode> findDisabilityCodes();
 
-    AdDisabilityCode findDisabilityCodeById(Long id);
+	List<AdDisabilityCode> findDisabilityCodes(String filter, Integer offset, Integer limit);
 
-    AdDisabilityCode findDisabilityCodeByCode(String code);
+	Integer countDisabilityCode();
 
-    List<AdDisabilityCode> findDisabilityCodes();
+	Integer countDisabilityCode(String filter);
 
-    List<AdDisabilityCode> findDisabilityCodes(String filter, Integer offset, Integer limit);
+	void saveDisabilityCode(AdDisabilityCode disabilityCode);
 
-    Integer countDisabilityCode();
+	void updateDisabilityCode(AdDisabilityCode disabilityCode);
 
-    Integer countDisabilityCode(String filter);
+	void removeDisabilityCode(AdDisabilityCode disabilityCode);
 
-    void saveDisabilityCode(AdDisabilityCode disabilityCode);
+	// ====================================================================================================
+	// NATIONALITY CODE
+	// ====================================================================================================
 
-    void updateDisabilityCode(AdDisabilityCode disabilityCode);
+	AdNationalityCode findNationalityCodeById(Long id);
 
-    void removeDisabilityCode(AdDisabilityCode disabilityCode);
+	AdNationalityCode findNationalityCodeByCode(String code);
 
-    //====================================================================================================
-    // NATIONALITY CODE
-    //====================================================================================================
+	List<AdNationalityCode> findNationalityCodes();
 
-    AdNationalityCode findNationalityCodeById(Long id);
+	List<AdNationalityCode> findNationalityCodes(String filter, Integer offset, Integer limit);
 
-    AdNationalityCode findNationalityCodeByCode(String code);
+	Integer countNationalityCode();
 
-    List<AdNationalityCode> findNationalityCodes();
+	Integer countNationalityCode(String filter);
 
-    List<AdNationalityCode> findNationalityCodes(String filter, Integer offset, Integer limit);
+	void saveNationalityCode(AdNationalityCode nationalityCode);
 
-    Integer countNationalityCode();
+	void updateNationalityCode(AdNationalityCode nationalityCode);
 
-    Integer countNationalityCode(String filter);
+	void removeNationalityCode(AdNationalityCode nationalityCode);
 
-    void saveNationalityCode(AdNationalityCode nationalityCode);
+	// ====================================================================================================
+	// RESIDENCY CODE
+	// ====================================================================================================
 
-    void updateNationalityCode(AdNationalityCode nationalityCode);
+	AdResidencyCode findResidencyCodeById(Long id);
 
-    void removeNationalityCode(AdNationalityCode nationalityCode);
+	AdResidencyCode findResidencyCodeByCode(String code);
 
+	List<AdResidencyCode> findResidencyCodes();
 
-    //====================================================================================================
-    // RESIDENCY CODE
-    //====================================================================================================
+	List<AdResidencyCode> findResidencyCodes(String filter, Integer offset, Integer limit);
 
-    AdResidencyCode findResidencyCodeById(Long id);
+	Integer countResidencyCode();
 
-    AdResidencyCode findResidencyCodeByCode(String code);
+	Integer countResidencyCode(String filter);
 
-    List<AdResidencyCode> findResidencyCodes();
+	void saveResidencyCode(AdResidencyCode residencyCode);
 
-    List<AdResidencyCode> findResidencyCodes(String filter, Integer offset, Integer limit);
+	void updateResidencyCode(AdResidencyCode residencyCode);
 
-    Integer countResidencyCode();
+	void removeResidencyCode(AdResidencyCode residencyCode);
 
-    Integer countResidencyCode(String filter);
+	// ====================================================================================================
+	// SCHOOL CODE
+	// ====================================================================================================
 
-    void saveResidencyCode(AdResidencyCode residencyCode);
+	AdSchoolCode findSchoolCodeById(Long id);
 
-    void updateResidencyCode(AdResidencyCode residencyCode);
+	AdSchoolCode findSchoolCodeByCode(String code);
 
-    void removeResidencyCode(AdResidencyCode residencyCode);
+	List<AdSchoolCode> findSchoolCodes(String filter, Integer offset, Integer limit);
 
-    //====================================================================================================
-    // SCHOOL CODE
-    //====================================================================================================
+	Integer countSchoolCode(String filter);
 
-    AdSchoolCode findSchoolCodeById(Long id);
+	void saveSchoolCode(AdSchoolCode schoolCode);
 
-    AdSchoolCode findSchoolCodeByCode(String code);
+	void updateSchoolCode(AdSchoolCode schoolCode);
 
-    List<AdSchoolCode> findSchoolCodes(String filter, Integer offset, Integer limit);
+	void removeSchoolCode(AdSchoolCode schoolCode);
 
-    Integer countSchoolCode(String filter);
+	// ====================================================================================================
+	// INVOLVEMENT TYPE CODE
+	// ====================================================================================================
 
-    void saveSchoolCode(AdSchoolCode schoolCode);
+	AdInvolvementTypeCode findInvolvementTypeCodeById(Long id);
 
-    void updateSchoolCode(AdSchoolCode schoolCode);
+	AdInvolvementTypeCode findInvolvementTypeCodeByCode(String code);
 
-    void removeSchoolCode(AdSchoolCode schoolCode);
+	List<AdInvolvementTypeCode> findInvolvementTypeCodes();
 
-    //====================================================================================================
-    // INVOLVEMENT TYPE CODE
-    //====================================================================================================
+	List<AdInvolvementTypeCode> findInvolvementTypeCodes(Integer offset, Integer limit);
 
-    AdInvolvementTypeCode findInvolvementTypeCodeById(Long id);
+	List<AdInvolvementTypeCode> findInvolvementTypeCodes(String filter, Integer offset, Integer limit);
 
-    AdInvolvementTypeCode findInvolvementTypeCodeByCode(String code);
+	Integer countInvolvementTypeCode();
 
-    List<AdInvolvementTypeCode> findInvolvementTypeCodes();
+	Integer countInvolvementTypeCode(String filter);
 
-    List<AdInvolvementTypeCode> findInvolvementTypeCodes(Integer offset, Integer limit);
+	void saveInvolvementTypeCode(AdInvolvementTypeCode involvementtypeCode);
 
-    List<AdInvolvementTypeCode> findInvolvementTypeCodes(String filter, Integer offset, Integer limit);
+	void updateInvolvementTypeCode(AdInvolvementTypeCode involvementtypeCode);
 
-    Integer countInvolvementTypeCode();
+	void removeInvolvementTypeCode(AdInvolvementTypeCode involvementtypeCode);
 
-    Integer countInvolvementTypeCode(String filter);
+	// ====================================================================================================
+	// INVOLVEMENT LEVEL CODE
+	// ====================================================================================================
 
-    void saveInvolvementTypeCode(AdInvolvementTypeCode involvementtypeCode);
+	AdInvolvementLevelCode findInvolvementLevelCodeById(Long id);
 
-    void updateInvolvementTypeCode(AdInvolvementTypeCode involvementtypeCode);
+	AdInvolvementLevelCode findInvolvementLevelCodeByCode(String code);
 
-    void removeInvolvementTypeCode(AdInvolvementTypeCode involvementtypeCode);
+	List<AdInvolvementLevelCode> findInvolvementLevelCodes();
 
-    //====================================================================================================
-    // INVOLVEMENT LEVEL CODE
-    //====================================================================================================
+	List<AdInvolvementLevelCode> findInvolvementLevelCodes(Integer offset, Integer limit);
 
-    AdInvolvementLevelCode findInvolvementLevelCodeById(Long id);
+	List<AdInvolvementLevelCode> findInvolvementLevelCodes(String filter, Integer offset, Integer limit);
 
-    AdInvolvementLevelCode findInvolvementLevelCodeByCode(String code);
+	Integer countInvolvementLevelCode();
 
-    List<AdInvolvementLevelCode> findInvolvementLevelCodes();
+	Integer countInvolvementLevelCode(String filter);
 
-    List<AdInvolvementLevelCode> findInvolvementLevelCodes(Integer offset, Integer limit);
+	void saveInvolvementLevelCode(AdInvolvementLevelCode involvementlevelCode);
 
-    List<AdInvolvementLevelCode> findInvolvementLevelCodes(String filter, Integer offset, Integer limit);
+	void updateInvolvementLevelCode(AdInvolvementLevelCode involvementlevelCode);
 
-    Integer countInvolvementLevelCode();
+	void removeInvolvementLevelCode(AdInvolvementLevelCode involvementlevelCode);
 
-    Integer countInvolvementLevelCode(String filter);
+	// ====================================================================================================
+	// INVOLVEMENT TITLE CODE
+	// ====================================================================================================
 
-    void saveInvolvementLevelCode(AdInvolvementLevelCode involvementlevelCode);
+	AdInvolvementTitleCode findInvolvementTitleCodeById(Long id);
 
-    void updateInvolvementLevelCode(AdInvolvementLevelCode involvementlevelCode);
+	AdInvolvementTitleCode findInvolvementTitleCodeByCode(String code);
 
-    void removeInvolvementLevelCode(AdInvolvementLevelCode involvementlevelCode);
+	List<AdInvolvementTitleCode> findInvolvementTitleCodes();
 
-    //====================================================================================================
-    // INVOLVEMENT TITLE CODE
-    //====================================================================================================
+	List<AdInvolvementTitleCode> findInvolvementTitleCodes(Integer offset, Integer limit);
 
+	List<AdInvolvementTitleCode> findInvolvementTitleCodes(String filter, Integer offset, Integer limit);
 
-    AdInvolvementTitleCode findInvolvementTitleCodeById(Long id);
+	Integer countInvolvementTitleCode();
 
-    AdInvolvementTitleCode findInvolvementTitleCodeByCode(String code);
+	Integer countInvolvementTitleCode(String filter);
 
-    List<AdInvolvementTitleCode> findInvolvementTitleCodes();
+	void saveInvolvementTitleCode(AdInvolvementTitleCode involvementtitleCode);
 
-    List<AdInvolvementTitleCode> findInvolvementTitleCodes(Integer offset, Integer limit);
+	void updateInvolvementTitleCode(AdInvolvementTitleCode involvementtitleCode);
 
-    List<AdInvolvementTitleCode> findInvolvementTitleCodes(String filter, Integer offset, Integer limit);
+	void removeInvolvementTitleCode(AdInvolvementTitleCode involvementtitleCode);
 
-    Integer countInvolvementTitleCode();
+	// ====================================================================================================
+	// EMPLOYMENT FIELD CODE
+	// ====================================================================================================
 
-    Integer countInvolvementTitleCode(String filter);
+	AdEmploymentFieldCode findEmploymentFieldCodeById(Long id);
 
-    void saveInvolvementTitleCode(AdInvolvementTitleCode involvementtitleCode);
+	AdEmploymentFieldCode findEmploymentFieldCodeByCode(String code);
 
-    void updateInvolvementTitleCode(AdInvolvementTitleCode involvementtitleCode);
+	List<AdEmploymentFieldCode> findEmploymentFieldCodes();
 
-    void removeInvolvementTitleCode(AdInvolvementTitleCode involvementtitleCode);
+	List<AdEmploymentFieldCode> findEmploymentFieldCodes(Integer offset, Integer limit);
 
-    //====================================================================================================
-    // EMPLOYMENT FIELD CODE
-    //====================================================================================================
+	List<AdEmploymentFieldCode> findEmploymentFieldCodes(String filter, Integer offset, Integer limit);
 
-    AdEmploymentFieldCode findEmploymentFieldCodeById(Long id);
+	Integer countEmploymentFieldCode();
 
-    AdEmploymentFieldCode findEmploymentFieldCodeByCode(String code);
+	Integer countEmploymentFieldCode(String filter);
 
-    List<AdEmploymentFieldCode> findEmploymentFieldCodes();
+	void saveEmploymentFieldCode(AdEmploymentFieldCode employmentfieldCode);
 
-    List<AdEmploymentFieldCode> findEmploymentFieldCodes(Integer offset, Integer limit);
+	void updateEmploymentFieldCode(AdEmploymentFieldCode employmentfieldCode);
 
-    List<AdEmploymentFieldCode> findEmploymentFieldCodes(String filter, Integer offset, Integer limit);
+	void removeEmploymentFieldCode(AdEmploymentFieldCode employmentfieldCode);
 
-    Integer countEmploymentFieldCode();
+	// ====================================================================================================
+	// EMPLOYMENT LEVEL CODE
+	// ====================================================================================================
 
-    Integer countEmploymentFieldCode(String filter);
+	AdEmploymentLevelCode findEmploymentLevelCodeById(Long id);
 
-    void saveEmploymentFieldCode(AdEmploymentFieldCode employmentfieldCode);
+	AdEmploymentLevelCode findEmploymentLevelCodeByCode(String code);
 
-    void updateEmploymentFieldCode(AdEmploymentFieldCode employmentfieldCode);
+	List<AdEmploymentLevelCode> findEmploymentLevelCodes();
 
-    void removeEmploymentFieldCode(AdEmploymentFieldCode employmentfieldCode);
+	List<AdEmploymentLevelCode> findEmploymentLevelCodes(Integer offset, Integer limit);
 
-    //====================================================================================================
-    // EMPLOYMENT LEVEL CODE
-    //====================================================================================================
+	List<AdEmploymentLevelCode> findEmploymentLevelCodes(String filter, Integer offset, Integer limit);
 
-    AdEmploymentLevelCode findEmploymentLevelCodeById(Long id);
+	Integer countEmploymentLevelCode();
 
-    AdEmploymentLevelCode findEmploymentLevelCodeByCode(String code);
+	Integer countEmploymentLevelCode(String filter);
 
-    List<AdEmploymentLevelCode> findEmploymentLevelCodes();
+	void saveEmploymentLevelCode(AdEmploymentLevelCode employmentlevelCode);
 
-    List<AdEmploymentLevelCode> findEmploymentLevelCodes(Integer offset, Integer limit);
+	void updateEmploymentLevelCode(AdEmploymentLevelCode employmentlevelCode);
 
-    List<AdEmploymentLevelCode> findEmploymentLevelCodes(String filter, Integer offset, Integer limit);
+	void removeEmploymentLevelCode(AdEmploymentLevelCode employmentlevelCode);
 
-    Integer countEmploymentLevelCode();
+	// ====================================================================================================
+	// EMPLOYMENT SECTOR CODE
+	// ====================================================================================================
 
-    Integer countEmploymentLevelCode(String filter);
+	AdEmploymentSectorCode findEmploymentSectorCodeById(Long id);
 
-    void saveEmploymentLevelCode(AdEmploymentLevelCode employmentlevelCode);
+	AdEmploymentSectorCode findEmploymentSectorCodeByCode(String code);
 
-    void updateEmploymentLevelCode(AdEmploymentLevelCode employmentlevelCode);
+	List<AdEmploymentSectorCode> findEmploymentSectorCodes();
 
-    void removeEmploymentLevelCode(AdEmploymentLevelCode employmentlevelCode);
+	List<AdEmploymentSectorCode> findEmploymentSectorCodes(Integer offset, Integer limit);
 
-    //====================================================================================================
-    // EMPLOYMENT SECTOR CODE
-    //====================================================================================================
+	List<AdEmploymentSectorCode> findEmploymentSectorCodes(String filter, Integer offset, Integer limit);
 
-    AdEmploymentSectorCode findEmploymentSectorCodeById(Long id);
+	Integer countEmploymentSectorCode();
 
-    AdEmploymentSectorCode findEmploymentSectorCodeByCode(String code);
+	Integer countEmploymentSectorCode(String filter);
 
-    List<AdEmploymentSectorCode> findEmploymentSectorCodes();
+	void saveEmploymentSectorCode(AdEmploymentSectorCode employmentsectorCode);
 
-    List<AdEmploymentSectorCode> findEmploymentSectorCodes(Integer offset, Integer limit);
+	void updateEmploymentSectorCode(AdEmploymentSectorCode employmentsectorCode);
 
-    List<AdEmploymentSectorCode> findEmploymentSectorCodes(String filter, Integer offset, Integer limit);
+	void removeEmploymentSectorCode(AdEmploymentSectorCode employmentsectorCode);
 
-    Integer countEmploymentSectorCode();
-
-    Integer countEmploymentSectorCode(String filter);
-
-    void saveEmploymentSectorCode(AdEmploymentSectorCode employmentsectorCode);
-
-    void updateEmploymentSectorCode(AdEmploymentSectorCode employmentsectorCode);
-
-    void removeEmploymentSectorCode(AdEmploymentSectorCode employmentsectorCode);
 }
