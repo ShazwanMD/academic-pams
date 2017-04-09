@@ -1,6 +1,8 @@
 package my.edu.umk.pams.academic.term;
+
 //@author:asyikin
 import org.junit.Test;
+
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,7 +17,6 @@ import my.edu.umk.pams.academic.term.stage.ThenIViewTheCurrentEnrollmentCourses;
 import my.edu.umk.pams.academic.term.stage.WhenIAddEnrollmentCourses;
 import my.edu.umk.pams.bdd.stage.GivenIAmStudent;
 
-
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
@@ -23,11 +24,12 @@ import my.edu.umk.pams.bdd.stage.GivenIAmStudent;
 public class US_AD_TRM_1022
 		extends SpringScenarioTest<GivenIAmStudent, WhenIAddEnrollmentCourses, ThenIViewTheCurrentEnrollmentCourses> {
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_1022.class);
+	public static final String PROGRAM_CODE = "A01/MASTER/0001";
 
 	@Test
 	@Rollback
 	public void scenario01() {
-		given().I_am_a_student_in_current_academic_session();
+		given().I_am_a_student_in_current_academic_session().and().I_pick_program_$(PROGRAM_CODE);
 		when().I_add_enrollment_courses();
 		then().I_view_the_current_enrollment_courses();
 	}

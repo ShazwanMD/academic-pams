@@ -927,6 +927,11 @@ public class CommonServiceImpl implements CommonService {
     public AdStudyCenterCode findStudyCenterCodeByCode(String code) {
         return studyCenterCodeDao.findByCode(code);
     }
+    //study center 
+    @Override
+	public AdStudyCenter findStudyCenterByCode(String code) {
+    	return studyCenterCodeDao.findByCode1(code);
+	}
 
     @Override
     public List<AdStudyCenterCode> findStudyCenterCodes() {
@@ -1523,7 +1528,7 @@ public class CommonServiceImpl implements CommonService {
         sessionFactory.getCurrentSession().flush();
     }
 
-
+	
     //====================================================================================================
     // INVOLVEMENT TYPE
     //====================================================================================================

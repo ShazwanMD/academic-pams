@@ -1,5 +1,6 @@
 package my.edu.umk.pams.academic.common.dao;
 
+import my.edu.umk.pams.academic.common.model.AdStudyCenter;
 import my.edu.umk.pams.academic.common.model.AdStudyCenterCode;
 import my.edu.umk.pams.academic.core.GenericDao;
 
@@ -12,6 +13,8 @@ public interface AdStudyCenterCodeDao extends GenericDao<Long, AdStudyCenterCode
     // ====================================================================================================
 
     AdStudyCenterCode findByCode(String code);
+    
+    AdStudyCenter findByCode1(String code);
 
     List<AdStudyCenterCode> find(String filter, Integer offset, Integer limit);
 

@@ -1,5 +1,6 @@
 package my.edu.umk.pams.academic.common.dao;
 
+import my.edu.umk.pams.academic.common.model.AdStudyCenter;
 import my.edu.umk.pams.academic.common.model.AdStudyCenterCode;
 import my.edu.umk.pams.academic.common.model.AdStudyCenterCodeImpl;
 import my.edu.umk.pams.academic.core.GenericDaoSupport;
@@ -32,6 +33,18 @@ public class AdStudyCenterCodeDaoImpl extends GenericDaoSupport<Long, AdStudyCen
         query.setInteger("state", AdMetaState.ACTIVE.ordinal());
         return (AdStudyCenterCode) query.uniqueResult();
     }
+    
+    @Override
+	public AdStudyCenter findByCode1(String code) {
+    	Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select s from AdStudyCenter s where " +
+                "s.code = :code " +
+                "and s.metadata.state = :state");
+        query.setString("code", code);
+        query.setCacheable(true);
+        query.setInteger("state", AdMetaState.ACTIVE.ordinal());
+        return (AdStudyCenter) query.uniqueResult();
+	}
 
     @Override
     public List<AdStudyCenterCode> find(String filter, Integer offset, Integer limit) {
@@ -70,4 +83,6 @@ public class AdStudyCenterCodeDaoImpl extends GenericDaoSupport<Long, AdStudyCen
         query.setInteger("state", AdMetaState.ACTIVE.ordinal());
         return 0 < ((Long) query.uniqueResult()).intValue();
     }
+
+	
 }

@@ -23,11 +23,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import static my.edu.umk.pams.academic.AcademicConstants.ENROLLMENT_APPLICATION_ID;
 import static my.edu.umk.pams.academic.AcademicConstants.ENROLLMENT_APPLICATION_REFERENCE_NO;
 import static my.edu.umk.pams.academic.core.AdFlowState.DRAFTED;
@@ -48,8 +46,11 @@ public class TermServiceImpl implements TermService {
 
 	@Autowired
 	private AdAdmissionApplicationDao admissionApplicationDao;
-	
-		@Autowired
+
+	@Autowired
+	private AdAdmissionDao admissionDao;
+
+	@Autowired
 	private AdEnrollmentApplicationDao enrollmentApplicationDao;
 
 	@Autowired
@@ -95,8 +96,21 @@ public class TermServiceImpl implements TermService {
 	}
 
 	@Override
+	public void saveAdmissionAdmin(AdAdmission admission) {
+		admissionDao.save(admission, securityService.getCurrentUser());
+		sessionFactory.getCurrentSession().flush();
+
+	}
+
+	@Override
 	public AdAdmissionApplication findAdmissionApplicationByProgramAndStudent(AdProgram program, AdStudent student) {
 		return admissionApplicationDao.findByProgramAndStudent(program, student);
+	}
+
+	@Override
+	public AdAdmission findAdmissionBySessionProgramAndStudent(AdAcademicSession academicSession, AdProgram program,
+			AdStudent student) {
+		return admissionDao.findBySessionProgramAndStudent(academicSession, program, student);
 	}
 
 	// ====================================================================================================
