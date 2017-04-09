@@ -63,7 +63,6 @@ public class WhenIAddEnrollmentCourses extends Stage<WhenIAddEnrollmentCourses> 
 	private AdProgram program;
 
 	public WhenIAddEnrollmentCourses I_add_enrollment_courses() {
-
 		student = identityService.findStudentByMatricNo("A17P001");
 		LOG.debug("student Code: {}", student.getId());
 
@@ -84,7 +83,6 @@ public class WhenIAddEnrollmentCourses extends Stage<WhenIAddEnrollmentCourses> 
 		application = new AdEnrollmentApplicationImpl();
 
 		application.setAuditNo("auditNo");
-		application.setReferenceNo("A17P001");
 		application.setDescription("New student enrollment");
 		application.setType(AdEnrollmentApplicationType.PRA);
 		application.setRemoveComment("Remove Comment");
@@ -93,10 +91,9 @@ public class WhenIAddEnrollmentCourses extends Stage<WhenIAddEnrollmentCourses> 
 		application.setAdmission(admission);
 		application.setAdvisor(advisor);
 		application.setSession(academicSession);
+		String generatedReferenceNo = termService.startEnrollmentApplicationTask(application);
 
-		termService.startEnrollmentApplicationTask(application);
-
-		application = termService.findEnrollmentApplicationByReferenceNo(application.getReferenceNo());
+		application = termService.findEnrollmentApplicationByReferenceNo(generatedReferenceNo);
 		LOG.debug("New application added: {}", application.getId());
 
 		section = termService.findSectionByCanonicalCode("A01/PHD/0001/DDA2113/201720181");
@@ -106,12 +103,9 @@ public class WhenIAddEnrollmentCourses extends Stage<WhenIAddEnrollmentCourses> 
 		item.setAction(AdEnrollmentApplicationAction.ADD);
 		item.setApplication(application);
 		item.setSection(section);
-
 		termService.addEnrollmentApplicationItem(application, item);
 
 		LOG.debug("New application item added: {}", item.getId());
-
 		return self();
 	}
-
 }

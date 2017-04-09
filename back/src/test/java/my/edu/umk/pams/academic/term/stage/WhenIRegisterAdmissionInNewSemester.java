@@ -59,20 +59,15 @@ public class WhenIRegisterAdmissionInNewSemester extends Stage<WhenIRegisterAdmi
 
 	public WhenIRegisterAdmissionInNewSemester I_register_admission_in_new_semester() {
 		// process flow of admission
-
 		String code = "B";
 		student = identityService.findStudentByMatricNo("A17P001");
 		advisor = identityService.findStaffByStaffNo("01001A");
 		program = plannerService.findProgramByCode("A01/MASTER/0001");
 		studyCenterCode = commonService.findStudyCenterCodeByCode(code);
-		// studyCenter = commonService.findStudyCenterByCode(code);
 
-		String referenceNo = "referenceNo";
 		String sourceNo = "sourceNo";
 		String auditNo = "auditNo";
 		String description = "description";
-		String removeComment = "removeComment";
-		String cancelComment = "cancelComment";
 
 		LOG.debug("student {}", student.getName());
 		LOG.debug("advisor {}", advisor.getName());
@@ -80,21 +75,15 @@ public class WhenIRegisterAdmissionInNewSemester extends Stage<WhenIRegisterAdmi
 		LOG.debug("studyCenter {}", studyCenterCode.getDescription());
 
 		AdAdmissionApplication admissionApplication = new AdAdmissionApplicationImpl();
-		admissionApplication.setReferenceNo(referenceNo);
 		admissionApplication.setSourceNo(sourceNo);
 		admissionApplication.setAuditNo(auditNo);
 		admissionApplication.setDescription(description);
-
-		admissionApplication.setRemoveComment(removeComment);
-
-		admissionApplication.setCancelComment(cancelComment);
 		admissionApplication.setStudent(student);
 		admissionApplication.setAdvisor(advisor);
 		admissionApplication.setProgram(program);
 		admissionApplication.setSession(academicSession);
 		admissionApplication.setStudyCenter(studyCenter);
-
-		termService.saveAdmission(admissionApplication);
+		termService.saveAdmissionApplication(admissionApplication);
 
 		return self();
 	}

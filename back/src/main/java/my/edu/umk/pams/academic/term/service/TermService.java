@@ -1,13 +1,12 @@
 package my.edu.umk.pams.academic.term.service;
 
+import my.edu.umk.pams.academic.common.model.AdStudyCenter;
 import my.edu.umk.pams.academic.identity.model.AdStaff;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
 import my.edu.umk.pams.academic.planner.model.AdCourse;
 import my.edu.umk.pams.academic.planner.model.AdEnrollmentStatus;
 import my.edu.umk.pams.academic.planner.model.AdProgram;
-import my.edu.umk.pams.academic.term.model.AdAdmission;
-import my.edu.umk.pams.academic.term.model.AdAdmissionApplication;
 import my.edu.umk.pams.academic.term.model.*;
 import org.activiti.engine.task.Task;
 
@@ -34,6 +33,7 @@ public interface TermService {
 
     AdOffering findOfferingByProgramAndCourse(AdProgram program, AdCourse course);
 
+    // todo: ???
     AdAcademicSession findLastOfferedOffering(AdAcademicSession current, AdCourse course);
 
     List<AdOffering> findOfferings(Integer offset, Integer limit);
@@ -124,11 +124,77 @@ public interface TermService {
 
     void removeSection(AdSection section);
 
-    // todo(uda): addEnrollment
 
-    //==========+==========================================================================================
-    // ENROLLMENT
     //====================================================================================================
+    // ADMISSION APPLICATION
+    //====================================================================================================
+
+    // workflow
+
+    AdAdmissionApplication findAdmissionApplicationByTaskId(String taskId);
+
+    Task findAdmissionApplicationTaskByTaskId(String taskId);
+
+    List<Task> findAssignedAdmissionApplicationTasks(Integer offset, Integer limit);
+
+    List<Task> findPooledAdmissionApplicationTasks(Integer offset, Integer limit);
+
+    Integer countAssignedAdmissionApplicationTasks();
+
+    Integer countPooledAdmissionApplicationTasks();
+
+    String startAdmissionApplicationTask(AdAdmissionApplication application);
+
+    void updateAdmissionApplication(AdAdmissionApplication application);
+
+    void cancelAdmissionApplication(AdAdmissionApplication application);
+
+    void publishToAdmission(AdAdmissionApplication application);
+
+    // finder
+
+    AdAdmissionApplication findAdmissionApplicationById(Long id);
+
+    AdAdmissionApplication findAdmissionApplicationByReferenceNo(String referenceNo);
+
+    List<AdAdmissionApplication> findAdmissionApplications(AdAcademicSession session);
+
+    List<AdAdmissionApplication> findAdmissionApplications(AdAcademicSession session, Integer offset, Integer limit);
+
+    List<AdAdmissionApplication> findAdmissionApplications(String filter, AdAcademicSession session, Integer offset, Integer limit);
+
+    List<AdAdmissionApplication> findAdmissionApplications(String filter, AdAcademicSession session, AdStudent student, Integer offset, Integer limit);
+
+    List<AdAdmissionApplication> findAdmissionApplications(String filter, AdAcademicSession session, AdStaff advisor, Integer offset, Integer limit);
+
+    Integer countAdmissionApplication(AdAcademicSession session);
+
+    Integer countAdmissionApplication(String filter, AdAcademicSession session);
+
+    Integer countAdmissionApplication(String filter, AdAcademicSession session, AdStudent student);
+
+    Integer countAdmissionApplication(String filter, AdAcademicSession session, AdStaff staff);
+
+    //====================================================================================================
+    // ADMISSION APPLICATION
+    //====================================================================================================
+
+    AdAdmissionApplication findAdmissionApplicationByProgramAndStudent(AdProgram program, AdStudent student);
+
+    AdAdmission findAdmissionBySessionProgramAndStudent(AdAcademicSession academicSession, AdProgram program, AdStudent student);
+
+    @Deprecated // use startAdmissionApplication
+    void saveAdmissionApplication(AdAdmissionApplication application);
+
+    //====================================================================================================
+    // ADMISSION
+    // TODO:
+    //====================================================================================================
+
+    void admit(AdAcademicSession academicSession, AdStudent student, AdStudyCenter studyCenter, AdProgram program);
+
+    @Deprecated // use startAdmissionApplication
+    void saveAdmission(AdAdmission admission);
 
     //====================================================================================================
     // ENROLLMENT APPLICATION
@@ -147,7 +213,7 @@ public interface TermService {
 
     Integer countPooledEnrollmentApplicationTasks();
 
-    void startEnrollmentApplicationTask(AdEnrollmentApplication application);
+    String startEnrollmentApplicationTask(AdEnrollmentApplication application);
 
     void updateEnrollmentApplication(AdEnrollmentApplication application);
 
@@ -191,7 +257,6 @@ public interface TermService {
 
     Integer countEnrollmentApplication(String filter, AdAcademicSession session, AdStaff staff);
 
-    
     //====================================================================================================
     // ENROLLMENT
     //====================================================================================================
@@ -266,6 +331,7 @@ public interface TermService {
     void withdraw(boolean override, AdSection section, AdStudent student, AdAdmission admission); // throws
 
     // todo(uda): business method is enroll()
+    @Deprecated
     void saveEnrollment(AdEnrollment enrollment);
 
     void updateEnrollment(AdEnrollment enrollment);
@@ -276,20 +342,6 @@ public interface TermService {
 
     void addGradebooks(AdSection section, AdAssessment assessment);
 
-    
-  //====================================================================================================
-    // ADMISSION APPLICATION
-    //====================================================================================================
-
-   AdAdmissionApplication findAdmissionApplicationByProgramAndStudent(AdProgram program, AdStudent student);
-   
-   AdAdmission findAdmissionBySessionProgramAndStudent(AdAcademicSession academicSession, AdProgram program, AdStudent student);
- 
-   void saveAdmission(AdAdmissionApplication admissionApplication); 
-   
-   void saveAdmissionAdmin(AdAdmission admission); 
-    
-    
     //====================================================================================================
     // APPOINTMENT
     //====================================================================================================

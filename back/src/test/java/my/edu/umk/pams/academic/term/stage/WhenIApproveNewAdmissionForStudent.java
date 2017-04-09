@@ -61,7 +61,7 @@ public class WhenIApproveNewAdmissionForStudent  extends Stage<WhenIApproveNewAd
 		admission.setStudent(student);
 		admission.setStudyCenter(studyCenter);
 		
-		termService.saveAdmissionAdmin(admission);
+		termService.saveAdmission(admission);
 		
 		return self();
 	}
