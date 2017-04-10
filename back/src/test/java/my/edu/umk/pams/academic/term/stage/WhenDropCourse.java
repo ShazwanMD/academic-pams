@@ -18,32 +18,32 @@ public class WhenDropCourse extends Stage<WhenDropCourse> {
 	private static final Logger LOG = LoggerFactory.getLogger(WhenDropCourse.class);
 
 	@Autowired
-    private IdentityService identityService;
-	
+	private IdentityService identityService;
+
 	@Autowired
 	private TermService termService;
-	
+
 	@ProvidedScenarioState
 	private AdEnrollment enrollment;
-	
+
 	@ProvidedScenarioState
 	private AdStudent student;
-	
+
 	@ProvidedScenarioState
 	private AdSection section;
-	
+
 	public WhenDropCourse I_want_to_drop_enrollment_course() {
-		
-		
+
 		String identityNo = "A17P002";
 		student = (AdStudent) identityService.findActorByIdentityNo(identityNo);
 		section = termService.findSectionByCanonicalCode("A01/PHD/0001/DDA2113/201720181");
+		
 		enrollment = new AdEnrollmentImpl();
 		enrollment.setStudent(student);
 		enrollment.setSection(section);
 		termService.deleteEnrollment(enrollment);
-		
-		return self();	
+
+		return self();
 	}
 
 }
