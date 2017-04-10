@@ -2,6 +2,7 @@ package my.edu.umk.pams.academic.planner.stage;
 
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
+import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 import my.edu.umk.pams.academic.common.model.AdStudyCenterCode;
 import my.edu.umk.pams.academic.common.model.AdStudyCenterCodeImpl;
@@ -21,7 +22,7 @@ public class WhenAdminSetUpStudyCenter extends Stage<WhenAdminSetUpStudyCenter> 
 	@Autowired
 	private CommonService commonService;
 
-	@ExpectedScenarioState
+	@ProvidedScenarioState
 	private AdStudyCenterCode studyCenterCode;
 
 	public WhenAdminSetUpStudyCenter Admin_set_up_study_center() {
