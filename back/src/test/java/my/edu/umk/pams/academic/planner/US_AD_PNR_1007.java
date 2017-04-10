@@ -16,24 +16,24 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 @As("As an academic administrator, i want to set up  course prerequisite so that courses has a prerequisite")
-public class US_AD_PNR_1007 extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenAdminAddCoursePrerequisite, ThenCoursePrerequisiteAdded> {
+public class US_AD_PNR_1007 extends
+		SpringScenarioTest<GivenIAmCPSAdministrator, WhenAdminAddCoursePrerequisite, ThenCoursePrerequisiteAdded> {
 
-private static final Logger LOG = LoggerFactory.getLogger(US_AD_PNR_1007.class);
+	private static final Logger LOG = LoggerFactory.getLogger(US_AD_PNR_1007.class);
 
 	private static final String COURSE_CODE = "DDA2103";
 	private static final String PREREQ_CODE = "DDA2113";
 
-    @Test
-    @Rollback
-    public void scenario1007() {
-        given().I_am_a_CPS_administrator_in_current_academic_session();
-        when().Admin_add_prereq_$_to_course_$(PREREQ_CODE, COURSE_CODE);
-        then().course_$_is_a_prereq_for_course_$(PREREQ_CODE, COURSE_CODE);
-    }
+	@Test
+	@Rollback
+	public void scenario1007() {
+		given().I_am_a_CPS_administrator_in_current_academic_session();
+		when().Admin_add_prereq_$_to_course_$(PREREQ_CODE, COURSE_CODE);
+		then().course_$_is_a_prereq_for_course_$(PREREQ_CODE, COURSE_CODE);
+	}
 
 }

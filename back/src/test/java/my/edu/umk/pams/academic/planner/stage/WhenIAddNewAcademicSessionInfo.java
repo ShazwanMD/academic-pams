@@ -49,7 +49,11 @@ public class WhenIAddNewAcademicSessionInfo extends Stage<WhenIAddNewAcademicSes
 		// academicSession.setYear(academicYear);
 
 		plannerService.saveAcademicSession(academicSession);
-		LOG.debug("academicSession {} ", academicSession);
+		LOG.debug("academicSession code : {} ", academicSession.getCode());
+		LOG.debug("academicSession Description : {} ", academicSession.getDescription());
+		LOG.debug("academicSession StartDate: {} ", academicSession.getStartDate());
+		LOG.debug("academicSession EndDate: {} ", academicSession.getEndDate());
+		
 
 		return self();
 	}

@@ -27,8 +27,7 @@ public class ThenAcademicSessionUpdated extends Stage<ThenAcademicSessionUpdated
 
 	public void the_academic_session_is_updated() {
 		
-		 LOG.debug("academicSession {} ", academicSession);
-	        AdAcademicSession academicSession = plannerService.findCurrentAcademicSession();
+		    AdAcademicSession academicSession = plannerService.findCurrentAcademicSession();
 	        Assert.notNull(academicSession, "The data must not be null");
 		
 	}
