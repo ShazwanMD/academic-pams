@@ -1,11 +1,15 @@
 package my.edu.umk.pams.academic.planner.stage;
 
 import com.tngtech.jgiven.Stage;
+import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 import my.edu.umk.pams.academic.common.service.CommonService;
 import my.edu.umk.pams.academic.planner.model.*;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
+
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,8 +30,12 @@ public class WhenAdminAddCohortForAFaculty extends Stage<WhenAdminAddCohortForAF
 
 	@ProvidedScenarioState
 	private AdCurriculum curriculum;
+	
+	@ProvidedScenarioState
+	private AdCohort cohort;
+	
 
-	public WhenAdminAddCohortForAFaculty Admin_add_cohort_for_a_faculty_for_a_faculty(String programCode) {
+	public WhenAdminAddCohortForAFaculty Admin_add_cohort_for_a_faculty(String programCode) {
 		program = plannerService.findProgramByCode(programCode);
 
 		// find existing curriculum
@@ -41,6 +49,9 @@ public class WhenAdminAddCohortForAFaculty extends Stage<WhenAdminAddCohortForAF
 		cohort.setCurriculum(curriculum);
 		cohort.setProgram(program);
 		plannerService.saveCohort(cohort);
+		
+		LOG.debug("cohort code:{}", cohort.getCode());
+		LOG.debug("cohort Description:{}", cohort.getDescription());
 
 		return self();
 	}
