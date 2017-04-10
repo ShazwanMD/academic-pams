@@ -25,6 +25,8 @@ import org.junit.runners.Suite;
         US_AD_PNR_1013.class,
         US_AD_PNR_1014.class,
         US_AD_PNR_1015.class,
+        US_AD_PNR_1016.class,
+        US_AD_PNR_1017.class,
 
         US_AD_PNR_2001.class,
         US_AD_PNR_2002.class,
