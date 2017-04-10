@@ -12,11 +12,20 @@ import com.tngtech.jgiven.annotation.Pending;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 import my.edu.umk.pams.academic.planner.model.AdCourse;
 import my.edu.umk.pams.academic.planner.model.AdFaculty;
+import my.edu.umk.pams.academic.planner.model.AdProgram;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
+
+import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.Assert;
 
 @JGivenStage
 public class ThenCourseInformationReviewed extends Stage<ThenCourseInformationReviewed> {
+
+	private static final Logger LOG = LoggerFactory.getLogger(ThenCourseInformationReviewed.class);
 
 	@Autowired
 	private PlannerService plannerService;
@@ -27,11 +36,12 @@ public class ThenCourseInformationReviewed extends Stage<ThenCourseInformationRe
 	@ExpectedScenarioState
 	AdFaculty faculty;
 
-	@Pending
 	public ThenCourseInformationReviewed course_information_reviewed() {
-		// List<AdCourse> Course = plannerService.findCourses(faculty);
-		// Assert.notEmpty(Course, "Course should not be empty");
+
+		boolean exists = plannerService.isCourseExists("DDA2113", faculty);
+
+		Assert.isTrue(exists, "exists");
+
 		return self();
 	}
-
 }
