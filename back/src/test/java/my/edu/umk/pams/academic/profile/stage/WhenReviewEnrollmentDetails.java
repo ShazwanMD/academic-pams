@@ -1,28 +1,23 @@
 package my.edu.umk.pams.academic.profile.stage;
 
-import java.util.List;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
-import com.tngtech.jgiven.annotation.Pending;
-import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.identity.service.IdentityService;
-import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
-import my.edu.umk.pams.academic.planner.model.AdProgram;
+import my.edu.umk.pams.academic.planner.model.AdCourse;
+import my.edu.umk.pams.academic.planner.service.PlannerService;
 import my.edu.umk.pams.academic.term.model.AdOffering;
 import my.edu.umk.pams.academic.term.model.AdSection;
 import my.edu.umk.pams.academic.term.service.TermService;
 
 @JGivenStage
 public class WhenReviewEnrollmentDetails extends Stage<WhenReviewEnrollmentDetails> {
-
 
 	private static final Logger LOG = LoggerFactory.getLogger(WhenReviewEnrollmentDetails.class);
 	
@@ -32,6 +27,9 @@ public class WhenReviewEnrollmentDetails extends Stage<WhenReviewEnrollmentDetai
     @Autowired
     private TermService termService;
     
+    @Autowired
+    private PlannerService plannerService;
+    
     @ExpectedScenarioState
     private AdSection section;
 	
@@ -39,27 +37,25 @@ public class WhenReviewEnrollmentDetails extends Stage<WhenReviewEnrollmentDetai
     private AdStudent student;
     
     @ExpectedScenarioState
-    private AdOffering offering;
-
-    @ExpectedScenarioState
-    private AdProgram program;
-      
-    @ExpectedScenarioState
-    private AdAcademicSession academicSession;
+    private AdCourse course;
     
     @ExpectedScenarioState
-    private String SCTN_canonicalCode;
+    private AdOffering offering;
 
-    @Pending
 	public WhenReviewEnrollmentDetails lecturer_review_enrollment_details() {
 		
 		student = identityService.findStudentByMatricNo("A17P001");	
-		section = termService.findSectionByCanonicalCode(SCTN_canonicalCode);
+		LOG.debug("Student's Matric No: {}", student.getMatricNo());
 		
-		termService.findEnrollmentBySectionAndStudent(section, student);
+		section = termService.findSectionByCanonicalCode("A01/PHD/0001/DDA2113/201720181");
+		LOG.debug("Student's Section Code: {}", section.getCanonicalCode());
+		
+		offering = termService.findOfferingByCanonicalCode("A01/PHD/0001/DDA2113");
+		LOG.debug("Student's Offering Code: {}", offering.getCanonicalCode());
+		
+		course = plannerService.findCourseByCode("DDA2113");
+		LOG.debug("Student's Course(s) : {}", course.getCode());
 
-		LOG.debug("Student's section: {}", section.getOffering());
-		
 		return self();
 	}
 

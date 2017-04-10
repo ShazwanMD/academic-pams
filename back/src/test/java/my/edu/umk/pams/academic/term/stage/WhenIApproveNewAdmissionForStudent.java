@@ -38,8 +38,11 @@ public class WhenIApproveNewAdmissionForStudent  extends Stage<WhenIApproveNewAd
 	
 	@ProvidedScenarioState
 	private AdStudent student;
-
 	
+	@ProvidedScenarioState
+	private AdAdmission admission;
+	
+
 	public WhenIApproveNewAdmissionForStudent I_approve_new_admission_for_student() {
 
 		//admin add new admission to approve admission application from student
