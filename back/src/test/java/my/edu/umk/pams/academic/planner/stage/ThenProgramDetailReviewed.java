@@ -30,9 +30,10 @@ public class ThenProgramDetailReviewed extends Stage<ThenProgramDetailReviewed> 
     private List<AdProgram> programs;
 
     public ThenProgramDetailReviewed Program_details_reviewed() {
-//        boolean exists = plannerService.isProgramExists("A07/PHD/0001", faculty);
-//        Assert.notEmpty(programs, "program should not be empty");
         
+    	List<AdProgram> program = plannerService.findPrograms(faculty);
+		Assert.notEmpty(program, "programs should not be empty");
+		
         return self();
     }
 }

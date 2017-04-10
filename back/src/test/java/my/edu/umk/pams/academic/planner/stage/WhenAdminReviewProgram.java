@@ -2,6 +2,7 @@ package my.edu.umk.pams.academic.planner.stage;
 
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
+import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 import my.edu.umk.pams.academic.planner.model.AdFaculty;
 import my.edu.umk.pams.academic.planner.model.AdProgram;
@@ -21,20 +22,39 @@ public class WhenAdminReviewProgram extends Stage<WhenAdminReviewProgram> {
     @Autowired
     private PlannerService plannerService;
 
-    @ExpectedScenarioState
+    @ProvidedScenarioState
     private AdFaculty faculty;
 
-    @ExpectedScenarioState
+    @ProvidedScenarioState
     private List<AdProgram> programs;
+    
+    @ExpectedScenarioState
+    private String code;
 
-    public WhenAdminReviewProgram() {
-    }
 
-    public WhenAdminReviewProgram Admin_review_program_for_that_faculty_$(String faculty) {
-        programs = plannerService.findPrograms(faculty);
-        for (AdProgram program : programs) {
-            LOG.debug(program.getTitle());
-        }
+    public WhenAdminReviewProgram Admin_review_program_for_that_faculty_$(String code) {
+    	
+    	faculty = plannerService.findFacultyByCode(code);
+    	LOG.debug("Faculty name : {} ", faculty.getName());
+    	LOG.debug("Faculty code : {} ", faculty.getCode());
+    	
+         List<AdProgram> program = plannerService.findPrograms(faculty);
+
+         for (AdProgram programs : program) {
+             LOG.debug(programs.getCode());
+         }
+
+         for (AdProgram programs : program) {
+             LOG.debug(programs.getTitle());
+         }
+
+         for (AdProgram programs : program) {
+             LOG.debug(programs.getTitleEn());
+         }
+         for (AdProgram programs : program) {
+             LOG.debug(programs.getTitleMs());
+         }
+    	
         return self();
     }
 }

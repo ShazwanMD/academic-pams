@@ -23,6 +23,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class US_AD_PNR_1004 extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenAdminReviewProgram, ThenProgramDetailReviewed> {
 
     private static final Logger LOG = LoggerFactory.getLogger(US_AD_PNR_1004.class);
+    
     private static final String FACULTY_CODE = "A07";
 
     @Test
