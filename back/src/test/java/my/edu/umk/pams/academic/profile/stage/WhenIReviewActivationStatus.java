@@ -2,6 +2,7 @@ package my.edu.umk.pams.academic.profile.stage;
 
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
+import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 
 import my.edu.umk.pams.academic.identity.model.AdStudent;
@@ -47,79 +48,84 @@ public class WhenIReviewActivationStatus extends Stage<WhenIReviewActivationStat
 
     @ExpectedScenarioState
 	private AdStudentStatus studentStatus;
+    
+    
 
 
 	public WhenIReviewActivationStatus I_review_activation_status_$(String identityNo) {
-
+		
 		student = identityService.findStudentByMatricNo(identityNo);
+	    studentStatus = student.getStudentStatus();
+		faculty = plannerService.findFacultyByCode("A01");
+		program = plannerService.findProgramByCodeAndFaculty("A01/PHD/0008", faculty);
+		courses = plannerService.findCourses(faculty);
+		
+		if(studentStatus == AdStudentStatus.ACTIVE){
+				
 		LOG.debug("Student's Name:{}", student.getName());
 		LOG.debug("Student's MatricNo:{}", student.getMatricNo());
-		
-		AdStudentStatus studentStatus = student.getStudentStatus();
 		
 		LOG.debug("Student's status: {}", studentStatus.name());
 		LOG.debug("Student's status: {}", studentStatus.ordinal());
 		
-		faculty = plannerService.findFacultyByCode("A01");
 		LOG.debug("Faculty Name :{}", faculty.getName());
 
-		
-		program = plannerService.findProgramByCodeAndFaculty("A01/PHD/0008", faculty);
 		LOG.debug("Program CODE:{}", program.getCode());
 		LOG.debug("Program Details:{}", program.getTitle());
 		LOG.debug("Program Details:{}", program.getTitleEn());
 		LOG.debug("Program Details:{}", program.getTitleMs());
-		
-		courses = plannerService.findCourses(faculty);
+
 		for(AdCourse course:courses)
 			LOG.debug("Course's Registered:{}", course.getCode());
-
-		return self();
-	}
+		
+		}else if(studentStatus == AdStudentStatus.MATRICULATED){
+			
+			LOG.debug("Student's Name:{}", student.getName());
+			LOG.debug("Student's MatricNo:{}", student.getMatricNo());
+		
+			LOG.debug("Student's status: {}", studentStatus.name());
+			LOG.debug("Student's status: {}", studentStatus.ordinal());
+			
+		
+	    }else if(studentStatus == AdStudentStatus.INACTIVE){
 	
-	public WhenIReviewActivationStatus I_review_inactivation_status_$(String identityNo2) {
-
-		student = identityService.findStudentByMatricNo(identityNo2);
-		LOG.debug("Student's Name:{}", student.getName());
-		LOG.debug("Student's MatricNo:{}", student.getMatricNo());
+			LOG.debug("Student's Name:{}", student.getName());
+			LOG.debug("Student's MatricNo:{}", student.getMatricNo());
 		
-		AdStudentStatus studentStatus = student.getStudentStatus();
-		
-		LOG.debug("Student's status: {}", studentStatus.name());
-		LOG.debug("Student's status: {}", studentStatus.ordinal());
-		
-		
-		return self();
-	}
+			LOG.debug("Student's status: {}", studentStatus.name());
+			LOG.debug("Student's status: {}", studentStatus.ordinal());
+			
+		}else if(studentStatus == AdStudentStatus.BARRED){
+			
+			LOG.debug("Student's Name:{}", student.getName());
+			LOG.debug("Student's MatricNo:{}", student.getMatricNo());
+			
+			LOG.debug("Student's status: {}", studentStatus.name());
+		    LOG.debug("Student's status: {}", studentStatus.ordinal());
+			
+		}else if(studentStatus == AdStudentStatus.GRADUATED){
+			
+			LOG.debug("Student's Name:{}", student.getName());
+			LOG.debug("Student's MatricNo:{}", student.getMatricNo());
 	
-	public WhenIReviewActivationStatus I_review_barred_status_$(String identityNo3) {
+			LOG.debug("Student's status: {}", studentStatus.name());
+			LOG.debug("Student's status: {}", studentStatus.ordinal());
+			
+			LOG.debug("Faculty Name :{}", faculty.getName());
 
-		student = identityService.findStudentByMatricNo(identityNo3);
-		LOG.debug("Student's Name:{}", student.getName());
-		LOG.debug("Student's MatricNo:{}", student.getMatricNo());
-		
-		AdStudentStatus studentStatus = student.getStudentStatus();
-		
-		LOG.debug("Student's status: {}", studentStatus.name());
-		LOG.debug("Student's status: {}", studentStatus.ordinal());
-		
-		
+			LOG.debug("Program CODE:{}", program.getCode());
+			LOG.debug("Program Taken:{}", program.getTitle());
+			LOG.debug("Program Taken:{}", program.getTitleEn());
+			LOG.debug("Program Taken:{}", program.getTitleMs());
+			
+			for(AdCourse course:courses)
+				LOG.debug("Course's Taken:{}", course.getCode());
+		}else{
+			
+			LOG.debug("You Are Not Registered Student");
+		};
 		return self();
 	}
-	
-	public WhenIReviewActivationStatus I_review_graduted_status_$(String identityNo4) {
 
-		student = identityService.findStudentByMatricNo(identityNo4);
-		LOG.debug("Student's Name:{}", student.getName());
-		LOG.debug("Student's MatricNo:{}", student.getMatricNo());
-		
-		AdStudentStatus studentStatus = student.getStudentStatus();
-		
-		LOG.debug("Student's status: {}", studentStatus.name());
-		LOG.debug("Student's status: {}", studentStatus.ordinal());
-		
-		
-		return self();
-	}
 
 }
