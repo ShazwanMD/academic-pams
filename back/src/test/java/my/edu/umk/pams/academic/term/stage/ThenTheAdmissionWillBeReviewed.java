@@ -32,7 +32,6 @@ public class ThenTheAdmissionWillBeReviewed extends Stage<ThenTheAdmissionWillBe
 	@Autowired
 	private TermService termService;
 
-
 	@ExpectedScenarioState
 	private AdStudent student;
 
@@ -49,19 +48,22 @@ public class ThenTheAdmissionWillBeReviewed extends Stage<ThenTheAdmissionWillBe
 	private AdStudyCenterCode studyCenterCode;
 	
 	@ExpectedScenarioState
-	private AdAdmissionApplication admissionApplication;
+	private AdAdmissionApplication application;
 
 	public ThenTheAdmissionWillBeReviewed The_admission_will_be_reviewed() {
 		
-		AdAdmissionApplication admissionApplication = termService.findAdmissionApplicationByProgramAndStudent(program, student);
+		LOG.debug("student {}", student.getId());
+		LOG.debug("program {}", program.getId());
+		
+		AdAdmissionApplication application = termService.findAdmissionApplicationByProgramAndStudent(program, student);
 
-		LOG.debug("Admission id for new student: {}", admissionApplication.getId());
-		LOG.debug("Admission desc for new student: {}", admissionApplication.getDescription());
-		LOG.debug("Admission audit no for new student: {}", admissionApplication.getAuditNo());
+		LOG.debug("Admission id for new student: {}", application.getId());
+		LOG.debug("Admission desc for new student: {}", application.getDescription());
+		LOG.debug("Admission audit no for new student: {}", application.getAuditNo());
 		
 		LOG.debug("advisor {}", advisor.getName());
 		LOG.debug("program {}", program.getTitle());
-		LOG.debug("studyCenter {}", studyCenterCode.getDescription());
+		LOG.debug("studyCenter {}", studyCenter.getDescription());
 
 		return self();
 
