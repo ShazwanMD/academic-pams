@@ -35,8 +35,8 @@ public class ThenStudentCourseInfoIsCurrent extends Stage<ThenStudentCourseInfoI
     private AdFaculty faculty;
 
     public ThenStudentCourseInfoIsCurrent student_course_info_is_current() {
-        boolean exists = plannerService.isProgramExists("A01/MASTER/0008", faculty);
-        Assert.isTrue(exists, "exists");
+//        boolean exists = plannerService.isProgramExists("A01/MASTER/0008", faculty);
+//        Assert.isTrue(exists, "exists");
         return self();
     }
 }

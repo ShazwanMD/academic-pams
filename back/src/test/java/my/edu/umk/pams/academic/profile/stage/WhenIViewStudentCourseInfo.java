@@ -6,6 +6,7 @@ import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
+import my.edu.umk.pams.academic.identity.model.AdUser;
 import my.edu.umk.pams.academic.planner.model.AdCourse;
 import my.edu.umk.pams.academic.planner.model.AdFaculty;
 import my.edu.umk.pams.academic.planner.model.AdFacultyImpl;
@@ -31,23 +32,31 @@ public class WhenIViewStudentCourseInfo extends Stage<WhenIViewStudentCourseInfo
     private List<AdCourse> course;
 
     @ExpectedScenarioState
-    private String code;
-
-    @ExpectedScenarioState
     private AdFaculty faculty;
+   
 
-    public WhenIViewStudentCourseInfo() {
-        AdFaculty faculty = new AdFacultyImpl();
-    }
-
-    public WhenIViewStudentCourseInfo I_view_student_course_info_for_faculty_$(String code) {
-        faculty = plannerService.findFacultyByCode(code);
-
+    public WhenIViewStudentCourseInfo CPS_view_course_info_for_faculty_$(String facultyCode) {
+        faculty = plannerService.findFacultyByCode(facultyCode);
         course = plannerService.findCourses(faculty);
-
+        
+        LOG.debug("Course For Faculty FKP: CPS");
         for (AdCourse course : course) {
-            LOG.debug(course.getTitle());
+        	LOG.debug("Course:{}",course.getCode());
         }
         return self();
+  
+    }
+    
+
+    public WhenIViewStudentCourseInfo MGSEB_view_course_info_for_faculty_$(String facultyCode2) {
+        faculty = plannerService.findFacultyByCode(facultyCode2);
+        course = plannerService.findCourses(faculty);
+        
+        LOG.debug("Course For Faculty MGSEB: MGSEB");
+        for (AdCourse course : course) {
+             LOG.debug("Course :{}",course.getCode());
+        }
+        return self();
+  
     }
 }
