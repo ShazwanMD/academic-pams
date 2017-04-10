@@ -1,5 +1,7 @@
 package my.edu.umk.pams.academic.planner;
-
+/**
+ * @author zaida
+ */
 import com.tngtech.jgiven.annotation.As;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.academic.config.TestAppConfiguration;
