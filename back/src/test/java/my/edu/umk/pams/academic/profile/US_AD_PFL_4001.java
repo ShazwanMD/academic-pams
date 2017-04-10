@@ -13,7 +13,7 @@ import com.tngtech.jgiven.annotation.As;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 
 import my.edu.umk.pams.academic.config.TestAppConfiguration;
-import my.edu.umk.pams.academic.profile.stage.ThenOfferedCoursesAndStudentsAreViewed;
+import my.edu.umk.pams.academic.profile.stage.ThenStudentRegisteredCoursesReviewed;
 import my.edu.umk.pams.academic.profile.stage.WhenReviewEnrollmentDetails;
 import my.edu.umk.pams.bdd.stage.GivenIAmAcademicStaff;
 
@@ -22,7 +22,7 @@ import my.edu.umk.pams.bdd.stage.GivenIAmAcademicStaff;
 @Transactional
 @ContextConfiguration (classes = TestAppConfiguration.class)
 @As("As a lecturer, I review enrollment details so that I can know the offered courses registered by the students under my classes")
-public class US_AD_PFL_4001 extends SpringScenarioTest <GivenIAmAcademicStaff, WhenReviewEnrollmentDetails, ThenOfferedCoursesAndStudentsAreViewed>{
+public class US_AD_PFL_4001 extends SpringScenarioTest <GivenIAmAcademicStaff, WhenReviewEnrollmentDetails, ThenStudentRegisteredCoursesReviewed>{
 
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_PFL_4001.class);
     
@@ -36,8 +36,8 @@ public class US_AD_PFL_4001 extends SpringScenarioTest <GivenIAmAcademicStaff, W
 			and().i_pick_offering_$(OFRG_canonicalCode).
 				and().i_pick_section_$(SCTN_canonicalCode);
 		
-		when().review_enrollment_details();
-		then().I_view_students_registered_in_my_class();
+		when().lecturer_review_enrollment_details();
+		then().student_registration_courses_reviewed();
 	}
 
 }

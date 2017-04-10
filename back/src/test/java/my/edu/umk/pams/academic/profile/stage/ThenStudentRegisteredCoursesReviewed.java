@@ -6,11 +6,11 @@ import com.tngtech.jgiven.annotation.Pending;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 
 @JGivenStage
-public class ThenOfferedCoursesAndStudentsAreViewed extends Stage<ThenOfferedCoursesAndStudentsAreViewed> {
+public class ThenStudentRegisteredCoursesReviewed extends Stage<ThenStudentRegisteredCoursesReviewed> {
 
 	
 	@Pending
-	public ThenOfferedCoursesAndStudentsAreViewed I_view_students_registered_in_my_class() {
+	public ThenStudentRegisteredCoursesReviewed student_registration_courses_reviewed() {
 
 		return self();
 	}
