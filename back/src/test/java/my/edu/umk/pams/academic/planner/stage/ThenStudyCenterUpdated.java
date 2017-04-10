@@ -30,5 +30,4 @@ public class ThenStudyCenterUpdated extends Stage<ThenStudyCenterUpdated> {
 		return self();
 
 	}
-
 }

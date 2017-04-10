@@ -21,7 +21,7 @@ import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
-@As("As an academic administrator, i want update Study Center so that Study Center is updated")
+@As("As an academic administrator, i want view and update Study Center so that Study Center is viewed and updated")
 
 public class US_AD_PNR_1017
 		extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenAdminUpdateStudyCenter, ThenStudyCenterUpdated> {

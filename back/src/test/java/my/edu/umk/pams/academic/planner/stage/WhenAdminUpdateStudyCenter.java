@@ -27,12 +27,14 @@ public class WhenAdminUpdateStudyCenter extends Stage<WhenAdminUpdateStudyCenter
 
 	public WhenAdminUpdateStudyCenter Admin_update_study_center_$(String CODE) {
 
+		// update study center code for CODE = "A"
 		studyCenterCode = commonService.findStudyCenterCodeByCode(CODE);
 		studyCenterCode.setCode("F");
 		studyCenterCode.setDescription("KAMPUS KUCHING");
-
 		commonService.updateStudyCenterCode(studyCenterCode);
-
+		
+		//view update study center code
+		LOG.debug("StudyCentreCode:{}", studyCenterCode.getCode());
 		return self();
 
 	}

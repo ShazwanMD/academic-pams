@@ -2,6 +2,7 @@ package my.edu.umk.pams.academic.term.stage;
 
 //@author:asyikin
 import org.slf4j.Logger;
+
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.tngtech.jgiven.Stage;
@@ -82,11 +83,11 @@ public class WhenIAddEnrollmentCourses extends Stage<WhenIAddEnrollmentCourses> 
 		// have to setup admission service
 		application = new AdEnrollmentApplicationImpl();
 
-		application.setAuditNo("auditNo");
-		application.setDescription("New student enrollment");
+		application.setAuditNo("10");
+		application.setDescription("New students enrollment 10");
 		application.setType(AdEnrollmentApplicationType.PRA);
-		application.setRemoveComment("Remove Comment");
-		application.setCancelComment("Cancel Comment");
+		application.setRemoveComment("10");
+		application.setCancelComment("10");
 		application.setStudent(student);
 		application.setAdmission(admission);
 		application.setAdvisor(advisor);
@@ -106,6 +107,7 @@ public class WhenIAddEnrollmentCourses extends Stage<WhenIAddEnrollmentCourses> 
 		termService.addEnrollmentApplicationItem(application, item);
 
 		LOG.debug("New application item added: {}", item.getId());
+
 		return self();
 	}
 }

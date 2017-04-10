@@ -1,6 +1,7 @@
 package my.edu.umk.pams.academic.term.stage;
 
 import org.slf4j.Logger;
+
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.tngtech.jgiven.Stage;
@@ -55,7 +56,7 @@ public class WhenIRegisterAdmissionInNewSemester extends Stage<WhenIRegisterAdmi
 	private AdAcademicSession academicSession;
 
 	@ProvidedScenarioState
-	private AdAdmissionApplication admissionApplication;
+	private AdAdmissionApplication application;
 
 	public WhenIRegisterAdmissionInNewSemester I_register_admission_in_new_semester() {
 		// process flow of admission
@@ -63,27 +64,26 @@ public class WhenIRegisterAdmissionInNewSemester extends Stage<WhenIRegisterAdmi
 		student = identityService.findStudentByMatricNo("A17P001");
 		advisor = identityService.findStaffByStaffNo("01001A");
 		program = plannerService.findProgramByCode("A01/MASTER/0001");
-		studyCenterCode = commonService.findStudyCenterCodeByCode(code);
-
-		String sourceNo = "sourceNo";
-		String auditNo = "auditNo";
-		String description = "description";
+		studyCenter = commonService.findStudyCenterByCode(code);
 
 		LOG.debug("student {}", student.getName());
 		LOG.debug("advisor {}", advisor.getName());
 		LOG.debug("program {}", program.getTitle());
-		LOG.debug("studyCenter {}", studyCenterCode.getDescription());
+		LOG.debug("studyCenter {}", studyCenter.getDescription());
 
-		AdAdmissionApplication admissionApplication = new AdAdmissionApplicationImpl();
-		admissionApplication.setSourceNo(sourceNo);
-		admissionApplication.setAuditNo(auditNo);
-		admissionApplication.setDescription(description);
-		admissionApplication.setStudent(student);
-		admissionApplication.setAdvisor(advisor);
-		admissionApplication.setProgram(program);
-		admissionApplication.setSession(academicSession);
-		admissionApplication.setStudyCenter(studyCenter);
-		termService.saveAdmissionApplication(admissionApplication);
+		AdAdmissionApplication application = new AdAdmissionApplicationImpl();
+		application.setReferenceNo("referenceNo02");
+		application.setSourceNo("sourceNo02");
+		application.setAuditNo("auditNo02");
+		application.setDescription("description02");
+		application.setRemoveComment("removeComment02");
+		application.setCancelComment("cancelComment02");
+		application.setStudent(student);
+		application.setAdvisor(advisor);
+		application.setProgram(program);
+		application.setSession(academicSession);
+		application.setStudyCenter(studyCenter);
+		termService.saveAdmissionApplication(application);
 
 		return self();
 	}
