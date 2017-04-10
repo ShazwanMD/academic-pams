@@ -61,6 +61,11 @@ public class WhenIUpdateAcademicSession extends Stage<WhenIUpdateAcademicSession
 		adAcademicSession.setSemester(AdAcademicSemester.SEMESTER_2);
 
 		plannerService.updateAcademicSession(adAcademicSession);
+		
+		LOG.debug("academicSession Description : {} ", academicSession.getDescription());
+		LOG.debug("academicSession StartDate: {} ", academicSession.getStartDate());
+		LOG.debug("academicSession EndDate: {} ", academicSession.getEndDate());
+		LOG.debug("academicSession Semester: {} ", academicSession.getSemester());
 
 		return self();
 

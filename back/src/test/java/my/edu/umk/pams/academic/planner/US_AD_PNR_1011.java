@@ -2,9 +2,9 @@
 package my.edu.umk.pams.academic.planner;
 
 import org.junit.Test;
-
 /**
  * As an admin academic,,
+
  *   I want to up date new academic semester info,
  *      so that the new academic semester info is created
  * @author ain
@@ -25,7 +25,6 @@ import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.planner.stage.ThenAcademicSessionUpdated;
 import my.edu.umk.pams.academic.planner.stage.WhenIUpdateAcademicSession;
 import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
-
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
