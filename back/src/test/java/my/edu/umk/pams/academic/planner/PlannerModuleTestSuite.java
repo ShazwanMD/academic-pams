@@ -31,8 +31,6 @@ import org.junit.runners.Suite;
         US_AD_PNR_2001.class,
         US_AD_PNR_2002.class,
         US_AD_PNR_2003.class,
-        
 })
-
 public class PlannerModuleTestSuite {
 }
