@@ -32,10 +32,11 @@ public class ThenNewAcademicSessionInfoIsCreated extends Stage<ThenNewAcademicSe
 
 	public ThenNewAcademicSessionInfoIsCreated New_academic_session_info_is_created() {
 
-		LOG.debug("academicSession {} ", academicSession);
-		// AdAcademicSession academicSession =
-		// plannerService.findCurrentAcademicSession();
-		Assert.notNull(academicSession, "The data must not be null");
+//		LOG.debug("academicSession {} ", academicSession);
+//		Assert.notNull(academicSession, "The data must not be null");
+		
+		academicSession = plannerService.findAcademicSessionByCode("20192020");
+		Assert.notNull(plannerService, "The data must not be null");
 
 		return self();
 

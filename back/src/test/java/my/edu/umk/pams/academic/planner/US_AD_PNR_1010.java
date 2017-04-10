@@ -15,7 +15,6 @@ import my.edu.umk.pams.academic.planner.stage.ThenNewAcademicSessionInfoIsCreate
 import my.edu.umk.pams.academic.planner.stage.WhenIAddNewAcademicSessionInfo;
 import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
 
-
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
