@@ -21,7 +21,6 @@ SpringScenarioTest<GivenIAmCPSAdministrator, WhenITransferSection, ThenTheEnroll
 		when().I_transfer_section();
 		then().the_enrollment_is_updated();
 	}
-
 }
 
 
