@@ -24,12 +24,16 @@ public class US_AD_PFL_1003 extends SpringScenarioTest<GivenIAmStudent, WhenIRev
 
     private static final Logger LOG = LoggerFactory.getLogger(US_AD_PFL_1003.class);
     private static final String IDENTITY_NO = "A17P001";
-
+    private static final String IDENTITY_NO2 = "A17P004";
+    private static final String IDENTITY_NO3 = "A17P002";
+    private static final String IDENTITY_NO4 = "A17P005";
+    
     @Test
     @Rollback
     public void scenario1003() {
         given().I_am_a_student_in_current_academic_session();
-        when().I_review_activation_status_$(IDENTITY_NO);
+        when().I_review_activation_status_$(IDENTITY_NO).and().I_review_inactivation_status_$(IDENTITY_NO2).and().I_review_barred_status_$(IDENTITY_NO3)
+        .and().I_review_graduted_status_$(IDENTITY_NO4);
         then().activation_status_reviewed();
     }
 
