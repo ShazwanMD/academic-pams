@@ -27,9 +27,10 @@ public class WhenIAddStudentProfile extends Stage<WhenIAddStudentProfile> {
 
     @ExpectedScenarioState
     private AdActor actor;
-
+    
     public WhenIAddStudentProfile I_add_student_profile() {
 
+    
         AdStudent student = new AdStudentImpl();
         student.setName("sam");
         student.setPhone("0179282817");
@@ -37,10 +38,18 @@ public class WhenIAddStudentProfile extends Stage<WhenIAddStudentProfile> {
         student.setFax("079449205");
         student.setEmail("shazwan.md@umk.edu.my");
         student.setMobile("0123");
-        student.setMatricNo("1111" + System.currentTimeMillis()); // append some random number
-        student.setStudentStatus(AdStudentStatus.ACTIVE);
+        student.setMatricNo("01607B"); 
+        student.setStudentStatus(AdStudentStatus.MATRICULATED);
         identityService.saveStudent(student);
-
+        
+        LOG.debug("Student's Name:{}", student.getName());
+        LOG.debug("Student's IdentityNo :{}", student.getMatricNo());
+        LOG.debug("Student's StudentStatus :{}", student.getStudentStatus());
+        LOG.debug("Student's Emails :{}", student.getEmail());
+        LOG.debug("Student's MobileNo :{}", student.getMobile());
+        LOG.debug("Student's PhoneNo :{}", student.getPhone());
+        
+  	
         return self();
     }
 
