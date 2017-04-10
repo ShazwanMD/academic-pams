@@ -12,12 +12,10 @@ import com.tngtech.jgiven.annotation.Pending;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 
-import my.edu.umk.pams.academic.identity.model.AdActor;
+import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.identity.service.IdentityService;
 import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
 import my.edu.umk.pams.academic.planner.model.AdProgram;
-import my.edu.umk.pams.academic.planner.service.PlannerService;
-import my.edu.umk.pams.academic.term.model.AdEnrollment;
 import my.edu.umk.pams.academic.term.model.AdOffering;
 import my.edu.umk.pams.academic.term.model.AdSection;
 import my.edu.umk.pams.academic.term.service.TermService;
@@ -32,16 +30,13 @@ public class WhenReviewEnrollmentDetails extends Stage<WhenReviewEnrollmentDetai
 	private IdentityService identityService;
 	
     @Autowired
-    private PlannerService plannerService;
-	
-    @Autowired
     private TermService termService;
     
     @ExpectedScenarioState
     private AdSection section;
 	
     @ExpectedScenarioState
-    private AdActor actor;
+    private AdStudent student;
     
     @ExpectedScenarioState
     private AdOffering offering;
@@ -52,22 +47,18 @@ public class WhenReviewEnrollmentDetails extends Stage<WhenReviewEnrollmentDetai
     @ExpectedScenarioState
     private AdAcademicSession academicSession;
     
-    @ProvidedScenarioState
-    private List<AdEnrollment> enrollments;
-    
-    private String SCTN_canonicalCode = "FKP/PHD/0001/DDA2113/201720181";
+    @ExpectedScenarioState
+    private String SCTN_canonicalCode;
 
-	@Pending
-	public WhenReviewEnrollmentDetails review_enrollment_details() {
+    @Pending
+	public WhenReviewEnrollmentDetails lecturer_review_enrollment_details() {
 		
-		actor = identityService.findActorByIdentityNo("01001A");
-		enrollments = termService.findEnrollments(offering, 0, 100);
+		student = identityService.findStudentByMatricNo("A17P001");	
+		section = termService.findSectionByCanonicalCode(SCTN_canonicalCode);
 		
-		for (AdEnrollment enrollment : enrollments) {
-			if (enrollment.getSection().equals(SCTN_canonicalCode)) {
-				LOG.debug("Student's section: {}", section.getEnrollments());
-			}
-		}
+		termService.findEnrollmentBySectionAndStudent(section, student);
+
+		LOG.debug("Student's section: {}", section.getOffering());
 		
 		return self();
 	}

@@ -42,6 +42,7 @@ public class ThenIViewTheCurrentEnrollmentCourses extends Stage<ThenIViewTheCurr
 		LOG.debug("New application :{}", application.getCancelComment());
 		LOG.debug("New application :{}", application.getAdvisor());
 		LOG.debug("New application :{}", application.getType());
+		LOG.debug("New item action :{}", item.getAction());
 
 		return self();
 

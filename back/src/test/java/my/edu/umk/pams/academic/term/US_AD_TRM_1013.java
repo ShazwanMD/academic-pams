@@ -9,6 +9,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.tngtech.jgiven.annotation.As;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 
 import my.edu.umk.pams.academic.config.TestAppConfiguration;
@@ -19,18 +20,19 @@ import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
+@As("As a academic administrator, I want to update admission status for student under selected program so that the admission status is updated")
 public class US_AD_TRM_1013 extends
-SpringScenarioTest<GivenIAmCPSAdministrator, WhenIUpdateAdmissionStatus, ThenTheAdmissionStatusIsUpdated> {
-	private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_1013.class);	
-	
+		SpringScenarioTest<GivenIAmCPSAdministrator, WhenIUpdateAdmissionStatus, ThenTheAdmissionStatusIsUpdated> {
+	private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_1013.class);
+	private static final String PROGRAM_CODE = "A01/MASTER/0001";
+
 	@Test
-	@Rollback
+	@Rollback(true)
 	public void scenario01() {
 		given().I_am_a_CPS_administrator_in_current_academic_session();
-		when().I_update_admission_status();
+		when().I_update_admission_status_for_program_$(PROGRAM_CODE);
 		then().the_admission_status_is_updated();
 
 	}
-	
 
 }

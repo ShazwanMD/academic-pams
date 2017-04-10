@@ -23,8 +23,7 @@ import my.edu.umk.pams.academic.term.service.TermService;
 public class WhenIWantToEnrollAdditionalOfferingCoursesToRepeatCourses
 		extends Stage<WhenIWantToEnrollAdditionalOfferingCoursesToRepeatCourses> {
 
-	private static final Logger LOG = LoggerFactory
-			.getLogger(WhenIWantToEnrollAdditionalOfferingCoursesToRepeatCourses.class);
+	private static final Logger LOG = LoggerFactory.getLogger(WhenIWantToEnrollAdditionalOfferingCoursesToRepeatCourses.class);
 
 	@Autowired
 	private TermService termService;

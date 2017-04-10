@@ -412,6 +412,14 @@ public class TermServiceImpl implements TermService {
         admissionApplicationDao.update(application, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
+    
+    //update admission by asyikin
+    @Override
+	public void updateAdmission(AdAdmission admission) {
+    	admissionDao.update(admission, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+		
+	}
 
     @Override
     public void cancelAdmissionApplication(AdAdmissionApplication application) {
@@ -1163,4 +1171,6 @@ public class TermServiceImpl implements TermService {
         map.put(WorkflowConstants.CANCEL_DECISION, false);
         return map;
     }
+
+	
 }

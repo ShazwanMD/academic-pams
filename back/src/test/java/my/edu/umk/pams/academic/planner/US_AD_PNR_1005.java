@@ -1,6 +1,7 @@
 package my.edu.umk.pams.academic.planner;
 
 import com.tngtech.jgiven.annotation.As;
+import com.tngtech.jgiven.integration.spring.JGivenStage;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.planner.stage.ThenCohortIsAdded;
@@ -20,6 +21,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 @As("As an academic administrator, i want to set up cohort for a faculty so that i can group student in the schedule by intake code.")
+@JGivenStage
 public class US_AD_PNR_1005
 		extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenAdminAddCohortForAFaculty, ThenCohortIsAdded> {
 
@@ -30,7 +32,7 @@ public class US_AD_PNR_1005
 	@Rollback
 	public void scenario1() {
 		given().I_am_a_CPS_administrator();
-		when().Admin_add_cohort_for_a_faculty_for_a_faculty(PROGRAM_CODE);
+		when().Admin_add_cohort_for_a_faculty(PROGRAM_CODE);
 		then().cohort_is_added();
 	}
 

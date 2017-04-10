@@ -195,6 +195,9 @@ public interface TermService {
 
     @Deprecated // use startAdmissionApplication
     void saveAdmission(AdAdmission admission);
+    
+    void updateAdmission(AdAdmission admission);
+    
 
     //====================================================================================================
     // ENROLLMENT APPLICATION

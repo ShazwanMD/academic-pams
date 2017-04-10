@@ -23,8 +23,10 @@ import org.springframework.transaction.annotation.Transactional;
 public class US_AD_PFL_1003 extends SpringScenarioTest<GivenIAmStudent, WhenIReviewActivationStatus, ThenActivationStatusReviewed> {
 
     private static final Logger LOG = LoggerFactory.getLogger(US_AD_PFL_1003.class);
-    private static final String IDENTITY_NO = "A17P001";
-
+    
+    //change student IdentityNo Here
+    private static final String IDENTITY_NO = "A17P005";
+  
     @Test
     @Rollback
     public void scenario1003() {
