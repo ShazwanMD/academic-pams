@@ -17,7 +17,6 @@ import my.edu.umk.pams.academic.profile.stage.ThenStudentStatusViewed;
 import my.edu.umk.pams.academic.profile.stage.WhenReviewStudentStatus;
 import my.edu.umk.pams.bdd.stage.GivenIAmAcademicStaff;
 
-//refactor
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
