@@ -4,39 +4,28 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
-
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
-import com.tngtech.jgiven.annotation.Pending;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
-
 import my.edu.umk.pams.academic.common.model.AdGradeCode;
-import my.edu.umk.pams.academic.identity.model.AdActor;
-import my.edu.umk.pams.academic.identity.service.IdentityService;
 import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
 import my.edu.umk.pams.academic.planner.model.AdEnrollmentStanding;
 import my.edu.umk.pams.academic.planner.model.AdEnrollmentStatus;
-import my.edu.umk.pams.academic.planner.model.AdProgram;
 import my.edu.umk.pams.academic.term.model.AdAdmission;
-import my.edu.umk.pams.academic.term.model.AdAdmissionImpl;
 import my.edu.umk.pams.academic.term.model.AdEnrollment;
 import my.edu.umk.pams.academic.term.model.AdEnrollmentApplication;
 import my.edu.umk.pams.academic.term.model.AdEnrollmentApplicationItem;
 import my.edu.umk.pams.academic.term.model.AdEnrollmentImpl;
-import my.edu.umk.pams.academic.term.model.AdSection;
 import my.edu.umk.pams.academic.term.service.TermService;
 import java.util.List;
 
 @JGivenStage
-public class WhenITransferSection extends Stage<WhenIUpdateSections> {
+public class WhenITransferSection extends Stage<WhenITransferSection> {
 	private static final Logger LOG = LoggerFactory.getLogger(WhenITransferSection.class);
 
 	@Autowired
 	private TermService termService;
-
-	@Autowired
-	private IdentityService identityService;
 
 	@ExpectedScenarioState
 	private AdAcademicSession session;
@@ -57,10 +46,6 @@ public class WhenITransferSection extends Stage<WhenIUpdateSections> {
 	private AdEnrollment enrollment;
 
 	public WhenITransferSection I_transfer_section() {
-
-		// transfer section into ad_enrollment table process have to confirm
-		// with en.uda first
-		// find by student id and session id
 
 		List<AdEnrollmentApplication> applications = termService.findEnrollmentApplications(session);
 
@@ -91,7 +76,7 @@ public class WhenITransferSection extends Stage<WhenIUpdateSections> {
 
 		}
 
-		return null;
-
+		return self();
 	}
+
 }
