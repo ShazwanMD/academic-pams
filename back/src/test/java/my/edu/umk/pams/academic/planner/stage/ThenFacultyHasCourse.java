@@ -41,13 +41,13 @@ public class ThenFacultyHasCourse extends Stage<ThenFacultyHasCourse> {
 		}
 
 		for (AdCourse course : courses) {
-			LOG.debug("course : {}", course.getFaculty());
+			LOG.debug("Faculty : {}", course.getFaculty());
 			Assert.notNull(course.getFaculty(), "course Faculty should not be empty");
 		}
 
 		for (AdCourse course : courses) {
-			LOG.debug("course : {}", course.getClassification());
-			Assert.notNull(course.getClassification(), "course Classification should not be empty");
+			LOG.debug("course : {}", course.getClassification().LEVEL_100);
+			Assert.notNull(course.getClassification().LEVEL_100, "course Classification should not be empty");
 		}
 
 		for (AdCourse course : courses) {
