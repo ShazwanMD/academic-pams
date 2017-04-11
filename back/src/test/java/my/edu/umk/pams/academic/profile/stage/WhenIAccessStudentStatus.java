@@ -23,6 +23,7 @@ public class WhenIAccessStudentStatus extends Stage<WhenIAccessStudentStatus> {
 
     public WhenIAccessStudentStatus i_access_student_status(String identityNo) {
         student = identityService.findStudentByMatricNo(identityNo);
+   
         Assert.notNull(student, "Student cannot be null");
 
         return self();
