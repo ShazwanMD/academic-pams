@@ -14,6 +14,6 @@ public class WhenIWantToViewOpenDateOfEnrollment extends Stage<WhenIWantToViewOp
 	public WhenIWantToViewOpenDateOfEnrollment I_want_to_view_open_date_of_enrollment() {
 		return self();
 	}
-	
 }
+
 

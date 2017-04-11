@@ -35,6 +35,7 @@ public class US_AD_TRM_1017 extends SpringScenarioTest<GivenIAmStudent, WhenIWan
 		then().i_know_the_enrollment_interval_period();
 
 	}
+	
 }
 
 	
