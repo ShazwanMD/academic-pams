@@ -40,20 +40,16 @@ public class WhenIViewProgramInfo extends Stage<WhenIViewProgramInfo> {
 
     public WhenIViewProgramInfo I_view_program_info_for_faculty_$(String code) {
 
+    	//find faculty
         faculty = plannerService.findFacultyByCode(code);
-        List<AdProgram> program = plannerService.findPrograms(faculty);
-
-        for (AdProgram programs : program) {
-            LOG.debug(programs.getTitle());
+        LOG.debug("Faculty's Name:{}", faculty.getName());
+        
+        //list program 
+        List<AdProgram> programs = faculty.getPrograms();
+        for (AdProgram program : programs) {
+            LOG.debug("Program(s):{}", program.getTitle());
         }
 
-        for (AdProgram programs : program) {
-            LOG.debug(programs.getTitleEn());
-        }
-
-        for (AdProgram programs : program) {
-            LOG.debug(programs.getTitleMs());
-        }
 
         return self();
     }
