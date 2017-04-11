@@ -29,7 +29,7 @@ public class US_AD_ASMT_1001 extends SpringScenarioTest<GivenIAmStudent, WhenVie
 	
 	@Test
     @Rollback
-    public void scenario1001() {
+    public void scenario_1001_viva() {
 		
 		given().I_am_a_student_in_current_academic_session();
 		when().I_want_view_exam_info();
@@ -39,7 +39,7 @@ public class US_AD_ASMT_1001 extends SpringScenarioTest<GivenIAmStudent, WhenVie
 	
 	@Test
     @Rollback
-    public void scenario1002() {
+    public void scenario_1001_exam() {
 		
 		given().I_am_a_student_in_current_academic_session();
 		when().I_want_view_exam_info();
