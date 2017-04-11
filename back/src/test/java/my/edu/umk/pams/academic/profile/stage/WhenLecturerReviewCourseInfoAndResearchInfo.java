@@ -12,6 +12,7 @@ import com.tngtech.jgiven.annotation.Pending;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 
 import my.edu.umk.pams.academic.identity.model.AdStudent;
+import my.edu.umk.pams.academic.identity.model.AdStudentStatus;
 import my.edu.umk.pams.academic.identity.service.IdentityService;
 import my.edu.umk.pams.academic.planner.model.AdCohort;
 import my.edu.umk.pams.academic.planner.model.AdCourse;
@@ -51,6 +52,9 @@ public class WhenLecturerReviewCourseInfoAndResearchInfo extends Stage<WhenLectu
     
     @ExpectedScenarioState
    	private AdCohort cohort;
+    
+    @ExpectedScenarioState
+   	private AdStudentStatus studentStatus;
 
 	public WhenLecturerReviewCourseInfoAndResearchInfo Lecturer_review_course_info_for_$(String identityNo){
 		
@@ -64,6 +68,23 @@ public class WhenLecturerReviewCourseInfoAndResearchInfo extends Stage<WhenLectu
 		
 		for(AdCourse course:courses)
 			LOG.debug("Course's Registered:{}", course.getCode());
+		studentStatus = student.getStudentStatus();
+		LOG.debug("Student Status:{}", studentStatus.name());
+		
+		cohort = student.getCohort();
+				
+		program = cohort.getProgram();
+		LOG.debug("Program:{}", program.getTitle());
+	    
+		faculty = program.getFaculty();
+	    LOG.debug("Faculty:{}", faculty.getName());
+	    
+	    level = program.getProgramLevel();
+	    LOG.debug("Level :{}", level.getCode());
+	    	    
+	    courses = faculty.getCourses();
+		for(AdCourse course:courses)
+			LOG.debug("Course(s):{}", course.getCode());
 		
 		LOG.debug("Program Registered:{}", program.getCode());
 		LOG.debug("Faculty's Details :{}", faculty.getDescription());
