@@ -1,7 +1,6 @@
 package my.edu.umk.pams.academic.term.stage;
 
 import org.slf4j.Logger;
-
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.tngtech.jgiven.Stage;
@@ -72,12 +71,12 @@ public class WhenIRegisterAdmissionInNewSemester extends Stage<WhenIRegisterAdmi
 		LOG.debug("studyCenter {}", studyCenter.getDescription());
 
 		AdAdmissionApplication application = new AdAdmissionApplicationImpl();
-		application.setReferenceNo("referenceNo02");
-		application.setSourceNo("sourceNo02");
-		application.setAuditNo("auditNo02");
-		application.setDescription("description02");
-		application.setRemoveComment("removeComment02");
-		application.setCancelComment("cancelComment02");
+		application.setReferenceNo("referenceNo03");
+		application.setSourceNo("sourceNo03");
+		application.setAuditNo("auditNo03");
+		application.setDescription("description03");
+		application.setRemoveComment("removeComment03");
+		application.setCancelComment("cancelComment03");
 		application.setStudent(student);
 		application.setAdvisor(advisor);
 		application.setProgram(program);
