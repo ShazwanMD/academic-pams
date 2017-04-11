@@ -15,5 +15,6 @@ public class ThenIKnowTheEnrollmentIntervalPeriod extends Stage<ThenIKnowTheEnro
 		return self();
 		
 	}
+	
 }
 
