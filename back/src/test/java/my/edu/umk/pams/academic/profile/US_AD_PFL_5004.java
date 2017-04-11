@@ -27,7 +27,7 @@ import my.edu.umk.pams.bdd.stage.GivenIAmAcademicStaff;
 public class US_AD_PFL_5004 extends SpringScenarioTest<GivenIAmAcademicStaff, WhenLecturerReviewCourseInfoAndResearchInfo, ThenLecturerReviewedCourseAndResearchInfo> {
 
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_PFL_5005.class);
-	private static final String IDENTITY_NO = "A17P002";
+	private static final String IDENTITY_NO = "A17P001";
 	private static final String IDENTITY_NO2 = "A17P001";
 
 	@Test
