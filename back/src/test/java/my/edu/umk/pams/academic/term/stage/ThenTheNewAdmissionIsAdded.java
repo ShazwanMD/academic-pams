@@ -6,10 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
-import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
-
-import my.edu.umk.pams.academic.common.service.CommonService;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.identity.service.IdentityService;
 import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
@@ -45,9 +42,9 @@ public class ThenTheNewAdmissionIsAdded extends Stage<ThenTheNewAdmissionIsAdded
 
 	public ThenTheNewAdmissionIsAdded the_new_admission_is_added() {
 		
-		AdStudent student = identityService.findStudentByMatricNo("A17P002");
-		AdProgram program = plannerService.findProgramByCode("A01/MASTER/0002");
-		AdAcademicSession academicSession = plannerService.findAcademicSessionByCode("201720181");
+		Assert.notNull(student, "student data should be not null");
+		Assert.notNull(program, "program data should be not null");
+		Assert.notNull(academicSession, "academicSession data should be not null");
 		
 		AdAdmission admission = termService.findAdmissionBySessionProgramAndStudent(academicSession, program, student);
 		
