@@ -14,8 +14,8 @@ import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import my.edu.umk.pams.academic.config.TestAppConfiguration;
-import my.edu.umk.pams.academic.profile.stage.ThenIKnowStudentRegisteredCourseandPaymentStatus;
-import my.edu.umk.pams.academic.profile.stage.WhenIViewCourseRegistration;
+import my.edu.umk.pams.academic.profile.stage.ThenCourseRegistrationandPaymentStatusReviewed;
+import my.edu.umk.pams.academic.profile.stage.ReviewCourseRegistrationDetails;
 import my.edu.umk.pams.bdd.stage.GivenIAmBursary;
 
 
@@ -23,7 +23,7 @@ import my.edu.umk.pams.bdd.stage.GivenIAmBursary;
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 @As("As a bursary, I want to view course registration details so that I know student registered courses and their payment status")
-public class US_AD_PFL_3001 extends SpringScenarioTest<GivenIAmBursary, WhenIViewCourseRegistration, ThenIKnowStudentRegisteredCourseandPaymentStatus> {
+public class US_AD_PFL_3001 extends SpringScenarioTest<GivenIAmBursary, ReviewCourseRegistrationDetails, ThenCourseRegistrationandPaymentStatusReviewed> {
 
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_PFL_3001.class);
 	
@@ -34,8 +34,8 @@ public class US_AD_PFL_3001 extends SpringScenarioTest<GivenIAmBursary, WhenIVie
     @Rollback
     public void scenario3001() {
 		given().I_am_a_bursary_in_$_academic_session("201720181");
-		when().I_view_student_$_course_registration(IDENTITY_NO).
-			and().when().I_view_student_payment_status();
+		when().bursary_view_student_course_registration().
+			and().when().bursary_view_student_payment_status();
 		then().student_registered_courses_and_payment_status_is_viewed();
 		
 	

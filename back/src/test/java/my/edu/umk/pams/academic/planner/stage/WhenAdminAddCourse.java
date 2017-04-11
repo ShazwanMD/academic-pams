@@ -8,14 +8,15 @@ import my.edu.umk.pams.academic.planner.model.AdAcademicClassification;
 import my.edu.umk.pams.academic.planner.model.AdCourse;
 import my.edu.umk.pams.academic.planner.model.AdCourseImpl;
 import my.edu.umk.pams.academic.planner.model.AdFaculty;
+import my.edu.umk.pams.academic.planner.model.AdFacultyImpl;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
- * @author PAMS
- */
+ * @author zaida_nawi
+ **/
 @JGivenStage
 public class WhenAdminAddCourse extends Stage<WhenAdminAddCourse> {
 
@@ -31,7 +32,8 @@ public class WhenAdminAddCourse extends Stage<WhenAdminAddCourse> {
     private AdFaculty faculty;
 
     public WhenAdminAddCourse Admin_add_a_course_to_faculty_code_$(String code) {
-        faculty = plannerService.findFacultyByCode(code);
+       
+    	faculty = plannerService.findFacultyByCode("A01");
         AdCourse course = new AdCourseImpl();
         course.setCode("PRGM-1234");
         course.setFaculty(faculty);

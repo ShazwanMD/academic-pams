@@ -53,64 +53,51 @@ public class WhenLecturerReviewCourseInfoAndResearchInfo extends Stage<WhenLectu
     @ExpectedScenarioState
    	private AdStudentStatus studentStatus;
 
-
 	public WhenLecturerReviewCourseInfoAndResearchInfo Lecturer_review_course_info_for_$(String identityNo){
 		
 		student = identityService.findStudentByMatricNo(identityNo);
+		cohort = student.getCohort();
+		program = cohort.getProgram();
+	    level = program.getProgramLevel();
+	    faculty = program.getFaculty();
+	    courses = faculty.getCourses();
+		
 		LOG.debug("Student's Name :{}", student.getName());
 		
-		studentStatus = student.getStudentStatus();
-		LOG.debug("Student Status:{}", studentStatus.name());
+		for(AdCourse course:courses)
+			LOG.debug("Course register by students:{}", course.getCode());
 		
-		cohort = student.getCohort();
-				
-		program = cohort.getProgram();
-		LOG.debug("Program:{}", program.getTitle());
-	    
-		faculty = program.getFaculty();
 	    LOG.debug("Faculty:{}", faculty.getName());
-	    
-	    level = program.getProgramLevel();
 	    LOG.debug("Level :{}", level.getCode());
 	    	    
-	    courses = faculty.getCourses();
-		for(AdCourse course:courses)
-			LOG.debug("Course(s):{}", course.getCode());
-		
-		
-	
-		
-//		course = plannerService.findCourseByCodeAndFaculty("MBA/GST 5013", faculty);
-//		LOG.debug("Course's Details :{}", course.getCode());
-//		LOG.debug("Course's Details :{}", course.getTitle());
-//		LOG.debug("Course's Details :{}", course.getTitleEn());
-//		LOG.debug("Course's Details :{}", course.getTitleMs());
-//		
+		LOG.debug("Program Registered:{}", program.getCode());
+		LOG.debug("Faculty's Details :{}", faculty.getDescription());
 		
 		return self();
 		
 		
 	}
-	@Pending
+
 	public WhenLecturerReviewCourseInfoAndResearchInfo Lecturer_review_research_info_for_$(String identityNo2){
 		
-//		student = identityService.findStudentByMatricNo(identityNo2);
-//		faculty = plannerService.findFacultyByCode("CPS");
-//		course = plannerService.findCourseByCodeAndFaculty("MAP", faculty);
-//		
-//		
-//		LOG.debug("Student's Name :{}", student.getName());
-//		
-//
-//		LOG.debug("Faculty's Details :{}", faculty.getDescription());
-//		
-//
-//		LOG.debug("Research's Details :{}", course.getCode());
-//		LOG.debug("Research's Details :{}", course.getTitle());
-//		LOG.debug("Research's Details :{}", course.getTitleEn());
-//		LOG.debug("Research's Details :{}", course.getTitleMs());
-//		
-//		
+		student = identityService.findStudentByMatricNo(identityNo2);
+		cohort = student.getCohort();
+		program = cohort.getProgram();
+	    level = program.getProgramLevel();
+	    faculty = program.getFaculty();
+	    courses = faculty.getCourses();
+		
+		LOG.debug("Student's Name :{}", student.getName());
+		
+		for(AdCourse course:courses)
+			LOG.debug("Course register by students:{}", course.getCode());
+		
+	    LOG.debug("Faculty:{}", faculty.getName());
+	    LOG.debug("Level :{}", level.getCode());
+	    	    
+		LOG.debug("Program Registered:{}", program.getCode());
+		LOG.debug("Faculty's Details :{}", faculty.getDescription());
+		
 		return self();
 		
 		

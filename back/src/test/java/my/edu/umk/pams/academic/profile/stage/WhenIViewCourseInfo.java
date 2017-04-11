@@ -26,7 +26,7 @@ public class WhenIViewCourseInfo extends Stage<WhenIViewCourseInfo> {
     private AdStudent student;
 
     @ExpectedScenarioState
-    private List<AdCourse> courses;
+    private List<AdCourse> course;
 
     @ExpectedScenarioState
     private String code;
@@ -40,13 +40,11 @@ public class WhenIViewCourseInfo extends Stage<WhenIViewCourseInfo> {
     }
 
     public WhenIViewCourseInfo I_view_course_info_for_faculty_$(String code) {
-    	//find faculty by code
         faculty = plannerService.findFacultyByCode(code);
-        LOG.debug("Faculty's Name:{}", faculty.getName());
-        
-        //List Courses belong by faculty
-        courses = faculty.getCourses();
-        for (AdCourse course : courses) {
+
+        course = plannerService.findCourses(faculty);
+
+        for (AdCourse course : course) {
             LOG.debug(course.getTitle());
         }
         return self();
