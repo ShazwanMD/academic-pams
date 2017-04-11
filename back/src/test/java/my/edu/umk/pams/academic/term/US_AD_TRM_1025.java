@@ -23,7 +23,7 @@ public class US_AD_TRM_1025
 		extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenIApproveNewAdmissionForStudent, ThenTheNewAdmissionIsAdded>  {
 
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_1025.class);
-	public static final String PROGRAM_CODE = "A01/PHD/0001";
+	public static final String PROGRAM_CODE = "A01/MASTER/0002";
 
 	@Test
 	@Rollback(true)
