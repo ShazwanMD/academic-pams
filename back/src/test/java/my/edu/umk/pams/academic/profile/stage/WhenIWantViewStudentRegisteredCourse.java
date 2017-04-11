@@ -14,6 +14,7 @@ import my.edu.umk.pams.academic.identity.model.AdActor;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.identity.model.AdStudentStatus;
 import my.edu.umk.pams.academic.identity.service.IdentityService;
+import my.edu.umk.pams.academic.planner.model.AdCohort;
 import my.edu.umk.pams.academic.planner.model.AdCourse;
 import my.edu.umk.pams.academic.planner.model.AdFaculty;
 import my.edu.umk.pams.academic.planner.model.AdProgram;
@@ -52,45 +53,99 @@ public class WhenIWantViewStudentRegisteredCourse extends Stage<WhenIWantViewStu
 	@ExpectedScenarioState
 	private AdFaculty faculty;
 	
-	private String identityNo;
+	@ExpectedScenarioState
+	private AdCohort cohort;
+
 
 	public WhenIWantViewStudentRegisteredCourse I_want_view_student_registered_course_$(String identityNo) {
 
-		AdActor actor = identityService.findActorByIdentityNo(identityNo);
-		AdStudent student = identityService.findStudentByMatricNo(identityNo);
-		AdStudentStatus studentStatus = student.getStudentStatus();
-
-		LOG.debug("Student's name : {}", actor.getName());
-		LOG.debug("Student's email : {}", actor.getEmail());
+		//student
+		student = identityService.findStudentByMatricNo(identityNo);
+		LOG.debug("Student's name : {}", student.getName());
+		//student status
+	    studentStatus = student.getStudentStatus();
 		LOG.debug("Student's status: {}", studentStatus.name());
-
-		AdProgram program = plannerService.findProgramByCode("A01/MASTER/0008");
-		AdFaculty faculty = plannerService.findFacultyByCode("A01");
-		AdProgramLevel level = plannerService.findProgramLevelByCode("PHD");
-		LOG.debug("Faculty : {}", faculty.getDescription());
-		LOG.debug("Program Level : {}",level.getCode());
-		LOG.debug("Program Level : {}",level.getDescription());
-		LOG.debug("Program : {}", program.getTitle());
-		LOG.debug("Program : {}", program.getTitleEn());
-		LOG.debug("Program : {}", program.getTitleMs());
 		
-		faculty = plannerService.findFacultyByCode("A01");
-		List<AdCourse> courses = plannerService.findCourses(faculty);
-		
+		if(studentStatus == AdStudentStatus.ACTIVE){
+		//cohort
+		cohort = student.getCohort();
+		LOG.debug("Cohort:{}", cohort.getCode());
+		//program
+		program = cohort.getProgram();
+		LOG.debug("Program Registered:{}", program.getCode());
+		//faculty
+		faculty = program.getFaculty();
+		LOG.debug("Faculty:{}", faculty.getName());
+		//level
+		level = program.getProgramLevel();
+		LOG.debug("Level of Study:{}", level.getCode());
+		//course
+		List<AdCourse> courses = faculty.getCourses();
 		for(AdCourse course : courses){
 			
-			LOG.debug("Course Taken : {}", course.getTitle());
-
-			LOG.debug("Course Taken : {}", course.getTitleEn());
-
-			LOG.debug("Course Taken : {}", course.getTitleMs());
-			
+			LOG.debug("Course Taken : {}", course.getCode());
 		}
 
+		}else if(studentStatus == AdStudentStatus.INACTIVE){
+			//cohort
+			cohort = student.getCohort();
+			LOG.debug("Cohort:{}", cohort.getCode());
+			//program
+			program = cohort.getProgram();
+			LOG.debug("Program Registered:{}", program.getCode());
+			//faculty
+			faculty = program.getFaculty();
+			LOG.debug("Faculty:{}", faculty.getName());
+		
+		}else if(studentStatus == AdStudentStatus.BARRED){
+			//cohort
+			cohort = student.getCohort();
+			LOG.debug("Cohort:{}", cohort.getCode());
+			//program
+			program = cohort.getProgram();
+			LOG.debug("Program Registered:{}", program.getCode());
+			//faculty
+			faculty = program.getFaculty();
+			LOG.debug("Faculty:{}", faculty.getName());
+			//level
+			level = program.getProgramLevel();
+			LOG.debug("Level of Study:{}", level.getCode());
+			//course
+			List<AdCourse> courses = faculty.getCourses();
+			for(AdCourse course : courses){
+				
+				LOG.debug("Course Taken : {}", course.getCode());
+			
+		}
+			
+		}else if (studentStatus == AdStudentStatus.GRADUATED){
+			
+			//cohort
+			cohort = student.getCohort();
+			LOG.debug("Cohort:{}", cohort.getCode());
+			//program
+			program = cohort.getProgram();
+			LOG.debug("Program Registered:{}", program.getCode());
+			//faculty
+			faculty = program.getFaculty();
+			LOG.debug("Faculty:{}", faculty.getName());
+			//level
+			level = program.getProgramLevel();
+			LOG.debug("Level of Study:{}", level.getCode());
+			//course
+			List<AdCourse> courses = faculty.getCourses();
+			for(AdCourse course : courses){
+				
+				LOG.debug("Course Taken : {}", course.getCode());
+			
+		}
 		
 		
+		}
+		
+	
+
 		return self();
-
-	}
-
+		
+}
 }
