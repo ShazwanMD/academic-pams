@@ -8,6 +8,7 @@ import com.tngtech.jgiven.integration.spring.JGivenStage;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.identity.model.AdStudentStatus;
 import my.edu.umk.pams.academic.identity.service.IdentityService;
+import my.edu.umk.pams.academic.planner.model.AdCohort;
 import my.edu.umk.pams.academic.planner.model.AdCourse;
 import my.edu.umk.pams.academic.planner.model.AdFaculty;
 import my.edu.umk.pams.academic.planner.model.AdProgram;
@@ -45,6 +46,9 @@ public class WhenIReviewActivationStatus extends Stage<WhenIReviewActivationStat
     
     @ExpectedScenarioState
    	private AdFaculty faculty;
+    
+    @ExpectedScenarioState
+   	private AdCohort cohort;
 
     @ExpectedScenarioState
 	private AdStudentStatus studentStatus;
@@ -56,70 +60,105 @@ public class WhenIReviewActivationStatus extends Stage<WhenIReviewActivationStat
 		
 		student = identityService.findStudentByMatricNo(identityNo);
 	    studentStatus = student.getStudentStatus();
-		faculty = plannerService.findFacultyByCode("A01");
-		program = plannerService.findProgramByCodeAndFaculty("A01/PHD/0008", faculty);
-		courses = plannerService.findCourses(faculty);
+	    cohort = student.getCohort();
+	    
+	    program = cohort.getProgram();
+	    faculty = program.getFaculty();
+	    level = program.getProgramLevel();
+	    courses = faculty.getCourses();
+
+	
 		
 		if(studentStatus == AdStudentStatus.ACTIVE){
-				
+		//student details		
 		LOG.debug("Student's Name:{}", student.getName());
 		LOG.debug("Student's MatricNo:{}", student.getMatricNo());
-		
+		//student status
 		LOG.debug("Student's status: {}", studentStatus.name());
-		LOG.debug("Student's status: {}", studentStatus.ordinal());
-		
-		LOG.debug("Faculty Name :{}", faculty.getName());
-
-		LOG.debug("Program CODE:{}", program.getCode());
-		LOG.debug("Program Details:{}", program.getTitle());
-		LOG.debug("Program Details:{}", program.getTitleEn());
-		LOG.debug("Program Details:{}", program.getTitleMs());
-
+		//student cohort
+		LOG.debug("Student's Cohort: {}", cohort.getCode());
+		//program
+		LOG.debug("{Program :{}", program.getCode());
+		//program level
+		LOG.debug("Program Level :{}", level.getCode());
+		//faculty
+		LOG.debug("Faculty:{}", faculty.getName());
+		//courses
 		for(AdCourse course:courses)
 			LOG.debug("Course's Registered:{}", course.getCode());
 		
 		}else if(studentStatus == AdStudentStatus.MATRICULATED){
-			
+			//student details		
 			LOG.debug("Student's Name:{}", student.getName());
 			LOG.debug("Student's MatricNo:{}", student.getMatricNo());
-		
+			//student status
 			LOG.debug("Student's status: {}", studentStatus.name());
-			LOG.debug("Student's status: {}", studentStatus.ordinal());
-			
+			//student cohort
+			LOG.debug("Student's Cohort: {}", cohort.getCode());
+			//program
+			LOG.debug("{Program :{}", program.getCode());
+			//program level
+			LOG.debug("Program Level :{}", level.getCode());
+			//faculty
+			LOG.debug("Faculty:{}", faculty.getName());
+			//courses
+			for(AdCourse course:courses)
+				LOG.debug("Course's Registered:{}", course.getCode());
 		
 	    }else if(studentStatus == AdStudentStatus.INACTIVE){
-	
+	    	//student details		
 			LOG.debug("Student's Name:{}", student.getName());
 			LOG.debug("Student's MatricNo:{}", student.getMatricNo());
-		
+			//student status
 			LOG.debug("Student's status: {}", studentStatus.name());
-			LOG.debug("Student's status: {}", studentStatus.ordinal());
+			//student cohort
+			LOG.debug("Student's Cohort: {}", cohort.getCode());
+			//program
+			LOG.debug("{Program :{}", program.getCode());
+			//program level
+			LOG.debug("Program Level :{}", level.getCode());
+			//faculty
+			LOG.debug("Faculty:{}", faculty.getName());
+			//courses
+			for(AdCourse course:courses)
+				LOG.debug("Course's Registered:{}", course.getCode());
 			
 		}else if(studentStatus == AdStudentStatus.BARRED){
-			
+			//student details		
 			LOG.debug("Student's Name:{}", student.getName());
 			LOG.debug("Student's MatricNo:{}", student.getMatricNo());
-			
+			//student status
 			LOG.debug("Student's status: {}", studentStatus.name());
-		    LOG.debug("Student's status: {}", studentStatus.ordinal());
+			//student cohort
+			LOG.debug("Student's Cohort: {}", cohort.getCode());
+			//program
+			LOG.debug("{Program :{}", program.getCode());
+			//program level
+			LOG.debug("Program Level :{}", level.getCode());
+			//faculty
+			LOG.debug("Faculty:{}", faculty.getName());
+			//courses
+			for(AdCourse course:courses)
+				LOG.debug("Course's Registered:{}", course.getCode());
 			
 		}else if(studentStatus == AdStudentStatus.GRADUATED){
 			
+			//student details		
 			LOG.debug("Student's Name:{}", student.getName());
 			LOG.debug("Student's MatricNo:{}", student.getMatricNo());
-	
+			//student status
 			LOG.debug("Student's status: {}", studentStatus.name());
-			LOG.debug("Student's status: {}", studentStatus.ordinal());
-			
-			LOG.debug("Faculty Name :{}", faculty.getName());
-
-			LOG.debug("Program CODE:{}", program.getCode());
-			LOG.debug("Program Taken:{}", program.getTitle());
-			LOG.debug("Program Taken:{}", program.getTitleEn());
-			LOG.debug("Program Taken:{}", program.getTitleMs());
-			
+			//student cohort
+			LOG.debug("Student's Cohort: {}", cohort.getCode());
+			//program
+			LOG.debug("{Program :{}", program.getCode());
+			//program level
+			LOG.debug("Program Level :{}", level.getCode());
+			//faculty
+			LOG.debug("Faculty:{}", faculty.getName());
+			//courses
 			for(AdCourse course:courses)
-				LOG.debug("Course's Taken:{}", course.getCode());
+				LOG.debug("Course's Registered:{}", course.getCode());
 		}else{
 			
 			LOG.debug("You Are Not Registered Student");
