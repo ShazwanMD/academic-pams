@@ -1,5 +1,7 @@
 package my.edu.umk.pams.academic.profile.stage;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,7 +43,7 @@ public class WhenReviewEnrollmentDetails extends Stage<WhenReviewEnrollmentDetai
     private AdStudent student;
     
     @ExpectedScenarioState
-    private AdCourse course;
+    private List<AdCourse> courses;
     
     @ExpectedScenarioState
     private AdOffering offering;
@@ -69,7 +71,9 @@ public class WhenReviewEnrollmentDetails extends Stage<WhenReviewEnrollmentDetai
 		faculty = plannerService.findFacultyByCode("A01");
 		LOG.debug("Student's Faculty: {}", faculty.getCode());
 
-		course = plannerService.findCourseByCode("DDA2113");
+		
+		courses = plannerService.findCourses(faculty);
+		for (AdCourse course:courses)
 		LOG.debug("Student's Course(s) : {}", course.getCode());
 		
 		offering = termService.findOfferingByCanonicalCode("A01/PHD/0001/DDA2113");
