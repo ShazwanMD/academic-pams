@@ -15,20 +15,20 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 @As("As a student, I want to update my billing address so that my address on file is current")
-public class US_AD_PFL_1002 extends SpringScenarioTest<GivenIAmStudent, WhenIUpdateBillingAddress, ThenBillingAddressUpdated> {
+public class US_AD_PFL_1002
+		extends SpringScenarioTest<GivenIAmStudent, WhenIUpdateBillingAddress, ThenBillingAddressUpdated> {
 
-    private static final Logger LOG = LoggerFactory.getLogger(US_AD_PFL_1002.class);
+	private static final Logger LOG = LoggerFactory.getLogger(US_AD_PFL_1002.class);
 
-    @Test
-    @Rollback
-    public void scenario1002() {
-        given().I_am_a_student_in_current_academic_session();
-        when().I_add_my_billing_address().and().when().I_update_billing_address();
-        then().Billing_address_updated();
-    }
+	@Test
+	@Rollback
+	public void scenario1002() {
+		given().I_am_a_student_in_current_academic_session();
+		when().I_add_my_billing_address().and().when().I_update_billing_address();
+		then().Billing_address_updated();
+	}
 }
