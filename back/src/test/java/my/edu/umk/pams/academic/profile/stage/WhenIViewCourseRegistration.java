@@ -69,6 +69,7 @@ public class WhenIViewCourseRegistration extends Stage<WhenIViewCourseRegistrati
 		LOG.debug("Faculty:{}", faculty.getName());
 		
 		courses = faculty.getCourses();
+
 		for (AdCourse course : courses) {
 			LOG.debug(course.getTitle());
 		}
