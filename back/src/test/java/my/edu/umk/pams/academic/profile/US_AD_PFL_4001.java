@@ -28,6 +28,8 @@ public class US_AD_PFL_4001 extends SpringScenarioTest <GivenIAmAcademicStaff, W
     
 	public static final String SCTN_canonicalCode = "A01/PHD/0001/DDA2113/201720181";
 	public static final String OFRG_canonicalCode = "A01/PHD/0001/DDA2113";
+	
+	public static final String IDENTITY_NO = "A17P001";
 				
 	@Test
 	@Rollback
@@ -36,7 +38,7 @@ public class US_AD_PFL_4001 extends SpringScenarioTest <GivenIAmAcademicStaff, W
 			and().i_pick_offering_$(OFRG_canonicalCode).
 				and().i_pick_section_$(SCTN_canonicalCode);
 		
-		when().lecturer_review_enrollment_details();
+		when().lecturer_review_enrollment_details(IDENTITY_NO);
 		then().student_registration_courses_reviewed();
 	}
 

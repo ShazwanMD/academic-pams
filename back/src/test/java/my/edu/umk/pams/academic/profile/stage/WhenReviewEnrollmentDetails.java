@@ -26,62 +26,60 @@ import my.edu.umk.pams.academic.term.service.TermService;
 public class WhenReviewEnrollmentDetails extends Stage<WhenReviewEnrollmentDetails> {
 
 	private static final Logger LOG = LoggerFactory.getLogger(WhenReviewEnrollmentDetails.class);
-	
+
 	@Autowired
 	private IdentityService identityService;
-	
-    @Autowired
-    private TermService termService;
-    
-    @Autowired
-    private PlannerService plannerService;
-    
-    @ExpectedScenarioState
-    private AdSection section;
-	
-    @ExpectedScenarioState
-    private AdStudent student;
-    
-    @ExpectedScenarioState
-    private List<AdCourse> courses;
-    
-    @ExpectedScenarioState
-    private AdOffering offering;
 
-    @ProvidedScenarioState
-    private AdCohort cohort;
-    
-    @ProvidedScenarioState
-    private AdProgram program;
-    
-    @ProvidedScenarioState
-    private AdFaculty faculty;
-    
-	public WhenReviewEnrollmentDetails lecturer_review_enrollment_details() {
-		
-		student = identityService.findStudentByMatricNo("A17P001");	
+	@Autowired
+	private TermService termService;
+
+	@Autowired
+	private PlannerService plannerService;
+
+	@ExpectedScenarioState
+	private AdSection section;
+
+	@ExpectedScenarioState
+	private AdStudent student;
+
+	@ExpectedScenarioState
+	private List<AdCourse> courses;
+
+	@ExpectedScenarioState
+	private AdOffering offering;
+
+	@ProvidedScenarioState
+	private AdCohort cohort;
+
+	@ProvidedScenarioState
+	private AdProgram program;
+
+	@ProvidedScenarioState
+	private AdFaculty faculty;
+
+	public WhenReviewEnrollmentDetails lecturer_review_enrollment_details(String identityNo) {
+
+		student = identityService.findStudentByMatricNo(identityNo);
 		LOG.debug("Student's Matric No: {}", student.getMatricNo());
-		
+
 		cohort = plannerService.findCohortByCode("A01/PHD/0001/CHRT/0001");
 		LOG.debug("Student's Cohort: {}", cohort.getCode());
-		
+
 		program = plannerService.findProgramByCode("A01/PHD/0001");
 		LOG.debug("Student's Program: {}", program.getCode());
-		
+
 		faculty = plannerService.findFacultyByCode("A01");
 		LOG.debug("Student's Faculty: {}", faculty.getCode());
 
-		
 		courses = plannerService.findCourses(faculty);
-		for (AdCourse course:courses)
-		LOG.debug("Student's Course(s) : {}", course.getCode());
-		
+		for (AdCourse course : courses)
+			LOG.debug("Student's Course(s) : {}", course.getCode());
+
 		offering = termService.findOfferingByCanonicalCode("A01/PHD/0001/DDA2113");
 		LOG.debug("Student's Offering Code: {}", offering.getCanonicalCode());
-		
+
 		section = termService.findSectionByCanonicalCode("A01/PHD/0001/DDA2113/201720181");
 		LOG.debug("Student's Section Code: {}", section.getCanonicalCode());
-		
 
 		return self();
 	}
