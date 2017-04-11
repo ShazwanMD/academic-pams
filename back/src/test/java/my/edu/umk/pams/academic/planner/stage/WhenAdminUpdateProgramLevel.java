@@ -22,36 +22,31 @@ public class WhenAdminUpdateProgramLevel extends Stage<WhenAdminUpdateProgramLev
 
 	private static final Logger LOG = LoggerFactory.getLogger(WhenAdminUpdateProgramLevel.class);
 
-	@Autowired
-	private PlannerService plannerService;
+		@Autowired
+	    private PlannerService plannerService;
 
-	@Autowired
-	private CommonService commonService;
-
-	@ExpectedScenarioState
-	private AdProgram program;
-
-	@ProvidedScenarioState
-	private AdProgramLevel programLevel;
-
-	@ProvidedScenarioState
-	private AdProgramType programType;
-
+	    @Autowired
+	    private CommonService commonService;
+	    
+	    @ExpectedScenarioState
+	    private AdProgram program;
+	    
+	    @ProvidedScenarioState
+	    private AdProgramLevel programLevel;
+	    
+	    @ProvidedScenarioState
+	    private AdProgramType programType;
+	    
 	public WhenAdminUpdateProgramLevel Admin_update_program_level(String code) {
-
-		programLevel = plannerService.findProgramLevelByCode(code);
 		
-		programLevel.setType(programType.MASTER);
-		programLevel.setCode("NEW MASTER");
-		programLevel.setDescription("CURRENT");
-		plannerService.updateProgramLevel(programLevel);
+		   programLevel = plannerService.findProgramLevelByCode(code);
+		   programLevel.setType(programType.BACHELOR);	
+		   programLevel.setDescription("CURRENT");
 
-		LOG.debug("program level type: {}", programType.MASTER);
-		LOG.debug("program level code : {}", programLevel.getCode());
-		LOG.debug("program level description : {}", programLevel.getDescription());
-
+		   plannerService.updateProgramLevel(programLevel);
+		
 		return self();
-
+		
 	}
 
 }

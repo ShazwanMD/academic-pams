@@ -38,7 +38,6 @@ public class ThenIKnowStudentRegisteredCourseandPaymentStatus extends Stage<Then
 	private AdAcademicSession academicSession;
 	
 	
-	
 	@Pending
 	public ThenIKnowStudentRegisteredCourseandPaymentStatus student_registered_courses_and_payment_status_is_viewed() {
 
