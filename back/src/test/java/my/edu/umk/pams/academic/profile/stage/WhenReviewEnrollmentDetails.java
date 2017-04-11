@@ -55,7 +55,7 @@ public class WhenReviewEnrollmentDetails extends Stage<WhenReviewEnrollmentDetai
 
 	@ProvidedScenarioState
 	private AdCohort cohort;
-
+	
 	@ProvidedScenarioState
 	private AdProgram program;
 	
@@ -88,13 +88,16 @@ public class WhenReviewEnrollmentDetails extends Stage<WhenReviewEnrollmentDetai
 		courses = faculty.getCourses();
 		for (AdCourse course : courses)
 			LOG.debug("Course(s):{}", course.getCode());
-			
-		offering = termService.findOfferingByCanonicalCode("A01/PHD/0001/DDA2113");
-		LOG.debug("Student's Offering Code: {}", offering.getCanonicalCode());
-
-		section = termService.findSectionByCanonicalCode("A01/PHD/0001/DDA2113/201720181");
-		LOG.debug("Student's Section Code: {}", section.getCanonicalCode());
-
+		
+		List<AdOffering> offerings = program.getOfferings();
+		for (AdOffering offering :offerings)
+			LOG.debug("Student's Offering:{}", offering.getCanonicalCode());
+		
+		List<AdSection> sections = offering.getSections();
+		for (AdSection section : sections)
+			LOG.debug("Section(s):{}", section.getCanonicalCode());
+		
+	
 		return self();
 	}
 
