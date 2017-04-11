@@ -382,8 +382,432 @@ VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
                                 FROM AD_FCTY F
                                 WHERE F.CODE = 'CPS'),
                                'PAP', 'Tourism', 'Pelancongan', 'Tourism', 50, 1, 1, 0,
-                               CURRENT_TIMESTAMP);                          
+                               CURRENT_TIMESTAMP);      
+
+INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE, TITLE_MS, TITLE_EN, CREDIT, CLASSIFICATION, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
+                                FROM AD_FCTY F
+                                WHERE F.CODE = 'A08'),
+                               'MBG', 'GEOSCIENCE', 'GEOSAINS', 'GEOSCIENCE', 50, 1, 1, 0,
+                               CURRENT_TIMESTAMP);  
+
+INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE, TITLE_MS, TITLE_EN, CREDIT, CLASSIFICATION, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
+                                FROM AD_FCTY F
+                                WHERE F.CODE = 'A08'),
+                               'PBG', 'GEOSCIENCE', 'GEOSAINS', 'GEOSCIENCE', 50, 1, 1, 0,
+                               CURRENT_TIMESTAMP);	
+
+INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE, TITLE_MS, TITLE_EN, CREDIT, CLASSIFICATION, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
+                                FROM AD_FCTY F
+                                WHERE F.CODE = 'A08'),
+                               'MBN', 'NATURAL RESOURCES MANAGEMENT', 'PENGURUSAN SUMBER ASLI', 'NATURAL RESOURCES MANAGEMENT', 50, 1, 1, 0,
+                               CURRENT_TIMESTAMP);	
+
+INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE, TITLE_MS, TITLE_EN, CREDIT, CLASSIFICATION, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
+                                FROM AD_FCTY F
+                                WHERE F.CODE = 'A08'),
+                               'PBN', 'NATURAL RESOURCES MANAGEMENT', 'PENGURUSAN SUMBER ASLI', 'NATURAL RESOURCES MANAGEMENT', 50, 1, 1, 0,
+                               CURRENT_TIMESTAMP);	
+
+INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE, TITLE_MS, TITLE_EN, CREDIT, CLASSIFICATION, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
+                                FROM AD_FCTY F
+                                WHERE F.CODE = 'A08'),
+                               'MBK', 'SUSTAINABLE SCIENCE', 'SAINS KELESTARIAN', 'SUSTAINABLE SCIENCE', 50, 1, 1, 0,
+                               CURRENT_TIMESTAMP);	
+
+INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE, TITLE_MS, TITLE_EN, CREDIT, CLASSIFICATION, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
+                                FROM AD_FCTY F
+                                WHERE F.CODE = 'A08'),
+                               'PBK', 'SUSTAINABLE SCIENCE', 'SAINS KELESTARIAN', 'SUSTAINABLE SCIENCE', 50, 1, 1, 0,
+                               CURRENT_TIMESTAMP);				
+
+INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE, TITLE_MS, TITLE_EN, CREDIT, CLASSIFICATION, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
+                                FROM AD_FCTY F
+                                WHERE F.CODE = 'A08'),
+                               'MFB', 'MATERIAL TECHNOLOGY', 'TEKNOLOGI BAHAN', 'MATERIAL TECHNOLOGY', 50, 1, 1, 0,
+                               CURRENT_TIMESTAMP);				
+
+INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE, TITLE_MS, TITLE_EN, CREDIT, CLASSIFICATION, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
+                                FROM AD_FCTY F
+                                WHERE F.CODE = 'A08'),
+                               'PFB', 'MATERIAL TECHNOLOGY', 'TEKNOLOGI BAHAN', 'MATERIAL TECHNOLOGY', 50, 1, 1, 0,
+                               CURRENT_TIMESTAMP);	
+
+INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE, TITLE_MS, TITLE_EN, CREDIT, CLASSIFICATION, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
+                                FROM AD_FCTY F
+                                WHERE F.CODE = 'A08'),
+                               'MFS', 'FOREST RESOURCES TECHNOLOGY', 'TEKNOLOGI SUMBER HUTAN', 'FOREST RESOURCES TECHNOLOGY', 50, 1, 1, 0,
+                               CURRENT_TIMESTAMP);		
+
+INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE, TITLE_MS, TITLE_EN, CREDIT, CLASSIFICATION, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
+                                FROM AD_FCTY F
+                                WHERE F.CODE = 'A08'),
+                               'PFS', 'FOREST RESOURCES TECHNOLOGY', 'TEKNOLOGI SUMBER HUTAN', 'FOREST RESOURCES TECHNOLOGY', 50, 1, 1, 0,
+                               CURRENT_TIMESTAMP);	
+
+INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE, TITLE_MS, TITLE_EN, CREDIT, CLASSIFICATION, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
+                                FROM AD_FCTY F
+                                WHERE F.CODE = 'A08'),
+                               'MFT', 'ENERGY TECHNOLOGY', 'TEKNOLOGI TENAGA', 'ENERGY TECHNOLOGY', 50, 1, 1, 0,
+                               CURRENT_TIMESTAMP);	
+
+INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE, TITLE_MS, TITLE_EN, CREDIT, CLASSIFICATION, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
+                                FROM AD_FCTY F
+                                WHERE F.CODE = 'A08'),
+                               'PFT', 'ENERGY TECHNOLOGY', 'TEKNOLOGI TENAGA', 'ENERGY TECHNOLOGY', 50, 1, 1, 0,
+                               CURRENT_TIMESTAMP);	
+
+
+INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE, TITLE_MS, TITLE_EN, CREDIT, CLASSIFICATION, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
+                                FROM AD_FCTY F
+                                WHERE F.CODE = 'A02'),
+                               'MCW', 'HERITAGE STUDIES', 'PENGAJIAN WARISAN', 'HERITAGE STUDIES', 50, 1, 1, 0,
+                               CURRENT_TIMESTAMP);		
+
+INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE, TITLE_MS, TITLE_EN, CREDIT, CLASSIFICATION, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
+                                FROM AD_FCTY F
+                                WHERE F.CODE = 'A02'),
+                               'PCW', 'HERITAGE STUDIES', 'PENGAJIAN WARISAN', 'HERITAGE STUDIES', 50, 1, 1, 0,
+                               CURRENT_TIMESTAMP);					
+
+INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE, TITLE_MS, TITLE_EN, CREDIT, CLASSIFICATION, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
+                                FROM AD_FCTY F
+                                WHERE F.CODE = 'A02'),
+                               'MCT', 'TEXTILE AND FASHION', 'TEKSTIL DAN FESYEN', 'TEXTILE AND FASHION', 50, 1, 1, 0,
+                               CURRENT_TIMESTAMP);	
+
+INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE, TITLE_MS, TITLE_EN, CREDIT, CLASSIFICATION, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
+                                FROM AD_FCTY F
+                                WHERE F.CODE = 'A02'),
+                               'PCT', 'TEXTILE AND FASHION', 'TEKSTIL DAN FESYEN', 'TEXTILE AND FASHION', 50, 1, 1, 0,
+                               CURRENT_TIMESTAMP);	
+
+INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE, TITLE_MS, TITLE_EN, CREDIT, CLASSIFICATION, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
+                                FROM AD_FCTY F
+                                WHERE F.CODE = 'A02'),
+                               'MCP', 'PRODUCT DESIGN', 'REKABENTUK PRODUK', 'PRODUCT DESIGN', 50, 1, 1, 0,
+                               CURRENT_TIMESTAMP);	
+
+INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE, TITLE_MS, TITLE_EN, CREDIT, CLASSIFICATION, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
+                                FROM AD_FCTY F
+                                WHERE F.CODE = 'A02'),
+                               'PCP', 'PRODUCT DESIGN', 'REKABENTUK PRODUK', 'PRODUCT DESIGN', 50, 1, 1, 0,
+                               CURRENT_TIMESTAMP);		
+
+INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE, TITLE_MS, TITLE_EN, CREDIT, CLASSIFICATION, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
+                                FROM AD_FCTY F
+                                WHERE F.CODE = 'A02'),
+                               'MCM', 'MULTIMEDIA', 'MULTIMEDIA', 'MULTIMEDIA', 50, 1, 1, 0,
+                               CURRENT_TIMESTAMP);		
+
+INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE, TITLE_MS, TITLE_EN, CREDIT, CLASSIFICATION, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
+                                FROM AD_FCTY F
+                                WHERE F.CODE = 'A02'),
+                               'PCM', 'MULTIMEDIA', 'MULTIMEDIA', 'MULTIMEDIA', 50, 1, 1, 0,
+                               CURRENT_TIMESTAMP);			
+
+INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE, TITLE_MS, TITLE_EN, CREDIT, CLASSIFICATION, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
+                                FROM AD_FCTY F
+                                WHERE F.CODE = 'A02'),
+                               'MCV', 'VISUAL COMMUNICATION', 'KOMUNIKASI VISUAL', 'VISUAL COMMUNICATION', 50, 1, 1, 0,
+                               CURRENT_TIMESTAMP);		
+
+INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE, TITLE_MS, TITLE_EN, CREDIT, CLASSIFICATION, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
+                                FROM AD_FCTY F
+                                WHERE F.CODE = 'A02'),
+                               'PCV', 'VISUAL COMMUNICATION', 'KOMUNIKASI VISUAL', 'VISUAL COMMUNICATION', 50, 1, 1, 0,
+                               CURRENT_TIMESTAMP);			
+
+INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE, TITLE_MS, TITLE_EN, CREDIT, CLASSIFICATION, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
+                                FROM AD_FCTY F
+                                WHERE F.CODE = 'A07'),
+                               'MBT', 'BIO-INDUSTRIAL TECHNOLOGY', 'TEKNOLOGI BIOINDUSTRI', 'BIO-INDUSTRIAL TECHNOLOGY', 50, 1, 1, 0,
+                               CURRENT_TIMESTAMP);			
+
+INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE, TITLE_MS, TITLE_EN, CREDIT, CLASSIFICATION, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
+                                FROM AD_FCTY F
+                                WHERE F.CODE = 'A07'),
+                               'PBT', 'BIO-INDUSTRIAL TECHNOLOGY', 'TEKNOLOGI BIOINDUSTRI', 'BIO-INDUSTRIAL TECHNOLOGY', 50, 1, 1, 0,
+                               CURRENT_TIMESTAMP);						
+
+INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE, TITLE_MS, TITLE_EN, CREDIT, CLASSIFICATION, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
+                                FROM AD_FCTY F
+                                WHERE F.CODE = 'A07'),
+                               'MBS', 'AGRO TECHNOPRENEURSHIP', 'KEUSAHAWANAN TEKNOLOGI PERTANIAN', 'AGRO TECHNOPRENEURSHIP', 50, 1, 1, 0,
+                               CURRENT_TIMESTAMP);			
+
+INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE, TITLE_MS, TITLE_EN, CREDIT, CLASSIFICATION, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
+                                FROM AD_FCTY F
+                                WHERE F.CODE = 'A07'),
+                               'PBS', 'AGRO TECHNOPRENEURSHIP', 'KEUSAHAWANAN TEKNOLOGI PERTANIAN', 'AGRO TECHNOPRENEURSHIP', 50, 1, 1, 0,
+                               CURRENT_TIMESTAMP);			
+
+INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE, TITLE_MS, TITLE_EN, CREDIT, CLASSIFICATION, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
+                                FROM AD_FCTY F
+                                WHERE F.CODE = 'A07'),
+                               'MBB', 'AGRICULTURE TECHNOLOGY', 'BIOTEKNOLOGI PERTANIAN', 'AGRICULTURE TECHNOLOGY', 50, 1, 1, 0,
+                               CURRENT_TIMESTAMP);						
+
+INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE, TITLE_MS, TITLE_EN, CREDIT, CLASSIFICATION, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
+                                FROM AD_FCTY F
+                                WHERE F.CODE = 'A07'),
+                               'PBB', 'AGRICULTURE TECHNOLOGY', 'BIOTEKNOLOGI PERTANIAN', 'AGRICULTURE TECHNOLOGY', 50, 1, 1, 0,
+                               CURRENT_TIMESTAMP);				
+
+INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE, TITLE_MS, TITLE_EN, CREDIT, CLASSIFICATION, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
+                                FROM AD_FCTY F
+                                WHERE F.CODE = 'A07'),
+                               'MBP', 'PRODUCT DEVELOPMENT TECHNOLOGY', 'TEKNOLOGI PEMBANGUNAN PRODUK', 'PRODUCT DEVELOPMENT TECHNOLOGY', 50, 1, 1, 0,
+                               CURRENT_TIMESTAMP);			
+
+INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE, TITLE_MS, TITLE_EN, CREDIT, CLASSIFICATION, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
+                                FROM AD_FCTY F
+                                WHERE F.CODE = 'A07'),
+                               'PBP', 'PRODUCT DEVELOPMENT TECHNOLOGY', 'TEKNOLOGI PEMBANGUNAN PRODUK', 'PRODUCT DEVELOPMENT TECHNOLOGY', 50, 1, 1, 0,
+                               CURRENT_TIMESTAMP);							
+
+INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE, TITLE_MS, TITLE_EN, CREDIT, CLASSIFICATION, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
+                                FROM AD_FCTY F
+                                WHERE F.CODE = 'A07'),
+                               'MBH', 'ANIMAL HUSBANDARY', 'SAINS PETERNAKAN', 'ANIMAL HUSBANDARY', 50, 1, 1, 0,
+                               CURRENT_TIMESTAMP);	
+
+INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE, TITLE_MS, TITLE_EN, CREDIT, CLASSIFICATION, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
+                                FROM AD_FCTY F
+                                WHERE F.CODE = 'A07'),
+                               'PBH', 'ANIMAL HUSBANDARY', 'SAINS PETERNAKAN', 'ANIMAL HUSBANDARY', 50, 1, 1, 0,
+                               CURRENT_TIMESTAMP);			
+
+INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE, TITLE_MS, TITLE_EN, CREDIT, CLASSIFICATION, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
+                                FROM AD_FCTY F
+                                WHERE F.CODE = 'A07'),
+                               'MBA', 'AKUAKULTUR', 'AKUAKULTUR', 'AKUAKULTUR', 50, 1, 1, 0,
+                               CURRENT_TIMESTAMP);				
+
+INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE, TITLE_MS, TITLE_EN, CREDIT, CLASSIFICATION, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
+                                FROM AD_FCTY F
+                                WHERE F.CODE = 'A07'),
+                               'PBA', 'AKUAKULTUR', 'AKUAKULTUR', 'AKUAKULTUR', 50, 1, 1, 0,
+                               CURRENT_TIMESTAMP);				
+
+INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE, TITLE_MS, TITLE_EN, CREDIT, CLASSIFICATION, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
+                                FROM AD_FCTY F
+                                WHERE F.CODE = 'A06'),
+                               'MDP', 'PATALOGY', 'PATALOGI', 'PATALOGY', 50, 1, 1, 0,
+                               CURRENT_TIMESTAMP);		
+
+INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE, TITLE_MS, TITLE_EN, CREDIT, CLASSIFICATION, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
+                                FROM AD_FCTY F
+                                WHERE F.CODE = 'A06'),
+                               'PDP', 'PATALOGY', 'PATALOGI', 'PATALOGY', 50, 1, 1, 0,
+                               CURRENT_TIMESTAMP);				
+
+INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE, TITLE_MS, TITLE_EN, CREDIT, CLASSIFICATION, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
+                                FROM AD_FCTY F
+                                WHERE F.CODE = 'A06'),
+                               'MDN', 'NUTRITION', 'NUTRISI', 'NUTRITION', 50, 1, 1, 0,
+                               CURRENT_TIMESTAMP);		
+
+INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE, TITLE_MS, TITLE_EN, CREDIT, CLASSIFICATION, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
+                                FROM AD_FCTY F
+                                WHERE F.CODE = 'A06'),
+                               'PDN', 'NUTRITION', 'NUTRISI', 'NUTRITION', 50, 1, 1, 0,
+                               CURRENT_TIMESTAMP);			
+
+INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE, TITLE_MS, TITLE_EN, CREDIT, CLASSIFICATION, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
+                                FROM AD_FCTY F
+                                WHERE F.CODE = 'A06'),
+                               'MDA', 'ANATOMY', 'ANATOMI', 'ANATOMY', 50, 1, 1, 0,
+                               CURRENT_TIMESTAMP);		
+
+INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE, TITLE_MS, TITLE_EN, CREDIT, CLASSIFICATION, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
+                                FROM AD_FCTY F
+                                WHERE F.CODE = 'A06'),
+                               'PDA', 'ANATOMY', 'ANATOMI', 'ANATOMY', 50, 1, 1, 0,
+                               CURRENT_TIMESTAMP);		
+
+INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE, TITLE_MS, TITLE_EN, CREDIT, CLASSIFICATION, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
+                                FROM AD_FCTY F
+                                WHERE F.CODE = 'A06'),
+                               'MDM', 'MICROBIOLOGY', 'MIKROBIOLOGI', 'MICROBIOLOGY', 50, 1, 1, 0,
+                               CURRENT_TIMESTAMP);				
+
+INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE, TITLE_MS, TITLE_EN, CREDIT, CLASSIFICATION, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
+                                FROM AD_FCTY F
+                                WHERE F.CODE = 'A06'),
+                               'PDM', 'MICROBIOLOGY', 'MIKROBIOLOGI', 'MICROBIOLOGY', 50, 1, 1, 0,
+                               CURRENT_TIMESTAMP);				
+
+INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE, TITLE_MS, TITLE_EN, CREDIT, CLASSIFICATION, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
+                                FROM AD_FCTY F
+                                WHERE F.CODE = 'A06'),
+                               'MDR', 'PARASITOLOGY', 'PARASITOLOGI', 'PARASITOLOGY', 50, 1, 1, 0,
+                               CURRENT_TIMESTAMP);					
+
+INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE, TITLE_MS, TITLE_EN, CREDIT, CLASSIFICATION, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
+                                FROM AD_FCTY F
+                                WHERE F.CODE = 'A06'),
+                               'PDR', 'PARASITOLOGY', 'PARASITOLOGI', 'PARASITOLOGY', 50, 1, 1, 0,
+                               CURRENT_TIMESTAMP);		
+
+INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE, TITLE_MS, TITLE_EN, CREDIT, CLASSIFICATION, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
+                                FROM AD_FCTY F
+                                WHERE F.CODE = 'A06'),
+                               'MDF', 'PHYSIOLOGY', 'FISIOLOGI', 'PHYSIOLOGY', 50, 1, 1, 0,
+                               CURRENT_TIMESTAMP);				
+
+INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE, TITLE_MS, TITLE_EN, CREDIT, CLASSIFICATION, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
+                                FROM AD_FCTY F
+                                WHERE F.CODE = 'A06'),
+                               'PDF', 'PHYSIOLOGY', 'FISIOLOGI', 'PHYSIOLOGY', 50, 1, 1, 0,
+                               CURRENT_TIMESTAMP);				
+
+INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE, TITLE_MS, TITLE_EN, CREDIT, CLASSIFICATION, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
+                                FROM AD_FCTY F
+                                WHERE F.CODE = 'A04'),
+                               'MCS', 'STUDIES OF HISTORY AND CIVILISATION', 'PENGAJIAN SEJARAH DAN PERADABAN', 'STUDIES OF HISTORY AND CIVILISATION', 50, 1, 1, 0,
+                               CURRENT_TIMESTAMP);			
+
+INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE, TITLE_MS, TITLE_EN, CREDIT, CLASSIFICATION, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
+                                FROM AD_FCTY F
+                                WHERE F.CODE = 'A04'),
+                               'PCS', 'STUDIES OF HISTORY AND CIVILISATION', 'PENGAJIAN SEJARAH DAN PERADABAN', 'STUDIES OF HISTORY AND CIVILISATION', 50, 1, 1, 0,
+                               CURRENT_TIMESTAMP);						
+
+INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE, TITLE_MS, TITLE_EN, CREDIT, CLASSIFICATION, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
+                                FROM AD_FCTY F
+                                WHERE F.CODE = 'A04'),
+                               'MCN', 'DEVELOPMENT AND EDUCATIONAL VALUES', 'PEMBANGUNAN DAN PENDIDIKAN NILAI', 'DEVELOPMENT AND EDUCATIONAL VALUES', 50, 1, 1, 0,
+                               CURRENT_TIMESTAMP);		
+
+INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE, TITLE_MS, TITLE_EN, CREDIT, CLASSIFICATION, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
+                                FROM AD_FCTY F
+                                WHERE F.CODE = 'A04'),
+                               'PCN', 'DEVELOPMENT AND EDUCATIONAL VALUES', 'PEMBANGUNAN DAN PENDIDIKAN NILAI', 'DEVELOPMENT AND EDUCATIONAL VALUES', 50, 1, 1, 0,
+                               CURRENT_TIMESTAMP);				
+
+INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE, TITLE_MS, TITLE_EN, CREDIT, CLASSIFICATION, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
+                                FROM AD_FCTY F
+                                WHERE F.CODE = 'A04'),
+                               'MCO', 'INDUSTRIAL PSYCOLOGICAL ORGANIZATIONAL', 'PSIKOLOGI INDUSTRI ORGANISASI', 'INDUSTRIAL PSYCOLOGICAL ORGANIZATIONAL', 50, 1, 1, 0,
+                               CURRENT_TIMESTAMP);	
+
+INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE, TITLE_MS, TITLE_EN, CREDIT, CLASSIFICATION, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
+                                FROM AD_FCTY F
+                                WHERE F.CODE = 'A04'),
+                               'PCO', 'INDUSTRIAL PSYCOLOGICAL ORGANIZATIONAL', 'PSIKOLOGI INDUSTRI ORGANISASI', 'INDUSTRIAL PSYCOLOGICAL ORGANIZATIONAL', 50, 1, 1, 0,
+                               CURRENT_TIMESTAMP);			
+
+INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE, TITLE_MS, TITLE_EN, CREDIT, CLASSIFICATION, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
+                                FROM AD_FCTY F
+                                WHERE F.CODE = 'A04'),
+                               'MCA', 'RELIGION AND CONTEMPORARY', 'AGAMA DAN KONTEMPORARI', 'RELIGION AND CONTEMPORARY', 50, 1, 1, 0,
+                               CURRENT_TIMESTAMP);							
+
+INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE, TITLE_MS, TITLE_EN, CREDIT, CLASSIFICATION, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
+                                FROM AD_FCTY F
+                                WHERE F.CODE = 'A04'),
+                               'PCA', 'RELIGION AND CONTEMPORARY', 'AGAMA DAN KONTEMPORARI', 'RELIGION AND CONTEMPORARY', 50, 1, 1, 0,
+                               CURRENT_TIMESTAMP);					
+
+INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE, TITLE_MS, TITLE_EN, CREDIT, CLASSIFICATION, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
+                                FROM AD_FCTY F
+                                WHERE F.CODE = 'A04'),
+                               'MCK', 'SOCIAL WORK', 'KERJA SOSIAL', 'SOCIAL WORK', 50, 1, 1, 0,
+                               CURRENT_TIMESTAMP);			
+
+INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE, TITLE_MS, TITLE_EN, CREDIT, CLASSIFICATION, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
+                                FROM AD_FCTY F
+                                WHERE F.CODE = 'A04'),
+                               'PCK', 'SOCIAL WORK', 'KERJA SOSIAL', 'SOCIAL WORK', 50, 1, 1, 0,
+                               CURRENT_TIMESTAMP);			
+
+INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE, TITLE_MS, TITLE_EN, CREDIT, CLASSIFICATION, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
+                                FROM AD_FCTY F
+                                WHERE F.CODE = 'A04'),
+                               'MCB', 'LANGUAGE STUDIES', 'PENGAJIAN BAHASA', 'LANGUAGE STUDIES', 50, 1, 1, 0,
+                               CURRENT_TIMESTAMP);			
+
+INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE, TITLE_MS, TITLE_EN, CREDIT, CLASSIFICATION, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
+                                FROM AD_FCTY F
+                                WHERE F.CODE = 'A04'),
+                               'PCB', 'LANGUAGE STUDIES', 'PENGAJIAN BAHASA', 'LANGUAGE STUDIES', 50, 1, 1, 0,
+                               CURRENT_TIMESTAMP);		
+
+
+INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE, TITLE_MS, TITLE_EN, CREDIT, CLASSIFICATION, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
+                                FROM AD_FCTY F
+                                WHERE F.CODE = 'A04'),
+                               'MCC', 'COMMUNICATION', 'KOMUNIKASI', 'COMMUNICATION', 50, 1, 1, 0,
+                               CURRENT_TIMESTAMP);		
+
+INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE, TITLE_MS, TITLE_EN, CREDIT, CLASSIFICATION, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
+                                FROM AD_FCTY F
+                                WHERE F.CODE = 'A04'),
+                               'PCC', 'COMMUNICATION', 'KOMUNIKASI', 'COMMUNICATION', 50, 1, 1, 0,
+                               CURRENT_TIMESTAMP);								   
+                          							   
                           
+						  
                           
                           
                           
