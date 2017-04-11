@@ -29,6 +29,7 @@ public class US_AD_PFL_3001 extends SpringScenarioTest<GivenIAmBursary, WhenIVie
 	
 	private static final String IDENTITY_NO = "A17P002";
 	
+	
 	@Test
     @Rollback
     public void scenario3001() {
