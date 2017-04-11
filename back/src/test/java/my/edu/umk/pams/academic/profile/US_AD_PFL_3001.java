@@ -23,6 +23,7 @@ import my.edu.umk.pams.bdd.stage.GivenIAmBursary;
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 @As("As a bursary, I want to view course registration details so that I know student registered courses and their payment status")
+
 public class US_AD_PFL_3001 extends SpringScenarioTest<GivenIAmBursary, WhenIViewCourseRegistration, ThenIKnowStudentRegisteredCourseandPaymentStatus> {
 
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_PFL_3001.class);
