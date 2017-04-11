@@ -14,8 +14,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
- * @author PAMS
- */
+ * @author zaida_nawi
+ **/
 @JGivenStage
 public class WhenAdminAddCourse extends Stage<WhenAdminAddCourse> {
 
