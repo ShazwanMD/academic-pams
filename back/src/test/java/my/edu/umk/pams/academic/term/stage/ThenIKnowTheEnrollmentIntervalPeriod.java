@@ -13,8 +13,7 @@ public class ThenIKnowTheEnrollmentIntervalPeriod extends Stage<ThenIKnowTheEnro
 	
 	public ThenIKnowTheEnrollmentIntervalPeriod i_know_the_enrollment_interval_period() {
 		return self();
-
-
-}
+		
+	}
 
 }
