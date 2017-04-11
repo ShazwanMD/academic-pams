@@ -42,9 +42,6 @@ public class WhenLecturerReviewCourseInfoAndResearchInfo extends Stage<WhenLectu
    	private AdProgramLevel level;
     
     @ExpectedScenarioState
-   	private AdCourse course;
-    
-    @ExpectedScenarioState
    	private List<AdCourse> courses;
     
     @ExpectedScenarioState
@@ -61,31 +58,18 @@ public class WhenLecturerReviewCourseInfoAndResearchInfo extends Stage<WhenLectu
 		student = identityService.findStudentByMatricNo(identityNo);
 		cohort = student.getCohort();
 		program = cohort.getProgram();
+	    level = program.getProgramLevel();
 	    faculty = program.getFaculty();
 	    courses = faculty.getCourses();
 		
 		LOG.debug("Student's Name :{}", student.getName());
 		
 		for(AdCourse course:courses)
-			LOG.debug("Course's Registered:{}", course.getCode());
-		studentStatus = student.getStudentStatus();
-		LOG.debug("Student Status:{}", studentStatus.name());
+			LOG.debug("Course register by students:{}", course.getCode());
 		
-		cohort = student.getCohort();
-				
-		program = cohort.getProgram();
-		LOG.debug("Program:{}", program.getTitle());
-	    
-		faculty = program.getFaculty();
 	    LOG.debug("Faculty:{}", faculty.getName());
-	    
-	    level = program.getProgramLevel();
 	    LOG.debug("Level :{}", level.getCode());
 	    	    
-	    courses = faculty.getCourses();
-		for(AdCourse course:courses)
-			LOG.debug("Course(s):{}", course.getCode());
-		
 		LOG.debug("Program Registered:{}", program.getCode());
 		LOG.debug("Faculty's Details :{}", faculty.getDescription());
 		
@@ -99,15 +83,18 @@ public class WhenLecturerReviewCourseInfoAndResearchInfo extends Stage<WhenLectu
 		student = identityService.findStudentByMatricNo(identityNo2);
 		cohort = student.getCohort();
 		program = cohort.getProgram();
+	    level = program.getProgramLevel();
 	    faculty = program.getFaculty();
 	    courses = faculty.getCourses();
 		
 		LOG.debug("Student's Name :{}", student.getName());
 		
-		courses = faculty.getCourses();
-		for (AdCourse course : courses)
-			LOG.debug("Course(s):{}", course.getCode());
+		for(AdCourse course:courses)
+			LOG.debug("Course register by students:{}", course.getCode());
 		
+	    LOG.debug("Faculty:{}", faculty.getName());
+	    LOG.debug("Level :{}", level.getCode());
+	    	    
 		LOG.debug("Program Registered:{}", program.getCode());
 		LOG.debug("Faculty's Details :{}", faculty.getDescription());
 		
