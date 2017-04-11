@@ -35,12 +35,12 @@ public class ThenNewCohortIsUpdated extends Stage<ThenNewCohortIsUpdated> {
 	@ExpectedScenarioState
 	private AdProgram program;
 
-	@ProvidedScenarioState
+	@ExpectedScenarioState
 	private AdCurriculum curriculum;
 
 	private static final Logger LOG = LoggerFactory.getLogger(ThenNewCohortIsUpdated.class);
 
-	public ThenNewCohortIsUpdated new_cohort_is_updated() {
+	public ThenNewCohortIsUpdated new_cohort_is_updated_$(String CODE) {
 
 		List<AdCohort> cohort = plannerService.findCohorts(program, 0, 100);
 		Assert.notEmpty(cohort, "Cohort should not be empty");
