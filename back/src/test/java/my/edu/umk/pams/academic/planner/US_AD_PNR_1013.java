@@ -29,7 +29,7 @@ public class US_AD_PNR_1013
 		extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenAdminUpdateCohort, ThenNewCohortIsUpdated> {
 
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_PNR_1013.class);
-
+	
 	@ProvidedScenarioState
 	private String CODE = "A01/MASTER/0008/CHRT/0001";
 
@@ -38,7 +38,7 @@ public class US_AD_PNR_1013
 	public void scenario1() {
 		given().I_am_a_CPS_administrator();
 		when().Admin_update_cohort_to_faculty_code_$(CODE);
-		then().new_cohort_is_updated();
+		then().new_cohort_is_updated_$(CODE);
 	}
 
 }

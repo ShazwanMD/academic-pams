@@ -39,10 +39,6 @@ public class WhenAdminUpdateCurriculum extends Stage<WhenAdminUpdateCurriculum> 
 
 		curriculum = plannerService.findCurriculumByCode(code);
 		
-		
-		
-
-		
 		// setting up curriculum
 		curriculum.setCode(code);
 		curriculum.setOrdinal(1);
@@ -61,6 +57,18 @@ public class WhenAdminUpdateCurriculum extends Stage<WhenAdminUpdateCurriculum> 
 		plannerService.updateCurriculum(curriculum);
 
 		LOG.debug("curriculum : {}", curriculum.getCode());
+		LOG.debug("curriculum Ordinal : {}", curriculum.getOrdinal());
+		LOG.debug("curriculum CoreCredit: {}", curriculum.getCoreCredit());
+		LOG.debug("curriculum ElectiveCredit : {}", curriculum.getElectiveCredit());
+		LOG.debug("curriculum GeneralCredit: {}", curriculum.getGeneralCredit());
+		LOG.debug("curriculum LanguageCredit: {}", curriculum.getLanguageCredit());
+		LOG.debug("curriculum CurriculumCredit: {}", curriculum.getCurriculumCredit());
+		LOG.debug("curriculum OthersCredit: {}", curriculum.getOthersCredit());
+		LOG.debug("curriculum TotalCredit: {}", curriculum.getTotalCredit());
+		LOG.debug("curriculum MaxPeriod: {}", curriculum.getMaxPeriod());
+		LOG.debug("curriculum Period: {}", curriculum.getPeriod());
+		
+		
 
 		return self();
 	}

@@ -58,6 +58,57 @@ UPDATE AD_user
 SET actor_id = currval('SQ_AD_ACTR')
 WHERE email = 'student5@umk.edu.my';
 
+
+-- student 6
+INSERT INTO AD_ACTR (ID, IDENTITY_NO, NAME, EMAIL, PHONE, MOBILE, FAX, ACTOR_TYPE, C_TS, C_ID, M_ST)
+VALUES
+  (nextval('SQ_AD_ACTR'), 'A17P006', 'STUDENT SIX', 'student6@umk.edu.my', 097111775, 0123450004, NULL, 1,
+                          CURRENT_TIMESTAMP, 1, 1);
+
+INSERT INTO AD_STDN (ID, STUDENT_STATUS, COHORT_ID) VALUES (currval('SQ_AD_ACTR'), 1, 47);
+
+UPDATE AD_user
+SET actor_id = currval('SQ_AD_ACTR')
+WHERE email = 'student6@umk.edu.my';
+
+
+-- student 7
+INSERT INTO AD_ACTR (ID, IDENTITY_NO, NAME, EMAIL, PHONE, MOBILE, FAX, ACTOR_TYPE, C_TS, C_ID, M_ST)
+VALUES
+  (nextval('SQ_AD_ACTR'), 'A17P007', 'STUDENT SEVEN', 'student7@umk.edu.my', 097111775, 0123450004, NULL, 1,
+                          CURRENT_TIMESTAMP, 1, 1);
+
+INSERT INTO AD_STDN (ID, STUDENT_STATUS, COHORT_ID) VALUES (currval('SQ_AD_ACTR'), 2, 9);
+
+UPDATE AD_user
+SET actor_id = currval('SQ_AD_ACTR')
+WHERE email = 'student7@umk.edu.my';
+
+-- student 8
+INSERT INTO AD_ACTR (ID, IDENTITY_NO, NAME, EMAIL, PHONE, MOBILE, FAX, ACTOR_TYPE, C_TS, C_ID, M_ST)
+VALUES
+  (nextval('SQ_AD_ACTR'), 'A17P008', 'STUDENT EIGHT', 'student8@umk.edu.my', 097111775, 0123450004, NULL, 1,
+                          CURRENT_TIMESTAMP, 1, 1);
+
+INSERT INTO AD_STDN (ID, STUDENT_STATUS, COHORT_ID) VALUES (currval('SQ_AD_ACTR'), 1, 33);
+
+UPDATE AD_user
+SET actor_id = currval('SQ_AD_ACTR')
+WHERE email = 'student8@umk.edu.my';
+
+-- student 9
+INSERT INTO AD_ACTR (ID, IDENTITY_NO, NAME, EMAIL, PHONE, MOBILE, FAX, ACTOR_TYPE, C_TS, C_ID, M_ST)
+VALUES
+  (nextval('SQ_AD_ACTR'), 'A17P009', 'STUDENT NINE', 'student9@umk.edu.my', 097111775, 0123450004, NULL, 1,
+                          CURRENT_TIMESTAMP, 1, 1);
+
+INSERT INTO AD_STDN (ID, STUDENT_STATUS, COHORT_ID) VALUES (currval('SQ_AD_ACTR'), 1, 70);
+
+UPDATE AD_user
+SET actor_id = currval('SQ_AD_ACTR')
+WHERE email = 'student9@umk.edu.my';
+
+
 -- lecturer 1
 INSERT INTO AD_ACTR (ID, IDENTITY_NO, NAME, EMAIL, PHONE, MOBILE, FAX, ACTOR_TYPE, C_TS, C_ID, M_ST)
 VALUES
