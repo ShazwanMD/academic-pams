@@ -2,6 +2,7 @@ package my.edu.umk.pams.academic.planner.stage;
 
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
+import com.tngtech.jgiven.annotation.Pending;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 import my.edu.umk.pams.academic.planner.model.*;
@@ -41,10 +42,11 @@ public class WhenAdminAddCurriculum extends Stage<WhenAdminAddCurriculum> {
 	@ProvidedScenarioState
 	private AdCurriculum curriculum;
 
-	public WhenAdminAddCurriculum Admin_add_curriculum(){
+	public WhenAdminAddCurriculum add_curriculum(){
 
 		// setting up curriculum
 		AdProgram program = plannerService.findProgramByCode("A10");
+
 		curriculum = new AdCurriculumImpl();
 		curriculum.setCode(program.getCode() + "/" + "CRLM/0005"); // FKP/MASTER/0008/CRLM/0001
 		curriculum.setOrdinal(1);
@@ -64,42 +66,13 @@ public class WhenAdminAddCurriculum extends Stage<WhenAdminAddCurriculum> {
 
 		LOG.debug("curriculum : {}", curriculum.getCode());
 		LOG.debug("curriculum has added: {}", curriculum.getCode());
-		
-		
+
 		  return self();
     }
 	
-	
-	public WhenAdminAddCurriculum I_review_set_curriculum(){
 
-		// review set curriculum
-		AdFaculty faculty = plannerService.findFacultyByCode("A10");
-		AdAcademicSession academicSession= plannerService.findAcademicSessionByCode("201720181");
-		AdProgramLevel level = plannerService.findProgramLevelByCode("PHD");
-		AdProgram program = plannerService.findProgramByCode("A10");
-		LOG.debug("AcademicSession :{}", academicSession.getSemester());
-		LOG.debug("Faculty : {}", faculty.getDescription());
-		LOG.debug("Program Level : {}", level.getCode());
-		LOG.debug("Program Level : {}", level.getDescription());
-		LOG.debug("Program : {}", program.getTitle());
-		LOG.debug("Program : {}", program.getTitleEn());
-		LOG.debug("Program : {}", program.getTitleMs());
-
-	
-		faculty = plannerService.findFacultyByCode("A10");
-
-		List<AdCourse> courses = plannerService.findCourses(faculty);
-
-		for (AdCourse course : courses) {
-
-			LOG.debug("Course Taken : {}", course.getTitle());
-
-			LOG.debug("Course Taken : {}", course.getTitleEn());
-
-			LOG.debug("Course Taken : {}", course.getTitleMs());
-
-		}
-
+    @Pending
+	public WhenAdminAddCurriculum i_add_something_else() {
 		return self();
 	}
 

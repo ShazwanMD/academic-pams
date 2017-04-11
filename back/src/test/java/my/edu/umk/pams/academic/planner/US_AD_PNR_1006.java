@@ -1,5 +1,6 @@
 package my.edu.umk.pams.academic.planner;
 
+import com.tngtech.jgiven.annotation.Pending;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -31,10 +32,23 @@ public class US_AD_PNR_1006 extends
 
 	@Test
 	@Rollback
-	public void scenario1006() {
+	public void addCurriculum() {
 		given().I_am_a_CPS_administrator()
 			.and().I_pick_faculty_$(FACULTY_CODE);
-		when().Admin_add_curriculum().and().I_review_set_curriculum();
-		then().Curriculum_has_added().and().Curriculum_has_reviewed();
+		when().add_curriculum();
+		then().curriculum_is_added()
+		.and().print_to_console();
+	}
+
+	@Test
+	@Rollback
+	@Pending
+	public void removeCurriculum() {
+	}
+
+	@Test
+	@Rollback
+	@Pending
+	public void updateCurriculum() {
 	}
 }

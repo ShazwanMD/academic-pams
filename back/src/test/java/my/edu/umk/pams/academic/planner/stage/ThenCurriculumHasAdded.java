@@ -4,16 +4,14 @@ import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 
-import my.edu.umk.pams.academic.planner.model.AdCourse;
-import my.edu.umk.pams.academic.planner.model.AdCurriculum;
-import my.edu.umk.pams.academic.planner.model.AdFaculty;
-import my.edu.umk.pams.academic.planner.model.AdProgram;
-import my.edu.umk.pams.academic.planner.model.AdProgramLevel;
+import my.edu.umk.pams.academic.planner.model.*;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
+
+import java.util.List;
 
 public class ThenCurriculumHasAdded extends Stage<ThenCurriculumHasAdded> {
 
@@ -37,23 +35,42 @@ public class ThenCurriculumHasAdded extends Stage<ThenCurriculumHasAdded> {
 	@ExpectedScenarioState
 	private AdCurriculum curriculum;
 
-	public ThenCurriculumHasAdded Curriculum_has_added() {
-
+	public ThenCurriculumHasAdded curriculum_is_added() {
 //		LOG.debug("New curriculum has been added: {} ", curriculum.getCode());
-		Assert.notNull(curriculum, "curriculum data has been added");
+		Assert.notNull(curriculum, "curriculum cannnot be null");
 		return self();
-
 	}
 
-	public ThenCurriculumHasAdded Curriculum_has_reviewed() {
+	public ThenCurriculumHasAdded print_to_console() {
+			// review set curriculum
+//		AdFaculty faculty = plannerService.findFacultyByCode("A10");
+			AdAcademicSession academicSession= plannerService.findAcademicSessionByCode("201720181");
+			AdProgramLevel level = plannerService.findProgramLevelByCode("PHD");
+			AdProgram program = plannerService.findProgramByCode("A10");
+			LOG.debug("AcademicSession :{}", academicSession.getSemester());
+			LOG.debug("Faculty : {}", faculty.getDescription());
+			LOG.debug("Program Level : {}", level.getCode());
+			LOG.debug("Program Level : {}", level.getDescription());
+			LOG.debug("Program : {}", program.getTitle());
+			LOG.debug("Program : {}", program.getTitleEn());
+			LOG.debug("Program : {}", program.getTitleMs());
 
-		LOG.debug("Curriculum has been reviewed: {} ", curriculum.getCode());
-		Assert.notNull(curriculum, "curriculum data has been reviewed");
 
-		// boolean exists =
-		// plannerService.isCurriculumExists(curriculum.getCode());
-		// Assert.isTrue(exists, "program does not have curriculum");
-		return self();
+			faculty = plannerService.findFacultyByCode("A10");
+
+			List<AdCourse> courses = plannerService.findCourses(faculty);
+
+			for (AdCourse course : courses) {
+
+				LOG.debug("Course Taken : {}", course.getTitle());
+
+				LOG.debug("Course Taken : {}", course.getTitleEn());
+
+				LOG.debug("Course Taken : {}", course.getTitleMs());
+
+			}
+
+			return self();
 	}
 
 }
