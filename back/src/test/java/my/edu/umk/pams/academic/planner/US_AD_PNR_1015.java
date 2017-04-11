@@ -35,7 +35,7 @@ public class US_AD_PNR_1015 extends SpringScenarioTest<GivenIAmCPSAdministrator,
 	public void scenario1() {
 		given().I_am_a_CPS_administrator();
 		when().Admin_update_program_level(CODE);
-		then().program_level_is_updated();
+		then().program_level_is_updated(CODE);
 	
 }
 }
