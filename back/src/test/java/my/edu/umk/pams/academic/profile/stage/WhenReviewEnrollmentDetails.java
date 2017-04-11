@@ -12,11 +12,13 @@ import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 
 import my.edu.umk.pams.academic.identity.model.AdStudent;
+import my.edu.umk.pams.academic.identity.model.AdStudentStatus;
 import my.edu.umk.pams.academic.identity.service.IdentityService;
 import my.edu.umk.pams.academic.planner.model.AdCohort;
 import my.edu.umk.pams.academic.planner.model.AdCourse;
 import my.edu.umk.pams.academic.planner.model.AdFaculty;
 import my.edu.umk.pams.academic.planner.model.AdProgram;
+import my.edu.umk.pams.academic.planner.model.AdProgramLevel;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
 import my.edu.umk.pams.academic.term.model.AdOffering;
 import my.edu.umk.pams.academic.term.model.AdSection;
@@ -41,6 +43,9 @@ public class WhenReviewEnrollmentDetails extends Stage<WhenReviewEnrollmentDetai
 
 	@ExpectedScenarioState
 	private AdStudent student;
+	
+	@ExpectedScenarioState
+	private AdStudentStatus studentStatus;
 
 	@ExpectedScenarioState
 	private List<AdCourse> courses;
@@ -53,6 +58,9 @@ public class WhenReviewEnrollmentDetails extends Stage<WhenReviewEnrollmentDetai
 
 	@ProvidedScenarioState
 	private AdProgram program;
+	
+	@ProvidedScenarioState
+	private AdProgramLevel level;
 
 	@ProvidedScenarioState
 	private AdFaculty faculty;
@@ -60,21 +68,27 @@ public class WhenReviewEnrollmentDetails extends Stage<WhenReviewEnrollmentDetai
 	public WhenReviewEnrollmentDetails lecturer_review_enrollment_details(String identityNo) {
 
 		student = identityService.findStudentByMatricNo(identityNo);
-		LOG.debug("Student's Matric No: {}", student.getMatricNo());
-
-		cohort = plannerService.findCohortByCode("A01/PHD/0001/CHRT/0001");
-		LOG.debug("Student's Cohort: {}", cohort.getCode());
-
-		program = plannerService.findProgramByCode("A01/PHD/0001");
-		LOG.debug("Student's Program: {}", program.getCode());
-
-		faculty = plannerService.findFacultyByCode("A01");
-		LOG.debug("Student's Faculty: {}", faculty.getCode());
-
-		courses = plannerService.findCourses(faculty);
+		LOG.debug("Student's Matric No: {}", student.getName());
+		
+		studentStatus = student.getStudentStatus();
+		LOG.debug("Student's Status:{}", studentStatus.name());
+		
+		cohort = student.getCohort();
+		LOG.debug("Student's Cohort:{}", cohort.getCode());
+		
+		program = cohort.getProgram();
+		LOG.debug("Program Registered:{}", program.getCode());
+		
+		faculty = program.getFaculty();
+		LOG.debug("Faculty:{}", faculty.getName());
+		
+		level = program.getProgramLevel();
+		LOG.debug("Level of Study:{}", level.getDescription());
+		
+		courses = faculty.getCourses();
 		for (AdCourse course : courses)
-			LOG.debug("Student's Course(s) : {}", course.getCode());
-
+			LOG.debug("Course(s):{}", course.getCode());
+			
 		offering = termService.findOfferingByCanonicalCode("A01/PHD/0001/DDA2113");
 		LOG.debug("Student's Offering Code: {}", offering.getCanonicalCode());
 

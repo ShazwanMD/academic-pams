@@ -48,7 +48,7 @@ INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE, TITLE_MS, TITLE_EN, CREDIT, CL
 VALUES
   (nextval('SQ_AD_CRSE'), (SELECT ID
                            FROM AD_FCTY F
-                           WHERE F.CODE = 'A01'),
+                           WHERE F.CODE = 'A07'),
                           'DDA1153', 'LUKISAN KEJURUTERAAN', 'LUKISAN KEJURUTERAAN', 'ENGINEERING DRAWING', 3, 1, 1,
                           0, CURRENT_TIMESTAMP);
 
