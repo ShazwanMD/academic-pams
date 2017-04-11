@@ -21,6 +21,7 @@ import my.edu.umk.pams.academic.planner.model.AdAcademicClassification;
 import my.edu.umk.pams.academic.planner.model.AdCohort;
 import my.edu.umk.pams.academic.planner.model.AdCohortImpl;
 import my.edu.umk.pams.academic.planner.model.AdCurriculum;
+import my.edu.umk.pams.academic.planner.model.AdFaculty;
 import my.edu.umk.pams.academic.planner.model.AdProgram;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
 
@@ -43,22 +44,32 @@ public class WhenAdminUpdateCohort extends Stage<WhenAdminUpdateCohort> {
 
 	@ProvidedScenarioState
 	private AdCohort cohort;
+	
+	@ProvidedScenarioState
+	private AdFaculty faculty;
 
 	public WhenAdminUpdateCohort Admin_update_cohort_to_faculty_code_$(String code) {
-
+		
+		
 		program = plannerService.findProgramByCode("A01/MASTER/0008");
 		LOG.debug("program code: {}", program.getCode());
 
 		AdCohort cohort = plannerService.findCohortByCode(code);
-		LOG.debug("cohort: {}", cohort.getDescription());
+		LOG.debug("cohort code: {}", cohort.getCode());
 
 		cohort.setCode(code);
-		cohort.setDescription("FIRSTt COHORTll FOR PROGRAM ");
+		cohort.setDescription("FIRST COHORT");
 		cohort.setClassification(AdAcademicClassification.LEVEL_000);
 		cohort.setCurriculum(curriculum);
 		cohort.setProgram(program);
 		plannerService.updateCohort(cohort);
-
+		
+		LOG.debug("cohort code: {}", cohort.getCode());
+		LOG.debug("cohort desription: {}", cohort.getDescription());
+		LOG.debug("cohort Classification: {}", cohort.getClassification());
+		
+		
+		
 		return self();
 	}
 }

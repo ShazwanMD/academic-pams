@@ -25,7 +25,7 @@ public class US_AD_PFL_1003 extends SpringScenarioTest<GivenIAmStudent, WhenIRev
     private static final Logger LOG = LoggerFactory.getLogger(US_AD_PFL_1003.class);
     
     //change student IdentityNo Here
-    private static final String IDENTITY_NO = "A17P005";
+    private static final String IDENTITY_NO = "A17P001";
   
     @Test
     @Rollback

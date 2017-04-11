@@ -21,8 +21,6 @@ import my.edu.umk.pams.academic.planner.service.PlannerService;
 public class WhenReviewCourseRegistrationDetails extends Stage<WhenReviewCourseRegistrationDetails>{
 	
 	private static final Logger LOG = LoggerFactory.getLogger(WhenReviewCourseRegistrationDetails.class);
-	
-	
 
 	@Autowired
 	private IdentityService identityService;
@@ -42,12 +40,6 @@ public class WhenReviewCourseRegistrationDetails extends Stage<WhenReviewCourseR
 	@ExpectedScenarioState
 	AdFaculty faculty;
 	
-	@ExpectedScenarioState
-	private String studentNo = "A17P001";
-	
-	
-	
-	
 	
 	public WhenReviewCourseRegistrationDetails supervisor_review_course_registration_info_for_$(String studentNo){
 		
@@ -64,8 +56,6 @@ public class WhenReviewCourseRegistrationDetails extends Stage<WhenReviewCourseR
 		for (AdCourse course : courses)
 			LOG.debug(course.getCode());
 	
-		
-		
 		return self();
 		
 	}

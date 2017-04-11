@@ -9,11 +9,9 @@ import org.springframework.util.Assert;
 
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
-import com.tngtech.jgiven.annotation.Pending;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 
 import my.edu.umk.pams.academic.identity.model.AdStudent;
-import my.edu.umk.pams.academic.identity.service.IdentityService;
 import my.edu.umk.pams.academic.planner.model.AdCourse;
 import my.edu.umk.pams.academic.planner.model.AdFaculty;
 import my.edu.umk.pams.academic.planner.model.AdProgram;
@@ -23,10 +21,6 @@ import my.edu.umk.pams.academic.planner.service.PlannerService;
 public class ThenCourseRegistrationDetailReviewed extends Stage<ThenCourseRegistrationDetailReviewed> {
 
 	private static final Logger LOG = LoggerFactory.getLogger(ThenCourseRegistrationDetailReviewed.class);
-	
-	
-	@Autowired
-	private IdentityService identityService;
 	
 	@Autowired
 	private PlannerService plannerService;
@@ -42,9 +36,6 @@ public class ThenCourseRegistrationDetailReviewed extends Stage<ThenCourseRegist
 	
 	@ExpectedScenarioState
 	AdFaculty faculty;
-	
-	@ExpectedScenarioState
-	private String studentNo = "A17P001";
 	
 	public ThenCourseRegistrationDetailReviewed  course_registration_details_reviewed() {
 		faculty = plannerService.findFacultyByCode("A01");
