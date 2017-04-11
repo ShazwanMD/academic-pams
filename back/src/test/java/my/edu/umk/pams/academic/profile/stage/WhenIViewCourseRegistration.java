@@ -11,12 +11,9 @@ import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 
 import my.edu.umk.pams.academic.identity.model.AdStudent;
-import my.edu.umk.pams.academic.identity.model.AdStudentStatus;
 import my.edu.umk.pams.academic.identity.service.IdentityService;
-import my.edu.umk.pams.academic.planner.model.AdCohort;
 import my.edu.umk.pams.academic.planner.model.AdCourse;
 import my.edu.umk.pams.academic.planner.model.AdFaculty;
-import my.edu.umk.pams.academic.planner.model.AdProgram;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
 
 
@@ -35,40 +32,16 @@ public class WhenIViewCourseRegistration extends Stage<WhenIViewCourseRegistrati
 	private	AdStudent student;
 	
 	@ProvidedScenarioState
-	private	AdStudentStatus studentStatus;
-	
-	@ProvidedScenarioState
 	private List<AdCourse> courses;
 	
-	@ProvidedScenarioState
-	private	AdCohort cohort;
-	
-	@ProvidedScenarioState
 	private AdFaculty faculty;
 	
-	@ProvidedScenarioState
-	private AdProgram program;
 	
-	
-	public WhenIViewCourseRegistration I_view_student_$_course_registration(String identityNo) {
+	public WhenIViewCourseRegistration I_view_student_course_registration() {
 		
-		student = identityService.findStudentByMatricNo(identityNo);
-		LOG.debug("Student's Name:{}", student.getName());
-		
-		studentStatus = student.getStudentStatus();
-		LOG.debug("Student's Status:{}", studentStatus.name());
-		
-		cohort = student.getCohort();
-		LOG.debug("Cohort:{}", cohort.getCode());
-		
-		
-		program = cohort.getProgram();
-		LOG.debug("Program:{}", program.getCode());
-		
-		faculty = program.getFaculty();
-		LOG.debug("Faculty:{}", faculty.getName());
-		
-		courses = faculty.getCourses();
+		faculty = plannerService.findFacultyByCode("A01");
+		courses = plannerService.findCourses(faculty);
+
 		for (AdCourse course : courses) {
 			LOG.debug(course.getTitle());
 		}

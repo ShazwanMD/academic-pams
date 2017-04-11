@@ -21,7 +21,6 @@ import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
 import my.edu.umk.pams.academic.planner.model.AdCourse;
 import my.edu.umk.pams.academic.planner.model.AdProgram;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
-import my.edu.umk.pams.academic.profile.stage.ThenStudentRegisteredCoursesReviewed;
 import my.edu.umk.pams.academic.security.integration.AdUserDetails;
 import my.edu.umk.pams.academic.term.model.AdOffering;
 import my.edu.umk.pams.academic.term.model.AdSection;
@@ -67,8 +66,6 @@ public class GivenIAmAcademicStaff extends Stage<GivenIAmAcademicStaff> {
 	
 	@ProvidedScenarioState
 	AdAddress address;
-	
-	String canonicalCode;
 
     public GivenIAmAcademicStaff i_am_a_staff_in_$_academic_session(String academicSessionCode) {
         loginAsStaff();
@@ -104,6 +101,4 @@ public class GivenIAmAcademicStaff extends Stage<GivenIAmAcademicStaff> {
         AdUser user = ((AdUserDetails) authed.getPrincipal()).getUser();
         staff = (AdActor) user.getActor();
     }
-
-
 }

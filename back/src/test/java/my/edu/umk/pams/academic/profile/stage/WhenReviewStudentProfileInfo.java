@@ -9,13 +9,7 @@ import my.edu.umk.pams.academic.common.model.AdCountryCode;
 import my.edu.umk.pams.academic.common.service.CommonService;
 import my.edu.umk.pams.academic.identity.model.AdAddress;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
-import my.edu.umk.pams.academic.identity.model.AdStudentStatus;
 import my.edu.umk.pams.academic.identity.service.IdentityService;
-import my.edu.umk.pams.academic.planner.model.AdCohort;
-import my.edu.umk.pams.academic.planner.model.AdCourse;
-import my.edu.umk.pams.academic.planner.model.AdFaculty;
-import my.edu.umk.pams.academic.planner.model.AdProgram;
-import my.edu.umk.pams.academic.planner.model.AdProgramLevel;
 import my.edu.umk.pams.academic.profile.service.ProfileService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -39,9 +33,6 @@ public class WhenReviewStudentProfileInfo extends Stage<WhenReviewStudentProfile
 
     @ExpectedScenarioState
     private AdStudent student;
-    
-    @ExpectedScenarioState
-    private AdStudentStatus studentStatus;
 
     @ExpectedScenarioState
     private List<AdAddress> addresses;
@@ -49,34 +40,17 @@ public class WhenReviewStudentProfileInfo extends Stage<WhenReviewStudentProfile
     @ExpectedScenarioState
     private AdAddress address;
     
-    @ExpectedScenarioState
-    private AdCohort cohort;
-    
-    @ExpectedScenarioState
-    private AdProgram program;
-    
-    @ExpectedScenarioState
-    private AdProgramLevel level;
-    
     @ProvidedScenarioState
     private AdCountryCode countryCode;
-    
-    @ExpectedScenarioState
-    private AdFaculty faculty;
-    
-    @ExpectedScenarioState
-    private AdCourse course;
 
     private String code;
     
     public WhenReviewStudentProfileInfo supervisor_review_student_profile(String studentNo) {
-        //Student
+        
     	student = identityService.findStudentByMatricNo(studentNo);
-    	LOG.debug("Student's Name:{}", student.getName());
-    	
-    	//addresss
-    	addresses = student.getAddresses();
+        addresses = profileService.findAddresses(student);
         countryCode = commonService.findCountryCodeByCode(code);
+       
         for (AdAddress address : addresses) {
         	LOG.debug("Student's name : {}", student.getName());
             LOG.debug("Student's matric number : {}", student.getMatricNo());
@@ -94,33 +68,7 @@ public class WhenReviewStudentProfileInfo extends Stage<WhenReviewStudentProfile
             LOG.debug("Country Code:{}", countryCode.getCode());
             LOG.debug("Country Code:{}", countryCode.getDescription());
     }
-      
-        //Student Status
-        studentStatus = student.getStudentStatus();
-        LOG.debug("StudentStatus:{}", studentStatus.name());
-        
-        //cohort
-        cohort = student.getCohort();
-        LOG.debug("Cohort:{}", cohort.getCode());
-        
-        
-        //program
-        program = cohort.getProgram();
-        LOG.debug("Program(s):{}", program.getCode());
-        
-        level = program.getProgramLevel();
-        LOG.debug("Program Level:{}", level.getCode());
-        
-        faculty = program.getFaculty();
-        LOG.debug("Faculty:{}", faculty.getName());
-        
-        List<AdCourse> courses = faculty.getCourses();
-        for(AdCourse course:courses)
-        	LOG.debug("Course(s):{}", course.getCode());
-        
-        
-        
-   
+
         return self();
     }
 }

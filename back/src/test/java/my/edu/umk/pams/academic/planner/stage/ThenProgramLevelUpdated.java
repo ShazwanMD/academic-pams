@@ -1,5 +1,7 @@
 package my.edu.umk.pams.academic.planner.stage;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,11 +24,11 @@ public class ThenProgramLevelUpdated extends Stage<ThenProgramLevelUpdated> {
 	@ExpectedScenarioState
     private AdProgramLevel programLevel;
 	
-	public ThenProgramLevelUpdated program_level_is_updated(String code) {
+	public ThenProgramLevelUpdated program_level_is_updated() {
 
 
-    	AdProgramLevel exists = plannerService.findProgramLevelByCode(code);
-    	 Assert.notNull(exists, "existss");
+		List< AdProgramLevel> programLevel = plannerService.findProgramLevels();
+		Assert.notEmpty(programLevel, "programLevel should not be empty");
 		
 		
     	
