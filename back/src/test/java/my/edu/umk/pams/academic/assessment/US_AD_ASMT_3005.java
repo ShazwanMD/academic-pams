@@ -32,8 +32,8 @@ private String ACADEMIC_SESSION = "201720181";
 	@Rollback
 	public void scenario3005_cps(){
 		
-		String USERNAME = "cps";
-		String PASSWORD = "abc123";
+	String USERNAME = "cps";
+	String PASSWORD = "abc123";
 		
 		given().i_am_a_$_administrator_in_$_academic_session(ACADEMIC_SESSION, USERNAME, PASSWORD);
 			when().I_setup_grading_entry_interval();
@@ -44,8 +44,8 @@ private String ACADEMIC_SESSION = "201720181";
 	@Rollback
 	public void scenario3005_mgseb(){
 					
-		String USERNAME = "mgseb";
-		String PASSWORD = "abc123";
+	String USERNAME = "mgseb";
+	String PASSWORD = "abc123";
 					
 		given().i_am_a_$_administrator_in_$_academic_session(ACADEMIC_SESSION, USERNAME, PASSWORD);
 			when().I_setup_grading_entry_interval();
