@@ -451,7 +451,7 @@ public class TermServiceImpl implements TermService {
         sessionFactory.getCurrentSession().flush();
     }
 
-    
+
     // ====================================================================================================
     // ADMISSION APPLICATION
     // ====================================================================================================
@@ -617,6 +617,7 @@ public class TermServiceImpl implements TermService {
         admission.setCgpa(BigDecimal.ZERO); // todo
         admission.setGpa(BigDecimal.ZERO); // todo
         admission.setProgram(program);
+        // todo: admission.setCohort(cohort);
         saveAdmission(admission);
         sessionFactory.getCurrentSession().refresh(admission);
 
@@ -631,8 +632,7 @@ public class TermServiceImpl implements TermService {
     }
 
     @Override
-    public AdAdmission findAdmissionBySessionProgramAndStudent(AdAcademicSession academicSession, AdProgram program,
-                                                               AdStudent student) {
+    public AdAdmission findAdmissionBySessionProgramAndStudent(AdAcademicSession academicSession, AdProgram program, AdStudent student) {
         return admissionApplicationDao.findBySessionProgramAndStudent(academicSession, program, student);
     }
 
