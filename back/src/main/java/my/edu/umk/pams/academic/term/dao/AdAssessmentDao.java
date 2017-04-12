@@ -1,6 +1,7 @@
 package my.edu.umk.pams.academic.term.dao;
 
 import my.edu.umk.pams.academic.core.GenericDao;
+import my.edu.umk.pams.academic.identity.model.AdUser;
 import my.edu.umk.pams.academic.term.model.AdAssessment;
 import my.edu.umk.pams.academic.term.model.AdAssessmentType;
 import my.edu.umk.pams.academic.term.model.AdOffering;
@@ -46,5 +47,15 @@ public interface AdAssessmentDao extends GenericDao<Long, AdAssessment> {
     boolean hasAssessment(AdAcademicSession academicSession, AdOffering offering);
 
     boolean hasGradebook(AdSection section, AdAssessment assessment);
+    
+    // ====================================================================================================
+    // CRUD
+    // ====================================================================================================
+    
+    void addAssessment(AdOffering offering, AdAssessment assessment, AdUser user);
+
+    void updateAssessment(AdOffering offering, AdAssessment assessment, AdUser user);
+
+    void deleteAssessment(AdOffering offering, AdAssessment assessment, AdUser user);
 
 }

@@ -66,6 +66,9 @@ public class GivenIAmAcademicStaff extends Stage<GivenIAmAcademicStaff> {
 	
 	@ProvidedScenarioState
 	AdAddress address;
+	
+	@ProvidedScenarioState
+	private AdUser user;
 
     public GivenIAmAcademicStaff i_am_a_staff_in_$_academic_session(String academicSessionCode) {
         loginAsStaff();
@@ -98,7 +101,9 @@ public class GivenIAmAcademicStaff extends Stage<GivenIAmAcademicStaff> {
         UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken("lecturer1", "abc123");
         Authentication authed = authenticationManager.authenticate(token);
         SecurityContextHolder.getContext().setAuthentication(authed);
-        AdUser user = ((AdUserDetails) authed.getPrincipal()).getUser();
+        
+        
+        user = ((AdUserDetails) authed.getPrincipal()).getUser();
         staff = (AdActor) user.getActor();
     }
 }

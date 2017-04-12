@@ -1,13 +1,18 @@
 package my.edu.umk.pams.academic.term.dao;
 
 import my.edu.umk.pams.academic.core.AdMetaState;
+import my.edu.umk.pams.academic.core.AdMetadata;
 import my.edu.umk.pams.academic.core.GenericDaoSupport;
+import my.edu.umk.pams.academic.identity.model.AdUser;
 import my.edu.umk.pams.academic.term.model.*;
 import my.edu.umk.pams.academic.planner.model.*;
+
+import org.apache.commons.lang.Validate;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 /**
@@ -189,5 +194,46 @@ public class AdAssessmentDaoImpl extends GenericDaoSupport<Long, AdAssessment> i
         query.setEntity("section", section);
         query.setInteger("state", AdMetaState.ACTIVE.ordinal());
         return 0 < ((Long) query.uniqueResult()).intValue();
+    }
+    // ====================================================================================================
+    // CRUD
+    // ====================================================================================================
+    
+    @Override
+    public void addAssessment(AdOffering offering, AdAssessment assessment, AdUser user) {
+        Validate.notNull(user, "User cannot be null");
+        Validate.notNull(offering, "Offering cannot be null");
+        Validate.notNull(assessment, "assessment cannot be null");
+        Session session = sessionFactory.getCurrentSession();
+        assessment.setOffering(offering);
+
+        // prepare metadata
+        AdMetadata metadata = new AdMetadata();
+        metadata.setCreatedDate(new Timestamp(System.currentTimeMillis()));
+        metadata.setCreatorId(user.getId());
+        metadata.setState(AdMetaState.ACTIVE);
+        assessment.setMetadata(metadata);
+        session.save(assessment);
+    }
+
+    @Override
+    public void updateAssessment(AdOffering offering, AdAssessment assessment, AdUser user) {
+        Validate.notNull(user, "User cannot be null");
+        Session session = sessionFactory.getCurrentSession();
+        assessment.setOffering(offering);
+
+        // prepare metadata
+        AdMetadata metadata = assessment.getMetadata();
+        metadata.setModifiedDate(new Timestamp(System.currentTimeMillis()));
+        metadata.setModifierId(user.getId());
+        assessment.setMetadata(metadata);
+        session.update(assessment);
+    }
+
+    @Override
+    public void deleteAssessment(AdOffering offering, AdAssessment assessment, AdUser user) {
+        Validate.notNull(user, "User cannot be null");
+        Session session = sessionFactory.getCurrentSession();
+        session.delete(assessment);
     }
 }
