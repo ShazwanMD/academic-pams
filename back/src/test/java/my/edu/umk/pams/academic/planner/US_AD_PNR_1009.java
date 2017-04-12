@@ -16,12 +16,17 @@ import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.planner.stage.ThenCreditHoursApplied;
 import my.edu.umk.pams.academic.planner.stage.WhenEnterCreditHours;
 import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
+import my.edu.umk.pams.bdd.tags.Issue;
+import my.edu.umk.pams.bdd.tags.Submodule;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 @As("As an academic administrator,i want to set credit  for a faculty so that the credit for each courses introduced")
+@Issue("PAMA-45")
+@Submodule("Planner")
+
 public class US_AD_PNR_1009 extends
 SpringScenarioTest<GivenIAmCPSAdministrator, WhenEnterCreditHours, ThenCreditHoursApplied>{
 	
