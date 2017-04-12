@@ -17,12 +17,15 @@ import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.planner.stage.ThenStudyCenterUpdated;
 import my.edu.umk.pams.academic.planner.stage.WhenAdminUpdateStudyCenter;
 import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
+import my.edu.umk.pams.bdd.tags.Issue;
+import my.edu.umk.pams.bdd.tags.Submodule;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 @As("As an academic administrator, i want view and update Study Center so that Study Center is viewed and updated")
-
+@Issue("PAMA-53")
+@Submodule("Planner")
 public class US_AD_PNR_1017
 		extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenAdminUpdateStudyCenter, ThenStudyCenterUpdated> {
 
@@ -33,7 +36,7 @@ public class US_AD_PNR_1017
 
 	@Test
 	@Rollback
-	public void scenario1() {
+	public void UpdateStudyCenter() {
 		given().I_am_a_CPS_administrator();
 		when().Admin_update_study_center_$(CODE);
 		then().Study_Center_is_updated();

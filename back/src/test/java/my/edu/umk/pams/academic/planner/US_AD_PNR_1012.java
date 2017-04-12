@@ -17,12 +17,17 @@ import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.planner.stage.ThenProgramUpdated;
 import my.edu.umk.pams.academic.planner.stage.WhenAdminUpdateProgram;
 import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
+import my.edu.umk.pams.bdd.tags.Issue;
+import my.edu.umk.pams.bdd.tags.Submodule;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 @As("As an academic administrator, i want to update program for a faculty so that programmes is updated")
+@Issue("PAMA-48")
+@Submodule("Planner")
+
 public class US_AD_PNR_1012
 		extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenAdminUpdateProgram, ThenProgramUpdated> {
 
@@ -32,7 +37,7 @@ public class US_AD_PNR_1012
 
 	@Test
 	@Rollback
-	public void scenario1() {
+	public void UpdateProgram() {
 		given().I_am_a_CPS_administrator().I_pick_program_$(PROGRAM_CODE);
 		when().Admin_update_program_for_faculty_$(FACULTY_CODE);
 		then().program_is_updated();
