@@ -14,12 +14,13 @@ import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.term.stage.ThenTheAdmissionWillBeReviewed;
 import my.edu.umk.pams.academic.term.stage.WhenIRegisterAdmissionInNewSemester;
 import my.edu.umk.pams.bdd.stage.GivenIAmStudent;
-
+import my.edu.umk.pams.bdd.tags.Submodule;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 @As("As a student, I want to register admission in new semester so that the admission will be reviewed")
+@Submodule("Term")
 public class US_AD_TRM_1024 extends
 		SpringScenarioTest<GivenIAmStudent, WhenIRegisterAdmissionInNewSemester, ThenTheAdmissionWillBeReviewed> {
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_1024.class);

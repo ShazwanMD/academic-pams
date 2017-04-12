@@ -14,13 +14,15 @@ import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.term.stage.ThenTheAdvisorInfoIsCurrent;
 import my.edu.umk.pams.academic.term.stage.WhenIViewAppointedAdvisorInfo;
 import my.edu.umk.pams.bdd.stage.GivenIAmStudent;
+import my.edu.umk.pams.bdd.tags.Submodule;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 @As("As a student,I want to view appointed advisor info so that the advisor info is current")
-
-public class US_AD_TRM_1019 extends SpringScenarioTest<GivenIAmStudent, WhenIViewAppointedAdvisorInfo, ThenTheAdvisorInfoIsCurrent> {
+@Submodule("Term")
+public class US_AD_TRM_1019
+		extends SpringScenarioTest<GivenIAmStudent, WhenIViewAppointedAdvisorInfo, ThenTheAdvisorInfoIsCurrent> {
 
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_1019.class);
 

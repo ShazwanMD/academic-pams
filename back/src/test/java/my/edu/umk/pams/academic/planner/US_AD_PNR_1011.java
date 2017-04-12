@@ -25,11 +25,13 @@ import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.planner.stage.ThenAcademicSessionUpdated;
 import my.edu.umk.pams.academic.planner.stage.WhenIUpdateAcademicSession;
 import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
+import my.edu.umk.pams.bdd.tags.Issue;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 @As("As an academic administrator, I want to update new academic session info so that the new academic session info is updated")
+@Issue("PAMA-47")
 public class US_AD_PNR_1011
 		extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenIUpdateAcademicSession, ThenAcademicSessionUpdated> {
 
@@ -37,7 +39,7 @@ public class US_AD_PNR_1011
 
 	@Test
 	@Rollback(false)
-	public void scenario1() {
+	public void UpdateAcademicSession() {
 
 		given().I_am_a_CPS_administrator_in_current_academic_session();
 		when().I_update_academic_session();

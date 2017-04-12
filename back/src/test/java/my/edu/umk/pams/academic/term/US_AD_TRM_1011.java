@@ -21,13 +21,14 @@ import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.term.stage.ThenTheEnrollmentDateIsOpen;
 import my.edu.umk.pams.academic.term.stage.WhenIOpenTheEnrollmentDate;
 import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
-
+import my.edu.umk.pams.bdd.tags.Submodule;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 @Pending
 @As("As academic admininstrator, I want to open the enrollment date so that the date of enrolment is open")
+@Submodule("Term")
 public class US_AD_TRM_1011
 		extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenIOpenTheEnrollmentDate, ThenTheEnrollmentDateIsOpen> {
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_1011.class);

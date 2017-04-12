@@ -14,15 +14,17 @@ import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.term.stage.ThenTheAdvisorIsUpdated;
 import my.edu.umk.pams.academic.term.stage.WhenChangeAdvisor;
 import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
+import my.edu.umk.pams.bdd.tags.Submodule;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 @As("As a academic administrator,I want to change advisor for student so that the advisor is updated")
-
-public class US_AD_TRM_1010 extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenChangeAdvisor, ThenTheAdvisorIsUpdated> {
+@Submodule("Term")
+public class US_AD_TRM_1010
+		extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenChangeAdvisor, ThenTheAdvisorIsUpdated> {
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_1010.class);
-	
+
 	@Test
 	@Rollback(true)
 	public void scenario01() {

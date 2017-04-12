@@ -6,8 +6,6 @@ import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.planner.model.*;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
 import my.edu.umk.pams.academic.term.dao.AdAdmissionApplicationDao;
-import my.edu.umk.pams.academic.term.model.AdAdmission;
-import my.edu.umk.pams.academic.term.model.AdAdmissionApplication;
 import my.edu.umk.pams.academic.security.service.SecurityService;
 import my.edu.umk.pams.academic.system.service.SystemService;
 import my.edu.umk.pams.academic.term.dao.*;
@@ -194,7 +192,15 @@ public class TermServiceImpl implements TermService {
         sessionFactory.getCurrentSession().flush();
 
     }
-
+    //update offering by asyikin
+    @Override
+	public void updateOffering(AdOffering offering) {
+    	offeringDao.update(offering, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+		
+	}
+    
+   
     // ====================================================================================================
     // SECTION
     // ====================================================================================================
@@ -1172,5 +1178,6 @@ public class TermServiceImpl implements TermService {
         return map;
     }
 
+	
 	
 }
