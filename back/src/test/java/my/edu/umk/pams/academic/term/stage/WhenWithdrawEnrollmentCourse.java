@@ -1,6 +1,7 @@
 package my.edu.umk.pams.academic.term.stage;
 
 import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,7 +51,7 @@ public class WhenWithdrawEnrollmentCourse extends Stage<WhenWithdrawEnrollmentCo
 		for (AdEnrollmentApplicationItem item : items) {
 			LOG.debug("Action of application:" + item.getAction());
 
-			item.setAction(AdEnrollmentApplicationAction.ADD);
+			item.setAction(AdEnrollmentApplicationAction.DROP);
 			item.setSection(section);
 
 			termService.updateEnrollmentApplication(application);
