@@ -34,51 +34,46 @@ import my.edu.umk.pams.academic.term.service.TermService;
 
 @JGivenStage
 public class WhenIAmUpdateExamVivaInfo extends Stage<WhenIAmUpdateExamVivaInfo> {
-	
+
 	private static final Logger LOG = LoggerFactory.getLogger(WhenIAmUpdateExamVivaInfo.class);
-	
+
 	@Autowired
 	private CommonService commonService;
-	
+
 	@Autowired
 	private TermService termService;
-	
+
 	@Autowired
 	private IdentityService identityService;
-	
+
 	@Autowired
 	private PlannerService plannerService;
-	
+
 	@ProvidedScenarioState
 	private AdAssessment assessment;
-	
+
 	@ProvidedScenarioState
 	private AdOffering offering;
-	
+
 	@ProvidedScenarioState
 	private AdAcademicSession session;
-	
+
 	@ProvidedScenarioState
 	private AdOfferingDao offeringDao;
-	
-	
+
 	@ProvidedScenarioState
 	private AdActor actor;
-	
+
 	@ProvidedScenarioState
 	private AdProgram program;
-	
+
 	@ProvidedScenarioState
 	private AdStaff staff;
-	
-	
+
 	@ExpectedScenarioState
 	private AdUser user;
 
-	
-	public WhenIAmUpdateExamVivaInfo i_update_examination_info(String programCode) {
-		
-		program = plannerService.findProgramByCode(programCode);
+	public WhenIAmUpdateExamVivaInfo i_update_examination_info() {
 
 		AdOffering offering = new AdOfferingImpl();
 		offering.setCanonicalCode("A01/MASTER/9828/DDA2113");
@@ -86,11 +81,10 @@ public class WhenIAmUpdateExamVivaInfo extends Stage<WhenIAmUpdateExamVivaInfo> 
 		offering.setCode("DDA2113");
 		offering.setTitle("Offering 9828");
 		offering.setProgram(program);
-	
+
 		termService.saveOffering(offering);
-		
-		
-		AdAssessment assessment = new AdAssessmentImpl();		
+
+		AdAssessment assessment = new AdAssessmentImpl();
 		assessment.setCanonicalCode("A01/MASTER/0001/DDA2113");
 		assessment.setCategory(AdAssessmentCategory.COURSE_WORK);
 		assessment.setCode("MASTER/0001");
@@ -101,25 +95,21 @@ public class WhenIAmUpdateExamVivaInfo extends Stage<WhenIAmUpdateExamVivaInfo> 
 		assessment.setTotalScore(BigDecimal.ONE);
 		assessment.setType(AdAssessmentType.QUIZ);
 		assessment.setWeight(BigDecimal.ONE);
-		
+
 		termService.addAssessment(offering, assessment, user);
-		
-		LOG.debug("offering content  : {}", offering.getProgram().getTitleEn());
-		
+
+	
 		Assert.notNull(assessment, "assesment is empty");
-		
-		
-		
-		
+
 		return self();
-		
+
 	}
 
-	@Pending 
+	@Pending
 	public WhenIAmUpdateExamVivaInfo i_update_viva_info() {
-		
+
 		return self();
-		
+
 	}
 
 }
