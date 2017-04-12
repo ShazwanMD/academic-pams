@@ -1,8 +1,11 @@
 package my.edu.umk.pams.academic.term.service;
 
 import my.edu.umk.pams.academic.common.model.AdStudyCenter;
+import my.edu.umk.pams.academic.core.AdMetaState;
+import my.edu.umk.pams.academic.core.AdMetadata;
 import my.edu.umk.pams.academic.identity.model.AdStaff;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
+import my.edu.umk.pams.academic.identity.model.AdUser;
 import my.edu.umk.pams.academic.planner.model.*;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
 import my.edu.umk.pams.academic.term.dao.AdAdmissionApplicationDao;
@@ -15,6 +18,7 @@ import my.edu.umk.pams.academic.workflow.service.WorkflowConstants;
 import my.edu.umk.pams.academic.workflow.service.WorkflowService;
 import org.activiti.engine.task.Task;
 import org.apache.commons.lang.Validate;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,6 +27,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -1177,6 +1182,48 @@ public class TermServiceImpl implements TermService {
         map.put(WorkflowConstants.CANCEL_DECISION, false);
         return map;
     }
+    
+    // ====================================================================================================
+    // Assessment
+    // ====================================================================================================
+    @Override
+    public void addAssessment(AdOffering offering, AdAssessment assessment, AdUser user) {
+        Validate.notNull(user, "User cannot be null");
+        Validate.notNull(offering, "Offering cannot be null");
+        Validate.notNull(assessment, "assessment cannot be null");
+        Session session = sessionFactory.getCurrentSession();
+        assessment.setOffering(offering);
+
+        // prepare metadata
+        AdMetadata metadata = new AdMetadata();
+        metadata.setCreatedDate(new Timestamp(System.currentTimeMillis()));
+        metadata.setCreatorId(user.getId());
+        metadata.setState(AdMetaState.ACTIVE);
+        assessment.setMetadata(metadata);
+        session.save(assessment);
+    }
+
+    @Override
+    public void updateAssessment(AdOffering offering, AdAssessment assessment, AdUser user) {
+        Validate.notNull(user, "User cannot be null");
+        Session session = sessionFactory.getCurrentSession();
+        assessment.setOffering(offering);
+
+        // prepare metadata
+        AdMetadata metadata = assessment.getMetadata();
+        metadata.setModifiedDate(new Timestamp(System.currentTimeMillis()));
+        metadata.setModifierId(user.getId());
+        assessment.setMetadata(metadata);
+        session.update(assessment);
+    }
+
+    @Override
+    public void deleteAssessment(AdOffering offering, AdAssessment assessment, AdUser user) {
+        Validate.notNull(user, "User cannot be null");
+        Session session = sessionFactory.getCurrentSession();
+        session.delete(assessment);
+    }
+    
 
 	
 	

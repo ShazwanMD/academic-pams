@@ -3,6 +3,7 @@ package my.edu.umk.pams.academic.term.service;
 import my.edu.umk.pams.academic.common.model.AdStudyCenter;
 import my.edu.umk.pams.academic.identity.model.AdStaff;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
+import my.edu.umk.pams.academic.identity.model.AdUser;
 import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
 import my.edu.umk.pams.academic.planner.model.AdCourse;
 import my.edu.umk.pams.academic.planner.model.AdEnrollmentStatus;
@@ -390,4 +391,15 @@ public interface TermService {
     void updateAppointment(AdAppointment appointment);
 
     void deleteAppointment(AdAppointment appointment);
+    
+    // ====================================================================================================
+    // Assessment
+    // ====================================================================================================
+
+    void addAssessment(AdOffering offering, AdAssessment assessment, AdUser user);
+
+    void updateAssessment(AdOffering offering, AdAssessment assessment, AdUser user);
+
+    void deleteAssessment(AdOffering offering, AdAssessment assessment, AdUser user);
+
 }
