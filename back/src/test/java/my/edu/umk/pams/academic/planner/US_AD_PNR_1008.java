@@ -10,6 +10,7 @@ import my.edu.umk.pams.academic.planner.stage.ThenProgramLevelIntroduced;
 import my.edu.umk.pams.academic.planner.stage.WhenAdminAddProgramLevel;
 import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
 import my.edu.umk.pams.bdd.tags.Issue;
+import my.edu.umk.pams.bdd.tags.Submodule;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -26,6 +27,7 @@ import org.springframework.transaction.annotation.Transactional;
 @ContextConfiguration(classes = TestAppConfiguration.class)
 @As("As an academic administrator, i want set up level of study for a faculty so that a new level of study is introduced")
 @Issue("PAMA-25")
+@Submodule("Planner")
 public class US_AD_PNR_1008 extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenAdminAddProgramLevel, ThenProgramLevelIntroduced> {
 
     private static final Logger LOG = LoggerFactory.getLogger(US_AD_PNR_1008.class);

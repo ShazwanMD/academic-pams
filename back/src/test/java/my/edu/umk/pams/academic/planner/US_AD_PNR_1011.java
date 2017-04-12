@@ -26,12 +26,14 @@ import my.edu.umk.pams.academic.planner.stage.ThenAcademicSessionUpdated;
 import my.edu.umk.pams.academic.planner.stage.WhenIUpdateAcademicSession;
 import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
 import my.edu.umk.pams.bdd.tags.Issue;
+import my.edu.umk.pams.bdd.tags.Submodule;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 @As("As an academic administrator, I want to update new academic session info so that the new academic session info is updated")
 @Issue("PAMA-47")
+@Submodule("Planner")
 public class US_AD_PNR_1011
 		extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenIUpdateAcademicSession, ThenAcademicSessionUpdated> {
 

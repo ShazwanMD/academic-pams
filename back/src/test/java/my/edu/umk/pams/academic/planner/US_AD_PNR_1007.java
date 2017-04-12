@@ -7,6 +7,7 @@ import my.edu.umk.pams.academic.planner.stage.ThenCoursePrerequisiteAdded;
 import my.edu.umk.pams.academic.planner.stage.WhenAdminAddCoursePrerequisite;
 import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
 import my.edu.umk.pams.bdd.tags.Issue;
+import my.edu.umk.pams.bdd.tags.Submodule;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -22,7 +23,7 @@ import org.springframework.transaction.annotation.Transactional;
 @ContextConfiguration(classes = TestAppConfiguration.class)
 @As("As an academic administrator, i want to set up  course prerequisite so that courses has a prerequisite")
 @Issue("PAMA-24")
-
+@Submodule("Planner")
 public class US_AD_PNR_1007 extends
 		SpringScenarioTest<GivenIAmCPSAdministrator, WhenAdminAddCoursePrerequisite, ThenCoursePrerequisiteAdded> {
 
