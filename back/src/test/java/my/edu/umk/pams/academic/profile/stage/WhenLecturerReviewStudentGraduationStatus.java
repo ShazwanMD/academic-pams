@@ -32,10 +32,15 @@ public class WhenLecturerReviewStudentGraduationStatus extends Stage<WhenLecture
 		student = identityService.findStudentByMatricNo(identityNo);
 		AdStudentStatus studentStatus = student.getStudentStatus();
 		
+		if(studentStatus == AdStudentStatus.GRADUATED){
 		LOG.debug("Student's name: {}", student.getName());
 		LOG.debug("Student's status: {}", studentStatus.name());
-		LOG.debug("Student's status: {}", studentStatus.ordinal());
+		LOG.debug("Congratulations");
 		
+		}else {
+			
+			LOG.debug("Not Qualify to graduate");
+		}
 		
 		return self();
 		
