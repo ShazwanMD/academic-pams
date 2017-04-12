@@ -16,12 +16,16 @@ import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.profile.stage.ThenStudentRegisteredCoursesReviewed;
 import my.edu.umk.pams.academic.profile.stage.WhenReviewEnrollmentDetails;
 import my.edu.umk.pams.bdd.stage.GivenIAmAcademicStaff;
+import my.edu.umk.pams.bdd.tags.Issue;
+import my.edu.umk.pams.bdd.tags.Submodule;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration (classes = TestAppConfiguration.class)
 @As("As a lecturer, I review enrollment details so that I can know the offered courses registered by the students under my classes")
+@Submodule("Profile")
+@Issue("PAMA-60")
 public class US_AD_PFL_4001 extends SpringScenarioTest <GivenIAmAcademicStaff, WhenReviewEnrollmentDetails, ThenStudentRegisteredCoursesReviewed>{
 
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_PFL_4001.class);

@@ -17,12 +17,16 @@ import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.profile.stage.ThenResearchInfoIsCurrent;
 import my.edu.umk.pams.academic.profile.stage.WhenIReviewResearchInfo;
 import my.edu.umk.pams.bdd.stage.GivenIAmStudent;
+import my.edu.umk.pams.bdd.tags.Issue;
+import my.edu.umk.pams.bdd.tags.Submodule;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 @As("As a student, I want to view thesis info so that I can view the thesis info")
+@Submodule("Profile")
+@Issue("PAMA-8")
 public class US_AD_PFL_1008 extends SpringScenarioTest<GivenIAmStudent, WhenIReviewResearchInfo, ThenResearchInfoIsCurrent> {
 
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_PFL_1008.class);

@@ -6,6 +6,9 @@ import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.profile.stage.ThenCurrentStudentProfileUpdate;
 import my.edu.umk.pams.academic.profile.stage.WhenIAddStudentProfile;
 import my.edu.umk.pams.bdd.stage.GivenIAmAdministrator;
+import my.edu.umk.pams.bdd.tags.Issue;
+import my.edu.umk.pams.bdd.tags.Submodule;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -20,6 +23,8 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 @As("As an academic administrator, I want to add student profile information so that student profile is updated")
+@Submodule("Profile")
+@Issue("PAMA-9")
 public class US_AD_PFL_2001 extends SpringScenarioTest<GivenIAmAdministrator, WhenIAddStudentProfile, ThenCurrentStudentProfileUpdate> {
 
     private static final Logger LOG = LoggerFactory.getLogger(US_AD_PFL_2001.class);

@@ -7,6 +7,9 @@ import my.edu.umk.pams.academic.profile.stage.ThenStudentCourseInfoIsCurrent;
 import my.edu.umk.pams.academic.profile.stage.WhenIViewStudentCourseInfo;
 import my.edu.umk.pams.bdd.stage.GivenIAmAdministrator;
 import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
+import my.edu.umk.pams.bdd.tags.Issue;
+import my.edu.umk.pams.bdd.tags.Submodule;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -21,6 +24,8 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 @As("As an academic administrator, I want to view course info so that I know course info is current")
+@Submodule("Profile")
+@Issue("PAMA-12")
 public class US_AD_PFL_2004 extends SpringScenarioTest<GivenIAmAdministrator, WhenIViewStudentCourseInfo, ThenStudentCourseInfoIsCurrent> {
 
     private static final Logger LOG = LoggerFactory.getLogger(US_AD_PFL_2004.class);

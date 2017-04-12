@@ -16,12 +16,16 @@ import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.profile.stage.ThenStudentResearchTitleUpdatedByAdmin;
 import my.edu.umk.pams.academic.profile.stage.WhenAdminUpdateStudentResearchTitle;
 import my.edu.umk.pams.bdd.stage.GivenIAmAdministrator;
+import my.edu.umk.pams.bdd.tags.Issue;
+import my.edu.umk.pams.bdd.tags.Submodule;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 @As("As an academic administrator, I want to update student research title so that research title is current")
+@Submodule("Profile")
+@Issue("PAMA-13")
 public class US_AD_PFL_2005 extends SpringScenarioTest<GivenIAmAdministrator, WhenAdminUpdateStudentResearchTitle, ThenStudentResearchTitleUpdatedByAdmin> {
 
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_PFL_2005.class);

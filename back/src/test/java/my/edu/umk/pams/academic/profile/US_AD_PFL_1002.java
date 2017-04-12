@@ -6,6 +6,9 @@ import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.profile.stage.ThenBillingAddressUpdated;
 import my.edu.umk.pams.academic.profile.stage.WhenIUpdateBillingAddress;
 import my.edu.umk.pams.bdd.stage.GivenIAmStudent;
+import my.edu.umk.pams.bdd.tags.Issue;
+import my.edu.umk.pams.bdd.tags.Submodule;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -19,8 +22,9 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 @As("As a student, I want to update my billing address so that my address on file is current")
-public class US_AD_PFL_1002
-		extends SpringScenarioTest<GivenIAmStudent, WhenIUpdateBillingAddress, ThenBillingAddressUpdated> {
+@Submodule("Profile")
+@Issue("PAMA-2")
+public class US_AD_PFL_1002 extends SpringScenarioTest<GivenIAmStudent, WhenIUpdateBillingAddress, ThenBillingAddressUpdated> {
 
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_PFL_1002.class);
 

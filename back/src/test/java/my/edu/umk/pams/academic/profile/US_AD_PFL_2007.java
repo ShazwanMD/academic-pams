@@ -16,12 +16,16 @@ import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.profile.stage.ThenStudentRegisteredCourse;
 import my.edu.umk.pams.academic.profile.stage.WhenIWantViewStudentRegisteredCourse;
 import my.edu.umk.pams.bdd.stage.GivenIAmMGSEBAdministrator;
+import my.edu.umk.pams.bdd.tags.Issue;
+import my.edu.umk.pams.bdd.tags.Submodule;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 @As("As an academic administrator, I want to view student registration courses, so that I know student registered courses in current semester")
+@Submodule("Profile")
+@Issue("PAMA-54")
 public class US_AD_PFL_2007 extends SpringScenarioTest<GivenIAmMGSEBAdministrator, WhenIWantViewStudentRegisteredCourse, ThenStudentRegisteredCourse> {
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_PFL_2007.class);
 	private static final String IDENTITY_NO = "A17P001";

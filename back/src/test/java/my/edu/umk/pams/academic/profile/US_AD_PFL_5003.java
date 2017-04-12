@@ -16,12 +16,16 @@ import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.profile.stage.ThenStudentActivationStatusReviewed;
 import my.edu.umk.pams.academic.profile.stage.WhenReviewStudentActivationStatus;
 import my.edu.umk.pams.bdd.stage.GivenIAmAcademicStaff;
+import my.edu.umk.pams.bdd.tags.Issue;
+import my.edu.umk.pams.bdd.tags.Submodule;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration (classes = TestAppConfiguration.class)
 @As("As a supervisor, I want to view student activation status so that I can know my student current status under my supervision")
+@Submodule("Profile")
+@Issue("PAMA-65")
 public class US_AD_PFL_5003 extends SpringScenarioTest<GivenIAmAcademicStaff, WhenReviewStudentActivationStatus, ThenStudentActivationStatusReviewed>{
 	
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_PFL_5003.class);

@@ -7,6 +7,9 @@ import my.edu.umk.pams.academic.profile.stage.ThenCurrentStudentProfileInfoIsUpd
 import my.edu.umk.pams.academic.profile.stage.WhenIUpdateStudentProfileInfo;
 import my.edu.umk.pams.bdd.stage.GivenIAmAdministrator;
 import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
+import my.edu.umk.pams.bdd.tags.Issue;
+import my.edu.umk.pams.bdd.tags.Submodule;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -21,6 +24,8 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 @As("As an academic administrator, I want to update student profile information so that student current personal information updated")
+@Submodule("Profile")
+@Issue("PAMA-10")
 public class US_AD_PFL_2002 extends
         SpringScenarioTest<GivenIAmAdministrator, WhenIUpdateStudentProfileInfo, ThenCurrentStudentProfileInfoIsUpdated> {
 

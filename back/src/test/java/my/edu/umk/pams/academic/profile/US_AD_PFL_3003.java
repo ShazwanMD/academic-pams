@@ -16,12 +16,16 @@ import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.profile.stage.ThenStudentBarringStatusIsCurrent;
 import my.edu.umk.pams.academic.profile.stage.WhenBursaryViewBarringStatus;
 import my.edu.umk.pams.bdd.stage.GivenIAmBursary;
+import my.edu.umk.pams.bdd.tags.Issue;
+import my.edu.umk.pams.bdd.tags.Submodule;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 @As("As a bursary, I can view the barring status of students so that I can know the discipline issues for the student")
+@Submodule("Profile")
+@Issue("PAMA-57")
 public class US_AD_PFL_3003
 		extends SpringScenarioTest<GivenIAmBursary, WhenBursaryViewBarringStatus, ThenStudentBarringStatusIsCurrent> {
 
