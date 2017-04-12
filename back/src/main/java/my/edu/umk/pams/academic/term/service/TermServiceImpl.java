@@ -5,7 +5,6 @@ import my.edu.umk.pams.academic.identity.model.AdStaff;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.planner.model.*;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
-import my.edu.umk.pams.academic.term.dao.AdAdmissionApplicationDao;
 import my.edu.umk.pams.academic.security.service.SecurityService;
 import my.edu.umk.pams.academic.system.service.SystemService;
 import my.edu.umk.pams.academic.term.dao.*;
@@ -23,6 +22,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -192,15 +192,15 @@ public class TermServiceImpl implements TermService {
         sessionFactory.getCurrentSession().flush();
 
     }
-    //update offering by asyikin
+
     @Override
-	public void updateOffering(AdOffering offering) {
-    	offeringDao.update(offering, securityService.getCurrentUser());
+    public void updateOffering(AdOffering offering) {
+        offeringDao.update(offering, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
-		
-	}
-    
-   
+
+    }
+
+
     // ====================================================================================================
     // SECTION
     // ====================================================================================================
@@ -318,7 +318,6 @@ public class TermServiceImpl implements TermService {
     @Override
     public void openSection(AdSection section) {
         // todo(uda): exception = Section already exists
-
         sectionDao.save(section, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
         sessionFactory.getCurrentSession().refresh(section);
@@ -359,6 +358,100 @@ public class TermServiceImpl implements TermService {
         sessionFactory.getCurrentSession().flush();
     }
 
+    //====================================================================================================
+    // ASSESSMENT
+    //====================================================================================================
+    @Override
+    public AdAssessment findAssessmentById(Long id) {
+        return assessmentDao.findById(id);
+    }
+
+    @Override
+    public AdAssessment findAssessmentByCanonicalCode(String canonicalCode) {
+        return assessmentDao.findByCanonicalCode(canonicalCode);
+    }
+
+    @Override
+    public AdAssessment findAssessmentByCodeSessionAndOffering(String code, AdAcademicSession AdAcemicSession, AdOffering offering) {
+        return assessmentDao.findByCodeAndOfferingAndSession(code, AdAcemicSession, offering);
+    }
+
+    @Override
+    public List<AdAssessment> findAssessments(AdAcademicSession AdAcemicSession, AdOffering offering) {
+        return assessmentDao.find(AdAcemicSession, offering);
+    }
+
+    @Override
+    public List<AdAssessment> findAssessments(Integer offset, Integer limit) {
+        return assessmentDao.find(offset, limit);
+    }
+
+    @Override
+    public List<AdAssessment> findAssessments(AdAcademicSession AdAcemicSession, AdOffering offering, Integer offset, Integer limit) {
+        return assessmentDao.find(AdAcemicSession, offering, offset, limit);
+    }
+
+    @Override
+    public Integer countAssessment(AdAcademicSession AdAcemicSession, AdOffering offering) {
+        return assessmentDao.count(AdAcemicSession, offering);
+    }
+
+    @Override
+    public Integer countAssessment(AdAcademicSession AdAcemicSession, AdOffering offering, AdAssessmentType type) {
+        return assessmentDao.count(AdAcemicSession, offering, type);
+    }
+
+    @Override
+    public boolean hasAssessment(AdAcademicSession AdAcemicSession, AdOffering offering) {
+        return assessmentDao.hasAssessment(AdAcemicSession, offering);
+    }
+
+    @Override
+    public boolean isAssessmentExists(String code, AdAcademicSession AdAcemicSession, AdOffering offering) {
+        return assessmentDao.isExists(code, AdAcemicSession, offering);
+    }
+
+    @Override
+    public boolean isAssessmentExists(String canonicalCode) {
+        return assessmentDao.isExists(canonicalCode);
+    }
+
+    @Override
+    public void initAssessment(AdAcademicSession academicSession, AdOffering offering, AdAssessment assessment) {
+//        if (assessmentDao.isExists(assessment.getCanonicalCode()))
+//            throw new AssessmentException();
+
+        assessment.setOffering(offering);
+        assessment.setSession(academicSession);
+        assessmentDao.save(assessment, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+        sessionFactory.getCurrentSession().refresh(assessment);
+//        AssessmentConfirmedEvent event = new AssessmentConfirmedEvent(academicSession, offering, assessment);
+//        applicationContext.publishEvent(event);
+    }
+
+    @Override
+    public void addAssessment(AdAcademicSession academicSession, AdOffering offering, AdAssessment assessment) {
+        assessment.setOffering(offering);
+        assessment.setSession(academicSession);
+        assessmentDao.save(assessment, securityService.getCurrentUser());
+//        sessionFactory.getCurrentSession().refresh(assessment);
+
+    }
+
+    @Override
+    public void updateAssessment(AdAcademicSession academicSession, AdOffering offering, AdAssessment assessment) {
+        offeringDao.updateAssessment(offering, assessment, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
+
+    @Override
+    public void deleteAssessment(AdAcademicSession academicSession, AdOffering offering, AdAssessment assessment) {
+        offeringDao.deleteAssessment(offering, assessment, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
+
+    
     // ====================================================================================================
     // ADMISSION APPLICATION
     // ====================================================================================================
@@ -418,14 +511,12 @@ public class TermServiceImpl implements TermService {
         admissionApplicationDao.update(application, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
-    
-    //update admission by asyikin
+
     @Override
-	public void updateAdmission(AdAdmission admission) {
-    	admissionDao.update(admission, securityService.getCurrentUser());
+    public void updateAdmission(AdAdmission admission) {
+        admissionDao.update(admission, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
-		
-	}
+    }
 
     @Override
     public void cancelAdmissionApplication(AdAdmissionApplication application) {
@@ -1154,6 +1245,120 @@ public class TermServiceImpl implements TermService {
         sessionFactory.getCurrentSession().flush();
     }
 
+
+    @Override
+    public AdGradebook findGradebookById(Long id) {
+        return gradebookDao.findById(id);
+    }
+
+    @Override
+    public AdGradebook findGradebookByAssessmentAndEnrollment(AdAssessment assessment, AdEnrollment enrollment) {
+        return gradebookDao.findByAssessmentAndEnrollment(assessment, enrollment);
+    }
+
+    @Override
+    public List<AdGradebook> findGradebooks(AdEnrollment enrollment) {
+        return gradebookDao.find(enrollment);
+    }
+
+    @Override
+    public List<AdGradebook> findGradebooks(AdOffering offering) {
+        return gradebookDao.find(offering);
+    }
+
+    @Override
+    public List<AdGradebook> findGradebooks(AdOffering offering, Integer offset, Integer limit) {
+        return gradebookDao.find(offering, offset, limit);
+    }
+
+    @Override
+    public List<AdGradebook> findGradebooks(AdSection section) {
+        return gradebookDao.find(section);
+    }
+
+    @Override
+    public List<AdGradebook> findGradebooks(AdSection section, AdAssessment assessment) {
+        return gradebookDao.find(section, assessment);
+    }
+
+    @Override
+    public List<AdGradebook> findGradebooks(AdSection section, Integer offset, Integer limit) {
+        return gradebookDao.find(section, offset, limit);
+    }
+
+    public List<AdGradebook> findGradebooks(AdSection section, AdAssessment assessment, Integer offset, Integer limit) {
+        return gradebookDao.find(section, assessment, offset, limit);
+    }
+
+    @Override
+    public List<AdGradebook> findGradebooks(AdAssessment assessment) {
+        return gradebookDao.find(assessment);
+    }
+
+    @Override
+    public List<AdGradebook> findGradebooks(AdAssessment assessment, Integer offset, Integer limit) {
+        return gradebookDao.find(assessment, offset, limit);
+    }
+
+    @Override
+    public Integer countGradebook(AdSection section, AdAssessment assessment) {
+        return gradebookDao.count(section, assessment);
+    }
+
+    @Override
+    public boolean isGradebookExists(AdAssessment assessment, AdEnrollment enrollment) {
+        return gradebookDao.isExists(assessment, enrollment);
+    }
+
+    @Override
+    public boolean hasGradebook(AdSection section, AdAssessment assessment) {
+        return assessmentDao.hasGradebook(section, assessment);
+    }
+
+
+    @Override
+    public void saveGradebook(AdGradebook gradebook) {
+        gradebookDao.save(gradebook, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
+
+    @Override
+    public void updateGradebook(AdGradebook gradebook) {
+        gradebookDao.update(gradebook, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
+
+    @Override
+    public void deleteGradebook(AdGradebook gradebook) {
+        gradebookDao.delete(gradebook, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
+
+    /**
+     * score = 90, totalScore=100, weight 40
+     * 90 /100 x 100 x 40/100 = 90x40/100
+     *
+     * @param enrollment
+     * @return
+     */
+    @Override
+    public BigDecimal normalizeGradebooks(AdEnrollment enrollment) {
+        List<AdGradebook> gradebooks = findGradebooks(enrollment);
+        BigDecimal finalScore = BigDecimal.ZERO;
+        for (AdGradebook gradebook : gradebooks) {
+            BigDecimal score = gradebook.getScore();
+            BigDecimal totalScore = gradebook.getAssessment().getTotalScore();
+            BigDecimal weight = gradebook.getAssessment().getWeight();
+            LOG.debug("score: {} totalScore: {}, weight: {} ", new Object[]{score, totalScore, weight});
+            BigDecimal normalizedScore = score.divide(totalScore, RoundingMode.HALF_DOWN).setScale(2).multiply(BigDecimal.valueOf(100)).multiply(weight).divide(BigDecimal.valueOf(100), BigDecimal.ROUND_HALF_DOWN).setScale(2);
+            finalScore = finalScore.add(normalizedScore);
+            LOG.debug("normalizedScore: {}", normalizedScore);
+        }
+        LOG.debug("finalScore: {}", finalScore);
+        return finalScore.setScale(2);
+    }
+
+
     // ====================================================================================================
     // PRIVATE METHODS
     // ====================================================================================================
@@ -1178,6 +1383,12 @@ public class TermServiceImpl implements TermService {
         return map;
     }
 
-	
-	
+    private List<AdOffering> decorate(List<AdOffering> offerings) {
+        for (AdOffering offering : offerings) {
+            offering.setSectionCount(sectionDao.count(offering));
+        }
+        return offerings;
+    }
+
+
 }
