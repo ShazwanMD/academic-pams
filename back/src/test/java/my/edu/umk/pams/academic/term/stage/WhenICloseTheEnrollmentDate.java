@@ -11,6 +11,8 @@ import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
+
+import io.jsonwebtoken.lang.Assert;
 import my.edu.umk.pams.academic.AcademicConstants;
 import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
@@ -37,19 +39,24 @@ public class WhenICloseTheEnrollmentDate extends Stage<WhenICloseTheEnrollmentDa
 
 	@ProvidedScenarioState
 	private AdOffering offering;
+	
+	@ProvidedScenarioState
+	private AdSection section;
 
 	@ExpectedScenarioState
 	private AdAcademicSession academicSession;
 
 	public WhenICloseTheEnrollmentDate I_close_the_date_of_enrollment_for_program_$(String programCode) {
 
-		academicSession = plannerService.findAcademicSessionByCode("201820181");
-		List<AdSection> sections = termService.findSections(academicSession);
+		section = termService.findSectionByCanonicalCode("A01/PHD/0001/DDA2113/201720181");
+		Assert.notNull(section, "section should be not null");
 
-		for (AdSection section : sections) {
-			LOG.debug(section.getCanonicalCode());
-		}
+		// current section data
+				LOG.debug("section id:{}", section.getId());
+				LOG.debug("capacity section: {}", section.getCapacity());
+				LOG.debug("ordinal section: {}", section.getOrdinal());
 
+				
 		AdConfiguration configuration = systemService
 				.findConfigurationByKey(AcademicConstants.ENROLLMENT_ENDDATE_CLOSE);
 		configuration.setValue("20/05/2017");
