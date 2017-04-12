@@ -16,12 +16,16 @@ import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.profile.stage.ThenStudentBarringStatusReviewed;
 import my.edu.umk.pams.academic.profile.stage.WhenReviewStudentBarringStatus;
 import my.edu.umk.pams.bdd.stage.GivenIAmAcademicStaff;
+import my.edu.umk.pams.bdd.tags.Issue;
+import my.edu.umk.pams.bdd.tags.Submodule;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 @As("As a lecturer, I can view the barring status of students so that I can know the discipline issues and takes further actions for the next registration process")
+@Submodule("Profile")
+@Issue("PAMA-62")
 public class US_AD_PFL_4003
 	extends SpringScenarioTest<GivenIAmAcademicStaff, WhenReviewStudentBarringStatus, ThenStudentBarringStatusReviewed> {
 

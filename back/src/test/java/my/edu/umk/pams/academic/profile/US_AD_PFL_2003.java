@@ -17,12 +17,16 @@ import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.profile.stage.ThenIGetCurrentStudentStatus;
 import my.edu.umk.pams.academic.profile.stage.WhenIAccessStudentStatus;
 import my.edu.umk.pams.bdd.stage.GivenIAmAdministrator;
+import my.edu.umk.pams.bdd.tags.Issue;
+import my.edu.umk.pams.bdd.tags.Submodule;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 @As("As an academic administrator, I want to view student activation status so that I know student activation status")
+@Submodule("Profile")
+@Issue("PAMA-11")
 public class US_AD_PFL_2003
 		extends SpringScenarioTest<GivenIAmAdministrator, WhenIAccessStudentStatus, ThenIGetCurrentStudentStatus> {
 

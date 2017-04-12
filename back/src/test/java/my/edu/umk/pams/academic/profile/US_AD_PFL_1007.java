@@ -6,6 +6,9 @@ import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.profile.stage.ThenProgramInfoIsCurrent;
 import my.edu.umk.pams.academic.profile.stage.WhenIViewProgramInfo;
 import my.edu.umk.pams.bdd.stage.GivenIAmStudent;
+import my.edu.umk.pams.bdd.tags.Issue;
+import my.edu.umk.pams.bdd.tags.Submodule;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -20,6 +23,8 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 @As("As a student, I want to view programme info so that I can view my registered programme ")
+@Submodule("Profile")
+@Issue("PAMA-7")
 public class US_AD_PFL_1007 extends SpringScenarioTest<GivenIAmStudent, WhenIViewProgramInfo, ThenProgramInfoIsCurrent> {
 
     private static final Logger LOG = LoggerFactory.getLogger(US_AD_PFL_1007.class);

@@ -6,6 +6,9 @@ import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.profile.stage.ThenActivationStatusReviewed;
 import my.edu.umk.pams.academic.profile.stage.WhenIReviewActivationStatus;
 import my.edu.umk.pams.bdd.stage.GivenIAmStudent;
+import my.edu.umk.pams.bdd.tags.Issue;
+import my.edu.umk.pams.bdd.tags.Submodule;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -20,6 +23,8 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 @As("As a student, I want to view student activation status so that I know my current status")
+@Submodule("Profile")
+@Issue("PAMA-3")
 public class US_AD_PFL_1003 extends SpringScenarioTest<GivenIAmStudent, WhenIReviewActivationStatus, ThenActivationStatusReviewed> {
 
     private static final Logger LOG = LoggerFactory.getLogger(US_AD_PFL_1003.class);

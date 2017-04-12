@@ -18,12 +18,16 @@ import my.edu.umk.pams.academic.profile.stage.ThenLecturerReviewedCourseAndResea
 import my.edu.umk.pams.academic.profile.stage.WhenLecturerReviewCourseInfoAndResearchInfo;
 
 import my.edu.umk.pams.bdd.stage.GivenIAmAcademicStaff;
+import my.edu.umk.pams.bdd.tags.Issue;
+import my.edu.umk.pams.bdd.tags.Submodule;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 @As("As a supervisor, I want to view course/ title info so that I can know the current information of course/title info")
+@Submodule("Profile")
+@Issue("PAMA-66")
 public class US_AD_PFL_5004 extends SpringScenarioTest<GivenIAmAcademicStaff, WhenLecturerReviewCourseInfoAndResearchInfo, ThenLecturerReviewedCourseAndResearchInfo> {
 
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_PFL_5005.class);

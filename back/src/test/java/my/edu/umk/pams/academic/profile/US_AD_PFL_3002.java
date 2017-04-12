@@ -8,6 +8,8 @@ import my.edu.umk.pams.academic.profile.stage.ThenIKnowStudentCurrentStatus;
 
 import my.edu.umk.pams.academic.profile.stage.WhenIViewStudentStatus;
 import my.edu.umk.pams.bdd.stage.GivenIAmBursary;
+import my.edu.umk.pams.bdd.tags.Issue;
+import my.edu.umk.pams.bdd.tags.Submodule;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -23,6 +25,8 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 @As("As a bursary, I want to view student activation status so that I can know the students current status")
+@Submodule("Profile")
+@Issue("PAMA-56")
 public class US_AD_PFL_3002
 		extends SpringScenarioTest<GivenIAmBursary, WhenIViewStudentStatus, ThenIKnowStudentCurrentStatus> {
 

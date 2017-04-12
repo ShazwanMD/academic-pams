@@ -7,6 +7,8 @@ import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.planner.stage.ThenProgramIsIntroduced;
 import my.edu.umk.pams.academic.planner.stage.WhenAdminAddAProgram;
 import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
+import my.edu.umk.pams.bdd.tags.Issue;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -21,6 +23,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 @As("As an academic administrator, i want to set program for a faculty so that a new program is introduced")
+@Issue("PAMA-18")
 public class US_AD_PNR_1001 extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenAdminAddAProgram, ThenProgramIsIntroduced> {
 
     private static final Logger LOG = LoggerFactory.getLogger(US_AD_PNR_1001.class);
@@ -32,7 +35,7 @@ public class US_AD_PNR_1001 extends SpringScenarioTest<GivenIAmCPSAdministrator,
 
     @Test
     @Rollback
-    public void scenario1() {
+    public void AddProgram() {
         given().I_am_a_CPS_administrator();
         when().Admin_add_a_program_for_faculty_$(FACULTY_CODE);
         then().the_program_$_is_introduced_for_faculty_$(PROGRAM_CODE, FACULTY_CODE);
