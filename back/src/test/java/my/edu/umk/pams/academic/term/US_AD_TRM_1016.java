@@ -17,12 +17,13 @@ import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.term.stage.ThenTheDetailsOfferedCoursesInfoIsCurrent;
 import my.edu.umk.pams.academic.term.stage.WhenIViewTheDetailsOfOfferedCourses;
 import my.edu.umk.pams.bdd.stage.GivenIAmStudent;
-
+import my.edu.umk.pams.bdd.tags.Submodule;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 @As("As a student, I want to view the details of the offered courses so that I know the current course's details info")
+@Submodule("Term")
 public class US_AD_TRM_1016 extends
 		SpringScenarioTest<GivenIAmStudent, WhenIViewTheDetailsOfOfferedCourses, ThenTheDetailsOfferedCoursesInfoIsCurrent> {
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_1016.class);
@@ -40,4 +41,3 @@ public class US_AD_TRM_1016 extends
 
 	}
 }
-

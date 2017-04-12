@@ -33,7 +33,7 @@ public class WhenIOfferCourse extends Stage<WhenIOfferCourse> {
 	@ExpectedScenarioState
 	private AdAcademicSession academicSession;
 
-	@ProvidedScenarioState
+	@ExpectedScenarioState
 	private AdProgram program;
 
 	@ExpectedScenarioState

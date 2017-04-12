@@ -5,20 +5,13 @@ import com.tngtech.jgiven.annotation.Pending;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 
 @JGivenStage
-public class WhenViewExamVivaInfo extends Stage<WhenViewExamVivaInfo> {
-	
-	
+public class ThenGradesIsUpdated extends Stage<ThenGradesIsUpdated>{
+
 	@Pending
-	public WhenViewExamVivaInfo i_want_view_exam_info() {
+	public ThenGradesIsUpdated student_grades_updated() {
 		
 		return self();
-	}
-
-	
-	@Pending
-	public WhenViewExamVivaInfo i_want_view_viva_info() {
-
-		return self();
+			
 	}
 
 }

@@ -19,12 +19,13 @@ import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.term.stage.ThenOfferedCoursesInfoIsCurrent;
 import my.edu.umk.pams.academic.term.stage.WhenIViewTheOfferedCourses;
 import my.edu.umk.pams.bdd.stage.GivenIAmStudent;
-
+import my.edu.umk.pams.bdd.tags.Submodule;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 @As("As a student, I want to view the offered courses by academic semester so that I know the current offered courses")
+@Submodule("Term")
 public class US_AD_TRM_1014
 		extends SpringScenarioTest<GivenIAmStudent, WhenIViewTheOfferedCourses, ThenOfferedCoursesInfoIsCurrent> {
 

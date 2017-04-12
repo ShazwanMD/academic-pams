@@ -16,11 +16,13 @@ import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.term.stage.ThenIViewTheCurrentEnrollmentCourses;
 import my.edu.umk.pams.academic.term.stage.WhenIAddEnrollmentCourses;
 import my.edu.umk.pams.bdd.stage.GivenIAmStudent;
+import my.edu.umk.pams.bdd.tags.Submodule;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 @As("As a student,I want to add an enrollment course so that I can view the added course")
+@Submodule("Term")
 public class US_AD_TRM_1022
 		extends SpringScenarioTest<GivenIAmStudent, WhenIAddEnrollmentCourses, ThenIViewTheCurrentEnrollmentCourses> {
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_1022.class);

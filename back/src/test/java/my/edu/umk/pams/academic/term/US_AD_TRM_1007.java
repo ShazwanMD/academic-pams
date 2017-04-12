@@ -9,6 +9,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.tngtech.jgiven.annotation.As;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 
 import my.edu.umk.pams.academic.config.TestAppConfiguration;
@@ -17,10 +18,13 @@ import my.edu.umk.pams.academic.term.stage.ThenTheSectionHasAverageQuota;
 import my.edu.umk.pams.academic.term.stage.WhenITransferSection;
 import my.edu.umk.pams.academic.term.stage.WhenIWantToSplitSection;
 import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
+import my.edu.umk.pams.bdd.tags.Submodule;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
+@As("As a academic administrator, I want to split section, so that the section has average quota.")
+@Submodule("Term")
 public class US_AD_TRM_1007 extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenIWantToSplitSection, ThenTheSectionHasAverageQuota> {
 
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_1007.class);
@@ -33,8 +37,6 @@ public void scenario1() {
 	then().the_section_has_average_quota();
 	
   }
-
-
 }
 
 

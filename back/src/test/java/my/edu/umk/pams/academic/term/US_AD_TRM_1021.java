@@ -16,11 +16,13 @@ import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.term.stage.ThenCourseDropped;
 import my.edu.umk.pams.academic.term.stage.WhenDropCourse;
 import my.edu.umk.pams.bdd.stage.GivenIAmStudent;
+import my.edu.umk.pams.bdd.tags.Submodule;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 @As("As a student,I want to drop an enrollment course so that I can view the dropped course")
+@Submodule("Term")
 public class US_AD_TRM_1021 extends SpringScenarioTest<GivenIAmStudent, WhenDropCourse, ThenCourseDropped> {
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_1021.class);
 

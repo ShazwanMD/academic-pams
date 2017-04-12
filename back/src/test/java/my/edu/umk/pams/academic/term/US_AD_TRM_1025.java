@@ -6,6 +6,8 @@ import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.term.stage.ThenTheNewAdmissionIsAdded;
 import my.edu.umk.pams.academic.term.stage.WhenIApproveNewAdmissionForStudent;
 import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
+import my.edu.umk.pams.bdd.tags.Submodule;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -19,8 +21,9 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 @As("As a academic administrator, I want to approve new admission for student so that the new admission is added")
-public class US_AD_TRM_1025
-		extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenIApproveNewAdmissionForStudent, ThenTheNewAdmissionIsAdded>  {
+@Submodule("Term")
+public class US_AD_TRM_1025 extends
+		SpringScenarioTest<GivenIAmCPSAdministrator, WhenIApproveNewAdmissionForStudent, ThenTheNewAdmissionIsAdded> {
 
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_1025.class);
 	public static final String PROGRAM_CODE = "A01/MASTER/0002";

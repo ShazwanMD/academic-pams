@@ -67,6 +67,8 @@ public interface TermService {
     boolean isOfferingExists(AdProgram program, AdCourse course);
 
     void saveOffering(AdOffering offering);
+    
+    void updateOffering(AdOffering offering);
 
     //==========+==========================================================================================
     // SECTION
