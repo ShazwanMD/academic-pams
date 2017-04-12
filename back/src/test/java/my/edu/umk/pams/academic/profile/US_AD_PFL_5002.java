@@ -25,6 +25,7 @@ import my.edu.umk.pams.bdd.stage.GivenIAmAcademicStaff;
 public class US_AD_PFL_5002 extends SpringScenarioTest<GivenIAmAcademicStaff, WhenReviewCourseRegistrationDetails, ThenCourseRegistrationDetailReviewed> {
 
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_PFL_5002.class);
+	
 	private static String STUDENT_NO = "A17P001";
 	
 	@Test

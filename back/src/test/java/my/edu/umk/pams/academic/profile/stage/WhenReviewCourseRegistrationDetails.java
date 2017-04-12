@@ -11,10 +11,13 @@ import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 
 import my.edu.umk.pams.academic.identity.model.AdStudent;
+import my.edu.umk.pams.academic.identity.model.AdStudentStatus;
 import my.edu.umk.pams.academic.identity.service.IdentityService;
+import my.edu.umk.pams.academic.planner.model.AdCohort;
 import my.edu.umk.pams.academic.planner.model.AdCourse;
 import my.edu.umk.pams.academic.planner.model.AdFaculty;
 import my.edu.umk.pams.academic.planner.model.AdProgram;
+import my.edu.umk.pams.academic.planner.model.AdProgramLevel;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
 
 @JGivenStage
@@ -40,19 +43,35 @@ public class WhenReviewCourseRegistrationDetails extends Stage<WhenReviewCourseR
 	@ExpectedScenarioState
 	AdFaculty faculty;
 	
+	@ExpectedScenarioState
+	AdStudentStatus studentStatus;
+	
+	@ExpectedScenarioState
+	AdCohort cohort;
+	
+	@ExpectedScenarioState
+	AdProgramLevel level;
+	
 	
 	public WhenReviewCourseRegistrationDetails supervisor_review_course_registration_info_for_$(String studentNo){
 		
 		student = identityService.findStudentByMatricNo(studentNo);
 		LOG.debug("Student_Name :{}", student.getName());
 		
-		program = plannerService.findProgramByCode("A07/PHD/0001");
-		LOG.debug("Program Code :{}", program.getCode());
-		LOG.debug("Program Title:{}",program.getTitle());
-			
-		faculty = plannerService.findFacultyByCode("A01");
+		studentStatus = student.getStudentStatus();
+		LOG.debug("Student's Status:{}", studentStatus.name());
 		
-		List<AdCourse> courses = plannerService.findCourses(faculty);
+		cohort = student.getCohort();
+		
+		program = cohort.getProgram();
+		LOG.debug("Program Code :{}", program.getCode());
+		
+		level = program.getProgramLevel();
+		LOG.debug("Level of Study:{}", level.getCode());
+		
+		faculty = program.getFaculty();
+		
+		List<AdCourse> courses = faculty.getCourses();
 		for (AdCourse course : courses)
 			LOG.debug(course.getCode());
 	
