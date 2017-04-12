@@ -1,4 +1,8 @@
 package my.edu.umk.pams.academic.term;
+/**
+ * @author zaida_nawi
+ **/
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -15,9 +19,6 @@ import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.term.stage.ThenEnrollmentDateIsClose;
 import my.edu.umk.pams.academic.term.stage.WhenICloseTheEnrollmentDate;
 import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
-/**
- * @author zaida_nawi
- **/
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional

@@ -1,5 +1,7 @@
 package my.edu.umk.pams.academic.term.stage;
-
+/**
+ * @author zaida_nawi
+ **/
 import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,9 +14,7 @@ import my.edu.umk.pams.academic.planner.service.PlannerService;
 import my.edu.umk.pams.academic.system.service.SystemService;
 import my.edu.umk.pams.academic.term.model.AdSection;
 import my.edu.umk.pams.academic.term.service.TermService;
-/**
- * @author zaida_nawi
- **/
+
 
 @JGivenStage
 public class ThenEnrollmentDateIsClose extends Stage<ThenEnrollmentDateIsClose> {
