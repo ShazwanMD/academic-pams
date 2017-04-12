@@ -1,10 +1,24 @@
 package my.edu.umk.pams.academic.assessment.stage;
 
-public class WhenViewExamVivaInfo {
+import com.tngtech.jgiven.Stage;
+import com.tngtech.jgiven.annotation.Pending;
+import com.tngtech.jgiven.integration.spring.JGivenStage;
 
-	public void I_want_view_exam_info() {
-		// TODO Auto-generated method stub
+@JGivenStage
+public class WhenViewExamVivaInfo extends Stage<WhenViewExamVivaInfo> {
+	
+	
+	@Pending
+	public WhenViewExamVivaInfo i_want_view_exam_info() {
 		
+		return self();
+	}
+
+	
+	@Pending
+	public WhenViewExamVivaInfo i_want_view_viva_info() {
+
+		return self();
 	}
 
 }
