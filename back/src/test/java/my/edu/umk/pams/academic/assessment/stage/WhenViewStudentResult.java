@@ -5,11 +5,10 @@ import com.tngtech.jgiven.annotation.Pending;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 
 @JGivenStage
-public class ThenStudentResultReviewed extends Stage<ThenStudentResultReviewed > {
-
+public class WhenViewStudentResult extends Stage<WhenViewStudentResult> {
 	
 	@Pending
-	public ThenStudentResultReviewed result_student_reviewed() {
+	public WhenViewStudentResult supervisor_review_student_result() {
 
 		return self();
 	}

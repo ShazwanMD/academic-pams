@@ -1,5 +1,16 @@
 package my.edu.umk.pams.academic.assessment.stage;
 
-public class WhenReviewStudentResult {
+import com.tngtech.jgiven.Stage;
+import com.tngtech.jgiven.annotation.Pending;
+import com.tngtech.jgiven.integration.spring.JGivenStage;
+
+@JGivenStage
+public class WhenReviewStudentResult extends Stage<WhenReviewStudentResult>{
+
+	@Pending
+	public WhenReviewStudentResult student_review_result() {
+
+		return self();
+	}
 
 }
