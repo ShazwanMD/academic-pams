@@ -14,11 +14,16 @@ import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.planner.stage.ThenNewAcademicSessionInfoIsCreated;
 import my.edu.umk.pams.academic.planner.stage.WhenIAddNewAcademicSessionInfo;
 import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
+import my.edu.umk.pams.bdd.tags.Issue;
+import my.edu.umk.pams.bdd.tags.Submodule;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 @As("As an academic administrator, I want to create new academic session info so that the new academic session info is created.")
+@Issue("PAMA-19")
+@Submodule("Planner")
+
 public class US_AD_PNR_1010 extends
 		SpringScenarioTest<GivenIAmCPSAdministrator, WhenIAddNewAcademicSessionInfo, ThenNewAcademicSessionInfoIsCreated> {
 
