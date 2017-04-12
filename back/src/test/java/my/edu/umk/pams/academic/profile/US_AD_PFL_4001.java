@@ -31,6 +31,7 @@ public class US_AD_PFL_4001 extends SpringScenarioTest <GivenIAmAcademicStaff, W
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_PFL_4001.class);
     
 	public static final String SCTN_canonicalCode = "A01/PHD/0001/DDA2113/201720181";
+	
 	public static final String OFRG_canonicalCode = "A01/PHD/0001/DDA2113";
 	
 	public static final String IDENTITY_NO = "A17P002";
