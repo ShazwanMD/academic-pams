@@ -8,24 +8,17 @@ import com.tngtech.jgiven.annotation.Pending;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 
 @JGivenStage
-public class ThenExamVivaUpdated extends Stage<ThenExamVivaUpdated> {
+public class WhenIAmInsertGrade extends Stage<WhenIAmInsertGrade> {
 	
-	private static final Logger LOG = LoggerFactory.getLogger(WhenIAmUpdateExamVivaInfo.class);
-	
-	
+	private static final Logger LOG = LoggerFactory.getLogger(WhenIAmInsertGrade.class);
 
+	
 	@Pending
-	public ThenExamVivaUpdated exam_info_updated() {
-		
-		return self();
-		
-	}
-
-	@Pending
-	public ThenExamVivaUpdated viva_info_updated() {
+	public WhenIAmInsertGrade i_insert_grades() {
 		
 		
 		return self();
+	
 		
 	}
 
