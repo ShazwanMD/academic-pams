@@ -37,7 +37,6 @@ public void scenario1() {
 	then().the_section_has_average_quota();
 	
   }
-
 }
 
 

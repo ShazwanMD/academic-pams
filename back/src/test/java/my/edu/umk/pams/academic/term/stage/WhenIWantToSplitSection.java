@@ -14,4 +14,5 @@ public class WhenIWantToSplitSection extends Stage<WhenIWantToSplitSection> {
 		
 		return self();
 	}
+
 }

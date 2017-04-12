@@ -14,4 +14,5 @@ public class ThenTheSectionHasAverageQuota extends Stage<ThenTheSectionHasAverag
 		
 		return self();
 	}
+
 }
