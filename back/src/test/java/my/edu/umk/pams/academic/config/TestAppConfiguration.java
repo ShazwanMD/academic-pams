@@ -24,6 +24,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
         // internals
         "my.edu.umk.pams.academic.identity",
+        "my.edu.umk.pams.academic.assessment",
         "my.edu.umk.pams.academic.security",
         "my.edu.umk.pams.academic.system",
         "my.edu.umk.pams.academic.workflow",
