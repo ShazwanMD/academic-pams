@@ -14,6 +14,8 @@ import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.planner.stage.ThenStudyCenterIsIntroduced;
 import my.edu.umk.pams.academic.planner.stage.WhenAdminSetUpStudyCenter;
 import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
+import my.edu.umk.pams.bdd.tags.Issue;
+import my.edu.umk.pams.bdd.tags.Submodule;
 
 /**
  * @author zaida_nawi
@@ -22,7 +24,8 @@ import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 @As("As an admin academic,I want to set up study center, so that the study center is intoduced.")
-
+@Issue("PAMA-52")
+@Submodule("Planner")
 public class US_AD_PNR_1016
 		extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenAdminSetUpStudyCenter, ThenStudyCenterIsIntroduced> {
 
