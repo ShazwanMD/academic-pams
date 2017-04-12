@@ -19,12 +19,18 @@ import my.edu.umk.pams.academic.planner.stage.ThenNewCohortIsUpdated;
 
 import my.edu.umk.pams.academic.planner.stage.WhenAdminUpdateCohort;
 import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
+import my.edu.umk.pams.bdd.tags.Issue;
+import my.edu.umk.pams.bdd.tags.Submodule;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 @As("As an academic administrator, i want to update cohort for a faculty so that updated group student in the schedule by intake code.")
+@Issue("PAMA-49")
+@Submodule("Planner")
+
+
 public class US_AD_PNR_1013
 		extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenAdminUpdateCohort, ThenNewCohortIsUpdated> {
 
