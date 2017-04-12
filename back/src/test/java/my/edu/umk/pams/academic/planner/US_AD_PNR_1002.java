@@ -6,6 +6,9 @@ import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.planner.stage.ThenFacultyHasCourse;
 import my.edu.umk.pams.academic.planner.stage.WhenAdminAddCourse;
 import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
+import my.edu.umk.pams.bdd.tags.Issue;
+import my.edu.umk.pams.bdd.tags.Submodule;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -20,6 +23,9 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 @As("As an academic administrator, i want to set up courses for a faculty so that a faculty will be populated with courses")
+@Issue("PAMA-18")
+@Submodule("Planner")
+
 public class US_AD_PNR_1002 extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenAdminAddCourse, ThenFacultyHasCourse> {
 
     private static final Logger LOG = LoggerFactory.getLogger(US_AD_PNR_1002.class);
