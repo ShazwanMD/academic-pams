@@ -16,12 +16,17 @@ import my.edu.umk.pams.academic.planner.stage.ThenNewCurriculumIsUpdated;
 import my.edu.umk.pams.academic.planner.stage.WhenAdminAddCurriculum;
 import my.edu.umk.pams.academic.planner.stage.WhenAdminUpdateCurriculum;
 import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
+import my.edu.umk.pams.bdd.tags.Issue;
+import my.edu.umk.pams.bdd.tags.Submodule;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 @As("As an academic administrator, i want to update curriculum for a faculty so that curriculum has updated")
+@Issue("PAMA-49")
+@Submodule("Planner")
+
 public class US_AD_PNR_1014
 		extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenAdminUpdateCurriculum, ThenNewCurriculumIsUpdated> {
 
