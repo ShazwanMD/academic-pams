@@ -28,13 +28,10 @@ public class ThenTheSectionsIsUpdated extends Stage<ThenTheSectionsIsUpdated> {
 
 	public ThenTheSectionsIsUpdated the_sections_is_updated() {
 
-		LOG.debug("section {} ", section.getCanonicalCode());
-
-		AdSection section = termService.findSectionByCanonicalCode(canonical_code);
-		
-		LOG.debug("section {} ", section.getCanonicalCode());
-		
 		Assert.notNull(section, "The data must not be null");
+		LOG.debug("section {} ", section.getCanonicalCode());
+		LOG.debug("section {} ", section.getCapacity());
+		LOG.debug("section {} ", section.getOrdinal());
 
 		return self();
 

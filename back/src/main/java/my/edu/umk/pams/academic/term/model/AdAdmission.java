@@ -4,10 +4,7 @@ package my.edu.umk.pams.academic.term.model;
 import my.edu.umk.pams.academic.common.model.AdStudyCenter;
 import my.edu.umk.pams.academic.core.AdMetaObject;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
-import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
-import my.edu.umk.pams.academic.planner.model.AdAcademicStanding;
-import my.edu.umk.pams.academic.planner.model.AdAdmissionStatus;
-import my.edu.umk.pams.academic.planner.model.AdProgram;
+import my.edu.umk.pams.academic.planner.model.*;
 
 import java.math.BigDecimal;
 
@@ -79,4 +76,8 @@ public interface AdAdmission extends AdMetaObject {
 
     void setSession(AdAcademicSession session);
 
+    // todo(uda): cohort
+//    AdCohort getCohort();
+//
+//    void setCohort(AdCohort cohort);
 }

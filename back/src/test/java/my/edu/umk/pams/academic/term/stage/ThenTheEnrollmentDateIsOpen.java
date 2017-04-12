@@ -1,31 +1,24 @@
 package my.edu.umk.pams.academic.term.stage;
+
 /**
  * @author asyikin.mr 
-
  */
-import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
-import com.tngtech.jgiven.annotation.Pending;
+import com.tngtech.jgiven.integration.spring.JGivenStage;
+import io.jsonwebtoken.lang.Assert;
 import my.edu.umk.pams.academic.AcademicConstants;
 import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
-import my.edu.umk.pams.academic.planner.service.PlannerService;
 import my.edu.umk.pams.academic.system.model.AdConfiguration;
 import my.edu.umk.pams.academic.system.service.SystemService;
 import my.edu.umk.pams.academic.term.model.AdSection;
-import my.edu.umk.pams.academic.term.service.TermService;
 
-@Pending
+@JGivenStage
 public class ThenTheEnrollmentDateIsOpen extends Stage<ThenTheEnrollmentDateIsOpen> {
 	private static final Logger LOG = LoggerFactory.getLogger(ThenTheEnrollmentDateIsOpen.class);
-	@Autowired
-	private TermService termService;
-
-	@Autowired
-	private PlannerService plannerService;
 
 	@Autowired
 	private SystemService systemService;
@@ -33,18 +26,22 @@ public class ThenTheEnrollmentDateIsOpen extends Stage<ThenTheEnrollmentDateIsOp
 	@ExpectedScenarioState
 	private AdAcademicSession academicSession;
 
+	@ExpectedScenarioState
+	private AdSection section;
+
 	public ThenTheEnrollmentDateIsOpen the_enrollment_date_is_open() {
 
-		academicSession = plannerService.findAcademicSessionByCode("201720181");
-		List<AdSection> sections = termService.findSections(academicSession);
+		Assert.notNull(section, "section should be not null");
 
-		for (AdSection section : sections) {
-			LOG.debug(section.getCanonicalCode());
-		}
+		// updated section data
+		LOG.debug("section id:{}", section.getId());
+		LOG.debug("Updated capacity section: {}", section.getCapacity());
+		LOG.debug("Updated ordinal section: {}", section.getOrdinal());
 
 		AdConfiguration configuration = systemService
 				.findConfigurationByKey(AcademicConstants.ENROLLMENT_STARTDATE_OPEN);
 		systemService.saveConfiguration(configuration);
+		LOG.debug("Save value: {}", configuration.getValue());
 
 		return self();
 	}

@@ -11,6 +11,7 @@ import my.edu.umk.pams.academic.planner.model.AdProgram;
 import my.edu.umk.pams.academic.term.model.*;
 import org.activiti.engine.task.Task;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -127,6 +128,39 @@ public interface TermService {
 
     void removeSection(AdSection section);
 
+    //====================================================================================================
+    // ASSESSMENT
+    //====================================================================================================
+
+    AdAssessment findAssessmentById(Long id);
+
+    AdAssessment findAssessmentByCanonicalCode(String canonicalCode);
+
+    AdAssessment findAssessmentByCodeSessionAndOffering(String code, AdAcademicSession AdAdemicSession, AdOffering offering);
+
+    List<AdAssessment> findAssessments(AdAcademicSession AdAdemicSession, AdOffering offering);
+
+    List<AdAssessment> findAssessments(Integer offset, Integer limit);
+
+    List<AdAssessment> findAssessments(AdAcademicSession AdAdemicSession, AdOffering offering, Integer offset, Integer limit);
+
+    Integer countAssessment(AdAcademicSession AdAdemicSession, AdOffering offering, AdAssessmentType type);
+
+    Integer countAssessment(AdAcademicSession AdAdemicSession, AdOffering offering);
+
+    boolean hasAssessment(AdAcademicSession AdAdemicSession, AdOffering offering);
+
+    boolean isAssessmentExists(String code, AdAcademicSession AdAdemicSession, AdOffering offering);
+
+    boolean isAssessmentExists(String canonicalCode);
+
+    void initAssessment(AdAcademicSession academicSession, AdOffering offering, AdAssessment assessment); // todo: throws AssessmentException;
+
+    void addAssessment(AdAcademicSession academicSession, AdOffering offering, AdAssessment assessment);
+
+    void updateAssessment(AdAcademicSession academicSession, AdOffering offering, AdAssessment assessment);
+
+    void deleteAssessment(AdAcademicSession academicSession, AdOffering offering, AdAssessment assessment);
 
     //====================================================================================================
     // ADMISSION APPLICATION
@@ -200,7 +234,6 @@ public interface TermService {
     void saveAdmission(AdAdmission admission);
     
     void updateAdmission(AdAdmission admission);
-    
 
     //====================================================================================================
     // ENROLLMENT APPLICATION
@@ -402,4 +435,45 @@ public interface TermService {
 
     void deleteAssessment(AdOffering offering, AdAssessment assessment, AdUser user);
 
+
+
+    //====================================================================================================
+    // GRADEBOOK
+    //====================================================================================================
+
+    AdGradebook findGradebookById(Long id);
+
+    AdGradebook findGradebookByAssessmentAndEnrollment(AdAssessment assessment, AdEnrollment enrollment);
+
+    List<AdGradebook> findGradebooks(AdEnrollment enrollment);
+
+    List<AdGradebook> findGradebooks(AdOffering offering);
+
+    List<AdGradebook> findGradebooks(AdOffering offering, Integer offset, Integer limit);
+
+    List<AdGradebook> findGradebooks(AdSection section);
+
+    List<AdGradebook> findGradebooks(AdSection section, AdAssessment assessment);
+
+    List<AdGradebook> findGradebooks(AdSection section, Integer offset, Integer limit);
+
+    List<AdGradebook> findGradebooks(AdSection section, AdAssessment assessment, Integer offset, Integer limit);
+
+    List<AdGradebook> findGradebooks(AdAssessment assessment);
+
+    List<AdGradebook> findGradebooks(AdAssessment assessment, Integer offset, Integer limit);
+
+    Integer countGradebook(AdSection section, AdAssessment assessment);
+
+    boolean isGradebookExists(AdAssessment assessment, AdEnrollment enrollment);
+
+    boolean hasGradebook(AdSection section, AdAssessment assessment);
+
+    void saveGradebook(AdGradebook gradebook);
+
+    void updateGradebook(AdGradebook gradebook);
+
+    void deleteGradebook(AdGradebook gradebook);
+
+    BigDecimal normalizeGradebooks(AdEnrollment enrollment);
 }
