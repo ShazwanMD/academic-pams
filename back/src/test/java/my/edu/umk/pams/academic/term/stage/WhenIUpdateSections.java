@@ -39,8 +39,7 @@ public class WhenIUpdateSections extends Stage<WhenIUpdateSections> {
 
 	public WhenIUpdateSections I_update_sections_for_offering() {
 		
-		canonical_code = "A01/PHD/0001/DDA2113/201720181";
-		section = termService.findSectionByCanonicalCode(canonical_code);
+		section = termService.findSectionByCanonicalCode("A01/PHD/0001/DDA2113/201720181");
 		offering= termService.findOfferingByCanonicalCode("A01/PHD/0001/DDA2113");
 		
 		LOG.debug("section: {}", section.getCanonicalCode());

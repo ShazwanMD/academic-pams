@@ -16,11 +16,13 @@ import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.term.stage.ThenTheAdmissionStatusIsUpdated;
 import my.edu.umk.pams.academic.term.stage.WhenIUpdateAdmissionStatus;
 import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
+import my.edu.umk.pams.bdd.tags.Submodule;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 @As("As a academic administrator, I want to update admission status for student under selected program so that the admission status is updated")
+@Submodule("Term")
 public class US_AD_TRM_1013 extends
 		SpringScenarioTest<GivenIAmCPSAdministrator, WhenIUpdateAdmissionStatus, ThenTheAdmissionStatusIsUpdated> {
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_1013.class);

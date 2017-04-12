@@ -16,17 +16,19 @@ import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.term.stage.ThenTheStatusOfAppointmentIsUpdated;
 import my.edu.umk.pams.academic.term.stage.WhenIAppointStaffIntoSection;
 import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
-
+import my.edu.umk.pams.bdd.tags.Submodule;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 @As("As a academic administrator, I want to appoint staff for the particular sections so that the sections have appointed staff")
+@Submodule("Term")
 public class US_AD_TRM_1004 extends
 		SpringScenarioTest<GivenIAmCPSAdministrator, WhenIAppointStaffIntoSection, ThenTheStatusOfAppointmentIsUpdated> {
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_1004.class);
 	private static final String STAFF_NO = "01001A"; // from data/AD_ACTR.sql
-	private static final String SECTION_CANONICAL_CODE = "A01/PHD/0001/DDA2113/201720181"; // from data/AD_OFRG.sql
+	private static final String SECTION_CANONICAL_CODE = "A01/PHD/0001/DDA2113/201720181"; // from
+																							// data/AD_OFRG.sql
 
 	@Test
 	@Rollback(true)

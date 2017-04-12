@@ -1,7 +1,5 @@
 package my.edu.umk.pams.academic.term;
 
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -16,12 +14,13 @@ import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.term.stage.ThenTheEnrollmentStatusIsUpdated;
 import my.edu.umk.pams.academic.term.stage.WhenIUpdateEnrollmentStatus;
 import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
-
+import my.edu.umk.pams.bdd.tags.Submodule;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 @As("As an academic administrator, I want to update enrollment status for student so that the enrollment status is updated")
+@Submodule("Term")
 public class US_AD_TRM_1009 extends
 		SpringScenarioTest<GivenIAmCPSAdministrator, WhenIUpdateEnrollmentStatus, ThenTheEnrollmentStatusIsUpdated> {
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_1009.class);

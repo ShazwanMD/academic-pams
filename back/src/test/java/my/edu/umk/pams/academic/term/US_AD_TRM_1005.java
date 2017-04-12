@@ -17,12 +17,13 @@ import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.term.stage.ThenTheStatusAppointmentIsUpdated;
 import my.edu.umk.pams.academic.term.stage.WhenIWantToUpdateAppointmentStatus;
 import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
-
+import my.edu.umk.pams.bdd.tags.Submodule;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 @As("As a academic administrator, I want to update appointment status , so that the status of appoinment is updated")
+@Submodule("Term")
 public class US_AD_TRM_1005 extends
 		SpringScenarioTest<GivenIAmCPSAdministrator, WhenIWantToUpdateAppointmentStatus, ThenTheStatusAppointmentIsUpdated> {
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_1005.class);
