@@ -9,6 +9,9 @@ import my.edu.umk.pams.academic.planner.stage.ThenCourseInformationReviewed;
 import my.edu.umk.pams.academic.planner.stage.WhenIViewCourseInfomation;
 import my.edu.umk.pams.academic.profile.stage.WhenIViewCourseInfo;
 import my.edu.umk.pams.bdd.stage.GivenIAmStudent;
+import my.edu.umk.pams.bdd.tags.Issue;
+import my.edu.umk.pams.bdd.tags.Submodule;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -23,6 +26,9 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 @As("As a student, i want to view course for my program so that i can know course every semester")
+@Issue("PAMA-17")
+@Submodule("Planner")
+
 public class US_AD_PNR_2003
 		extends SpringScenarioTest<GivenIAmStudent, WhenIViewCourseInfomation, ThenCourseInformationReviewed> {
 
