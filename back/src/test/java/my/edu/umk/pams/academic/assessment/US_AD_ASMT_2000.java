@@ -32,7 +32,7 @@ public class US_AD_ASMT_2000 extends SpringScenarioTest<GivenIAmAcademicStaff, W
     public void scenario2000() {
 		given().i_am_a_staff_in_current_academic_session();
 		when().i_view_student_info(IDENTITY_NO);
-		then().i_can_view_student_subject_registered();
+		then().i_can_view_student_subject_registered(IDENTITY_NO);
 		
 	
 	}
