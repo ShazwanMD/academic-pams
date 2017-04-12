@@ -8,7 +8,7 @@ import com.tngtech.jgiven.integration.spring.JGivenStage;
 public class WhenReviewStudentResult extends Stage<WhenReviewStudentResult>{
 
 	@Pending
-	public WhenReviewStudentResult student_review_result() {
+	public WhenReviewStudentResult I_review_result() {
 
 		return self();
 	}
