@@ -7,6 +7,9 @@ import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.planner.stage.ThenCohortIsAdded;
 import my.edu.umk.pams.academic.planner.stage.WhenAdminAddCohortForAFaculty;
 import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
+import my.edu.umk.pams.bdd.tags.Issue;
+import my.edu.umk.pams.bdd.tags.Submodule;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -22,6 +25,9 @@ import org.springframework.transaction.annotation.Transactional;
 @ContextConfiguration(classes = TestAppConfiguration.class)
 @As("As an academic administrator, i want to set up cohort for a faculty so that i can group student in the schedule by intake code.")
 @JGivenStage
+@Issue("PAMA-22")
+@Submodule("Planner")
+
 public class US_AD_PNR_1005
 		extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenAdminAddCohortForAFaculty, ThenCohortIsAdded> {
 
