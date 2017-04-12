@@ -26,12 +26,14 @@ public class US_AD_TRM_1002
 		extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenICreateSections, ThenTheStudentCanEnrol> {
 
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_1002.class);
+	public static final String FACULTY_CODE = "A01";
 	public static final String PROGRAM_CODE = "A01/PHD/0001";
 
 	@Test
 	@Rollback(true)
 	public void scenario1() {
-		given().I_am_a_CPS_administrator_in_current_academic_session().and().I_pick_program_$(PROGRAM_CODE);
+		given().I_am_a_CPS_administrator_in_current_academic_session().and().I_pick_faculty_$(FACULTY_CODE).and()
+				.I_pick_program_$(PROGRAM_CODE);
 		when().I_create_sections_for_offering();
 		then().the_student_can_enrol();
 	}

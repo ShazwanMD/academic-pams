@@ -7,6 +7,8 @@ import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
+
+import io.jsonwebtoken.lang.Assert;
 import my.edu.umk.pams.academic.term.model.AdAppointment;
 import my.edu.umk.pams.academic.term.model.AdEnrollment;
 import my.edu.umk.pams.academic.term.model.AdOffering;
@@ -18,6 +20,8 @@ import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
 import my.edu.umk.pams.academic.planner.model.AdCourse;
 import my.edu.umk.pams.academic.planner.model.AdFaculty;
 import my.edu.umk.pams.academic.planner.model.AdProgram;
+import my.edu.umk.pams.academic.planner.service.PlannerService;
+
 import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,6 +33,9 @@ public class WhenICreateSections extends Stage<WhenICreateSections> {
 
 	@Autowired
 	private TermService termService;
+
+	@Autowired
+	private PlannerService plannerService;
 
 	@ProvidedScenarioState
 	private AdSection section;
@@ -48,9 +55,6 @@ public class WhenICreateSections extends Stage<WhenICreateSections> {
 	@ProvidedScenarioState
 	private AdOffering offering;
 
-	@ExpectedScenarioState
-	private AdAcademicSession academicSession;
-
 	@ProvidedScenarioState
 	private String code;
 
@@ -64,22 +68,49 @@ public class WhenICreateSections extends Stage<WhenICreateSections> {
 
 	@ProvidedScenarioState
 	private List<AdSectionPolicy> policies;
+	
+	@ExpectedScenarioState
+	private AdAcademicSession academicSession;
 
 	public WhenICreateSections I_create_sections_for_offering() {
-		offering = termService.findOfferingByCanonicalCode("A01/PHD/0001/DDA2062");
-		canonicalCode = offering.getCanonicalCode() + "/" + academicSession.getCode(); //FKP/PHD/0001/DDA2113/201720181
-		code = "GST 5013";
 
-		section = new AdSectionImpl();
-		section.setCanonicalCode(canonicalCode);
-		section.setCapacity(20);
-		section.setCode(code);
-		section.setSession(academicSession);
-		section.setOffering(offering);
-		section.setOrdinal(1);
+		// Find faculty and program by passed value
+		LOG.debug("Pick faculty: {}", faculty.getCode());
+		LOG.debug("Pick program: {}", program.getCode());
+		
+		
+	   		// List all offering course under program=A01/PHD/0001
+			List<AdOffering> offerings = termService.findOfferings(program);
+			for (AdOffering offering : offerings) {
+				LOG.debug("Listed offering ID: {}", offering.getId());
+				LOG.debug("Listed offering code: {}", offering.getCanonicalCode());
+				
+				canonicalCode = offering.getCanonicalCode() + "/" + academicSession.getCode() ;
+				//code = offering.getCanonicalCode();   //asal
+					
+				List<AdCourse> courses = plannerService.findCourses(faculty);
+				for (AdCourse course : courses) {
+				code = course.getCode();
+				}
+				
+				LOG.debug("canonicalCode: {}", canonicalCode);
+				LOG.debug("code: {}", code);
+				
+				section = new AdSectionImpl();
+				section.setCanonicalCode(canonicalCode);
+				section.setCapacity(30);
+				section.setCode(code);
+				section.setOrdinal(1);
+				section.setOffering(offering);
+				section.setSession(academicSession);
 
-		termService.saveSection(section);
+				termService.saveSection(section);
+				
+				Assert.notNull(section, "new sections inserted");
+				LOG.debug("section: {}", section.getId());
+			}
 
+	   
 		return self();
 	}
 }
