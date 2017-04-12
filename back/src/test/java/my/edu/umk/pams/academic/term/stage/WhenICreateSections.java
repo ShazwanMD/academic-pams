@@ -86,12 +86,9 @@ public class WhenICreateSections extends Stage<WhenICreateSections> {
 				LOG.debug("Listed offering code: {}", offering.getCanonicalCode());
 				
 				canonicalCode = offering.getCanonicalCode() + "/" + academicSession.getCode() ;
-				//code = offering.getCanonicalCode();   //asal
-					
-				List<AdCourse> courses = plannerService.findCourses(faculty);
-				for (AdCourse course : courses) {
-				code = course.getCode();
-				}
+				
+				//get course code from ad_course
+				code =	offering.getCourse().getCode(); 
 				
 				LOG.debug("canonicalCode: {}", canonicalCode);
 				LOG.debug("code: {}", code);
