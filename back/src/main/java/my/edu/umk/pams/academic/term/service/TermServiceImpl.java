@@ -1388,54 +1388,6 @@ public class TermServiceImpl implements TermService {
         return map;
     }
     
-    // ====================================================================================================
-    // Assessment
-    // ====================================================================================================
-    @Override
-    public void addAssessment(AdOffering offering, AdAssessment assessment, AdUser user) {
-        Validate.notNull(user, "User cannot be null");
-        Validate.notNull(offering, "Offering cannot be null");
-        Validate.notNull(assessment, "assessment cannot be null");
-        Session session = sessionFactory.getCurrentSession();
-        assessment.setOffering(offering);
-
-        // prepare metadata
-        AdMetadata metadata = new AdMetadata();
-        metadata.setCreatedDate(new Timestamp(System.currentTimeMillis()));
-        metadata.setCreatorId(user.getId());
-        metadata.setState(AdMetaState.ACTIVE);
-        assessment.setMetadata(metadata);
-        session.save(assessment);
-    }
-
-    @Override
-    public void updateAssessment(AdOffering offering, AdAssessment assessment, AdUser user) {
-        Validate.notNull(user, "User cannot be null");
-        Session session = sessionFactory.getCurrentSession();
-        assessment.setOffering(offering);
-
-        // prepare metadata
-        AdMetadata metadata = assessment.getMetadata();
-        metadata.setModifiedDate(new Timestamp(System.currentTimeMillis()));
-        metadata.setModifierId(user.getId());
-        assessment.setMetadata(metadata);
-        session.update(assessment);
-    }
-
-    @Override
-    public void deleteAssessment(AdOffering offering, AdAssessment assessment, AdUser user) {
-        Validate.notNull(user, "User cannot be null");
-        Session session = sessionFactory.getCurrentSession();
-        session.delete(assessment);
-    }
-    
-
-    private List<AdOffering> decorate(List<AdOffering> offerings) {
-        for (AdOffering offering : offerings) {
-            offering.setSectionCount(sectionDao.count(offering));
-        }
-        return offerings;
-    }
-
+   
 
 }

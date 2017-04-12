@@ -424,18 +424,6 @@ public interface TermService {
     void updateAppointment(AdAppointment appointment);
 
     void deleteAppointment(AdAppointment appointment);
-    
-    // ====================================================================================================
-    // Assessment
-    // ====================================================================================================
-
-    void addAssessment(AdOffering offering, AdAssessment assessment, AdUser user);
-
-    void updateAssessment(AdOffering offering, AdAssessment assessment, AdUser user);
-
-    void deleteAssessment(AdOffering offering, AdAssessment assessment, AdUser user);
-
-
 
     //====================================================================================================
     // GRADEBOOK

@@ -96,7 +96,7 @@ public class WhenIAmUpdateExamVivaInfo extends Stage<WhenIAmUpdateExamVivaInfo> 
 		assessment.setType(AdAssessmentType.QUIZ);
 		assessment.setWeight(BigDecimal.ONE);
 
-		termService.addAssessment(offering, assessment, user);
+		termService.addAssessment(session, offering, assessment);
 
 	
 		Assert.notNull(assessment, "assesment is empty");
