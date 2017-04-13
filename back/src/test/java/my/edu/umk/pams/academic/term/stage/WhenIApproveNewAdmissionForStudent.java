@@ -12,6 +12,7 @@ import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 import my.edu.umk.pams.academic.common.model.AdStudyCenter;
 import my.edu.umk.pams.academic.common.service.CommonService;
+import my.edu.umk.pams.academic.identity.model.AdActor;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.identity.service.IdentityService;
 import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
@@ -20,6 +21,7 @@ import my.edu.umk.pams.academic.planner.model.AdAdmissionStatus;
 import my.edu.umk.pams.academic.planner.model.AdProgram;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
 import my.edu.umk.pams.academic.term.model.AdAdmission;
+import my.edu.umk.pams.academic.term.model.AdAdmissionApplication;
 import my.edu.umk.pams.academic.term.model.AdAdmissionImpl;
 import my.edu.umk.pams.academic.term.service.TermService;
 
@@ -40,31 +42,48 @@ public class WhenIApproveNewAdmissionForStudent  extends Stage<WhenIApproveNewAd
 	private CommonService commonService;
 	
 	@ProvidedScenarioState
-	private AdStudent student;
-	
-	@ProvidedScenarioState
 	private AdAdmission admission;
 	
+	@ProvidedScenarioState
+	private AdStudyCenter studyCenter;
+	
 	@ExpectedScenarioState
-	private AdProgram program;
+    private AdProgram program;
+    
+    @ExpectedScenarioState
+    private AdStudent student;
+	
+    @ExpectedScenarioState
+    private AdAcademicSession academicSession;
 	
 	@ProvidedScenarioState
-	private AdAcademicSession academicSession;
+	private	AdAdmissionApplication application;
 	
 
 	public WhenIApproveNewAdmissionForStudent I_approve_new_admission_for_student() {
 
 		//admin add new admission to approve admission application from student
-		AdStudent student = identityService.findStudentByMatricNo("A17P002");
-		AdProgram program = plannerService.findProgramByCode("A01/MASTER/0002");
-		AdAcademicSession academicSession = plannerService.findAcademicSessionByCode("201720181");
-		AdStudyCenter studyCenter = commonService.findStudyCenterByCode("A");
 		
-		AdAdmission admission = new AdAdmissionImpl();
-		admission.setCgpa(new BigDecimal("3.50"));
-		admission.setCreditEarned(140);
-		admission.setCreditTaken(140);
-		admission.setGpa(new BigDecimal("3.50"));
+		application = termService.findAdmissionApplicationByProgramAndStudent(program, student);
+		
+		Assert.notNull(program, "program code is not null");
+		Assert.notNull(student, "student id is not null");
+		
+		LOG.debug("Program:{}", program.getId());
+		LOG.debug("student:{}", student.getId());
+		
+		Assert.notNull(application, "application data is not null");
+		
+		LOG.debug("application ID:{}", application.getId());
+		LOG.debug("application studyCenter:{}", application.getStudyCenter().getId());
+		
+		studyCenter =  application.getStudyCenter();
+		
+		admission = new AdAdmissionImpl();
+		admission.setCgpa(new BigDecimal("3.10"));
+		admission.setCreditEarned(100);
+		admission.setCreditTaken(100);
+		admission.setGpa(new BigDecimal("3.10"));
 		admission.setProgram(program);
 		admission.setSession(academicSession);
 		admission.setStanding(AdAcademicStanding.KB);
@@ -74,10 +93,17 @@ public class WhenIApproveNewAdmissionForStudent  extends Stage<WhenIApproveNewAd
 		
 		termService.saveAdmission(admission);
 		
-		LOG.debug("New admission id inserted:{}", admission.getId());
+		//new data added in ad_admn from ad_admn_apln
 		Assert.notNull(admission, "Item data should be not null");
 		
-		
+		LOG.debug("New admission id inserted:{}", admission.getId());
+		LOG.debug("New admission Program inserted:{}", admission.getProgram().getId());
+		LOG.debug("New admission Session inserted:{}", admission.getSession().getId());
+		LOG.debug("New admission Gpa inserted:{}", admission.getGpa());
+		LOG.debug("New admission Cgpa inserted:{}", admission.getCgpa());
+		LOG.debug("New admission Standing inserted:{}", admission.getStanding());
+		LOG.debug("New admission Status inserted:{}", admission.getStatus());
+		LOG.debug("New admission StudyCenter inserted:{}", admission.getStudyCenter().getId());
 		
 		return self();
 	}

@@ -45,25 +45,16 @@ public class ThenTheNewAdmissionIsAdded extends Stage<ThenTheNewAdmissionIsAdded
 
 	public ThenTheNewAdmissionIsAdded the_new_admission_is_added() {
 		
-		AdStudent student = identityService.findStudentByMatricNo("A17P002");
-		AdProgram program = plannerService.findProgramByCode("A01/MASTER/0002");
-		AdAcademicSession academicSession = plannerService.findAcademicSessionByCode("201720181");
-		
-		AdAdmission admission = termService.findAdmissionBySessionProgramAndStudent(academicSession, program, student);
-		
 		Assert.notNull(admission, "Admission data should be not null");
+		LOG.debug("New admission id:{} ", admission.getId());
+		LOG.debug("New admission Program :{}", admission.getProgram().getId());
+		LOG.debug("New admission Session :{}", admission.getSession().getId());
+		LOG.debug("New admission Gpa :{}", admission.getGpa());
+		LOG.debug("New admission Cgpa :{}", admission.getCgpa());
+		LOG.debug("New admission Standing :{}", admission.getStanding());
+		LOG.debug("New admission Status :{}", admission.getStatus());
+		LOG.debug("New admission StudyCenter :{}", admission.getStudyCenter().getId());
 		
-		// view new admission data from AD_ADMN
-		LOG.debug("Cgpa is {} ", admission.getCgpa());
-		LOG.debug("Gpa is {} ", admission.getGpa());
-		LOG.debug("CreditEarned is {} ", admission.getCreditEarned());
-		LOG.debug("CreditEarned is {} ", admission.getCreditTaken());
-		LOG.debug("Admission for repeated course is {} ", admission.getStanding());
-		LOG.debug("Admission for repeated course is {} ", admission.getStatus());
-		
-
-		
-
 		return self();
 
 	}

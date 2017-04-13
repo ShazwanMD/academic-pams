@@ -23,8 +23,7 @@ public class ThenIGetCurrentStudentStatus extends Stage<ThenIGetCurrentStudentSt
         String message = "Status should be AdStudentStatus.ACTIVE";
 
         AdStudentStatus actualStatus = student.getStudentStatus();
-        LOG.debug("Student's status: {}", actualStatus.name());
-        LOG.debug("Student's status: {}", actualStatus.ordinal());
+
 
         Assert.isTrue(expectedStatus.equals(actualStatus), message);
 

@@ -1,6 +1,7 @@
 package my.edu.umk.pams.academic.term.stage;
 
 import java.math.BigDecimal;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +10,6 @@ import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 import my.edu.umk.pams.academic.common.model.AdStudyCenter;
-import my.edu.umk.pams.academic.common.service.CommonService;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.identity.service.IdentityService;
 import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
@@ -18,7 +18,6 @@ import my.edu.umk.pams.academic.planner.model.AdAdmissionStatus;
 import my.edu.umk.pams.academic.planner.model.AdProgram;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
 import my.edu.umk.pams.academic.term.model.AdAdmission;
-import my.edu.umk.pams.academic.term.model.AdAdmissionImpl;
 import my.edu.umk.pams.academic.term.model.AdSection;
 import my.edu.umk.pams.academic.term.service.TermService;
 
@@ -35,9 +34,6 @@ public class WhenIUpdateAdmissionStatus extends Stage<WhenIUpdateAdmissionStatus
 	@Autowired
 	private PlannerService plannerService;
 
-	@Autowired
-	private CommonService commonService;
-
 	@ProvidedScenarioState
 	private AdSection section;
 
@@ -48,6 +44,9 @@ public class WhenIUpdateAdmissionStatus extends Stage<WhenIUpdateAdmissionStatus
 	private AdProgram program;
 
 	@ProvidedScenarioState
+	private AdStudyCenter studyCenter;
+	
+	@ProvidedScenarioState
 	private AdAdmission admission;
 	
 	@ExpectedScenarioState
@@ -55,17 +54,14 @@ public class WhenIUpdateAdmissionStatus extends Stage<WhenIUpdateAdmissionStatus
 
 	public WhenIUpdateAdmissionStatus I_update_admission_status_for_program_$(String code) {
 
-		AdStudent student = identityService.findStudentByMatricNo("A17P001");
-		AdProgram program = plannerService.findProgramByCode("A01/MASTER/0001");
-		AdAcademicSession academicSession = plannerService.findAcademicSessionByCode("201720181");
-		AdStudyCenter studyCenter = commonService.findStudyCenterByCode("A");
-
+		student = identityService.findStudentByMatricNo("A17P002");
+		program = plannerService.findProgramByCode("A01/MASTER/0002");
+		
 		LOG.debug("student: {}", student.getId());
 		LOG.debug("program: {}", program.getId());
 		LOG.debug("academicSession: {}", academicSession.getId());
-		LOG.debug("studyCenter: {}", studyCenter.getId());
-		
-		AdAdmission admission = termService.findAdmissionBySessionProgramAndStudent(academicSession, program, student);
+				
+		admission = termService.findAdmissionBySessionProgramAndStudent(academicSession, program, student);
 		
 		admission.setCgpa(new BigDecimal("3.80"));
 		admission.setCreditEarned(110);
