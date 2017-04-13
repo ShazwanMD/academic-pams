@@ -139,7 +139,6 @@ public class WhenIAmSetupExamViva extends Stage<WhenIAmSetupExamViva> {
 		assessment.setCategory(AdAssessmentCategory.COURSE_WORK);
 		assessment.setCode("MASTER/2");
 		assessment.setDescription("MECHANICS OF MATERIALS");
-		assessment.setOffering(offering);
 		assessment.setOrdinal(0);
 		assessment.setSession(session);
 		assessment.setTotalScore(BigDecimal.ZERO);

@@ -22,20 +22,18 @@ import my.edu.umk.pams.bdd.stage.GivenIAmStudent;
 @ContextConfiguration(classes = TestAppConfiguration.class)
 @As("As a student,I want to view course registration, So that I can view course registered")
 
-
-
 public class US_AD_ASMT_1000 extends SpringScenarioTest<GivenIAmStudent, WhenReviewMyCourseRegistration, ThenCourseRegistrationViewed> {
 
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_ASMT_1000.class);
 	
-	
+	public static String IDENTITY_NO = "A17P001";
 	
 	@Test
     @Rollback
 	public void senario1000() {
 		
 		given().I_am_a_student_in_current_academic_session();
-		when().i_want_to_view_course_registration();
+		when().i_want_to_view_course_registration(IDENTITY_NO);
 		then().course_registration_viewed();
 	}
 	
