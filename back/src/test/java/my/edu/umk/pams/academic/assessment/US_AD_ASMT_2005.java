@@ -35,7 +35,7 @@ private static final Logger LOG = LoggerFactory.getLogger(US_AD_ASMT_2005.class)
 	public static String matricNo = "A17P001";
 	
 	@ProvidedScenarioState
-	private int mark = 20;
+	private int mark = 1;
 	
 	@Test
 	@Rollback

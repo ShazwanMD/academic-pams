@@ -304,6 +304,14 @@ public class WhenReviewStudentResult extends Stage<WhenReviewStudentResult> {
 				LOG.debug("Grade :{}", grade.getCode());
 				LOG.debug("Ordinal :{}", grade.getOrdinal());
 				LOG.debug("Grade Desc :{}", grade.getDescription());
+				
+			}else if (mark>100){
+				
+				LOG.debug("Cannot More than 100% marks");
+
+			}else if(mark<0){
+				
+				LOG.debug("Cannot Less than 0% marks");
 			}
 
 		} else {
