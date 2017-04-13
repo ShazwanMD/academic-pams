@@ -20,7 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
-@As("As a academic administrator, I want to create a section for student so that the students can enroll")
+@As("As a academic administrator, I want to create a list of sections under selected faculty and program so that the students can enroll")
 @Submodule("Term")
 public class US_AD_TRM_1002
 		extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenICreateSections, ThenTheStudentCanEnrol> {
