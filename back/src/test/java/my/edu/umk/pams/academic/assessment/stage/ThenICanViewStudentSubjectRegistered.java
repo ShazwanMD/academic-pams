@@ -55,8 +55,8 @@ public class ThenICanViewStudentSubjectRegistered extends Stage<ThenICanViewStud
 
 	@ProvidedScenarioState
 	private AdFaculty faculty;
-
 	
+
     public ThenICanViewStudentSubjectRegistered i_can_view_student_subject_registered(String identityNo) {
 		
     	student = identityService.findStudentByMatricNo(identityNo);
