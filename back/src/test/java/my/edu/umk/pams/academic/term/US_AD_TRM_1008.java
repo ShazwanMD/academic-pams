@@ -1,6 +1,7 @@
 package my.edu.umk.pams.academic.term;
 
 import org.junit.Test;
+
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,7 +24,6 @@ import my.edu.umk.pams.bdd.tags.Submodule;
 @Submodule("Term")
 public class US_AD_TRM_1008
 		extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenITransferSection, ThenTheEnrollmentIsUpdated> {
-	private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_1008.class);
 
 	@Test
 	@Rollback(true)

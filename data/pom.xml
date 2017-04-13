@@ -313,6 +313,8 @@
                                 <srcFile>src/test/resources/data/AD_APMT.sql</srcFile>
                                  <srcFile>src/test/resources/data/AD_ADMN_APLN.sql</srcFile>
                                   <srcFile>src/test/resources/data/AD_ADMN.sql</srcFile>
+                                   <srcFile>src/test/resources/data/AD_ENMT_APLN.sql</srcFile>
+                                   <srcFile>src/test/resources/data/AD_ENMT_APPL_ITEM.sql</srcFile>
 
                                 <!--PROFILE-->
                                 <srcFile>src/test/resources/data/AD_ADDR.sql</srcFile>
