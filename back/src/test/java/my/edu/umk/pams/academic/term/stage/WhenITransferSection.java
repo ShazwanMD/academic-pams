@@ -1,6 +1,7 @@
 package my.edu.umk.pams.academic.term.stage;
 
 import org.slf4j.Logger;
+
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
@@ -47,11 +48,15 @@ public class WhenITransferSection extends Stage<WhenITransferSection> {
 
 	public WhenITransferSection I_transfer_section() {
 
+		LOG.debug("session: {}", session.getCode());
+		
+		
+		
 		List<AdEnrollmentApplication> applications = termService.findEnrollmentApplications(session);
 
 		for (AdEnrollmentApplication application : applications) {
 
-			LOG.debug("Student Enrollment application id: {}", application.getId());
+			LOG.debug("Listed application ID: {}", application.getId());
 
 			List<AdEnrollmentApplicationItem> items = termService.findEnrollmentApplicationItems(application);
 
@@ -59,7 +64,7 @@ public class WhenITransferSection extends Stage<WhenITransferSection> {
 
 				LOG.debug("Item id: {}", item.getId());
 
-				AdEnrollment enrollment = new AdEnrollmentImpl();
+				enrollment = new AdEnrollmentImpl();
 				enrollment.setStanding(AdEnrollmentStanding.HW);
 				enrollment.setStudent(application.getStudent());
 				enrollment.setSection(item.getSection());
