@@ -10,6 +10,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.tngtech.jgiven.annotation.As;
+import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 
 import my.edu.umk.pams.academic.assessment.stage.ThenStudentDetailsCurrent;
@@ -25,10 +26,25 @@ public class US_AD_ASMT_3000 extends SpringScenarioTest<GivenIAmAdministrator, W
 
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_ASMT_3000.class);
 	
+	@ProvidedScenarioState
+	public static final String matricNo = "A17P001";
+	
 	@Test
 	@Rollback
-	public void scenario3000(){
+	public void scenarioCPS(){
 		String username = "cps";
+		String password = "abc123";
+		given().i_am_a_$_administrator_in_current_academic_session(username, password);
+		when().i_review_student_info();
+		then().student_details_current();
+		
+		
+	}
+	
+	@Test
+	@Rollback
+	public void scenarioMGSEB(){
+		String username = "mgseb";
 		String password = "abc123";
 		given().i_am_a_$_administrator_in_current_academic_session(username, password);
 		when().i_review_student_info();
