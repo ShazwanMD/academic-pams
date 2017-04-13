@@ -11,6 +11,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.tngtech.jgiven.annotation.As;
+import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 
 import my.edu.umk.pams.academic.assessment.stage.ThenStudentResultReviewed;
@@ -29,6 +30,12 @@ public class US_AD_ASMT_2005 extends SpringScenarioTest<GivenIAmAcademicStaff, W
 private static final Logger LOG = LoggerFactory.getLogger(US_AD_ASMT_2005.class);
 	
 	private String ACADEMIC_SESSION = "201720181";
+	
+	@ProvidedScenarioState
+	public static String matricNo = "A17P001";
+	
+	@ProvidedScenarioState
+	private int mark = 70;
 	
 	@Test
 	@Rollback
