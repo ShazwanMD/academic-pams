@@ -3,8 +3,12 @@ package my.edu.umk.pams.bdd.stage;
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
+
+import my.edu.umk.pams.academic.identity.model.AdActor;
 import my.edu.umk.pams.academic.identity.model.AdStaff;
+import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.identity.model.AdUser;
+import my.edu.umk.pams.academic.identity.service.IdentityService;
 import my.edu.umk.pams.academic.security.integration.AdUserDetails;
 import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
 import my.edu.umk.pams.academic.planner.model.AdCourse;
@@ -35,6 +39,9 @@ public class GivenIAmCPSAdministrator extends Stage<GivenIAmCPSAdministrator> {
 
     @Autowired
     private TermService termService;
+    
+    @Autowired
+    private IdentityService identityService;
 
     @ProvidedScenarioState
     private AdAcademicSession academicSession;
@@ -47,6 +54,9 @@ public class GivenIAmCPSAdministrator extends Stage<GivenIAmCPSAdministrator> {
 
     @ProvidedScenarioState
     private AdProgram program;
+    
+    @ProvidedScenarioState
+    private AdStudent student;
 
     @ProvidedScenarioState
     private AdOffering offering;
@@ -81,6 +91,11 @@ public class GivenIAmCPSAdministrator extends Stage<GivenIAmCPSAdministrator> {
 
     public GivenIAmCPSAdministrator I_pick_program_$(String code) {
         program = plannerService.findProgramByCode(code);
+        return self();
+    }
+    
+    public GivenIAmCPSAdministrator I_pick_student_$(String identityNo) {
+        student = identityService.findStudentByMatricNo(identityNo);
         return self();
     }
 

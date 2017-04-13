@@ -26,12 +26,13 @@ public class US_AD_TRM_1025 extends
 		SpringScenarioTest<GivenIAmCPSAdministrator, WhenIApproveNewAdmissionForStudent, ThenTheNewAdmissionIsAdded> {
 
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_1025.class);
-	public static final String PROGRAM_CODE = "A01/MASTER/0002";
+	public static final String PROGRAM_CODE = "A01/MASTER/0001";
+	public static final String STUDENT_ID = "A17P001";
 
 	@Test
 	@Rollback(true)
 	public void scenario1() {
-		given().I_am_a_CPS_administrator_in_current_academic_session().and().I_pick_program_$(PROGRAM_CODE);
+		given().I_am_a_CPS_administrator_in_current_academic_session().and().I_pick_program_$(PROGRAM_CODE).and().I_pick_student_$(STUDENT_ID);
 		when().I_approve_new_admission_for_student();
 		then().the_new_admission_is_added();
 	}
