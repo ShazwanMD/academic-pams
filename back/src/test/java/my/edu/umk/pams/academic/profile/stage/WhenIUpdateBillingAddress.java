@@ -36,9 +36,10 @@ public class WhenIUpdateBillingAddress extends Stage<WhenIUpdateBillingAddress> 
     private AdAddress address;
 
     public WhenIUpdateBillingAddress I_add_my_billing_address() {
-        
-    	AdAddress address = new AdAddressImpl();
 
+    	student = profileService.findStudentByMatricNo("A17P001");
+    	
+    	AdAddress address = new AdAddressImpl();
         address.setType(AdAddressType.BILLING);
         address.setAddress1("Jalan Petaling");
         address.setAddress2("Petaling Jaya");
