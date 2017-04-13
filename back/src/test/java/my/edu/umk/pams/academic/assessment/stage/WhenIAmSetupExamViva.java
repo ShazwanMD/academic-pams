@@ -59,8 +59,7 @@ public class WhenIAmSetupExamViva extends Stage<WhenIAmSetupExamViva> {
 	@ProvidedScenarioState
 	private AdAcademicSession session;
 
-	@ProvidedScenarioState
-	private AdOfferingDao offeringDao;
+
 
 	@ProvidedScenarioState
 	private AdActor actor;
@@ -87,13 +86,14 @@ public class WhenIAmSetupExamViva extends Stage<WhenIAmSetupExamViva> {
 		faculty = program.getFaculty();
 
 		// add new offering
-		AdOffering offering = new AdOfferingImpl();
+		offering = new AdOfferingImpl();
 		offering.setCanonicalCode("A01/MASTER/1/DDA2113");
 		offering.setCapacity(100);
 		offering.setCode("DDA2113");
 		offering.setTitle("Offering 1");
 		offering.setProgram(program);
 		termService.saveOffering(offering);
+		Assert.notNull(offering, "offering is null");
 
 		// setup assessment
 		AdAssessment quiz1 = new AdAssessmentImpl();
@@ -108,6 +108,7 @@ public class WhenIAmSetupExamViva extends Stage<WhenIAmSetupExamViva> {
 		quiz1.setType(AdAssessmentType.QUIZ);
 		quiz1.setWeight(BigDecimal.ZERO);
 		termService.addAssessment(session, offering, quiz1);
+		Assert.notNull(quiz1, "quiz1 is null");
 
 		LOG.debug("QUIZ 1 :========>");
 		LOG.debug("Assessment CanonicalCOde :{}", quiz1.getCanonicalCode());
@@ -132,6 +133,7 @@ public class WhenIAmSetupExamViva extends Stage<WhenIAmSetupExamViva> {
 		quiz2.setType(AdAssessmentType.QUIZ);
 		quiz2.setWeight(BigDecimal.ZERO);
 		termService.addAssessment(session, offering, quiz2);
+		Assert.notNull(quiz2, "quiz2 is null");
 
 		LOG.debug("QUIZ 2 :========>");
 		LOG.debug("Assessment CanonicalCOde :{}", quiz2.getCanonicalCode());
@@ -154,6 +156,7 @@ public class WhenIAmSetupExamViva extends Stage<WhenIAmSetupExamViva> {
 		test1.setType(AdAssessmentType.TEST);
 		test1.setWeight(BigDecimal.ZERO);
 		termService.addAssessment(session, offering, test1);
+		Assert.notNull(test1, "test1 is null");
 
 		LOG.debug("TEST 1 :========>");
 		LOG.debug("Assessment CanonicalCOde :{}", test1.getCanonicalCode());
@@ -176,6 +179,7 @@ public class WhenIAmSetupExamViva extends Stage<WhenIAmSetupExamViva> {
 		quiz3.setType(AdAssessmentType.QUIZ);
 		quiz3.setWeight(BigDecimal.ZERO);
 		termService.addAssessment(session, offering, quiz3);
+		Assert.notNull(quiz3, "quiz3 is null");
 
 		LOG.debug("QUIZ 3 :========>");
 		LOG.debug("Assessment CanonicalCOde :{}", quiz3.getCanonicalCode());
@@ -198,6 +202,7 @@ public class WhenIAmSetupExamViva extends Stage<WhenIAmSetupExamViva> {
 		quiz4.setType(AdAssessmentType.QUIZ);
 		quiz4.setWeight(BigDecimal.ZERO);
 		termService.addAssessment(session, offering, quiz4);
+		Assert.notNull(quiz4, "quiz4 is null");
 
 		LOG.debug("QUIZ 4 :========>");
 		LOG.debug("Assessment CanonicalCOde :{}", quiz4.getCanonicalCode());
@@ -206,7 +211,7 @@ public class WhenIAmSetupExamViva extends Stage<WhenIAmSetupExamViva> {
 		LOG.debug("Assessment Desc :{}", quiz4.getDescription());
 		LOG.debug("Assessment Type :{}", quiz4.getType().name());
 		LOG.debug("Assessment TotalScore :{}", quiz4.getTotalScore().byteValueExact());
-		
+
 		// setup assessment5
 		AdAssessment test2 = new AdAssessmentImpl();
 		test2.setCanonicalCode("A01/MASTER/T2/DDA2113");
@@ -220,6 +225,7 @@ public class WhenIAmSetupExamViva extends Stage<WhenIAmSetupExamViva> {
 		test2.setType(AdAssessmentType.TEST);
 		test2.setWeight(BigDecimal.ZERO);
 		termService.addAssessment(session, offering, test2);
+		Assert.notNull(test2, "test2 is null");
 
 		LOG.debug("TEST 2 :========>");
 		LOG.debug("Assessment CanonicalCOde :{}", test2.getCanonicalCode());
@@ -229,42 +235,39 @@ public class WhenIAmSetupExamViva extends Stage<WhenIAmSetupExamViva> {
 		LOG.debug("Assessment Type :{}", test2.getType().name());
 		LOG.debug("Assessment TotalScore :{}", test2.getTotalScore().byteValueExact());
 
-
 		return self();
 
 	}
 
 	public WhenIAmSetupExamViva i_update_exam() {
-		 //find assessment by CanonicalCode
-		 assessment =
-		 termService.findAssessmentByCanonicalCode("A01/MASTER/Q1/DDA2113");
-		
-		 //update assessment (quiz 1 == quiz 1.1)
-		 assessment.setCanonicalCode("A01/MASTER/Q1.1/DDA2113");
-		 assessment.setCategory(AdAssessmentCategory.COURSE_WORK);
-		 assessment.setCode("MASTER/Q1.1");
-		 assessment.setDescription("MECHANICS OF MATERIALS");
-		 assessment.setOrdinal(0);
-		 assessment.setSession(session);
-		 assessment.setTotalScore(BigDecimal.ZERO);
-		 assessment.setType(AdAssessmentType.QUIZ);
-		 assessment.setWeight(BigDecimal.ZERO);
-		 termService.updateAssessment(session, offering, assessment);
-		
-		 LOG.debug("QUIZ 1 UPDATED ==========>");
-		 LOG.debug("Assessment CanonicalCOde :{}",
-		 assessment.getCanonicalCode());
-		 LOG.debug("assessment Category :{}",
-		 assessment.getCategory().name());
-		 LOG.debug("assessment Code :{}", assessment.getCode());
-		 LOG.debug("Assessment Desc :{}", assessment.getDescription());
-		 LOG.debug("Assessment Type :{}", assessment.getType().name());
-		 LOG.debug("Assessment TotalScore :{}",
-		 assessment.getTotalScore().byteValueExact());
-		
-		 //assert
-		 Assert.notNull(assessment, "Assessments not setup");
-		
+		// find assessment by CanonicalCode
+		assessment = termService.findAssessmentByCanonicalCode("A01/MASTER/Q1/DDA2113");
+		Assert.notNull(assessment, "assessment is null");
+
+		// update assessment (quiz 1 == quiz 1.1)
+		assessment.setCanonicalCode("A01/MASTER/Q1.1/DDA2113");
+		assessment.setCategory(AdAssessmentCategory.COURSE_WORK);
+		assessment.setCode("MASTER/Q1.1");
+		assessment.setDescription("MECHANICS OF MATERIALS");
+		assessment.setOffering(offering);
+		assessment.setOrdinal(0);
+		assessment.setSession(session);
+		assessment.setTotalScore(BigDecimal.ZERO);
+		assessment.setType(AdAssessmentType.QUIZ);
+		assessment.setWeight(BigDecimal.ZERO);
+
+		termService.updateAssessment(session, offering, assessment);
+		Assert.notNull(termService.findAssessmentByCanonicalCode("A01/MASTER/Q1.1/DDA2113"),
+				"canonical code for assessment is not updated");
+
+		LOG.debug("QUIZ 1 UPDATED ==========>");
+		LOG.debug("Assessment CanonicalCOde :{}", assessment.getCanonicalCode());
+		LOG.debug("assessment Category :{}", assessment.getCategory().name());
+		LOG.debug("assessment Code :{}", assessment.getCode());
+		LOG.debug("Assessment Desc :{}", assessment.getDescription());
+		LOG.debug("Assessment Type :{}", assessment.getType().name());
+		LOG.debug("Assessment TotalScore :{}", assessment.getTotalScore().byteValueExact());
+
 		return self();
 	}
 
