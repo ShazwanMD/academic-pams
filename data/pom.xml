@@ -312,6 +312,7 @@
                                 <srcFile>src/test/resources/data/AD_SCTN.sql</srcFile>
                                 <srcFile>src/test/resources/data/AD_APMT.sql</srcFile>
                                  <srcFile>src/test/resources/data/AD_ADMN_APLN.sql</srcFile>
+                                  <srcFile>src/test/resources/data/AD_ADMN.sql</srcFile>
 
                                 <!--PROFILE-->
                                 <srcFile>src/test/resources/data/AD_ADDR.sql</srcFile>
