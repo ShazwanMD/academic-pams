@@ -100,6 +100,7 @@ public class WhenReviewStudentResult extends Stage<WhenReviewStudentResult> {
 	private AdGradeCode grade;
 
 	public WhenReviewStudentResult I_review_result() {
+				
 		// student
 		student = identityService.findStudentByMatricNo(matricNo);
 		LOG.debug("Student Name :{}", student.getName());
@@ -232,85 +233,108 @@ public class WhenReviewStudentResult extends Stage<WhenReviewStudentResult> {
 				// logging
 
 				grade = commonService.findGradeCodeByCode("A+");
+				LOG.debug("Mark :{}", mark);
 				LOG.debug("Grade :{}", grade.getCode());
 				LOG.debug("Ordinal :{}", grade.getOrdinal());
 				LOG.debug("Grade Desc :{}", grade.getDescription());
+				
 
 			} else if (mark >= 80 && mark <= 89) {
 
 				grade = commonService.findGradeCodeByCode("A");
+				LOG.debug("Mark :{}", mark);
 				LOG.debug("Grade :{}", grade.getCode());
 				LOG.debug("Ordinal :{}", grade.getOrdinal());
 				LOG.debug("Grade Desc :{}", grade.getDescription());
+				
 
 			} else if (mark >= 75 && mark <= 79) {
 
 				grade = commonService.findGradeCodeByCode("A-");
+				LOG.debug("Mark :{}", mark);
 				LOG.debug("Grade :{}", grade.getCode());
 				LOG.debug("Ordinal :{}", grade.getOrdinal());
 				LOG.debug("Grade Desc :{}", grade.getDescription());
+			
 
 			} else if (mark >= 70 && mark <= 74) {
 
 				grade = commonService.findGradeCodeByCode("B+");
+				LOG.debug("Mark :{}", mark);
 				LOG.debug("Grade :{}", grade.getCode());
 				LOG.debug("Ordinal :{}", grade.getOrdinal());
 				LOG.debug("Grade Desc :{}", grade.getDescription());
+				
 
 			} else if (mark >= 65 && mark <= 69) {
 
 				grade = commonService.findGradeCodeByCode("B");
+				LOG.debug("Mark :{}", mark);
 				LOG.debug("Grade :{}", grade.getCode());
 				LOG.debug("Ordinal :{}", grade.getOrdinal());
 				LOG.debug("Grade Desc :{}", grade.getDescription());
+				
 
 			} else if (mark >= 60 && mark <= 64) {
 
 				grade = commonService.findGradeCodeByCode("B-");
+				LOG.debug("Mark :{}", mark);
 				LOG.debug("Grade :{}", grade.getCode());
 				LOG.debug("Ordinal :{}", grade.getOrdinal());
 				LOG.debug("Grade Desc :{}", grade.getDescription());
+				
 
 			} else if (mark >= 55 && mark <= 59) {
 
 				grade = commonService.findGradeCodeByCode("C+");
+				LOG.debug("Mark :{}", mark);
 				LOG.debug("Grade :{}", grade.getCode());
 				LOG.debug("Ordinal :{}", grade.getOrdinal());
 				LOG.debug("Grade Desc :{}", grade.getDescription());
+				
 
 			} else if (mark >= 50 && mark <= 54) {
 
 				grade = commonService.findGradeCodeByCode("C");
+				LOG.debug("Mark :{}", mark);
 				LOG.debug("Grade :{}", grade.getCode());
 				LOG.debug("Ordinal :{}", grade.getOrdinal());
 				LOG.debug("Grade Desc :{}", grade.getDescription());
+				
 
 			} else if (mark >= 45 && mark <= 49) {
 
 				grade = commonService.findGradeCodeByCode("C-");
+				LOG.debug("Mark :{}", mark);
 				LOG.debug("Grade :{}", grade.getCode());
 				LOG.debug("Ordinal :{}", grade.getOrdinal());
 				LOG.debug("Grade Desc :{}", grade.getDescription());
+				
 
 			} else if (mark >= 40 && mark <= 44) {
 				grade = commonService.findGradeCodeByCode("D");
+				LOG.debug("Mark :{}", mark);
 				LOG.debug("Grade :{}", grade.getCode());
 				LOG.debug("Ordinal :{}", grade.getOrdinal());
 				LOG.debug("Grade Desc :{}", grade.getDescription());
+				
 
 			} else if (mark >= 0 && mark <= 39) {
 
 				grade = commonService.findGradeCodeByCode("F");
+				LOG.debug("Mark :{}", mark);
 				LOG.debug("Grade :{}", grade.getCode());
 				LOG.debug("Ordinal :{}", grade.getOrdinal());
 				LOG.debug("Grade Desc :{}", grade.getDescription());
-				
+								
 			}else if (mark>100){
 				
+				LOG.debug("Mark :{}", mark);
 				LOG.debug("Cannot More than 100% marks");
-
+				
 			}else if(mark<0){
 				
+				LOG.debug("Mark :{}", mark);
 				LOG.debug("Cannot Less than 0% marks");
 			}
 

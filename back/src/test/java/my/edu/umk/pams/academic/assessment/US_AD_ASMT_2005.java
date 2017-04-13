@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.tngtech.jgiven.annotation.As;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
+import com.tngtech.jgiven.integration.spring.JGivenStage;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 
 import my.edu.umk.pams.academic.assessment.stage.ThenStudentResultReviewed;
@@ -24,7 +25,7 @@ import my.edu.umk.pams.bdd.stage.GivenIAmAcademicStaff;
 @ContextConfiguration(classes = TestAppConfiguration.class)
 @As("As a supervisor, I want to view student results, so that I know students' result.")
 
-
+@JGivenStage
 public class US_AD_ASMT_2005 extends SpringScenarioTest<GivenIAmAcademicStaff, WhenReviewStudentResult, ThenStudentResultReviewed>{
 	
 private static final Logger LOG = LoggerFactory.getLogger(US_AD_ASMT_2005.class);
@@ -35,7 +36,7 @@ private static final Logger LOG = LoggerFactory.getLogger(US_AD_ASMT_2005.class)
 	public static String matricNo = "A17P001";
 	
 	@ProvidedScenarioState
-	private int mark = 1;
+	private int mark = 50;
 	
 	@Test
 	@Rollback
