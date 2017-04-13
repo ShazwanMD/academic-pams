@@ -4,7 +4,7 @@ import com.tngtech.jgiven.annotation.As;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.profile.stage.ThenInformationIsCurrent;
-import my.edu.umk.pams.academic.profile.stage.WhenIViewCourseInfo;
+import my.edu.umk.pams.academic.profile.stage.WhenReviewCourseInfo;
 import my.edu.umk.pams.bdd.stage.GivenIAmStudent;
 import my.edu.umk.pams.bdd.tags.Issue;
 import my.edu.umk.pams.bdd.tags.Submodule;
@@ -25,7 +25,7 @@ import org.springframework.transaction.annotation.Transactional;
 @As("As a student, I want to view course info so that information is current")
 @Submodule("Profile")
 @Issue("PAMA-6")
-public class US_AD_PFL_1006 extends SpringScenarioTest<GivenIAmStudent, WhenIViewCourseInfo, ThenInformationIsCurrent> {
+public class US_AD_PFL_1006 extends SpringScenarioTest<GivenIAmStudent, WhenReviewCourseInfo, ThenInformationIsCurrent> {
 
     private static final Logger LOG = LoggerFactory.getLogger(US_AD_PFL_1006.class);
     private static final String FACULTY_CODE = "A01";

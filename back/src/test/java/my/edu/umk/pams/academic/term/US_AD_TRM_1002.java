@@ -20,14 +20,14 @@ import org.springframework.transaction.annotation.Transactional;
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
-@As("As a academic administrator, I want to create a section for student so that the students can enroll")
+@As("As a academic administrator, I want to create a list of sections under selected faculty and program so that the students can enroll")
 @Submodule("Term")
 public class US_AD_TRM_1002
 		extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenICreateSections, ThenTheStudentCanEnrol> {
 
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_1002.class);
-	public static final String FACULTY_CODE = "A01";
-	public static final String PROGRAM_CODE = "A01/PHD/0001";
+	public static final String FACULTY_CODE = "A10";
+	public static final String PROGRAM_CODE = "A10";
 
 	@Test
 	@Rollback(true)
