@@ -10,6 +10,7 @@ import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 
 import io.jsonwebtoken.lang.Assert;
+import my.edu.umk.pams.academic.identity.model.AdActor;
 import my.edu.umk.pams.academic.identity.model.AdStaff;
 import my.edu.umk.pams.academic.identity.service.IdentityService;
 import my.edu.umk.pams.academic.planner.model.AdAppointmentStatus;
@@ -44,30 +45,26 @@ public class WhenIUpdateAppointStaffIntoSection extends Stage<WhenIUpdateAppoint
 
 		Assert.notNull(section, "section should be not null");
 		LOG.debug("section: {}", section.getCanonicalCode());
-
-		staff = identityService.findStaffByStaffNo("01002A"); //staff baru
-
-		Assert.notNull(staff, "staff should be not null");
+		
+		staff = identityService.findStaffByStaffNo("01001A"); //cari staff dri db
 		LOG.debug("staff: {}", staff.getId());
+		
 
-//		appointment = termService.findAppointmentBySectionAndStaff(section,staff);
-//		
-//		LOG.debug("appointment: {}", appointment.getId());
-//		LOG.debug("staff: {}", appointment.getStaff().getId());
+		appointment = termService.findAppointmentBySectionAndStaff(section, staff);
+		
+		Assert.notNull(appointment, "appointment should be not null");
+		LOG.debug("appointment: {}", appointment.getId());
+		LOG.debug("staff: {}", appointment.getStaff().getName()); //view staf yang sedia ada
 		
 		
-		//
-		//
-		// appointment.setStaff(staff);
-		// appointment.setSection(section);
-		// appointment.setStatus(status);
-		//
-		// LOG.debug("staff: {}", appointment.getStaff());
-		// LOG.debug("section: {}", appointment.getSection());
-		// LOG.debug("status: {}", appointment.getStatus());
-		//
-		// termService.updateAppointment(appointment);
-		//
+		staff = identityService.findStaffByStaffNo("01002A"); // cari staf baru
+		
+		appointment.setStaff(staff);
+		termService.updateAppointment(appointment);
+		
+		Assert.notNull(appointment, "appointment should be not null");
+		LOG.debug("appointment staff: {}", appointment.getStaff().getName());
+		
 		return self();
 
 	}
