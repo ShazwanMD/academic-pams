@@ -292,6 +292,7 @@
                                 <srcFile>src/test/resources/data/AD_RACE_CODE.sql</srcFile>
                                 <srcFile>src/test/resources/data/AD_RLGN_CODE.sql</srcFile>
                                 <srcFile>src/test/resources/data/AD_RSCY_CODE.sql</srcFile>
+                                <srcFile>src/test/resources/data/AD_STDY_CNTR.sql</srcFile>
                                 <srcFile>src/test/resources/data/AD_STDY_CNTR_CODE.sql</srcFile>
 
                                 <!--PLANNER-->
@@ -309,6 +310,7 @@
                                 <!--TERM-->
                                 <srcFile>src/test/resources/data/AD_OFRG.sql</srcFile>
                                 <srcFile>src/test/resources/data/AD_SCTN.sql</srcFile>
+                                <srcFile>src/test/resources/data/AD_APMT.sql</srcFile>
 
                                 <!--PROFILE-->
                                 <srcFile>src/test/resources/data/AD_ADDR.sql</srcFile>
