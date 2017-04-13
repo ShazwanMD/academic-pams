@@ -12,10 +12,11 @@ import com.tngtech.jgiven.annotation.Pending;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 import io.jsonwebtoken.lang.Assert;
 import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
+import my.edu.umk.pams.academic.system.model.AdConfiguration;
 import my.edu.umk.pams.academic.system.service.SystemService;
 import my.edu.umk.pams.academic.term.model.AdSection;
 
-@Pending
+
 @JGivenStage
 public class ThenTheDateEnrollmentIsReview extends Stage<ThenTheDateEnrollmentIsReview> {
 	private static final Logger LOG = LoggerFactory.getLogger(ThenTheDateEnrollmentIsReview.class);
@@ -25,11 +26,17 @@ public class ThenTheDateEnrollmentIsReview extends Stage<ThenTheDateEnrollmentIs
 
 	@ExpectedScenarioState
 	private AdSection section;
+	
+	@ExpectedScenarioState
+	private AdConfiguration configuration;
 
 	public ThenTheDateEnrollmentIsReview Know_the_enrollment_interval_period() {
 
-		Assert.notNull(section, "section should be not null");
-
+		
+		//TODO COUNT 
+		Assert.notNull(configuration, "section should be not null");
+		
+		
 		return self();
 
 	}
