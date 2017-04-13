@@ -311,6 +311,7 @@
                                 <srcFile>src/test/resources/data/AD_OFRG.sql</srcFile>
                                 <srcFile>src/test/resources/data/AD_SCTN.sql</srcFile>
                                 <srcFile>src/test/resources/data/AD_APMT.sql</srcFile>
+                                 <srcFile>src/test/resources/data/AD_ADMN_APLN.sql</srcFile>
 
                                 <!--PROFILE-->
                                 <srcFile>src/test/resources/data/AD_ADDR.sql</srcFile>
