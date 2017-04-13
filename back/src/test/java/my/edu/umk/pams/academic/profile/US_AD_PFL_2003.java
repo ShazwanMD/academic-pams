@@ -15,7 +15,7 @@ import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 
 import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.profile.stage.ThenIGetCurrentStudentStatus;
-import my.edu.umk.pams.academic.profile.stage.WhenIAccessStudentStatus;
+import my.edu.umk.pams.academic.profile.stage.WhenAccessStudentStatus;
 import my.edu.umk.pams.bdd.stage.GivenIAmAdministrator;
 import my.edu.umk.pams.bdd.tags.Issue;
 import my.edu.umk.pams.bdd.tags.Submodule;
@@ -28,7 +28,7 @@ import my.edu.umk.pams.bdd.tags.Submodule;
 @Submodule("Profile")
 @Issue("PAMA-11")
 public class US_AD_PFL_2003
-		extends SpringScenarioTest<GivenIAmAdministrator, WhenIAccessStudentStatus, ThenIGetCurrentStudentStatus> {
+		extends SpringScenarioTest<GivenIAmAdministrator, WhenAccessStudentStatus, ThenIGetCurrentStudentStatus> {
 
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_PFL_2003.class);
 
