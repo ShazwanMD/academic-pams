@@ -26,7 +26,7 @@ public class US_AD_ASMT_3005 extends SpringScenarioTest <GivenIAmAdministrator, 
 	
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_ASMT_3005.class);
 	
-private String ACADEMIC_SESSION = "201720181";
+	private String ACADEMIC_SESSION = "201720181";
 	
 	@Test
 	@Rollback

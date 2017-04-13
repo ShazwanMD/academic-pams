@@ -21,9 +21,9 @@ import my.edu.umk.pams.academic.planner.service.PlannerService;
 
 
 @JGivenStage
-public class WhenIViewCourseRegistration extends Stage<WhenIViewCourseRegistration> {
+public class WhenReviewCourseRegistration extends Stage<WhenReviewCourseRegistration> {
 
-	private static final Logger LOG = LoggerFactory.getLogger(WhenIViewCourseRegistration.class);
+	private static final Logger LOG = LoggerFactory.getLogger(WhenReviewCourseRegistration.class);
 	
 	@Autowired
 	private IdentityService identityService;
@@ -49,38 +49,35 @@ public class WhenIViewCourseRegistration extends Stage<WhenIViewCourseRegistrati
 	@ProvidedScenarioState
 	private AdProgram program;
 	
+	public WhenReviewCourseRegistration I_view_student_$_course_registration(String identityNo) {
 	
-	public WhenIViewCourseRegistration I_view_student_$_course_registration(String identityNo) {
-		
+		//find student by matric no and get get information using matric no
 		student = identityService.findStudentByMatricNo(identityNo);
-		LOG.debug("Student's Name:{}", student.getName());
-		
 		studentStatus = student.getStudentStatus();
-		LOG.debug("Student's Status:{}", studentStatus.name());
-		
 		cohort = student.getCohort();
-		LOG.debug("Cohort:{}", cohort.getCode());
-		
-		
 		program = cohort.getProgram();
-		LOG.debug("Program:{}", program.getCode());
-		
 		faculty = program.getFaculty();
-		LOG.debug("Faculty:{}", faculty.getName());
-		
 		courses = faculty.getCourses();
 
+		LOG.debug("Student's Name:{}", student.getName());
+		
+		LOG.debug("Student's Status:{}", studentStatus.name());
+		
+		LOG.debug("Cohort:{}", cohort.getCode());
+				
+		LOG.debug("Program:{}", program.getCode());
+		
+		LOG.debug("Faculty:{}", faculty.getName());
+		
 		for (AdCourse course : courses) {
 			LOG.debug(course.getTitle());
 		}
-		
 		
 		return self();
 	}
 
 	@Pending
-	public WhenIViewCourseRegistration I_view_student_payment_status() {
-		
+	public WhenReviewCourseRegistration I_view_student_payment_status() {
 
 		return self();
 	}

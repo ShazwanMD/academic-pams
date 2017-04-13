@@ -14,7 +14,7 @@ import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import org.slf4j.Logger;
 import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.profile.stage.ThenIKnowStudentRegisteredCourseandPaymentStatus;
-import my.edu.umk.pams.academic.profile.stage.WhenIViewCourseRegistration;
+import my.edu.umk.pams.academic.profile.stage.WhenReviewCourseRegistration;
 import my.edu.umk.pams.bdd.stage.GivenIAmBursary;
 import my.edu.umk.pams.bdd.tags.Issue;
 import my.edu.umk.pams.bdd.tags.Submodule;
@@ -26,7 +26,7 @@ import my.edu.umk.pams.bdd.tags.Submodule;
 @Submodule("Profile")
 @Issue("PAMA-55")
 public class US_AD_PFL_3001 extends
-		SpringScenarioTest<GivenIAmBursary, WhenIViewCourseRegistration, ThenIKnowStudentRegisteredCourseandPaymentStatus> {
+		SpringScenarioTest<GivenIAmBursary, WhenReviewCourseRegistration, ThenIKnowStudentRegisteredCourseandPaymentStatus> {
 
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_PFL_3001.class);
 
