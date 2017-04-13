@@ -1,6 +1,7 @@
 package my.edu.umk.pams.academic.assessment.stage;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -74,10 +75,10 @@ public class WhenReviewStudentResult extends Stage<WhenReviewStudentResult> {
 	@ExpectedScenarioState
 	private AdUser user;
 
-	@ExpectedScenarioState
+	@ProvidedScenarioState
 	private AdFaculty faculty;
 
-	@ExpectedScenarioState
+	@ProvidedScenarioState
 	private AdCourse course;
 
 	@ProvidedScenarioState
@@ -110,10 +111,16 @@ public class WhenReviewStudentResult extends Stage<WhenReviewStudentResult> {
 
 		// cohort
 		cohort = student.getCohort();
-
+		
 		// program
 		program = cohort.getProgram();
 		LOG.debug("Program :{}", program.getTitle());
+		
+		faculty = program.getFaculty();
+		LOG.debug("faculty :{}", faculty.getName());
+		
+		List<AdCourse> courses = faculty.getCourses();
+		LOG.debug("course(s) :{}", courses.get(0));
 
 		// new offering
 		offering = new AdOfferingImpl();
