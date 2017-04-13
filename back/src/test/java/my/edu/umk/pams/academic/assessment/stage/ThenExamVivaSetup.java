@@ -74,9 +74,28 @@ private static final Logger LOG = LoggerFactory.getLogger(ThenExamVivaSetup.clas
 	
 	public ThenExamVivaSetup exam_setup() {
 		
-	 boolean exists = termService.isAssessmentExists("A01/MASTER/2/DDA2113");
-	 
+	 boolean exists = termService.isAssessmentExists("A01/MASTER/Q1.1/DDA2113");
 	 Assert.isTrue(exists, "Not Setup");
+	 
+	 boolean exists1 = termService.isAssessmentExists("A01/MASTER/Q2/DDA2113");
+	 Assert.isTrue(exists1, "Not Setup");
+	 
+	 boolean exists2 = termService.isAssessmentExists("A01/MASTER/Q3/DDA2113");
+	 Assert.isTrue(exists2, "Not Setup");
+	 
+	 boolean exists3 = termService.isAssessmentExists("A01/MASTER/T1/DDA2113");
+	 Assert.isTrue(exists3, "Not Setup");
+	 
+	 boolean exists4 = termService.isAssessmentExists("A01/MASTER/Q3/DDA2113");
+	 Assert.isTrue(exists4, "Not Setup");
+	 
+	 boolean exists5 = termService.isAssessmentExists("A01/MASTER/Q4/DDA2113");
+	 Assert.isTrue(exists5, "Not Setup");
+	 
+	 boolean exists6 = termService.isAssessmentExists("A01/MASTER/T2/DDA2113");
+	 Assert.isTrue(exists6, "Not Setup");
+	 
+	 
 		
 		return self();
 		
