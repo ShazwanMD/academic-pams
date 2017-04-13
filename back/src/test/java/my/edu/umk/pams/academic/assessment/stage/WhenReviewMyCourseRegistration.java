@@ -76,7 +76,7 @@ public class WhenReviewMyCourseRegistration extends Stage<WhenReviewMyCourseRegi
 		//student cohort
 		LOG.debug("Student's Cohort: {}", cohort.getCode());
 		//program
-		LOG.debug("{Program :{}", program.getCode());
+		LOG.debug("Program :{}", program.getCode());
 		//program level
 		LOG.debug("Program Level :{}", level.getCode());
 		//faculty
@@ -94,7 +94,7 @@ public class WhenReviewMyCourseRegistration extends Stage<WhenReviewMyCourseRegi
 			//student cohort
 			LOG.debug("Student's Cohort: {}", cohort.getCode());
 			//program
-			LOG.debug("{Program :{}", program.getCode());
+			LOG.debug("Program :{}", program.getCode());
 			//program level
 			LOG.debug("Program Level :{}", level.getCode());
 			//faculty
@@ -112,7 +112,7 @@ public class WhenReviewMyCourseRegistration extends Stage<WhenReviewMyCourseRegi
 			//student cohort
 			LOG.debug("Student's Cohort: {}", cohort.getCode());
 			//program
-			LOG.debug("{Program :{}", program.getCode());
+			LOG.debug("Program :{}", program.getCode());
 			//program level
 			LOG.debug("Program Level :{}", level.getCode());
 			//faculty
@@ -130,7 +130,7 @@ public class WhenReviewMyCourseRegistration extends Stage<WhenReviewMyCourseRegi
 			//student cohort
 			LOG.debug("Student's Cohort: {}", cohort.getCode());
 			//program
-			LOG.debug("{Program :{}", program.getCode());
+			LOG.debug("Program :{}", program.getCode());
 			//program level
 			LOG.debug("Program Level :{}", level.getCode());
 			//faculty
@@ -149,7 +149,7 @@ public class WhenReviewMyCourseRegistration extends Stage<WhenReviewMyCourseRegi
 			//student cohort
 			LOG.debug("Student's Cohort: {}", cohort.getCode());
 			//program
-			LOG.debug("{Program :{}", program.getCode());
+			LOG.debug("Program :{}", program.getCode());
 			//program level
 			LOG.debug("Program Level :{}", level.getCode());
 			//faculty
