@@ -57,6 +57,8 @@ public class WhenReviewMyCourseRegistration extends Stage<WhenReviewMyCourseRegi
 	public WhenReviewMyCourseRegistration i_want_to_view_course_registration(String identityNo) {
 		
 		student = identityService.findStudentByMatricNo(identityNo);
+		student.setName("SAM");
+		identityService.updateStudent(student);
 	    studentStatus = student.getStudentStatus();
 	    cohort = student.getCohort();
 	    
