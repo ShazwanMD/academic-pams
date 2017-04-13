@@ -25,7 +25,7 @@ import org.junit.runners.Suite;
         US_AD_TRM_1014.class,
         US_AD_TRM_1015.class,
         US_AD_TRM_1016.class,
-        //US_AD_TRM_1017.class,
+        US_AD_TRM_1017.class,
         US_AD_TRM_1018.class,
         US_AD_TRM_1019.class,
         US_AD_TRM_1020.class,
