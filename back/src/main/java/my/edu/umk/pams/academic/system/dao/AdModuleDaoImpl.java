@@ -14,9 +14,8 @@ import org.springframework.stereotype.Repository;
  * @author canang technologies
  * @since 4/18/14
  */
-@SuppressWarnings({"unchecked"})
 @Repository("moduleDao")
-public final class AdModuleDaoImpl extends GenericDaoSupport<Long, AdModule> implements AdModuleDao {
+public class AdModuleDaoImpl extends GenericDaoSupport<Long, AdModule> implements AdModuleDao {
 
     public AdModuleDaoImpl() {
         super(AdModuleImpl.class);

@@ -15,9 +15,8 @@ import java.util.List;
  * @author canang technologies
  * @since 1/31/14
  */
-@SuppressWarnings({"unchecked"})
 @Repository("actorDao")
-public final class
+public class
 AdActorDaoImpl extends GenericDaoSupport<Long, AdActor> implements AdActorDao {
 
     public AdActorDaoImpl() {

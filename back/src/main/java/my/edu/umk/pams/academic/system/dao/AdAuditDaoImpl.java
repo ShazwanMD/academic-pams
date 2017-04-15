@@ -14,9 +14,8 @@ import java.util.List;
  * @author canang technologies
  * @since 3/8/14
  */
-@SuppressWarnings({"unchecked"})
 @Repository("auditDao")
-public final class AdAuditDaoImpl extends GenericDaoSupport<Long, AdAudit> implements AdAuditDao {
+public class AdAuditDaoImpl extends GenericDaoSupport<Long, AdAudit> implements AdAuditDao {
 
     public AdAuditDaoImpl() {
         super(AdAuditImpl.class);

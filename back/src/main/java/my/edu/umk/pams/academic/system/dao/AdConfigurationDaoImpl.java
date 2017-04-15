@@ -14,9 +14,8 @@ import java.util.List;
  * @author canang technologies
  * @since 1/31/14
  */
-@SuppressWarnings({"unchecked"})
 @Repository("configurationDao")
-public final class AdConfigurationDaoImpl extends GenericDaoSupport<Long, AdConfiguration> implements AdConfigurationDao {
+public class AdConfigurationDaoImpl extends GenericDaoSupport<Long, AdConfiguration> implements AdConfigurationDao {
 
     public AdConfigurationDaoImpl() {
         super(AdConfigurationImpl.class);
