@@ -20,7 +20,7 @@ import my.edu.umk.pams.bdd.stage.GivenIAmAcademicStaff;
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
-@As("As a supervisor,I want to insert grading So that I can insert student’s grades.")
+@As("As a supervisor,I want to insert grading so that I can insert student's grades.")
 public class US_AD_ASMT_2004 extends SpringScenarioTest<GivenIAmAcademicStaff, WhenIAmInsertGrade, ThenGradeUpdated> {
 	
 	 private static final Logger LOG = LoggerFactory.getLogger(US_AD_ASMT_2002.class);

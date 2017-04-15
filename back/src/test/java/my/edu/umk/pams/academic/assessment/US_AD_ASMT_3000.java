@@ -21,7 +21,7 @@ import my.edu.umk.pams.bdd.stage.GivenIAmAdministrator;
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
-@As("As an admin faculty/admin postgraduate,I want to view student info	So that I can view student’s subject registered.")
+@As("As an admin faculty/admin postgraduate,I want to view student info	So that I can view student's subject registered.")
 public class US_AD_ASMT_3000 extends SpringScenarioTest<GivenIAmAdministrator, WhenIAmReviewStudentInfo, ThenStudentDetailsCurrent> {
 
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_ASMT_3000.class);
