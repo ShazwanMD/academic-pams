@@ -2,6 +2,7 @@ package my.edu.umk.pams.academic.term.stage;
 /**
  * @author asyikin.mr and ziana
  */
+import com.tngtech.jgiven.annotation.Pending;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +39,7 @@ public class WhenIUpdateEnrollmentStatus extends Stage<WhenIUpdateEnrollmentStat
 	@ProvidedScenarioState
 	private AdEnrollment enrollment;
 
+	@Pending("todo syikin")
 	public WhenIUpdateEnrollmentStatus I_update_enrollment_status_for_program_$(String code) {
 
 		student = identityService.findStudentByMatricNo("A17P001");

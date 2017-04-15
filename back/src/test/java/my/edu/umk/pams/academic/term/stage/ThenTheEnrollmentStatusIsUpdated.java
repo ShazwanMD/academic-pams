@@ -2,6 +2,7 @@ package my.edu.umk.pams.academic.term.stage;
 /**
  * @author asyikin.mr and ziana
  */
+import com.tngtech.jgiven.annotation.Pending;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,7 @@ public class ThenTheEnrollmentStatusIsUpdated extends Stage<ThenTheEnrollmentSta
 	@ExpectedScenarioState
 	private AdSection section;
 
+	@Pending("todo syikin")
 	public ThenTheEnrollmentStatusIsUpdated the_enrollment_status_is_updated() {
 
 		AdEnrollment enrollment = termService.findEnrollmentBySectionAndStudent(section, student);
