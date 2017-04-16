@@ -750,6 +750,12 @@ public class TermServiceImpl implements TermService {
     public AdEnrollmentApplicationItem findEnrollmentApplicationItemById(Long id) {
         return enrollmentApplicationDao.findItemById(id);
     }
+    
+    @Override
+	public AdEnrollmentApplicationItem findEnrollmentApplicationItemBySection(AdSection section) {
+    	 return enrollmentApplicationDao.findItemBySection(section);
+	}
+    
 
     @Override
     public List<AdEnrollmentApplication> findEnrollmentApplications(AdAcademicSession session) {
@@ -1387,7 +1393,8 @@ public class TermServiceImpl implements TermService {
         map.put(WorkflowConstants.CANCEL_DECISION, false);
         return map;
     }
-    
+
+	
    
 
 }

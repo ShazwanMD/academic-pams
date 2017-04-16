@@ -27,7 +27,7 @@ public class WhenIUpdateContactNumber extends Stage<WhenIUpdateContactNumber> {
 
 	public WhenIUpdateContactNumber I_add_my_contact_number() {
 	      
-		AdStudent student = identityService.findStudentByMatricNo("A17P002");
+		AdStudent student = identityService.findStudentByMatricNo("A17P001");
         student.setMobile("0148040444");
         student.setPhone("097777177");
         

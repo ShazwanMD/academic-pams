@@ -6,6 +6,7 @@ import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.identity.model.AdUser;
 import my.edu.umk.pams.academic.term.model.AdEnrollmentApplication;
 import my.edu.umk.pams.academic.term.model.AdEnrollmentApplicationItem;
+import my.edu.umk.pams.academic.term.model.AdSection;
 import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
 
 import java.util.List;
@@ -22,6 +23,8 @@ public interface AdEnrollmentApplicationDao extends GenericDao<Long, AdEnrollmen
     AdEnrollmentApplication findByReferenceNo(String referenceNo);
 
     AdEnrollmentApplicationItem findItemById(Long id);
+    
+    AdEnrollmentApplicationItem findItemBySection(AdSection section);
 
     List<AdEnrollmentApplication> find(AdAcademicSession session);
 
