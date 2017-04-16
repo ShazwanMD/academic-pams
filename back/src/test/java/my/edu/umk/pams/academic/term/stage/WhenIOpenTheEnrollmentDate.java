@@ -53,8 +53,7 @@ public class WhenIOpenTheEnrollmentDate extends Stage<WhenIOpenTheEnrollmentDate
 		LOG.debug("capacity section: {}", section.getCapacity());
 		LOG.debug("ordinal section: {}", section.getOrdinal());
 
-		AdConfiguration configuration = systemService
-				.findConfigurationByKey(AcademicConstants.ENROLLMENT_STARTDATE_OPEN);
+		AdConfiguration configuration = systemService.findConfigurationByKey(AcademicConstants.ENROLLMENT_STARTDATE_OPEN);
 		configuration.setValue("30/04/2017");
 		systemService.updateConfiguration(configuration);
 		LOG.debug("Updated value: {}", configuration.getValue());
