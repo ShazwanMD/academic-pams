@@ -139,7 +139,7 @@ public class WhenIReviewProfile extends Stage<WhenIReviewProfile> {
     
 	public WhenIReviewProfile i_review_my_profile() {
 
-		cohort = plannerService.findCohortByCode("A01/MASTER/0008/CHRT/0001");
+		cohort = plannerService.findCohortByCode("A01/MASTER/0008/CHRT/201720181");
 		
 		
 		//student
