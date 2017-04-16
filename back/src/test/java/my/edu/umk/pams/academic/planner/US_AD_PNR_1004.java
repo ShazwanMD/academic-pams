@@ -1,11 +1,17 @@
 package my.edu.umk.pams.academic.planner;
-
+/**
+ * @author zaida_nawi
+ */
+import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.annotation.As;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.academic.config.TestAppConfiguration;
-import my.edu.umk.pams.academic.planner.stage.ThenProgramDetailReviewed;
-import my.edu.umk.pams.academic.planner.stage.WhenAdminReviewProgram;
+import my.edu.umk.pams.academic.planner.stage.ThenProgramLevelIntroduced;
+import my.edu.umk.pams.academic.planner.stage.WhenAdminAddProgramLevel;
 import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
+import my.edu.umk.pams.bdd.tags.Issue;
+import my.edu.umk.pams.bdd.tags.Submodule;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -19,18 +25,22 @@ import org.springframework.transaction.annotation.Transactional;
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
-@As("As an academic administrator, I want to view program for a faculty so that i know program detail")
-public class US_AD_PNR_1004 extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenAdminReviewProgram, ThenProgramDetailReviewed> {
+@As("As an academic administrator, i want set up level of study for a faculty so that a new level of study is introduced")
+@Issue("PAMA-25")
+@Submodule("Planner")
+public class US_AD_PNR_1004 extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenAdminAddProgramLevel, ThenProgramLevelIntroduced> {
 
     private static final Logger LOG = LoggerFactory.getLogger(US_AD_PNR_1004.class);
-    
-    private static final String FACULTY_CODE = "A07";
+    private String FACULTY_CODE = "A07";
+
+    @ProvidedScenarioState
+    private String PROGRAM_CODE = "A07/PHD/0009";
 
     @Test
     @Rollback
-    public void scenario0004() {
-        given().I_am_a_CPS_administrator_in_current_academic_session();
-        when().Admin_review_program_for_that_faculty_$(FACULTY_CODE);
-        then().Program_details_reviewed();
+    public void AddProgramLevel() {
+        given().I_am_a_CPS_administrator();
+        when().Admin_add_a_program_level_for_faculty_$(FACULTY_CODE);
+        then().program_level_$_introduced(PROGRAM_CODE);
     }
 }
