@@ -54,9 +54,7 @@ public class ThenTheAdmissionWillBeReviewed extends Stage<ThenTheAdmissionWillBe
 		
 		LOG.debug("student {}", student.getId());
 		LOG.debug("program {}", program.getId());
-		
-		AdAdmissionApplication application = termService.findAdmissionApplicationByProgramAndStudent(program, student);
-
+		LOG.debug("=================view new added data=====================");
 		LOG.debug("Admission id for new student: {}", application.getId());
 		LOG.debug("Admission desc for new student: {}", application.getDescription());
 		LOG.debug("Admission audit no for new student: {}", application.getAuditNo());
