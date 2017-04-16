@@ -1023,6 +1023,7 @@ create table AD_PRGM_LEVL (
   M_ID int8,
   M_ST int4,
   ADPROGRAM_TYPE int4,
+  PREFIX varchar(255),
   primary key (ID)
 );
 
