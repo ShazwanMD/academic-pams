@@ -23,9 +23,11 @@ import my.edu.umk.pams.bdd.tags.Submodule;
 @As("As an academic administrator, I want to create new academic session info so that the new academic session info is created.")
 @Issue("PAMA-19")
 @Submodule("Planner")
-public class US_AD_PNR_1016 extends
+
+public class US_AD_PNR_0016 extends
 		SpringScenarioTest<GivenIAmCPSAdministrator, WhenIAddNewAcademicSessionInfo, ThenNewAcademicSessionInfoIsCreated> {
-	private static final Logger LOG = LoggerFactory.getLogger(US_AD_PNR_1016.class);
+
+	private static final Logger LOG = LoggerFactory.getLogger(US_AD_PNR_0016.class);
 
 	@Test
 	@Rollback

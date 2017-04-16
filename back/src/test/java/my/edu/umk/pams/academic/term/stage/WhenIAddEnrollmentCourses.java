@@ -2,10 +2,10 @@ package my.edu.umk.pams.academic.term.stage;
 
 //@author:asyikin
 import org.slf4j.Logger;
-
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.tngtech.jgiven.Stage;
+import com.tngtech.jgiven.annotation.Pending;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 import my.edu.umk.pams.academic.identity.model.AdActor;
@@ -63,6 +63,7 @@ public class WhenIAddEnrollmentCourses extends Stage<WhenIAddEnrollmentCourses> 
 	@ProvidedScenarioState
 	private AdProgram program;
 
+	@Pending
 	public WhenIAddEnrollmentCourses I_add_enrollment_courses() {
 		student = identityService.findStudentByMatricNo("A17P001");
 		LOG.debug("student Code: {}", student.getId());
@@ -77,7 +78,7 @@ public class WhenIAddEnrollmentCourses extends Stage<WhenIAddEnrollmentCourses> 
 		LOG.debug("program Code: {}", program.getId());
 
 		// have to settle add admission by admin
-		admission = termService.findAdmissionBySessionProgramAndStudent(academicSession, program, student);
+		admission = termService.findAdmissionByAcademicSessionCohortAndStudent(academicSession, program, student);
 		LOG.debug("Admission Code: {}", admission.getId());
 
 		// have to setup admission service

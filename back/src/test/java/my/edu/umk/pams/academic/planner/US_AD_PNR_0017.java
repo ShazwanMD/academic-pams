@@ -1,6 +1,15 @@
+
 package my.edu.umk.pams.academic.planner;
 
 import org.junit.Test;
+/**
+ * As an admin academic,,
+
+ *   I want to up date new academic semester info,
+ *      so that the new academic semester info is created
+ * @author ain
+ */
+
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,8 +22,8 @@ import com.tngtech.jgiven.annotation.As;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 
 import my.edu.umk.pams.academic.config.TestAppConfiguration;
-import my.edu.umk.pams.academic.planner.stage.ThenCreditHoursApplied;
-import my.edu.umk.pams.academic.planner.stage.WhenEnterCreditHours;
+import my.edu.umk.pams.academic.planner.stage.ThenAcademicSessionUpdated;
+import my.edu.umk.pams.academic.planner.stage.WhenIUpdateAcademicSession;
 import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
 import my.edu.umk.pams.bdd.tags.Issue;
 import my.edu.umk.pams.bdd.tags.Submodule;
@@ -22,26 +31,21 @@ import my.edu.umk.pams.bdd.tags.Submodule;
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
-@As("As an academic administrator,i want to set credit  for a faculty so that the credit for each courses introduced")
-@Issue("PAMA-45")
+@As("As an academic administrator, I want to update new academic session info so that the new academic session info is updated")
+@Issue("PAMA-47")
 @Submodule("Planner")
+public class US_AD_PNR_0017
+		extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenIUpdateAcademicSession, ThenAcademicSessionUpdated> {
 
-public class US_AD_PNR_1014 extends
-SpringScenarioTest<GivenIAmCPSAdministrator, WhenEnterCreditHours, ThenCreditHoursApplied>{
-	private static final Logger LOG = LoggerFactory.getLogger(US_AD_PNR_1014.class);
-	private static final String FACULTY_CODE = "A01";
-	private static final Integer COURSE_CREDIT = 3;
+	private static final Logger LOG = LoggerFactory.getLogger(US_AD_PNR_0017.class);
 
 	@Test
 	@Rollback(false)
-	public void scenario1() {
-		given().I_am_a_CPS_administrator()
-		.and().I_pick_faculty_$(FACULTY_CODE);
-		when().I_set_course_credit_hours(COURSE_CREDIT);
-		then().course_credit_hours_are_applied(COURSE_CREDIT);
+	public void UpdateAcademicSession() {
+
+		given().I_am_a_CPS_administrator_in_current_academic_session();
+		when().I_update_academic_session();
+		then().the_academic_session_is_updated();
+	}
 
 }
-	
-}
-
-

@@ -20,9 +20,9 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 @As("As an academic administrator, I want to view program for a faculty so that i know program detail")
-public class US_AD_PNR_1003 extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenAdminReviewProgram, ThenProgramDetailReviewed> {
+public class US_AD_PNR_0003 extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenAdminReviewProgram, ThenProgramDetailReviewed> {
 
-    private static final Logger LOG = LoggerFactory.getLogger(US_AD_PNR_1003.class);
+    private static final Logger LOG = LoggerFactory.getLogger(US_AD_PNR_0003.class);
     
     private static final String FACULTY_CODE = "A07";
 

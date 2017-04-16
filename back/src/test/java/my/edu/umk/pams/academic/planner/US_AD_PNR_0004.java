@@ -28,9 +28,9 @@ import org.springframework.transaction.annotation.Transactional;
 @As("As an academic administrator, i want set up level of study for a faculty so that a new level of study is introduced")
 @Issue("PAMA-25")
 @Submodule("Planner")
-public class US_AD_PNR_1004 extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenAdminAddProgramLevel, ThenProgramLevelIntroduced> {
+public class US_AD_PNR_0004 extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenAdminAddProgramLevel, ThenProgramLevelIntroduced> {
 
-    private static final Logger LOG = LoggerFactory.getLogger(US_AD_PNR_1004.class);
+    private static final Logger LOG = LoggerFactory.getLogger(US_AD_PNR_0004.class);
     private String FACULTY_CODE = "A07";
 
     @ProvidedScenarioState

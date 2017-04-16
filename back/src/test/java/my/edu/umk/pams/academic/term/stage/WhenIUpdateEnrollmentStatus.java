@@ -65,10 +65,14 @@ public class WhenIUpdateEnrollmentStatus extends Stage<WhenIUpdateEnrollmentStat
 
 	@ProvidedScenarioState
 	private AdEnrollmentApplication application;
+	
+	
 
 	public WhenIUpdateEnrollmentStatus I_update_enrollment_status_for_program_$(String code) {
 
 		List<AdEnrollmentApplication> applications = termService.findEnrollmentApplications(session);
+		
+			
 		for (AdEnrollmentApplication application : applications) {
 
 			LOG.debug("Listed application ID: {}", application.getId());

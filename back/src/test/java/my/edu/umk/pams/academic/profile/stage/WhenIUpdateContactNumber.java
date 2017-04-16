@@ -1,8 +1,7 @@
 package my.edu.umk.pams.academic.profile.stage;
 
 import com.tngtech.jgiven.Stage;
-
-import com.tngtech.jgiven.annotation.ProvidedScenarioState;
+import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.identity.service.IdentityService;
@@ -20,14 +19,13 @@ public class WhenIUpdateContactNumber extends Stage<WhenIUpdateContactNumber> {
     private IdentityService identityService;
 
 
-    @ProvidedScenarioState
+    @ExpectedScenarioState
     private AdStudent student;
-
 
 
 	public WhenIUpdateContactNumber I_add_my_contact_number() {
 	      
-		AdStudent student = identityService.findStudentByMatricNo("A17P002");
+		AdStudent student = identityService.findStudentByMatricNo("A17P001");
         student.setMobile("0148040444");
         student.setPhone("097777177");
         
