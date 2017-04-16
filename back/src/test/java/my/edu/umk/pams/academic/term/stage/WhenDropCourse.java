@@ -60,7 +60,7 @@ public class WhenDropCourse extends Stage<WhenDropCourse> {
 	public WhenDropCourse I_want_to_drop_enrollment_course() {
 
 		student = (AdStudent) identityService.findActorByIdentityNo("A17P001");
-		section = termService.findSectionByCanonicalCode("A01/PHD/0001/DDA2113/201720181");
+		section = termService.findSectionByCanonicalCode("FIAT/MASTER/PBH/GST5023/201720181");
 		LOG.debug("Section Code: {}", section.getCode());
 		LOG.debug("Student Code: {}", student.getIdentityNo());
 

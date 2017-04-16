@@ -43,7 +43,7 @@ public class ThenTheDateEnrollmentIsReview extends Stage<ThenTheDateEnrollmentIs
 	public ThenTheDateEnrollmentIsReview Know_the_enrollment_interval_period() {
 		
 		
-		AdOffering offering = termService.findOfferingByCanonicalCode("A01/PHD/0001/DDA2113");
+		AdOffering offering = termService.findOfferingByCanonicalCode("FIAT/MASTER/PBH/GST5023");
 	    termService.countEnrollment(academicSession, offering);
 	    LOG.debug("number of available course :{}", termService.countEnrollment(academicSession, offering));
 		

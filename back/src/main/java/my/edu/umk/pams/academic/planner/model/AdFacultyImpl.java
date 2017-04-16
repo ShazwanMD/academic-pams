@@ -22,7 +22,7 @@ public class AdFacultyImpl implements AdFaculty {
     @Column(name = "CODE", nullable = false, unique = true)
     private String code;
     
-    @Column(name = "PREFIX", nullable = false, unique = true)
+    @Column(name = "PREFIX", nullable = true, unique = true, length = 5)
     private String prefix;
 
     @Column(name = "NAME", nullable = false)

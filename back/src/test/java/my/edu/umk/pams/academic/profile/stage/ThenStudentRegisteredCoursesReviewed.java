@@ -39,9 +39,9 @@ public class ThenStudentRegisteredCoursesReviewed extends Stage<ThenStudentRegis
 
 	public ThenStudentRegisteredCoursesReviewed student_registration_courses_reviewed() {
 		faculty = plannerService.findFacultyByCode("A01");
-		course = plannerService.findCourseByCode("DDA2113");
+		course = plannerService.findCourseByCode("GST5013");
 		
-			boolean exists = plannerService.isCourseExists("DDA2113", faculty);
+			boolean exists = plannerService.isCourseExists("GST5013", faculty);
 			Assert.isTrue(exists, "not exists");
 		
  		return self();

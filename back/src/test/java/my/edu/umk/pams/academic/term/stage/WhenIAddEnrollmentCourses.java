@@ -78,7 +78,7 @@ public class WhenIAddEnrollmentCourses extends Stage<WhenIAddEnrollmentCourses> 
 		LOG.debug("program Code: {}", program.getId());
 
 		// have to settle add admission by admin
-		admission = termService.findAdmissionByAcademicSessionCohortAndStudent(academicSession, program, student);
+		admission = termService.findAdmissionByAcademicSessionCohortAndStudent(academicSession, student.getCohort(), student);
 		LOG.debug("Admission Code: {}", admission.getId());
 
 		// have to setup admission service
@@ -98,7 +98,7 @@ public class WhenIAddEnrollmentCourses extends Stage<WhenIAddEnrollmentCourses> 
 		application = termService.findEnrollmentApplicationByReferenceNo(generatedReferenceNo);
 		LOG.debug("New application added: {}", application.getId());
 
-		section = termService.findSectionByCanonicalCode("A01/PHD/0001/DDA2113/201720181");
+		section = termService.findSectionByCanonicalCode("FIAT/MASTER/PBH/GST5023/201720181");
 		LOG.debug("Section Code: {}", section.getCode());
 
 		item = new AdEnrollmentApplicationItemImpl();

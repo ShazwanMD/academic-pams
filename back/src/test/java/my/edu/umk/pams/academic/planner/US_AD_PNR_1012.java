@@ -28,8 +28,8 @@ public class US_AD_PNR_1012 extends
 		SpringScenarioTest<GivenIAmCPSAdministrator, WhenAdminAddCoursePrerequisite, ThenCoursePrerequisiteAdded> {
 
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_PNR_1012.class);
-	private static final String COURSE_CODE = "DDA2103";
-	private static final String PREREQ_CODE = "DDA2113";
+	private static final String COURSE_CODE = "GST5013";
+	private static final String PREREQ_CODE = "GST5023";
 
 	@Test
 	@Rollback

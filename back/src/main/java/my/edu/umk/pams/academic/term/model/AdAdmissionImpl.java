@@ -51,9 +51,9 @@ public class AdAdmissionImpl implements AdAdmission {
     @JoinColumn(name = "STUDENT_ID")
     private AdStudent student;
 
-    @ManyToOne(targetEntity = AdProgramImpl.class)
-    @JoinColumn(name = "PROGRAM_ID")
-    private AdProgram program;
+    @ManyToOne(targetEntity = AdCohortImpl.class)
+    @JoinColumn(name = "COHORT_ID")
+    private AdCohort cohort;
 
     @ManyToOne(targetEntity = AdStudyCenterImpl.class)
     @JoinColumn(name = "STUDY_CENTER_ID")
@@ -145,13 +145,13 @@ public class AdAdmissionImpl implements AdAdmission {
     }
 
     @Override
-    public AdProgram getProgram() {
-        return program;
+    public AdCohort getCohort() {
+        return cohort;
     }
 
     @Override
-    public void setProgram(AdProgram program) {
-        this.program = program;
+    public void setCohort(AdCohort cohort) {
+        this.cohort = cohort;
     }
 
     @Override
@@ -197,7 +197,7 @@ public class AdAdmissionImpl implements AdAdmission {
         AdAdmissionImpl that = (AdAdmissionImpl) o;
 
         if (!id.equals(that.id)) return false;
-        if (!program.equals(that.program)) return false;
+        if (!cohort.equals(that.cohort)) return false;
         return student.equals(that.student);
 
     }
@@ -206,7 +206,7 @@ public class AdAdmissionImpl implements AdAdmission {
     public int hashCode() {
         int result = id.hashCode();
         result = 31 * result + student.hashCode();
-        result = 31 * result + program.hashCode();
+        result = 31 * result + cohort.hashCode();
         return result;
     }
 }

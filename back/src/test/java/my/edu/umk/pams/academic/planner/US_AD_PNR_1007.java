@@ -25,7 +25,7 @@ public class US_AD_PNR_1007 extends SpringScenarioTest<GivenIAmCPSAdministrator,
     private static final Logger LOG = LoggerFactory.getLogger(US_AD_PNR_1007.class);
 
     public static final String FACULTY_CODE = "A01"; // refer to data/AD_FCTY.sql
-    public static final String COURSE_CODE = "DDA2113";
+    public static final String COURSE_CODE = "GST5013";
 
     @Test
     @Rollback

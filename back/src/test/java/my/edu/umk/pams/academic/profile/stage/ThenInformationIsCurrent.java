@@ -35,7 +35,7 @@ public class ThenInformationIsCurrent extends Stage<ThenInformationIsCurrent> {
 
     public ThenInformationIsCurrent course_info_is_current() {
 
-        boolean exists = plannerService.isCourseExists("DDA2113", faculty);
+        boolean exists = plannerService.isCourseExists("GST5013", faculty);
 
         Assert.isTrue(exists, "exists");
         return self();

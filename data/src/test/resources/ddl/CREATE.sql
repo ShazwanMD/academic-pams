@@ -1,4 +1,3 @@
-
 create table AD_ACDM_AREA (
   ID int8 not null,
   CODE varchar(255) not null,
@@ -121,7 +120,7 @@ create table AD_ADMN (
   M_ST int4,
   STANDING int4 not null,
   STATUS int4 not null,
-  PROGRAM_ID int8,
+  COHORT_ID int8,
   SESSION_ID int8,
   STUDENT_ID int8,
   STUDY_CENTER_ID int8,
@@ -362,6 +361,23 @@ create table AD_CNFG (
   CONFIG_VALUE_BYTEA bytea,
   CONFIG_VALUE_DOUBLE float8,
   CONFIG_VALUE_LONG int8,
+  primary key (ID)
+);
+
+create table AD_CNTC (
+  ID int8 not null,
+  IDENTITY_NO varchar(255) not null,
+  C_TS timestamp,
+  C_ID int8,
+  D_TS timestamp,
+  D_ID int8,
+  M_TS timestamp,
+  M_ID int8,
+  M_ST int4,
+  NAME varchar(255) not null,
+  SOMETHING varchar(255),
+  CONTACT_TYPE int4,
+  STUDENT_ID int8,
   primary key (ID)
 );
 
@@ -690,8 +706,7 @@ create table AD_ETNY_CODE (
 create table AD_FCTY (
   ID int8 not null,
   CODE varchar(255) not null,
-  NAME varchar(255) not null,
-  DESCRIPTION varchar(255) not null,
+  DESCRIPTION varchar(255),
   C_TS timestamp,
   C_ID int8,
   D_TS timestamp,
@@ -699,7 +714,8 @@ create table AD_FCTY (
   M_TS timestamp,
   M_ID int8,
   M_ST int4,
-  PREFIX varchar(255),
+  NAME varchar(255) not null,
+  PREFIX varchar(5),
   primary key (ID)
 );
 
@@ -762,6 +778,23 @@ create table AD_GRDE_CODE (
   primary key (ID)
 );
 
+create table AD_GRDN (
+  ID int8 not null,
+  IDENTITY_NO varchar(255) not null,
+  C_TS timestamp,
+  C_ID int8,
+  D_TS timestamp,
+  D_ID int8,
+  M_TS timestamp,
+  M_ID int8,
+  M_ST int4,
+  NAME varchar(255) not null,
+  SALARY numeric(19, 2) not null,
+  GUARDIAN_TYPE int4,
+  STUDENT_ID int8,
+  primary key (ID)
+);
+
 create table AD_GROP (
   ID int8 not null,
   primary key (ID)
@@ -779,6 +812,22 @@ create table AD_GROP_MMBR (
   GROUP_ID int8,
   PRINCIPAL_ID int8,
   primary key (GROUP_ID, PRINCIPAL_ID)
+);
+
+create table AD_GRTR (
+  ID int8 not null,
+  IDENTITY_NO varchar(255) not null,
+  C_TS timestamp,
+  C_ID int8,
+  D_TS timestamp,
+  D_ID int8,
+  M_TS timestamp,
+  M_ID int8,
+  M_ST int4,
+  NAME varchar(255) not null,
+  GUARANTOR_TYPE int4,
+  STUDENT_ID int8,
+  primary key (ID)
 );
 
 create table AD_INTK_CODE (
@@ -858,8 +907,8 @@ create table AD_MODL (
 create table AD_MRTL_CODE (
   ID int8 not null,
   CODE varchar(255) not null,
-  DESCRIPTION_MS varchar(255),
   DESCRIPTION_EN varchar(255),
+  DESCRIPTION_MS varchar(255),
   C_TS timestamp,
   C_ID int8,
   D_TS timestamp,
@@ -873,8 +922,8 @@ create table AD_MRTL_CODE (
 create table AD_NTLY_CODE (
   ID int8 not null,
   CODE varchar(255),
-  DESCRIPTION_MS varchar(255),
   DESCRIPTION_EN varchar(255),
+  DESCRIPTION_MS varchar(255),
   C_TS timestamp,
   C_ID int8,
   D_TS timestamp,
@@ -1022,16 +1071,16 @@ create table AD_PRGM_LEVL (
   M_TS timestamp,
   M_ID int8,
   M_ST int4,
-  ADPROGRAM_TYPE int4,
   PREFIX varchar(255),
+  ADPROGRAM_TYPE int4,
   primary key (ID)
 );
 
 create table AD_RACE_CODE (
   ID int8 not null,
   CODE varchar(255),
-  DESCRIPTION_MS varchar(255),
   DESCRIPTION_EN varchar(255),
+  DESCRIPTION_MS varchar(255),
   C_TS timestamp,
   C_ID int8,
   D_TS timestamp,
@@ -1064,8 +1113,8 @@ create table AD_RFRN_NO (
 create table AD_RLGN_CODE (
   ID int8 not null,
   CODE varchar(255),
-  DESCRIPTION_MS varchar(255),
   DESCRIPTION_EN varchar(255),
+  DESCRIPTION_MS varchar(255),
   C_TS timestamp,
   C_ID int8,
   D_TS timestamp,
@@ -1260,8 +1309,7 @@ create table AD_STDY_CNTR_CODE (
 create table AD_STDY_MODE (
   ID int8 not null,
   CODE varchar(255) not null,
-  DESCRIPTION_EN varchar(255) not null,
-  DESCRIPTION_MS varchar(255) not null,
+  DESCRIPTION varchar(255) not null,
   C_TS timestamp,
   C_ID int8,
   D_TS timestamp,
@@ -1390,9 +1438,9 @@ alter table AD_ADMN
   add constraint uc_AD_ADMN_2 unique (GPA);
 
 alter table AD_ADMN
-  add constraint FKE7D7E3A0293A8391
-foreign key (PROGRAM_ID)
-references AD_PRGM;
+  add constraint FKE7D7E3A01EBD8A63
+foreign key (COHORT_ID)
+references AD_CHRT;
 
 alter table AD_ADMN
   add constraint FKE7D7E3A03C7922CA
@@ -1531,6 +1579,11 @@ references AD_STDY_CNTR;
 alter table AD_CMCY_CODE
   add constraint uc_AD_CMCY_CODE_1 unique (CODE);
 
+alter table AD_CNTC
+  add constraint FKE7D8F2B654FCB007
+foreign key (STUDENT_ID)
+references AD_STDN;
+
 alter table AD_CNTY_CODE
   add constraint uc_AD_CNTY_CODE_1 unique (CODE);
 
@@ -1598,7 +1651,7 @@ alter table AD_EMPT_SCTR_CODE
   add constraint uc_AD_EMPT_SCTR_CODE_1 unique (CODE);
 
 alter table AD_ENMT
-  add constraint FKE7D9DAAC72AE81C8
+  add constraint FKE7D9DAAC3C61CEB5
 foreign key (ADMISSION_ID)
 references AD_ADMN;
 
@@ -1618,7 +1671,7 @@ foreign key (STUDENT_ID)
 references AD_STDN;
 
 alter table AD_ENMT_APLN
-  add constraint FK43196BA472AE81C8
+  add constraint FK43196BA43C61CEB5
 foreign key (ADMISSION_ID)
 references AD_ADMN;
 
@@ -1653,6 +1706,9 @@ alter table AD_ETNY_CODE
 alter table AD_FCTY
   add constraint uc_AD_FCTY_1 unique (CODE);
 
+alter table AD_FCTY
+  add constraint uc_AD_FCTY_2 unique (PREFIX);
+
 alter table AD_FILD_CODE
   add constraint uc_AD_FILD_CODE_1 unique (CODE);
 
@@ -1680,6 +1736,11 @@ alter table AD_GRDE_CODE
 alter table AD_GRDE_CODE
   add constraint uc_AD_GRDE_CODE_2 unique (ORDINAL);
 
+alter table AD_GRDN
+  add constraint FKE7DAD15154FCB007
+foreign key (STUDENT_ID)
+references AD_STDN;
+
 alter table AD_GROP
   add constraint FKE7DAD2A8E43AD0B6
 foreign key (ID)
@@ -1694,6 +1755,11 @@ alter table AD_GROP_MMBR
   add constraint FK6E2579271A7CAE67
 foreign key (PRINCIPAL_ID)
 references AD_PCPL;
+
+alter table AD_GRTR
+  add constraint FKE7DAD34554FCB007
+foreign key (STUDENT_ID)
+references AD_STDN;
 
 alter table AD_INTK_CODE
   add constraint uc_AD_INTK_CODE_1 unique (CODE);
@@ -1869,6 +1935,9 @@ alter table AD_STDY_CNTR
 alter table AD_STDY_CNTR_CODE
   add constraint uc_AD_STDY_CNTR_CODE_1 unique (CODE);
 
+alter table AD_STDY_MODE
+  add constraint uc_AD_STDY_MODE_1 unique (CODE);
+
 alter table AD_STTE_CODE
   add constraint uc_AD_STTE_CODE_1 unique (CODE);
 
@@ -1931,6 +2000,8 @@ create sequence SQ_AD_CMCY_CODE;
 
 create sequence SQ_AD_CNFG;
 
+create sequence SQ_AD_CNTC;
+
 create sequence SQ_AD_CNTY_CODE;
 
 create sequence SQ_AD_CRLM;
@@ -1975,7 +2046,11 @@ create sequence SQ_AD_GRBK;
 
 create sequence SQ_AD_GRDE_CODE;
 
+create sequence SQ_AD_GRDN;
+
 create sequence SQ_AD_GROP_MMBR;
+
+create sequence SQ_AD_GRTR;
 
 create sequence SQ_AD_INTK_CODE;
 
@@ -2031,9 +2106,9 @@ create sequence SQ_AD_STDY_CNTR;
 
 create sequence SQ_AD_STDY_CNTR_CODE;
 
-create sequence SQ_AD_STTE_CODE;
-
 create sequence SQ_AD_STDY_MODE;
+
+create sequence SQ_AD_STTE_CODE;
 
 create sequence SQ_AD_VENU_CODE;
 

@@ -41,7 +41,7 @@ public class WhenIEnrollTheCourses extends Stage<WhenIEnrollTheCourses> {
 
 	public WhenIEnrollTheCourses I_enroll_the_courses_for_program_$(String code) {
 
-		canonicalCode = "A01/PHD/0001/DDA2113/201720181";
+		canonicalCode = "FIAT/MASTER/PBH/GST5023/201720181";
 		String StudentNo = "A17P001"; 
 		section = termService.findSectionByCanonicalCode(canonicalCode);
 		student = identityService.findStudentByMatricNo(StudentNo);

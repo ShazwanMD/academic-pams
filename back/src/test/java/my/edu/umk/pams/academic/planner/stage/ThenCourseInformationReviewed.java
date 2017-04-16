@@ -8,15 +8,10 @@ package my.edu.umk.pams.academic.planner.stage;
  */
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
-import com.tngtech.jgiven.annotation.Pending;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 import my.edu.umk.pams.academic.planner.model.AdCourse;
 import my.edu.umk.pams.academic.planner.model.AdFaculty;
-import my.edu.umk.pams.academic.planner.model.AdProgram;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
-
-import java.util.List;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,7 +33,7 @@ public class ThenCourseInformationReviewed extends Stage<ThenCourseInformationRe
 
 	public ThenCourseInformationReviewed course_information_reviewed() {
 
-		boolean exists = plannerService.isCourseExists("DDA2113", faculty);
+		boolean exists = plannerService.isCourseExists("GST5013", faculty);
 
 		Assert.isTrue(exists, "exists");
 

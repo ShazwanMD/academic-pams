@@ -1,18 +1,18 @@
-package my.edu.umk.pams.academic.planner.model;
+package my.edu.umk.pams.academic.common.model;
 
 import my.edu.umk.pams.academic.core.AdMetadata;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
-@Entity(name = "AdProgramLevel")
-@Table(name = "AD_PRGM_LEVL")
-public class AdProgramLevelImpl implements AdProgramLevel {
+@Entity(name = "AdStudyMode")
+@Table(name = "AD_STDY_MODE")
+public class AdStudyModeImpl implements AdStudyMode {
 
     @Id
-    @Column(name = "ID")
-    @GeneratedValue(generator = "SQ_AD_PRGM_LEVL")
-    @SequenceGenerator(name = "SQ_AD_PRGM_LEVL", sequenceName = "SQ_AD_PRGM_LEVL", allocationSize = 1)
+    @Column(name = "ID", nullable = false)
+    @GeneratedValue(generator = "SQ_AD_STDY_MODE")
+    @SequenceGenerator(name = "SQ_AD_STDY_MODE", sequenceName = "SQ_AD_STDY_MODE", allocationSize = 1)
     private Long id;
 
     @NotNull
@@ -23,17 +23,14 @@ public class AdProgramLevelImpl implements AdProgramLevel {
     @Column(name = "DESCRIPTION", nullable = false)
     private String description;
     
-    @Column(name = "PREFIX", nullable = true)
-    private String prefix;
-
     @NotNull
-    @Enumerated(EnumType.ORDINAL)
-    @Column(name = "ADPROGRAM_TYPE")
-    private AdProgramType type;
+    @Column(name = "PREFIX", nullable = false)
+    private String prefix;
 
     @Embedded
     private AdMetadata metadata;
 
+    @Override
     public Long getId() {
         return id;
     }
@@ -73,16 +70,6 @@ public class AdProgramLevelImpl implements AdProgramLevel {
     }
 
     @Override
-    public AdProgramType getType() {
-        return type;
-    }
-
-    @Override
-    public void setType(AdProgramType type) {
-        this.type = type;
-    }
-
-    @Override
     public AdMetadata getMetadata() {
         return metadata;
     }
@@ -94,7 +81,7 @@ public class AdProgramLevelImpl implements AdProgramLevel {
 
     @Override
     public Class<?> getInterfaceClass() {
-        return AdProgramLevel.class;
+        return AdStudyMode.class;
     }
 
 }

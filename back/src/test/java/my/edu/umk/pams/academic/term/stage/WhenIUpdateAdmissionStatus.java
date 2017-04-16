@@ -1,12 +1,5 @@
 package my.edu.umk.pams.academic.term.stage;
 
-import java.math.BigDecimal;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.util.Assert;
-
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
@@ -14,16 +7,19 @@ import com.tngtech.jgiven.integration.spring.JGivenStage;
 import my.edu.umk.pams.academic.common.model.AdStudyCenter;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.identity.service.IdentityService;
-import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
-import my.edu.umk.pams.academic.planner.model.AdAcademicStanding;
-import my.edu.umk.pams.academic.planner.model.AdAdmissionStatus;
-import my.edu.umk.pams.academic.planner.model.AdProgram;
+import my.edu.umk.pams.academic.planner.model.*;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
 import my.edu.umk.pams.academic.term.model.AdAdmission;
 import my.edu.umk.pams.academic.term.model.AdAdmissionApplication;
 import my.edu.umk.pams.academic.term.model.AdAdmissionImpl;
 import my.edu.umk.pams.academic.term.model.AdSection;
 import my.edu.umk.pams.academic.term.service.TermService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.Assert;
+
+import java.math.BigDecimal;
 
 @JGivenStage
 public class WhenIUpdateAdmissionStatus extends Stage<WhenIUpdateAdmissionStatus> {
@@ -48,6 +44,9 @@ public class WhenIUpdateAdmissionStatus extends Stage<WhenIUpdateAdmissionStatus
 	private AdProgram program;
 
 	@ProvidedScenarioState
+	private AdCohort cohort;
+
+	@ProvidedScenarioState
 	private AdStudyCenter studyCenter;
 	
 	@ProvidedScenarioState
@@ -63,7 +62,8 @@ public class WhenIUpdateAdmissionStatus extends Stage<WhenIUpdateAdmissionStatus
 
 		student = identityService.findStudentByMatricNo("A17P001");
 		program = plannerService.findProgramByCode("A01/MASTER/0001");
-		
+		cohort = plannerService.findCohortByCode("FIAT/PHD/PBT/CHRT/201720181");
+
 		LOG.debug("student: {}", student.getId());
 		LOG.debug("program: {}", program.getId());
 		LOG.debug("academicSession: {}", academicSession.getId());
@@ -85,7 +85,7 @@ public class WhenIUpdateAdmissionStatus extends Stage<WhenIUpdateAdmissionStatus
 		admission.setCreditEarned(100);
 		admission.setCreditTaken(100);
 		admission.setGpa(new BigDecimal("1.90"));
-		admission.setProgram(program);
+		admission.setCohort(cohort);
 		admission.setSession(academicSession);
 		admission.setStanding(AdAcademicStanding.KS);
 		admission.setStatus(AdAdmissionStatus.POSTPONED);
@@ -98,7 +98,7 @@ public class WhenIUpdateAdmissionStatus extends Stage<WhenIUpdateAdmissionStatus
 		Assert.notNull(admission, "Item data should be not null");
 		
 		LOG.debug("New admission id inserted:{}", admission.getId());
-		LOG.debug("New admission Program inserted:{}", admission.getProgram().getId());
+		LOG.debug("New admission Cohort inserted:{}", admission.getCohort().getId());
 		LOG.debug("New admission Session inserted:{}", admission.getSession().getId());
 		LOG.debug("New admission Gpa inserted:{}", admission.getGpa());
 		LOG.debug("New admission Cgpa inserted:{}", admission.getCgpa());
@@ -107,7 +107,7 @@ public class WhenIUpdateAdmissionStatus extends Stage<WhenIUpdateAdmissionStatus
 		LOG.debug("New admission StudyCenter inserted:{}", admission.getStudyCenter().getId());
 				
 		//find data admission to update status		
-		admission = termService.findAdmissionByAcademicSessionCohortAndStudent(academicSession, program, student);
+		admission = termService.findAdmissionByAcademicSessionCohortAndStudent(academicSession, cohort, student);
 		Assert.notNull(admission, "The admission data must not be null");
 		LOG.debug("current admission id: {}", admission.getId());
 		LOG.debug("current admission status: {}", admission.getStatus().getDescription());
@@ -117,7 +117,7 @@ public class WhenIUpdateAdmissionStatus extends Stage<WhenIUpdateAdmissionStatus
 		admission.setCreditEarned(110);
 		admission.setCreditTaken(110);
 		admission.setGpa(new BigDecimal("3.80"));
-		admission.setProgram(program);
+		admission.setCohort(cohort);
 		admission.setSession(academicSession);
 		admission.setStanding(AdAcademicStanding.KB);
 		admission.setStatus(AdAdmissionStatus.ADMITTED);

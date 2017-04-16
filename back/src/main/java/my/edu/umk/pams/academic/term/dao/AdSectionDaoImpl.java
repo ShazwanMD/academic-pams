@@ -181,12 +181,10 @@ public class AdSectionDaoImpl extends GenericDaoSupport<Long, AdSection> impleme
                 "or upper(s.offering.code) like upper(:filter) " +
                 "or upper(s.offering.title) like upper(:filter)) " +
                 "and s.session = :academicSession " +
-                "and s.offering.program = :program " +
                 "and s.metadata.state = :state " +
                 "order by s.code asc");
         query.setString("filter", WILDCARD + filter + WILDCARD);
         query.setEntity("academicSession", academicSession);
-        query.setEntity("program", admission.getProgram());
         query.setInteger("state", AdMetaState.ACTIVE.ordinal());
         query.setFirstResult(offset);
         query.setMaxResults(limit);
@@ -460,12 +458,10 @@ public class AdSectionDaoImpl extends GenericDaoSupport<Long, AdSection> impleme
                 "(upper(s.code) like upper(:filter) " +
                 "or upper(s.offering.code) like upper(:filter) " +
                 "or upper(s.offering.course.title) like upper(:filter)) " +
-                "and s.offering.program = :program " +
                 "and s.session = :academicSession " +
                 "and s.metadata.state = :state ");
         query.setString("filter", WILDCARD + filter + WILDCARD);
         query.setEntity("academicSession", academicSession);
-        query.setEntity("program", admission.getProgram());
         query.setInteger("state", AdMetaState.ACTIVE.ordinal());
         return ((Long) query.uniqueResult()).intValue();
     }

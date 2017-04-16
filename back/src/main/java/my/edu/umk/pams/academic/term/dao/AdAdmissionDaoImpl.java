@@ -3,6 +3,7 @@ package my.edu.umk.pams.academic.term.dao;
 import my.edu.umk.pams.academic.core.AdMetaState;
 import my.edu.umk.pams.academic.core.GenericDaoSupport;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
+import my.edu.umk.pams.academic.planner.model.AdCohort;
 import my.edu.umk.pams.academic.term.model.AdAdmission;
 import my.edu.umk.pams.academic.term.model.AdAdmissionImpl;
 import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
@@ -24,18 +25,17 @@ public class AdAdmissionDaoImpl extends GenericDaoSupport<Long, AdAdmission> imp
     }
 
     @Override
-    public AdAdmission findBySessionProgramAndStudent(AdAcademicSession academicSession, AdProgram program, AdStudent student) {
+    public AdAdmission findBySessionCohortAndStudent(AdAcademicSession academicSession, AdCohort cohort,
+                                                     AdStudent student) {
         Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery("select s from AdAdmission s where " +
-                "s.program = :program " +
-                "and s.student = :student " +
-                "and s.session = :academicSession " +
-                "and s.metadata.state = :state ");
-        query.setInteger("state", AdMetaState.ACTIVE.ordinal());
-        query.setEntity("program", program);
+        Query query = session.createQuery("select o from AdAdmission o where "
+                + "o.session = :session "
+                + "and o.cohort = :cohort "
+                + "and o.student = :student " + "and o.metadata.state = :state");
+        query.setEntity("session", academicSession);
+        query.setEntity("cohort", cohort);
         query.setEntity("student", student);
-        query.setEntity("academicSession", academicSession);
-        query.setCacheable(true);
+        query.setInteger("state", AdMetaState.ACTIVE.ordinal());
         return (AdAdmission) query.uniqueResult();
     }
 

@@ -45,7 +45,7 @@ public class WhenIOpenTheEnrollmentDate extends Stage<WhenIOpenTheEnrollmentDate
 
 	public WhenIOpenTheEnrollmentDate I_open_the_date_of_enrollment_for_program_$(String code) {
 
-		section = termService.findSectionByCanonicalCode("A01/PHD/0001/DDA2113/201720181");
+		section = termService.findSectionByCanonicalCode("FIAT/MASTER/PBH/GST5023/201720181");
 		Assert.notNull(section, "section should be not null");
 
 		// current section data
