@@ -41,7 +41,6 @@ public class US_AD_PNR_1011
 		given().I_am_a_CPS_administrator();
 		when().Admin_update_curriculum_$(CODE);
 		then().new_curriculum_is_updated();
-
 	}
 }
 

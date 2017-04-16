@@ -39,5 +39,4 @@ public class US_AD_PNR_1012 extends
 		when().Admin_add_prereq_$_to_course_$(PREREQ_CODE, COURSE_CODE);
 		then().course_$_is_a_prereq_for_course_$(PREREQ_CODE, COURSE_CODE);
 	}
-
 }

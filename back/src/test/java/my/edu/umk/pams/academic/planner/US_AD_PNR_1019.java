@@ -30,7 +30,6 @@ public class US_AD_PNR_1019
 		extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenAdminUpdateStudyCenter, ThenStudyCenterUpdated> {
 
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_PNR_1019.class);
-
 	@ProvidedScenarioState
 	private String CODE = "A";
 

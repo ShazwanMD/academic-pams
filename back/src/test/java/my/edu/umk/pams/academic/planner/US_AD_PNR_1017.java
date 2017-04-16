@@ -36,7 +36,6 @@ import my.edu.umk.pams.bdd.tags.Submodule;
 @Submodule("Planner")
 public class US_AD_PNR_1017
 		extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenIUpdateAcademicSession, ThenAcademicSessionUpdated> {
-
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_PNR_1017.class);
 
 	@Test

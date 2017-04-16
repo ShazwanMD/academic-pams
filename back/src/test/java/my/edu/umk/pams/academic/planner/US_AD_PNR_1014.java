@@ -41,9 +41,7 @@ SpringScenarioTest<GivenIAmCPSAdministrator, WhenEnterCreditHours, ThenCreditHou
 		.and().I_pick_faculty_$(FACULTY_CODE);
 		when().I_set_course_credit_hours(COURSE_CREDIT);
 		then().course_credit_hours_are_applied(COURSE_CREDIT);
-
 }
-	
 }
 
 
