@@ -41,11 +41,13 @@ public class ThenTheAdvisorIsUpdated extends Stage<ThenTheAdvisorIsUpdated> {
 
 	public ThenTheAdvisorIsUpdated The_advisor_is_updated() {
 
-		AdEnrollmentApplication application = termService.findEnrollmentApplicationByReferenceNo("201720181/006");
+		LOG.debug("Advisor is updated: {}", advisor.getId());
 
 		// assert notNull ad_enmt_apln and view new data
 		Assert.notNull(application, "The data must not be null");
 		LOG.debug("Advisor is updated: {}", advisor.getName());
+		LOG.debug("Advisor for student: {}", application.getStudent().getName());
+		LOG.debug("Advisor for session: {}", application.getSession().getDescription());
 
 		return self();
 	}
