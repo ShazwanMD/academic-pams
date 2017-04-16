@@ -19,7 +19,6 @@ import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
 import my.edu.umk.pams.bdd.tags.Issue;
 import my.edu.umk.pams.bdd.tags.Submodule;
 
-
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
@@ -29,7 +28,6 @@ import my.edu.umk.pams.bdd.tags.Submodule;
 
 public class US_AD_PNR_1014 extends
 SpringScenarioTest<GivenIAmCPSAdministrator, WhenEnterCreditHours, ThenCreditHoursApplied>{
-	
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_PNR_1014.class);
 	private static final String FACULTY_CODE = "A01";
 	private static final Integer COURSE_CREDIT = 3;
@@ -41,7 +39,9 @@ SpringScenarioTest<GivenIAmCPSAdministrator, WhenEnterCreditHours, ThenCreditHou
 		.and().I_pick_faculty_$(FACULTY_CODE);
 		when().I_set_course_credit_hours(COURSE_CREDIT);
 		then().course_credit_hours_are_applied(COURSE_CREDIT);
+
 }
+	
 }
 
 

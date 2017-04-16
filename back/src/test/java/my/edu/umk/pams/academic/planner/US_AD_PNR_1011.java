@@ -19,7 +19,6 @@ import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
 import my.edu.umk.pams.bdd.tags.Issue;
 import my.edu.umk.pams.bdd.tags.Submodule;
 
-
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
@@ -29,7 +28,6 @@ import my.edu.umk.pams.bdd.tags.Submodule;
 
 public class US_AD_PNR_1011
 		extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenAdminUpdateCurriculum, ThenNewCurriculumIsUpdated> {
-
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_PNR_1011.class);
 
 	@ProvidedScenarioState
@@ -41,7 +39,6 @@ public class US_AD_PNR_1011
 		given().I_am_a_CPS_administrator();
 		when().Admin_update_curriculum_$(CODE);
 		then().new_curriculum_is_updated();
+
 	}
 }
-
-

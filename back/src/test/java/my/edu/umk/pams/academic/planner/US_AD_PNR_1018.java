@@ -28,7 +28,6 @@ import my.edu.umk.pams.bdd.tags.Submodule;
 @Submodule("Planner")
 public class US_AD_PNR_1018
 		extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenAdminSetUpStudyCenter, ThenStudyCenterIsIntroduced> {
-
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_PNR_1018.class);
 	@Test
 	@Rollback

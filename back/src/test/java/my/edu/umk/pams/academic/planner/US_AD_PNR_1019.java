@@ -32,7 +32,8 @@ public class US_AD_PNR_1019
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_PNR_1019.class);
 	@ProvidedScenarioState
 	private String CODE = "A";
-
+	
+	
 	@Test
 	@Rollback
 	public void UpdateStudyCenter() {
