@@ -275,6 +275,8 @@ public interface TermService {
     AdEnrollmentApplication findEnrollmentApplicationByReferenceNo(String referenceNo);
 
     AdEnrollmentApplicationItem findEnrollmentApplicationItemById(Long id);
+    
+    AdEnrollmentApplicationItem findEnrollmentApplicationItemBySection(AdSection section);
 
     List<AdEnrollmentApplication> findEnrollmentApplications(AdAcademicSession session);
 

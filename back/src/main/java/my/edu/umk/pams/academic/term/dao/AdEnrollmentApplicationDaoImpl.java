@@ -11,6 +11,7 @@ import my.edu.umk.pams.academic.term.model.AdEnrollmentApplication;
 import my.edu.umk.pams.academic.term.model.AdEnrollmentApplicationImpl;
 import my.edu.umk.pams.academic.term.model.AdEnrollmentApplicationItem;
 import my.edu.umk.pams.academic.term.model.AdEnrollmentApplicationItemImpl;
+import my.edu.umk.pams.academic.term.model.AdSection;
 import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
 import org.apache.commons.lang.Validate;
 import org.hibernate.Query;
@@ -44,6 +45,12 @@ public class AdEnrollmentApplicationDaoImpl extends GenericDaoSupport<Long, AdEn
         Session session = sessionFactory.getCurrentSession();
         return (AdEnrollmentApplicationItem) session.get(AdEnrollmentApplicationItemImpl.class, id);
     }
+    
+    @Override
+	public AdEnrollmentApplicationItem findItemBySection(AdSection section) {
+    	 Session session = sessionFactory.getCurrentSession();
+         return (AdEnrollmentApplicationItem) session.get(AdEnrollmentApplicationItemImpl.class, section);
+	}
 
     @Override
     public List<AdEnrollmentApplication> find(AdAcademicSession session) {
@@ -226,4 +233,6 @@ public class AdEnrollmentApplicationDaoImpl extends GenericDaoSupport<Long, AdEn
         Session session = sessionFactory.getCurrentSession();
         session.delete(item);
     }
+
+	
 }
