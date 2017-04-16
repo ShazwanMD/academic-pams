@@ -1,4 +1,5 @@
 package my.edu.umk.pams.academic.term.stage;
+
 /**
  * @author asyikin.mr and ziana
  */
@@ -23,7 +24,7 @@ public class ThenTheEnrollmentStatusIsUpdated extends Stage<ThenTheEnrollmentSta
 
 	@Autowired
 	private TermService termService;
-	
+
 	@Autowired
 	private IdentityService identityService;
 
@@ -33,12 +34,11 @@ public class ThenTheEnrollmentStatusIsUpdated extends Stage<ThenTheEnrollmentSta
 	@ExpectedScenarioState
 	private AdSection section;
 
-	@Pending("todo syikin")
 	public ThenTheEnrollmentStatusIsUpdated the_enrollment_status_is_updated() {
 
 		AdEnrollment enrollment = termService.findEnrollmentBySectionAndStudent(section, student);
 		AdActor actor = identityService.findActorByIdentityNo(student.getIdentityNo());
-		
+
 		LOG.debug("Status enrollment has been updated: {}", enrollment.getStatus());
 		LOG.debug("For student: {}", actor.getName());
 		LOG.debug("And section: {}", section.getCanonicalCode());
