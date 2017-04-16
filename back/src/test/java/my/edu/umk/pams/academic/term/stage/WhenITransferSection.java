@@ -50,8 +50,6 @@ public class WhenITransferSection extends Stage<WhenITransferSection> {
 
 		LOG.debug("session: {}", session.getCode());
 		
-		
-		
 		List<AdEnrollmentApplication> applications = termService.findEnrollmentApplications(session);
 
 		for (AdEnrollmentApplication application : applications) {
