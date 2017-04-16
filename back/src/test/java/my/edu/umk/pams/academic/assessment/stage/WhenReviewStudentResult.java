@@ -10,7 +10,6 @@ import org.springframework.util.Assert;
 
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
-import com.tngtech.jgiven.annotation.Pending;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 
@@ -50,9 +49,6 @@ public class WhenReviewStudentResult extends Stage<WhenReviewStudentResult> {
 
 	@Autowired
 	private IdentityService identityService;
-
-	@Autowired
-	private PlannerService plannerService;
 
 	@ProvidedScenarioState
 	private AdAssessment assessment;
