@@ -3,7 +3,6 @@ package my.edu.umk.pams.academic.term.service;
 import my.edu.umk.pams.academic.common.model.AdStudyCenter;
 import my.edu.umk.pams.academic.identity.model.AdStaff;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
-import my.edu.umk.pams.academic.identity.model.AdUser;
 import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
 import my.edu.umk.pams.academic.planner.model.AdCourse;
 import my.edu.umk.pams.academic.planner.model.AdEnrollmentStatus;
@@ -218,7 +217,7 @@ public interface TermService {
 
     AdAdmissionApplication findAdmissionApplicationByProgramAndStudent(AdProgram program, AdStudent student);
 
-    AdAdmission findAdmissionBySessionProgramAndStudent(AdAcademicSession academicSession, AdProgram program, AdStudent student);
+    AdAdmission findAdmissionByAcademicSessionCohortAndStudent(AdAcademicSession academicSession, AdProgram program, AdStudent student);
 
     @Deprecated // use startAdmissionApplication
     void saveAdmissionApplication(AdAdmissionApplication application);

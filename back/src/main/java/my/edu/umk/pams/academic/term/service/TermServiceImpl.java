@@ -1,11 +1,8 @@
 package my.edu.umk.pams.academic.term.service;
 
 import my.edu.umk.pams.academic.common.model.AdStudyCenter;
-import my.edu.umk.pams.academic.core.AdMetaState;
-import my.edu.umk.pams.academic.core.AdMetadata;
 import my.edu.umk.pams.academic.identity.model.AdStaff;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
-import my.edu.umk.pams.academic.identity.model.AdUser;
 import my.edu.umk.pams.academic.planner.model.*;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
 import my.edu.umk.pams.academic.security.service.SecurityService;
@@ -17,7 +14,6 @@ import my.edu.umk.pams.academic.workflow.service.WorkflowConstants;
 import my.edu.umk.pams.academic.workflow.service.WorkflowService;
 import org.activiti.engine.task.Task;
 import org.apache.commons.lang.Validate;
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,7 +22,6 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
-import java.sql.Timestamp;
 import java.math.RoundingMode;
 import java.util.HashMap;
 import java.util.List;
@@ -637,7 +632,7 @@ public class TermServiceImpl implements TermService {
     }
 
     @Override
-    public AdAdmission findAdmissionBySessionProgramAndStudent(AdAcademicSession academicSession, AdProgram program, AdStudent student) {
+    public AdAdmission findAdmissionByAcademicSessionCohortAndStudent(AdAcademicSession academicSession, AdProgram program, AdStudent student) {
         return admissionApplicationDao.findBySessionProgramAndStudent(academicSession, program, student);
     }
 
@@ -1393,8 +1388,4 @@ public class TermServiceImpl implements TermService {
         map.put(WorkflowConstants.CANCEL_DECISION, false);
         return map;
     }
-
-	
-   
-
 }
