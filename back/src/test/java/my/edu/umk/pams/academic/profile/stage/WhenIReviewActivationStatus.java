@@ -72,7 +72,7 @@ public class WhenIReviewActivationStatus extends Stage<WhenIReviewActivationStat
 			LOG.debug("Student's Cohort: {}", cohort.getCode());
 			
 			//program
-			LOG.debug("{Program :{}", program.getCode());
+			LOG.debug("Program : {}", program.getCode());
 			
 			//program level
 			LOG.debug("Program Level :{}", level.getCode());

@@ -20,9 +20,9 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 @As("As an academic administrator, i want to update courses for a faculty so that its information of new courses is updated")
-public class US_AD_PNR_1007 extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenAdminUpdateCourses, ThenCoursesUpdated> {
+public class US_AD_PNR_0007 extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenAdminUpdateCourses, ThenCoursesUpdated> {
 
-    private static final Logger LOG = LoggerFactory.getLogger(US_AD_PNR_1007.class);
+    private static final Logger LOG = LoggerFactory.getLogger(US_AD_PNR_0007.class);
 
     public static final String FACULTY_CODE = "A01"; // refer to data/AD_FCTY.sql
     public static final String COURSE_CODE = "DDA2113";

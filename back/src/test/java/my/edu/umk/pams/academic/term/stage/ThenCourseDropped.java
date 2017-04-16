@@ -1,14 +1,23 @@
 package my.edu.umk.pams.academic.term.stage;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.Assert;
+
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
+import com.tngtech.jgiven.annotation.Pending;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
+import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
 import my.edu.umk.pams.academic.term.model.AdEnrollment;
+import my.edu.umk.pams.academic.term.model.AdEnrollmentApplication;
+import my.edu.umk.pams.academic.term.model.AdEnrollmentApplicationAction;
+import my.edu.umk.pams.academic.term.model.AdEnrollmentApplicationItem;
 import my.edu.umk.pams.academic.term.model.AdEnrollmentImpl;
 import my.edu.umk.pams.academic.term.model.AdSection;
 import my.edu.umk.pams.academic.term.service.TermService;
@@ -20,7 +29,7 @@ public class ThenCourseDropped extends Stage<ThenCourseDropped> {
 	@Autowired
 	private TermService termService;
 
-	@ProvidedScenarioState
+	@ExpectedScenarioState
 	private AdEnrollment enrollment;
 
 	@ExpectedScenarioState
@@ -29,15 +38,24 @@ public class ThenCourseDropped extends Stage<ThenCourseDropped> {
 	@ExpectedScenarioState
 	private AdSection section;
 
-	public ThenCourseDropped() {
-		AdEnrollment enrollment = new AdEnrollmentImpl();
-	}
-
+	@ExpectedScenarioState
+	private AdAcademicSession academicSession;
+	@Pending
 	public ThenCourseDropped The_course_enrollment_are_dropped() {
 
-		enrollment = termService.findEnrollmentBySectionAndStudent(section, student);
+		List<AdEnrollmentApplication> applications = termService.findEnrollmentApplications("%A%", academicSession,
+				student, 0, 10);
+		for (AdEnrollmentApplication application : applications) {
+			LOG.debug("AdEnrollmentApplication: {}", application.getId());
 
-		LOG.debug("Deleted:" + enrollment.getSection());
+			List<AdEnrollmentApplicationItem> items = termService.findEnrollmentApplicationItems(application);
+
+			for (AdEnrollmentApplicationItem item : items) {
+				LOG.debug("AdEnrollmentApplicationItem: {}", item.getId());
+				LOG.debug("updated to DROP status: {}", item.getAction().getDeclaringClass());
+
+			}
+		}
 
 		return self();
 

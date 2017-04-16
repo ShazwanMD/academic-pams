@@ -23,10 +23,10 @@ import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 @As("As an academic administrator, i want to set up curriculum for a faculty so that curriculum has introduced")
-public class US_AD_PNR_1010 extends
+public class US_AD_PNR_0010 extends
 		SpringScenarioTest<GivenIAmCPSAdministrator, WhenAdminAddCurriculum, ThenCurriculumHasAdded>{
 
-	private static final Logger LOG = LoggerFactory.getLogger(US_AD_PNR_1010.class);
+	private static final Logger LOG = LoggerFactory.getLogger(US_AD_PNR_0010.class);
 	private static final String FACULTY_CODE = "A10";
 
 	@Test

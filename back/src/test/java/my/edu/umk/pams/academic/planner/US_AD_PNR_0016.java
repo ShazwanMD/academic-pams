@@ -1,50 +1,39 @@
 package my.edu.umk.pams.academic.planner;
 
 import org.junit.Test;
-
 import org.junit.runner.RunWith;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
-
-import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.annotation.As;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import my.edu.umk.pams.academic.config.TestAppConfiguration;
-import my.edu.umk.pams.academic.planner.stage.ThenNewCohortIsUpdated;
-
-import my.edu.umk.pams.academic.planner.stage.WhenAdminUpdateCohort;
+import my.edu.umk.pams.academic.planner.stage.ThenNewAcademicSessionInfoIsCreated;
+import my.edu.umk.pams.academic.planner.stage.WhenIAddNewAcademicSessionInfo;
 import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
 import my.edu.umk.pams.bdd.tags.Issue;
 import my.edu.umk.pams.bdd.tags.Submodule;
 
-
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
-@As("As an academic administrator, i want to update cohort for a faculty so that updated group student in the schedule by intake code.")
-@Issue("PAMA-49")
+@As("As an academic administrator, I want to create new academic session info so that the new academic session info is created.")
+@Issue("PAMA-19")
 @Submodule("Planner")
 
+public class US_AD_PNR_0016 extends
+		SpringScenarioTest<GivenIAmCPSAdministrator, WhenIAddNewAcademicSessionInfo, ThenNewAcademicSessionInfoIsCreated> {
 
-public class US_AD_PNR_1009
-		extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenAdminUpdateCohort, ThenNewCohortIsUpdated> {
-
-	private static final Logger LOG = LoggerFactory.getLogger(US_AD_PNR_1009.class);
-	
-	@ProvidedScenarioState
-	private String CODE = "A01/MASTER/0008/CHRT/0001";
+	private static final Logger LOG = LoggerFactory.getLogger(US_AD_PNR_0016.class);
 
 	@Test
 	@Rollback
 	public void scenario1() {
-		given().I_am_a_CPS_administrator();
-		when().Admin_update_cohort_to_faculty_code_$(CODE);
-		then().new_cohort_is_updated_$(CODE);
+		given().I_am_a_CPS_administrator_in_current_academic_session();
+		when().I_add_new_academic_session_info();
+		then().New_academic_session_info_is_created();
 	}
-
 }

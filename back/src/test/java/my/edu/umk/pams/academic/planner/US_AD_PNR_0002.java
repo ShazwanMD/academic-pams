@@ -28,10 +28,10 @@ import my.edu.umk.pams.bdd.tags.Submodule;
 @Issue("PAMA-48")
 @Submodule("Planner")
 
-public class US_AD_PNR_1002
+public class US_AD_PNR_0002
 		extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenAdminUpdateProgram, ThenProgramUpdated> {
 
-	private static final Logger LOG = LoggerFactory.getLogger(US_AD_PNR_1002.class);
+	private static final Logger LOG = LoggerFactory.getLogger(US_AD_PNR_0002.class);
 	public static final String FACULTY_CODE = "A01";
 	private static final String PROGRAM_CODE = "A01/MASTER/0008";
 

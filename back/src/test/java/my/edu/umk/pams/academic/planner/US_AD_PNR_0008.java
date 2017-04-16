@@ -28,10 +28,10 @@ import org.springframework.transaction.annotation.Transactional;
 @Issue("PAMA-22")
 @Submodule("Planner")
 
-public class US_AD_PNR_1008
+public class US_AD_PNR_0008
 		extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenAdminAddCohortForAFaculty, ThenCohortIsAdded> {
 
-	private static final Logger LOG = LoggerFactory.getLogger(US_AD_PNR_1008.class);
+	private static final Logger LOG = LoggerFactory.getLogger(US_AD_PNR_0008.class);
 	public static final String PROGRAM_CODE = "FIAT/PHD/0001";
 
 	@Test
