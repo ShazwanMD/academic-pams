@@ -637,7 +637,7 @@ public class TermServiceImpl implements TermService {
     }
 
     @Override
-    public AdAdmission findAdmissionBySessionProgramAndStudent(AdAcademicSession academicSession, AdProgram program, AdStudent student) {
+    public AdAdmission findAdmissionByAcademicSessionCohortAndStudent(AdAcademicSession academicSession, AdProgram program, AdStudent student) {
         return admissionApplicationDao.findBySessionProgramAndStudent(academicSession, program, student);
     }
 

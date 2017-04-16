@@ -77,7 +77,7 @@ public class WhenIAddEnrollmentCourses extends Stage<WhenIAddEnrollmentCourses> 
 		LOG.debug("program Code: {}", program.getId());
 
 		// have to settle add admission by admin
-		admission = termService.findAdmissionBySessionProgramAndStudent(academicSession, program, student);
+		admission = termService.findAdmissionByAcademicSessionCohortAndStudent(academicSession, program, student);
 		LOG.debug("Admission Code: {}", admission.getId());
 
 		// have to setup admission service

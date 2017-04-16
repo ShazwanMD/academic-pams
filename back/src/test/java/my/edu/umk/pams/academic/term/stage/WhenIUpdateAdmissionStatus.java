@@ -77,7 +77,7 @@ public class WhenIUpdateAdmissionStatus extends Stage<WhenIUpdateAdmissionStatus
 		
 		studyCenter =  application.getStudyCenter();
 		
-		//admission = termService.findAdmissionBySessionProgramAndStudent(academicSession, program, student);
+		//admission = termService.findAdmissionByAcademicSessionCohortAndStudent(academicSession, program, student);
 		//Assert.isNull(application, "data admission is null and can begin to tranfer");
 		
 		admission = new AdAdmissionImpl();
@@ -107,7 +107,7 @@ public class WhenIUpdateAdmissionStatus extends Stage<WhenIUpdateAdmissionStatus
 		LOG.debug("New admission StudyCenter inserted:{}", admission.getStudyCenter().getId());
 				
 		//find data admission to update status		
-		admission = termService.findAdmissionBySessionProgramAndStudent(academicSession, program, student);
+		admission = termService.findAdmissionByAcademicSessionCohortAndStudent(academicSession, program, student);
 		Assert.notNull(admission, "The admission data must not be null");
 		LOG.debug("current admission id: {}", admission.getId());
 		LOG.debug("current admission status: {}", admission.getStatus().getDescription());
