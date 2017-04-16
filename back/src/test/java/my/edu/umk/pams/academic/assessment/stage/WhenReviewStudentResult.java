@@ -91,7 +91,7 @@ public class WhenReviewStudentResult extends Stage<WhenReviewStudentResult> {
 	private AdStudentStatus studentStatus;
 
 	@ExpectedScenarioState
-	private String matricNo = "A17P001";
+	private String matricNo;
 
 	@ExpectedScenarioState
 	private int mark;
