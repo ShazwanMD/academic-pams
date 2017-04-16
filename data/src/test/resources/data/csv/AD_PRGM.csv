@@ -4,42 +4,36 @@ FIAT/PHD/PBB,FIAT,PHD,Doctor of Philosophy Agriculture Biotechnology
 FIAT/PHD/PBP,FIAT,PHD,Doctor of Philosophy Product Development Technology
 FIAT/PHD/PBH,FIAT,PHD,Doctor of Philosophy Animal Husbandary
 FIAT/PHD/PBA,FIAT,PHD,Doctor of Philosophy Akuakultur
-
 FIAT/MASTER/MBT,FIAT,MASTER,Master of Science Bio-Industrial Technology
 FIAT/MASTER/MBS,FIAT,MASTER,Master of Science Agro Technopreneurship
 FIAT/MASTER/MBB,FIAT,MASTER,Master of Science Agriculture Biotechnology
 FIAT/MASTER/MBP,FIAT,MASTER,Master of Science Product Development Technology
 FIAT/MASTER/PBH,FIAT,MASTER,Master of Science Animal Husbandary
 FIAT/MASTER/MBA,FIAT,MASTER,Master of Science Akuakultur
-
 FSB/PHD/PBG,FSB,PHD,Doctor of Philosophy Geoscience
 FSB/PHD/PBN,FSB,PHD,Doctor of Philosophy Natural Resources Management
 FSB/PHD/PBK,FSB,PHD,Doctor of Philosophy Sustainable Science
 FSB/PHD/PFB,FSB,PHD,Doctor of Philosophy Material Technology
 FSB/PHD/PFS,FSB,PHD,Doctor of Philosophy Forest Resources Technology
 FSB/PHD/PFT,FSB,PHD,Doctor of Philosophy Energy Technology
-
 FSB/MASTER/MBG,FSB,MASTER,Master of Science Geoscience
 FSB/MASTER/MBN,FSB,MASTER,Master of Science Natural Resources Management
 FSB/MASTER/MBK,FSB,MASTER,Master of Science Sustainable Science
 FSB/MASTER/MFB,FSB,MASTER,Master of Science Material Technology
 FSB/MASTER/MFS,FSB,MASTER,Master of Science Forest Resources Technology
 FSB/MASTER/MFT,FSB,MASTER,Master of Science Energy Technology
-
 FPV/PHD/PCp,FPV,PHD,Doctor of Philosophy Phatology
 FPV/PHD/PDN,FPV,PHD,Doctor of Philosophy Nutrition
 FPV/PHD/PDA,FPV,PHD,Doctor of Philosophy Anatomy
 FPV/PHD/PDM,FPV,PHD,Doctor of Philosophy Microbiology
 FPV/PHD/PDR,FPV,PHD,Doctor of Philosophy Parasitology
 FPV/PHD/PDF,FPV,PHD,Doctor of Philosophy Physiology
-
 FPV/MASTER/MDP,FPV,MASTER,Master of Science Phatology
 FPV/MASTER/MDN,FPV,MASTER,Master of Science Nutrition
 FPV/MASTER/MDA,FPV,MASTER,Master of Science Anatomy
 FPV/MASTER/MDM,FPV,MASTER,Master of Science Microbiology
 FPV/MASTER/MDR,FPV,MASTER,Master of Science Parasitology
 FPV/MASTER/MDF,FPV,MASTER,Master of Science Physiology
-
 PBI/PHD/PCS,PBI,PHD,Doctor of Philosophy Studies of History and Civilisation
 PBI/PHD/PCN,PBI,PHD,Doctor of Philosophy Development and Educational Values
 PBI/PHD/PCO,PBI,PHD,Doctor of Philosophy Industrial Psychological Organization
@@ -47,7 +41,6 @@ PBI/PHD/PCA,PBI,PHD,Doctor of Philosophy Religion And Contemporary
 PBI/PHD/PCK,PBI,PHD,Doctor of Philosophy Social Work
 PBI/PHD/MCB,PBI,PHD,Doctor of Philosophy Language Studies
 PBI/PHD/PCC,PBI,PHD,Doctor of Philosophy Communication
-
 PBI/MASTER/MCS,PBI,MASTER,Master of Arts Studies of History and Civilisation
 PBI/MASTER/MCN,PBI,MASTER,Master of Arts Development and Educational Values
 PBI/MASTER/MCO,PBI,MASTER,Master of Arts Industrial Psychological Organization
@@ -55,19 +48,16 @@ PBI/MASTER/MCA,PBI,MASTER,Master of Arts Religion And Contemporary
 PBI/MASTER/MCK,PBI,MASTER,Master of Arts Social Work
 PBI/MASTER/PCB,PBI,MASTER,Master of Arts Language Studies
 PBI/MASTER/MCC,PBI,MASTER,Master of Arts Communication
-
 FTKW/PHD/PCW,FTKW,PHD,Doctor of Philosophy Heritage Studies
 FTKW/PHD/PCT,FTKW,PHD,Doctor of Philosophy Textile and Fashion
 FTKW/PHD/PCP,FTKW,PHD,Doctor of Philosophy Product Design
 FTKW/PHD/PCM,FTKW,PHD,Doctor of Philosophy Multimedia
 FTKW/PHD/PCV,FTKW,PHD,Doctor of Philosophy VisualCommunication
-
 FTKW/MASTER/MCW,FTKW,MASTER,Master of Arts Heritage Studies
 FTKW/MASTER/MCT,FTKW,MASTER,Master of Arts Textile and Fashion
 FTKW/MASTER/MCP,FTKW,MASTER,Master of Arts Product Design
 FTKW/MASTER/MCM,FTKW,MASTER,Master of Arts Multimedia
 FTKW/MASTER/MCV,FTKW,MASTER,Master of Arts VisualCommunication
-
 FKP/PHD/PAM,FKP,PHD,Doctor of Philosophy Management
 FKP/PHD/PAF,FKP,PHD,Doctor of Philosophy Finance
 FKP/PHD/PAA,FKP,PHD,Doctor of Philosophy Accounting
@@ -77,7 +67,6 @@ FKP/PHD/PAW,FKP,PHD,Doctor of Philosophy HealthEntrepreneurship
 FKP/PHD/PAH,FKP,PHD,Doctor of Philosophy Hospitality
 FKP/PHD/PAP,FKP,PHD,Doctor of Philosophy Tourism
 FKP/PHD/PMS,FKP,PHD,Doctor of Philosophy Mathematical Science
-
 FKP/MASTER/MAM,FKP,MASTER,Master of Entrepreneurship Management
 FKP/MASTER/MAF,FKP,MASTER,Master of Entrepreneurship Finance
 FKP/MASTER/MAA,FKP,MASTER,Master of Entrepreneurship Accounting

@@ -31,7 +31,7 @@ public class CohortGenerator extends GeneratorSupport {
             "  nextval('SQ_AD_CHRT'),\n" +
             "  (SELECT ID FROM AD_PRGM where code = '%1$s'),\n" +
             "  (SELECT ID FROM AD_CRLM where code = '%1$s' || '/CRLM/0001'),\n" +
-            "  (SELECT CODE || '/CHRT/0001' FROM AD_PRGM where code = '%1$s'),\n" +
+            "  (SELECT CODE || '/CHRT/201720181' FROM AD_PRGM where code = '%1$s'),\n" +
             "  'COHORT %1$s',\n" +
             "  1,\n" +
             "  1, CURRENT_TIMESTAMP, 1\n" +
