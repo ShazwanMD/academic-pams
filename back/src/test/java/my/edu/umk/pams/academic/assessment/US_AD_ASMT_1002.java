@@ -34,6 +34,7 @@ public class US_AD_ASMT_1002 extends SpringScenarioTest<GivenIAmStudent, WhenRev
 	
 	@ProvidedScenarioState
 	private String matricNo = "A17P001";
+	
 	//input student mark
 	@ProvidedScenarioState
 	private int mark = 50;
