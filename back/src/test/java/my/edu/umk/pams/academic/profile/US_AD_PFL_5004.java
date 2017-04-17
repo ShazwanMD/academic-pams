@@ -39,7 +39,7 @@ public class US_AD_PFL_5004 extends SpringScenarioTest<GivenIAmAcademicStaff, Wh
 	public void scenario5004(){
 		given().i_am_a_staff_in_current_academic_session();
 		when().Lecturer_review_course_info_for_$(IDENTITY_NO).and().Lecturer_review_research_info_for_$(IDENTITY_NO2);
-		then().Lecturer_review_course().and().Lecturer_review_research_info();
+		then().Lecturer_review_course_info_for_$(IDENTITY_NO).and().and().Lecturer_review_research_info_for_$(IDENTITY_NO2);
 		
 	}
 }
