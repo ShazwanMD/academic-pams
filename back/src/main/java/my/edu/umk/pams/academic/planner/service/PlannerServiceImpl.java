@@ -269,7 +269,15 @@ public class PlannerServiceImpl implements PlannerService {
     public void addPrerequisites(AdCourse course, AdCourse... prereqCourses) {
         courseDao.addPrerequisites(course, securityService.getCurrentUser(), prereqCourses);
         sessionFactory.getCurrentSession().flush();
+       
     }
+    
+    @Override
+	public void updatePrerequisite(AdCourse course, AdCourse... prerequisites) {
+    	courseDao.updatePrerequisites(course, securityService.getCurrentUser(), prerequisites);
+        sessionFactory.getCurrentSession().flush();
+	
+	}
 
 
 
@@ -734,4 +742,6 @@ public class PlannerServiceImpl implements PlannerService {
     public boolean isCourseExists(String code, AdFaculty faculty) {
         return courseDao.isExists(code, faculty);
     }
+
+	
 }

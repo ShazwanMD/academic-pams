@@ -225,10 +225,38 @@ public class AdCourseDaoImpl extends GenericDaoSupport<Long, AdCourse> implement
                 prerequisite.setMetadata(metadata);
                 session.save(prerequisite);
             }
-
         });
-
-
-
     }
+
+		@Override
+		public void updatePrerequisites(AdCourse course, AdUser user, AdCourse... prereqCourses) {
+		    Validate.notNull(user, "User cannot be null");
+	        Validate.notNull(course, "Course cannot be null");
+	        Validate.notNull(prereqCourses, "prereqCourses cannot be null");
+	        Validate.notEmpty(prereqCourses, "prereqCourses cannot be empty");
+	        Session session = sessionFactory.getCurrentSession();
+
+
+	        Arrays.asList(prereqCourses).forEach(prereqCourse -> {
+	            if (isPrerequisite(course, prereqCourse)) {
+	                LOG.debug("Course " + prereqCourse.getCode() + " is already a prerequisite for course " + course.getCode());
+	            } else {
+	                AdCoursePrerequisiteImpl prerequisite = new AdCoursePrerequisiteImpl();
+	                prerequisite.setCourse(course);
+	                prerequisite.setPrerequisite(prereqCourse);
+
+			                
+			        // prepare metadata
+		            AdMetadata metadata = new AdMetadata();
+		            metadata.setCreatedDate(new Timestamp(System.currentTimeMillis()));
+		            metadata.setCreatorId(user.getId());
+		            metadata.setState(AdMetaState.ACTIVE);
+		            prerequisite.setMetadata(metadata);
+		            session.update(prerequisite);
+	            }
+	        
+	        });
+	        
+		}
+		
 }
