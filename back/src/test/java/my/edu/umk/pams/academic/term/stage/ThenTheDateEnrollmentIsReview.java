@@ -1,8 +1,10 @@
 package my.edu.umk.pams.academic.term.stage;
-
-import java.sql.Date;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
+import org.joda.time.Days;
+import org.joda.time.LocalDate;
 /**
  * @author zaida_nawi
  **/
@@ -55,6 +57,35 @@ public class ThenTheDateEnrollmentIsReview extends Stage<ThenTheDateEnrollmentIs
 		
 		LOG.debug("enrollOpen {}", enrollOpen);
 		LOG.debug("enrollClose {}", enrollClose);
+		
+		SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+		
+		Date d1 = null;
+		Date d2 = null;
+		
+		try {
+			d1 = format.parse(enrollOpen);
+
+			d2 = format.parse(enrollClose);
+			LOG.debug("d1 {}", d1);
+			int diff = d1.getDay() - d2.getDay();
+			
+			LOG.debug("diff {}", diff);
+
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		
+		
+		
+		
+		
+
+		//utk dapatkan date interval
+		//1. convert string enrollOpen dan enrollClose kepada format date
+		
 		
 		
 		//AdOffering offering = termService.findOfferingByCanonicalCode("FIAT/MASTER/PBH/GST5023");
