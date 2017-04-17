@@ -26,6 +26,7 @@ import my.edu.umk.pams.bdd.tags.Submodule;
 @Issue("PAMA-49")
 @Submodule("Planner")
 
+
 public class US_AD_PNR_1011
 		extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenAdminUpdateCurriculum, ThenNewCurriculumIsUpdated> {
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_PNR_1011.class);
