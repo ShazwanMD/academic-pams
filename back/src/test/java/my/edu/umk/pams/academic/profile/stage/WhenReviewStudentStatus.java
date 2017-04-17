@@ -5,6 +5,7 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.Assert;
 
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
@@ -55,11 +56,17 @@ public class WhenReviewStudentStatus extends Stage<WhenReviewStudentStatus> {
 	public WhenReviewStudentStatus I_view_student_current_status_for_$(String identityNo) {
 
 		student = identityService.findStudentByMatricNo(identityNo);
+		Assert.notNull(student, "Student Must Not NULL");
 		studentStatus = student.getStudentStatus();
-
-		faculty = plannerService.findFacultyByCode("A01");
-		program = plannerService.findProgramByCodeAndFaculty("A01/PHD/0008", faculty);
-		courses = plannerService.findCourses(faculty);
+		
+		cohort = student.getCohort();
+		
+		program = cohort.getProgram();
+		Assert.isTrue(true, "Program Must Exists");
+		
+		faculty = program.getFaculty();
+		Assert.notNull(faculty, "Faculty Must Not NULL");
+		courses = faculty.getCourses();
 
 		if (studentStatus == AdStudentStatus.ACTIVE) {
 
