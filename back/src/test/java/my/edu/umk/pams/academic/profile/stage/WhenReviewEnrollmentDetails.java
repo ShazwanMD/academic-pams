@@ -32,19 +32,19 @@ public class WhenReviewEnrollmentDetails extends Stage<WhenReviewEnrollmentDetai
 	@Autowired
 	private PlannerService plannerService;
 
-	@ExpectedScenarioState
+	@ProvidedScenarioState
 	private AdSection section;
 
-	@ExpectedScenarioState
+	@ProvidedScenarioState
 	private AdStudent student;
 	
-	@ExpectedScenarioState
+	@ProvidedScenarioState
 	private AdStudentStatus studentStatus;
 
-	@ExpectedScenarioState
+	@ProvidedScenarioState
 	private List<AdCourse> courses;
 
-	@ExpectedScenarioState
+	@ProvidedScenarioState
 	private AdOffering offering;
 
 	@ProvidedScenarioState
