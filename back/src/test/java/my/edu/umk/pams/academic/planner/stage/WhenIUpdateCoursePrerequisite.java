@@ -30,7 +30,6 @@ public class WhenIUpdateCoursePrerequisite  extends Stage<WhenIUpdateCoursePrere
 
 		public WhenIUpdateCoursePrerequisite Admin_update_prereq_$_to_course_$(String prereqCode, String courseCode) {
 			
-
 			AdCourse course = plannerService.findCourseByCode(courseCode);
 			LOG.debug(" course code: {}", course.getCode());
 			
