@@ -9,6 +9,7 @@ import my.edu.umk.pams.academic.identity.model.*;
 import my.edu.umk.pams.academic.identity.service.IdentityService;
 import my.edu.umk.pams.academic.planner.dao.AdAcademicSessionDao;
 import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
+import my.edu.umk.pams.academic.planner.model.AdFaculty;
 import my.edu.umk.pams.academic.security.service.SecurityService;
 import my.edu.umk.pams.academic.system.service.SystemService;
 
@@ -233,6 +234,13 @@ public class ProfileServiceImpl implements ProfileService {
 
 	}
 
+    @Override
+    public void transferFaculty(AdStudent student, AdAcademicSession academicSession, AdFaculty fromFaculty, AdFaculty toFaculty) {
 
+    }
 
+    @Override
+    public void switchStudyMode(AdStudent student, AdAcademicSession academicSession, AdStudyMode fromMode, AdStudyMode toMode) {
+
+    }
 }
