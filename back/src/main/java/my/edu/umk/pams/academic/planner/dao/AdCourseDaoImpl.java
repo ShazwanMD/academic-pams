@@ -258,5 +258,13 @@ public class AdCourseDaoImpl extends GenericDaoSupport<Long, AdCourse> implement
 	        });
 	        
 		}
+
+		@Override
+		public void delatePrerequisites(AdCourse course, AdUser currentUser, AdCourse prereqCourses) {
+			 Validate.notNull(currentUser, "User cannot be null");
+			 Session session = sessionFactory.getCurrentSession();
+			 session.delete(prereqCourses);
+			
+		}
 		
 }
