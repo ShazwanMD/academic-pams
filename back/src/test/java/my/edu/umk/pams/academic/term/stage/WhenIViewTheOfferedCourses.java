@@ -37,7 +37,7 @@ public class WhenIViewTheOfferedCourses extends Stage<WhenIViewTheOfferedCourses
 	private AdSection section;
 
 	@ProvidedScenarioState
-	private List<AdOffering> offering;
+	private List<AdOffering> offerings;
 
 	@ExpectedScenarioState
 	private String code;
@@ -48,15 +48,17 @@ public class WhenIViewTheOfferedCourses extends Stage<WhenIViewTheOfferedCourses
 
 	public WhenIViewTheOfferedCourses I_view_the_offered_courses_for_program_$(String code) {
 		program = plannerService.findProgramByCode(code);
-		offering = termService.findOfferings(program);
+		offerings = termService.findOfferings(program);
 
-		for (AdOffering offering : offering) {
-			LOG.debug(offering.getTitle());
+		for (AdOffering offering : offerings) {
+			
+			LOG.debug("===========view offered course============");
+			LOG.debug("offering Code: {}",offering.getCode());
+			LOG.debug("offering Title: {}",offering.getTitle());
+			LOG.debug("offering Code: {}",offering.getCapacity());
 		}
 
-		for (AdOffering offering : offering) {
-			LOG.debug(offering.getCode());
-		}
+		
 		return self();
 	}
 }
