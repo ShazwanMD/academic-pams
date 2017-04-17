@@ -33,7 +33,7 @@ public class US_AD_PNR_1002
 
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_PNR_1002.class);
 	public static final String FACULTY_CODE = "A01";
-	private static final String PROGRAM_CODE = "A01/MASTER/0008";
+	private static final String PROGRAM_CODE = "FKP/MASTER/MAM";
 
 	@Test
 	@Rollback
