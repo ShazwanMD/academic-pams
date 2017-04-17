@@ -66,8 +66,8 @@ public class WhenIRegisterAdmissionInNewSemester extends Stage<WhenIRegisterAdmi
 		// process flow of admission
 		student = identityService.findStudentByMatricNo("A17P002");
 		advisor = identityService.findStaffByStaffNo("01001A");
-		program = plannerService.findProgramByCode("A01/MASTER/0002");
-		studyCenter = commonService.findStudyCenterByCode("B");
+		program = plannerService.findProgramByCode("FKP/MASTER/MAM");
+		studyCenter = commonService.findStudyCenterByCode("C");
 
 		LOG.debug("student {}", student.getName());
 		LOG.debug("advisor {}", advisor.getName());
@@ -75,12 +75,12 @@ public class WhenIRegisterAdmissionInNewSemester extends Stage<WhenIRegisterAdmi
 		LOG.debug("studyCenter {}", studyCenter.getDescription());
 
 		application = new AdAdmissionApplicationImpl();
-		application.setReferenceNo("referenceNo02");
-		application.setSourceNo("sourceNo02");
-		application.setAuditNo("auditNo02");
-		application.setDescription("description02");
-		application.setRemoveComment("removeComment02");
-		application.setCancelComment("cancelComment02");
+		application.setReferenceNo("referenceNo04");
+		application.setSourceNo("sourceNo04");
+		application.setAuditNo("auditNo04");
+		application.setDescription("description04");
+		application.setRemoveComment("removeComment04");
+		application.setCancelComment("cancelComment04");
 		application.setStudent(student);
 		application.setAdvisor(advisor);
 		application.setProgram(program);

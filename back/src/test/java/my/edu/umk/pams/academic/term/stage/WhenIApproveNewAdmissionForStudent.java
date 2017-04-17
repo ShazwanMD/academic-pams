@@ -46,7 +46,7 @@ public class WhenIApproveNewAdmissionForStudent  extends Stage<WhenIApproveNewAd
 	@ExpectedScenarioState
     private AdProgram program;
     
-	@ExpectedScenarioState
+	@ProvidedScenarioState
     private AdCohort cohort;
 
     @ExpectedScenarioState
@@ -65,8 +65,9 @@ public class WhenIApproveNewAdmissionForStudent  extends Stage<WhenIApproveNewAd
 		
 		Assert.notNull(program, "program code is not null");
 		Assert.notNull(student, "student id is not null");
-		LOG.debug("Program:{}", program.getId());
-		LOG.debug("student:{}", student.getId());
+		LOG.debug("Program Id:{}", program.getId());
+		LOG.debug("student Id:{}", student.getId());
+		LOG.debug("student Cohort:{}", student.getCohort().getCode());
 		
 		application = termService.findAdmissionApplicationByProgramAndStudent(program, student);
 		Assert.notNull(application, "application data is not null");
@@ -75,16 +76,17 @@ public class WhenIApproveNewAdmissionForStudent  extends Stage<WhenIApproveNewAd
 		LOG.debug("application studyCenter:{}", application.getStudyCenter().getId());
 		
 		studyCenter =  application.getStudyCenter();
+		cohort = student.getCohort();
 		
 		admission = new AdAdmissionImpl();
-		admission.setCgpa(new BigDecimal("1.90"));
+		admission.setCgpa(new BigDecimal("2.90"));
 		admission.setCreditEarned(100);
 		admission.setCreditTaken(100);
-		admission.setGpa(new BigDecimal("1.90"));
+		admission.setGpa(new BigDecimal("2.90"));
 		admission.setCohort(cohort);
 		admission.setSession(academicSession);
-		admission.setStanding(AdAcademicStanding.KS);
-		admission.setStatus(AdAdmissionStatus.POSTPONED);
+		admission.setStanding(AdAcademicStanding.KB);
+		admission.setStatus(AdAdmissionStatus.ADMITTED);
 		admission.setStudent(student);
 		admission.setStudyCenter(studyCenter);
 		
@@ -93,7 +95,9 @@ public class WhenIApproveNewAdmissionForStudent  extends Stage<WhenIApproveNewAd
 		//new data added in ad_admn from ad_admn_apln
 		Assert.notNull(admission, "Item data should be not null");
 		
+		LOG.debug("===============new data admission inserted=============");
 		LOG.debug("New admission id inserted:{}", admission.getId());
+		LOG.debug("New admission student inserted:{}", admission.getStudent().getName());
 		LOG.debug("New admission Cohort inserted:{}", admission.getCohort().getId());
 		LOG.debug("New admission Session inserted:{}", admission.getSession().getId());
 		LOG.debug("New admission Gpa inserted:{}", admission.getGpa());

@@ -1,6 +1,7 @@
 package my.edu.umk.pams.academic.term;
 
 import com.tngtech.jgiven.annotation.As;
+
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.term.stage.ThenTheNewAdmissionIsAdded;
@@ -26,7 +27,7 @@ public class US_AD_TRM_1025 extends
 		SpringScenarioTest<GivenIAmCPSAdministrator, WhenIApproveNewAdmissionForStudent, ThenTheNewAdmissionIsAdded> {
 
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_1025.class);
-	public static final String PROGRAM_CODE = "A01/MASTER/0001";
+	public static final String PROGRAM_CODE = "FKP/PHD/PAK";
 	public static final String STUDENT_ID = "A17P001";
 
 	@Test

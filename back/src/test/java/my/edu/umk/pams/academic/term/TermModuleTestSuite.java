@@ -35,7 +35,7 @@ import org.junit.runners.Suite;
         US_AD_TRM_1024.class,
         US_AD_TRM_1025.class,
         US_AD_TRM_1026.class,
-        //US_AD_TRM_1027.class,
+        US_AD_TRM_1027.class,
        
 })
 public class TermModuleTestSuite {

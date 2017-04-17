@@ -65,12 +65,12 @@ public class WhenLecturerReviewCourseInfoAndResearchInfo extends Stage<WhenLectu
 		LOG.debug("Student's Name :{}", student.getName());
 		
 		for(AdCourse course:courses)
-			LOG.debug("Course register by students:{}", course.getCode());
+			LOG.debug("Courses register by student:{}", course.getCode());
 		
 	    LOG.debug("Faculty:{}", faculty.getName());
 	    LOG.debug("Level :{}", level.getCode());
 	    	    
-		LOG.debug("Program Registered:{}", program.getCode());
+		LOG.debug("Program Enrolled:{}", program.getCode());
 		LOG.debug("Faculty's Details :{}", faculty.getDescription());
 		
 		return self();
@@ -90,12 +90,12 @@ public class WhenLecturerReviewCourseInfoAndResearchInfo extends Stage<WhenLectu
 		LOG.debug("Student's Name :{}", student.getName());
 		
 		for(AdCourse course:courses)
-			LOG.debug("Course register by students:{}", course.getCode());
+			LOG.debug("Courses register by student:{}", course.getCode());
 		
 	    LOG.debug("Faculty:{}", faculty.getName());
 	    LOG.debug("Level :{}", level.getCode());
 	    	    
-		LOG.debug("Program Registered:{}", program.getCode());
+		LOG.debug("Program Enrolled:{}", program.getCode());
 		LOG.debug("Faculty's Details :{}", faculty.getDescription());
 		
 		return self();

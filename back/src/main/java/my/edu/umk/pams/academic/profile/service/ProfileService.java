@@ -1,6 +1,8 @@
 package my.edu.umk.pams.academic.profile.service;
 
+import my.edu.umk.pams.academic.common.model.AdStudyMode;
 import my.edu.umk.pams.academic.identity.model.*;
+import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
 
 import java.util.List;
 
@@ -66,6 +68,36 @@ public interface ProfileService {
     void deactivateStudent(AdStudent student);
 
     void barStudent(AdStudent student);
+    
+// ====================================================================================================   
+//    										Generator 
+// ====================================================================================================   
+    
+    //Generate Matric NO
+    void generateMatricNo(AdStudent student ,AdStudyMode studyMode, AdAcademicSession academicSession);
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
 
 }
