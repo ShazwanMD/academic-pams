@@ -43,11 +43,17 @@ public class WhenAdminUpdateProgram extends Stage<WhenAdminUpdateProgram> {
 	    public WhenAdminUpdateProgram Admin_update_program_for_faculty_$(String facultyCode) {
 	 	
 	    	  
-	         program.setCode("A01/MASTER/00111");
+	         program.setCode("AFKP/MASTER/MAM/R");
 	         program.setFaculty(plannerService.findFacultyByCode(facultyCode));
 	         program.setTitle("Master of management(it)");
 	         program.setTitleEn("Master of management(it)");
 	         program.setTitleMs("Master of management(it)");
+	         
+	        LOG.debug("program code: {}", program.getCode());
+	        LOG.debug("program faculty: {}", program.getFaculty().getName());
+	 		LOG.debug("program Title: {}", program.getTitle());
+	 		LOG.debug("program TitleEn: {}", program.getTitleEn());
+	 		LOG.debug("program TitleMs: {}", program.getTitleMs());
 	         
 	         plannerService.updateProgram(program);
 	    	
