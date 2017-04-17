@@ -40,5 +40,5 @@ SpringScenarioTest<GivenIAmCPSAdministrator,WhenIDeleteCoursePrerequisite , Then
 		when().Admin_delete_prereq_$_to_course_$(PREREQ_CODE, COURSE_CODE);
 		then().course_$_is_a_prereq_for_course_$_deleted(PREREQ_CODE, COURSE_CODE);
 	
-}
+}                                                                                                                                                  
 	}
