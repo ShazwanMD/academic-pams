@@ -23,16 +23,26 @@ public class ThenOfferedCoursesInfoIsCurrent extends Stage<ThenOfferedCoursesInf
 	private TermService termService;
 
 	@ExpectedScenarioState
-	private List<AdOffering> offering;
+	private List<AdOffering> offerings;
 
 	@ExpectedScenarioState
 	private AdProgram program;
 
 	public ThenOfferedCoursesInfoIsCurrent the_offered_courses_info_is_current() {
 
-		List<AdOffering> offering = termService.findOfferings(program);
-
-		Assert.notNull(offering, "Not Null");
+		
+		Assert.notNull(offerings, "Data offerings not null");
+		for (AdOffering offering : offerings) {
+			
+			LOG.debug("=========offered course is current==========");
+			LOG.debug("Offering Id:{}",offering.getId());
+			LOG.debug("Offering Code:{}",offering.getCode());
+			LOG.debug("Offering CanonicalCode:{}",offering.getCanonicalCode());
+			LOG.debug("Offering Capacity:{}",offering.getCapacity());
+			LOG.debug("Offering Title:{}",offering.getTitle());
+			LOG.debug("Offering Program:{}",offering.getProgram().getTitle());
+			LOG.debug("Offering Course:{}",offering.getCourse().getTitle());
+		}
 
 		return self();
 	}

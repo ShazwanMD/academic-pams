@@ -1,5 +1,8 @@
 package my.edu.umk.pams.academic.term.stage;
 
+import java.sql.Date;
+import java.text.SimpleDateFormat;
+
 /**
  * @author zaida_nawi
  **/
@@ -11,6 +14,7 @@ import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.annotation.Pending;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 import io.jsonwebtoken.lang.Assert;
+import my.edu.umk.pams.academic.AcademicConstants;
 import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
 import my.edu.umk.pams.academic.planner.model.AdCourse;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
@@ -37,15 +41,25 @@ public class ThenTheDateEnrollmentIsReview extends Stage<ThenTheDateEnrollmentIs
 	@ExpectedScenarioState
 	private AdSection section;
 	
-	@ExpectedScenarioState
-	private AdConfiguration configuration;
+	
+	@Autowired
+	private SystemService systemService;
 
 	public ThenTheDateEnrollmentIsReview Know_the_enrollment_interval_period() {
 		
+		AdConfiguration configurationOpen = systemService.findConfigurationByKey(AcademicConstants.ENROLLMENT_STARTDATE_OPEN);
+		AdConfiguration configurationClose = systemService.findConfigurationByKey(AcademicConstants.ENROLLMENT_ENDDATE_CLOSE);
 		
-		AdOffering offering = termService.findOfferingByCanonicalCode("FIAT/MASTER/PBH/GST5023");
-	    termService.countEnrollment(academicSession, offering);
-	    LOG.debug("number of available course :{}", termService.countEnrollment(academicSession, offering));
+		String enrollOpen = configurationOpen.getValue();
+		String enrollClose = configurationClose.getValue();
+		
+		LOG.debug("enrollOpen {}", enrollOpen);
+		LOG.debug("enrollClose {}", enrollClose);
+		
+		
+		//AdOffering offering = termService.findOfferingByCanonicalCode("FIAT/MASTER/PBH/GST5023");
+		
+	   // Integer cntEnrollment = termService.countEnrollment(academicSession, offering);
 		
 	   // plannerService.countAvailableCourse(academicSession);
 	   // LOG.debug("number of available course {} :", plannerService.countAvailableCourse(academicSession) );
@@ -61,10 +75,13 @@ public class ThenTheDateEnrollmentIsReview extends Stage<ThenTheDateEnrollmentIs
 //	    Integer countAvailableCourse(AdAcademicSession academicSession);
 		
 	//	Assert.notNull(configuration, "section should be not null");
-		
-		
-		return self();
 
+		
+		
+		
+	return self();
+
+	    }
 	}
 
-}
+

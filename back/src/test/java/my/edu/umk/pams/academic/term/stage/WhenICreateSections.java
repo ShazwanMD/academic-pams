@@ -104,6 +104,7 @@ public class WhenICreateSections extends Stage<WhenICreateSections> {
 				termService.saveSection(section);
 				
 				Assert.notNull(section, "new sections inserted");
+				LOG.debug("===========NEW SECTION ADDED==========");
 				LOG.debug("section: {}", section.getId());
 			}
 

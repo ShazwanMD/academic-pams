@@ -7,6 +7,7 @@ package my.edu.umk.pams.academic.term.stage;
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.annotation.Pending;
+import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 
 import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
@@ -40,6 +41,8 @@ public class ThenTheStudentCanEnrol extends Stage<ThenTheStudentCanEnrol> {
 	public ThenTheStudentCanEnrol the_student_can_enrol() {
 
 		Assert.notNull(section, "The data must not be null");
+		
+		LOG.debug("===========REVIEW NEW SECTION==========");
 		LOG.debug("section {} ", section.getCanonicalCode());
 		List<AdSection> sections = termService.findSections(academicSession);
 		for (AdSection section : sections) {

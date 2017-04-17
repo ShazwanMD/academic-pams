@@ -62,7 +62,7 @@ public class WhenWantToViewOpenDateOfEnrollment extends Stage<WhenWantToViewOpen
 		// LOG.debug("ordinal section: {}", section.getOrdinal());
 
 		configuration = systemService.findConfigurationByKey(AcademicConstants.ENROLLMENT_STARTDATE_OPEN);
-		configuration.setValue("30/04/2017");
+		//configuration.setValue("30/04/2017");
 		systemService.updateConfiguration(configuration);
 		LOG.debug("description : {}", configuration.getDescription());
 		LOG.debug("Open Enrollment Date : {}", configuration.getValue());
