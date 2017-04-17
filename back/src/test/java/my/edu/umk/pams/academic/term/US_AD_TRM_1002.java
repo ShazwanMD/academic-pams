@@ -27,7 +27,7 @@ public class US_AD_TRM_1002
 
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_1002.class);
 	public static final String FACULTY_CODE = "A10";
-	public static final String PROGRAM_CODE = "MGSEB/MBA"; //PROGRAM ID = 79 
+	public static final String PROGRAM_CODE = "MGSEB/MBA"; 
 	
 
 	@Test

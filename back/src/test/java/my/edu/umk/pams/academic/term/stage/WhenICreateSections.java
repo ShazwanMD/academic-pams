@@ -91,21 +91,35 @@ public class WhenICreateSections extends Stage<WhenICreateSections> {
 				code =	offering.getCourse().getCode(); 
 				
 				LOG.debug("canonicalCode: {}", canonicalCode);
-				LOG.debug("code: {}", code);
+				LOG.debug("code= {}", code);
 				
-				section = new AdSectionImpl();
-				section.setCanonicalCode(canonicalCode);
-				section.setCapacity(30);
-				section.setCode(code);
-				section.setOrdinal(1);
-				section.setOffering(offering);
-				section.setSession(academicSession);
+				if (code != offering.getCourse().getCode()){
+					LOG.debug("code not exist and new section will be created!: {}", code);
+					
+					section = new AdSectionImpl();
+					section.setCanonicalCode(canonicalCode);
+					section.setCapacity(30);
+					section.setCode(code);
+					section.setOrdinal(1);
+					section.setOffering(offering);
+					section.setSession(academicSession);
 
-				termService.saveSection(section);
+					termService.saveSection(section);
+					
+					Assert.notNull(section, "new sections inserted");
+					LOG.debug("===========new section added==========");
+					LOG.debug("section Id: {}", section.getId());
+					LOG.debug("section CanonicalCode: {}", section.getCanonicalCode());
+					LOG.debug("section Code: {}", section.getCode());
+					
+					
+				}else if (code == offering.getCourse().getCode()){
+					LOG.debug("code exist and redundant. No section will be created: {}", code);
+								
+					
+				}
 				
-				Assert.notNull(section, "new sections inserted");
-				LOG.debug("===========NEW SECTION ADDED==========");
-				LOG.debug("section: {}", section.getId());
+				
 			}
 
 	   

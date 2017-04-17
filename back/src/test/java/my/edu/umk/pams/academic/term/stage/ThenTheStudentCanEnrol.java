@@ -11,6 +11,7 @@ import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 
 import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
+import my.edu.umk.pams.academic.planner.model.AdProgram;
 import my.edu.umk.pams.academic.term.model.AdOffering;
 import my.edu.umk.pams.academic.term.model.AdSection;
 import my.edu.umk.pams.academic.term.service.TermService;
@@ -40,13 +41,14 @@ public class ThenTheStudentCanEnrol extends Stage<ThenTheStudentCanEnrol> {
 
 	public ThenTheStudentCanEnrol the_student_can_enrol() {
 
-		Assert.notNull(section, "The data must not be null");
-		
-		LOG.debug("===========REVIEW NEW SECTION==========");
-		LOG.debug("section {} ", section.getCanonicalCode());
 		List<AdSection> sections = termService.findSections(academicSession);
 		for (AdSection section : sections) {
-			LOG.debug("section {} ", section.getCanonicalCode());
+			
+			LOG.debug("==================view section ===============");
+			LOG.debug("section CanonicalCode {} ", section.getCanonicalCode());
+			LOG.debug("section Capacity {} ", section.getCapacity());
+			LOG.debug("section Code {} ", section.getCode());
+
 		}
 
 		return self();
