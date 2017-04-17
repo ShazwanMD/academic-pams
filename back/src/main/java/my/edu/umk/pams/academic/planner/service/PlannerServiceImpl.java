@@ -65,8 +65,6 @@ public class PlannerServiceImpl implements PlannerService {
     @Autowired
     private SessionFactory sessionFactory;
 
-	private AdCourse prereqCourses;
-
     //====================================================================================================
     // ACADEMIC SESSION
     //====================================================================================================
@@ -283,8 +281,8 @@ public class PlannerServiceImpl implements PlannerService {
 
     
 	@Override
-	public void delatePrerequisite(AdCourse course, AdCourse... prerequisites) {
-		courseDao.delatePrerequisites(course, securityService.getCurrentUser(), prereqCourses);
+	public void removePrerequisite(AdCourse course, AdCourse... prerequisites) {
+		courseDao.removePrerequisites(course, securityService.getCurrentUser(), prerequisites);
 	        sessionFactory.getCurrentSession().flush();
 	       
 				

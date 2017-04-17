@@ -94,7 +94,7 @@ public interface PlannerService {
     
     void updatePrerequisite(AdCourse course, AdCourse... prerequisites);
     
-    void delatePrerequisite(AdCourse course, AdCourse... prerequisites);
+    void removePrerequisite(AdCourse course, AdCourse... prerequisites);
 
     //====================================================================================================
     // COHORT

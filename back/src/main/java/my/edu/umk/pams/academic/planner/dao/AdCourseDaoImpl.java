@@ -259,12 +259,44 @@ public class AdCourseDaoImpl extends GenericDaoSupport<Long, AdCourse> implement
 	        
 		}
 
-		@Override
-		public void delatePrerequisites(AdCourse course, AdUser currentUser, AdCourse prereqCourses) {
-			 Validate.notNull(currentUser, "User cannot be null");
-			 Session session = sessionFactory.getCurrentSession();
-			 session.delete(prereqCourses);
-			
-		}
-		
+    @Override
+    public AdCoursePrerequisite findByCourseAndPrerequisite(AdCourse course, AdCourse prerequisite) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select s from AdCoursePrerequisite s where " +
+                "s.course = :course " +
+                "and s.prerequisite = :prerequisite " +
+                "and s.metadata.state = :state");
+        query.setEntity("course", course);
+        query.setEntity("prerequisite", prerequisite);
+        query.setCacheable(true);
+        query.setInteger("state", AdMetaState.ACTIVE.ordinal());
+        return (AdCoursePrerequisite) query.uniqueResult();
+    }
+
+
+    public void removePrerequisites(AdCourse course, AdUser user, AdCourse... prerequisites) {
+            Validate.notNull(user, "User cannot be null");
+            Validate.notNull(course, "Course cannot be null");
+            Validate.notNull(prerequisites, "prerequisites cannot be null");
+            Validate.notEmpty(prerequisites, "prerequisites cannot be empty");
+            Session session = sessionFactory.getCurrentSession();
+
+            Arrays.asList(prerequisites).forEach(prerequisite -> {
+                if (!isPrerequisite(course, prerequisite)) {
+                    LOG.debug("Course " + prerequisite.getCode() + " is NOT a prerequisite for course " + course.getCode());
+                } else {
+
+                    AdCoursePrerequisite prereq = findByCourseAndPrerequisite(course, prerequisite);
+
+                    // prepare metadata
+                    AdMetadata metadata = new AdMetadata();
+                    metadata.setDeletedDate(new Timestamp(System.currentTimeMillis()));
+                    metadata.setDeleterId(user.getId());
+                    metadata.setState(AdMetaState.INACTIVE);
+                    prerequisite.setMetadata(metadata);
+                    session.update(prereq);
+                }
+            });
+
+        }
 }

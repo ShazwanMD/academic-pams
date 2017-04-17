@@ -16,12 +16,12 @@ import my.edu.umk.pams.academic.planner.model.AdCourse;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
 
 @JGivenStage
-public class WhenIAddACoursePrerequisite extends Stage<WhenIAddACoursePrerequisite> {
+public class WhenPrerequisiteAdd extends Stage<WhenPrerequisiteAdd> {
 	
 	    @Autowired
 	    private PlannerService plannerService;
 
-	public WhenIAddACoursePrerequisite I_add_prereq_$_to_course_$(String courseCodePrereq, String courseCode) {
+	public WhenPrerequisiteAdd I_add_prereq_$_to_course_$(String courseCodePrereq, String courseCode) {
 
 		AdCourse course = plannerService.findCourseByCode(courseCode);
 		AdCourse prereqCourse = plannerService.findCourseByCode(courseCodePrereq);
