@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.tngtech.jgiven.Stage;
+import com.tngtech.jgiven.annotation.Pending;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 
@@ -29,7 +30,7 @@ public class WhenPrerequisiteRemove extends Stage<WhenPrerequisiteRemove> {
 	List<AdCoursePrerequisite> prerequisite;
 	
 	private static final Logger LOG = LoggerFactory.getLogger(WhenAdminAddCoursePrerequisite.class);
-
+    @Pending
 	public WhenPrerequisiteRemove remove_prereq_$_to_course_$(String prereqCode, String courseCode) {
 
 		AdCourse course = plannerService.findCourseByCode(courseCode);

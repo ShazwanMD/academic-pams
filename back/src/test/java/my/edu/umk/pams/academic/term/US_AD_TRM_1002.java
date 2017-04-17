@@ -27,11 +27,11 @@ public class US_AD_TRM_1002
 
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_1002.class);
 	public static final String FACULTY_CODE = "A10";
-	public static final String PROGRAM_CODE = "MGSEB/MBA"; //PROGRAM ID = 79 
+	public static final String PROGRAM_CODE = "MGSEB/MBA"; 
 	
 
 	@Test
-	@Rollback(true)
+	@Rollback
 	public void scenario1() {
 		given().I_am_a_CPS_administrator_in_current_academic_session().and().I_pick_faculty_$(FACULTY_CODE).and()
 				.I_pick_program_$(PROGRAM_CODE);

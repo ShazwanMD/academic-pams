@@ -42,5 +42,5 @@ SpringScenarioTest<GivenIAmCPSAdministrator,WhenPrerequisiteRemove, ThenPrerequi
 		when().remove_prereq_$_to_course_$(PREREQ_CODE, COURSE_CODE);
 		then().prerequite_$_for_course_$_is_removed(PREREQ_CODE, COURSE_CODE);
 	
-}
+}                                                                                                                                                  
 	}
