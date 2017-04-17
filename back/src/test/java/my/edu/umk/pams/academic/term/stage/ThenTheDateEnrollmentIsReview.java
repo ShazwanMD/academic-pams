@@ -60,20 +60,30 @@ public class ThenTheDateEnrollmentIsReview extends Stage<ThenTheDateEnrollmentIs
 		
 		SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
 		
-		Date d1 = null;
-		Date d2 = null;
+		Date openDate;
+		Date closedDate;
+			
 		
 		try {
-			d1 = format.parse(enrollOpen);
+			openDate = format.parse(enrollOpen);
 
-			d2 = format.parse(enrollClose);
-			LOG.debug("d1 {}", d1);
-			int diff = d1.getDay() - d2.getDay();
+			closedDate = format.parse(enrollClose);
+			LOG.debug("Open Date :{}", openDate);
+			LOG.debug("Closed Date :{}", closedDate);
+			int interval = closedDate.getDate() - openDate.getDate();
 			
-			LOG.debug("diff {}", diff);
+			LOG.debug("Interval:{}", interval);
+		
+			//compare by date
 
+			if(interval >= 9){
+				
+				LOG.debug("Status :{}",academicSession.getStatus().CLOSED);
+			}else{
+				LOG.debug("Status :{}",academicSession.getStatus().STARTED);
+			}
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
+	
 			e.printStackTrace();
 		}
 
