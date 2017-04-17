@@ -30,15 +30,17 @@ public class US_AD_PFL_1009 extends SpringScenarioTest<GivenIAmStudent, WhenIRev
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_PFL_1009.class);
 	
 	@ProvidedScenarioState
-	private static String matricNo = "A17P001";
+	private String matricNo = "A17P001";
 	
 	
 	@Test
 	@Rollback
 	public void scenario1009(){
 		given().I_am_a_student_in_current_academic_session();
-		when().i_review_my_profile()
-		.and().i_review_subject(matricNo);
+		when()
+		.i_review_my_profile()
+		.and().i_review_subject()
+		.and().i_generate_new_matricNo();
 		then().profile_current();
 		
 	}

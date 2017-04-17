@@ -7,6 +7,8 @@ public interface AcademicConstants {
 
     public static final String ADMISSION_APPLICATION_REFERENCE_NO = "AdAdmissionApplication.referenceNo";
     public static final String ENROLLMENT_APPLICATION_REFERENCE_NO = "AdEnrollmentApplication.referenceNo";
+    
+    public static final String STUDENT_MATRIC_NO = "AdStudent.MatricNo";
 
     public static final String ADMISSION_APPLICATION_ID = "admissionApplicationId";
     public static final String ENROLLMENT_APPLICATION_ID = "enrollmentApplicationId";
