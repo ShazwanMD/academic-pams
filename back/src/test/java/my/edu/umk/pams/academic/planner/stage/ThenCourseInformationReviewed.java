@@ -35,8 +35,6 @@ public class ThenCourseInformationReviewed extends Stage<ThenCourseInformationRe
 
 		boolean exists = plannerService.isCourseExists("GST5013", faculty);
 
-		Assert.isTrue(exists, "exists");
-
 		return self();
 	}
 }
