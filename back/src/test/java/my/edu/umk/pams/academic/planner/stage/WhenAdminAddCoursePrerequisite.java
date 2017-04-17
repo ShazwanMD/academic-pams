@@ -36,10 +36,10 @@ public class WhenAdminAddCoursePrerequisite extends Stage<WhenAdminAddCoursePrer
 	public WhenAdminAddCoursePrerequisite Admin_add_prereq_$_to_course_$(String courseCodePrereq, String courseCode) {
 
 		
-		AdCourse course = plannerService.findCourseByCode("DDA2103");
+		AdCourse course = plannerService.findCourseByCode(courseCode);
 		LOG.debug(" course code: {}", course.getCode());
 		
-		AdCourse prereqCourse = plannerService.findCourseByCode("GST5013");
+		AdCourse prereqCourse = plannerService.findCourseByCode(courseCodePrereq);
 		LOG.debug(" course prerequisite: {}", prereqCourse.getCode());
 		
 
