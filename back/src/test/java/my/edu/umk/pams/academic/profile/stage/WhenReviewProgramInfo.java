@@ -3,6 +3,7 @@ package my.edu.umk.pams.academic.profile.stage;
 import com.tngtech.jgiven.Stage;
 
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
+import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.planner.model.AdFaculty;
@@ -25,18 +26,18 @@ public class WhenReviewProgramInfo extends Stage<WhenReviewProgramInfo> {
     @ExpectedScenarioState
     private AdStudent student;
 
-    @ExpectedScenarioState
+    @ProvidedScenarioState
     private AdProgram program;
 
     @ExpectedScenarioState
     private String code;
 
-    @ExpectedScenarioState
+    @ProvidedScenarioState
     private AdFaculty faculty;
 
-    public WhenReviewProgramInfo I_view_program_info_for_faculty_$(String code) {
+    public WhenReviewProgramInfo I_view_program_info_for_faculty_$(String facultyCode) {
 
-        faculty = plannerService.findFacultyByCode(code);
+        faculty = plannerService.findFacultyByCode(facultyCode);
         List<AdProgram> program = plannerService.findPrograms(faculty);
 
         for (AdProgram programs : program) {
