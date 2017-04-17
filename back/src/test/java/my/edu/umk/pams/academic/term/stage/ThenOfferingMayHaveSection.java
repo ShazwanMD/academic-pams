@@ -35,7 +35,7 @@ public class ThenOfferingMayHaveSection extends Stage<ThenOfferingMayHaveSection
 	private AdProgram program;
 
 	public ThenOfferingMayHaveSection the_offerings_may_begin_to_have_sections() {
-		program = plannerService.findProgramByCode("A01/MASTER/0001");
+		program = plannerService.findProgramByCode("MGSEB/MBA");
 
 		List<AdOffering> offerings = termService.findOfferings(program);
 
