@@ -8,10 +8,13 @@ import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
+
+import io.jsonwebtoken.lang.Assert;
 import my.edu.umk.pams.academic.term.model.AdOffering;
 import my.edu.umk.pams.academic.term.model.AdOfferingImpl;
 import my.edu.umk.pams.academic.term.model.AdSection;
 import my.edu.umk.pams.academic.term.service.TermService;
+import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
 import my.edu.umk.pams.academic.planner.model.AdCourse;
 import my.edu.umk.pams.academic.planner.model.AdFaculty;
 import my.edu.umk.pams.academic.planner.model.AdProgram;
@@ -34,13 +37,16 @@ public class WhenIViewTheDetailsOfOfferedCourses extends Stage<WhenIViewTheDetai
 	private AdSection section;
 
 	@ProvidedScenarioState
-	private List<AdOffering> offering;
+	private List<AdOffering> offerings;
 
 	@ProvidedScenarioState
 	private AdCourse course;
 
 	@ExpectedScenarioState
 	private String code;
+	
+    @ExpectedScenarioState
+    private AdAcademicSession academicSession;
 
 	@ProvidedScenarioState
 	private AdFaculty faculty;
@@ -51,27 +57,23 @@ public class WhenIViewTheDetailsOfOfferedCourses extends Stage<WhenIViewTheDetai
 
 	public WhenIViewTheDetailsOfOfferedCourses I_view_the_details_offered_courses_for_program_$(String code) {
 
+		
+		
 		program = plannerService.findProgramByCode(code);
-		offering = termService.findOfferings(program);
-		String code1 = "A01";
-		AdFaculty faculty = plannerService.findFacultyByCode(code1);
-		List<AdCourse> courses = plannerService.findCourses(faculty);
 
-		for (AdOffering offering : offering) {
-			LOG.debug(offering.getTitle());
+		offerings = termService.findOfferings(program);
+		Assert.notEmpty(offerings, "offerings are empty");
+		
+		for (AdOffering offering : offerings) {
+			
+			LOG.debug("title for this program: {}", offering.getProgram().getTitle());
+			LOG.debug("courses for this program : {}", offering.getCourse().getTitleEn());
+			LOG.debug("courses for this program : {}", offering.getCourse().getTitleMs());
+			LOG.debug("credit for this course : {}", offering.getCourse().getCredit());
+			LOG.debug("");
+			
 		}
 
-		for (AdOffering offering : offering) {
-			LOG.debug(offering.getCode());
-		}
-
-		for (AdCourse course : courses) {
-			LOG.debug(course.getTitleEn());
-		}
-
-		for (AdCourse course : courses) {
-			LOG.debug("  credit:  " + course.getCredit());
-		}
 
 		return self();
 	}

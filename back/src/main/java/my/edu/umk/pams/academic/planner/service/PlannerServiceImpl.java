@@ -65,6 +65,8 @@ public class PlannerServiceImpl implements PlannerService {
     @Autowired
     private SessionFactory sessionFactory;
 
+	private AdCourse prereqCourses;
+
     //====================================================================================================
     // ACADEMIC SESSION
     //====================================================================================================
@@ -277,6 +279,15 @@ public class PlannerServiceImpl implements PlannerService {
     	courseDao.updatePrerequisites(course, securityService.getCurrentUser(), prerequisites);
         sessionFactory.getCurrentSession().flush();
 	
+	}
+
+    
+	@Override
+	public void delatePrerequisite(AdCourse course, AdCourse... prerequisites) {
+		courseDao.delatePrerequisites(course, securityService.getCurrentUser(), prereqCourses);
+	        sessionFactory.getCurrentSession().flush();
+	       
+				
 	}
 
 
@@ -742,6 +753,7 @@ public class PlannerServiceImpl implements PlannerService {
     public boolean isCourseExists(String code, AdFaculty faculty) {
         return courseDao.isExists(code, faculty);
     }
+
 
 	
 }

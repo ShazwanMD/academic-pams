@@ -46,12 +46,15 @@ public class ThenOfferingsInfoIsCurrent extends Stage<ThenOfferingsInfoIsCurrent
 				
 		List<AdOffering> offerings = termService.findOfferings(program);
 
+		LOG.debug("========view updated offering data=========");
+		LOG.debug("===========================================");
+		
 		for (AdOffering offering : offerings) {
 
 			Assert.notNull(offering, "Offering data should be not null");
 			LOG.debug("View updated code: {}", offering.getCanonicalCode());
 			LOG.debug("View updated title: {}", offering.getTitle());
-			LOG.debug("Listed updated capacity: {}", offering.getCapacity());
+			LOG.debug("View updated capacity: {}", offering.getCapacity());
 
 		}
 

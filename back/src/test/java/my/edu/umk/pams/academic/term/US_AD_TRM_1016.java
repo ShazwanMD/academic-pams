@@ -27,7 +27,7 @@ import my.edu.umk.pams.bdd.tags.Submodule;
 public class US_AD_TRM_1016 extends
 		SpringScenarioTest<GivenIAmStudent, WhenIViewTheDetailsOfOfferedCourses, ThenTheDetailsOfferedCoursesInfoIsCurrent> {
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_1016.class);
-	private static final String PROGRAM_CODE = "A01/MASTER/0001";
+	private static final String PROGRAM_CODE = "MGSEB/MBA";
 
 	@ProvidedScenarioState
 	private String faculty = "A01";
