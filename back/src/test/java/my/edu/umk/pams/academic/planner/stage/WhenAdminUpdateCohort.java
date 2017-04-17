@@ -12,6 +12,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.tngtech.jgiven.Stage;
+import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.annotation.Pending;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
@@ -39,19 +40,19 @@ public class WhenAdminUpdateCohort extends Stage<WhenAdminUpdateCohort> {
 	@ProvidedScenarioState
 	private AdProgram program;
 
-	@ProvidedScenarioState
+	@ExpectedScenarioState
 	private AdCurriculum curriculum;
 
 	@ProvidedScenarioState
 	private AdCohort cohort;
 	
-	@ProvidedScenarioState
+	@ExpectedScenarioState
 	private AdFaculty faculty;
 
 	public WhenAdminUpdateCohort Admin_update_cohort_to_faculty_code_$(String code) {
 		
 		
-		program = plannerService.findProgramByCode("A01/MASTER/0008");
+		program = plannerService.findProgramByCode("FIAT/PHD/PBT");
 		LOG.debug("program code: {}", program.getCode());
 
 		AdCohort cohort = plannerService.findCohortByCode(code);

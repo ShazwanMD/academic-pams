@@ -37,14 +37,14 @@ public class US_AD_PNR_1009
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_PNR_1009.class);
 	
 	@ProvidedScenarioState
-	private String CODE = "A01/MASTER/0008/CHRT/0001";
+	private String COHORT_CODE = "FIAT/PHD/PBT/CHRT/201720181";
 
 	@Test
 	@Rollback
 	public void scenario1() {
 		given().I_am_a_CPS_administrator();
-		when().Admin_update_cohort_to_faculty_code_$(CODE);
-		then().new_cohort_is_updated_$(CODE);
+		when().Admin_update_cohort_to_faculty_code_$(COHORT_CODE );
+		then().new_cohort_is_updated_$(COHORT_CODE );
 	}
 
 }

@@ -34,9 +34,9 @@ public class ThenNewCohortIsUpdated extends Stage<ThenNewCohortIsUpdated> {
 
 	@ExpectedScenarioState
 	private AdProgram program;
-
+	
 	@ExpectedScenarioState
-	private AdCurriculum curriculum;
+	private AdCohort cohort;
 
 	private static final Logger LOG = LoggerFactory.getLogger(ThenNewCohortIsUpdated.class);
 
