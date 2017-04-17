@@ -1,51 +1,35 @@
 package my.edu.umk.pams.academic.planner.stage;
 
-import java.util.List;
-
+import com.tngtech.jgiven.Stage;
+import com.tngtech.jgiven.annotation.Pending;
+import com.tngtech.jgiven.integration.spring.JGivenStage;
+import my.edu.umk.pams.academic.planner.model.AdCourse;
+import my.edu.umk.pams.academic.planner.service.PlannerService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.tngtech.jgiven.Stage;
-import com.tngtech.jgiven.annotation.Pending;
-import com.tngtech.jgiven.annotation.ProvidedScenarioState;
-import com.tngtech.jgiven.integration.spring.JGivenStage;
-
-import my.edu.umk.pams.academic.planner.model.AdCourse;
-import my.edu.umk.pams.academic.planner.model.AdCoursePrerequisite;
-import my.edu.umk.pams.academic.planner.service.PlannerService;
-
 @JGivenStage
 public class WhenPrerequisiteRemove extends Stage<WhenPrerequisiteRemove> {
-	
-	
-	
-	@Autowired
-	private PlannerService plannerService;
 
-	@ProvidedScenarioState
-	private AdCourse course;
+    private static final Logger LOG = LoggerFactory.getLogger(WhenPrerequisiteRemove.class);
 
-	@ProvidedScenarioState
-	List<AdCoursePrerequisite> prerequisite;
-	
-	private static final Logger LOG = LoggerFactory.getLogger(WhenAdminAddCoursePrerequisite.class);
+    @Autowired
+    private PlannerService plannerService;
+
     @Pending
-	public WhenPrerequisiteRemove remove_prereq_$_to_course_$(String prereqCode, String courseCode) {
+    public WhenPrerequisiteRemove remove_prereq_$_to_course_$(String prereqCode, String courseCode) {
 
-		AdCourse course = plannerService.findCourseByCode(courseCode);
-		LOG.debug(" course code: {}", course.getCode());
-		
-		AdCourse prereqCourse = plannerService.findCourseByCode(prereqCode);
-		LOG.debug(" course prerequisite: {}", prereqCourse.getCode());
-		
-		course.setCode("GST5033");
-		course.setPrerequisites(prerequisite);
+        AdCourse course = plannerService.findCourseByCode(courseCode);
+        LOG.debug(" course code: {}", course.getCode());
 
-		plannerService.removePrerequisite(course, prereqCourse);
+        AdCourse prereqCourse = plannerService.findCourseByCode(prereqCode);
+        LOG.debug(" course prerequisite: {}", prereqCourse.getCode());
 
-		return self();
+        plannerService.removePrerequisite(course, prereqCourse);
 
-	}
+        return self();
+
+    }
 
 }

@@ -8,26 +8,25 @@ package my.edu.umk.pams.academic.planner.stage;
  * @author ain
  */
 
-import org.springframework.beans.factory.annotation.Autowired;
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
-
 import my.edu.umk.pams.academic.planner.model.AdCourse;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @JGivenStage
 public class WhenPrerequisiteAdd extends Stage<WhenPrerequisiteAdd> {
-	
-	    @Autowired
-	    private PlannerService plannerService;
 
-	public WhenPrerequisiteAdd I_add_prereq_$_to_course_$(String courseCodePrereq, String courseCode) {
+    @Autowired
+    private PlannerService plannerService;
 
-		AdCourse course = plannerService.findCourseByCode(courseCode);
-		AdCourse prereqCourse = plannerService.findCourseByCode(courseCodePrereq);
+    public WhenPrerequisiteAdd I_add_prereq_$_to_course_$(String courseCodePrereq, String courseCode) {
 
-    	plannerService.addPrerequisites(course, prereqCourse);
-    	
+        AdCourse course = plannerService.findCourseByCode(courseCode);
+        AdCourse prereqCourse = plannerService.findCourseByCode(courseCodePrereq);
+
+        plannerService.addPrerequisites(course, prereqCourse);
+
         return self();
 
     }
