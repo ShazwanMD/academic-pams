@@ -1,11 +1,17 @@
 package my.edu.umk.pams.academic.profile.service;
 
+import my.edu.umk.pams.academic.AcademicConstants;
 import my.edu.umk.pams.academic.identity.dao.AdStudentDao;
 import my.edu.umk.pams.academic.identity.event.StudentActivatedEvent;
 import my.edu.umk.pams.academic.identity.event.StudentBarredEvent;
 import my.edu.umk.pams.academic.identity.model.*;
 import my.edu.umk.pams.academic.identity.service.IdentityService;
+import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
+import my.edu.umk.pams.academic.planner.model.AdFaculty;
+import my.edu.umk.pams.academic.planner.model.AdProgramLevel;
 import my.edu.umk.pams.academic.security.service.SecurityService;
+import my.edu.umk.pams.academic.system.service.SystemService;
+
 import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,7 +19,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Assert;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -34,6 +42,9 @@ public class ProfileServiceImpl implements ProfileService {
     @Autowired
     private IdentityService identityService;
 
+    @Autowired
+    private SystemService systemService;
+    
     @Autowired
     private SessionFactory sessionFactory;
 
@@ -193,6 +204,32 @@ public class ProfileServiceImpl implements ProfileService {
         // trigger event
         applicationContext.publishEvent(new StudentBarredEvent(student));
     }
+
+	@Override
+	public void transferFaculty(AdStudent student, AdAcademicSession session, AdFaculty fromFaculty,AdFaculty toFaculty) {
+		
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		student.getMatricNo();
+		map.put("StudentMatricNo", student.getMatricNo());
+		//Faculty
+		AdFaculty facultyCode = student.getCohort().getProgram().getFaculty();		
+		Assert.notNull(facultyCode, "FacultyCode Must Not Null");
+		map.put("Faculty", facultyCode.getPrefix());
+		//Session
+		AdAcademicSession sessionYear = student.getCohort().getSession();
+		Assert.notNull(sessionYear, "Year Must Not Null");
+		map.put("Session", sessionYear.getYear());
+		//Level
+		AdProgramLevel level = student.getCohort().getProgram().getProgramLevel();
+		Assert.notNull(level,"Level Must Not Null");
+		map.put("ProgramLevel",level.getPrefix());
+
+		String transferFaculty = systemService.generateFormattedReferenceNo(AcademicConstants.STUDENT_MATRIC_NO, map);
+		student.setMatricNo(transferFaculty);
+		studentDao.update(student, securityService.getCurrentUser());
+		
+		
+	}
 
 
 

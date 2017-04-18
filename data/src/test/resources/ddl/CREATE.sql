@@ -62,6 +62,7 @@ create table AD_ACDM_YEAR (
   M_TS timestamp,
   M_ID int8,
   M_ST int4,
+  YEAR int8,
   primary key (ID)
 );
 
@@ -300,6 +301,7 @@ create table AD_CHRT (
   M_ST int4,
   CURRICULUM_ID int8,
   PROGRAM_ID int8,
+  SESSION_ID int8,
   primary key (ID)
 );
 
@@ -1023,6 +1025,7 @@ create table AD_PRGM_LEVL (
   M_ID int8,
   M_ST int4,
   ADPROGRAM_TYPE int4,
+  PREFIX varchar(225),
   primary key (ID)
 );
 

@@ -109,6 +109,7 @@ SET actor_id = currval('SQ_AD_ACTR')
 WHERE email = 'student9@umk.edu.my';
 
 
+
 -- lecturer 1
 INSERT INTO AD_ACTR (ID, IDENTITY_NO, NAME, EMAIL, PHONE, MOBILE, FAX, ACTOR_TYPE, C_TS, C_ID, M_ST)
 VALUES

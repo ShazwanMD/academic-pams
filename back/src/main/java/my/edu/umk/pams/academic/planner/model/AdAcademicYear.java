@@ -15,4 +15,7 @@ public interface AdAcademicYear extends AdMetaObject {
 
     void setDescription(String description);
 
+    String getYear();
+
+    void setYear(String year);
 }
