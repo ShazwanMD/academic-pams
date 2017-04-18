@@ -1,7 +1,5 @@
 package my.edu.umk.pams.academic.term;
 
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -27,10 +25,10 @@ import my.edu.umk.pams.bdd.tags.Submodule;
 public class US_AD_TRM_1016 extends
 		SpringScenarioTest<GivenIAmStudent, WhenIViewTheDetailsOfOfferedCourses, ThenTheDetailsOfferedCoursesInfoIsCurrent> {
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_1016.class);
-	private static final String PROGRAM_CODE = "MGSEB/MBA";
+	private static final String PROGRAM_CODE = "FIAT/MASTER/PBH";
 
 	@ProvidedScenarioState
-	private String faculty = "A01";
+	private String faculty = "A07";
 
 	@Test
 	@Rollback

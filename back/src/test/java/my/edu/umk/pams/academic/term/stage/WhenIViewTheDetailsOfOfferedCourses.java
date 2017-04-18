@@ -1,6 +1,7 @@
 package my.edu.umk.pams.academic.term.stage;
 
 import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,36 +45,30 @@ public class WhenIViewTheDetailsOfOfferedCourses extends Stage<WhenIViewTheDetai
 
 	@ExpectedScenarioState
 	private String code;
-	
-    @ExpectedScenarioState
-    private AdAcademicSession academicSession;
+
+	@ExpectedScenarioState
+	private AdAcademicSession academicSession;
 
 	@ProvidedScenarioState
 	private AdFaculty faculty;
 
-	public WhenIViewTheDetailsOfOfferedCourses() {
-		AdOffering offering = new AdOfferingImpl();
-	}
-
 	public WhenIViewTheDetailsOfOfferedCourses I_view_the_details_offered_courses_for_program_$(String code) {
 
-		
-		
 		program = plannerService.findProgramByCode(code);
 
 		offerings = termService.findOfferings(program);
 		Assert.notEmpty(offerings, "offerings are empty");
-		
+
 		for (AdOffering offering : offerings) {
-			
+
+			LOG.debug("==================view details offered course===================");
 			LOG.debug("title for this program: {}", offering.getProgram().getTitle());
 			LOG.debug("courses for this program : {}", offering.getCourse().getTitleEn());
 			LOG.debug("courses for this program : {}", offering.getCourse().getTitleMs());
 			LOG.debug("credit for this course : {}", offering.getCourse().getCredit());
 			LOG.debug("");
-			
-		}
 
+		}
 
 		return self();
 	}
