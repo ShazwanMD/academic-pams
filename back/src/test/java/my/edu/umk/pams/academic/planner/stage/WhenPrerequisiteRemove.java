@@ -25,6 +25,10 @@ public class WhenPrerequisiteRemove extends Stage<WhenPrerequisiteRemove> {
         LOG.debug(" course prerequisite: {}", prereqCourse.getCode());
 
         plannerService.removePrerequisite(course, prereqCourse);
+        
+        LOG.debug("================remove data================== ");
+        LOG.debug("course code : {}", course.getCode());
+        LOG.debug("prerequisite: {}", prereqCourse.getCode());
 
         return self();
 
