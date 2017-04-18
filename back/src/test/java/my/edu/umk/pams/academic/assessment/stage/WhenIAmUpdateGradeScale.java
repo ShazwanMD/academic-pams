@@ -17,15 +17,15 @@ import my.edu.umk.pams.academic.common.service.CommonService;
 public class WhenIAmUpdateGradeScale extends Stage<WhenIAmUpdateGradeScale> {
 
 	private static final Logger LOG = LoggerFactory.getLogger(WhenIAmUpdateGradeScale.class);
-	
+
 	@Autowired
 	private CommonService commonService;
-	
+
 	@ProvidedScenarioState
 	private AdGradeCode grade;
-	
+
 	public WhenIAmUpdateGradeScale i_setup_grading_scale() {
-		
+
 		// setup gradeCode
 		AdGradeCode grade = new AdGradeCodeImpl();
 		grade.setCode("A+");
@@ -139,18 +139,53 @@ public class WhenIAmUpdateGradeScale extends Stage<WhenIAmUpdateGradeScale> {
 
 		return self();
 	}
-	
+
 	public WhenIAmUpdateGradeScale i_update_grading_scale() {
-		
+
+		// Test update 1
 		grade = commonService.findGradeCodeByCode("A+");
 		grade.setCode("A1");
-		grade.setDescription("Test Update Grading");
+		grade.setDescription("Test Update Grading A+ kpd A1");
 		grade.setOrdinal(0);
 		commonService.updateGradeCode(grade);
-		
-		LOG.debug("CODE WEI:{}",grade.getCode());
-		LOG.debug("Description WEI:{}",grade.getDescription());
-		
+
+		LOG.debug("CODE:{}", grade.getCode());
+		LOG.debug("Description:{}", grade.getDescription());
+		LOG.debug("");
+
+		// Test update 2
+		grade = commonService.findGradeCodeByCode("A");
+		grade.setCode("A2");
+		grade.setDescription("Test Update Grading A kpd A2");
+		grade.setOrdinal(1);
+		commonService.updateGradeCode(grade);
+
+		LOG.debug("CODE:{}", grade.getCode());
+		LOG.debug("Description:{}", grade.getDescription());
+		LOG.debug("");
+
+		// Test update 3
+		grade = commonService.findGradeCodeByCode("A-");
+		grade.setCode("B1");
+		grade.setDescription("Test Update Grading A- kpd B1");
+		grade.setOrdinal(2);
+		commonService.updateGradeCode(grade);
+
+		LOG.debug("CODE:{}", grade.getCode());
+		LOG.debug("Description:{}", grade.getDescription());
+		LOG.debug("");
+
+		// Test update 4
+		grade = commonService.findGradeCodeByCode("B+");
+		grade.setCode("B2");
+		grade.setDescription("Test Update Grading B+ kpd B2");
+		grade.setOrdinal(3);
+		commonService.updateGradeCode(grade);
+
+		LOG.debug("CODE:{}", grade.getCode());
+		LOG.debug("Description:{}", grade.getDescription());
+		LOG.debug("");
+
 		return self();
 	}
 
