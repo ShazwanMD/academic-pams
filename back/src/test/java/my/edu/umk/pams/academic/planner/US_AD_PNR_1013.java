@@ -29,18 +29,18 @@ import my.edu.umk.pams.bdd.tags.Submodule;
 @Submodule("Planner")
 public class US_AD_PNR_1013  extends
 SpringScenarioTest<GivenIAmCPSAdministrator,WhenPrerequisiteRemove, ThenPrerequisiteRemove> {
-	
-	private static final Logger LOG = LoggerFactory.getLogger(US_AD_PNR_1013.class);
-	private static final String COURSE_CODE = "GST5013";
-	private static final String PREREQ_CODE = "GST5023";
-	
-	@Test
-	@Rollback
-	public void updatePrerequisite() {
-		given().I_am_a_CPS_administrator_in_current_academic_session();
-		addStage(WhenPrerequisiteAdd.class).and().I_add_prereq_$_to_course_$(PREREQ_CODE, COURSE_CODE);
-		when().remove_prereq_$_to_course_$(PREREQ_CODE, COURSE_CODE);
-		then().prerequite_$_for_course_$_is_removed(PREREQ_CODE, COURSE_CODE);
-	
-}                                                                                                                                                  
-	}
+   
+    private static final Logger LOG = LoggerFactory.getLogger(US_AD_PNR_1013.class);
+    private static final String COURSE_CODE = "GST5013";
+    private static final String PREREQ_CODE = "GST5023";
+   
+    @Test
+    @Rollback
+    public void updatePrerequisite() {
+        given().I_am_a_CPS_administrator_in_current_academic_session();
+        addStage(WhenPrerequisiteAdd.class).and().I_add_prereq_$_to_course_$(PREREQ_CODE, COURSE_CODE);
+        when().remove_prereq_$_to_course_$(PREREQ_CODE, COURSE_CODE);
+        then().prerequite_$_for_course_$_is_removed(PREREQ_CODE, COURSE_CODE);
+   
+}                                                                                                                                                 
+    }
