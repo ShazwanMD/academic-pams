@@ -35,7 +35,7 @@ SpringScenarioTest<GivenIAmCPSAdministrator,WhenPrerequisiteRemove, ThenPrerequi
    
     @Test
     @Rollback
-    public void updatePrerequisite() {
+    public void RemovePrerequisite() {
         given().I_am_a_CPS_administrator_in_current_academic_session();
         addStage(WhenPrerequisiteAdd.class).and().I_add_prereq_$_to_course_$(PREREQ_CODE, COURSE_CODE);
         when().remove_prereq_$_to_course_$(PREREQ_CODE, COURSE_CODE);
