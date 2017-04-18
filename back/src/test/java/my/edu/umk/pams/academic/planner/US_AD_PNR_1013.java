@@ -31,8 +31,8 @@ public class US_AD_PNR_1013  extends
 SpringScenarioTest<GivenIAmCPSAdministrator,WhenPrerequisiteRemove, ThenPrerequisiteRemove> {
 	
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_PNR_1013.class);
-	private static final String COURSE_CODE = "GST5033";
-	private static final String PREREQ_CODE = "GST5043";
+	private static final String COURSE_CODE = "GST5013";
+	private static final String PREREQ_CODE = "GST5023";
 	
 	@Test
 	@Rollback

@@ -35,7 +35,7 @@ public class ThenPrerequisiteRemove extends Stage<ThenPrerequisiteRemove> {
 
 		List<AdCoursePrerequisite> prerequisites = course.getPrerequisites();
 		Assert.notNull(prerequisites, "prerequisites has been deleted");
-		
+	
 		return self();
 	}
 }

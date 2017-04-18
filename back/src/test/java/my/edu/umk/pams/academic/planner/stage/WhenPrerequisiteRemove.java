@@ -17,7 +17,6 @@ public class WhenPrerequisiteRemove extends Stage<WhenPrerequisiteRemove> {
     @Autowired
     private PlannerService plannerService;
 
-    @Pending
     public WhenPrerequisiteRemove remove_prereq_$_to_course_$(String prereqCode, String courseCode) {
 
         AdCourse course = plannerService.findCourseByCode(courseCode);
