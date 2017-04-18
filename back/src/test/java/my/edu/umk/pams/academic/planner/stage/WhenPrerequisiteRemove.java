@@ -1,9 +1,12 @@
 package my.edu.umk.pams.academic.planner.stage;
 
 import com.tngtech.jgiven.Stage;
+import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.annotation.Pending;
+import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 import my.edu.umk.pams.academic.planner.model.AdCourse;
+import my.edu.umk.pams.academic.planner.model.AdCoursePrerequisite;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,6 +19,14 @@ public class WhenPrerequisiteRemove extends Stage<WhenPrerequisiteRemove> {
     @Autowired
     private PlannerService plannerService;
     
+
+	@ProvidedScenarioState
+	private AdCourse course;
+
+	@ProvidedScenarioState
+	private AdCoursePrerequisite prerequisite;
+
+    @Pending
     public WhenPrerequisiteRemove remove_prereq_$_to_course_$(String prereqCode, String courseCode) {
 
         AdCourse course = plannerService.findCourseByCode(courseCode);
@@ -26,10 +37,9 @@ public class WhenPrerequisiteRemove extends Stage<WhenPrerequisiteRemove> {
 
         plannerService.removePrerequisite(course, prereqCourse);
         
-        LOG.debug("================remove data================== ");
-        LOG.debug("course code : {}", course.getCode());
-        LOG.debug("prerequisite: {}", prereqCourse.getCode());
-
+//        LOG.debug("================remove data================== ");
+//        LOG.debug("course code : {}", course.getCode());
+//        LOG.debug("prerequisite: {}", prereqCourse.getCode());
         return self();
 
     }
