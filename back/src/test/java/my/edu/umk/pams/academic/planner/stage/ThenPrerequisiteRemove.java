@@ -17,7 +17,6 @@ import my.edu.umk.pams.academic.planner.service.PlannerService;
 
 @JGivenStage
 public class ThenPrerequisiteRemove extends Stage<ThenPrerequisiteRemove> {
-
 	private static final Logger LOG = LoggerFactory.getLogger(ThenPrerequisiteRemove.class);
 
 	@Autowired
@@ -30,7 +29,6 @@ public class ThenPrerequisiteRemove extends Stage<ThenPrerequisiteRemove> {
 	private AdCoursePrerequisite prerequisite;
 
 	public ThenPrerequisiteRemove prerequite_$_for_course_$_is_removed(String prereqCode, String courseCode) {
-
 		AdCourse course = plannerService.findCourseByCode(courseCode);
 
 		List<AdCoursePrerequisite> prerequisites = course.getPrerequisites();

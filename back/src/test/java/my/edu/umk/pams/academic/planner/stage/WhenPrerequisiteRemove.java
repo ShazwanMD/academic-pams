@@ -13,10 +13,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class WhenPrerequisiteRemove extends Stage<WhenPrerequisiteRemove> {
 
     private static final Logger LOG = LoggerFactory.getLogger(WhenPrerequisiteRemove.class);
-
     @Autowired
     private PlannerService plannerService;
-
+    
     public WhenPrerequisiteRemove remove_prereq_$_to_course_$(String prereqCode, String courseCode) {
 
         AdCourse course = plannerService.findCourseByCode(courseCode);
