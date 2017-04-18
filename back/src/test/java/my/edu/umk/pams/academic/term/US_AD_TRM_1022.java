@@ -2,11 +2,7 @@ package my.edu.umk.pams.academic.term;
 
 //@author:asyikin
 import org.junit.Test;
-
-
 import org.junit.runner.RunWith;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -26,8 +22,8 @@ import my.edu.umk.pams.bdd.tags.Submodule;
 @Submodule("Term")
 public class US_AD_TRM_1022
 		extends SpringScenarioTest<GivenIAmStudent, WhenIAddEnrollmentCourses, ThenIViewTheCurrentEnrollmentCourses> {
-	private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_1022.class);
-	public static final String PROGRAM_CODE = "A01/MASTER/0001";
+	
+	public static final String PROGRAM_CODE = "FIAT/MASTER/PBH";
 
 	@Test
 	@Rollback(true)
