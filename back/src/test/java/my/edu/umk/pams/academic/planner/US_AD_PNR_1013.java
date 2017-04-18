@@ -1,6 +1,5 @@
 package my.edu.umk.pams.academic.planner;
-<<<<<<< HEAD
-=======
+
 
 import my.edu.umk.pams.academic.planner.stage.WhenPrerequisiteAdd;
 >>>>>>> branch 'master' of http://119.110.101.9/pams/academic.git
@@ -17,7 +16,6 @@ import com.tngtech.jgiven.annotation.As;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 
 import my.edu.umk.pams.academic.config.TestAppConfiguration;
-<<<<<<< HEAD
 import my.edu.umk.pams.academic.planner.stage.ThenCoursePrerequisiteUpdated;
 import my.edu.umk.pams.academic.planner.stage.WhenIUpdateCoursePrerequisite;
 =======
