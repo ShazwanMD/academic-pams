@@ -1,5 +1,4 @@
 package my.edu.umk.pams.academic.planner;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
