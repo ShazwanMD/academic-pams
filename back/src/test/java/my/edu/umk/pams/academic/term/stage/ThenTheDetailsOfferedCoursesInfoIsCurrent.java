@@ -18,27 +18,33 @@ import my.edu.umk.pams.academic.planner.model.AdProgram;
 @JGivenStage
 public class ThenTheDetailsOfferedCoursesInfoIsCurrent extends Stage<ThenTheDetailsOfferedCoursesInfoIsCurrent> {
 	private static final Logger LOG = LoggerFactory.getLogger(ThenTheDetailsOfferedCoursesInfoIsCurrent.class);
-	@Autowired
-	private TermService termService;
 
 	@ExpectedScenarioState
-	private List<AdOffering> offering;
-	
+	private AdOffering offering;
+
 	@ExpectedScenarioState
 	private AdProgram program;
-	
+
 	@ExpectedScenarioState
 	private List<AdOffering> offerings;
-	
-    @ExpectedScenarioState
-    private AdAcademicSession academicSession;
-	
+
+	@ExpectedScenarioState
+	private AdAcademicSession academicSession;
+
 	public ThenTheDetailsOfferedCoursesInfoIsCurrent the_details_offered_courses_info_is_current() {
-	
-		
+
 		Assert.notEmpty(offerings, "the offerings for this program is not empty");
-		
-		
+
+		for (AdOffering offering : offerings) {
+
+			LOG.debug("==================offered course is current===================");
+			LOG.debug("title for this program: {}", offering.getProgram().getTitle());
+			LOG.debug("courses for this program : {}", offering.getCourse().getTitleEn());
+			LOG.debug("courses for this program : {}", offering.getCourse().getTitleMs());
+			LOG.debug("credit for this course : {}", offering.getCourse().getCredit());
+			LOG.debug("");
+
+		}
 		return self();
 	}
 }
