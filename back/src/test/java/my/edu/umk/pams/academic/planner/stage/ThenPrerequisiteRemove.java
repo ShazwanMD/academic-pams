@@ -32,7 +32,7 @@ public class ThenPrerequisiteRemove extends Stage<ThenPrerequisiteRemove> {
 		
 		AdCourse course = plannerService.findCourseByCode(courseCode);
 		List<AdCoursePrerequisite> prerequisites = course.getPrerequisites();
-		Assert.notNull(prerequisites, "prerequisites has been deleted");
+		Assert.notEmpty(prerequisites, "prerequisites should not be empty");
 		
 		LOG.debug("============view data=============");
         LOG.debug("course code : {}", courseCode);
