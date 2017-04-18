@@ -82,12 +82,13 @@ public class WhenIAmSetupExamViva extends Stage<WhenIAmSetupExamViva> {
 	public WhenIAmSetupExamViva i_setup_exam() {
 
 		// find program
-		program = plannerService.findProgramByCode("A10");
-		faculty = program.getFaculty();
-
+		faculty = plannerService.findFacultyByCode("A07");
+//		program = plannerService.findProgramByCode("A10");
+//		faculty = program.getFaculty();
+		
 		// add new offering
 		offering = new AdOfferingImpl();
-		offering.setCanonicalCode("A01/MASTER/1/DDA2113");
+		offering.setCanonicalCode("FIAT/MASTER/PBA/GST5023");
 		offering.setCapacity(100);
 		offering.setCode("DDA2113");
 		offering.setTitle("Offering 1");
@@ -97,7 +98,7 @@ public class WhenIAmSetupExamViva extends Stage<WhenIAmSetupExamViva> {
 
 		// setup assessment
 		AdAssessment quiz1 = new AdAssessmentImpl();
-		quiz1.setCanonicalCode("A01/MASTER/Q1/DDA2113");
+		quiz1.setCanonicalCode("FIAT/MASTER/Q1/PBH/GST5023");
 		quiz1.setCategory(AdAssessmentCategory.COURSE_WORK);
 		quiz1.setCode("MASTER/Q1");
 		quiz1.setDescription("MECHANICS OF MATERIALS");
@@ -122,7 +123,7 @@ public class WhenIAmSetupExamViva extends Stage<WhenIAmSetupExamViva> {
 
 		// setup assessment2
 		AdAssessment quiz2 = new AdAssessmentImpl();
-		quiz2.setCanonicalCode("A01/MASTER/Q2/DDA2113");
+		quiz2.setCanonicalCode("FIAT/MASTER/Q2/PBH/GST5023");
 		quiz2.setCategory(AdAssessmentCategory.COURSE_WORK);
 		quiz2.setCode("MASTER/Q2");
 		quiz2.setDescription("MECHANICS OF MATERIALS");
@@ -145,7 +146,7 @@ public class WhenIAmSetupExamViva extends Stage<WhenIAmSetupExamViva> {
 
 		// setup assessment3
 		AdAssessment test1 = new AdAssessmentImpl();
-		test1.setCanonicalCode("A01/MASTER/T1/DDA2113");
+		test1.setCanonicalCode("FIAT/MASTER/T1/PBH/GST5023");
 		test1.setCategory(AdAssessmentCategory.COURSE_WORK);
 		test1.setCode("MASTER/T1");
 		test1.setDescription("MECHANICS OF MATERIALS");
@@ -168,7 +169,7 @@ public class WhenIAmSetupExamViva extends Stage<WhenIAmSetupExamViva> {
 
 		// setup assessment4
 		AdAssessment quiz3 = new AdAssessmentImpl();
-		quiz3.setCanonicalCode("A01/MASTER/Q3/DDA2113");
+		quiz3.setCanonicalCode("FIAT/MASTER/Q3/PBH/GST5023");
 		quiz3.setCategory(AdAssessmentCategory.COURSE_WORK);
 		quiz3.setCode("MASTER/Q3");
 		quiz3.setDescription("MECHANICS OF MATERIALS");
@@ -191,7 +192,7 @@ public class WhenIAmSetupExamViva extends Stage<WhenIAmSetupExamViva> {
 
 		// setup assessment4
 		AdAssessment quiz4 = new AdAssessmentImpl();
-		quiz4.setCanonicalCode("A01/MASTER/Q4/DDA2113");
+		quiz4.setCanonicalCode("FIAT/MASTER/Q4/PBH/GST5023");
 		quiz4.setCategory(AdAssessmentCategory.COURSE_WORK);
 		quiz4.setCode("MASTER/Q4");
 		quiz4.setDescription("MECHANICS OF MATERIALS");
@@ -214,7 +215,7 @@ public class WhenIAmSetupExamViva extends Stage<WhenIAmSetupExamViva> {
 
 		// setup assessment5
 		AdAssessment test2 = new AdAssessmentImpl();
-		test2.setCanonicalCode("A01/MASTER/T2/DDA2113");
+		test2.setCanonicalCode("FIAT/MASTER/T2/PBH/GST5023");
 		test2.setCategory(AdAssessmentCategory.COURSE_WORK);
 		test2.setCode("MASTER/T2");
 		test2.setDescription("MECHANICS OF MATERIALS");
@@ -241,11 +242,11 @@ public class WhenIAmSetupExamViva extends Stage<WhenIAmSetupExamViva> {
 
 	public WhenIAmSetupExamViva i_update_exam() {
 		// find assessment by CanonicalCode
-		assessment = termService.findAssessmentByCanonicalCode("A01/MASTER/Q1/DDA2113");
+		assessment = termService.findAssessmentByCanonicalCode("FIAT/MASTER/Q1/PBH/GST5023");
 		Assert.notNull(assessment, "assessment is null");
 
 		// update assessment (quiz 1 == quiz 1.1)
-		assessment.setCanonicalCode("A01/MASTER/Q1.1/DDA2113");
+		assessment.setCanonicalCode("FIAT/MASTER/Q1.1/PBH/GST5023");
 		assessment.setCategory(AdAssessmentCategory.COURSE_WORK);
 		assessment.setCode("MASTER/Q1.1");
 		assessment.setDescription("MECHANICS OF MATERIALS");
@@ -257,7 +258,7 @@ public class WhenIAmSetupExamViva extends Stage<WhenIAmSetupExamViva> {
 		assessment.setWeight(BigDecimal.ZERO);
 
 		termService.updateAssessment(session, offering, assessment);
-		Assert.notNull(termService.findAssessmentByCanonicalCode("A01/MASTER/Q1.1/DDA2113"),
+		Assert.notNull(termService.findAssessmentByCanonicalCode("FIAT/MASTER/Q1.1/PBH/GST5023"),
 				"canonical code for assessment is not updated");
 
 		LOG.debug("QUIZ 1 UPDATED ==========>");
