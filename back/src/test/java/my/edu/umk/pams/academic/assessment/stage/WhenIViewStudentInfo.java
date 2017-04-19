@@ -62,7 +62,7 @@ public class WhenIViewStudentInfo extends Stage<WhenIViewStudentInfo>  {
 		//find student
 		student = identityService.findStudentByMatricNo(identityNo);
 		LOG.debug("Student's Name :{}", student.getName());
-		LOG.debug("Student's MatricNo :{}", student.getMatricNo());
+		LOG.debug("Student's Matric No :{}", student.getMatricNo());
 		
 		//get student status
 		studentStatus = student.getStudentStatus();

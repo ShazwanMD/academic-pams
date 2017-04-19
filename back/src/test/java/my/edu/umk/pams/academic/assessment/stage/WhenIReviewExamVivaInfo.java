@@ -34,7 +34,7 @@ import my.edu.umk.pams.academic.term.service.TermService;
 
 @JGivenStage
 public class WhenIReviewExamVivaInfo extends Stage<WhenIReviewExamVivaInfo> {
-	
+
 	private static final Logger LOG = LoggerFactory.getLogger(WhenIReviewExamVivaInfo.class);
 
 	@Autowired
@@ -81,7 +81,7 @@ public class WhenIReviewExamVivaInfo extends Stage<WhenIReviewExamVivaInfo> {
 
 	@ProvidedScenarioState
 	private AdCohort cohort;
-	
+
 	@ProvidedScenarioState
 	private AdCurriculum curriculum;
 
@@ -90,54 +90,52 @@ public class WhenIReviewExamVivaInfo extends Stage<WhenIReviewExamVivaInfo> {
 
 	@ProvidedScenarioState
 	private AdVenueCode venue;
-	
+
 	@ExpectedScenarioState
 	private String facultyCode;
 
-	
 	public WhenIReviewExamVivaInfo i_review_examination_info() {
-		//get Faculty
+		// get Faculty
 		faculty = plannerService.findFacultyByCode(facultyCode);
-		LOG.debug("Faculty :{}", faculty.getName());
-		LOG.debug("");
-		
-		
-		List<AdCourse> courses = faculty.getCourses();
-		//view code
-		LOG.debug("Course :{}", courses.get(0).getCode());	
-		LOG.debug("Course :{}", courses.get(1).getCode());
-		LOG.debug("Course :{}", courses.get(2).getCode());
-		LOG.debug("Course :{}", courses.get(3).getCode());
-		LOG.debug("Course :{}", courses.get(4).getCode());
-		LOG.debug("");
-		//view credit
-		LOG.debug("Credit :{}",courses.get(0).getCredit());
-		LOG.debug("Credit :{}",courses.get(1).getCredit());
-		LOG.debug("Credit :{}", courses.get(2).getCredit());
-		LOG.debug("Credit :{}", courses.get(3).getCredit());
-		LOG.debug("Credit :{}", courses.get(4).getCredit());
-		LOG.debug("");
-		
-		//add venue
+		LOG.debug("Faculty Name :{}", faculty.getName());
+
+		// add venue
 		venue = new AdVenueCodeImpl();
 		venue.setCode("Dewan Exam 1");
 		venue.setDescription("Blok D");
 		commonService.saveVenueCode(venue);
-		
+
 		LOG.debug("Venue :{}", venue.getCode());
 		LOG.debug("Venue Desc :{}", venue.getDescription());
-		
-		
+		LOG.debug("+++++++++++++++++++++++++++++++++++++++++");
+
+		List<AdCourse> courses = faculty.getCourses();
+		// view code & credit
+		LOG.debug("Course :{}", courses.get(0).getCode());
+		LOG.debug("Credit :{}", courses.get(0).getCredit());
+		LOG.debug("");
+		LOG.debug("Course :{}", courses.get(1).getCode());
+		LOG.debug("Credit :{}", courses.get(1).getCredit());
+		LOG.debug("");
+		LOG.debug("Course :{}", courses.get(2).getCode());
+		LOG.debug("Credit :{}", courses.get(2).getCredit());
+		LOG.debug("");
+		LOG.debug("Course :{}", courses.get(3).getCode());
+		LOG.debug("Credit :{}", courses.get(3).getCredit());
+		LOG.debug("");
+		LOG.debug("Course :{}", courses.get(4).getCode());
+		LOG.debug("Credit :{}", courses.get(4).getCredit());
+		LOG.debug("++++++++++++++++++++++++++++++++++++++++++");
+
 		return self();
-		
+
 	}
 
 	@Pending
 	public WhenIReviewExamVivaInfo i_review_viva_info() {
 
-
 		return self();
-		
+
 	}
 
 }
