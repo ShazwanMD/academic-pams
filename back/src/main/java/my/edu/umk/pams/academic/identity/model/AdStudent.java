@@ -1,5 +1,6 @@
 package my.edu.umk.pams.academic.identity.model;
 
+import my.edu.umk.pams.academic.common.model.AdStudyMode;
 import my.edu.umk.pams.academic.planner.model.AdCohort;
 
 import java.util.List;
@@ -36,4 +37,8 @@ public interface AdStudent extends AdActor {
 	List<AdGuarantor> getGuarantors();
 
 	void setGuarantors(List<AdGuarantor> guarantors);
+	
+	AdStudyMode getStudyMode();
+	
+	void setStudyMode(AdStudyMode studyMode);
 }

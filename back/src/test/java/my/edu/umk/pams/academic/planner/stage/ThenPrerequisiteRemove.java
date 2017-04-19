@@ -1,5 +1,6 @@
 package my.edu.umk.pams.academic.planner.stage;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -27,17 +28,26 @@ public class ThenPrerequisiteRemove extends Stage<ThenPrerequisiteRemove> {
 
 	@ExpectedScenarioState
 	private AdCoursePrerequisite prerequisite;
+		
+		public ThenPrerequisiteRemove prerequite_$_for_course_$_is_removed(String prereqCode, String courseCode) {
+			
+			AdCourse course = plannerService.findCourseByCode(courseCode);
+			List<AdCoursePrerequisite> prerequisites = course.getPrerequisites();
+			Assert.notEmpty(prerequisites, "prerequisites should not be empty");
 
-	public ThenPrerequisiteRemove prerequite_$_for_course_$_is_removed(String prereqCode, String courseCode) {
+			List<AdCourse> coursePrerequisites = new ArrayList<>();
+			for (AdCoursePrerequisite prerequisite : prerequisites) {
+				coursePrerequisites.add(prerequisite.getCourse());
+			}
+
+			String message = "coursePrerequisites cannot contain " + course;
+			Assert.isTrue(coursePrerequisites.contains(course), message);
+			
+
+			LOG.debug("============view data=============");
+	        LOG.debug("course code : {}", courseCode);
+	        LOG.debug("prerequisite: {}", prereqCode);
 		
-		AdCourse course = plannerService.findCourseByCode(courseCode);
-		List<AdCoursePrerequisite> prerequisites = course.getPrerequisites();
-		Assert.notEmpty(prerequisites, "prerequisites should not be empty");
-		
-		LOG.debug("============view data=============");
-        LOG.debug("course code : {}", courseCode);
-        LOG.debug("prerequisite: {}", prereqCode);
-	
-		return self();
-	}
+			return self();
+		}
 }

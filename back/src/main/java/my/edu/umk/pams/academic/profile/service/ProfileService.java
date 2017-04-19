@@ -12,63 +12,61 @@ import java.util.List;
  */
 public interface ProfileService {
 
-    //====================================================================================================
-    // STUDENT
-    //====================================================================================================
+	// ====================================================================================================
+	// STUDENT
+	// ====================================================================================================
 
-    // note: thin wrapper
-    AdStudent findStudentById(Long id);
+	// note: thin wrapper
+	AdStudent findStudentById(Long id);
 
-    AdStudent findStudentByMatricNo(String matricNo);
+	AdStudent findStudentByMatricNo(String matricNo);
 
-    AdAddress findAddressById(Long id);
+	AdAddress findAddressById(Long id);
 
-    AdGuarantor findGuarantorById(Long id);
+	AdGuarantor findGuarantorById(Long id);
 
-    AdGuardian findGuardianById(Long id);
+	AdGuardian findGuardianById(Long id);
 
-    AdContact findContactById(Long id);
+	AdContact findContactById(Long id);
 
-    List<AdStudent> findStudents(Integer offset, Integer limit);
+	List<AdStudent> findStudents(Integer offset, Integer limit);
 
-    List<AdStudent> findStudents(String filter, Integer offset, Integer limit);
+	List<AdStudent> findStudents(String filter, Integer offset, Integer limit);
 
-    List<AdAddress> findAddresses(AdStudent student);
+	List<AdAddress> findAddresses(AdStudent student);
 
-    List<AdGuarantor> findGuarantors(AdStudent student);
+	List<AdGuarantor> findGuarantors(AdStudent student);
 
-    List<AdGuardian> findGuardians(AdStudent student);
+	List<AdGuardian> findGuardians(AdStudent student);
 
-    List<AdContact> findContacts(AdStudent student);
+	List<AdContact> findContacts(AdStudent student);
 
-    void updateStudent(AdStudent student);
+	void updateStudent(AdStudent student);
 
-    void addAddress(AdStudent student, AdAddress address);
+	void addAddress(AdStudent student, AdAddress address);
 
-    void updateAddress(AdStudent student, AdAddress address);
+	void updateAddress(AdStudent student, AdAddress address);
 
-    void deleteAddress(AdStudent student, AdAddress address);
+	void deleteAddress(AdStudent student, AdAddress address);
 
-    void addGuarantor(AdStudent student, AdGuarantor guarantor);
+	void addGuarantor(AdStudent student, AdGuarantor guarantor);
 
-    void deleteGuarantor(AdStudent student, AdGuarantor guarantor);
+	void deleteGuarantor(AdStudent student, AdGuarantor guarantor);
 
-    void addGuardian(AdStudent student, AdGuardian guardian);
+	void addGuardian(AdStudent student, AdGuardian guardian);
 
-    void deleteGuardian(AdStudent student, AdGuardian guardian);
+	void deleteGuardian(AdStudent student, AdGuardian guardian);
 
-    void addContact(AdStudent student, AdContact contact);
+	void addContact(AdStudent student, AdContact contact);
 
-    void deleteContact(AdStudent student, AdContact contact);
+	void deleteContact(AdStudent student, AdContact contact);
 
+	// business
 
-    // business
+	void activateStudent(AdStudent student);
 
-    void activateStudent(AdStudent student);
+	void deactivateStudent(AdStudent student);
 
-    void deactivateStudent(AdStudent student);
-
-    void barStudent(AdStudent student);
 
     //====================================================================================================
     // GENERATOR
@@ -82,4 +80,6 @@ public interface ProfileService {
 
     // todo(sam): complete kan
     void switchStudyMode(AdStudent student, AdAcademicSession academicSession, AdStudyMode fromMode, AdStudyMode toMode);
+
+	void barStudent(AdStudent student);
 }

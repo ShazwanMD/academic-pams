@@ -23,7 +23,10 @@ public class AdAcademicYearImpl implements AdAcademicYear {
 
     @Column(name = "DESCRIPTION", nullable = false)
     private String description;
-
+    
+    @Column(name = "YEAR", nullable = false)
+    private String year;
+    
     @Embedded
     private AdMetadata metadata;
 
@@ -63,5 +66,17 @@ public class AdAcademicYearImpl implements AdAcademicYear {
     public Class<?> getInterfaceClass() {
         return AdAcademicYear.class;
     }
+
+	@Override
+	public String getYear() {
+	
+		return year;
+	}
+
+	@Override
+	public void setYear(String year) {
+		this.year = year;
+		
+	}
 
 }

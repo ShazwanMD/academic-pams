@@ -29,4 +29,8 @@ public interface AdCohort extends AdMetaObject {
     AdProgram getProgram();
 
     void setProgram(AdProgram program);
+    
+    AdAcademicSession getSession();
+
+    void setSession(AdAcademicSession session);
 }

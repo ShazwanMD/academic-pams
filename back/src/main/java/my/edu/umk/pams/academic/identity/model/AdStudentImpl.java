@@ -1,5 +1,7 @@
 package my.edu.umk.pams.academic.identity.model;
 
+import my.edu.umk.pams.academic.common.model.AdStudyMode;
+import my.edu.umk.pams.academic.common.model.AdStudyModeImpl;
 import my.edu.umk.pams.academic.planner.model.AdCohort;
 import my.edu.umk.pams.academic.planner.model.AdCohortImpl;
 
@@ -31,6 +33,10 @@ public class AdStudentImpl extends AdActorImpl implements AdStudent {
 
 	@OneToMany(targetEntity = AdGuarantorImpl.class, mappedBy = "student")
 	private List<AdGuarantor> guarantors;
+	
+	@OneToOne(targetEntity = AdStudyModeImpl.class)
+	@JoinColumn(name = "STUDY_MODE_ID", nullable = true)
+	private AdStudyMode studyMode;
 
 
 	public AdStudentImpl() {
@@ -111,6 +117,18 @@ public class AdStudentImpl extends AdActorImpl implements AdStudent {
 	@Override
 	public Class<?> getInterfaceClass() {
 		return AdStudent.class;
+	}
+
+	@Override
+	public AdStudyMode getStudyMode() {
+		// TODO Auto-generated method stub
+		return studyMode;
+	}
+
+	@Override
+	public void setStudyMode(AdStudyMode studyMode) {
+		this.studyMode = studyMode;
+		
 	}
 
 }

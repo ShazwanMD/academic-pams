@@ -43,9 +43,8 @@ public class US_AD_ASMT_1002 extends SpringScenarioTest<GivenIAmStudent, WhenRev
 	@Rollback
 	public void scenario1002(){
 		given().I_am_a_student_in_$_academic_session(ACADEMIC_SESSION);
-				when().I_review_result()
-				.and().i_review_student_mark();
-						then().result_student_reviewed();
+				when().I_review_result().and().i_review_student_mark();
+				then().result_student_reviewed();
 		
 		
 	}

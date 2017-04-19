@@ -42,6 +42,7 @@ import my.edu.umk.pams.academic.planner.model.AdBundleSubjectPartImpl;
 import my.edu.umk.pams.academic.planner.model.AdCohort;
 import my.edu.umk.pams.academic.planner.model.AdCohortImpl;
 import my.edu.umk.pams.academic.planner.model.AdCourse;
+import my.edu.umk.pams.academic.planner.model.AdCourseImpl;
 import my.edu.umk.pams.academic.planner.model.AdCurriculum;
 import my.edu.umk.pams.academic.planner.model.AdCurriculumImpl;
 import my.edu.umk.pams.academic.planner.model.AdFaculty;
@@ -55,6 +56,7 @@ import my.edu.umk.pams.academic.planner.model.AdSubjectImpl;
 import my.edu.umk.pams.academic.planner.model.AdSubjectType;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
 import my.edu.umk.pams.academic.profile.service.ProfileService;
+import my.edu.umk.pams.academic.term.model.AdOffering;
 import my.edu.umk.pams.academic.term.service.TermService;
 
 @JGivenStage
@@ -84,10 +86,14 @@ public class WhenIReviewProfile extends Stage<WhenIReviewProfile> {
    	private AdProgram program;
     
     @ProvidedScenarioState
-   	private AdProgramLevel level;
+   	private AdOffering offering;
     
     @ProvidedScenarioState
    	private AdCourse course;
+    
+    @ProvidedScenarioState
+   	private AdProgramLevel level;
+    
     
     @ProvidedScenarioState
    	private AdFaculty faculty;
@@ -125,6 +131,7 @@ public class WhenIReviewProfile extends Stage<WhenIReviewProfile> {
     @ProvidedScenarioState
    	private AdBundleSubjectPart part;
     
+    
     @ProvidedScenarioState
    	private List<AdBundleSubjectPart> parts;
     
@@ -143,10 +150,14 @@ public class WhenIReviewProfile extends Stage<WhenIReviewProfile> {
     @ProvidedScenarioState
     List<AdSubject> subjects;
     
+    @ProvidedScenarioState
+    List<AdOffering> offerings;
+    
     @ExpectedScenarioState
 	private String matricNo;
     
 	public WhenIReviewProfile i_review_my_profile() {
+		cohort = plannerService.findCohortByCode("A10/CHRT/A10");
 
 		cohort = plannerService.findCohortByCode("FKP/PHD/PAM/CHRT/201720181");
 		
@@ -215,38 +226,108 @@ public class WhenIReviewProfile extends Stage<WhenIReviewProfile> {
 		LOG.debug("Guardian NRIC Number :{}",guardian.getIdentityNo());
 		LOG.debug("Guardian Type :{}",guardian.getType().name());
 		LOG.debug("");
+	
+	
 			
 		return self();
 		
 	}
 	
-	public WhenIReviewProfile i_review_subject() {
-		
-		student = identityService.findStudentByMatricNo(matricNo);
-		Assert.notNull(matricNo, "Student Must Not NULL");
+	public WhenIReviewProfile i_review_subject(){
+		student = identityService.findStudentByMatricNo("110976");
 		LOG.debug("Student Name :{}", student.getName());
+		LOG.debug("Student Matric No :{}", student.getMatricNo());
+		LOG.debug("");
 		
 		cohort = student.getCohort();
 		LOG.debug("Cohort :{}", cohort.getCode());
+		LOG.debug("");
 		
 		curriculum = cohort.getCurriculum();
 		LOG.debug("Curriculum Code :{}", curriculum.getCode());
-		LOG.debug("Curriculum Core Credit :{}", curriculum.getCoreCredit());
-		LOG.debug("Curriculum Credit:{}", curriculum.getCurriculumCredit());
-		LOG.debug("Curriculum Elective Credit:{}", curriculum.getElectiveCredit());
-		LOG.debug("Curriculum General Credit:{}", curriculum.getGeneralCredit());
-		LOG.debug("Curriculum  Language Credit:{}", curriculum.getLanguageCredit());
-		LOG.debug("Curriculum Max Period:{}", curriculum.getMaxPeriod());
-		LOG.debug("Curriculum Other Credit:{}", curriculum.getOthersCredit());
-		LOG.debug("Curriculum Period:{}", curriculum.getPeriod());
-		LOG.debug("Curriculum Program:{}", curriculum.getProgram().getCode());
-		LOG.debug("Curriculum Required Credit:{}", curriculum.getRequiredCredit());
-		LOG.debug("Curriculum Subject :{}", curriculum.getSubjects());
-		LOG.debug("Curriculum Total Credit:{}", curriculum.getTotalCredit());
+		LOG.debug("Core Credit :{}", curriculum.getCoreCredit());
+		LOG.debug("Elective Credit :{}", curriculum.getElectiveCredit());
+		LOG.debug("General Credit :{}", curriculum.getGeneralCredit());
+		LOG.debug("Curriculum Credit :{}", curriculum.getCurriculumCredit());
+		LOG.debug("Language Credit :{}", curriculum.getLanguageCredit());
+		LOG.debug("Others Credit :{}", curriculum.getOthersCredit());
+		LOG.debug("Required Credit :{}", curriculum.getRequiredCredit());
+		LOG.debug("Total Credit :{}", curriculum.getTotalCredit());
+		LOG.debug("Period :{}", curriculum.getPeriod());
+		LOG.debug("Max Period :{}", curriculum.getMaxPeriod());
+		LOG.debug("Program Name :{}", curriculum.getProgram().getCode());
+		LOG.debug("Subject(s) :{}", curriculum.getSubjects());
+		LOG.debug("");
+		
+		program = curriculum.getProgram();
+		LOG.debug("Program Code :{}", program.getCode());
+		LOG.debug("Faculty :{}", program.getFaculty().getName());
+		LOG.debug("Level of Study :{}", program.getProgramLevel().getCode());
+		LOG.debug("Program Title :{}", program.getTitle());
+		LOG.debug("Program TitleEn :{}", program.getTitleEn());
+		LOG.debug("Program TitleMs :{}", program.getTitleMs());
+		LOG.debug("Offering :{}", program.getOfferings().get(0));
+		LOG.debug("");
+		
+		faculty = program.getFaculty();
+		LOG.debug("Faculty :{}", faculty.getName());
+		LOG.debug("");
+		
+		course = new AdCourseImpl();
+		course.setClassification(AdAcademicClassification.LEVEL_MASTER);
+		course.setCode("GST5001");
+		course.setCredit(3);
+		course.setFaculty(faculty);
+		course.setOfferings(offerings);
+		course.setTitle("Latihan");
+		course.setTitleEn("coding");
+		course.setTitleMs("pams");
+		plannerService.addCourse(faculty, course);
+		LOG.debug("Course Code :{}", course.getCode());
+		LOG.debug("");
 
+		
+		singleSubject = new AdSingleSubjectImpl();
+		singleSubject.setCourse(course);
+		singleSubject.setCurriculum(curriculum);
+		singleSubject.setPeriod(AdAcademicPeriod.I);
+		singleSubject.setSubjectType(AdSubjectType.CORE);
+		plannerService.addSubject(curriculum, singleSubject);
+		LOG.debug("Single Subject:{}");
+//		
+//		bundleSubject = new AdBundleSubjectImpl();
+//		bundleSubject.setCurriculum(curriculum);
+//		bundleSubject.setParts(parts);
+//		
+//		
+//		part = new AdBundleSubjectPartImpl();
+//		part.setBundle(bundleSubject);
+//		part.setCourse(course);
+//		plannerService.addSubjectPart(bundleSubject, part);
+//		
+		
+		
+		
+					
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		return self();
 	}
-	
 	public WhenIReviewProfile i_generate_new_matricNo(){
 		
 		student = identityService.findStudentByMatricNo(matricNo);

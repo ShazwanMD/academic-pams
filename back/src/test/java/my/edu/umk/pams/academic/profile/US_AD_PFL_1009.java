@@ -37,6 +37,7 @@ public class US_AD_PFL_1009 extends SpringScenarioTest<GivenIAmStudent, WhenIRev
 	@Rollback
 	public void scenario1009(){
 		given().I_am_a_student_in_current_academic_session();
+		when().i_review_my_profile().and().i_review_subject();
 		when()
 		.i_review_my_profile()
 		.and().i_review_subject()

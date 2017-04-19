@@ -14,7 +14,7 @@
             <!-- [DEV_DB_ADMIN] should then have the correct privilege to drop other DBs -->
             <id>postgres-dev</id>
             <username>postgres</username>
-            <password>postgresql</password>
+            <password>postgres</password>
         </server>
     </servers>
 

@@ -33,6 +33,10 @@ public class AdCohortImpl implements AdCohort {
     @ManyToOne(targetEntity = AdCurriculumImpl.class)
     @JoinColumn(name = "CURRICULUM_ID")
     private AdCurriculum curriculum;
+    
+    @OneToOne(targetEntity = AdAcademicSessionImpl.class)
+    @JoinColumn(name = "SESSION_ID")
+    private AdAcademicSession session;
 
     @Embedded
     private AdMetadata metadata;
@@ -101,4 +105,16 @@ public class AdCohortImpl implements AdCohort {
     public Class<?> getInterfaceClass() {
         return AdCohort.class;
     }
+
+	@Override
+	public AdAcademicSession getSession() {
+	
+		return session;
+	}
+
+	@Override
+	public void setSession(AdAcademicSession session) {
+		this.session = session;
+		
+	}
 }

@@ -23,7 +23,7 @@ public class AdProgramLevelImpl implements AdProgramLevel {
     @Column(name = "DESCRIPTION", nullable = false)
     private String description;
     
-    @Column(name = "PREFIX", nullable = true)
+    @Column(name = "PREFIX", nullable = false, unique = true)
     private String prefix;
 
     @NotNull
@@ -96,5 +96,6 @@ public class AdProgramLevelImpl implements AdProgramLevel {
     public Class<?> getInterfaceClass() {
         return AdProgramLevel.class;
     }
+
 
 }

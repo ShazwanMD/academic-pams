@@ -5,6 +5,7 @@ import org.junit.runners.Suite;
 /**
  * @author PAMS
  */
+
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
 
@@ -20,7 +21,7 @@ import org.junit.runners.Suite;
         US_AD_PNR_1010.class,
         US_AD_PNR_1011.class,
         US_AD_PNR_1012.class,
-       
+        US_AD_PNR_1013.class,
         US_AD_PNR_1014.class,
         
         US_AD_PNR_1016.class,
