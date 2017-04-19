@@ -28,18 +28,6 @@ public class ThenPrerequisiteRemove extends Stage<ThenPrerequisiteRemove> {
 
 	@ExpectedScenarioState
 	private AdCoursePrerequisite prerequisite;
-
-	//public ThenPrerequisiteRemove prerequite_$_for_course_$_is_removed(String prereqCode, String courseCode) {
-		
-//		AdCourse course = plannerService.findCourseByCode(courseCode);
-//		List<AdCoursePrerequisite> prerequisites = course.getPrerequisites();
-//		Assert.notEmpty(prerequisites, "prerequisites should not be empty");
-//		
-//		LOG.debug("============view data=============");
-//        LOG.debug("course code : {}", courseCode);
-//        LOG.debug("prerequisite: {}", prereqCode);
-		
-		
 		
 		public ThenPrerequisiteRemove prerequite_$_for_course_$_is_removed(String prereqCode, String courseCode) {
 			
