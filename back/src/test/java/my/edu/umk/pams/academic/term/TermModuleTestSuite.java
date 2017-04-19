@@ -1,7 +1,6 @@
 package my.edu.umk.pams.academic.term;
 
 import org.junit.runner.RunWith;
-
 import org.junit.runners.Suite;
 
 /**
