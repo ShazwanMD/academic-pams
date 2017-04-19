@@ -125,6 +125,7 @@ public class WhenIReviewExamVivaInfo extends Stage<WhenIReviewExamVivaInfo> {
 		LOG.debug("");
 		LOG.debug("Course :{}", courses.get(4).getCode());
 		LOG.debug("Credit :{}", courses.get(4).getCredit());
+		LOG.debug("+++++++++++++++++++++++++++++++++++++++++++++++");
 
 		return self();
 
