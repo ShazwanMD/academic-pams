@@ -64,4 +64,3 @@ public class WhenIWantToViewProgramByFaculty extends Stage<WhenIWantToViewProgra
     }
 
 }
-
