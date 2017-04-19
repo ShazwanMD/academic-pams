@@ -3,5 +3,5 @@ VALUES
   (nextval('SQ_AD_ADMN'),
     140, 140, 3.79, 3.99,
     CURRENT_TIMESTAMP, 1, 1, 0,
-    0, 1, 31, 2, 1);
+    0, 57, 31, 2, 1);
 
