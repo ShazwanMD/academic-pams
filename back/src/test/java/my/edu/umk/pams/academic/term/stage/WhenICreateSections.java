@@ -73,9 +73,22 @@ public class WhenICreateSections extends Stage<WhenICreateSections> {
 		LOG.debug("Pick faculty: {}", faculty.getCode());
 		LOG.debug("Pick program: {}", program.getCode());
 
-		// List all offering course under program=A01/PHD/0001
+		// List all offering course under program=FIAT/MASTER/PBH
 		List<AdOffering> offerings = termService.findOfferings(program);
+		
+		//Assert.notEmpty(offerings, "offerings data is null");
+		Integer countDataOffer = termService.countOffering(program);
+		LOG.debug("countDataOffer: {}", countDataOffer);
+		
+		if (countDataOffer == 0){
+			LOG.debug("Data offering not exist!! CANNOT proceed to create new section");
+			return self();
+		}else {
+			LOG.debug("Data offering EXIST and proceed with the next process");
+					
 		for (AdOffering offering : offerings) {
+						
+			LOG.debug("======listed currrent offering info======");
 			LOG.debug("Listed offering ID: {}", offering.getId());
 			LOG.debug("Listed offering code: {}", offering.getCanonicalCode());
 
@@ -86,10 +99,18 @@ public class WhenICreateSections extends Stage<WhenICreateSections> {
 
 			LOG.debug("canonicalCode: {}", canonicalCode);
 			LOG.debug("code= {}", code);
-
-			if (code != offering.getCourse().getCode()) {
-				LOG.debug("code not exist and new section will be created!: {}", code);
-
+			
+			Integer countDataSection = termService.countSection(offering);
+			LOG.debug("countDataSection: {}", countDataSection);
+			
+			if (countDataOffer > 0){
+				LOG.debug("Data exist and redundant.CANNOT create new section!");
+				return self();
+				
+			}else{
+				
+				LOG.debug("New section will be create.");
+				
 				section = new AdSectionImpl();
 				section.setCanonicalCode(canonicalCode);
 				section.setCapacity(30);
@@ -100,17 +121,17 @@ public class WhenICreateSections extends Stage<WhenICreateSections> {
 
 				termService.saveSection(section);
 
-				Assert.notNull(section, "new sections inserted");
+				Assert.notNull(section, "New sections inserted");
 				LOG.debug("===========new section added==========");
 				LOG.debug("section Id: {}", section.getId());
 				LOG.debug("section CanonicalCode: {}", section.getCanonicalCode());
 				LOG.debug("section Code: {}", section.getCode());
-
-			} else if (code == offering.getCourse().getCode()) {
-				LOG.debug("code exist and redundant. No section will be created: {}", code);
-
 			}
-
+			
+			
+			
+		}
+			
 		}
 
 		return self();
