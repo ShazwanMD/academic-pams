@@ -64,10 +64,6 @@ public interface AdAdmission extends AdMetaObject {
 
     void setStanding(AdAcademicStanding standing);
 
-    AdProgram getProgram();
-
-    void setProgram(AdProgram program);
-
     AdStudyCenter getStudyCenter();
 
     void setStudyCenter(AdStudyCenter studyCenter);
@@ -76,8 +72,7 @@ public interface AdAdmission extends AdMetaObject {
 
     void setSession(AdAcademicSession session);
 
-    // todo(uda): cohort
-//    AdCohort getCohort();
-//
-//    void setCohort(AdCohort cohort);
+    AdCohort getCohort();
+
+    void setCohort(AdCohort cohort);
 }

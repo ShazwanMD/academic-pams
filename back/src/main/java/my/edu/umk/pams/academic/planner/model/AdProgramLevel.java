@@ -23,6 +23,10 @@ public interface AdProgramLevel extends AdMetaObject {
 
     void setDescription(String description);
     
+    String getPrefix();
+
+    void setPrefix(String prefix);
+    
     AdProgramType getType();
 
     void setType(AdProgramType  type);

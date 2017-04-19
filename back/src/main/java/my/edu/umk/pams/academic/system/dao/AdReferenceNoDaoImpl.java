@@ -14,9 +14,8 @@ import java.util.List;
  * @author canang technologies
  * @since 1/31/14
  */
-@SuppressWarnings({"unchecked"})
 @Repository("referenceNoDao")
-public final class AdReferenceNoDaoImpl extends GenericDaoSupport<Long, AdReferenceNo> implements AdReferenceNoDao {
+public class AdReferenceNoDaoImpl extends GenericDaoSupport<Long, AdReferenceNo> implements AdReferenceNoDao {
 
     public AdReferenceNoDaoImpl() {
         super(AdReferenceNoImpl.class);

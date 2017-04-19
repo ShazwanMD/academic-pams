@@ -4,6 +4,7 @@ import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
+import io.jsonwebtoken.lang.Assert;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
 import my.edu.umk.pams.academic.term.model.AdOffering;
 import my.edu.umk.pams.academic.term.model.AdOfferingImpl;
@@ -11,6 +12,7 @@ import my.edu.umk.pams.academic.term.service.TermService;
 import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
 import my.edu.umk.pams.academic.planner.model.AdCourse;
 import my.edu.umk.pams.academic.planner.model.AdFaculty;
+import my.edu.umk.pams.academic.planner.model.AdProgram;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +26,8 @@ public class WhenIWantToSetCapacityForOfferedCourse extends Stage<WhenIWantToSet
 
     private static final Logger LOG = LoggerFactory.getLogger(WhenIWantToSetCapacityForOfferedCourse.class);
 
-    public static final String COURSE_CODE = "DDA2113";
+    public static final String COURSE_CODE = "GST5013";
+    public static final String PROGRAM_CODE = "MBA/MASTER";
 
     @Autowired
     private TermService termService;
@@ -40,6 +43,9 @@ public class WhenIWantToSetCapacityForOfferedCourse extends Stage<WhenIWantToSet
 
     @ProvidedScenarioState
     private AdCourse course;
+    
+    @ProvidedScenarioState
+    private AdProgram program;
 
     @ExpectedScenarioState
     private AdFaculty faculty;
@@ -49,23 +55,39 @@ public class WhenIWantToSetCapacityForOfferedCourse extends Stage<WhenIWantToSet
 
     @ProvidedScenarioState
     private String canonicalCode;
-
+    
+  
     public WhenIWantToSetCapacityForOfferedCourse I_create_and_set_offering_capacity() {
-        // offer a course
-        course = plannerService.findCourseByCode(COURSE_CODE);
+        
+    	
+    	
+    	// offer a course
+    	course = plannerService.findCourseByCodeAndFaculty(COURSE_CODE, faculty);
+    	Assert.notNull(course, "course data should be not null");
+        LOG.debug("Listed Courses ID: {}", course.getId());
+        LOG.debug("Listed Courses ID: {}", course.getTitle());
+        LOG.debug("Listed Courses ID: {}", course.getFaculty().getName());
 
         // set term properties
         code = course.getCode() + "/" + academicSession.getCode();  // course/session
-        canonicalCode = faculty.getCode() + "/" + course.getCode() + "/" + academicSession.getCode(); // fac/course/session
+        canonicalCode = PROGRAM_CODE + "/" + course.getCode(); // fac/course/session
         offering = new AdOfferingImpl();
         offering.setCode(code);
         offering.setCanonicalCode(canonicalCode);
-        offering.setCapacity(10);
-        offering.setTitle("Kursus Asasi");
+        offering.setCapacity(20);
+        offering.setTitle("Economics & Business Environment");
         offering.setCourse(course);
 
         // save term
         termService.saveOffering(offering);
+        
+        Assert.notNull(offering, "offering data should be not null");
+        LOG.debug("==============new offering data====================");
+		LOG.debug("section ID: {}", offering.getId());
+		LOG.debug("section Course: {}", offering.getCourse().getCode());
+		LOG.debug("section Title: {}", offering.getTitle());
+		LOG.debug("section Capacity: {}", offering.getCapacity());
+		
         return self();
     }
 }

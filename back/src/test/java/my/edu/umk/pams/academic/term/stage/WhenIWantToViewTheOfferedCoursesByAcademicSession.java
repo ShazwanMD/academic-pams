@@ -1,6 +1,7 @@
 package my.edu.umk.pams.academic.term.stage;
 
 import com.tngtech.jgiven.Stage;
+
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
@@ -42,13 +43,24 @@ public class WhenIWantToViewTheOfferedCoursesByAcademicSession
     public WhenIWantToViewTheOfferedCoursesByAcademicSession I_browse_the_offered_course_by_program_I_picked() {
         // list all term for program
     	
-    	program = plannerService.findProgramByCode("A10");
+    	program = plannerService.findProgramByCode("FIAT/MASTER/PBH");
+    	
+    	LOG.debug("=====selected program===============");
     	LOG.debug("For program: {}", program.getTitle());
+    	LOG.debug("For program: {}", program.getFaculty().getDescription());
+    	LOG.debug("For program: {}", program.getProgramLevel().getDescription());
     	
         offerings = termService.findOfferings(program);
         
         for (AdOffering offering : offerings) {
-			LOG.debug(offering.getTitle());
+        	
+        	LOG.debug("=============Data Offering===================");
+			LOG.debug("Offering CanonicalCode:{}",offering.getCanonicalCode());
+			LOG.debug("Offering Code:{}",offering.getCode());
+			LOG.debug("Offering Title:{}", offering.getTitle());
+			LOG.debug("Offering Capacity: {}", offering.getCapacity());
+			LOG.debug("Offering Capacity: {}", offering.getCourse().getTitle());
+			LOG.debug("Offering Capacity: {}", offering.getProgram().getTitle());
 		}
         return self();
     }

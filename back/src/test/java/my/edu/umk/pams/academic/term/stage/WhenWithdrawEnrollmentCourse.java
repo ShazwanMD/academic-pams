@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
 import com.tngtech.jgiven.Stage;
+import com.tngtech.jgiven.annotation.Pending;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
@@ -38,13 +39,17 @@ public class WhenWithdrawEnrollmentCourse extends Stage<WhenWithdrawEnrollmentCo
 	private AdSection section;
 
 	@ProvidedScenarioState
-	AdEnrollmentApplicationItem item;
-
+	private AdEnrollmentApplicationItem item;
+	
+	@ProvidedScenarioState
+	private List<AdEnrollmentApplicationItem> items;
+	
+	@Pending
 	public WhenWithdrawEnrollmentCourse I_withdraw_enrollment_course() {
 
-		String referenceNo = "201720181/006";
+		String referenceNo = "201720181/001";
 		application = termService.findEnrollmentApplicationByReferenceNo(referenceNo);
-		section = termService.findSectionByCanonicalCode("A01/PHD/0001/DDA2113/201720181");
+		section = termService.findSectionByCanonicalCode("FIAT/MASTER/PBH/GST5023/201720181");
 
 		List<AdEnrollmentApplicationItem> items = termService.findEnrollmentApplicationItems(application);
 

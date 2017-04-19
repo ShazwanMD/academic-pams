@@ -44,4 +44,12 @@ public interface AdCourseDao extends GenericDao<Long, AdCourse> {
     boolean isPrerequisite(AdCourse course, AdCourse prerequisite);
 
     void addPrerequisites(AdCourse course, AdUser user, AdCourse... prerequisites);
+
+	void updatePrerequisites(AdCourse course, AdUser user, AdCourse... prereqCourses);
+
+	void removePrerequisites(AdCourse course, AdUser user, AdCourse... prereqCourses);
+
+    AdCoursePrerequisite findByCourseAndPrerequisite(AdCourse course, AdCourse prereqCourse);
+
+	
 }

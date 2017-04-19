@@ -28,7 +28,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class US_AD_PFL_1007 extends SpringScenarioTest<GivenIAmStudent, WhenReviewProgramInfo, ThenProgramInfoIsCurrent> {
 
     private static final Logger LOG = LoggerFactory.getLogger(US_AD_PFL_1007.class);
-    private static final String FACULTY_CODE = "A01";
+    private static final String FACULTY_CODE = "A07";
 
     @Test
     @Rollback

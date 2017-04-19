@@ -14,9 +14,8 @@ import java.util.List;
  * @author canang technologies
  * @since 1/31/14
  */
-@SuppressWarnings({"unchecked"})
 @Repository("emailQueueDao")
-public final class AdEmailQueueDaoImpl extends GenericDaoSupport<Long, AdEmailQueue> implements AdEmailQueueDao {
+public class AdEmailQueueDaoImpl extends GenericDaoSupport<Long, AdEmailQueue> implements AdEmailQueueDao {
 
     public AdEmailQueueDaoImpl() {
         super(AdEmailQueueImpl.class);

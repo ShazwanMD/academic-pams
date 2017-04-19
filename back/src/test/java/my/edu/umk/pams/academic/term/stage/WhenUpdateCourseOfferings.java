@@ -1,7 +1,6 @@
 package my.edu.umk.pams.academic.term.stage;
 
 import java.util.List;
-
 /**
  * @author asyikin.mr and ziana
  */
@@ -58,8 +57,8 @@ public class WhenUpdateCourseOfferings extends Stage<WhenUpdateCourseOfferings> 
 		List<AdProgram> programs = plannerService.findPrograms(faculty);
 
 		for (AdProgram program : programs) {
-			LOG.debug("Listed program code: {}", program.getCode());
-			LOG.debug("Listed program code: {}", program.getTitle());
+			LOG.debug("Listed program Code: {}", program.getCode());
+			LOG.debug("Listed program Title: {}", program.getTitle());
 
 		}
 
@@ -67,17 +66,19 @@ public class WhenUpdateCourseOfferings extends Stage<WhenUpdateCourseOfferings> 
 		List<AdOffering> offerings = termService.findOfferings(program);
 
 		for (AdOffering offering : offerings) {
-			LOG.debug("Listed offering code: {}", offering.getCanonicalCode());
-			LOG.debug("Listed offering title: {}", offering.getTitle());
-			LOG.debug("Listed offering title: {}", offering.getCapacity());
+			LOG.debug("=======view current offering data=============");
+			LOG.debug("Listed offering CanonicalCode: {}", offering.getCanonicalCode());
+			LOG.debug("Listed offering Title: {}", offering.getTitle());
+			LOG.debug("Listed offering Capacity: {}", offering.getCapacity());
 
 			// update offer courses info into offering table
-			offering.setCapacity(300);
+			offering.setCapacity(200);
 			termService.updateOffering(offering);
 
 			Assert.notNull(offering, "The updated offering data must not be null");
-
+			LOG.debug("=======view updated offering data=============");
 			LOG.debug("Updated success for offering code : {}", offering.getCanonicalCode());
+			LOG.debug("Listed offering Title: {}", offering.getTitle());
 			LOG.debug("Updated success for new capacity : {}", offering.getCapacity());
 
 		}

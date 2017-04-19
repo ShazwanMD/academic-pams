@@ -29,7 +29,7 @@ public class US_AD_TRM_1015
 		extends SpringScenarioTest<GivenIAmStudent, WhenIWantToViewTheOfferedCoursesByAcademicSession, ThenICanChoose> {
 
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_1015.class);
-	public static final String OFFERING_CANONICAL_CODE = "A01/PHD/0001/DDA2113";
+	public static final String OFFERING_CANONICAL_CODE = "FIAT/MASTER/PBH/GST5023";
 
 	@Test
 	@Rollback

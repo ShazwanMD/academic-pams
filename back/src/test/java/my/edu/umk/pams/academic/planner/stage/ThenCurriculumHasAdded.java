@@ -50,9 +50,6 @@ public class ThenCurriculumHasAdded extends Stage<ThenCurriculumHasAdded> {
 		LOG.debug("Curriculum has been reviewed: {} ", curriculum.getCode());
 		Assert.notNull(curriculum, "curriculum data has been reviewed");
 
-		// boolean exists =
-		// plannerService.isCurriculumExists(curriculum.getCode());
-		// Assert.isTrue(exists, "program does not have curriculum");
 		return self();
 	}
 

@@ -53,7 +53,7 @@ public class WhenReviewStudentActivationStatus extends Stage <WhenReviewStudentA
 		student = identityService.findStudentByMatricNo(identityNo);
 	    studentStatus = student.getStudentStatus();
 		faculty = plannerService.findFacultyByCode("A01");
-		program = plannerService.findProgramByCodeAndFaculty("A01/PHD/0008", faculty);
+		program = plannerService.findProgramByCodeAndFaculty("FKP/PHD/PAM", faculty);
 		courses = plannerService.findCourses(faculty);
 		
 		if(studentStatus == AdStudentStatus.ACTIVE){

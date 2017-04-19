@@ -10,6 +10,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.tngtech.jgiven.annotation.As;
+import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 
 import my.edu.umk.pams.academic.config.TestAppConfiguration;
@@ -28,6 +29,8 @@ public class US_AD_PFL_1009 extends SpringScenarioTest<GivenIAmStudent, WhenIRev
 	
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_PFL_1009.class);
 	
+	@ProvidedScenarioState
+	private String matricNo = "A17P001";
 	
 	
 	@Test
@@ -35,6 +38,10 @@ public class US_AD_PFL_1009 extends SpringScenarioTest<GivenIAmStudent, WhenIRev
 	public void scenario1009(){
 		given().I_am_a_student_in_current_academic_session();
 		when().i_review_my_profile().and().i_review_subject();
+		when()
+		.i_review_my_profile()
+		.and().i_review_subject()
+		.and().i_generate_new_matricNo();
 		then().profile_current();
 		
 	}

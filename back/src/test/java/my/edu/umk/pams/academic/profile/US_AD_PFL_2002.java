@@ -1,6 +1,7 @@
 package my.edu.umk.pams.academic.profile;
 
 import com.tngtech.jgiven.annotation.As;
+import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.profile.stage.ThenCurrentStudentProfileInfoIsUpdated;
@@ -31,18 +32,22 @@ public class US_AD_PFL_2002 extends
 
     private static final Logger LOG = LoggerFactory.getLogger(US_AD_PFL_2002.class);
 
+    @ProvidedScenarioState
+    private static String matricNo = "A17P001";
+    
+    
     @Test
     @Rollback
     public void scenarioCPS() {
     	String username  = "cps";
     	String password  = "abc123";
         given().i_am_a_$_administrator_in_current_academic_session(username, password);
-        when().I_update_student_profile_info();
+        when().mgseb_update_student_profile_info();
         then().current_student_profile_info_is_updated();
 
     }
 
-    @Test
+/*    @Test
     @Rollback
     public void scenarioMGSEB() {
     	String username  = "mgseb";
@@ -50,6 +55,6 @@ public class US_AD_PFL_2002 extends
         given().i_am_a_$_administrator_in_current_academic_session(username, password);
         when().I_update_student_profile_info();
         then().current_student_profile_info_is_updated();
-    }
+    }*/
 
 }

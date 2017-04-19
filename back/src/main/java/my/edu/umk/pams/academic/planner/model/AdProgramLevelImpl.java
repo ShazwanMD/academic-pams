@@ -26,7 +26,7 @@ public class AdProgramLevelImpl implements AdProgramLevel {
     @Column(name = "PREFIX", nullable = false, unique = true)
     private String prefix;
 
-	@NotNull
+    @NotNull
     @Enumerated(EnumType.ORDINAL)
     @Column(name = "ADPROGRAM_TYPE")
     private AdProgramType type;
@@ -63,6 +63,26 @@ public class AdProgramLevelImpl implements AdProgramLevel {
     }
 
     @Override
+    public String getPrefix() {
+        return prefix;
+    }
+
+    @Override
+    public void setPrefix(String prefix) {
+        this.prefix = prefix;
+    }
+
+    @Override
+    public AdProgramType getType() {
+        return type;
+    }
+
+    @Override
+    public void setType(AdProgramType type) {
+        this.type = type;
+    }
+
+    @Override
     public AdMetadata getMetadata() {
         return metadata;
     }
@@ -77,21 +97,5 @@ public class AdProgramLevelImpl implements AdProgramLevel {
         return AdProgramLevel.class;
     }
 
-    @Override
-    public AdProgramType getType() {
-        return type;
-    }
 
-    public void setType(AdProgramType type) {
-        this.type = type;
-	}
-    @Override
-    public String getPrefix() {
-        return prefix;
-    }
-
-    @Override
-    public void setPrefix(String prefix) {
-        this.prefix = prefix;
-    }
 }

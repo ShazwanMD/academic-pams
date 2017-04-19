@@ -29,7 +29,7 @@ SpringScenarioTest<GivenIAmCPSAdministrator, WhenIUpdateAppointStaffIntoSection,
 	
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_1027 .class);
 	//private static final String STAFF_NO = "01001A"; // from data/AD_ACTR.sql
-	private static final String SECTION_CANONICAL_CODE = "A01/PHD/0001/DDA2113/201720181"; 
+	private static final String SECTION_CANONICAL_CODE = "FIAT/MASTER/PBH/GST5023/201720181";
 	
 	@Test
 	@Rollback(true)

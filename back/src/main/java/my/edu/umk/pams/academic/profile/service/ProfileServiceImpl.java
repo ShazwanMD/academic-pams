@@ -1,6 +1,7 @@
 package my.edu.umk.pams.academic.profile.service;
 
 import my.edu.umk.pams.academic.AcademicConstants;
+import my.edu.umk.pams.academic.common.model.AdStudyMode;
 import my.edu.umk.pams.academic.identity.dao.AdStudentDao;
 import my.edu.umk.pams.academic.identity.event.StudentActivatedEvent;
 import my.edu.umk.pams.academic.identity.event.StudentBarredEvent;
@@ -9,6 +10,7 @@ import my.edu.umk.pams.academic.identity.service.IdentityService;
 import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
 import my.edu.umk.pams.academic.planner.model.AdFaculty;
 import my.edu.umk.pams.academic.planner.model.AdProgramLevel;
+import my.edu.umk.pams.academic.planner.dao.AdAcademicSessionDao;
 import my.edu.umk.pams.academic.security.service.SecurityService;
 import my.edu.umk.pams.academic.system.service.SystemService;
 
@@ -23,6 +25,7 @@ import org.springframework.util.Assert;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author PAMS
@@ -38,18 +41,22 @@ public class ProfileServiceImpl implements ProfileService {
 
     @Autowired
     private SecurityService securityService;
+    
+    @Autowired
+    private SystemService systemService;
 
     @Autowired
     private IdentityService identityService;
 
-    @Autowired
-    private SystemService systemService;
     
     @Autowired
     private SessionFactory sessionFactory;
 
     @Autowired
     private ApplicationContext applicationContext;
+    
+    @Autowired
+    private AdAcademicSessionDao academicSessionDao;
 
     //====================================================================================================
     // STUDENT
@@ -231,6 +238,33 @@ public class ProfileServiceImpl implements ProfileService {
 		
 	}
 
+	public void generateMatricNo(AdStudent student ,AdStudyMode studyMode ,AdAcademicSession academicSession) {
+		// Generate New MatricNo
+	    Map<String, Object> map = new HashMap<String, Object>();
+	    
+	    //FacultyName	    
+        student.getCohort().getProgram().getFaculty().getPrefix();
+        map.put("facultyName",  student.getCohort().getProgram().getFaculty());
+        //StudyMode        
+        studyMode.getPrefix();
+        map.put("studyMode", studyMode.getPrefix());
+        //LevelOfStudy
+        student.getCohort().getProgram().getProgramLevel().getPrefix();
+        map.put("LevelOfStudy", student.getCohort().getProgram().getProgramLevel());
+        
+        //find current session
+        academicSession.getCode();
+        map.put("AcademicSession", academicSessionDao.findCurrentSession());
+        
+        String matricNo = systemService.generateFormattedReferenceNo(AcademicConstants.STUDENT_MATRIC_NO, map);
+        student.setMatricNo(matricNo);
+
+	}
 
 
+
+    @Override
+    public void switchStudyMode(AdStudent student, AdAcademicSession academicSession, AdStudyMode fromMode, AdStudyMode toMode) {
+
+    }
 }

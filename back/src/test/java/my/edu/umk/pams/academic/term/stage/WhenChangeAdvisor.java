@@ -36,15 +36,19 @@ public class WhenChangeAdvisor extends Stage<WhenChangeAdvisor> {
 	public WhenChangeAdvisor I_want_to_change_advisor() {
 
 		// update advisor_id in ad_enmt_apln
-		AdEnrollmentApplication application = termService.findEnrollmentApplicationByReferenceNo("201720181/006");
+		application = termService.findEnrollmentApplicationByReferenceNo("201720181/001");
+		Assert.notNull(application, "The application data must not be null");
 
+		LOG.debug("Current advisor: {}", application.getAdvisor().getName());
+
+		// update new advisor
 		advisor = identityService.findStaffByStaffNo("01002A");
+		Assert.notNull(advisor, "The advisor data must not be null");
 		application.setAdvisor(advisor);
-
 		termService.updateEnrollmentApplication(application);
 
 		LOG.debug("Advisor is updated: {}", advisor.getId());
-		Assert.notNull(application, "The data must not be null");
+		Assert.notNull(application, "The application data should be not null");
 
 		return self();
 	}

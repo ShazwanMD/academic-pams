@@ -15,7 +15,6 @@ import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.term.stage.ThenEnrollmentDateIsClose;
 import my.edu.umk.pams.academic.term.stage.ThenKnowTheEnrollmentIntervalPeriod;
 import my.edu.umk.pams.academic.term.stage.ThenTheDateEnrollmentIsReview;
-import my.edu.umk.pams.academic.term.stage.WhenICloseTheEnrollmentDate;
 import my.edu.umk.pams.academic.term.stage.WhenWantToViewOpenDateOfEnrollment;
 import my.edu.umk.pams.bdd.stage.GivenIAmStudent;
 

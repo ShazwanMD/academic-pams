@@ -13,6 +13,7 @@ import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.identity.service.IdentityService;
 import my.edu.umk.pams.academic.planner.model.AdCourse;
 import my.edu.umk.pams.academic.planner.model.AdFaculty;
+import my.edu.umk.pams.academic.planner.model.AdProgram;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
 
 @JGivenStage
@@ -33,20 +34,29 @@ private static final Logger LOG = LoggerFactory.getLogger(ThenLecturerReviewedCo
 	AdCourse course;	
 	
 	@ExpectedScenarioState
+	AdProgram program;
+	
+	@ExpectedScenarioState
 	AdFaculty faculty;	
 	
-	public ThenLecturerReviewedCourseAndResearchInfo Lecturer_review_course(){
-		faculty = plannerService.findFacultyByCode("A10");
-		boolean exists = plannerService.isCourseExists("MBA/GST 5013", faculty);
+	public ThenLecturerReviewedCourseAndResearchInfo Lecturer_review_course_info_for_$(String identityNo){
+		
+		student = identityService.findStudentByMatricNo(identityNo);
+		faculty = program.getFaculty();
+		
+		boolean exists = plannerService.isCourseExists("MCM", faculty);
 		
 		Assert.isTrue(exists, "is not exists");
 		
 		return self();
 	}
 	
-	public ThenLecturerReviewedCourseAndResearchInfo Lecturer_review_research_info(){
-		faculty = plannerService.findFacultyByCode("CPS");
-		boolean exists = plannerService.isCourseExists("MAP", faculty);
+	public ThenLecturerReviewedCourseAndResearchInfo Lecturer_review_research_info_for_$(String identityNo2){
+		
+		student = identityService.findStudentByMatricNo(identityNo2);
+		faculty = program.getFaculty();
+		
+		boolean exists = plannerService.isCourseExists("PCV", faculty);
 		
 		Assert.isTrue(exists, "is not exists");
 		

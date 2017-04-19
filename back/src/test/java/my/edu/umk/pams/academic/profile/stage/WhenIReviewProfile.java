@@ -6,11 +6,14 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.Assert;
 
 import com.tngtech.jgiven.Stage;
+import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 
+import my.edu.umk.pams.academic.common.model.AdStudyMode;
 import my.edu.umk.pams.academic.common.model.AdSubjectCode;
 import my.edu.umk.pams.academic.common.model.AdSubjectCodeImpl;
 import my.edu.umk.pams.academic.common.service.CommonService;
@@ -31,6 +34,7 @@ import my.edu.umk.pams.academic.identity.service.IdentityService;
 import my.edu.umk.pams.academic.planner.model.AdAcademicClassification;
 import my.edu.umk.pams.academic.planner.model.AdAcademicPeriod;
 import my.edu.umk.pams.academic.planner.model.AdAcademicSemester;
+import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
 import my.edu.umk.pams.academic.planner.model.AdBundleSubject;
 import my.edu.umk.pams.academic.planner.model.AdBundleSubjectImpl;
 import my.edu.umk.pams.academic.planner.model.AdBundleSubjectPart;
@@ -90,8 +94,6 @@ public class WhenIReviewProfile extends Stage<WhenIReviewProfile> {
     @ProvidedScenarioState
    	private AdProgramLevel level;
     
-    @ProvidedScenarioState
-   	private List<AdCourse> courses;
     
     @ProvidedScenarioState
    	private AdFaculty faculty;
@@ -129,8 +131,18 @@ public class WhenIReviewProfile extends Stage<WhenIReviewProfile> {
     @ProvidedScenarioState
    	private AdBundleSubjectPart part;
     
+    
+    @ProvidedScenarioState
+   	private List<AdBundleSubjectPart> parts;
+    
     @ProvidedScenarioState
    	private AdSubjectCode subjectCode;
+    
+    @ProvidedScenarioState
+   	private AdStudyMode studyMode;
+    
+    @ProvidedScenarioState
+   	private AdAcademicSession academicSession;
     
     @ProvidedScenarioState
     List<AdCohort> cohorts;
@@ -141,11 +153,15 @@ public class WhenIReviewProfile extends Stage<WhenIReviewProfile> {
     @ProvidedScenarioState
     List<AdOffering> offerings;
     
-    @ProvidedScenarioState
-    List <AdBundleSubjectPart> parts;
+    @ExpectedScenarioState
+	private String matricNo;
     
 	public WhenIReviewProfile i_review_my_profile() {
 		cohort = plannerService.findCohortByCode("A10/CHRT/A10");
+
+		cohort = plannerService.findCohortByCode("FKP/PHD/PAM/CHRT/201720181");
+		
+		
 		//student
 		student = new AdStudentImpl();
 		student.setName("SAM");
@@ -174,6 +190,7 @@ public class WhenIReviewProfile extends Stage<WhenIReviewProfile> {
 		address.setStudent(student);
 		address.setType(AdAddressType.MAILING);
 		profileService.addAddress(student, address);
+		Assert.notNull(address, "Address Not Save");
 		LOG.debug("STUDENT ADDRESS : =======================================================");
 		LOG.debug("Student Name :{}",address.getStudent().getName());
 		LOG.debug("Address :{}",address.getAddress1());
@@ -211,6 +228,7 @@ public class WhenIReviewProfile extends Stage<WhenIReviewProfile> {
 		LOG.debug("");
 	
 	
+			
 		return self();
 		
 	}
@@ -310,5 +328,36 @@ public class WhenIReviewProfile extends Stage<WhenIReviewProfile> {
 		
 		return self();
 	}
-
+	public WhenIReviewProfile i_generate_new_matricNo(){
+		
+		student = identityService.findStudentByMatricNo(matricNo);
+	    LOG.debug("Student:{}", student.getName());
+	    LOG.debug("");
+		studyMode = commonService.findStudyModeByCode("1");
+		LOG.debug("StudyMode:{}", studyMode.getPrefix());
+		LOG.debug("");
+		
+		profileService.generateMatricNo(student, studyMode, academicSession);
+		  LOG.debug("Student MatricNo:{}", student.getMatricNo());
+		  Assert.notNull(student.getMatricNo(), "MatricNo not Generated");
+		//FacultyPrefix
+		student.getCohort().getProgram().getFaculty().getPrefix();
+		LOG.debug("Faculty Prefix:{}",student.getCohort().getProgram().getFaculty().getPrefix());
+		//StudyModePrefix
+		LOG.debug("StudyModePrefix:{}", studyMode.getPrefix());
+		//level Of Study Prefix
+		student.getCohort().getProgram().getProgramLevel().getPrefix();
+		LOG.debug("LevelOfStudyPrefix :{}", student.getCohort().getProgram().getProgramLevel().getPrefix());
+		//session
+		academicSession.getCode();
+		LOG.debug("Year :{}", academicSession.getCode());
+		
+		
+		
+		
+		
+		return self();
+	}
+	
+	
 }

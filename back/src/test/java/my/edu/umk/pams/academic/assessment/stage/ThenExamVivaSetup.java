@@ -74,22 +74,22 @@ private static final Logger LOG = LoggerFactory.getLogger(ThenExamVivaSetup.clas
 	
 	public ThenExamVivaSetup exam_setup() {
 		
-	 boolean exists = termService.isAssessmentExists("A01/MASTER/Q1.1/DDA2113");
+	 boolean exists = termService.isAssessmentExists("FIAT/MASTER/Q1.1/PBH/GST5023");
 	 Assert.isTrue(exists, "Q1.1 Not Setup");
 	 
-	 boolean exists1 = termService.isAssessmentExists("A01/MASTER/Q2/DDA2113");
+	 boolean exists1 = termService.isAssessmentExists("FIAT/MASTER/Q2/PBH/GST5023");
 	 Assert.isTrue(exists1, "Q2 Not Setup");
 	 
-	 boolean exists3 = termService.isAssessmentExists("A01/MASTER/T1/DDA2113");
+	 boolean exists3 = termService.isAssessmentExists("FIAT/MASTER/T2/PBH/GST5023");
 	 Assert.isTrue(exists3, "T1 Not Setup");
 	 
-	 boolean exists4 = termService.isAssessmentExists("A01/MASTER/Q3/DDA2113");
+	 boolean exists4 = termService.isAssessmentExists("FIAT/MASTER/Q3/PBH/GST5023");
 	 Assert.isTrue(exists4, "Q3 Not Setup");
 	 
-	 boolean exists5 = termService.isAssessmentExists("A01/MASTER/Q4/DDA2113");
+	 boolean exists5 = termService.isAssessmentExists("FIAT/MASTER/Q4/PBH/GST5023");
 	 Assert.isTrue(exists5, "Q4 Not Setup");
 	 
-	 boolean exists6 = termService.isAssessmentExists("A01/MASTER/T2/DDA2113");
+	 boolean exists6 = termService.isAssessmentExists("FIAT/MASTER/T2/PBH/GST5023");
 	 Assert.isTrue(exists6, "T2 Not Setup");
 	 
 	 

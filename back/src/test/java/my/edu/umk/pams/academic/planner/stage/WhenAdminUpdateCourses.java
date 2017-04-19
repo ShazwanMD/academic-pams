@@ -35,6 +35,7 @@ public class WhenAdminUpdateCourses extends Stage<WhenAdminUpdateCourses> {
     @ExpectedScenarioState
     private AdCourse course;
     
+    @ProvidedScenarioState
     private String facultyCode;
 
  
@@ -42,7 +43,6 @@ public class WhenAdminUpdateCourses extends Stage<WhenAdminUpdateCourses> {
     	
     	faculty = plannerService.findFacultyByCode(facultyCode);
         
-    	
         course.setTitle("Sustainability & Environmental Economics");
         course.setTitleEn("Sustainability & Environmental Economics");
         course.setTitleMs("Sustainability & Environmental Economics");

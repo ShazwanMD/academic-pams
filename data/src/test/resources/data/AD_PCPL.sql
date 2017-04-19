@@ -68,8 +68,25 @@ INSERT INTO AD_PCPL (ID, NAME, ENABLED, LOCKED, PRINCIPAL_TYPE, M_ST, C_ID, C_TS
 INSERT INTO AD_GROP (ID) VALUES (currval('SQ_AD_PCPL'));
 INSERT INTO AD_PCPL_ROLE (ID, PRINCIPAL_ID, ROLE_TYPE, M_ST, C_ID, C_TS) VALUES (nextval('SQ_AD_PCPL_ROLE'), (SELECT ID FROM AD_PCPL WHERE NAME = 'GRP_ADM'), 0, 1, 1, CURRENT_TIMESTAMP);
 INSERT INTO AD_GROP_MMBR (ID, GROUP_ID, PRINCIPAL_ID, M_ST, C_ID, C_TS) VALUES (nextval('SQ_AD_GROP_MMBR'),
+                                                                                (SELECT ID FROM AD_PCPL WHERE NAME = 'GRP_ADM'),
+                                                                                (SELECT ID FROM AD_PCPL WHERE NAME = 'root'), 1, 1, CURRENT_TIMESTAMP);
+INSERT INTO AD_GROP_MMBR (ID, GROUP_ID, PRINCIPAL_ID, M_ST, C_ID, C_TS) VALUES (nextval('SQ_AD_GROP_MMBR'),
+                                                                                (SELECT ID FROM AD_PCPL WHERE NAME = 'GRP_ADM'),
+                                                                                (SELECT ID FROM AD_PCPL WHERE NAME = 'bursary'), 1, 1, CURRENT_TIMESTAMP);
+INSERT INTO AD_GROP_MMBR (ID, GROUP_ID, PRINCIPAL_ID, M_ST, C_ID, C_TS) VALUES (nextval('SQ_AD_GROP_MMBR'),
+                                                                                (SELECT ID FROM AD_PCPL WHERE NAME = 'GRP_ADM'),
+                                                                                (SELECT ID FROM AD_PCPL WHERE NAME = 'cps'), 1, 1, CURRENT_TIMESTAMP);
+INSERT INTO AD_GROP_MMBR (ID, GROUP_ID, PRINCIPAL_ID, M_ST, C_ID, C_TS) VALUES (nextval('SQ_AD_GROP_MMBR'),
+                                                                                (SELECT ID FROM AD_PCPL WHERE NAME = 'GRP_ADM'),
+                                                                                (SELECT ID FROM AD_PCPL WHERE NAME = 'mgseb'), 1, 1, CURRENT_TIMESTAMP);
+
+
+INSERT INTO AD_GROP_MMBR (ID, GROUP_ID, PRINCIPAL_ID, M_ST, C_ID, C_TS) VALUES (nextval('SQ_AD_GROP_MMBR'),
                                                                                  (SELECT ID FROM AD_PCPL WHERE NAME = 'GRP_USR'),
                                                                                  (SELECT ID FROM AD_PCPL WHERE NAME = 'GRP_ADM'), 1, 1, CURRENT_TIMESTAMP);
+
+
+
 ---------------------------------------------------------
 -- GROUP END
 ---------------------------------------------------------

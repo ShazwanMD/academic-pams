@@ -3,11 +3,7 @@ package my.edu.umk.pams.academic.term.service;
 import my.edu.umk.pams.academic.common.model.AdStudyCenter;
 import my.edu.umk.pams.academic.identity.model.AdStaff;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
-import my.edu.umk.pams.academic.identity.model.AdUser;
-import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
-import my.edu.umk.pams.academic.planner.model.AdCourse;
-import my.edu.umk.pams.academic.planner.model.AdEnrollmentStatus;
-import my.edu.umk.pams.academic.planner.model.AdProgram;
+import my.edu.umk.pams.academic.planner.model.*;
 import my.edu.umk.pams.academic.term.model.*;
 import org.activiti.engine.task.Task;
 
@@ -136,21 +132,21 @@ public interface TermService {
 
     AdAssessment findAssessmentByCanonicalCode(String canonicalCode);
 
-    AdAssessment findAssessmentByCodeSessionAndOffering(String code, AdAcademicSession AdAdemicSession, AdOffering offering);
+    AdAssessment findAssessmentByCodeSessionAndOffering(String code, AdAcademicSession academicSession, AdOffering offering);
 
-    List<AdAssessment> findAssessments(AdAcademicSession AdAdemicSession, AdOffering offering);
+    List<AdAssessment> findAssessments(AdAcademicSession academicSession, AdOffering offering);
 
     List<AdAssessment> findAssessments(Integer offset, Integer limit);
 
-    List<AdAssessment> findAssessments(AdAcademicSession AdAdemicSession, AdOffering offering, Integer offset, Integer limit);
+    List<AdAssessment> findAssessments(AdAcademicSession academicSession, AdOffering offering, Integer offset, Integer limit);
 
-    Integer countAssessment(AdAcademicSession AdAdemicSession, AdOffering offering, AdAssessmentType type);
+    Integer countAssessment(AdAcademicSession academicSession, AdOffering offering, AdAssessmentType type);
 
-    Integer countAssessment(AdAcademicSession AdAdemicSession, AdOffering offering);
+    Integer countAssessment(AdAcademicSession academicSession, AdOffering offering);
 
-    boolean hasAssessment(AdAcademicSession AdAdemicSession, AdOffering offering);
+    boolean hasAssessment(AdAcademicSession academicSession, AdOffering offering);
 
-    boolean isAssessmentExists(String code, AdAcademicSession AdAdemicSession, AdOffering offering);
+    boolean isAssessmentExists(String code, AdAcademicSession academicSession, AdOffering offering);
 
     boolean isAssessmentExists(String canonicalCode);
 
@@ -190,9 +186,12 @@ public interface TermService {
 
     // finder
 
+
     AdAdmissionApplication findAdmissionApplicationById(Long id);
 
     AdAdmissionApplication findAdmissionApplicationByReferenceNo(String referenceNo);
+
+    AdAdmissionApplication findAdmissionApplicationByProgramAndStudent(AdProgram program, AdStudent student);
 
     List<AdAdmissionApplication> findAdmissionApplications(AdAcademicSession session);
 
@@ -213,20 +212,13 @@ public interface TermService {
     Integer countAdmissionApplication(String filter, AdAcademicSession session, AdStaff staff);
 
     //====================================================================================================
-    // ADMISSION APPLICATION
+    // ADMISSION
     //====================================================================================================
 
-    AdAdmissionApplication findAdmissionApplicationByProgramAndStudent(AdProgram program, AdStudent student);
-
-    AdAdmission findAdmissionBySessionProgramAndStudent(AdAcademicSession academicSession, AdProgram program, AdStudent student);
+    AdAdmission findAdmissionByAcademicSessionCohortAndStudent(AdAcademicSession academicSession, AdCohort cohort, AdStudent student);
 
     @Deprecated // use startAdmissionApplication
     void saveAdmissionApplication(AdAdmissionApplication application);
-
-    //====================================================================================================
-    // ADMISSION
-    // TODO:
-    //====================================================================================================
 
     void admit(AdAcademicSession academicSession, AdStudent student, AdStudyCenter studyCenter, AdProgram program);
 
@@ -275,6 +267,8 @@ public interface TermService {
     AdEnrollmentApplication findEnrollmentApplicationByReferenceNo(String referenceNo);
 
     AdEnrollmentApplicationItem findEnrollmentApplicationItemById(Long id);
+    
+    AdEnrollmentApplicationItem findEnrollmentApplicationItemBySection(AdSection section);
 
     List<AdEnrollmentApplication> findEnrollmentApplications(AdAcademicSession session);
 

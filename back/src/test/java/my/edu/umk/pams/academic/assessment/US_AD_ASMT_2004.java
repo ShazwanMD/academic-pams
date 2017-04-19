@@ -10,6 +10,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.tngtech.jgiven.annotation.As;
+import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 
 import my.edu.umk.pams.academic.assessment.stage.ThenGradeUpdated;
@@ -20,18 +21,24 @@ import my.edu.umk.pams.bdd.stage.GivenIAmAcademicStaff;
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
-@As("As a supervisor,I want to insert grading So that I can insert student’s grades.")
+@As("As a supervisor,I want to insert grading so that I can insert student's grades.")
 public class US_AD_ASMT_2004 extends SpringScenarioTest<GivenIAmAcademicStaff, WhenIAmInsertGrade, ThenGradeUpdated> {
-	
-	 private static final Logger LOG = LoggerFactory.getLogger(US_AD_ASMT_2002.class);
-	 
-	 @Test
-	 @Rollback
-	 public void scenario2004(){
-		 
-		 given().i_am_a_staff_in_current_academic_session();
-		 when().i_insert_grades();
-		 then().student_grades_updated();
-	 }
+
+	private static final Logger LOG = LoggerFactory.getLogger(US_AD_ASMT_2002.class);
+
+	@ProvidedScenarioState
+	private String matricNo = "A17P001";
+	// input student mark
+	@ProvidedScenarioState
+	private int mark = 50;
+
+	@Test
+	@Rollback
+	public void scenario2004() {
+
+		given().i_am_a_staff_in_current_academic_session();
+		when().i_insert_grades();
+		then().student_grades_updated();
+	}
 
 }

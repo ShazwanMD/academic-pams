@@ -3,29 +3,21 @@ package my.edu.umk.pams.academic.term.stage;
  * @author zaida_nawi
  **/
 
-import java.util.List;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
-import com.tngtech.jgiven.annotation.Pending;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
-
-import io.jsonwebtoken.lang.Assert;
 import my.edu.umk.pams.academic.AcademicConstants;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.planner.model.AdProgram;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
 import my.edu.umk.pams.academic.system.model.AdConfiguration;
 import my.edu.umk.pams.academic.system.service.SystemService;
-import my.edu.umk.pams.academic.term.model.AdEnrollment;
-import my.edu.umk.pams.academic.term.model.AdOffering;
 import my.edu.umk.pams.academic.term.model.AdSection;
 import my.edu.umk.pams.academic.term.service.TermService;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @JGivenStage
 public class WhenWantToViewOpenDateOfEnrollment extends Stage<WhenWantToViewOpenDateOfEnrollment> {
@@ -37,7 +29,7 @@ public class WhenWantToViewOpenDateOfEnrollment extends Stage<WhenWantToViewOpen
 
 	@Autowired
 	private PlannerService plannerService;
-	
+
 	@Autowired
 	private SystemService systemService;
 
@@ -49,44 +41,31 @@ public class WhenWantToViewOpenDateOfEnrollment extends Stage<WhenWantToViewOpen
 
 	@ProvidedScenarioState
 	private AdSection section;
-	
+
 	@ProvidedScenarioState
 	private AdConfiguration configuration;
 
 	public WhenWantToViewOpenDateOfEnrollment Want_to_view_open_date_of_enrollment() {
 
-	//	section = termService.findSectionByCanonicalCode("A01/PHD/0001/DDA2113/201720181");
-	//	Assert.notNull(section, "section should be not null");
-	//	AdOffering offering = termService.findOfferingByCanonicalCode("A01/PHD/0001/DDA2113");
-		
-		
-	//	section = termService.findSectionByCanonicalCode("A01/PHD/0001/DDA2113/201720181");
-	//	Assert.notNull(section, "section should be not null");
+		// section =
+		// termService.findSectionByCanonicalCode("FIAT/MASTER/PBH/GST5023/201720181");
+		// Assert.notNull(section, "section should be not null");
+		// AdOffering offering =
+		// termService.findOfferingByCanonicalCode("FIAT/MASTER/PBH/GST5023");
 
-	//		LOG.debug("section id:{}", section.getId());
-	//		LOG.debug("capacity section: {}", section.getCapacity());
-	//		LOG.debug("ordinal section: {}", section.getOrdinal());
+		// section =
+		// termService.findSectionByCanonicalCode("FIAT/MASTER/PBH/GST5023/201720181");
+		// Assert.notNull(section, "section should be not null");
 
-			
-			configuration = systemService.findConfigurationByKey(AcademicConstants.ENROLLMENT_STARTDATE_OPEN);
-			configuration.setValue("30/04/2017");
-			systemService.updateConfiguration(configuration);
-			LOG.debug("description : {}", configuration.getDescription());
-			LOG.debug("Open Enrollment Date : {}", configuration.getValue());
-			
-		
+		// LOG.debug("section id:{}", section.getId());
+		// LOG.debug("capacity section: {}", section.getCapacity());
+		// LOG.debug("ordinal section: {}", section.getOrdinal());
 
-		
-		
-	
-
-		
-		//List<InIntakeApplication> applications = applicationService.findIntakeApplications(intake,
-				//InBidStatus.SUBMITTED);
-		//AdConfiguration configuration =  = systemService.findConfigurationByKey(key)
-	//	LOG.debug("value: {}", configuration.getValue());
-
-		// process to view open date in ad_cnfg table
+		configuration = systemService.findConfigurationByKey(AcademicConstants.ENROLLMENT_STARTDATE_OPEN);
+		//configuration.setValue("30/04/2017");
+		systemService.updateConfiguration(configuration);
+		LOG.debug("description : {}", configuration.getDescription());
+		LOG.debug("Open Enrollment Date : {}", configuration.getValue());
 
 		return self();
 	}

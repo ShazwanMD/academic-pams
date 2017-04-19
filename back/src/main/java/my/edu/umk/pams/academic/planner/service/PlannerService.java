@@ -91,6 +91,10 @@ public interface PlannerService {
     void deleteSubjectPart(AdBundleSubject subject, AdBundleSubjectPart part);
 
     void addPrerequisites(AdCourse course, AdCourse... prerequisites);
+    
+    void updatePrerequisite(AdCourse course, AdCourse... prerequisites);
+    
+    void removePrerequisite(AdCourse course, AdCourse... prerequisites);
 
     //====================================================================================================
     // COHORT

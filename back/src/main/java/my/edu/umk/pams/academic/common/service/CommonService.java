@@ -597,4 +597,27 @@ public interface CommonService {
 
 	void removeEmploymentSectorCode(AdEmploymentSectorCode employmentsectorCode);
 
+
+	//====================================================================================================
+	// STUDY MODE
+	//====================================================================================================
+
+	AdStudyMode findStudyModeById(Long id);
+
+	AdStudyMode findStudyModeByCode(String code);
+
+	List<AdStudyMode> findStudyModes();
+
+	List<AdStudyMode> findStudyModes(String filter, Integer offset, Integer limit);
+
+	Integer countStudyMode();
+
+	Integer countStudyMode(String filter);
+
+	void saveStudyMode(AdStudyMode studyMode);
+
+	void updateStudyMode(AdStudyMode studyMode);
+
+	void removeStudyMode(AdStudyMode studyMode);
+
 }

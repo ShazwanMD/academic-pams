@@ -46,8 +46,11 @@ public class ThenTheNewAdmissionIsAdded extends Stage<ThenTheNewAdmissionIsAdded
 	public ThenTheNewAdmissionIsAdded the_new_admission_is_added() {
 		
 		Assert.notNull(admission, "Admission data should be not null");
+		
+		LOG.debug("=============review new admission======================");
 		LOG.debug("New admission id:{} ", admission.getId());
-		LOG.debug("New admission Program :{}", admission.getProgram().getId());
+		LOG.debug("New admission Student:{} ", admission.getStudent().getName());
+		LOG.debug("New admission Cohort :{}", admission.getCohort().getId());
 		LOG.debug("New admission Session :{}", admission.getSession().getId());
 		LOG.debug("New admission Gpa :{}", admission.getGpa());
 		LOG.debug("New admission Cgpa :{}", admission.getCgpa());

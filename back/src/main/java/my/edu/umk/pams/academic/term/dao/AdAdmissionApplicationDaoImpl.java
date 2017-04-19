@@ -4,12 +4,12 @@ import my.edu.umk.pams.academic.core.AdMetaState;
 import my.edu.umk.pams.academic.core.GenericDaoSupport;
 import my.edu.umk.pams.academic.identity.model.AdStaff;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
+import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
+import my.edu.umk.pams.academic.planner.model.AdCohort;
+import my.edu.umk.pams.academic.planner.model.AdProgram;
 import my.edu.umk.pams.academic.term.model.AdAdmission;
 import my.edu.umk.pams.academic.term.model.AdAdmissionApplication;
 import my.edu.umk.pams.academic.term.model.AdAdmissionApplicationImpl;
-import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
-import my.edu.umk.pams.academic.planner.model.AdProgram;
-
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
@@ -25,6 +25,17 @@ public class AdAdmissionApplicationDaoImpl extends GenericDaoSupport<Long, AdAdm
 
 	public AdAdmissionApplicationDaoImpl() {
 		super(AdAdmissionApplicationImpl.class);
+	}
+
+	@Override
+	public AdAdmissionApplication findByProgramAndStudent(AdProgram program, AdStudent student) {
+		Session session = sessionFactory.getCurrentSession();
+		Query query = session.createQuery("select o from AdAdmissionApplication o where " + "o.program = :program "
+				+ "and o.student = :student " + "and o.metadata.state = :state");
+		query.setEntity("program", program);
+		query.setEntity("student", student);
+		query.setInteger("state", AdMetaState.ACTIVE.ordinal());
+		return (AdAdmissionApplication) query.uniqueResult();
 	}
 
 	@Override
@@ -144,27 +155,4 @@ public class AdAdmissionApplicationDaoImpl extends GenericDaoSupport<Long, AdAdm
 
 	}
 
-	@Override
-	public AdAdmissionApplication findByProgramAndStudent(AdProgram program, AdStudent student) {
-		Session session = sessionFactory.getCurrentSession();
-		Query query = session.createQuery("select o from AdAdmissionApplication o where " + "o.program = :program "
-				+ "and o.student = :student " + "and o.metadata.state = :state");
-		query.setEntity("program", program);
-		query.setEntity("student", student);
-		query.setInteger("state", AdMetaState.ACTIVE.ordinal());
-		return (AdAdmissionApplication) query.uniqueResult();
-	}
-
-	@Override
-	public AdAdmission findBySessionProgramAndStudent(AdAcademicSession academicSession, AdProgram program,
-			AdStudent student) {
-		// TODO Auto-generated method stub
-		Session session = sessionFactory.getCurrentSession();
-		Query query = session.createQuery("select o from AdAdmission o where " + "o.program = :program "
-				+ "and o.student = :student " + "and o.metadata.state = :state");
-		query.setEntity("program", program);
-		query.setEntity("student", student);
-		query.setInteger("state", AdMetaState.ACTIVE.ordinal());
-		return (AdAdmission) query.uniqueResult();
-	}
 }

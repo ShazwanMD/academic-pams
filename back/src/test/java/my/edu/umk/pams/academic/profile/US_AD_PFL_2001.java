@@ -1,6 +1,7 @@
 package my.edu.umk.pams.academic.profile;
 
 import com.tngtech.jgiven.annotation.As;
+import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.profile.stage.ThenCurrentStudentProfileUpdate;
@@ -28,6 +29,9 @@ import org.springframework.transaction.annotation.Transactional;
 public class US_AD_PFL_2001 extends SpringScenarioTest<GivenIAmAdministrator, WhenIAddStudentProfile, ThenCurrentStudentProfileUpdate> {
 
     private static final Logger LOG = LoggerFactory.getLogger(US_AD_PFL_2001.class);
+    
+    @ProvidedScenarioState
+    private static String matricNo = "A17P001";
 
 
     @Test
@@ -36,7 +40,7 @@ public class US_AD_PFL_2001 extends SpringScenarioTest<GivenIAmAdministrator, Wh
     	String username  = "cps";
     	String password  = "abc123";
         given().i_am_a_$_administrator_in_current_academic_session(username, password);
-        when().I_add_student_profile();
+        when().cps_add_student_profile();
         then().Current_student_profile_is_updated();
     }
     
@@ -46,7 +50,7 @@ public class US_AD_PFL_2001 extends SpringScenarioTest<GivenIAmAdministrator, Wh
     	String username  = "mgseb";
     	String password  = "abc123";
         given().i_am_a_$_administrator_in_current_academic_session(username, password);
-        when().I_add_student_profile();
+        when().mgseb_add_student_profile();
         then().Current_student_profile_is_updated();
     }
 }

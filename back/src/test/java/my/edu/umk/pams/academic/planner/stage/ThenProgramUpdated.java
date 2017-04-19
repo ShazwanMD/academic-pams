@@ -37,7 +37,6 @@ public class ThenProgramUpdated extends Stage<ThenProgramUpdated> {
 
 	public ThenProgramUpdated program_is_updated() {
 
-		LOG.debug("programs {} ", program);
 
 		AdProgram program = plannerService.findProgramByCode(facultycode);
 		Assert.isNull(program, "The data must null");

@@ -15,5 +15,6 @@ public interface AdCoursePrerequisite extends AdMetaObject {
     AdCourse getPrerequisite();
 
     void setPrerequisite(AdCourse prerequisite);
+    
 
 }

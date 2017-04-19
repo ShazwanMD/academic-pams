@@ -1,11 +1,8 @@
 package my.edu.umk.pams.academic.term.service;
 
 import my.edu.umk.pams.academic.common.model.AdStudyCenter;
-import my.edu.umk.pams.academic.core.AdMetaState;
-import my.edu.umk.pams.academic.core.AdMetadata;
 import my.edu.umk.pams.academic.identity.model.AdStaff;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
-import my.edu.umk.pams.academic.identity.model.AdUser;
 import my.edu.umk.pams.academic.planner.model.*;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
 import my.edu.umk.pams.academic.security.service.SecurityService;
@@ -17,7 +14,6 @@ import my.edu.umk.pams.academic.workflow.service.WorkflowConstants;
 import my.edu.umk.pams.academic.workflow.service.WorkflowService;
 import org.activiti.engine.task.Task;
 import org.apache.commons.lang.Validate;
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,7 +22,6 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
-import java.sql.Timestamp;
 import java.math.RoundingMode;
 import java.util.HashMap;
 import java.util.List;
@@ -548,6 +543,11 @@ public class TermServiceImpl implements TermService {
     }
 
     @Override
+    public AdAdmissionApplication findAdmissionApplicationByProgramAndStudent(AdProgram program, AdStudent student) {
+        return admissionApplicationDao.findByProgramAndStudent(program, student);
+    }
+
+    @Override
     public List<AdAdmissionApplication> findAdmissionApplications(AdAcademicSession session) {
         return null;
     }
@@ -602,6 +602,12 @@ public class TermServiceImpl implements TermService {
     // ADMISSION
     // ====================================================================================================
 
+
+    @Override
+    public AdAdmission findAdmissionByAcademicSessionCohortAndStudent(AdAcademicSession academicSession, AdCohort cohort, AdStudent student) {
+        return admissionDao.findBySessionCohortAndStudent(academicSession, cohort, student);
+    }
+
     @Override
     public void saveAdmission(AdAdmission admission) {
         admissionDao.save(admission, securityService.getCurrentUser());
@@ -621,8 +627,7 @@ public class TermServiceImpl implements TermService {
         admission.setCreditTaken(0);
         admission.setCgpa(BigDecimal.ZERO); // todo
         admission.setGpa(BigDecimal.ZERO); // todo
-        admission.setProgram(program);
-        // todo: admission.setCohort(cohort);
+        admission.setCohort(student.getCohort());
         saveAdmission(admission);
         sessionFactory.getCurrentSession().refresh(admission);
 
@@ -630,17 +635,6 @@ public class TermServiceImpl implements TermService {
         AdmissionConfirmedEvent event = new AdmissionConfirmedEvent();
         applicationContext.publishEvent(event);
     }
-
-    @Override
-    public AdAdmissionApplication findAdmissionApplicationByProgramAndStudent(AdProgram program, AdStudent student) {
-        return admissionApplicationDao.findByProgramAndStudent(program, student);
-    }
-
-    @Override
-    public AdAdmission findAdmissionBySessionProgramAndStudent(AdAcademicSession academicSession, AdProgram program, AdStudent student) {
-        return admissionApplicationDao.findBySessionProgramAndStudent(academicSession, program, student);
-    }
-
 
     // ====================================================================================================
     // ENROLLMENT APPLICATION
@@ -750,6 +744,12 @@ public class TermServiceImpl implements TermService {
     public AdEnrollmentApplicationItem findEnrollmentApplicationItemById(Long id) {
         return enrollmentApplicationDao.findItemById(id);
     }
+    
+    @Override
+	public AdEnrollmentApplicationItem findEnrollmentApplicationItemBySection(AdSection section) {
+    	 return enrollmentApplicationDao.findItemBySection(section);
+	}
+    
 
     @Override
     public List<AdEnrollmentApplication> findEnrollmentApplications(AdAcademicSession session) {
@@ -1023,7 +1023,6 @@ public class TermServiceImpl implements TermService {
         // TODO: check process calendar
         // TODO: PRA, WAJIB, BERDENDA
         AdAcademicSession academicSession = section.getSession();
-        AdProgram program = admission.getProgram();
         AdStudyCenter studyCenter = admission.getStudyCenter();
         EnrollmentConfirmedEvent event = new EnrollmentConfirmedEvent();
         applicationContext.publishEvent(event);
@@ -1040,7 +1039,6 @@ public class TermServiceImpl implements TermService {
         updateEnrollment(enrollment);
 
         AdAcademicSession academicSession = section.getSession();
-        AdProgram program = admission.getProgram();
         AdStudyCenter studyCenter = admission.getStudyCenter();
         AdCohort cohort = student.getCohort();
         EnrollmentWithdrawnEvent event = new EnrollmentWithdrawnEvent();
@@ -1387,7 +1385,4 @@ public class TermServiceImpl implements TermService {
         map.put(WorkflowConstants.CANCEL_DECISION, false);
         return map;
     }
-    
-   
-
 }

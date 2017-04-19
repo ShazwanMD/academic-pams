@@ -2,7 +2,6 @@ package my.edu.umk.pams.academic.planner.stage;
 
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
-import com.tngtech.jgiven.annotation.Pending;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 import my.edu.umk.pams.academic.planner.model.AdCourse;
 import my.edu.umk.pams.academic.planner.model.AdFaculty;
@@ -30,7 +29,7 @@ public class ThenCoursesUpdated extends Stage<ThenCoursesUpdated> {
     public ThenCoursesUpdated new_courses_information_updated() {
 
     	
-    	boolean exists = plannerService.isCourseExists("DDA2113", faculty);
+    	boolean exists = plannerService.isCourseExists("GST5013", faculty);
     	 Assert.isTrue(exists, "exists");
     	
         return self();

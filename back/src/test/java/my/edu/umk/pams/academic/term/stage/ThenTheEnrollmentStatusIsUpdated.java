@@ -1,7 +1,9 @@
 package my.edu.umk.pams.academic.term.stage;
+
 /**
  * @author asyikin.mr and ziana
  */
+import com.tngtech.jgiven.annotation.Pending;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +24,7 @@ public class ThenTheEnrollmentStatusIsUpdated extends Stage<ThenTheEnrollmentSta
 
 	@Autowired
 	private TermService termService;
-	
+
 	@Autowired
 	private IdentityService identityService;
 
@@ -36,7 +38,7 @@ public class ThenTheEnrollmentStatusIsUpdated extends Stage<ThenTheEnrollmentSta
 
 		AdEnrollment enrollment = termService.findEnrollmentBySectionAndStudent(section, student);
 		AdActor actor = identityService.findActorByIdentityNo(student.getIdentityNo());
-		
+
 		LOG.debug("Status enrollment has been updated: {}", enrollment.getStatus());
 		LOG.debug("For student: {}", actor.getName());
 		LOG.debug("And section: {}", section.getCanonicalCode());

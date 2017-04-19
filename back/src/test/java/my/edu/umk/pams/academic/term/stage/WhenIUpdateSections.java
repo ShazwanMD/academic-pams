@@ -39,8 +39,8 @@ public class WhenIUpdateSections extends Stage<WhenIUpdateSections> {
 
 	public WhenIUpdateSections I_update_sections_for_offering() {
 		
-		section = termService.findSectionByCanonicalCode("A01/PHD/0001/DDA2113/201720181");
-		offering= termService.findOfferingByCanonicalCode("A01/PHD/0001/DDA2113");
+		section = termService.findSectionByCanonicalCode("FIAT/MASTER/PBH/GST5023/201720181");
+		offering= termService.findOfferingByCanonicalCode("FIAT/MASTER/PBH/GST5023");
 		
 		LOG.debug("section: {}", section.getCanonicalCode());
 		LOG.debug("offering: {}", offering.getCanonicalCode());
@@ -52,7 +52,7 @@ public class WhenIUpdateSections extends Stage<WhenIUpdateSections> {
 		
 		//update section to new capacity and ordinal
 		section.setCode("DDA2113");
-		section.setCanonicalCode("A01/PHD/0001/DDA2113/201720181");
+		section.setCanonicalCode("FIAT/MASTER/PBH/GST5023/201720181");
 		section.setOrdinal(1);
 		section.setCapacity(30);
 		section.setOffering(offering);
