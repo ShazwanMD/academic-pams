@@ -2,6 +2,7 @@ package my.edu.umk.pams.academic.term;
 
 //@author:asyikin
 import org.junit.Test;
+
 import org.junit.runner.RunWith;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
@@ -23,7 +24,7 @@ import my.edu.umk.pams.bdd.tags.Submodule;
 public class US_AD_TRM_1022
 		extends SpringScenarioTest<GivenIAmStudent, WhenIAddEnrollmentCourses, ThenIViewTheCurrentEnrollmentCourses> {
 	
-	public static final String PROGRAM_CODE = "FIAT/MASTER/PBH";
+	public static final String PROGRAM_CODE = "FIAT/PHD/PBT";
 
 	@Test
 	@Rollback(true)

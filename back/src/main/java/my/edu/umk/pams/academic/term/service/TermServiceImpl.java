@@ -579,17 +579,17 @@ public class TermServiceImpl implements TermService {
 
     @Override
     public Integer countAdmissionApplication(String filter, AdAcademicSession session) {
-        return null;
+    	 return admissionApplicationDao.count(filter, session);
     }
 
     @Override
     public Integer countAdmissionApplication(String filter, AdAcademicSession session, AdStudent student) {
-        return null;
+    	 return admissionApplicationDao.count(filter, session, student);
     }
 
     @Override
     public Integer countAdmissionApplication(String filter, AdAcademicSession session, AdStaff staff) {
-        return null;
+    	 return admissionApplicationDao.count(filter, session, staff);
     }
 
     @Override

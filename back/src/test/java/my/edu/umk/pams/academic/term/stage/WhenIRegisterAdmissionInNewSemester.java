@@ -64,7 +64,7 @@ public class WhenIRegisterAdmissionInNewSemester extends Stage<WhenIRegisterAdmi
 	public WhenIRegisterAdmissionInNewSemester I_register_admission_in_new_semester() {
 		
 		// process flow of admission
-		student = identityService.findStudentByMatricNo("A17P002");
+		student = identityService.findStudentByMatricNo("A17P001");
 		advisor = identityService.findStaffByStaffNo("01001A");
 		program = plannerService.findProgramByCode("FKP/MASTER/MAM");
 		studyCenter = commonService.findStudyCenterByCode("C");

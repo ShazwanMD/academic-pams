@@ -56,6 +56,7 @@ public class WhenDropCourse extends Stage<WhenDropCourse> {
 
 	@ExpectedScenarioState
 	private AdAcademicSession academicSession;
+	
 	@Pending
 	public WhenDropCourse I_want_to_drop_enrollment_course() {
 
