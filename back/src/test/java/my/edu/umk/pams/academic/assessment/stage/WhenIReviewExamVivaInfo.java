@@ -107,7 +107,7 @@ public class WhenIReviewExamVivaInfo extends Stage<WhenIReviewExamVivaInfo> {
 
 		LOG.debug("Venue :{}", venue.getCode());
 		LOG.debug("Venue Desc :{}", venue.getDescription());
-		LOG.debug("+++++++++++++++++++++++++++++++++++++++++++++++");
+		LOG.debug("+++++++++++++++++++++++++++++++++++++++++");
 
 		List<AdCourse> courses = faculty.getCourses();
 		// view code & credit
@@ -125,7 +125,7 @@ public class WhenIReviewExamVivaInfo extends Stage<WhenIReviewExamVivaInfo> {
 		LOG.debug("");
 		LOG.debug("Course :{}", courses.get(4).getCode());
 		LOG.debug("Credit :{}", courses.get(4).getCredit());
-		LOG.debug("+++++++++++++++++++++++++++++++++++++++++++++++");
+		LOG.debug("++++++++++++++++++++++++++++++++++++++++++");
 
 		return self();
 
