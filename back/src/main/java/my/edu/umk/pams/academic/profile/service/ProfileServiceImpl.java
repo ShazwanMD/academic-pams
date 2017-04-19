@@ -10,6 +10,7 @@ import my.edu.umk.pams.academic.identity.service.IdentityService;
 import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
 import my.edu.umk.pams.academic.planner.model.AdFaculty;
 import my.edu.umk.pams.academic.planner.model.AdProgramLevel;
+import my.edu.umk.pams.academic.planner.service.PlannerService;
 import my.edu.umk.pams.academic.planner.dao.AdAcademicSessionDao;
 import my.edu.umk.pams.academic.security.service.SecurityService;
 import my.edu.umk.pams.academic.system.service.SystemService;
@@ -47,6 +48,9 @@ public class ProfileServiceImpl implements ProfileService {
 
     @Autowired
     private IdentityService identityService;
+    
+    @Autowired
+    private PlannerService plannerService;
 
     
     @Autowired
@@ -215,25 +219,39 @@ public class ProfileServiceImpl implements ProfileService {
 	@Override
 	public void transferFaculty(AdStudent student, AdAcademicSession session, AdFaculty fromFaculty,AdFaculty toFaculty) {
 		
-		HashMap<String, Object> map = new HashMap<String, Object>();
+		Map<String, Object> map = new HashMap<String, Object>();
+		
 		student.getMatricNo();
-		map.put("StudentMatricNo", student.getMatricNo());
+		LOG.debug("MatricNo Old :{}", student.getMatricNo());
+//		map.put("StudentMatricNo", student);
+		
 		//Faculty
-		AdFaculty facultyCode = student.getCohort().getProgram().getFaculty();		
-		Assert.notNull(facultyCode, "FacultyCode Must Not Null");
-		map.put("Faculty", facultyCode.getPrefix());
+		LOG.debug("fromFaculty :{}", fromFaculty.getPrefix());
+		LOG.debug("toFaculty :{}", toFaculty.getPrefix());
+		map.replace("facultyCode",fromFaculty,toFaculty);
 		//Session
-		AdAcademicSession sessionYear = student.getCohort().getSession();
-		Assert.notNull(sessionYear, "Year Must Not Null");
-		map.put("Session", sessionYear.getYear());
+		AdAcademicSession academicSession = session;
+		Assert.notNull(academicSession, "Year Must Not Null");
+		LOG.debug("academicSession :{}", academicSession.getYear().getYear());
+		map.replace("academicSession", academicSession.getYear().getYear());
+		
 		//Level
-		AdProgramLevel level = student.getCohort().getProgram().getProgramLevel();
-		Assert.notNull(level,"Level Must Not Null");
-		map.put("ProgramLevel",level.getPrefix());
+		AdProgramLevel programLevel = student.getCohort().getProgram().getProgramLevel();
+		Assert.notNull(programLevel,"Level Must Not Null");
+		LOG.debug("programLevel :{}", programLevel.getPrefix());
+		map.replace("programLevel",programLevel);
+		
+		AdStudyMode studyMode = student.getStudyMode();
+		LOG.debug("studyMode : {}", studyMode.getPrefix());
+		Assert.notNull(studyMode, "StudyMode must be not null");
+		map.replace("studyMode", studyMode);
+	
 
 		String transferFaculty = systemService.generateFormattedReferenceNo(AcademicConstants.STUDENT_MATRIC_NO, map);
+		LOG.debug("transferFacultytest : {}", transferFaculty);
 		student.setMatricNo(transferFaculty);
-		studentDao.update(student, securityService.getCurrentUser());
+        studentDao.update(student, securityService.getCurrentUser());
+      
 		
 		
 	}

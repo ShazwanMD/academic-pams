@@ -1075,7 +1075,6 @@ create table AD_PRGM_LEVL (
   M_ST int4,
   PREFIX varchar(255),
   ADPROGRAM_TYPE int4,
-  PREFIX varchar(225),
   primary key (ID)
 );
 
@@ -1278,6 +1277,7 @@ create table AD_STDN (
   STUDENT_STATUS int4,
   ID int8 not null,
   COHORT_ID int8,
+  STUDY_MODE_ID int8,
   primary key (ID)
 );
 
@@ -1320,7 +1320,7 @@ create table AD_STDY_MODE (
   M_TS timestamp,
   M_ID int8,
   M_ST int4,
-  PREFIX varchar(255) not null,
+ PREFIX varchar(5),
   primary key (ID)
 );
 
@@ -1709,8 +1709,6 @@ alter table AD_ETNY_CODE
 alter table AD_FCTY
   add constraint uc_AD_FCTY_1 unique (CODE);
 
-alter table AD_FCTY
-  add constraint uc_AD_FCTY_2 unique (PREFIX);
 
 alter table AD_FILD_CODE
   add constraint uc_AD_FILD_CODE_1 unique (CODE);

@@ -1,9 +1,11 @@
 package my.edu.umk.pams.academic.system.service;
 
 import my.edu.umk.pams.academic.identity.service.IdentityService;
+import my.edu.umk.pams.academic.security.service.SecurityService;
 import my.edu.umk.pams.academic.system.dao.*;
 import my.edu.umk.pams.academic.system.model.*;
 import my.edu.umk.pams.academic.util.Util;
+
 import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -71,6 +73,9 @@ public class SystemServiceImpl implements SystemService {
 
     @Autowired
     private ApplicationContext applicationContext;
+    
+    @Autowired
+    private SecurityService securityService;
 
 
     //====================================================================================================

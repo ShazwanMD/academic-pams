@@ -64,18 +64,23 @@ public class WhenIGenerateMatricNo extends Stage<WhenIGenerateMatricNo> {
 		AdFaculty toFaculty = student.getCohort().getProgram().getFaculty();
 		toFaculty.setPrefix("C");*/
 	
-		session = plannerService.findAcademicSessionByCode("201720181");
-		student = identityService.findStudentByMatricNo("A17P001");
+//		session = plannerService.findAcademicSessionByCode("201720181");
+		student = identityService.findStudentByMatricNo("F17P0001P");
+		LOG.debug("studymode test kat when : {}", student.getStudyMode());
 //		session = cohort.getSession();
-		year = session.getYear();
+		LOG.debug("session test {}", student.getCohort().getId());
+//		year = session.getYear();
 		cohort = student.getCohort();
+		LOG.debug("session test {}", cohort.getSession());
 		program  = cohort.getProgram();
-		AdFaculty fromFaculty = program.getFaculty();
-		
-		AdFaculty toFaculty = student.getCohort().getProgram().getFaculty();
-		toFaculty.setPrefix("C");
+		AdFaculty fromFaculty = student.getCohort().getProgram().getFaculty();
+		AdFaculty newFac = plannerService.findFacultyByCode("A11");
+		AdFaculty toFaculty = newFac;
+		//toFaculty.setPrefix("C");
 		AdAcademicSession session = student.getCohort().getSession();
-		session.setYear(year);
+		//session.setYear(year);
+		
+		
 		profileService.transferFaculty(student, session, fromFaculty, toFaculty);
 		
 		
