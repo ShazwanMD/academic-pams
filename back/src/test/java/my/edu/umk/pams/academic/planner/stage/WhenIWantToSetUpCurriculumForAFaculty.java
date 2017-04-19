@@ -13,9 +13,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /*
- * As an admin academic, 
- * i want to set up curriculum for a faculty, 
- * so that i can manage schedule by program.
+ * As an admin academic, i want to set up curriculum for a faculty, so that i can manage schedule by program.
  * @author zaida
  */
 

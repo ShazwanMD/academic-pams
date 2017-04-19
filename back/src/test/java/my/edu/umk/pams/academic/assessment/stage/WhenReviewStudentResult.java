@@ -221,8 +221,6 @@ public class WhenReviewStudentResult extends Stage<WhenReviewStudentResult> {
 		grade10.setOrdinal(10);
 		commonService.saveGradeCode(grade10);
 
-		
-
 		return self();
 	}
 	
