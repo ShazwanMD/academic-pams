@@ -22,7 +22,7 @@ import my.edu.umk.pams.bdd.tags.Submodule;
 public class US_AD_TRM_1013 extends
 		SpringScenarioTest<GivenIAmCPSAdministrator, WhenIUpdateAdmissionStatus, ThenTheAdmissionStatusIsUpdated> {
 	
-	private static final String PROGRAM_CODE = "A01/MASTER/0001";
+	private static final String PROGRAM_CODE = "FIAT/PHD/PBT";
 
 	@Test
 	@Rollback(true)
