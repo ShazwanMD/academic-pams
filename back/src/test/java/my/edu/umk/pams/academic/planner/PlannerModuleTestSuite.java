@@ -5,6 +5,7 @@ import org.junit.runners.Suite;
 /**
  * @author PAMS
  */
+
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
 
