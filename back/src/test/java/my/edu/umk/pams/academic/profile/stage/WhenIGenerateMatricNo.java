@@ -9,6 +9,7 @@ import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 
 import my.edu.umk.pams.academic.AcademicConstants;
+import my.edu.umk.pams.academic.common.model.AdStudyMode;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.identity.model.AdStudentImpl;
 import my.edu.umk.pams.academic.identity.service.IdentityService;
@@ -39,7 +40,7 @@ public class WhenIGenerateMatricNo extends Stage<WhenIGenerateMatricNo> {
 	private AdCohort cohort;
 	
 	@ProvidedScenarioState
-	private AdAcademicSession session;
+	private AdAcademicSession academicSession;
 	
 	@ProvidedScenarioState
 	private AdFaculty fromFaculty;
@@ -50,39 +51,38 @@ public class WhenIGenerateMatricNo extends Stage<WhenIGenerateMatricNo> {
 	@ProvidedScenarioState
 	private AdProgram program;
 	
+	@ProvidedScenarioState
+	private AdStudyMode studyMode;
+	
 	
 	public WhenIGenerateMatricNo i_generate_new_matricNo() {
-		
-/*		student = identityService.findStudentByMatricNo("A17P009");
-		LOG.debug("Student Name :{}", student.getName());
-		//Old Faculty
-		AdFaculty fromFaculty = student.getCohort().getProgram().getFaculty();
-		fromFaculty.getPrefix();		
-		LOG.debug("Faculty OLD :{}",fromFaculty.getName());
-		LOG.debug("Prefix :{}",fromFaculty.getPrefix());
-		//New Faculty
-		AdFaculty toFaculty = student.getCohort().getProgram().getFaculty();
-		toFaculty.setPrefix("C");*/
-	
-//		session = plannerService.findAcademicSessionByCode("201720181");
+
+	/*	
 		student = identityService.findStudentByMatricNo("F17P0001P");
-		LOG.debug("studymode test kat when : {}", student.getStudyMode());
-//		session = cohort.getSession();
-		LOG.debug("session test {}", student.getCohort().getId());
-//		year = session.getYear();
-		cohort = student.getCohort();
-		LOG.debug("session test {}", cohort.getSession());
-		program  = cohort.getProgram();
+		studyMode = student.getStudyMode();
+		LOG.debug("StudyMode Old :{}", studyMode.getPrefix());
+		
 		AdFaculty fromFaculty = student.getCohort().getProgram().getFaculty();
-		AdFaculty newFac = plannerService.findFacultyByCode("A11");
-		AdFaculty toFaculty = newFac;
-		//toFaculty.setPrefix("C");
-		AdAcademicSession session = student.getCohort().getSession();
-		//session.setYear(year);
+		fromFaculty.getPrefix();
+		AdFaculty toFaculty = student.getCohort().getProgram().getFaculty();
+		toFaculty.setPrefix("H");
+		
+		profileService.transferFaculty(student, session, fromFaculty, toFaculty);*/
 		
 		
-		profileService.transferFaculty(student, session, fromFaculty, toFaculty);
+		student = identityService.findStudentByMatricNo("A17M0001F");
+		cohort = student.getCohort();
+		academicSession = cohort.getSession();
+		year = academicSession.getYear();
+		LOG.debug("YEAR :{}", year.getYear());
 		
+		AdStudyMode fromMode = student.getStudyMode();
+		LOG.debug("StudyMode Old :{}", fromMode.getPrefix());
+		
+		AdStudyMode toMode = student.getStudyMode();
+		toMode.setPrefix("P");
+
+		profileService.switchStudyMode(student, academicSession, fromMode, toMode);
 		
 		
 		return self();

@@ -13,6 +13,8 @@ import my.edu.umk.pams.academic.planner.model.AdCohort;
 import my.edu.umk.pams.academic.planner.model.AdFaculty;
 import my.edu.umk.pams.academic.planner.model.AdProgram;
 import my.edu.umk.pams.academic.planner.model.AdProgramLevel;
+import my.edu.umk.pams.academic.profile.service.ProfileService;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +27,9 @@ public class WhenIUpdateStudentProfileInfo extends Stage<WhenIUpdateStudentProfi
 
     @Autowired
     private IdentityService identityService;
+    
+    @Autowired
+    private ProfileService profileService;
 
     @ExpectedScenarioState
     private AdStudent student;
@@ -50,7 +55,7 @@ public class WhenIUpdateStudentProfileInfo extends Stage<WhenIUpdateStudentProfi
     @ExpectedScenarioState
     private static String matricNo;
 
-    public WhenIUpdateStudentProfileInfo mgseb_update_student_profile_info() {
+    public WhenIUpdateStudentProfileInfo CPS_update_student_profile_info() {
 
      	student = identityService.findStudentByMatricNo(matricNo);
     	studentStatus = student.getStudentStatus();
@@ -81,11 +86,38 @@ public class WhenIUpdateStudentProfileInfo extends Stage<WhenIUpdateStudentProfi
     	
 
         student = identityService.findStudentByMatricNo(matricNo);
-        student.setIdentityNo("122334445");
+        student.setIdentityNo("F17P0001F");
         identityService.updateStudent(student);
         LOG.debug("New Student Matric No :{}", student.getMatricNo());
+        LOG.debug("");
         
         return self();
+    }
+    
+    public WhenIUpdateStudentProfileInfo CPS_update_status() {
+    	
+
+     	student = identityService.findStudentByMatricNo("F17P0001F");
+    	studentStatus = student.getStudentStatus();
+    	LOG.debug("MGSEB STUDENT ==========================================");
+        LOG.debug("Student's Name:{}", student.getName());
+        LOG.debug("Student's IdentityNo :{}", student.getMatricNo());
+        LOG.debug("Student's StudentStatus :{}", student.getStudentStatus());
+        
+        AdFaculty fromFaculty = student.getCohort().getProgram().getFaculty();
+        
+        AdFaculty toFaculty = student.getCohort().getProgram().getFaculty();
+        
+
+        
+ 
+        
+        //Actived Student Status from Barred status
+        student.setStudentStatus(AdStudentStatus.ACTIVE);
+        profileService.activateStudent(student);
+        LOG.debug("StudentNewStatus:{}",student.getStudentStatus());
+    	
+    	return self();
     }
     
     

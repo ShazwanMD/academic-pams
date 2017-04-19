@@ -25,11 +25,14 @@ public class AdReferenceNoDaoImpl extends GenericDaoSupport<Long, AdReferenceNo>
     public AdReferenceNo findByCode(String code) {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select s from AdReferenceNo s where " +
-                "s.code = :code and  " +
+        		"s.code = :code");
+        //disable
+              /*  "s.code = :code and  " +
                 " s.metadata.state = :state");
+        */
         query.setString("code", code);
         query.setCacheable(true);
-        query.setInteger("state", AdMetaState.ACTIVE.ordinal());
+//        query.setInteger("state", AdMetaState.ACTIVE.ordinal());
         return (AdReferenceNo) query.uniqueResult();
     }
 

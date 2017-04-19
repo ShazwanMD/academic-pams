@@ -40,8 +40,8 @@ public class US_AD_PFL_1009 extends SpringScenarioTest<GivenIAmStudent, WhenIRev
 		when().i_review_my_profile().and().i_review_subject();
 		when()
 		.i_review_my_profile()
-		.and().i_review_subject()
-		.and().i_generate_new_matricNo();
+		.and().i_review_subject();
+
 		then().profile_current();
 		
 	}

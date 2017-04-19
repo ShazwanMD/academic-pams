@@ -33,7 +33,7 @@ public class US_AD_PFL_2002 extends
     private static final Logger LOG = LoggerFactory.getLogger(US_AD_PFL_2002.class);
 
     @ProvidedScenarioState
-    private static String matricNo = "A17P001";
+    private static String matricNo = "A17P002";
     
     
     @Test
@@ -42,7 +42,8 @@ public class US_AD_PFL_2002 extends
     	String username  = "cps";
     	String password  = "abc123";
         given().i_am_a_$_administrator_in_current_academic_session(username, password);
-        when().mgseb_update_student_profile_info();
+        when().CPS_update_student_profile_info()
+        		.and().CPS_update_status();
         then().current_student_profile_info_is_updated();
 
     }

@@ -286,78 +286,12 @@ public class WhenIReviewProfile extends Stage<WhenIReviewProfile> {
 		LOG.debug("Course Code :{}", course.getCode());
 		LOG.debug("");
 
-		
-		singleSubject = new AdSingleSubjectImpl();
-		singleSubject.setCourse(course);
-		singleSubject.setCurriculum(curriculum);
-		singleSubject.setPeriod(AdAcademicPeriod.I);
-		singleSubject.setSubjectType(AdSubjectType.CORE);
-		plannerService.addSubject(curriculum, singleSubject);
-		LOG.debug("Single Subject:{}");
-//		
-//		bundleSubject = new AdBundleSubjectImpl();
-//		bundleSubject.setCurriculum(curriculum);
-//		bundleSubject.setParts(parts);
-//		
-//		
-//		part = new AdBundleSubjectPartImpl();
-//		part.setBundle(bundleSubject);
-//		part.setCourse(course);
-//		plannerService.addSubjectPart(bundleSubject, part);
-//		
-		
-		
-		
-					
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+
 		
 		
 		return self();
 	}
-	public WhenIReviewProfile i_generate_new_matricNo(){
-		
-		student = identityService.findStudentByMatricNo(matricNo);
-	    LOG.debug("Student:{}", student.getName());
-	    LOG.debug("");
-		studyMode = commonService.findStudyModeByCode("1");
-		LOG.debug("StudyMode:{}", studyMode.getPrefix());
-		LOG.debug("");
-		
-		profileService.generateMatricNo(student, studyMode, academicSession);
-		  LOG.debug("Student MatricNo:{}", student.getMatricNo());
-		  Assert.notNull(student.getMatricNo(), "MatricNo not Generated");
-		//FacultyPrefix
-		student.getCohort().getProgram().getFaculty().getPrefix();
-		LOG.debug("Faculty Prefix:{}",student.getCohort().getProgram().getFaculty().getPrefix());
-		//StudyModePrefix
-		LOG.debug("StudyModePrefix:{}", studyMode.getPrefix());
-		//level Of Study Prefix
-		student.getCohort().getProgram().getProgramLevel().getPrefix();
-		LOG.debug("LevelOfStudyPrefix :{}", student.getCohort().getProgram().getProgramLevel().getPrefix());
-		//session
-		academicSession.getCode();
-		LOG.debug("Year :{}", academicSession.getCode());
-		
-		
-		
-		
-		
-		return self();
-	}
+
 	
 	
 }
