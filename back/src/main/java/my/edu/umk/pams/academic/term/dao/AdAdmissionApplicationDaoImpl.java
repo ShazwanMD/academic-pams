@@ -143,14 +143,14 @@ public class AdAdmissionApplicationDaoImpl extends GenericDaoSupport<Long, AdAdm
 	}
 
 	@Override
-	public Integer count(String filter, AdAcademicSession session, AdStaff advisor) {
+	public Integer count(String filter, AdAcademicSession session, AdStaff staff) {
 		Session currentSession = sessionFactory.getCurrentSession();
 		Query query = currentSession.createQuery("select count(p) from AdAdmissionApplication p " + "where "
 				+ "(upper(p.referenceNo) like upper(:filter) or " + "upper(p.description) like upper(:filter)) "
 				+ "and p.session = :session " + "and p.advisor = :advisor");
 		query.setString("filter", WILDCARD + filter + WILDCARD);
 		query.setEntity("session", session);
-		query.setEntity("advisor", advisor);
+		query.setEntity("advisor", staff);
 		return ((Long) query.uniqueResult()).intValue();
 
 	}
