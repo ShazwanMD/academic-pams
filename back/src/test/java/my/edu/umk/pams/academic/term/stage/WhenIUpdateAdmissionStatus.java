@@ -37,13 +37,13 @@ public class WhenIUpdateAdmissionStatus extends Stage<WhenIUpdateAdmissionStatus
 	@ProvidedScenarioState
 	private AdSection section;
 
-	@ProvidedScenarioState
+	@ExpectedScenarioState
 	private AdStudent student;
 
-	@ProvidedScenarioState
+	@ExpectedScenarioState
 	private AdProgram program;
 
-	@ProvidedScenarioState
+	@ExpectedScenarioState
 	private AdCohort cohort;
 
 	@ProvidedScenarioState
@@ -58,15 +58,19 @@ public class WhenIUpdateAdmissionStatus extends Stage<WhenIUpdateAdmissionStatus
 	@ProvidedScenarioState
 	private	AdAdmissionApplication application;
 
+	@ProvidedScenarioState
+	private String matricNo = "A17P001";
+	
 	public WhenIUpdateAdmissionStatus I_update_admission_status_for_program_$(String code) {
 
-		student = identityService.findStudentByMatricNo("A17P001");
-		program = plannerService.findProgramByCode("A01/MASTER/0001");
+		student = identityService.findStudentByMatricNo(matricNo);
+		program = plannerService.findProgramByCode(code);
 		cohort = plannerService.findCohortByCode("FIAT/PHD/PBT/CHRT/201720181");
 
-		LOG.debug("student: {}", student.getId());
-		LOG.debug("program: {}", program.getId());
+		LOG.debug("student: {}", student.getMatricNo());
+		LOG.debug("program: {}", program.getCode());
 		LOG.debug("academicSession: {}", academicSession.getId());
+		LOG.debug("cohort: {}", cohort.getCode());
 		
 		//transfer new admission application to admission for updating status 
 		application = termService.findAdmissionApplicationByProgramAndStudent(program, student);
@@ -106,7 +110,11 @@ public class WhenIUpdateAdmissionStatus extends Stage<WhenIUpdateAdmissionStatus
 		LOG.debug("New admission Status inserted:{}", admission.getStatus());
 		LOG.debug("New admission StudyCenter inserted:{}", admission.getStudyCenter().getId());
 				
-		//find data admission to update status		
+		//find data admission to update status
+		cohort = admission.getCohort();
+		academicSession = admission.getSession();
+		student = admission.getStudent();
+		
 		admission = termService.findAdmissionByAcademicSessionCohortAndStudent(academicSession, cohort, student);
 		Assert.notNull(admission, "The admission data must not be null");
 		LOG.debug("current admission id: {}", admission.getId());
