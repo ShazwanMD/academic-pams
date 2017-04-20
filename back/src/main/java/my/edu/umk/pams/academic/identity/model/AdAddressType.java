@@ -1,6 +1,6 @@
 package my.edu.umk.pams.academic.identity.model;
 
 public enum AdAddressType {
-    MAILING,     //
-    BILLING;    //
+    MAILING,     //0
+    BILLING;    //1
 }

@@ -607,6 +607,11 @@ public class TermServiceImpl implements TermService {
     public AdAdmission findAdmissionByAcademicSessionCohortAndStudent(AdAcademicSession academicSession, AdCohort cohort, AdStudent student) {
         return admissionDao.findBySessionCohortAndStudent(academicSession, cohort, student);
     }
+    
+    @Override
+	public Integer countAdmission(AdAcademicSession academicSession, AdStudent student) {
+    	return admissionDao.count(academicSession, student);
+	}
 
     @Override
     public void saveAdmission(AdAdmission admission) {
@@ -1385,4 +1390,6 @@ public class TermServiceImpl implements TermService {
         map.put(WorkflowConstants.CANCEL_DECISION, false);
         return map;
     }
+
+	
 }
