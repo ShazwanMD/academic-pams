@@ -284,7 +284,7 @@ public class AdAdmissionDaoImpl extends GenericDaoSupport<Long, AdAdmission> imp
         query.setCacheable(true);
         return ((Long) query.uniqueResult()).intValue();
     }
-
+    
     @Override
     public Integer countStudent(AdProgram program) {
         Session session = sessionFactory.getCurrentSession();
@@ -336,4 +336,21 @@ public class AdAdmissionDaoImpl extends GenericDaoSupport<Long, AdAdmission> imp
         query.setCacheable(true);
         return ((Long) query.uniqueResult()).intValue();
     }
+
+	@Override
+	public Integer count(AdAcademicSession academicSession, AdStudent student) {
+		Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select count(s) from AdAdmission s where " +
+                "s.student = :student " +
+                "and s.session = :academicSession " +
+                "and s.metadata.state = :state ");
+        query.setInteger("state", AdMetaState.ACTIVE.ordinal());
+        query.setEntity("student", student);
+        query.setEntity("academicSession", academicSession);
+        query.setCacheable(true);
+        return ((Long) query.uniqueResult()).intValue();
+    
+	}
+
+	
 }

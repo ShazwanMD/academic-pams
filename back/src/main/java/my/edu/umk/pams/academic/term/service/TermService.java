@@ -217,6 +217,8 @@ public interface TermService {
 
     AdAdmission findAdmissionByAcademicSessionCohortAndStudent(AdAcademicSession academicSession, AdCohort cohort, AdStudent student);
 
+    Integer countAdmission(AdAcademicSession academicSession, AdStudent student);
+    
     @Deprecated // use startAdmissionApplication
     void saveAdmissionApplication(AdAdmissionApplication application);
 
