@@ -7,10 +7,10 @@ import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 import my.edu.umk.pams.academic.planner.model.*;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
-import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.Assert;
 
 @JGivenStage
 public class WhenSetupSubject extends Stage<WhenSetupSubject> {
@@ -38,25 +38,25 @@ public class WhenSetupSubject extends Stage<WhenSetupSubject> {
 	@ProvidedScenarioState
 	private AdCurriculum curriculum;
 
-//	private String curriculumCode = "MGSEB/MBA";
-//	private String courseCode = "GST5013";
+	@ProvidedScenarioState
+	private String courseCode = "GST5013";
+
+	private String curriculumCode = "MGSEB/MBA/CRLM/0001";
 
 	public WhenSetupSubject I_setup_subject_$(String code) {
 
 		LOG.debug("faculty {}" , faculty);
-	
-		curriculum= cohort.getCurriculum();
-		
-		LOG.debug("curriculum {}" , curriculum);
-		course = plannerService.findCourseByCode("GST5013");
-//		Subject = plannerService.findSubjectByCurriculumAndCourse(curriculum, course);
-		
+
+		curriculum = plannerService.findCurriculumByCode(curriculumCode);
+		Assert.notNull(curriculum, "curriculum cannot be null");
+
+		course = plannerService.findCourseByCode(courseCode);
+		Assert.notNull(course, "course cannot be null");
+
 		AdSingleSubject subject = new AdSingleSubjectImpl();
-
-
 		subject.setSubjectType(AdSubjectType.ELECTIVE);
 		subject.setPeriod(AdAcademicPeriod.II);
-		subject.setCurriculum(curriculum);
+		subject.setCurriculum(curriculum); //--- implicit in addSubject(curriculum, subject)
 		subject.setCourse(course);
 	
 		plannerService.addSubject(curriculum, subject);

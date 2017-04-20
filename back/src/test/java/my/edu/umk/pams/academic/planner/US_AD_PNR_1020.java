@@ -33,13 +33,13 @@ public class US_AD_PNR_1020
 	private static final String FACULTY_CODE = "A10";
 	
 	@Test
-	@Rollback(false)
-	public void SetupBundleSubject() {
+	@Rollback
+	public void setup_bundle_subject() {
 		given().I_am_a_CPS_administrator().and().I_pick_faculty_$(FACULTY_CODE);
 		when().I_setup_subject_$(FACULTY_CODE);
-		addStage(WhenBundleSubjectAdd.class).and().Add_bundle_subject().
-		and().Add_bundle_subject_part().
-		and().Add_single_subject();	
-		then(). subject_added();
+		addStage(WhenBundleSubjectAdd.class).and().add_bundle_subject().
+		and().add_bundle_subject_part().
+		and().add_single_subject();
+		then().subject_added();
 	}
 }
