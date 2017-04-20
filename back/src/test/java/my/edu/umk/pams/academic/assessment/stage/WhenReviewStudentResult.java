@@ -1,6 +1,7 @@
 package my.edu.umk.pams.academic.assessment.stage;
 
 import java.math.BigDecimal;
+
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -27,7 +28,6 @@ import my.edu.umk.pams.academic.planner.model.AdCohort;
 import my.edu.umk.pams.academic.planner.model.AdCourse;
 import my.edu.umk.pams.academic.planner.model.AdFaculty;
 import my.edu.umk.pams.academic.planner.model.AdProgram;
-import my.edu.umk.pams.academic.planner.service.PlannerService;
 import my.edu.umk.pams.academic.term.model.AdAssessment;
 import my.edu.umk.pams.academic.term.model.AdAssessmentCategory;
 import my.edu.umk.pams.academic.term.model.AdAssessmentImpl;
@@ -121,9 +121,9 @@ public class WhenReviewStudentResult extends Stage<WhenReviewStudentResult> {
 
 		// new offering
 		offering = new AdOfferingImpl();
-		offering.setCanonicalCode("A01/MASTER/1/DDA2113");
+		offering.setCanonicalCode("FIAT/MASTER/PBH/GST5055");
 		offering.setCapacity(100);
-		offering.setCode("DDA2113");
+		offering.setCode("GST5055");
 		offering.setTitle("Offering 1");
 		offering.setProgram(program);
 		termService.saveOffering(offering);
@@ -131,9 +131,9 @@ public class WhenReviewStudentResult extends Stage<WhenReviewStudentResult> {
 
 		// setup assessment
 		AdAssessment quiz1 = new AdAssessmentImpl();
-		quiz1.setCanonicalCode("A01/MASTER/Q1/DDA2113");
+		quiz1.setCanonicalCode("FIAT/MASTER/PBH/Q1/GST5055");
 		quiz1.setCategory(AdAssessmentCategory.COURSE_WORK);
-		quiz1.setCode("MASTER/Q1");
+		quiz1.setCode("MASTER/PBH/Q1");
 		quiz1.setDescription("MECHANICS OF MATERIALS");
 		quiz1.setOffering(offering);
 		quiz1.setOrdinal(0);
