@@ -33,8 +33,6 @@ public class US_AD_PNR_1020
 
 	private static final String FACULTY_CODE = "A10";
 	
-	
-
 	@Test
 	@Rollback(false)
 	public void SetupBundleSubject() {

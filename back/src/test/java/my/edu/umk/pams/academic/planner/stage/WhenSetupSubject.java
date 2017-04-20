@@ -44,7 +44,6 @@ public class WhenSetupSubject extends Stage<WhenSetupSubject> {
 	public WhenSetupSubject I_setup_subject_$(String code) {
 
 		LOG.debug("faculty {}" , faculty);
-		
 	
 		curriculum= cohort.getCurriculum();
 		
