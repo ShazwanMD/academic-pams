@@ -11,6 +11,7 @@ import com.tngtech.jgiven.integration.spring.JGivenStage;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.identity.model.AdStudentStatus;
 import my.edu.umk.pams.academic.identity.service.IdentityService;
+import my.edu.umk.pams.academic.profile.service.ProfileService;
 
 @JGivenStage
 public class WhenIViewStudentStatus extends Stage<WhenIViewStudentStatus> {
@@ -19,28 +20,27 @@ public class WhenIViewStudentStatus extends Stage<WhenIViewStudentStatus> {
 
     @Autowired
     private IdentityService identityService;
+    
+    @Autowired
+    private ProfileService profileService;
 
     @ExpectedScenarioState
     private AdStudent student;
-    
-   // @ProvidedScenarioState
-   // private String status;
-    
+
     public WhenIViewStudentStatus I_view_student_$_status(String identityNo) {
     	
 	 student = identityService.findStudentByMatricNo(identityNo);
 		
 	 AdStudentStatus studentStatus = student.getStudentStatus();
-	 
-	 //status = studentStatus.name();
-		
-		//try commit sekali-sekalo..var lalala
 		LOG.debug("Student's name: {}", student.getMatricNo());
 		LOG.debug("Student's name: {}", student.getName());
 		LOG.debug("Student's status: {}", studentStatus.name());
 		LOG.debug("Student's status: {}", studentStatus.ordinal());
 		
-		
+		//Activate student status from old status
+        student.setStudentStatus(AdStudentStatus.ACTIVE);
+        profileService.activateStudent(student);
+        LOG.debug("StudentNewStatus:{}",student.getStudentStatus());
 	     return self();
 	}
 

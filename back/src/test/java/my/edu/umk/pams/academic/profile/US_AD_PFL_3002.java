@@ -31,7 +31,7 @@ public class US_AD_PFL_3002
 		extends SpringScenarioTest<GivenIAmBursary, WhenIViewStudentStatus, ThenIKnowStudentCurrentStatus> {
 
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_PFL_3002.class);
-	private static final String IDENTITY_NO = "A17P001";
+	private static final String IDENTITY_NO = "A17P004";
 
 	@Test
 	@Rollback
