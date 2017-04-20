@@ -256,7 +256,6 @@ public class WhenIReviewProfile extends Stage<WhenIReviewProfile> {
 		LOG.debug("Period :{}", curriculum.getPeriod());
 		LOG.debug("Max Period :{}", curriculum.getMaxPeriod());
 		LOG.debug("Program Name :{}", curriculum.getProgram().getCode());
-		LOG.debug("Subject(s) :{}", curriculum.getSubjects());
 		LOG.debug("");
 		
 		program = curriculum.getProgram();
@@ -266,25 +265,12 @@ public class WhenIReviewProfile extends Stage<WhenIReviewProfile> {
 		LOG.debug("Program Title :{}", program.getTitle());
 		LOG.debug("Program TitleEn :{}", program.getTitleEn());
 		LOG.debug("Program TitleMs :{}", program.getTitleMs());
-		LOG.debug("Offering :{}", program.getOfferings().get(0));
 		LOG.debug("");
 		
 		faculty = program.getFaculty();
 		LOG.debug("Faculty :{}", faculty.getName());
 		LOG.debug("");
-		
-		course = new AdCourseImpl();
-		course.setClassification(AdAcademicClassification.LEVEL_MASTER);
-		course.setCode("GST5001");
-		course.setCredit(3);
-		course.setFaculty(faculty);
-		course.setOfferings(offerings);
-		course.setTitle("Latihan");
-		course.setTitleEn("coding");
-		course.setTitleMs("pams");
-		plannerService.addCourse(faculty, course);
-		LOG.debug("Course Code :{}", course.getCode());
-		LOG.debug("");
+
 
 
 		
