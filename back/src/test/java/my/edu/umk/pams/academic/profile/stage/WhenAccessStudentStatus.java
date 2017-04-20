@@ -1,9 +1,9 @@
 package my.edu.umk.pams.academic.profile.stage;
 
 import com.tngtech.jgiven.Stage;
+
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
-import io.jsonwebtoken.lang.Assert;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.identity.model.AdStudentStatus;
 import my.edu.umk.pams.academic.identity.service.IdentityService;
@@ -12,6 +12,7 @@ import my.edu.umk.pams.academic.planner.model.AdCourse;
 import my.edu.umk.pams.academic.planner.model.AdFaculty;
 import my.edu.umk.pams.academic.planner.model.AdProgram;
 import my.edu.umk.pams.academic.planner.model.AdProgramLevel;
+import my.edu.umk.pams.academic.profile.service.ProfileService;
 
 import java.util.List;
 
@@ -26,6 +27,9 @@ public class WhenAccessStudentStatus extends Stage<WhenAccessStudentStatus> {
 
     @Autowired
     private IdentityService identityService;
+    
+    @Autowired
+    private ProfileService profileService;
 
     @ExpectedScenarioState
     private AdStudent student;
@@ -121,6 +125,11 @@ public class WhenAccessStudentStatus extends Stage<WhenAccessStudentStatus> {
 		else{
 			LOG.debug("You Are Not Registered Student");
 		};
+		
+		//Activate Student Status from old status
+        student.setStudentStatus(AdStudentStatus.ACTIVE);
+        profileService.activateStudent(student);
+        LOG.debug("StudentNewStatus:{}",student.getStudentStatus());
 		
 		return self();
 	}
