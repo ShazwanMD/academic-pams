@@ -1,8 +1,10 @@
 package my.edu.umk.pams.academic.profile;
 
 import com.tngtech.jgiven.annotation.As;
+
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.academic.config.TestAppConfiguration;
+
 import my.edu.umk.pams.academic.profile.stage.ThenStudentCourseInfoIsCurrent;
 import my.edu.umk.pams.academic.profile.stage.WhenIViewStudentCourseInfo;
 import my.edu.umk.pams.bdd.stage.GivenIAmAdministrator;
