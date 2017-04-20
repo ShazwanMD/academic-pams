@@ -86,9 +86,15 @@ public class WhenIReviewActivationStatus extends Stage<WhenIReviewActivationStat
 			
 			//courses
 				for(AdCourse course:courses)
-					LOG.debug("Course's Registered:{}", course.getCode());
+					LOG.debug("Courses Registered:{}", course.getCode());
 		
+			//Deactivate student status from old status
+		    student.setStudentStatus(AdStudentStatus.INACTIVE);
+		    profileService.deactivateStudent(student);
+		    LOG.debug("Student New Status:{}",student.getStudentStatus());
+				
 		}
+		
 		else if(studentStatus == AdStudentStatus.MATRICULATED){
 			
 			//student details		
@@ -112,9 +118,15 @@ public class WhenIReviewActivationStatus extends Stage<WhenIReviewActivationStat
 			
 			//courses
 			for(AdCourse course:courses)
-				LOG.debug("Course's Registered:{}", course.getCode());
+				LOG.debug("Courses Registered:{}", course.getCode());
 		
+			//Activate student status from old status
+	        student.setStudentStatus(AdStudentStatus.ACTIVE);
+	        profileService.activateStudent(student);
+	        LOG.debug("Student New Status:{}",student.getStudentStatus());
+	    	
 	    }
+		
 		else if(studentStatus == AdStudentStatus.INACTIVE){
 	    	
 			//student details		
@@ -138,9 +150,15 @@ public class WhenIReviewActivationStatus extends Stage<WhenIReviewActivationStat
 			
 			//courses
 			for(AdCourse course:courses)
-				LOG.debug("Course's Registered:{}", course.getCode());
+				LOG.debug("Courses Registered:{}", course.getCode());
+			
+			//Activate student status from old status
+	        student.setStudentStatus(AdStudentStatus.ACTIVE);
+	        profileService.activateStudent(student);
+	        LOG.debug("Student New Status:{}",student.getStudentStatus());
 			
 		}
+		
 		else if(studentStatus == AdStudentStatus.BARRED){
 			
 			//student details		
@@ -164,9 +182,15 @@ public class WhenIReviewActivationStatus extends Stage<WhenIReviewActivationStat
 			
 			//courses
 			for(AdCourse course:courses)
-				LOG.debug("Course's Registered:{}", course.getCode());
-			
+				LOG.debug("Courses Registered:{}", course.getCode());
+		
+			//Activate student status from old status
+	        student.setStudentStatus(AdStudentStatus.ACTIVE);
+	        profileService.activateStudent(student);
+	        LOG.debug("Student New Status:{}",student.getStudentStatus());
+	    	
 		}
+		
 		else if(studentStatus == AdStudentStatus.GRADUATED){
 			
 			//student details		
@@ -190,18 +214,20 @@ public class WhenIReviewActivationStatus extends Stage<WhenIReviewActivationStat
 			
 			//courses
 			for(AdCourse course:courses)
-				LOG.debug("Course's Registered:{}", course.getCode());
+				LOG.debug("Courses Registered:{}", course.getCode());
+		
+			//Activate student status from old status
+	        student.setStudentStatus(AdStudentStatus.ACTIVE);
+	        profileService.activateStudent(student);
+	        LOG.debug("Student New Status:{}",student.getStudentStatus());
+	    	
 		}
+		
 		else{
 			
 			LOG.debug("You Are Not Registered Student");
 		};
 		
-		//Activate Student Status from old status
-        student.setStudentStatus(AdStudentStatus.ACTIVE);
-        profileService.activateStudent(student);
-        LOG.debug("StudentNewStatus:{}",student.getStudentStatus());
-        
 		return self();
 	}
 

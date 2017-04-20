@@ -12,6 +12,7 @@ import com.tngtech.jgiven.integration.spring.JGivenStage;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.identity.model.AdStudentStatus;
 import my.edu.umk.pams.academic.identity.service.IdentityService;
+import my.edu.umk.pams.academic.profile.service.ProfileService;
 
 @JGivenStage
 public class WhenLecturerReviewStudentGraduationStatus extends Stage<WhenLecturerReviewStudentGraduationStatus> {
@@ -20,7 +21,10 @@ public class WhenLecturerReviewStudentGraduationStatus extends Stage<WhenLecture
 	
 	@Autowired
 	private IdentityService identityService;
-
+   
+	@Autowired
+    private ProfileService profileService;
+	
 	@ExpectedScenarioState
 	private AdStudent student;
 	
@@ -39,7 +43,11 @@ public class WhenLecturerReviewStudentGraduationStatus extends Stage<WhenLecture
 		
 		}else {
 			
-			LOG.debug("Not Qualify to graduate");
+			//Activate student status from old status
+	        student.setStudentStatus(AdStudentStatus.ACTIVE);
+	        profileService.activateStudent(student);
+		        LOG.debug("Student New Status:{}",student.getStudentStatus());
+				LOG.debug("NOT GRADUATED YET");
 		}
 		
 		return self();

@@ -18,6 +18,7 @@ import my.edu.umk.pams.academic.planner.model.AdFaculty;
 import my.edu.umk.pams.academic.planner.model.AdProgram;
 import my.edu.umk.pams.academic.planner.model.AdProgramLevel;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
+import my.edu.umk.pams.academic.profile.service.ProfileService;
 
 @JGivenStage
 public class WhenReviewStudentActivationStatus extends Stage <WhenReviewStudentActivationStatus>{
@@ -30,6 +31,9 @@ public class WhenReviewStudentActivationStatus extends Stage <WhenReviewStudentA
 	
 	@Autowired
 	private PlannerService plannerService;
+	
+	@Autowired
+	private ProfileService profileService;
 
 	@ExpectedScenarioState
 	private AdStudent student;
@@ -58,21 +62,26 @@ public class WhenReviewStudentActivationStatus extends Stage <WhenReviewStudentA
 		
 		if(studentStatus == AdStudentStatus.ACTIVE){
 				
-		LOG.debug("Student's Name:{}", student.getName());
-		LOG.debug("Student's MatricNo:{}", student.getMatricNo());
-		
-		LOG.debug("Student's status: {}", studentStatus.name());
-		LOG.debug("Student's status: {}", studentStatus.ordinal());
-		
-		LOG.debug("Faculty Name :{}", faculty.getName());
-
-		LOG.debug("Program CODE:{}", program.getCode());
-		LOG.debug("Program Details:{}", program.getTitle());
-		LOG.debug("Program Details:{}", program.getTitleEn());
-		LOG.debug("Program Details:{}", program.getTitleMs());
-
-		for(AdCourse course:courses)
-			LOG.debug("Course's Registered:{}", course.getCode());
+			LOG.debug("Student's Name:{}", student.getName());
+			LOG.debug("Student's MatricNo:{}", student.getMatricNo());
+			
+			LOG.debug("Student's status: {}", studentStatus.name());
+			LOG.debug("Student's status: {}", studentStatus.ordinal());
+			
+			LOG.debug("Faculty Name :{}", faculty.getName());
+	
+			LOG.debug("Program CODE:{}", program.getCode());
+			LOG.debug("Program Details:{}", program.getTitle());
+			LOG.debug("Program Details:{}", program.getTitleEn());
+			LOG.debug("Program Details:{}", program.getTitleMs());
+	
+			for(AdCourse course:courses)
+				LOG.debug("Courses Registered:{}", course.getCode());
+			
+			//Activate student status from old status
+	        student.setStudentStatus(AdStudentStatus.INACTIVE);
+	        profileService.deactivateStudent(student);
+	        LOG.debug("Student New Status:{}",student.getStudentStatus());
 		
 		}else if(studentStatus == AdStudentStatus.MATRICULATED){
 			
@@ -82,6 +91,10 @@ public class WhenReviewStudentActivationStatus extends Stage <WhenReviewStudentA
 			LOG.debug("Student's status: {}", studentStatus.name());
 			LOG.debug("Student's status: {}", studentStatus.ordinal());
 			
+			//Activate student status from old status
+	        student.setStudentStatus(AdStudentStatus.ACTIVE);
+	        profileService.activateStudent(student);
+	        LOG.debug("Student New Status:{}",student.getStudentStatus());
 		
 	    }else if(studentStatus == AdStudentStatus.INACTIVE){
 	
@@ -91,6 +104,11 @@ public class WhenReviewStudentActivationStatus extends Stage <WhenReviewStudentA
 			LOG.debug("Student's status: {}", studentStatus.name());
 			LOG.debug("Student's status: {}", studentStatus.ordinal());
 			
+			//Activate student status from old status
+	        student.setStudentStatus(AdStudentStatus.ACTIVE);
+	        profileService.activateStudent(student);
+	        LOG.debug("Student New Status:{}",student.getStudentStatus());
+	        
 		}else if(studentStatus == AdStudentStatus.BARRED){
 			
 			LOG.debug("Student's Name:{}", student.getName());
@@ -98,7 +116,12 @@ public class WhenReviewStudentActivationStatus extends Stage <WhenReviewStudentA
 			
 			LOG.debug("Student's status: {}", studentStatus.name());
 		    LOG.debug("Student's status: {}", studentStatus.ordinal());
-			
+
+		    //Activate student status from old status
+	        student.setStudentStatus(AdStudentStatus.ACTIVE);
+	        profileService.activateStudent(student);
+	        LOG.debug("Student New Status:{}",student.getStudentStatus());
+	        
 		}else if(studentStatus == AdStudentStatus.GRADUATED){
 			
 			LOG.debug("Student's Name:{}", student.getName());
@@ -115,7 +138,13 @@ public class WhenReviewStudentActivationStatus extends Stage <WhenReviewStudentA
 			LOG.debug("Program Taken:{}", program.getTitleMs());
 			
 			for(AdCourse course:courses)
-				LOG.debug("Course's Taken:{}", course.getCode());
+				LOG.debug("Courses  Taken:{}", course.getCode());
+			
+			//Activate student status from old status
+	        student.setStudentStatus(AdStudentStatus.ACTIVE);
+	        profileService.activateStudent(student);
+	        LOG.debug("Student New Status:{}",student.getStudentStatus());
+		
 		}else{
 			
 			LOG.debug("You Are Not Registered Student");

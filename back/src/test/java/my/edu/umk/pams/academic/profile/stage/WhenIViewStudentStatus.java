@@ -32,15 +32,82 @@ public class WhenIViewStudentStatus extends Stage<WhenIViewStudentStatus> {
 	 student = identityService.findStudentByMatricNo(identityNo);
 		
 	 AdStudentStatus studentStatus = student.getStudentStatus();
-		LOG.debug("Student's name: {}", student.getMatricNo());
-		LOG.debug("Student's name: {}", student.getName());
-		LOG.debug("Student's status: {}", studentStatus.name());
-		LOG.debug("Student's status: {}", studentStatus.ordinal());
+	 if (studentStatus == AdStudentStatus.ACTIVE) {
+
+			LOG.debug("Student's Name:{}", student.getName());
+			LOG.debug("Student's MatricNo:{}", student.getMatricNo());
+
+			LOG.debug("Student's status: {}", studentStatus.name());
+			LOG.debug("Student's status: {}", studentStatus.ordinal());
+			
+			 //Deactivate student status from old status
+	        student.setStudentStatus(AdStudentStatus.INACTIVE);
+	        profileService.deactivateStudent(student);
+	        LOG.debug("StudentNewStatus:{}",student.getStudentStatus());
+
+	        
+		} else if (studentStatus == AdStudentStatus.MATRICULATED) {
+
+			LOG.debug("Student's Name:{}", student.getName());
+			LOG.debug("Student's MatricNo:{}", student.getMatricNo());
+
+			LOG.debug("Student's status: {}", studentStatus.name());
+			LOG.debug("Student's status: {}", studentStatus.ordinal());
+
+			//Activate student status from old status
+	        student.setStudentStatus(AdStudentStatus.ACTIVE);
+	        profileService.activateStudent(student);
+	        LOG.debug("Student New Status:{}",student.getStudentStatus());
+	    	
+			
+		} else if (studentStatus == AdStudentStatus.INACTIVE) {
+
+			LOG.debug("Student's Name:{}", student.getName());
+			LOG.debug("Student's MatricNo:{}", student.getMatricNo());
+
+			LOG.debug("Student's status: {}", studentStatus.name());
+			LOG.debug("Student's status: {}", studentStatus.ordinal());
+
+			//Activate student status from old status
+	        student.setStudentStatus(AdStudentStatus.ACTIVE);
+	        profileService.activateStudent(student);
+	        LOG.debug("Student New Status:{}",student.getStudentStatus());
+	    	
+			
+		} else if (studentStatus == AdStudentStatus.BARRED) {
+
+			LOG.debug("Student's Name:{}", student.getName());
+			LOG.debug("Student's MatricNo:{}", student.getMatricNo());
+
+			LOG.debug("Student's status: {}", studentStatus.name());
+			LOG.debug("Student's status: {}", studentStatus.ordinal());
+			
+			//Activate student status from old status
+	        student.setStudentStatus(AdStudentStatus.ACTIVE);
+	        profileService.activateStudent(student);
+	        LOG.debug("Student New Status:{}",student.getStudentStatus());
+
+	        
+		} else if (studentStatus == AdStudentStatus.GRADUATED) {
+
+			LOG.debug("Student's Name:{}", student.getName());
+			LOG.debug("Student's MatricNo:{}", student.getMatricNo());
+
+			LOG.debug("Student's status: {}", studentStatus.name());
+			LOG.debug("Student's status: {}", studentStatus.ordinal());
+
+			//Activate student status from old status
+	        student.setStudentStatus(AdStudentStatus.ACTIVE);
+	        profileService.activateStudent(student);
+	        LOG.debug("Student New Status:{}",student.getStudentStatus());
+	    	
+	        
+		} else {
+
+			LOG.debug("You Are Not Registered Student");
+		}
+		;
 		
-		//Activate student status from old status
-        student.setStudentStatus(AdStudentStatus.ACTIVE);
-        profileService.activateStudent(student);
-        LOG.debug("StudentNewStatus:{}",student.getStudentStatus());
 	     return self();
 	}
 

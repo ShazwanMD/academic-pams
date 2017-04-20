@@ -18,6 +18,7 @@ import my.edu.umk.pams.academic.planner.model.AdCohort;
 import my.edu.umk.pams.academic.planner.model.AdCourse;
 import my.edu.umk.pams.academic.planner.model.AdFaculty;
 import my.edu.umk.pams.academic.planner.model.AdProgram;
+import my.edu.umk.pams.academic.profile.service.ProfileService;
 
 
 
@@ -25,8 +26,12 @@ import my.edu.umk.pams.academic.planner.model.AdProgram;
 public class WhenReviewStudentBarringStatus extends Stage<WhenReviewStudentBarringStatus> {
 	
 	private static final Logger LOG = LoggerFactory.getLogger(WhenReviewStudentBarringStatus.class);
+	
 	@Autowired
 	private IdentityService identityService;
+	
+	@Autowired
+	private ProfileService profileService;
 
 	@ExpectedScenarioState
 	private AdStudent student;
@@ -72,19 +77,23 @@ public class WhenReviewStudentBarringStatus extends Stage<WhenReviewStudentBarri
 				LOG.debug("Faculty:{}", faculty.getName());
 				
 				for(AdCourse course:courses){
-				LOG.debug("Course(S):{}", course.getCode());
+				LOG.debug("Course(s):{}", course.getCode());
 				
 			    	}
 				
 				}	
+				
 				else{
 					
+					//Activate student status from old status
+			        student.setStudentStatus(AdStudentStatus.ACTIVE);
+			        profileService.activateStudent(student);
+			        LOG.debug("Student New Status:{}",student.getStudentStatus());
 					LOG.debug("NOT BARRED");
 				}
-				
-			
-		
 
+				
+		    	
 		return self();
 	}
 }

@@ -84,8 +84,13 @@ public class WhenReviewStudentStatus extends Stage<WhenReviewStudentStatus> {
 			LOG.debug("Program Details:{}", program.getTitleMs());
 
 			for (AdCourse course : courses)
-				LOG.debug("Course's Registered:{}", course.getCode());
+				LOG.debug("Courses Registered:{}", course.getCode());
 
+			//Deactivate student status from old status
+	        student.setStudentStatus(AdStudentStatus.INACTIVE);
+	        profileService.deactivateStudent(student);
+	        LOG.debug("StudentNewStatus:{}",student.getStudentStatus());
+	        
 		} else if (studentStatus == AdStudentStatus.MATRICULATED) {
 
 			LOG.debug("Student's Name:{}", student.getName());
@@ -93,6 +98,12 @@ public class WhenReviewStudentStatus extends Stage<WhenReviewStudentStatus> {
 
 			LOG.debug("Student's status: {}", studentStatus.name());
 			LOG.debug("Student's status: {}", studentStatus.ordinal());
+			
+			//Activate student status from old status
+	        student.setStudentStatus(AdStudentStatus.ACTIVE);
+	        profileService.activateStudent(student);
+	        LOG.debug("Student New Status:{}",student.getStudentStatus());
+
 
 		} else if (studentStatus == AdStudentStatus.INACTIVE) {
 
@@ -101,6 +112,12 @@ public class WhenReviewStudentStatus extends Stage<WhenReviewStudentStatus> {
 
 			LOG.debug("Student's status: {}", studentStatus.name());
 			LOG.debug("Student's status: {}", studentStatus.ordinal());
+			
+			//Activate student status from old status
+	        student.setStudentStatus(AdStudentStatus.ACTIVE);
+	        profileService.activateStudent(student);
+	        LOG.debug("Student New Status:{}",student.getStudentStatus());
+
 
 		} else if (studentStatus == AdStudentStatus.BARRED) {
 
@@ -109,6 +126,12 @@ public class WhenReviewStudentStatus extends Stage<WhenReviewStudentStatus> {
 
 			LOG.debug("Student's status: {}", studentStatus.name());
 			LOG.debug("Student's status: {}", studentStatus.ordinal());
+			
+			//Activate student status from old status
+	        student.setStudentStatus(AdStudentStatus.ACTIVE);
+	        profileService.activateStudent(student);
+	        LOG.debug("Student New Status:{}",student.getStudentStatus());
+
 
 		} else if (studentStatus == AdStudentStatus.GRADUATED) {
 
@@ -117,7 +140,7 @@ public class WhenReviewStudentStatus extends Stage<WhenReviewStudentStatus> {
 
 			LOG.debug("Student's status: {}", studentStatus.name());
 			LOG.debug("Student's status: {}", studentStatus.ordinal());
-
+			
 			LOG.debug("Faculty Name :{}", faculty.getName());
 
 			LOG.debug("Program CODE:{}", program.getCode());
@@ -126,8 +149,13 @@ public class WhenReviewStudentStatus extends Stage<WhenReviewStudentStatus> {
 			LOG.debug("Program Taken:{}", program.getTitleMs());
 
 			for (AdCourse course : courses)
-				LOG.debug("Course's Taken:{}", course.getCode());
+				LOG.debug("Courses Taken:{}", course.getCode());
 			
+			//Activate student status from old status
+	        student.setStudentStatus(AdStudentStatus.ACTIVE);
+	        profileService.activateStudent(student);
+	        LOG.debug("Student New Status:{}",student.getStudentStatus());
+
 			
 		} else {
 
@@ -135,12 +163,7 @@ public class WhenReviewStudentStatus extends Stage<WhenReviewStudentStatus> {
 		}
 		;
 
-		//Activate student status from old status
-        student.setStudentStatus(AdStudentStatus.ACTIVE);
-        profileService.activateStudent(student);
-        LOG.debug("StudentNewStatus:{}",student.getStudentStatus());
-    	
-		return self();
+        return self();
 
 	}
 
