@@ -48,7 +48,6 @@ public class WhenSetupSubject extends Stage<WhenSetupSubject> {
 		curriculum= cohort.getCurriculum();
 		
 		LOG.debug("curriculum {}" , curriculum);
-		
 		course = plannerService.findCourseByCode("GST5013");
 //		Subject = plannerService.findSubjectByCurriculumAndCourse(curriculum, course);
 		

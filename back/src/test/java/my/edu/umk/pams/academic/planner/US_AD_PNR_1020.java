@@ -28,7 +28,6 @@ import my.edu.umk.pams.bdd.tags.Submodule;
 
 public class US_AD_PNR_1020
 		extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenSetupSubject, ThenSubjectAdded> {
-
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_PNR_1020.class);
 
 	private static final String FACULTY_CODE = "A10";
