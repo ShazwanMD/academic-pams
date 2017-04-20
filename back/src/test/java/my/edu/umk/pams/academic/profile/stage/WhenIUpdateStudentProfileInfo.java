@@ -107,7 +107,6 @@ public class WhenIUpdateStudentProfileInfo extends Stage<WhenIUpdateStudentProfi
         
         AdFaculty toFaculty = student.getCohort().getProgram().getFaculty();
         
-
 		//Activate student status from old status
         student.setStudentStatus(AdStudentStatus.ACTIVE);
         profileService.activateStudent(student);
