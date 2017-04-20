@@ -27,7 +27,7 @@ public class US_AD_TRM_1008
 
 	@Test
 	@Rollback(true)
-	public void scenario1() {
+	public void adminTransferSections() {
 		given().I_am_a_CPS_administrator_in_current_academic_session();
 		when().I_transfer_section();
 		then().the_enrollment_is_updated();
