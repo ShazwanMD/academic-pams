@@ -19,7 +19,7 @@ import my.edu.umk.pams.academic.planner.model.AdCourse;
 import my.edu.umk.pams.academic.planner.model.AdFaculty;
 import my.edu.umk.pams.academic.planner.model.AdProgram;
 import my.edu.umk.pams.academic.planner.model.AdProgramLevel;
-import my.edu.umk.pams.academic.planner.service.PlannerService;
+import my.edu.umk.pams.academic.profile.service.ProfileService;
 
 @JGivenStage
 public class WhenReviewStudentStatus extends Stage<WhenReviewStudentStatus> {
@@ -30,7 +30,7 @@ public class WhenReviewStudentStatus extends Stage<WhenReviewStudentStatus> {
 	private IdentityService identityService;
 
 	@Autowired
-	private PlannerService plannerService;
+	private ProfileService profileService;
 
 	@ExpectedScenarioState
 	private AdStudent student;
@@ -127,12 +127,19 @@ public class WhenReviewStudentStatus extends Stage<WhenReviewStudentStatus> {
 
 			for (AdCourse course : courses)
 				LOG.debug("Course's Taken:{}", course.getCode());
+			
+			
 		} else {
 
 			LOG.debug("You Are Not Registered Student");
 		}
 		;
 
+		//Activate student status from old status
+        student.setStudentStatus(AdStudentStatus.ACTIVE);
+        profileService.activateStudent(student);
+        LOG.debug("StudentNewStatus:{}",student.getStudentStatus());
+    	
 		return self();
 
 	}
