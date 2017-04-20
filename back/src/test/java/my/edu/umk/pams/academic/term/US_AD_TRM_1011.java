@@ -32,7 +32,7 @@ public class US_AD_TRM_1011
 
 	@Test
 	@Rollback(true)
-	public void scenario01() {
+	public void adminCheckEnrollment() {
 		given().I_am_a_CPS_administrator_in_current_academic_session();
 		when().I_open_the_date_of_enrollment_for_program_$(PROGRAM_CODE);
 		then().the_enrollment_date_is_open();

@@ -33,7 +33,7 @@ SpringScenarioTest<GivenIAmCPSAdministrator, WhenIUpdateAppointStaffIntoSection,
 	
 	@Test
 	@Rollback(true)
-	public void scenario1() {
+	public void adminAppointedStaff() {
 		given().I_am_a_CPS_administrator_in_current_academic_session().and().I_pick_section_$(SECTION_CANONICAL_CODE);
 		when().I_update_appoint_staff_into_section();
 		then().Section_current_appointed_staff_info();

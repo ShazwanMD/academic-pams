@@ -27,7 +27,7 @@ public class US_AD_TRM_1010
 
 	@Test
 	@Rollback(true)
-	public void scenario01() {
+	public void adminChangeAdvisor() {
 		given().I_am_a_CPS_administrator_in_current_academic_session();
 		when().I_want_to_change_advisor();
 		then().The_advisor_is_updated();

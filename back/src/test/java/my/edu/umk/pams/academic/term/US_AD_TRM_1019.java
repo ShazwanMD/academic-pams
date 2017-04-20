@@ -28,7 +28,7 @@ public class US_AD_TRM_1019
 
 	@Test
 	@Rollback(true)
-	public void scenario01() {
+	public void studentViewAppointedAdvisor() {
 		given().I_am_a_student_in_current_academic_session();
 		when().I_want_to_view_appointed_advisor_info();
 		then().The_advisor_info_is_current();

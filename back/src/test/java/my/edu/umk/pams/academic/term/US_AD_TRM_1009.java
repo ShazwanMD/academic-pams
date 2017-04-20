@@ -28,7 +28,7 @@ public class US_AD_TRM_1009 extends
 
 	@Test
 	@Rollback
-	public void scenario01() {
+	public void adminUpdateEnrollment() {
 		given().I_am_a_CPS_administrator_in_current_academic_session();
 		when().I_update_enrollment_status_for_program_$(PROGRAM_CODE);
 		then().the_enrollment_status_is_updated();

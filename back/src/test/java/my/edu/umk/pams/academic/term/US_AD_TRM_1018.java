@@ -34,7 +34,7 @@ public class US_AD_TRM_1018
 
 	@Test
 	@Rollback(true)
-	public void scenario01() {
+	public void studentViewEnrollmentCourses() {
 		given().I_am_a_student_in_current_academic_session();
 		when().I_enroll_the_courses_for_program_$(PROGRAM_CODE);
 		then().the_enrollment_info_is_current();
