@@ -58,60 +58,52 @@ public class WhenIGenerateMatricNo extends Stage<WhenIGenerateMatricNo> {
 	
 	
 	public WhenIGenerateMatricNo student_transfer_faculty() {
-
+		//student
 		LOG.debug("");
 		student = identityService.findStudentByMatricNo("A17M0009F");
 		LOG.debug("Student Old MatricNo:{}", student.getMatricNo());
 		LOG.debug("Student Old Faculty Name :{}", student.getCohort().getProgram().getFaculty().getName());
 		LOG.debug("Student Old Faculty Prefix :{}", student.getCohort().getProgram().getFaculty().getPrefix());
 		LOG.debug("");
-		
+		//Faculty Old
 		fromFaculty = student.getCohort().getProgram().getFaculty();
 		fromFaculty.getPrefix();
-		
+		//Faculty New
 		AdFaculty toFaculty = plannerService.findFacultyByCode("A11");
 		toFaculty.getName();
 		toFaculty.getPrefix();
 		LOG.debug("Student New Faculty :{}", toFaculty.getName());
 		LOG.debug("Student New Faculty Prefix :{}", toFaculty.getPrefix());
-		
+		//Set Faculty
 		student.getCohort().getProgram().setFaculty(toFaculty);
 		
-		
-		
-		
 		profileService.transferFaculty(student, academicSession, fromFaculty, toFaculty);
-		
-		
 		
 		return self();
 		
 	}
 	
 	public WhenIGenerateMatricNo student_switch_studyMode(){
-		
-
+		//student
 		student = identityService.findStudentByMatricNo("H17M0001F");
 		LOG.debug("Student Old MatricNo:{}", student.getMatricNo());
-				
+		//From StudyMode		
 		fromMode = student.getStudyMode();
 		fromMode.getPrefix();
 		LOG.debug("Student Old StudyMode Prefix :{}", fromMode.getPrefix());
 		LOG.debug("Student Old StudyMode Desc :{}", fromMode.getDescription());
 		LOG.debug("");
-		
+		//New StudyMode
 		AdStudyMode toMode = commonService.findStudyModeByCode("2");
 		toMode.getDescription();
 		toMode.getPrefix();
 		LOG.debug("Student New StudyMode Prefix :{}", toMode.getPrefix());
 		
-		
+		//set StudyMode
 		student.setStudyMode(toMode);
 		LOG.debug("Student New StudyMode Desc :{}",student.getStudyMode().getDescription());
 		
 		profileService.switchStudyMode(student, academicSession, fromMode, toMode);
-		
-		
 		
 		return self();
 	}
