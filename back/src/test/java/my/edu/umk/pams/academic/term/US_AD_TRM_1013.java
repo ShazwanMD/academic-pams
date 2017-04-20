@@ -26,7 +26,7 @@ public class US_AD_TRM_1013 extends
 
 	@Test
 	@Rollback(true)
-	public void scenario01() {
+	public void adminUpdateAdmissionStatus() {
 		given().I_am_a_CPS_administrator_in_current_academic_session();
 		when().I_update_admission_status_for_program_$(PROGRAM_CODE);
 		then().the_admission_status_is_updated();

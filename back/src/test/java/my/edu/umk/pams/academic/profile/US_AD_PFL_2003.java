@@ -32,7 +32,7 @@ public class US_AD_PFL_2003
 
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_PFL_2003.class);
 
-	private static final String IDENTITY_NO = "A17P001";
+	private static final String IDENTITY_NO = "A17P002";
 
 	@Test
 	@Rollback
