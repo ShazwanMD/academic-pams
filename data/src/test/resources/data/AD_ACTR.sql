@@ -99,7 +99,7 @@ WHERE email = 'student8@umk.edu.my';
 -- student 9
 INSERT INTO AD_ACTR (ID, IDENTITY_NO, NAME, EMAIL, PHONE, MOBILE, FAX, ACTOR_TYPE, C_TS, C_ID, M_ST)
 VALUES
-  (nextval('SQ_AD_ACTR'), 'A17M0001F', 'STUDENT NINE', 'student9@umk.edu.my', 097111775, 0123450004, NULL, 1,
+  (nextval('SQ_AD_ACTR'), 'A17M0009F', 'STUDENT NINE', 'student9@umk.edu.my', 097111775, 0123450004, NULL, 1,
                           CURRENT_TIMESTAMP, 1, 1);
 
 INSERT INTO AD_STDN (ID, STUDENT_STATUS, COHORT_ID,STUDY_MODE_ID) VALUES (currval('SQ_AD_ACTR'), 1, 70,1);

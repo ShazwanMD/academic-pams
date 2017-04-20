@@ -10,6 +10,7 @@ import com.tngtech.jgiven.integration.spring.JGivenStage;
 
 import my.edu.umk.pams.academic.AcademicConstants;
 import my.edu.umk.pams.academic.common.model.AdStudyMode;
+import my.edu.umk.pams.academic.common.service.CommonService;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.identity.model.AdStudentImpl;
 import my.edu.umk.pams.academic.identity.service.IdentityService;
@@ -32,7 +33,8 @@ public class WhenIGenerateMatricNo extends Stage<WhenIGenerateMatricNo> {
 	private ProfileService profileService;
 	@Autowired
 	private PlannerService plannerService;
-	
+	@Autowired
+	private CommonService commonService;
 	@ProvidedScenarioState
 	private AdStudent student;
 	
@@ -52,41 +54,66 @@ public class WhenIGenerateMatricNo extends Stage<WhenIGenerateMatricNo> {
 	private AdProgram program;
 	
 	@ProvidedScenarioState
-	private AdStudyMode studyMode;
+	private AdStudyMode fromMode;
 	
 	
-	public WhenIGenerateMatricNo i_generate_new_matricNo() {
+	public WhenIGenerateMatricNo student_transfer_faculty() {
 
-	/*	
-		student = identityService.findStudentByMatricNo("F17P0001P");
-		studyMode = student.getStudyMode();
-		LOG.debug("StudyMode Old :{}", studyMode.getPrefix());
+		LOG.debug("");
+		student = identityService.findStudentByMatricNo("A17M0009F");
+		LOG.debug("Student Old MatricNo:{}", student.getMatricNo());
+		LOG.debug("Student Old Faculty Name :{}", student.getCohort().getProgram().getFaculty().getName());
+		LOG.debug("Student Old Faculty Prefix :{}", student.getCohort().getProgram().getFaculty().getPrefix());
+		LOG.debug("");
 		
-		AdFaculty fromFaculty = student.getCohort().getProgram().getFaculty();
+		fromFaculty = student.getCohort().getProgram().getFaculty();
 		fromFaculty.getPrefix();
-		AdFaculty toFaculty = student.getCohort().getProgram().getFaculty();
-		toFaculty.setPrefix("H");
 		
-		profileService.transferFaculty(student, session, fromFaculty, toFaculty);*/
+		AdFaculty toFaculty = plannerService.findFacultyByCode("A11");
+		toFaculty.getName();
+		toFaculty.getPrefix();
+		LOG.debug("Student New Faculty :{}", toFaculty.getName());
+		LOG.debug("Student New Faculty Prefix :{}", toFaculty.getPrefix());
+		
+		student.getCohort().getProgram().setFaculty(toFaculty);
 		
 		
-		student = identityService.findStudentByMatricNo("A17M0001F");
-		cohort = student.getCohort();
-		academicSession = cohort.getSession();
-		year = academicSession.getYear();
-		LOG.debug("YEAR :{}", year.getYear());
 		
-		AdStudyMode fromMode = student.getStudyMode();
-		LOG.debug("StudyMode Old :{}", fromMode.getPrefix());
 		
-		AdStudyMode toMode = student.getStudyMode();
-		toMode.setPrefix("P");
-
-		profileService.switchStudyMode(student, academicSession, fromMode, toMode);
+		profileService.transferFaculty(student, academicSession, fromFaculty, toFaculty);
+		
 		
 		
 		return self();
 		
+	}
+	
+	public WhenIGenerateMatricNo student_switch_studyMode(){
+		
+
+		student = identityService.findStudentByMatricNo("H17M0001F");
+		LOG.debug("Student Old MatricNo:{}", student.getMatricNo());
+				
+		fromMode = student.getStudyMode();
+		fromMode.getPrefix();
+		LOG.debug("Student Old StudyMode Prefix :{}", fromMode.getPrefix());
+		LOG.debug("Student Old StudyMode Desc :{}", fromMode.getDescription());
+		LOG.debug("");
+		
+		AdStudyMode toMode = commonService.findStudyModeByCode("2");
+		toMode.getDescription();
+		toMode.getPrefix();
+		LOG.debug("Student New StudyMode Prefix :{}", toMode.getPrefix());
+		
+		
+		student.setStudyMode(toMode);
+		LOG.debug("Student New StudyMode Desc :{}",student.getStudyMode().getDescription());
+		
+		profileService.switchStudyMode(student, academicSession, fromMode, toMode);
+		
+		
+		
+		return self();
 	}
 
 }

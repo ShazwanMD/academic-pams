@@ -220,28 +220,34 @@ public class ProfileServiceImpl implements ProfileService {
     }
 
 	@Override
-	public void transferFaculty(AdStudent student, AdAcademicSession session, AdFaculty fromFaculty,AdFaculty toFaculty) {
+	public void transferFaculty(AdStudent student, AdAcademicSession academicSession, AdFaculty fromFaculty,AdFaculty toFaculty) {
 		Map<String, Object> map = new HashMap<String, Object>();
+		
 		// From Faculty
 		fromFaculty = student.getCohort().getProgram().getFaculty();
 		fromFaculty.getPrefix();
+		
 		// Transfer Faculty
 		toFaculty = student.getCohort().getProgram().getFaculty();
 		toFaculty.getPrefix();
+		
 		//Session
-		AdAcademicSession academicSession = student.getCohort().getSession();
+		academicSession = student.getCohort().getSession();
 		academicSession.getYear().getYear();
+		
 		//Program Level
 		AdProgramLevel programLevel = student.getCohort().getProgram().getProgramLevel();
 		programLevel.getPrefix();
+		
 		//StudyMode
 		AdStudyMode studyMode = student.getStudyMode();
 		studyMode.getPrefix();
 
 		map.put("facultyCode", toFaculty);
-		map.put("studyMode", studyMode);
-		map.put("programLevel", programLevel);
 		map.put("academicSession", academicSession);
+		map.put("programLevel", programLevel);
+		map.put("studyMode", studyMode);
+		
         
      
 		String transferFaculty = systemService.generateFormattedReferenceNo(AcademicConstants.STUDENT_MATRIC_NO, map);
@@ -263,9 +269,10 @@ public class ProfileServiceImpl implements ProfileService {
     public void switchStudyMode(AdStudent student, AdAcademicSession academicSession, AdStudyMode fromMode, AdStudyMode toMode) {
 
     	Map<String, Object> map = new HashMap<String, Object>();
+    	
 		// From Faculty
-		AdFaculty faculty = student.getCohort().getProgram().getFaculty();
-		faculty.getPrefix();
+		AdFaculty facultyCode = student.getCohort().getProgram().getFaculty();
+		facultyCode.getPrefix();
 		
 		//Session
 		academicSession = student.getCohort().getSession();
@@ -279,18 +286,19 @@ public class ProfileServiceImpl implements ProfileService {
 		fromMode = student.getStudyMode();
 		fromMode.getPrefix();
 		
+		//Switch Mode
 		toMode = student.getStudyMode();
 		toMode.getPrefix();
 
-		map.put("facultyCode", faculty);
-		map.put("studyMode", toMode);
-		map.put("programLevel", programLevel);
+		map.put("facultyCode", facultyCode);
 		map.put("academicSession", academicSession);
-        
-     
-		String transferFaculty = systemService.generateFormattedReferenceNo(AcademicConstants.STUDENT_MATRIC_NO, map);
-		student.setMatricNo(transferFaculty);
+		map.put("programLevel", programLevel);
+		map.put("studyMode", toMode);
+
+		String switchStudyMode = systemService.generateFormattedReferenceNo(AcademicConstants.STUDENT_MATRIC_NO, map);
+		student.setMatricNo(switchStudyMode);
+		LOG.debug("Student New MatricNo :{}",student.getMatricNo());
 		studentDao.update(student, securityService.getCurrentUser());
-		LOG.debug("Student New MatricNo:{}",student.getMatricNo());
+		
     }
 }

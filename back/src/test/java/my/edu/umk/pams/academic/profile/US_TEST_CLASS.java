@@ -27,10 +27,11 @@ public class US_TEST_CLASS extends SpringScenarioTest<GivenIAmAdministrator, Whe
 	@Test
 	@Rollback
 	public void scenarioTEST(){
-		String username = "cps";
+		String username = "mgseb";
 		String password = "abc123";
 		given().i_am_a_$_administrator_in_current_academic_session(username, password);
-		when().i_generate_new_matricNo();
+		when().student_transfer_faculty()
+			.and().student_switch_studyMode();
 		then().new_matricNo_generated();
 		
 	}
