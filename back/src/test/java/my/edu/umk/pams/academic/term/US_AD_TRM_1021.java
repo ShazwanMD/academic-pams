@@ -27,10 +27,11 @@ import my.edu.umk.pams.bdd.tags.Submodule;
 
 public class US_AD_TRM_1021 extends SpringScenarioTest<GivenIAmStudent, WhenDropCourse, ThenCourseDropped> {
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_1021.class);
+	
 
 	@Test
 	@Rollback(true)
-	public void scenario01() {
+	public void dropCourse() {
 		given().I_am_a_student_in_current_academic_session();
 		when().I_want_to_drop_enrollment_course();
 		then().The_course_enrollment_are_dropped();

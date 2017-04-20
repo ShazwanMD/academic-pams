@@ -56,6 +56,8 @@ public interface AdAdmissionDao extends GenericDao<Long, AdAdmission> {
     Integer count(AdStudent student);
 
     Integer count(String filter, AdStudent student);
+    
+    Integer count(AdAcademicSession academicSession, AdStudent student);
 
     Integer countStudent(AdProgram program);
 

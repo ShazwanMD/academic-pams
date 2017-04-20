@@ -17,13 +17,18 @@ import my.edu.umk.pams.academic.planner.model.AdCohort;
 import my.edu.umk.pams.academic.planner.model.AdCourse;
 import my.edu.umk.pams.academic.planner.model.AdFaculty;
 import my.edu.umk.pams.academic.planner.model.AdProgram;
+import my.edu.umk.pams.academic.profile.service.ProfileService;
 
 @JGivenStage
 public class WhenLecturerReviewStudentBarredStatus extends Stage<WhenLecturerReviewStudentBarredStatus> {
 
 	private static final Logger LOG = LoggerFactory.getLogger(WhenLecturerReviewStudentBarredStatus.class);
+	
 	@Autowired
 	private IdentityService identityService;
+	
+    @Autowired
+    private ProfileService profileService;
 
 	@ExpectedScenarioState
 	private AdStudent student;
@@ -44,6 +49,7 @@ public class WhenLecturerReviewStudentBarredStatus extends Stage<WhenLecturerRev
 	private AdCourse course;
 	
 	public WhenLecturerReviewStudentBarredStatus Lecturer_review_student_$_barred_status(String identityNo) {
+		
 		//find student
 		student = identityService.findStudentByMatricNo(identityNo);
 		//check student status
@@ -57,25 +63,27 @@ public class WhenLecturerReviewStudentBarredStatus extends Stage<WhenLecturerRev
 		//get student's course(S)
 		List<AdCourse> courses = faculty.getCourses();	
 		
-		//check condition
-		if (studentStatus == AdStudentStatus.BARRED){
-		LOG.debug("Student's name: {}", student.getName());
-		LOG.debug("Student's status: {}", studentStatus.name());
-		LOG.debug("Barred From Taking Exam");
+			//check condition
+			if (studentStatus == AdStudentStatus.BARRED){
+				LOG.debug("Student's name: {}", student.getName());
+				LOG.debug("Student's status: {}", studentStatus.name());
+				LOG.debug("Barred From Taking Exam");
+				
+				LOG.debug("Program:{}", program.getCode());
+				
+				LOG.debug("Faculty:{}", faculty.getName());
+				
+					for(AdCourse course:courses){
+						LOG.debug("Course(s):{}", course.getCode());
+					}
+			}	
 		
-		LOG.debug("Program:{}", program.getCode());
-		
-		LOG.debug("Faculty:{}", faculty.getName());
-		
-		for(AdCourse course:courses){
-		LOG.debug("Course(S):{}", course.getCode());
-		
-	    	}
-		
-		}	
 		else{
-			
-			LOG.debug("NOT BARRED");
+			//Activate student status from old status
+	        student.setStudentStatus(AdStudentStatus.ACTIVE);
+	        profileService.activateStudent(student);
+		        LOG.debug("Student New Status:{}",student.getStudentStatus());
+				LOG.debug("NOT BARRED");
 		}
 		
 	
