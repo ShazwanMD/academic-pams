@@ -1,6 +1,7 @@
 package my.edu.umk.pams.academic.profile;
 
 import com.tngtech.jgiven.annotation.As;
+import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.profile.stage.ThenBillingAddressUpdated;
@@ -27,12 +28,16 @@ import org.springframework.transaction.annotation.Transactional;
 public class US_AD_PFL_1002 extends SpringScenarioTest<GivenIAmStudent, WhenIUpdateBillingAddress, ThenBillingAddressUpdated> {
 
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_PFL_1002.class);
+	
+	@ProvidedScenarioState
+	private static String matricNo = "A17M0009F";
 
 	@Test
 	@Rollback
 	public void scenario1002() {
 		given().I_am_a_student_in_current_academic_session();
-		when().I_add_my_billing_address().and().when().I_update_billing_address();
+		when().I_update_billing_address()
+				.and().I_review_address();
 		then().Billing_address_updated();
 	}
 }

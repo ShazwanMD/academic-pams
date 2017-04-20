@@ -1,6 +1,7 @@
 package my.edu.umk.pams.academic.term.dao;
 
 import my.edu.umk.pams.academic.core.GenericDao;
+
 import my.edu.umk.pams.academic.identity.model.AdStaff;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.identity.model.AdUser;

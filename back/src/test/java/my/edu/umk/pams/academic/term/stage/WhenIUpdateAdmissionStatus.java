@@ -43,7 +43,7 @@ public class WhenIUpdateAdmissionStatus extends Stage<WhenIUpdateAdmissionStatus
 	@ExpectedScenarioState
 	private AdProgram program;
 
-	@ExpectedScenarioState
+	@ProvidedScenarioState
 	private AdCohort cohort;
 
 	@ProvidedScenarioState
@@ -81,8 +81,16 @@ public class WhenIUpdateAdmissionStatus extends Stage<WhenIUpdateAdmissionStatus
 		
 		studyCenter =  application.getStudyCenter();
 		
-		//admission = termService.findAdmissionByAcademicSessionCohortAndStudent(academicSession, program, student);
-		//Assert.isNull(application, "data admission is null and can begin to tranfer");
+				
+		//if countAdmission=1, cannot proceed process to insert new and update
+		Integer countAdmissionApplication = termService.countAdmissionApplication("des", academicSession, student);
+		LOG.debug("countAdmissionApplication:{}", countAdmissionApplication);
+		if (countAdmissionApplication != 0){
+			LOG.debug("Data Exist!! @AdmissionApplication. Admission cannot be INSERTED AND UPDATED.");
+			return self();
+		}else{
+			LOG.debug("Data Not Exist!! @AdmissionApplication. Continue with the next process.");
+		}
 		
 		admission = new AdAdmissionImpl();
 		admission.setCgpa(new BigDecimal("1.90"));
@@ -119,6 +127,7 @@ public class WhenIUpdateAdmissionStatus extends Stage<WhenIUpdateAdmissionStatus
 		Assert.notNull(admission, "The admission data must not be null");
 		LOG.debug("current admission id: {}", admission.getId());
 		LOG.debug("current admission status: {}", admission.getStatus().getDescription());
+		
 		
 		
 		admission.setCgpa(new BigDecimal("3.80"));

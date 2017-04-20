@@ -1,6 +1,7 @@
 package my.edu.umk.pams.academic.profile;
 
 import com.tngtech.jgiven.annotation.As;
+import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 
 import my.edu.umk.pams.academic.config.TestAppConfiguration;
@@ -29,12 +30,17 @@ import org.springframework.transaction.annotation.Transactional;
 public class US_AD_PFL_1001 extends SpringScenarioTest<GivenIAmStudent, WhenIUpdateMailingAddress, ThenMailingAddressUpdated> {
 
     private static final Logger LOG = LoggerFactory.getLogger(US_AD_PFL_1001.class);
+    
+    @ProvidedScenarioState
+    private static String matricNo = "A17M0001F";
+    		
 
     @Test
     @Rollback
     public void scenario1001() {
         given().I_am_a_student_in_current_academic_session();
-        when().I_update_mailing_address();
+        when().I_update_mailing_address()
+        		.and().I_review_mailing_address();
         then().Mailing_address_updated();
     }
 }
