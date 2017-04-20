@@ -28,7 +28,7 @@ public class US_AD_TRM_1006 extends
 
 	@Test
 	@Rollback(true)
-	public void scenario1() {
+	public void adminSetOfferingCapacity() {
 		given().I_am_a_CPS_administrator_in_current_academic_session().and().I_pick_faculty_$(FACULTY_CODE);
 		when().I_create_and_set_offering_capacity();
 		then().the_offered_course_has_a_maximum_quota();

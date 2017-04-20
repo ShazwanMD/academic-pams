@@ -31,7 +31,7 @@ public class US_AD_TRM_1007 extends SpringScenarioTest<GivenIAmCPSAdministrator,
  
 @Test
 @Rollback(true)
-public void scenario1() {
+public void adminSplitSection() {
 	given().I_am_a_CPS_administrator_in_current_academic_session();
 	when().I_want_to_split_section();
 	then().the_section_has_average_quota();

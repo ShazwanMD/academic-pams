@@ -30,7 +30,7 @@ public class US_AD_TRM_1005 extends
 
 	@Test
 	@Rollback(true)
-	public void scenario1() {
+	public void adminUpdateAppointStatus() {
 		given().I_am_a_CPS_administrator_in_current_academic_session();
 		when().I_update_appointment_status();
 		then().the_appointment_status_is_updated();
