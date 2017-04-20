@@ -69,9 +69,9 @@ public class WhenReviewMyCourseRegistration extends Stage<WhenReviewMyCourseRegi
 
 		if (studentStatus == AdStudentStatus.ACTIVE) {
 			// student details
-			LOG.debug("========================");
+			LOG.debug("=========================");
 			LOG.debug("MAKLUMAT BIODATA PELAJAR");
-			LOG.debug("========================");
+			LOG.debug("=========================");
 			LOG.debug("Student's Name:{}", student.getName());
 			LOG.debug("Student's MatricNo:{}", student.getMatricNo());
 			// student status
