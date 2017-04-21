@@ -10,6 +10,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.tngtech.jgiven.annotation.As;
+import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 
 import my.edu.umk.pams.academic.assessment.stage.ThenCourseRegistrationViewed;
@@ -26,14 +27,15 @@ public class US_AD_ASMT_1000 extends SpringScenarioTest<GivenIAmStudent, WhenRev
 
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_ASMT_1000.class);
 	
-	public static String IDENTITY_NO = "A17P001";
+	@ProvidedScenarioState
+	public static String matricNo = "A17P001";
 	
 	@Test
     @Rollback
 	public void senario1000() {
 		
 		given().I_am_a_student_in_current_academic_session();
-		when().i_want_to_view_course_registration(IDENTITY_NO);
+		when().i_want_to_view_course_registration();
 		then().course_registration_viewed();
 	}
 	

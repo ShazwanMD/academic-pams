@@ -30,22 +30,22 @@ import my.edu.umk.pams.academic.term.service.TermService;
 public class WhenIAmReviewStudentInfo extends Stage<WhenIAmReviewStudentInfo> {
 
 	private static final Logger LOG = LoggerFactory.getLogger(WhenIAmReviewStudentInfo.class);
-	
+
 	@Autowired
 	private IdentityService identityService;
-	
+
 	@Autowired
 	private PlannerService plannerService;
-	
+
 	@Autowired
 	private TermService termService;
-	
+
 	@ExpectedScenarioState
 	private AdSection section;
 
 	@ExpectedScenarioState
 	private AdStudent student;
-	
+
 	@ExpectedScenarioState
 	private AdStudentStatus studentStatus;
 
@@ -60,62 +60,69 @@ public class WhenIAmReviewStudentInfo extends Stage<WhenIAmReviewStudentInfo> {
 
 	@ProvidedScenarioState
 	private AdProgram program;
-	
+
 	@ProvidedScenarioState
 	private AdProgramLevel level;
 
 	@ProvidedScenarioState
 	private AdFaculty faculty;
-	
+
 	@ProvidedScenarioState
 	private AdAcademicSession session;
-	
+
 	@ExpectedScenarioState
 	public String matricNo;
-	
+
 	public WhenIAmReviewStudentInfo i_review_student_info() {
-		
+
 		student = identityService.findStudentByMatricNo(matricNo);
 		LOG.debug("Student Name :{}", student.getName());
 		LOG.debug("Student Matric No :{}", student.getMatricNo());
-		
+
 		studentStatus = student.getStudentStatus();
 		LOG.debug("Student Status :{}", studentStatus.name());
-			
-		//find by cohort
+
+		// find by cohort
 		cohort = student.getCohort();
 		LOG.debug("Cohort :{}", cohort.getCode());
-		
-		//get student program
+
+		// get student program
 		program = cohort.getProgram();
 		LOG.debug("Program :{}", program.getTitle());
-		
-		//get student level of study
+
+		// get student level of study
 		level = program.getProgramLevel();
 		LOG.debug("Level of Study :{}", level.getCode());
-		
-		//get faculty
+
+		// get faculty
 		faculty = program.getFaculty();
 		LOG.debug("Faculty :{}", faculty.getName());
-		
-		if(studentStatus == AdStudentStatus.ACTIVE){
-		//list course taken
-		List<AdCourse> courses = faculty.getCourses();
-		for(AdCourse course:courses){
-			LOG.debug("Course(s) :{}", course.getCode());
-		}
-	}
-		if(studentStatus == AdStudentStatus.GRADUATED){
-			//list course taken
+
+		if (studentStatus == AdStudentStatus.ACTIVE) {
+			// list course taken
 			List<AdCourse> courses = faculty.getCourses();
-			for(AdCourse course:courses){
+			for (AdCourse course : courses) {
 				LOG.debug("Course(s) :{}", course.getCode());
 			}
 		}
-		
-		
+		if (studentStatus == AdStudentStatus.GRADUATED) {
+			// list course taken
+			List<AdCourse> courses = faculty.getCourses();
+			for (AdCourse course : courses) {
+				LOG.debug("Course(s) :{}", course.getCode());
+			}
+		}
+		if (studentStatus == AdStudentStatus.INACTIVE) {
+			
+			LOG.debug("Student Status :{}", student.getStudentStatus().name());
+		}
+		if (studentStatus == AdStudentStatus.BARRED) {
+			
+			LOG.debug("Student Status :{}", student.getStudentStatus().name());
+		}
+	
 		return self();
-		
+
 	}
 
 }

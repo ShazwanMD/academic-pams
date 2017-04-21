@@ -21,6 +21,7 @@ import my.edu.umk.pams.academic.planner.model.AdFaculty;
 import my.edu.umk.pams.academic.planner.model.AdProgram;
 import my.edu.umk.pams.academic.planner.model.AdProgramLevel;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
+import my.edu.umk.pams.academic.profile.service.ProfileService;
 
 @JGivenStage
 public class WhenReviewMyCourseRegistration extends Stage<WhenReviewMyCourseRegistration> {
@@ -32,7 +33,8 @@ public class WhenReviewMyCourseRegistration extends Stage<WhenReviewMyCourseRegi
 
 	@Autowired
 	private PlannerService plannerService;
-
+	@Autowired
+	private ProfileService profileService;
 	@ExpectedScenarioState
 	private AdStudent student;
 
@@ -53,18 +55,32 @@ public class WhenReviewMyCourseRegistration extends Stage<WhenReviewMyCourseRegi
 
 	@ExpectedScenarioState
 	private AdStudentStatus studentStatus;
+	
+	@ExpectedScenarioState
+	public static String matricNo;
 
-	public WhenReviewMyCourseRegistration i_want_to_view_course_registration(String identityNo) {
+	public WhenReviewMyCourseRegistration i_want_to_view_course_registration() {
 
-		student = identityService.findStudentByMatricNo(identityNo);
-		student.setName("SAM");
-		identityService.updateStudent(student);
+		student = profileService.findStudentByMatricNo(matricNo);
+		student.getName();
+		LOG.debug("student name :{}", student.getName());
+		
+		//student status
 		studentStatus = student.getStudentStatus();
+		
+		//cohort
 		cohort = student.getCohort();
-
+		
+		//program
 		program = cohort.getProgram();
+		
+		//faculty
 		faculty = program.getFaculty();
+		
+		//level of study
 		level = program.getProgramLevel();
+		
+		//Courses
 		courses = faculty.getCourses();
 
 		if (studentStatus == AdStudentStatus.ACTIVE) {
@@ -135,9 +151,7 @@ public class WhenReviewMyCourseRegistration extends Stage<WhenReviewMyCourseRegi
 			LOG.debug("=========================");
 			LOG.debug("MAKLUMAT COURSE & FAKULTI");
 			LOG.debug("=========================");
-			// courses
-			for (AdCourse course : courses)
-				LOG.debug("Course / Desc:{}", course.getCode() + "/" + course.getTitle());
+			
 
 		} else if (studentStatus == AdStudentStatus.BARRED) {
 			// student details
