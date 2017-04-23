@@ -4,13 +4,7 @@ import {Program} from "./program.interface";
 
 export type ProgramState = Program;
 
-const initialState: ProgramState = {
-  id: 0,
-  code: '',
-  title:'',
-  titleMs:'',
-  titleEn:''
-};
+const initialState: ProgramState = <Program>{};
 
 export function programReducer(state = initialState, action: Action): ProgramState {
   console.log("action: " + action.type);

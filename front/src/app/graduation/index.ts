@@ -7,21 +7,19 @@ import {CovalentCoreModule} from '@covalent/core';
 
 import {CommonService} from '../../services';
 import {IdentityService} from '../../services';
-import {TermService} from "../../services/term.service";
+import {GraduationService} from "../../services/graduation.service";
 
-import {TermPage} from "./term.page";
-
-export interface TermModuleState {
+export interface GraduationModuleState {
   // todo
 }
 ;
 
-export const INITIAL_TERM_STATE: TermModuleState =
-  <TermModuleState>{
+export const INITIAL_GRADUATION_STATE: GraduationModuleState =
+  <GraduationModuleState>{
     // todo
   };
 
-export const termModuleReducers = {
+export const graduationModuleReducers = {
 // todo
 };
 
@@ -38,19 +36,18 @@ export const termModuleReducers = {
   ],
   declarations: [
     // page
-    TermPage,
   ],
   exports: [],
 })
-export class TermModule {
+export class GraduationModule {
   static forRoot(): ModuleWithProviders {
     return {
-      ngModule: TermModule,
+      ngModule: GraduationModule,
       providers: [
         appRoutingProviders,
         IdentityService,
         CommonService,
-        TermService,
+        GraduationService,
       ],
     };
   }

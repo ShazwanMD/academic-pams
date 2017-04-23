@@ -9,7 +9,7 @@ import {CovalentMarkdownModule} from '@covalent/markdown';
 import {CovalentChartsModule} from '@covalent/charts';
 import {NgxChartsModule} from '@swimlane/ngx-charts';
 import {StoreDevtoolsModule} from "@ngrx/store-devtools";
-import {StoreModule} from "@ngrx/store";
+import {StoreModule, ActionReducer, combineReducers} from "@ngrx/store";
 
 import {AppComponent} from './app.component';
 import {MainComponent} from './main/main.component';
@@ -17,15 +17,58 @@ import {DashboardComponent} from './dashboard/dashboard.component';
 import {LoginComponent} from './login/login.component';
 import {appRoutes, appRoutingProviders} from './app.routes';
 
-import {PlannerModule, plannerReducer} from "./planner/index";
+import {CommonModuleState, INITIAL_COMMON_STATE, commonModuleReducers} from "./common/index";
+import {
+  GraduationModuleState, INITIAL_GRADUATION_STATE, graduationModuleReducers,
+  GraduationModule
+} from "./graduation/index";
+import {
+  PlannerModule, INITIAL_PLANNER_STATE, plannerModuleReducers,
+  PlannerModuleState
+} from "./planner/index";
 import {HomeComponent} from "./home/home.component";
-import {TermModule, termReducer} from "./term/index";
+import {TermModule, termModuleReducers, INITIAL_TERM_STATE, TermModuleState} from "./term/index";
 import {CustomUrlSerializer} from "./common/custom-url-serializer";
 import {UrlSerializer} from "@angular/router";
-import {ProfileModule} from "./profile/index";
+import {ProfileModule, INITIAL_PROFILE_STATE, ProfileModuleState, profileModuleReducers} from "./profile/index";
+
+// interceptor
 const httpInterceptorProviders: Type<any>[] = [
   RequestInterceptor,
 ];
+
+// state
+interface ApplicationState {
+  commonModuleState: CommonModuleState;
+  profileModuleState: ProfileModuleState;
+  plannerModuleState: PlannerModuleState;
+  termModuleState: TermModuleState;
+  graduationModuleState: GraduationModuleState;
+}
+;
+
+// initial state
+export const INITIAL_APP_STATE: ApplicationState =
+  <ApplicationState>{
+    commonModuleState: INITIAL_COMMON_STATE,
+    profileModuleState: INITIAL_PROFILE_STATE,
+    plannerModuleState: INITIAL_PLANNER_STATE,
+    termModuleState: INITIAL_TERM_STATE,
+    graduationModuleState: INITIAL_GRADUATION_STATE,
+  };
+
+// combine reducer
+export const applicationReducers = {
+  commonModuleState: combineReducers({...commonModuleReducers,}),
+  profileModuleState: combineReducers({...profileModuleReducers}),
+  plannerModuleState: combineReducers({...plannerModuleReducers}),
+  termModuleState: combineReducers({...termModuleReducers,}),
+  graduationModuleState: combineReducers({...graduationModuleReducers}),
+};
+export const productionReducer: ActionReducer<ApplicationState> = combineReducers(applicationReducers);
+export function applicationReducer(applicationState: any = INITIAL_APP_STATE, action: any) {
+  return productionReducer(applicationState, action);
+}
 
 @NgModule({
   declarations: [
@@ -49,12 +92,12 @@ const httpInterceptorProviders: Type<any>[] = [
     CovalentMarkdownModule.forRoot(),
     NgxChartsModule,
 
+    StoreModule.provideStore(applicationReducer),
+    StoreDevtoolsModule.instrumentOnlyWithExtension(),
     PlannerModule.forRoot(),
     TermModule.forRoot(),
     ProfileModule.forRoot(),
-    StoreModule.provideStore(plannerReducer),
-    StoreDevtoolsModule.instrumentOnlyWithExtension(),
-
+    GraduationModule.forRoot(),
 
   ], // modules needed to run this module
   providers: [

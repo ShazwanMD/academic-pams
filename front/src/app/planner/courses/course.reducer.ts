@@ -4,14 +4,7 @@ import {Course} from "./course.interface";
 
 export type CourseState = Course;
 
-const initialState: CourseState = {
-  id: 0,
-  code: '',
-  title:'',
-  titleMs:'',
-  titleEn:'',
-  credit:0,
-};
+const initialState: CourseState = <Course>{};
 
 export function courseReducer(state = initialState, action: Action): CourseState {
   console.log("action: " + action);

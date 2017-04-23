@@ -11,7 +11,7 @@ import {IdentityService} from '../../services';
 
 import {compose} from "@ngrx/core/compose";
 import {ProfileListState, profileListReducer} from "./profile-list.reducer";
-import {profileReducer} from "./profile.reducer";
+import {profileReducer, ProfileState} from "./profile.reducer";
 import {ProfileCenterPage} from "./profile-center.page";
 import {ProfileDetailPage} from "./profile-detail.page";
 import {ProfileService} from "../../services/profile.service";
@@ -21,16 +21,24 @@ import {ProfileStatusComponent} from "./components/profile-status.component";
 import {ProfileActions} from "./profile.action";
 import {ProfileEffects} from "./profile.effect";
 import {EffectsModule} from "@ngrx/effects";
+import {Student} from "../identity/student.interface";
 
-export interface ProfileState {
+export interface ProfileModuleState {
   students: ProfileListState;
   student: ProfileState;
 }
 ;
 
-export const profileModuleReducer = compose(combineReducers)({
-  students: profileListReducer, student: profileReducer,
-});
+export const INITIAL_PROFILE_STATE: ProfileModuleState =
+  <ProfileModuleState>{
+    students: <Student[]>[],
+    student: <Student>{},
+  };
+
+export const profileModuleReducers = {
+  students: profileListReducer,
+  student: profileReducer,
+};
 
 
 @NgModule({
@@ -39,7 +47,6 @@ export const profileModuleReducer = compose(combineReducers)({
     BrowserModule,
     ReactiveFormsModule,
     CovalentCoreModule.forRoot(),
-
     EffectsModule.run(ProfileEffects),
   ],
   declarations: [

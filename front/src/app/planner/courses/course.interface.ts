@@ -1,6 +1,6 @@
 import {Faculty} from "../faculties/faculty.interface";
-export interface Course{
-  id:number;
+import {MetaObject} from "../../core/meta-object.interface";
+export interface Course extends MetaObject{
   code: string;
   title:string;
   titleMs:string;

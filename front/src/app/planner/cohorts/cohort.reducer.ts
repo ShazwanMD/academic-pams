@@ -4,12 +4,7 @@ import {Cohort} from "./cohort.interface";
 
 export type CohortState = Cohort;
 
-const initialState: CohortState = {
-  id: 0,
-  code: '',
-  description: '',
-  program:null,
-};
+const initialState: CohortState = <Cohort>{};
 
 export function cohortReducer(state = initialState, action: Action): CohortState {
   console.log("action: " + action);

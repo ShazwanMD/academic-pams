@@ -7,24 +7,16 @@ import {CovalentCoreModule} from '@covalent/core';
 
 import {CommonService} from '../../services';
 import {IdentityService} from '../../services';
-import {TermService} from "../../services/term.service";
 
-import {TermPage} from "./term.page";
+import {EffectsModule} from "@ngrx/effects";
 
-export interface TermModuleState {
-  // todo
+export interface CommonModuleState {
 }
 ;
 
-export const INITIAL_TERM_STATE: TermModuleState =
-  <TermModuleState>{
-    // todo
-  };
-
-export const termModuleReducers = {
-// todo
+export const INITIAL_COMMON_STATE: CommonModuleState = <CommonModuleState>{};
+export const commonModuleReducers = {
 };
-
 
 @NgModule({
   imports: [
@@ -32,27 +24,19 @@ export const termModuleReducers = {
     BrowserModule,
     ReactiveFormsModule,
     CovalentCoreModule.forRoot(),
-
-    // our modules
-    // ngrx
   ],
-  declarations: [
-    // page
-    TermPage,
-  ],
+  declarations: [],
   exports: [],
 })
-export class TermModule {
+export class CommonModule {
   static forRoot(): ModuleWithProviders {
     return {
-      ngModule: TermModule,
+      ngModule: CommonModule,
       providers: [
         appRoutingProviders,
         IdentityService,
         CommonService,
-        TermService,
       ],
     };
   }
 }
-

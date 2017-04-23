@@ -6,7 +6,7 @@ import {Store} from "@ngrx/store";
 import {Observable} from "rxjs";
 import {Faculty} from "./faculty.interface";
 import {FacultyActions} from "./faculty.action";
-import {PlannerState} from "../index";
+import {PlannerModuleState} from "../index";
 
 @Component({
   selector: 'pams-faculty-center',
@@ -19,13 +19,13 @@ export class FacultyCenterPage implements OnInit {
   private _router: Router;
   private _route: ActivatedRoute;
   private _actions: FacultyActions;
-  private store: Store<PlannerState>;
+  private store: Store<PlannerModuleState>;
   private faculties$: Observable<Faculty[]>;
 
   constructor(router: Router,
               route: ActivatedRoute,
               actions: FacultyActions,
-              store: Store<PlannerState>,
+              store: Store<PlannerModuleState>,
               commonService: CommonService) {
 
     this._router = router;
