@@ -1,5 +1,7 @@
 package my.edu.umk.pams.academic.planner;
-
+/*
+ * @author zaidanqawi
+ */
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -27,8 +29,8 @@ import my.edu.umk.pams.bdd.tags.Submodule;
 public class US_AD_PNR_1015 extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenAdminUpdateCredit, ThenCreditHasBeUpdated> {
 
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_PNR_1015.class);
-	private static final String FACULTY_CODE = "A01";
-	private static final Integer COURSE_CREDIT = 3;
+	private static final String FACULTY_CODE = "A10";
+	private static final Integer COURSE_CREDIT = 4;
 	
 	
 	@Test
@@ -36,8 +38,8 @@ public class US_AD_PNR_1015 extends SpringScenarioTest<GivenIAmCPSAdministrator,
 	public void scenario1() {
 		given().I_am_a_CPS_administrator()
 		.and().I_pick_faculty_$(FACULTY_CODE);;
-		when().Admin_update_credit_$(COURSE_CREDIT);
-		then().Credit_has_be_updated();
+		when().Admin_update_credit();
+		then().Credit_has_be_updated_$(COURSE_CREDIT);
 
 
 	}
