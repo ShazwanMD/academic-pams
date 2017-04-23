@@ -49,7 +49,12 @@ public class AdEnrollmentApplicationDaoImpl extends GenericDaoSupport<Long, AdEn
     @Override
 	public AdEnrollmentApplicationItem findItemBySection(AdSection section) {
     	 Session session = sessionFactory.getCurrentSession();
-         return (AdEnrollmentApplicationItem) session.get(AdEnrollmentApplicationItemImpl.class, section);
+    	 Query query = session.createQuery("select p from AdEnrollmentApplicationItem p " +
+                 "where p.section = :section ");
+         query.setEntity("section", section);
+         return (AdEnrollmentApplicationItem) query.uniqueResult();
+    	   	 
+    	 // return (AdEnrollmentApplicationItem) session.get(AdEnrollmentApplicationItemImpl.class, section);
 	}
 
     @Override

@@ -40,19 +40,20 @@ public class ThenCourseDropped extends Stage<ThenCourseDropped> {
 
 	@ExpectedScenarioState
 	private AdAcademicSession academicSession;
-	@Pending
+	
 	public ThenCourseDropped The_course_enrollment_are_dropped() {
 
-		List<AdEnrollmentApplication> applications = termService.findEnrollmentApplications("%A%", academicSession,
+		List<AdEnrollmentApplication> applications = termService.findEnrollmentApplications("", academicSession,
 				student, 0, 10);
 		for (AdEnrollmentApplication application : applications) {
+			LOG.debug("======updated info======");
 			LOG.debug("AdEnrollmentApplication: {}", application.getId());
 
 			List<AdEnrollmentApplicationItem> items = termService.findEnrollmentApplicationItems(application);
 
 			for (AdEnrollmentApplicationItem item : items) {
 				LOG.debug("AdEnrollmentApplicationItem: {}", item.getId());
-				LOG.debug("updated to DROP status: {}", item.getAction().getDeclaringClass());
+				LOG.debug("Updated status: {}", item.getAction());
 
 			}
 		}

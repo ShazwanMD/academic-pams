@@ -13,9 +13,12 @@ import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 
+import my.edu.umk.pams.academic.common.model.AdGradeCode;
+import my.edu.umk.pams.academic.common.model.AdGradeCodeImpl;
 import my.edu.umk.pams.academic.common.service.CommonService;
 import my.edu.umk.pams.academic.identity.model.AdActor;
 import my.edu.umk.pams.academic.identity.model.AdStaff;
+import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.identity.model.AdUser;
 import my.edu.umk.pams.academic.identity.service.IdentityService;
 import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
@@ -23,6 +26,7 @@ import my.edu.umk.pams.academic.planner.model.AdCourse;
 import my.edu.umk.pams.academic.planner.model.AdFaculty;
 import my.edu.umk.pams.academic.planner.model.AdProgram;
 import my.edu.umk.pams.academic.planner.model.AdProgramImpl;
+import my.edu.umk.pams.academic.planner.model.AdProgramLevel;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
 import my.edu.umk.pams.academic.term.dao.AdOfferingDao;
 import my.edu.umk.pams.academic.term.model.AdAssessment;
@@ -31,6 +35,8 @@ import my.edu.umk.pams.academic.term.model.AdAssessmentImpl;
 import my.edu.umk.pams.academic.term.model.AdAssessmentType;
 import my.edu.umk.pams.academic.term.model.AdOffering;
 import my.edu.umk.pams.academic.term.model.AdOfferingImpl;
+import my.edu.umk.pams.academic.term.model.AdSection;
+import my.edu.umk.pams.academic.term.model.AdSectionImpl;
 import my.edu.umk.pams.academic.term.service.TermService;
 
 @JGivenStage
@@ -54,7 +60,7 @@ public class WhenIAmSetupExamViva extends Stage<WhenIAmSetupExamViva> {
 	private AdAssessment assessment;
 
 	@ProvidedScenarioState
-	private AdOffering offering;
+	private AdOffering offer;
 
 	@ProvidedScenarioState
 	private AdAcademicSession session;
@@ -70,206 +76,230 @@ public class WhenIAmSetupExamViva extends Stage<WhenIAmSetupExamViva> {
 	@ProvidedScenarioState
 	private AdStaff staff;
 
+	@ProvidedScenarioState
+	private AdStudent student;
+	
+	@ProvidedScenarioState
+	private AdProgramLevel level;
+	
 	@ExpectedScenarioState
 	private AdUser user;
 
-	@ExpectedScenarioState
+	@ProvidedScenarioState
 	private AdFaculty faculty;
 
-	@ExpectedScenarioState
+	@ProvidedScenarioState
 	private AdCourse course;
+	
+	@ProvidedScenarioState
+	private AdSection section;
+	
+	@ProvidedScenarioState
+	private AdGradeCode grade;
+	
+	@ExpectedScenarioState
+	private static String staffNo;
+	
 
-	public WhenIAmSetupExamViva i_setup_exam() {
-
-		// find program
-		faculty = plannerService.findFacultyByCode("A07");
-//		program = plannerService.findProgramByCode("A10");
-//		faculty = program.getFaculty();
+	public WhenIAmSetupExamViva i_setup_assessments() {
 		
-		// add new offering
-		offering = new AdOfferingImpl();
-		offering.setCanonicalCode("FIAT/MASTER/PBA/GST5023");
-		offering.setCapacity(100);
-		offering.setCode("DDA2113");
-		offering.setTitle("Offering 1");
-		offering.setProgram(program);
-		termService.saveOffering(offering);
-		Assert.notNull(offering, "offering is null");
+		staff = identityService.findStaffByStaffNo(staffNo);
+		LOG.debug("Staff Name :{}", staff.getName());
+		LOG.debug("Staff Type :{}", staff.getStaffType().name());
+		
+		faculty = staff.getFaculty();
+		LOG.debug("Staff Faculty :{}", faculty.getName());
+		
+		program = staff.getProgram();
+		LOG.debug("Program :{}", program.getCode());
+		
+		course = plannerService.findCourseByCodeAndFaculty("GST5013", faculty);
+		LOG.debug("Course Title :{}", course.getTitle());
 
+		level = program.getProgramLevel();
+		LOG.debug("Program Level :{}", level.getCode());
+		
+
+		offer = new AdOfferingImpl();
+		offer.setCanonicalCode("MASTER/MBA/GST5013/201720181");
+		offer.setCode("MASTER/MBA/GST5013");
+		offer.setTitle("Economics & Business Environment");
+		offer.setCapacity(100);
+		offer.setProgram(program);
+		offer.setCourse(course);
+		offer.getSections();
+		termService.saveOffering(offer);
+		
+		section = new AdSectionImpl();
+		section.setCode("Section A");
+		section.setCanonicalCode("MASTER/MBA/GST5013/201720181/Section A");
+		section.setOrdinal(1);
+		section.setCapacity(20);
+		section.setSession(session);
+		section.setOffering(offer);
+		termService.saveSection(section);
+		
+		
 		// setup assessment
-		AdAssessment quiz1 = new AdAssessmentImpl();
-		quiz1.setCanonicalCode("FIAT/MASTER/Q1/PBH/GST5023");
-		quiz1.setCategory(AdAssessmentCategory.COURSE_WORK);
-		quiz1.setCode("MASTER/Q1");
-		quiz1.setDescription("MECHANICS OF MATERIALS");
-		quiz1.setOffering(offering);
-		quiz1.setOrdinal(0);
-		quiz1.setSession(session);
-		quiz1.setTotalScore(BigDecimal.ZERO);
-		quiz1.setType(AdAssessmentType.QUIZ);
-		quiz1.setWeight(BigDecimal.ZERO);
-		termService.addAssessment(session, offering, quiz1);
-		Assert.notNull(quiz1, "quiz1 is null");
-
-		LOG.debug("QUIZ 1 :========>");
-		LOG.debug("Assessment CanonicalCOde :{}", quiz1.getCanonicalCode());
-		LOG.debug("assessment Category :{}", quiz1.getCategory().name());
-		LOG.debug("assessment Code :{}", quiz1.getCode());
-		LOG.debug("Assessment Desc :{}", quiz1.getDescription());
-		LOG.debug("Assessment Type :{}", quiz1.getType().name());
-		LOG.debug("Assessment TotalScore :{}", quiz1.getTotalScore().byteValueExact());
-		// assert
-		Assert.notNull(quiz1, "Assessments not setup");
-
-		// setup assessment2
-		AdAssessment quiz2 = new AdAssessmentImpl();
-		quiz2.setCanonicalCode("FIAT/MASTER/Q2/PBH/GST5023");
-		quiz2.setCategory(AdAssessmentCategory.COURSE_WORK);
-		quiz2.setCode("MASTER/Q2");
-		quiz2.setDescription("MECHANICS OF MATERIALS");
-		quiz2.setOffering(offering);
-		quiz2.setOrdinal(0);
-		quiz2.setSession(session);
-		quiz2.setTotalScore(BigDecimal.ZERO);
-		quiz2.setType(AdAssessmentType.QUIZ);
-		quiz2.setWeight(BigDecimal.ZERO);
-		termService.addAssessment(session, offering, quiz2);
-		Assert.notNull(quiz2, "quiz2 is null");
-
-		LOG.debug("QUIZ 2 :========>");
-		LOG.debug("Assessment CanonicalCOde :{}", quiz2.getCanonicalCode());
-		LOG.debug("assessment Category :{}", quiz2.getCategory().name());
-		LOG.debug("assessment Code :{}", quiz2.getCode());
-		LOG.debug("Assessment Desc :{}", quiz2.getDescription());
-		LOG.debug("Assessment Type :{}", quiz2.getType().name());
-		LOG.debug("Assessment TotalScore :{}", quiz2.getTotalScore().byteValueExact());
-
-		// setup assessment3
-		AdAssessment test1 = new AdAssessmentImpl();
-		test1.setCanonicalCode("FIAT/MASTER/T1/PBH/GST5023");
-		test1.setCategory(AdAssessmentCategory.COURSE_WORK);
-		test1.setCode("MASTER/T1");
-		test1.setDescription("MECHANICS OF MATERIALS");
-		test1.setOffering(offering);
-		test1.setOrdinal(0);
-		test1.setSession(session);
-		test1.setTotalScore(BigDecimal.ZERO);
-		test1.setType(AdAssessmentType.TEST);
-		test1.setWeight(BigDecimal.ZERO);
-		termService.addAssessment(session, offering, test1);
-		Assert.notNull(test1, "test1 is null");
-
-		LOG.debug("TEST 1 :========>");
-		LOG.debug("Assessment CanonicalCOde :{}", test1.getCanonicalCode());
-		LOG.debug("assessment Category :{}", test1.getCategory().name());
-		LOG.debug("assessment Code :{}", test1.getCode());
-		LOG.debug("Assessment Desc :{}", test1.getDescription());
-		LOG.debug("Assessment Type :{}", test1.getType().name());
-		LOG.debug("Assessment TotalScore :{}", test1.getTotalScore().byteValueExact());
-
-		// setup assessment4
-		AdAssessment quiz3 = new AdAssessmentImpl();
-		quiz3.setCanonicalCode("FIAT/MASTER/Q3/PBH/GST5023");
-		quiz3.setCategory(AdAssessmentCategory.COURSE_WORK);
-		quiz3.setCode("MASTER/Q3");
-		quiz3.setDescription("MECHANICS OF MATERIALS");
-		quiz3.setOffering(offering);
-		quiz3.setOrdinal(0);
-		quiz3.setSession(session);
-		quiz3.setTotalScore(BigDecimal.ZERO);
-		quiz3.setType(AdAssessmentType.QUIZ);
-		quiz3.setWeight(BigDecimal.ZERO);
-		termService.addAssessment(session, offering, quiz3);
-		Assert.notNull(quiz3, "quiz3 is null");
-
-		LOG.debug("QUIZ 3 :========>");
-		LOG.debug("Assessment CanonicalCOde :{}", quiz3.getCanonicalCode());
-		LOG.debug("assessment Category :{}", quiz3.getCategory().name());
-		LOG.debug("assessment Code :{}", quiz3.getCode());
-		LOG.debug("Assessment Desc :{}", quiz3.getDescription());
-		LOG.debug("Assessment Type :{}", quiz3.getType().name());
-		LOG.debug("Assessment TotalScore :{}", quiz3.getTotalScore().byteValueExact());
-
-		// setup assessment4
-		AdAssessment quiz4 = new AdAssessmentImpl();
-		quiz4.setCanonicalCode("FIAT/MASTER/Q4/PBH/GST5023");
-		quiz4.setCategory(AdAssessmentCategory.COURSE_WORK);
-		quiz4.setCode("MASTER/Q4");
-		quiz4.setDescription("MECHANICS OF MATERIALS");
-		quiz4.setOffering(offering);
-		quiz4.setOrdinal(0);
-		quiz4.setSession(session);
-		quiz4.setTotalScore(BigDecimal.ZERO);
-		quiz4.setType(AdAssessmentType.QUIZ);
-		quiz4.setWeight(BigDecimal.ZERO);
-		termService.addAssessment(session, offering, quiz4);
-		Assert.notNull(quiz4, "quiz4 is null");
-
-		LOG.debug("QUIZ 4 :========>");
-		LOG.debug("Assessment CanonicalCOde :{}", quiz4.getCanonicalCode());
-		LOG.debug("assessment Category :{}", quiz4.getCategory().name());
-		LOG.debug("assessment Code :{}", quiz4.getCode());
-		LOG.debug("Assessment Desc :{}", quiz4.getDescription());
-		LOG.debug("Assessment Type :{}", quiz4.getType().name());
-		LOG.debug("Assessment TotalScore :{}", quiz4.getTotalScore().byteValueExact());
-
-		// setup assessment5
-		AdAssessment test2 = new AdAssessmentImpl();
-		test2.setCanonicalCode("FIAT/MASTER/T2/PBH/GST5023");
-		test2.setCategory(AdAssessmentCategory.COURSE_WORK);
-		test2.setCode("MASTER/T2");
-		test2.setDescription("MECHANICS OF MATERIALS");
-		test2.setOffering(offering);
-		test2.setOrdinal(0);
-		test2.setSession(session);
-		test2.setTotalScore(BigDecimal.ZERO);
-		test2.setType(AdAssessmentType.TEST);
-		test2.setWeight(BigDecimal.ZERO);
-		termService.addAssessment(session, offering, test2);
-		Assert.notNull(test2, "test2 is null");
-
-		LOG.debug("TEST 2 :========>");
-		LOG.debug("Assessment CanonicalCOde :{}", test2.getCanonicalCode());
-		LOG.debug("assessment Category :{}", test2.getCategory().name());
-		LOG.debug("assessment Code :{}", test2.getCode());
-		LOG.debug("Assessment Desc :{}", test2.getDescription());
-		LOG.debug("Assessment Type :{}", test2.getType().name());
-		LOG.debug("Assessment TotalScore :{}", test2.getTotalScore().byteValueExact());
-
-		return self();
-
-	}
-
-	public WhenIAmSetupExamViva i_update_exam() {
-		// find assessment by CanonicalCode
-		assessment = termService.findAssessmentByCanonicalCode("FIAT/MASTER/Q1/PBH/GST5023");
-		Assert.notNull(assessment, "assessment is null");
-
-		// update assessment (quiz 1 == quiz 1.1)
-		assessment.setCanonicalCode("FIAT/MASTER/Q1.1/PBH/GST5023");
-		assessment.setCategory(AdAssessmentCategory.COURSE_WORK);
-		assessment.setCode("MASTER/Q1.1");
-		assessment.setDescription("MECHANICS OF MATERIALS");
-		assessment.setOffering(offering);
+		assessment = new AdAssessmentImpl();
+		assessment.setCode("MASTER/MBA/GST5013/Q1");
+		assessment.setCanonicalCode("MASTER/MBA/GST5013/201720181/Q1");
+		assessment.setDescription("Economics & Business Environment");
 		assessment.setOrdinal(0);
-		assessment.setSession(session);
-		assessment.setTotalScore(BigDecimal.ZERO);
+		assessment.setWeight(BigDecimal.TEN);
+		assessment.setTotalScore(BigDecimal.TEN);
 		assessment.setType(AdAssessmentType.QUIZ);
-		assessment.setWeight(BigDecimal.ZERO);
-
-		termService.updateAssessment(session, offering, assessment);
-		Assert.notNull(termService.findAssessmentByCanonicalCode("FIAT/MASTER/Q1.1/PBH/GST5023"),
-				"canonical code for assessment is not updated");
-
-		LOG.debug("QUIZ 1 UPDATED ==========>");
+		assessment.setCategory(AdAssessmentCategory.COURSE_WORK);
+		assessment.setSession(session);
+		assessment.setOffering(offer);
+		termService.addAssessment(session, offer, assessment);
+		Assert.notNull(assessment, "quiz1 is null");
+		//LOG Debug Quiz 1
+		LOG.debug("QUIZ 1 :========>");
 		LOG.debug("Assessment CanonicalCOde :{}", assessment.getCanonicalCode());
 		LOG.debug("assessment Category :{}", assessment.getCategory().name());
 		LOG.debug("assessment Code :{}", assessment.getCode());
 		LOG.debug("Assessment Desc :{}", assessment.getDescription());
 		LOG.debug("Assessment Type :{}", assessment.getType().name());
 		LOG.debug("Assessment TotalScore :{}", assessment.getTotalScore().byteValueExact());
+		LOG.debug("");
+		// assert
+		Assert.notNull(assessment, "Assessments Quiz1 is not setup");
 
+		// setup assessment2
+		assessment = new AdAssessmentImpl();
+		assessment.setCode("MASTER/MBA/GST5013/Q2");
+		assessment.setCanonicalCode("MASTER/MBA/GST5013/201720181/Q2");
+		assessment.setDescription("Economics & Business Environment");
+		assessment.setOrdinal(0);
+		assessment.setWeight(BigDecimal.TEN);
+		assessment.setTotalScore(BigDecimal.TEN);
+		assessment.setType(AdAssessmentType.QUIZ);
+		assessment.setCategory(AdAssessmentCategory.COURSE_WORK);
+		assessment.setSession(session);
+		assessment.setOffering(offer);
+		termService.addAssessment(session, offer, assessment);
+		Assert.notNull(assessment, "quiz2 is null");
+		//LOG Debug Quiz 2
+		LOG.debug("QUIZ 2 :========>");
+		LOG.debug("Assessment CanonicalCOde :{}", assessment.getCanonicalCode());
+		LOG.debug("assessment Category :{}", assessment.getCategory().name());
+		LOG.debug("assessment Code :{}", assessment.getCode());
+		LOG.debug("Assessment Desc :{}", assessment.getDescription());
+		LOG.debug("Assessment Type :{}", assessment.getType().name());
+		LOG.debug("Assessment TotalScore :{}", assessment.getTotalScore().byteValueExact());
+		LOG.debug("");
+		// assert
+		Assert.notNull(assessment, "Assessments Quiz2 is not setup");
+
+		// setup assessment3
+		assessment = new AdAssessmentImpl();
+		assessment.setCode("MASTER/MBA/GST5013/T1");
+		assessment.setCanonicalCode("MASTER/MBA/GST5013/201720181/T1");
+		assessment.setDescription("Economics & Business Environment");
+		assessment.setOrdinal(0);
+		assessment.setWeight(BigDecimal.TEN);
+		assessment.setTotalScore(BigDecimal.TEN);
+		assessment.setType(AdAssessmentType.TEST);
+		assessment.setCategory(AdAssessmentCategory.COURSE_WORK);
+		assessment.setSession(session);
+		assessment.setOffering(offer);
+		termService.addAssessment(session, offer, assessment);
+		Assert.notNull(assessment, "test1 is null");
+		//LOG Debug Test 1
+		LOG.debug("TEST 1 :========>");
+		LOG.debug("Assessment CanonicalCOde :{}", assessment.getCanonicalCode());
+		LOG.debug("assessment Category :{}", assessment.getCategory().name());
+		LOG.debug("assessment Code :{}", assessment.getCode());
+		LOG.debug("Assessment Desc :{}", assessment.getDescription());
+		LOG.debug("Assessment Type :{}", assessment.getType().name());
+		LOG.debug("Assessment TotalScore :{}", assessment.getTotalScore().byteValueExact());
+		LOG.debug("");
+		// assert
+		Assert.notNull(assessment, "Assessments Test 1 is not setup");
+
+		// setup assessment4
+		assessment = new AdAssessmentImpl();
+		assessment.setCode("MASTER/MBA/GST5013/Q3");
+		assessment.setCanonicalCode("MASTER/MBA/GST5013/201720181/Q3");
+		assessment.setDescription("Economics & Business Environment");
+		assessment.setOrdinal(0);
+		assessment.setWeight(BigDecimal.TEN);
+		assessment.setTotalScore(BigDecimal.TEN);
+		assessment.setType(AdAssessmentType.QUIZ);
+		assessment.setCategory(AdAssessmentCategory.COURSE_WORK);
+		assessment.setSession(session);
+		assessment.setOffering(offer);
+		termService.addAssessment(session, offer, assessment);
+		Assert.notNull(assessment, "quiz3 is null");
+		//LOG Debug Quiz 3
+		LOG.debug("QUIZ 3 :========>");
+		LOG.debug("Assessment CanonicalCOde :{}", assessment.getCanonicalCode());
+		LOG.debug("assessment Category :{}", assessment.getCategory().name());
+		LOG.debug("assessment Code :{}", assessment.getCode());
+		LOG.debug("Assessment Desc :{}", assessment.getDescription());
+		LOG.debug("Assessment Type :{}", assessment.getType().name());
+		LOG.debug("Assessment TotalScore :{}", assessment.getTotalScore().byteValueExact());
+		LOG.debug("");
+		// assert
+		Assert.notNull(assessment, "Assessments Quiz3 is not setup");
+
+		// setup assessment4
+		assessment = new AdAssessmentImpl();
+		assessment.setCode("MASTER/MBA/GST5013/Q4");
+		assessment.setCanonicalCode("MASTER/MBA/GST5013/201720181/Q4");
+		assessment.setDescription("Economics & Business Environment");
+		assessment.setOrdinal(0);
+		assessment.setWeight(BigDecimal.TEN);
+		assessment.setTotalScore(BigDecimal.TEN);
+		assessment.setType(AdAssessmentType.QUIZ);
+		assessment.setCategory(AdAssessmentCategory.COURSE_WORK);
+		assessment.setSession(session);
+		assessment.setOffering(offer);
+		termService.addAssessment(session, offer, assessment);
+		Assert.notNull(assessment, "quiz4 is null");
+		//LOG Debug Quiz 4
+		LOG.debug("QUIZ 4 :========>");
+		LOG.debug("Assessment CanonicalCOde :{}", assessment.getCanonicalCode());
+		LOG.debug("assessment Category :{}", assessment.getCategory().name());
+		LOG.debug("assessment Code :{}", assessment.getCode());
+		LOG.debug("Assessment Desc :{}", assessment.getDescription());
+		LOG.debug("Assessment Type :{}", assessment.getType().name());
+		LOG.debug("Assessment TotalScore :{}", assessment.getTotalScore().byteValueExact());
+		LOG.debug("");
+		// assert
+		Assert.notNull(assessment, "Assessments Quiz4 is not setup");
+
+		// setup assessment5
+		assessment = new AdAssessmentImpl();
+		assessment.setCode("MASTER/MBA/GST5013/T2");
+		assessment.setCanonicalCode("MASTER/MBA/GST5013/201720181/T2");
+		assessment.setDescription("Economics & Business Environment");
+		assessment.setOrdinal(0);
+		assessment.setWeight(BigDecimal.TEN);
+		assessment.setTotalScore(BigDecimal.TEN);
+		assessment.setType(AdAssessmentType.TEST);
+		assessment.setCategory(AdAssessmentCategory.COURSE_WORK);
+		assessment.setSession(session);
+		assessment.setOffering(offer);
+		termService.addAssessment(session, offer, assessment);
+		Assert.notNull(assessment, "test2 is null");
+		//LOG Debug Test 2
+		LOG.debug("TEST 2 :========>");
+		LOG.debug("Assessment CanonicalCOde :{}", assessment.getCanonicalCode());
+		LOG.debug("assessment Category :{}", assessment.getCategory().name());
+		LOG.debug("assessment Code :{}", assessment.getCode());
+		LOG.debug("Assessment Desc :{}", assessment.getDescription());
+		LOG.debug("Assessment Type :{}", assessment.getType().name());
+		LOG.debug("Assessment TotalScore :{}", assessment.getTotalScore().byteValueExact());
+		LOG.debug("");
+		// assert
+		Assert.notNull(assessment, "Assessments Test 2 is not setup");
 		return self();
+
 	}
 
+	
+
 }
+		

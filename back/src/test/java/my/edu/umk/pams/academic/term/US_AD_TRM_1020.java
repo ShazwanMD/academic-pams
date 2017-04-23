@@ -28,7 +28,7 @@ public class US_AD_TRM_1020 extends
 
 	@Test
 	@Rollback
-	public void scenario01() {
+	public void studentViewOfferingCourses() {
 		given().I_am_a_student_in_current_academic_session();
 		when().I_want_to_enroll_additional_offering_courses_to_repeat_courses_for_program_$(PROGRAM_CODE);
 		then().the_enrollment_courses_is_updated();

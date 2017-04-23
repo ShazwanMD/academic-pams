@@ -1,6 +1,7 @@
 package my.edu.umk.pams.academic.profile;
 
 import com.tngtech.jgiven.annotation.As;
+import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.profile.stage.ThenContactNumberUpdated;
@@ -29,6 +30,9 @@ public class US_AD_PFL_1004 extends SpringScenarioTest<GivenIAmStudent, WhenIUpd
 
     private static final Logger LOG = LoggerFactory.getLogger(US_AD_PFL_1004.class);
 
+    @ProvidedScenarioState
+    private static String matricNo = "A17M0009F";
+    
     @Test
     @Rollback
     public void scenario1004() {

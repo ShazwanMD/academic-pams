@@ -1,8 +1,10 @@
 package my.edu.umk.pams.academic.planner;
 
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
@@ -29,7 +31,8 @@ public class US_AD_PNR_1015 extends SpringScenarioTest<GivenIAmCPSAdministrator,
 	private static final Integer COURSE_CREDIT = 3;
 	
 	
-	
+	@Test
+	@Rollback
 	public void scenario1() {
 		given().I_am_a_CPS_administrator()
 		.and().I_pick_faculty_$(FACULTY_CODE);;

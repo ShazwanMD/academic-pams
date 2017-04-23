@@ -6,6 +6,7 @@ import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.annotation.As;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.academic.config.TestAppConfiguration;
+import my.edu.umk.pams.academic.planner.model.AdProgramType;
 import my.edu.umk.pams.academic.planner.stage.ThenProgramLevelIntroduced;
 import my.edu.umk.pams.academic.planner.stage.WhenAdminAddProgramLevel;
 import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
@@ -31,16 +32,18 @@ import org.springframework.transaction.annotation.Transactional;
 public class US_AD_PNR_1004 extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenAdminAddProgramLevel, ThenProgramLevelIntroduced> {
 
     private static final Logger LOG = LoggerFactory.getLogger(US_AD_PNR_1004.class);
+
+    @ProvidedScenarioState
     private String FACULTY_CODE = "A07";
 
     @ProvidedScenarioState
-    private String PROGRAM_CODE = "A07/PHD/0009";
+    private AdProgramType programType = AdProgramType.MASTER;
 
     @Test
     @Rollback
-    public void AddProgramLevel() {
+    public void add_master_program_level() {
         given().I_am_a_CPS_administrator();
-        when().Admin_add_a_program_level_for_faculty_$(FACULTY_CODE);
-        then().program_level_$_introduced(PROGRAM_CODE);
+        when().i_add_a_program_level_post_graduate_for_faculty();
+        then().program_level_post_graduate_introduced();
     }
 }

@@ -27,7 +27,7 @@ public class US_AD_TRM_1024 extends
 
 	@Test
 	@Rollback(true)
-	public void scenario01() {
+	public void studentRegisterAdmission() {
 		given().I_am_a_student_in_current_academic_session();
 		when().I_register_admission_in_new_semester();
 		then().The_admission_will_be_reviewed();

@@ -186,7 +186,7 @@ public class AdAssessmentDaoImpl extends GenericDaoSupport<Long, AdAssessment> i
     @Override
     public boolean hasGradebook(AdSection section, AdAssessment assessment) {
         Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery("select count(*) from AcGradebook s where " +
+        Query query = session.createQuery("select count(*) from AdGradebook s where " +
                 "s.assessment = :assessment " +
                 "and s.section = :section " +
                 "and s.metadata.state = :state ");

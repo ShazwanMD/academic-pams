@@ -34,7 +34,7 @@ public class US_AD_TRM_1012 extends SpringScenarioTest<GivenIAmCPSAdministrator,
 
 	@Test
 	@Rollback()
-	public void scenario01() {
+	public void adminUpdateEnrollment() {
 		given().I_am_a_CPS_administrator_in_current_academic_session();
 		when().I_close_the_date_of_enrollment_for_program_$(PROGRAM_CODE);
 		then().Enrollment_date_is_close();
