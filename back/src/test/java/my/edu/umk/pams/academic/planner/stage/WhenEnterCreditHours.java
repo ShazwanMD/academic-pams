@@ -43,7 +43,7 @@ public class WhenEnterCreditHours extends Stage<WhenEnterCreditHours> {
 		List<AdCourse> courses = plannerService.findCourses(faculty);
 		courses.forEach(course -> {
 			course.setCredit(credit);
-			plannerService.updateCourse(faculty, course);
+			plannerService.addCourse(faculty, course);
 		});
 
 		return self();
