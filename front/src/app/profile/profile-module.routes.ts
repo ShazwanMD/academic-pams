@@ -4,5 +4,5 @@ import {ProfileCenterPage} from "./profile-center.page";
 
 export const ProfileModuleRoutes: Routes = [
   {path: 'profile', component: ProfileCenterPage},
-  {path: 'profile/:matricNo', component: ProfileDetailPage},
+  // {path: 'profile/:matricNo', component: ProfileDetailPage},
 ];

@@ -1,5 +1,4 @@
 import {Action} from '@ngrx/store';
-import {Actor} from "../identity/actor.interface";
 import {Student} from "../identity/student.interface";
 import {ProfileActions} from "./profile.action";
 

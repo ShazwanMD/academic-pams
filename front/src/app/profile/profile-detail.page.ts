@@ -3,12 +3,9 @@ import {Router, ActivatedRoute} from '@angular/router';
 
 import {Store} from "@ngrx/store";
 import {Observable} from "rxjs";
-import {IdentityService} from "../../services/identity.service";
-import {CommonService} from "../../services/common.service";
-import {ProfileService} from "../../services/profile.service";
 import {Student} from "../identity/student.interface";
-import {ProfileState} from "./profile.reducer";
 import {ProfileActions} from "./profile.action";
+import {ProfileModuleState} from "./index";
 
 @Component({
   selector: 'pams-profile-detail',
@@ -17,40 +14,25 @@ import {ProfileActions} from "./profile.action";
 
 export class ProfileDetailPage implements OnInit {
 
-  private _identityService: IdentityService;
-  private _commonService: CommonService;
-  private _profileService: ProfileService;
-  private _router: Router;
-  private _route: ActivatedRoute;
-  private _actions: ProfileActions;
-  private store: Store<ProfileState>;
+  private STUDENT = "profileModuleState.student".split(".");
   private student$: Observable<Student>;
 
-  constructor(router: Router,
-              route: ActivatedRoute,
-              actions: ProfileActions,
-              store: Store<ProfileState>,
-              identityService: IdentityService,
-              commonService: CommonService) {
-
-    this._router = router;
-    this._route = route;
-    this._identityService = identityService;
-    this._commonService = commonService;
-    this._actions = actions;
-    this.store = store;
-    this.student$ = this.store.select('student');
+  constructor(private router: Router,
+              private route: ActivatedRoute,
+              private actions: ProfileActions,
+              private store: Store<ProfileModuleState>) {
+    this.student$ = this.store.select(...this.STUDENT);
   }
 
   ngOnInit(): void {
-    this._route.params.subscribe((params: {identityNo: string}) => {
+    this.route.params.subscribe((params: {identityNo: string}) => {
       let identityNo: string = params.identityNo;
-      this.store.dispatch(this._actions.findProfile(identityNo));
+      this.store.dispatch(this.actions.findProfile(identityNo));
     });
   }
 
   goBack(route: string): void {
-    this._router.navigate(['/profiles']);
+    this.router.navigate(['/profiles']);
   }
 }
 

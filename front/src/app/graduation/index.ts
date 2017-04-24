@@ -8,20 +8,21 @@ import {CovalentCoreModule} from '@covalent/core';
 import {CommonService} from '../../services';
 import {IdentityService} from '../../services';
 import {GraduationService} from "../../services/graduation.service";
+import {GraduationCenterPage} from "./graduation-center.page";
 
-export interface GraduationModuleState {
-  // todo
-}
-;
-
-export const INITIAL_GRADUATION_STATE: GraduationModuleState =
-  <GraduationModuleState>{
-    // todo
-  };
-
-export const graduationModuleReducers = {
-// todo
-};
+// export interface GraduationModuleState {
+//   // todo
+// }
+// ;
+//
+// export const INITIAL_GRADUATION_STATE: GraduationModuleState =
+//   <GraduationModuleState>{
+//     // todo
+//   };
+//
+// export const graduationModuleReducers = {
+// // todo
+// };
 
 
 @NgModule({
@@ -36,6 +37,7 @@ export const graduationModuleReducers = {
   ],
   declarations: [
     // page
+    GraduationCenterPage
   ],
   exports: [],
 })

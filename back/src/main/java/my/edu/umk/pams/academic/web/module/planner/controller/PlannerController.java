@@ -25,9 +25,6 @@ import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 
-import static my.edu.umk.pams.academic.util.Util.toLimit;
-import static my.edu.umk.pams.academic.util.Util.toOffset;
-
 /**
  * @author PAMS
  */
@@ -63,13 +60,6 @@ public class PlannerController {
                 .toAcademicSessionVos(faculties), HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/academicSessions/page/{pageNo}", method = RequestMethod.GET)
-    public ResponseEntity<List<AcademicSession>> findAcademicSessions(@PathVariable Integer pageNo) {
-        List<AdAcademicSession> faculties = plannerService.findAcademicSessions(0, 100);
-        return new ResponseEntity<List<AcademicSession>>(plannerTransformer
-                .toAcademicSessionVos(faculties), HttpStatus.OK);
-    }
-
     @RequestMapping(value = "/academicSessions/current", method = RequestMethod.GET)
     public ResponseEntity<AcademicSession> findCurrentAcademicSessions() {
         return new ResponseEntity<AcademicSession>(plannerTransformer
@@ -83,18 +73,25 @@ public class PlannerController {
     }
 
     @RequestMapping(value = "/academicSessions/{code}", method = RequestMethod.POST)
-    public void updateAcademicSession(@PathVariable String code) {
-        throw new UnsupportedOperationException();
+    public ResponseEntity<String> updateAcademicSession(@PathVariable String code, @RequestBody AcademicSession vo) {
+        AdAcademicSession academicSession = plannerService.findAcademicSessionByCode(code);
+        academicSession.setCurrent(vo.isCurrent());
+        academicSession.setDescription(vo.getDescription());
+        return new ResponseEntity<String>(academicSession.getCode(), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/academicSessions/{code}/activate", method = RequestMethod.POST)
-    public void activateAcademicSession(@PathVariable String code) {
-        throw new UnsupportedOperationException();
+    public ResponseEntity<String> activateAcademicSession(@PathVariable String code) {
+        AdAcademicSession academicSession = plannerService.findAcademicSessionByCode(code);
+        academicSession.setCurrent(true);
+        return new ResponseEntity<String>(academicSession.getCode(), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/academicSessions/{code}/deactivate", method = RequestMethod.POST)
-    public void deactivateAcademicSession(@PathVariable String code) {
-        throw new UnsupportedOperationException();
+    public ResponseEntity<String> deactivateAcademicSession(@PathVariable String code) {
+        AdAcademicSession academicSession = plannerService.findAcademicSessionByCode(code);
+        academicSession.setCurrent(false);
+        return new ResponseEntity<String>(academicSession.getCode(), HttpStatus.OK);
     }
 
     //====================================================================================================
@@ -108,11 +105,6 @@ public class PlannerController {
                 .toFacultyVos(faculties), HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/faculties/page/{pageNo}", method = RequestMethod.GET)
-    public ResponseEntity<List<Faculty>> findFaculties(@PathVariable Integer pageNo) {
-        throw new UnsupportedOperationException();
-    }
-
     @RequestMapping(value = "/faculties/{code}", method = RequestMethod.GET)
     public ResponseEntity<Faculty> findFacultyByCode(@PathVariable String code) throws UnsupportedEncodingException {
         code = URLDecoder.decode(code, StandardCharsets.UTF_8.toString());
@@ -121,13 +113,19 @@ public class PlannerController {
     }
 
     @RequestMapping(value = "/faculties/{code}/programs", method = RequestMethod.GET)
-    public ResponseEntity<List<Program>> findProgramsByFaculty(@PathVariable String code) {
-        throw new UnsupportedOperationException();
+    public ResponseEntity<List<Program>> findProgramsByFaculty(@PathVariable String code) throws UnsupportedEncodingException {
+        code = URLDecoder.decode(code, StandardCharsets.UTF_8.toString());
+        AdFaculty faculty = plannerService.findFacultyByCode(code);
+        return new ResponseEntity<List<Program>>(plannerTransformer
+                .toProgramVos(plannerService.findPrograms(faculty)), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/faculties/{code}/courses", method = RequestMethod.GET)
-    public ResponseEntity<List<Course>> findCoursesByFaculty(@PathVariable String code) {
-        throw new UnsupportedOperationException();
+    public ResponseEntity<List<Course>> findCoursesByFaculty(@PathVariable String code) throws UnsupportedEncodingException {
+        code = URLDecoder.decode(code, StandardCharsets.UTF_8.toString());
+        AdFaculty faculty = plannerService.findFacultyByCode(code);
+        return new ResponseEntity<List<Course>>(plannerTransformer
+                .toCourseVos(plannerService.findCourses(faculty)), HttpStatus.OK);
     }
 
     // business methods
@@ -161,12 +159,6 @@ public class PlannerController {
         List<AdProgram> programs = plannerService.findPrograms(0, 100);
         return new ResponseEntity<List<Program>>(plannerTransformer
                 .toProgramVos(programs), HttpStatus.OK);
-    }
-
-    @RequestMapping(value = "/programs/page/{pageNo}", method = RequestMethod.GET)
-    public ResponseEntity<List<Program>> findPrograms(@PathVariable Integer pageNo) {
-        return new ResponseEntity<List<Program>>(plannerTransformer
-                .toProgramVos(plannerService.findPrograms(toOffset(pageNo), toLimit(pageNo))), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/programs/{code}", method = RequestMethod.GET)
@@ -267,7 +259,7 @@ public class PlannerController {
     @RequestMapping(value = "/cohorts", method = RequestMethod.GET)
     public ResponseEntity<List<Cohort>> findCohorts() {
         return new ResponseEntity<List<Cohort>>(plannerTransformer
-                .toCohortVos(plannerService.findCohorts("%",0, 100)), HttpStatus.OK);
+                .toCohortVos(plannerService.findCohorts("%", 0, 100)), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/cohorts/page/{pageNo}", method = RequestMethod.GET)
@@ -279,7 +271,7 @@ public class PlannerController {
     // PRIVATE METHODS
     //====================================================================================================
 
-    private void dummyLogin(){
+    private void dummyLogin() {
         UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken("root", "abc123");
         Authentication authed = authenticationManager.authenticate(token);
         SecurityContextHolder.getContext().setAuthentication(authed);
