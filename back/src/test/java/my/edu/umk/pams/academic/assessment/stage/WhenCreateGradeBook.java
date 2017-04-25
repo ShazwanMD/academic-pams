@@ -101,19 +101,7 @@ public class WhenCreateGradeBook extends Stage<WhenCreateGradeBook> {
 		Assert.notNull(section, "section Must Not Null");
 		gradebook.setScore(new BigDecimal(BigInteger.valueOf(50)));
 
-		termService.addGradebooks(section, enrollment, gradebook);
-
-		List<AdAssessment> assessments = termService.findAssessments(session, offer);
-		LOG.debug("GradeBook Assessment :{}", gradebook.getAssessment().getCategory());
-		LOG.debug("GradeBook Enrollment :{}", gradebook.getEnrollment().getStudent().getName());
-		LOG.debug("GradeBook Section :{}", gradebook.getSection().getCode());
-		LOG.debug("GradeBook Score :{}", gradebook.getScore());
-
-		for (AdAssessment assessment : assessments)
-			LOG.debug("Assessments :{}", assessment.getCode() + "," + assessment.getType().name());
-
-		List<AdGradebook> gradebooks = termService.findGradebooks(enrollment);
-		LOG.debug("GRADEBOOK :{}", gradebook.getAssessment().getCanonicalCode());
+		termService.saveGradebook(gradebook);
 
 		termService.normalizeGradebooks(enrollment);
 
