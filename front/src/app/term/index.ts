@@ -10,25 +10,28 @@ import {IdentityService} from '../../services';
 import {TermService} from "../../services/term.service";
 
 import {TermPage} from "./term.page";
-import {combineReducers, StoreModule} from "@ngrx/store";
-import {compose} from "@ngrx/core/compose";
 
-export interface TermState {
+export interface TermModuleState {
   // todo
 }
 ;
 
-export const termReducer = compose(combineReducers)({
-  // todo
-});
+export const INITIAL_TERM_STATE: TermModuleState =
+  <TermModuleState>{
+    // todo
+  };
+
+export const termModuleReducers = {
+// todo
+};
 
 
 @NgModule({
   imports: [
+    appRoutes,
     BrowserModule,
     ReactiveFormsModule,
     CovalentCoreModule.forRoot(),
-    appRoutes,
 
     // our modules
     // ngrx

@@ -32,7 +32,7 @@ public class US_AD_TRM_1016 extends
 
 	@Test
 	@Rollback
-	public void scenario01() {
+	public void studentViewStatusOfferedCourses() {
 		given().I_am_a_student_in_current_academic_session();
 		when().I_view_the_details_offered_courses_for_program_$(PROGRAM_CODE);
 		then().the_details_offered_courses_info_is_current();

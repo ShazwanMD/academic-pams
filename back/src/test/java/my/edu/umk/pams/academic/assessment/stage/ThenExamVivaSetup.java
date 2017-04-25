@@ -7,6 +7,7 @@ import org.springframework.util.Assert;
 
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
+import com.tngtech.jgiven.annotation.Pending;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 
@@ -22,7 +23,9 @@ import my.edu.umk.pams.academic.planner.model.AdProgram;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
 import my.edu.umk.pams.academic.term.dao.AdOfferingDao;
 import my.edu.umk.pams.academic.term.model.AdAssessment;
+import my.edu.umk.pams.academic.term.model.AdGradebook;
 import my.edu.umk.pams.academic.term.model.AdOffering;
+import my.edu.umk.pams.academic.term.model.AdSection;
 import my.edu.umk.pams.academic.term.service.TermService;
 
 @JGivenStage
@@ -31,28 +34,16 @@ public class ThenExamVivaSetup extends Stage<ThenExamVivaSetup> {
 private static final Logger LOG = LoggerFactory.getLogger(ThenExamVivaSetup.class);
 	
 	@Autowired
-	private CommonService commonService;
-
-	@Autowired
 	private TermService termService;
-
-	@Autowired
-	private IdentityService identityService;
-
-	@Autowired
-	private PlannerService plannerService;
 
 	@ExpectedScenarioState
 	private AdAssessment assessment;
 
 	@ExpectedScenarioState
-	private AdOffering offering;
+	private AdOffering offer;
 
 	@ExpectedScenarioState
 	private AdAcademicSession session;
-
-	@ExpectedScenarioState
-	private AdOfferingDao offeringDao;
 
 	@ExpectedScenarioState
 	private AdActor actor;
@@ -72,25 +63,16 @@ private static final Logger LOG = LoggerFactory.getLogger(ThenExamVivaSetup.clas
 	@ExpectedScenarioState
 	private AdCourse course;
 	
+	@ExpectedScenarioState
+	private AdSection section;
+	
+	@ExpectedScenarioState
+	private AdGradebook gradeBook;
+	
+	
 	public ThenExamVivaSetup exam_setup() {
 		
-	 boolean exists = termService.isAssessmentExists("FIAT/MASTER/Q1.1/PBH/GST5023");
-	 Assert.isTrue(exists, "Q1.1 Not Setup");
-	 
-	 boolean exists1 = termService.isAssessmentExists("FIAT/MASTER/Q2/PBH/GST5023");
-	 Assert.isTrue(exists1, "Q2 Not Setup");
-	 
-	 boolean exists3 = termService.isAssessmentExists("FIAT/MASTER/T2/PBH/GST5023");
-	 Assert.isTrue(exists3, "T1 Not Setup");
-	 
-	 boolean exists4 = termService.isAssessmentExists("FIAT/MASTER/Q3/PBH/GST5023");
-	 Assert.isTrue(exists4, "Q3 Not Setup");
-	 
-	 boolean exists5 = termService.isAssessmentExists("FIAT/MASTER/Q4/PBH/GST5023");
-	 Assert.isTrue(exists5, "Q4 Not Setup");
-	 
-	 boolean exists6 = termService.isAssessmentExists("FIAT/MASTER/T2/PBH/GST5023");
-	 Assert.isTrue(exists6, "T2 Not Setup");
+
 	 
 	 
 		

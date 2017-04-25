@@ -7,7 +7,7 @@ import {Store} from "@ngrx/store";
 import {Observable} from "rxjs";
 import {Program} from "./program.interface";
 import {ProgramActions} from "./program.action";
-import {PlannerState} from "../index";
+import {PlannerModuleState} from "../index";
 
 @Component({
   selector: 'pams-program-center',
@@ -21,13 +21,13 @@ export class ProgramCenterPage implements OnInit {
   private _router: Router;
   private _route: ActivatedRoute;
   private _actions: ProgramActions;
-  private store: Store<PlannerState>;
+  private store: Store<PlannerModuleState>;
   private programs$: Observable<Program[]>;
 
   constructor(router: Router,
               route: ActivatedRoute,
               actions: ProgramActions,
-              store: Store<PlannerState>,
+              store: Store<PlannerModuleState>,
               identityService: IdentityService,
               commonService: CommonService) {
 

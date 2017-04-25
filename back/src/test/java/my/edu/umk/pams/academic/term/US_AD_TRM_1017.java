@@ -35,7 +35,7 @@ public class US_AD_TRM_1017 extends
 
 	@Test
 	@Rollback()
-	public void scenario01() {
+	public void studentViewOpenDateEnrollment() {
 		given().I_am_a_student_in_current_academic_session();
 		when().Want_to_view_open_date_of_enrollment();
 		then().Know_the_enrollment_interval_period();

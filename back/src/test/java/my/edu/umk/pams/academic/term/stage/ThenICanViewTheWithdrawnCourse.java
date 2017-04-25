@@ -23,28 +23,31 @@ public class ThenICanViewTheWithdrawnCourse extends Stage<ThenICanViewTheWithdra
 
 	@Autowired
 	private TermService termService;
-	
-	@ExpectedScenarioState
-	private AdEnrollmentApplicationItem item;
 
 	@ExpectedScenarioState
 	private AdEnrollmentApplication application;
 
 	@ExpectedScenarioState
 	private AdSection section;
-	
+
 	@ExpectedScenarioState
 	private List<AdEnrollmentApplicationItem> items;
-	
-	@Pending
+
+	@ExpectedScenarioState
+	private AdEnrollmentApplicationItem item;
+
 	public ThenICanViewTheWithdrawnCourse i_can_view_the_withdrawn_course() {
 
-		LOG.debug("======================view data=========================");
-		LOG.debug("Enrollment application for application:" + application.getReferenceNo());
+		item = termService.findEnrollmentApplicationItemBySection(section);
+		Assert.notNull(item, "item data should be not null");
+
+		LOG.debug("======================view updated data application item=========================");
+		LOG.debug("Enrollment application for application:" + application.getId());
 		LOG.debug("Enrollment application under section:" + section.getCanonicalCode());
-		LOG.debug("New action for enrollment application has been updated:" + item.getAction());
-		
+		LOG.debug("Enrollment application item:" + item.getId());
+		LOG.debug("Enrollment application item:" + item.getAction());
+
 		return self();
 	}
-	
+
 }

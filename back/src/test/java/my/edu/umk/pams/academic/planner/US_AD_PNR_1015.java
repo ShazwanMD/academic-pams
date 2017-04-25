@@ -1,8 +1,10 @@
 package my.edu.umk.pams.academic.planner;
 
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,15 +27,16 @@ import my.edu.umk.pams.bdd.tags.Submodule;
 public class US_AD_PNR_1015 extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenAdminUpdateCredit, ThenCreditHasBeUpdated> {
 
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_PNR_1015.class);
-	private static final String FACULTY_CODE = "A01";
-	private static final Integer COURSE_CREDIT = 3;
+	private static final String FACULTY_CODE = "A10";
+	public String COURSE_CODE = "GST5013";
 	
 	
-	
+	@Test
+	@Rollback
 	public void scenario1() {
 		given().I_am_a_CPS_administrator()
 		.and().I_pick_faculty_$(FACULTY_CODE);;
-		when().Admin_update_credit_$(COURSE_CREDIT);
+		when().Admin_update_credit_hour_for_$(COURSE_CODE);
 		then().Credit_has_be_updated();
 
 

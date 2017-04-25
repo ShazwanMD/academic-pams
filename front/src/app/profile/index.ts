@@ -2,35 +2,40 @@ import {NgModule, ModuleWithProviders} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {ReactiveFormsModule} from '@angular/forms';
 import {appRoutes, appRoutingProviders} from '../app.routes';
-import {environment} from '../../environments/environment';
-import {combineReducers, StoreModule} from "@ngrx/store";
 import {CovalentCoreModule} from '@covalent/core';
 
 import {CommonService} from '../../services';
 import {IdentityService} from '../../services';
 
-import {compose} from "@ngrx/core/compose";
 import {ProfileListState, profileListReducer} from "./profile-list.reducer";
-import {profileReducer} from "./profile.reducer";
-import {ProfileCenterPage} from "./profile-center.page";
-import {ProfileDetailPage} from "./profile-detail.page";
+import {profileReducer, ProfileState} from "./profile.reducer";
 import {ProfileService} from "../../services/profile.service";
-import {ProfileComponent} from "./components/profile.component";
-import {ProfileListComponent} from "./components/profile-list.component";
-import {ProfileStatusComponent} from "./components/profile-status.component";
 import {ProfileActions} from "./profile.action";
-import {ProfileEffects} from "./profile.effect";
+import {Student} from "../identity/student.interface";
+import {ProfileCenterPage} from "./profile-center.page";
+import {ProfileStatusComponent} from "./components/profile-status.component";
+import {ProfileListComponent} from "./components/profile-list.component";
+import {ProfileComponent} from "./components/profile.component";
+import {ProfileDetailPage} from "./profile-detail.page";
 import {EffectsModule} from "@ngrx/effects";
+import {ProfileEffects} from "./profile.effect";
 
-export interface ProfileState {
+export interface ProfileModuleState {
   students: ProfileListState;
   student: ProfileState;
 }
 ;
 
-export const profileModuleReducer = compose(combineReducers)({
-  students: profileListReducer, student: profileReducer,
-});
+export const INITIAL_PROFILE_STATE: ProfileModuleState =
+  <ProfileModuleState>{
+    students: <Student[]>[],
+    student: <Student>{},
+  };
+
+export const profileModuleReducers = {
+  students: profileListReducer,
+  student: profileReducer,
+};
 
 
 @NgModule({
@@ -39,7 +44,6 @@ export const profileModuleReducer = compose(combineReducers)({
     BrowserModule,
     ReactiveFormsModule,
     CovalentCoreModule.forRoot(),
-
     EffectsModule.run(ProfileEffects),
   ],
   declarations: [

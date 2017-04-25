@@ -12,12 +12,12 @@ export class ProfileActions {
   }
 
   static FIND_PROFILES_SUCCESS = '[Profile] Find Profiles Success';
-  findProfilesSuccess(accounts): Action {
+  findProfilesSuccess(students): Action {
     console.log("findProfilesSuccess");
-    console.log("accounts: " + accounts.length);
+    console.log("students: " + students.length);
     return {
       type: ProfileActions.FIND_PROFILES_SUCCESS,
-      payload: accounts
+      payload: students
     };
   }
 
@@ -30,10 +30,10 @@ export class ProfileActions {
   }
 
   static FIND_PROFILE_SUCCESS = '[Profile] Find Profile Success';
-  getProfileSuccess(account): Action {
+  getProfileSuccess(student): Action {
     return {
       type: ProfileActions.FIND_PROFILE_SUCCESS,
-      payload: account
+      payload: student
     };
   }
 
@@ -45,34 +45,34 @@ export class ProfileActions {
   }
 
   static UPDATE_PROFILE = '[Profile] Update Profile';
-  updateProfile(account): Action {
+  updateProfile(student): Action {
     return {
       type: ProfileActions.UPDATE_PROFILE,
-      payload: account
+      payload: student
     };
   }
 
   static UPDATE_PROFILE_SUCCESS = '[Profile] Update Profile Success';
-  updateProfileSuccess(account): Action {
+  updateProfileSuccess(student): Action {
     return {
       type: ProfileActions.UPDATE_PROFILE_SUCCESS,
-      payload: account
+      payload: student
     };
   }
 
   static CREATE_PROFILE = '[Profile] Create Profile';
-  createProfile(account): Action {
+  createProfile(student): Action {
     return {
       type: ProfileActions.CREATE_PROFILE,
-      payload: account
+      payload: student
     };
   }
 
   static CREATE_PROFILE_SUCCESS = '[Profile] Create Profile Success';
-  createProfileSuccess(account): Action {
+  createProfileSuccess(student): Action {
     return {
       type: ProfileActions.CREATE_PROFILE_SUCCESS,
-      payload: account
+      payload: student
     };
   }
 }

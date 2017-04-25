@@ -6,7 +6,7 @@ import {Store} from "@ngrx/store";
 import {Observable} from "rxjs";
 import {Cohort} from "./cohort.interface";
 import {CohortActions} from "./cohort.action";
-import {PlannerState} from "../index";
+import {PlannerModuleState} from "../index";
 
 @Component({
   selector: 'pams-cohort-center',
@@ -19,13 +19,13 @@ export class CohortCenterPage implements OnInit {
   private _router: Router;
   private _route: ActivatedRoute;
   private _actions: CohortActions;
-  private store: Store<PlannerState>;
+  private store: Store<PlannerModuleState>;
   private cohorts$: Observable<Cohort[]>;
 
   constructor(router: Router,
               route: ActivatedRoute,
               actions: CohortActions,
-              store: Store<PlannerState>,
+              store: Store<PlannerModuleState>,
               commonService: CommonService) {
 
     this._router = router;

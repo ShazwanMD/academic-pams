@@ -61,35 +61,37 @@ public class ProfileController {
                 .toStudentVos(students), HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/students/page/{pageNo}", method = RequestMethod.GET)
-    public ResponseEntity<List<Student>> findStudents(@PathVariable Integer pageNo) {
-        throw new UnsupportedOperationException();
-    }
-
     @RequestMapping(value = "/students/{matricNo}", method = RequestMethod.GET)
-    public ResponseEntity<Student> findStudentByCode(@PathVariable String matricNo) throws UnsupportedEncodingException {
+    public ResponseEntity<Student> findStudentByMatricNo(@PathVariable String matricNo) throws UnsupportedEncodingException {
         return new ResponseEntity<Student>(profileTransformer
                 .toStudentVo(profileService.findStudentByMatricNo(matricNo)), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/students/{identityNo}/guardians", method = RequestMethod.GET)
     public ResponseEntity<List<Guardian>> findGuardiansByStudent(@PathVariable String identityNo) {
-        throw new UnsupportedOperationException();
+        AdStudent student = profileService.findStudentByMatricNo(identityNo);
+        return new ResponseEntity<List<Guardian>>(profileTransformer
+                .toGuardianVos(profileService.findGuardians(student)), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/students/{identityNo}/guarantors", method = RequestMethod.GET)
     public ResponseEntity<List<Guarantor>> findGuarantorsByStudent(@PathVariable String identityNo) {
-        throw new UnsupportedOperationException();
+        AdStudent student = profileService.findStudentByMatricNo(identityNo);
+        return new ResponseEntity<List<Guarantor>>(profileTransformer
+                .toGuarantorVos(profileService.findGuarantors(student)), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/students/{identityNo}/addresses", method = RequestMethod.GET)
     public ResponseEntity<List<Address>> findAddressesByStudent(@PathVariable String identityNo) {
-        throw new UnsupportedOperationException();
+        AdStudent student = profileService.findStudentByMatricNo(identityNo);
+        return new ResponseEntity<List<Address>>(profileTransformer
+                .toAddressVos(profileService.findAddresses(student)), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/students/{identityNo}/contacts", method = RequestMethod.GET)
     public ResponseEntity<List<Contact>> findContactsByStudent(@PathVariable String identityNo) {
-        throw new UnsupportedOperationException();
+        AdStudent student = profileService.findStudentByMatricNo(identityNo);
+        return new ResponseEntity<List<Contact>>(profileTransformer
+                .toContactVos(profileService.findContacts(student)), HttpStatus.OK);
     }
-
 }

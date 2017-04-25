@@ -10,10 +10,14 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.tngtech.jgiven.annotation.As;
+import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 
 import my.edu.umk.pams.academic.assessment.stage.ThenExamVivaSetup;
+import my.edu.umk.pams.academic.assessment.stage.WhenCreateGradeBook;
+import my.edu.umk.pams.academic.assessment.stage.WhenGetEnrollment;
 import my.edu.umk.pams.academic.assessment.stage.WhenIAmSetupExamViva;
+import my.edu.umk.pams.academic.assessment.stage.WhenSetupGradeCode;
 import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.bdd.stage.GivenIAmAcademicStaff;
 
@@ -25,11 +29,17 @@ public class US_AD_ASMT_2001 extends SpringScenarioTest<GivenIAmAcademicStaff, W
 
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_ASMT_2001.class);
 	
+	@ProvidedScenarioState
+	private static String staffNo = "01001A";
+	
 	@Test
 	@Rollback
 	public void scenarioEXAM(){
 		given().i_am_a_staff_in_current_academic_session();
-		when().i_setup_exam().and().i_update_exam();
+		when().i_setup_assessments();
+		addStage(WhenSetupGradeCode.class).setup_gradeCode();
+		addStage(WhenGetEnrollment.class).get_enrollment();
+		addStage(WhenCreateGradeBook.class).create_gradeBook();
 		then().exam_setup();
 		
 	}

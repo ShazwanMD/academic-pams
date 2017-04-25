@@ -3,12 +3,9 @@ import {Router, ActivatedRoute} from '@angular/router';
 
 import {Store} from "@ngrx/store";
 import {Observable} from "rxjs";
-import {IdentityService} from "../../services/identity.service";
-import {CommonService} from "../../services/common.service";
-import {ProfileService} from "../../services/profile.service";
-import {ProfileState} from "./profile.reducer";
 import {ProfileActions} from "./profile.action";
 import {Student} from "../identity/student.interface";
+// import {ProfileModuleState} from "./index";
 
 @Component({
   selector: 'pams-profile-center',
@@ -17,43 +14,30 @@ import {Student} from "../identity/student.interface";
 
 export class ProfileCenterPage implements OnInit {
 
-  private _identityService: IdentityService;
-  private _commonService: CommonService;
-  private _profileService: ProfileService;
-  private _router: Router;
-  private _route: ActivatedRoute;
-  private _actions: ProfileActions;
-  private store: Store<ProfileState>;
-  private profiles: Observable<Student[]>;
+  private STUDENTS = "profileModuleState.students".split(".");
+  private students$: Observable<Student[]>;
 
-  constructor(router: Router,
-              route: ActivatedRoute,
-              actions: ProfileActions,
-              store: Store<ProfileState>,
-              identityService: IdentityService,
-              commonService: CommonService) {
+  constructor(private router: Router,
+              private route: ActivatedRoute,
+              private actions: ProfileActions,
+              // private store: Store<ProfileModuleState>
+  ) {
 
-    this._router = router;
-    this._route = route;
-    this._identityService = identityService;
-    this._commonService = commonService;
-    this._actions = actions;
-    this.store = store;
-    this.profiles = this.store.select('students');
+    // this.students$ = this.store.select(...this.STUDENTS);
   }
 
   goBack(route: string): void {
-    this._router.navigate(['/profiles']);
+    this.router.navigate(['/profiles']);
   }
 
   viewProfile(student: Student) {
     console.log("profile: " + student.identityNo);
-    this._router.navigate(['/profiles-detail', student.identityNo]);
+    this.router.navigate(['/profiles-detail', student.identityNo]);
   }
 
   ngOnInit(): void {
     console.log("find profiles");
-    this.store.dispatch(this._actions.findProfiles());
+    // this.store.dispatch(this.actions.findProfiles());
   }
 }
 

@@ -4,11 +4,7 @@ import {Faculty} from "./faculty.interface";
 
 export type FacultyState = Faculty;
 
-const initialState: FacultyState = {
-  id: 0,
-  code: '',
-  name:'',
-};
+const initialState: FacultyState = <Faculty>{};
 
 export function facultyReducer(state = initialState, action: Action): FacultyState {
   console.log("action: " + action);

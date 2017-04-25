@@ -23,7 +23,7 @@ public class ThenMailingAddressUpdated extends Stage<ThenMailingAddressUpdated> 
     @ExpectedScenarioState
     AdStudent student;
 
-    public ThenMailingAddressUpdated Mailing_address_updated() {
+    public ThenMailingAddressUpdated mailing_address_updated() {
         List<AdAddress> addresses = profileService.findAddresses(student);
         Assert.notEmpty(addresses, "Addresses cannot be empty");
         return self();

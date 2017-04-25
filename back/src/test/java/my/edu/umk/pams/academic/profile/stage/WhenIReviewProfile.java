@@ -147,6 +147,7 @@ public class WhenIReviewProfile extends Stage<WhenIReviewProfile> {
     @ProvidedScenarioState
     List<AdCohort> cohorts;
     
+    
     @ProvidedScenarioState
     List<AdSubject> subjects;
     

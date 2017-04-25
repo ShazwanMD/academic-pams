@@ -13,7 +13,6 @@ import {PlannerService} from "../../services/planner.service";
 import {ProgramModule} from "./programs/index";
 import {programReducer, ProgramState} from "./programs/program.reducer";
 import {programListReducer, ProgramListState} from "./programs/program-list.reducer";
-import {combineReducers, StoreModule} from "@ngrx/store";
 import {facultyReducer, FacultyState} from "./faculties/faculty.reducer";
 import {facultyListReducer, FacultyListState} from "./faculties/faculty-list.reducer";
 import {FacultyModule} from "./faculties/index";
@@ -23,9 +22,12 @@ import {CourseModule} from "./courses/index";
 import {CohortModule} from "./cohorts/index";
 import {CohortState, cohortReducer} from "./cohorts/cohort.reducer";
 import {CohortListState, cohortListReducer} from "./cohorts/cohort-list.reducer";
-import {compose} from "@ngrx/core/compose";
+import {Faculty} from "./faculties/faculty.interface";
+import {Program} from "./programs/program.interface";
+import {Cohort} from "./cohorts/cohort.interface";
+import {Course} from "./courses/course.interface";
 
-export interface PlannerState {
+export interface PlannerModuleState {
   faculties: FacultyListState;
   faculty: FacultyState;
   programs: ProgramListState;
@@ -37,20 +39,36 @@ export interface PlannerState {
 }
 ;
 
-export const plannerReducer = compose(combineReducers)({
-  faculties:facultyListReducer, faculty:facultyReducer,
-  programs: programListReducer, program: programReducer,
-  courses: courseListReducer, course: courseReducer,
-  cohorts: cohortListReducer, cohort: cohortReducer,
-});
+export const INITIAL_PLANNER_STATE: PlannerModuleState =
+  <PlannerModuleState>{
+    faculties: <Faculty[]>[],
+    faculty: <Faculty>{},
+    programs: <Program[]>[],
+    program: <Program>{},
+    courses: <Course[]>[],
+    course: <Course>{},
+    cohorts: <Cohort[]>[],
+    cohort: <Cohort>{},
+  };
+
+export const plannerModuleReducers = {
+  faculties:facultyListReducer,
+  faculty:facultyReducer,
+  programs: programListReducer,
+  program: programReducer,
+  courses: courseListReducer,
+  course: courseReducer,
+  cohorts: cohortListReducer,
+  cohort: cohortReducer,
+};
 
 
 @NgModule({
   imports: [
+    appRoutes,
     BrowserModule,
     ReactiveFormsModule,
     CovalentCoreModule.forRoot(),
-    appRoutes,
 
     // our modules
     FacultyModule.forRoot(),

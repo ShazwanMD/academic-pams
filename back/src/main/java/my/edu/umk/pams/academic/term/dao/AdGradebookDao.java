@@ -2,6 +2,7 @@ package my.edu.umk.pams.academic.term.dao;
 
 
 import my.edu.umk.pams.academic.core.GenericDao;
+import my.edu.umk.pams.academic.identity.model.AdUser;
 import my.edu.umk.pams.academic.term.model.AdEnrollment;
 import my.edu.umk.pams.academic.term.model.AdGradebook;
 import my.edu.umk.pams.academic.term.model.AdAssessment;
@@ -49,4 +50,9 @@ public interface AdGradebookDao extends GenericDao<Long, AdGradebook> {
 
     boolean isExists(AdAssessment assessment, AdEnrollment enrollment);
 
+    // ====================================================================================================
+    // CRUD
+    // ====================================================================================================
+    
+    void addGradebook(AdSection section, AdEnrollment enrollment, AdGradebook gradebook);
 }

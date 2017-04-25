@@ -1270,6 +1270,8 @@ create table AD_SNGL_SBJT (
 create table AD_STAF (
   STAFF_TYPE int4,
   ID int8 not null,
+  FACULTY_ID int8,
+  PROGRAM_ID int8,
   primary key (ID)
 );
 

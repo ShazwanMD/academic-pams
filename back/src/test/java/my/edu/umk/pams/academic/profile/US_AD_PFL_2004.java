@@ -1,12 +1,13 @@
 package my.edu.umk.pams.academic.profile;
 
 import com.tngtech.jgiven.annotation.As;
+
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.academic.config.TestAppConfiguration;
+
 import my.edu.umk.pams.academic.profile.stage.ThenStudentCourseInfoIsCurrent;
 import my.edu.umk.pams.academic.profile.stage.WhenIViewStudentCourseInfo;
 import my.edu.umk.pams.bdd.stage.GivenIAmAdministrator;
-import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
 import my.edu.umk.pams.bdd.tags.Issue;
 import my.edu.umk.pams.bdd.tags.Submodule;
 
@@ -30,13 +31,8 @@ public class US_AD_PFL_2004 extends SpringScenarioTest<GivenIAmAdministrator, Wh
 
     private static final Logger LOG = LoggerFactory.getLogger(US_AD_PFL_2004.class);
 
-    
-    
     private static final String FACULTY_CODE = "A01";
-    
     private static final String FACULTY_CODE2 = "A10";
-    
-
 
     @Test
     @Rollback

@@ -27,7 +27,7 @@ public class US_AD_TRM_1023
 
 	@Test
 	@Rollback(true)
-	public void scenario01() {
+	public void studentWithdrawEnrollmentCourse() {
 		given().I_am_a_student_in_current_academic_session();
 		when().I_withdraw_enrollment_course();
 		then().i_can_view_the_withdrawn_course();

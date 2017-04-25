@@ -24,7 +24,6 @@ import {FacultyEffects} from "./faculty.effect";
     EffectsModule.run(FacultyEffects),
   ],
   declarations: [
-
     // page
     FacultyCenterPage,
     // FacultyDetailPage,

@@ -245,6 +245,8 @@ public interface CommonService {
 
 	List<AdGradeCode> findGradeCodes();
 
+	List<AdGradeCode> findGradeCodes(AdGradeCode grade);
+	
 	List<AdGradeCode> findGradeCodes(Integer offset, Integer limit);
 
 	List<AdGradeCode> findGradeCodes(String filter, Integer offset, Integer limit);
@@ -619,5 +621,7 @@ public interface CommonService {
 	void updateStudyMode(AdStudyMode studyMode);
 
 	void removeStudyMode(AdStudyMode studyMode);
+
+
 
 }

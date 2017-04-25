@@ -28,7 +28,7 @@ public class US_AD_TRM_1022
 
 	@Test
 	@Rollback(true)
-	public void scenario01() {
+	public void studentAddEnrollmentCourses() {
 		given().I_am_a_student_in_current_academic_session().and().I_pick_program_$(PROGRAM_CODE);
 		when().I_add_enrollment_courses();
 		then().I_view_the_current_enrollment_courses();

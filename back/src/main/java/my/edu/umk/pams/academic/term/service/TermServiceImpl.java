@@ -1091,12 +1091,13 @@ public class TermServiceImpl implements TermService {
     }
 
     @Override
-    public void addGradebooks(AdSection section, AdEnrollment enrollment) {
+    public void addGradebooks(AdSection section, AdEnrollment enrollment,AdGradebook gradebook) {
         AdOffering offering = section.getOffering();
         AdAcademicSession session = section.getSession();
         Validate.notNull(offering, "Offering cannot be null");
         Validate.notNull(session, "Session cannot be null");
-
+        gradebookDao.addGradebook(section, enrollment, gradebook);
+        sessionFactory.getCurrentSession().flush();
         // List<AdAssessment> assessments = findAssessments(session, term);
         // LOG.debug("assessments found: " + assessments.size());
         // for (AcAssessment assessment : assessments) {
@@ -1119,6 +1120,7 @@ public class TermServiceImpl implements TermService {
         Validate.notNull(session, "Session cannot be null");
         List<AdEnrollment> enrollments = findEnrollments(section);
         LOG.debug("assessments found: " + enrollments.size());
+        sessionFactory.getCurrentSession().flush();
         // todo(uda): figure out assessment
         // for (AdEnrollment enrollment : enrollments) {
         // if (!assessmentService.isGradebookExists(assessment, enrollment)) {
