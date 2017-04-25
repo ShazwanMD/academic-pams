@@ -1,6 +1,8 @@
 package my.edu.umk.pams.academic.assessment.stage;
 
 import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.math.RoundingMode;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -34,7 +36,7 @@ import my.edu.umk.pams.academic.term.service.TermService;
 
 @JGivenStage
 public class WhenCreateGradeBook extends Stage<WhenCreateGradeBook> {
-	
+
 	private static final Logger LOG = LoggerFactory.getLogger(WhenCreateGradeBook.class);
 
 	@Autowired
@@ -45,13 +47,13 @@ public class WhenCreateGradeBook extends Stage<WhenCreateGradeBook> {
 
 	@Autowired
 	private IdentityService identityService;
-	
+
 	@Autowired
 	private ProfileService profileService;
 
 	@Autowired
 	private PlannerService plannerService;
-	
+
 	@ExpectedScenarioState
 	private AdAssessment assessment;
 
@@ -63,50 +65,58 @@ public class WhenCreateGradeBook extends Stage<WhenCreateGradeBook> {
 
 	@ExpectedScenarioState
 	private AdStudent student;
-	
+
 	@ExpectedScenarioState
 	private AdEnrollment enrollment;
 
 	@ExpectedScenarioState
 	private AdSection section;
-	
+
 	@ExpectedScenarioState
 	private AdAdmission admission;
-	
+
 	@ExpectedScenarioState
 	private AdStudyCenter studyCenter;
-	
+
 	@ExpectedScenarioState
 	private AdCohort cohort;
-	
+
 	@ExpectedScenarioState
 	private AdGradeCode grade;
-	
-	@ProvidedScenarioState
-	private AdGradebook gradeBook;
-	
+
+	@ExpectedScenarioState
+	private AdGradebook gradebook;
+
 	@ExpectedScenarioState
 	private AdOffering offer;
-	
-	public WhenCreateGradeBook create_gradeBook(){
-		
-		gradeBook = new AdGradebookImpl();
-		
-		gradeBook.setAssessment(assessment);
+
+	public WhenCreateGradeBook create_gradeBook() {
+
+		gradebook = new AdGradebookImpl();
+		gradebook.setAssessment(assessment);
 		Assert.notNull(assessment, "Assessment Must Not Null");
-		gradeBook.setEnrollment(enrollment);
+		gradebook.setEnrollment(enrollment);
 		Assert.notNull(enrollment, "enrollment Must Not Null");
-		gradeBook.setSection(section);
+		gradebook.setSection(section);
 		Assert.notNull(section, "section Must Not Null");
-		gradeBook.setScore(BigDecimal.valueOf(70));
-		termService.addGradebooks(section, assessment);
-		
-		List<AdAssessment> assessments  = termService.findAssessments(session, offer);
-		for(AdAssessment assessment : assessments)
-		LOG.debug("Assessments :{}", assessment.getCode()+","+
-									 assessment.getType().name());
-		
-		
+		gradebook.setScore(new BigDecimal(BigInteger.valueOf(50)));
+
+		termService.addGradebooks(section, enrollment, gradebook);
+
+		List<AdAssessment> assessments = termService.findAssessments(session, offer);
+		LOG.debug("GradeBook Assessment :{}", gradebook.getAssessment().getCategory());
+		LOG.debug("GradeBook Enrollment :{}", gradebook.getEnrollment().getStudent().getName());
+		LOG.debug("GradeBook Section :{}", gradebook.getSection().getCode());
+		LOG.debug("GradeBook Score :{}", gradebook.getScore());
+
+		for (AdAssessment assessment : assessments)
+			LOG.debug("Assessments :{}", assessment.getCode() + "," + assessment.getType().name());
+
+		List<AdGradebook> gradebooks = termService.findGradebooks(enrollment);
+		LOG.debug("GRADEBOOK :{}", gradebook.getAssessment().getCanonicalCode());
+
+		termService.normalizeGradebooks(enrollment);
+
 		return self();
 	}
 }
