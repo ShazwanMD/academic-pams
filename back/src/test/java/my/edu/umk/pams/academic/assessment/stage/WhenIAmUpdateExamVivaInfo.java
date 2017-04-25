@@ -1,7 +1,6 @@
 package my.edu.umk.pams.academic.assessment.stage;
 
 import java.math.BigDecimal;
-import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,15 +13,11 @@ import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 
 import io.jsonwebtoken.lang.Assert;
-import my.edu.umk.pams.academic.common.service.CommonService;
 import my.edu.umk.pams.academic.identity.model.AdActor;
 import my.edu.umk.pams.academic.identity.model.AdStaff;
 import my.edu.umk.pams.academic.identity.model.AdUser;
-import my.edu.umk.pams.academic.identity.service.IdentityService;
 import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
 import my.edu.umk.pams.academic.planner.model.AdProgram;
-import my.edu.umk.pams.academic.planner.service.PlannerService;
-import my.edu.umk.pams.academic.security.integration.AdUserDetails;
 import my.edu.umk.pams.academic.term.dao.AdOfferingDao;
 import my.edu.umk.pams.academic.term.model.AdAssessment;
 import my.edu.umk.pams.academic.term.model.AdAssessmentCategory;
@@ -38,16 +33,7 @@ public class WhenIAmUpdateExamVivaInfo extends Stage<WhenIAmUpdateExamVivaInfo> 
 	private static final Logger LOG = LoggerFactory.getLogger(WhenIAmUpdateExamVivaInfo.class);
 
 	@Autowired
-	private CommonService commonService;
-
-	@Autowired
 	private TermService termService;
-
-	@Autowired
-	private IdentityService identityService;
-
-	@Autowired
-	private PlannerService plannerService;
 
 	@ProvidedScenarioState
 	private AdAssessment assessment;
@@ -56,7 +42,7 @@ public class WhenIAmUpdateExamVivaInfo extends Stage<WhenIAmUpdateExamVivaInfo> 
 	private AdOffering offering;
 
 	@ProvidedScenarioState
-	private AdAcademicSession session;
+	private AdAcademicSession academicSession;
 
 	@ProvidedScenarioState
 	private AdOfferingDao offeringDao;
@@ -75,29 +61,28 @@ public class WhenIAmUpdateExamVivaInfo extends Stage<WhenIAmUpdateExamVivaInfo> 
 
 	public WhenIAmUpdateExamVivaInfo i_update_examination_info() {
 
-		AdOffering offering = new AdOfferingImpl();
-		offering.setCanonicalCode("A01/MASTER/9828/DDA2113");
+		 offering = new AdOfferingImpl();
+		offering.setCanonicalCode("FIAT/MASTER/PBH/GST5060");
 		offering.setCapacity(100);
-		offering.setCode("DDA2113");
-		offering.setTitle("Offering 9828");
+		offering.setCode("GST5060");
+		offering.setTitle("MECHANICS OF MATERIALS");
 		offering.setProgram(program);
 
 		termService.saveOffering(offering);
 
-		AdAssessment assessment = new AdAssessmentImpl();
-		assessment.setCanonicalCode("A01/MASTER/0001/DDA2113");
+		 assessment = new AdAssessmentImpl();
+		assessment.setCanonicalCode("FIAT/MASTER/PBH/GST5060");
 		assessment.setCategory(AdAssessmentCategory.COURSE_WORK);
-		assessment.setCode("MASTER/0001");
+		assessment.setCode("MASTER/PBH");
 		assessment.setDescription("MECHANICS OF MATERIALS");
 		assessment.setOffering(offering);
 		assessment.setOrdinal(0);
-		assessment.setSession(session);
+		assessment.setSession(academicSession);
 		assessment.setTotalScore(BigDecimal.ONE);
 		assessment.setType(AdAssessmentType.QUIZ);
 		assessment.setWeight(BigDecimal.ONE);
 
-		termService.addAssessment(session, offering, assessment);
-
+		termService.addAssessment(academicSession, offering, assessment);
 	
 		Assert.notNull(assessment, "assesment is empty");
 
