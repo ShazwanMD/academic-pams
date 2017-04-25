@@ -1,7 +1,6 @@
 package my.edu.umk.pams.academic.assessment.stage;
 
 import java.util.List;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +19,6 @@ import my.edu.umk.pams.academic.identity.model.AdStaff;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.identity.model.AdStudentStatus;
 import my.edu.umk.pams.academic.identity.model.AdUser;
-import my.edu.umk.pams.academic.identity.service.IdentityService;
 import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
 import my.edu.umk.pams.academic.planner.model.AdCohort;
 import my.edu.umk.pams.academic.planner.model.AdCourse;
@@ -30,7 +28,6 @@ import my.edu.umk.pams.academic.planner.model.AdProgram;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
 import my.edu.umk.pams.academic.term.model.AdAssessment;
 import my.edu.umk.pams.academic.term.model.AdOffering;
-import my.edu.umk.pams.academic.term.service.TermService;
 
 @JGivenStage
 public class WhenIReviewExamVivaInfo extends Stage<WhenIReviewExamVivaInfo> {
@@ -39,12 +36,6 @@ public class WhenIReviewExamVivaInfo extends Stage<WhenIReviewExamVivaInfo> {
 
 	@Autowired
 	private CommonService commonService;
-
-	@Autowired
-	private TermService termService;
-
-	@Autowired
-	private IdentityService identityService;
 
 	@Autowired
 	private PlannerService plannerService;
