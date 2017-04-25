@@ -35,8 +35,6 @@ public class ThenGradeScaleUpdated extends Stage<ThenGradeScaleUpdated> {
 			Assert.notNull(grade, "Grades must not be null");
 			LOG.debug("View grade code: {}", grade.getCode());
 			LOG.debug("View grade description", grade.getDescription());
-			LOG.debug("CODE:{}", grade.getCode());
-			LOG.debug("Description:{}", grade.getDescription());
 			LOG.debug("");
 		}
 			
