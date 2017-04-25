@@ -43,27 +43,33 @@ public class WhenIUpdateAppointStaffIntoSection extends Stage<WhenIUpdateAppoint
 
 	public WhenIUpdateAppointStaffIntoSection I_update_appoint_staff_into_section() {
 
+		LOG.debug("==========selected data==========");
 		Assert.notNull(section, "section should be not null");
 		LOG.debug("section: {}", section.getCanonicalCode());
 		
-		staff = identityService.findStaffByStaffNo("01001A"); //cari staff dri db
+		staff = identityService.findStaffByStaffNo("01001A"); 
 		LOG.debug("staff: {}", staff.getId());
 		
 
 		appointment = termService.findAppointmentBySectionAndStaff(section, staff);
 		
+		LOG.debug("==============updated appointed staff=============");
 		Assert.notNull(appointment, "appointment should be not null");
-		LOG.debug("appointment: {}", appointment.getId());
-		LOG.debug("staff: {}", appointment.getStaff().getName()); //view staf yang sedia ada
+		LOG.debug("appointment id: {}", appointment.getId());
+		LOG.debug("staff: {}", appointment.getStaff().getId()); 
+		LOG.debug("status: {}", appointment.getStatus()); 
 		
 		
-		staff = identityService.findStaffByStaffNo("01002A"); // cari staf baru
+		staff = identityService.findStaffByStaffNo("01002A");
 		
+		//update staff lama ke staff baru
 		appointment.setStaff(staff);
+		appointment.setStatus(AdAppointmentStatus.SUBSTITUTED);
 		termService.updateAppointment(appointment);
 		
 		Assert.notNull(appointment, "appointment should be not null");
-		LOG.debug("appointment staff: {}", appointment.getStaff().getName());
+		LOG.debug("new appoint staff: {}", appointment.getStaff().getId());
+		LOG.debug("status: {}", appointment.getStatus());
 		
 		return self();
 
