@@ -21,7 +21,7 @@ import my.edu.umk.pams.academic.planner.model.AdSingleSubject;
 import my.edu.umk.pams.academic.planner.model.AdSingleSubjectImpl;
 import my.edu.umk.pams.academic.planner.model.AdSubjectType;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
-import org.springframework.util.Assert;
+
 
 @JGivenStage
 public class WhenBundleSubjectAdd extends Stage<WhenBundleSubjectAdd> {
@@ -43,77 +43,38 @@ public class WhenBundleSubjectAdd extends Stage<WhenBundleSubjectAdd> {
 	@ProvidedScenarioState
 	AdBundleSubject bundleSubject;
 
-<<<<<<< HEAD
 	@ExpectedScenarioState
 	AdSingleSubject subject;
-=======
+
 	@ProvidedScenarioState
 	AdSingleSubject singleSubject;
->>>>>>> branch 'master' of http://119.110.101.9/pams/academic.git
 
 	@ProvidedScenarioState
 	AdBundleSubjectPart part;
 
-	@ExpectedScenarioState
-	private String courseCode;
 
 	public WhenBundleSubjectAdd add_bundle_subject() {
-		
-<<<<<<< HEAD
-		 bundleSubject = new AdBundleSubjectImpl();
-=======
+
 		bundleSubject = new AdBundleSubjectImpl();
->>>>>>> branch 'master' of http://119.110.101.9/pams/academic.git
 		bundleSubject.setSubjectType(AdSubjectType.ELECTIVE);
 		bundleSubject.setPeriod(AdAcademicPeriod.II);
+		bundleSubject.setCurriculum(curriculum); 
+		
 		plannerService.addSubject(curriculum, bundleSubject);
+		
 
 		return self();
 	}
 
-	public WhenBundleSubjectAdd add_bundle_subject_part() {
+	public WhenBundleSubjectAdd add_bundle_subject_part(String courseCode) {
 
 		AdBundleSubjectPart part1 = new AdBundleSubjectPartImpl();
-<<<<<<< HEAD
-		part1.setCourse(plannerService.findCourseByCode("GST2113"));
-//		AdBundleSubjectPart part2 = new AdBundleSubjectPartImpl();
-//		part2.setCourse(plannerService.findCourseByCode("GST2113"));
-=======
 		part1.setCourse(plannerService.findCourseByCode(courseCode));
+//		AdBundleSubjectPart part2 = new AdBundleSubjectPartImpl();
+//		part2.setCourse(plannerService.findCourseByCode(courseCode));
 
-		AdBundleSubjectPart part2 = new AdBundleSubjectPartImpl();
-		part2.setCourse(plannerService.findCourseByCode(courseCode));
-
->>>>>>> branch 'master' of http://119.110.101.9/pams/academic.git
 		plannerService.addSubjectPart(bundleSubject, part1);
 //		plannerService.addSubjectPart(bundleSubject, part2);
-
-		return self();
-
-	}
-
-<<<<<<< HEAD
-	public WhenBundleSubjectAdd Add_single_subject(String coursecode) {
-=======
-	public WhenBundleSubjectAdd add_single_subject() {
-        AdCourse course = plannerService.findCourseByCode(courseCode);
-        Assert.notNull(course, "course cannot be null");
->>>>>>> branch 'master' of http://119.110.101.9/pams/academic.git
-
-<<<<<<< HEAD
-		AdSingleSubject subject = new AdSingleSubjectImpl();
-		subject.setCourse(plannerService.findCourseByCode(coursecode));
-		subject.setPeriod(AdAcademicPeriod.I);
-		subject.setSubjectType(AdSubjectType.CORE);
-		plannerService.addSubject(curriculum, subject);
-=======
-		singleSubject = new AdSingleSubjectImpl();
-		singleSubject.setCourse(course);
-		singleSubject.setPeriod(AdAcademicPeriod.I);
-		singleSubject.setSubjectType(AdSubjectType.CORE);
-
-		plannerService.addSubject(curriculum, singleSubject);
->>>>>>> branch 'master' of http://119.110.101.9/pams/academic.git
 
 		return self();
 
