@@ -72,10 +72,6 @@ private static final Logger LOG = LoggerFactory.getLogger(ThenExamVivaSetup.clas
 	
 	public ThenExamVivaSetup exam_setup() {
 		
-		termService.hasAssessment(session, offer);
-		Assert.notNull(assessment, "assessment must Not Null in Gradebook");
-		boolean exists = termService.hasGradebook(section, assessment);
-		Assert.isTrue(!exists, "GradeBook Not Exists");
 
 	 
 	 

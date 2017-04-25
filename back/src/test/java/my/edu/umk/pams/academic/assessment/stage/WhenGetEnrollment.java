@@ -1,6 +1,8 @@
 package my.edu.umk.pams.academic.assessment.stage;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,12 +31,13 @@ import my.edu.umk.pams.academic.term.model.AdAdmissionImpl;
 import my.edu.umk.pams.academic.term.model.AdAssessment;
 import my.edu.umk.pams.academic.term.model.AdEnrollment;
 import my.edu.umk.pams.academic.term.model.AdEnrollmentImpl;
+import my.edu.umk.pams.academic.term.model.AdGradebook;
 import my.edu.umk.pams.academic.term.model.AdSection;
 import my.edu.umk.pams.academic.term.service.TermService;
 
 @JGivenStage
 public class WhenGetEnrollment extends Stage<WhenGetEnrollment> {
-	
+
 	private static final Logger LOG = LoggerFactory.getLogger(WhenGetEnrollment.class);
 
 	@Autowired
@@ -45,7 +48,7 @@ public class WhenGetEnrollment extends Stage<WhenGetEnrollment> {
 
 	@Autowired
 	private IdentityService identityService;
-	
+
 	@Autowired
 	private ProfileService profileService;
 
@@ -63,38 +66,40 @@ public class WhenGetEnrollment extends Stage<WhenGetEnrollment> {
 
 	@ProvidedScenarioState
 	private AdStudent student;
-	
+
 	@ProvidedScenarioState
 	private AdEnrollment enrollment;
 
 	@ExpectedScenarioState
 	private AdSection section;
-	
+
 	@ProvidedScenarioState
 	private AdAdmission admission;
-	
+
 	@ProvidedScenarioState
 	private AdStudyCenter studyCenter;
-	
+
 	@ProvidedScenarioState
 	private AdCohort cohort;
-	
+
 	@ExpectedScenarioState
 	private AdGradeCode grade;
+	
+	@ExpectedScenarioState
+	private AdGradebook gradeBook;
 
+	public WhenGetEnrollment get_enrollment() {
 
-	public WhenGetEnrollment get_enrollment(){
-		
 		student = profileService.findStudentByMatricNo("A17P003");
-		
+
 		session = plannerService.findCurrentAcademicSession();
-		
+
 		cohort = student.getCohort();
-		
+
 		studyCenter = commonService.findStudyCenterByCode("A");
-		
+
 		admission = new AdAdmissionImpl();
-		
+
 		admission.setGpa(BigDecimal.TEN);
 		admission.setCgpa(BigDecimal.TEN);
 		admission.setCreditTaken(3);
@@ -112,7 +117,7 @@ public class WhenGetEnrollment extends Stage<WhenGetEnrollment> {
 		LOG.debug("Admission cohort :{}", admission.getCohort().getCode());
 		LOG.debug("GPA :{}", admission.getGpa());
 		LOG.debug("CGPA :{}", admission.getCgpa());
-		
+
 		enrollment = new AdEnrollmentImpl();
 		enrollment.setAdmission(admission);
 		enrollment.setStudent(student);
@@ -120,12 +125,12 @@ public class WhenGetEnrollment extends Stage<WhenGetEnrollment> {
 		enrollment.setGradeCode(grade);
 		enrollment.setStatus(AdEnrollmentStatus.CONFIRMED);
 		LOG.debug("Enrollment Status :{}", enrollment.getAdmission().getStanding().getDescription());
-		LOG.debug("Enroll Student Name :{}", enrollment.getStudent().getName());	
+		LOG.debug("Enroll Student Name :{}", enrollment.getStudent().getName());
 		LOG.debug("Grade Code :{}", enrollment.getGradeCode().getCode());
 		termService.saveEnrollment(enrollment);
+
 		
-		
-		
+
 		return self();
 	}
 }

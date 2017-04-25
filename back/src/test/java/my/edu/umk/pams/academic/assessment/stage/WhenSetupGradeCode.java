@@ -24,6 +24,7 @@ import my.edu.umk.pams.academic.planner.model.AdProgram;
 import my.edu.umk.pams.academic.planner.model.AdProgramLevel;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
 import my.edu.umk.pams.academic.term.model.AdAssessment;
+import my.edu.umk.pams.academic.term.model.AdGradebook;
 import my.edu.umk.pams.academic.term.model.AdOffering;
 import my.edu.umk.pams.academic.term.model.AdSection;
 import my.edu.umk.pams.academic.term.service.TermService;
@@ -85,6 +86,9 @@ public class WhenSetupGradeCode extends Stage<WhenSetupGradeCode> {
 
 	@ExpectedScenarioState
 	private static String staffNo;
+	
+	@ExpectedScenarioState
+	private AdGradebook gradeBook;
 
 	public WhenSetupGradeCode setup_gradeCode() {
 
