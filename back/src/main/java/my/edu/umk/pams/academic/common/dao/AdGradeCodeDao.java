@@ -14,6 +14,8 @@ public interface AdGradeCodeDao extends GenericDao<Long, AdGradeCode> {
     AdGradeCode findByCode(String code);
 
     List<AdGradeCode> find(String filter, Integer offset, Integer limit);
+    
+    List<AdGradeCode> find(AdGradeCode grade);
 
     // ====================================================================================================
     // HELPER

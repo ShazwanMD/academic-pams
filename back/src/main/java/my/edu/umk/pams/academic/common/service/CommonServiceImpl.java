@@ -412,11 +412,17 @@ public class CommonServiceImpl implements CommonService {
     public List<AdGradeCode> findGradeCodes() {
         return gradeCodeDao.find();
     }
+    
 
     @Override
     public List<AdGradeCode> findGradeCodes(Integer offset, Integer limit) {
         return gradeCodeDao.find(offset, limit);
     }
+    
+    @Override
+	public List<AdGradeCode> findGradeCodes(AdGradeCode grade) {
+    	return gradeCodeDao.find(grade);
+	}
 
     @Override
     public List<AdGradeCode> findGradeCodes(String filter, Integer offset, Integer limit) {
@@ -1601,6 +1607,8 @@ public class CommonServiceImpl implements CommonService {
         studyModeDao.remove(studyMode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
+
+	
 
 	
 }

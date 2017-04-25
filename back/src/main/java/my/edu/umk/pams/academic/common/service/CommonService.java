@@ -249,6 +249,8 @@ public interface CommonService {
 	List<AdGradeCode> findGradeCodes();
 
 	List<AdGradeCode> findGradeCodes(Integer offset, Integer limit);
+	
+	List<AdGradeCode> findGradeCodes(AdGradeCode grade);
 
 	List<AdGradeCode> findGradeCodes(String filter, Integer offset, Integer limit);
 

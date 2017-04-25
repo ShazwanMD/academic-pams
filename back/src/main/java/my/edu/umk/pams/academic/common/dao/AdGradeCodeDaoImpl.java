@@ -70,4 +70,14 @@ public class AdGradeCodeDaoImpl extends GenericDaoSupport<Long, AdGradeCode> imp
         query.setInteger("state", AdMetaState.ACTIVE.ordinal());
         return 0 < ((Long) query.uniqueResult()).intValue();
     }
+
+	@Override
+	public List<AdGradeCode> find(AdGradeCode grade) {
+		 Session session = sessionFactory.getCurrentSession();
+	        Query query = session.createQuery("select s from AdGradeCode s where s.grade = :grade " +
+	              "and s.metadata.state = :state ");
+	     	        query.setInteger("state", AdMetaState.ACTIVE.ordinal());
+	      	        query.setCacheable(true);
+	        return (List<AdGradeCode>) query.list();
+	}
 }

@@ -10,6 +10,7 @@ import org.springframework.util.Assert;
 
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
+import com.tngtech.jgiven.annotation.Pending;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 
 import my.edu.umk.pams.academic.common.model.AdGradeCode;
@@ -26,6 +27,7 @@ public class ThenGradeScaleUpdated extends Stage<ThenGradeScaleUpdated> {
 	@ExpectedScenarioState
 	private AdGradeCode grade;
 	
+	@Pending
 	public ThenGradeScaleUpdated grading_scale_updated() {
 		
 		LOG.debug(grade.getCode());
