@@ -39,13 +39,13 @@ public class WhenBundleSubjectAdd extends Stage<WhenBundleSubjectAdd> {
 	@ExpectedScenarioState
 	private AdCourse course;
 
-	@ProvidedScenarioState
+	@ExpectedScenarioState
 	private AdCurriculum curriculum;
 
 	@ProvidedScenarioState
 	AdBundleSubject bundleSubject;
 
-	@ProvidedScenarioState
+	@ExpectedScenarioState
 	AdSingleSubject subject;
 
 	@ProvidedScenarioState
@@ -53,7 +53,7 @@ public class WhenBundleSubjectAdd extends Stage<WhenBundleSubjectAdd> {
 
 	public WhenBundleSubjectAdd Add_bundle_subject() {
 		
-		AdBundleSubject bundleSubject = new AdBundleSubjectImpl();
+		 bundleSubject = new AdBundleSubjectImpl();
 		bundleSubject.setSubjectType(AdSubjectType.ELECTIVE);
 		bundleSubject.setPeriod(AdAcademicPeriod.II);
 		plannerService.addSubject(curriculum, bundleSubject);
@@ -65,19 +65,19 @@ public class WhenBundleSubjectAdd extends Stage<WhenBundleSubjectAdd> {
 
 		AdBundleSubjectPart part1 = new AdBundleSubjectPartImpl();
 		part1.setCourse(plannerService.findCourseByCode("GST2113"));
-		AdBundleSubjectPart part2 = new AdBundleSubjectPartImpl();
-		part2.setCourse(plannerService.findCourseByCode("GST2113"));
+//		AdBundleSubjectPart part2 = new AdBundleSubjectPartImpl();
+//		part2.setCourse(plannerService.findCourseByCode("GST2113"));
 		plannerService.addSubjectPart(bundleSubject, part1);
-		plannerService.addSubjectPart(bundleSubject, part2);
+//		plannerService.addSubjectPart(bundleSubject, part2);
 
 		return self();
 
 	}
 
-	public WhenBundleSubjectAdd Add_single_subject() {
+	public WhenBundleSubjectAdd Add_single_subject(String coursecode) {
 
 		AdSingleSubject subject = new AdSingleSubjectImpl();
-		subject.setCourse(plannerService.findCourseByCode("GST2113"));
+		subject.setCourse(plannerService.findCourseByCode(coursecode));
 		subject.setPeriod(AdAcademicPeriod.I);
 		subject.setSubjectType(AdSubjectType.CORE);
 		plannerService.addSubject(curriculum, subject);

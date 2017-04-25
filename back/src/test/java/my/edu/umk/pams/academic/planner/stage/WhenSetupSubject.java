@@ -1,6 +1,5 @@
 package my.edu.umk.pams.academic.planner.stage;
 
-
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
@@ -31,34 +30,32 @@ public class WhenSetupSubject extends Stage<WhenSetupSubject> {
 
 	@ExpectedScenarioState
 	private AdCourse course;
-	
+
 	@ProvidedScenarioState
 	AdCohort cohort;
 
-	@ProvidedScenarioState
+	@ExpectedScenarioState
 	private AdCurriculum curriculum;
 
-//	private String curriculumCode = "MGSEB/MBA";
-//	private String courseCode = "GST5013";
+	@ProvidedScenarioState
+	private AdSubject Subject;
 
-	public WhenSetupSubject I_setup_subject_$(String code) {
+	@ProvidedScenarioState
+	private AdSingleSubject subject;
 
-		LOG.debug("faculty {}" , faculty);
-	
-		curriculum= cohort.getCurriculum();
-		
-		LOG.debug("curriculum {}" , curriculum);
-		course = plannerService.findCourseByCode("GST5013");
-//		Subject = plannerService.findSubjectByCurriculumAndCourse(curriculum, course);
-		
-		AdSingleSubject subject = new AdSingleSubjectImpl();
+	public WhenSetupSubject I_setup_subject_$(String coursecode, String facultycode) {
 
+		faculty = plannerService.findFacultyByCode(facultycode);
+
+		course = plannerService.findCourseByCode(coursecode);
+
+		subject = new AdSingleSubjectImpl();
 
 		subject.setSubjectType(AdSubjectType.ELECTIVE);
 		subject.setPeriod(AdAcademicPeriod.II);
 		subject.setCurriculum(curriculum);
 		subject.setCourse(course);
-	
+
 		plannerService.addSubject(curriculum, subject);
 
 		return self();
