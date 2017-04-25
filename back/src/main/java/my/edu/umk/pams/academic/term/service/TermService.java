@@ -1,6 +1,7 @@
 package my.edu.umk.pams.academic.term.service;
 
 import my.edu.umk.pams.academic.common.model.AdStudyCenter;
+
 import my.edu.umk.pams.academic.identity.model.AdStaff;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.planner.model.*;
@@ -68,6 +69,16 @@ public interface TermService {
     
     void updateOffering(AdOffering offering);
 
+    
+  //==========+==========================================================================================
+  // CHARGE SHCEDULE
+  //====================================================================================================
+   
+    AdChargeSchedule findScheduleByCode(String code);
+   
+    void saveSchedule(AdChargeSchedule schedule);  
+    void updateSchedule(AdChargeSchedule schedule);
+    
     //==========+==========================================================================================
     // SECTION
     //====================================================================================================

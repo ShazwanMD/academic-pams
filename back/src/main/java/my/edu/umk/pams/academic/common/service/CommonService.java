@@ -1,6 +1,7 @@
 package my.edu.umk.pams.academic.common.service;
 
 import my.edu.umk.pams.academic.common.model.*;
+
 import java.util.List;
 
 public interface CommonService {
@@ -116,6 +117,8 @@ public interface CommonService {
 	Integer countStudyCenterCode(String filter);
 
 	void saveStudyCenterCode(AdStudyCenterCode studyCenterCode);
+	
+	void saveStudyCenter(AdStudyCenter studyCenter);
 
 	void updateStudyCenterCode(AdStudyCenterCode studyCenterCode);
 
@@ -245,8 +248,6 @@ public interface CommonService {
 
 	List<AdGradeCode> findGradeCodes();
 
-	List<AdGradeCode> findGradeCodes(AdGradeCode grade);
-	
 	List<AdGradeCode> findGradeCodes(Integer offset, Integer limit);
 
 	List<AdGradeCode> findGradeCodes(String filter, Integer offset, Integer limit);
@@ -621,7 +622,5 @@ public interface CommonService {
 	void updateStudyMode(AdStudyMode studyMode);
 
 	void removeStudyMode(AdStudyMode studyMode);
-
-
 
 }
