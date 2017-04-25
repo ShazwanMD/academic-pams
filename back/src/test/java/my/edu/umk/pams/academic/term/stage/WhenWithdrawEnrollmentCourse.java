@@ -44,7 +44,7 @@ public class WhenWithdrawEnrollmentCourse extends Stage<WhenWithdrawEnrollmentCo
 	@ProvidedScenarioState
 	private List<AdEnrollmentApplicationItem> items;
 	
-	@Pending
+	
 	public WhenWithdrawEnrollmentCourse I_withdraw_enrollment_course() {
 
 		String referenceNo = "201720181/001";
