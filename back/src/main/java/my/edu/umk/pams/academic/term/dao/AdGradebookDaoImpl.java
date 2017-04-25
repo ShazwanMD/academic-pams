@@ -2,6 +2,7 @@ package my.edu.umk.pams.academic.term.dao;
 
 
 import my.edu.umk.pams.academic.core.AdMetaState;
+import my.edu.umk.pams.academic.core.AdMetadata;
 import my.edu.umk.pams.academic.core.GenericDaoSupport;
 import my.edu.umk.pams.academic.term.model.AdEnrollment;
 import my.edu.umk.pams.academic.term.model.AdGradebook;
@@ -9,10 +10,13 @@ import my.edu.umk.pams.academic.term.model.AdGradebookImpl;
 import my.edu.umk.pams.academic.term.model.AdAssessment;
 import my.edu.umk.pams.academic.term.model.AdOffering;
 import my.edu.umk.pams.academic.term.model.AdSection;
+
+import org.apache.commons.lang.Validate;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 /**
@@ -204,4 +208,21 @@ public class AdGradebookDaoImpl extends GenericDaoSupport<Long, AdGradebook> imp
         query.setInteger("state", AdMetaState.ACTIVE.ordinal());
         return 0 < ((Long) query.uniqueResult()).intValue();
     }
+
+	@Override
+	public void addGradebook(AdSection section, AdEnrollment enrollment, AdGradebook gradebook) {
+        
+        Validate.notNull(section, "Offering cannot be null");
+        Validate.notNull(enrollment, "assessment cannot be null");
+        Session session = sessionFactory.getCurrentSession();
+        gradebook.setEnrollment(enrollment);
+
+        // prepare metadata
+        AdMetadata metadata = new AdMetadata();
+        metadata.setCreatedDate(new Timestamp(System.currentTimeMillis()));
+        metadata.setState(AdMetaState.ACTIVE);
+        gradebook.setMetadata(metadata);
+        session.save(gradebook);
+		
+	}
 }
