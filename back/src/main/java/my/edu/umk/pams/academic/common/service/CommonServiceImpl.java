@@ -1,6 +1,7 @@
 package my.edu.umk.pams.academic.common.service;
 
 import my.edu.umk.pams.academic.common.dao.*;
+
 import my.edu.umk.pams.academic.common.model.*;
 import my.edu.umk.pams.academic.security.service.SecurityService;
 import my.edu.umk.pams.academic.util.Util;
@@ -74,6 +75,9 @@ public class CommonServiceImpl implements CommonService {
 
     @Autowired
     private AdStudyCenterCodeDao studyCenterCodeDao;
+    
+    @Autowired
+    private AdStudyCenterDao studyCenterDao;
 
     @Autowired
     private AdVenueCodeDao venueCodeDao;
@@ -408,16 +412,17 @@ public class CommonServiceImpl implements CommonService {
     public List<AdGradeCode> findGradeCodes() {
         return gradeCodeDao.find();
     }
-
-    @Override
-	public List<AdGradeCode> findGradeCodes(AdGradeCode grade) {
-    	return gradeCodeDao.find();
-	}
     
+
     @Override
     public List<AdGradeCode> findGradeCodes(Integer offset, Integer limit) {
         return gradeCodeDao.find(offset, limit);
     }
+    
+    @Override
+	public List<AdGradeCode> findGradeCodes(AdGradeCode grade) {
+    	return gradeCodeDao.find(grade);
+	}
 
     @Override
     public List<AdGradeCode> findGradeCodes(String filter, Integer offset, Integer limit) {
@@ -940,7 +945,7 @@ public class CommonServiceImpl implements CommonService {
         return studyCenterCodeDao.findByCode(code);
     }
     
-  //study center 
+    //study center 
     @Override
 	public AdStudyCenter findStudyCenterByCode(String code) {
     	return studyCenterCodeDao.findByCode1(code);
@@ -973,6 +978,14 @@ public class CommonServiceImpl implements CommonService {
         studyCenterCodeDao.save(studyCenterCode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
+    
+    //save study center
+    @Override
+	public void saveStudyCenter(AdStudyCenter studyCenter) {
+    	studyCenterDao.save(studyCenter, securityService.getCurrentUser());
+         sessionFactory.getCurrentSession().flush();
+		
+	}
 
     @Override
     public void updateStudyCenterCode(AdStudyCenterCode studyCenterCode) {
@@ -1594,6 +1607,8 @@ public class CommonServiceImpl implements CommonService {
         studyModeDao.remove(studyMode, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
+
+	
 
 	
 }

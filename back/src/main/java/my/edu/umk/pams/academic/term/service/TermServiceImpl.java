@@ -1,6 +1,7 @@
 package my.edu.umk.pams.academic.term.service;
 
 import my.edu.umk.pams.academic.common.model.AdStudyCenter;
+
 import my.edu.umk.pams.academic.identity.model.AdStaff;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.planner.model.*;
@@ -41,6 +42,9 @@ public class TermServiceImpl implements TermService {
 
     @Autowired
     private AdOfferingDao offeringDao;
+    
+    @Autowired
+    private AdChargeScheduleDao scheduleDao;
 
     @Autowired
     private AdSectionDao sectionDao;
@@ -558,17 +562,23 @@ public class TermServiceImpl implements TermService {
     }
 
     @Override
-    public List<AdAdmissionApplication> findAdmissionApplications(String filter, AdAcademicSession session, Integer offset, Integer limit) {
+    public List<AdAdmissionApplication> findAdmissionApplications(String filter, AdAcademicSession session, Integer offset, Integer 
+
+limit) {
         return null;
     }
 
     @Override
-    public List<AdAdmissionApplication> findAdmissionApplications(String filter, AdAcademicSession session, AdStudent student, Integer offset, Integer limit) {
+    public List<AdAdmissionApplication> findAdmissionApplications(String filter, AdAcademicSession session, AdStudent student, Integer 
+
+offset, Integer limit) {
         return null;
     }
 
     @Override
-    public List<AdAdmissionApplication> findAdmissionApplications(String filter, AdAcademicSession session, AdStaff advisor, Integer offset, Integer limit) {
+    public List<AdAdmissionApplication> findAdmissionApplications(String filter, AdAcademicSession session, AdStaff advisor, Integer 
+
+offset, Integer limit) {
         return null;
     }
 
@@ -1360,7 +1370,7 @@ public class TermServiceImpl implements TermService {
             BigDecimal totalScore = gradebook.getAssessment().getTotalScore();
             BigDecimal weight = gradebook.getAssessment().getWeight();
             LOG.debug("score: {} totalScore: {}, weight: {} ", new Object[]{score, totalScore, weight});
-            BigDecimal normalizedScore = score.divide(totalScore, RoundingMode.HALF_DOWN).setScale(2).multiply(BigDecimal.valueOf(100)).multiply(weight).divide(BigDecimal.valueOf(100), BigDecimal.ROUND_HALF_DOWN).setScale(2);
+            BigDecimal normalizedScore = score.divide(totalScore).setScale(2).multiply(BigDecimal.valueOf(100)).multiply(weight).divide(BigDecimal.valueOf(100)).setScale(2);
             finalScore = finalScore.add(normalizedScore);
             LOG.debug("normalizedScore: {}", normalizedScore);
         }
@@ -1392,6 +1402,29 @@ public class TermServiceImpl implements TermService {
         map.put(WorkflowConstants.CANCEL_DECISION, false);
         return map;
     }
+
+    // ====================================================================================================
+    // CHARGE SCHEDULE
+    // ====================================================================================================
+  
+	@Override
+	public AdChargeSchedule findScheduleByCode(String code) {
+		return scheduleDao.findByCode(code);
+	}
+
+	@Override
+	public void saveSchedule(AdChargeSchedule schedule) {
+		scheduleDao.save(schedule, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+		
+	}
+
+	@Override
+	public void updateSchedule(AdChargeSchedule schedule) {
+		scheduleDao.update(schedule, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+		
+	}
 
 	
 }

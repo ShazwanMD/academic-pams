@@ -38,43 +38,24 @@ public class WhenSetupSubject extends Stage<WhenSetupSubject> {
 	private AdCurriculum curriculum;
 
 	@ProvidedScenarioState
-<<<<<<< HEAD
 	private AdSubject Subject;
-=======
-	private String courseCode = "GST5013";
-
-	private String curriculumCode = "MGSEB/MBA/CRLM/0001";
->>>>>>> branch 'master' of http://119.110.101.9/pams/academic.git
 
 	@ProvidedScenarioState
-	private AdSingleSubject subject;
+	private AdSingleSubject singleSubject;
 
-<<<<<<< HEAD
 	public WhenSetupSubject I_setup_subject_$(String coursecode, String facultycode) {
 
 		faculty = plannerService.findFacultyByCode(facultycode);
-
 		course = plannerService.findCourseByCode(coursecode);
 
-		subject = new AdSingleSubjectImpl();
+		singleSubject = new AdSingleSubjectImpl();
+		singleSubject.setSubjectType(AdSubjectType.ELECTIVE);
+		singleSubject.setPeriod(AdAcademicPeriod.II);
+		singleSubject.setCurriculum(curriculum); 
+		
+		singleSubject.setCourse(course);
 
-=======
-		LOG.debug("faculty {}" , faculty);
-
-		curriculum = plannerService.findCurriculumByCode(curriculumCode);
-		Assert.notNull(curriculum, "curriculum cannot be null");
-
-		course = plannerService.findCourseByCode(courseCode);
-		Assert.notNull(course, "course cannot be null");
-
-		AdSingleSubject subject = new AdSingleSubjectImpl();
->>>>>>> branch 'master' of http://119.110.101.9/pams/academic.git
-		subject.setSubjectType(AdSubjectType.ELECTIVE);
-		subject.setPeriod(AdAcademicPeriod.II);
-		subject.setCurriculum(curriculum); //--- implicit in addSubject(curriculum, subject)
-		subject.setCourse(course);
-
-		plannerService.addSubject(curriculum, subject);
+		plannerService.addSubject(curriculum, singleSubject);
 
 		return self();
 	}
