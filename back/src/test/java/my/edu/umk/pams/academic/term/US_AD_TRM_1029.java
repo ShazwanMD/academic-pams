@@ -26,12 +26,13 @@ import my.edu.umk.pams.bdd.tags.Submodule;
 public class US_AD_TRM_1029 extends
 SpringScenarioTest<GivenIAmStudent, WhenIViewChargeSchedule, ThenTheChargeScheduleIsNoticed> {
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_1029.class);
-	private static final String COHORT_CODE = "FIAT/PHD/PBS/CHRT/201720181";
+	public static final String PROGRAM_CODE = "FIAT/MASTER/MBT";
+	private static final String COHORT_CODE = "FIAT/MASTER/MBT/CHRT/201720181";
 	
 	@Test
 	@Rollback(true)
 	public void studentReviewChargeSchedule() {
-		given().I_am_a_student_in_current_academic_session();
+		given().I_am_a_student_in_current_academic_session().and().I_pick_program_$(PROGRAM_CODE);
 		when().I_view_charge_schedule_for_cohort_$(COHORT_CODE);
 		then().the_charge_schedule_is_noticed();
 	}
