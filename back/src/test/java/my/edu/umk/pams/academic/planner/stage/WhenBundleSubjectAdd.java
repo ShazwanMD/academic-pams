@@ -18,7 +18,6 @@ import my.edu.umk.pams.academic.planner.model.AdCourse;
 import my.edu.umk.pams.academic.planner.model.AdCurriculum;
 import my.edu.umk.pams.academic.planner.model.AdFaculty;
 import my.edu.umk.pams.academic.planner.model.AdSingleSubject;
-import my.edu.umk.pams.academic.planner.model.AdSingleSubjectImpl;
 import my.edu.umk.pams.academic.planner.model.AdSubjectType;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
 
@@ -48,24 +47,29 @@ public class WhenBundleSubjectAdd extends Stage<WhenBundleSubjectAdd> {
 	@ProvidedScenarioState
 	AdBundleSubjectPart part;
 
-	public WhenBundleSubjectAdd add_bundle_subject_$(String COURSE_CODE) {
+	public WhenBundleSubjectAdd add_bundle_subject() {
 
 		// add bundle subject
 		bundleSubject = new AdBundleSubjectImpl();
 		bundleSubject.setSubjectType(AdSubjectType.ELECTIVE);
+		bundleSubject.setCurriculum(curriculum);
 		bundleSubject.setPeriod(AdAcademicPeriod.II);
 
 		plannerService.addSubject(curriculum, bundleSubject);
+		LOG.debug("bundle subject : {}", bundleSubject.getCurriculum().getCode());
 
 		// add bundle subject part
 		AdBundleSubjectPart part1 = new AdBundleSubjectPartImpl();
-		part1.setCourse(plannerService.findCourseByCode(COURSE_CODE));
+		part1.setCourse(plannerService.findCourseByCode("GST5013"));
 
 		AdBundleSubjectPart part2 = new AdBundleSubjectPartImpl();
-		part2.setCourse(plannerService.findCourseByCode("COURSE_CODE"));
+		part2.setCourse(plannerService.findCourseByCode("GST5023"));
 
 		plannerService.addSubjectPart(bundleSubject, part1);
 		plannerService.addSubjectPart(bundleSubject, part2);
+		
+		LOG.debug("bundle1 subject : {}", part1.getCourse().getCode() );
+		LOG.debug("bundle2 subject : {}", part2.getCourse().getCode() );
 
 		return self();
 	}

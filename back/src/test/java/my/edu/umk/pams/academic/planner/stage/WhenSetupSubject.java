@@ -9,7 +9,6 @@ import my.edu.umk.pams.academic.planner.service.PlannerService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.util.Assert;
 
 @JGivenStage
 public class WhenSetupSubject extends Stage<WhenSetupSubject> {
@@ -52,12 +51,15 @@ public class WhenSetupSubject extends Stage<WhenSetupSubject> {
 		subject.setPeriod(AdAcademicPeriod.I);
 		subject.setSubjectType(AdSubjectType.CORE);
 		subject.setCourse(course);
+		subject.setCurriculum(curriculum);
 		plannerService.addSubject(curriculum, subject);
 
 		LOG.debug("subject type : {}", subject.getSubjectType());
 		LOG.debug("subject period : {}", subject.getPeriod());
 		LOG.debug("course : {}", subject.getCourse().getCode());
-
+		LOG.debug("curriculum : {}", subject.getCurriculum().getCode());
+		
+		
 		return self();
 	}
 }
