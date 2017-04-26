@@ -46,8 +46,7 @@ public class US_AD_PNR_1020
 		given().I_am_a_CPS_administrator().and().I_pick_faculty_$(FACULTY_CODE);
 		addStage(WhenAdminAddCurriculum.class).Admin_add_curriculum();
 		when().I_setup_subject_$(COURSE_CODE,FACULTY_CODE);
-		addStage(WhenBundleSubjectAdd.class).and().add_bundle_subject().
-		and().add_bundle_subject_part(COURSE_CODE);
+		addStage(WhenBundleSubjectAdd.class).and().add_bundle_subject_$(COURSE_CODE);
 		then(). subject_added();
 	}
 }
