@@ -61,7 +61,7 @@ public class WhenIAmUpdateExamVivaInfo extends Stage<WhenIAmUpdateExamVivaInfo> 
 
 	public WhenIAmUpdateExamVivaInfo i_update_examination_info() {
 
-		 offering = new AdOfferingImpl();
+		offering = new AdOfferingImpl();
 		offering.setCanonicalCode("FIAT/MASTER/PBH/GST5060");
 		offering.setCapacity(100);
 		offering.setCode("GST5060");
@@ -70,7 +70,7 @@ public class WhenIAmUpdateExamVivaInfo extends Stage<WhenIAmUpdateExamVivaInfo> 
 
 		termService.saveOffering(offering);
 
-		 assessment = new AdAssessmentImpl();
+		assessment = new AdAssessmentImpl();
 		assessment.setCanonicalCode("FIAT/MASTER/PBH/GST5060");
 		assessment.setCategory(AdAssessmentCategory.COURSE_WORK);
 		assessment.setCode("MASTER/PBH");
@@ -83,7 +83,7 @@ public class WhenIAmUpdateExamVivaInfo extends Stage<WhenIAmUpdateExamVivaInfo> 
 		assessment.setWeight(BigDecimal.ONE);
 
 		termService.addAssessment(academicSession, offering, assessment);
-	
+
 		Assert.notNull(assessment, "assesment is empty");
 
 		return self();
