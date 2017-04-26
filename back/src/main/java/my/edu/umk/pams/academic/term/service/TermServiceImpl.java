@@ -1370,7 +1370,7 @@ offset, Integer limit) {
             BigDecimal totalScore = gradebook.getAssessment().getTotalScore();
             BigDecimal weight = gradebook.getAssessment().getWeight();
             LOG.debug("score: {} totalScore: {}, weight: {} ", new Object[]{score, totalScore, weight});
-            BigDecimal normalizedScore = score.divide(totalScore, RoundingMode.HALF_DOWN).setScale(2).multiply(BigDecimal.valueOf(100)).multiply(weight).divide(BigDecimal.valueOf(100), BigDecimal.ROUND_HALF_DOWN).setScale(2);
+            BigDecimal normalizedScore = score.divide(totalScore).setScale(2).multiply(BigDecimal.valueOf(100)).multiply(weight).divide(BigDecimal.valueOf(100)).setScale(2);
             finalScore = finalScore.add(normalizedScore);
             LOG.debug("normalizedScore: {}", normalizedScore);
         }
