@@ -59,6 +59,9 @@ public class WhenISetupChargeSchedule extends Stage<WhenISetupChargeSchedule> {
 
 	@ExpectedScenarioState
 	private AdAcademicSession academicSession;
+	
+	@ProvidedScenarioState
+	private AdChargeSchedule schedule; 
 
 	private AdCurriculum getCurriculum() {
 		Assert.notNull(program, "program cannot be null");
@@ -121,7 +124,7 @@ public class WhenISetupChargeSchedule extends Stage<WhenISetupChargeSchedule> {
 		param.put("academicSession", plannerService.findCurrentAcademicSession());
 		String refNo = systemService.generateFormattedReferenceNo(CHARGE_SCHEDULE_CODE, param);
 
-		AdChargeSchedule schedule = new AdChargeScheduleImpl();
+		schedule = new AdChargeScheduleImpl();
 		schedule.setAmount(new BigDecimal("150.00"));
 		schedule.setCode(refNo);
 		schedule.setPeriod(AdAcademicPeriod.I);
