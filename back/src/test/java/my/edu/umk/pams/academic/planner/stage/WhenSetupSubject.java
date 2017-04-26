@@ -9,7 +9,6 @@ import my.edu.umk.pams.academic.planner.service.PlannerService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.util.Assert;
 
 @JGivenStage
 public class WhenSetupSubject extends Stage<WhenSetupSubject> {
@@ -38,25 +37,29 @@ public class WhenSetupSubject extends Stage<WhenSetupSubject> {
 	private AdCurriculum curriculum;
 
 	@ProvidedScenarioState
-	private AdSubject Subject;
-
-	@ProvidedScenarioState
-	private AdSingleSubject singleSubject;
+	private AdSingleSubject subject;
 
 	public WhenSetupSubject I_setup_subject_$(String coursecode, String facultycode) {
 
 		faculty = plannerService.findFacultyByCode(facultycode);
 		course = plannerService.findCourseByCode(coursecode);
 
-		singleSubject = new AdSingleSubjectImpl();
-		singleSubject.setSubjectType(AdSubjectType.ELECTIVE);
-		singleSubject.setPeriod(AdAcademicPeriod.II);
-		singleSubject.setCurriculum(curriculum); 
+		LOG.debug("faculty : {}", faculty.getCode());
+		LOG.debug("course : {}", course.getCode());
+
+		subject = new AdSingleSubjectImpl();
+		subject.setPeriod(AdAcademicPeriod.I);
+		subject.setSubjectType(AdSubjectType.CORE);
+		subject.setCourse(course);
+		subject.setCurriculum(curriculum);
+		plannerService.addSubject(curriculum, subject);
+
+		LOG.debug("subject type : {}", subject.getSubjectType());
+		LOG.debug("subject period : {}", subject.getPeriod());
+		LOG.debug("course : {}", subject.getCourse().getCode());
+		LOG.debug("curriculum : {}", subject.getCurriculum().getCode());
 		
-		singleSubject.setCourse(course);
-
-		plannerService.addSubject(curriculum, singleSubject);
-
+		
 		return self();
 	}
 }

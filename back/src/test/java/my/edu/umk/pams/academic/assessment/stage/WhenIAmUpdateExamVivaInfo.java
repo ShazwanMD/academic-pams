@@ -83,7 +83,7 @@ public class WhenIAmUpdateExamVivaInfo extends Stage<WhenIAmUpdateExamVivaInfo> 
 		assessment.setWeight(BigDecimal.ONE);
 
 		termService.addAssessment(academicSession, offering, assessment);
-	
+
 		Assert.notNull(assessment, "assesment is empty");
 
 		return self();

@@ -43,10 +43,12 @@ public class WhenAdminAddCurriculum extends Stage<WhenAdminAddCurriculum> {
 
 	public WhenAdminAddCurriculum Admin_add_curriculum(){
 
-		// setting up curriculum
+		// select a program
 		AdProgram program = plannerService.findProgramByCode("MGSEB/MBA");
+		
+		// create curriculum
 		curriculum = new AdCurriculumImpl();
-		curriculum.setCode(program.getCode() + "/" + "CRLM/0005"); // FKP/MASTER/0008/CRLM/0001
+		curriculum.setCode(program.getCode() + "/" + "CRLM/0005"); // MGSEB/MBA/CRLM/0005
 		curriculum.setOrdinal(1);
 		curriculum.setCoreCredit(3);
 		curriculum.setElectiveCredit(3);

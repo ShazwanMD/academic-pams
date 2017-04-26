@@ -27,8 +27,8 @@ public class US_AD_TRM_1028 extends
 		SpringScenarioTest<GivenIAmCPSAdministrator, WhenISetupChargeSchedule, ThenTheChargeScheduleIsReviewed> {
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_1028.class);
 	public static final String FACULTY_CODE = "A07";
-	public static final String PROGRAM_CODE = "FIAT/PHD/PBT";
-	private static final String COHORT_CODE = "FIAT/PHD/PBT/CHRT/201720181";
+	public static final String PROGRAM_CODE = "FIAT/PHD/PBS";
+	private static final String COHORT_CODE = "FIAT/PHD/PBS/CHRT/201720181";
 
 	@Test
 	@Rollback(true)

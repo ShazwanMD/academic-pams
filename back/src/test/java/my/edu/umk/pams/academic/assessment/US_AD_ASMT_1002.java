@@ -37,7 +37,7 @@ public class US_AD_ASMT_1002 extends SpringScenarioTest<GivenIAmStudent, WhenRev
 	
 	//input student mark
 	@ProvidedScenarioState
-	private int mark = 50;
+	private int mark = 70;
 	
 	@Test
 	@Rollback

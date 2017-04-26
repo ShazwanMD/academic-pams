@@ -98,6 +98,9 @@ public class WhenReviewStudentResult extends Stage<WhenReviewStudentResult> {
 	public WhenReviewStudentResult I_review_result() {
 				
 		// student
+		LOG.debug("=================================");
+		LOG.debug("STUDENT INFORMATION");
+		LOG.debug("=================================");
 		student = identityService.findStudentByMatricNo(matricNo);
 		LOG.debug("Student Name :{}", student.getName());
 		Assert.notNull(student, "Student must not NULL");
@@ -111,7 +114,7 @@ public class WhenReviewStudentResult extends Stage<WhenReviewStudentResult> {
 		
 		// program
 		program = cohort.getProgram();
-		LOG.debug("Program :{}", program.getTitle());
+		LOG.debug("Program :{}", program.getTitle().toUpperCase());
 		
 		faculty = program.getFaculty();
 		LOG.debug("faculty :{}", faculty.getName());
@@ -225,7 +228,9 @@ public class WhenReviewStudentResult extends Stage<WhenReviewStudentResult> {
 	}
 	
 	public WhenReviewStudentResult i_review_student_mark(){
-	
+	LOG.debug("=================================");
+	LOG.debug("GRADE INFROMATION");
+	LOG.debug("=================================");
 	// check condition
 			if (studentStatus == AdStudentStatus.ACTIVE) {
 
@@ -343,7 +348,7 @@ public class WhenReviewStudentResult extends Stage<WhenReviewStudentResult> {
 				LOG.debug("Not student");
 			}
 
-			
+			LOG.debug("=================================");
 	return self();		
 	}
 }

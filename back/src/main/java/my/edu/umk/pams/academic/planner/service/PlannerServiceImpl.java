@@ -1,6 +1,7 @@
 package my.edu.umk.pams.academic.planner.service;
 
 import my.edu.umk.pams.academic.identity.model.AdStudent;
+
 import my.edu.umk.pams.academic.term.dao.AdAssessmentDao;
 import my.edu.umk.pams.academic.term.dao.AdOfferingDao;
 import my.edu.umk.pams.academic.term.dao.AdSectionDao;
@@ -164,7 +165,7 @@ public class PlannerServiceImpl implements PlannerService {
 
     @Override
     public List<AdCurriculum> findCurriculums(AdProgram program) {
-        return null;
+    	 return curriculumDao.find(program);
     }
 
     @Override

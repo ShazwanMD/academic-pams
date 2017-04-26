@@ -58,7 +58,10 @@ public class WhenIViewStudentInfo extends Stage<WhenIViewStudentInfo>  {
 	private AdFaculty faculty;
 
 	public WhenIViewStudentInfo i_view_student_info(String identityNo) {
-
+		
+		LOG.debug("=========================================");
+		LOG.debug("STUDENT INFORMATION (SELECTED STUDENT ID)");
+		LOG.debug("=========================================");
 		//find student
 		student = identityService.findStudentByMatricNo(identityNo);
 		LOG.debug("Student's Name :{}", student.getName());
@@ -73,7 +76,7 @@ public class WhenIViewStudentInfo extends Stage<WhenIViewStudentInfo>  {
 		
 		//get student program
 		program = cohort.getProgram();
-		LOG.debug("Program :{}", program.getTitle());
+		LOG.debug("Program :{}", program.getTitle().toUpperCase());
 		
 		//get student level of study
 		level = program.getProgramLevel();
@@ -82,12 +85,16 @@ public class WhenIViewStudentInfo extends Stage<WhenIViewStudentInfo>  {
 		//get faculty
 		faculty = program.getFaculty();
 		LOG.debug("Faculty :{}", faculty.getName());
+		LOG.debug("================================");
+		LOG.debug("LIST OF COURSES FOR THIS STUDENT");
+		LOG.debug("================================");
 		
 		//list course taken
 		List<AdCourse> courses = faculty.getCourses();
 		for(AdCourse course:courses){
-			LOG.debug("Course(s) :{}", course.getCode());
+			LOG.debug("Course / Desc :{}", course.getCode() +" / "+ course.getTitleMs());
 		}
+		LOG.debug("================================");
 		return self();
 	}
 
