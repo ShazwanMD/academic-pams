@@ -1,9 +1,12 @@
 package my.edu.umk.pams.academic.term.service;
 
+import my.edu.umk.pams.academic.common.dao.AdGradeCodeDao;
+import my.edu.umk.pams.academic.common.model.AdGradeCode;
 import my.edu.umk.pams.academic.common.model.AdStudyCenter;
-
+import my.edu.umk.pams.academic.common.service.CommonService;
 import my.edu.umk.pams.academic.identity.model.AdStaff;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
+
 import my.edu.umk.pams.academic.planner.model.*;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
 import my.edu.umk.pams.academic.security.service.SecurityService;
@@ -39,6 +42,9 @@ import static my.edu.umk.pams.academic.core.AdFlowState.DRAFTED;
 public class TermServiceImpl implements TermService {
 
 	private static final Logger LOG = LoggerFactory.getLogger(TermServiceImpl.class);
+	
+	@Autowired
+	private CommonService commonService;
 
 	@Autowired
 	private AdOfferingDao offeringDao;
@@ -87,6 +93,11 @@ public class TermServiceImpl implements TermService {
 
 	@Autowired
 	private ApplicationContext applicationContext;
+	
+	
+	private AdGradeCode grade;
+	
+	
 
 	// ====================================================================================================
 	// OFFERING
@@ -1372,13 +1383,119 @@ public class TermServiceImpl implements TermService {
 			BigDecimal totalScore = gradebook.getAssessment().getTotalScore();
 			BigDecimal weight = gradebook.getAssessment().getWeight();
 			LOG.debug("score: {} totalScore: {}, weight: {} ", new Object[] { score, totalScore, weight });
-			BigDecimal normalizedScore = score.divide(totalScore).setScale(2).multiply(BigDecimal.valueOf(100))
-					.multiply(weight).divide(BigDecimal.valueOf(100)).setScale(2);
+			
+			BigDecimal normalizedScore = score.divide(totalScore).setScale(1, RoundingMode.HALF_UP).multiply(BigDecimal.valueOf(100))
+					.multiply(weight).divide(BigDecimal.valueOf(100)).setScale(1, RoundingMode.HALF_UP);
+				
 			finalScore = finalScore.add(normalizedScore);
 			LOG.debug("normalizedScore: {}", normalizedScore);
+			
+						
+			if (score.doubleValue() >= 90 && score.doubleValue() <= 100) {
+
+				// logging
+
+				grade = commonService.findGradeCodeByCode("A+");
+				LOG.debug("Mark :{}", score);
+				LOG.debug("Grade :{}", grade.getCode());
+				LOG.debug("Ordinal :{}", grade.getOrdinal());
+				LOG.debug("Grade Desc :{}", grade.getDescription());
+
+			} else if (score.doubleValue() >= 80 && score.doubleValue() <= 89) {
+
+				grade = commonService.findGradeCodeByCode("A");
+				LOG.debug("Mark :{}", score);
+				LOG.debug("Grade :{}", grade.getCode());
+				LOG.debug("Ordinal :{}", grade.getOrdinal());
+				LOG.debug("Grade Desc :{}", grade.getDescription());
+
+			} else if (score.doubleValue() >= 75 && score.doubleValue() <= 79) {
+
+				grade = commonService.findGradeCodeByCode("A-");
+				LOG.debug("Mark :{}", score);
+				LOG.debug("Grade :{}", grade.getCode());
+				LOG.debug("Ordinal :{}", grade.getOrdinal());
+				LOG.debug("Grade Desc :{}", grade.getDescription());
+
+			} else if (score.doubleValue() >= 70 && score.doubleValue() <= 74) {
+
+				grade = commonService.findGradeCodeByCode("B+");
+				LOG.debug("Mark :{}", score);
+				LOG.debug("Grade :{}", grade.getCode());
+				LOG.debug("Ordinal :{}", grade.getOrdinal());
+				LOG.debug("Grade Desc :{}", grade.getDescription());
+
+			} else if (score.doubleValue() >= 65 && score.doubleValue() <= 69) {
+
+				grade = commonService.findGradeCodeByCode("B");
+				LOG.debug("Mark :{}", score);
+				LOG.debug("Grade :{}", grade.getCode());
+				LOG.debug("Ordinal :{}", grade.getOrdinal());
+				LOG.debug("Grade Desc :{}", grade.getDescription());
+
+			} else if (score.doubleValue() >= 60 && score.doubleValue() <= 64) {
+
+				grade = commonService.findGradeCodeByCode("B-");
+				LOG.debug("Mark :{}", score);
+				LOG.debug("Grade :{}", grade.getCode());
+				LOG.debug("Ordinal :{}", grade.getOrdinal());
+				LOG.debug("Grade Desc :{}", grade.getDescription());
+
+			} else if (score.doubleValue() >= 55 && score.doubleValue() <= 59) {
+
+				grade = commonService.findGradeCodeByCode("C+");
+				LOG.debug("Mark :{}", score);
+				LOG.debug("Grade :{}", grade.getCode());
+				LOG.debug("Ordinal :{}", grade.getOrdinal());
+				LOG.debug("Grade Desc :{}", grade.getDescription());
+
+			} else if (score.doubleValue() >= 50 && score.doubleValue() <= 54) {
+
+				grade = commonService.findGradeCodeByCode("C");
+				LOG.debug("Mark :{}", score);
+				LOG.debug("Grade :{}", grade.getCode());
+				LOG.debug("Ordinal :{}", grade.getOrdinal());
+				LOG.debug("Grade Desc :{}", grade.getDescription());
+
+			} else if (score.doubleValue() >= 45 && score.doubleValue() <= 49) {
+
+				grade = commonService.findGradeCodeByCode("C-");
+				LOG.debug("Mark :{}", score);
+				LOG.debug("Grade :{}", grade.getCode());
+				LOG.debug("Ordinal :{}", grade.getOrdinal());
+				LOG.debug("Grade Desc :{}", grade.getDescription());
+
+			} else if (score.doubleValue() >= 40 && score.doubleValue() <= 44) {
+				grade = commonService.findGradeCodeByCode("D");
+				LOG.debug("Mark :{}", score);
+				LOG.debug("Grade :{}", grade.getCode());
+				LOG.debug("Ordinal :{}", grade.getOrdinal());
+				LOG.debug("Grade Desc :{}", grade.getDescription());
+
+			} else if (score.doubleValue() >= 0 && score.doubleValue() <= 39) {
+
+				grade = commonService.findGradeCodeByCode("F");
+				LOG.debug("Mark :{}", score);
+				LOG.debug("Grade :{}", grade.getCode());
+				LOG.debug("Ordinal :{}", grade.getOrdinal());
+				LOG.debug("Grade Desc :{}", grade.getDescription());
+
+			} else if (score.doubleValue() > 100) {
+
+				LOG.debug("Mark :{}", score.doubleValue());
+				LOG.debug("Cannot More than 100% marks");
+
+			} else if (score.doubleValue() < 0) {
+
+				LOG.debug("Mark :{}", score);
+				LOG.debug("Cannot Less than 0% marks");
+			}
+
+		
 		}
 		LOG.debug("finalScore: {}", finalScore);
-		return finalScore.setScale(2);
+			return finalScore.setScale(2);
+		
 	}
 
 	// ====================================================================================================
