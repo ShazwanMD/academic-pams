@@ -60,16 +60,34 @@ public class WhenBundleSubjectAdd extends Stage<WhenBundleSubjectAdd> {
 
 		// add bundle subject part
 		AdBundleSubjectPart part1 = new AdBundleSubjectPartImpl();
-		part1.setCourse(plannerService.findCourseByCode("GST5013"));
+		part1.setCourse(plannerService.findCourseByCode("GST5021"));
+		part1.setCourse(plannerService.findCourseByCode("GST5023"));
+		part1.setCourse(plannerService.findCourseByCode("GST5063"));
+		part1.setCourse(plannerService.findCourseByCode("GST5043"));
+		part1.setCourse(plannerService.findCourseByCode("GST5053"));
 
 		AdBundleSubjectPart part2 = new AdBundleSubjectPartImpl();
-		part2.setCourse(plannerService.findCourseByCode("GST5023"));
+		part2.setCourse(plannerService.findCourseByCode("GST5033"));
+		part2.setCourse(plannerService.findCourseByCode("GST5073"));
+		part2.setCourse(plannerService.findCourseByCode("GST5083"));
+		part2.setCourse(plannerService.findCourseByCode("GST5113"));
+		part2.setCourse(plannerService.findCourseByCode("GST5103"));
+		
+		
+		AdBundleSubjectPart part3 = new AdBundleSubjectPartImpl();
+		part3.setCourse(plannerService.findCourseByCode("GST5093"));
+		part3.setCourse(plannerService.findCourseByCode("GST5123"));
+		
 
 		plannerService.addSubjectPart(bundleSubject, part1);
 		plannerService.addSubjectPart(bundleSubject, part2);
+		plannerService.addSubjectPart(bundleSubject, part3);
+		
 		
 		LOG.debug("bundle1 subject : {}", part1.getCourse().getCode() );
 		LOG.debug("bundle2 subject : {}", part2.getCourse().getCode() );
+		
+		
 
 		return self();
 	}
