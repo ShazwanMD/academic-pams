@@ -27,12 +27,16 @@ public class US_AD_TRM_1003
 		extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenIUpdateSections, ThenTheSectionsIsUpdated> {
 
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_1003.class);
+	public static final String SECTION_CODE = "FIAT/MASTER/PBH/GST5023/201720181";
+	public static final String FACULTY_CODE = "A07";
+	public static final String PROGRAM_CODE = "FIAT/MASTER/PBH";
 
 	@Test
 	@Rollback
 	public void adminUpdateSections() {
-		given().I_am_a_CPS_administrator_in_current_academic_session();
-		when().I_update_sections_for_offering();
+		given().I_am_a_CPS_administrator_in_current_academic_session().and().I_pick_faculty_$(FACULTY_CODE).and()
+		.I_pick_program_$(PROGRAM_CODE);
+		when().I_update_sections_$_for_offering(SECTION_CODE);
 		then().the_sections_is_updated();
 	}
 }

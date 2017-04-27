@@ -29,6 +29,8 @@ public class ThenTheSectionsIsUpdated extends Stage<ThenTheSectionsIsUpdated> {
 	public ThenTheSectionsIsUpdated the_sections_is_updated() {
 
 		Assert.notNull(section, "The data must not be null");
+		
+		LOG.debug("============view updated section============");
 		LOG.debug("section {} ", section.getCanonicalCode());
 		LOG.debug("section {} ", section.getCapacity());
 		LOG.debug("section {} ", section.getOrdinal());
