@@ -1,10 +1,14 @@
 package my.edu.umk.pams.academic.term;
 
-/**
- * @author asyikin.mr and ziana
- */
-import org.junit.After;
-import org.junit.Before;
+import com.tngtech.jgiven.annotation.As;
+
+import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
+import my.edu.umk.pams.academic.config.TestAppConfiguration;
+import my.edu.umk.pams.academic.term.stage.ThenTheNewAdmissionIsAdded;
+import my.edu.umk.pams.academic.term.stage.WhenIApproveNewAdmissionForStudent;
+import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
+import my.edu.umk.pams.bdd.tags.Submodule;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -13,32 +17,24 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
-import com.tngtech.jgiven.annotation.As;
-import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
-import my.edu.umk.pams.academic.config.TestAppConfiguration;
-import my.edu.umk.pams.academic.term.stage.ThenOfferedCoursesInfoIsCurrent;
-import my.edu.umk.pams.academic.term.stage.WhenIViewTheOfferedCourses;
-import my.edu.umk.pams.bdd.stage.GivenIAmStudent;
-import my.edu.umk.pams.bdd.tags.Submodule;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
-@As("As a student, I want to view the offered courses by academic semester so that I know the current offered courses")
+@As("As academic administrator, I want to approve new admission application for student, so that the new student admission is added.")
 @Submodule("Term")
-public class US_AD_TRM_1014
-		extends SpringScenarioTest<GivenIAmStudent, WhenIViewTheOfferedCourses, ThenOfferedCoursesInfoIsCurrent> {
+public class US_AD_TRM_1014 extends
+		SpringScenarioTest<GivenIAmCPSAdministrator, WhenIApproveNewAdmissionForStudent, ThenTheNewAdmissionIsAdded> {
 
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_1014.class);
-	private static final String PROGRAM_CODE = "FIAT/MASTER/PBH";
+	public static final String PROGRAM_CODE = "FIAT/PHD/PBT";
+	public static final String STUDENT_ID = "A17P001";
 
 	@Test
-	@Rollback
-	public void studentViewOfferedCourses() {
-		given().I_am_a_student_in_current_academic_session();
-		when().I_view_the_offered_courses_for_program_$(PROGRAM_CODE);
-		then().the_offered_courses_info_is_current();
-
+	@Rollback(true)
+	public void adminApproveNewAdmission() {
+		given().I_am_a_CPS_administrator_in_current_academic_session().and().I_pick_program_$(PROGRAM_CODE).and().I_pick_student_$(STUDENT_ID);
+		when().I_approve_new_admission_for_student();
+		then().the_new_admission_is_added();
 	}
-
 }

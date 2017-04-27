@@ -23,9 +23,9 @@ import my.edu.umk.pams.bdd.tags.Submodule;
 @ContextConfiguration(classes = TestAppConfiguration.class)
 @As("As a student in current academic session, i can view the charge schedule before make an enrollment, so that the extra charge payment will be noticed")
 @Submodule("Term")
-public class US_AD_TRM_1029 extends
+public class US_AD_TRM_2012 extends
 SpringScenarioTest<GivenIAmStudent, WhenIViewChargeSchedule, ThenTheChargeScheduleIsNoticed> {
-	private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_1029.class);
+	private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_2012.class);
 	public static final String PROGRAM_CODE = "FIAT/MASTER/MBT";
 	private static final String COHORT_CODE = "FIAT/MASTER/MBT/CHRT/201720181";
 	

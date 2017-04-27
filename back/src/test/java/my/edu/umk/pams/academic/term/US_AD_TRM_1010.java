@@ -19,7 +19,7 @@ import my.edu.umk.pams.bdd.tags.Submodule;
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
-@As("As a academic administrator,I want to change advisor for student so that the advisor is updated")
+@As("As a academic administrator,I want to change appointed supervisor for student so that the appointed supervisor is updated")
 @Submodule("Term")
 public class US_AD_TRM_1010
 		extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenChangeAdvisor, ThenTheAdvisorIsUpdated> {

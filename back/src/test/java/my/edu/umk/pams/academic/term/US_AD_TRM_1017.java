@@ -8,37 +8,35 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
-import com.tngtech.jgiven.annotation.As;
-import com.tngtech.jgiven.annotation.Pending;
-import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
-import my.edu.umk.pams.academic.config.TestAppConfiguration;
-import my.edu.umk.pams.academic.term.stage.ThenEnrollmentDateIsClose;
-import my.edu.umk.pams.academic.term.stage.ThenKnowTheEnrollmentIntervalPeriod;
-import my.edu.umk.pams.academic.term.stage.ThenTheDateEnrollmentIsReview;
-import my.edu.umk.pams.academic.term.stage.WhenWantToViewOpenDateOfEnrollment;
-import my.edu.umk.pams.bdd.stage.GivenIAmStudent;
 
-/**
- * @author zaida_nawi
- **/
+import com.tngtech.jgiven.annotation.As;
+import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
+
+import my.edu.umk.pams.academic.config.TestAppConfiguration;
+import my.edu.umk.pams.academic.term.stage.ThenTheChargeScheduleIsReviewed;
+import my.edu.umk.pams.academic.term.stage.WhenISetupChargeSchedule;
+import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
+import my.edu.umk.pams.bdd.tags.Submodule;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
-@Pending
-@As("As a student, I want to view open date of enrollment, so that I know the enrollment interval period.")
-
+@As("As an academic admininistrator, I want to setup charge schedule for cohort under selected program and faculty, so that the charge schedule is reviewed.")
+@Submodule("Term")
 public class US_AD_TRM_1017 extends
-		SpringScenarioTest<GivenIAmStudent, WhenWantToViewOpenDateOfEnrollment, ThenTheDateEnrollmentIsReview> {
-
+		SpringScenarioTest<GivenIAmCPSAdministrator, WhenISetupChargeSchedule, ThenTheChargeScheduleIsReviewed> {
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_1017.class);
+	public static final String FACULTY_CODE = "A07";
+	public static final String PROGRAM_CODE = "FIAT/PHD/PBS";
+	private static final String COHORT_CODE = "FIAT/PHD/PBS/CHRT/201720181";
 
 	@Test
-	@Rollback()
-	public void studentViewOpenDateEnrollment() {
-		given().I_am_a_student_in_current_academic_session();
-		when().Want_to_view_open_date_of_enrollment();
-		then().Know_the_enrollment_interval_period();
-
+	@Rollback(true)
+	public void adminSetupChargeSchedule() {
+		given().I_am_a_CPS_administrator_in_current_academic_session().and().I_pick_faculty_$(FACULTY_CODE).and()
+		.I_pick_program_$(PROGRAM_CODE);
+		when().I_setup_charge_schedule_for_cohort_$(COHORT_CODE);
+		then().the_charge_schedule_is_reviewed();
 	}
+
 }

@@ -1,16 +1,8 @@
 package my.edu.umk.pams.academic.term;
+
 /**
- * @author asyikin.mr and ziana
+ * @author asyikin.mr
  */
-
-import com.tngtech.jgiven.annotation.As;
-import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
-import my.edu.umk.pams.academic.config.TestAppConfiguration;
-import my.edu.umk.pams.academic.term.stage.ThenICanChoose;
-import my.edu.umk.pams.academic.term.stage.WhenIWantToViewTheOfferedCoursesByAcademicSession;
-import my.edu.umk.pams.bdd.stage.GivenIAmStudent;
-import my.edu.umk.pams.bdd.tags.Submodule;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -19,24 +11,31 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
+import com.tngtech.jgiven.annotation.As;
+import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
+import my.edu.umk.pams.academic.config.TestAppConfiguration;
+import my.edu.umk.pams.academic.term.stage.ThenOfferingsInfoIsCurrent;
+import my.edu.umk.pams.academic.term.stage.WhenUpdateCourseOfferings;
+import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
+import my.edu.umk.pams.bdd.tags.Submodule;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
-@As("As a student in current academic session and I pick program, I browse the offered courses by program I picked, then  i can choose which section to enroll")
+@As("As an academic administrator and i pick faculty and program, I want to update course offerings for the program, so that the offerings info is current.")
 @Submodule("Term")
 public class US_AD_TRM_1015
-		extends SpringScenarioTest<GivenIAmStudent, WhenIWantToViewTheOfferedCoursesByAcademicSession, ThenICanChoose> {
-
+		extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenUpdateCourseOfferings, ThenOfferingsInfoIsCurrent> {
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_1015.class);
-	public static final String OFFERING_CANONICAL_CODE = "FIAT/MASTER/PBH/GST5023";
+	public static final String FACULTY_CODE = "A07";
+	public static final String PROGRAM_CODE = "FIAT/MASTER/PBH";
 
 	@Test
 	@Rollback
-	public void studentViewOfferedCourses() {
-		given().I_am_a_student_in_current_academic_session().and().I_pick_offering_$(OFFERING_CANONICAL_CODE);
-		when().I_browse_the_offered_course_by_program_I_picked();
-		then().i_can_choose_which_section_to_enroll();
-
+	public void adminUpdateCourseOffering() {
+		given().I_am_a_CPS_administrator_in_current_academic_session().and().I_pick_faculty_$(FACULTY_CODE).and()
+				.I_pick_program_$(PROGRAM_CODE);
+		when().I_update_course_offerings_for_the_program();
+		then().the_offerings_info_is_current();
 	}
 }

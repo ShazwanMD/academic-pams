@@ -11,25 +11,25 @@ import org.springframework.transaction.annotation.Transactional;
 import com.tngtech.jgiven.annotation.As;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 import my.edu.umk.pams.academic.config.TestAppConfiguration;
-import my.edu.umk.pams.academic.term.stage.ThenTheAdmissionWillBeReviewed;
-import my.edu.umk.pams.academic.term.stage.WhenIRegisterAdmissionInNewSemester;
+import my.edu.umk.pams.academic.term.stage.ThenICanViewTheWithdrawnCourse;
+import my.edu.umk.pams.academic.term.stage.WhenWithdrawEnrollmentCourse;
 import my.edu.umk.pams.bdd.stage.GivenIAmStudent;
 import my.edu.umk.pams.bdd.tags.Submodule;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
-@As("As a student, I want to register admission in new semester so that the admission will be reviewed")
+@As("As a student,I want to withdraw an enrollment course so that I can view the withdrawn course.")
 @Submodule("Term")
-public class US_AD_TRM_1024 extends
-		SpringScenarioTest<GivenIAmStudent, WhenIRegisterAdmissionInNewSemester, ThenTheAdmissionWillBeReviewed> {
-	private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_1024.class);
+public class US_AD_TRM_2010
+		extends SpringScenarioTest<GivenIAmStudent, WhenWithdrawEnrollmentCourse, ThenICanViewTheWithdrawnCourse> {
+	private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_2010.class);
 
 	@Test
 	@Rollback(true)
-	public void studentRegisterAdmission() {
+	public void studentWithdrawEnrollmentCourse() {
 		given().I_am_a_student_in_current_academic_session();
-		when().I_register_admission_in_new_semester();
-		then().The_admission_will_be_reviewed();
+		when().I_withdraw_enrollment_course();
+		then().i_can_view_the_withdrawn_course();
 	}
 }

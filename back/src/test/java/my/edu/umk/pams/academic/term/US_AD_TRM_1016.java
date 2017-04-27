@@ -8,34 +8,35 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
-import com.tngtech.jgiven.annotation.ProvidedScenarioState;
+
 import com.tngtech.jgiven.annotation.As;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
+
 import my.edu.umk.pams.academic.config.TestAppConfiguration;
-import my.edu.umk.pams.academic.term.stage.ThenTheDetailsOfferedCoursesInfoIsCurrent;
-import my.edu.umk.pams.academic.term.stage.WhenIViewTheDetailsOfOfferedCourses;
+import my.edu.umk.pams.academic.term.stage.ThenSectionsCurrentAppointedStaff;
+import my.edu.umk.pams.academic.term.stage.WhenIUpdateAppointStaffIntoSection;
+import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
 import my.edu.umk.pams.bdd.stage.GivenIAmStudent;
 import my.edu.umk.pams.bdd.tags.Submodule;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
-@As("As a student, I want to view the details of the offered courses so that I know the current course's details info")
+@As("As a academic administrator, I want to update appoint staff for the particular sections, so that the sections have current appointed staff info.")
 @Submodule("Term")
-public class US_AD_TRM_1016 extends
-		SpringScenarioTest<GivenIAmStudent, WhenIViewTheDetailsOfOfferedCourses, ThenTheDetailsOfferedCoursesInfoIsCurrent> {
-	private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_1016.class);
-	private static final String PROGRAM_CODE = "FIAT/MASTER/PBH";
-
-	@ProvidedScenarioState
-	private String faculty = "A07";
-
+public class US_AD_TRM_1016  extends
+SpringScenarioTest<GivenIAmCPSAdministrator, WhenIUpdateAppointStaffIntoSection, ThenSectionsCurrentAppointedStaff> {
+	
+	private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_1016 .class);
+	//private static final String STAFF_NO = "01001A"; // from data/AD_ACTR.sql
+	private static final String SECTION_CANONICAL_CODE = "FIAT/MASTER/PBH/GST5023/201720181";
+	
 	@Test
-	@Rollback
-	public void studentViewStatusOfferedCourses() {
-		given().I_am_a_student_in_current_academic_session();
-		when().I_view_the_details_offered_courses_for_program_$(PROGRAM_CODE);
-		then().the_details_offered_courses_info_is_current();
-
+	@Rollback(true)
+	public void adminAppointedStaff() {
+		given().I_am_a_CPS_administrator_in_current_academic_session().and().I_pick_section_$(SECTION_CANONICAL_CODE);
+		when().I_update_appoint_staff_into_section();
+		then().Section_current_appointed_staff_info();
 	}
+
 }
