@@ -16,6 +16,8 @@ import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 
 import my.edu.umk.pams.academic.assessment.stage.ThenExamVivaCreated;
 import my.edu.umk.pams.academic.assessment.stage.WhenIAmSetupExamVivaInfo;
+import my.edu.umk.pams.academic.assessment.stage.WhenSetupGradeBook3002;
+import my.edu.umk.pams.academic.assessment.stage.WhenSetupGradeCode;
 import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.bdd.stage.GivenIAmAdministrator;
 
@@ -29,7 +31,10 @@ public class US_AD_ASMT_3002 extends SpringScenarioTest<GivenIAmAdministrator, W
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_ASMT_3002.class);
 	
 	@ProvidedScenarioState
-	private static String staffNo = "01001A";
+	private static String staffMgseb = "01001A";
+	
+	@ProvidedScenarioState
+	private static String staffCps = "01002A";
 	
 	@Test
 	@Rollback
@@ -38,10 +43,24 @@ public class US_AD_ASMT_3002 extends SpringScenarioTest<GivenIAmAdministrator, W
 		String username = "mgseb";
 		String password = "abc123";
 		given().i_am_a_$_administrator_in_current_academic_session(username, password);
+		addStage(WhenSetupGradeCode.class).setup_gradeCode();
 		when().i_setup_assessment_info();
+		addStage(WhenSetupGradeBook3002.class).generate_gradebook();
 		then().exam_viva_created();
 		
 		
 	}
 
+/*	@Test
+	@Rollback
+	public void scenarioViva(){
+		
+		String username = "cps";
+		String password = "abc123";
+		given().i_am_a_$_administrator_in_current_academic_session(username, password);
+		when().i_setup_viva();
+		then().exam_viva_created();
+		
+		
+	}*/
 }
