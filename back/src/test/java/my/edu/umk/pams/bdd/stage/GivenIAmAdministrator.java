@@ -3,8 +3,13 @@ package my.edu.umk.pams.bdd.stage;
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
+
+import my.edu.umk.pams.academic.identity.model.AdActor;
+import my.edu.umk.pams.academic.identity.model.AdUser;
 import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
+import my.edu.umk.pams.academic.security.integration.AdUserDetails;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,17 +32,22 @@ public class GivenIAmAdministrator extends Stage<GivenIAmAdministrator> {
 	@ProvidedScenarioState
 	AdAcademicSession academicSession;
 
+	@ProvidedScenarioState
+	private AdUser user;
 
-	public void i_am_a_$_administrator_in_$_academic_session(String academicSessionCode, String username, String password) {
-		loginAsAdmin(username,password);
+	@ProvidedScenarioState
+	private AdActor staff;
+
+	public void i_am_a_$_administrator_in_$_academic_session(String academicSessionCode, String username,
+			String password) {
+		loginAsAdmin(username, password);
 		academicSession = plannerService.findAcademicSessionByCode(academicSessionCode);
 	}
 
 	public void i_am_a_$_administrator_in_current_academic_session(String username, String password) {
-		loginAsAdmin(username,password);
+		loginAsAdmin(username, password);
 		academicSession = plannerService.findCurrentAcademicSession();
 	}
-
 
 	private void loginAsAdmin(String username, String password) {
 		UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(username, password);
@@ -46,8 +56,9 @@ public class GivenIAmAdministrator extends Stage<GivenIAmAdministrator> {
 
 		SecurityContextHolder.getContext().setAuthentication(authed);
 
+		user = ((AdUserDetails) authed.getPrincipal()).getUser();
+		staff = (AdActor) user.getActor();
+
 	}
-
-
 
 }
