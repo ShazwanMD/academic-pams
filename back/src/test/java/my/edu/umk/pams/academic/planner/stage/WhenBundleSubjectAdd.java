@@ -51,7 +51,7 @@ public class WhenBundleSubjectAdd extends Stage<WhenBundleSubjectAdd> {
 
 		// add bundle subject
 		bundleSubject = new AdBundleSubjectImpl();
-		bundleSubject.setSubjectType(AdSubjectType.ELECTIVE);
+		bundleSubject.setSubjectType(AdSubjectType.REQUIRED);
 		bundleSubject.setCurriculum(curriculum);
 		bundleSubject.setPeriod(AdAcademicPeriod.II);
 
@@ -78,17 +78,20 @@ public class WhenBundleSubjectAdd extends Stage<WhenBundleSubjectAdd> {
 		part3.setCourse(plannerService.findCourseByCode("GST5093"));
 		part3.setCourse(plannerService.findCourseByCode("GST5123"));
 		
-
 		plannerService.addSubjectPart(bundleSubject, part1);
 		plannerService.addSubjectPart(bundleSubject, part2);
 		plannerService.addSubjectPart(bundleSubject, part3);
 		
 		
 		LOG.debug("bundle1 subject : {}", part1.getCourse().getCode() );
+		LOG.debug("bundle1 subject : {}", part1.getCourse().getCode() );
+		LOG.debug("bundle1 subject : {}", part1.getCourse().getCode() );
+		LOG.debug("bundle1 subject : {}", part1.getCourse().getCode() );
+		LOG.debug("bundle1 subject : {}", part1.getCourse().getCode() );
+		
 		LOG.debug("bundle2 subject : {}", part2.getCourse().getCode() );
 		
 		
-
 		return self();
 	}
 }
