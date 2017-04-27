@@ -14,6 +14,7 @@ public class ThenTheChargeScheduleIsNoticed extends Stage<ThenTheChargeScheduleI
 
 		// process view charge schedule in db
 		
+		
 		return self();
 	}
 }

@@ -112,4 +112,16 @@ public class AdChargeScheduleDaoImpl extends GenericDaoSupport<Long, AdChargeSch
         query.setCacheable(true);
         return ((Long) query.uniqueResult()).intValue();
     }
+
+	@Override
+	public AdChargeSchedule findByRefNo(String refNo) {
+		Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select sa from AdChargeSchedule sa where " +
+                "sa.code = :refNo and  " +
+                "sa.metadata.state = :state");
+        query.setString("refNo", refNo);
+        query.setInteger("state", AdMetaState.ACTIVE.ordinal());
+        query.setCacheable(true);
+        return (AdChargeSchedule) query.uniqueResult();
+	}
 }

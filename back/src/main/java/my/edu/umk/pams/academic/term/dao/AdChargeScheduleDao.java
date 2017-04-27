@@ -18,6 +18,8 @@ public interface AdChargeScheduleDao extends GenericDao<Long, AdChargeSchedule> 
     // ====================================================================================================
 
     AdChargeSchedule findByCode(String code);
+    
+    AdChargeSchedule findByRefNo(String refNo);
 
     AdChargeSchedule find(AdAcademicPeriod period, AdCohort cohortCode, AdProgram programCode);
 

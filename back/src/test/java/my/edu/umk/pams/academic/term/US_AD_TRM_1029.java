@@ -33,7 +33,7 @@ SpringScenarioTest<GivenIAmStudent, WhenIViewChargeSchedule, ThenTheChargeSchedu
 	@Rollback(true)
 	public void studentReviewChargeSchedule() {
 		given().I_am_a_student_in_current_academic_session().and().I_pick_program_$(PROGRAM_CODE);
-		when().I_view_charge_schedule_for_cohort_$(COHORT_CODE);
+		when().I_add_charge_schedule_for_cohort_$(COHORT_CODE).and().when().I_view_charge_schedule_for_cohort_$(COHORT_CODE);
 		then().the_charge_schedule_is_noticed();
 	}
 
