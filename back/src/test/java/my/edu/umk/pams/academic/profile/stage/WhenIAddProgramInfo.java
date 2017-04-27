@@ -31,9 +31,6 @@ public class WhenIAddProgramInfo extends Stage<WhenIAddProgramInfo> {
     @ExpectedScenarioState
     private String facultyCode;
     
-
-
-
     public WhenIAddProgramInfo I_add_program_info_$(String facultyCode) {
 
         faculty = plannerService.findFacultyByCode(facultyCode);

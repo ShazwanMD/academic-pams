@@ -51,7 +51,7 @@ public class TermServiceImpl implements TermService {
 
 	@Autowired
 	private AdChargeScheduleDao scheduleDao;
-
+	
 	@Autowired
 	private AdSectionDao sectionDao;
 
@@ -718,6 +718,24 @@ public class TermServiceImpl implements TermService {
 
 		// trigger workflow
 		workflowService.processWorkflow(application, prepareVariables(application));
+		return refNo;
+	}
+	
+	//charge schedule startTask
+	@Override
+	public String startChargeScheduleTask(AdChargeSchedule schedule) {
+		// setup params for refno generation
+		HashMap<String, Object> param = new HashMap<String, Object>();
+		param.put("academicSession", plannerService.findCurrentAcademicSession());
+		String refNo = systemService.generateFormattedReferenceNo(CHARGE_SCHEDULE_CODE, param);
+		schedule.setCode(refNo);
+		
+		scheduleDao.save(schedule, securityService.getCurrentUser());
+		sessionFactory.getCurrentSession().flush();
+		sessionFactory.getCurrentSession().refresh(schedule);
+
+		// trigger workflow
+		//workflowService.processWorkflow(schedule, prepareVariables(schedule));
 		return refNo;
 	}
 
@@ -1521,7 +1539,8 @@ public class TermServiceImpl implements TermService {
 		map.put(WorkflowConstants.CANCEL_DECISION, false);
 		return map;
 	}
-
+	
+	
 	// ====================================================================================================
 	// CHARGE SCHEDULE
 	// ====================================================================================================
@@ -1529,6 +1548,11 @@ public class TermServiceImpl implements TermService {
 	@Override
 	public AdChargeSchedule findScheduleByCode(String code) {
 		return scheduleDao.findByCode(code);
+	}
+	
+	@Override
+	public AdChargeSchedule findScheduleByRefNo(String refNo) {
+		return scheduleDao.findByRefNo(refNo);
 	}
 
 	@Override
@@ -1544,5 +1568,7 @@ public class TermServiceImpl implements TermService {
 		sessionFactory.getCurrentSession().flush();
 
 	}
+
+	
 
 }
