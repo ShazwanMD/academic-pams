@@ -44,7 +44,7 @@ public class WhenIViewChargeSchedule extends Stage<WhenIViewChargeSchedule> {
 	@ProvidedScenarioState
 	private AdCohort cohort; 
 	
-	@ExpectedScenarioState
+	@ProvidedScenarioState
 	private AdChargeSchedule schedule;
 	
 	@ProvidedScenarioState
