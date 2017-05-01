@@ -2,7 +2,6 @@
   <modelVersion>4.0.0</modelVersion>
   <artifactId>academic-front</artifactId>
   <version>0.1.0</version>
-  <name>PAMS Academic</name>
   <parent>
     <groupId>my.edu.umk.pams</groupId>
     <artifactId>academic</artifactId>
