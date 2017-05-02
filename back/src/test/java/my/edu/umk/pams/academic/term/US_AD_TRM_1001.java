@@ -27,15 +27,25 @@ public class US_AD_TRM_1001
 		extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenIOfferCourse, ThenOfferingMayHaveSection> {
 
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_1001.class);
-	public static final String FACULTY_CODE = "A10";
-	public static final String PROGRAM_CODE = "MGSEB/MBA";
+	public static final String FACULTY_CODE = "A04";
+	public static final String PROGRAM_CODE = "PBI/PHD/PCS";
+	public static final String COURSE_CODE = "MCS";
 
 	@Test
 	@Rollback
-	public void adminReadyForSections() {
+	public void adminReadyForSectionsBySelectedProgram() {
 		given().I_am_a_CPS_administrator_in_current_academic_session().and().I_pick_faculty_$(FACULTY_CODE).and()
 				.I_pick_program_$(PROGRAM_CODE);
-		when().I_create_course_offerings_for_the_program();
+		when().I_create_course_offerings_for_the_program_$(PROGRAM_CODE);
+		then().the_offerings_may_begin_to_have_sections();
+	}
+	
+	@Test
+	@Rollback
+	public void adminReadyForSectionsBySelectedCourse() {
+		given().I_am_a_CPS_administrator_in_current_academic_session().and().I_pick_faculty_$(FACULTY_CODE).and()
+				.I_pick_program_$(PROGRAM_CODE);
+		when().I_create_course_offerings_for_the_program_by_selected_course_$(COURSE_CODE);
 		then().the_offerings_may_begin_to_have_sections();
 	}
 }
