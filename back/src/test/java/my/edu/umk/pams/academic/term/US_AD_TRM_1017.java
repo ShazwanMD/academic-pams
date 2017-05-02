@@ -35,7 +35,7 @@ public class US_AD_TRM_1017 extends
 	public void adminSetupChargeSchedule() {
 		given().I_am_a_CPS_administrator_in_current_academic_session().and().I_pick_faculty_$(FACULTY_CODE).and()
 		.I_pick_program_$(PROGRAM_CODE);
-		when().I_setup_charge_schedule_for_cohort_$(COHORT_CODE);
+		when().I_setup_charge_schedule_for_cohort_$(COHORT_CODE).and().when().I_update_charge_schedule_for_cohort_$(COHORT_CODE);
 		then().the_charge_schedule_is_reviewed();
 	}
 

@@ -1,7 +1,6 @@
 package my.edu.umk.pams.academic.term.stage;
 
 import com.tngtech.jgiven.Stage;
-
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
@@ -48,10 +47,10 @@ public class WhenISetupChargeSchedule extends Stage<WhenISetupChargeSchedule> {
 	@ExpectedScenarioState
 	private AdProgram program;
 
-	@ProvidedScenarioState
+	@ExpectedScenarioState
 	private AdCohort cohort;
 
-	@ProvidedScenarioState
+	@ExpectedScenarioState
 	private AdStudyCenter center;
 
 	@ProvidedScenarioState
@@ -116,14 +115,18 @@ public class WhenISetupChargeSchedule extends Stage<WhenISetupChargeSchedule> {
 		LOG.debug("program: {}", program.getId());
 		LOG.debug("cohortCode: {}", cohortCode);
 
-		AdCohort cohort = plannerService.findCohortByCode(cohortCode);
-		AdStudyCenter center = commonService.findStudyCenterByCode("A");
+		cohort = plannerService.findCohortByCode(cohortCode);
+		Assert.notNull(cohort, "cohort cannot be null");
+		
+		center = commonService.findStudyCenterByCode("A");
+		Assert.notNull(center, "center cannot be null");
 
 		// setup params for refno generation
 		HashMap<String, Object> param = new HashMap<String, Object>();
 		param.put("academicSession", plannerService.findCurrentAcademicSession());
 		String refNo = systemService.generateFormattedReferenceNo(CHARGE_SCHEDULE_CODE, param);
 
+		//insert new charge schedule
 		schedule = new AdChargeScheduleImpl();
 		schedule.setAmount(new BigDecimal("150.00"));
 		schedule.setCode(refNo);
@@ -133,6 +136,8 @@ public class WhenISetupChargeSchedule extends Stage<WhenISetupChargeSchedule> {
 		schedule.setCohort(cohort);
 
 		termService.saveSchedule(schedule);
+		
+		Assert.notNull(schedule, "schedule cannot be null");
 
 		LOG.debug("==========view data after insert new========");
 		LOG.debug("schedule id: {}", schedule.getId());
@@ -143,6 +148,38 @@ public class WhenISetupChargeSchedule extends Stage<WhenISetupChargeSchedule> {
 		LOG.debug("period: {}", schedule.getPeriod());
 		LOG.debug("code: {}", schedule.getCode());
 
+		return self();
+	}
+	
+	public WhenISetupChargeSchedule I_update_charge_schedule_for_cohort_$(String cohortCode) {
+	
+			
+		// setup params for refno generation
+		HashMap<String, Object> param = new HashMap<String, Object>();
+		param.put("academicSession", plannerService.findCurrentAcademicSession());
+		String refNo = systemService.generateFormattedReferenceNo(CHARGE_SCHEDULE_CODE, param);
+		
+		//update charge schedule
+		schedule.setAmount(new BigDecimal("190.00"));
+		schedule.setCode(refNo);
+		schedule.setPeriod(AdAcademicPeriod.II);
+		schedule.setProgram(program);
+		schedule.setStudyCenter(center);
+		schedule.setCohort(cohort);
+
+		termService.updateSchedule(schedule);
+
+		Assert.notNull(schedule, "schedule cannot be null");
+		
+		LOG.debug("==========view data after update new========");
+		LOG.debug("schedule id: {}", schedule.getId());
+		LOG.debug("cohort: {}", schedule.getCohort().getId());
+		LOG.debug("program: {}", schedule.getProgram().getId());
+		LOG.debug("amount: {}", schedule.getAmount());
+		LOG.debug("studyCenter: {}", schedule.getStudyCenter().getCode());
+		LOG.debug("period: {}", schedule.getPeriod());
+		LOG.debug("code: {}", schedule.getCode());
+		
 		return self();
 	}
 }
