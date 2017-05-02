@@ -177,6 +177,7 @@ public class AdStudentDaoImpl extends GenericDaoSupport<Long, AdStudent> impleme
 
     public void updateAddress(AdStudent student, AdAddress address, AdUser user) {
         Validate.notNull(user, "User cannot be null");
+        Validate.notNull(address, "Address cannot be null");
         Session session = sessionFactory.getCurrentSession();
         address.setStudent(student);
 
