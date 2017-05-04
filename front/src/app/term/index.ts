@@ -11,6 +11,7 @@ import {TermService} from "../../services/term.service";
 
 import {TermPage} from "./term.page";
 
+
 export interface TermModuleState {
   // todo
 }
@@ -39,6 +40,7 @@ export const termModuleReducers = {
   declarations: [
     // page
     TermPage,
+    
   ],
   exports: [],
 })

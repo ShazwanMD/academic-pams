@@ -14,8 +14,7 @@ export class FacultyEffects {
   @Effect() findFaculties$ = this.actions$
     .ofType(FacultyActions.FIND_FACULTIES)
     .switchMap(() => this.plannerService.findFaculties())
-    .map(faculties =>
-       this.facultyActions.findFacultiesSuccess(faculties));
+    .map(faculties => this.facultyActions.findFacultiesSuccess(faculties));
 
   // @Effect() getFaculty$ = this.actions$
   //   .ofType(FacultyActions.GET_FACULTY)

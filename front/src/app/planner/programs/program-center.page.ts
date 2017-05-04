@@ -16,6 +16,8 @@ import {PlannerModuleState} from "../index";
 
 export class ProgramCenterPage implements OnInit {
 
+  private PROGRAMS = "plannerModuleState.programs".split(".");
+
   private _identityService: IdentityService;
   private _commonService: CommonService;
   private _router: Router;
@@ -37,7 +39,7 @@ export class ProgramCenterPage implements OnInit {
     this._commonService = commonService;
     this._actions = actions;
     this.store = store;
-    this.programs$ = this.store.select('programs');
+    this.programs$ = this.store.select(...this.PROGRAMS);
   }
 
   goBack(route: string): void {

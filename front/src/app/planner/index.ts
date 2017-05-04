@@ -26,6 +26,7 @@ import {Faculty} from "./faculties/faculty.interface";
 import {Program} from "./programs/program.interface";
 import {Cohort} from "./cohorts/cohort.interface";
 import {Course} from "./courses/course.interface";
+import {AbcPage} from "./abc.page";
 
 export interface PlannerModuleState {
   faculties: FacultyListState;
@@ -79,6 +80,7 @@ export const plannerModuleReducers = {
   declarations: [
     // page
     PlannerPage,
+    AbcPage,
   ],
   exports: [],
 })

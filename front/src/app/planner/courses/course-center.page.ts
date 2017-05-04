@@ -15,6 +15,8 @@ import {PlannerModuleState} from "../index";
 
 export class CourseCenterPage implements OnInit {
 
+  private COURSES = "plannerModuleState.courses".split(".");
+
   private _commonService: CommonService;
   private _router: Router;
   private _route: ActivatedRoute;
@@ -33,7 +35,7 @@ export class CourseCenterPage implements OnInit {
     this._commonService = commonService;
     this._actions = actions;
     this.store = store;
-    this.courses$ = this.store.select('courses');
+    this.courses$ = this.store.select(...this.COURSES);
   }
 
   goBack(route: string): void {
