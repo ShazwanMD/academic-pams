@@ -12,7 +12,6 @@ import {PlannerModuleState} from "../index";
   selector: 'pams-cohort-center',
   templateUrl: './cohort-center.page.html',
 })
-
 export class CohortCenterPage implements OnInit {
 
   private COHORTS = "plannerModuleState.cohorts".split(".");
