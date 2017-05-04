@@ -1,27 +1,22 @@
 /**
  * @author asyikin.mr and ziana
 
+
  */
 package my.edu.umk.pams.academic.term.stage;
-
 import com.tngtech.jgiven.Stage;
-
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
-
 import io.jsonwebtoken.lang.Assert;
 import my.edu.umk.pams.academic.term.model.AdOffering;
 import my.edu.umk.pams.academic.term.model.AdSection;
 import my.edu.umk.pams.academic.term.service.TermService;
 import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
-import my.edu.umk.pams.academic.planner.model.AdCourse;
 import my.edu.umk.pams.academic.planner.model.AdFaculty;
 import my.edu.umk.pams.academic.planner.model.AdProgram;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
-
 import java.util.List;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -87,10 +82,10 @@ public class WhenIUpdateSections extends Stage<WhenIUpdateSections> {
 		}
 		
 		//select offering code from list of offerings
-		offering= termService.findOfferingByCanonicalCode("FIAT/MASTER/PBH/GST5023");
+		offering= termService.findOfferingByCanonicalCode("MGSEB/MBA/GST5023");
 		Assert.notNull(offering, "offering should be not null");
 		LOG.debug("offering: {}", offering.getCanonicalCode());
-		
+	
 		section = termService.findSectionByCanonicalCode(code);
 		Assert.notNull(section, "section should be not null");
 		
@@ -101,7 +96,7 @@ public class WhenIUpdateSections extends Stage<WhenIUpdateSections> {
 		LOG.debug("Current Ordinal: {}", section.getOrdinal());
 		
 		//update section to new capacity and ordinal
-		section.setCode("DDA2113");
+		section.setCode("GST5023");
 		section.setCanonicalCode(code);
 		section.setOrdinal(1);
 		section.setCapacity(30);
