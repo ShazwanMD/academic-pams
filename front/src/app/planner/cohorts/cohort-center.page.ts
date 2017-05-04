@@ -16,24 +16,13 @@ export class CohortCenterPage implements OnInit {
 
   private COHORTS = "plannerModuleState.cohorts".split(".");
 
-  private _commonService: CommonService;
-  private _router: Router;
-  private _route: ActivatedRoute;
-  private _actions: CohortActions;
-  private store: Store<PlannerModuleState>;
   private cohorts$: Observable<Cohort[]>;
 
-  constructor(router: Router,
-              route: ActivatedRoute,
-              actions: CohortActions,
-              store: Store<PlannerModuleState>,
-              commonService: CommonService) {
-
-    this._router = router;
-    this._route = route;
-    this._commonService = commonService;
-    this._actions = actions;
-    this.store = store;
+  constructor(private router: Router,
+              private route: ActivatedRoute,
+              private actions: CohortActions,
+              private store: Store<PlannerModuleState>,
+              private commonService: CommonService) {
     this.cohorts$ = this.store.select(...this.COHORTS);
   }
 
@@ -43,7 +32,7 @@ export class CohortCenterPage implements OnInit {
 
   viewCohort(cohort: Cohort) {
     console.log("cohort: " + cohort.id);
-    this._router.navigate(['/cohorts-detail', cohort.id]);
+    this.router.navigate(['/cohorts-detail', cohort.id]);
   }
 
   ngOnInit(): void {
