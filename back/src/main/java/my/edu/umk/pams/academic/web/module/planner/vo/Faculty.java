@@ -13,6 +13,7 @@ public class Faculty extends MetaObject{
     private String code;
     private String prefix;
     private String name;
+    private String description;
 
     public String getCode() {
         return code;
@@ -20,6 +21,14 @@ public class Faculty extends MetaObject{
 
     public void setCode(String code) {
         this.code = code;
+    }
+
+      public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getPrefix() {

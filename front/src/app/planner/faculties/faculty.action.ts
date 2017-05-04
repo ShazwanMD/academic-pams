@@ -11,6 +11,14 @@ export class FacultyActions {
     };
   }
 
+    static FIND_FACULTY = '[Faculty] Find Faculty';
+  findFaculty(code): Action {
+    return {
+      type: FacultyActions.FIND_FACULTY,
+      payload: code
+    };
+  }
+
   static FIND_FACULTIES_SUCCESS = '[Faculty] Find Faculties Success';
   findFacultiesSuccess(faculties): Action {
     return {
@@ -18,7 +26,7 @@ export class FacultyActions {
       payload: faculties
     };
   }
-
+/*
   static FIND_FACULTY = '[Faculty] Find Faculty';
   getFaculty(code): Action {
     return {
@@ -26,6 +34,7 @@ export class FacultyActions {
       payload: code
     };
   }
+*/
 
   static FIND_FACULTY_SUCCESS = '[Faculty] Find Faculty Success';
   getFacultIESuccess(faculty): Action {

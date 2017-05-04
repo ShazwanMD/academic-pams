@@ -10,6 +10,7 @@ import {CommonService} from '../../../services';
 import {IdentityService} from '../../../services';
 
 import {FacultyCenterPage} from "./faculty-center.page";
+import {FacultyDetailPage} from "./faculty-detail.page";
 import {FacultyListComponent} from "./component/faculty-list.component";
 import {FacultyActions} from "./faculty.action";
 import {EffectsModule} from "@ngrx/effects";
@@ -26,7 +27,7 @@ import {FacultyEffects} from "./faculty.effect";
   declarations: [
     // page
     FacultyCenterPage,
-    // FacultyDetailPage,
+    FacultyDetailPage,
 
     // component
     FacultyListComponent,
