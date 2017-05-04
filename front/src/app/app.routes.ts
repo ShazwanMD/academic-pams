@@ -7,7 +7,7 @@ import {ProfileModuleRoutes} from "./profile/profile-module.routes";
 import {GraduationModuleRoutes} from "./graduation/graduation-module.routes";
 import {TermModuleRoutes} from "./term/term-module.routes";
 import {PlannerModuleRoutes} from "./planner/planner-module.routes";
-import {TestModuleRoutes} from "./testest/testest-module.routes";
+
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -19,7 +19,7 @@ const routes: Routes = [
       ...PlannerModuleRoutes,
       ...TermModuleRoutes,
       ...GraduationModuleRoutes,
-      ...TestModuleRoutes,
+      
     ]
   },
 ];

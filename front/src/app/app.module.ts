@@ -25,7 +25,6 @@ import {GraduationModule} from "./graduation/index";
 import {ProfileModule, profileModuleReducers, ProfileModuleState, INITIAL_PROFILE_STATE} from "./profile/index";
 import {TermModule, termModuleReducers, TermModuleState, INITIAL_TERM_STATE} from "./term/index";
 import {PlannerModule, plannerModuleReducers, PlannerModuleState, INITIAL_PLANNER_STATE} from "./planner/index";
-import {TestModule, testModuleReducers, TestModuleState, INITIAL_TEST_STATE} from "./testest/index";
 
 // interceptor
 const httpInterceptorProviders: Type<any>[] = [
@@ -39,7 +38,6 @@ interface ApplicationState {
   plannerModuleState: PlannerModuleState;
   termModuleState: TermModuleState;
   // graduationModuleState: GraduationModuleState;
-  testModuleState: TestModuleState;
 }
 ;
 
@@ -51,7 +49,7 @@ export const INITIAL_APP_STATE: ApplicationState =
     plannerModuleState: INITIAL_PLANNER_STATE,
     termModuleState: INITIAL_TERM_STATE,
     // graduationModuleState: INITIAL_GRADUATION_STATE,
-    testModuleState: INITIAL_TEST_STATE,
+    
   };
 
 // combine reducer
@@ -61,7 +59,7 @@ export const applicationReducers = {
   plannerModuleState: combineReducers({...plannerModuleReducers}),
   termModuleState: combineReducers({...termModuleReducers,}),
   // graduationModuleState: combineReducers({...graduationModuleReducers}),
-  testModuleState: combineReducers({...testModuleReducers,}),
+  
 };
 export const productionReducer: ActionReducer<ApplicationState> = combineReducers(applicationReducers);
 export function applicationReducer(applicationState: any = INITIAL_APP_STATE, action: any) {
@@ -96,7 +94,7 @@ export function applicationReducer(applicationState: any = INITIAL_APP_STATE, ac
     PlannerModule.forRoot(),
     TermModule.forRoot(),
     GraduationModule.forRoot(),
-     TestModule.forRoot(),
+    
 
   ], // modules needed to run this module
   providers: [
