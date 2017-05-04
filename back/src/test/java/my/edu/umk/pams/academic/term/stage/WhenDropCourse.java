@@ -54,7 +54,7 @@ public class WhenDropCourse extends Stage<WhenDropCourse> {
 	private List<AdEnrollmentApplication> applications;
 	
 	@ProvidedScenarioState
-	private String canonicalCode = "FIAT/MASTER/PBH/GST5023/201720181";
+	private String canonicalCode = "MGSEB/MBA/GST5023/201720181";
 
 	public WhenDropCourse I_want_to_drop_enrollment_course() {
 

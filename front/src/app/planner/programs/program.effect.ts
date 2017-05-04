@@ -27,6 +27,7 @@ export class ProgramEffects {
     .map(action => action.payload)
     .switchMap(program => this.plannerService.saveProgram(program))
     .map(program => this.programActions.saveProgramSuccess(program));
+   // .map(() => this.programActions.findPrograms())
 
   @Effect() updateProgram$ = this.actions$
     .ofType(ProgramActions.UPDATE_PROGRAM)
