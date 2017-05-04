@@ -49,6 +49,7 @@ export const INITIAL_APP_STATE: ApplicationState =
     plannerModuleState: INITIAL_PLANNER_STATE,
     termModuleState: INITIAL_TERM_STATE,
     // graduationModuleState: INITIAL_GRADUATION_STATE,
+    
   };
 
 // combine reducer
@@ -58,6 +59,7 @@ export const applicationReducers = {
   plannerModuleState: combineReducers({...plannerModuleReducers}),
   termModuleState: combineReducers({...termModuleReducers,}),
   // graduationModuleState: combineReducers({...graduationModuleReducers}),
+  
 };
 export const productionReducer: ActionReducer<ApplicationState> = combineReducers(applicationReducers);
 export function applicationReducer(applicationState: any = INITIAL_APP_STATE, action: any) {
@@ -92,6 +94,7 @@ export function applicationReducer(applicationState: any = INITIAL_APP_STATE, ac
     PlannerModule.forRoot(),
     TermModule.forRoot(),
     GraduationModule.forRoot(),
+    
 
   ], // modules needed to run this module
   providers: [

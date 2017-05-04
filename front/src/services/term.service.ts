@@ -1,3 +1,4 @@
+import { Offering } from './../app/term/offerings/offering.interface';
 import {Injectable} from '@angular/core';
 import {Response, Http} from '@angular/http';
 import {Headers, RequestOptions} from '@angular/http';
@@ -21,6 +22,12 @@ export class TermService {
   // EnrollmentApplication
   // ==================================================================================================== //
 
+  findOfferings(): Observable<Offering[]> {
+    console.log("findOfferings");
+    return this.http.get(environment.endpoint + '/api/term/offerings')
+      .map((res: Response) => <Offering[]>res.json());
+  }
+ 
   findEnrollmentApplications(): Observable<EnrollmentApplication[]> {
     console.log("findEnrollmentApplications");
     return this.http.get(environment.endpoint + '/api/term/enrollmentApplications')

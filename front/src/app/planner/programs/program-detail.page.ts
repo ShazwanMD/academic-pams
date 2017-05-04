@@ -16,40 +16,32 @@ import {PlannerModuleState} from "../index";
 
 export class ProgramDetailPage implements OnInit {
 
-  private _identityService: IdentityService;
-  private _commonService: CommonService;
-  private _router: Router;
-  private _route: ActivatedRoute;
-  private _actions: ProgramActions;
-  private store: Store<PlannerModuleState>;
+
+  private PROGRAM = "plannerModuleState.program".split(".");
   private program$: Observable<Program>;
 
-  constructor(router: Router,
-              route: ActivatedRoute,
-              actions: ProgramActions,
-              store: Store<PlannerModuleState>,
-              identityService: IdentityService,
-              commonService: CommonService) {
+  constructor(private router: Router,
+              private route: ActivatedRoute,
+              private actions: ProgramActions,
+              private store: Store<PlannerModuleState>) {
 
-    this._router = router;
-    this._route = route;
-    this._identityService = identityService;
-    this._commonService = commonService;
-    this._actions = actions;
-    this.store = store;
-    this.program$ = this.store.select('program');
+    this.program$ = this.store.select(...this.PROGRAM);
+    console.log("test log ");
+
+    // (program$ | async).code
+    this.program$.subscribe(program => console.log("program: " + program.code))
   }
 
   ngOnInit(): void {
-    this._route.params.subscribe((params: {code: string}) => {
+    this.route.params.subscribe((params: {code: string}) => {
       let code: string = params.code;
       console.log("Code in pdp: " + code);
-      this.store.dispatch(this._actions.findProgram(code));
+      this.store.dispatch(this.actions.findProgram(code));
     });
   }
 
   goBack(route: string): void {
-    this._router.navigate(['/programs']);
+    this.router.navigate(['/programs']);
   }
 }
 

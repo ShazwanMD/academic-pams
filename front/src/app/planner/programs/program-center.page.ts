@@ -16,44 +16,31 @@ import {PlannerModuleState} from "../index";
 
 export class ProgramCenterPage implements OnInit {
 
+  
   private PROGRAMS = "plannerModuleState.programs".split(".");
-
-  private _identityService: IdentityService;
-  private _commonService: CommonService;
-  private _router: Router;
-  private _route: ActivatedRoute;
-  private _actions: ProgramActions;
-  private store: Store<PlannerModuleState>;
   private programs$: Observable<Program[]>;
 
-  constructor(router: Router,
-              route: ActivatedRoute,
-              actions: ProgramActions,
-              store: Store<PlannerModuleState>,
-              identityService: IdentityService,
-              commonService: CommonService) {
+  constructor(private router: Router,
+              private route: ActivatedRoute,
+              private actions: ProgramActions,
+              private store: Store<PlannerModuleState>) {
 
-    this._router = router;
-    this._route = route;
-    this._identityService = identityService;
-    this._commonService = commonService;
-    this._actions = actions;
-    this.store = store;
+    // read from store
     this.programs$ = this.store.select(...this.PROGRAMS);
   }
 
   goBack(route: string): void {
-    this._router.navigate(['/programs']);
+    this.router.navigate(['/programs']);
   }
 
   viewProgram(program: Program) {
     console.log("program: " + program.id);
-    this._router.navigate(['/programs-detail', program.id]);
+    this.router.navigate(['/programs-detail', program.id]);
   }
 
   ngOnInit(): void {
     console.log("find programs");
-    this.store.dispatch(this._actions.findPrograms());
+    this.store.dispatch(this.actions.findPrograms());
   }
 }
 

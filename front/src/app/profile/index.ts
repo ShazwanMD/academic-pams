@@ -3,10 +3,8 @@ import {BrowserModule} from '@angular/platform-browser';
 import {ReactiveFormsModule} from '@angular/forms';
 import {appRoutes, appRoutingProviders} from '../app.routes';
 import {CovalentCoreModule} from '@covalent/core';
-
 import {CommonService} from '../../services';
 import {IdentityService} from '../../services';
-
 import {ProfileListState, profileListReducer} from "./profile-list.reducer";
 import {profileReducer, ProfileState} from "./profile.reducer";
 import {ProfileService} from "../../services/profile.service";
@@ -19,6 +17,7 @@ import {ProfileComponent} from "./components/profile.component";
 import {ProfileDetailPage} from "./profile-detail.page";
 import {EffectsModule} from "@ngrx/effects";
 import {ProfileEffects} from "./profile.effect";
+import {test1Page} from "./test1.page";
 
 export interface ProfileModuleState {
   students: ProfileListState;
@@ -48,8 +47,10 @@ export const profileModuleReducers = {
   ],
   declarations: [
     // page
+    test1Page,
     ProfileCenterPage,
     ProfileDetailPage,
+    
 
     // component
     ProfileComponent,

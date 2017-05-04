@@ -28,6 +28,10 @@ export class MainComponent {
     title: 'Graduation',
     route: '/graduation',
     icon: 'assignment',
+  },  {
+    title: 'Test_TEST',
+    route: '/testest',
+    icon: 'assignment',
   }
   ];
 
