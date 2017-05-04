@@ -27,7 +27,7 @@ export class CohortCenterPage implements OnInit {
   }
 
   goBack(route: string): void {
-    this._router.navigate(['/cohorts']);
+    this.router.navigate(['/cohorts']);
   }
 
   viewCohort(cohort: Cohort) {
@@ -36,7 +36,7 @@ export class CohortCenterPage implements OnInit {
   }
 
   ngOnInit(): void {
-    this.store.dispatch(this._actions.findCohorts());
+    this.store.dispatch(this.actions.findCohorts());
   }
 }
 

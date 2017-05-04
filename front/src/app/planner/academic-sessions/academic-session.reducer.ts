@@ -2,8 +2,8 @@ import {Action} from '@ngrx/store';
 import {Observable} from 'rxjs/Observable';
 
 import * as _ from 'lodash';
-import {AcademicSession} from "./AcademicSession.interface";
-import {AcademicSessionActions} from "./AcademicSession.action";
+import {AcademicSession} from "./academic-session.interface";
+import {AcademicSessionActions} from "./academic-session.action";
 
 export type AcademicSessionListState = AcademicSession[];
 
@@ -12,13 +12,13 @@ const initialState: AcademicSessionListState = <AcademicSession[]>[];
 export function AcademicSessionListReducer(state = initialState, action: Action): AcademicSessionListState {
   console.log("action: " + action.type);
   switch (action.type) {
-    case AcademicSessionActions.FIND_ACADEMICSESSIONS_SUCCESS: {
+    case AcademicSessionActions.FIND_ACADEMIC_SESSIONS_SUCCESS: {
       return action.payload;
     }
-    case AcademicSessionActions.CREATE_ACADEMICSESSIONS_SUCCESS: {
+    case AcademicSessionActions.CREATE_ACADEMIC_SESSIONS_SUCCESS: {
       return [...state, action.payload];
     }
-    case AcademicSessionActions.SAVE_ACADEMICSESSIONS_SUCCESS: {
+    case AcademicSessionActions.SAVE_ACADEMIC_SESSIONS_SUCCESS: {
       let index = _.findIndex(state, {id: action.payload.id});
       if (index >= 0) {
         return [
@@ -29,7 +29,7 @@ export function AcademicSessionListReducer(state = initialState, action: Action)
       }
       return state;
     }
-    case AcademicSessionActions.REMOVE_ACADEMICSESSIONS_SUCCESS: {
+    case AcademicSessionActions.REMOVE_ACADEMIC_SESSIONS_SUCCESS: {
       return state.filter(cohort => {
         return AcademicSession.id !== action.payload.id;
       });
