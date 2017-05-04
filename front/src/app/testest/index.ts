@@ -7,22 +7,22 @@ import {CovalentCoreModule} from '@covalent/core';
 
 import {CommonService} from '../../services';
 import {IdentityService} from '../../services';
-import {TermService} from "../../services/term.service";
+import {ProfileService} from "../../services/profile.service";
 
-import {TermPage} from "./term.page";
+import {TestPage} from "./test.page";
+import {AbcPage} from "./abc.page";
 
-
-export interface TermModuleState {
+export interface TestModuleState {
   // todo
 }
 ;
 
-export const INITIAL_TERM_STATE: TermModuleState =
-  <TermModuleState>{
+export const INITIAL_TEST_STATE: TestModuleState =
+  <TestModuleState>{
     // todo
   };
 
-export const termModuleReducers = {
+  export const testModuleReducers = {
 // todo
 };
 
@@ -39,20 +39,20 @@ export const termModuleReducers = {
   ],
   declarations: [
     // page
-    TermPage,
-    
+    TestPage,
+    AbcPage,
   ],
   exports: [],
 })
-export class TermModule {
+export class TestestModule {
   static forRoot(): ModuleWithProviders {
     return {
-      ngModule: TermModule,
+      ngModule: TestestModule,
       providers: [
         appRoutingProviders,
         IdentityService,
         CommonService,
-        TermService,
+        ProfileService,
       ],
     };
   }

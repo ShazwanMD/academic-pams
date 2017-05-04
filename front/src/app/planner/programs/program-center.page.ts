@@ -25,6 +25,7 @@ export class ProgramCenterPage implements OnInit {
               private actions: ProgramActions,
               private store: Store<PlannerModuleState>) {
 
+    // read from store
     this.programs$ = this.store.select(...this.PROGRAMS);
   }
 

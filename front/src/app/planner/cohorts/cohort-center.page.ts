@@ -12,8 +12,9 @@ import {PlannerModuleState} from "../index";
   selector: 'pams-cohort-center',
   templateUrl: './cohort-center.page.html',
 })
-
 export class CohortCenterPage implements OnInit {
+
+  private COHORTS = "plannerModuleState.cohorts".split(".");
 
   private _commonService: CommonService;
   private _router: Router;
@@ -33,7 +34,7 @@ export class CohortCenterPage implements OnInit {
     this._commonService = commonService;
     this._actions = actions;
     this.store = store;
-    this.cohorts$ = this.store.select('cohorts');
+    this.cohorts$ = this.store.select(...this.COHORTS);
   }
 
   goBack(route: string): void {

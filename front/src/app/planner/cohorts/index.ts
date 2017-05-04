@@ -24,7 +24,6 @@ import {CohortEffects} from "./cohort.effect";
     EffectsModule.run(CohortEffects),
   ],
   declarations: [
-
     // page
     CohortCenterPage,
     // CohortDetailPage,

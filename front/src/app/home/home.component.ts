@@ -60,6 +60,13 @@ export class HomeComponent implements OnInit {
           color: 'blue-700',
           description: ' ',
         },
+        {
+          title: 'Test_TEST',
+          route: '/testest',
+          icon: 'assignment',
+          color: 'blue-700',
+          description: ' ',
+        }
       ];
     }
     ;
