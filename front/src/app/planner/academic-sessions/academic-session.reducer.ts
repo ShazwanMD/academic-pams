@@ -5,34 +5,19 @@ import * as _ from 'lodash';
 import {AcademicSession} from "./academic-session.interface";
 import {AcademicSessionActions} from "./academic-session.action";
 
-export type AcademicSessionListState = AcademicSession[];
+export type AcademicSessionState = AcademicSession;
 
-const initialState: AcademicSessionListState = <AcademicSession[]>[];
+const initialState: AcademicSessionState = <AcademicSession>{};
 
-export function AcademicSessionListReducer(state = initialState, action: Action): AcademicSessionListState {
+export function academicSessionReducer(state = initialState, action: Action): AcademicSessionState {
   console.log("action: " + action.type);
   switch (action.type) {
-    case AcademicSessionActions.FIND_ACADEMIC_SESSIONS_SUCCESS: {
+    case AcademicSessionActions.FIND_ACADEMIC_SESSION_BY_CODE_SUCCESS: {
       return action.payload;
     }
-    case AcademicSessionActions.CREATE_ACADEMIC_SESSIONS_SUCCESS: {
-      return [...state, action.payload];
-    }
-    case AcademicSessionActions.SAVE_ACADEMIC_SESSIONS_SUCCESS: {
-      let index = _.findIndex(state, {id: action.payload.id});
-      if (index >= 0) {
-        return [
-          ...state.slice(0, index),
-          action.payload,
-          ...state.slice(index + 1)
-        ];
-      }
+
+    case AcademicSessionActions.SAVE_ACADEMIC_SESSION_SUCCESS: {
       return state;
-    }
-    case AcademicSessionActions.REMOVE_ACADEMIC_SESSIONS_SUCCESS: {
-      return state.filter(cohort => {
-        return AcademicSession.id !== action.payload.id;
-      });
     }
     default: {
       return state;

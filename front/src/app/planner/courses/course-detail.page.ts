@@ -5,37 +5,38 @@ import {IdentityService} from '../../../services';
 import {CommonService} from '../../../services';
 import {Store} from "@ngrx/store";
 import {Observable} from "rxjs";
-import {Program} from "./program.interface";
-import {ProgramActions} from "./program.action";
+import {Course} from "./course.interface";
+import {CourseActions} from "./course.action";
 import {PlannerModuleState} from "../index";
 
 @Component({
-  selector: 'pams-program-detail',
-  templateUrl: './program-detail.page.html',
+  selector: 'pams-course-detail',
+  templateUrl: './course-detail.page.html',
 })
 
-export class ProgramDetailPage implements OnInit {
+export class CourseDetailPage implements OnInit {
 
-  private PROGRAM = "plannerModuleState.program".split(".");
-  private program$: Observable<Program>;
+
+  private COURSE = "plannerModuleState.course".split(".");
+  private course$: Observable<Course>;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
-              private actions: ProgramActions,
+              private actions: CourseActions,
               private store: Store<PlannerModuleState>) {
 
-    this.program$ = this.store.select(...this.PROGRAM);
+    this.course$ = this.store.select(...this.COURSE);
   }
 
   ngOnInit(): void {
     this.route.params.subscribe((params: {code: string}) => {
       let code: string = params.code;
-      this.store.dispatch(this.actions.findProgram(code));
+      this.store.dispatch(this.actions.findCourse(code));
     });
   }
 
   goBack(route: string): void {
-    this.router.navigate(['/programs']);
+    this.router.navigate(['/courses']);
   }
 }
 

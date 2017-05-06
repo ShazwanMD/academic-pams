@@ -1,6 +1,7 @@
 import {Component, OnInit, ChangeDetectionStrategy} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 
+import {IdentityService} from '../../../services';
 import {CommonService} from '../../../services';
 import {Store} from "@ngrx/store";
 import {Observable} from "rxjs";
@@ -9,32 +10,32 @@ import {CohortActions} from "./cohort.action";
 import {PlannerModuleState} from "../index";
 
 @Component({
-  selector: 'pams-cohort-center',
-  templateUrl: './cohort-center.page.html',
+  selector: 'pams-cohort-detail',
+  templateUrl: './cohort-detail.page.html',
 })
-export class CohortCenterPage implements OnInit {
 
-  private COHORTS = "plannerModuleState.cohorts".split(".");
-  private cohorts$: Observable<Cohort[]>;
+export class CohortDetailPage implements OnInit {
+
+  private COHORT = "plannerModuleState.cohort".split(".");
+  private cohort$: Observable<Cohort>;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
               private actions: CohortActions,
               private store: Store<PlannerModuleState>) {
-    this.cohorts$ = this.store.select(...this.COHORTS);
+
+    this.cohort$ = this.store.select(...this.COHORT);
+  }
+
+  ngOnInit(): void {
+    this.route.params.subscribe((params: {code: string}) => {
+      let code: string = params.code;
+      this.store.dispatch(this.actions.findCohort(code));
+    });
   }
 
   goBack(route: string): void {
     this.router.navigate(['/cohorts']);
-  }
-
-  viewCohort(cohort: Cohort) {
-    console.log("cohort: " + cohort.id);
-    this.router.navigate(['/cohorts-detail', cohort.id]);
-  }
-
-  ngOnInit(): void {
-    this.store.dispatch(this.actions.findCohorts());
   }
 }
 

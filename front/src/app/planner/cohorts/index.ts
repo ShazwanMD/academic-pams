@@ -14,6 +14,7 @@ import {CohortListComponent} from "./component/cohort-list.component";
 import {CohortActions} from "./cohort.action";
 import {EffectsModule} from "@ngrx/effects";
 import {CohortEffects} from "./cohort.effect";
+import {CohortDetailPage} from "./cohort-detail.page";
 
 @NgModule({
   imports: [
@@ -26,7 +27,7 @@ import {CohortEffects} from "./cohort.effect";
   declarations: [
     // page
     CohortCenterPage,
-    // CohortDetailPage,
+    CohortDetailPage,
 
     // component
     CohortListComponent,
@@ -34,10 +35,10 @@ import {CohortEffects} from "./cohort.effect";
   exports: [],
 })
 
-export class CohortModule {
+export class CohortSubModule {
   static forRoot(): ModuleWithProviders {
     return {
-      ngModule: CohortModule,
+      ngModule: CohortSubModule,
       providers: [
         appRoutingProviders,
         PlannerService,

@@ -1,12 +1,10 @@
 package my.edu.umk.pams.academic.term.service;
 
-import my.edu.umk.pams.academic.common.dao.AdGradeCodeDao;
 import my.edu.umk.pams.academic.common.model.AdGradeCode;
 import my.edu.umk.pams.academic.common.model.AdStudyCenter;
 import my.edu.umk.pams.academic.common.service.CommonService;
 import my.edu.umk.pams.academic.identity.model.AdStaff;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
-
 import my.edu.umk.pams.academic.planner.model.*;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
 import my.edu.umk.pams.academic.security.service.SecurityService;
@@ -630,9 +628,24 @@ public class TermServiceImpl implements TermService {
 	// ====================================================================================================
 
 	@Override
+	public AdAdmission findAdmissionById(Long id) {
+		return admissionDao.findById(id);
+	}
+
+	@Override
 	public AdAdmission findAdmissionByAcademicSessionCohortAndStudent(AdAcademicSession academicSession,
 			AdCohort cohort, AdStudent student) {
 		return admissionDao.findBySessionCohortAndStudent(academicSession, cohort, student);
+	}
+
+    @Override
+    public List<AdAdmission> findAdmissions(Integer offset, Integer limit) {
+		return admissionDao.find(offset, limit);
+    }
+
+	@Override
+	public List<AdAdmission> findAdmissions(AdAcademicSession academicSession, Integer offset, Integer limit) {
+		return admissionDao.find(academicSession); // todo: limit/offset
 	}
 
 	@Override
@@ -1200,6 +1213,11 @@ public class TermServiceImpl implements TermService {
 	@Override
 	public List<AdAppointment> findAppointments(AdSection section) {
 		return appointmentDao.find(section);
+	}
+
+	@Override
+	public List<AdAppointment> findAppointments(AdAcademicSession academicSession) {
+		return appointmentDao.find(academicSession);
 	}
 
 	@Override

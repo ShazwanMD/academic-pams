@@ -9,12 +9,10 @@ import {PlannerService} from '../../../services';
 import {CommonService} from '../../../services';
 import {IdentityService} from '../../../services';
 
-import {CourseCenterPage} from "./course-center.page";
-import {CourseListComponent} from "./component/course-list.component";
-import {CourseActions} from "./course.action";
 import {EffectsModule} from "@ngrx/effects";
-import {CourseEffects} from "./course.effect";
-import {CourseDetailPage} from "./course-detail.page";
+import {AcademicSessionEffects} from "./academic-sessions.effect";
+import {AcademicSessionActions} from "./academic-session.action";
+import {AcademicSessionCenterPage} from "./academic-session-center.page";
 
 @NgModule({
   imports: [
@@ -22,30 +20,27 @@ import {CourseDetailPage} from "./course-detail.page";
     BrowserModule,
     ReactiveFormsModule,
     CovalentCoreModule.forRoot(),
-    EffectsModule.run(CourseEffects),
+    EffectsModule.run(AcademicSessionEffects),
   ],
   declarations: [
-
     // page
-    CourseCenterPage,
-    CourseDetailPage,
+    AcademicSessionCenterPage,
 
     // component
-    CourseListComponent,
   ],
   exports: [],
 })
 
-export class CourseSubModule {
+export class AcademicSessionSubModule {
   static forRoot(): ModuleWithProviders {
     return {
-      ngModule: CourseSubModule,
+      ngModule: AcademicSessionSubModule,
       providers: [
         appRoutingProviders,
         PlannerService,
         IdentityService,
         CommonService,
-        CourseActions,
+        AcademicSessionActions,
       ],
     };
   }

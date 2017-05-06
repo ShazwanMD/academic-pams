@@ -1,7 +1,6 @@
 import {Component, OnInit, ChangeDetectionStrategy} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 
-import {CommonService} from '../../../services';
 import {Store} from "@ngrx/store";
 import {Observable} from "rxjs";
 import {Faculty} from "./faculty.interface";
@@ -16,39 +15,26 @@ import {PlannerModuleState} from "../index";
 export class FacultyCenterPage implements OnInit {
 
   private FACULTIES = "plannerModuleState.faculties".split(".");
-
-  private _commonService: CommonService;
-  private _router: Router;
-  private _route: ActivatedRoute;
-  private _actions: FacultyActions;
-  private store: Store<PlannerModuleState>;
   private faculties$: Observable<Faculty[]>;
 
-  constructor(router: Router,
-              route: ActivatedRoute,
-              actions: FacultyActions,
-              store: Store<PlannerModuleState>,
-              commonService: CommonService) {
-
-    this._router = router;
-    this._route = route;
-    this._commonService = commonService;
-    this._actions = actions;
-    this.store = store;
+  constructor(private router: Router,
+              private route: ActivatedRoute,
+              private actions: FacultyActions,
+              private store: Store<PlannerModuleState>) {
     this.faculties$ = this.store.select(...this.FACULTIES);
   }
 
   goBack(route: string): void {
-    this._router.navigate(['/faculties']);
+    this.router.navigate(['/faculties']);
   }
 
   viewFaculty(faculty: Faculty) {
     console.log("faculty: " + faculty.id);
-    this._router.navigate(['/faculties-detail', faculty.id]);
+    this.router.navigate(['/faculties-detail', faculty.id]);
   }
 
   ngOnInit(): void {
-    this.store.dispatch(this._actions.findFaculties());
+    this.store.dispatch(this.actions.findFaculties());
   }
 }
 

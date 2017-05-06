@@ -300,7 +300,6 @@
                                 <srcFile>src/test/resources/data/AD_RLGN_CODE.sql</srcFile>
                                 <srcFile>src/test/resources/data/AD_RSCY_CODE.sql</srcFile>
                                 <srcFile>src/test/resources/data/AD_STDY_CNTR.sql</srcFile>
-                                <srcFile>src/test/resources/data/AD_STDY_CNTR_CODE.sql</srcFile>
 
                                 <!--PLANNER-->
                                 <srcFile>src/test/resources/data/AD_ACDM_SESN.sql</srcFile>

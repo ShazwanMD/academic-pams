@@ -16,7 +16,6 @@ import {PlannerModuleState} from "../index";
 
 export class ProgramCenterPage implements OnInit {
 
-  
   private PROGRAMS = "plannerModuleState.programs".split(".");
   private programs$: Observable<Program[]>;
 
@@ -24,8 +23,6 @@ export class ProgramCenterPage implements OnInit {
               private route: ActivatedRoute,
               private actions: ProgramActions,
               private store: Store<PlannerModuleState>) {
-
-    // read from store
     this.programs$ = this.store.select(...this.PROGRAMS);
   }
 

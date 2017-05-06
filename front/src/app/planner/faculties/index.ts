@@ -35,10 +35,10 @@ import {FacultyEffects} from "./faculty.effect";
   exports: [],
 })
 
-export class FacultyModule {
+export class FacultySubModule {
   static forRoot(): ModuleWithProviders {
     return {
-      ngModule: FacultyModule,
+      ngModule: FacultySubModule,
       providers: [
         appRoutingProviders,
         PlannerService,

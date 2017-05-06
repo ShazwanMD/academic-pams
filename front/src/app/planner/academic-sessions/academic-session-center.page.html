@@ -6,14 +6,14 @@
 
   <td-layout-manage-list #list>
     <md-nav-list list-items>
-      <a md-list-item [routerLink]="['/programs-create']">
+      <a md-list-item [routerLink]="['/AcademicSessions-create']">
         <md-icon>create</md-icon>
-        Create Program
+        Create AcademicSession
       </a>
       <md-divider></md-divider>
     </md-nav-list>
     <div toolbar-buttons layout="row" layout-align="start center" flex>
-      <span flex>Program Center</span>
+      <span flex>AcademicSession Center</span>
       <button md-button class="md-icon-button">
         <md-icon class="md-24">settings</md-icon>
       </button>
@@ -23,18 +23,16 @@
     </div>
 
     <md-card class="">
-      <md-card-title>Programs</md-card-title>
-      <md-card-subtitle>List of programs</md-card-subtitle>
-
+      <md-card-title>Academic Sessions</md-card-title>
+      <md-card-subtitle>List of Academic Sessions</md-card-subtitle>
       <md-divider></md-divider>
-
-      <pams-program-list
-        [programs]="programs$ | async"
-        (view)="viewProgram($event)"></pams-program-list>
+      <!--<pams-course-list-->
+        <!--[AcademicSessions]="AcademicSessions$ | async"-->
+        <!--(view)="viewAcademicSession($event)"></pams-course-list>-->
 
       <md-divider></md-divider>
       <md-card-actions>
-        <a md-button color="accent" class="text-upper" [routerLink]="['/programs-search']">
+        <a md-button color="accent" class="text-upper" [routerLink]="['/academic-sessions-search']">
           <span>View More</span>
         </a>
       </md-card-actions>

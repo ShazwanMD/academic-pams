@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * Enroll = student enrolled into section<br/>
  * Withdraw = student withdrawn from section<br/>
- *
+ * <p>
  * Appoint = staff appointed into section<br/>
  * Dismiss = staff dismissed from section<br/>
  *
@@ -66,21 +66,22 @@ public interface TermService {
     boolean isOfferingExists(AdProgram program, AdCourse course);
 
     void saveOffering(AdOffering offering);
-    
+
     void updateOffering(AdOffering offering);
 
-    
-  //==========+==========================================================================================
-  // CHARGE SHCEDULE
-  //====================================================================================================
-   
+
+    //==========+==========================================================================================
+    // CHARGE SHCEDULE
+    //====================================================================================================
+
     AdChargeSchedule findScheduleByCode(String code);
-    
+
     AdChargeSchedule findScheduleByRefNo(String refNo);
-   
-    void saveSchedule(AdChargeSchedule schedule);  
+
+    void saveSchedule(AdChargeSchedule schedule);
+
     void updateSchedule(AdChargeSchedule schedule);
-    
+
     //==========+==========================================================================================
     // SECTION
     //====================================================================================================
@@ -228,18 +229,26 @@ public interface TermService {
     // ADMISSION
     //====================================================================================================
 
+    AdAdmission findAdmissionById(Long id);
+
     AdAdmission findAdmissionByAcademicSessionCohortAndStudent(AdAcademicSession academicSession, AdCohort cohort, AdStudent student);
 
+    List<AdAdmission> findAdmissions(Integer offset, Integer limit);
+
+    List<AdAdmission> findAdmissions(AdAcademicSession academicSession, Integer offset, Integer limit);
+
     Integer countAdmission(AdAcademicSession academicSession, AdStudent student);
-    
-    @Deprecated // use startAdmissionApplication
+
+    @Deprecated
+        // use startAdmissionApplication
     void saveAdmissionApplication(AdAdmissionApplication application);
 
     void admit(AdAcademicSession academicSession, AdStudent student, AdStudyCenter studyCenter, AdProgram program);
 
-    @Deprecated // use startAdmissionApplication
+    @Deprecated
+        // use startAdmissionApplication
     void saveAdmission(AdAdmission admission);
-    
+
     void updateAdmission(AdAdmission admission);
 
     //====================================================================================================
@@ -260,7 +269,7 @@ public interface TermService {
     Integer countPooledEnrollmentApplicationTasks();
 
     String startEnrollmentApplicationTask(AdEnrollmentApplication application);
-    
+
     String startChargeScheduleTask(AdChargeSchedule schedule);
 
     void updateEnrollmentApplication(AdEnrollmentApplication application);
@@ -284,7 +293,7 @@ public interface TermService {
     AdEnrollmentApplication findEnrollmentApplicationByReferenceNo(String referenceNo);
 
     AdEnrollmentApplicationItem findEnrollmentApplicationItemById(Long id);
-    
+
     AdEnrollmentApplicationItem findEnrollmentApplicationItemBySection(AdSection section);
 
     List<AdEnrollmentApplication> findEnrollmentApplications(AdAcademicSession session);
@@ -404,6 +413,8 @@ public interface TermService {
 
     List<AdAppointment> findAppointments(AdSection section);
 
+    List<AdAppointment> findAppointments(AdAcademicSession academicSession);
+
     List<AdAppointment> findAppointments(AdAcademicSession academicSession, AdOffering offering);
 
     List<AdAppointment> findAppointments(AdAcademicSession academicSession, AdStaff staff);
@@ -475,4 +486,5 @@ public interface TermService {
     void deleteGradebook(AdGradebook gradebook);
 
     BigDecimal normalizeGradebooks(AdEnrollment enrollment);
+
 }

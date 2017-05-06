@@ -38,10 +38,10 @@ import {ProgramEffects} from "./program.effect";
   exports: [],
 })
 
-export class ProgramModule {
+export class ProgramSubModule {
   static forRoot(): ModuleWithProviders {
     return {
-      ngModule: ProgramModule,
+      ngModule: ProgramSubModule,
       providers: [
         appRoutingProviders,
         PlannerService,

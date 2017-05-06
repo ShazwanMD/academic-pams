@@ -7,12 +7,23 @@ import {Program} from "../app/planner/programs/program.interface";
 import {Faculty} from "../app/planner/faculties/faculty.interface";
 import {Course} from "../app/planner/courses/course.interface";
 import {Cohort} from "../app/planner/cohorts/cohort.interface";
+import {AcademicSession} from "../app/planner/academic-sessions/academic-session.interface";
 
 @Injectable()
 export class PlannerService {
 
   constructor(private http: Http,
               private _http: HttpInterceptorService) {
+  }
+  // ====================================================================================================
+  // ACADEMIC SESSION
+  // ====================================================================================================
+
+  findAcademicSessions(): Observable<AcademicSession[]> {
+    let headers = new Headers({'Authorization': 'Bearer TODO'});
+    let options = new RequestOptions({headers: headers});
+    return this.http.get(environment.endpoint + '/api/planner/academicSessions')
+      .map((res: Response) =><AcademicSession[]>res.json());
   }
 
   // ====================================================================================================
@@ -49,8 +60,7 @@ export class PlannerService {
   findProgramByCode(code: string): Observable<Program> {
     // let headers = new Headers({'Authorization': 'Bearer TODO'});
     // let options = new RequestOptions({headers: headers});
-    console.log("encoded uri: " + encodeURI (code))
-    return this.http.get(environment.endpoint + '/api/planner/programs/' + encodeURI (code))
+    return this.http.get(environment.endpoint + '/api/planner/programs/' + code)
       .map((res: Response) => <Program>res.json());
   }
 

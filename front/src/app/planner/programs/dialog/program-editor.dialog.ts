@@ -1,4 +1,3 @@
-
 import {Component, ViewContainerRef, OnInit} from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
 import {FormBuilder} from '@angular/forms';
@@ -7,6 +6,7 @@ import {IdentityService} from "../../../../services/identity.service";
 import {CommonService} from "../../../../services/common.service";
 import {PlannerService} from "../../../../services/planner.service";
 import {Program} from "../program.interface";
+import {ProgramActions} from "../program.action";
 
 
 @Component({
@@ -16,49 +16,29 @@ import {Program} from "../program.interface";
 
 export class ProgramEditorDialog implements OnInit {
 
-  private _router: Router;
-  private _route: ActivatedRoute;
-  private _identityService: IdentityService;
-  private _commonService: CommonService;
-  private _plannerService: PlannerService;
-  private _formBuilder: FormBuilder;
   private program: Program;
   private editForm: FormGroup;
 
-  constructor(router: Router,
-              route: ActivatedRoute,
-              formBuilder: FormBuilder,
-              identityService: IdentityService,
-              commonService: CommonService,
-              plannerService: PlannerService,
-              viewContainerRef: ViewContainerRef) {
-    this._router = router;
-    this._route = route;
-    this._formBuilder = formBuilder;
-    this._identityService = identityService;
-    this._commonService = commonService;
-    this._plannerService = plannerService;
+  constructor(private router: Router,
+              private route: ActivatedRoute,
+              private formBuilder: FormBuilder,
+              private actions: ProgramActions,
+              private viewContainerRef: ViewContainerRef) {
   }
 
   ngOnInit(): void {
-    this.editForm = this._formBuilder.group(<Program>{
+    this.editForm = this.formBuilder.group(<Program>{
       id: null,
-      code:'',
+      code: '',
       title: '',
-      titleMs:'',
+      titleMs: '',
       titleEn: '',
     });
 
     this.editForm.patchValue(this.program);
   }
 
-  // save(invoice: Invoice, isValid: boolean) {
-  //   this.submitted = true; // set form submit to true
-  //   this._invoiceService.startInvoiceTask(invoice).subscribe(res => {
-  //     let snackBarRef = this._snackBar.open("Invoice started", "OK");
-  //     snackBarRef.afterDismissed().subscribe(() => {
-  //       this.goBack();
-  //     });
-  //   });
-  // }
+  save(program: Program, isValid: boolean) {
+    // do something
+  }
 }

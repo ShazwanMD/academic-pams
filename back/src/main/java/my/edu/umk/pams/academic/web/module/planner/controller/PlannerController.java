@@ -107,14 +107,12 @@ public class PlannerController {
 
     @RequestMapping(value = "/faculties/{code}", method = RequestMethod.GET)
     public ResponseEntity<Faculty> findFacultyByCode(@PathVariable String code) throws UnsupportedEncodingException {
-        code = URLDecoder.decode(code, StandardCharsets.UTF_8.toString());
         return new ResponseEntity<Faculty>(plannerTransformer
                 .toFacultyVo(plannerService.findFacultyByCode(code)), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/faculties/{code}/programs", method = RequestMethod.GET)
     public ResponseEntity<List<Program>> findProgramsByFaculty(@PathVariable String code) throws UnsupportedEncodingException {
-        code = URLDecoder.decode(code, StandardCharsets.UTF_8.toString());
         AdFaculty faculty = plannerService.findFacultyByCode(code);
         return new ResponseEntity<List<Program>>(plannerTransformer
                 .toProgramVos(plannerService.findPrograms(faculty)), HttpStatus.OK);
@@ -122,7 +120,6 @@ public class PlannerController {
 
     @RequestMapping(value = "/faculties/{code}/courses", method = RequestMethod.GET)
     public ResponseEntity<List<Course>> findCoursesByFaculty(@PathVariable String code) throws UnsupportedEncodingException {
-        code = URLDecoder.decode(code, StandardCharsets.UTF_8.toString());
         AdFaculty faculty = plannerService.findFacultyByCode(code);
         return new ResponseEntity<List<Course>>(plannerTransformer
                 .toCourseVos(plannerService.findCourses(faculty)), HttpStatus.OK);
@@ -163,7 +160,6 @@ public class PlannerController {
 
     @RequestMapping(value = "/programs/{code}", method = RequestMethod.GET)
     public ResponseEntity<Program> findProgramByCode(@PathVariable String code) throws UnsupportedEncodingException {
-        code = URLDecoder.decode(code, StandardCharsets.UTF_8.toString());
         return new ResponseEntity<Program>(plannerTransformer
                 .toProgramVo(plannerService.findProgramByCode(code)), HttpStatus.OK);
     }

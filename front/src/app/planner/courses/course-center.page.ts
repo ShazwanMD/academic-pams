@@ -1,7 +1,6 @@
 import {Component, OnInit, ChangeDetectionStrategy} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 
-import {CommonService} from '../../../services';
 import {Store} from "@ngrx/store";
 import {Observable} from "rxjs";
 import {Course} from "./course.interface";
@@ -16,39 +15,27 @@ import {PlannerModuleState} from "../index";
 export class CourseCenterPage implements OnInit {
 
   private COURSES = "plannerModuleState.courses".split(".");
-
-  private _commonService: CommonService;
-  private _router: Router;
-  private _route: ActivatedRoute;
-  private _actions: CourseActions;
-  private store: Store<PlannerModuleState>;
   private courses$: Observable<Course[]>;
 
-  constructor(router: Router,
-              route: ActivatedRoute,
-              actions: CourseActions,
-              store: Store<PlannerModuleState>,
-              commonService: CommonService) {
+  constructor(private router: Router,
+              private route: ActivatedRoute,
+              private actions: CourseActions,
+              private store: Store<PlannerModuleState>) {
 
-    this._router = router;
-    this._route = route;
-    this._commonService = commonService;
-    this._actions = actions;
-    this.store = store;
     this.courses$ = this.store.select(...this.COURSES);
   }
 
   goBack(route: string): void {
-    this._router.navigate(['/courses']);
+    this.router.navigate(['/courses']);
   }
 
   viewCourse(course: Course) {
     console.log("course: " + course.id);
-    this._router.navigate(['/courses-detail', course.id]);
+    this.router.navigate(['/courses-detail', course.id]);
   }
 
   ngOnInit(): void {
-    this.store.dispatch(this._actions.findCourses());
+    this.store.dispatch(this.actions.findCourses());
   }
 }
 
