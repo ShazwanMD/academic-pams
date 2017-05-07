@@ -28,7 +28,7 @@ public class US_AD_TRM_1001
 
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_1001.class);
 	public static final String FACULTY_CODE = "A04";
-	public static final String PROGRAM_CODE = "PBI/PHD/PCS";
+	public static final String PROGRAM_CODE = "PBI-PHD-PCS";
 	public static final String COURSE_CODE = "MCS";
 
 	@Test

@@ -27,7 +27,7 @@ public class WhenIWantToSetCapacityForOfferedCourse extends Stage<WhenIWantToSet
     private static final Logger LOG = LoggerFactory.getLogger(WhenIWantToSetCapacityForOfferedCourse.class);
 
     public static final String COURSE_CODE = "GST5013";
-    public static final String PROGRAM_CODE = "MBA/MASTER";
+    public static final String PROGRAM_CODE = "MBA-MASTER";
 
     @Autowired
     private TermService termService;

@@ -82,7 +82,7 @@ public class WhenIUpdateSections extends Stage<WhenIUpdateSections> {
 		}
 		
 		//select offering code from list of offerings
-		offering= termService.findOfferingByCanonicalCode("MGSEB/MBA/GST5023");
+		offering= termService.findOfferingByCanonicalCode("MGSEB-MBA-GST5023");
 		Assert.notNull(offering, "offering should be not null");
 		LOG.debug("offering: {}", offering.getCanonicalCode());
 	
