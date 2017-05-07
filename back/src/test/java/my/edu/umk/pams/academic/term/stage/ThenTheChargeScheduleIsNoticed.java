@@ -26,7 +26,7 @@ public class ThenTheChargeScheduleIsNoticed extends Stage<ThenTheChargeScheduleI
 		LOG.debug("schedule id: {}", schedule.getId());
 		LOG.debug("Ref. No: {}", schedule.getCode());
 		LOG.debug("Academic Period: {}", schedule.getPeriod());
-		LOG.debug("StudyCenter: {}", schedule.getStudyCenter().getDescription());
+		LOG.debug("StudyCenter: {}", schedule.getStudyCenter());
 		LOG.debug("Cohort: {}", schedule.getCohort().getCode());
 		LOG.debug("Program: {}", schedule.getProgram().getTitleEn());
 		
