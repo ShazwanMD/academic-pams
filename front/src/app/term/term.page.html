@@ -13,29 +13,21 @@
 
   <td-layout-manage-list #list>
     <md-nav-list list-items>
-       <a md-list-item [routerLink]="['/accounts-create']">
+       <a md-list-item [routerLink]="['/term/admissions']">
         <md-icon>person_add</md-icon>
         Admission
         </a>
-      <a md-list-item [routerLink]="['/accounts-create']">
+      <a md-list-item [routerLink]="['/term/offerings']">
         <md-icon>create</md-icon>
         Offerings
         </a>
-      <a md-list-item [routerLink]="['/accounts-create']">
+      <a md-list-item [routerLink]="['/term/appointments']">
         <md-icon>group</md-icon>
         Appointment
         </a>
-      <a md-list-item [routerLink]="['/accounts']">
+      <a md-list-item [routerLink]="['/term/enrollments']">
         <md-icon>find_in_page</md-icon>
         Enrollment
-      </a>
-      <a md-list-item [routerLink]="['/accounts']">
-        <md-icon>blur_on</md-icon>
-        Admission Task
-      </a>
-       <a md-list-item [routerLink]="['/accounts']">
-        <md-icon>android</md-icon>
-        Enrollment Task
       </a>
       <md-divider></md-divider>
     </md-nav-list>
@@ -72,7 +64,7 @@
 
       <!-- note: experimental -->
       <md-divider></md-divider>
-    
+
  <td-data-table
   [data]="offering$ | async"
   [columns]="columns"

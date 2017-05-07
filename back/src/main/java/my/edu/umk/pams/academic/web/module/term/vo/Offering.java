@@ -3,6 +3,7 @@ package my.edu.umk.pams.academic.web.module.term.vo;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import my.edu.umk.pams.academic.web.module.core.vo.MetaObject;
+import my.edu.umk.pams.academic.web.module.planner.vo.Course;
 
 import java.io.IOException;
 
@@ -13,6 +14,7 @@ public class Offering extends MetaObject {
 
     private String code;
     private String canonicalCode;
+    private Course course;
 
     public String getCode() {
         return code;
@@ -30,6 +32,13 @@ public class Offering extends MetaObject {
         this.canonicalCode = canonicalCode;
     }
 
+    public Course getCourse() {
+        return course;
+    }
+
+    public void setCourse(Course course) {
+        this.course = course;
+    }
 
     @JsonCreator
     public static Offering create(String jsonString) {

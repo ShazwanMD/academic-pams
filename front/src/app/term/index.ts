@@ -10,20 +10,27 @@ import {IdentityService} from '../../services';
 import {TermService} from "../../services/term.service";
 
 import {TermPage} from "./term.page";
+import {OfferingSubModule} from "./offerings/index";
+import {offeringReducer, OfferingState} from "./offerings/offering.reducer";
+import {offeringListReducer, OfferingListState} from "./offerings/offering-list.reducer";
+import {Offering} from "./offerings/offering.interface";
 
 
 export interface TermModuleState {
-  // todo
+  offerings: OfferingListState;
+  offering: OfferingState;
 }
 ;
 
 export const INITIAL_TERM_STATE: TermModuleState =
   <TermModuleState>{
-    // todo
+    offerings: <Offering[]>[],
+    offering: <Offering>{},
   };
 
 export const termModuleReducers = {
-// todo
+  offerings: offeringListReducer,
+  offering: offeringReducer,
 };
 
 
@@ -33,6 +40,7 @@ export const termModuleReducers = {
     BrowserModule,
     ReactiveFormsModule,
     CovalentCoreModule.forRoot(),
+    OfferingSubModule.forRoot()
 
     // our modules
     // ngrx
@@ -40,7 +48,7 @@ export const termModuleReducers = {
   declarations: [
     // page
     TermPage,
-    
+
   ],
   exports: [],
 })

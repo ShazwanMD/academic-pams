@@ -19,28 +19,28 @@ import static java.util.stream.Collectors.toList;
 public class IdentityTransformer {
 
     public Staff toStaffVo(AdStaff staff) {
-        Staff m = new Staff();
-        m.setId(staff.getId());
-        m.setIdentityNo(staff.getIdentityNo());
-        m.setName(staff.getName());
-        m.setEmail(staff.getEmail());
-        m.setMobile(staff.getMobile());
-        m.setPhone(staff.getPhone());
-        m.setFax(staff.getFax());
-        return m;
+        Staff vo = new Staff();
+        vo.setId(staff.getId());
+        vo.setIdentityNo(staff.getIdentityNo());
+        vo.setName(staff.getName());
+        vo.setEmail(staff.getEmail());
+        vo.setMobile(staff.getMobile());
+        vo.setPhone(staff.getPhone());
+        vo.setFax(staff.getFax());
+        return vo;
     }
 
 
     public Student toStudentVo(AdStudent student) {
-        Student m = new Student();
-        m.setId(student.getId());
-        m.setIdentityNo(student.getIdentityNo());
-        m.setName(student.getName());
-        m.setEmail(student.getEmail());
-        m.setMobile(student.getMobile());
-        m.setPhone(student.getPhone());
-        m.setFax(student.getFax());
-        return m;
+        Student vo = new Student();
+        vo.setId(student.getId());
+        vo.setIdentityNo(student.getIdentityNo());
+        vo.setName(student.getName());
+        vo.setEmail(student.getEmail());
+        vo.setMobile(student.getMobile());
+        vo.setPhone(student.getPhone());
+        vo.setFax(student.getFax());
+        return vo;
     }
 
     public List<Staff> toStaffVos(List<AdStaff> staffs) {

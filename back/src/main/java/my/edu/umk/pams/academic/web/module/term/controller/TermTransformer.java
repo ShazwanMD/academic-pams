@@ -6,6 +6,7 @@ import my.edu.umk.pams.academic.term.service.TermService;
 import my.edu.umk.pams.academic.web.module.core.vo.FlowState;
 import my.edu.umk.pams.academic.web.module.core.vo.MetaState;
 import my.edu.umk.pams.academic.web.module.identity.controller.IdentityTransformer;
+import my.edu.umk.pams.academic.web.module.planner.controller.PlannerTransformer;
 import my.edu.umk.pams.academic.web.module.term.vo.*;
 import my.edu.umk.pams.academic.workflow.service.WorkflowService;
 import org.activiti.engine.task.Task;
@@ -33,6 +34,9 @@ public class TermTransformer {
 
     @Autowired
     private IdentityTransformer identityTransformer;
+
+    @Autowired
+    private PlannerTransformer plannerTransformer;
 
     public AdmissionApplicationTask toAdmissionApplicationTaskVo(Task t) {
         Map<String, Object> vars = workflowService.getVariables(t.getExecutionId());
@@ -66,19 +70,19 @@ public class TermTransformer {
     }
 
     public Admission toAdmissionVo(AdAdmission admission) {
-        Admission m = new Admission();
-        m.setId(admission.getId());
-        m.setGpa(admission.getGpa());
-        m.setCgpa(admission.getCgpa());
-        m.setCreditEarned(admission.getCreditEarned());
-        m.setCreditTaken(admission.getCreditTaken());
-        return m;
+        Admission vo = new Admission();
+        vo.setId(admission.getId());
+        vo.setGpa(admission.getGpa());
+        vo.setCgpa(admission.getCgpa());
+        vo.setCreditEarned(admission.getCreditEarned());
+        vo.setCreditTaken(admission.getCreditTaken());
+        return vo;
     }
 
     public Appointment toAppointmentVo(AdAppointment appointment) {
-        Appointment m = new Appointment();
-        m.setId(appointment.getId());
-        return m;
+        Appointment vo = new Appointment();
+        vo.setId(appointment.getId());
+        return vo;
     }
 
     public EnrollmentApplicationTask toEnrollmentApplicationTaskVo(Task t) {
@@ -113,21 +117,24 @@ public class TermTransformer {
     }
 
     public Enrollment toEnrollmentVo(AdEnrollment enrollment) {
-        Enrollment m = new Enrollment();
-        m.setId(enrollment.getId());
-        return m;
+        Enrollment vo = new Enrollment();
+        vo.setId(enrollment.getId());
+        return vo;
     }
 
     public Offering toOfferingVo(AdOffering offering) {
-        Offering m = new Offering();
-        m.setId(offering.getId());
-        return m;
+        Offering vo = new Offering();
+        vo.setId(offering.getId());
+        vo.setCode(offering.getCode());
+        vo.setCanonicalCode(offering.getCanonicalCode());
+        vo.setCourse(plannerTransformer.toCourseVo(offering.getCourse()));
+        return vo;
     }
 
     public Section toSectionVo(AdSection section) {
-        Section m = new Section();
-        m.setId(section.getId());
-        return m;
+        Section vo = new Section();
+        vo.setId(section.getId());
+        return vo;
     }
 
     public List<AdmissionApplicationTask> toAdmissionApplicationTaskVos(List<Task> tasks) {

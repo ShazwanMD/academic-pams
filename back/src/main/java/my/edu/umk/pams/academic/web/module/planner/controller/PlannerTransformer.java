@@ -20,57 +20,57 @@ public class PlannerTransformer {
     private static final Logger LOG = LoggerFactory.getLogger(PlannerTransformer.class);
 
     public AcademicSession toAcademicSessionVo(AdAcademicSession academicSession) {
-        AcademicSession m = new AcademicSession();
-        m.setId(academicSession.getId());
-        m.setCode(academicSession.getCode());
-        m.setDescription(academicSession.getDescription());
-        return m;
+        AcademicSession vo = new AcademicSession();
+        vo.setId(academicSession.getId());
+        vo.setCode(academicSession.getCode());
+        vo.setDescription(academicSession.getDescription());
+        return vo;
     }
 
     public StudyCenter toStudyCenterVo(AdStudyCenter studyCenter) {
-        StudyCenter m = new StudyCenter();
-        m.setId(studyCenter.getId());
-        m.setCode(studyCenter.getCode());
-        m.setDescription(studyCenter.getDescription());
-        return m;
+        StudyCenter vo = new StudyCenter();
+        vo.setId(studyCenter.getId());
+        vo.setCode(studyCenter.getCode());
+        vo.setDescription(studyCenter.getDescription());
+        return vo;
     }
 
     public Faculty toFacultyVo(AdFaculty faculty) {
-        Faculty m = new Faculty();
-        m.setId(faculty.getId());
-        m.setCode(faculty.getCode());
-        m.setName(faculty.getName());
-        m.setDescription(faculty.getDescription());
-        return m;
+        Faculty vo = new Faculty();
+        vo.setId(faculty.getId());
+        vo.setCode(faculty.getCode());
+        vo.setName(faculty.getName());
+        vo.setDescription(faculty.getDescription());
+        return vo;
     }
 
     public Program toProgramVo(AdProgram program) {
-        Program m = new Program();
-        m.setId(program.getId());
-        m.setCode(program.getCode());
-        m.setTitle(program.getTitle());
-        m.setTitleMs(program.getTitleMs());
-        m.setTitleEn(program.getTitleEn());
-        return m;
+        Program vo = new Program();
+        vo.setId(program.getId());
+        vo.setCode(program.getCode());
+        vo.setTitle(program.getTitle());
+        vo.setTitleMs(program.getTitleMs());
+        vo.setTitleEn(program.getTitleEn());
+        return vo;
     }
 
     public Course toCourseVo(AdCourse course) {
-        Course m = new Course();
-        m.setId(course.getId());
-        m.setCode(course.getCode());
-        m.setTitle(course.getTitle());
-        m.setTitleMs(course.getTitleMs());
-        m.setTitleEn(course.getTitleEn());
-        m.setCredit(course.getCredit());
-        return m;
+        Course vo = new Course();
+        vo.setId(course.getId());
+        vo.setCode(course.getCode());
+        vo.setTitle(course.getTitle());
+        vo.setTitleMs(course.getTitleMs());
+        vo.setTitleEn(course.getTitleEn());
+        vo.setCredit(course.getCredit());
+        return vo;
     }
 
     public Cohort toCohortVo(AdCohort cohort) {
-        Cohort m = new Cohort();
-        m.setId(cohort.getId());
-        m.setCode(cohort.getCode());
-        m.setDescription(cohort.getDescription());
-        return m;
+        Cohort vo = new Cohort();
+        vo.setId(cohort.getId());
+        vo.setCode(cohort.getCode());
+        vo.setDescription(cohort.getDescription());
+        return vo;
     }
 
     public List<StudyCenter> toStudyCenterVos(List<AdStudyCenter> studyCenters) {

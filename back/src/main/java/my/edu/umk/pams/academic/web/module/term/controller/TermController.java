@@ -203,7 +203,7 @@ public class TermController {
     // APPOINTMENT
     //====================================================================================================
 
-    @RequestMapping(value = "/appointments/", method = RequestMethod.GET)
+    @RequestMapping(value = "/appointments", method = RequestMethod.GET)
     public ResponseEntity<List<Appointment>> findAppointments() {
         AdAcademicSession academicSession = plannerService.findCurrentAcademicSession();
         List<AdAppointment> appointments = termService.findAppointments(academicSession);
@@ -230,9 +230,11 @@ public class TermController {
     //====================================================================================================
 
     // finder
-    @RequestMapping(value = "/offerings/", method = RequestMethod.GET)
+    @RequestMapping(value = "/offerings", method = RequestMethod.GET)
     public ResponseEntity<List<Offering>> findOfferings() {
-        throw new UnsupportedOperationException();
+        AdAcademicSession academicSession = plannerService.findCurrentAcademicSession();
+        List<AdOffering> offerings = termService.findOfferings(0,100);
+        return new ResponseEntity<List<Offering>>(termTransformer.toOfferingVos(offerings), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/offerings/{academicSessionCode}/page/{pageNo}", method = RequestMethod.GET)
@@ -246,8 +248,9 @@ public class TermController {
     }
 
     @RequestMapping(value = "/offerings/{canonicalCode}", method = RequestMethod.GET)
-    public ResponseEntity<List<Offering>> findOffering(@PathVariable String canonicalCode) {
-        throw new UnsupportedOperationException();
+    public ResponseEntity<Offering> findOffering(@PathVariable String canonicalCode) {
+        AdOffering offering = termService.findOfferingByCanonicalCode(canonicalCode);
+        return new ResponseEntity<Offering>(termTransformer.toOfferingVo(offering), HttpStatus.OK);
     }
 
 
