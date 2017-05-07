@@ -27,7 +27,7 @@ public class US_AD_TRM_1004 extends
 		SpringScenarioTest<GivenIAmCPSAdministrator, WhenIAppointStaffIntoSection, ThenTheStatusOfAppointmentIsUpdated> {
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_1004.class);
 	private static final String STAFF_NO = "01001A"; // from data/AD_ACTR.sql
-	private static final String SECTION_CANONICAL_CODE = "MGSEB/MBA/GST5023/201720181"; // from
+	private static final String SECTION_CANONICAL_CODE = "MGSEB-MBA-GST5023-201720181"; // from
 																							// data/AD_OFRG.sql
 
 	@Test
