@@ -118,8 +118,8 @@ public class WhenISetupChargeSchedule extends Stage<WhenISetupChargeSchedule> {
 		cohort = plannerService.findCohortByCode(cohortCode);
 		Assert.notNull(cohort, "cohort cannot be null");
 		
-		center = commonService.findStudyCenterByCode("A");
-		Assert.notNull(center, "center cannot be null");
+		//center = commonService.findStudyCenterByCode("A");
+		//Assert.notNull(center, "center cannot be null");
 
 		// setup params for refno generation
 		HashMap<String, Object> param = new HashMap<String, Object>();
@@ -132,7 +132,7 @@ public class WhenISetupChargeSchedule extends Stage<WhenISetupChargeSchedule> {
 		schedule.setCode(refNo);
 		schedule.setPeriod(AdAcademicPeriod.I);
 		schedule.setProgram(program);
-		schedule.setStudyCenter(center);
+		//schedule.setStudyCenter(center);
 		schedule.setCohort(cohort);
 
 		termService.saveSchedule(schedule);
@@ -144,7 +144,7 @@ public class WhenISetupChargeSchedule extends Stage<WhenISetupChargeSchedule> {
 		LOG.debug("cohort: {}", schedule.getCohort().getId());
 		LOG.debug("program: {}", schedule.getProgram().getId());
 		LOG.debug("amount: {}", schedule.getAmount());
-		LOG.debug("studyCenter: {}", schedule.getStudyCenter().getCode());
+		//LOG.debug("studyCenter: {}", schedule.getStudyCenter().getCode());
 		LOG.debug("period: {}", schedule.getPeriod());
 		LOG.debug("code: {}", schedule.getCode());
 
