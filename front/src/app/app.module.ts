@@ -25,7 +25,7 @@ import {GraduationModule} from "./graduation/index";
 import {ProfileModule, profileModuleReducers, ProfileModuleState, INITIAL_PROFILE_STATE} from "./profile/index";
 import {TermModule, termModuleReducers, TermModuleState, INITIAL_TERM_STATE} from "./term/index";
 import {PlannerModule, plannerModuleReducers, PlannerModuleState, INITIAL_PLANNER_STATE} from "./planner/index";
-
+import {SetupModule, setupModuleReducers, SetupModuleState, INITIAL_SETUP_STATE} from "./setup/index";
 // interceptor
 const httpInterceptorProviders: Type<any>[] = [
   RequestInterceptor,
@@ -37,6 +37,7 @@ interface ApplicationState {
   profileModuleState: ProfileModuleState;
   plannerModuleState: PlannerModuleState;
   termModuleState: TermModuleState;
+  setupModuleState : SetupModuleState;
   // graduationModuleState: GraduationModuleState;
 }
 ;
@@ -48,6 +49,7 @@ export const INITIAL_APP_STATE: ApplicationState =
     profileModuleState: INITIAL_PROFILE_STATE,
     plannerModuleState: INITIAL_PLANNER_STATE,
     termModuleState: INITIAL_TERM_STATE,
+    setupModuleState :INITIAL_SETUP_STATE,
     // graduationModuleState: INITIAL_GRADUATION_STATE,
     
   };
@@ -58,6 +60,7 @@ export const applicationReducers = {
   profileModuleState: combineReducers({...profileModuleReducers}),
   plannerModuleState: combineReducers({...plannerModuleReducers}),
   termModuleState: combineReducers({...termModuleReducers,}),
+  
   // graduationModuleState: combineReducers({...graduationModuleReducers}),
   
 };
@@ -94,6 +97,7 @@ export function applicationReducer(applicationState: any = INITIAL_APP_STATE, ac
     PlannerModule.forRoot(),
     TermModule.forRoot(),
     GraduationModule.forRoot(),
+    SetupModule.forRoot(),
     
 
   ], // modules needed to run this module

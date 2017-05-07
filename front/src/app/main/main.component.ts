@@ -29,8 +29,8 @@ export class MainComponent {
     route: '/graduation',
     icon: 'assignment',
   },  {
-    title: 'Test_TEST',
-    route: '/testest',
+    title: 'Setup',
+    route: '/setup',
     icon: 'assignment',
   }
   ];

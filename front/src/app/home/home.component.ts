@@ -59,6 +59,12 @@ export class HomeComponent implements OnInit {
           icon: 'assignment',
           color: 'blue-700',
           description: ' ',
+        },{
+          title: 'Setup',
+          route: '/setup',
+          icon: 'assignment',
+          color: 'blue-700',
+          description: ' ',
         },
         
       ];
