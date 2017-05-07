@@ -27,7 +27,7 @@ public class US_AD_TRM_1014 extends
 		SpringScenarioTest<GivenIAmCPSAdministrator, WhenIApproveNewAdmissionForStudent, ThenTheNewAdmissionIsAdded> {
 
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_1014.class);
-	public static final String PROGRAM_CODE = "FIAT/PHD/PBT";
+	public static final String PROGRAM_CODE = "FIAT-PHD-PBT";
 	public static final String STUDENT_ID = "A17P001";
 
 	@Test

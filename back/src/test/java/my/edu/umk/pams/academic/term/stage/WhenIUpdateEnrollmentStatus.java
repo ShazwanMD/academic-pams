@@ -101,7 +101,7 @@ public class WhenIUpdateEnrollmentStatus extends Stage<WhenIUpdateEnrollmentStat
 		}
 
 		student = identityService.findStudentByMatricNo("A17P001");
-		section = termService.findSectionByCanonicalCode("MGSEB/MBA/GST5023/201720181");
+		section = termService.findSectionByCanonicalCode("MGSEB-MBA-GST5023-201720181");
 
 		enrollment = termService.findEnrollmentBySectionAndStudent(section, student);
 		Assert.notNull(enrollment, "Enrollment data should be not null");

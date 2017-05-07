@@ -1,11 +1,9 @@
 package my.edu.umk.pams.academic.term.stage;
 
 import org.slf4j.Logger;
-
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
-
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
@@ -50,9 +48,6 @@ public class WhenIRegisterAdmissionInNewSemester extends Stage<WhenIRegisterAdmi
 	@ProvidedScenarioState
 	private AdStudyCenter studyCenter;
 
-	@ProvidedScenarioState
-	private AdStudyCenter studyCenterCode;
-
 	@ExpectedScenarioState
 	private AdAcademicSession academicSession;
 
@@ -65,8 +60,8 @@ public class WhenIRegisterAdmissionInNewSemester extends Stage<WhenIRegisterAdmi
 		// process flow of admission
 		student = identityService.findStudentByMatricNo("A17P001");
 		advisor = identityService.findStaffByStaffNo("01001A");
-		program = plannerService.findProgramByCode("FKP/MASTER/MAM");
-		studyCenter = commonService.findStudyCenterByCode("C");
+		program = plannerService.findProgramByCode("FKP-MASTER-MAM");
+		studyCenter = commonService.findStudyCenterByCode("A");
 
 		LOG.debug("student {}", student.getName());
 		LOG.debug("advisor {}", advisor.getName());

@@ -88,11 +88,6 @@ public class ThenTheDateEnrollmentIsReview extends Stage<ThenTheDateEnrollmentIs
 		}
 
 		
-		
-		
-		
-		
-
 		//utk dapatkan date interval
 		//1. convert string enrollOpen dan enrollClose kepada format date
 		

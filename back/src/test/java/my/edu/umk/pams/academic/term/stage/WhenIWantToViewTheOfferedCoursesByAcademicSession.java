@@ -43,7 +43,7 @@ public class WhenIWantToViewTheOfferedCoursesByAcademicSession
     public WhenIWantToViewTheOfferedCoursesByAcademicSession I_browse_the_offered_course_by_program_I_picked() {
         // list all term for program
     	
-    	program = plannerService.findProgramByCode("FIAT/MASTER/PBH");
+    	program = plannerService.findProgramByCode("FIAT-MASTER-PBH");
     	
     	LOG.debug("=====selected program===============");
     	LOG.debug("For program: {}", program.getTitle());

@@ -28,7 +28,7 @@ public class US_AD_TRM_1015
 		extends SpringScenarioTest<GivenIAmCPSAdministrator, WhenUpdateCourseOfferings, ThenOfferingsInfoIsCurrent> {
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_1015.class);
 	public static final String FACULTY_CODE = "A07";
-	public static final String PROGRAM_CODE = "FIAT/MASTER/PBH";
+	public static final String PROGRAM_CODE = "FIAT-MASTER-PBH";
 
 	@Test
 	@Rollback

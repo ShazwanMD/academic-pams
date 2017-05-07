@@ -49,7 +49,7 @@ public class WhenWithdrawEnrollmentCourse extends Stage<WhenWithdrawEnrollmentCo
 
 		String referenceNo = "201720181/001";
 		application = termService.findEnrollmentApplicationByReferenceNo(referenceNo);
-		section = termService.findSectionByCanonicalCode("FIAT/MASTER/PBH/GST5023/201720181");
+		section = termService.findSectionByCanonicalCode("MGSEB-MBA-GST5023-201720181");
 
 		List<AdEnrollmentApplicationItem> items = termService.findEnrollmentApplicationItems(application);
 

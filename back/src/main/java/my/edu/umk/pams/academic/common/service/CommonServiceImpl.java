@@ -937,15 +937,13 @@ public class CommonServiceImpl implements CommonService {
     // STUDY CENTER CODE
     //====================================================================================================
 
+      
+    //study center 
     @Override
-    public AdStudyCenter findStudyCenterByCode(String code) {
-        return studyCenterDao.findByCode(code);
-    }
-
-    @Override
-    public Integer countStudyCenterCode() {
-        return studyCenterDao.count();
-    }
+	public AdStudyCenter findStudyCenterByCode(String code) {
+    	return studyCenterDao.findByCode(code);
+	}
+    
 
     @Override
     public Integer countStudyCenterCode(String filter) {
@@ -1581,6 +1579,12 @@ public class CommonServiceImpl implements CommonService {
     }
 
 
+	
+	@Override
+	public Integer countStudyCenterCode() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
     //====================================================================================================
     // DUN CODE
