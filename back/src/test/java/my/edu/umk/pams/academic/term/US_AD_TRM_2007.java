@@ -24,7 +24,7 @@ import my.edu.umk.pams.bdd.tags.Submodule;
 public class US_AD_TRM_2007 extends
 		SpringScenarioTest<GivenIAmStudent, WhenIWantToEnrollAdditionalOfferingCoursesToRepeatCourses, ThenTheEnrollmentCoursesIsUpdated> {
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_2007.class);
-	private static final String PROGRAM_CODE = "A01/MASTER/0001";
+	private static final String PROGRAM_CODE = "A01-MASTER-0001";
 
 	@Test
 	@Rollback

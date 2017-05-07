@@ -133,7 +133,7 @@ public class WhenIAddEnrollmentCourses extends Stage<WhenIAddEnrollmentCourses> 
 			application = termService.findEnrollmentApplicationByReferenceNo(generatedReferenceNo);
 			Assert.notNull(application, "application data is null");
 
-			section = termService.findSectionByCanonicalCode("FIAT/MASTER/PBH/GST5023/201720181");
+			section = termService.findSectionByCanonicalCode("MGSEB-MBA-GST5023-201720181");
 			Assert.notNull(section, "section data is null");
 			LOG.debug("Section Code: {}", section.getCode());
 
