@@ -18,5 +18,5 @@ public interface AdBankCode extends AdMetaObject {
 
     String getName();
 
-    void setName(String description);
+    void setName(String name);
 }

@@ -71,10 +71,7 @@ public class CommonServiceImpl implements CommonService {
 
     @Autowired
     private AdResidencyCodeDao residenceCodeDao;
-
-/*    @Autowired
-    private AdStudyCenterCodeDao studyCenterCodeDao;*/
-    
+   
     @Autowired
     private AdStudyCenterDao studyCenterDao;
 
@@ -101,7 +98,13 @@ public class CommonServiceImpl implements CommonService {
 
     @Autowired
     private AdEmploymentSectorCodeDao employmentSectorCodeDao;
+    
+    @Autowired
+    private AdDunCodeDao dunCodeDao;
 
+    @Autowired
+    private AdParliamentCodeDao parliamentCodeDao;
+    
     @Autowired
     private AdStudyModeDao studyModeDao;
 
@@ -934,51 +937,19 @@ public class CommonServiceImpl implements CommonService {
     // STUDY CENTER CODE
     //====================================================================================================
 
-/*    @Override
-    public AdStudyCenterCode findStudyCenterCodeById(Long id) {
-        return studyCenterCodeDao.findById(id);
-    }
-
-    @Override
-    public AdStudyCenterCode findStudyCenterCodeByCode(String code) {
-        return studyCenterCodeDao.findByCode(code);
-    }*/
-    
+      
     //study center 
- /*   @Override
+    @Override
 	public AdStudyCenter findStudyCenterByCode(String code) {
-    	return studyCenterCodeDao.findByCode1(code);
+    	return studyCenterDao.findByCode(code);
 	}
-
-
-    @Override
-    public List<AdStudyCenterCode> findStudyCenterCodes() {
-        return studyCenterCodeDao.find();
-    }
-
-    @Override
-    public List<AdStudyCenterCode> findStudyCenterCodes(String filter, Integer offset, Integer limit) {
-        return studyCenterCodeDao.find(filter, offset, limit);
-    }
-
-    @Override
-    public Integer countStudyCenterCode() {
-        return studyCenterCodeDao.count();
-    }
+    
 
     @Override
     public Integer countStudyCenterCode(String filter) {
-        return studyCenterCodeDao.count(filter);
+        return studyCenterDao.count(filter);
     }
 
-
-    @Override
-    public void saveStudyCenterCode(AdStudyCenterCode studyCenterCode) {
-        studyCenterCodeDao.save(studyCenterCode, securityService.getCurrentUser());
-        sessionFactory.getCurrentSession().flush();
-    }*/
-    
-    //save study center
     @Override
 	public void saveStudyCenter(AdStudyCenter studyCenter) {
     	studyCenterDao.save(studyCenter, securityService.getCurrentUser());
@@ -1607,26 +1578,118 @@ public class CommonServiceImpl implements CommonService {
         sessionFactory.getCurrentSession().flush();
     }
 
-	@Override
-	public AdStudyCenter findStudyCenterByCode(String code) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
+	
 	@Override
 	public Integer countStudyCenterCode() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
-	public Integer countStudyCenterCode(String filter) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    //====================================================================================================
+    // DUN CODE
+    //====================================================================================================
 
+    @Override
+    public AdDunCode findDunCodeById(Long id) {
+        return dunCodeDao.findById(id);
+    }
+
+    @Override
+    public AdDunCode findDunCodeByCode(String code) {
+        return dunCodeDao.findByCode(code);
+    }
+
+    @Override
+    public List<AdDunCode> findDunCodes() {
+        return dunCodeDao.find();
+    }
+
+    @Override
+    public List<AdDunCode> findDunCodes(String filter, Integer offset, Integer limit) {
+        return dunCodeDao.find(filter, offset, limit);
+    }
+
+    @Override
+    public Integer countDunCode() {
+        return dunCodeDao.count();
+    }
+
+    @Override
+    public Integer countDunCode(String filter) {
+        return dunCodeDao.count(filter);
+    }
+
+    @Override
+    public void saveDunCode(AdDunCode DunCode) {
+        dunCodeDao.save(DunCode, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
+
+    @Override
+    public void updateDunCode(AdDunCode DunCode) {
+        dunCodeDao.update(DunCode, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
+
+    @Override
+    public void removeDunCode(AdDunCode DunCode) {
+        dunCodeDao.remove(DunCode, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
 	
-	
+  //====================================================================================================
+    // PARLIAMENT CODE
+    //====================================================================================================
+
+    @Override
+    public AdParliamentCode findParliamentCodeById(Long id) {
+        return parliamentCodeDao.findById(id);
+    }
+
+    @Override
+    public AdParliamentCode findParliamentCodeByCode(String code) {
+        return parliamentCodeDao.findByCode(code);
+    }
+
+    @Override
+    public List<AdParliamentCode> findParliamentCodes() {
+        return parliamentCodeDao.find();
+    }
+
+    @Override
+    public List<AdParliamentCode> findParliamentCodes(String filter, Integer offset, Integer limit) {
+        return parliamentCodeDao.find(filter, offset, limit);
+    }
+
+    @Override
+    public Integer countParliamentCode() {
+        return parliamentCodeDao.count();
+    }
+
+    @Override
+    public Integer countParliamentCode(String filter) {
+        return parliamentCodeDao.count(filter);
+    }
+
+    @Override
+    public void saveParliamentCode(AdParliamentCode ParliamentCode) {
+        parliamentCodeDao.save(ParliamentCode, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
+
+    @Override
+    public void updateParliamentCode(AdParliamentCode ParliamentCode) {
+        parliamentCodeDao.update(ParliamentCode, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
+
+    @Override
+    public void removeParliamentCode(AdParliamentCode ParliamentCode) {
+        parliamentCodeDao.remove(ParliamentCode, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
+
 
 	
 }

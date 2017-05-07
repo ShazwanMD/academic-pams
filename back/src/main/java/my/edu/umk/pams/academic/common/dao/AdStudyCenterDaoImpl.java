@@ -24,7 +24,7 @@ public class AdStudyCenterDaoImpl extends GenericDaoSupport<Long, AdStudyCenter>
     @Override
     public AdStudyCenter findByCode(String code) {
         Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery("select s from AdCampusCode s where " +
+        Query query = session.createQuery("select s from AdStudyCenter s where " +
                 "s.code = :code " +
                 "and s.metadata.state = :state");
         query.setString("code", code);
