@@ -17,7 +17,6 @@ import {ProfileComponent} from "./components/profile.component";
 import {ProfileDetailPage} from "./profile-detail.page";
 import {EffectsModule} from "@ngrx/effects";
 import {ProfileEffects} from "./profile.effect";
-import {test1Page} from "./test1.page";
 
 export interface ProfileModuleState {
   students: ProfileListState;
@@ -47,7 +46,6 @@ export const profileModuleReducers = {
   ],
   declarations: [
     // page
-    test1Page,
     ProfileCenterPage,
     ProfileDetailPage,
     
