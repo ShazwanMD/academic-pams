@@ -5,7 +5,28 @@ import my.edu.umk.pams.academic.common.model.*;
 
 import java.util.List;
 
-public interface CommonService {
+public  interface CommonService{
+    //====================================================================================================
+    // DUN CODE
+    //====================================================================================================
+
+    AdDunCode findDunCodeById(Long id);
+
+    AdDunCode findDunCodeByCode(String code);
+
+    List<AdDunCode> findDunCodes();
+
+    List<AdDunCode> findDunCodes(String filter, Integer offset, Integer limit);
+
+    Integer countDunCode();
+
+    Integer countDunCode(String filter);
+
+    void saveDunCode(AdDunCode DunCode);
+
+    void updateDunCode(AdDunCode DunCode);
+
+    void removeDunCode(AdDunCode DunCode);
 
 	// ====================================================================================================
 	// COUNTRY CODE
@@ -120,7 +141,9 @@ public interface CommonService {
 /*	void saveStudyCenterCode(AdStudyCenterCode studyCenterCode);*/
 	
 	void saveStudyCenter(AdStudyCenter studyCenter);
+	
 	void updateStudyCenter(AdStudyCenter studyCenter);
+	
 	void removeStudyCenter(AdStudyCenter studyCenter);
 
 /*	void updateStudyCenterCode(AdStudyCenterCode studyCenterCode);
@@ -627,5 +650,27 @@ public interface CommonService {
 	void updateStudyMode(AdStudyMode studyMode);
 
 	void removeStudyMode(AdStudyMode studyMode);
+
+	 //====================================================================================================
+    // PARLIAMENT CODE
+    //====================================================================================================
+
+   AdParliamentCode findParliamentCodeById(Long id);
+
+   AdParliamentCode findParliamentCodeByCode(String code);
+
+    List<AdParliamentCode> findParliamentCodes();
+
+    List<AdParliamentCode> findParliamentCodes(String filter, Integer offset, Integer limit);
+
+    Integer countParliamentCode();
+
+    Integer countParliamentCode(String filter);
+
+    void saveParliamentCode(AdParliamentCode ParliamentCode);
+
+    void updateParliamentCode(AdParliamentCode ParliamentCode);
+
+    void removeParliamentCode(AdParliamentCode ParliamentCode);
 
 }
