@@ -79,8 +79,8 @@ public class AdBankCodeImpl implements AdBankCode {
     }
 
     @Override
-    public void setName(String description) {
-        this.name = description;
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Override
