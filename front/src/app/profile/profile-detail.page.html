@@ -7,7 +7,20 @@
   <div md-content flex md-scroll-y>
     <div layout="column" layout-gt-md="row" class="inset">
       <div flex-gt-md="70">
+
         <pams-profile [profile]="student$ | async"></pams-profile>
+
+        <md-card>
+          <md-card-title>Personal Details</md-card-title>
+          <md-card-subtitle>Student Personal Details</md-card-subtitle>
+          <md-divider></md-divider>
+
+          <md-card-content>
+            
+          </md-card-content>
+
+        </md-card>
+
       </div>
 
       <div flex-gt-md="30">
@@ -42,6 +55,7 @@
             </md-list-item>
           </md-nav-list>
         </md-card>
+
       </div>
     </div>
   </div>
