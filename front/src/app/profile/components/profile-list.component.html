@@ -14,8 +14,11 @@
   </template>
   <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
     <div layout="row">
-      <a md-button color="accent" class="text-upper" [routerLink]="['/student/students', row['code']]">
+      <a md-button color="accent" class="text-upper" [routerLink]="['/student/students', row['identityNo']]">
         <span>View</span>
+      </a>
+      <a md-button color="accent" class="text-upper" [routerLink]="['/student/students', row['identityNo']]">
+        <span>Edit</span>
       </a>
     </div>
   </template>

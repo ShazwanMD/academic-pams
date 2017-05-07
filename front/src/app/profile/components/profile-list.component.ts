@@ -12,9 +12,9 @@ export class ProfileListComponent {
   @Output() view = new EventEmitter<Student>();
 
   private columns: any[] = [
-    {name: 'identityNo', label: 'matricNo'},
+    {name: 'identityNo', label: 'Matric No'},
     {name: 'name', label: 'Name'},
     {name: 'email', label: 'Email'},
-    {name: 'action', label: ''}
+    {name: 'action', label: 'Action'}
   ];
 }
