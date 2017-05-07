@@ -30,7 +30,7 @@ public class US_AD_TRM_2001
 		extends SpringScenarioTest<GivenIAmStudent, WhenIViewTheOfferedCourses, ThenOfferedCoursesInfoIsCurrent> {
 
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_2001.class);
-	private static final String PROGRAM_CODE = "FIAT/MASTER/PBH";
+	private static final String PROGRAM_CODE = "FIAT-MASTER-PBH";
 
 	@Test
 	@Rollback

@@ -77,7 +77,7 @@ public class WhenISetupChargeSchedule extends Stage<WhenISetupChargeSchedule> {
 		Assert.notNull(cohortCode, "cohortCode cannot be null");
 
 		cohort = new AdCohortImpl();
-		cohort.setCode("FIAT/PHD/PBB/CHRT/201720182");
+		cohort.setCode("FIAT-PHD-PBB-CHRT-201720182");
 		cohort.setDescription("COHORT 003");
 		cohort.setClassification(AdAcademicClassification.LEVEL_GRADUATED);
 		cohort.setProgram(program);

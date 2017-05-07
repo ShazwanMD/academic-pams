@@ -24,7 +24,7 @@ import my.edu.umk.pams.bdd.tags.Submodule;
 public class US_AD_TRM_2009
 		extends SpringScenarioTest<GivenIAmStudent, WhenIAddEnrollmentCourses, ThenIViewTheCurrentEnrollmentCourses> {
 	
-	public static final String PROGRAM_CODE = "FIAT/PHD/PBT";
+	public static final String PROGRAM_CODE = "FIAT-PHD-PBT";
 
 	@Test
 	@Rollback(true)

@@ -46,7 +46,7 @@ public class WhenIWantToEnrollAdditionalOfferingCoursesToRepeatCourses
 	public WhenIWantToEnrollAdditionalOfferingCoursesToRepeatCourses I_want_to_enroll_additional_offering_courses_to_repeat_courses_for_program_$(
 			String code) {
 
-		section = termService.findSectionByCanonicalCode("FIAT/MASTER/PBH/GST5023/201720181");
+		section = termService.findSectionByCanonicalCode("FIAT-MASTER-PBH-GST5023-201720181");
 		LOG.debug("A section{}", section);
 
 		student = identityService.findStudentByMatricNo("A17P002");

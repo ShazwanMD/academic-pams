@@ -65,7 +65,7 @@ public class WhenIRegisterAdmissionInNewSemester extends Stage<WhenIRegisterAdmi
 		// process flow of admission
 		student = identityService.findStudentByMatricNo("A17P001");
 		advisor = identityService.findStaffByStaffNo("01001A");
-		program = plannerService.findProgramByCode("FKP/MASTER/MAM");
+		program = plannerService.findProgramByCode("FKP-MASTER-MAM");
 		studyCenter = commonService.findStudyCenterByCode("C");
 
 		LOG.debug("student {}", student.getName());

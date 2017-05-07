@@ -65,7 +65,7 @@ public class WhenIUpdateAdmissionStatus extends Stage<WhenIUpdateAdmissionStatus
 
 		student = identityService.findStudentByMatricNo(matricNo);
 		program = plannerService.findProgramByCode(code);
-		cohort = plannerService.findCohortByCode("FIAT/PHD/PBT/CHRT/201720181");
+		cohort = plannerService.findCohortByCode("FIAT-PHD-PBT-CHRT-201720181");
 
 		LOG.debug("student: {}", student.getMatricNo());
 		LOG.debug("program: {}", program.getCode());

@@ -26,8 +26,8 @@ import my.edu.umk.pams.bdd.tags.Submodule;
 public class US_AD_TRM_2012 extends
 SpringScenarioTest<GivenIAmStudent, WhenIViewChargeSchedule, ThenTheChargeScheduleIsNoticed> {
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_TRM_2012.class);
-	public static final String PROGRAM_CODE = "FIAT/MASTER/MBT";
-	private static final String COHORT_CODE = "FIAT/MASTER/MBT/CHRT/201720181";
+	public static final String PROGRAM_CODE = "FIAT-MASTER-MBT";
+	private static final String COHORT_CODE = "FIAT-MASTER-MBT-CHRT-201720181";
 	
 	@Test
 	@Rollback(true)
