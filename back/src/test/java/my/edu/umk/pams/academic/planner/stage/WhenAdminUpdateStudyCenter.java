@@ -8,7 +8,7 @@ import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 
-import my.edu.umk.pams.academic.common.model.AdStudyCenterCode;
+import my.edu.umk.pams.academic.common.model.AdStudyCenter;
 import my.edu.umk.pams.academic.common.service.CommonService;
 
 @JGivenStage
@@ -20,7 +20,7 @@ public class WhenAdminUpdateStudyCenter extends Stage<WhenAdminUpdateStudyCenter
 	private CommonService commonService;
 
 	@ExpectedScenarioState
-	private AdStudyCenterCode studyCenterCode;
+	private AdStudyCenter studyCenterCode;
 
 	@ExpectedScenarioState
 	private String CODE;
@@ -28,10 +28,10 @@ public class WhenAdminUpdateStudyCenter extends Stage<WhenAdminUpdateStudyCenter
 	public WhenAdminUpdateStudyCenter Admin_update_study_center_$(String CODE) {
 
 		// update study center code for CODE = "A"
-		studyCenterCode = commonService.findStudyCenterCodeByCode(CODE);
+		studyCenterCode = commonService.findStudyCenterByCode(CODE);
 		studyCenterCode.setCode("F");
 		studyCenterCode.setDescription("KAMPUS KUCHING");
-		commonService.updateStudyCenterCode(studyCenterCode);
+		commonService.updateStudyCenter(studyCenterCode);
 		
 		//view update study center code
 		LOG.debug("StudyCentreCode:{}", studyCenterCode.getCode());

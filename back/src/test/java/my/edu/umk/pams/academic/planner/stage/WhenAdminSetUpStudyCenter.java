@@ -4,8 +4,9 @@ import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
-import my.edu.umk.pams.academic.common.model.AdStudyCenterCode;
-import my.edu.umk.pams.academic.common.model.AdStudyCenterCodeImpl;
+
+import my.edu.umk.pams.academic.common.model.AdStudyCenter;
+import my.edu.umk.pams.academic.common.model.AdStudyCenterImpl;
 import my.edu.umk.pams.academic.common.service.CommonService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,16 +24,16 @@ public class WhenAdminSetUpStudyCenter extends Stage<WhenAdminSetUpStudyCenter> 
 	private CommonService commonService;
 
 	@ProvidedScenarioState
-	private AdStudyCenterCode studyCenterCode;
+	private AdStudyCenter studyCenterCode;
 
 	public WhenAdminSetUpStudyCenter Admin_set_up_study_center() {
 
-		AdStudyCenterCode studyCenterCode = new AdStudyCenterCodeImpl();
+		studyCenterCode = new AdStudyCenterImpl();
 
 		studyCenterCode.setCode("E");
 		studyCenterCode.setDescription("UMK Campus Kucing");
 
-		commonService.saveStudyCenterCode(studyCenterCode);
+		commonService.saveStudyCenter(studyCenterCode);
 
 		LOG.debug("test{} :", studyCenterCode.getDescription());
 		LOG.debug("test{} :", studyCenterCode.getCode());

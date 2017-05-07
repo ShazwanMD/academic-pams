@@ -74,7 +74,7 @@ public class CommonServiceImpl implements CommonService {
     private AdResidencyCodeDao residenceCodeDao;
 
     @Autowired
-    private AdStudyCenterCodeDao studyCenterCodeDao;
+    private AdStudyCenterDao studyCenterCodeDao;
     
     @Autowired
     private AdStudyCenterDao studyCenterDao;
@@ -936,29 +936,25 @@ public class CommonServiceImpl implements CommonService {
     //====================================================================================================
 
     @Override
-    public AdStudyCenterCode findStudyCenterCodeById(Long id) {
+    public AdStudyCenter findStudyCenterCodeById(Long id) {
         return studyCenterCodeDao.findById(id);
     }
 
-    @Override
-    public AdStudyCenterCode findStudyCenterCodeByCode(String code) {
-        return studyCenterCodeDao.findByCode(code);
-    }
-    
+
     //study center 
     @Override
 	public AdStudyCenter findStudyCenterByCode(String code) {
-    	return studyCenterCodeDao.findByCode1(code);
+    	return studyCenterCodeDao.findByCode(code);
 	}
 
 
     @Override
-    public List<AdStudyCenterCode> findStudyCenterCodes() {
+    public List<AdStudyCenter> findStudyCenterCodes() {
         return studyCenterCodeDao.find();
     }
 
     @Override
-    public List<AdStudyCenterCode> findStudyCenterCodes(String filter, Integer offset, Integer limit) {
+    public List<AdStudyCenter> findStudyCenterCodes(String filter, Integer offset, Integer limit) {
         return studyCenterCodeDao.find(filter, offset, limit);
     }
 
@@ -971,13 +967,6 @@ public class CommonServiceImpl implements CommonService {
     public Integer countStudyCenterCode(String filter) {
         return studyCenterCodeDao.count(filter);
     }
-
-
-    @Override
-    public void saveStudyCenterCode(AdStudyCenterCode studyCenterCode) {
-        studyCenterCodeDao.save(studyCenterCode, securityService.getCurrentUser());
-        sessionFactory.getCurrentSession().flush();
-    }
     
     //save study center
     @Override
@@ -988,14 +977,14 @@ public class CommonServiceImpl implements CommonService {
 	}
 
     @Override
-    public void updateStudyCenterCode(AdStudyCenterCode studyCenterCode) {
-        studyCenterCodeDao.update(studyCenterCode, securityService.getCurrentUser());
+    public void updateStudyCenter(AdStudyCenter studyCenter) {
+        studyCenterCodeDao.update(studyCenter, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
-    public void removeStudyCenterCode(AdStudyCenterCode studyCenterCode) {
-        studyCenterCodeDao.remove(studyCenterCode, securityService.getCurrentUser());
+    public void removeStudyCenter(AdStudyCenter studyCenter) {
+        studyCenterCodeDao.remove(studyCenter, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
