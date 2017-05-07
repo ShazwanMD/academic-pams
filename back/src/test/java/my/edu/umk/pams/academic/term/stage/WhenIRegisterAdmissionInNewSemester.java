@@ -1,6 +1,7 @@
 package my.edu.umk.pams.academic.term.stage;
 
 import org.slf4j.Logger;
+
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
@@ -10,7 +11,6 @@ import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 import my.edu.umk.pams.academic.common.model.AdStudyCenter;
-import my.edu.umk.pams.academic.common.model.AdStudyCenterCode;
 import my.edu.umk.pams.academic.common.service.CommonService;
 import my.edu.umk.pams.academic.identity.model.AdStaff;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
@@ -51,7 +51,7 @@ public class WhenIRegisterAdmissionInNewSemester extends Stage<WhenIRegisterAdmi
 	private AdStudyCenter studyCenter;
 
 	@ProvidedScenarioState
-	private AdStudyCenterCode studyCenterCode;
+	private AdStudyCenter studyCenterCode;
 
 	@ExpectedScenarioState
 	private AdAcademicSession academicSession;
@@ -59,7 +59,6 @@ public class WhenIRegisterAdmissionInNewSemester extends Stage<WhenIRegisterAdmi
 	@ProvidedScenarioState
 	private AdAdmissionApplication application;
 	
-	private String code;
 
 	public WhenIRegisterAdmissionInNewSemester I_register_admission_in_new_semester() {
 		

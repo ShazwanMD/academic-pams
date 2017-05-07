@@ -2,6 +2,7 @@ package my.edu.umk.pams.academic.common.service;
 
 import my.edu.umk.pams.academic.common.model.*;
 
+
 import java.util.List;
 
 public interface CommonService {
@@ -102,25 +103,29 @@ public interface CommonService {
 	// STUDY CENTER CODE
 	// ====================================================================================================
 
-	AdStudyCenter findStudyCenterCodeById(Long id);
+/*	AdStudyCenterCode findStudyCenterCodeById(Long id);
 
+	AdStudyCenterCode findStudyCenterCodeByCode(String code);*/
+	
 	AdStudyCenter findStudyCenterByCode(String code);
 
-	List<AdStudyCenter> findStudyCenterCodes();
+/*	List<AdStudyCenterCode> findStudyCenterCodes();
 
-	List<AdStudyCenter> findStudyCenterCodes(String filter, Integer offset, Integer limit);
+	List<AdStudyCenterCode> findStudyCenterCodes(String filter, Integer offset, Integer limit);*/
 
 	Integer countStudyCenterCode();
 
 	Integer countStudyCenterCode(String filter);
 
-
+/*	void saveStudyCenterCode(AdStudyCenterCode studyCenterCode);*/
 	
 	void saveStudyCenter(AdStudyCenter studyCenter);
-
 	void updateStudyCenter(AdStudyCenter studyCenter);
-
 	void removeStudyCenter(AdStudyCenter studyCenter);
+
+/*	void updateStudyCenterCode(AdStudyCenterCode studyCenterCode);
+
+	void removeStudyCenterCode(AdStudyCenterCode studyCenterCode);*/
 
 	// ====================================================================================================
 	// VENUE CODE

@@ -1,6 +1,7 @@
 package my.edu.umk.pams.academic.common.dao;
 
 import my.edu.umk.pams.academic.common.model.AdStudyCenter;
+
 import my.edu.umk.pams.academic.core.GenericDao;
 
 import java.util.List;

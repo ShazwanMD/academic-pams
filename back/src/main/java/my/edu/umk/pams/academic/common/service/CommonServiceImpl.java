@@ -4,7 +4,6 @@ import my.edu.umk.pams.academic.common.dao.*;
 
 import my.edu.umk.pams.academic.common.model.*;
 import my.edu.umk.pams.academic.security.service.SecurityService;
-import my.edu.umk.pams.academic.util.Util;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -73,8 +72,8 @@ public class CommonServiceImpl implements CommonService {
     @Autowired
     private AdResidencyCodeDao residenceCodeDao;
 
-    @Autowired
-    private AdStudyCenterDao studyCenterCodeDao;
+/*    @Autowired
+    private AdStudyCenterCodeDao studyCenterCodeDao;*/
     
     @Autowired
     private AdStudyCenterDao studyCenterDao;
@@ -935,26 +934,30 @@ public class CommonServiceImpl implements CommonService {
     // STUDY CENTER CODE
     //====================================================================================================
 
-    @Override
-    public AdStudyCenter findStudyCenterCodeById(Long id) {
+/*    @Override
+    public AdStudyCenterCode findStudyCenterCodeById(Long id) {
         return studyCenterCodeDao.findById(id);
     }
 
-
-    //study center 
     @Override
+    public AdStudyCenterCode findStudyCenterCodeByCode(String code) {
+        return studyCenterCodeDao.findByCode(code);
+    }*/
+    
+    //study center 
+ /*   @Override
 	public AdStudyCenter findStudyCenterByCode(String code) {
-    	return studyCenterCodeDao.findByCode(code);
+    	return studyCenterCodeDao.findByCode1(code);
 	}
 
 
     @Override
-    public List<AdStudyCenter> findStudyCenterCodes() {
+    public List<AdStudyCenterCode> findStudyCenterCodes() {
         return studyCenterCodeDao.find();
     }
 
     @Override
-    public List<AdStudyCenter> findStudyCenterCodes(String filter, Integer offset, Integer limit) {
+    public List<AdStudyCenterCode> findStudyCenterCodes(String filter, Integer offset, Integer limit) {
         return studyCenterCodeDao.find(filter, offset, limit);
     }
 
@@ -967,6 +970,13 @@ public class CommonServiceImpl implements CommonService {
     public Integer countStudyCenterCode(String filter) {
         return studyCenterCodeDao.count(filter);
     }
+
+
+    @Override
+    public void saveStudyCenterCode(AdStudyCenterCode studyCenterCode) {
+        studyCenterCodeDao.save(studyCenterCode, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }*/
     
     //save study center
     @Override
@@ -978,13 +988,13 @@ public class CommonServiceImpl implements CommonService {
 
     @Override
     public void updateStudyCenter(AdStudyCenter studyCenter) {
-        studyCenterCodeDao.update(studyCenter, securityService.getCurrentUser());
+        studyCenterDao.update(studyCenter, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void removeStudyCenter(AdStudyCenter studyCenter) {
-        studyCenterCodeDao.remove(studyCenter, securityService.getCurrentUser());
+        studyCenterDao.remove(studyCenter, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
@@ -1597,6 +1607,25 @@ public class CommonServiceImpl implements CommonService {
         sessionFactory.getCurrentSession().flush();
     }
 
+	@Override
+	public AdStudyCenter findStudyCenterByCode(String code) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Integer countStudyCenterCode() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Integer countStudyCenterCode(String filter) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
 	
 
 	
