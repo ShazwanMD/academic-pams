@@ -44,7 +44,7 @@ public class ThenProgramInfoIsCurrent extends Stage<ThenProgramInfoIsCurrent> {
     private boolean exists;
 
     public ThenProgramInfoIsCurrent Program_info_is_current() {
-        exists = plannerService.isProgramExists("FIAT/PHD/PBT", faculty);
+        exists = plannerService.isProgramExists("FIAT-PHD-PBT", faculty);
         Assert.isTrue(exists, "program exists");
         return self();
     }
