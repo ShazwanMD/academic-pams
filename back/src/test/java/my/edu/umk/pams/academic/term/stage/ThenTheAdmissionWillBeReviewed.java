@@ -29,9 +29,6 @@ public class ThenTheAdmissionWillBeReviewed extends Stage<ThenTheAdmissionWillBe
 	private AdStudyCenter studyCenter;
 	
 	@ExpectedScenarioState
-	private AdStudyCenter studyCenterCode;
-	
-	@ExpectedScenarioState
 	private AdAdmissionApplication application;
 
 	public ThenTheAdmissionWillBeReviewed The_admission_will_be_reviewed() {

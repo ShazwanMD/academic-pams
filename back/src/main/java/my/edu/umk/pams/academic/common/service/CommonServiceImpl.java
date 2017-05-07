@@ -945,11 +945,11 @@ public class CommonServiceImpl implements CommonService {
     }*/
     
     //study center 
- /*   @Override
+    @Override
 	public AdStudyCenter findStudyCenterByCode(String code) {
-    	return studyCenterCodeDao.findByCode1(code);
+    	return studyCenterDao.findByCode(code);
 	}
-
+    /*
 
     @Override
     public List<AdStudyCenterCode> findStudyCenterCodes() {
@@ -1607,12 +1607,7 @@ public class CommonServiceImpl implements CommonService {
         sessionFactory.getCurrentSession().flush();
     }
 
-	@Override
-	public AdStudyCenter findStudyCenterByCode(String code) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+	
 	@Override
 	public Integer countStudyCenterCode() {
 		// TODO Auto-generated method stub
