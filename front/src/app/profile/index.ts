@@ -49,7 +49,6 @@ export const profileModuleReducers = {
     ProfileCenterPage,
     ProfileDetailPage,
     
-
     // component
     ProfileComponent,
     ProfileListComponent,

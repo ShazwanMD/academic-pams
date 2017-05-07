@@ -26,7 +26,6 @@ import {Faculty} from "./faculties/faculty.interface";
 import {Program} from "./programs/program.interface";
 import {Cohort} from "./cohorts/cohort.interface";
 import {Course} from "./courses/course.interface";
-import {AbcPage} from "./abc.page";
 import {academicSessionReducer, AcademicSessionState} from "./academic-sessions/academic-session.reducer";
 import {AcademicSession} from "./academic-sessions/academic-session.interface";
 import {academicSessionListReducer, AcademicSessionListState} from "./academic-sessions/academic-session-list.reducer";
@@ -91,7 +90,6 @@ export const plannerModuleReducers = {
   declarations: [
     // page
     PlannerPage,
-    AbcPage,
   ],
   exports: [],
 })
