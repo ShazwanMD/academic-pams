@@ -26,14 +26,8 @@ import {Faculty} from "./faculties/faculty.interface";
 import {Program} from "./programs/program.interface";
 import {Cohort} from "./cohorts/cohort.interface";
 import {Course} from "./courses/course.interface";
-import {academicSessionReducer, AcademicSessionState} from "./academic-sessions/academic-session.reducer";
-import {AcademicSession} from "./academic-sessions/academic-session.interface";
-import {academicSessionListReducer, AcademicSessionListState} from "./academic-sessions/academic-session-list.reducer";
-import {AcademicSessionSubModule} from "./academic-sessions/index";
 
 export interface PlannerModuleState {
-  academicSessions: AcademicSessionListState;
-  academicSession: AcademicSessionState;
   faculties: FacultyListState;
   faculty: FacultyState;
   programs: ProgramListState;
@@ -47,8 +41,6 @@ export interface PlannerModuleState {
 
 export const INITIAL_PLANNER_STATE: PlannerModuleState =
   <PlannerModuleState>{
-    academicSessions: <AcademicSession[]>[],
-    academicSession: <AcademicSession>{},
     faculties: <Faculty[]>[],
     faculty: <Faculty>{},
     programs: <Program[]>[],
@@ -60,8 +52,6 @@ export const INITIAL_PLANNER_STATE: PlannerModuleState =
   };
 
 export const plannerModuleReducers = {
-  academicSessions: academicSessionListReducer,
-  academicSession: academicSessionReducer,
   faculties: facultyListReducer,
   faculty: facultyReducer,
   programs: programListReducer,
@@ -81,7 +71,6 @@ export const plannerModuleReducers = {
     CovalentCoreModule.forRoot(),
 
     // our modules
-    AcademicSessionSubModule.forRoot(),
     FacultySubModule.forRoot(),
     ProgramSubModule.forRoot(),
     CourseSubModule.forRoot(),
