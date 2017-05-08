@@ -8,7 +8,6 @@ import {CovalentCoreModule} from '@covalent/core';
 import {PlannerService} from '../../../services';
 import {CommonService} from '../../../services';
 import {IdentityService} from '../../../services';
-
 import {ProgramCenterPage} from "./program-center.page";
 import {ProgramListComponent} from "./component/program-list.component";
 import {ProgramActions} from "./program.action";
@@ -37,7 +36,6 @@ import {ProgramEffects} from "./program.effect";
   ],
   exports: [],
 })
-
 export class ProgramSubModule {
   static forRoot(): ModuleWithProviders {
     return {
