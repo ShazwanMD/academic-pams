@@ -16,6 +16,27 @@ export class CohortEffects {
     .switchMap(() => this.plannerService.findCohorts())
     .map(cohorts => this.cohortActions.findCohortsSuccess(cohorts));
 
+   //  @Effect() findCohort$ = this.action$
+   // .ofType(CohortActions.FIND_COHORTS)
+    //.map(action => action.payload)
+   // .switchMap(code => this.plannerService.findCohortByCode(code))
+  //  .map(cohort => this.CohortActions.getCohortSuccess(cohort));
+
+  //@Effect() saveCohorts$ = this.actions$
+    //.ofType(CohortActions.SAVE_COHORTS)
+    //.map(action => action.payload)
+    //.switchMap(cohort => this.plannerService.saveCohort(cohort))
+   // .map(() => this.cohortActions.findCohorts())
+    //.map(cohort => this.CohortsActions.saveCohortsSuccess(cohort));
+   // .map(() => this.CohortActions.findCohorts())
+
+ // @Effect() updateCohort$ = this.actions$
+   // .ofType(CohortActions.UPDATE_COHORTS)
+    //.map(action => action.payload)
+   // .switchMap(cohort => this.plannerService.updateCohort(cohort))
+  //  .map(cohort => this.cohortActions.updatecohortSuccess(cohort));
+
+
   // @Effect() getCohort$ = this.actions$
   //   .ofType(CohortActions.GET_COHORT)
   //   .map<string>(action => action.payload)

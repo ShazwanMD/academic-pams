@@ -1,6 +1,6 @@
 import {Component, OnInit, ChangeDetectionStrategy} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
-
+import {IdentityService} from '../../../services';
 import {CommonService} from '../../../services';
 import {Store} from "@ngrx/store";
 import {Observable} from "rxjs";
@@ -34,6 +34,7 @@ export class CohortCenterPage implements OnInit {
   }
 
   ngOnInit(): void {
+      console.log("find cohorts");
     this.store.dispatch(this.actions.findCohorts());
   }
 }

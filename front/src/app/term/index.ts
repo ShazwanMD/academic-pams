@@ -12,6 +12,7 @@ import {OfferingSubModule} from "./offerings/index";
 import {offeringReducer, OfferingState} from "./offerings/offering.reducer";
 import {offeringListReducer, OfferingListState} from "./offerings/offering-list.reducer";
 import {Offering} from "./offerings/offering.interface";
+import {AdmissionActions} from "./admissions/admission.action";
 
 
 export interface TermModuleState {
@@ -60,6 +61,7 @@ export class TermModule {
         IdentityService,
         CommonService,
         TermService,
+        AdmissionActions
       ],
     };
   }
