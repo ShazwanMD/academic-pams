@@ -5,7 +5,6 @@ import {FacultyRoutes} from "./faculties/faculty.routes";
 import {CourseRoutes} from "./courses/course.routes";
 import {CohortRoutes} from "./cohorts/cohort.routes";
 
-
 export const PlannerModuleRoutes: Routes = [
   {path: 'planner', component: PlannerPage},
 
