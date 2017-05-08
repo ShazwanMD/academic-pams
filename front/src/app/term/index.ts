@@ -2,14 +2,12 @@ import {NgModule, ModuleWithProviders} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {ReactiveFormsModule} from '@angular/forms';
 import {appRoutes, appRoutingProviders} from '../app.routes';
-
 import {CovalentCoreModule} from '@covalent/core';
-
 import {CommonService} from '../../services';
 import {IdentityService} from '../../services';
 import {TermService} from "../../services/term.service";
-
 import {TermPage} from "./term.page";
+import {AdmissionDetailPage} from "./admissions/admission-detail.page";
 import {OfferingSubModule} from "./offerings/index";
 import {offeringReducer, OfferingState} from "./offerings/offering.reducer";
 import {offeringListReducer, OfferingListState} from "./offerings/offering-list.reducer";
@@ -48,6 +46,7 @@ export const termModuleReducers = {
   declarations: [
     // page
     TermPage,
+    AdmissionDetailPage,
 
   ],
   exports: [],

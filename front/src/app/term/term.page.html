@@ -71,7 +71,7 @@
       <md-divider></md-divider>
 
  <td-data-table
-  [data]="offering$ | async"
+  [data]="admission$ | async"
   [columns]="columns"
   [sortBy]="summary"
   [sortOrder]="ASC"
@@ -86,7 +86,7 @@
   </template>
   <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
     <div layout="row">
-      <a md-button color="accent" class="text-upper" [routerLink]="['/faculties', row['code']]">
+      <a md-button color="accent" class="text-upper" [routerLink]="['/faculties', row['id']]">
         <span>View</span>                                          
       </a>
     </div>
