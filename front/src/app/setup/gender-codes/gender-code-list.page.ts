@@ -16,7 +16,7 @@ private GENDER_CODES = "setupModuleState.genderCodes".split(".");
 private genderCodes$ : Observable<GenderCode>;
 private columns: any[] = [
     {name: 'code', label: 'Code'},
-    {name: 'name', label: 'Name'},
+    {name: 'description', label: 'Description'},
     {name: 'action', label: ''}
 ];
 

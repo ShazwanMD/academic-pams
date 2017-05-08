@@ -16,6 +16,11 @@ export class ProfileDetailPage implements OnInit {
 
   private STUDENT = "profileModuleState.student".split(".");
   private student$: Observable<Student>;
+  private columns: any[] = [
+    {name: 'identityNo', label: 'MatricNo'},
+    {name: 'name', label: 'Name'},
+    {name: 'action', label: ''}
+];
 
   constructor(private router: Router,
               private route: ActivatedRoute,
