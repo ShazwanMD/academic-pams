@@ -76,6 +76,8 @@ public class TermTransformer {
         vo.setCgpa(admission.getCgpa());
         vo.setCreditEarned(admission.getCreditEarned());
         vo.setCreditTaken(admission.getCreditTaken());
+        vo.setStudent(identityTransformer.toStudentVo(admission.getStudent()));
+        vo.setAcademicSession(plannerTransformer.toAcademicSessionVo(admission.getSession()));
         return vo;
     }
 

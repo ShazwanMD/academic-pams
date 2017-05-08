@@ -6,6 +6,6 @@ import {AdmissionDetailPage} from "./admissions/admission-detail.page";
 
 export const TermModuleRoutes: Routes = [
   {path: 'term', component: TermPage},
-  {path: 'admissions/:code', component: AdmissionDetailPage},
+  {path: 'admissions/:id', component: AdmissionDetailPage},
    ...OfferingRoutes,
 ];
