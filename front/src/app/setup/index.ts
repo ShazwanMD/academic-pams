@@ -41,6 +41,7 @@ export class SetupModule {
        providers: [
         appRoutingProviders,
           IdentityService,
+        
               ],
     };
   }
