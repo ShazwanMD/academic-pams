@@ -60,6 +60,7 @@ export const applicationReducers = {
   profileModuleState: combineReducers({...profileModuleReducers}),
   plannerModuleState: combineReducers({...plannerModuleReducers}),
   termModuleState: combineReducers({...termModuleReducers,}),
+  setupModuleState: combineReducers({...setupModuleReducers}),
   
   // graduationModuleState: combineReducers({...graduationModuleReducers}),
   

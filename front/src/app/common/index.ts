@@ -1,3 +1,6 @@
+import { CommonActions } from './gender-codes/common.action';
+import { GenderCodeSelectComponent } from './gender-codes/component/gender-code-select.component';
+import { CommonEffects } from './gender-codes/common.effect';
 import {NgModule, ModuleWithProviders} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {ReactiveFormsModule} from '@angular/forms';
@@ -24,9 +27,16 @@ export const commonModuleReducers = {
     BrowserModule,
     ReactiveFormsModule,
     CovalentCoreModule.forRoot(),
+    EffectsModule.run(CommonEffects),
   ],
-  declarations: [],
-  exports: [],
+  declarations: [
+    
+    GenderCodeSelectComponent,],
+  
+  exports: [
+    
+    GenderCodeSelectComponent,
+  ],
 })
 export class CommonModule {
   static forRoot(): ModuleWithProviders {
@@ -36,6 +46,7 @@ export class CommonModule {
         appRoutingProviders,
         IdentityService,
         CommonService,
+        CommonActions
       ],
     };
   }

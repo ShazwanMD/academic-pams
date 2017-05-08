@@ -9,21 +9,12 @@ import {IdentityService} from '../../services';
 })
 
 export class SetupPage implements OnInit {
-
-  private _router: Router;
-  private _route: ActivatedRoute;
-  private _identityService: IdentityService;
-
-  constructor(  router: Router,
-                identityService: IdentityService,
-                route: ActivatedRoute) {
-
-    this._router = router;
-    this._route = route;
+  constructor(  private router: Router,
+                private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
-    this._route.params.subscribe(() => {
+    this.route.params.subscribe(() => {
     });
   }
 }
