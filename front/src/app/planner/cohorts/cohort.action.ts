@@ -13,6 +13,8 @@ export class CohortActions {
 
   static FIND_COHORTS_SUCCESS = '[Cohort] Find Cohorts Success';
   findCohortsSuccess(cohorts): Action {
+    console.log("findCohortsSuccess");
+    console.log("cohorts: " + cohorts.length);
     return {
       type: CohortActions.FIND_COHORTS_SUCCESS,
       payload: cohorts
@@ -35,7 +37,7 @@ export class CohortActions {
     };
   }
 
-  static RESET_COHORT = '[Cohort] Reset Cohort';
+  static RESET_COHORT = '[Cohort] Reset Blank Cohort';
   resetCohort(): Action {
     return {
       type: CohortActions.RESET_COHORT
@@ -55,6 +57,14 @@ export class CohortActions {
     return {
       type: CohortActions.SAVE_COHORT_SUCCESS,
       payload: cohort
+    };
+  }
+
+  static UPDATE_COHORT = '[Cohort] Update Cohort';
+  updateProgram(program): Action {
+    return {
+      type: CohortActions.UPDATE_COHORT,
+      payload: program
     };
   }
 
