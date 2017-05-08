@@ -7,17 +7,21 @@ import {CommonService} from '../../services';
 import {IdentityService} from '../../services';
 import {TermService} from "../../services/term.service";
 import {TermPage} from "./term.page";
-import {AdmissionDetailPage} from "./admissions/admission-detail.page";
 import {OfferingSubModule} from "./offerings/index";
 import {offeringReducer, OfferingState} from "./offerings/offering.reducer";
 import {offeringListReducer, OfferingListState} from "./offerings/offering-list.reducer";
 import {Offering} from "./offerings/offering.interface";
-import {AdmissionActions} from "./admissions/admission.action";
+import {AdmissionSubModule} from "./admissions/index";
+import {Admission} from "./admissions/admission.interface";
+import {admissionListReducer, AdmissionListState} from "./admissions/admission-list.reducer";
+import {admissionReducer, AdmissionState} from "./admissions/admission.reducer";
 
 
 export interface TermModuleState {
   offerings: OfferingListState;
   offering: OfferingState;
+  admissions: AdmissionListState;
+  admission: AdmissionState;
 }
 ;
 
@@ -25,11 +29,15 @@ export const INITIAL_TERM_STATE: TermModuleState =
   <TermModuleState>{
     offerings: <Offering[]>[],
     offering: <Offering>{},
+    admissions: <Admission[]>[],
+    admission: <Admission>{},
   };
 
 export const termModuleReducers = {
   offerings: offeringListReducer,
   offering: offeringReducer,
+  admissions: admissionListReducer,
+  admission: admissionReducer,
 };
 
 
@@ -39,16 +47,14 @@ export const termModuleReducers = {
     BrowserModule,
     ReactiveFormsModule,
     CovalentCoreModule.forRoot(),
-    OfferingSubModule.forRoot()
-
+    OfferingSubModule.forRoot(),
+    AdmissionSubModule.forRoot(),
     // our modules
     // ngrx
   ],
   declarations: [
     // page
     TermPage,
-    AdmissionDetailPage,
-
   ],
   exports: [],
 })
@@ -61,7 +67,6 @@ export class TermModule {
         IdentityService,
         CommonService,
         TermService,
-        AdmissionActions
       ],
     };
   }
