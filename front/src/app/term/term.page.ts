@@ -1,4 +1,5 @@
-import { Offering } from './offerings/offering.interface';
+import {Offering} from './offerings/offering.interface';
+import {Admission} from './admissions/admission.interface';
 import {Program} from './../planner/programs/program.interface';
 import {Faculty} from './../planner/faculties/faculty.interface';
 import {PlannerService} from './../../services/planner.service';
@@ -8,6 +9,8 @@ import {TermService} from "../../services/term.service";
 import {Store} from "@ngrx/store";
 import {Observable} from "rxjs";
 import {Component, OnInit, ChangeDetectionStrategy} from '@angular/core';
+import {TermModuleState} from "./index";
+import {AdmissionActions} from "./admissions/admission.action";
 
 @Component({
   selector: 'pams-term-page',
@@ -16,8 +19,8 @@ import {Component, OnInit, ChangeDetectionStrategy} from '@angular/core';
 
 export class TermPage implements OnInit {
 
-// private OFFERINGS = "termModuleState.offerings".split(".");
-  private offering$:Observable<Offering[]>;
+ // private ADMISSIONS = "termModuleState.admissions".split(".");
+  private admission$: Observable<Admission[]>;
 
   private _router: Router;
   private _route: ActivatedRoute;
@@ -25,30 +28,34 @@ export class TermPage implements OnInit {
   private _termService: TermService;
   
 
-  constructor(router: Router,
+  constructor(private router: Router,
               plannerService: PlannerService,
               route: ActivatedRoute,
               identityService: IdentityService,
-           //   private store: Store<TermModuleState>,
-           //   private actions: TermActions,
+              private store: Store<TermModuleState>,
+            //  private actions: AdmissionActions,
               private termService: TermService) {
     this._router = router;
     this._route = route;
     this._termService = termService;
-   // this.offering$ = this.store.select(...this.OFFERINGS);
+  //  this.admission$ = this.store.select(...this.ADMISSIONS);
   }
 
   private columns: any[] = [
-    {name: 'code', label: 'Code'},
-    {name: 'canonicalCode', label: 'CanonicalCode'},
+    {name: 'id', label: 'Code'},
+    {name: 'gpa', label: 'Gpa'},
+     {name: 'cgpa', label: 'Cgpa'},
     {name: 'action', label: 'Action'}
   ];
 
-
+ viewAdmission(admission: Admission) {
+    console.log("admission: " + admission.id);
+    this.router.navigate(['/admission-detail', admission.id]);
+  }
   ngOnInit(): void {
     this._route.params.subscribe(() => {
     });
-    this.offering$ = this.termService.findOfferings();
-   // this.store.dispatch(this.actions.findOfferings());
+    this.admission$ = this.termService.findAdmissions();
+  //  this.store.dispatch(this.actions.findAdmissions());
   }
 }
