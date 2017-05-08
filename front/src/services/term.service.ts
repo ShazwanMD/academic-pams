@@ -11,7 +11,7 @@ import {EnrollmentApplication} from "../app/term/enrollment-applications/enrollm
 import {EnrollmentApplicationItem} from "../app/term/enrollment-applications/enrollment-application-item.interface";
 import {EnrollmentApplicationTask} from "../app/term/enrollment-applications/enrollment-application-task.interface";
 import {Admission} from "../app/term/admissions/admission.interface";
-import {AcademicSession} from "../app/planner/academic-sessions/academic-session.interface";
+// import {AcademicSession} from "../app/planner/academic-sessions/academic-session.interface";
 import {Enrollment} from "../app/term/enrollments/enrollment.interface";
 import {AdmissionApplicationTask} from "../app/term/admission-applications/admission-application-task.interface";
 import {AdmissionApplication} from "../app/term/admission-applications/admission-application.interface";
@@ -82,11 +82,11 @@ export class TermService {
       .map((res: Response) => <Admission[]>res.json());
   }
 
-  findAdmissionsByAcademicSession(session:AcademicSession): Observable<Admission[]> {
-    console.log("findCurrentAdmissions");
-    return this.http.get(environment.endpoint + '/api/term/admissions/' + session.code)
-      .map((res: Response) => <Admission[]>res.json());
-  }
+  // findAdmissionsByAcademicSession(session:AcademicSession): Observable<Admission[]> {
+  //   console.log("findCurrentAdmissions");
+  //   return this.http.get(environment.endpoint + '/api/term/admissions/' + session.code)
+  //     .map((res: Response) => <Admission[]>res.json());
+  // }
 
   // ==================================================================================================== //
   // ENROLLMENT APPLICATION
@@ -195,11 +195,11 @@ export class TermService {
       .map((res: Response) => <Appointment[]>res.json());
   }
 
-  findAppointmentsByAcademicSession(session:AcademicSession): Observable<Appointment[]> {
-    console.log("findCurrentAppointments");
-    return this.http.get(environment.endpoint + '/api/term/appointments/' + session.code)
-      .map((res: Response) => <Appointment[]>res.json());
-  }
+  // findAppointmentsByAcademicSession(session:AcademicSession): Observable<Appointment[]> {
+  //   console.log("findCurrentAppointments");
+  //   return this.http.get(environment.endpoint + '/api/term/appointments/' + session.code)
+  //     .map((res: Response) => <Appointment[]>res.json());
+  // }
 
   // ==================================================================================================== //
   // OFFERING
