@@ -3,11 +3,14 @@
     <span>PAMS: Postgraduate Management System</span>
     <span flex></span>
   </div>
+  
 
   <div md-content flex md-scroll-y>
     <div layout="column" layout-gt-md="row" class="insert">
       <div flex-gt-md="70">
-        <pams-profile [profile]="student$ | async"></pams-profile>
+        <pams-profile [profile]="student$ | async">
+
+         </pams-profile>
       </div>
 
       <div flex-gt-md="30">
