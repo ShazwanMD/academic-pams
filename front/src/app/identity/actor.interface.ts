@@ -1,7 +1,7 @@
 import {ActorType} from "./actor-type.enum";
 export interface Actor{
   id:number;
-  identityNo: string;
+  identityNo:string;
   name:string;
   email:string;
   phone:string;
