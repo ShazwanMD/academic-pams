@@ -173,11 +173,11 @@ export class TermService {
       .map((res: Response) => <Enrollment[]>res.json());
   }
 
-  findEnrollmentsByAcademicSession(session:AcademicSession): Observable<Enrollment[]> {
-    console.log("findCurrentEnrollments");
-    return this.http.get(environment.endpoint + '/api/term/enrollments/' + session.code)
-      .map((res: Response) => <Enrollment[]>res.json());
-  }
+  // findEnrollmentsByAcademicSession(session:AcademicSession): Observable<Enrollment[]> {
+  //   console.log("findCurrentEnrollments");
+  //   return this.http.get(environment.endpoint + '/api/term/enrollments/' + session.code)
+  // //     .map((res: Response) => <Enrollment[]>res.json());
+  // }
 
   // ==================================================================================================== //
   // APPOINTMENT
