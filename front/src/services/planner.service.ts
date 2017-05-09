@@ -7,7 +7,7 @@ import {Program} from "../app/planner/programs/program.interface";
 import {Faculty} from "../app/planner/faculties/faculty.interface";
 import {Course} from "../app/planner/courses/course.interface";
 import {Cohort} from "../app/planner/cohorts/cohort.interface";
-// import {AcademicSession} from "../app/planner/academic-sessions/academic-session.interface";
+import {AcademicSession} from "../app/planner/academicSession/academic-session.interface";
 
 @Injectable()
 export class PlannerService {
@@ -19,12 +19,12 @@ export class PlannerService {
   // ACADEMIC SESSION
   // ====================================================================================================
 
-  // findAcademicSessions(): Observable<AcademicSession[]> {
-  //   let headers = new Headers({'Authorization': 'Bearer TODO'});
-  //   let options = new RequestOptions({headers: headers});
-  //   return this.http.get(environment.endpoint + '/api/planner/academicSessions')
-  //     .map((res: Response) =><AcademicSession[]>res.json());
-  // }
+  findSessions(): Observable<AcademicSession[]> {
+    let headers = new Headers({'Authorization': 'Bearer TODO'});
+    let options = new RequestOptions({headers: headers});
+    return this.http.get(environment.endpoint + '/api/planner/academicSession')
+      .map((res: Response) =><AcademicSession[]>res.json());
+  }
 
   // ====================================================================================================
   // FACULTY
