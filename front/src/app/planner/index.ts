@@ -32,13 +32,11 @@ import {Faculty} from "./faculties/faculty.interface";
 import {Program} from "./programs/program.interface";
 import {Cohort} from "./cohorts/cohort.interface";
 import {Course} from "./courses/course.interface";
-import {AcademicSession} from "./academicSession/academic-session.interface";
+import {AcademicSession} from "./academic-sessions/academic-session.interface";
 
-import {AcademicSessionSubModule} from "./academicSession/index";
-import {AcademicSessionState, sessionReducer} from "./academicSession/academic-session.reducer";
-import {AcademicSessionListState, sessionListReducer} from "./academicSession/academic-session-list.reducer";
-
-
+import {AcademicSessionSubModule} from "./academic-sessions/index";
+import {AcademicSessionState, sessionReducer} from "./academic-sessions/academic-session.reducer";
+import {AcademicSessionListState, sessionListReducer} from "./academic-sessions/academic-session-list.reducer";
 
 
 

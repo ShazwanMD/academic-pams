@@ -7,7 +7,7 @@ import {Program} from "../app/planner/programs/program.interface";
 import {Faculty} from "../app/planner/faculties/faculty.interface";
 import {Course} from "../app/planner/courses/course.interface";
 import {Cohort} from "../app/planner/cohorts/cohort.interface";
-import {AcademicSession} from "../app/planner/academicSession/academic-session.interface";
+import {AcademicSession} from "../app/planner/academic-sessions/academic-session.interface";
 
 @Injectable()
 export class PlannerService {
