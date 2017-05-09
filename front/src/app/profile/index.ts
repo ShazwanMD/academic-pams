@@ -1,3 +1,4 @@
+import { Address } from './address.interface';
 import {NgModule, ModuleWithProviders} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {ReactiveFormsModule} from '@angular/forms';
@@ -23,6 +24,7 @@ export interface ProfileModuleState {
   students: ProfileListState;
   student: ProfileState;
   studentIdentityNo: ProfileDetailState;
+  addresses: AddressListState;
 }
 ;
 
@@ -31,12 +33,14 @@ export const INITIAL_PROFILE_STATE: ProfileModuleState =
     students: <Student[]>[],
     student: <Student>{},
     studentIdentityNo: <Student[]>[],
+    addresses: <Address[]>[],
   };
 
 export const profileModuleReducers = {
   students: profileListReducer,
   student: profileReducer,
   studentIdentityNo: profileDetailReducer,
+  addresses: addressListReducer,
 };
 
 
