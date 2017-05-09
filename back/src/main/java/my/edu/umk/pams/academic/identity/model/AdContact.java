@@ -4,13 +4,10 @@ package my.edu.umk.pams.academic.identity.model;
 import my.edu.umk.pams.academic.core.AdMetaObject;
 
 /**
+ * todo(sam): add phone , email
  * Contact or Next of Kin
  */
 public interface AdContact extends AdMetaObject {
-
-    AdContactType getType();
-
-    void setType(AdContactType type);
 
     String getIdentityNo();
 
@@ -20,9 +17,9 @@ public interface AdContact extends AdMetaObject {
 
     void setName(String name);
 
-    String getSomething();
+    AdContactType getType();
 
-    void setSomething(String something);
+    void setType(AdContactType type);
 
     AdStudent getStudent();
 

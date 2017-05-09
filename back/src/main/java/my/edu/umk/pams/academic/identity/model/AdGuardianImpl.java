@@ -5,7 +5,6 @@ import my.edu.umk.pams.academic.core.AdMetadata;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.math.BigDecimal;
 
 @Entity(name = "AdGuardian")
 @Table(name = "AD_GRDN")
@@ -25,9 +24,6 @@ public class AdGuardianImpl implements AdGuardian {
     @Column(name = "IDENTITY_NO", nullable = false)
     private String identityNo;
 
-    @Column(name = "SALARY", nullable = false)
-    private BigDecimal salary;
-
     @NotNull
     @Column(name = "GUARDIAN_TYPE")
     private AdGuardianType type;
@@ -38,7 +34,6 @@ public class AdGuardianImpl implements AdGuardian {
 
     @Embedded
     private AdMetadata metadata;
-
 
     public Long getId() {
         return id;
@@ -66,16 +61,6 @@ public class AdGuardianImpl implements AdGuardian {
     @Override
     public void setType(AdGuardianType type) {
         this.type = type;
-    }
-
-    @Override
-    public BigDecimal getSalary() {
-        return salary;
-    }
-
-    @Override
-    public void setSalary(BigDecimal salary) {
-        this.salary = salary;
     }
 
     @Override

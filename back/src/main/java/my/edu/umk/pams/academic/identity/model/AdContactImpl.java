@@ -24,9 +24,6 @@ public class AdContactImpl implements AdContact {
     @Column(name = "IDENTITY_NO", nullable = false)
     private String identityNo;
 
-    @Column(name = "SOMETHING")
-    private String something;
-
     @NotNull
     @Column(name = "CONTACT_TYPE")
     private AdContactType type;
@@ -67,16 +64,6 @@ public class AdContactImpl implements AdContact {
     }
 
     @Override
-    public String getSomething() {
-        return something;
-    }
-
-    @Override
-    public void setSomething(String something) {
-        this.something = something;
-    }
-
-    @Override
     public AdContactType getType() {
         return type;
     }
@@ -86,10 +73,12 @@ public class AdContactImpl implements AdContact {
         this.type = type;
     }
 
+    @Override
     public AdStudent getStudent() {
         return student;
     }
 
+    @Override
     public void setStudent(AdStudent student) {
         this.student = student;
     }

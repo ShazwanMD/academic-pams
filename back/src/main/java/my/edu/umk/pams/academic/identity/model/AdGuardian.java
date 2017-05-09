@@ -3,8 +3,6 @@ package my.edu.umk.pams.academic.identity.model;
 
 import my.edu.umk.pams.academic.core.AdMetaObject;
 
-import java.math.BigDecimal;
-
 public interface AdGuardian extends AdMetaObject {
 
     String getIdentityNo();
@@ -14,10 +12,6 @@ public interface AdGuardian extends AdMetaObject {
     String getName();
 
     void setName(String name);
-
-    BigDecimal getSalary();
-
-    void setSalary(BigDecimal salary);
 
     AdGuardianType getType();
 

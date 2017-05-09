@@ -217,7 +217,6 @@ public class WhenIReviewProfile extends Stage<WhenIReviewProfile> {
 		guardian = new AdGuardianImpl();
 		guardian.setIdentityNo("99999");
 		guardian.setName("mohd din");
-		guardian.setSalary(BigDecimal.ONE);
 		guardian.setStudent(student);
 		guardian.setType(AdGuardianType.FATHER);
 		profileService.addGuardian(student, guardian);
