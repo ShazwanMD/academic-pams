@@ -15,6 +15,7 @@ import {OfferingActions} from "./offering.action";
 import {EffectsModule} from "@ngrx/effects";
 import {OfferingEffects} from "./offering.effect";
 import {OfferingDetailPage} from "./offering-detail.page";
+import {OfferingComponent} from "./component/offering.component";
 
 @NgModule({
   imports: [
@@ -31,6 +32,7 @@ import {OfferingDetailPage} from "./offering-detail.page";
 
     // component
     OfferingListComponent,
+    OfferingComponent,
   ],
   exports: [],
 })

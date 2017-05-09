@@ -12,8 +12,11 @@ export class OfferingListComponent {
   @Output() view = new EventEmitter<Offering>();
 
   private columns: any[] = [
+    {name: 'id', label: 'Id'},
     {name: 'code', label: 'Code'},
-    {name: 'canonicalCode', label: 'Canonical Code'},
+    {name: 'canonicalCode', label: 'CanonicalCode'},
+      {name: 'course.title', label: 'Title'},
+       {name: 'course.titleMs', label: 'TitleMs'},
     {name: 'action', label: ''}
   ];
 }

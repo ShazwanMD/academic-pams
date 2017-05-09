@@ -2,6 +2,7 @@ import {Component, OnInit, ChangeDetectionStrategy} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 
 import {IdentityService} from '../../../services';
+import {TermService} from '../../../services';
 import {CommonService} from '../../../services';
 import {Store} from "@ngrx/store";
 import {Observable} from "rxjs";
@@ -22,6 +23,7 @@ export class OfferingDetailPage implements OnInit {
   constructor(private router: Router,
               private route: ActivatedRoute,
               private actions: OfferingActions,
+              private termService: TermService,
               private store: Store<TermModuleState>) {
 
     this.offering$ = this.store.select(...this.OFFERING);
@@ -31,6 +33,9 @@ export class OfferingDetailPage implements OnInit {
     this.route.params.subscribe((params: {canonicalCode: string}) => {
       let canonicalCode: string = params.canonicalCode;
       this.store.dispatch(this.actions.findOfferingByCanonicalCode(canonicalCode));
+     //this.offering$ = this.termService.findOfferingByCanonicalCode(canonicalCode);
+
+
     });
   }
 

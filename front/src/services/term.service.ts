@@ -195,6 +195,12 @@ export class TermService {
       .map((res: Response) => <Appointment[]>res.json());
   }
 
+   findAppointmentById(id): Observable<Appointment> {
+    console.log("findAppointmentById");
+    return this.http.get(environment.endpoint + '/api/term/appointments/' + id)
+      .map((res: Response) => <Appointment>res.json());
+  }
+
   // findAppointmentsByAcademicSession(session:AcademicSession): Observable<Appointment[]> {
   //   console.log("findCurrentAppointments");
   //   return this.http.get(environment.endpoint + '/api/term/appointments/' + session.code)
