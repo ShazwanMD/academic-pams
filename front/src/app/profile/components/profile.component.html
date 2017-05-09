@@ -1,15 +1,32 @@
+<!-- Basic Card -->
 <md-card>
-  <md-card-title>#{{student.matricNo}}: {{student.name}}</md-card-title>
-  <md-card-subtitle>{{student.email}}</md-card-subtitle>
-  <md-card-actions>
-    
-  </md-card-actions>
-<md-card>
-  <md-card-title>DETAIL{{student.matricNo}}: {{student.name}}</md-card-title>
-  <md-card-subtitle>{{student.email}}</md-card-subtitle>
-  <md-card-actions>
-    
-  </md-card-actions>
+  <md-card-title>Student</md-card-title>
+  <md-card-subtitle>Personal Info</md-card-subtitle>
+  <md-divider></md-divider>
+  <md-card-content>
+  <!--Tab Section Here-->
+  <md-tab-group>
+  <md-tab label="Student Information">
+
+    <div>Matric No : {{profile.identityNo}}</div>
+    <div>Name : {{profile.name}}</div>
+    <div>Email : {{profile.email}}</div>
+    <div>Mobile : {{profile.mobile}}</div>
+
+  </md-tab>
+
+  <md-tab label="Course Information">
   
-  
+  </md-tab>
+  </md-tab-group>
+
+  </md-card-content>
+  <md-divider></md-divider>
+
+  <!--Actions Section Here-->
+  <md-card-actions>
+    <button md-button color="accent" class="text-upper">Update Profile</button>
+    <button md-button class="text-upper">Cancel</button>
+  </md-card-actions>
+
 </md-card>

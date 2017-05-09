@@ -61,10 +61,18 @@ export class CohortActions {
   }
 
   static UPDATE_COHORT = '[Cohort] Update Cohort';
-  updateProgram(program): Action {
+  updateCohort(cohort): Action {
     return {
       type: CohortActions.UPDATE_COHORT,
-      payload: program
+      payload: cohort
+    };
+  }
+
+ static UPDATE_COHORT_SUCCESS = '[Cohort] Update Cohort Success';
+  updateCohortSuccess(cohort): Action {
+    return {
+      type: CohortActions.UPDATE_COHORT_SUCCESS,
+      payload: cohort
     };
   }
 

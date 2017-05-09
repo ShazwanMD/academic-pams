@@ -45,7 +45,7 @@ export class ProgramSubModule {
         PlannerService,
         IdentityService,
         CommonService,
-        ProgramActions,
+        ProgramActions
       ],
     };
   }

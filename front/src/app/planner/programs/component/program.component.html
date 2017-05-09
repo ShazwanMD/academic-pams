@@ -1,9 +1,34 @@
 
-<md-card>
-  <md-card-title>{{program.title}} </md-card-title>
+<!--<md-card>
+  <md-card-title>PROGRAM {{program.title}}: {{program.title}}  </md-card-title>
   <md-card-subtitle>{{program.code}}</md-card-subtitle>
   <md-card-actions>
     The study stresses on downstream processing in utilising technology in the bio-industry sector. The objective is also to contribute to the development of high technology for the community, especially on biological based processing, strategizing chemical processes that are more economical and environmental friendly.
   </md-card-actions>
-</md-card>
+</md-card>-->
+
+
+
+<!-- Basic Card -->
+<md-card>
+  <md-card-title>Student</md-card-title>
+  <md-card-subtitle>Personal Info</md-card-subtitle>
+  <md-divider></md-divider>
+  <md-card-content>
+  <!--Tab Section Here-->
+  <md-tab-group>
+  <md-tab label="Student Information">
+
+    <div>Code :{{program.code}}</div>
+    <div>Title :{{program.title}}</div>
+    
+  </md-tab>
+
+  <md-tab label="Course Information">
+  
+  </md-tab>
+  </md-tab-group>
+
+  </md-card-content>
+  <md-divider></md-divider>
 

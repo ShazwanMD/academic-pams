@@ -29,6 +29,15 @@ export class ProfileActions {
     };
   }
 
+  static FIND_STUDENT_BY_MATRICNO = '[Profile] Find Profile';
+  findStudentByMatricNo(identityNo): Action {
+    return {
+      type: ProfileActions.FIND_STUDENT_BY_MATRICNO,
+      payload: identityNo
+    };
+  }
+
+
   static FIND_PROFILE_SUCCESS = '[Profile] Find Profile Success';
   getProfileSuccess(student): Action {
     return {

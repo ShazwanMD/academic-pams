@@ -34,8 +34,11 @@ public class US_AD_PFL_1001 extends SpringScenarioTest<GivenIAmStudent, WhenIUpd
     @Rollback
     public void mailing_address_update_success() {
         given().I_am_a_student_in_current_academic_session();
-        when().I_update_mailing_address()
-        		.and().I_review_mailing_address();
+        when()
+//        		.I_update_mailing_address()
+//        		.and().I_review_mailing_address()
+//        		.and()
+        		.test_countryCode();
         then().mailing_address_updated();
     }
 }
