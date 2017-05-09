@@ -35,6 +35,8 @@ public  interface CommonService{
 	AdCountryCode findCountryCodeById(Long id);
 
 	AdCountryCode findCountryCodeByCode(String code);
+	
+	List<AdCountryCode> findCountryCodes();
 
 	List<AdCountryCode> findCountryCodes(String filter, Integer offset, Integer limit);
 
