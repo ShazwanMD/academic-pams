@@ -4,9 +4,6 @@ import {Component, ViewContainerRef, OnInit} from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
 import {FormBuilder} from '@angular/forms';
 import {Router, ActivatedRoute} from '@angular/router';
-import {IdentityService} from "../../../../services/identity.service";
-import {CommonService} from "../../../../services/common.service";
-import {PlannerService} from "../../../../services/planner.service"
 
 
 @Component({
