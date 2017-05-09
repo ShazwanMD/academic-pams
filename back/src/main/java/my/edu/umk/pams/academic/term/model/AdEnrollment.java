@@ -17,8 +17,10 @@ public interface AdEnrollment extends AdMetaObject {
 
     void setAdmission(AdAdmission admission);
 
+    // todo(max): student & admission or just student??
     AdStudent getStudent();
 
+    // todo(max): student & admission or just student??
     void setStudent(AdStudent student);
 
     AdSection getSection();
