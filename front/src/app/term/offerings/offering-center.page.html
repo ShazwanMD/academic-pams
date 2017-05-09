@@ -32,6 +32,18 @@
         [offerings]="offerings$ | async"
         (view)="viewOffering($event)"></pams-offering-list>
 
+        <!--<md-list>
+  <md-list-item *ngFor="let offerings of offerings$ | async">
+    <img md-list-avatar src="..." alt="...">
+    <h3 md-line> {{offerings.id}} </h3>
+    <p md-line>
+      <span> {{offerings.canonicalCode}} </span>
+      <span class="demo-2">  {{offerings.title}} </span>
+    </p>
+  </md-list-item>
+</md-list>-->
+
+
       <md-divider></md-divider>
       <md-card-actions>
         <a md-button color="accent" class="text-upper" [routerLink]="['/offerings-search']">

@@ -1,3 +1,4 @@
+import { TermService } from './../../../services/term.service';
 import {Component, OnInit, ChangeDetectionStrategy} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 
@@ -20,6 +21,7 @@ export class OfferingCenterPage implements OnInit {
   constructor(private router: Router,
               private route: ActivatedRoute,
               private actions: OfferingActions,
+              private termService: TermService,
               private store: Store<TermModuleState>) {
     this.offerings$ = this.store.select(...this.OFFERINGS);
   }
@@ -35,6 +37,8 @@ export class OfferingCenterPage implements OnInit {
 
   ngOnInit(): void {
     this.store.dispatch(this.actions.findOfferings());
+  // this.offerings$ = this.termService.findOfferings();
+
   }
 }
 
