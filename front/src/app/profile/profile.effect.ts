@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {Effect, Actions} from '@ngrx/effects';
 import {ProfileService} from "../../services/profile.service";
 import {ProfileActions} from "./profile.action";
+import {from} from "rxjs/observable/from";
 
 
 @Injectable()
@@ -20,7 +21,14 @@ export class ProfileEffects {
     .ofType(ProfileActions.FIND_PROFILE)
     .map(action => action.payload)
     .switchMap(identityNo => this.profileService.findStudentByMatricNo(identityNo))
-    .map(profile => this.profileActions.getProfileSuccess(profile));
+    .map(student => this.profileActions.getProfileSuccess(student))
+    .mergeMap(action => from([action,
+      this.profileActions.findAddresses(action.payload),
+      this.profileActions.findContacts(action.payload),
+      this.profileActions.findGuarantors(action.payload),
+      this.profileActions.findGuardians(action.payload)
+    ]));
+
 
   @Effect() updateProfile$ = this.actions$
     .ofType(ProfileActions.UPDATE_PROFILE)
