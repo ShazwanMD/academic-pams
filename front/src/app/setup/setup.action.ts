@@ -23,5 +23,26 @@ findGenderCodesSuccess(codes): Action {
     };
 }
 
+static FIND_COUNTRY_CODES = '[Setup] Find CountryCodes';
+
+findCountryCodes(): Action {
+    console.log("findCountryCodes");
+    return {
+        type: SetupActions.FIND_COUNTRY_CODES
+    };
+}
+
+static FIND_COUNTRY_CODES_SUCCESS = '[Setup] Find CountryCodes Success';
+
+findCountryCodesSuccess(codes): Action {
+    console.log("findCountryCodesSuccess");
+    return {
+        type: SetupActions.FIND_COUNTRY_CODES_SUCCESS,
+        payload: codes
+    };
+}
+
+
+
 
 }

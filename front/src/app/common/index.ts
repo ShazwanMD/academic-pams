@@ -1,3 +1,4 @@
+import { CountryCodeSelectComponent } from './country-codes/component/country-code-select.component';
 import { CommonActions } from './gender-codes/common.action';
 import { GenderCodeSelectComponent } from './gender-codes/component/gender-code-select.component';
 import { CommonEffects } from './gender-codes/common.effect';
@@ -12,6 +13,7 @@ import {CommonService} from '../../services';
 import {IdentityService} from '../../services';
 
 import {EffectsModule} from "@ngrx/effects";
+
 
 export interface CommonModuleState {
 }
@@ -31,11 +33,14 @@ export const commonModuleReducers = {
   ],
   declarations: [
     
-    GenderCodeSelectComponent,],
+    GenderCodeSelectComponent,
+    CountryCodeSelectComponent,
+    ],
   
   exports: [
     
     GenderCodeSelectComponent,
+    CountryCodeSelectComponent,
   ],
 })
 export class CommonModule {

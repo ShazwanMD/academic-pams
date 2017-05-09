@@ -349,54 +349,56 @@ public class CommonController {
           }
 
 
-  //====================================================================================================
-  // COUNTRY_CODE
-  //====================================================================================================
 
-  @RequestMapping(value = "/countryCodes", method = RequestMethod.GET)
-  public ResponseEntity<List<CountryCode>> findCountryCodes(String filter, Integer offset, Integer limit) {
-          return new ResponseEntity<List<CountryCode>>(commonTransformer.toCountryCodeVos(
-          commonService.findCountryCodes( filter,  offset,  limit)), HttpStatus.OK);
-          }
+//====================================================================================================
+// COUNTRY_CODE
+//====================================================================================================
 
-  @RequestMapping(value = "/countryCodes/{code}", method = RequestMethod.GET)
-  public ResponseEntity<CountryCode> findCountryCodeByCode(@PathVariable String code) {
-          return new ResponseEntity<CountryCode>(commonTransformer.toCountryCodeVo(
-          commonService.findCountryCodeByCode(code)), HttpStatus.OK);
-          }
+@RequestMapping(value = "/countryCodes", method = RequestMethod.GET)
+public ResponseEntity<List<CountryCode>> findCountryCodes(String filter, Integer offset, Integer limit) {
+        return new ResponseEntity<List<CountryCode>>(commonTransformer.toCountryCodeVos(
+        commonService.findCountryCodes( filter,  offset,  limit)), HttpStatus.OK);
+        }
 
-  @RequestMapping(value = "/countryCodes", method = RequestMethod.POST)
-  public ResponseEntity<String> saveCountryCode(@RequestBody CountryCode vo) {
-          dummyLogin();
+@RequestMapping(value = "/countryCodes/{code}", method = RequestMethod.GET)
+public ResponseEntity<CountryCode> findCountryCodeByCode(@PathVariable String code) {
+        return new ResponseEntity<CountryCode>(commonTransformer.toCountryCodeVo(
+        commonService.findCountryCodeByCode(code)), HttpStatus.OK);
+        }
 
-          AdCountryCode countryCode = new AdCountryCodeImpl();
-          countryCode.setCode(vo.getCode());
-          countryCode.setDescription(vo.getDescription());
-          
-          commonService.saveCountryCode(countryCode);
-          return new ResponseEntity<String>("Success", HttpStatus.OK);
-          }
+@RequestMapping(value = "/countryCodes", method = RequestMethod.POST)
+public ResponseEntity<String> saveCountryCode(@RequestBody CountryCode vo) {
+        dummyLogin();
 
-  @RequestMapping(value = "/countryCodes/{code}", method = RequestMethod.PUT)
-  public ResponseEntity<String> updateCountryCode(@PathVariable String code, @RequestBody CountryCode vo) {
-          dummyLogin();
+        AdCountryCode countryCode = new AdCountryCodeImpl();
+        countryCode.setCode(vo.getCode());
+       
+        countryCode.setDescription(vo.getDescription());
+        commonService.saveCountryCode(countryCode);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+        }
 
-          AdCountryCode countryCode = commonService.findCountryCodeById(vo.getId());
-          countryCode.setCode(vo.getCode());
-          countryCode.setDescription(vo.getDescription());
-          
-          commonService.updateCountryCode(countryCode);
-          return new ResponseEntity<String>("Success", HttpStatus.OK);
-          }
+@RequestMapping(value = "/countryCodes/{code}", method = RequestMethod.PUT)
+public ResponseEntity<String> updateCountryCode(@PathVariable String code, @RequestBody CountryCode vo) {
+        dummyLogin();
 
-  @RequestMapping(value = "/countryCodes/{code}", method = RequestMethod.DELETE)
-  public ResponseEntity<String> removeCountryCode(@PathVariable String code) {
-          dummyLogin();
+        AdCountryCode countryCode = commonService.findCountryCodeById(vo.getId());
+        countryCode.setCode(vo.getCode());
+       
+        countryCode.setDescription(vo.getDescription());
+        commonService.updateCountryCode(countryCode);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+        }
 
-          AdCountryCode countryCode = commonService.findCountryCodeByCode(code);
-          commonService.removeCountryCode(countryCode);
-          return new ResponseEntity<String>("Success", HttpStatus.OK);
-          }
+@RequestMapping(value = "/countryCodes/{code}", method = RequestMethod.DELETE)
+public ResponseEntity<String> removeCountryCode(@PathVariable String code) {
+        dummyLogin();
+
+        AdCountryCode countryCode = commonService.findCountryCodeByCode(code);
+        commonService.removeCountryCode(countryCode);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+        }
+
 
 
   //====================================================================================================
