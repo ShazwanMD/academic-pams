@@ -147,24 +147,26 @@ public List<CityCode> toCityCodeVos(List<AdCityCode> e) {
      return vos;
      }
 
+
 //====================================================================================================
 //COUNTRY_CODE
 //====================================================================================================
 
 public CountryCode toCountryCodeVo(AdCountryCode e) {
- CountryCode vo = new CountryCode();
-     vo.setId(e.getId());
-     vo.setCode(e.getCode());
-     vo.setDescription(e.getDescription());
-     return vo;
-     }
+  CountryCode vo = new CountryCode();
+      vo.setId(e.getId());
+      vo.setCode(e.getCode());
+      vo.setDescription(e.getDescription());
+      return vo;
+      }
 
 public List<CountryCode> toCountryCodeVos(List<AdCountryCode> e) {
-     List<CountryCode> vos = e.stream()
-     .map((e1) -> toCountryCodeVo(e1))
-     .collect(Collectors.toList());
-     return vos;
-     }
+      List<CountryCode> vos = e.stream()
+      .map((e1) -> toCountryCodeVo(e1))
+      .collect(Collectors.toList());
+      return vos;
+      }
+
 
 //====================================================================================================
 //STATE_CODE

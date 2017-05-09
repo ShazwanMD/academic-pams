@@ -5,16 +5,16 @@ import {BrowserModule} from '@angular/platform-browser';
 import {ReactiveFormsModule} from '@angular/forms';
 import {CovalentCoreModule} from '@covalent/core';
 
-import {PlannerService} from '../../../services';
+import {TermService} from '../../../services';
 import {CommonService} from '../../../services';
 import {IdentityService} from '../../../services';
-import {ProgramCenterPage} from "./program-center.page";
-import {ProgramListComponent} from "./component/program-list.component";
-import {ProgramActions} from "./program.action";
-import {ProgramDetailPage} from "./program-detail.page";
-import {ProgramComponent} from "./component/program.component";
+
 import {EffectsModule} from "@ngrx/effects";
-import {ProgramEffects} from "./program.effect";
+import {AdmissionActions} from "./admission.action";
+import {AdmissionListComponent} from "./component/admission-list.component";
+import {AdmissionDetailPage} from "./admission-detail.page";
+import {AdmissionCenterPage} from "./admission-center.page";
+import {AdmissionEffects} from "./admission.effect";
 
 @NgModule({
   imports: [
@@ -22,30 +22,29 @@ import {ProgramEffects} from "./program.effect";
     BrowserModule,
     ReactiveFormsModule,
     CovalentCoreModule.forRoot(),
-    EffectsModule.run(ProgramEffects),
+    EffectsModule.run(AdmissionEffects),
   ],
   declarations: [
-
     // page
-    ProgramCenterPage,
-    ProgramDetailPage,
+    AdmissionCenterPage,
+    AdmissionDetailPage,
 
     // component
-    ProgramListComponent,
-    ProgramComponent,
+    AdmissionListComponent,
   ],
   exports: [],
 })
-export class ProgramSubModule {
+
+export class AdmissionSubModule {
   static forRoot(): ModuleWithProviders {
     return {
-      ngModule: ProgramSubModule,
+      ngModule: AdmissionSubModule,
       providers: [
         appRoutingProviders,
-        PlannerService,
+        TermService,
         IdentityService,
         CommonService,
-        ProgramActions,
+        AdmissionActions,
       ],
     };
   }

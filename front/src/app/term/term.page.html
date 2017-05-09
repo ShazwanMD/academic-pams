@@ -13,24 +13,24 @@
 
   <td-layout-manage-list #list>
     <md-nav-list list-items>
-       <a md-list-item [routerLink]="['/term/admissions']">
+      <a md-list-item [routerLink]="['/term/admissions']">
         <md-icon>person_add</md-icon>
         Admission
-        </a>
+      </a>
       <a md-list-item [routerLink]="['/term/offerings']">
         <md-icon>create</md-icon>
         Offerings
-        </a>
+      </a>
       <a md-list-item [routerLink]="['/term/appointments']">
         <md-icon>group</md-icon>
         Appointment
-        </a>
+      </a>
       <a md-list-item [routerLink]="['/term/enrollments']">
         <md-icon>find_in_page</md-icon>
         Enrollment
       </a>
-       
-       <a md-list-item [routerLink]="['/term/enrollments']">
+
+      <a md-list-item [routerLink]="['/term/enrollments']">
         <md-icon>find_in_page</md-icon>
         Sections
       </a>
@@ -70,28 +70,28 @@
       <!-- note: experimental -->
       <md-divider></md-divider>
 
- <td-data-table
-  [data]="admission$ | async"
-  [columns]="columns"
-  [sortBy]="summary"
-  [sortOrder]="ASC"
-  [sortable]="false"
-  [multiple]="false"
-  [selectable]="false"
-  (rowSelect)="view.emit($event)" dense>
-  <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
-    <div layout="row">
-      <span flex> {{value}}</span>
-    </div>
-  </template>
-  <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
-    <div layout="row">
-      <a md-button color="accent" class="text-upper" [routerLink]="['/admissions', row['id']]">
-        <span>View</span>                                          
-      </a>
-    </div>
-  </template>
-</td-data-table>
+      <td-data-table
+        [data]="admission$ | async"
+        [columns]="columns"
+        [sortBy]="summary"
+        [sortOrder]="ASC"
+        [sortable]="false"
+        [multiple]="false"
+        [selectable]="false"
+        (rowSelect)="view.emit($event)" dense>
+        <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
+          <div layout="row">
+            <span flex> {{value}}</span>
+          </div>
+        </template>
+        <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
+          <div layout="row">
+            <a md-button color="accent" class="text-upper" [routerLink]="['/admissions', row['id']]">
+              <span>View</span>
+            </a>
+          </div>
+        </template>
+      </td-data-table>
 
       <md-divider></md-divider>
       <md-card-actions>

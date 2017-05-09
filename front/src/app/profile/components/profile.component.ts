@@ -1,6 +1,6 @@
 import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy} from '@angular/core';
 import {Student} from "../../identity/student.interface";
-
+import {MdTabsModule} from '@angular/material';
 
 @Component({
   selector: 'pams-profile',

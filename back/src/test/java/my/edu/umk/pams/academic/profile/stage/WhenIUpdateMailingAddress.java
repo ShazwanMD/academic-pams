@@ -2,12 +2,17 @@ package my.edu.umk.pams.academic.profile.stage;
 
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
+import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
+
+import my.edu.umk.pams.academic.common.model.AdCountryCode;
 import my.edu.umk.pams.academic.common.service.CommonService;
 import my.edu.umk.pams.academic.identity.model.AdAddress;
 import my.edu.umk.pams.academic.identity.model.AdAddressType;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.profile.service.ProfileService;
+
+import org.hibernate.validator.constraints.NotEmpty;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +36,9 @@ public class WhenIUpdateMailingAddress extends Stage<WhenIUpdateMailingAddress> 
 
     @ExpectedScenarioState
     private AdStudent student;
+    
+    @ProvidedScenarioState
+    private List<AdCountryCode> countryCodes;
 
     public WhenIUpdateMailingAddress I_update_mailing_address() {
         Assert.notNull(student, "student cannot be null");
@@ -64,5 +72,15 @@ public class WhenIUpdateMailingAddress extends Stage<WhenIUpdateMailingAddress> 
                     address.getCountryCode().getDescription());
 
         return self();
+    }
+    
+    public WhenIUpdateMailingAddress test_countryCode(){
+    	
+    	countryCodes = commonService.findCountryCodes("", 0, 10);
+    	Assert.notEmpty(countryCodes);
+    	
+    	for(AdCountryCode countryCode:countryCodes)
+    		LOG.debug("CountryCode:{}", countryCode.getCode());
+    	return self();
     }
 }
