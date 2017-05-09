@@ -5,19 +5,34 @@ import {Action} from '@ngrx/store';
 export class AdmissionActions {
 
   static FIND_ADMISSIONS = '[Admission] Find Admissions';
+
   findAdmissions(): Action {
     return {
       type: AdmissionActions.FIND_ADMISSIONS
     };
   }
 
-   static FIND_ADMISSION_BY_CANONICAL_CODE = '[Admission] Find Admission By Canonical Code';
-  findAdmissionByCanonicalCode(canonicalCode): Action {
+  static FIND_ADMISSIONS_SUCCESS = '[Admission] Find Admissions Success';
+  findAdmissionsSuccess(admissions): Action {
     return {
-      type: AdmissionActions.FIND_ADMISSION_BY_CANONICAL_CODE,
-      payload: canonicalCode
+      type: AdmissionActions.FIND_ADMISSIONS_SUCCESS,
+      payload: admissions
     };
   }
-  
-  
+
+  static FIND_ADMISSION_BY_ID = '[Admission] Find Admission By Id';
+  findAdmissionById(id): Action {
+    return {
+      type: AdmissionActions.FIND_ADMISSION_BY_ID,
+      payload: id
+    };
+  }
+
+  static FIND_ADMISSION_BY_ID_SUCCESS = '[Admission] Find Admission By Id Success';
+  findAdmissionByIdSuccess(admission): Action {
+    return {
+      type: AdmissionActions.FIND_ADMISSION_BY_ID_SUCCESS,
+      payload: admission
+    };
+  }
 }

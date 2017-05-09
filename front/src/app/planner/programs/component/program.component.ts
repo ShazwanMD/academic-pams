@@ -9,6 +9,4 @@ import {Program} from "../program.interface";
 export class ProgramComponent {
 
   @Input() program: Program;
-  // @Output() addComment = new EventEmitter<ProgramComment>();
-  // @Output() addAttachment = new EventEmitter<ProgramAttachment>();
 }
