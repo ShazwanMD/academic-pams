@@ -28,9 +28,9 @@
 
       <md-divider></md-divider>
 
-      <pams-session-list
-        [sessions]="session$ | async"
-        (view)="viewAcademicSession($event)"></pams-session-list>
+      <pams-academic-session-list
+        [sessions]="sessions$ | async"
+        (view)="viewSession($event)"></pams-academic-session-list>
 
       <md-divider></md-divider>
       <md-card-actions>

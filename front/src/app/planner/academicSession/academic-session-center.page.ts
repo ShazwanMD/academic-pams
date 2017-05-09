@@ -25,12 +25,12 @@ export class AcademicSessionCenterPage implements OnInit {
   }
 
   goBack(route: string): void {
-    this.router.navigate(['/session']);
+    this.router.navigate(['/academicSession']);
   }
 
   viewSession(session : AcademicSession) {
     console.log("session: " + session.id);
-    this.router.navigate(['/session-detail', session.id]);
+    this.router.navigate(['/academic-session-detail', session.id]);
   }
 
   ngOnInit(): void {
