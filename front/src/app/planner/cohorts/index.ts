@@ -7,6 +7,7 @@ import {CovalentCoreModule} from '@covalent/core';
 
 import {PlannerService} from '../../../services';
 import {CommonService} from '../../../services';
+
 import {IdentityService} from '../../../services';
 
 import {CohortCenterPage} from "./cohort-center.page";
@@ -16,6 +17,7 @@ import {EffectsModule} from "@ngrx/effects";
 import {CohortEffects} from "./cohort.effect";
 import {CohortDetailPage} from "./cohort-detail.page";
 
+
 @NgModule({
   imports: [
     appRoutes,
@@ -23,6 +25,8 @@ import {CohortDetailPage} from "./cohort-detail.page";
     ReactiveFormsModule,
     CovalentCoreModule.forRoot(),
     EffectsModule.run(CohortEffects),
+
+
   ],
   declarations: [
     // page

@@ -12,7 +12,7 @@ public interface AdCountryCodeDao extends GenericDao<Long, AdCountryCode> {
     // ====================================================================================================
     AdCountryCode findByCode(String code);
 
-    List<AdCountryCode> findCountryCodes(String filter, Integer offset, Integer limit);
+    List<AdCountryCode> find(String filter, Integer offset, Integer limit);
 
     // ====================================================================================================
     // HELPER
