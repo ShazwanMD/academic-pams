@@ -20,12 +20,21 @@ import {EffectsModule} from "@ngrx/effects";
 import {ProfileEffects} from "./profile.effect";
 import {ProfileDetailState, profileDetailReducer} from "./profile-detail.reducer";
 import {addressListReducer, AddressListState} from "./address-list.reducer";
+import {Guarantor} from "./guarantor.interface";
+import {Guardian} from "./guardian.interface";
+import {Contact} from "./contact.interface";
+import {contactListReducer, ContactListState} from "./contact-list.reducer";
+import {guardianListReducer, GuardianListState} from "./guardian-list.reducer";
+import {guarantorListReducer, GuarantorListState} from "./guarantor-list.reducer";
 
 export interface ProfileModuleState {
   students: ProfileListState;
   student: ProfileState;
   studentIdentityNo: ProfileDetailState;
   addresses: AddressListState;
+  guarantors: GuarantorListState;
+  guardians: GuardianListState;
+  contacts: ContactListState;
 }
 ;
 
@@ -35,6 +44,9 @@ export const INITIAL_PROFILE_STATE: ProfileModuleState =
     student: <Student>{},
     studentIdentityNo: <Student[]>[],
     addresses: <Address[]>[],
+    guarantors: <Guarantor[]>[],
+    guardians: <Guardian[]>[],
+    contacts: <Contact[]>[],
   };
 
 export const profileModuleReducers = {
@@ -42,6 +54,9 @@ export const profileModuleReducers = {
   student: profileReducer,
   studentIdentityNo: profileDetailReducer,
   addresses: addressListReducer,
+  guarantors: guarantorListReducer,
+  guardians: guardianListReducer,
+  contacts: contactListReducer,
 };
 
 

@@ -4,14 +4,6 @@
     <span flex></span>
   </div>
 
-  <md-nav-list menu-items>
-    <a *ngFor="let item of routes" md-list-item [routerLink]="[item.route]" (click)="layout.close()">
-      <md-icon>{{item.icon}}</md-icon>
-      {{item.title}}
-    </a>
-  </md-nav-list>
-
-
   <td-layout-manage-list #list>
     <md-nav-list list-items>
       <a md-list-item [routerLink]="['/accounts-create']">
@@ -58,8 +50,6 @@
     <md-card class="">
       <md-card-title>Students</md-card-title>
       <md-card-subtitle>List of students</md-card-subtitle>
-
-      <!-- note: experimental -->
       <md-divider></md-divider>
 
       <pams-profile-list
@@ -73,5 +63,6 @@
         </a>
       </md-card-actions>
     </md-card>
+
   </td-layout-manage-list>
 </td-layout-nav>

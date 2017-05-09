@@ -6,5 +6,5 @@ export interface Admission {
   id:number;
   student: Student;
   session:AcademicSession;
-  
+
 }

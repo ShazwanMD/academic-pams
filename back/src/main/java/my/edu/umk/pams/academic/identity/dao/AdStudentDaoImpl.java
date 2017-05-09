@@ -13,8 +13,8 @@ import java.sql.Timestamp;
 import java.util.List;
 
 /**
+ * todo(ihsan): finish up
  * @author PAMS
- * fac
  * */
 @SuppressWarnings({"unchecked"})
 @Repository("studentDao")
@@ -76,17 +76,35 @@ public class AdStudentDaoImpl extends GenericDaoSupport<Long, AdStudent> impleme
 
     @Override
     public List<AdGuarantor> findGuarantors(AdStudent student) {
-        return null;
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select o from AdGuarantor o where " +
+                "o.student = :student " +
+                "and o.metadata.state = :state");
+        query.setEntity("student", student);
+        query.setInteger("state", AdMetaState.ACTIVE.ordinal());
+        return query.list();
     }
 
     @Override
     public List<AdGuardian> findGuardians(AdStudent student) {
-        return null;
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select o from AdGuardian o where " +
+                "o.student = :student " +
+                "and o.metadata.state = :state");
+        query.setEntity("student", student);
+        query.setInteger("state", AdMetaState.ACTIVE.ordinal());
+        return query.list();
     }
 
     @Override
     public List<AdContact> findContacts(AdStudent student) {
-        return null;
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select o from AdContact o where " +
+                "o.student = :student " +
+                "and o.metadata.state = :state");
+        query.setEntity("student", student);
+        query.setInteger("state", AdMetaState.ACTIVE.ordinal());
+        return query.list();
     }
 
     @Override

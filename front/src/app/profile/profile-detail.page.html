@@ -3,15 +3,32 @@
     <span>PAMS: Postgraduate Management System</span>
     <span flex></span>
   </div>
-  
+
   <div md-content flex md-scroll-y>
     <div layout="column" layout-gt-md="row" class="insert">
       <div flex-gt-md="70">
         <pams-profile [profile]="student$ | async"></pams-profile>
+
+        <md-card class="">
+          <md-card-title>Guarantors/Guardians/Contacts/</md-card-title>
+          <md-card-subtitle>List of students</md-card-subtitle>
+          <md-divider></md-divider>
+          <md-list dense flex>
+            <md-list-item *ngFor="let address of addressess$ | async">
+              <h3 md-line> {{address.address1}} </h3>
+              <p md-line> {{address.address2}} </p>
+              <span flex></span>
+              <span flex="20">{{address.postcode}}</span>
+            </md-list-item>
+          </md-list>
+        </md-card>
+
+
       </div>
 
       <div flex-gt-md="30">
         <pams-profile-status [profile]="student$ | async"></pams-profile-status>
+
 
         <md-card>
           <md-card-title>Action</md-card-title>
@@ -42,6 +59,8 @@
             </md-list-item>
           </md-nav-list>
         </md-card>
+
+
       </div>
     </div>
   </div>
