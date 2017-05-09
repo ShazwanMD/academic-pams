@@ -28,4 +28,30 @@ export class ProfileEffects {
     .switchMap(student => this.profileService.updateStudent(student))
     .map(profile => this.profileActions.updateProfileSuccess(profile));
 
+  @Effect() findAddresses$ = this.actions$
+    .ofType(ProfileActions.FIND_ADDRESSES)
+    .map(action => action.payload)
+    .switchMap(student => this.profileService.findAddresses(student))
+    .map(addreesses => this.profileActions.findAddressesSuccess(addreesses));
+
+
+  @Effect() findContacts$ = this.actions$
+    .ofType(ProfileActions.FIND_CONTACTS)
+    .map(action => action.payload)
+    .switchMap(student => this.profileService.findContacts(student))
+    .map(addreesses => this.profileActions.findContactsSuccess(addreesses));
+
+
+  @Effect() findGuardians$ = this.actions$
+    .ofType(ProfileActions.FIND_GUARDIANS)
+    .map(action => action.payload)
+    .switchMap(student => this.profileService.findGuardians(student))
+    .map(addreesses => this.profileActions.findGuardiansSuccess(addreesses));
+
+  @Effect() findGuarantors$ = this.actions$
+    .ofType(ProfileActions.FIND_GUARANTORS)
+    .map(action => action.payload)
+    .switchMap(student => this.profileService.findGuarantors(student))
+    .map(addreesses => this.profileActions.findGuarantorsSuccess(addreesses));
+
 }

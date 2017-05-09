@@ -84,4 +84,68 @@ export class ProfileActions {
       payload: student
     };
   }
+
+  static FIND_ADDRESSES = '[Profile] Find Addresses';
+  findAddresses(student): Action {
+    return {
+      type: ProfileActions.FIND_ADDRESSES,
+      payload: student
+    };
+  }
+
+  static FIND_ADDRESSES_SUCCESS = '[Profile] Find Addresses Success';
+  findAddressesSuccess(addresses): Action {
+    return {
+      type: ProfileActions.FIND_ADDRESSES_SUCCESS,
+      payload: addresses
+    };
+  }
+
+  static FIND_GUARANTORS = '[Profile] Find Guarantors';
+  findGuarantors(student): Action {
+    return {
+      type: ProfileActions.FIND_GUARANTORS,
+      payload: student
+    };
+  }
+
+  static FIND_GUARANTORS_SUCCESS = '[Profile] Find Guarantors Success';
+  findGuarantorsSuccess(guarantors): Action {
+    return {
+      type: ProfileActions.FIND_GUARANTORS_SUCCESS,
+      payload: guarantors
+    };
+  }
+
+  static FIND_CONTACTS = '[Profile] Find Contacts';
+  findContacts(student): Action {
+    return {
+      type: ProfileActions.FIND_CONTACTS,
+      payload: student
+    };
+  }
+
+  static FIND_CONTACTS_SUCCESS = '[Profile] Find Contacts Success';
+  findContactsSuccess(contacts): Action {
+    return {
+      type: ProfileActions.FIND_CONTACTS_SUCCESS,
+      payload: contacts
+    };
+  }
+
+  static FIND_GUARDIANS = '[Profile] Find Guardians';
+  findGuardians(student): Action {
+    return {
+      type: ProfileActions.FIND_GUARDIANS,
+      payload: student
+    };
+  }
+
+  static FIND_GUARDIANS_SUCCESS = '[Profile] Find Guardians Success';
+  findGuardiansSuccess(guardians): Action {
+    return {
+      type: ProfileActions.FIND_GUARDIANS_SUCCESS,
+      payload: guardians
+    };
+  }
 }
