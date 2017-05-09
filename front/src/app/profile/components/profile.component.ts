@@ -10,6 +10,7 @@ import {MdTabsModule} from '@angular/material';
 export class ProfileComponent {
 
   @Input() profile: Student;
+  
   // @Output() addGuardian = new EventEmitter<Guardian>();
   // @Output() addGuarantor = new EventEmitter<Guarantor>();
   // @Output() addContact = new EventEmitter<Contact>();

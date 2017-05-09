@@ -2,7 +2,7 @@ import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy} from '@
 import {AcademicSession} from "../academic-session.interface";
 
 @Component ({
-    selector: 'pams-session-list',
+    selector: 'pams-academic-session-list',
     templateUrl: './academic-session-list.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })

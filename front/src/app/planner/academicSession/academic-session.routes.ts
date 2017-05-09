@@ -7,4 +7,4 @@ export const AcademicSessionRoutes: Routes = [
     {path: 'planner/academicSession', component: AcademicSessionCenterPage},
     {path: 'planner/academicSession/:code', component: AcademicSessionDetailPage},
     
-]
+];

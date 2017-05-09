@@ -15,6 +15,7 @@ import {AcademicSessionEffects} from   "./academic-session.effect";
 import {EffectsModule} from "@ngrx/effects";
 
 
+
 @NgModule ({
     imports: [
         appRoutes,
@@ -30,6 +31,7 @@ import {EffectsModule} from "@ngrx/effects";
 
         //component
         AcademicSessionListComponent,
+       
     ],
     exports: [],
 })
