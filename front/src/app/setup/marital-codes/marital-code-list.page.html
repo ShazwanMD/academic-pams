@@ -72,13 +72,11 @@
     <div layout="row" layout-wrap>
     </div>
 
-
-
     <md-card class="">
-      <md-card-title>Country Codes</md-card-title>
-      <md-card-subtitle>List of Country Code</md-card-subtitle>
+      <md-card-title>Marital Codes</md-card-title>
+      <md-card-subtitle>List of Marital Code</md-card-subtitle>
       <td-data-table
-        [data]="countryCodes$ | async"
+        [data]="maritalCodes$ | async"
         [columns]="columns"
         [sortBy]="summary"
         [sortOrder]="ASC"

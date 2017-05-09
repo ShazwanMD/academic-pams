@@ -129,8 +129,13 @@ public class CommonServiceImpl implements CommonService {
 	}
 
 	@Override
+	public List<AdCountryCode> findCountryCodes() {
+		return countryCodeDao.find();
+	}
+
+	@Override
 	public List<AdCountryCode> findCountryCodes(String filter, Integer offset, Integer limit) {
-		return countryCodeDao.findCountryCodes(filter, offset, limit);
+		return countryCodeDao.find(filter, offset, limit);
 	}
 
 	@Override

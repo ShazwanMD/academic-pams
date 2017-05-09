@@ -349,15 +349,14 @@ public class CommonController {
           }
 
 
-
 //====================================================================================================
 // COUNTRY_CODE
 //====================================================================================================
 
 @RequestMapping(value = "/countryCodes", method = RequestMethod.GET)
-public ResponseEntity<List<CountryCode>> findCountryCodes(String filter, Integer offset, Integer limit) {
+public ResponseEntity<List<CountryCode>> findCountryCodes() {
         return new ResponseEntity<List<CountryCode>>(commonTransformer.toCountryCodeVos(
-        commonService.findCountryCodes( filter,  offset,  limit)), HttpStatus.OK);
+        commonService.findCountryCodes()), HttpStatus.OK);
         }
 
 @RequestMapping(value = "/countryCodes/{code}", method = RequestMethod.GET)
@@ -372,8 +371,8 @@ public ResponseEntity<String> saveCountryCode(@RequestBody CountryCode vo) {
 
         AdCountryCode countryCode = new AdCountryCodeImpl();
         countryCode.setCode(vo.getCode());
-       
         countryCode.setDescription(vo.getDescription());
+    
         commonService.saveCountryCode(countryCode);
         return new ResponseEntity<String>("Success", HttpStatus.OK);
         }
@@ -384,8 +383,8 @@ public ResponseEntity<String> updateCountryCode(@PathVariable String code, @Requ
 
         AdCountryCode countryCode = commonService.findCountryCodeById(vo.getId());
         countryCode.setCode(vo.getCode());
-       
         countryCode.setDescription(vo.getDescription());
+        
         commonService.updateCountryCode(countryCode);
         return new ResponseEntity<String>("Success", HttpStatus.OK);
         }
@@ -401,14 +400,15 @@ public ResponseEntity<String> removeCountryCode(@PathVariable String code) {
 
 
 
+
   //====================================================================================================
   // STATE_CODE
   //====================================================================================================
 
   @RequestMapping(value = "/stateCodes", method = RequestMethod.GET)
-  public ResponseEntity<List<StateCode>> findStateCodes(AdCountryCode countryCode, Integer offset, Integer limit) {
+  public ResponseEntity<List<StateCode>> findStateCodes(AdStateCode stateCode, Integer offset, Integer limit) {
           return new ResponseEntity<List<StateCode>>(commonTransformer.toStateCodeVos(
-          commonService.findStateCodes( countryCode,  offset,  limit)), HttpStatus.OK);
+          commonService.findStateCodes( offset,  limit)), HttpStatus.OK);
           }
 
   @RequestMapping(value = "/stateCodes/{code}", method = RequestMethod.GET)
