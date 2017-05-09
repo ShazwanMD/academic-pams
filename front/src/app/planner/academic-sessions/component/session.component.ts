@@ -1,15 +1,15 @@
 import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy} from '@angular/core';
-import {Student} from "../../identity/student.interface";
 import {MdTabsModule} from '@angular/material';
+import {AcademicSession} from "../academic-session.interface";
 
 @Component({
-  selector: 'pams-profile',
-  templateUrl: 'profile.component.html',
+  selector: 'pams-session',
+  templateUrl: 'session.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ProfileComponent {
+export class SessionComponent {
 
-  @Input() profile: Student;
+  @Input() academicSessions: AcademicSession;
   
   // @Output() addGuardian = new EventEmitter<Guardian>();
   // @Output() addGuarantor = new EventEmitter<Guarantor>();
