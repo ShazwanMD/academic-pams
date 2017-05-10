@@ -1,7 +1,9 @@
+import { CommonService } from './../../services/common.service';
 import {Component, OnInit} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 
 import {IdentityService} from '../../services';
+
 
 @Component({
   selector: 'pams-setup-page',

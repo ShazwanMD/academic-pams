@@ -1,4 +1,5 @@
-import { RaceCode } from './../app/setup/race-codes/race-code.interface';
+import { RaceCode } from './../app/common/race-codes/race-code.interface';
+import { StateCode } from './../app/common/state-codes/state-code.interface';
 import { MaritalCode } from './../app/setup/marital-codes/marital-code.interface';
 import { CountryCode } from './../app/common/country-codes/country-code.interface';
 import { environment } from './../environments/environment';
@@ -89,6 +90,23 @@ findRaceCodeByCode(code:string): Observable<RaceCode> {
     console.log("findRaceCodeByCode");
 return this.http.get(environment.endpoint + '/api/common/raceCodes/' + code)
     .map((res: Response) => <RaceCode>res.json());
+}
+
+
+// ====================================================================================================
+// STATECODE
+// ====================================================================================================
+
+findStateCodes(): Observable<StateCode[]> {
+    console.log("findStateCodes()");
+return this.http.get(environment.endpoint + '/api/common/stateCodes')
+    .map((res: Response) => <StateCode[]>res.json());
+}
+
+findStateCodeByCode(code:string): Observable<StateCode> {
+    console.log("findStateCodeByCode");
+return this.http.get(environment.endpoint + '/api/common/stateCodes/' + code)
+    .map((res: Response) => <StateCode>res.json());
 }
 
 

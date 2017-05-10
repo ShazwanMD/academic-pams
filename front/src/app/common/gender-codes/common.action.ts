@@ -43,5 +43,49 @@ findCountryCodesSuccess(codes): Action {
 }
 
 
+  static FIND_STATE_CODES = '[Common] Find StateCodes';
+
+findStateCodes(): Action {
+    console.log("findStateCodes");
+    return {
+        type: CommonActions.FIND_STATE_CODES
+    };
+}
+
+static FIND_STATE_CODES_SUCCESS = '[Common] Find StateCodes Success';
+
+findStateCodesSuccess(codes): Action {
+    console.log("findStateCodesSuccess");
+    return {
+        type: CommonActions.FIND_STATE_CODES_SUCCESS,
+        payload: codes
+    };
+}
+
+
+
+
+  static FIND_RACE_CODES = '[Common] Find RaceCodes';
+
+findRaceCodes(): Action {
+    console.log("findRaceCodes");
+    return {
+        type: CommonActions.FIND_RACE_CODES
+    };
+}
+
+static FIND_RACE_CODES_SUCCESS = '[Common] Find RaceCodes Success';
+
+findRaceCodesSuccess(codes): Action {
+    console.log("findRaceCodesSuccess");
+    return {
+        type: CommonActions.FIND_RACE_CODES_SUCCESS,
+        payload: codes
+    };
+}
+
+
+
+
 
 }

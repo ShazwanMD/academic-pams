@@ -1,3 +1,5 @@
+import { RaceCodeSelectComponent } from './race-codes/component/race-code-select.component';
+import { StateCodeSelectComponent } from './state-codes/component/state-code-select.component';
 import { CountryCodeSelectComponent } from './country-codes/component/country-code-select.component';
 import { CommonActions } from './gender-codes/common.action';
 import { GenderCodeSelectComponent } from './gender-codes/component/gender-code-select.component';
@@ -13,7 +15,6 @@ import {CommonService} from '../../services';
 import {IdentityService} from '../../services';
 
 import {EffectsModule} from "@ngrx/effects";
-
 
 export interface CommonModuleState {
 }
@@ -35,12 +36,16 @@ export const commonModuleReducers = {
     
     GenderCodeSelectComponent,
     CountryCodeSelectComponent,
+    StateCodeSelectComponent,
+    RaceCodeSelectComponent,
     ],
   
   exports: [
     
     GenderCodeSelectComponent,
     CountryCodeSelectComponent,
+    StateCodeSelectComponent,
+    RaceCodeSelectComponent,
   ],
 })
 export class CommonModule {
