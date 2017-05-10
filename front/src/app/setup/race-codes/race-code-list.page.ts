@@ -1,4 +1,4 @@
-import { RaceCode } from './race-code.interface';
+import { RaceCode } from './../../common/race-codes/race-code.interface';
 import { SetupActions } from './../setup.action';
 import { Observable } from 'rxjs/Observable';
 import { SetupModuleState } from './../index';

@@ -1,5 +1,5 @@
+import { RaceCode } from './../common/race-codes/race-code.interface';
 import { RaceCodeListPage } from './race-codes/race-code-list.page';
-import { RaceCode } from './race-codes/race-code.interface';
 import { MaritalCodeListPage } from './marital-codes/marital-code-list.page';
 import { MaritalCode } from './marital-codes/marital-code.interface';
 import { CountryCode } from './../common/country-codes/country-code.interface';
