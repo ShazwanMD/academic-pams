@@ -1,4 +1,4 @@
-import { RaceCode } from './../../../setup/race-codes/race-code.interface';
+import { RaceCode } from './../race-code.interface';
 import { Observable } from 'rxjs/Observable';
 import { Component, Input, OnInit } from '@angular/core';
 

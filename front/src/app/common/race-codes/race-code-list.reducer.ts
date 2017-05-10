@@ -1,4 +1,4 @@
-import { RaceCode } from './../../setup/race-codes/race-code.interface';
+import { RaceCode } from './race-code.interface';
 import { CommonActions } from './../gender-codes/common.action';
 import { Action } from '@ngrx/store';
 
