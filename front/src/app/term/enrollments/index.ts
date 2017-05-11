@@ -14,6 +14,7 @@ import {EffectsModule} from "@ngrx/effects";
 import {EnrollmentEffects} from "./enrollment.effect";
 import {EnrollmentDetailPage} from "./enrollment-detail.page";
 import {EnrollmentComponent} from "./component/enrollment.component";
+import {EnrollmentEditorDialog} from "./dialog/enrollment-editor.dialog";
 
 @NgModule({
   imports: [
@@ -31,6 +32,9 @@ import {EnrollmentComponent} from "./component/enrollment.component";
     // component
     EnrollmentListComponent,
     EnrollmentComponent,
+    
+  //dialog
+    EnrollmentEditorDialog,
   ],
   exports: [],
 })

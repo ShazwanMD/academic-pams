@@ -7,8 +7,6 @@ import {OfferingEditorDialog} from "./dialog/offering-editor.dialog";
 export const OfferingRoutes: Routes = [
   {path: 'term/offerings', component: OfferingCenterPage},
   {path: 'term/offerings-dialog', component: OfferingEditorDialog},
-  //{path: 'term/offerings/:code', component: OfferingDetailPage},
-
   {path: 'term/offerings/:canonicalCode', component: OfferingDetailPage},
  // {path: 'term/offerings', dialog: OfferingEditorDialog},
   // {path: 'offerings-create', component: OfferingCreatePage},

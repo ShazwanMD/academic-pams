@@ -6,31 +6,31 @@ import {IdentityService} from "../../../../services/identity.service";
 import {CommonService} from "../../../../services/common.service";
 import {PlannerService} from "../../../../services/planner.service";
 import {TermService} from "../../../../services/term.service";
-import {Offering} from "../offering.interface";
-import {OfferingActions} from "../offering.action";
+import {Enrollment} from "../enrollment.interface";
+import {EnrollmentActions} from "../enrollment.action";
 import {MdDialog} from '@angular/material';
 
 
 @Component({
-  selector: 'pams-offering-editor',
-  templateUrl: './offering-editor.dialog.html',
+  selector: 'pams-enrollment-editor',
+  templateUrl: './enrollment-editor.dialog.html',
 })
 
-export class OfferingEditorDialog implements OnInit {
+export class EnrollmentEditorDialog implements OnInit {
 
-  private offering: Offering;
+  private enrollment: Enrollment;
   private editForm: FormGroup;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
               private formBuilder: FormBuilder,
-              private actions: OfferingActions,
+              private actions: EnrollmentActions,
               public dialog: MdDialog,
               private viewContainerRef: ViewContainerRef) {
   }
   
   openDialog(): void {
-      this.dialog.open(OfferingEditorDialog, {
+      this.dialog.open(EnrollmentEditorDialog, {
         height: '50%', // can be px or %
         width: '60%', // can be px or %
       });
@@ -45,7 +45,7 @@ export class OfferingEditorDialog implements OnInit {
     this.editForm.patchValue(this.offering);*/
   }
 
-  save(offering: Offering, isValid: boolean) {
+  save(enrollment: Enrollment, isValid: boolean) {
     // do something
   }
 }
