@@ -19,26 +19,19 @@ export class CourseActions {
     };
   }
 
-  static FIND_COURSE = '[Course] Find Course';
-  findCourse(code): Action {
+  static FIND_COURSE_BY_CODE = '[Course] Find Course';
+  findCourseByCode(code): Action {
     return {
-      type: CourseActions.FIND_COURSE,
+      type: CourseActions.FIND_COURSE_BY_CODE,
       payload: code
     };
   }
 
-  static FIND_COURSE_SUCCESS = '[Course] Find Course Success';
-  findCoursesuccess(course): Action {
+  static FIND_COURSE_BY_CODE_SUCCESS = '[Course] Find Course Success';
+  findCourseByCodeSuccess(course): Action {
     return {
-      type: CourseActions.FIND_COURSE_SUCCESS,
+      type: CourseActions.FIND_COURSE_BY_CODE_SUCCESS,
       payload: course
-    };
-  }
-
-  static RESET_COURSE = '[Course] Reset Course';
-  resetCourse(): Action {
-    return {
-      type: CourseActions.RESET_COURSE
     };
   }
 
@@ -54,22 +47,6 @@ export class CourseActions {
   saveCourseSuccess(course): Action {
     return {
       type: CourseActions.SAVE_COURSE_SUCCESS,
-      payload: course
-    };
-  }
-
-  static CREATE_COURSE = '[Course] Create Course';
-  createCourse(course): Action {
-    return {
-      type: CourseActions.CREATE_COURSE,
-      payload: course
-    };
-  }
-
-  static CREATE_COURSE_SUCCESS = '[Course] Create Course Success';
-  createCourseSuccess(course): Action {
-    return {
-      type: CourseActions.CREATE_COURSE_SUCCESS,
       payload: course
     };
   }

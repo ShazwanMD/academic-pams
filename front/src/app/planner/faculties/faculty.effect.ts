@@ -16,23 +16,17 @@ export class FacultyEffects {
     .switchMap(() => this.plannerService.findFaculties())
     .map(faculties => this.facultyActions.findFacultiesSuccess(faculties));
 
-  // @Effect() getFaculty$ = this.actions$
-  //   .ofType(FacultyActions.GET_FACULTY)
-  //   .map<string>(action => action.payload)
-  //   .switchMap(code => this.plannerService.findFacultyByCode(code))
-  //   .map(faculty => this.facultyActions.getFacultiesuccess(faculty));
+  @Effect() findFacultyByCode$ = this.actions$
+    .ofType(FacultyActions.FIND_FACULTY_BY_CODE)
+    .map(action => action.payload)
+    .switchMap(code => this.plannerService.findFacultyByCode(code))
+    .map(faculty => this.facultyActions.findFacultyByCodeSuccess(faculty));
 
   // @Effect() saveFaculty$ = this.actions$
   //   .ofType(FacultyActions.SAVE_FACULTY)
   //   .map(action => action.payload)
   //   .switchMap(faculty => this.svc.saveFaculty(faculty))
   //   .map(faculty => this.facultyActions.saveFacultiesuccess(faculty));
-  //
-  // @Effect() createFaculty = this.actions$
-  //   .ofType(FacultyActions.CREATE_FACULTY)
-  //   .map(action => action.payload)
-  //   .switchMap(faculty => this.svc.saveFaculty(faculty))
-  //   .map(faculty => this.facultyActions.addFacultiesuccess(faculty));
   //
   // @Effect() deleteFaculty$ = this.actions$
   //   .ofType(FacultyActions.DELETE_FACULTY)

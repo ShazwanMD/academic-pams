@@ -15,6 +15,7 @@ export class PlannerService {
   constructor(private http: Http,
               private _http: HttpInterceptorService) {
   }
+
   // ====================================================================================================
   // ACADEMIC SESSION
   // ====================================================================================================
@@ -23,14 +24,14 @@ export class PlannerService {
     let headers = new Headers({'Authorization': 'Bearer TODO'});
     let options = new RequestOptions({headers: headers});
     return this.http.get(environment.endpoint + '/api/planner/academicSessions')
-      .map((res: Response) =><AcademicSession[]>res.json());
+      .map((res: Response) => <AcademicSession[]>res.json());
   }
 
   findAcademicSessionByCode(code: string): Observable<AcademicSession> {
     let headers = new Headers({'Authorization': 'Bearer TODO'});
     let options = new RequestOptions({headers: headers});
     return this.http.get(environment.endpoint + '/api/planner/academicSessions/' + code, options)
-      .map((res: Response) =><AcademicSession>res.json());
+      .map((res: Response) => <AcademicSession>res.json());
   }
 
 
@@ -43,14 +44,17 @@ export class PlannerService {
     let headers = new Headers({'Authorization': 'Bearer TODO'});
     let options = new RequestOptions({headers: headers});
     return this.http.get(environment.endpoint + '/api/planner/faculties', options)
-      .map(res => {return <Faculty[]>res.json();})
+      .map(res => {
+        return <Faculty[]>res.json();
+      })
   }
 
   findFacultyByCode(code: string): Observable<Faculty> {
+    console.log("findFacultyByCode");
     let headers = new Headers({'Authorization': 'Bearer TODO'});
     let options = new RequestOptions({headers: headers});
     return this.http.get(environment.endpoint + '/api/planner/faculties/' + code, options)
-      .map((res: Response) =><Faculty>res.json());
+      .map((res: Response) => <Faculty>res.json());
   }
 
   // ====================================================================================================
@@ -110,13 +114,15 @@ export class PlannerService {
     let headers = new Headers({'Authorization': 'Bearer TODO'});
     let options = new RequestOptions({headers: headers});
     return this.http.get(environment.endpoint + '/api/planner/cohorts', options)
-      .map(res => {return <Cohort[]>res.json();})
+      .map(res => {
+        return <Cohort[]>res.json();
+      })
   }
 
   findCohortByCode(code: string): Observable<Cohort> {
     let headers = new Headers({'Authorization': 'Bearer TODO'});
     let options = new RequestOptions({headers: headers});
     return this.http.get(environment.endpoint + '/api/planner/cohorts/' + code, options)
-      .map((res: Response) =><Cohort>res.json());
+      .map((res: Response) => <Cohort>res.json());
   }
 }

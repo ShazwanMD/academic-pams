@@ -16,7 +16,6 @@ import {PlannerModuleState} from "../index";
 
 export class CourseDetailPage implements OnInit {
 
-
   private COURSE = "plannerModuleState.course".split(".");
   private course$: Observable<Course>;
 
@@ -29,9 +28,9 @@ export class CourseDetailPage implements OnInit {
   }
 
   ngOnInit(): void {
-    this.route.params.subscribe((params: {code: string}) => {
+    this.route.params.subscribe((params: { code: string }) => {
       let code: string = params.code;
-      this.store.dispatch(this.actions.findCourse(code));
+      this.store.dispatch(this.actions.findCourseByCode(code));
     });
   }
 

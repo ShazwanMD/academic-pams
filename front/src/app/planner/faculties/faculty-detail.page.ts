@@ -16,7 +16,6 @@ import {PlannerModuleState} from "../index";
 
 export class FacultyDetailPage implements OnInit {
 
-
   private FACULTY = "plannerModuleState.faculty".split(".");
   private faculty$: Observable<Faculty>;
 
@@ -26,17 +25,12 @@ export class FacultyDetailPage implements OnInit {
               private store: Store<PlannerModuleState>) {
 
     this.faculty$ = this.store.select(...this.FACULTY);
-    console.log("test log ");
-
-    // (program$ | async).code
-    this.faculty$.subscribe(faculty => console.log("faculty: " + faculty.code))
   }
 
   ngOnInit(): void {
-    this.route.params.subscribe((params: {code: string}) => {
+    this.route.params.subscribe((params: { code: string }) => {
       let code: string = params.code;
-      console.log("Code in pdp: " + code);
-      this.store.dispatch(this.actions.findFaculty(code));
+      this.store.dispatch(this.actions.findFacultyByCode(code));
     });
   }
 

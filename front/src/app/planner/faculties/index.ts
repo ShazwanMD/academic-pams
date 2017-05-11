@@ -15,6 +15,7 @@ import {FacultyListComponent} from "./component/faculty-list.component";
 import {FacultyActions} from "./faculty.action";
 import {EffectsModule} from "@ngrx/effects";
 import {FacultyEffects} from "./faculty.effect";
+import {FacultyComponent} from "./component/faculty.component";
 
 @NgModule({
   imports: [
@@ -31,6 +32,7 @@ import {FacultyEffects} from "./faculty.effect";
 
     // component
     FacultyListComponent,
+    FacultyComponent,
   ],
   exports: [],
 })

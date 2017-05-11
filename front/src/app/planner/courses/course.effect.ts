@@ -16,23 +16,17 @@ export class CourseEffects {
     .switchMap(() => this.plannerService.findCourses())
     .map(courses => this.courseActions.findCoursesSuccess(courses));
 
-  // @Effect() getCourse$ = this.actions$
-  //   .ofType(CourseActions.GET_COURSE)
-  //   .map<string>(action => action.payload)
-  //   .switchMap(code => this.plannerService.findCourseByCode(code))
-  //   .map(course => this.courseActions.getCoursesuccess(course));
+  @Effect() findCourseByCode$ = this.actions$
+    .ofType(CourseActions.FIND_COURSE_BY_CODE)
+    .map(action => action.payload)
+    .switchMap(code => this.plannerService.findCourseByCode(code))
+    .map(course => this.courseActions.findCourseByCodeSuccess(course));
 
   // @Effect() saveCourse$ = this.actions$
   //   .ofType(CourseActions.SAVE_COURSE)
   //   .map(action => action.payload)
   //   .switchMap(course => this.svc.saveCourse(course))
   //   .map(course => this.courseActions.saveCoursesuccess(course));
-  //
-  // @Effect() createCourse = this.actions$
-  //   .ofType(CourseActions.CREATE_COURSE)
-  //   .map(action => action.payload)
-  //   .switchMap(course => this.svc.saveCourse(course))
-  //   .map(course => this.courseActions.addCoursesuccess(course));
   //
   // @Effect() deleteCourse$ = this.actions$
   //   .ofType(CourseActions.DELETE_COURSE)

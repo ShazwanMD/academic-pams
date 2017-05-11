@@ -14,9 +14,7 @@ export function facultyListReducer(state = initialState, action: Action): Facult
     case FacultyActions.FIND_FACULTIES_SUCCESS: {
       return action.payload;
     }
-    case FacultyActions.CREATE_FACULTY_SUCCESS: {
-      return [...state, action.payload];
-    }
+
     case FacultyActions.SAVE_FACULTY_SUCCESS: {
       let index = _.findIndex(state, {id: action.payload.id});
       if (index >= 0) {

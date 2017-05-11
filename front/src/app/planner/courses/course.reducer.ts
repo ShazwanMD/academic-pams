@@ -8,10 +8,7 @@ const initialState: CourseState = <Course>{};
 
 export function courseReducer(state = initialState, action: Action): CourseState {
   switch (action.type) {
-    case CourseActions.RESET_COURSE: {
-      return initialState;
-    }
-    case CourseActions.FIND_COURSE_SUCCESS: {
+    case CourseActions.FIND_COURSE_BY_CODE_SUCCESS: {
       return action.payload;
     }
     default: {

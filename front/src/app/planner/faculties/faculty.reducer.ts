@@ -8,10 +8,7 @@ const initialState: FacultyState = <Faculty>{};
 
 export function facultyReducer(state = initialState, action: Action): FacultyState {
   switch (action.type) {
-    case FacultyActions.RESET_FACULTY: {
-      return initialState;
-    }
-    case FacultyActions.FIND_FACULTY_SUCCESS: {
+    case FacultyActions.FIND_FACULTY_BY_CODE_SUCCESS: {
       return action.payload;
     }
     default: {
