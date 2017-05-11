@@ -2,8 +2,6 @@ package my.edu.umk.pams.academic.term.model;
 
 import my.edu.umk.pams.academic.core.AdFlowdata;
 import my.edu.umk.pams.academic.core.AdMetadata;
-import my.edu.umk.pams.academic.identity.model.AdStaff;
-import my.edu.umk.pams.academic.identity.model.AdStaffImpl;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.identity.model.AdStudentImpl;
 import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
@@ -49,7 +47,6 @@ public class AdEnrollmentApplicationImpl implements AdEnrollmentApplication {
     @Column(name = "CANCEL_COMMENT")
     private String cancelComment;
 
-
     @ManyToOne(targetEntity = AdStudentImpl.class)
     @JoinColumn(name = "STUDENT_ID")
     private AdStudent student;
@@ -57,10 +54,6 @@ public class AdEnrollmentApplicationImpl implements AdEnrollmentApplication {
     @ManyToOne(targetEntity = AdAdmissionImpl.class)
     @JoinColumn(name = "ADMISSION_ID")
     private AdAdmission admission;
-
-    @ManyToOne(targetEntity = AdStaffImpl.class)
-    @JoinColumn(name = "ADVISOR_ID")
-    private AdStaff advisor;
 
     @ManyToOne(targetEntity = AdAcademicSessionImpl.class)
     @JoinColumn(name = "SESSION_ID")
@@ -182,16 +175,6 @@ public class AdEnrollmentApplicationImpl implements AdEnrollmentApplication {
     @Override
     public void setAdmission(AdAdmission admission) {
         this.admission = admission;
-    }
-
-    @Override
-    public AdStaff getAdvisor() {
-        return advisor;
-    }
-
-    @Override
-    public void setAdvisor(AdStaff advisor) {
-        this.advisor = advisor;
     }
 
     @Override

@@ -5,13 +5,15 @@ import {EnrollmentRoutes} from "./enrollments/enrollment.routes";
 import {AdmissionDetailPage} from "./admissions/admission-detail.page";
 import {AdmissionRoutes} from "./admissions/admission.routes";
 import {AppointmentRoutes} from "./appointments/appointment.routes";
+import {EnrollmentApplicationRoutes} from "./enrollment-applications/enrollment-application.routes";
 
 export const TermModuleRoutes: Routes = [
   {path: 'term', component: TermPage},
   {path: 'admissions/:id', component: AdmissionDetailPage},
-   ...OfferingRoutes,
-   ...EnrollmentRoutes,
-   ...AdmissionRoutes,
-   ...AppointmentRoutes,
-  
+  ...OfferingRoutes,
+  ...EnrollmentApplicationRoutes,
+  ...EnrollmentRoutes,
+  ...AdmissionRoutes,
+  ...AppointmentRoutes,
+
 ];

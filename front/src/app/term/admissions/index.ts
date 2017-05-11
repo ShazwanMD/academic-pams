@@ -16,6 +16,7 @@ import {AdmissionComponent} from "./component/admission.component";
 import {AdmissionDetailPage} from "./admission-detail.page";
 import {AdmissionCenterPage} from "./admission-center.page";
 import {AdmissionEffects} from "./admission.effect";
+import {AdmissionSelectComponent} from "./component/admission-select.component";
 
 @NgModule({
   imports: [
@@ -33,8 +34,11 @@ import {AdmissionEffects} from "./admission.effect";
     // component
     AdmissionListComponent,
     AdmissionComponent,
+    AdmissionSelectComponent,
   ],
-  exports: [],
+  exports: [
+    AdmissionSelectComponent,
+  ],
 })
 
 export class AdmissionSubModule {

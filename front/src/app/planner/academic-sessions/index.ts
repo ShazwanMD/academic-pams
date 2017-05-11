@@ -14,40 +14,41 @@ import {AcademicSessionDetailPage} from "./academic-session-detail.page";
 import {AcademicSessionActions} from "./academic-session.action";
 import {AcademicSessionEffects} from   "./academic-session.effect";
 import {EffectsModule} from "@ngrx/effects";
+import {AcademicSessionSelectComponent} from "./component/academic-session-select.component";
 
 
+@NgModule({
+  imports: [
+    appRoutes,
+    BrowserModule,
+    ReactiveFormsModule,
+    CovalentCoreModule.forRoot(),
+    EffectsModule.run(AcademicSessionEffects),
+  ],
+  declarations: [
+    //page
+    AcademicSessionCenterPage,
+    AcademicSessionDetailPage,
 
-@NgModule ({
-    imports: [
-        appRoutes,
-        BrowserModule,
-        ReactiveFormsModule,
-        CovalentCoreModule.forRoot(),
-        EffectsModule.run(AcademicSessionEffects),
-    ],
-    declarations:[
-        //page
-        AcademicSessionCenterPage,
-        AcademicSessionDetailPage,
-
-        //component
-        AcademicSessionListComponent,
-        AcademicSessionComponent,
-       
-       
-    ],
-    exports: [],
+    //component
+    AcademicSessionListComponent,
+    AcademicSessionComponent,
+    AcademicSessionSelectComponent,
+  ],
+  exports: [
+    AcademicSessionSelectComponent,
+  ],
 })
 
-export class AcademicSessionSubModule    {
-    static forRoot(): ModuleWithProviders {
-        return {
-            ngModule : AcademicSessionSubModule,
-            providers : [
-                appRoutingProviders,
-                PlannerService,
-                AcademicSessionActions,
-            ],
-        };
-    }
+export class AcademicSessionSubModule {
+  static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: AcademicSessionSubModule,
+      providers: [
+        appRoutingProviders,
+        PlannerService,
+        AcademicSessionActions,
+      ],
+    };
+  }
 }

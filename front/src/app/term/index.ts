@@ -26,6 +26,16 @@ import {appointmentReducer, AppointmentState} from "./appointments/appointment.r
 import {AppointmentSubModule} from "./appointments/index";
 import {AppointmentActions} from "./appointments/appointment.action";
 import {EnrollmentActions} from "./enrollments/enrollment.action";
+import {EnrollmentApplicationTask} from "./enrollment-applications/enrollment-application-task.interface";
+import {EnrollmentApplicationSubModule} from "./enrollment-applications/index";
+import {
+  enrollmentApplicationTaskReducer,
+  EnrollmentApplicationTaskState
+} from "./enrollment-applications/enrollment-application-task.reducer";
+import {
+  assignedEnrollmentApplicationTaskListReducer,
+  EnrollmentApplicationTaskListState, pooledEnrollmentApplicationTaskListReducer
+} from "./enrollment-applications/enrollment-application-task-list.reducer";
 
 export interface TermModuleState {
   offerings: OfferingListState;
@@ -36,6 +46,11 @@ export interface TermModuleState {
   admission: AdmissionState;
   appointments: AppointmentListState;
   appointment: AppointmentState;
+  // admissionApplicationTasks:AdmissionApplicationListState,
+  // admissionApplicationTask:AdmissionApplicationState,
+  assignedEnrollmentApplicationTasks: EnrollmentApplicationTaskListState,
+  pooledEnrollmentApplicationTasks: EnrollmentApplicationTaskListState,
+  enrollmentApplicationTask: EnrollmentApplicationTaskState,
 }
 ;
 
@@ -49,6 +64,9 @@ export const INITIAL_TERM_STATE: TermModuleState =
     admission: <Admission>{},
     appointments: <Appointment[]>[],
     appointment: <Appointment>{},
+    assignedEnrollmentApplicationTasks: <EnrollmentApplicationTask[]>[],
+    pooledEnrollmentApplicationTasks: <EnrollmentApplicationTask[]>[],
+    enrollmentApplicationTask:<EnrollmentApplicationTask>{},
   };
 
 export const termModuleReducers = {
@@ -60,7 +78,12 @@ export const termModuleReducers = {
   admission: admissionReducer,
   appointments: appointmentListReducer,
   appointment: appointmentReducer,
-
+  // assignedAdmissionApplicationTasks:admissionApplicationTaskListReducer,
+  // pooledAdmissionApplicationTasks:admissionApplicationTaskListReducer,
+  // admissionApplicationTask:admissionApplicationTaskReducer,
+  assignedEnrollmentApplicationTasks: assignedEnrollmentApplicationTaskListReducer,
+  pooledEnrollmentApplicationTasks: pooledEnrollmentApplicationTaskListReducer,
+  enrollmentApplicationTask: enrollmentApplicationTaskReducer,
 };
 
 @NgModule({
@@ -70,24 +93,18 @@ export const termModuleReducers = {
     ReactiveFormsModule,
     CovalentCoreModule.forRoot(),
     OfferingSubModule.forRoot(),
+    // todo: AdmissionApplicationSubModule.forRoot(),
+    EnrollmentApplicationSubModule.forRoot(),
     EnrollmentSubModule.forRoot(),
     AdmissionSubModule.forRoot(),
     AppointmentSubModule.forRoot(),
-
-    // our modules
-    // ngrx
   ],
   declarations: [
     // page
     TermPage,
-
-    // component
-    // AdmissionListComponent,
-    // AdmissionComponent,
-
-
   ],
   exports: [],
+  entryComponents: []
 })
 export class TermModule {
   static forRoot(): ModuleWithProviders {

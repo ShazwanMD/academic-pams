@@ -8,68 +8,58 @@ import {TermService} from "../../../../services/term.service";
 import {Section} from "../../sections/section.interface";
 import {EnrollmentApplicationItem} from "../enrollment-application-item.interface";
 import {EnrollmentApplicationAction} from "../enrollment-application-action.enum";
+import {TermModuleState} from "../../index";
+import {EnrollmentApplicationActions} from "../enrollment-application.action";
+import {Store} from "@ngrx/store";
+import {MdDialogRef} from "@angular/material";
+import {EnrollmentApplication} from "../enrollment-application.interface";
 
 
 @Component({
-  selector: 'pams-enrollment-item-editor',
-  templateUrl: './enrollment-item-editor.dialog.html',
+  selector: 'pams-enrollment-application-item-editor',
+  templateUrl: './enrollment-application-item-editor.dialog.html',
 })
 
 export class EnrollmentApplicationItemEditorDialog implements OnInit {
 
-  private _router: Router;
-  private _route: ActivatedRoute;
-  private _identityService: IdentityService;
-  private _commonService: CommonService;
-  private _termService: TermService;
-  private _formBuilder: FormBuilder;
-  private _item: EnrollmentApplicationItem;
   private editForm: FormGroup;
+  private _enrollmentApplicationItem: EnrollmentApplicationItem;
+  private _enrollmentApplication: EnrollmentApplication;
 
-  private selectedSection: Section;
-  private sections: Section[] = <Section[]> [];
+  constructor(private router: Router,
+              private route: ActivatedRoute,
+              private formBuilder: FormBuilder,
+              private viewContainerRef: ViewContainerRef,
+              private store: Store<TermModuleState>,
+              private actions: EnrollmentApplicationActions,
+              private dialog: MdDialogRef<EnrollmentApplicationItemEditorDialog>) {
 
-  constructor(router: Router,
-              route: ActivatedRoute,
-              formBuilder: FormBuilder,
-              identityService: IdentityService,
-              commonService: CommonService,
-              termService: TermService,
-              viewContainerRef: ViewContainerRef) {
-    this._router = router;
-    this._route = route;
-    this._formBuilder = formBuilder;
-    this._identityService = identityService;
-    this._commonService = commonService;
-    this._termService = termService;
   }
 
-  set item(value: EnrollmentApplicationItem) {
-    this._item = value;
+  set enrollmentApplicationItem(value: EnrollmentApplicationItem) {
+    this._enrollmentApplicationItem = value;
+  }
+
+  set enrollmentApplication(value: EnrollmentApplication) {
+    this._enrollmentApplication = value;
   }
 
   ngOnInit(): void {
-    this.editForm = this._formBuilder.group(<EnrollmentApplicationItem>{
+    this.editForm = this.formBuilder.group(<EnrollmentApplicationItem>{
       id: null,
       description: '',
-      enrollmentNo:'',
-      enrollmentDate:null,
-      amount: 0,
-      action:EnrollmentApplicationAction.ADD,
-      section:null
+      action: EnrollmentApplicationAction.ADD,
+      section: <Section>{}
     });
-
-    this.editForm.patchValue(this._item);
+    // this.editForm.patchValue(this._item);
   }
 
-  // save(enrollment: Enrollment, isValid: boolean) {
-  //   this.submitted = true; // set form submit to true
-  //   this._enrollmentService.startEnrollmentTask(enrollment).subscribe(res => {
-  //     let snackBarRef = this._snackBar.open("Enrollment started", "OK");
-  //     snackBarRef.afterDismissed().subscribe(() => {
-  //       this.goBack();
-  //     });
-  //   });
-  // }
+  save(item: EnrollmentApplicationItem, isValid: boolean) {
+    this.store.dispatch(this.actions.addEnrollmentApplicationItem(this._enrollmentApplication, item))
+    this.close();
+  }
 
+  close(): void {
+    this.dialog.close();
+  }
 }

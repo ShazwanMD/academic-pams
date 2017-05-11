@@ -1,7 +1,6 @@
 package my.edu.umk.pams.academic.term.model;
 
 import my.edu.umk.pams.academic.core.model.AdDocument;
-import my.edu.umk.pams.academic.identity.model.AdStaff;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
 
@@ -35,14 +34,6 @@ public interface AdEnrollmentApplication extends AdDocument {
     AdAdmission getAdmission();
 
     void setAdmission(AdAdmission admission);
-
-    /**
-     * todo:removed, for UG only
-     * @return
-     */
-    AdStaff getAdvisor();
-
-    void setAdvisor(AdStaff advisor);
 
     /**
      *

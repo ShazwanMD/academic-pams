@@ -131,6 +131,37 @@ export class TermService {
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
+  completeEnrollmentApplicationTask(enrollmentApplicationTask: EnrollmentApplicationTask): Observable<String> {
+    console.log("TaskId: " + enrollmentApplicationTask.taskId);
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
+    return this.http.post(environment.endpoint + '/api/billing/enrollmentApplications/completeTask', JSON.stringify(enrollmentApplicationTask), options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+  claimEnrollmentApplicationTask(enrollmentApplicationTask: EnrollmentApplicationTask): Observable<String> {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
+    return this.http.post(environment.endpoint + '/api/billing/enrollmentApplications/claimTask', JSON.stringify(enrollmentApplicationTask), options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+  releaseEnrollmentApplicationTask(enrollmentApplicationTask: EnrollmentApplicationTask): Observable<String> {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
+    return this.http.post(environment.endpoint + '/api/billing/enrollmentApplications/releaseTask', JSON.stringify(enrollmentApplicationTask), options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
   updateEnrollmentApplication(enrollmentApplication: EnrollmentApplication): Observable<String> {
     return this.http.put(environment.endpoint + '/api/term/enrollmentApplications', JSON.stringify(enrollmentApplication))
       .flatMap((res: Response) => Observable.of(res.text()));
