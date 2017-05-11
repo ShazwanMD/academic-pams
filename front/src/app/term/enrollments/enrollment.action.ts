@@ -19,21 +19,21 @@ export class EnrollmentActions {
     };
   }
 
-//    static FIND_ENROLLMENT_BY_CANONICAL_CODE = '[Enrollment] Find Enrollment By Canonical Code';
-//   findEnrollmentByCanonicalCode(enrollment): Action {
-//     return {
-//       type: EnrollmentActions.FIND_ENROLLMENT_BY_CANONICAL_CODE,
-//       payload: enrollment
-//     };
-//   }
+    static FIND_ENROLLMENT_BY_ID = '[Enrollment] Find Enrollment By Id';
+   findEnrollmentById(enrollment): Action {
+     return {
+       type: EnrollmentActions.FIND_ENROLLMENT_BY_ID,
+       payload: enrollment
+     };
+   }
 
-//   static FIND_ENROLLMENT_BY_CANONICAL_CODE_SUCCESS = '[Enrollment] Find Enrollment By Canonical Code Success';
-//   findEnrollmentByCanonicalCodeSuccess(enrollment): Action {
-//     return {
-//       type: EnrollmentActions.FIND_ENROLLMENT_BY_CANONICAL_CODE_SUCCESS,
-//       payload: enrollment
-//     };
-//   }
+   static FIND_ENROLLMENT_BY_ID_SUCCESS = '[Enrollment] Find Enrollment By Id Success';
+   findEnrollmentByIdSuccess(enrollment): Action {
+     return {
+       type: EnrollmentActions.FIND_ENROLLMENT_BY_ID_SUCCESS,
+       payload: enrollment
+     };
+   }
 
   static SAVE_ENROLLMENT = '[Enrollment] Save Enrollment';
   saveEnrollment(enrollment): Action {

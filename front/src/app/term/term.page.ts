@@ -3,9 +3,9 @@ import {PlannerService} from './../../services/planner.service';
 import {Router, ActivatedRoute} from '@angular/router';
 import {Store} from "@ngrx/store";
 import {Observable} from "rxjs";
-import {Component, OnInit, ChangeDetectionStrategy} from '@angular/core';
 import {TermModuleState} from "./index";
 import {AdmissionActions} from "./admissions/admission.action";
+import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, OnInit} from '@angular/core';
 
 @Component({
   selector: 'pams-term-page',
@@ -24,14 +24,11 @@ export class TermPage implements OnInit {
     this.admissions$ = this.store.select(...this.ADMISSIONS);
   }
 
-  private columns: any[] = [
-    {name: 'id', label: 'Code'},
-    {name: 'gpa', label: 'Gpa'},
-    {name: 'cgpa', label: 'Cgpa'},
-    {name: 'action', label: 'Action'}
-  ];
-
-  viewAdmission(admission: Admission) {
+  goBack(route: string): void {
+      this.router.navigate(['/admissions']);
+    }
+  
+   viewAdmission(admission: Admission) {
     console.log("admission: " + admission.id);
     this.router.navigate(['/admission-detail', admission.id]);
   }
@@ -39,4 +36,18 @@ export class TermPage implements OnInit {
   ngOnInit(): void {
     this.store.dispatch(this.actions.findAdmissions());
   }
+  
+  @Input() admissions: Admission[];
+  @Output() view = new EventEmitter<Admission>();
+
+  private columns: any[] = [
+    {name: 'student.name', label: 'StudentName'}, 
+    {name: 'student.identityNo', label: 'StudentIC'},
+    {name: 'academicSession.description', label: 'AcademicSession'},
+    {name: 'cohort.code', label: 'Cohort'},
+    {name: 'gpa', label: 'GPA'},
+    {name: 'cgpa', label: 'CGPA'},
+    {name: 'action', label: ''}
+  ];
+  
 }

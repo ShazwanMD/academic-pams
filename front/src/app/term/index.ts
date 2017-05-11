@@ -26,6 +26,8 @@ import {appointmentReducer, AppointmentState} from "./appointments/appointment.r
 import {AppointmentSubModule} from "./appointments/index";
 import {AppointmentActions} from "./appointments/appointment.action";
 import {EnrollmentActions} from "./enrollments/enrollment.action";
+//import {AdmissionListComponent} from "./admissions/component/admission-list.component";
+//import {AdmissionComponent} from "./admissions/component/admission.component";
 
 export interface TermModuleState {
   offerings: OfferingListState;
@@ -80,6 +82,12 @@ export const termModuleReducers = {
   declarations: [
     // page
     TermPage,
+    
+    // component
+   // AdmissionListComponent,
+   // AdmissionComponent,
+    
+    
   ],
   exports: [],
 })
