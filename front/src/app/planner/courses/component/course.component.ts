@@ -1,13 +1,13 @@
 import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy} from '@angular/core';
 import {MdTabsModule} from '@angular/material';
-import {Faculty} from "../faculty.interface";
+import {Course} from "../course.interface";
 
 @Component({
-  selector: 'pams-faculty',
-  templateUrl: 'faculty.component.html',
+  selector: 'pams-course',
+  templateUrl: 'course.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FacultyComponent {
+export class CourseComponent {
 
-  @Input() faculty: Faculty;
+  @Input() course: Course;
 }

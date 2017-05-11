@@ -74,7 +74,6 @@ public class PlannerTransformer {
 //    }
     
     public Cohort toCohortVo(AdCohort cohort) {
-		LOG.debug("111: " + cohort.getCode());
         Cohort vo = new Cohort();
         vo.setId(cohort.getId());
         vo.setCode(cohort.getCode());

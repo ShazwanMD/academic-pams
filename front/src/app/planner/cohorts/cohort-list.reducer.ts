@@ -14,9 +14,6 @@ export function cohortListReducer(state = initialState, action: Action): CohortL
     case CohortActions.FIND_COHORTS_SUCCESS: {
       return action.payload;
     }
-    case CohortActions.CREATE_COHORT_SUCCESS: {
-      return [...state, action.payload];
-    }
     case CohortActions.SAVE_COHORT_SUCCESS: {
       let index = _.findIndex(state, {id: action.payload.id});
       if (index >= 0) {

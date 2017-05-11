@@ -21,26 +21,19 @@ export class CohortActions {
     };
   }
 
-  static FIND_COHORT = '[Cohort] Find Cohort';
-  findCohort(code): Action {
+  static FIND_COHORT_BY_CODE = '[Cohort] Find Cohort By Code';
+  findCohortByCode(code): Action {
     return {
-      type: CohortActions.FIND_COHORT,
+      type: CohortActions.FIND_COHORT_BY_CODE,
       payload: code
     };
   }
 
-  static FIND_COHORT_SUCCESS = '[Cohort] Find Cohort Success';
-  findCohortsuccess(cohort): Action {
+  static FIND_COHORT_BY_CODE_SUCCESS = '[Cohort] Find Cohort By Code Success';
+  findCohortByCodeSuccess(cohort): Action {
     return {
-      type: CohortActions.FIND_COHORT_SUCCESS,
+      type: CohortActions.FIND_COHORT_BY_CODE_SUCCESS,
       payload: cohort
-    };
-  }
-
-  static RESET_COHORT = '[Cohort] Reset Blank Cohort';
-  resetCohort(): Action {
-    return {
-      type: CohortActions.RESET_COHORT
     };
   }
 
@@ -72,22 +65,6 @@ export class CohortActions {
   updateCohortSuccess(cohort): Action {
     return {
       type: CohortActions.UPDATE_COHORT_SUCCESS,
-      payload: cohort
-    };
-  }
-
-  static CREATE_COHORT = '[Cohort] Create Cohort';
-  createCohort(cohort): Action {
-    return {
-      type: CohortActions.CREATE_COHORT,
-      payload: cohort
-    };
-  }
-
-  static CREATE_COHORT_SUCCESS = '[Cohort] Create Cohort Success';
-  createCohortSuccess(cohort): Action {
-    return {
-      type: CohortActions.CREATE_COHORT_SUCCESS,
       payload: cohort
     };
   }

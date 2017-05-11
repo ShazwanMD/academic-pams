@@ -16,6 +16,7 @@ import {CohortActions} from "./cohort.action";
 import {EffectsModule} from "@ngrx/effects";
 import {CohortEffects} from "./cohort.effect";
 import {CohortDetailPage} from "./cohort-detail.page";
+import {CohortComponent} from "./component/cohort.component";
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import {CohortDetailPage} from "./cohort-detail.page";
 
     // component
     CohortListComponent,
+    CohortComponent,
   ],
   exports: [],
 })

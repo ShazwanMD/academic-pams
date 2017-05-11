@@ -9,6 +9,4 @@ import {Cohort} from "../cohort.interface";
 export class CohortComponent {
 
   @Input() cohort: Cohort;
-  // @Output() addComment = new EventEmitter<CohortComment>();
-  // @Output() addAttachment = new EventEmitter<CohortAttachment>();
 }

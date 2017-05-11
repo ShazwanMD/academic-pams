@@ -21,8 +21,6 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
-import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 /**
@@ -223,7 +221,6 @@ public class PlannerController {
 
     @RequestMapping(value = "/courses/{code}", method = RequestMethod.GET)
     public ResponseEntity<Course> findCourseByCode(@PathVariable String code) throws UnsupportedEncodingException {
-        code = URLDecoder.decode(code, StandardCharsets.UTF_8.toString());
         return new ResponseEntity<Course>(plannerTransformer
                 .toCourseVo(plannerService.findCourseByCode(code)), HttpStatus.OK);
     }
@@ -258,9 +255,10 @@ public class PlannerController {
                 .toCohortVos(plannerService.findCohorts("%", 0, 100)), HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/cohorts/page/{pageNo}", method = RequestMethod.GET)
-    public ResponseEntity<List<Cohort>> findCohorts(@PathVariable Integer pageNo) {
-        throw new UnsupportedOperationException();
+    @RequestMapping(value = "/cohorts/{code}", method = RequestMethod.GET)
+    public ResponseEntity<Cohort> findCohortByCode(@PathVariable String code) throws UnsupportedEncodingException {
+        return new ResponseEntity<Cohort>(plannerTransformer
+                .toCohortVo(plannerService.findCohortByCode(code)), HttpStatus.OK);
     }
 
     //====================================================================================================

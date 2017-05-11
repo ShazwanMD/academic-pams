@@ -101,7 +101,7 @@ export class PlannerService {
   findCourseByCode(code: string): Observable<Course> {
     let headers = new Headers({'Authorization': 'Bearer TODO'});
     let options = new RequestOptions({headers: headers});
-    return this.http.get(environment.endpoint + '/api/payable/invoices?offset=&limit=', options)
+    return this.http.get(environment.endpoint + '/api/planner/courses/' + code, options)
       .map((res: Response) => <Course>res.json());
   }
 

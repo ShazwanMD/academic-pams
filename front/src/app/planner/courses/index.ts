@@ -15,6 +15,7 @@ import {CourseActions} from "./course.action";
 import {EffectsModule} from "@ngrx/effects";
 import {CourseEffects} from "./course.effect";
 import {CourseDetailPage} from "./course-detail.page";
+import {CourseComponent} from "./component/course.component";
 
 @NgModule({
   imports: [
@@ -25,13 +26,13 @@ import {CourseDetailPage} from "./course-detail.page";
     EffectsModule.run(CourseEffects),
   ],
   declarations: [
-
     // page
     CourseCenterPage,
     CourseDetailPage,
 
     // component
     CourseListComponent,
+    CourseComponent,
   ],
   exports: [],
 })
