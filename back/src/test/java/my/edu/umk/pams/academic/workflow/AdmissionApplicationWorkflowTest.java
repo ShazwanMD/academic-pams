@@ -1,11 +1,13 @@
 package my.edu.umk.pams.academic.workflow;
 
+import my.edu.umk.pams.academic.common.model.AdStudyCenter;
 import my.edu.umk.pams.academic.common.service.CommonService;
 import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.identity.service.IdentityService;
 import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
 import my.edu.umk.pams.academic.planner.model.AdCohort;
+import my.edu.umk.pams.academic.planner.model.AdProgram;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
 import my.edu.umk.pams.academic.term.model.*;
 import my.edu.umk.pams.academic.term.service.TermService;
@@ -34,9 +36,9 @@ import java.util.List;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = TestAppConfiguration.class)
-public class EnrollmentApplicationWorkflowTest {
+public class AdmissionApplicationWorkflowTest {
 
-    private static final Logger LOG = LoggerFactory.getLogger(EnrollmentApplicationWorkflowTest.class);
+    private static final Logger LOG = LoggerFactory.getLogger(AdmissionApplicationWorkflowTest.class);
 
     @Autowired
     private SessionFactory sessionFactory;
@@ -71,37 +73,27 @@ public class EnrollmentApplicationWorkflowTest {
     @Rollback(false)
     public void testWorkflow() {
         // find account
-        AdStudent student = identityService.findStudentByMatricNo("A17P001");
+        AdStudent student = identityService.findStudentByMatricNo("A17P005");
         AdCohort cohort = student.getCohort(); // current cohort
         AdAcademicSession academicSession = plannerService.findCurrentAcademicSession();
-        AdAdmission admission = termService.findAdmissionByAcademicSessionCohortAndStudent(academicSession, cohort, student);
+        AdProgram program = cohort.getProgram();
+        AdStudyCenter studyCenter = commonService.findStudyCenterByCode("A");
 
-        AdEnrollmentApplication application = new AdEnrollmentApplicationImpl();
-        application.setDescription(student.getMatricNo() + ";" + student.getCohort().getCode());
+        AdAdmissionApplication application = new AdAdmissionApplicationImpl();
+        application.setDescription(student.getMatricNo() + ";" + program.getCode());
         application.setSession(academicSession);
         application.setStudent(student);
-        application.setAdmission(admission);
-        application.setType(AdEnrollmentApplicationType.WAJIB);
-        String referenceNo = termService.startEnrollmentApplicationTask(application);
-        LOG.debug("Enrollment Application is created with referenceNo {}", referenceNo);
+        application.setProgram(program);
+        application.setStudyCenter(studyCenter);
+        String referenceNo = termService.startAdmissionApplicationTask(application);
+        LOG.debug("Admission Application is created with referenceNo {}", referenceNo);
 
         // find and pick assigned drafted application
         // assuming there is one
-        List<Task> draftedTasks = termService.findAssignedEnrollmentApplicationTasks(0, 100);
+        List<Task> draftedTasks = termService.findAssignedAdmissionApplicationTasks(0, 100);
         Assert.notEmpty(draftedTasks, "Tasks should not be empty");
         Task draftedTask = draftedTasks.get(0);
-        AdEnrollmentApplication draftedApplication = termService.findEnrollmentApplicationByTaskId(draftedTask.getId());
-
-        // add items to application
-        AdEnrollmentApplicationItem item1 = new AdEnrollmentApplicationItemImpl();
-        item1.setAction(AdEnrollmentApplicationAction.ADD);
-        item1.setSection(termService.findSectionByCanonicalCode("MGSEB-MBA-GST5023-201720181-01"));
-        termService.addEnrollmentApplicationItem(draftedApplication, item1);
-
-        AdEnrollmentApplicationItem item2 = new AdEnrollmentApplicationItemImpl();
-        item2.setAction(AdEnrollmentApplicationAction.ADD);
-        item2.setSection(termService.findSectionByCanonicalCode("MGSEB-MBA-GST5023-201720181-02"));
-        termService.addEnrollmentApplicationItem(draftedApplication, item2);
+        AdAdmissionApplication draftedApplication = termService.findAdmissionApplicationByTaskId(draftedTask.getId());
 
         // we're done, let's submit drafted task
         // transition to REGISTERED
@@ -110,28 +102,28 @@ public class EnrollmentApplicationWorkflowTest {
         // ADVISOR
         // find and pick pooled registered application
         // assuming there is exactly one
-        List<Task> pooledRegisteredApplications = termService.findPooledEnrollmentApplicationTasks(0, 100);
+        List<Task> pooledRegisteredApplications = termService.findPooledAdmissionApplicationTasks(0, 100);
         Assert.notEmpty(pooledRegisteredApplications, "Tasks should not be empty");
         workflowService.assignTask(pooledRegisteredApplications.get(0));
 
         // find and complete assigned registered application
         // assuming there is exactly one
         // transition to VERIFIED
-        List<Task> assignedRegisteredApplications = termService.findAssignedEnrollmentApplicationTasks(0, 100);
+        List<Task> assignedRegisteredApplications = termService.findAssignedAdmissionApplicationTasks(0, 100);
         Assert.notEmpty(assignedRegisteredApplications, "Tasks should not be empty");
         workflowService.completeTask(assignedRegisteredApplications.get(0));
 
         // MGSEB/CPS
         // find and pick pooled verified application
         // assuming there is exactly one
-        List<Task> pooledVerifiedApplications = termService.findPooledEnrollmentApplicationTasks(0, 100);
+        List<Task> pooledVerifiedApplications = termService.findPooledAdmissionApplicationTasks(0, 100);
         Assert.notEmpty(pooledVerifiedApplications, "Tasks should not be empty");
         workflowService.assignTask(pooledVerifiedApplications.get(0));
 
         // find and complete assigned verified application
         // assuming there is exactly one
         // transition to APPROVED (COMPLETED)
-        List<Task> assignedVerifiedApplications = termService.findAssignedEnrollmentApplicationTasks(0, 100);
+        List<Task> assignedVerifiedApplications = termService.findAssignedAdmissionApplicationTasks(0, 100);
         Assert.notEmpty(assignedVerifiedApplications, "Tasks should not be empty");
         workflowService.completeTask(assignedVerifiedApplications.get(0)); // TO APPROVE
     }

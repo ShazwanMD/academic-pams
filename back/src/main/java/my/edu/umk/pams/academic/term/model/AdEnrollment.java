@@ -13,6 +13,14 @@ import my.edu.umk.pams.academic.planner.model.AdEnrollmentStatus;
  */
 public interface AdEnrollment extends AdMetaObject {
 
+    AdEnrollmentStatus getStatus();
+
+    void setStatus(AdEnrollmentStatus status);
+
+    AdEnrollmentStanding getStanding();
+
+    void setStanding(AdEnrollmentStanding level);
+
     AdAdmission getAdmission();
 
     void setAdmission(AdAdmission admission);
@@ -31,11 +39,4 @@ public interface AdEnrollment extends AdMetaObject {
 
     void setGradeCode(AdGradeCode gradeCode);
 
-    AdEnrollmentStatus getStatus();
-
-    void setStatus(AdEnrollmentStatus status);
-
-    AdEnrollmentStanding getStanding();
-
-    void setStanding(AdEnrollmentStanding level);
 }

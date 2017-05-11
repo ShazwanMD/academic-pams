@@ -45,5 +45,6 @@ public class AdmissionApplicationApproveTask extends BpmnActivityBehavior
         termService.updateAdmissionApplication(application);
 
         // todo: fire event
+        termService.postToAdmission(application);
     }
 }

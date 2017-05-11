@@ -50,9 +50,6 @@ public class TermServiceImpl implements TermService {
     private AdOfferingDao offeringDao;
 
     @Autowired
-    private AdChargeScheduleDao scheduleDao;
-
-    @Autowired
     private AdSectionDao sectionDao;
 
     @Autowired
@@ -512,6 +509,8 @@ public class TermServiceImpl implements TermService {
         String refNo = systemService.generateFormattedReferenceNo(ADMISSION_APPLICATION_REFERENCE_NO, param);
         application.setReferenceNo(refNo);
 
+        LOG.debug("saving application with refno {}", refNo);
+
         admissionApplicationDao.save(application, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
         sessionFactory.getCurrentSession().refresh(application);
@@ -550,12 +549,12 @@ public class TermServiceImpl implements TermService {
 
     @Override
     public AdAdmissionApplication findAdmissionApplicationById(Long id) {
-        return null;
+        return admissionApplicationDao.findById(id);
     }
 
     @Override
     public AdAdmissionApplication findAdmissionApplicationByReferenceNo(String referenceNo) {
-        return null;
+        return admissionApplicationDao.findByReferenceNo(referenceNo);
     }
 
     @Override
@@ -565,42 +564,35 @@ public class TermServiceImpl implements TermService {
 
     @Override
     public List<AdAdmissionApplication> findAdmissionApplications(AdAcademicSession session) {
-        return null;
+        return admissionApplicationDao.find(session);
     }
 
     @Override
-    public List<AdAdmissionApplication> findAdmissionApplications(AdAcademicSession session, Integer offset,
-                                                                  Integer limit) {
-        return null;
-    }
-
-    @Override
-    public List<AdAdmissionApplication> findAdmissionApplications(String filter, AdAcademicSession session,
-                                                                  Integer offset, Integer
-
-                                                                          limit) {
-        return null;
+    public List<AdAdmissionApplication> findAdmissionApplications(AdAcademicSession session, Integer offset, Integer limit) {
+        return admissionApplicationDao.find(session, offset, limit);
     }
 
     @Override
     public List<AdAdmissionApplication> findAdmissionApplications(String filter, AdAcademicSession session,
-                                                                  AdStudent student, Integer
-
-                                                                          offset, Integer limit) {
-        return null;
+                                                                  Integer offset, Integer limit) {
+        return admissionApplicationDao.find(filter, session, offset, limit);
     }
 
     @Override
     public List<AdAdmissionApplication> findAdmissionApplications(String filter, AdAcademicSession session,
-                                                                  AdStaff advisor, Integer
+                                                                  AdStudent student, Integer offset, Integer limit) {
+        return admissionApplicationDao.find(filter, session, student, offset, limit);
+    }
 
-                                                                          offset, Integer limit) {
-        return null;
+    @Override
+    public List<AdAdmissionApplication> findAdmissionApplications(String filter, AdAcademicSession session,
+                                                                  AdStaff advisor, Integer offset, Integer limit) {
+        return null; // todo
     }
 
     @Override
     public Integer countAdmissionApplication(AdAcademicSession session) {
-        return null;
+        return admissionApplicationDao.count(session);
     }
 
     @Override
@@ -662,7 +654,6 @@ public class TermServiceImpl implements TermService {
 
     @Override
     public void admit(AdAcademicSession session, AdStudent student, AdStudyCenter studyCenter, AdProgram program) {
-        // create admission
         AdAdmission admission = new AdAdmissionImpl();
         admission.setSession(session);
         admission.setStudent(student);
@@ -677,8 +668,9 @@ public class TermServiceImpl implements TermService {
         sessionFactory.getCurrentSession().refresh(admission);
 
         // trigger event
-        AdmissionConfirmedEvent event = new AdmissionConfirmedEvent();
-        applicationContext.publishEvent(event);
+        // todo: 
+        // AdmissionConfirmedEvent event = new AdmissionConfirmedEvent();
+        // applicationContext.publishEvent(event);
     }
 
     // ====================================================================================================
@@ -731,24 +723,6 @@ public class TermServiceImpl implements TermService {
 
         // trigger workflow
         workflowService.processWorkflow(application, prepareVariables(application));
-        return refNo;
-    }
-
-    //charge schedule startTask
-    @Override
-    public String startChargeScheduleTask(AdChargeSchedule schedule) {
-        // setup params for refno generation
-        HashMap<String, Object> param = new HashMap<String, Object>();
-        param.put("academicSession", plannerService.findCurrentAcademicSession());
-        String refNo = systemService.generateFormattedReferenceNo(CHARGE_SCHEDULE_CODE, param);
-        schedule.setCode(refNo);
-
-        scheduleDao.save(schedule, securityService.getCurrentUser());
-        sessionFactory.getCurrentSession().flush();
-        sessionFactory.getCurrentSession().refresh(schedule);
-
-        // trigger workflow
-        //workflowService.processWorkflow(schedule, prepareVariables(schedule));
         return refNo;
     }
 
@@ -1557,35 +1531,4 @@ public class TermServiceImpl implements TermService {
         map.put(WorkflowConstants.CANCEL_DECISION, false);
         return map;
     }
-
-
-    // ====================================================================================================
-    // CHARGE SCHEDULE
-    // ====================================================================================================
-
-    @Override
-    public AdChargeSchedule findScheduleByCode(String code) {
-        return scheduleDao.findByCode(code);
-    }
-
-    @Override
-    public AdChargeSchedule findScheduleByRefNo(String refNo) {
-        return scheduleDao.findByRefNo(refNo);
-    }
-
-    @Override
-    public void saveSchedule(AdChargeSchedule schedule) {
-        scheduleDao.save(schedule, securityService.getCurrentUser());
-        sessionFactory.getCurrentSession().flush();
-
-    }
-
-    @Override
-    public void updateSchedule(AdChargeSchedule schedule) {
-        scheduleDao.update(schedule, securityService.getCurrentUser());
-        sessionFactory.getCurrentSession().flush();
-
-    }
-
-
 }

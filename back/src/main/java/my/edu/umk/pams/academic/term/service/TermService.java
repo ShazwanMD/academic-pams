@@ -69,19 +69,6 @@ public interface TermService {
 
     void updateOffering(AdOffering offering);
 
-
-    //==========+==========================================================================================
-    // CHARGE SHCEDULE
-    //====================================================================================================
-
-    AdChargeSchedule findScheduleByCode(String code);
-
-    AdChargeSchedule findScheduleByRefNo(String refNo);
-
-    void saveSchedule(AdChargeSchedule schedule);
-
-    void updateSchedule(AdChargeSchedule schedule);
-
     //==========+==========================================================================================
     // SECTION
     //====================================================================================================
@@ -269,8 +256,6 @@ public interface TermService {
     Integer countPooledEnrollmentApplicationTasks();
 
     String startEnrollmentApplicationTask(AdEnrollmentApplication application);
-
-    String startChargeScheduleTask(AdChargeSchedule schedule);
 
     void updateEnrollmentApplication(AdEnrollmentApplication application);
 

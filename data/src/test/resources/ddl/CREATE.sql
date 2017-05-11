@@ -122,9 +122,9 @@
         M_ST int4,
         STANDING int4 not null,
         STATUS int4 not null,
-        COHORT_ID int8,
-        SESSION_ID int8,
-        STUDENT_ID int8,
+        COHORT_ID int8 not null,
+        SESSION_ID int8 not null,
+        STUDENT_ID int8 not null,
         STUDY_CENTER_ID int8,
         primary key (ID)
     );
@@ -133,7 +133,7 @@
         ID int8 not null,
         AUDIT_NO varchar(255),
         CANCEL_COMMENT varchar(255),
-        DESCRIPTION varchar(255)  null,
+        DESCRIPTION varchar(255) not null,
         AV_TS timestamp,
         AV_ID int8,
         CL_ID int8,
@@ -266,24 +266,6 @@
         M_ST int4,
         BUNDLE_ID int8,
         COURSE_ID int8,
-        primary key (ID)
-    );
-
-    create table AD_CHRG_SCDL (
-        ID int8 not null,
-        AMOUNT numeric(19, 2) not null,
-        CODE varchar(255) not null,
-        C_TS timestamp,
-        C_ID int8,
-        D_TS timestamp,
-        D_ID int8,
-        M_TS timestamp,
-        M_ID int8,
-        M_ST int4,
-        PERIOD int4 not null,
-        COHORT_ID int8,
-        PROGRAM_ID int8,
-        STUDY_CENTER_ID int8,
         primary key (ID)
     );
 
@@ -1513,24 +1495,6 @@
         foreign key (COURSE_ID)
         references AD_CRSE;
 
-    alter table AD_CHRG_SCDL
-        add constraint uc_AD_CHRG_SCDL_1 unique (CODE);
-
-    alter table AD_CHRG_SCDL
-        add constraint FK9DA1A5811EBD8A63
-        foreign key (COHORT_ID)
-        references AD_CHRT;
-
-    alter table AD_CHRG_SCDL
-        add constraint FK9DA1A581293A8391
-        foreign key (PROGRAM_ID)
-        references AD_PRGM;
-
-    alter table AD_CHRG_SCDL
-        add constraint FK9DA1A581680A6167
-        foreign key (STUDY_CENTER_ID)
-        references AD_STDY_CNTR;
-
     alter table AD_CHRT
         add constraint uc_AD_CHRT_1 unique (CODE);
 
@@ -1989,8 +1953,6 @@
 
     create sequence SQ_AD_BNDL_SBJT_PART;
 
-    create sequence SQ_AD_CHRG_SCDL;
-
     create sequence SQ_AD_CHRT;
 
     create sequence SQ_AD_CITY_CODE;
@@ -2032,6 +1994,8 @@
     create sequence SQ_AD_EMPT_SCTR_CODE;
 
     create sequence SQ_AD_ENMT;
+
+    create sequence SQ_AD_ENMT_APLN;
 
     create sequence SQ_AD_ENMT_APPL_ITEM;
 
@@ -2112,7 +2076,5 @@
     create sequence SQ_AD_VENU_CODE;
 
     create sequence SQ_AD_WTCH;
-
-    create sequence SQ_AD_ENMT_APLN;
 
     create sequence SQ_CNG_SBJT;

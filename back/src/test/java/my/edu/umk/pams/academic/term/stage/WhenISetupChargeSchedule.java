@@ -10,21 +10,18 @@ import my.edu.umk.pams.academic.common.service.CommonService;
 import my.edu.umk.pams.academic.planner.model.*;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
 import my.edu.umk.pams.academic.system.service.SystemService;
-import my.edu.umk.pams.academic.term.model.AdChargeSchedule;
-import my.edu.umk.pams.academic.term.model.AdChargeScheduleImpl;
 import my.edu.umk.pams.academic.term.service.TermService;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
 
-import static my.edu.umk.pams.academic.AcademicConstants.*;
-
-import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.List;
 
+import static my.edu.umk.pams.academic.AcademicConstants.CHARGE_SCHEDULE_CODE;
+
+@Deprecated
 @JGivenStage
 public class WhenISetupChargeSchedule extends Stage<WhenISetupChargeSchedule> {
 	private static final Logger LOG = LoggerFactory.getLogger(WhenISetupChargeSchedule.class);
@@ -59,8 +56,6 @@ public class WhenISetupChargeSchedule extends Stage<WhenISetupChargeSchedule> {
 	@ExpectedScenarioState
 	private AdAcademicSession academicSession;
 	
-	@ProvidedScenarioState
-	private AdChargeSchedule schedule; 
 
 	private AdCurriculum getCurriculum() {
 		Assert.notNull(program, "program cannot be null");
@@ -127,26 +122,26 @@ public class WhenISetupChargeSchedule extends Stage<WhenISetupChargeSchedule> {
 		String refNo = systemService.generateFormattedReferenceNo(CHARGE_SCHEDULE_CODE, param);
 
 		//insert new charge schedule
-		schedule = new AdChargeScheduleImpl();
-		schedule.setAmount(new BigDecimal("150.00"));
-		schedule.setCode(refNo);
-		schedule.setPeriod(AdAcademicPeriod.I);
-		schedule.setProgram(program);
+//		schedule = new AdChargeScheduleImpl();
+//		schedule.setAmount(new BigDecimal("150.00"));
+//		schedule.setCode(refNo);
+//		schedule.setPeriod(AdAcademicPeriod.I);
+//		schedule.setProgram(program);
 		//schedule.setStudyCenter(center);
-		schedule.setCohort(cohort);
-
-		termService.saveSchedule(schedule);
+//		schedule.setCohort(cohort);
+//
+//		termService.saveSchedule(schedule);
 		
-		Assert.notNull(schedule, "schedule cannot be null");
+//		Assert.notNull(schedule, "schedule cannot be null");
 
-		LOG.debug("==========view data after insert new========");
-		LOG.debug("schedule id: {}", schedule.getId());
-		LOG.debug("cohort: {}", schedule.getCohort().getId());
-		LOG.debug("program: {}", schedule.getProgram().getId());
-		LOG.debug("amount: {}", schedule.getAmount());
+//		LOG.debug("==========view data after insert new========");
+//		LOG.debug("schedule id: {}", schedule.getId());
+//		LOG.debug("cohort: {}", schedule.getCohort().getId());
+//		LOG.debug("program: {}", schedule.getProgram().getId());
+//		LOG.debug("amount: {}", schedule.getAmount());
 		//LOG.debug("studyCenter: {}", schedule.getStudyCenter().getCode());
-		LOG.debug("period: {}", schedule.getPeriod());
-		LOG.debug("code: {}", schedule.getCode());
+//		LOG.debug("period: {}", schedule.getPeriod());
+//		LOG.debug("code: {}", schedule.getCode());
 
 		return self();
 	}
@@ -160,25 +155,25 @@ public class WhenISetupChargeSchedule extends Stage<WhenISetupChargeSchedule> {
 		String refNo = systemService.generateFormattedReferenceNo(CHARGE_SCHEDULE_CODE, param);
 		
 		//update charge schedule
-		schedule.setAmount(new BigDecimal("190.00"));
-		schedule.setCode(refNo);
-		schedule.setPeriod(AdAcademicPeriod.II);
-		schedule.setProgram(program);
-		schedule.setStudyCenter(center);
-		schedule.setCohort(cohort);
+//		schedule.setAmount(new BigDecimal("190.00"));
+//		schedule.setCode(refNo);
+//		schedule.setPeriod(AdAcademicPeriod.II);
+//		schedule.setProgram(program);
+//		schedule.setStudyCenter(center);
+//		schedule.setCohort(cohort);
 
-		termService.updateSchedule(schedule);
+//		termService.updateSchedule(schedule);
 
-		Assert.notNull(schedule, "schedule cannot be null");
+//		Assert.notNull(schedule, "schedule cannot be null");
 		
 		LOG.debug("==========view data after update new========");
-		LOG.debug("schedule id: {}", schedule.getId());
-		LOG.debug("cohort: {}", schedule.getCohort().getId());
-		LOG.debug("program: {}", schedule.getProgram().getId());
-		LOG.debug("amount: {}", schedule.getAmount());
-		LOG.debug("studyCenter: {}", schedule.getStudyCenter().getCode());
-		LOG.debug("period: {}", schedule.getPeriod());
-		LOG.debug("code: {}", schedule.getCode());
+//		LOG.debug("schedule id: {}", schedule.getId());
+//		LOG.debug("cohort: {}", schedule.getCohort().getId());
+//		LOG.debug("program: {}", schedule.getProgram().getId());
+//		LOG.debug("amount: {}", schedule.getAmount());
+//		LOG.debug("studyCenter: {}", schedule.getStudyCenter().getCode());
+//		LOG.debug("period: {}", schedule.getPeriod());
+//		LOG.debug("code: {}", schedule.getCode());
 		
 		return self();
 	}
