@@ -490,7 +490,6 @@
                 <version>2.1.1</version>
                 <configuration>
                     <warName>academic</warName>
-                    <packagingExcludes>WEB-INF/lib/websocket-*.jar</packagingExcludes>
                 </configuration>
             </plugin>
             <!--<plugin>-->
