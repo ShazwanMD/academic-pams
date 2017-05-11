@@ -1,11 +1,12 @@
 import {Routes, RouterModule} from '@angular/router';
 import {OfferingCenterPage} from "./offering-center.page";
 import {OfferingDetailPage} from "./offering-detail.page";
-//import {OfferingEditorDialog} from "./offering-editor.dialog";
+import {OfferingEditorDialog} from "./dialog/offering-editor.dialog";
 
 // Route Configuration
 export const OfferingRoutes: Routes = [
   {path: 'term/offerings', component: OfferingCenterPage},
+  {path: 'term/offerings-dialog', component: OfferingEditorDialog},
   //{path: 'term/offerings/:code', component: OfferingDetailPage},
 
   {path: 'term/offerings/:canonicalCode', component: OfferingDetailPage},
