@@ -668,7 +668,7 @@ public class TermServiceImpl implements TermService {
         sessionFactory.getCurrentSession().refresh(admission);
 
         // trigger event
-        // todo: 
+        // todo:
         // AdmissionConfirmedEvent event = new AdmissionConfirmedEvent();
         // applicationContext.publishEvent(event);
     }

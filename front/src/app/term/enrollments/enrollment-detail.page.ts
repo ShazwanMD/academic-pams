@@ -28,15 +28,10 @@ export class EnrollmentDetailPage implements OnInit {
   }
 
   ngOnInit(): void {
-      this.route.params.subscribe((params: {id: string}) => {
-          let id: string = params.id;
-          this.store.dispatch(this.actions.findEnrollmentById(id));
-
-// this.route.params.subscribe((params: {id: string}) => {
- //     let id: string = params.id;
-    //  this.store.dispatch(this.actions.findEnrollmentByCanonicalCode(canonicalCode));
-
-      });
+    this.route.params.subscribe((params: { id: string }) => {
+      let id: string = params.id;
+      this.store.dispatch(this.actions.findEnrollmentById(id));
+    });
   }
 
 

@@ -8,7 +8,7 @@ const initialState: EnrollmentState = <Enrollment>{};
 
 export function enrollmentReducer(state = initialState, action: Action): EnrollmentState {
   switch (action.type) {
-    case EnrollmentActions.FIND_ENROLLMENTS: {
+    case EnrollmentActions.FIND_ENROLLMENT_BY_ID_SUCCESS: {
       return action.payload;
     }
     default: {

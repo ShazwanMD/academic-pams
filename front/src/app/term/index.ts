@@ -1,4 +1,4 @@
-import { Appointment } from './appointments/appointment.interface';
+import {Appointment} from './appointments/appointment.interface';
 import {NgModule, ModuleWithProviders} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {ReactiveFormsModule} from '@angular/forms';
@@ -26,8 +26,6 @@ import {appointmentReducer, AppointmentState} from "./appointments/appointment.r
 import {AppointmentSubModule} from "./appointments/index";
 import {AppointmentActions} from "./appointments/appointment.action";
 import {EnrollmentActions} from "./enrollments/enrollment.action";
-//import {AdmissionListComponent} from "./admissions/component/admission-list.component";
-//import {AdmissionComponent} from "./admissions/component/admission.component";
 
 export interface TermModuleState {
   offerings: OfferingListState;
@@ -36,7 +34,7 @@ export interface TermModuleState {
   enrollment: EnrollmentState;
   admissions: AdmissionListState;
   admission: AdmissionState;
-   appointments: AppointmentListState;
+  appointments: AppointmentListState;
   appointment: AppointmentState;
 }
 ;
@@ -49,14 +47,14 @@ export const INITIAL_TERM_STATE: TermModuleState =
     enrollment: <Enrollment>{},
     admissions: <Admission[]>[],
     admission: <Admission>{},
-     appointments: <Appointment[]>[],
+    appointments: <Appointment[]>[],
     appointment: <Appointment>{},
   };
 
 export const termModuleReducers = {
   offerings: offeringListReducer,
   offering: offeringReducer,
-   enrollments: enrollmentListReducer,
+  enrollments: enrollmentListReducer,
   enrollment: enrollmentReducer,
   admissions: admissionListReducer,
   admission: admissionReducer,
@@ -82,12 +80,12 @@ export const termModuleReducers = {
   declarations: [
     // page
     TermPage,
-    
+
     // component
-   // AdmissionListComponent,
-   // AdmissionComponent,
-    
-    
+    // AdmissionListComponent,
+    // AdmissionComponent,
+
+
   ],
   exports: [],
 })
@@ -103,7 +101,7 @@ export class TermModule {
         AdmissionActions,
         AppointmentActions,
         EnrollmentActions,
- 
+
       ],
     };
   }

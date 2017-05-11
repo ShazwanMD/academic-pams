@@ -10,6 +10,4 @@ export class EnrollmentComponent {
 
   @Input() enrollment: Enrollment;
   @Output() view = new EventEmitter<Enrollment>();
-  // @Output() addAttachment = new EventEmitter<ProgramAttachment>();
-  //  @Output() addComment = new EventEmitter<ProgramComment>();
 }

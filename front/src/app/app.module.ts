@@ -20,12 +20,13 @@ import {HomeComponent} from "./home/home.component";
 import {CustomUrlSerializer} from "./common/custom-url-serializer";
 import {UrlSerializer} from "@angular/router";
 
-import {CommonModuleState, INITIAL_COMMON_STATE, commonModuleReducers} from "./common/index";
 import {GraduationModule} from "./graduation/index";
+import {CommonModuleState, INITIAL_COMMON_STATE, commonModuleReducers} from "./common/index";
 import {ProfileModule, profileModuleReducers, ProfileModuleState, INITIAL_PROFILE_STATE} from "./profile/index";
 import {TermModule, termModuleReducers, TermModuleState, INITIAL_TERM_STATE} from "./term/index";
 import {PlannerModule, plannerModuleReducers, PlannerModuleState, INITIAL_PLANNER_STATE} from "./planner/index";
 import {SetupModule, setupModuleReducers, SetupModuleState, INITIAL_SETUP_STATE} from "./setup/index";
+import {IdentityModule, identityModuleReducers, IdentityModuleState, INITIAL_IDENTITY_STATE} from "./identity/index";
 // interceptor
 const httpInterceptorProviders: Type<any>[] = [
   RequestInterceptor,
@@ -34,11 +35,11 @@ const httpInterceptorProviders: Type<any>[] = [
 // state
 interface ApplicationState {
   commonModuleState: CommonModuleState;
+  identityModuleState: IdentityModuleState;
   profileModuleState: ProfileModuleState;
   plannerModuleState: PlannerModuleState;
   termModuleState: TermModuleState;
-  setupModuleState : SetupModuleState;
-  // graduationModuleState: GraduationModuleState;
+  setupModuleState: SetupModuleState;
 }
 ;
 
@@ -46,24 +47,22 @@ interface ApplicationState {
 export const INITIAL_APP_STATE: ApplicationState =
   <ApplicationState> {
     commonModuleState: INITIAL_COMMON_STATE,
+    identityModuleState: INITIAL_IDENTITY_STATE,
     profileModuleState: INITIAL_PROFILE_STATE,
     plannerModuleState: INITIAL_PLANNER_STATE,
     termModuleState: INITIAL_TERM_STATE,
-    setupModuleState :INITIAL_SETUP_STATE,
-    // graduationModuleState: INITIAL_GRADUATION_STATE,
-    
+    setupModuleState: INITIAL_SETUP_STATE,
+
   };
 
 // combine reducer
 export const applicationReducers = {
   commonModuleState: combineReducers({...commonModuleReducers}),
+  identityModuleState: combineReducers({...identityModuleReducers}),
   profileModuleState: combineReducers({...profileModuleReducers}),
   plannerModuleState: combineReducers({...plannerModuleReducers}),
   termModuleState: combineReducers({...termModuleReducers,}),
   setupModuleState: combineReducers({...setupModuleReducers}),
-  
-  // graduationModuleState: combineReducers({...graduationModuleReducers}),
-  
 };
 export const productionReducer: ActionReducer<ApplicationState> = combineReducers(applicationReducers);
 export function applicationReducer(applicationState: any = INITIAL_APP_STATE, action: any) {
@@ -77,7 +76,7 @@ export function applicationReducer(applicationState: any = INITIAL_APP_STATE, ac
     HomeComponent,
     DashboardComponent,
     LoginComponent,
-  ], // directives, components, and pipes owned by this NgModule
+  ],
   imports: [
     appRoutes,
     BrowserModule,
@@ -94,12 +93,13 @@ export function applicationReducer(applicationState: any = INITIAL_APP_STATE, ac
 
     StoreModule.provideStore(applicationReducer),
     StoreDevtoolsModule.instrumentOnlyWithExtension(),
+    IdentityModule.forRoot(),
     ProfileModule.forRoot(),
     PlannerModule.forRoot(),
     TermModule.forRoot(),
     GraduationModule.forRoot(),
     SetupModule.forRoot(),
-    
+
 
   ], // modules needed to run this module
   providers: [

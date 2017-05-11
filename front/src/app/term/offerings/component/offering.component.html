@@ -3,29 +3,33 @@
   <md-card-subtitle>List of offerings</md-card-subtitle>
   <md-divider></md-divider>
   <md-card-content>
-  <!--Tab Section Here-->
-  <md-tab-group>
-  <md-tab label="Offering Detail"><br>
+    <!--Tab Section Here-->
+    <md-tab-group>
+      <md-tab label="Offering Detail"><br>
+        <div>Code : {{offering.code}}</div>
+        <br>
+        <div>Title : {{offering.canonicalCode}}</div>
+        <br>
+        <div>TitleMs : {{offering.course.titleMs}}</div>
+        <br>
+        <div>TitleEn : {{offering.course.title}}</div>
+        <br>
+        <div>Credit : {{offering.course.credit}}</div>
+        <br>
+      </md-tab>
 
-    <div>Code    : {{offering.code}}</div><br>
-    <div>Title       : {{offering.canonicalCode}}</div><br>
-    <div>TitleMs : {{offering.course.titleMs}}</div><br>
-    <div>TitleEn : {{offering.course.title}}</div><br>
-    <div>Credit : {{offering.course.credit}}</div><br>
-  <button md-button  color="accent" class="text-upper" >UPDATE</button>
-  </md-tab>
+      <md-tab label="Information">
+        <div>Description details of the offering</div>
+        <br>
+      </md-tab>
 
-  <md-tab label="Information">
-  
-   <div>Description details of the offering</div><br>
-   
-   <button md-button  color="accent" class="text-upper" >UPDATE</button>
-  </md-tab>
-
-  </md-tab-group>
+    </md-tab-group>
 
   </md-card-content>
-  <md-divider></md-divider>
+  <md-card-actions layout-align="end center">
+    <button md-button color="accent" class="text-upper">UPDATE</button>
+  </md-card-actions>
+</md-card>
 
 
 

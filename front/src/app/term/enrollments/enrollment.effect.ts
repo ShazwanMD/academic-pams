@@ -16,5 +16,11 @@ export class EnrollmentEffects {
     .switchMap(() => this.termService.findEnrollments())
     .map(enrollments => this.enrollmentActions.findEnrollmentsSuccess(enrollments));
 
- 
+  @Effect() findEnrollmentById$ = this.actions$
+    .ofType(EnrollmentActions.FIND_ENROLLMENT_BY_ID)
+    .map(action => action.payload)
+    .switchMap(id => this.termService.findEnrollmentById(id))
+    .map(enrollment => this.enrollmentActions.findEnrollmentByIdSuccess(enrollment));
+
+
 }

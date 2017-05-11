@@ -10,8 +10,4 @@ export class OfferingComponent {
 
   @Input() offering: Offering;
   @Output() view = new EventEmitter<Offering>();
-  // @Output() addComment = new EventEmitter<ProgramComment>();
-  // @Output() addAttachment = new EventEmitter<ProgramAttachment>();
-
-   
 }

@@ -143,18 +143,24 @@ public class TermController {
         return new ResponseEntity<List<Enrollment>>(termTransformer.toEnrollmentVos(enrollments), HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/enrollments/current", method = RequestMethod.GET)
+    @RequestMapping(value = "/enrollments/academicSession/current", method = RequestMethod.GET)
     public ResponseEntity<List<Enrollment>> findCurrentEnrollments() {
         AdAcademicSession academicSession = plannerService.findCurrentAcademicSession();
         List<AdEnrollment> enrollments = termService.findEnrollments(academicSession);
         return new ResponseEntity<List<Enrollment>>(termTransformer.toEnrollmentVos(enrollments), HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/enrollments/{academicSessionCode}", method = RequestMethod.GET)
+    @RequestMapping(value = "/enrollments/academicSession/{academicSessionCode}", method = RequestMethod.GET)
     public ResponseEntity<List<Enrollment>> findEnrollmentsByAcademicSession(@PathVariable String academicSessionCode) {
         AdAcademicSession academicSession = plannerService.findAcademicSessionByCode(academicSessionCode);
         List<AdEnrollment> enrollments = termService.findEnrollments(academicSession);
         return new ResponseEntity<List<Enrollment>>(termTransformer.toEnrollmentVos(enrollments), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/enrollments/{id}", method = RequestMethod.GET)
+    public ResponseEntity<Enrollment> findEnrollmentByid(@PathVariable Long id) {
+        AdEnrollment enrollment = termService.findEnrollmentById(id);
+        return new ResponseEntity<Enrollment>(termTransformer.toEnrollmentVo(enrollment), HttpStatus.OK);
     }
 
     // workflow
