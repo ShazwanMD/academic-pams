@@ -16,6 +16,7 @@ import {EffectsModule} from "@ngrx/effects";
 import {AppointmentEffects} from "./appointment.effect";
 import {AppointmentDetailPage} from "./appointment-detail.page";
 import {AppointmentComponent} from "./component/appointment.component";
+import {AppointmentEditorDialog} from "./dialog/appointment-editor.dialog";
 
 @NgModule({
   imports: [
@@ -33,6 +34,10 @@ import {AppointmentComponent} from "./component/appointment.component";
     // component
     AppointmentListComponent,
     AppointmentComponent,
+    
+  //dialog
+    AppointmentEditorDialog,
+    
   ],
   exports: [],
 })
