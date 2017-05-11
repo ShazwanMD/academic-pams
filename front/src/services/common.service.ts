@@ -1,18 +1,13 @@
-import { RaceCode } from './../app/common/race-codes/race-code.interface';
-import { StateCode } from './../app/common/state-codes/state-code.interface';
-import { MaritalCode } from './../app/setup/marital-codes/marital-code.interface';
-import { CountryCode } from './../app/common/country-codes/country-code.interface';
-import { environment } from './../environments/environment';
-import { GenderCode } from './../app/common/gender-codes/gender-code.interface';
+import {RaceCode} from './../app/common/race-codes/race-code.interface';
+import {StateCode} from './../app/common/state-codes/state-code.interface';
+import {MaritalCode} from './../app/setup/marital-codes/marital-code.interface';
+import {CountryCode} from './../app/common/country-codes/country-code.interface';
+import {environment} from './../environments/environment';
+import {GenderCode} from './../app/common/gender-codes/gender-code.interface';
 import {Injectable} from '@angular/core';
 import {Response, Http, Headers, RequestOptions} from '@angular/http';
 import {HttpInterceptorService} from '@covalent/http';
 import {Observable} from "rxjs";
-
-
-
-
-
 
 
 @Injectable()
@@ -38,79 +33,74 @@ export class CommonService {
     return this.http.get(environment.endpoint + '/api/common/genderCodes/' + code)
       .map((res: Response) => <GenderCode>res.json());
   }
-  
+
 
 // ====================================================================================================
 // COUNTRYCODE
 // ====================================================================================================
 
-findCountryCodes(): Observable<CountryCode[]> {
+  findCountryCodes(): Observable<CountryCode[]> {
     console.log("findCountryCodes()");
-return this.http.get(environment.endpoint + '/api/common/countryCodes')
-    .map((res: Response) => <CountryCode[]>res.json());
-}
+    return this.http.get(environment.endpoint + '/api/common/countryCodes')
+      .map((res: Response) => <CountryCode[]>res.json());
+  }
 
-findCountryCodeByCode(code:string): Observable<CountryCode> {
+  findCountryCodeByCode(code: string): Observable<CountryCode> {
     console.log("findCountryCodeByCode");
-return this.http.get(environment.endpoint + '/api/common/countryCodes/' + code)
-    .map((res: Response) => <CountryCode>res.json());
-}
-
+    return this.http.get(environment.endpoint + '/api/common/countryCodes/' + code)
+      .map((res: Response) => <CountryCode>res.json());
+  }
 
 
 // ====================================================================================================
 // MARITALCODE
 // ====================================================================================================
 
-findMaritalCodes(): Observable<MaritalCode[]> {
+  findMaritalCodes(): Observable<MaritalCode[]> {
     console.log("findMaritalCodes()");
-return this.http.get(environment.endpoint + '/api/common/maritalCodes')
-    .map((res: Response) => <MaritalCode[]>res.json());
-}
+    return this.http.get(environment.endpoint + '/api/common/maritalCodes')
+      .map((res: Response) => <MaritalCode[]>res.json());
+  }
 
-findMaritalCodeByCode(code:string): Observable<MaritalCode> {
+  findMaritalCodeByCode(code: string): Observable<MaritalCode> {
     console.log("findMaritalCodeByCode");
-return this.http.get(environment.endpoint + '/api/common/maritalCodes/' + code)
-    .map((res: Response) => <MaritalCode>res.json());
-}
-
+    return this.http.get(environment.endpoint + '/api/common/maritalCodes/' + code)
+      .map((res: Response) => <MaritalCode>res.json());
+  }
 
 
 // ====================================================================================================
 // RACECODE
 // ====================================================================================================
 
-findRaceCodes(): Observable<RaceCode[]> {
+  findRaceCodes(): Observable<RaceCode[]> {
     console.log("findRaceCodes()");
-return this.http.get(environment.endpoint + '/api/common/raceCodes')
-    .map((res: Response) => <RaceCode[]>res.json());
-}
+    return this.http.get(environment.endpoint + '/api/common/raceCodes')
+      .map((res: Response) => <RaceCode[]>res.json());
+  }
 
-findRaceCodeByCode(code:string): Observable<RaceCode> {
+  findRaceCodeByCode(code: string): Observable<RaceCode> {
     console.log("findRaceCodeByCode");
-return this.http.get(environment.endpoint + '/api/common/raceCodes/' + code)
-    .map((res: Response) => <RaceCode>res.json());
-}
+    return this.http.get(environment.endpoint + '/api/common/raceCodes/' + code)
+      .map((res: Response) => <RaceCode>res.json());
+  }
 
 
 // ====================================================================================================
 // STATECODE
 // ====================================================================================================
 
-findStateCodes(): Observable<StateCode[]> {
+  findStateCodes(): Observable<StateCode[]> {
     console.log("findStateCodes()");
-return this.http.get(environment.endpoint + '/api/common/stateCodes')
-    .map((res: Response) => <StateCode[]>res.json());
-}
+    return this.http.get(environment.endpoint + '/api/common/stateCodes')
+      .map((res: Response) => <StateCode[]>res.json());
+  }
 
-findStateCodeByCode(code:string): Observable<StateCode> {
+  findStateCodeByCode(code: string): Observable<StateCode> {
     console.log("findStateCodeByCode");
-return this.http.get(environment.endpoint + '/api/common/stateCodes/' + code)
-    .map((res: Response) => <StateCode>res.json());
-}
-
-
-
+    return this.http.get(environment.endpoint + '/api/common/stateCodes/' + code)
+      .map((res: Response) => <StateCode>res.json());
+  }
 
 
 }

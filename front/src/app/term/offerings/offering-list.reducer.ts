@@ -10,7 +10,6 @@ export type OfferingListState = Offering[];
 const initialState: OfferingListState = <Offering[]>[];
 
 export function offeringListReducer(state = initialState, action: Action): OfferingListState {
-  console.log("action: " + action.type);
   switch (action.type) {
     case OfferingActions.FIND_OFFERINGS_SUCCESS: {
       return action.payload;

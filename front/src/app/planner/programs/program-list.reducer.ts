@@ -10,7 +10,6 @@ export type ProgramListState = Program[];
 const initialState: ProgramListState = <Program[]>[];
 
 export function programListReducer(state = initialState, action: Action): ProgramListState {
-  console.log("action: " + action.type);
   switch (action.type) {
     case ProgramActions.FIND_PROGRAMS_SUCCESS: {
       return action.payload;

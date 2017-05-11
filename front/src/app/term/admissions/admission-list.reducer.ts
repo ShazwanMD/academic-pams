@@ -10,7 +10,6 @@ export type AdmissionListState = Admission[];
 const initialState: AdmissionListState = <Admission[]>[];
 
 export function admissionListReducer(state = initialState, action: Action): AdmissionListState {
-  console.log("action: " + action.type);
   switch (action.type) {
     case AdmissionActions.FIND_ADMISSIONS_SUCCESS: {
       return action.payload;

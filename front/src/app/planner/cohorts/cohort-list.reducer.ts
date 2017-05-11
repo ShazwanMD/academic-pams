@@ -10,7 +10,6 @@ export type CohortListState = Cohort[];
 const initialState: CohortListState = <Cohort[]>[];
 
 export function cohortListReducer(state = initialState, action: Action): CohortListState {
-  console.log("action: " + action.type);
   switch (action.type) {
     case CohortActions.FIND_COHORTS_SUCCESS: {
       return action.payload;

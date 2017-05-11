@@ -10,7 +10,6 @@ export type AppointmentListState = Appointment[];
 const initialState: AppointmentListState = <Appointment[]>[];
 
 export function appointmentListReducer(state = initialState, action: Action): AppointmentListState {
-  console.log("action: " + action.type);
   switch (action.type) {
     case AppointmentActions.FIND_APPOINTMENTS_SUCCESS: {
       return action.payload;

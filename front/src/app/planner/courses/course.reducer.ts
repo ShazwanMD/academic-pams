@@ -7,7 +7,6 @@ export type CourseState = Course;
 const initialState: CourseState = <Course>{};
 
 export function courseReducer(state = initialState, action: Action): CourseState {
-  console.log("action: " + action);
   switch (action.type) {
     case CourseActions.RESET_COURSE: {
       return initialState;

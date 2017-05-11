@@ -7,7 +7,6 @@ export type AdmissionState = Admission;
 const initialState: AdmissionState = <Admission>{};
 
 export function admissionReducer(state = initialState, action: Action): AdmissionState {
-  console.log("action: " + action);
   switch (action.type) {
     case AdmissionActions.FIND_ADMISSION_BY_ID_SUCCESS: {
       return action.payload;

@@ -8,7 +8,6 @@ export type GuardianListState = Guardian[];
 const initialState: GuardianListState = <Guardian[]>[];
 
 export function guardianListReducer(state = initialState, action: Action): GuardianListState {
-  console.log("action: " + action.type);
   switch (action.type) {
     case ProfileActions.FIND_GUARDIANS_SUCCESS: {
       return action.payload;

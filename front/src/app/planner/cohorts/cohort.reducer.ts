@@ -7,7 +7,6 @@ export type CohortState = Cohort;
 const initialState: CohortState = <Cohort>{};
 
 export function cohortReducer(state = initialState, action: Action): CohortState {
-  console.log("action: " + action);
   switch (action.type) {
     case CohortActions.RESET_COHORT: {
       return initialState;

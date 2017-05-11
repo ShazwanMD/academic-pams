@@ -10,7 +10,6 @@ export type EnrollmentListState = Enrollment[];
 const initialState: EnrollmentListState = <Enrollment[]>[];
 
 export function enrollmentListReducer(state = initialState, action: Action): EnrollmentListState {
-  console.log("action: " + action.type);
   switch (action.type) {
     case EnrollmentActions.FIND_ENROLLMENTS_SUCCESS: {
       return action.payload;

@@ -8,7 +8,6 @@ export type AddressListState = Address[];
 const initialState: AddressListState = <Address[]>[];
 
 export function addressListReducer(state = initialState, action: Action): AddressListState {
-  console.log("action: " + action.type);
   switch (action.type) {
     case ProfileActions.FIND_ADDRESSES_SUCCESS: {
       return action.payload;

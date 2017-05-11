@@ -7,7 +7,6 @@ export type EnrollmentState = Enrollment;
 const initialState: EnrollmentState = <Enrollment>{};
 
 export function enrollmentReducer(state = initialState, action: Action): EnrollmentState {
-  console.log("action: " + action);
   switch (action.type) {
     case EnrollmentActions.FIND_ENROLLMENTS: {
       return action.payload;

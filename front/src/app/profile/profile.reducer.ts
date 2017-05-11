@@ -7,7 +7,6 @@ export type ProfileState = Student;
 const initialState: ProfileState = <Student>{};
 
 export function profileReducer(state = initialState, action: Action): ProfileState {
-  console.log("action: " + action.type);
   switch (action.type) {
     case ProfileActions.RESET_PROFILE: {
       return initialState;

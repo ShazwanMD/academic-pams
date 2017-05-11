@@ -10,7 +10,6 @@ export type AcademicSessionListState = AcademicSession [];
 const initialState: AcademicSessionListState = <AcademicSession[]>[];
 
 export function sessionListReducer (state = initialState, action: Action): AcademicSessionListState {
-    console.log ("action: " + action.type);
     switch (action.type) {
         case AcademicSessionActions.FIND_SESSIONS_SUCCESS: {
             return action.payload;

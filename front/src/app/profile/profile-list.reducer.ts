@@ -10,7 +10,6 @@ export type ProfileListState = Student[];
 const initialState: ProfileListState = <Student[]>[];
 
 export function profileListReducer(state = initialState, action: Action): ProfileListState {
-  console.log("action: " + action.type);
   switch (action.type) {
     case ProfileActions.FIND_PROFILES_SUCCESS: {
       return action.payload;

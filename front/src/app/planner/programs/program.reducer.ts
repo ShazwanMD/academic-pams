@@ -7,7 +7,6 @@ export type ProgramState = Program;
 const initialState: ProgramState = <Program>{};
 
 export function programReducer(state = initialState, action: Action): ProgramState {
-  console.log("action: " + action.type);
   switch (action.type) {
     case ProgramActions.RESET_PROGRAM: {
       return initialState;
