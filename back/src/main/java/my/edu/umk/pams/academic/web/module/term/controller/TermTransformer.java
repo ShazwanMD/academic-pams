@@ -1,8 +1,10 @@
 package my.edu.umk.pams.academic.web.module.term.controller;
 
 import my.edu.umk.pams.academic.AcademicConstants;
+import my.edu.umk.pams.academic.common.service.CommonService;
 import my.edu.umk.pams.academic.term.model.*;
 import my.edu.umk.pams.academic.term.service.TermService;
+import my.edu.umk.pams.academic.web.module.common.controller.CommonTransformer;
 import my.edu.umk.pams.academic.web.module.core.vo.FlowState;
 import my.edu.umk.pams.academic.web.module.core.vo.MetaState;
 import my.edu.umk.pams.academic.web.module.identity.controller.IdentityTransformer;
@@ -32,12 +34,18 @@ public class TermTransformer {
 
     @Autowired
     private TermService termService;
+    
+    @Autowired
+    private CommonService commonService;
 
     @Autowired
     private WorkflowService workflowService;
 
     @Autowired
     private IdentityTransformer identityTransformer;
+    
+    @Autowired
+    private CommonTransformer commonTransformer;
 
     @Autowired
     private PlannerTransformer plannerTransformer;
@@ -130,8 +138,9 @@ public class TermTransformer {
         Enrollment vo = new Enrollment();
         vo.setId(enrollment.getId());
         vo.setStudent(identityTransformer.toStudentVo(enrollment.getStudent()));
-        //vo.setOffering(toOfferingVo);
-        
+        vo.setAdmission(this.toAdmissionVo(enrollment.getAdmission()));
+        //vo.setGradeCode(commonTransformer.toGradeCodeVo(enrollment.getGradeCode()));
+        vo.setSection(this.toSectionVo(enrollment.getSection()));
         return vo;
     }
 
