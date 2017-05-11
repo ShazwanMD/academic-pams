@@ -16,6 +16,7 @@ import {EffectsModule} from "@ngrx/effects";
 import {OfferingEffects} from "./offering.effect";
 import {OfferingDetailPage} from "./offering-detail.page";
 import {OfferingComponent} from "./component/offering.component";
+import {OfferingEditorDialog} from "./dialog/offering-editor.dialog";
 
 @NgModule({
   imports: [
@@ -33,6 +34,10 @@ import {OfferingComponent} from "./component/offering.component";
     // component
     OfferingListComponent,
     OfferingComponent,
+    
+    //dialog
+    OfferingEditorDialog,
+    
   ],
   exports: [],
 })

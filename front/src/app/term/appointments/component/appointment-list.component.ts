@@ -15,9 +15,9 @@ export class AppointmentListComponent {
     {name: 'id', label: 'Id'},
     {name: 'staff.name', label: 'Staf Name'},
     {name: 'section.code', label: 'Section'},
-    {name: 'session.code', label: 'Academic Session'},
-    {name: 'session.description', label: 'Offering'},
-    {name: 'course.title', label: 'Course Name'},
+    {name: 'section.session.code', label: 'Academic Session'},
+    {name: 'section.offering.course.title', label: 'Course Offering'},
+    {name: 'section.offering.program.code', label: 'Program'},
     {name: 'action', label: ''}
   ];
 }
