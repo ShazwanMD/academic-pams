@@ -23,18 +23,18 @@ export class AcademicSessionActions {
     };
   }
 
-  static FIND_ACADEMIC_SESSION = '[AcademicSession] Find AcademicSession';
-  findAcademicSession(code): Action {
+  static FIND_ACADEMIC_SESSION_BY_CODE = '[AcademicSession] Find AcademicSession By Code';
+  findAcademicSessionByCode(code): Action {
     return {
-      type: AcademicSessionActions.FIND_ACADEMIC_SESSION,
+      type: AcademicSessionActions.FIND_ACADEMIC_SESSION_BY_CODE,
       payload: code
     };
   }
 
-  static FIND_ACADEMIC_SESSION_SUCCESS = '[AcademicSession] Find AcademicSession Success';
-  findAcademicSessionsuccess(academicSession): Action {
+  static FIND_ACADEMIC_SESSION_BY_CODE_SUCCESS = '[AcademicSession] Find AcademicSession By Code Success';
+  findAcademicSessionByCodeSuccess(academicSession): Action {
     return {
-      type: AcademicSessionActions.FIND_ACADEMIC_SESSION_SUCCESS,
+      type: AcademicSessionActions.FIND_ACADEMIC_SESSION_BY_CODE_SUCCESS,
       payload: academicSession
     };
   }

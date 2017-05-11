@@ -17,4 +17,11 @@ export class AcademicSessionEffects {
     .map(academicSessions => this.academicSessionActions.findAcademicSessionsSuccess(academicSessions));
 
 
+  @Effect() findAcademicSessionByCode$ = this.actions$
+    .ofType(AcademicSessionActions.FIND_ACADEMIC_SESSION_BY_CODE)
+    .map(action => action.payload)
+    .switchMap(code => this.plannerService.findAcademicSessionByCode(code))
+    .map(academicSession => this.academicSessionActions.findAcademicSessionByCodeSuccess(academicSession));
+
+
 }

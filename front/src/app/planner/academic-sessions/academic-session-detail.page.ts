@@ -31,7 +31,7 @@ export class AcademicSessionDetailPage implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe((params: { code: string }) => {
       let code: string = params.code;
-      this.store.dispatch(this.actions.findAcademicSession(code));
+      this.store.dispatch(this.actions.findAcademicSessionByCode(code));
     });
   }
 

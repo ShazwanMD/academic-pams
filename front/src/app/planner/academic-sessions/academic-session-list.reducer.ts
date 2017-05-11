@@ -9,7 +9,7 @@ export type AcademicSessionListState = AcademicSession [];
 
 const initialState: AcademicSessionListState = <AcademicSession[]>[];
 
-export function sessionListReducer(state = initialState, action: Action): AcademicSessionListState {
+export function academicSessionListReducer(state = initialState, action: Action): AcademicSessionListState {
   switch (action.type) {
     case AcademicSessionActions.FIND_ACADEMIC_SESSIONS_SUCCESS: {
       return action.payload;

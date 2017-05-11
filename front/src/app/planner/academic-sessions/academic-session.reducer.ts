@@ -6,9 +6,9 @@ export type AcademicSessionState = AcademicSession;
 
 const initialState: AcademicSessionState = <AcademicSession> {};
 
-export function sessionReducer (state = initialState, action: Action) : AcademicSessionState {
+export function academicSessionReducer (state = initialState, action: Action) : AcademicSessionState {
     switch (action.type) {
-        case AcademicSessionActions.FIND_ACADEMIC_SESSION_SUCCESS: {
+        case AcademicSessionActions.FIND_ACADEMIC_SESSION_BY_CODE_SUCCESS: {
             return action.payload;
         }
         default: {

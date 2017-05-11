@@ -26,6 +26,14 @@ export class PlannerService {
       .map((res: Response) =><AcademicSession[]>res.json());
   }
 
+  findAcademicSessionByCode(code: string): Observable<AcademicSession> {
+    let headers = new Headers({'Authorization': 'Bearer TODO'});
+    let options = new RequestOptions({headers: headers});
+    return this.http.get(environment.endpoint + '/api/planner/academicSessions/' + code, options)
+      .map((res: Response) =><AcademicSession>res.json());
+  }
+
+
   // ====================================================================================================
   // FACULTY
   // ====================================================================================================
