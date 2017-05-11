@@ -1,10 +1,16 @@
 package my.edu.umk.pams.academic.web.module.term.vo;
 
 import my.edu.umk.pams.academic.web.module.core.vo.MetaObject;
+
 import my.edu.umk.pams.academic.web.module.identity.vo.Student;
 import my.edu.umk.pams.academic.web.module.planner.vo.AcademicSession;
+import my.edu.umk.pams.academic.web.module.planner.vo.Cohort;
 
+import java.io.IOException;
 import java.math.BigDecimal;
+
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
  * @author PAMS
@@ -17,6 +23,7 @@ public class Admission extends MetaObject{
     private Integer creditEarned;
     private Student student;
     private AcademicSession academicSession;
+    private Cohort cohort;
 
     public BigDecimal getGpa() {
         return gpa;
@@ -65,4 +72,25 @@ public class Admission extends MetaObject{
     public void setAcademicSession(AcademicSession academicSession) {
         this.academicSession = academicSession;
     }
+    
+    public Cohort getCohort() {
+        return cohort;
+    }
+
+    public void setCohort(Cohort cohort) {
+        this.cohort = cohort;
+    }
+    
+    @JsonCreator
+    public static Admission create(String jsonString) {
+        Admission o = null;
+        try {
+            ObjectMapper mapper = new ObjectMapper();
+            o = mapper.readValue(jsonString, Admission.class);
+        } catch (IOException e) {
+            // handle
+        }
+        return o;
+    }
+    
 }

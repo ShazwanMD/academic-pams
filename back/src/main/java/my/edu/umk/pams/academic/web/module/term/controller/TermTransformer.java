@@ -10,6 +10,8 @@ import my.edu.umk.pams.academic.web.module.planner.controller.PlannerTransformer
 import my.edu.umk.pams.academic.web.module.term.vo.*;
 import my.edu.umk.pams.academic.workflow.service.WorkflowService;
 import org.activiti.engine.task.Task;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -25,6 +27,8 @@ import static java.util.stream.Collectors.toList;
  */
 @Component("termTransformer")
 public class TermTransformer {
+	
+	 private static final Logger LOG = LoggerFactory.getLogger(TermTransformer.class);
 
     @Autowired
     private TermService termService;
@@ -78,12 +82,18 @@ public class TermTransformer {
         vo.setCreditTaken(admission.getCreditTaken());
         vo.setStudent(identityTransformer.toStudentVo(admission.getStudent()));
         vo.setAcademicSession(plannerTransformer.toAcademicSessionVo(admission.getSession()));
+        vo.setCohort(plannerTransformer.toCohortVo(admission.getCohort()));
         return vo;
     }
 
     public Appointment toAppointmentVo(AdAppointment appointment) {
         Appointment vo = new Appointment();
         vo.setId(appointment.getId());
+        //vo.setAppointmentStatus(appointment.getStatus());
+        vo.setStaff(identityTransformer.toStaffVo(appointment.getStaff()));
+        
+		/*Section section = null;
+		vo.setSection(appointment.getSection());*/
         return vo;
     }
 
@@ -121,6 +131,9 @@ public class TermTransformer {
     public Enrollment toEnrollmentVo(AdEnrollment enrollment) {
         Enrollment vo = new Enrollment();
         vo.setId(enrollment.getId());
+        vo.setStudent(identityTransformer.toStudentVo(enrollment.getStudent()));
+        //vo.setOffering(toOfferingVo);
+        
         return vo;
     }
 
@@ -130,6 +143,7 @@ public class TermTransformer {
         vo.setCode(offering.getCode());
         vo.setCanonicalCode(offering.getCanonicalCode());
         vo.setCourse(plannerTransformer.toCourseVo(offering.getCourse()));
+        vo.setProgram(plannerTransformer.toProgramVo(offering.getProgram()));
         return vo;
     }
 

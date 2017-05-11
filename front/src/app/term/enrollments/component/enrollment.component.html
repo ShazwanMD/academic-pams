@@ -1,11 +1,30 @@
-
+<!-- Basic Card -->
 <md-card>
-  <md-card-title>#{{enrollment.id}}: {{enrollment.id}}</md-card-title>
-  <md-card-subtitle>{{enrollment.id}}</md-card-subtitle>
-  <md-card-title>ENROLLMENT{{enrollment.id}} {{enrollment.id}}</md-card-title>
-  <md-card-subtitle> {{enrollment.id}}</md-card-subtitle>
-  <md-card-actions>
+  <md-card-title>ENROLLMENT</md-card-title>
+  <md-card-subtitle>List of enrollment</md-card-subtitle>
+  <md-divider></md-divider>
+  <md-card-content>
+  <!--Tab Section Here-->
+  <md-tab-group>
+  <md-tab label="Enrollment Detail"><br>
 
-  </md-card-actions>
-</md-card>
+    <div>Code    : {{enrollment.code}}</div><br>
+    <div>Title       : {{enrollment.title}}</div><br>
+    <div>TitleMs : {{enrollment.titleMs}}</div><br>
+    <div>TitleEn : {{enrollment.titleEn}}</div><br>
+
+  </md-tab>
+
+  <md-tab label="Information">
+  
+   <div>Description details of the enrollment</div><br>
+   
+
+  </md-tab>
+  </md-tab-group>
+
+  </md-card-content>
+  <md-divider></md-divider>
+
+
 

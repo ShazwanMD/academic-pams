@@ -19,10 +19,10 @@ export class PlannerService {
   // ACADEMIC SESSION
   // ====================================================================================================
 
-  findSessions(): Observable<AcademicSession[]> {
+  findAcademicSessions(): Observable<AcademicSession[]> {
     let headers = new Headers({'Authorization': 'Bearer TODO'});
     let options = new RequestOptions({headers: headers});
-    return this.http.get(environment.endpoint + '/api/planner/academicSession')
+    return this.http.get(environment.endpoint + '/api/planner/academicSessions')
       .map((res: Response) =><AcademicSession[]>res.json());
   }
 

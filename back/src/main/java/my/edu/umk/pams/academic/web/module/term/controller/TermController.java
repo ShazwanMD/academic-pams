@@ -78,6 +78,12 @@ public class TermController {
         List<AdAdmission> admissions = termService.findAdmissions(academicSession, 0, 100);
         return new ResponseEntity<List<Admission>>(termTransformer.toAdmissionVos(admissions), HttpStatus.OK);
     }
+    
+    @RequestMapping(value = "/admissions/{id}", method = RequestMethod.GET)
+    public ResponseEntity<Admission> findAdmission(@PathVariable Long id) {
+        AdAdmission admission = termService.findAdmissionById(id);
+        return new ResponseEntity<Admission>(termTransformer.toAdmissionVo(admission), HttpStatus.OK);
+    }
 
     // workflow
 
@@ -224,6 +230,8 @@ public class TermController {
         List<AdAppointment> appointments = termService.findAppointments(academicSession);
         return new ResponseEntity<List<Appointment>>(termTransformer.toAppointmentVos(appointments), HttpStatus.OK);
     }
+    
+   
 
     //====================================================================================================
     // OFFERING

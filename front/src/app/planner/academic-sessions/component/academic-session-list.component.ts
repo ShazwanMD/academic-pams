@@ -9,8 +9,8 @@ import {AcademicSession} from "../academic-session.interface";
 
 export class AcademicSessionListComponent {
 
-    @Input () sessions : AcademicSession [];
-    @Output () view = new EventEmitter<AcademicSession>();
+    @Input() academicSessions: AcademicSession[];
+    @Output() view = new EventEmitter<AcademicSession>();
 
     private columns: any [] = [
         {name: 'code', label: 'Code'},

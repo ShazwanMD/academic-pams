@@ -9,6 +9,7 @@ import {PlannerService} from '../../../services';
 
 import {AcademicSessionCenterPage} from "./academic-session-center.page";
 import {AcademicSessionListComponent} from "./component/academic-session-list.component";
+import {AcademicSessionComponent} from "./component/academic-session.component";
 import {AcademicSessionDetailPage} from "./academic-session-detail.page";
 import {AcademicSessionActions} from "./academic-session.action";
 import {AcademicSessionEffects} from   "./academic-session.effect";
@@ -31,6 +32,8 @@ import {EffectsModule} from "@ngrx/effects";
 
         //component
         AcademicSessionListComponent,
+        AcademicSessionComponent,
+       
        
     ],
     exports: [],

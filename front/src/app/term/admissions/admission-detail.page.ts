@@ -16,7 +16,7 @@ import {TermModuleState} from "../index";
 
 export class AdmissionDetailPage implements OnInit {
 
-  private ADMISSION = "termModuleState.offering".split(".");
+  private ADMISSION = "termModuleState.admission".split(".");
   private admission$: Observable<Admission>;
 
   constructor(private router: Router,
@@ -28,9 +28,9 @@ export class AdmissionDetailPage implements OnInit {
   }
 
   ngOnInit(): void {
-    this.route.params.subscribe((params: {canonicalCode: string}) => {
-      let canonicalCode: string = params.canonicalCode;
-     // this.store.dispatch(this.actions.findAdmissionByCanonicalCode(canonicalCode));
+    this.route.params.subscribe((params: {id: string}) => {
+      let id: string = params.id;
+     this.store.dispatch(this.actions.findAdmissionById(id));
     });
   }
 

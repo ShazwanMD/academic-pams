@@ -12,6 +12,7 @@ import {IdentityService} from '../../../services';
 import {EffectsModule} from "@ngrx/effects";
 import {AdmissionActions} from "./admission.action";
 import {AdmissionListComponent} from "./component/admission-list.component";
+import {AdmissionComponent} from "./component/admission.component";
 import {AdmissionDetailPage} from "./admission-detail.page";
 import {AdmissionCenterPage} from "./admission-center.page";
 import {AdmissionEffects} from "./admission.effect";
@@ -31,6 +32,7 @@ import {AdmissionEffects} from "./admission.effect";
 
     // component
     AdmissionListComponent,
+    AdmissionComponent,
   ],
   exports: [],
 })

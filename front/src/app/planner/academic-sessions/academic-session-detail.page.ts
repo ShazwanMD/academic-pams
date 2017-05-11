@@ -18,25 +18,25 @@ import {AcademicSessionActions} from "./academic-session.action";
 
 export class AcademicSessionDetailPage implements OnInit {
 
-    private SESSION =   "plannerModuleState.session".split(".");
-    private session$ : Observable <AcademicSession>;
+    private ACADEMICSESSION =   "plannerModuleState.academicSession".split(".");
+    private academicSession$ : Observable <AcademicSession>;
 
     constructor (private router: Router,
                     private route: ActivatedRoute,
                     private actions: AcademicSessionActions,
                     private store: Store <PlannerModuleState>) 
                     {
-                        this.session$ = this.store.select (...this.SESSION);
+                        this.academicSession$ = this.store.select (...this.ACADEMICSESSION);
                     }
 ngOnInit() : void {
     this.route.params.subscribe((params: {code: string}) => {
         let code: string = params.code;
-        this.store.dispatch (this.actions.findSession(code));
+        this.store.dispatch (this.actions.findAcademicSession(code));
     });
 }
 
 goBack (route: string) : void {
-    this.router.navigate(['/sessions']);
+    this.router.navigate(['/academic-sessions']);
 }
 
 }
