@@ -42,10 +42,10 @@ public class AdAdmissionApplicationImpl implements AdAdmissionApplication {
     @Column(name = "DESCRIPTION", nullable = false)
     private String description;
 
-    @Column(name = "REMOVE_COMMENT", nullable = false)
+    @Column(name = "REMOVE_COMMENT")
     private String removeComment;
 
-    @Column(name = "CANCEL_COMMENT", nullable = false)
+    @Column(name = "CANCEL_COMMENT")
     private String cancelComment;
 
     @ManyToOne(targetEntity = AdStudentImpl.class)

@@ -202,16 +202,16 @@
     alter table AD_USER
         drop constraint FKE7E13267E43AD0B6;
 
-    alter table Ad_ENMT_APPL
+    alter table AD_ENMT_APPL
         drop constraint FKDFAFC43E3437F04F;
 
-    alter table Ad_ENMT_APPL
+    alter table AD_ENMT_APPL
         drop constraint FKDFAFC43EAAEC85C7;
 
-    alter table Ad_ENMT_APPL
+    alter table AD_ENMT_APPL
         drop constraint FKDFAFC43EEE2B2AAA;
 
-    alter table Ad_ENMT_APPL
+    alter table AD_ENMT_APPL
         drop constraint FKDFAFC43E54FCB007;
 
     drop table if exists AD_ACDM_AREA cascade;
@@ -366,7 +366,7 @@
 
     drop table if exists AD_WTCH cascade;
 
-    drop table if exists Ad_ENMT_APPL cascade;
+    drop table if exists AD_ENMT_APPL cascade;
 
     drop sequence SQ_AD_ACDM_AREA;
 
@@ -504,6 +504,6 @@
 
     drop sequence SQ_AD_WTCH;
 
-    drop sequence SQ_Ad_ENMT_APPL;
+    drop sequence SQ_AD_ENMT_APPL;
 
     drop sequence SQ_CNG_SBJT;

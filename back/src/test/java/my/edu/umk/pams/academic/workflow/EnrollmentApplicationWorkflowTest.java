@@ -66,20 +66,18 @@ public class EnrollmentApplicationWorkflowTest {
         SecurityContextHolder.getContext().setAuthentication(authed);
     }
 
-    /**
-     * NOTE: invoice has 3 layers of workflow
-     * NOTE: this only test up to DRAFTED
-     */
+    // note: draft > register > verify > approve
     @Test
     @Rollback(false)
     public void testWorkflow() {
         // find account
         AdStudent student = identityService.findStudentByMatricNo("A17P001");
+        AdCohort cohort = student.getCohort(); // current cohort
         AdAcademicSession academicSession = plannerService.findCurrentAcademicSession();
-        AdCohort cohort = plannerService.findCohortByCode("SOMECODE");
-        AdAdmission admission = null ;// todo: termService.findAdmissionByAcademicSessionCohortAndStudent(academicSession, cohort, student);
+        AdAdmission admission = termService.findAdmissionByAcademicSessionCohortAndStudent(academicSession, cohort, student);
 
         AdEnrollmentApplication application = new AdEnrollmentApplicationImpl();
+        application.setDescription(student.getMatricNo() + ";" + student.getCohort().getCode());
         application.setSession(academicSession);
         application.setStudent(student);
         application.setAdmission(admission);
@@ -97,19 +95,19 @@ public class EnrollmentApplicationWorkflowTest {
         // add items to application
         AdEnrollmentApplicationItem item1 = new AdEnrollmentApplicationItemImpl();
         item1.setAction(AdEnrollmentApplicationAction.ADD);
-        item1.setSection(termService.findSectionByCanonicalCode("/ss/ss/"));
+        item1.setSection(termService.findSectionByCanonicalCode("MGSEB-MBA-GST5023-201720181"));
         termService.addEnrollmentApplicationItem(draftedApplication, item1);
 
-        AdEnrollmentApplicationItem item2 = new AdEnrollmentApplicationItemImpl();
-        item2.setAction(AdEnrollmentApplicationAction.ADD);
-        item2.setSection(termService.findSectionByCanonicalCode("/ss/ss/"));
-        termService.addEnrollmentApplicationItem(draftedApplication, item2);
+//        AdEnrollmentApplicationItem item2 = new AdEnrollmentApplicationItemImpl();
+//        item2.setAction(AdEnrollmentApplicationAction.ADD);
+//        item2.setSection(termService.findSectionByCanonicalCode("/ss/ss/"));
+//        termService.addEnrollmentApplicationItem(draftedApplication, item2);
 
         // we're done, let's submit drafted task
         // transition to REGISTERED
         workflowService.completeTask(draftedTask);
 
-        // PEMBANTU PEGAWAI
+        // ADVISOR
         // find and pick pooled registered application
         // assuming there is exactly one
         List<Task> pooledRegisteredApplications = termService.findPooledEnrollmentApplicationTasks(0, 100);
@@ -123,7 +121,7 @@ public class EnrollmentApplicationWorkflowTest {
         Assert.notEmpty(assignedRegisteredApplications, "Tasks should not be empty");
         workflowService.completeTask(assignedRegisteredApplications.get(0));
 
-        // PEGAWAI
+        // MGSEB/CPS
         // find and pick pooled verified application
         // assuming there is exactly one
         List<Task> pooledVerifiedApplications = termService.findPooledEnrollmentApplicationTasks(0, 100);

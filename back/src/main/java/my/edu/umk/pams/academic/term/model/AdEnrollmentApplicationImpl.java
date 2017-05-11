@@ -23,8 +23,8 @@ public class AdEnrollmentApplicationImpl implements AdEnrollmentApplication {
 
     @Id
     @Column(name = "ID", nullable = false)
-    @GeneratedValue(generator = "SQ_Ad_ENMT_APLN")
-    @SequenceGenerator(name = "SQ_Ad_ENMT_APLN", sequenceName = "SQ_Ad_ENMT_APLN", allocationSize = 1)
+    @GeneratedValue(generator = "SQ_AD_ENMT_APLN")
+    @SequenceGenerator(name = "SQ_AD_ENMT_APLN", sequenceName = "SQ_AD_ENMT_APLN", allocationSize = 1)
     private Long id;
 
     @NotNull
@@ -43,10 +43,10 @@ public class AdEnrollmentApplicationImpl implements AdEnrollmentApplication {
     @Column(name = "APPLICATION_TYPE")
     private AdEnrollmentApplicationType type = AdEnrollmentApplicationType.PRA;
 
-    @Column(name = "REMOVE_COMMENT", nullable = false)
+    @Column(name = "REMOVE_COMMENT")
     private String removeComment;
 
-    @Column(name = "CANCEL_COMMENT", nullable = false)
+    @Column(name = "CANCEL_COMMENT")
     private String cancelComment;
 
 

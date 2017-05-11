@@ -1,7 +1,7 @@
 package my.edu.umk.pams.academic.term.workflow.handler;
 
 
-import my.edu.umk.pams.academic.term.model.AdEnrollmentApplication;
+import my.edu.umk.pams.academic.term.model.AdAdmissionApplication;
 import my.edu.umk.pams.academic.workflow.integration.registry.DocumentHandler;
 import org.activiti.engine.*;
 import org.activiti.engine.repository.DeploymentBuilder;
@@ -21,9 +21,9 @@ import static my.edu.umk.pams.academic.AcademicConstants.*;
  * @author PAMS
  */
 @Component
-public class EnrollmentApplicationHandler implements DocumentHandler<AdEnrollmentApplication> {
+public class AdmissionApplicationHandler implements DocumentHandler<AdAdmissionApplication> {
 
-    private static final Logger LOG = LoggerFactory.getLogger(EnrollmentApplicationHandler.class);
+    private static final Logger LOG = LoggerFactory.getLogger(AdmissionApplicationHandler.class);
 
     @Autowired
     protected ProcessEngine processEngine;
@@ -41,12 +41,12 @@ public class EnrollmentApplicationHandler implements DocumentHandler<AdEnrollmen
     protected RepositoryService repositoryService;
 
     @Override
-    public String process(AdEnrollmentApplication application, Map<String, Object> variables) {
+    public String process(AdAdmissionApplication application, Map<String, Object> variables) {
         ProcessInstance instance = runtimeService.startProcessInstanceByKey(
-                ENROLLMENT_APPLICATION_PROCESS_KEY,
+                ADMISSION_APPLICATION_PROCESS_KEY,
                 application.getReferenceNo(),
                 variables);
-        LOG.info("Process started for {} with process instance #{} ", ENROLLMENT_APPLICATION_PROCESS_KEY, instance.getId());
+        LOG.info("Process started for {} with process instance #{} ", ADMISSION_APPLICATION_PROCESS_KEY, instance.getId());
         return instance.getProcessInstanceId();
     }
 
@@ -56,11 +56,11 @@ public class EnrollmentApplicationHandler implements DocumentHandler<AdEnrollmen
         ProcessDefinitionQuery query = repositoryService.createProcessDefinitionQuery();
 
         // start only when we don't have one
-        long count = query.processDefinitionKey(ENROLLMENT_APPLICATION_PROCESS_KEY).count();
+        long count = query.processDefinitionKey(ADMISSION_APPLICATION_PROCESS_KEY).count();
         if (count < 1) {
             deployment
-                    .addClasspathResource(ENROLLMENT_APPLICATION_RESOURCE_PATH)
-                    .name(ENROLLMENT_APPLICATION_PROCESS_NAME)
+                    .addClasspathResource(ADMISSION_APPLICATION_RESOURCE_PATH)
+                    .name(ADMISSION_APPLICATION_PROCESS_NAME)
                     .deploy();
         }
     }

@@ -196,7 +196,7 @@ public interface TermService {
 
     void cancelAdmissionApplication(AdAdmissionApplication application);
 
-    void publishToAdmission(AdAdmissionApplication application);
+    void postToAdmission(AdAdmissionApplication application);
 
     // finder
 
@@ -282,7 +282,7 @@ public interface TermService {
 
     void deleteEnrollmentApplicationItem(AdEnrollmentApplication application, AdEnrollmentApplicationItem item);
 
-    void publishToEnrollment(AdEnrollmentApplication application);
+    void postToEnrollment(AdEnrollmentApplication application);
 
     //====================================================================================================
     // ENROLLMENT APPLICATION

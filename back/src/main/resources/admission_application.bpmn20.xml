@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions id="definitions"
+             xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL"
+             xmlns:activiti="http://activiti.org/bpmn"
+             targetNamespace="TRM">
+
+
+    <!--
+    ====================================================================================================
+    ==  DRAFTED > REGISTERED > VERIFIED  > APPROVED >>  COMPLETED >> END
+    ====================================================================================================
+    -->
+
+    <!--
+    ====================================================================================================
+    == VARIABLE:
+    == admissionApplicationId: admissionApplication id
+    ====================================================================================================
+    -->
+
+    <process id="admission_application_workflow" name="Admission Application Workflow">
+
+        <startEvent id="start"/>
+
+        <sequenceFlow id="flow1" sourceRef="start" targetRef="admissionApplication_draft_ST"/>
+
+        <!--
+        ====================================================================================================
+        == STATE : DRAFTED
+        == SERVICE TASK : draft a admissionApplication
+        == USER TASK :
+        ====================================================================================================
+        -->
+        <serviceTask id="admissionApplication_draft_ST"
+                     activiti:expression="#{admissionApplication_draft_ST.execute(execution)}"/>
+
+        <sequenceFlow id="flow1.1" sourceRef="admissionApplication_draft_ST" targetRef="admissionApplication_draft_UT"/>
+
+        <userTask id="admissionApplication_draft_UT"
+                  name="my.edu.umk.pams.academic.term.model.AdAdmissionApplication:DRAFTED"
+                  activiti:assignee="${userCreator}">
+            <documentation>
+                Draft Invoice
+            </documentation>
+        </userTask>
+
+        <sequenceFlow id="flow1.2" sourceRef="admissionApplication_draft_UT" targetRef="admissionApplication_remove_ST">
+            <conditionExpression>${removeDecision}</conditionExpression>
+        </sequenceFlow>
+
+        <sequenceFlow id="flow1.3" sourceRef="admissionApplication_draft_UT" targetRef="admissionApplication_register_ST">
+            <conditionExpression>${!removeDecision}</conditionExpression>
+        </sequenceFlow>
+        <!--
+        ====================================================================================================
+        == STATE : REGISTERED
+        == SERVICE TASK : register a admissionApplication
+        == USER TASK :
+        ====================================================================================================
+        -->
+        <serviceTask id="admissionApplication_register_ST"
+                     activiti:expression="#{admissionApplication_register_ST.execute(execution)}"/>
+
+        <sequenceFlow id="flow3.1" sourceRef="admissionApplication_register_ST" targetRef="admissionApplication_register_UT"/>
+
+        <userTask id="admissionApplication_register_UT"
+                  name="my.edu.umk.pams.academic.term.model.AdAdmissionApplication:REGISTERED"
+                  activiti:candidateGroups="${admissionApplicationRouter.findRegistererCandidates(admissionApplicationId)}">
+            <documentation>
+                Register Admission Application
+            </documentation>
+
+        </userTask>
+
+        <!-- accept -->
+        <sequenceFlow id="flow3.2" sourceRef="admissionApplication_register_UT" targetRef="admissionApplication_verify_ST">
+            <conditionExpression>${!removeDecision}</conditionExpression>
+        </sequenceFlow>
+
+        <!-- delete -->
+        <sequenceFlow id="flow3.4" sourceRef="admissionApplication_register_UT" targetRef="admissionApplication_remove_ST">
+            <conditionExpression>${removeDecision}</conditionExpression>
+        </sequenceFlow>
+        <!--
+        ====================================================================================================
+        == STATE : VERIFIED
+        == SERVICE TASK : verify a admissionApplication
+        == USER TASK :
+        ====================================================================================================
+        -->
+        <serviceTask id="admissionApplication_verify_ST"
+                     activiti:expression="#{admissionApplication_verify_ST.execute(execution)}"/>
+
+        <sequenceFlow id="flow4.1" sourceRef="admissionApplication_verify_ST" targetRef="admissionApplication_verify_UT"/>
+
+        <userTask id="admissionApplication_verify_UT"
+                  name="my.edu.umk.pams.academic.term.model.AdAdmissionApplication:VERIFIED"
+                  activiti:candidateGroups="${admissionApplicationRouter.findVerifierCandidates(admissionApplicationId)}">
+            <documentation>
+                Verify Admission Application
+            </documentation>
+
+        </userTask>
+
+        <sequenceFlow id="flow4.2" sourceRef="admissionApplication_verify_UT" targetRef="admissionApplication_remove_ST">
+            <conditionExpression>${removeDecision}</conditionExpression>
+        </sequenceFlow>
+
+        <sequenceFlow id="flow4.3" sourceRef="admissionApplication_verify_UT" targetRef="admissionApplication_approve_ST">
+            <conditionExpression>${!removeDecision}</conditionExpression>
+        </sequenceFlow>
+
+        <!--
+        ====================================================================================================
+        == STATE : REMOVED
+        == SERVICE TASK : removed a admissionApplication
+        == USER TASK :
+        ====================================================================================================
+        -->
+        <serviceTask id="admissionApplication_remove_ST"
+                     activiti:expression="#{admissionApplication_remove_ST.execute(execution)}"/>
+
+        <sequenceFlow id="flow7.1" sourceRef="admissionApplication_remove_ST" targetRef="end"/>
+
+        <!--
+        ====================================================================================================
+        == STATE : APPROVED
+        == SERVICE TASK : approve a admissionApplication
+        == USER TASK :
+        ====================================================================================================
+        -->
+        <serviceTask id="admissionApplication_approve_ST"
+                     activiti:expression="#{admissionApplication_approve_ST.execute(execution)}"/>
+
+        <sequenceFlow id="flow8.1" sourceRef="admissionApplication_approve_ST" targetRef="admissionApplication_complete_ST"/>
+
+        <!--
+        ====================================================================================================
+        == STATE : COMPLETED
+        == SERVICE TASK : complete a admissionApplication
+        == USER TASK :
+        ====================================================================================================
+        -->
+        <serviceTask id="admissionApplication_complete_ST"
+                     activiti:expression="#{admissionApplication_complete_ST.execute(execution)}"/>
+
+        <sequenceFlow id="flow9.1" sourceRef="admissionApplication_complete_ST" targetRef="end"/>
+
+        <!--
+            ====================================================================================================
+            == STATE : END
+            ====================================================================================================
+            -->
+        <endEvent id="end"/>
+
+    </process>
+</definitions>

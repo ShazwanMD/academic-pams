@@ -22,7 +22,7 @@ import java.util.List;
  * @author PAMS
  */
 @Transactional
-@Service
+@Service("plannerService")
 public class PlannerServiceImpl implements PlannerService {
 
     private static final Logger LOG = LoggerFactory.getLogger(PlannerServiceImpl.class);

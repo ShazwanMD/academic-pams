@@ -132,8 +132,8 @@
     create table AD_ADMN_APLN (
         ID int8 not null,
         AUDIT_NO varchar(255),
-        CANCEL_COMMENT varchar(255) not null,
-        DESCRIPTION varchar(255) not null,
+        CANCEL_COMMENT varchar(255),
+        DESCRIPTION varchar(255)  null,
         AV_TS timestamp,
         AV_ID int8,
         CL_ID int8,
@@ -171,7 +171,7 @@
         M_ID int8,
         M_ST int4,
         REFERENCE_NO varchar(255) not null,
-        REMOVE_COMMENT varchar(255) not null,
+        REMOVE_COMMENT varchar(255),
         SOURCE_NO varchar(255),
         ADVISOR_ID int8,
         PROGRAM_ID int8,
@@ -627,7 +627,7 @@
     create table AD_ENMT_APLN (
         ID int8 not null,
         AUDIT_NO varchar(255),
-        CANCEL_COMMENT varchar(255) not null,
+        CANCEL_COMMENT varchar(255),
         DESCRIPTION varchar(255) not null,
         AV_TS timestamp,
         AV_ID int8,
@@ -666,7 +666,7 @@
         M_ID int8,
         M_ST int4,
         REFERENCE_NO varchar(255) not null,
-        REMOVE_COMMENT varchar(255) not null,
+        REMOVE_COMMENT varchar(255),
         SOURCE_NO varchar(255),
         APPLICATION_TYPE int4,
         ADMISSION_ID int8,
@@ -1422,12 +1422,6 @@
         references AD_STDN;
 
     alter table AD_ADMN
-        add constraint uc_AD_ADMN_1 unique (CGPA);
-
-    alter table AD_ADMN
-        add constraint uc_AD_ADMN_2 unique (GPA);
-
-    alter table AD_ADMN
         add constraint FKE7D7E3A01EBD8A63
         foreign key (COHORT_ID)
         references AD_CHRT;
@@ -2119,6 +2113,6 @@
 
     create sequence SQ_AD_WTCH;
 
-    create sequence SQ_Ad_ENMT_APLN;
+    create sequence SQ_AD_ENMT_APLN;
 
     create sequence SQ_CNG_SBJT;

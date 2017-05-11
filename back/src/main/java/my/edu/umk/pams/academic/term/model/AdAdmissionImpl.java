@@ -26,11 +26,11 @@ public class AdAdmissionImpl implements AdAdmission {
     private Long id;
 
     @NotNull
-    @Column(name = "GPA", unique = true)
+    @Column(name = "GPA")
     private BigDecimal gpa = BigDecimal.ZERO;
 
     @NotNull
-    @Column(name = "CGPA", unique = true)
+    @Column(name = "CGPA")
     private BigDecimal cgpa = BigDecimal.ZERO;
 
     @Column(name = "CREDIT_EARNED")
@@ -48,11 +48,11 @@ public class AdAdmissionImpl implements AdAdmission {
     private AdAcademicStanding standing = AdAcademicStanding.KB;
 
     @ManyToOne(targetEntity = AdStudentImpl.class)
-    @JoinColumn(name = "STUDENT_ID")
+    @JoinColumn(name = "STUDENT_ID", nullable = false)
     private AdStudent student;
 
     @ManyToOne(targetEntity = AdCohortImpl.class)
-    @JoinColumn(name = "COHORT_ID")
+    @JoinColumn(name = "COHORT_ID", nullable = false)
     private AdCohort cohort;
 
     @ManyToOne(targetEntity = AdStudyCenterImpl.class)
@@ -60,7 +60,7 @@ public class AdAdmissionImpl implements AdAdmission {
     private AdStudyCenter studyCenter;
 
     @ManyToOne(targetEntity = AdAcademicSessionImpl.class)
-    @JoinColumn(name = "SESSION_ID")
+    @JoinColumn(name = "SESSION_ID", nullable = false)
     private AdAcademicSession session;
 
     @Embedded
