@@ -4,107 +4,107 @@ import {Action} from '@ngrx/store';
 @Injectable()
 export class AcademicSessionActions {
 
-  static FIND_SESSIONS = '[Session] Find Sessions';
-  findSessions(): Action {
+  static FIND_ACADEMICSESSIONS = '[AcademicSession] Find AcademicSessions';
+  findAcademicSessions(): Action {
     return {
-      type: AcademicSessionActions.FIND_SESSIONS,
+      type: AcademicSessionActions.FIND_ACADEMICSESSIONS,
     };
   }
 
-  static FIND_SESSIONS_SUCCESS = '[Session] Find Sessions Success';
-  findSessionsSuccess(sessions): Action {
-    console.log("findSessionsSuccess");
-    console.log("sessions: " + sessions.length);
+  static FIND_ACADEMICSESSIONS_SUCCESS = '[AcademicSession] Find AcademicSessions Success';
+  findAcademicSessionsSuccess(academicSessions): Action {
+    console.log("findAcademicSessionsSuccess");
+    console.log("academicSessions: " + academicSessions.length);
     return {
-      type: AcademicSessionActions.FIND_SESSIONS_SUCCESS,
-      payload: sessions
+      type: AcademicSessionActions.FIND_ACADEMICSESSIONS_SUCCESS,
+      payload: academicSessions
     };
   }
 
-  static FIND_SESSION = '[Session] Find Session';
-  findSession(code): Action {
+  static FIND_ACADEMICSESSION = '[AcademicSession] Find AcademicSession';
+  findAcademicSession(code): Action {
     return {
-      type: AcademicSessionActions.FIND_SESSION,
+      type: AcademicSessionActions.FIND_ACADEMICSESSION,
       payload: code
     };
   }
 
-  static FIND_SESSION_SUCCESS = '[Session] Find Session Success';
-  findSessionsuccess(session): Action {
+  static FIND_ACADEMICSESSION_SUCCESS = '[AcademicSession] Find AcademicSession Success';
+  findAcademicSessionsuccess(academicSession): Action {
     return {
-      type: AcademicSessionActions.FIND_SESSION_SUCCESS,
-      payload: session
+      type: AcademicSessionActions.FIND_ACADEMICSESSION_SUCCESS,
+      payload: academicSession
     };
   }
 
-  static RESET_SESSION = '[Session] Reset Blank Session';
-  resetSession(): Action {
+  static RESET_ACADEMICSESSION = '[AcademicSession] Reset Blank AcademicSession';
+  resetAcademicSession(): Action {
     return {
-      type: AcademicSessionActions.RESET_SESSION
+      type: AcademicSessionActions.RESET_ACADEMICSESSION
     };
   }
 
-  static SAVE_SESSION = '[Session] Save Session';
-  saveSession (session): Action {
+  static SAVE_ACADEMICSESSION = '[AcademicSession] Save AcademicSession';
+  saveAcademicSession (academicSession): Action {
     return {
-      type: AcademicSessionActions.SAVE_SESSION,
-      payload: session
+      type: AcademicSessionActions.SAVE_ACADEMICSESSION,
+      payload: academicSession
     };
   }
 
-  static SAVE_SESSION_SUCCESS = '[Session] Save Session Success';
-  saveSessionSuccess(session): Action {
+  static SAVE_ACADEMICSESSION_SUCCESS = '[AcademicSession] Save AcademicSession Success';
+  saveAcademicSessionSuccess(academicSession): Action {
     return {
-      type: AcademicSessionActions.SAVE_SESSION_SUCCESS,
-      payload: session
+      type: AcademicSessionActions.SAVE_ACADEMICSESSION_SUCCESS,
+      payload: academicSession
     };
   }
 
-  static UPDATE_SESSION =  '[Session] Update Session';
-  updateSession(session): Action {
+  static UPDATE_ACADEMICSESSION =  '[AcademicSession] Update AcademicSession';
+  updateAcademicSession(academicSession): Action {
     return {
-      type: AcademicSessionActions.UPDATE_SESSION,
-      payload: session
+      type: AcademicSessionActions.UPDATE_ACADEMICSESSION,
+      payload: academicSession
     };
   }
 
-  static UPDATE_SESSION_SUCCESS =  '[Session] Update Session';
-  updateSessionSuccess(session): Action {
+  static UPDATE_ACADEMICSESSION_SUCCESS =  '[AcademicSession] Update AcademicSession';
+  updateAcademisSessionSuccess(academicSession): Action {
     return {
-      type: AcademicSessionActions.UPDATE_SESSION_SUCCESS,
-      payload: session
+      type: AcademicSessionActions.UPDATE_ACADEMICSESSION_SUCCESS,
+      payload: academicSession
     };
   }
 
-  static CREATE_SESSION = '[Session] Create Session';
-  createSession(session): Action {
+  static CREATE_ACADEMICSESSION = '[AcademicSession] Create AcademicSession';
+  createAcademicSession(academicSession): Action {
     return {
-      type: AcademicSessionActions.CREATE_SESSION,
-      payload: session
+      type: AcademicSessionActions.CREATE_ACADEMICSESSION,
+      payload: academicSession
     };
   }
 
-  static CREATE_SESSION_SUCCESS = '[Session] Create Session Success';
-  createSessionSuccess(session): Action {
+  static CREATE_ACADEMICSESSION_SUCCESS = '[AcademicSession] Create AcademicSession Success';
+  createAcademicSessionSuccess(academicSession): Action {
     return {
-      type: AcademicSessionActions.CREATE_SESSION_SUCCESS,
-      payload: session  
+      type: AcademicSessionActions.CREATE_ACADEMICSESSION_SUCCESS,
+      payload: academicSession  
     };
   }
 
-  static REMOVE_SESSION = '[Session] Remove Session';
-  removeSession(session): Action {
+  static REMOVE_ACADEMICSESSION = '[AcademicSession] Remove AcademicSession';
+  removeAcademicSession(academicSession): Action {
     return {
-      type: AcademicSessionActions.REMOVE_SESSION,
-      payload: session
+      type: AcademicSessionActions.REMOVE_ACADEMICSESSION,
+      payload: academicSession
     };
   }
 
-  static REMOVE_SESSION_SUCCESS = '[Session] Remove Session Success';
-  removeSessionSuccess(session): Action {
+  static REMOVE_ACADEMICSESSION_SUCCESS = '[AcademicSession] Remove AcademicSession Success';
+  removeAcademicSessionSuccess(academicSession): Action {
     return {
-      type: AcademicSessionActions.REMOVE_SESSION_SUCCESS,
-      payload: session
+      type: AcademicSessionActions.REMOVE_ACADEMICSESSION_SUCCESS,
+      payload: academicSession
     };
   }
 }

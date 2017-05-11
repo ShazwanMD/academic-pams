@@ -9,33 +9,33 @@ import {AcademicSessionActions} from "./academic-session.action";
 import {PlannerModuleState} from "../index";
 
 @Component({
-  selector: 'pams-academicSession-center',
+  selector: 'pams-academic-session-center',
   templateUrl: './academic-session-center.page.html',
 })
 export class AcademicSessionCenterPage implements OnInit {
 
-  private SESSIONS = "plannerModuleState.session".split(".");
-  private sessions$: Observable<AcademicSession[]>;
+  private ACADEMICSESSIONS = "plannerModuleState.academicSessions".split(".");
+  private academicSessions$: Observable<AcademicSession[]>;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
               private actions: AcademicSessionActions,
               private store: Store<PlannerModuleState>) {
-    this.sessions$ = this.store.select(...this.SESSIONS);
+    this.academicSessions$ = this.store.select(...this.ACADEMICSESSIONS);
   }
 
   goBack(route: string): void {
-    this.router.navigate(['/academic-session']);
+    this.router.navigate(['/academic-sessions']);
   }
 
-  viewSession(session : AcademicSession) {
-    console.log("session: " + session.code);
-    this.router.navigate(['/academic-session-detail', session.code]);
+  viewAcademicSession(academicSession: AcademicSession) {
+    console.log("academicSession: " + academicSession.code);
+    this.router.navigate(['/academic-session-detail', academicSession.code]);
   }
 
   ngOnInit(): void {
-      console.log("find sessions");
-    this.store.dispatch(this.actions.findSessions());
+      console.log("find academicSessions");
+    this.store.dispatch(this.actions.findAcademicSessions());
   }
 }
 

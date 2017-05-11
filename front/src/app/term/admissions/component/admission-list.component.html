@@ -9,7 +9,7 @@
   (rowSelect)="view.emit($event)" dense>
   <template tdDataTableTemplate="student" let-value="value" let-row="row" let-column="column">
     <div layout="row">
-      <span flex>{{student | json}}</span>
+      <span flex></span>
     </div>
   </template>
   <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
@@ -19,9 +19,10 @@
   </template>
   <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
     <div layout="row">
-      <!--<a md-button color="accent" class="text-upper" [routerLink]="['/term/admissions', row['canonicalCode']]">-->
-        <!--<span>View</span>-->
-      <!--</a>-->
+      <!-- <a md-button color="accent" class="text-upper" [routerLink]="['/term/admissions',row['academicSessionCode']]"> -->
+      <a md-button color="accent" class="text-upper" [routerLink]="['/term/admissions/current']">
+        <span>View</span>
+      </a>
     </div>
   </template>
 </td-data-table>

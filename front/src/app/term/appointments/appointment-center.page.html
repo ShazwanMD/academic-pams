@@ -11,6 +11,25 @@
         Create Appointment
       </a>
       <md-divider></md-divider>
+      <!-- previous menu start -->  
+       <a md-list-item [routerLink]="['/term/admissions']">
+        <md-icon>person_add</md-icon>
+        Admission
+      </a>
+      <a md-list-item [routerLink]="['/term/offerings']">
+        <md-icon>create</md-icon>
+        Offerings
+      </a>
+     <a md-list-item [routerLink]="['/term/enrollments']">
+        <md-icon>find_in_page</md-icon>
+        Enrollment
+      </a>
+
+      <a md-list-item [routerLink]="['/term/enrollments']">
+        <md-icon>find_in_page</md-icon>
+        Sections
+      </a>
+      <!-- previous menu end -->   
     </md-nav-list>
     <div toolbar-buttons layout="row" layout-align="start center" flex>
       <span flex>Appointment Center</span>

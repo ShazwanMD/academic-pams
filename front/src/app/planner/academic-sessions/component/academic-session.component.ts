@@ -3,13 +3,13 @@ import {MdTabsModule} from '@angular/material';
 import {AcademicSession} from "../academic-session.interface";
 
 @Component({
-  selector: 'pams-session',
-  templateUrl: 'session.component.html',
+  selector: 'pams-academic-session',
+  templateUrl: 'academic-session.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SessionComponent {
+export class AcademicSessionComponent {
 
-  @Input() academicSessions: AcademicSession;
+  @Input() academicSession: AcademicSession;
   
   // @Output() addGuardian = new EventEmitter<Guardian>();
   // @Output() addGuarantor = new EventEmitter<Guarantor>();

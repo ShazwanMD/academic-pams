@@ -1,17 +1,30 @@
+<!-- Basic Card -->
 <md-card>
-  <md-card-title><md-icon>home</md-icon>#{{appointment.id}}: {{appointment.id}}</md-card-title>
-  <md-card-subtitle>{{appointment.id}} </md-card-subtitle>
-  <md-card-actions>
-  </md-card-actions>
-</md-card>
+  <md-card-title>APPOINTMENTS</md-card-title>
+  <md-card-subtitle>List of appoinment</md-card-subtitle>
+  <md-divider></md-divider>
+  <md-card-content>
+  <!--Tab Section Here-->
+  <md-tab-group>
+  <md-tab label="Appointment Detail"><br>
 
-<md-card>
-  <md-card-title>Details info: #{{appointment.id}}: {{appointment.id}}</md-card-title>
-  <md-card-subtitle>1. Id No.: {{appointment.id}}</md-card-subtitle>
-   <md-card-subtitle>2. Code: {{appointment.id}}</md-card-subtitle>
-    <md-card-subtitle>3. CanonicalCode: {{appointment.id}}</md-card-subtitle>
-             <button md-button  color="accent" class="text-upper" >UPDATE</button>
-  <md-card-actions>
-  </md-card-actions>
-</md-card>
+    <div>Code: </div><br>
+   <!--  <div>Title: {{appoinment.id}}</div><br>
+    <div>TitleMs: {{appoinment.id}}</div><br>
+    <div>TitleEn: {{appoinment.id}}</div><br> -->
+<button md-button  color="accent" class="text-upper" >UPDATE</button>
+  </md-tab>
+
+  <md-tab label="Information">
+  
+   <div>Description details of the appoinment</div><br>
+   
+<button md-button  color="accent" class="text-upper" >UPDATE</button>
+  </md-tab>
+  </md-tab-group>
+
+  </md-card-content>
+  <md-divider></md-divider>
+
+
 

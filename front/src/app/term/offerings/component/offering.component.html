@@ -1,22 +1,31 @@
 <md-card>
-  <md-card-title><md-icon>home</md-icon>#{{offering.code}}: {{offering.canonicalCode}}</md-card-title>
-  <md-card-subtitle>{{offering.canonicalCode}} </md-card-subtitle>
-  <md-card-actions>
-  </md-card-actions>
-</md-card>
+  <md-card-title>OFFERING</md-card-title>
+  <md-card-subtitle>List of offerings</md-card-subtitle>
+  <md-divider></md-divider>
+  <md-card-content>
+  <!--Tab Section Here-->
+  <md-tab-group>
+  <md-tab label="Offering Detail"><br>
 
-<md-card>
-  <md-card-title>Details info: #{{offering.code}}: {{offering.canonicalCode}}</md-card-title>
-  <md-card-subtitle>1. Id No.: {{offering.id}}</md-card-subtitle>
-   <md-card-subtitle>2. Code: {{offering.code}}</md-card-subtitle>
-    <md-card-subtitle>3. CanonicalCode: {{offering.canonicalCode}}</md-card-subtitle>
-          <md-card-subtitle>4. Title: {{offering.course.title}}</md-card-subtitle>
-       <md-card-subtitle>5. Course: {{offering.course.titleMs}}</md-card-subtitle>
-        <md-card-subtitle>6. Credit: {{offering.course.credit}}</md-card-subtitle>
-        
+    <div>Code    : {{offering.code}}</div><br>
+    <div>Title       : {{offering.canonicalCode}}</div><br>
+    <div>TitleMs : {{offering.course.titleMs}}</div><br>
+    <div>TitleEn : {{offering.course.title}}</div><br>
+    <div>Credit : {{offering.course.credit}}</div><br>
+  <button md-button  color="accent" class="text-upper" >UPDATE</button>
+  </md-tab>
 
-       <button md-button  color="accent" class="text-upper" >UPDATE</button>
-  <md-card-actions>
-  </md-card-actions>
-</md-card>
+  <md-tab label="Information">
+  
+   <div>Description details of the offering</div><br>
+   
+   <button md-button  color="accent" class="text-upper" >UPDATE</button>
+  </md-tab>
+
+  </md-tab-group>
+
+  </md-card-content>
+  <md-divider></md-divider>
+
+
 

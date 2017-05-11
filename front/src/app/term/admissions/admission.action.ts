@@ -35,4 +35,22 @@ export class AdmissionActions {
       payload: admission
     };
   }
+  
+  static FIND_ADMISSION_BY_CURRENT = '[Admission] Find Admission By Current';
+  findAdmissionByCurrent(admission): Action {
+    return {
+      type: AdmissionActions.FIND_ADMISSION_BY_CURRENT,
+      payload: admission
+    };
+  }
+
+  static FIND_ADMISSION_BY_CURRENT_SUCCESS = '[Admission] Find Admission By Current Success';
+  findAdmissionByCurrentSuccess(admission): Action {
+    return {
+      type: AdmissionActions.FIND_ADMISSION_BY_CURRENT_SUCCESS,
+      payload: admission
+    };
+  }
+  
+  
 }

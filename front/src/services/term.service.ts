@@ -87,6 +87,12 @@ export class TermService {
   //   return this.http.get(environment.endpoint + '/api/term/admissions/' + session.code)
   //     .map((res: Response) => <Admission[]>res.json());
   // }
+  
+  findAdmissionById(id): Observable<Admission> {
+      console.log("findAdmissionById");
+      return this.http.get(environment.endpoint + '/api/term/admissions/' + id)
+        .map((res: Response) => <Admission>res.json());
+    }
 
   // ==================================================================================================== //
   // ENROLLMENT APPLICATION
