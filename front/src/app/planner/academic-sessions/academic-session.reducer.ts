@@ -8,11 +8,7 @@ const initialState: AcademicSessionState = <AcademicSession> {};
 
 export function sessionReducer (state = initialState, action: Action) : AcademicSessionState {
     switch (action.type) {
-        case AcademicSessionActions.RESET_ACADEMICSESSION: {
-            return initialState;
-        }
-
-        case AcademicSessionActions.FIND_ACADEMICSESSION_SUCCESS: {
+        case AcademicSessionActions.FIND_ACADEMIC_SESSION_SUCCESS: {
             return action.payload;
         }
         default: {

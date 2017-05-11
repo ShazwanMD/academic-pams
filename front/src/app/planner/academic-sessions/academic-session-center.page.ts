@@ -14,14 +14,14 @@ import {PlannerModuleState} from "../index";
 })
 export class AcademicSessionCenterPage implements OnInit {
 
-  private ACADEMICSESSIONS = "plannerModuleState.academicSessions".split(".");
+  private ACADEMIC_SESSIONS = "plannerModuleState.academicSessions".split(".");
   private academicSessions$: Observable<AcademicSession[]>;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
               private actions: AcademicSessionActions,
               private store: Store<PlannerModuleState>) {
-    this.academicSessions$ = this.store.select(...this.ACADEMICSESSIONS);
+    this.academicSessions$ = this.store.select(...this.ACADEMIC_SESSIONS);
   }
 
   goBack(route: string): void {
@@ -34,7 +34,7 @@ export class AcademicSessionCenterPage implements OnInit {
   }
 
   ngOnInit(): void {
-      console.log("find academicSessions");
+    console.log("find academicSessions");
     this.store.dispatch(this.actions.findAcademicSessions());
   }
 }

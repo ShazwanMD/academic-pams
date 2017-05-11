@@ -6,16 +6,15 @@ import {PlannerService} from "../../../services/planner.service";
 
 @Injectable()
 export class AcademicSessionEffects {
-    constructor (private actions$ : Actions,
-                    private academicSessionActions: AcademicSessionActions,
-                    private plannerService: PlannerService,) {
-                    }
+  constructor(private actions$: Actions,
+              private academicSessionActions: AcademicSessionActions,
+              private plannerService: PlannerService,) {
+  }
 
-@Effect() findAcademicSessions$ = this.actions$
-                .ofType(AcademicSessionActions.FIND_ACADEMICSESSIONS)
-                .switchMap(() => this.plannerService.findAcademicSessions())
-                .map(academicSessions => this.academicSessionActions.findAcademicSessionsSuccess(academicSessions));
-
+  @Effect() findAcademicSessions$ = this.actions$
+    .ofType(AcademicSessionActions.FIND_ACADEMIC_SESSIONS)
+    .switchMap(() => this.plannerService.findAcademicSessions())
+    .map(academicSessions => this.academicSessionActions.findAcademicSessionsSuccess(academicSessions));
 
 
 }
