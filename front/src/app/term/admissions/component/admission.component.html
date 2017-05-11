@@ -1,11 +1,29 @@
-
 <md-card>
-  <md-card-title>#{{admission.id}}: {{admission.id}}</md-card-title>
-  <md-card-subtitle>{{admission.id}}</md-card-subtitle>
-  <md-card-title>ADMISSION{{admission.id}} {{admission.id}}</md-card-title>
-  <md-card-subtitle> {{admission.id}}</md-card-subtitle>
-  <md-card-actions>
+  <md-card-title>ADMISSION</md-card-title>
+  <md-card-subtitle>List of admission</md-card-subtitle>
+  <md-divider></md-divider>
+  <md-card-content>
+  <!--Tab Section Here-->
+  <md-tab-group>
+  <md-tab label="Admission Detail"><br>
 
-  </md-card-actions>
-</md-card>
+   <div>Admission Id: {{admission.id}}</div><br>
+    <!-- <div>Student MatricNo.: {{admission.student.identityNo}}</div><br>
+    <div>Cpa: {{admission.cpa}}</div><br>  -->
+   <!--  <div>Gpa: </div><br> -->
+
+  </md-tab>
+
+  <md-tab label="Information">
+  
+   <!-- <div>Description details of the admission</div><br>
+    <div>Credit taken: {{admission.creditTaken}}</div><br>
+     <div>Credit earned: {{admission.creditEarned}}</div><br> -->
+   
+
+  </md-tab>
+  </md-tab-group>
+
+  </md-card-content>
+  <md-divider></md-divider>
 

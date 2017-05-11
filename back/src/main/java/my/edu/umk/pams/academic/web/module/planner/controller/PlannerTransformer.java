@@ -65,11 +65,21 @@ public class PlannerTransformer {
         return vo;
     }
 
+//    public Cohort toCohortVo(AdCohort cohort) {
+//        Cohort vo = new Cohort();
+//        vo.setId(cohort.getId());
+//        vo.setCode(cohort.getCode());
+//        vo.setDescription(cohort.getDescription());
+//        return vo;
+//    }
+    
     public Cohort toCohortVo(AdCohort cohort) {
+		LOG.debug("111: " + cohort.getCode());
         Cohort vo = new Cohort();
         vo.setId(cohort.getId());
         vo.setCode(cohort.getCode());
         vo.setDescription(cohort.getDescription());
+		LOG.debug("222: " + vo.getCode());
         return vo;
     }
 

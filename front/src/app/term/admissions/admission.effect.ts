@@ -16,10 +16,5 @@ export class AdmissionEffects {
     .switchMap(() => this.termService.findAdmissions())
     .map(admissions => this.admissionActions.findAdmissionsSuccess(admissions));
 
-  @Effect() findAdmissionById$ = this.actions$
-    .ofType(AdmissionActions.FIND_ADMISSION_BY_ID)
-    .map(action => action.payload);
-  // todo
-    // .switchMap(id => this.termService.findAdmissionById(id))
-    // .map(admission => this.admissionActions.findAdmissionByIdSuccess(admission));
+  @Effect() findAdmissionById$ = this.actions$.ofType(AdmissionActions.FIND_ADMISSION_BY_ID).map(action => action.payload).switchMap(id => this.termService.findAdmissionById(id)).map(admission => this.admissionActions.findAdmissionByIdSuccess(admission));
 }

@@ -1,5 +1,5 @@
 <td-data-table
-  [data]="sessions"
+  [data]="academicSessions"
   [columns]="columns"
   [sortBy]="summary"
   [sortOrder]="ASC"
@@ -15,7 +15,7 @@
   </template>
   <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
     <div layout="row">
-      <a md-button color="accent" class="text-upper" [routerLink]="['/academicSession', row['code']]">
+      <a md-button color="accent" class="text-upper" [routerLink]="['/academic-session-detail',row['code']]">
         <span>View</span>
       </a>
     </div>
