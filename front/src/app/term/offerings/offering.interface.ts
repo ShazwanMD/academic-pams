@@ -5,5 +5,5 @@ import {MetaObject} from "../../core/meta-object.interface";
 export interface Offering extends MetaObject{
   course: Course;
   program: Program;
-  session:AcademicSession;
+  session: AcademicSession;
 }

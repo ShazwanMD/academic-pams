@@ -91,9 +91,7 @@ public class TermTransformer {
         vo.setId(appointment.getId());
         //vo.setAppointmentStatus(appointment.getStatus());
         vo.setStaff(identityTransformer.toStaffVo(appointment.getStaff()));
-        
-		/*Section section = null;
-		vo.setSection(appointment.getSection());*/
+        vo.setSection(this.toSectionVo(appointment.getSection()));
         return vo;
     }
 
@@ -150,6 +148,12 @@ public class TermTransformer {
     public Section toSectionVo(AdSection section) {
         Section vo = new Section();
         vo.setId(section.getId());
+        vo.setCode(section.getCode());
+        vo.setCapacity(section.getCapacity());
+        vo.setCanonicalCode(section.getCanonicalCode());
+        vo.setOffering(this.toOfferingVo(section.getOffering()));
+        vo.setOrdinal(section.getOrdinal());
+        vo.setSession(plannerTransformer.toAcademicSessionVo(section.getSession()));
         return vo;
     }
 
