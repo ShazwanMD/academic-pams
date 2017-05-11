@@ -11,6 +11,25 @@
         Create Offering
       </a>
       <md-divider></md-divider>
+      <!-- previous menu start -->  
+       <a md-list-item [routerLink]="['/term/admissions']">
+        <md-icon>person_add</md-icon>
+        Admission
+      </a>
+      <a md-list-item [routerLink]="['/term/appointments']">
+        <md-icon>group</md-icon>
+        Appointment
+      </a>
+      <a md-list-item [routerLink]="['/term/enrollments']">
+        <md-icon>find_in_page</md-icon>
+        Enrollment
+      </a>
+
+      <a md-list-item [routerLink]="['/term/enrollments']">
+        <md-icon>find_in_page</md-icon>
+        Sections
+      </a>
+      <!-- previous menu end -->   
     </md-nav-list>
     <div toolbar-buttons layout="row" layout-align="start center" flex>
       <span flex>Offering Center</span>
