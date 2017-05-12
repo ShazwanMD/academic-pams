@@ -52,5 +52,13 @@ export class SectionActions {
     };
   }
 
+  static FIND_SECTION_BY_ID_SUCCESS = '[Section] Find Section By Id Success';
+  findSectionByIdSuccess(section): Action {
+    return {
+      type: SectionActions.FIND_SECTION_BY_ID_SUCCESS,
+      payload: section
+    };
+  }
+
 
 }
