@@ -123,7 +123,6 @@ public class WhenIAddEnrollmentCourses extends Stage<WhenIAddEnrollmentCourses> 
 			application.setSourceNo("setSourceNo");
 			application.setType(AdEnrollmentApplicationType.WAJIB);
 			application.setAdmission(admission);
-			application.setAdvisor(advisor);
 			application.setSession(academicSession);
 			application.setStudent(student);
 			

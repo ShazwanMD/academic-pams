@@ -57,7 +57,6 @@ public class ThenIViewTheCurrentEnrollmentCourses extends Stage<ThenIViewTheCurr
 				LOG.debug("New application id:{}", application.getDescription());
 				LOG.debug("New application audit:{}", application.getAuditNo());
 				LOG.debug("New application :{}", application.getCancelComment());
-				LOG.debug("New application :{}", application.getAdvisor());
 				LOG.debug("New application :{}", application.getType());
 				LOG.debug("New item action :{}", item.getAction());
 			}
