@@ -44,8 +44,7 @@ public class WhenIViewAppointedAdvisorInfo extends Stage<WhenIViewAppointedAdvis
 
 		for (AdEnrollmentApplication application : applications) {
 			LOG.debug("Enrollment application:" + application.getId());
-			LOG.debug("Enrollment application:" + application.getAdvisor());
-			
+
 		}
 		
 
