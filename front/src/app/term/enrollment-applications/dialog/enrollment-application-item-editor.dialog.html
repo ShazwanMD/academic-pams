@@ -2,21 +2,18 @@
 <md-dialog-content>
   <form [formGroup]="editForm">
     <div layout="row" class="pad-bottom">
-      <md-input-container  style="width: 100%">
-        <input md-input #description
-               placeholder="description"
+      <md-input-container style="width: 100%">
+        <input mdInput
+               placeholder="Description"
                formControlName="description"
-               value="Description"
                flex/>
       </md-input-container>
     </div>
     <div layout="row" class="pad-bottom">
-      <md-select formControlName="section" [(ngModel)]="selectedSection" placeholder="Sodo Code"
-                 style="width: 100%">
-        <md-option *ngFor="let section of sections" [value]="section">
-          {{section.code}}: {{section.description}}
-        </md-option>
-      </md-select>
+      <pams-section-select
+        [placeholder]="'Select Section'"
+        [innerFormControl]="editForm.controls['section']">
+      </pams-section-select>
     </div>
   </form>
 </md-dialog-content>

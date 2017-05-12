@@ -19,6 +19,9 @@ import {EnrollmentApplicationItemComponent} from "./component/enrollment-applica
 import {EnrollmentApplicationTaskListComponent} from "./component/enrollment-application-task-list.component";
 import {EnrollmentApplicationTaskViewPage} from "./enrollment-application-task-view.page";
 import {EnrollmentApplicationTaskWorkflowPanel} from "./panel/enrollment-application-task-workflow.panel";
+import {EnrollmentApplicationTaskStatusComponent} from "./component/enrollment-application-task-status.component";
+import {EnrollmentApplicationItemEditorDialog} from "./dialog/enrollment-application-item-editor.dialog";
+import {SectionSubModule} from "../sections/index";
 
 @NgModule({
   imports: [
@@ -28,6 +31,7 @@ import {EnrollmentApplicationTaskWorkflowPanel} from "./panel/enrollment-applica
     CovalentCoreModule.forRoot(),
     AdmissionSubModule.forRoot(),
     AcademicSessionSubModule.forRoot(),
+    SectionSubModule.forRoot(),
     EffectsModule.run(EnrollmentApplicationEffects),
   ],
   declarations: [
@@ -40,14 +44,17 @@ import {EnrollmentApplicationTaskWorkflowPanel} from "./panel/enrollment-applica
     EnrollmentApplicationDraftTaskPanel,
     EnrollmentApplicationItemComponent,
     EnrollmentApplicationTaskListComponent,
+    EnrollmentApplicationTaskStatusComponent,
 
     //dialog
     EnrollmentApplicationTaskCreatorDialog,
+    EnrollmentApplicationItemEditorDialog,
   ],
   exports: [
   ],
   entryComponents: [
     EnrollmentApplicationTaskCreatorDialog,
+    EnrollmentApplicationItemEditorDialog,
     EnrollmentApplicationDraftTaskPanel,
   ]
 })

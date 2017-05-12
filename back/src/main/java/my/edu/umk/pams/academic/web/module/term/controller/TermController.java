@@ -12,6 +12,8 @@ import my.edu.umk.pams.academic.term.service.TermService;
 import my.edu.umk.pams.academic.web.module.term.vo.*;
 import my.edu.umk.pams.academic.workflow.service.WorkflowService;
 import org.activiti.engine.task.Task;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,6 +32,8 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/term")
 public class TermController {
+
+    private static final Logger LOG = LoggerFactory.getLogger(TermController.class);
 
     @Autowired
     private TermService termService;
@@ -136,6 +140,7 @@ public class TermController {
     //====================================================================================================
     // ENROLLMENT
     //====================================================================================================
+
     @RequestMapping(value = "/enrollments", method = RequestMethod.GET)
     public ResponseEntity<List<Enrollment>> findEnrollments() {
         AdAcademicSession academicSession = plannerService.findCurrentAcademicSession();
@@ -163,7 +168,62 @@ public class TermController {
         return new ResponseEntity<Enrollment>(termTransformer.toEnrollmentVo(enrollment), HttpStatus.OK);
     }
 
+
+    //====================================================================================================
+    // ENROLLMENT APPLICATION
+    //====================================================================================================
     // workflow
+
+    @RequestMapping(value = "/enrollmentApplications/", method = RequestMethod.GET)
+    public ResponseEntity<List<EnrollmentApplication>> findEnrollmentApplications() {
+        AdAcademicSession academicSession = plannerService.findCurrentAcademicSession();
+        List<AdEnrollmentApplication> enrollmentApplications = termService.findEnrollmentApplications(academicSession,0, 100);
+        return new ResponseEntity<List<EnrollmentApplication>>(termTransformer.toEnrollmentApplicationVos(enrollmentApplications), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/enrollmentApplications/{referenceNo}", method = RequestMethod.GET)
+    public ResponseEntity<EnrollmentApplication> findEnrollmentApplicationByReferenceNo(@PathVariable String referenceNo) {
+        AdEnrollmentApplication enrollmentApplication = (AdEnrollmentApplication) termService.findEnrollmentApplicationByReferenceNo(referenceNo);
+        return new ResponseEntity<EnrollmentApplication>(termTransformer.toEnrollmentApplicationVo(enrollmentApplication), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/enrollmentApplications/{referenceNo}", method = RequestMethod.PUT)
+    public ResponseEntity<EnrollmentApplication> updateEnrollmentApplication(@PathVariable String referenceNo, @RequestBody EnrollmentApplication vo) {
+        AdEnrollmentApplication enrollmentApplication = (AdEnrollmentApplication) termService.findEnrollmentApplicationByReferenceNo(referenceNo);
+        return new ResponseEntity<EnrollmentApplication>(termTransformer.toEnrollmentApplicationVo(enrollmentApplication), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/enrollmentApplications/{referenceNo}/enrollmentApplicationItems", method = RequestMethod.GET)
+    public ResponseEntity<List<EnrollmentApplicationItem>> findEnrollmentApplicationItems(@PathVariable String referenceNo) {
+        dummyLogin();
+        AdEnrollmentApplication enrollmentApplication = termService.findEnrollmentApplicationByReferenceNo(referenceNo);
+        return new ResponseEntity<List<EnrollmentApplicationItem>>(termTransformer
+                .toEnrollmentApplicationItemVos(termService.findEnrollmentApplicationItems(enrollmentApplication)), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/enrollmentApplications/{referenceNo}/enrollmentApplicationItems", method = RequestMethod.POST)
+    public void addEnrollmentApplicationItem(@PathVariable String referenceNo, @RequestBody EnrollmentApplicationItem item) {
+        dummyLogin();
+
+        LOG.debug("referenceNo: {}", referenceNo);
+
+        AdEnrollmentApplication enrollmentApplication = termService.findEnrollmentApplicationByReferenceNo(referenceNo);
+        AdEnrollmentApplicationItem e = new AdEnrollmentApplicationItemImpl();
+        e.setAction(AdEnrollmentApplicationAction.ADD);
+        e.setSection(termService.findSectionById(item.getSection().getId()));
+        termService.addEnrollmentApplicationItem(enrollmentApplication, e);
+    }
+
+    @RequestMapping(value = "/enrollmentApplications/{referenceNo}/enrollmentApplicationItems", method = RequestMethod.PUT)
+    public void updateEnrollmentApplicationItems(@PathVariable String referenceNo, @RequestBody EnrollmentApplicationItem item) {
+        dummyLogin();
+        AdEnrollmentApplication enrollmentApplication = termService.findEnrollmentApplicationByReferenceNo(referenceNo);
+        AdEnrollmentApplicationItem e = termService.findEnrollmentApplicationItemById(item.getId());
+        e.setAction(AdEnrollmentApplicationAction.ADD);
+        e.setSection(termService.findSectionById(item.getSection().getId()));
+        termService.updateEnrollmentApplicationItem(enrollmentApplication, e);
+    }
+
 
     @RequestMapping(value = "/enrollmentApplications/assignedTasks", method = RequestMethod.GET)
     public ResponseEntity<List<EnrollmentApplicationTask>> findAssignedEnrollmentApplications() {
@@ -316,6 +376,23 @@ public class TermController {
     @RequestMapping(value = "/offerings/{canonicalCode}/enrollments", method = RequestMethod.POST)
     public ResponseEntity<List<Offering>> addEnrollment(@PathVariable String canonicalCode, @RequestBody Enrollment enrollment) {
         throw new UnsupportedOperationException();
+    }
+
+    //====================================================================================================
+    // SECTION
+    //====================================================================================================
+
+    // finder
+    @RequestMapping(value = "/sections", method = RequestMethod.GET)
+    public ResponseEntity<List<Section>> findSections() {
+        List<AdSection> sections = termService.findSections(0,100);
+        return new ResponseEntity<List<Section>>(termTransformer.toSectionVos(sections), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/sections/{canonicalCode}", method = RequestMethod.GET)
+    public ResponseEntity<Section> findSection(@PathVariable String canonicalCode) {
+        AdSection section = termService.findSectionByCanonicalCode(canonicalCode);
+        return new ResponseEntity<Section>(termTransformer.toSectionVo(section), HttpStatus.OK);
     }
 
     // ====================================================================================================

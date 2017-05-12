@@ -36,14 +36,19 @@ import {
   assignedEnrollmentApplicationTaskListReducer,
   EnrollmentApplicationTaskListState, pooledEnrollmentApplicationTaskListReducer
 } from "./enrollment-applications/enrollment-application-task-list.reducer";
+import {sectionReducer, SectionState} from "./sections/section.reducer";
+import {sectionListReducer, SectionListState} from "./sections/section-list.reducer";
+import {Section} from "./sections/section.interface";
 
 export interface TermModuleState {
-  offerings: OfferingListState;
-  offering: OfferingState;
-  enrollments: EnrollmentListState;
-  enrollment: EnrollmentState;
   admissions: AdmissionListState;
   admission: AdmissionState;
+  offerings: OfferingListState;
+  offering: OfferingState;
+  sections: SectionListState;
+  section: SectionState;
+  enrollments: EnrollmentListState;
+  enrollment: EnrollmentState;
   appointments: AppointmentListState;
   appointment: AppointmentState;
   // admissionApplicationTasks:AdmissionApplicationListState,
@@ -56,12 +61,14 @@ export interface TermModuleState {
 
 export const INITIAL_TERM_STATE: TermModuleState =
   <TermModuleState>{
-    offerings: <Offering[]>[],
-    offering: <Offering>{},
-    enrollments: <Enrollment[]>[],
-    enrollment: <Enrollment>{},
     admissions: <Admission[]>[],
     admission: <Admission>{},
+    offerings: <Offering[]>[],
+    offering: <Offering>{},
+    sections: <Section[]>[],
+    section: <Section>{},
+    enrollments: <Enrollment[]>[],
+    enrollment: <Enrollment>{},
     appointments: <Appointment[]>[],
     appointment: <Appointment>{},
     assignedEnrollmentApplicationTasks: <EnrollmentApplicationTask[]>[],
@@ -72,6 +79,8 @@ export const INITIAL_TERM_STATE: TermModuleState =
 export const termModuleReducers = {
   offerings: offeringListReducer,
   offering: offeringReducer,
+  sections: sectionListReducer,
+  section: sectionReducer,
   enrollments: enrollmentListReducer,
   enrollment: enrollmentReducer,
   admissions: admissionListReducer,

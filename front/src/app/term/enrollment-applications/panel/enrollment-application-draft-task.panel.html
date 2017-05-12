@@ -2,7 +2,7 @@
   <div layout="column" layout-gt-md="row" class="inset">
     <div flex-gt-md="70">
       <md-card>
-        <md-card-title>DRAFTED:{{enrollmentApplicationTask?.referenceNo}}</md-card-title>
+        <md-card-title>{{enrollmentApplicationTask?.referenceNo}}</md-card-title>
         <md-card-subtitle>{{enrollmentApplicationTask?.description}}</md-card-subtitle>
 
         <div layout="row" layout-wrap hide-xs hide-sm class="push-sm">
@@ -17,8 +17,8 @@
           <div layout="column" flex>
             <md-list dense>
               <md-list-item>
-                <h4 md-line>xx</h4>
-                <p md-line>Account</p>
+                <h4 md-line>{{enrollmentApplicationTask?.referenceNo}}</h4>
+                <p md-line>Student</p>
               </md-list-item>
             </md-list>
           </div>
@@ -35,6 +35,9 @@
 
     </div>
     <div flex-gt-md="30">
+
+      <pams-enrollment-application-task-status [enrollmentApplicationTask]="enrollmentApplicationTask">
+      </pams-enrollment-application-task-status>
 
       <md-card>
         <md-card-title>Action</md-card-title>

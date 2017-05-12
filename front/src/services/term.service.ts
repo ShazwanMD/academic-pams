@@ -16,6 +16,7 @@ import {Enrollment} from "../app/term/enrollments/enrollment.interface";
 import {AdmissionApplicationTask} from "../app/term/admission-applications/admission-application-task.interface";
 import {AdmissionApplication} from "../app/term/admission-applications/admission-application.interface";
 import {Appointment} from "../app/term/appointments/appointment.interface";
+import {Section} from "../app/term/sections/section.interface";
 
 @Injectable()
 export class TermService {
@@ -189,7 +190,7 @@ export class TermService {
   }
 
   findEnrollmentApplicationItems(enrollmentApplication: EnrollmentApplication): Observable<EnrollmentApplicationItem[]> {
-    var endpoint = environment.endpoint + '/api/term/enrollmentApplications/' + enrollmentApplication.referenceNo + '/items'
+    var endpoint = environment.endpoint + '/api/term/enrollmentApplications/' + enrollmentApplication.referenceNo + '/enrollmentApplicationItems'
     return this.http.get(endpoint)
       .map((res:Response) => <EnrollmentApplicationItem[]>res.json());
   }
@@ -243,6 +244,22 @@ export class TermService {
   //   return this.http.get(environment.endpoint + '/api/term/appointments/' + session.code)
   //     .map((res: Response) => <Appointment[]>res.json());
   // }
+
+  // ==================================================================================================== //
+  // SECTION
+  // ==================================================================================================== //
+
+  findSections(): Observable<Section[]> {
+    console.log("findSections");
+    return this.http.get(environment.endpoint + '/api/term/sections')
+      .map((res: Response) => <Section[]>res.json());
+  }
+
+  findSectionByCanonicalCode(canonicalCode): Observable<Section> {
+    console.log("findSectionByCanonicalCode");
+    return this.http.get(environment.endpoint + '/api/term/sections/' + canonicalCode)
+      .map((res: Response) => <Section>res.json());
+  }
 
   // ==================================================================================================== //
   // OFFERING

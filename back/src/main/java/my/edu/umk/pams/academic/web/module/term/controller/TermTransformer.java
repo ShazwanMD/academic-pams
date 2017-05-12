@@ -134,6 +134,14 @@ public class TermTransformer {
         return vo;
     }
 
+    public EnrollmentApplicationItem toEnrollmentApplicationItemVo(AdEnrollmentApplicationItem e) {
+        EnrollmentApplicationItem vo = new EnrollmentApplicationItem();
+        vo.setId(e.getId());
+        vo.setSection(toSectionVo(e.getSection()));
+        vo.setMetaState(MetaState.get(e.getMetadata().getState().ordinal()));
+        return vo;
+    }
+
     public Enrollment toEnrollmentVo(AdEnrollment enrollment) {
         Enrollment vo = new Enrollment();
         vo.setId(enrollment.getId());
@@ -172,10 +180,29 @@ public class TermTransformer {
                 .collect(toCollection(() -> new ArrayList<AdmissionApplicationTask>()));
     }
 
-    public List<AdmissionApplication> toAdmissionApplicationVos(List<AdAdmissionApplication> journals) {
-        return journals.stream()
+    public List<EnrollmentApplicationTask> toEnrollmentApplicationTaskVos(List<Task> tasks) {
+        return tasks.stream()
+                .map((task) -> toEnrollmentApplicationTaskVo(task))
+                .collect(toCollection(() -> new ArrayList<EnrollmentApplicationTask>()));
+    }
+
+
+    public List<AdmissionApplication> toAdmissionApplicationVos(List<AdAdmissionApplication> items) {
+        return items.stream()
                 .map((task) -> toAdmissionApplicationVo(task))
                 .collect(toCollection(() -> new ArrayList<AdmissionApplication>()));
+    }
+
+    public List<EnrollmentApplication> toEnrollmentApplicationVos(List<AdEnrollmentApplication> items) {
+        return items.stream()
+                .map((task) -> toEnrollmentApplicationVo(task))
+                .collect(toCollection(() -> new ArrayList<EnrollmentApplication>()));
+    }
+
+    public List<EnrollmentApplicationItem> toEnrollmentApplicationItemVos(List<AdEnrollmentApplicationItem> items) {
+        return items.stream()
+                .map((task) -> toEnrollmentApplicationItemVo(task))
+                .collect(toCollection(() -> new ArrayList<EnrollmentApplicationItem>()));
     }
 
     public List<Admission> toAdmissionVos(List<AdAdmission> admissions) {
@@ -212,11 +239,4 @@ public class TermTransformer {
                 .collect(toList());
         return vos;
     }
-
-    public List<EnrollmentApplicationTask> toEnrollmentApplicationTaskVos(List<Task> tasks) {
-        return tasks.stream()
-                .map((task) -> toEnrollmentApplicationTaskVo(task))
-                .collect(toCollection(() -> new ArrayList<EnrollmentApplicationTask>()));
-    }
-
 }
