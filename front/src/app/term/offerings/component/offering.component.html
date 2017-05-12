@@ -1,25 +1,38 @@
 <md-card>
   <md-card-title>OFFERING</md-card-title>
-  <md-card-subtitle>List of offerings</md-card-subtitle>
+  <md-card-subtitle>Offering Information for {{offering.code}}</md-card-subtitle>
   <md-divider></md-divider>
   <md-card-content>
     <!--Tab Section Here-->
     <md-tab-group>
       <md-tab label="Offering Detail"><br>
-        <div>Code : {{offering.code}}</div>
+        <div>Offering Code : {{offering.code}}</div>
         <br>
-        <div>Title : {{offering.canonicalCode}}</div>
+        <div>Offering CanonicalCode : {{offering.canonicalCode}}</div>
         <br>
-        <div>TitleMs : {{offering.course.titleMs}}</div>
-        <br>
-        <div>TitleEn : {{offering.course.title}}</div>
-        <br>
-        <div>Credit : {{offering.course.credit}}</div>
-        <br>
+        
+           
       </md-tab>
 
-      <md-tab label="Information">
-        <div>Description details of the offering</div>
+      <md-tab label="Course Information">
+        
+        <div>Course Title : {{offering.program.title}}</div>
+        <br>
+        <div>Course TitleEn : {{offering.course.title}}</div>
+        <br>
+        <div>Course TitleEn : {{offering.course.titleMs}}</div>
+        <br>
+         <div>Credit : {{offering.course.credit}}</div>
+        <br>
+      </md-tab>
+      
+       <md-tab label="Program Information">
+       
+         <div>Program Code : {{offering.program.code}}</div>
+        <br>
+        <div>Program Title : {{offering.program.title}}</div>
+        <br>
+        <div>Program Title : {{offering.program.titleMs}}</div>
         <br>
       </md-tab>
 
