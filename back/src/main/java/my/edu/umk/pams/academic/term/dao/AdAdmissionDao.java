@@ -19,7 +19,9 @@ public interface AdAdmissionDao extends GenericDao<Long, AdAdmission> {
     // FINDER
     // ====================================================================================================
 
-    AdAdmission findBySessionCohortAndStudent(AdAcademicSession academicSession, AdCohort cohort, AdStudent student);
+	AdAdmission findById(Long id);
+	
+	AdAdmission findBySessionCohortAndStudent(AdAcademicSession academicSession, AdCohort cohort, AdStudent student);
 
     List<AdAdmission> findByProgramAndStudent(AdProgram program, AdStudent student);
 

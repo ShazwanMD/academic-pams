@@ -6,6 +6,7 @@ import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.planner.model.AdCohort;
 import my.edu.umk.pams.academic.term.model.AdAdmission;
 import my.edu.umk.pams.academic.term.model.AdAdmissionImpl;
+import my.edu.umk.pams.academic.term.model.AdOffering;
 import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
 import my.edu.umk.pams.academic.planner.model.AdProgram;
 import org.hibernate.Query;
@@ -35,6 +36,17 @@ public class AdAdmissionDaoImpl extends GenericDaoSupport<Long, AdAdmission> imp
         query.setEntity("session", academicSession);
         query.setEntity("cohort", cohort);
         query.setEntity("student", student);
+        query.setInteger("state", AdMetaState.ACTIVE.ordinal());
+        return (AdAdmission) query.uniqueResult();
+    }
+    
+    @Override
+    public AdAdmission findById(Long id) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select o from AdAdmission o where " +
+                "o.id = :id " +
+                "and o.metadata.state = :state");
+        query.setLong("id", id);
         query.setInteger("state", AdMetaState.ACTIVE.ordinal());
         return (AdAdmission) query.uniqueResult();
     }
