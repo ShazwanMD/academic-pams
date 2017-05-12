@@ -23,6 +23,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 /**
@@ -83,11 +84,17 @@ public class TermController {
         return new ResponseEntity<List<Admission>>(termTransformer.toAdmissionVos(admissions), HttpStatus.OK);
     }
     
-    @RequestMapping(value = "/admissions/{id}", method = RequestMethod.GET)
+    /*@RequestMapping(value = "/admissions/{id}", method = RequestMethod.GET)
     public ResponseEntity<Admission> findAdmission(@PathVariable Long id) {
         AdAdmission admission = termService.findAdmissionById(id);
         return new ResponseEntity<Admission>(termTransformer.toAdmissionVo(admission), HttpStatus.OK);
+    }*/
+    
+    @RequestMapping(value = "/admissions/{id}", method = RequestMethod.GET)
+    public ResponseEntity<Admission> findAdmissionById(@PathVariable Long id) throws UnsupportedEncodingException {
+        return new ResponseEntity<Admission>(termTransformer.toAdmissionVo(termService.findAdmissionById(id)), HttpStatus.OK);
     }
+    
 
     // workflow
 
