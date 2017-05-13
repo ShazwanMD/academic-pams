@@ -13,6 +13,12 @@ export class SetupEffects {
 
   }
 
+  @Effect() changeTitle$ = this.actions$
+    .ofType(SetupActions.CHANGE_TITLE)
+    .map(action => action.payload)
+    .map(payload => this.setupActions.changeTitleSuccess(payload));
+
+
   //=================================================================================
   // GENDER CODE
   //=================================================================================
@@ -48,4 +54,13 @@ export class SetupEffects {
     .map(action => action.payload)
     .switchMap(() => this.commonService.findRaceCodes())
     .map(codes => this.setupActions.findRaceCodesSuccess(codes));
+
+  //=================================================================================
+  // BANK CODE
+  //=================================================================================
+  @Effect() findBankCodes$ = this.actions$
+    .ofType(SetupActions.FIND_BANK_CODES)
+    .map(action => action.payload)
+    .switchMap(() => this.commonService.findBankCodes())
+    .map(codes => this.setupActions.findBankCodesSuccess(codes));
 }

@@ -20,9 +20,12 @@ import {genderCodeListReducer, GenderCodeListState} from "./gender-codes/gender-
 import {countryCodeListReducer, CountryCodeListState} from "./country-codes/country-code-list.reducer";
 import {maritalCodeListReducer, MaritalCodeListState} from "./marital-codes/marital-code-list.reducer";
 import {raceCodeListReducer, RaceCodeListState} from "./race-codes/race-code-list.reducer";
+import {titleReducer, TitleState} from "./title.reducer";
+import {BankCodeListPage} from "./bank-codes/bank-code-list.page";
 
 
 export interface SetupModuleState {
+  title:TitleState;
   genderCodes: GenderCodeListState;
   countryCodes: CountryCodeListState;
   maritalCodes: MaritalCodeListState;
@@ -32,12 +35,14 @@ export interface SetupModuleState {
 ;
 export const INITIAL_SETUP_STATE: SetupModuleState =
   <SetupModuleState>{
+    title:'Setup Codes',
     genderCodes: <GenderCode[]>[],
     countryCodes: <CountryCode[]>[],
     maritalCodes: <MaritalCode[]>[],
     raceCodes: <RaceCode[]>[],
   };
 export const setupModuleReducers = {
+  title:titleReducer,
   genderCodes: genderCodeListReducer,
   countryCodes: countryCodeListReducer,
   maritalCodes: maritalCodeListReducer,
@@ -62,6 +67,7 @@ export const setupModuleReducers = {
     CountryCodeListPage,
     MaritalCodeListPage,
     RaceCodeListPage,
+    BankCodeListPage,
     //Dialog
 
   ],

@@ -5,6 +5,30 @@ import {Injectable} from '@angular/core';
 export class SetupActions {
 
 //====================================================================================
+// TITLE
+//====================================================================================
+
+  static CHANGE_TITLE = '[Setup] Change Title';
+
+  changeTitle(title): Action {
+    console.log("changeTitle");
+    return {
+      type: SetupActions.CHANGE_TITLE,
+      payload: title
+    };
+  }
+
+  static CHANGE_TITLE_SUCCESS = '[Setup] Change Title Success';
+
+  changeTitleSuccess(title): Action {
+    console.log("changeTitleSuccess");
+    return {
+      type: SetupActions.CHANGE_TITLE_SUCCESS,
+      payload: title
+    };
+  }
+
+//====================================================================================
 // GENDER CODES
 //====================================================================================
 
@@ -91,6 +115,28 @@ export class SetupActions {
     console.log("findRaceCodesSuccess");
     return {
       type: SetupActions.FIND_RACE_CODES_SUCCESS,
+      payload: codes
+    };
+  }
+
+//====================================================================================
+// BANK CODES
+//====================================================================================
+  static FIND_BANK_CODES = '[Setup] Find BankCodes';
+
+  findBankCodes(): Action {
+    console.log("findBankCodes");
+    return {
+      type: SetupActions.FIND_BANK_CODES
+    };
+  }
+
+  static FIND_BANK_CODES_SUCCESS = '[Setup] Find BankCodes Success';
+
+  findBankCodesSuccess(codes): Action {
+    console.log("findBankCodesSuccess");
+    return {
+      type: SetupActions.FIND_BANK_CODES_SUCCESS,
       payload: codes
     };
   }

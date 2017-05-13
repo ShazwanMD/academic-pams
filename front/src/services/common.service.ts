@@ -8,6 +8,7 @@ import {Injectable} from '@angular/core';
 import {Response, Http, Headers, RequestOptions} from '@angular/http';
 import {HttpInterceptorService} from '@covalent/http';
 import {Observable} from "rxjs";
+import {BankCode} from "../app/common/bank-codes/bank-code.interface";
 
 
 @Injectable()
@@ -66,6 +67,23 @@ export class CommonService {
     console.log("findMaritalCodeByCode");
     return this.http.get(environment.endpoint + '/api/common/maritalCodes/' + code)
       .map((res: Response) => <MaritalCode>res.json());
+  }
+
+
+// ====================================================================================================
+// BANKCODE
+// ====================================================================================================
+
+  findBankCodes(): Observable<BankCode[]> {
+    console.log("findBankCodes()");
+    return this.http.get(environment.endpoint + '/api/common/bankCodes')
+      .map((res: Response) => <BankCode[]>res.json());
+  }
+
+  findBankCodeByCode(code: string): Observable<BankCode> {
+    console.log("findBankCodeByCode");
+    return this.http.get(environment.endpoint + '/api/common/bankCodes/' + code)
+      .map((res: Response) => <BankCode>res.json());
   }
 
 

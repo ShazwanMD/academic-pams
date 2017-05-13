@@ -28,7 +28,10 @@ export class RaceCodeListPage implements OnInit {
 
   ngOnInit() {
     this.store.dispatch(this.actions.findRaceCodes());
+    this.store.dispatch(this.actions.changeTitle("Race Codes"))
   }
+
+  filter():void{}
 
 }
 
