@@ -61,7 +61,7 @@ import {CommonService} from '../../../services';
 import {IdentityService} from '../../../services';
 
 import {SectionCenterPage} from "./section-center.page";
-import {SectionListComponent} from "./component/section-list.component";
+//import {SectionListComponent} from "./component/section-list.component";
 import {SectionActions} from "./section.action";
 import {EffectsModule} from "@ngrx/effects";
 import {SectionEffects} from "./section.effect";
@@ -83,7 +83,7 @@ import {SectionComponent} from "./component/section.component";
     SectionDetailPage,
 
     // component
-    SectionListComponent,
+   // SectionListComponent,
     SectionComponent,
     
     //dialog
