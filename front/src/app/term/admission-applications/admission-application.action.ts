@@ -22,212 +22,212 @@ export class AdmissionApplicationActions {
     };
   }
 
-  static FIND_POOLED_ENROLLMENT_APPLICATION_TASKS = '[EnrollmentApplication] Find Pooled EnrollmentApplication Tasks';
+  static FIND_POOLED_ADMISSION_APPLICATION_TASKS = '[AdmissionApplication] Find Pooled AdmissionApplication Tasks';
 
-  findPooledEnrollmentApplicationTasks(): Action {
+  findPooledAdmissionApplicationTasks(): Action {
     return {
-      type: EnrollmentApplicationActions.FIND_POOLED_ENROLLMENT_APPLICATION_TASKS
+      type: AdmissionApplicationActions.FIND_POOLED_ADMISSION_APPLICATION_TASKS
     };
   }
 
-  static FIND_POOLED_ENROLLMENT_APPLICATION_TASKS_SUCCESS = '[EnrollmentApplication] Find Pooled EnrollmentApplication Tasks Success';
+  static FIND_POOLED_ADMISSION_APPLICATION_TASKS_SUCCESS = '[AdmissionApplication] Find Pooled AdmissionApplication Tasks Success';
 
-  findPooledEnrollmentApplicationTasksSuccess(tasks): Action {
-    console.log("findAssignedEnrollmentApplicationTasksSuccess");
+  findPooledAdmissionApplicationTasksSuccess(tasks): Action {
+    console.log("findAssignedAdmissionApplicationTasksSuccess");
     return {
-      type: EnrollmentApplicationActions.FIND_POOLED_ENROLLMENT_APPLICATION_TASKS_SUCCESS,
+      type: AdmissionApplicationActions.FIND_POOLED_ADMISSION_APPLICATION_TASKS_SUCCESS,
       payload: tasks
     };
   }
 
-  static FIND_ENROLLMENT_APPLICATION_TASK_BY_TASK_ID = '[EnrollmentApplication] Find EnrollmentApplication Task By Task Id';
+  static FIND_ADMISSION_APPLICATION_TASK_BY_TASK_ID = '[AdmissionApplication] Find AdmissionApplication Task By Task Id';
 
-  findEnrollmentApplicationTaskByTaskId(taskId): Action {
-    console.log("findEnrollmentApplicationTaskByTaskId");
+  findAdmissionApplicationTaskByTaskId(taskId): Action {
+    console.log("findAdmissionApplicationTaskByTaskId");
     return {
-      type: EnrollmentApplicationActions.FIND_ENROLLMENT_APPLICATION_TASK_BY_TASK_ID,
+      type: AdmissionApplicationActions.FIND_ADMISSION_APPLICATION_TASK_BY_TASK_ID,
       payload: taskId
     };
   }
 
-  static FIND_ENROLLMENT_APPLICATION_TASK_BY_TASK_ID_SUCCESS = '[EnrollmentApplication] Find EnrollmentApplication Task By Task Id Success';
+  static FIND_ADMISSION_APPLICATION_TASK_BY_TASK_ID_SUCCESS = '[AdmissionApplication] Find AdmissionApplication Task By Task Id Success';
 
-  findEnrollmentApplicationTaskByTaskIdSuccess(task): Action {
-    console.log("findEnrollmentApplicationTaskByTaskIdSuccess");
+  findAdmissionApplicationTaskByTaskIdSuccess(task): Action {
+    console.log("findAdmissionApplicationTaskByTaskIdSuccess");
     return {
-      type: EnrollmentApplicationActions.FIND_ENROLLMENT_APPLICATION_TASK_BY_TASK_ID_SUCCESS,
+      type: AdmissionApplicationActions.FIND_ADMISSION_APPLICATION_TASK_BY_TASK_ID_SUCCESS,
       payload: task
     };
   }
 
-  static START_ENROLLMENT_APPLICATION_TASK = '[EnrollmentApplication] Start EnrollmentApplication Task';
+  static START_ADMISSION_APPLICATION_TASK = '[AdmissionApplication] Start AdmissionApplication Task';
 
-  startEnrollmentApplicationTask(invoice): Action {
+  startAdmissionApplicationTask(invoice): Action {
     return {
-      type: EnrollmentApplicationActions.START_ENROLLMENT_APPLICATION_TASK,
+      type: AdmissionApplicationActions.START_ADMISSION_APPLICATION_TASK,
       payload: invoice
     };
   }
 
-  static START_ENROLLMENT_APPLICATION_TASK_SUCCESS = '[EnrollmentApplication] Start EnrollmentApplication Task Success';
+  static START_ADMISSION_APPLICATION_TASK_SUCCESS = '[AdmissionApplication] Start AdmissionApplication Task Success';
 
-  startEnrollmentApplicationTaskSuccess(task): Action {
+  startAdmissionApplicationTaskSuccess(task): Action {
     return {
-      type: EnrollmentApplicationActions.START_ENROLLMENT_APPLICATION_TASK_SUCCESS,
+      type: AdmissionApplicationActions.START_ADMISSION_APPLICATION_TASK_SUCCESS,
       payload: task
     };
   }
 
-  static COMPLETE_ENROLLMENT_APPLICATION_TASK = '[EnrollmentApplication] Complete EnrollmentApplication Task';
+  static COMPLETE_ADMISSION_APPLICATION_TASK = '[AdmissionApplication] Complete AdmissionApplication Task';
 
-  completeEnrollmentApplicationTask(invoice): Action {
+  completeAdmissionApplicationTask(invoice): Action {
     return {
-      type: EnrollmentApplicationActions.COMPLETE_ENROLLMENT_APPLICATION_TASK,
+      type: AdmissionApplicationActions.COMPLETE_ADMISSION_APPLICATION_TASK,
       payload: invoice
     };
   }
 
-  static COMPLETE_ENROLLMENT_APPLICATION_TASK_SUCCESS = '[EnrollmentApplication] Complete EnrollmentApplication Task Success';
+  static COMPLETE_ADMISSION_APPLICATION_TASK_SUCCESS = '[AdmissionApplication] Complete AdmissionApplication Task Success';
 
-  completeEnrollmentApplicationTaskSuccess(message): Action {
+  completeAdmissionApplicationTaskSuccess(message): Action {
     return {
-      type: EnrollmentApplicationActions.COMPLETE_ENROLLMENT_APPLICATION_TASK_SUCCESS,
+      type: AdmissionApplicationActions.COMPLETE_ADMISSION_APPLICATION_TASK_SUCCESS,
       payload: message
     };
   }
 
-  static CLAIM_ENROLLMENT_APPLICATION_TASK = '[EnrollmentApplication] Assign EnrollmentApplication Task';
+  static CLAIM_ADMISSION_APPLICATION_TASK = '[AdmissionApplication] Assign AdmissionApplication Task';
 
-  claimEnrollmentApplicationTask(invoice): Action {
+  claimAdmissionApplicationTask(invoice): Action {
     return {
-      type: EnrollmentApplicationActions.CLAIM_ENROLLMENT_APPLICATION_TASK,
+      type: AdmissionApplicationActions.CLAIM_ADMISSION_APPLICATION_TASK,
       payload: invoice
     };
   }
 
-  static CLAIM_ENROLLMENT_APPLICATION_TASK_SUCCESS = '[EnrollmentApplication] Assign EnrollmentApplication Task Success';
+  static CLAIM_ADMISSION_APPLICATION_TASK_SUCCESS = '[AdmissionApplication] Assign AdmissionApplication Task Success';
 
-  claimEnrollmentApplicationTaskSuccess(task): Action {
+  claimAdmissionApplicationTaskSuccess(task): Action {
     return {
-      type: EnrollmentApplicationActions.CLAIM_ENROLLMENT_APPLICATION_TASK_SUCCESS,
+      type: AdmissionApplicationActions.CLAIM_ADMISSION_APPLICATION_TASK_SUCCESS,
       payload: task
     };
   }
 
-  static RELEASE_ENROLLMENT_APPLICATION_TASK = '[EnrollmentApplication] Release EnrollmentApplication Task';
+  static RELEASE_ADMISSION_APPLICATION_TASK = '[AdmissionApplication] Release AdmissionApplication Task';
 
-  releaseEnrollmentApplicationTask(invoice): Action {
+  releaseAdmissionApplicationTask(invoice): Action {
     return {
-      type: EnrollmentApplicationActions.RELEASE_ENROLLMENT_APPLICATION_TASK,
+      type: AdmissionApplicationActions.RELEASE_ADMISSION_APPLICATION_TASK,
       payload: invoice
     };
   }
 
-  static RELEASE_ENROLLMENT_APPLICATION_TASK_SUCCESS = '[EnrollmentApplication] Release EnrollmentApplication Task Success';
+  static RELEASE_ADMISSION_APPLICATION_TASK_SUCCESS = '[AdmissionApplication] Release AdmissionApplication Task Success';
 
-  releaseEnrollmentApplicationTaskSuccess(task): Action {
+  releaseAdmissionApplicationTaskSuccess(task): Action {
     return {
-      type: EnrollmentApplicationActions.RELEASE_ENROLLMENT_APPLICATION_TASK_SUCCESS,
+      type: AdmissionApplicationActions.RELEASE_ADMISSION_APPLICATION_TASK_SUCCESS,
       payload: task
     };
   }
 
-  static FIND_ENROLLMENT_APPLICATION_BY_ID = '[EnrollmentApplication] Find EnrollmentApplication By Id';
+  static FIND_ADMISSION_APPLICATION_BY_ID = '[AdmissionApplication] Find AdmissionApplication By Id';
 
-  findEnrollmentApplicationById(id): Action {
+  findAdmissionApplicationById(id): Action {
     return {
-      type: EnrollmentApplicationActions.FIND_ENROLLMENT_APPLICATION_BY_ID,
+      type: AdmissionApplicationActions.FIND_ADMISSION_APPLICATION_BY_ID,
       payload: id
     };
   }
 
-  static FIND_ENROLLMENT_APPLICATION_BY_ID_SUCCESS = '[EnrollmentApplication] Find EnrollmentApplication By Id Success';
+  static FIND_ADMISSION_APPLICATION_BY_ID_SUCCESS = '[AdmissionApplication] Find AdmissionApplication By Id Success';
 
-  findEnrollmentApplicationByIdSuccess(invoice): Action {
+  findAdmissionApplicationByIdSuccess(invoice): Action {
     return {
-      type: EnrollmentApplicationActions.FIND_ENROLLMENT_APPLICATION_BY_ID_SUCCESS,
+      type: AdmissionApplicationActions.FIND_ADMISSION_APPLICATION_BY_ID_SUCCESS,
       payload: invoice
     };
   }
 
-  static FIND_ENROLLMENT_APPLICATION_BY_REFERENCE_NO = '[EnrollmentApplication] Find EnrollmentApplication By Reference No';
+  static FIND_ADMISSION_APPLICATION_BY_REFERENCE_NO = '[AdmissionApplication] Find AdmissionApplication By Reference No';
 
-  findEnrollmentApplicationByReferenceNo(referenceNo): Action {
+  findAdmissionApplicationByReferenceNo(referenceNo): Action {
     return {
-      type: EnrollmentApplicationActions.FIND_ENROLLMENT_APPLICATION_BY_REFERENCE_NO,
+      type: AdmissionApplicationActions.FIND_ADMISSION_APPLICATION_BY_REFERENCE_NO,
       payload: referenceNo
     };
   }
 
-  static FIND_ENROLLMENT_APPLICATION_BY_REFERENCE_NO_SUCCESS = '[EnrollmentApplication] Find EnrollmentApplication By Reference No Success';
+  static FIND_ADMISSION_APPLICATION_BY_REFERENCE_NO_SUCCESS = '[AdmissionApplication] Find AdmissionApplication By Reference No Success';
 
-  findEnrollmentApplicationByReferenceNoSuccess(invoice): Action {
+  findAdmissionApplicationByReferenceNoSuccess(invoice): Action {
     return {
-      type: EnrollmentApplicationActions.FIND_ENROLLMENT_APPLICATION_BY_REFERENCE_NO_SUCCESS,
+      type: AdmissionApplicationActions.FIND_ADMISSION_APPLICATION_BY_REFERENCE_NO_SUCCESS,
       payload: invoice
     };
   }
 
-  static FIND_ENROLLMENT_APPLICATION_ITEMS = '[EnrollmentApplication] Find EnrollmentApplication Items';
+  static FIND_ADMISSION_APPLICATION_ITEMS = '[AdmissionApplication] Find AdmissionApplication Items';
 
-  findEnrollmentApplicationItems(invoice): Action {
-    console.log("findEnrollmentApplicationItems for invoice: " + invoice);
+  findAdmissionApplicationItems(invoice): Action {
+    console.log("findAdmissionApplicationItems for invoice: " + invoice);
     return {
-      type: EnrollmentApplicationActions.FIND_ENROLLMENT_APPLICATION_ITEMS,
+      type: AdmissionApplicationActions.FIND_ADMISSION_APPLICATION_ITEMS,
       payload: invoice
     };
   }
 
-  static FIND_ENROLLMENT_APPLICATION_ITEMS_SUCCESS = '[EnrollmentApplication] Find EnrollmentApplication Items Success';
+  static FIND_ADMISSION_APPLICATION_ITEMS_SUCCESS = '[AdmissionApplication] Find AdmissionApplication Items Success';
 
-  findEnrollmentApplicationItemsSuccess(items): Action {
-    console.log("findEnrollmentApplicationItemsSuccess");
+  findAdmissionApplicationItemsSuccess(items): Action {
+    console.log("findAdmissionApplicationItemsSuccess");
     return {
-      type: EnrollmentApplicationActions.FIND_ENROLLMENT_APPLICATION_ITEMS_SUCCESS,
+      type: AdmissionApplicationActions.FIND_ADMISSION_APPLICATION_ITEMS_SUCCESS,
       payload: items
     };
   }
 
 
-  static UPDATE_ENROLLMENT_APPLICATION = '[EnrollmentApplication] Update EnrollmentApplication';
+  static UPDATE_ADMISSION_APPLICATION = '[AdmissionApplication] Update AdmissionApplication';
 
-  updateEnrollmentApplication(invoice): Action {
+  updateAdmissionApplication(invoice): Action {
     return {
-      type: EnrollmentApplicationActions.UPDATE_ENROLLMENT_APPLICATION,
+      type: AdmissionApplicationActions.UPDATE_ADMISSION_APPLICATION,
       payload: invoice
     };
   }
 
-  static UPDATE_ENROLLMENT_APPLICATION_SUCCESS = '[EnrollmentApplication] Update EnrollmentApplication Success';
+  static UPDATE_ADMISSION_APPLICATION_SUCCESS = '[AdmissionApplication] Update AdmissionApplication Success';
 
-  updateEnrollmentApplicationSuccess(invoice): Action {
+  updateAdmissionApplicationSuccess(invoice): Action {
     return {
-      type: EnrollmentApplicationActions.UPDATE_ENROLLMENT_APPLICATION_SUCCESS,
+      type: AdmissionApplicationActions.UPDATE_ADMISSION_APPLICATION_SUCCESS,
       payload: invoice
     };
   }
 
-  static REMOVE_ENROLLMENT_APPLICATION = '[EnrollmentApplication] Remove EnrollmentApplication';
+  static REMOVE_ADMISSION_APPLICATION = '[AdmissionApplication] Remove AdmissionApplication';
 
-  removeEnrollmentApplication(invoice): Action {
+  removeAdmissionApplication(invoice): Action {
     return {
-      type: EnrollmentApplicationActions.REMOVE_ENROLLMENT_APPLICATION,
+      type: AdmissionApplicationActions.REMOVE_ADMISSION_APPLICATION,
       payload: invoice
     };
   }
 
-  static REMOVE_ENROLLMENT_APPLICATION_SUCCESS = '[EnrollmentApplication] Remove EnrollmentApplication Success';
+  static REMOVE_ADMISSION_APPLICATION_SUCCESS = '[AdmissionApplication] Remove AdmissionApplication Success';
 
-  removeEnrollmentApplicationSuccess(invoice): Action {
+  removeAdmissionApplicationSuccess(invoice): Action {
     return {
-      type: EnrollmentApplicationActions.REMOVE_ENROLLMENT_APPLICATION_SUCCESS,
+      type: AdmissionApplicationActions.REMOVE_ADMISSION_APPLICATION_SUCCESS,
       payload: invoice
     };
   }
 
   static ADD_ADMISSION_APPLICATION_ITEM = '[AdmissionApplication] Add AdmissionApplication Item';
 
-  addEnrollmentApplicationItem(invoice, item): Action {
+  addAdmissionApplicationItem(invoice, item): Action {
     return {
       type: AdmissionApplicationActions.ADD_ADMISSION_APPLICATION_ITEM,
       payload: {invoice:invoice, item:item}
@@ -236,7 +236,7 @@ export class AdmissionApplicationActions {
 
   static ADD_ADMISSION_APPLICATION_ITEM_SUCCESS = '[AdmissionApplication] Add AdmissionApplication Item Success';
 
-  addEnrollmentApplicationItemSuccess(message): Action {
+  addAdmissionApplicationItemSuccess(message): Action {
     return {
       type: AdmissionApplicationActions.ADD_ADMISSION_APPLICATION_ITEM_SUCCESS,
       payload: message

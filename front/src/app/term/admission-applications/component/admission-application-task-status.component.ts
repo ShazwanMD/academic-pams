@@ -1,0 +1,12 @@
+import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy} from '@angular/core';
+import {AdmissionApplicationTask} from "../admission-application-task.interface";
+
+@Component({
+  selector: 'pams-admission-application-task-status',
+  templateUrl: './admission-application-task-status.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+
+})
+export class AdmissionApplicationTaskStatusComponent {
+  @Input() admissionApplicationTask: AdmissionApplicationTask;
+}

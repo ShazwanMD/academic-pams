@@ -1,10 +1,12 @@
-import {Component, OnInit, ChangeDetectionStrategy} from '@angular/core';
+import {Component, OnInit, ChangeDetectionStrategy, ViewContainerRef} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 
 import {IdentityService} from '../../../services';
 import {CommonService} from '../../../services';
 import {Observable} from "rxjs";
 import {AdmissionApplication} from "./admission-application.interface";
+import {MdDialog, MdDialogConfig, MdDialogRef} from "@angular/material";
+import {AdmissionApplicationTaskCreatorDialog} from "./dialog/admission-application-task-creator.dialog";
 
 @Component({
   selector: 'pams-admission-application-center',
@@ -18,11 +20,14 @@ export class AdmissionApplicationCenterPage implements OnInit {
   private _router: Router;
   private _route: ActivatedRoute;
   private admissionApplications$: Observable<AdmissionApplication[]>;
+  private creatorDialogRef: MdDialogRef<AdmissionApplicationTaskCreatorDialog>;
 
   constructor(router: Router,
               route: ActivatedRoute,
               identityService: IdentityService,
-              commonService: CommonService) {
+              commonService: CommonService,
+                private vcf: ViewContainerRef,
+                private dialog: MdDialog) {
 
     this._router = router;
     this._route = route;
@@ -43,7 +48,7 @@ export class AdmissionApplicationCenterPage implements OnInit {
     config.width = '50%';
     config.height = '65%';
     config.position = {top: '0px'};
-    this.creatorDialogRef = this.dialog.open(EnrollmentApplicationTaskCreatorDialog, config);
+    this.creatorDialogRef = this.dialog.open(AdmissionApplicationTaskCreatorDialog, config);
     this.creatorDialogRef.afterClosed().subscribe(res => {
       console.log("close dialog");
       // load something here
