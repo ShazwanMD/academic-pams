@@ -85,7 +85,6 @@ public class WhenIUpdateEnrollmentStatus extends Stage<WhenIUpdateEnrollmentStat
 
 				enrollment = new AdEnrollmentImpl();
 				enrollment.setStanding(AdEnrollmentStanding.HW);
-				enrollment.setStudent(application.getStudent());
 				enrollment.setSection(item.getSection());
 				enrollment.setStatus(AdEnrollmentStatus.NEW);
 				enrollment.setGradeCode(gradeCode);

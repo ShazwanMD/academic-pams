@@ -370,9 +370,9 @@ public interface TermService {
     boolean hasExceededEnrollment(AdSection section);
 
     // note: this is used by workflow
-    void enroll(boolean override, AdSection section, AdStudent student, AdAdmission admission); // throws
+    void enroll(boolean override, AdSection section, AdAdmission admission); // throws
 
-    void withdraw(boolean override, AdSection section, AdStudent student, AdAdmission admission); // throws
+    void withdraw(boolean override, AdSection section, AdAdmission admission); // throws
 
     // todo(uda): business method is enroll()
     @Deprecated

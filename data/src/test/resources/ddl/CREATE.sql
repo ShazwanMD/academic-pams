@@ -602,7 +602,6 @@
         ADMISSION_ID int8,
         GRADE_CODE_ID int8,
         SECTION_ID int8,
-        STUDENT_ID int8,
         primary key (ID)
     );
 
@@ -652,9 +651,7 @@
         SOURCE_NO varchar(255),
         APPLICATION_TYPE int4,
         ADMISSION_ID int8,
-        ADVISOR_ID int8,
         SESSION_ID int8,
-        STUDENT_ID int8,
         primary key (ID)
     );
 
@@ -1618,30 +1615,15 @@
         foreign key (SECTION_ID)
         references AD_SCTN;
 
-    alter table AD_ENMT
-        add constraint FKE7D9DAAC54FCB007
-        foreign key (STUDENT_ID)
-        references AD_STDN;
-
     alter table AD_ENMT_APLN
         add constraint FK43196BA43C61CEB5
         foreign key (ADMISSION_ID)
         references AD_ADMN;
 
     alter table AD_ENMT_APLN
-        add constraint FK43196BA4AAEC85C7
-        foreign key (ADVISOR_ID)
-        references AD_STAF;
-
-    alter table AD_ENMT_APLN
         add constraint FK43196BA43C7922CA
         foreign key (SESSION_ID)
         references AD_ACDM_SESN;
-
-    alter table AD_ENMT_APLN
-        add constraint FK43196BA454FCB007
-        foreign key (STUDENT_ID)
-        references AD_STDN;
 
     alter table AD_ENMT_APPL_ITEM
         add constraint FK4878A29478AB75B1

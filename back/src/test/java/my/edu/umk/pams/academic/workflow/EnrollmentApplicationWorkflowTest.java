@@ -79,7 +79,6 @@ public class EnrollmentApplicationWorkflowTest {
         AdEnrollmentApplication application = new AdEnrollmentApplicationImpl();
         application.setDescription(student.getMatricNo() + ";" + student.getCohort().getCode());
         application.setSession(academicSession);
-        application.setStudent(student);
         application.setAdmission(admission);
         application.setType(AdEnrollmentApplicationType.WAJIB);
         String referenceNo = termService.startEnrollmentApplicationTask(application);

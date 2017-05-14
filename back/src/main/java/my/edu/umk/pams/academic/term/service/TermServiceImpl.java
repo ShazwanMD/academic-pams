@@ -1018,7 +1018,8 @@ public class TermServiceImpl implements TermService {
     // ====================================================================================================
 
     @Override
-    public void enroll(boolean override, AdSection section, AdStudent student, AdAdmission admission) {
+    public void enroll(boolean override, AdSection section, AdAdmission admission) {
+        AdStudent student = admission.getStudent();
         LOG.debug("enrolling student #{} into section #{}", student.getMatricNo(), section.getCanonicalCode());
         Validate.notNull(section, "Section cannot be null");
         Validate.notNull(student, "Student cannot be null");
@@ -1050,7 +1051,6 @@ public class TermServiceImpl implements TermService {
         // create enrollment
         AdEnrollment enrollment = new AdEnrollmentImpl();
         enrollment.setAdmission(admission);
-        enrollment.setStudent(student);
         enrollment.setSection(section);
         enrollment.setStatus(AdEnrollmentStatus.CONFIRMED);
         saveEnrollment(enrollment);
@@ -1065,9 +1065,10 @@ public class TermServiceImpl implements TermService {
     }
 
     @Override
-    public void withdraw(boolean override, AdSection section, AdStudent student, AdAdmission admission) {
+    public void withdraw(boolean override, AdSection section, AdAdmission admission) {
         // TODO: check process calendar
         // TODO: PRA, WAJIB, BERDENDA
+        AdStudent student = admission.getStudent();
         LOG.debug("withdrawing student #{} from section #{}", student.getMatricNo(), section.getCanonicalCode());
 
         AdEnrollment enrollment = findEnrollmentBySectionAndStudent(section, student);
@@ -1113,9 +1114,9 @@ public class TermServiceImpl implements TermService {
         List<AdEnrollmentApplicationItem> items = findEnrollmentApplicationItems(application);
         for (AdEnrollmentApplicationItem item : items) {
             if (AdEnrollmentApplicationAction.ADD.equals(item.getAction()))
-                enroll(true, item.getSection(), application.getStudent(), application.getAdmission());
+                enroll(true, item.getSection(), application.getAdmission());
             else if (AdEnrollmentApplicationAction.DROP.equals(item.getAction()))
-                withdraw(true, item.getSection(), application.getStudent(), application.getAdmission());
+                withdraw(true, item.getSection(), application.getAdmission());
             else
                 LOG.warn("Not supposed to happen");
         }

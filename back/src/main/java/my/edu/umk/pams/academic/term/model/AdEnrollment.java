@@ -3,7 +3,6 @@ package my.edu.umk.pams.academic.term.model;
 
 import my.edu.umk.pams.academic.common.model.AdGradeCode;
 import my.edu.umk.pams.academic.core.AdMetaObject;
-import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.planner.model.AdEnrollmentStanding;
 import my.edu.umk.pams.academic.planner.model.AdEnrollmentStatus;
 
@@ -24,12 +23,6 @@ public interface AdEnrollment extends AdMetaObject {
     AdAdmission getAdmission();
 
     void setAdmission(AdAdmission admission);
-
-    // todo(max): student & admission or just student??
-    AdStudent getStudent();
-
-    // todo(max): student & admission or just student??
-    void setStudent(AdStudent student);
 
     AdSection getSection();
 

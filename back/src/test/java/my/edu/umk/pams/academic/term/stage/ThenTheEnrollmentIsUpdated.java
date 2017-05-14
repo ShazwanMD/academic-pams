@@ -22,7 +22,6 @@ public class ThenTheEnrollmentIsUpdated extends Stage<ThenTheEnrollmentIsUpdated
 
 		LOG.debug("New enrollment has been transfered: {} ", enrollment.getId());
 		LOG.debug("New enrollment has been transfered: {} ", enrollment.getStanding());
-		LOG.debug("New enrollment has been transfered: {} ", enrollment.getStudent().getName());
 		LOG.debug("New enrollment has been transfered: {} ", enrollment.getSection().getCanonicalCode());
 
 		return null;

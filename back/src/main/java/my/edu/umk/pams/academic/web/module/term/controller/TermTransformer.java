@@ -145,7 +145,6 @@ public class TermTransformer {
     public Enrollment toEnrollmentVo(AdEnrollment enrollment) {
         Enrollment vo = new Enrollment();
         vo.setId(enrollment.getId());
-        vo.setStudent(identityTransformer.toStudentVo(enrollment.getStudent()));
         vo.setAdmission(this.toAdmissionVo(enrollment.getAdmission()));
         vo.setGradeCode(commonTransformer.toGradeCodeVo(enrollment.getGradeCode()));
         vo.setSection(this.toSectionVo(enrollment.getSection()));
