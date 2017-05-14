@@ -16,9 +16,9 @@ export class SectionEffects {
     .switchMap(() => this.termService.findSections())
     .map(sections => this.sectionActions.findSectionsSuccess(sections));
 
-  @Effect() findSectionById$ = this.actions$
+  @Effect() findSectionByCanonicalCode$ = this.actions$
     .ofType(SectionActions.FIND_SECTION_BY_CANONICAL_CODE)
     .map(action => action.payload)
-    .switchMap(id => this.termService.findSectionByCanonicalCode(id))
+    .switchMap(canonicalCode => this.termService.findSectionByCanonicalCode(canonicalCode))
     .map(section => this.sectionActions.findSectionByCanonicalCodeSuccess(section));
 }
