@@ -24,6 +24,7 @@ export class SectionCenterPage implements OnInit {
               private termService: TermService,
               private store: Store<TermModuleState>) {
     this.sections$ = this.store.select(...this.SECTIONS);
+    
   }
 
   goBack(route: string): void {
