@@ -23,14 +23,6 @@ public interface AdEnrollmentApplication extends AdDocument {
      *
      * @return
      */
-    AdStudent getStudent();
-
-    void setStudent(AdStudent student);
-
-    /**
-     *
-     * @return
-     */
     AdAdmission getAdmission();
 
     void setAdmission(AdAdmission admission);

@@ -64,7 +64,7 @@ public class WhenITransferSection extends Stage<WhenITransferSection> {
 
 				enrollment = new AdEnrollmentImpl();
 				enrollment.setStanding(AdEnrollmentStanding.HW);
-				enrollment.setStudent(application.getStudent());
+				enrollment.setAdmission(application.getAdmission());
 				enrollment.setSection(item.getSection());
 				enrollment.setStatus(AdEnrollmentStatus.NEW);
 				enrollment.setGradeCode(gradeCode);

@@ -110,7 +110,7 @@ public class WhenIAddEnrollmentCourses extends Stage<WhenIAddEnrollmentCourses> 
 
 			for (AdEnrollmentApplication application : applications) {
 				LOG.debug("Application Id:{}", application.getId());
-				LOG.debug("Application Student:{}", application.getStudent().getId());
+				LOG.debug("Application Student:{}", application.getAdmission().getId());
 			}
 
 			// have to setup admission service
@@ -124,8 +124,7 @@ public class WhenIAddEnrollmentCourses extends Stage<WhenIAddEnrollmentCourses> 
 			application.setType(AdEnrollmentApplicationType.WAJIB);
 			application.setAdmission(admission);
 			application.setSession(academicSession);
-			application.setStudent(student);
-			
+
 			termService.startEnrollmentApplicationTask(application);
 
 			String generatedReferenceNo = termService.startEnrollmentApplicationTask(application);

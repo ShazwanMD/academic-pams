@@ -63,8 +63,6 @@ public class WhenDropCourse extends Stage<WhenDropCourse> {
 
 		for (AdEnrollmentApplication application : applications) {
 			LOG.debug("Application Id:{}", application.getId());
-			LOG.debug("Application Student:{}", application.getStudent().getId());
-
 			section = termService.findSectionByCanonicalCode(canonicalCode);
 			Assert.notNull(section, "Section data should be not null");
 			LOG.debug("Section Code: {}", section.getCode());
@@ -78,8 +76,7 @@ public class WhenDropCourse extends Stage<WhenDropCourse> {
 			application.setSourceNo("setSourceNo");
 			application.setType(AdEnrollmentApplicationType.WAJIB);
 			application.setSession(academicSession);
-			application.setStudent(student);
-			
+
 			termService.startEnrollmentApplicationTask(application);
 
 			String generatedReferenceNo = termService.startEnrollmentApplicationTask(application);

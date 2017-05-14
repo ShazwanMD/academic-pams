@@ -131,14 +131,11 @@ public class WhenSetupGradeBook3002 extends Stage<WhenSetupGradeBook3002> {
 
 		enrollment = new AdEnrollmentImpl();
 		enrollment.setAdmission(admission);
-		enrollment.setStudent(student);
 		enrollment.setSection(section);
 		enrollment.setGradeCode(commonService.findGradeCodeByCode("A"));
 		enrollment.setStatus(AdEnrollmentStatus.CONFIRMED);
 		LOG.debug("Enrollment Status :{}", enrollment.getAdmission().getStanding().getDescription());
-		LOG.debug("Enroll Student Name :{}", enrollment.getStudent().getName());
 		LOG.debug("Grade Code :{}", enrollment.getGradeCode().getCode());
-		LOG.debug("");
 		termService.saveEnrollment(enrollment);
 		
 

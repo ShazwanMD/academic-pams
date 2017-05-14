@@ -4,8 +4,6 @@ package my.edu.umk.pams.academic.term.model;
 import my.edu.umk.pams.academic.common.model.AdGradeCode;
 import my.edu.umk.pams.academic.common.model.AdGradeCodeImpl;
 import my.edu.umk.pams.academic.core.AdMetadata;
-import my.edu.umk.pams.academic.identity.model.AdStudent;
-import my.edu.umk.pams.academic.identity.model.AdStudentImpl;
 import my.edu.umk.pams.academic.planner.model.AdEnrollmentStanding;
 import my.edu.umk.pams.academic.planner.model.AdEnrollmentStatus;
 
@@ -35,10 +33,6 @@ public class AdEnrollmentImpl implements AdEnrollment {
     @ManyToOne(targetEntity = AdGradeCodeImpl.class)
     @JoinColumn(name = "GRADE_CODE_ID")
     private AdGradeCode gradeCode;
-
-    @ManyToOne(targetEntity = AdStudentImpl.class)
-    @JoinColumn(name = "STUDENT_ID")
-    private AdStudent student;
 
     @ManyToOne(targetEntity = AdSectionImpl.class)
     @JoinColumn(name = "SECTION_ID")
@@ -90,16 +84,6 @@ public class AdEnrollmentImpl implements AdEnrollment {
     }
 
     @Override
-    public AdStudent getStudent() {
-        return student;
-    }
-
-    @Override
-    public void setStudent(AdStudent student) {
-        this.student = student;
-    }
-
-    @Override
     public AdSection getSection() {
         return section;
     }
@@ -143,14 +127,14 @@ public class AdEnrollmentImpl implements AdEnrollment {
 
         if (!id.equals(that.id)) return false;
         if (!section.equals(that.section)) return false;
-        return student.equals(that.student);
+        return admission.equals(that.admission);
 
     }
 
     @Override
     public int hashCode() {
         int result = id.hashCode();
-        result = 31 * result + student.hashCode();
+        result = 31 * result + admission.hashCode();
         result = 31 * result + section.hashCode();
         return result;
     }

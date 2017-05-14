@@ -54,7 +54,6 @@ public class WhenIWantToEnrollAdditionalOfferingCoursesToRepeatCourses
 
 		enrollment = new AdEnrollmentImpl();
 		enrollment.setSection(section);
-		enrollment.setStudent(student);
 		enrollment.setStatus(AdEnrollmentStatus.NEW);
 		enrollment.setStanding(AdEnrollmentStanding.UG);
 		termService.saveEnrollment(enrollment);

@@ -47,10 +47,6 @@ public class AdEnrollmentApplicationImpl implements AdEnrollmentApplication {
     @Column(name = "CANCEL_COMMENT")
     private String cancelComment;
 
-    @ManyToOne(targetEntity = AdStudentImpl.class)
-    @JoinColumn(name = "STUDENT_ID")
-    private AdStudent student;
-
     @ManyToOne(targetEntity = AdAdmissionImpl.class)
     @JoinColumn(name = "ADMISSION_ID")
     private AdAdmission admission;
@@ -155,16 +151,6 @@ public class AdEnrollmentApplicationImpl implements AdEnrollmentApplication {
     @Override
     public void setSession(AdAcademicSession session) {
         this.session = session;
-    }
-
-    @Override
-    public AdStudent getStudent() {
-        return student;
-    }
-
-    @Override
-    public void setStudent(AdStudent student) {
-        this.student = student;
     }
 
     @Override
