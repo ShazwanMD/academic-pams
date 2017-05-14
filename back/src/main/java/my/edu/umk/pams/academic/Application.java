@@ -2,7 +2,6 @@ package my.edu.umk.pams.academic;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.embedded.ConfigurableEmbeddedServletContainer;
@@ -11,19 +10,29 @@ import org.springframework.boot.web.servlet.ErrorPage;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.web.session.HttpSessionEventPublisher;
+import org.springframework.web.context.WebApplicationContext;
+
+import javax.servlet.FilterRegistration;
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
 
 @SpringBootApplication()
 public class Application extends SpringBootServletInitializer {
 
     private static final Logger LOG = LoggerFactory.getLogger(Application.class);
 
-    public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
+        return configureApplication(builder);
     }
 
-    @Override
-    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-        return application.sources(Application.class);
+    public static void main(String[] args) {
+        configureApplication(new SpringApplicationBuilder()).run(args);
+    }
+
+    private static SpringApplicationBuilder configureApplication(SpringApplicationBuilder builder) {
+        return builder.sources(Application.class);
     }
 
     @Bean
