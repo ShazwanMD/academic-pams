@@ -77,24 +77,10 @@ public class TermController {
         return new ResponseEntity<List<Admission>>(termTransformer.toAdmissionVos(admissions), HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/admissions/{academicSessionCode}", method = RequestMethod.GET)
-    public ResponseEntity<List<Admission>> findAdmissionsByAcademicSession(@PathVariable String academicSessionCode) {
-        AdAcademicSession academicSession = plannerService.findAcademicSessionByCode(academicSessionCode);
-        List<AdAdmission> admissions = termService.findAdmissions(academicSession, 0, 100);
-        return new ResponseEntity<List<Admission>>(termTransformer.toAdmissionVos(admissions), HttpStatus.OK);
-    }
-    
-    /*@RequestMapping(value = "/admissions/{id}", method = RequestMethod.GET)
-    public ResponseEntity<Admission> findAdmission(@PathVariable Long id) {
-        AdAdmission admission = termService.findAdmissionById(id);
-        return new ResponseEntity<Admission>(termTransformer.toAdmissionVo(admission), HttpStatus.OK);
-    }*/
-    
     @RequestMapping(value = "/admissions/{id}", method = RequestMethod.GET)
     public ResponseEntity<Admission> findAdmissionById(@PathVariable Long id) throws UnsupportedEncodingException {
         return new ResponseEntity<Admission>(termTransformer.toAdmissionVo(termService.findAdmissionById(id)), HttpStatus.OK);
     }
-    
 
     // workflow
 
