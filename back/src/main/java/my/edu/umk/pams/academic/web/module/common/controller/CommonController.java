@@ -14,6 +14,8 @@ import my.edu.umk.pams.academic.common.model.AdGradeCode;
 import my.edu.umk.pams.academic.common.model.AdGradeCodeImpl;
 import my.edu.umk.pams.academic.common.model.AdMaritalCode;
 import my.edu.umk.pams.academic.common.model.AdMaritalCodeImpl;
+import my.edu.umk.pams.academic.common.model.AdNationalityCode;
+import my.edu.umk.pams.academic.common.model.AdNationalityCodeImpl;
 import my.edu.umk.pams.academic.common.model.AdParliamentCode;
 import my.edu.umk.pams.academic.common.model.AdParliamentCodeImpl;
 import my.edu.umk.pams.academic.common.model.AdRaceCode;
@@ -31,6 +33,7 @@ import my.edu.umk.pams.academic.web.module.common.vo.DunCode;
 import my.edu.umk.pams.academic.web.module.common.vo.GenderCode;
 import my.edu.umk.pams.academic.web.module.common.vo.GradeCode;
 import my.edu.umk.pams.academic.web.module.common.vo.MaritalCode;
+import my.edu.umk.pams.academic.web.module.common.vo.NationalityCode;
 import my.edu.umk.pams.academic.web.module.common.vo.ParliamentCode;
 import my.edu.umk.pams.academic.web.module.common.vo.RaceCode;
 import my.edu.umk.pams.academic.web.module.common.vo.ReligionCode;
@@ -606,6 +609,58 @@ public ResponseEntity<String> removeReligionCode(@PathVariable String code) {
       commonService.removeReligionCode(religionCode);
       return new ResponseEntity<String>("Success", HttpStatus.OK);
       }
+
+
+//====================================================================================================
+//NATIONALITY_CODE
+//====================================================================================================
+
+@RequestMapping(value = "/nationalityCodes", method = RequestMethod.GET)
+public ResponseEntity<List<NationalityCode>> findNationalityCodes() {
+      return new ResponseEntity<List<NationalityCode>>(commonTransformer.toNationalityCodeVos(
+      commonService.findNationalityCodes()), HttpStatus.OK);
+      }
+
+@RequestMapping(value = "/nationalityCodes/{code}", method = RequestMethod.GET)
+public ResponseEntity<NationalityCode> findNationalityCodeByCode(@PathVariable String code) {
+      return new ResponseEntity<NationalityCode>(commonTransformer.toNationalityCodeVo(
+      commonService.findNationalityCodeByCode(code)), HttpStatus.OK);
+      }
+
+@RequestMapping(value = "/nationalityCodes", method = RequestMethod.POST)
+public ResponseEntity<String> saveNationalityCode(@RequestBody NationalityCode vo) {
+      dummyLogin();
+
+      AdNationalityCode nationalityCode = new AdNationalityCodeImpl();
+      nationalityCode.setCode(vo.getCode());
+      nationalityCode.setDescriptionEn(vo.getDescriptionEn());
+      nationalityCode.setDescriptionMs(vo.getDescriptionMs());
+      commonService.saveNationalityCode(nationalityCode);
+      return new ResponseEntity<String>("Success", HttpStatus.OK);
+      }
+
+@RequestMapping(value = "/nationalityCodes/{code}", method = RequestMethod.PUT)
+public ResponseEntity<String> updateNationalityCode(@PathVariable String code, @RequestBody NationalityCode vo) {
+      dummyLogin();
+
+      AdNationalityCode nationalityCode = commonService.findNationalityCodeById(vo.getId());
+      nationalityCode.setCode(vo.getCode());
+      nationalityCode.setDescriptionEn(vo.getDescriptionEn());
+      nationalityCode.setDescriptionMs(vo.getDescriptionMs());
+      commonService.updateNationalityCode(nationalityCode);
+      return new ResponseEntity<String>("Success", HttpStatus.OK);
+      }
+
+@RequestMapping(value = "/nationalityCodes/{code}", method = RequestMethod.DELETE)
+public ResponseEntity<String> removeNationalityCode(@PathVariable String code) {
+      dummyLogin();
+
+      AdNationalityCode nationalityCode = commonService.findNationalityCodeByCode(code);
+      commonService.removeNationalityCode(nationalityCode);
+      return new ResponseEntity<String>("Success", HttpStatus.OK);
+      }
+
+
 
 
 

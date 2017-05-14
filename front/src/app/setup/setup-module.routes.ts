@@ -1,3 +1,4 @@
+import { NationalityCodeListPage } from './nationality-codes/nationality-code-list.page';
 import { ReligionCodeListPage } from './religion-codes/religion-code-list.page';
 import { GradeCodeListPage } from './grade-codes/grade-code-list.page';
 import { DunCodeListPage } from './dun-codes/dun-code-list.page';
@@ -27,6 +28,7 @@ export const SetupModuleRoutes: Routes = [
       {path: 'dun-codes', component: DunCodeListPage},
       {path: 'grade-codes', component: GradeCodeListPage},
       {path: 'religion-codes', component: ReligionCodeListPage},
+      {path: 'nationality-codes', component: NationalityCodeListPage},
     ]
   },
 ];

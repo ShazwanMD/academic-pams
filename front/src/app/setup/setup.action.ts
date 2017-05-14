@@ -244,6 +244,28 @@ findReligionCodesSuccess(codes): Action {
 }
 
 
+static FIND_NATIONALITY_CODES = '[Setup] Find NationalityCodes';
+
+findNationalityCodes(): Action {
+    console.log("findNationalityCodes");
+    return {
+        type: SetupActions.FIND_NATIONALITY_CODES
+    };
+}
+
+static FIND_NATIONALITY_CODES_SUCCESS = '[Setup] Find NationalityCodes Success';
+
+findNationalityCodesSuccess(codes): Action {
+    console.log("findNationalityCodesSuccess");
+    return {
+        type: SetupActions.FIND_NATIONALITY_CODES_SUCCESS,
+        payload: codes
+    };
+}
+
+
+
+
 
 
 

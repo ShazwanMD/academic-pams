@@ -162,6 +162,27 @@ findReligionCodesSuccess(codes): Action {
     };
 }
 
+static FIND_NATIONALITY_CODES = '[Common] Find NationalityCodes';
+
+findNationalityCodes(): Action {
+    console.log("findNationalityCodes");
+    return {
+        type: CommonActions.FIND_NATIONALITY_CODES
+    };
+}
+
+static FIND_NATIONALITY_CODES_SUCCESS = '[Common] Find NationalityCodes Success';
+
+findNationalityCodesSuccess(codes): Action {
+    console.log("findNationalityCodesSuccess");
+    return {
+        type: CommonActions.FIND_NATIONALITY_CODES_SUCCESS,
+        payload: codes
+    };
+}
+
+
+
 
 
 

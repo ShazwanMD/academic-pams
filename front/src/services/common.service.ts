@@ -1,3 +1,4 @@
+import { NationalityCode } from './../app/common/nationality-codes/nationality-code.interface';
 import { ReligionCode } from './../app/common/religion-codes/religion-code.interface';
 import { GradeCode } from './../app/common/grade-codes/grade-code.interface';
 import { DunCode } from './../app/common/dun-codes/dun-code.interface';
@@ -195,6 +196,23 @@ return this.http.get(environment.endpoint + '/api/common/religionCodes/' + code)
     .map((res: Response) => <ReligionCode>res.json());
 }
 
+
+
+// ====================================================================================================
+// NATIONALITYCODE
+// ====================================================================================================
+
+findNationalityCodes(): Observable<NationalityCode[]> {
+    console.log("findNationalityCodes()");
+return this.http.get(environment.endpoint + '/api/common/nationalityCodes')
+    .map((res: Response) => <NationalityCode[]>res.json());
+}
+
+findNationalityCodeByCode(code:string): Observable<NationalityCode> {
+    console.log("findNationalityCodeByCode");
+return this.http.get(environment.endpoint + '/api/common/nationalityCodes/' + code)
+    .map((res: Response) => <NationalityCode>res.json());
+}
 
 
 
