@@ -1,3 +1,5 @@
+import { EthnicityCodeListPage } from './ethnicity-codes/ethnicity-code-list.page';
+import { EthnicityCode } from './../common/ethnicity-codes/ethnicity-code.interface';
 import { NationalityCodeListPage } from './nationality-codes/nationality-code-list.page';
 import { NationalityCode } from './../common/nationality-codes/nationality-code.interface';
 import { ReligionCodeListPage } from './religion-codes/religion-code-list.page';
@@ -42,6 +44,7 @@ import {dunCodeListReducer, DunCodeListState} from "./dun-codes/dun-code-list.re
 import {gradeCodeListReducer, GradeCodeListState} from "./grade-codes/grade-code-list.reducer";
 import {religionCodeListReducer, ReligionCodeListState} from "./religion-codes/religion-code-list.reducer";
 import {nationalityCodeListReducer, NationalityCodeListState} from "./nationality-codes/nationality-code-list.reducer";
+import {ethnicityCodeListReducer, EthnicityCodeListState} from "./ethnicity-codes/ethnicity-code-list.reducer";
 
 export interface SetupModuleState {
   title:TitleState;
@@ -55,6 +58,7 @@ export interface SetupModuleState {
   gradeCodes: GradeCodeListState;
   religionCodes: ReligionCodeListState;
   nationalityCodes: NationalityCodeListState;
+  ethnicityCodes: EthnicityCodeListState;
 }
 ;
 export const INITIAL_SETUP_STATE: SetupModuleState =
@@ -70,6 +74,7 @@ export const INITIAL_SETUP_STATE: SetupModuleState =
     gradeCodes: <GradeCode[]>[],
     religionCodes: <ReligionCode[]>[],
     nationalityCodes: <NationalityCode[]>[],
+    ethnicityCodes: <EthnicityCode[]>[],
   };
 export const setupModuleReducers = {
   title:titleReducer,
@@ -83,6 +88,7 @@ export const setupModuleReducers = {
   gradeCodes: gradeCodeListReducer,
   religionCodes: religionCodeListReducer,
   nationalityCodes: nationalityCodeListReducer,
+  ethnicityCodes: ethnicityCodeListReducer,
 };
 
 @NgModule({
@@ -110,6 +116,7 @@ export const setupModuleReducers = {
     GradeCodeListPage,
     ReligionCodeListPage,
     NationalityCodeListPage,
+    EthnicityCodeListPage
     //Dialog
 
   ],

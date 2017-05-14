@@ -1,3 +1,4 @@
+import { EthnicityCode } from './../app/common/ethnicity-codes/ethnicity-code.interface';
 import { NationalityCode } from './../app/common/nationality-codes/nationality-code.interface';
 import { ReligionCode } from './../app/common/religion-codes/religion-code.interface';
 import { GradeCode } from './../app/common/grade-codes/grade-code.interface';
@@ -213,6 +214,26 @@ findNationalityCodeByCode(code:string): Observable<NationalityCode> {
 return this.http.get(environment.endpoint + '/api/common/nationalityCodes/' + code)
     .map((res: Response) => <NationalityCode>res.json());
 }
+
+
+
+// ====================================================================================================
+// ETHNICITYCODE
+// ====================================================================================================
+
+findEthnicityCodes(): Observable<EthnicityCode[]> {
+    console.log("findEthnicityCodes()");
+return this.http.get(environment.endpoint + '/api/common/ethnicityCodes')
+    .map((res: Response) => <EthnicityCode[]>res.json());
+}
+
+findEthnicityCodeByCode(code:string): Observable<EthnicityCode> {
+    console.log("findEthnicityCodeByCode");
+return this.http.get(environment.endpoint + '/api/common/ethnicityCodes/' + code)
+    .map((res: Response) => <EthnicityCode>res.json());
+}
+
+
 
 
 

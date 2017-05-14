@@ -181,6 +181,27 @@ findNationalityCodesSuccess(codes): Action {
     };
 }
 
+static FIND_ETHNICITY_CODES = '[Common] Find EthnicityCodes';
+
+findEthnicityCodes(): Action {
+    console.log("findEthnicityCodes");
+    return {
+        type: CommonActions.FIND_ETHNICITY_CODES
+    };
+}
+
+static FIND_ETHNICITY_CODES_SUCCESS = '[Common] Find EthnicityCodes Success';
+
+findEthnicityCodesSuccess(codes): Action {
+    console.log("findEthnicityCodesSuccess");
+    return {
+        type: CommonActions.FIND_ETHNICITY_CODES_SUCCESS,
+        payload: codes
+    };
+}
+
+
+
 
 
 

@@ -263,6 +263,27 @@ findNationalityCodesSuccess(codes): Action {
     };
 }
 
+static FIND_ETHNICITY_CODES = '[Setup] Find EthnicityCodes';
+
+findEthnicityCodes(): Action {
+    console.log("findEthnicityCodes");
+    return {
+        type: SetupActions.FIND_ETHNICITY_CODES
+    };
+}
+
+static FIND_ETHNICITY_CODES_SUCCESS = '[Setup] Find EthnicityCodes Success';
+
+findEthnicityCodesSuccess(codes): Action {
+    console.log("findEthnicityCodesSuccess");
+    return {
+        type: SetupActions.FIND_ETHNICITY_CODES_SUCCESS,
+        payload: codes
+    };
+}
+
+
+
 
 
 
