@@ -86,7 +86,7 @@ public class WhenReviewEnrollmentDetails extends Stage<WhenReviewEnrollmentDetai
 		offering = termService.findOfferingByCanonicalCode("MGSEB-MBA-GST5023");
 		LOG.debug("Student's Offering Code: {}", offering.getCanonicalCode());
 
-		section = termService.findSectionByCanonicalCode("MGSEB-MBA-GST5023-201720181");
+		section = termService.findSectionByCanonicalCode("MGSEB-MBA-GST5023-201720181-01");
 		LOG.debug("Student's Section Code: {}", section.getCanonicalCode());
 
 		return self();

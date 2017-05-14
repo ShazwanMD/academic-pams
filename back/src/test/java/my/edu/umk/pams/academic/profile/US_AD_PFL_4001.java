@@ -31,9 +31,9 @@ public class US_AD_PFL_4001 extends SpringScenarioTest <GivenIAmAcademicStaff, W
 
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_PFL_4001.class);
     
-	public static final String SCTN_canonicalCode = "FIAT/MASTER/PBH/GST5023/201720181";
+	public static final String SCTN_canonicalCode = "FIAT-MASTER-PBH-GST5023-201720181";
 	
-	public static final String OFRG_canonicalCode = "FIAT/MASTER/PBH/GST5023";
+	public static final String OFRG_canonicalCode = "FIAT-MASTER-PBH-GST5023";
 	
 	@ProvidedScenarioState
 	public static final String IDENTITY_NO = "A17P002";
