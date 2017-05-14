@@ -43,6 +43,18 @@ export class CommonEffects{
     .switchMap(() => this.commonService.findParliamentCodes())
     .map(codes => this.commonActions.findParliamentCodesSuccess(codes));
 
+@Effect() findDunCodes$ = this.actions$
+    .ofType(CommonActions.FIND_DUN_CODES)
+    .map(action => action.payload)
+    .switchMap(() => this.commonService.findDunCodes())
+    .map(codes => this.commonActions.findDunCodesSuccess(codes));
+
+@Effect() findGradeCodes$ = this.actions$
+    .ofType(CommonActions.FIND_GRADE_CODES)
+    .map(action => action.payload)
+    .switchMap(() => this.commonService.findGradeCodes())
+    .map(codes => this.commonActions.findGradeCodesSuccess(codes));
+
 
 
 

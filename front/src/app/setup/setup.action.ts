@@ -185,6 +185,28 @@ findParliamentCodesSuccess(codes): Action {
 }
 
 
+static FIND_DUN_CODES = '[Setup] Find DunCodes';
+
+findDunCodes(): Action {
+    console.log("findDunCodes");
+    return {
+        type: SetupActions.FIND_DUN_CODES
+    };
+}
+
+static FIND_DUN_CODES_SUCCESS = '[Setup] Find DunCodes Success';
+
+findDunCodesSuccess(codes): Action {
+    console.log("findDunCodesSuccess");
+    return {
+        type: SetupActions.FIND_DUN_CODES_SUCCESS,
+        payload: codes
+    };
+}
+
+
+
+
 
 
 

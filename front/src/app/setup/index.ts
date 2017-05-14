@@ -1,3 +1,5 @@
+import { DunCodeListPage } from './dun-codes/dun-code-list.page';
+import { DunCode } from './../common/dun-codes/dun-code.interface';
 import { ParliamentCodeListPage } from './parliament-codes/parliament-code-list.page';
 import { ParliamentCode } from './../common/parliament-codes/parliament-code.interface';
 import {MaritalCodeListPage} from './marital-codes/marital-code-list.page';
@@ -30,6 +32,7 @@ import { StateCodeListPage } from './state-codes/state-code-list.page';
 import {stateCodeListReducer, StateCodeListState} from "./state-codes/state-code-list.reducer";
 
 import {parliamentCodeListReducer, ParliamentCodeListState} from "./parliament-codes/parliament-code-list.reducer";
+import {dunCodeListReducer, DunCodeListState} from "./dun-codes/dun-code-list.reducer";
 
 
 export interface SetupModuleState {
@@ -40,6 +43,7 @@ export interface SetupModuleState {
   raceCodes: RaceCodeListState;
   stateCodes: StateCodeListState;
   parliamentCodes: ParliamentCodeListState;
+  dunCodes: DunCodeListState;
 }
 ;
 export const INITIAL_SETUP_STATE: SetupModuleState =
@@ -51,6 +55,7 @@ export const INITIAL_SETUP_STATE: SetupModuleState =
     raceCodes: <RaceCode[]>[],
     stateCodes: <StateCode[]>[],
     parliamentCodes: <ParliamentCode[]>[],
+    dunCodes: <DunCode[]>[],
   };
 export const setupModuleReducers = {
   title:titleReducer,
@@ -60,6 +65,7 @@ export const setupModuleReducers = {
   raceCodes: raceCodeListReducer,
   stateCodes: stateCodeListReducer,
   parliamentCodes: parliamentCodeListReducer,
+  dunCodes: dunCodeListReducer,
 };
 
 @NgModule({
@@ -83,6 +89,7 @@ export const setupModuleReducers = {
     BankCodeListPage,
     StateCodeListPage,
     ParliamentCodeListPage,
+    DunCodeListPage,
     //Dialog
 
   ],

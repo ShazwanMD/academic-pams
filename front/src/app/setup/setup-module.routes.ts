@@ -1,3 +1,5 @@
+import { DunCodeListPage } from './dun-codes/dun-code-list.page';
+import { DunCode } from './../common/dun-codes/dun-code.interface';
 import { ParliamentCodeListPage } from './parliament-codes/parliament-code-list.page';
 import { StateCodeListPage } from './state-codes/state-code-list.page';
 import {GenderCodeListPage} from './gender-codes/gender-code-list.page';
@@ -8,8 +10,6 @@ import {SetupPage} from "./setup.page";
 import {BankCodeListPage} from "./bank-codes/bank-code-list.page";
 import {CountryCodeListPage} from './country-codes/country-code-list.page';
 import {MaritalCodeListPage} from "./marital-codes/marital-code-list.page";
-
-
 
 export const SetupModuleRoutes: Routes = [
   {
@@ -22,7 +22,7 @@ export const SetupModuleRoutes: Routes = [
       {path: 'gender-codes', component: GenderCodeListPage},
       {path: 'state-codes', component: StateCodeListPage},
       {path: 'parliament-codes', component: ParliamentCodeListPage},
-
+      {path: 'dun-codes', component: DunCodeListPage},
     ]
   },
 ];

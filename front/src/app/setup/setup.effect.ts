@@ -74,13 +74,22 @@ export class SetupEffects {
     .map(codes => this.setupActions.findStateCodesSuccess(codes));
 
  //=================================================================================
-  // STATE CODE
+  // PARLIAMENT CODE
   //=================================================================================
 @Effect() findParliamentCodes$ = this.actions$
     .ofType(SetupActions.FIND_PARLIAMENT_CODES)
     .map(action => action.payload)
     .switchMap(() => this.commonService.findParliamentCodes())
     .map(codes => this.setupActions.findParliamentCodesSuccess(codes));
+ //=================================================================================
+  // DUN CODE
+  //=================================================================================
+@Effect() findDunCodes$ = this.actions$
+    .ofType(SetupActions.FIND_DUN_CODES)
+    .map(action => action.payload)
+    .switchMap(() => this.commonService.findDunCodes())
+    .map(codes => this.setupActions.findDunCodesSuccess(codes));
+
 
 
  

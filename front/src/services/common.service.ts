@@ -1,3 +1,5 @@
+import { GradeCode } from './../app/common/grade-codes/grade-code.interface';
+import { DunCode } from './../app/common/dun-codes/dun-code.interface';
 import { ParliamentCode } from './../app/common/parliament-codes/parliament-code.interface';
 import {RaceCode} from './../app/common/race-codes/race-code.interface';
 import {StateCode} from './../app/common/state-codes/state-code.interface';
@@ -10,8 +12,6 @@ import {Response, Http, Headers, RequestOptions} from '@angular/http';
 import {HttpInterceptorService} from '@covalent/http';
 import {Observable} from "rxjs";
 import {BankCode} from "../app/common/bank-codes/bank-code.interface";
-
-
 
 @Injectable()
 export class CommonService {
@@ -138,6 +138,46 @@ findParliamentCodeByCode(code:string): Observable<ParliamentCode> {
 return this.http.get(environment.endpoint + '/api/common/parliamentCodes/' + code)
     .map((res: Response) => <ParliamentCode>res.json());
 }
+
+
+
+// ====================================================================================================
+// DUNCODE
+// ====================================================================================================
+
+findDunCodes(): Observable<DunCode[]> {
+    console.log("findDunCodes()");
+return this.http.get(environment.endpoint + '/api/common/dunCodes')
+    .map((res: Response) => <DunCode[]>res.json());
+}
+
+findDunCodeByCode(code:string): Observable<DunCode> {
+    console.log("findDunCodeByCode");
+return this.http.get(environment.endpoint + '/api/common/dunCodes/' + code)
+    .map((res: Response) => <DunCode>res.json());
+}
+
+
+
+
+// ====================================================================================================
+// GRADECODE
+// ====================================================================================================
+
+findGradeCodes(): Observable<GradeCode[]> {
+    console.log("findGradeCodes()");
+return this.http.get(environment.endpoint + '/api/common/gradeCodes')
+    .map((res: Response) => <GradeCode[]>res.json());
+}
+
+findGradeCodeByCode(code:string): Observable<GradeCode> {
+    console.log("findGradeCodeByCode");
+return this.http.get(environment.endpoint + '/api/common/gradeCodes/' + code)
+    .map((res: Response) => <GradeCode>res.json());
+}
+
+
+
 
 
 

@@ -32,25 +32,26 @@ import java.util.stream.Collectors;
 @Component("commonTransformer")
 public class CommonTransformer {
 
-    //====================================================================================================
-    // GRADE CODE
-    //====================================================================================================
 
-    public GradeCode toGradeCodeVo(AdGradeCode e) {
-        if (null == e) return null;
-        GradeCode vo = new GradeCode();
-        vo.setId(e.getId());
-        vo.setCode(e.getCode());
-        vo.setDescription(e.getDescription());
-        return vo;
-    }
+	//====================================================================================================
+	// GRADE_CODE
+	//====================================================================================================
 
-    public List<GradeCode> toGradeCodeVos(List<AdGradeCode> e) {
-        List<GradeCode> vos = e.stream()
-                .map((e1) -> toGradeCodeVo(e1))
-                .collect(Collectors.toList());
-        return vos;
-    }
+	public GradeCode toGradeCodeVo(AdGradeCode e) {
+	    GradeCode vo = new GradeCode();
+	        vo.setId(e.getId());
+	        vo.setCode(e.getCode());
+	        vo.setOrdinal(e.getOrdinal());
+	        vo.setDescription(e.getDescription());
+	        return vo;
+	        }
+
+	public List<GradeCode> toGradeCodeVos(List<AdGradeCode> e) {
+	        List<GradeCode> vos = e.stream()
+	        .map((e1) -> toGradeCodeVo(e1))
+	        .collect(Collectors.toList());
+	        return vos;
+	        }
 
     //====================================================================================================
     // BANK_CODE

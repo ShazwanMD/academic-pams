@@ -13,6 +13,7 @@ public class GradeCode {
     private Long id;
     private String code;
     private String description;
+    private Integer ordinal;
 
     public Long getId() {
         return id;
@@ -28,6 +29,15 @@ public class GradeCode {
 
     public void setCode(String code) {
         this.code = code;
+    }
+    
+    public Integer getOrdinal() {
+        return ordinal;
+    }
+
+    
+    public void setOrdinal(Integer ordinal) {
+        this.ordinal = ordinal;
     }
 
     public String getDescription() {
