@@ -1,4 +1,4 @@
-import { TermService } from './../../../services/term.service';
+import {TermService} from './../../../services/term.service';
 import {Component, OnInit, ChangeDetectionStrategy} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 

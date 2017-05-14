@@ -6,9 +6,10 @@ import {SectionDetailPage} from "./section-detail.page";
 // Route Configuration
 export const SectionRoutes: Routes = [
   {path: 'term/sections', component: SectionCenterPage},
- // {path: 'term/sections-dialog', component: SectionEditorDialog},
   {path: 'term/sections/:canonicalCode', component: SectionDetailPage},
- // {path: 'term/offerings', dialog: OfferingEditorDialog},
+ 
+  // {path: 'term/sections-dialog', component: SectionEditorDialog},
+  // {path: 'term/offerings', dialog: OfferingEditorDialog},
   // {path: 'offerings-create', component: OfferingCreatePage},
   // {path: 'offerings-activate/:code', component: OfferingActivatePage},
   // {path: 'offerings-deactivate/:code', component: OfferingDeactivatePage},
