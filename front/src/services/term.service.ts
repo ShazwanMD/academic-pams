@@ -17,6 +17,7 @@ import {AdmissionApplicationTask} from "../app/term/admission-applications/admis
 import {AdmissionApplication} from "../app/term/admission-applications/admission-application.interface";
 import {Appointment} from "../app/term/appointments/appointment.interface";
 import {Section} from "../app/term/sections/section.interface";
+import {AdmissionApplicationItem} from "../app/term/admission-applications/admission-application-item.interface";
 
 @Injectable()
 export class TermService {
@@ -66,6 +67,62 @@ export class TermService {
     return this.http.put(environment.endpoint + '/api/term/admissionApplications', JSON.stringify(admissionApplication))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
+
+
+  findAdmissionApplicationByReferenceNo(referenceNo: string): Observable<AdmissionApplication> {
+    return this.http.get(environment.endpoint + '/api/term/admissionApplications/' + referenceNo)
+        .map((res: Response) => <AdmissionApplication>res.json());
+  }
+
+
+  findAdmissionApplicationItems(admissionApplication: AdmissionApplication): Observable<AdmissionApplicationItem[]> {
+    var endpoint = environment.endpoint + '/api/term/admissionApplications/' + admissionApplication.referenceNo + '/admissionApplicationItems'
+    return this.http.get(endpoint)
+        .map((res:Response) => <AdmissionApplicationItem[]>res.json());
+  }
+
+
+  completeAdmissionApplicationTask(admissionApplicationTask: AdmissionApplicationTask): Observable<String> {
+    console.log("TaskId: " + admissionApplicationTask.taskId);
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
+    return this.http.post(environment.endpoint + '/api/billing/admissionApplications/completeTask', JSON.stringify(admissionApplicationTask), options)
+        .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+  claimAdmissionApplicationTask(admissionApplicationTask: AdmissionApplicationTask): Observable<String> {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
+    return this.http.post(environment.endpoint + '/api/billing/admissionApplications/claimTask', JSON.stringify(admissionApplicationTask), options)
+        .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+  releaseAdmissionApplicationTask(admissionApplicationTask: AdmissionApplicationTask): Observable<String> {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
+    return this.http.post(environment.endpoint + '/api/billing/admissionApplications/releaseTask', JSON.stringify(admissionApplicationTask), options)
+        .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+  addAdmissionApplicationItem(admissionApplication: AdmissionApplication, item: AdmissionApplicationItem): Observable<String> {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
+    return this.http.post(environment.endpoint + '/api/term/admissionApplications/' + admissionApplication.referenceNo + '/admissionApplicationItems' , JSON.stringify(item), options)
+        .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
 
   // ==================================================================================================== //
   // ADMISSION
