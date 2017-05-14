@@ -174,6 +174,11 @@ public class CommonServiceImpl implements CommonService {
 	public AdStateCode findStateCodeByCode(String code) {
 		return stateCodeDao.findByCode(code);
 	}
+	
+	@Override
+	public List<AdStateCode> findStateCodes() {
+		return stateCodeDao.find();
+	}
 
 	@Override
 	public List<AdStateCode> findStateCodes(Integer offset, Integer limit) {

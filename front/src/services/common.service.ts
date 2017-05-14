@@ -1,3 +1,4 @@
+import { ParliamentCode } from './../app/common/parliament-codes/parliament-code.interface';
 import {RaceCode} from './../app/common/race-codes/race-code.interface';
 import {StateCode} from './../app/common/state-codes/state-code.interface';
 import {MaritalCode} from './../app/setup/marital-codes/marital-code.interface';
@@ -9,6 +10,7 @@ import {Response, Http, Headers, RequestOptions} from '@angular/http';
 import {HttpInterceptorService} from '@covalent/http';
 import {Observable} from "rxjs";
 import {BankCode} from "../app/common/bank-codes/bank-code.interface";
+
 
 
 @Injectable()
@@ -119,6 +121,25 @@ export class CommonService {
     return this.http.get(environment.endpoint + '/api/common/stateCodes/' + code)
       .map((res: Response) => <StateCode>res.json());
   }
+
+  
+// ====================================================================================================
+// PARLIAMENTCODE
+// ====================================================================================================
+
+findParliamentCodes(): Observable<ParliamentCode[]> {
+    console.log("findParliamentCodes()");
+return this.http.get(environment.endpoint + '/api/common/parliamentCodes')
+    .map((res: Response) => <ParliamentCode[]>res.json());
+}
+
+findParliamentCodeByCode(code:string): Observable<ParliamentCode> {
+    console.log("findParliamentCodeByCode");
+return this.http.get(environment.endpoint + '/api/common/parliamentCodes/' + code)
+    .map((res: Response) => <ParliamentCode>res.json());
+}
+
+
 
 
 }

@@ -39,13 +39,9 @@ of sections</md-card-subtitle> <md-divider></md-divider> <!--   <pams-section-li
       <span class="demo-2">  {{offerings.title}} </span>
     </p>
   </md-list-item>
-</md-list>--> 
-test
- <!--  <pams-section-list
-        [sections]="sections$ | async"
-        (view)="viewSection($event)"></pams-section-list> -->
-        
-<md-divider></md-divider> <md-card-actions>
-<a md-button color="accent" class="text-upper"
-	[routerLink]="['/offerings-search']"> <span>View More</span>
+</md-list>--> <pams-section-list [sections]="sections$ | async"
+	(view)="viewSection($event)"></pams-section-list> <md-divider></md-divider>
+<md-card-actions> <a md-button color="accent"
+	class="text-upper" [routerLink]="['/offerings-search']"> <span>View
+		More</span>
 </a> </md-card-actions> </md-card> </td-layout-manage-list> </td-layout-nav>

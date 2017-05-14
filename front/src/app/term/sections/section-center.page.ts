@@ -1,13 +1,13 @@
 import { TermService } from './../../../services/term.service';
-import {Component, OnInit, ChangeDetectionStrategy} from '@angular/core';
-import {Router, ActivatedRoute} from '@angular/router';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 
-import {CommonService} from '../../../services';
-import {Store} from "@ngrx/store";
-import {Observable} from "rxjs";
-import {Section} from "./section.interface";
-import {SectionActions} from "./section.action";
-import {TermModuleState} from "../index";
+import { CommonService } from '../../../services';
+import { Store } from "@ngrx/store";
+import { Observable } from "rxjs";
+import { Section } from "./section.interface";
+import { SectionActions } from "./section.action";
+import { TermModuleState } from "../index";
 
 @Component({
   selector: 'pams-section-center',
@@ -19,12 +19,12 @@ export class SectionCenterPage implements OnInit {
   private sections$: Observable<Section[]>;
 
   constructor(private router: Router,
-              private route: ActivatedRoute,
-              private actions: SectionActions,
-              private termService: TermService,
-              private store: Store<TermModuleState>) {
+    private route: ActivatedRoute,
+    private actions: SectionActions,
+    private termService: TermService,
+    private store: Store<TermModuleState>) {
     this.sections$ = this.store.select(...this.SECTIONS);
-    
+
   }
 
   goBack(route: string): void {
@@ -38,7 +38,7 @@ export class SectionCenterPage implements OnInit {
 
   ngOnInit(): void {
     this.store.dispatch(this.actions.findSections());
-  // this.offerings$ = this.termService.findOfferings();
+    // this.offerings$ = this.termService.findOfferings();
 
   }
 }

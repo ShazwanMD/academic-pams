@@ -155,55 +155,6 @@ public class CommonController {
           return new ResponseEntity<String>("Success", HttpStatus.OK);
           }
 
-
-  //====================================================================================================
-  // PARLIAMENT_CODE
-  //====================================================================================================
-
-  @RequestMapping(value = "/parliamentCodes", method = RequestMethod.GET)
-  public ResponseEntity<List<ParliamentCode>> findParliamentCodes() {
-          return new ResponseEntity<List<ParliamentCode>>(commonTransformer.toParliamentCodeVos(
-          commonService.findParliamentCodes()), HttpStatus.OK);
-          }
-
-  @RequestMapping(value = "/parliamentCodes/{code}", method = RequestMethod.GET)
-  public ResponseEntity<ParliamentCode> findParliamentCodeByCode(@PathVariable String code) {
-          return new ResponseEntity<ParliamentCode>(commonTransformer.toParliamentCodeVo(
-          commonService.findParliamentCodeByCode(code)), HttpStatus.OK);
-          }
-
-  @RequestMapping(value = "/parliamentCodes", method = RequestMethod.POST)
-  public ResponseEntity<String> saveParliamentCode(@RequestBody ParliamentCode vo) {
-          dummyLogin();
-
-          AdParliamentCode parliamentCode = new AdParliamentCodeImpl();
-          parliamentCode.setCode(vo.getCode());
-          parliamentCode.setDescription(vo.getDescription());
-          commonService.saveParliamentCode(parliamentCode);
-          return new ResponseEntity<String>("Success", HttpStatus.OK);
-          }
-
-  @RequestMapping(value = "/parliamentCodes/{code}", method = RequestMethod.PUT)
-  public ResponseEntity<String> updateParliamentCode(@PathVariable String code, @RequestBody ParliamentCode vo) {
-          dummyLogin();
-
-          AdParliamentCode parliamentCode = commonService.findParliamentCodeById(vo.getId());
-          parliamentCode.setCode(vo.getCode());
-          parliamentCode.setDescription(vo.getDescription());
-           commonService.updateParliamentCode(parliamentCode);
-          return new ResponseEntity<String>("Success", HttpStatus.OK);
-          }
-
-  @RequestMapping(value = "/parliamentCodes/{code}", method = RequestMethod.DELETE)
-  public ResponseEntity<String> removeParliamentCode(@PathVariable String code) {
-          dummyLogin();
-
-          AdParliamentCode parliamentCode = commonService.findParliamentCodeByCode(code);
-          commonService.removeParliamentCode(parliamentCode);
-          return new ResponseEntity<String>("Success", HttpStatus.OK);
-          }
-
-
   //====================================================================================================
   // GRADE_CODE
   //====================================================================================================
@@ -406,9 +357,9 @@ public ResponseEntity<String> removeCountryCode(@PathVariable String code) {
   //====================================================================================================
 
   @RequestMapping(value = "/stateCodes", method = RequestMethod.GET)
-  public ResponseEntity<List<StateCode>> findStateCodes(AdStateCode stateCode, Integer offset, Integer limit) {
+  public ResponseEntity<List<StateCode>> findStateCodes() {
           return new ResponseEntity<List<StateCode>>(commonTransformer.toStateCodeVos(
-          commonService.findStateCodes( offset,  limit)), HttpStatus.OK);
+          commonService.findStateCodes()), HttpStatus.OK);
           }
 
   @RequestMapping(value = "/stateCodes/{code}", method = RequestMethod.GET)
@@ -549,6 +500,58 @@ public ResponseEntity<String> removeCountryCode(@PathVariable String code) {
           commonService.removeRaceCode(raceCode);
           return new ResponseEntity<String>("Success", HttpStatus.OK);
           }
+  
+  
+  
+
+//====================================================================================================
+// PARLIAMENT_CODE
+//====================================================================================================
+
+@RequestMapping(value = "/parliamentCodes", method = RequestMethod.GET)
+public ResponseEntity<List<ParliamentCode>> findParliamentCodes() {
+        return new ResponseEntity<List<ParliamentCode>>(commonTransformer.toParliamentCodeVos(
+        commonService.findParliamentCodes()), HttpStatus.OK);
+        }
+
+@RequestMapping(value = "/parliamentCodes/{code}", method = RequestMethod.GET)
+public ResponseEntity<ParliamentCode> findParliamentCodeByCode(@PathVariable String code) {
+        return new ResponseEntity<ParliamentCode>(commonTransformer.toParliamentCodeVo(
+        commonService.findParliamentCodeByCode(code)), HttpStatus.OK);
+        }
+
+@RequestMapping(value = "/parliamentCodes", method = RequestMethod.POST)
+public ResponseEntity<String> saveParliamentCode(@RequestBody ParliamentCode vo) {
+        dummyLogin();
+
+        AdParliamentCode parliamentCode = new AdParliamentCodeImpl();
+        parliamentCode.setCode(vo.getCode());
+        parliamentCode.setDescription(vo.getDescription());
+        commonService.saveParliamentCode(parliamentCode);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+        }
+
+@RequestMapping(value = "/parliamentCodes/{code}", method = RequestMethod.PUT)
+public ResponseEntity<String> updateParliamentCode(@PathVariable String code, @RequestBody ParliamentCode vo) {
+        dummyLogin();
+
+        AdParliamentCode parliamentCode = commonService.findParliamentCodeById(vo.getId());
+        parliamentCode.setCode(vo.getCode());
+        parliamentCode.setDescription(vo.getDescription());
+        commonService.updateParliamentCode(parliamentCode);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+        }
+
+@RequestMapping(value = "/parliamentCodes/{code}", method = RequestMethod.DELETE)
+public ResponseEntity<String> removeParliamentCode(@PathVariable String code) {
+        dummyLogin();
+
+        AdParliamentCode parliamentCode = commonService.findParliamentCodeByCode(code);
+        commonService.removeParliamentCode(parliamentCode);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+        }
+
+
 
 
     // ====================================================================================================

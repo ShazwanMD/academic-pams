@@ -165,6 +165,28 @@ export class SetupActions {
   }
 
 
+  static FIND_PARLIAMENT_CODES = '[Setup] Find ParliamentCodes';
+
+findParliamentCodes(): Action {
+    console.log("findParliamentCodes");
+    return {
+        type: SetupActions.FIND_PARLIAMENT_CODES
+    };
+}
+
+static FIND_PARLIAMENT_CODES_SUCCESS = '[Setup] Find ParliamentCodes Success';
+
+findParliamentCodesSuccess(codes): Action {
+    console.log("findParliamentCodesSuccess");
+    return {
+        type: SetupActions.FIND_PARLIAMENT_CODES_SUCCESS,
+        payload: codes
+    };
+}
+
+
+
+
 
 
 }

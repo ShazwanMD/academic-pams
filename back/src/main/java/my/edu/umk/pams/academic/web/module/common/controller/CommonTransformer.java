@@ -113,26 +113,6 @@ public class CommonTransformer {
     }
 
     //====================================================================================================
-    //  PARLIAMENT_CODE
-    //====================================================================================================
-
-    public ParliamentCode toParliamentCodeVo(AdParliamentCode e) {
-        if (null == e) return null;
-        ParliamentCode vo = new ParliamentCode();
-        vo.setId(e.getId());
-        vo.setCode(e.getCode());
-        vo.setDescription(e.getDescription());
-        return vo;
-    }
-
-    public List<ParliamentCode> toParliamentCodeVos(List<AdParliamentCode> e) {
-        List<ParliamentCode> vos = e.stream()
-                .map((e1) -> toParliamentCodeVo(e1))
-                .collect(Collectors.toList());
-        return vos;
-    }
-
-    //====================================================================================================
     //  CITY_CODE
     //====================================================================================================
 
@@ -232,4 +212,25 @@ public class CommonTransformer {
                 .collect(Collectors.toList());
         return vos;
     }
+    
+
+  //====================================================================================================
+  // PARLIAMENT_CODE
+  //====================================================================================================
+
+  public ParliamentCode toParliamentCodeVo(AdParliamentCode e) {
+      ParliamentCode vo = new ParliamentCode();
+          vo.setId(e.getId());
+          vo.setCode(e.getCode());
+          vo.setDescription(e.getDescription());
+          return vo;
+          }
+
+  public List<ParliamentCode> toParliamentCodeVos(List<AdParliamentCode> e) {
+          List<ParliamentCode> vos = e.stream()
+          .map((e1) -> toParliamentCodeVo(e1))
+          .collect(Collectors.toList());
+          return vos;
+          }
+
 }

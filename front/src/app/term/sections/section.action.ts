@@ -1,5 +1,5 @@
-import {Injectable} from '@angular/core';
-import {Action} from '@ngrx/store';
+import { Injectable } from '@angular/core';
+import { Action } from '@ngrx/store';
 
 @Injectable()
 export class SectionActions {
@@ -21,14 +21,14 @@ export class SectionActions {
   }
 
   static FIND_SECTION_BY_CANONICAL_CODE = '[Section] Find Section By Canonical Code';
-  findSectionByCanonicalCode(canonical_code): Action {
+  findSectionByCanonicalCode(canonicalCode): Action {
     return {
       type: SectionActions.FIND_SECTION_BY_CANONICAL_CODE,
-      payload: canonical_code
+      payload: canonicalCode
     };
   }
 
-  static FIND_SECTION_BY_CANONICAL_CODE_SUCCESS = '[Section] Find Section By Canonical Code Success';
+  static FIND_SECTION_BY_CANONICAL_CODE_SUCCESS = '[Offering] Find Section By Canonical Code Success';
   findSectionByCanonicalCodeSuccess(section): Action {
     return {
       type: SectionActions.FIND_SECTION_BY_CANONICAL_CODE_SUCCESS,

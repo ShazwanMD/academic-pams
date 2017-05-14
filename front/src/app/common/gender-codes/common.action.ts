@@ -84,6 +84,27 @@ findRaceCodesSuccess(codes): Action {
     };
 }
 
+static FIND_PARLIAMENT_CODES = '[Common] Find ParliamentCodes';
+
+findParliamentCodes(): Action {
+    console.log("findParliamentCodes");
+    return {
+        type: CommonActions.FIND_PARLIAMENT_CODES
+    };
+}
+
+static FIND_PARLIAMENT_CODES_SUCCESS = '[Common] Find ParliamentCodes Success';
+
+findParliamentCodesSuccess(codes): Action {
+    console.log("findParliamentCodesSuccess");
+    return {
+        type: CommonActions.FIND_PARLIAMENT_CODES_SUCCESS,
+        payload: codes
+    };
+}
+
+
+
 
 
 
