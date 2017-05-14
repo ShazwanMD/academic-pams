@@ -37,7 +37,7 @@ public class US_AD_PNR_1009
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_PNR_1009.class);
 	
 	@ProvidedScenarioState
-	private String COHORT_CODE = "FIAT/PHD/PBT/CHRT/201720181";
+	private String COHORT_CODE = "FIAT-PHD-PBT-CHRT-201720181";
 
 	@Test
 	@Rollback

@@ -52,7 +52,7 @@ public class WhenAdminUpdateCohort extends Stage<WhenAdminUpdateCohort> {
 	public WhenAdminUpdateCohort Admin_update_cohort_to_faculty_code_$(String code) {
 		
 		
-		program = plannerService.findProgramByCode("FIAT/PHD/PBT");
+		program = plannerService.findProgramByCode("FIAT-PHD-PBT");
 		LOG.debug("program code: {}", program.getCode());
 
 		AdCohort cohort = plannerService.findCohortByCode(code);
