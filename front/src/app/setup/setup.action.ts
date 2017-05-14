@@ -204,6 +204,25 @@ findDunCodesSuccess(codes): Action {
     };
 }
 
+static FIND_GRADE_CODES = '[Setup] Find GradeCodes';
+
+findGradeCodes(): Action {
+    console.log("findGradeCodes");
+    return {
+        type: SetupActions.FIND_GRADE_CODES
+    };
+}
+
+static FIND_GRADE_CODES_SUCCESS = '[Setup] Find GradeCodes Success';
+
+findGradeCodesSuccess(codes): Action {
+    console.log("findGradeCodesSuccess");
+    return {
+        type: SetupActions.FIND_GRADE_CODES_SUCCESS,
+        payload: codes
+    };
+}
+
 
 
 

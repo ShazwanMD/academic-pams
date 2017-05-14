@@ -92,5 +92,13 @@ export class SetupEffects {
 
 
 
+@Effect() findGradeCodes$ = this.actions$
+    .ofType(SetupActions.FIND_GRADE_CODES)
+    .map(action => action.payload)
+    .switchMap(() => this.commonService.findGradeCodes())
+    .map(codes => this.setupActions.findGradeCodesSuccess(codes));
+
+
+
  
 }

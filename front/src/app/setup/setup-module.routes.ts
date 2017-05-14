@@ -1,3 +1,4 @@
+import { GradeCodeListPage } from './grade-codes/grade-code-list.page';
 import { DunCodeListPage } from './dun-codes/dun-code-list.page';
 import { DunCode } from './../common/dun-codes/dun-code.interface';
 import { ParliamentCodeListPage } from './parliament-codes/parliament-code-list.page';
@@ -23,6 +24,7 @@ export const SetupModuleRoutes: Routes = [
       {path: 'state-codes', component: StateCodeListPage},
       {path: 'parliament-codes', component: ParliamentCodeListPage},
       {path: 'dun-codes', component: DunCodeListPage},
+      {path: 'grade-codes', component: GradeCodeListPage},
     ]
   },
 ];
