@@ -4,6 +4,7 @@ import my.edu.umk.pams.academic.common.model.AdBankCode;
 import my.edu.umk.pams.academic.common.model.AdCityCode;
 import my.edu.umk.pams.academic.common.model.AdCountryCode;
 import my.edu.umk.pams.academic.common.model.AdDunCode;
+import my.edu.umk.pams.academic.common.model.AdEthnicityCode;
 import my.edu.umk.pams.academic.common.model.AdGenderCode;
 import my.edu.umk.pams.academic.common.model.AdGradeCode;
 import my.edu.umk.pams.academic.common.model.AdMaritalCode;
@@ -16,6 +17,7 @@ import my.edu.umk.pams.academic.web.module.common.vo.BankCode;
 import my.edu.umk.pams.academic.web.module.common.vo.CityCode;
 import my.edu.umk.pams.academic.web.module.common.vo.CountryCode;
 import my.edu.umk.pams.academic.web.module.common.vo.DunCode;
+import my.edu.umk.pams.academic.web.module.common.vo.EthnicityCode;
 import my.edu.umk.pams.academic.web.module.common.vo.GenderCode;
 import my.edu.umk.pams.academic.web.module.common.vo.GradeCode;
 import my.edu.umk.pams.academic.web.module.common.vo.MaritalCode;
@@ -280,6 +282,28 @@ public List<NationalityCode> toNationalityCodeVos(List<AdNationalityCode> e) {
       .collect(Collectors.toList());
       return vos;
       }
+
+
+//====================================================================================================
+//ETHNICITY_CODE
+//====================================================================================================
+
+public EthnicityCode toEthnicityCodeVo(AdEthnicityCode e) {
+  EthnicityCode vo = new EthnicityCode();
+      vo.setId(e.getId());
+      vo.setCode(e.getCode());
+      vo.setDescriptionMs(e.getDescriptionMs());
+      vo.setDescriptionEn(e.getDescriptionEn());
+      return vo;
+      }
+
+public List<EthnicityCode> toEthnicityCodeVos(List<AdEthnicityCode> e) {
+      List<EthnicityCode> vos = e.stream()
+      .map((e1) -> toEthnicityCodeVo(e1))
+      .collect(Collectors.toList());
+      return vos;
+      }
+
 
 
 
