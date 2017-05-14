@@ -1,3 +1,4 @@
+import { ParliamentCodeListPage } from './parliament-codes/parliament-code-list.page';
 import { StateCodeListPage } from './state-codes/state-code-list.page';
 import {GenderCodeListPage} from './gender-codes/gender-code-list.page';
 import {RaceCodeListPage} from './race-codes/race-code-list.page';
@@ -20,6 +21,8 @@ export const SetupModuleRoutes: Routes = [
       {path: 'race-codes', component: RaceCodeListPage},
       {path: 'gender-codes', component: GenderCodeListPage},
       {path: 'state-codes', component: StateCodeListPage},
+      {path: 'parliament-codes', component: ParliamentCodeListPage},
+
     ]
   },
 ];

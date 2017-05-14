@@ -37,6 +37,14 @@ export class CommonEffects{
     .map(codes => this.commonActions.findRaceCodesSuccess(codes));
 
 
+@Effect() findParliamentCodes$ = this.actions$
+    .ofType(CommonActions.FIND_PARLIAMENT_CODES)
+    .map(action => action.payload)
+    .switchMap(() => this.commonService.findParliamentCodes())
+    .map(codes => this.commonActions.findParliamentCodesSuccess(codes));
+
+
+
 
 
 }

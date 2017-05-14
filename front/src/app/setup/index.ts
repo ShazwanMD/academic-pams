@@ -1,3 +1,5 @@
+import { ParliamentCodeListPage } from './parliament-codes/parliament-code-list.page';
+import { ParliamentCode } from './../common/parliament-codes/parliament-code.interface';
 import {MaritalCodeListPage} from './marital-codes/marital-code-list.page';
 import {MaritalCode} from './marital-codes/marital-code.interface';
 import {CountryCode} from './../common/country-codes/country-code.interface';
@@ -27,6 +29,8 @@ import { StateCode } from './../common/state-codes/state-code.interface';
 import { StateCodeListPage } from './state-codes/state-code-list.page';
 import {stateCodeListReducer, StateCodeListState} from "./state-codes/state-code-list.reducer";
 
+import {parliamentCodeListReducer, ParliamentCodeListState} from "./parliament-codes/parliament-code-list.reducer";
+
 
 export interface SetupModuleState {
   title:TitleState;
@@ -35,7 +39,7 @@ export interface SetupModuleState {
   maritalCodes: MaritalCodeListState;
   raceCodes: RaceCodeListState;
   stateCodes: StateCodeListState;
-
+  parliamentCodes: ParliamentCodeListState;
 }
 ;
 export const INITIAL_SETUP_STATE: SetupModuleState =
@@ -46,6 +50,7 @@ export const INITIAL_SETUP_STATE: SetupModuleState =
     maritalCodes: <MaritalCode[]>[],
     raceCodes: <RaceCode[]>[],
     stateCodes: <StateCode[]>[],
+    parliamentCodes: <ParliamentCode[]>[],
   };
 export const setupModuleReducers = {
   title:titleReducer,
@@ -54,6 +59,7 @@ export const setupModuleReducers = {
   maritalCodes: maritalCodeListReducer,
   raceCodes: raceCodeListReducer,
   stateCodes: stateCodeListReducer,
+  parliamentCodes: parliamentCodeListReducer,
 };
 
 @NgModule({
@@ -76,6 +82,7 @@ export const setupModuleReducers = {
     RaceCodeListPage,
     BankCodeListPage,
     StateCodeListPage,
+    ParliamentCodeListPage,
     //Dialog
 
   ],

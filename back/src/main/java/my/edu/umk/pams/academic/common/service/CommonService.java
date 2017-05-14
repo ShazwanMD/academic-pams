@@ -55,6 +55,8 @@ public  interface CommonService{
 	AdStateCode findStateCodeById(Long id);
 
 	AdStateCode findStateCodeByCode(String code);
+	
+	List<AdStateCode> findStateCodes();
 
 	List<AdStateCode> findStateCodes(Integer offset, Integer limit);
 
