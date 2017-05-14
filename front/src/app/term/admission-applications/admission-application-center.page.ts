@@ -34,6 +34,21 @@ export class AdmissionApplicationCenterPage implements OnInit {
   goBack(route: string): void {
     this._router.navigate(['/admissionApplications']);
   }
+  
+   showDialog(): void {
+    console.log("showDialog");
+    let config = new MdDialogConfig();
+    config.viewContainerRef = this.vcf;
+    config.role = 'dialog';
+    config.width = '50%';
+    config.height = '65%';
+    config.position = {top: '0px'};
+    this.creatorDialogRef = this.dialog.open(EnrollmentApplicationTaskCreatorDialog, config);
+    this.creatorDialogRef.afterClosed().subscribe(res => {
+      console.log("close dialog");
+      // load something here
+    });
+  }
 
   viewTask(admissionApplication: AdmissionApplication) {
     console.log("admissionApplication: " + admissionApplication.id);
