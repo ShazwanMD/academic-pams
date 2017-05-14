@@ -1,3 +1,5 @@
+import { ReligionCodeListPage } from './religion-codes/religion-code-list.page';
+import { ReligionCode } from './../common/religion-codes/religion-code.interface';
 import { GradeCodeListPage } from './grade-codes/grade-code-list.page';
 import { GradeCode } from './../common/grade-codes/grade-code.interface';
 import { DunCodeListPage } from './dun-codes/dun-code-list.page';
@@ -36,6 +38,8 @@ import {stateCodeListReducer, StateCodeListState} from "./state-codes/state-code
 import {parliamentCodeListReducer, ParliamentCodeListState} from "./parliament-codes/parliament-code-list.reducer";
 import {dunCodeListReducer, DunCodeListState} from "./dun-codes/dun-code-list.reducer";
 import {gradeCodeListReducer, GradeCodeListState} from "./grade-codes/grade-code-list.reducer";
+import {religionCodeListReducer, ReligionCodeListState} from "./religion-codes/religion-code-list.reducer";
+
 
 export interface SetupModuleState {
   title:TitleState;
@@ -47,6 +51,7 @@ export interface SetupModuleState {
   parliamentCodes: ParliamentCodeListState;
   dunCodes: DunCodeListState;
   gradeCodes: GradeCodeListState;
+  religionCodes: ReligionCodeListState;
 }
 ;
 export const INITIAL_SETUP_STATE: SetupModuleState =
@@ -60,6 +65,7 @@ export const INITIAL_SETUP_STATE: SetupModuleState =
     parliamentCodes: <ParliamentCode[]>[],
     dunCodes: <DunCode[]>[],
     gradeCodes: <GradeCode[]>[],
+    religionCodes: <ReligionCode[]>[],
   };
 export const setupModuleReducers = {
   title:titleReducer,
@@ -71,6 +77,7 @@ export const setupModuleReducers = {
   parliamentCodes: parliamentCodeListReducer,
   dunCodes: dunCodeListReducer,
   gradeCodes: gradeCodeListReducer,
+  religionCodes: religionCodeListReducer,
 };
 
 @NgModule({
@@ -96,6 +103,7 @@ export const setupModuleReducers = {
     ParliamentCodeListPage,
     DunCodeListPage,
     GradeCodeListPage,
+    ReligionCodeListPage,
     //Dialog
 
   ],

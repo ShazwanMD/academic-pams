@@ -143,6 +143,27 @@ findGradeCodesSuccess(codes): Action {
 }
 
 
+static FIND_RELIGION_CODES = '[Common] Find ReligionCodes';
+
+findReligionCodes(): Action {
+    console.log("findReligionCodes");
+    return {
+        type: CommonActions.FIND_RELIGION_CODES
+    };
+}
+
+static FIND_RELIGION_CODES_SUCCESS = '[Common] Find ReligionCodes Success';
+
+findReligionCodesSuccess(codes): Action {
+    console.log("findReligionCodesSuccess");
+    return {
+        type: CommonActions.FIND_RELIGION_CODES_SUCCESS,
+        payload: codes
+    };
+}
+
+
+
 
 
 

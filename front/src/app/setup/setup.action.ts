@@ -224,6 +224,26 @@ findGradeCodesSuccess(codes): Action {
 }
 
 
+static FIND_RELIGION_CODES = '[Setup] Find ReligionCodes';
+
+findReligionCodes(): Action {
+    console.log("findReligionCodes");
+    return {
+        type: SetupActions.FIND_RELIGION_CODES
+    };
+}
+
+static FIND_RELIGION_CODES_SUCCESS = '[Setup] Find ReligionCodes Success';
+
+findReligionCodesSuccess(codes): Action {
+    console.log("findReligionCodesSuccess");
+    return {
+        type: SetupActions.FIND_RELIGION_CODES_SUCCESS,
+        payload: codes
+    };
+}
+
+
 
 
 

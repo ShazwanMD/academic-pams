@@ -98,6 +98,12 @@ export class SetupEffects {
     .switchMap(() => this.commonService.findGradeCodes())
     .map(codes => this.setupActions.findGradeCodesSuccess(codes));
 
+@Effect() findReligionCodes$ = this.actions$
+    .ofType(SetupActions.FIND_RELIGION_CODES)
+    .map(action => action.payload)
+    .switchMap(() => this.commonService.findReligionCodes())
+    .map(codes => this.setupActions.findReligionCodesSuccess(codes));
+
 
 
  
