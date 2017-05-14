@@ -18,42 +18,42 @@ import { AdmissionCenterPage } from "./admission-center.page";
 import { AdmissionEffects } from "./admission.effect";
 import { AdmissionSelectComponent } from "./component/admission-select.component";
 
-@NgModule( {
-    imports: [
-        appRoutes,
-        BrowserModule,
-        ReactiveFormsModule,
-        CovalentCoreModule.forRoot(),
-        EffectsModule.run( AdmissionEffects ),
-    ],
-    declarations: [
-        // page
-        AdmissionCenterPage,
-        AdmissionDetailPage,
+@NgModule({
+  imports: [
+    appRoutes,
+    BrowserModule,
+    ReactiveFormsModule,
+    CovalentCoreModule.forRoot(),
+    EffectsModule.run(AdmissionEffects),
+  ],
+  declarations: [
+    // page
+    AdmissionCenterPage,
+    AdmissionDetailPage,
 
-        // component
-        AdmissionListComponent,
-        AdmissionComponent,
-        AdmissionSelectComponent,
-    ],
-    exports: [
-        AdmissionSelectComponent,
-    ],
-} )
+    // component
+    AdmissionListComponent,
+    AdmissionComponent,
+    AdmissionSelectComponent,
+  ],
+  exports: [
+    AdmissionSelectComponent,
+  ],
+})
 
 export class AdmissionSubModule {
-    static forRoot(): ModuleWithProviders {
-        return {
-            ngModule: AdmissionSubModule,
-            providers: [
-                appRoutingProviders,
-                TermService,
-                IdentityService,
-                CommonService,
-                AdmissionActions,
-            ],
-        };
-    }
+  static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: AdmissionSubModule,
+      providers: [
+        appRoutingProviders,
+        TermService,
+        IdentityService,
+        CommonService,
+        AdmissionActions,
+      ],
+    };
+  }
 }
 
 
