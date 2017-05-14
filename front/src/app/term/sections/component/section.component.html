@@ -1,27 +1,62 @@
-<md-card> <md-card-title>SECTION</md-card-title> <md-card-subtitle>Section
-Information for {{section.id}}</md-card-subtitle> <md-divider></md-divider> <md-card-content>
-<!--Tab Section Here--> <md-tab-group> <md-tab
-	label="Section Detail">
-<br>
-<div>Code : {{section.code}}</div>
-<br>
-<div>CanonicalCode : {{section.canonicalCode}}</div>
-<br>
+<md-card>
+  <md-card-title>SECTION</md-card-title>
+  <md-card-subtitle>Offering Information </md-card-subtitle>
+  <md-divider></md-divider>
+  <md-card-content>
+    <!--Tab Section Here-->
+    <md-tab-group>
+      <md-tab label="Section Detail"><br>
+        <div>Secion Id : {{section.id}}</div>
+        <br>
+        <div>Section Code : {{section.code}}</div>
+        <br>
+        <div>Section Capacity : {{section.capacity}}</div>
+         <br>
+        <div>Section canonicalCode  : {{section.canonicalCode}}</div>
+        <br>
+        <div>Section ordinal : {{section.ordinal}}</div>
+        <br>
+        
+         
+      
+      </md-tab>
 
+      <md-tab label="Course Information">
+        
+        <div>Credit : {{section.id}}</div>
+        <br>
+         <div>Code : {{section.code}}</div>
+        <br>
+         <div>Description : {{section.session.description}}</div>
+        <br>
+        
+        
+        
+      </md-tab>
+      
+       <md-tab label="Program Information">
+       
+         <div>Program Id : {{section.offering.program.id}}</div>
+        <br>
+         <div>Program Code : {{section.offering.program.code}}</div>
+        <br>
+         <div>Program Title : {{section.offering.program.title}}</div>
+        <br>
+        <div>Program TitleMs : {{section.offering.program.titleMs}}</div>
+        <br>
+        <div>Program TitleEn : {{section.offering.program.titleEn}}</div>
+        <br>
+       
+        
+         
+      </md-tab>
 
-</md-tab> <md-tab label="Course Information">
+    </md-tab-group>
 
-<div>test</div>
-<br>
-
-</md-tab> <md-tab label="Program Information">
-
-<div>test</div>
-<br>
-
-</md-tab> </md-tab-group> </md-card-content> <md-card-actions layout-align="end center">
-<button md-button color="accent" class="text-upper">UPDATE</button>
-</md-card-actions> </md-card>
+  </md-card-content>
+  <md-card-actions layout-align="end center"><button md-button color="accent" class="text-upper">UPDATE</button>
+  </md-card-actions>
+</md-card>
 
 
 
