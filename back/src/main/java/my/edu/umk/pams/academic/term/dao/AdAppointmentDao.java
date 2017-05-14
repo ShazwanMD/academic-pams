@@ -3,6 +3,7 @@ package my.edu.umk.pams.academic.term.dao;
 
 import my.edu.umk.pams.academic.core.GenericDao;
 import my.edu.umk.pams.academic.identity.model.AdStaff;
+import my.edu.umk.pams.academic.term.model.AdAdmission;
 import my.edu.umk.pams.academic.term.model.AdAppointment;
 import my.edu.umk.pams.academic.term.model.AdOffering;
 import my.edu.umk.pams.academic.term.model.AdSection;
@@ -20,7 +21,9 @@ public interface AdAppointmentDao extends GenericDao<Long, AdAppointment> {
     // FINDER
     // ====================================================================================================
 
-    AdAppointment findByStaffNoAndOffering(String staffNo, AdOffering offering);
+	AdAppointment findById(Long id);
+	
+	AdAppointment findByStaffNoAndOffering(String staffNo, AdOffering offering);
 
     AdAppointment findBySectionAndStaff(AdSection section, AdStaff staff);
 

@@ -284,14 +284,17 @@ public class TermController {
     }
 
 
-    @RequestMapping(value = "/appointments/{academicSessionCode}", method = RequestMethod.GET)
+   /* @RequestMapping(value = "/appointments/{academicSessionCode}", method = RequestMethod.GET)
     public ResponseEntity<List<Appointment>> findAppointmentsByAcademicSession(@PathVariable String academicSessionCode) {
         AdAcademicSession academicSession = plannerService.findAcademicSessionByCode(academicSessionCode);
         List<AdAppointment> appointments = termService.findAppointments(academicSession);
         return new ResponseEntity<List<Appointment>>(termTransformer.toAppointmentVos(appointments), HttpStatus.OK);
-    }
+    }*/
     
-   
+    @RequestMapping(value = "/appointments/{id}", method = RequestMethod.GET)
+    public ResponseEntity<Appointment> findAppointmentById(@PathVariable Long id) throws UnsupportedEncodingException {
+        return new ResponseEntity<Appointment>(termTransformer.toAppointmentVo(termService.findAppointmentById(id)), HttpStatus.OK);
+    }
 
     //====================================================================================================
     // OFFERING

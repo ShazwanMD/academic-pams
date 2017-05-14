@@ -3,6 +3,7 @@ package my.edu.umk.pams.academic.term.dao;
 import my.edu.umk.pams.academic.core.AdMetaState;
 import my.edu.umk.pams.academic.core.GenericDaoSupport;
 import my.edu.umk.pams.academic.identity.model.AdStaff;
+import my.edu.umk.pams.academic.term.model.AdAdmission;
 import my.edu.umk.pams.academic.term.model.AdAppointment;
 import my.edu.umk.pams.academic.term.model.AdAppointmentImpl;
 import my.edu.umk.pams.academic.term.model.AdOffering;
@@ -54,6 +55,17 @@ public class AdAppointmentDaoImpl extends GenericDaoSupport<Long, AdAppointment>
         query.setEntity("section", section);
         query.setEntity("staff", staff);
         query.setCacheable(true);
+        return (AdAppointment) query.uniqueResult();
+    }
+    
+    @Override
+    public AdAppointment findById(Long id) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select o from AdAppointment o where " +
+                "o.id = :id " +
+                "and o.metadata.state = :state");
+        query.setLong("id", id);
+        query.setInteger("state", AdMetaState.ACTIVE.ordinal());
         return (AdAppointment) query.uniqueResult();
     }
 

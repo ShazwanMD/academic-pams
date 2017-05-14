@@ -14,17 +14,17 @@ import my.edu.umk.pams.academic.web.module.identity.vo.Staff;
  */
 public class Appointment extends MetaObject {
 	
-	private AppointmentStatus status;
+	//private AppointmentStatus status;
 	private Staff staff;
 	private Section section;
 	
-	public AppointmentStatus getAppointmentStatus() {
+	/*public AppointmentStatus getAppointmentStatus() {
         return status;
     }
 
     public void setAppointmentStatus(AppointmentStatus status) {
         this.status = status;
-    }
+    }*/
     
     public Staff getStaff() {
         return staff;
