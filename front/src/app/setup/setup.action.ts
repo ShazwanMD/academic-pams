@@ -140,4 +140,31 @@ export class SetupActions {
       payload: codes
     };
   }
+
+
+//====================================================================================
+// STATE CODES
+//====================================================================================
+  static FIND_STATE_CODES = '[Setup] Find StateCodes';
+
+  findStateCodes(): Action {
+    console.log("findStateCodes");
+    return {
+      type: SetupActions.FIND_STATE_CODES
+    };
+  }
+
+  static FIND_STATE_CODES_SUCCESS = '[Setup] Find StateCodes Success';
+
+  findStateCodesSuccess(codes): Action {
+    console.log("findStateCodesSuccess");
+    return {
+      type: SetupActions.FIND_STATE_CODES_SUCCESS,
+      payload: codes
+    };
+  }
+
+
+
+
 }

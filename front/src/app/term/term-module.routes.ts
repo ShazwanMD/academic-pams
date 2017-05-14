@@ -6,6 +6,7 @@ import {AdmissionDetailPage} from "./admissions/admission-detail.page";
 import {AdmissionRoutes} from "./admissions/admission.routes";
 import {AppointmentRoutes} from "./appointments/appointment.routes";
 import {EnrollmentApplicationRoutes} from "./enrollment-applications/enrollment-application.routes";
+import {SectionRoutes} from "./sections/section.routes";
 
 export const TermModuleRoutes: Routes = [
   {path: 'term', component: TermPage},
@@ -15,5 +16,6 @@ export const TermModuleRoutes: Routes = [
   ...EnrollmentRoutes,
   ...AdmissionRoutes,
   ...AppointmentRoutes,
+  ...SectionRoutes,
 
 ];

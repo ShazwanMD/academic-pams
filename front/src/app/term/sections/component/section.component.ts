@@ -2,17 +2,12 @@ import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy} from '@
 import {Section} from "../section.interface";
 
 @Component({
-  selector: 'pams-section-list',
-  templateUrl: './section-list.component.html',
+  selector: 'pams-section',
+  templateUrl: './section.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SectionListComponent {
+export class SectionComponent {
 
-  @Input() sections: Section[];
+  @Input() section: Section;
   @Output() view = new EventEmitter<Section>();
-
-  private columns: any[] = [
-    {name: 'id', label: 'Id'},
-    {name: 'action', label: ''}
-  ];
 }

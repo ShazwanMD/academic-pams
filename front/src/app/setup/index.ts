@@ -1,5 +1,3 @@
-import {RaceCode} from './../common/race-codes/race-code.interface';
-import {RaceCodeListPage} from './race-codes/race-code-list.page';
 import {MaritalCodeListPage} from './marital-codes/marital-code-list.page';
 import {MaritalCode} from './marital-codes/marital-code.interface';
 import {CountryCode} from './../common/country-codes/country-code.interface';
@@ -19,9 +17,15 @@ import {SetupPage} from "./setup.page";
 import {genderCodeListReducer, GenderCodeListState} from "./gender-codes/gender-code-list.reducer";
 import {countryCodeListReducer, CountryCodeListState} from "./country-codes/country-code-list.reducer";
 import {maritalCodeListReducer, MaritalCodeListState} from "./marital-codes/marital-code-list.reducer";
+import {RaceCode} from './../common/race-codes/race-code.interface';
+import {RaceCodeListPage} from './race-codes/race-code-list.page';
 import {raceCodeListReducer, RaceCodeListState} from "./race-codes/race-code-list.reducer";
 import {titleReducer, TitleState} from "./title.reducer";
 import {BankCodeListPage} from "./bank-codes/bank-code-list.page";
+
+import { StateCode } from './../common/state-codes/state-code.interface';
+import { StateCodeListPage } from './state-codes/state-code-list.page';
+import {stateCodeListReducer, StateCodeListState} from "./state-codes/state-code-list.reducer";
 
 
 export interface SetupModuleState {
@@ -30,6 +34,7 @@ export interface SetupModuleState {
   countryCodes: CountryCodeListState;
   maritalCodes: MaritalCodeListState;
   raceCodes: RaceCodeListState;
+  stateCodes: StateCodeListState;
 
 }
 ;
@@ -40,6 +45,7 @@ export const INITIAL_SETUP_STATE: SetupModuleState =
     countryCodes: <CountryCode[]>[],
     maritalCodes: <MaritalCode[]>[],
     raceCodes: <RaceCode[]>[],
+    stateCodes: <StateCode[]>[],
   };
 export const setupModuleReducers = {
   title:titleReducer,
@@ -47,6 +53,7 @@ export const setupModuleReducers = {
   countryCodes: countryCodeListReducer,
   maritalCodes: maritalCodeListReducer,
   raceCodes: raceCodeListReducer,
+  stateCodes: stateCodeListReducer,
 };
 
 @NgModule({
@@ -68,6 +75,7 @@ export const setupModuleReducers = {
     MaritalCodeListPage,
     RaceCodeListPage,
     BankCodeListPage,
+    StateCodeListPage,
     //Dialog
 
   ],

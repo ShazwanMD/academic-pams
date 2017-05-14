@@ -39,6 +39,8 @@ import {
 import {sectionReducer, SectionState} from "./sections/section.reducer";
 import {sectionListReducer, SectionListState} from "./sections/section-list.reducer";
 import {Section} from "./sections/section.interface";
+import {SectionActions} from "./sections/section.action";
+import {SectionSubModule} from "./sections/index";
 
 export interface TermModuleState {
   admissions: AdmissionListState;
@@ -107,6 +109,7 @@ export const termModuleReducers = {
     EnrollmentSubModule.forRoot(),
     AdmissionSubModule.forRoot(),
     AppointmentSubModule.forRoot(),
+    SectionSubModule.forRoot(),
   ],
   declarations: [
     // page
@@ -127,6 +130,7 @@ export class TermModule {
         AdmissionActions,
         AppointmentActions,
         EnrollmentActions,
+        SectionActions,
 
       ],
     };

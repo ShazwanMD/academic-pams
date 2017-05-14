@@ -63,4 +63,15 @@ export class SetupEffects {
     .map(action => action.payload)
     .switchMap(() => this.commonService.findBankCodes())
     .map(codes => this.setupActions.findBankCodesSuccess(codes));
+
+  //=================================================================================
+  // STATE CODE
+  //=================================================================================
+  @Effect() findStateCodes$ = this.actions$
+    .ofType(SetupActions.FIND_STATE_CODES)
+    .map(action => action.payload)
+    .switchMap(() => this.commonService.findStateCodes())
+    .map(codes => this.setupActions.findStateCodesSuccess(codes));
+
+ 
 }
