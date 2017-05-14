@@ -13,6 +13,9 @@ export class SectionListComponent {
 
   private columns: any[] = [
     {name: 'id', label: 'Id'},
+    {name: 'code', label: 'Code'},
+    {name: 'capacity', label: 'Capacity'},
+    {name: 'canonicalCode', label: 'canonicalCode'},
     {name: 'action', label: ''}
   ];
 }
