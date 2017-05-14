@@ -218,7 +218,7 @@ public class TermTransformer {
                 .collect(toList());
         return vos;
     }
-
+    
     public List<Appointment> toAppointmentVos(List<AdAppointment> appointments) {
         List<Appointment> vos = appointments.stream()
                 .map((appointment) -> toAppointmentVo(appointment))
