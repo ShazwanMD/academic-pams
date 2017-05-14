@@ -1,29 +1,49 @@
-<md-card>
-  <md-card-title>ADMISSION</md-card-title>
-  <md-card-subtitle>List of admission</md-card-subtitle>
-  <md-divider></md-divider>
-  <md-card-content>
-  <!--Tab Section Here-->
-  <md-tab-group>
-  <md-tab label="Admission Detail"><br>
+<md-card> <md-card-title>ADMISSION</md-card-title> <md-card-subtitle>Admission
+Information </md-card-subtitle> <md-divider></md-divider> <md-card-content>
+<!--Tab Section Here--> <md-tab-group> <md-tab
+	label="Admission Detail"> <br>
+<div>Gpa :{{admission.gpa}}</div>
+<br>
+<div>Cgpa :{{admission.cgpa}}</div>
+<br>
+<div>Credit Taken :{{admission.creditTaken}}</div>
+<br>
+<div>Credit Earned :{{admission.creditEarned}}</div>
+<br>
+</md-tab> <md-tab label="Student Information">
 
-   <div>Admission Id: {{admission.id}}</div><br>
-  <!--   <div>Student MatricNo.: {{admission.student.identityNo}}</div><br> -->
-    <div>Cpa: {{admission.cpa}}</div><br>
-   <div>CGpa: {{admission.cgpa}}</div><br>
+<div>Identity No : {{admission.student.identityNo}}</div>
+<br>
+<div>Name : {{admission.student.name}}</div>
+<br>
+<div>Email : {{admission.student.email}}</div>
+<br>
+<div>Phone : {{admission.student.phone}}</div>
+<br>
+</md-tab> 
 
-  </md-tab>
+<md-tab label="Academic Information">
 
-  <md-tab label="Information">
-  
-   <div>Description details of the admission</div><br>
-   <!--  <div>Credit taken: {{admission.creditTaken}}</div><br>
-     <div>Credit earned: {{admission.creditEarned}}</div><br> 
-    -->
+<div>Code : {{admission.academicSession.code}}</div>
+<br>
+<div>Description : {{admission.academicSession.description}}</div>
+<br>
 
-  </md-tab>
-  </md-tab-group>
+</md-tab> 
 
-  </md-card-content>
-  <md-divider></md-divider>
+<md-tab label="Cohort Information">
+
+<div>Code : {{admission.cohort.code}}</div>
+<br>
+<div>Description : {{admission.cohort.description}}</div>
+<br>
+
+</md-tab> 
+
+
+</md-tab-group> </md-card-content> <md-card-actions layout-align="end center">
+<button md-button color="accent" class="text-upper">UPDATE</button>
+</md-card-actions> </md-card>
+
+
 
