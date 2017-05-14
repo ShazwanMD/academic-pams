@@ -9,8 +9,7 @@ import javax.servlet.FilterRegistration;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 
-/**
- */
+@Deprecated
 public class ApplicationInitializer { //extends AbstractAnnotationConfigDispatcherServletInitializer {
 /*
     @Override
