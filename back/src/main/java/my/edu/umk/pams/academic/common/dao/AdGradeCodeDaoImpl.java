@@ -1,8 +1,9 @@
 package my.edu.umk.pams.academic.common.dao;
 
 import my.edu.umk.pams.academic.common.model.AdGradeCode;
-import my.edu.umk.pams.academic.core.GenericDaoSupport;
+import my.edu.umk.pams.academic.common.model.AdGradeCodeImpl;
 import my.edu.umk.pams.academic.core.AdMetaState;
+import my.edu.umk.pams.academic.core.GenericDaoSupport;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.slf4j.Logger;
@@ -11,13 +12,13 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository("InGradeCodeDao")
+@Repository("adGradeCodeDao")
 public class AdGradeCodeDaoImpl extends GenericDaoSupport<Long, AdGradeCode> implements AdGradeCodeDao {
 
     private static final Logger LOG = LoggerFactory.getLogger(AdGradeCodeDaoImpl.class);
 
     public AdGradeCodeDaoImpl() {
-        super(AdGradeCodeDaoImpl.class);
+        super(AdGradeCodeImpl.class);
     }
 
     @Override
