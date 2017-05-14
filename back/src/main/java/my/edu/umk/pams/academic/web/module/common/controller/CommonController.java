@@ -18,6 +18,8 @@ import my.edu.umk.pams.academic.common.model.AdParliamentCode;
 import my.edu.umk.pams.academic.common.model.AdParliamentCodeImpl;
 import my.edu.umk.pams.academic.common.model.AdRaceCode;
 import my.edu.umk.pams.academic.common.model.AdRaceCodeImpl;
+import my.edu.umk.pams.academic.common.model.AdReligionCode;
+import my.edu.umk.pams.academic.common.model.AdReligionCodeImpl;
 import my.edu.umk.pams.academic.common.model.AdStateCode;
 import my.edu.umk.pams.academic.common.model.AdStateCodeImpl;
 import my.edu.umk.pams.academic.common.service.CommonService;
@@ -31,6 +33,7 @@ import my.edu.umk.pams.academic.web.module.common.vo.GradeCode;
 import my.edu.umk.pams.academic.web.module.common.vo.MaritalCode;
 import my.edu.umk.pams.academic.web.module.common.vo.ParliamentCode;
 import my.edu.umk.pams.academic.web.module.common.vo.RaceCode;
+import my.edu.umk.pams.academic.web.module.common.vo.ReligionCode;
 import my.edu.umk.pams.academic.web.module.common.vo.StateCode;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -554,6 +557,56 @@ public ResponseEntity<String> removeGradeCode(@PathVariable String code) {
       commonService.removeGradeCode(gradeCode);
       return new ResponseEntity<String>("Success", HttpStatus.OK);
       }
+
+//====================================================================================================
+//RELIGION_CODE
+//====================================================================================================
+
+@RequestMapping(value = "/religionCodes", method = RequestMethod.GET)
+public ResponseEntity<List<ReligionCode>> findReligionCodes() {
+      return new ResponseEntity<List<ReligionCode>>(commonTransformer.toReligionCodeVos(
+      commonService.findReligionCodes()), HttpStatus.OK);
+      }
+
+@RequestMapping(value = "/religionCodes/{code}", method = RequestMethod.GET)
+public ResponseEntity<ReligionCode> findReligionCodeByCode(@PathVariable String code) {
+      return new ResponseEntity<ReligionCode>(commonTransformer.toReligionCodeVo(
+      commonService.findReligionCodeByCode(code)), HttpStatus.OK);
+      }
+
+@RequestMapping(value = "/religionCodes", method = RequestMethod.POST)
+public ResponseEntity<String> saveReligionCode(@RequestBody ReligionCode vo) {
+      dummyLogin();
+
+      AdReligionCode religionCode = new AdReligionCodeImpl();
+      religionCode.setCode(vo.getCode());
+      religionCode.setDescriptionEn(vo.getDescriptionEn());
+      religionCode.setDescriptionMs(vo.getDescriptionMs());
+      commonService.saveReligionCode(religionCode);
+      return new ResponseEntity<String>("Success", HttpStatus.OK);
+      }
+
+@RequestMapping(value = "/religionCodes/{code}", method = RequestMethod.PUT)
+public ResponseEntity<String> updateReligionCode(@PathVariable String code, @RequestBody ReligionCode vo) {
+      dummyLogin();
+
+      AdReligionCode religionCode = commonService.findReligionCodeById(vo.getId());
+      religionCode.setCode(vo.getCode());
+      religionCode.setDescriptionEn(vo.getDescriptionEn());
+      religionCode.setDescriptionMs(vo.getDescriptionMs());
+      commonService.updateReligionCode(religionCode);
+      return new ResponseEntity<String>("Success", HttpStatus.OK);
+      }
+
+@RequestMapping(value = "/religionCodes/{code}", method = RequestMethod.DELETE)
+public ResponseEntity<String> removeReligionCode(@PathVariable String code) {
+      dummyLogin();
+
+      AdReligionCode religionCode = commonService.findReligionCodeByCode(code);
+      commonService.removeReligionCode(religionCode);
+      return new ResponseEntity<String>("Success", HttpStatus.OK);
+      }
+
 
 
 
