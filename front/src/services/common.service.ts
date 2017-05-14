@@ -1,3 +1,4 @@
+import { ReligionCode } from './../app/common/religion-codes/religion-code.interface';
 import { GradeCode } from './../app/common/grade-codes/grade-code.interface';
 import { DunCode } from './../app/common/dun-codes/dun-code.interface';
 import { ParliamentCode } from './../app/common/parliament-codes/parliament-code.interface';
@@ -175,6 +176,25 @@ findGradeCodeByCode(code:string): Observable<GradeCode> {
 return this.http.get(environment.endpoint + '/api/common/gradeCodes/' + code)
     .map((res: Response) => <GradeCode>res.json());
 }
+
+
+
+// ====================================================================================================
+// RELIGIONCODE
+// ====================================================================================================
+
+findReligionCodes(): Observable<ReligionCode[]> {
+    console.log("findReligionCodes()");
+return this.http.get(environment.endpoint + '/api/common/religionCodes')
+    .map((res: Response) => <ReligionCode[]>res.json());
+}
+
+findReligionCodeByCode(code:string): Observable<ReligionCode> {
+    console.log("findReligionCodeByCode");
+return this.http.get(environment.endpoint + '/api/common/religionCodes/' + code)
+    .map((res: Response) => <ReligionCode>res.json());
+}
+
 
 
 

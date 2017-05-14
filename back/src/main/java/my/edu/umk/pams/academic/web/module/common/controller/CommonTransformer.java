@@ -9,6 +9,7 @@ import my.edu.umk.pams.academic.common.model.AdGradeCode;
 import my.edu.umk.pams.academic.common.model.AdMaritalCode;
 import my.edu.umk.pams.academic.common.model.AdParliamentCode;
 import my.edu.umk.pams.academic.common.model.AdRaceCode;
+import my.edu.umk.pams.academic.common.model.AdReligionCode;
 import my.edu.umk.pams.academic.common.model.AdStateCode;
 import my.edu.umk.pams.academic.web.module.common.vo.BankCode;
 import my.edu.umk.pams.academic.web.module.common.vo.CityCode;
@@ -19,6 +20,7 @@ import my.edu.umk.pams.academic.web.module.common.vo.GradeCode;
 import my.edu.umk.pams.academic.web.module.common.vo.MaritalCode;
 import my.edu.umk.pams.academic.web.module.common.vo.ParliamentCode;
 import my.edu.umk.pams.academic.web.module.common.vo.RaceCode;
+import my.edu.umk.pams.academic.web.module.common.vo.ReligionCode;
 import my.edu.umk.pams.academic.web.module.common.vo.StateCode;
 
 import org.springframework.stereotype.Component;
@@ -233,5 +235,28 @@ public class CommonTransformer {
           .collect(Collectors.toList());
           return vos;
           }
+  
+  
+
+//====================================================================================================
+// RELIGION_CODE
+//====================================================================================================
+
+public ReligionCode toReligionCodeVo(AdReligionCode e) {
+    ReligionCode vo = new ReligionCode();
+        vo.setId(e.getId());
+        vo.setCode(e.getCode());
+        vo.setDescriptionMs(e.getDescriptionMs());
+        vo.setDescriptionEn(e.getDescriptionEn());
+        return vo;
+        }
+
+public List<ReligionCode> toReligionCodeVos(List<AdReligionCode> e) {
+        List<ReligionCode> vos = e.stream()
+        .map((e1) -> toReligionCodeVo(e1))
+        .collect(Collectors.toList());
+        return vos;
+        }
+
 
 }
