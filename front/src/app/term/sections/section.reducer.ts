@@ -1,6 +1,6 @@
-import {Action} from '@ngrx/store';
-import {SectionActions} from "./section.action";
-import {Section} from "./section.interface";
+import { Action } from '@ngrx/store';
+import { SectionActions } from "./section.action";
+import { Section } from "./section.interface";
 
 export type SectionState = Section;
 
@@ -11,8 +11,8 @@ export function sectionReducer(state = initialState, action: Action): SectionSta
     case SectionActions.FIND_SECTION_BY_ID_SUCCESS: {
       return action.payload;
     }
-      
-       case SectionActions.FIND_SECTION_BY_CANONICAL_CODE_SUCCESS: {
+
+    case SectionActions.FIND_SECTION_BY_CANONICAL_CODE_SUCCESS: {
       return action.payload;
     }
     default: {

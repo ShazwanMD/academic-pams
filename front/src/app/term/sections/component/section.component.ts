@@ -1,5 +1,5 @@
-import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy} from '@angular/core';
-import {Section} from "../section.interface";
+import { Component, Input, EventEmitter, Output, ChangeDetectionStrategy } from '@angular/core';
+import { Section } from "../section.interface";
 
 @Component({
   selector: 'pams-section',

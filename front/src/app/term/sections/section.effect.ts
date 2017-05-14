@@ -1,14 +1,14 @@
-import {Injectable} from '@angular/core';
-import {Effect, Actions} from '@ngrx/effects';
-import {SectionActions} from "./section.action";
-import {TermService} from "../../../services/term.service";
+import { Injectable } from '@angular/core';
+import { Effect, Actions } from '@ngrx/effects';
+import { SectionActions } from "./section.action";
+import { TermService } from "../../../services/term.service";
 
 
 @Injectable()
 export class SectionEffects {
   constructor(private actions$: Actions,
-              private sectionActions: SectionActions,
-              private termService: TermService,) {
+    private sectionActions: SectionActions,
+    private termService: TermService, ) {
   }
 
   @Effect() findSections$ = this.actions$

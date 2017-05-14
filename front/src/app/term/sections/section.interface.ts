@@ -1,5 +1,5 @@
 export interface Section {
-  id:number;
+  id: number;
   code: string;
   canonicalCode: string;
 }
