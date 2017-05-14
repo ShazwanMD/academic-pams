@@ -39,11 +39,12 @@ public class WhenAdminUpdateProgram extends Stage<WhenAdminUpdateProgram> {
 	    
 	    @ExpectedScenarioState
 	    private AdProgramLevel programLevel;
+	 
 	   
-	    public WhenAdminUpdateProgram Admin_update_program_for_faculty_$(String facultyCode) {
-	 	
-	    	  
-	         program.setCode("AFKP/MASTER/MAM/R");
+	    public WhenAdminUpdateProgram Admin_update_program_$_for_faculty_$(String programCode ,String facultyCode) {
+	    		faculty = plannerService.findFacultyByCode(facultyCode);
+	    	 program = plannerService.findProgramByCodeAndFaculty(programCode, faculty);
+	         program.setCode("AFKP-MASTER-MAM-R");
 	         program.setFaculty(plannerService.findFacultyByCode(facultyCode));
 	         program.setTitle("Master of management(it)");
 	         program.setTitleEn("Master of management(it)");

@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.annotation.As;
+import com.tngtech.jgiven.integration.spring.JGivenStage;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 
 import my.edu.umk.pams.academic.config.TestAppConfiguration;
@@ -33,13 +34,14 @@ public class US_AD_PNR_1002
 
 	private static final Logger LOG = LoggerFactory.getLogger(US_AD_PNR_1002.class);
 	public static final String FACULTY_CODE = "A01";
-	private static final String PROGRAM_CODE = "FKP/MASTER/MAM";
+
+	private static final String PROGRAM_CODE = "FKP-MASTER-MAM";
 
 	@Test
 	@Rollback
 	public void UpdateProgram() {
 		given().I_am_a_CPS_administrator().I_pick_program_$(PROGRAM_CODE);
-		when().Admin_update_program_for_faculty_$(FACULTY_CODE);
+		when().Admin_update_program_$_for_faculty_$(PROGRAM_CODE,FACULTY_CODE);
 		then().program_is_updated();
 	}
 }
