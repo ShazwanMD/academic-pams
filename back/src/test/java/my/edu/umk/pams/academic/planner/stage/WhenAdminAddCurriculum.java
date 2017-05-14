@@ -44,11 +44,11 @@ public class WhenAdminAddCurriculum extends Stage<WhenAdminAddCurriculum> {
 	public WhenAdminAddCurriculum Admin_add_curriculum(){
 
 		// select a program
-		AdProgram program = plannerService.findProgramByCode("MGSEB/MBA");
+		AdProgram program = plannerService.findProgramByCode("MGSEB-MBA");
 		
 		// create curriculum
 		curriculum = new AdCurriculumImpl();
-		curriculum.setCode(program.getCode() + "/" + "CRLM/0005"); // MGSEB/MBA/CRLM/0005
+		curriculum.setCode(program.getCode() + "-" + "CRLM/0005"); // MGSEB/MBA/CRLM/0005
 		curriculum.setOrdinal(1);
 		curriculum.setCoreCredit(3);
 		curriculum.setElectiveCredit(3);
@@ -78,7 +78,7 @@ public class WhenAdminAddCurriculum extends Stage<WhenAdminAddCurriculum> {
 		AdFaculty faculty = plannerService.findFacultyByCode("A10");
 		AdAcademicSession academicSession= plannerService.findAcademicSessionByCode("201720181");
 		AdProgramLevel level = plannerService.findProgramLevelByCode("PHD");
-		AdProgram program = plannerService.findProgramByCode("MGSEB/MBA");
+		AdProgram program = plannerService.findProgramByCode("MGSEB-MBA");
 	
 		LOG.debug("AcademicSession :{}", academicSession.getSemester());
 		LOG.debug("Faculty : {}", faculty.getDescription());
