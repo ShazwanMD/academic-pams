@@ -43,7 +43,7 @@ public class US_AD_ASMT_3002 extends SpringScenarioTest<GivenIAmAdministrator, W
 		String username = "mgseb";
 		String password = "abc123";
 		given().i_am_a_$_administrator_in_current_academic_session(username, password);
-		addStage(WhenSetupGradeCode.class).setup_gradeCode();
+//		addStage(WhenSetupGradeCode.class).setup_gradeCode();
 		when().i_setup_assessment_info();
 		addStage(WhenSetupGradeBook3002.class).generate_gradebook();
 		then().exam_viva_created();

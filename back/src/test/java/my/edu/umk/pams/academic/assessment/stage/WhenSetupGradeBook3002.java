@@ -11,6 +11,7 @@ import org.springframework.util.Assert;
 
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
+import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 
 import my.edu.umk.pams.academic.common.model.AdGradeCode;
@@ -73,9 +74,6 @@ public class WhenSetupGradeBook3002 extends Stage<WhenSetupGradeBook3002> {
 	private AdEnrollment enrollment;
 
 	@ExpectedScenarioState
-	private AdSection section;
-
-	@ExpectedScenarioState
 	private AdAdmission admission;
 
 	@ExpectedScenarioState
@@ -92,6 +90,9 @@ public class WhenSetupGradeBook3002 extends Stage<WhenSetupGradeBook3002> {
 
 	@ExpectedScenarioState
 	private AdOffering offer;
+	
+	@ExpectedScenarioState
+	private AdSection section;
 	
 	
 	public WhenSetupGradeBook3002 generate_gradebook(){

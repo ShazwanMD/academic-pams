@@ -97,7 +97,7 @@ public class WhenSetupGradeCode extends Stage<WhenSetupGradeCode> {
 		grade.setCode("A+");
 		grade.setDescription("Cemerlang");
 		grade.setOrdinal(0);
-		commonService.saveGradeCode(grade);
+		commonService.updateGradeCode(grade);
 
 		LOG.debug("Grade:{}", grade.getCode());
 		LOG.debug("Desc:{}", grade.getDescription());
@@ -107,7 +107,7 @@ public class WhenSetupGradeCode extends Stage<WhenSetupGradeCode> {
 		grade.setCode("A");
 		grade.setDescription("Cemerlang");
 		grade.setOrdinal(1);
-		commonService.saveGradeCode(grade);
+		commonService.updateGradeCode(grade);
 
 		LOG.debug("Grade:{}", grade.getCode());
 		LOG.debug("Desc:{}", grade.getDescription());
@@ -117,7 +117,7 @@ public class WhenSetupGradeCode extends Stage<WhenSetupGradeCode> {
 		grade.setCode("A-");
 		grade.setDescription("KEPUJIAN");
 		grade.setOrdinal(2);
-		commonService.saveGradeCode(grade);
+		commonService.updateGradeCode(grade);
 
 		LOG.debug("Grade:{}", grade.getCode());
 		LOG.debug("Desc:{}", grade.getDescription());
@@ -127,7 +127,7 @@ public class WhenSetupGradeCode extends Stage<WhenSetupGradeCode> {
 		grade.setCode("B+");
 		grade.setDescription("KEPUJIAN");
 		grade.setOrdinal(3);
-		commonService.saveGradeCode(grade);
+		commonService.updateGradeCode(grade);
 
 		LOG.debug("Grade:{}", grade.getCode());
 		LOG.debug("Desc:{}", grade.getDescription());
@@ -137,7 +137,7 @@ public class WhenSetupGradeCode extends Stage<WhenSetupGradeCode> {
 		grade.setCode("B");
 		grade.setDescription("KEPUJIAN");
 		grade.setOrdinal(4);
-		commonService.saveGradeCode(grade);
+		commonService.updateGradeCode(grade);
 
 		LOG.debug("Grade:{}", grade.getCode());
 		LOG.debug("Desc:{}", grade.getDescription());
@@ -147,7 +147,7 @@ public class WhenSetupGradeCode extends Stage<WhenSetupGradeCode> {
 		grade.setCode("B-");
 		grade.setDescription("BAIK");
 		grade.setOrdinal(5);
-		commonService.saveGradeCode(grade);
+		commonService.updateGradeCode(grade);
 
 		LOG.debug("Grade:{}", grade.getCode());
 		LOG.debug("Desc:{}", grade.getDescription());
@@ -157,7 +157,7 @@ public class WhenSetupGradeCode extends Stage<WhenSetupGradeCode> {
 		grade.setCode("C");
 		grade.setDescription("LULUS");
 		grade.setOrdinal(6);
-		commonService.saveGradeCode(grade);
+		commonService.updateGradeCode(grade);
 
 		LOG.debug("Grade:{}", grade.getCode());
 		LOG.debug("Desc:{}", grade.getDescription());
@@ -167,7 +167,7 @@ public class WhenSetupGradeCode extends Stage<WhenSetupGradeCode> {
 		grade.setCode("C-");
 		grade.setDescription("LULUS BERSYARAT");
 		grade.setOrdinal(7);
-		commonService.saveGradeCode(grade);
+		commonService.updateGradeCode(grade);
 
 		LOG.debug("Grade:{}", grade.getCode());
 		LOG.debug("Desc:{}", grade.getDescription());
@@ -177,7 +177,7 @@ public class WhenSetupGradeCode extends Stage<WhenSetupGradeCode> {
 		grade.setCode("D");
 		grade.setDescription("LULUS BERSYARAT");
 		grade.setOrdinal(8);
-		commonService.saveGradeCode(grade);
+		commonService.updateGradeCode(grade);
 
 		LOG.debug("Grade:{}", grade.getCode());
 		LOG.debug("Desc:{}", grade.getDescription());
@@ -187,7 +187,7 @@ public class WhenSetupGradeCode extends Stage<WhenSetupGradeCode> {
 		grade.setCode("C+");
 		grade.setDescription("LULUS");
 		grade.setOrdinal(9);
-		commonService.saveGradeCode(grade);
+		commonService.updateGradeCode(grade);
 
 		LOG.debug("Grade:{}", grade.getCode());
 		LOG.debug("Desc:{}", grade.getDescription());
@@ -197,7 +197,7 @@ public class WhenSetupGradeCode extends Stage<WhenSetupGradeCode> {
 		grade.setCode("F");
 		grade.setDescription("GAGAL");
 		grade.setOrdinal(10);
-		commonService.saveGradeCode(grade);
+		commonService.updateGradeCode(grade);
 
 		LOG.debug("Grade:{}", grade.getCode());
 		LOG.debug("Desc:{}", grade.getDescription());

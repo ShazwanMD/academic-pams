@@ -31,7 +31,9 @@ public class US_AD_ASMT_3001 extends SpringScenarioTest<GivenIAmAdministrator, W
 		String username = "cps";
 		String password = "abc123";
 		given().i_am_a_$_administrator_in_current_academic_session(username, password);
-		when().i_setup_grading_scale().and().i_update_grading_scale();
+		when()
+//		.i_setup_grading_scale()
+		.and().i_update_grading_scale();
 		then().grading_scale_updated();
 		
 	}

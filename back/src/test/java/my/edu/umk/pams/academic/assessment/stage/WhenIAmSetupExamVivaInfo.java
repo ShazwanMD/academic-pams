@@ -106,7 +106,8 @@ public class WhenIAmSetupExamVivaInfo extends Stage<WhenIAmSetupExamVivaInfo> {
 		offering = termService.findOfferingByProgramAndCourse(program, course);
 		LOG.debug("Offering :{}", offering);
 		
-		section = termService.findSectionByCanonicalCode("MGSEB/MBA/GST5023/201720181");
+		section = termService.findSectionByCanonicalCode("MGSEB-MBA-GST5023-201720181-01");
+		LOG.debug("Section:{}",section.getCanonicalCode());
 		
 		
 		//Quiz 1
