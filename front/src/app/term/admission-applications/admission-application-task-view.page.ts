@@ -11,7 +11,7 @@ import {AdmissionApplicationActions} from "./admission-application.action";
 
 
 @Component({
-  selector: 'pams-admission-application-task-iew',
+  selector: 'pams-admission-application-task-view',
   templateUrl: './admission-application-task-view.page.html',
 })
 export class AdmissionApplicationTaskViewPage implements OnInit {

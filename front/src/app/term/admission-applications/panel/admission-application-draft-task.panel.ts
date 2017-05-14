@@ -5,9 +5,14 @@ import {TermService} from "../../../../services/term.service";
 import {AdmissionApplicationTask} from "../admission-application-task.interface";
 
 
-@Component({
+/*@Component({
   selector: 'pams-admission-application-register-task',
   templateUrl: './admission-application-register-task.panel.html',
+})*/
+
+@Component({
+  selector: 'pams-admission-application-draft-task',
+  templateUrl: './admission-application-draft-task.panel.html',
 })
 
 export class AdmissionApplicationDraftTaskPanel implements OnInit {

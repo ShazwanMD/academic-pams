@@ -6,6 +6,7 @@ import {AdmissionDetailPage} from "./admissions/admission-detail.page";
 import {AdmissionRoutes} from "./admissions/admission.routes";
 import {AppointmentRoutes} from "./appointments/appointment.routes";
 import {EnrollmentApplicationRoutes} from "./enrollment-applications/enrollment-application.routes";
+import {AdmissionApplicationRoutes} from "./admission-applications/admission-application.routes";
 import {SectionRoutes} from "./sections/section.routes";
 
 export const TermModuleRoutes: Routes = [
@@ -15,6 +16,7 @@ export const TermModuleRoutes: Routes = [
   ...EnrollmentApplicationRoutes,
   ...EnrollmentRoutes,
   ...AdmissionRoutes,
+  ...AdmissionApplicationRoutes,
   ...AppointmentRoutes,
   ...SectionRoutes,
 

@@ -8,7 +8,6 @@ import {TermService} from '../../../services';
 import {CommonService} from '../../../services';
 import {IdentityService} from '../../../services';
 import {EffectsModule} from "@ngrx/effects";
-import {AdmissionApplicationCenterPage} from "./admission-application-center.page";
 import {AdmissionApplicationEffects} from "./admission-application.effect";
 import {AdmissionApplicationActions} from "./admission-application.action";
 import {AdmissionSubModule} from "../admissions/index";
@@ -22,6 +21,7 @@ import {AdmissionApplicationTaskWorkflowPanel} from "./panel/admission-applicati
 import {AdmissionApplicationTaskStatusComponent} from "./component/admission-application-task-status.component";
 import {AdmissionApplicationItemEditorDialog} from "./dialog/admission-application-item-editor.dialog";
 import {SectionSubModule} from "../sections/index";
+import {AdmissionApplicationCenterPage} from "./admission-application-center.page";
 
 @NgModule({
   imports: [
@@ -36,8 +36,8 @@ import {SectionSubModule} from "../sections/index";
   ],
   declarations: [
     // page
-    AdmissionApplicationCenterPage,
     AdmissionApplicationTaskViewPage,
+    AdmissionApplicationCenterPage,
 
     // component
     AdmissionApplicationTaskWorkflowPanel,
@@ -59,16 +59,17 @@ import {SectionSubModule} from "../sections/index";
   ]
 })
 
-export class EnrollmentApplicationSubModule {
+export class AdmissionApplicationSubModule {
   static forRoot(): ModuleWithProviders {
     return {
-      ngModule: EnrollmentApplicationSubModule,
+      ngModule: AdmissionApplicationSubModule,
       providers: [
         appRoutingProviders,
         TermService,
         IdentityService,
         CommonService,
         AdmissionApplicationActions,
+        
       ],
     };
   }

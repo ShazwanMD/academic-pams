@@ -41,6 +41,7 @@ import {sectionListReducer, SectionListState} from "./sections/section-list.redu
 import {Section} from "./sections/section.interface";
 import {SectionActions} from "./sections/section.action";
 import {SectionSubModule} from "./sections/index";
+import {AdmissionApplicationSubModule} from "./admission-applications/index";
 
 export interface TermModuleState {
   admissions: AdmissionListState;
@@ -104,7 +105,7 @@ export const termModuleReducers = {
     ReactiveFormsModule,
     CovalentCoreModule.forRoot(),
     OfferingSubModule.forRoot(),
-    // todo: AdmissionApplicationSubModule.forRoot(),
+    AdmissionApplicationSubModule.forRoot(),
     EnrollmentApplicationSubModule.forRoot(),
     EnrollmentSubModule.forRoot(),
     AdmissionSubModule.forRoot(),
