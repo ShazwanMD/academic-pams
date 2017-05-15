@@ -30,6 +30,9 @@ export class GenderCodeListPage implements OnInit {
     this.store.dispatch(this.actions.changeTitle("Gender Codes"))
   }
 
+  
+                filter():void{}
+
 }
 
 

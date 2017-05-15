@@ -386,7 +386,6 @@ public ResponseEntity<String> removeCountryCode(@PathVariable String code) {
 
           AdGenderCode genderCode = new AdGenderCodeImpl();
           genderCode.setCode(vo.getCode());
-          
           genderCode.setDescription(vo.getDescription());
           commonService.saveGenderCode(genderCode);
           return new ResponseEntity<String>("Success", HttpStatus.OK);
@@ -398,7 +397,6 @@ public ResponseEntity<String> removeCountryCode(@PathVariable String code) {
 
           AdGenderCode genderCode = commonService.findGenderCodeById(vo.getId());
           genderCode.setCode(vo.getCode());
-          
           genderCode.setDescription(vo.getDescription());
           commonService.updateGenderCode(genderCode);
           return new ResponseEntity<String>("Success", HttpStatus.OK);

@@ -97,6 +97,66 @@ export class SetupActions {
     };
   }
 
+   static SAVE_MARITAL_CODE = '[Setup] Save Marital Code';
+
+  saveMaritalCode(code): Action {
+    console.log("saveMaritalCode");
+    return {
+      type: SetupActions.SAVE_MARITAL_CODE,
+      payload: code
+    };
+  }
+
+  static SAVE_MARITAL_CODE_SUCCESS = '[Setup] Save Marital Code Success';
+
+  saveMaritalCodeSuccess(message): Action {
+    console.log("saveMaritalCodeSuccess");
+    return {
+      type: SetupActions.SAVE_MARITAL_CODE_SUCCESS,
+      payload: message
+    };
+  }
+
+  static UPDATE_MARITAL_CODE = '[Setup] Update Marital Code';
+
+  updateMaritalCode(code): Action {
+    console.log("updateMaritalCode");
+    return {
+      type: SetupActions.UPDATE_MARITAL_CODE,
+      payload: code
+    };
+  }
+
+  static UPDATE_MARITAL_CODE_SUCCESS = '[Setup] Update Marital Code  Success';
+
+  updateMaritalCodeSuccess(message): Action {
+    console.log("updateMaritalCodeSuccess");
+    return {
+      type: SetupActions.UPDATE_MARITAL_CODE_SUCCESS,
+      payload: message
+    };
+  }
+
+  static REMOVE_MARITAL_CODE = '[Setup] Remove Marital Code';
+
+  removeMaritalCode(code): Action {
+    console.log("removeMaritalCode");
+    return {
+      type: SetupActions.REMOVE_MARITAL_CODE,
+      payload: code
+    };
+  }
+
+  static REMOVE_MARITAL_CODE_SUCCESS = '[Setup] Remove Marital Code  Success';
+
+  removeMaritalCodeSuccess(message): Action {
+    console.log("removeMaritalCodeSuccess");
+    return {
+      type: SetupActions.REMOVE_MARITAL_CODE_SUCCESS,
+      payload: message
+    };
+  }
+
 //====================================================================================
 // RACE CODES
 //====================================================================================
@@ -204,6 +264,10 @@ findDunCodesSuccess(codes): Action {
     };
 }
 
+//=================================================================
+// Grade Code
+//=================================================================
+
 static FIND_GRADE_CODES = '[Setup] Find GradeCodes';
 
 findGradeCodes(): Action {
@@ -222,8 +286,68 @@ findGradeCodesSuccess(codes): Action {
         payload: codes
     };
 }
+  static SAVE_GRADE_CODE = '[Setup] Save Grade Code';
 
+  saveGradeCode(code): Action {
+    console.log("saveGradeCode");
+    return {
+      type: SetupActions.SAVE_GRADE_CODE,
+      payload: code
+    };
+  }
 
+  static SAVE_GRADE_CODE_SUCCESS = '[Setup] Save Grade Code Success';
+
+  saveGradeCodeSuccess(message): Action {
+    console.log("saveGradeCodeSuccess");
+    return {
+      type: SetupActions.SAVE_GRADE_CODE_SUCCESS,
+      payload: message
+    };
+  }
+
+  static UPDATE_GRADE_CODE = '[Setup] Update Grade Code';
+
+  updateGradeCode(code): Action {
+    console.log("updateGradeCode");
+    return {
+      type: SetupActions.UPDATE_GRADE_CODE,
+      payload: code
+    };
+  }
+
+  static UPDATE_GRADE_CODE_SUCCESS = '[Setup] Update Grade Code  Success';
+
+  updateGradeCodeSuccess(message): Action {
+    console.log("updateGradeCodeSuccess");
+    return {
+      type: SetupActions.UPDATE_GRADE_CODE_SUCCESS,
+      payload: message
+    };
+  }
+
+  static REMOVE_GRADE_CODE = '[Setup] Remove Grade Code';
+
+  removeGradeCode(code): Action {
+    console.log("removeGradeCode");
+    return {
+      type: SetupActions.REMOVE_GRADE_CODE,
+      payload: code
+    };
+  }
+
+  static REMOVE_GRADE_CODE_SUCCESS = '[Setup] Remove Grade Code  Success';
+
+  removeGradeCodeSuccess(message): Action {
+    console.log("removeGradeCodeSuccess");
+    return {
+      type: SetupActions.REMOVE_GRADE_CODE_SUCCESS,
+      payload: message
+    };
+  }
+//===========================================================================
+//
+//===========================================================================
 static FIND_RELIGION_CODES = '[Setup] Find ReligionCodes';
 
 findReligionCodes(): Action {

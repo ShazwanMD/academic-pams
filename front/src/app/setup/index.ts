@@ -1,3 +1,5 @@
+import { MaritalCodeEditorDialog } from './marital-codes/dialog/marital-code-editor.dialog';
+import { GradeCodeEditorDialog } from './grade-codes/dialog/grade-code-editor.dialog';
 import { EthnicityCodeListPage } from './ethnicity-codes/ethnicity-code-list.page';
 import { EthnicityCode } from './../common/ethnicity-codes/ethnicity-code.interface';
 import { NationalityCodeListPage } from './nationality-codes/nationality-code-list.page';
@@ -116,11 +118,17 @@ export const setupModuleReducers = {
     GradeCodeListPage,
     ReligionCodeListPage,
     NationalityCodeListPage,
-    EthnicityCodeListPage
+    EthnicityCodeListPage,
     //Dialog
+    GradeCodeEditorDialog,
+    MaritalCodeEditorDialog,
 
   ],
   exports: [],
+  entryComponents:[
+    GradeCodeEditorDialog,
+    MaritalCodeEditorDialog,
+  ],
 
 })
 export class SetupModule {
