@@ -13,7 +13,6 @@ import {Store} from "@ngrx/store";
 import {PlannerModuleState} from "../../index";
 import {MdDialogRef} from "@angular/material";
 
-
 @Component({
   selector: 'pams-program-creator',
   templateUrl: './program-creator.dialog.html',
