@@ -452,6 +452,67 @@ findNationalityCodesSuccess(codes): Action {
     };
 }
 
+ static SAVE_NATIONALITY_CODE = '[Setup] Save Nationality Code';
+
+  saveNationalityCode(code): Action {
+    console.log("saveNationalityCode");
+    return {
+      type: SetupActions.SAVE_NATIONALITY_CODE,
+      payload: code
+    };
+  }
+
+    static SAVE_NATIONALITY_CODE_SUCCESS = '[Setup] Save Nationality Code Success';
+
+  saveNationalityCodeSuccess(message): Action {
+    console.log("saveNationalityCodeSuccess");
+    return {
+      type: SetupActions.SAVE_NATIONALITY_CODE_SUCCESS,
+      payload: message
+    };
+  }
+
+    static UPDATE_NATIONALITY_CODE = '[Setup] Update Nationality Code';
+
+  updateNationalityCode(code): Action {
+    console.log("updateNationalityCode");
+    return {
+      type: SetupActions.UPDATE_NATIONALITY_CODE,
+      payload: code
+    };
+  }
+
+  static UPDATE_NATIONALITY_CODE_SUCCESS = '[Setup] Update Nationality Code  Success';
+
+  updateNationalityCodeSuccess(message): Action {
+    console.log("updateNationalityCodeSuccess");
+    return {
+      type: SetupActions.UPDATE_NATIONALITY_CODE_SUCCESS,
+      payload: message
+    };
+  }
+
+  static REMOVE_NATIONALITY_CODE = '[Setup] Remove Nationality Code';
+
+  removeNationalityCode(code): Action {
+    console.log("removeNationalityCode");
+    return {
+      type: SetupActions.REMOVE_NATIONALITY_CODE,
+      payload: code
+    };
+  }
+
+  static REMOVE_NATIONALITY_CODE_SUCCESS = '[Setup] Remove Nationality Code  Success';
+
+  removeNationalityCodeSuccess(message): Action {
+    console.log("removeNationalityCodeSuccess");
+    return {
+      type: SetupActions.REMOVE_NATIONALITY_CODE_SUCCESS,
+      payload: message
+    };
+  }
+
+
 static FIND_ETHNICITY_CODES = '[Setup] Find EthnicityCodes';
 
 findEthnicityCodes(): Action {

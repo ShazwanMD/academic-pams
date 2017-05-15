@@ -13,7 +13,7 @@ import { CommonModuleState } from './../../index';
     templateUrl: './nationality-code-select.component.html',
 })
 
-export class NationalityCodeSelectComponent implements OnInit{
+export class NationalityCodeSelectComponent implements OnInit {
 
     private NATIONALITY_CODE = "commonModuleState.nationalityCodes".split(".");
     @Input() placeHolder: string;
@@ -21,14 +21,14 @@ export class NationalityCodeSelectComponent implements OnInit{
     nationalityCodes$: Observable<NationalityCode[]>;
 
     constructor(private store: Store<CommonModuleState>,
-                private actions: CommonActions){
-                    this.nationalityCodes$ = this.store.select(...this.NATIONALITY_CODE);
+        private actions: CommonActions) {
+        this.nationalityCodes$ = this.store.select(...this.NATIONALITY_CODE);
 
-                }
-                ngOnInit(){
-                    this.store.dispatch(this.actions.findNationalityCodes());
-                }
-                selectChangeEvent(event: NationalityCode){
-                    this.innerFormControl.setValue(event,{emitEvent: false});
-                }
+    }
+    ngOnInit() {
+        this.store.dispatch(this.actions.findNationalityCodes());
+    }
+    selectChangeEvent(event: NationalityCode) {
+        this.innerFormControl.setValue(event, { emitEvent: false });
+    }
 }

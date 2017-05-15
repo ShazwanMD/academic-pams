@@ -1,3 +1,4 @@
+import { Address } from './../address.interface';
 import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy} from '@angular/core';
 import {Student} from "../../identity/student.interface";
 import {MdTabsModule} from '@angular/material';
@@ -10,6 +11,7 @@ import {MdTabsModule} from '@angular/material';
 export class ProfileComponent {
 
   @Input() profile: Student;
+  
   
   // @Output() addGuardian = new EventEmitter<Guardian>();
   // @Output() addGuarantor = new EventEmitter<Guarantor>();
