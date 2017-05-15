@@ -8,16 +8,34 @@
   <md-tab-group>
   <md-tab label="Student Information">
 
-    <div>Matric No : {{profile.identityNo}}</div>
-    <div>Name : {{profile.name}}</div>
-    <div>Email : {{profile.email}}</div>
-    <div>Mobile : {{profile.mobile}} </div>
+  <div>Matric No : {{profile.identityNo}}</div>
+  <div>Name : {{profile.name}}</div>
+  <div>Email : {{profile.email}}</div>
+  <div>Mobile : {{profile.mobile}} </div>
+
+  <md-list-item *ngFor="let address of addressess">
+  <div>Address</div>
+  <div> {{address.address1}} </div>
+  <div> {{address.address2 +","+ address.postcode}} </div>
+  </md-list-item>
+
+  <md-list-item *ngFor="let guarantor of guarantors">
+  <div>Guarantor</div>
+  <div>Guarantor ID : {{guarantor.identityNo}} </div>
+  <div>Guarantor Name :  {{guarantor.name}} </div>
+  </md-list-item>
+
+  <md-list-item *ngFor="let guardian of guardians">
+  <div>Guardian</div>
+  <div>Guardian ID : {{guardian.identityNo}} </div>
+  <div>Guardian Name :  {{guardian.name}} </div>
+  </md-list-item>
 
   </md-tab>
 
   <md-tab label="Course Information">
   
-  
+
 
   </md-tab>
   </md-tab-group>
