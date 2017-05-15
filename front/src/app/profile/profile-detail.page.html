@@ -9,26 +9,23 @@
       <div flex-gt-md="70">
         <pams-profile [profile]="student$ | async"></pams-profile>
       
-        <md-card class="">
+        <md-card>
           <md-card-title>Guarantors/Guardians/Contacts/</md-card-title>
-          <md-card-subtitle>List of students</md-card-subtitle>
+          <md-card-subtitle>Address Information</md-card-subtitle>
           <md-divider></md-divider>
           <md-list dense flex>
             <md-list-item *ngFor="let address of addressess$ | async">
-              <h3 md-line> {{address.address1}} </h3>
-              <p md-line> {{address.address2}} </p>
-              <span flex></span>
-              <span flex="20">{{address.postcode}}</span>
+              <p md-line>Address</p>
+              <p md-line> {{address.address1}} </p>
+              <p md-line> {{address.address2 +","+ address.postcode}} </p>
             </md-list-item>
           </md-list>
         </md-card>
-
 
       </div>
 
       <div flex-gt-md="30">
         <pams-profile-status [profile]="student$ | async"></pams-profile-status>
-
 
         <md-card>
           <md-card-title>Action</md-card-title>
