@@ -14,7 +14,7 @@ import java.io.IOException;
 public class StateCode extends MetaObject {
     private String code;
     private String description;
-    private AdCountryCode countryCode;
+    private CountryCode countryCode;
     
 
     public String getCode() {
@@ -34,12 +34,12 @@ public class StateCode extends MetaObject {
     }
     
     
-    public AdCountryCode getCountryCode() {
+    public CountryCode getCountryCode() {
         return countryCode;
     }
 
     
-    public void setCountryCode(AdCountryCode countryCode) {
+    public void setCountryCode(CountryCode countryCode) {
         this.countryCode = countryCode;
     }
 
