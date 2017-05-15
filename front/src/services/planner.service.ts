@@ -23,14 +23,14 @@ export class PlannerService {
   findAcademicSessions(): Observable<AcademicSession[]> {
     let headers = new Headers({'Authorization': 'Bearer TODO'});
     let options = new RequestOptions({headers: headers});
-    return this.http.get(environment.endpoint + '/api/planner/academicSessions')
+    return this.http.get(environment.endpoint + '/api/planner/academic-sessions')
       .map((res: Response) => <AcademicSession[]>res.json());
   }
 
   findAcademicSessionByCode(code: string): Observable<AcademicSession> {
     let headers = new Headers({'Authorization': 'Bearer TODO'});
     let options = new RequestOptions({headers: headers});
-    return this.http.get(environment.endpoint + '/api/planner/academicSessions/' + code, options)
+    return this.http.get(environment.endpoint + '/api/planner/academic-sessions/' + code, options)
       .map((res: Response) => <AcademicSession>res.json());
   }
 
