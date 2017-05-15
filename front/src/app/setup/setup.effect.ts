@@ -172,12 +172,37 @@ export class SetupEffects {
     .map(message => this.setupActions.removeReligionCodeSuccess(message))
     .mergeMap(action => from([action, this.setupActions.findReligionCodes()]));
 
+//=================================================================================
+// Nationality Code
+//=================================================================================
 
 @Effect() findNationalityCodes$ = this.actions$
     .ofType(SetupActions.FIND_NATIONALITY_CODES)
     .map(action => action.payload)
     .switchMap(() => this.commonService.findNationalityCodes())
     .map(codes => this.setupActions.findNationalityCodesSuccess(codes));
+
+ @Effect() saveNationalityCodes$ = this.actions$
+    .ofType(SetupActions.SAVE_NATIONALITY_CODE)
+    .map(action => action.payload)
+    .switchMap(payload => this.commonService.saveNationalityCode(payload))
+    .map(message => this.setupActions.saveNationalityCodeSuccess(message))
+    .mergeMap(action => from([action, this.setupActions.findNationalityCodes()]));
+
+  @Effect() updateNationalityCodes$ = this.actions$
+    .ofType(SetupActions.UPDATE_NATIONALITY_CODE)
+    .map(action => action.payload)
+    .switchMap(payload => this.commonService.updateNationalityCode(payload))
+    .map(message => this.setupActions.updateNationalityCodeSuccess(message))
+    .mergeMap(action => from([action, this.setupActions.findNationalityCodes()]));
+
+  @Effect() removeNationalityCode$ = this.actions$
+    .ofType(SetupActions.REMOVE_NATIONALITY_CODE)
+    .map(action => action.payload)
+    .switchMap(payload => this.commonService.removeNationalityCode(payload))
+    .map(message => this.setupActions.removeNationalityCodeSuccess(message))
+    .mergeMap(action => from([action, this.setupActions.findNationalityCodes()]));
+
 
 
 @Effect() findEthnicityCodes$ = this.actions$
