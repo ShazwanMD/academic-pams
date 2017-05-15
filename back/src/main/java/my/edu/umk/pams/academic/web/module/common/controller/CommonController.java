@@ -321,7 +321,7 @@ public ResponseEntity<String> removeCountryCode(@PathVariable String code) {
   @RequestMapping(value = "/stateCodes", method = RequestMethod.GET)
   public ResponseEntity<List<StateCode>> findStateCodes() {
           return new ResponseEntity<List<StateCode>>(commonTransformer.toStateCodeVos(
-          commonService.findStateCodes()), HttpStatus.OK);
+          commonService.findStateCodes("%",0,Integer.MAX_VALUE)), HttpStatus.OK);
           }
 
   @RequestMapping(value = "/stateCodes/{code}", method = RequestMethod.GET)
@@ -365,13 +365,13 @@ public ResponseEntity<String> removeCountryCode(@PathVariable String code) {
 
 
   //====================================================================================================
-  // GENDER_CODE
+	// GENDER_CODE
   //====================================================================================================
 
   @RequestMapping(value = "/genderCodes", method = RequestMethod.GET)
   public ResponseEntity<List<GenderCode>> findGenderCodes() {
           return new ResponseEntity<List<GenderCode>>(commonTransformer.toGenderCodeVos(
-          commonService.findGenderCodes()), HttpStatus.OK);
+          commonService.findGenderCodes("%",0,Integer.MAX_VALUE)), HttpStatus.OK);
           }
 
   @RequestMapping(value = "/genderCodes/{code}", method = RequestMethod.GET)

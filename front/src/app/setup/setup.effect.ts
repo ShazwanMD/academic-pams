@@ -28,6 +28,27 @@ export class SetupEffects {
     .switchMap(() => this.commonService.findGenderCodes())
     .map(codes => this.setupActions.findGenderCodesSuccess(codes));
 
+   @Effect() saveGenderCodes$ = this.actions$
+    .ofType(SetupActions.SAVE_GENDER_CODE)
+    .map(action => action.payload)
+    .switchMap(payload => this.commonService.saveGenderCode(payload))
+    .map(message => this.setupActions.saveGenderCodeSuccess(message))
+    .mergeMap(action => from([action, this.setupActions.findGenderCodes()]));
+
+  @Effect() updateGenderCodes$ = this.actions$
+    .ofType(SetupActions.UPDATE_GENDER_CODE)
+    .map(action => action.payload)
+    .switchMap(payload => this.commonService.updateGenderCode(payload))
+    .map(message => this.setupActions.updateGenderCodeSuccess(message))
+    .mergeMap(action => from([action, this.setupActions.findGenderCodes()]));
+
+  @Effect() removeGenderCode$ = this.actions$
+    .ofType(SetupActions.REMOVE_GENDER_CODE)
+    .map(action => action.payload)
+    .switchMap(payload => this.commonService.removeGenderCode(payload))
+    .map(message => this.setupActions.removeGenderCodeSuccess(message))
+    .mergeMap(action => from([action, this.setupActions.findGenderCodes()]));
+
   //=================================================================================
   //                  Country Code
   //=================================================================================
@@ -94,6 +115,28 @@ export class SetupEffects {
     .map(action => action.payload)
     .switchMap(() => this.commonService.findStateCodes())
     .map(codes => this.setupActions.findStateCodesSuccess(codes));
+
+     @Effect() saveStateCodes$ = this.actions$
+    .ofType(SetupActions.SAVE_STATE_CODE)
+    .map(action => action.payload)
+    .switchMap(payload => this.commonService.saveStateCode(payload))
+    .map(message => this.setupActions.saveStateCodeSuccess(message))
+    .mergeMap(action => from([action, this.setupActions.findStateCodes()]));
+
+  @Effect() updateStateCodes$ = this.actions$
+    .ofType(SetupActions.UPDATE_STATE_CODE)
+    .map(action => action.payload)
+    .switchMap(payload => this.commonService.updateStateCode(payload))
+    .map(message => this.setupActions.updateStateCodeSuccess(message))
+    .mergeMap(action => from([action, this.setupActions.findStateCodes()]));
+
+  @Effect() removeStateCode$ = this.actions$
+    .ofType(SetupActions.REMOVE_STATE_CODE)
+    .map(action => action.payload)
+    .switchMap(payload => this.commonService.removeStateCode(payload))
+    .map(message => this.setupActions.removeStateCodeSuccess(message))
+    .mergeMap(action => from([action, this.setupActions.findStateCodes()]));
+
 
  //=================================================================================
   // PARLIAMENT CODE

@@ -1,4 +1,4 @@
-import {Component, ViewContainerRef, OnInit} from '@angular/core';
+import { Component, ViewContainerRef, OnInit, AfterViewInit } from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
 import {FormBuilder} from '@angular/forms';
 import {Router, ActivatedRoute} from '@angular/router';
@@ -8,6 +8,7 @@ import {PlannerService} from "../../../../services/planner.service";
 import {Program} from "../program.interface";
 import {ProgramActions} from "../program.action";
 import {MdDialog} from "@angular/material";
+
 
 
 
@@ -29,6 +30,7 @@ export class ProgramEditorDialog implements OnInit {
               private viewContainerRef: ViewContainerRef) {
   }
 
+
    openDialog(): void {
 
       this.dialog.open(ProgramEditorDialog, {
@@ -37,21 +39,25 @@ export class ProgramEditorDialog implements OnInit {
       });
     }
     
-    // this.editForm = this.formBuilder.group(<Program>{
-    //   id: null,
-    //   code: '',
-    //   title: '',
-    //   titleMs: '',
-    //   titleEn: '',
-    // });
+  
 
-  //   this.editForm.patchValue(this.program);
-  // }
+    
+   
 
-    ngOnInit(): void {
-    }
+     ngOnInit(): void {
+          this.editForm = this.formBuilder.group(<Program>{
+       id: null,
+       code: '',
+       title: '',
+       titleMs: '',
+       titleEn: '',
+     });
+     
+     }
+     
 
-  save(program: Program, isValid: boolean) {
-    // do something
-  }
+   save(program: Program, isValid: boolean) {
+     // do something
+   }
 }
+

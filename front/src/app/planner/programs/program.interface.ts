@@ -5,8 +5,8 @@ export interface Program extends MetaObject{
    faculty: Faculty;
    program: Program;
    
-  // code: string;
-  // title:string;
-  //  titleMs:string;
-  //  titleEn:string;
+   code: string;
+   title:string;
+    titleMs:string;
+    titleEn:string;
 }

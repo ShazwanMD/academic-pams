@@ -1,4 +1,4 @@
-<h2 md-dialog-title>Grade Code Editor</h2>
+<h2 md-dialog-title>State Code Editor</h2>
 <md-dialog-content>
   <form [formGroup]="editorForm">
     <div layout="row" class="inset" flex>
@@ -18,18 +18,7 @@
                flex/>
       </md-input-container>
     </div>
-
-    
-    <div layout="row" class="inset" flex>
-      <md-input-container flex>
-        <input mdInput
-               placeholder="Ordinal"
-               formControlName="ordinal"
-               flex/>
-      </md-input-container>
-    </div>
-
-  </form>
+   </form>
 </md-dialog-content>
 <md-dialog-actions align="end">
   <button md-raised-button color="accent" (click)="submit(editorForm.value, editorForm.valid)">

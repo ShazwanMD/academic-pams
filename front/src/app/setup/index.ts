@@ -1,3 +1,5 @@
+import { StateCodeEditorDialog } from './state-codes/dialog/state-code-editor.dialog';
+import { GenderCodeEditorDialog } from './gender-codes/dialog/gender-code-editor.dialog';
 import { NationalityCodeEditorDialog } from './nationality-codes/dialog/nationality-code-editor.dialog';
 import { ReligionCodeEditorDialog } from './religion-codes/dialog/religion-code-editor.dialog';
 import { MaritalCodeEditorDialog } from './marital-codes/dialog/marital-code-editor.dialog';
@@ -126,7 +128,8 @@ export const setupModuleReducers = {
     MaritalCodeEditorDialog,
     ReligionCodeEditorDialog,
     NationalityCodeEditorDialog,
-
+    GenderCodeEditorDialog,
+    StateCodeEditorDialog,
   ],
   exports: [],
   entryComponents:[
@@ -134,6 +137,8 @@ export const setupModuleReducers = {
     MaritalCodeEditorDialog,
     ReligionCodeEditorDialog,
     NationalityCodeEditorDialog,
+    GenderCodeEditorDialog,
+    StateCodeEditorDialog,
   ],
 
 })

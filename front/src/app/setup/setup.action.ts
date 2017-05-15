@@ -51,6 +51,67 @@ export class SetupActions {
     };
   }
 
+ static SAVE_GENDER_CODE = '[Setup] Save Gender Code';
+
+  saveGenderCode(code): Action {
+    console.log("saveGenderCode");
+    return {
+      type: SetupActions.SAVE_GENDER_CODE,
+      payload: code
+    };
+  }
+
+    static SAVE_GENDER_CODE_SUCCESS = '[Setup] Save Gender Code Success';
+
+  saveGenderCodeSuccess(message): Action {
+    console.log("saveGenderCodeSuccess");
+    return {
+      type: SetupActions.SAVE_GENDER_CODE_SUCCESS,
+      payload: message
+    };
+  }
+
+    static UPDATE_GENDER_CODE = '[Setup] Update Gender Code';
+
+  updateGenderCode(code): Action {
+    console.log("updateGenderCode");
+    return {
+      type: SetupActions.UPDATE_GENDER_CODE,
+      payload: code
+    };
+  }
+
+  static UPDATE_GENDER_CODE_SUCCESS = '[Setup] Update Gender Code  Success';
+
+  updateGenderCodeSuccess(message): Action {
+    console.log("updateGenderCodeSuccess");
+    return {
+      type: SetupActions.UPDATE_GENDER_CODE_SUCCESS,
+      payload: message
+    };
+  }
+
+  static REMOVE_GENDER_CODE = '[Setup] Remove Gender Code';
+
+  removeGenderCode(code): Action {
+    console.log("removeGenderCode");
+    return {
+      type: SetupActions.REMOVE_GENDER_CODE,
+      payload: code
+    };
+  }
+
+  static REMOVE_GENDER_CODE_SUCCESS = '[Setup] Remove Gender Code  Success';
+
+  removeGenderCodeSuccess(message): Action {
+    console.log("removeGenderCodeSuccess");
+    return {
+      type: SetupActions.REMOVE_GENDER_CODE_SUCCESS,
+      payload: message
+    };
+  }
+  
+
 //====================================================================================
 // COUNTRY CODES
 //====================================================================================
@@ -223,6 +284,67 @@ export class SetupActions {
       payload: codes
     };
   }
+
+  static SAVE_STATE_CODE = '[Setup] Save State Code';
+
+  saveStateCode(code): Action {
+    console.log("saveStateCode");
+    return {
+      type: SetupActions.SAVE_STATE_CODE,
+      payload: code
+    };
+  }
+
+  static SAVE_STATE_CODE_SUCCESS = '[Setup] Save State Code Success';
+
+  saveStateCodeSuccess(message): Action {
+    console.log("saveStateCodeSuccess");
+    return {
+      type: SetupActions.SAVE_STATE_CODE_SUCCESS,
+      payload: message
+    };
+  }
+
+  static REMOVE_STATE_CODE = '[Setup] Remove State Code';
+
+  removeStateCode(code): Action {
+    console.log("removeStateCode");
+    return {
+      type: SetupActions.REMOVE_STATE_CODE,
+      payload: code
+    };
+  }
+
+  static REMOVE_STATE_CODE_SUCCESS = '[Setup] Remove State Code Success';
+
+  removeStateCodeSuccess(message): Action {
+    console.log("removeStateCodeSuccess");
+    return {
+      type: SetupActions.REMOVE_STATE_CODE_SUCCESS,
+      payload: message
+    };
+  }
+
+    static UPDATE_STATE_CODE = '[Setup] Update State Code';
+
+  updateStateCode(code): Action {
+    console.log("updateStateCode");
+    return {
+      type: SetupActions.UPDATE_STATE_CODE,
+      payload: code
+    };
+  }
+
+  static UPDATE_STATE_CODE_SUCCESS = '[Setup] Update State Code  Success';
+
+  updateStateCodeSuccess(message): Action {
+    console.log("updateStateCodeSuccess");
+    return {
+      type: SetupActions.UPDATE_STATE_CODE_SUCCESS,
+      payload: message
+    };
+  }
+ 
 
 
   static FIND_PARLIAMENT_CODES = '[Setup] Find ParliamentCodes';
