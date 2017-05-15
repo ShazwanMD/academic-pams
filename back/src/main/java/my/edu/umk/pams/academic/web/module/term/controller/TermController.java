@@ -141,6 +141,13 @@ public class TermController {
         return new ResponseEntity<List<Enrollment>>(termTransformer.toEnrollmentVos(enrollments), HttpStatus.OK);
     }
      
+   /* @RequestMapping(value = "/enrollments", method = RequestMethod.GET)
+    public ResponseEntity<List<Enrollment>> findEnrollments() {
+        return new ResponseEntity<List<Enrollment>>(termTransformer.toEnrollmentVos(
+                termService.findEnrollments(0, Integer.MAX_VALUE)), HttpStatus.OK);
+    }*/
+    
+    
 
     @RequestMapping(value = "/enrollments/academicSession/current", method = RequestMethod.GET)
     public ResponseEntity<List<Enrollment>> findCurrentEnrollments() {

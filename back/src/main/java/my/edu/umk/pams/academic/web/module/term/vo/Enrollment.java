@@ -14,7 +14,7 @@ public class Enrollment extends MetaObject {
 
     private Section section;
     private Admission admission;
-    private GradeCode gradeCode;
+    //private GradeCode gradeCode;
     //private EnrollmentStanding standing = AdEnrollmentStanding.HW;
     //private EnrollmentStatus status = AdEnrollmentStatus.NEW;
 
@@ -34,13 +34,13 @@ public class Enrollment extends MetaObject {
         this.admission = admission;
     }
     
-    public GradeCode getGradeCode() {
+    /*public GradeCode getGradeCode() {
         return gradeCode;
     }
 
     public void setGradeCode(GradeCode gradeCode) {
         this.gradeCode = gradeCode;
-    }
+    }*/
 
 
     @JsonCreator

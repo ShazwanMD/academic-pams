@@ -12,7 +12,7 @@ export class EnrollmentListComponent {
   @Output() view = new EventEmitter<Enrollment>();
 
   private columns: any[] = [
-    {name: 'student.name', label: 'Student Name'},
+    {name: 'admission.student.name', label: 'Student Name'},
     {name: 'section.code', label: 'Section'},
     {name: 'section.offering.course.title', label: 'Course Title'},
     {name: 'section.offering.program.code', label: 'Program'},

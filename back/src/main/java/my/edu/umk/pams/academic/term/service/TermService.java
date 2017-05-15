@@ -311,6 +311,8 @@ public interface TermService {
 
     AdEnrollment findEnrollmentByMatricNoAndOffering(String matricNo, AdOffering offering);
 
+    List<AdEnrollment> findEnrollments(Integer offset, Integer limit);
+   
     List<AdEnrollment> findEnrollments(AdAcademicSession academicSession);
 
     List<AdEnrollment> findEnrollments(AdAcademicSession academicSession, AdProgram program);
