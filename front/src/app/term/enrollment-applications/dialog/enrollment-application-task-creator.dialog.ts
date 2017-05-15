@@ -31,8 +31,8 @@ export class EnrollmentApplicationTaskCreatorDialog implements OnInit {
     this.createForm = this.formBuilder.group(<EnrollmentApplication>{
       id:null,
       referenceNo:'',
-      sourceNo:'blank',
-      description:'blank',
+      sourceNo:'please insert your data',
+      description:'please insert your data',
       admission:<Admission>{},
       academicSession:<AcademicSession>{},
     });
