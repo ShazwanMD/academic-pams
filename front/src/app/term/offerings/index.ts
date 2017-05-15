@@ -17,6 +17,7 @@ import {OfferingEffects} from "./offering.effect";
 import {OfferingDetailPage} from "./offering-detail.page";
 import {OfferingComponent} from "./component/offering.component";
 import {OfferingEditorDialog} from "./dialog/offering-editor.dialog";
+import { OfferingApplicationTaskCreatorDialog } from "./dialog/offering-application-task-creator.dialog";
 
 @NgModule({
   imports: [
@@ -37,6 +38,7 @@ import {OfferingEditorDialog} from "./dialog/offering-editor.dialog";
     
     //dialog
     OfferingEditorDialog,
+    OfferingApplicationTaskCreatorDialog,
     
   ],
   exports: [],
