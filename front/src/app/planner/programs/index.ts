@@ -13,8 +13,11 @@ import {ProgramListComponent} from "./component/program-list.component";
 import {ProgramActions} from "./program.action";
 import {ProgramDetailPage} from "./program-detail.page";
 import {ProgramComponent} from "./component/program.component";
+import {ProgramEditorDialog} from "./dialog/program-editor.dialog";
+import {ProgramCreatorDialog } from "./dialog/program-creator.dialog";
 import {EffectsModule} from "@ngrx/effects";
 import {ProgramEffects} from "./program.effect";
+import {PlannerModuleState} from "../index";
 
 @NgModule({
   imports: [
@@ -33,6 +36,10 @@ import {ProgramEffects} from "./program.effect";
     // component
     ProgramListComponent,
     ProgramComponent,
+
+    // dialog
+    ProgramEditorDialog,
+    ProgramCreatorDialog,
   ],
   exports: [],
 })
@@ -45,7 +52,7 @@ export class ProgramSubModule {
         PlannerService,
         IdentityService,
         CommonService,
-        ProgramActions
+        ProgramActions,
       ],
     };
   }
