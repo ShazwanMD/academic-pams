@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Action} from '@ngrx/store';
 
-// todo(abiq): ACTIVATE_SESSION, DEACTIVATE SESSION
 
 @Injectable()
 export class AcademicSessionActions {
@@ -71,10 +70,10 @@ export class AcademicSessionActions {
     };
   }
 
-  static REMOVE_ACADEMICSESSION = '[AcademicSession] Remove AcademicSession';
+  static REMOVE_ACADEMIC_SESSION = '[AcademicSession] Remove AcademicSession';
   removeAcademicSession(academicSession): Action {
     return {
-      type: AcademicSessionActions.REMOVE_ACADEMICSESSION,
+      type: AcademicSessionActions.REMOVE_ACADEMIC_SESSION,
       payload: academicSession
     };
   }
@@ -86,4 +85,39 @@ export class AcademicSessionActions {
       payload: academicSession
     };
   }
+
+ static ACTIVATE_ACADEMIC_SESSION= '[AcademicSession] Activate AcademicSession';
+  activateAcademicSession(academicSession): Action {
+    return {
+      type: AcademicSessionActions.ACTIVATE_ACADEMIC_SESSION,
+      payload: academicSession
+    };
+  }
+
+
+static ACTIVATE_ACADEMIC_SESSION_SUCCESS = '[AcademicSession] Activate AcademicSession Success';
+  activateAcademicSessionSuccess(academicSession): Action {
+    return {
+      type: AcademicSessionActions.ACTIVATE_ACADEMIC_SESSION_SUCCESS,
+      payload: academicSession
+    };
+  }
+
+ static DEACTIVATE_ACADEMIC_SESSION= '[AcademicSession] Activate AcademicSession';
+  deactivateAcademicSession(academicSession): Action {
+    return {
+      type: AcademicSessionActions.DEACTIVATE_ACADEMIC_SESSION,
+      payload: academicSession
+    };
+  }
+
+static DEACTIVATE_ACADEMIC_SESSION_SUCCESS = '[AcademicSession] Activate AcademicSession Success';
+  deactivateAcademicSessionSuccess(academicSession): Action {
+    return {
+      type: AcademicSessionActions.DEACTIVATE_ACADEMIC_SESSION_SUCCESS,
+      payload: academicSession
+    };
+  }
+
+
 }
