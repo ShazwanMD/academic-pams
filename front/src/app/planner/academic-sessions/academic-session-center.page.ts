@@ -54,8 +54,8 @@ export class AcademicSessionCenterPage implements OnInit {
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
     config.role = 'dialog';
-    config.width = '70%';
-    config.height = '65%';
+    config.width = '50%';
+    config.height = '50%';
     config.position = {top: '0px'};
     this.creatorDialogRef = this.dialog.open(AcademicSessionEditorDialog, config);
     if(code) this.creatorDialogRef.componentInstance.academicSession = code; 
