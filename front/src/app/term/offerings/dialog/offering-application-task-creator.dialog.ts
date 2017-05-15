@@ -10,6 +10,7 @@ import {AcademicSession} from "../../../planner/academic-sessions/academic-sessi
 import {Admission} from "../../admissions/admission.interface";
 import {FlowState} from "../../../core/flow-state.enum";
 import {MetaState} from "../../../core/meta-state.enum";
+import { OfferingApplication } from '../offering-application.interface';
 
 
 @Component({
@@ -28,14 +29,14 @@ export class OfferingApplicationTaskCreatorDialog implements OnInit {
   }
 
   ngOnInit(): void {
-   /* this.createForm = this.formBuilder.group(<OfferingApplication>{
+    this.createForm = this.formBuilder.group(<OfferingApplication>{
       id:null,
       referenceNo:'',
-      sourceNo:'blank',
-      description:'blank',
-      admission:<Admission>{},
-      academicSession:<AcademicSession>{},
-    });*/
+      sourceNo:'please insert your data',
+      description:'please insert your data',
+      //admission:<Admission>{},
+      //academicSession:<AcademicSession>{},
+    });
   }
 
   /*save(offeringApplication: OfferingApplication, isValid: boolean) {
