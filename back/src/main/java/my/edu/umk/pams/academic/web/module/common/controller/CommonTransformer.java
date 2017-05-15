@@ -169,6 +169,7 @@ public class CommonTransformer {
         vo.setId(e.getId());
         vo.setCode(e.getCode());
         vo.setDescription(e.getDescription());
+        vo.setCountryCode(toCountryCodeVo(e.getCountryCode()));
         return vo;
     }
 

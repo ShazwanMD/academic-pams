@@ -337,7 +337,7 @@ public ResponseEntity<String> removeCountryCode(@PathVariable String code) {
           AdStateCode stateCode = new AdStateCodeImpl();
           stateCode.setCode(vo.getCode());
           stateCode.setDescription(vo.getDescription());
-          stateCode.setCountryCode(vo.getCountryCode());
+          stateCode.setCountryCode(commonService.findCountryCodeById(vo.getCountryCode().getId()));
           commonService.saveStateCode(stateCode);
           return new ResponseEntity<String>("Success", HttpStatus.OK);
           }
@@ -349,7 +349,7 @@ public ResponseEntity<String> removeCountryCode(@PathVariable String code) {
           AdStateCode stateCode = commonService.findStateCodeById(vo.getId());
           stateCode.setCode(vo.getCode());
           stateCode.setDescription(vo.getDescription());
-          stateCode.setCountryCode(vo.getCountryCode());
+          stateCode.setCountryCode(commonService.findCountryCodeById(vo.getCountryCode().getId()));
           commonService.updateStateCode(stateCode);
           return new ResponseEntity<String>("Success", HttpStatus.OK);
           }
