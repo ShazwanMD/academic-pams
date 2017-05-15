@@ -33,7 +33,7 @@ export class StateCodeEditorDialog implements OnInit {
       this.edit = true;
   }
     ngOnInit(): void {
-    this.editorForm = this.formBuilder.group(<StateCode>{
+   /* this.editorForm = this.formBuilder.group(<StateCode>{
       id: null,
       code: '',
       description: '',
@@ -41,6 +41,7 @@ export class StateCodeEditorDialog implements OnInit {
     });
 
     if (this.edit) this.editorForm.patchValue(this._stateCode);
+   */
   }
 
 
