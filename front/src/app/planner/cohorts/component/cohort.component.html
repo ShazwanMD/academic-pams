@@ -1,11 +1,10 @@
-<md-card> <md-card-title>COHORT</md-card-title>
- <md-card-subtitle>List of cohort</md-card-subtitle>
-  <md-divider></md-divider>
+<md-card> <md-card-title>COHORT</md-card-title> 
+<md-card-subtitle>List of cohort</md-card-subtitle>
+ <md-divider></md-divider>
   <md-card-content>
-   <!--Tab Section Here-->
-     <md-tab-group>
-	label="Cohort Detail"> <br>
-
+<!--Tab Section Here--> 
+<md-tab-group>
+<md-tab label="Cohort Detail"> 
 <div>Curriculum : {{curriculum.id}}</div>
 <br>
 <div>Program : {{program.id}}</div>
@@ -14,9 +13,11 @@
 <br>
 
 
-</md-tab> <md-tab label="Information">
+</md-tab> 
 
-<div>Description details of the cohort</div>
+<md-tab label="Information">
+
+<div>Description Details Of The Cohort</div>
 <br>
 
 <div>Code : {{program.faculty.code}}</div>
@@ -26,6 +27,11 @@
 <div>Description : {{program.faculty.description}}</div>
 <br>
 
-</md-tab> </md-tab-group> </md-card-content> <md-card-actions layout-align="end center">
+</md-tab> 
+</md-tab-group> 
+
+</md-card-content> 
+<md-card-actions layout-align="end center">
 <button md-button color="accent" class="text-upper">UPDATE</button>
-</md-card-actions></md-card>
+</md-card-actions>
+</md-card>
