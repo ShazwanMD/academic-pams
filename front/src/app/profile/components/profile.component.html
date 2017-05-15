@@ -1,23 +1,66 @@
 <!-- Basic Card -->
 <md-card>
-  <md-card-title>Student</md-card-title>
-  <md-card-subtitle>Personal Info</md-card-subtitle>
+  <md-card-title>Student Personal Info</md-card-title>
+  <md-card-subtitle>Page under development</md-card-subtitle>
   <md-divider></md-divider>
   <md-card-content>
   <!--Tab Section Here-->
   <md-tab-group>
   <md-tab label="Student Information">
+  
+  <br/>
+  <h3>Student Information</h3>
+  <div>Matric No : {{profile.identityNo}}</div>
+  <div>Name : {{profile.name}}</div>
+  <div>Email : {{profile.email}}</div>
+  <div>Mobile : {{profile.mobile}} </div>
+  <br/>
 
-    <div>Matric No : {{profile.identityNo}}</div>
-    <div>Name : {{profile.name}}</div>
-    <div>Email : {{profile.email}}</div>
-    <div>Mobile : {{profile.mobile}} </div>
+  <md-divider></md-divider>
+
+  <br/>
+  <h3>Address</h3>
+  <md-list-item *ngFor="let address of addressess">
+  <div> {{address.address1}} </div>
+  <div> {{address.address2 +","+ address.postcode}} </div>
+  </md-list-item>
+  <br/>
+
+  <md-divider></md-divider>
+
+  <br/>
+  <h3>Guarantor</h3>
+  <md-list-item *ngFor="let guarantor of guarantors">
+  <div>Guarantor ID : {{guarantor.identityNo}} </div>
+  <div>Guarantor Name :  {{guarantor.name}} </div>
+  </md-list-item>
+  <br/>
+
+  <md-divider></md-divider>
+
+  <br/>
+  <h3>Guardian</h3>
+  <md-list-item *ngFor="let guardian of guardians">
+  <div>Guardian ID : {{guardian.identityNo}} </div>
+  <div>Guardian Name :  {{guardian.name}} </div>
+  </md-list-item>
+  <br/>
+
+  <md-divider></md-divider>
+
+  <br/>
+  <h3>Contact</h3>
+  <md-list-item *ngFor="let contact of contacts">
+  <div>Contact ID : {{contact.identityNo}} </div>
+  <div>Contact Name :  {{contact.name}} </div>
+  </md-list-item>
+  <br/>
 
   </md-tab>
 
   <md-tab label="Course Information">
   
-  
+    <!--Dalam ni woi tempat letak course information-->
 
   </md-tab>
   </md-tab-group>
