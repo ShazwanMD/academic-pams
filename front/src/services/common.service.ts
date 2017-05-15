@@ -256,6 +256,35 @@ return this.http.get(environment.endpoint + '/api/common/religionCodes/' + code)
     .map((res: Response) => <ReligionCode>res.json());
 }
 
+ saveReligionCode(code: ReligionCode) {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
+    return this.http.post(environment.endpoint + '/api/common/religionCodes', JSON.stringify(code), options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+  updateReligionCode(code: ReligionCode) {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
+    return this.http.put(environment.endpoint + '/api/common/religionCodes/' + code.code, JSON.stringify(code), options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+  removeReligionCode(code: ReligionCode) {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
+    return this.http.delete(environment.endpoint + '/api/common/religionCodes/' + code.code, options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
 
 
 // ====================================================================================================

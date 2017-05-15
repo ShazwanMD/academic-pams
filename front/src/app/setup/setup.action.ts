@@ -367,6 +367,71 @@ findReligionCodesSuccess(codes): Action {
     };
 }
 
+ static SAVE_RELIGION_CODE = '[Setup] Save Religion Code';
+
+  saveReligionCode(code): Action {
+    console.log("saveReligionCode");
+    return {
+      type: SetupActions.SAVE_RELIGION_CODE,
+      payload: code
+    };
+  }
+
+    static SAVE_RELIGION_CODE_SUCCESS = '[Setup] Save Religion Code Success';
+
+  saveReligionCodeSuccess(message): Action {
+    console.log("saveReligionCodeSuccess");
+    return {
+      type: SetupActions.SAVE_RELIGION_CODE_SUCCESS,
+      payload: message
+    };
+  }
+
+    static UPDATE_RELIGION_CODE = '[Setup] Update Religion Code';
+
+  updateReligionCode(code): Action {
+    console.log("updateReligionCode");
+    return {
+      type: SetupActions.UPDATE_RELIGION_CODE,
+      payload: code
+    };
+  }
+
+  static UPDATE_RELIGION_CODE_SUCCESS = '[Setup] Update Religion Code  Success';
+
+  updateReligionCodeSuccess(message): Action {
+    console.log("updateReligionCodeSuccess");
+    return {
+      type: SetupActions.UPDATE_RELIGION_CODE_SUCCESS,
+      payload: message
+    };
+  }
+
+  static REMOVE_RELIGION_CODE = '[Setup] Remove Religion Code';
+
+  removeReligionCode(code): Action {
+    console.log("removeMaritalCode");
+    return {
+      type: SetupActions.REMOVE_RELIGION_CODE,
+      payload: code
+    };
+  }
+
+  static REMOVE_RELIGION_CODE_SUCCESS = '[Setup] Remove Religion Code  Success';
+
+  removeReligionCodeSuccess(message): Action {
+    console.log("removeReligionCodeSuccess");
+    return {
+      type: SetupActions.REMOVE_RELIGION_CODE_SUCCESS,
+      payload: message
+    };
+  }
+
+
+
+//================================================================
+//
+//================================================================
 
 static FIND_NATIONALITY_CODES = '[Setup] Find NationalityCodes';
 
