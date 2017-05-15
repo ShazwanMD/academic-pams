@@ -19,31 +19,22 @@
           <md-nav-list flex dense>
             <md-list-item [routerLink]="['/offerings-assign', offering?.code]">
               <md-icon md-list-avatar>assignment_ind</md-icon>
-              <h4 md-line>Reassign</h4>
-              <p md-line>Reassign this enrollment</p>
+              <h4 md-line>Add Enrollment</h4>
+              <p md-line>Add new course enrollment</p>
             </md-list-item>
             <md-list-item [routerLink]="['/offerings-resolve', offering?.code]">
               <md-icon md-list-avatar>done_all</md-icon>
-              <h4 md-line>Resolve</h4>
-              <p md-line>Resolve this enrollment</p>
+              <h4 md-line>Drop enrolment</h4>
+              <p md-line>Drop this course enrollment</p>
             </md-list-item>
             <md-list-item [routerLink]="['/offerings-reopen', offering?.code]">
               <md-icon md-list-avatar>gavel</md-icon>
-              <h4 md-line>Deactivate</h4>
-              <p md-line>Deactivate this enrollment</p>
+              <h4 md-line>Withdraw</h4>
+              <p md-line>Withdraw this enrollment</p>
             </md-list-item>
             <md-divider></md-divider>
-            <h3 md-subheader>Notification</h3>
-            <md-list-item>
-              <md-icon md-list-avatar>visibility</md-icon>
-              <h4 md-line>Watch</h4>
-              <p md-line>Watch this enrollment</p>
-            </md-list-item>
-            <md-list-item>
-              <md-icon md-list-avatar>email</md-icon>
-              <h4 md-line>Share</h4>
-              <p md-line>Share this offering with others</p>
-            </md-list-item>
+          
+           
           </md-nav-list>
         </md-card>
       </div>

@@ -1,3 +1,4 @@
+import { Address } from './address.interface';
 import {Component, OnInit, ChangeDetectionStrategy} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 

@@ -1,7 +1,31 @@
-<md-card>
-  <md-card-title>COHORT{{cohort.code}} {{cohort.title}}</md-card-title>
-  <md-card-subtitle>Detail of cohort {{cohort.title}}</md-card-subtitle>
-  <md-card-actions>
-Students should have obtained at least Grade C (CGPA 2.00) at STPM level in the following subjects: Biology; Mathematics T; and any one of the following subjects: Physics, Chemical and Further Mathematics. Candidates who do not have the approval of Mathematics T at STPM level should be at least a credit in additional Mathematics subjects at SPM level and a minimum credit at SPM level in the following subjects: English and Mathematics or other equivalent studies for matriculation / diploma or STAM..
-  </md-card-actions>
-</md-card>
+<md-card> <md-card-title>COHORT</md-card-title>
+ <md-card-subtitle>List of cohort</md-card-subtitle>
+  <md-divider></md-divider>
+  <md-card-content>
+   <!--Tab Section Here-->
+     <md-tab-group>
+	label="Cohort Detail"> <br>
+
+<div>Curriculum : {{curriculum.id}}</div>
+<br>
+<div>Program : {{program.id}}</div>
+<br>
+<div>Session : {{session.id}}</div>
+<br>
+
+
+</md-tab> <md-tab label="Information">
+
+<div>Description details of the cohort</div>
+<br>
+
+<div>Code : {{program.faculty.code}}</div>
+<br>
+<div>Name : {{program.faculty.name}}</div>
+<br>
+<div>Description : {{program.faculty.description}}</div>
+<br>
+
+</md-tab> </md-tab-group> </md-card-content> <md-card-actions layout-align="end center">
+<button md-button color="accent" class="text-upper">UPDATE</button>
+</md-card-actions></md-card>

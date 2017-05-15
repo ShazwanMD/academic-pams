@@ -1,12 +1,4 @@
 
-<!--<md-card>
-  <md-card-title>PROGRAM {{program.title}}: {{program.title}}  </md-card-title>
-  <md-card-subtitle>{{program.code}}</md-card-subtitle>
-  <md-card-actions>
-    The study stresses on downstream processing in utilising technology in the bio-industry sector. The objective is also to contribute to the development of high technology for the community, especially on biological based processing, strategizing chemical processes that are more economical and environmental friendly.
-  </md-card-actions>
-</md-card>-->
-<!-- Basic Card -->
 <md-card>
   <md-card-title>PROGRAM</md-card-title>
   <md-card-subtitle>List of program</md-card-subtitle>
@@ -17,7 +9,7 @@
   <md-tab label="Program Detail"><br>
 
     <div>Code    : {{program.code}}</div><br>
-    <div>Title       : {{program.title}}</div><br>
+    <div>Title   : {{program.title}}</div><br>
     <div>TitleMs : {{program.titleMs}}</div><br>
     <div>TitleEn : {{program.titleEn}}</div><br>
 
@@ -27,10 +19,18 @@
   
    <div>Description details of the program</div><br>
    
-
+    <div>Code    : {{program.faculty.code}}</div><br>
+    <div>Name   : {{program.faculty.name}}</div><br>
+    <div>Description : {{program.faculty.description}}</div><br>
+   
   </md-tab>
   </md-tab-group>
 
   </md-card-content>
-  <md-divider></md-divider>
+    <md-card-actions layout-align="end center">
+    <button md-button color="accent" class="text-upper">UPDATE</button>
+  </md-card-actions>
+</md-card>
+
+
 

@@ -14,6 +14,9 @@ export class ProgramListComponent {
   private columns: any[] = [
     {name: 'code', label: 'Code'},
     {name: 'title', label: 'Title'},
+    // {name: 'faculty.name', label: 'Name'},
+    //  {name: 'faculty.description', label: 'Description'},
+
     // {name: 'titleMs', label: 'TitleMs'},
     // {name: 'titleEn', label: 'TitleEn'},
     

@@ -5,6 +5,7 @@ import my.edu.umk.pams.academic.planner.model.*;
 import my.edu.umk.pams.academic.web.module.planner.vo.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -19,6 +20,9 @@ public class PlannerTransformer {
 
     private static final Logger LOG = LoggerFactory.getLogger(PlannerTransformer.class);
 
+    @Autowired
+    private PlannerTransformer plannerTransformer;
+    
     public AcademicSession toAcademicSessionVo(AdAcademicSession academicSession) {
         AcademicSession vo = new AcademicSession();
         vo.setId(academicSession.getId());
@@ -51,6 +55,8 @@ public class PlannerTransformer {
         vo.setTitle(program.getTitle());
         vo.setTitleMs(program.getTitleMs());
         vo.setTitleEn(program.getTitleEn());
+		vo.setFaculty(plannerTransformer.toFacultyVo(program.getFaculty()));
+        
         return vo;
     }
 
@@ -62,6 +68,8 @@ public class PlannerTransformer {
         vo.setTitleMs(course.getTitleMs());
         vo.setTitleEn(course.getTitleEn());
         vo.setCredit(course.getCredit());
+        vo.setFaculty(plannerTransformer.toFacultyVo(course.getFaculty()));
+        
         return vo;
     }
 

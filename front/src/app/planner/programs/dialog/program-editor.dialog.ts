@@ -7,6 +7,8 @@ import {CommonService} from "../../../../services/common.service";
 import {PlannerService} from "../../../../services/planner.service";
 import {Program} from "../program.interface";
 import {ProgramActions} from "../program.action";
+import {MdDialog} from "@angular/material";
+
 
 
 @Component({
@@ -23,20 +25,31 @@ export class ProgramEditorDialog implements OnInit {
               private route: ActivatedRoute,
               private formBuilder: FormBuilder,
               private actions: ProgramActions,
+              public dialog: MdDialog,
               private viewContainerRef: ViewContainerRef) {
   }
 
-  ngOnInit(): void {
-    this.editForm = this.formBuilder.group(<Program>{
-      id: null,
-      code: '',
-      title: '',
-      titleMs: '',
-      titleEn: '',
-    });
+   openDialog(): void {
 
-    this.editForm.patchValue(this.program);
-  }
+      this.dialog.open(ProgramEditorDialog, {
+        height: '50%', // can be px or %
+        width: '60%', // can be px or %
+      });
+    }
+    
+    // this.editForm = this.formBuilder.group(<Program>{
+    //   id: null,
+    //   code: '',
+    //   title: '',
+    //   titleMs: '',
+    //   titleEn: '',
+    // });
+
+  //   this.editForm.patchValue(this.program);
+  // }
+
+    ngOnInit(): void {
+    }
 
   save(program: Program, isValid: boolean) {
     // do something

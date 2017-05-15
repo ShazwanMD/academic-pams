@@ -56,7 +56,6 @@ public class Program extends MetaObject{
     public void setDescription(String description) {
         this.description = description;
     }
-
     public Faculty getFaculty() {
         return faculty;
     }
