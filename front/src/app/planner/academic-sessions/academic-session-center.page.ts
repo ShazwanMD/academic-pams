@@ -59,6 +59,7 @@ export class AcademicSessionCenterPage implements OnInit {
     config.position = {top: '0px'};
     this.creatorDialogRef = this.dialog.open(AcademicSessionEditorDialog, config);
     if(code) this.creatorDialogRef.componentInstance.academicSession = code; 
+   
     // set
     this.creatorDialogRef.afterClosed().subscribe(res => {
       console.log("close dialog");
