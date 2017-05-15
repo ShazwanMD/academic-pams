@@ -7,6 +7,7 @@
   <div md-content flex md-scroll-y>
     <div layout="column" layout-gt-md="row" class="insert">
       <div flex-gt-md="70">
+<<<<<<< HEAD
         <pams-profile 
         [profile]="student$ | async"
         [addressess] = "addressess$ | async"
@@ -17,6 +18,22 @@
 
          <!--<pams-profile-address  [addressess] = "addressess$ | async">
          </pams-profile-address>-->
+=======
+        <pams-profile [profile]="student$ | async"></pams-profile>
+      
+        <md-card>
+          <md-card-title>Guarantors/Guardians/Contacts/</md-card-title>
+          <md-card-subtitle>Address Information</md-card-subtitle>
+          <md-divider></md-divider>
+          <md-list dense flex>
+            <md-list-item *ngFor="let address of addressess$ | async">
+              <p md-line>Address</p>
+              <p md-line> {{address.address1}} </p>
+              <p md-line> {{address.address2 +","+ address.postcode}} </p>
+            </md-list-item>
+          </md-list>
+        </md-card>
+>>>>>>> c1e4978e2e5bfafbca7e5803c263f6b4e042215a
 
       </div>
 
