@@ -1,3 +1,4 @@
+import { Contact } from './../contact.interface';
 import { Guardian } from './../guardian.interface';
 import { Guarantor } from './../guarantor.interface';
 import { Address } from './../address.interface';
@@ -14,13 +15,10 @@ import {MdTabsModule} from '@angular/material';
 export class ProfileComponent {
 
   @Input() profile: Student;
-<<<<<<< HEAD
   @Input() addressess: Address[];
   @Input() guarantors: Guarantor[];
   @Input() guardians: Guardian[];
-=======
-  
->>>>>>> c1e4978e2e5bfafbca7e5803c263f6b4e042215a
+  @Input() contacts: Contact[];
   // @Output() addGuardian = new EventEmitter<Guardian>();
   // @Output() addGuarantor = new EventEmitter<Guarantor>();
   // @Output() addContact = new EventEmitter<Contact>();

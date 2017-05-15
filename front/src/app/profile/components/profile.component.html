@@ -31,6 +31,12 @@
   <div>Guardian Name :  {{guardian.name}} </div>
   </md-list-item>
 
+  <md-list-item *ngFor="let contact of contacts">
+  <div>Contact</div>
+  <div>Contact ID : {{contact.identityNo}} </div>
+  <div>Contact Name :  {{contact.name}} </div>
+  </md-list-item>
+
   </md-tab>
 
   <md-tab label="Course Information">
