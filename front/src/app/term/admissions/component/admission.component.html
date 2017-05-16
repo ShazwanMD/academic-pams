@@ -1,7 +1,8 @@
 <md-card> <md-card-title>ADMISSION</md-card-title> <md-card-subtitle>Admission
-Information For {{admission.student.name}} ({{admission.student.identityNo}}) </md-card-subtitle> <md-divider></md-divider> <md-card-content>
+Information For {{admission.student.name}}
+({{admission.student.identityNo}}) </md-card-subtitle> <md-divider></md-divider> <md-card-content>
 <!--Tab Section Here--> <md-tab-group> <md-tab
-	label="Admission Detail"> <br>
+    label="Admission Detail"> <br>
 <div>Gpa :{{admission.gpa}}</div>
 <br>
 <div>Cgpa :{{admission.cgpa}}</div>
@@ -20,30 +21,22 @@ Information For {{admission.student.name}} ({{admission.student.identityNo}}) </
 <br>
 <div>Phone : {{admission.student.phone}}</div>
 <br>
-</md-tab> 
-
-<md-tab label="Academic Information">
+</md-tab> <md-tab label="Academic Information">
 
 <div>Code : {{admission.academicSession.code}}</div>
 <br>
 <div>Description : {{admission.academicSession.description}}</div>
 <br>
 
-</md-tab> 
-
-  <md-tab label="Cohort Information">
+</md-tab> <md-tab label="Cohort Information">
 
 <div>Code : {{admission.cohort.code}}</div>
 <br>
 <div>Description : {{admission.cohort.description}}</div>
 <br>
 
-</md-tab>  
+</md-tab> </md-tab-group> </md-card-content> </md-card>
 
-
-</md-tab-group> </md-card-content> <md-card-actions layout-align="end center">
-<button md-button color="accent" class="text-upper">UPDATE</button>
-</md-card-actions> </md-card>
 
 
 

@@ -32,13 +32,14 @@ export class GenderCodeEditorDialog implements OnInit {
       this.edit = true;
   }
     ngOnInit(): void {
-    this.editorForm = this.formBuilder.group(<GenderCode>{
+  /*  this.editorForm = this.formBuilder.group(<GenderCode>{
       id: null,
       code: '',
       description: '',
     });
 
     if (this.edit) this.editorForm.patchValue(this._genderCode);
+   */
   }
 
 
