@@ -16,7 +16,7 @@ public interface AdCityCodeDao extends GenericDao<Long, AdCityCode> {
 
     List<AdCityCode> find(AdStateCode stateCode);
 
-    List<AdCityCode> find(AdStateCode stateCode, Integer offset, Integer limit);
+    List<AdCityCode> find(String filter, Integer offset, Integer limit);
 
     List<AdCityCode> find(String filter, AdStateCode stateCode, Integer offset, Integer limit);
 

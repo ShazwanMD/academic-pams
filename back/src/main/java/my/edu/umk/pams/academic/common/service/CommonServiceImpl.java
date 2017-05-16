@@ -305,8 +305,8 @@ public class CommonServiceImpl implements CommonService {
 	}
 
 	@Override
-	public List<AdCityCode> findCityCodes(AdStateCode stateCode, Integer offset, Integer limit) {
-		return cityCodeDao.find(stateCode, offset, limit);
+	public List<AdCityCode> findCityCodes(String filter, Integer offset, Integer limit) {
+		return cityCodeDao.find(filter, offset, limit);
 	}
 
 	@Override

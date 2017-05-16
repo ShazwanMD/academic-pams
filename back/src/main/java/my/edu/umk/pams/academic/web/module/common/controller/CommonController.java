@@ -73,7 +73,7 @@ public class CommonController {
   @RequestMapping(value = "/maritalCodes", method = RequestMethod.GET)
   public ResponseEntity<List<MaritalCode>> findMaritalCodes() {
           return new ResponseEntity<List<MaritalCode>>(commonTransformer.toMaritalCodeVos(
-          commonService.findMaritalCodes()), HttpStatus.OK);
+          commonService.findMaritalCodes("%",0,Integer.MAX_VALUE)), HttpStatus.OK);
           }
 
   @RequestMapping(value = "/maritalCodes/{code}", method = RequestMethod.GET)
@@ -123,7 +123,7 @@ public class CommonController {
   @RequestMapping(value = "/dunCodes", method = RequestMethod.GET)
   public ResponseEntity<List<DunCode>> findDunCodes() {
           return new ResponseEntity<List<DunCode>>(commonTransformer.toDunCodeVos(
-          commonService.findDunCodes()), HttpStatus.OK);
+          commonService.findDunCodes("%",0,Integer.MAX_VALUE)), HttpStatus.OK);
           }
 
   @RequestMapping(value = "/dunCodes/{code}", method = RequestMethod.GET)
@@ -172,7 +172,7 @@ public class CommonController {
   @RequestMapping(value = "/bankCodes", method = RequestMethod.GET)
   public ResponseEntity<List<BankCode>> findBankCodes() {
           return new ResponseEntity<List<BankCode>>(commonTransformer.toBankCodeVos(
-          commonService.findBankCodes()), HttpStatus.OK);
+          commonService.findBankCodes("%",0,Integer.MAX_VALUE)), HttpStatus.OK);
           }
 
   @RequestMapping(value = "/bankCodes/{code}", method = RequestMethod.GET)
@@ -218,9 +218,9 @@ public class CommonController {
   //====================================================================================================
 
   @RequestMapping(value = "/cityCodes", method = RequestMethod.GET)
-  public ResponseEntity<List<CityCode>> findCityCodes(AdStateCode stateCode, Integer offset, Integer limit) {
+  public ResponseEntity<List<CityCode>> findCityCodes() {
           return new ResponseEntity<List<CityCode>>(commonTransformer.toCityCodeVos(
-          commonService.findCityCodes(stateCode,  offset,  limit)), HttpStatus.OK);
+          commonService.findCityCodes("%",0,Integer.MAX_VALUE)), HttpStatus.OK);
           }
 
   @RequestMapping(value = "/cityCodes/{code}", method = RequestMethod.GET)
@@ -269,7 +269,7 @@ public class CommonController {
 @RequestMapping(value = "/countryCodes", method = RequestMethod.GET)
 public ResponseEntity<List<CountryCode>> findCountryCodes() {
         return new ResponseEntity<List<CountryCode>>(commonTransformer.toCountryCodeVos(
-        commonService.findCountryCodes()), HttpStatus.OK);
+        commonService.findCountryCodes("%",0,Integer.MAX_VALUE)), HttpStatus.OK);
         }
 
 @RequestMapping(value = "/countryCodes/{code}", method = RequestMethod.GET)
@@ -419,7 +419,7 @@ public ResponseEntity<String> removeCountryCode(@PathVariable String code) {
   @RequestMapping(value = "/raceCodes", method = RequestMethod.GET)
   public ResponseEntity<List<RaceCode>> findRaceCodes() {
           return new ResponseEntity<List<RaceCode>>(commonTransformer.toRaceCodeVos(
-          commonService.findRaceCodes()), HttpStatus.OK);
+          commonService.findRaceCodes("%",0,Integer.MAX_VALUE)), HttpStatus.OK);
           }
 
   @RequestMapping(value = "/raceCodes/{code}", method = RequestMethod.GET)
@@ -471,7 +471,7 @@ public ResponseEntity<String> removeCountryCode(@PathVariable String code) {
 @RequestMapping(value = "/parliamentCodes", method = RequestMethod.GET)
 public ResponseEntity<List<ParliamentCode>> findParliamentCodes() {
         return new ResponseEntity<List<ParliamentCode>>(commonTransformer.toParliamentCodeVos(
-        commonService.findParliamentCodes()), HttpStatus.OK);
+        commonService.findParliamentCodes("%",0,Integer.MAX_VALUE)), HttpStatus.OK);
         }
 
 @RequestMapping(value = "/parliamentCodes/{code}", method = RequestMethod.GET)
@@ -520,7 +520,7 @@ public ResponseEntity<String> removeParliamentCode(@PathVariable String code) {
 @RequestMapping(value = "/gradeCodes", method = RequestMethod.GET)
 public ResponseEntity<List<GradeCode>> findGradeCodes() {
       return new ResponseEntity<List<GradeCode>>(commonTransformer.toGradeCodeVos(
-      commonService.findGradeCodes()), HttpStatus.OK);
+      commonService.findGradeCodes("%",0,Integer.MAX_VALUE )), HttpStatus.OK);
       }
 
 @RequestMapping(value = "/gradeCodes/{code}", method = RequestMethod.GET)
@@ -569,7 +569,7 @@ public ResponseEntity<String> removeGradeCode(@PathVariable String code) {
 @RequestMapping(value = "/religionCodes", method = RequestMethod.GET)
 public ResponseEntity<List<ReligionCode>> findReligionCodes() {
       return new ResponseEntity<List<ReligionCode>>(commonTransformer.toReligionCodeVos(
-      commonService.findReligionCodes()), HttpStatus.OK);
+      commonService.findReligionCodes("%",0,Integer.MAX_VALUE)), HttpStatus.OK);
       }
 
 @RequestMapping(value = "/religionCodes/{code}", method = RequestMethod.GET)
@@ -619,7 +619,7 @@ public ResponseEntity<String> removeReligionCode(@PathVariable String code) {
 @RequestMapping(value = "/nationalityCodes", method = RequestMethod.GET)
 public ResponseEntity<List<NationalityCode>> findNationalityCodes() {
       return new ResponseEntity<List<NationalityCode>>(commonTransformer.toNationalityCodeVos(
-      commonService.findNationalityCodes()), HttpStatus.OK);
+      commonService.findNationalityCodes("%",0,Integer.MAX_VALUE)), HttpStatus.OK);
       }
 
 @RequestMapping(value = "/nationalityCodes/{code}", method = RequestMethod.GET)
@@ -670,7 +670,7 @@ public ResponseEntity<String> removeNationalityCode(@PathVariable String code) {
 @RequestMapping(value = "/ethnicityCodes", method = RequestMethod.GET)
 public ResponseEntity<List<EthnicityCode>> findEthnicityCodes() {
       return new ResponseEntity<List<EthnicityCode>>(commonTransformer.toEthnicityCodeVos(
-      commonService.findEthnicityCodes()), HttpStatus.OK);
+      commonService.findEthnicityCodes("%",0,Integer.MAX_VALUE)), HttpStatus.OK);
       }
 
 @RequestMapping(value = "/ethnicityCodes/{code}", method = RequestMethod.GET)
