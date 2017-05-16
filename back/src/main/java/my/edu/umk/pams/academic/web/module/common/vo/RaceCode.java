@@ -10,46 +10,52 @@ import java.io.IOException;
  * @author PAMS
  */
 public class RaceCode extends MetaObject {
-    private String code;
-    private String descriptionEn;
-    private String descriptionMs;
+	private Long id;
+	private String code;
+	private String descriptionEn;
+	private String descriptionMs;
 
-    public String getCode() {
-        return code;
-    }
+	public String getCode() {
+		return code;
+	}
 
-    public void setCode(String code) {
-        this.code = code;
-    }
+	public void setCode(String code) {
+		this.code = code;
+	}
 
-    public String getDescriptionEn() {
-        return descriptionEn;
-    }
+	public String getDescriptionEn() {
+		return descriptionEn;
+	}
 
-    public void setDescriptionEn(String descriptionEn) {
-        this.descriptionEn = descriptionEn;
-    }
+	public void setDescriptionEn(String descriptionEn) {
+		this.descriptionEn = descriptionEn;
+	}
 
-    
-    public String getDescriptionMs() {
-        return descriptionMs;
-    }
+	public Long getId() {
+		return id;
+	}
 
-    
-    public void setDescriptionMs(String descriptionMs) {
-        this.descriptionMs = descriptionMs;
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    
-    @JsonCreator
-    public static RaceCode create(String jsonString) {
-    RaceCode o = null;
-        try {
-            ObjectMapper mapper = new ObjectMapper();
-            o = mapper.readValue(jsonString, RaceCode.class);
-        } catch (IOException e) {
-            // handle
-        }
-        return o;
-    }
+	public String getDescriptionMs() {
+		return descriptionMs;
+	}
+
+	public void setDescriptionMs(String descriptionMs) {
+		this.descriptionMs = descriptionMs;
+	}
+
+	@JsonCreator
+	public static RaceCode create(String jsonString) {
+		RaceCode o = null;
+		try {
+			ObjectMapper mapper = new ObjectMapper();
+			o = mapper.readValue(jsonString, RaceCode.class);
+		} catch (IOException e) {
+			// handle
+		}
+		return o;
+	}
 }
