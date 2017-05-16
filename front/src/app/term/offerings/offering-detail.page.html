@@ -8,10 +8,14 @@
       <div flex-gt-md="70">
         <pams-offering
           [offering]="offering$ | async"
-          [sections]="sections$ | async"
-        >
+          [sections]="sections$ | async" 
+          >
         </pams-offering>
-      </div>
+        
+        <pams-offering-section
+         [sections]="sections$ | async">
+        </pams-offering-section>
+        </div>
 
       <div flex-gt-md="30">
         <md-card>
