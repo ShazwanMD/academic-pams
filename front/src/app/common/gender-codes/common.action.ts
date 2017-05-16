@@ -4,6 +4,26 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class CommonActions{
 
+
+static FIND_STUDY_MODES = '[Common] Find Study Modes';
+
+findStudyModes(): Action {
+    console.log("findStudyModes");
+    return {
+        type: CommonActions.FIND_STUDY_MODES
+    };
+}
+
+static FIND_STUDY_MODES_SUCCESS = '[Common] Find Study Modes Success';
+
+findStudyModesSuccess(codes): Action {
+    console.log("findStudyModesSuccess");
+    return {
+        type: CommonActions.FIND_STUDY_MODES_SUCCESS,
+        payload: codes
+    };
+}    
+
 static FIND_GENDER_CODES = '[Common] Find Gender Codes';
 
   findGenderCodes(): Action {

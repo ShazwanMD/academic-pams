@@ -1,3 +1,4 @@
+import { StudyModeSelectComponent } from './study-modes/component/study-mode-select.component';
 import { RaceCodeSelectComponent } from './race-codes/component/race-code-select.component';
 import { StateCodeSelectComponent } from './state-codes/component/state-code-select.component';
 import { CountryCodeSelectComponent } from './country-codes/component/country-code-select.component';
@@ -38,6 +39,7 @@ export const commonModuleReducers = {
     CountryCodeSelectComponent,
     StateCodeSelectComponent,
     RaceCodeSelectComponent,
+    StudyModeSelectComponent,
     ],
   
   exports: [
@@ -46,6 +48,7 @@ export const commonModuleReducers = {
     CountryCodeSelectComponent,
     StateCodeSelectComponent,
     RaceCodeSelectComponent,
+    StudyModeSelectComponent,
   ],
 })
 export class CommonModule {

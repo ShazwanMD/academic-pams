@@ -1,3 +1,5 @@
+import { StudyModeListPage } from './study-modes/study-mode-list.page';
+import { StudyMode } from './../common/study-modes/study-mode.interface';
 import { EthnicityCodeListPage } from './ethnicity-codes/ethnicity-code-list.page';
 import { NationalityCodeListPage } from './nationality-codes/nationality-code-list.page';
 import { ReligionCodeListPage } from './religion-codes/religion-code-list.page';
@@ -31,6 +33,7 @@ export const SetupModuleRoutes: Routes = [
       {path: 'religion-codes', component: ReligionCodeListPage},
       {path: 'nationality-codes', component: NationalityCodeListPage},
       {path: 'ethnicity-codes', component: EthnicityCodeListPage},
+    {path: 'study-modes', component: StudyModeListPage},
     ]
   },
 ];

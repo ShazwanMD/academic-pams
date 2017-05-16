@@ -12,6 +12,13 @@ export class CommonEffects{
                 private commonService: CommonService){
 
                 }
+@Effect() findStudyModes$ = this.actions$
+    .ofType(CommonActions.FIND_STUDY_MODES)
+    .map(action => action.payload)
+    .switchMap(() => this.commonService.findStudyModes())
+    .map(codes => this.commonActions.findStudyModesSuccess(codes));
+
+
   @Effect() findGenderCodes$ = this.actions$
     .ofType(CommonActions.FIND_GENDER_CODES)
     .map(action => action.payload)
