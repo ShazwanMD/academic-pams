@@ -109,8 +109,8 @@ public  interface CommonService{
 	AdCityCode findCityCodeById(Long id);
 
 	AdCityCode findCityCodeByCode(String code);
-
-	List<AdCityCode> findCityCodes(AdStateCode stateCode, Integer offset, Integer limit);
+	
+	List<AdCityCode> findCityCodes(String filter, Integer offset, Integer limit);
 
 	List<AdCityCode> findCityCodes(String filter, AdStateCode stateCode, Integer offset, Integer limit);
 

@@ -46,7 +46,7 @@ public class AdCityCodeDaoImpl extends GenericDaoSupport<Long, AdCityCode> imple
     }
 
     @Override
-    public List<AdCityCode> find(AdStateCode stateCode, Integer offset, Integer limit) {
+    public List<AdCityCode> find(String filter, Integer offset, Integer limit) {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select s from AdCityCode s where " +
                 "s.metadata.state = :state ");
