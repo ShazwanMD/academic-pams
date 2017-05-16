@@ -35,6 +35,24 @@ export class OfferingActions {
     };
   }
 
+  //find section by offering
+   
+     static FIND_SECTIONS = '[Offering] Find Sections';
+  findSections(offering): Action {
+    return {
+      type: OfferingActions.FIND_SECTIONS,
+      payload: offering
+    };
+  }
+
+  static FIND_SECTIONS_SUCCESS = '[Offering] Find Sections Success';
+  findSectionsSuccess(sections): Action {
+    return {
+      type: OfferingActions.FIND_SECTIONS_SUCCESS,
+      payload: sections
+    };
+  }
+   
   static SAVE_OFFERING = '[Offering] Save Offering';
   saveOffering(offering): Action {
     return {

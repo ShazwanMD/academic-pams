@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {Effect, Actions} from '@ngrx/effects';
 import {OfferingActions} from "./offering.action";
 import {TermService} from "../../../services/term.service";
+import {from} from "rxjs/observable/from";
 
 
 @Injectable()
@@ -20,5 +21,13 @@ export class OfferingEffects {
     .ofType(OfferingActions.FIND_OFFERING_BY_CANONICAL_CODE)
     .map(action => action.payload)
     .switchMap(canonicalCode => this.termService.findOfferingByCanonicalCode(canonicalCode))
-    .map(offering => this.offeringActions.findOfferingByCanonicalCodeSuccess(offering));
+    .map(offering => this.offeringActions.findOfferingByCanonicalCodeSuccess(offering))
+    .mergeMap(action => from([action,
+      this.offeringActions.findSections(action.payload)    
+     
+    ]));
+    
+    
+    
+    
 }

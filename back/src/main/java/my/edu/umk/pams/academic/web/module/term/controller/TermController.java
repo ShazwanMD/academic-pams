@@ -4,11 +4,13 @@ import my.edu.umk.pams.academic.common.service.CommonService;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.identity.service.IdentityService;
 import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
+import my.edu.umk.pams.academic.planner.model.AdFaculty;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
 import my.edu.umk.pams.academic.security.integration.AdAutoLoginToken;
 import my.edu.umk.pams.academic.system.service.SystemService;
 import my.edu.umk.pams.academic.term.model.*;
 import my.edu.umk.pams.academic.term.service.TermService;
+import my.edu.umk.pams.academic.web.module.planner.vo.Program;
 import my.edu.umk.pams.academic.web.module.term.vo.*;
 import my.edu.umk.pams.academic.workflow.service.WorkflowService;
 import org.activiti.engine.task.Task;
@@ -333,15 +335,29 @@ public class TermController {
 
 
     @RequestMapping(value = "/offerings/{canonicalCode}/sections", method = RequestMethod.GET)
-    public ResponseEntity<List<Section>> findSectionsByOffering(@PathVariable String canonicalCode) {
-        throw new UnsupportedOperationException();
+    public ResponseEntity<List<Section>> findSectionsByOffering(@PathVariable String canonicalCode) throws UnsupportedEncodingException {
+        AdOffering offering = termService.findOfferingByCanonicalCode(canonicalCode);
+    	return new ResponseEntity<List<Section>>(termTransformer.toSectionVos(termService.findSections(offering)), HttpStatus.OK);
     }
+    
+    /*sample code
+     
+    @RequestMapping(value = "/faculties/{code}/programs", method = RequestMethod.GET)
+    public ResponseEntity<List<Program>> findProgramsByFaculty(@PathVariable String code) throws UnsupportedEncodingException {
+    AdFaculty faculty = plannerService.findFacultyByCode(code);
+    return new ResponseEntity<List<Program>>(plannerTransformer.toProgramVos(plannerService.findPrograms(faculty)), HttpStatus.OK);
+    }
+     
+     */
 
     @RequestMapping(value = "/offerings/{canonicalCode}/sections/{sectionCode}", method = RequestMethod.GET)
     public ResponseEntity<Section> findSectionById(@PathVariable String canonicalCode,
                                                    @PathVariable String sectionCode) {
         throw new UnsupportedOperationException();
     }
+    
+    
+      
 
     @RequestMapping(value = "/offerings/{canonicalCode}/appointments", method = RequestMethod.GET)
     public ResponseEntity<List<Appointment>> findAppointmentsByOffering(@PathVariable String canonicalCode) {
