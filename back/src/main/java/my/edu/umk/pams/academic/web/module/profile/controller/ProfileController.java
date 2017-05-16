@@ -3,12 +3,17 @@ package my.edu.umk.pams.academic.web.module.profile.controller;
 import my.edu.umk.pams.academic.common.service.CommonService;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.identity.service.IdentityService;
+import my.edu.umk.pams.academic.planner.service.PlannerService;
 import my.edu.umk.pams.academic.profile.service.ProfileService;
+import my.edu.umk.pams.academic.term.model.AdEnrollment;
+import my.edu.umk.pams.academic.term.service.TermService;
 import my.edu.umk.pams.academic.web.module.identity.vo.Student;
 import my.edu.umk.pams.academic.web.module.profile.vo.Address;
 import my.edu.umk.pams.academic.web.module.profile.vo.Contact;
 import my.edu.umk.pams.academic.web.module.profile.vo.Guarantor;
 import my.edu.umk.pams.academic.web.module.profile.vo.Guardian;
+import my.edu.umk.pams.academic.web.module.term.controller.TermTransformer;
+import my.edu.umk.pams.academic.web.module.term.vo.Enrollment;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,6 +52,15 @@ public class ProfileController {
     private ProfileService profileService;
 
     @Autowired
+    private PlannerService plannerService;
+
+    @Autowired
+    private TermService termService;
+
+    @Autowired
+    private TermTransformer termTransformer;
+
+    @Autowired
     private ProfileTransformer profileTransformer;
 
 
@@ -79,6 +93,15 @@ public class ProfileController {
         AdStudent student = profileService.findStudentByMatricNo(identityNo);
         return new ResponseEntity<List<Guarantor>>(profileTransformer
                 .toGuarantorVos(profileService.findGuarantors(student)), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/students/{identityNo}/enrollments", method = RequestMethod.GET)
+    public ResponseEntity<List<Enrollment>> findEnrollmentsByStudent(@PathVariable String identityNo) {
+        AdStudent student = profileService.findStudentByMatricNo(identityNo);
+        // AdAcademicSession academicSession = plannerService.findCurrentAcademicSession();
+        List<AdEnrollment> enrollments = termService.findEnrollments(student);
+        List<Enrollment> vos = termTransformer.toEnrollmentVos(enrollments);
+        return new ResponseEntity<List<Enrollment>>(vos, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/students/{identityNo}/addresses", method = RequestMethod.GET)

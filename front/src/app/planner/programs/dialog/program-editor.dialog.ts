@@ -7,10 +7,9 @@ import {CommonService} from "../../../../services/common.service";
 import {PlannerService} from "../../../../services/planner.service";
 import {Program} from "../program.interface";
 import {ProgramActions} from "../program.action";
-import {MdDialog} from "@angular/material";
-
-
-
+import {MdDialogRef} from "@angular/material";
+import {PlannerModuleState} from "../../index";
+import {Store} from "@ngrx/store";
 
 @Component({
   selector: 'pams-program-editor',
@@ -19,30 +18,32 @@ import {MdDialog} from "@angular/material";
 
 export class ProgramEditorDialog implements OnInit {
 
-  private program: Program;
+  private _program: Program;
   private editForm: FormGroup;
+  private edit: boolean = false;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
               private formBuilder: FormBuilder,
               private actions: ProgramActions,
-              public dialog: MdDialog,
-              private viewContainerRef: ViewContainerRef) {
+              private store: Store<PlannerModuleState>,
+              private viewContainerRef: ViewContainerRef,
+              private dialog: MdDialogRef<ProgramEditorDialog >) {
+            
   }
 
+ set academicSession(value: Program) {
+        this._program = value;
+        this.edit = true;
+  }
 
-   openDialog(): void {
+  //  openDialog(): void {
 
-      this.dialog.open(ProgramEditorDialog, {
-        height: '50%', // can be px or %
-        width: '60%', // can be px or %
-      });
-    }
-    
-  
-
-    
-   
+  //     this.dialog.open(ProgramEditorDialog, {
+  //       height: '50%', // can be px or %
+  //       width: '60%', // can be px or %
+  //     });
+  //   }
 
      ngOnInit(): void {
           this.editForm = this.formBuilder.group(<Program>{
@@ -53,11 +54,14 @@ export class ProgramEditorDialog implements OnInit {
        titleEn: '',
      });
      
-     }
+       if (this.edit) this.editForm.patchValue(this._program);
+  }
      
-
-   save(program: Program, isValid: boolean) {
-     // do something
+      submit(code: Program, isValid: boolean) {
+        if (!code.id) this.store.dispatch(this.actions.saveProgram(code));
+        else  this.store.dispatch(this.actions.updateProgram(code));
+        this.dialog.close();
+   
    }
 }
 

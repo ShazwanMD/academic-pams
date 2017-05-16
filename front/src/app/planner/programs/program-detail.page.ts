@@ -3,11 +3,15 @@ import {Router, ActivatedRoute} from '@angular/router';
 
 import {IdentityService} from '../../../services';
 import {CommonService} from '../../../services';
+
 import {Store} from "@ngrx/store";
 import {Observable} from "rxjs";
+
 import {Program} from "./program.interface";
 import {ProgramActions} from "./program.action";
+
 import {PlannerModuleState} from "../index";
+import {PlannerService} from '../../../services';
 
 @Component({
   selector: 'pams-program-detail',
