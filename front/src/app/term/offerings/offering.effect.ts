@@ -27,7 +27,11 @@ export class OfferingEffects {
      
     ]));
     
-    
+     @Effect() findSections$ = this.actions$
+    .ofType(OfferingActions.FIND_SECTIONS)
+    .map(action => action.payload)
+    .switchMap(offering => this.termService.findSections(offering))
+    .map(sections => this.offeringActions.findSectionsSuccess(sections));
     
     
 }
