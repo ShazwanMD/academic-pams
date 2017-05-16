@@ -49,7 +49,7 @@
 
       <pams-appointment-list
         [appointments]="appointments$ | async"
-        (-view-)="viewAppointment($event)"></pams-appointment-list>
+        (view)="viewAppointment($event)"></pams-appointment-list>
 
         <!--<md-list>
   <md-list-item *ngFor="let offerings of offerings$ | async">
