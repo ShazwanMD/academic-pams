@@ -16,7 +16,7 @@ import {AcademicSessionActions} from "../academic-session.action";
 
 export class AcademicSessionCreatorDialog implements OnInit {
 
-    private creatorForm: FormGroup;
+    private createForm: FormGroup;
     private create: boolean = false;
     private _academicSession: AcademicSession;
 
@@ -33,13 +33,13 @@ export class AcademicSessionCreatorDialog implements OnInit {
     }
 
     ngOnInit(): void {
-        this.creatorForm = this.formBuilder.group(<AcademicSession>{
+        this.createForm = this.formBuilder.group(<AcademicSession>{
             id: null,
             code: '',
             description: '',
         });
 
-         if (this.create) this.creatorForm.patchValue(this._academicSession);
+         if (this.create) this.createForm.patchValue(this._academicSession);
   }
 
     save(code: AcademicSession, isValid: boolean) {
