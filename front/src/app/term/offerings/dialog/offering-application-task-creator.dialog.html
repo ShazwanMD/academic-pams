@@ -7,7 +7,17 @@
         <input mdInput #description
                placeholder="id"
                formControlName="id"
-               value="Id"
+               value="Description"
+               flex/>
+      </md-input-container>
+    </div>
+    
+      <div layout="row" class="pad-bottom">
+      <md-input-container flex>
+        <input mdInput #description
+               placeholder="capacity"
+               formControlName="capacity"
+               value="Description"
                flex/>
       </md-input-container>
     </div>
@@ -17,48 +27,19 @@
         <input mdInput #description
                placeholder="canonical_code"
                formControlName="canonical_code"
-               value="canonical_code"
-               flex/>
-      </md-input-container>
-    </div> 
-    
-     <div layout="row" class="pad-bottom">
-      <md-input-container flex>
-        <input mdInput #description
-               placeholder="Capacity"
-               formControlName="capacity"
-               value="capacity"
+               value="Description"
                flex/>
       </md-input-container>
     </div>
     
-    <div layout="row" class="pad-bottom">
-      <md-input-container flex>
-        <input mdInput #description
-               placeholder="Code"
-               formControlName="code"
-               value="code"
-               flex/>
-      </md-input-container>
-    </div>
-    
-     <div layout="row" class="pad-bottom">
-      <md-input-container flex>
-        <input mdInput #description
-               placeholder="Title"
-               formControlName="title"
-               value="title"
-               flex/>
-      </md-input-container>
-    </div>
-    
-    
+      
     <div layout="row" class="pad-bottom pad-top">
-    <!--   <pams-program-select
-        [placeholder]="'Select Program'"
-        [innerFormControl]="createForm.controls['program']">
-      </pams-program-select> --> 
+        <pams-course-select
+        [placeholder]="'Select Course'"
+        [innerFormControl]="createForm.controls['course']">
+      </pams-course-select> 
     </div>
+    
     <div layout="row" class="pad-bottom pad-top">
       <!-- <pams-academic-session-select
         [placeholder]="'Select Session'"
