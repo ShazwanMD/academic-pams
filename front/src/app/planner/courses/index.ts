@@ -16,7 +16,7 @@ import {EffectsModule} from "@ngrx/effects";
 import {CourseEffects} from "./course.effect";
 import {CourseDetailPage} from "./course-detail.page";
 import {CourseComponent} from "./component/course.component";
-import {CourseSelectComponent} from "./component/course-select.component";
+// import {CourseSelectComponent} from "./component/course-select.component";
 
 @NgModule({
   imports: [
@@ -34,10 +34,10 @@ import {CourseSelectComponent} from "./component/course-select.component";
     // component
     CourseListComponent,
     CourseComponent,
-    CourseSelectComponent,
+    // CourseSelectComponent,
   ],
   exports: [
-    CourseSelectComponent,
+    // CourseSelectComponent,
   ],
 })
 
