@@ -34,20 +34,19 @@ export class OfferingApplicationTaskCreatorDialog implements OnInit {
   ngOnInit(): void {
     this.createForm = this.formBuilder.group(<OfferingApplication>{
      
-      id:null,
+        id:null,
+        referenceNo:'',
+        sourceNo:'please insert your data',
+        description:'please insert your data',
+        
+        /*id:null,
       capacity:'',
       canonical_code:'please insert your data',
       title:'please insert your data',
       course:<Course>{},
-      program:<Program>{},
-      
-     // id:null,
-     // capacity:'please insert your data',
-     // canonical_code:'please insert your data',
-     // code:'please insert your data',
-     // title:'please insert your data',
-     // course:<Course>{},
-     // program:<Program>{},
+      program:<Program>{},*/
+    
+     
     });
       
   }
