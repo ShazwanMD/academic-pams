@@ -33,6 +33,9 @@ public class ProfileTransformer {
     public Guardian toGuardianVo(AdGuardian guardian) {
         Guardian m = new Guardian();
         m.setId(guardian.getId());
+        m.setName(guardian.getName());
+        m.setIdentityNo(guardian.getIdentityNo());
+//        m.setIdentityNo(guardian.getType().name());
         return m;
     }
 
@@ -41,6 +44,8 @@ public class ProfileTransformer {
         m.setId(guarantor.getId());
         m.setName(guarantor.getName());
         m.setIdentityNo(guarantor.getIdentityNo());
+//        m.setIdentityNo(guarantor.getType().name());
+        
         return m;
     }
 
@@ -57,6 +62,9 @@ public class ProfileTransformer {
     public Contact toContactVo(AdContact contact) {
         Contact m = new Contact();
         m.setId(contact.getId());
+        m.setName(contact.getName());
+        m.setIdentityNo(contact.getIdentityNo());
+//        m.setType(contact.getType().name());
         return m;
     }
 
