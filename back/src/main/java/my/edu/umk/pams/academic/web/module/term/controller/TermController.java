@@ -4,13 +4,11 @@ import my.edu.umk.pams.academic.common.service.CommonService;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.identity.service.IdentityService;
 import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
-import my.edu.umk.pams.academic.planner.model.AdFaculty;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
 import my.edu.umk.pams.academic.security.integration.AdAutoLoginToken;
 import my.edu.umk.pams.academic.system.service.SystemService;
 import my.edu.umk.pams.academic.term.model.*;
 import my.edu.umk.pams.academic.term.service.TermService;
-import my.edu.umk.pams.academic.web.module.planner.vo.Program;
 import my.edu.umk.pams.academic.web.module.term.vo.*;
 import my.edu.umk.pams.academic.workflow.service.WorkflowService;
 import org.activiti.engine.task.Task;
@@ -292,14 +290,6 @@ public class TermController {
         return new ResponseEntity<List<Appointment>>(termTransformer.toAppointmentVos(appointments), HttpStatus.OK);
     }
 
-
-   /* @RequestMapping(value = "/appointments/{academicSessionCode}", method = RequestMethod.GET)
-    public ResponseEntity<List<Appointment>> findAppointmentsByAcademicSession(@PathVariable String academicSessionCode) {
-        AdAcademicSession academicSession = plannerService.findAcademicSessionByCode(academicSessionCode);
-        List<AdAppointment> appointments = termService.findAppointments(academicSession);
-        return new ResponseEntity<List<Appointment>>(termTransformer.toAppointmentVos(appointments), HttpStatus.OK);
-    }*/
-    
     @RequestMapping(value = "/appointments/{id}", method = RequestMethod.GET)
     public ResponseEntity<Appointment> findAppointmentById(@PathVariable Long id) throws UnsupportedEncodingException {
         return new ResponseEntity<Appointment>(termTransformer.toAppointmentVo(termService.findAppointmentById(id)), HttpStatus.OK);
@@ -337,9 +327,11 @@ public class TermController {
     @RequestMapping(value = "/offerings/{canonicalCode}/sections", method = RequestMethod.GET)
     public ResponseEntity<List<Section>> findSectionsByOffering(@PathVariable String canonicalCode) throws UnsupportedEncodingException {
         AdOffering offering = termService.findOfferingByCanonicalCode(canonicalCode);
-    	return new ResponseEntity<List<Section>>(termTransformer.toSectionVos(termService.findSections(offering)), HttpStatus.OK);
+        List<AdSection> sections = termService.findSections(offering);
+        List<Section> sectionVos = decorateSection(termTransformer.toSectionVos(sections));
+        return new ResponseEntity<List<Section>>(sectionVos, HttpStatus.OK);
     }
-    
+
     /*sample code
      
     @RequestMapping(value = "/faculties/{code}/programs", method = RequestMethod.GET)
@@ -418,6 +410,15 @@ public class TermController {
     // ====================================================================================================
     // PRIVATE METHODS
     // ====================================================================================================
+
+    private List<Section> decorateSection(List<Section> sections) {
+        for (Section section : sections) {
+            AdSection s = termService.findSectionById(section.getId());
+            section.setAppointmentCount(termService.countAppointment(s));
+            section.setEnrollmentCount(termService.countEnrollment(s));
+        }
+        return sections;
+    }
 
     private void dummyLogin() {
         AdAutoLoginToken token = new AdAutoLoginToken("root");

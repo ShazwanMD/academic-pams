@@ -13,15 +13,16 @@ export class OfferingComponent {
   @Input() offering: Offering;
   @Input() sections: Section[];
  // @Output() view = new EventEmitter<Offering>();
-    
+
       private columns: any[] = [
     { name: 'id', label: 'Id' },
     { name: 'code', label: 'Code' },
     { name: 'capacity', label: 'Capacity' },
-    { name: 'canonicalCode', label: 'canonicalCode' },
+    { name: 'appointmentCount', label: 'Appointment' },
+    { name: 'enrollmentCount', label: 'Enrollment' },
     { name: 'action', label: '' }
   ];
-   
-   
+
+
 }
 

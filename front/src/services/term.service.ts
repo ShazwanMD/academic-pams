@@ -333,4 +333,10 @@ export class TermService {
     return this.http.get(environment.endpoint + '/api/term/offerings/' + canonicalCode)
       .map((res: Response) => <Offering>res.json());
   }
+
+  findSectionsByOffering(offering:Offering): Observable<Section[]> {
+    console.log("findSectionsByOffering");
+    return this.http.get(environment.endpoint + '/api/term/offerings/' + offering.canonicalCode + '/sections')
+      .map((res: Response) => <Section[]>res.json());
+  }
 }
