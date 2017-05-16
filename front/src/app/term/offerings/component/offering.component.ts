@@ -1,5 +1,7 @@
 import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy} from '@angular/core';
 import {Offering} from "../offering.interface";
+import { Section } from '../../sections/section.interface';
+//import {Section} from "../../sections/section.interface";
 
 @Component({
   selector: 'pams-offering',
@@ -9,5 +11,17 @@ import {Offering} from "../offering.interface";
 export class OfferingComponent {
 
   @Input() offering: Offering;
-  @Output() view = new EventEmitter<Offering>();
+  @Input() sections: Section[];
+ // @Output() view = new EventEmitter<Offering>();
+    
+      private columns: any[] = [
+    { name: 'id', label: 'Id' },
+    { name: 'code', label: 'Code' },
+   // { name: 'capacity', label: 'Capacity' },
+   // { name: 'canonicalCode', label: 'canonicalCode' },
+    { name: 'action', label: '' }
+  ];
+   
+   
 }
+

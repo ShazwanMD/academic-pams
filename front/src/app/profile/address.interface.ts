@@ -4,4 +4,5 @@ export interface Address extends MetaObject{
   address2:string;
   address3:string;
   postcode:string;
+  addressType:AddressType;
 }

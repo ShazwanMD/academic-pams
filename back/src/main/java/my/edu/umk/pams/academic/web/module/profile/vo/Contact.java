@@ -8,6 +8,7 @@ import my.edu.umk.pams.academic.web.module.core.vo.MetaObject;
 public class Contact extends MetaObject {
     private String identityNo;
     private String name;
+    private ContactType contactType;
 
     public String getIdentityNo() {
         return identityNo;
@@ -23,5 +24,13 @@ public class Contact extends MetaObject {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public ContactType getContactType() {
+        return contactType;
+    }
+
+    public void setContactType(ContactType contactType) {
+        this.contactType = contactType;
     }
 }

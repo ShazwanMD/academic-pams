@@ -1,8 +1,8 @@
-<h2 md-dialog-title>Academic Session Editor</h2>
+<h2 md-dialog-title>Academic Session Creator</h2>
 
 <md-dialog-content>
-  <form [formGroup]="editForm">
-    <div layout="row" class="inset" flex>
+  <form [formGroup]="createForm">
+    <div layout="row" class="pad-bottom">
       <md-input-container flex>
         <input mdInput
                placeholder="Code"
@@ -11,7 +11,7 @@
       </md-input-container>
     </div>
     
-    <div layout="row" class="inset" flex>
+    <div layout="row" class="pad-bottom">
       <md-input-container flex>
         <input mdInput
                placeholder="Description"
@@ -24,5 +24,5 @@
 </md-dialog-content>
 
 <md-dialog-actions align="end">
-  <button md-raised-button color="accent" (click)="save(editForm.value, newForm.valid)">Save</button>
+  <button md-raised-button color="accent" (click)="save(createForm.value, newForm.valid)">Save</button>
 </md-dialog-actions>

@@ -18,7 +18,10 @@ import { TermModuleState } from "../index";
 export class OfferingDetailPage implements OnInit {
 
   private OFFERING = "termModuleState.offering".split(".");
+  private SECTIONS = "profileModuleState.sections".split(".");  
+    
   private offering$: Observable<Offering>;
+  private sections$: Observable<Offering>;
 
   constructor(private router: Router,
     private route: ActivatedRoute,
@@ -27,6 +30,7 @@ export class OfferingDetailPage implements OnInit {
     private store: Store<TermModuleState>) {
 
     this.offering$ = this.store.select(...this.OFFERING);
+    this.sections$ = this.store.select(...this.SECTIONS);
   }
 
   ngOnInit(): void {

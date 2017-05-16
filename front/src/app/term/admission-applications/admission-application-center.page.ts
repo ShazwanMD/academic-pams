@@ -39,9 +39,7 @@ export class AdmissionApplicationCenterPage implements OnInit {
   goBack(route: string): void {
     this._router.navigate(['/admissionApplications']);
   }
-  
-  
-  
+
    showDialog(): void {
     console.log("showDialog");
     let config = new MdDialogConfig();

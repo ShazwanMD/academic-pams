@@ -1,6 +1,9 @@
-package my.edu.umk.pams.academic.identity.model;
+package my.edu.umk.pams.academic.web.module.profile.vo;
 
-public enum AdContactType {
+/**
+ * @author PAMS
+ */
+public enum ContactType {
     HUSBAND,//0
     WIFE,//1
     SON,//2
@@ -14,5 +17,9 @@ public enum AdContactType {
     UNCLE,//10
     AUNT,//11
     NEPHEW,//12
-    NIECE//13
+    NIECE;//13
+
+    public static ContactType get(int index){
+        return values()[index];
+    }
 }

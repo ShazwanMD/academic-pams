@@ -1,4 +1,4 @@
-<md-card> <md-card-title>OFFERING</md-card-title> <md-card-subtitle>Offering
+<md-card> <md-card-title>OFFERING DETAILS  ({{offering.code}})</md-card-title> <md-card-subtitle>Offering
 Information for {{offering.code}}</md-card-subtitle> <md-divider></md-divider> <md-card-content>
 <!--Tab Section Here--> <md-tab-group> <md-tab
 	label="Offering Detail">
@@ -28,6 +28,28 @@ Information for {{offering.code}}</md-card-subtitle> <md-divider></md-divider> <
 <div>Program Title : {{offering.program.titleMs}}</div>
 <br>
 </md-tab> </md-tab-group> </md-card-content> </md-card>
+
+<md-card> <md-card-title>SECTIONS BY OFFERING  ({{offering.code}})</md-card-title> <md-card-subtitle>List Sections By Offering
+ {{offering.code}}</md-card-subtitle> <md-divider></md-divider> <md-card-content>
+<!--Tab Section  {{section.code}} Here--> 
+
+<td-data-table [data]="sections" [columns]="columns" [sortBy]="summary"
+	[sortOrder]="ASC" [sortable]="false" [multiple]="false"
+	[selectable]="false" (rowSelect)="view.emit($event)" dense>
+<template tdDataTableTemplate="key" let-value="value" let-row="row"
+	let-column="column">
+<div layout="row">
+	<span flex>{{value}}</span>
+</div>
+</template> <template tdDataTableTemplate="action" let-value="value" let-row="row"
+	let-column="column">
+<div layout="row">
+	<a md-button color="accent" class="text-upper"
+		[routerLink]="['/term/sections', row['canonicalCode']]"> <span>View</span>
+	</a>
+</div>
+</template> </td-data-table> 
+  </md-card-content> </md-card>
 
 
 

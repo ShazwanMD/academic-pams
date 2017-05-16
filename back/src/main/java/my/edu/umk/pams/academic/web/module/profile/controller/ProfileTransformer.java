@@ -2,10 +2,7 @@ package my.edu.umk.pams.academic.web.module.profile.controller;
 
 import my.edu.umk.pams.academic.identity.model.*;
 import my.edu.umk.pams.academic.web.module.identity.vo.Student;
-import my.edu.umk.pams.academic.web.module.profile.vo.Address;
-import my.edu.umk.pams.academic.web.module.profile.vo.Contact;
-import my.edu.umk.pams.academic.web.module.profile.vo.Guarantor;
-import my.edu.umk.pams.academic.web.module.profile.vo.Guardian;
+import my.edu.umk.pams.academic.web.module.profile.vo.*;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -33,6 +30,9 @@ public class ProfileTransformer {
     public Guardian toGuardianVo(AdGuardian guardian) {
         Guardian m = new Guardian();
         m.setId(guardian.getId());
+        m.setName(guardian.getName());
+        m.setIdentityNo(guardian.getIdentityNo());
+        m.setGuardianType(GuardianType.get(guardian.getType().ordinal()));
         return m;
     }
 
@@ -41,6 +41,7 @@ public class ProfileTransformer {
         m.setId(guarantor.getId());
         m.setName(guarantor.getName());
         m.setIdentityNo(guarantor.getIdentityNo());
+        m.setGuarantorType(GuarantorType.get(guarantor.getType().ordinal()));     
         return m;
     }
 
@@ -51,12 +52,16 @@ public class ProfileTransformer {
         m.setAddress2(address.getAddress2());
         m.setAddress3(address.getAddress3());
         m.setPostcode(address.getPostCode());
+        m.setAddressType(AddressType.get(address.getType().ordinal()));
         return m;
     }
 
     public Contact toContactVo(AdContact contact) {
         Contact m = new Contact();
         m.setId(contact.getId());
+        m.setName(contact.getName());
+        m.setIdentityNo(contact.getIdentityNo());
+        m.setContactType(ContactType.get(contact.getType().ordinal()));
         return m;
     }
 
