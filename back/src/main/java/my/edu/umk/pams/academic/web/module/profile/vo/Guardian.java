@@ -8,8 +8,17 @@ import my.edu.umk.pams.academic.web.module.core.vo.MetaObject;
 public class Guardian extends MetaObject{
     private String identityNo;
     private String name;
+    private GuardianType guardianType;
 
-    public String getIdentityNo() {
+    public GuardianType getGuardianType() {
+		return guardianType;
+	}
+
+	public void setGuardianType(GuardianType guardianType) {
+		this.guardianType = guardianType;
+	}
+
+	public String getIdentityNo() {
         return identityNo;
     }
 
@@ -24,4 +33,6 @@ public class Guardian extends MetaObject{
     public void setName(String name) {
         this.name = name;
     }
+    
+    
 }
