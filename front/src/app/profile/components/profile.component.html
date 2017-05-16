@@ -1,80 +1,298 @@
-<!-- Basic Card -->
-<md-card>
-  <md-card-title>Student Personal Info</md-card-title>
-  <md-card-subtitle>Page under developments</md-card-subtitle>
-  <md-divider></md-divider>
-  <md-card-content>
-  <!--Tab Section Here-->
-  <md-tab-group>
-  <md-tab label="Student Information">
-
-  <br/>
-  <h3>Student Information</h3>
-  <div>Matric No : {{profile.identityNo}}</div>
-  <div>Name : {{profile.name}}</div>
-  <div>Email : {{profile.email}}</div>
-  <div>Mobile : {{profile.mobile}} </div>
-  <br/>
-
-  <md-divider></md-divider>
-
-  <br/>
-  <h3>Address</h3>
-  <md-list-item *ngFor="let address of addressess">
-  <div>Address Type :{{address.addressType}}</div>
-  <div> Address:{{address.address1}} </div>
-  <div> Address :{{address.address2 +","+ address.postcode}} </div>
-  </md-list-item>
-  <br/>
-
-  <md-divider></md-divider>
-
-  <br/>
-  <h3>Guarantor</h3>
-  <md-list-item *ngFor="let guarantor of guarantors">
-  <div>Guarantor ID : {{guarantor.identityNo}} </div>
-  <div>Guarantor Name :  {{guarantor.name}} </div>
-  <div>Guarantor Type :  {{guarantor.guarantorType}} </div>
-  </md-list-item>
-  <br/>
-
-  <md-divider></md-divider>
-
-  <br/>
-  <h3>Guardian</h3>
-  <md-list-item *ngFor="let guardian of guardians">
-  <div>Guardian ID : {{guardian.identityNo}} </div>
-  <div>Guardian Name :  {{guardian.name}} </div>
-  <div>Guardian Type :  {{guardian.guardianType}} </div>
-  </md-list-item>
-  <br/>
-
-  <md-divider></md-divider>
-
-  <br/>
-  <h3>Contact</h3>
-  <md-list-item *ngFor="let contact of contacts">
-  <div>Contact ID : {{contact.identityNo}} </div>
-  <div>Contact Name :  {{contact.name}} </div>
-  <div>Contact Type :  {{contact.contactType}} </div>
-  </md-list-item>
-  <br/>
-
-  </md-tab>
-   <md-tab label="Course Information">
-
-  <!--Dalam ni woi tempat letak course information-->
-
-  </md-tab>
-  </md-tab-group>
-
-  </md-card-content>
-  <md-divider></md-divider>
-
-  <!--Actions Section Here-->
-  <md-card-actions>
+    <!-- Basic Card -->
+    <md-card>
+    <md-card-title>Student Personal Info</md-card-title>
+    <md-card-subtitle>Page under developments</md-card-subtitle>
+    <md-divider></md-divider>
+    <md-card-content>
+    <!--Tab Section Here-->
+    <md-tab-group>
+    <md-tab label="Student Information">
+    
+    <br/>
+    
+    <table width="100%" border="0">
+    <tr valign="top">
+    <td width="11%">&nbsp;</td>
+    <td width="1%">&nbsp;</td>
+    <td width="88%">&nbsp;</td>
+    </tr>
+    <tr valign="top">
+    <td colspan="3"><table width="100%" border="0">
+    <tr valign="top">
+    <td width="49%"><img src="#" width="120" height="150" /></td>
+    <td width="51%">
+    
+    <table width="100%">
+    <tr valign="top">
+    <td colspan="3"><b>Student Information</b></td>
+    </tr>
+    <tr valign="top">
+    <td width="19%">Matric No</td>
+    <td width="1%">:</td>
+    <td width="80%">{{profile.identityNo}}</td>
+    </tr>
+    <tr valign="top">
+    <td>Name</td>
+    <td>:</td>
+    <td>{{profile.name}}</td>
+    </tr>
+    <tr valign="top">
+    <td>Email</td>
+    <td>:</td>
+    <td>{{profile.email}}</td>
+    </tr>
+    <tr valign="top">
+    <td>Phone</td>
+    <td>:</td>
+    <td>&nbsp;</td>
+    </tr>
+    <tr valign="top">
+    <td>Mobile</td>
+    <td>:</td>
+    <td>{{profile.mobile}}</td>
+    </tr>
+    <tr valign="top">
+    <td>Fax</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    </tr>
+    </table>
+    
+    </td>
+    </tr>
+    </table></td>
+    </tr>
+    <tr valign="top">
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    </tr>
+    <tr valign="top">
+    <td colspan="3">
+    
+    <table width="100%" border="0">
+    <tr valign="top">
+    <td width="49%">
+    
+    <table width="100%" *ngFor="let address of addressess">
+    <tr valign="top">
+    <td colspan="3"><b>Address Information</b></td>
+    </tr>
+    <tr valign="top">
+    <td width="19%">{{address.addressType}}</td>
+    <td width="1%">:</td>
+    <td width="80%">{{address.address1 +","+ address.address2 +","+ address.postcode}}</td>
+    </tr>
+    <tr valign="top">
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    </tr>
+    </table>
+    
+    </td>
+    <td width="51%">
+    
+    <table width="100%" *ngFor="let guarantor of guarantors">
+    <tr valign="top">
+    <td colspan="3"><b>Guarantor Information</b></td>
+    </tr>
+    <tr valign="top">
+    <td width="19%">ID</td>
+    <td width="1%">:</td>
+    <td width="80%">{{guarantor.identityNo}}</td>
+    </tr>
+    <tr valign="top">
+    <td>Name</td>
+    <td>:</td>
+    <td>{{guarantor.name}}</td>
+    </tr>
+    <tr valign="top">
+    <td>Type</td>
+    <td>:</td>
+    <td>{{guarantor.guarantorType}}</td>
+    </tr>
+    <tr valign="top">
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    </tr>
+    </table>
+    
+    </td>
+    </tr>
+    
+    <tr valign="top">
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    </tr>
+    <tr>
+    <td>
+    
+    <table width="100%" *ngFor="let guardian of guardians">
+    <tr valign="top">
+    <td colspan="3"><b>Guardian Information</b></td>
+    </tr>
+    <tr valign="top">
+    <td width="20%">ID</td>
+    <td width="1%">:</td>
+    <td width="79%">{{guardian.identityNo}}</td>
+    </tr>
+    <tr valign="top">
+    <td>Name</td>
+    <td>:</td>
+    <td>{{guardian.name}}</td>
+    </tr>
+    <tr valign="top">
+    <td>Type</td>
+    <td>:</td>
+    <td>{{guardian.guardianType}}</td>
+    </tr>
+    <tr valign="top">
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    </tr>
+    </table>
+    
+    </td>
+    <td>
+    
+    <table width="100%" *ngFor="let contact of contacts">
+    <tr valign="top">
+    <td colspan="3"><b>Contact Information</b></td>
+    </tr>
+    <tr valign="top">
+    <td width="19%">ID</td>
+    <td width="1%">:</td>
+    <td width="80%">{{contact.identityNo}}</td>
+    </tr>
+    <tr valign="top">
+    <td>Name</td>
+    <td>:</td>
+    <td>{{contact.name}}</td>
+    </tr>
+    <tr valign="top">
+    <td>Type</td>
+    <td>:</td>
+    <td>{{contact.contactType}} </td>
+    </tr>
+    <tr valign="top">
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    </tr>
+    </table>
+    
+    </td>
+    </tr>
+    
+    </table>
+    
+    </td>
+    </tr>
+    <tr valign="top">
+    <td colspan="3">
+    
+    <!--Actions Section Here-->
+    <md-card-actions>
     <button md-button color="accent" class="text-upper">Update Profile</button>
     <button md-button class="text-upper">Cancel</button>
-  </md-card-actions>
-
-</md-card>
+    </md-card-actions>
+    
+    </td>
+    </tr>
+    </table>
+    
+    <!--
+    
+    <br/>
+    <h3>Student Information</h3>
+    <div>Matric No : {{profile.identityNo}}</div>
+    <div>Name : {{profile.name}}</div>
+    <div>Email : {{profile.email}}</div>
+    <div>Mobile : {{profile.mobile}} </div>
+    <br/>
+    
+    <md-divider></md-divider>
+    
+    <br/>
+    <h3>Address</h3>
+    <md-list-item *ngFor="let address of addressess">
+    <div>Address Type :{{address.addressType}}</div>
+    <div> Address:{{address.address1}} </div>
+    <div> Address :{{address.address2 +","+ address.postcode}} </div>
+    </md-list-item>
+    <br/>
+    
+    <md-divider></md-divider>
+    
+    <br/>
+    <h3>Guarantor</h3>
+    <md-list-item *ngFor="let guarantor of guarantors">
+    <div>Guarantor ID : {{guarantor.identityNo}} </div>
+    <div>Guarantor Name :  {{guarantor.name}} </div>
+    <div>Guarantor Type :  {{guarantor.guarantorType}} </div>
+    </md-list-item>
+    <br/>
+    
+    <md-divider></md-divider>
+    
+    <br/>
+    <h3>Guardian</h3>
+    <md-list-item *ngFor="let guardian of guardians">
+    <div>Guardian ID : {{guardian.identityNo}} </div>
+    <div>Guardian Name :  {{guardian.name}} </div>
+    <div>Guardian Type :  {{guardian.guardianType}} </div>
+    </md-list-item>
+    <br/>
+    
+    <md-divider></md-divider>
+    
+    <br/>
+    <h3>Contact</h3>
+    <md-list-item *ngFor="let contact of contacts">
+    <div>Contact ID : {{contact.identityNo}} </div>
+    <div>Contact Name :  {{contact.name}} </div>
+    <div>Contact Type :  {{contact.contactType}} </div>
+    </md-list-item>
+    <br/>
+    
+    -->
+    
+    </md-tab>
+    <md-tab label="Course Information">
+    
+    <!--Dalam ni woi tempat letak course information-->
+    
+    <table width="100%" border="0">
+    <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    </tr>
+    <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    </tr>
+    <tr>
+    <td colspan="2">
+    
+    <!--Actions Section Here-->
+    <md-card-actions>
+    <button md-button color="accent" class="text-upper">Update Profile</button>
+    <button md-button class="text-upper">Cancel</button>
+    </md-card-actions>
+    
+    </td>
+    </tr>
+    </table>
+    
+    </md-tab>
+    </md-tab-group>
+    
+    </md-card-content>
+    <md-divider></md-divider>
+    
+    
+    
+    </md-card>
