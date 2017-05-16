@@ -1,17 +1,15 @@
 import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy} from '@angular/core';
-import {Offering} from "../offering.interface";
 import { Section } from '../../sections/section.interface';
 
 @Component({
-  selector: 'pams-offering',
-  templateUrl: './offering.component.html',
+  selector: 'pams-offering-section',
+  templateUrl: './offering-section.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class OfferingComponent {
+export class OfferingSectionComponent {
 
-  @Input() offering: Offering;
   @Input() sections: Section[];
- // @Output() view = new EventEmitter<Offering>();
+  @Output() view = new EventEmitter<Section>();
 
       private columns: any[] = [
     { name: 'id', label: 'Id' },

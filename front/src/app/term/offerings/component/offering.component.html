@@ -9,47 +9,27 @@ Information for {{offering.code}}</md-card-subtitle> <md-divider></md-divider> <
 <br>
 
 
-</md-tab> <md-tab label="Course Information"> <!-- {{offering.program.title}}{{offering.course.title}} {{offering.course.titleMs}} {{offering.course.credit}} -->
+</md-tab> <md-tab label="Course Information"> <!-- {{offering.course.titleMs}}  -->
 
-<div>Course Title : </div>
+<div>Course Title :  {{offering.course.title}}</div>
 <br>
-<div>Course TitleEn : </div>
+<div>Course TitleEn :{{offering.course.titleMs}} </div>
 <br>
-<div>Course TitleEn : </div>
+<div>Course TitleMs :{{offering.course.titleEn}} </div>
 <br>
-<div>Credit : </div>
+<div>Credit :{{offering.course.credit}} </div>
 <br>
-</md-tab> <md-tab label="Program Information"> <!--{{offering.program.title}} {{offering.program.code}} {{offering.program.titleMs}}-->
+</md-tab> <md-tab label="Program Information"> <!--{{offering.program.title}} {{offering.program.code}} -->
 
-<div>Program Code : </div>
+<div>Program Code : {{offering.program.code}}</div>
 <br>
-<div>Program Title : </div>
+<div>Program Title :{{offering.program.title}} </div>
 <br>
-<div>Program Title : </div>
+<div>Program TitleMs :{{offering.program.titleMs}} </div>
 <br>
 </md-tab> </md-tab-group> </md-card-content> </md-card>
 
-<md-card> <md-card-title>SECTIONS BY OFFERING  ({{offering.code}})</md-card-title> <md-card-subtitle>List Sections By Offering
- {{offering.code}}</md-card-subtitle> <md-divider></md-divider> <md-card-content>
-<!--Tab Section  {{section.code}} Here--> 
 
-<td-data-table [data]="sections" [columns]="columns" [sortBy]="summary"
-	[sortOrder]="ASC" [sortable]="false" [multiple]="false"
-	[selectable]="false" (rowSelect)="view.emit($event)" dense>
-<template tdDataTableTemplate="key" let-value="value" let-row="row"
-	let-column="column">
-<div layout="row">
-	<span flex>{{value}}</span>
-</div>
-</template> <template tdDataTableTemplate="action" let-value="value" let-row="row"
-	let-column="column">
-<div layout="row">
-	<a md-button color="accent" class="text-upper"
-		[routerLink]="['/term/sections', row['canonicalCode']]"> <span>View</span>
-	</a>
-</div>
-</template> </td-data-table> 
-  </md-card-content> </md-card>
 
 
 
