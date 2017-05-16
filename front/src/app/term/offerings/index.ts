@@ -4,7 +4,7 @@ import {NgModule, ModuleWithProviders} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {ReactiveFormsModule} from '@angular/forms';
 import {CovalentCoreModule} from '@covalent/core';
-
+import {OfferingApplicationActions} from "./offering-application.action";
 import {TermService} from '../../../services';
 import {CommonService} from '../../../services';
 import {IdentityService} from '../../../services';
@@ -17,7 +17,7 @@ import {OfferingEffects} from "./offering.effect";
 import {OfferingDetailPage} from "./offering-detail.page";
 import {OfferingComponent} from "./component/offering.component";
 import {OfferingEditorDialog} from "./dialog/offering-editor.dialog";
-import { OfferingApplicationTaskCreatorDialog } from "./dialog/offering-application-task-creator.dialog";
+import {OfferingApplicationTaskCreatorDialog} from "./dialog/offering-application-task-creator.dialog";
 
 @NgModule({
   imports: [
@@ -39,7 +39,7 @@ import { OfferingApplicationTaskCreatorDialog } from "./dialog/offering-applicat
     //dialog
     OfferingEditorDialog,
     OfferingApplicationTaskCreatorDialog,
-    
+        
   ],
   exports: [],
 })
@@ -54,6 +54,7 @@ export class OfferingSubModule {
         IdentityService,
         CommonService,
         OfferingActions,
+        OfferingApplicationActions,
       ],
     };
   }
