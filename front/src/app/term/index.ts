@@ -38,7 +38,7 @@ import {
   EnrollmentApplicationTaskListState, pooledEnrollmentApplicationTaskListReducer
 } from "./enrollment-applications/enrollment-application-task-list.reducer";
 import {sectionReducer, SectionState} from "./sections/section.reducer";
-import {sectionListReducer, SectionListState} from "./sections/section-list.reducer";
+import {sectionListReducer, SectionListState} from "./offerings/section-list.reducer";
 import {Section} from "./sections/section.interface";
 import {SectionActions} from "./sections/section.action";
 import {SectionSubModule} from "./sections/index";

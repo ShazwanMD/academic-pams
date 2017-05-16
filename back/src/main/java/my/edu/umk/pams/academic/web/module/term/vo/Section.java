@@ -2,9 +2,6 @@ package my.edu.umk.pams.academic.web.module.term.vo;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
-import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
-import my.edu.umk.pams.academic.term.model.AdOffering;
 import my.edu.umk.pams.academic.web.module.core.vo.MetaObject;
 import my.edu.umk.pams.academic.web.module.planner.vo.AcademicSession;
 
@@ -19,6 +16,8 @@ public class Section extends MetaObject {
     private Integer capacity;
     private String canonicalCode;
     private Integer ordinal;
+    private Integer enrollmentCount;
+    private Integer appointmentCount;
     private AcademicSession session;
     private Offering offering;
 
@@ -53,7 +52,23 @@ public class Section extends MetaObject {
     public void setOrdinal(Integer ordinal) {
         this.ordinal = ordinal;
     }
-    
+
+    public Integer getEnrollmentCount() {
+        return enrollmentCount;
+    }
+
+    public void setEnrollmentCount(Integer enrollmentCount) {
+        this.enrollmentCount = enrollmentCount;
+    }
+
+    public Integer getAppointmentCount() {
+        return appointmentCount;
+    }
+
+    public void setAppointmentCount(Integer appointmentCount) {
+        this.appointmentCount = appointmentCount;
+    }
+
     public AcademicSession getSession() {
         return session;
     }

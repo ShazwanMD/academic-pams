@@ -1,14 +1,15 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import {Component, OnInit, ChangeDetectionStrategy} from '@angular/core';
+import {Router, ActivatedRoute} from '@angular/router';
 
-import { IdentityService } from '../../../services';
-import { TermService } from '../../../services';
-import { CommonService } from '../../../services';
-import { Store } from "@ngrx/store";
-import { Observable } from "rxjs";
-import { Offering } from "./offering.interface";
-import { OfferingActions } from "./offering.action";
-import { TermModuleState } from "../index";
+import {IdentityService} from '../../../services';
+import {TermService} from '../../../services';
+import {CommonService} from '../../../services';
+import {Store} from "@ngrx/store";
+import {Observable} from "rxjs";
+import {Offering} from "./offering.interface";
+import {OfferingActions} from "./offering.action";
+import {TermModuleState} from "../index";
+import {Section} from "../sections/section.interface";
 
 @Component({
   selector: 'pams-offering-detail',
@@ -18,16 +19,17 @@ import { TermModuleState } from "../index";
 export class OfferingDetailPage implements OnInit {
 
   private OFFERING = "termModuleState.offering".split(".");
-  private SECTIONS = "profileModuleState.sections".split(".");  
-    
+  private SECTIONS = "termModuleState.sections".split(".");
+
+
   private offering$: Observable<Offering>;
-  private sections$: Observable<Offering>;
+  private sections$: Observable<Section[]>;
 
   constructor(private router: Router,
-    private route: ActivatedRoute,
-    private actions: OfferingActions,
-    private termService: TermService,
-    private store: Store<TermModuleState>) {
+              private route: ActivatedRoute,
+              private actions: OfferingActions,
+              private termService: TermService,
+              private store: Store<TermModuleState>) {
 
     this.offering$ = this.store.select(...this.OFFERING);
     this.sections$ = this.store.select(...this.SECTIONS);
@@ -37,8 +39,6 @@ export class OfferingDetailPage implements OnInit {
     this.route.params.subscribe((params: { canonicalCode: string }) => {
       let canonicalCode: string = params.canonicalCode;
       this.store.dispatch(this.actions.findOfferingByCanonicalCode(canonicalCode));
-      //this.offering$ = this.termService.findOfferingByCanonicalCode(canonicalCode);
-
 
     });
   }

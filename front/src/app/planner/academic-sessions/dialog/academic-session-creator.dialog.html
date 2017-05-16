@@ -1,11 +1,12 @@
-<!--h2 md-dialog-title>Academic Session Creator</h2-->
-
+<h2 md-dialog-title>Academic Session Creator</h2>
     <md-card class="">
-      <md-card-title>Create New Academic Session</md-card-title>
-      <md-card-subtitle>Academic Session form</md-card-subtitle>
+      <md-card-title>Create New Appointment</md-card-title>
+      <md-card-subtitle>Appointment form</md-card-subtitle>
+
 
 <md-dialog-content>
-  <form [formGroup]="createForm">
+  <!--form [formGroup]="createForm"-->
+  <form>
     <div layout="row" layout-margin>
       <md-input-container flex>
         <input mdInput placeholder="Code" formControlName="code">
@@ -27,3 +28,4 @@
 <md-dialog-actions align="end">
   <button md-raised-button color="accent" class="text-upper" (click)="save(createForm.value, newForm.valid)">Save</button>
 </md-dialog-actions>
+</md-card>

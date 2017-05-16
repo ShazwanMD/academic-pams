@@ -12,6 +12,7 @@ export const OfferingRoutes: Routes = [
   
  
   {path: 'term/offerings/:canonicalCode', component: OfferingDetailPage},
+   {path: 'term/offerings/:canonicalCode/sections', component: OfferingDetailPage},
  // {path: 'term/offerings', dialog: OfferingEditorDialog},
   // {path: 'offerings-create', component: OfferingCreatePage},
   // {path: 'offerings-activate/:code', component: OfferingActivatePage},

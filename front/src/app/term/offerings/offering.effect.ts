@@ -23,11 +23,15 @@ export class OfferingEffects {
     .switchMap(canonicalCode => this.termService.findOfferingByCanonicalCode(canonicalCode))
     .map(offering => this.offeringActions.findOfferingByCanonicalCodeSuccess(offering))
     .mergeMap(action => from([action,
-      this.offeringActions.findSections(action.payload)    
-     
+      this.offeringActions.findSectionsByOffering(action.payload)
+
     ]));
-    
-    
-    
-    
+
+  @Effect() findSectionsByOffering$ = this.actions$
+    .ofType(OfferingActions.FIND_SECTIONS_BY_OFFERING)
+    .map(action => action.payload)
+    .switchMap(offering => this.termService.findSectionsByOffering(offering))
+    .map(sections => this.offeringActions.findSectionsByOfferingSuccess(sections));
+
+
 }
