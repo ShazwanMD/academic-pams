@@ -21,8 +21,9 @@
   <br/>
   <h3>Address</h3>
   <md-list-item *ngFor="let address of addressess">
-  <div> {{address.address1}} </div>
-  <div> {{address.address2 +","+ address.postcode}} </div>
+  <div>Address Type :{{address.addressType}}</div>
+  <div> Address:{{address.address1}} </div>
+  <div> Address :{{address.address2 +","+ address.postcode}} </div>
   </md-list-item>
   <br/>
 
@@ -33,6 +34,7 @@
   <md-list-item *ngFor="let guarantor of guarantors">
   <div>Guarantor ID : {{guarantor.identityNo}} </div>
   <div>Guarantor Name :  {{guarantor.name}} </div>
+  <div>Guarantor Type :  {{guarantor.guarantorType}} </div>
   </md-list-item>
   <br/>
 
@@ -43,6 +45,7 @@
   <md-list-item *ngFor="let guardian of guardians">
   <div>Guardian ID : {{guardian.identityNo}} </div>
   <div>Guardian Name :  {{guardian.name}} </div>
+  <div>Guardian Type :  {{guardian.guardianType}} </div>
   </md-list-item>
   <br/>
 
@@ -53,13 +56,12 @@
   <md-list-item *ngFor="let contact of contacts">
   <div>Contact ID : {{contact.identityNo}} </div>
   <div>Contact Name :  {{contact.name}} </div>
-  <div>Contact Name :  {{contact.contactType}} </div>
+  <div>Contact Type :  {{contact.contactType}} </div>
   </md-list-item>
   <br/>
 
   </md-tab>
-
-  <md-tab label="Course Information">
+   <md-tab label="Course Information">
 
   <!--Dalam ni woi tempat letak course information-->
 
