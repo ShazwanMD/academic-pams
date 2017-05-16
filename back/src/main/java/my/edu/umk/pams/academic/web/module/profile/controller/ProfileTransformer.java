@@ -32,7 +32,7 @@ public class ProfileTransformer {
         m.setId(guardian.getId());
         m.setName(guardian.getName());
         m.setIdentityNo(guardian.getIdentityNo());
-//        m.setIdentityNo(guardian.getType().name());
+        m.setGuardianType(GuardianType.get(guardian.getType().ordinal()));
         return m;
     }
 
@@ -52,6 +52,7 @@ public class ProfileTransformer {
         m.setAddress2(address.getAddress2());
         m.setAddress3(address.getAddress3());
         m.setPostcode(address.getPostCode());
+        m.setAddressType(AddressType.get(address.getType().ordinal()));
         return m;
     }
 
