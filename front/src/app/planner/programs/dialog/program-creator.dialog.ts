@@ -50,6 +50,9 @@ export class ProgramCreatorDialog implements OnInit {
   }
   
    save(code: Program, isValid: boolean) {
+
+console.log(code.code);
+
         if (!code.id) this.store.dispatch(this.actions.saveProgram(code));
         else  this.store.dispatch(this.actions.updateProgram(code));
         this.dialog.close();
