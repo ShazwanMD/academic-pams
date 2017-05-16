@@ -40,7 +40,7 @@ export class AppointmentDetailPage implements OnInit {
   }
 
   goBack(route: string): void {
-    this.router.navigate(['/offerings']);
+    this.router.navigate(['/appointments']);
   }
 }
 
