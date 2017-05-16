@@ -16,6 +16,7 @@ import {EffectsModule} from "@ngrx/effects";
 import {OfferingEffects} from "./offering.effect";
 import {OfferingDetailPage} from "./offering-detail.page";
 import {OfferingComponent} from "./component/offering.component";
+import {OfferingSectionComponent} from "./component/offering-section.component";
 import {OfferingEditorDialog} from "./dialog/offering-editor.dialog";
 import {OfferingApplicationTaskCreatorDialog} from "./dialog/offering-application-task-creator.dialog";
 
@@ -35,6 +36,7 @@ import {OfferingApplicationTaskCreatorDialog} from "./dialog/offering-applicatio
     // component
     OfferingListComponent,
     OfferingComponent,
+    OfferingSectionComponent,
     
     //dialog
     OfferingEditorDialog,
