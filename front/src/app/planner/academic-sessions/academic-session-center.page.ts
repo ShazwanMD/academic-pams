@@ -11,7 +11,7 @@ import {CommonService} from '../../../services';
 import { AcademicSession } from './academic-session.interface';
 import {AcademicSessionActions} from "./academic-session.action";
 import {PlannerModuleState} from "../index";
-import { AcademicSessionEditorDialog } from './dialog/academic-session-editor.dialog';
+import { AcademicSessionCreatorDialog } from './dialog/academic-session-creator.dialog';
 
 @Component({
   selector: 'pams-academic-session-center',
@@ -22,7 +22,7 @@ export class AcademicSessionCenterPage implements OnInit {
   private ACADEMIC_SESSIONS = "plannerModuleState.academicSessions".split(".");
   private academicSessions$: Observable<AcademicSession[]>;
 
-  private creatorDialogRef: MdDialogRef<AcademicSessionEditorDialog>;
+  private creatorDialogRef: MdDialogRef<AcademicSessionCreatorDialog>;
   private columns: any[] = [
     {name: 'code', label: 'Code'},
     {name: 'description', label: 'Description'},
@@ -43,6 +43,11 @@ export class AcademicSessionCenterPage implements OnInit {
     this.store.dispatch(this.actions.findAcademicSessions());
   }
 
+  viewAcademicSession(academicSession: AcademicSession) {
+    console.log("academicSession: " + academicSession.code);
+    this.router.navigate(['/academic-session-detail', academicSession.code]);
+  }
+
     createDialog(): void {
     this.showDialog(null);
   }
@@ -57,7 +62,7 @@ export class AcademicSessionCenterPage implements OnInit {
     config.width = '50%';
     config.height = '50%';
     config.position = {top: '0px'};
-    this.creatorDialogRef = this.dialog.open(AcademicSessionEditorDialog, config);
+    this.creatorDialogRef = this.dialog.open(AcademicSessionCreatorDialog, config);
     if(code) this.creatorDialogRef.componentInstance.academicSession = code; 
    
     // set
@@ -65,15 +70,6 @@ export class AcademicSessionCenterPage implements OnInit {
       console.log("close dialog");
     });
    }
-
-  goBack(route: string): void {
-    this.router.navigate(['/academic-sessions']);
-  }
-
-  viewAcademicSession(academicSession: AcademicSession) {
-    console.log("academicSession: " + academicSession.code);
-    this.router.navigate(['/academic-session-detail', academicSession.code]);
-  }
 }
 
 
