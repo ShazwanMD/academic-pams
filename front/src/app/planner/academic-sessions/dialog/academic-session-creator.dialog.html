@@ -1,0 +1,28 @@
+<h2 md-dialog-title>Academic Session Creator</h2>
+
+<md-dialog-content>
+  <form [formGroup]="createForm">
+    <div layout="row" class="pad-bottom">
+      <md-input-container flex>
+        <input mdInput
+               placeholder="Code"
+               formControlName="code"
+               flex/>
+      </md-input-container>
+    </div>
+    
+    <div layout="row" class="pad-bottom">
+      <md-input-container flex>
+        <input mdInput
+               placeholder="Description"
+               formControlName="description"
+               flex/>
+      </md-input-container>
+    </div>
+
+  </form>
+</md-dialog-content>
+
+<md-dialog-actions align="end">
+  <button md-raised-button color="accent" (click)="save(createForm.value, newForm.valid)">Save</button>
+</md-dialog-actions>
