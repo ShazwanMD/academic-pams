@@ -9,6 +9,7 @@ import {IdentityService} from '../../services';
 import {TermService} from "../../services/term.service";
 import {TermPage} from "./term.page";
 import {OfferingSubModule} from "./offerings/index";
+import {OfferingActions} from "./offerings/offering.action";
 import {EnrollmentSubModule} from "./enrollments/index";
 import {offeringReducer, OfferingState} from "./offerings/offering.reducer";
 import {enrollmentReducer, EnrollmentState} from "./enrollments/enrollment.reducer";
@@ -132,6 +133,7 @@ export class TermModule {
         AppointmentActions,
         EnrollmentActions,
         SectionActions,
+        OfferingActions,
 
       ],
     };
