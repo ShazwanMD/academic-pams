@@ -10,11 +10,22 @@ import java.io.IOException;
  * @author PAMS
  */
 public class ReligionCode extends MetaObject {
+	private Long id;
     private String code;
     private String descriptionEn;
     private String descriptionMs;
+    
+    
 
-    public String getCode() {
+    public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getCode() {
         return code;
     }
 
