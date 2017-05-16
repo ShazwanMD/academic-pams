@@ -8,6 +8,7 @@ import my.edu.umk.pams.academic.web.module.core.vo.MetaObject;
 public class Guarantor extends MetaObject {
     private String identityNo;
     private String name;
+    private GuarantorType guarantorType;
 
     public String getIdentityNo() {
         return identityNo;
@@ -23,5 +24,13 @@ public class Guarantor extends MetaObject {
 
     public void setName(String name) {
         this.name = name;
+    }
+    
+    public GuarantorType getGuarantorType() {
+        return guarantorType;
+    }
+
+    public void setGuarantorType(GuarantorType guarantorType) {
+        this.guarantorType = guarantorType;
     }
 }
