@@ -13,6 +13,7 @@ import my.edu.umk.pams.academic.common.model.AdParliamentCode;
 import my.edu.umk.pams.academic.common.model.AdRaceCode;
 import my.edu.umk.pams.academic.common.model.AdReligionCode;
 import my.edu.umk.pams.academic.common.model.AdStateCode;
+import my.edu.umk.pams.academic.common.model.AdStudyMode;
 import my.edu.umk.pams.academic.web.module.common.vo.BankCode;
 import my.edu.umk.pams.academic.web.module.common.vo.CityCode;
 import my.edu.umk.pams.academic.web.module.common.vo.CountryCode;
@@ -26,6 +27,7 @@ import my.edu.umk.pams.academic.web.module.common.vo.ParliamentCode;
 import my.edu.umk.pams.academic.web.module.common.vo.RaceCode;
 import my.edu.umk.pams.academic.web.module.common.vo.ReligionCode;
 import my.edu.umk.pams.academic.web.module.common.vo.StateCode;
+import my.edu.umk.pams.academic.web.module.common.vo.StudyMode;
 
 import org.springframework.stereotype.Component;
 
@@ -37,6 +39,26 @@ import java.util.stream.Collectors;
  */
 @Component("commonTransformer")
 public class CommonTransformer {
+
+	//====================================================================================================
+	// STUDY_MODE
+	//====================================================================================================
+
+	public StudyMode toStudyModeVo(AdStudyMode e) {
+	    StudyMode vo = new StudyMode();
+	        vo.setId(e.getId());
+	        vo.setCode(e.getCode());
+	        vo.setPrefix(e.getPrefix());
+	        vo.setDescription(e.getDescription());
+	        return vo;
+	        }
+
+	public List<StudyMode> toStudyModeVos(List<AdStudyMode> e) {
+	        List<StudyMode> vos = e.stream()
+	        .map((e1) -> toStudyModeVo(e1))
+	        .collect(Collectors.toList());
+	        return vos;
+	        }
 
 
 	//====================================================================================================

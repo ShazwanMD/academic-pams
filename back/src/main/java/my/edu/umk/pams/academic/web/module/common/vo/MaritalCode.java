@@ -10,43 +10,52 @@ import java.io.IOException;
  * @author PAMS
  */
 public class MaritalCode extends MetaObject {
-    private String code;
-    private String descriptionEn;
-    private String descriptionMs;
+	private Long id;
+	private String code;
+	private String descriptionEn;
+	private String descriptionMs;
 
-    public String getCode() {
-        return code;
-    }
+	public Long getId() {
+		return id;
+	}
 
-    public void setCode(String code) {
-        this.code = code;
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public String getDescriptionEn() {
-        return descriptionEn;
-    }
+	public String getCode() {
+		return code;
+	}
 
-    public void setDescriptionEn(String descriptionEn) {
-        this.descriptionEn = descriptionEn;
-    }
-    
-    
-      public String getDescriptionMs() {
-        return descriptionMs;
-    }
+	public void setCode(String code) {
+		this.code = code;
+	}
 
-    public void setDescriptionMs(String descriptionMs) {
-    this.descriptionMs = descriptionMs;
-    }
-    @JsonCreator
-    public static MaritalCode create(String jsonString) {
-    MaritalCode o = null;
-        try {
-            ObjectMapper mapper = new ObjectMapper();
-            o = mapper.readValue(jsonString, MaritalCode.class);
-        } catch (IOException e) {
-            // handle
-        }
-        return o;
-    }
+	public String getDescriptionEn() {
+		return descriptionEn;
+	}
+
+	public void setDescriptionEn(String descriptionEn) {
+		this.descriptionEn = descriptionEn;
+	}
+
+	public String getDescriptionMs() {
+		return descriptionMs;
+	}
+
+	public void setDescriptionMs(String descriptionMs) {
+		this.descriptionMs = descriptionMs;
+	}
+
+	@JsonCreator
+	public static MaritalCode create(String jsonString) {
+		MaritalCode o = null;
+		try {
+			ObjectMapper mapper = new ObjectMapper();
+			o = mapper.readValue(jsonString, MaritalCode.class);
+		} catch (IOException e) {
+			// handle
+		}
+		return o;
+	}
 }
