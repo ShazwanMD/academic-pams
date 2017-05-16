@@ -69,7 +69,6 @@ export class AdmissionApplicationSubModule {
         IdentityService,
         CommonService,
         AdmissionApplicationActions,
-        
       ],
     };
   }

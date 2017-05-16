@@ -15,8 +15,7 @@ import {AcademicSessionActions} from "./academic-session.action";
 import {AcademicSessionEffects} from   "./academic-session.effect";
 import {EffectsModule} from "@ngrx/effects";
 import {AcademicSessionSelectComponent} from "./component/academic-session-select.component";
-import { AcademicSessionCreatorDialog } from './dialog/academic-session-creator.dialog';
-import { AcademicSession } from './academic-session.interface';
+import {AcademicSessionCreatorDialog} from './dialog/academic-session-creator.dialog';
 
 @NgModule({
   imports: [
@@ -35,15 +34,16 @@ import { AcademicSession } from './academic-session.interface';
     AcademicSessionListComponent,
     AcademicSessionComponent,
     AcademicSessionSelectComponent,
-  
+
     //dialog
     AcademicSessionCreatorDialog,
   ],
-  
-  exports: [ ],
-    entryComponents:[
-    AcademicSessionCreatorDialog,
+
+  exports: [
     AcademicSessionSelectComponent,
+  ],
+  entryComponents: [
+    AcademicSessionCreatorDialog,
   ],
 })
 
