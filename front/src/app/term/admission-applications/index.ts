@@ -14,12 +14,10 @@ import {AdmissionSubModule} from "../admissions/index";
 import {AcademicSessionSubModule} from "../../planner/academic-sessions/index";
 import {AdmissionApplicationDraftTaskPanel} from "./panel/admission-application-draft-task.panel";
 import {AdmissionApplicationTaskCreatorDialog} from "./dialog/admission-application-task-creator.dialog";
-import {AdmissionApplicationItemComponent} from "./component/admission-application-item-list.component";
 import {AdmissionApplicationTaskListComponent} from "./component/admission-application-task-list.component";
 import {AdmissionApplicationTaskViewPage} from "./admission-application-task-view.page";
 import {AdmissionApplicationTaskWorkflowPanel} from "./panel/admission-application-task-workflow.panel";
 import {AdmissionApplicationTaskStatusComponent} from "./component/admission-application-task-status.component";
-import {AdmissionApplicationItemEditorDialog} from "./dialog/admission-application-item-editor.dialog";
 import {SectionSubModule} from "../sections/index";
 import {AdmissionApplicationCenterPage} from "./admission-application-center.page";
 
@@ -42,19 +40,15 @@ import {AdmissionApplicationCenterPage} from "./admission-application-center.pag
     // component
     AdmissionApplicationTaskWorkflowPanel,
     AdmissionApplicationDraftTaskPanel,
-    AdmissionApplicationItemComponent,
     AdmissionApplicationTaskListComponent,
     AdmissionApplicationTaskStatusComponent,
 
     //dialog
     AdmissionApplicationTaskCreatorDialog,
-    AdmissionApplicationItemEditorDialog,
   ],
-  exports: [
-  ],
+  exports: [],
   entryComponents: [
     AdmissionApplicationTaskCreatorDialog,
-    AdmissionApplicationItemEditorDialog,
     AdmissionApplicationDraftTaskPanel,
   ]
 })

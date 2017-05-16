@@ -2,10 +2,7 @@ package my.edu.umk.pams.academic.web.module.profile.controller;
 
 import my.edu.umk.pams.academic.identity.model.*;
 import my.edu.umk.pams.academic.web.module.identity.vo.Student;
-import my.edu.umk.pams.academic.web.module.profile.vo.Address;
-import my.edu.umk.pams.academic.web.module.profile.vo.Contact;
-import my.edu.umk.pams.academic.web.module.profile.vo.Guarantor;
-import my.edu.umk.pams.academic.web.module.profile.vo.Guardian;
+import my.edu.umk.pams.academic.web.module.profile.vo.*;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -64,7 +61,7 @@ public class ProfileTransformer {
         m.setId(contact.getId());
         m.setName(contact.getName());
         m.setIdentityNo(contact.getIdentityNo());
-//        m.setType(contact.getType().name());
+        m.setContactType(ContactType.get(contact.getType().ordinal()));
         return m;
     }
 
