@@ -9,6 +9,7 @@ import { Observable } from "rxjs";
 import { Offering } from "./offering.interface";
 import { OfferingActions } from "./offering.action";
 import { TermModuleState } from "../index";
+import { Section } from "../sections/section.interface";
 
 @Component({
   selector: 'pams-offering-detail',
@@ -18,10 +19,11 @@ import { TermModuleState } from "../index";
 export class OfferingDetailPage implements OnInit {
 
   private OFFERING = "termModuleState.offering".split(".");
-  private SECTIONS = "profileModuleState.sections".split(".");  
+  private SECTIONS = "termModuleState.sections".split(".");
+  
     
   private offering$: Observable<Offering>;
-  private sections$: Observable<Offering>;
+   private sections$: Observable<Section[]>;
 
   constructor(private router: Router,
     private route: ActivatedRoute,
@@ -34,13 +36,16 @@ export class OfferingDetailPage implements OnInit {
   }
 
   ngOnInit(): void {
+      
+   
+      
     this.route.params.subscribe((params: { canonicalCode: string }) => {
       let canonicalCode: string = params.canonicalCode;
       this.store.dispatch(this.actions.findOfferingByCanonicalCode(canonicalCode));
-      //this.offering$ = this.termService.findOfferingByCanonicalCode(canonicalCode);
-
-
+         
     });
+     //  this.store.dispatch(this.actions.findSections());
+        
   }
 
   goBack(route: string): void {
