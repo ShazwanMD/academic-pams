@@ -34,6 +34,19 @@ export class PlannerService {
       .map((res: Response) => <AcademicSession>res.json());
   }
 
+activateAcademicSession (academicSession: AcademicSession): Observable<String> {
+    let headers = new Headers({'Authorization': 'Bearer TODO'});
+    let options = new RequestOptions({headers: headers});
+    return this.http.get(environment.endpoint + '/api/planner/academicSessions/' + academicSession.code + '/activate', options)
+      .map((res: Response) => <String>res.json());
+  }
+
+  deactivateAcademicSession (academicSession: AcademicSession): Observable<String> {
+    let headers = new Headers({'Authorization': 'Bearer TODO'});
+    let options = new RequestOptions({headers: headers});
+    return this.http.get(environment.endpoint + '/api/planner/academicSessions/' + academicSession.code + '/deactivate', options)
+      .map((res: Response) => <String>res.json());
+  }
 
   // ====================================================================================================
   // FACULTY
