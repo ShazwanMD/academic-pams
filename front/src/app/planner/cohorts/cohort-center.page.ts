@@ -1,15 +1,16 @@
-import {Component, OnInit, ChangeDetectionStrategy, ViewContainerRef} from '@angular/core';
-import {Router, ActivatedRoute} from '@angular/router';
-
+import { Router, ActivatedRoute } from '@angular/router';
+import { Component, OnInit, ViewContainerRef } from '@angular/core';
+import { MdDialogRef } from '@angular/material';
+import { MdDialogConfig } from '@angular/material';
+import { MdDialog } from '@angular/material';
 import {IdentityService} from '../../../services';
 import {CommonService} from '../../../services';
 import {Store} from "@ngrx/store";
 import {Observable} from "rxjs";
 import {Cohort} from "./cohort.interface";
+import {ProgramActions} from "./cohort.action";
 import {PlannerModuleState} from "../index";
-import {CohortActions} from "./cohort.action";
-import {CohortEditorDialog} from "./dialog/cohort-editor.dialog";
-import {MdDialog, MdDialogConfig, MdDialogRef} from "@angular/material";
+import { CohortCreatorDialog } from './dialog/cohort-creator.dialog'
 
 
 @Component({
@@ -22,7 +23,12 @@ export class CohortCenterPage implements OnInit {
     private COHORTS = "plannerModuleState.cohorts".split(".");
     private creatorDialogRef: MdDialogRef<CohortEditorDialog>;
 
-
+    private columns: any[] = [
+        { name: 'code', label: 'Code' },
+        { name: 'title', label: 'Title' },
+        { name: 'description', label: 'Description' },
+        { name: 'action', label: '' }
+    ];
     constructor(private router: Router,
         private route: ActivatedRoute,
         private actions: CohortActions,
@@ -40,7 +46,18 @@ export class CohortCenterPage implements OnInit {
         console.log("cohort: " + cohort.id);
         this.router.navigate(['/cohorts-detail', cohort.id]);
     }
-    showDialog(): void {
+    
+      ngOnInit(): void {
+        console.log("find cohorts");
+        this.store.dispatch(this.actions.findCohorts());
+    }
+    
+     createDialog(): void {
+    this.showDialog(null);
+  }
+
+    
+    private showDialog(): void {
         console.log("showDialog");
         let config = new MdDialogConfig();
         config.viewContainerRef = this.vcf;
@@ -55,9 +72,6 @@ export class CohortCenterPage implements OnInit {
         })
     };
 
-    ngOnInit(): void {
-        console.log("find cohorts");
-        this.store.dispatch(this.actions.findCohorts());
-    }
+  
 }
 
