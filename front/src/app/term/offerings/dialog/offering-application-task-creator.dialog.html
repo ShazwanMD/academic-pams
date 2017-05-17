@@ -4,23 +4,33 @@
   
     <div layout="row" class="pad-bottom">
       <md-input-container flex>
-        <input mdInput #description
-               placeholder="description"
-               formControlName="description"
+        <input mdInput #capacity
+               placeholder="capacity"
+               formControlName="capacity"
                value="Description"
                flex/>
       </md-input-container>
     </div>
-    <div layout="row" class="pad-bottom">
+ 
+     <div layout="row" class="pad-bottom">
       <md-input-container flex>
-        <input mdInput #sourceNo
-               placeholder="sourceNo"
-               formControlName="sourceNo"
+        <input mdInput #canonical_code
+               placeholder="canonical_code"
+               formControlName="canonical_code"
                value="Description"
                flex/>
       </md-input-container>
     </div>
     
+     <div layout="row" class="pad-bottom">
+      <md-input-container flex>
+        <input mdInput #canonical_code
+               placeholder="title"
+               formControlName="title"
+               value="Description"
+               flex/>
+      </md-input-container>
+    </div>
       
     <div layout="row" class="pad-bottom pad-top">
         <pams-course-select
@@ -29,13 +39,14 @@
       </pams-course-select> 
     </div>
     
-    <div layout="row" class="pad-bottom pad-top">
-      <!-- <pams-academic-session-select
-        [placeholder]="'Select Session'"
-        [innerFormControl]="createForm.controls['academicSession']">
-      </pams-academic-session-select> -->
+       <div layout="row" class="pad-bottom pad-top">
+        <pams-program-select ng-style="{'width': getMaxLength() + 'px'}"
+        [placeholder]="'Select Program'"
+        [innerFormControl]="createForm.controls['program']">
+      </pams-program-select> 
     </div>
-  </form>
+    
+    </form>
 </md-dialog-content>
 <md-dialog-actions align="end">
   <button md-raised-button color="accent" (click)="save(createForm.value, createForm.valid)">Save</button>

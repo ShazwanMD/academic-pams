@@ -19,6 +19,7 @@ import {ProgramCreatorDialog } from "./dialog/program-creator.dialog";
 import {EffectsModule} from "@ngrx/effects";
 import {ProgramEffects} from "./program.effect";
 import {PlannerModuleState} from "../index";
+import {ProgramSelectComponent} from "./component/program-select.component";
 
 @NgModule({
   imports: [
@@ -37,7 +38,7 @@ import {PlannerModuleState} from "../index";
     // component
     ProgramListComponent,
     ProgramComponent,
-    // ProgramSelectComponent,
+    ProgramSelectComponent,
 
     // dialog
     ProgramEditorDialog,
@@ -45,7 +46,7 @@ import {PlannerModuleState} from "../index";
   ],
 
   exports: [
-    // ProgramSelectComponent,
+    ProgramSelectComponent,
   ],
 
   entryComponents: [

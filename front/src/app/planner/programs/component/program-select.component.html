@@ -1,5 +1,5 @@
 <md-select [placeholder]="placeholder"
 	(change)="selectChangeEvent($event.value)" flex>
 	 <md-option *ngFor="let program of programs$ | async" [value]="programs">
-{{program.code}}: {{program.code}}
-{{program.code}} </md-option> </md-select>
+{{program.code}}: {{program.title}}
+ </md-option> </md-select>
