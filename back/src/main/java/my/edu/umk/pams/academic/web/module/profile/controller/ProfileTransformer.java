@@ -2,6 +2,7 @@ package my.edu.umk.pams.academic.web.module.profile.controller;
 
 import my.edu.umk.pams.academic.identity.model.*;
 import my.edu.umk.pams.academic.web.module.identity.vo.Student;
+import my.edu.umk.pams.academic.web.module.identity.vo.StudentStatus;
 import my.edu.umk.pams.academic.web.module.profile.vo.*;
 import org.springframework.stereotype.Component;
 
@@ -24,6 +25,8 @@ public class ProfileTransformer {
         m.setMobile(student.getMobile());
         m.setPhone(student.getPhone());
         m.setFax(student.getFax());
+        m.setStudentStatus(StudentStatus.get(student.getStudentStatus().ordinal()));
+       
         return m;
     }
 
