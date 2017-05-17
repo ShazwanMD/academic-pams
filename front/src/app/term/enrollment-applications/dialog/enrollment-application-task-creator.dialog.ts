@@ -8,6 +8,7 @@ import {EnrollmentApplication} from "../enrollment-application.interface";
 import {TermModuleState} from "../../index";
 import {AcademicSession} from "../../../planner/academic-sessions/academic-session.interface";
 import {Admission} from "../../admissions/admission.interface";
+import {Section} from "../../sections/section.interface";
 import {FlowState} from "../../../core/flow-state.enum";
 import {MetaState} from "../../../core/meta-state.enum";
 
@@ -36,6 +37,7 @@ export class EnrollmentApplicationTaskCreatorDialog implements OnInit {
       description:'',
       admission:<Admission>{},
       academicSession:<AcademicSession>{},
+      section:<Section>{},
     });
   }
 
