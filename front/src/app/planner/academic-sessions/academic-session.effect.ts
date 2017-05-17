@@ -23,17 +23,19 @@ export class AcademicSessionEffects {
     .switchMap(code => this.plannerService.findAcademicSessionByCode(code))
     .map(academicSession => this.academicSessionActions.findAcademicSessionByCodeSuccess(academicSession));
 
- @Effect() deactivateAcademicSession$ = this.actions$
-    .ofType(AcademicSessionActions.DEACTIVATE_ACADEMIC_SESSION)
-    .map(action => action.payload)
-    .switchMap(academicSession => this.plannerService.deactivateAcademicSession(academicSession))
-    .map(message => this.academicSessionActions.deactivateAcademicSessionSuccess(message));
 
  @Effect() activateAcademicSession$ = this.actions$
     .ofType(AcademicSessionActions.ACTIVATE_ACADEMIC_SESSION)
     .map(action => action.payload)
     .switchMap(academicSession => this.plannerService.activateAcademicSession(academicSession))
     .map(message => this.academicSessionActions.activateAcademicSessionSuccess(message));
+
+
+ @Effect() deactivateAcademicSession$ = this.actions$
+    .ofType(AcademicSessionActions.DEACTIVATE_ACADEMIC_SESSION)
+    .map(action => action.payload)
+    .switchMap(academicSession => this.plannerService.deactivateAcademicSession(academicSession))
+    .map(message => this.academicSessionActions.deactivateAcademicSessionSuccess(message));
 
 
 

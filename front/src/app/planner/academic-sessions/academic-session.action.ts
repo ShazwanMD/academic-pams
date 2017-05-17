@@ -86,7 +86,7 @@ export class AcademicSessionActions {
     };
   }
 
- static ACTIVATE_ACADEMIC_SESSION= '[AcademicSession] Activate AcademicSession';
+ static ACTIVATE_ACADEMIC_SESSION = '[AcademicSession] Activate AcademicSession';
   activateAcademicSession(academicSession): Action {
     return {
       type: AcademicSessionActions.ACTIVATE_ACADEMIC_SESSION,
@@ -103,7 +103,7 @@ static ACTIVATE_ACADEMIC_SESSION_SUCCESS = '[AcademicSession] Activate AcademicS
     };
   }
 
- static DEACTIVATE_ACADEMIC_SESSION= '[AcademicSession] Activate AcademicSession';
+ static DEACTIVATE_ACADEMIC_SESSION = '[AcademicSession] Deactivate AcademicSession';
   deactivateAcademicSession(academicSession): Action {
     return {
       type: AcademicSessionActions.DEACTIVATE_ACADEMIC_SESSION,
