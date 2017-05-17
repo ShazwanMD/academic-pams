@@ -65,9 +65,9 @@ export class ProgramCenterPage implements OnInit {
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
     config.role = 'dialog';
-    config.width = '70%';
-    config.height = '90%';
-    config.position = {top: '1px'};
+    config.width = '50%';
+    config.height = '60%';
+    config.position = {top: '0px'};
     this.creatorDialogRef = this.dialog.open(ProgramCreatorDialog, config);
     if(code) this.creatorDialogRef.componentInstance.program = code; 
    
