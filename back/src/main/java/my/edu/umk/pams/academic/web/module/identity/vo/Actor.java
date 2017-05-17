@@ -4,7 +4,6 @@ package my.edu.umk.pams.academic.web.module.identity.vo;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import my.edu.umk.pams.academic.web.module.core.vo.MetaObject;
-
 import java.io.IOException;
 
 /**
@@ -20,13 +19,24 @@ public class Actor extends MetaObject {
     private String mobile;
     private String fax;
     private ActorType actorType;
+    private StudentStatus studentStatus;
 
-    @Override
-    public Long getId() {
+	
+    public StudentStatus getStudentStatus() {
+		return studentStatus;
+	}
+
+
+	public void setStudentStatus(StudentStatus studentStatus) {
+		this.studentStatus = studentStatus;
+	}
+
+
+	public Long getId() {
         return id;
     }
 
-    @Override
+
     public void setId(Long id) {
         this.id = id;
     }

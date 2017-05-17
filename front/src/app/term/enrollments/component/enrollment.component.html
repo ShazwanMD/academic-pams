@@ -1,26 +1,33 @@
 <!-- Basic Card -->
 <md-card>
-  <md-card-title>ENROLLMENTS</md-card-title>
-  <md-card-subtitle>List of enrollment</md-card-subtitle>
+  <md-card-title>ENROLLMENT FOR {{enrollment.section.code}}</md-card-title>
+  <md-card-subtitle>List of enrollment: {{enrollment.section.canonicalCode}} </md-card-subtitle>
   <md-divider></md-divider>
   <md-card-content>
   <!--Tab Section Here-->
   <md-tab-group>
   <md-tab label="Enrollment Detail"><br>
 
-    <div>Code    : {{enrollment.section.code}}</div><br>
     <div>Capacity       : {{enrollment.section.capacity}}</div><br>
-    <div>Canonical Code : {{enrollment.section.canonicalCode}}</div><br>
     <div>Session Code : {{enrollment.section.session.code}}</div><br>
     <div>Session Description : {{enrollment.section.session.description}}</div><br>
  
   </md-tab>
+  
+   <md-tab label="Student Detail"><br>
+
+    <div>name    : {{enrollment.admission.student.name}}</div><br>
+    <div>identityNo    : {{enrollment.admission.student.identityNo}}</div><br>
+    <div>email    : {{enrollment.admission.student.email}}</div><br>
+    <div>phone    : {{enrollment.admission.student.phone}}</div><br>
+    <div>mobile    : {{enrollment.admission.student.mobile}}</div><br>
+   
+  </md-tab>
 
   <md-tab label=" Offering Information">
 
-    <div>Offering code : {{enrollment.section.offering.code}}</div><br>
-    <div>Offering course : {{enrollment.section.offering.course.title}}</div><br>
-    <div>Offering program : {{enrollment.section.offering.program.title}}</div><br>
+    <div>Course : {{enrollment.section.offering.course.title}}</div><br>
+    <div>Program : {{enrollment.section.offering.program.title}}</div><br>
 
 
   </md-tab>

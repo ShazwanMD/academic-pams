@@ -1,3 +1,4 @@
+import { FacultySubModule } from './../faculties/index';
 import '@ngrx/core/add/operator/select';
 import {appRoutes, appRoutingProviders} from '../../app.routes';
 import {NgModule, ModuleWithProviders} from '@angular/core';
@@ -27,6 +28,7 @@ import {ProgramSelectComponent} from "./component/program-select.component";
     BrowserModule,
     ReactiveFormsModule,
     CovalentCoreModule.forRoot(),
+    FacultySubModule.forRoot(),
     EffectsModule.run(ProgramEffects),
   ],
   declarations: [

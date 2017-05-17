@@ -11,8 +11,7 @@
                flex/>
       </md-input-container>
     </div>
-    
-    
+   
     <div layout="row" class="pad-bottom">
       <md-input-container flex>
         <input mdInput #sourceNo
@@ -46,6 +45,14 @@
         [innerFormControl]="createForm.controls['academicSession']">
       </pams-academic-session-select>
     </div>
+    
+     <div layout="row" class="pad-bottom pad-top">
+      <pams-section-select
+        [placeholder]="'Select Section'"
+        [innerFormControl]="createForm.controls['section']">
+      </pams-section-select>
+    </div>
+    
   </form>
 </md-dialog-content>
 <md-dialog-actions align="end">

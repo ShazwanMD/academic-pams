@@ -9,8 +9,18 @@ import java.io.IOException;
  * @author PAMS
  */
 public class Student extends Actor {
+	
+	private StudentStatus studentStatus;
 
-        @JsonCreator
+        public StudentStatus getStudentStatus() {
+		return studentStatus;
+	}
+
+	public void setStudentStatus(StudentStatus studentStatus) {
+		this.studentStatus = studentStatus;
+	}
+
+		@JsonCreator
         public static Student create(String jsonString) {
             Student o = null;
             try {

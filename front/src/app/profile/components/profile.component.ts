@@ -15,6 +15,7 @@ import {MdTabsModule} from '@angular/material';
 
 export class ProfileComponent {
 
+  
   @Input() profile: Student;
   @Input() addressess: Address[];
   @Input() guarantors: Guarantor[];

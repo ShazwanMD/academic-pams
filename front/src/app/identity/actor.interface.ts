@@ -7,5 +7,7 @@ export interface Actor{
   phone:string;
   mobile:string;
   fax:string;
-  actorType:ActorType
+  actorType:ActorType;
+  studentStatus:StudentStatus;
+ 
 }

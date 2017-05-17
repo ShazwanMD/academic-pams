@@ -121,7 +121,6 @@ public class AdStudentImpl extends AdActorImpl implements AdStudent {
 
 	@Override
 	public AdStudyMode getStudyMode() {
-		// TODO Auto-generated method stub
 		return studyMode;
 	}
 

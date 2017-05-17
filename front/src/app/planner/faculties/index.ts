@@ -1,3 +1,4 @@
+import { Faculty } from './faculty.interface';
 import '@ngrx/core/add/operator/select';
 import {appRoutes, appRoutingProviders} from '../../app.routes';
 import {NgModule, ModuleWithProviders} from '@angular/core';
@@ -16,6 +17,7 @@ import {FacultyActions} from "./faculty.action";
 import {EffectsModule} from "@ngrx/effects";
 import {FacultyEffects} from "./faculty.effect";
 import {FacultyComponent} from "./component/faculty.component";
+import {FacultySelectComponent} from "./component/faculty-select.component";
 
 @NgModule({
   imports: [
@@ -33,8 +35,12 @@ import {FacultyComponent} from "./component/faculty.component";
     // component
     FacultyListComponent,
     FacultyComponent,
+    FacultySelectComponent,
   ],
-  exports: [],
+  exports: [
+
+    FacultySelectComponent,
+  ],
 })
 
 export class FacultySubModule {

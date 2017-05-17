@@ -14,10 +14,10 @@ export class EnrollmentListComponent {
   private columns: any[] = [
     {name: 'admission.student.name', label: 'Student Name'},
     {name: 'section.code', label: 'Section'},
+    {name: 'section.session.description', label: 'Session'},
     {name: 'section.offering.course.title', label: 'Course Title'},
     {name: 'section.offering.program.code', label: 'Program'},
-    {name: 'admission.cohort.code', label: 'Cohort'},
-    {name: 'admission.cgpa', label: 'CGPA'},
+     {name: 'section.offering.program.faculty.name', label: 'Faculty'},
     {name: 'action', label: ''}
   ];
 }

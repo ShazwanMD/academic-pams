@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from "rxjs";
 import { Store } from "@ngrx/store";
 import { FormControl } from "@angular/forms";
-//import {SectionActions} from "../section.action";
+import {SectionActions} from "../section.action";
 import { TermModuleState } from "../../index";
 import { Section } from "../section.interface";
 
@@ -19,13 +19,12 @@ export class SectionSelectComponent implements OnInit {
   @Input() innerFormControl: FormControl;
 
   constructor(private store: Store<TermModuleState>,
-    //private actions: SectionActions
-  ) {
+    private actions: SectionActions) {
     this.sections$ = this.store.select(...this.SECTIONS);
   }
 
   ngOnInit() {
-    //this.store.dispatch(this.actions.findSections());
+    this.store.dispatch(this.actions.findSections());
   }
 
   selectChangeEvent(event: Section) {
