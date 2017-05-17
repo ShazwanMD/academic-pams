@@ -30,9 +30,10 @@ export class EnrollmentApplicationTaskCreatorDialog implements OnInit {
   ngOnInit(): void {
     this.createForm = this.formBuilder.group(<EnrollmentApplication>{
       id:null,
-      referenceNo:'',
-      sourceNo:'please insert your data',
-      description:'please insert your data',
+      //referenceNo:'', --> autocreate
+      auditNo:'',
+      sourceNo:'',
+      description:'',
       admission:<Admission>{},
       academicSession:<AcademicSession>{},
     });
