@@ -22,6 +22,7 @@ import {OfferingCreateTaskCreatorDialog} from "./dialog/offering-create-task-cre
 import {CourseSubModule} from "../../planner/courses/index";
 import {ProgramSubModule} from "../../planner/programs/index";
 import {OfferingUpdateTaskCreatorDialog} from "./dialog/offering-update-task-creator.dialog";
+import {OfferingDeleteTaskCreatorDialog} from "./dialog/offering-delete-task-creator.dialog";
 
 
 @NgModule({
@@ -49,6 +50,7 @@ import {OfferingUpdateTaskCreatorDialog} from "./dialog/offering-update-task-cre
     OfferingEditorDialog,
     OfferingCreateTaskCreatorDialog,
     OfferingUpdateTaskCreatorDialog,
+    OfferingDeleteTaskCreatorDialog,
         
   ],
   exports: [],

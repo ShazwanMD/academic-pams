@@ -3,30 +3,24 @@
 <form [formGroup]="createForm">
 
 	<div layout="row" class="pad-bottom">
-		<md-input-container flex> <input mdInput
+		<md-input-container flex mdTooltip="Please insert capacity"> <input mdInput
 			#capacity placeholder="capacity" formControlName="capacity"
 			value="Description" flex /> </md-input-container>
 	</div>
 
-	<div layout="row" class="pad-bottom">
-		<md-input-container flex> <input mdInput
-			#canonical_code placeholder="canonical_code"
-			formControlName="canonical_code" value="Description" flex /> </md-input-container>
-	</div>
-
-	<div layout="row" class="pad-bottom">
-		<md-input-container flex> <input mdInput
+		<div layout="row" class="pad-bottom">
+		<md-input-container flex mdTooltip="Please insert title"> <input mdInput
 			#canonical_code placeholder="title" formControlName="title"
 			value="Description" flex /> </md-input-container>
 	</div>
 
-	<div layout="row" class="pad-bottom pad-top">
+	<div layout="row" class="pad-bottom pad-top" mdTooltip="Please select course">
 		<pams-course-select [placeholder]="'Select Course'"
 			[innerFormControl]="createForm.controls['course']">
 		</pams-course-select>
 	</div>
 
-	<div layout="row" class="pad-bottom pad-top">
+	<div layout="row" class="pad-bottom pad-top" mdTooltip="Please select program">
 		<pams-program-select ng-style="{'width': getMaxLength() + 'px'}"
 			[placeholder]="'Select Program'"
 			[innerFormControl]="createForm.controls['program']">

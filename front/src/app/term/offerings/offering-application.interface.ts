@@ -5,8 +5,6 @@ export interface OfferingApplication extends Document {
 
     id: null,
     capacity: string,
-    canonical_code: string,
-    code: string,
     title: string,
     course: Course;
     program: Program;

@@ -35,14 +35,10 @@ export class OfferingCreateTaskCreatorDialog implements OnInit {
     this.createForm = this.formBuilder.group(<OfferingApplication>{
      
         id:null,
-        referenceNo:'',
-        sourceNo:'please insert your data',
-        description:'please insert your data',
         capacity:'',
-        canonical_code:'',
-         title:'',
-         course:<Course>{},
-         program:<Program>{},
+        title:'',
+        course:<Course>{},
+        program:<Program>{},
      
      
     });

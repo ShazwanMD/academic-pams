@@ -12,6 +12,7 @@ import {TermModuleState} from "../index";
 import {Section} from "../sections/section.interface";
 import {MdDialog, MdDialogConfig, MdDialogRef} from "@angular/material";
 import {OfferingUpdateTaskCreatorDialog} from "./dialog/offering-update-task-creator.dialog";
+import {OfferingDeleteTaskCreatorDialog} from "./dialog/offering-delete-task-creator.dialog";
 
 @Component({
   selector: 'pams-offering-detail',
@@ -27,6 +28,7 @@ export class OfferingDetailPage implements OnInit {
   private offering$: Observable<Offering>;
   private sections$: Observable<Section[]>;
   private creatorDialogRef: MdDialogRef<OfferingUpdateTaskCreatorDialog>;   
+  private creatorDialogRefDelete: MdDialogRef<OfferingDeleteTaskCreatorDialog>; 
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -34,7 +36,8 @@ export class OfferingDetailPage implements OnInit {
               private termService: TermService,
               private store: Store<TermModuleState>,
                private vcf: ViewContainerRef,
-              private dialog: MdDialog) {
+              private dialog: MdDialog,
+              private dialogDelete: MdDialog) {
 
     this.offering$ = this.store.select(...this.OFFERING);
     this.sections$ = this.store.select(...this.SECTIONS);
@@ -54,6 +57,21 @@ export class OfferingDetailPage implements OnInit {
       // load something here
     });
   }
+     
+     deleteDialog(): void {
+         console.log("deleteDialog");
+         let config = new MdDialogConfig();
+         config.viewContainerRef = this.vcf;
+         config.role = 'dialog';
+         config.width = '40%';
+         config.height = '40%';
+         config.position = {top: '3px'};
+         this.creatorDialogRefDelete = this.dialogDelete.open(OfferingDeleteTaskCreatorDialog, config);
+         this.creatorDialogRefDelete.afterClosed().subscribe(res => {
+           console.log("close dialog");
+           // load something here
+         });
+       }
     
   ngOnInit(): void {
     this.route.params.subscribe((params: { canonicalCode: string }) => {
