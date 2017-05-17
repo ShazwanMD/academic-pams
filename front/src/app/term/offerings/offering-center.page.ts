@@ -12,54 +12,53 @@ import {MdDialog, MdDialogConfig, MdDialogRef} from "@angular/material";
 import {OfferingApplicationTaskCreatorDialog} from "./dialog/offering-application-task-creator.dialog";
 
 @Component({
-  selector: 'pams-offering-center',
-  templateUrl: './offering-center.page.html',
+    selector: 'pams-offering-center',
+    templateUrl: './offering-center.page.html',
 })
 export class OfferingCenterPage implements OnInit {
 
-  private OFFERINGS = "termModuleState.offerings".split(".");
-  private offerings$: Observable<Offering[]>;
-  private creatorDialogRef: MdDialogRef<OfferingApplicationTaskCreatorDialog>;
+    private OFFERINGS = "termModuleState.offerings".split(".");
+    private offerings$: Observable<Offering[]>;
+    private creatorDialogRef: MdDialogRef<OfferingApplicationTaskCreatorDialog>;
 
-  constructor(private router: Router,
-              private route: ActivatedRoute,
-              private actions: OfferingActions,
-              private termService: TermService,
-              private store: Store<TermModuleState>,
-              private vcf: ViewContainerRef,
-              private dialog: MdDialog) {
-    this.offerings$ = this.store.select(...this.OFFERINGS);
-  }
-
-  goBack(route: string): void {
-    this.router.navigate(['/offerings']);
-  }
-
-  viewOffering(offering: Offering) {
-    console.log("offering: " + offering.id);
-    this.router.navigate(['/offerings-detail', offering.id]);
-  }
-
-  showDialog(): void {
-      console.log("showDialog");
-      let config = new MdDialogConfig();
-      config.viewContainerRef = this.vcf;
-      config.role = 'dialog';
-      config.width = '50%';
-      config.height = '80%';
-      config.position = {top: '0px'};
-      this.creatorDialogRef = this.dialog.open(OfferingApplicationTaskCreatorDialog, config);
-      this.creatorDialogRef.afterClosed().subscribe(res => {
-        console.log("close dialog");
-        // load something here
-      });
+    constructor(private router: Router,
+        private route: ActivatedRoute,
+        private actions: OfferingActions,
+        private termService: TermService,
+        private store: Store<TermModuleState>,
+        private vcf: ViewContainerRef,
+        private dialog: MdDialog) {
+        this.offerings$ = this.store.select(...this.OFFERINGS);
     }
-  
-  
-  ngOnInit(): void {
-    this.store.dispatch(this.actions.findOfferings());
-  // this.offerings$ = this.termService.findOfferings();
 
-  }
+    goBack(route: string): void {
+        this.router.navigate(['/offerings']);
+    }
+
+    viewOffering(offering: Offering) {
+        console.log("offering: " + offering.id);
+        this.router.navigate(['/offerings-detail', offering.id]);
+    }
+
+    showDialog(): void {
+        console.log("showDialog");
+        let config = new MdDialogConfig();
+        config.viewContainerRef = this.vcf;
+        config.role = 'dialog';
+        config.width = '50%';
+        config.height = '80%';
+        config.position = { top: '0px' };
+        this.creatorDialogRef = this.dialog.open(OfferingApplicationTaskCreatorDialog, config);
+        this.creatorDialogRef.afterClosed().subscribe(res => {
+            console.log("close dialog");
+            // load something here
+        });
+    }
+
+    ngOnInit(): void {
+        this.store.dispatch(this.actions.findOfferings());
+        // this.offerings$ = this.termService.findOfferings();
+
+    }
 }
 

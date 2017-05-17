@@ -4,7 +4,7 @@ import {NgModule, ModuleWithProviders} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {ReactiveFormsModule} from '@angular/forms';
 import {CovalentCoreModule} from '@covalent/core';
-// import {OfferingApplicationActions} from "./offering-application.action";
+import {OfferingApplicationActions} from "./offering-application.action";
 import {TermService} from '../../../services';
 import {CommonService} from '../../../services';
 import {IdentityService} from '../../../services';
@@ -62,7 +62,7 @@ export class OfferingSubModule {
         IdentityService,
         CommonService,
         OfferingActions,
-        // OfferingApplicationActions,
+        OfferingApplicationActions,
       ],
     };
   }
