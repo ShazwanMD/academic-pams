@@ -81,7 +81,6 @@ public class PlannerController {
 	@RequestMapping(value = "/academicSessions/{code}/activate", method = RequestMethod.GET)
 	public ResponseEntity<String> activateAcademicSession(@PathVariable String code) {
 		dummyLogin();
-
 		LOG.debug("activate sesssion");
 		AdAcademicSession academicSession = plannerService.findAcademicSessionByCode(code);
 		academicSession.setCurrent(true);
@@ -92,7 +91,6 @@ public class PlannerController {
 	@RequestMapping(value = "/academicSessions/{code}/deactivate", method = RequestMethod.GET)
 	public ResponseEntity<String> deactivateAcademicSession(@PathVariable String code) {
 		dummyLogin();
-
 		LOG.debug("deactivate sesssion");
 		AdAcademicSession academicSession = plannerService.findAcademicSessionByCode(code);
 		academicSession.setCurrent(false);

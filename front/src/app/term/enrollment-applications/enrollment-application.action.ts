@@ -170,11 +170,11 @@ export class EnrollmentApplicationActions {
 
   static FIND_ENROLLMENT_APPLICATION_ITEMS = '[EnrollmentApplication] Find EnrollmentApplication Items';
 
-  findEnrollmentApplicationItems(invoice): Action {
-    console.log("findEnrollmentApplicationItems for invoice: " + invoice);
+  findEnrollmentApplicationItems(application): Action {
+    console.log("findEnrollmentApplicationItems for invoice: " + application);
     return {
       type: EnrollmentApplicationActions.FIND_ENROLLMENT_APPLICATION_ITEMS,
-      payload: invoice
+      payload: application
     };
   }
 
