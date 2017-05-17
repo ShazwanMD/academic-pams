@@ -78,17 +78,21 @@ public class PlannerController {
         return new ResponseEntity<String>(academicSession.getCode(), HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/academicSessions/{code}/activate", method = RequestMethod.POST)
+    @RequestMapping(value = "/academicSessions/{code}/activate", method = RequestMethod.GET)
     public ResponseEntity<String> activateAcademicSession(@PathVariable String code) {
-        AdAcademicSession academicSession = plannerService.findAcademicSessionByCode(code);
+        dummyLogin();
+    	AdAcademicSession academicSession = plannerService.findAcademicSessionByCode(code);
         academicSession.setCurrent(true);
+        plannerService.updateAcademicSession(academicSession);
         return new ResponseEntity<String>(academicSession.getCode(), HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/academicSessions/{code}/deactivate", method = RequestMethod.POST)
+    @RequestMapping(value = "/academicSessions/{code}/deactivate", method = RequestMethod.GET)
     public ResponseEntity<String> deactivateAcademicSession(@PathVariable String code) {
-        AdAcademicSession academicSession = plannerService.findAcademicSessionByCode(code);
+        dummyLogin();
+    	AdAcademicSession academicSession = plannerService.findAcademicSessionByCode(code);
         academicSession.setCurrent(false);
+        plannerService.updateAcademicSession(academicSession);
         return new ResponseEntity<String>(academicSession.getCode(), HttpStatus.OK);
     }
 
