@@ -15,6 +15,7 @@ export class AcademicSessionListComponent {
     private columns: any [] = [
         {name: 'code', label: 'Code'},
         {name: 'description', label: 'Description'},
+        {name: 'current', label: 'Status'},
         {name: 'action', label: ''},
 
 

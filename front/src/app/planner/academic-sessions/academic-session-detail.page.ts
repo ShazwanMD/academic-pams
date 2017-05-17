@@ -1,3 +1,4 @@
+import { MdSnackBar } from '@angular/material';
 import {Component, OnInit, ChangeDetectionStrategy} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 
@@ -24,7 +25,8 @@ export class AcademicSessionDetailPage implements OnInit {
   constructor(private router: Router,
               private route: ActivatedRoute,
               private actions: AcademicSessionActions,
-              private store: Store<PlannerModuleState>) {
+              private store: Store<PlannerModuleState>,
+              private snackBar : MdSnackBar) {
     this.academicSession$ = this.store.select(...this.ACADEMIC_SESSION);
   }
 
@@ -35,8 +37,18 @@ export class AcademicSessionDetailPage implements OnInit {
     });
   }
 
-  goBack(route: string): void {
-    this.router.navigate(['/academic-sessions']);
+  activate() {
+    let snackBarRef = this.snackBar.open("Activating Academic Session", "OK");
+      snackBarRef.afterDismissed().subscribe(() => {
+        this.academicSession$.subscribe (academicSession => this.actions.activateAcademicSession(academicSession));
+      });
+  }
+
+  deactivate() {
+     let snackBarRef = this.snackBar.open("Deactivating Academic Session", "OK");
+      snackBarRef.afterDismissed().subscribe(() => {
+        this.academicSession$.subscribe (academicSession => this.actions.deactivateAcademicSession(academicSession));
+      });
   }
 
 }
