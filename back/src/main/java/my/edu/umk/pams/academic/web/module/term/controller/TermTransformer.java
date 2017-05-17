@@ -129,6 +129,8 @@ public class TermTransformer {
         vo.setSourceNo(e.getSourceNo());
         vo.setAuditNo(e.getAuditNo());
         vo.setDescription(e.getDescription());
+        vo.setRemoveComment(e.getRemoveComment());
+        vo.setCancelComment(e.getCancelComment());
         vo.setFlowState(FlowState.get(e.getFlowdata().getState().ordinal()));
         vo.setMetaState(MetaState.get(e.getMetadata().getState().ordinal()));
         return vo;

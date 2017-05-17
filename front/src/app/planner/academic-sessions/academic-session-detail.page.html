@@ -19,33 +19,48 @@
           <md-divider></md-divider>
 
           <md-nav-list flex dense>
-            <md-list-item [routerLink]="['/sessions-assign', session?.code]">
-              <md-icon md-list-avatar>assignment_ind</md-icon>
-              <h4 md-line>Reassign</h4>
-              <p md-line>Reassign this academic session</p>
-            </md-list-item>
-            <md-list-item [routerLink]="['/sessions-resolve', session?.code]">
+
+            <md-list-item (click)= "activate()">
               <md-icon md-list-avatar>done_all</md-icon>
-              <h4 md-line>Resolve</h4>
-              <p md-line>Resolve this academic session</p>
+              <h4 md-line>Activate</h4>
+              <p md-line>Activate this academic session</p>
             </md-list-item>
-            <md-list-item [routerLink]="['/sessions-reopen', session?.code]">
+
+            <md-list-item (click)= "deactivate()">
               <md-icon md-list-avatar>gavel</md-icon>
               <h4 md-line>Deactivate</h4>
               <p md-line>Deactivate this academic session</p>
             </md-list-item>
+           
+           
             <md-divider></md-divider>
-            <h3 md-subheader>Notification</h3>
-            <md-list-item>
-              <md-icon md-list-avatar>visibility</md-icon>
-              <h4 md-line>Watch</h4>
-              <p md-line>Watch this academic session</p>
-            </md-list-item>
-            <md-list-item>
-              <md-icon md-list-avatar>email</md-icon>
-              <h4 md-line>Share</h4>
-              <p md-line>Share this academic session with others</p>
-            </md-list-item>
+              <h3 md-subheader>Planner Menu</h3>
+                 
+                <md-list-item [routerLink]="['/planner/academic-sessions']" > <md-icon md-list-avatar>menu</md-icon>
+                    <h4 md-line>Academic Session</h4>
+                    <p md-line>Watch this academic session</p>
+                </md-list-item> 
+                
+                <md-list-item [routerLink]="['/planner/faculties']"> <md-icon md-list-avatar>menu</md-icon>
+                  <h4 md-line>Faculty</h4>
+                  <p md-line>Watch this faculty</p>
+                </md-list-item> 
+                
+                <md-list-item [routerLink]="['/planner/programs']"> <md-icon md-list-avatar>menu</md-icon>
+                  <h4 md-line>Program</h4>
+                  <p md-line>Watch this program</p>
+                </md-list-item> 
+                
+                <md-list-item [routerLink]="['/planner/courses']"> <md-icon md-list-avatar>menu</md-icon>
+                  <h4 md-line>Courses</h4>
+                  <p md-line>Watch this section</p>
+                </md-list-item>
+
+                <md-list-item [routerLink]="['/planner/cohorts']"> <md-icon md-list-avatar>menu</md-icon>
+                  <h4 md-line>Cohorts</h4>
+                  <p md-line>Watch this cohort</p>
+                </md-list-item>
+
           </md-nav-list>
         </md-card>
       </div>

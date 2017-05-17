@@ -1,3 +1,5 @@
+import { CohortActions } from './cohort.action';
+import { CohortEditorDialog } from './dialog/cohort-editor.dialog';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { MdDialogRef } from '@angular/material';
@@ -10,7 +12,6 @@ import {Observable} from "rxjs";
 import {Cohort} from "./cohort.interface";
 import {CohortActions} from "./cohort.action";
 import {PlannerModuleState} from "../index";
-import { CohortCreatorDialog } from './dialog/cohort-creator.dialog'
 
 
 @Component({
@@ -52,9 +53,9 @@ export class CohortCenterPage implements OnInit {
         this.store.dispatch(this.actions.findCohorts());
     }
     
-     createDialog(): void {
-    this.showDialog(null);
-  }
+//      createDialog(): void {
+//     this.showDialog(null);
+//   }
 
     
     private showDialog(): void {

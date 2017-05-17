@@ -21,7 +21,6 @@ export class ProfileComponent {
   @Input() guardians: Guardian[];
   @Input() contacts: Contact[];
   @Input() enrollments: Enrollment[];
-    
   // @Output() addGuardian = new EventEmitter<Guardian>();
   // @Output() addGuarantor = new EventEmitter<Guarantor>();
   // @Output() addContact = new EventEmitter<Contact>();
