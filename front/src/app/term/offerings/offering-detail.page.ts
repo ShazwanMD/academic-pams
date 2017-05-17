@@ -35,7 +35,7 @@ export class OfferingDetailPage implements OnInit {
               private actions: OfferingActions,
               private termService: TermService,
               private store: Store<TermModuleState>,
-               private vcf: ViewContainerRef,
+              private vcf: ViewContainerRef,
               private dialog: MdDialog,
               private dialogDelete: MdDialog) {
 
