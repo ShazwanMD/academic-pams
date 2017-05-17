@@ -40,10 +40,10 @@ export class ProgramCreatorDialog implements OnInit {
    ngOnInit(): void {
           this.creatorForm= this.formBuilder.group(<Program>{
        id: null,
-       code: '',
-       title: '',
-       titleMs: '',
-       titleEn: '',
+       code: 'Please insert new data',
+       title: 'Please insert new data',
+       titleMs: 'Please insert new data',
+       titleEn: 'Please insert new data',
      });
 
         if (this.create) this.creatorForm.patchValue(this._program);

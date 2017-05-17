@@ -46,7 +46,7 @@ export class OfferingCenterPage implements OnInit {
       config.viewContainerRef = this.vcf;
       config.role = 'dialog';
       config.width = '50%';
-      config.height = '65%';
+      config.height = '80%';
       config.position = {top: '0px'};
       this.creatorDialogRef = this.dialog.open(OfferingApplicationTaskCreatorDialog, config);
       this.creatorDialogRef.afterClosed().subscribe(res => {

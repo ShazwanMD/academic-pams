@@ -6,6 +6,6 @@ export interface Program extends MetaObject{
 //    program: Program; 
    code: string;
    title:string;
-    titleMs:string;
-    titleEn:string;
+   titleMs:string;
+   titleEn:string;
 }

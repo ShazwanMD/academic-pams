@@ -38,6 +38,11 @@ export class OfferingApplicationTaskCreatorDialog implements OnInit {
         referenceNo:'',
         sourceNo:'please insert your data',
         description:'please insert your data',
+        capacity:'',
+        canonical_code:'',
+         title:'',
+         course:<Course>{},
+         program:<Program>{},
         
         /*id:null,
       capacity:'',
