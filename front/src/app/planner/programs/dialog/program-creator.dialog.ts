@@ -1,3 +1,4 @@
+import { Faculty } from './../../faculties/faculty.interface';
 import {Component, ViewContainerRef, OnInit} from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
 import {FormBuilder} from '@angular/forms';
@@ -38,12 +39,13 @@ export class ProgramCreatorDialog implements OnInit {
     }
 
    ngOnInit(): void {
-          this.creatorForm= this.formBuilder.group(<Program>{
+      this.creatorForm= this.formBuilder.group(<Program>{
        id: null,
-       code: 'Please insert new data',
-       title: 'Please insert new data',
-       titleMs: 'Please insert new data',
-       titleEn: 'Please insert new data',
+       code: '',
+       title: '',
+       faculty:<Faculty>{},
+
+     
      });
 
         if (this.create) this.creatorForm.patchValue(this._program);
