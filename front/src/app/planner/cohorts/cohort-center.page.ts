@@ -8,7 +8,7 @@ import {CommonService} from '../../../services';
 import {Store} from "@ngrx/store";
 import {Observable} from "rxjs";
 import {Cohort} from "./cohort.interface";
-import {ProgramActions} from "./cohort.action";
+import {CohortActions} from "./cohort.action";
 import {PlannerModuleState} from "../index";
 import { CohortCreatorDialog } from './dialog/cohort-creator.dialog'
 
@@ -39,7 +39,7 @@ export class CohortCenterPage implements OnInit {
     }
 
     goBack(route: string): void {
-        this.router.navigate(['/planner/cohorts']);
+        this.router.navigate(['/cohorts']);
     }
 
     viewCohort(cohort: Cohort) {
