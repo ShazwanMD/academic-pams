@@ -1,3 +1,4 @@
+import { Enrollment } from './../app/term/enrollments/enrollment.interface';
 import { Injectable } from '@angular/core';
 import {Response, Http} from '@angular/http';
 import { HttpInterceptorService } from '@covalent/http';
@@ -19,6 +20,14 @@ export class ProfileService {
   // ====================================================================================================
   // STUDENT
   // ====================================================================================================
+  findEnrollments(student:Student): Observable<Enrollment[]> {
+    console.log("findStudents");
+    // let headers = new Headers({'Authorization': 'Bearer TODO'});
+    // let options = new RequestOptions({headers: headers});
+    return this.http.get(environment.endpoint + '/api/profile/students/' + student.identityNo + "/enrollments")
+      .map((res: Response) => <Enrollment[]>res.json());
+  }
+
 
   findStudents(): Observable<Student[]> {
     console.log("findStudents");

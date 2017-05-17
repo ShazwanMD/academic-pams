@@ -1,3 +1,4 @@
+import { Enrollment } from './../term/enrollments/enrollment.interface';
 import { Address } from './address.interface';
 import {Component, OnInit, ChangeDetectionStrategy} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
@@ -11,6 +12,7 @@ import {Contact} from "./contact.interface";
 import {Guardian} from "./guardian.interface";
 import {Guarantor} from "./guarantor.interface";
 
+
 @Component({
   selector: 'pams-profile-detail',
   templateUrl: 'profile-detail.page.html',
@@ -23,12 +25,14 @@ export class ProfileDetailPage implements OnInit {
   private GUARANTORS = "profileModuleState.guarantors".split(".");
   private GUARDIANS = "profileModuleState.guardians".split(".");
   private CONTACTS = "profileModuleState.contacts".split(".");
+  private ENROLLMENTS = "profileModuleState.enrollments".split(".");
 
   private student$: Observable<Student>;
   private addressess$: Observable<Student>;
   private guarantors$: Observable<Guarantor>;
   private guardians$: Observable<Guardian>;
   private contacts$: Observable<Contact>;
+  private enrollments$: Observable<Enrollment>;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -40,6 +44,7 @@ export class ProfileDetailPage implements OnInit {
     this.guardians$ = this.store.select(...this.GUARDIANS);
     this.guarantors$ = this.store.select(...this.GUARANTORS);
     this.contacts$ = this.store.select(...this.CONTACTS);
+     this.enrollments$ = this.store.select(...this.ENROLLMENTS);
   }
 
   ngOnInit(): void {

@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Action} from '@ngrx/store';
 
+
 @Injectable()
 export class ProfileActions {
 
@@ -146,6 +147,25 @@ export class ProfileActions {
     return {
       type: ProfileActions.FIND_GUARDIANS_SUCCESS,
       payload: guardians
+    };
+  }
+
+  
+  static FIND_ENROLLMENTS_BY_STUDENT = '[Profile] Find Enrollments';
+
+  findEnrollments(student): Action {
+    return {
+      type: ProfileActions.FIND_ENROLLMENTS_BY_STUDENT,
+      payload: student
+    };
+  }
+
+  static FIND_ENROLLMENTS_BY_STUDENT_SUCCESS = '[Profile] Find Enrollments Success';
+
+  findEnrollmentsSuccess(enrollments): Action {
+    return {
+      type: ProfileActions.FIND_ENROLLMENTS_BY_STUDENT_SUCCESS,
+      payload: enrollments
     };
   }
 }

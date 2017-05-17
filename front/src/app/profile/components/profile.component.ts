@@ -1,3 +1,4 @@
+import { Enrollment } from './../../term/enrollments/enrollment.interface';
 import { Contact } from './../contact.interface';
 import { Guardian } from './../guardian.interface';
 import { Guarantor } from './../guarantor.interface';
@@ -19,6 +20,8 @@ export class ProfileComponent {
   @Input() guarantors: Guarantor[];
   @Input() guardians: Guardian[];
   @Input() contacts: Contact[];
+  @Input() enrollments: Enrollment[];
+    
   // @Output() addGuardian = new EventEmitter<Guardian>();
   // @Output() addGuarantor = new EventEmitter<Guarantor>();
   // @Output() addContact = new EventEmitter<Contact>();

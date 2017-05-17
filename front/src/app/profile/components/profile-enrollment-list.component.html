@@ -1,0 +1,44 @@
+<td-data-table
+  [data]="enrollments"
+  [columns]="columns"
+  [sortBy]="summary"
+  [sortOrder]="ASC"
+  [sortable]="false"
+  [multiple]="false"
+  [selectable]="false"
+  (rowSelect)="view.emit($event)" dense>
+  <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column" >
+    <div layout="row">
+      <span flex >{{value}}</span>
+    </div>
+  </template>
+
+ 
+<template tdDataTableTemplate="section" let-value="section" let-row="row" let-column="column">
+ <div layout="row">
+      <span flex >{{section}}</span>
+    </div>
+  </template>
+
+  <template tdDataTableTemplate="admission" let-value="admission" let-row="row" let-column="column">
+ <div layout="row">
+      <span flex >{{admission}}</span>
+    </div>
+  </template>
+
+
+
+<!--
+  <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
+    <div layout="row">
+      <a md-button color="accent" class="text-upper" [routerLink]="['./profile-detail', row['identityNo']]">
+        <span>Details</span>
+      </a>
+
+      <a md-button color="accent" class="text-upper" [routerLink]="['./profile-edit', row['identityNo']]">
+        <span>Edit</span>
+      </a>
+
+    </div>
+  </template>-->
+</td-data-table>
