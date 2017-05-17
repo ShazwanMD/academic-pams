@@ -4,68 +4,49 @@
   
     <div layout="row" class="pad-bottom">
       <md-input-container flex>
-        <input mdInput #description
-               placeholder="id"
-               formControlName="id"
-               value="Id"
+        <input mdInput #capacity
+               placeholder="capacity"
+               formControlName="capacity"
+               value="Description"
                flex/>
       </md-input-container>
     </div>
-    
+ 
      <div layout="row" class="pad-bottom">
       <md-input-container flex>
-        <input mdInput #description
+        <input mdInput #canonical_code
                placeholder="canonical_code"
                formControlName="canonical_code"
-               value="canonical_code"
-               flex/>
-      </md-input-container>
-    </div> 
-    
-     <div layout="row" class="pad-bottom">
-      <md-input-container flex>
-        <input mdInput #description
-               placeholder="Capacity"
-               formControlName="capacity"
-               value="capacity"
-               flex/>
-      </md-input-container>
-    </div>
-    
-    <div layout="row" class="pad-bottom">
-      <md-input-container flex>
-        <input mdInput #description
-               placeholder="Code"
-               formControlName="code"
-               value="code"
+               value="Description"
                flex/>
       </md-input-container>
     </div>
     
      <div layout="row" class="pad-bottom">
       <md-input-container flex>
-        <input mdInput #description
-               placeholder="Title"
+        <input mdInput #canonical_code
+               placeholder="title"
                formControlName="title"
-               value="title"
+               value="Description"
                flex/>
       </md-input-container>
     </div>
-    
-    
+      
     <div layout="row" class="pad-bottom pad-top">
-    <!--   <pams-program-select
+        <pams-course-select
+        [placeholder]="'Select Course'"
+        [innerFormControl]="createForm.controls['course']">
+      </pams-course-select> 
+    </div>
+    
+       <div layout="row" class="pad-bottom pad-top">
+        <pams-program-select ng-style="{'width': getMaxLength() + 'px'}"
         [placeholder]="'Select Program'"
         [innerFormControl]="createForm.controls['program']">
-      </pams-program-select> --> 
+      </pams-program-select> 
     </div>
-    <div layout="row" class="pad-bottom pad-top">
-      <!-- <pams-academic-session-select
-        [placeholder]="'Select Session'"
-        [innerFormControl]="createForm.controls['academicSession']">
-      </pams-academic-session-select> -->
-    </div>
-  </form>
+    
+    </form>
 </md-dialog-content>
 <md-dialog-actions align="end">
   <button md-raised-button color="accent" (click)="save(createForm.value, createForm.valid)">Save</button>

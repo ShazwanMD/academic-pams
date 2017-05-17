@@ -1,15 +1,18 @@
 <h2 md-dialog-title>Enrollment Application Task Creator</h2>
 <md-dialog-content>
   <form [formGroup]="createForm">
-    <div layout="row" class="pad-bottom">
+   
+     <div layout="row" class="pad-bottom">
       <md-input-container flex>
-        <input mdInput #description
-               placeholder="description"
-               formControlName="description"
+        <input mdInput #sourceNo
+               placeholder="auditNo"
+               formControlName="auditNo"
                value="Description"
                flex/>
       </md-input-container>
     </div>
+    
+    
     <div layout="row" class="pad-bottom">
       <md-input-container flex>
         <input mdInput #sourceNo
@@ -19,6 +22,18 @@
                flex/>
       </md-input-container>
     </div>
+    
+     <div layout="row" class="pad-bottom">
+      <md-input-container flex>
+        <input mdInput #description
+               placeholder="description"
+               formControlName="description"
+               value="Description"
+               flex/>
+      </md-input-container>
+    </div>
+    
+    
     <div layout="row" class="pad-bottom pad-top">
       <pams-admission-select
         [placeholder]="'Select Student'"

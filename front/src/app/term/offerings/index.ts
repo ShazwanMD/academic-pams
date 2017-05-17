@@ -19,12 +19,17 @@ import {OfferingComponent} from "./component/offering.component";
 import {OfferingSectionComponent} from "./component/offering-section.component";
 import {OfferingEditorDialog} from "./dialog/offering-editor.dialog";
 import {OfferingApplicationTaskCreatorDialog} from "./dialog/offering-application-task-creator.dialog";
+import {CourseSubModule} from "../../planner/courses/index";
+import {ProgramSubModule} from "../../planner/programs/index";
+
 
 @NgModule({
   imports: [
     appRoutes,
     BrowserModule,
     ReactiveFormsModule,
+    CourseSubModule.forRoot(),
+    ProgramSubModule.forRoot(),
     CovalentCoreModule.forRoot(),
     EffectsModule.run(OfferingEffects),
   ],
@@ -37,6 +42,7 @@ import {OfferingApplicationTaskCreatorDialog} from "./dialog/offering-applicatio
     OfferingListComponent,
     OfferingComponent,
     OfferingSectionComponent,
+    
     
     //dialog
     OfferingEditorDialog,

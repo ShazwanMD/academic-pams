@@ -28,6 +28,86 @@ export class SetupActions {
     };
   }
 
+static FIND_STUDY_MODES = '[Setup] Find Study Modes';
+
+findStudyModes(): Action {
+    console.log("findStudyModes");
+    return {
+        type: SetupActions.FIND_STUDY_MODES
+    };
+}
+
+static FIND_STUDY_MODES_SUCCESS = '[Setup] Find Study Modes Success';
+
+findStudyModesSuccess(codes): Action {
+    console.log("findStudyModesSuccess");
+    return {
+        type: SetupActions.FIND_STUDY_MODES_SUCCESS,
+        payload: codes
+    };
+}
+
+ static SAVE_STUDY_MODE = '[Setup] Save Study Mode';
+
+  saveStudyMode(code): Action {
+    console.log("saveStudyMode");
+    return {
+      type: SetupActions.SAVE_STUDY_MODE,
+      payload: code
+    };
+  }
+
+    static SAVE_STUDY_MODE_SUCCESS = '[Setup] Save Study Mode Success';
+
+  saveStudyModeSuccess(message): Action {
+    console.log("saveStudyModeSuccess");
+    return {
+      type: SetupActions.SAVE_STUDY_MODE_SUCCESS,
+      payload: message
+    };
+  }
+
+    static UPDATE_STUDY_MODE = '[Setup] Update Study Mode';
+
+  updateStudyMode(code): Action {
+    console.log("updateStudyMode");
+    return {
+      type: SetupActions.UPDATE_STUDY_MODE,
+      payload: code
+    };
+  }
+
+  static UPDATE_STUDY_MODE_SUCCESS = '[Setup] Update Study Mode  Success';
+
+  updateStudyModeSuccess(message): Action {
+    console.log("updateStudyModeSuccess");
+    return {
+      type: SetupActions.UPDATE_STUDY_MODE_SUCCESS,
+      payload: message
+    };
+  }
+
+  static REMOVE_STUDY_MODE = '[Setup] Remove Study Mode';
+
+  removeStudyMode(code): Action {
+    console.log("removeStudyMode");
+    return {
+      type: SetupActions.REMOVE_STUDY_MODE,
+      payload: code
+    };
+  }
+
+  static REMOVE_STUDY_MODE_SUCCESS = '[Setup] Remove Study Mode  Success';
+
+  removeStudyModeSuccess(message): Action {
+    console.log("removeStudyModeSuccess");
+    return {
+      type: SetupActions.REMOVE_STUDY_MODE_SUCCESS,
+      payload: message
+    };
+  }
+  
+
 //====================================================================================
 // GENDER CODES
 //====================================================================================

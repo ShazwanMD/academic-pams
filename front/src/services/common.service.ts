@@ -1,3 +1,4 @@
+import { StudyMode } from './../app/common/study-modes/study-mode.interface';
 import { EthnicityCode } from './../app/common/ethnicity-codes/ethnicity-code.interface';
 import { NationalityCode } from './../app/common/nationality-codes/nationality-code.interface';
 import { ReligionCode } from './../app/common/religion-codes/religion-code.interface';
@@ -23,6 +24,56 @@ export class CommonService {
   constructor(private http: Http,
     private _http: HttpInterceptorService) {
   }
+
+  
+// ====================================================================================================
+// STUDYMODE
+// ====================================================================================================
+
+findStudyModes(): Observable<StudyMode[]> {
+    console.log("findStudyModes()");
+return this.http.get(environment.endpoint + '/api/common/studyModes')
+    .map((res: Response) => <StudyMode[]>res.json());
+}
+
+findStudyModeByCode(code:string): Observable<StudyMode> {
+    console.log("findStudyModeByCode");
+return this.http.get(environment.endpoint + '/api/common/studyModes/' + code)
+    .map((res: Response) => <StudyMode>res.json());
+}
+
+ saveStudyMode(code: StudyMode) {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({ headers: headers });
+    return this.http.post(environment.endpoint + '/api/common/studyModes', JSON.stringify(code), options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+  updateStudyMode(code: StudyMode) {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({ headers: headers });
+    return this.http.put(environment.endpoint + '/api/common/studyModes/' + code.code, JSON.stringify(code), options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+  removeStudyMode(code: StudyMode) {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({ headers: headers });
+    return this.http.delete(environment.endpoint + '/api/common/studyModes/' + code.code, options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+
+
 
   // ====================================================================================================
   // GENDER CODES

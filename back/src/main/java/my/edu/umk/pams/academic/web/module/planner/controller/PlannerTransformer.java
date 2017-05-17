@@ -28,6 +28,7 @@ public class PlannerTransformer {
         vo.setId(academicSession.getId());
         vo.setCode(academicSession.getCode());
         vo.setDescription(academicSession.getDescription());
+        vo.setCurrent(academicSession.isCurrent());
         return vo;
     }
 

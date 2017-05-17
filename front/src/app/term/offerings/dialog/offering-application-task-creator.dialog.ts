@@ -11,7 +11,7 @@ import {Admission} from "../../admissions/admission.interface";
 import {FlowState} from "../../../core/flow-state.enum";
 import {MetaState} from "../../../core/meta-state.enum";
 import {OfferingApplication} from '../offering-application.interface';
-// import {OfferingApplicationActions} from "../offering-application.action";
+import {OfferingApplicationActions} from "../offering-application.action";
 import {Course} from "../../../planner/courses/course.interface";
 import {Program} from "../../../planner/programs/program.interface";
 
@@ -27,31 +27,30 @@ export class OfferingApplicationTaskCreatorDialog implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
               private store: Store<TermModuleState>,
-              // private actions: OfferingApplicationActions,
+              private actions: OfferingApplicationActions,
               private dialog: MdDialogRef<OfferingApplicationTaskCreatorDialog>) {
   }
 
   ngOnInit(): void {
     this.createForm = this.formBuilder.group(<OfferingApplication>{
      
-      id:null,
-      referenceNo:'',
-      sourceNo:'please insert your data',
-      description:'please insert your data',
-         
-     // id:null,
-     // capacity:'please insert your data',
-     // canonical_code:'please insert your data',
-     // code:'please insert your data',
-     // title:'please insert your data',
-     // course:<Course>{},
-     // program:<Program>{},
+        id:null,
+        referenceNo:'',
+        sourceNo:'please insert your data',
+        description:'please insert your data',
+        capacity:'',
+        canonical_code:'',
+         title:'',
+         course:<Course>{},
+         program:<Program>{},
+     
+     
     });
       
   }
 
-  /*save(offeringApplication: OfferingApplication, isValid: boolean) {
+ /* save(offeringApplication: OfferingApplication, isValid: boolean) {
     this.store.dispatch(this.actions.startOfferingApplicationTask(offeringApplication));
     this.dialog.close();
-  }*/
+  } */
 }

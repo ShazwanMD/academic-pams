@@ -12,14 +12,7 @@
     </div>
     <div layout="row" class="pad-bottom">
     </div>
-    <div layout="row" class="pad-bottom">
-      <md-select formControlName="sodoCode" [(ngModel)]="selectedSodoCode" placeholder="Sodo Code"
-                 style="width: 100%">
-        <md-option *ngFor="let sodoCode of sodoCodes" [value]="sodoCode">
-          {{sodoCode.code}}: {{sodoCode.description}}
-        </md-option>
-      </md-select>
-    </div>
+    
     <div layout="row" class="pad-bottom pad-top">
       <md-select formControlName="period" [(ngModel)]="selectedPeriod" placeholder="Period" style="width: 100%">
         <md-option *ngFor="let period of periods" [value]="period">

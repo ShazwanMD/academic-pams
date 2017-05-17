@@ -1,15 +1,15 @@
-import {Injectable} from '@angular/core';
-import {Effect, Actions} from '@ngrx/effects';
-import {ProfileService} from "../../services/profile.service";
-import {ProfileActions} from "./profile.action";
-import {from} from "rxjs/observable/from";
+import { Injectable } from '@angular/core';
+import { Effect, Actions } from '@ngrx/effects';
+import { ProfileService } from "../../services/profile.service";
+import { ProfileActions } from "./profile.action";
+import { from } from "rxjs/observable/from";
 
 
 @Injectable()
 export class ProfileEffects {
   constructor(private actions$: Actions,
-              private profileActions: ProfileActions,
-              private profileService: ProfileService) {
+    private profileActions: ProfileActions,
+    private profileService: ProfileService) {
   }
 
   @Effect() findProfiles$ = this.actions$
@@ -26,7 +26,8 @@ export class ProfileEffects {
       this.profileActions.findAddresses(action.payload),
       this.profileActions.findContacts(action.payload),
       this.profileActions.findGuarantors(action.payload),
-      this.profileActions.findGuardians(action.payload)
+      this.profileActions.findGuardians(action.payload),
+      this.profileActions.findEnrollments(action.payload),
     ]));
 
 
@@ -61,5 +62,11 @@ export class ProfileEffects {
     .map(action => action.payload)
     .switchMap(student => this.profileService.findGuarantors(student))
     .map(addreesses => this.profileActions.findGuarantorsSuccess(addreesses));
+
+   @Effect() findEnrollments$ = this.actions$
+     .ofType(ProfileActions.FIND_ENROLLMENTS_BY_STUDENT)
+     .map(action => action.payload)
+     .switchMap(student => this.profileService.findEnrollments(student))
+     .map(enrollments => this.profileActions.findEnrollmentsSuccess(enrollments));
 
 }

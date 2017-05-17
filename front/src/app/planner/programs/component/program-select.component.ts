@@ -4,7 +4,7 @@ import {Store} from "@ngrx/store";
 import {FormControl} from "@angular/forms";
 import {ProgramActions} from "../program.action";
 import {Program} from "../program.interface";
-import {TermModuleState} from "../../../term/index";
+import {PlannerModuleState} from "../../index";
 
 
 @Component({
@@ -13,12 +13,12 @@ import {TermModuleState} from "../../../term/index";
 })
 export class ProgramSelectComponent implements OnInit {
 
-  private PROGRAMS = "termModuleState.programs".split(".");
+  private PROGRAMS = "plannerModuleState.programs".split(".");
   private programs$: Observable<Program[]>;
   @Input() placeholder: string;
   @Input() innerFormControl: FormControl;
 
-  constructor(private store: Store<TermModuleState>,
+  constructor(private store: Store<PlannerModuleState>,
               private actions: ProgramActions) {
     this.programs$ = this.store.select(...this.PROGRAMS);
   }

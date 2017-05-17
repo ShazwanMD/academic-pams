@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository("raceCodeDao")
+@Repository("adRaceCodeDao")
 public class AdRaceCodeDaoImpl extends GenericDaoSupport<Long, AdRaceCode> implements AdRaceCodeDao {
 
     private static final Logger LOG = LoggerFactory.getLogger(AdRaceCodeDaoImpl.class);
@@ -31,13 +31,13 @@ public class AdRaceCodeDaoImpl extends GenericDaoSupport<Long, AdRaceCode> imple
         query.setInteger("state", AdMetaState.ACTIVE.ordinal());
         return (AdRaceCode) query.uniqueResult();
     }
-
     @Override
     public List<AdRaceCode> find(String filter, Integer offset, Integer limit) {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select s from AdRaceCode s where " +
                 "(upper(s.code) like upper(:filter) " +
-                "or upper(s.description) like upper(:filter)) " +
+                "or upper(s.descriptionEn) like upper(:filter) " +
+                "or upper(s.descriptionMs) like upper(:filter)) " +
                 "and s.metadata.state = :state ");
         query.setString("filter", WILDCARD + filter + WILDCARD);
         query.setInteger("state", AdMetaState.ACTIVE.ordinal());

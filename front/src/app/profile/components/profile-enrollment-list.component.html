@@ -1,0 +1,66 @@
+<!--
+<td-data-table
+  [data]="enrollments"
+  [columns]="columns"
+  [sortBy]="summary"
+  [sortOrder]="ASC"
+  [sortable]="false"
+  [multiple]="false"
+  [selectable]="false"
+  (rowSelect)="view.emit($event)" dense>
+  
+  <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column" >
+    <div layout="row">
+      <span flex >{{value}}</span>
+    </div>
+  </template>
+
+<template tdDataTableTemplate="section" let-value="section" let-row="row" let-column="column">
+ <div layout="row">
+      <span flex >{{section}}</span>
+    </div>
+  </template>
+
+  <template tdDataTableTemplate="admission" let-value="admission" let-row="row" let-column="column">
+ <div layout="row">
+      <span flex >{{admission}}</span>
+    </div>
+  </template>
+</td-data-table>
+-->
+    <table width="100%" border="0" *ngFor="let enrollment of enrollments">
+    <tr>
+    <td width="13%">&nbsp;</td>
+    <td width="1%">&nbsp;</td>
+    <td width="86%">&nbsp;</td>
+    </tr>
+    <tr>
+    <td>Cohort</td>
+    <td>:</td>
+    <td>{{enrollment.admission.cohort.code}}</td>
+    </tr>
+    <tr>
+    <td>Faculty</td>
+    <td>:</td>
+    <td>{{enrollment.section.offering.course.faculty.name}}</td>
+    </tr>
+    <tr>
+    <td>PROGRAM</td>
+    <td>:</td>
+    <td>{{enrollment.section.offering.program.code}}</td>
+    </tr>
+    <tr>
+    <td>COURSE</td>
+    <td>:</td>
+    <td>{{enrollment.section.offering.course.code}}</td>
+    </tr>
+    <tr>
+    <!--<td colspan="3">
+      <!--Actions Section Here
+    <md-card-actions>
+    <button md-button color="accent" class="text-upper">Update</button>
+    <button md-button class="text-upper">Cancel</button>
+    </md-card-actions>
+    </td>-->
+    </tr>
+    </table>

@@ -1,34 +1,34 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {Observable} from "rxjs";
-import {Store} from "@ngrx/store";
-import {FormControl} from "@angular/forms";
-import {CourseActions} from "../course.action";
-import {Course} from "../course.interface";
-import {TermModuleState} from "../../../term/index";
+ import {Component, Input, OnInit} from '@angular/core';
+ import {Observable} from "rxjs";
+ import {Store} from "@ngrx/store";
+ import {FormControl} from "@angular/forms";
+ import {CourseActions} from "../course.action";
+ import {Course} from "../course.interface";
+ import {PlannerModuleState} from "../../index";
 
 
-@Component({
-  selector: 'pams-course-select',
-  templateUrl: './course-select.component.html',
-})
-export class CourseSelectComponent implements OnInit {
+ @Component({
+   selector: 'pams-course-select',
+   templateUrl: './course-select.component.html',
+ })
+ export class CourseSelectComponent implements OnInit {
 
-  private COURSES = "termModuleState.courses".split(".");
-  private courses$: Observable<Course[]>;
-  @Input() placeholder: string;
-  @Input() innerFormControl: FormControl;
+   private COURSES = "plannerModuleState.courses".split(".");
+   private courses$: Observable<Course[]>;
+   @Input() placeholder: string;
+   @Input() innerFormControl: FormControl;
 
-  constructor(private store: Store<TermModuleState>,
-              private actions: CourseActions) {
-    this.courses$ = this.store.select(...this.COURSES);
-  }
+   constructor(private store: Store<PlannerModuleState>,
+               private actions: CourseActions) {
+     this.courses$ = this.store.select(...this.COURSES);
+   }
 
-  ngOnInit() {
-    this.store.dispatch(this.actions.findCourses());
-  }
+   ngOnInit() {
+     this.store.dispatch(this.actions.findCourses());
+   }
 
-  selectChangeEvent(event: Course) {
-    this.innerFormControl.setValue(event, {emitEvent: false});
-  }
-}
+   selectChangeEvent(event: Course) {
+     this.innerFormControl.setValue(event, {emitEvent: false});
+   }
+ }
 

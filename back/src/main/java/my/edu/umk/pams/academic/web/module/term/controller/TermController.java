@@ -38,7 +38,7 @@ public class TermController {
 
     @Autowired
     private TermService termService;
-
+    
     @Autowired
     private CommonService commonService;
 
@@ -245,9 +245,17 @@ public class TermController {
         dummyLogin();
 
         AdAdmission admission = termService.findAdmissionById(vo.getAdmission().getId());
+        AdAcademicSession academicSession = plannerService.findAcademicSessionByCode(vo.getAcademicSession().getCode());
         AdEnrollmentApplication application = new AdEnrollmentApplicationImpl();
         application.setDescription(vo.getDescription());
         application.setAdmission(admission);
+        application.setSession(academicSession);
+        application.setAuditNo(vo.getAuditNo());
+        application.setCancelComment(vo.getCancelComment());
+        application.setRemoveComment(vo.getRemoveComment());
+        application.setReferenceNo(vo.getReferenceNo());
+        application.setSourceNo(vo.getSourceNo());
+        
         termService.startEnrollmentApplicationTask(application);
     }
 

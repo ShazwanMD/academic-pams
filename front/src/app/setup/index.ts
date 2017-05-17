@@ -1,3 +1,6 @@
+import { StudyModeEditorDialog } from './study-modes/dialog/study-mode-editor.dialog';
+import { StudyModeListPage } from './study-modes/study-mode-list.page';
+import { StudyMode } from './../common/study-modes/study-mode.interface';
 import { StateCodeEditorDialog } from './state-codes/dialog/state-code-editor.dialog';
 import { GenderCodeEditorDialog } from './gender-codes/dialog/gender-code-editor.dialog';
 import { NationalityCodeEditorDialog } from './nationality-codes/dialog/nationality-code-editor.dialog';
@@ -51,6 +54,7 @@ import {gradeCodeListReducer, GradeCodeListState} from "./grade-codes/grade-code
 import {religionCodeListReducer, ReligionCodeListState} from "./religion-codes/religion-code-list.reducer";
 import {nationalityCodeListReducer, NationalityCodeListState} from "./nationality-codes/nationality-code-list.reducer";
 import {ethnicityCodeListReducer, EthnicityCodeListState} from "./ethnicity-codes/ethnicity-code-list.reducer";
+import {studyModeListReducer, StudyModeListState} from "./study-modes/study-mode-list.reducer";
 
 export interface SetupModuleState {
   title:TitleState;
@@ -65,6 +69,7 @@ export interface SetupModuleState {
   religionCodes: ReligionCodeListState;
   nationalityCodes: NationalityCodeListState;
   ethnicityCodes: EthnicityCodeListState;
+  studyModes: StudyModeListState;
 }
 ;
 export const INITIAL_SETUP_STATE: SetupModuleState =
@@ -81,7 +86,8 @@ export const INITIAL_SETUP_STATE: SetupModuleState =
     religionCodes: <ReligionCode[]>[],
     nationalityCodes: <NationalityCode[]>[],
     ethnicityCodes: <EthnicityCode[]>[],
-  };
+    studyModes: <StudyMode[]>[],
+};
 export const setupModuleReducers = {
   title:titleReducer,
   genderCodes: genderCodeListReducer,
@@ -95,6 +101,7 @@ export const setupModuleReducers = {
   religionCodes: religionCodeListReducer,
   nationalityCodes: nationalityCodeListReducer,
   ethnicityCodes: ethnicityCodeListReducer,
+  studyModes: studyModeListReducer,
 };
 
 @NgModule({
@@ -123,6 +130,7 @@ export const setupModuleReducers = {
     ReligionCodeListPage,
     NationalityCodeListPage,
     EthnicityCodeListPage,
+    StudyModeListPage,
     //Dialog
     GradeCodeEditorDialog,
     MaritalCodeEditorDialog,
@@ -130,6 +138,7 @@ export const setupModuleReducers = {
     NationalityCodeEditorDialog,
     GenderCodeEditorDialog,
     StateCodeEditorDialog,
+    StudyModeEditorDialog,
   ],
   exports: [],
   entryComponents:[
@@ -138,6 +147,7 @@ export const setupModuleReducers = {
     ReligionCodeEditorDialog,
     NationalityCodeEditorDialog,
     GenderCodeEditorDialog,
+     StudyModeEditorDialog,
     StateCodeEditorDialog,
   ],
 

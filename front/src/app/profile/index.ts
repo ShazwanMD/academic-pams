@@ -1,3 +1,6 @@
+import { from } from 'rxjs/observable/from';
+import { Enrollment } from './../term/enrollments/enrollment.interface';
+import { ProfileEnrollmentListComponent } from './components/profile-enrollment-list.component';
 import { Address } from './address.interface';
 import {NgModule, ModuleWithProviders} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
@@ -25,6 +28,8 @@ import {addressListReducer, AddressListState} from "./address-list.reducer";
 import {contactListReducer, ContactListState} from "./contact-list.reducer";
 import {guardianListReducer, GuardianListState} from "./guardian-list.reducer";
 import {guarantorListReducer, GuarantorListState} from "./guarantor-list.reducer";
+import {enrollmentListReducer, EnrollmentListState} from "./enrollment-list.reducer";
+
 
 export interface ProfileModuleState {
   students: ProfileListState;
@@ -33,6 +38,8 @@ export interface ProfileModuleState {
   guarantors: GuarantorListState;
   guardians: GuardianListState;
   contacts: ContactListState;
+  enrollments: EnrollmentListState;
+
 }
 ;
 
@@ -44,6 +51,7 @@ export const INITIAL_PROFILE_STATE: ProfileModuleState =
     guarantors: <Guarantor[]>[],
     guardians: <Guardian[]>[],
     contacts: <Contact[]>[],
+    enrollments: <Enrollment[]>[],
   };
 
 export const profileModuleReducers = {
@@ -53,6 +61,7 @@ export const profileModuleReducers = {
   guarantors: guarantorListReducer,
   guardians: guardianListReducer,
   contacts: contactListReducer,
+  enrollments: enrollmentListReducer,
 };
 
 
@@ -69,10 +78,12 @@ export const profileModuleReducers = {
     ProfileCenterPage,
     ProfileDetailPage,
 
+
     // component
     ProfileComponent,
     ProfileListComponent,
-    ProfileStatusComponent
+    ProfileStatusComponent,
+    ProfileEnrollmentListComponent,
   ],
   exports: [],
 })

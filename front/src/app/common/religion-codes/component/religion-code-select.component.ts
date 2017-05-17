@@ -26,7 +26,7 @@ export class ReligionCodeSelectComponent implements OnInit{
 
                 }
                 ngOnInit(){
-                    this.store.dispatch(this.actions.findStateCodes());
+                    this.store.dispatch(this.actions.findReligionCodes());
                 }
                 selectChangeEvent(event: ReligionCode){
                     this.innerFormControl.setValue(event,{emitEvent: false});

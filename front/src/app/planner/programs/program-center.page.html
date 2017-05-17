@@ -6,7 +6,7 @@
 
   <td-layout-manage-list #list>
     <md-nav-list list-items>
-      <a md-list-item [routerLink]="['/planner/programs-dialog']">
+       <a md-list-item (click)="createDialog()">
        <!--  <a md-list-item (click)="showDialog()"> -->
         <md-icon>create</md-icon>
         Create Program
@@ -22,7 +22,6 @@
         <md-icon class="md-24">more_vert</md-icon>
       </button>
     </div>
-
     <md-card class="">
       <md-card-title>Programs</md-card-title>
       <md-card-subtitle>List of programs</md-card-subtitle>

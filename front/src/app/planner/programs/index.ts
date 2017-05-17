@@ -6,6 +6,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {CovalentCoreModule} from '@covalent/core';
 
 import {PlannerService} from '../../../services';
+
 import {CommonService} from '../../../services';
 import {IdentityService} from '../../../services';
 import {ProgramCenterPage} from "./program-center.page";
@@ -18,6 +19,7 @@ import {ProgramCreatorDialog } from "./dialog/program-creator.dialog";
 import {EffectsModule} from "@ngrx/effects";
 import {ProgramEffects} from "./program.effect";
 import {PlannerModuleState} from "../index";
+import {ProgramSelectComponent} from "./component/program-select.component";
 
 @NgModule({
   imports: [
@@ -36,13 +38,24 @@ import {PlannerModuleState} from "../index";
     // component
     ProgramListComponent,
     ProgramComponent,
+    ProgramSelectComponent,
 
     // dialog
     ProgramEditorDialog,
     ProgramCreatorDialog,
   ],
-  exports: [],
+
+  exports: [
+    ProgramSelectComponent,
+  ],
+
+  entryComponents: [
+ProgramCreatorDialog
+
+  ],
+
 })
+
 export class ProgramSubModule {
   static forRoot(): ModuleWithProviders {
     return {

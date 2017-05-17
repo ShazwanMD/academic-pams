@@ -1,36 +1,36 @@
-<h2 md-dialog-title>Program Creator</h2>
-<md-dialog-content>
-  <form [formGroup]="editForm">
-    <div layout="row" class="pad-bottom">
-      <md-input-container  style="width: 100%">
-        <input md-input #description
-               placeholder="description"
-               formControlName="description"
-               value="Description"
-               flex/>
-      </md-input-container>
-    </div>
-    <div layout="row" class="pad-bottom">
-    </div>
-    <div layout="row" class="pad-bottom">
-      <md-select formControlName="sodoCode" [(ngModel)]="selectedSodoCode" placeholder="Sodo Code"
-                 style="width: 100%">
-        <md-option *ngFor="let sodoCode of sodoCodes" [value]="sodoCode">
-          {{sodoCode.code}}: {{sodoCode.description}}
-        </md-option>
-      </md-select>
-    </div>
-    <div layout="row" class="pad-bottom pad-top">
-      <md-select formControlName="period" [(ngModel)]="selectedPeriod" placeholder="Period" style="width: 100%">
-        <md-option *ngFor="let period of periods" [value]="period">
-          {{period.code}}: {{period.description}}
-        </md-option>
-      </md-select>
-    </div>
-  </form>
-</md-dialog-content>
-<md-dialog-actions align="end">
-  <button md-button color="primary" (click)="goBack()">Back</button>
-  <button md-raised-button color="accent" (click)="save(editForm.value, newForm.valid)">Save</button>
-</md-dialog-actions>
 
+<md-card class=""> <md-card-title>Create New
+Program</md-card-title> <md-card-subtitle>Program form</md-card-subtitle> <md-dialog-content>
+
+<form [formGroup]="creatorForm">
+	<div layout="row" layout-margin>
+		<md-input-container flex> <input mdInput
+			placeholder="Code" formControlName="code"> </md-input-container>
+
+	</div>
+	<div layout="row" class="pad-bottom" layout-margin>
+
+		<md-input-container flex> <input mdInput
+			placeholder="Title" formControlName="title"> </md-input-container>
+
+	</div>
+	<div layout="row" class="pad-bottom" layout-margin>
+
+		<md-input-container flex> <input mdInput
+			placeholder="TitleMs" formControlName="titleMs"> </md-input-container>
+
+	</div>
+	<div layout="row" class="pad-bottom" layout-margin>
+
+		<md-input-container flex> <input mdInput
+			placeholder="TitleEn" formControlName="titleEn"> </md-input-container>
+
+	</div>
+	<!-- program level select -->
+	<!-- faculty select -->
+
+</form>
+</md-dialog-content> <md-dialog-actions align="end">
+<button md-raised-button color="accent"
+	(click)="save(creatorForm.value, creatorForm.valid)">Save</button>
+</md-dialog-actions>
