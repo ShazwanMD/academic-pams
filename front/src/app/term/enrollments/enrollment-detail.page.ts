@@ -37,9 +37,9 @@ export class EnrollmentDetailPage implements OnInit {
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
     config.role = 'dialog';
-    config.width = '50%';
-    config.height = '80%';
-    config.position = {top: '0px'};
+    config.width = '40%';
+    config.height = '90%';
+    config.position = {top: '3px'};
     this.creatorDialogRef = this.dialog.open(EnrollmentApplicationTaskCreatorDialog, config);
     this.creatorDialogRef.afterClosed().subscribe(res => {
       console.log("close dialog");
