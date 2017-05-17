@@ -13,8 +13,10 @@ export class EnrollmentApplicationTaskListComponent {
 
   private columns: any[] = [
     {name: 'referenceNo', label: 'ReferenceNo'},
+    {name: 'sourceNo', label: 'sourceNo'},
     {name: 'description', label: 'Description'},
-    {name: 'flowState', label: 'Status'},
+    {name: 'metaState', label: 'State'},
+    {name: 'application.cancelComment', label: 'cancelComment'},
     {name: 'action', label: ''}
   ];
 }
