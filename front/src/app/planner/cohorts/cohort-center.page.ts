@@ -10,7 +10,7 @@ import {CommonService} from '../../../services';
 import {Store} from "@ngrx/store";
 import {Observable} from "rxjs";
 import {Cohort} from "./cohort.interface";
-import {CohortActions} from "./cohort.action";
+
 import {PlannerModuleState} from "../index";
 
 
