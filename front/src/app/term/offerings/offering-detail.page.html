@@ -26,8 +26,7 @@
           <md-divider></md-divider>
           <md-nav-list
             flex dense>
-            <md-list-item
-              [routerLink]="['/appointments-assign', appointment?.code]">
+            <md-list-item (click)="showDialog()">
               <md-icon md-list-avatar>assignment_ind</md-icon>
               <h4 md-line>Update Offering</h4>
               <p md-line>Update this offering</p>
