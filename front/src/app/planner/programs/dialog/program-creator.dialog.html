@@ -1,35 +1,36 @@
- <md-card class="">
-      <md-card-title>Create New Program</md-card-title>
-      <md-card-subtitle>Program form</md-card-subtitle>
 
-<md-dialog-content>
+<md-card class=""> <md-card-title>Create New
+Program</md-card-title> <md-card-subtitle>Program form</md-card-subtitle> <md-dialog-content>
 
- <form [formGroup]="creatorForm">
-    <div layout="row" layout-margin>
-      <md-input-container flex>
-        <input mdInput 
-               placeholder="Code" 
-               formControlName="code">
-      </md-input-container>
+<form [formGroup]="creatorForm">
+	<div layout="row" layout-margin>
+		<md-input-container flex> <input mdInput
+			placeholder="Code" formControlName="code"> </md-input-container>
 
-    </div>
-    <div layout="row" class="pad-bottom" layout-margin>
-      
-      <md-input-container flex>
-        <input mdInput
-               placeholder="Title"
-               formControlName="title">
-      </md-input-container>
+	</div>
+	<div layout="row" class="pad-bottom" layout-margin>
 
-    </div>
-   <!-- program level select -->
-   <!-- faculty select -->
+		<md-input-container flex> <input mdInput
+			placeholder="Title" formControlName="title"> </md-input-container>
 
-    </form>
-</md-dialog-content>
+	</div>
+	<div layout="row" class="pad-bottom" layout-margin>
 
-<md-dialog-actions align="end">
-  <button md-raised-button color="accent" (click)="save(creatorForm.value, creatorForm.valid)">Save</button>
+		<md-input-container flex> <input mdInput
+			placeholder="TitleMs" formControlName="titleMs"> </md-input-container>
+
+	</div>
+	<div layout="row" class="pad-bottom" layout-margin>
+
+		<md-input-container flex> <input mdInput
+			placeholder="TitleEn" formControlName="titleEn"> </md-input-container>
+
+	</div>
+	<!-- program level select -->
+	<!-- faculty select -->
+
+</form>
+</md-dialog-content> <md-dialog-actions align="end">
+<button md-raised-button color="accent"
+	(click)="save(creatorForm.value, creatorForm.valid)">Save</button>
 </md-dialog-actions>
-
-    
