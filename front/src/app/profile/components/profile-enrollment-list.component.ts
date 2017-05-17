@@ -9,8 +9,9 @@ import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy} from '@
 export class ProfileEnrollmentListComponent {
 
   @Input() enrollments: Enrollment[];
-  @Output() view = new EventEmitter<Enrollment>();
+  //@Output() view = new EventEmitter<Enrollment>();
 
+  /*
   private columns: any[] = [
     {name: 'admission.cohort.code', label: 'COHORT'},
     {name: 'section.offering.course.faculty.name', label: 'FACULTY'},
@@ -19,4 +20,5 @@ export class ProfileEnrollmentListComponent {
     
     {name: 'action', label: ''}
   ];
+  */
 }
