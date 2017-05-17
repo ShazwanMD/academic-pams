@@ -1,4 +1,4 @@
-<h2 md-dialog-title>Offering Update Task Creator</h2>
+<h2 md-dialog-title>Offering Application Task Creator</h2>
 <md-dialog-content>
 <form [formGroup]="createForm">
 
@@ -7,17 +7,19 @@
 			#capacity placeholder="capacity" formControlName="capacity"
 			value="Description" flex /> </md-input-container>
 	</div>
-
+	
 	<div layout="row" class="pad-bottom">
 		<md-input-container flex> <input mdInput
-			#canonical_code placeholder="title" formControlName="title"
+			#capacity placeholder="title" formControlName="title"
 			value="Description" flex /> </md-input-container>
 	</div>
 
+	
+
 </form>
 </md-dialog-content>
-<md-dialog-actions align="end">
-<!-- <button md-raised-button color="accent"
-	(click)="update(createForm.value, createForm.valid)">Update</button> -->
-</md-dialog-actions>
+ <md-dialog-actions align="end">
+<button md-raised-button color="accent"
+	(click)="update(createForm.value, createForm.valid)">Update</button>
+</md-dialog-actions> 
 

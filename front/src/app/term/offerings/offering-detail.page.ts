@@ -46,7 +46,7 @@ export class OfferingDetailPage implements OnInit {
     config.viewContainerRef = this.vcf;
     config.role = 'dialog';
     config.width = '40%';
-    config.height = '90%';
+    config.height = '40%';
     config.position = {top: '3px'};
     this.creatorDialogRef = this.dialog.open(OfferingUpdateTaskCreatorDialog, config);
     this.creatorDialogRef.afterClosed().subscribe(res => {

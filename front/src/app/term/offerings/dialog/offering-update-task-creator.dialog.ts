@@ -28,7 +28,7 @@ export class OfferingUpdateTaskCreatorDialog implements OnInit {
   ngOnInit(): void {
     this.createForm = this.formBuilder.group(<OfferingUpdate>{
      
-        id:null,
+       // id:null,
         capacity:'',
         title:'',
              
