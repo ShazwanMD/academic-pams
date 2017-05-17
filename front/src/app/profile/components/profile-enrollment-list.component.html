@@ -1,66 +1,70 @@
-<!--
-<td-data-table
-  [data]="enrollments"
-  [columns]="columns"
-  [sortBy]="summary"
-  [sortOrder]="ASC"
-  [sortable]="false"
-  [multiple]="false"
-  [selectable]="false"
-  (rowSelect)="view.emit($event)" dense>
-  
-  <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column" >
-    <div layout="row">
-      <span flex >{{value}}</span>
-    </div>
-  </template>
+    <br/>
+    
+    <!--COHORT INFORMATION-->
+    <md-card>
+      <!--<a md-fab color="accent" class="mat-fab-top-right" (click)="editDialog()">
+  <md-icon>edit</md-icon>
+</a>-->
+        <md-card-title>Cohort Information</md-card-title>
+        <md-card-content *ngFor="let enrollment of enrollments">
+          <div layout="column" layout-gt-md="row" class="insert">
+          <div flex-gt-md="50">
+            <b>Cohort Code</b><br/>{{enrollment.admission.cohort.code}}
+          </div>
+          <div flex-gt-md="50">
+            <b>Description</b><br/>{{enrollment.admission.cohort.description}}
+          </div>
+          </div>
+        </md-card-content>
+    </md-card>
 
-<template tdDataTableTemplate="section" let-value="section" let-row="row" let-column="column">
- <div layout="row">
-      <span flex >{{section}}</span>
-    </div>
-  </template>
+    <br/>
 
-  <template tdDataTableTemplate="admission" let-value="admission" let-row="row" let-column="column">
- <div layout="row">
-      <span flex >{{admission}}</span>
-    </div>
-  </template>
-</td-data-table>
--->
-    <table width="100%" border="0" *ngFor="let enrollment of enrollments">
-    <tr>
-    <td width="13%">&nbsp;</td>
-    <td width="1%">&nbsp;</td>
-    <td width="86%">&nbsp;</td>
-    </tr>
-    <tr>
-    <td>Cohort</td>
-    <td>:</td>
-    <td>{{enrollment.admission.cohort.code}}</td>
-    </tr>
-    <tr>
-    <td>Faculty</td>
-    <td>:</td>
-    <td>{{enrollment.section.offering.course.faculty.name}}</td>
-    </tr>
-    <tr>
-    <td>PROGRAM</td>
-    <td>:</td>
-    <td>{{enrollment.section.offering.program.code}}</td>
-    </tr>
-    <tr>
-    <td>COURSE</td>
-    <td>:</td>
-    <td>{{enrollment.section.offering.course.code}}</td>
-    </tr>
-    <tr>
-    <!--<td colspan="3">
-      <!--Actions Section Here
-    <md-card-actions>
-    <button md-button color="accent" class="text-upper">Update</button>
-    <button md-button class="text-upper">Cancel</button>
-    </md-card-actions>
-    </td>-->
-    </tr>
-    </table>
+    <!--FACULTY INFORMATION-->
+    <md-card>
+        <md-card-title>Faculty Information</md-card-title>
+        <md-card-content *ngFor="let enrollment of enrollments">
+          <div layout="column" layout-gt-md="row" class="insert">
+          <div flex-gt-md="50">
+            <b>Faculty Code</b><br/>{{enrollment.section.offering.course.faculty.name}}
+          </div>
+          <div flex-gt-md="50">
+            <b>Faculty Name</b><br/>{{enrollment.section.offering.course.faculty.description}}
+          </div>
+          </div>
+        </md-card-content>
+    </md-card>
+
+    <br/>
+
+    <!--PROGRAM INFORMATION-->
+    <md-card>
+        <md-card-title>Program Information</md-card-title>
+        <md-card-content *ngFor="let enrollment of enrollments">
+          <div layout="column" layout-gt-md="row" class="insert">
+          <div flex-gt-md="50">
+            <b>Program Code</b><br/>{{enrollment.section.offering.program.code}}
+          </div>
+          <div flex-gt-md="50">
+            <b>Program Title</b><br/>{{enrollment.section.offering.program.title}}
+          </div>
+          </div>
+        </md-card-content>
+    </md-card>
+
+    <br/>
+
+    <!--COURSE INFORMATION-->
+    <md-card>
+        <md-card-title>Course Information</md-card-title>
+        <md-card-content *ngFor="let enrollment of enrollments">
+          <div layout="column" layout-gt-md="row" class="insert">
+          <div flex-gt-md="50">
+            <b>Course Code</b><br/>{{enrollment.section.offering.course.code}}
+          </div>
+          <div flex-gt-md="50">
+            <b>Course Title</b><br/>{{enrollment.section.offering.course.title}}
+          </div>
+          </div>
+        </md-card-content>
+    </md-card>
