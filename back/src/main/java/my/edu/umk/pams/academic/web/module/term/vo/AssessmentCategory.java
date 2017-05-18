@@ -1,15 +1,14 @@
-package my.edu.umk.pams.academic.term.model;
+package my.edu.umk.pams.academic.web.module.term.vo;
 
-/**
- * @author PAMS
- */
-public enum AdAssessmentCategory {
+public enum AssessmentCategory {
+	
     COURSE_WORK("COURSE WORK"), // kerja kursus
     EXAM_WORK("EXAM WORK"); // peperiksaan akhir
+	
 
     private String description;
 
-    AdAssessmentCategory(String description) {
+    AssessmentCategory(String description) {
         this.description = description;
     }
 
@@ -20,4 +19,10 @@ public enum AdAssessmentCategory {
     public void setDescription(String description) {
         this.description = description;
     }
+	
+	public static AssessmentCategory get(int index){
+		return values()[index];
+		
+	}
+
 }

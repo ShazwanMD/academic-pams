@@ -49,6 +49,9 @@ public class TermTransformer {
 
     @Autowired
     private PlannerTransformer plannerTransformer;
+    
+    @Autowired
+    private TermTransformer termTransformer;
 
     public AdmissionApplicationTask toAdmissionApplicationTaskVo(Task t) {
         Map<String, Object> vars = workflowService.getVariables(t.getExecutionId());
@@ -237,6 +240,34 @@ public class TermTransformer {
     public List<Section> toSectionVos(List<AdSection> sections) {
         List<Section> vos = sections.stream()
                 .map((section) -> toSectionVo(section))
+                .collect(toList());
+        return vos;
+    }
+
+    //============================================================================
+    //
+    //	ASSESSMENT
+    //
+    //============================================================================
+    public Assessment toAssessmentVo(AdAssessment assessment) {
+    	Assessment vo = new Assessment();
+        vo.setId(assessment.getId());
+        vo.setCode(assessment.getCode());
+        vo.setCanonicalCode(assessment.getCanonicalCode());
+        vo.setDescription(assessment.getDescription());
+        vo.setOrdinal(assessment.getOrdinal());
+        vo.setWeight(assessment.getWeight());
+        vo.setTotalScore(assessment.getTotalScore());
+        vo.setAssessmentType(AssessmentType.get(assessment.getType().ordinal()));
+        vo.setAssessmentCategory(AssessmentCategory.get(assessment.getType().ordinal()));
+        vo.setSession(plannerTransformer.toAcademicSessionVo(assessment.getSession()));
+        vo.setOffering(termTransformer.toOfferingVo(assessment.getOffering()));   
+        return vo;
+    }
+
+    public List<Assessment> toAssessmentVos(List<AdAssessment> assessments) {
+        List<Assessment> vos = assessments.stream()
+                .map((assessment) -> toAssessmentVo(assessment))
                 .collect(toList());
         return vos;
     }

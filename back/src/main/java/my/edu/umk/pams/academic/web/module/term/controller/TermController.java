@@ -59,6 +59,17 @@ public class TermController {
 
     @Autowired
     private AuthenticationManager authenticationManager;
+    
+    //====================================================================================================
+    // Assessment
+    //====================================================================================================
+    // finder
+    @RequestMapping(value = "/assessments", method = RequestMethod.GET)
+    public ResponseEntity<List<Assessment>> findAssessments() {
+        AdAcademicSession academicSession = plannerService.findCurrentAcademicSession();
+        List<AdAssessment> assessments = termService.findAssessments(0,Integer.MAX_VALUE);
+        return new ResponseEntity<List<Assessment>>(termTransformer.toAssessmentVos(assessments), HttpStatus.OK);
+    }
 
     //====================================================================================================
     // ADMISSION
