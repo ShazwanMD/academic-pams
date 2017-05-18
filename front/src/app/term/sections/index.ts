@@ -1,3 +1,4 @@
+import '@ngrx/core/add/operator/select';
 import { appRoutes, appRoutingProviders } from '../../app.routes';
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -16,6 +17,7 @@ import { SectionComponent } from "./component/section.component";
 import { SectionListComponent } from "./component/section-list.component";
 //import {SectionEditorDialog} from "./dialog/section-editor.dialog";
 import { SectionSelectComponent } from "./component/section-select.component";
+import {SectionUpdateTaskCreatorDialog} from "./dialog/section-update-task-creator.dialog";
 
 
 
@@ -39,6 +41,7 @@ import { SectionSelectComponent } from "./component/section-select.component";
 
     //dialog
     //SectionEditorDialog,
+     SectionUpdateTaskCreatorDialog,
 
   ],
   exports: [

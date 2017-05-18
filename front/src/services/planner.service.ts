@@ -101,6 +101,12 @@ activateAcademicSession (academicSession: AcademicSession): Observable<String> {
       .flatMap(data => Observable.of(true));
   }
 
+  removeProgram (program: Program): Observable <Program> {
+    return this.http.delete(environment.endpoint + '/api/planner/programs/' + program)
+      .map((res: Response) => <Program>res.json());
+  }
+  
+
   // ====================================================================================================
   // COURSE
   // ====================================================================================================

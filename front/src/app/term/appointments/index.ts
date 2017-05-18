@@ -18,6 +18,8 @@ import {AppointmentDetailPage} from "./appointment-detail.page";
 import {AppointmentComponent} from "./component/appointment.component";
 import {AppointmentEditorDialog} from "./dialog/appointment-editor.dialog";
 import {AppointmentCreateTaskCreatorDialog} from "./dialog/appointment-create-task-creator.dialog";
+import {AppointmentUpdateTaskCreatorDialog} from "./dialog/appointment-update-task-creator.dialog";
+
 
 @NgModule({
   imports: [
@@ -39,6 +41,7 @@ import {AppointmentCreateTaskCreatorDialog} from "./dialog/appointment-create-ta
   //dialog
     AppointmentEditorDialog,
     AppointmentCreateTaskCreatorDialog,
+    AppointmentUpdateTaskCreatorDialog,
     
   ],
   exports: [],

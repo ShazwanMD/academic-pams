@@ -1,0 +1,22 @@
+<h2 md-dialog-title>Update Section Task Creator</h2>
+<md-dialog-content>
+<form [formGroup]="createForm">
+
+	<div layout="row" class="pad-bottom">
+		<md-input-container flex mdTooltip="Please insert capacity"> <input mdInput
+			#capacity placeholder="capacity" formControlName="capacity"
+			value="Description" flex /> </md-input-container>
+	</div>
+	<div layout="row" class="pad-bottom">
+		<md-input-container flex mdTooltip="Please insert ordinal"> <input mdInput
+			#capacity placeholder="ordinal" formControlName="ordinal"
+			value="Description" flex /> </md-input-container>
+	</div>
+
+</form>
+</md-dialog-content>
+ <md-dialog-actions align="end">
+<button md-raised-button color="accent"
+	(click)="update(createForm.value, createForm.valid)">Update</button>
+</md-dialog-actions> 
+

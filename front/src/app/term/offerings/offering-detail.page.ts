@@ -43,7 +43,7 @@ export class OfferingDetailPage implements OnInit {
     this.sections$ = this.store.select(...this.SECTIONS);
   }
 
-     showDialog(): void {
+    showDialog(): void {
     console.log("showDialog");
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
