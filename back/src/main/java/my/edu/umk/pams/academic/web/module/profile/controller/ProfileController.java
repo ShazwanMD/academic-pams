@@ -74,10 +74,10 @@ public class ProfileController {
     //====================================================================================================
     // PROFILE EDITOR
     //====================================================================================================
-	@RequestMapping(value = "/students/{matricNo}/", method = RequestMethod.PUT)
-	 public ResponseEntity<Student> updateStudent(@PathVariable String matricNo, @RequestBody Student vo) {
+	@RequestMapping(value = "/students/{matricNo}", method = RequestMethod.PUT)
+	 public ResponseEntity<String> updateStudent(@PathVariable String matricNo, @RequestBody Student vo) {
 		dummyLogin();
-		AdStudent student = profileService.findStudentByMatricNo(vo.getIdentityNo());
+		AdStudent student = profileService.findStudentById(vo.getId());
 		student.getMatricNo();
 		student.setName(vo.getName());
 		student.setPhone(vo.getPhone());
@@ -86,7 +86,7 @@ public class ProfileController {
 		student.setFax(vo.getFax());
 		student.getStudentStatus();
 		profileService.updateStudent(student);
-		return new ResponseEntity<Student>(profileTransformer.toStudentVo(student), HttpStatus.OK);
+		return new ResponseEntity<String>("Success", HttpStatus.OK);
 		
 	}
 		
@@ -99,7 +99,7 @@ public class ProfileController {
 
     @RequestMapping(value = "/students", method = RequestMethod.GET)
     public ResponseEntity<List<Student>> findStudents() {
-        List<AdStudent> students = profileService.findStudents(0, 100);
+        List<AdStudent> students = profileService.findStudents("%",0,Integer.MAX_VALUE);
         return new ResponseEntity<List<Student>>(profileTransformer
                 .toStudentVos(students), HttpStatus.OK);
     }

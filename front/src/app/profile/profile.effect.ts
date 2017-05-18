@@ -69,4 +69,11 @@ export class ProfileEffects {
      .switchMap(student => this.profileService.findEnrollments(student))
      .map(enrollments => this.profileActions.findEnrollmentsSuccess(enrollments));
 
+  @Effect() updateStudents$ = this.actions$
+    .ofType(ProfileActions.UPDATE_STUDENT)
+    .map(action => action.payload)
+    .switchMap(payload => this.profileService.updateStudent(payload))
+    .map(message => this.profileActions.updateStudentSuccess(message))
+    .mergeMap(identityNo => from([identityNo, this.profileActions.findStudentByMatricNo(identityNo)]));
+
 }

@@ -30,7 +30,7 @@
     <md-icon>more_vert</md-icon>
     </button>
     <md-menu x-position="before" #menu1="mdMenu">
-    <button md-menu-item (click)="editDialog(row)">Edit</button>
+    <button md-menu-item (click)="editStudent()">Edit</button>
     <button md-menu-item (click)="transferFaculty(row)">Transfer Faculty</button>
     <button md-menu-item (click)="switchStudyMode(row)">Switch Study Mode</button>
     </md-menu>
@@ -64,7 +64,7 @@
     <tr valign="top">
     <td>Phone</td>
     <td>:</td>
-    <td>&nbsp;</td>
+    <td>{{profile.phone}}</td>
     </tr>
     <tr valign="top">
     <td>Mobile</td>
@@ -72,7 +72,7 @@
     <td>{{profile.mobile}}</td>
     </tr>
     <tr valign="top">
-    <td>Student Status</td>
+    <td>Status</td>
     <td>:</td>
     <td>{{profile.studentStatus}}</td>
     </tr>

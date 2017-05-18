@@ -9,7 +9,6 @@ import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { SetupModuleState } from './../index';
 import { SetupActions } from './../setup.action';
 
-
 @Component({
 selector: 'pams-grade-list-page',
 templateUrl: './grade-code-list.page.html',

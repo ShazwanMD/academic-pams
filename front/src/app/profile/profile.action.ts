@@ -168,4 +168,24 @@ export class ProfileActions {
       payload: enrollments
     };
   }
+
+   static UPDATE_STUDENT = '[Profile] Update Student';
+
+  updateStudent(identityNo): Action {
+    console.log("updateStudent");
+    return {
+      type: ProfileActions.UPDATE_STUDENT,
+      payload: identityNo
+    };
+  }
+
+  static UPDATE_STUDENT_SUCCESS = '[Profile] Update Student  Success';
+
+  updateStudentSuccess(message): Action {
+    console.log("updateStudentSuccess");
+    return {
+      type: ProfileActions.UPDATE_STUDENT_SUCCESS,
+      payload: message
+    };
+  }
 }
