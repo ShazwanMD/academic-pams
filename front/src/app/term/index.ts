@@ -1,3 +1,6 @@
+import { AssessmentSubModule } from './assessments/index';
+import { AssessmentActions } from './assessments/assessment.action';
+import { Assessment } from './assessments/assessment.interface';
 import {Appointment} from './appointments/appointment.interface';
 import {NgModule, ModuleWithProviders} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
@@ -43,6 +46,7 @@ import {Section} from "./sections/section.interface";
 import {SectionActions} from "./sections/section.action";
 import {SectionSubModule} from "./sections/index";
 import {AdmissionApplicationSubModule} from "./admission-applications/index";
+import {assessmentReducer, AssessmentState} from "./assessments/assessment.reducer";
 
 export interface TermModuleState {
   admissions: AdmissionListState;
@@ -55,11 +59,15 @@ export interface TermModuleState {
   enrollment: EnrollmentState;
   appointments: AppointmentListState;
   appointment: AppointmentState;
+
+    assessment: AssessmentState;
   // admissionApplicationTasks:AdmissionApplicationListState,
   // admissionApplicationTask:AdmissionApplicationState,
   assignedEnrollmentApplicationTasks: EnrollmentApplicationTaskListState,
   pooledEnrollmentApplicationTasks: EnrollmentApplicationTaskListState,
   enrollmentApplicationTask: EnrollmentApplicationTaskState,
+
+
 }
 ;
 
@@ -75,6 +83,9 @@ export const INITIAL_TERM_STATE: TermModuleState =
     enrollment: <Enrollment>{},
     appointments: <Appointment[]>[],
     appointment: <Appointment>{},
+
+    assessment: <Assessment>{},
+
     assignedEnrollmentApplicationTasks: <EnrollmentApplicationTask[]>[],
     pooledEnrollmentApplicationTasks: <EnrollmentApplicationTask[]>[],
     enrollmentApplicationTask:<EnrollmentApplicationTask>{},
@@ -91,6 +102,9 @@ export const termModuleReducers = {
   admission: admissionReducer,
   appointments: appointmentListReducer,
   appointment: appointmentReducer,
+
+  assessment: assessmentReducer,
+
   // assignedAdmissionApplicationTasks:admissionApplicationTaskListReducer,
   // pooledAdmissionApplicationTasks:admissionApplicationTaskListReducer,
   // admissionApplicationTask:admissionApplicationTaskReducer,
@@ -112,6 +126,8 @@ export const termModuleReducers = {
     AdmissionSubModule.forRoot(),
     AppointmentSubModule.forRoot(),
     SectionSubModule.forRoot(),
+
+    AssessmentSubModule.forRoot(),
     
   ],
   declarations: [
@@ -135,6 +151,7 @@ export class TermModule {
         EnrollmentActions,
         SectionActions,
         OfferingActions,
+        AssessmentActions,
 
       ],
     };

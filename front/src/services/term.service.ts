@@ -1,3 +1,4 @@
+import { Assessment } from './../app/term/assessments/assessment.interface';
 import { Offering } from './../app/term/offerings/offering.interface';
 import {Injectable} from '@angular/core';
 import {Response, Http} from '@angular/http';
@@ -24,6 +25,13 @@ export class TermService {
 
   constructor(private _http: HttpInterceptorService,
               private http: Http) {
+  }
+
+  
+  findAssessments(): Observable<Assessment[]> {
+    console.log("findAssessments");
+    return this.http.get(environment.endpoint + '/api/term/assessments')
+      .map((res: Response) => <Assessment[]>res.json());
   }
 
   // ==================================================================================================== //

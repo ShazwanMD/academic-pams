@@ -1,3 +1,4 @@
+import { AssessmentRoutes } from './assessments/assessment.routes';
 import {Routes, RouterModule} from '@angular/router';
 import {TermPage} from "./term.page";
 import {OfferingRoutes} from "./offerings/offering.routes";
@@ -21,5 +22,6 @@ export const TermModuleRoutes: Routes = [
   ...AdmissionApplicationRoutes,
   ...AppointmentRoutes,
   ...SectionRoutes,
+  ...AssessmentRoutes,
 
 ];
