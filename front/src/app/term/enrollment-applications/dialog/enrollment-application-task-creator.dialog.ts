@@ -8,8 +8,6 @@ import {EnrollmentApplication} from "../enrollment-application.interface";
 import {TermModuleState} from "../../index";
 import {AcademicSession} from "../../../planner/academic-sessions/academic-session.interface";
 import {Admission} from "../../admissions/admission.interface";
-import {FlowState} from "../../../core/flow-state.enum";
-import {MetaState} from "../../../core/meta-state.enum";
 
 
 @Component({
@@ -30,17 +28,18 @@ export class EnrollmentApplicationTaskCreatorDialog implements OnInit {
   ngOnInit(): void {
     this.createForm = this.formBuilder.group(<EnrollmentApplication>{
       id:null,
-      //referenceNo:'', --> autocreate
       auditNo:'',
       sourceNo:'',
       description:'',
       admission:<Admission>{},
-      academicSession:<AcademicSession>{},
+      academicSession:<AcademicSession>{}
     });
   }
 
-  save(enrollmentApplication: EnrollmentApplication, isValid: boolean) {
-    this.store.dispatch(this.actions.startEnrollmentApplicationTask(enrollmentApplication));
+  save(application: EnrollmentApplication, isValid: boolean) {
+    console.log("admission: " + application.admission.id)
+    console.log("session: " + application.academicSession)
+    this.store.dispatch(this.actions.startEnrollmentApplicationTask(application));
     this.dialog.close();
   }
 }

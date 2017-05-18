@@ -28,6 +28,7 @@ import {EnrollmentEditorDialog} from "./dialog/enrollment-editor.dialog";
     // page
     EnrollmentCenterPage,
     EnrollmentDetailPage,
+    
 
     // component
     EnrollmentListComponent,

@@ -9,7 +9,7 @@ import {Offering} from "./offering.interface";
 import {OfferingActions} from "./offering.action";
 import {TermModuleState} from "../index";
 import {MdDialog, MdDialogConfig, MdDialogRef} from "@angular/material";
-import {OfferingApplicationTaskCreatorDialog} from "./dialog/offering-application-task-creator.dialog";
+import {OfferingCreateTaskCreatorDialog} from "./dialog/offering-create-task-creator.dialog";
 
 @Component({
     selector: 'pams-offering-center',
@@ -19,7 +19,7 @@ export class OfferingCenterPage implements OnInit {
 
     private OFFERINGS = "termModuleState.offerings".split(".");
     private offerings$: Observable<Offering[]>;
-    private creatorDialogRef: MdDialogRef<OfferingApplicationTaskCreatorDialog>;
+    private creatorDialogRef: MdDialogRef<OfferingCreateTaskCreatorDialog>;
 
     constructor(private router: Router,
         private route: ActivatedRoute,
@@ -46,9 +46,9 @@ export class OfferingCenterPage implements OnInit {
         config.viewContainerRef = this.vcf;
         config.role = 'dialog';
         config.width = '50%';
-        config.height = '80%';
+        config.height = '60%';
         config.position = { top: '0px' };
-        this.creatorDialogRef = this.dialog.open(OfferingApplicationTaskCreatorDialog, config);
+        this.creatorDialogRef = this.dialog.open(OfferingCreateTaskCreatorDialog, config);
         this.creatorDialogRef.afterClosed().subscribe(res => {
             console.log("close dialog");
             // load something here

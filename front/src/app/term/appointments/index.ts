@@ -17,6 +17,7 @@ import {AppointmentEffects} from "./appointment.effect";
 import {AppointmentDetailPage} from "./appointment-detail.page";
 import {AppointmentComponent} from "./component/appointment.component";
 import {AppointmentEditorDialog} from "./dialog/appointment-editor.dialog";
+import {AppointmentCreateTaskCreatorDialog} from "./dialog/appointment-create-task-creator.dialog";
 
 @NgModule({
   imports: [
@@ -37,6 +38,7 @@ import {AppointmentEditorDialog} from "./dialog/appointment-editor.dialog";
     
   //dialog
     AppointmentEditorDialog,
+    AppointmentCreateTaskCreatorDialog,
     
   ],
   exports: [],

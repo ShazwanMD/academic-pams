@@ -2,23 +2,14 @@
 <md-dialog-content>
   <form [formGroup]="editForm">
     <div layout="row" class="pad-bottom">
-      <md-input-container style="width: 100%">
-        <input mdInput
-               placeholder="Description"
-               formControlName="description"
-               flex/>
-      </md-input-container>
-    </div>
-    <div layout="row" class="pad-bottom">
-    <!--   <pams-section-select
+      <pams-section-select
         [placeholder]="'Select Section'"
-        [innerFormControl]="editForm.controls['section']">
-      </pams-section-select> -->
+        [innerFormControl]="editForm.controls.section">
+      </pams-section-select>
     </div>
   </form>
 </md-dialog-content>
 <md-dialog-actions align="end">
-  <button md-button color="primary" (click)="goBack()">Back</button>
   <button md-raised-button color="accent" (click)="save(editForm.value, newForm.valid)">Save</button>
 </md-dialog-actions>
 

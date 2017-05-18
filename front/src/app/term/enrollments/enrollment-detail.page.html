@@ -13,8 +13,7 @@
      <div flex-gt-md="30">
             <md-card> <md-card-title>Action</md-card-title> <md-card-subtitle>Actions
             available on current enrollment</md-card-subtitle> <md-divider></md-divider> <md-nav-list
-                flex dense> <md-list-item
-                [routerLink]="['/appointments-assign', appointment?.code]">
+                flex dense> <md-list-item (click)="showDialog()">
             <md-icon md-list-avatar>assignment_ind</md-icon>
             <h4 md-line>Add Course Enrollment</h4>
             <p md-line>Add this enrollment</p>

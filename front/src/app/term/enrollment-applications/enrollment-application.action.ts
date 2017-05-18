@@ -62,10 +62,10 @@ export class EnrollmentApplicationActions {
 
   static START_ENROLLMENT_APPLICATION_TASK = '[EnrollmentApplication] Start EnrollmentApplication Task';
 
-  startEnrollmentApplicationTask(invoice): Action {
+  startEnrollmentApplicationTask(application): Action {
     return {
       type: EnrollmentApplicationActions.START_ENROLLMENT_APPLICATION_TASK,
-      payload: invoice
+      payload: application
     };
   }
 
@@ -80,10 +80,10 @@ export class EnrollmentApplicationActions {
 
   static COMPLETE_ENROLLMENT_APPLICATION_TASK = '[EnrollmentApplication] Complete EnrollmentApplication Task';
 
-  completeEnrollmentApplicationTask(invoice): Action {
+  completeEnrollmentApplicationTask(application): Action {
     return {
       type: EnrollmentApplicationActions.COMPLETE_ENROLLMENT_APPLICATION_TASK,
-      payload: invoice
+      payload: application
     };
   }
 
@@ -98,10 +98,10 @@ export class EnrollmentApplicationActions {
 
   static CLAIM_ENROLLMENT_APPLICATION_TASK = '[EnrollmentApplication] Assign EnrollmentApplication Task';
 
-  claimEnrollmentApplicationTask(invoice): Action {
+  claimEnrollmentApplicationTask(application): Action {
     return {
       type: EnrollmentApplicationActions.CLAIM_ENROLLMENT_APPLICATION_TASK,
-      payload: invoice
+      payload: application
     };
   }
 
@@ -116,10 +116,10 @@ export class EnrollmentApplicationActions {
 
   static RELEASE_ENROLLMENT_APPLICATION_TASK = '[EnrollmentApplication] Release EnrollmentApplication Task';
 
-  releaseEnrollmentApplicationTask(invoice): Action {
+  releaseEnrollmentApplicationTask(application): Action {
     return {
       type: EnrollmentApplicationActions.RELEASE_ENROLLMENT_APPLICATION_TASK,
-      payload: invoice
+      payload: application
     };
   }
 
@@ -143,10 +143,10 @@ export class EnrollmentApplicationActions {
 
   static FIND_ENROLLMENT_APPLICATION_BY_ID_SUCCESS = '[EnrollmentApplication] Find EnrollmentApplication By Id Success';
 
-  findEnrollmentApplicationByIdSuccess(invoice): Action {
+  findEnrollmentApplicationByIdSuccess(application): Action {
     return {
       type: EnrollmentApplicationActions.FIND_ENROLLMENT_APPLICATION_BY_ID_SUCCESS,
-      payload: invoice
+      payload: application
     };
   }
 
@@ -161,20 +161,20 @@ export class EnrollmentApplicationActions {
 
   static FIND_ENROLLMENT_APPLICATION_BY_REFERENCE_NO_SUCCESS = '[EnrollmentApplication] Find EnrollmentApplication By Reference No Success';
 
-  findEnrollmentApplicationByReferenceNoSuccess(invoice): Action {
+  findEnrollmentApplicationByReferenceNoSuccess(application): Action {
     return {
       type: EnrollmentApplicationActions.FIND_ENROLLMENT_APPLICATION_BY_REFERENCE_NO_SUCCESS,
-      payload: invoice
+      payload: application
     };
   }
 
   static FIND_ENROLLMENT_APPLICATION_ITEMS = '[EnrollmentApplication] Find EnrollmentApplication Items';
 
-  findEnrollmentApplicationItems(invoice): Action {
-    console.log("findEnrollmentApplicationItems for invoice: " + invoice);
+  findEnrollmentApplicationItems(application): Action {
+    console.log("findEnrollmentApplicationItems for application: " + application);
     return {
       type: EnrollmentApplicationActions.FIND_ENROLLMENT_APPLICATION_ITEMS,
-      payload: invoice
+      payload: application
     };
   }
 
@@ -191,46 +191,46 @@ export class EnrollmentApplicationActions {
 
   static UPDATE_ENROLLMENT_APPLICATION = '[EnrollmentApplication] Update EnrollmentApplication';
 
-  updateEnrollmentApplication(invoice): Action {
+  updateEnrollmentApplication(application): Action {
     return {
       type: EnrollmentApplicationActions.UPDATE_ENROLLMENT_APPLICATION,
-      payload: invoice
+      payload: application
     };
   }
 
   static UPDATE_ENROLLMENT_APPLICATION_SUCCESS = '[EnrollmentApplication] Update EnrollmentApplication Success';
 
-  updateEnrollmentApplicationSuccess(invoice): Action {
+  updateEnrollmentApplicationSuccess(application): Action {
     return {
       type: EnrollmentApplicationActions.UPDATE_ENROLLMENT_APPLICATION_SUCCESS,
-      payload: invoice
+      payload: application
     };
   }
 
   static REMOVE_ENROLLMENT_APPLICATION = '[EnrollmentApplication] Remove EnrollmentApplication';
 
-  removeEnrollmentApplication(invoice): Action {
+  removeEnrollmentApplication(application): Action {
     return {
       type: EnrollmentApplicationActions.REMOVE_ENROLLMENT_APPLICATION,
-      payload: invoice
+      payload: application
     };
   }
 
   static REMOVE_ENROLLMENT_APPLICATION_SUCCESS = '[EnrollmentApplication] Remove EnrollmentApplication Success';
 
-  removeEnrollmentApplicationSuccess(invoice): Action {
+  removeEnrollmentApplicationSuccess(application): Action {
     return {
       type: EnrollmentApplicationActions.REMOVE_ENROLLMENT_APPLICATION_SUCCESS,
-      payload: invoice
+      payload: application
     };
   }
 
   static ADD_ENROLLMENT_APPLICATION_ITEM = '[EnrollmentApplication] Add EnrollmentApplication Item';
 
-  addEnrollmentApplicationItem(invoice, item): Action {
+  addEnrollmentApplicationItem(application, item): Action {
     return {
       type: EnrollmentApplicationActions.ADD_ENROLLMENT_APPLICATION_ITEM,
-      payload: {invoice:invoice, item:item}
+      payload: {application:application, item:item}
     };
   }
 

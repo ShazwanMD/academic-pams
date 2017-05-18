@@ -6,6 +6,7 @@ import {TermService} from "../../../services/term.service";
 import {TermModuleState} from "../index";
 import {Store} from "@ngrx/store";
 import 'rxjs/add/operator/withLatestFrom';
+import {EnrollmentApplicationTask} from "./enrollment-application-task.interface";
 
 
 @Injectable()
@@ -107,5 +108,5 @@ export class EnrollmentApplicationEffects {
       .map(message => this.enrollmentApplicationActions.addEnrollmentApplicationItemSuccess(message))
       .withLatestFrom(this.store$.select(...this.ENROLLMENT_APPLICATION_TASK))
       .map(state => state[1])
-      .map(enrollmentApplication => this.enrollmentApplicationActions.findEnrollmentApplicationItems(enrollmentApplication));
+      .map((task:EnrollmentApplicationTask) => this.enrollmentApplicationActions.findEnrollmentApplicationItems(task.application));
 }

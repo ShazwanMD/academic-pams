@@ -68,6 +68,22 @@ export class OfferingActions {
       payload: offering
     };
   }
+  
+  static UPDATE_OFFERING = '[Offering] Update Offering';
+  updateOffering(offering): Action {
+    return {
+      type: OfferingActions.UPDATE_OFFERING,
+      payload: offering
+    };
+  }
+
+  static UPDATE_OFFERING_SUCCESS = '[Offering] Update Offering Success';
+  updateOfferingSuccess(offering): Action {
+    return {
+      type: OfferingActions.UPDATE_OFFERING_SUCCESS,
+      payload: offering
+    };
+  }
 
   static REMOVE_OFFERING = '[Offering] Remove Offering';
   removeOffering(offering): Action {

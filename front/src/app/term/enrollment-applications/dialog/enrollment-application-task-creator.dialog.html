@@ -1,7 +1,6 @@
 <h2 md-dialog-title>Enrollment Application Task Creator</h2>
 <md-dialog-content>
   <form [formGroup]="createForm">
-   
      <div layout="row" class="pad-bottom">
       <md-input-container flex>
         <input mdInput #sourceNo
@@ -11,8 +10,7 @@
                flex/>
       </md-input-container>
     </div>
-    
-    
+
     <div layout="row" class="pad-bottom">
       <md-input-container flex>
         <input mdInput #sourceNo
@@ -22,7 +20,7 @@
                flex/>
       </md-input-container>
     </div>
-    
+
      <div layout="row" class="pad-bottom">
       <md-input-container flex>
         <input mdInput #description
@@ -32,18 +30,16 @@
                flex/>
       </md-input-container>
     </div>
-    
-    
     <div layout="row" class="pad-bottom pad-top">
       <pams-admission-select
         [placeholder]="'Select Student'"
-        [innerFormControl]="createForm.controls['admission']">
+        [innerFormControl]="createForm.controls.admission">
       </pams-admission-select>
     </div>
     <div layout="row" class="pad-bottom pad-top">
       <pams-academic-session-select
         [placeholder]="'Select Session'"
-        [innerFormControl]="createForm.controls['academicSession']">
+        [innerFormControl]="createForm.controls.academicSession">
       </pams-academic-session-select>
     </div>
   </form>

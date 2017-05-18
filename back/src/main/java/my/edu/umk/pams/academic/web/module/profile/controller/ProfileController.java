@@ -2,12 +2,15 @@ package my.edu.umk.pams.academic.web.module.profile.controller;
 
 import my.edu.umk.pams.academic.common.service.CommonService;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
+import my.edu.umk.pams.academic.identity.model.AdStudentStatus;
 import my.edu.umk.pams.academic.identity.service.IdentityService;
+import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
 import my.edu.umk.pams.academic.profile.service.ProfileService;
 import my.edu.umk.pams.academic.term.model.AdEnrollment;
 import my.edu.umk.pams.academic.term.service.TermService;
 import my.edu.umk.pams.academic.web.module.identity.vo.Student;
+import my.edu.umk.pams.academic.web.module.identity.vo.StudentStatus;
 import my.edu.umk.pams.academic.web.module.profile.vo.Address;
 import my.edu.umk.pams.academic.web.module.profile.vo.Contact;
 import my.edu.umk.pams.academic.web.module.profile.vo.Guarantor;
@@ -20,6 +23,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -116,5 +122,42 @@ public class ProfileController {
         AdStudent student = profileService.findStudentByMatricNo(identityNo);
         return new ResponseEntity<List<Contact>>(profileTransformer
                 .toContactVos(profileService.findContacts(student)), HttpStatus.OK);
+    }
+    
+    @RequestMapping(value = "/students/{identityNo}/activate", method = RequestMethod.POST)
+    public ResponseEntity<AdStudentStatus> activateStudent(@PathVariable String identityNo) {
+    	dummyLogin();
+    	AdStudent student = profileService.findStudentByMatricNo(identityNo);
+    	student.setStudentStatus(AdStudentStatus.ACTIVE);
+    	profileService.activateStudent(student);
+    	return new ResponseEntity<AdStudentStatus>( student.getStudentStatus(), HttpStatus.OK);
+    }
+    
+    @RequestMapping(value = "/students/{identityNo}/deactivate", method = RequestMethod.POST)
+    public ResponseEntity<AdStudentStatus> deactivateStudent(@PathVariable String identityNo) {
+    	dummyLogin();
+    	AdStudent student = profileService.findStudentByMatricNo(identityNo);
+    	student.setStudentStatus(AdStudentStatus.INACTIVE);
+    	profileService.deactivateStudent(student);
+    	return new ResponseEntity<AdStudentStatus>( student.getStudentStatus(), HttpStatus.OK);
+    }
+    
+    @RequestMapping(value = "/students/{identityNo}/barStudent", method = RequestMethod.POST)
+    public ResponseEntity<AdStudentStatus> barStudent(@PathVariable String identityNo) {
+    	dummyLogin();
+    	AdStudent student = profileService.findStudentByMatricNo(identityNo);
+    	student.setStudentStatus(AdStudentStatus.BARRED);
+    	profileService.barStudent(student);
+    	return new ResponseEntity<AdStudentStatus>( student.getStudentStatus(), HttpStatus.OK);
+    }
+    
+    //====================================================================================================
+    // PRIVATE METHODS
+    //====================================================================================================
+
+    private void dummyLogin() {
+        UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken("root", "abc123");
+        Authentication authed = authenticationManager.authenticate(token);
+        SecurityContextHolder.getContext().setAuthentication(authed);
     }
 }
