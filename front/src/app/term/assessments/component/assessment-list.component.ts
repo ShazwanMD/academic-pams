@@ -14,6 +14,12 @@ export class AssessmentListComponent {
 
   private columns: any[] = [
     { name: 'code', label: 'Code' },
+    { name: 'canonicalCode', label: 'Canonical Code' },
+    { name: 'description', label: 'Description' },
+    { name: 'assessmentType', label: 'Type' },
+    { name: 'assessmentCategory', label: 'Category' },
+    { name: 'offering.course.code', label: 'Course' },
+    { name: 'offering.course.title', label: 'Type' },
     { name: 'action', label: '' }
   ];
 
