@@ -18,22 +18,17 @@ export class AssessmentCenterPage implements OnInit {
     private ASSESSMENTS = "termModuleState.assessments".split(".");
     private assessments$: Observable<Assessment[]>;
 
-
-    constructor(private router: Router,
+        constructor(private router: Router,
         private route: ActivatedRoute,
         private actions: AssessmentActions,
-        private termService: TermService,
-        private store: Store<TermModuleState>,
-    ) {
+        private store: Store<TermModuleState>) {
         this.assessments$ = this.store.select(...this.ASSESSMENTS);
     }
-    goBack(route: string): void {
-        this.router.navigate(['/assessments']);
-    }
 
- ngOnInit(): void {
-    console.log("find Assessments");
-     this.store.dispatch(this.actions.findAssessments());
-  }
+
+  ngOnInit():void {
+    this.store.dispatch(this.actions.findAssessments());
+   }
+   
 
 }

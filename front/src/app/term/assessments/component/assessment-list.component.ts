@@ -1,5 +1,4 @@
 import { commonModuleReducers } from './../../../common/index';
-import { INITIAL_APP_STATE } from './../../../app.module';
 import { Assessment } from './../assessment.interface';
 import { Component, Input, EventEmitter, Output, ChangeDetectionStrategy } from '@angular/core';
 
@@ -10,8 +9,14 @@ import { Component, Input, EventEmitter, Output, ChangeDetectionStrategy } from 
 })
 
 export class AssessmentListComponent {
-    @Input() assessment: Assessment;
-    @Output() vieww = new EventEmitter<Assessment>();
+    @Input() assessments: Assessment[];
+      @Output() view = new EventEmitter<Assessment>();
+
+  private columns: any[] = [
+    { name: 'code', label: 'Code' },
+    { name: 'action', label: '' }
+  ];
+
 
     // private columns: any[] = [
     //     { name: 'code', label: 'Code' },

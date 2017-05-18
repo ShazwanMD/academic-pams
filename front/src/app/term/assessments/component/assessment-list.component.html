@@ -1,52 +1,23 @@
-<!--<td-data-table
-  [data]="assessments"
-  [columns]="columns"
-  [sortBy]="summary"
-  [sortOrder]="ASC"
+<td-data-table 
+[data]="assessments" 
+[columns]="columns"
+	[sortBy]="summary" 
+  [sortOrder]="ASC" 
   [sortable]="false"
-  [multiple]="false"
-  [selectable]="false"
-  (rowSelect)="view.emit($event)" dense>
-  <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
-    <div layout="row">
-      <span flex>{{value}}</span>
-    </div>
-  </template>
-  <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
-    <div layout="row">
-      <a md-button color="accent" class="text-upper" [routerLink]="['/term/assessments', row['id']]">
-        <span>View</span>
-      </a>
-    </div>
-  </template>
-</td-data-table>-->
-    <table width="100%" border="0">
-    <tr>
-    <td><b>Assessments Information</b></td>
-    <td align="right">
-    <button md-icon-button [md-menu-trigger-for]="menu3">
-    <md-icon>more_vert</md-icon>
-    </button>
-    <md-menu x-position="before" #menu3="mdMenu">
-    <button md-menu-item (click)="editDialog(row)">Edit</button>
-    </md-menu>
-    </td>
-    </tr>
-    <tr>
-    <td colspan="2"><br/>
-    <md-divider></md-divider>
-    <br/></td>
-    </tr>
-    </table>
-        <table width="100%" *ngFor="let assessment of assessments">
-    <tr valign="top">
-    <td width="19%">ID</td>
-    <td width="1%">:</td>
-    <td width="80%">{{assessment.code}}</td>
-    </tr>
-    <tr valign="top">
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    </tr>
-    </table>
+	[multiple]="false" 
+  [selectable]="false" 
+  (rowSelect)="view.emit($event)"
+	dense> 
+<template tdDataTableTemplate="key" let-value="value" let-row="row"
+	let-column="column">
+<div layout="row">
+	<span flex>{{value}}</span>
+</div>
+</template> <template tdDataTableTemplate="action" let-value="value" let-row="row"
+	let-column="column">
+<div layout="row">
+	<a md-button color="accent" class="text-upper"
+		[routerLink]="['/term/admissions', row['id']]"> <span>View</span>
+	</a>
+</div>
+</template> </td-data-table>

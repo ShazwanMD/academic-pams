@@ -29,7 +29,8 @@ import {CovalentCoreModule} from '@covalent/core';
       //Component
       AssessmentListComponent,
     ],
-      exports: [  AssessmentCenterPage,],
+      exports: [  
+       ],
 })
 export class AssessmentSubModule{
     static forRoot(): ModuleWithProviders{
