@@ -9,6 +9,14 @@ import {IdentityComponent} from "./identity.component";
 import {studentListReducer, StudentListState} from "./student-list.reducer";
 import {actorListReducer, ActorListState} from "./actor-list.reducer";
 import {staffListReducer, StaffListState} from "./staff-list.reducer";
+import {StudentSelectComponent} from "./component/student-select.component";
+import {StaffSelectComponent} from "./component/staff-select.component";
+import {StudentActions} from "./student.action";
+import {StaffActions} from "./staff.action";
+import {ActorActions} from "./actor.action";
+import {EffectsRunner} from "@ngrx/effects/testing";
+import {ActorEffects} from "./actor.effect";
+import {EffectsModule} from "@ngrx/effects";
 
 export interface IdentityModuleState {
   actors: ActorListState;
@@ -17,7 +25,12 @@ export interface IdentityModuleState {
 }
 ;
 
-export const INITIAL_IDENTITY_STATE: IdentityModuleState = <IdentityModuleState>{};
+export const INITIAL_IDENTITY_STATE: IdentityModuleState = <IdentityModuleState>{
+  actors:[],
+  students:[],
+  staffs:[],
+};
+
 export const identityModuleReducers = {
   actors: actorListReducer,
   students: studentListReducer,
@@ -27,15 +40,21 @@ export const identityModuleReducers = {
 
 @NgModule({
   imports: [
+    appRoutes,
     BrowserModule,
     ReactiveFormsModule,
     CovalentCoreModule.forRoot(),
-    appRoutes,
+    EffectsModule.run(ActorEffects),
   ],
   declarations: [
     IdentityComponent,
+    StudentSelectComponent,
+    StaffSelectComponent
   ],
-  exports: [],
+  exports: [
+    StudentSelectComponent,
+    StaffSelectComponent
+  ],
 })
 export class IdentityModule {
   static forRoot(): ModuleWithProviders {
@@ -44,7 +63,10 @@ export class IdentityModule {
       providers: [
         appRoutingProviders,
         IdentityService,
-        CommonService
+        CommonService,
+        ActorActions,
+        StudentActions,
+        StaffActions,
       ],
     };
   }

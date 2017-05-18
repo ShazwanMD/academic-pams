@@ -20,6 +20,7 @@ import {AdmissionApplicationTaskWorkflowPanel} from "./panel/admission-applicati
 import {AdmissionApplicationTaskStatusComponent} from "./component/admission-application-task-status.component";
 import {SectionSubModule} from "../sections/index";
 import {AdmissionApplicationCenterPage} from "./admission-application-center.page";
+import {IdentityModule} from "../../identity/index";
 
 @NgModule({
   imports: [
@@ -30,6 +31,7 @@ import {AdmissionApplicationCenterPage} from "./admission-application-center.pag
     AdmissionSubModule.forRoot(),
     AcademicSessionSubModule.forRoot(),
     SectionSubModule.forRoot(),
+    IdentityModule.forRoot(),
     EffectsModule.run(AdmissionApplicationEffects),
   ],
   declarations: [

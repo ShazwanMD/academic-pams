@@ -62,10 +62,10 @@ export class AdmissionApplicationActions {
 
   static START_ADMISSION_APPLICATION_TASK = '[AdmissionApplication] Start AdmissionApplication Task';
 
-  startAdmissionApplicationTask(invoice): Action {
+  startAdmissionApplicationTask(application): Action {
     return {
       type: AdmissionApplicationActions.START_ADMISSION_APPLICATION_TASK,
-      payload: invoice
+      payload: application
     };
   }
 
@@ -80,10 +80,10 @@ export class AdmissionApplicationActions {
 
   static COMPLETE_ADMISSION_APPLICATION_TASK = '[AdmissionApplication] Complete AdmissionApplication Task';
 
-  completeAdmissionApplicationTask(invoice): Action {
+  completeAdmissionApplicationTask(application): Action {
     return {
       type: AdmissionApplicationActions.COMPLETE_ADMISSION_APPLICATION_TASK,
-      payload: invoice
+      payload: application
     };
   }
 
@@ -98,10 +98,10 @@ export class AdmissionApplicationActions {
 
   static CLAIM_ADMISSION_APPLICATION_TASK = '[AdmissionApplication] Assign AdmissionApplication Task';
 
-  claimAdmissionApplicationTask(invoice): Action {
+  claimAdmissionApplicationTask(application): Action {
     return {
       type: AdmissionApplicationActions.CLAIM_ADMISSION_APPLICATION_TASK,
-      payload: invoice
+      payload: application
     };
   }
 
@@ -116,10 +116,10 @@ export class AdmissionApplicationActions {
 
   static RELEASE_ADMISSION_APPLICATION_TASK = '[AdmissionApplication] Release AdmissionApplication Task';
 
-  releaseAdmissionApplicationTask(invoice): Action {
+  releaseAdmissionApplicationTask(application): Action {
     return {
       type: AdmissionApplicationActions.RELEASE_ADMISSION_APPLICATION_TASK,
-      payload: invoice
+      payload: application
     };
   }
 
@@ -143,10 +143,10 @@ export class AdmissionApplicationActions {
 
   static FIND_ADMISSION_APPLICATION_BY_ID_SUCCESS = '[AdmissionApplication] Find AdmissionApplication By Id Success';
 
-  findAdmissionApplicationByIdSuccess(invoice): Action {
+  findAdmissionApplicationByIdSuccess(application): Action {
     return {
       type: AdmissionApplicationActions.FIND_ADMISSION_APPLICATION_BY_ID_SUCCESS,
-      payload: invoice
+      payload: application
     };
   }
 
@@ -161,20 +161,20 @@ export class AdmissionApplicationActions {
 
   static FIND_ADMISSION_APPLICATION_BY_REFERENCE_NO_SUCCESS = '[AdmissionApplication] Find AdmissionApplication By Reference No Success';
 
-  findAdmissionApplicationByReferenceNoSuccess(invoice): Action {
+  findAdmissionApplicationByReferenceNoSuccess(application): Action {
     return {
       type: AdmissionApplicationActions.FIND_ADMISSION_APPLICATION_BY_REFERENCE_NO_SUCCESS,
-      payload: invoice
+      payload: application
     };
   }
 
   static FIND_ADMISSION_APPLICATION_ITEMS = '[AdmissionApplication] Find AdmissionApplication Items';
 
-  findAdmissionApplicationItems(invoice): Action {
-    console.log("findAdmissionApplicationItems for invoice: " + invoice);
+  findAdmissionApplicationItems(application): Action {
+    console.log("findAdmissionApplicationItems for application: " + application);
     return {
       type: AdmissionApplicationActions.FIND_ADMISSION_APPLICATION_ITEMS,
-      payload: invoice
+      payload: application
     };
   }
 
@@ -191,46 +191,46 @@ export class AdmissionApplicationActions {
 
   static UPDATE_ADMISSION_APPLICATION = '[AdmissionApplication] Update AdmissionApplication';
 
-  updateAdmissionApplication(invoice): Action {
+  updateAdmissionApplication(application): Action {
     return {
       type: AdmissionApplicationActions.UPDATE_ADMISSION_APPLICATION,
-      payload: invoice
+      payload: application
     };
   }
 
   static UPDATE_ADMISSION_APPLICATION_SUCCESS = '[AdmissionApplication] Update AdmissionApplication Success';
 
-  updateAdmissionApplicationSuccess(invoice): Action {
+  updateAdmissionApplicationSuccess(application): Action {
     return {
       type: AdmissionApplicationActions.UPDATE_ADMISSION_APPLICATION_SUCCESS,
-      payload: invoice
+      payload: application
     };
   }
 
   static REMOVE_ADMISSION_APPLICATION = '[AdmissionApplication] Remove AdmissionApplication';
 
-  removeAdmissionApplication(invoice): Action {
+  removeAdmissionApplication(application): Action {
     return {
       type: AdmissionApplicationActions.REMOVE_ADMISSION_APPLICATION,
-      payload: invoice
+      payload: application
     };
   }
 
   static REMOVE_ADMISSION_APPLICATION_SUCCESS = '[AdmissionApplication] Remove AdmissionApplication Success';
 
-  removeAdmissionApplicationSuccess(invoice): Action {
+  removeAdmissionApplicationSuccess(application): Action {
     return {
       type: AdmissionApplicationActions.REMOVE_ADMISSION_APPLICATION_SUCCESS,
-      payload: invoice
+      payload: application
     };
   }
 
   static ADD_ADMISSION_APPLICATION_ITEM = '[AdmissionApplication] Add AdmissionApplication Item';
 
-  addAdmissionApplicationItem(invoice, item): Action {
+  addAdmissionApplicationItem(application, item): Action {
     return {
       type: AdmissionApplicationActions.ADD_ADMISSION_APPLICATION_ITEM,
-      payload: {invoice:invoice, item:item}
+      payload: {application:application, item:item}
     };
   }
 

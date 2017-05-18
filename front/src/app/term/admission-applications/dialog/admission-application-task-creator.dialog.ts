@@ -8,8 +8,7 @@ import {AdmissionApplication} from "../admission-application.interface";
 import {TermModuleState} from "../../index";
 import {AcademicSession} from "../../../planner/academic-sessions/academic-session.interface";
 import {Admission} from "../../admissions/admission.interface";
-import {FlowState} from "../../../core/flow-state.enum";
-import {MetaState} from "../../../core/meta-state.enum";
+import {Student} from "../../../identity/student.interface";
 
 @Component({
   selector: 'pams-admission-application-task-creator',
@@ -30,9 +29,9 @@ export class AdmissionApplicationTaskCreatorDialog implements OnInit {
     this.createForm = this.formBuilder.group(<AdmissionApplication>{
       id:null,
       referenceNo:'',
-      sourceNo:'blank',
-      description:'blank',
-      admission:<Admission>{},
+      sourceNo:'',
+      description:'',
+      student:<Student>{},
       academicSession:<AcademicSession>{},
     });
   }

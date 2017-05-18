@@ -103,9 +103,11 @@ public class TermController {
         dummyLogin();
 
         AdStudent student = identityService.findStudentById(vo.getStudent().getId());
+        AdAcademicSession academicSession = plannerService.findAcademicSessionById(vo.getAcademicSession().getId());
         AdAdmissionApplication application = new AdAdmissionApplicationImpl();
         application.setDescription(vo.getDescription());
         application.setStudent(student);
+        application.setSession(academicSession);
         termService.startAdmissionApplicationTask(application);
     }
 
