@@ -1,4 +1,4 @@
-import {Component, OnInit, ChangeDetectionStrategy} from '@angular/core';
+import {Component, OnInit, ChangeDetectionStrategy, ViewContainerRef} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 
 import {IdentityService} from '../../../services';
@@ -9,6 +9,8 @@ import {Observable} from "rxjs";
 import {Appointment} from "./appointment.interface";
 import {AppointmentActions} from "./appointment.action";
 import {TermModuleState} from "../index";
+import {MdDialog, MdDialogConfig, MdDialogRef} from "@angular/material";
+import {AppointmentUpdateTaskCreatorDialog} from "./dialog/appointment-update-task-creator.dialog";
 
 @Component({
   selector: 'pams-appointment-detail',
@@ -19,16 +21,34 @@ export class AppointmentDetailPage implements OnInit {
 
   private APPOINTMENT = "termModuleState.appointment".split(".");
   private appointment$: Observable<Appointment>;
+  private creatorDialogRef: MdDialogRef<AppointmentUpdateTaskCreatorDialog>;  
 
   constructor(private router: Router,
               private route: ActivatedRoute,
               private actions: AppointmentActions,
               private termService: TermService,
-              private store: Store<TermModuleState>) {
+              private store: Store<TermModuleState>,
+              private vcf: ViewContainerRef,
+              private dialog: MdDialog) {
 
     this.appointment$ = this.store.select(...this.APPOINTMENT);
   }
 
+    showDialog(): void {
+    console.log("showDialog");
+    let config = new MdDialogConfig();
+    config.viewContainerRef = this.vcf;
+    config.role = 'dialog';
+    config.width = '40%';
+    config.height = '45%';
+    config.position = {top: '3px'};
+    this.creatorDialogRef = this.dialog.open(AppointmentUpdateTaskCreatorDialog, config);
+    this.creatorDialogRef.afterClosed().subscribe(res => {
+      console.log("close dialog");
+      // load something here
+    });
+  }
+    
   ngOnInit(): void {
     this.route.params.subscribe((params: {id: string}) => {
       let id: string = params.id;

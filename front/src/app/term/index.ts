@@ -112,6 +112,7 @@ export const termModuleReducers = {
     AdmissionSubModule.forRoot(),
     AppointmentSubModule.forRoot(),
     SectionSubModule.forRoot(),
+    
   ],
   declarations: [
     // page
