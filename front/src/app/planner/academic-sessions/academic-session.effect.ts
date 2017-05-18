@@ -1,10 +1,11 @@
-import { Injectable } from '@angular/core';
-import { Effect, Actions } from '@ngrx/effects';
-import { AcademicSessionActions } from "./academic-session.action";
-import { PlannerService } from "../../../services/planner.service";
+import {Injectable} from '@angular/core';
+import {Effect, Actions} from '@ngrx/effects';
+import {AcademicSessionActions} from "./academic-session.action";
+import {PlannerService} from "../../../services/planner.service";
 import {Store} from "@ngrx/store";
 import {Observable} from "rxjs";
 import {PlannerModuleState} from "../index";
+import {AcademicSession} from "./academic-session.interface";
 
 @Injectable()
 export class AcademicSessionEffects {
@@ -12,9 +13,9 @@ export class AcademicSessionEffects {
   private ACADEMIC_SESSION = "plannerModuleState.academicSession".split(".");
 
   constructor(private actions$: Actions,
-    private academicSessionActions: AcademicSessionActions,
-    private plannerService: PlannerService,
-    private store$: Store<PlannerModuleState>) {
+              private academicSessionActions: AcademicSessionActions,
+              private plannerService: PlannerService,
+              private store$: Store<PlannerModuleState>) {
   }
 
   @Effect() findAcademicSessions$ = this.actions$
@@ -34,16 +35,19 @@ export class AcademicSessionEffects {
     .ofType(AcademicSessionActions.ACTIVATE_ACADEMIC_SESSION)
     .map(action => action.payload)
     .switchMap(academicSession => this.plannerService.activateAcademicSession(academicSession))
-    .map(message => this.academicSessionActions.activateAcademicSessionSuccess(message));
-    //.withLatestFrom(this.store$.select(...this.ACADEMIC_SESSION))
-   // .map(state => state[1])
-   // .map(academicSession => this.academicSessionActions.findAcademicSessionByCode(academicSession.code));
+    .map(message => this.academicSessionActions.activateAcademicSessionSuccess(message))
+    // .withLatestFrom(this.store$.select(...this.ACADEMIC_SESSION))
+    // .map(state => state[1])
+    // .map((academicSession:AcademicSession) => this.academicSessionActions.findAcademicSessionByCode(academicSession.code));
 
 
   @Effect() deactivateAcademicSession$ = this.actions$
     .ofType(AcademicSessionActions.DEACTIVATE_ACADEMIC_SESSION)
     .map(action => action.payload)
     .switchMap(academicSession => this.plannerService.deactivateAcademicSession(academicSession))
-    .map(message => this.academicSessionActions.deactivateAcademicSessionSuccess(message));
+    .map(message => this.academicSessionActions.deactivateAcademicSessionSuccess(message))
+    // .withLatestFrom(this.store$.select(...this.ACADEMIC_SESSION))
+    // .map(state => state[1])
+    // .map((academicSession:AcademicSession) => this.academicSessionActions.findAcademicSessionByCode(academicSession.code));
 
 }

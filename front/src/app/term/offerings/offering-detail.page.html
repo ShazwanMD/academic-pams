@@ -31,8 +31,7 @@
               <h4 md-line>Update Offering</h4>
               <p md-line>Update this offering</p>
             </md-list-item>
-            <md-list-item
-              [routerLink]="['/appointments-resolve', appointment?.code]">
+            <md-list-item (click)="deleteDialog()">
               <md-icon md-list-avatar>done_all</md-icon>
               <h4 md-line>Delete Offering</h4>
               <p md-line>Delete this offering</p>

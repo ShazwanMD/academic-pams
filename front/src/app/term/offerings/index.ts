@@ -18,10 +18,11 @@ import {OfferingDetailPage} from "./offering-detail.page";
 import {OfferingComponent} from "./component/offering.component";
 import {OfferingSectionComponent} from "./component/offering-section.component";
 import {OfferingEditorDialog} from "./dialog/offering-editor.dialog";
-import {OfferingApplicationTaskCreatorDialog} from "./dialog/offering-application-task-creator.dialog";
+import {OfferingCreateTaskCreatorDialog} from "./dialog/offering-create-task-creator.dialog";
 import {CourseSubModule} from "../../planner/courses/index";
 import {ProgramSubModule} from "../../planner/programs/index";
 import {OfferingUpdateTaskCreatorDialog} from "./dialog/offering-update-task-creator.dialog";
+import {OfferingDeleteTaskCreatorDialog} from "./dialog/offering-delete-task-creator.dialog";
 
 
 @NgModule({
@@ -47,8 +48,9 @@ import {OfferingUpdateTaskCreatorDialog} from "./dialog/offering-update-task-cre
     
     //dialog
     OfferingEditorDialog,
-    OfferingApplicationTaskCreatorDialog,
+    OfferingCreateTaskCreatorDialog,
     OfferingUpdateTaskCreatorDialog,
+    OfferingDeleteTaskCreatorDialog,
         
   ],
   exports: [],

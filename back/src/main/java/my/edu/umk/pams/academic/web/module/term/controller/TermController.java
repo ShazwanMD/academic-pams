@@ -103,9 +103,11 @@ public class TermController {
         dummyLogin();
 
         AdStudent student = identityService.findStudentById(vo.getStudent().getId());
+        AdAcademicSession academicSession = plannerService.findAcademicSessionById(vo.getAcademicSession().getId());
         AdAdmissionApplication application = new AdAdmissionApplicationImpl();
         application.setDescription(vo.getDescription());
         application.setStudent(student);
+        application.setSession(academicSession);
         termService.startAdmissionApplicationTask(application);
     }
 
@@ -241,11 +243,11 @@ public class TermController {
     }
 
     @RequestMapping(value = "/enrollmentApplications/startTask", method = RequestMethod.POST)
-    public void startEnrollmentApplicationTask(@RequestBody EnrollmentApplication vo) throws Exception {
+    public ResponseEntity<String> startEnrollmentApplicationTask(@RequestBody EnrollmentApplication vo) throws Exception {
         dummyLogin();
 
         AdAdmission admission = termService.findAdmissionById(vo.getAdmission().getId());
-        AdAcademicSession academicSession = plannerService.findAcademicSessionByCode(vo.getAcademicSession().getCode());
+        AdAcademicSession academicSession = plannerService.findAcademicSessionById(vo.getAcademicSession().getId());
         AdEnrollmentApplication application = new AdEnrollmentApplicationImpl();
         application.setDescription(vo.getDescription());
         application.setAdmission(admission);
@@ -253,10 +255,10 @@ public class TermController {
         application.setAuditNo(vo.getAuditNo());
         application.setCancelComment(vo.getCancelComment());
         application.setRemoveComment(vo.getRemoveComment());
-        application.setReferenceNo(vo.getReferenceNo());
         application.setSourceNo(vo.getSourceNo());
         
-        termService.startEnrollmentApplicationTask(application);
+        String referenceNo = termService.startEnrollmentApplicationTask(application);
+        return new ResponseEntity<String>(referenceNo, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/enrollmentApplications/viewTask/{taskId}", method = RequestMethod.GET)

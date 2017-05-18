@@ -17,32 +17,28 @@ import {Program} from "../../../planner/programs/program.interface";
 
 
 @Component({
-  selector: 'pams-offering-application-task-creator',
-  templateUrl: './offering-application-task-creator.dialog.html',
+  selector: 'pams-offering-create-task-creator',
+  templateUrl: './offering-create-task-creator.dialog.html',
 })
 
-export class OfferingApplicationTaskCreatorDialog implements OnInit {
+export class OfferingCreateTaskCreatorDialog implements OnInit {
 
   private createForm: FormGroup;
 
   constructor(private formBuilder: FormBuilder,
               private store: Store<TermModuleState>,
               private actions: OfferingApplicationActions,
-              private dialog: MdDialogRef<OfferingApplicationTaskCreatorDialog>) {
+              private dialog: MdDialogRef<OfferingCreateTaskCreatorDialog>) {
   }
 
   ngOnInit(): void {
     this.createForm = this.formBuilder.group(<OfferingApplication>{
      
         id:null,
-        referenceNo:'',
-        sourceNo:'please insert your data',
-        description:'please insert your data',
         capacity:'',
-        canonical_code:'',
-         title:'',
-         course:<Course>{},
-         program:<Program>{},
+        title:'',
+        course:<Course>{},
+        program:<Program>{},
      
      
     });

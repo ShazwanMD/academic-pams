@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
       this.items = [{
         title: 'Profile',
         route: '/profile',
-        icon: 'assignment',
+        icon: 'contacts',
         color: 'blue-700',
         description: '',
       },
@@ -35,31 +35,32 @@ export class HomeComponent implements OnInit {
         {
           title: 'Term',
           route: '/term',
-          icon: 'assignment',
+          icon: 'description',
           color: 'blue-700',
           description: '',
         },
-        {
+        /*{
           title: 'Graduation',
           route: '/graduation',
           icon: 'assignment',
           color: 'blue-700',
           description: '',
-        },
-        {
+        },*/
+       /* {
           title: 'Identities',
           route: '/identity',
           icon: 'assignment',
           color: 'blue-700',
           description: ' ',
-        },
-        {
+        },*/
+       /* {
           title: 'System',
           route: '/system',
           icon: 'assignment',
           color: 'blue-700',
           description: ' ',
-        },{
+        },*/
+        {
           title: 'Setup',
           route: '/setup',
           icon: 'assignment',

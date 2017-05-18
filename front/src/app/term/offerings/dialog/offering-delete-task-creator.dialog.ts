@@ -7,26 +7,26 @@ import {TermModuleState} from "../../index";
 import {Admission} from "../../admissions/admission.interface";
 import {FlowState} from "../../../core/flow-state.enum";
 import {MetaState} from "../../../core/meta-state.enum";
-import {OfferingUpdate} from '../offering-update.interface';
+import {OfferingDelete} from '../offering-delete.interface';
 //import {OfferingApplicationActions} from "../offering-application.action";
 
 @Component({
-  selector: 'pams-offering-update-task-creator',
-  templateUrl: './offering-update-task-creator.dialog.html',
+  selector: 'pams-offering-delete-task-creator',
+  templateUrl: './offering-delete-task-creator.dialog.html',
 })
 
-export class OfferingUpdateTaskCreatorDialog implements OnInit {
+export class OfferingDeleteTaskCreatorDialog implements OnInit {
 
   private createForm: FormGroup;
 
   constructor(private formBuilder: FormBuilder,
               private store: Store<TermModuleState>,
               //private actions: OfferingApplicationActions,
-              private dialog: MdDialogRef<OfferingUpdateTaskCreatorDialog>) {
+              private dialog: MdDialogRef<OfferingDeleteTaskCreatorDialog>) {
   }
 
   ngOnInit(): void {
-    this.createForm = this.formBuilder.group(<OfferingUpdate>{
+    this.createForm = this.formBuilder.group(<OfferingDelete>{
      
        // id:null,
         capacity:'',

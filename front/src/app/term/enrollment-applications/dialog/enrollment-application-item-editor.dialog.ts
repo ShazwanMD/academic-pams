@@ -2,9 +2,6 @@ import {Component, ViewContainerRef, OnInit} from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
 import {FormBuilder} from '@angular/forms';
 import {Router, ActivatedRoute} from '@angular/router';
-import {IdentityService} from "../../../../services/identity.service";
-import {CommonService} from "../../../../services/common.service";
-import {TermService} from "../../../../services/term.service";
 import {Section} from "../../sections/section.interface";
 import {EnrollmentApplicationItem} from "../enrollment-application-item.interface";
 import {EnrollmentApplicationAction} from "../enrollment-application-action.enum";
@@ -47,7 +44,6 @@ export class EnrollmentApplicationItemEditorDialog implements OnInit {
   ngOnInit(): void {
     this.editForm = this.formBuilder.group(<EnrollmentApplicationItem>{
       id: null,
-      description: '',
       action: EnrollmentApplicationAction.ADD,
       section: <Section>{}
     });
