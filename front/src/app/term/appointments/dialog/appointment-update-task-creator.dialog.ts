@@ -31,7 +31,7 @@ export class AppointmentUpdateTaskCreatorDialog implements OnInit {
      
         id:null,
         status:'',
-        section:<Section>{},
+        //section:<Section>{},
        // staff:'',
              
     });

@@ -3,15 +3,19 @@
 <form [formGroup]="createForm">
 
 	<div layout="row" class="pad-bottom">
-		<md-input-container flex mdTooltip="Please insert status"> <input mdInput
-			#capacity placeholder="status" formControlName="status"
-			value="Description" flex /> </md-input-container>
+		<!-- <md-input-container flex mdTooltip="Please insert status"> 
+		<input mdInput	#capacity placeholder="status" formControlName="status"
+			value="Description" flex /> 
+			</md-input-container> -->
+			
+			<md-radio-group> <md-radio-button value="0">New </md-radio-button>
+			<md-radio-button value="1">Confirmed </md-radio-button>
+			<md-radio-button value="2">Substituted </md-radio-button>
+			<md-radio-button value="3">Dismissed </md-radio-button></md-radio-group>
+			
 	</div>
 	
 	
-
-	
-
 </form>
 </md-dialog-content>
  <md-dialog-actions align="end">
