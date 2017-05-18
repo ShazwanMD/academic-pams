@@ -25,12 +25,16 @@
     <tr>
     <td><b>Student Information</b></td>
     <td align="right">
-    <button md-icon-button [md-menu-trigger-for]="menu">
+        
+    <button md-icon-button [md-menu-trigger-for]="menu1">
     <md-icon>more_vert</md-icon>
     </button>
-    <md-menu x-position="before" #menu="mdMenu">
+    <md-menu x-position="before" #menu1="mdMenu">
     <button md-menu-item (click)="editDialog(row)">Edit</button>
+    <button md-menu-item (click)="transferFaculty(row)">Transfer Faculty</button>
+    <button md-menu-item (click)="switchStudyMode(row)">Switch Study Mode</button>
     </md-menu>
+    
     </td>
     </tr>
     <tr>
@@ -73,7 +77,7 @@
     <td>&nbsp;</td>
     </tr>
     <tr valign="top">
-    <td width="19%" align="justify"><a href="#">[Edit Profile Picture]</a></td>
+    <td width="19%" align="justify"><a href="#">Edit Profile Picture</a></td>
     <td>&nbsp;</td>
     <td>&nbsp;</td>
     <td>
@@ -101,10 +105,10 @@
     <tr>
     <td><b>Address Information</b></td>
     <td align="right">
-    <button md-icon-button [md-menu-trigger-for]="menu">
+    <button md-icon-button [md-menu-trigger-for]="menu2">
     <md-icon>more_vert</md-icon>
     </button>
-    <md-menu x-position="before" #menu="mdMenu">
+    <md-menu x-position="before" #menu2="mdMenu">
     <button md-menu-item (click)="editDialog(row)">Edit</button>
     </md-menu>
     </td>
@@ -136,10 +140,10 @@
     <tr>
     <td><b>Guarantor Information</b></td>
     <td align="right">
-    <button md-icon-button [md-menu-trigger-for]="menu">
+    <button md-icon-button [md-menu-trigger-for]="menu3">
     <md-icon>more_vert</md-icon>
     </button>
-    <md-menu x-position="before" #menu="mdMenu">
+    <md-menu x-position="before" #menu3="mdMenu">
     <button md-menu-item (click)="editDialog(row)">Edit</button>
     </md-menu>
     </td>
@@ -188,10 +192,10 @@
     <tr>
     <td><b>Guardian Information</b></td>
     <td align="right">
-    <button md-icon-button [md-menu-trigger-for]="menu">
+    <button md-icon-button [md-menu-trigger-for]="menu4">
     <md-icon>more_vert</md-icon>
     </button>
-    <md-menu x-position="before" #menu="mdMenu">
+    <md-menu x-position="before" #menu4="mdMenu">
     <button md-menu-item (click)="editDialog(row)">Edit</button>
     </md-menu>
     </td>
@@ -233,10 +237,10 @@
     <tr>
     <td><b>Contact Information</b></td>
     <td align="right">
-    <button md-icon-button [md-menu-trigger-for]="menu">
+    <button md-icon-button [md-menu-trigger-for]="menu5">
     <md-icon>more_vert</md-icon>
     </button>
-    <md-menu x-position="before" #menu="mdMenu">
+    <md-menu x-position="before" #menu5="mdMenu">
     <button md-menu-item (click)="editDialog(row)">Edit</button>
     </md-menu>
     </td>
