@@ -49,7 +49,7 @@ export class OfferingDetailPage implements OnInit {
     config.viewContainerRef = this.vcf;
     config.role = 'dialog';
     config.width = '40%';
-    config.height = '40%';
+    config.height = '45%';
     config.position = {top: '3px'};
     this.creatorDialogRef = this.dialog.open(OfferingUpdateTaskCreatorDialog, config);
     this.creatorDialogRef.afterClosed().subscribe(res => {
@@ -57,14 +57,14 @@ export class OfferingDetailPage implements OnInit {
       // load something here
     });
   }
-     
+   
      deleteDialog(): void {
          console.log("deleteDialog");
          let config = new MdDialogConfig();
          config.viewContainerRef = this.vcf;
          config.role = 'dialog';
          config.width = '40%';
-         config.height = '40%';
+         config.height = '30%';
          config.position = {top: '3px'};
          this.creatorDialogRefDelete = this.dialogDelete.open(OfferingDeleteTaskCreatorDialog, config);
          this.creatorDialogRefDelete.afterClosed().subscribe(res => {
