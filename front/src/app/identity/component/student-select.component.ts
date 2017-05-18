@@ -6,6 +6,7 @@ import {Actor} from "../actor.interface";
 import {ActorActions} from "../actor.action";
 import {IdentityModuleState} from "../index";
 import {StudentActions} from "../student.action";
+import {Student} from "../student.interface";
 
 
 @Component({
@@ -17,14 +18,15 @@ export class StudentSelectComponent implements OnInit {
   private STUDENTS = "identityModuleState.students".split(".");
   @Input() placeholder: string;
   @Input() innerFormControl: FormControl;
-  programLevels$: Observable<Actor[]>;
+  students$: Observable<Student[]>;
 
   constructor(private store: Store<IdentityModuleState>,
               private actions: StudentActions) {
-    this.programLevels$ = this.store.select(...this.STUDENTS);
+    this.students$ = this.store.select(...this.STUDENTS);
   }
 
   ngOnInit() {
+    console.log("find students");
     this.store.dispatch(this.actions.findStudents());
   }
 

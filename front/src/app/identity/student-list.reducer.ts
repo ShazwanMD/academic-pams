@@ -10,7 +10,7 @@ const initialState: StudentListState = <Student[]>[];
 
 export function studentListReducer(state = initialState, action: Action): StudentListState {
   switch (action.type) {
-    case StudentActions.FIND_STUDENTS_SUCCESS: {
+    case StudentActions.FIND_STUDENT_SUCCESS: {
       return action.payload;
     }
     default: {

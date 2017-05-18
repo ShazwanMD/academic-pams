@@ -1,6 +1,6 @@
 <td-layout-nav logo="assets:canang_logo">
   <div toolbar-content layout="row" layout-align="center center" flex>
-    <span>Admission Center</span>
+    <span>Admission Application Center</span>
     <span flex></span>
   </div>
 
@@ -14,44 +14,11 @@
 
   <td-layout-manage-list #list>
     <md-nav-list list-items>
-      <h3 md-subheader>Admission Tasks</h3>
-      <a md-list-item [routerLink]="['/payable/admissions/new-task']">
-        <md-icon>add</md-icon>
-        New Task
-      </a>
-      <a md-list-item [routerLink]="['/payable/admissions/assigned-tasks']">
-        <md-icon>label</md-icon>
-        My Tasks
-      </a>
-      <a md-list-item [routerLink]="['/payable/admissions/pooled-tasks']">
-        <md-icon>label_outline</md-icon>
-        Task Pool
-      </a>
-      <h3 md-subheader>Voucher Tasks</h3>
-      <a md-list-item [routerLink]="['/payable/vouchers/new-task']">
-        <md-icon>add</md-icon>
-        New Task
-      </a>
-      <a md-list-item [routerLink]="['/payable/vouchers/assigned-tasks']">
-        <md-icon>label</md-icon>
-        My Tasks
-      </a>
-      <a md-list-item [routerLink]="['/payable/vouchers/pooled-tasks']">
-        <md-icon>label_outline</md-icon>
-        Task Pool
+      <a md-list-item (click)="showDialog()">
+        <md-icon>create</md-icon>
+        Create Admission Application
       </a>
       <md-divider></md-divider>
-      <h3 md-subheader>Metadata</h3>
-      <a md-list-item [routerLink]="['../departments']">
-        <md-icon>insert_chart</md-icon>
-        Admission Statistic
-      </a>
-      <a md-list-item [routerLink]="['../departments']">
-        <md-icon>file_download</md-icon>
-        Admission Reports
-      </a>
-      <md-divider></md-divider>
-      <h3 md-subheader>Shortcuts</h3>
     </md-nav-list>
     <div toolbar-buttons layout="row" layout-align="start center" flex>
       <span flex>Admission Center</span>
@@ -63,52 +30,20 @@
       </button>
     </div>
 
-    <div layout="row" layout-wrap>
-      <!--<template let-stat let-last="last" ngFor [ngForOf]="stats">-->
-        <!--<div flex-md="100" flex-gt-md="33" layout="column">-->
-          <!--<md-card class="md-card-colored {{stat.color}}" flex>-->
-            <!--<md-card-content class="text-center">-->
-              <!--<div class="md-display-1">{{ stat.count | digits }}</div>-->
-              <!--<div layout="column" layout-padding>-->
-                <!--<div class="md-subhead tc-grey-100">Admissions {{stat.type}}</div>-->
-                <!--<div class="md-caption  tc-grey-100">updated {{ '2016-09-17 12:59:59' | timeAgo }}</div>-->
-              <!--</div>-->
-            <!--</md-card-content>-->
-          <!--</md-card>-->
-        <!--</div>-->
-      <!--</template>-->
-    </div>
-
-
-    <md-card class="">
-      <md-card-title>Admissions</md-card-title>
-      <md-card-subtitle>List of tasks</md-card-subtitle>
-
-      <!-- note: experimental -->
-      <md-divider></md-divider>
-        <!--<div toolbar-buttons layout="row" layout-align="start center" flex>-->
-          <!--<span flex></span>-->
-          <!--<button md-button class="md-icon-button">-->
-            <!--<md-icon class="md-24">attachment</md-icon>-->
-          <!--</button>-->
-          <!--<button md-button class="md-icon-button">-->
-            <!--<md-icon class="md-24">comment</md-icon>-->
-          <!--</button>-->
-          <!--<button md-button class="md-icon-button">-->
-            <!--<md-icon class="md-24">more_vert</md-icon>-->
-          <!--</button>-->
-        <!--</div>-->
-
-      <!--<pams-task-list-->
-        <!--[tasks]="tasks$ | async"-->
-        <!--(view)="viewAdmission($event)"></pams-task-list>-->
-
-      <md-divider></md-divider>
-      <md-card-actions>
-        <a md-button color="accent" class="text-upper" [routerLink]="['/tasks-search']">
-          <span>View More</span>
-        </a>
-      </md-card-actions>
+    <md-card>
+      <md-tab-group [selectedIndex]="0">
+        <md-tab label="Assigned">
+          <pams-admission-application-task-list
+            [admissionApplicationTasks]="assignedAdmissionApplicationTasks$ | async"
+            (view)="view($event)"></pams-admission-application-task-list>
+        </md-tab>
+        <md-tab label="Pooled">
+          <pams-admission-application-task-list
+            [admissionApplicationTasks]="pooledAdmissionApplicationTasks$ | async"
+            (view)="view($event)"></pams-admission-application-task-list>
+        </md-tab>
+      </md-tab-group>
     </md-card>
+
   </td-layout-manage-list>
 </td-layout-nav>

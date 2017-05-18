@@ -11,6 +11,7 @@ import my.edu.umk.pams.academic.term.model.AdEnrollment;
 import my.edu.umk.pams.academic.term.service.TermService;
 import my.edu.umk.pams.academic.web.module.identity.vo.Student;
 import my.edu.umk.pams.academic.web.module.identity.vo.StudentStatus;
+import my.edu.umk.pams.academic.web.module.planner.vo.Program;
 import my.edu.umk.pams.academic.web.module.profile.vo.Address;
 import my.edu.umk.pams.academic.web.module.profile.vo.Contact;
 import my.edu.umk.pams.academic.web.module.profile.vo.Guarantor;
@@ -28,6 +29,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -66,12 +68,33 @@ public class ProfileController {
     @Autowired
     private TermTransformer termTransformer;
 
-    @Autowired
+    @Autowired										
     private ProfileTransformer profileTransformer;
+    
+    //====================================================================================================
+    // PROFILE EDITOR
+    //====================================================================================================
+	@RequestMapping(value = "/students/{matricNo}/", method = RequestMethod.PUT)
+	 public ResponseEntity<Student> updateStudent(@PathVariable String matricNo, @RequestBody Student vo) {
+		dummyLogin();
+		AdStudent student = profileService.findStudentByMatricNo(vo.getIdentityNo());
+		student.getMatricNo();
+		student.setName(vo.getName());
+		student.setPhone(vo.getPhone());
+		student.setEmail(vo.getEmail());
+		student.setMobile(vo.getMobile());
+		student.setFax(vo.getFax());
+		student.getStudentStatus();
+		profileService.updateStudent(student);
+		return new ResponseEntity<Student>(profileTransformer.toStudentVo(student), HttpStatus.OK);
+		
+	}
+		
+    
 
 
     //====================================================================================================
-    // FACULTY
+    // PROFILE
     //====================================================================================================
 
     @RequestMapping(value = "/students", method = RequestMethod.GET)
