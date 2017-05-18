@@ -1,3 +1,4 @@
+import { ProgramUpdateDialog } from './dialog/program-update.dialog';
 import { FacultySubModule } from './../faculties/index';
 import '@ngrx/core/add/operator/select';
 import {appRoutes, appRoutingProviders} from '../../app.routes';
@@ -45,6 +46,8 @@ import {ProgramSelectComponent} from "./component/program-select.component";
     // dialog
     ProgramEditorDialog,
     ProgramCreatorDialog,
+    ProgramUpdateDialog,
+
   ],
 
   exports: [
@@ -52,7 +55,8 @@ import {ProgramSelectComponent} from "./component/program-select.component";
   ],
 
   entryComponents: [
-ProgramCreatorDialog
+ProgramCreatorDialog,
+ProgramUpdateDialog,
 
   ],
 
