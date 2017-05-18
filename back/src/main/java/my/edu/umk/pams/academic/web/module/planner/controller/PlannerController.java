@@ -162,6 +162,8 @@ public class PlannerController {
 		return new ResponseEntity<List<Program>>(plannerTransformer.toProgramVos(programs), HttpStatus.OK);
 	}
 
+
+	
 	@RequestMapping(value = "/programs/{code}", method = RequestMethod.GET)
 	public ResponseEntity<Program> findProgramByCode(@PathVariable String code) throws UnsupportedEncodingException {
 		return new ResponseEntity<Program>(plannerTransformer.toProgramVo(plannerService.findProgramByCode(code)),
@@ -177,28 +179,42 @@ public class PlannerController {
 
 	// business methods
 
-	@RequestMapping(value = "/programs/create", method = RequestMethod.POST)
-	public void createProgram(@RequestBody Program model) {
-		dummyLogin();
-		AdFaculty faculty = plannerService.findFacultyByCode(model.getFaculty().getCode());
-		AdProgram program = new AdProgramImpl();
-		program.setTitle(model.getTitle());
-		program.setProgramLevel(plannerService.findProgramLevelByCode("MASTER"));
-		program.setTitleMs(model.getTitleMs());
-		program.setTitleEn(model.getTitleEn());
-		program.setTitleEn(model.getTitleEn());
-		plannerService.addProgram(faculty, program);
-	}
+	 @RequestMapping(value = "/programs/create{code}", method = RequestMethod.POST)
+	    public ResponseEntity<String> createProgram(@PathVariable String code, @RequestBody Program vo) {
+	        dummyLogin();
+	        AdFaculty faculty = plannerService.findFacultyByCode(code);
+	        AdProgram program = new AdProgramImpl();
+	        program .setCode(vo.getCode());
+	        program .setTitle(vo.getTitle());
+	        program .setTitleMs(vo.getTitleMs());
+	        program .setTitleEn(vo.getTitleEn());
 
-	@RequestMapping(value = "/programs/{code}/", method = RequestMethod.PUT)
-	public void updateProgram(@PathVariable String code, @RequestBody Program model) {
-		dummyLogin();
-		AdProgram program = plannerService.findProgramByCode(code);
-		program.setTitle(model.getTitle());
-		program.setTitleMs(model.getTitleMs());
-		program.setTitleEn(model.getTitleEn());
-		plannerService.updateProgram(program);
-	}
+	        plannerService.addProgram(faculty, program);
+	        return new ResponseEntity<String>("Success", HttpStatus.OK);
+	    }
+	 
+	 @RequestMapping(value = "/programs/update{code}", method = RequestMethod.PUT)
+	    public ResponseEntity<String> updateProgram(@PathVariable String code, @RequestBody Program vo) {
+	        dummyLogin();
+	        AdFaculty faculty = plannerService.findFacultyByCode(code);
+	        AdProgram program = plannerService.findProgramByCode(code);
+	        program .setCode(vo.getCode());
+	        program .setTitle(vo.getTitle());
+	        program .setTitleMs(vo.getTitleMs());
+	        program .setTitleEn(vo.getTitleEn());
+
+	        plannerService.updateProgram(faculty, program);
+	        return new ResponseEntity<String>("Success", HttpStatus.OK);
+	    }
+
+
+	  @RequestMapping(value = "/programs/remove{code}", method = RequestMethod.DELETE)
+	  public ResponseEntity<String> removeProgram (@PathVariable String code) {
+	          dummyLogin();
+	          AdProgram program= plannerService.findProgramByCode(code);
+	          plannerService.removeProgram(program);
+	          return new ResponseEntity<String>("Success", HttpStatus.OK);
+	          }
 
 	@RequestMapping(value = "/programs/{code}/activate", method = RequestMethod.POST)
 	public void activateProgram(@PathVariable String code) {

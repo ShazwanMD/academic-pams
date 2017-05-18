@@ -57,7 +57,6 @@ public class PlannerTransformer {
         vo.setTitleMs(program.getTitleMs());
         vo.setTitleEn(program.getTitleEn());
 		vo.setFaculty(plannerTransformer.toFacultyVo(program.getFaculty()));
-        
         return vo;
     }
 
