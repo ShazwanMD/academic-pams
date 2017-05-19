@@ -42,46 +42,40 @@ public class AdAssessmentDaoImpl extends GenericDaoSupport<Long, AdAssessment> i
     }
 
     @Override
-    public AdAssessment findByCodeAndOfferingAndSession(String code, AdAcademicSession academicSession, AdOffering offering) {
+    public AdAssessment findByCodeAndOffering(String code, AdOffering offering) {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select s from AdAssessment s where " +
                 "upper(s.code) = upper(:code) " +
                 "and s.offering = :offering " +
-                "and s.session = :academicSession " +
                 "and s.metadata.state = :state");
         query.setString("code", code);
         query.setEntity("offering", offering);
-        query.setEntity("academicSession", academicSession);
         query.setCacheable(true);
         query.setInteger("state", AdMetaState.ACTIVE.ordinal());
         return (AdAssessment) query.uniqueResult();
     }
 
     @Override
-    public List<AdAssessment> find(AdAcademicSession academicSession, AdOffering offering) {
+    public List<AdAssessment> find(AdOffering offering) {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select s from AdAssessment s where " +
                 "s.offering = :offering " +
-                "and s.session = :academicSession " +
                 "and s.metadata.state = :state " +
                 "order by s.code");
         query.setInteger("state", AdMetaState.ACTIVE.ordinal());
         query.setEntity("offering", offering);
-        query.setEntity("academicSession", academicSession);
         query.setCacheable(true);
         return (List<AdAssessment>) query.list();
     }
 
     @Override
-    public List<AdAssessment> find(AdAcademicSession academicSession, AdOffering offering, Integer offset, Integer limit) {
+    public List<AdAssessment> find(AdOffering offering, Integer offset, Integer limit) {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select s from AdAssessment s where " +
                 "s.offering = :offering " +
-                "and s.session = :academicSession " +
                 "and s.metadata.state = :state ");
         query.setInteger("state", AdMetaState.ACTIVE.ordinal());
         query.setEntity("offering", offering);
-        query.setEntity("academicSession", academicSession);
         query.setFirstResult(offset);
         query.setMaxResults(limit);
         query.setCacheable(true);
@@ -92,7 +86,7 @@ public class AdAssessmentDaoImpl extends GenericDaoSupport<Long, AdAssessment> i
     public List<AdAssessment> find(String filter, Integer offset, Integer limit) {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select s from AdAssessment s where " +
-                " s.metadata.state = :state ");
+                "s.metadata.state = :state ");
         query.setInteger("state", AdMetaState.ACTIVE.ordinal());
         query.setFirstResult(offset);
         query.setMaxResults(limit);
@@ -117,20 +111,18 @@ public class AdAssessmentDaoImpl extends GenericDaoSupport<Long, AdAssessment> i
     }
 
     @Override
-    public Integer count(AdAcademicSession academicSession, AdOffering offering) {
+    public Integer count(AdOffering offering) {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select count(s) from AdAssessment s where " +
                 "s.offering = :offering " +
-                "and s.session = :academicSession " +
                 "and s.metadata.state = :state ");
         query.setInteger("state", AdMetaState.ACTIVE.ordinal());
         query.setEntity("offering", offering);
-        query.setEntity("academicSession", academicSession);
         return ((Long) query.uniqueResult()).intValue();
     }
 
     @Override
-    public Integer count(AdAcademicSession academicSession, AdOffering offering, AdAssessmentType type) {
+    public Integer count(AdOffering offering, AdAssessmentType type) {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select count(s) from AdAssessment s where " +
                 "s.offering = :offering " +
@@ -140,21 +132,18 @@ public class AdAssessmentDaoImpl extends GenericDaoSupport<Long, AdAssessment> i
         query.setInteger("state", AdMetaState.ACTIVE.ordinal());
         query.setEntity("offering", offering);
         query.setInteger("type", type.ordinal());
-        query.setEntity("academicSession", academicSession);
         return ((Long) query.uniqueResult()).intValue();
     }
 
     @Override
-    public boolean isExists(String code, AdAcademicSession academicSession, AdOffering offering) {
+    public boolean isExists(String canonicalCode, AdOffering offering) {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select count(*) from AdAssessment s where " +
-                "upper(s.code) = upper(:code) " +
+                "upper(s.canonicalCode) = upper(:canonicalCode) " +
                 "and s.offering = :offering " +
-                "and s.session = :academicSession " +
                 "and s.metadata.state = :state ");
-        query.setString("code", code);
+        query.setString("canonicalCode", canonicalCode);
         query.setEntity("offering", offering);
-        query.setEntity("academicSession", academicSession);
         query.setInteger("state", AdMetaState.ACTIVE.ordinal());
         return 0 < ((Long) query.uniqueResult()).intValue();
     }
@@ -171,13 +160,11 @@ public class AdAssessmentDaoImpl extends GenericDaoSupport<Long, AdAssessment> i
     }
 
     @Override
-    public boolean hasAssessment(AdAcademicSession academicSession, AdOffering offering) {
+    public boolean hasAssessment(AdOffering offering) {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select count(*) from AdAssessment s where " +
-                "s.session = :academicSession " +
-                "and s.offering = :offering " +
+                "s.offering = :offering " +
                 "and s.metadata.state = :state ");
-        query.setEntity("academicSession", academicSession);
         query.setEntity("offering", offering);
         query.setInteger("state", AdMetaState.ACTIVE.ordinal());
         return 0 < ((Long) query.uniqueResult()).intValue();
@@ -198,7 +185,7 @@ public class AdAssessmentDaoImpl extends GenericDaoSupport<Long, AdAssessment> i
     // ====================================================================================================
     // CRUD
     // ====================================================================================================
-    
+
     @Override
     public void addAssessment(AdOffering offering, AdAssessment assessment, AdUser user) {
         Validate.notNull(user, "User cannot be null");

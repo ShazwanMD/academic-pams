@@ -6,12 +6,10 @@ import my.edu.umk.pams.academic.term.model.AdAssessment;
 import my.edu.umk.pams.academic.term.model.AdAssessmentType;
 import my.edu.umk.pams.academic.term.model.AdOffering;
 import my.edu.umk.pams.academic.term.model.AdSection;
-import my.edu.umk.pams.academic.planner.model.*;
 
 import java.util.List;
 
 /**
- * todo(uda): assessment belongs to term??
  * @author PAMS
  */
 public interface AdAssessmentDao extends GenericDao<Long, AdAssessment> {
@@ -22,11 +20,11 @@ public interface AdAssessmentDao extends GenericDao<Long, AdAssessment> {
 
     AdAssessment findByCanonicalCode(String canonicalCode);
 
-    AdAssessment findByCodeAndOfferingAndSession(String code, AdAcademicSession academicSession, AdOffering offering);
+    AdAssessment findByCodeAndOffering(String code, AdOffering offering);
 
-    List<AdAssessment> find(AdAcademicSession academicSession, AdOffering offering);
+    List<AdAssessment> find(AdOffering offering);
 
-    List<AdAssessment> find(AdAcademicSession academicSession, AdOffering offering, Integer offset, Integer limit);
+    List<AdAssessment> find(AdOffering offering, Integer offset, Integer limit);
 
     List<AdAssessment> find(String filter, Integer offset, Integer limit);
 
@@ -36,15 +34,15 @@ public interface AdAssessmentDao extends GenericDao<Long, AdAssessment> {
 
     Integer count(String filter);
 
-    Integer count(AdAcademicSession academicSession, AdOffering offering);
+    Integer count(AdOffering offering);
 
-    Integer count(AdAcademicSession academicSession, AdOffering offering, AdAssessmentType type);
+    Integer count(AdOffering offering, AdAssessmentType type);
 
-    boolean isExists(String code, AdAcademicSession academicSession, AdOffering offering);
+    boolean isExists(String code, AdOffering offering);
 
     boolean isExists(String canonicalCode);
 
-    boolean hasAssessment(AdAcademicSession academicSession, AdOffering offering);
+    boolean hasAssessment(AdOffering offering);
 
     boolean hasGradebook(AdSection section, AdAssessment assessment);
     

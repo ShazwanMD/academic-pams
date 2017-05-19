@@ -53,6 +53,8 @@ export interface TermModuleState {
   admission: AdmissionState;
   offerings: OfferingListState;
   offering: OfferingState;
+  offeringSections: SectionListState;
+  offeringAssessments: AssessmentListState;
   sections: SectionListState;
   section: SectionState;
   enrollments: EnrollmentListState;

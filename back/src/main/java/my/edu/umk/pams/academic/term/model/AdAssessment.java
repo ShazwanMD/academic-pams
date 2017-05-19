@@ -42,10 +42,6 @@ public interface AdAssessment extends AdMetaObject {
 
     void setCategory(AdAssessmentCategory category);
 
-    AdAcademicSession getSession();
-
-    void setSession(AdAcademicSession session);
-
     AdOffering getOffering();
 
     void setOffering(AdOffering offering);

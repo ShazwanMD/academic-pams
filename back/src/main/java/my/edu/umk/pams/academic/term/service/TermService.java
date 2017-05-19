@@ -133,31 +133,31 @@ public interface TermService {
 
     AdAssessment findAssessmentByCanonicalCode(String canonicalCode);
 
-    AdAssessment findAssessmentByCodeSessionAndOffering(String code, AdAcademicSession academicSession, AdOffering offering);
+    AdAssessment findAssessmentByCodeAndOffering(String code, AdOffering offering);
 
-    List<AdAssessment> findAssessments(AdAcademicSession academicSession, AdOffering offering);
+    List<AdAssessment> findAssessments(AdOffering offering);
 
     List<AdAssessment> findAssessments(Integer offset, Integer limit);
 
-    List<AdAssessment> findAssessments(AdAcademicSession academicSession, AdOffering offering, Integer offset, Integer limit);
+    List<AdAssessment> findAssessments(AdOffering offering, Integer offset, Integer limit);
 
-    Integer countAssessment(AdAcademicSession academicSession, AdOffering offering, AdAssessmentType type);
+    Integer countAssessment(AdOffering offering);
 
-    Integer countAssessment(AdAcademicSession academicSession, AdOffering offering);
+    Integer countAssessment(AdOffering offering, AdAssessmentType type);
 
-    boolean hasAssessment(AdAcademicSession academicSession, AdOffering offering);
+    boolean hasAssessment(AdOffering offering);
 
-    boolean isAssessmentExists(String code, AdAcademicSession academicSession, AdOffering offering);
+    boolean isAssessmentExists(String code, AdOffering offering);
 
     boolean isAssessmentExists(String canonicalCode);
 
-    void initAssessment(AdAcademicSession academicSession, AdOffering offering, AdAssessment assessment); // todo: throws AssessmentException;
+    void initAssessment(AdOffering offering, AdAssessment assessment); // todo: throws AssessmentException;
 
-    void addAssessment(AdAcademicSession academicSession, AdOffering offering, AdAssessment assessment);
+    void addAssessment(AdOffering offering, AdAssessment assessment);
 
-    void updateAssessment(AdAcademicSession academicSession, AdOffering offering, AdAssessment assessment);
+    void updateAssessment(AdOffering offering, AdAssessment assessment);
 
-    void deleteAssessment(AdAcademicSession academicSession, AdOffering offering, AdAssessment assessment);
+    void deleteAssessment(AdOffering offering, AdAssessment assessment);
 
     //====================================================================================================
     // ADMISSION APPLICATION
@@ -312,7 +312,7 @@ public interface TermService {
     AdEnrollment findEnrollmentByMatricNoAndOffering(String matricNo, AdOffering offering);
 
     List<AdEnrollment> findEnrollments(Integer offset, Integer limit);
-   
+
     List<AdEnrollment> findEnrollments(AdAcademicSession academicSession);
 
     List<AdEnrollment> findEnrollments(AdAcademicSession academicSession, AdProgram program);

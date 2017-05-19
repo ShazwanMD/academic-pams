@@ -1,18 +1,9 @@
 package my.edu.umk.pams.academic.assessment.stage;
 
-import java.math.BigDecimal;
-import java.math.BigInteger;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.util.Assert;
-
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
-
 import my.edu.umk.pams.academic.common.model.AdGradeCode;
 import my.edu.umk.pams.academic.common.service.CommonService;
 import my.edu.umk.pams.academic.identity.model.AdActor;
@@ -20,22 +11,17 @@ import my.edu.umk.pams.academic.identity.model.AdStaff;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.identity.model.AdUser;
 import my.edu.umk.pams.academic.identity.service.IdentityService;
-import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
-import my.edu.umk.pams.academic.planner.model.AdCourse;
-import my.edu.umk.pams.academic.planner.model.AdFaculty;
-import my.edu.umk.pams.academic.planner.model.AdProgram;
-import my.edu.umk.pams.academic.planner.model.AdProgramLevel;
+import my.edu.umk.pams.academic.planner.model.*;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
-import my.edu.umk.pams.academic.term.model.AdAssessment;
-import my.edu.umk.pams.academic.term.model.AdAssessmentCategory;
-import my.edu.umk.pams.academic.term.model.AdAssessmentImpl;
-import my.edu.umk.pams.academic.term.model.AdAssessmentType;
-import my.edu.umk.pams.academic.term.model.AdGradebook;
-import my.edu.umk.pams.academic.term.model.AdOffering;
-import my.edu.umk.pams.academic.term.model.AdOfferingImpl;
-import my.edu.umk.pams.academic.term.model.AdSection;
-import my.edu.umk.pams.academic.term.model.AdSectionImpl;
+import my.edu.umk.pams.academic.term.model.*;
 import my.edu.umk.pams.academic.term.service.TermService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.Assert;
+
+import java.math.BigDecimal;
+import java.math.BigInteger;
 
 @JGivenStage
 public class WhenIAmSetupExamViva extends Stage<WhenIAmSetupExamViva> {
@@ -130,9 +116,8 @@ public class WhenIAmSetupExamViva extends Stage<WhenIAmSetupExamViva> {
 		assessmentQ1.setTotalScore(new BigDecimal(BigInteger.valueOf(100)));
 		assessmentQ1.setType(AdAssessmentType.QUIZ);
 		assessmentQ1.setCategory(AdAssessmentCategory.COURSE_WORK);
-		assessmentQ1.setSession(session);
 		assessmentQ1.setOffering(offer);
-		termService.addAssessment(session, offer, assessmentQ1);
+		termService.addAssessment( offer, assessmentQ1);
 		Assert.notNull(assessmentQ1, "quiz1 is null");
 		//LOG Debug Quiz 1
 		LOG.debug("QUIZ 1 :========>");

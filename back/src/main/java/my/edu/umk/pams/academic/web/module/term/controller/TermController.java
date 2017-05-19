@@ -154,14 +154,6 @@ public class TermController {
         return new ResponseEntity<List<Enrollment>>(termTransformer.toEnrollmentVos(enrollments), HttpStatus.OK);
     }
      
-   /* @RequestMapping(value = "/enrollments", method = RequestMethod.GET)
-    public ResponseEntity<List<Enrollment>> findEnrollments() {
-        return new ResponseEntity<List<Enrollment>>(termTransformer.toEnrollmentVos(
-                termService.findEnrollments(0, Integer.MAX_VALUE)), HttpStatus.OK);
-    }*/
-    
-    
-
     @RequestMapping(value = "/enrollments/academicSession/current", method = RequestMethod.GET)
     public ResponseEntity<List<Enrollment>> findCurrentEnrollments() {
         AdAcademicSession academicSession = plannerService.findCurrentAcademicSession();
@@ -344,7 +336,6 @@ public class TermController {
         return new ResponseEntity<Offering>(termTransformer.toOfferingVo(offering), HttpStatus.OK);
     }
 
-
     @RequestMapping(value = "/offerings/{canonicalCode}/sections", method = RequestMethod.GET)
     public ResponseEntity<List<Section>> findSectionsByOffering(@PathVariable String canonicalCode) throws UnsupportedEncodingException {
         AdOffering offering = termService.findOfferingByCanonicalCode(canonicalCode);
@@ -353,24 +344,25 @@ public class TermController {
         return new ResponseEntity<List<Section>>(sectionVos, HttpStatus.OK);
     }
 
-    /*sample code
-     
-    @RequestMapping(value = "/faculties/{code}/programs", method = RequestMethod.GET)
-    public ResponseEntity<List<Program>> findProgramsByFaculty(@PathVariable String code) throws UnsupportedEncodingException {
-    AdFaculty faculty = plannerService.findFacultyByCode(code);
-    return new ResponseEntity<List<Program>>(plannerTransformer.toProgramVos(plannerService.findPrograms(faculty)), HttpStatus.OK);
-    }
-     
-     */
-
-    @RequestMapping(value = "/offerings/{canonicalCode}/sections/{sectionCode}", method = RequestMethod.GET)
-    public ResponseEntity<Section> findSectionById(@PathVariable String canonicalCode,
-                                                   @PathVariable String sectionCode) {
+    @RequestMapping(value = "/offerings/{canonicalCode}/sections/{sectionCanonicalCode}", method = RequestMethod.GET)
+    public ResponseEntity<Section> findSectionByCanonicalCode(@PathVariable String canonicalCode,
+                                                              @PathVariable String sectionCanonicalCode) {
         throw new UnsupportedOperationException();
     }
-    
-    
-      
+
+    @RequestMapping(value = "/offerings/{canonicalCode}/assessments", method = RequestMethod.GET)
+    public ResponseEntity<List<Assessment>> findAssessmentsByOffering(@PathVariable String canonicalCode) throws UnsupportedEncodingException {
+        AdOffering offering = termService.findOfferingByCanonicalCode(canonicalCode);
+        List<AdAssessment> assessments = termService.findAssessments(offering);
+        List<Assessment> assessmentVos = termTransformer.toAssessmentVos(assessments);
+        return new ResponseEntity<List<Assessment>>(assessmentVos, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/offerings/{canonicalCode}/assessments/{assessmentCanonicalCode}", method = RequestMethod.GET)
+    public ResponseEntity<Assessment> findAssessmentByCanonicalCode(@PathVariable String canonicalCode,
+                                                              @PathVariable String assessmentCanonicalCode) {
+        throw new UnsupportedOperationException();
+    }
 
     @RequestMapping(value = "/offerings/{canonicalCode}/appointments", method = RequestMethod.GET)
     public ResponseEntity<List<Appointment>> findAppointmentsByOffering(@PathVariable String canonicalCode) {
@@ -408,6 +400,11 @@ public class TermController {
 
     @RequestMapping(value = "/offerings/{canonicalCode}/enrollments", method = RequestMethod.POST)
     public ResponseEntity<List<Offering>> addEnrollment(@PathVariable String canonicalCode, @RequestBody Enrollment enrollment) {
+        throw new UnsupportedOperationException();
+    }
+
+    @RequestMapping(value = "/offerings/{canonicalCode}/assessments", method = RequestMethod.POST)
+    public ResponseEntity<List<Offering>> addAssessment(@PathVariable String canonicalCode, @RequestBody Assessment assessment) {
         throw new UnsupportedOperationException();
     }
 

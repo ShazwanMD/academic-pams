@@ -381,15 +381,13 @@ public class TermServiceImpl implements TermService {
         return assessmentDao.findByCanonicalCode(canonicalCode);
     }
 
-    @Override
-    public AdAssessment findAssessmentByCodeSessionAndOffering(String code, AdAcademicSession AdAcemicSession,
-                                                               AdOffering offering) {
-        return assessmentDao.findByCodeAndOfferingAndSession(code, AdAcemicSession, offering);
+    public AdAssessment findAssessmentByCodeAndOffering(String code, AdOffering offering) {
+        return assessmentDao.findByCodeAndOffering(code, offering);
     }
 
     @Override
-    public List<AdAssessment> findAssessments(AdAcademicSession AdAcemicSession, AdOffering offering) {
-        return assessmentDao.find(AdAcemicSession, offering);
+    public List<AdAssessment> findAssessments(AdOffering offering) {
+        return assessmentDao.find(offering);
     }
 
     @Override
@@ -398,29 +396,28 @@ public class TermServiceImpl implements TermService {
     }
 
     @Override
-    public List<AdAssessment> findAssessments(AdAcademicSession AdAcemicSession, AdOffering offering, Integer offset,
-                                              Integer limit) {
-        return assessmentDao.find(AdAcemicSession, offering, offset, limit);
+    public List<AdAssessment> findAssessments(AdOffering offering, Integer offset, Integer limit) {
+        return assessmentDao.find(offering, offset, limit);
     }
 
     @Override
-    public Integer countAssessment(AdAcademicSession AdAcemicSession, AdOffering offering) {
-        return assessmentDao.count(AdAcemicSession, offering);
+    public Integer countAssessment(AdOffering offering) {
+        return assessmentDao.count(offering);
     }
 
     @Override
-    public Integer countAssessment(AdAcademicSession AdAcemicSession, AdOffering offering, AdAssessmentType type) {
-        return assessmentDao.count(AdAcemicSession, offering, type);
+    public Integer countAssessment(AdOffering offering, AdAssessmentType type) {
+        return assessmentDao.count(offering, type);
     }
 
     @Override
-    public boolean hasAssessment(AdAcademicSession AdAcemicSession, AdOffering offering) {
-        return assessmentDao.hasAssessment(AdAcemicSession, offering);
+    public boolean hasAssessment(AdOffering offering) {
+        return assessmentDao.hasAssessment(offering);
     }
 
     @Override
-    public boolean isAssessmentExists(String code, AdAcademicSession AdAcemicSession, AdOffering offering) {
-        return assessmentDao.isExists(code, AdAcemicSession, offering);
+    public boolean isAssessmentExists(String canonicalCode, AdOffering offering) {
+        return assessmentDao.isExists(canonicalCode, offering);
     }
 
     @Override
@@ -429,12 +426,11 @@ public class TermServiceImpl implements TermService {
     }
 
     @Override
-    public void initAssessment(AdAcademicSession academicSession, AdOffering offering, AdAssessment assessment) {
+    public void initAssessment(AdOffering offering, AdAssessment assessment) {
         // if (assessmentDao.isExists(assessment.getCanonicalCode()))
         // throw new AssessmentException();
 
         assessment.setOffering(offering);
-        assessment.setSession(academicSession);
         assessmentDao.save(assessment, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
         sessionFactory.getCurrentSession().refresh(assessment);
@@ -444,22 +440,21 @@ public class TermServiceImpl implements TermService {
     }
 
     @Override
-    public void addAssessment(AdAcademicSession academicSession, AdOffering offering, AdAssessment assessment) {
+    public void addAssessment(AdOffering offering, AdAssessment assessment) {
         assessment.setOffering(offering);
-        assessment.setSession(academicSession);
         assessmentDao.save(assessment, securityService.getCurrentUser());
         // sessionFactory.getCurrentSession().refresh(assessment);
 
     }
 
     @Override
-    public void updateAssessment(AdAcademicSession academicSession, AdOffering offering, AdAssessment assessment) {
+    public void updateAssessment(AdOffering offering, AdAssessment assessment) {
         offeringDao.updateAssessment(offering, assessment, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
-    public void deleteAssessment(AdAcademicSession academicSession, AdOffering offering, AdAssessment assessment) {
+    public void deleteAssessment(AdOffering offering, AdAssessment assessment) {
         offeringDao.deleteAssessment(offering, assessment, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
@@ -869,7 +864,7 @@ public class TermServiceImpl implements TermService {
     public List<AdEnrollment> findEnrollments(Integer offset, Integer limit) {
         return enrollmentDao.find(offset, limit);
     }
-    
+
     @Override
     public List<AdEnrollment> findEnrollments(AdAcademicSession academicSession) {
         return enrollmentDao.find(academicSession);

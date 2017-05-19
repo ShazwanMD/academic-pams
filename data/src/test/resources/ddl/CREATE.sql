@@ -214,7 +214,6 @@
         TYPE int4 not null,
         WEIGHT numeric(19, 2) not null,
         OFFERING_ID int8,
-        SESSION_ID int8,
         primary key (ID)
     );
 
@@ -673,8 +672,8 @@
     create table AD_ETNY_CODE (
         ID int8 not null,
         CODE varchar(255),
-        DESCRIPTION_MS varchar(255),
         DESCRIPTION_EN varchar(255),
+        DESCRIPTION_MS varchar(255),
         C_TS timestamp,
         C_ID int8,
         D_TS timestamp,
@@ -1463,11 +1462,6 @@
         add constraint FKE7D81BF5207B8BFF
         foreign key (OFFERING_ID)
         references AD_OFRG;
-
-    alter table AD_ASMT
-        add constraint FKE7D81BF53C7922CA
-        foreign key (SESSION_ID)
-        references AD_ACDM_SESN;
 
     alter table AD_BANK_CODE
         add constraint uc_AD_BANK_CODE_1 unique (CODE);

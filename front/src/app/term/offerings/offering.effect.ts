@@ -9,7 +9,7 @@ import {from} from "rxjs/observable/from";
 export class OfferingEffects {
   constructor(private actions$: Actions,
               private offeringActions: OfferingActions,
-              private termService: TermService,) {
+              private termService: TermService) {
   }
 
   @Effect() findOfferings$ = this.actions$
@@ -23,8 +23,8 @@ export class OfferingEffects {
     .switchMap(canonicalCode => this.termService.findOfferingByCanonicalCode(canonicalCode))
     .map(offering => this.offeringActions.findOfferingByCanonicalCodeSuccess(offering))
     .mergeMap(action => from([action,
-      this.offeringActions.findSectionsByOffering(action.payload)
-
+      this.offeringActions.findSectionsByOffering(action.payload),
+      this.offeringActions.findAssessmentsByOffering(action.payload)
     ]));
 
   @Effect() findSectionsByOffering$ = this.actions$
@@ -32,6 +32,12 @@ export class OfferingEffects {
     .map(action => action.payload)
     .switchMap(offering => this.termService.findSectionsByOffering(offering))
     .map(sections => this.offeringActions.findSectionsByOfferingSuccess(sections));
+
+  @Effect() findAssessmentsByOffering$ = this.actions$
+    .ofType(OfferingActions.FIND_ASSESSMENTS_BY_OFFERING)
+    .map(action => action.payload)
+    .switchMap(offering => this.termService.findAssessmentsByOffering(offering))
+    .map(sections => this.offeringActions.findAssessmentsByOfferingSuccess(sections));
 
 
 }

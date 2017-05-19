@@ -49,10 +49,6 @@ public class AdAssessmentImpl implements AdAssessment {
     @JoinColumn(name = "OFFERING_ID")
     private AdOffering offering;
 
-    @ManyToOne(targetEntity = AdAcademicSessionImpl.class)
-    @JoinColumn(name = "SESSION_ID")
-    private AdAcademicSession session;
-
     @Embedded
     private AdMetadata metadata;
 
@@ -153,16 +149,6 @@ public class AdAssessmentImpl implements AdAssessment {
     @Override
     public void setOffering(AdOffering offering) {
         this.offering = offering;
-    }
-
-    @Override
-    public AdAcademicSession getSession() {
-        return session;
-    }
-
-    @Override
-    public void setSession(AdAcademicSession session) {
-        this.session = session;
     }
 
     @Override

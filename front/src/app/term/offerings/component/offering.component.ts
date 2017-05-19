@@ -10,8 +10,6 @@ import { Section } from '../../sections/section.interface';
 export class OfferingComponent {
 
   @Input() offering: Offering;
-  @Input() sections: Section[];
- // @Output() view = new EventEmitter<Offering>();
 
       private columns: any[] = [
     { name: 'id', label: 'Id' },

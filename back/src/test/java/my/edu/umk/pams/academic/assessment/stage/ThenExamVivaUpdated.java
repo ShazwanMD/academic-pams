@@ -33,14 +33,12 @@ public class ThenExamVivaUpdated extends Stage<ThenExamVivaUpdated> {
 	private AdAssessment assessment;
 
 	public ThenExamVivaUpdated exam_info_updated() {
-		
-		boolean assessments = termService.hasAssessment(academicSession, offering);
+		boolean assessments = termService.hasAssessment(offering);
 		Assert.isTrue(assessments, "assessment should not be null");
 		
 		LOG.debug ("Assessment: {}", assessment.getCanonicalCode());
 		LOG.debug ("Assessment: {}", assessment.getCategory());
-		LOG.debug ("Session: {}", assessment.getSession());
-		
+
 		return self();
 		
 	}

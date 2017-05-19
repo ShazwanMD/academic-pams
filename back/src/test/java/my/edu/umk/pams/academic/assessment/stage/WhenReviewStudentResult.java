@@ -1,40 +1,23 @@
 package my.edu.umk.pams.academic.assessment.stage;
 
-import java.math.BigDecimal;
-
-import java.util.List;
-
+import com.tngtech.jgiven.Stage;
+import com.tngtech.jgiven.annotation.ExpectedScenarioState;
+import com.tngtech.jgiven.annotation.ProvidedScenarioState;
+import com.tngtech.jgiven.integration.spring.JGivenStage;
+import my.edu.umk.pams.academic.common.model.AdGradeCode;
+import my.edu.umk.pams.academic.common.service.CommonService;
+import my.edu.umk.pams.academic.identity.model.*;
+import my.edu.umk.pams.academic.identity.service.IdentityService;
+import my.edu.umk.pams.academic.planner.model.*;
+import my.edu.umk.pams.academic.term.model.*;
+import my.edu.umk.pams.academic.term.service.TermService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
 
-import com.tngtech.jgiven.Stage;
-import com.tngtech.jgiven.annotation.ExpectedScenarioState;
-import com.tngtech.jgiven.annotation.ProvidedScenarioState;
-import com.tngtech.jgiven.integration.spring.JGivenStage;
-
-import my.edu.umk.pams.academic.common.model.AdGradeCode;
-import my.edu.umk.pams.academic.common.model.AdGradeCodeImpl;
-import my.edu.umk.pams.academic.common.service.CommonService;
-import my.edu.umk.pams.academic.identity.model.AdActor;
-import my.edu.umk.pams.academic.identity.model.AdStaff;
-import my.edu.umk.pams.academic.identity.model.AdStudent;
-import my.edu.umk.pams.academic.identity.model.AdStudentStatus;
-import my.edu.umk.pams.academic.identity.model.AdUser;
-import my.edu.umk.pams.academic.identity.service.IdentityService;
-import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
-import my.edu.umk.pams.academic.planner.model.AdCohort;
-import my.edu.umk.pams.academic.planner.model.AdCourse;
-import my.edu.umk.pams.academic.planner.model.AdFaculty;
-import my.edu.umk.pams.academic.planner.model.AdProgram;
-import my.edu.umk.pams.academic.term.model.AdAssessment;
-import my.edu.umk.pams.academic.term.model.AdAssessmentCategory;
-import my.edu.umk.pams.academic.term.model.AdAssessmentImpl;
-import my.edu.umk.pams.academic.term.model.AdAssessmentType;
-import my.edu.umk.pams.academic.term.model.AdOffering;
-import my.edu.umk.pams.academic.term.model.AdOfferingImpl;
-import my.edu.umk.pams.academic.term.service.TermService;
+import java.math.BigDecimal;
+import java.util.List;
 
 @JGivenStage
 public class WhenReviewStudentResult extends Stage<WhenReviewStudentResult> {
@@ -140,11 +123,10 @@ public class WhenReviewStudentResult extends Stage<WhenReviewStudentResult> {
 		quiz1.setDescription("MECHANICS OF MATERIALS");
 		quiz1.setOffering(offering);
 		quiz1.setOrdinal(0);
-		quiz1.setSession(session);
 		quiz1.setTotalScore(BigDecimal.ZERO);
 		quiz1.setType(AdAssessmentType.QUIZ);
 		quiz1.setWeight(BigDecimal.ZERO);
-		termService.addAssessment(session, offering, quiz1);
+		termService.addAssessment(offering, quiz1);
 		Assert.notNull(quiz1, "quiz1 is null");
 
 		

@@ -23,6 +23,7 @@ import {ProgramSubModule} from "../../planner/programs/index";
 import {OfferingUpdateTaskCreatorDialog} from "./dialog/offering-update-task-creator.dialog";
 import {OfferingDeleteTaskCreatorDialog} from "./dialog/offering-delete-task-creator.dialog";
 import {OfferingSectionListComponent} from "./component/offering-section-list.component";
+import {OfferingAssessmentListComponent} from "./component/offering-assessment-list.component";
 
 
 @NgModule({
@@ -44,7 +45,7 @@ import {OfferingSectionListComponent} from "./component/offering-section-list.co
     OfferingListComponent,
     OfferingComponent,
     OfferingSectionListComponent,
-
+    OfferingAssessmentListComponent,
 
     //dialog
     OfferingEditorDialog,

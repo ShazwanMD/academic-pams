@@ -1,17 +1,10 @@
 package my.edu.umk.pams.academic.assessment.stage;
 
-import java.math.BigDecimal;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.annotation.Pending;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
-
 import io.jsonwebtoken.lang.Assert;
 import my.edu.umk.pams.academic.identity.model.AdActor;
 import my.edu.umk.pams.academic.identity.model.AdStaff;
@@ -19,13 +12,13 @@ import my.edu.umk.pams.academic.identity.model.AdUser;
 import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
 import my.edu.umk.pams.academic.planner.model.AdProgram;
 import my.edu.umk.pams.academic.term.dao.AdOfferingDao;
-import my.edu.umk.pams.academic.term.model.AdAssessment;
-import my.edu.umk.pams.academic.term.model.AdAssessmentCategory;
-import my.edu.umk.pams.academic.term.model.AdAssessmentImpl;
-import my.edu.umk.pams.academic.term.model.AdAssessmentType;
-import my.edu.umk.pams.academic.term.model.AdOffering;
-import my.edu.umk.pams.academic.term.model.AdOfferingImpl;
+import my.edu.umk.pams.academic.term.model.*;
 import my.edu.umk.pams.academic.term.service.TermService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.math.BigDecimal;
 
 @JGivenStage
 public class WhenIAmUpdateExamVivaInfo extends Stage<WhenIAmUpdateExamVivaInfo> {
@@ -77,12 +70,10 @@ public class WhenIAmUpdateExamVivaInfo extends Stage<WhenIAmUpdateExamVivaInfo> 
 		assessment.setDescription("MECHANICS OF MATERIALS");
 		assessment.setOffering(offering);
 		assessment.setOrdinal(0);
-		assessment.setSession(academicSession);
 		assessment.setTotalScore(BigDecimal.ONE);
 		assessment.setType(AdAssessmentType.QUIZ);
 		assessment.setWeight(BigDecimal.ONE);
-
-		termService.addAssessment(academicSession, offering, assessment);
+		termService.addAssessment(offering, assessment);
 
 		Assert.notNull(assessment, "assesment is empty");
 

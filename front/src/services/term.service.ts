@@ -27,7 +27,7 @@ export class TermService {
               private http: Http) {
   }
 
-  
+
   findAssessments(): Observable<Assessment[]> {
     console.log("findAssessments");
     return this.http.get(environment.endpoint + '/api/term/assessments')
@@ -346,5 +346,11 @@ export class TermService {
     console.log("findSectionsByOffering");
     return this.http.get(environment.endpoint + '/api/term/offerings/' + offering.canonicalCode + '/sections')
       .map((res: Response) => <Section[]>res.json());
+  }
+
+  findAssessmentsByOffering(offering:Offering): Observable<Assessment[]> {
+    console.log("findAssessmentsByOffering");
+    return this.http.get(environment.endpoint + '/api/term/offerings/' + offering.canonicalCode + '/assessments')
+      .map((res: Response) => <Assessment[]>res.json());
   }
 }
