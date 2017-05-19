@@ -143,6 +143,18 @@ public class AdStudentDaoImpl extends GenericDaoSupport<Long, AdStudent> impleme
 
     @Override
     public void addGuardian(AdStudent student, AdGuardian guardian, AdUser user) {
+        Validate.notNull(user, "User cannot be null");
+        Validate.notNull(student, "student cannot be null");
+        Validate.notNull(guardian, "guardian cannot be null");
+        Session session = sessionFactory.getCurrentSession();
+        guardian.setStudent(student);
+             // prepare metadata
+        AdMetadata metadata = new AdMetadata();
+        metadata.setCreatedDate(new Timestamp(System.currentTimeMillis()));
+        metadata.setCreatorId(user.getId());
+        metadata.setState(AdMetaState.ACTIVE);
+        guardian.setMetadata(metadata);
+        session.save(guardian);
 
     }
 
@@ -153,6 +165,18 @@ public class AdStudentDaoImpl extends GenericDaoSupport<Long, AdStudent> impleme
 
     @Override
     public void addGuarantor(AdStudent student, AdGuarantor guarantor, AdUser user) {
+        Validate.notNull(user, "User cannot be null");
+        Validate.notNull(student, "student cannot be null");
+        Validate.notNull(guarantor, "guarantor cannot be null");
+        Session session = sessionFactory.getCurrentSession();
+        guarantor.setStudent(student);
+             // prepare metadata
+        AdMetadata metadata = new AdMetadata();
+        metadata.setCreatedDate(new Timestamp(System.currentTimeMillis()));
+        metadata.setCreatorId(user.getId());
+        metadata.setState(AdMetaState.ACTIVE);
+        guarantor.setMetadata(metadata);
+        session.save(guarantor);
 
     }
 
