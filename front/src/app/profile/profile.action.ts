@@ -56,6 +56,7 @@ export class ProfileActions {
 
   static UPDATE_PROFILE = '[Profile] Update Profile';
   updateProfile(student): Action {
+    console.log("updateProfile");
     return {
       type: ProfileActions.UPDATE_PROFILE,
       payload: student
@@ -150,7 +151,7 @@ export class ProfileActions {
     };
   }
 
-  
+
   static FIND_ENROLLMENTS_BY_STUDENT = '[Profile] Find Enrollments';
 
   findEnrollments(student): Action {

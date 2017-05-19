@@ -37,7 +37,6 @@ export class StudentInfoEditorDialog implements OnInit {
 
   ngOnInit(): void {
     this.editorForm = this.formBuilder.group(<Student>{
-
       id: null,
       identityNo:'',
       name: '',
@@ -50,8 +49,10 @@ export class StudentInfoEditorDialog implements OnInit {
     if (this.edit) this.editorForm.patchValue(this._student);
   }
 
-  submit(identityNo: Student, isValid: boolean) {
-    this.store.dispatch(this.actions.updateProfile(identityNo));
+  submit(student: Student, isValid: boolean) {
+    console.log("updating student");
+    console.log("student email: " + student.email);
+    this.store.dispatch(this.actions.updateProfile(student));
     this.dialog.close();
   }
 }

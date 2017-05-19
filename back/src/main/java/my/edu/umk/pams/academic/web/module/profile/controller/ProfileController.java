@@ -4,14 +4,11 @@ import my.edu.umk.pams.academic.common.service.CommonService;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.identity.model.AdStudentStatus;
 import my.edu.umk.pams.academic.identity.service.IdentityService;
-import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
 import my.edu.umk.pams.academic.profile.service.ProfileService;
 import my.edu.umk.pams.academic.term.model.AdEnrollment;
 import my.edu.umk.pams.academic.term.service.TermService;
 import my.edu.umk.pams.academic.web.module.identity.vo.Student;
-import my.edu.umk.pams.academic.web.module.identity.vo.StudentStatus;
-import my.edu.umk.pams.academic.web.module.planner.vo.Program;
 import my.edu.umk.pams.academic.web.module.profile.vo.Address;
 import my.edu.umk.pams.academic.web.module.profile.vo.Contact;
 import my.edu.umk.pams.academic.web.module.profile.vo.Guarantor;
@@ -28,11 +25,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.UnsupportedEncodingException;
 import java.util.List;
@@ -77,22 +70,17 @@ public class ProfileController {
 	@RequestMapping(value = "/students/{matricNo}", method = RequestMethod.PUT)
 	 public ResponseEntity<String> updateStudent(@PathVariable String matricNo, @RequestBody Student vo) {
 		dummyLogin();
+
 		AdStudent student = profileService.findStudentById(vo.getId());
-		student.getMatricNo();
 		student.setName(vo.getName());
 		student.setPhone(vo.getPhone());
 		student.setEmail(vo.getEmail());
 		student.setMobile(vo.getMobile());
 		student.setFax(vo.getFax());
-		student.getStudentStatus();
 		profileService.updateStudent(student);
 		return new ResponseEntity<String>("Success", HttpStatus.OK);
 		
 	}
-		
-    
-
-
     //====================================================================================================
     // PROFILE
     //====================================================================================================

@@ -1,7 +1,8 @@
-import { Enrollment } from './../app/term/enrollments/enrollment.interface';
-import { Injectable } from '@angular/core';
-import {Response, Http} from '@angular/http';
-import { HttpInterceptorService } from '@covalent/http';
+import {Enrollment} from './../app/term/enrollments/enrollment.interface';
+import {Injectable} from '@angular/core';
+import {Headers} from '@angular/http';
+import {Response, Http, RequestOptions} from '@angular/http';
+import {HttpInterceptorService} from '@covalent/http';
 import {Student} from "../app/identity/student.interface";
 import {Observable} from "rxjs";
 import {environment} from "../environments/environment";
@@ -20,14 +21,13 @@ export class ProfileService {
   // ====================================================================================================
   // STUDENT
   // ====================================================================================================
-  findEnrollments(student:Student): Observable<Enrollment[]> {
+  findEnrollments(student: Student): Observable<Enrollment[]> {
     console.log("findStudents");
     // let headers = new Headers({'Authorization': 'Bearer TODO'});
     // let options = new RequestOptions({headers: headers});
     return this.http.get(environment.endpoint + '/api/profile/students/' + student.identityNo + "/enrollments")
       .map((res: Response) => <Enrollment[]>res.json());
   }
-
 
   findStudents(): Observable<Student[]> {
     console.log("findStudents");
@@ -40,11 +40,11 @@ export class ProfileService {
   findStudentByMatricNo(matricNo: string): Observable<Student> {
     // let headers = new Headers({'Authorization': 'Bearer TODO'});
     // let options = new RequestOptions({headers: headers});
-    return this.http.get(environment.endpoint + '/api/profile/students/'  + matricNo)
+    return this.http.get(environment.endpoint + '/api/profile/students/' + matricNo)
       .map((res: Response) => <Student>res.json());
   }
 
-  findGuardians(student:Student): Observable<Guardian[]> {
+  findGuardians(student: Student): Observable<Guardian[]> {
     console.log("findStudents");
     // let headers = new Headers({'Authorization': 'Bearer TODO'});
     // let options = new RequestOptions({headers: headers});
@@ -52,7 +52,7 @@ export class ProfileService {
       .map((res: Response) => <Guardian[]>res.json());
   }
 
-  findGuarantors(student:Student): Observable<Guarantor[]> {
+  findGuarantors(student: Student): Observable<Guarantor[]> {
     console.log("findStudents");
     // let headers = new Headers({'Authorization': 'Bearer TODO'});
     // let options = new RequestOptions({headers: headers});
@@ -60,7 +60,7 @@ export class ProfileService {
       .map((res: Response) => <Guarantor[]>res.json());
   }
 
-  findContacts(student:Student): Observable<Contact[]> {
+  findContacts(student: Student): Observable<Contact[]> {
     console.log("findStudents");
     // let headers = new Headers({'Authorization': 'Bearer TODO'});
     // let options = new RequestOptions({headers: headers});
@@ -68,7 +68,7 @@ export class ProfileService {
       .map((res: Response) => <Contact[]>res.json());
   }
 
-  findAddresses(student:Student): Observable<Address[]> {
+  findAddresses(student: Student): Observable<Address[]> {
     // let headers = new Headers({'Authorization': 'Bearer TODO'});
     // let options = new RequestOptions({headers: headers});
     return this.http.get(environment.endpoint + '/api/profile/students/' + student.identityNo + "/addresses")
@@ -81,7 +81,12 @@ export class ProfileService {
   }
 
   updateStudent(student: Student): Observable<Boolean> {
-    return this.http.put(environment.endpoint + '/api/profile/students', JSON.stringify(student))
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
+    return this.http.put(environment.endpoint + '/api/profile/students/' + student.identityNo, JSON.stringify(student), options)
       .flatMap(data => Observable.of(true));
   }
 

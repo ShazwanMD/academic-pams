@@ -1,15 +1,22 @@
-import { Injectable } from '@angular/core';
-import { Effect, Actions } from '@ngrx/effects';
-import { ProfileService } from "../../services/profile.service";
-import { ProfileActions } from "./profile.action";
-import { from } from "rxjs/observable/from";
+import {Injectable} from '@angular/core';
+import {Effect, Actions} from '@ngrx/effects';
+import {ProfileService} from "../../services/profile.service";
+import {ProfileActions} from "./profile.action";
+import {from} from "rxjs/observable/from";
+import {TermModuleState} from "../term/index";
+import {Store} from "@ngrx/store";
+import {Student} from "../identity/student.interface";
 
 
 @Injectable()
 export class ProfileEffects {
+
+  private STUDENT: string[] = "profileModuleState.student".split(".");
+
   constructor(private actions$: Actions,
-    private profileActions: ProfileActions,
-    private profileService: ProfileService) {
+              private profileActions: ProfileActions,
+              private profileService: ProfileService,
+              private store$: Store<TermModuleState>) {
   }
 
   @Effect() findProfiles$ = this.actions$
@@ -35,7 +42,10 @@ export class ProfileEffects {
     .ofType(ProfileActions.UPDATE_PROFILE)
     .map(action => action.payload)
     .switchMap(student => this.profileService.updateStudent(student))
-    .map(profile => this.profileActions.updateProfileSuccess(profile));
+    .map(profile => this.profileActions.updateProfileSuccess(profile))
+    .withLatestFrom(this.store$.select(...this.STUDENT))
+    .map(state => state[1])
+    .map((student: Student) => this.profileActions.findStudentByMatricNo(student.identityNo));
 
   @Effect() findAddresses$ = this.actions$
     .ofType(ProfileActions.FIND_ADDRESSES)
@@ -63,17 +73,19 @@ export class ProfileEffects {
     .switchMap(student => this.profileService.findGuarantors(student))
     .map(addreesses => this.profileActions.findGuarantorsSuccess(addreesses));
 
-   @Effect() findEnrollments$ = this.actions$
-     .ofType(ProfileActions.FIND_ENROLLMENTS_BY_STUDENT)
-     .map(action => action.payload)
-     .switchMap(student => this.profileService.findEnrollments(student))
-     .map(enrollments => this.profileActions.findEnrollmentsSuccess(enrollments));
+  @Effect() findEnrollments$ = this.actions$
+    .ofType(ProfileActions.FIND_ENROLLMENTS_BY_STUDENT)
+    .map(action => action.payload)
+    .switchMap(student => this.profileService.findEnrollments(student))
+    .map(enrollments => this.profileActions.findEnrollmentsSuccess(enrollments));
 
   @Effect() updateStudents$ = this.actions$
     .ofType(ProfileActions.UPDATE_STUDENT)
     .map(action => action.payload)
     .switchMap(payload => this.profileService.updateStudent(payload))
     .map(message => this.profileActions.updateStudentSuccess(message))
-    .mergeMap(identityNo => from([identityNo, this.profileActions.findStudentByMatricNo(identityNo)]));
+    .withLatestFrom(this.store$.select(...this.STUDENT))
+    .map(state => state[1])
+    .map((student: Student) => this.profileActions.findStudentByMatricNo(student.identityNo));
 
 }

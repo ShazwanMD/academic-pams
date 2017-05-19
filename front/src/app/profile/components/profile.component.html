@@ -1,303 +1,306 @@
-    <!-- Basic Card -->
-    <md-card>
-    <md-card-title>Student Personal Info</md-card-title>
-    <md-card-subtitle>Page under developments</md-card-subtitle>
-    <md-divider></md-divider>
-    <md-card-content>
+<!-- Basic Card -->
+<md-card>
+  <md-card-title>Student Personal Info</md-card-title>
+  <md-card-subtitle>Page under developments</md-card-subtitle>
+  <md-divider></md-divider>
+  <md-card-content>
     <!--Tab Section Here-->
     <md-tab-group>
-    <md-tab label="Student Information">
-    
-    <br/>
-    
-    <table width="100%" border="0">
-    <tr valign="top">
-    <td width="11%">&nbsp;</td>
-    <td width="1%">&nbsp;</td>
-    <td width="88%">&nbsp;</td>
-    </tr>
-    <tr valign="top">
-    <td colspan="3"><table width="100%" border="0">
-    <tr valign="top">
-    <td width="49%">
-    <!--<img src="./../assets/ico/uda.jpg" width="120" height="150" />-->
-    <table width="100%" border="0">
-    <tr>
-    <td><b>Student Information</b></td>
-    <td align="right">
-        
-    <button md-icon-button [md-menu-trigger-for]="menu1">
-    <md-icon>more_vert</md-icon>
-    </button>
-    <md-menu x-position="before" #menu1="mdMenu">
-    <button md-menu-item (click)="editStudent()">Edit</button>
-    <button md-menu-item (click)="transferFaculty(row)">Transfer Faculty</button>
-    <button md-menu-item (click)="switchStudyMode(row)">Switch Study Mode</button>
-    </md-menu>
-    
-    </td>
-    </tr>
-    <tr>
-    <td colspan="2"><br/>
-    <md-divider></md-divider>
-    <br/></td>
-    </tr>
-    </table>
-    
-    <table width="100%">
-    <tr valign="top">
-    <td width="19%" rowspan="6" align="justify"><img src="./../assets/ico/uda.jpg" width="120" height="150" /></td>
-    <td width="10%">Matric No</td>
-    <td width="1%">:</td>
-    <td width="70%">{{profile.identityNo}}</td>
-    </tr>
-    <tr valign="top">
-    <td>Name</td>
-    <td>:</td>
-    <td>{{profile.name}}</td>
-    </tr>
-    <tr valign="top">
-    <td>Email</td>
-    <td>:</td>
-    <td>{{profile.email}}</td>
-    </tr>
-    <tr valign="top">
-    <td>Phone</td>
-    <td>:</td>
-    <td>{{profile.phone}}</td>
-    </tr>
-    <tr valign="top">
-    <td>Mobile</td>
-    <td>:</td>
-    <td>{{profile.mobile}}</td>
-    </tr>
-    <tr valign="top">
-    <td>Status</td>
-    <td>:</td>
-    <td>{{profile.studentStatus}}</td>
-    </tr>
-    <tr valign="top">
-    <td width="19%" align="justify"><a href="#">Edit Profile Picture</a></td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>
-    &nbsp;
-    </td>
-    </tr>
-    </table>
-    </td>
-    </tr>
-    </table></td>
-    </tr>
-    <tr valign="top">
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    </tr>
-    <tr valign="top">
-    <td colspan="3">
-    
-    <table width="100%" border="0">
-    <tr valign="top">
-    <td width="49%">
-    
-    <table width="100%" border="0">
-    <tr>
-    <td><b>Address Information</b></td>
-    <td align="right">
-    <button md-icon-button [md-menu-trigger-for]="menu2">
-    <md-icon>more_vert</md-icon>
-    </button>
-    <md-menu x-position="before" #menu2="mdMenu">
-    <button md-menu-item (click)="editDialog(row)">Edit</button>
-    </md-menu>
-    </td>
-    </tr>
-    <tr>
-    <td colspan="2"><br/>
-    <md-divider></md-divider>
-    <br/></td>
-    </tr>
-    </table>
-    
-    <table width="100%">
-    <tr valign="top" *ngFor="let address of addressess">
-    <td width="19%">{{address.addressType}}</td>
-    <td width="1%">:</td>
-    <td width="80%">{{address.address1 +","+ address.address2 +","+ address.postcode}}</td>
-    </tr>
-    <tr valign="top">
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    </tr>
-    </table>
-    
-    </td>
-    <td width="51%">
-    
-    <table width="100%" border="0">
-    <tr>
-    <td><b>Guarantor Information</b></td>
-    <td align="right">
-    <button md-icon-button [md-menu-trigger-for]="menu3">
-    <md-icon>more_vert</md-icon>
-    </button>
-    <md-menu x-position="before" #menu3="mdMenu">
-    <button md-menu-item (click)="editDialog(row)">Edit</button>
-    </md-menu>
-    </td>
-    </tr>
-    <tr>
-    <td colspan="2"><br/>
-    <md-divider></md-divider>
-    <br/></td>
-    </tr>
-    </table>
-    
-    <table width="100%" *ngFor="let guarantor of guarantors">
-    <tr valign="top">
-    <td width="19%">ID</td>
-    <td width="1%">:</td>
-    <td width="80%">{{guarantor.identityNo}}</td>
-    </tr>
-    <tr valign="top">
-    <td>Name</td>
-    <td>:</td>
-    <td>{{guarantor.name}}</td>
-    </tr>
-    <tr valign="top">
-    <td>Type</td>
-    <td>:</td>
-    <td>{{guarantor.guarantorType}}</td>
-    </tr>
-    <tr valign="top">
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    </tr>
-    </table>
-    
-    </td>
-    </tr>
-    
-    <tr valign="top">
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    </tr>
-    <tr>
-    <td>
-    
-    <table width="100%" border="0">
-    <tr>
-    <td><b>Guardian Information</b></td>
-    <td align="right">
-    <button md-icon-button [md-menu-trigger-for]="menu4">
-    <md-icon>more_vert</md-icon>
-    </button>
-    <md-menu x-position="before" #menu4="mdMenu">
-    <button md-menu-item (click)="editDialog(row)">Edit</button>
-    </md-menu>
-    </td>
-    </tr>
-    <tr>
-    <td colspan="2"><br/>
-    <md-divider></md-divider>
-    <br/></td>
-    </tr>
-    </table>
-    
-    <table width="100%" *ngFor="let guardian of guardians">
-    <tr valign="top">
-    <td width="20%">ID</td>
-    <td width="1%">:</td>
-    <td width="79%">{{guardian.identityNo}}</td>
-    </tr>
-    <tr valign="top">
-    <td>Name</td>
-    <td>:</td>
-    <td>{{guardian.name}}</td>
-    </tr>
-    <tr valign="top">
-    <td>Type</td>
-    <td>:</td>
-    <td>{{guardian.guardianType}}</td>
-    </tr>
-    <tr valign="top">
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    </tr>
-    </table>
-    
-    </td>
-    <td>
-    
-    <table width="100%" border="0">
-    <tr>
-    <td><b>Contact Information</b></td>
-    <td align="right">
-    <button md-icon-button [md-menu-trigger-for]="menu5">
-    <md-icon>more_vert</md-icon>
-    </button>
-    <md-menu x-position="before" #menu5="mdMenu">
-    <button md-menu-item (click)="editDialog(row)">Edit</button>
-    </md-menu>
-    </td>
-    </tr>
-    <tr>
-    <td colspan="2"><br/>
-    <md-divider></md-divider>
-    <br/></td>
-    </tr>
-    </table>
-    
-    <table width="100%" *ngFor="let contact of contacts">
-    <tr valign="top">
-    <td width="19%">ID</td>
-    <td width="1%">:</td>
-    <td width="80%">{{contact.identityNo}}</td>
-    </tr>
-    <tr valign="top">
-    <td>Name</td>
-    <td>:</td>
-    <td>{{contact.name}}</td>
-    </tr>
-    <tr valign="top">
-    <td>Type</td>
-    <td>:</td>
-    <td>{{contact.contactType}} </td>
-    </tr>
-    <tr valign="top">
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    </tr>
-    </table>
-    
-    </td>
-    </tr>
-    
-    </table>
-    
-    </td>
-    </tr>
-    <tr valign="top">
-    <td colspan="3">&nbsp;</td>
-    </tr>
-    </table>
-    
-    </md-tab>
-    <md-tab label="Course Information">
-    
-    <pams-profile-enrollment-list
-    [enrollments] = "enrollments"
-    >
-    </pams-profile-enrollment-list>
-    
-    </md-tab>
+      <md-tab label="Student Information">
+
+        <br/>
+
+        <table width="100%" border="0">
+          <tr valign="top">
+            <td width="11%">&nbsp;</td>
+            <td width="1%">&nbsp;</td>
+            <td width="88%">&nbsp;</td>
+          </tr>
+          <tr valign="top">
+            <td colspan="3">
+              <table width="100%" border="0">
+                <tr valign="top">
+                  <td width="49%">
+                    <!--<img src="./../assets/ico/uda.jpg" width="120" height="150" />-->
+                    <table width="100%" border="0">
+                      <tr>
+                        <td><b>Student Information</b></td>
+                        <td align="right">
+
+                          <button md-icon-button [md-menu-trigger-for]="menu1">
+                            <md-icon>more_vert</md-icon>
+                          </button>
+                          <md-menu x-position="before" #menu1="mdMenu">
+                            <button md-menu-item (click)="editStudent()">Edit</button>
+                            <button md-menu-item (click)="transferFaculty(row)">Transfer Faculty</button>
+                            <button md-menu-item (click)="switchStudyMode(row)">Switch Study Mode</button>
+                          </md-menu>
+
+                        </td>
+                      </tr>
+                      <tr>
+                        <td colspan="2"><br/>
+                          <md-divider></md-divider>
+                          <br/></td>
+                      </tr>
+                    </table>
+
+                    <table width="100%">
+                      <tr valign="top">
+                        <td width="19%" rowspan="6" align="justify"><img src="./../assets/ico/uda.jpg" width="120"
+                                                                         height="150"/></td>
+                        <td width="10%">Matric No</td>
+                        <td width="1%">:</td>
+                        <td width="70%">{{profile.identityNo}}</td>
+                      </tr>
+                      <tr valign="top">
+                        <td>Name</td>
+                        <td>:</td>
+                        <td>{{profile.name}}</td>
+                      </tr>
+                      <tr valign="top">
+                        <td>Email</td>
+                        <td>:</td>
+                        <td>{{profile.email}}</td>
+                      </tr>
+                      <tr valign="top">
+                        <td>Phone</td>
+                        <td>:</td>
+                        <td>{{profile.phone}}</td>
+                      </tr>
+                      <tr valign="top">
+                        <td>Mobile</td>
+                        <td>:</td>
+                        <td>{{profile.mobile}}</td>
+                      </tr>
+                      <tr valign="top">
+                        <td>Status</td>
+                        <td>:</td>
+                        <td>{{profile.studentStatus}}</td>
+                      </tr>
+                      <tr valign="top">
+                        <td width="19%" align="justify"><a href="#">Edit Profile Picture</a></td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>
+                          &nbsp;
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr valign="top">
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr valign="top">
+            <td colspan="3">
+
+              <table width="100%" border="0">
+                <tr valign="top">
+                  <td width="49%">
+
+                    <table width="100%" border="0">
+                      <tr>
+                        <td><b>Address Information</b></td>
+                        <td align="right">
+                          <button md-icon-button [md-menu-trigger-for]="menu2">
+                            <md-icon>more_vert</md-icon>
+                          </button>
+                          <md-menu x-position="before" #menu2="mdMenu">
+                            <button md-menu-item (click)="editDialog(row)">Edit</button>
+                          </md-menu>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td colspan="2"><br/>
+                          <md-divider></md-divider>
+                          <br/></td>
+                      </tr>
+                    </table>
+
+                    <table width="100%">
+                      <tr valign="top" *ngFor="let address of addressess">
+                        <td width="19%">{{address.addressType}}</td>
+                        <td width="1%">:</td>
+                        <td width="80%">{{address.address1 +","+ address.address2 +","+ address.postcode}}</td>
+                      </tr>
+                      <tr valign="top">
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                      </tr>
+                    </table>
+
+                  </td>
+                  <td width="51%">
+
+                    <table width="100%" border="0">
+                      <tr>
+                        <td><b>Guarantor Information</b></td>
+                        <td align="right">
+                          <button md-icon-button [md-menu-trigger-for]="menu3">
+                            <md-icon>more_vert</md-icon>
+                          </button>
+                          <md-menu x-position="before" #menu3="mdMenu">
+                            <button md-menu-item (click)="editDialog(row)">Edit</button>
+                          </md-menu>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td colspan="2"><br/>
+                          <md-divider></md-divider>
+                          <br/></td>
+                      </tr>
+                    </table>
+
+                    <table width="100%" *ngFor="let guarantor of guarantors">
+                      <tr valign="top">
+                        <td width="19%">ID</td>
+                        <td width="1%">:</td>
+                        <td width="80%">{{guarantor.identityNo}}</td>
+                      </tr>
+                      <tr valign="top">
+                        <td>Name</td>
+                        <td>:</td>
+                        <td>{{guarantor.name}}</td>
+                      </tr>
+                      <tr valign="top">
+                        <td>Type</td>
+                        <td>:</td>
+                        <td>{{guarantor.guarantorType}}</td>
+                      </tr>
+                      <tr valign="top">
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                      </tr>
+                    </table>
+
+                  </td>
+                </tr>
+
+                <tr valign="top">
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                </tr>
+                <tr>
+                  <td>
+
+                    <table width="100%" border="0">
+                      <tr>
+                        <td><b>Guardian Information</b></td>
+                        <td align="right">
+                          <button md-icon-button [md-menu-trigger-for]="menu4">
+                            <md-icon>more_vert</md-icon>
+                          </button>
+                          <md-menu x-position="before" #menu4="mdMenu">
+                            <button md-menu-item (click)="editDialog(row)">Edit</button>
+                          </md-menu>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td colspan="2"><br/>
+                          <md-divider></md-divider>
+                          <br/></td>
+                      </tr>
+                    </table>
+
+                    <table width="100%" *ngFor="let guardian of guardians">
+                      <tr valign="top">
+                        <td width="20%">ID</td>
+                        <td width="1%">:</td>
+                        <td width="79%">{{guardian.identityNo}}</td>
+                      </tr>
+                      <tr valign="top">
+                        <td>Name</td>
+                        <td>:</td>
+                        <td>{{guardian.name}}</td>
+                      </tr>
+                      <tr valign="top">
+                        <td>Type</td>
+                        <td>:</td>
+                        <td>{{guardian.guardianType}}</td>
+                      </tr>
+                      <tr valign="top">
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                      </tr>
+                    </table>
+
+                  </td>
+                  <td>
+
+                    <table width="100%" border="0">
+                      <tr>
+                        <td><b>Contact Information</b></td>
+                        <td align="right">
+                          <button md-icon-button [md-menu-trigger-for]="menu5">
+                            <md-icon>more_vert</md-icon>
+                          </button>
+                          <md-menu x-position="before" #menu5="mdMenu">
+                            <button md-menu-item (click)="editDialog(row)">Edit</button>
+                          </md-menu>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td colspan="2"><br/>
+                          <md-divider></md-divider>
+                          <br/></td>
+                      </tr>
+                    </table>
+
+                    <table width="100%" *ngFor="let contact of contacts">
+                      <tr valign="top">
+                        <td width="19%">ID</td>
+                        <td width="1%">:</td>
+                        <td width="80%">{{contact.identityNo}}</td>
+                      </tr>
+                      <tr valign="top">
+                        <td>Name</td>
+                        <td>:</td>
+                        <td>{{contact.name}}</td>
+                      </tr>
+                      <tr valign="top">
+                        <td>Type</td>
+                        <td>:</td>
+                        <td>{{contact.contactType}}</td>
+                      </tr>
+                      <tr valign="top">
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                      </tr>
+                    </table>
+
+                  </td>
+                </tr>
+
+              </table>
+
+            </td>
+          </tr>
+          <tr valign="top">
+            <td colspan="3">&nbsp;</td>
+          </tr>
+        </table>
+
+      </md-tab>
+      <md-tab label="Course Information">
+
+        <pams-profile-enrollment-list
+          [enrollments]="enrollments"
+        >
+        </pams-profile-enrollment-list>
+
+      </md-tab>
     </md-tab-group>
-    
-    </md-card-content>
-    <md-divider></md-divider>
-    </md-card>
+
+  </md-card-content>
+  <md-divider></md-divider>
+</md-card>
