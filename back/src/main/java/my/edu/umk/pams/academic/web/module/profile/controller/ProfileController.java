@@ -1,6 +1,8 @@
 package my.edu.umk.pams.academic.web.module.profile.controller;
 
 import my.edu.umk.pams.academic.common.service.CommonService;
+import my.edu.umk.pams.academic.identity.model.AdAddress;
+import my.edu.umk.pams.academic.identity.model.AdAddressImpl;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.identity.model.AdStudentStatus;
 import my.edu.umk.pams.academic.identity.service.IdentityService;
@@ -10,6 +12,7 @@ import my.edu.umk.pams.academic.term.model.AdEnrollment;
 import my.edu.umk.pams.academic.term.service.TermService;
 import my.edu.umk.pams.academic.web.module.identity.vo.Student;
 import my.edu.umk.pams.academic.web.module.profile.vo.Address;
+import my.edu.umk.pams.academic.web.module.profile.vo.AddressType;
 import my.edu.umk.pams.academic.web.module.profile.vo.Contact;
 import my.edu.umk.pams.academic.web.module.profile.vo.Guarantor;
 import my.edu.umk.pams.academic.web.module.profile.vo.Guardian;
@@ -81,6 +84,22 @@ public class ProfileController {
 		return new ResponseEntity<String>("Success", HttpStatus.OK);
 		
 	}
+	
+    @RequestMapping(value = "/students/{identityNo}/addresses", method = RequestMethod.PUT)
+	 public ResponseEntity<String> updateAddress(@PathVariable String identityNo, @RequestBody Address vo){
+    	dummyLogin();
+    	AdStudent student = profileService.findStudentByMatricNo(identityNo);
+    	List<AdAddress> addresses = profileService.findAddresses(student);
+    	for(AdAddress address:addresses){
+    		address.setAddress1(vo.getAddress1());
+    		address.setAddress2(vo.getAddress2());
+    		address.setAddress3(vo.getAddress3());
+    		address.setPostCode(vo.getPostcode());
+    		profileService.updateAddress(student, address);
+    	}
+    	return new ResponseEntity<String>("Success",HttpStatus.OK);
+    	
+    }
     //====================================================================================================
     // PROFILE
     //====================================================================================================
