@@ -14,7 +14,6 @@ import {StaffSelectComponent} from "./component/staff-select.component";
 import {StudentActions} from "./student.action";
 import {StaffActions} from "./staff.action";
 import {ActorActions} from "./actor.action";
-import {EffectsRunner} from "@ngrx/effects/testing";
 import {ActorEffects} from "./actor.effect";
 import {EffectsModule} from "@ngrx/effects";
 

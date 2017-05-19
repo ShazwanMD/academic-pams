@@ -39,7 +39,6 @@ export interface ProfileModuleState {
   guardians: GuardianListState;
   contacts: ContactListState;
   enrollments: EnrollmentListState;
-
 }
 ;
 

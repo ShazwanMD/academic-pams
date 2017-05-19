@@ -15,13 +15,8 @@
   <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
     <div layout="row">
       <a md-button color="accent" class="text-upper" [routerLink]="['./profile-detail', row['identityNo']]">
-        <span>Details</span>
+        <span>VIEW</span>
       </a>
-
-      <a md-button color="accent" class="text-upper" [routerLink]="['./profile-edit', row['identityNo']]">
-        <span>Edit</span>
-      </a>
-
     </div>
   </template>
 </td-data-table>

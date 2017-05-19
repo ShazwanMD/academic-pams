@@ -24,8 +24,9 @@ public class AdBankCodeDaoImpl extends GenericDaoSupport<Long, AdBankCode> imple
     @Override
     public AdBankCode findByCode(String code) {
         Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery("select s from AdBankCode s where s.code = :code and  " +
-                " s.metadata.state = :state");
+        Query query = session.createQuery("select s from AdBankCode s where " +
+                "s.code = :code " +
+                "and s.metadata.state = :state");
         query.setString("code", code);
         query.setCacheable(true);
         query.setInteger("state", AdMetaState.ACTIVE.ordinal());
@@ -37,7 +38,7 @@ public class AdBankCodeDaoImpl extends GenericDaoSupport<Long, AdBankCode> imple
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select s from AdBankCode s where " +
                 "(upper(s.code) like upper(:filter) " +
-                "or upper(s.description) like upper(:filter)) " +
+                "or upper(s.name) like upper(:filter)) " +
                 "and s.metadata.state = :state ");
         query.setString("filter", WILDCARD + filter + WILDCARD);
         query.setInteger("state", AdMetaState.ACTIVE.ordinal());
@@ -53,7 +54,7 @@ public class AdBankCodeDaoImpl extends GenericDaoSupport<Long, AdBankCode> imple
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select count(s) from AdBankCode s where " +
                 "(upper(s.code) like upper(:filter) " +
-                "or upper(s.description) like upper(:filter)) " +
+                "or upper(s.name) like upper(:filter)) " +
                 "and s.metadata.state = :state ");
         query.setString("filter", WILDCARD + filter + WILDCARD);
         query.setInteger("state", AdMetaState.ACTIVE.ordinal());
