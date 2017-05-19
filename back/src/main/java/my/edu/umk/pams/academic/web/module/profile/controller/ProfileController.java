@@ -4,6 +4,7 @@ import my.edu.umk.pams.academic.common.service.CommonService;
 import my.edu.umk.pams.academic.identity.model.AdAddress;
 import my.edu.umk.pams.academic.identity.model.AdAddressImpl;
 import my.edu.umk.pams.academic.identity.model.AdContact;
+import my.edu.umk.pams.academic.identity.model.AdContactImpl;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.identity.model.AdStudentStatus;
 import my.edu.umk.pams.academic.identity.service.IdentityService;
@@ -16,6 +17,7 @@ import my.edu.umk.pams.academic.web.module.identity.vo.Student;
 import my.edu.umk.pams.academic.web.module.profile.vo.Address;
 import my.edu.umk.pams.academic.web.module.profile.vo.AddressType;
 import my.edu.umk.pams.academic.web.module.profile.vo.Contact;
+import my.edu.umk.pams.academic.web.module.profile.vo.ContactType;
 import my.edu.umk.pams.academic.web.module.profile.vo.Guarantor;
 import my.edu.umk.pams.academic.web.module.profile.vo.Guardian;
 import my.edu.umk.pams.academic.web.module.term.controller.TermTransformer;
@@ -130,6 +132,18 @@ public class ProfileController {
 	          profileService.deleteContact(student, contact);
 	          return new ResponseEntity<String>("Success", HttpStatus.OK);
 	          }
+	  
+	  @RequestMapping(value = "/students/{identityNo}/contacts", method = RequestMethod.POST)
+	  public ResponseEntity<String> addContact(@PathVariable String identityNo, @RequestBody Contact vo){
+		  dummyLogin();
+		  AdStudent student = profileService.findStudentByMatricNo(identityNo);
+		  AdContact contact = new AdContactImpl();
+		  contact.setIdentityNo(vo.getIdentityNo());
+		  contact.setName(vo.getName());
+		  contact.setStudent(student);
+		  profileService.addContact(student, contact);
+		  return new ResponseEntity<String>("Success", HttpStatus.OK);
+	  }
     //====================================================================================================
     // PROFILE
     //====================================================================================================

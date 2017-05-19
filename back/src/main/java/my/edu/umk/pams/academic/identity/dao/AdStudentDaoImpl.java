@@ -163,6 +163,18 @@ public class AdStudentDaoImpl extends GenericDaoSupport<Long, AdStudent> impleme
 
     @Override
     public void addContact(AdStudent student, AdContact contact, AdUser user) {
+        Validate.notNull(user, "User cannot be null");
+        Validate.notNull(student, "Faculty cannot be null");
+        Validate.notNull(contact, "section cannot be null");
+        Session session = sessionFactory.getCurrentSession();
+        contact.setStudent(student);
+             // prepare metadata
+        AdMetadata metadata = new AdMetadata();
+        metadata.setCreatedDate(new Timestamp(System.currentTimeMillis()));
+        metadata.setCreatorId(user.getId());
+        metadata.setState(AdMetaState.ACTIVE);
+        contact.setMetadata(metadata);
+        session.save(contact);
 
     }
 
