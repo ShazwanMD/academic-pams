@@ -36,9 +36,9 @@ export class AcademicSessionEffects {
     .map(action => action.payload)
     .switchMap(academicSession => this.plannerService.activateAcademicSession(academicSession))
     .map(message => this.academicSessionActions.activateAcademicSessionSuccess(message))
-    // .withLatestFrom(this.store$.select(...this.ACADEMIC_SESSION))
-    // .map(state => state[1])
-    // .map((academicSession:AcademicSession) => this.academicSessionActions.findAcademicSessionByCode(academicSession.code));
+    .withLatestFrom(this.store$.select(...this.ACADEMIC_SESSION))
+    .map(state => state[1])
+    .map((academicSession: AcademicSession) => this.academicSessionActions.findAcademicSessionByCode(academicSession.code));
 
 
   @Effect() deactivateAcademicSession$ = this.actions$
@@ -46,8 +46,8 @@ export class AcademicSessionEffects {
     .map(action => action.payload)
     .switchMap(academicSession => this.plannerService.deactivateAcademicSession(academicSession))
     .map(message => this.academicSessionActions.deactivateAcademicSessionSuccess(message))
-    // .withLatestFrom(this.store$.select(...this.ACADEMIC_SESSION))
-    // .map(state => state[1])
-    // .map((academicSession:AcademicSession) => this.academicSessionActions.findAcademicSessionByCode(academicSession.code));
+    .withLatestFrom(this.store$.select(...this.ACADEMIC_SESSION))
+    .map(state => state[1])
+    .map((academicSession: AcademicSession) => this.academicSessionActions.findAcademicSessionByCode(academicSession.code));
 
 }

@@ -39,15 +39,19 @@ export class AcademicSessionDetailPage implements OnInit {
   activate(): void {
     let snackBarRef = this.snackBar.open("Activating Academic Session", "OK");
     snackBarRef.afterDismissed().subscribe(() => {
-        this.academicSession$.subscribe(academicSession =>
+        this.academicSession$.take(1).subscribe(academicSession =>
           this.store.dispatch(this.actions.activateAcademicSession(academicSession)))
       }
     );
   }
 
   deactivate(): void {
-    this.academicSession$.subscribe(academicSession => {
-      this.store.dispatch(this.actions.deactivateAcademicSession(academicSession));
-    });
+    let snackBarRef = this.snackBar.open("Deactivating Academic Session", "OK");
+    snackBarRef.afterDismissed().subscribe(() => {
+        this.academicSession$.take(1).subscribe(academicSession =>
+          this.store.dispatch(this.actions.deactivateAcademicSession(academicSession)))
+      }
+    );
+
   }
 }
