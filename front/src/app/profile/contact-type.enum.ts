@@ -1,4 +1,4 @@
-enum ContactType{
+export enum ContactType{
   HUSBAND,//0
   WIFE,//1
   SON,//2

@@ -1,23 +1,15 @@
 package my.edu.umk.pams.academic.web.module.profile.controller;
 
 import my.edu.umk.pams.academic.common.service.CommonService;
-import my.edu.umk.pams.academic.identity.model.AdAddress;
-import my.edu.umk.pams.academic.identity.model.AdAddressImpl;
-import my.edu.umk.pams.academic.identity.model.AdContact;
-import my.edu.umk.pams.academic.identity.model.AdContactImpl;
-import my.edu.umk.pams.academic.identity.model.AdStudent;
-import my.edu.umk.pams.academic.identity.model.AdStudentStatus;
+import my.edu.umk.pams.academic.identity.model.*;
 import my.edu.umk.pams.academic.identity.service.IdentityService;
-import my.edu.umk.pams.academic.planner.model.AdProgram;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
 import my.edu.umk.pams.academic.profile.service.ProfileService;
 import my.edu.umk.pams.academic.term.model.AdEnrollment;
 import my.edu.umk.pams.academic.term.service.TermService;
 import my.edu.umk.pams.academic.web.module.identity.vo.Student;
 import my.edu.umk.pams.academic.web.module.profile.vo.Address;
-import my.edu.umk.pams.academic.web.module.profile.vo.AddressType;
 import my.edu.umk.pams.academic.web.module.profile.vo.Contact;
-import my.edu.umk.pams.academic.web.module.profile.vo.ContactType;
 import my.edu.umk.pams.academic.web.module.profile.vo.Guarantor;
 import my.edu.umk.pams.academic.web.module.profile.vo.Guardian;
 import my.edu.umk.pams.academic.web.module.term.controller.TermTransformer;
@@ -68,76 +60,78 @@ public class ProfileController {
     @Autowired
     private TermTransformer termTransformer;
 
-    @Autowired										
+    @Autowired
     private ProfileTransformer profileTransformer;
-    
+
     //====================================================================================================
     // PROFILE UPDATE
     //====================================================================================================
-	@RequestMapping(value = "/students/{matricNo}", method = RequestMethod.PUT)
-	 public ResponseEntity<String> updateStudent(@PathVariable String matricNo, @RequestBody Student vo) {
-		dummyLogin();
+    @RequestMapping(value = "/students/{matricNo}", method = RequestMethod.PUT)
+    public ResponseEntity<String> updateStudent(@PathVariable String matricNo, @RequestBody Student vo) {
+        dummyLogin();
 
-		AdStudent student = profileService.findStudentById(vo.getId());
-		student.setName(vo.getName());
-		student.setPhone(vo.getPhone());
-		student.setEmail(vo.getEmail());
-		student.setMobile(vo.getMobile());
-		student.setFax(vo.getFax());
-		profileService.updateStudent(student);
-		return new ResponseEntity<String>("Success", HttpStatus.OK);
-		
-	}
+        AdStudent student = profileService.findStudentById(vo.getId());
+        student.setName(vo.getName());
+        student.setPhone(vo.getPhone());
+        student.setEmail(vo.getEmail());
+        student.setMobile(vo.getMobile());
+        student.setFax(vo.getFax());
+        profileService.updateStudent(student);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+
+    }
+
     //====================================================================================================
     // Address UPDATE
     //====================================================================================================
     @RequestMapping(value = "/students/{identityNo}/addresses", method = RequestMethod.PUT)
-	 public ResponseEntity<String> updateAddress(@PathVariable String identityNo, @RequestBody Address vo){
-    	dummyLogin();
-    	AdStudent student = profileService.findStudentByMatricNo(identityNo);
-    	List<AdAddress> addresses = profileService.findAddresses(student);
-    	for(AdAddress address:addresses){
-    		address.setAddress1(vo.getAddress1());
-    		address.setAddress2(vo.getAddress2());
-    		address.setAddress3(vo.getAddress3());
-    		address.setPostCode(vo.getPostcode());
-    		profileService.updateAddress(student, address);
-    	}
-    	return new ResponseEntity<String>("Success",HttpStatus.OK);
-    	
+    public ResponseEntity<String> updateAddress(@PathVariable String identityNo, @RequestBody Address vo) {
+        dummyLogin();
+        AdStudent student = profileService.findStudentByMatricNo(identityNo);
+        List<AdAddress> addresses = profileService.findAddresses(student);
+        for (AdAddress address : addresses) {
+            address.setAddress1(vo.getAddress1());
+            address.setAddress2(vo.getAddress2());
+            address.setAddress3(vo.getAddress3());
+            address.setPostCode(vo.getPostcode());
+            profileService.updateAddress(student, address);
+        }
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+
     }
     //====================================================================================================
     // Contact UPDATE
     //====================================================================================================
-   
-	  @RequestMapping(value = "/students/{identityNo}/contacts", method = RequestMethod.DELETE)
-	  public ResponseEntity<String> deleteContact(@PathVariable String identityNo) {
-	          dummyLogin();
-	          AdStudent student = profileService.findStudentByMatricNo(identityNo);
-	          List<AdContact> contacts = profileService.findContacts(student);
-	          for(AdContact contact:contacts)
-	          profileService.deleteContact(student, contact);
-	          return new ResponseEntity<String>("Success", HttpStatus.OK);
-	          }
-	  
-	  @RequestMapping(value = "/students/{identityNo}/contacts", method = RequestMethod.POST)
-	  public ResponseEntity<String> addContact(@PathVariable String identityNo, @RequestBody Contact vo){
-		  dummyLogin();
-		  AdStudent student = profileService.findStudentByMatricNo(identityNo);
-		  AdContact contact = new AdContactImpl();
-		  contact.setIdentityNo(vo.getIdentityNo());
-		  contact.setName(vo.getName());
-		  contact.setStudent(student);
-		  profileService.addContact(student, contact);
-		  return new ResponseEntity<String>("Success", HttpStatus.OK);
-	  }
+
+    @RequestMapping(value = "/students/{identityNo}/contacts", method = RequestMethod.DELETE)
+    public ResponseEntity<String> deleteContact(@PathVariable String identityNo) {
+        dummyLogin();
+        AdStudent student = profileService.findStudentByMatricNo(identityNo);
+        List<AdContact> contacts = profileService.findContacts(student);
+        for (AdContact contact : contacts)
+            profileService.deleteContact(student, contact);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/students/{identityNo}/contacts", method = RequestMethod.POST)
+    public ResponseEntity<String> addContact(@PathVariable String identityNo, @RequestBody Contact vo) {
+        dummyLogin();
+        AdStudent student = profileService.findStudentByMatricNo(identityNo);
+        AdContact contact = new AdContactImpl();
+        contact.setIdentityNo(vo.getIdentityNo());
+        contact.setName(vo.getName());
+        contact.setType(AdContactType.get(vo.getContactType().ordinal()));
+        contact.setStudent(student);
+        profileService.addContact(student, contact);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
     //====================================================================================================
     // PROFILE
     //====================================================================================================
 
     @RequestMapping(value = "/students", method = RequestMethod.GET)
     public ResponseEntity<List<Student>> findStudents() {
-        List<AdStudent> students = profileService.findStudents("%",0,Integer.MAX_VALUE);
+        List<AdStudent> students = profileService.findStudents("%", 0, Integer.MAX_VALUE);
         return new ResponseEntity<List<Student>>(profileTransformer
                 .toStudentVos(students), HttpStatus.OK);
     }
@@ -184,34 +178,34 @@ public class ProfileController {
         return new ResponseEntity<List<Contact>>(profileTransformer
                 .toContactVos(profileService.findContacts(student)), HttpStatus.OK);
     }
-    
+
     @RequestMapping(value = "/students/{identityNo}/activate", method = RequestMethod.POST)
     public ResponseEntity<AdStudentStatus> activateStudent(@PathVariable String identityNo) {
-    	dummyLogin();
-    	AdStudent student = profileService.findStudentByMatricNo(identityNo);
-    	student.setStudentStatus(AdStudentStatus.ACTIVE);
-    	profileService.activateStudent(student);
-    	return new ResponseEntity<AdStudentStatus>( student.getStudentStatus(), HttpStatus.OK);
+        dummyLogin();
+        AdStudent student = profileService.findStudentByMatricNo(identityNo);
+        student.setStudentStatus(AdStudentStatus.ACTIVE);
+        profileService.activateStudent(student);
+        return new ResponseEntity<AdStudentStatus>(student.getStudentStatus(), HttpStatus.OK);
     }
-    
+
     @RequestMapping(value = "/students/{identityNo}/deactivate", method = RequestMethod.POST)
     public ResponseEntity<AdStudentStatus> deactivateStudent(@PathVariable String identityNo) {
-    	dummyLogin();
-    	AdStudent student = profileService.findStudentByMatricNo(identityNo);
-    	student.setStudentStatus(AdStudentStatus.INACTIVE);
-    	profileService.deactivateStudent(student);
-    	return new ResponseEntity<AdStudentStatus>( student.getStudentStatus(), HttpStatus.OK);
+        dummyLogin();
+        AdStudent student = profileService.findStudentByMatricNo(identityNo);
+        student.setStudentStatus(AdStudentStatus.INACTIVE);
+        profileService.deactivateStudent(student);
+        return new ResponseEntity<AdStudentStatus>(student.getStudentStatus(), HttpStatus.OK);
     }
-    
+
     @RequestMapping(value = "/students/{identityNo}/barStudent", method = RequestMethod.POST)
     public ResponseEntity<AdStudentStatus> barStudent(@PathVariable String identityNo) {
-    	dummyLogin();
-    	AdStudent student = profileService.findStudentByMatricNo(identityNo);
-    	student.setStudentStatus(AdStudentStatus.BARRED);
-    	profileService.barStudent(student);
-    	return new ResponseEntity<AdStudentStatus>( student.getStudentStatus(), HttpStatus.OK);
+        dummyLogin();
+        AdStudent student = profileService.findStudentByMatricNo(identityNo);
+        student.setStudentStatus(AdStudentStatus.BARRED);
+        profileService.barStudent(student);
+        return new ResponseEntity<AdStudentStatus>(student.getStudentStatus(), HttpStatus.OK);
     }
-    
+
     //====================================================================================================
     // PRIVATE METHODS
     //====================================================================================================

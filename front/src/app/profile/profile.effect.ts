@@ -87,4 +87,13 @@ export class ProfileEffects {
     .map(state => state[1])
     .map((student: Student) => this.profileActions.findStudentByIdentityNo(student.identityNo));
 
+  @Effect() addContact$ = this.actions$
+    .ofType(ProfileActions.ADD_CONTACT)
+    .map(action => action.payload)
+    .switchMap(payload => this.profileService.addContact(payload.student, payload.contact))
+    .map(message => this.profileActions.addContactSuccess(message))
+    .withLatestFrom(this.store$.select(...this.STUDENT))
+    .map(state => state[1])
+    .map((student: Student) => this.profileActions.findStudentByIdentityNo(student.identityNo));
+
 }

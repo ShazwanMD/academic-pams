@@ -6,6 +6,7 @@ import {Action} from '@ngrx/store';
 export class ProfileActions {
 
   static FIND_STUDENTS = '[Profile] Find Students';
+
   findStudents(): Action {
     return {
       type: ProfileActions.FIND_STUDENTS
@@ -13,6 +14,7 @@ export class ProfileActions {
   }
 
   static FIND_STUDENTS_SUCCESS = '[Profile] Find Students Success';
+
   findStudentsSuccess(students): Action {
     console.log("findStudentsSuccess");
     return {
@@ -22,6 +24,7 @@ export class ProfileActions {
   }
 
   static FIND_STUDENT_BY_IDENTITY_NO = '[Profile] Find Student By Identity No';
+
   findStudentByIdentityNo(identityNo): Action {
     return {
       type: ProfileActions.FIND_STUDENT_BY_IDENTITY_NO,
@@ -30,6 +33,7 @@ export class ProfileActions {
   }
 
   static FIND_STUDENT_BY_IDENTITY_NO_SUCCESS = '[Profile] Find Student By Identity No Success';
+
   findStudentByIdentityNoSuccess(student): Action {
     console.log("findStudentsSuccess");
     return {
@@ -40,6 +44,7 @@ export class ProfileActions {
 
 
   static FIND_ADDRESSES = '[Profile] Find Addresses';
+
   findAddresses(student): Action {
     return {
       type: ProfileActions.FIND_ADDRESSES,
@@ -48,6 +53,7 @@ export class ProfileActions {
   }
 
   static FIND_ADDRESSES_SUCCESS = '[Profile] Find Addresses Success';
+
   findAddressesSuccess(addresses): Action {
     return {
       type: ProfileActions.FIND_ADDRESSES_SUCCESS,
@@ -56,6 +62,7 @@ export class ProfileActions {
   }
 
   static FIND_GUARANTORS = '[Profile] Find Guarantors';
+
   findGuarantors(student): Action {
     return {
       type: ProfileActions.FIND_GUARANTORS,
@@ -64,6 +71,7 @@ export class ProfileActions {
   }
 
   static FIND_GUARANTORS_SUCCESS = '[Profile] Find Guarantors Success';
+
   findGuarantorsSuccess(guarantors): Action {
     return {
       type: ProfileActions.FIND_GUARANTORS_SUCCESS,
@@ -72,6 +80,7 @@ export class ProfileActions {
   }
 
   static FIND_CONTACTS = '[Profile] Find Contacts';
+
   findContacts(student): Action {
     return {
       type: ProfileActions.FIND_CONTACTS,
@@ -80,6 +89,7 @@ export class ProfileActions {
   }
 
   static FIND_CONTACTS_SUCCESS = '[Profile] Find Contacts Success';
+
   findContactsSuccess(contacts): Action {
     return {
       type: ProfileActions.FIND_CONTACTS_SUCCESS,
@@ -88,6 +98,7 @@ export class ProfileActions {
   }
 
   static FIND_GUARDIANS = '[Profile] Find Guardians';
+
   findGuardians(student): Action {
     return {
       type: ProfileActions.FIND_GUARDIANS,
@@ -96,6 +107,7 @@ export class ProfileActions {
   }
 
   static FIND_GUARDIANS_SUCCESS = '[Profile] Find Guardians Success';
+
   findGuardiansSuccess(guardians): Action {
     return {
       type: ProfileActions.FIND_GUARDIANS_SUCCESS,
@@ -122,7 +134,7 @@ export class ProfileActions {
     };
   }
 
-   static UPDATE_STUDENT = '[Profile] Update Student';
+  static UPDATE_STUDENT = '[Profile] Update Student';
 
   updateStudent(identityNo): Action {
     console.log("updateStudent");
@@ -141,4 +153,68 @@ export class ProfileActions {
       payload: message
     };
   }
+
+  static ADD_CONTACT = '[Profile] Add Contact';
+
+  addContact(student, contact): Action {
+    console.log("addContact");
+    return {
+      type: ProfileActions.ADD_CONTACT,
+      payload: {student: student, contact: contact}
+    };
+  }
+
+
+  static ADD_CONTACT_SUCCEESS = '[Profile] Add Contact Success';
+
+  addContactSuccess(message): Action {
+    console.log("addContactSuccess");
+    return {
+      type: ProfileActions.ADD_CONTACT_SUCCEESS,
+      payload: message
+    };
+  }
+
+  static ADD_GUARANTOR = '[Profile] Add Guarantor';
+
+  addGuarantor(student, guarantor): Action {
+    console.log("addGuarantor");
+    return {
+      type: ProfileActions.ADD_GUARANTOR,
+      payload: {student: student, guarantor: guarantor}
+    };
+  }
+
+
+  static ADD_GUARANTOR_SUCCEESS = '[Profile] Add Guarantor Success';
+
+  addGuarantorSuccess(message): Action {
+    console.log("addGuarantorSuccess");
+    return {
+      type: ProfileActions.ADD_GUARANTOR_SUCCEESS,
+      payload: message
+    };
+  }
+
+  static ADD_GUARDIAN = '[Profile] Add Guardian';
+
+  addGuardian(student, guardian): Action {
+    console.log("addGuardian");
+    return {
+      type: ProfileActions.ADD_GUARDIAN,
+      payload: {student: student, guardian: guardian}
+    };
+  }
+
+
+  static ADD_GUARDIAN_SUCCEESS = '[Profile] Add Guardian Success';
+
+  addGuardianSuccess(message): Action {
+    console.log("addGuardianSuccess");
+    return {
+      type: ProfileActions.ADD_GUARDIAN_SUCCEESS,
+      payload: message
+    };
+  }
+
 }

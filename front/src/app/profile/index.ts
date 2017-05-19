@@ -1,5 +1,3 @@
-import { StudentInfoEditorDialog } from './dialog/student-info-editor.dialog';
-import { from } from 'rxjs/observable/from';
 import { Enrollment } from './../term/enrollments/enrollment.interface';
 import { ProfileEnrollmentListComponent } from './components/profile-enrollment-list.component';
 import { Address } from './address.interface';
@@ -30,6 +28,8 @@ import {guarantorListReducer, GuarantorListState} from "./guarantor-list.reducer
 import {enrollmentListReducer, EnrollmentListState} from "./enrollment-list.reducer";
 import {studentReducer, StudentState} from "./student.reducer";
 import {studentListReducer, StudentListState} from "./student-list.reducer";
+import {ContactEditorDialog} from "./dialog/contact-editor.dialog";
+import {DetailEditorDialog} from "./dialog/detail-editor.dialog";
 
 export interface ProfileModuleState {
   students: StudentListState;
@@ -83,12 +83,14 @@ export const profileModuleReducers = {
     ProfileStatusComponent,
     ProfileEnrollmentListComponent,
 
-    //Dialog
-    StudentInfoEditorDialog,
+    //dialog
+    DetailEditorDialog,
+    ContactEditorDialog,
   ],
   exports: [],
   entryComponents:[
-    StudentInfoEditorDialog,
+    DetailEditorDialog,
+    ContactEditorDialog,
   ],
 })
 export class ProfileModule {

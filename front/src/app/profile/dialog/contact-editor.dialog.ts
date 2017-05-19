@@ -1,58 +1,59 @@
-import { ProfileActions } from './../profile.action';
-import {ProfileModuleState} from "./../index";
-import { Student } from './../../identity/student.interface';
-
 import {Component, ViewContainerRef, OnInit, AfterViewInit} from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
 import {FormBuilder} from '@angular/forms';
 import {Router, ActivatedRoute} from '@angular/router';
 import {Store} from "@ngrx/store";
 import {MdDialogRef} from "@angular/material";
-
+import {Contact} from "../contact.interface";
+import {ContactType} from "../contact-type.enum";
+import {Student} from "../../identity/student.interface";
+import {ProfileModuleState} from "../index";
+import {ProfileActions} from "../profile.action";
 
 @Component({
-  selector: 'pams-student-info-editor',
-  templateUrl: './student-info-editor.dialog.html',
+  selector: 'pams-contact-editor',
+  templateUrl: './contact-editor.dialog.html',
 })
 
-export class StudentInfoEditorDialog implements OnInit {
+export class ContactEditorDialog implements OnInit {
 
   private editorForm: FormGroup;
   private edit: boolean = false;
   private _student: Student;
+  private _contact: Contact;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
               private formBuilder: FormBuilder,
               private viewContainerRef: ViewContainerRef,
-              private dialog: MdDialogRef<StudentInfoEditorDialog>,
+              private dialog: MdDialogRef<ContactEditorDialog>,
               private store: Store<ProfileModuleState>,
               private actions: ProfileActions) {
   }
 
   set student(value: Student) {
     this._student = value;
+  }
+
+  set contact(value: Contact) {
+    this._contact = value;
     this.edit = true;
   }
 
   ngOnInit(): void {
-    this.editorForm = this.formBuilder.group(<Student>{
+    this.editorForm = this.formBuilder.group(<Contact>{
       id: null,
-      identityNo:'',
       name: '',
-      email: '',
-      phone:'',
-      mobile:'',
-      fax:''
+      identityNo: '',
+      contactType: ContactType.FATHER
     });
 
-    if (this.edit) this.editorForm.patchValue(this._student);
+    if (this.edit) this.editorForm.patchValue(this._contact);
   }
 
-  submit(student: Student, isValid: boolean) {
-    console.log("updating student");
-    console.log("student email: " + student.email);
-    this.store.dispatch(this.actions.updateStudent(student));
+  submit(contact: Contact, isValid: boolean) {
+    console.log("adding student contact");
+    this.store.dispatch(this.actions.addContact(this._student, contact));
     this.dialog.close();
   }
 }

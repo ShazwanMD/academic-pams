@@ -75,19 +75,48 @@ export class ProfileService {
       .map((res: Response) => <Address[]>res.json());
   }
 
-  saveStudent(student: Student): Observable<Boolean> {
+  saveStudent(student: Student): Observable<String> {
     return this.http.post(environment.endpoint + '/api/profile/students', JSON.stringify(student))
-      .flatMap(data => Observable.of(true));
+      .flatMap((res: Response) => Observable.of(res.text()));
   }
 
-  updateStudent(student: Student): Observable<Boolean> {
+  updateStudent(student: Student): Observable<String> {
     let headers = new Headers({
       'Content-Type': 'application/json',
       //'Authorization': 'Bearer ' + this.authService.token
     });
     let options = new RequestOptions({headers: headers});
     return this.http.put(environment.endpoint + '/api/profile/students/' + student.identityNo, JSON.stringify(student), options)
-      .flatMap(data => Observable.of(true));
+      .flatMap((res: Response) => Observable.of(res.text()));
   }
 
+  addContact(student: Student, contact: Contact): Observable<String> {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
+    return this.http.post(environment.endpoint + '/api/profile/students/' + student.identityNo + '/contacts', JSON.stringify(contact), options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+  addGuardian(student: Student, guardian: Guardian): Observable<String> {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
+    return this.http.put(environment.endpoint + '/api/profile/students/' + student.identityNo + '/guardians', JSON.stringify(guardian), options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+  addGuarantor(student: Student, guarantor: Guarantor): Observable<String> {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
+    return this.http.put(environment.endpoint + '/api/profile/students/' + student.identityNo + '/guarantors', JSON.stringify(guarantor), options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
 }

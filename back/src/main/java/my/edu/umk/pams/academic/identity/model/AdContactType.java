@@ -14,5 +14,11 @@ public enum AdContactType {
     UNCLE,//10
     AUNT,//11
     NEPHEW,//12
-    NIECE//13
+    NIECE;//13
+
+    public static AdContactType get(int index){
+        return values()[index];
+    }
+
+
 }
