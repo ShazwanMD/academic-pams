@@ -7,6 +7,7 @@ import my.edu.umk.pams.academic.identity.model.AdContact;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.identity.model.AdStudentStatus;
 import my.edu.umk.pams.academic.identity.service.IdentityService;
+import my.edu.umk.pams.academic.planner.model.AdProgram;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
 import my.edu.umk.pams.academic.profile.service.ProfileService;
 import my.edu.umk.pams.academic.term.model.AdEnrollment;
@@ -69,7 +70,7 @@ public class ProfileController {
     private ProfileTransformer profileTransformer;
     
     //====================================================================================================
-    // PROFILE EDITOR
+    // PROFILE UPDATE
     //====================================================================================================
 	@RequestMapping(value = "/students/{matricNo}", method = RequestMethod.PUT)
 	 public ResponseEntity<String> updateStudent(@PathVariable String matricNo, @RequestBody Student vo) {
@@ -85,7 +86,9 @@ public class ProfileController {
 		return new ResponseEntity<String>("Success", HttpStatus.OK);
 		
 	}
-	
+    //====================================================================================================
+    // Address UPDATE
+    //====================================================================================================
     @RequestMapping(value = "/students/{identityNo}/addresses", method = RequestMethod.PUT)
 	 public ResponseEntity<String> updateAddress(@PathVariable String identityNo, @RequestBody Address vo){
     	dummyLogin();
@@ -101,20 +104,32 @@ public class ProfileController {
     	return new ResponseEntity<String>("Success",HttpStatus.OK);
     	
     }
+    //====================================================================================================
+    // Contact UPDATE
+    //====================================================================================================
+//    @RequestMapping(value = "/students/{identityNo}/contacts", method = RequestMethod.PUT)
+//	 public ResponseEntity<String> updateContact(@PathVariable String identityNo, @RequestBody Contact vo){
+//    	dummyLogin();
+//    	AdStudent student = profileService.findStudentByMatricNo(identityNo);
+//    	List<AdContact> contacts =  profileService.findContacts(student);
+//    	for(AdContact contact:contacts){
+//    		contact.setName(vo.getName());
+//    		contact.setIdentityNo(vo.getIdentityNo());
+//    		profileService.updateContact(student, contact);
+//    	}
+//    	return new ResponseEntity<String>("Success",HttpStatus.OK);
+//    	
+//    }
     
-    @RequestMapping(value = "/students/{identityNo}/contacts", method = RequestMethod.PUT)
-	 public ResponseEntity<String> updateContact(@PathVariable String identityNo, @RequestBody Contact vo){
-    	dummyLogin();
-    	AdStudent student = profileService.findStudentByMatricNo(identityNo);
-    	List<AdContact> contacts =  profileService.findContacts(student);
-    	for(AdContact contact:contacts){
-    		contact.setName(vo.getName());
-    		contact.setIdentityNo(vo.getIdentityNo());
-    		profileService.updateContact(student, contact);
-    	}
-    	return new ResponseEntity<String>("Success",HttpStatus.OK);
-    	
-    }
+	  @RequestMapping(value = "/students/{identityNo}/contacts", method = RequestMethod.DELETE)
+	  public ResponseEntity<String> deleteContact(@PathVariable String identityNo) {
+	          dummyLogin();
+	          AdStudent student = profileService.findStudentByMatricNo(identityNo);
+	          List<AdContact> contacts = profileService.findContacts(student);
+	          for(AdContact contact:contacts)
+	          profileService.deleteContact(student, contact);
+	          return new ResponseEntity<String>("Success", HttpStatus.OK);
+	          }
     //====================================================================================================
     // PROFILE
     //====================================================================================================

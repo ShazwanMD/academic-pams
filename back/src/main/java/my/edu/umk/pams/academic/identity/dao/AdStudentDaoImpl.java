@@ -168,7 +168,16 @@ public class AdStudentDaoImpl extends GenericDaoSupport<Long, AdStudent> impleme
 
     @Override
     public void deleteContact(AdStudent student, AdContact contact, AdUser user) {
-
+    	 Validate.notNull(user, "User cannot be null");
+         Session session = sessionFactory.getCurrentSession();
+         contact.setStudent(student);
+              // prepare metadata
+         AdMetadata metadata = contact.getMetadata();
+         metadata.setDeletedDate(new Timestamp(System.currentTimeMillis()));
+         metadata.setDeleterId(user.getId());
+         metadata.setState(AdMetaState.INACTIVE);
+         contact.setMetadata(metadata);
+         session.update(contact);
     }
 
     @Override
