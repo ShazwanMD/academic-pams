@@ -1,53 +1,52 @@
-import { StudyMode } from './../app/common/study-modes/study-mode.interface';
-import { EthnicityCode } from './../app/common/ethnicity-codes/ethnicity-code.interface';
-import { NationalityCode } from './../app/common/nationality-codes/nationality-code.interface';
-import { ReligionCode } from './../app/common/religion-codes/religion-code.interface';
-import { GradeCode } from './../app/common/grade-codes/grade-code.interface';
-import { DunCode } from './../app/common/dun-codes/dun-code.interface';
-import { ParliamentCode } from './../app/common/parliament-codes/parliament-code.interface';
-import { RaceCode } from './../app/common/race-codes/race-code.interface';
-import { StateCode } from './../app/common/state-codes/state-code.interface';
-import { MaritalCode } from './../app/setup/marital-codes/marital-code.interface';
-import { CountryCode } from './../app/common/country-codes/country-code.interface';
-import { environment } from './../environments/environment';
-import { GenderCode } from './../app/common/gender-codes/gender-code.interface';
-import { Injectable } from '@angular/core';
-import { Response, Http, Headers, RequestOptions } from '@angular/http';
-import { HttpInterceptorService } from '@covalent/http';
-import { Observable } from "rxjs";
-import { BankCode } from "../app/common/bank-codes/bank-code.interface";
+import {StudyMode} from '../app/common/study-modes/study-mode.interface';
+import {EthnicityCode} from '../app/common/ethnicity-codes/ethnicity-code.interface';
+import {NationalityCode} from '../app/common/nationality-codes/nationality-code.interface';
+import {ReligionCode} from '../app/common/religion-codes/religion-code.interface';
+import {GradeCode} from '../app/common/grade-codes/grade-code.interface';
+import {DunCode} from '../app/common/dun-codes/dun-code.interface';
+import {ParliamentCode} from '../app/common/parliament-codes/parliament-code.interface';
+import {RaceCode} from '../app/common/race-codes/race-code.interface';
+import {StateCode} from '../app/common/state-codes/state-code.interface';
+import {MaritalCode} from '../app/setup/marital-codes/marital-code.interface';
+import {CountryCode} from '../app/common/country-codes/country-code.interface';
+import {environment} from '../environments/environment';
+import {GenderCode} from '../app/common/gender-codes/gender-code.interface';
+import {Injectable} from '@angular/core';
+import {Response, Http, Headers, RequestOptions} from '@angular/http';
+import {HttpInterceptorService} from '@covalent/http';
+import {Observable} from "rxjs";
+import {BankCode} from "../app/common/bank-codes/bank-code.interface";
 
 @Injectable()
 export class CommonService {
 
-
   constructor(private http: Http,
-    private _http: HttpInterceptorService) {
+              private _http: HttpInterceptorService) {
   }
 
-  
+
 // ====================================================================================================
 // STUDYMODE
 // ====================================================================================================
 
-findStudyModes(): Observable<StudyMode[]> {
+  findStudyModes(): Observable<StudyMode[]> {
     console.log("findStudyModes()");
-return this.http.get(environment.endpoint + '/api/common/studyModes')
-    .map((res: Response) => <StudyMode[]>res.json());
-}
+    return this.http.get(environment.endpoint + '/api/common/studyModes')
+      .map((res: Response) => <StudyMode[]>res.json());
+  }
 
-findStudyModeByCode(code:string): Observable<StudyMode> {
+  findStudyModeByCode(code: string): Observable<StudyMode> {
     console.log("findStudyModeByCode");
-return this.http.get(environment.endpoint + '/api/common/studyModes/' + code)
-    .map((res: Response) => <StudyMode>res.json());
-}
+    return this.http.get(environment.endpoint + '/api/common/studyModes/' + code)
+      .map((res: Response) => <StudyMode>res.json());
+  }
 
- saveStudyMode(code: StudyMode) {
+  saveStudyMode(code: StudyMode) {
     let headers = new Headers({
       'Content-Type': 'application/json',
       //'Authorization': 'Bearer ' + this.authService.token
     });
-    let options = new RequestOptions({ headers: headers });
+    let options = new RequestOptions({headers: headers});
     return this.http.post(environment.endpoint + '/api/common/studyModes', JSON.stringify(code), options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
@@ -57,7 +56,7 @@ return this.http.get(environment.endpoint + '/api/common/studyModes/' + code)
       'Content-Type': 'application/json',
       //'Authorization': 'Bearer ' + this.authService.token
     });
-    let options = new RequestOptions({ headers: headers });
+    let options = new RequestOptions({headers: headers});
     return this.http.put(environment.endpoint + '/api/common/studyModes/' + code.code, JSON.stringify(code), options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
@@ -67,12 +66,10 @@ return this.http.get(environment.endpoint + '/api/common/studyModes/' + code)
       'Content-Type': 'application/json',
       //'Authorization': 'Bearer ' + this.authService.token
     });
-    let options = new RequestOptions({ headers: headers });
+    let options = new RequestOptions({headers: headers});
     return this.http.delete(environment.endpoint + '/api/common/studyModes/' + code.code, options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
-
-
 
 
   // ====================================================================================================
@@ -96,7 +93,7 @@ return this.http.get(environment.endpoint + '/api/common/studyModes/' + code)
       'Content-Type': 'application/json',
       //'Authorization': 'Bearer ' + this.authService.token
     });
-    let options = new RequestOptions({ headers: headers });
+    let options = new RequestOptions({headers: headers});
     return this.http.post(environment.endpoint + '/api/common/genderCodes', JSON.stringify(code), options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
@@ -106,7 +103,7 @@ return this.http.get(environment.endpoint + '/api/common/studyModes/' + code)
       'Content-Type': 'application/json',
       //'Authorization': 'Bearer ' + this.authService.token
     });
-    let options = new RequestOptions({ headers: headers });
+    let options = new RequestOptions({headers: headers});
     return this.http.put(environment.endpoint + '/api/common/genderCodes/' + code.code, JSON.stringify(code), options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
@@ -116,7 +113,7 @@ return this.http.get(environment.endpoint + '/api/common/studyModes/' + code)
       'Content-Type': 'application/json',
       //'Authorization': 'Bearer ' + this.authService.token
     });
-    let options = new RequestOptions({ headers: headers });
+    let options = new RequestOptions({headers: headers});
     return this.http.delete(environment.endpoint + '/api/common/genderCodes/' + code.code, options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
@@ -154,12 +151,13 @@ return this.http.get(environment.endpoint + '/api/common/studyModes/' + code)
     return this.http.get(environment.endpoint + '/api/common/maritalCodes/' + code)
       .map((res: Response) => <MaritalCode>res.json());
   }
+
   saveMaritalCode(code: MaritalCode) {
     let headers = new Headers({
       'Content-Type': 'application/json',
       //'Authorization': 'Bearer ' + this.authService.token
     });
-    let options = new RequestOptions({ headers: headers });
+    let options = new RequestOptions({headers: headers});
     return this.http.post(environment.endpoint + '/api/common/maritalCodes', JSON.stringify(code), options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
@@ -169,7 +167,7 @@ return this.http.get(environment.endpoint + '/api/common/studyModes/' + code)
       'Content-Type': 'application/json',
       //'Authorization': 'Bearer ' + this.authService.token
     });
-    let options = new RequestOptions({ headers: headers });
+    let options = new RequestOptions({headers: headers});
     return this.http.put(environment.endpoint + '/api/common/maritalCodes/' + code.code, JSON.stringify(code), options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
@@ -179,7 +177,7 @@ return this.http.get(environment.endpoint + '/api/common/studyModes/' + code)
       'Content-Type': 'application/json',
       //'Authorization': 'Bearer ' + this.authService.token
     });
-    let options = new RequestOptions({ headers: headers });
+    let options = new RequestOptions({headers: headers});
     return this.http.delete(environment.endpoint + '/api/common/maritalCodes/' + code.code, options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
@@ -240,7 +238,7 @@ return this.http.get(environment.endpoint + '/api/common/studyModes/' + code)
       'Content-Type': 'application/json',
       //'Authorization': 'Bearer ' + this.authService.token
     });
-    let options = new RequestOptions({ headers: headers });
+    let options = new RequestOptions({headers: headers});
     return this.http.post(environment.endpoint + '/api/common/stateCodes', JSON.stringify(code), options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
@@ -250,7 +248,7 @@ return this.http.get(environment.endpoint + '/api/common/studyModes/' + code)
       'Content-Type': 'application/json',
       //'Authorization': 'Bearer ' + this.authService.token
     });
-    let options = new RequestOptions({ headers: headers });
+    let options = new RequestOptions({headers: headers});
     return this.http.put(environment.endpoint + '/api/common/stateCodes/' + code.code, JSON.stringify(code), options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
@@ -260,7 +258,7 @@ return this.http.get(environment.endpoint + '/api/common/studyModes/' + code)
       'Content-Type': 'application/json',
       //'Authorization': 'Bearer ' + this.authService.token
     });
-    let options = new RequestOptions({ headers: headers });
+    let options = new RequestOptions({headers: headers});
     return this.http.delete(environment.endpoint + '/api/common/stateCodes/' + code.code, options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
@@ -283,7 +281,6 @@ return this.http.get(environment.endpoint + '/api/common/studyModes/' + code)
   }
 
 
-
   // ====================================================================================================
   // DUNCODE
   // ====================================================================================================
@@ -299,8 +296,6 @@ return this.http.get(environment.endpoint + '/api/common/studyModes/' + code)
     return this.http.get(environment.endpoint + '/api/common/dunCodes/' + code)
       .map((res: Response) => <DunCode>res.json());
   }
-
-
 
 
   // ====================================================================================================
@@ -324,7 +319,7 @@ return this.http.get(environment.endpoint + '/api/common/studyModes/' + code)
       'Content-Type': 'application/json',
       //'Authorization': 'Bearer ' + this.authService.token
     });
-    let options = new RequestOptions({ headers: headers });
+    let options = new RequestOptions({headers: headers});
     return this.http.post(environment.endpoint + '/api/common/gradeCodes', JSON.stringify(code), options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
@@ -334,7 +329,7 @@ return this.http.get(environment.endpoint + '/api/common/studyModes/' + code)
       'Content-Type': 'application/json',
       //'Authorization': 'Bearer ' + this.authService.token
     });
-    let options = new RequestOptions({ headers: headers });
+    let options = new RequestOptions({headers: headers});
     return this.http.put(environment.endpoint + '/api/common/gradeCodes/' + code.code, JSON.stringify(code), options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
@@ -344,11 +339,10 @@ return this.http.get(environment.endpoint + '/api/common/studyModes/' + code)
       'Content-Type': 'application/json',
       //'Authorization': 'Bearer ' + this.authService.token
     });
-    let options = new RequestOptions({ headers: headers });
+    let options = new RequestOptions({headers: headers});
     return this.http.delete(environment.endpoint + '/api/common/gradeCodes/' + code.code, options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
-
 
 
   // ====================================================================================================
@@ -372,7 +366,7 @@ return this.http.get(environment.endpoint + '/api/common/studyModes/' + code)
       'Content-Type': 'application/json',
       //'Authorization': 'Bearer ' + this.authService.token
     });
-    let options = new RequestOptions({ headers: headers });
+    let options = new RequestOptions({headers: headers});
     return this.http.post(environment.endpoint + '/api/common/religionCodes', JSON.stringify(code), options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
@@ -382,7 +376,7 @@ return this.http.get(environment.endpoint + '/api/common/studyModes/' + code)
       'Content-Type': 'application/json',
       //'Authorization': 'Bearer ' + this.authService.token
     });
-    let options = new RequestOptions({ headers: headers });
+    let options = new RequestOptions({headers: headers});
     return this.http.put(environment.endpoint + '/api/common/religionCodes/' + code.code, JSON.stringify(code), options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
@@ -392,7 +386,7 @@ return this.http.get(environment.endpoint + '/api/common/studyModes/' + code)
       'Content-Type': 'application/json',
       //'Authorization': 'Bearer ' + this.authService.token
     });
-    let options = new RequestOptions({ headers: headers });
+    let options = new RequestOptions({headers: headers});
     return this.http.delete(environment.endpoint + '/api/common/religionCodes/' + code.code, options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
@@ -419,7 +413,7 @@ return this.http.get(environment.endpoint + '/api/common/studyModes/' + code)
       'Content-Type': 'application/json',
       //'Authorization': 'Bearer ' + this.authService.token
     });
-    let options = new RequestOptions({ headers: headers });
+    let options = new RequestOptions({headers: headers});
     return this.http.post(environment.endpoint + '/api/common/nationalityCodes', JSON.stringify(code), options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
@@ -429,7 +423,7 @@ return this.http.get(environment.endpoint + '/api/common/studyModes/' + code)
       'Content-Type': 'application/json',
       //'Authorization': 'Bearer ' + this.authService.token
     });
-    let options = new RequestOptions({ headers: headers });
+    let options = new RequestOptions({headers: headers});
     return this.http.put(environment.endpoint + '/api/common/nationalityCodes/' + code.code, JSON.stringify(code), options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
@@ -439,11 +433,10 @@ return this.http.get(environment.endpoint + '/api/common/studyModes/' + code)
       'Content-Type': 'application/json',
       //'Authorization': 'Bearer ' + this.authService.token
     });
-    let options = new RequestOptions({ headers: headers });
+    let options = new RequestOptions({headers: headers});
     return this.http.delete(environment.endpoint + '/api/common/nationalityCodes/' + code.code, options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
-
 
 
   // ====================================================================================================
@@ -461,13 +454,6 @@ return this.http.get(environment.endpoint + '/api/common/studyModes/' + code)
     return this.http.get(environment.endpoint + '/api/common/ethnicityCodes/' + code)
       .map((res: Response) => <EthnicityCode>res.json());
   }
-
-
-
-
-
-
-
 
 
 }
