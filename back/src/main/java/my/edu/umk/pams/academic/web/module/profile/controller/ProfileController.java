@@ -100,7 +100,7 @@ public class ProfileController {
 
     }
     //====================================================================================================
-    // Contact UPDATE
+    // Contact Add
     //====================================================================================================
 
     @RequestMapping(value = "/students/{identityNo}/contacts", method = RequestMethod.DELETE)
@@ -125,6 +125,41 @@ public class ProfileController {
         profileService.addContact(student, contact);
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
+    
+    //====================================================================================================
+    // Guarantor Add
+    //====================================================================================================
+
+   @RequestMapping(value = "/students/{identityNo}/guarantors", method = RequestMethod.POST)
+    public ResponseEntity<String> addGuarantor(@PathVariable String identityNo, @RequestBody Guarantor vo) {
+        dummyLogin();
+        AdStudent student = profileService.findStudentByMatricNo(identityNo);
+        AdGuarantor guarantor = new AdGuarantorImpl();
+        guarantor.setIdentityNo(vo.getIdentityNo());
+        guarantor.setName(vo.getName());
+        guarantor.setType(AdGuarantorType.get(vo.getGuarantorType().ordinal()));
+        guarantor.setStudent(student);
+        profileService.addGuarantor(student, guarantor);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
+   
+   
+   //====================================================================================================
+   // Guardian Add
+   //====================================================================================================
+
+  @RequestMapping(value = "/students/{identityNo}/guardians", method = RequestMethod.POST)
+   public ResponseEntity<String> addGuardian(@PathVariable String identityNo, @RequestBody Guardian vo) {
+       dummyLogin();
+       AdStudent student = profileService.findStudentByMatricNo(identityNo);
+       AdGuardian guardian = new AdGuardianImpl();
+       guardian.setIdentityNo(vo.getIdentityNo());
+       guardian.setName(vo.getName());
+       guardian.setType(AdGuardianType.get(vo.getGuardianType().ordinal()));
+       guardian.setStudent(student);
+       profileService.addGuardian(student, guardian);
+       return new ResponseEntity<String>("Success", HttpStatus.OK);
+   }
     //====================================================================================================
     // PROFILE
     //====================================================================================================
