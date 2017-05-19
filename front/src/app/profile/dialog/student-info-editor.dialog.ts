@@ -52,7 +52,7 @@ export class StudentInfoEditorDialog implements OnInit {
   submit(student: Student, isValid: boolean) {
     console.log("updating student");
     console.log("student email: " + student.email);
-    this.store.dispatch(this.actions.updateProfile(student));
+    this.store.dispatch(this.actions.updateStudent(student));
     this.dialog.close();
   }
 }

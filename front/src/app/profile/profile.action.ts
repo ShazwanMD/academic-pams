@@ -5,87 +5,39 @@ import {Action} from '@ngrx/store';
 @Injectable()
 export class ProfileActions {
 
-  static FIND_PROFILES = '[Profile] Find Profiles';
-  findProfiles(): Action {
+  static FIND_STUDENTS = '[Profile] Find Students';
+  findStudents(): Action {
     return {
-      type: ProfileActions.FIND_PROFILES
+      type: ProfileActions.FIND_STUDENTS
     };
   }
 
-  static FIND_PROFILES_SUCCESS = '[Profile] Find Profiles Success';
-  findProfilesSuccess(students): Action {
-    console.log("findProfilesSuccess");
-    console.log("students: " + students.length);
+  static FIND_STUDENTS_SUCCESS = '[Profile] Find Students Success';
+  findStudentsSuccess(students): Action {
+    console.log("findStudentsSuccess");
     return {
-      type: ProfileActions.FIND_PROFILES_SUCCESS,
+      type: ProfileActions.FIND_STUDENTS_SUCCESS,
       payload: students
     };
   }
 
-  static FIND_PROFILE = '[Profile] Find Profile';
-  findProfile(identityNo): Action {
+  static FIND_STUDENT_BY_IDENTITY_NO = '[Profile] Find Student By Identity No';
+  findStudentByIdentityNo(identityNo): Action {
     return {
-      type: ProfileActions.FIND_PROFILE,
+      type: ProfileActions.FIND_STUDENT_BY_IDENTITY_NO,
       payload: identityNo
     };
   }
 
-  static FIND_STUDENT_BY_MATRICNO = '[Profile] Find Profile';
-  findStudentByMatricNo(identityNo): Action {
+  static FIND_STUDENT_BY_IDENTITY_NO_SUCCESS = '[Profile] Find Student By Identity No Success';
+  findStudentByIdentityNoSuccess(student): Action {
+    console.log("findStudentsSuccess");
     return {
-      type: ProfileActions.FIND_STUDENT_BY_MATRICNO,
-      payload: identityNo
-    };
-  }
-
-
-  static FIND_PROFILE_SUCCESS = '[Profile] Find Profile Success';
-  getProfileSuccess(student): Action {
-    return {
-      type: ProfileActions.FIND_PROFILE_SUCCESS,
+      type: ProfileActions.FIND_STUDENT_BY_IDENTITY_NO_SUCCESS,
       payload: student
     };
   }
 
-  static RESET_PROFILE = '[Profile] Reset Blank Profile';
-  resetProfile(): Action {
-    return {
-      type: ProfileActions.RESET_PROFILE
-    };
-  }
-
-  static UPDATE_PROFILE = '[Profile] Update Profile';
-  updateProfile(student): Action {
-    console.log("updateProfile");
-    return {
-      type: ProfileActions.UPDATE_PROFILE,
-      payload: student
-    };
-  }
-
-  static UPDATE_PROFILE_SUCCESS = '[Profile] Update Profile Success';
-  updateProfileSuccess(student): Action {
-    return {
-      type: ProfileActions.UPDATE_PROFILE_SUCCESS,
-      payload: student
-    };
-  }
-
-  static CREATE_PROFILE = '[Profile] Create Profile';
-  createProfile(student): Action {
-    return {
-      type: ProfileActions.CREATE_PROFILE,
-      payload: student
-    };
-  }
-
-  static CREATE_PROFILE_SUCCESS = '[Profile] Create Profile Success';
-  createProfileSuccess(student): Action {
-    return {
-      type: ProfileActions.CREATE_PROFILE_SUCCESS,
-      payload: student
-    };
-  }
 
   static FIND_ADDRESSES = '[Profile] Find Addresses';
   findAddresses(student): Action {
@@ -180,7 +132,7 @@ export class ProfileActions {
     };
   }
 
-  static UPDATE_STUDENT_SUCCESS = '[Profile] Update Student  Success';
+  static UPDATE_STUDENT_SUCCESS = '[Profile] Update Student Success';
 
   updateStudentSuccess(message): Action {
     console.log("updateStudentSuccess");

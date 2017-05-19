@@ -36,7 +36,7 @@ export class ProfileCenterPage implements OnInit {
 
   ngOnInit(): void {
     console.log("find profiles");
-    this.store.dispatch(this.actions.findProfiles());
+    this.store.dispatch(this.actions.findStudents());
   }
 }
 

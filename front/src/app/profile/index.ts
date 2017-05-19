@@ -10,8 +10,6 @@ import {appRoutes, appRoutingProviders} from '../app.routes';
 import {CovalentCoreModule} from '@covalent/core';
 import {CommonService} from '../../services';
 import {IdentityService} from '../../services';
-import {ProfileListState, profileListReducer} from "./profile-list.reducer";
-import {profileReducer, ProfileState} from "./profile.reducer";
 import {ProfileService} from "../../services/profile.service";
 import {ProfileActions} from "./profile.action";
 import {Student} from "../identity/student.interface";
@@ -30,10 +28,12 @@ import {contactListReducer, ContactListState} from "./contact-list.reducer";
 import {guardianListReducer, GuardianListState} from "./guardian-list.reducer";
 import {guarantorListReducer, GuarantorListState} from "./guarantor-list.reducer";
 import {enrollmentListReducer, EnrollmentListState} from "./enrollment-list.reducer";
+import {studentReducer, StudentState} from "./student.reducer";
+import {studentListReducer, StudentListState} from "./student-list.reducer";
 
 export interface ProfileModuleState {
-  students: ProfileListState;
-  student: ProfileState;
+  students: StudentListState;
+  student: StudentState;
   addresses: AddressListState;
   guarantors: GuarantorListState;
   guardians: GuardianListState;
@@ -54,8 +54,8 @@ export const INITIAL_PROFILE_STATE: ProfileModuleState =
   };
 
 export const profileModuleReducers = {
-  students: profileListReducer,
-  student: profileReducer,
+  students: studentListReducer,
+  student: studentReducer,
   addresses: addressListReducer,
   guarantors: guarantorListReducer,
   guardians: guardianListReducer,

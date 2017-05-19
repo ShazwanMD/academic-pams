@@ -8,7 +8,7 @@ import {Student} from "../../identity/student.interface";
 })
 export class ProfileListComponent {
 
-  @Input() profiles: Student[];
+  @Input() students: Student[];
   @Output() view = new EventEmitter<Student>();
 
   private columns: any[] = [

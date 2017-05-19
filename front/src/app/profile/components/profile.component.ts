@@ -20,7 +20,7 @@ import {Student} from "../../identity/student.interface";
 })
 
 export class ProfileComponent implements OnInit {
-  @Input() profile: Student;
+  @Input() student: Student;
   @Input() addressess: Address[];
   @Input() guarantors: Guarantor[];
   @Input() guardians: Guardian[];
@@ -46,7 +46,7 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe((params: { identityNo: string }) => {
       let identityNo: string = params.identityNo;
-      this.store.dispatch(this.actions.findStudentByMatricNo(identityNo));
+      this.store.dispatch(this.actions.findStudentByIdentityNo(identityNo));
     });
   }
 
@@ -55,7 +55,7 @@ export class ProfileComponent implements OnInit {
   }
 
   editStudent() {
-    this.showDialog(this.profile)
+    this.showDialog(this.student)
   }
 
   private showDialog(student: Student): void {
@@ -67,7 +67,7 @@ export class ProfileComponent implements OnInit {
     config.height = '80%';
     config.position = {top: '0px'};
     this.creatorDialogRef = this.dialog.open(StudentInfoEditorDialog, config);
-    if (student) this.creatorDialogRef.componentInstance.student = this.profile; // set
+    if (student) this.creatorDialogRef.componentInstance.student = this.student; // set
     this.creatorDialogRef.afterClosed().subscribe(res => {
       console.log("close dialog");
     });

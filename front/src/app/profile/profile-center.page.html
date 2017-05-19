@@ -40,7 +40,7 @@
       <md-divider></md-divider>
 
       <pams-profile-list
-        [profiles]="students$ | async"
+        [students]="students$ | async"
         (view)="viewProfile($event)"></pams-profile-list>
 
       <md-divider></md-divider>

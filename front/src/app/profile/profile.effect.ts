@@ -20,15 +20,15 @@ export class ProfileEffects {
   }
 
   @Effect() findProfiles$ = this.actions$
-    .ofType(ProfileActions.FIND_PROFILES)
+    .ofType(ProfileActions.FIND_STUDENTS)
     .switchMap(() => this.profileService.findStudents())
-    .map(profiles => this.profileActions.findProfilesSuccess(profiles));
+    .map(profiles => this.profileActions.findStudentsSuccess(profiles));
 
-  @Effect() findProfile$ = this.actions$
-    .ofType(ProfileActions.FIND_PROFILE)
+  @Effect() findStudentByIdentityNo$ = this.actions$
+    .ofType(ProfileActions.FIND_STUDENT_BY_IDENTITY_NO)
     .map(action => action.payload)
-    .switchMap(identityNo => this.profileService.findStudentByMatricNo(identityNo))
-    .map(student => this.profileActions.getProfileSuccess(student))
+    .switchMap(identityNo => this.profileService.findStudentByIdentityNo(identityNo))
+    .map(student => this.profileActions.findStudentByIdentityNoSuccess(student))
     .mergeMap(action => from([action,
       this.profileActions.findAddresses(action.payload),
       this.profileActions.findContacts(action.payload),
@@ -37,15 +37,14 @@ export class ProfileEffects {
       this.profileActions.findEnrollments(action.payload),
     ]));
 
-
   @Effect() updateProfile$ = this.actions$
-    .ofType(ProfileActions.UPDATE_PROFILE)
+    .ofType(ProfileActions.UPDATE_STUDENT)
     .map(action => action.payload)
     .switchMap(student => this.profileService.updateStudent(student))
-    .map(profile => this.profileActions.updateProfileSuccess(profile))
+    .map(profile => this.profileActions.updateStudentSuccess(profile))
     .withLatestFrom(this.store$.select(...this.STUDENT))
     .map(state => state[1])
-    .map((student: Student) => this.profileActions.findStudentByMatricNo(student.identityNo));
+    .map((student: Student) => this.profileActions.findStudentByIdentityNo(student.identityNo));
 
   @Effect() findAddresses$ = this.actions$
     .ofType(ProfileActions.FIND_ADDRESSES)
@@ -86,6 +85,6 @@ export class ProfileEffects {
     .map(message => this.profileActions.updateStudentSuccess(message))
     .withLatestFrom(this.store$.select(...this.STUDENT))
     .map(state => state[1])
-    .map((student: Student) => this.profileActions.findStudentByMatricNo(student.identityNo));
+    .map((student: Student) => this.profileActions.findStudentByIdentityNo(student.identityNo));
 
 }

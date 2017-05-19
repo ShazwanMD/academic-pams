@@ -52,7 +52,7 @@ export class ProfileDetailPage implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe((params: { identityNo: string }) => {
       let identityNo: string = params.identityNo;
-      this.store.dispatch(this.actions.findProfile(identityNo));
+      this.store.dispatch(this.actions.findStudentByIdentityNo(identityNo));
     });
   }
 

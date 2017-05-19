@@ -37,7 +37,7 @@ export class ProfileService {
       .map((res: Response) => <Student[]>res.json());
   }
 
-  findStudentByMatricNo(matricNo: string): Observable<Student> {
+  findStudentByIdentityNo(matricNo: string): Observable<Student> {
     // let headers = new Headers({'Authorization': 'Bearer TODO'});
     // let options = new RequestOptions({headers: headers});
     return this.http.get(environment.endpoint + '/api/profile/students/' + matricNo)
