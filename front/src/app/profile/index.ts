@@ -32,6 +32,10 @@ import {studentReducer, StudentState} from "./student.reducer";
 import {studentListReducer, StudentListState} from "./student-list.reducer";
 import {ContactEditorDialog} from "./dialog/contact-editor.dialog";
 import {DetailEditorDialog} from "./dialog/detail-editor.dialog";
+import {ContactTypeSelectComponent} from "./components/contact-type-select.component";
+import {GuarantorTypeSelectComponent} from "./components/guarantor-type-select.component";
+import {GuardianTypeSelectComponent} from "./components/guardian-type-select.component";
+import {AddressTypeSelectComponent} from "./components/address-type-select.component";
 
 
 export interface ProfileModuleState {
@@ -85,6 +89,10 @@ export const profileModuleReducers = {
     ProfileListComponent,
     ProfileStatusComponent,
     ProfileEnrollmentListComponent,
+    ContactTypeSelectComponent,
+    GuarantorTypeSelectComponent,
+    GuardianTypeSelectComponent,
+    AddressTypeSelectComponent,
 
     //dialog
     DetailEditorDialog,
@@ -92,7 +100,13 @@ export const profileModuleReducers = {
     GuarantorEditorDialog,
     GuardianEditorDialog
   ],
-  exports: [],
+  exports: [
+    ContactTypeSelectComponent,
+    ContactTypeSelectComponent,
+    GuarantorTypeSelectComponent,
+    GuardianTypeSelectComponent,
+    AddressTypeSelectComponent,
+  ],
   entryComponents:[
     DetailEditorDialog,
     ContactEditorDialog,

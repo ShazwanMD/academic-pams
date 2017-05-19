@@ -1,0 +1,8 @@
+<md-select
+  [placeholder]="placeholder"
+  (change)="selectChangeEvent($event.value)" flex>
+
+  <md-option *ngFor="let guarantorType of guarantorTypes" [value]="guarantorType">
+    {{guarantorType}}
+  </md-option>
+</md-select>
