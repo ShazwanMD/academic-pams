@@ -5,10 +5,10 @@ import {Router, ActivatedRoute} from '@angular/router';
 import {Store} from "@ngrx/store";
 import {MdDialogRef} from "@angular/material";
 import {Contact} from "../contact.interface";
-import {ContactType} from "../contact-type.enum";
 import {Student} from "../../identity/student.interface";
 import {ProfileModuleState} from "../index";
 import {ProfileActions} from "../profile.action";
+import { ContactType } from "../contact-type.enum";
 
 @Component({
   selector: 'pams-contact-editor',
@@ -42,7 +42,7 @@ export class ContactEditorDialog implements OnInit {
 
   ngOnInit(): void {
     this.editorForm = this.formBuilder.group(<Contact>{
-      id: null,
+     // id: null,
       name: '',
       identityNo: '',
       contactType: ContactType.FATHER
