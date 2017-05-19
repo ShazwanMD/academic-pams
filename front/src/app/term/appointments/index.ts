@@ -9,7 +9,6 @@ import {TermService} from '../../../services';
 import {CommonService} from '../../../services';
 import {IdentityService} from '../../../services';
 
-import {AppointmentCenterPage} from "./appointment-center.page";
 import {AppointmentListComponent} from "./component/appointment-list.component";
 import {AppointmentActions} from "./appointment.action";
 import {EffectsModule} from "@ngrx/effects";
@@ -31,18 +30,17 @@ import {AppointmentUpdateTaskCreatorDialog} from "./dialog/appointment-update-ta
   ],
   declarations: [
     // page
-    AppointmentCenterPage,
     AppointmentDetailPage,
 
     // component
     AppointmentListComponent,
     AppointmentComponent,
-    
+
   //dialog
     AppointmentEditorDialog,
     AppointmentCreateTaskCreatorDialog,
     AppointmentUpdateTaskCreatorDialog,
-    
+
   ],
   exports: [],
 })

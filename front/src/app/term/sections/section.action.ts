@@ -4,22 +4,6 @@ import { Action } from '@ngrx/store';
 @Injectable()
 export class SectionActions {
 
-  static FIND_SECTIONS = '[Section] Find Sections';
-
-  findSections(): Action {
-    return {
-      type: SectionActions.FIND_SECTIONS
-    };
-  }
-
-  static FIND_SECTIONS_SUCCESS = '[Section] Find Sections Success';
-  findSectionsSuccess(sections): Action {
-    return {
-      type: SectionActions.FIND_SECTIONS_SUCCESS,
-      payload: sections
-    };
-  }
-
   static FIND_SECTION_BY_CANONICAL_CODE = '[Section] Find Section By Canonical Code';
   findSectionByCanonicalCode(canonicalCode): Action {
     return {

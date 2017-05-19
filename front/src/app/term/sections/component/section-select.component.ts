@@ -24,7 +24,8 @@ export class SectionSelectComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.store.dispatch(this.actions.findSections());
+    // todo(uda): on hold
+    // this.store.dispatch(this.actions.findSections());
   }
 
   selectChangeEvent(event: Section) {

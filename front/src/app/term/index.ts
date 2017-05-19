@@ -17,7 +17,7 @@ import { EnrollmentSubModule } from "./enrollments/index";
 import { offeringReducer, OfferingState } from "./offerings/offering.reducer";
 import { enrollmentReducer, EnrollmentState } from "./enrollments/enrollment.reducer";
 import { offeringListReducer, OfferingListState } from "./offerings/offering-list.reducer";
-import { enrollmentListReducer, EnrollmentListState } from "./enrollments/enrollment-list.reducer";
+import { enrollmentListReducer, EnrollmentListState } from "./offerings/enrollment-list.reducer";
 import { Offering } from "./offerings/offering.interface";
 import { Enrollment } from "./enrollments/enrollment.interface";
 import { AdmissionActions } from "./admissions/admission.action";
@@ -25,7 +25,7 @@ import { AdmissionSubModule } from "./admissions/index";
 import { Admission } from "./admissions/admission.interface";
 import { admissionListReducer, AdmissionListState } from "./admissions/admission-list.reducer";
 import { admissionReducer, AdmissionState } from "./admissions/admission.reducer";
-import { appointmentListReducer, AppointmentListState } from "./appointments/appointment-list.reducer";
+import { appointmentListReducer, AppointmentListState } from "./offerings/appointment-list.reducer";
 import { appointmentReducer, AppointmentState } from "./appointments/appointment.reducer";
 import { AppointmentSubModule } from "./appointments/index";
 import { AppointmentActions } from "./appointments/appointment.action";
@@ -47,21 +47,18 @@ import { SectionActions } from "./sections/section.action";
 import { SectionSubModule } from "./sections/index";
 import { AdmissionApplicationSubModule } from "./admission-applications/index";
 import { assessmentReducer, AssessmentState } from "./assessments/assessment.reducer";
-import { assessmentListReducer, AssessmentListState } from "./assessments/assessment-list.reducer";
+import {assessmentListReducer, AssessmentListState} from "./offerings/assessment-list.reducer";
 export interface TermModuleState {
   admissions: AdmissionListState;
   admission: AdmissionState;
   offerings: OfferingListState;
   offering: OfferingState;
-  offeringSections: SectionListState;
-  offeringAssessments: AssessmentListState;
   sections: SectionListState;
   section: SectionState;
   enrollments: EnrollmentListState;
   enrollment: EnrollmentState;
   appointments: AppointmentListState;
   appointment: AppointmentState;
-
   assessment: AssessmentState;
   assessments: AssessmentListState;
   // admissionApplicationTasks:AdmissionApplicationListState,
@@ -87,9 +84,6 @@ export const INITIAL_TERM_STATE: TermModuleState =
     appointments: <Appointment[]>[],
     assessment: <Assessment[]>[],
     appointment: <Appointment>{},
-
-
-
     assignedEnrollmentApplicationTasks: <EnrollmentApplicationTask[]>[],
     pooledEnrollmentApplicationTasks: <EnrollmentApplicationTask[]>[],
     enrollmentApplicationTask: <EnrollmentApplicationTask>{},
@@ -106,7 +100,6 @@ export const termModuleReducers = {
   admission: admissionReducer,
   appointments: appointmentListReducer,
   appointment: appointmentReducer,
-
   assessment: assessmentReducer,
   assessments: assessmentListReducer,
 

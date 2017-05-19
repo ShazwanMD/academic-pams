@@ -7,7 +7,6 @@ import {CovalentCoreModule} from '@covalent/core';
 import {TermService} from '../../../services';
 import {CommonService} from '../../../services';
 import {IdentityService} from '../../../services';
-import {EnrollmentCenterPage} from "./enrollment-center.page";
 import {EnrollmentListComponent} from "./component/enrollment-list.component";
 import {EnrollmentActions} from "./enrollment.action";
 import {EffectsModule} from "@ngrx/effects";
@@ -26,14 +25,12 @@ import {EnrollmentEditorDialog} from "./dialog/enrollment-editor.dialog";
   ],
   declarations: [
     // page
-    EnrollmentCenterPage,
     EnrollmentDetailPage,
-    
 
     // component
     EnrollmentListComponent,
     EnrollmentComponent,
-    
+
   //dialog
     EnrollmentEditorDialog,
   ],

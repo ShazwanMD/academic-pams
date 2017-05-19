@@ -4,18 +4,21 @@ import {Action} from '@ngrx/store';
 @Injectable()
 export class AssessmentActions{
 
-      static FIND_ASSESSMENTS = '[Assessment] Find Assessments';
-  findAssessments(): Action {
+  static FIND_ASSESSMENT_BY_ID = '[Assessment] Find Assessment By Id';
+
+  findAssessmentById(assessment): Action {
     return {
-      type: AssessmentActions.FIND_ASSESSMENTS
+      type: AssessmentActions.FIND_ASSESSMENT_BY_ID,
+      payload: assessment
     };
   }
 
-  static FIND_ASSESSMENTS_SUCCESS = '[Assessment] Find Assessments Success';
-  findAssessmentsSuccess(assessments): Action {
+  static FIND_ASSESSMENT_BY_ID_SUCCESS = '[Assessment] Find Assessment By Id Success';
+
+  findAssessmentByIdSuccess(assessment): Action {
     return {
-      type: AssessmentActions.FIND_ASSESSMENTS_SUCCESS,
-      payload: assessments
+      type: AssessmentActions.FIND_ASSESSMENT_BY_ID_SUCCESS,
+      payload: assessment
     };
   }
 

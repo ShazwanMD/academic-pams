@@ -13,6 +13,9 @@ import {Section} from "../sections/section.interface";
 import {MdDialog, MdDialogConfig, MdDialogRef} from "@angular/material";
 import {OfferingUpdateTaskCreatorDialog} from "./dialog/offering-update-task-creator.dialog";
 import {OfferingDeleteTaskCreatorDialog} from "./dialog/offering-delete-task-creator.dialog";
+import {Enrollment} from "../enrollments/enrollment.interface";
+import {Appointment} from "../appointments/appointment.interface";
+import {Assessment} from "../assessments/assessment.interface";
 
 @Component({
   selector: 'pams-offering-detail',
@@ -21,19 +24,23 @@ import {OfferingDeleteTaskCreatorDialog} from "./dialog/offering-delete-task-cre
 
 export class OfferingDetailPage implements OnInit {
 
-  private OFFERING = "termModuleState.offering".split(".");
-  private SECTIONS = "termModuleState.sections".split(".");
-
+  private OFFERING: string[] = "termModuleState.offering".split(".");
+  private SECTIONS: string[] = "termModuleState.sections".split(".");
+  private ASSESSMENTS: string[] = "termModuleState.assessments".split(".");
+  private ENROLLMENTS: string[] = "termModuleState.enrollments".split(".");
+  private APPOINTMENTS: string[] = "termModuleState.appointments".split(".");
 
   private offering$: Observable<Offering>;
   private sections$: Observable<Section[]>;
-  private creatorDialogRef: MdDialogRef<OfferingUpdateTaskCreatorDialog>;   
-  private creatorDialogRefDelete: MdDialogRef<OfferingDeleteTaskCreatorDialog>; 
+  private assessments$: Observable<Assessment[]>;
+  private appointments: Observable<Appointment[]>;
+  private enrollments$: Observable<Enrollment[]>;
+  private creatorDialogRef: MdDialogRef<OfferingUpdateTaskCreatorDialog>;
+  private creatorDialogRefDelete: MdDialogRef<OfferingDeleteTaskCreatorDialog>;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
               private actions: OfferingActions,
-              private termService: TermService,
               private store: Store<TermModuleState>,
               private vcf: ViewContainerRef,
               private dialog: MdDialog,
@@ -41,9 +48,12 @@ export class OfferingDetailPage implements OnInit {
 
     this.offering$ = this.store.select(...this.OFFERING);
     this.sections$ = this.store.select(...this.SECTIONS);
+    this.assessments$ = this.store.select(...this.ASSESSMENTS);
+    this.enrollments$ = this.store.select(...this.ENROLLMENTS);
+    this.appointments = this.store.select(...this.APPOINTMENTS);
   }
 
-    showDialog(): void {
+  showDialog(): void {
     console.log("showDialog");
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
@@ -57,27 +67,26 @@ export class OfferingDetailPage implements OnInit {
       // load something here
     });
   }
-   
-     deleteDialog(): void {
-         console.log("deleteDialog");
-         let config = new MdDialogConfig();
-         config.viewContainerRef = this.vcf;
-         config.role = 'dialog';
-         config.width = '40%';
-         config.height = '30%';
-         config.position = {top: '3px'};
-         this.creatorDialogRefDelete = this.dialogDelete.open(OfferingDeleteTaskCreatorDialog, config);
-         this.creatorDialogRefDelete.afterClosed().subscribe(res => {
-           console.log("close dialog");
-           // load something here
-         });
-       }
-    
+
+  deleteDialog(): void {
+    console.log("deleteDialog");
+    let config = new MdDialogConfig();
+    config.viewContainerRef = this.vcf;
+    config.role = 'dialog';
+    config.width = '40%';
+    config.height = '30%';
+    config.position = {top: '3px'};
+    this.creatorDialogRefDelete = this.dialogDelete.open(OfferingDeleteTaskCreatorDialog, config);
+    this.creatorDialogRefDelete.afterClosed().subscribe(res => {
+      console.log("close dialog");
+      // load something here
+    });
+  }
+
   ngOnInit(): void {
     this.route.params.subscribe((params: { canonicalCode: string }) => {
       let canonicalCode: string = params.canonicalCode;
       this.store.dispatch(this.actions.findOfferingByCanonicalCode(canonicalCode));
-
     });
   }
 

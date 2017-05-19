@@ -11,11 +11,6 @@ export class AppointmentEffects {
               private termService: TermService,) {
   }
 
-  @Effect() findAppointments$ = this.actions$
-    .ofType(AppointmentActions.FIND_APPOINTMENTS)
-    .switchMap(() => this.termService.findAppointments())
-    .map(appointments => this.appointmentActions.findAppointmentsSuccess(appointments));
-
   @Effect() findAppointmentById$ = this.actions$
     .ofType(AppointmentActions.FIND_APPOINTMENT_BY_ID)
     .map(action => action.payload)

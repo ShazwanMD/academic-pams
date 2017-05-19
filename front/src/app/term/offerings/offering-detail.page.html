@@ -10,18 +10,29 @@
           [offering]="offering$ | async">
         </pams-offering>
 
+        <pams-offering-assessment-list
+          [assessments]="assessments$ | async">
+        </pams-offering-assessment-list>
+
         <pams-offering-section-list
           [sections]="sections$ | async">
         </pams-offering-section-list>
+
+        <pams-offering-enrollment-list
+          [enrollments]="enrollments$ | async">
+        </pams-offering-enrollment-list>
+
+        <pams-offering-appointment-list
+          [appointments]="appointments$ | async">
+        </pams-offering-appointment-list>
+
+
       </div>
-
-
 
       <div flex-gt-md="30">
         <md-card>
           <md-card-title>Action</md-card-title>
-          <md-card-subtitle>Actions
-            available on current admission
+          <md-card-subtitle>Actions available on current admission
           </md-card-subtitle>
           <md-divider></md-divider>
           <md-nav-list
@@ -35,28 +46,6 @@
               <md-icon md-list-avatar>done_all</md-icon>
               <h4 md-line>Delete Offering</h4>
               <p md-line>Delete this offering</p>
-            </md-list-item>
-            <md-divider></md-divider>
-            <h3 md-subheader>Term Menu</h3>
-            <md-list-item [routerLink]="['/term/offerings']">
-              <md-icon md-list-avatar>menu</md-icon>
-              <h4 md-line>Offering</h4>
-              <p md-line>List of offering</p>
-            </md-list-item>
-            <md-list-item [routerLink]="['/term/appointments']">
-              <md-icon md-list-avatar>menu</md-icon>
-              <h4 md-line>Appointment</h4>
-              <p md-line>List of appointment</p>
-            </md-list-item>
-            <md-list-item [routerLink]="['/term/enrollments']">
-              <md-icon md-list-avatar>menu</md-icon>
-              <h4 md-line>Enrollment</h4>
-              <p md-line>List of enrollment</p>
-            </md-list-item>
-            <md-list-item [routerLink]="['/term/sections']">
-              <md-icon md-list-avatar>menu</md-icon>
-              <h4 md-line>Section</h4>
-              <p md-line>List of section</p>
             </md-list-item>
           </md-nav-list>
         </md-card>

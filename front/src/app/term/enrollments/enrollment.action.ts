@@ -4,23 +4,6 @@ import {Action} from '@ngrx/store';
 @Injectable()
 export class EnrollmentActions {
 
-  static FIND_ENROLLMENTS = '[Enrollment] Find Enrollments';
-
-  findEnrollments(): Action {
-    return {
-      type: EnrollmentActions.FIND_ENROLLMENTS
-    };
-  }
-
-  static FIND_ENROLLMENTS_SUCCESS = '[Enrollment] Find Enrollments Success';
-
-  findEnrollmentsSuccess(enrollments): Action {
-    return {
-      type: EnrollmentActions.FIND_ENROLLMENTS_SUCCESS,
-      payload: enrollments
-    };
-  }
-
   static FIND_ENROLLMENT_BY_ID = '[Enrollment] Find Enrollment By Id';
 
   findEnrollmentById(enrollment): Action {

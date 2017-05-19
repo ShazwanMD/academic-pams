@@ -11,11 +11,6 @@ export class EnrollmentEffects {
               private termService: TermService,) {
   }
 
-  @Effect() findEnrollments$ = this.actions$
-    .ofType(EnrollmentActions.FIND_ENROLLMENTS)
-    .switchMap(() => this.termService.findEnrollments())
-    .map(enrollments => this.enrollmentActions.findEnrollmentsSuccess(enrollments));
-
   @Effect() findEnrollmentById$ = this.actions$
     .ofType(EnrollmentActions.FIND_ENROLLMENT_BY_ID)
     .map(action => action.payload)

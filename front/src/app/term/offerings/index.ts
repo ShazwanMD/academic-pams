@@ -24,6 +24,8 @@ import {OfferingUpdateTaskCreatorDialog} from "./dialog/offering-update-task-cre
 import {OfferingDeleteTaskCreatorDialog} from "./dialog/offering-delete-task-creator.dialog";
 import {OfferingSectionListComponent} from "./component/offering-section-list.component";
 import {OfferingAssessmentListComponent} from "./component/offering-assessment-list.component";
+import {OfferingEnrollmentListComponent} from "./component/offering-enrollment-list.component";
+import {OfferingAppointmentListComponent} from "./component/offering-appointment-list.component";
 
 
 @NgModule({
@@ -46,6 +48,8 @@ import {OfferingAssessmentListComponent} from "./component/offering-assessment-l
     OfferingComponent,
     OfferingSectionListComponent,
     OfferingAssessmentListComponent,
+    OfferingEnrollmentListComponent,
+    OfferingAppointmentListComponent,
 
     //dialog
     OfferingEditorDialog,

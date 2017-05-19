@@ -1,5 +1,5 @@
-import { Assessment } from './../app/term/assessments/assessment.interface';
-import { Offering } from './../app/term/offerings/offering.interface';
+import {Assessment} from './../app/term/assessments/assessment.interface';
+import {Offering} from './../app/term/offerings/offering.interface';
 import {Injectable} from '@angular/core';
 import {Response, Http} from '@angular/http';
 import {Headers, RequestOptions} from '@angular/http';
@@ -79,14 +79,14 @@ export class TermService {
 
   findAdmissionApplicationByReferenceNo(referenceNo: string): Observable<AdmissionApplication> {
     return this.http.get(environment.endpoint + '/api/term/admissionApplications/' + referenceNo)
-        .map((res: Response) => <AdmissionApplication>res.json());
+      .map((res: Response) => <AdmissionApplication>res.json());
   }
 
 
   findAdmissionApplicationItems(admissionApplication: AdmissionApplication): Observable<AdmissionApplicationItem[]> {
     var endpoint = environment.endpoint + '/api/term/admissionApplications/' + admissionApplication.referenceNo + '/admissionApplicationItems'
     return this.http.get(endpoint)
-        .map((res:Response) => <AdmissionApplicationItem[]>res.json());
+      .map((res: Response) => <AdmissionApplicationItem[]>res.json());
   }
 
 
@@ -98,7 +98,7 @@ export class TermService {
     });
     let options = new RequestOptions({headers: headers});
     return this.http.post(environment.endpoint + '/api/billing/admissionApplications/completeTask', JSON.stringify(admissionApplicationTask), options)
-        .flatMap((res: Response) => Observable.of(res.text()));
+      .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   claimAdmissionApplicationTask(admissionApplicationTask: AdmissionApplicationTask): Observable<String> {
@@ -108,7 +108,7 @@ export class TermService {
     });
     let options = new RequestOptions({headers: headers});
     return this.http.post(environment.endpoint + '/api/billing/admissionApplications/claimTask', JSON.stringify(admissionApplicationTask), options)
-        .flatMap((res: Response) => Observable.of(res.text()));
+      .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   releaseAdmissionApplicationTask(admissionApplicationTask: AdmissionApplicationTask): Observable<String> {
@@ -118,7 +118,7 @@ export class TermService {
     });
     let options = new RequestOptions({headers: headers});
     return this.http.post(environment.endpoint + '/api/billing/admissionApplications/releaseTask', JSON.stringify(admissionApplicationTask), options)
-        .flatMap((res: Response) => Observable.of(res.text()));
+      .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   addAdmissionApplicationItem(admissionApplication: AdmissionApplication, item: AdmissionApplicationItem): Observable<String> {
@@ -127,8 +127,8 @@ export class TermService {
       //'Authorization': 'Bearer ' + this.authService.token
     });
     let options = new RequestOptions({headers: headers});
-    return this.http.post(environment.endpoint + '/api/term/admissionApplications/' + admissionApplication.referenceNo + '/admissionApplicationItems' , JSON.stringify(item), options)
-        .flatMap((res: Response) => Observable.of(res.text()));
+    return this.http.post(environment.endpoint + '/api/term/admissionApplications/' + admissionApplication.referenceNo + '/admissionApplicationItems', JSON.stringify(item), options)
+      .flatMap((res: Response) => Observable.of(res.text()));
   }
 
 
@@ -155,10 +155,10 @@ export class TermService {
   // }
 
   findAdmissionById(id): Observable<Admission> {
-      console.log("findAdmissionById");
-      return this.http.get(environment.endpoint + '/api/term/admissions/' + id)
-        .map((res: Response) => <Admission>res.json());
-    }
+    console.log("findAdmissionById");
+    return this.http.get(environment.endpoint + '/api/term/admissions/' + id)
+      .map((res: Response) => <Admission>res.json());
+  }
 
   // ==================================================================================================== //
   // ENROLLMENT APPLICATION
@@ -239,7 +239,7 @@ export class TermService {
       //'Authorization': 'Bearer ' + this.authService.token
     });
     let options = new RequestOptions({headers: headers});
-    return this.http.post(environment.endpoint + '/api/term/enrollmentApplications/' + enrollmentApplication.referenceNo + '/enrollmentApplicationItems' , JSON.stringify(item), options)
+    return this.http.post(environment.endpoint + '/api/term/enrollmentApplications/' + enrollmentApplication.referenceNo + '/enrollmentApplicationItems', JSON.stringify(item), options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
@@ -257,7 +257,7 @@ export class TermService {
   findEnrollmentApplicationItems(enrollmentApplication: EnrollmentApplication): Observable<EnrollmentApplicationItem[]> {
     var endpoint = environment.endpoint + '/api/term/enrollmentApplications/' + enrollmentApplication.referenceNo + '/enrollmentApplicationItems'
     return this.http.get(endpoint)
-      .map((res:Response) => <EnrollmentApplicationItem[]>res.json());
+      .map((res: Response) => <EnrollmentApplicationItem[]>res.json());
   }
 
   // ==================================================================================================== //
@@ -276,7 +276,7 @@ export class TermService {
       .map((res: Response) => <Enrollment[]>res.json());
   }
 
-  findEnrollmentById(id:number): Observable<Enrollment[]> {
+  findEnrollmentById(id: number): Observable<Enrollment[]> {
     console.log("findEnrollmentById");
     return this.http.get(environment.endpoint + '/api/term/enrollments/' + id)
       .map((res: Response) => <Enrollment[]>res.json());
@@ -298,7 +298,7 @@ export class TermService {
       .map((res: Response) => <Appointment[]>res.json());
   }
 
-   findAppointmentById(id): Observable<Appointment> {
+  findAppointmentById(id): Observable<Appointment> {
     console.log("findAppointmentById");
     return this.http.get(environment.endpoint + '/api/term/appointments/' + id)
       .map((res: Response) => <Appointment>res.json());
@@ -342,15 +342,27 @@ export class TermService {
       .map((res: Response) => <Offering>res.json());
   }
 
-  findSectionsByOffering(offering:Offering): Observable<Section[]> {
+  findSectionsByOffering(offering: Offering): Observable<Section[]> {
     console.log("findSectionsByOffering");
     return this.http.get(environment.endpoint + '/api/term/offerings/' + offering.canonicalCode + '/sections')
       .map((res: Response) => <Section[]>res.json());
   }
 
-  findAssessmentsByOffering(offering:Offering): Observable<Assessment[]> {
+  findAssessmentsByOffering(offering: Offering): Observable<Assessment[]> {
     console.log("findAssessmentsByOffering");
     return this.http.get(environment.endpoint + '/api/term/offerings/' + offering.canonicalCode + '/assessments')
       .map((res: Response) => <Assessment[]>res.json());
+  }
+
+  findEnrollmentsByOffering(offering: Offering): Observable<Enrollment[]> {
+    console.log("findEnrollmentsByOffering");
+    return this.http.get(environment.endpoint + '/api/term/offerings/' + offering.canonicalCode + '/enrollments')
+      .map((res: Response) => <Enrollment[]>res.json());
+  }
+
+  findAppointmentsByOffering(offering: Offering): Observable<Appointment[]> {
+    console.log("findAppointmentsByOffering");
+    return this.http.get(environment.endpoint + '/api/term/offerings/' + offering.canonicalCode + '/appointments')
+      .map((res: Response) => <Appointment[]>res.json());
   }
 }

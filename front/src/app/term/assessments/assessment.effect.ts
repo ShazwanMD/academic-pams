@@ -9,11 +9,5 @@ export class AssessmentEffects{
         private actions$: Actions,
         private assessmentActions: AssessmentActions,
         private termService: TermService,){
-
     }
-
-      @Effect() findAssessments$ = this.actions$
-      .ofType(AssessmentActions.FIND_ASSESSMENTS)
-      .switchMap(() => this.termService.findAssessments())
-      .map(assessments => this.assessmentActions.findAssessmentsSuccess(assessments));
 }
