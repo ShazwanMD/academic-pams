@@ -52,6 +52,8 @@ public interface AdStudentDao extends GenericDao<Long, AdStudent> {
     void deleteGuarantor(AdStudent student, AdGuarantor guarantor, AdUser user);
 
     void addContact(AdStudent student, AdContact contact, AdUser user);
+    
+    void updateContact(AdStudent student, AdContact contact, AdUser user);
 
     void deleteContact(AdStudent student, AdContact contact, AdUser user);
 

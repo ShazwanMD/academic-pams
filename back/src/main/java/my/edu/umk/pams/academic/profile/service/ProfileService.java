@@ -58,6 +58,8 @@ public interface ProfileService {
 	void deleteGuardian(AdStudent student, AdGuardian guardian);
 
 	void addContact(AdStudent student, AdContact contact);
+	
+	void updateContact(AdStudent student, AdContact contact);
 
 	void deleteContact(AdStudent student, AdContact contact);
 

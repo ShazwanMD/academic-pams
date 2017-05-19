@@ -3,6 +3,7 @@ package my.edu.umk.pams.academic.web.module.profile.controller;
 import my.edu.umk.pams.academic.common.service.CommonService;
 import my.edu.umk.pams.academic.identity.model.AdAddress;
 import my.edu.umk.pams.academic.identity.model.AdAddressImpl;
+import my.edu.umk.pams.academic.identity.model.AdContact;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.identity.model.AdStudentStatus;
 import my.edu.umk.pams.academic.identity.service.IdentityService;
@@ -96,6 +97,20 @@ public class ProfileController {
     		address.setAddress3(vo.getAddress3());
     		address.setPostCode(vo.getPostcode());
     		profileService.updateAddress(student, address);
+    	}
+    	return new ResponseEntity<String>("Success",HttpStatus.OK);
+    	
+    }
+    
+    @RequestMapping(value = "/students/{identityNo}/contacts", method = RequestMethod.PUT)
+	 public ResponseEntity<String> updateContact(@PathVariable String identityNo, @RequestBody Contact vo){
+    	dummyLogin();
+    	AdStudent student = profileService.findStudentByMatricNo(identityNo);
+    	List<AdContact> contacts =  profileService.findContacts(student);
+    	for(AdContact contact:contacts){
+    		contact.setName(vo.getName());
+    		contact.setIdentityNo(vo.getIdentityNo());
+    		profileService.updateContact(student, contact);
     	}
     	return new ResponseEntity<String>("Success",HttpStatus.OK);
     	

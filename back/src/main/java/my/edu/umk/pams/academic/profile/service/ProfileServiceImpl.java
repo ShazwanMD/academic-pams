@@ -182,7 +182,13 @@ public class ProfileServiceImpl implements ProfileService {
         studentDao.addContact(student, contact, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
-
+    
+    @Override
+    public void updateContact(AdStudent student, AdContact contact) {
+        studentDao.updateContact(student, contact, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
+    
     @Override
     public void deleteContact(AdStudent student, AdContact contact) {
         studentDao.deleteContact(student, contact, securityService.getCurrentUser());

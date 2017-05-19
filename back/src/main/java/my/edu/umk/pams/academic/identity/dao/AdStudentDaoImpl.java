@@ -206,4 +206,19 @@ public class AdStudentDaoImpl extends GenericDaoSupport<Long, AdStudent> impleme
         address.setMetadata(metadata);
         session.update(address);
     }
+
+	@Override
+	public void updateContact(AdStudent student, AdContact contact, AdUser user) {
+        Validate.notNull(user, "User cannot be null");
+        Validate.notNull(contact, "Address cannot be null");
+        Session session = sessionFactory.getCurrentSession();
+        contact.setStudent(student);
+        
+        // prepare metadata
+        AdMetadata metadata = contact.getMetadata();
+        metadata.setModifiedDate(new Timestamp(System.currentTimeMillis()));
+        metadata.setModifierId(user.getId());
+        contact.setMetadata(metadata);
+        session.update(contact);
+	}
 }

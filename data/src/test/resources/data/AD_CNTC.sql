@@ -12,7 +12,7 @@ VALUES
   (nextval('SQ_AD_CNTC'), (SELECT ID
                                 FROM AD_ACTR A
                                 WHERE A.IDENTITY_NO = 'A17P001'),
-                                'SITI SALHA', '840202-12-9999', 0,  CURRENT_TIMESTAMP, 1, 1);
+                                'SITI SALHA', '840202-12-9999', 1,  CURRENT_TIMESTAMP, 1, 1);
 
 
 
