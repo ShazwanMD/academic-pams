@@ -11,7 +11,7 @@ import 'rxjs/add/operator/withLatestFrom';
 @Injectable()
 export class AdmissionApplicationEffects {
 
-  private ADMISSION_APPLICATION_TASK = "termModuleState.admissionApplicationTask".split(".");
+  private ADMISSION_APPLICATION_TASK: string[] = "termModuleState.admissionApplicationTask".split(".");
 
   constructor(private actions$: Actions,
               private admissionApplicationActions: AdmissionApplicationActions,

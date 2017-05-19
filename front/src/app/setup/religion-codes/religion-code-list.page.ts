@@ -1,11 +1,11 @@
-import { ReligionCodeEditorDialog } from './dialog/religion-code-editor.dialog';
-import { MdDialog, MdDialogRef, MdDialogConfig } from '@angular/material';
-import { ReligionCode } from './../../common/religion-codes/religion-code.interface';
-import { Observable } from 'rxjs/Observable';
-import { Store } from '@ngrx/store';
-import { Component, OnInit, ViewContainerRef } from '@angular/core';
-import { SetupModuleState } from './../index';
-import { SetupActions } from './../setup.action';
+import {ReligionCodeEditorDialog} from './dialog/religion-code-editor.dialog';
+import {MdDialog, MdDialogRef, MdDialogConfig} from '@angular/material';
+import {ReligionCode} from './../../common/religion-codes/religion-code.interface';
+import {Observable} from 'rxjs/Observable';
+import {Store} from '@ngrx/store';
+import {Component, OnInit, ViewContainerRef} from '@angular/core';
+import {SetupModuleState} from './../index';
+import {SetupActions} from './../setup.action';
 
 
 @Component({
@@ -13,20 +13,20 @@ import { SetupActions } from './../setup.action';
   templateUrl: './religion-code-list.page.html',
 })
 export class ReligionCodeListPage implements OnInit {
-  private RELIGION_CODES = "setupModuleState.religionCodes".split(".");
+  private RELIGION_CODES: string[] = "setupModuleState.religionCodes".split(".");
   private religionCodes$: Observable<ReligionCode>;
   private creatorDialogRef: MdDialogRef<ReligionCodeEditorDialog>;
   private columns: any[] = [
-    { name: 'code', label: 'Code' },
-    { name: 'descriptionMs', label: 'DescriptionMs' },
-    { name: 'descriptionEn', label: 'DescriptionEn' },
-    { name: 'action', label: '' }
+    {name: 'code', label: 'Code'},
+    {name: 'descriptionMs', label: 'DescriptionMs'},
+    {name: 'descriptionEn', label: 'DescriptionEn'},
+    {name: 'action', label: ''}
   ];
 
   constructor(private store: Store<SetupModuleState>,
-    private actions: SetupActions,
-    private vcf: ViewContainerRef,
-    private dialog: MdDialog) {
+              private actions: SetupActions,
+              private vcf: ViewContainerRef,
+              private dialog: MdDialog) {
     this.religionCodes$ = this.store.select(...this.RELIGION_CODES);
   }
 
@@ -34,6 +34,7 @@ export class ReligionCodeListPage implements OnInit {
     this.store.dispatch(this.actions.findReligionCodes());
     this.store.dispatch(this.actions.changeTitle("Religion Codes"))
   }
+
   createDialog(): void {
     this.showDialog(null);
   }
@@ -46,7 +47,8 @@ export class ReligionCodeListPage implements OnInit {
     this.store.dispatch(this.actions.removeReligionCode(code))
   }
 
-  filter(): void { }
+  filter(): void {
+  }
 
   private showDialog(code: ReligionCode): void {
     console.log("create");
@@ -55,7 +57,7 @@ export class ReligionCodeListPage implements OnInit {
     config.role = 'dialog';
     config.width = '70%';
     config.height = '65%';
-    config.position = { top: '0px' };
+    config.position = {top: '0px'};
     this.creatorDialogRef = this.dialog.open(ReligionCodeEditorDialog, config);
     if (code) this.creatorDialogRef.componentInstance.religionCode = code; // set
     this.creatorDialogRef.afterClosed().subscribe(res => {

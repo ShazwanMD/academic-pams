@@ -13,7 +13,7 @@ import {PlannerModuleState} from "../../index";
 })
 export class ProgramSelectComponent implements OnInit {
 
-  private PROGRAMS = "plannerModuleState.programs".split(".");
+  private PROGRAMS: string[] = "plannerModuleState.programs".split(".");
   private programs$: Observable<Program[]>;
   @Input() placeholder: string;
   @Input() innerFormControl: FormControl;

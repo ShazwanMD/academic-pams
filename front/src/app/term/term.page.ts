@@ -14,7 +14,7 @@ import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, OnInit}
 
 export class TermPage implements OnInit {
 
-  private ADMISSIONS = "termModuleState.admissions".split(".");
+  private ADMISSIONS: string[] = "termModuleState.admissions".split(".");
   private admissions$: Observable<Admission[]>;
 
   constructor(private router: Router,
@@ -25,10 +25,10 @@ export class TermPage implements OnInit {
   }
 
   goBack(route: string): void {
-      this.router.navigate(['/admissions']);
-    }
-  
-   viewAdmission(admission: Admission) {
+    this.router.navigate(['/admissions']);
+  }
+
+  viewAdmission(admission: Admission) {
     console.log("admission: " + admission.id);
     this.router.navigate(['/admission-detail', admission.id]);
   }
@@ -36,12 +36,12 @@ export class TermPage implements OnInit {
   ngOnInit(): void {
     this.store.dispatch(this.actions.findAdmissions());
   }
-  
+
   @Input() admissions: Admission[];
   @Output() view = new EventEmitter<Admission>();
 
   private columns: any[] = [
-    {name: 'student.name', label: 'StudentName'}, 
+    {name: 'student.name', label: 'StudentName'},
     {name: 'student.identityNo', label: 'StudentIC'},
     {name: 'academicSession.description', label: 'AcademicSession'},
     {name: 'cohort.code', label: 'Cohort'},
@@ -49,5 +49,5 @@ export class TermPage implements OnInit {
     {name: 'cgpa', label: 'CGPA'},
     {name: 'action', label: ''}
   ];
-  
+
 }

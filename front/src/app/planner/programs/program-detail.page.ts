@@ -1,5 +1,5 @@
-import { ProgramUpdateDialog } from './dialog/program-update.dialog';
-import { MdDialogConfig } from '@angular/material';
+import {ProgramUpdateDialog} from './dialog/program-update.dialog';
+import {MdDialogConfig} from '@angular/material';
 import {Component, OnInit, ChangeDetectionStrategy} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 
@@ -22,7 +22,7 @@ import {PlannerService} from '../../../services';
 
 export class ProgramDetailPage implements OnInit {
 
-  private PROGRAM = "plannerModuleState.program".split(".");
+  private PROGRAM: string[] = "plannerModuleState.program".split(".");
   private program$: Observable<Program>;
 
   constructor(private router: Router,
@@ -32,14 +32,14 @@ export class ProgramDetailPage implements OnInit {
 
     this.program$ = this.store.select(...this.PROGRAM);
   }
-  
+
   ngOnInit(): void {
-    this.route.params.subscribe((params: {code: string}) => {
+    this.route.params.subscribe((params: { code: string }) => {
       let code: string = params.code;
       this.store.dispatch(this.actions.findProgram(code));
-        this.store.dispatch (this.actions.updateProgram(code));  
-  });
+      this.store.dispatch(this.actions.updateProgram(code));
+    });
   }
-   
+
 }
 

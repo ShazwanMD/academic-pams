@@ -21,7 +21,7 @@ import {PlannerModuleState} from "../index";
 export class CohortCenterPage implements OnInit {
 
   private cohorts$: Observable<Cohort[]>;
-  private COHORTS = "plannerModuleState.cohorts".split(".");
+  private COHORTS: string[] = "plannerModuleState.cohorts".split(".");
   private creatorDialogRef: MdDialogRef<CohortEditorDialog>;
 
   private columns: any[] = [

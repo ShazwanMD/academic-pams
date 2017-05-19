@@ -16,7 +16,7 @@ import {PlannerModuleState} from "../index";
 
 export class CohortDetailPage implements OnInit {
 
-  private COHORT = "plannerModuleState.cohort".split(".");
+  private COHORT: string[] = "plannerModuleState.cohort".split(".");
   private cohort$: Observable<Cohort>;
 
   constructor(private router: Router,
@@ -28,7 +28,7 @@ export class CohortDetailPage implements OnInit {
   }
 
   ngOnInit(): void {
-    this.route.params.subscribe((params: {code: string}) => {
+    this.route.params.subscribe((params: { code: string }) => {
       let code: string = params.code;
       this.store.dispatch(this.actions.findCohortByCode(code));
     });

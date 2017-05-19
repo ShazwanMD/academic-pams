@@ -1,5 +1,5 @@
-import { SetupModuleState } from './../../index';
-import { SetupActions } from './../../setup.action';
+import {SetupModuleState} from './../../index';
+import {SetupActions} from './../../setup.action';
 import {Component, Input, OnInit} from '@angular/core';
 import {Observable} from "rxjs";
 import {Store} from "@ngrx/store";
@@ -13,27 +13,27 @@ import {MaritalCode} from "../marital-code.interface";
 
 
 @Component({
-selector: 'pams-marital-code-select',
-templateUrl: './marital-code-select.component.html',
+  selector: 'pams-marital-code-select',
+  templateUrl: './marital-code-select.component.html',
 })
 export class MaritalCodeSelectComponent implements OnInit {
 
-private MARITAL_CODE = "setupModuleState.maritalCode".split(".");
-@Input() placeholder: string;
-@Input() innerFormControl: FormControl;
-maritalCodes$: Observable<MaritalCode[]>;
+  private MARITAL_CODE: string[] = "setupModuleState.maritalCode".split(".");
+  @Input() placeholder: string;
+  @Input() innerFormControl: FormControl;
+  maritalCodes$: Observable<MaritalCode[]>;
 
-constructor(private store: Store<SetupModuleState>,
-    private actions: SetupActions) {
+  constructor(private store: Store<SetupModuleState>,
+              private actions: SetupActions) {
     this.maritalCodes$ = this.store.select(...this.MARITAL_CODE);
-    }
+  }
 
-    ngOnInit() {
+  ngOnInit() {
     this.store.dispatch(this.actions.findMaritalCodes());
-    }
+  }
 
-    selectChangeEvent(event: MaritalCode) {
+  selectChangeEvent(event: MaritalCode) {
     this.innerFormControl.setValue(event, {emitEvent: false});
-    }
+  }
 }
 

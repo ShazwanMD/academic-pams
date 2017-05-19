@@ -17,7 +17,7 @@ import {OfferingCreateTaskCreatorDialog} from "./dialog/offering-create-task-cre
 })
 export class OfferingCenterPage implements OnInit {
 
-  private OFFERINGS = "termModuleState.offerings".split(".");
+  private OFFERINGS: string[] = "termModuleState.offerings".split(".");
   private offerings$: Observable<Offering[]>;
   private creatorDialogRef: MdDialogRef<OfferingCreateTaskCreatorDialog>;
 

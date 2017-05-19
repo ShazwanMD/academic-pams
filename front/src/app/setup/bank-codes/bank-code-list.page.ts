@@ -13,7 +13,7 @@ import {Observable} from 'rxjs/Observable';
 
 export class BankCodeListPage implements OnInit {
 
-  private BANK_CODES = "setupModuleState.bankCodes".split(".");
+  private BANK_CODES: string[] = "setupModuleState.bankCodes".split(".");
   private bankCodes$: Observable<BankCode>;
   private columns: any[] = [
     {name: 'code', label: 'Code'},
@@ -32,5 +32,6 @@ export class BankCodeListPage implements OnInit {
 
   }
 
-  filter():void {}
+  filter(): void {
+  }
 }

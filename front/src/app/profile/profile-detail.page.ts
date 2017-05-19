@@ -20,12 +20,12 @@ import {Guarantor} from "./guarantor.interface";
 
 export class ProfileDetailPage implements OnInit {
 
-  private STUDENT = "profileModuleState.student".split(".");
-  private ADDRESSES = "profileModuleState.addresses".split(".");
-  private GUARANTORS = "profileModuleState.guarantors".split(".");
-  private GUARDIANS = "profileModuleState.guardians".split(".");
-  private CONTACTS = "profileModuleState.contacts".split(".");
-  private ENROLLMENTS = "profileModuleState.enrollments".split(".");
+  private STUDENT: string[] = "profileModuleState.student".split(".");
+  private ADDRESSES: string[] = "profileModuleState.addresses".split(".");
+  private GUARANTORS: string[] = "profileModuleState.guarantors".split(".");
+  private GUARDIANS: string[] = "profileModuleState.guardians".split(".");
+  private CONTACTS: string[] = "profileModuleState.contacts".split(".");
+  private ENROLLMENTS: string[] = "profileModuleState.enrollments".split(".");
 
   private student$: Observable<Student>;
   private addressess$: Observable<Student>;

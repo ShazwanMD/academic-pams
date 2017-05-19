@@ -10,7 +10,7 @@ import {AcademicSession} from "./academic-session.interface";
 @Injectable()
 export class AcademicSessionEffects {
 
-  private ACADEMIC_SESSION = "plannerModuleState.academicSession".split(".");
+  private ACADEMIC_SESSION: string[] = "plannerModuleState.academicSession".split(".");
 
   constructor(private actions$: Actions,
               private academicSessionActions: AcademicSessionActions,

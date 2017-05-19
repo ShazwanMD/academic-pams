@@ -19,9 +19,9 @@ import {AppointmentUpdateTaskCreatorDialog} from "./dialog/appointment-update-ta
 
 export class AppointmentDetailPage implements OnInit {
 
-  private APPOINTMENT = "termModuleState.appointment".split(".");
+  private APPOINTMENT: string[] = "termModuleState.appointment".split(".");
   private appointment$: Observable<Appointment>;
-  private creatorDialogRef: MdDialogRef<AppointmentUpdateTaskCreatorDialog>;  
+  private creatorDialogRef: MdDialogRef<AppointmentUpdateTaskCreatorDialog>;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -34,7 +34,7 @@ export class AppointmentDetailPage implements OnInit {
     this.appointment$ = this.store.select(...this.APPOINTMENT);
   }
 
-    showDialog(): void {
+  showDialog(): void {
     console.log("showDialog");
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
@@ -48,12 +48,12 @@ export class AppointmentDetailPage implements OnInit {
       // load something here
     });
   }
-    
+
   ngOnInit(): void {
-    this.route.params.subscribe((params: {id: string}) => {
+    this.route.params.subscribe((params: { id: string }) => {
       let id: string = params.id;
       this.store.dispatch(this.actions.findAppointmentById(id));
-     //this.appointment$ = this.termService.findAppointmentByCanonicalCode(canonicalCode);
+      //this.appointment$ = this.termService.findAppointmentByCanonicalCode(canonicalCode);
 
 
     });

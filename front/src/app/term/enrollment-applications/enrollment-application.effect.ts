@@ -12,7 +12,7 @@ import {EnrollmentApplicationTask} from "./enrollment-application-task.interface
 @Injectable()
 export class EnrollmentApplicationEffects {
 
-  private ENROLLMENT_APPLICATION_TASK = "termModuleState.enrollmentApplicationTask".split(".");
+  private ENROLLMENT_APPLICATION_TASK: string[] = "termModuleState.enrollmentApplicationTask".split(".");
 
   constructor(private actions$: Actions,
               private enrollmentApplicationActions: EnrollmentApplicationActions,
@@ -108,5 +108,5 @@ export class EnrollmentApplicationEffects {
       .map(message => this.enrollmentApplicationActions.addEnrollmentApplicationItemSuccess(message))
       .withLatestFrom(this.store$.select(...this.ENROLLMENT_APPLICATION_TASK))
       .map(state => state[1])
-      .map((task:EnrollmentApplicationTask) => this.enrollmentApplicationActions.findEnrollmentApplicationItems(task.application));
+      .map((task: EnrollmentApplicationTask) => this.enrollmentApplicationActions.findEnrollmentApplicationItems(task.application));
 }

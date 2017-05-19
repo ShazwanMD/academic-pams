@@ -12,7 +12,7 @@ import {Component, OnInit} from '@angular/core';
 })
 export class RaceCodeListPage implements OnInit {
 
-  private RACE_CODES = "setupModuleState.raceCodes".split(".");
+  private RACE_CODES: string[] = "setupModuleState.raceCodes".split(".");
   private raceCodes$: Observable<RaceCode>;
   private columns: any[] = [
     {name: 'code', label: 'Code'},
@@ -31,7 +31,8 @@ export class RaceCodeListPage implements OnInit {
     this.store.dispatch(this.actions.changeTitle("Race Codes"))
   }
 
-  filter():void{}
+  filter(): void {
+  }
 
 }
 

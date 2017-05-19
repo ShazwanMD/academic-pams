@@ -5,7 +5,7 @@ import {Store} from "@ngrx/store";
 import {Observable} from "rxjs";
 import {ProfileActions} from "./profile.action";
 import {Student} from "../identity/student.interface";
- import {ProfileModuleState} from "./index";
+import {ProfileModuleState} from "./index";
 
 @Component({
   selector: 'pams-profile-center',
@@ -14,16 +14,15 @@ import {Student} from "../identity/student.interface";
 
 export class ProfileCenterPage implements OnInit {
 
-  private STUDENTS = "profileModuleState.students".split(".");
+  private STUDENTS: string[] = "profileModuleState.students".split(".");
   private students$: Observable<Student[]>;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
               private actions: ProfileActions,
-               private store: Store<ProfileModuleState>
-  ) {
+              private store: Store<ProfileModuleState>) {
 
-     this.students$ = this.store.select(...this.STUDENTS);
+    this.students$ = this.store.select(...this.STUDENTS);
   }
 
   goBack(route: string): void {
@@ -37,7 +36,7 @@ export class ProfileCenterPage implements OnInit {
 
   ngOnInit(): void {
     console.log("find profiles");
-     this.store.dispatch(this.actions.findProfiles());
+    this.store.dispatch(this.actions.findProfiles());
   }
 }
 

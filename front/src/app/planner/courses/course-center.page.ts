@@ -14,7 +14,7 @@ import {PlannerModuleState} from "../index";
 
 export class CourseCenterPage implements OnInit {
 
-  private COURSES = "plannerModuleState.courses".split(".");
+  private COURSES: string[] = "plannerModuleState.courses".split(".");
   private courses$: Observable<Course[]>;
 
   constructor(private router: Router,

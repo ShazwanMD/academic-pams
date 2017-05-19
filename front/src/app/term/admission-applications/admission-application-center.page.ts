@@ -16,8 +16,8 @@ import {AdmissionApplicationActions} from "./admission-application.action";
 
 export class AdmissionApplicationCenterPage implements OnInit {
 
-  private ASSIGNED_ADMISSION_APPLICATION_TASKS = "termModuleState.assignedAdmissionApplicationTasks".split(".");
-  private POOLED_ADMISSION_APPLICATION_TASKS = "termModuleState.pooledAdmissionApplicationTasks".split(".");
+  private ASSIGNED_ADMISSION_APPLICATION_TASKS: string[] = "termModuleState.assignedAdmissionApplicationTasks".split(".");
+  private POOLED_ADMISSION_APPLICATION_TASKS: string[] = "termModuleState.pooledAdmissionApplicationTasks".split(".");
   private assignedAdmissionApplicationTasks$: Observable<AdmissionApplicationTask[]>;
   private pooledAdmissionApplicationTasks$: Observable<AdmissionApplicationTask[]>;
   private creatorDialogRef: MdDialogRef<AdmissionApplicationTaskCreatorDialog>;

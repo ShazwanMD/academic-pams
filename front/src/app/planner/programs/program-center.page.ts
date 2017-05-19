@@ -20,7 +20,7 @@ import {ProgramCreatorDialog} from './dialog/program-creator.dialog';
 
 export class ProgramCenterPage implements OnInit {
 
-  private PROGRAMS = "plannerModuleState.programs".split(".");
+  private PROGRAMS: string[] = "plannerModuleState.programs".split(".");
   private programs$: Observable<Program[]>;
 
   private creatorDialogRef: MdDialogRef<ProgramCreatorDialog>;

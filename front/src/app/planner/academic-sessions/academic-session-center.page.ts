@@ -19,7 +19,7 @@ import {AcademicSessionCreatorDialog} from './dialog/academic-session-creator.di
 })
 export class AcademicSessionCenterPage implements OnInit {
 
-  private ACADEMIC_SESSIONS = "plannerModuleState.academicSessions".split(".");
+  private ACADEMIC_SESSIONS: string[] = "plannerModuleState.academicSessions".split(".");
   private academicSessions$: Observable<AcademicSession[]>;
 
   private creatorDialogRef: MdDialogRef<AcademicSessionCreatorDialog>;

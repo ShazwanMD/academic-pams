@@ -1,14 +1,13 @@
-import { MdDialogRef } from '@angular/material';
-import { MdDialogConfig } from '@angular/material';
-import { MdDialog } from '@angular/material';
-import { MaritalCodeEditorDialog } from './dialog/marital-code-editor.dialog';
+import {MdDialogRef} from '@angular/material';
+import {MdDialogConfig} from '@angular/material';
+import {MdDialog} from '@angular/material';
+import {MaritalCodeEditorDialog} from './dialog/marital-code-editor.dialog';
 import {MaritalCode} from './marital-code.interface';
 import {SetupActions} from './../setup.action';
 import {Observable} from 'rxjs/Observable';
 import {SetupModuleState} from './../index';
 import {Store} from '@ngrx/store';
-import { Component, OnInit, ViewContainerRef } from '@angular/core';
-
+import {Component, OnInit, ViewContainerRef} from '@angular/core';
 
 
 @Component({
@@ -17,9 +16,9 @@ import { Component, OnInit, ViewContainerRef } from '@angular/core';
 })
 export class MaritalCodeListPage implements OnInit {
 
-  private MARITAL_CODES = "setupModuleState.maritalCodes".split(".");
+  private MARITAL_CODES: string[] = "setupModuleState.maritalCodes".split(".");
   private maritalCodes$: Observable<MaritalCode>;
-   private creatorDialogRef: MdDialogRef<MaritalCodeEditorDialog>;
+  private creatorDialogRef: MdDialogRef<MaritalCodeEditorDialog>;
   private columns: any[] = [
     {name: 'code', label: 'Code'},
     {name: 'descriptionEn', label: 'DescriptionEN'},
@@ -43,7 +42,7 @@ export class MaritalCodeListPage implements OnInit {
     this.showDialog(null);
   }
 
-  editDialog(code:MaritalCode): void {
+  editDialog(code: MaritalCode): void {
     this.showDialog(code);
   }
 
@@ -51,9 +50,10 @@ export class MaritalCodeListPage implements OnInit {
     this.store.dispatch(this.actions.removeMaritalCode(code))
   }
 
-  filter():void{}
+  filter(): void {
+  }
 
-   private showDialog(code:MaritalCode): void {
+  private showDialog(code: MaritalCode): void {
     console.log("create");
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
@@ -62,7 +62,7 @@ export class MaritalCodeListPage implements OnInit {
     config.height = '65%';
     config.position = {top: '0px'};
     this.creatorDialogRef = this.dialog.open(MaritalCodeEditorDialog, config);
-    if(code) this.creatorDialogRef.componentInstance.maritalCode = code; // set
+    if (code) this.creatorDialogRef.componentInstance.maritalCode = code; // set
     this.creatorDialogRef.afterClosed().subscribe(res => {
       console.log("close dialog");
     });

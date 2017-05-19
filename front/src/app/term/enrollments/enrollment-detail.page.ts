@@ -18,7 +18,7 @@ import {EnrollmentApplicationTaskCreatorDialog} from "../enrollment-applications
 
 export class EnrollmentDetailPage implements OnInit {
 
-  private ENROLLMENT = "termModuleState.enrollment".split(".");
+  private ENROLLMENT: string[] = "termModuleState.enrollment".split(".");
   private enrollment$: Observable<Enrollment>;
   private creatorDialogRef: MdDialogRef<EnrollmentApplicationTaskCreatorDialog>;
 
@@ -32,7 +32,7 @@ export class EnrollmentDetailPage implements OnInit {
     this.enrollment$ = this.store.select(...this.ENROLLMENT);
   }
 
-     showDialog(): void {
+  showDialog(): void {
     console.log("showDialog");
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
@@ -46,7 +46,7 @@ export class EnrollmentDetailPage implements OnInit {
       // load something here
     });
   }
-    
+
   ngOnInit(): void {
     this.route.params.subscribe((params: { id: string }) => {
       let id: string = params.id;

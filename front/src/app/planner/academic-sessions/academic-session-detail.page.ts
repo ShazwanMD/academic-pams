@@ -18,7 +18,7 @@ import {AcademicSessionActions} from "./academic-session.action";
 
 export class AcademicSessionDetailPage implements OnInit {
 
-  private ACADEMIC_SESSION = "plannerModuleState.academicSession".split(".");
+  private ACADEMIC_SESSION: string[] = "plannerModuleState.academicSession".split(".");
   private academicSession$: Observable<AcademicSession>;
 
   constructor(private router: Router,

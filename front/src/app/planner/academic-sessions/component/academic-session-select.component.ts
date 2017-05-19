@@ -13,7 +13,7 @@ import {AcademicSessionActions} from "../academic-session.action";
 })
 export class AcademicSessionSelectComponent implements OnInit {
 
-  private ACADEMIC_SESSIONS = "plannerModuleState.academicSessions".split(".");
+  private ACADEMIC_SESSIONS: string[] = "plannerModuleState.academicSessions".split(".");
   private academicSessions$: Observable<AcademicSession[]>;
   @Input() placeholder: string;
   @Input() innerFormControl: FormControl;

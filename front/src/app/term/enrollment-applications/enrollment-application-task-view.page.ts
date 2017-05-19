@@ -16,7 +16,7 @@ import {EnrollmentApplicationActions} from "./enrollment-application.action";
 })
 export class EnrollmentApplicationTaskViewPage implements OnInit {
 
-  private ENROLLMENT_APPLICATION_TASK = "termModuleState.enrollmentApplicationTask".split(".");
+  private ENROLLMENT_APPLICATION_TASK: string[] = "termModuleState.enrollmentApplicationTask".split(".");
   private enrollmentApplicationTask$: Observable<EnrollmentApplicationTask>;
 
   constructor(private router: Router,
@@ -27,7 +27,7 @@ export class EnrollmentApplicationTaskViewPage implements OnInit {
   }
 
   ngOnInit(): void {
-    this.route.params.subscribe((params: {taskId: string}) => {
+    this.route.params.subscribe((params: { taskId: string }) => {
       let taskId: string = params.taskId;
       this.store.dispatch(this.actions.findEnrollmentApplicationTaskByTaskId(taskId));
     });

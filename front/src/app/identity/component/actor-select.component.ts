@@ -13,7 +13,7 @@ import {IdentityModuleState} from "../index";
 })
 export class ActorSelectComponent implements OnInit {
 
-  private ACTORS = "identityModuleState.actors".split(".");
+  private ACTORS: string[] = "identityModuleState.actors".split(".");
   @Input() placeholder: string;
   @Input() innerFormControl: FormControl;
   programLevels$: Observable<Actor[]>;

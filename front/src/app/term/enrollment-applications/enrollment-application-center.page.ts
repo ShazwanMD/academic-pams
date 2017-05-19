@@ -16,8 +16,8 @@ import {EnrollmentApplicationActions} from "./enrollment-application.action";
 
 export class EnrollmentApplicationCenterPage implements OnInit {
 
-  private ASSIGNED_ENROLLMENT_APPLICATION_TASKS = "termModuleState.assignedEnrollmentApplicationTasks".split(".");
-  private POOLED_ENROLLMENT_APPLICATION_TASKS = "termModuleState.pooledEnrollmentApplicationTasks".split(".");
+  private ASSIGNED_ENROLLMENT_APPLICATION_TASKS: string[] = "termModuleState.assignedEnrollmentApplicationTasks".split(".");
+  private POOLED_ENROLLMENT_APPLICATION_TASKS: string[] = "termModuleState.pooledEnrollmentApplicationTasks".split(".");
   private assignedEnrollmentApplicationTasks$: Observable<EnrollmentApplicationTask[]>;
   private pooledEnrollmentApplicationTasks$: Observable<EnrollmentApplicationTask[]>;
   private creatorDialogRef: MdDialogRef<EnrollmentApplicationTaskCreatorDialog>;

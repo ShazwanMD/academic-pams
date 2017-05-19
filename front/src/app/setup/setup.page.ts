@@ -11,7 +11,7 @@ import {Observable} from "rxjs/Observable";
 
 export class SetupPage implements OnInit {
 
-  private TITLE = "setupModuleState.title".split(".");
+  private TITLE: string[] = "setupModuleState.title".split(".");
   private title$: Observable<string>;
 
 

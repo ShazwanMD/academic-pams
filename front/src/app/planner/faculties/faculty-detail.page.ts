@@ -16,7 +16,7 @@ import {PlannerModuleState} from "../index";
 
 export class FacultyDetailPage implements OnInit {
 
-  private FACULTY = "plannerModuleState.faculty".split(".");
+  private FACULTY: string[] = "plannerModuleState.faculty".split(".");
   private faculty$: Observable<Faculty>;
 
   constructor(private router: Router,

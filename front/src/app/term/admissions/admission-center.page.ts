@@ -13,7 +13,7 @@ import {TermModuleState} from "../index";
 })
 export class AdmissionCenterPage implements OnInit {
 
-  private ADMISSIONS = "termModuleState.admissions".split(".");
+  private ADMISSIONS: string[] = "termModuleState.admissions".split(".");
   private admissions$: Observable<Admission[]>;
 
   constructor(private router: Router,

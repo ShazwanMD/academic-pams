@@ -13,7 +13,7 @@ import {StaffActions} from "../staff.action";
 })
 export class StaffSelectComponent implements OnInit {
 
-  private STAFFS = "identityModuleState.staffs".split(".");
+  private STAFFS: string[] = "identityModuleState.staffs".split(".");
   @Input() placeholder: string;
   @Input() innerFormControl: FormControl;
   staffs$: Observable<Actor[]>;

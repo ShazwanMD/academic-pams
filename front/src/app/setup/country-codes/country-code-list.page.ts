@@ -13,7 +13,7 @@ import {Observable} from 'rxjs/Observable';
 
 export class CountryCodeListPage implements OnInit {
 
-  private COUNTRY_CODES = "setupModuleState.countryCodes".split(".");
+  private COUNTRY_CODES: string[] = "setupModuleState.countryCodes".split(".");
   private countryCodes$: Observable<CountryCode>;
   private columns: any[] = [
     {name: 'code', label: 'Code'},

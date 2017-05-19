@@ -16,7 +16,7 @@ import {AdmissionApplicationActions} from "./admission-application.action";
 })
 export class AdmissionApplicationTaskViewPage implements OnInit {
 
-  private ADMISSION_APPLICATION_TASK = "termModuleState.admissionApplicationTask".split(".");
+  private ADMISSION_APPLICATION_TASK: string[] = "termModuleState.admissionApplicationTask".split(".");
   private admissionApplicationTask$: Observable<AdmissionApplicationTask>;
 
   constructor(private router: Router,
@@ -27,7 +27,7 @@ export class AdmissionApplicationTaskViewPage implements OnInit {
   }
 
   ngOnInit(): void {
-    this.route.params.subscribe((params: {taskId: string}) => {
+    this.route.params.subscribe((params: { taskId: string }) => {
       let taskId: string = params.taskId;
       this.store.dispatch(this.actions.findAdmissionApplicationTaskByTaskId(taskId));
     });

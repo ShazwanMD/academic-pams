@@ -10,7 +10,7 @@ selector: 'pams-parliament-list-page',
 templateUrl: './parliament-code-list.page.html',
 })
 export class ParliamentCodeListPage implements OnInit {
-    private PARLIAMENT_CODES = "setupModuleState.parliamentCodes".split(".");
+    private PARLIAMENT_CODES:string[] = "setupModuleState.parliamentCodes".split(".");
     private parliamentCodes$: Observable<ParliamentCode>;
     private columns: any[] =[
         {name: 'code', label:'Code'},

@@ -1,10 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Observable } from "rxjs";
-import { Store } from "@ngrx/store";
-import { FormControl } from "@angular/forms";
-import { AdmissionActions } from "../admission.action";
-import { TermModuleState } from "../../index";
-import { Admission } from "../admission.interface";
+import {Component, Input, OnInit} from '@angular/core';
+import {Observable} from "rxjs";
+import {Store} from "@ngrx/store";
+import {FormControl} from "@angular/forms";
+import {AdmissionActions} from "../admission.action";
+import {TermModuleState} from "../../index";
+import {Admission} from "../admission.interface";
 
 
 @Component({
@@ -13,13 +13,13 @@ import { Admission } from "../admission.interface";
 })
 export class AdmissionSelectComponent implements OnInit {
 
-  private ADMISSIONS = "termModuleState.admissions".split(".");
+  private ADMISSIONS: string[] = "termModuleState.admissions".split(".");
   private admissions$: Observable<Admission[]>;
   @Input() placeholder: string;
   @Input() innerFormControl: FormControl;
 
   constructor(private store: Store<TermModuleState>,
-    private actions: AdmissionActions) {
+              private actions: AdmissionActions) {
     this.admissions$ = this.store.select(...this.ADMISSIONS);
   }
 
@@ -28,7 +28,7 @@ export class AdmissionSelectComponent implements OnInit {
   }
 
   selectChangeEvent(event: Admission) {
-    this.innerFormControl.setValue(event, { emitEvent: false });
+    this.innerFormControl.setValue(event, {emitEvent: false});
   }
 }
 

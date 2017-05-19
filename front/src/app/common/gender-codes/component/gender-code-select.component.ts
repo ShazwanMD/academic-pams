@@ -1,21 +1,21 @@
-import { GenderCode } from './../gender-code.interface';
-import { CommonModuleState } from './../../index';
-import { CommonActions } from './../common.action';
-import { FormControl } from '@angular/forms';
-import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
-import { Component, Input, OnInit } from '@angular/core';
+import {GenderCode} from './../gender-code.interface';
+import {CommonModuleState} from './../../index';
+import {CommonActions} from './../common.action';
+import {FormControl} from '@angular/forms';
+import {Store} from '@ngrx/store';
+import {Observable} from 'rxjs';
+import {Component, Input, OnInit} from '@angular/core';
 
 
 @Component({
 
-    selector: 'pams-gender-code-select',
-    templateUrl: './gender-code-select.component.html',
+  selector: 'pams-gender-code-select',
+  templateUrl: './gender-code-select.component.html',
 })
 
-export class GenderCodeSelectComponent implements OnInit{
+export class GenderCodeSelectComponent implements OnInit {
 
-private GENDER_CODE = "commonModuleState.genderCodes".split(".");
+  private GENDER_CODE: string[] = "commonModuleState.genderCodes".split(".");
   @Input() placeholder: string;
   @Input() innerFormControl: FormControl;
   genderCodes$: Observable<GenderCode[]>;

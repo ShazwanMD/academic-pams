@@ -17,7 +17,7 @@ import {Store} from "@ngrx/store";
 
 export class EnrollmentApplicationDraftTaskPanel implements OnInit {
 
-  private ENROLLMENT_APPLICATION_ITEMS = "termModuleState.enrollmentApplicationItems".split(".");
+  private ENROLLMENT_APPLICATION_ITEMS: string[] = "termModuleState.enrollmentApplicationItems".split(".");
   private enrollmentApplicationItems$: Observable<EnrollmentApplicationItem[]>;
   @Input() enrollmentApplicationTask: EnrollmentApplicationTask;
 
