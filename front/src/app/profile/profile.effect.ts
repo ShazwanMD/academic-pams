@@ -1,3 +1,4 @@
+import { Guarantor } from './guarantor.interface';
 import {Injectable} from '@angular/core';
 import {Effect, Actions} from '@ngrx/effects';
 import {ProfileService} from "../../services/profile.service";
@@ -92,6 +93,25 @@ export class ProfileEffects {
     .map(action => action.payload)
     .switchMap(payload => this.profileService.addContact(payload.student, payload.contact))
     .map(message => this.profileActions.addContactSuccess(message))
+    .withLatestFrom(this.store$.select(...this.STUDENT))
+    .map(state => state[1])
+    .map((student: Student) => this.profileActions.findStudentByIdentityNo(student.identityNo));
+
+
+  @Effect() addGuarantor$ = this.actions$
+    .ofType(ProfileActions.ADD_GUARANTOR)
+    .map(action => action.payload)
+    .switchMap(payload => this.profileService.addGuarantor(payload.student, payload.guarantor))
+    .map(message => this.profileActions.addGuarantorSuccess(message))
+    .withLatestFrom(this.store$.select(...this.STUDENT))
+    .map(state => state[1])
+    .map((student: Student) => this.profileActions.findStudentByIdentityNo(student.identityNo));
+
+  @Effect() addGuardian$ = this.actions$
+    .ofType(ProfileActions.ADD_GUARDIAN)
+    .map(action => action.payload)
+    .switchMap(payload => this.profileService.addGuardian(payload.student, payload.guardian))
+    .map(message => this.profileActions.addGuardianSuccess(message))
     .withLatestFrom(this.store$.select(...this.STUDENT))
     .map(state => state[1])
     .map((student: Student) => this.profileActions.findStudentByIdentityNo(student.identityNo));

@@ -1,3 +1,5 @@
+import { GuardianEditorDialog } from './../dialog/guardian-editor.dialog';
+import { GuarantorEditorDialog } from './../dialog/guarantor-editor.dialog';
 import {ActivatedRoute} from '@angular/router';
 import {Router} from '@angular/router';
 import {Store} from '@ngrx/store';
@@ -30,6 +32,8 @@ export class ProfileComponent implements OnInit {
 
   private creatorDialogRef: MdDialogRef<DetailEditorDialog>;
   private contactCreatorDialogRef: MdDialogRef<ContactEditorDialog>;
+  private guarantorCreatorDialogRef: MdDialogRef<GuarantorEditorDialog>;
+  private guardianCreatorDialogRef: MdDialogRef<GuardianEditorDialog>;
 
   private columns: any[] = [
     {name: 'name', label: 'NAME'},
@@ -72,6 +76,37 @@ export class ProfileComponent implements OnInit {
     this.contactCreatorDialogRef = this.dialog.open(ContactEditorDialog, config);
     this.contactCreatorDialogRef.componentInstance.student = this.student;
     this.contactCreatorDialogRef.afterClosed().subscribe(res => {
+      console.log("close dialog");
+    });
+  }
+
+    addGuarantorDialog(): void {
+    console.log("add");
+    let config = new MdDialogConfig();
+    config.viewContainerRef = this.vcf;
+    config.role = 'dialog';
+    config.width = '70%';
+    config.height = '80%';
+    config.position = {top: '0px'};
+    this.guarantorCreatorDialogRef = this.dialog.open(GuarantorEditorDialog, config);
+    this.guarantorCreatorDialogRef.componentInstance.student = this.student;
+    this.guarantorCreatorDialogRef.afterClosed().subscribe(res => {
+      console.log("close dialog");
+    });
+  }
+
+  
+    addGuardianDialog(): void {
+    console.log("addGuardian");
+    let config = new MdDialogConfig();
+    config.viewContainerRef = this.vcf;
+    config.role = 'dialog';
+    config.width = '70%';
+    config.height = '80%';
+    config.position = {top: '0px'};
+    this.guardianCreatorDialogRef = this.dialog.open(GuardianEditorDialog, config);
+    this.guardianCreatorDialogRef.componentInstance.student = this.student;
+    this.guardianCreatorDialogRef.afterClosed().subscribe(res => {
       console.log("close dialog");
     });
   }

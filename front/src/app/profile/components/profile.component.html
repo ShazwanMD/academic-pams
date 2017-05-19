@@ -148,6 +148,7 @@
                             <md-icon>more_vert</md-icon>
                           </button>
                           <md-menu x-position="before" #menu3="mdMenu">
+                              <button md-menu-item (click)="addGuarantorDialog()">Add</button>
                             <button md-menu-item (click)="editDialog(row)">Edit</button>
                           </md-menu>
                         </td>
@@ -200,6 +201,7 @@
                             <md-icon>more_vert</md-icon>
                           </button>
                           <md-menu x-position="before" #menu4="mdMenu">
+                            <button md-menu-item (click)="addGuardianDialog()">Add</button>
                             <button md-menu-item (click)="editDialog(row)">Edit</button>
                           </md-menu>
                         </td>
