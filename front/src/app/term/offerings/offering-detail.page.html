@@ -8,14 +8,13 @@
       <div flex-gt-md="70">
         <pams-offering
           [offering]="offering$ | async"
-          [sections]="sections$ | async" 
-          >
+          [sections]="sections$ | async">
         </pams-offering>
-        
-        <pams-offering-section
-         [sections]="sections$ | async">
-        </pams-offering-section>
-        </div>
+
+        <pams-offering-section-list
+          [sections]="sections$ | async">
+        </pams-offering-section-list>
+      </div>
 
       <div flex-gt-md="30">
         <md-card>
@@ -39,24 +38,24 @@
             <md-divider></md-divider>
             <h3 md-subheader>Term Menu</h3>
             <md-list-item [routerLink]="['/term/offerings']">
-              <md-icon md-list-avatar>email</md-icon>
+              <md-icon md-list-avatar>menu</md-icon>
               <h4 md-line>Offering</h4>
-              <p md-line>Watch this offering</p>
+              <p md-line>List of offering</p>
             </md-list-item>
             <md-list-item [routerLink]="['/term/appointments']">
-              <md-icon md-list-avatar>email</md-icon>
+              <md-icon md-list-avatar>menu</md-icon>
               <h4 md-line>Appointment</h4>
-              <p md-line>Watch this appointment</p>
+              <p md-line>List of appointment</p>
             </md-list-item>
             <md-list-item [routerLink]="['/term/enrollments']">
-              <md-icon md-list-avatar>email</md-icon>
+              <md-icon md-list-avatar>menu</md-icon>
               <h4 md-line>Enrollment</h4>
-              <p md-line>Watch this enrollment</p>
+              <p md-line>List of enrollment</p>
             </md-list-item>
             <md-list-item [routerLink]="['/term/sections']">
-              <md-icon md-list-avatar>email</md-icon>
+              <md-icon md-list-avatar>menu</md-icon>
               <h4 md-line>Section</h4>
-              <p md-line>Watch this section</p>
+              <p md-line>List of section</p>
             </md-list-item>
           </md-nav-list>
         </md-card>

@@ -29,15 +29,11 @@
         <md-icon>find_in_page</md-icon>
         Enrollment
       </a>
-        <a md-list-item [routerLink]="['/term/assessments']">
+      <a md-list-item [routerLink]="['/term/assessments']">
         <md-icon>book</md-icon>
         Assessment
       </a>
 
-      <!-- <a md-list-item [routerLink]="['/term/sections']">
-        <md-icon>find_in_page</md-icon>
-        Sections
-      </a> -->
       <md-divider></md-divider>
     </md-nav-list>
     <div toolbar-buttons layout="row" layout-align="start center" flex>
@@ -50,61 +46,11 @@
       </button>
     </div>
 
-    <div layout="row" layout-wrap>
-      <template let-stat let-last="last" ngFor [ngForOf]="stats">
-        <div flex-md="100" flex-gt-md="33" layout="column">
-          <md-card class="md-card-colored {{stat.color}}" flex>
-            <md-card-content class="text-center">
-              <div class="md-display-1">{{ stat.count | digits }}</div>
-              <div layout="column" layout-padding>
-                <div class="md-subhead tc-grey-100">Accounts {{stat.type}}</div>
-                <div class="md-caption  tc-grey-100">updated {{ '2016-09-17 12:59:59' | timeAgo }}</div>
-              </div>
-            </md-card-content>
-          </md-card>
-        </div>
-      </template>
-    </div>
-
-
     <md-card class="">
       <md-card-title>Term Page Center</md-card-title>
       <md-card-subtitle> Welcome to Term Page Center</md-card-subtitle>
 
-      <!-- note: experimental -->
       <md-divider></md-divider>
-
-   <!--  <td-data-table
-  [data]="admissions"
-  [columns]="columns"
-  [sortBy]="summary"
-  [sortOrder]="ASC"
-  [sortable]="false"
-  [multiple]="false"
-  [selectable]="false"
-  (rowSelect)="view.emit($event)" dense>
-  <template tdDataTableTemplate="student" let-value="value" let-row="row" let-column="column">
-    <div layout="row">
-      <span flex></span>
-    </div>
-  </template>
-  <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
-    <div layout="row">
-      <span flex>{{value}}</span>
-    </div>
-  </template>
-  <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
-    <div layout="row">
-      <a md-button color="accent" class="text-upper" [routerLink]="['/term/admissions',row['academicSessionCode']]">
-      <a md-button color="accent" class="text-upper" [routerLink]="['/term/admissions/current']">
-        <span>View</span>
-      </a>
-    </div>
-  </template>
-</td-data-table> -->
-<md-card>
- <div> test memo  </div>
-</md-card>
 
       <md-divider></md-divider>
       <md-card-actions>

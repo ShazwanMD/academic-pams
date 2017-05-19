@@ -16,13 +16,13 @@ import {EffectsModule} from "@ngrx/effects";
 import {OfferingEffects} from "./offering.effect";
 import {OfferingDetailPage} from "./offering-detail.page";
 import {OfferingComponent} from "./component/offering.component";
-import {OfferingSectionComponent} from "./component/offering-section.component";
 import {OfferingEditorDialog} from "./dialog/offering-editor.dialog";
 import {OfferingCreateTaskCreatorDialog} from "./dialog/offering-create-task-creator.dialog";
 import {CourseSubModule} from "../../planner/courses/index";
 import {ProgramSubModule} from "../../planner/programs/index";
 import {OfferingUpdateTaskCreatorDialog} from "./dialog/offering-update-task-creator.dialog";
 import {OfferingDeleteTaskCreatorDialog} from "./dialog/offering-delete-task-creator.dialog";
+import {OfferingSectionListComponent} from "./component/offering-section-list.component";
 
 
 @NgModule({
@@ -43,15 +43,15 @@ import {OfferingDeleteTaskCreatorDialog} from "./dialog/offering-delete-task-cre
     // component
     OfferingListComponent,
     OfferingComponent,
-    OfferingSectionComponent,
-    
-    
+    OfferingSectionListComponent,
+
+
     //dialog
     OfferingEditorDialog,
     OfferingCreateTaskCreatorDialog,
     OfferingUpdateTaskCreatorDialog,
     OfferingDeleteTaskCreatorDialog,
-        
+
   ],
   exports: [],
 })

@@ -12,12 +12,10 @@ export class AdmissionListComponent {
   @Output() view = new EventEmitter<Admission>();
 
   private columns: any[] = [
-    { name: 'student.name', label: 'StudentName' },
-    { name: 'student.identityNo', label: 'StudentIC' },
-    { name: 'academicSession.description', label: 'AcademicSession' },
+    { name: 'student.name', label: 'Name' },
+    { name: 'student.identityNo', label: 'Matric No' },
+    { name: 'academicSession.code', label: 'Session' },
     { name: 'cohort.code', label: 'Cohort' },
-    { name: 'gpa', label: 'GPA' },
-    { name: 'cgpa', label: 'CGPA' },
     { name: 'action', label: '' }
   ];
 }

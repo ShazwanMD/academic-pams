@@ -1,17 +1,17 @@
-import { Component, OnInit, ViewContainerRef } from '@angular/core';
+import {Component, OnInit, ViewContainerRef} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
-import { MdDialogRef } from '@angular/material';
-import { MdDialogConfig } from '@angular/material';
-import { MdDialog } from '@angular/material';
+import {MdDialogRef} from '@angular/material';
+import {MdDialogConfig} from '@angular/material';
+import {MdDialog} from '@angular/material';
 import {Store} from "@ngrx/store";
 import {Observable} from "rxjs";
 
 import {IdentityService} from '../../../services';
 import {CommonService} from '../../../services';
-import { AcademicSession } from './academic-session.interface';
+import {AcademicSession} from './academic-session.interface';
 import {AcademicSessionActions} from "./academic-session.action";
 import {PlannerModuleState} from "../index";
-import { AcademicSessionCreatorDialog } from './dialog/academic-session-creator.dialog';
+import {AcademicSessionCreatorDialog} from './dialog/academic-session-creator.dialog';
 
 @Component({
   selector: 'pams-academic-session-center',
@@ -34,7 +34,7 @@ export class AcademicSessionCenterPage implements OnInit {
               private actions: AcademicSessionActions,
               private store: Store<PlannerModuleState>,
               private vcf: ViewContainerRef,
-              private dialog: MdDialog ) {
+              private dialog: MdDialog) {
     this.academicSessions$ = this.store.select(...this.ACADEMIC_SESSIONS);
   }
 
@@ -48,13 +48,14 @@ export class AcademicSessionCenterPage implements OnInit {
     this.router.navigate(['/academic-session-detail', academicSession.code]);
   }
 
-    createDialog(): void {
+  createDialog(): void {
     this.showDialog(null);
   }
 
-  filter():void{}
+  filter(): void {
+  }
 
-   private showDialog(code:AcademicSession): void {
+  private showDialog(code: AcademicSession): void {
     console.log("create");
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
@@ -63,13 +64,13 @@ export class AcademicSessionCenterPage implements OnInit {
     config.height = '50%';
     config.position = {top: '0px'};
     this.creatorDialogRef = this.dialog.open(AcademicSessionCreatorDialog, config);
-    if(code) this.creatorDialogRef.componentInstance.academicSession = code; 
-   
+    if (code) this.creatorDialogRef.componentInstance.academicSession = code;
+
     // set
     this.creatorDialogRef.afterClosed().subscribe(res => {
       console.log("close dialog");
     });
-   }
+  }
 }
 
 

@@ -1,8 +1,8 @@
-import { Router, ActivatedRoute } from '@angular/router';
-import { Component, OnInit, ViewContainerRef } from '@angular/core';
-import { MdDialogRef } from '@angular/material';
-import { MdDialogConfig } from '@angular/material';
-import { MdDialog } from '@angular/material';
+import {Router, ActivatedRoute} from '@angular/router';
+import {Component, OnInit, ViewContainerRef} from '@angular/core';
+import {MdDialogRef} from '@angular/material';
+import {MdDialogConfig} from '@angular/material';
+import {MdDialog} from '@angular/material';
 import {IdentityService} from '../../../services';
 import {CommonService} from '../../../services';
 import {Store} from "@ngrx/store";
@@ -10,7 +10,7 @@ import {Observable} from "rxjs";
 import {Program} from "./program.interface";
 import {ProgramActions} from "./program.action";
 import {PlannerModuleState} from "../index";
-import { ProgramCreatorDialog } from './dialog/program-creator.dialog';
+import {ProgramCreatorDialog} from './dialog/program-creator.dialog';
 
 
 @Component({
@@ -23,7 +23,7 @@ export class ProgramCenterPage implements OnInit {
   private PROGRAMS = "plannerModuleState.programs".split(".");
   private programs$: Observable<Program[]>;
 
-   private creatorDialogRef: MdDialogRef<ProgramCreatorDialog>;
+  private creatorDialogRef: MdDialogRef<ProgramCreatorDialog>;
   private columns: any[] = [
     {name: 'code', label: 'Code'},
     {name: 'title', label: 'Title'},
@@ -36,7 +36,7 @@ export class ProgramCenterPage implements OnInit {
               private actions: ProgramActions,
               private store: Store<PlannerModuleState>,
               private vcf: ViewContainerRef,
-              private dialog: MdDialog ) {
+              private dialog: MdDialog) {
     this.programs$ = this.store.select(...this.PROGRAMS);
   }
 
@@ -54,13 +54,14 @@ export class ProgramCenterPage implements OnInit {
     this.store.dispatch(this.actions.findPrograms());
   }
 
-    createDialog(): void {
+  createDialog(): void {
     this.showDialog(null);
   }
 
-  filter():void{}
+  filter(): void {
+  }
 
-   private showDialog(code:Program): void {
+  private showDialog(code: Program): void {
     console.log("create");
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
@@ -69,12 +70,12 @@ export class ProgramCenterPage implements OnInit {
     config.height = '50%';
     config.position = {top: '0px'};
     this.creatorDialogRef = this.dialog.open(ProgramCreatorDialog, config);
-    if(code) this.creatorDialogRef.componentInstance.program = code; 
-   
+    if (code) this.creatorDialogRef.componentInstance.program = code;
+
     // set
     this.creatorDialogRef.afterClosed().subscribe(res => {
       console.log("close dialog");
     });
-   }
+  }
 }
 

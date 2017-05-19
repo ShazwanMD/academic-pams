@@ -24,10 +24,11 @@
     </div>
 
     <md-card class="">
-      <md-card-title>Cohorts</md-card-title>
-      <md-card-subtitle>List of cohorts</md-card-subtitle>
-
-      <md-divider></md-divider>
+      <td-search-box class="push-left push-right"
+                     placeholder="search"
+                     [alwaysVisible]="true"
+                     (searchDebounce)="filter($event)">
+      </td-search-box>
 
       <pams-cohort-list
         [cohorts]="cohorts$ | async"

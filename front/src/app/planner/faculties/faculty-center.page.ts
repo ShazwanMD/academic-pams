@@ -24,8 +24,7 @@ export class FacultyCenterPage implements OnInit {
     this.faculties$ = this.store.select(...this.FACULTIES);
   }
 
-  goBack(route: string): void {
-    this.router.navigate(['/faculties']);
+  filter(): void {
   }
 
   viewFaculty(faculty: Faculty) {
@@ -35,6 +34,11 @@ export class FacultyCenterPage implements OnInit {
 
   ngOnInit(): void {
     this.store.dispatch(this.actions.findFaculties());
+  }
+
+
+  goBack(route: string): void {
+    this.router.navigate(['/faculties']);
   }
 }
 

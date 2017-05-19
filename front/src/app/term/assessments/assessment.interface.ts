@@ -10,6 +10,4 @@ export interface Assessment extends MetaObject {
     session: AcademicSession;
     assessmentCategory: AssessmentCategory;
     offering: Offering;
-
-
 }

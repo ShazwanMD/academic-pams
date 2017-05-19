@@ -23,10 +23,11 @@
     </div>
 
     <md-card>
-      <md-card-title>Academic Sessions</md-card-title>
-      <md-card-subtitle>List of Academic Sessions</md-card-subtitle>
-
-      <md-divider></md-divider>
+      <td-search-box class="push-left push-right"
+                     placeholder="search"
+                     [alwaysVisible]="true"
+                     (searchDebounce)="filter($event)">
+      </td-search-box>
 
       <pams-academic-session-list
         [academicSessions]="academicSessions$ | async"

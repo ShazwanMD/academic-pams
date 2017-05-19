@@ -1,11 +1,11 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import {Component, OnInit, ChangeDetectionStrategy} from '@angular/core';
+import {Router, ActivatedRoute} from '@angular/router';
 
-import { Store } from "@ngrx/store";
-import { Observable } from "rxjs";
-import { Admission } from "./admission.interface";
-import { AdmissionActions } from "./admission.action";
-import { TermModuleState } from "../index";
+import {Store} from "@ngrx/store";
+import {Observable} from "rxjs";
+import {Admission} from "./admission.interface";
+import {AdmissionActions} from "./admission.action";
+import {TermModuleState} from "../index";
 
 @Component({
   selector: 'pams-admission-center',
@@ -17,10 +17,13 @@ export class AdmissionCenterPage implements OnInit {
   private admissions$: Observable<Admission[]>;
 
   constructor(private router: Router,
-    private route: ActivatedRoute,
-    private actions: AdmissionActions,
-    private store: Store<TermModuleState>) {
+              private route: ActivatedRoute,
+              private actions: AdmissionActions,
+              private store: Store<TermModuleState>) {
     this.admissions$ = this.store.select(...this.ADMISSIONS);
+  }
+
+  filter(): void {
   }
 
   goBack(route: string): void {

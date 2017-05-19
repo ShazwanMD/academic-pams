@@ -11,8 +11,7 @@
         Create Appointment
       </a>
       <md-divider></md-divider>
-      <!-- previous menu start -->  
-       <a md-list-item [routerLink]="['/term/admissions']">
+      <a md-list-item [routerLink]="['/term/admissions']">
         <md-icon>person_add</md-icon>
         Admission
       </a>
@@ -20,16 +19,10 @@
         <md-icon>create</md-icon>
         Offerings
       </a>
-     <a md-list-item [routerLink]="['/term/enrollments']">
+      <a md-list-item [routerLink]="['/term/enrollments']">
         <md-icon>find_in_page</md-icon>
         Enrollment
       </a>
-
-      <!-- <a md-list-item [routerLink]="['/term/sections']">
-        <md-icon>find_in_page</md-icon>
-        Sections
-      </a> -->
-      <!-- previous menu end -->   
     </md-nav-list>
     <div toolbar-buttons layout="row" layout-align="start center" flex>
       <span flex>Appointment Center</span>
@@ -42,27 +35,15 @@
     </div>
 
     <md-card class="">
-      <md-card-title>Appointments</md-card-title>
-      <md-card-subtitle>List of appointments</md-card-subtitle>
-
-      <md-divider></md-divider>
+      <td-search-box class="push-left push-right"
+                     placeholder="search"
+                     [alwaysVisible]="true"
+                     (searchDebounce)="filter($event)">
+      </td-search-box>
 
       <pams-appointment-list
         [appointments]="appointments$ | async"
         (view)="viewAppointment($event)"></pams-appointment-list>
-
-        <!--<md-list>
-  <md-list-item *ngFor="let offerings of offerings$ | async">
-    <img md-list-avatar src="..." alt="...">
-    <h3 md-line> {{offerings.id}} </h3>
-    <p md-line>
-      <span> {{offerings.canonicalCode}} </span>
-      <span class="demo-2">  {{offerings.title}} </span>
-    </p>
-  </md-list-item>
-</md-list>-->
-
-
       <md-divider></md-divider>
       <md-card-actions>
         <a md-button color="accent" class="text-upper" [routerLink]="['/offerings-search']">

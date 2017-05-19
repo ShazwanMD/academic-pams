@@ -8,37 +8,51 @@
     <div layout="column" layout-gt-md="row" class="inset">
       <div flex-gt-md="70">
         <pams-appointment [appointment]="appointment$ | async"></pams-appointment>
-                   
       </div>
 
-     <div flex-gt-md="30">
-            <md-card> <md-card-title>Action</md-card-title> <md-card-subtitle>Actions
-            available on current appointment</md-card-subtitle> <md-divider></md-divider> <md-nav-list
-                flex dense> <md-list-item (click)="showDialog()">
-            <md-icon md-list-avatar>assignment_ind</md-icon>
-            <h4 md-line>Update Appointment</h4>
-            <p md-line>Update this appointment</p>
-            </md-list-item> <md-list-item
-                [routerLink]="['/appointments-resolve', appointment?.code]">
-            <md-icon md-list-avatar>done_all</md-icon>
-            <h4 md-line>Delete Appointment</h4>
-            <p md-line>Delete this admission</p>
-            </md-list-item> <md-divider></md-divider>
+      <div flex-gt-md="30">
+        <md-card>
+          <md-card-title>Action</md-card-title>
+          <md-card-subtitle>Actions available on current appointment</md-card-subtitle>
+          <md-divider></md-divider>
+          <md-nav-list
+            flex dense>
+            <md-list-item (click)="showDialog()">
+              <md-icon md-list-avatar>assignment_ind</md-icon>
+              <h4 md-line>Update Appointment</h4>
+              <p md-line>Update this appointment</p>
+            </md-list-item>
+            <md-list-item
+              [routerLink]="['/appointments-resolve', appointment?.code]">
+              <md-icon md-list-avatar>done_all</md-icon>
+              <h4 md-line>Delete Appointment</h4>
+              <p md-line>Delete this admission</p>
+            </md-list-item>
+            <md-divider></md-divider>
             <h3 md-subheader>Term Menu</h3>
-            <md-list-item [routerLink]="['/term/offerings']" > <md-icon md-list-avatar>email</md-icon>
-            <h4 md-line>Offering</h4>
-            <p md-line>Watch this offering</p>
-            </md-list-item> <md-list-item [routerLink]="['/term/appointments']"> <md-icon md-list-avatar>email</md-icon>
-            <h4 md-line>Appointment</h4>
-            <p md-line>Watch this appointment</p>
-            </md-list-item> <md-list-item [routerLink]="['/term/enrollments']"> <md-icon md-list-avatar>email</md-icon>
-            <h4 md-line>Enrollment</h4>
-            <p md-line>Watch this enrollment</p>
-            </md-list-item> <md-list-item [routerLink]="['/term/sections']"> <md-icon md-list-avatar>email</md-icon>
-            <h4 md-line>Section</h4>
-            <p md-line>Watch this section</p>
-            </md-list-item> </md-nav-list> </md-card>
-        </div>
+            <md-list-item [routerLink]="['/term/offerings']">
+              <md-icon md-list-avatar>email</md-icon>
+              <h4 md-line>Offering</h4>
+              <p md-line>List of offering</p>
+            </md-list-item>
+            <md-list-item [routerLink]="['/term/appointments']">
+              <md-icon md-list-avatar>email</md-icon>
+              <h4 md-line>Appointment</h4>
+              <p md-line>List of appointment</p>
+            </md-list-item>
+            <md-list-item [routerLink]="['/term/enrollments']">
+              <md-icon md-list-avatar>email</md-icon>
+              <h4 md-line>Enrollment</h4>
+              <p md-line>List of enrollment</p>
+            </md-list-item>
+            <md-list-item [routerLink]="['/term/sections']">
+              <md-icon md-list-avatar>email</md-icon>
+              <h4 md-line>Section</h4>
+              <p md-line>List of section</p>
+            </md-list-item>
+          </md-nav-list>
+        </md-card>
+      </div>
     </div>
   </div>
 </td-layout-nav>

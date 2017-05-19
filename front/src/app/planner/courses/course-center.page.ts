@@ -25,6 +25,9 @@ export class CourseCenterPage implements OnInit {
     this.courses$ = this.store.select(...this.COURSES);
   }
 
+  filter(): void {
+  }
+
   goBack(route: string): void {
     this.router.navigate(['/courses']);
   }

@@ -6,8 +6,8 @@
 
   <td-layout-manage-list #list>
     <md-nav-list list-items>
-       <a md-list-item (click)="createDialog()">
-       <!--  <a md-list-item (click)="showDialog()"> -->
+      <a md-list-item (click)="createDialog()">
+        <!--  <a md-list-item (click)="showDialog()"> -->
         <md-icon>create</md-icon>
         Create Program
       </a>
@@ -23,10 +23,12 @@
       </button>
     </div>
     <md-card class="">
-      <md-card-title>Programs</md-card-title>
-      <md-card-subtitle>List of programs</md-card-subtitle>
 
-      <md-divider></md-divider>
+      <td-search-box class="push-left push-right"
+                     placeholder="search"
+                     [alwaysVisible]="true"
+                     (searchDebounce)="filter($event)">
+      </td-search-box>
 
       <pams-program-list
         [programs]="programs$ | async"
