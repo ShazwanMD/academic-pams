@@ -8,6 +8,7 @@ import {Admission} from "../../admissions/admission.interface";
 import {FlowState} from "../../../core/flow-state.enum";
 import {MetaState} from "../../../core/meta-state.enum";
 import {AdmissionUpdate} from '../admission-update.interface';
+import { AdmissionStanding } from "../admission-standing.enum";
 //import {OfferingApplicationActions} from "../offering-application.action";
 
 @Component({
@@ -28,9 +29,12 @@ export class AdmissionUpdateTaskCreatorDialog implements OnInit {
   ngOnInit(): void {
     this.createForm = this.formBuilder.group(<AdmissionUpdate>{
      
-       /*// id:null,
-        capacity:'',
-        title:'',*/
+        id: null,
+        gpa:'',
+        cgpa:'',
+        creditTaken:'',
+        creditEarned:'',
+        standing:AdmissionStanding.KB,
              
     });
       

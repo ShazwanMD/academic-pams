@@ -1,12 +1,16 @@
 import {Document} from "../../core/document.interface";
-import {Course} from "../../planner/courses/course.interface";
-import {Program} from "../../planner/programs/program.interface";
+//import {AdmissionStatus} from "./admission-status.enum";
+//import {AdmissionStanding} from "./admission-standing.enum";
+
 export interface AdmissionApplication extends Document {
 
-    /*id: null,
-    capacity: string,
-    title: string,
-    course: Course;
-    program: Program;*/
+    id: number;
+    gpa: string;
+    cgpa: string;
+    creditTaken: string;
+    creditEarned: string;
+    //standing: AdmissionStanding;
+   // status: AdmissionStatus;
+
 
 }

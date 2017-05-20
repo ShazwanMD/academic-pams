@@ -40,7 +40,7 @@ export class AdmissionDetailPage implements OnInit {
       config.viewContainerRef = this.vcf;
       config.role = 'dialog';
       config.width = '40%';
-      config.height = '45%';
+      config.height = '70%';
       config.position = {top: '3px'};
       this.creatorDialogRef = this.dialog.open(AdmissionUpdateTaskCreatorDialog, config);
       this.creatorDialogRef.afterClosed().subscribe(res => {
