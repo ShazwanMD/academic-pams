@@ -19,6 +19,7 @@ import { AdmissionEffects } from "./admission.effect";
 import { AdmissionSelectComponent } from "./component/admission-select.component";
 import {AdmissionCreateTaskCreatorDialog} from "./dialog/admission-create-task-creator.dialog";
 import {AdmissionUpdateTaskCreatorDialog} from "./dialog/admission-update-task-creator.dialog";
+import {AdmissionDeleteTaskCreatorDialog} from "./dialog/admission-delete-task-creator.dialog";
 import {AdmissionApplicationActions} from "./admission-application.action";
 
 @NgModule({
@@ -42,6 +43,7 @@ import {AdmissionApplicationActions} from "./admission-application.action";
     //dialog
     AdmissionCreateTaskCreatorDialog,
     AdmissionUpdateTaskCreatorDialog,
+    AdmissionDeleteTaskCreatorDialog,
   ],
   exports: [
     AdmissionSelectComponent,

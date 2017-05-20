@@ -10,6 +10,7 @@ import {AdmissionActions} from "./admission.action";
 import {TermModuleState} from "../index";
 import { AdmissionUpdateTaskCreatorDialog } from "./dialog/admission-update-task-creator.dialog";
 import {MdDialog, MdDialogConfig, MdDialogRef} from "@angular/material";
+import { AdmissionDeleteTaskCreatorDialog } from "./dialog/admission-delete-task-creator.dialog";
 
 @Component({
   selector: 'pams-admission-detail',
@@ -20,7 +21,8 @@ export class AdmissionDetailPage implements OnInit {
 
   private ADMISSION: string[] = "termModuleState.admission".split(".");
   private admission$: Observable<Admission>;
-private creatorDialogRef: MdDialogRef<AdmissionUpdateTaskCreatorDialog>;
+  private creatorDialogRef: MdDialogRef<AdmissionUpdateTaskCreatorDialog>;
+  private creatorDialogRefDel: MdDialogRef<AdmissionDeleteTaskCreatorDialog>;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -42,6 +44,21 @@ private creatorDialogRef: MdDialogRef<AdmissionUpdateTaskCreatorDialog>;
       config.position = {top: '3px'};
       this.creatorDialogRef = this.dialog.open(AdmissionUpdateTaskCreatorDialog, config);
       this.creatorDialogRef.afterClosed().subscribe(res => {
+        console.log("close dialog");
+        // load something here
+      });
+    }
+  
+  showDialogDelete(): void {
+      console.log("showDialog");
+      let config = new MdDialogConfig();
+      config.viewContainerRef = this.vcf;
+      config.role = 'dialog';
+      config.width = '40%';
+      config.height = '45%';
+      config.position = {top: '3px'};
+      this.creatorDialogRefDel = this.dialog.open(AdmissionDeleteTaskCreatorDialog, config);
+      this.creatorDialogRefDel.afterClosed().subscribe(res => {
         console.log("close dialog");
         // load something here
       });
