@@ -10,7 +10,7 @@ import {MdDialog, MdDialogConfig, MdDialogRef} from "@angular/material";
 })
 export class OfferingSectionListComponent {
     
-    private creatorDialogRef: MdDialogRef<SectionCreateTaskCreatorDialog>;
+    private creatorDialogRefSec: MdDialogRef<SectionCreateTaskCreatorDialog>;
 
     constructor(private vcf: ViewContainerRef,
         private dialog: MdDialog) {}
@@ -28,7 +28,7 @@ export class OfferingSectionListComponent {
     { name: 'action', label: '' }
   ];
 
-  showDialog(): void {
+  showDialogSection(): void {
       console.log("showDialog");
       let config = new MdDialogConfig();
       config.viewContainerRef = this.vcf;
@@ -36,8 +36,8 @@ export class OfferingSectionListComponent {
       config.width = '50%';
       config.height = '70%';
       config.position = {top: '0px'};
-      this.creatorDialogRef = this.dialog.open(SectionCreateTaskCreatorDialog, config);
-      this.creatorDialogRef.afterClosed().subscribe(res => {
+      this.creatorDialogRefSec = this.dialog.open(SectionCreateTaskCreatorDialog, config);
+      this.creatorDialogRefSec.afterClosed().subscribe(res => {
         console.log("close dialog");
         // load something here
       });

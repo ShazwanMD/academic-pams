@@ -10,7 +10,7 @@ import {AcademicSession} from "../../../planner/academic-sessions/academic-sessi
 import {Admission} from "../../admissions/admission.interface";
 import {FlowState} from "../../../core/flow-state.enum";
 import {MetaState} from "../../../core/meta-state.enum";
-import {Section} from '../section.interface';
+import {SectionApplication} from '../section-application.interface';
 import {SectionApplicationActions} from "../section-application.action";
 import {Course} from "../../../planner/courses/course.interface";
 import {Program} from "../../../planner/programs/program.interface";
@@ -32,13 +32,19 @@ export class SectionCreateTaskCreatorDialog implements OnInit {
   }
 
   ngOnInit(): void {
-    this.createForm = this.formBuilder.group(<Section>{
+    this.createForm = this.formBuilder.group(<SectionApplication>{
      
         /*id:null,
         capacity:'',
         title:'',
         course:<Course>{},
         program:<Program>{},*/
+        
+        id: null,
+        capacity: '',
+        ordinal: '',
+        //offering: <Offering>{},
+        //session: <Session>{},
      
      
     });
