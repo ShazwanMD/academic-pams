@@ -18,6 +18,12 @@
                flex/>
       </md-input-container>
     </div>
+        <div layout="row" class="inset" flex>
+      <pams-guardian-type-select
+        [placeholder]="'Guardian Type'"
+        [innerFormControl]="editorForm.controls['guardianType']">
+      </pams-guardian-type-select>
+    </div>
   </form>
 </md-dialog-content>
 <md-dialog-actions align="end">
