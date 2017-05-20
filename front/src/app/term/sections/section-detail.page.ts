@@ -11,6 +11,7 @@ import {SectionActions} from "./section.action";
 import {TermModuleState} from "../index";
 import {MdDialog, MdDialogConfig, MdDialogRef} from "@angular/material";
 import {SectionUpdateTaskCreatorDialog} from "./dialog/section-update-task-creator.dialog";
+import { SectionDeleteTaskCreatorDialog } from "./dialog/section-delete-task-creator.dialog";
 
 
 @Component({
@@ -23,6 +24,7 @@ export class SectionDetailPage implements OnInit {
   private SECTION: string[] = "termModuleState.section".split(".");
   private section$: Observable<Section>;
   private creatorDialogRef: MdDialogRef<SectionUpdateTaskCreatorDialog>;
+private creatorDialogRefDel: MdDialogRef<SectionDeleteTaskCreatorDialog>;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -41,7 +43,7 @@ export class SectionDetailPage implements OnInit {
     config.viewContainerRef = this.vcf;
     config.role = 'dialog';
     config.width = '40%';
-    config.height = '45%';
+    config.height = '40%';
     config.position = {top: '3px'};
     this.creatorDialogRef = this.dialog.open(SectionUpdateTaskCreatorDialog, config);
     this.creatorDialogRef.afterClosed().subscribe(res => {
@@ -49,6 +51,21 @@ export class SectionDetailPage implements OnInit {
       // load something here
     });
   }
+  
+  showDialogDel(): void {
+      console.log("showDialog");
+      let config = new MdDialogConfig();
+      config.viewContainerRef = this.vcf;
+      config.role = 'dialog';
+      config.width = '40%';
+      config.height = '30%';
+      config.position = {top: '3px'};
+      this.creatorDialogRefDel = this.dialog.open(SectionDeleteTaskCreatorDialog, config);
+      this.creatorDialogRefDel.afterClosed().subscribe(res => {
+        console.log("close dialog");
+        // load something here
+      });
+    }
 
   ngOnInit(): void {
     this.route.params.subscribe((params: { canonicalCode: string }) => {
