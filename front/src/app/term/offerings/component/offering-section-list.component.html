@@ -1,8 +1,8 @@
-<md-card> <!-- (click)="showDialogSection()" -->
+<md-card>
   <div toolbar-buttons layout="row" layout-align="start center" flex>
     <md-card-title flex>Sections</md-card-title>
-    <button md-button class="md-icon-button" (click)="showDialogSection()">
-    
+    <button md-button class="md-icon-button" (click)="showSectionDialog()">
+
       <md-icon class="md-24">add</md-icon>
     </button>
   </div>
@@ -11,14 +11,12 @@
     <td-data-table [data]="sections" [columns]="columns" [sortBy]="summary"
                    [sortOrder]="ASC" [sortable]="false" [multiple]="false"
                    [selectable]="false" (rowSelect)="view.emit($event)" dense>
-      <template tdDataTableTemplate="key" let-value="value" let-row="row"
-                let-column="column">
+      <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
         <div layout="row">
           <span flex>{{value}}</span>
         </div>
       </template>
-      <template tdDataTableTemplate="action" let-value="value" let-row="row"
-                let-column="column">
+      <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
         <div layout="row">
           <a md-button color="accent" class="text-upper"
              [routerLink]="['/term/sections', row['canonicalCode']]"> <span>View</span>

@@ -1,5 +1,6 @@
 import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy} from '@angular/core';
 import { Assessment } from '../../assessments/assessment.interface';
+import {Offering} from "../offering.interface";
 
 @Component({
   selector: 'pams-offering-assessment-list',
@@ -8,6 +9,7 @@ import { Assessment } from '../../assessments/assessment.interface';
 })
 export class OfferingAssessmentListComponent {
 
+  @Input() offering: Offering;
   @Input() assessments: Assessment[];
   @Output() view = new EventEmitter<Assessment>();
 

@@ -17,11 +17,8 @@ import {OfferingEffects} from "./offering.effect";
 import {OfferingDetailPage} from "./offering-detail.page";
 import {OfferingComponent} from "./component/offering.component";
 import {OfferingEditorDialog} from "./dialog/offering-editor.dialog";
-import {OfferingCreateTaskCreatorDialog} from "./dialog/offering-create-task-creator.dialog";
 import {CourseSubModule} from "../../planner/courses/index";
 import {ProgramSubModule} from "../../planner/programs/index";
-import {OfferingUpdateTaskCreatorDialog} from "./dialog/offering-update-task-creator.dialog";
-import {OfferingDeleteTaskCreatorDialog} from "./dialog/offering-delete-task-creator.dialog";
 import {OfferingSectionListComponent} from "./component/offering-section-list.component";
 import {OfferingAssessmentListComponent} from "./component/offering-assessment-list.component";
 import {OfferingEnrollmentListComponent} from "./component/offering-enrollment-list.component";
@@ -53,9 +50,6 @@ import {OfferingAppointmentListComponent} from "./component/offering-appointment
 
     //dialog
     OfferingEditorDialog,
-    OfferingCreateTaskCreatorDialog,
-    OfferingUpdateTaskCreatorDialog,
-    OfferingDeleteTaskCreatorDialog,
 
   ],
   exports: [],

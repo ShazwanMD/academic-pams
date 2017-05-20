@@ -44,5 +44,22 @@ export class SectionActions {
     };
   }
 
+  static ADD_SECTION = '[Section] Add Section';
+
+  addSection(section): Action {
+    return {
+      type: SectionActions.ADD_SECTION,
+      payload: {admission:section}
+    };
+  }
+
+  static ADD_SECTION_SUCCESS = '[Section] Add Section Success';
+
+  addSectionSuccess(message): Action {
+    return {
+      type: SectionActions.ADD_SECTION_SUCCESS,
+      payload: message
+    };
+  }
 
 }

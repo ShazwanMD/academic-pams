@@ -64,25 +64,7 @@ public class ProfileController {
     private ProfileTransformer profileTransformer;
 
     //====================================================================================================
-    // PROFILE UPDATE
-    //====================================================================================================
-    @RequestMapping(value = "/students/{matricNo}", method = RequestMethod.PUT)
-    public ResponseEntity<String> updateStudent(@PathVariable String matricNo, @RequestBody Student vo) {
-        dummyLogin();
-
-        AdStudent student = profileService.findStudentById(vo.getId());
-        student.setName(vo.getName());
-        student.setPhone(vo.getPhone());
-        student.setEmail(vo.getEmail());
-        student.setMobile(vo.getMobile());
-        student.setFax(vo.getFax());
-        profileService.updateStudent(student);
-        return new ResponseEntity<String>("Success", HttpStatus.OK);
-
-    }
-
-    //====================================================================================================
-    // Address UPDATE
+    // ADDRESS
     //====================================================================================================
     @RequestMapping(value = "/students/{identityNo}/addresses", method = RequestMethod.PUT)
     public ResponseEntity<String> updateAddress(@PathVariable String identityNo, @RequestBody Address vo) {
@@ -100,7 +82,7 @@ public class ProfileController {
 
     }
     //====================================================================================================
-    // Contact Add
+    // CONTACT
     //====================================================================================================
 
     @RequestMapping(value = "/students/{identityNo}/contacts", method = RequestMethod.DELETE)
@@ -127,7 +109,7 @@ public class ProfileController {
     }
     
     //====================================================================================================
-    // Guarantor Add
+    // GUARANTOR
     //====================================================================================================
 
    @RequestMapping(value = "/students/{identityNo}/guarantors", method = RequestMethod.POST)
@@ -145,7 +127,7 @@ public class ProfileController {
    
    
    //====================================================================================================
-   // Guardian Add
+   // GUARDIAN
    //====================================================================================================
 
   @RequestMapping(value = "/students/{identityNo}/guardians", method = RequestMethod.POST)
@@ -175,6 +157,21 @@ public class ProfileController {
     public ResponseEntity<Student> findStudentByMatricNo(@PathVariable String matricNo) throws UnsupportedEncodingException {
         return new ResponseEntity<Student>(profileTransformer
                 .toStudentVo(profileService.findStudentByMatricNo(matricNo)), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/students/{matricNo}", method = RequestMethod.PUT)
+    public ResponseEntity<String> updateStudent(@PathVariable String matricNo, @RequestBody Student vo) {
+        dummyLogin();
+
+        AdStudent student = profileService.findStudentById(vo.getId());
+        student.setName(vo.getName());
+        student.setPhone(vo.getPhone());
+        student.setEmail(vo.getEmail());
+        student.setMobile(vo.getMobile());
+        student.setFax(vo.getFax());
+        profileService.updateStudent(student);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+
     }
 
     @RequestMapping(value = "/students/{identityNo}/guardians", method = RequestMethod.GET)

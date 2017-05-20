@@ -11,18 +11,22 @@
         </pams-offering>
 
         <pams-offering-assessment-list
+          [offering]="offering$ | async"
           [assessments]="assessments$ | async">
         </pams-offering-assessment-list>
 
         <pams-offering-section-list
+          [offering]="offering$ | async"
           [sections]="sections$ | async">
         </pams-offering-section-list>
 
         <pams-offering-enrollment-list
+          [offering]="offering$ | async"
           [enrollments]="enrollments$ | async">
         </pams-offering-enrollment-list>
 
         <pams-offering-appointment-list
+          [offering]="offering$ | async"
           [appointments]="appointments$ | async">
         </pams-offering-appointment-list>
 
@@ -46,11 +50,13 @@
               <md-icon md-list-avatar>done_all</md-icon>
               <h4 md-line>Delete Offering</h4>
               <p md-line>Delete this offering</p>
-            </md-list-item><md-divider></md-divider>
-             <h3 md-subheader>Term Menu</h3>
-             <md-list-item [routerLink]="['/term/admissions']" > <md-icon md-list-avatar>email</md-icon>
-            <h4 md-line>Admission</h4>
-            <p md-line>Watch this admissions</p>
+            </md-list-item>
+            <md-divider></md-divider>
+            <h3 md-subheader>Term Menu</h3>
+            <md-list-item [routerLink]="['/term/admissions']">
+              <md-icon md-list-avatar>email</md-icon>
+              <h4 md-line>Admission</h4>
+              <p md-line>Watch this admissions</p>
             </md-list-item>
           </md-nav-list>
         </md-card>

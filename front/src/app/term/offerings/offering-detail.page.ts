@@ -11,8 +11,6 @@ import {OfferingActions} from "./offering.action";
 import {TermModuleState} from "../index";
 import {Section} from "../sections/section.interface";
 import {MdDialog, MdDialogConfig, MdDialogRef} from "@angular/material";
-import {OfferingUpdateTaskCreatorDialog} from "./dialog/offering-update-task-creator.dialog";
-import {OfferingDeleteTaskCreatorDialog} from "./dialog/offering-delete-task-creator.dialog";
 import {Enrollment} from "../enrollments/enrollment.interface";
 import {Appointment} from "../appointments/appointment.interface";
 import {Assessment} from "../assessments/assessment.interface";
@@ -35,8 +33,6 @@ export class OfferingDetailPage implements OnInit {
   private assessments$: Observable<Assessment[]>;
   private appointments: Observable<Appointment[]>;
   private enrollments$: Observable<Enrollment[]>;
-  private creatorDialogRef: MdDialogRef<OfferingUpdateTaskCreatorDialog>;
-  private creatorDialogRefDelete: MdDialogRef<OfferingDeleteTaskCreatorDialog>;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -51,36 +47,6 @@ export class OfferingDetailPage implements OnInit {
     this.assessments$ = this.store.select(...this.ASSESSMENTS);
     this.enrollments$ = this.store.select(...this.ENROLLMENTS);
     this.appointments = this.store.select(...this.APPOINTMENTS);
-  }
-
-  showDialog(): void {
-    console.log("showDialog");
-    let config = new MdDialogConfig();
-    config.viewContainerRef = this.vcf;
-    config.role = 'dialog';
-    config.width = '40%';
-    config.height = '45%';
-    config.position = {top: '3px'};
-    this.creatorDialogRef = this.dialog.open(OfferingUpdateTaskCreatorDialog, config);
-    this.creatorDialogRef.afterClosed().subscribe(res => {
-      console.log("close dialog");
-      // load something here
-    });
-  }
-
-  deleteDialog(): void {
-    console.log("deleteDialog");
-    let config = new MdDialogConfig();
-    config.viewContainerRef = this.vcf;
-    config.role = 'dialog';
-    config.width = '40%';
-    config.height = '30%';
-    config.position = {top: '3px'};
-    this.creatorDialogRefDelete = this.dialogDelete.open(OfferingDeleteTaskCreatorDialog, config);
-    this.creatorDialogRefDelete.afterClosed().subscribe(res => {
-      console.log("close dialog");
-      // load something here
-    });
   }
 
   ngOnInit(): void {
