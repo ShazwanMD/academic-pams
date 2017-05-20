@@ -144,7 +144,6 @@ public class WhenGetEnrollment extends Stage<WhenGetEnrollment> {
 		section.setCanonicalCode("MASTER/MBA/GST5013/201720181/Section A");
 		section.setOrdinal(1);
 		section.setCapacity(20);
-		section.setSession(session);
 		section.setOffering(offer);
 		termService.saveSection(section);
 

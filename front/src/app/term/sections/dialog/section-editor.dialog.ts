@@ -48,10 +48,8 @@ export class SectionEditorDialog implements OnInit {
     section.canonicalCode = this._offering.canonicalCode + "" + section.ordinal
     section.code = this._offering.code + "" + section.ordinal
 
-    console.log(JSON.stringify(section));
-
     // dispatch action
-    this.store.dispatch(this.actions.addSection(section));
+    this.store.dispatch(this.actions.addSection(this._offering, section));
     this.dialog.close();
   }
 }

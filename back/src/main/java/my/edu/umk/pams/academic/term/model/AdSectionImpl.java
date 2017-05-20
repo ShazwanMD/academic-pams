@@ -2,8 +2,6 @@ package my.edu.umk.pams.academic.term.model;
 
 
 import my.edu.umk.pams.academic.core.AdMetadata;
-import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
-import my.edu.umk.pams.academic.planner.model.AdAcademicSessionImpl;
 
 import javax.persistence.*;
 import java.util.List;
@@ -34,10 +32,6 @@ public class AdSectionImpl implements AdSection {
 
     @Column(name = "CAPACITY", nullable = false)
     private Integer capacity;
-
-    @ManyToOne(targetEntity = AdAcademicSessionImpl.class)
-    @JoinColumn(name = "SESSION_ID", nullable = false)
-    private AdAcademicSession session;
 
     @ManyToOne(targetEntity = AdOfferingImpl.class)
     @JoinColumn(name = "OFFERING_ID", nullable = false)
@@ -110,16 +104,6 @@ public class AdSectionImpl implements AdSection {
     @Override
     public void setOrdinal(Integer ordinal) {
         this.ordinal = ordinal;
-    }
-
-    @Override
-    public AdAcademicSession getSession() {
-        return session;
-    }
-
-    @Override
-    public void setSession(AdAcademicSession session) {
-        this.session = session;
     }
 
     @Override

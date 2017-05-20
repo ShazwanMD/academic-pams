@@ -302,12 +302,6 @@ export class TermService {
       .map((res: Response) => <Appointment>res.json());
   }
 
-  // findAppointmentsByAcademicSession(session:AcademicSession): Observable<Appointment[]> {
-  //   console.log("findCurrentAppointments");
-  //   return this.http.get(environment.endpoint + '/api/term/appointments/' + session.code)
-  //     .map((res: Response) => <Appointment[]>res.json());
-  // }
-
   // ==================================================================================================== //
   // SECTION
   // ==================================================================================================== //
@@ -362,5 +356,16 @@ export class TermService {
     console.log("findAppointmentsByOffering");
     return this.http.get(environment.endpoint + '/api/term/offerings/' + offering.canonicalCode + '/appointments')
       .map((res: Response) => <Appointment[]>res.json());
+  }
+
+  addSection(offering: Offering, section: Section): Observable<String> {
+    console.log("addSection");
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
+    return this.http.post(environment.endpoint + '/api/term/offerings/' + offering.canonicalCode + '/sections', JSON.stringify(section), options)
+      .flatMap((res: Response) => Observable.of(res.text()));
   }
 }

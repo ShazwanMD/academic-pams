@@ -119,7 +119,10 @@ public interface TermService {
 
     void closeSection(AdSection section);// todo(uda): throws SectionException;
 
-    void saveSection(AdSection section);
+    @Deprecated
+    void saveSection(AdSection section); // use addSection
+
+    void addSection(AdOffering offering, AdSection section);
 
     void updateSection(AdSection section);
 
@@ -428,7 +431,10 @@ public interface TermService {
     void dismiss(AdSection section, AdStaff staff);
 
     // todo(uda): business method is appoint()
+    @Deprecated
     void saveAppointment(AdAppointment appointment);
+
+    void addAppointment(AdSection section, AdAppointment appointment);
 
     void updateAppointment(AdAppointment appointment);
 

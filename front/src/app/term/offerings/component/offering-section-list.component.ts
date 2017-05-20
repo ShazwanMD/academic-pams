@@ -30,7 +30,7 @@ export class OfferingSectionListComponent {
 
   private columns: any[] = [
     {name: 'id', label: 'Id'},
-    {name: 'code', label: 'Code'},
+    {name: 'ordinal', label: '#'},
     {name: 'capacity', label: 'Capacity'},
     {name: 'appointmentCount', label: 'Appointment'},
     {name: 'enrollmentCount', label: 'Enrollment'},

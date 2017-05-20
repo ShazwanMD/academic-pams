@@ -350,8 +350,16 @@ public class TermServiceImpl implements TermService {
         applicationContext.publishEvent(event);
     }
 
+    @Deprecated
     @Override
     public void saveSection(AdSection section) {
+        sectionDao.save(section, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
+
+    @Override
+    public void addSection(AdOffering offering, AdSection section) {
+        section.setOffering(offering);
         sectionDao.save(section, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
@@ -443,8 +451,7 @@ public class TermServiceImpl implements TermService {
     public void addAssessment(AdOffering offering, AdAssessment assessment) {
         assessment.setOffering(offering);
         assessmentDao.save(assessment, securityService.getCurrentUser());
-        // sessionFactory.getCurrentSession().refresh(assessment);
-
+        sessionFactory.getCurrentSession().flush();
     }
 
     @Override
@@ -1045,7 +1052,6 @@ public class TermServiceImpl implements TermService {
             LOG.debug("section id: {}", section.getId());
 
         // find admission
-        AdAcademicSession session = section.getSession();
         AdOffering offering = section.getOffering();
 
         // create enrollment
@@ -1058,7 +1064,6 @@ public class TermServiceImpl implements TermService {
 
         // TODO: check process calendar
         // TODO: PRA, WAJIB, BERDENDA
-        AdAcademicSession academicSession = section.getSession();
         AdStudyCenter studyCenter = admission.getStudyCenter();
         // todo: EnrollmentConfirmedEvent event = new EnrollmentConfirmedEvent();
         // todo: applicationContext.publishEvent(event);
@@ -1075,7 +1080,6 @@ public class TermServiceImpl implements TermService {
         enrollment.setStatus(AdEnrollmentStatus.WITHDRAWN);
         updateEnrollment(enrollment);
 
-        AdAcademicSession academicSession = section.getSession();
         AdStudyCenter studyCenter = admission.getStudyCenter();
         AdCohort cohort = student.getCohort();
         EnrollmentWithdrawnEvent event = new EnrollmentWithdrawnEvent();
@@ -1125,9 +1129,7 @@ public class TermServiceImpl implements TermService {
     @Override
     public void addGradebooks(AdSection section, AdEnrollment enrollment, AdGradebook gradebook) {
         AdOffering offering = section.getOffering();
-        AdAcademicSession session = section.getSession();
         Validate.notNull(offering, "Offering cannot be null");
-        Validate.notNull(session, "Session cannot be null");
         gradebookDao.addGradebook(section, enrollment, gradebook);
         sessionFactory.getCurrentSession().flush();
         // List<AdAssessment> assessments = findAssessments(session, term);
@@ -1147,9 +1149,7 @@ public class TermServiceImpl implements TermService {
     @Override
     public void addGradebooks(AdSection section, AdAssessment assessment) {
         AdOffering offering = section.getOffering();
-        AdAcademicSession session = section.getSession();
         Validate.notNull(offering, "Offering cannot be null");
-        Validate.notNull(session, "Session cannot be null");
         List<AdEnrollment> enrollments = findEnrollments(section);
         LOG.debug("assessments found: " + enrollments.size());
         sessionFactory.getCurrentSession().flush();
@@ -1276,6 +1276,13 @@ public class TermServiceImpl implements TermService {
 
     @Override
     public void saveAppointment(AdAppointment appointment) {
+        appointmentDao.save(appointment, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
+
+    @Override
+    public void addAppointment(AdSection section, AdAppointment appointment) {
+        appointment.setSection(section);
         appointmentDao.save(appointment, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }

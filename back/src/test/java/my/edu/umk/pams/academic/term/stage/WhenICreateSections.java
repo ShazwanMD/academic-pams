@@ -117,8 +117,6 @@ public class WhenICreateSections extends Stage<WhenICreateSections> {
 				section.setCode(code);
 				section.setOrdinal(1);
 				section.setOffering(offering);
-				section.setSession(academicSession);
-
 				termService.saveSection(section);
 
 				Assert.notNull(section, "Section should be not null");

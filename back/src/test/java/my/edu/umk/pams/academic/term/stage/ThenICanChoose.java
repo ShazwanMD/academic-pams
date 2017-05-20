@@ -57,8 +57,7 @@ public class ThenICanChoose extends Stage<ThenICanChoose> {
 				// check if section has exceeded capacity
 				LOG.debug("section CanonicalCode:{}",section.getCanonicalCode());
 				LOG.debug("section Capacity:{}",section.getCapacity());
-				LOG.debug("section Session:{}",section.getSession().getDescription());
-				
+
 				boolean exceededEnrollment = termService.hasExceededEnrollment(section);
 				Assert.isTrue(!exceededEnrollment, "Section is full");
 			}

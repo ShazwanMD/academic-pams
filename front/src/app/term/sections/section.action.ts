@@ -46,10 +46,10 @@ export class SectionActions {
 
   static ADD_SECTION = '[Section] Add Section';
 
-  addSection(section): Action {
+  addSection(offering, section): Action {
     return {
       type: SectionActions.ADD_SECTION,
-      payload: {admission:section}
+      payload: {offering:offering, section:section}
     };
   }
 

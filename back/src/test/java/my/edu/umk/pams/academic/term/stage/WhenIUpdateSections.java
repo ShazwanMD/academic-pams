@@ -101,8 +101,7 @@ public class WhenIUpdateSections extends Stage<WhenIUpdateSections> {
 		section.setOrdinal(1);
 		section.setCapacity(30);
 		section.setOffering(offering);
-		section.setSession(academicSession);
-			
+
 		termService.updateSection(section);
 		
 		//new updated section data

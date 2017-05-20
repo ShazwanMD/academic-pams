@@ -170,11 +170,25 @@ public class TermTransformer {
         Section vo = new Section();
         vo.setId(section.getId());
         vo.setCode(section.getCode());
-        vo.setCapacity(section.getCapacity());
         vo.setCanonicalCode(section.getCanonicalCode());
-        vo.setOffering(this.toOfferingVo(section.getOffering()));
+        vo.setCapacity(section.getCapacity());
         vo.setOrdinal(section.getOrdinal());
-        vo.setSession(plannerTransformer.toAcademicSessionVo(section.getSession()));
+        vo.setOffering(this.toOfferingVo(section.getOffering()));
+        return vo;
+    }
+
+    public Assessment toAssessmentVo(AdAssessment assessment) {
+        Assessment vo = new Assessment();
+        vo.setId(assessment.getId());
+        vo.setCode(assessment.getCode());
+        vo.setCanonicalCode(assessment.getCanonicalCode());
+        vo.setDescription(assessment.getDescription());
+        vo.setOrdinal(assessment.getOrdinal());
+        vo.setWeight(assessment.getWeight());
+        vo.setTotalScore(assessment.getTotalScore());
+        vo.setAssessmentType(AssessmentType.get(assessment.getType().ordinal()));
+        vo.setAssessmentCategory(AssessmentCategory.get(assessment.getType().ordinal()));
+        vo.setOffering(termTransformer.toOfferingVo(assessment.getOffering()));
         return vo;
     }
 
@@ -242,24 +256,6 @@ public class TermTransformer {
                 .map((section) -> toSectionVo(section))
                 .collect(toList());
         return vos;
-    }
-
-    //============================================================================
-    //	ASSESSMENT
-    //============================================================================
-    public Assessment toAssessmentVo(AdAssessment assessment) {
-    	Assessment vo = new Assessment();
-        vo.setId(assessment.getId());
-        vo.setCode(assessment.getCode());
-        vo.setCanonicalCode(assessment.getCanonicalCode());
-        vo.setDescription(assessment.getDescription());
-        vo.setOrdinal(assessment.getOrdinal());
-        vo.setWeight(assessment.getWeight());
-        vo.setTotalScore(assessment.getTotalScore());
-        vo.setAssessmentType(AssessmentType.get(assessment.getType().ordinal()));
-        vo.setAssessmentCategory(AssessmentCategory.get(assessment.getType().ordinal()));
-        vo.setOffering(termTransformer.toOfferingVo(assessment.getOffering()));
-        return vo;
     }
 
     public List<Assessment> toAssessmentVos(List<AdAssessment> assessments) {

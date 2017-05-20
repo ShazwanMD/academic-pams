@@ -1,7 +1,6 @@
 package my.edu.umk.pams.academic.term.model;
 
 import my.edu.umk.pams.academic.core.AdMetaObject;
-import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
 
 import java.util.List;
 
@@ -25,10 +24,6 @@ public interface AdSection extends AdMetaObject {
     Integer getCapacity();
 
     void setCapacity(Integer capacity);
-
-    AdAcademicSession getSession();
-
-    void setSession(AdAcademicSession session);
 
     AdOffering getOffering();
 
