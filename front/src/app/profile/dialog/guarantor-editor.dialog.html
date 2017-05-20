@@ -18,6 +18,12 @@
                flex/>
       </md-input-container>
     </div>
+        <div layout="row" class="inset" flex>
+      <pams-guarantor-type-select
+        [placeholder]="'Guarantor Type'"
+        [innerFormControl]="editorForm.controls['guarantorType']">
+      </pams-guarantor-type-select>
+    </div>
   </form>
 </md-dialog-content>
 <md-dialog-actions align="end">
