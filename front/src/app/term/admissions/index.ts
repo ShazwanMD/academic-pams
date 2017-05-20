@@ -17,6 +17,9 @@ import { AdmissionDetailPage } from "./admission-detail.page";
 import { AdmissionCenterPage } from "./admission-center.page";
 import { AdmissionEffects } from "./admission.effect";
 import { AdmissionSelectComponent } from "./component/admission-select.component";
+import {AdmissionCreateTaskCreatorDialog} from "./dialog/admission-create-task-creator.dialog";
+import {AdmissionUpdateTaskCreatorDialog} from "./dialog/admission-update-task-creator.dialog";
+import {AdmissionApplicationActions} from "./admission-application.action";
 
 @NgModule({
   imports: [
@@ -35,6 +38,10 @@ import { AdmissionSelectComponent } from "./component/admission-select.component
     AdmissionListComponent,
     AdmissionComponent,
     AdmissionSelectComponent,
+    
+    //dialog
+    AdmissionCreateTaskCreatorDialog,
+    AdmissionUpdateTaskCreatorDialog,
   ],
   exports: [
     AdmissionSelectComponent,
@@ -51,6 +58,7 @@ export class AdmissionSubModule {
         IdentityService,
         CommonService,
         AdmissionActions,
+        AdmissionApplicationActions,
       ],
     };
   }

@@ -13,7 +13,7 @@
             <md-card> <md-card-title>Action</md-card-title> <md-card-subtitle>Actions
             available on current admission</md-card-subtitle> <md-divider></md-divider> <md-nav-list
                 flex dense> <md-list-item
-                [routerLink]="['/appointments-assign', appointment?.code]">
+                (click)="showDialog()">
             <md-icon md-list-avatar>assignment_ind</md-icon>
             <h4 md-line>Update Admission</h4>
             <p md-line>Update this admission</p>
