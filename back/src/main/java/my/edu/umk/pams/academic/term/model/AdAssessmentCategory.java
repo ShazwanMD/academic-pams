@@ -1,5 +1,7 @@
 package my.edu.umk.pams.academic.term.model;
 
+import my.edu.umk.pams.academic.identity.model.AdContactType;
+
 /**
  * @author PAMS
  */
@@ -20,4 +22,9 @@ public enum AdAssessmentCategory {
     public void setDescription(String description) {
         this.description = description;
     }
+    
+    public static AdAssessmentCategory get(int index){
+        return values()[index];
+    }
+
 }

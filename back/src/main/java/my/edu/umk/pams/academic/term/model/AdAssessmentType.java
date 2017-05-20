@@ -36,5 +36,8 @@ public enum AdAssessmentType {
     AdAssessmentType(AdAssessmentCategory category) {
         this.category = category;
     }
+    public static AdAssessmentType get(int index){
+        return values()[index];
+    }
 
 }
