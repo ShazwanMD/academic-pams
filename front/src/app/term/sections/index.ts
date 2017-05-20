@@ -17,6 +17,7 @@ import {SectionListComponent} from "./component/section-list.component";
 import {SectionSelectComponent} from "./component/section-select.component";
 import {SectionUpdateTaskCreatorDialog} from "./dialog/section-update-task-creator.dialog";
 import {SectionDeleteTaskCreatorDialog} from "./dialog/section-delete-task-creator.dialog";
+import { SectionCreateTaskCreatorDialog } from "./dialog/section-create-task-creator.dialog";
 
 
 @NgModule({
@@ -39,6 +40,7 @@ import {SectionDeleteTaskCreatorDialog} from "./dialog/section-delete-task-creat
     //dialog
     SectionUpdateTaskCreatorDialog,
     SectionDeleteTaskCreatorDialog,
+    SectionCreateTaskCreatorDialog,
 
   ],
   exports: [
