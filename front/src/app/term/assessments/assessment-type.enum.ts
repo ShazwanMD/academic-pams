@@ -1,4 +1,4 @@
-enum AssessmentType{
+export enum AssessmentType{
   QUIZ,               // 0   // cw
   TEST,               // 1
   REPORT,             // 2
