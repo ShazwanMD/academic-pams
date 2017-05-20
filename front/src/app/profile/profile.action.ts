@@ -217,4 +217,25 @@ export class ProfileActions {
     };
   }
 
+    static REMOVE_CONTACT = '[Profile] Remove Contact';
+
+  deleteContact(student,contact): Action {
+    console.log("deleteContact");
+    return {
+      type: ProfileActions.REMOVE_CONTACT,
+      payload: {student:student, contact:contact}
+    };
+  }
+
+  static REMOVE_CONTACT_SUCCESS = '[Profile] Remove Contact  Success';
+
+  deleteContactSuccess(message): Action {
+    console.log("deleteContactSuccess");
+    return {
+      type: ProfileActions.REMOVE_CONTACT_SUCCESS,
+      payload: message
+    };
+  }
+  
+
 }

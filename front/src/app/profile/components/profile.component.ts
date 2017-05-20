@@ -80,6 +80,10 @@ export class ProfileComponent implements OnInit {
     });
   }
 
+    deleteContact(contact: Contact): void {
+    this.store.dispatch(this.actions.deleteContact(this.student, contact))
+  }
+
     addGuarantorDialog(): void {
     console.log("add");
     let config = new MdDialogConfig();

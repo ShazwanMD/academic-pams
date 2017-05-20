@@ -119,4 +119,14 @@ export class ProfileService {
     return this.http.post(environment.endpoint + '/api/profile/students/' + student.identityNo + '/guarantors', JSON.stringify(guarantor), options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
+
+   deleteContact(student: Student, contact: Contact) {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
+    return this.http.delete(environment.endpoint + '/api/profile/students/'  + student.identityNo + '/contacts', options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
 }
