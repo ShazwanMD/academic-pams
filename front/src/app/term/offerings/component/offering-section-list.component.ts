@@ -13,7 +13,7 @@ export class OfferingSectionListComponent {
     private creatorDialogRef: MdDialogRef<SectionCreateTaskCreatorDialog>;
 
     constructor(private vcf: ViewContainerRef,
-        private dialog: MdDialog) {
+        private dialog: MdDialog) {}
 
 
   @Input() sections: Section[];
