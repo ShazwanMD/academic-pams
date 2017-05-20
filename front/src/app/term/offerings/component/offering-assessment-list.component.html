@@ -20,6 +20,15 @@
           <span flex>{{value}}</span>
         </div>
       </template>
+       <template tdDataTableTemplate="action" let-value="value" let-row="row"
+                let-column="column">
+        <div layout="row">
+          <a md-button color="accent" class="text-upper"
+             [routerLink]="['/term/appointments', row['canonicalCode']]"> <span>View</span>
+          </a>
+        </div>
+      </template>
+      
     </td-data-table>
   </md-card-content>
 </md-card>

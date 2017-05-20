@@ -5,9 +5,9 @@ import { Offering } from "../offerings/offering.interface";
 import { AcademicSession } from "../../planner/academic-sessions/academic-session.interface";
 export interface SectionApplication extends Document {
 
-    id: null,
+   /* id: null,
     capacity: string,
-    ordinal: string,
+    ordinal: string,*/
     //offering: Offering;
     //session: AcademicSession;
 

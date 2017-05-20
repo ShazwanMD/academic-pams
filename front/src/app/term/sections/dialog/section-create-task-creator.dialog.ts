@@ -14,6 +14,7 @@ import {SectionApplication} from '../section-application.interface';
 import {SectionApplicationActions} from "../section-application.action";
 import {Course} from "../../../planner/courses/course.interface";
 import {Program} from "../../../planner/programs/program.interface";
+import { Section } from "../section.interface";
 
 
 @Component({
@@ -32,20 +33,19 @@ export class SectionCreateTaskCreatorDialog implements OnInit {
   }
 
   ngOnInit(): void {
-    this.createForm = this.formBuilder.group(<SectionApplication>{
+    this.createForm = this.formBuilder.group(<Section>{
      
+        
+        id:null,
+        code:'',
+        
         /*id:null,
         capacity:'',
-        title:'',
-        course:<Course>{},
-        program:<Program>{},*/
+        ordinal:'',
+        offering:<Offering>{},
+        session:<Session>{},*/
         
-        id: null,
-        capacity: '',
-        ordinal: '',
-        //offering: <Offering>{},
-        //session: <Session>{},
-     
+         
      
     });
       

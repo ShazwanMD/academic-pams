@@ -2,6 +2,10 @@ import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, ViewCon
 import { Section } from '../../sections/section.interface';
 import { SectionCreateTaskCreatorDialog } from "../../sections/dialog/section-create-task-creator.dialog";
 import {MdDialog, MdDialogConfig, MdDialogRef} from "@angular/material";
+import { ActivatedRoute, Router } from "@angular/router";
+import { SectionActions } from "../../sections/section.action";
+import { Store } from "@ngrx/store";
+import { TermModuleState } from "../../index";
 
 @Component({
   selector: 'pams-offering-section-list',
@@ -12,8 +16,12 @@ export class OfferingSectionListComponent {
     
     private creatorDialogRefSec: MdDialogRef<SectionCreateTaskCreatorDialog>;
 
-    constructor(private vcf: ViewContainerRef,
-        private dialog: MdDialog) {}
+    constructor(private router: Router,
+        private route: ActivatedRoute,
+        private actions: SectionActions,
+        private store: Store<TermModuleState>,
+        private vcf: ViewContainerRef,
+        private dialog: MdDialog,) {}
 
 
   @Input() sections: Section[];
