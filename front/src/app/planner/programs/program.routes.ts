@@ -9,5 +9,5 @@ export const ProgramRoutes: Routes = [
   {path: 'planner/programs', component: ProgramCenterPage},
   {path: 'planner/programs/program-detail/:code', component: ProgramDetailPage},
   {path: 'planner/programs/dialog/program-creator.dialog', component: ProgramCreatorDialog},
-  {path: 'planner/programs/dialog/program-update.dialog', component: ProgramUpdateDialog}
+  // {path: 'planner/programs/dialog/program-update.dialog', component: ProgramUpdateDialog}
 ];

@@ -26,6 +26,14 @@ public interface AdProgram extends AdMetaObject {
     String getTitleMs();
 
     void setTitleMs(String titleMs);
+    
+    boolean isCurrent();
+
+    void setCurrent(boolean current);
+    
+    AdProgramStatus getStatus();
+
+    void setStatus(AdProgramStatus status);
 
     AdProgramLevel getProgramLevel();
 
@@ -38,5 +46,7 @@ public interface AdProgram extends AdMetaObject {
     List<AdOffering> getOfferings();
 
     void setOfferings(List<AdOffering> offerings);
+
+
 
 }

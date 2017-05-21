@@ -1025,6 +1025,8 @@
     create table AD_PRGM (
         ID int8 not null,
         CODE varchar(255) not null,
+        CURRENT_ boolean not null,
+        STATUS int4 not null,
         C_TS timestamp,
         C_ID int8,
         D_TS timestamp,
@@ -1037,6 +1039,7 @@
         TITLE_MS varchar(255) not null,
         FACULTY_ID int8,
         LEVEL_ID int8,
+        
         primary key (ID)
     );
 

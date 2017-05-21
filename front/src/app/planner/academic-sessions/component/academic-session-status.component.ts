@@ -1,3 +1,4 @@
+import { AcademicSessionStatus } from '../academic-session-status.enum';
 import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy} from '@angular/core';
 import {AcademicSession} from "../academic-session.interface";
 
@@ -9,4 +10,5 @@ import {AcademicSession} from "../academic-session.interface";
 })
 export class AcademicSessionStatusComponent {
   @Input() academicSession: AcademicSession;
+  @Input() academicSessionStatus: AcademicSessionStatus;
 }

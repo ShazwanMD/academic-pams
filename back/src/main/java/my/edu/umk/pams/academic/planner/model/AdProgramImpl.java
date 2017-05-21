@@ -32,7 +32,15 @@ public class AdProgramImpl implements AdProgram {
 
     @Column(name = "TITLE_EN", nullable = false)
     private String titleEn;
+    
+    @Column(name = "CURRENT_", nullable = false)
+    private boolean current;
 
+    
+    @Column(name = "STATUS", nullable = false)
+    private AdProgramStatus status;
+    
+    
     @ManyToOne(targetEntity = AdProgramLevelImpl.class)
     @JoinColumn(name = "LEVEL_ID")
     private AdProgramLevel programLevel;
@@ -46,6 +54,10 @@ public class AdProgramImpl implements AdProgram {
 
     @Embedded
     private AdMetadata metadata;
+    
+    public AdProgramImpl() {
+        setStatus(AdProgramStatus.NEW);
+    }
 
     @Override
     public Long getId() {
@@ -55,6 +67,8 @@ public class AdProgramImpl implements AdProgram {
     public void setId(Long id) {
         this.id = id;
     }
+    
+ 
 
     @Override
     public String getCode() {
@@ -95,7 +109,23 @@ public class AdProgramImpl implements AdProgram {
     public void setTitleEn(String titleEn) {
         this.titleEn = titleEn;
     }
+    
+    public boolean isCurrent() {
+        return current;
+    }
 
+    public void setCurrent(boolean current) {
+        this.current = current;
+    }
+
+    
+    public AdProgramStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(AdProgramStatus status) {
+        this.status = status;
+    }
     @Override
     public AdProgramLevel getProgramLevel() {
         return programLevel;

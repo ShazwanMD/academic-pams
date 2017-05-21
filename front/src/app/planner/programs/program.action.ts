@@ -108,4 +108,40 @@ export class ProgramActions {
       payload: program
     };
   }
+
+
+
+  static ACTIVATE_PROGRAM = '[Program] Activate Program';
+  activateProgram(program): Action {
+    return {
+      type: ProgramActions.ACTIVATE_PROGRAM,
+      payload: program
+    };
+  }
+
+static ACTIVATE_PROGRAM_SUCCESS = '[Program] Activate AcademicSession Success';
+  activateProgramSuccess(program): Action {
+    return {
+      type: ProgramActions.ACTIVATE_PROGRAM_SUCCESS,
+      payload: program
+    };
+  }
+
+ static DEACTIVATE_PROGRAM = '[Program] Deactivate Program';
+  deactivateProgram(program): Action {
+    return {
+      type: ProgramActions.DEACTIVATE_PROGRAM,
+      payload: program
+    };
+  }
+
+static DEACTIVATE_PROGRAM_SUCCESS = '[Program] Activate Program Success';
+  deactivateProgramSuccess(program): Action {
+    return {
+      type: ProgramActions.DEACTIVATE_PROGRAM_SUCCESS,
+      payload: program
+    };
+  }
+
+
 }

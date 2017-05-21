@@ -22,17 +22,12 @@
       </button>
     </div>
 
+
     <md-card>
-      <td-search-box class="push-left push-right"
-                     placeholder="search"
-                     [alwaysVisible]="true"
-                     (searchDebounce)="filter($event)">
+      <td-search-box class="push-left push-right" placeholder="search" [alwaysVisible]="true" (searchDebounce)="filter($event)">
       </td-search-box>
 
-      <pams-academic-session-list
-        [academicSessions]="academicSessions$ | async"
-        (view)="viewAcademicSession($event)"></pams-academic-session-list>
-
+      <pams-academic-session-list [academicSessions]="academicSessions$ | async" (view)="viewAcademicSession($event)"></pams-academic-session-list>
       <md-divider></md-divider>
       <md-card-actions>
         <a md-button color="accent" class="text-upper" [routerLink]="['/session-search']">

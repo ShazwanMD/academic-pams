@@ -15,6 +15,7 @@ import static java.util.stream.Collectors.toList;
 /**
  * @author PAMS
  */
+
 @Component("plannerTransformer")
 public class PlannerTransformer {
 
@@ -29,9 +30,13 @@ public class PlannerTransformer {
         vo.setCode(academicSession.getCode());
         vo.setDescription(academicSession.getDescription());
         vo.setCurrent(academicSession.isCurrent());
+        vo.setstartDate(academicSession.getStartDate());
+        vo.setendDate(academicSession.getEndDate());
+        vo.setSemester(AcademicSemester.get(academicSession.getSemester().ordinal()));
+        vo.setYear(toAcademicSessionVo (academicSession).getYear());
         return vo;
     }
-
+    
     public StudyCenter toStudyCenterVo(AdStudyCenter studyCenter) {
         StudyCenter vo = new StudyCenter();
         vo.setId(studyCenter.getId());
@@ -56,6 +61,7 @@ public class PlannerTransformer {
         vo.setTitle(program.getTitle());
         vo.setTitleMs(program.getTitleMs());
         vo.setTitleEn(program.getTitleEn());
+       // vo.setCurrent(program.isCurrent());
 		vo.setFaculty(plannerTransformer.toFacultyVo(program.getFaculty()));
         return vo;
     }
@@ -72,13 +78,20 @@ public class PlannerTransformer {
         
         return vo;
     }
-
     public Cohort toCohortVo(AdCohort cohort) {
         Cohort vo = new Cohort();
         vo.setId(cohort.getId());
         vo.setCode(cohort.getCode());
         vo.setDescription(cohort.getDescription());
+    //    vo.setClassification(cohort.getClassification());
         return vo;
+    }
+    
+    public List<Cohort> toCohortVos(List<AdCohort> cohorts) {
+        List<Cohort> vos = cohorts.stream()
+                .map((cohort) -> toCohortVo(cohort))
+                .collect(toList());
+        return vos;
     }
 
     public List<StudyCenter> toStudyCenterVos(List<AdStudyCenter> studyCenters) {
@@ -116,10 +129,5 @@ public class PlannerTransformer {
         return vos;
     }
 
-    public List<Cohort> toCohortVos(List<AdCohort> cohorts) {
-        List<Cohort> vos = cohorts.stream()
-                .map((cohort) -> toCohortVo(cohort))
-                .collect(toList());
-        return vos;
-    }
+
 }

@@ -14,6 +14,7 @@ export function programReducer(state = initialState, action: Action): ProgramSta
     case ProgramActions.FIND_PROGRAM_SUCCESS: {
       return action.payload;
     }
+
     default: {
       return state;
     }

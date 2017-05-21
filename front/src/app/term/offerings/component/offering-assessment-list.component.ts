@@ -32,6 +32,8 @@ export class OfferingAssessmentListComponent {
       private columns: any[] = [
     { name: 'id', label: 'Id' },
     { name: 'code', label: 'Code' },
+    { name: 'assessmentType', label: 'Assessment Type' },
+    { name: 'assessmentCategory', label: 'Assessment Category' },
     { name: 'action', label: '' }
   ];
 
