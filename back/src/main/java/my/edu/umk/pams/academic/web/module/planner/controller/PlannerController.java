@@ -216,15 +216,26 @@ public class PlannerController {
 	          return new ResponseEntity<String>("Success", HttpStatus.OK);
 	          }
 
-	@RequestMapping(value = "/programs/{code}/activate", method = RequestMethod.POST)
-	public void activateProgram(@PathVariable String code) {
-		throw new UnsupportedOperationException();
-	}
+	@RequestMapping(value = "/programs/{code}/activate", method = RequestMethod.GET)
+	public ResponseEntity<String> activateProgram(@PathVariable String code) {
+		  dummyLogin();
+		  LOG.debug("activate program");
+	        AdProgram program = plannerService.findProgramByCode(code);
+	        program.setCurrent(true);
+	        plannerService.updateProgram (program);
+			return new ResponseEntity<String>(program.getCode(), HttpStatus.OK);
+		} 
 
-	@RequestMapping(value = "/programs/{code}/deactivate", method = RequestMethod.POST)
-	public void deactivateProgram(@PathVariable String code) {
-		throw new UnsupportedOperationException();
-	}
+
+	@RequestMapping(value = "/programs/{code}/deactivate", method = RequestMethod.GET)
+	public ResponseEntity<String> deactivateProgram(@PathVariable String code) {
+		 dummyLogin();
+		 LOG.debug("deactivate program");
+	        AdProgram program = plannerService.findProgramByCode(code);
+	        program.setCurrent(false);
+	        plannerService.updateProgram (program);
+			return new ResponseEntity<String>(program.getCode(), HttpStatus.OK);
+		} 
 
 	// ====================================================================================================
 	// course
