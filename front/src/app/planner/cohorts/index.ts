@@ -47,6 +47,11 @@ import {CohortComponent} from "./component/cohort.component";
    
     CohortEditorDialog,
   ],
+   
+    entryComponents: [
+    CohortEditorDialog,
+  ],
+   
 })
 
 export class CohortSubModule {
