@@ -61,7 +61,7 @@ public class PlannerTransformer {
         vo.setTitle(program.getTitle());
         vo.setTitleMs(program.getTitleMs());
         vo.setTitleEn(program.getTitleEn());
-        vo.setCurrent(program.isCurrent());
+       // vo.setCurrent(program.isCurrent());
 		vo.setFaculty(plannerTransformer.toFacultyVo(program.getFaculty()));
         return vo;
     }
@@ -83,7 +83,15 @@ public class PlannerTransformer {
         vo.setId(cohort.getId());
         vo.setCode(cohort.getCode());
         vo.setDescription(cohort.getDescription());
+    //    vo.setClassification(cohort.getClassification());
         return vo;
+    }
+    
+    public List<Cohort> toCohortVos(List<AdCohort> cohorts) {
+        List<Cohort> vos = cohorts.stream()
+                .map((cohort) -> toCohortVo(cohort))
+                .collect(toList());
+        return vos;
     }
 
     public List<StudyCenter> toStudyCenterVos(List<AdStudyCenter> studyCenters) {
@@ -121,10 +129,5 @@ public class PlannerTransformer {
         return vos;
     }
 
-    public List<Cohort> toCohortVos(List<AdCohort> cohorts) {
-        List<Cohort> vos = cohorts.stream()
-                .map((cohort) -> toCohortVo(cohort))
-                .collect(toList());
-        return vos;
-    }
+
 }
