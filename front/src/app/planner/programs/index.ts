@@ -1,27 +1,28 @@
+import { ProgramStatusComponent } from './component/program-status.component';
 import { ProgramUpdateDialog } from './dialog/program-update.dialog';
 import { FacultySubModule } from './../faculties/index';
 import '@ngrx/core/add/operator/select';
-import {appRoutes, appRoutingProviders} from '../../app.routes';
-import {NgModule, ModuleWithProviders} from '@angular/core';
-import {BrowserModule} from '@angular/platform-browser';
-import {ReactiveFormsModule} from '@angular/forms';
-import {CovalentCoreModule} from '@covalent/core';
+import { appRoutes, appRoutingProviders } from '../../app.routes';
+import { NgModule, ModuleWithProviders } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { ReactiveFormsModule } from '@angular/forms';
+import { CovalentCoreModule } from '@covalent/core';
 
-import {PlannerService} from '../../../services';
+import { PlannerService } from '../../../services';
 
-import {CommonService} from '../../../services';
-import {IdentityService} from '../../../services';
-import {ProgramCenterPage} from "./program-center.page";
-import {ProgramListComponent} from "./component/program-list.component";
-import {ProgramActions} from "./program.action";
-import {ProgramDetailPage} from "./program-detail.page";
-import {ProgramComponent} from "./component/program.component";
-import {ProgramEditorDialog} from "./dialog/program-editor.dialog";
-import {ProgramCreatorDialog } from "./dialog/program-creator.dialog";
-import {EffectsModule} from "@ngrx/effects";
-import {ProgramEffects} from "./program.effect";
-import {PlannerModuleState} from "../index";
-import {ProgramSelectComponent} from "./component/program-select.component";
+import { CommonService } from '../../../services';
+import { IdentityService } from '../../../services';
+import { ProgramCenterPage } from "./program-center.page";
+import { ProgramListComponent } from "./component/program-list.component";
+import { ProgramActions } from "./program.action";
+import { ProgramDetailPage } from "./program-detail.page";
+import { ProgramComponent } from "./component/program.component";
+import { ProgramEditorDialog } from "./dialog/program-editor.dialog";
+import { ProgramCreatorDialog } from "./dialog/program-creator.dialog";
+import { EffectsModule } from "@ngrx/effects";
+import { ProgramEffects } from "./program.effect";
+import { PlannerModuleState } from "../index";
+import { ProgramSelectComponent } from "./component/program-select.component";
 
 @NgModule({
   imports: [
@@ -43,6 +44,7 @@ import {ProgramSelectComponent} from "./component/program-select.component";
     ProgramComponent,
     ProgramSelectComponent,
 
+
     // dialog
     ProgramEditorDialog,
     ProgramCreatorDialog,
@@ -52,11 +54,13 @@ import {ProgramSelectComponent} from "./component/program-select.component";
 
   exports: [
     ProgramSelectComponent,
+    ProgramListComponent,
+    ProgramComponent,
   ],
 
   entryComponents: [
-ProgramCreatorDialog,
-ProgramUpdateDialog,
+    ProgramCreatorDialog,
+    ProgramUpdateDialog,
 
   ],
 
