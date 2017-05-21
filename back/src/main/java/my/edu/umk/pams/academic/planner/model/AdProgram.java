@@ -30,6 +30,10 @@ public interface AdProgram extends AdMetaObject {
     boolean isCurrent();
 
     void setCurrent(boolean current);
+    
+    AdProgramStatus getStatus();
+
+    void setStatus(AdProgramStatus status);
 
     AdProgramLevel getProgramLevel();
 
