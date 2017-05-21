@@ -1,0 +1,42 @@
+<h2 md-dialog-title>Student Address Editor</h2>
+<md-dialog-content>
+  <form [formGroup]="editorForm">
+    <div layout="row" class="inset" flex>
+      <md-input-container flex>
+        <input mdInput
+               placeholder="Address 1"
+               formControlName="address1"
+               flex/>
+      </md-input-container>
+    </div>
+    <div layout="row" class="inset" flex>
+      <md-input-container flex>
+        <input mdInput
+               placeholder="Address 2"
+               formControlName="address2"
+               flex/>
+      </md-input-container>
+    </div>
+    <div layout="row" class="inset" flex>
+      <md-input-container flex>
+        <input mdInput
+               placeholder="Address 3"
+               formControlName="address3"
+               flex/>
+      </md-input-container>
+    </div>
+    <div layout="row" class="inset" flex>
+      <md-input-container flex>
+        <input mdInput
+               placeholder="Postcode"
+               formControlName="postcode"
+               flex/>
+      </md-input-container>
+    </div>
+  </form>
+</md-dialog-content>
+<md-dialog-actions align="end">
+  <button md-raised-button color="accent" (click)="submit(editorForm.value, editorForm.valid)">
+    {{edit ? 'Update' : 'Save'}}
+  </button>
+</md-dialog-actions>

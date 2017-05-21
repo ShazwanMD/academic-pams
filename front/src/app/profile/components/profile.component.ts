@@ -1,3 +1,4 @@
+import { AddressEditorDialog } from './../dialog/address-editor.dialog';
 import { GuardianEditorDialog } from './../dialog/guardian-editor.dialog';
 import { GuarantorEditorDialog } from './../dialog/guarantor-editor.dialog';
 import {ActivatedRoute} from '@angular/router';
@@ -34,6 +35,7 @@ export class ProfileComponent implements OnInit {
   private contactCreatorDialogRef: MdDialogRef<ContactEditorDialog>;
   private guarantorCreatorDialogRef: MdDialogRef<GuarantorEditorDialog>;
   private guardianCreatorDialogRef: MdDialogRef<GuardianEditorDialog>;
+  private addressCreatorDialogRef: MdDialogRef<AddressEditorDialog>;
 
   private columns: any[] = [
     {name: 'name', label: 'NAME'},
@@ -77,6 +79,21 @@ export class ProfileComponent implements OnInit {
     this.contactCreatorDialogRef.componentInstance.student = this.student;
     this.contactCreatorDialogRef.afterClosed().subscribe(res => {
       console.log("close dialog");
+    });
+  }
+
+  addAddressDialog(): void {
+    console.log("Ini utk Add Address student");
+    let config = new MdDialogConfig();
+    config.viewContainerRef = this.vcf;
+    config.role = 'dialog';
+    config.width = '70%';
+    config.height = '80%';
+    config.position = {top: '0px'};
+    this.addressCreatorDialogRef = this.dialog.open(AddressEditorDialog, config);
+    this.addressCreatorDialogRef.componentInstance.student = this.student;
+    this.addressCreatorDialogRef.afterClosed().subscribe(res => {
+      console.log("close this dialog");
     });
   }
 
