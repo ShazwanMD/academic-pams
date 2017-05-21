@@ -15,6 +15,8 @@ import {CohortListComponent} from "./component/cohort-list.component";
 import {CohortActions} from "./cohort.action";
 import {EffectsModule} from "@ngrx/effects";
 import {CohortEffects} from "./cohort.effect";
+import {CohortEditorDialog} from "./dialog/cohort-editor.dialog";
+//import {SectionEditorDialog} from "./dialog/section-editor.dialog";
 import {CohortDetailPage} from "./cohort-detail.page";
 import {CohortComponent} from "./component/cohort.component";
 
@@ -37,8 +39,14 @@ import {CohortComponent} from "./component/cohort.component";
     // component
     CohortListComponent,
     CohortComponent,
+    
+    //dialog
+    CohortEditorDialog,
   ],
-  exports: [],
+   exports: [
+   
+    CohortEditorDialog,
+  ],
 })
 
 export class CohortSubModule {
