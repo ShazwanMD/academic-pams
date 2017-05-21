@@ -2,6 +2,7 @@ import { Program } from './program.interface';import { Faculty } from './../facu
 import {MetaObject} from "../../core/meta-object.interface";
 export interface Program extends MetaObject{
    faculty: Faculty;
+   current: boolean;
    code: string;
    title:string;
    titleMs:string;

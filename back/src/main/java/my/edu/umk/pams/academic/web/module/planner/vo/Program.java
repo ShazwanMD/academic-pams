@@ -16,6 +16,7 @@ public class Program extends MetaObject{
     private String titleEn;
     private String description;
     private Faculty faculty;
+    private boolean current;
 
     public String getCode() {
         return code;
@@ -56,6 +57,17 @@ public class Program extends MetaObject{
     public void setDescription(String description) {
         this.description = description;
     }
+    
+    
+    public boolean isCurrent() {
+        return current;
+    }
+
+    public void setCurrent(boolean current) {
+        this.current = current;
+    }
+    
+    
     public Faculty getFaculty() {
         return faculty;
     }
@@ -75,4 +87,6 @@ public class Program extends MetaObject{
         }
         return o;
     }
+
+	
 }
