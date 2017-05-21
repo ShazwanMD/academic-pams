@@ -175,6 +175,27 @@ export class ProfileActions {
     };
   }
 
+  static ADD_ADDRESS = '[Profile] Add Address';
+
+  addAddress(student, address): Action {
+    console.log("addAddress");
+    return {
+      type: ProfileActions.ADD_ADDRESS,
+      payload: {student: student, address: address}
+    };
+  }
+
+
+  static ADD_ADDRESS_SUCCEESS = '[Profile] Add Address Success';
+
+  addAddressSuccess(message): Action {
+    console.log("addAddressSuccess");
+    return {
+      type: ProfileActions.ADD_ADDRESS_SUCCEESS,
+      payload: message
+    };
+  }
+
   static ADD_GUARANTOR = '[Profile] Add Guarantor';
 
   addGuarantor(student, guarantor): Action {
