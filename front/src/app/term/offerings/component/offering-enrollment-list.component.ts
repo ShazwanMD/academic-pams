@@ -17,7 +17,8 @@ export class OfferingEnrollmentListComponent {
   private columns: any[] = [
   {name: 'id', label: 'Id'},
   {name: 'admission.student.name', label: 'Student'},
-  {name: 'admissionStatus', label: 'Status'},
+   {name: 'admission.student.email', label: 'Email'},
+  {name: 'enrollment.admission.admissionStatus', label: 'Status'},
   {name: 'admissionStanding', label: 'Standing'},
  
     

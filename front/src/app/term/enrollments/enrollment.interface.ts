@@ -10,5 +10,5 @@ export interface Enrollment {
   section: Section;
   admission: Admission;
   admissionStatus: AdmissionStatus;
-  //admissionStanding: AdmissionStanding;
+ // admissionStanding: AdmissionStanding;
 }
