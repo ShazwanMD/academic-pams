@@ -26,7 +26,8 @@ export class HomeComponent implements OnInit {
       },
         {
           title: 'Planner',
-          route: '/planner/academic-sessions',
+         // route: '/planner/academic-sessions',
+          route: '/planner',
           icon: 'assignment',
           color: 'blue-700',
           description: '',
