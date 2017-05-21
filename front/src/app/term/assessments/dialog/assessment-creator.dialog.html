@@ -3,7 +3,7 @@
   <form [formGroup]="editorForm">
 
     <div layout="row" class="pad-bottom">
-      <md-input-container flex mdTooltip="Please insert capacity">
+      <md-input-container flex mdTooltip="Please insert assessment Code">
         <input mdInput
                placeholder="Code"
                formControlName="code" flex/>
@@ -11,11 +11,13 @@
     </div>
 
     <div layout="row" class="pad-bottom">
-      <md-input-container flex mdTooltip="Please insert capacity">
+      <md-input-container flex mdTooltip="Please insert assessment Canonical Code">
         <input mdInput
                placeholder="Canonical Code"
                formControlName="canonicalCode" flex/>
       </md-input-container>
+    </div>
+        <div layout="row" class="pad-bottom pad-top" mdTooltip="Please select ">
     </div>
       <div layout="row" class="inset" flex>
       <pams-assessment-category-select
@@ -30,8 +32,7 @@
       </pams-assessment-type-select>
       </div>
 
-    <div layout="row" class="pad-bottom pad-top" mdTooltip="Please select ">
-    </div>
+
   </form>
 </md-dialog-content>
 <md-dialog-actions align="end">
