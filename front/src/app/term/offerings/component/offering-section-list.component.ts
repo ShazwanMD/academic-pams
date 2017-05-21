@@ -43,7 +43,7 @@ export class OfferingSectionListComponent {
     config.viewContainerRef = this.vcf;
     config.role = 'dialog';
     config.width = '50%';
-    config.height = '70%';
+    config.height = '50%';
     config.position = {top: '0px'};
     this.creatorDialogRef = this.dialog.open(SectionEditorDialog, config);
     this.creatorDialogRef.componentInstance.offering = this.offering;
