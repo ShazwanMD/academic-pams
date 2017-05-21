@@ -60,7 +60,7 @@ public class AdEnrollmentDaoImpl extends GenericDaoSupport<Long, AdEnrollment> i
     public List<AdEnrollment> find(AdAcademicSession academicSession) {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select s from AdEnrollment s where " +
-                "s.section.session = :academicSession " +
+                "s.section.offering.session = :academicSession " +
                 "and s.metadata.state = :state " +
                 "order by s.admission.student.name asc");
         query.setEntity("academicSession", academicSession);
@@ -73,7 +73,7 @@ public class AdEnrollmentDaoImpl extends GenericDaoSupport<Long, AdEnrollment> i
     public List<AdEnrollment> find(AdAcademicSession academicSession, AdProgram program) {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select s from AdEnrollment s where " +
-                "s.section.session = :academicSession " +
+                "s.section.offering.session = :academicSession " +
                 "and s.section.offering.program = :program " +
                 "and s.metadata.state = :state ");
         query.setEntity("academicSession", academicSession);
@@ -137,7 +137,7 @@ public class AdEnrollmentDaoImpl extends GenericDaoSupport<Long, AdEnrollment> i
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select s from AdEnrollment s where " +
                 "s.section.offering = :offering " +
-                "and s.section.session = :academicSession " +
+                "and s.section.offering.session = :academicSession " +
                 "and s.metadata.state = :state " +
                 "order by s.admission.student.name asc");
         query.setInteger("state", AdMetaState.ACTIVE.ordinal());
@@ -152,7 +152,7 @@ public class AdEnrollmentDaoImpl extends GenericDaoSupport<Long, AdEnrollment> i
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select s from AdEnrollment s where " +
                 "s.admission.student = :student " +
-                "and s.section.session = :academicSession " +
+                "and s.section.offering.session = :academicSession " +
                 "and s.metadata.state = :state " +
                 "order by s.admission.student.name asc");
         query.setInteger("state", AdMetaState.ACTIVE.ordinal());
@@ -204,7 +204,7 @@ public class AdEnrollmentDaoImpl extends GenericDaoSupport<Long, AdEnrollment> i
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select s from AdEnrollment s where " +
                 "s.section.offering = :offering " +
-                "and s.section.session = :academicSession " +
+                "and s.section.offering.session = :academicSession " +
                 "and s.metadata.state = :state " +
                 "order by s.admission.student.name asc");
         query.setInteger("state", AdMetaState.ACTIVE.ordinal());
@@ -221,7 +221,7 @@ public class AdEnrollmentDaoImpl extends GenericDaoSupport<Long, AdEnrollment> i
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select s from AdEnrollment s where " +
                 "s.section.offering = :offering " +
-                "and s.section.session = :academicSession " +
+                "and s.section.offering.session = :academicSession " +
                 "and (upper(s.admission.student.identityNo) like upper(:filter) " +
                 "or upper(s.admission.student.credentialNo) like upper(:filter) " +
                 "or upper(s.admission.student.email) like upper(:filter) " +
@@ -428,7 +428,7 @@ public class AdEnrollmentDaoImpl extends GenericDaoSupport<Long, AdEnrollment> i
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select count(s) from AdEnrollment s where " +
                 "s.section.offering = :offering " +
-                "and s.section.session = :academicSession " +
+                "and s.section.offering.session = :academicSession " +
                 "and s.metadata.state = :state ");
         query.setInteger("state", AdMetaState.ACTIVE.ordinal());
         query.setEntity("offering", offering);
@@ -442,7 +442,7 @@ public class AdEnrollmentDaoImpl extends GenericDaoSupport<Long, AdEnrollment> i
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select count(s) from AdEnrollment s where " +
                 "s.section.offering = :offering " +
-                "and s.section.session = :academicSession " +
+                "and s.section.offering.session = :academicSession " +
                 "and (upper(s.admission.student.identityNo) like upper(:filter) " +
                 "or upper(s.admission.student.credentialNo) like upper(:filter) " +
                 "or upper(s.admission.student.email) like upper(:filter) " +
@@ -562,7 +562,7 @@ public class AdEnrollmentDaoImpl extends GenericDaoSupport<Long, AdEnrollment> i
         Query query = session.createQuery("select count(*) from AdEnrollment s where " +
                 "s.admission.student = :student " +
                 "and s.section.offering = :offering " +
-                "and s.section.session = :academicSession " +
+                "and s.section.offering.session = :academicSession " +
                 "and s.metadata.state = :state ");
         query.setEntity("student", student);
         query.setEntity("offering", offering);
