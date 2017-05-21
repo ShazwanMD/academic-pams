@@ -9,6 +9,117 @@
       <md-tab label="Student Information">
 
         <br/>
+    
+    <!--STUDENT INFORMATION-->
+    <md-card>
+    <div md-content flex md-scroll-y>
+    <div layout="column" layout-gt-md="row" class="insert">
+    
+    <div flex-gt-md="50">
+    <md-card-title>Student Information</md-card-title>
+    </div>
+    
+    <div flex-gt-md="50" align="right">
+    <button md-icon-button [md-menu-trigger-for]="menu1">
+      <md-icon>more_vert</md-icon>
+    </button>
+    <md-menu x-position="before" #menu1="mdMenu">
+      <button md-menu-item (click)="editStudent()">Edit</button>
+      <button md-menu-item (click)="transferFaculty(row)">Transfer Faculty</button>
+      <button md-menu-item (click)="switchStudyMode(row)">Switch Study Mode</button>
+    </md-menu>
+    </div>
+    
+    </div>
+    </div>
+        <md-card-subtitle>---</md-card-subtitle>
+        <md-divider></md-divider>
+        <md-card-content>
+          <div layout="column" layout-gt-md="row" class="insert">
+          <div flex-gt-md="20">
+            <img src="./../assets/ico/uda.jpg" width="120" height="150"/>
+          </div>
+          <div flex-gt-md="80">
+            <b>Student ID</b> : {{student.identityNo}}<br/><br/>
+            <b>Name</b> : {{student.name}}<br/><br/>
+            <b>Email</b> : {{student.email}}<br/><br/>
+            <b>Phone</b> : {{student.phone}}<br/><br/>
+            <b>Mobile</b> : {{student.mobile}}<br/><br/>
+            <b>Status</b> : {{student.studentStatus}}
+          </div>
+          </div>
+        </md-card-content>
+    </md-card>
+
+    <br/>
+
+    <!--ADDRESS INFORMATION-->
+    <md-card>
+    <div md-content flex md-scroll-y>
+    <div layout="column" layout-gt-md="row" class="insert">
+    
+    <div flex-gt-md="50">
+    <md-card-title>Address Information</md-card-title>
+    </div>
+    
+    <div flex-gt-md="50" align="right">
+    <button md-icon-button [md-menu-trigger-for]="menu2">
+      <md-icon>more_vert</md-icon>
+    </button>
+    <md-menu x-position="before" #menu2="mdMenu">
+      <button md-menu-item (click)="addAddressDialog()">Add</button>
+      <button md-menu-item (click)="editDialog(row)">Edit</button>
+    </md-menu>
+    </div>
+    
+    </div>
+    </div>
+        <md-card-subtitle>---</md-card-subtitle>
+        <md-divider></md-divider>
+        <md-card-content>
+          <div layout="column" layout-gt-md="row" class="insert">
+          <div flex-gt-md="100" *ngFor="let address of addressess">
+            <b>{{address.addressType}}</b> : {{address.address1 +","+ address.address2 +","+ address.postcode}}
+          </div>
+          </div>
+        </md-card-content>
+    </md-card>
+
+    <br/>
+
+    <!--GUARANTOR INFORMATION-->
+    <md-card>
+    <div md-content flex md-scroll-y>
+    <div layout="column" layout-gt-md="row" class="insert">
+    
+    <div flex-gt-md="50">
+    <md-card-title>Guarantor Information</md-card-title>
+    </div>
+    
+    <div flex-gt-md="50" align="right">
+    <button md-icon-button [md-menu-trigger-for]="menu3">
+      <md-icon>more_vert</md-icon>
+    </button>
+    <md-menu x-position="before" #menu3="mdMenu">
+      <button md-menu-item (click)="addGuarantorDialog()">Add</button>
+      <button md-menu-item (click)="editDialog(row)">Edit</button>
+    </md-menu>
+    </div>
+    
+    </div>
+    </div>
+        <md-card-subtitle>---</md-card-subtitle>
+        <md-divider></md-divider>
+        <md-card-content>
+          <div layout="column" layout-gt-md="row" class="insert">
+          <div flex-gt-md="100" *ngFor="let guarantor of guarantors">
+            <b>Guarantor ID</b> : {{guarantor.identityNo}}<br/><br/>
+            <b>Guarantor Name</b> : {{guarantor.name}}<br/><br/>
+            <b>Guarantor Type</b> : {{guarantor.guarantorType}}
+          </div>
+          </div>
+        </md-card-content>
+    </md-card>
 
         <table width="100%" border="0">
           <tr valign="top">
