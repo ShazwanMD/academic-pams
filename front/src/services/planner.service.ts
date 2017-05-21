@@ -84,7 +84,7 @@ activateAcademicSession (academicSession: AcademicSession): Observable<String> {
       .map((res: Response) => <Program[]>res.json());
   }
 
-  findProgramByCode(code: string): Observable<Program> {
+  findProgram(code: string): Observable<Program> {
     // let headers = new Headers({'Authorization': 'Bearer TODO'});
     // let options = new RequestOptions({headers: headers});
     return this.http.get(environment.endpoint + '/api/planner/programs/' + code)
@@ -104,6 +104,22 @@ activateAcademicSession (academicSession: AcademicSession): Observable<String> {
   removeProgram (program: Program): Observable <Program> {
     return this.http.delete(environment.endpoint + '/api/planner/programs/' + program)
       .map((res: Response) => <Program>res.json());
+  }
+    
+    activateProgram (program: Program): Observable<String> {
+    let headers = new Headers({'Authorization': 'Bearer TODO'});
+    let options = new RequestOptions({headers: headers});
+    console.log("activate program");
+    return this.http.get(environment.endpoint + '/api/planner/programs/' + program.code + '/activate', options)
+      .map((res: Response) => <String>res.json());
+  }
+
+  deactivateProgram (program: Program): Observable<String> {
+    let headers = new Headers({'Authorization': 'Bearer TODO'});
+    let options = new RequestOptions({headers: headers});
+    console.log("deactivate program");
+    return this.http.get(environment.endpoint + '/api/planner/programs/' + program.code + '/deactivate', options)
+      .map((res: Response) => <String>res.json());
   }
   
 
