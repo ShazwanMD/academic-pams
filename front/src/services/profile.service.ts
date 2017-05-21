@@ -106,7 +106,7 @@ export class ProfileService {
       //'Authorization': 'Bearer ' + this.authService.token
     });
     let options = new RequestOptions({headers: headers});
-    return this.http.post(environment.endpoint + '/api/profile/students/' + student.identityNo + '/address', JSON.stringify(address), options)
+    return this.http.post(environment.endpoint + '/api/profile/students/' + student.identityNo + '/addresses', JSON.stringify(address), options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 

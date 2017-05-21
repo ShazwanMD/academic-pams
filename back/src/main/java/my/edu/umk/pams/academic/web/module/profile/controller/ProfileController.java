@@ -66,6 +66,8 @@ public class ProfileController {
     //====================================================================================================
     // ADDRESS
     //====================================================================================================
+    
+    //EDIT ADDRESS//
     @RequestMapping(value = "/students/{identityNo}/addresses", method = RequestMethod.PUT)
     public ResponseEntity<String> updateAddress(@PathVariable String identityNo, @RequestBody Address vo) {
         dummyLogin();
@@ -81,6 +83,23 @@ public class ProfileController {
         return new ResponseEntity<String>("Success", HttpStatus.OK);
 
     }
+    
+    //ADD ADDRESS//
+    @RequestMapping(value = "/students/{identityNo}/addresses", method = RequestMethod.POST)
+    public ResponseEntity<String> addAddress(@PathVariable String identityNo, @RequestBody Address vo) {
+        dummyLogin();
+        AdStudent student = profileService.findStudentByMatricNo(identityNo);
+        AdAddress address = new AdAddressImpl();
+        address.setAddress1(vo.getAddress1());
+        address.setAddress2(vo.getAddress2());
+        address.setAddress3(vo.getAddress3());
+        address.setPostCode(vo.getPostcode());
+        address.setType(AdAddressType.get(vo.getAddressType().ordinal()));
+        address.setStudent(student);
+        profileService.addAddress(student, address);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
+    
     //====================================================================================================
     // CONTACT
     //====================================================================================================
