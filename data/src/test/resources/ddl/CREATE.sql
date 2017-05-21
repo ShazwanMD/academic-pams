@@ -1026,6 +1026,7 @@
         ID int8 not null,
         CODE varchar(255) not null,
         CURRENT_ boolean not null,
+        STATUS int4 not null,
         C_TS timestamp,
         C_ID int8,
         D_TS timestamp,
