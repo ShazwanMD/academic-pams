@@ -14,9 +14,23 @@
         <br>
         <div>Status : {{academicSession.current}}</div>
         <br>
-        </md-tab>
+      </md-tab>
 
-      <md-tab label="Information">
+      <md-tab label="Information"><br>
+        <div>Detail Description of Academic Session</div><br>
+
+        <div>Start Date : {{academicSession.startDate}}</div>
+        <br>
+        <div>End Date : {{academicSession.endDate}}</div>
+        <br>
+        <div>Semester : {{academicSession.academicSemester.semester}}</div>
+        <br>
+        <div>Year : {{academicSession.academicYear.year}}</div>
+        <br>
+
+        <md-card-actions layout-align="end center">
+          <md-list-item [routerLink]="['/planner/dialog/academic-session-editor.dialog']"><button md-button color="accent" class="text-upper">UPDATE</button> </md-list-item>
+        </md-card-actions>
 
       </md-tab>
     </md-tab-group>
