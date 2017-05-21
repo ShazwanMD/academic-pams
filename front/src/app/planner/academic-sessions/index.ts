@@ -1,4 +1,5 @@
 import '@ngrx/core/add/operator/select';
+import {EffectsModule} from '@ngrx/effects';
 import {appRoutes, appRoutingProviders} from '../../app.routes';
 import {NgModule, ModuleWithProviders} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
@@ -13,10 +14,12 @@ import {AcademicSessionComponent} from "./component/academic-session.component";
 import {AcademicSessionDetailPage} from "./academic-session-detail.page";
 import {AcademicSessionActions} from "./academic-session.action";
 import {AcademicSessionEffects} from   "./academic-session.effect";
-import {EffectsModule} from "@ngrx/effects";
 import {AcademicSessionSelectComponent} from "./component/academic-session-select.component";
-import {AcademicSessionCreatorDialog} from './dialog/academic-session-creator.dialog';
+import {AcademicSessionCreatorDialog} from "./dialog/academic-session-creator.dialog";
 import {AcademicSessionStatusComponent} from "./component/academic-session-status.component";
+import { AcademicYear } from "./academic-year.interface";
+
+
 
 @NgModule({
   imports: [
@@ -43,10 +46,13 @@ import {AcademicSessionStatusComponent} from "./component/academic-session-statu
 
   exports: [
     AcademicSessionSelectComponent,
+    AcademicSessionStatusComponent,
   ],
+
   entryComponents: [
     AcademicSessionCreatorDialog,
   ],
+  
 })
 
 export class AcademicSessionSubModule {

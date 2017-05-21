@@ -100,6 +100,16 @@ export class ProfileService {
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
+  addAddress(student: Student, address: Address): Observable<String> {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
+    return this.http.post(environment.endpoint + '/api/profile/students/' + student.identityNo + '/address', JSON.stringify(address), options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
   addGuardian(student: Student, guardian: Guardian): Observable<String> {
     let headers = new Headers({
       'Content-Type': 'application/json',

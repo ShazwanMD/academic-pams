@@ -1,7 +1,7 @@
 import {CohortActions} from './cohort.action';
 import {CohortEditorDialog} from './dialog/cohort-editor.dialog';
 import {Router, ActivatedRoute} from '@angular/router';
-import {Component, OnInit, ViewContainerRef} from '@angular/core';
+import {Component, OnInit, ViewContainerRef, ChangeDetectionStrategy} from '@angular/core';
 import {MdDialogRef} from '@angular/material';
 import {MdDialogConfig} from '@angular/material';
 import {MdDialog} from '@angular/material';
@@ -17,6 +17,7 @@ import {PlannerModuleState} from "../index";
 @Component({
   selector: 'pams-cohort-center',
   templateUrl: './cohort-center.page.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CohortCenterPage implements OnInit {
 
@@ -57,24 +58,22 @@ export class CohortCenterPage implements OnInit {
     this.store.dispatch(this.actions.findCohorts());
   }
 
-//      createDialog(): void {
-//     this.showDialog(null);
-//   }
 
-
-  private showDialog(): void {
+    createDialog(): void {
     console.log("showDialog");
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
     config.role = 'dialog';
     config.width = '50%';
-    config.height = '65%';
+    config.height = '50%';
     config.position = {top: '0px'};
     this.creatorDialogRef = this.dialog.open(CohortEditorDialog, config);
+   // this.creatorDialogRef.componentInstance.offering = this.offering;
     this.creatorDialogRef.afterClosed().subscribe(res => {
       console.log("close dialog");
       // load something here
-    })
-  };
+    });
+  }
+  
 }
 

@@ -15,6 +15,7 @@ import static java.util.stream.Collectors.toList;
 /**
  * @author PAMS
  */
+
 @Component("plannerTransformer")
 public class PlannerTransformer {
 
@@ -29,9 +30,13 @@ public class PlannerTransformer {
         vo.setCode(academicSession.getCode());
         vo.setDescription(academicSession.getDescription());
         vo.setCurrent(academicSession.isCurrent());
+        vo.setstartDate(academicSession.getStartDate());
+        vo.setendDate(academicSession.getEndDate());
+        vo.setSemester(AcademicSemester.get(academicSession.getSemester().ordinal()));
+        vo.setYear(toAcademicSessionVo (academicSession).getYear());
         return vo;
     }
-
+    
     public StudyCenter toStudyCenterVo(AdStudyCenter studyCenter) {
         StudyCenter vo = new StudyCenter();
         vo.setId(studyCenter.getId());

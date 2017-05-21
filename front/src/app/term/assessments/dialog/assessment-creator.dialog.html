@@ -1,0 +1,43 @@
+<h2 md-dialog-title>Add New Assessment</h2>
+<md-dialog-content>
+  <form [formGroup]="editorForm">
+
+    <div layout="row" class="pad-bottom">
+      <md-input-container flex mdTooltip="Please insert assessment Code">
+        <input mdInput
+               placeholder="Code"
+               formControlName="code" flex/>
+      </md-input-container>
+    </div>
+
+    <div layout="row" class="pad-bottom">
+      <md-input-container flex mdTooltip="Please insert assessment Canonical Code">
+        <input mdInput
+               placeholder="Canonical Code"
+               formControlName="canonicalCode" flex/>
+      </md-input-container>
+    </div>
+        <div layout="row" class="pad-bottom pad-top" mdTooltip="Please select ">
+    </div>
+      <div layout="row" class="inset" flex>
+      <pams-assessment-category-select
+        [placeholder]="'Assessment Category'"
+        [innerFormControl]="editorForm.controls['assessmentCategory']">
+      </pams-assessment-category-select>
+      </div>
+      <div layout="row" class="inset" flex>
+      <pams-assessment-type-select
+        [placeholder]="'Assessment Type'"
+        [innerFormControl]="editorForm.controls['assessmentType']">
+      </pams-assessment-type-select>
+      </div>
+
+
+  </form>
+</md-dialog-content>
+<md-dialog-actions align="end">
+  <button md-raised-button color="accent" (click)="submit(editorForm.value, editorForm.valid)">
+    Save
+  </button>
+</md-dialog-actions>
+

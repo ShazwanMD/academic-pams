@@ -1,5 +1,6 @@
 package my.edu.umk.pams.academic.planner.model;
 
+
 /**
  * @author PAMS
  */
@@ -14,4 +15,9 @@ public enum AdAcademicSemester {
     AdAcademicSemester(String description) {
         this.description = description;
     }
+    
+    public static AdAcademicSemester get(int index){
+        return values()[index];
+    }
+    
 }
