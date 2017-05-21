@@ -42,8 +42,7 @@ export class CohortCreatorDialog implements OnInit {
       this.creatorForm= this.formBuilder.group(<Cohort>{
        id: null,
        code: '',
-       title: '',
-       faculty:<Faculty>{},
+       description:'',
 
      
      });

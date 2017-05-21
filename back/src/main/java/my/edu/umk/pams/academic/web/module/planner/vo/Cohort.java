@@ -12,6 +12,7 @@ import java.io.IOException;
 public class Cohort extends MetaObject{
     private String code;
     private String description;
+   // private String classificton;
 
     public String getCode() {
         return code;
@@ -28,6 +29,14 @@ public class Cohort extends MetaObject{
     public void setDescription(String description) {
         this.description = description;
     }
+    
+   /* public String getClassification() {
+        return classification;
+    }
+
+    public void setClassification(String classification) {
+        this.classification = classification;
+    }*/
 
     @JsonCreator
     public static Cohort create(String jsonString) {

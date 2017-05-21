@@ -79,7 +79,7 @@
         <md-card-content>
           <div layout="column" layout-gt-md="row" class="insert">
           <div flex-gt-md="100" *ngFor="let address of addressess">
-            <b>{{address.addressType}}</b> : {{address.address1 +","+ address.address2 +","+ address.postcode}}
+            <b>{{address.addressType}}</b><br/>{{address.address1 +","+ address.address2 +","+ address.postcode}}
           </div>
           </div>
         </md-card-content>

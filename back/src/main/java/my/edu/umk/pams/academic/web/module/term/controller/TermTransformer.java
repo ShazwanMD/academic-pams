@@ -153,6 +153,9 @@ public class TermTransformer {
         vo.setAdmission(this.toAdmissionVo(enrollment.getAdmission()));
        // vo.setGradeCode(commonTransformer.toGradeCodeVo(enrollment.getGradeCode()));
         vo.setSection(this.toSectionVo(enrollment.getSection()));
+        vo.setEnrollmentStanding(EnrollmentStanding.get(enrollment.getStanding().ordinal()));
+        vo.setEnrollmentStatus(EnrollmentStatus.get(enrollment.getStatus().ordinal()));
+               
         return vo;
     }
 

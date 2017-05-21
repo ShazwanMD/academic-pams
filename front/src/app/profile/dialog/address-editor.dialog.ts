@@ -8,6 +8,7 @@ import {MdDialogRef} from "@angular/material";
 import {Student} from "../../identity/student.interface";
 import {ProfileModuleState} from "../index";
 import {ProfileActions} from "../profile.action";
+import { AddressType } from "../address-type.enum";
 
 @Component({
   selector: 'pams-address-editor',
@@ -41,6 +42,7 @@ export class AddressEditorDialog implements OnInit {
 
   ngOnInit(): void {
     this.editorForm = this.formBuilder.group(<Address>{
+      addressType: AddressType.MAILING,
       address1: '',
       address2: '',
       address3: '',

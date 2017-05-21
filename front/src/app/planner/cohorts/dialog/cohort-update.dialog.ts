@@ -42,9 +42,7 @@ export class CohortUpdateDialog implements OnInit {
       this.updateForm = this.formBuilder.group(<Cohort>{
        id: null,
        code: '',
-       title: '',
-       titleMs: '',
-       titleEn: '',
+       description:'',
      });
      
        if (this.update) this.updateForm.patchValue(this._cohort);
