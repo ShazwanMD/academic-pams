@@ -32,6 +32,9 @@ public class AdProgramImpl implements AdProgram {
 
     @Column(name = "TITLE_EN", nullable = false)
     private String titleEn;
+    
+    @Column(name = "CURRENT_", nullable = false)
+    private boolean current;
 
     @ManyToOne(targetEntity = AdProgramLevelImpl.class)
     @JoinColumn(name = "LEVEL_ID")
@@ -94,6 +97,14 @@ public class AdProgramImpl implements AdProgram {
     @Override
     public void setTitleEn(String titleEn) {
         this.titleEn = titleEn;
+    }
+    
+    public boolean isCurrent() {
+        return current;
+    }
+
+    public void setCurrent(boolean current) {
+        this.current = current;
     }
 
     @Override

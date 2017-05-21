@@ -1,4 +1,5 @@
-INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FIAT-PHD-PBT',
+INSERT INTO AD_PRGM (ID, CODE,CURRENT_, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FIAT-PHD-PBT',
+true,
    'Doctor of Philosophy Bio-Industrial Technology',
    'Doctor of Philosophy Bio-Industrial Technology',
    'Doctor of Philosophy Bio-Industrial Technology',
@@ -8,7 +9,8 @@ INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, 
    (SELECT ID
     FROM AD_FCTY F
     WHERE F.NAME = 'FIAT'), CURRENT_TIMESTAMP, 0, 1);
-INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FIAT-PHD-PBS',
+INSERT INTO AD_PRGM (ID, CODE,CURRENT_, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FIAT-PHD-PBS',
+true,
    'Doctor of Philosophy Agro Technopreneurship',
    'Doctor of Philosophy Agro Technopreneurship',
    'Doctor of Philosophy Agro Technopreneurship',
@@ -18,7 +20,8 @@ INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, 
    (SELECT ID
     FROM AD_FCTY F
     WHERE F.NAME = 'FIAT'), CURRENT_TIMESTAMP, 0, 1);
-INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FIAT-PHD-PBB',
+INSERT INTO AD_PRGM (ID, CODE, CURRENT_, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FIAT-PHD-PBB',
+true,
    'Doctor of Philosophy Agriculture Biotechnology',
    'Doctor of Philosophy Agriculture Biotechnology',
    'Doctor of Philosophy Agriculture Biotechnology',
@@ -28,7 +31,8 @@ INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, 
    (SELECT ID
     FROM AD_FCTY F
     WHERE F.NAME = 'FIAT'), CURRENT_TIMESTAMP, 0, 1);
-INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FIAT-PHD-PBP',
+INSERT INTO AD_PRGM (ID, CODE, CURRENT_,TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FIAT-PHD-PBP',
+true,
    'Doctor of Philosophy Product Development Technology',
    'Doctor of Philosophy Product Development Technology',
    'Doctor of Philosophy Product Development Technology',
@@ -38,7 +42,8 @@ INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, 
    (SELECT ID
     FROM AD_FCTY F
     WHERE F.NAME = 'FIAT'), CURRENT_TIMESTAMP, 0, 1);
-INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FIAT-PHD-PBH',
+INSERT INTO AD_PRGM (ID, CODE, CURRENT_, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FIAT-PHD-PBH',
+true,
    'Doctor of Philosophy Animal Husbandary',
    'Doctor of Philosophy Animal Husbandary',
    'Doctor of Philosophy Animal Husbandary',
@@ -48,7 +53,8 @@ INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, 
    (SELECT ID
     FROM AD_FCTY F
     WHERE F.NAME = 'FIAT'), CURRENT_TIMESTAMP, 0, 1);
-INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FIAT-PHD-PBA',
+INSERT INTO AD_PRGM (ID, CODE, CURRENT_, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FIAT-PHD-PBA',
+true,
    'Doctor of Philosophy Akuakultur',
    'Doctor of Philosophy Akuakultur',
    'Doctor of Philosophy Akuakultur',
@@ -58,7 +64,8 @@ INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, 
    (SELECT ID
     FROM AD_FCTY F
     WHERE F.NAME = 'FIAT'), CURRENT_TIMESTAMP, 0, 1);
-INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FIAT-MASTER-MBT',
+INSERT INTO AD_PRGM (ID, CODE, CURRENT_,TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FIAT-MASTER-MBT',
+true,
    'Master of Science Bio-Industrial Technology',
    'Master of Science Bio-Industrial Technology',
    'Master of Science Bio-Industrial Technology',
@@ -68,7 +75,8 @@ INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, 
    (SELECT ID
     FROM AD_FCTY F
     WHERE F.NAME = 'FIAT'), CURRENT_TIMESTAMP, 0, 1);
-INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FIAT-MASTER-MBS',
+INSERT INTO AD_PRGM (ID, CODE, CURRENT_, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FIAT-MASTER-MBS',
+true,
    'Master of Science Agro Technopreneurship',
    'Master of Science Agro Technopreneurship',
    'Master of Science Agro Technopreneurship',
@@ -78,7 +86,8 @@ INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, 
    (SELECT ID
     FROM AD_FCTY F
     WHERE F.NAME = 'FIAT'), CURRENT_TIMESTAMP, 0, 1);
-INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FIAT-MASTER-MBB',
+INSERT INTO AD_PRGM (ID, CODE, CURRENT_, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FIAT-MASTER-MBB',
+true,
    'Master of Science Agriculture Biotechnology',
    'Master of Science Agriculture Biotechnology',
    'Master of Science Agriculture Biotechnology',
@@ -88,7 +97,8 @@ INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, 
    (SELECT ID
     FROM AD_FCTY F
     WHERE F.NAME = 'FIAT'), CURRENT_TIMESTAMP, 0, 1);
-INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FIAT-MASTER-MBP',
+INSERT INTO AD_PRGM (ID, CODE, CURRENT_, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FIAT-MASTER-MBP',
+true,
    'Master of Science Product Development Technology',
    'Master of Science Product Development Technology',
    'Master of Science Product Development Technology',
@@ -98,7 +108,8 @@ INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, 
    (SELECT ID
     FROM AD_FCTY F
     WHERE F.NAME = 'FIAT'), CURRENT_TIMESTAMP, 0, 1);
-INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FIAT-MASTER-PBH',
+INSERT INTO AD_PRGM (ID, CODE, CURRENT_, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FIAT-MASTER-PBH',
+true,
    'Master of Science Animal Husbandary',
    'Master of Science Animal Husbandary',
    'Master of Science Animal Husbandary',
@@ -108,7 +119,8 @@ INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, 
    (SELECT ID
     FROM AD_FCTY F
     WHERE F.NAME = 'FIAT'), CURRENT_TIMESTAMP, 0, 1);
-INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FIAT-MASTER-MBA',
+INSERT INTO AD_PRGM (ID, CODE, CURRENT_, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FIAT-MASTER-MBA',
+true,
    'Master of Science Akuakultur',
    'Master of Science Akuakultur',
    'Master of Science Akuakultur',
@@ -118,7 +130,8 @@ INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, 
    (SELECT ID
     FROM AD_FCTY F
     WHERE F.NAME = 'FIAT'), CURRENT_TIMESTAMP, 0, 1);
-INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FSB-PHD-PBG',
+INSERT INTO AD_PRGM (ID, CODE, CURRENT_, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FSB-PHD-PBG',
+true,
    'Doctor of Philosophy Geoscience',
    'Doctor of Philosophy Geoscience',
    'Doctor of Philosophy Geoscience',
@@ -128,7 +141,8 @@ INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, 
    (SELECT ID
     FROM AD_FCTY F
     WHERE F.NAME = 'FSB'), CURRENT_TIMESTAMP, 0, 1);
-INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FSB-PHD-PBN',
+INSERT INTO AD_PRGM (ID, CODE,CURRENT_, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FSB-PHD-PBN',
+true,
    'Doctor of Philosophy Natural Resources Management',
    'Doctor of Philosophy Natural Resources Management',
    'Doctor of Philosophy Natural Resources Management',
@@ -138,7 +152,8 @@ INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, 
    (SELECT ID
     FROM AD_FCTY F
     WHERE F.NAME = 'FSB'), CURRENT_TIMESTAMP, 0, 1);
-INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FSB-PHD-PBK',
+INSERT INTO AD_PRGM (ID, CODE, CURRENT_, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FSB-PHD-PBK',
+true,
    'Doctor of Philosophy Sustainable Science',
    'Doctor of Philosophy Sustainable Science',
    'Doctor of Philosophy Sustainable Science',
@@ -148,7 +163,8 @@ INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, 
    (SELECT ID
     FROM AD_FCTY F
     WHERE F.NAME = 'FSB'), CURRENT_TIMESTAMP, 0, 1);
-INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FSB-PHD-PFB',
+INSERT INTO AD_PRGM (ID, CODE, CURRENT_, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FSB-PHD-PFB',
+true,
    'Doctor of Philosophy Material Technology',
    'Doctor of Philosophy Material Technology',
    'Doctor of Philosophy Material Technology',
@@ -158,7 +174,8 @@ INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, 
    (SELECT ID
     FROM AD_FCTY F
     WHERE F.NAME = 'FSB'), CURRENT_TIMESTAMP, 0, 1);
-INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FSB-PHD-PFS',
+INSERT INTO AD_PRGM (ID, CODE, CURRENT_, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FSB-PHD-PFS',
+true,
    'Doctor of Philosophy Forest Resources Technology',
    'Doctor of Philosophy Forest Resources Technology',
    'Doctor of Philosophy Forest Resources Technology',
@@ -168,7 +185,8 @@ INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, 
    (SELECT ID
     FROM AD_FCTY F
     WHERE F.NAME = 'FSB'), CURRENT_TIMESTAMP, 0, 1);
-INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FSB-PHD-PFT',
+INSERT INTO AD_PRGM (ID, CODE, CURRENT_,TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FSB-PHD-PFT',
+true,
    'Doctor of Philosophy Energy Technology',
    'Doctor of Philosophy Energy Technology',
    'Doctor of Philosophy Energy Technology',
@@ -178,7 +196,8 @@ INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, 
    (SELECT ID
     FROM AD_FCTY F
     WHERE F.NAME = 'FSB'), CURRENT_TIMESTAMP, 0, 1);
-INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FSB-MASTER-MBG',
+INSERT INTO AD_PRGM (ID, CODE, CURRENT_, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FSB-MASTER-MBG',
+true,
    'Master of Science Geoscience',
    'Master of Science Geoscience',
    'Master of Science Geoscience',
@@ -188,7 +207,8 @@ INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, 
    (SELECT ID
     FROM AD_FCTY F
     WHERE F.NAME = 'FSB'), CURRENT_TIMESTAMP, 0, 1);
-INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FSB-MASTER-MBN',
+INSERT INTO AD_PRGM (ID, CODE, CURRENT_, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FSB-MASTER-MBN',
+true,
    'Master of Science Natural Resources Management',
    'Master of Science Natural Resources Management',
    'Master of Science Natural Resources Management',
@@ -198,7 +218,8 @@ INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, 
    (SELECT ID
     FROM AD_FCTY F
     WHERE F.NAME = 'FSB'), CURRENT_TIMESTAMP, 0, 1);
-INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FSB-MASTER-MBK',
+INSERT INTO AD_PRGM (ID, CODE, CURRENT_, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FSB-MASTER-MBK',
+true,
    'Master of Science Sustainable Science',
    'Master of Science Sustainable Science',
    'Master of Science Sustainable Science',
@@ -208,7 +229,8 @@ INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, 
    (SELECT ID
     FROM AD_FCTY F
     WHERE F.NAME = 'FSB'), CURRENT_TIMESTAMP, 0, 1);
-INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FSB-MASTER-MFB',
+INSERT INTO AD_PRGM (ID, CODE, CURRENT_, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FSB-MASTER-MFB',
+true,
    'Master of Science Material Technology',
    'Master of Science Material Technology',
    'Master of Science Material Technology',
@@ -218,7 +240,8 @@ INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, 
    (SELECT ID
     FROM AD_FCTY F
     WHERE F.NAME = 'FSB'), CURRENT_TIMESTAMP, 0, 1);
-INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FSB-MASTER-MFS',
+INSERT INTO AD_PRGM (ID, CODE, CURRENT_, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FSB-MASTER-MFS',
+true,
    'Master of Science Forest Resources Technology',
    'Master of Science Forest Resources Technology',
    'Master of Science Forest Resources Technology',
@@ -228,7 +251,8 @@ INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, 
    (SELECT ID
     FROM AD_FCTY F
     WHERE F.NAME = 'FSB'), CURRENT_TIMESTAMP, 0, 1);
-INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FSB-MASTER-MFT',
+INSERT INTO AD_PRGM (ID, CODE,CURRENT_, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FSB-MASTER-MFT',
+true,
    'Master of Science Energy Technology',
    'Master of Science Energy Technology',
    'Master of Science Energy Technology',
@@ -238,7 +262,8 @@ INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, 
    (SELECT ID
     FROM AD_FCTY F
     WHERE F.NAME = 'FSB'), CURRENT_TIMESTAMP, 0, 1);
-INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FPV-PHD-PCp',
+INSERT INTO AD_PRGM (ID, CODE,CURRENT_, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FPV-PHD-PCp',
+true,
    'Doctor of Philosophy Phatology',
    'Doctor of Philosophy Phatology',
    'Doctor of Philosophy Phatology',
@@ -248,7 +273,8 @@ INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, 
    (SELECT ID
     FROM AD_FCTY F
     WHERE F.NAME = 'FPV'), CURRENT_TIMESTAMP, 0, 1);
-INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FPV-PHD-PDN',
+INSERT INTO AD_PRGM (ID, CODE,CURRENT_, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FPV-PHD-PDN',
+true,
    'Doctor of Philosophy Nutrition',
    'Doctor of Philosophy Nutrition',
    'Doctor of Philosophy Nutrition',
@@ -258,7 +284,8 @@ INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, 
    (SELECT ID
     FROM AD_FCTY F
     WHERE F.NAME = 'FPV'), CURRENT_TIMESTAMP, 0, 1);
-INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FPV-PHD-PDA',
+INSERT INTO AD_PRGM (ID, CODE, CURRENT_, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FPV-PHD-PDA',
+true,
    'Doctor of Philosophy Anatomy',
    'Doctor of Philosophy Anatomy',
    'Doctor of Philosophy Anatomy',
@@ -268,7 +295,8 @@ INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, 
    (SELECT ID
     FROM AD_FCTY F
     WHERE F.NAME = 'FPV'), CURRENT_TIMESTAMP, 0, 1);
-INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FPV-PHD-PDM',
+INSERT INTO AD_PRGM (ID, CODE, CURRENT_,TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FPV-PHD-PDM',
+true,
    'Doctor of Philosophy Microbiology',
    'Doctor of Philosophy Microbiology',
    'Doctor of Philosophy Microbiology',
@@ -278,7 +306,8 @@ INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, 
    (SELECT ID
     FROM AD_FCTY F
     WHERE F.NAME = 'FPV'), CURRENT_TIMESTAMP, 0, 1);
-INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FPV-PHD-PDR',
+INSERT INTO AD_PRGM (ID, CODE,CURRENT_, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FPV-PHD-PDR',
+true,
    'Doctor of Philosophy Parasitology',
    'Doctor of Philosophy Parasitology',
    'Doctor of Philosophy Parasitology',
@@ -288,7 +317,8 @@ INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, 
    (SELECT ID
     FROM AD_FCTY F
     WHERE F.NAME = 'FPV'), CURRENT_TIMESTAMP, 0, 1);
-INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FPV-PHD-PDF',
+INSERT INTO AD_PRGM (ID, CODE, CURRENT_,TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FPV-PHD-PDF',
+true,
    'Doctor of Philosophy Physiology',
    'Doctor of Philosophy Physiology',
    'Doctor of Philosophy Physiology',
@@ -298,7 +328,8 @@ INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, 
    (SELECT ID
     FROM AD_FCTY F
     WHERE F.NAME = 'FPV'), CURRENT_TIMESTAMP, 0, 1);
-INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FPV-MASTER-MDP',
+INSERT INTO AD_PRGM (ID, CODE, CURRENT_,TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FPV-MASTER-MDP',
+true,
    'Master of Science Phatology',
    'Master of Science Phatology',
    'Master of Science Phatology',
@@ -308,7 +339,8 @@ INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, 
    (SELECT ID
     FROM AD_FCTY F
     WHERE F.NAME = 'FPV'), CURRENT_TIMESTAMP, 0, 1);
-INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FPV-MASTER-MDN',
+INSERT INTO AD_PRGM (ID, CODE,CURRENT_, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FPV-MASTER-MDN',
+true,
    'Master of Science Nutrition',
    'Master of Science Nutrition',
    'Master of Science Nutrition',
@@ -318,7 +350,8 @@ INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, 
    (SELECT ID
     FROM AD_FCTY F
     WHERE F.NAME = 'FPV'), CURRENT_TIMESTAMP, 0, 1);
-INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FPV-MASTER-MDA',
+INSERT INTO AD_PRGM (ID, CODE,CURRENT_, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FPV-MASTER-MDA',
+true,
    'Master of Science Anatomy',
    'Master of Science Anatomy',
    'Master of Science Anatomy',
@@ -328,7 +361,8 @@ INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, 
    (SELECT ID
     FROM AD_FCTY F
     WHERE F.NAME = 'FPV'), CURRENT_TIMESTAMP, 0, 1);
-INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FPV-MASTER-MDM',
+INSERT INTO AD_PRGM (ID, CODE,CURRENT_, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FPV-MASTER-MDM',
+true,
    'Master of Science Microbiology',
    'Master of Science Microbiology',
    'Master of Science Microbiology',
@@ -338,7 +372,8 @@ INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, 
    (SELECT ID
     FROM AD_FCTY F
     WHERE F.NAME = 'FPV'), CURRENT_TIMESTAMP, 0, 1);
-INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FPV-MASTER-MDR',
+INSERT INTO AD_PRGM (ID, CODE,CURRENT_, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FPV-MASTER-MDR',
+true,
    'Master of Science Parasitology',
    'Master of Science Parasitology',
    'Master of Science Parasitology',
@@ -348,7 +383,8 @@ INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, 
    (SELECT ID
     FROM AD_FCTY F
     WHERE F.NAME = 'FPV'), CURRENT_TIMESTAMP, 0, 1);
-INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FPV-MASTER-MDF',
+INSERT INTO AD_PRGM (ID, CODE, CURRENT_,TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FPV-MASTER-MDF',
+true,
    'Master of Science Physiology',
    'Master of Science Physiology',
    'Master of Science Physiology',
@@ -358,7 +394,8 @@ INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, 
    (SELECT ID
     FROM AD_FCTY F
     WHERE F.NAME = 'FPV'), CURRENT_TIMESTAMP, 0, 1);
-INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'PBI-PHD-PCS',
+INSERT INTO AD_PRGM (ID, CODE,CURRENT_, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'PBI-PHD-PCS',
+true,
    'Doctor of Philosophy Studies of History and Civilisation',
    'Doctor of Philosophy Studies of History and Civilisation',
    'Doctor of Philosophy Studies of History and Civilisation',
@@ -368,7 +405,8 @@ INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, 
    (SELECT ID
     FROM AD_FCTY F
     WHERE F.NAME = 'PBI'), CURRENT_TIMESTAMP, 0, 1);
-INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'PBI-PHD-PCN',
+INSERT INTO AD_PRGM (ID, CODE,CURRENT_, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'PBI-PHD-PCN',
+true,
    'Doctor of Philosophy Development and Educational Values',
    'Doctor of Philosophy Development and Educational Values',
    'Doctor of Philosophy Development and Educational Values',
@@ -378,7 +416,8 @@ INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, 
    (SELECT ID
     FROM AD_FCTY F
     WHERE F.NAME = 'PBI'), CURRENT_TIMESTAMP, 0, 1);
-INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'PBI-PHD-PCO',
+INSERT INTO AD_PRGM (ID, CODE,CURRENT_, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'PBI-PHD-PCO',
+true,
    'Doctor of Philosophy Industrial Psychological Organization',
    'Doctor of Philosophy Industrial Psychological Organization',
    'Doctor of Philosophy Industrial Psychological Organization',
@@ -388,7 +427,8 @@ INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, 
    (SELECT ID
     FROM AD_FCTY F
     WHERE F.NAME = 'PBI'), CURRENT_TIMESTAMP, 0, 1);
-INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'PBI-PHD-PCA',
+INSERT INTO AD_PRGM (ID, CODE, CURRENT_,TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'PBI-PHD-PCA',
+true,
    'Doctor of Philosophy Religion And Contemporary',
    'Doctor of Philosophy Religion And Contemporary',
    'Doctor of Philosophy Religion And Contemporary',
@@ -398,7 +438,8 @@ INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, 
    (SELECT ID
     FROM AD_FCTY F
     WHERE F.NAME = 'PBI'), CURRENT_TIMESTAMP, 0, 1);
-INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'PBI-PHD-PCK',
+INSERT INTO AD_PRGM (ID, CODE,CURRENT_, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'PBI-PHD-PCK',
+   true,
    'Doctor of Philosophy Social Work',
    'Doctor of Philosophy Social Work',
    'Doctor of Philosophy Social Work',
@@ -408,7 +449,8 @@ INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, 
    (SELECT ID
     FROM AD_FCTY F
     WHERE F.NAME = 'PBI'), CURRENT_TIMESTAMP, 0, 1);
-INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'PBI-PHD-MCB',
+INSERT INTO AD_PRGM (ID, CODE,CURRENT_, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'PBI-PHD-MCB',
+   true,
    'Doctor of Philosophy Language Studies',
    'Doctor of Philosophy Language Studies',
    'Doctor of Philosophy Language Studies',
@@ -418,7 +460,8 @@ INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, 
    (SELECT ID
     FROM AD_FCTY F
     WHERE F.NAME = 'PBI'), CURRENT_TIMESTAMP, 0, 1);
-INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'PBI-PHD-PCC',
+INSERT INTO AD_PRGM (ID, CODE,CURRENT_, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'PBI-PHD-PCC',
+   true,
    'Doctor of Philosophy Communication',
    'Doctor of Philosophy Communication',
    'Doctor of Philosophy Communication',
@@ -428,7 +471,8 @@ INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, 
    (SELECT ID
     FROM AD_FCTY F
     WHERE F.NAME = 'PBI'), CURRENT_TIMESTAMP, 0, 1);
-INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'PBI-MASTER-MCS',
+INSERT INTO AD_PRGM (ID, CODE,CURRENT_, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'PBI-MASTER-MCS',
+true,
    'Master of Arts Studies of History and Civilisation',
    'Master of Arts Studies of History and Civilisation',
    'Master of Arts Studies of History and Civilisation',
@@ -438,7 +482,8 @@ INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, 
    (SELECT ID
     FROM AD_FCTY F
     WHERE F.NAME = 'PBI'), CURRENT_TIMESTAMP, 0, 1);
-INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'PBI-MASTER-MCN',
+INSERT INTO AD_PRGM (ID, CODE,CURRENT_, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'PBI-MASTER-MCN',
+true,
    'Master of Arts Development and Educational Values',
    'Master of Arts Development and Educational Values',
    'Master of Arts Development and Educational Values',
@@ -448,7 +493,8 @@ INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, 
    (SELECT ID
     FROM AD_FCTY F
     WHERE F.NAME = 'PBI'), CURRENT_TIMESTAMP, 0, 1);
-INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'PBI-MASTER-MCO',
+INSERT INTO AD_PRGM (ID, CODE,CURRENT_, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'PBI-MASTER-MCO',
+true,
    'Master of Arts Industrial Psychological Organization',
    'Master of Arts Industrial Psychological Organization',
    'Master of Arts Industrial Psychological Organization',
@@ -458,7 +504,8 @@ INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, 
    (SELECT ID
     FROM AD_FCTY F
     WHERE F.NAME = 'PBI'), CURRENT_TIMESTAMP, 0, 1);
-INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'PBI-MASTER-MCA',
+INSERT INTO AD_PRGM (ID, CODE,CURRENT_, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'PBI-MASTER-MCA',
+true,
    'Master of Arts Religion And Contemporary',
    'Master of Arts Religion And Contemporary',
    'Master of Arts Religion And Contemporary',
@@ -468,7 +515,8 @@ INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, 
    (SELECT ID
     FROM AD_FCTY F
     WHERE F.NAME = 'PBI'), CURRENT_TIMESTAMP, 0, 1);
-INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'PBI-MASTER-MCK',
+INSERT INTO AD_PRGM (ID, CODE, CURRENT_,TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'PBI-MASTER-MCK',
+true,
    'Master of Arts Social Work',
    'Master of Arts Social Work',
    'Master of Arts Social Work',
@@ -478,7 +526,8 @@ INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, 
    (SELECT ID
     FROM AD_FCTY F
     WHERE F.NAME = 'PBI'), CURRENT_TIMESTAMP, 0, 1);
-INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'PBI-MASTER-PCB',
+INSERT INTO AD_PRGM (ID, CODE,CURRENT_, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'PBI-MASTER-PCB',
+true,
    'Master of Arts Language Studies',
    'Master of Arts Language Studies',
    'Master of Arts Language Studies',
@@ -488,7 +537,8 @@ INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, 
    (SELECT ID
     FROM AD_FCTY F
     WHERE F.NAME = 'PBI'), CURRENT_TIMESTAMP, 0, 1);
-INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'PBI-MASTER-MCC',
+INSERT INTO AD_PRGM (ID, CODE,CURRENT_, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'PBI-MASTER-MCC',
+true,
    'Master of Arts Communication',
    'Master of Arts Communication',
    'Master of Arts Communication',
@@ -498,7 +548,8 @@ INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, 
    (SELECT ID
     FROM AD_FCTY F
     WHERE F.NAME = 'PBI'), CURRENT_TIMESTAMP, 0, 1);
-INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FTKW-PHD-PCW',
+INSERT INTO AD_PRGM (ID, CODE,CURRENT_, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FTKW-PHD-PCW',
+true,
    'Doctor of Philosophy Heritage Studies',
    'Doctor of Philosophy Heritage Studies',
    'Doctor of Philosophy Heritage Studies',
@@ -508,7 +559,8 @@ INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, 
    (SELECT ID
     FROM AD_FCTY F
     WHERE F.NAME = 'FTKW'), CURRENT_TIMESTAMP, 0, 1);
-INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FTKW-PHD-PCT',
+INSERT INTO AD_PRGM (ID, CODE,CURRENT_, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FTKW-PHD-PCT',
+true,
    'Doctor of Philosophy Textile and Fashion',
    'Doctor of Philosophy Textile and Fashion',
    'Doctor of Philosophy Textile and Fashion',
@@ -518,7 +570,8 @@ INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, 
    (SELECT ID
     FROM AD_FCTY F
     WHERE F.NAME = 'FTKW'), CURRENT_TIMESTAMP, 0, 1);
-INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FTKW-PHD-PCP',
+INSERT INTO AD_PRGM (ID, CODE,CURRENT_, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FTKW-PHD-PCP',
+true,
    'Doctor of Philosophy Product Design',
    'Doctor of Philosophy Product Design',
    'Doctor of Philosophy Product Design',
@@ -528,7 +581,8 @@ INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, 
    (SELECT ID
     FROM AD_FCTY F
     WHERE F.NAME = 'FTKW'), CURRENT_TIMESTAMP, 0, 1);
-INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FTKW-PHD-PCM',
+INSERT INTO AD_PRGM (ID, CODE,CURRENT_, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FTKW-PHD-PCM',
+true,
    'Doctor of Philosophy Multimedia',
    'Doctor of Philosophy Multimedia',
    'Doctor of Philosophy Multimedia',
@@ -538,7 +592,8 @@ INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, 
    (SELECT ID
     FROM AD_FCTY F
     WHERE F.NAME = 'FTKW'), CURRENT_TIMESTAMP, 0, 1);
-INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FTKW-PHD-PCV',
+INSERT INTO AD_PRGM (ID, CODE, CURRENT_,TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FTKW-PHD-PCV',
+true,
    'Doctor of Philosophy VisualCommunication',
    'Doctor of Philosophy VisualCommunication',
    'Doctor of Philosophy VisualCommunication',
@@ -548,7 +603,8 @@ INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, 
    (SELECT ID
     FROM AD_FCTY F
     WHERE F.NAME = 'FTKW'), CURRENT_TIMESTAMP, 0, 1);
-INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FTKW-MASTER-MCW',
+INSERT INTO AD_PRGM (ID, CODE, CURRENT_,TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FTKW-MASTER-MCW',
+true,
    'Master of Arts Heritage Studies',
    'Master of Arts Heritage Studies',
    'Master of Arts Heritage Studies',
@@ -558,7 +614,8 @@ INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, 
    (SELECT ID
     FROM AD_FCTY F
     WHERE F.NAME = 'FTKW'), CURRENT_TIMESTAMP, 0, 1);
-INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FTKW-MASTER-MCT',
+INSERT INTO AD_PRGM (ID, CODE,CURRENT_, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FTKW-MASTER-MCT',
+true,
    'Master of Arts Textile and Fashion',
    'Master of Arts Textile and Fashion',
    'Master of Arts Textile and Fashion',
@@ -568,7 +625,8 @@ INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, 
    (SELECT ID
     FROM AD_FCTY F
     WHERE F.NAME = 'FTKW'), CURRENT_TIMESTAMP, 0, 1);
-INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FTKW-MASTER-MCP',
+INSERT INTO AD_PRGM (ID, CODE,CURRENT_, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FTKW-MASTER-MCP',
+true,
    'Master of Arts Product Design',
    'Master of Arts Product Design',
    'Master of Arts Product Design',
@@ -578,7 +636,8 @@ INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, 
    (SELECT ID
     FROM AD_FCTY F
     WHERE F.NAME = 'FTKW'), CURRENT_TIMESTAMP, 0, 1);
-INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FTKW-MASTER-MCM',
+INSERT INTO AD_PRGM (ID, CODE,CURRENT_, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FTKW-MASTER-MCM',
+true,
    'Master of Arts Multimedia',
    'Master of Arts Multimedia',
    'Master of Arts Multimedia',
@@ -588,7 +647,8 @@ INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, 
    (SELECT ID
     FROM AD_FCTY F
     WHERE F.NAME = 'FTKW'), CURRENT_TIMESTAMP, 0, 1);
-INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FTKW-MASTER-MCV',
+INSERT INTO AD_PRGM (ID, CODE, CURRENT_,TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FTKW-MASTER-MCV',
+true,
    'Master of Arts VisualCommunication',
    'Master of Arts VisualCommunication',
    'Master of Arts VisualCommunication',
@@ -598,7 +658,8 @@ INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, 
    (SELECT ID
     FROM AD_FCTY F
     WHERE F.NAME = 'FTKW'), CURRENT_TIMESTAMP, 0, 1);
-INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FKP-PHD-PAM',
+INSERT INTO AD_PRGM (ID, CODE,CURRENT_, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FKP-PHD-PAM',
+true,
    'Doctor of Philosophy Management',
    'Doctor of Philosophy Management',
    'Doctor of Philosophy Management',
@@ -608,7 +669,8 @@ INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, 
    (SELECT ID
     FROM AD_FCTY F
     WHERE F.NAME = 'FKP'), CURRENT_TIMESTAMP, 0, 1);
-INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FKP-PHD-PAF',
+INSERT INTO AD_PRGM (ID, CODE,CURRENT_, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FKP-PHD-PAF',
+true,
    'Doctor of Philosophy Finance',
    'Doctor of Philosophy Finance',
    'Doctor of Philosophy Finance',
@@ -618,7 +680,8 @@ INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, 
    (SELECT ID
     FROM AD_FCTY F
     WHERE F.NAME = 'FKP'), CURRENT_TIMESTAMP, 0, 1);
-INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FKP-PHD-PAA',
+INSERT INTO AD_PRGM (ID, CODE, CURRENT_,TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FKP-PHD-PAA',
+true,
    'Doctor of Philosophy Accounting',
    'Doctor of Philosophy Accounting',
    'Doctor of Philosophy Accounting',
@@ -628,7 +691,8 @@ INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, 
    (SELECT ID
     FROM AD_FCTY F
     WHERE F.NAME = 'FKP'), CURRENT_TIMESTAMP, 0, 1);
-INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FKP-PHD-PAR',
+INSERT INTO AD_PRGM (ID, CODE,CURRENT_, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FKP-PHD-PAR',
+true,
    'Doctor of Philosophy Retailing',
    'Doctor of Philosophy Retailing',
    'Doctor of Philosophy Retailing',
@@ -638,7 +702,8 @@ INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, 
    (SELECT ID
     FROM AD_FCTY F
     WHERE F.NAME = 'FKP'), CURRENT_TIMESTAMP, 0, 1);
-INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FKP-PHD-PAK',
+INSERT INTO AD_PRGM (ID, CODE,CURRENT_, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FKP-PHD-PAK',
+true,
    'Doctor of Philosophy Commerce',
    'Doctor of Philosophy Commerce',
    'Doctor of Philosophy Commerce',
@@ -648,7 +713,8 @@ INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, 
    (SELECT ID
     FROM AD_FCTY F
     WHERE F.NAME = 'FKP'), CURRENT_TIMESTAMP, 0, 1);
-INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FKP-PHD-PAW',
+INSERT INTO AD_PRGM (ID, CODE,CURRENT_, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FKP-PHD-PAW',
+true,
    'Doctor of Philosophy HealthEntrepreneurship',
    'Doctor of Philosophy HealthEntrepreneurship',
    'Doctor of Philosophy HealthEntrepreneurship',
@@ -658,7 +724,8 @@ INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, 
    (SELECT ID
     FROM AD_FCTY F
     WHERE F.NAME = 'FKP'), CURRENT_TIMESTAMP, 0, 1);
-INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FKP-PHD-PAH',
+INSERT INTO AD_PRGM (ID, CODE, CURRENT_,TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FKP-PHD-PAH',
+true,
    'Doctor of Philosophy Hospitality',
    'Doctor of Philosophy Hospitality',
    'Doctor of Philosophy Hospitality',
@@ -668,7 +735,8 @@ INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, 
    (SELECT ID
     FROM AD_FCTY F
     WHERE F.NAME = 'FKP'), CURRENT_TIMESTAMP, 0, 1);
-INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FKP-PHD-PAP',
+INSERT INTO AD_PRGM (ID, CODE,CURRENT_, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FKP-PHD-PAP',
+true,
    'Doctor of Philosophy Tourism',
    'Doctor of Philosophy Tourism',
    'Doctor of Philosophy Tourism',
@@ -678,7 +746,8 @@ INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, 
    (SELECT ID
     FROM AD_FCTY F
     WHERE F.NAME = 'FKP'), CURRENT_TIMESTAMP, 0, 1);
-INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FKP-PHD-PMS',
+INSERT INTO AD_PRGM (ID, CODE,CURRENT_, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FKP-PHD-PMS',
+true,
    'Doctor of Philosophy Mathematical Science',
    'Doctor of Philosophy Mathematical Science',
    'Doctor of Philosophy Mathematical Science',
@@ -688,7 +757,8 @@ INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, 
    (SELECT ID
     FROM AD_FCTY F
     WHERE F.NAME = 'FKP'), CURRENT_TIMESTAMP, 0, 1);
-INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FKP-MASTER-MAM',
+INSERT INTO AD_PRGM (ID, CODE,CURRENT_, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FKP-MASTER-MAM',
+true,
    'Master of Entrepreneurship Management',
    'Master of Entrepreneurship Management',
    'Master of Entrepreneurship Management',
@@ -698,7 +768,8 @@ INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, 
    (SELECT ID
     FROM AD_FCTY F
     WHERE F.NAME = 'FKP'), CURRENT_TIMESTAMP, 0, 1);
-INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FKP-MASTER-MAF',
+INSERT INTO AD_PRGM (ID, CODE,CURRENT_, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FKP-MASTER-MAF',
+true,
    'Master of Entrepreneurship Finance',
    'Master of Entrepreneurship Finance',
    'Master of Entrepreneurship Finance',
@@ -708,7 +779,8 @@ INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, 
    (SELECT ID
     FROM AD_FCTY F
     WHERE F.NAME = 'FKP'), CURRENT_TIMESTAMP, 0, 1);
-INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FKP-MASTER-MAA',
+INSERT INTO AD_PRGM (ID, CODE, CURRENT_,TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FKP-MASTER-MAA',
+true,
    'Master of Entrepreneurship Accounting',
    'Master of Entrepreneurship Accounting',
    'Master of Entrepreneurship Accounting',
@@ -718,7 +790,8 @@ INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, 
    (SELECT ID
     FROM AD_FCTY F
     WHERE F.NAME = 'FKP'), CURRENT_TIMESTAMP, 0, 1);
-INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FKP-MASTER-MAR',
+INSERT INTO AD_PRGM (ID, CODE, CURRENT_,TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FKP-MASTER-MAR',
+true,
    'Master of Entrepreneurship Retailing',
    'Master of Entrepreneurship Retailing',
    'Master of Entrepreneurship Retailing',
@@ -728,7 +801,8 @@ INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, 
    (SELECT ID
     FROM AD_FCTY F
     WHERE F.NAME = 'FKP'), CURRENT_TIMESTAMP, 0, 1);
-INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FKP-MASTER-MAK',
+INSERT INTO AD_PRGM (ID, CODE,CURRENT_, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FKP-MASTER-MAK',
+true,
    'Master of Entrepreneurship Commerce',
    'Master of Entrepreneurship Commerce',
    'Master of Entrepreneurship Commerce',
@@ -738,7 +812,8 @@ INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, 
    (SELECT ID
     FROM AD_FCTY F
     WHERE F.NAME = 'FKP'), CURRENT_TIMESTAMP, 0, 1);
-INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FKP-MASTER-MAW',
+INSERT INTO AD_PRGM (ID, CODE, CURRENT_,TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FKP-MASTER-MAW',
+true,
    'Master of Entrepreneurship HealthEntrepreneurship',
    'Master of Entrepreneurship HealthEntrepreneurship',
    'Master of Entrepreneurship HealthEntrepreneurship',
@@ -748,7 +823,8 @@ INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, 
    (SELECT ID
     FROM AD_FCTY F
     WHERE F.NAME = 'FKP'), CURRENT_TIMESTAMP, 0, 1);
-INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FKP-MASTER-MAH',
+INSERT INTO AD_PRGM (ID, CODE,CURRENT_, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FKP-MASTER-MAH',
+true,
    'Master of Entrepreneurship Hospitality',
    'Master of Entrepreneurship Hospitality',
    'Master of Entrepreneurship Hospitality',
@@ -758,7 +834,8 @@ INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, 
    (SELECT ID
     FROM AD_FCTY F
     WHERE F.NAME = 'FKP'), CURRENT_TIMESTAMP, 0, 1);
-INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FKP-MASTER-MAP',
+INSERT INTO AD_PRGM (ID, CODE, CURRENT_,TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FKP-MASTER-MAP',
+true,
    'Master of Entrepreneurship Tourism',
    'Master of Entrepreneurship Tourism',
    'Master of Entrepreneurship Tourism',
@@ -768,7 +845,8 @@ INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, 
    (SELECT ID
     FROM AD_FCTY F
     WHERE F.NAME = 'FKP'), CURRENT_TIMESTAMP, 0, 1);
-INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FKP-MASTER-MMS',
+INSERT INTO AD_PRGM (ID, CODE, CURRENT_,TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'FKP-MASTER-MMS',
+true,
    'Master of Entrepreneurship Mathematical Science',
    'Master of Entrepreneurship Mathematical Science',
    'Master of Entrepreneurship Mathematical Science',
@@ -778,7 +856,8 @@ INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, 
    (SELECT ID
     FROM AD_FCTY F
     WHERE F.NAME = 'FKP'), CURRENT_TIMESTAMP, 0, 1);
-INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'MGSEB-MBA',
+INSERT INTO AD_PRGM (ID, CODE,CURRENT_, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'MGSEB-MBA',
+true,
    'Master of Business Administration',
    'Master of Business Administration',
    'Master of Business Administration',
@@ -788,7 +867,8 @@ INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, 
    (SELECT ID
     FROM AD_FCTY F
     WHERE F.NAME = 'MGSEB'), CURRENT_TIMESTAMP, 0, 1);
-INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'MGSEB-DBA',
+INSERT INTO AD_PRGM (ID, CODE,CURRENT_, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST)    VALUES (nextval('SQ_AD_PRGM'),    'MGSEB-DBA',
+true,
    'Doctorate of Business Administration',
    'Doctorate of Business Administration',
    'Doctorate of Business Administration',
