@@ -58,7 +58,8 @@ public class WhenIAmUpdateExamVivaInfo extends Stage<WhenIAmUpdateExamVivaInfo> 
 		offering.setCanonicalCode("FIAT/MASTER/PBH/GST5060");
 		offering.setCapacity(100);
 		offering.setCode("GST5060");
-		offering.setTitle("MECHANICS OF MATERIALS");
+		offering.setTitleMs("MECHANICS OF MATERIALS");
+		offering.setTitleEn("MECHANICS OF MATERIALS");
 		offering.setProgram(program);
 
 		termService.saveOffering(offering);

@@ -22,26 +22,19 @@ export class ProgramActions {
     };
   }
 
-  static FIND_PROGRAM = '[Program] Find Program';
-  findProgram(code): Action {
+  static FIND_PROGRAM_BY_CODE = '[Program] Find Program By Code';
+  findProgramByCode(code): Action {
     return {
-      type: ProgramActions.FIND_PROGRAM,
+      type: ProgramActions.FIND_PROGRAM_BY_CODE,
       payload: code
     };
   }
 
-  static FIND_PROGRAM_SUCCESS = '[Program] Find Program Success';
-  getProgramSuccess(program): Action {
+  static FIND_PROGRAM_BY_CODE_SUCCESS = '[Program] Find Program By Code Success';
+  findProgramByCodeSuccess(program): Action {
     return {
-      type: ProgramActions.FIND_PROGRAM_SUCCESS,
+      type: ProgramActions.FIND_PROGRAM_BY_CODE_SUCCESS,
       payload: program
-    };
-  }
-
-  static RESET_PROGRAM = '[Program] Reset Blank Program';
-  resetProgram(): Action {
-    return {
-      type: ProgramActions.RESET_PROGRAM
     };
   }
 
@@ -142,6 +135,4 @@ static DEACTIVATE_PROGRAM_SUCCESS = '[Program] Activate Program Success';
       payload: program
     };
   }
-
-
 }

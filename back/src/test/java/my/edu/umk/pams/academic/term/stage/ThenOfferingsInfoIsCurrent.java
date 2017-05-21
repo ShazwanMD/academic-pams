@@ -12,7 +12,6 @@ import org.springframework.util.Assert;
 
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
-import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
 import my.edu.umk.pams.academic.planner.model.AdProgram;
@@ -53,7 +52,7 @@ public class ThenOfferingsInfoIsCurrent extends Stage<ThenOfferingsInfoIsCurrent
 
 			Assert.notNull(offering, "Offering data should be not null");
 			LOG.debug("View updated code: {}", offering.getCanonicalCode());
-			LOG.debug("View updated title: {}", offering.getTitle());
+			LOG.debug("View updated title: {}", offering.getTitleMs());
 			LOG.debug("View updated capacity: {}", offering.getCapacity());
 
 		}

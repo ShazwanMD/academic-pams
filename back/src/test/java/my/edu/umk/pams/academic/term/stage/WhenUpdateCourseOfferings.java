@@ -1,14 +1,5 @@
 package my.edu.umk.pams.academic.term.stage;
 
-import java.util.List;
-/**
- * @author asyikin.mr and ziana
- */
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.util.Assert;
-
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
@@ -20,6 +11,16 @@ import my.edu.umk.pams.academic.planner.model.AdProgram;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
 import my.edu.umk.pams.academic.term.model.AdOffering;
 import my.edu.umk.pams.academic.term.service.TermService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.Assert;
+
+import java.util.List;
+
+/**
+ * @author asyikin.mr and ziana
+ */
 
 @JGivenStage
 public class WhenUpdateCourseOfferings extends Stage<WhenUpdateCourseOfferings> {
@@ -58,7 +59,8 @@ public class WhenUpdateCourseOfferings extends Stage<WhenUpdateCourseOfferings> 
 
 		for (AdProgram program : programs) {
 			LOG.debug("Listed program Code: {}", program.getCode());
-			LOG.debug("Listed program Title: {}", program.getTitle());
+			LOG.debug("Listed program Title: {}", program.getTitleMs());
+			LOG.debug("Listed program Title: {}", program.getTitleEn());
 
 		}
 
@@ -68,7 +70,7 @@ public class WhenUpdateCourseOfferings extends Stage<WhenUpdateCourseOfferings> 
 		for (AdOffering offering : offerings) {
 			LOG.debug("=======view current offering data=============");
 			LOG.debug("Listed offering CanonicalCode: {}", offering.getCanonicalCode());
-			LOG.debug("Listed offering Title: {}", offering.getTitle());
+			LOG.debug("Listed offering Title: {}", offering.getTitleMs());
 			LOG.debug("Listed offering Capacity: {}", offering.getCapacity());
 
 			// update offer courses info into offering table
@@ -78,7 +80,7 @@ public class WhenUpdateCourseOfferings extends Stage<WhenUpdateCourseOfferings> 
 			Assert.notNull(offering, "The updated offering data must not be null");
 			LOG.debug("=======view updated offering data=============");
 			LOG.debug("Updated success for offering code : {}", offering.getCanonicalCode());
-			LOG.debug("Listed offering Title: {}", offering.getTitle());
+			LOG.debug("Listed offering Title: {}", offering.getTitleMs());
 			LOG.debug("Updated success for new capacity : {}", offering.getCapacity());
 
 		}

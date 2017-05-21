@@ -1,6 +1,7 @@
 <md-card>
-  <md-card-title>{{offering?.course?.title}}</md-card-title>
+  <md-card-title>{{offering?.titleMs}}</md-card-title>
   <md-card-subtitle>{{offering?.code}}</md-card-subtitle>
+  <md-card-subtitle>{{offering?.titleMs}}</md-card-subtitle>
   <md-divider></md-divider>
   <md-card-content>
     <md-tab-group>
@@ -14,11 +15,9 @@
       </md-tab>
       <md-tab label="Course Information"> <!-- {{offering.course.titleMs}}  -->
 
-        <div>Course Title : {{offering?.course?.title}}</div>
+        <div>Course Title(MS) :{{offering?.course?.titleMs}}</div>
         <br>
-        <div>Course TitleEn :{{offering?.course?.titleMs}}</div>
-        <br>
-        <div>Course TitleMs :{{offering?.course?.titleEn}}</div>
+        <div>Course Title(EN) :{{offering?.course?.titleEn}}</div>
         <br>
         <div>Credit :{{offering?.course?.credit}}</div>
         <br>
@@ -26,9 +25,9 @@
       <md-tab label="Program Information">
         <div>Program Code : {{offering?.program?.code}}</div>
         <br>
-        <div>Program Title :{{offering?.program?.title}}</div>
+        <div>Program Title(MS) :{{offering?.program?.titleMs}}</div>
         <br>
-        <div>Program TitleMs :{{offering?.program?.titleMs}}</div>
+        <div>Program Title(EN) :{{offering?.program?.titleEn}}</div>
         <br>
       </md-tab>
     </md-tab-group>

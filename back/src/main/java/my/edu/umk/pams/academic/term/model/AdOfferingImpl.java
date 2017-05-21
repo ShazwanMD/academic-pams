@@ -26,8 +26,11 @@ public class AdOfferingImpl implements AdOffering {
     @Column(name = "CANONICAL_CODE", nullable = false, unique = true)
     private String canonicalCode;
 
-    @Column(name = "TITLE", nullable = false)
-    private String title;
+    @Column(name = "TITLE_MS", nullable = false)
+    private String titleMs;
+
+    @Column(name = "TITLE_EN", nullable = false)
+    private String titleEn;
 
     @Column(name = "CAPACITY", nullable = false)
     private Integer capacity = 0;
@@ -81,12 +84,24 @@ public class AdOfferingImpl implements AdOffering {
         this.canonicalCode = canonicalCode;
     }
 
-    public String getTitle() {
-        return title;
+    @Override
+    public String getTitleMs() {
+        return titleMs;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    @Override
+    public void setTitleMs(String titleMs) {
+        this.titleMs = titleMs;
+    }
+
+    @Override
+    public String getTitleEn() {
+        return titleEn;
+    }
+
+    @Override
+    public void setTitleEn(String titleEn) {
+        this.titleEn = titleEn;
     }
 
     @Override

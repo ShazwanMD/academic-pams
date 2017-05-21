@@ -41,9 +41,6 @@ public class WhenIUpdateCourses extends Stage<WhenIUpdateCourses> {
     public WhenIUpdateCourses I_update_courses_to_faculty_code_$a(String facultyCode) {
     	
     	faculty = plannerService.findFacultyByCode(facultyCode);
-        
-    	
-        course.setTitle("Sustainability & Environmental Economics");
         course.setTitleEn("Sustainability & Environmental Economics");
         course.setTitleMs("Sustainability & Environmental Economics");
         course.setCredit(5);

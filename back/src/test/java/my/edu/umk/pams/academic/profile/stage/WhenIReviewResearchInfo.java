@@ -38,7 +38,6 @@ public class WhenIReviewResearchInfo extends Stage<WhenIReviewResearchInfo>	{
 		LOG.debug("Student's Status :{}", student.getStudentStatus());
 		
 		course = plannerService.findCourseByCode(courseCode);
-		LOG.debug("Research Title : {}", course.getTitle());
 		LOG.debug("Research Title English : {}", course.getTitleEn());
 		LOG.debug("Research Title B.Malaysia : {}", course.getTitleMs());
 		

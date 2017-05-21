@@ -50,16 +50,9 @@ public class WhenIWantToViewProgramByFaculty extends Stage<WhenIWantToViewProgra
         }
 
         for (AdProgram programs : program) {
-            LOG.debug(programs.getTitle());
-        }
-
-        for (AdProgram programs : program) {
             LOG.debug(programs.getTitleEn());
-        }
-        for (AdProgram programs : program) {
             LOG.debug(programs.getTitleMs());
         }
-
         return self();
     }
 

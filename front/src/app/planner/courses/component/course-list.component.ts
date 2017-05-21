@@ -13,7 +13,7 @@ export class CourseListComponent {
 
   private columns: any[] = [
     {name: 'code', label: 'Code'},
-    {name: 'title', label: 'Title'},
+    {name: 'titleMs', label: 'Title'},
     {name: 'credit', label: 'Credit'},
     {name: 'action', label: ''}
   ];

@@ -1,45 +1,25 @@
 package my.edu.umk.pams.academic.assessment.stage;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
-import java.util.List;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
-
 import my.edu.umk.pams.academic.common.model.AdGradeCode;
 import my.edu.umk.pams.academic.common.model.AdStudyCenter;
 import my.edu.umk.pams.academic.common.service.CommonService;
 import my.edu.umk.pams.academic.identity.model.AdStaff;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.identity.service.IdentityService;
-import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
-import my.edu.umk.pams.academic.planner.model.AdAcademicStanding;
-import my.edu.umk.pams.academic.planner.model.AdAdmissionStatus;
-import my.edu.umk.pams.academic.planner.model.AdCohort;
-import my.edu.umk.pams.academic.planner.model.AdCourse;
-import my.edu.umk.pams.academic.planner.model.AdEnrollmentStatus;
-import my.edu.umk.pams.academic.planner.model.AdFaculty;
-import my.edu.umk.pams.academic.planner.model.AdProgram;
+import my.edu.umk.pams.academic.planner.model.*;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
 import my.edu.umk.pams.academic.profile.service.ProfileService;
-import my.edu.umk.pams.academic.term.model.AdAdmission;
-import my.edu.umk.pams.academic.term.model.AdAdmissionImpl;
-import my.edu.umk.pams.academic.term.model.AdAssessment;
-import my.edu.umk.pams.academic.term.model.AdEnrollment;
-import my.edu.umk.pams.academic.term.model.AdEnrollmentImpl;
-import my.edu.umk.pams.academic.term.model.AdGradebook;
-import my.edu.umk.pams.academic.term.model.AdOffering;
-import my.edu.umk.pams.academic.term.model.AdOfferingImpl;
-import my.edu.umk.pams.academic.term.model.AdSection;
-import my.edu.umk.pams.academic.term.model.AdSectionImpl;
+import my.edu.umk.pams.academic.term.model.*;
 import my.edu.umk.pams.academic.term.service.TermService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.math.BigDecimal;
 
 @JGivenStage
 public class WhenGetEnrollment extends Stage<WhenGetEnrollment> {
@@ -95,7 +75,7 @@ public class WhenGetEnrollment extends Stage<WhenGetEnrollment> {
 	private AdSection section;
 
 	@ProvidedScenarioState
-	private AdOffering offer;
+	private AdOffering offering;
 
 	@ExpectedScenarioState
 	private static String staffNo;
@@ -129,22 +109,23 @@ public class WhenGetEnrollment extends Stage<WhenGetEnrollment> {
 
 		studyCenter = commonService.findStudyCenterByCode("A");
 
-		offer = new AdOfferingImpl();
-		offer.setCanonicalCode("MASTER/MBA/GST5013/201720181");
-		offer.setCode("MASTER/MBA/GST5013");
-		offer.setTitle("Economics & Business Environment");
-		offer.setCapacity(100);
-		offer.setProgram(program);
-		offer.setCourse(course);
-		offer.getSections();
-		termService.saveOffering(offer);
+		offering = new AdOfferingImpl();
+		offering.setCanonicalCode("MASTER/MBA/GST5013/201720181");
+		offering.setCode("MASTER/MBA/GST5013");
+		offering.setTitleMs(course.getTitleMs());
+		offering.setTitleEn(course.getTitleEn());
+		offering.setCapacity(100);
+		offering.setProgram(program);
+		offering.setCourse(course);
+		offering.getSections();
+		termService.saveOffering(offering);
 
 		section = new AdSectionImpl();
 		section.setCode("Section A");
 		section.setCanonicalCode("MASTER/MBA/GST5013/201720181/Section A");
 		section.setOrdinal(1);
 		section.setCapacity(20);
-		section.setOffering(offer);
+		section.setOffering(offering);
 		termService.saveSection(section);
 
 		admission = new AdAdmissionImpl();

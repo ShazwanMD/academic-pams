@@ -15,10 +15,6 @@ public interface AdProgram extends AdMetaObject {
 
     void setCode(String code);
 
-    String getTitle();
-
-    void setTitle(String title);
-
     String getTitleEn();
 
     void setTitleEn(String titleEn);
@@ -27,17 +23,13 @@ public interface AdProgram extends AdMetaObject {
 
     void setTitleMs(String titleMs);
     
-    boolean isCurrent();
-
-    void setCurrent(boolean current);
-    
     AdProgramStatus getStatus();
 
     void setStatus(AdProgramStatus status);
 
-    AdProgramLevel getProgramLevel();
+    AdProgramLevel getLevel();
 
-    void setProgramLevel(AdProgramLevel programLevel);
+    void setLevel(AdProgramLevel level);
 
     AdFaculty getFaculty();
 

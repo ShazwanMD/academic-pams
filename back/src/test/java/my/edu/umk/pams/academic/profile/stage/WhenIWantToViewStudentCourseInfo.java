@@ -44,7 +44,8 @@ public class WhenIWantToViewStudentCourseInfo extends Stage<WhenIWantToViewStude
         course = plannerService.findCourses(faculty);
 
         for (AdCourse course : course) {
-            LOG.debug(course.getTitle());
+            LOG.debug(course.getTitleMs());
+            LOG.debug(course.getTitleEn());
         }
         return self();
     }

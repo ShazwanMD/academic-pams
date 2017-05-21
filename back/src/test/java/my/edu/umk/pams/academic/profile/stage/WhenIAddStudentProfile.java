@@ -7,7 +7,6 @@ import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 import my.edu.umk.pams.academic.identity.model.AdActor;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
-import my.edu.umk.pams.academic.identity.model.AdStudentImpl;
 import my.edu.umk.pams.academic.identity.model.AdStudentStatus;
 import my.edu.umk.pams.academic.identity.service.IdentityService;
 import my.edu.umk.pams.academic.planner.model.AdCohort;
@@ -73,7 +72,7 @@ public class WhenIAddStudentProfile extends Stage<WhenIAddStudentProfile> {
         LOG.debug("Program :{}", program.getCode());
         LOG.debug("");
         
-        level = program.getProgramLevel();
+        level = program.getLevel();
         LOG.debug("Level of Study :{}", level.getCode());
         LOG.debug("");
         
@@ -105,7 +104,7 @@ public class WhenIAddStudentProfile extends Stage<WhenIAddStudentProfile> {
         LOG.debug("Program :{}", program.getCode());
         LOG.debug("");
         
-        level = program.getProgramLevel();
+        level = program.getLevel();
         LOG.debug("Level of Study :{}", level.getCode());
         LOG.debug("");
         

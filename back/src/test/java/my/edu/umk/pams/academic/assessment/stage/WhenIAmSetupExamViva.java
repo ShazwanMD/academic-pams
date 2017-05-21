@@ -101,9 +101,9 @@ public class WhenIAmSetupExamViva extends Stage<WhenIAmSetupExamViva> {
 		LOG.debug("Program :{}", program.getCode());
 		
 		course = plannerService.findCourseByCodeAndFaculty("GST5013", faculty);
-		LOG.debug("Course Title :{}", course.getTitle());
+		LOG.debug("Course Title :{}", course.getTitleEn());
 
-		level = program.getProgramLevel();
+		level = program.getLevel();
 		LOG.debug("Program Level :{}", level.getCode());
 				
 		// setup assessment

@@ -44,7 +44,6 @@ public class WhenIWantToUpdateProgramInfo extends Stage<WhenIWantToUpdateProgram
         AdProgram program = new AdProgramImpl();
         program.setFaculty(plannerService.findFacultyByCode(code));
         program.setCode(code);
-        program.setTitle("1");
         program.setTitleEn("2");
         program.setTitleMs("3");
 

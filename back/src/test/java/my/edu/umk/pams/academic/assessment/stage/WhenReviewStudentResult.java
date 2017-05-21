@@ -97,7 +97,7 @@ public class WhenReviewStudentResult extends Stage<WhenReviewStudentResult> {
 		
 		// program
 		program = cohort.getProgram();
-		LOG.debug("Program :{}", program.getTitle().toUpperCase());
+		LOG.debug("Program :{}", program.getTitleEn().toUpperCase());
 		
 		faculty = program.getFaculty();
 		LOG.debug("faculty :{}", faculty.getName());
@@ -110,7 +110,8 @@ public class WhenReviewStudentResult extends Stage<WhenReviewStudentResult> {
 		offering.setCanonicalCode("FIAT/MASTER/PBH/GST5055");
 		offering.setCapacity(100);
 		offering.setCode("GST5055");
-		offering.setTitle("Offering 1");
+		offering.setTitleMs("Offering 1");
+		offering.setTitleEn("Offering 1");
 		offering.setProgram(program);
 		termService.saveOffering(offering);
 		Assert.notNull(offering, "offering is null");

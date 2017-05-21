@@ -20,16 +20,6 @@
           <md-divider></md-divider>
 
           <md-nav-list flex dense>
-            <md-list-item [routerLink]="['/programs-assign', program?.code]">
-              <md-icon md-list-avatar>assignment_ind</md-icon>
-              <h4 md-line>Reassign</h4>
-              <p md-line>Reassign this program</p>
-            </md-list-item>
-            <md-list-item [routerLink]="['/programs-resolve', program?.code]">
-              <md-icon md-list-avatar>done_all</md-icon>
-              <h4 md-line>Resolve</h4>
-              <p md-line>Resolve this faculty</p>
-            </md-list-item>
             <md-list-item [routerLink]="['/programs-reopen', program?.code]">
               <md-icon md-list-avatar>gavel</md-icon>
               <h4 md-line>Deactivate</h4>

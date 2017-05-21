@@ -65,7 +65,8 @@ public class WhenIWantToSetCapacityForOfferedCourse extends Stage<WhenIWantToSet
     	course = plannerService.findCourseByCodeAndFaculty(COURSE_CODE, faculty);
     	Assert.notNull(course, "course data should be not null");
         LOG.debug("Listed Courses ID: {}", course.getId());
-        LOG.debug("Listed Courses ID: {}", course.getTitle());
+        LOG.debug("Listed Courses ID: {}", course.getTitleMs());
+        LOG.debug("Listed Courses ID: {}", course.getTitleEn());
         LOG.debug("Listed Courses ID: {}", course.getFaculty().getName());
 
         // set term properties
@@ -75,7 +76,8 @@ public class WhenIWantToSetCapacityForOfferedCourse extends Stage<WhenIWantToSet
         offering.setCode(code);
         offering.setCanonicalCode(canonicalCode);
         offering.setCapacity(20);
-        offering.setTitle("Economics & Business Environment");
+        offering.setTitleMs("Economics & Business Environment");
+        offering.setTitleEn("Economics & Business Environment");
         offering.setCourse(course);
 
         // save term
@@ -85,7 +87,7 @@ public class WhenIWantToSetCapacityForOfferedCourse extends Stage<WhenIWantToSet
         LOG.debug("==============new offering data====================");
 		LOG.debug("section ID: {}", offering.getId());
 		LOG.debug("section Course: {}", offering.getCourse().getCode());
-		LOG.debug("section Title: {}", offering.getTitle());
+		LOG.debug("section Title: {}", offering.getTitleMs());
 		LOG.debug("section Capacity: {}", offering.getCapacity());
 		
         return self();

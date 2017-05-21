@@ -1,30 +1,22 @@
 package my.edu.umk.pams.academic.assessment.stage;
 
-import java.util.List;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
-import com.tngtech.jgiven.annotation.Pending;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
-
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.identity.model.AdStudentStatus;
 import my.edu.umk.pams.academic.identity.service.IdentityService;
-import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
-import my.edu.umk.pams.academic.planner.model.AdCohort;
-import my.edu.umk.pams.academic.planner.model.AdCourse;
-import my.edu.umk.pams.academic.planner.model.AdFaculty;
-import my.edu.umk.pams.academic.planner.model.AdProgram;
-import my.edu.umk.pams.academic.planner.model.AdProgramLevel;
+import my.edu.umk.pams.academic.planner.model.*;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
 import my.edu.umk.pams.academic.term.model.AdOffering;
 import my.edu.umk.pams.academic.term.model.AdSection;
 import my.edu.umk.pams.academic.term.service.TermService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.List;
 
 @JGivenStage
 public class WhenIAmReviewStudentInfo extends Stage<WhenIAmReviewStudentInfo> {
@@ -88,10 +80,10 @@ public class WhenIAmReviewStudentInfo extends Stage<WhenIAmReviewStudentInfo> {
 
 		// get student program
 		program = cohort.getProgram();
-		LOG.debug("Program :{}", program.getTitle());
+		LOG.debug("Program :{}", program.getTitleMs());
 
 		// get student level of study
-		level = program.getProgramLevel();
+		level = program.getLevel();
 		LOG.debug("Level of Study :{}", level.getCode());
 
 		// get faculty

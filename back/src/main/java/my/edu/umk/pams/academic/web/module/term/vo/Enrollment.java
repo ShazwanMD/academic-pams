@@ -1,12 +1,7 @@
 package my.edu.umk.pams.academic.web.module.term.vo;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
-
-import my.edu.umk.pams.academic.planner.model.AdEnrollmentStanding;
-import my.edu.umk.pams.academic.planner.model.AdEnrollmentStatus;
-import my.edu.umk.pams.academic.web.module.common.vo.GradeCode;
 import my.edu.umk.pams.academic.web.module.core.vo.MetaObject;
 
 import java.io.IOException;
@@ -19,8 +14,6 @@ public class Enrollment extends MetaObject {
     private Section section;
     private Admission admission;
     //private GradeCode gradeCode;
-   // private EnrollmentStanding standing = AdEnrollmentStanding.HW;
-   // private EnrollmentStatus status = AdEnrollmentStatus.NEW;
     private EnrollmentStanding standing;
     private EnrollmentStatus status;
 

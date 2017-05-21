@@ -45,16 +45,9 @@ public class WhenAdminReviewProgram extends Stage<WhenAdminReviewProgram> {
          }
 
          for (AdProgram programs : program) {
-             LOG.debug(programs.getTitle());
-         }
-
-         for (AdProgram programs : program) {
+             LOG.debug(programs.getTitleMs());
              LOG.debug(programs.getTitleEn());
          }
-         for (AdProgram programs : program) {
-             LOG.debug(programs.getTitleMs());
-         }
-    	
         return self();
     }
 }

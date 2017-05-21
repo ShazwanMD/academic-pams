@@ -82,13 +82,10 @@ public class WhenIAmSetupExamVivaInfo extends Stage<WhenIAmSetupExamVivaInfo> {
         LOG.debug("");
 
         program = staff.getProgram();
-        LOG.debug("Program :{}", program.getTitle());
-        LOG.debug("");
         faculty = staff.getFaculty();
         LOG.debug("Faculty :{}", faculty.getName());
-        LOG.debug("");
         course = plannerService.findCourseByCodeAndFaculty("GST5023", faculty);
-        LOG.debug("Course :{}", course.getTitle());
+        LOG.debug("Course :{}", course.getTitleMs());
         LOG.debug("");
 
         offering = termService.findOfferingByProgramAndCourse(program, course);
@@ -165,11 +162,12 @@ public class WhenIAmSetupExamVivaInfo extends Stage<WhenIAmSetupExamVivaInfo> {
         LOG.debug("Faculty :{}", faculty.getName());
         LOG.debug("");
         program = staff.getProgram();
-        LOG.debug("Program :{}", program.getTitle());
+        LOG.debug("Program :{}", program.getTitleEn());
+        LOG.debug("Program :{}", program.getTitleMs());
         LOG.debug("");
 
         course = plannerService.findCourseByCodeAndFaculty("MDP", faculty);
-        LOG.debug("Course :{}", course.getTitle());
+        LOG.debug("Course :{}", course.getTitleMs());
         LOG.debug("");
         assessment = new AdAssessmentImpl();
         assessment.setCanonicalCode("MASTER/MDP/201720181/Viva");

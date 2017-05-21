@@ -4,7 +4,6 @@ package my.edu.umk.pams.academic.term.stage;
  * @author asyikin.mr and ZIANA
  */
 import com.tngtech.jgiven.Stage;import com.tngtech.jgiven.annotation.ExpectedScenarioState;
-import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 import my.edu.umk.pams.academic.term.model.AdOffering;
 import my.edu.umk.pams.academic.term.service.TermService;
@@ -50,7 +49,7 @@ public class ThenOfferingMayHaveSection extends Stage<ThenOfferingMayHaveSection
 		for (AdOffering offering : offerings) {
 
 			LOG.debug("Listed code: {}", offering.getCanonicalCode());
-			LOG.debug("Listed title: {}", offering.getTitle());
+			LOG.debug("Listed title: {}", offering.getTitleMs());
 
 			boolean hasSection = termService.hasSection(academicSession, offering);
 			//Assert.isTrue(!hasSection, "Offering does not have section and ready to be setup");

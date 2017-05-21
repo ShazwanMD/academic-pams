@@ -65,7 +65,8 @@ public class WhenIRegisterAdmissionInNewSemester extends Stage<WhenIRegisterAdmi
 
 		LOG.debug("student {}", student.getName());
 		LOG.debug("advisor {}", advisor.getName());
-		LOG.debug("program {}", program.getTitle());
+		LOG.debug("program {}", program.getTitleMs());
+		LOG.debug("program {}", program.getTitleEn());
 		LOG.debug("studyCenter {}", studyCenter.getDescription());
 
 		application = new AdAdmissionApplicationImpl();

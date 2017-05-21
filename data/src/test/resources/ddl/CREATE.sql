@@ -415,7 +415,6 @@
         M_TS timestamp,
         M_ID int8,
         M_ST int4,
-        TITLE varchar(255) not null,
         TITLE_EN varchar(255) not null,
         TITLE_MS varchar(255) not null,
         FACULTY_ID int8 not null,
@@ -926,7 +925,8 @@
         M_TS timestamp,
         M_ID int8,
         M_ST int4,
-        TITLE varchar(255) not null,
+        TITLE_EN varchar(255) not null,
+        TITLE_MS varchar(255) not null,
         COURSE_ID int8,
         PROGRAM_ID int8,
         primary key (ID)
@@ -1025,8 +1025,6 @@
     create table AD_PRGM (
         ID int8 not null,
         CODE varchar(255) not null,
-        CURRENT_ boolean not null,
-        STATUS int4 not null,
         C_TS timestamp,
         C_ID int8,
         D_TS timestamp,
@@ -1034,12 +1032,11 @@
         M_TS timestamp,
         M_ID int8,
         M_ST int4,
-        TITLE varchar(255) not null,
+        STATUS int4 not null,
         TITLE_EN varchar(255) not null,
         TITLE_MS varchar(255) not null,
         FACULTY_ID int8,
         LEVEL_ID int8,
-        
         primary key (ID)
     );
 

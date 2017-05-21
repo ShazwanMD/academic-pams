@@ -24,22 +24,14 @@ public class AdProgramImpl implements AdProgram {
     @Column(name = "CODE", nullable = false, unique = true)
     private String code;
 
-    @Column(name = "TITLE", nullable = false)
-    private String title;
-
     @Column(name = "TITLE_MS", nullable = false)
     private String titleMs;
 
     @Column(name = "TITLE_EN", nullable = false)
     private String titleEn;
     
-    @Column(name = "CURRENT_", nullable = false)
-    private boolean current;
-
-    
     @Column(name = "STATUS", nullable = false)
-    private AdProgramStatus status;
-    
+    private AdProgramStatus status = AdProgramStatus.NEW;
     
     @ManyToOne(targetEntity = AdProgramLevelImpl.class)
     @JoinColumn(name = "LEVEL_ID")
@@ -68,8 +60,6 @@ public class AdProgramImpl implements AdProgram {
         this.id = id;
     }
     
- 
-
     @Override
     public String getCode() {
         return code;
@@ -78,16 +68,6 @@ public class AdProgramImpl implements AdProgram {
     @Override
     public void setCode(String code) {
         this.code = code;
-    }
-
-    @Override
-    public String getTitle() {
-        return title;
-    }
-
-    @Override
-    public void setTitle(String title) {
-        this.title = title;
     }
 
     @Override
@@ -110,30 +90,24 @@ public class AdProgramImpl implements AdProgram {
         this.titleEn = titleEn;
     }
     
-    public boolean isCurrent() {
-        return current;
-    }
-
-    public void setCurrent(boolean current) {
-        this.current = current;
-    }
-
-    
+    @Override
     public AdProgramStatus getStatus() {
         return status;
     }
 
+    @Override
     public void setStatus(AdProgramStatus status) {
         this.status = status;
     }
+
     @Override
-    public AdProgramLevel getProgramLevel() {
+    public AdProgramLevel getLevel() {
         return programLevel;
     }
 
     @Override
-    public void setProgramLevel(AdProgramLevel programLevel) {
-        this.programLevel = programLevel;
+    public void setLevel(AdProgramLevel level) {
+        this.programLevel = level;
     }
 
     @Override

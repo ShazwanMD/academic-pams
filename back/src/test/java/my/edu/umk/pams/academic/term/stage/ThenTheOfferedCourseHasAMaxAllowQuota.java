@@ -29,7 +29,7 @@ public class ThenTheOfferedCourseHasAMaxAllowQuota extends Stage<ThenTheOfferedC
         
     	LOG.debug("New offering Id: {}", offering.getId());
     	LOG.debug("New offering CanonicalCode: {}", offering.getCanonicalCode());
-    	LOG.debug("New offering Title: {}", offering.getTitle());
+    	LOG.debug("New offering Title: {}", offering.getTitleMs());
     	LOG.debug("New offering Capacity: {}", offering.getCapacity());
         
         Assert.isTrue(offering.getCapacity() > 0, "Capacity should be greater than zero");

@@ -1,15 +1,13 @@
-import { Component, ViewContainerRef, OnInit, AfterViewInit } from '@angular/core';
+import {Component, ViewContainerRef, OnInit} from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
 import {FormBuilder} from '@angular/forms';
 import {Router, ActivatedRoute} from '@angular/router';
-import {IdentityService} from "../../../../services/identity.service";
-import {CommonService} from "../../../../services/common.service";
-import {PlannerService} from "../../../../services/planner.service";
 import {Program} from "../program.interface";
 import {ProgramActions} from "../program.action";
 import {MdDialogRef} from "@angular/material";
 import {PlannerModuleState} from "../../index";
 import {Store} from "@ngrx/store";
+import {ProgramStatus} from "../program-status.enum";
 
 @Component({
   selector: 'pams-program-editor',
@@ -17,7 +15,6 @@ import {Store} from "@ngrx/store";
 })
 
 export class ProgramEditorDialog implements OnInit {
-
   private _program: Program;
   private editForm: FormGroup;
   private edit: boolean = false;
@@ -28,40 +25,31 @@ export class ProgramEditorDialog implements OnInit {
               private actions: ProgramActions,
               private store: Store<PlannerModuleState>,
               private viewContainerRef: ViewContainerRef,
-              private dialog: MdDialogRef<ProgramEditorDialog >) {
-            
+              private dialog: MdDialogRef<ProgramEditorDialog>) {
   }
 
- set academicSession(value: Program) {
-        this._program = value;
-        this.edit = true;
+  set program(value: Program) {
+    this._program = value;
+    this.edit = true;
   }
 
-  //  openDialog(): void {
+  ngOnInit(): void {
+    this.editForm = this.formBuilder.group(<Program>{
+      id: null,
+      code: '',
+      titleMs: '',
+      titleEn: '',
+      status: ProgramStatus.NEW,
+    });
 
-  //     this.dialog.open(ProgramEditorDialog, {
-  //       height: '50%', // can be px or %
-  //       width: '60%', // can be px or %
-  //     });
-  //   }
-
-     ngOnInit(): void {
-          this.editForm = this.formBuilder.group(<Program>{
-       id: null,
-       code: '',
-       title: '',
-       titleMs: '',
-       titleEn: '',
-     });
-     
-       if (this.edit) this.editForm.patchValue(this._program);
+    if (this.edit) this.editForm.patchValue(this._program);
   }
-     
-      submit(code: Program, isValid: boolean) {
-        if (!code.id) this.store.dispatch(this.actions.saveProgram(code));
-        else  this.store.dispatch(this.actions.updateProgram(code));
-        this.dialog.close();
-   
-   }
+
+  submit(program: Program, isValid: boolean) {
+    if (!program.id) this.store.dispatch(this.actions.saveProgram(program));
+    else  this.store.dispatch(this.actions.updateProgram(program));
+    this.dialog.close();
+
+  }
 }
 

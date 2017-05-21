@@ -23,9 +23,13 @@ public interface AdOffering extends AdMetaObject {
 
     void setCanonicalCode(String canonicalCode);
 
-    String getTitle();
+    String getTitleMs();
 
-    void setTitle(String title);
+    void setTitleMs(String titleMs);
+
+    String getTitleEn();
+
+    void setTitleEn(String titleEn);
 
     Integer getCapacity();
 

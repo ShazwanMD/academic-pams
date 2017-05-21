@@ -3,17 +3,18 @@ package my.edu.umk.pams.academic.term.stage;
 /**
  * @author asyikin.mr and ziana
  */
-import java.util.List;
+import com.tngtech.jgiven.Stage;
+import com.tngtech.jgiven.annotation.ExpectedScenarioState;
+import com.tngtech.jgiven.integration.spring.JGivenStage;
+import my.edu.umk.pams.academic.planner.model.AdProgram;
+import my.edu.umk.pams.academic.term.model.AdOffering;
+import my.edu.umk.pams.academic.term.service.TermService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
-import com.tngtech.jgiven.Stage;
-import com.tngtech.jgiven.annotation.ExpectedScenarioState;
-import com.tngtech.jgiven.integration.spring.JGivenStage;
-import my.edu.umk.pams.academic.term.model.AdOffering;
-import my.edu.umk.pams.academic.term.service.TermService;
-import my.edu.umk.pams.academic.planner.model.AdProgram;
+
+import java.util.List;
 
 @JGivenStage
 public class ThenOfferedCoursesInfoIsCurrent extends Stage<ThenOfferedCoursesInfoIsCurrent> {
@@ -39,9 +40,9 @@ public class ThenOfferedCoursesInfoIsCurrent extends Stage<ThenOfferedCoursesInf
 			LOG.debug("Offering Code:{}",offering.getCode());
 			LOG.debug("Offering CanonicalCode:{}",offering.getCanonicalCode());
 			LOG.debug("Offering Capacity:{}",offering.getCapacity());
-			LOG.debug("Offering Title:{}",offering.getTitle());
-			LOG.debug("Offering Program:{}",offering.getProgram().getTitle());
-			LOG.debug("Offering Course:{}",offering.getCourse().getTitle());
+			LOG.debug("Offering Title:{}",offering.getTitleMs());
+			LOG.debug("Offering Program:{}",offering.getProgram().getTitleMs());
+			LOG.debug("Offering Course:{}",offering.getCourse().getTitleMs());
 		}
 
 		return self();

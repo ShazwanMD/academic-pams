@@ -14,6 +14,8 @@ import java.io.IOException;
 public class Offering extends MetaObject {
 
     private String code;
+    private String titleMs;
+    private String titleEn;
     private String canonicalCode;
     private Course course;
     private Program program;
@@ -32,6 +34,22 @@ public class Offering extends MetaObject {
 
     public void setCanonicalCode(String canonicalCode) {
         this.canonicalCode = canonicalCode;
+    }
+
+    public String getTitleMs() {
+        return titleMs;
+    }
+
+    public void setTitleMs(String titleMs) {
+        this.titleMs = titleMs;
+    }
+
+    public String getTitleEn() {
+        return titleEn;
+    }
+
+    public void setTitleEn(String titleEn) {
+        this.titleEn = titleEn;
     }
 
     public Course getCourse() {

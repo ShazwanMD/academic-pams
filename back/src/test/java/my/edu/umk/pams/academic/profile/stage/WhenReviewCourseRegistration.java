@@ -1,15 +1,9 @@
 package my.edu.umk.pams.academic.profile.stage;
 
-import java.util.List;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.Pending;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
-
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.identity.model.AdStudentStatus;
 import my.edu.umk.pams.academic.identity.service.IdentityService;
@@ -18,6 +12,11 @@ import my.edu.umk.pams.academic.planner.model.AdCourse;
 import my.edu.umk.pams.academic.planner.model.AdFaculty;
 import my.edu.umk.pams.academic.planner.model.AdProgram;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.List;
 
 
 @JGivenStage
@@ -70,7 +69,7 @@ public class WhenReviewCourseRegistration extends Stage<WhenReviewCourseRegistra
 		LOG.debug("Faculty:{}", faculty.getName());
 		
 		for (AdCourse course : courses) {
-			LOG.debug(course.getTitle());
+			LOG.debug(course.getTitleEn());
 		}
 		
 		return self();

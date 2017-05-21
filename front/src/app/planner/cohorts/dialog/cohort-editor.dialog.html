@@ -12,7 +12,7 @@
     </div>
     <div layout="row" class="pad-bottom">
     </div>
-    
+
     <div layout="row" class="pad-bottom pad-top">
       <md-select formControlName="period" [(ngModel)]="selectedPeriod" placeholder="Period" style="width: 100%">
         <md-option *ngFor="let period of periods" [value]="period">
@@ -24,6 +24,6 @@
 </md-dialog-content>
 <md-dialog-actions align="end">
   <button md-button color="primary" (click)="goBack()">Back</button>
-  <button md-raised-button color="accent" (click)="save(editForm.value, newForm.valid)">Save</button>
+  <button md-raised-button color="accent" (click)="save(editForm.value, editForm.valid)">Save</button>
 </md-dialog-actions>
 

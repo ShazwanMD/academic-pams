@@ -8,10 +8,7 @@ const initialState: ProgramState = <Program>{};
 
 export function programReducer(state = initialState, action: Action): ProgramState {
   switch (action.type) {
-    case ProgramActions.RESET_PROGRAM: {
-      return initialState;
-    }
-    case ProgramActions.FIND_PROGRAM_SUCCESS: {
+    case ProgramActions.FIND_PROGRAM_BY_CODE_SUCCESS: {
       return action.payload;
     }
 
