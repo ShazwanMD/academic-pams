@@ -1,25 +1,14 @@
-<h2 md-dialog-title>Create Appointment Task Creator</h2>
+<h2 md-dialog-title>Create New Appointment</h2>
 <md-dialog-content>
 <form [formGroup]="createForm">
 
-	<!-- <div layout="row" class="pad-bottom">
-		<md-input-container flex mdTooltip="Please insert status"> <input mdInput
-			#capacity placeholder="status" formControlName="status"
-			value="Description" flex /> </md-input-container>
-	</div> -->
-
-	<!-- <div layout="row" class="pad-bottom pad-top" mdTooltip="Please select section">
-		<pams-section-select [placeholder]="'Select Section'"
-			[innerFormControl]="createForm.controls['section']">
-		</pams-section-select>
-	</div>
- -->
-	<!-- <div layout="row" class="pad-bottom pad-top" mdTooltip="Please select staff">
-		<pams-program-select ng-style="{'width': getMaxLength() + 'px'}"
-			[placeholder]="'Select Staff'"
-			[innerFormControl]="createForm.controls['staff']">
-		</pams-program-select>
-	</div> -->
+		
+	<div layout="row" class="inset" flex>
+       <pams-section-select
+        [placeholder]="'Select Section'"
+        [innerFormControl]="createForm.controls['section']">
+      </pams-section-select> 
+      </div> 
 	
 	  <div layout="row" class="inset" flex>
       <pams-appointment-status-select
