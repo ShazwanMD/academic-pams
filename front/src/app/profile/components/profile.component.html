@@ -10,6 +10,7 @@
 
         <br/>
     
+    <form [formGroup]="editorForm">
     <!--STUDENT INFORMATION-->
     <md-card>
     <div md-content flex md-scroll-y>
@@ -50,9 +51,11 @@
           </div>
         </md-card-content>
     </md-card>
+    </form>
 
     <br/>
 
+    <form [formGroup]="editorForm1">
     <!--ADDRESS INFORMATION-->
     <md-card>
     <div md-content flex md-scroll-y>
@@ -85,33 +88,33 @@
               </div>
 
               <div layout="row" layout-margin>
-              
+
               <div layout="column" layout-margin>
               <md-input-container>
-              <input mdInput placeholder="Address 1" value={{address.address1}}>
+              <input mdInput placeholder="Address 1" formControlName="address1" value={{address.address1}}>
               </md-input-container> 
               </div>
 
               <div layout="column" layout-margin>
               <md-input-container>
-              <input mdInput placeholder="Address 2" value={{address.address2}}>
+              <input mdInput placeholder="Address 2" formControlName="address2" value={{address.address2}}>
               </md-input-container>
               </div>
 
               <div layout="column" layout-margin>
               <md-input-container>
-              <input mdInput placeholder="Address 3" value={{address.address3}}>
+              <input mdInput placeholder="Address 3" formControlName="address3" value={{address.address3}}>
               </md-input-container>
               </div>
 
               <div layout="column" layout-margin>
               <md-input-container>
-              <input mdInput placeholder="Postcode" value={{address.postcode}}>
+              <input mdInput placeholder="Postcode" formControlName="postcode" value={{address.postcode}}>
               </md-input-container>
               </div>
 
               <div layout="column" layout-margin>
-              <button md-raised-button color="primary" disabled>Update</button>
+              <button md-raised-button color="primary" (click)="submit(editorForm.value, editorForm1.value)">Update</button>
               </div>
 
               </div>
@@ -120,6 +123,7 @@
           </div>
         </md-card-content>
     </md-card>
+    </form>
 
     <br/>
 
@@ -229,6 +233,7 @@
           </div>
         </md-card-content>
     </md-card>
+
       </md-tab>
 
       <md-tab label="Course Information">

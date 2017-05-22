@@ -196,6 +196,27 @@ export class ProfileActions {
     };
   }
 
+  static UPDATE_ADDRESS = '[Profile] Update Address';
+
+  updateAddress(student, address): Action {
+    console.log(student);
+    return {
+      type: ProfileActions.UPDATE_ADDRESS,
+      payload: {student: student, address: address}
+    };
+  }
+
+
+  static UPDATE_ADDRESS_SUCCEESS = '[Profile] Update Address Success';
+
+  updateAddressSuccess(message): Action {
+    console.log("updateAddressSuccess");
+    return {
+      type: ProfileActions.UPDATE_ADDRESS_SUCCEESS,
+      payload: message
+    };
+  }
+
   static ADD_GUARANTOR = '[Profile] Add Guarantor';
 
   addGuarantor(student, guarantor): Action {

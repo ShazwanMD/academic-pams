@@ -1,3 +1,4 @@
+import { Student } from './../identity/student.interface';
 import { Address } from './address.interface';
 import { Guarantor } from './guarantor.interface';
 import {Injectable} from '@angular/core';
@@ -7,7 +8,6 @@ import {ProfileActions} from "./profile.action";
 import {from} from "rxjs/observable/from";
 import {TermModuleState} from "../term/index";
 import {Store} from "@ngrx/store";
-import {Student} from "../identity/student.interface";
 
 
 @Injectable()
@@ -94,6 +94,15 @@ export class ProfileEffects {
     .map(action => action.payload)
     .switchMap(payload => this.profileService.addAddress(payload.student, payload.address))
     .map(message => this.profileActions.addAddressSuccess(message))
+    .withLatestFrom(this.store$.select(...this.STUDENT))
+    .map(state => state[1])
+    .map((student: Student) => this.profileActions.findStudentByIdentityNo(student.identityNo));
+
+@Effect() updateAddress$ = this.actions$
+    .ofType(ProfileActions.UPDATE_ADDRESS)
+    .map(action => action.payload)
+    .switchMap(payload => this.profileService.updateAddress(payload.student, payload.address))
+    .map(message => this.profileActions.updateAddressSuccess(message))
     .withLatestFrom(this.store$.select(...this.STUDENT))
     .map(state => state[1])
     .map((student: Student) => this.profileActions.findStudentByIdentityNo(student.identityNo));

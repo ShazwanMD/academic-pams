@@ -1,3 +1,5 @@
+import { AddressTypeSelectComponent } from './address-type-select.component';
+import { AddressType } from "../address-type.enum";
 import {ActivatedRoute} from '@angular/router';
 import {Router} from '@angular/router';
 import {Store} from '@ngrx/store';
@@ -20,6 +22,8 @@ import {AddressEditorDialog} from './../dialog/address-editor.dialog';
 import {GuardianEditorDialog} from './../dialog/guardian-editor.dialog';
 import {GuarantorEditorDialog} from './../dialog/guarantor-editor.dialog';
 
+import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
+
 @Component({
   selector: 'pams-profile',
   templateUrl: 'profile.component.html',
@@ -27,6 +31,13 @@ import {GuarantorEditorDialog} from './../dialog/guarantor-editor.dialog';
 })
 
 export class ProfileComponent implements OnInit {
+
+  private editorForm: FormGroup;
+  private editorForm1: FormGroup;
+  private edit: boolean = false;
+  private _address: Address;
+  private _student: Student;
+
   @Input() student: Student;
   @Input() addressess: Address[];
   @Input() guarantors: Guarantor[];
@@ -52,14 +63,36 @@ export class ProfileComponent implements OnInit {
               private actions: ProfileActions,
               private vcf: ViewContainerRef,
               private store: Store<ProfileModuleState>,
+              private formBuilder: FormBuilder,
               private dialog: MdDialog) {
   }
+
+  set address(value: Address) {
+    this._address = value;
+    this.edit = true;
+  }
+  
 
   ngOnInit(): void {
     this.route.params.subscribe((params: { identityNo: string }) => {
       let identityNo: string = params.identityNo;
       this.store.dispatch(this.actions.findStudentByIdentityNo(identityNo));
     });
+
+    this.editorForm1 = this.formBuilder.group(<Address>{
+      address1: '',
+      address2:'',
+      address3: '',
+      postcode: '',
+      addressType: AddressType.BILLING
+    });
+
+     this.editorForm = this.formBuilder.group(<Student>{
+      //identityNo: this.student.identityNo
+    });
+
+    if (this.edit) this.editorForm.patchValue(this._student);
+    if (this.edit) this.editorForm1.patchValue(this._address);
   }
 
   goBack(route: string): void {
@@ -148,5 +181,14 @@ export class ProfileComponent implements OnInit {
     this.creatorDialogRef.afterClosed().subscribe(res => {
       console.log("close dialog");
     });
+  }
+
+  submit(student: Student, address: Address) {
+    //student.identityNo = new Student();
+    console.log(student);
+    console.log(address);
+    //console.log("student email: " + student.email);
+    this.store.dispatch(this.actions.updateAddress(student, address));
+    //this.dialog.close();
   }
 }

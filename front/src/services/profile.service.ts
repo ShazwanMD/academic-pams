@@ -1,15 +1,16 @@
-import {Enrollment} from './../app/term/enrollments/enrollment.interface';
 import {Injectable} from '@angular/core';
 import {Headers} from '@angular/http';
 import {Response, Http, RequestOptions} from '@angular/http';
 import {HttpInterceptorService} from '@covalent/http';
-import {Student} from "../app/identity/student.interface";
 import {Observable} from "rxjs";
 import {environment} from "../environments/environment";
+
+import {Student} from "../app/identity/student.interface";
+import {Address} from './../app/profile/address.interface';
 import {Guardian} from "../app/profile/guardian.interface";
-import {Address} from "../app/profile/address.interface";
 import {Contact} from "../app/profile/contact.interface";
 import {Guarantor} from "../app/profile/guarantor.interface";
+import {Enrollment} from './../app/term/enrollments/enrollment.interface';
 
 @Injectable()
 export class ProfileService {
@@ -107,6 +108,16 @@ export class ProfileService {
     });
     let options = new RequestOptions({headers: headers});
     return this.http.post(environment.endpoint + '/api/profile/students/' + student.identityNo + '/addresses', JSON.stringify(address), options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+  updateAddress(student: Student, address: Address): Observable<String> {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
+    return this.http.put(environment.endpoint + '/api/profile/students/' + student.identityNo + '/addresses', JSON.stringify(address), options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 

@@ -49,9 +49,9 @@ export class DetailEditorDialog implements OnInit {
   }
 
   submit(student: Student, isValid: boolean) {
-    console.log("updating student");
-    console.log("student email: " + student.email);
+    console.log(student);
+    //console.log("student email: " + student.email);
     this.store.dispatch(this.actions.updateStudent(student));
-    this.dialog.close();
+    //this.dialog.close();
   }
 }
