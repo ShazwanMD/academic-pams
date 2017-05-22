@@ -16,11 +16,11 @@
           <md-card-subtitle>Actions available on current cohort</md-card-subtitle>
           <md-divider></md-divider>
           <md-nav-list flex dense>
-            <md-list-item [routerLink]="['/cohorts-assign', cohort?.code]">
-              <md-icon md-list-avatar>assignment_ind</md-icon>
+<a md-list-item (click)="showDialog()">
+               <md-icon md-list-avatar>assignment_ind</md-icon>
               <h4 md-line>Update Cohort</h4>
               <p md-line>Update this cohort</p>
-            </md-list-item>
+ </a>
             <md-list-item [routerLink]="['/cohorts-resolve', cohort?.code]">
               <md-icon md-list-avatar>done_all</md-icon>
               <h4 md-line>Delete Cohort</h4>

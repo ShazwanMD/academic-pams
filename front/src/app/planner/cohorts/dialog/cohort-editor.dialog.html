@@ -1,29 +1,42 @@
-<h2 md-dialog-title>Cohort Editor</h2>
-<md-dialog-content>
-  <form [formGroup]="editForm">
-    <div layout="row" class="pad-bottom">
-      <md-input-container  style="width: 100%">
-        <input md-input #description
-               placeholder="description"
-               formControlName="description"
-               value="Description"
-               flex/>
+<h2 md-dialog-title>Create New Cohort</h2>
+ <md-dialog-content>
+<form [formGroup]="createForm">
+
+   <div layout="row" class="pad-bottom">
+      <md-input-container flex mdTooltip="Please insert code">
+        <input mdInput
+               placeholder="Code"
+                
+               formControlName="code" flex/>
       </md-input-container>
     </div>
-    <div layout="row" class="pad-bottom">
+
+	  <div layout="row" class="pad-bottom">
+      <md-input-container flex mdTooltip="Please insert cohortCode">
+        <input mdInput
+               placeholder="description"
+               value="Description"
+               formControlName="description" flex/>
+      </md-input-container>
+    </div>
+
+ <div layout="row" class="pad-bottom pad-top">
+      <pams-academic-session-select
+        [placeholder]="'Select Session'"
+        [innerFormControl]="createForm.controls['academicSession']">
+      </pams-academic-session-select>
     </div>
 
     <div layout="row" class="pad-bottom pad-top">
-      <md-select formControlName="period" [(ngModel)]="selectedPeriod" placeholder="Period" style="width: 100%">
-        <md-option *ngFor="let period of periods" [value]="period">
-          {{period.code}}: {{period.description}}
-        </md-option>
-      </md-select>
+      <pams-program-select
+        [placeholder]="'Select program'"
+        [innerFormControl]="createForm.controls['program']">
+      </pams-program-select>
     </div>
-  </form>
-</md-dialog-content>
+    
+</form>
+</md-dialog-content> 
 <md-dialog-actions align="end">
-  <button md-button color="primary" (click)="goBack()">Back</button>
-  <button md-raised-button color="accent" (click)="save(editForm.value, editForm.valid)">Save</button>
+<button md-raised-button color="accent"(click)="save(createForm.value, 1)">
+	Save</button>
 </md-dialog-actions>
-
