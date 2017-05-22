@@ -4,8 +4,8 @@ import {AcademicSession} from "../../planner/academic-sessions/academic-session.
 import {MetaObject} from "../../core/meta-object.interface";
 import {Document} from "../../core/document.interface";
 
-//export interface Offering extends MetaObject{
-export interface Offering extends Document {
+export interface Offering extends MetaObject{
+//export interface Offering extends Document {
   code:string;
   canonicalCode:string;
   titleMs:string;

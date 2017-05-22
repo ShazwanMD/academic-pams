@@ -12,7 +12,10 @@ import {OfferingActions} from "../offering.action";
 import {MdDialog} from '@angular/material';
 import {MdDialogRef} from "@angular/material";
 import {Store} from "@ngrx/store";
-
+import {AcademicSession} from "../../../planner/academic-sessions/academic-session.interface";
+import {Course} from "../../../planner/courses/course.interface";
+import {Program} from "../../../planner/programs/program.interface";
+import {TermModuleState} from "../../index";
 
 @Component({
   selector: 'pams-offering-editor',
@@ -28,7 +31,7 @@ export class OfferingEditorDialog implements OnInit {
   constructor(private router: Router,
               private route: ActivatedRoute,
               private formBuilder: FormBuilder,
-              //private store: Store<TermModuleState>,
+              private store: Store<TermModuleState>,
               private actions: OfferingActions,
               public dialog: MdDialogRef<OfferingEditorDialog>) {
   }
@@ -41,27 +44,18 @@ export class OfferingEditorDialog implements OnInit {
       canonicalCode: '',
       titleMs:'',
       titleEn:'',
-     
-      //course: <Course>{},
-      //program: <Program>{},
-      //session: <AcademicSession>{},
-      
-    
-      
+      session:<AcademicSession>{},
+      course: <Course>{},
+      program: <Program>{},
+        
     });
 
    // this.editForm.patchValue(this.offering);
   }
 
- /* submit(offering: Offering, isValid: boolean) {
-    // set codes
-    offering.canonicalCode = this._offering.canonicalCode + "" + section.ordinal
-    offering.code = this._offering.code + "" + section.ordinal
-
-    // dispatch action
-    this.store.dispatch(this.actions.addOffering(this._offering, section));
-    this.dialog.close();
+  save(offering: Offering, isValid: boolean) {
+  /*  this.store.dispatch(this.actions.addOffering(offering));
+    this.dialog.close(); */
   }
- */
 }
 
