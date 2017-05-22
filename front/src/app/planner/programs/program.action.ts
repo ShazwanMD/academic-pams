@@ -22,26 +22,19 @@ export class ProgramActions {
     };
   }
 
-  static FIND_PROGRAM = '[Program] Find Program';
-  findProgram(code): Action {
+  static FIND_PROGRAM_BY_CODE = '[Program] Find Program By Code';
+  findProgramByCode(code): Action {
     return {
-      type: ProgramActions.FIND_PROGRAM,
+      type: ProgramActions.FIND_PROGRAM_BY_CODE,
       payload: code
     };
   }
 
-  static FIND_PROGRAM_SUCCESS = '[Program] Find Program Success';
-  getProgramSuccess(program): Action {
+  static FIND_PROGRAM_BY_CODE_SUCCESS = '[Program] Find Program By Code Success';
+  findProgramByCodeSuccess(program): Action {
     return {
-      type: ProgramActions.FIND_PROGRAM_SUCCESS,
+      type: ProgramActions.FIND_PROGRAM_BY_CODE_SUCCESS,
       payload: program
-    };
-  }
-
-  static RESET_PROGRAM = '[Program] Reset Blank Program';
-  resetProgram(): Action {
-    return {
-      type: ProgramActions.RESET_PROGRAM
     };
   }
 
@@ -105,6 +98,40 @@ export class ProgramActions {
   removeProgramSuccess(program): Action {
     return {
       type: ProgramActions.REMOVE_PROGRAM_SUCCESS,
+      payload: program
+    };
+  }
+
+
+
+  static ACTIVATE_PROGRAM = '[Program] Activate Program';
+  activateProgram(program): Action {
+    return {
+      type: ProgramActions.ACTIVATE_PROGRAM,
+      payload: program
+    };
+  }
+
+static ACTIVATE_PROGRAM_SUCCESS = '[Program] Activate AcademicSession Success';
+  activateProgramSuccess(program): Action {
+    return {
+      type: ProgramActions.ACTIVATE_PROGRAM_SUCCESS,
+      payload: program
+    };
+  }
+
+ static DEACTIVATE_PROGRAM = '[Program] Deactivate Program';
+  deactivateProgram(program): Action {
+    return {
+      type: ProgramActions.DEACTIVATE_PROGRAM,
+      payload: program
+    };
+  }
+
+static DEACTIVATE_PROGRAM_SUCCESS = '[Program] Activate Program Success';
+  deactivateProgramSuccess(program): Action {
+    return {
+      type: ProgramActions.DEACTIVATE_PROGRAM_SUCCESS,
       payload: program
     };
   }

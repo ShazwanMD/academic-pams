@@ -38,7 +38,7 @@ public class ThenICanChoose extends Stage<ThenICanChoose> {
 	public ThenICanChoose i_can_choose_which_section_to_enroll() {
 
 		program = offering.getProgram();
-		LOG.debug("Offering program:{}",offering.getProgram().getTitle());
+		LOG.debug("Offering program:{}",offering.getProgram().getTitleEn());
 		offerings = termService.findOfferings(program);
 		Assert.notNull(offerings, "offerings data is not null");
 
@@ -47,10 +47,9 @@ public class ThenICanChoose extends Stage<ThenICanChoose> {
 			LOG.debug("=============Data Offering===================");
 			LOG.debug("Offering CanonicalCode:{}",offering.getCanonicalCode());
 			LOG.debug("Offering Code:{}",offering.getCode());
-			LOG.debug("Offering Title:{}", offering.getTitle());
+			LOG.debug("Offering Title:{}", offering.getTitleMs());
 			LOG.debug("Offering Capacity: {}", offering.getCapacity());
-			LOG.debug("Offering Course: {}", offering.getCourse().getTitle());
-			LOG.debug("Offering Program: {}", offering.getProgram().getTitle());
+			LOG.debug("Offering Course: {}", offering.getCourse().getTitleEn());
 
 			List<AdSection> sections = termService.findSections(offering);
 			for (AdSection section : sections) {

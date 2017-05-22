@@ -73,7 +73,7 @@ public class AdAppointmentDaoImpl extends GenericDaoSupport<Long, AdAppointment>
     public List<AdAppointment> find(AdAcademicSession academicSession) {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select s from AdAppointment s where " +
-                "s.section.session = :academicSession " +
+                "s.section.offering.session = :academicSession " +
                 "and s.metadata.state = :state " +
                 "order by s.staff.name asc");
         query.setInteger("state", AdMetaState.ACTIVE.ordinal());
@@ -112,7 +112,7 @@ public class AdAppointmentDaoImpl extends GenericDaoSupport<Long, AdAppointment>
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select s from AdAppointment s where " +
                 "s.section.offering = :offering " +
-                "and s.section.session = :academicSession " +
+                "and s.section.offering.session = :academicSession " +
                 "and s.metadata.state = :state " +
                 "order by s.staff.name asc");
         query.setInteger("state", AdMetaState.ACTIVE.ordinal());
@@ -127,7 +127,7 @@ public class AdAppointmentDaoImpl extends GenericDaoSupport<Long, AdAppointment>
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select s from AdAppointment s where " +
                 "s.staff = :staff " +
-                "and s.section.session = :academicSession " +
+                "and s.section.offering.session = :academicSession " +
                 "and s.metadata.state = :state " +
                 "order by s.staff.name asc");
         query.setInteger("state", AdMetaState.ACTIVE.ordinal());
@@ -142,7 +142,7 @@ public class AdAppointmentDaoImpl extends GenericDaoSupport<Long, AdAppointment>
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select s from AdAppointment s where " +
                 "s.staff = :staff " +
-                "and s.section.session = :academicSession " +
+                "and s.section.offering.session = :academicSession " +
                 "and s.metadata.state = :state " +
                 "order by s.staff.name asc");
         query.setInteger("state", AdMetaState.ACTIVE.ordinal());
@@ -219,7 +219,7 @@ public class AdAppointmentDaoImpl extends GenericDaoSupport<Long, AdAppointment>
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select s from AdAppointment s where " +
                 "s.section.offering = :offering " +
-                "and s.section.session = :academicSession " +
+                "and s.section.offering.session = :academicSession " +
                 "and s.metadata.state = :state " +
                 "order by s.staff.name asc");
         query.setInteger("state", AdMetaState.ACTIVE.ordinal());
@@ -236,7 +236,7 @@ public class AdAppointmentDaoImpl extends GenericDaoSupport<Long, AdAppointment>
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select s from AdAppointment s where " +
                 "s.section.offering = :offering " +
-                "and s.section.session = :academicSession " +
+                "and s.section.offering.session = :academicSession " +
                 "and (upper(s.staff.identityNo) like upper(:filter) " +
                 "or upper(s.staff.email) like upper(:filter) " +
                 "or upper(s.staff.name) like upper(:filter) " +
@@ -470,7 +470,7 @@ public class AdAppointmentDaoImpl extends GenericDaoSupport<Long, AdAppointment>
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select count(s) from AdAppointment s where " +
                 "s.section.offering = :offering " +
-                "and s.section.session = :academicSession " +
+                "and s.offering.session = :academicSession " +
                 "and s.metadata.state = :state ");
         query.setInteger("state", AdMetaState.ACTIVE.ordinal());
         query.setEntity("offering", offering);
@@ -484,7 +484,7 @@ public class AdAppointmentDaoImpl extends GenericDaoSupport<Long, AdAppointment>
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select count(s) from AdAppointment s where " +
                 "s.staff = :staff " +
-                "and s.section.session = :academicSession " +
+                "and s.section.offering.session = :academicSession " +
                 "and s.metadata.state = :state ");
         query.setInteger("state", AdMetaState.ACTIVE.ordinal());
         query.setEntity("staff", staff);
@@ -499,7 +499,7 @@ public class AdAppointmentDaoImpl extends GenericDaoSupport<Long, AdAppointment>
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select count(s) from AdAppointment s where " +
                 "s.section.offering = :offering " +
-                "and s.section.session = :academicSession " +
+                "and s.section.offering.session = :academicSession " +
                 "and (upper(s.staff.identityNo) like upper(:filter) " +
                 "or upper(s.staff.email) like upper(:filter) " +
                 "or upper(s.staff.name) like upper(:filter) " +
@@ -593,7 +593,7 @@ public class AdAppointmentDaoImpl extends GenericDaoSupport<Long, AdAppointment>
         Query query = session.createQuery("select count(*) from AdAppointment s where " +
                 "s.staff = :staff " +
                 "and s.section.offering = :offering " +
-                "and s.section.session = :academicSession " +
+                "and s.section.offering.session = :academicSession " +
                 "and s.metadata.state = :state ");
         query.setEntity("staff", staff);
         query.setEntity("offering", offering);

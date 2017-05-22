@@ -43,8 +43,7 @@ public class WhenAdminAddAProgram extends Stage<WhenAdminAddAProgram> {
         AdProgram program = new AdProgramImpl();
         program.setCode(PROGRAM_CODE);
         program.setFaculty(faculty);
-        program.setProgramLevel(programLevel);
-        program.setTitle("Master of Enterpreneurship");
+        program.setLevel(programLevel);
         program.setTitleEn("Master of Enterpreneurship");
         program.setTitleMs("Master of Enterpreneurship");
         plannerService.saveProgram(program);

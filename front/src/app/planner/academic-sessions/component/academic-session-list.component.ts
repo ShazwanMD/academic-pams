@@ -18,7 +18,6 @@ export class AcademicSessionListComponent {
         {name: 'current', label: 'Status'},
         {name: 'action', label: ''},
 
-
     ];
 
 }

@@ -34,7 +34,7 @@ export class PlannerService {
       .map((res: Response) => <AcademicSession>res.json());
   }
 
-activateAcademicSession (academicSession: AcademicSession): Observable<String> {
+  activateAcademicSession(academicSession: AcademicSession): Observable<String> {
     let headers = new Headers({'Authorization': 'Bearer TODO'});
     let options = new RequestOptions({headers: headers});
     console.log("activate academic session");
@@ -42,7 +42,7 @@ activateAcademicSession (academicSession: AcademicSession): Observable<String> {
       .map((res: Response) => <String>res.json());
   }
 
-  deactivateAcademicSession (academicSession: AcademicSession): Observable<String> {
+  deactivateAcademicSession(academicSession: AcademicSession): Observable<String> {
     let headers = new Headers({'Authorization': 'Bearer TODO'});
     let options = new RequestOptions({headers: headers});
     console.log("deactivate academic session");
@@ -91,21 +91,47 @@ activateAcademicSession (academicSession: AcademicSession): Observable<String> {
       .map((res: Response) => <Program>res.json());
   }
 
-  saveProgram(program: Program): Observable<Boolean> {
-    return this.http.post(environment.endpoint + '/api/planner/programs', JSON.stringify(program))
-      .flatMap(data => Observable.of(true));
+  saveProgram(program: Program): Observable<String> {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
+    return this.http.post(environment.endpoint + '/api/planner/programs', JSON.stringify(program), options)
+      .flatMap((res: Response) => Observable.of(res.text()));
   }
 
-  updateProgram(program: Program): Observable<Boolean> {
-    return this.http.put(environment.endpoint + '/api/planner/programs', JSON.stringify(program))
-      .flatMap(data => Observable.of(true));
+  updateProgram(program: Program): Observable<String> {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
+    return this.http.put(environment.endpoint + '/api/planner/programs/' + program.code, JSON.stringify(program), options)
+      .flatMap((res: Response) => Observable.of(res.text()));
   }
 
-  removeProgram (program: Program): Observable <Program> {
-    return this.http.delete(environment.endpoint + '/api/planner/programs/' + program)
+  removeProgram(program: Program): Observable<Program> {
+    return this.http.delete(environment.endpoint + '/api/planner/programs/' + program.code)
       .map((res: Response) => <Program>res.json());
   }
-  
+
+  activateProgram(program: Program): Observable<String> {
+    let headers = new Headers({'Authorization': 'Bearer TODO'});
+    let options = new RequestOptions({headers: headers});
+    console.log("activate program");
+    return this.http.get(environment.endpoint + '/api/planner/programs/' + program.code + '/activate', options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+  deactivateProgram(program: Program): Observable<String> {
+    let headers = new Headers({'Authorization': 'Bearer TODO'});
+    let options = new RequestOptions({headers: headers});
+    console.log("deactivate program");
+    return this.http.get(environment.endpoint + '/api/planner/programs/' + program.code + '/deactivate', options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
 
   // ====================================================================================================
   // COURSE
@@ -135,9 +161,7 @@ activateAcademicSession (academicSession: AcademicSession): Observable<String> {
     let headers = new Headers({'Authorization': 'Bearer TODO'});
     let options = new RequestOptions({headers: headers});
     return this.http.get(environment.endpoint + '/api/planner/cohorts', options)
-      .map(res => {
-        return <Cohort[]>res.json();
-      })
+      .map(res => <Cohort[]>res.json())
   }
 
   findCohortByCode(code: string): Observable<Cohort> {

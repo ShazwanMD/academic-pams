@@ -43,7 +43,6 @@ public class WhenIWantUpdateCourse extends Stage<WhenIWantUpdateCourse> {
         courses.setCode("DDA1155");
         courses.setFaculty(faculty);
         courses.setClassification(AdAcademicClassification.LEVEL_000);
-        courses.setTitle("LUKISAN SAM");
         courses.setTitleEn("ENGINEERING SAM");
         courses.setTitleMs("LUKISAN SAM");
 

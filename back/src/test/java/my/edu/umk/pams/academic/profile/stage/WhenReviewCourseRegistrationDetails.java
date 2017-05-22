@@ -66,7 +66,7 @@ public class WhenReviewCourseRegistrationDetails extends Stage<WhenReviewCourseR
 		program = cohort.getProgram();
 		LOG.debug("Program Code :{}", program.getCode());
 		
-		level = program.getProgramLevel();
+		level = program.getLevel();
 		LOG.debug("Level of Study:{}", level.getCode());
 		
 		faculty = program.getFaculty();

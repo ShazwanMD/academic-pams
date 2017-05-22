@@ -41,7 +41,8 @@ public class ThenTheAdmissionWillBeReviewed extends Stage<ThenTheAdmissionWillBe
 		LOG.debug("Admission audit no for new student: {}", application.getAuditNo());
 		
 		LOG.debug("advisor {}", advisor.getName());
-		LOG.debug("program {}", program.getTitle());
+		LOG.debug("program {}", program.getTitleMs());
+		LOG.debug("program {}", program.getTitleEn());
 		LOG.debug("studyCenter {}", studyCenter.getDescription());
 
 		return self();

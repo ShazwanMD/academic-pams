@@ -22,22 +22,23 @@ export class CohortEditorDialog implements OnInit {
               private route: ActivatedRoute,
               private formBuilder: FormBuilder,
               private actions: CohortActions,
-              private viewContainerRef: ViewContainerRef,
+              //private viewContainerRef: ViewContainerRef,
               private dialog: MdDialogRef<CohortEditorDialog>) {
   }
 
   ngOnInit(): void {
     this.editForm = this.formBuilder.group(<Cohort>{
+    id: null,
     code: '',
-    description: '',
+    description: '', 
 
    });
-
 
     this.editForm.patchValue(this.cohort);
   }
 
-  save(Cohort: Cohort, isValid: boolean) {
+ /* save(Cohort: Cohort, isValid: boolean) {
     // do something
   }
+ */   
 }

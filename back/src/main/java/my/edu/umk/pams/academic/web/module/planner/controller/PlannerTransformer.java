@@ -15,6 +15,7 @@ import static java.util.stream.Collectors.toList;
 /**
  * @author PAMS
  */
+
 @Component("plannerTransformer")
 public class PlannerTransformer {
 
@@ -22,13 +23,17 @@ public class PlannerTransformer {
 
     @Autowired
     private PlannerTransformer plannerTransformer;
-    
+
     public AcademicSession toAcademicSessionVo(AdAcademicSession academicSession) {
         AcademicSession vo = new AcademicSession();
         vo.setId(academicSession.getId());
         vo.setCode(academicSession.getCode());
         vo.setDescription(academicSession.getDescription());
         vo.setCurrent(academicSession.isCurrent());
+        vo.setstartDate(academicSession.getStartDate());
+        vo.setendDate(academicSession.getEndDate());
+        vo.setSemester(AcademicSemester.get(academicSession.getSemester().ordinal()));
+        vo.setYear(toAcademicSessionVo(academicSession).getYear());
         return vo;
     }
 
@@ -53,10 +58,10 @@ public class PlannerTransformer {
         Program vo = new Program();
         vo.setId(program.getId());
         vo.setCode(program.getCode());
-        vo.setTitle(program.getTitle());
         vo.setTitleMs(program.getTitleMs());
         vo.setTitleEn(program.getTitleEn());
-		vo.setFaculty(plannerTransformer.toFacultyVo(program.getFaculty()));
+        vo.setStatus(ProgramStatus.get(program.getStatus().ordinal()));
+        vo.setFaculty(plannerTransformer.toFacultyVo(program.getFaculty()));
         return vo;
     }
 
@@ -64,12 +69,11 @@ public class PlannerTransformer {
         Course vo = new Course();
         vo.setId(course.getId());
         vo.setCode(course.getCode());
-        vo.setTitle(course.getTitle());
         vo.setTitleMs(course.getTitleMs());
         vo.setTitleEn(course.getTitleEn());
         vo.setCredit(course.getCredit());
         vo.setFaculty(plannerTransformer.toFacultyVo(course.getFaculty()));
-        
+
         return vo;
     }
 
@@ -78,7 +82,15 @@ public class PlannerTransformer {
         vo.setId(cohort.getId());
         vo.setCode(cohort.getCode());
         vo.setDescription(cohort.getDescription());
+        //    vo.setClassification(cohort.getClassification());
         return vo;
+    }
+
+    public List<Cohort> toCohortVos(List<AdCohort> cohorts) {
+        List<Cohort> vos = cohorts.stream()
+                .map((cohort) -> toCohortVo(cohort))
+                .collect(toList());
+        return vos;
     }
 
     public List<StudyCenter> toStudyCenterVos(List<AdStudyCenter> studyCenters) {
@@ -112,13 +124,6 @@ public class PlannerTransformer {
     public List<Course> toCourseVos(List<AdCourse> courses) {
         List<Course> vos = courses.stream()
                 .map((course) -> toCourseVo(course))
-                .collect(toList());
-        return vos;
-    }
-
-    public List<Cohort> toCohortVos(List<AdCohort> cohorts) {
-        List<Cohort> vos = cohorts.stream()
-                .map((cohort) -> toCohortVo(cohort))
                 .collect(toList());
         return vos;
     }

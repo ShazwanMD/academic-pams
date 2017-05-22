@@ -6,7 +6,6 @@ import com.tngtech.jgiven.integration.spring.JGivenStage;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.planner.model.AdCourse;
 import my.edu.umk.pams.academic.planner.model.AdFaculty;
-import my.edu.umk.pams.academic.planner.model.AdFacultyImpl;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -39,7 +38,7 @@ public class WhenReviewCourseInfo extends Stage<WhenReviewCourseInfo> {
 
        List <AdCourse> courses = faculty.getCourses();
        for (AdCourse course : courses) {
-            LOG.debug(course.getTitle());
+            LOG.debug(course.getTitleEn());
         }
         return self();
     }

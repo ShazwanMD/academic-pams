@@ -1,4 +1,4 @@
-import { Faculty } from './../../faculties/faculty.interface';
+import {Faculty} from './../../faculties/faculty.interface';
 import {Component, ViewContainerRef, OnInit} from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
 import {FormBuilder} from '@angular/forms';
@@ -7,13 +7,14 @@ import {IdentityService} from "../../../../services/identity.service";
 import {CommonService} from "../../../../services/common.service";
 import {PlannerService} from "../../../../services/planner.service";
 import {Program} from "../program.interface";
-import {ProgramActions} from "../program.action";;
+import {ProgramActions} from "../program.action";
+;
 import {FlowState} from "../../../core/flow-state.enum";
 import {MetaState} from "../../../core/meta-state.enum";
 import {Store} from "@ngrx/store";
 import {PlannerModuleState} from "../../index";
 import {MdDialogRef} from "@angular/material";
-import { create } from '@angular/language-service/language-service';
+import {create} from '@angular/language-service/language-service';
 
 @Component({
   selector: 'pams-program-creator',
@@ -22,7 +23,7 @@ import { create } from '@angular/language-service/language-service';
 
 export class ProgramCreatorDialog implements OnInit {
 
- private creatorForm: FormGroup;
+  private creatorForm: FormGroup;
   private create: boolean = false;
   private _program: Program;
 
@@ -33,30 +34,29 @@ export class ProgramCreatorDialog implements OnInit {
   }
 
 
-    set program(value: Program) {
-        this._program = value;
-        this.create = true;
-    }
-
-   ngOnInit(): void {
-      this.creatorForm= this.formBuilder.group(<Program>{
-       id: null,
-       code: '',
-       title: '',
-       faculty:<Faculty>{},
-
-     
-     });
-
-        if (this.create) this.creatorForm.patchValue(this._program);
+  set program(value: Program) {
+    this._program = value;
+    this.create = true;
   }
-  
-   save(code: Program, isValid: boolean) {
 
-console.log(code.code);
+  ngOnInit(): void {
+    this.creatorForm = this.formBuilder.group(<Program>{
+      id: null,
+      code: '',
+      titleMs: '',
+      titleEn: '',
+      faculty: <Faculty>{},
+    });
 
-        if (!code.id) this.store.dispatch(this.actions.saveProgram(code));
-        else  this.store.dispatch(this.actions.updateProgram(code));
-        this.dialog.close();
-}
+    if (this.create) this.creatorForm.patchValue(this._program);
+  }
+
+  save(code: Program, isValid: boolean) {
+
+    console.log(code.code);
+
+    if (!code.id) this.store.dispatch(this.actions.saveProgram(code));
+    else  this.store.dispatch(this.actions.updateProgram(code));
+    this.dialog.close();
+  }
 }

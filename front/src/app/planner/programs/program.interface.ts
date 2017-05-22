@@ -1,9 +1,11 @@
-import { Program } from './program.interface';import { Faculty } from './../faculties/faculty.interface';
+import {Program} from './program.interface';
+import {Faculty} from './../faculties/faculty.interface';
 import {MetaObject} from "../../core/meta-object.interface";
-export interface Program extends MetaObject{
-   faculty: Faculty;
-   code: string;
-   title:string;
-   titleMs:string;
-   titleEn:string;
+import {ProgramStatus} from "./program-status.enum";
+export interface Program extends MetaObject {
+  code: string;
+  titleMs: string;
+  titleEn: string;
+  status: ProgramStatus;
+  faculty: Faculty;
 }

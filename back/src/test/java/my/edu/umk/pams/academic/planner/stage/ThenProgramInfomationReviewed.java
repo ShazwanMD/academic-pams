@@ -5,22 +5,17 @@ package my.edu.umk.pams.academic.planner.stage;
  */
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
-import com.tngtech.jgiven.annotation.Pending;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
-
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.planner.model.AdFaculty;
 import my.edu.umk.pams.academic.planner.model.AdProgram;
-import my.edu.umk.pams.academic.planner.model.AdProgramImpl;
-import my.edu.umk.pams.academic.planner.model.AdProgramLevel;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
-
-import java.util.List;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
+
+import java.util.List;
 
 
 @JGivenStage
@@ -58,8 +53,8 @@ public class ThenProgramInfomationReviewed extends Stage<ThenProgramInfomationRe
         }
 
         for (AdProgram programs : program) {
-            LOG.debug(programs.getTitle());
-            Assert.notNull(programs.getTitle(), "programs title should not be empty");
+            LOG.debug(programs.getTitleEn());
+            Assert.notNull(programs.getTitleEn(), "programs title should not be empty");
         }
 
         for (AdProgram programs : program) {

@@ -79,7 +79,6 @@ public class WhenReviewStudentStatus extends Stage<WhenReviewStudentStatus> {
 			LOG.debug("Faculty Name :{}", faculty.getName());
 
 			LOG.debug("Program CODE:{}", program.getCode());
-			LOG.debug("Program Details:{}", program.getTitle());
 			LOG.debug("Program Details:{}", program.getTitleEn());
 			LOG.debug("Program Details:{}", program.getTitleMs());
 
@@ -144,7 +143,6 @@ public class WhenReviewStudentStatus extends Stage<WhenReviewStudentStatus> {
 			LOG.debug("Faculty Name :{}", faculty.getName());
 
 			LOG.debug("Program CODE:{}", program.getCode());
-			LOG.debug("Program Taken:{}", program.getTitle());
 			LOG.debug("Program Taken:{}", program.getTitleEn());
 			LOG.debug("Program Taken:{}", program.getTitleMs());
 

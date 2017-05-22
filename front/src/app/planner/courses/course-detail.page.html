@@ -17,32 +17,10 @@
           <md-divider></md-divider>
 
           <md-nav-list flex dense>
-            <md-list-item [routerLink]="['/courses-assign', course?.code]">
-              <md-icon md-list-avatar>assignment_ind</md-icon>
-              <h4 md-line>Reassign</h4>
-              <p md-line>Reassign this course</p>
-            </md-list-item>
-            <md-list-item [routerLink]="['/courses-resolve', course?.code]">
-              <md-icon md-list-avatar>done_all</md-icon>
-              <h4 md-line>Resolve</h4>
-              <p md-line>Resolve this course</p>
-            </md-list-item>
             <md-list-item [routerLink]="['/courses-reopen', course?.code]">
               <md-icon md-list-avatar>gavel</md-icon>
               <h4 md-line>Deactivate</h4>
               <p md-line>Deactivate this course</p>
-            </md-list-item>
-            <md-divider></md-divider>
-            <h3 md-subheader>Notification</h3>
-            <md-list-item>
-              <md-icon md-list-avatar>visibility</md-icon>
-              <h4 md-line>Watch</h4>
-              <p md-line>Watch this course</p>
-            </md-list-item>
-            <md-list-item>
-              <md-icon md-list-avatar>email</md-icon>
-              <h4 md-line>Share</h4>
-              <p md-line>Share this course with others</p>
             </md-list-item>
           </md-nav-list>
         </md-card>

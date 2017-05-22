@@ -62,7 +62,6 @@ public class WhenIViewTheDetailsOfOfferedCourses extends Stage<WhenIViewTheDetai
 		for (AdOffering offering : offerings) {
 
 			LOG.debug("==================view details offered course===================");
-			LOG.debug("title for this program: {}", offering.getProgram().getTitle());
 			LOG.debug("courses for this program : {}", offering.getCourse().getTitleEn());
 			LOG.debug("courses for this program : {}", offering.getCourse().getTitleMs());
 			LOG.debug("credit for this course : {}", offering.getCourse().getCredit());

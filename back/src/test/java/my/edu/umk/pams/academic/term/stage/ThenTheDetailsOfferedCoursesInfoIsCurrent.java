@@ -38,7 +38,6 @@ public class ThenTheDetailsOfferedCoursesInfoIsCurrent extends Stage<ThenTheDeta
 		for (AdOffering offering : offerings) {
 
 			LOG.debug("==================offered course is current===================");
-			LOG.debug("title for this program: {}", offering.getProgram().getTitle());
 			LOG.debug("courses for this program : {}", offering.getCourse().getTitleEn());
 			LOG.debug("courses for this program : {}", offering.getCourse().getTitleMs());
 			LOG.debug("credit for this course : {}", offering.getCourse().getCredit());

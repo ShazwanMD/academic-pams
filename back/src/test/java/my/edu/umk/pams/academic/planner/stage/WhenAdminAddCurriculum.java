@@ -84,7 +84,6 @@ public class WhenAdminAddCurriculum extends Stage<WhenAdminAddCurriculum> {
 		LOG.debug("Faculty : {}", faculty.getDescription());
 		LOG.debug("Program Level : {}", level.getCode());
 		LOG.debug("Program Level : {}", level.getDescription());
-		LOG.debug("Program : {}", program.getTitle());
 		LOG.debug("Program : {}", program.getTitleEn());
 		LOG.debug("Program : {}", program.getTitleMs());
 
@@ -95,13 +94,8 @@ public class WhenAdminAddCurriculum extends Stage<WhenAdminAddCurriculum> {
 		List<AdCourse> courses = plannerService.findCourses(faculty);
 
 		for (AdCourse course : courses) {
-
-			LOG.debug("Course Taken : {}", course.getTitle());
-
 			LOG.debug("Course Taken : {}", course.getTitleEn());
-
 			LOG.debug("Course Taken : {}", course.getTitleMs());
-
 		}
 
 		return self();

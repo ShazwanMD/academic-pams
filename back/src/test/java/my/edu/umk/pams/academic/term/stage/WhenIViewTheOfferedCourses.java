@@ -54,7 +54,7 @@ public class WhenIViewTheOfferedCourses extends Stage<WhenIViewTheOfferedCourses
 			
 			LOG.debug("===========view offered course============");
 			LOG.debug("offering Code: {}",offering.getCode());
-			LOG.debug("offering Title: {}",offering.getTitle());
+			LOG.debug("offering Title: {}",offering.getTitleMs());
 			LOG.debug("offering Code: {}",offering.getCapacity());
 		}
 

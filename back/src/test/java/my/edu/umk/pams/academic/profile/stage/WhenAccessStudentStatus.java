@@ -59,7 +59,7 @@ public class WhenAccessStudentStatus extends Stage<WhenAccessStudentStatus> {
         cohort = student.getCohort();
         program = cohort.getProgram();
         faculty = program.getFaculty();
-        level = program.getProgramLevel();
+        level = program.getLevel();
         courses = faculty.getCourses();
     	
     	if(studentStatus == AdStudentStatus.ACTIVE) {

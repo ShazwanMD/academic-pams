@@ -263,7 +263,7 @@ public class AdSectionDaoImpl extends GenericDaoSupport<Long, AdSection> impleme
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select s from AdAppointment s where " +
                 "s.section.offering = :offering " +
-                "and s.section.session = :academicSession " +
+                "and s.section.offering.session = :academicSession " +
                 "and s.metadata.state = :state");
         query.setInteger("state", AdMetaState.ACTIVE.ordinal());
         query.setEntity("offering", offering);

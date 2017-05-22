@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
-import com.tngtech.jgiven.annotation.Pending;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
 
 import my.edu.umk.pams.academic.identity.model.AdStudent;
@@ -58,7 +57,7 @@ public class WhenLecturerReviewCourseInfoAndResearchInfo extends Stage<WhenLectu
 		student = identityService.findStudentByMatricNo(identityNo);
 		cohort = student.getCohort();
 		program = cohort.getProgram();
-	    level = program.getProgramLevel();
+	    level = program.getLevel();
 	    faculty = program.getFaculty();
 	    courses = faculty.getCourses();
 		
@@ -83,7 +82,7 @@ public class WhenLecturerReviewCourseInfoAndResearchInfo extends Stage<WhenLectu
 		student = identityService.findStudentByMatricNo(identityNo2);
 		cohort = student.getCohort();
 		program = cohort.getProgram();
-	    level = program.getProgramLevel();
+	    level = program.getLevel();
 	    faculty = program.getFaculty();
 	    courses = faculty.getCourses();
 		

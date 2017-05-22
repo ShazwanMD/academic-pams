@@ -1,20 +1,24 @@
-import { GuardianEditorDialog } from './../dialog/guardian-editor.dialog';
-import { GuarantorEditorDialog } from './../dialog/guarantor-editor.dialog';
 import {ActivatedRoute} from '@angular/router';
 import {Router} from '@angular/router';
 import {Store} from '@ngrx/store';
+import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, ViewContainerRef, OnInit} from '@angular/core';
+
 import {ProfileModuleState} from './../index';
 import {ProfileActions} from './../profile.action';
 import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';
+
 import {Enrollment} from './../../term/enrollments/enrollment.interface';
 import {Contact} from './../contact.interface';
 import {Guardian} from './../guardian.interface';
 import {Guarantor} from './../guarantor.interface';
 import {Address} from './../address.interface';
-import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, ViewContainerRef, OnInit} from '@angular/core';
 import {Student} from "../../identity/student.interface";
+
 import {ContactEditorDialog} from "../dialog/contact-editor.dialog";
 import {DetailEditorDialog} from "../dialog/detail-editor.dialog";
+import {AddressEditorDialog} from './../dialog/address-editor.dialog';
+import {GuardianEditorDialog} from './../dialog/guardian-editor.dialog';
+import {GuarantorEditorDialog} from './../dialog/guarantor-editor.dialog';
 
 @Component({
   selector: 'pams-profile',
@@ -34,6 +38,7 @@ export class ProfileComponent implements OnInit {
   private contactCreatorDialogRef: MdDialogRef<ContactEditorDialog>;
   private guarantorCreatorDialogRef: MdDialogRef<GuarantorEditorDialog>;
   private guardianCreatorDialogRef: MdDialogRef<GuardianEditorDialog>;
+  private addressCreatorDialogRef: MdDialogRef<AddressEditorDialog>;
 
   private columns: any[] = [
     {name: 'name', label: 'NAME'},
@@ -77,6 +82,21 @@ export class ProfileComponent implements OnInit {
     this.contactCreatorDialogRef.componentInstance.student = this.student;
     this.contactCreatorDialogRef.afterClosed().subscribe(res => {
       console.log("close dialog");
+    });
+  }
+
+  addAddressDialog(): void {
+    console.log("Ini utk Add Address student");
+    let config = new MdDialogConfig();
+    config.viewContainerRef = this.vcf;
+    config.role = 'dialog';
+    config.width = '70%';
+    config.height = '80%';
+    config.position = {top: '0px'};
+    this.addressCreatorDialogRef = this.dialog.open(AddressEditorDialog, config);
+    this.addressCreatorDialogRef.componentInstance.student = this.student;
+    this.addressCreatorDialogRef.afterClosed().subscribe(res => {
+      console.log("close this dialog");
     });
   }
 

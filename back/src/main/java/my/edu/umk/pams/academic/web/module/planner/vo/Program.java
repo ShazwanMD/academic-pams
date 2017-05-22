@@ -11,10 +11,10 @@ import java.io.IOException;
  */
 public class Program extends MetaObject{
     private String code;
-    private String title;
     private String titleMs;
     private String titleEn;
     private String description;
+    private ProgramStatus status;
     private Faculty faculty;
 
     public String getCode() {
@@ -23,14 +23,6 @@ public class Program extends MetaObject{
 
     public void setCode(String code) {
         this.code = code;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
     }
 
     public String getTitleMs() {
@@ -56,6 +48,15 @@ public class Program extends MetaObject{
     public void setDescription(String description) {
         this.description = description;
     }
+
+    public ProgramStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(ProgramStatus status) {
+        this.status = status;
+    }
+
     public Faculty getFaculty() {
         return faculty;
     }
@@ -75,4 +76,6 @@ public class Program extends MetaObject{
         }
         return o;
     }
+
+	
 }

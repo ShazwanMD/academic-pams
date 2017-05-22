@@ -23,7 +23,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.util.Assert;
 
 import java.util.HashMap;
 import java.util.List;
@@ -242,7 +241,7 @@ public class ProfileServiceImpl implements ProfileService {
 		academicSession.getYear().getYear();
 		
 		//Program Level
-		AdProgramLevel programLevel = student.getCohort().getProgram().getProgramLevel();
+		AdProgramLevel programLevel = student.getCohort().getProgram().getLevel();
 		programLevel.getPrefix();
 		
 		//StudyMode
@@ -285,7 +284,7 @@ public class ProfileServiceImpl implements ProfileService {
 		academicSession.getYear().getYear();
 		
 		//Program Level
-		AdProgramLevel programLevel = student.getCohort().getProgram().getProgramLevel();
+		AdProgramLevel programLevel = student.getCohort().getProgram().getLevel();
 		programLevel.getPrefix();
 		
 		//StudyMode

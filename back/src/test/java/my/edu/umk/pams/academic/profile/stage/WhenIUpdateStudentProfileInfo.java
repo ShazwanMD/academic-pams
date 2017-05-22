@@ -75,7 +75,7 @@ public class WhenIUpdateStudentProfileInfo extends Stage<WhenIUpdateStudentProfi
         LOG.debug("Program :{}", program.getCode());
         LOG.debug("");
         
-        level = program.getProgramLevel();
+        level = program.getLevel();
         LOG.debug("Level of Study :{}", level.getCode());
         LOG.debug("");
         

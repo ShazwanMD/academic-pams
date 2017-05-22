@@ -24,9 +24,6 @@ public class AdCourseImpl implements AdCourse {
     @Column(name = "CODE", unique = true, nullable = false)
     private String code;
 
-    @Column(name = "TITLE", nullable = false)
-    private String title;
-
     @Column(name = "TITLE_EN", nullable = false)
     private String titleEn;
 
@@ -72,16 +69,6 @@ public class AdCourseImpl implements AdCourse {
     @Override
     public void setCode(String code) {
         this.code = code;
-    }
-
-    @Override
-    public String getTitle() {
-        return title;
-    }
-
-    @Override
-    public void setTitle(String title) {
-        this.title = title;
     }
 
     @Override
@@ -191,7 +178,8 @@ public class AdCourseImpl implements AdCourse {
         return "AdCourseImpl{" +
                 "id=" + id +
                 ", code='" + code + '\'' +
-                ", title='" + title + '\'' +
+                ", titleMs='" + titleMs + '\'' +
+                ", titleEn='" + titleEn + '\'' +
                 '}';
     }
 }

@@ -55,7 +55,6 @@ public class WhenAdminUpdateStudentResearchTitle extends Stage<WhenAdminUpdateSt
 		course.setCode("FKP/MASTER/MAP1.1");
 		course.setClassification(AdAcademicClassification.LEVEL_MASTER);
 		course.setCredit(45);
-		course.setTitle("Master of Entrepreneurship Mathematical Science");
 		course.setTitleEn("Master of Entrepreneurship Mathematical Science");
 		course.setTitleMs("Master of Entrepreneurship Mathematical Science");
 		
@@ -65,7 +64,6 @@ public class WhenAdminUpdateStudentResearchTitle extends Stage<WhenAdminUpdateSt
 		LOG.debug("course Detail :{}", course.getFaculty());
 		LOG.debug("course Detail :{}", course.getClassification());
 		LOG.debug("course Detail :{}", course.getCredit());
-		LOG.debug("course Detail :{}", course.getTitle());
 		LOG.debug("course Detail :{}", course.getTitleEn());
 		LOG.debug("course Detail :{}", course.getTitleMs());
 		LOG.debug("");
@@ -86,14 +84,12 @@ public class WhenAdminUpdateStudentResearchTitle extends Stage<WhenAdminUpdateSt
 		course.setCode("DBA/YEAR3/SEMESTER6/Module 14");
 		course.setCredit(5);
 		course.setClassification(AdAcademicClassification.LEVEL_DOCTORATE);
-		course.setTitle("Dissertation ( Part 3.1)");
 		course.setTitleEn("Dissertation ( Part 3.1)");
 		course.setTitleMs("Dissertation ( Part 3.1)");
 		
 		plannerService.updateCourse(faculty, course);
 		
 		LOG.debug("Course Detail :{}", course.getCode());
-		LOG.debug("Course Detail :{}", course.getTitle());
 		LOG.debug("Course Detail :{}", course.getTitleEn());
 		LOG.debug("Course Detail :{}", course.getTitleMs());
 		LOG.debug("Course Detail :{}", course.getCredit());

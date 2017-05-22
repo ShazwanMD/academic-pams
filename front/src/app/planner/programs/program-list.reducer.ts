@@ -17,22 +17,6 @@ export function programListReducer(state = initialState, action: Action): Progra
     case ProgramActions.CREATE_PROGRAM_SUCCESS: {
       return [...state, action.payload];
     }
-    case ProgramActions.SAVE_PROGRAM_SUCCESS: {
-      let index = _.findIndex(state, {id: action.payload.id});
-      if (index >= 0) {
-        return [
-          ...state.slice(0, index),
-          action.payload,
-          ...state.slice(index + 1)
-        ];
-      }
-      return state;
-    }
-    case ProgramActions.REMOVE_PROGRAM_SUCCESS: {
-      return state.filter(program => {
-        return program.id !== action.payload.id;
-      });
-    }
     default: {
       return state;
     }

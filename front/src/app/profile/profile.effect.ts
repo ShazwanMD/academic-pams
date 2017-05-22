@@ -1,3 +1,4 @@
+import { Address } from './address.interface';
 import { Guarantor } from './guarantor.interface';
 import {Injectable} from '@angular/core';
 import {Effect, Actions} from '@ngrx/effects';
@@ -88,6 +89,15 @@ export class ProfileEffects {
     .map(state => state[1])
     .map((student: Student) => this.profileActions.findStudentByIdentityNo(student.identityNo));
 
+@Effect() addAddress$ = this.actions$
+    .ofType(ProfileActions.ADD_ADDRESS)
+    .map(action => action.payload)
+    .switchMap(payload => this.profileService.addAddress(payload.student, payload.address))
+    .map(message => this.profileActions.addAddressSuccess(message))
+    .withLatestFrom(this.store$.select(...this.STUDENT))
+    .map(state => state[1])
+    .map((student: Student) => this.profileActions.findStudentByIdentityNo(student.identityNo));
+
   @Effect() addContact$ = this.actions$
     .ofType(ProfileActions.ADD_CONTACT)
     .map(action => action.payload)
@@ -96,7 +106,6 @@ export class ProfileEffects {
     .withLatestFrom(this.store$.select(...this.STUDENT))
     .map(state => state[1])
     .map((student: Student) => this.profileActions.findStudentByIdentityNo(student.identityNo));
-
 
   @Effect() addGuarantor$ = this.actions$
     .ofType(ProfileActions.ADD_GUARANTOR)

@@ -18,29 +18,40 @@
           <md-nav-list flex dense>
             <md-list-item [routerLink]="['/cohorts-assign', cohort?.code]">
               <md-icon md-list-avatar>assignment_ind</md-icon>
-              <h4 md-line>Reassign</h4>
-              <p md-line>Reassign this cohort</p>
+              <h4 md-line>Update Cohort</h4>
+              <p md-line>Update this cohort</p>
             </md-list-item>
             <md-list-item [routerLink]="['/cohorts-resolve', cohort?.code]">
               <md-icon md-list-avatar>done_all</md-icon>
-              <h4 md-line>Resolve</h4>
-              <p md-line>Resolve this cohort</p>
+              <h4 md-line>Delete Cohort</h4>
+              <p md-line>Delete this cohort</p>
             </md-list-item>
-            <md-list-item [routerLink]="['/cohorts-reopen', cohort?.code]">
-              <md-icon md-list-avatar>gavel</md-icon>
-              <h4 md-line>Deactivate</h4>
-              <p md-line>Deactivate this cohort</p>
-            </md-list-item>
+           
             <md-divider></md-divider>
-            <h3 md-subheader>Notification</h3>
-            <md-list-item>
+            <h3 md-subheader>Planner Menu</h3>
+            <md-list-item [routerLink]="['/planner/academic-sessions']">
               <md-icon md-list-avatar>visibility</md-icon>
-              <h4 md-line>Watch</h4>
-              <p md-line>Watch this cohort</p>
+              <h4 md-line>Academic Session</h4>
+              <p md-line>Watch this academic session</p>
             </md-list-item>
-            <md-list-item>
+            <md-list-item [routerLink]="['/planner/faculties']">
               <md-icon md-list-avatar>email</md-icon>
-              <h4 md-line>Share</h4>
+              <h4 md-line>Faculty</h4>
+              <p md-line>Share this cohort with others</p>
+            </md-list-item>
+             <md-list-item [routerLink]="['/planner/programs']">
+              <md-icon md-list-avatar>email</md-icon>
+              <h4 md-line>Program</h4>
+              <p md-line>Share this cohort with others</p>
+            </md-list-item>
+             <md-list-item [routerLink]="['/planner/courses']">
+              <md-icon md-list-avatar>email</md-icon>
+              <h4 md-line>Course</h4>
+              <p md-line>Share this cohort with others</p>
+            </md-list-item>
+             <md-list-item [routerLink]="['/planner/cohorts']">
+              <md-icon md-list-avatar>email</md-icon>
+              <h4 md-line>Cohort</h4>
               <p md-line>Share this cohort with others</p>
             </md-list-item>
           </md-nav-list>

@@ -77,7 +77,7 @@ public class WhenIUpdateSections extends Stage<WhenIUpdateSections> {
 		LOG.debug("=======Lists of offering========");
 		for (AdOffering offering : offerings) {
 			
-			LOG.debug("offering: {}", offering.getTitle());
+			LOG.debug("offering: {}", offering.getTitleMs());
 			LOG.debug("code: {}", offering.getCanonicalCode());
 		}
 		

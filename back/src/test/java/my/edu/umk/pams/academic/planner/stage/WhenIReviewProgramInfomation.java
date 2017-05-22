@@ -12,7 +12,6 @@ import my.edu.umk.pams.academic.planner.service.PlannerService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.util.Assert;
 
 import java.util.List;
 
@@ -52,16 +51,9 @@ public class WhenIReviewProgramInfomation extends Stage<WhenIReviewProgramInfoma
         }
 
         for (AdProgram programs : program) {
-            LOG.debug(programs.getTitle());
-        }
-
-        for (AdProgram programs : program) {
+            LOG.debug(programs.getTitleMs());
             LOG.debug(programs.getTitleEn());
         }
-        for (AdProgram programs : program) {
-            LOG.debug(programs.getTitleMs());
-        }
-
         return self();
     }
 

@@ -42,8 +42,7 @@ public class WhenIAddProgramInfo extends Stage<WhenIAddProgramInfo> {
         
         program.setCode(facultyCode);
         program.setFaculty(faculty);
-        program.setProgramLevel(programLevel);
-        program.setTitle("Master of SAM");
+        program.setLevel(programLevel);
         program.setTitleEn("Master of SAM");
         program.setTitleMs("Master of SAM");
    
@@ -58,15 +57,8 @@ public class WhenIAddProgramInfo extends Stage<WhenIAddProgramInfo> {
         List<AdProgram> program = plannerService.findPrograms(faculty);
 
         for (AdProgram programs : program) {
-            LOG.debug(programs.getTitle());
-        }
-
-        for (AdProgram programs : program) {
-            LOG.debug(programs.getTitleEn());
-        }
-
-        for (AdProgram programs : program) {
             LOG.debug(programs.getTitleMs());
+            LOG.debug(programs.getTitleEn());
         }
         return self();
 

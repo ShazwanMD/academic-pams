@@ -11,7 +11,7 @@
         Create Appointment
       </a>
       <md-divider></md-divider>
-      <!-- previous menu start -->  
+      <!-- previous menu start -->
        <a md-list-item [routerLink]="['/term/admissions']">
         <md-icon>person_add</md-icon>
         Admission
@@ -29,7 +29,7 @@
         <md-icon>find_in_page</md-icon>
         Sections
       </a>
-      <!-- previous menu end -->   
+      <!-- previous menu end -->
     </md-nav-list>
     <div toolbar-buttons layout="row" layout-align="start center" flex>
       <span flex>Appointment Center</span>
@@ -64,33 +64,33 @@
     <md-input-container flex>
       <input mdInput placeholder="Capacity">
     </md-input-container>
-   
+
   </div>
    <div layout="row" layout-margin>
     <md-input-container flex>
       <input mdInput placeholder="Course (disabled)" disabled value="Under maintenance">
     </md-input-container>
-      
+
      </div>
   <div layout="row" layout-margin>
      <md-input-container flex>
       <input mdInput placeholder="Program (disabled)" disabled value="Under maintenance">
     </md-input-container>
-    
+
     <!-- Simple list -->
-  
+
   </div>
 </form>
 <md-dialog-actions align="end">
- 
-  <button md-raised-button color="accent" class="text-upper" (click)="save(editForm.value, newForm.valid)">Save</button>
+
+  <button md-raised-button color="accent" class="text-upper" (click)="save(editForm.value, updateForm.valid)">Save</button>
   <button md-raised-button color="primary" class="text-upper">Reset</button>
 </md-dialog-actions>
 
 
 
      <md-divider></md-divider>
-     
+
     </md-card>
   </td-layout-manage-list>
 </td-layout-nav>

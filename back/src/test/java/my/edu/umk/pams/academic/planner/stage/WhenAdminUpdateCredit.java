@@ -63,7 +63,7 @@ public class WhenAdminUpdateCredit extends Stage<WhenAdminUpdateCredit>{
 //        courses.setCode("DDA1155");
 //        courses.setFaculty(faculty);
 //        courses.setClassification(AdAcademicClassification.LEVEL_000);
-//        courses.setTitle("LUKISAN SAM");
+//        courses.setTitleMs("LUKISAN SAM");
 //        courses.setTitleEn("ENGINEERING SAM");
 //        courses.setTitleMs("LUKISAN SAM");
 //
@@ -83,7 +83,7 @@ public class WhenAdminUpdateCredit extends Stage<WhenAdminUpdateCredit>{
 //	        courses.setCode("DDA1155");
 //	        courses.setFaculty(faculty);
 //	        courses.setClassification(AdAcademicClassification.LEVEL_000);
-//	        courses.setTitle("LUKISAN SAM");
+//	        courses.setTitleMs("LUKISAN SAM");
 //	        courses.setTitleEn("ENGINEERING SAM");
 //	        courses.setTitleMs("LUKISAN SAM");
 		return self();

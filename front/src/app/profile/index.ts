@@ -1,3 +1,5 @@
+
+import { AddressEditorDialog } from './dialog/address-editor.dialog';
 import { GuardianEditorDialog } from './dialog/guardian-editor.dialog';
 import { GuarantorEditorDialog } from './dialog/guarantor-editor.dialog';
 import { Enrollment } from './../term/enrollments/enrollment.interface';
@@ -35,8 +37,7 @@ import {DetailEditorDialog} from "./dialog/detail-editor.dialog";
 import {ContactTypeSelectComponent} from "./components/contact-type-select.component";
 import {GuarantorTypeSelectComponent} from "./components/guarantor-type-select.component";
 import {GuardianTypeSelectComponent} from "./components/guardian-type-select.component";
-import {AddressTypeSelectComponent} from "./components/address-type-select.component";
-
+import {AddressTypeSelectComponent} from './components/address-type-select.component';
 
 export interface ProfileModuleState {
   students: StudentListState;
@@ -98,7 +99,8 @@ export const profileModuleReducers = {
     DetailEditorDialog,
     ContactEditorDialog,
     GuarantorEditorDialog,
-    GuardianEditorDialog
+    GuardianEditorDialog,
+    AddressEditorDialog
   ],
   exports: [
     ContactTypeSelectComponent,
@@ -111,7 +113,8 @@ export const profileModuleReducers = {
     DetailEditorDialog,
     ContactEditorDialog,
     GuarantorEditorDialog,
-    GuardianEditorDialog
+    GuardianEditorDialog,
+    AddressEditorDialog
   ],
 })
 export class ProfileModule {

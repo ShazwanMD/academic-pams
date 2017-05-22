@@ -19,10 +19,9 @@ public class ProgramGenerator extends GeneratorSupport {
 
     private final String SOURCE_FILE = "data/csv/AD_PRGM.csv";
 
-    private final String TEMPLATE = "INSERT INTO AD_PRGM (ID, CODE, TITLE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST) " +
+    private final String TEMPLATE = "INSERT INTO AD_PRGM (ID, CODE, TITLE_EN, TITLE_MS, LEVEL_ID, FACULTY_ID, C_TS, C_ID, M_ST) " +
             "   VALUES (nextval('SQ_AD_PRGM'), " +
             "   '%1$s',\n" +
-            "   '%4$s',\n" +
             "   '%4$s',\n" +
             "   '%4$s',\n" +
             "   (SELECT ID\n" +

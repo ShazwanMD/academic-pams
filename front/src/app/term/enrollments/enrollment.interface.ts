@@ -2,11 +2,16 @@
 import {Section} from "../sections/section.interface";
 import {Admission} from "../admissions/admission.interface";
 import {Student} from "../../identity/student.interface";
-import {AdmissionStatus} from "./admission-status.enum";
+import {EnrollmentStatus} from "./enrollment-status.enum";
+import {EnrollmentStanding} from "./enrollment-standing.enum";
+
 export interface Enrollment {
   id: number;
+   status: number;
   student: Student;
   section: Section;
   admission: Admission;
-  admissionStatus: AdmissionStatus;
+  enrollmentStatus: EnrollmentStatus;
+  enrollmentStanding: EnrollmentStanding;  
+ 
 }

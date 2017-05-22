@@ -1,35 +1,36 @@
-
 <md-card>
-  <md-card-title>{{program.code}}</md-card-title>
-  <md-card-subtitle>{{program.title}}</md-card-subtitle>
+  <md-card-title>{{program?.code}}</md-card-title>
+  <md-card-subtitle>{{program?.titleMs}}</md-card-subtitle>
+  <md-card-subtitle>{{program?.titleEn}}</md-card-subtitle>
   <md-divider></md-divider>
   <md-card-content>
-  <!--Tab Section Here-->
-  <md-tab-group>
-  <md-tab label="Program Detail"><br>
+    <!--Tab Section Here-->
+    <md-tab-group>
+      <md-tab label="Program Detail"><br>
+        <div>Code : {{program?.code}}</div>
+        <br>
+        <div>Title(MS) : {{program.titleMs}}</div>
+        <br>
+        <div>Title(EN) : {{program.titleEn}}</div>
+        <br>
+      </md-tab>
 
-    <div>Code    : {{program.code}}</div><br>
-    <div>Title   : {{program.title}}</div><br>
-    <div>TitleMs : {{program.titleMs}}</div><br>
-    <div>TitleEn : {{program.titleEn}}</div><br>
+      <md-tab label="Information"><br>
 
-  </md-tab>
+        <div>Description details of the program(faculty)</div>
+        <br>
+        <div>Code : {{program?.faculty?.code}}</div>
+        <br>
+        <div>Name : {{program?.faculty?.name}}</div>
+        <br>
+        <div>Description : {{program?.faculty?.description}}</div>
+        <br>
 
-  <md-tab label="Information"><br>
-  
-   <div>Description details of the program</div><br>
-   
-    <div>Code    : {{program.faculty.code}}</div><br>
-    <div>Name   : {{program.faculty.name}}</div><br>
-    <div>Description : {{program.faculty.description}}</div><br>
-   
-  </md-tab>
-  </md-tab-group>
+      </md-tab>
+    </md-tab-group>
 
   </md-card-content>
-    <md-card-actions layout-align="end center">
- 
-        <md-list-item [routerLink]="['/planner/dialog/program-update']" ><button md-button color="accent" class="text-upper">UPDATE</button> </md-list-item>
+  <md-card-actions layout-align="end center">
   </md-card-actions>
 </md-card>
 

@@ -46,9 +46,8 @@ public class WhenIWantToViewTheOfferedCoursesByAcademicSession
     	program = plannerService.findProgramByCode("FIAT-MASTER-PBH");
     	
     	LOG.debug("=====selected program===============");
-    	LOG.debug("For program: {}", program.getTitle());
     	LOG.debug("For program: {}", program.getFaculty().getDescription());
-    	LOG.debug("For program: {}", program.getProgramLevel().getDescription());
+    	LOG.debug("For program: {}", program.getLevel().getDescription());
     	
         offerings = termService.findOfferings(program);
         
@@ -57,10 +56,8 @@ public class WhenIWantToViewTheOfferedCoursesByAcademicSession
         	LOG.debug("=============Data Offering===================");
 			LOG.debug("Offering CanonicalCode:{}",offering.getCanonicalCode());
 			LOG.debug("Offering Code:{}",offering.getCode());
-			LOG.debug("Offering Title:{}", offering.getTitle());
+			LOG.debug("Offering Title:{}", offering.getTitleMs());
 			LOG.debug("Offering Capacity: {}", offering.getCapacity());
-			LOG.debug("Offering Capacity: {}", offering.getCourse().getTitle());
-			LOG.debug("Offering Capacity: {}", offering.getProgram().getTitle());
 		}
         return self();
     }

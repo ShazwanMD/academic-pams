@@ -59,7 +59,7 @@ public class WhenIOfferCourse extends Stage<WhenIOfferCourse> {
 
 			LOG.debug("Listed Courses ID: {}", course.getId());
 			LOG.debug("Listed Courses Code: {}", course.getCode());
-			LOG.debug("Listed Courses Title: {}", course.getTitle());
+			LOG.debug("Listed Courses Title: {}", course.getTitleMs());
 			LOG.debug("Listed Program ID: {}", program.getId());
 
 			String canonicalCode = program.getCode() + "/" + course.getCode();
@@ -70,7 +70,8 @@ public class WhenIOfferCourse extends Stage<WhenIOfferCourse> {
 			AdOffering offering = new AdOfferingImpl();
 			offering.setCode(course.getCode());
 			offering.setCanonicalCode(canonicalCode);
-			offering.setTitle(course.getTitle());
+			offering.setTitleMs(course.getTitleMs());
+			offering.setTitleEn(course.getTitleEn());
 			offering.setCapacity(30);
 			offering.setCourse(course);
 			offering.setProgram(program);
@@ -99,7 +100,8 @@ public class WhenIOfferCourse extends Stage<WhenIOfferCourse> {
 		AdOffering offering = new AdOfferingImpl();
 		offering.setCode(course.getCode());
 		offering.setCanonicalCode(canonicalCode);
-		offering.setTitle(course.getTitle());
+		offering.setTitleMs(course.getTitleMs());
+		offering.setTitleEn(course.getTitleEn());
 		offering.setCapacity(30);
 		offering.setCourse(course);
 		offering.setProgram(program);
