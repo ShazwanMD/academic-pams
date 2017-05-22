@@ -1,7 +1,7 @@
 <h2 md-dialog-title>Create Appointment Task Creator</h2>
 <md-dialog-content>
 <form [formGroup]="createForm">
-UNDER MAINTENANCE
+
 	<!-- <div layout="row" class="pad-bottom">
 		<md-input-container flex mdTooltip="Please insert status"> <input mdInput
 			#capacity placeholder="status" formControlName="status"
@@ -20,6 +20,13 @@ UNDER MAINTENANCE
 			[innerFormControl]="createForm.controls['staff']">
 		</pams-program-select>
 	</div> -->
+	
+	  <div layout="row" class="inset" flex>
+      <pams-appointment-status-select
+        [placeholder]="'Appoinment Status'"
+        [innerFormControl]="createForm.controls['appointmentStatus']">
+      </pams-appointment-status-select>
+      </div> 
 
 </form>
 </md-dialog-content>
