@@ -13,6 +13,7 @@ import { Course } from "../../../planner/courses/course.interface";
 import { AcademicSession } from "../../../planner/academic-sessions/academic-session.interface";
 import {Offering} from "../../offerings/offering.interface";
 import {Appointment} from "../appointment.interface";
+import { AppointmentStatus } from "../appointment-status.enum";
 
 
 @Component({
@@ -45,6 +46,7 @@ export class AppointmentCreateTaskCreatorDialog implements OnInit {
       section: <Section>{},
       course: <Course>{},
       offering: <Offering>{},
+      appointmentStatus: AppointmentStatus.NEW
       
        
       

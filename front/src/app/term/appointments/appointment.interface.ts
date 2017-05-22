@@ -5,6 +5,8 @@ import {Staff} from "../../identity/staff.interface";
 import { AcademicSession } from "../../planner/academic-sessions/academic-session.interface";
 import { Offering } from "../offerings/offering.interface";
 import { Course } from "../../planner/courses/course.interface";
+import {AppointmentStatus} from "./appointment-status.enum";
+
 export interface Appointment {
   id: number;
   student: Staff;
@@ -12,4 +14,5 @@ export interface Appointment {
   session: AcademicSession;
   offering: Offering;
   course: Course;
+  appointmentStatus: AppointmentStatus;
 }
