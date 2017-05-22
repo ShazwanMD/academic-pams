@@ -1,4 +1,4 @@
-import {Assessment} from '../app/term/assessments/assessment.interface';
+import { Assessment } from './../app/term/assessments/assessment.interface';
 import {Offering} from '../app/term/offerings/offering.interface';
 import {Injectable} from '@angular/core';
 import {Response, Http} from '@angular/http';
@@ -32,6 +32,17 @@ export class TermService {
       .map((res: Response) => <Assessment[]>res.json());
   }
 
+
+  addAssessment(assessment: Assessment, offering: Offering): Observable<String> {
+    console.log("addAssessment");
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
+    return this.http.post(environment.endpoint + '/api/term/offerings/' + offering.canonicalCode + '/assessments', JSON.stringify(assessment), options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
   // ==================================================================================================== //
   // ADMISSION APPLICATION
   // ==================================================================================================== //

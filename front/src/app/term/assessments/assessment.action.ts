@@ -22,4 +22,23 @@ export class AssessmentActions{
     };
   }
 
+  
+  static ADD_ASSESSMENT = '[Assessment] Add Assessment';
+
+  addAssessment(offering, assessment): Action {
+    return {
+      type: AssessmentActions.ADD_ASSESSMENT,
+      payload: {offering:offering, assessment:assessment}
+    };
+  }
+
+  static ADD_ASSESSMENT_SUCCESS = '[Assessment] Add Assessment Success';
+
+  addAssessmentSuccess(message): Action {
+    return {
+      type: AssessmentActions.ADD_ASSESSMENT_SUCCESS,
+      payload: message
+    };
+  }
+
 }
