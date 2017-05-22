@@ -2,6 +2,7 @@ package my.edu.umk.pams.academic.term.model;
 
 
 import my.edu.umk.pams.academic.core.AdMetaObject;
+import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
 import my.edu.umk.pams.academic.planner.model.AdCourse;
 import my.edu.umk.pams.academic.planner.model.AdProgram;
 
@@ -42,6 +43,10 @@ public interface AdOffering extends AdMetaObject {
     AdCourse getCourse();
 
     void setCourse(AdCourse course);
+
+    AdAcademicSession getSession();
+
+    void setSession(AdAcademicSession session);
 
     List<AdSection> getSections();
 

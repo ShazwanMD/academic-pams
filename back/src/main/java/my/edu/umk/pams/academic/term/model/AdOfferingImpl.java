@@ -44,6 +44,10 @@ public class AdOfferingImpl implements AdOffering {
     @JoinColumn(name = "COURSE_ID")
     private AdCourse course;
 
+    @ManyToOne(targetEntity = AdAcademicSessionImpl.class)
+    @JoinColumn(name = "SESSION_ID")
+    private AdAcademicSession session;
+
     @OneToMany(targetEntity = AdSectionImpl.class, mappedBy = "offering", fetch = FetchType.LAZY)
     private List<AdSection> sections;
 
@@ -128,6 +132,14 @@ public class AdOfferingImpl implements AdOffering {
 
     public void setCourse(AdCourse course) {
         this.course = course;
+    }
+
+    public AdAcademicSession getSession() {
+        return session;
+    }
+
+    public void setSession(AdAcademicSession session) {
+        this.session = session;
     }
 
     public List<AdSection> getSections() {
