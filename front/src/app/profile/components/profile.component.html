@@ -77,9 +77,45 @@
         <md-card-subtitle>---</md-card-subtitle>
         <md-divider></md-divider>
         <md-card-content>
-          <div layout="column" layout-gt-md="row" class="insert">
-          <div flex-gt-md="100" *ngFor="let address of addressess">
-            <b>{{address.addressType}}</b><br/>{{address.address1 +","+ address.address2 +","+ address.postcode}}
+          <div layout="row" layout-gt-md="row" class="insert" *ngFor="let address of addressess">
+          <div flex-gt-md="100">
+            <!--<b>{{address.addressType}}</b><br/>{{address.address1 +","+ address.address2 +","+ address.postcode}}-->
+              <div layout="row" layout-margin>
+              <b>{{address.addressType}}</b><br/>
+              </div>
+
+              <div layout="row" layout-margin>
+              
+              <div layout="column" layout-margin>
+              <md-input-container>
+              <input mdInput placeholder="Address 1" value={{address.address1}}>
+              </md-input-container> 
+              </div>
+
+              <div layout="column" layout-margin>
+              <md-input-container>
+              <input mdInput placeholder="Address 2" value={{address.address2}}>
+              </md-input-container>
+              </div>
+
+              <div layout="column" layout-margin>
+              <md-input-container>
+              <input mdInput placeholder="Address 3" value={{address.address3}}>
+              </md-input-container>
+              </div>
+
+              <div layout="column" layout-margin>
+              <md-input-container>
+              <input mdInput placeholder="Postcode" value={{address.postcode}}>
+              </md-input-container>
+              </div>
+
+              <div layout="column" layout-margin>
+              <button md-raised-button color="primary" disabled>Update</button>
+              </div>
+
+              </div>
+
           </div>
           </div>
         </md-card-content>

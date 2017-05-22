@@ -1,45 +1,47 @@
 <h2 md-dialog-title>Create New Cohort</h2>
  <md-dialog-content>
 <form [formGroup]="creatorForm">
-	<div layout="row" class="pad-bottom">
-		<md-input-container flex>
-		<input mdInput #code
-			   placeholder="Code"
-			   formControlName="code"
-			   value="Description"
-			    flex/>
-	 </md-input-container>
-	</div>
 
-	 <div layout="row" class="pad-bottom">
-      <md-input-container flex>
-        <input mdInput #sourceNo
-               placeholder="sourceNo"
-               formControlName="sourceNo"
-               value="Description"
-               flex/>
-		</md-input-container>
-	</div>
-		<div layout="row" class="pad-bottom pad-top">
-		<pams-curriculum-select
-			[placeholder]="'Select Curriculum'"
-			[innerFormControl]="creatorForm.controls['curriculum']">
-		</pams-curriculum-select>
+   <!-- <div layout="row" class="pad-bottom">
+      <md-input-container flex mdTooltip="Please insert code">
+        <input mdInput
+               placeholder="Code"
+               formControlName="code" flex/>
+      </md-input-container>
+    </div> -->
+
+	  <!--  <div layout="row" class="pad-bottom">
+      <md-input-container flex mdTooltip="Please insert cohortCode">
+        <input mdInput
+               placeholder="Cohort Code"
+               formControlName="cohortCode" flex/>
+      </md-input-container>
+    </div> -->
+
+   <div layout="row" class="pad-bottom">
+		<md-input-container flex mdTooltip="Please insert curriculum">
+        <input mdInput
+		         	placeholder="Select Curriculum"
+		        	formControlName="Select Curriculum" flex/>
+	  </md-input-container>
 		</div>
-		 <div layout="row" class="pad-bottom pad-top">
-      <pams-program-select
-        [placeholder]="'Select Program'"
-        [innerFormControl]="createForm.controls['program']">
-      </pams-program-select>
-    </div>
+
 		 <div layout="row" class="pad-bottom pad-top">
       <pams-academic-session-select
         [placeholder]="'Select Session'"
         [innerFormControl]="createForm.controls['academicSession']">
       </pams-academic-session-select>
     </div>
+
+ <div layout="row" class="pad-bottom pad-top">
+      <pams-program-select
+        [placeholder]="'Select Program'"
+        [innerFormControl]="createForm.controls['program']">
+      </pams-program-select>
+    </div> 
 </form>
-</md-dialog-content> <md-dialog-actions align="end">
-<button md-raised-button color="accent"
-	(click)="save(creatorForm.value, creatorForm.valid)">Save</button>
+</md-dialog-content> 
+<md-dialog-actions align="end">
+<button md-raised-button color="accent"(click)="save(creatorForm.value, creatorForm.valid)">
+	Save</button>
 </md-dialog-actions>

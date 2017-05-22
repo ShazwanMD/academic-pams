@@ -42,7 +42,12 @@ import {AppointmentUpdateTaskCreatorDialog} from "./dialog/appointment-update-ta
     AppointmentUpdateTaskCreatorDialog,
 
   ],
-  exports: [],
+  exports: [
+  AppointmentCreateTaskCreatorDialog],
+  
+   entryComponents: [
+    AppointmentCreateTaskCreatorDialog,
+  ],
 })
 
 export class AppointmentSubModule {

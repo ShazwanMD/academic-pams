@@ -53,11 +53,17 @@
             </md-list-item>
             <md-divider></md-divider>
             <h3 md-subheader>Term Menu</h3>
+            <md-list-item [routerLink]="['/term/offerings']">
+              <md-icon md-list-avatar>email</md-icon>
+              <h4 md-line>Offerings</h4>
+              <p md-line>Watch this offerings</p>
+            </md-list-item>
             <md-list-item [routerLink]="['/term/admissions']">
               <md-icon md-list-avatar>email</md-icon>
-              <h4 md-line>Admission</h4>
+              <h4 md-line>Admissions</h4>
               <p md-line>Watch this admissions</p>
             </md-list-item>
+            
           </md-nav-list>
         </md-card>
       </div>

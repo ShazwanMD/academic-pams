@@ -29,7 +29,7 @@ export class ProgramActionComponent {
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
     config.role = 'dialog';
-    config.width = '70%';
+    config.width = '60%';
     config.height = '50%';
     config.position = {top: '0px'};
     this.editorDialogRef = this.dialog.open(ProgramEditorDialog, config);

@@ -62,7 +62,7 @@ export class ProgramCenterPage implements OnInit {
   }
 
   private showDialog(code: Program): void {
-    console.log("create");
+    console.log("save");
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
     config.role = 'dialog';

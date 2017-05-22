@@ -16,7 +16,7 @@ import {Offering} from "../offering.interface";
 export class OfferingSectionListComponent {
 
   private creatorDialogRef: MdDialogRef<SectionEditorDialog>;
-  @Input() offering:Offering;
+  @Input() offering: Offering;
   @Input() sections: Section[];
   @Output() view = new EventEmitter<Section>();
 
