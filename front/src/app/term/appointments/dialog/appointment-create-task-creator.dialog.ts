@@ -9,6 +9,10 @@ import {MetaState} from "../../../core/meta-state.enum";
 //import {AppointmentApplication} from '../appointment-application.interface';
 //import {AppointmentApplicationActions} from "../appointment-application.action";
 import { Section } from "../../sections/section.interface";
+import { Course } from "../../../planner/courses/course.interface";
+import { AcademicSession } from "../../../planner/academic-sessions/academic-session.interface";
+import {Offering} from "../../offerings/offering.interface";
+import {Appointment} from "../appointment.interface";
 
 
 @Component({
@@ -19,25 +23,37 @@ import { Section } from "../../sections/section.interface";
 export class AppointmentCreateTaskCreatorDialog implements OnInit {
 
   private createForm: FormGroup;
+  private _offering: Offering;
+  private edit: boolean = false;
+    
 
   constructor(private formBuilder: FormBuilder,
               private store: Store<TermModuleState>,
               //private actions: AppointmentApplicationActions,
-              private dialog: MdDialogRef<AppointmentCreateTaskCreatorDialog>) {
+              private dialog: MdDialogRef<AppointmentCreateTaskCreatorDialog>,
+              private viewContainerRef: ViewContainerRef) {
   }
 
-  ngOnInit(): void {
-   /* this.createForm = this.formBuilder.group(<AppointmentApplication>{
-     
-        id:null,
-        status:'',
-        section:<Section>{},
-       // staff:<Staff>{},
-     
-     
-    });*/
-      
+  set offering(value: Offering) {
+    this._offering = value;
   }
+    
+   ngOnInit(): void {
+    this.createForm = this.formBuilder.group(<Appointment>{
+      id: null,
+      session: <AcademicSession>{},
+      section: <Section>{},
+      course: <Course>{},
+      offering: <Offering>{},
+      
+       
+      
+    });
+
+    // set offering by default
+    this.createForm.patchValue({'offering': this._offering});
+  }
+
 
  /* save(offeringApplication: OfferingApplication, isValid: boolean) {
     this.store.dispatch(this.actions.startOfferingApplicationTask(offeringApplication));

@@ -1,7 +1,7 @@
 <md-card>
   <div toolbar-buttons layout="row" layout-align="start center" flex>
     <md-card-title flex>Appointments</md-card-title>
-    <button md-button class="md-icon-button" [routerLink]="['/term/appointments']">
+    <button md-button class="md-icon-button" (click)="showDialog()">
       <md-icon class="md-24">add</md-icon>
     </button>
   </div>
