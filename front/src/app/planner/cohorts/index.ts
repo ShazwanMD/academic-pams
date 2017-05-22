@@ -42,15 +42,14 @@ import {CohortComponent} from "./component/cohort.component";
     
     //dialog
     CohortEditorDialog,
+
+
   ],
-   exports: [
-   
-    CohortEditorDialog,
-  ],
-   
-    entryComponents: [
-    CohortEditorDialog,
-  ],
+   exports: [],
+   entryComponents: [
+   CohortEditorDialog,
+
+   ]
    
 })
 
