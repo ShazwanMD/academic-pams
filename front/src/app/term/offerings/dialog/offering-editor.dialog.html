@@ -1,96 +1,30 @@
-<td-layout-nav>
-  <div toolbar-content layout="row" layout-align="center center" flex>
-    <span>PAMS: Postgraduate Management System</span>
-    <span flex></span>
-  </div>
+<h2 md-dialog-title>Create Offering Task Creator</h2>
+<md-dialog-content>
+  <form [formGroup]="createForm">
 
-  <td-layout-manage-list #list>
-    <md-nav-list list-items>
-      <a md-list-item [routerLink]="['/term/offerings-dialog']">
-        <md-icon>create</md-icon>
-        Create Offering
-      </a>
-      <md-divider></md-divider>
-      <!-- previous menu start -->
-       <a md-list-item [routerLink]="['/term/admissions']">
-        <md-icon>person_add</md-icon>
-        Admission
-      </a>
-      <a md-list-item [routerLink]="['/term/appointments']">
-        <md-icon>group</md-icon>
-        Appointment
-      </a>
-      <a md-list-item [routerLink]="['/term/enrollments']">
-        <md-icon>find_in_page</md-icon>
-        Enrollment
-      </a>
+   <!--  <div layout="row" class="pad-bottom">
+      <md-input-container flex mdTooltip="Please insert canonicalCode">
+        <input mdInput
+               placeholder="Canonical Code"
+               formControlName="canonicalCode" flex/>
+      </md-input-container>
+    </div> -->
 
-      <a md-list-item [routerLink]="['/term/enrollments']">
-        <md-icon>find_in_page</md-icon>
-        Sections
-      </a>
-      <!-- previous menu end -->
-    </md-nav-list>
-    <div toolbar-buttons layout="row" layout-align="start center" flex>
-      <span flex>Offering Center</span>
-      <button md-button class="md-icon-button">
-        <md-icon class="md-24">settings</md-icon>
-      </button>
-      <button md-button class="md-icon-button">
-        <md-icon class="md-24">more_vert</md-icon>
-      </button>
+    <div layout="row" class="pad-bottom">
+      <md-input-container flex mdTooltip="Please insert code">
+        <input mdInput
+               placeholder="Code"
+               formControlName="code" flex/>
+      </md-input-container>
     </div>
 
-    <md-card class="">
-      <md-card-title>Create New Offering</md-card-title>
-      <md-card-subtitle>Offering form</md-card-subtitle>
-
-      <md-divider></md-divider>
-
-    <!-- Inputs -->
-<form>
-  <div layout="row" layout-margin>
-    <md-input-container flex>
-      <input mdInput placeholder="ID (disabled)" disabled value="1">
-    </md-input-container>
-  </div>
-  <div layout="row" layout-margin>
-    <md-input-container flex>
-      <input mdInput placeholder="Code">
-    </md-input-container>
-    <md-input-container flex>
-      <input mdInput placeholder="Title">
-    </md-input-container>
-    <md-input-container flex>
-      <input mdInput placeholder="Capacity">
-    </md-input-container>
-
-  </div>
-   <div layout="row" layout-margin>
-    <md-input-container flex>
-      <input mdInput placeholder="Course (disabled)" disabled value="Under maintenance">
-    </md-input-container>
-
-     </div>
-  <div layout="row" layout-margin>
-     <md-input-container flex>
-      <input mdInput placeholder="Program (disabled)" disabled value="Under maintenance">
-    </md-input-container>
-
-    <!-- Simple list -->
-
-  </div>
-</form>
+    <div layout="row" class="pad-bottom pad-top" mdTooltip="Please select ">
+    </div>
+  </form>
+</md-dialog-content>
 <md-dialog-actions align="end">
-
-  <button md-raised-button color="accent" class="text-upper" (click)="save(editForm.value, editForm.valid)">Save</button>
-  <button md-raised-button color="primary" class="text-upper">Reset</button>
+<!--   <button md-raised-button color="accent" (click)="submit(editorForm.value, editorForm.valid)">
+    Save
+  </button> -->
 </md-dialog-actions>
 
-
-
-     <md-divider></md-divider>
-
-    </md-card>
-  </td-layout-manage-list>
-</td-layout-nav>

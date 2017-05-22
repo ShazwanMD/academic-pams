@@ -50,9 +50,14 @@ import {OfferingAppointmentListComponent} from "./component/offering-appointment
 
     //dialog
     OfferingEditorDialog,
+    
 
   ],
   exports: [],
+   entryComponents: [
+    OfferingEditorDialog,
+   
+  ]
 })
 
 export class OfferingSubModule {

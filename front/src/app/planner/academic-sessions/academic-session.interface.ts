@@ -1,5 +1,5 @@
-import { AcademicYear } from './academic-year.interface';
-import { AcademicSemester } from './semester-type.enum';
+import { AcademicYear } from './academic-session-year.interface';
+import { AcademicSemester } from './academic-session-semester-type.enum';
 import {MetaObject} from "../../core/meta-object.interface";
 
 export interface AcademicSession extends MetaObject {
@@ -8,7 +8,7 @@ export interface AcademicSession extends MetaObject {
     current: boolean;
     startDate: Date;
     endDate: Date;
-    academicSemester: AcademicSemester;
-    academicYear: AcademicYear;
+    semester: AcademicSemester;
+    year: AcademicYear;
 
 }

@@ -18,7 +18,6 @@ import {Store} from "@ngrx/store";
 })
 
 export class CohortUpdateDialog implements OnInit {
-
   private _cohort: Cohort;
   private updateForm: FormGroup;
   private update: boolean = false;
