@@ -1,7 +1,5 @@
 package my.edu.umk.pams.academic.term.model;
 
-import my.edu.umk.pams.academic.identity.model.AdContactType;
-
 /**
  * @author PAMS
  */
