@@ -50,7 +50,6 @@ export class CohortCenterPage implements OnInit {
     config.viewContainerRef = this.vcf;
     config.role = 'dialog';
     config.width = '40%';
-    config.height = '90%';
     config.position = {top: '0px'};
     this.creatorDialogRef = this.dialog.open(CohortEditorDialog, config);
    // this.creatorDialogRef.componentInstance.offering = this.offering;
