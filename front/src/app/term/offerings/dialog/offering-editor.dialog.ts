@@ -7,8 +7,11 @@ import {CommonService} from "../../../../services/common.service";
 import {PlannerService} from "../../../../services/planner.service";
 import {TermService} from "../../../../services/term.service";
 import {Offering} from "../offering.interface";
+//import {Course} from "../../planner/courses/course.interface";
 import {OfferingActions} from "../offering.action";
 import {MdDialog} from '@angular/material';
+import {MdDialogRef} from "@angular/material";
+import {Store} from "@ngrx/store";
 
 
 @Component({
@@ -18,34 +21,47 @@ import {MdDialog} from '@angular/material';
 
 export class OfferingEditorDialog implements OnInit {
 
-  private offering: Offering;
-  private editForm: FormGroup;
+  //private offering: Offering;
+  private createForm: FormGroup;
+  
 
   constructor(private router: Router,
               private route: ActivatedRoute,
               private formBuilder: FormBuilder,
+              //private store: Store<TermModuleState>,
               private actions: OfferingActions,
-              public dialog: MdDialog,
-              private viewContainerRef: ViewContainerRef) {
+              public dialog: MdDialogRef<OfferingEditorDialog>) {
   }
   
-  openDialog(): void {
-      this.dialog.open(OfferingEditorDialog, {
-        height: '50%', // can be px or %
-        width: '60%', // can be px or %
-      });
-    }
-
+ 
   ngOnInit(): void {
-   /* this.editForm = this.formBuilder.group(<Offering>{
+    this.createForm = this.formBuilder.group(<Offering>{
       id: null,
       code: '',
-     });
+      canonicalCode: '',
+      titleMs:'',
+      titleEn:'',
+     
+      //course: <Course>{},
+      //program: <Program>{},
+      //session: <AcademicSession>{},
+      
+    
+      
+    });
 
-    this.editForm.patchValue(this.offering);*/
+   // this.editForm.patchValue(this.offering);
   }
 
-  save(offering: Offering, isValid: boolean) {
-    // do something
+ /* submit(offering: Offering, isValid: boolean) {
+    // set codes
+    offering.canonicalCode = this._offering.canonicalCode + "" + section.ordinal
+    offering.code = this._offering.code + "" + section.ordinal
+
+    // dispatch action
+    this.store.dispatch(this.actions.addOffering(this._offering, section));
+    this.dialog.close();
   }
+ */
 }
+
