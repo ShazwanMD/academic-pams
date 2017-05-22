@@ -1,65 +1,54 @@
-import { Component, ViewContainerRef, OnInit, AfterViewInit } from '@angular/core';
+import {Component, ViewContainerRef, OnInit} from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
 import {FormBuilder} from '@angular/forms';
 import {Router, ActivatedRoute} from '@angular/router';
-import {IdentityService} from "../../../../services/identity.service";
 import {CommonService} from "../../../../services/common.service";
 import {PlannerService} from "../../../../services/planner.service";
 import {Cohort} from "../cohort.interface";
-import {CohortActions} from "../cohort.action";
-import {MdDialogRef} from "@angular/material";
-import {PlannerModuleState} from "../../index";
+import {CohortActions} from "../cohort.action";;
 import {Store} from "@ngrx/store";
+import {PlannerModuleState} from "../../index";
+import {MdDialogRef} from "@angular/material";
+import {AcademicSession} from "../../../planner/academic-sessions/academic-session.interface";
+import {Program} from './../../programs/program.interface';
+import {MdDialog} from '@angular/material';
+import {IdentityService} from "../../../../services/identity.service";
 
 @Component({
-  selector: 'pams-cohort-editor',
-  templateUrl: './cohort-editor.dialog.html',
+    selector: 'pams-cohort-editor',
+    templateUrl: './cohort-editor.dialog.html',
 })
 
 export class CohortEditorDialog implements OnInit {
 
-  private _cohort: Cohort;
-  private editForm: FormGroup;
-  private edit: boolean = false;
+  //private cohort: cohort;
+    private editorForm: FormGroup;
+
 
   constructor(private router: Router,
-              private route: ActivatedRoute,
-              private formBuilder: FormBuilder,
-              private actions: CohortActions,
-              private store: Store<PlannerModuleState>,
-              private viewContainerRef: ViewContainerRef,
-              private dialog: MdDialogRef<CohortEditorDialog >) {
-            
-  }
+        private route: ActivatedRoute,
+        private formBuilder: FormBuilder,
+        private store: Store<PlannerModuleState>,
+        private actions: CohortActions,
+        private dialog: MdDialogRef<CohortEditorDialog>) {
+    }
 
- set academicSession(value: Cohort) {
-        this._cohort = value;
-        this.edit = true;
-  }
+    ngOnInit(): void {
+        this.editorForm = this.formBuilder.group(<Cohort>{
+            id: null,
+            code: '',
+            description: '',
+            program: <Program>{},
+            academicSession: <AcademicSession>{},
 
-  //  openDialog(): void {
+         });
+          // this.editForm.patchValue(this.cohort);
+     }
 
-  //     this.dialog.open(CohortEditorDialog, {
-  //       height: '50%', // can be px or %
-  //       width: '60%', // can be px or %
-  //     });
-  //   }
 
-     ngOnInit(): void {
-    this.editForm = this.formBuilder.group(<Cohort>{
-    id: null,
-    code: '',
-    description: '', 
-     });
-     
-       if (this.edit) this.editForm.patchValue(this._cohort);
-  }
-     
-      submit(code: Cohort, isValid: boolean) {
-        if (!code.id) this.store.dispatch(this.actions.saveCohort(code));
-        else  this.store.dispatch(this.actions.updateCohort(code));
-        this.dialog.close();
-   
-   }
+    save(cohort: Cohort, isValid: boolean) {
+     /*  this.store.dispatch(this.actions.saveCohort(cohort));
+        this.dialog.close();*/
+    
 }
-
+}
