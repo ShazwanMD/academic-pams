@@ -1,3 +1,4 @@
+import { Program } from './../program.interface';
 import {Faculty} from './../../faculties/faculty.interface';
 import {Component, ViewContainerRef, OnInit} from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
@@ -6,7 +7,6 @@ import {Router, ActivatedRoute} from '@angular/router';
 import {IdentityService} from "../../../../services/identity.service";
 import {CommonService} from "../../../../services/common.service";
 import {PlannerService} from "../../../../services/planner.service";
-import {Program} from "../program.interface";
 import {ProgramActions} from "../program.action";
 ;
 import {FlowState} from "../../../core/flow-state.enum";
@@ -30,6 +30,9 @@ export class ProgramCreatorDialog implements OnInit {
   constructor(private formBuilder: FormBuilder,
               private store: Store<PlannerModuleState>,
               private actions: ProgramActions,
+              private router: Router,
+              private route: ActivatedRoute,
+               private viewContainerRef: ViewContainerRef,
               private dialog: MdDialogRef<ProgramCreatorDialog>) {
   }
 
@@ -51,12 +54,11 @@ export class ProgramCreatorDialog implements OnInit {
     if (this.create) this.creatorForm.patchValue(this._program);
   }
 
-  save(code: Program, isValid: boolean) {
+  save(program: Program, isValid: boolean) {
+    console.log(program.id);
 
-    console.log(code.code);
-
-    if (!code.id) this.store.dispatch(this.actions.saveProgram(code));
-    else  this.store.dispatch(this.actions.updateProgram(code));
+    if (!program.id) this.store.dispatch(this.actions.saveProgram(program));
+    else  this.store.dispatch(this.actions.updateProgram(program));
     this.dialog.close();
   }
 }

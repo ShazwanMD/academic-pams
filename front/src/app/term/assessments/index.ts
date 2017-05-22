@@ -2,6 +2,7 @@ import { AssessmentCategorySelectComponent } from './component/assessment-catego
 import { AssessmentTypeSelectComponent } from './component/assessment-type-select.component';
 import { AssessmentCreatorDialog } from './dialog/assessment-creator.dialog';
 import { AssessmentListComponent } from './component/assessment-list.component';
+import { AssessmentComponent } from './component/assessment.component';
 import { EffectsModule } from '@ngrx/effects';
 import { AssessmentEffects } from './assessment.effect';
 import { AssessmentActions } from './assessment.action';
@@ -13,6 +14,7 @@ import { NgModule, ModuleWithProviders } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CovalentCoreModule } from '@covalent/core';
+import {AssessmentDetailPage} from "./assessment-detail.page";
 
 
 @NgModule({
@@ -25,10 +27,12 @@ import { CovalentCoreModule } from '@covalent/core';
   ],
   declarations: [
     //page
-
+    AssessmentDetailPage,
+      
     //Component
     AssessmentListComponent,
     AssessmentTypeSelectComponent,
+    AssessmentComponent,
 
     //Dialog
     AssessmentCreatorDialog,
@@ -37,7 +41,8 @@ import { CovalentCoreModule } from '@covalent/core';
   exports: [
     AssessmentCreatorDialog,
     AssessmentTypeSelectComponent,
-    AssessmentCategorySelectComponent
+    AssessmentCategorySelectComponent,
+    AssessmentDetailPage,
 
   ],
 
