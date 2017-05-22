@@ -1,16 +1,16 @@
 <!-- Basic Card -->
 <md-card>
-  <md-card-title>ENROLLMENT FOR {{enrollment.section.code}}</md-card-title>
-  <md-card-subtitle>List of enrollment: {{enrollment.section.canonicalCode}} </md-card-subtitle>
+  <md-card-title>Title:{{enrollment.section.offering.titleMs}}</md-card-title>
+  <md-card-subtitle>Code: {{enrollment.section.code}} </md-card-subtitle>
   <md-divider></md-divider>
   <md-card-content>
   <!--Tab Section Here-->
   <md-tab-group>
   <md-tab label="Enrollment Detail"><br>
 
-    <div>Capacity       : {{enrollment.section.capacity}}</div><br>
-    <div>Session Code : {{enrollment.section.session.code}}</div><br>
-    <div>Session Description : {{enrollment.section.session.description}}</div><br>
+    <div>Status       : {{enrollment.enrollmentStatus}}</div><br>
+    <div>Standing :{{enrollment.enrollmentStanding}}</div><br>
+    <div>Session Description : {{enrollment.section.code}}</div><br>
  
   </md-tab>
   
@@ -26,8 +26,8 @@
 
   <md-tab label=" Offering Information">
 
-    <div>Course : {{enrollment.section.offering.course.title}}</div><br>
-    <div>Program : {{enrollment.section.offering.program.title}}</div><br>
+    <div>Course : {{enrollment.section.code}}</div><br>
+    <div>Program : {{enrollment.section.code}}</div><br>
 
 
   </md-tab>

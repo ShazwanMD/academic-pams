@@ -7,7 +7,7 @@ import {EnrollmentStanding} from "./enrollment-standing.enum";
 
 export interface Enrollment {
   id: number;
-   status: number;
+  status: number;
   student: Student;
   section: Section;
   admission: Admission;
