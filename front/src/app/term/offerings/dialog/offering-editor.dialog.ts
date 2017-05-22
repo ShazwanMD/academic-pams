@@ -7,9 +7,15 @@ import {CommonService} from "../../../../services/common.service";
 import {PlannerService} from "../../../../services/planner.service";
 import {TermService} from "../../../../services/term.service";
 import {Offering} from "../offering.interface";
+//import {Course} from "../../planner/courses/course.interface";
 import {OfferingActions} from "../offering.action";
 import {MdDialog} from '@angular/material';
-
+import {MdDialogRef} from "@angular/material";
+import {Store} from "@ngrx/store";
+import {AcademicSession} from "../../../planner/academic-sessions/academic-session.interface";
+import {Course} from "../../../planner/courses/course.interface";
+import {Program} from "../../../planner/programs/program.interface";
+import {TermModuleState} from "../../index";
 
 @Component({
   selector: 'pams-offering-editor',
@@ -18,34 +24,38 @@ import {MdDialog} from '@angular/material';
 
 export class OfferingEditorDialog implements OnInit {
 
-  private offering: Offering;
-  private editForm: FormGroup;
+  //private offering: Offering;
+  private createForm: FormGroup;
+  
 
   constructor(private router: Router,
               private route: ActivatedRoute,
               private formBuilder: FormBuilder,
+              private store: Store<TermModuleState>,
               private actions: OfferingActions,
-              public dialog: MdDialog,
-              private viewContainerRef: ViewContainerRef) {
+              public dialog: MdDialogRef<OfferingEditorDialog>) {
   }
   
-  openDialog(): void {
-      this.dialog.open(OfferingEditorDialog, {
-        height: '50%', // can be px or %
-        width: '60%', // can be px or %
-      });
-    }
-
+ 
   ngOnInit(): void {
-   /* this.editForm = this.formBuilder.group(<Offering>{
+    this.createForm = this.formBuilder.group(<Offering>{
       id: null,
       code: '',
-     });
+      canonicalCode: '',
+      titleMs:'',
+      titleEn:'',
+      session:<AcademicSession>{},
+      course: <Course>{},
+      program: <Program>{},
+        
+    });
 
-    this.editForm.patchValue(this.offering);*/
+   // this.editForm.patchValue(this.offering);
   }
 
   save(offering: Offering, isValid: boolean) {
-    // do something
+  /*  this.store.dispatch(this.actions.addOffering(offering));
+    this.dialog.close(); */
   }
 }
+

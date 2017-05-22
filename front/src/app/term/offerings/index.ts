@@ -19,11 +19,11 @@ import {OfferingComponent} from "./component/offering.component";
 import {OfferingEditorDialog} from "./dialog/offering-editor.dialog";
 import {CourseSubModule} from "../../planner/courses/index";
 import {ProgramSubModule} from "../../planner/programs/index";
+import {AcademicSessionSubModule} from "../../planner/academic-sessions/index";
 import {OfferingSectionListComponent} from "./component/offering-section-list.component";
 import {OfferingAssessmentListComponent} from "./component/offering-assessment-list.component";
 import {OfferingEnrollmentListComponent} from "./component/offering-enrollment-list.component";
 import {OfferingAppointmentListComponent} from "./component/offering-appointment-list.component";
-
 
 @NgModule({
   imports: [
@@ -32,6 +32,7 @@ import {OfferingAppointmentListComponent} from "./component/offering-appointment
     ReactiveFormsModule,
     CourseSubModule.forRoot(),
     ProgramSubModule.forRoot(),
+    AcademicSessionSubModule.forRoot(),
     CovalentCoreModule.forRoot(),
     EffectsModule.run(OfferingEffects),
   ],
@@ -50,9 +51,14 @@ import {OfferingAppointmentListComponent} from "./component/offering-appointment
 
     //dialog
     OfferingEditorDialog,
+    
 
   ],
   exports: [],
+   entryComponents: [
+    OfferingEditorDialog,
+   
+  ]
 })
 
 export class OfferingSubModule {

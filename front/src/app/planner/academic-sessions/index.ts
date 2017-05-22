@@ -39,7 +39,7 @@ import { AcademicYear } from "./academic-year.interface";
     AcademicSessionComponent,
     AcademicSessionSelectComponent,
     AcademicSessionStatusComponent,
-
+    
     //dialog
     AcademicSessionCreatorDialog,
   ],
