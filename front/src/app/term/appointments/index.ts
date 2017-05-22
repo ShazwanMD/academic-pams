@@ -15,6 +15,7 @@ import {EffectsModule} from "@ngrx/effects";
 import {AppointmentEffects} from "./appointment.effect";
 import {AppointmentDetailPage} from "./appointment-detail.page";
 import {AppointmentComponent} from "./component/appointment.component";
+import {AppointmentStatusSelectComponent} from "./component/appointment-status-select.component";
 import {AppointmentEditorDialog} from "./dialog/appointment-editor.dialog";
 import {AppointmentCreateTaskCreatorDialog} from "./dialog/appointment-create-task-creator.dialog";
 import {AppointmentUpdateTaskCreatorDialog} from "./dialog/appointment-update-task-creator.dialog";
@@ -35,6 +36,7 @@ import {AppointmentUpdateTaskCreatorDialog} from "./dialog/appointment-update-ta
     // component
     AppointmentListComponent,
     AppointmentComponent,
+    AppointmentStatusSelectComponent,
 
   //dialog
     AppointmentEditorDialog,
