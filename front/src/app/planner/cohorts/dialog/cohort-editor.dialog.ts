@@ -22,7 +22,7 @@ import {IdentityService} from "../../../../services/identity.service";
 export class CohortEditorDialog implements OnInit {
 
   //private cohort: cohort;
-    private editorForm: FormGroup;
+    private createForm: FormGroup;
 
 
   constructor(private router: Router,
@@ -34,7 +34,7 @@ export class CohortEditorDialog implements OnInit {
     }
 
     ngOnInit(): void {
-        this.editorForm = this.formBuilder.group(<Cohort>{
+        this.createForm = this.formBuilder.group(<Cohort>{
             id: null,
             code: '',
             description: '',
@@ -47,8 +47,9 @@ export class CohortEditorDialog implements OnInit {
 
 
     save(cohort: Cohort, isValid: boolean) {
-     /*  this.store.dispatch(this.actions.saveCohort(cohort));
-        this.dialog.close();*/
+      this.store.dispatch(this.actions.saveCohort(cohort));
+        this.dialog.close();
+        console.dir(cohort);
     
 }
 }
