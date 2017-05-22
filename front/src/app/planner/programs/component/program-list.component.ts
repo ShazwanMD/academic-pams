@@ -13,7 +13,7 @@ export class ProgramListComponent {
 
   private columns: any[] = [
     {name: 'code', label: 'Code'},
-    {name: 'titleMs', label: 'Title'},
+    {name: 'titleMs', label: 'TitleMs'},
     {name: 'action', label: ''}
   ];
 }

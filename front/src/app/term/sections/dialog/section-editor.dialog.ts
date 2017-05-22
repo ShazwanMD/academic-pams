@@ -22,7 +22,8 @@ export class SectionEditorDialog implements OnInit {
   constructor(private formBuilder: FormBuilder,
               private store: Store<TermModuleState>,
               private actions: SectionActions,
-              private dialog: MdDialogRef<SectionEditorDialog>) {
+              private dialog: MdDialogRef<SectionEditorDialog>,
+              private viewContainerRef: ViewContainerRef) {
   }
 
   set offering(value: Offering) {
