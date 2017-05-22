@@ -2,6 +2,7 @@ import { AssessmentCategorySelectComponent } from './component/assessment-catego
 import { AssessmentTypeSelectComponent } from './component/assessment-type-select.component';
 import { AssessmentCreatorDialog } from './dialog/assessment-creator.dialog';
 import { AssessmentListComponent } from './component/assessment-list.component';
+import { AssessmentComponent } from './component/assessment.component';
 import { EffectsModule } from '@ngrx/effects';
 import { AssessmentEffects } from './assessment.effect';
 import { AssessmentActions } from './assessment.action';
@@ -31,6 +32,7 @@ import {AssessmentDetailPage} from "./assessment-detail.page";
     //Component
     AssessmentListComponent,
     AssessmentTypeSelectComponent,
+    AssessmentComponent,
 
     //Dialog
     AssessmentCreatorDialog,
