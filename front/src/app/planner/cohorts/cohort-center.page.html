@@ -6,11 +6,16 @@
 
   <td-layout-manage-list #list>
     <md-nav-list list-items>
-       <a md-list-item (click)="createDialog()">
+       <a md-list-item (click)="showDialog()">
                <md-icon>create</md-icon>
-        Create Cohort
-      </a>
+        Create New Cohort
+     
+ </a>
       <md-divider></md-divider>
+       <a md-list-item [routerLink]="['/planner/cohorts']">
+        <md-icon>create</md-icon>
+     Cohorts
+      </a>
     </md-nav-list>
     <div toolbar-buttons layout="row" layout-align="start center" flex>
       <span flex>Cohort Center</span>
@@ -32,13 +37,11 @@
       <pams-cohort-list
         [cohorts]="cohorts$ | async"
         (view)="viewCohort($event)"></pams-cohort-list>
-
       <md-divider></md-divider>
       <md-card-actions>
-        <a md-button color="accent" class="text-upper" [routerLink]="['/cohorts-search']">
-          <span>View More</span>
-        </a>
-      </md-card-actions>
+        <a md-button color="accent" class="text-upper"
+         [routerLink]="['/cohorts-search']"> <span>View More</span>
+        </a></md-card-actions>
     </md-card>
   </td-layout-manage-list>
 </td-layout-nav>
