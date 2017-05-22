@@ -300,7 +300,7 @@ public class TermController {
     }
 
     @RequestMapping(value = "/appointments/current", method = RequestMethod.GET)
-    public ResponseEntity<List<Appointment>> findAppointments(@PathVariable Integer pageNo) {
+    public ResponseEntity<List<Appointment>> findCurrentAppointments() {
         AdAcademicSession academicSession = plannerService.findCurrentAcademicSession();
         List<AdAppointment> appointments = termService.findAppointments(academicSession);
         return new ResponseEntity<List<Appointment>>(termTransformer.toAppointmentVos(appointments), HttpStatus.OK);
