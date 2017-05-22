@@ -13,6 +13,7 @@ import { NgModule, ModuleWithProviders } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CovalentCoreModule } from '@covalent/core';
+import {AssessmentDetailPage} from "./assessment-detail.page";
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { CovalentCoreModule } from '@covalent/core';
   ],
   declarations: [
     //page
-
+    AssessmentDetailPage,
+      
     //Component
     AssessmentListComponent,
     AssessmentTypeSelectComponent,
@@ -37,7 +39,8 @@ import { CovalentCoreModule } from '@covalent/core';
   exports: [
     AssessmentCreatorDialog,
     AssessmentTypeSelectComponent,
-    AssessmentCategorySelectComponent
+    AssessmentCategorySelectComponent,
+    AssessmentDetailPage,
 
   ],
 
