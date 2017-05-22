@@ -55,6 +55,23 @@ export class OfferingDetailPage implements OnInit {
       this.store.dispatch(this.actions.findOfferingByCanonicalCode(canonicalCode));
     });
   }
+    
+ /* showDialog(): void {
+    console.log("showDialog");
+    let config = new MdDialogConfig();
+    config.viewContainerRef = this.vcf;
+    config.role = 'dialog';
+    config.width = '50%';
+    config.height = '50%';
+    config.position = {top: '0px'};
+    this.creatorDialogRef = this.dialog.open(SectionEditorDialog, config);
+    this.creatorDialogRef.componentInstance.offering = this.offering;
+    this.creatorDialogRef.afterClosed().subscribe(res => {
+      console.log("close dialog");
+      // load something here
+    });
+  }
+    */
 
   goBack(route: string): void {
     this.router.navigate(['/offerings']);

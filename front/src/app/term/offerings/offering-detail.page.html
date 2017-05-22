@@ -35,29 +35,35 @@
 
       <div flex-gt-md="30">
         <md-card>
-          <md-card-title>Action</md-card-title>
-          <md-card-subtitle>Actions available on current admission
+          <md-card-title>Term Menu</md-card-title>
+          <md-card-subtitle>Actions available on current offering
           </md-card-subtitle>
-          <md-divider></md-divider>
+          <!-- <md-divider></md-divider> -->
           <md-nav-list
             flex dense>
-            <md-list-item (click)="showDialog()">
+            <!-- <md-list-item (click)="showDialog()">
               <md-icon md-list-avatar>assignment_ind</md-icon>
               <h4 md-line>Update Offering</h4>
               <p md-line>Update this offering</p>
-            </md-list-item>
-            <md-list-item (click)="deleteDialog()">
+            </md-list-item> -->
+            <!-- <md-list-item (click)="deleteDialog()">
               <md-icon md-list-avatar>done_all</md-icon>
               <h4 md-line>Delete Offering</h4>
               <p md-line>Delete this offering</p>
-            </md-list-item>
+            </md-list-item> -->
             <md-divider></md-divider>
-            <h3 md-subheader>Term Menu</h3>
+           <!-- <h3 md-subheader>Term Menu</h3> -->
+            <md-list-item [routerLink]="['/term/offerings']">
+              <md-icon md-list-avatar>email</md-icon>
+              <h4 md-line>Offerings</h4>
+              <p md-line>Watch this offerings</p>
+            </md-list-item>
             <md-list-item [routerLink]="['/term/admissions']">
               <md-icon md-list-avatar>email</md-icon>
-              <h4 md-line>Admission</h4>
+              <h4 md-line>Admissions</h4>
               <p md-line>Watch this admissions</p>
             </md-list-item>
+            
           </md-nav-list>
         </md-card>
       </div>

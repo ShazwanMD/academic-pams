@@ -23,6 +23,7 @@ import {SectionEditorDialog} from "./dialog/section-editor.dialog";
     appRoutes,
     BrowserModule,
     ReactiveFormsModule,
+    //SectionModule.forRoot(),
     CovalentCoreModule.forRoot(),
     EffectsModule.run(SectionEffects),
   ],
@@ -34,6 +35,7 @@ import {SectionEditorDialog} from "./dialog/section-editor.dialog";
     SectionListComponent,
     SectionComponent,
     SectionSelectComponent,
+    
 
     //dialog
     SectionEditorDialog,
@@ -45,7 +47,8 @@ import {SectionEditorDialog} from "./dialog/section-editor.dialog";
     SectionEditorDialog,
   ],
   entryComponents: [
-    SectionEditorDialog,
+   SectionEditorDialog,
+   SectionSelectComponent,
   ],
 })
 

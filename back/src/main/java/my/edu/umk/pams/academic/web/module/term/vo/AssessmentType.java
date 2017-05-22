@@ -1,8 +1,5 @@
 package my.edu.umk.pams.academic.web.module.term.vo;
 
-import my.edu.umk.pams.academic.term.model.AdAssessmentCategory;
-import my.edu.umk.pams.academic.web.module.profile.vo.AddressType;
-
 public enum AssessmentType {
 	
 	

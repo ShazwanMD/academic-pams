@@ -191,7 +191,7 @@ public class TermTransformer {
         vo.setTotalScore(assessment.getTotalScore());
         vo.setAssessmentType(AssessmentType.get(assessment.getType().ordinal()));
         vo.setAssessmentCategory(AssessmentCategory.get(assessment.getType().ordinal()));
-        vo.setOffering(termTransformer.toOfferingVo(assessment.getOffering()));
+        vo.setOffering(this.toOfferingVo(assessment.getOffering()));
         return vo;
     }
 

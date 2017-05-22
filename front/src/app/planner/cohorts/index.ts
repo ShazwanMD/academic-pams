@@ -9,7 +9,7 @@ import {PlannerService} from '../../../services';
 import {CommonService} from '../../../services';
 
 import {IdentityService} from '../../../services';
-
+import {ProgramSubModule} from "../programs/index";
 import {CohortCenterPage} from "./cohort-center.page";
 import {CohortListComponent} from "./component/cohort-list.component";
 import {CohortActions} from "./cohort.action";
@@ -19,16 +19,20 @@ import {CohortEditorDialog} from "./dialog/cohort-editor.dialog";
 //import {SectionEditorDialog} from "./dialog/section-editor.dialog";
 import {CohortDetailPage} from "./cohort-detail.page";
 import {CohortComponent} from "./component/cohort.component";
-
+import {IdentityModule} from "../../identity/index";
+import {AcademicSessionSubModule} from "../../planner/academic-sessions/index";
+import {CohortUpdateDialog} from './dialog/cohort-update.dialog';
 
 @NgModule({
   imports: [
     appRoutes,
     BrowserModule,
     ReactiveFormsModule,
+    ProgramSubModule.forRoot(),
     CovalentCoreModule.forRoot(),
     EffectsModule.run(CohortEffects),
-
+     AcademicSessionSubModule.forRoot(),
+IdentityModule.forRoot(),
 
   ],
   declarations: [
@@ -42,15 +46,15 @@ import {CohortComponent} from "./component/cohort.component";
     
     //dialog
     CohortEditorDialog,
+CohortUpdateDialog,
+
   ],
-   exports: [
-   
-    CohortEditorDialog,
-  ],
-   
-    entryComponents: [
-    CohortEditorDialog,
-  ],
+   exports: [],
+   entryComponents: [
+   CohortEditorDialog,
+   CohortUpdateDialog,
+
+   ]
    
 })
 

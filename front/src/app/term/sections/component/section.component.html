@@ -6,28 +6,26 @@
     <!--Tab Section Here-->
     <md-tab-group>
       <md-tab label="Section Detail"><br>
-        <div>Secion Id : {{section.id}}</div>
-        <br>
+        
         <div>Section Code : {{section.code}}</div>
         <br>
-        <div>Section Capacity : {{section.capacity}}</div>
+        <div>Section Capacity : {{section.capacity}} </div>
          <br>
         <div>Section canonicalCode  : {{section.canonicalCode}}</div>
         <br>
         <div>Section ordinal : {{section.ordinal}}</div>
         <br>
-        
-         
+                 
       
       </md-tab>
 
       <md-tab label="Course Information">
         
-        <div>Credit : {{section.id}}</div>
+        <div>Code : {{section.offering.course.code}}</div>
         <br>
-         <div>Code : {{section.code}}</div>
+         <div>Title : {{section.offering.course.titleMs}}</div>
         <br>
-         <div>Description : {{section.session.description}}</div>
+         <div>Credit : {{section.offering.course.credit}}</div>
         <br>
         
         
@@ -36,15 +34,15 @@
       
        <md-tab label="Program Information">
        
-         <div>Program Id : {{section.offering.program.id}}</div>
+         <div>Code : {{section.offering.program.code}}</div>
         <br>
-         <div>Program Code : {{section.offering.program.code}}</div>
+         <div>Title : {{section.offering.program.titleMs}}</div>
         <br>
-         <div>Program Title : {{section.offering.program.title}}</div>
+         <div>Status : {{section.offering.program.status}}</div>
         <br>
-        <div>Program TitleMs : {{section.offering.program.titleMs}}</div>
+        <div>Faculty : {{section.offering.program.faculty.name}}</div>
         <br>
-        <div>Program TitleEn : {{section.offering.program.titleEn}}</div>
+        <div>Faculty Desc. : {{section.offering.program.faculty.description}}</div>
         <br>
        
         

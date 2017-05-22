@@ -929,6 +929,7 @@
         TITLE_MS varchar(255) not null,
         COURSE_ID int8,
         PROGRAM_ID int8,
+        SESSION_ID int8,
         primary key (ID)
     );
 
@@ -1728,6 +1729,11 @@
         add constraint FKE7DE48E8293A8391
         foreign key (PROGRAM_ID)
         references AD_PRGM;
+
+    alter table AD_OFRG
+        add constraint FKE7DE48E8293A8391_TODO
+        foreign key (SESSION_ID)
+        references AD_ACDM_SESN;
 
     alter table AD_PCPL
         add constraint uc_AD_PCPL_1 unique (NAME);

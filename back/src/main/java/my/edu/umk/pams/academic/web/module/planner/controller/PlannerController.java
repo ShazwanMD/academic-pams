@@ -171,6 +171,18 @@ public class PlannerController {
         return new ResponseEntity<List<Cohort>>(
                 plannerTransformer.toCohortVos(plannerService.findCohorts(program, 0, 100)), HttpStatus.OK);
     }
+    
+    @RequestMapping(value = "/programs/{code}", method = RequestMethod.POST)
+    public ResponseEntity<String> saveProgram(@PathVariable String code, @RequestBody Program vo) {
+            dummyLogin();
+
+            AdProgram program = new AdProgramImpl();
+            program.setCode(vo.getCode());
+            program.setTitleMs(vo.getTitleMs());
+            program.setTitleEn(vo.getTitleEn());
+            plannerService.saveProgram(program);
+            return new ResponseEntity<String>("Success", HttpStatus.OK);
+            }
 
     @RequestMapping(value = "/programs/{code}", method = RequestMethod.PUT)
     public ResponseEntity<String> updateProgram(@PathVariable String code, @RequestBody Program vo) {

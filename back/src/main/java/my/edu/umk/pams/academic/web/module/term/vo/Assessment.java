@@ -96,11 +96,11 @@ public class Assessment extends MetaObject {
 	
 	
     @JsonCreator
-    public static Offering create(String jsonString) {
-        Offering o = null;
+    public static Assessment create(String jsonString) {
+        Assessment o = null;
         try {
             ObjectMapper mapper = new ObjectMapper();
-            o = mapper.readValue(jsonString, Offering.class);
+            o = mapper.readValue(jsonString, Assessment.class);
         } catch (IOException e) {
             // handle
         }

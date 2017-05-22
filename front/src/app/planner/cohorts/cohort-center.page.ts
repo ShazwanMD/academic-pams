@@ -1,18 +1,15 @@
 import {CohortActions} from './cohort.action';
 import {CohortEditorDialog} from './dialog/cohort-editor.dialog';
 import {Router, ActivatedRoute} from '@angular/router';
+
 import {Component, OnInit, ViewContainerRef, ChangeDetectionStrategy} from '@angular/core';
-import {MdDialogRef} from '@angular/material';
-import {MdDialogConfig} from '@angular/material';
-import {MdDialog} from '@angular/material';
-import {IdentityService} from '../../../services';
 import {CommonService} from '../../../services';
 import {Store} from "@ngrx/store";
 import {Observable} from "rxjs";
 import {Cohort} from "./cohort.interface";
-
+import {PlannerService} from './../../../services/planner.service';
 import {PlannerModuleState} from "../index";
-
+import {MdDialog, MdDialogConfig, MdDialogRef} from "@angular/material";
 
 @Component({
   selector: 'pams-cohort-center',
@@ -21,18 +18,12 @@ import {PlannerModuleState} from "../index";
 })
 export class CohortCenterPage implements OnInit {
 
+ private COHORTS: string[] = "plannerModuleState.cohorts".split(".");
   private cohorts$: Observable<Cohort[]>;
-  private COHORTS: string[] = "plannerModuleState.cohorts".split(".");
   private creatorDialogRef: MdDialogRef<CohortEditorDialog>;
 
-  private columns: any[] = [
-    {name: 'code', label: 'Code'},
-    {name: 'title', label: 'Title'},
-    {name: 'description', label: 'Description'},
-    {name: 'action', label: ''}
-  ];
 
-  constructor(private router: Router,
+ constructor(private router: Router,
               private route: ActivatedRoute,
               private actions: CohortActions,
               private store: Store<PlannerModuleState>,
@@ -53,19 +44,12 @@ export class CohortCenterPage implements OnInit {
   filter(): void {
   }
 
-  ngOnInit(): void {
-    console.log("find cohorts");
-    this.store.dispatch(this.actions.findCohorts());
-  }
-
-
-    createDialog(): void {
+    showDialog(): void {
     console.log("showDialog");
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
     config.role = 'dialog';
-    config.width = '50%';
-    config.height = '50%';
+    config.width = '40%';
     config.position = {top: '0px'};
     this.creatorDialogRef = this.dialog.open(CohortEditorDialog, config);
    // this.creatorDialogRef.componentInstance.offering = this.offering;
@@ -74,6 +58,15 @@ export class CohortCenterPage implements OnInit {
       // load something here
     });
   }
-  
-}
 
+ //private columns: any[] = [
+   // {name: 'code', label: 'Code'},
+    //{name: 'title', label: 'Title'},
+    //{name: 'description', label: 'Description'},
+    //{name: 'action', label: ''}
+//  ];
+
+ ngOnInit(): void {
+    this.store.dispatch(this.actions.findCohorts());
+ }
+ }
