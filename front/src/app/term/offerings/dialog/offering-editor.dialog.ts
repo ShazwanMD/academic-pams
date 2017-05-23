@@ -44,7 +44,7 @@ export class OfferingEditorDialog implements OnInit {
       canonicalCode: '',
       titleMs:'',
       titleEn:'',
-      session:<AcademicSession>{},
+      academicSession:<AcademicSession>{},
       course: <Course>{},
       program: <Program>{},
         
