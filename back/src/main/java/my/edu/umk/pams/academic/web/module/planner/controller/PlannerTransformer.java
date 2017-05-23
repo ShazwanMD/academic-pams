@@ -33,7 +33,7 @@ public class PlannerTransformer {
         vo.setstartDate(academicSession.getStartDate());
         vo.setendDate(academicSession.getEndDate());
         vo.setSemester(AcademicSemester.get(academicSession.getSemester().ordinal()));
-        vo.setYear(plannerTransformer.toAcademicYearVo(academicSession.getYear()));
+        vo.setYear(toAcademicYearVo(academicSession.getYear()));
         return vo;
     }
     

@@ -43,9 +43,9 @@ export class AcademicSessionComponent {
   }
 
   ngOnInit(): void {
-    this.route.params.subscribe((params: { academicSession: string }) => {
-      let academicSession: string = params.academicSession;
-      this.store.dispatch(this.actions.findAcademicSessionByCode(academicSession));
+    this.route.params.subscribe((params: { code: string }) => {
+      let code: string = params.code;
+      this.store.dispatch(this.actions.findAcademicSessionByCode(code));
     });
   }
  editSession(): void {

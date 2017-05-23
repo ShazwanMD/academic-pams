@@ -1,5 +1,5 @@
-import {Injectable} from '@angular/core';
-import {Action} from '@ngrx/store';
+import { Injectable } from '@angular/core';
+import { Action } from '@ngrx/store';
 
 
 @Injectable()
@@ -24,6 +24,8 @@ export class AcademicSessionActions {
 
   static FIND_ACADEMIC_SESSION_BY_CODE = '[AcademicSession] Find AcademicSession By Code';
   findAcademicSessionByCode(code): Action {
+    console.log("findAcademicSessionByCode");
+    console.log("academicSession: " + code);
     return {
       type: AcademicSessionActions.FIND_ACADEMIC_SESSION_BY_CODE,
       payload: code
@@ -31,15 +33,19 @@ export class AcademicSessionActions {
   }
 
   static FIND_ACADEMIC_SESSION_BY_CODE_SUCCESS = '[AcademicSession] Find AcademicSession By Code Success';
-  findAcademicSessionByCodeSuccess(academicSession): Action {
+  findAcademicSessionByCodeSuccess(code): Action {
+    console.log("findAcademicSessionbyCodeSuccess");
+    console.log("academicSession: " + code);
     return {
       type: AcademicSessionActions.FIND_ACADEMIC_SESSION_BY_CODE_SUCCESS,
-      payload: academicSession
+      payload: code
     };
   }
 
   static SAVE_ACADEMIC_SESSION = '[AcademicSession] Save AcademicSession';
-  saveAcademicSession (academicSession): Action {
+  saveAcademicSession(academicSession): Action {
+    console.log("saveAcademicSession");
+    console.log("academicSession: " + academicSession);
     return {
       type: AcademicSessionActions.SAVE_ACADEMIC_SESSION,
       payload: academicSession
@@ -48,22 +54,28 @@ export class AcademicSessionActions {
 
   static SAVE_ACADEMIC_SESSION_SUCCESS = '[AcademicSession] Save AcademicSession Success';
   saveAcademicSessionSuccess(academicSession): Action {
+    console.log("saveAcademicSessionSucces");
+    console.log("academicSession: " + academicSession);
     return {
       type: AcademicSessionActions.SAVE_ACADEMIC_SESSION_SUCCESS,
       payload: academicSession
     };
   }
 
-  static UPDATE_ACADEMIC_SESSION =  '[AcademicSession] Update AcademicSession';
+  static UPDATE_ACADEMIC_SESSION = '[AcademicSession] Update AcademicSession';
   updateAcademicSession(academicSession): Action {
+    console.log("updateAcademicSession");
+    console.log("academicSession: " + academicSession);
     return {
       type: AcademicSessionActions.UPDATE_ACADEMIC_SESSION,
       payload: academicSession
     };
   }
 
-  static UPDATE_ACADEMIC_SESSION_SUCCESS =  '[AcademicSession] Update AcademicSession';
+  static UPDATE_ACADEMIC_SESSION_SUCCESS = '[AcademicSession] Update AcademicSession';
   updateAcademisSessionSuccess(academicSession): Action {
+    console.log("updateAcademicSessionSession");
+    console.log("academicSession: " + academicSession);
     return {
       type: AcademicSessionActions.UPDATE_ACADEMIC_SESSION_SUCCESS,
       payload: academicSession
@@ -72,6 +84,8 @@ export class AcademicSessionActions {
 
   static REMOVE_ACADEMIC_SESSION = '[AcademicSession] Remove AcademicSession';
   removeAcademicSession(academicSession): Action {
+    console.log("removeAcademicSession");
+    console.log("academicSession: " + academicSession);
     return {
       type: AcademicSessionActions.REMOVE_ACADEMIC_SESSION,
       payload: academicSession
@@ -80,14 +94,18 @@ export class AcademicSessionActions {
 
   static REMOVE_ACADEMIC_SESSION_SUCCESS = '[AcademicSession] Remove AcademicSession Success';
   removeAcademicSessionSuccess(academicSession): Action {
+    console.log("removeAcademicSessionSuccess");
+    console.log("academicSession: " + academicSession);
     return {
       type: AcademicSessionActions.REMOVE_ACADEMIC_SESSION_SUCCESS,
       payload: academicSession
     };
   }
 
- static ACTIVATE_ACADEMIC_SESSION = '[AcademicSession] Activate AcademicSession';
+  static ACTIVATE_ACADEMIC_SESSION = '[AcademicSession] Activate AcademicSession';
   activateAcademicSession(academicSession): Action {
+    console.log("activateAcademicSession");
+    console.log("academicSession: " + academicSession);
     return {
       type: AcademicSessionActions.ACTIVATE_ACADEMIC_SESSION,
       payload: academicSession
@@ -95,24 +113,30 @@ export class AcademicSessionActions {
   }
 
 
-static ACTIVATE_ACADEMIC_SESSION_SUCCESS = '[AcademicSession] Activate AcademicSession Success';
+  static ACTIVATE_ACADEMIC_SESSION_SUCCESS = '[AcademicSession] Activate AcademicSession Success';
   activateAcademicSessionSuccess(academicSession): Action {
+    console.log("activateAcademicSessionSuccess");
+    console.log("academicSession: " + academicSession);
     return {
       type: AcademicSessionActions.ACTIVATE_ACADEMIC_SESSION_SUCCESS,
       payload: academicSession
     };
   }
 
- static DEACTIVATE_ACADEMIC_SESSION = '[AcademicSession] Deactivate AcademicSession';
+  static DEACTIVATE_ACADEMIC_SESSION = '[AcademicSession] Deactivate AcademicSession';
   deactivateAcademicSession(academicSession): Action {
+    console.log("deactivateAcademicSession");
+    console.log("academicSession: " + academicSession);
     return {
       type: AcademicSessionActions.DEACTIVATE_ACADEMIC_SESSION,
       payload: academicSession
     };
   }
 
-static DEACTIVATE_ACADEMIC_SESSION_SUCCESS = '[AcademicSession] Activate AcademicSession Success';
+  static DEACTIVATE_ACADEMIC_SESSION_SUCCESS = '[AcademicSession] Activate AcademicSession Success';
   deactivateAcademicSessionSuccess(academicSession): Action {
+    console.log("deactivateAcademicSessionSuccess");
+    console.log("academicSession: " + academicSession);
     return {
       type: AcademicSessionActions.DEACTIVATE_ACADEMIC_SESSION_SUCCESS,
       payload: academicSession
