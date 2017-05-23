@@ -1,6 +1,7 @@
 package my.edu.umk.pams.academic.web.module.planner.controller;
 
 import my.edu.umk.pams.academic.common.service.CommonService;
+import my.edu.umk.pams.academic.identity.model.AdContactType;
 import my.edu.umk.pams.academic.identity.service.IdentityService;
 import my.edu.umk.pams.academic.planner.model.*;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
@@ -180,6 +181,7 @@ public class PlannerController {
             program.setCode(vo.getCode());
             program.setTitleMs(vo.getTitleMs());
             program.setTitleEn(vo.getTitleEn());
+			program.setStatus(AdProgramStatus.get(vo.getStatus().ordinal()));
             plannerService.saveProgram(program);
             return new ResponseEntity<String>("Success", HttpStatus.OK);
             }
@@ -192,6 +194,7 @@ public class PlannerController {
         program.setCode(vo.getCode());
         program.setTitleMs(vo.getTitleMs());
         program.setTitleEn(vo.getTitleEn());
+        program.setStatus(AdProgramStatus.get(vo.getStatus().ordinal()));
         plannerService.updateProgram(program);
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
