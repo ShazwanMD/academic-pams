@@ -28,6 +28,89 @@ export class SetupActions {
     };
   }
 
+static FIND_STUDY_CENTERS = '[Setup] Find Study Centers';
+
+findStudyCenters(): Action {
+    console.log("findStudyCenters");
+    return {
+        type: SetupActions.FIND_STUDY_CENTERS
+    };
+}
+
+static FIND_STUDY_CENTERS_SUCCESS = '[Setup] Find Study Centers Success';
+
+findStudyCentersSuccess(codes): Action {
+    console.log(codes);
+    return {
+        type: SetupActions.FIND_STUDY_CENTERS_SUCCESS,
+        payload: codes
+    };
+}
+
+static SAVE_STUDY_CENTER = '[Setup] Save Study Center';
+
+  saveStudyCenter(code): Action {
+    console.log("saveStudyCenter");
+    return {
+      type: SetupActions.SAVE_STUDY_CENTER,
+      payload: code
+    };
+  }
+
+    static SAVE_STUDY_CENTER_SUCCESS = '[Setup] Save Study Center Success';
+
+  saveStudyCenterSuccess(message): Action {
+    console.log("saveStudyCenterSuccess");
+    return {
+      type: SetupActions.SAVE_STUDY_CENTER_SUCCESS,
+      payload: message
+    };
+  }
+
+    static UPDATE_STUDY_CENTER = '[Setup] Update Study Center';
+
+  updateStudyCenter(code): Action {
+    console.log("updateStudyCenter");
+    return {
+      type: SetupActions.UPDATE_STUDY_CENTER,
+      payload: code
+    };
+  }
+
+  static UPDATE_STUDY_CENTER_SUCCESS = '[Setup] Update Study Center  Success';
+
+  updateStudyCenterSuccess(message): Action {
+    console.log("updateStudyCenterSuccess");
+    return {
+      type: SetupActions.UPDATE_STUDY_CENTER_SUCCESS,
+      payload: message
+    };
+  }
+
+  static REMOVE_STUDY_CENTER = '[Setup] Remove Study Center';
+
+  removeStudyCenter(code): Action {
+    console.log("removeStudyCenter");
+    return {
+      type: SetupActions.REMOVE_STUDY_CENTER,
+      payload: code
+    };
+  }
+
+  static REMOVE_STUDY_CENTER_SUCCESS = '[Setup] Remove Study Center  Success';
+
+  removeStudyCenterSuccess(message): Action {
+    console.log("removeStudyCenterSuccess");
+    return {
+      type: SetupActions.REMOVE_STUDY_CENTER_SUCCESS,
+      payload: message
+    };
+  }
+  
+
+
+
+
 static FIND_STUDY_MODES = '[Setup] Find Study Modes';
 
 findStudyModes(): Action {

@@ -1,3 +1,5 @@
+import { StudyCenterListPage } from './study-centers/study-center-list.page';
+import { StudyCenter } from './study-centers/study-center.interface';
 import { StudyModeListPage } from './study-modes/study-mode-list.page';
 import { StudyMode } from './../common/study-modes/study-mode.interface';
 import { EthnicityCodeListPage } from './ethnicity-codes/ethnicity-code-list.page';
@@ -34,6 +36,7 @@ export const SetupModuleRoutes: Routes = [
       {path: 'nationality-codes', component: NationalityCodeListPage},
       {path: 'ethnicity-codes', component: EthnicityCodeListPage},
     {path: 'study-modes', component: StudyModeListPage},
+      {path: 'study-centers', component: StudyCenterListPage},
     ]
   },
 ];
