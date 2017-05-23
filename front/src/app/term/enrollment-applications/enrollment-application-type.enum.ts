@@ -1,6 +1,6 @@
 export enum EnrollmentApplicationType {
   
-      PRA, //0
-    WAJIB, //1
-    BERDENDA //2
+    PRA, //0
+    COMPULSORY, //1
+    PENALTY //2
 }
