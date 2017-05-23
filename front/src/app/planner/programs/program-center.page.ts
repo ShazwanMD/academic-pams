@@ -26,8 +26,10 @@ export class ProgramCenterPage implements OnInit {
   private creatorDialogRef: MdDialogRef<ProgramCreatorDialog>;
   private columns: any[] = [
     {name: 'code', label: 'Code'},
-    {name: 'title', label: 'Title'},
-    {name: 'description', label: 'Description'},
+    {name: 'titleMs', label: 'TitleMs'},
+    {name: 'titleEn', label: 'TitleEn'},
+    {name: 'status', label: 'Status'},
+    // {name: 'description', label: 'Description'},
     {name: 'action', label: ''}
   ];
 
@@ -66,9 +68,9 @@ export class ProgramCenterPage implements OnInit {
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
     config.role = 'dialog';
-    config.width = '40%';
-    config.height = '55%';
-    config.position = {top: '0px'};
+    config.width = '60%';
+    config.height = '70';
+    config.position = {top: '1px'};
     this.creatorDialogRef = this.dialog.open(ProgramCreatorDialog, config);
     if (code) this.creatorDialogRef.componentInstance.program = code;
 
@@ -77,5 +79,6 @@ export class ProgramCenterPage implements OnInit {
       console.log("close dialog");
     });
   }
+
 }
 
