@@ -7,8 +7,9 @@ import {CovalentCoreModule} from '@covalent/core';
 
 import {PlannerService} from '../../../services';
 import {CommonService} from '../../../services';
+
 import {IdentityService} from '../../../services';
-//import {CohortSubModule} from "../cohorts/index";
+import {ProgramSubModule} from "../programs/index";
 import {CohortCenterPage} from "./cohort-center.page";
 import {CohortListComponent} from "./component/cohort-list.component";
 import {CohortActions} from "./cohort.action";
@@ -21,58 +22,55 @@ import {CohortComponent} from "./component/cohort.component";
 import {IdentityModule} from "../../identity/index";
 import {AcademicSessionSubModule} from "../../planner/academic-sessions/index";
 import {CohortUpdateDialog} from './dialog/cohort-update.dialog';
-import {CohortActionComponent} from "./component/cohort-action.component";
-
 
 @NgModule({
-    imports: [
-        appRoutes,
-        BrowserModule,
-        ReactiveFormsModule,
-        CohortSubModule.forRoot(),
-        CovalentCoreModule.forRoot(),
-        EffectsModule.run(CohortEffects),
-        AcademicSessionSubModule.forRoot(),
-        IdentityModule.forRoot(),
+  imports: [
+    appRoutes,
+    BrowserModule,
+    ReactiveFormsModule,
+    ProgramSubModule.forRoot(),
+    CovalentCoreModule.forRoot(),
+    EffectsModule.run(CohortEffects),
+     AcademicSessionSubModule.forRoot(),
+IdentityModule.forRoot(),
 
-    ],
-    declarations: [
-        // page
-        CohortCenterPage,
-        CohortDetailPage,
+  ],
+  declarations: [
+    // page
+    CohortCenterPage,
+    CohortDetailPage,
 
-        // component
-        CohortListComponent,
-        CohortComponent,
-        CohortActionComponent,
+    // component
+    CohortListComponent,
+    CohortComponent,
+    
+    //dialog
+    CohortEditorDialog,
+CohortUpdateDialog,
 
-        //dialog
-        CohortEditorDialog,
-        CohortUpdateDialog,
+  ],
+   exports: [],
+   entryComponents: [
+   CohortEditorDialog,
+   CohortUpdateDialog,
 
-    ],
-    exports: [],
-    entryComponents: [
-        CohortEditorDialog,
-        CohortUpdateDialog,
-
-    ]
-
+   ]
+   
 })
 
 export class CohortSubModule {
-    static forRoot(): ModuleWithProviders {
-        return {
-            ngModule: CohortSubModule,
-            providers: [
-                appRoutingProviders,
-                PlannerService,
-                IdentityService,
-                CommonService,
-                CohortActions,
-            ],
-        };
-    }
+  static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: CohortSubModule,
+      providers: [
+        appRoutingProviders,
+        PlannerService,
+        IdentityService,
+        CommonService,
+        CohortActions,
+      ],
+    };
+  }
 }
 
 
