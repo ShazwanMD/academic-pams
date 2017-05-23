@@ -17,12 +17,15 @@ import {EnrollmentApplicationDraftTaskPanel} from "./panel/enrollment-applicatio
 import {EnrollmentApplicationTaskCreatorDialog} from "./dialog/enrollment-application-task-creator.dialog";
 import {EnrollmentApplicationItemComponent} from "./component/enrollment-application-item-list.component";
 import {EnrollmentApplicationTaskListComponent} from "./component/enrollment-application-task-list.component";
+
 import {EnrollmentApplicationTaskViewPage} from "./enrollment-application-task-view.page";
 import {EnrollmentApplicationTaskWorkflowPanel} from "./panel/enrollment-application-task-workflow.panel";
 import {EnrollmentApplicationTaskStatusComponent} from "./component/enrollment-application-task-status.component";
 import {EnrollmentApplicationItemEditorDialog} from "./dialog/enrollment-application-item-editor.dialog";
 import {SectionSubModule} from "../sections/index";
 import {EnrollmentApplicationActionSelectComponent} from "./component/enrollment-application-action-select.component";
+import {EnrollmentApplicationTypeSelectComponent} from "./component/enrollment-application-type-select.component";
+
 
 @NgModule({
   imports: [
@@ -47,6 +50,7 @@ import {EnrollmentApplicationActionSelectComponent} from "./component/enrollment
     EnrollmentApplicationTaskListComponent,
     EnrollmentApplicationTaskStatusComponent,
     EnrollmentApplicationActionSelectComponent,
+    EnrollmentApplicationTypeSelectComponent,
 
     //dialog
     EnrollmentApplicationTaskCreatorDialog,

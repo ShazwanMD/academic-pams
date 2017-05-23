@@ -31,6 +31,12 @@
       </md-input-container>
     </div>
     <div layout="row" class="pad-bottom pad-top">
+      <pams-enrollment-application-type-select
+        [placeholder]="'Select Enrollment Application Type'"
+        [innerFormControl]="createForm.controls.enrollmentApplicationType">
+      </pams-enrollment-application-type-select>
+    </div>
+    <div layout="row" class="pad-bottom pad-top">
       <pams-admission-select
         [placeholder]="'Select Student'"
         [innerFormControl]="createForm.controls.admission">

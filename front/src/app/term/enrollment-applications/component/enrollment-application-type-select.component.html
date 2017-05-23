@@ -1,0 +1,8 @@
+<md-select
+  [placeholder]="placeholder"
+  (change)="selectChangeEvent($event.value)" flex>
+
+  <md-option *ngFor="let enrollmentApplicationType of enrollmentApplicationTypes" [value]="enrollmentApplicationType">
+    {{enrollmentApplicationType}}
+  </md-option>
+</md-select>

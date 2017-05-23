@@ -8,6 +8,7 @@ import {EnrollmentApplication} from "../enrollment-application.interface";
 import {TermModuleState} from "../../index";
 import {AcademicSession} from "../../../planner/academic-sessions/academic-session.interface";
 import {Admission} from "../../admissions/admission.interface";
+import { EnrollmentApplicationType } from "../enrollment-application-type.enum";
 
 
 @Component({
@@ -32,7 +33,8 @@ export class EnrollmentApplicationTaskCreatorDialog implements OnInit {
       sourceNo:'',
       description:'',
       admission:<Admission>{},
-      academicSession:<AcademicSession>{}
+      academicSession:<AcademicSession>{},
+      enrollmentApplicationType: EnrollmentApplicationType.PRA
     });
   }
 
