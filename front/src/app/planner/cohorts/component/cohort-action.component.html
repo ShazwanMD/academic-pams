@@ -1,0 +1,38 @@
+<md-card>
+  <md-card-title>Action</md-card-title>
+  <md-card-subtitle>Actions available on current cohort</md-card-subtitle>
+  <md-divider></md-divider>
+
+  <md-nav-list flex dense>
+
+    <md-list-item (click)= "delate()">
+      <md-icon md-list-avatar>gavel</md-icon>
+      <h4 md-line>Delate</h4>
+      <p md-line>Delate this cohort</p>
+    </md-list-item>
+
+    <md-divider></md-divider>
+    <h3 md-subheader>Planner Menu</h3>
+
+    <md-list-item [routerLink]="['/planner/academic-sessions']" > <md-icon md-list-avatar>menu</md-icon>
+      <h4 md-line>Academic Session</h4>
+      <p md-line>List of academic session</p>
+    </md-list-item>
+
+    <md-list-item [routerLink]="['/planner/faculties']"> <md-icon md-list-avatar>menu</md-icon>
+      <h4 md-line>Faculty</h4>
+      <p md-line>List of faculties</p>
+    </md-list-item>
+
+    <md-list-item [routerLink]="['/planner/courses']"> <md-icon md-list-avatar>menu</md-icon>
+      <h4 md-line>Courses</h4>
+      <p md-line>List of sections</p>
+    </md-list-item>
+
+    <md-list-item [routerLink]="['/planner/cohorts']"> <md-icon md-list-avatar>menu</md-icon>
+      <h4 md-line>Cohorts</h4>
+      <p md-line>List of cohorts</p>
+    </md-list-item>
+
+  </md-nav-list>
+</md-card>
