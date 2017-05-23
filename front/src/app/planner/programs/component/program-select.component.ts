@@ -14,7 +14,7 @@ import {PlannerModuleState} from "../../index";
   templateUrl: './program-select.component.html',
 })
 export class ProgramSelectComponent implements OnInit {
-
+  
   // private programStatus:ProgramStatus[]=<ProgramStatus[]>[];
   private PROGRAMS: string[] = "plannerModuleState.programs".split(".");
 
@@ -25,7 +25,6 @@ export class ProgramSelectComponent implements OnInit {
   constructor(private store: Store<PlannerModuleState>,
               private actions: ProgramActions) {
     this.programs$ = this.store.select(...this.PROGRAMS);
-
     //  for (var n in ProgramStatus) {
     //   if(typeof ProgramStatus[n] === 'string')
     //     this.programStatus.push(ProgramStatus[n.toString()]);
