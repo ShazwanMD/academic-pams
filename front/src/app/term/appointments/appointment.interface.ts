@@ -8,11 +8,11 @@ import { Course } from "../../planner/courses/course.interface";
 import {AppointmentStatus} from "./appointment-status.enum";
 
 export interface Appointment {
-  id: number;
-  student: Staff;
-  section: Section;
-  session: AcademicSession;
-  offering: Offering;
-  course: Course;
-  appointmentStatus: AppointmentStatus;
+    id: number;
+    student: Staff;
+    section: Section;
+    session: AcademicSession;
+    offering: Offering;
+    course: Course;
+    appointmentStatus: AppointmentStatus;
 }

@@ -12,36 +12,36 @@ import { EnrollmentApplicationType } from "../enrollment-application-type.enum";
 
 
 @Component({
-  selector: 'pams-enrollment-application-task-creator',
-  templateUrl: './enrollment-application-task-creator.dialog.html',
+    selector: 'pams-enrollment-application-task-creator',
+    templateUrl: './enrollment-application-task-creator.dialog.html',
 })
 
 export class EnrollmentApplicationTaskCreatorDialog implements OnInit {
 
-  private createForm: FormGroup;
+    private createForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder,
-              private store: Store<TermModuleState>,
-              private actions: EnrollmentApplicationActions,
-              private dialog: MdDialogRef<EnrollmentApplicationTaskCreatorDialog>) {
-  }
+    constructor(private formBuilder: FormBuilder,
+        private store: Store<TermModuleState>,
+        private actions: EnrollmentApplicationActions,
+        private dialog: MdDialogRef<EnrollmentApplicationTaskCreatorDialog>) {
+    }
 
-  ngOnInit(): void {
-    this.createForm = this.formBuilder.group(<EnrollmentApplication>{
-      id:null,
-      auditNo:'',
-      sourceNo:'',
-      description:'',
-      admission:<Admission>{},
-      academicSession:<AcademicSession>{},
-      enrollmentApplicationType: EnrollmentApplicationType.PRA
-    });
-  }
+    ngOnInit(): void {
+        this.createForm = this.formBuilder.group(<EnrollmentApplication>{
+            id: null,
+            auditNo: '',
+            sourceNo: '',
+            description: '',
+            admission: <Admission>{},
+            academicSession: <AcademicSession>{},
+            enrollmentApplicationType: EnrollmentApplicationType.PRA
+        });
+    }
 
-  save(application: EnrollmentApplication, isValid: boolean) {
-    console.log("admission: " + application.admission.id)
-    console.log("session: " + application.academicSession)
-    this.store.dispatch(this.actions.startEnrollmentApplicationTask(application));
-    this.dialog.close();
-  }
+    save(application: EnrollmentApplication, isValid: boolean) {
+        console.log("admission: " + application.admission.id)
+        console.log("session: " + application.academicSession)
+        this.store.dispatch(this.actions.startEnrollmentApplicationTask(application));
+        this.dialog.close();
+    }
 }

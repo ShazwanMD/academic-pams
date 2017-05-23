@@ -6,10 +6,10 @@ import {EnrollmentApplicationType} from "./enrollment-application-type.enum";
 
 export interface EnrollmentApplication extends Document {
 
-  description:string;
-  sourceNo:string;
-  auditNo:string;
-  admission: Admission;
-  academicSession: AcademicSession;
-  enrollmentApplicationType: EnrollmentApplicationType;
+    description: string;
+    sourceNo: string;
+    auditNo: string;
+    admission: Admission;
+    academicSession: AcademicSession;
+    enrollmentApplicationType: EnrollmentApplicationType;
 }
