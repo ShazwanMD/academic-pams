@@ -13,6 +13,7 @@ import my.edu.umk.pams.academic.common.model.AdParliamentCode;
 import my.edu.umk.pams.academic.common.model.AdRaceCode;
 import my.edu.umk.pams.academic.common.model.AdReligionCode;
 import my.edu.umk.pams.academic.common.model.AdStateCode;
+import my.edu.umk.pams.academic.common.model.AdStudyCenter;
 import my.edu.umk.pams.academic.common.model.AdStudyMode;
 import my.edu.umk.pams.academic.web.module.common.vo.BankCode;
 import my.edu.umk.pams.academic.web.module.common.vo.CityCode;
@@ -27,6 +28,7 @@ import my.edu.umk.pams.academic.web.module.common.vo.ParliamentCode;
 import my.edu.umk.pams.academic.web.module.common.vo.RaceCode;
 import my.edu.umk.pams.academic.web.module.common.vo.ReligionCode;
 import my.edu.umk.pams.academic.web.module.common.vo.StateCode;
+import my.edu.umk.pams.academic.web.module.common.vo.StudyCenter;
 import my.edu.umk.pams.academic.web.module.common.vo.StudyMode;
 
 import org.springframework.stereotype.Component;
@@ -39,6 +41,25 @@ import java.util.stream.Collectors;
  */
 @Component("commonTransformer")
 public class CommonTransformer {
+	//====================================================================================================
+	// STUDY_CENTER
+	//====================================================================================================
+
+	public StudyCenter toStudyCenterVo(AdStudyCenter e) {
+		StudyCenter vo = new StudyCenter();
+	        vo.setId(e.getId());
+	        vo.setCode(e.getCode());
+	        vo.setDescription(e.getDescription());
+	        return vo;
+	        }
+
+	public List<StudyCenter> toStudyCenterVos(List<AdStudyCenter> e) {
+	        List<StudyCenter> vos = e.stream()
+	        .map((e1) -> toStudyCenterVo(e1))
+	        .collect(Collectors.toList());
+	        return vos;
+	        }
+
 
 	//====================================================================================================
 	// STUDY_MODE
