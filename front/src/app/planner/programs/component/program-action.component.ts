@@ -41,6 +41,11 @@ export class ProgramActionComponent {
     });
   }
 
+  // deleteProgram(program:Program): void {
+  //   this.store.dispatch(this.actions.deleteProgram(this._Program))
+  // }
+
+
   deactivate(): void {
     let snackBarRef = this.snackBar.open("Deactivating Program", "OK");
     snackBarRef.afterDismissed().subscribe(() => this.store.dispatch(this.actions.deactivateProgram(this.program)));
