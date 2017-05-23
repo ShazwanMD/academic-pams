@@ -39,8 +39,14 @@ export class EnrollmentApplicationTaskCreatorDialog implements OnInit {
     }
 
     save(application: EnrollmentApplication, isValid: boolean) {
+        
+        console.log("auditNo: " + application.auditNo)
+        console.log("sourceNo: " + application.sourceNo)
+        console.log("description: " + application.description)
+        
         console.log("admission: " + application.admission.id)
-        console.log("session: " + application.academicSession)
+        console.log("academicSession: " + application.academicSession.id)
+        console.log("enrollmentApplicationType: " + application.enrollmentApplicationType)
         this.store.dispatch(this.actions.startEnrollmentApplicationTask(application));
         this.dialog.close();
     }
