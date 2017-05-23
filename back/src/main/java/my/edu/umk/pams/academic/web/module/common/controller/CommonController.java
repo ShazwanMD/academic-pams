@@ -26,6 +26,8 @@ import my.edu.umk.pams.academic.common.model.AdReligionCode;
 import my.edu.umk.pams.academic.common.model.AdReligionCodeImpl;
 import my.edu.umk.pams.academic.common.model.AdStateCode;
 import my.edu.umk.pams.academic.common.model.AdStateCodeImpl;
+import my.edu.umk.pams.academic.common.model.AdStudyCenter;
+import my.edu.umk.pams.academic.common.model.AdStudyCenterImpl;
 import my.edu.umk.pams.academic.common.model.AdStudyMode;
 import my.edu.umk.pams.academic.common.model.AdStudyModeImpl;
 import my.edu.umk.pams.academic.common.service.CommonService;
@@ -43,6 +45,7 @@ import my.edu.umk.pams.academic.web.module.common.vo.ParliamentCode;
 import my.edu.umk.pams.academic.web.module.common.vo.RaceCode;
 import my.edu.umk.pams.academic.web.module.common.vo.ReligionCode;
 import my.edu.umk.pams.academic.web.module.common.vo.StateCode;
+import my.edu.umk.pams.academic.web.module.common.vo.StudyCenter;
 import my.edu.umk.pams.academic.web.module.common.vo.StudyMode;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -67,6 +70,56 @@ public class CommonController {
 
     @Autowired
     private AuthenticationManager authenticationManager;
+    
+    //====================================================================================================
+    // STUDY_MODE
+    //====================================================================================================
+
+    @RequestMapping(value = "/studyCenters", method = RequestMethod.GET)
+    public ResponseEntity<List<StudyCenter>> findStudyCenters() {
+            return new ResponseEntity<List<StudyCenter>>(commonTransformer.toStudyCenterVos(
+            commonService.findStudyCenters("%",0,Integer.MAX_VALUE)), HttpStatus.OK);
+            }
+
+    @RequestMapping(value = "/studyCenters/{code}", method = RequestMethod.GET)
+    public ResponseEntity<StudyCenter> findStudyCenterByCode(@PathVariable String code) {
+            return new ResponseEntity<StudyCenter>(commonTransformer.toStudyCenterVo(
+            commonService.findStudyCenterByCode(code)), HttpStatus.OK);
+            }
+
+    @RequestMapping(value = "/studyCenters", method = RequestMethod.POST)
+    public ResponseEntity<String> saveStudyCenter(@RequestBody StudyCenter vo) {
+            dummyLogin();
+
+            AdStudyCenter studyCenter = new AdStudyCenterImpl();
+            studyCenter.setCode(vo.getCode());
+           studyCenter.setDescription(vo.getDescription());
+            commonService.saveStudyCenter(studyCenter);
+            return new ResponseEntity<String>("Success", HttpStatus.OK);
+            }
+
+    @RequestMapping(value = "/studyCenters/{code}", method = RequestMethod.PUT)
+    public ResponseEntity<String> updateStudyCenter(@PathVariable String code, @RequestBody StudyCenter vo) {
+            dummyLogin();
+
+            AdStudyCenter studyCenter = commonService.findStudyCenterById(vo.getId());
+            studyCenter.setCode(vo.getCode());
+            studyCenter.setDescription(vo.getDescription());
+            commonService.updateStudyCenter(studyCenter);
+            return new ResponseEntity<String>("Success", HttpStatus.OK);
+            }
+
+    @RequestMapping(value = "/studyCenters/{code}", method = RequestMethod.DELETE)
+    public ResponseEntity<String> removeStudyCenter(@PathVariable String code) {
+            dummyLogin();
+
+            AdStudyCenter StudyCenter = commonService.findStudyCenterByCode(code);
+            commonService.removeStudyCenter(StudyCenter);
+            return new ResponseEntity<String>("Success", HttpStatus.OK);
+            }
+
+
+
 
   //====================================================================================================
   // STUDY_MODE

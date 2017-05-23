@@ -1,7 +1,7 @@
 package my.edu.umk.pams.academic.common.service;
 
 import my.edu.umk.pams.academic.common.model.*;
-
+import my.edu.umk.pams.academic.web.module.common.vo.StudyCenter;
 
 import java.util.List;
 
@@ -131,6 +131,10 @@ public  interface CommonService{
 /*	AdStudyCenterCode findStudyCenterCodeById(Long id);
 
 	AdStudyCenterCode findStudyCenterCodeByCode(String code);*/
+	
+	AdStudyCenter findStudyCenterById(Long id);
+	
+	List<AdStudyCenter> findStudyCenters(String filter, Integer offset, Integer limit);
 	
 	AdStudyCenter findStudyCenterByCode(String code);
 
@@ -676,5 +680,11 @@ public  interface CommonService{
     void updateParliamentCode(AdParliamentCode ParliamentCode);
 
     void removeParliamentCode(AdParliamentCode ParliamentCode);
+
+
+
+
+
+
 
 }
