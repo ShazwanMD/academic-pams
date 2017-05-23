@@ -7,6 +7,7 @@ export interface Assessment extends MetaObject {
   code: string;
   canonicalCode: string;
   description: string;
+  ordinal: number,
   totalScore: number;
   weight: number;
   assessmentType: AssessmentType;

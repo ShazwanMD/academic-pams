@@ -26,6 +26,8 @@ export class AssessmentActions{
   static ADD_ASSESSMENT = '[Assessment] Add Assessment';
 
   addAssessment(offering, assessment): Action {
+    console.log(assessment)
+    console.log(offering)
     return {
       type: AssessmentActions.ADD_ASSESSMENT,
       payload: {offering:offering, assessment:assessment}

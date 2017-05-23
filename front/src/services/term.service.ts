@@ -33,8 +33,9 @@ export class TermService {
   }
 
 
-  addAssessment(assessment: Assessment, offering: Offering): Observable<String> {
-    console.log("addAssessment");
+  addAssessment(offering: Offering, assessment: Assessment): Observable<String> {
+    console.log("addAssessment:"+assessment);
+    console.log("addOffering:"+offering.canonicalCode);
     let headers = new Headers({
       'Content-Type': 'application/json',
       //'Authorization': 'Bearer ' + this.authService.token
