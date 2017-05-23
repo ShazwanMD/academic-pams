@@ -10,39 +10,39 @@ import java.math.BigDecimal;
  */
 public interface AdAssessment extends AdMetaObject {
 
-    String getCode();
+	String getCode();
 
-    void setCode(String code);
+	void setCode(String code);
 
-    String getCanonicalCode();
+	String getCanonicalCode();
 
-    void setCanonicalCode(String canonicalCode);
+	void setCanonicalCode(String canonicalCode);
 
-    String getDescription();
+	String getDescription();
 
-    void setDescription(String description);
+	void setDescription(String description);
 
-    Integer getOrdinal();
+	Integer getOrdinal();
 
-    void setOrdinal(Integer ordinal);
+	void setOrdinal(Integer ordinal);
 
-    BigDecimal getWeight();
+	BigDecimal getWeight();
 
-    void setWeight(BigDecimal weight);
+	void setWeight(BigDecimal weight);
 
-    BigDecimal getTotalScore();
+	BigDecimal getTotalScore();
 
-    void setTotalScore(BigDecimal totalScore);
+	void setTotalScore(BigDecimal totalScore);
 
-    AdAssessmentType getType();
+	AdAssessmentType getType();
 
-    void setType(AdAssessmentType type);
+	void setType(AdAssessmentType type);
 
-    AdAssessmentCategory getCategory();
+	AdAssessmentCategory getCategory();
 
-    void setCategory(AdAssessmentCategory category);
+	void setCategory(AdAssessmentCategory category);
 
-    AdOffering getOffering();
+	AdOffering getOffering();
 
-    void setOffering(AdOffering offering);
+	void setOffering(AdOffering offering);
 }
