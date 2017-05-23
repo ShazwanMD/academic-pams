@@ -4,14 +4,14 @@ import {Component, OnInit, ChangeDetectionStrategy, ViewContainerRef} from '@ang
 import {Router, ActivatedRoute} from '@angular/router';
 
 import {Store} from "@ngrx/store";
-import {Observable} from "rxjs";
 import {Student} from "../identity/student.interface";
 import {ProfileActions} from "./profile.action";
 import {ProfileModuleState} from "./index";
 import {Contact} from "./contact.interface";
 import {Guardian} from "./guardian.interface";
 import {Guarantor} from "./guarantor.interface";
-
+import {MdSnackBar} from '@angular/material';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'pams-profile-detail',
@@ -39,7 +39,7 @@ export class ProfileDetailPage implements OnInit {
               private route: ActivatedRoute,
               private actions: ProfileActions,
               private vcf: ViewContainerRef,
-              private store: Store<ProfileModuleState>,) {
+              private store: Store<ProfileModuleState>,private snackBar: MdSnackBar) {
 
     this.student$ = this.store.select(...this.STUDENT);
     this.addressess$ = this.store.select(...this.ADDRESSES);
@@ -56,10 +56,15 @@ export class ProfileDetailPage implements OnInit {
     });
   }
 
+    deactivate(): void {
+    let snackBarRef = this.snackBar.open("Deactivating Student", "OK");
+    snackBarRef.afterDismissed().subscribe(() => {
+        this.student$.take(1).subscribe(student =>
+          this.store.dispatch(this.actions.deactivateStudent(student)))
+      }
+    );
 
-  deactivate(): void {
   }
-
   activate(): void {
   }
 

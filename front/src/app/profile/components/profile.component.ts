@@ -64,7 +64,8 @@ export class ProfileComponent implements OnInit {
               private vcf: ViewContainerRef,
               private store: Store<ProfileModuleState>,
               private formBuilder: FormBuilder,
-              private dialog: MdDialog) {
+              private dialog: MdDialog,
+              ) {
   }
 
   set address(value: Address) {
@@ -191,4 +192,6 @@ export class ProfileComponent implements OnInit {
     this.store.dispatch(this.actions.updateAddress(student, address));
     //this.dialog.close();
   }
+
+
 }

@@ -4,6 +4,22 @@ import {Action} from '@ngrx/store';
 
 @Injectable()
 export class ProfileActions {
+  
+ static DEACTIVATE_STUDENT = '[Profile] Deactivate Student';
+  deactivateStudent(student): Action {
+    return {
+      type: ProfileActions.DEACTIVATE_STUDENT,
+      payload: student
+    };
+  }
+
+static DEACTIVATE_STUDENT_SUCCESS = '[Profile] Activate Student Success';
+  deactivateStudentSuccess(student): Action {
+    return {
+      type: ProfileActions.DEACTIVATE_STUDENT_SUCCESS,
+      payload: student
+    };
+  }
 
   static FIND_STUDENTS = '[Profile] Find Students';
 

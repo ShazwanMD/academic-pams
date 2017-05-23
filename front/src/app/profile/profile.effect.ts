@@ -21,6 +21,19 @@ export class ProfileEffects {
               private store$: Store<TermModuleState>) {
   }
 
+
+  @Effect() deactivateStudent$ = this.actions$
+    .ofType(ProfileActions.DEACTIVATE_STUDENT)
+    .map(action => action.payload)
+    .switchMap(student => this.profileService.deactivateStudent(student))
+    .map(message => this.profileActions.deactivateStudentSuccess(message))
+    .withLatestFrom(this.store$.select(...this.STUDENT))
+    .map(state => state[1])
+    .map((student: Student) => this.profileActions.findStudentByIdentityNo(student.identityNo));
+
+
+
+
   @Effect() findProfiles$ = this.actions$
     .ofType(ProfileActions.FIND_STUDENTS)
     .switchMap(() => this.profileService.findStudents())
