@@ -6,7 +6,7 @@
   <md-card-content>
     <!--Tab Section Here-->
     <md-tab-group>
-      <md-tab label="AcademicSession Detail"><br>
+      <md-tab label="Academic Session Detail"><br>
 
         <div>Code : {{academicSession.code}}</div>
         <br>
@@ -29,7 +29,9 @@
         <br>
 
         <md-card-actions layout-align="end center">
-          <md-list-item [routerLink]="['/planner/dialog/academic-session-editor.dialog']"><button md-button color="accent" class="text-upper">UPDATE</button> </md-list-item>
+          <!--<md-list-item (click)="editSession()">
+            <button md-button color="accent" class="text-upper">UPDATE</button>
+          </md-list-item>-->
         </md-card-actions>
 
       </md-tab>

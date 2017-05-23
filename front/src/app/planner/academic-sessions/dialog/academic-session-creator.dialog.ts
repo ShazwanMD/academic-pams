@@ -1,17 +1,19 @@
 import { create } from '@angular/language-service/language-service';
-import {Component, ViewContainerRef, OnInit} from '@angular/core';
-import {FormGroup, FormControl} from '@angular/forms';
-import {FormBuilder} from '@angular/forms';
-import {Store} from "@ngrx/store";
-import {MdDialogRef} from "@angular/material";
+import { Component, ViewContainerRef, OnInit } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
+import { Store } from "@ngrx/store";
+import { MdDialogRef } from "@angular/material";
 
 import { AcademicSession } from '../academic-session.interface';
-import {PlannerModuleState} from "../../index";
-import {AcademicSessionActions} from "../academic-session.action";
+import { PlannerModuleState } from "../../index";
+import { AcademicSessionActions } from "../academic-session.action";
+import { AcademicSemester } from '../academic-session-semester-type.enum';
+import { AcademicYear } from '../academic-session-year.interface';
 
 @Component({
-  selector: 'pams-academic-session-creator',
-  templateUrl: './academic-session-creator.dialog.html',
+    selector: 'pams-academic-session-creator',
+    templateUrl: './academic-session-creator.dialog.html',
 })
 
 export class AcademicSessionCreatorDialog implements OnInit {
@@ -19,13 +21,15 @@ export class AcademicSessionCreatorDialog implements OnInit {
     private createForm: FormGroup;
     private create: boolean = false;
     private _academicSession: AcademicSession;
+    private year: AcademicYear; 
+    private semester: AcademicSemester;
 
-      constructor(private formBuilder: FormBuilder,
-                private viewContainerRef: ViewContainerRef,
-                private store: Store<PlannerModuleState>,
-                private actions: AcademicSessionActions,
-                private dialog: MdDialogRef<AcademicSessionCreatorDialog>) {
-        }
+    constructor(private formBuilder: FormBuilder,
+        private viewContainerRef: ViewContainerRef,
+        private store: Store<PlannerModuleState>,
+        private actions: AcademicSessionActions,
+        private dialog: MdDialogRef<AcademicSessionCreatorDialog>) {
+    }
 
     set academicSession(value: AcademicSession) {
         this._academicSession = value;
@@ -37,14 +41,20 @@ export class AcademicSessionCreatorDialog implements OnInit {
             id: null,
             code: '',
             description: '',
+            current: true,
+            startDate: null,
+            endDate: null,
+            semester: <AcademicSemester>{},
+            year: <AcademicYear>{},
+
         });
 
-         if (this.create) this.createForm.patchValue(this._academicSession);
-  }
+        if (this.create) this.createForm.patchValue(this._academicSession);
+    }
 
     save(code: AcademicSession, isValid: boolean) {
         if (!code.id) this.store.dispatch(this.actions.saveAcademicSession(code));
-        else  this.store.dispatch(this.actions.updateAcademicSession(code));
+        else this.store.dispatch(this.actions.updateAcademicSession(code));
         this.dialog.close();
     }
 }

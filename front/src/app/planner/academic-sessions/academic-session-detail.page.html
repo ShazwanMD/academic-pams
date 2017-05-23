@@ -7,9 +7,7 @@
   <div md-content flex md-scroll-y>
     <div layout="column" layout-gt-md="row" class="inset">
       <div flex-gt-md="70">
-        <pams-academic-session
-          [academicSession]="academicSession$ | async"
-          (view)="viewAcademicSession($event)"></pams-academic-session>
+        <pams-academic-session [academicSession]="academicSession$ | async" (view)="viewAcademicSession($event)"></pams-academic-session>
       </div>
 
       <div flex-gt-md="30">
