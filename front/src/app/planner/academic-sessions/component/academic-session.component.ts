@@ -1,7 +1,8 @@
+import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { AcademicYear } from './../academic-session-year.interface';
 import { AcademicSemester } from '../academic-session-semester-type.enum';
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, ViewContainerRef } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, ViewContainerRef, OnInit } from '@angular/core';
 import { MdDialogRef, MdDialog, MdDialogConfig } from '@angular/material';
 import { AcademicSession } from "../academic-session.interface";
 import { AcademicSessionCreatorDialog } from '../dialog/academic-session-creator.dialog';
@@ -12,16 +13,19 @@ import { PlannerModuleState } from '../../index';
 
 @Component({
   selector: 'pams-academic-session',
-  templateUrl: 'academic-session.component.html',
+  templateUrl: './academic-session.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AcademicSessionComponent {
+export class AcademicSessionComponent implements OnInit{
 
   @Input() academicSession: AcademicSession;
   @Input() semester: AcademicSemester;
   @Input() year: AcademicYear;
 
   private editorDialogRef: MdDialogRef<AcademicSessionEditorDialog>;
+
+  private ACADEMIC_SESSION: string[] = "plannerModuleState.academicSession".split(".");
+  private academicSession$: Observable<AcademicSession>;
 
   private columns: any[] = [
     { name: 'code', label: 'Code' },
@@ -40,14 +44,16 @@ export class AcademicSessionComponent {
     private vcf: ViewContainerRef,
     private store: Store<PlannerModuleState>,
     private dialog: MdDialog) {
+      this.academicSession$ = this.store.select(...this.ACADEMIC_SESSION);
   }
 
   ngOnInit(): void {
-    this.route.params.subscribe((params: { code: string }) => {
-      let code: string = params.code;
+     this.route.params.subscribe((params: { code: string }) => {
+       let code: string = params.code;
       this.store.dispatch(this.actions.findAcademicSessionByCode(code));
     });
   }
+    
  editSession(): void {
     console.log("edit");
     let config = new MdDialogConfig();

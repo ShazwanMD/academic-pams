@@ -34,6 +34,11 @@ export class AcademicSessionDetailPage implements OnInit {
       this.store.dispatch(this.actions.findAcademicSessionByCode(code));
     });
   }
+    
+      viewAcademicSession(academicSession: AcademicSession) {
+    console.log("academicSession: " + academicSession.code);
+    this.router.navigate(['/academic-session-detail', academicSession.code]);
+  }
 
   activate(): void {
     let snackBarRef = this.snackBar.open("Activating Academic Session", "OK");

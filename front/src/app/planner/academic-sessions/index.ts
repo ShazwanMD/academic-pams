@@ -55,6 +55,7 @@ import { AcademicSessionSemesterComponent } from "./component/academic-session-s
   entryComponents: [
     AcademicSessionCreatorDialog,
     AcademicSessionEditorDialog,
+    AcademicSessionSelectComponent
 
   ],
 
