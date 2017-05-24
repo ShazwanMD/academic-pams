@@ -16,6 +16,7 @@ import {SectionComponent} from "./component/section.component";
 import {SectionListComponent} from "./component/section-list.component";
 import {SectionSelectComponent} from "./component/section-select.component";
 import {SectionEditorDialog} from "./dialog/section-editor.dialog";
+import {SectionUpdateDialog} from "./dialog/section-update.dialog";
 
 
 @NgModule({
@@ -39,6 +40,7 @@ import {SectionEditorDialog} from "./dialog/section-editor.dialog";
 
     //dialog
     SectionEditorDialog,
+    SectionUpdateDialog,
 
   ],
   exports: [

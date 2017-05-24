@@ -122,5 +122,27 @@ export class SectionActions {
       payload: message
     };
   }
+    
+    
+   //update section for capacity and ordinal
+    static UPDATE_SECTION = '[Section] Update Section';
+
+  updateSection(canonicalCode): Action {
+    console.log("updateSection");
+    return {
+      type: SectionActions.UPDATE_SECTION,
+      payload: canonicalCode
+    };
+  }
+
+  static UPDATE_SECTION_SUCCESS = '[Section] Update Section Success';
+
+  updateSectionSuccess(message): Action {
+    console.log("updateSectionSuccess");
+    return {
+      type: SectionActions.UPDATE_SECTION_SUCCESS,
+      payload: message
+    };
+  } 
 
 }

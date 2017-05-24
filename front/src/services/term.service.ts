@@ -25,6 +25,14 @@ export class TermService {
               private http: Http) {
   }
 
+  
+  findAssessmentById(id): Observable<Assessment> {
+    console.log("findAssessmentById");
+    return this.http.get(environment.endpoint + '/api/term/assessments/' + id)
+      .map((res: Response) => <Assessment>res.json());
+  }
+
+
 
   findAssessments(): Observable<Assessment[]> {
     console.log("findAssessments");
@@ -393,6 +401,16 @@ export class TermService {
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
+    // update Section using dialog
+   updateSection(section: Section): Observable<String> {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({ headers: headers });
+    return this.http.put(environment.endpoint + '/api/term/sections/' + section.canonicalCode, JSON.stringify(section), options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
 
   deleteAppointment(offering: Offering, appointment: Appointment) {
     let headers = new Headers({
