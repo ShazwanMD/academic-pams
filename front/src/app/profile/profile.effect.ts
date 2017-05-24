@@ -138,6 +138,15 @@ export class ProfileEffects {
     .map(state => state[1])
     .map((student: Student) => this.profileActions.findStudentByIdentityNo(student.identityNo));
 
+  @Effect() updateGuarantor$ = this.actions$
+    .ofType(ProfileActions.UPDATE_GUARANTOR)
+    .map(action => action.payload)
+    .switchMap(payload => this.profileService.updateGuarantor(payload.student, payload.guarantor))
+    .map(message => this.profileActions.updateGuarantorSuccess(message))
+    .withLatestFrom(this.store$.select(...this.STUDENT))
+    .map(state => state[1])
+    .map((student: Student) => this.profileActions.findStudentByIdentityNo(student.identityNo));
+
   @Effect() addGuardian$ = this.actions$
     .ofType(ProfileActions.ADD_GUARDIAN)
     .map(action => action.payload)

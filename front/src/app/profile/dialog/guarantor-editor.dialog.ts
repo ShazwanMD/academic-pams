@@ -10,7 +10,6 @@ import {ProfileModuleState} from "../index";
 import {ProfileActions} from "../profile.action";
 import{GuarantorType} from "../guarantor-type.enum";
 
-
 @Component({
   selector: 'pams-guarantor-editor',
   templateUrl: './guarantor-editor.dialog.html',
@@ -53,8 +52,12 @@ export class GuarantorEditorDialog implements OnInit {
   }
 
   submit(guarantor: Guarantor, isValid: boolean) {
-    console.log("adding student guarantor");
-    this.store.dispatch(this.actions.addGuarantor(this._student, guarantor));
+    //console.log("adding student guarantor");
+    if(isValid)
+    guarantor.id = this._guarantor.id;
+
+    if(isValid) this.store.dispatch(this.actions.updateGuarantor(this._student, guarantor));
+    else this.store.dispatch(this.actions.addGuarantor(this._student, guarantor));
     this.dialog.close();
   }
 }

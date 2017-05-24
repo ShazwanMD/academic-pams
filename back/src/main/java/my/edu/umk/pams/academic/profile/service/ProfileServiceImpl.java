@@ -157,6 +157,13 @@ public class ProfileServiceImpl implements ProfileService {
         studentDao.addGuarantor(student, guarantor, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
+    
+    //sini
+    @Override
+	public void updateGuarantor(AdStudent student, AdGuarantor guarantor) {
+		studentDao.updateGuarantor(student, guarantor, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+	}
 
     @Override
     public void deleteGuarantor(AdStudent student, AdGuarantor guarantor) {

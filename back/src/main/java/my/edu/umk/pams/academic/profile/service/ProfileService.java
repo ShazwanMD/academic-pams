@@ -50,6 +50,9 @@ public interface ProfileService {
 	void deleteAddress(AdStudent student, AdAddress address);
 
 	void addGuarantor(AdStudent student, AdGuarantor guarantor);
+	
+	//sini
+	void updateGuarantor(AdStudent student, AdGuarantor guarantor);
 
 	void deleteGuarantor(AdStudent student, AdGuarantor guarantor);
 

@@ -254,6 +254,27 @@ static DEACTIVATE_STUDENT_SUCCESS = '[Profile] Activate Student Success';
     };
   }
 
+  static UPDATE_GUARANTOR = '[Profile] Update Guarantor';
+
+  updateGuarantor(student, guarantor): Action {
+    //console.log(student);
+    return {
+      type: ProfileActions.UPDATE_GUARANTOR,
+      payload: {student: student, guarantor: guarantor}
+    };
+  }
+
+
+  static UPDATE_GUARANTOR_SUCCEESS = '[Profile] Update Guarantor Success';
+
+  updateGuarantorSuccess(message): Action {
+    //console.log("updateAddressSuccess");
+    return {
+      type: ProfileActions.UPDATE_GUARANTOR_SUCCEESS,
+      payload: message
+    };
+  }
+
   static ADD_GUARDIAN = '[Profile] Add Guardian';
 
   addGuardian(student, guardian): Action {

@@ -142,6 +142,18 @@ export class ProfileService {
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
+  //UPDATE GUARANTOR
+  updateGuarantor(student: Student, guarantor: Guarantor): Observable<String> {
+    //console.log("woi",guarantor);
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
+    return this.http.put(environment.endpoint + '/api/profile/students/' + student.identityNo + '/guarantors/' + guarantor.id, JSON.stringify(guarantor), options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
    deleteContact(student: Student, contact: Contact) {
     let headers = new Headers({
       'Content-Type': 'application/json',
