@@ -14,12 +14,14 @@ import { AcademicSessionComponent } from "./component/academic-session.component
 import { AcademicSessionDetailPage } from "./academic-session-detail.page";
 import { AcademicSessionActions } from "./academic-session.action";
 import { AcademicSessionEffects } from "./academic-session.effect";
-import { AcademicSessionSelectComponent } from "./component/academic-session-select.component";
+import {AcademicSessionSelectComponent } from './component/academic-session-select.component';
 import { AcademicSessionCreatorDialog } from "./dialog/academic-session-creator.dialog";
 import { AcademicSessionStatusComponent } from "./component/academic-session-status.component";
-import { AcademicYear } from "./academic-session-year.interface";
+import { AcademicYear } from "./academic-year.interface";
 import { AcademicSessionEditorDialog } from "./dialog/academic-session-editor.dialog";
-import { AcademicSessionSemesterComponent } from "./component/academic-session-semester.component";
+import { AcademicSessionSemesterSelectComponent } from  "./component/academic-semester-select.component";
+import { AcademicSessionActionComponent } from "./component/academic-session-action.component";
+
 
 @NgModule({
   imports: [
@@ -29,7 +31,7 @@ import { AcademicSessionSemesterComponent } from "./component/academic-session-s
     CovalentCoreModule.forRoot(),
     EffectsModule.run(AcademicSessionEffects),
   ],
-  declarations: [
+  declarations: [ 
     //page
     AcademicSessionCenterPage,
     AcademicSessionDetailPage,
@@ -39,7 +41,9 @@ import { AcademicSessionSemesterComponent } from "./component/academic-session-s
     AcademicSessionComponent,
     AcademicSessionSelectComponent,
     AcademicSessionStatusComponent,
-    AcademicSessionSemesterComponent,
+    AcademicSessionSemesterSelectComponent,
+    AcademicSessionActionComponent,
+
 
     //dialog
     AcademicSessionCreatorDialog,
@@ -49,13 +53,15 @@ import { AcademicSessionSemesterComponent } from "./component/academic-session-s
   exports: [
     AcademicSessionSelectComponent,
     AcademicSessionStatusComponent,
-    AcademicSessionSemesterComponent
+    AcademicSessionSemesterSelectComponent,
+    AcademicSessionActionComponent,
   ],
 
   entryComponents: [
     AcademicSessionCreatorDialog,
     AcademicSessionEditorDialog,
-    AcademicSessionSelectComponent
+    AcademicSessionSelectComponent,
+    AcademicSessionActionComponent
 
   ],
 

@@ -36,8 +36,7 @@ export class SectionEffects {
       .map(state => state[1])
       .map((offering: Offering) => this.offeringActions.findOfferingByCanonicalCode(offering.canonicalCode));
 
-   //effect for delete section
-      @Effect() deleteSection$ = this.actions$
+  @Effect() deleteSection$ = this.actions$
     .ofType(SectionActions.REMOVE_SECTION)
     .map(action => action.payload)
     .switchMap(payload => this.termService.deleteSection(payload.offering, payload.section))
@@ -46,6 +45,5 @@ export class SectionEffects {
     .map(state => state[1])
     .map((offering: Offering) => this.offeringActions.findOfferingByCanonicalCode(offering.canonicalCode));
 
-     
-    
+
 }

@@ -19,7 +19,28 @@ export class ProfileEffects {
               private profileActions: ProfileActions,
               private profileService: ProfileService,
               private store$: Store<TermModuleState>) {
-  }
+  
+}
+
+  @Effect() barStudent$ = this.actions$
+    .ofType(ProfileActions.BAR_STUDENT)
+    .map(action => action.payload)
+    .switchMap(student => this.profileService.barStudent(student))
+    .map(message => this.profileActions.barStudentSuccess(message))
+    .withLatestFrom(this.store$.select(...this.STUDENT))
+    .map(state => state[1])
+    .map((student: Student) => this.profileActions.findStudentByIdentityNo(student.identityNo));
+
+  @Effect() activateStudent$ = this.actions$
+    .ofType(ProfileActions.ACTIVATE_STUDENT)
+    .map(action => action.payload)
+    .switchMap(student => this.profileService.activateStudent(student))
+    .map(message => this.profileActions.activateStudentSuccess(message))
+    .withLatestFrom(this.store$.select(...this.STUDENT))
+    .map(state => state[1])
+    .map((student: Student) => this.profileActions.findStudentByIdentityNo(student.identityNo));
+
+
 
 
   @Effect() deactivateStudent$ = this.actions$

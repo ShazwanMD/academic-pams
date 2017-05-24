@@ -1,7 +1,7 @@
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
-import { AcademicYear } from './../academic-session-year.interface';
-import { AcademicSemester } from '../academic-session-semester-type.enum';
+import { AcademicYear } from './../academic-year.interface';
+import { AcademicSemester } from '../academic-semester-type.enum';
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, ViewContainerRef, OnInit } from '@angular/core';
 import { MdDialogRef, MdDialog, MdDialogConfig } from '@angular/material';
 import { AcademicSession } from "../academic-session.interface";
@@ -10,6 +10,7 @@ import { AcademicSessionEditorDialog } from '../dialog/academic-session-editor.d
 import { Router, ActivatedRoute } from '@angular/router';
 import { AcademicSessionActions } from '../academic-session.action';
 import { PlannerModuleState } from '../../index';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'pams-academic-session',
@@ -21,6 +22,8 @@ export class AcademicSessionComponent implements OnInit{
   @Input() academicSession: AcademicSession;
   @Input() semester: AcademicSemester;
   @Input() year: AcademicYear;
+  @Input() placeholder: string;
+  @Input() innerFormControl: FormControl;
 
   private editorDialogRef: MdDialogRef<AcademicSessionEditorDialog>;
 
@@ -34,7 +37,7 @@ export class AcademicSessionComponent implements OnInit{
     { name: 'startDate', label: 'Start Date' },
     { name: 'endDate', label: 'End Date' },
     { name: 'semester', label: 'AcademicSemester' },
-    { name: 'year.year', label: 'AcademicYear' },
+    { name: 'year', label: 'AcademicYear' },
     { name: 'action', label: '' }
   ];
 
@@ -69,6 +72,10 @@ export class AcademicSessionComponent implements OnInit{
     this.editorDialogRef.afterClosed().subscribe(res => {
       console.log("close dialog");
     });
+  }
+
+  selectChangeEvent(event: AcademicSession) {
+    this.innerFormControl.setValue(event, {emitEvent: false});
   }
 
 }

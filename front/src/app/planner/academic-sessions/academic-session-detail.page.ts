@@ -1,4 +1,3 @@
-import {MdSnackBar} from '@angular/material';
 import {Component, OnInit, ChangeDetectionStrategy} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 import {Store} from '@ngrx/store';
@@ -23,8 +22,7 @@ export class AcademicSessionDetailPage implements OnInit {
   constructor(private router: Router,
               private route: ActivatedRoute,
               private actions: AcademicSessionActions,
-              private store: Store<PlannerModuleState>,
-              private snackBar: MdSnackBar) {
+              private store: Store<PlannerModuleState>) {
     this.academicSession$ = this.store.select(...this.ACADEMIC_SESSION);
   }
 
@@ -34,28 +32,5 @@ export class AcademicSessionDetailPage implements OnInit {
       this.store.dispatch(this.actions.findAcademicSessionByCode(code));
     });
   }
-    
-      viewAcademicSession(academicSession: AcademicSession) {
-    console.log("academicSession: " + academicSession.code);
-    this.router.navigate(['/academic-session-detail', academicSession.code]);
-  }
-
-  activate(): void {
-    let snackBarRef = this.snackBar.open("Activating Academic Session", "OK");
-    snackBarRef.afterDismissed().subscribe(() => {
-        this.academicSession$.take(1).subscribe(academicSession =>
-          this.store.dispatch(this.actions.activateAcademicSession(academicSession)))
-      }
-    );
-  }
-
-  deactivate(): void {
-    let snackBarRef = this.snackBar.open("Deactivating Academic Session", "OK");
-    snackBarRef.afterDismissed().subscribe(() => {
-        this.academicSession$.take(1).subscribe(academicSession =>
-          this.store.dispatch(this.actions.deactivateAcademicSession(academicSession)))
-      }
-    );
-
-  }
+  
 }

@@ -8,8 +8,8 @@ import { MdDialogRef } from "@angular/material";
 import { AcademicSession } from '../academic-session.interface';
 import { PlannerModuleState } from "../../index";
 import { AcademicSessionActions } from "../academic-session.action";
-import { AcademicSemester } from '../academic-session-semester-type.enum';
-import { AcademicYear } from '../academic-session-year.interface';
+import { AcademicSemester } from '../academic-semester-type.enum';
+import { AcademicYear } from '../academic-year.interface';
 
 @Component({
     selector: 'pams-academic-session-creator',
