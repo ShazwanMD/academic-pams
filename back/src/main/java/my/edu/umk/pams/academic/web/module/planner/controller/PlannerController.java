@@ -189,7 +189,7 @@ public class PlannerController {
                 plannerTransformer.toCohortVos(plannerService.findCohorts(program, 0, 100)), HttpStatus.OK);
     }
     
-    @RequestMapping(value = "/programs/{code}", method = RequestMethod.POST)
+    @RequestMapping(value = "/programs/{code}/save", method = RequestMethod.POST)
     public ResponseEntity<String> saveProgram(@PathVariable String code, @RequestBody Program vo) {
             dummyLogin();
 
