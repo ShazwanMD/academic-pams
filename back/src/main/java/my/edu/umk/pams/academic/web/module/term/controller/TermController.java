@@ -496,7 +496,7 @@ public class TermController {
 	}
 	
 	//delete section
-	 @RequestMapping(value = "/offerings/{canonicalCode}/sections", method = RequestMethod.DELETE)
+	/* @RequestMapping(value = "/offerings/{canonicalCode}/sections", method = RequestMethod.DELETE)
 	    public ResponseEntity<String> deleteSection(@PathVariable String canonicalCode) {
 	        dummyLogin();
 	        AdOffering offering = termService.findOfferingByCanonicalCode(canonicalCode);
@@ -504,7 +504,16 @@ public class TermController {
 	        for (AdSection section : sections)
 	            termService.deleteSection(offering, section);
 	        return new ResponseEntity<String>("Success", HttpStatus.OK);
-	    }
+	    }*/
+	 
+	 @RequestMapping(value = "/sections/{id}", method = RequestMethod.DELETE)
+     public ResponseEntity<String> deleteSection(@PathVariable Long id) {
+     dummyLogin();
+         AdSection section = termService.findSectionById(id);
+         termService.removeSection(section);
+         return new ResponseEntity<String>("Success", HttpStatus.OK);
+
+     }
 
 	// ====================================================================================================
 	// PRIVATE METHODS

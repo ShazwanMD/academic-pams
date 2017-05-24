@@ -5,7 +5,7 @@ import { Action } from '@ngrx/store';
 export class SectionActions {
 
 // baru buat 24/5/17 to make delete button action try and error
-     static FIND_OFFERING_BY_CANONICAL_CODE = '[Offering] Find Offering By Canonical Code';
+    static FIND_OFFERING_BY_CANONICAL_CODE = '[Offering] Find Offering By Canonical Code';
 
   findOfferingByCanonicalCode(canonicalCode): Action {
     return {
@@ -43,8 +43,7 @@ export class SectionActions {
     };
   }
     
-   
-    
+     
     static FIND_SECTION_BY_CANONICAL_CODE = '[Section] Find Section By Canonical Code';
   findSectionByCanonicalCode(canonicalCode): Action {
     return {

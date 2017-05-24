@@ -37,6 +37,7 @@ export class OfferingSectionListComponent {
     this.store.dispatch(this.actions.findOfferingByCanonicalCode(canonicalCode));
    });
     }
+   
 
   private columns: any[] = [
     {name: 'id', label: 'Id'},
