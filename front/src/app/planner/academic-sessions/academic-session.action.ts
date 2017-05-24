@@ -33,7 +33,7 @@ export class AcademicSessionActions {
     static FIND_ACADEMIC_SESSION_BY_CODE_SUCCESS = '[AcademicSession] Find AcademicSession By Code Success';
     findAcademicSessionByCodeSuccess(code): Action {
         console.log("findAcademicSessionByCode");
-        console.log(code);
+        console.log("academicSession" + code)
         return {
             type: AcademicSessionActions.FIND_ACADEMIC_SESSION_BY_CODE_SUCCESS,
             payload: code
