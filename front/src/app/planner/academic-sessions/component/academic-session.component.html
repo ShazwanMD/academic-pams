@@ -28,10 +28,34 @@
         <div>Year : {{academicSession.year.year}}</div>
         <br>
 
-        <md-card-actions layout-align="end center">
-          <md-list-item (click)="editSession()">
+        <!--<md-card-actions layout-align="end center">
+        <td-data-table
+            [data]="academicSessions"
+            [columns]="columns"
+            [sortBy]="summary"
+            [sortOrder]="ASC"
+            [sortable]="false"
+            [multiple]="false"
+            [selectable]="false"
+            (rowSelect)="edit.emit($event)" dense>
+
+            <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column" >
+              <div layout="row">
+                <span flex >{{value}}</span>
+              </div>
+            </template>
+            
+            <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
+              <div layout="row">
+                <button md-raised-button color="accent" (click)="editSession(row, true)">UDPATE</button>
+              </div>
+            </template>
+
+          </td-data-table>-->
+
+          <!--<md-list-item (click)="editSession()">
             <button md-button color="accent" class="text-upper">UPDATE</button>
-          </md-list-item>
+          </md-list-item>-->
         </md-card-actions>
 
       </md-tab>
