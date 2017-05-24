@@ -48,7 +48,8 @@ public class AdStudentDaoImpl extends GenericDaoSupport<Long, AdStudent> impleme
 
     @Override
     public AdGuardian findGuardianById(Long id) {
-        return null;
+    	Session session = sessionFactory.getCurrentSession();
+        return (AdGuardian) session.get(AdGuardianImpl.class, id);
     }
 
     @Override
@@ -158,6 +159,20 @@ public class AdStudentDaoImpl extends GenericDaoSupport<Long, AdStudent> impleme
         guardian.setMetadata(metadata);
         session.save(guardian);
 
+    }
+    
+    public void updateGuardian(AdStudent student, AdGuardian guardian, AdUser user) {
+        Validate.notNull(user, "User cannot be null");
+        Validate.notNull(guardian, "guardian cannot be null");
+        Session session = sessionFactory.getCurrentSession();
+        guardian.setStudent(student);
+
+        // prepare metadata
+        AdMetadata metadata = guardian.getMetadata();
+        metadata.setModifiedDate(new Timestamp(System.currentTimeMillis()));
+        metadata.setModifierId(user.getId());
+        guardian.setMetadata(metadata);
+        session.update(guardian);
     }
 
     @Override
