@@ -36,7 +36,7 @@ public class AdStudyCenterDaoImpl extends GenericDaoSupport<Long, AdStudyCenter>
     @Override
     public List<AdStudyCenter> find(String filter, Integer offset, Integer limit) {
         Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery("select s from AdCampusCode s where " +
+        Query query = session.createQuery("select s from AdStudyCenter s where " +
                 "(upper(s.code) like upper(:filter) " +
                 "or upper(s.description) like upper(:filter)) " +
                 "and s.metadata.state = :state ");

@@ -1,3 +1,4 @@
+import { ActivatedRoute, Router } from '@angular/router';
 import { Offering } from './../../offerings/offering.interface';
 import { AssessmentActions } from './../assessment.action';
 import { Assessment } from './../assessment.interface';
@@ -19,10 +20,13 @@ import { AssessmentCategory } from "../assessment-category.enum";
 export class AssessmentCreatorDialog implements OnInit {
 
   private _offering: Offering;
+  private _assessment: Assessment;
   private editorForm: FormGroup;
   private edit: boolean = false;
 
   constructor(private formBuilder: FormBuilder,
+    private router: Router,
+    private route: ActivatedRoute,
     private store: Store<TermModuleState>,
     private actions: AssessmentActions,
     private dialog: MdDialogRef<AssessmentCreatorDialog>) {
@@ -32,6 +36,11 @@ export class AssessmentCreatorDialog implements OnInit {
     this._offering = value;
   }
 
+  set assessment(value: Assessment) {
+    this._assessment = value;
+    this.edit = true;
+  }
+
   ngOnInit(): void {
     this.editorForm = this.formBuilder.group(<Assessment>{
       id: null,
@@ -39,6 +48,7 @@ export class AssessmentCreatorDialog implements OnInit {
       canonicalCode: '',
       description: '',
       totalScore: 0,
+      ordinal:0,
       weight: 0,
       offering: <Offering>{},
       assessmentType: AssessmentType.QUIZ,
@@ -49,13 +59,15 @@ export class AssessmentCreatorDialog implements OnInit {
 
     // set offering by default
     this.editorForm.patchValue({ 'offering': this._offering });
+    // Assessment
+    if (this.edit) this.editorForm.patchValue(this._assessment);
   }
 
   submit(assessment: Assessment, isValid: boolean) {
     // set codes
-    assessment.canonicalCode = this._offering.canonicalCode + "" + assessment.canonicalCode
-    assessment.code = this._offering.code+ ""+assessment.code
-
+   assessment.canonicalCode = this._offering.canonicalCode + ""+ assessment.canonicalCode
+   assessment.code = this._offering.code + "" + assessment.code
+console.log(this._offering)
     // dispatch action
     console.log("Add AssessmentDialog");
     this.store.dispatch(this.actions.addAssessment(this._offering, assessment));

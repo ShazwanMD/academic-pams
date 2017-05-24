@@ -50,9 +50,8 @@ public class PlannerController {
     // ====================================================================================================
     @RequestMapping(value = "/academicSessions", method = RequestMethod.GET)
     public ResponseEntity<List<AcademicSession>> findAcademicSessions() {
-        List<AdAcademicSession> faculties = plannerService.findAcademicSessions(0, 100);
-        return new ResponseEntity<List<AcademicSession>>(plannerTransformer.toAcademicSessionVos(faculties),
-                HttpStatus.OK);
+        List<AdAcademicSession> academicSessions = plannerService.findAcademicSessions(0, 100);
+        return new ResponseEntity<List<AcademicSession>>(plannerTransformer.toAcademicSessionVos(academicSessions), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/academicSessions/current", method = RequestMethod.GET)
@@ -62,9 +61,11 @@ public class PlannerController {
     }
 
     @RequestMapping(value = "/academicSessions/{code}", method = RequestMethod.GET)
+   
     public ResponseEntity<AcademicSession> findAcademicSessionByCode(@PathVariable String code) {
-        return new ResponseEntity<AcademicSession>(
-                plannerTransformer.toAcademicSessionVo(plannerService.findAcademicSessionByCode(code)), HttpStatus.OK);
+    	LOG.debug("SessionCode:{}",code);
+        return new ResponseEntity<AcademicSession>(plannerTransformer.toAcademicSessionVo
+                (plannerService.findAcademicSessionByCode(code)), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/academicSessions/{code}", method = RequestMethod.POST)
@@ -72,7 +73,23 @@ public class PlannerController {
         AdAcademicSession academicSession = plannerService.findAcademicSessionByCode(code);
         academicSession.setCurrent(vo.isCurrent());
         academicSession.setDescription(vo.getDescription());
+        plannerService.updateAcademicSession(academicSession);
         return new ResponseEntity<String>(academicSession.getCode(), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/academicSessions/{code}/save", method = RequestMethod.POST)
+    public ResponseEntity<String> saveAcademicSession(@PathVariable String code, @RequestBody AcademicSession vo) {
+        dummyLogin();
+        AdAcademicSession academicSession = new AdAcademicSessionImpl();
+        academicSession.setCode(vo.getCode());
+        academicSession.setDescription(vo.getDescription());
+        academicSession.setCurrent(vo.isCurrent());
+        academicSession.setStartDate(vo.getstartDate());
+        academicSession.setEndDate(vo.getendDate());
+        academicSession.setSemester(AdAcademicSemester.get(vo.getSemester().ordinal()));
+        vo.setYear(plannerTransformer.toAcademicYearVo(academicSession.getYear()));
+        plannerService.saveAcademicSession(academicSession);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
 
     @RequestMapping(value = "/academicSessions/{code}/activate", method = RequestMethod.GET)
@@ -180,6 +197,7 @@ public class PlannerController {
             program.setCode(vo.getCode());
             program.setTitleMs(vo.getTitleMs());
             program.setTitleEn(vo.getTitleEn());
+			program.setStatus(AdProgramStatus.get(vo.getStatus().ordinal()));
             plannerService.saveProgram(program);
             return new ResponseEntity<String>("Success", HttpStatus.OK);
             }
@@ -192,6 +210,7 @@ public class PlannerController {
         program.setCode(vo.getCode());
         program.setTitleMs(vo.getTitleMs());
         program.setTitleEn(vo.getTitleEn());
+        program.setStatus(AdProgramStatus.get(vo.getStatus().ordinal()));
         plannerService.updateProgram(program);
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }

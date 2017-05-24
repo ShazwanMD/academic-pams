@@ -1,9 +1,8 @@
 import {MdSnackBar} from '@angular/material';
 import {Component, OnInit, ChangeDetectionStrategy} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
-
-import {Store} from "@ngrx/store";
-import {Observable} from "rxjs";
+import {Store} from '@ngrx/store';
+import {Observable} from 'rxjs';
 
 import {PlannerModuleState} from "../index";
 

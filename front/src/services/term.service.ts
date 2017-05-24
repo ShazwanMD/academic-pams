@@ -33,8 +33,9 @@ export class TermService {
   }
 
 
-  addAssessment(assessment: Assessment, offering: Offering): Observable<String> {
-    console.log("addAssessment");
+  addAssessment(offering: Offering, assessment: Assessment): Observable<String> {
+    console.log("addAssessment:"+assessment);
+    console.log("addOffering:"+offering.canonicalCode);
     let headers = new Headers({
       'Content-Type': 'application/json',
       //'Authorization': 'Bearer ' + this.authService.token
@@ -327,6 +328,16 @@ export class TermService {
     console.log("findSectionByCanonicalCode");
     return this.http.get(environment.endpoint + '/api/term/sections/' + canonicalCode)
       .map((res: Response) => <Section>res.json());
+  }
+    
+     deleteSection(offering: Offering, section: Section) {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
+    return this.http.delete(environment.endpoint + '/api/term/sections/'  + offering.canonicalCode + '/sections', options)
+      .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   // ==================================================================================================== //

@@ -132,6 +132,7 @@ public class TermTransformer {
         vo.setSourceNo(e.getSourceNo());
         vo.setAuditNo(e.getAuditNo());
         vo.setDescription(e.getDescription());
+        vo.setEnrollmentApplicationType(EnrollmentApplicationType.get(vo.getEnrollmentApplicationType().ordinal()));
         vo.setRemoveComment(e.getRemoveComment());
         vo.setCancelComment(e.getCancelComment());
         vo.setFlowState(FlowState.get(e.getFlowdata().getState().ordinal()));
@@ -191,7 +192,7 @@ public class TermTransformer {
         vo.setTotalScore(assessment.getTotalScore());
         vo.setAssessmentType(AssessmentType.get(assessment.getType().ordinal()));
         vo.setAssessmentCategory(AssessmentCategory.get(assessment.getType().ordinal()));
-        vo.setOffering(this.toOfferingVo(assessment.getOffering()));
+//        vo.setOffering(this.toOfferingVo(assessment.getOffering()));
         return vo;
     }
 

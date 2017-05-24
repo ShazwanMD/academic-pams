@@ -936,6 +936,18 @@ public class CommonServiceImpl implements CommonService {
 	public AdStudyCenter findStudyCenterByCode(String code) {
 		return studyCenterDao.findByCode(code);
 	}
+	
+	@Override
+	public AdStudyCenter findStudyCenterById(Long id) {
+		return studyCenterDao.findById(id);
+	}
+
+	
+	
+	@Override
+	public List<AdStudyCenter> findStudyCenters(String filter, Integer offset, Integer limit) {
+		return studyCenterDao.find(filter, offset, limit);
+	}
 
 	@Override
 	public Integer countStudyCenterCode(String filter) {

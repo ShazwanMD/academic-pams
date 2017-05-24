@@ -150,4 +150,13 @@ export class ProfileService {
     return this.http.delete(environment.endpoint + '/api/profile/students/'  + student.identityNo + '/contacts', options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
+
+    deactivateStudent(student: Student): Observable<String> {
+    let headers = new Headers({'Authorization': 'Bearer TODO'});
+    let options = new RequestOptions({headers: headers});
+    console.log("deactivate student");
+    return this.http.post(environment.endpoint + '/api/profile/students/' + student.identityNo + '/deactivate', options)
+      .map((res: Response) => <String>res.json());
+  }
+
 }

@@ -23,10 +23,6 @@ public class Assessment extends MetaObject {
 	private AcademicSession session;
 	private Offering offering;
 	
-	
-	
-	
-	
 	public Long getId() {
 		return id;
 	}
@@ -95,17 +91,17 @@ public class Assessment extends MetaObject {
 	}
 	
 	
-    @JsonCreator
-    public static Assessment create(String jsonString) {
-        Assessment o = null;
-        try {
-            ObjectMapper mapper = new ObjectMapper();
-            o = mapper.readValue(jsonString, Assessment.class);
-        } catch (IOException e) {
-            // handle
-        }
-        return o;
-    }
+//    @JsonCreator
+//    public static Assessment create(String jsonString) {
+//        Assessment o = null;
+//        try {
+//            ObjectMapper mapper = new ObjectMapper();
+//            o = mapper.readValue(jsonString, Assessment.class);
+//        } catch (IOException e) {
+//            // handle
+//        }
+//        return o;
+//    }
 
 	
 	

@@ -9,7 +9,6 @@
 			    flex/>
 	 </md-input-container>
 	</div>
-
 	<div layout="row" class="pad-bottom">
 		<md-input-container flex> 
 			<input mdInput #title
@@ -18,7 +17,22 @@
 				    flex/>
 		</md-input-container>
 	</div>
+	<div layout="row" class="pad-bottom">
+		<md-input-container flex> 
+			<input mdInput #title
+			       placeholder="TitleEn"
+				   formControlName="titleEn"
+				    flex/>
+		</md-input-container>
+	</div>
 
+	<!--<div layout="row" class="pad-bottom">
+		<pams-program-select
+			        [placeholder]="Status"
+				    [innerFormControl]="creatorForm['programstatus']">
+		</pams-program-select>
+
+	</div>-->
 	<!-- faculty select -->
 		<div layout="row" class="pad-bottom pad-top">
 		<pams-faculty-select

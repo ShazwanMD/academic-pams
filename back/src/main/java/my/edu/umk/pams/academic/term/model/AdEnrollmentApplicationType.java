@@ -8,4 +8,10 @@ public enum AdEnrollmentApplicationType {
     PRA,
     WAJIB,
     BERDENDA;
+	
+	  public static AdEnrollmentApplicationType get(int index){
+	        return values()[index];
+	    }
+
+	
 }

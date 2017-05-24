@@ -67,6 +67,9 @@ export class ProfileComponent implements OnInit {
               private vcf: ViewContainerRef,
               private store: Store<ProfileModuleState>,
               private dialog: MdDialog) {
+              private formBuilder: FormBuilder,
+              private dialog: MdDialog,
+              ) {
   }
 
   ngOnInit(): void {
@@ -182,4 +185,6 @@ export class ProfileComponent implements OnInit {
       console.log("close dialog");
     });
   }
+
+
 }

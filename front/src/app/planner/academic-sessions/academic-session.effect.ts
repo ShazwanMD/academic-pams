@@ -28,7 +28,10 @@ export class AcademicSessionEffects {
     .ofType(AcademicSessionActions.FIND_ACADEMIC_SESSION_BY_CODE)
     .map(action => action.payload)
     .switchMap(code => this.plannerService.findAcademicSessionByCode(code))
-    .map(academicSession => this.academicSessionActions.findAcademicSessionByCodeSuccess(academicSession));
+    .map(academicSession => this.academicSessionActions.findAcademicSessionByCodeSuccess(academicSession))
+    .withLatestFrom(this.store$.select(...this.ACADEMIC_SESSION))
+    .map(state => state[1])
+    .map((academicSession: AcademicSession) => this.academicSessionActions.findAcademicSessionByCode(academicSession.code));
 
 
   @Effect() activateAcademicSession$ = this.actions$

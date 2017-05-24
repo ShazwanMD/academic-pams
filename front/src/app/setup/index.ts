@@ -1,3 +1,6 @@
+import { StudyCenterEditorDialog } from './study-centers/dialog/study-center-editor.dialog';
+import { StudyCenterListPage } from './study-centers/study-center-list.page';
+import { StudyCenter } from './study-centers/study-center.interface';
 import { StudyModeEditorDialog } from './study-modes/dialog/study-mode-editor.dialog';
 import { StudyModeListPage } from './study-modes/study-mode-list.page';
 import { StudyMode } from './../common/study-modes/study-mode.interface';
@@ -55,6 +58,7 @@ import {religionCodeListReducer, ReligionCodeListState} from "./religion-codes/r
 import {nationalityCodeListReducer, NationalityCodeListState} from "./nationality-codes/nationality-code-list.reducer";
 import {ethnicityCodeListReducer, EthnicityCodeListState} from "./ethnicity-codes/ethnicity-code-list.reducer";
 import {studyModeListReducer, StudyModeListState} from "./study-modes/study-mode-list.reducer";
+import {studyCenterListReducer, StudyCenterListState} from "./study-centers/study-center-list.reducer";
 
 export interface SetupModuleState {
   title:TitleState;
@@ -70,6 +74,7 @@ export interface SetupModuleState {
   nationalityCodes: NationalityCodeListState;
   ethnicityCodes: EthnicityCodeListState;
   studyModes: StudyModeListState;
+  studyCenters: StudyCenterListState;
 }
 ;
 export const INITIAL_SETUP_STATE: SetupModuleState =
@@ -87,6 +92,7 @@ export const INITIAL_SETUP_STATE: SetupModuleState =
     nationalityCodes: <NationalityCode[]>[],
     ethnicityCodes: <EthnicityCode[]>[],
     studyModes: <StudyMode[]>[],
+    studyCenters: <StudyCenter[]>[],
 };
 export const setupModuleReducers = {
   title:titleReducer,
@@ -102,6 +108,7 @@ export const setupModuleReducers = {
   nationalityCodes: nationalityCodeListReducer,
   ethnicityCodes: ethnicityCodeListReducer,
   studyModes: studyModeListReducer,
+  studyCenters: studyCenterListReducer,
 };
 
 @NgModule({
@@ -131,6 +138,7 @@ export const setupModuleReducers = {
     NationalityCodeListPage,
     EthnicityCodeListPage,
     StudyModeListPage,
+    StudyCenterListPage,
     //Dialog
     GradeCodeEditorDialog,
     MaritalCodeEditorDialog,
@@ -139,6 +147,7 @@ export const setupModuleReducers = {
     GenderCodeEditorDialog,
     StateCodeEditorDialog,
     StudyModeEditorDialog,
+    StudyCenterEditorDialog,
   ],
   exports: [],
   entryComponents:[
@@ -149,6 +158,7 @@ export const setupModuleReducers = {
     GenderCodeEditorDialog,
      StudyModeEditorDialog,
     StateCodeEditorDialog,
+    StudyCenterEditorDialog,
   ],
 
 })

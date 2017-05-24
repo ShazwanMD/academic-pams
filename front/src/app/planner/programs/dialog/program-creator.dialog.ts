@@ -15,6 +15,7 @@ import {Store} from "@ngrx/store";
 import {PlannerModuleState} from "../../index";
 import {MdDialogRef} from "@angular/material";
 import {create} from '@angular/language-service/language-service';
+import { ProgramStatus } from "../program-status.enum";
 
 @Component({
   selector: 'pams-program-creator',
@@ -26,6 +27,7 @@ export class ProgramCreatorDialog implements OnInit {
   private creatorForm: FormGroup;
   private create: boolean = false;
   private _program: Program;
+  private _programStatus: ProgramStatus;
 
   constructor(private formBuilder: FormBuilder,
               private store: Store<PlannerModuleState>,
@@ -42,12 +44,18 @@ export class ProgramCreatorDialog implements OnInit {
     this.create = true;
   }
 
+set programStatus(value: ProgramStatus) {
+    this._programStatus = value;
+    this.create = true;
+  }
+
   ngOnInit(): void {
     this.creatorForm = this.formBuilder.group(<Program>{
       id: null,
       code: '',
       titleMs: '',
       titleEn: '',
+      status:ProgramStatus.ACTIVATED,
       faculty: <Faculty>{},
     });
 
@@ -55,7 +63,7 @@ export class ProgramCreatorDialog implements OnInit {
   }
 
   save(program: Program, isValid: boolean) {
-    console.log(program.id);
+    console.log(program.code);
 
     if (!program.id) this.store.dispatch(this.actions.saveProgram(program));
     else  this.store.dispatch(this.actions.updateProgram(program));

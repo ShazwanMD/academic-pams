@@ -1,3 +1,4 @@
+import { StudyCenter } from './../app/setup/study-centers/study-center.interface';
 import {StudyMode} from '../app/common/study-modes/study-mode.interface';
 import {EthnicityCode} from '../app/common/ethnicity-codes/ethnicity-code.interface';
 import {NationalityCode} from '../app/common/nationality-codes/nationality-code.interface';
@@ -22,6 +23,46 @@ export class CommonService {
 
   constructor(private http: Http,
               private _http: HttpInterceptorService) {
+  }
+
+// ====================================================================================================
+// STUDY_CENTER
+// ====================================================================================================
+
+  findStudyCenters(): Observable<StudyCenter[]> {
+    console.log("findStudyCenters()");
+    return this.http.get(environment.endpoint + '/api/common/studyCenters')
+      .map((res: Response) => <StudyMode[]>res.json());
+  }
+
+   saveStudyCenter(code: StudyCenter) {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
+    return this.http.post(environment.endpoint + '/api/common/studyCenters', JSON.stringify(code), options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+  updateStudyCenter(code: StudyCenter) {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
+    return this.http.put(environment.endpoint + '/api/common/studyCenters/' + code.code, JSON.stringify(code), options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+  removeStudyCenter(code: StudyCenter) {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
+    return this.http.delete(environment.endpoint + '/api/common/studyCenters/' + code.code, options)
+      .flatMap((res: Response) => Observable.of(res.text()));
   }
 
 

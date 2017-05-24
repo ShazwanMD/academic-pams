@@ -12,5 +12,5 @@ export interface Offering extends MetaObject{
   titleEn:string;
   course: Course;
   program: Program;
-  session: AcademicSession;
+  academicSession: AcademicSession;
 }

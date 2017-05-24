@@ -36,4 +36,16 @@ export class SectionEffects {
       .map(state => state[1])
       .map((offering: Offering) => this.offeringActions.findOfferingByCanonicalCode(offering.canonicalCode));
 
+   //effect for delete section
+      @Effect() deleteSection$ = this.actions$
+    .ofType(SectionActions.REMOVE_SECTION)
+    .map(action => action.payload)
+    .switchMap(payload => this.termService.deleteSection(payload.offering, payload.section))
+    .map(message => this.sectionActions.deleteSectionSuccess(message))
+    .withLatestFrom(this.store$.select(...this.OFFERING))
+    .map(state => state[1])
+    .map((offering: Offering) => this.offeringActions.findOfferingByCanonicalCode(offering.canonicalCode));
+
+     
+    
 }
