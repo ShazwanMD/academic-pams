@@ -18,6 +18,7 @@ export class OfferingSectionListComponent {
   private creatorDialogRef: MdDialogRef<SectionEditorDialog>;
   private edit: boolean = false;
   private _offering: Offering;
+  private _section: Section;
 
   @Input() section: Section;
   @Input() offering: Offering;
