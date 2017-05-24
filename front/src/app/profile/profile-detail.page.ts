@@ -49,6 +49,10 @@ export class ProfileDetailPage implements OnInit {
     this.enrollments$ = this.store.select(...this.ENROLLMENTS);
   }
 
+    goBack(route: string): void {
+    this.router.navigate(['/profiles']);
+  }
+
   ngOnInit(): void {
     this.route.params.subscribe((params: { identityNo: string }) => {
       let identityNo: string = params.identityNo;
