@@ -15,6 +15,7 @@ import {Offering} from "../../offerings/offering.interface";
 
 export class SectionEditorDialog implements OnInit {
 
+  private _section: Section;
   private _offering: Offering;
   private editorForm: FormGroup;
   private edit: boolean = false;
@@ -29,6 +30,12 @@ export class SectionEditorDialog implements OnInit {
   set offering(value: Offering) {
     this._offering = value;
   }
+    
+  set section(value: Section) {
+    this._section = value;
+    this.edit = true;
+  }
+
 
   ngOnInit(): void {
     this.editorForm = this.formBuilder.group(<Section>{
@@ -45,6 +52,7 @@ export class SectionEditorDialog implements OnInit {
   }
 
   submit(section: Section, isValid: boolean) {
+    console.log(section);  
     // set codes
     section.canonicalCode = this._offering.canonicalCode + "" + section.ordinal
     section.code = this._offering.code + "" + section.ordinal

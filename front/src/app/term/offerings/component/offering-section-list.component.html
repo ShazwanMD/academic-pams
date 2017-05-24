@@ -3,7 +3,13 @@
     <md-card-title flex>Sections</md-card-title>
     <button md-button class="md-icon-button" mdTooltip="Add new section" (click)="showSectionDialog()">
 
-     <md-icon class="md-24" >playlist_add</md-icon>
+     <md-icon class="md-24" >playlist_add</md-icon> 
+    </button>
+    <button md-button class="md-icon-button" mdTooltip="Update section"  (click)="updateSection(row)">
+    <md-icon class="md-24" >update</md-icon>
+    </button>
+     <button md-button class="md-icon-button" mdTooltip="Delete section"  (click)="deleteSection(row)">
+    <md-icon class="md-24" >delete</md-icon>
     </button>
   </div>
   <md-divider></md-divider>
@@ -21,9 +27,9 @@
           <a md-button color="accent" class="text-upper"  mdTooltip="View this section"
              [routerLink]="['/term/sections', row['canonicalCode']]"> <md-icon class="md-24">pageview</md-icon>
           </a>
-           <a md-button color="accent" class="text-upper" mdTooltip="Delete this section"
+          <!--  <a md-button color="accent" class="text-upper" mdTooltip="Delete this section"
              (click)="deleteSection(row)"> <md-icon class="md-24" >delete</md-icon>
-          </a>
+          </a> -->
         </div>
       </template>
     </td-data-table>
