@@ -44,7 +44,6 @@ export class AcademicSessionCenterPage implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log("find academicSessions");
     this.store.dispatch(this.actions.findAcademicSessions());
   }
 

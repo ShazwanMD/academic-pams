@@ -496,7 +496,7 @@ public class TermController {
 	}
 	
 	//delete section
-	 @RequestMapping(value = "/sections/{canonicalCode}/sections", method = RequestMethod.DELETE)
+	 @RequestMapping(value = "/offerings/{canonicalCode}/sections", method = RequestMethod.DELETE)
 	    public ResponseEntity<String> deleteSection(@PathVariable String canonicalCode) {
 	        dummyLogin();
 	        AdOffering offering = termService.findOfferingByCanonicalCode(canonicalCode);
