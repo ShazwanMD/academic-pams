@@ -67,43 +67,7 @@ public class ProfileController {
     // ADDRESS
     //====================================================================================================
     
-    //EDIT ADDRESS//
-    
-    /*@RequestMapping(value = "/students/{identityNo}/addresses/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<String> updateAddress(@PathVariable String identityNo, @RequestBody Address vo) {
-        dummyLogin();
-        AdStudent student = profileService.findStudentByMatricNo(identityNo);
-        List<AdAddress> addresses = profileService.findAddresses(student);
-        for (AdAddress address : addresses) {
-        	address.setId(vo.getId());
-            address.setAddress1(vo.getAddress1());
-            address.setAddress2(vo.getAddress2());
-            address.setAddress3(vo.getAddress3());
-            address.setPostCode(vo.getPostcode());
-            profileService.updateAddress(student, address);
-        }
-        return new ResponseEntity<String>("Success", HttpStatus.OK);
-
-    }*/
-    
-
-    @RequestMapping(value = "/students/{identityNo}/addresses/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<String> updateAddress(@PathVariable String identityNo, @RequestBody Address vo) {
-        dummyLogin();
-        LOG.debug("id address:{}",vo.getId());
-        AdStudent student = profileService.findStudentByMatricNo(identityNo);
-        AdAddress address = profileService.findAddressById(vo.getId());
-        	//address.setId(vo.getId());
-            address.setAddress1(vo.getAddress1());
-            address.setAddress2(vo.getAddress2());
-            address.setAddress3(vo.getAddress3());
-            address.setPostCode(vo.getPostcode());
-            profileService.updateAddress(student, address);
-        return new ResponseEntity<String>("Success", HttpStatus.OK);
-
-    }
-    
-    //ADD ADDRESS//
+    /*ADD ADDRESS*/
     @RequestMapping(value = "/students/{identityNo}/addresses", method = RequestMethod.POST)
     public ResponseEntity<String> addAddress(@PathVariable String identityNo, @RequestBody Address vo) {
         dummyLogin();
@@ -119,20 +83,27 @@ public class ProfileController {
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
     
+    /*EDIT ADDRESS*/
+    @RequestMapping(value = "/students/{identityNo}/addresses/{id}", method = RequestMethod.PUT)
+    public ResponseEntity<String> updateAddress(@PathVariable String identityNo, @RequestBody Address vo) {
+        dummyLogin();
+        LOG.debug("id address:{}",vo.getId());
+        AdStudent student = profileService.findStudentByMatricNo(identityNo);
+        AdAddress address = profileService.findAddressById(vo.getId());
+        	//address.setId(vo.getId());
+            address.setAddress1(vo.getAddress1());
+            address.setAddress2(vo.getAddress2());
+            address.setAddress3(vo.getAddress3());
+            address.setPostCode(vo.getPostcode());
+            profileService.updateAddress(student, address);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
+    
     //====================================================================================================
     // CONTACT
     //====================================================================================================
-
-    @RequestMapping(value = "/students/{identityNo}/contacts", method = RequestMethod.DELETE)
-    public ResponseEntity<String> deleteContact(@PathVariable String identityNo) {
-        dummyLogin();
-        AdStudent student = profileService.findStudentByMatricNo(identityNo);
-        List<AdContact> contacts = profileService.findContacts(student);
-        for (AdContact contact : contacts)
-            profileService.deleteContact(student, contact);
-        return new ResponseEntity<String>("Success", HttpStatus.OK);
-    }
-
+    
+    /*ADD CONTACT*/
     @RequestMapping(value = "/students/{identityNo}/contacts", method = RequestMethod.POST)
     public ResponseEntity<String> addContact(@PathVariable String identityNo, @RequestBody Contact vo) {
         dummyLogin();
@@ -146,11 +117,26 @@ public class ProfileController {
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
     
+    /*EDIT CONTACT*/
+    //todo(ihsanbazli)
+    
+    /*DELETE CONTACT*/
+    @RequestMapping(value = "/students/{identityNo}/contacts", method = RequestMethod.DELETE)
+    public ResponseEntity<String> deleteContact(@PathVariable String identityNo) {
+        dummyLogin();
+        AdStudent student = profileService.findStudentByMatricNo(identityNo);
+        List<AdContact> contacts = profileService.findContacts(student);
+        for (AdContact contact : contacts)
+            profileService.deleteContact(student, contact);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
+    
     //====================================================================================================
     // GUARANTOR
     //====================================================================================================
 
-   @RequestMapping(value = "/students/{identityNo}/guarantors", method = RequestMethod.POST)
+    /*ADD GUARANTOR*/
+    @RequestMapping(value = "/students/{identityNo}/guarantors", method = RequestMethod.POST)
     public ResponseEntity<String> addGuarantor(@PathVariable String identityNo, @RequestBody Guarantor vo) {
         dummyLogin();
         AdStudent student = profileService.findStudentByMatricNo(identityNo);
@@ -163,12 +149,30 @@ public class ProfileController {
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
    
+   /*EDIT GUARANTOR*/
+   @RequestMapping(value = "/students/{identityNo}/guarantors/{id}", method = RequestMethod.PUT)
+   public ResponseEntity<String> updateGuarantor(@PathVariable String identityNo, @RequestBody Guarantor vo) {
+       dummyLogin();
+       LOG.debug("id guarantor:{}",vo.getId());
+       AdStudent student = profileService.findStudentByMatricNo(identityNo);
+       AdGuarantor guarantor = profileService.findGuarantorById(vo.getId());
+       guarantor.setName(vo.getName());
+	   guarantor.setIdentityNo(vo.getIdentityNo());
+	   guarantor.setType(AdGuarantorType.get(vo.getGuarantorType().ordinal()));
+	   guarantor.setStudent(student);
+       profileService.updateGuarantor(student, guarantor);
+       return new ResponseEntity<String>("Success", HttpStatus.OK);
+   }
+   
+   /*DELETE GUARANTOR*/
+   //todo(ihsanbazli)
    
    //====================================================================================================
    // GUARDIAN
    //====================================================================================================
 
-  @RequestMapping(value = "/students/{identityNo}/guardians", method = RequestMethod.POST)
+   /*ADD GUARDIAN*/
+   @RequestMapping(value = "/students/{identityNo}/guardians", method = RequestMethod.POST)
    public ResponseEntity<String> addGuardian(@PathVariable String identityNo, @RequestBody Guardian vo) {
        dummyLogin();
        AdStudent student = profileService.findStudentByMatricNo(identityNo);
@@ -180,6 +184,14 @@ public class ProfileController {
        profileService.addGuardian(student, guardian);
        return new ResponseEntity<String>("Success", HttpStatus.OK);
    }
+   
+   /*ADD GUARDIAN*/
+   //todo(ihsanbazli)
+   
+   /*DELETE GUARDIAN*/
+   //todo(ihsanbazli)
+   
+   
     //====================================================================================================
     // PROFILE
     //====================================================================================================

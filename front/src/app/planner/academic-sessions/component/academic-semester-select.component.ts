@@ -1,12 +1,12 @@
 import { OnInit, Input, Component } from '@angular/core';
-import { AcademicSemester } from '../academic-session-semester-type.enum';
+import { AcademicSemester } from '../academic-semester-type.enum';
 import { FormControl } from '@angular/forms';
 
 
 
 @Component({
-    selector: 'pams-academic-session-semester-select',
-    templateUrl: './academic-session-semester-select.component.html',
+    selector: 'pams-academic-semester-select',
+    templateUrl: './academic-semester-select.component.html',
 })
 
 export class AcademicSessionSemesterSelectComponent implements OnInit {

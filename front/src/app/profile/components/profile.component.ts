@@ -61,6 +61,13 @@ export class ProfileComponent implements OnInit {
     { name: 'action', label: 'Action' }
   ];
 
+  private columnGuarantor: any[] = [
+    { name: 'guarantorType', label: 'Identity Type' },
+    { name: 'identityNo', label: 'Identity No' },
+    { name: 'name', label: 'Name' },
+    { name: 'action', label: 'Action' }
+  ];
+
   constructor(private router: Router,
     private route: ActivatedRoute,
     private actions: ProfileActions,
@@ -118,6 +125,7 @@ export class ProfileComponent implements OnInit {
       });
     }
 
+    //EDIT ADDRESS DIALOG
     editAddressDialog(address: Address, isValid: boolean): void {
       //console.log("Ini utk Edit Address student", student);
       let config = new MdDialogConfig();
@@ -127,7 +135,7 @@ export class ProfileComponent implements OnInit {
       config.height = '80%';
       config.position = { top: '0px' };
       this.addressCreatorDialogRef = this.dialog.open(AddressEditorDialog, config);
-      console.log(isValid);
+      //console.log(isValid);
       if(isValid) {
         this.addressCreatorDialogRef.componentInstance.address = address;
         //console.log(this.addressCreatorDialogRef.componentInstance);
@@ -142,8 +150,9 @@ export class ProfileComponent implements OnInit {
       this.store.dispatch(this.actions.deleteContact(this.student, contact))
     }
 
+    //ADD GUARANTOR DIALOG
     addGuarantorDialog(): void {
-      console.log("add");
+      //console.log("add");
       let config = new MdDialogConfig();
       config.viewContainerRef = this.vcf;
       config.role = 'dialog';
@@ -153,7 +162,28 @@ export class ProfileComponent implements OnInit {
       this.guarantorCreatorDialogRef = this.dialog.open(GuarantorEditorDialog, config);
       this.guarantorCreatorDialogRef.componentInstance.student = this.student;
       this.guarantorCreatorDialogRef.afterClosed().subscribe(res => {
-        console.log("close dialog");
+        //console.log("close dialog");
+      });
+    }
+
+    //EDIT GUARANTOR DIALOG
+    editGuarantorDialog(guarantor: Guarantor, isValid: boolean): void {
+      //console.log("Ini utk Edit Address student", student);
+      let config = new MdDialogConfig();
+      config.viewContainerRef = this.vcf;
+      config.role = 'dialog';
+      config.width = '70%';
+      config.height = '80%';
+      config.position = { top: '0px' };
+      this.guarantorCreatorDialogRef = this.dialog.open(GuarantorEditorDialog, config);
+      //console.log(isValid);
+      if(isValid) {
+        this.guarantorCreatorDialogRef.componentInstance.guarantor = guarantor;
+        //console.log(this.addressCreatorDialogRef.componentInstance);
+        this.guarantorCreatorDialogRef.componentInstance.student = this.student;
+      } 
+    this.guarantorCreatorDialogRef.afterClosed().subscribe(res => {
+        //console.log("close this dialog");
       });
     }
 

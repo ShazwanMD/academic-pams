@@ -32,5 +32,10 @@ export class AssessmentEffects {
         .map((offering: Offering) => this.offeringActions.findOfferingByCanonicalCode(offering.canonicalCode));
 
 
+          @Effect() findAssessmentById$ = this.actions$
+    .ofType(AssessmentActions.FIND_ASSESSMENT_BY_ID)
+    .map(action => action.payload)
+    .switchMap(id => this.termService.findAssessmentById(id))
+    .map(assessment => this.assessmentActions.findAssessmentByIdSuccess(assessment));
 
 }

@@ -6,9 +6,20 @@ import my.edu.umk.pams.academic.web.module.core.vo.MetaObject;
  * @author PAMS
  */
 public class Guarantor extends MetaObject {
-    private String identityNo;
+    
+	private Long id;
+	private String identityNo;
     private String name;
     private GuarantorType guarantorType;
+    
+    //sini
+    public Long getId() {
+        return id;
+    }
+    //sini
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getIdentityNo() {
         return identityNo;

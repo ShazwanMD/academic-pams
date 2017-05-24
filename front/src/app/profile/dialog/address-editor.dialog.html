@@ -2,12 +2,10 @@
 <md-dialog-content>
   <form [formGroup]="editorForm">
     <div layout="row" class="inset" flex>
-      <md-input-container flex>
-        <input mdInput
-               placeholder="Address Type"
-               formControlName="addressType"
-               flex readonly/>
-      </md-input-container>
+      <pams-address-type-select
+        [placeholder]="'Address Type'"
+        [innerFormControl]="editorForm.controls['addressType']">
+      </pams-address-type-select>
     </div>
     <div layout="row" class="inset" flex>
       <md-input-container flex>
