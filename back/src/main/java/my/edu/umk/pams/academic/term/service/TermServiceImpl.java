@@ -1539,4 +1539,10 @@ public class TermServiceImpl implements TermService {
         map.put(WorkflowConstants.CANCEL_DECISION, false);
         return map;
     }
+
+	@Override
+	public void deleteSection(AdOffering offering, AdSection section) {
+		// TODO Auto-generated method stub
+		
+	}
 }
