@@ -18,7 +18,9 @@ export class OfferingSectionListComponent {
   private creatorDialogRef: MdDialogRef<SectionEditorDialog>;
   private edit: boolean = false;
   private _offering: Offering;
+  private _section: Section;
 
+  @Input() section: Section;
   @Input() offering: Offering;
   @Input() sections: Section[];
   @Output() view = new EventEmitter<Section>();
@@ -39,7 +41,7 @@ export class OfferingSectionListComponent {
   }
 
   private columns: any[] = [
-    {name: 'id', label: 'Id'},
+    {name: 'ordinal', label: 'Ordinal'},
     {name: 'code', label: 'Code'},
     {name: 'capacity', label: 'Capacity'},
     {name: 'appointmentCount', label: 'Appointment'},
@@ -47,6 +49,29 @@ export class OfferingSectionListComponent {
     {name: 'action', label: ''}
   ];
 
+   //update section using dialog
+     updateSection(): void {
+      this.showUpdateDialog(this.section)
+    } 
+    
+   //show update dialog for section
+    
+    showUpdateDialog(section: Section): void {
+    console.log("update section dialog");
+    let config = new MdDialogConfig();
+    config.viewContainerRef = this.vcf;
+    config.role = 'dialog';
+    config.width = '70%';
+    config.height = '50%';
+    config.position = { top: '0px' };
+    this.creatorDialogRef = this.dialog.open(SectionEditorDialog, config);
+    if (section) this.creatorDialogRef.componentInstance.section = this.section; 
+    this.creatorDialogRef.afterClosed().subscribe(res => {
+      console.log("close dialog for update section");
+    });
+  }
+ 
+    
   showSectionDialog(): void {
     console.log("showDialog");
     let config = new MdDialogConfig();

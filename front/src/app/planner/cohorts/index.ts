@@ -24,53 +24,53 @@ import {AcademicSessionSubModule} from "../../planner/academic-sessions/index";
 import {CohortUpdateDialog} from './dialog/cohort-update.dialog';
 
 @NgModule({
-  imports: [
-    appRoutes,
-    BrowserModule,
-    ReactiveFormsModule,
-    ProgramSubModule.forRoot(),
-    CovalentCoreModule.forRoot(),
-    EffectsModule.run(CohortEffects),
-     AcademicSessionSubModule.forRoot(),
-IdentityModule.forRoot(),
+    imports: [
+        appRoutes,
+        BrowserModule,
+        ReactiveFormsModule,
+        ProgramSubModule.forRoot(),
+        CovalentCoreModule.forRoot(),
+        EffectsModule.run(CohortEffects),
+        AcademicSessionSubModule.forRoot(),
+        IdentityModule.forRoot(),
 
-  ],
-  declarations: [
-    // page
-    CohortCenterPage,
-    CohortDetailPage,
+    ],
+    declarations: [
+        // page
+        CohortCenterPage,
+        CohortDetailPage,
 
-    // component
-    CohortListComponent,
-    CohortComponent,
-    
-    //dialog
-    CohortEditorDialog,
-CohortUpdateDialog,
+        // component
+        CohortListComponent,
+        CohortComponent,
 
-  ],
-   exports: [],
-   entryComponents: [
-   CohortEditorDialog,
-   CohortUpdateDialog,
+        //dialog
+        CohortEditorDialog,
+        CohortUpdateDialog,
 
-   ]
-   
+    ],
+    exports: [],
+    entryComponents: [
+        CohortEditorDialog,
+        CohortUpdateDialog,
+
+    ]
+
 })
 
 export class CohortSubModule {
-  static forRoot(): ModuleWithProviders {
-    return {
-      ngModule: CohortSubModule,
-      providers: [
-        appRoutingProviders,
-        PlannerService,
-        IdentityService,
-        CommonService,
-        CohortActions,
-      ],
-    };
-  }
+    static forRoot(): ModuleWithProviders {
+        return {
+            ngModule: CohortSubModule,
+            providers: [
+                appRoutingProviders,
+                PlannerService,
+                IdentityService,
+                CommonService,
+                CohortActions,
+            ],
+        };
+    }
 }
 
 

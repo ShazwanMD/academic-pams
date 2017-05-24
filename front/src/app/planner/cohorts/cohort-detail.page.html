@@ -21,12 +21,12 @@
               <h4 md-line>Update Cohort</h4>
               <p md-line>Update this cohort</p>
  </a>
-            <md-list-item [routerLink]="['/cohorts-resolve', cohort?.code]">
+<a md-list-item (click)="delate()">
               <md-icon md-list-avatar>done_all</md-icon>
               <h4 md-line>Delete Cohort</h4>
               <p md-line>Delete this cohort</p>
-            </md-list-item>
-           
+            
+           </a> 
             <md-divider></md-divider>
             <h3 md-subheader>Planner Menu</h3>
             <md-list-item [routerLink]="['/planner/academic-sessions']">

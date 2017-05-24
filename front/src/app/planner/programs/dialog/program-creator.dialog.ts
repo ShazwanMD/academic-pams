@@ -27,6 +27,7 @@ export class ProgramCreatorDialog implements OnInit {
   private creatorForm: FormGroup;
   private create: boolean = false;
   private _program: Program;
+    private _faculty: Faculty;
   // private _status: ProgramStatus;
 
   constructor(private formBuilder: FormBuilder,
@@ -38,7 +39,9 @@ export class ProgramCreatorDialog implements OnInit {
               private dialog: MdDialogRef<ProgramCreatorDialog>) {
   }
 
-
+  // set faculty(value: Faculty) {
+  // //   this._faculty = value;
+  // }
   set program(value: Program) {
     this._program = value;
     this.create = true;
@@ -60,13 +63,16 @@ export class ProgramCreatorDialog implements OnInit {
     });
 
     if (this.create) this.creatorForm.patchValue(this._program);
+     if (this.create) this.creatorForm.patchValue({ 'faculty': this._faculty });
+   
   }
 
-  save(program: Program, isValid: boolean) {
-    console.log(program.code);
-
+  submit(program: Program, isValid: boolean) {
+    console.dir(program);
+    //console.dir(program.faculty.code);
     if (!program.id) this.store.dispatch(this.actions.saveProgram(program));
     else  this.store.dispatch(this.actions.updateProgram(program));
+     
     this.dialog.close();
   }
 }

@@ -41,6 +41,7 @@ export class AssessmentDetailPage implements OnInit {
     this.route.params.subscribe((params: { id: number }) => {
       let id: number = params.id;
       this.store.dispatch(this.actions.findAssessmentById(id));
+      console.log(id)
     }); 
   }
 

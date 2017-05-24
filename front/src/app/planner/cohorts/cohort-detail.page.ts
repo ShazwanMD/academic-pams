@@ -10,7 +10,7 @@ import {CohortActions} from "./cohort.action";
 import {PlannerModuleState} from "../index";
 import {MdDialog, MdDialogConfig, MdDialogRef} from "@angular/material";
 import {ViewContainerRef} from '@angular/core';
-
+import {MdSnackBar} from '@angular/material';
 
 @Component({
   selector: 'pams-cohort-detail',
@@ -28,7 +28,8 @@ export class CohortDetailPage implements OnInit {
               private actions: CohortActions,
               private store: Store<PlannerModuleState>,
               private vcf: ViewContainerRef,
-              private dialog: MdDialog) {
+              private dialog: MdDialog,
+              private snackBar: MdSnackBar) {
 
     this.cohort$ = this.store.select(...this.COHORT);
   }
@@ -56,7 +57,19 @@ export class CohortDetailPage implements OnInit {
     config.position = {top: '0px'};
     this.creatorDialogRef = this.dialog.open(CohortUpdateDialog, config);
    
-    };
+    }
+    
+    
+  
+
+ delate(): void {
+    let snackBarRef = this.snackBar.open("Delate Cohort", "OK");
+    snackBarRef.afterDismissed().subscribe(() => {
+        this.cohort$.take(1).subscribe(cohort =>
+          this.store.dispatch(this.actions.removeCohort(cohort)))
+      }
+        );
 }
 
+    }
 
