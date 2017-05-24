@@ -116,8 +116,10 @@ export class PlannerService {
       'Content-Type': 'application/json',
       //'Authorization': 'Bearer ' + this.authService.token
     });
+    console.log("saya disini");
+    console.dir(program);
     let options = new RequestOptions({ headers: headers });
-    return this.http.post(environment.endpoint + '/api/planner/programs', JSON.stringify(program), options)
+    return this.http.post(environment.endpoint + '/api/planner/programs/' + program.code + '/save', JSON.stringify(program), options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
