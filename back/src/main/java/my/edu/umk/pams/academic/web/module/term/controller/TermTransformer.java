@@ -168,8 +168,12 @@ public class TermTransformer {
         vo.setId(offering.getId());
         vo.setCode(offering.getCode());
         vo.setCanonicalCode(offering.getCanonicalCode());
+        vo.setCapacity(offering.getCapacity());
+        vo.setTitleMs(offering.getTitleMs());
+        vo.setTitleEn(offering.getTitleEn());
         vo.setCourse(plannerTransformer.toCourseVo(offering.getCourse()));
         vo.setProgram(plannerTransformer.toProgramVo(offering.getProgram()));
+        vo.setAcademicSession(plannerTransformer.toAcademicSessionVo(offering.getSession()));
         return vo;
     }
 

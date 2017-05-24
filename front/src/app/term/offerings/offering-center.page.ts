@@ -43,8 +43,12 @@ export class OfferingCenterPage implements OnInit {
   filter(): void {
 
   }
+  
+  createDialog(): void {
+      this.showDialog(null);
+    }
 
-    showDialog(): void {
+    private showDialog(code: Offering): void {
     console.log("showDialog");
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;

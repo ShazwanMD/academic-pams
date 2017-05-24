@@ -52,4 +52,10 @@ export class OfferingEffects {
     .map(action => action.payload)
     .switchMap(offering => this.termService.findAppointmentsByOffering(offering))
     .map(sections => this.offeringActions.findAppointmentsByOfferingSuccess(sections));
+  
+  @Effect() saveOffering$ = this.actions$
+  .ofType(OfferingActions.SAVE_OFFERING)
+  .map(action => action.payload)
+  .switchMap(offering => this.termService.saveOffering(offering))
+  .map(offering => this.offeringActions.saveOfferingSuccess(offering));
 }

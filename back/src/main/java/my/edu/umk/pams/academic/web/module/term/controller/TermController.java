@@ -5,11 +5,15 @@ import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.identity.service.IdentityService;
 import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
 import my.edu.umk.pams.academic.planner.model.AdAppointmentStatus;
+import my.edu.umk.pams.academic.planner.model.AdProgram;
+import my.edu.umk.pams.academic.planner.model.AdProgramImpl;
+import my.edu.umk.pams.academic.planner.model.AdProgramStatus;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
 import my.edu.umk.pams.academic.security.integration.AdAutoLoginToken;
 import my.edu.umk.pams.academic.system.service.SystemService;
 import my.edu.umk.pams.academic.term.model.*;
 import my.edu.umk.pams.academic.term.service.TermService;
+import my.edu.umk.pams.academic.web.module.planner.vo.Program;
 import my.edu.umk.pams.academic.web.module.term.vo.*;
 import my.edu.umk.pams.academic.workflow.service.WorkflowService;
 import org.activiti.engine.task.Task;
@@ -462,6 +466,25 @@ public class TermController {
         termService.addSection(offering, section);
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
+    
+    //save offering
+    @RequestMapping(value = "/offerings/{code}/save", method = RequestMethod.POST)
+    public ResponseEntity<String> saveOffering(@PathVariable String code, @RequestBody Offering vo) {
+            dummyLogin();
+
+            AdOffering offering = new AdOfferingImpl();
+            offering.setCode(vo.getCode());
+            offering.setCanonicalCode(vo.getCanonicalCode());
+            offering.setCapacity(vo.getCapacity());
+            offering.setTitleMs(vo.getTitleMs());
+            offering.setTitleEn(vo.getTitleEn());
+            offering.setCourse(plannerService.findCourseByCode(vo.getCourse().getCode()));
+            offering.setProgram(plannerService.findProgramByCode(vo.getProgram().getCode()));
+            offering.setSession(plannerService.findAcademicSessionByCode(vo.getAcademicSession().getCode()));
+            
+            termService.saveOffering(offering);
+            return new ResponseEntity<String>("Success", HttpStatus.OK);
+            }
     
     //update section
     @RequestMapping(value = "/sections/{canonicalCode}", method = RequestMethod.PUT)
