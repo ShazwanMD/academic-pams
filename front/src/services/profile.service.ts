@@ -112,6 +112,7 @@ export class ProfileService {
   }
 
   updateAddress(student: Student, address: Address): Observable<String> {
+    console.log("woi",address);
     let headers = new Headers({
       'Content-Type': 'application/json',
       //'Authorization': 'Bearer ' + this.authService.token

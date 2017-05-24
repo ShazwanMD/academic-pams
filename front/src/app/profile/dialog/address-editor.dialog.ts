@@ -53,12 +53,17 @@ export class AddressEditorDialog implements OnInit {
   }
 
   submit(address: Address, isValid: boolean) {
-    console.log(this._student);
-    console.log(this._address);
+    //console.log(this._student);
+    //console.log("ini address saja=",this._address.id);
     console.log(isValid);
-    this.store.dispatch(this.actions.updateAddress(this._student, address));
-    //if(!address.id) this.store.dispatch(this.actions.updateAddress(this._student, address));
-    //else this.store.dispatch(this.actions.addAddress(this._student, address));
+
+    if(isValid)
+    address.id = this._address.id;
+    console.log(address);
+
+    //this.store.dispatch(this.actions.updateAddress(this._student, address));
+    if(isValid) this.store.dispatch(this.actions.updateAddress(this._student, address));
+    else this.store.dispatch(this.actions.addAddress(this._student, address));
     this.dialog.close();
   }
 }

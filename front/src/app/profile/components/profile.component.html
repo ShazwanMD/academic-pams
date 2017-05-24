@@ -67,7 +67,7 @@
       <md-icon>more_vert</md-icon>
     </button>
     <md-menu x-position="before" #menu2="mdMenu">
-      <button md-menu-item (click)="addAddressDialog()">Add</button>
+      <button md-menu-item (click)="addAddressDialog(save)">Add</button>
     </md-menu>
     </div>
     
@@ -95,7 +95,7 @@
             
             <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
               <div layout="row">
-                <button md-raised-button color="primary" (click)="editAddressDialog(row)">Update</button>
+                <button md-raised-button color="primary" (click)="editAddressDialog(row, true)">Update</button>
               </div>
             </template>
 

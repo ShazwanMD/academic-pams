@@ -118,7 +118,7 @@ export class ProfileComponent implements OnInit {
       });
     }
 
-    editAddressDialog(address: Address): void {
+    editAddressDialog(address: Address, isValid: boolean): void {
       //console.log("Ini utk Edit Address student", student);
       let config = new MdDialogConfig();
       config.viewContainerRef = this.vcf;
@@ -127,9 +127,10 @@ export class ProfileComponent implements OnInit {
       config.height = '80%';
       config.position = { top: '0px' };
       this.addressCreatorDialogRef = this.dialog.open(AddressEditorDialog, config);
-      console.log(address);
-      if(address) {
+      console.log(isValid);
+      if(isValid) {
         this.addressCreatorDialogRef.componentInstance.address = address;
+        //console.log(this.addressCreatorDialogRef.componentInstance);
         this.addressCreatorDialogRef.componentInstance.student = this.student;
       } 
     this.addressCreatorDialogRef.afterClosed().subscribe(res => {
