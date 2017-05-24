@@ -329,6 +329,16 @@ export class TermService {
     return this.http.get(environment.endpoint + '/api/term/sections/' + canonicalCode)
       .map((res: Response) => <Section>res.json());
   }
+    
+     deleteSection(offering: Offering, section: Section) {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
+    return this.http.delete(environment.endpoint + '/api/term/sections/'  + offering.canonicalCode + '/sections', options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
 
   // ==================================================================================================== //
   // OFFERING

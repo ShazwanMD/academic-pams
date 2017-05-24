@@ -1,7 +1,6 @@
-<!-- Basic Card -->
 <md-card>
-  <md-card-title>Title:{{enrollment.section.offering.titleMs}}</md-card-title>
-  <md-card-subtitle>Code: {{enrollment.section.code}} </md-card-subtitle>
+  <md-card-title>{{enrollment.admission.student.name}}</md-card-title>
+  <md-card-subtitle>Enroll Course: {{enrollment.section.offering.course.titleEn}} </md-card-subtitle>
   <md-divider></md-divider>
   <md-card-content>
   <!--Tab Section Here-->
@@ -24,10 +23,13 @@
    
   </md-tab>
 
-  <md-tab label=" Offering Information">
+  <md-tab label=" Course Information">
 
     <div>Course : {{enrollment.section.code}}</div><br>
-    <div>Program : {{enrollment.section.code}}</div><br>
+     <div>Program Code : {{enrollment.section.offering.program.code}}</div><br>
+    <div>Program : {{enrollment.section.offering.program.titleEn}}</div><br>
+     <div>Faculty : {{enrollment.section.offering.program.faculty.description}}</div><br>
+    
 
 
   </md-tab>

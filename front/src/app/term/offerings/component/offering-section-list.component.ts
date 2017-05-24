@@ -52,5 +52,11 @@ export class OfferingSectionListComponent {
       // load something here
     });
   }
+    
+    //delete section
+      deleteSection(section: Section): void {
+    this.store.dispatch(this.actions.deleteSection(this.offering, section))
+  }
+    
 }
 

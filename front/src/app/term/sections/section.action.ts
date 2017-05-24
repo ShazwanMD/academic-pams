@@ -61,5 +61,26 @@ export class SectionActions {
       payload: message
     };
   }
+    
+    //delete section
+       static REMOVE_SECTION = '[Section] Remove Section';
+
+  deleteSection(offering,section): Action {
+    console.log("deleteSection");
+    return {
+      type: SectionActions.REMOVE_SECTION,
+      payload: {offering:offering, section:section}
+    };
+  }
+
+  static REMOVE_SECTION_SUCCESS = '[Section] Remove Section  Success';
+
+  deleteSectionSuccess(message): Action {
+    console.log("deleteSectionSuccess");
+    return {
+      type: SectionActions.REMOVE_SECTION_SUCCESS,
+      payload: message
+    };
+  }
 
 }

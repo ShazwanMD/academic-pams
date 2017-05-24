@@ -1,6 +1,7 @@
 package my.edu.umk.pams.academic.web.module.term.controller;
 
 import my.edu.umk.pams.academic.common.service.CommonService;
+import my.edu.umk.pams.academic.identity.model.AdContact;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.identity.service.IdentityService;
 import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
@@ -493,6 +494,17 @@ public class TermController {
 		AdSection section = termService.findSectionByCanonicalCode(canonicalCode);
 		return new ResponseEntity<Section>(termTransformer.toSectionVo(section), HttpStatus.OK);
 	}
+	
+	//delete section
+	 @RequestMapping(value = "/sections/{canonicalCode}/sections", method = RequestMethod.DELETE)
+	    public ResponseEntity<String> deleteSection(@PathVariable String canonicalCode) {
+	        dummyLogin();
+	        AdOffering offering = termService.findOfferingByCanonicalCode(canonicalCode);
+	        List<AdSection> sections = termService.findSections(offering);
+	        for (AdSection section : sections)
+	            termService.deleteSection(offering, section);
+	        return new ResponseEntity<String>("Success", HttpStatus.OK);
+	    }
 
 	// ====================================================================================================
 	// PRIVATE METHODS

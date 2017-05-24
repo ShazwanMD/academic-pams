@@ -2,7 +2,7 @@
   <div toolbar-buttons layout="row" layout-align="start center" flex>
     <md-card-title flex>Assessments</md-card-title>
      <button md-button class="md-icon-button" (click)="showAssessmentDialog()">
-      <md-icon class="md-24">add</md-icon>
+      <md-icon class="md-24" >playlist_add</md-icon>
     </button>
   </div>
   <md-divider></md-divider>
@@ -23,8 +23,11 @@
        <template tdDataTableTemplate="action" let-value="value" let-row="row"
                 let-column="column">
         <div layout="row">
-          <a md-button color="accent" class="text-upper"
-             [routerLink]="['/term/assessments', row['id']]"> <span>View</span>
+          <a md-button color="accent" class="text-upper" mdTooltip="View this assessment"
+             [routerLink]="['/term/assessments', row['id']]">  <md-icon class="md-24">pageview</md-icon>
+          </a><!-- (click)="deleteAssessment()" -->
+           <a md-button color="accent" class="text-upper" mdTooltip="Delete this assessment"
+             > <md-icon class="md-24" >delete</md-icon>
           </a>
         </div>
       </template>
