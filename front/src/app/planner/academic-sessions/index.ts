@@ -20,6 +20,7 @@ import { AcademicSessionStatusComponent } from "./component/academic-session-sta
 import { AcademicYear } from "./academic-session-year.interface";
 import { AcademicSessionEditorDialog } from "./dialog/academic-session-editor.dialog";
 import { AcademicSessionSemesterSelectComponent } from  "./component/academic-session-semester-select.component";
+import { AcademicSessionActionComponent } from "./component/academic-session-action.component";
 
 
 @NgModule({
@@ -41,6 +42,7 @@ import { AcademicSessionSemesterSelectComponent } from  "./component/academic-se
     AcademicSessionSelectComponent,
     AcademicSessionStatusComponent,
     AcademicSessionSemesterSelectComponent,
+    AcademicSessionActionComponent,
 
 
     //dialog
@@ -51,13 +53,15 @@ import { AcademicSessionSemesterSelectComponent } from  "./component/academic-se
   exports: [
     AcademicSessionSelectComponent,
     AcademicSessionStatusComponent,
-    AcademicSessionSemesterSelectComponent
+    AcademicSessionSemesterSelectComponent,
+    AcademicSessionActionComponent,
   ],
 
   entryComponents: [
     AcademicSessionCreatorDialog,
     AcademicSessionEditorDialog,
-    AcademicSessionSelectComponent
+    AcademicSessionSelectComponent,
+    AcademicSessionActionComponent
 
   ],
 
