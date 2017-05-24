@@ -27,7 +27,7 @@ export class ProgramCreatorDialog implements OnInit {
   private creatorForm: FormGroup;
   private create: boolean = false;
   private _program: Program;
-  private _programStatus: ProgramStatus;
+  // private _status: ProgramStatus;
 
   constructor(private formBuilder: FormBuilder,
               private store: Store<PlannerModuleState>,
@@ -44,10 +44,10 @@ export class ProgramCreatorDialog implements OnInit {
     this.create = true;
   }
 
-set programStatus(value: ProgramStatus) {
-    this._programStatus = value;
-    this.create = true;
-  }
+// set programStatus(value: ProgramStatus) {
+//     this._status = value;
+//     this.create = true;
+//   }
 
   ngOnInit(): void {
     this.creatorForm = this.formBuilder.group(<Program>{
@@ -55,7 +55,7 @@ set programStatus(value: ProgramStatus) {
       code: '',
       titleMs: '',
       titleEn: '',
-      status:ProgramStatus.ACTIVATED,
+      status:ProgramStatus.INACTIVATED,
       faculty: <Faculty>{},
     });
 
