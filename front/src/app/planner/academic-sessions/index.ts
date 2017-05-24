@@ -17,9 +17,9 @@ import { AcademicSessionEffects } from "./academic-session.effect";
 import {AcademicSessionSelectComponent } from './component/academic-session-select.component';
 import { AcademicSessionCreatorDialog } from "./dialog/academic-session-creator.dialog";
 import { AcademicSessionStatusComponent } from "./component/academic-session-status.component";
-import { AcademicYear } from "./academic-session-year.interface";
+import { AcademicYear } from "./academic-year.interface";
 import { AcademicSessionEditorDialog } from "./dialog/academic-session-editor.dialog";
-import { AcademicSessionSemesterSelectComponent } from  "./component/academic-session-semester-select.component";
+import { AcademicSessionSemesterSelectComponent } from  "./component/academic-semester-select.component";
 import { AcademicSessionActionComponent } from "./component/academic-session-action.component";
 
 
