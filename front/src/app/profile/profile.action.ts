@@ -4,6 +4,40 @@ import {Action} from '@ngrx/store';
 
 @Injectable()
 export class ProfileActions {
+
+   static BAR_STUDENT = '[Profile] Bar Student';
+  barStudent(student): Action {
+    return {
+      type: ProfileActions.BAR_STUDENT,
+      payload: student
+    };
+  }
+
+static BAR_STUDENT_SUCCESS = '[Profile] Bar Student Success';
+  barStudentSuccess(student): Action {
+    return {
+      type: ProfileActions.BAR_STUDENT_SUCCESS,
+      payload: student
+    };
+  }
+
+
+   static ACTIVATE_STUDENT = '[Profile] Activate Student';
+  activateStudent(student): Action {
+    return {
+      type: ProfileActions.ACTIVATE_STUDENT,
+      payload: student
+    };
+  }
+
+static ACTIVATE_STUDENT_SUCCESS = '[Profile] Activate Student Success';
+  activateStudentSuccess(student): Action {
+    return {
+      type: ProfileActions.ACTIVATE_STUDENT_SUCCESS,
+      payload: student
+    };
+  }
+
   
  static DEACTIVATE_STUDENT = '[Profile] Deactivate Student';
   deactivateStudent(student): Action {

@@ -1,17 +1,17 @@
-import {Enrollment} from './../term/enrollments/enrollment.interface';
-import {Address} from './address.interface';
-import {Component, OnInit, ChangeDetectionStrategy, ViewContainerRef} from '@angular/core';
-import {Router, ActivatedRoute} from '@angular/router';
+import { Enrollment } from './../term/enrollments/enrollment.interface';
+import { Address } from './address.interface';
+import { Component, OnInit, ChangeDetectionStrategy, ViewContainerRef } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 
-import {Store} from "@ngrx/store";
-import {Student} from "../identity/student.interface";
-import {ProfileActions} from "./profile.action";
-import {ProfileModuleState} from "./index";
-import {Contact} from "./contact.interface";
-import {Guardian} from "./guardian.interface";
-import {Guarantor} from "./guarantor.interface";
-import {MdSnackBar} from '@angular/material';
-import {Observable} from 'rxjs';
+import { Store } from "@ngrx/store";
+import { Student } from "../identity/student.interface";
+import { ProfileActions } from "./profile.action";
+import { ProfileModuleState } from "./index";
+import { Contact } from "./contact.interface";
+import { Guardian } from "./guardian.interface";
+import { Guarantor } from "./guarantor.interface";
+import { MdSnackBar } from '@angular/material';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'pams-profile-detail',
@@ -36,10 +36,10 @@ export class ProfileDetailPage implements OnInit {
 
 
   constructor(private router: Router,
-              private route: ActivatedRoute,
-              private actions: ProfileActions,
-              private vcf: ViewContainerRef,
-              private store: Store<ProfileModuleState>,private snackBar: MdSnackBar) {
+    private route: ActivatedRoute,
+    private actions: ProfileActions,
+    private vcf: ViewContainerRef,
+    private store: Store<ProfileModuleState>, private snackBar: MdSnackBar) {
 
     this.student$ = this.store.select(...this.STUDENT);
     this.addressess$ = this.store.select(...this.ADDRESSES);
@@ -56,19 +56,31 @@ export class ProfileDetailPage implements OnInit {
     });
   }
 
-    deactivate(): void {
-    let snackBarRef = this.snackBar.open("Deactivating Student", "OK");
+  deactivate(): void {
+    let snackBarRef = this.snackBar.open("Deactivating Student : ?", "OK");
     snackBarRef.afterDismissed().subscribe(() => {
-        this.student$.take(1).subscribe(student =>
-          this.store.dispatch(this.actions.deactivateStudent(student)))
-      }
+      this.student$.take(1).subscribe(student =>
+        this.store.dispatch(this.actions.deactivateStudent(student)))
+    }
     );
 
   }
   activate(): void {
-  }
+    let snackBarRef = this.snackBar.open("Activating Student : ?", "OK");
+    snackBarRef.afterDismissed().subscribe(() => {
+      this.student$.take(1).subscribe(student =>
+        this.store.dispatch(this.actions.activateStudent(student)))
+    }
+    );
 
+  }
   bar(): void {
+    let snackBarRef = this.snackBar.open("Barred Student : ?", "OK");
+    snackBarRef.afterDismissed().subscribe(() => {
+      this.student$.take(1).subscribe(student =>
+        this.store.dispatch(this.actions.barStudent(student)))
+    }
+    );
   }
 
   disbar(): void {

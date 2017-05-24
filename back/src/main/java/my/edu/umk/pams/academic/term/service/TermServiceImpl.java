@@ -365,6 +365,12 @@ public class TermServiceImpl implements TermService {
     }
 
     @Override
+    public void deleteSection(AdOffering offering, AdSection section) {
+        sectionDao.delete(section, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
+
+    @Override
     public void updateSection(AdSection section) {
         sectionDao.update(section, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
@@ -1539,10 +1545,4 @@ public class TermServiceImpl implements TermService {
         map.put(WorkflowConstants.CANCEL_DECISION, false);
         return map;
     }
-
-	@Override
-	public void deleteSection(AdOffering offering, AdSection section) {
-		// TODO Auto-generated method stub
-		
-	}
 }

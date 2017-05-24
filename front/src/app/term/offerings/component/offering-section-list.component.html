@@ -22,7 +22,7 @@
              [routerLink]="['/term/sections', row['canonicalCode']]"> <md-icon class="md-24">pageview</md-icon>
           </a>
            <a md-button color="accent" class="text-upper" mdTooltip="Delete this section"
-             (click)="deleteSection()"> <md-icon class="md-24" >delete</md-icon>
+             (click)="deleteSection(row)"> <md-icon class="md-24" >delete</md-icon>
           </a>
         </div>
       </template>

@@ -17,8 +17,8 @@ export class OfferingSectionListComponent {
 
   private creatorDialogRef: MdDialogRef<SectionEditorDialog>;
   private edit: boolean = false;
-  private _offering: Offering;  
-    
+  private _offering: Offering;
+
   @Input() offering: Offering;
   @Input() sections: Section[];
   @Output() view = new EventEmitter<Section>();
@@ -30,14 +30,13 @@ export class OfferingSectionListComponent {
               private vcf: ViewContainerRef,
               private dialog: MdDialog,) {
   }
-    
-    ngOnInit(): void {
+
+  ngOnInit(): void {
     this.route.params.subscribe((params: { canonicalCode: string }) => {
-    let canonicalCode: string = params.canonicalCode;
-    this.store.dispatch(this.actions.findOfferingByCanonicalCode(canonicalCode));
-   });
-    }
-   
+      let canonicalCode: string = params.canonicalCode;
+      this.store.dispatch(this.actions.findOfferingByCanonicalCode(canonicalCode));
+    });
+  }
 
   private columns: any[] = [
     {name: 'id', label: 'Id'},
@@ -63,11 +62,10 @@ export class OfferingSectionListComponent {
       // load something here
     });
   }
-    
-    //delete section
-      deleteSection(section: Section): void {
+
+  deleteSection(section: Section): void {
     this.store.dispatch(this.actions.deleteSection(this.offering, section))
   }
-    
+
 }
 
