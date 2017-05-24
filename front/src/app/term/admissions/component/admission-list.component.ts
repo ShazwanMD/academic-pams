@@ -16,6 +16,8 @@ export class AdmissionListComponent {
     { name: 'student.identityNo', label: 'Matric No' },
     { name: 'academicSession.code', label: 'Session' },
     { name: 'cohort.code', label: 'Cohort' },
+    { name: 'academicStanding', label: 'Academic Standing' },
+    { name: 'admissionStatus', label: 'Admission Status' },
     { name: 'action', label: '' }
   ];
 }
