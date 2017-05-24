@@ -23,7 +23,7 @@ export class ProfileService {
   // STUDENT
   // ====================================================================================================
   findEnrollments(student: Student): Observable<Enrollment[]> {
-    console.log("findStudents");
+    //console.log("findStudents");
     // let headers = new Headers({'Authorization': 'Bearer TODO'});
     // let options = new RequestOptions({headers: headers});
     return this.http.get(environment.endpoint + '/api/profile/students/' + student.identityNo + "/enrollments")
@@ -31,7 +31,7 @@ export class ProfileService {
   }
 
   findStudents(): Observable<Student[]> {
-    console.log("findStudents");
+    //console.log("findStudents");
     // let headers = new Headers({'Authorization': 'Bearer TODO'});
     // let options = new RequestOptions({headers: headers});
     return this.http.get(environment.endpoint + '/api/profile/students')
@@ -46,7 +46,7 @@ export class ProfileService {
   }
 
   findGuardians(student: Student): Observable<Guardian[]> {
-    console.log("findStudents");
+    //console.log("findStudents");
     // let headers = new Headers({'Authorization': 'Bearer TODO'});
     // let options = new RequestOptions({headers: headers});
     return this.http.get(environment.endpoint + '/api/profile/students/' + student.identityNo + "/guardians")
@@ -54,7 +54,7 @@ export class ProfileService {
   }
 
   findGuarantors(student: Student): Observable<Guarantor[]> {
-    console.log("findStudents");
+    //console.log("findStudents");
     // let headers = new Headers({'Authorization': 'Bearer TODO'});
     // let options = new RequestOptions({headers: headers});
     return this.http.get(environment.endpoint + '/api/profile/students/' + student.identityNo + "/guarantors")
@@ -62,7 +62,7 @@ export class ProfileService {
   }
 
   findContacts(student: Student): Observable<Contact[]> {
-    console.log("findStudents");
+    //console.log("findStudents");
     // let headers = new Headers({'Authorization': 'Bearer TODO'});
     // let options = new RequestOptions({headers: headers});
     return this.http.get(environment.endpoint + '/api/profile/students/' + student.identityNo + "/contacts")
@@ -117,7 +117,7 @@ export class ProfileService {
       //'Authorization': 'Bearer ' + this.authService.token
     });
     let options = new RequestOptions({headers: headers});
-    return this.http.put(environment.endpoint + '/api/profile/students/' + student.identityNo + '/addresses', JSON.stringify(address), options)
+    return this.http.put(environment.endpoint + '/api/profile/students/' + student.identityNo + '/addresses/' + address.id, JSON.stringify(address), options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 

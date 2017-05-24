@@ -1,5 +1,5 @@
-import { AddressTypeSelectComponent } from './address-type-select.component';
-import { AddressType } from "../address-type.enum";
+import {AddressTypeSelectComponent} from './address-type-select.component';
+import {AddressType} from "../address-type.enum";
 import {ActivatedRoute} from '@angular/router';
 import {Router} from '@angular/router';
 import {Store} from '@ngrx/store';
@@ -32,12 +32,6 @@ import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 
 export class ProfileComponent implements OnInit {
 
-  private editorForm: FormGroup;
-  private editorForm1: FormGroup;
-  private edit: boolean = false;
-  private _address: Address;
-  private _student: Student;
-
   @Input() student: Student;
   @Input() addressess: Address[];
   @Input() guarantors: Guarantor[];
@@ -58,20 +52,22 @@ export class ProfileComponent implements OnInit {
     {name: 'action', label: ''}
   ];
 
+  private columnAddr: any[] = [
+    {name: 'addressType', label: 'Address Type'},
+    {name: 'address1', label: 'Address 1'},
+    {name: 'address2', label: 'Address 2'},
+    {name: 'address3', label: 'Address 3'},
+    {name: 'postcode', label: 'Postcode'},
+    {name: 'action', label: 'Action'}
+  ];
+
   constructor(private router: Router,
               private route: ActivatedRoute,
               private actions: ProfileActions,
               private vcf: ViewContainerRef,
               private store: Store<ProfileModuleState>,
-              private formBuilder: FormBuilder,
               private dialog: MdDialog) {
   }
-
-  set address(value: Address) {
-    this._address = value;
-    this.edit = true;
-  }
-  
 
   ngOnInit(): void {
     this.route.params.subscribe((params: { identityNo: string }) => {
@@ -79,20 +75,6 @@ export class ProfileComponent implements OnInit {
       this.store.dispatch(this.actions.findStudentByIdentityNo(identityNo));
     });
 
-    this.editorForm1 = this.formBuilder.group(<Address>{
-      address1: '',
-      address2:'',
-      address3: '',
-      postcode: '',
-      addressType: AddressType.BILLING
-    });
-
-     this.editorForm = this.formBuilder.group(<Student>{
-      //identityNo: this.student.identityNo
-    });
-
-    if (this.edit) this.editorForm.patchValue(this._student);
-    if (this.edit) this.editorForm1.patchValue(this._address);
   }
 
   goBack(route: string): void {
@@ -133,6 +115,25 @@ export class ProfileComponent implements OnInit {
     });
   }
 
+  editAddressDialog(address: Address): void {
+    //console.log("Ini utk Edit Address student", student);
+    let config = new MdDialogConfig();
+    config.viewContainerRef = this.vcf;
+    config.role = 'dialog';
+    config.width = '70%';
+    config.height = '80%';
+    config.position = {top: '0px'};
+    this.addressCreatorDialogRef = this.dialog.open(AddressEditorDialog, config);
+    console.log(address);
+    if (address){
+    this.addressCreatorDialogRef.componentInstance.address = address;
+    this.addressCreatorDialogRef.componentInstance.student = this.student;
+  } 
+    this.addressCreatorDialogRef.afterClosed().subscribe(res => {
+      //console.log("close this dialog");
+    });
+  }
+
     deleteContact(contact: Contact): void {
     this.store.dispatch(this.actions.deleteContact(this.student, contact))
   }
@@ -151,7 +152,6 @@ export class ProfileComponent implements OnInit {
       console.log("close dialog");
     });
   }
-
   
     addGuardianDialog(): void {
     console.log("addGuardian");
@@ -181,14 +181,5 @@ export class ProfileComponent implements OnInit {
     this.creatorDialogRef.afterClosed().subscribe(res => {
       console.log("close dialog");
     });
-  }
-
-  submit(student: Student, address: Address) {
-    //student.identityNo = new Student();
-    console.log(student);
-    console.log(address);
-    //console.log("student email: " + student.email);
-    this.store.dispatch(this.actions.updateAddress(student, address));
-    //this.dialog.close();
   }
 }

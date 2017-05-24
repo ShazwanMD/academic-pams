@@ -6,12 +6,21 @@ import my.edu.umk.pams.academic.web.module.core.vo.MetaObject;
  * @author PAMS
  */
 public class Address extends MetaObject{
-
+	
+	private Long id;
     private String address1;
     private String address2;
     private String address3;
     private String postcode;
     private AddressType addressType;
+    
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public AddressType getAddressType() {
 		return addressType;

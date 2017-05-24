@@ -68,18 +68,37 @@ public class ProfileController {
     //====================================================================================================
     
     //EDIT ADDRESS//
-    @RequestMapping(value = "/students/{identityNo}/addresses", method = RequestMethod.PUT)
+    
+    /*@RequestMapping(value = "/students/{identityNo}/addresses/{id}", method = RequestMethod.PUT)
     public ResponseEntity<String> updateAddress(@PathVariable String identityNo, @RequestBody Address vo) {
         dummyLogin();
         AdStudent student = profileService.findStudentByMatricNo(identityNo);
         List<AdAddress> addresses = profileService.findAddresses(student);
         for (AdAddress address : addresses) {
+        	address.setId(vo.getId());
             address.setAddress1(vo.getAddress1());
             address.setAddress2(vo.getAddress2());
             address.setAddress3(vo.getAddress3());
             address.setPostCode(vo.getPostcode());
             profileService.updateAddress(student, address);
         }
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+
+    }*/
+    
+
+    @RequestMapping(value = "/students/{identityNo}/addresses/{id}", method = RequestMethod.PUT)
+    public ResponseEntity<String> updateAddress(@PathVariable String identityNo, @RequestBody Address vo) {
+        dummyLogin();
+        LOG.debug("id address:{}",vo.getId());
+        AdStudent student = profileService.findStudentByMatricNo(identityNo);
+        AdAddress address = profileService.findAddressById(vo.getId());
+        	//address.setId(vo.getId());
+            address.setAddress1(vo.getAddress1());
+            address.setAddress2(vo.getAddress2());
+            address.setAddress3(vo.getAddress3());
+            address.setPostCode(vo.getPostcode());
+            profileService.updateAddress(student, address);
         return new ResponseEntity<String>("Success", HttpStatus.OK);
 
     }

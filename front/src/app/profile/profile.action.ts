@@ -16,7 +16,7 @@ export class ProfileActions {
   static FIND_STUDENTS_SUCCESS = '[Profile] Find Students Success';
 
   findStudentsSuccess(students): Action {
-    console.log("findStudentsSuccess");
+    //console.log("findStudentsSuccess");
     return {
       type: ProfileActions.FIND_STUDENTS_SUCCESS,
       payload: students
@@ -35,7 +35,7 @@ export class ProfileActions {
   static FIND_STUDENT_BY_IDENTITY_NO_SUCCESS = '[Profile] Find Student By Identity No Success';
 
   findStudentByIdentityNoSuccess(student): Action {
-    console.log("findStudentsSuccess");
+    //console.log("findStudentsSuccess");
     return {
       type: ProfileActions.FIND_STUDENT_BY_IDENTITY_NO_SUCCESS,
       payload: student
@@ -137,7 +137,7 @@ export class ProfileActions {
   static UPDATE_STUDENT = '[Profile] Update Student';
 
   updateStudent(identityNo): Action {
-    console.log("updateStudent");
+    //console.log("updateStudent");
     return {
       type: ProfileActions.UPDATE_STUDENT,
       payload: identityNo
@@ -147,7 +147,7 @@ export class ProfileActions {
   static UPDATE_STUDENT_SUCCESS = '[Profile] Update Student Success';
 
   updateStudentSuccess(message): Action {
-    console.log("updateStudentSuccess");
+    //console.log("updateStudentSuccess");
     return {
       type: ProfileActions.UPDATE_STUDENT_SUCCESS,
       payload: message
@@ -157,7 +157,7 @@ export class ProfileActions {
   static ADD_CONTACT = '[Profile] Add Contact';
 
   addContact(student, contact): Action {
-    console.log("addContact");
+    //console.log("addContact");
     return {
       type: ProfileActions.ADD_CONTACT,
       payload: {student: student, contact: contact}
@@ -168,7 +168,7 @@ export class ProfileActions {
   static ADD_CONTACT_SUCCEESS = '[Profile] Add Contact Success';
 
   addContactSuccess(message): Action {
-    console.log("addContactSuccess");
+    //console.log("addContactSuccess");
     return {
       type: ProfileActions.ADD_CONTACT_SUCCEESS,
       payload: message
@@ -178,7 +178,7 @@ export class ProfileActions {
   static ADD_ADDRESS = '[Profile] Add Address';
 
   addAddress(student, address): Action {
-    console.log("addAddress");
+    //console.log("addAddress");
     return {
       type: ProfileActions.ADD_ADDRESS,
       payload: {student: student, address: address}
@@ -189,7 +189,7 @@ export class ProfileActions {
   static ADD_ADDRESS_SUCCEESS = '[Profile] Add Address Success';
 
   addAddressSuccess(message): Action {
-    console.log("addAddressSuccess");
+    //console.log("addAddressSuccess");
     return {
       type: ProfileActions.ADD_ADDRESS_SUCCEESS,
       payload: message
@@ -199,7 +199,7 @@ export class ProfileActions {
   static UPDATE_ADDRESS = '[Profile] Update Address';
 
   updateAddress(student, address): Action {
-    console.log(student);
+    //console.log(student);
     return {
       type: ProfileActions.UPDATE_ADDRESS,
       payload: {student: student, address: address}
@@ -210,7 +210,7 @@ export class ProfileActions {
   static UPDATE_ADDRESS_SUCCEESS = '[Profile] Update Address Success';
 
   updateAddressSuccess(message): Action {
-    console.log("updateAddressSuccess");
+    //console.log("updateAddressSuccess");
     return {
       type: ProfileActions.UPDATE_ADDRESS_SUCCEESS,
       payload: message
@@ -220,7 +220,7 @@ export class ProfileActions {
   static ADD_GUARANTOR = '[Profile] Add Guarantor';
 
   addGuarantor(student, guarantor): Action {
-    console.log("addGuarantor");
+    //console.log("addGuarantor");
     return {
       type: ProfileActions.ADD_GUARANTOR,
       payload: {student: student, guarantor: guarantor}
@@ -231,7 +231,7 @@ export class ProfileActions {
   static ADD_GUARANTOR_SUCCEESS = '[Profile] Add Guarantor Success';
 
   addGuarantorSuccess(message): Action {
-    console.log("addGuarantorSuccess");
+    //console.log("addGuarantorSuccess");
     return {
       type: ProfileActions.ADD_GUARANTOR_SUCCEESS,
       payload: message
@@ -241,7 +241,7 @@ export class ProfileActions {
   static ADD_GUARDIAN = '[Profile] Add Guardian';
 
   addGuardian(student, guardian): Action {
-    console.log("addGuardian");
+    //console.log("addGuardian");
     return {
       type: ProfileActions.ADD_GUARDIAN,
       payload: {student: student, guardian: guardian}
@@ -252,7 +252,7 @@ export class ProfileActions {
   static ADD_GUARDIAN_SUCCEESS = '[Profile] Add Guardian Success';
 
   addGuardianSuccess(message): Action {
-    console.log("addGuardianSuccess");
+    //console.log("addGuardianSuccess");
     return {
       type: ProfileActions.ADD_GUARDIAN_SUCCEESS,
       payload: message
@@ -262,7 +262,7 @@ export class ProfileActions {
     static REMOVE_CONTACT = '[Profile] Remove Contact';
 
   deleteContact(student,contact): Action {
-    console.log("deleteContact");
+    //console.log("deleteContact");
     return {
       type: ProfileActions.REMOVE_CONTACT,
       payload: {student:student, contact:contact}
@@ -272,7 +272,7 @@ export class ProfileActions {
   static REMOVE_CONTACT_SUCCESS = '[Profile] Remove Contact  Success';
 
   deleteContactSuccess(message): Action {
-    console.log("deleteContactSuccess");
+    //console.log("deleteContactSuccess");
     return {
       type: ProfileActions.REMOVE_CONTACT_SUCCESS,
       payload: message

@@ -47,8 +47,7 @@ export interface ProfileModuleState {
   guardians: GuardianListState;
   contacts: ContactListState;
   enrollments: EnrollmentListState;
-}
-;
+};
 
 export const INITIAL_PROFILE_STATE: ProfileModuleState =
   <ProfileModuleState>{

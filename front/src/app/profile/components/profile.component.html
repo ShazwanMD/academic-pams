@@ -10,7 +10,6 @@
 
         <br/>
     
-    <form [formGroup]="editorForm">
     <!--STUDENT INFORMATION-->
     <md-card>
     <div md-content flex md-scroll-y>
@@ -51,11 +50,9 @@
           </div>
         </md-card-content>
     </md-card>
-    </form>
 
     <br/>
 
-    <form [formGroup]="editorForm1">
     <!--ADDRESS INFORMATION-->
     <md-card>
     <div md-content flex md-scroll-y>
@@ -71,7 +68,6 @@
     </button>
     <md-menu x-position="before" #menu2="mdMenu">
       <button md-menu-item (click)="addAddressDialog()">Add</button>
-      <button md-menu-item (click)="editDialog(row)">Edit</button>
     </md-menu>
     </div>
     
@@ -80,50 +76,33 @@
         <md-card-subtitle>---</md-card-subtitle>
         <md-divider></md-divider>
         <md-card-content>
-          <div layout="row" layout-gt-md="row" class="insert" *ngFor="let address of addressess">
-          <div flex-gt-md="100">
-            <!--<b>{{address.addressType}}</b><br/>{{address.address1 +","+ address.address2 +","+ address.postcode}}-->
-              <div layout="row" layout-margin>
-              <b>{{address.addressType}}</b><br/>
+
+          <td-data-table
+            [data]="addressess"
+            [columns]="columnAddr"
+            [sortBy]="summary"
+            [sortOrder]="ASC"
+            [sortable]="false"
+            [multiple]="false"
+            [selectable]="false"
+            (rowSelect)="edit.emit($event)" dense>
+
+            <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column" >
+              <div layout="row">
+                <span flex >{{value}}</span>
               </div>
-
-              <div layout="row" layout-margin>
-
-              <div layout="column" layout-margin>
-              <md-input-container>
-              <input mdInput placeholder="Address 1" formControlName="address1" value={{address.address1}}>
-              </md-input-container> 
+            </template>
+            
+            <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
+              <div layout="row">
+                <button md-raised-button color="primary" (click)="editAddressDialog(row)">Update</button>
               </div>
+            </template>
 
-              <div layout="column" layout-margin>
-              <md-input-container>
-              <input mdInput placeholder="Address 2" formControlName="address2" value={{address.address2}}>
-              </md-input-container>
-              </div>
+          </td-data-table>
 
-              <div layout="column" layout-margin>
-              <md-input-container>
-              <input mdInput placeholder="Address 3" formControlName="address3" value={{address.address3}}>
-              </md-input-container>
-              </div>
-
-              <div layout="column" layout-margin>
-              <md-input-container>
-              <input mdInput placeholder="Postcode" formControlName="postcode" value={{address.postcode}}>
-              </md-input-container>
-              </div>
-
-              <div layout="column" layout-margin>
-              <button md-raised-button color="primary" (click)="submit(editorForm.value, editorForm1.value)">Update</button>
-              </div>
-
-              </div>
-
-          </div>
-          </div>
         </md-card-content>
     </md-card>
-    </form>
 
     <br/>
 

@@ -48,13 +48,17 @@ export class AddressEditorDialog implements OnInit {
       address3: '',
       postcode: ''
     });
-
-    if (this.edit) this.editorForm.patchValue(this.address);
+    //console.log(this._address, this._student)
+    if (this.edit) this.editorForm.patchValue(this._address);
   }
 
   submit(address: Address, isValid: boolean) {
-    console.log("adding student address");
-    this.store.dispatch(this.actions.addAddress(this._student, address));
+    console.log(this._student);
+    console.log(this._address);
+    console.log(isValid);
+    this.store.dispatch(this.actions.updateAddress(this._student, address));
+    //if(!address.id) this.store.dispatch(this.actions.updateAddress(this._student, address));
+    //else this.store.dispatch(this.actions.addAddress(this._student, address));
     this.dialog.close();
   }
 }
