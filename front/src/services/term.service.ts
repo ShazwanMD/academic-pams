@@ -25,6 +25,14 @@ export class TermService {
               private http: Http) {
   }
 
+  
+  findAssessmentById(id): Observable<Assessment> {
+    console.log("findAssessmentById");
+    return this.http.get(environment.endpoint + '/api/term/assessments/' + id)
+      .map((res: Response) => <Assessment>res.json());
+  }
+
+
 
   findAssessments(): Observable<Assessment[]> {
     console.log("findAssessments");
