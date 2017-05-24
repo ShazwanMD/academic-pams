@@ -4,7 +4,48 @@ import { Action } from '@ngrx/store';
 @Injectable()
 export class SectionActions {
 
-  static FIND_SECTION_BY_CANONICAL_CODE = '[Section] Find Section By Canonical Code';
+// baru buat 24/5/17 to make delete button action try and error
+     static FIND_OFFERING_BY_CANONICAL_CODE = '[Offering] Find Offering By Canonical Code';
+
+  findOfferingByCanonicalCode(canonicalCode): Action {
+    return {
+      type: SectionActions.FIND_OFFERING_BY_CANONICAL_CODE,
+      payload: canonicalCode
+    };
+  }
+
+  static FIND_OFFERING_BY_CANONICAL_CODE_SUCCESS = '[Offering] Find Offering By Canonical Code Success';
+
+  findOfferingByCanonicalCodeSuccess(offering): Action {
+    return {
+      type: SectionActions.FIND_OFFERING_BY_CANONICAL_CODE_SUCCESS,
+      payload: offering
+    };
+  }
+
+  //find section by offering
+
+  static FIND_SECTIONS_BY_OFFERING = '[Offering] Find Sections By Offering';
+
+  findSectionsByOffering(offering): Action {
+    return {
+      type: SectionActions.FIND_SECTIONS_BY_OFFERING,
+      payload: offering
+    };
+  }
+
+  static FIND_SECTIONS_BY_OFFERING_SUCCESS = '[Offering] Find Sections By Offering Success';
+
+  findSectionsByOfferingSuccess(sections): Action {
+    return {
+      type: SectionActions.FIND_SECTIONS_BY_OFFERING_SUCCESS,
+      payload: sections
+    };
+  }
+    
+   
+    
+    static FIND_SECTION_BY_CANONICAL_CODE = '[Section] Find Section By Canonical Code';
   findSectionByCanonicalCode(canonicalCode): Action {
     return {
       type: SectionActions.FIND_SECTION_BY_CANONICAL_CODE,
@@ -12,7 +53,7 @@ export class SectionActions {
     };
   }
 
-  static FIND_SECTION_BY_CANONICAL_CODE_SUCCESS = '[Offering] Find Section By Canonical Code Success';
+  static FIND_SECTION_BY_CANONICAL_CODE_SUCCESS = '[Section] Find Section By Canonical Code Success';
   findSectionByCanonicalCodeSuccess(section): Action {
     return {
       type: SectionActions.FIND_SECTION_BY_CANONICAL_CODE_SUCCESS,
