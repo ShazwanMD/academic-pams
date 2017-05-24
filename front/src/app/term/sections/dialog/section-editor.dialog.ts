@@ -49,9 +49,10 @@ export class SectionEditorDialog implements OnInit {
 
     // set offering by default
     this.editorForm.patchValue({'offering': this._offering});
+    if (this.edit) this.editorForm.patchValue(this._section);
   }
 
-  submit(section: Section, isValid: boolean) {
+ /* submit(section: Section, isValid: boolean) {
     console.log(section);  
     // set codes
     section.canonicalCode = this._offering.canonicalCode + "" + section.ordinal
@@ -60,5 +61,10 @@ export class SectionEditorDialog implements OnInit {
     // dispatch action
     this.store.dispatch(this.actions.addSection(this._offering, section));
     this.dialog.close();
-  }
+  }*/
+  submit(section: Section, isValid: boolean) {
+      if (!section.id) this.store.dispatch(this.actions.addSection(this._offering, section));
+      else  this.store.dispatch(this.actions.updateSection(this._offering, section));
+      this.dialog.close();
+    }
 }

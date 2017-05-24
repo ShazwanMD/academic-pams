@@ -6,6 +6,7 @@ import {Store} from "@ngrx/store";
 import {TermModuleState} from "../index";
 import {OfferingActions} from "../offerings/offering.action";
 import {Offering} from "../offerings/offering.interface";
+import { from } from "rxjs/observable/from";
 
 
 @Injectable()
@@ -45,5 +46,12 @@ export class SectionEffects {
     .map(state => state[1])
     .map((offering: Offering) => this.offeringActions.findOfferingByCanonicalCode(offering.canonicalCode));
 
+  //update section
+  @Effect() updateSections$ = this.actions$
+  .ofType(SectionActions.UPDATE_SECTION)
+  .map(action => action.payload)
+  .switchMap(payload => this.termService.updateSection(payload))
+  .map(message => this.sectionActions.updateSectionSuccess(message))
+  .mergeMap(action => from([action, this.sectionActions.findSections()]));
 
 }

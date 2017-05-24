@@ -411,6 +411,18 @@ export class TermService {
         return this.http.put(environment.endpoint + '/api/term/sections/' + section.canonicalCode, JSON.stringify(section), options)
             .flatMap((res: Response) => Observable.of(res.text()));
     }
+        
+    /*sample code
+     * updateStudyMode(code: StudyMode) {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
+    return this.http.put(environment.endpoint + '/api/common/studyModes/' + code.code, JSON.stringify(code), options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+     */
 
     deleteAppointment(offering: Offering, appointment: Appointment) {
         let headers = new Headers({

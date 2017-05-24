@@ -462,6 +462,15 @@ public class TermController {
         termService.addSection(offering, section);
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
+    
+    //update section
+    @RequestMapping(value = "/sections/{canonicalCode}", method = RequestMethod.PUT)
+    public ResponseEntity<Section> updateSection(@PathVariable String canonicalCode,
+    @RequestBody Section vo) {
+        AdSection section = (AdSection) termService.findSectionByCanonicalCode(canonicalCode);
+        return new ResponseEntity<Section>(
+                termTransformer.toSectionVo(section), HttpStatus.OK);
+    }
 
     @RequestMapping(value = "/offerings/{canonicalCode}/appointments", method = RequestMethod.POST)
     public ResponseEntity<String> addAppointment(@PathVariable String canonicalCode, @RequestBody Appointment vo) {
