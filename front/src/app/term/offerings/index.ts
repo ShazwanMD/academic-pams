@@ -17,6 +17,7 @@ import {OfferingEffects} from "./offering.effect";
 import {OfferingDetailPage} from "./offering-detail.page";
 import {OfferingComponent} from "./component/offering.component";
 import {OfferingEditorDialog} from "./dialog/offering-editor.dialog";
+import {OfferingUpdateDialog} from "./dialog/offering-update.dialog";
 import {CourseSubModule} from "../../planner/courses/index";
 import {ProgramSubModule} from "../../planner/programs/index";
 import {AcademicSessionSubModule} from "../../planner/academic-sessions/index";
@@ -51,6 +52,7 @@ import {OfferingAppointmentListComponent} from "./component/offering-appointment
 
     //dialog
     OfferingEditorDialog,
+    OfferingUpdateDialog,
     
 
   ],

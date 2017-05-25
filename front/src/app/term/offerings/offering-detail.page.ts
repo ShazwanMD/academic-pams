@@ -1,6 +1,6 @@
 import {Component, OnInit, ChangeDetectionStrategy, ViewContainerRef, Input, EventEmitter, Output} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
-import {OfferingEditorDialog} from "./dialog/offering-editor.dialog";
+import {OfferingUpdateDialog} from "./dialog/offering-update.dialog";
 import {IdentityService} from '../../../services';
 import {TermService} from '../../../services';
 import {CommonService} from '../../../services';
@@ -37,7 +37,7 @@ export class OfferingDetailPage implements OnInit {
   private enrollments$: Observable<Enrollment[]>;
     
   
-  private editorDialogRef: MdDialogRef<OfferingEditorDialog>;
+  private editorDialogRef: MdDialogRef<OfferingUpdateDialog>;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -64,7 +64,7 @@ export class OfferingDetailPage implements OnInit {
     
      
   //update offeringEditorDialog
-    showOfferingDialog(): void {
+    showUpdateDialog(): void {
     console.log("edit offering");
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
@@ -72,7 +72,7 @@ export class OfferingDetailPage implements OnInit {
     config.width = '60%';
     config.height = '50%';
     config.position = {top: '0px'};
-    this.editorDialogRef = this.dialog.open(OfferingEditorDialog, config);
+    this.editorDialogRef = this.dialog.open(OfferingUpdateDialog, config);
     this.editorDialogRef.componentInstance.offering = this.offering;
 
     // set
