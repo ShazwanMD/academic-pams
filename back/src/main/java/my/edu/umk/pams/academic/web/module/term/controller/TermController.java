@@ -486,6 +486,27 @@ public class TermController {
             return new ResponseEntity<String>("Success", HttpStatus.OK);
             }
     
+    //update offering
+    @RequestMapping(value = "/offerings/{canonicalCode}", method = RequestMethod.PUT)
+    public ResponseEntity<String> updateOffering(@PathVariable String canonicalCode, @RequestBody Offering vo) {
+        dummyLogin();
+
+        AdOffering offering = termService.findOfferingByCanonicalCode(canonicalCode);
+        offering.setCode(vo.getCode());
+        offering.setCanonicalCode(vo.getCanonicalCode());
+        offering.setCapacity(vo.getCapacity());
+        offering.setTitleMs(vo.getTitleMs());
+        offering.setTitleEn(vo.getTitleEn());
+        offering.setCourse(plannerService.findCourseByCode(vo.getCourse().getCode()));
+        offering.setProgram(plannerService.findProgramByCode(vo.getProgram().getCode()));
+        offering.setSession(plannerService.findAcademicSessionByCode(vo.getAcademicSession().getCode()));
+       
+        termService.updateOffering(offering);
+        return new ResponseEntity<String>("Success Update Offering", HttpStatus.OK);
+    }
+    
+    
+    
     //update section
     @RequestMapping(value = "/sections/{canonicalCode}", method = RequestMethod.PUT)
     public ResponseEntity<Section> updateSection(@PathVariable String canonicalCode,

@@ -418,7 +418,7 @@ export class TermService {
             .flatMap((res: Response) => Observable.of(res.text()));
     }
 
-
+    //delete Section using editorDialog
     deleteSection(offering: Offering, section: Section) {
         let headers = new Headers({
             'Content-Type': 'application/json',
@@ -439,6 +439,19 @@ export class TermService {
         return this.http.put(environment.endpoint + '/api/term/sections/' + section.canonicalCode, JSON.stringify(section), options)
             .flatMap((res: Response) => Observable.of(res.text()));
     }
+    
+    //update offering using editorDialog
+     updateOffering(offering: Offering): Observable<String> {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({ headers: headers });
+    return this.http.put(environment.endpoint + '/api/term/offerings/' + offering.canonicalCode, JSON.stringify(offering), options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+    
         
    deleteAppointment(offering: Offering, appointment: Appointment) {
         let headers = new Headers({
