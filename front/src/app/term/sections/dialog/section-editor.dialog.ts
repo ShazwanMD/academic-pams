@@ -63,6 +63,7 @@ export class SectionEditorDialog implements OnInit {
     this.dialog.close();
   }*/
   submit(section: Section, isValid: boolean) {
+      console.log(section);
       // set codes
      section.canonicalCode = this._offering.canonicalCode + "" + section.ordinal
      section.code = this._offering.code + "" + section.ordinal
