@@ -1,10 +1,9 @@
 package my.edu.umk.pams.academic.web.module.planner.vo;
 
-import java.util.Date;
-
 import com.fasterxml.jackson.annotation.JsonFormat;
-
 import my.edu.umk.pams.academic.web.module.core.vo.MetaObject;
+
+import java.util.Date;
 
 
 /**
@@ -15,9 +14,9 @@ public class AcademicSession extends MetaObject {
     private String code;
     private String description;
     private boolean current;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm a")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private Date startDate;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm a")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private Date endDate;
     private AcademicSemester semester;
     private AcademicYear year;

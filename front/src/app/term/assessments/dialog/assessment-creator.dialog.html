@@ -11,14 +11,6 @@
     </div>
 
     <div layout="row" class="pad-bottom">
-      <md-input-container flex mdTooltip="Please insert assessment Canonical Code">
-        <input mdInput
-               placeholder="Canonical Code"
-               formControlName="canonicalCode" flex/>
-      </md-input-container>
-    </div>
-
-    <div layout="row" class="pad-bottom">
       <md-input-container flex mdTooltip="Please insert assessment Description">
         <input mdInput
                placeholder="Description"
@@ -26,11 +18,12 @@
       </md-input-container>
     </div>
 
-    
+
     <div layout="row" class="pad-bottom">
       <md-input-container flex mdTooltip="Please insert assessment Ordinal">
         <input mdInput
                placeholder="Ordinal"
+               typ="number"
                formControlName="ordinal" flex/>
       </md-input-container>
     </div>
@@ -40,6 +33,7 @@
       <md-input-container flex mdTooltip="Please insert assessment Total Score">
         <input mdInput
                placeholder="Total Score"
+               typ="number"
                formControlName="totalScore" flex/>
       </md-input-container>
     </div>
@@ -48,24 +42,24 @@
       <md-input-container flex mdTooltip="Please insert assessment Weight">
         <input mdInput
                placeholder="Weight"
+               typ="number"
                formControlName="weight" flex/>
       </md-input-container>
     </div>
 
-        <div layout="row" class="pad-bottom pad-top" mdTooltip="Please select ">
-    </div>
-      <div layout="row" class="inset" flex>
+    <div layout="row" class="pad_bottom">
       <pams-assessment-category-select
         [placeholder]="'Assessment Category'"
         [innerFormControl]="editorForm.controls['assessmentCategory']">
       </pams-assessment-category-select>
-      </div>
-      <div layout="row" class="inset" flex>
+    </div>
+
+    <div layout="row" class="pad_bottom pad_top">
       <pams-assessment-type-select
         [placeholder]="'Assessment Type'"
         [innerFormControl]="editorForm.controls['assessmentType']">
       </pams-assessment-type-select>
-      </div>
+    </div>
 
 
   </form>

@@ -1,15 +1,15 @@
-import { ActivatedRoute, Router } from '@angular/router';
-import { Offering } from './../../offerings/offering.interface';
-import { AssessmentActions } from './../assessment.action';
-import { Assessment } from './../assessment.interface';
-import { Component, ViewContainerRef, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
-import { FormBuilder } from '@angular/forms';
-import { Store } from "@ngrx/store";
-import { MdDialogRef } from "@angular/material";
-import { TermModuleState } from "../../index";
-import { AssessmentType } from "../assessment-type.enum";
-import { AssessmentCategory } from "../assessment-category.enum";
+import {ActivatedRoute, Router} from '@angular/router';
+import {Offering} from './../../offerings/offering.interface';
+import {AssessmentActions} from './../assessment.action';
+import {Assessment} from './../assessment.interface';
+import {Component, ViewContainerRef, OnInit} from '@angular/core';
+import {FormGroup, FormControl} from '@angular/forms';
+import {FormBuilder} from '@angular/forms';
+import {Store} from "@ngrx/store";
+import {MdDialogRef} from "@angular/material";
+import {TermModuleState} from "../../index";
+import {AssessmentType} from "../assessment-type.enum";
+import {AssessmentCategory} from "../assessment-category.enum";
 
 
 @Component({
@@ -25,11 +25,11 @@ export class AssessmentCreatorDialog implements OnInit {
   private edit: boolean = false;
 
   constructor(private formBuilder: FormBuilder,
-    private router: Router,
-    private route: ActivatedRoute,
-    private store: Store<TermModuleState>,
-    private actions: AssessmentActions,
-    private dialog: MdDialogRef<AssessmentCreatorDialog>) {
+              private router: Router,
+              private route: ActivatedRoute,
+              private store: Store<TermModuleState>,
+              private actions: AssessmentActions,
+              private dialog: MdDialogRef<AssessmentCreatorDialog>) {
   }
 
   set offering(value: Offering) {
@@ -48,28 +48,25 @@ export class AssessmentCreatorDialog implements OnInit {
       canonicalCode: '',
       description: '',
       totalScore: 0,
-      ordinal:0,
+      ordinal: 0,
       weight: 0,
       offering: <Offering>{},
       assessmentType: AssessmentType.QUIZ,
       assessmentCategory: AssessmentCategory.COURSE_WORK
-
-
     });
 
     // set offering by default
-    this.editorForm.patchValue({ 'offering': this._offering });
+    this.editorForm.patchValue({'offering': this._offering});
     // Assessment
     if (this.edit) this.editorForm.patchValue(this._assessment);
   }
 
   submit(assessment: Assessment, isValid: boolean) {
-    // set codes
-   assessment.canonicalCode = this._offering.canonicalCode + ""+ assessment.canonicalCode
-   assessment.code = this._offering.code + "" + assessment.code
-console.log(this._offering)
-    // dispatch action
     console.log("Add AssessmentDialog");
+    console.log("canonical Code: "  + this._offering.canonicalCode + "-" + assessment.code);
+
+    // set canonical code
+    assessment.canonicalCode = this._offering.canonicalCode + "-" + assessment.code;
     this.store.dispatch(this.actions.addAssessment(this._offering, assessment));
     this.dialog.close();
   }

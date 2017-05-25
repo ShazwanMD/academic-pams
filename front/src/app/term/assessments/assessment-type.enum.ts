@@ -22,5 +22,5 @@ export enum AssessmentType{
   PEER_EVALUATION,    // 21
   JOURNAL,            // 22
   HOMEWORK,           // 23
-  OTHER             // 24
+  OTHER           // 24
 }
