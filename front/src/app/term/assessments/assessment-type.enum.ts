@@ -7,7 +7,7 @@ export enum AssessmentType{
   PRESENTATION,       // 5
   VIVA,               // 6
   LAB_REPORT,         // 7
-  LAB_PRACTICAL,     // 8
+  LAB_PRACTICAL,      // 8
   FINAL_EXAM,         // 9  // ew
   THESIS,             // 10
   SURVEY,             // 12
@@ -22,5 +22,5 @@ export enum AssessmentType{
   PEER_EVALUATION,    // 21
   JOURNAL,            // 22
   HOMEWORK,           // 23
-  OTHER             // 24
+  OTHER           // 24
 }

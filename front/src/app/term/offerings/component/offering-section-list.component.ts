@@ -53,6 +53,7 @@ export class OfferingSectionListComponent {
      updateSection(canonicalCode: Section): void {
       this.showUpdateDialog(canonicalCode)
     } 
+    
          
    //show update dialog for section
     
@@ -70,6 +71,7 @@ export class OfferingSectionListComponent {
       console.log("close dialog for update section");
     });
   }
+    
  
     
   showSectionDialog(): void {
@@ -91,6 +93,7 @@ export class OfferingSectionListComponent {
   deleteSection(section: Section): void {
     this.store.dispatch(this.actions.deleteSection(this.offering, section))
   }
-
+  
+    
 }
 

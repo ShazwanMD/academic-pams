@@ -1,10 +1,9 @@
 package my.edu.umk.pams.academic.web.module.planner.vo;
 
-import java.util.Date;
-
 import com.fasterxml.jackson.annotation.JsonFormat;
-
 import my.edu.umk.pams.academic.web.module.core.vo.MetaObject;
+
+import java.util.Date;
 
 
 /**

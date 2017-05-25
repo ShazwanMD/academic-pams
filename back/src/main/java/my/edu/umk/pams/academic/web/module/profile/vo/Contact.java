@@ -6,10 +6,20 @@ import my.edu.umk.pams.academic.web.module.core.vo.MetaObject;
  * @author PAMS
  */
 public class Contact extends MetaObject {
-    private String identityNo;
+    
+	private Long id;
+	private String identityNo;
     private String name;
     private ContactType contactType;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+    
     public String getIdentityNo() {
         return identityNo;
     }

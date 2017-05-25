@@ -35,7 +35,7 @@ export class OfferingAssessmentListComponent {
 
   private columns: any[] = [
     { name: 'id', label: 'Id' },
-    { name: 'canonicalCode', label: 'Code' },
+    { name: 'code', label: 'Code' },
     { name: 'assessmentType', label: 'Assessment Type' },
     { name: 'assessmentCategory', label: 'Assessment Category' },
     { name: 'action', label: '' }
@@ -46,8 +46,8 @@ export class OfferingAssessmentListComponent {
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
     config.role = 'dialog';
-    config.width = '50%';
-    config.height = '70%';
+    config.width = '60%';
+    config.height = '80%';
     config.position = { top: '0px' };
     this.creatorDialogRef = this.dialog.open(AssessmentCreatorDialog, config);
     this.creatorDialogRef.componentInstance.offering = this.offering;

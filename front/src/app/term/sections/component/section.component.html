@@ -1,19 +1,19 @@
 <md-card>
-  <md-card-title>{{section.offering.course.titleEn}}</md-card-title>
-  <md-card-subtitle>{{section.code}}</md-card-subtitle>
+  <md-card-title>{{section?.offering?.course?.titleEn}}</md-card-title>
+  <md-card-subtitle>{{section?.code}}</md-card-subtitle>
   <md-divider></md-divider>
   <md-card-content>
     <!--Tab Section Here-->
     <md-tab-group>
       <md-tab label="Section Detail"><br>
         
-        <div>Section Code : {{section.code}}</div>
+        <div>Section Code : {{section?.code}}</div>
         <br>
-        <div>Section Capacity : {{section.capacity}} </div>
+        <div>Section Capacity : {{section?.capacity}} </div>
          <br>
-        <div>Section canonicalCode  : {{section.canonicalCode}}</div>
+        <div>Section canonicalCode  : {{section?.canonicalCode}}</div>
         <br>
-        <div>Section ordinal : {{section.ordinal}}</div>
+        <div>Section ordinal : {{section?.ordinal}}</div>
         <br>
                  
       
@@ -21,11 +21,11 @@
 
       <md-tab label="Course Information">
         
-        <div>Code : {{section.offering.course.code}}</div>
+        <div>Code : {{section?.offering?.course?.code}}</div>
         <br>
-         <div>Title : {{section.offering.course.titleMs}}</div>
+         <div>Title : {{section?.offering?.course?.titleMs}}</div>
         <br>
-         <div>Credit : {{section.offering.course.credit}}</div>
+         <div>Credit : {{section?.offering?.course?.credit}}</div>
         <br>
         
         
@@ -34,15 +34,15 @@
       
        <md-tab label="Program Information">
        
-         <div>Code : {{section.offering.program.code}}</div>
+         <div>Code : {{section?.offering?.program?.code}}</div>
         <br>
-         <div>Title : {{section.offering.program.titleMs}}</div>
+         <div>Title : {{section?.offering?.program?.titleMs}}</div>
         <br>
-         <div>Status : {{section.offering.program.status}}</div>
+         <div>Status : {{section?.offering?.program?.status}}</div>
         <br>
-        <div>Faculty : {{section.offering.program.faculty.name}}</div>
+        <div>Faculty : {{section?.offering?.program?.faculty?.name}}</div>
         <br>
-        <div>Faculty Desc. : {{section.offering.program.faculty.description}}</div>
+        <div>Faculty Desc. : {{section?.offering?.program?.faculty?.description}}</div>
         <br>
        
         
