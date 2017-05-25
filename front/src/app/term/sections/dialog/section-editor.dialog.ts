@@ -63,7 +63,13 @@ export class SectionEditorDialog implements OnInit {
     this.dialog.close();
   }*/
   submit(section: Section, isValid: boolean) {
-      if (!section.id) this.store.dispatch(this.actions.addSection(this._offering, section));
+      // set codes
+     section.canonicalCode = this._offering.canonicalCode + "" + section.ordinal
+     section.code = this._offering.code + "" + section.ordinal
+      if (!section.id) 
+      
+      this.store.dispatch(this.actions.addSection(this._offering, section));
+          
       else  this.store.dispatch(this.actions.updateSection(this._offering, section));
       this.dialog.close();
     }
