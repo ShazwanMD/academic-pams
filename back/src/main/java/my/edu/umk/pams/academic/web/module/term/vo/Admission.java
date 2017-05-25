@@ -1,5 +1,8 @@
 package my.edu.umk.pams.academic.web.module.term.vo;
 
+import my.edu.umk.pams.academic.planner.model.AdAcademicStanding;
+
+import my.edu.umk.pams.academic.planner.model.AdAdmissionStatus;
 import my.edu.umk.pams.academic.web.module.core.vo.MetaObject;
 
 import my.edu.umk.pams.academic.web.module.identity.vo.Student;
@@ -24,6 +27,8 @@ public class Admission extends MetaObject{
     private Student student;
     private AcademicSession academicSession;
     private Cohort cohort;
+    private AdmissionStatus status;
+    private AcademicStanding standing;
 
     public BigDecimal getGpa() {
         return gpa;
@@ -80,6 +85,23 @@ public class Admission extends MetaObject{
     public void setCohort(Cohort cohort) {
         this.cohort = cohort;
     }
+    
+    public AdmissionStatus getAdmissionStatus() {
+        return status;
+    }
+
+    public void setAdmissionStatus(AdmissionStatus status) {
+        this.status = status;
+    }
+    
+    public AcademicStanding getAcademicStanding() {
+        return standing;
+    }
+
+    public void setAcademicStanding(AcademicStanding standing) {
+        this.standing = standing;
+    }
+    
     
     @JsonCreator
     public static Admission create(String jsonString) {

@@ -21,7 +21,6 @@ export class AcademicSessionEditorDialog implements OnInit {
     private editorForm: FormGroup;
     private edit: boolean = false;
     private _academicSession: AcademicSession;
-    // private _semester: AcademicSemester;
     private _year: AcademicYear;
 
     constructor(private router: Router,

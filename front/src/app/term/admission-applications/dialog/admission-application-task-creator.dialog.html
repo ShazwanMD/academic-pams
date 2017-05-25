@@ -31,6 +31,12 @@
         [innerFormControl]="createForm.controls['academicSession']">
       </pams-academic-session-select>
     </div>
+     <div layout="row" class="pad-bottom pad-top">
+      <pams-program-select
+        [placeholder]="'Select Program'"
+        [innerFormControl]="createForm.controls['program']">
+      </pams-program-select>
+    </div>
   </form>
 </md-dialog-content>
 <md-dialog-actions align="end">

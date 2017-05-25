@@ -8,6 +8,7 @@ export interface Offering extends MetaObject{
 //export interface Offering extends Document {
   code:string;
   canonicalCode:string;
+  capacity: number;
   titleMs:string;
   titleEn:string;
   course: Course;

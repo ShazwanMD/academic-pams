@@ -42,6 +42,7 @@ export class OfferingEditorDialog implements OnInit {
       id: null,
       code: '',
       canonicalCode: '',
+      capacity: 0,
       titleMs:'',
       titleEn:'',
       academicSession:<AcademicSession>{},
@@ -53,9 +54,10 @@ export class OfferingEditorDialog implements OnInit {
    // this.editForm.patchValue(this.offering);
   }
 
-  save(offering: Offering, isValid: boolean) {
-  /*  this.store.dispatch(this.actions.addOffering(offering));
-    this.dialog.close(); */
-  }
+  submit(offering: Offering, isValid: boolean) {
+      console.log(JSON.stringify(offering));
+      this.store.dispatch(this.actions.saveOffering(offering));
+      this.dialog.close();
+    }
 }
 

@@ -181,7 +181,6 @@ public class ProfileServiceImpl implements ProfileService {
 	public void updateGuardian(AdStudent student, AdGuardian guardian) {
 		studentDao.updateGuardian(student, guardian, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
-		
 	}
 
     @Override

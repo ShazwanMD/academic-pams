@@ -49,7 +49,8 @@ public class AdStudentDaoImpl extends GenericDaoSupport<Long, AdStudent> impleme
     @Override
     public AdGuardian findGuardianById(Long id) {
     	Session session = sessionFactory.getCurrentSession();
-        return (AdGuardian) session.get(AdGuardianImpl.class, id);    }
+        return (AdGuardian) session.get(AdGuardianImpl.class, id);
+    }
 
     @Override
     public AdContact findContactById(Long id) {

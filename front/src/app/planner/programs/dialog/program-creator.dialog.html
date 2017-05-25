@@ -1,50 +1,49 @@
 <h2 md-dialog-title>Create New Program</h2>
- <md-dialog-content>
-<form [formGroup]="creatorForm">
-	<div layout="row" class="pad-bottom">
-		<md-input-container flex>
-		<input mdInput #code
-			   placeholder="Code"
-			   formControlName="code"
-			    flex/>
-	 </md-input-container>
-	</div>
-	<div layout="row" class="pad-bottom">
-		<md-input-container flex> 
-			<input mdInput #title
-			       placeholder="TitleMs"
-				   formControlName="titleMs"
-				    flex/>
-		</md-input-container>
-	</div>
-	<div layout="row" class="pad-bottom">
-		<md-input-container flex> 
-			<input mdInput #title
-			       placeholder="TitleEn"
-				   formControlName="titleEn"
-				    flex/>
-		</md-input-container>
-	</div>
+<md-dialog-content>
+  <form [formGroup]="creatorForm">
+    <div layout="row" class="pad-bottom">
+      <md-input-container flex>
+        <input mdInput #code
+               placeholder="Code"
+               formControlName="code"
+               flex/>
+      </md-input-container>
+    </div>
+    <div layout="row" class="pad-bottom">
+      <md-input-container flex>
+        <input mdInput #title
+               placeholder="TitleMs"
+               formControlName="titleMs"
+               flex/>
+      </md-input-container>
+    </div>
+    <div layout="row" class="pad-bottom">
+      <md-input-container flex>
+        <input mdInput #title
+               placeholder="TitleEn"
+               formControlName="titleEn"
+               flex/>
+      </md-input-container>
+    </div>
 
-	<div layout="row" class="pad-bottom pad-top">
-		<pams-program-status-select
-			        [placeholder]="'Status'"
-				    [innerFormControl]="creatorForm.controls['status']">
-		</pams-program-status-select>
+    <div layout="row" class="pad-bottom pad-top">
+      <pams-program-status-select
+        [placeholder]="'Status'"
+        [innerFormControl]="creatorForm.controls.status">
+      </pams-program-status-select>
 
-	</div>
-	<!-- faculty select -->
-		<div layout="row" class="pad-bottom pad-top">
-		<pams-faculty-select
-			[placeholder]="'Select faculty'"
-			[innerFormControl]="creatorForm.controls['faculty']">
-		</pams-faculty-select>
-		</div>
-<!-- program level select -->
+    </div>
+    <div layout="row" class="pad-bottom pad-top">
+      <pams-faculty-select
+        [placeholder]="'Select faculty'"
+        [innerFormControl]="creatorForm.controls.faculty">
+      </pams-faculty-select>
+    </div>
 
-
-</form>
-</md-dialog-content> <md-dialog-actions align="end">
-<button md-raised-button color="accent"
-	(click)="save(creatorForm.value, creatorForm.valid)">Save</button>
+  </form>
+</md-dialog-content>
+<md-dialog-actions align="end">
+  <button md-raised-button color="accent"
+          (click)="submit(creatorForm.value, creatorForm.valid)">Save
+  </button>
 </md-dialog-actions>

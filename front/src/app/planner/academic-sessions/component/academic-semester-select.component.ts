@@ -9,7 +9,7 @@ import { FormControl } from '@angular/forms';
     templateUrl: './academic-semester-select.component.html',
 })
 
-export class AcademicSessionSemesterSelectComponent implements OnInit {
+export class AcademicSemesterSelectComponent implements OnInit {
     private semesters: AcademicSemester[] = <AcademicSemester[]>[];
     @Input() placeholder: string;
     @Input() innerFormControl: FormControl;
