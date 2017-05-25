@@ -17,63 +17,48 @@ public interface ProfileService {
 	// ====================================================================================================
 
 	// note: thin wrapper
+	/*FindBy ID / MatricNo*/
 	AdStudent findStudentById(Long id);
-
 	AdStudent findStudentByMatricNo(String matricNo);
-
 	AdAddress findAddressById(Long id);
-
 	AdGuarantor findGuarantorById(Long id);
-
 	AdGuardian findGuardianById(Long id);
-
 	AdContact findContactById(Long id);
 
+	/*Listing*/
 	List<AdStudent> findStudents(Integer offset, Integer limit);
-
 	List<AdStudent> findStudents(String filter, Integer offset, Integer limit);
-
 	List<AdAddress> findAddresses(AdStudent student);
-
 	List<AdGuarantor> findGuarantors(AdStudent student);
-
 	List<AdGuardian> findGuardians(AdStudent student);
-
 	List<AdContact> findContacts(AdStudent student);
 
+	/*Student Information*/
 	void updateStudent(AdStudent student);
 
+	/*Address*/
 	void addAddress(AdStudent student, AdAddress address);
-
 	void updateAddress(AdStudent student, AdAddress address);
-
 	void deleteAddress(AdStudent student, AdAddress address);
 
+	/*Guarantor*/
 	void addGuarantor(AdStudent student, AdGuarantor guarantor);
-	
-	//sini
 	void updateGuarantor(AdStudent student, AdGuarantor guarantor);
-
 	void deleteGuarantor(AdStudent student, AdGuarantor guarantor);
 
+	/*Guardian*/
 	void addGuardian(AdStudent student, AdGuardian guardian);
-	
 	void updateGuardian(AdStudent student, AdGuardian guardian);
-
 	void deleteGuardian(AdStudent student, AdGuardian guardian);
 
+	/*Contact*/
 	void addContact(AdStudent student, AdContact contact);
-	
 	void updateContact(AdStudent student, AdContact contact);
-
 	void deleteContact(AdStudent student, AdContact contact);
 
-	// business
-
+	/*Business*/
 	void activateStudent(AdStudent student);
-
 	void deactivateStudent(AdStudent student);
-
 
     //====================================================================================================
     // GENERATOR

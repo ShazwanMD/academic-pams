@@ -46,9 +46,9 @@ export class ProfileComponent implements OnInit {
   private addressCreatorDialogRef: MdDialogRef<AddressEditorDialog>;
 
   private columns: any[] = [
-    { name: 'name', label: 'NAME' },
-    { name: 'phone', label: 'PHONE' },
-    { name: 'mobile', label: 'MOBILE' },
+    { name: 'name', label: 'Name' },
+    { name: 'phone', label: 'Phone' },
+    { name: 'mobile', label: 'Mobile' },
     { name: 'action', label: '' }
   ];
 
@@ -62,7 +62,14 @@ export class ProfileComponent implements OnInit {
   ];
 
   private columnGuarantor: any[] = [
-    { name: 'guarantorType', label: 'Identity Type' },
+    { name: 'guarantorType', label: 'Guarantor Type' },
+    { name: 'identityNo', label: 'Identity No' },
+    { name: 'name', label: 'Name' },
+    { name: 'action', label: 'Action' }
+  ];
+
+  private columnGuardian: any[] = [
+    { name: 'guardianType', label: 'Identity Type' },
     { name: 'identityNo', label: 'Identity No' },
     { name: 'name', label: 'Name' },
     { name: 'action', label: 'Action' }
@@ -91,10 +98,34 @@ export class ProfileComponent implements OnInit {
       this.router.navigate(['/profiles']);
     }
 
-    editStudent(): void {
+  /*=========================================================================================*/
+  /*STUDENT INFORMATION*/
+  /*=========================================================================================*/
+  
+  //EDIT STUDENT INFORMATION
+  editStudent(): void {
       this.showDialog(this.student)
     }
 
+  private showDialog(student: Student): void {
+    console.log("edit");
+    let config = new MdDialogConfig();
+    config.viewContainerRef = this.vcf;
+    config.role = 'dialog';
+    config.width = '70%';
+    config.height = '50%';
+    config.position = { top: '0px' };
+    this.creatorDialogRef = this.dialog.open(DetailEditorDialog, config);
+    if (student) this.creatorDialogRef.componentInstance.student = this.student; // set
+    this.creatorDialogRef.afterClosed().subscribe(res => {
+      console.log("close dialog");
+    });
+  }
+    
+    /*=========================================================================================*/
+    /*CONTACT*/
+    /*=========================================================================================*/
+    //ADD CONTACT DIALOG
     addContactDialog(): void {
       console.log("edit");
       let config = new MdDialogConfig();
@@ -110,6 +141,18 @@ export class ProfileComponent implements OnInit {
       });
     }
 
+    //EDIT CONTACT DIALOG
+
+
+    //DELETE CONTACT DIALOG
+    deleteContact(contact: Contact): void {
+      this.store.dispatch(this.actions.deleteContact(this.student, contact))
+    }
+
+    /*=========================================================================================*/
+    /*ADDRESS*/
+    /*=========================================================================================*/
+    //ADD ADDRESS DIALOG
     addAddressDialog(): void {
       console.log("Ini utk Add Address student");
       let config = new MdDialogConfig();
@@ -127,7 +170,6 @@ export class ProfileComponent implements OnInit {
 
     //EDIT ADDRESS DIALOG
     editAddressDialog(address: Address, isValid: boolean): void {
-      //console.log("Ini utk Edit Address student", student);
       let config = new MdDialogConfig();
       config.viewContainerRef = this.vcf;
       config.role = 'dialog';
@@ -135,21 +177,21 @@ export class ProfileComponent implements OnInit {
       config.height = '80%';
       config.position = { top: '0px' };
       this.addressCreatorDialogRef = this.dialog.open(AddressEditorDialog, config);
-      //console.log(isValid);
       if(isValid) {
         this.addressCreatorDialogRef.componentInstance.address = address;
-        //console.log(this.addressCreatorDialogRef.componentInstance);
         this.addressCreatorDialogRef.componentInstance.student = this.student;
       } 
     this.addressCreatorDialogRef.afterClosed().subscribe(res => {
-        //console.log("close this dialog");
       });
     }
 
-    deleteContact(contact: Contact): void {
-      this.store.dispatch(this.actions.deleteContact(this.student, contact))
-    }
+    // deleteAddress(contact: Contact): void {
+    //   this.store.dispatch(this.actions.deleteAddress(this.student, contact))
+    // }
 
+    /*=========================================================================================*/
+    /*GUARANTOR*/
+    /*=========================================================================================*/
     //ADD GUARANTOR DIALOG
     addGuarantorDialog(): void {
       //console.log("add");
@@ -187,6 +229,10 @@ export class ProfileComponent implements OnInit {
       });
     }
 
+    /*=========================================================================================*/
+    /*GUARDIAN*/
+    /*=========================================================================================*/
+    //ADD GUARDIAN DIALOG
     addGuardianDialog(): void {
       console.log("addGuardian");
       let config = new MdDialogConfig();
@@ -202,20 +248,24 @@ export class ProfileComponent implements OnInit {
       });
     }
 
-  private showDialog(student: Student): void {
-    console.log("edit");
-    let config = new MdDialogConfig();
-    config.viewContainerRef = this.vcf;
-    config.role = 'dialog';
-    config.width = '70%';
-    config.height = '50%';
-    config.position = { top: '0px' };
-    this.creatorDialogRef = this.dialog.open(DetailEditorDialog, config);
-    if (student) this.creatorDialogRef.componentInstance.student = this.student; // set
-    this.creatorDialogRef.afterClosed().subscribe(res => {
-      console.log("close dialog");
-    });
-  }
+    //EDIT GUARDIAN DIALOG
+    editGuardianDialog(guardian: Guardian, isValid: boolean): void {
+      let config = new MdDialogConfig();
+      config.viewContainerRef = this.vcf;
+      config.role = 'dialog';
+      config.width = '70%';
+      config.height = '80%';
+      config.position = { top: '0px' };
+      this.guardianCreatorDialogRef = this.dialog.open(GuardianEditorDialog, config);
+      if(isValid) {
+        this.guardianCreatorDialogRef.componentInstance.guardian = guardian;
+        this.guardianCreatorDialogRef.componentInstance.student = this.student;
+      } 
+    this.guardianCreatorDialogRef.afterClosed().subscribe(res => {
+      });
+    }
 
-
+    // deleteGuardian(guardian: Guardian): void {
+    //   this.store.dispatch(this.actions.deleteGuardian(this.student, guardian))
+    // }
 }

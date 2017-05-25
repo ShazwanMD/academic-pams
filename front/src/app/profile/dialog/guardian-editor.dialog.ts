@@ -52,8 +52,12 @@ export class GuardianEditorDialog implements OnInit {
   }
 
   submit(guardian: Guardian, isValid: boolean) {
-    console.log("adding student guardian");
-    this.store.dispatch(this.actions.addGuardian(this._student, guardian));
+    
+    if(isValid)
+    guardian.id = this._guardian.id;
+
+    if(isValid) this.store.dispatch(this.actions.updateGuardian(this._student, guardian));
+    else this.store.dispatch(this.actions.addGuardian(this._student, guardian));
     this.dialog.close();
   }
 }

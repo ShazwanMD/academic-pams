@@ -54,7 +54,6 @@ public class ProfileServiceImpl implements ProfileService {
     @Autowired
     private PlannerService plannerService;
 
-    
     @Autowired
     private SessionFactory sessionFactory;
 
@@ -134,6 +133,10 @@ public class ProfileServiceImpl implements ProfileService {
         sessionFactory.getCurrentSession().flush();
     }
 
+    
+    /*============================================================================================*/
+    /*ADDRESS*/
+    /*============================================================================================*/
     @Override
     public void addAddress(AdStudent student, AdAddress address) {
         studentDao.addAddress(student, address, securityService.getCurrentUser());
@@ -152,13 +155,16 @@ public class ProfileServiceImpl implements ProfileService {
         sessionFactory.getCurrentSession().flush();
     }
 
+    /*============================================================================================*/
+    /*GUARANTOR*/
+    /*============================================================================================*/
     @Override
     public void addGuarantor(AdStudent student, AdGuarantor guarantor) {
         studentDao.addGuarantor(student, guarantor, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
     
-    //sini
+    
     @Override
 	public void updateGuarantor(AdStudent student, AdGuarantor guarantor) {
 		studentDao.updateGuarantor(student, guarantor, securityService.getCurrentUser());
@@ -171,6 +177,9 @@ public class ProfileServiceImpl implements ProfileService {
         sessionFactory.getCurrentSession().flush();
     }
 
+    /*============================================================================================*/
+    /*GUARDIAN*/
+    /*============================================================================================*/
     @Override
     public void addGuardian(AdStudent student, AdGuardian guardian) {
         studentDao.addGuardian(student, guardian, securityService.getCurrentUser());
@@ -189,6 +198,9 @@ public class ProfileServiceImpl implements ProfileService {
         sessionFactory.getCurrentSession().flush();
     }
 
+    /*============================================================================================*/
+    /*CONTACT*/
+    /*============================================================================================*/
     @Override
     public void addContact(AdStudent student, AdContact contact) {
         studentDao.addContact(student, contact, securityService.getCurrentUser());
@@ -207,8 +219,9 @@ public class ProfileServiceImpl implements ProfileService {
         sessionFactory.getCurrentSession().flush();
     }
 
-
-    // business
+    /*============================================================================================*/
+    /*BUSSINESS - ACTIVATE/BAR/ PROCESS*/
+    /*============================================================================================*/
 
     @Override
     public void activateStudent(AdStudent student) {
@@ -237,7 +250,10 @@ public class ProfileServiceImpl implements ProfileService {
         applicationContext.publishEvent(new StudentBarredEvent(student));
     }
 
-	@Override
+    /*============================================================================================*/
+    /*BUSSINESS - TRANSFER FACULTY*/
+    /*============================================================================================*/
+    @Override
 	public void transferFaculty(AdStudent student, AdAcademicSession academicSession, AdFaculty fromFaculty,AdFaculty toFaculty) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		
@@ -266,24 +282,20 @@ public class ProfileServiceImpl implements ProfileService {
 		map.put("programLevel", programLevel);
 		map.put("studyMode", studyMode);
 		
-        
-     
 		String transferFaculty = systemService.generateFormattedReferenceNo(AcademicConstants.STUDENT_MATRIC_NO, map);
 		student.setMatricNo(transferFaculty);
 		studentDao.update(student, securityService.getCurrentUser());
 		LOG.debug("Student New MatricNo:{}",student.getMatricNo());
-      
-		
-		
 	}
 
 	public void generateMatricNo(AdStudent student ,AdStudyMode studyMode ,AdAcademicSession academicSession) {
 
 	}
 
-
-
-    @Override
+	/*============================================================================================*/
+    /*BUSSINESS - SWITCH STUDYMODE*/
+    /*============================================================================================*/
+	@Override
     public void switchStudyMode(AdStudent student, AdAcademicSession academicSession, AdStudyMode fromMode, AdStudyMode toMode) {
 
     	Map<String, Object> map = new HashMap<String, Object>();
