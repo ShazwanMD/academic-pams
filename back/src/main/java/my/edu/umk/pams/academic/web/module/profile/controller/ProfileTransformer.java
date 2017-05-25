@@ -26,7 +26,6 @@ public class ProfileTransformer {
         m.setPhone(student.getPhone());
         m.setFax(student.getFax());
         m.setStudentStatus(StudentStatus.get(student.getStudentStatus().ordinal()));
-       
         return m;
     }
 

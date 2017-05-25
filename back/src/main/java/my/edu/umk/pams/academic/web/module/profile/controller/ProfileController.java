@@ -99,6 +99,9 @@ public class ProfileController {
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
     
+    /*DELETE ADDRESS*/
+    
+    
     //====================================================================================================
     // CONTACT
     //====================================================================================================
@@ -118,7 +121,19 @@ public class ProfileController {
     }
     
     /*EDIT CONTACT*/
-    //todo(ihsanbazli)
+    @RequestMapping(value = "/students/{identityNo}/contacts/{id}", method = RequestMethod.PUT)
+    public ResponseEntity<String> updateContact(@PathVariable String identityNo, @RequestBody Contact vo) {
+        dummyLogin();
+        LOG.debug("id contact:{}",vo.getId());
+        AdStudent student = profileService.findStudentByMatricNo(identityNo);
+        AdContact contact = profileService.findContactById(vo.getId());
+        contact.setName(vo.getName());
+        contact.setIdentityNo(vo.getIdentityNo());
+        contact.setType(AdContactType.get(vo.getContactType().ordinal()));
+        contact.setStudent(student);
+        profileService.updateContact(student, contact);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
     
     /*DELETE CONTACT*/
     @RequestMapping(value = "/students/{identityNo}/contacts", method = RequestMethod.DELETE)
