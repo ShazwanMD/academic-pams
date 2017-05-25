@@ -42,6 +42,8 @@ public interface AdStudentDao extends GenericDao<Long, AdStudent> {
     Integer count(String filter);
 
     Integer countAddress(AdStudent student);
+    
+    void updateGuardian(AdStudent student,AdGuardian guardian, AdUser user);
 
     void addGuardian(AdStudent student, AdGuardian guardian, AdUser user);
 

@@ -185,8 +185,20 @@ public class ProfileController {
        return new ResponseEntity<String>("Success", HttpStatus.OK);
    }
    
-   /*ADD GUARDIAN*/
-   //todo(ihsanbazli)
+   /*EDIT GUARDIAN*/
+   @RequestMapping(value = "/students/{identityNo}/guardians/{id}", method = RequestMethod.PUT)
+   public ResponseEntity<String> updateGuardian(@PathVariable String identityNo, @RequestBody Guardian vo) {
+       dummyLogin();
+       LOG.debug("id guardian:{}",vo.getId());
+       AdStudent student = profileService.findStudentByMatricNo(identityNo);
+       AdGuardian guardian = profileService.findGuardianById(vo.getId());
+       guardian.setName(vo.getName());
+       guardian.setIdentityNo(vo.getIdentityNo());
+       guardian.setType(AdGuardianType.get(vo.getGuardianType().ordinal()));
+       guardian.setStudent(student);
+       profileService.updateGuardian(student,guardian);
+       return new ResponseEntity<String>("Success", HttpStatus.OK);
+   }
    
    /*DELETE GUARDIAN*/
    //todo(ihsanbazli)

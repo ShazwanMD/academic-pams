@@ -57,6 +57,8 @@ public interface ProfileService {
 	void deleteGuarantor(AdStudent student, AdGuarantor guarantor);
 
 	void addGuardian(AdStudent student, AdGuardian guardian);
+	
+	void updateGuardian(AdStudent student, AdGuardian guardian);
 
 	void deleteGuardian(AdStudent student, AdGuardian guardian);
 
