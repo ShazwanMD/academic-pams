@@ -29,7 +29,6 @@ export class ProgramCenterPage implements OnInit {
     {name: 'titleMs', label: 'TitleMs'},
     {name: 'titleEn', label: 'TitleEn'},
     {name: 'status', label: 'Status'},
-    // {name: 'description', label: 'Description'},
     {name: 'action', label: ''}
   ];
 
@@ -72,9 +71,6 @@ export class ProgramCenterPage implements OnInit {
     config.height = '70';
     config.position = {top: '1px'};
     this.creatorDialogRef = this.dialog.open(ProgramCreatorDialog, config);
-    if (code) this.creatorDialogRef.componentInstance.program = code;
-
-    // set
     this.creatorDialogRef.afterClosed().subscribe(res => {
       console.log("close dialog");
     });

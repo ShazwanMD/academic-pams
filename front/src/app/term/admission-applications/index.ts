@@ -12,6 +12,7 @@ import {AdmissionApplicationEffects} from "./admission-application.effect";
 import {AdmissionApplicationActions} from "./admission-application.action";
 import {AdmissionSubModule} from "../admissions/index";
 import {AcademicSessionSubModule} from "../../planner/academic-sessions/index";
+import {ProgramSubModule} from "../../planner/programs/index";
 import {AdmissionApplicationDraftTaskPanel} from "./panel/admission-application-draft-task.panel";
 import {AdmissionApplicationTaskCreatorDialog} from "./dialog/admission-application-task-creator.dialog";
 import {AdmissionApplicationTaskListComponent} from "./component/admission-application-task-list.component";
@@ -30,6 +31,7 @@ import {IdentityModule} from "../../identity/index";
     CovalentCoreModule.forRoot(),
     AdmissionSubModule.forRoot(),
     AcademicSessionSubModule.forRoot(),
+    ProgramSubModule.forRoot(),
     SectionSubModule.forRoot(),
     IdentityModule.forRoot(),
     EffectsModule.run(AdmissionApplicationEffects),

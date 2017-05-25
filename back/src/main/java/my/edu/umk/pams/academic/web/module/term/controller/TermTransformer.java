@@ -94,6 +94,9 @@ public class TermTransformer {
         vo.setStudent(identityTransformer.toStudentVo(admission.getStudent()));
         vo.setAcademicSession(plannerTransformer.toAcademicSessionVo(admission.getSession()));
         vo.setCohort(plannerTransformer.toCohortVo(admission.getCohort()));
+        vo.setAdmissionStatus(AdmissionStatus.get(admission.getStatus().ordinal()));
+        vo.setAcademicStanding(AcademicStanding.get(admission.getStanding().ordinal()));
+        //vo.setEnrollmentStanding(EnrollmentStanding.get(enrollment.getStanding().ordinal()));
         return vo;
     }
 
@@ -165,8 +168,12 @@ public class TermTransformer {
         vo.setId(offering.getId());
         vo.setCode(offering.getCode());
         vo.setCanonicalCode(offering.getCanonicalCode());
+        vo.setCapacity(offering.getCapacity());
+        vo.setTitleMs(offering.getTitleMs());
+        vo.setTitleEn(offering.getTitleEn());
         vo.setCourse(plannerTransformer.toCourseVo(offering.getCourse()));
         vo.setProgram(plannerTransformer.toProgramVo(offering.getProgram()));
+        vo.setAcademicSession(plannerTransformer.toAcademicSessionVo(offering.getSession()));
         return vo;
     }
 

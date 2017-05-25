@@ -6,9 +6,19 @@ import my.edu.umk.pams.academic.web.module.core.vo.MetaObject;
  * @author PAMS
  */
 public class Guardian extends MetaObject{
-    private String identityNo;
+    
+	private Long id;
+	private String identityNo;
     private String name;
     private GuardianType guardianType;
+    
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public GuardianType getGuardianType() {
 		return guardianType;
