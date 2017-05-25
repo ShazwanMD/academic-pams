@@ -22,7 +22,7 @@ import {TermModuleState} from "../../index";
   templateUrl: './offering-editor.dialog.html',
 })
 
-export class OfferingEditorDialog implements OnInit {
+export class OfferingUpdateDialog implements OnInit {
 
   //private offering: Offering;
   private createForm: FormGroup;
@@ -36,7 +36,7 @@ export class OfferingEditorDialog implements OnInit {
               private formBuilder: FormBuilder,
               private store: Store<TermModuleState>,
               private actions: OfferingActions,
-              public dialog: MdDialogRef<OfferingEditorDialog>) {
+              public dialog: MdDialogRef<OfferingUpdateDialog>) {
   }
     
     set offering(value: Offering) {
@@ -47,15 +47,15 @@ export class OfferingEditorDialog implements OnInit {
  
   ngOnInit(): void {
     this.createForm = this.formBuilder.group(<Offering>{
-      id: null,
-      code: 'stringtest',
-      canonicalCode: 'stringtest',
+     // id: null,
+      //code: 'stringtest',
+      //canonicalCode: 'stringtest',
       capacity: 0,
       titleMs:'stringtest',
       titleEn:'stringtest',
-      academicSession:<AcademicSession>{},
-      course: <Course>{},
-      program: <Program>{},
+      //academicSession:<AcademicSession>{},
+      //course: <Course>{},
+     // program: <Program>{},
         
     });
 
@@ -69,7 +69,15 @@ export class OfferingEditorDialog implements OnInit {
     }
  */
     
+     submit(offering: Offering, isValid: boolean) {
+      console.log(JSON.stringify(offering));
+      this.store.dispatch(this.actions.updateOffering(offering));
+      this.dialog.close();
+    }
+ 
+    
     //submit update button
+    /*
      submit(offering: Offering, isValid: boolean) {
      console.log(JSON.stringify(offering));
     if (!offering.id) this.store.dispatch(this.actions.saveOffering(offering));
@@ -77,5 +85,6 @@ export class OfferingEditorDialog implements OnInit {
     this.dialog.close();
 
   }
+    */
 }
 

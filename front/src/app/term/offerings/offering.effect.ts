@@ -3,13 +3,20 @@ import {Effect, Actions} from '@ngrx/effects';
 import {OfferingActions} from "./offering.action";
 import {TermService} from "../../../services/term.service";
 import {from} from "rxjs/observable/from";
+import {Store} from "@ngrx/store";
+import {TermModuleState} from "../index";
+import {Offering} from './offering.interface';
 
 
 @Injectable()
 export class OfferingEffects {
+        
+   private OFFERING: string[] = "termModuleState.program".split(".");  
+    
   constructor(private actions$: Actions,
               private offeringActions: OfferingActions,
-              private termService: TermService) {
+              private termService: TermService,
+              private store$: Store<TermModuleState> ) {
   }
 
   @Effect() findOfferings$ = this.actions$
@@ -58,4 +65,15 @@ export class OfferingEffects {
   .map(action => action.payload)
   .switchMap(offering => this.termService.saveOffering(offering))
   .map(offering => this.offeringActions.saveOfferingSuccess(offering));
+    
+    //update offering
+    @Effect() updateOffering$ = this.actions$
+    .ofType(OfferingActions.UPDATE_OFFERING)
+    .map(action => action.payload)
+    .switchMap(offering => this.termService.updateOffering(offering))
+    .map(offering => this.offeringActions.updateOfferingSuccess(offering))
+    .withLatestFrom(this.store$.select(...this.OFFERING))
+    .map(state => state[1])
+    .map((offering: Offering) => this.offeringActions.findOfferingByCanonicalCode(offering.canonicalCode));
+    
 }

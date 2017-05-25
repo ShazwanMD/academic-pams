@@ -211,10 +211,25 @@ export class TermService {
             'Content-Type': 'application/json',
             //'Authorization': 'Bearer ' + this.authService.token
         });
+        console.log("proses startEnrollmentApplicationTask");
         let options = new RequestOptions({ headers: headers });
         return this.http.post(environment.endpoint + '/api/term/enrollmentApplications/startTask', JSON.stringify(enrollmentApplication), options)
             .flatMap((res: Response) => Observable.of(res.text()));
     }
+    
+    /*
+     saveProgram(program: Program): Observable<String> {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    console.log("saya disini");
+    console.dir(program);
+    let options = new RequestOptions({ headers: headers });
+    return this.http.post(environment.endpoint + '/api/planner/programs/' + program.code + '/save', JSON.stringify(program), options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+    */
 
     completeEnrollmentApplicationTask(enrollmentApplicationTask: EnrollmentApplicationTask): Observable<String> {
         console.log("TaskId: " + enrollmentApplicationTask.taskId);
@@ -403,7 +418,7 @@ export class TermService {
             .flatMap((res: Response) => Observable.of(res.text()));
     }
 
-
+    //delete Section using editorDialog
     deleteSection(offering: Offering, section: Section) {
         let headers = new Headers({
             'Content-Type': 'application/json',
@@ -424,6 +439,19 @@ export class TermService {
         return this.http.put(environment.endpoint + '/api/term/sections/' + section.canonicalCode, JSON.stringify(section), options)
             .flatMap((res: Response) => Observable.of(res.text()));
     }
+    
+    //update offering using editorDialog
+     updateOffering(offering: Offering): Observable<String> {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({ headers: headers });
+    return this.http.put(environment.endpoint + '/api/term/offerings/' + offering.canonicalCode, JSON.stringify(offering), options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+    
         
    deleteAppointment(offering: Offering, appointment: Appointment) {
         let headers = new Headers({
