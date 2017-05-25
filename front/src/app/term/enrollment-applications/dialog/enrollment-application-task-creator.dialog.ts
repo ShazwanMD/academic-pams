@@ -43,10 +43,10 @@ export class EnrollmentApplicationTaskCreatorDialog implements OnInit {
         console.log("auditNo: " + application.auditNo)
         console.log("sourceNo: " + application.sourceNo)
         console.log("description: " + application.description)
-        
         console.log("admission: " + application.admission.id)
         console.log("academicSession: " + application.academicSession.id)
         console.log("enrollmentApplicationType: " + application.enrollmentApplicationType)
+        console.log(JSON.stringify(application));
         this.store.dispatch(this.actions.startEnrollmentApplicationTask(application));
         this.dialog.close();
     }

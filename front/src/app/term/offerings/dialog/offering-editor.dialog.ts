@@ -26,6 +26,9 @@ export class OfferingEditorDialog implements OnInit {
 
   //private offering: Offering;
   private createForm: FormGroup;
+  private edit: boolean = false;
+  private _offering: Offering;
+    
   
 
   constructor(private router: Router,
@@ -35,13 +38,18 @@ export class OfferingEditorDialog implements OnInit {
               private actions: OfferingActions,
               public dialog: MdDialogRef<OfferingEditorDialog>) {
   }
+    
+    set offering(value: Offering) {
+    this._offering = value;
+    this.edit = true;
+  }
   
  
   ngOnInit(): void {
     this.createForm = this.formBuilder.group(<Offering>{
       id: null,
-      code: '',
-      canonicalCode: '',
+      code: 'stringtest',
+      canonicalCode: 'stringtest',
       capacity: 0,
       titleMs:'',
       titleEn:'',
@@ -51,13 +59,23 @@ export class OfferingEditorDialog implements OnInit {
         
     });
 
-   // this.editForm.patchValue(this.offering);
+   if (this.edit) this.createForm.patchValue(this._offering);
   }
 
-  submit(offering: Offering, isValid: boolean) {
+ /* submit(offering: Offering, isValid: boolean) {
       console.log(JSON.stringify(offering));
       this.store.dispatch(this.actions.saveOffering(offering));
       this.dialog.close();
     }
+ */
+    
+    //submit update button
+     submit(offering: Offering, isValid: boolean) {
+     console.log(JSON.stringify(offering));
+    if (!offering.id) this.store.dispatch(this.actions.saveOffering(offering));
+    else  this.store.dispatch(this.actions.updateOffering(offering));
+    this.dialog.close();
+
+  }
 }
 

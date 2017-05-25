@@ -130,16 +130,6 @@
         <md-card-subtitle>---</md-card-subtitle>
         <md-divider></md-divider>
         <md-card-content>
-          <!--
-          <div layout="column" layout-gt-md="row" class="insert">
-          <div flex-gt-md="100" *ngFor="let guarantor of guarantors">
-            <b>Guarantor ID</b> : {{guarantor.identityNo}}<br/><br/>
-            <b>Guarantor Name</b> : {{guarantor.name}}<br/><br/>
-            <b>Guarantor Type</b> : {{guarantor.guarantorType}}
-          </div>
-          </div>
-          -->
-
           <td-data-table
             [data]="guarantors"
             [columns]="columnGuarantor"
@@ -183,7 +173,6 @@
     </button>
     <md-menu x-position="before" #menu4="mdMenu">
       <button md-menu-item (click)="addGuardianDialog()">Add</button>
-      <button md-menu-item (click)="editDialog(row)">Edit</button>
     </md-menu>
     </div>
     
@@ -192,6 +181,7 @@
         <md-card-subtitle>---</md-card-subtitle>
         <md-divider></md-divider>
         <md-card-content>
+          <!--
           <div layout="column" layout-gt-md="row" class="insert">
           <div flex-gt-md="100" *ngFor="let guardian of guardians">
             <b>Guardian ID</b> : {{guardian.identityNo}}<br/><br/>
@@ -199,6 +189,31 @@
             <b>Guardian Type</b> : {{guardian.guardianType}}
           </div>
           </div>
+          -->
+
+          <td-data-table
+            [data]="guardians"
+            [columns]="columnGuardian"
+            [sortBy]="summary"
+            [sortOrder]="ASC"
+            [sortable]="false"
+            [multiple]="false"
+            [selectable]="false"
+            (rowSelect)="edit.emit($event)" dense>
+
+            <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column" >
+              <div layout="row">
+                <span flex >{{value}}</span>
+              </div>
+            </template>
+            
+            <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
+              <div layout="row">
+                <button md-raised-button color="primary" (click)="editGuardianDialog(row, true)">Update</button>
+              </div>
+            </template>
+
+          </td-data-table>
         </md-card-content>
     </md-card>
 

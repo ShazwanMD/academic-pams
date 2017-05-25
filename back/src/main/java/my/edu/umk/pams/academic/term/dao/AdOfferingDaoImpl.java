@@ -75,7 +75,7 @@ public class AdOfferingDaoImpl extends GenericDaoSupport<Long, AdOffering> imple
                 "or upper(o.course.code) like upper(:filter) " +
                 "or upper(o.course.title) like upper(:filter)) " +
                 "and o.metadata.state = :state " +
-                "order by o.code asc");
+                "order by o.id desc");
         query.setString("filter", WILDCARD + filter + WILDCARD);
         query.setInteger("state", AdMetaState.ACTIVE.ordinal());
         query.setFirstResult(offset);
@@ -93,7 +93,7 @@ public class AdOfferingDaoImpl extends GenericDaoSupport<Long, AdOffering> imple
                 "or upper(o.course.title) like upper(:filter)) " +
                 "and o.program = :program " +
                 "and o.metadata.state = :state " +
-                "order by o.code asc");
+                "order by o.id desc");
         query.setString("filter", WILDCARD + filter + WILDCARD);
         query.setEntity("program", program);
         query.setInteger("state", AdMetaState.ACTIVE.ordinal());
@@ -113,7 +113,7 @@ public class AdOfferingDaoImpl extends GenericDaoSupport<Long, AdOffering> imple
                 "and o.program = :program " +
                 "and o.session = :academicSession " +
                 "and o.metadata.state = :state " +
-                "order by o.code asc");
+                "order by o.id desc");
         query.setString("filter", WILDCARD + filter + WILDCARD);
         query.setEntity("academicSession", academicSession);
         query.setEntity("program", program);
@@ -164,7 +164,7 @@ public class AdOfferingDaoImpl extends GenericDaoSupport<Long, AdOffering> imple
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select o from AdOffering o  join o.sections s where  " +
                 "s.session = :academicSession " +
-                "and o.metadata.state = :state");
+                "and o.metadata.state = :state" + "order by o.id desc");
         query.setEntity("academicSession", academicSession);
         query.setInteger("state", AdMetaState.ACTIVE.ordinal());
         return query.list();
