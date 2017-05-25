@@ -17,13 +17,14 @@ import { FormControl } from '@angular/forms';
   templateUrl: './academic-session.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AcademicSessionComponent implements OnInit{
+export class AcademicSessionComponent implements OnInit {
 
   @Input() academicSession: AcademicSession;
   @Input() semester: AcademicSemester;
   @Input() year: AcademicYear;
   @Input() placeholder: string;
   @Input() innerFormControl: FormControl;
+  @Output() view = new EventEmitter<AcademicSession>();
 
   private editorDialogRef: MdDialogRef<AcademicSessionEditorDialog>;
 
@@ -47,17 +48,17 @@ export class AcademicSessionComponent implements OnInit{
     private vcf: ViewContainerRef,
     private store: Store<PlannerModuleState>,
     private dialog: MdDialog) {
-      this.academicSession$ = this.store.select(...this.ACADEMIC_SESSION);
+    this.academicSession$ = this.store.select(...this.ACADEMIC_SESSION);
   }
 
   ngOnInit(): void {
-     this.route.params.subscribe((params: { code: string }) => {
-       let code: string = params.code;
+    this.route.params.subscribe((params: { code: string }) => {
+      let code: string = params.code;
       this.store.dispatch(this.actions.findAcademicSessionByCode(code));
     });
   }
-    
- editSession(): void {
+
+  editSession(): void {
     console.log("edit");
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
@@ -75,7 +76,7 @@ export class AcademicSessionComponent implements OnInit{
   }
 
   selectChangeEvent(event: AcademicSession) {
-    this.innerFormControl.setValue(event, {emitEvent: false});
+    this.innerFormControl.setValue(event, { emitEvent: false });
   }
 
 }

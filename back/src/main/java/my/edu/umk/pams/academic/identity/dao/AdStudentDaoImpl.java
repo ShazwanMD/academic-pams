@@ -173,9 +173,10 @@ public class AdStudentDaoImpl extends GenericDaoSupport<Long, AdStudent> impleme
 
     }
     
-    public void updateGuardian(AdStudent student, AdGuardian guardian, AdUser user) {
+	@Override
+	public void updateGuardian(AdStudent student, AdGuardian guardian, AdUser user) {
         Validate.notNull(user, "User cannot be null");
-        Validate.notNull(guardian, "guardian cannot be null");
+        Validate.notNull(guardian, "guarantor cannot be null");
         Session session = sessionFactory.getCurrentSession();
         guardian.setStudent(student);
 
@@ -185,7 +186,8 @@ public class AdStudentDaoImpl extends GenericDaoSupport<Long, AdStudent> impleme
         metadata.setModifierId(user.getId());
         guardian.setMetadata(metadata);
         session.update(guardian);
-    }
+		
+	}
 
     @Override
     public void deleteGuardian(AdStudent student, AdGuardian guardian, AdUser user) {

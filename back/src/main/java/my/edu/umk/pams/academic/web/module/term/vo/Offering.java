@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import my.edu.umk.pams.academic.web.module.core.vo.MetaObject;
 import my.edu.umk.pams.academic.web.module.planner.vo.Course;
 import my.edu.umk.pams.academic.web.module.planner.vo.Program;
+import my.edu.umk.pams.academic.web.module.planner.vo.AcademicSession;
 
 import java.io.IOException;
 
@@ -17,8 +18,10 @@ public class Offering extends MetaObject {
     private String titleMs;
     private String titleEn;
     private String canonicalCode;
+    private Integer capacity;
     private Course course;
     private Program program;
+    private AcademicSession session;
 
     public String getCode() {
         return code;
@@ -34,6 +37,14 @@ public class Offering extends MetaObject {
 
     public void setCanonicalCode(String canonicalCode) {
         this.canonicalCode = canonicalCode;
+    }
+    
+    public Integer getCapacity() {
+        return capacity;
+    }
+
+    public void setCapacity(Integer capacity) {
+        this.capacity = capacity;
     }
 
     public String getTitleMs() {
@@ -66,6 +77,14 @@ public class Offering extends MetaObject {
 
     public void setProgram(Program program) {
         this.program = program;
+    }
+    
+    public AcademicSession getAcademicSession() {
+        return session;
+    }
+
+    public void setAcademicSession(AcademicSession session) {
+        this.session = session;
     }
 
     @JsonCreator

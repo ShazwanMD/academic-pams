@@ -7,6 +7,7 @@ import {AdmissionApplicationActions} from "../admission-application.action";
 import {AdmissionApplication} from "../admission-application.interface";
 import {TermModuleState} from "../../index";
 import {AcademicSession} from "../../../planner/academic-sessions/academic-session.interface";
+import {Program} from "../../../planner/programs/program.interface";
 import {Admission} from "../../admissions/admission.interface";
 import {Student} from "../../../identity/student.interface";
 
@@ -33,6 +34,7 @@ export class AdmissionApplicationTaskCreatorDialog implements OnInit {
       description:'',
       student:<Student>{},
       academicSession:<AcademicSession>{},
+      program:<Program>{},
     });
   }
 
