@@ -309,6 +309,26 @@ static DEACTIVATE_STUDENT_SUCCESS = '[Profile] Activate Student Success';
     };
   }
 
+  static UPDATE_GUARDIAN = '[Profile] Update Guardian';
+
+  updateGuardian(student, guardian): Action {
+    //console.log(student);
+    return {
+      type: ProfileActions.UPDATE_GUARDIAN,
+      payload: {student: student, guardian: guardian}
+    };
+  }
+
+
+  static UPDATE_GUARDIAN_SUCCEESS = '[Profile] Update Guardian Success';
+
+  updateGuardianSuccess(message): Action {
+    return {
+      type: ProfileActions.UPDATE_GUARDIAN_SUCCEESS,
+      payload: message
+    };
+  }
+
   static ADD_GUARDIAN = '[Profile] Add Guardian';
 
   addGuardian(student, guardian): Action {

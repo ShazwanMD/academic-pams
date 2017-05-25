@@ -52,7 +52,6 @@ export class GuarantorEditorDialog implements OnInit {
   }
 
   submit(guarantor: Guarantor, isValid: boolean) {
-    //console.log("adding student guarantor");
     if(isValid)
     guarantor.id = this._guarantor.id;
 
