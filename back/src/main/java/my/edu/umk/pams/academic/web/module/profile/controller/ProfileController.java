@@ -88,7 +88,7 @@ public class ProfileController {
     @RequestMapping(value = "/students/{identityNo}/addresses/{id}", method = RequestMethod.PUT)
     public ResponseEntity<String> updateAddress(@PathVariable String identityNo, @RequestBody Address vo) {
         dummyLogin();
-        LOG.debug("id address:{}",vo.getId());
+        //LOG.debug("id address:{}",vo.getId());
         AdStudent student = profileService.findStudentByMatricNo(identityNo);
         AdAddress address = profileService.findAddressById(vo.getId());
         	//address.setId(vo.getId());
@@ -101,7 +101,15 @@ public class ProfileController {
     }
     
     /*DELETE ADDRESS*/
-    
+    @RequestMapping(value = "/students/{identityNo}/addresses/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<String> deleteAddress(@PathVariable String identityNo, @RequestBody Address vo) {
+        dummyLogin();
+        LOG.debug("id address masa nak delete:{}",vo.getId());
+        AdStudent student = profileService.findStudentByMatricNo(identityNo);
+        AdAddress address = profileService.findAddressById(vo.getId());
+        profileService.deleteAddress(student, address);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
     
     //====================================================================================================
     // CONTACT
@@ -137,13 +145,22 @@ public class ProfileController {
     }
     
     /*DELETE CONTACT*/
-    @RequestMapping(value = "/students/{identityNo}/contacts", method = RequestMethod.DELETE)
+    /*@RequestMapping(value = "/students/{identityNo}/contacts", method = RequestMethod.DELETE)
     public ResponseEntity<String> deleteContact(@PathVariable String identityNo) {
         dummyLogin();
         AdStudent student = profileService.findStudentByMatricNo(identityNo);
         List<AdContact> contacts = profileService.findContacts(student);
         for (AdContact contact : contacts)
             profileService.deleteContact(student, contact);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }*/
+    
+    @RequestMapping(value = "/students/{identityNo}/contacts/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<String> deleteContact(@PathVariable String identityNo, @RequestBody Contact vo) {
+        dummyLogin();
+        AdStudent student = profileService.findStudentByMatricNo(identityNo);
+        AdContact contact = profileService.findContactById(vo.getId());
+        profileService.deleteContact(student, contact);
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
     
@@ -181,7 +198,14 @@ public class ProfileController {
    }
    
    /*DELETE GUARANTOR*/
-   //todo(ihsanbazli)
+   @RequestMapping(value = "/students/{identityNo}/guarantors/{id}", method = RequestMethod.DELETE)
+   public ResponseEntity<String> deleteGuarantor(@PathVariable String identityNo, @RequestBody Guarantor vo) {
+       dummyLogin();
+       AdStudent student = profileService.findStudentByMatricNo(identityNo);
+       AdGuarantor guarantor = profileService.findGuarantorById(vo.getId());
+       profileService.deleteGuarantor(student, guarantor);
+       return new ResponseEntity<String>("Success", HttpStatus.OK);
+   }
    
    //====================================================================================================
    // GUARDIAN
@@ -217,7 +241,14 @@ public class ProfileController {
    }
    
    /*DELETE GUARDIAN*/
-   //todo(ihsanbazli)
+   @RequestMapping(value = "/students/{identityNo}/guardians/{id}", method = RequestMethod.DELETE)
+   public ResponseEntity<String> deleteGuardian(@PathVariable String identityNo, @RequestBody Guardian vo) {
+       dummyLogin();
+       AdStudent student = profileService.findStudentByMatricNo(identityNo);
+       AdGuardian guardian = profileService.findGuardianById(vo.getId());
+       profileService.deleteGuardian(student, guardian);
+       return new ResponseEntity<String>("Success", HttpStatus.OK);
+   }
    
    
     //====================================================================================================
