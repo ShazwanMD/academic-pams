@@ -47,27 +47,20 @@ export class OfferingUpdateDialog implements OnInit {
  
   ngOnInit(): void {
     this.createForm = this.formBuilder.group(<Offering>{
-     // id: null,
-      //code: 'stringtest',
-      //canonicalCode: 'stringtest',
+      id: null,
+      code:'',
+      canonicalCode:'',
       capacity: 0,
-      titleMs:'stringtest',
-      titleEn:'stringtest',
-      //academicSession:<AcademicSession>{},
-      //course: <Course>{},
-     // program: <Program>{},
+      titleMs:'',
+      titleEn:'',
+      academicSession:<AcademicSession>{},
+      course: <Course>{},
+      program: <Program>{},
         
     });
 
    if (this.edit) this.createForm.patchValue(this._offering);
   }
-
- /* submit(offering: Offering, isValid: boolean) {
-      console.log(JSON.stringify(offering));
-      this.store.dispatch(this.actions.saveOffering(offering));
-      this.dialog.close();
-    }
- */
     
      submit(offering: Offering, isValid: boolean) {
       console.log(JSON.stringify(offering));

@@ -6,6 +6,7 @@ import {Document} from "../../core/document.interface";
 
 export interface Offering extends MetaObject{
 //export interface Offering extends Document {
+  id:number;
   code:string;
   canonicalCode:string;
   capacity: number;

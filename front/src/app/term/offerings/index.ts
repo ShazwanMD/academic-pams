@@ -56,9 +56,11 @@ import {OfferingAppointmentListComponent} from "./component/offering-appointment
     
 
   ],
-  exports: [],
+  exports: [
+  OfferingUpdateDialog,],
    entryComponents: [
     OfferingEditorDialog,
+       OfferingUpdateDialog,
    
   ]
 })
