@@ -196,7 +196,7 @@ public class ProfileController {
        guardian.setIdentityNo(vo.getIdentityNo());
        guardian.setType(AdGuardianType.get(vo.getGuardianType().ordinal()));
        guardian.setStudent(student);
-       profileService.updateGuardian(student, guardian);
+       profileService.updateGuardian(student,guardian);
        return new ResponseEntity<String>("Success", HttpStatus.OK);
    }
    
