@@ -42,7 +42,7 @@ export class ContactEditorDialog implements OnInit {
 
   ngOnInit(): void {
     this.editorForm = this.formBuilder.group(<Contact>{
-     // id: null,
+      id: null,
       name: '',
       identityNo: '',
       contactType: ContactType.FATHER
@@ -52,8 +52,12 @@ export class ContactEditorDialog implements OnInit {
   }
 
   submit(contact: Contact, isValid: boolean) {
-    console.log("adding student contact");
-    this.store.dispatch(this.actions.addContact(this._student, contact));
+
+    if(isValid)
+    contact.id = this._contact.id;
+
+    if(isValid)this.store.dispatch(this.actions.updateContact(this._student, contact));
+    else this.store.dispatch(this.actions.addContact(this._student, contact));
     this.dialog.close();
   }
 }

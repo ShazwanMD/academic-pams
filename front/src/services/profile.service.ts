@@ -165,6 +165,17 @@ export class ProfileService {
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
+  //UPDATE CONTACT
+  updateContact(student: Student, contact: Contact): Observable<String> {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
+    return this.http.put(environment.endpoint + '/api/profile/students/' + student.identityNo + '/contacts/' + contact.id, JSON.stringify(contact), options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
   deleteContact(student: Student, contact: Contact) {
     let headers = new Headers({
       'Content-Type': 'application/json',

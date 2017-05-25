@@ -186,7 +186,16 @@ export class ProfileEffects {
     .map(state => state[1])
     .map((student: Student) => this.profileActions.findStudentByIdentityNo(student.identityNo));
 
-      @Effect() deleteContact$ = this.actions$
+  @Effect() updateContact$ = this.actions$
+    .ofType(ProfileActions.UPDATE_CONTACT)
+    .map(action => action.payload)
+    .switchMap(payload => this.profileService.updateContact(payload.student, payload.contact))
+    .map(message => this.profileActions.updateContactSuccess(message))
+    .withLatestFrom(this.store$.select(...this.STUDENT))
+    .map(state => state[1])
+    .map((student: Student) => this.profileActions.findStudentByIdentityNo(student.identityNo));
+  
+  @Effect() deleteContact$ = this.actions$
     .ofType(ProfileActions.REMOVE_CONTACT)
     .map(action => action.payload)
     .switchMap(payload => this.profileService.deleteContact(payload.student, payload.contact))

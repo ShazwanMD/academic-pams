@@ -350,7 +350,26 @@ static DEACTIVATE_STUDENT_SUCCESS = '[Profile] Activate Student Success';
     };
   }
 
-    static REMOVE_CONTACT = '[Profile] Remove Contact';
+  static UPDATE_CONTACT = '[Profile] Update Contact'
+  
+  updateContact(student, contact): Action {
+    return {
+      type: ProfileActions.UPDATE_CONTACT,
+      payload: {student: student, contact: contact}
+    };
+  }
+
+
+  static UPDATE_CONTACT_SUCCEESS = '[Profile] Update Contact Success';
+
+  updateContactSuccess(message): Action {
+    return {
+      type: ProfileActions.UPDATE_CONTACT_SUCCEESS,
+      payload: message
+    };
+  }
+  
+  static REMOVE_CONTACT = '[Profile] Remove Contact';
 
   deleteContact(student,contact): Action {
     //console.log("deleteContact");
