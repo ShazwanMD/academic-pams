@@ -17,7 +17,7 @@
    <!--  <button md-button class="md-icon-button" (click)="updateSection(row)" mdTooltip="Update section"  >
       <md-icon class="md-24 tc-grey-700">edit</md-icon>
     </button> -->
-    <button md-button class="md-icon-button" (click)="deleteSection(row)" mdTooltip="Delete section">
+    <button md-button class="md-icon-button" (click)="deleteSection(row)" mdTooltip="Delete selected sections">
       <md-icon class="md-24 tc-grey-700">delete</md-icon>
     </button> 
     
@@ -47,7 +47,7 @@
     </button>
     <md-menu x-position="before" #menu1="mdMenu">
       <button md-menu-item [routerLink]="['/term/sections', row['canonicalCode']]" >View section</button>
-      <button md-menu-item (click)="updateSection(row)" >Update section</button>
+      <button md-menu-item (click)="editDialog(row)" >Update section</button>
       <button md-menu-item (click)="deleteSection(row)">Delete section</button>
     </md-menu>
         </div>

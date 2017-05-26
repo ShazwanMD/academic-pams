@@ -7,6 +7,7 @@ import {TermModuleState} from "../../index";
 import {Section} from "../section.interface";
 import {SectionActions} from "../section.action";
 import {Offering} from "../../offerings/offering.interface";
+import {Router, ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'pams-section-editor',
@@ -20,7 +21,9 @@ export class SectionEditorDialog implements OnInit {
   private editorForm: FormGroup;
   private edit: boolean = false;
 
-  constructor(private formBuilder: FormBuilder,
+  constructor(private router: Router,
+              private route: ActivatedRoute,
+              private formBuilder: FormBuilder,
               private store: Store<TermModuleState>,
               private actions: SectionActions,
               private dialog: MdDialogRef<SectionEditorDialog>,
