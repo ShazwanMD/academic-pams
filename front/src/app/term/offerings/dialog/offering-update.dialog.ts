@@ -18,8 +18,8 @@ import {Program} from "../../../planner/programs/program.interface";
 import {TermModuleState} from "../../index";
 
 @Component({
-  selector: 'pams-offering-editor',
-  templateUrl: './offering-editor.dialog.html',
+  selector: 'pams-offering-update',
+  templateUrl: './offering-update.dialog.html',
 })
 
 export class OfferingUpdateDialog implements OnInit {
@@ -35,6 +35,7 @@ export class OfferingUpdateDialog implements OnInit {
               private route: ActivatedRoute,
               private formBuilder: FormBuilder,
               private store: Store<TermModuleState>,
+              private viewContainerRef: ViewContainerRef,
               private actions: OfferingActions,
               public dialog: MdDialogRef<OfferingUpdateDialog>) {
   }

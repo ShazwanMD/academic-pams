@@ -1,4 +1,4 @@
-<h2 md-dialog-title>Offering Task Creator</h2>
+<h2 md-dialog-title>Offering Update Creator</h2>
 <md-dialog-content>
   <form [formGroup]="createForm">
 
@@ -30,9 +30,10 @@
  
   </form>
 </md-dialog-content>
+
 <md-dialog-actions align="end">
-<button md-raised-button color="accent" (click)="submit(createForm.value, createForm.valid)">
-     {{edit ? 'Update' : 'Save'}}
+  <button md-raised-button color="accent" (click)="submit(createForm.value, createForm.valid)">
+    {{edit ? 'Update' : 'Save'}}
   </button>
 </md-dialog-actions>
 

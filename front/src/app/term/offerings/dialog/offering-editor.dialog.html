@@ -1,4 +1,4 @@
-<h2 md-dialog-title>Offering Task Creator</h2>
+<h2 md-dialog-title>Offering Task Creator  {{edit ? 'Update' : 'Save'}}</h2>
 <md-dialog-content>
   <form [formGroup]="createForm">
 
@@ -40,7 +40,7 @@
                formControlName="titleEn" flex/>
       </md-input-container>
     </div>
-    
+   
  <div layout="row" class="pad-bottom pad-top" >
        <pams-course-select mdTooltip="Please select course"
         [placeholder]="'Select Course'"
@@ -60,8 +60,7 @@
         [placeholder]="'Select Session'"
         [innerFormControl]="createForm.controls['academicSession']">
       </pams-academic-session-select>
-            
-      
+
     </div>
 
   </form>

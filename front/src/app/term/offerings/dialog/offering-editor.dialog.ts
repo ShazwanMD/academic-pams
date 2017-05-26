@@ -48,11 +48,11 @@ export class OfferingEditorDialog implements OnInit {
   ngOnInit(): void {
     this.createForm = this.formBuilder.group(<Offering>{
       id: null,
-      code: 'stringtest',
-      canonicalCode: 'stringtest',
+      code: '',
+      canonicalCode: '',
       capacity: 0,
-      titleMs:'stringtest',
-      titleEn:'stringtest',
+      titleMs:'',
+      titleEn:'',
       academicSession:<AcademicSession>{},
       course: <Course>{},
       program: <Program>{},
@@ -75,6 +75,7 @@ export class OfferingEditorDialog implements OnInit {
     if (!offering.id) this.store.dispatch(this.actions.saveOffering(offering));
     else  this.store.dispatch(this.actions.updateOffering(offering));
     this.dialog.close();
+    console.log(offering);
 
   }
 }
