@@ -14,12 +14,12 @@
     <button md-button class="md-icon-button" (click)="showSectionDialog()" mdTooltip="Add new section">
       <md-icon class="md-24 tc-grey-700">add</md-icon>
     </button>
-    <button md-button class="md-icon-button" (click)="updateSection(row)" mdTooltip="Update section"  >
+   <!--  <button md-button class="md-icon-button" (click)="updateSection(row)" mdTooltip="Update section"  >
       <md-icon class="md-24 tc-grey-700">edit</md-icon>
-    </button>
+    </button> -->
     <button md-button class="md-icon-button" (click)="deleteSection(row)" mdTooltip="Delete section">
       <md-icon class="md-24 tc-grey-700">delete</md-icon>
-    </button>
+    </button> 
     
   </div> 
   
@@ -35,13 +35,21 @@
       </template>
       <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
         <div layout="row">
-          <a md-button color="accent" class="text-upper"  mdTooltip="View this section"
-             [routerLink]="['/term/sections', row['canonicalCode']]"><span> VIEW</span> <!-- <md-icon class="md-24">pageview</md-icon> -->
-          </a>
+         <!--  <a md-button color="accent" class="text-upper"  mdTooltip="View this section"
+             [routerLink]="['/term/sections', row['canonicalCode']]"><span> VIEW</span> <md-icon class="md-24">pageview</md-icon>
+          </a> -->
          <!--   <button md-menu-item (click)="updateSection(row)">Update section</button> -->
-           <a md-button color="accent" class="text-upper" mdTooltip="Delete this section"
+           <!-- <a md-button color="accent" class="text-upper" mdTooltip="Delete this section"
              (click)="deleteSection(row)"> <md-icon class="md-24" >delete</md-icon>
-          </a>
+          </a> -->
+          <button md-icon-button [md-menu-trigger-for]="menu1" mdTooltip="Select section actions">
+      <md-icon>more_vert</md-icon>
+    </button>
+    <md-menu x-position="before" #menu1="mdMenu">
+      <button md-menu-item [routerLink]="['/term/sections', row['canonicalCode']]" >View section</button>
+      <button md-menu-item (click)="updateSection(row)" >Update section</button>
+      <button md-menu-item (click)="deleteSection(row)">Delete section</button>
+    </md-menu>
         </div>
       </template>
     </td-data-table>
