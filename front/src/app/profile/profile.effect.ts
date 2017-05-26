@@ -22,6 +22,9 @@ export class ProfileEffects {
   
 }
 
+  /*==================================================================================================*/
+  /*BARRING - EFFECT*/
+  /*==================================================================================================*/
   @Effect() barStudent$ = this.actions$
     .ofType(ProfileActions.BAR_STUDENT)
     .map(action => action.payload)
@@ -31,6 +34,9 @@ export class ProfileEffects {
     .map(state => state[1])
     .map((student: Student) => this.profileActions.findStudentByIdentityNo(student.identityNo));
 
+  /*==================================================================================================*/
+  /*ACTIVATE / DEACTIVATE - STUDENT EFFECT*/
+  /*==================================================================================================*/
   @Effect() activateStudent$ = this.actions$
     .ofType(ProfileActions.ACTIVATE_STUDENT)
     .map(action => action.payload)
@@ -39,9 +45,6 @@ export class ProfileEffects {
     .withLatestFrom(this.store$.select(...this.STUDENT))
     .map(state => state[1])
     .map((student: Student) => this.profileActions.findStudentByIdentityNo(student.identityNo));
-
-
-
 
   @Effect() deactivateStudent$ = this.actions$
     .ofType(ProfileActions.DEACTIVATE_STUDENT)
@@ -52,9 +55,9 @@ export class ProfileEffects {
     .map(state => state[1])
     .map((student: Student) => this.profileActions.findStudentByIdentityNo(student.identityNo));
 
-
-
-
+  /*==================================================================================================*/
+  /*FINDING THINGS - EFFECT*/
+  /*==================================================================================================*/
   @Effect() findProfiles$ = this.actions$
     .ofType(ProfileActions.FIND_STUDENTS)
     .switchMap(() => this.profileService.findStudents())
@@ -73,28 +76,17 @@ export class ProfileEffects {
       this.profileActions.findEnrollments(action.payload),
     ]));
 
-  @Effect() updateProfile$ = this.actions$
-    .ofType(ProfileActions.UPDATE_STUDENT)
-    .map(action => action.payload)
-    .switchMap(student => this.profileService.updateStudent(student))
-    .map(profile => this.profileActions.updateStudentSuccess(profile))
-    .withLatestFrom(this.store$.select(...this.STUDENT))
-    .map(state => state[1])
-    .map((student: Student) => this.profileActions.findStudentByIdentityNo(student.identityNo));
-
   @Effect() findAddresses$ = this.actions$
     .ofType(ProfileActions.FIND_ADDRESSES)
     .map(action => action.payload)
     .switchMap(student => this.profileService.findAddresses(student))
     .map(addreesses => this.profileActions.findAddressesSuccess(addreesses));
 
-
   @Effect() findContacts$ = this.actions$
     .ofType(ProfileActions.FIND_CONTACTS)
     .map(action => action.payload)
     .switchMap(student => this.profileService.findContacts(student))
     .map(addreesses => this.profileActions.findContactsSuccess(addreesses));
-
 
   @Effect() findGuardians$ = this.actions$
     .ofType(ProfileActions.FIND_GUARDIANS)
@@ -114,6 +106,18 @@ export class ProfileEffects {
     .switchMap(student => this.profileService.findEnrollments(student))
     .map(enrollments => this.profileActions.findEnrollmentsSuccess(enrollments));
 
+  /*==================================================================================================*/
+  /*ADD / UPD STUDENT INFORMATION - EFFECT*/
+  /*==================================================================================================*/
+  @Effect() updateProfile$ = this.actions$
+    .ofType(ProfileActions.UPDATE_STUDENT)
+    .map(action => action.payload)
+    .switchMap(student => this.profileService.updateStudent(student))
+    .map(profile => this.profileActions.updateStudentSuccess(profile))
+    .withLatestFrom(this.store$.select(...this.STUDENT))
+    .map(state => state[1])
+    .map((student: Student) => this.profileActions.findStudentByIdentityNo(student.identityNo));
+
   @Effect() updateStudents$ = this.actions$
     .ofType(ProfileActions.UPDATE_STUDENT)
     .map(action => action.payload)
@@ -123,6 +127,9 @@ export class ProfileEffects {
     .map(state => state[1])
     .map((student: Student) => this.profileActions.findStudentByIdentityNo(student.identityNo));
 
+  /*==================================================================================================*/
+  /*ADDRESS - EFFECT*/
+  /*==================================================================================================*/
 @Effect() addAddress$ = this.actions$
     .ofType(ProfileActions.ADD_ADDRESS)
     .map(action => action.payload)
@@ -141,47 +148,23 @@ export class ProfileEffects {
     .map(state => state[1])
     .map((student: Student) => this.profileActions.findStudentByIdentityNo(student.identityNo));
 
+@Effect() deleteAddress$ = this.actions$
+    .ofType(ProfileActions.REMOVE_ADDRESS)
+    .map(action => action.payload)
+    .switchMap(payload => this.profileService.deleteAddress(payload.student, payload.address))
+    .map(message => this.profileActions.deleteAddressSuccess(message))
+    .withLatestFrom(this.store$.select(...this.STUDENT))
+    .map(state => state[1])
+    .map((student: Student) => this.profileActions.findStudentByIdentityNo(student.identityNo));
+
+  /*==================================================================================================*/
+  /*CONTACT - EFFECT*/
+  /*==================================================================================================*/
   @Effect() addContact$ = this.actions$
     .ofType(ProfileActions.ADD_CONTACT)
     .map(action => action.payload)
     .switchMap(payload => this.profileService.addContact(payload.student, payload.contact))
     .map(message => this.profileActions.addContactSuccess(message))
-    .withLatestFrom(this.store$.select(...this.STUDENT))
-    .map(state => state[1])
-    .map((student: Student) => this.profileActions.findStudentByIdentityNo(student.identityNo));
-
-  @Effect() addGuarantor$ = this.actions$
-    .ofType(ProfileActions.ADD_GUARANTOR)
-    .map(action => action.payload)
-    .switchMap(payload => this.profileService.addGuarantor(payload.student, payload.guarantor))
-    .map(message => this.profileActions.addGuarantorSuccess(message))
-    .withLatestFrom(this.store$.select(...this.STUDENT))
-    .map(state => state[1])
-    .map((student: Student) => this.profileActions.findStudentByIdentityNo(student.identityNo));
-
-  @Effect() updateGuarantor$ = this.actions$
-    .ofType(ProfileActions.UPDATE_GUARANTOR)
-    .map(action => action.payload)
-    .switchMap(payload => this.profileService.updateGuarantor(payload.student, payload.guarantor))
-    .map(message => this.profileActions.updateGuarantorSuccess(message))
-    .withLatestFrom(this.store$.select(...this.STUDENT))
-    .map(state => state[1])
-    .map((student: Student) => this.profileActions.findStudentByIdentityNo(student.identityNo));
-
-  @Effect() updateGuardian$ = this.actions$
-    .ofType(ProfileActions.UPDATE_GUARDIAN)
-    .map(action => action.payload)
-    .switchMap(payload => this.profileService.updateGuardian(payload.student, payload.guardian))
-    .map(message => this.profileActions.updateGuardianSuccess(message))
-    .withLatestFrom(this.store$.select(...this.STUDENT))
-    .map(state => state[1])
-    .map((student: Student) => this.profileActions.findStudentByIdentityNo(student.identityNo));
-
-  @Effect() addGuardian$ = this.actions$
-    .ofType(ProfileActions.ADD_GUARDIAN)
-    .map(action => action.payload)
-    .switchMap(payload => this.profileService.addGuardian(payload.student, payload.guardian))
-    .map(message => this.profileActions.addGuardianSuccess(message))
     .withLatestFrom(this.store$.select(...this.STUDENT))
     .map(state => state[1])
     .map((student: Student) => this.profileActions.findStudentByIdentityNo(student.identityNo));
@@ -204,6 +187,63 @@ export class ProfileEffects {
     .map(state => state[1])
     .map((student: Student) => this.profileActions.findStudentByIdentityNo(student.identityNo));
 
-    
+  /*==================================================================================================*/
+  /*GUARANTOR - EFFECT*/
+  /*==================================================================================================*/
+  @Effect() addGuarantor$ = this.actions$
+    .ofType(ProfileActions.ADD_GUARANTOR)
+    .map(action => action.payload)
+    .switchMap(payload => this.profileService.addGuarantor(payload.student, payload.guarantor))
+    .map(message => this.profileActions.addGuarantorSuccess(message))
+    .withLatestFrom(this.store$.select(...this.STUDENT))
+    .map(state => state[1])
+    .map((student: Student) => this.profileActions.findStudentByIdentityNo(student.identityNo));
 
+  @Effect() updateGuarantor$ = this.actions$
+    .ofType(ProfileActions.UPDATE_GUARANTOR)
+    .map(action => action.payload)
+    .switchMap(payload => this.profileService.updateGuarantor(payload.student, payload.guarantor))
+    .map(message => this.profileActions.updateGuarantorSuccess(message))
+    .withLatestFrom(this.store$.select(...this.STUDENT))
+    .map(state => state[1])
+    .map((student: Student) => this.profileActions.findStudentByIdentityNo(student.identityNo));
+
+  @Effect() deleteGuarantor$ = this.actions$
+    .ofType(ProfileActions.REMOVE_GUARANTOR)
+    .map(action => action.payload)
+    .switchMap(payload => this.profileService.deleteGuarantor(payload.student, payload.guarantor))
+    .map(message => this.profileActions.deleteGuarantorSuccess(message))
+    .withLatestFrom(this.store$.select(...this.STUDENT))
+    .map(state => state[1])
+    .map((student: Student) => this.profileActions.findStudentByIdentityNo(student.identityNo));
+
+  /*==================================================================================================*/
+  /*GUARDIAN - EFFECT*/
+  /*==================================================================================================*/
+  @Effect() updateGuardian$ = this.actions$
+    .ofType(ProfileActions.UPDATE_GUARDIAN)
+    .map(action => action.payload)
+    .switchMap(payload => this.profileService.updateGuardian(payload.student, payload.guardian))
+    .map(message => this.profileActions.updateGuardianSuccess(message))
+    .withLatestFrom(this.store$.select(...this.STUDENT))
+    .map(state => state[1])
+    .map((student: Student) => this.profileActions.findStudentByIdentityNo(student.identityNo));
+
+  @Effect() addGuardian$ = this.actions$
+    .ofType(ProfileActions.ADD_GUARDIAN)
+    .map(action => action.payload)
+    .switchMap(payload => this.profileService.addGuardian(payload.student, payload.guardian))
+    .map(message => this.profileActions.addGuardianSuccess(message))
+    .withLatestFrom(this.store$.select(...this.STUDENT))
+    .map(state => state[1])
+    .map((student: Student) => this.profileActions.findStudentByIdentityNo(student.identityNo));
+
+  @Effect() deleteGuardian$ = this.actions$
+    .ofType(ProfileActions.REMOVE_GUARDIAN)
+    .map(action => action.payload)
+    .switchMap(payload => this.profileService.deleteGuardian(payload.student, payload.guardian))
+    .map(message => this.profileActions.deleteGuardianSuccess(message))
+    .withLatestFrom(this.store$.select(...this.STUDENT))
+    .map(state => state[1])
+    .map((student: Student) => this.profileActions.findStudentByIdentityNo(student.identityNo));
 }

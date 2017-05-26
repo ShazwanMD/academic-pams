@@ -1,11 +1,13 @@
 import {Injectable} from '@angular/core';
 import {Action} from '@ngrx/store';
 
-
 @Injectable()
 export class ProfileActions {
 
-   static BAR_STUDENT = '[Profile] Bar Student';
+  /*==================================================================================================*/
+  /*BARRING PROCESS*/
+  /*==================================================================================================*/
+  static BAR_STUDENT = '[Profile] Bar Student';
   barStudent(student): Action {
     return {
       type: ProfileActions.BAR_STUDENT,
@@ -13,7 +15,7 @@ export class ProfileActions {
     };
   }
 
-static BAR_STUDENT_SUCCESS = '[Profile] Bar Student Success';
+  static BAR_STUDENT_SUCCESS = '[Profile] Bar Student Success';
   barStudentSuccess(student): Action {
     return {
       type: ProfileActions.BAR_STUDENT_SUCCESS,
@@ -21,8 +23,10 @@ static BAR_STUDENT_SUCCESS = '[Profile] Bar Student Success';
     };
   }
 
-
-   static ACTIVATE_STUDENT = '[Profile] Activate Student';
+  /*==================================================================================================*/
+  /*ACTIVATE / DEACTIVATE STUDENT*/
+  /*==================================================================================================*/
+  static ACTIVATE_STUDENT = '[Profile] Activate Student';
   activateStudent(student): Action {
     return {
       type: ProfileActions.ACTIVATE_STUDENT,
@@ -30,7 +34,7 @@ static BAR_STUDENT_SUCCESS = '[Profile] Bar Student Success';
     };
   }
 
-static ACTIVATE_STUDENT_SUCCESS = '[Profile] Activate Student Success';
+  static ACTIVATE_STUDENT_SUCCESS = '[Profile] Activate Student Success';
   activateStudentSuccess(student): Action {
     return {
       type: ProfileActions.ACTIVATE_STUDENT_SUCCESS,
@@ -38,7 +42,6 @@ static ACTIVATE_STUDENT_SUCCESS = '[Profile] Activate Student Success';
     };
   }
 
-  
  static DEACTIVATE_STUDENT = '[Profile] Deactivate Student';
   deactivateStudent(student): Action {
     return {
@@ -47,7 +50,7 @@ static ACTIVATE_STUDENT_SUCCESS = '[Profile] Activate Student Success';
     };
   }
 
-static DEACTIVATE_STUDENT_SUCCESS = '[Profile] Activate Student Success';
+  static DEACTIVATE_STUDENT_SUCCESS = '[Profile] Activate Student Success';
   deactivateStudentSuccess(student): Action {
     return {
       type: ProfileActions.DEACTIVATE_STUDENT_SUCCESS,
@@ -55,8 +58,10 @@ static DEACTIVATE_STUDENT_SUCCESS = '[Profile] Activate Student Success';
     };
   }
 
+  /*==================================================================================================*/
+  /*FINDING THINGS*/
+  /*==================================================================================================*/
   static FIND_STUDENTS = '[Profile] Find Students';
-
   findStudents(): Action {
     return {
       type: ProfileActions.FIND_STUDENTS
@@ -64,9 +69,7 @@ static DEACTIVATE_STUDENT_SUCCESS = '[Profile] Activate Student Success';
   }
 
   static FIND_STUDENTS_SUCCESS = '[Profile] Find Students Success';
-
   findStudentsSuccess(students): Action {
-    //console.log("findStudentsSuccess");
     return {
       type: ProfileActions.FIND_STUDENTS_SUCCESS,
       payload: students
@@ -74,7 +77,6 @@ static DEACTIVATE_STUDENT_SUCCESS = '[Profile] Activate Student Success';
   }
 
   static FIND_STUDENT_BY_IDENTITY_NO = '[Profile] Find Student By Identity No';
-
   findStudentByIdentityNo(identityNo): Action {
     return {
       type: ProfileActions.FIND_STUDENT_BY_IDENTITY_NO,
@@ -83,18 +85,14 @@ static DEACTIVATE_STUDENT_SUCCESS = '[Profile] Activate Student Success';
   }
 
   static FIND_STUDENT_BY_IDENTITY_NO_SUCCESS = '[Profile] Find Student By Identity No Success';
-
   findStudentByIdentityNoSuccess(student): Action {
-    //console.log("findStudentsSuccess");
     return {
       type: ProfileActions.FIND_STUDENT_BY_IDENTITY_NO_SUCCESS,
       payload: student
     };
   }
 
-
   static FIND_ADDRESSES = '[Profile] Find Addresses';
-
   findAddresses(student): Action {
     return {
       type: ProfileActions.FIND_ADDRESSES,
@@ -103,7 +101,6 @@ static DEACTIVATE_STUDENT_SUCCESS = '[Profile] Activate Student Success';
   }
 
   static FIND_ADDRESSES_SUCCESS = '[Profile] Find Addresses Success';
-
   findAddressesSuccess(addresses): Action {
     return {
       type: ProfileActions.FIND_ADDRESSES_SUCCESS,
@@ -112,7 +109,6 @@ static DEACTIVATE_STUDENT_SUCCESS = '[Profile] Activate Student Success';
   }
 
   static FIND_GUARANTORS = '[Profile] Find Guarantors';
-
   findGuarantors(student): Action {
     return {
       type: ProfileActions.FIND_GUARANTORS,
@@ -121,7 +117,6 @@ static DEACTIVATE_STUDENT_SUCCESS = '[Profile] Activate Student Success';
   }
 
   static FIND_GUARANTORS_SUCCESS = '[Profile] Find Guarantors Success';
-
   findGuarantorsSuccess(guarantors): Action {
     return {
       type: ProfileActions.FIND_GUARANTORS_SUCCESS,
@@ -130,7 +125,6 @@ static DEACTIVATE_STUDENT_SUCCESS = '[Profile] Activate Student Success';
   }
 
   static FIND_CONTACTS = '[Profile] Find Contacts';
-
   findContacts(student): Action {
     return {
       type: ProfileActions.FIND_CONTACTS,
@@ -139,7 +133,6 @@ static DEACTIVATE_STUDENT_SUCCESS = '[Profile] Activate Student Success';
   }
 
   static FIND_CONTACTS_SUCCESS = '[Profile] Find Contacts Success';
-
   findContactsSuccess(contacts): Action {
     return {
       type: ProfileActions.FIND_CONTACTS_SUCCESS,
@@ -148,7 +141,6 @@ static DEACTIVATE_STUDENT_SUCCESS = '[Profile] Activate Student Success';
   }
 
   static FIND_GUARDIANS = '[Profile] Find Guardians';
-
   findGuardians(student): Action {
     return {
       type: ProfileActions.FIND_GUARDIANS,
@@ -157,7 +149,6 @@ static DEACTIVATE_STUDENT_SUCCESS = '[Profile] Activate Student Success';
   }
 
   static FIND_GUARDIANS_SUCCESS = '[Profile] Find Guardians Success';
-
   findGuardiansSuccess(guardians): Action {
     return {
       type: ProfileActions.FIND_GUARDIANS_SUCCESS,
@@ -165,9 +156,7 @@ static DEACTIVATE_STUDENT_SUCCESS = '[Profile] Activate Student Success';
     };
   }
 
-
   static FIND_ENROLLMENTS_BY_STUDENT = '[Profile] Find Enrollments';
-
   findEnrollments(student): Action {
     return {
       type: ProfileActions.FIND_ENROLLMENTS_BY_STUDENT,
@@ -176,7 +165,6 @@ static DEACTIVATE_STUDENT_SUCCESS = '[Profile] Activate Student Success';
   }
 
   static FIND_ENROLLMENTS_BY_STUDENT_SUCCESS = '[Profile] Find Enrollments Success';
-
   findEnrollmentsSuccess(enrollments): Action {
     return {
       type: ProfileActions.FIND_ENROLLMENTS_BY_STUDENT_SUCCESS,
@@ -184,10 +172,11 @@ static DEACTIVATE_STUDENT_SUCCESS = '[Profile] Activate Student Success';
     };
   }
 
+  /*==================================================================================================*/
+  /*ADD / UPD STUDENT*/
+  /*==================================================================================================*/
   static UPDATE_STUDENT = '[Profile] Update Student';
-
   updateStudent(identityNo): Action {
-    //console.log("updateStudent");
     return {
       type: ProfileActions.UPDATE_STUDENT,
       payload: identityNo
@@ -195,51 +184,26 @@ static DEACTIVATE_STUDENT_SUCCESS = '[Profile] Activate Student Success';
   }
 
   static UPDATE_STUDENT_SUCCESS = '[Profile] Update Student Success';
-
   updateStudentSuccess(message): Action {
-    //console.log("updateStudentSuccess");
     return {
       type: ProfileActions.UPDATE_STUDENT_SUCCESS,
       payload: message
     };
   }
 
-  static ADD_CONTACT = '[Profile] Add Contact';
-
-  addContact(student, contact): Action {
-    //console.log("addContact");
-    return {
-      type: ProfileActions.ADD_CONTACT,
-      payload: {student: student, contact: contact}
-    };
-  }
-
-
-  static ADD_CONTACT_SUCCEESS = '[Profile] Add Contact Success';
-
-  addContactSuccess(message): Action {
-    //console.log("addContactSuccess");
-    return {
-      type: ProfileActions.ADD_CONTACT_SUCCEESS,
-      payload: message
-    };
-  }
-
+  /*==================================================================================================*/
+  /*ADD / UPD / DEL ADDRESS*/
+  /*==================================================================================================*/
   static ADD_ADDRESS = '[Profile] Add Address';
-
   addAddress(student, address): Action {
-    //console.log("addAddress");
     return {
       type: ProfileActions.ADD_ADDRESS,
       payload: {student: student, address: address}
     };
   }
 
-
   static ADD_ADDRESS_SUCCEESS = '[Profile] Add Address Success';
-
   addAddressSuccess(message): Action {
-    //console.log("addAddressSuccess");
     return {
       type: ProfileActions.ADD_ADDRESS_SUCCEESS,
       payload: message
@@ -247,41 +211,50 @@ static DEACTIVATE_STUDENT_SUCCESS = '[Profile] Activate Student Success';
   }
 
   static UPDATE_ADDRESS = '[Profile] Update Address';
-
   updateAddress(student, address): Action {
-    //console.log(student);
     return {
       type: ProfileActions.UPDATE_ADDRESS,
       payload: {student: student, address: address}
     };
   }
 
-
   static UPDATE_ADDRESS_SUCCEESS = '[Profile] Update Address Success';
-
   updateAddressSuccess(message): Action {
-    //console.log("updateAddressSuccess");
     return {
       type: ProfileActions.UPDATE_ADDRESS_SUCCEESS,
       payload: message
     };
   }
 
-  static ADD_GUARANTOR = '[Profile] Add Guarantor';
+  static REMOVE_ADDRESS = '[Profile] Remove Address';
+  deleteAddress(student, address): Action {
+    return {
+      type: ProfileActions.REMOVE_ADDRESS,
+      payload: {student:student, address:address}
+    };
+  }
 
+  static REMOVE_ADDRESS_SUCCESS = '[Profile] Remove Address Success';
+  deleteAddressSuccess(message): Action {
+    return {
+      type: ProfileActions.REMOVE_ADDRESS_SUCCESS,
+      payload: message
+    };
+  }
+
+  /*==================================================================================================*/
+  /*ADD / UPD / DEL GUARANTOR*/
+  /*==================================================================================================*/
+  static ADD_GUARANTOR = '[Profile] Add Guarantor';
   addGuarantor(student, guarantor): Action {
-    //console.log("addGuarantor");
     return {
       type: ProfileActions.ADD_GUARANTOR,
       payload: {student: student, guarantor: guarantor}
     };
   }
 
-
   static ADD_GUARANTOR_SUCCEESS = '[Profile] Add Guarantor Success';
-
   addGuarantorSuccess(message): Action {
-    //console.log("addGuarantorSuccess");
     return {
       type: ProfileActions.ADD_GUARANTOR_SUCCEESS,
       payload: message
@@ -289,69 +262,106 @@ static DEACTIVATE_STUDENT_SUCCESS = '[Profile] Activate Student Success';
   }
 
   static UPDATE_GUARANTOR = '[Profile] Update Guarantor';
-
   updateGuarantor(student, guarantor): Action {
-    //console.log(student);
     return {
       type: ProfileActions.UPDATE_GUARANTOR,
       payload: {student: student, guarantor: guarantor}
     };
   }
 
-
   static UPDATE_GUARANTOR_SUCCEESS = '[Profile] Update Guarantor Success';
-
   updateGuarantorSuccess(message): Action {
-    //console.log("updateAddressSuccess");
     return {
       type: ProfileActions.UPDATE_GUARANTOR_SUCCEESS,
       payload: message
     };
   }
-
-  static UPDATE_GUARDIAN = '[Profile] Update Guardian';
-
-  updateGuardian(student, guardian): Action {
-    //console.log(student);
+  
+  static REMOVE_GUARANTOR = '[Profile] Remove Guarantor';
+  deleteGuarantor(student, guarantor): Action {
     return {
-      type: ProfileActions.UPDATE_GUARDIAN,
-      payload: {student: student, guardian: guardian}
+      type: ProfileActions.REMOVE_GUARANTOR,
+      payload: {student:student, guarantor:guarantor}
     };
   }
 
-
-  static UPDATE_GUARDIAN_SUCCEESS = '[Profile] Update Guardian Success';
-
-  updateGuardianSuccess(message): Action {
+  static REMOVE_GUARANTOR_SUCCESS = '[Profile] Remove Guarantor Success';
+  deleteGuarantorSuccess(message): Action {
     return {
-      type: ProfileActions.UPDATE_GUARDIAN_SUCCEESS,
+      type: ProfileActions.REMOVE_GUARANTOR_SUCCESS,
       payload: message
     };
   }
-
+  /*==================================================================================================*/
+  /*ADD / UPD / DEL GUARDIAN*/
+  /*==================================================================================================*/
   static ADD_GUARDIAN = '[Profile] Add Guardian';
-
   addGuardian(student, guardian): Action {
-    //console.log("addGuardian");
     return {
       type: ProfileActions.ADD_GUARDIAN,
       payload: {student: student, guardian: guardian}
     };
   }
 
-
   static ADD_GUARDIAN_SUCCEESS = '[Profile] Add Guardian Success';
-
   addGuardianSuccess(message): Action {
-    //console.log("addGuardianSuccess");
     return {
       type: ProfileActions.ADD_GUARDIAN_SUCCEESS,
       payload: message
     };
   }
+  
+  static UPDATE_GUARDIAN = '[Profile] Update Guardian';
+  updateGuardian(student, guardian): Action {
+    return {
+      type: ProfileActions.UPDATE_GUARDIAN,
+      payload: {student: student, guardian: guardian}
+    };
+  }
+
+  static UPDATE_GUARDIAN_SUCCEESS = '[Profile] Update Guardian Success';
+  updateGuardianSuccess(message): Action {
+    return {
+      type: ProfileActions.UPDATE_GUARDIAN_SUCCEESS,
+      payload: message
+    };
+  }
+  
+  static REMOVE_GUARDIAN = '[Profile] Remove Guardian';
+  deleteGuardian(student, guardian): Action {
+    return {
+      type: ProfileActions.REMOVE_GUARDIAN,
+      payload: {student:student, guardian:guardian}
+    };
+  }
+
+  static REMOVE_GUARDIAN_SUCCESS = '[Profile] Remove Guardian Success';
+  deleteGuardianSuccess(message): Action {
+    return {
+      type: ProfileActions.REMOVE_GUARDIAN_SUCCESS,
+      payload: message
+    };
+  }
+  /*==================================================================================================*/
+  /*ADD / UPD / DEL CONTACT*/
+  /*==================================================================================================*/
+  static ADD_CONTACT = '[Profile] Add Contact';
+  addContact(student, contact): Action {
+    return {
+      type: ProfileActions.ADD_CONTACT,
+      payload: {student: student, contact: contact}
+    };
+  }
+
+  static ADD_CONTACT_SUCCEESS = '[Profile] Add Contact Success';
+  addContactSuccess(message): Action {
+    return {
+      type: ProfileActions.ADD_CONTACT_SUCCEESS,
+      payload: message
+    };
+  }
 
   static UPDATE_CONTACT = '[Profile] Update Contact'
-  
   updateContact(student, contact): Action {
     return {
       type: ProfileActions.UPDATE_CONTACT,
@@ -359,9 +369,7 @@ static DEACTIVATE_STUDENT_SUCCESS = '[Profile] Activate Student Success';
     };
   }
 
-
   static UPDATE_CONTACT_SUCCEESS = '[Profile] Update Contact Success';
-
   updateContactSuccess(message): Action {
     return {
       type: ProfileActions.UPDATE_CONTACT_SUCCEESS,
@@ -370,9 +378,7 @@ static DEACTIVATE_STUDENT_SUCCESS = '[Profile] Activate Student Success';
   }
   
   static REMOVE_CONTACT = '[Profile] Remove Contact';
-
   deleteContact(student,contact): Action {
-    //console.log("deleteContact");
     return {
       type: ProfileActions.REMOVE_CONTACT,
       payload: {student:student, contact:contact}
@@ -380,14 +386,10 @@ static DEACTIVATE_STUDENT_SUCCESS = '[Profile] Activate Student Success';
   }
 
   static REMOVE_CONTACT_SUCCESS = '[Profile] Remove Contact  Success';
-
   deleteContactSuccess(message): Action {
-    //console.log("deleteContactSuccess");
     return {
       type: ProfileActions.REMOVE_CONTACT_SUCCESS,
       payload: message
     };
   }
-  
-
 }

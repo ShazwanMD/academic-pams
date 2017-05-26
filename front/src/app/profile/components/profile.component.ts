@@ -170,7 +170,7 @@ export class ProfileComponent implements OnInit {
       });
     }
 
-    //DELETE CONTACT DIALOG
+    //DELETE CONTACT
     deleteContact(contact: Contact): void {
       this.store.dispatch(this.actions.deleteContact(this.student, contact))
     }
@@ -211,9 +211,10 @@ export class ProfileComponent implements OnInit {
       });
     }
 
-    // deleteAddress(contact: Contact): void {
-    //   this.store.dispatch(this.actions.deleteAddress(this.student, contact))
-    // }
+    //DELETE ADDRESS
+    deleteAddress(contact: Contact): void {
+    this.store.dispatch(this.actions.deleteAddress(this.student, contact))
+    }
 
     /*=========================================================================================*/
     /*GUARANTOR*/
@@ -255,10 +256,10 @@ export class ProfileComponent implements OnInit {
       });
     }
 
-    //DELETE GUARANTOR DIALOG
-    // deleteGuarantor(guarantor: Guarantor): void {
-    //   this.store.dispatch(this.actions.deleteGuarantor(this.student, guarantor))
-    // }
+    //DELETE GUARANTOR
+    deleteGuarantor(guarantor: Guarantor): void {
+    this.store.dispatch(this.actions.deleteGuarantor(this.student, guarantor))
+    }
 
     /*=========================================================================================*/
     /*GUARDIAN*/
@@ -296,7 +297,8 @@ export class ProfileComponent implements OnInit {
       });
     }
 
-    // deleteGuardian(guardian: Guardian): void {
-    //   this.store.dispatch(this.actions.deleteGuardian(this.student, guardian))
-    // }
+    //DELETE GUARDIAN
+    deleteGuardian(guardian: Guardian): void {
+    this.store.dispatch(this.actions.deleteGuardian(this.student, guardian))
+    }
 }
