@@ -21,9 +21,9 @@
      <button md-button class="md-icon-button" (click)="showDialog()">
       <md-icon class="md-24 tc-grey-700">add</md-icon>
     </button>
-    <button md-button class="md-icon-button" (click)="updateAppointment(row)"  >
+    <!-- <button md-button class="md-icon-button" (click)="updateAppointment(row)"  >
       <md-icon class="md-24 tc-grey-700">edit</md-icon>
-    </button>
+    </button> -->
     <button md-button class="md-icon-button" (click)="deleteAppointment(row)">
       <md-icon class="md-24 tc-grey-700">delete</md-icon>
     </button>
@@ -46,9 +46,9 @@
         <template tdDataTableTemplate="action" let-value="value" let-row="row"
                 let-column="column">
         <div layout="row">
-          <a md-button color="accent" class="text-upper" mdTooltip="View this appointment"
-             [routerLink]="['/term/appointments', row['canonicalCode']]">  VIEW <!-- <md-icon class="md-24">pageview</md-icon> -->
-          </a>
+         <!--  <a md-button color="accent" class="text-upper" mdTooltip="View this appointment"
+             [routerLink]="['/term/appointments', row['canonicalCode']]">  VIEW <md-icon class="md-24">pageview</md-icon>
+          </a> -->
           <!--  <a md-button color="accent" class="text-upper" mdTooltip="Delete this appointment"
              (click)="deleteSection()"> <md-icon class="md-24" >delete</md-icon>
           </a> -->
