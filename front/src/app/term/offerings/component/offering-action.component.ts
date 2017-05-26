@@ -23,8 +23,9 @@ export class OfferingActionComponent {
 
   }
 
-  editorDialog(): void {
+  updateDialog(): void {
     console.log("open offering dialog");
+    console.log(this.offering);
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
     config.role = 'dialog';
@@ -37,6 +38,7 @@ export class OfferingActionComponent {
     // set
     this.editorDialogRef.afterClosed().subscribe(res => {
       console.log("close dialog offering update");
+      
     });
   }
 
