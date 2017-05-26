@@ -25,6 +25,7 @@ import {OfferingSectionListComponent} from "./component/offering-section-list.co
 import {OfferingAssessmentListComponent} from "./component/offering-assessment-list.component";
 import {OfferingEnrollmentListComponent} from "./component/offering-enrollment-list.component";
 import {OfferingAppointmentListComponent} from "./component/offering-appointment-list.component";
+import {OfferingActionComponent} from "./component/offering-action.component";
 
 @NgModule({
   imports: [
@@ -49,6 +50,7 @@ import {OfferingAppointmentListComponent} from "./component/offering-appointment
     OfferingAssessmentListComponent,
     OfferingEnrollmentListComponent,
     OfferingAppointmentListComponent,
+    OfferingActionComponent,
 
     //dialog
     OfferingEditorDialog,

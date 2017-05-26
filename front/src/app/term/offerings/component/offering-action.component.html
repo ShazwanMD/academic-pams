@@ -1,0 +1,18 @@
+<md-card>
+  <md-card-title>Action</md-card-title>
+  <md-card-subtitle>Actions available on current offering</md-card-subtitle>
+  <md-divider></md-divider>
+
+  <md-nav-list flex dense>
+
+    <md-list-item (click)= "editorDialog()">
+      <md-icon md-list-avatar>done_all</md-icon>
+      <h4 md-line>Edit Offering {{offering?.code}} </h4>
+      <p md-line>Edit this offering </p>
+    </md-list-item>
+
+  
+    <md-divider></md-divider>
+   
+  </md-nav-list>
+</md-card>
