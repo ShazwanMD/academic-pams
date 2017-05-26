@@ -1,37 +1,37 @@
-<md-card> <md-card-title>{{admission.student.name}}</md-card-title> <md-card-subtitle> {{admission.student.identityNo}}
+<md-card> <md-card-title>{{admission?.student?.name}}</md-card-title> <md-card-subtitle> {{admission?.student?.identityNo}}
 </md-card-subtitle> <md-divider></md-divider> <md-card-content>
 <!--Tab Section Here--> <md-tab-group> <md-tab
     label="Admission Detail"> <br>
-<div>Gpa :{{admission.gpa}}</div>
+<div>Gpa :{{admission?.gpa}}</div>
 <br>
-<div>Cgpa :{{admission.cgpa}}</div>
+<div>Cgpa :{{admission?.cgpa}}</div>
 <br>
-<div>Credit Taken :{{admission.creditTaken}}</div>
+<div>Credit Taken :{{admission?.creditTaken}}</div>
 <br>
-<div>Credit Earned :{{admission.creditEarned}}</div>
+<div>Credit Earned :{{admission?.creditEarned}}</div>
 <br>
 </md-tab> <md-tab label="Student Information">
 
-<div>Identity No : {{admission.student.identityNo}}</div>
+<div>Identity No : {{admission?.student?.identityNo}}</div>
 <br>
-<div>Name : {{admission.student.name}}</div>
+<div>Name : {{admission?.student?.name}}</div>
 <br>
-<div>Email : {{admission.student.email}}</div>
+<div>Email : {{admission?.student?.email}}</div>
 <br>
-<div>Phone : {{admission.student.phone}}</div>
+<div>Phone : {{admission?.student?.phone}}</div>
 <br>
 </md-tab> <md-tab label="Academic Information">
 
-<div>Code : {{admission.academicSession.code}}</div>
+<div>Code : {{admission?.academicSession?.code}}</div>
 <br>
-<div>Description : {{admission.academicSession.description}}</div>
+<div>Description : {{admission?.academicSession?.description}}</div>
 <br>
 
 </md-tab> <md-tab label="Cohort Information">
 
-<div>Code : {{admission.cohort.code}}</div>
+<div>Code : {{admission?.cohort?.code}}</div>
 <br>
-<div>Description : {{admission.cohort.description}}</div>
+<div>Description : {{admission?.cohort?.description}}</div>
 <br>
 
 </md-tab> </md-tab-group> </md-card-content> </md-card>

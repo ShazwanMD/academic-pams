@@ -10,14 +10,23 @@
      <button md-button class="md-icon-button" mdTooltip="Delete section"  (click)="deleteEnrollment(row)">
     <md-icon class="md-24" >delete</md-icon>
     </button> -->
-     <button md-icon-button [md-menu-trigger-for]="menu1" mdTooltip="Select enrollment actions">
+     <!-- <button md-icon-button [md-menu-trigger-for]="menu1" mdTooltip="Select enrollment actions">
       <md-icon>more_vert</md-icon>
     </button>
     <md-menu x-position="before" #menu1="mdMenu">
       <button md-menu-item [routerLink]="['/term/enrollment-applications']">Add new enrollment</button>
       <button md-menu-item (click)="updateAssessment(row)">Update enrollment</button>
       <button md-menu-item (click)="deleteAssessment(row)">Delete enrollment</button>
-    </md-menu>
+    </md-menu> -->
+    <button md-button class="md-icon-button" [routerLink]="['/term/enrollment-applications']" mdTooltip="Add new enrollment">
+      <md-icon class="md-24 tc-grey-700">add</md-icon>
+    </button>
+    <button md-button class="md-icon-button" (click)="updateEnrollment(row)" mdTooltip="Update enrollment"  >
+      <md-icon class="md-24 tc-grey-700">edit</md-icon>
+    </button>
+    <!-- <button md-button class="md-icon-button" (click)="deleteEnrollment(row)" mdTooltip="Delete enrollment">
+      <md-icon class="md-24 tc-grey-700">delete</md-icon>
+    </button> -->
   </div>
   <md-divider></md-divider>
   <md-card-content>
