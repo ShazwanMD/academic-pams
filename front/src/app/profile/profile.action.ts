@@ -202,10 +202,10 @@ export class ProfileActions {
     };
   }
 
-  static ADD_ADDRESS_SUCCEESS = '[Profile] Add Address Success';
+  static ADD_ADDRESS_SUCCESS = '[Profile] Add Address Success';
   addAddressSuccess(message): Action {
     return {
-      type: ProfileActions.ADD_ADDRESS_SUCCEESS,
+      type: ProfileActions.ADD_ADDRESS_SUCCESS,
       payload: message
     };
   }
@@ -218,10 +218,10 @@ export class ProfileActions {
     };
   }
 
-  static UPDATE_ADDRESS_SUCCEESS = '[Profile] Update Address Success';
+  static UPDATE_ADDRESS_SUCCESS = '[Profile] Update Address Success';
   updateAddressSuccess(message): Action {
     return {
-      type: ProfileActions.UPDATE_ADDRESS_SUCCEESS,
+      type: ProfileActions.UPDATE_ADDRESS_SUCCESS,
       payload: message
     };
   }
@@ -253,10 +253,10 @@ export class ProfileActions {
     };
   }
 
-  static ADD_GUARANTOR_SUCCEESS = '[Profile] Add Guarantor Success';
+  static ADD_GUARANTOR_SUCCESS = '[Profile] Add Guarantor Success';
   addGuarantorSuccess(message): Action {
     return {
-      type: ProfileActions.ADD_GUARANTOR_SUCCEESS,
+      type: ProfileActions.ADD_GUARANTOR_SUCCESS,
       payload: message
     };
   }
@@ -269,10 +269,10 @@ export class ProfileActions {
     };
   }
 
-  static UPDATE_GUARANTOR_SUCCEESS = '[Profile] Update Guarantor Success';
+  static UPDATE_GUARANTOR_SUCCESS = '[Profile] Update Guarantor Success';
   updateGuarantorSuccess(message): Action {
     return {
-      type: ProfileActions.UPDATE_GUARANTOR_SUCCEESS,
+      type: ProfileActions.UPDATE_GUARANTOR_SUCCESS,
       payload: message
     };
   }
@@ -303,10 +303,10 @@ export class ProfileActions {
     };
   }
 
-  static ADD_GUARDIAN_SUCCEESS = '[Profile] Add Guardian Success';
+  static ADD_GUARDIAN_SUCCESS = '[Profile] Add Guardian Success';
   addGuardianSuccess(message): Action {
     return {
-      type: ProfileActions.ADD_GUARDIAN_SUCCEESS,
+      type: ProfileActions.ADD_GUARDIAN_SUCCESS,
       payload: message
     };
   }
@@ -319,10 +319,10 @@ export class ProfileActions {
     };
   }
 
-  static UPDATE_GUARDIAN_SUCCEESS = '[Profile] Update Guardian Success';
+  static UPDATE_GUARDIAN_SUCCESS = '[Profile] Update Guardian Success';
   updateGuardianSuccess(message): Action {
     return {
-      type: ProfileActions.UPDATE_GUARDIAN_SUCCEESS,
+      type: ProfileActions.UPDATE_GUARDIAN_SUCCESS,
       payload: message
     };
   }
@@ -353,10 +353,10 @@ export class ProfileActions {
     };
   }
 
-  static ADD_CONTACT_SUCCEESS = '[Profile] Add Contact Success';
+  static ADD_CONTACT_SUCCESS = '[Profile] Add Contact Success';
   addContactSuccess(message): Action {
     return {
-      type: ProfileActions.ADD_CONTACT_SUCCEESS,
+      type: ProfileActions.ADD_CONTACT_SUCCESS,
       payload: message
     };
   }
@@ -369,23 +369,24 @@ export class ProfileActions {
     };
   }
 
-  static UPDATE_CONTACT_SUCCEESS = '[Profile] Update Contact Success';
+  static UPDATE_CONTACT_SUCCESS = '[Profile] Update Contact Success';
   updateContactSuccess(message): Action {
     return {
-      type: ProfileActions.UPDATE_CONTACT_SUCCEESS,
+      type: ProfileActions.UPDATE_CONTACT_SUCCESS,
       payload: message
     };
   }
   
   static REMOVE_CONTACT = '[Profile] Remove Contact';
   deleteContact(student,contact): Action {
+    //console.log("Ini-->",contact);
     return {
       type: ProfileActions.REMOVE_CONTACT,
       payload: {student:student, contact:contact}
     };
   }
 
-  static REMOVE_CONTACT_SUCCESS = '[Profile] Remove Contact  Success';
+  static REMOVE_CONTACT_SUCCESS = '[Profile] Remove Contact Success';
   deleteContactSuccess(message): Action {
     return {
       type: ProfileActions.REMOVE_CONTACT_SUCCESS,

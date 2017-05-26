@@ -191,6 +191,7 @@ export class ProfileService {
       'Content-Type': 'application/json',
     });
     let options = new RequestOptions({ headers: headers });
+    console.log("delete contact");
     return this.http.delete(environment.endpoint + '/api/profile/students/' + student.identityNo + '/contacts/' + contact.id, options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }

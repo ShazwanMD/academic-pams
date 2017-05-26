@@ -173,6 +173,7 @@ export class ProfileComponent implements OnInit {
     //DELETE CONTACT
     deleteContact(contact: Contact): void {
       this.store.dispatch(this.actions.deleteContact(this.student, contact))
+      //console.log("ini->",contact);
     }
 
     /*=========================================================================================*/
