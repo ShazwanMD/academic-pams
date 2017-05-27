@@ -172,6 +172,47 @@ export class PlannerService {
       .map((res: Response) => <Course>res.json());
   }
 
+ saveCourse(course: Course): Observable<String> {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({ headers: headers });
+    return this.http.post(environment.endpoint + '/api/planner/course/' + course.code + '/save', JSON.stringify(course), options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+  updateCourse(course: Course): Observable<String> {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({ headers: headers });
+    return this.http.put(environment.endpoint + '/api/planner/course/' + course.code, JSON.stringify(course), options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+  removeCourse(course: Course): Observable<Course> {
+    return this.http.delete(environment.endpoint + '/api/planner/course/' + course.code)
+      .map((res: Response) => <Course>res.json());
+  }
+
+  activateCourse(course: Course): Observable<String> {
+    let headers = new Headers({ 'Authorization': 'Bearer TODO' });
+    let options = new RequestOptions({ headers: headers });
+    console.log("activate course");
+    return this.http.get(environment.endpoint + '/api/planner/course/' + course.code + '/activate', options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+  deactivateCourse(course: Course): Observable<String> {
+    let headers = new Headers({ 'Authorization': 'Bearer TODO' });
+    let options = new RequestOptions({ headers: headers });
+    console.log("deactivate course");
+    return this.http.get(environment.endpoint + '/api/planner/course/' + course.code + '/deactivate', options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
   // ====================================================================================================
   // COHORT
   // ====================================================================================================
