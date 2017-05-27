@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Action } from '@ngrx/store';
+import {Cohort} from './cohort.interface';
+
 
 @Injectable()
 export class CohortActions {
