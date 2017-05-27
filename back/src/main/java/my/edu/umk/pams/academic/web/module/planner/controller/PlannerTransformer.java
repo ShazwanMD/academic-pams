@@ -63,7 +63,6 @@ public class PlannerTransformer {
         vo.setStatus(FacultyStatus.get(faculty.getStatus().ordinal()));
         return vo;
     }
-
     public Program toProgramVo(AdProgram program) {
         Program vo = new Program();
         vo.setId(program.getId());
