@@ -116,8 +116,6 @@ export class PlannerService {
       'Content-Type': 'application/json',
       //'Authorization': 'Bearer ' + this.authService.token
     });
-    console.log("saya disini");
-    console.dir(program);
     let options = new RequestOptions({ headers: headers });
     return this.http.post(environment.endpoint + '/api/planner/programs/' + program.code + '/save', JSON.stringify(program), options)
       .flatMap((res: Response) => Observable.of(res.text()));
@@ -193,15 +191,13 @@ export class PlannerService {
       .map((res: Response) => <Cohort>res.json());
   }
 
-  saveProgram(program: Program): Observable<String> {
+  saveCohort(cohort: Cohort): Observable<String> {
     let headers = new Headers({
       'Content-Type': 'application/json',
       //'Authorization': 'Bearer ' + this.authService.token
     });
-    console.log("saya disini");
-    console.dir(program);
     let options = new RequestOptions({ headers: headers });
-    return this.http.post(environment.endpoint + '/api/planner/programs/' + program.code + '/save', JSON.stringify(program), options)
+    return this.http.post(environment.endpoint + '/api/planner/cohorts/' + cohort.code + '/save', JSON.stringify(cohort), options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
