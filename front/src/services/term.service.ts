@@ -430,13 +430,13 @@ export class TermService {
     }
 
     // update Section using dialog
-    updateSection(section: Section): Observable<String> {
+    updateSection(offering: Offering, section: Section): Observable<String> {
         let headers = new Headers({
             'Content-Type': 'application/json',
             //'Authorization': 'Bearer ' + this.authService.token
         });
         let options = new RequestOptions({ headers: headers });
-        return this.http.put(environment.endpoint + '/api/term/sections/' + section.canonicalCode, JSON.stringify(section), options)
+        return this.http.put(environment.endpoint + '/api/term/offerings/' + offering.canonicalCode + '/sections/' , JSON.stringify(section), options)
             .flatMap((res: Response) => Observable.of(res.text()));
     }
     
