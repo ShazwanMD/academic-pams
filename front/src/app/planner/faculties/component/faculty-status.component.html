@@ -1,0 +1,10 @@
+<md-card class="bgc-green-600" flex>
+  <md-card-content class="text-center">
+    <div *ngIf="faculty.current" class="md-display-1">ACTIVE</div>
+    <div *ngIf="!faculty.current" class="md-display-1">INACTIVE</div>
+    <div layout="column" layout-padding>
+      <div class="md-subhead tc-grey-100">Status</div>
+      <div class="md-caption  tc-grey-100"></div>
+    </div>
+  </md-card-content>
+</md-card>
