@@ -199,6 +199,7 @@ public class PlannerController {
             program.setTitleEn(vo.getTitleEn());
 			program.setStatus(AdProgramStatus.get(vo.getStatus().ordinal()));
 			program.setFaculty(plannerService.findFacultyById(vo.getFaculty().getId()));
+			program.setLevel(plannerService.findProgramLevelById(vo.getLevel().getId()));
             plannerService.saveProgram(program);
             return new ResponseEntity<String>("Success", HttpStatus.OK);
             }
