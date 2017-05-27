@@ -1,5 +1,6 @@
 package my.edu.umk.pams.academic.planner.service;
 
+import my.edu.umk.pams.academic.identity.model.AdAddress;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 
 import my.edu.umk.pams.academic.term.dao.AdAssessmentDao;
@@ -663,8 +664,8 @@ public class PlannerServiceImpl implements PlannerService {
     }
 
     @Override
-    public void saveProgram(AdProgram program) {
-        programDao.save(program, securityService.getCurrentUser());
+    public void saveProgram(AdProgram program, AdFaculty faculty) {
+        programDao.save(program, faculty, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 

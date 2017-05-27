@@ -246,8 +246,8 @@ public interface PlannerService {
     Integer countProgram(AdProgramType type, AdFaculty faculty);
 
     boolean isProgramExists(String code, AdFaculty faculty);
-
-    void saveProgram(AdProgram program);
+    
+    void saveProgram(AdProgram program, AdFaculty faculty);
 
     void updateProgram(AdProgram program);
 
@@ -285,6 +285,8 @@ public interface PlannerService {
     Integer countAvailableCourse(AdAcademicSession academicSession);
 
     boolean isCourseExists(String code, AdFaculty faculty);
+
+	
 
 
 }
