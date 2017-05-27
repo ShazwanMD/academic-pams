@@ -1,23 +1,26 @@
-import { Faculty } from './faculty.interface';
+
 import '@ngrx/core/add/operator/select';
-import {appRoutes, appRoutingProviders} from '../../app.routes';
-import {NgModule, ModuleWithProviders} from '@angular/core';
-import {BrowserModule} from '@angular/platform-browser';
-import {ReactiveFormsModule} from '@angular/forms';
-import {CovalentCoreModule} from '@covalent/core';
+import { appRoutes, appRoutingProviders } from '../../app.routes';
+import { NgModule, ModuleWithProviders } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { ReactiveFormsModule } from '@angular/forms';
+import { CovalentCoreModule } from '@covalent/core';
 
-import {PlannerService} from '../../../services';
-import {CommonService} from '../../../services';
-import {IdentityService} from '../../../services';
+import { PlannerService } from "../../../services";
+import { CommonService } from "../../../services";
+import { IdentityService } from "../../../services";
 
-import {FacultyCenterPage} from "./faculty-center.page";
-import {FacultyDetailPage} from "./faculty-detail.page";
-import {FacultyListComponent} from "./component/faculty-list.component";
-import {FacultyActions} from "./faculty.action";
-import {EffectsModule} from "@ngrx/effects";
-import {FacultyEffects} from "./faculty.effect";
-import {FacultyComponent} from "./component/faculty.component";
-import {FacultySelectComponent} from "./component/faculty-select.component";
+import { FacultyCenterPage } from "./faculty-center.page";
+import { FacultyDetailPage } from "./faculty-detail.page";
+import { FacultyListComponent } from "./component/faculty-list.component";
+import { Faculty } from "./faculty.interface";
+import { FacultyActions } from "./faculty.action";
+import { EffectsModule } from "@ngrx/effects";
+import { FacultyEffects } from "./faculty.effect";
+import { FacultyComponent } from "./component/faculty.component";
+import { FacultySelectComponent } from "./component/faculty-select.component";
+import { FacultyActionComponent } from "./component/faculty-action.component";
+import { FacultyStatusComponent } from "./component/faculty-status.component";
 
 @NgModule({
   imports: [
@@ -36,10 +39,22 @@ import {FacultySelectComponent} from "./component/faculty-select.component";
     FacultyListComponent,
     FacultyComponent,
     FacultySelectComponent,
-  ],
-  exports: [
+    FacultyActionComponent,
+    FacultyStatusComponent,
+    
+    //dialog
 
+  ],
+
+  exports: [
     FacultySelectComponent,
+    FacultyActionComponent,
+    FacultyStatusComponent,
+  ],
+
+  entryComponents: [
+    FacultyActionComponent,
+    FacultyStatusComponent,
   ],
 })
 
