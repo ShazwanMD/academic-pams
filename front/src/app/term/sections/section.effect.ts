@@ -50,8 +50,11 @@ export class SectionEffects {
   @Effect() updateSections$ = this.actions$
   .ofType(SectionActions.UPDATE_SECTION)
   .map(action => action.payload)
-  .switchMap(payload => this.termService.updateSection(payload))
+  .switchMap(payload => this.termService.updateSection(payload.offering, payload.section))
   .map(message => this.sectionActions.updateSectionSuccess(message))
-  .mergeMap(action => from([action, this.sectionActions.findSections()]));
+  .withLatestFrom(this.store$.select(...this.OFFERING))
+  .map(state => state[1])
+  //.mergeMap(action => from([action, this.sectionActions.findSections()]));
+  .map((offering: Offering) => this.offeringActions.findOfferingByCanonicalCode(offering.canonicalCode));
 
 }

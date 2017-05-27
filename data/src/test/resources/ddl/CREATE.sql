@@ -694,6 +694,7 @@
         M_TS timestamp,
         M_ID int8,
         M_ST int4,
+        STATUS int4 not null,
         NAME varchar(255) not null,
         PREFIX varchar(5),
         primary key (ID)

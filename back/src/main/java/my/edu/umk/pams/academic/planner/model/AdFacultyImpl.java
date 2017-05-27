@@ -40,6 +40,8 @@ public class AdFacultyImpl implements AdFaculty {
     @Embedded
     private AdMetadata metadata;
 
+	private AdFacultyStatus status;
+
     public AdFacultyImpl() {
     }
 
@@ -89,6 +91,16 @@ public class AdFacultyImpl implements AdFaculty {
 	public void setDescription(String description) {
         this.description = description;
     }
+	
+	@Override
+	public AdFacultyStatus getStatus() {
+		return status;
+	}
+
+	@Override
+	public void setStatus(AdFacultyStatus status) {
+        this.status = status;	
+	}
 
     public List<AdProgram> getPrograms() {
         return programs;
