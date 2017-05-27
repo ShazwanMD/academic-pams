@@ -49,7 +49,7 @@ public class WhenIWantToAddProgramInfo extends Stage<WhenIWantToAddProgramInfo> 
         program.setTitleEn("Master of SAM");
         program.setTitleMs("Master of SAM");
    
-        plannerService.saveProgram(program);
+        plannerService.saveProgram(program,faculty);
 
         return self();
     }
