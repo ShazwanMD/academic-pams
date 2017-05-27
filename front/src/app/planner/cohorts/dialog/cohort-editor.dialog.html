@@ -1,26 +1,8 @@
 <h2 md-dialog-title>Create New Cohort</h2>
- <md-dialog-content>
-<form [formGroup]="createForm">
+<md-dialog-content>
+  <form [formGroup]="createForm">
 
-   <div layout="row" class="pad-bottom">
-      <md-input-container flex mdTooltip="Please insert code">
-        <input mdInput
-               placeholder="Code"
-                
-               formControlName="code" flex/>
-      </md-input-container>
-    </div>
-
-	  <div layout="row" class="pad-bottom">
-      <md-input-container flex mdTooltip="Please insert cohortCode">
-        <input mdInput
-               placeholder="description"
-               value="Description"
-               formControlName="description" flex/>
-      </md-input-container>
-    </div>
-
- <div layout="row" class="pad-bottom pad-top">
+    <div layout="row" class="pad-bottom pad-top">
       <pams-academic-session-select
         [placeholder]="'Select Session'"
         [innerFormControl]="createForm.controls['academicSession']">
@@ -33,10 +15,11 @@
         [innerFormControl]="createForm.controls['program']">
       </pams-program-select>
     </div>
-    
-</form>
-</md-dialog-content> 
+
+  </form>
+</md-dialog-content>
 <md-dialog-actions align="end">
-<button md-raised-button color="accent"(click)="save(createForm.value, 1)">
-	Save</button>
+  <button md-raised-button color="accent" (click)="save(createForm.value, 1)">
+    Save
+  </button>
 </md-dialog-actions>

@@ -86,4 +86,43 @@ export class CohortActions {
             payload: cohort
         };
     }
+
+
+
+  static ACTIVATE_COHORT = '[Cohort] Activate Cohort';
+
+  activateCohort(cohort): Action {
+    return {
+      type: CohortActions.ACTIVATE_COHORT,
+      payload: cohort
+    };
+  }
+
+  static ACTIVATE_COHORT_SUCCESS = '[Cohort] Activate AcademicSession Success';
+
+  activateCohortSuccess(cohort): Action {
+    return {
+      type: CohortActions.ACTIVATE_COHORT_SUCCESS,
+      payload: cohort
+    };
+  }
+
+  static DEACTIVATE_COHORT = '[Cohort] Deactivate Cohort';
+
+  deactivateCohort(cohort): Action {
+    return {
+      type: CohortActions.DEACTIVATE_COHORT,
+      payload: cohort
+    };
+  }
+
+  static DEACTIVATE_COHORT_SUCCESS = '[Cohort] Activate Cohort Success';
+
+  deactivateCohortSuccess(cohort): Action {
+    return {
+      type: CohortActions.DEACTIVATE_COHORT_SUCCESS,
+      payload: cohort
+    };
+  }
+
 }

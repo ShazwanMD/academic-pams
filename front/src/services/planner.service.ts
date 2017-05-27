@@ -192,4 +192,47 @@ export class PlannerService {
     return this.http.get(environment.endpoint + '/api/planner/cohorts/' + code, options)
       .map((res: Response) => <Cohort>res.json());
   }
+
+  saveProgram(program: Program): Observable<String> {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    console.log("saya disini");
+    console.dir(program);
+    let options = new RequestOptions({ headers: headers });
+    return this.http.post(environment.endpoint + '/api/planner/programs/' + program.code + '/save', JSON.stringify(program), options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+  updateCohort(cohort: Cohort): Observable<String> {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({ headers: headers });
+    return this.http.put(environment.endpoint + '/api/planner/cohorts/' + cohort.code, JSON.stringify(cohort), options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+  removeCohort(cohort: Cohort): Observable<Cohort> {
+    return this.http.delete(environment.endpoint + '/api/planner/cohorts/' + cohort.code)
+      .map((res: Response) => <Cohort>res.json());
+  }
+
+  activateCohort(cohort: Cohort): Observable<String> {
+    let headers = new Headers({ 'Authorization': 'Bearer TODO' });
+    let options = new RequestOptions({ headers: headers });
+    console.log("activate cohort");
+    return this.http.get(environment.endpoint + '/api/planner/cohorts/' + cohort.code + '/activate', options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+  deactivateCohort(cohort: Cohort): Observable<String> {
+    let headers = new Headers({ 'Authorization': 'Bearer TODO' });
+    let options = new RequestOptions({ headers: headers });
+    console.log("deactivate cohort");
+    return this.http.get(environment.endpoint + '/api/planner/cohorts/' + cohort.code + '/deactivate', options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
 }

@@ -1,7 +1,6 @@
 package my.edu.umk.pams.academic.web.module.planner.controller;
 
 import my.edu.umk.pams.academic.common.model.AdStudyCenter;
-import my.edu.umk.pams.academic.core.AdMetaObject;
 import my.edu.umk.pams.academic.planner.model.*;
 import my.edu.umk.pams.academic.web.module.planner.vo.*;
 import org.slf4j.Logger;
@@ -96,15 +95,16 @@ public class PlannerTransformer {
         vo.setTitleEn(course.getTitleEn());
         vo.setCredit(course.getCredit());
         vo.setFaculty(plannerTransformer.toFacultyVo(course.getFaculty()));
-
         return vo;
     }
 
-    public Cohort toCohortVo(AdCohort cohort) {
+    public Cohort toCohortVo(AdCohort e) {
         Cohort vo = new Cohort();
-        vo.setId(cohort.getId());
-        vo.setCode(cohort.getCode());
-        vo.setDescription(cohort.getDescription());
+        vo.setId(e.getId());
+        vo.setCode(e.getCode());
+        vo.setDescription(e.getDescription());
+        vo.setProgram(toProgramVo(e.getProgram()));
+        vo.setAcademicSession(toAcademicSessionVo(e.getSession()));
         //    vo.setClassification(cohort.getClassification());
         return vo;
     }

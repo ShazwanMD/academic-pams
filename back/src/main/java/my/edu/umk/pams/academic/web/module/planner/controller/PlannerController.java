@@ -61,9 +61,9 @@ public class PlannerController {
     }
 
     @RequestMapping(value = "/academicSessions/{code}", method = RequestMethod.GET)
-   
+
     public ResponseEntity<AcademicSession> findAcademicSessionByCode(@PathVariable String code) {
-    	LOG.debug("SessionCode:{}",code);
+        LOG.debug("SessionCode:{}", code);
         return new ResponseEntity<AcademicSession>(plannerTransformer.toAcademicSessionVo
                 (plannerService.findAcademicSessionByCode(code)), HttpStatus.OK);
     }
@@ -71,8 +71,8 @@ public class PlannerController {
     @RequestMapping(value = "/academicSessions/{code}", method = RequestMethod.PUT)
     public ResponseEntity<String> updateAcademicSession(@PathVariable String code, @RequestBody AcademicSession vo) {
         dummyLogin();
-        LOG.debug("SessionCode:{}",code);
-    	AdAcademicSession academicSession = plannerService.findAcademicSessionByCode(code);
+        LOG.debug("SessionCode:{}", code);
+        AdAcademicSession academicSession = plannerService.findAcademicSessionByCode(code);
         academicSession.setDescription(vo.getDescription());
         academicSession.setCurrent(vo.isCurrent());
         academicSession.setStartDate(vo.getstartDate());
@@ -194,21 +194,21 @@ public class PlannerController {
         return new ResponseEntity<List<Cohort>>(
                 plannerTransformer.toCohortVos(plannerService.findCohorts(program, 0, 100)), HttpStatus.OK);
     }
-    
+
     @RequestMapping(value = "/programs/{code}/save", method = RequestMethod.POST)
     public ResponseEntity<String> saveProgram(@PathVariable String code, @RequestBody Program vo) {
-            dummyLogin();
+        dummyLogin();
 
-            AdProgram program = new AdProgramImpl();
-            program.setCode(vo.getCode());
-            program.setTitleMs(vo.getTitleMs());
-            program.setTitleEn(vo.getTitleEn());
-			program.setStatus(AdProgramStatus.get(vo.getStatus().ordinal()));
-			program.setFaculty(plannerService.findFacultyById(vo.getFaculty().getId()));
-			program.setLevel(plannerService.findProgramLevelById(vo.getLevel().getId()));
-            plannerService.saveProgram(program);
-            return new ResponseEntity<String>("Success", HttpStatus.OK);
-            }
+        AdProgram program = new AdProgramImpl();
+        program.setCode(vo.getCode());
+        program.setTitleMs(vo.getTitleMs());
+        program.setTitleEn(vo.getTitleEn());
+        program.setStatus(AdProgramStatus.get(vo.getStatus().ordinal()));
+        program.setFaculty(plannerService.findFacultyById(vo.getFaculty().getId()));
+        program.setLevel(plannerService.findProgramLevelById(vo.getLevel().getId()));
+        plannerService.saveProgram(program);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
 
     @RequestMapping(value = "/programs/{code}", method = RequestMethod.PUT)
     public ResponseEntity<String> updateProgram(@PathVariable String code, @RequestBody Program vo) {
@@ -306,6 +306,31 @@ public class PlannerController {
     public ResponseEntity<Cohort> findCohortByCode(@PathVariable String code) throws UnsupportedEncodingException {
         return new ResponseEntity<Cohort>(plannerTransformer.toCohortVo(plannerService.findCohortByCode(code)),
                 HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/cohorts/{code}/save", method = RequestMethod.POST)
+    public ResponseEntity<String> saveCohort(@PathVariable String code, @RequestBody Cohort vo) {
+        dummyLogin();
+
+        AdProgram program = plannerService.findProgramById(vo.getProgram().getId());
+        AdAcademicSession academicSession = plannerService.findAcademicSessionById(vo.getAcademicSession().getId());
+        AdCohort cohort = new AdCohortImpl();
+        cohort.setCode(program.getCode() + "-" + academicSession.getCode());
+        cohort.setDescription("Cohort for " + program.getCode());
+        cohort.setProgram(program);
+        cohort.setSession(academicSession);
+        plannerService.saveCohort(cohort);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/cohorts/{code}", method = RequestMethod.PUT)
+    public ResponseEntity<String> updateCohort(@PathVariable String code, @RequestBody Cohort vo) {
+        dummyLogin();
+
+        AdCohort cohort = plannerService.findCohortByCode(code);
+        cohort.setDescription(vo.getCode());
+        plannerService.updateCohort(cohort);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
 
     // ====================================================================================================

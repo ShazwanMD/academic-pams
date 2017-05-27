@@ -72,7 +72,6 @@ public class Program extends MetaObject{
         return programLevel;
     }
 
-
     public void setLevel(ProgramLevel level) {
         this.programLevel = level;
     }
