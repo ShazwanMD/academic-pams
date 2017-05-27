@@ -373,4 +373,16 @@ public class AdProgramDaoImpl extends GenericDaoSupport<Long, AdProgram> impleme
         Session session = sessionFactory.getCurrentSession();
         session.delete(gradeCode);
     }
+
+	@Override
+	public void save(AdProgram program, AdFaculty faculty, AdUser currentUser) {
+		
+        Validate.notNull(currentUser, "User cannot be null");
+        Validate.notNull(program, "Program cannot be null");
+        Validate.notNull(faculty, "Grade Code cannot be null");
+        Session session = sessionFactory.getCurrentSession();
+        session.save(faculty);
+		
+		
+	}
 }
