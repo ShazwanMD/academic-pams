@@ -1,32 +1,14 @@
 <md-card>
   <div toolbar-buttons layout="row" layout-align="start center" flex>
-    <md-card-title flex>Enrollments</md-card-title>
-    <!-- <button md-button class="md-icon-button" mdTooltip="Add new enrollment" [routerLink]="['/term/enrollment-applications']">
-      <md-icon class="md-24" >playlist_add</md-icon>
-    </button>
-     <button md-button class="md-icon-button" mdTooltip="Update section"  (click)="updateEnrollment(row)">
-    <md-icon class="md-24" >update</md-icon>
-    </button>
-     <button md-button class="md-icon-button" mdTooltip="Delete section"  (click)="deleteEnrollment(row)">
-    <md-icon class="md-24" >delete</md-icon>
-    </button> -->
-     <!-- <button md-icon-button [md-menu-trigger-for]="menu1" mdTooltip="Select enrollment actions">
-      <md-icon>more_vert</md-icon>
-    </button>
-    <md-menu x-position="before" #menu1="mdMenu">
-      <button md-menu-item [routerLink]="['/term/enrollment-applications']">Add new enrollment</button>
-      <button md-menu-item (click)="updateAssessment(row)">Update enrollment</button>
-      <button md-menu-item (click)="deleteAssessment(row)">Delete enrollment</button>
-    </md-menu> -->
-    <button md-button class="md-icon-button" [routerLink]="['/term/enrollment-applications']" mdTooltip="Add new enrollment">
+    <md-card-title>Enrollments</md-card-title>
+    <md-chip-list *ngIf="enrollments?.length > 0">
+      <md-chip color="accent">{{enrollments?.length}}</md-chip>
+    </md-chip-list>
+    <span flex></span>
+    <button md-button class="md-icon-button" [routerLink]="['/term/enrollment-applications']"
+            mdTooltip="Add new enrollment">
       <md-icon class="md-24 tc-grey-700">add</md-icon>
     </button>
-   <!--  <button md-button class="md-icon-button" (click)="updateEnrollment(row)" mdTooltip="Update enrollment"  >
-      <md-icon class="md-24 tc-grey-700">edit</md-icon>
-    </button> -->
-    <!-- <button md-button class="md-icon-button" (click)="deleteEnrollment(row)" mdTooltip="Delete enrollment">
-      <md-icon class="md-24 tc-grey-700">delete</md-icon>
-    </button> -->
   </div>
   <md-divider></md-divider>
   <md-card-content>
@@ -43,24 +25,24 @@
           <span flex>{{value}}</span>
         </div>
       </template>
-       <template tdDataTableTemplate="action" let-value="value" let-row="row"
+      <template tdDataTableTemplate="action" let-value="value" let-row="row"
                 let-column="column">
         <div layout="row">
           <!-- <a md-button color="accent" class="text-upper" mdTooltip="View this enrollment"
              [routerLink]="['/term/enrollments', row['id']]"> <span> VIEW</span> <md-icon class="md-24">pageview</md-icon>
           </a> -->
-           
+
           <button md-icon-button [md-menu-trigger-for]="menu1" mdTooltip="Select enrollment actions">
-      <md-icon>more_vert</md-icon>
-    </button>
-    <md-menu x-position="before" #menu1="mdMenu">
-      <button md-menu-item [routerLink]="['/term/enrollments', row['id']]" >View enrollment</button>
-      <button md-menu-item (click)="updateEnrollment(row)" >Update enrollment</button>
-      
-    </md-menu>
+            <md-icon>more_vert</md-icon>
+          </button>
+          <md-menu x-position="before" #menu1="mdMenu">
+            <button md-menu-item [routerLink]="['/term/enrollments', row['id']]">View enrollment</button>
+            <button md-menu-item (click)="updateEnrollment(row)">Update enrollment</button>
+
+          </md-menu>
         </div>
       </template>
-      
+
     </td-data-table>
   </md-card-content>
 </md-card>
