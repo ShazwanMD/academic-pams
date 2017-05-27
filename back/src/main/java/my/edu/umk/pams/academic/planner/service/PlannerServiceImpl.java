@@ -29,6 +29,9 @@ public class PlannerServiceImpl implements PlannerService {
 
     @Autowired
     private AdAcademicSessionDao academicSessionDao;
+    
+    @Autowired
+    private AdAcademicYearDao academicYearDao;
 
     @Autowired
     private AdIntakeCodeDao intakeCodeDao;
@@ -109,6 +112,11 @@ public class PlannerServiceImpl implements PlannerService {
     public boolean isAcademicSessionCodeExists(String code) {
         return academicSessionDao.isCodeExists(code);
     }
+    
+	@Override
+	public AdAcademicYear findByCode(String code) {
+		return academicYearDao.findByCode(code);
+	}
 
     @Override
     public void saveAcademicSession(AdAcademicSession academicSession) {
@@ -752,6 +760,7 @@ public class PlannerServiceImpl implements PlannerService {
     public boolean isCourseExists(String code, AdFaculty faculty) {
         return courseDao.isExists(code, faculty);
     }
+
 
 
 	
