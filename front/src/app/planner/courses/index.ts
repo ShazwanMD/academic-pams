@@ -14,9 +14,14 @@ import {CourseListComponent} from "./component/course-list.component";
 import {CourseActions} from "./course.action";
 import {EffectsModule} from "@ngrx/effects";
 import {CourseEffects} from "./course.effect";
-import {CourseDetailPage} from "./course-detail.page";
 import {CourseComponent} from "./component/course.component";
+import {CourseDetailPage} from "./course-detail.page";
+import {CourseEditorDialog} from "./dialog/course-editor.dialog";
+import {CourseCreatorDialog} from "./dialog/course-creator.dialog";
 import {CourseSelectComponent} from "./component/course-select.component";
+import {CourseActionComponent} from "./component/course-action.component";
+import {CourseStatusComponent} from "./component/course-status.component";
+import {CourseStatusSelectComponent} from "./component/course-status-select.component";
 
 @NgModule({
   imports: [
@@ -35,9 +40,27 @@ import {CourseSelectComponent} from "./component/course-select.component";
     CourseListComponent,
     CourseComponent,
     CourseSelectComponent,
+     CourseActionComponent,
+    CourseStatusComponent,
+    CourseStatusSelectComponent,
+
+    // dialog
+    CourseEditorDialog,
+    CourseCreatorDialog,
+    
   ],
   exports: [
     CourseSelectComponent,
+    CourseListComponent,
+    CourseComponent,
+    CourseStatusComponent,
+    CourseStatusSelectComponent,
+
+  ],
+  
+   entryComponents: [
+    CourseCreatorDialog,
+    CourseEditorDialog,
   ],
 })
 
