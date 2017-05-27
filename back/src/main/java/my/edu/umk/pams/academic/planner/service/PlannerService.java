@@ -186,8 +186,6 @@ public interface PlannerService {
 
     AdProgramLevel findProgramLevelById(Long id);
 
-    AdProgramLevel findProgramLevelByCode(String code);
-
     List<AdProgramLevel> findProgramLevels();
 
     List<AdProgramLevel> findProgramLevels(Integer offset, Integer limit);
@@ -214,6 +212,8 @@ public interface PlannerService {
     AdProgram findProgramByCode(String code);
 
     AdProgram findProgramByCodeAndFaculty(String code, AdFaculty faculty);
+    
+    AdProgramLevel findProgramLevelByCode(String code);
 
     List<AdProgram> findPrograms(String filter);
 

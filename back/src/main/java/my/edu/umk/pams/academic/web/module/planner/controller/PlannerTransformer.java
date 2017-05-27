@@ -1,6 +1,7 @@
 package my.edu.umk.pams.academic.web.module.planner.controller;
 
 import my.edu.umk.pams.academic.common.model.AdStudyCenter;
+import my.edu.umk.pams.academic.core.AdMetaObject;
 import my.edu.umk.pams.academic.planner.model.*;
 import my.edu.umk.pams.academic.web.module.planner.vo.*;
 import org.slf4j.Logger;
@@ -71,10 +72,23 @@ public class PlannerTransformer {
         vo.setTitleEn(program.getTitleEn());
         vo.setStatus(ProgramStatus.get(program.getStatus().ordinal()));
         vo.setFaculty(plannerTransformer.toFacultyVo(program.getFaculty()));
+        vo.setLevel(plannerTransformer.toProgramLevelVo(program.getLevel()));
+        
+    	
         return vo;
     }
 
-    public Course toCourseVo(AdCourse course) {
+    private ProgramLevel toProgramLevelVo(AdProgramLevel level) {
+		
+    	ProgramLevel vo = new ProgramLevel();
+		vo.setId(level.getId());
+        vo.setCode(level.getCode());
+        vo.setDescription(level.getDescription());
+        vo.setPrefix(level.getPrefix());
+		return vo;
+	}
+
+	public Course toCourseVo(AdCourse course) {
         Course vo = new Course();
         vo.setId(course.getId());
         vo.setCode(course.getCode());

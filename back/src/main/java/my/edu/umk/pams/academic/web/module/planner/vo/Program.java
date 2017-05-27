@@ -2,6 +2,8 @@ package my.edu.umk.pams.academic.web.module.planner.vo;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+import my.edu.umk.pams.academic.planner.model.AdProgramLevel;
 import my.edu.umk.pams.academic.web.module.core.vo.MetaObject;
 
 import java.io.IOException;
@@ -16,6 +18,7 @@ public class Program extends MetaObject{
     private String description;
     private ProgramStatus status;
     private Faculty faculty;
+	private ProgramLevel programLevel;
 
     public String getCode() {
         return code;
@@ -65,6 +68,15 @@ public class Program extends MetaObject{
         this.faculty = faculty;
     }
 
+    public ProgramLevel getLevel() {
+        return programLevel;
+    }
+
+
+    public void setLevel(ProgramLevel level) {
+        this.programLevel = level;
+    }
+    
     @JsonCreator
     public static Program create(String jsonString) {
         Program o = null;
