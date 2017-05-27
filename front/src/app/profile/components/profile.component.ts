@@ -32,6 +32,7 @@ import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 
 export class ProfileComponent implements OnInit {
 
+  //Input Param for Interface
   @Input() student: Student;
   @Input() addressess: Address[];
   @Input() guarantors: Guarantor[];
@@ -39,12 +40,14 @@ export class ProfileComponent implements OnInit {
   @Input() contacts: Contact[];
   @Input() enrollments: Enrollment[];
 
+  //All Creator Dialog Ref
   private creatorDialogRef: MdDialogRef<DetailEditorDialog>;
   private contactCreatorDialogRef: MdDialogRef<ContactEditorDialog>;
   private guarantorCreatorDialogRef: MdDialogRef<GuarantorEditorDialog>;
   private guardianCreatorDialogRef: MdDialogRef<GuardianEditorDialog>;
   private addressCreatorDialogRef: MdDialogRef<AddressEditorDialog>;
 
+  //Student Information
   private columns: any[] = [
     { name: 'name', label: 'Name' },
     { name: 'phone', label: 'Phone' },
@@ -52,6 +55,7 @@ export class ProfileComponent implements OnInit {
     { name: 'action', label: '' }
   ];
 
+  //Address
   private columnAddr: any[] = [
     { name: 'addressType', label: 'Address Type' },
     { name: 'address1', label: 'Address 1' },
@@ -61,6 +65,7 @@ export class ProfileComponent implements OnInit {
     { name: 'action', label: 'Action' }
   ];
 
+  //Guarantor
   private columnGuarantor: any[] = [
     { name: 'guarantorType', label: 'Guarantor Type' },
     { name: 'identityNo', label: 'Identity No' },
@@ -68,23 +73,30 @@ export class ProfileComponent implements OnInit {
     { name: 'action', label: 'Action' }
   ];
 
+  //Guardian
   private columnGuardian: any[] = [
-    { name: 'guardianType', label: 'Identity Type' },
+    { name: 'guardianType', label: 'Guardian Type' },
     { name: 'identityNo', label: 'Identity No' },
     { name: 'name', label: 'Name' },
     { name: 'action', label: 'Action' }
   ];
 
+  //Contact
+  private columnContact: any[] = [
+    { name: 'contactType', label: 'Contact Type' },
+    { name: 'identityNo', label: 'Identity No' },
+    { name: 'name', label: 'Name' },
+    { name: 'action', label: 'Action' }
+  ];
+
+  //Constructor
   constructor(private router: Router,
     private route: ActivatedRoute,
     private actions: ProfileActions,
     private vcf: ViewContainerRef,
     private store: Store<ProfileModuleState>,
     private formBuilder: FormBuilder,
-    private dialog: MdDialog) {
-
-    }
-
+    private dialog: MdDialog) {}
 
     ngOnInit(): void {
       this.route.params.subscribe((params: { identityNo: string }) => {
@@ -142,11 +154,26 @@ export class ProfileComponent implements OnInit {
     }
 
     //EDIT CONTACT DIALOG
+    editContactDialog(contact: Contact, isValid: boolean): void {
+      let config = new MdDialogConfig();
+      config.viewContainerRef = this.vcf;
+      config.role = 'dialog';
+      config.width = '70%';
+      config.height = '80%';
+      config.position = { top: '0px' };
+      this.contactCreatorDialogRef = this.dialog.open(ContactEditorDialog, config);
+      if(isValid) {
+        this.contactCreatorDialogRef.componentInstance.contact = contact;
+        this.contactCreatorDialogRef.componentInstance.student = this.student;
+      } 
+    this.addressCreatorDialogRef.afterClosed().subscribe(res => {
+      });
+    }
 
-
-    //DELETE CONTACT DIALOG
+    //DELETE CONTACT
     deleteContact(contact: Contact): void {
       this.store.dispatch(this.actions.deleteContact(this.student, contact))
+      //console.log("ini->",contact);
     }
 
     /*=========================================================================================*/
@@ -185,9 +212,10 @@ export class ProfileComponent implements OnInit {
       });
     }
 
-    // deleteAddress(contact: Contact): void {
-    //   this.store.dispatch(this.actions.deleteAddress(this.student, contact))
-    // }
+    //DELETE ADDRESS
+    deleteAddress(contact: Contact): void {
+    this.store.dispatch(this.actions.deleteAddress(this.student, contact))
+    }
 
     /*=========================================================================================*/
     /*GUARANTOR*/
@@ -229,6 +257,11 @@ export class ProfileComponent implements OnInit {
       });
     }
 
+    //DELETE GUARANTOR
+    deleteGuarantor(guarantor: Guarantor): void {
+    this.store.dispatch(this.actions.deleteGuarantor(this.student, guarantor))
+    }
+
     /*=========================================================================================*/
     /*GUARDIAN*/
     /*=========================================================================================*/
@@ -265,7 +298,8 @@ export class ProfileComponent implements OnInit {
       });
     }
 
-    // deleteGuardian(guardian: Guardian): void {
-    //   this.store.dispatch(this.actions.deleteGuardian(this.student, guardian))
-    // }
+    //DELETE GUARDIAN
+    deleteGuardian(guardian: Guardian): void {
+    this.store.dispatch(this.actions.deleteGuardian(this.student, guardian))
+    }
 }

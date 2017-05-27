@@ -31,11 +31,9 @@ public interface AdStudentDao extends GenericDao<Long, AdStudent> {
     List<AdContact> findContacts(AdStudent student);
     List<AdAddress> findAddresses(AdStudent student);
 
-
     /*HELPER*/
     Integer count(String filter);
     Integer countAddress(AdStudent student);
-    
 
     /*Guardian*/
     void addGuardian(AdStudent student, AdGuardian guardian, AdUser user);

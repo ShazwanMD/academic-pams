@@ -10,14 +10,23 @@
      <button md-button class="md-icon-button" mdTooltip="Delete section"  (click)="deleteAppointment(row)">
     <md-icon class="md-24" >delete</md-icon>
     </button> -->
-     <button md-icon-button [md-menu-trigger-for]="menu1" mdTooltip="Select appointment actions">
+    <!--  <button md-icon-button [md-menu-trigger-for]="menu1" mdTooltip="Select appointment actions">
       <md-icon>more_vert</md-icon>
     </button>
     <md-menu x-position="before" #menu1="mdMenu">
       <button md-menu-item (click)="showAssessmentDialog()">Add new appointment</button>
       <button md-menu-item (click)="updateAssessment(row)">Update appointment</button>
       <button md-menu-item (click)="deleteAssessment(row)">Delete appointment</button>
-    </md-menu>
+    </md-menu> update button disabled [disabled]="disableButton()"-->
+     <button md-button class="md-icon-button" (click)="showDialog()">
+      <md-icon class="md-24 tc-grey-700">add</md-icon>
+    </button>
+    <!-- <button md-button class="md-icon-button" (click)="updateAppointment(row)"  >
+      <md-icon class="md-24 tc-grey-700">edit</md-icon>
+    </button> -->
+    <button md-button class="md-icon-button" (click)="deleteAppointment(row)" mdTooltip="Delete selected appointments">
+      <md-icon class="md-24 tc-grey-700">delete</md-icon>
+    </button>
   </div>
   <md-divider></md-divider>
   <md-card-content>
@@ -37,12 +46,20 @@
         <template tdDataTableTemplate="action" let-value="value" let-row="row"
                 let-column="column">
         <div layout="row">
-          <a md-button color="accent" class="text-upper" mdTooltip="View this appointment"
-             [routerLink]="['/term/appointments', row['canonicalCode']]">  <md-icon class="md-24">pageview</md-icon>
-          </a>
-           <a md-button color="accent" class="text-upper" mdTooltip="Delete this appointment"
+         <!--  <a md-button color="accent" class="text-upper" mdTooltip="View this appointment"
+             [routerLink]="['/term/appointments', row['canonicalCode']]">  VIEW <md-icon class="md-24">pageview</md-icon>
+          </a> -->
+          <!--  <a md-button color="accent" class="text-upper" mdTooltip="Delete this appointment"
              (click)="deleteSection()"> <md-icon class="md-24" >delete</md-icon>
-          </a>
+          </a> -->
+           <button md-icon-button [md-menu-trigger-for]="menu1" mdTooltip="Select section actions">
+      <md-icon>more_vert</md-icon>
+    </button>
+    <md-menu x-position="before" #menu1="mdMenu">
+      <button md-menu-item  [routerLink]="['/term/appointments', row['canonicalCode']]" >View appointment</button>
+      <button md-menu-item (click)="updateAppointment(row)" >Update appointment</button>
+      <button md-menu-item (click)="deleteAppointment(row)">Delete appointment</button>
+    </md-menu>
         </div>
       </template>
       

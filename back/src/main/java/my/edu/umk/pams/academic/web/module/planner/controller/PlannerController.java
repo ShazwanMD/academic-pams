@@ -68,11 +68,17 @@ public class PlannerController {
                 (plannerService.findAcademicSessionByCode(code)), HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/academicSessions/{code}", method = RequestMethod.POST)
+    @RequestMapping(value = "/academicSessions/{code}", method = RequestMethod.PUT)
     public ResponseEntity<String> updateAcademicSession(@PathVariable String code, @RequestBody AcademicSession vo) {
-        AdAcademicSession academicSession = plannerService.findAcademicSessionByCode(code);
-        academicSession.setCurrent(vo.isCurrent());
+        dummyLogin();
+        LOG.debug("SessionCode:{}",code);
+    	AdAcademicSession academicSession = plannerService.findAcademicSessionByCode(code);
         academicSession.setDescription(vo.getDescription());
+        academicSession.setCurrent(vo.isCurrent());
+        academicSession.setStartDate(vo.getstartDate());
+        academicSession.setEndDate(vo.getendDate());
+        academicSession.setSemester(AdAcademicSemester.get(vo.getSemester().ordinal()));
+        academicSession.setYear(plannerService.findByCode(academicSession.getYear().getYear()));
         plannerService.updateAcademicSession(academicSession);
         return new ResponseEntity<String>(academicSession.getCode(), HttpStatus.OK);
     }

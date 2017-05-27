@@ -17,6 +17,7 @@ import {OfferingEffects} from "./offering.effect";
 import {OfferingDetailPage} from "./offering-detail.page";
 import {OfferingComponent} from "./component/offering.component";
 import {OfferingEditorDialog} from "./dialog/offering-editor.dialog";
+import {OfferingUpdateDialog} from "./dialog/offering-update.dialog";
 import {CourseSubModule} from "../../planner/courses/index";
 import {ProgramSubModule} from "../../planner/programs/index";
 import {AcademicSessionSubModule} from "../../planner/academic-sessions/index";
@@ -24,6 +25,7 @@ import {OfferingSectionListComponent} from "./component/offering-section-list.co
 import {OfferingAssessmentListComponent} from "./component/offering-assessment-list.component";
 import {OfferingEnrollmentListComponent} from "./component/offering-enrollment-list.component";
 import {OfferingAppointmentListComponent} from "./component/offering-appointment-list.component";
+import {OfferingActionComponent} from "./component/offering-action.component";
 
 @NgModule({
   imports: [
@@ -48,15 +50,19 @@ import {OfferingAppointmentListComponent} from "./component/offering-appointment
     OfferingAssessmentListComponent,
     OfferingEnrollmentListComponent,
     OfferingAppointmentListComponent,
+    OfferingActionComponent,
 
     //dialog
     OfferingEditorDialog,
+    OfferingUpdateDialog,
     
 
   ],
-  exports: [],
+  exports: [
+  OfferingUpdateDialog,],
    entryComponents: [
     OfferingEditorDialog,
+       OfferingUpdateDialog,
    
   ]
 })

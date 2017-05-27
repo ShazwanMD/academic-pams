@@ -1,6 +1,6 @@
-import {Component, OnInit, ChangeDetectionStrategy, ViewContainerRef} from '@angular/core';
+import {Component, OnInit, ChangeDetectionStrategy, ViewContainerRef, Input, EventEmitter, Output} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
-
+import {OfferingUpdateDialog} from "./dialog/offering-update.dialog";
 import {IdentityService} from '../../../services';
 import {TermService} from '../../../services';
 import {CommonService} from '../../../services';
@@ -22,6 +22,8 @@ import {Assessment} from "../assessments/assessment.interface";
 
 export class OfferingDetailPage implements OnInit {
 
+  @Input() offering: Offering;
+  
   private OFFERING: string[] = "termModuleState.offering".split(".");
   private SECTIONS: string[] = "termModuleState.sections".split(".");
   private ASSESSMENTS: string[] = "termModuleState.assessments".split(".");
@@ -33,6 +35,9 @@ export class OfferingDetailPage implements OnInit {
   private assessments$: Observable<Assessment[]>;
   private appointments: Observable<Appointment[]>;
   private enrollments$: Observable<Enrollment[]>;
+    
+  
+  private editorDialogRef: MdDialogRef<OfferingUpdateDialog>;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -55,6 +60,27 @@ export class OfferingDetailPage implements OnInit {
       this.store.dispatch(this.actions.findOfferingByCanonicalCode(canonicalCode));
     });
   }
+   
+    
+     
+  //update offeringEditorDialog
+    showUpdateDialog(): void {
+    console.log("edit offering");
+    let config = new MdDialogConfig();
+    config.viewContainerRef = this.vcf;
+    config.role = 'dialog';
+    config.width = '60%';
+    config.height = '50%';
+    config.position = {top: '0px'};
+    this.editorDialogRef = this.dialog.open(OfferingUpdateDialog, config);
+    this.editorDialogRef.componentInstance.offering = this.offering;
+
+    // set
+    this.editorDialogRef.afterClosed().subscribe(res => {
+      console.log("close dialog update offering");
+    });
+  }
+  
     
  /* showDialog(): void {
     console.log("showDialog");

@@ -1,38 +1,95 @@
+<md-card> <md-card-title>{{offering?.titleMs}}</md-card-title>
+<md-card-subtitle>{{offering?.code}}</md-card-subtitle> <md-card-subtitle>{{offering?.titleMs}}</md-card-subtitle>
+<md-divider></md-divider> <md-card-content> <md-tab-group>
+<md-tab label="Offering Information"> 
 <md-card>
-  <md-card-title>{{offering?.course?.titleMs}}</md-card-title>
-  <md-card-subtitle>{{offering?.code}}</md-card-subtitle>
-  <md-card-subtitle>{{offering?.titleMs}}</md-card-subtitle>
-  <md-divider></md-divider>
-  <md-card-content>
-    <md-tab-group>
-      <md-tab label="Offering Detail">
-        <br>
-        <div>Offering Code : {{offering?.code}}</div>
-        <br>
-        <div>Offering CanonicalCode : {{offering?.canonicalCode}}</div>
-        <br>
+<div md-content flex md-scroll-y>
+	<div layout="column" layout-gt-md="row" class="insert">
 
-      </md-tab>
-      <md-tab label="Course Information"> <!-- {{offering.course.titleMs}}  -->
+		<div flex-gt-md="50">
+			<md-card-title>Offering Details Info</md-card-title>
+		</div>
 
-        <div>Course Title(MS) :{{offering?.course?.titleMs}}</div>
-        <br>
-        <div>Course Title(EN) :{{offering?.course?.titleEn}}</div>
-        <br>
-        <div>Credit :{{offering?.course?.credit}}</div>
-        <br>
-      </md-tab>
-      <md-tab label="Program Information">
-        <div>Program Code : {{offering?.program?.code}}</div>
-        <br>
-        <div>Program Title(MS) :{{offering?.program?.titleMs}}</div>
-        <br>
-        <div>Program Title(EN) :{{offering?.program?.titleEn}}</div>
-        <br>
-      </md-tab>
-    </md-tab-group>
-  </md-card-content>
-</md-card>
+		<div flex-gt-md="50" align="right">
+			<!-- <button md-icon-button (click)="addAddressDialog(save)">
+      <md-icon>add</md-icon>
+    </button> -->
+    <!--  <button md-button class="md-icon-button" (click)="showDialog()">
+      <md-icon class="md-24 tc-grey-700">add</md-icon>
+    </button>
+    <button md-button class="md-icon-button" (click)="updateSection(row)"  >
+      <md-icon class="md-24 tc-grey-700">edit</md-icon>
+    </button>
+    <button md-button class="md-icon-button" (click)="deleteSection(row)">
+      <md-icon class="md-24 tc-grey-700">delete</md-icon>
+    </button> -->
+		</div>
+	</div>
+</div>
+
+<md-divider></md-divider> <md-card-content> <br>
+<div>Code : {{offering?.code}}</div>
+<br>
+<div>CanonicalCode : {{offering?.canonicalCode}}</div>
+<br>
+<div>Capacity : {{offering?.capacity}}</div>
+<br>
+<div>Title(MS) : {{offering?.titleMs}}</div>
+<br>
+<div>Title(EN) : {{offering?.titleEn}}</div>
+<br>
+
+</md-card-content> </md-card> </md-tab> <md-tab label="Course Information"> <!-- {{offering.course.titleMs}}  -->
+
+<md-card>
+<div md-content flex md-scroll-y>
+	<div layout="column" layout-gt-md="row" class="insert">
+
+		<div flex-gt-md="50">
+			<md-card-title>Course Details Info</md-card-title>
+		</div>
+
+		<div flex-gt-md="50" align="right">
+			<!-- <button md-icon-button (click)="addAddressDialog(save)">
+      <md-icon>add</md-icon>
+    </button> -->
+		</div>
+	</div>
+</div>
+
+<md-divider></md-divider> <md-card-content> <br>
+<div>Course Title(MS) :{{offering?.course?.titleMs}}</div>
+<br>
+<div>Course Title(EN) :{{offering?.course?.titleEn}}</div>
+<br>
+<div>Credit :{{offering?.course?.credit}}</div>
+<br>
+
+</md-card-content> </md-card> </md-tab> <md-tab label="Program Information"> <md-card>
+<div md-content flex md-scroll-y>
+	<div layout="column" layout-gt-md="row" class="insert">
+
+		<div flex-gt-md="50">
+			<md-card-title>Program Details Info</md-card-title>
+		</div>
+
+		<div flex-gt-md="50" align="right">
+			<!-- <button md-icon-button (click)="addAddressDialog(save)">
+      <md-icon>add</md-icon>
+    </button> -->
+		</div>
+	</div>
+</div>
+
+<md-divider></md-divider> <md-card-content> <br>
+<div>Program Code : {{offering?.program?.code}}</div>
+<br>
+<div>Program Title(MS) :{{offering?.program?.titleMs}}</div>
+<br>
+<div>Program Title(EN) :{{offering?.program?.titleEn}}</div>
+<br>
+
+</md-card-content> </md-card> </md-tab> </md-tab-group> </md-card-content> </md-card>
 
 
 

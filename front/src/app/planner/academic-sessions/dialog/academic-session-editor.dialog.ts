@@ -57,7 +57,7 @@ export class AcademicSessionEditorDialog implements OnInit {
         if (this.edit) this.editorForm.patchValue(this._academicSession);
     }
 
-    save(academicSession: AcademicSession, isValid: boolean) {
+    submit(academicSession: AcademicSession, isValid: boolean) {
         console.log("updating academic session");
         if (!academicSession.id) this.store.dispatch(this.actions.saveAcademicSession(academicSession));
         else this.store.dispatch(this.actions.updateAcademicSession(academicSession));

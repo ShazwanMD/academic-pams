@@ -1,4 +1,4 @@
-<h2 md-dialog-title>Create Offering Task Creator</h2>
+<h2 md-dialog-title>Offering Task Creator  {{edit ? 'Update' : 'Save'}}</h2>
 <md-dialog-content>
   <form [formGroup]="createForm">
 
@@ -40,7 +40,7 @@
                formControlName="titleEn" flex/>
       </md-input-container>
     </div>
-    
+   
  <div layout="row" class="pad-bottom pad-top" >
        <pams-course-select mdTooltip="Please select course"
         [placeholder]="'Select Course'"
@@ -60,17 +60,14 @@
         [placeholder]="'Select Session'"
         [innerFormControl]="createForm.controls['academicSession']">
       </pams-academic-session-select>
-            
-      
+
     </div>
 
-    <div layout="row" class="pad-bottom pad-top" mdTooltip="Please select ">
-    </div>
   </form>
 </md-dialog-content>
 <md-dialog-actions align="end">
 <button md-raised-button color="accent" (click)="submit(createForm.value, createForm.valid)">
-    Save
+     {{edit ? 'Update' : 'Save'}}
   </button>
 </md-dialog-actions>
 

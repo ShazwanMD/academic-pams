@@ -18,11 +18,11 @@ import {Program} from "../../../planner/programs/program.interface";
 import {TermModuleState} from "../../index";
 
 @Component({
-  selector: 'pams-offering-editor',
-  templateUrl: './offering-editor.dialog.html',
+  selector: 'pams-offering-update',
+  templateUrl: './offering-update.dialog.html',
 })
 
-export class OfferingEditorDialog implements OnInit {
+export class OfferingUpdateDialog implements OnInit {
 
   //private offering: Offering;
   private createForm: FormGroup;
@@ -35,8 +35,9 @@ export class OfferingEditorDialog implements OnInit {
               private route: ActivatedRoute,
               private formBuilder: FormBuilder,
               private store: Store<TermModuleState>,
+              private viewContainerRef: ViewContainerRef,
               private actions: OfferingActions,
-              public dialog: MdDialogRef<OfferingEditorDialog>) {
+              public dialog: MdDialogRef<OfferingUpdateDialog>) {
   }
     
     set offering(value: Offering) {
@@ -48,8 +49,8 @@ export class OfferingEditorDialog implements OnInit {
   ngOnInit(): void {
     this.createForm = this.formBuilder.group(<Offering>{
       id: null,
-      code: '',
-      canonicalCode: '',
+      code:'',
+      canonicalCode:'',
       capacity: 0,
       titleMs:'',
       titleEn:'',
@@ -61,22 +62,23 @@ export class OfferingEditorDialog implements OnInit {
 
    if (this.edit) this.createForm.patchValue(this._offering);
   }
-
- /* submit(offering: Offering, isValid: boolean) {
+    
+     submit(offering: Offering, isValid: boolean) {
       console.log(JSON.stringify(offering));
-      this.store.dispatch(this.actions.saveOffering(offering));
+      this.store.dispatch(this.actions.updateOffering(offering));
       this.dialog.close();
     }
- */
+ 
     
     //submit update button
+    /*
      submit(offering: Offering, isValid: boolean) {
      console.log(JSON.stringify(offering));
     if (!offering.id) this.store.dispatch(this.actions.saveOffering(offering));
     else  this.store.dispatch(this.actions.updateOffering(offering));
     this.dialog.close();
-    console.log(offering);
 
   }
+    */
 }
 

@@ -6,6 +6,8 @@
   <md-card-content>
     <!--Tab Section Here-->
     <md-tab-group>
+
+      <!--MULA TAB STUDENT INFORMATION-->
       <md-tab label="Student Information">
 
         <br/>
@@ -48,11 +50,11 @@
             <b>Status</b> : {{student.studentStatus}}
           </div>
           </div>
-        </md-card-content>
-    </md-card>
+          <br/><br/><br/>
 
-    <br/>
-
+    <!--TAB OTHERS INFORMATION-->
+    <md-tab-group>
+      <md-tab label="Address">
     <!--ADDRESS INFORMATION-->
     <md-card>
     <div md-content flex md-scroll-y>
@@ -63,14 +65,10 @@
     </div>
     
     <div flex-gt-md="50" align="right">
-    <button md-icon-button [md-menu-trigger-for]="menu2">
-      <md-icon>more_vert</md-icon>
+    <button md-icon-button (click)="addAddressDialog(save)">
+      <md-icon>add</md-icon>
     </button>
-    <md-menu x-position="before" #menu2="mdMenu">
-      <button md-menu-item (click)="addAddressDialog(save)">Add</button>
-    </md-menu>
     </div>
-    
     </div>
     </div>
         <md-card-subtitle>---</md-card-subtitle>
@@ -95,7 +93,13 @@
             
             <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
               <div layout="row">
-                <button md-raised-button color="primary" (click)="editAddressDialog(row, true)">Update</button>
+                <button md-icon-button [md-menu-trigger-for]="menuAddress">
+                  <md-icon>more_vert</md-icon>
+                </button>
+                <md-menu x-position="before" #menuAddress="mdMenu">
+                  <button md-menu-item (click)="editAddressDialog(row, true)">Update</button>
+                  <button md-menu-item (click)="deleteAddress(row, true)">Delete</button>
+                </md-menu>
               </div>
             </template>
 
@@ -103,10 +107,9 @@
 
         </md-card-content>
     </md-card>
-
-    <br/>
-
-    <!--GUARANTOR INFORMATION-->
+      </md-tab>
+      <md-tab label="Guarantor">
+        <!--GUARANTOR INFORMATION-->
     <md-card>
     <div md-content flex md-scroll-y>
     <div layout="column" layout-gt-md="row" class="insert">
@@ -116,13 +119,9 @@
     </div>
     
     <div flex-gt-md="50" align="right">
-    <button md-icon-button [md-menu-trigger-for]="menu3">
-      <md-icon>more_vert</md-icon>
+    <button md-icon-button (click)="addGuarantorDialog(save)">
+      <md-icon>add</md-icon>
     </button>
-    <md-menu x-position="before" #menu3="mdMenu">
-      <button md-menu-item (click)="addGuarantorDialog()">Add</button>
-      <button md-menu-item (click)="editDialog(row)">Edit</button>
-    </md-menu>
     </div>
     
     </div>
@@ -148,17 +147,22 @@
             
             <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
               <div layout="row">
-                <button md-raised-button color="primary" (click)="editGuarantorDialog(row, true)">Update</button>
+                <button md-icon-button [md-menu-trigger-for]="menuGuarantor">
+                  <md-icon>more_vert</md-icon>
+                </button>
+                <md-menu x-position="before" #menuGuarantor="mdMenu">
+                  <button md-menu-item (click)="editGuarantorDialog(row, true)">Update</button>
+                  <button md-menu-item (click)="deleteGuarantor(row, true)">Delete</button>
+                </md-menu>
               </div>
             </template>
 
           </td-data-table>
         </md-card-content>
     </md-card>
-
-    <br/>
-
-    <!--GUARDIAN INFORMATION-->
+      </md-tab>
+      <md-tab label="Guardian">
+        <!--GUARDIAN INFORMATION-->
     <md-card>
     <div md-content flex md-scroll-y>
     <div layout="column" layout-gt-md="row" class="insert">
@@ -168,12 +172,9 @@
     </div>
     
     <div flex-gt-md="50" align="right">
-    <button md-icon-button [md-menu-trigger-for]="menu4">
-      <md-icon>more_vert</md-icon>
+    <button md-icon-button (click)="addGuardianDialog(save)">
+      <md-icon>add</md-icon>
     </button>
-    <md-menu x-position="before" #menu4="mdMenu">
-      <button md-menu-item (click)="addGuardianDialog()">Add</button>
-    </md-menu>
     </div>
     
     </div>
@@ -181,16 +182,6 @@
         <md-card-subtitle>---</md-card-subtitle>
         <md-divider></md-divider>
         <md-card-content>
-          <!--
-          <div layout="column" layout-gt-md="row" class="insert">
-          <div flex-gt-md="100" *ngFor="let guardian of guardians">
-            <b>Guardian ID</b> : {{guardian.identityNo}}<br/><br/>
-            <b>Guardian Name</b> : {{guardian.name}}<br/><br/>
-            <b>Guardian Type</b> : {{guardian.guardianType}}
-          </div>
-          </div>
-          -->
-
           <td-data-table
             [data]="guardians"
             [columns]="columnGuardian"
@@ -209,17 +200,21 @@
             
             <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
               <div layout="row">
-                <button md-raised-button color="primary" (click)="editGuardianDialog(row, true)">Update</button>
+                <button md-icon-button [md-menu-trigger-for]="menuGuardian">
+                  <md-icon>more_vert</md-icon>
+                </button>
+                <md-menu x-position="before" #menuGuardian="mdMenu">
+                  <button md-menu-item (click)="editGuardianDialog(row, true)">Update</button>
+                  <button md-menu-item (click)="deleteGuardian(row, true)">Delete</button>
+                </md-menu>
               </div>
             </template>
-
           </td-data-table>
         </md-card-content>
     </md-card>
-
-    <br/>
-
-    	<!--CONTACT INFORMATION-->
+      </md-tab>
+      <md-tab label="Contact">
+        <!--CONTACT INFORMATION-->
     <md-card>
     <div md-content flex md-scroll-y>
     <div layout="column" layout-gt-md="row" class="insert">
@@ -229,14 +224,9 @@
     </div>
     
     <div flex-gt-md="50" align="right">
-    <button md-icon-button [md-menu-trigger-for]="menu5">
-      <md-icon>more_vert</md-icon>
+    <button md-icon-button (click)="addContactDialog(save)">
+      <md-icon>add</md-icon>
     </button>
-    <md-menu x-position="before" #menu5="mdMenu">
-      <button md-menu-item (click)="addContactDialog()">Add</button>
-      <button md-menu-item (click)="deleteContact()">Delete</button>
-      <button md-menu-item (click)="editDialog(row)">Edit</button>
-    </md-menu>
     </div>
     
     </div>
@@ -244,23 +234,47 @@
         <md-card-subtitle>---</md-card-subtitle>
         <md-divider></md-divider>
         <md-card-content>
-          <div layout="column" layout-gt-md="row" class="insert">
-          <div flex-gt-md="100" *ngFor="let contact of contacts">
-            <b>Contact ID</b> : {{contact.identityNo}}<br/><br/>
-            <b>Contact Name</b> : {{contact.name}}<br/><br/>
-            <b>Contact Type</b> : {{contact.contactType}}
-          </div>
-          </div>
+          <td-data-table
+            [data]="contacts"
+            [columns]="columnContact"
+            [sortBy]="summary"
+            [sortOrder]="ASC"
+            [sortable]="false"
+            [multiple]="false"
+            [selectable]="false"
+            (rowSelect)="edit.emit($event)" dense>
+
+            <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column" >
+              <div layout="row">
+                <span flex >{{value}}</span>
+              </div>
+            </template>
+            
+            <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
+              <div layout="row">
+                <button md-icon-button [md-menu-trigger-for]="menuContact">
+                  <md-icon>more_vert</md-icon>
+                </button>
+                <md-menu x-position="before" #menuContact="mdMenu">
+                  <button md-menu-item (click)="editContactDialog(row, true)">Update</button>
+                  <button md-menu-item (click)="deleteContact(row, true)">Delete</button>
+                </md-menu>
+              </div>
+            </template>
+          </td-data-table>
         </md-card-content>
     </md-card>
+      </md-tab>
+    </md-tab-group>
 
+    </md-card-content>
+    </md-card>
       </md-tab>
 
+<!--MULA TAB COURSE INFORMATION-->
       <md-tab label="Course Information">
-
         <pams-profile-enrollment-list
-          [enrollments]="enrollments"
-        >
+          [enrollments]="enrollments">
         </pams-profile-enrollment-list>
 
       </md-tab>

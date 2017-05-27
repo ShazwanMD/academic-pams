@@ -50,12 +50,34 @@ export class OfferingSectionListComponent {
   ];
 
    //update section using dialog
-     updateSection(canonicalCode: Section): void {
-      this.showUpdateDialog(canonicalCode)
-    } 
-    
+    /* updateSection(section: Section): void {
+         console.log(section);
+      this.showUpdateDialog(section)
+    } */
+  
+  editDialog(canonicalCode: Section): void {
+      this.showEditorDialog(canonicalCode);
+    }
+  
+  filter(): void {
+  }
+
+  private showEditorDialog(canonicalCode: Section): void {
+      console.log("update section dialog");
+    let config = new MdDialogConfig();
+    config.viewContainerRef = this.vcf;
+    config.role = 'dialog';
+    config.width = '70%';
+    config.height = '65%';
+    config.position = {top: '0px'};
+    this.creatorDialogRef = this.dialog.open(SectionEditorDialog, config);
+    if (canonicalCode) this.creatorDialogRef.componentInstance.section = canonicalCode; // set
+    this.creatorDialogRef.afterClosed().subscribe(res => {
+        console.log("close dialog for update section");
+    });
+  }
          
-   //show update dialog for section
+  /* //show update dialog for section
     
     private showUpdateDialog(canonicalCode: Section): void {
     console.log("update section dialog");
@@ -66,11 +88,11 @@ export class OfferingSectionListComponent {
     config.height = '50%';
     config.position = { top: '0px' };
     this.creatorDialogRef = this.dialog.open(SectionEditorDialog, config);
-    if (canonicalCode) this.creatorDialogRef.componentInstance.section = canonicalCode; 
+    if (this.section) this.creatorDialogRef.componentInstance.section = this.section; 
     this.creatorDialogRef.afterClosed().subscribe(res => {
       console.log("close dialog for update section");
     });
-  }
+  }*/
     
  
     
@@ -89,8 +111,11 @@ export class OfferingSectionListComponent {
       // load something here
     });
   }
+    
 
   deleteSection(section: Section): void {
+      console.log("deleteSection");
+      console.log(section);
     this.store.dispatch(this.actions.deleteSection(this.offering, section))
   }
   

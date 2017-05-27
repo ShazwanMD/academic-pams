@@ -1,23 +1,24 @@
 <md-card>
   <div toolbar-buttons layout="row" layout-align="start center" flex>
     <md-card-title flex>Assessments</md-card-title>
-     <!-- <button md-button class="md-icon-button" (click)="showAssessmentDialog()">
-      <md-icon class="md-24" >playlist_add</md-icon>
-    </button>
-     <button md-button class="md-icon-button" mdTooltip="Update section"  (click)="updateAssessment(row)">
-    <md-icon class="md-24" >update</md-icon>
-    </button>
-     <button md-button class="md-icon-button" mdTooltip="Delete section"  (click)="deleteAssessment(row)">
-    <md-icon class="md-24" >delete</md-icon>
-    </button> -->
-      <button md-icon-button [md-menu-trigger-for]="menu1" mdTooltip="Select assesssment actions">
+    
+     <!--  <button md-icon-button [md-menu-trigger-for]="menu1" mdTooltip="Select assesssment actions">
       <md-icon>more_vert</md-icon>
     </button>
     <md-menu x-position="before" #menu1="mdMenu">
       <button md-menu-item (click)="showAssessmentDialog()">Add new assessment</button>
       <button md-menu-item (click)="updateAssessment(row)">Update assessment</button>
       <button md-menu-item (click)="deleteAssessment(row)">Delete assessment</button>
-    </md-menu>
+    </md-menu> -->
+     <button md-button class="md-icon-button" (click)="showAssessmentDialog()" mdTooltip="Add new assesssment">
+      <md-icon class="md-24 tc-grey-700">add</md-icon>
+    </button>
+    <!-- <button md-button class="md-icon-button" (click)="updateAssessment(row)" mdTooltip="Update assesssment"  >
+      <md-icon class="md-24 tc-grey-700">edit</md-icon>
+    </button> -->
+    <button md-button class="md-icon-button" (click)="deleteAssessment(row)" mdTooltip="Delete selected assesssments">
+      <md-icon class="md-24 tc-grey-700">delete</md-icon>
+    </button>
     
   </div>
   <md-divider></md-divider>
@@ -38,9 +39,17 @@
        <template tdDataTableTemplate="action" let-value="value" let-row="row"
                 let-column="column">
         <div layout="row">
-          <a md-button color="accent" class="text-upper" mdTooltip="View this assessment"
-             [routerLink]="['/term/assessments', row['id']]">  <md-icon class="md-24">pageview</md-icon>
-          </a>
+          <!-- <a md-button color="accent" class="text-upper" mdTooltip="View this assessment"
+             [routerLink]="['/term/assessments', row['id']]"><span> VIEW</span>
+          </a> -->
+           <button md-icon-button [md-menu-trigger-for]="menu1" mdTooltip="Select assesssment actions">
+      <md-icon>more_vert</md-icon>
+    </button>
+    <md-menu x-position="before" #menu1="mdMenu">
+      <button md-menu-item [routerLink]="['/term/assessments', row['id']]" >View assesssment</button>
+      <button md-menu-item (click)="updateAssessment(row)" >Update assesssment</button>
+      <button md-menu-item (click)="deleteAssessment(row)">Delete assesssment</button>
+    </md-menu>
           
         </div>
       </template>

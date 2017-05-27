@@ -26,6 +26,7 @@ export class ProgramActionComponent {
 
   editorDialog(): void {
     console.log("edit");
+    console.log(this.program);
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
     config.role = 'dialog';
