@@ -1,3 +1,4 @@
+import { Faculty } from './../../faculties/faculty.interface';
 import {Component, ViewContainerRef, OnInit} from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
 import {FormBuilder} from '@angular/forms';
@@ -16,6 +17,7 @@ import {ProgramStatus} from "../program-status.enum";
 
 export class ProgramEditorDialog implements OnInit {
   private _program: Program;
+  private _faculty: Faculty;
   private editForm: FormGroup;
   private edit: boolean = false;
 
@@ -33,6 +35,10 @@ export class ProgramEditorDialog implements OnInit {
     this.edit = true;
   }
 
+   set faculty (value: Faculty) {
+    this._faculty = value;
+  }
+
   ngOnInit(): void {
     this.editForm = this.formBuilder.group(<Program>{
       id: null,
@@ -47,10 +53,9 @@ export class ProgramEditorDialog implements OnInit {
 
   submit(program: Program, isValid: boolean) {
     console.log(JSON.stringify(program));
-    if (!program.id) this.store.dispatch(this.actions.saveProgram(program));
+    if (!program.id) this.store.dispatch(this.actions.saveProgram(this._faculty,program));
     else  this.store.dispatch(this.actions.updateProgram(program));
     this.dialog.close();
 
   }
 }
-

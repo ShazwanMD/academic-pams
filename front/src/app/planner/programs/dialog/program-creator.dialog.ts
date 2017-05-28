@@ -10,6 +10,7 @@ import {Store} from "@ngrx/store";
 import {PlannerModuleState} from "../../index";
 import {MdDialogRef} from "@angular/material";
 import {ProgramStatus} from "../program-status.enum";
+import { ProgramLevel } from "../program-level.interface";
 
 @Component({
   selector: 'pams-program-creator',
@@ -19,6 +20,9 @@ import {ProgramStatus} from "../program-status.enum";
 export class ProgramCreatorDialog implements OnInit {
 
   private creatorForm: FormGroup;
+  private _program:Program;
+  private _faculty:Faculty;
+
 
   constructor(private formBuilder: FormBuilder,
               private store: Store<PlannerModuleState>,
@@ -37,12 +41,13 @@ export class ProgramCreatorDialog implements OnInit {
       titleEn: '',
       status: ProgramStatus.INACTIVATED,
       faculty: <Faculty>{},
+      level:<ProgramLevel>{},
     });
   }
 
-  submit(program: Program, isValid: boolean) {
+ submit(program: Program, isValid: boolean) {
     console.log(JSON.stringify(program));
-    this.store.dispatch(this.actions.saveProgram(program));
+    this.store.dispatch(this.actions.saveProgram(this._program, this._faculty));
     this.dialog.close();
   }
 }

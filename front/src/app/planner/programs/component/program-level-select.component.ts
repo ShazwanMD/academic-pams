@@ -1,38 +1,38 @@
-// import {Observable} from "rxjs";
-// import { ProgramLevel } from './../program-level.interface';
-// import { Store } from '@ngrx/store';
+import { Program } from './../program.interface';
+import {Observable} from "rxjs";
+import { ProgramLevel } from './../program-level.interface';
+import { Store } from '@ngrx/store';
 
-// import {Component, Input, OnInit} from '@angular/core';
-// import {FormControl} from "@angular/forms";
-// import { ProgramActions } from "../program.action";
-// import { PlannerModuleState } from "../../index";
-
-
-// @Component({
-//   selector: 'pams-program-level-select',
-//   templateUrl: './program-level-select.component.html',
-// })
-// export class ProgramLevelSelectComponent implements OnInit {
-//     programLevel$: Observable<ProgramLevel>;
+import {Component, Input, OnInit} from '@angular/core';
+import {FormControl} from "@angular/forms";
+import { ProgramActions } from "../program.action";
+import { PlannerModuleState } from "../../index";
 
 
-//   private PROGRAMLEVEL: string[] = "plannerModuleState.programs".split(".");
-//   @Input() placeholder: string;
-//   @Input() innerFormControl: FormControl;
+@Component({
+  selector: 'pams-program-level-select',
+  templateUrl: './program-level-select.component.html',
+})
+export class ProgramLevelSelectComponent implements OnInit {
 
-//   constructor(private store: Store<PlannerModuleState>,
-//               private actions: ProgramActions) {
+ private PROGRAMLEVELS: string[] = "plannerModuleState.programs".split(".");
 
-//         this.programLevel$ = this.store.select(...this.PROGRAMLEVEL);
+   programLevels$: Observable<ProgramLevel>;
+  @Input() placeholder: string;
+  @Input() innerFormControl: FormControl;
 
-//   }
+  constructor(private store: Store<PlannerModuleState>,
+              private actions: ProgramActions) {
 
-//  ngOnInit() {
-//     // this.store.dispatch(this.actions.findProgramLevelByCode());
-//   }
+        this.programLevels$ = this.store.select(...this.PROGRAMLEVELS);
 
-//   selectChangeEvent(event: ProgramLevel) {
-//     this.innerFormControl.setValue(event, {emitEvent: false});
-//   }
-// }
+  }
 
+ ngOnInit() {
+    //  this.store.dispatch(this.actions.findProgramLevelByCode(code));
+  }
+
+  selectChangeEvent(event: ProgramLevel) {
+    this.innerFormControl.setValue(event, {emitEvent: false});
+  }
+}
