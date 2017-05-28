@@ -8,6 +8,7 @@ import my.edu.umk.pams.academic.term.model.AdAssessment;
 import my.edu.umk.pams.academic.term.model.AdOffering;
 import my.edu.umk.pams.academic.term.model.AdOfferingImpl;
 import my.edu.umk.pams.academic.planner.model.*;
+import my.edu.umk.pams.academic.term.model.AdSection;
 import org.apache.commons.lang.Validate;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -354,5 +355,20 @@ public class AdOfferingDaoImpl extends GenericDaoSupport<Long, AdOffering> imple
         Validate.notNull(user, "User cannot be null");
         Session session = sessionFactory.getCurrentSession();
         session.delete(assessment);
+    }
+
+    @Override
+    public void addSection(AdOffering offering, AdSection section, AdUser user) {
+
+    }
+
+    @Override
+    public void updateSection(AdOffering offering, AdSection section, AdUser user) {
+
+    }
+
+    @Override
+    public void deleteSection(AdOffering offering, AdSection section, AdUser user) {
+
     }
 }

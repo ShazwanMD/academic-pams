@@ -2,9 +2,12 @@ package my.edu.umk.pams.academic.term.dao;
 
 import my.edu.umk.pams.academic.core.GenericDao;
 import my.edu.umk.pams.academic.identity.model.AdUser;
+import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
+import my.edu.umk.pams.academic.planner.model.AdCourse;
+import my.edu.umk.pams.academic.planner.model.AdProgram;
 import my.edu.umk.pams.academic.term.model.AdAssessment;
 import my.edu.umk.pams.academic.term.model.AdOffering;
-import my.edu.umk.pams.academic.planner.model.*;
+import my.edu.umk.pams.academic.term.model.AdSection;
 
 import java.util.List;
 
@@ -71,5 +74,11 @@ public interface AdOfferingDao extends GenericDao<Long, AdOffering> {
     void updateAssessment(AdOffering offering, AdAssessment assessment, AdUser user);
 
     void deleteAssessment(AdOffering offering, AdAssessment assessment, AdUser user);
+
+    void addSection(AdOffering offering, AdSection section, AdUser user);
+
+    void updateSection(AdOffering offering, AdSection section, AdUser user);
+
+    void deleteSection(AdOffering offering, AdSection section, AdUser user);
 
 }

@@ -136,7 +136,9 @@ public interface AdSectionDao extends GenericDao<Long, AdSection> {
     void updateAppointment(AdSection section, AdAppointment appointment, AdUser user);
 
     void deleteAppointment(AdSection section, AdAppointment appointment, AdUser user);
-    
+
+
+    // todo(syikin): tambah di offeringDao, bukan di sini
     void addSection(AdOffering offering, AdSection section, AdUser user);
 
     void updateSection(AdOffering offering, AdSection section, AdUser user);
