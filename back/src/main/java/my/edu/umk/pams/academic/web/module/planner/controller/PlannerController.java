@@ -312,14 +312,17 @@ public class PlannerController {
 	}
 
 	@RequestMapping(value = "/courses/{code}/activate", method = RequestMethod.POST)
-	public ResponseEntity<Course> activateCourse(@PathVariable String code, @RequestBody Course course) {
+	public ResponseEntity<String> activateCourse(@PathVariable String code, @RequestBody Course course) {
 		throw new UnsupportedOperationException();
+	
 	}
 
 	@RequestMapping(value = "/courses/{code}/deactivate", method = RequestMethod.POST)
-	public ResponseEntity<Course> deactivateCourse(@PathVariable String code, @RequestBody Course course) {
+	public ResponseEntity<String> deactivateCourse(@PathVariable String code, @RequestBody Course course) {
 		throw new UnsupportedOperationException();
+		
 	}
+	
 	
 	// ====================================================================================================
 	// academicYear
