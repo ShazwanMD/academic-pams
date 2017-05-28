@@ -180,7 +180,7 @@ public class PlannerController {
 		}
 	
 
-	@RequestMapping(value = "/faculties/{code}/activate", method = RequestMethod.POST)
+	@RequestMapping(value = "/faculties/{code}/activate", method = RequestMethod.GET)
 	public ResponseEntity<String> activateFacultiy(@PathVariable String code) {
 		dummyLogin();
 		LOG.debug("activate program");
@@ -190,7 +190,7 @@ public class PlannerController {
 		return new ResponseEntity<String>(faculty.getCode(),HttpStatus.OK);
 	}
 
-	@RequestMapping(value = "/faculties/{code}/deactivate", method = RequestMethod.POST)
+	@RequestMapping(value = "/faculties/{code}/deactivate", method = RequestMethod.GET)
 	public ResponseEntity<String> deactivateFaculty(@PathVariable String code) {
 		dummyLogin();
 		LOG.debug("deactivate program");
@@ -320,6 +320,16 @@ public class PlannerController {
 	public ResponseEntity<Course> deactivateCourse(@PathVariable String code, @RequestBody Course course) {
 		throw new UnsupportedOperationException();
 	}
+	
+	// ====================================================================================================
+	// academicYear
+	// ====================================================================================================
+
+		@RequestMapping(value = "/academicYears", method = RequestMethod.GET)
+		public ResponseEntity<List<AcademicYear>> findAcademicYears() {
+			return new ResponseEntity<List<AcademicYear>>(plannerTransformer.toAcademicYearVos(plannerService.findAcademicYears(0, 100)),
+					HttpStatus.OK);
+		}
 
 	// ====================================================================================================
 	// COHORT

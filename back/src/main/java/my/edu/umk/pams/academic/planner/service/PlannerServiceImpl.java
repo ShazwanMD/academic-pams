@@ -48,7 +48,7 @@ public class PlannerServiceImpl implements PlannerService {
 
     @Autowired
     private AdCourseDao courseDao;
-
+    
     @Autowired
     private AdOfferingDao offeringDao;
 
@@ -762,7 +762,17 @@ public class PlannerServiceImpl implements PlannerService {
         return courseDao.isExists(code, faculty);
     }
 
+    //====================================================================================================
+    // ACADEMIC YEAR
+    //====================================================================================================
 
+    @Override
+    public List<AdAcademicYear> findAcademicYears(Integer offset, Integer limit) {
+        return academicYearDao.find(offset, limit);
+    }
 
-	
+    @Override
+    public List<AdAcademicYear> findAcademicYears(String filter, Integer offset, Integer limit) {
+        return academicYearDao.find(filter, offset, limit);
+    }
 }
