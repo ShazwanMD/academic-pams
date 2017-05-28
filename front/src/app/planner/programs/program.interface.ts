@@ -9,5 +9,5 @@ export interface Program extends MetaObject {
   titleEn: string;
   status: ProgramStatus;
   faculty: Faculty;
-  programLevel :ProgramLevel
+  level :ProgramLevel
 }
