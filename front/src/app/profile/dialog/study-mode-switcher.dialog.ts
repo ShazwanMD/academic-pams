@@ -43,7 +43,9 @@ export class StudyModeSwitcherDialog implements OnInit {
       academicSession: <AcademicSession>{}
     });
 
-    this.switchForm.patchValue({from: this._student.studyMode});
+    console.log("patching values : " + JSON.stringify(this._student.studyMode));
+    this.switchForm.patchValue({"from": this._student.studyMode});
+
   }
 
   switch(switcher: SwitchStudyMode): void {

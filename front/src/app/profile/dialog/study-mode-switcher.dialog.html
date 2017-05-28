@@ -2,7 +2,7 @@
 <md-dialog-content>
   <form [formGroup]="switchForm">
     <div layout="row" class="pad-bottom pad-top" flex>
-      {{switchForm.controls['from']?.code}}
+      <span>From {{_student?.studyMode?.description}}</span>
     </div>
     <div layout="row" class="pad-bottom pad-top" flex>
       <pams-study-mode-select
