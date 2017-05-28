@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions id="definitions"
+             xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL"
+             xmlns:activiti="http://activiti.org/bpmn"
+             targetNamespace="GRD">
+
+
+    <!--
+    ====================================================================================================
+    ==  DRAFTED > REGISTERED > VERIFIED > CHECKED > APPROVED >>  COMPLETED >> END
+    ====================================================================================================
+    -->
+
+    <!--
+    ====================================================================================================
+    == VARIABLE:
+    == graduationApplicationId: graduationApplication id
+    ====================================================================================================
+    -->
+
+    <process id="graduation_application_workflow" name="Graduation Graduation Application Workflow">
+
+        <startEvent id="start"/>
+
+        <sequenceFlow id="flow1" sourceRef="start" targetRef="graduationApplication_draft_ST"/>
+
+        <!--
+        ====================================================================================================
+        == STATE : DRAFTED
+        == SERVICE TASK : draft a graduationApplication
+        == USER TASK :
+        ====================================================================================================
+        -->
+        <serviceTask id="graduationApplication_draft_ST"
+                     activiti:expression="#{graduationApplication_draft_ST.execute(execution)}"/>
+
+        <sequenceFlow id="flow1.1" sourceRef="graduationApplication_draft_ST" targetRef="graduationApplication_draft_UT"/>
+
+        <userTask id="graduationApplication_draft_UT"
+                  name="my.edu.umk.pams.academic.graduation.model.AcGraduationApplication:DRAFTED"
+                  activiti:assignee="${userCreator}">
+            <documentation>
+                Draft Invoice
+            </documentation>
+        </userTask>
+
+        <sequenceFlow id="flow1.2" sourceRef="graduationApplication_draft_UT" targetRef="graduationApplication_remove_ST">
+            <conditionExpression>${removeDecision}</conditionExpression>
+        </sequenceFlow>
+
+        <sequenceFlow id="flow1.3" sourceRef="graduationApplication_draft_UT" targetRef="graduationApplication_register_ST">
+            <conditionExpression>${!removeDecision}</conditionExpression>
+        </sequenceFlow>
+        <!--
+        ====================================================================================================
+        == STATE : REGISTERED
+        == SERVICE TASK : register a graduationApplication
+        == USER TASK :
+        ====================================================================================================
+        -->
+        <serviceTask id="graduationApplication_register_ST"
+                     activiti:expression="#{graduationApplication_register_ST.execute(execution)}"/>
+
+        <sequenceFlow id="flow3.1" sourceRef="graduationApplication_register_ST" targetRef="graduationApplication_register_UT"/>
+
+        <userTask id="graduationApplication_register_UT"
+                  name="my.edu.umk.pams.academic.graduation.model.AcGraduationApplication:REGISTERED"
+                  activiti:candidateGroups="${graduationApplicationRouter.findRegistererCandidates(graduationApplicationId)}">
+            <documentation>
+                Register Graduation Application
+            </documentation>
+
+        </userTask>
+
+        <!-- accept -->
+        <sequenceFlow id="flow3.2" sourceRef="graduationApplication_register_UT" targetRef="graduationApplication_verify_ST">
+            <conditionExpression>${!removeDecision}</conditionExpression>
+        </sequenceFlow>
+
+        <!-- delete -->
+        <sequenceFlow id="flow3.4" sourceRef="graduationApplication_register_UT" targetRef="graduationApplication_remove_ST">
+            <conditionExpression>${removeDecision}</conditionExpression>
+        </sequenceFlow>
+        <!--
+        ====================================================================================================
+        == STATE : VERIFIED
+        == SERVICE TASK : verify a graduationApplication
+        == USER TASK :
+        ====================================================================================================
+        -->
+        <serviceTask id="graduationApplication_verify_ST"
+                     activiti:expression="#{graduationApplication_verify_ST.execute(execution)}"/>
+
+        <sequenceFlow id="flow4.1" sourceRef="graduationApplication_verify_ST" targetRef="graduationApplication_verify_UT"/>
+
+        <userTask id="graduationApplication_verify_UT"
+                  name="my.edu.umk.pams.academic.graduation.model.AcGraduationApplication:VERIFIED"
+                  activiti:candidateGroups="${graduationApplicationRouter.findVerifierCandidates(graduationApplicationId)}">
+            <documentation>
+                Verify Graduation Application
+            </documentation>
+
+        </userTask>
+
+        <sequenceFlow id="flow4.2" sourceRef="graduationApplication_verify_UT" targetRef="graduationApplication_remove_ST">
+            <conditionExpression>${removeDecision}</conditionExpression>
+        </sequenceFlow>
+
+        <sequenceFlow id="flow4.3" sourceRef="graduationApplication_verify_UT" targetRef="graduationApplication_approve_ST">
+            <conditionExpression>${!removeDecision}</conditionExpression>
+        </sequenceFlow>
+
+        <!--
+        ====================================================================================================
+        == STATE : REMOVED
+        == SERVICE TASK : removed a graduationApplication
+        == USER TASK :
+        ====================================================================================================
+        -->
+        <serviceTask id="graduationApplication_remove_ST"
+                     activiti:expression="#{graduationApplication_remove_ST.execute(execution)}"/>
+
+        <sequenceFlow id="flow7.1" sourceRef="graduationApplication_remove_ST" targetRef="end"/>
+
+        <!--
+        ====================================================================================================
+        == STATE : APPROVED
+        == SERVICE TASK : approve a graduationApplication
+        == USER TASK :
+        ====================================================================================================
+        -->
+        <serviceTask id="graduationApplication_approve_ST"
+                     activiti:expression="#{graduationApplication_approve_ST.execute(execution)}"/>
+
+        <sequenceFlow id="flow8.1" sourceRef="graduationApplication_approve_ST" targetRef="graduationApplication_complete_ST"/>
+
+        <!--
+        ====================================================================================================
+        == STATE : COMPLETED
+        == SERVICE TASK : complete a graduationApplication
+        == USER TASK :
+        ====================================================================================================
+        -->
+        <serviceTask id="graduationApplication_complete_ST"
+                     activiti:expression="#{graduationApplication_complete_ST.execute(execution)}"/>
+
+        <sequenceFlow id="flow9.1" sourceRef="graduationApplication_complete_ST" targetRef="end"/>
+
+        <!--
+            ====================================================================================================
+            == STATE : END
+            ====================================================================================================
+            -->
+        <endEvent id="end"/>
+
+    </process>
+</definitions>

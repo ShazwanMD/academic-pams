@@ -1,14 +1,12 @@
 package my.edu.umk.pams.academic.planner.service;
 
-import my.edu.umk.pams.academic.identity.model.AdAddress;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
-
+import my.edu.umk.pams.academic.planner.dao.*;
+import my.edu.umk.pams.academic.planner.model.*;
+import my.edu.umk.pams.academic.security.service.SecurityService;
 import my.edu.umk.pams.academic.term.dao.AdAssessmentDao;
 import my.edu.umk.pams.academic.term.dao.AdOfferingDao;
 import my.edu.umk.pams.academic.term.dao.AdSectionDao;
-import my.edu.umk.pams.academic.security.service.SecurityService;
-import my.edu.umk.pams.academic.planner.dao.*;
-import my.edu.umk.pams.academic.planner.model.*;
 import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -294,11 +292,7 @@ public class PlannerServiceImpl implements PlannerService {
 	public void removePrerequisite(AdCourse course, AdCourse... prerequisites) {
 		courseDao.removePrerequisites(course, securityService.getCurrentUser(), prerequisites);
 	        sessionFactory.getCurrentSession().flush();
-	       
-				
 	}
-
-
 
     //====================================================================================================
     // COHORT
@@ -312,6 +306,11 @@ public class PlannerServiceImpl implements PlannerService {
     @Override
     public AdCohort findByParent(AdCohort parent) {
         return cohortDao.findByParent(parent);
+    }
+
+    @Override
+    public AdCohort findCohortById(Long id) {
+        return cohortDao.findById(id);
     }
 
     @Override
