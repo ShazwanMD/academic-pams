@@ -93,7 +93,9 @@ public class PlannerController {
 		academicSession.setStartDate(vo.getstartDate());
 		academicSession.setEndDate(vo.getendDate());
 		academicSession.setSemester(AdAcademicSemester.get(vo.getSemester().ordinal()));
-		vo.setYear(plannerTransformer.toAcademicYearVo(academicSession.getYear()));
+//		academicSession.setYear(plannerTransformer.toAcademicYearVo(academicYear.getYear()));
+		academicSession.setYear(plannerService.findByCode(academicSession.getYear().getYear()));
+
 		plannerService.saveAcademicSession(academicSession);
 		return new ResponseEntity<String>("Success", HttpStatus.OK);
 	}
@@ -311,14 +313,17 @@ public class PlannerController {
 	}
 
 	@RequestMapping(value = "/courses/{code}/activate", method = RequestMethod.POST)
-	public ResponseEntity<Course> activateCourse(@PathVariable String code, @RequestBody Course course) {
+	public ResponseEntity<String> activateCourse(@PathVariable String code, @RequestBody Course course) {
 		throw new UnsupportedOperationException();
+	
 	}
 
 	@RequestMapping(value = "/courses/{code}/deactivate", method = RequestMethod.POST)
-	public ResponseEntity<Course> deactivateCourse(@PathVariable String code, @RequestBody Course course) {
+	public ResponseEntity<String> deactivateCourse(@PathVariable String code, @RequestBody Course course) {
 		throw new UnsupportedOperationException();
+		
 	}
+	
 	
 	// ====================================================================================================
 	// academicYear
