@@ -17,10 +17,13 @@ import { AcademicSessionEffects } from "./academic-session.effect";
 import { AcademicSessionSelectComponent } from './component/academic-session-select.component';
 import { AcademicSessionCreatorDialog } from "./dialog/academic-session-creator.dialog";
 import { AcademicSessionStatusComponent } from "./component/academic-session-status.component";
-import { AcademicYear } from "./academic-year.interface";
+
 import { AcademicSessionEditorDialog } from "./dialog/academic-session-editor.dialog";
 import { AcademicSemesterSelectComponent } from "./component/academic-semester-select.component";
 import { AcademicSessionActionComponent } from "./component/academic-session-action.component";
+import {AcademicYearSubModule} from "../../planner/academic-years/index";
+
+
 
 
 @NgModule({
@@ -28,6 +31,7 @@ import { AcademicSessionActionComponent } from "./component/academic-session-act
     appRoutes,
     BrowserModule,
     ReactiveFormsModule,
+    AcademicYearSubModule.forRoot(),
     CovalentCoreModule.forRoot(),
     EffectsModule.run(AcademicSessionEffects),
   ],
@@ -43,6 +47,7 @@ import { AcademicSessionActionComponent } from "./component/academic-session-act
     AcademicSessionStatusComponent,
     AcademicSemesterSelectComponent,
     AcademicSessionActionComponent,
+    
 
 
     //dialog
@@ -55,6 +60,7 @@ import { AcademicSessionActionComponent } from "./component/academic-session-act
     AcademicSessionStatusComponent,
     AcademicSemesterSelectComponent,
     AcademicSessionActionComponent,
+    
 
   ],
 
@@ -63,6 +69,7 @@ import { AcademicSessionActionComponent } from "./component/academic-session-act
     AcademicSessionEditorDialog,
     AcademicSessionSelectComponent,
     AcademicSessionActionComponent,
+    
 
   ],
 

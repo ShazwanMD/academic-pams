@@ -1,4 +1,4 @@
-import { AcademicYear } from './academic-year.interface';
+import { AcademicYear } from '../academic-years/academic-year.interface';
 import { AcademicSemester } from './academic-semester-type.enum';
 import {MetaObject} from "../../core/meta-object.interface";
 

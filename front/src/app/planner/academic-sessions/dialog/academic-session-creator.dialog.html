@@ -39,11 +39,18 @@
     </pams-academic-semester-select>
   </div>
 
-  <div layout="row" class="inset" flex>
+<!--   <div layout="row" class="inset" flex>
     <md-input-container flex>
       <input mdInput placeholder="Year" formControlName="year" flex/>
     </md-input-container>
-  </div>
+    
+  </div> -->
+  <div layout="row" class="pad-bottom pad-top" >
+       <pams-academic-year-select mdTooltip="Please select academic year"
+        [placeholder]="'Select Academic Year'"
+        [innerFormControl]="createForm.controls['academicYear']">
+      </pams-academic-year-select>
+    </div> 
 
 </form>
 

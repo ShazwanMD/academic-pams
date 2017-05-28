@@ -286,7 +286,13 @@ public interface PlannerService {
 
     boolean isCourseExists(String code, AdFaculty faculty);
 
-	
+ 
+  //====================================================================================================
+    // ACADEMIC YEAR
+    //====================================================================================================
+    List<AdAcademicYear> findAcademicYears(Integer offset, Integer limit);
+
+    List<AdAcademicYear> findAcademicYears(String filter, Integer offset, Integer limit);	
 
 
 }
