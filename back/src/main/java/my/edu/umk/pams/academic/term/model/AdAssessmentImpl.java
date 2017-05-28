@@ -52,7 +52,6 @@ public class AdAssessmentImpl implements AdAssessment {
     @Embedded
     private AdMetadata metadata;
 
-    @Override
     public Long getId() {
         return id;
     }

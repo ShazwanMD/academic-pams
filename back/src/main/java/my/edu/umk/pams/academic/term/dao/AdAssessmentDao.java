@@ -1,6 +1,7 @@
 package my.edu.umk.pams.academic.term.dao;
 
 import my.edu.umk.pams.academic.core.GenericDao;
+import my.edu.umk.pams.academic.identity.model.AdContact;
 import my.edu.umk.pams.academic.identity.model.AdUser;
 import my.edu.umk.pams.academic.term.model.AdAssessment;
 import my.edu.umk.pams.academic.term.model.AdAssessmentType;
@@ -17,8 +18,9 @@ public interface AdAssessmentDao extends GenericDao<Long, AdAssessment> {
     // ====================================================================================================
     // FINDER
     // ====================================================================================================
-
-    AdAssessment findByCanonicalCode(String canonicalCode);
+    AdAssessment findAssessmentById(Long id);
+	
+	AdAssessment findByCanonicalCode(String canonicalCode);
 
     AdAssessment findByCodeAndOffering(String code, AdOffering offering);
 

@@ -3,6 +3,8 @@ package my.edu.umk.pams.academic.term.dao;
 import my.edu.umk.pams.academic.core.AdMetaState;
 import my.edu.umk.pams.academic.core.AdMetadata;
 import my.edu.umk.pams.academic.core.GenericDaoSupport;
+import my.edu.umk.pams.academic.identity.model.AdContact;
+import my.edu.umk.pams.academic.identity.model.AdContactImpl;
 import my.edu.umk.pams.academic.identity.model.AdUser;
 import my.edu.umk.pams.academic.term.model.*;
 import my.edu.umk.pams.academic.planner.model.*;
@@ -28,7 +30,6 @@ public class AdAssessmentDaoImpl extends GenericDaoSupport<Long, AdAssessment> i
     // ====================================================================================================
     // FINDER
     // ====================================================================================================
-
     @Override
     public AdAssessment findByCanonicalCode(String canonicalCode) {
         Session session = sessionFactory.getCurrentSession();
@@ -223,4 +224,10 @@ public class AdAssessmentDaoImpl extends GenericDaoSupport<Long, AdAssessment> i
         Session session = sessionFactory.getCurrentSession();
         session.delete(assessment);
     }
+
+	@Override
+	public AdAssessment findAssessmentById(Long id) {
+		Session session = sessionFactory.getCurrentSession();
+		return (AdAssessment) session.get(AdAssessmentImpl.class, id);
+	}
 }
