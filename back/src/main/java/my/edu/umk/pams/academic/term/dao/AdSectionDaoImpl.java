@@ -7,7 +7,6 @@ import my.edu.umk.pams.academic.identity.model.AdStaff;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.identity.model.AdUser;
 import my.edu.umk.pams.academic.term.model.*;
-import my.edu.umk.pams.academic.term.model.AdAdmission;
 import my.edu.umk.pams.academic.planner.model.*;
 import org.apache.commons.lang.Validate;
 import org.hibernate.Query;
@@ -766,4 +765,34 @@ public class AdSectionDaoImpl extends GenericDaoSupport<Long, AdSection> impleme
         Session session = sessionFactory.getCurrentSession();
         session.delete(appointment);
     }
+
+	@Override
+	public void addSection(AdOffering offering, AdSection section, AdUser user) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
+		 @Override
+		    public void updateSection(AdOffering offering, AdSection section, AdUser user) {
+		        Validate.notNull(user, "User cannot be null");
+		        Session session = sessionFactory.getCurrentSession();
+		        section.setOffering(offering);
+
+		        // prepare metadata
+		        AdMetadata metadata = section.getMetadata();
+		        metadata.setModifiedDate(new Timestamp(System.currentTimeMillis()));
+		        metadata.setModifierId(user.getId());
+		        section.setMetadata(metadata);
+		        session.update(section);
+		    }
+		
+	
+
+		 @Override
+		    public void deleteSection(AdOffering offering, AdSection section, AdUser user) {
+		        Validate.notNull(user, "User cannot be null");
+		        Session session = sessionFactory.getCurrentSession();
+		        session.delete(section);
+		    }
 }
