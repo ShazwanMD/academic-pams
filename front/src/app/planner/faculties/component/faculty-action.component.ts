@@ -18,7 +18,6 @@ import { Faculty } from "./../faculty.interface";
 export class FacultyActionComponent {
 
     private FACULTY: string[] = "plannerModuleState.faculty".split(".");
-    private faculty$: Observable<Faculty>;
 
     @Input() faculty: Faculty;
 
@@ -32,17 +31,13 @@ export class FacultyActionComponent {
 
     activate(): void {
         let snackBarRef = this.snackBar.open("Activating Faculty", "OK");
-        snackBarRef.afterDismissed().subscribe(() => {
-            this.store.dispatch(this.actions.activateFaculty(this.faculty))
-        }
-        );
+        snackBarRef.afterDismissed().subscribe(() =>
+            this.store.dispatch(this.actions.activateFaculty(this.faculty)));
     }
 
     deactivate(): void {
         let snackBarRef = this.snackBar.open("Deactivating Faculty", "OK");
-        snackBarRef.afterDismissed().subscribe ( () => {
-            this.store.dispatch(this.actions.deactivateFaculty((this.faculty))
-            )}
-        );
+        snackBarRef.afterDismissed().subscribe(() =>
+            this.store.dispatch(this.actions.deactivateFaculty(this.faculty)));
     }
-    }
+}

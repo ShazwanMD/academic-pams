@@ -1,15 +1,18 @@
-<!-- Basic Card -->
 <md-card>
   <md-card-title>{{faculty?.code}}</md-card-title>
   <md-card-subtitle>{{faculty?.name}}</md-card-subtitle>
   <md-divider></md-divider>
   <md-card-content>
-    <!--Tab Section Here-->
+    
     <md-tab-group>
       <md-tab label=" Detail"><br>
         <div>Code : {{faculty?.code}}</div>
         <br>
-        <div>Code : {{faculty?.name}}</div>
+        <div>Name : {{faculty?.name}}</div>
+        <br>
+        <div>Description : {{faculty?.description}}</div>
+        <br>
+        <div>Prefix : {{faculty?.prefix}}</div>
         <br>
       </md-tab>
 
