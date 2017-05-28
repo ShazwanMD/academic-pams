@@ -761,6 +761,24 @@ public class PlannerServiceImpl implements PlannerService {
     public boolean isCourseExists(String code, AdFaculty faculty) {
         return courseDao.isExists(code, faculty);
     }
+    
+    @Override
+    public void saveCourse(AdCourse course, AdFaculty faculty) {
+    	courseDao.save(course, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
+
+    @Override
+    public void updateCourse(AdCourse course) {
+    	courseDao.update(course, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
+
+    @Override
+    public void removeCourse(AdCourse course) {
+    	courseDao.remove(course, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
 
     //====================================================================================================
     // ACADEMIC YEAR

@@ -285,6 +285,12 @@ public interface PlannerService {
     Integer countAvailableCourse(AdAcademicSession academicSession);
 
     boolean isCourseExists(String code, AdFaculty faculty);
+    
+    void saveCourse(AdCourse course, AdFaculty faculty);
+
+    void updateCourse(AdCourse course);
+
+    void removeCourse(AdCourse course);
 
  
   //====================================================================================================
