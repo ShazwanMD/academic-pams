@@ -65,8 +65,8 @@
   </form>
 </md-dialog-content>
 <md-dialog-actions align="end">
-  <button md-raised-button color="accent" (click)="submit(editorForm.value, editorForm.valid)">
-    ADD ASSESSMENT
+  <button md-raised-button color="accent" (click)="submit(editorForm.value, edit)">
+  {{edit ? 'Update' : 'Save'}}
   </button>
 </md-dialog-actions>
 
