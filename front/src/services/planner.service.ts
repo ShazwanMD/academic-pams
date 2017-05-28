@@ -95,7 +95,6 @@ export class PlannerService {
         return <Faculty[]>res.json();
       })
   }
-
   findFacultyByCode(code: string): Observable<Faculty> {
     console.log("findFacultyByCode");
     let headers = new Headers({ 'Authorization': 'Bearer TODO' });
@@ -141,7 +140,7 @@ export class PlannerService {
   }
 
  // ====================================================================================================
-  // PROGRAM LEVEL
+  // PROGRAM LEVEL up
   // ====================================================================================================
 
 findProgramLevelByCode(code: string): Observable<Program> {
