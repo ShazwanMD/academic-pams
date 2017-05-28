@@ -103,11 +103,10 @@ public class PlannerTransformer {
         vo.setDescription(e.getDescription());
         vo.setProgram(toProgramVo(e.getProgram()));
         vo.setAcademicSession(toAcademicSessionVo(e.getSession()));
-        //    vo.setClassification(cohort.getClassification());
+    // todo zaida    vo.setClassification(plannerTransformer.toAdAcademicClassificationVo(e.getClassification()));
         return vo;
     }
-
-    public List<Cohort> toCohortVos(List<AdCohort> cohorts) {
+	public List<Cohort> toCohortVos(List<AdCohort> cohorts) {
         List<Cohort> vos = cohorts.stream()
                 .map((cohort) -> toCohortVo(cohort))
                 .collect(toList());
