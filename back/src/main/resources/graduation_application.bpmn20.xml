@@ -37,7 +37,7 @@
         <sequenceFlow id="flow1.1" sourceRef="graduationApplication_draft_ST" targetRef="graduationApplication_draft_UT"/>
 
         <userTask id="graduationApplication_draft_UT"
-                  name="my.edu.umk.pams.academic.graduation.model.AcGraduationApplication:DRAFTED"
+                  name="my.edu.umk.pams.academic.graduation.model.AdGraduationApplication:DRAFTED"
                   activiti:assignee="${userCreator}">
             <documentation>
                 Draft Invoice
@@ -64,7 +64,7 @@
         <sequenceFlow id="flow3.1" sourceRef="graduationApplication_register_ST" targetRef="graduationApplication_register_UT"/>
 
         <userTask id="graduationApplication_register_UT"
-                  name="my.edu.umk.pams.academic.graduation.model.AcGraduationApplication:REGISTERED"
+                  name="my.edu.umk.pams.academic.graduation.model.AdGraduationApplication:REGISTERED"
                   activiti:candidateGroups="${graduationApplicationRouter.findRegistererCandidates(graduationApplicationId)}">
             <documentation>
                 Register Graduation Application
@@ -94,7 +94,7 @@
         <sequenceFlow id="flow4.1" sourceRef="graduationApplication_verify_ST" targetRef="graduationApplication_verify_UT"/>
 
         <userTask id="graduationApplication_verify_UT"
-                  name="my.edu.umk.pams.academic.graduation.model.AcGraduationApplication:VERIFIED"
+                  name="my.edu.umk.pams.academic.graduation.model.AdGraduationApplication:VERIFIED"
                   activiti:candidateGroups="${graduationApplicationRouter.findVerifierCandidates(graduationApplicationId)}">
             <documentation>
                 Verify Graduation Application

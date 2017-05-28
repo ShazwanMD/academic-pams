@@ -33,7 +33,7 @@ export class IdentityService {
   }
 
   findStudentByIdentityNo(identityNo: string): Observable<Student> {
-    console.log("findStudentByIdenittyNo");
+    console.log("findStudentByIdentityNo");
     return this.http.get(environment.endpoint + '/api/identity/students/' + identityNo)
       .map((res: Response) => <Student>res.json());
   }
@@ -45,7 +45,7 @@ export class IdentityService {
   }
 
   findStaffByIdentityNo(identityNo: string): Observable<Staff> {
-    console.log("findStaffByIdenittyNo");
+    console.log("findStaffByIdentityNo");
     return this.http.get(environment.endpoint + '/api/identity/staffs/' + identityNo)
       .map((res: Response) => <Staff>res.json());
   }

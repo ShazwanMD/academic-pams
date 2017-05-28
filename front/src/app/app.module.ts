@@ -20,7 +20,10 @@ import {HomeComponent} from "./home/home.component";
 import {CustomUrlSerializer} from "./common/custom-url-serializer";
 import {UrlSerializer} from "@angular/router";
 
-import {GraduationModule} from "./graduation/index";
+import {
+  GraduationModule, graduationModuleReducers, GraduationModuleState,
+  INITIAL_GRADUATION_STATE
+} from "./graduation/index";
 import {CommonModuleState, INITIAL_COMMON_STATE, commonModuleReducers} from "./common/index";
 import {ProfileModule, profileModuleReducers, ProfileModuleState, INITIAL_PROFILE_STATE} from "./profile/index";
 import {TermModule, termModuleReducers, TermModuleState, INITIAL_TERM_STATE} from "./term/index";
@@ -39,6 +42,7 @@ interface ApplicationState {
   profileModuleState: ProfileModuleState;
   plannerModuleState: PlannerModuleState;
   termModuleState: TermModuleState;
+  graduationModuleState: GraduationModuleState;
   setupModuleState: SetupModuleState;
 }
 ;
@@ -51,6 +55,7 @@ export const INITIAL_APP_STATE: ApplicationState =
     profileModuleState: INITIAL_PROFILE_STATE,
     plannerModuleState: INITIAL_PLANNER_STATE,
     termModuleState: INITIAL_TERM_STATE,
+    graduationModuleState: INITIAL_GRADUATION_STATE,
     setupModuleState: INITIAL_SETUP_STATE,
 
   };
@@ -62,6 +67,7 @@ export const applicationReducers = {
   profileModuleState: combineReducers({...profileModuleReducers}),
   plannerModuleState: combineReducers({...plannerModuleReducers}),
   termModuleState: combineReducers({...termModuleReducers,}),
+  graduationModuleState: combineReducers({...graduationModuleReducers,}),
   setupModuleState: combineReducers({...setupModuleReducers}),
 };
 export const productionReducer: ActionReducer<ApplicationState> = combineReducers(applicationReducers);

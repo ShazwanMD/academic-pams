@@ -19,35 +19,35 @@ export class GraduationService {
 
   findCompletedGraduationApplications(): Observable<GraduationApplication[]> {
     console.log("findCompletedGraduationApplications");
-    return this.http.get(environment.endpoint + '/api/financialaid/graduationApplications/state/COMPLETED')
+    return this.http.get(environment.endpoint + '/api/graduation/graduationApplications/state/COMPLETED')
       .map((res: Response) => <GraduationApplication[]>res.json());
   }
 
   findAssignedGraduationApplicationTasks(): Observable<GraduationApplicationTask[]> {
     console.log("findAssignedGraduationApplicationTasks");
-    return this.http.get(environment.endpoint + '/api/financialaid/graduationApplications/assignedTasks')
+    return this.http.get(environment.endpoint + '/api/graduation/graduationApplications/assignedTasks')
       .map((res: Response) => <GraduationApplicationTask[]>res.json());
   }
 
   findPooledGraduationApplicationTasks(): Observable<GraduationApplicationTask[]> {
     console.log("findPooledGraduationApplicationTasks");
-    return this.http.get(environment.endpoint + '/api/financialaid/graduationApplications/pooledTasks')
+    return this.http.get(environment.endpoint + '/api/graduation/graduationApplications/pooledTasks')
       .map((res: Response) => <GraduationApplicationTask[]>res.json());
   }
 
   findGraduationApplicationTaskByTaskId(taskId: string): Observable<GraduationApplicationTask> {
     console.log("findGraduationApplicationTaskByTaskId");
-    return this.http.get(environment.endpoint + '/api/financialaid/graduationApplications/viewTask/' + taskId)
+    return this.http.get(environment.endpoint + '/api/graduation/graduationApplications/viewTask/' + taskId)
       .map((res: Response) => <GraduationApplicationTask>res.json());
   }
 
   findGraduationApplicationByReferenceNo(referenceNo: string): Observable<GraduationApplication> {
-    return this.http.get(environment.endpoint + '/api/financialaid/graduationApplications/' + referenceNo)
+    return this.http.get(environment.endpoint + '/api/graduation/graduationApplications/' + referenceNo)
       .map((res: Response) => <GraduationApplication>res.json());
   }
 
   findGraduationApplicationByTaskId(taskId: string): Observable<GraduationApplication> {
-    return this.http.get(environment.endpoint + '/api/financialaid/graduationApplications/' + taskId)
+    return this.http.get(environment.endpoint + '/api/graduation/graduationApplications/' + taskId)
       .map((res: Response) => <GraduationApplication>res.json());
   }
 
@@ -57,7 +57,7 @@ export class GraduationService {
       //'Authorization': 'Bearer ' + this.authService.token
     });
     let options = new RequestOptions({headers: headers});
-    return this.http.post(environment.endpoint + '/api/financialaid/graduationApplications/startTask', JSON.stringify(graduationApplication), options)
+    return this.http.post(environment.endpoint + '/api/graduation/graduationApplications/startTask', JSON.stringify(graduationApplication), options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
@@ -68,7 +68,7 @@ export class GraduationService {
       //'Authorization': 'Bearer ' + this.authService.token
     });
     let options = new RequestOptions({headers: headers});
-    return this.http.post(environment.endpoint + '/api/financialaid/graduationApplications/completeTask', JSON.stringify(graduationApplicationTask), options)
+    return this.http.post(environment.endpoint + '/api/graduation/graduationApplications/completeTask', JSON.stringify(graduationApplicationTask), options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
@@ -78,7 +78,7 @@ export class GraduationService {
       //'Authorization': 'Bearer ' + this.authService.token
     });
     let options = new RequestOptions({headers: headers});
-    return this.http.post(environment.endpoint + '/api/financialaid/graduationApplications/claimTask', JSON.stringify(graduationApplicationTask), options)
+    return this.http.post(environment.endpoint + '/api/graduation/graduationApplications/claimTask', JSON.stringify(graduationApplicationTask), options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
@@ -88,13 +88,13 @@ export class GraduationService {
       //'Authorization': 'Bearer ' + this.authService.token
     });
     let options = new RequestOptions({headers: headers});
-    return this.http.post(environment.endpoint + '/api/financialaid/graduationApplications/releaseTask', JSON.stringify(graduationApplicationTask), options)
+    return this.http.post(environment.endpoint + '/api/graduation/graduationApplications/releaseTask', JSON.stringify(graduationApplicationTask), options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   updateGraduationApplication(graduationApplication: GraduationApplication): Observable<Boolean> {
     return Observable.of(true);
-    // return this.http.put(environment.endpoint + '/api/financialaid/graduationApplications', JSON.stringify(graduationApplication))
+    // return this.http.put(environment.endpoint + '/api/graduation/graduationApplications', JSON.stringify(graduationApplication))
     //   .flatMap(data => Observable.of(true));
   }
 }

@@ -15,7 +15,7 @@ export class StudentActions {
   static FIND_STUDENTS_SUCCESS = '[Student] Find Students Success';
 
   findStudentsSuccess(students): Action {
-    console.log("findStudentsSuccess");
+    console.log("findStudentsSuccess : " + students.length);
     return {
       type: StudentActions.FIND_STUDENTS_SUCCESS,
       payload: students

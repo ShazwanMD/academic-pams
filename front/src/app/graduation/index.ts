@@ -32,7 +32,7 @@ export interface GraduationModuleState {
 }
 ;
 
-export const INITIAL_Graduation_STATE: GraduationModuleState =
+export const INITIAL_GRADUATION_STATE: GraduationModuleState =
   <GraduationModuleState>{
     assignedGraduationApplicationTasks: [],
     pooledGraduationApplicationTasks: [],
@@ -40,7 +40,7 @@ export const INITIAL_Graduation_STATE: GraduationModuleState =
     graduationApplication: {},
   };
 
-export const GraduationModuleReducers = {
+export const graduationModuleReducers = {
   assignedGraduationApplicationTasks: assignedGraduationApplicationTaskListReducer,
   pooledGraduationApplicationTasks: pooledGraduationApplicationTaskListReducer,
   graduationApplicationTask: graduationApplicationTaskReducer,

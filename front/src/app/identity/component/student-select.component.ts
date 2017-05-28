@@ -15,9 +15,9 @@ import {Student} from "../student.interface";
 })
 export class StudentSelectComponent implements OnInit {
 
-  private STUDENTS: string[] = "identityModuleState.students".split(".");
   @Input() placeholder: string;
   @Input() innerFormControl: FormControl;
+  private STUDENTS: string[] = "identityModuleState.students".split(".");
   students$: Observable<Student[]>;
 
   constructor(private store: Store<IdentityModuleState>,
