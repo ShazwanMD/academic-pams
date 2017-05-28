@@ -45,7 +45,8 @@ export class SectionEffects {
     .withLatestFrom(this.store$.select(...this.OFFERING))
     .map(state => state[1])
     .map((offering: Offering) => this.offeringActions.findOfferingByCanonicalCode(offering.canonicalCode));
-
+  
+ 
   //update section
   @Effect() updateSections$ = this.actions$
   .ofType(SectionActions.UPDATE_SECTION)

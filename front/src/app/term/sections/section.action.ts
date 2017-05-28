@@ -125,7 +125,7 @@ export class SectionActions {
     //delete section
        static REMOVE_SECTION = '[Section] Remove Section';
 
-  deleteSection(offering,section): Action {
+  deleteSection(offering, section): Action {
     console.log("deleteSection");
     return {
       type: SectionActions.REMOVE_SECTION,

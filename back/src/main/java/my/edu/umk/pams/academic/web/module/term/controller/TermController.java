@@ -582,15 +582,17 @@ public class TermController {
         throw new UnsupportedOperationException();
     }
 
-    @RequestMapping(value = "/offerings/{canonicalCode}/sections", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/offerings/{canonicalCode}/sections/{sectionId}", method = RequestMethod.DELETE)
     public ResponseEntity<String> deleteSection(@PathVariable String canonicalCode, @PathVariable Long sectionId) {
         dummyLogin();
+        
+        LOG.debug("section:{}", sectionId);
         AdOffering offering = termService.findOfferingByCanonicalCode(canonicalCode);
         AdSection section = termService.findSectionById(sectionId);
         termService.deleteSection(offering, section);
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
-
+    
     @RequestMapping(value = "/offerings/{canonicalCode}/appointments/{appointmentId}", method = RequestMethod.DELETE)
     public ResponseEntity<String> deleteAppointment(@PathVariable String canonicalCode, @PathVariable Long appointmentId) {
         dummyLogin();

@@ -448,8 +448,8 @@ export class TermService {
         return this.http.delete(environment.endpoint + '/api/term/offerings/' + offering.canonicalCode + '/sections/' + section.id, options)
             .flatMap((res: Response) => Observable.of(res.text()));
     }
-
-    // update Section using dialog
+    
+   // update Section using dialog
     updateSection(offering: Offering, section: Section): Observable<String> {
         console.log(section);
         let headers = new Headers({
