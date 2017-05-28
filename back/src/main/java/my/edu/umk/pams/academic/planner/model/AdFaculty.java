@@ -25,6 +25,10 @@ public interface AdFaculty extends AdMetaObject {
     String getDescription();
 
     void setDescription(String description);
+    
+    AdFacultyStatus getStatus();
+
+    void setStatus(AdFacultyStatus status);
 
     List<AdProgram> getPrograms();
 

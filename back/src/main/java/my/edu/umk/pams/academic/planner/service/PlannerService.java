@@ -24,6 +24,8 @@ public interface PlannerService {
 
     List<AdAcademicSession> findAcademicSessions(String filter, Integer offset, Integer limit);
 
+	AdAcademicYear findByCode(String code);
+    
     Integer countAcademicSession();
 
     Integer countAcademicSession(String filter);
@@ -184,8 +186,6 @@ public interface PlannerService {
 
     AdProgramLevel findProgramLevelById(Long id);
 
-    AdProgramLevel findProgramLevelByCode(String code);
-
     List<AdProgramLevel> findProgramLevels();
 
     List<AdProgramLevel> findProgramLevels(Integer offset, Integer limit);
@@ -212,6 +212,8 @@ public interface PlannerService {
     AdProgram findProgramByCode(String code);
 
     AdProgram findProgramByCodeAndFaculty(String code, AdFaculty faculty);
+    
+    AdProgramLevel findProgramLevelByCode(String code);
 
     List<AdProgram> findPrograms(String filter);
 
@@ -244,8 +246,8 @@ public interface PlannerService {
     Integer countProgram(AdProgramType type, AdFaculty faculty);
 
     boolean isProgramExists(String code, AdFaculty faculty);
-
-    void saveProgram(AdProgram program);
+    
+    void saveProgram(AdProgram program, AdFaculty faculty);
 
     void updateProgram(AdProgram program);
 
@@ -283,6 +285,20 @@ public interface PlannerService {
     Integer countAvailableCourse(AdAcademicSession academicSession);
 
     boolean isCourseExists(String code, AdFaculty faculty);
+    
+    void saveCourse(AdCourse course, AdFaculty faculty);
+
+    void updateCourse(AdCourse course);
+
+    void removeCourse(AdCourse course);
+
+ 
+  //====================================================================================================
+    // ACADEMIC YEAR
+    //====================================================================================================
+    List<AdAcademicYear> findAcademicYears(Integer offset, Integer limit);
+
+    List<AdAcademicYear> findAcademicYears(String filter, Integer offset, Integer limit);	
 
 
 }

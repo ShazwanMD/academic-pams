@@ -5,28 +5,17 @@
   </div>
 
   <div md-content flex md-scroll-y>
-    <div layout="column" layout-gt-md="row" class="inset">
+    <div layout="column" layout-gt-md="row" class="insert">
       <div flex-gt-md="70">
-
-        <pams-faculty
-        [faculty]="faculty$ | async"></pams-faculty>
-
+        <pams-faculty [faculty]="faculty$ | async"></pams-faculty>
       </div>
 
       <div flex-gt-md="30">
-        <md-card>
-          <md-card-title>Action {{(faculty$ | async).code}}</md-card-title>
-          <md-card-subtitle>Actions available on current faculty</md-card-subtitle>
-          <md-divider></md-divider>
+        <pams-faculty-status [faculty]="faculty$ | async">
+        </pams-faculty-status>
+        <pams-faculty-action [faculty]="faculty$ | async">
+        </pams-faculty-action>
 
-          <md-nav-list flex dense>
-            <md-list-item [routerLink]="['/programs-reopen', program?.code]">
-              <md-icon md-list-avatar>gavel</md-icon>
-              <h4 md-line>Deactivate</h4>
-              <p md-line>Deactivate this faculty</p>
-            </md-list-item>
-          </md-nav-list>
-        </md-card>
       </div>
     </div>
   </div>

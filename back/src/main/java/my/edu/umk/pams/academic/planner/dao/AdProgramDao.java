@@ -73,4 +73,6 @@ public interface AdProgramDao extends GenericDao<Long, AdProgram> {
     void updateGradeCode(AdProgram program, AdGradeCode gradeCode, AdUser user);
 
     void removeGradeCode(AdProgram program, AdGradeCode gradeCode, AdUser user);
+
+	void save(AdProgram program, AdFaculty faculty, AdUser currentUser);
 }

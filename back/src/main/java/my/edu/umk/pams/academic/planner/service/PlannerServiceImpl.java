@@ -1,5 +1,6 @@
 package my.edu.umk.pams.academic.planner.service;
 
+import my.edu.umk.pams.academic.identity.model.AdAddress;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 
 import my.edu.umk.pams.academic.term.dao.AdAssessmentDao;
@@ -29,6 +30,9 @@ public class PlannerServiceImpl implements PlannerService {
 
     @Autowired
     private AdAcademicSessionDao academicSessionDao;
+    
+    @Autowired
+    private AdAcademicYearDao academicYearDao;
 
     @Autowired
     private AdIntakeCodeDao intakeCodeDao;
@@ -44,7 +48,7 @@ public class PlannerServiceImpl implements PlannerService {
 
     @Autowired
     private AdCourseDao courseDao;
-
+    
     @Autowired
     private AdOfferingDao offeringDao;
 
@@ -109,6 +113,11 @@ public class PlannerServiceImpl implements PlannerService {
     public boolean isAcademicSessionCodeExists(String code) {
         return academicSessionDao.isCodeExists(code);
     }
+    
+	@Override
+	public AdAcademicYear findByCode(String code) {
+		return academicYearDao.findByCode(code);
+	}
 
     @Override
     public void saveAcademicSession(AdAcademicSession academicSession) {
@@ -655,8 +664,8 @@ public class PlannerServiceImpl implements PlannerService {
     }
 
     @Override
-    public void saveProgram(AdProgram program) {
-        programDao.save(program, securityService.getCurrentUser());
+    public void saveProgram(AdProgram program, AdFaculty faculty) {
+        programDao.save(program, faculty, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
@@ -752,7 +761,36 @@ public class PlannerServiceImpl implements PlannerService {
     public boolean isCourseExists(String code, AdFaculty faculty) {
         return courseDao.isExists(code, faculty);
     }
+    
+    @Override
+    public void saveCourse(AdCourse course, AdFaculty faculty) {
+    	courseDao.save(course, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
 
+    @Override
+    public void updateCourse(AdCourse course) {
+    	courseDao.update(course, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
 
-	
+    @Override
+    public void removeCourse(AdCourse course) {
+    	courseDao.remove(course, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
+
+    //====================================================================================================
+    // ACADEMIC YEAR
+    //====================================================================================================
+
+    @Override
+    public List<AdAcademicYear> findAcademicYears(Integer offset, Integer limit) {
+        return academicYearDao.find(offset, limit);
+    }
+
+    @Override
+    public List<AdAcademicYear> findAcademicYears(String filter, Integer offset, Integer limit) {
+        return academicYearDao.find(filter, offset, limit);
+    }
 }

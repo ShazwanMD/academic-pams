@@ -1,3 +1,4 @@
+import { ProgramLevel } from './program-level.interface';
 import {Program} from './program.interface';
 import {Faculty} from './../faculties/faculty.interface';
 import {MetaObject} from "../../core/meta-object.interface";
@@ -8,4 +9,5 @@ export interface Program extends MetaObject {
   titleEn: string;
   status: ProgramStatus;
   faculty: Faculty;
+  programLevel :ProgramLevel
 }

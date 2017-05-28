@@ -102,9 +102,10 @@ public class ProfileController {
     
     /*DELETE ADDRESS*/
     @RequestMapping(value = "/students/{identityNo}/addresses/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity<String> deleteAddress(@PathVariable String identityNo,@PathVariable Long id) {
+    public ResponseEntity<String> deleteAddress(@PathVariable String identityNo, @PathVariable Long id) {
         dummyLogin();
         //LOG.debug("id address masa nak delete:{}",vo.getId());
+        LOG.debug("id address masa nak delete:{}",id);
         AdStudent student = profileService.findStudentByMatricNo(identityNo);
         AdAddress address = profileService.findAddressById(id);
         profileService.deleteAddress(student, address);
@@ -156,7 +157,7 @@ public class ProfileController {
     }*/
     
     @RequestMapping(value = "/students/{identityNo}/contacts/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity<String> deleteContact(@PathVariable String identityNo,@PathVariable Long id) {
+    public ResponseEntity<String> deleteContact(@PathVariable String identityNo, @PathVariable Long id) {
         dummyLogin();
         AdStudent student = profileService.findStudentByMatricNo(identityNo);
         AdContact contact = profileService.findContactById(id);
@@ -199,7 +200,7 @@ public class ProfileController {
    
    /*DELETE GUARANTOR*/
    @RequestMapping(value = "/students/{identityNo}/guarantors/{id}", method = RequestMethod.DELETE)
-   public ResponseEntity<String> deleteGuarantor(@PathVariable String identityNo,@PathVariable Long id) {
+   public ResponseEntity<String> deleteGuarantor(@PathVariable String identityNo,  @PathVariable Long id) {
        dummyLogin();
        AdStudent student = profileService.findStudentByMatricNo(identityNo);
        AdGuarantor guarantor = profileService.findGuarantorById(id);
@@ -242,7 +243,7 @@ public class ProfileController {
    
    /*DELETE GUARDIAN*/
    @RequestMapping(value = "/students/{identityNo}/guardians/{id}", method = RequestMethod.DELETE)
-   public ResponseEntity<String> deleteGuardian(@PathVariable String identityNo,@PathVariable Long id) {
+   public ResponseEntity<String> deleteGuardian(@PathVariable String identityNo, @PathVariable Long id) {
        dummyLogin();
        AdStudent student = profileService.findStudentByMatricNo(identityNo);
        AdGuardian guardian = profileService.findGuardianById(id);

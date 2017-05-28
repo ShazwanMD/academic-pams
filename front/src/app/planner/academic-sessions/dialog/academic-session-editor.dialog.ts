@@ -8,7 +8,7 @@ import { MdDialogRef } from "@angular/material";
 import { AcademicSession } from '../academic-session.interface';
 import { PlannerModuleState } from "../../index";
 import { AcademicSessionActions } from "../academic-session.action";
-import { AcademicYear } from '../academic-year.interface';
+import { AcademicYear } from '../../academic-years/academic-year.interface';
 import { AcademicSemester } from '../academic-semester-type.enum';
 
 @Component({
@@ -21,11 +21,8 @@ export class AcademicSessionEditorDialog implements OnInit {
     private editorForm: FormGroup;
     private edit: boolean = false;
     private _academicSession: AcademicSession;
-    private _year: AcademicYear;
 
-    constructor(private router: Router,
-        private route: ActivatedRoute,
-        private formBuilder: FormBuilder,
+    constructor(private formBuilder: FormBuilder,
         private viewContainerRef: ViewContainerRef,
         private store: Store<PlannerModuleState>,
         private actions: AcademicSessionActions,
@@ -34,11 +31,6 @@ export class AcademicSessionEditorDialog implements OnInit {
 
     set academicSession(value: AcademicSession) {
         this._academicSession = value;
-        this.edit = true;
-    }
-
-    set year(value: AcademicYear) {
-        this._year = value;
         this.edit = true;
     }
 

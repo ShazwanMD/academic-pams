@@ -28,286 +28,361 @@ import java.util.List;
 @RequestMapping("/api/planner")
 public class PlannerController {
 
-    private static final Logger LOG = LoggerFactory.getLogger(PlannerController.class);
+	private static final Logger LOG = LoggerFactory.getLogger(PlannerController.class);
 
-    @Autowired
-    private AuthenticationManager authenticationManager;
+	@Autowired
+	private AuthenticationManager authenticationManager;
 
-    @Autowired
-    private CommonService commonService;
+	@Autowired
+	private CommonService commonService;
 
-    @Autowired
-    private IdentityService identityService;
+	@Autowired
+	private IdentityService identityService;
 
-    @Autowired
-    private PlannerService plannerService;
+	@Autowired
+	private PlannerService plannerService;
 
-    @Autowired
-    private PlannerTransformer plannerTransformer;
+	@Autowired
+	private PlannerTransformer plannerTransformer;
 
-    // ====================================================================================================
-    // ACADEMIC SESSION
-    // ====================================================================================================
-    @RequestMapping(value = "/academicSessions", method = RequestMethod.GET)
-    public ResponseEntity<List<AcademicSession>> findAcademicSessions() {
-        List<AdAcademicSession> academicSessions = plannerService.findAcademicSessions(0, 100);
-        return new ResponseEntity<List<AcademicSession>>(plannerTransformer.toAcademicSessionVos(academicSessions), HttpStatus.OK);
-    }
+	// ====================================================================================================
+	// ACADEMIC SESSION
+	// ====================================================================================================
+	@RequestMapping(value = "/academicSessions", method = RequestMethod.GET)
+	public ResponseEntity<List<AcademicSession>> findAcademicSessions() {
+		List<AdAcademicSession> academicSessions = plannerService.findAcademicSessions(0, 100);
+		return new ResponseEntity<List<AcademicSession>>(plannerTransformer.toAcademicSessionVos(academicSessions),
+				HttpStatus.OK);
+	}
 
-    @RequestMapping(value = "/academicSessions/current", method = RequestMethod.GET)
-    public ResponseEntity<AcademicSession> findCurrentAcademicSessions() {
-        return new ResponseEntity<AcademicSession>(
-                plannerTransformer.toAcademicSessionVo(plannerService.findCurrentAcademicSession()), HttpStatus.OK);
-    }
+	@RequestMapping(value = "/academicSessions/current", method = RequestMethod.GET)
+	public ResponseEntity<AcademicSession> findCurrentAcademicSessions() {
+		return new ResponseEntity<AcademicSession>(
+				plannerTransformer.toAcademicSessionVo(plannerService.findCurrentAcademicSession()), HttpStatus.OK);
+	}
 
-    @RequestMapping(value = "/academicSessions/{code}", method = RequestMethod.GET)
-   
-    public ResponseEntity<AcademicSession> findAcademicSessionByCode(@PathVariable String code) {
-    	LOG.debug("SessionCode:{}",code);
-        return new ResponseEntity<AcademicSession>(plannerTransformer.toAcademicSessionVo
-                (plannerService.findAcademicSessionByCode(code)), HttpStatus.OK);
-    }
+	@RequestMapping(value = "/academicSessions/{code}", method = RequestMethod.GET)
 
-    @RequestMapping(value = "/academicSessions/{code}", method = RequestMethod.POST)
-    public ResponseEntity<String> updateAcademicSession(@PathVariable String code, @RequestBody AcademicSession vo) {
-        AdAcademicSession academicSession = plannerService.findAcademicSessionByCode(code);
-        academicSession.setCurrent(vo.isCurrent());
-        academicSession.setDescription(vo.getDescription());
-        plannerService.updateAcademicSession(academicSession);
-        return new ResponseEntity<String>(academicSession.getCode(), HttpStatus.OK);
-    }
+	public ResponseEntity<AcademicSession> findAcademicSessionByCode(@PathVariable String code) {
+		return new ResponseEntity<AcademicSession>(
+				plannerTransformer.toAcademicSessionVo(plannerService.findAcademicSessionByCode(code)), HttpStatus.OK);
+	}
 
-    @RequestMapping(value = "/academicSessions/{code}/save", method = RequestMethod.POST)
-    public ResponseEntity<String> saveAcademicSession(@PathVariable String code, @RequestBody AcademicSession vo) {
-        dummyLogin();
-        AdAcademicSession academicSession = new AdAcademicSessionImpl();
-        academicSession.setCode(vo.getCode());
-        academicSession.setDescription(vo.getDescription());
-        academicSession.setCurrent(vo.isCurrent());
-        academicSession.setStartDate(vo.getstartDate());
-        academicSession.setEndDate(vo.getendDate());
-        academicSession.setSemester(AdAcademicSemester.get(vo.getSemester().ordinal()));
-        vo.setYear(plannerTransformer.toAcademicYearVo(academicSession.getYear()));
-        plannerService.saveAcademicSession(academicSession);
-        return new ResponseEntity<String>("Success", HttpStatus.OK);
-    }
+	@RequestMapping(value = "/academicSessions/{code}/update", method = RequestMethod.PUT)
+	public ResponseEntity<String> updateAcademicSession(@PathVariable String code, @RequestBody AcademicSession vo) {
+		dummyLogin();
+		LOG.debug("SessionCode:{}", code);
+		AdAcademicSession academicSession = plannerService.findAcademicSessionByCode(code);
+		academicSession.setDescription(vo.getDescription());
+		academicSession.setCurrent(vo.isCurrent());
+		academicSession.setStartDate(vo.getstartDate());
+		academicSession.setEndDate(vo.getendDate());
+		academicSession.setSemester(AdAcademicSemester.get(vo.getSemester().ordinal()));
+		academicSession.setYear(plannerService.findByCode(academicSession.getYear().getYear()));
+		plannerService.updateAcademicSession(academicSession);
+		return new ResponseEntity<String>(academicSession.getCode(), HttpStatus.OK);
+	}
 
-    @RequestMapping(value = "/academicSessions/{code}/activate", method = RequestMethod.GET)
-    public ResponseEntity<String> activateAcademicSession(@PathVariable String code) {
-        dummyLogin();
-        LOG.debug("activate sesssion");
-        AdAcademicSession academicSession = plannerService.findAcademicSessionByCode(code);
-        academicSession.setCurrent(true);
-        plannerService.updateAcademicSession(academicSession);
-        return new ResponseEntity<String>(academicSession.getCode(), HttpStatus.OK);
-    }
+	@RequestMapping(value = "/academicSessions/{code}/save", method = RequestMethod.POST)
+	public ResponseEntity<String> saveAcademicSession(@PathVariable String code, @RequestBody AcademicSession vo) {
+		dummyLogin();
+		AdAcademicSession academicSession = new AdAcademicSessionImpl();
+		academicSession.setCode(vo.getCode());
+		academicSession.setDescription(vo.getDescription());
+		academicSession.setCurrent(vo.isCurrent());
+		academicSession.setStartDate(vo.getstartDate());
+		academicSession.setEndDate(vo.getendDate());
+		academicSession.setSemester(AdAcademicSemester.get(vo.getSemester().ordinal()));
+//		academicSession.setYear(plannerTransformer.toAcademicYearVo(academicYear.getYear()));
+		academicSession.setYear(plannerService.findByCode(academicSession.getYear().getYear()));
 
-    @RequestMapping(value = "/academicSessions/{code}/deactivate", method = RequestMethod.GET)
-    public ResponseEntity<String> deactivateAcademicSession(@PathVariable String code) {
-        dummyLogin();
-        LOG.debug("deactivate sesssion");
-        AdAcademicSession academicSession = plannerService.findAcademicSessionByCode(code);
-        academicSession.setCurrent(false);
-        plannerService.updateAcademicSession(academicSession);
-        return new ResponseEntity<String>(academicSession.getCode(), HttpStatus.OK);
-    }
+		plannerService.saveAcademicSession(academicSession);
+		return new ResponseEntity<String>("Success", HttpStatus.OK);
+	}
 
-    // ====================================================================================================
-    // FACULTY
-    // ====================================================================================================
+	@RequestMapping(value = "/academicSessions/{code}/activate", method = RequestMethod.GET)
+	public ResponseEntity<String> activateAcademicSession(@PathVariable String code) {
+		dummyLogin();
+		LOG.debug("activate sesssion");
+		AdAcademicSession academicSession = plannerService.findAcademicSessionByCode(code);
+		academicSession.setCurrent(true);
+		plannerService.updateAcademicSession(academicSession);
+		return new ResponseEntity<String>(academicSession.getCode(), HttpStatus.OK);
+	}
 
-    @RequestMapping(value = "/faculties", method = RequestMethod.GET)
-    public ResponseEntity<List<Faculty>> findFaculties() {
-        List<AdFaculty> faculties = plannerService.findFaculties(0, 100);
-        return new ResponseEntity<List<Faculty>>(plannerTransformer.toFacultyVos(faculties), HttpStatus.OK);
-    }
+	@RequestMapping(value = "/academicSessions/{code}/deactivate", method = RequestMethod.GET)
+	public ResponseEntity<String> deactivateAcademicSession(@PathVariable String code) {
+		dummyLogin();
+		LOG.debug("deactivate sesssion");
+		AdAcademicSession academicSession = plannerService.findAcademicSessionByCode(code);
+		academicSession.setCurrent(false);
+		plannerService.updateAcademicSession(academicSession);
+		return new ResponseEntity<String>(academicSession.getCode(), HttpStatus.OK);
+	}
 
-    @RequestMapping(value = "/faculties/{code}", method = RequestMethod.GET)
-    public ResponseEntity<Faculty> findFacultyByCode(@PathVariable String code) throws UnsupportedEncodingException {
-        return new ResponseEntity<Faculty>(plannerTransformer.toFacultyVo(plannerService.findFacultyByCode(code)),
-                HttpStatus.OK);
-    }
+	// ====================================================================================================
+	// FACULTY
+	// ====================================================================================================
 
-    @RequestMapping(value = "/faculties/{code}/programs", method = RequestMethod.GET)
-    public ResponseEntity<List<Program>> findProgramsByFaculty(@PathVariable String code)
-            throws UnsupportedEncodingException {
-        AdFaculty faculty = plannerService.findFacultyByCode(code);
-        return new ResponseEntity<List<Program>>(plannerTransformer.toProgramVos(plannerService.findPrograms(faculty)),
-                HttpStatus.OK);
-    }
+	@RequestMapping(value = "/faculties", method = RequestMethod.GET)
+	public ResponseEntity<List<Faculty>> findFaculties() {
+		List<AdFaculty> faculties = plannerService.findFaculties(0, 100);
+		return new ResponseEntity<List<Faculty>>(plannerTransformer.toFacultyVos(faculties), HttpStatus.OK);
+	}
 
-    @RequestMapping(value = "/faculties/{code}/courses", method = RequestMethod.GET)
-    public ResponseEntity<List<Course>> findCoursesByFaculty(@PathVariable String code)
-            throws UnsupportedEncodingException {
-        AdFaculty faculty = plannerService.findFacultyByCode(code);
-        return new ResponseEntity<List<Course>>(plannerTransformer.toCourseVos(plannerService.findCourses(faculty)),
-                HttpStatus.OK);
-    }
+	@RequestMapping(value = "/faculties/{code}", method = RequestMethod.GET)
+	public ResponseEntity<Faculty> findFacultyByCode(@PathVariable String code) throws UnsupportedEncodingException {
+		return new ResponseEntity<Faculty>(plannerTransformer.toFacultyVo(plannerService.findFacultyByCode(code)),
+				HttpStatus.OK);
+	}
 
-    // business methods
+	@RequestMapping(value = "/faculties/{code}/programs", method = RequestMethod.GET)
+	public ResponseEntity<List<Program>> findProgramsByFaculty(@PathVariable String code)
+			throws UnsupportedEncodingException {
+		AdFaculty faculty = plannerService.findFacultyByCode(code);
+		return new ResponseEntity<List<Program>>(plannerTransformer.toProgramVos(plannerService.findPrograms(faculty)),
+				HttpStatus.OK);
+	}
 
-    @RequestMapping(value = "/faculties/create", method = RequestMethod.POST)
-    public void createFaculty(@RequestBody Faculty faculty) {
-        throw new UnsupportedOperationException();
-    }
+	@RequestMapping(value = "/faculties/{code}/courses", method = RequestMethod.GET)
+	public ResponseEntity<List<Course>> findCoursesByFaculty(@PathVariable String code)
+			throws UnsupportedEncodingException {
+		AdFaculty faculty = plannerService.findFacultyByCode(code);
+		return new ResponseEntity<List<Course>>(plannerTransformer.toCourseVos(plannerService.findCourses(faculty)),
+				HttpStatus.OK);
+	}
 
-    @RequestMapping(value = "/faculties/{code}", method = RequestMethod.PUT)
-    public void updateFaculty(@PathVariable String code, @RequestBody Faculty faculty) {
-        throw new UnsupportedOperationException();
-    }
+	// business methods
 
-    @RequestMapping(value = "/faculties/{code}/activate", method = RequestMethod.POST)
-    public void activateFaculty(@PathVariable String code) {
-        throw new UnsupportedOperationException();
-    }
+	@RequestMapping(value = "/faculties/create", method = RequestMethod.POST)
+	public ResponseEntity<String> createFaculty(@RequestBody Faculty vo) {
+		dummyLogin();
+		AdFaculty faculty = new AdFacultyImpl();
+		faculty.setCode(vo.getCode());
+		faculty.setDescription(vo.getDescription());
+		faculty.setName(vo.getName());
+		faculty.setPrefix(vo.getPrefix());
+		faculty.setStatus(AdFacultyStatus.get(vo.getStatus().ordinal()));
+		plannerService.saveFaculty(faculty);
+		return new ResponseEntity<String>("Success", HttpStatus.OK);
+	}	
 
-    @RequestMapping(value = "/faculties/{code}/deactivate", method = RequestMethod.POST)
-    public void deactivateFaculty(@PathVariable String code) {
-        throw new UnsupportedOperationException();
-    }
+	@RequestMapping(value = "/faculties/{code}/update", method = RequestMethod.PUT)
+	public ResponseEntity<String> updateFaculty(@PathVariable String code, @RequestBody Faculty vo) {
+			dummyLogin();
+			LOG.debug("faculty code:{}", code);
+			AdFaculty faculty = plannerService.findFacultyByCode(code);
+			faculty.setDescription(vo.getDescription());
+			faculty.setName(vo.getName());
+			faculty.setPrefix(vo.getPrefix());
+			faculty.setStatus(AdFacultyStatus.get(vo.getStatus().ordinal()));
+			plannerService.updateFaculty(faculty);
+			return new ResponseEntity<String>("Success", HttpStatus.OK);
+		}
+	
 
-    // ====================================================================================================
-    // PROGRAM
-    // ====================================================================================================
+	@RequestMapping(value = "/faculties/{code}/activate", method = RequestMethod.GET)
+	public ResponseEntity<String> activateFacultiy(@PathVariable String code) {
+		dummyLogin();
+		LOG.debug("activate program");
+		AdFaculty faculty = plannerService.findFacultyByCode(code);
+		faculty.setStatus(AdFacultyStatus.ACTIVE);
+		plannerService.updateFaculty(faculty);
+		return new ResponseEntity<String>(faculty.getCode(),HttpStatus.OK);
+	}
 
-    @RequestMapping(value = "/programs", method = RequestMethod.GET)
-    public ResponseEntity<List<Program>> findPrograms() {
-        List<AdProgram> programs = plannerService.findPrograms(0, 100);
-        return new ResponseEntity<List<Program>>(plannerTransformer.toProgramVos(programs), HttpStatus.OK);
-    }
+	@RequestMapping(value = "/faculties/{code}/deactivate", method = RequestMethod.GET)
+	public ResponseEntity<String> deactivateFaculty(@PathVariable String code) {
+		dummyLogin();
+		LOG.debug("deactivate program");
+		AdFaculty faculty = plannerService.findFacultyByCode(code);
+		faculty.setStatus(AdFacultyStatus.INACTIVE);
+		plannerService.updateFaculty(faculty);
+		return new ResponseEntity<String>(faculty.getCode(),HttpStatus.OK);
+	}
 
-    @RequestMapping(value = "/programs/{code}", method = RequestMethod.GET)
-    public ResponseEntity<Program> findProgramByCode(@PathVariable String code) {
-        Program program = plannerTransformer.toProgramVo(plannerService.findProgramByCode(code));
-        return new ResponseEntity<Program>(program, HttpStatus.OK);
-    }
+	// ====================================================================================================
+	// PROGRAM
+	// ====================================================================================================
 
-    @RequestMapping(value = "/programs/{code}/cohorts", method = RequestMethod.GET)
-    public ResponseEntity<List<Cohort>> findCohortsByProgram(@PathVariable String code) {
-        AdProgram program = plannerService.findProgramByCode(code);
-        return new ResponseEntity<List<Cohort>>(
-                plannerTransformer.toCohortVos(plannerService.findCohorts(program, 0, 100)), HttpStatus.OK);
-    }
-    
-    @RequestMapping(value = "/programs/{code}/save", method = RequestMethod.POST)
-    public ResponseEntity<String> saveProgram(@PathVariable String code, @RequestBody Program vo) {
-            dummyLogin();
+	@RequestMapping(value = "/programs", method = RequestMethod.GET)
+	public ResponseEntity<List<Program>> findPrograms() {
+		List<AdProgram> programs = plannerService.findPrograms(0, 100);
+		return new ResponseEntity<List<Program>>(plannerTransformer.toProgramVos(programs), HttpStatus.OK);
+	}
 
-            AdProgram program = new AdProgramImpl();
-            program.setCode(vo.getCode());
-            program.setTitleMs(vo.getTitleMs());
-            program.setTitleEn(vo.getTitleEn());
-			program.setStatus(AdProgramStatus.get(vo.getStatus().ordinal()));
-			program.setFaculty(plannerService.findFacultyById(vo.getFaculty().getId()));
-            plannerService.saveProgram(program);
-            return new ResponseEntity<String>("Success", HttpStatus.OK);
-            }
+	@RequestMapping(value = "/programs/{code}", method = RequestMethod.GET)
+	public ResponseEntity<Program> findProgramByCode(@PathVariable String code) {
+		Program program = plannerTransformer.toProgramVo(plannerService.findProgramByCode(code));
+		return new ResponseEntity<Program>(program, HttpStatus.OK);
+	}
 
-    @RequestMapping(value = "/programs/{code}", method = RequestMethod.PUT)
-    public ResponseEntity<String> updateProgram(@PathVariable String code, @RequestBody Program vo) {
-        dummyLogin();
+	@RequestMapping(value = "/programs/{code}/cohorts", method = RequestMethod.GET)
+	public ResponseEntity<List<Cohort>> findCohortsByProgram(@PathVariable String code) {
+		AdProgram program = plannerService.findProgramByCode(code);
+		return new ResponseEntity<List<Cohort>>(
+				plannerTransformer.toCohortVos(plannerService.findCohorts(program, 0, 100)), HttpStatus.OK);
+	}
 
-        AdProgram program = plannerService.findProgramByCode(code);
-        program.setCode(vo.getCode());
-        program.setTitleMs(vo.getTitleMs());
-        program.setTitleEn(vo.getTitleEn());
-        program.setStatus(AdProgramStatus.get(vo.getStatus().ordinal()));
-        plannerService.updateProgram(program);
-        return new ResponseEntity<String>("Success", HttpStatus.OK);
-    }
+	@RequestMapping(value = "/programs/{code}/save", method = RequestMethod.POST)
+	public ResponseEntity<String> saveProgram(@PathVariable String code, @RequestBody Program vo) {
+		dummyLogin();
 
-    @RequestMapping(value = "/programs/{code}", method = RequestMethod.DELETE)
-    public ResponseEntity<String> removeProgram(@PathVariable String code) {
-        dummyLogin();
-        AdProgram program = plannerService.findProgramByCode(code);
-        plannerService.removeProgram(program);
-        return new ResponseEntity<String>("Success", HttpStatus.OK);
-    }
+		AdProgram program = new AdProgramImpl();
+		AdFaculty faculty =new AdFacultyImpl();
+		program.setCode(vo.getCode());
+		program.setTitleMs(vo.getTitleMs());
+		program.setTitleEn(vo.getTitleEn());
+		program.setStatus(AdProgramStatus.get(vo.getStatus().ordinal()));
+		program.setFaculty(plannerService.findFacultyById(vo.getFaculty().getId()));
+		program.setLevel(plannerService.findProgramLevelById(vo.getLevel().getId()));
+		plannerService.saveProgram(program,faculty);
+		return new ResponseEntity<String>("Success", HttpStatus.OK);
+	}
 
-    @RequestMapping(value = "/programs/{code}/activate", method = RequestMethod.GET)
-    public ResponseEntity<String> activateProgram(@PathVariable String code) {
-        dummyLogin();
-        LOG.debug("activate program");
-        AdProgram program = plannerService.findProgramByCode(code);
-        program.setStatus(AdProgramStatus.ACTIVATED);
-        plannerService.updateProgram(program);
-        return new ResponseEntity<String>(program.getCode(), HttpStatus.OK);
-    }
+	@RequestMapping(value = "/programs/{code}", method = RequestMethod.PUT)
+	public ResponseEntity<String> updateProgram(@PathVariable String code, @RequestBody Program vo) {
+		dummyLogin();
 
-    @RequestMapping(value = "/programs/{code}/deactivate", method = RequestMethod.GET)
-    public ResponseEntity<String> deactivateProgram(@PathVariable String code) {
-        dummyLogin();
-        LOG.debug("deactivate program");
-        AdProgram program = plannerService.findProgramByCode(code);
-        program.setStatus(AdProgramStatus.INACTIVATED);
-        plannerService.updateProgram(program);
-        return new ResponseEntity<String>(program.getCode(), HttpStatus.OK);
-    }
+		AdProgram program = plannerService.findProgramByCode(code);
+		program.setCode(vo.getCode());
+		program.setTitleMs(vo.getTitleMs());
+		program.setTitleEn(vo.getTitleEn());
+		program.setStatus(AdProgramStatus.get(vo.getStatus().ordinal()));
+		plannerService.updateProgram(program);
+		return new ResponseEntity<String>("Success", HttpStatus.OK);
+	}
 
-    // ====================================================================================================
-    // course
-    // ====================================================================================================
+	@RequestMapping(value = "/programs/{code}", method = RequestMethod.DELETE)
+	public ResponseEntity<String> removeProgram(@PathVariable String code) {
+		dummyLogin();
+		AdProgram program = plannerService.findProgramByCode(code);
+		plannerService.removeProgram(program);
+		return new ResponseEntity<String>("Success", HttpStatus.OK);
+	}
 
-    @RequestMapping(value = "/courses", method = RequestMethod.GET)
-    public ResponseEntity<List<Course>> findCourses() {
-        return new ResponseEntity<List<Course>>(plannerTransformer.toCourseVos(plannerService.findCourses(0, 100)),
-                HttpStatus.OK);
-    }
+	@RequestMapping(value = "/programs/{code}/activate", method = RequestMethod.GET)
+	public ResponseEntity<String> activateProgram(@PathVariable String code) {
+		dummyLogin();
+		LOG.debug("activate program");
+		AdProgram program = plannerService.findProgramByCode(code);
+		program.setStatus(AdProgramStatus.ACTIVATED);
+		plannerService.updateProgram(program);
+		return new ResponseEntity<String>(program.getCode(), HttpStatus.OK);
+	}
 
-    @RequestMapping(value = "/courses/page/{pageNo}", method = RequestMethod.GET)
-    public ResponseEntity<List<Course>> findCourses(@PathVariable Integer pageNo) {
-        throw new UnsupportedOperationException();
-    }
+	@RequestMapping(value = "/programs/{code}/deactivate", method = RequestMethod.GET)
+	public ResponseEntity<String> deactivateProgram(@PathVariable String code) {
+		dummyLogin();
+		LOG.debug("deactivate program");
+		AdProgram program = plannerService.findProgramByCode(code);
+		program.setStatus(AdProgramStatus.INACTIVATED);
+		plannerService.updateProgram(program);
+		return new ResponseEntity<String>(program.getCode(), HttpStatus.OK);
+	}
 
-    @RequestMapping(value = "/courses/{code}", method = RequestMethod.GET)
-    public ResponseEntity<Course> findCourseByCode(@PathVariable String code) throws UnsupportedEncodingException {
-        return new ResponseEntity<Course>(plannerTransformer.toCourseVo(plannerService.findCourseByCode(code)),
-                HttpStatus.OK);
-    }
+	// ====================================================================================================
+	// course
+	// ====================================================================================================
 
-    @RequestMapping(value = "/courses/create", method = RequestMethod.POST)
-    public ResponseEntity<Course> createCourse(@RequestBody Course course) {
-        throw new UnsupportedOperationException();
-    }
+	@RequestMapping(value = "/courses", method = RequestMethod.GET)
+	public ResponseEntity<List<Course>> findCourses() {
+		return new ResponseEntity<List<Course>>(plannerTransformer.toCourseVos(plannerService.findCourses(0, 100)),
+				HttpStatus.OK);
+	}
 
-    @RequestMapping(value = "/courses/{code}/update", method = RequestMethod.POST)
-    public ResponseEntity<Course> updateCourse(@PathVariable String code, @RequestBody Course course) {
-        throw new UnsupportedOperationException();
-    }
+	@RequestMapping(value = "/courses/page/{pageNo}", method = RequestMethod.GET)
+	public ResponseEntity<List<Course>> findCourses(@PathVariable Integer pageNo) {
+		throw new UnsupportedOperationException();
+	}
 
-    @RequestMapping(value = "/courses/{code}/activate", method = RequestMethod.POST)
-    public ResponseEntity<Course> activateCourse(@PathVariable String code, @RequestBody Course course) {
-        throw new UnsupportedOperationException();
-    }
+	@RequestMapping(value = "/courses/{code}", method = RequestMethod.GET)
+	public ResponseEntity<Course> findCourseByCode(@PathVariable String code) throws UnsupportedEncodingException {
+		return new ResponseEntity<Course>(plannerTransformer.toCourseVo(plannerService.findCourseByCode(code)),
+				HttpStatus.OK);
+	}
 
-    @RequestMapping(value = "/courses/{code}/deactivate", method = RequestMethod.POST)
-    public ResponseEntity<Course> deactivateCourse(@PathVariable String code, @RequestBody Course course) {
-        throw new UnsupportedOperationException();
-    }
+	@RequestMapping(value = "/courses/create", method = RequestMethod.POST)
+	public ResponseEntity<Course> createCourse(@RequestBody Course course) {
+		throw new UnsupportedOperationException();
+	}
 
-    // ====================================================================================================
-    // COHORT
-    // ====================================================================================================
+	@RequestMapping(value = "/courses/{code}/update", method = RequestMethod.POST)
+	public ResponseEntity<Course> updateCourse(@PathVariable String code, @RequestBody Course course) {
+		throw new UnsupportedOperationException();
+	}
 
-    @RequestMapping(value = "/cohorts", method = RequestMethod.GET)
-    public ResponseEntity<List<Cohort>> findCohorts() {
-        return new ResponseEntity<List<Cohort>>(plannerTransformer.toCohortVos(plannerService.findCohorts("%", 0, 100)),
-                HttpStatus.OK);
-    }
+	@RequestMapping(value = "/courses/{code}/activate", method = RequestMethod.POST)
+	public ResponseEntity<String> activateCourse(@PathVariable String code, @RequestBody Course course) {
+		throw new UnsupportedOperationException();
+	
+	}
 
-    @RequestMapping(value = "/cohorts/{code}", method = RequestMethod.GET)
-    public ResponseEntity<Cohort> findCohortByCode(@PathVariable String code) throws UnsupportedEncodingException {
-        return new ResponseEntity<Cohort>(plannerTransformer.toCohortVo(plannerService.findCohortByCode(code)),
-                HttpStatus.OK);
-    }
+	@RequestMapping(value = "/courses/{code}/deactivate", method = RequestMethod.POST)
+	public ResponseEntity<String> deactivateCourse(@PathVariable String code, @RequestBody Course course) {
+		throw new UnsupportedOperationException();
+		
+	}
+	
+	
+	// ====================================================================================================
+	// academicYear
+	// ====================================================================================================
 
-    // ====================================================================================================
-    // PRIVATE METHODS
-    // ====================================================================================================
+		@RequestMapping(value = "/academicYears", method = RequestMethod.GET)
+		public ResponseEntity<List<AcademicYear>> findAcademicYears() {
+			return new ResponseEntity<List<AcademicYear>>(plannerTransformer.toAcademicYearVos(plannerService.findAcademicYears(0, 100)),
+					HttpStatus.OK);
+		}
 
-    private void dummyLogin() {
-        UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken("root", "abc123");
-        Authentication authed = authenticationManager.authenticate(token);
-        SecurityContextHolder.getContext().setAuthentication(authed);
-    }
+	// ====================================================================================================
+	// COHORT
+	// ====================================================================================================
+
+	@RequestMapping(value = "/cohorts", method = RequestMethod.GET)
+	public ResponseEntity<List<Cohort>> findCohorts() {
+		return new ResponseEntity<List<Cohort>>(plannerTransformer.toCohortVos(plannerService.findCohorts("%", 0, 100)),
+				HttpStatus.OK);
+	}
+
+	@RequestMapping(value = "/cohorts/{code}", method = RequestMethod.GET)
+	public ResponseEntity<Cohort> findCohortByCode(@PathVariable String code) throws UnsupportedEncodingException {
+		return new ResponseEntity<Cohort>(plannerTransformer.toCohortVo(plannerService.findCohortByCode(code)),
+				HttpStatus.OK);
+	}
+
+	@RequestMapping(value = "/cohorts/{code}/save", method = RequestMethod.POST)
+	public ResponseEntity<String> saveCohort(@PathVariable String code, @RequestBody Cohort vo) {
+		dummyLogin();
+
+		AdProgram program = plannerService.findProgramById(vo.getProgram().getId());
+		AdAcademicSession academicSession = plannerService.findAcademicSessionById(vo.getAcademicSession().getId());
+		AdCohort cohort = new AdCohortImpl();
+		cohort.setCode(program.getCode() + "-" + academicSession.getCode());
+		cohort.setDescription("Cohort for " + program.getCode());
+		cohort.setProgram(program);
+		cohort.setSession(academicSession);
+		plannerService.saveCohort(cohort);
+		return new ResponseEntity<String>("Success", HttpStatus.OK);
+	}
+
+	@RequestMapping(value = "/cohorts/{code}", method = RequestMethod.PUT)
+	public ResponseEntity<String> updateCohort(@PathVariable String code, @RequestBody Cohort vo) {
+		dummyLogin();
+
+		AdCohort cohort = plannerService.findCohortByCode(code);
+		cohort.setDescription(vo.getCode());
+		plannerService.updateCohort(cohort);
+		return new ResponseEntity<String>("Success", HttpStatus.OK);
+	}
+
+	// ====================================================================================================
+	// PRIVATE METHODS
+	// ====================================================================================================
+
+	private void dummyLogin() {
+		UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken("root", "abc123");
+		Authentication authed = authenticationManager.authenticate(token);
+		SecurityContextHolder.getContext().setAuthentication(authed);
+	}
 }

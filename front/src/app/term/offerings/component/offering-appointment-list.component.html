@@ -1,30 +1,14 @@
 <md-card>
   <div toolbar-buttons layout="row" layout-align="start center" flex>
-    <md-card-title flex>Appointments</md-card-title>
-    <!-- <button md-button class="md-icon-button" mdTooltip="Add new appointment" (click)="showDialog()">
-     <md-icon class="md-24" >playlist_add</md-icon>
-    </button>
-     <button md-button class="md-icon-button" mdTooltip="Update section"  (click)="updateAppointment(row)">
-    <md-icon class="md-24" >update</md-icon>
-    </button>
-     <button md-button class="md-icon-button" mdTooltip="Delete section"  (click)="deleteAppointment(row)">
-    <md-icon class="md-24" >delete</md-icon>
-    </button> -->
-    <!--  <button md-icon-button [md-menu-trigger-for]="menu1" mdTooltip="Select appointment actions">
-      <md-icon>more_vert</md-icon>
-    </button>
-    <md-menu x-position="before" #menu1="mdMenu">
-      <button md-menu-item (click)="showAssessmentDialog()">Add new appointment</button>
-      <button md-menu-item (click)="updateAssessment(row)">Update appointment</button>
-      <button md-menu-item (click)="deleteAssessment(row)">Delete appointment</button>
-    </md-menu> update button disabled [disabled]="disableButton()"-->
-     <button md-button class="md-icon-button" (click)="showDialog()">
+    <md-card-title>Appointments</md-card-title>
+    <md-chip-list *ngIf="appointments?.length > 0">
+      <md-chip color="accent">{{appointments?.length}}</md-chip>
+    </md-chip-list>
+    <span flex></span>
+    <button md-button class="md-icon-button" (click)="showDialog()">
       <md-icon class="md-24 tc-grey-700">add</md-icon>
     </button>
-    <button md-button class="md-icon-button" (click)="updateAppointment(row)"  >
-      <md-icon class="md-24 tc-grey-700">edit</md-icon>
-    </button>
-    <button md-button class="md-icon-button" (click)="deleteAppointment(row)">
+    <button md-button class="md-icon-button" (click)="deleteAppointment(row)" mdTooltip="Delete selected appointments">
       <md-icon class="md-24 tc-grey-700">delete</md-icon>
     </button>
   </div>
@@ -43,19 +27,19 @@
           <span flex>{{value}}</span>
         </div>
       </template>
-        <template tdDataTableTemplate="action" let-value="value" let-row="row"
+      <template tdDataTableTemplate="action" let-value="value" let-row="row"
                 let-column="column">
         <div layout="row">
-          <a md-button color="accent" class="text-upper" mdTooltip="View this appointment"
-             [routerLink]="['/term/appointments', row['canonicalCode']]">  <md-icon class="md-24">pageview</md-icon>
-          </a>
-          <!--  <a md-button color="accent" class="text-upper" mdTooltip="Delete this appointment"
-             (click)="deleteSection()"> <md-icon class="md-24" >delete</md-icon>
-          </a> -->
+          <button md-icon-button [md-menu-trigger-for]="menu1" mdTooltip="Select section actions">
+            <md-icon>more_vert</md-icon>
+          </button>
+          <md-menu x-position="before" #menu1="mdMenu">
+            <button md-menu-item [routerLink]="['/term/appointments', row['canonicalCode']]">View appointment</button>
+            <button md-menu-item (click)="updateAppointment(row)">Update appointment</button>
+            <button md-menu-item (click)="deleteAppointment(row)">Delete appointment</button>
+          </md-menu>
         </div>
       </template>
-      
-      
     </td-data-table>
   </md-card-content>
 </md-card>

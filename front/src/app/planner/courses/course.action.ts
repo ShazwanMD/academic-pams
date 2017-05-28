@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Action} from '@ngrx/store';
+import {Course} from './course.interface';
 
 @Injectable()
 export class CourseActions {
@@ -51,6 +52,42 @@ export class CourseActions {
     };
   }
 
+   static UPDATE_COURSE = '[Course] Update course';
+
+  updateCourse(course): Action {
+    return {
+      type: CourseActions.UPDATE_COURSE,
+      payload: course
+    };
+  }
+
+  static UPDATE_COURSE_SUCCESS = '[Course] Update Course Success';
+
+  updateCourseSuccess(course): Action {
+    return {
+      type: CourseActions.UPDATE_COURSE_SUCCESS,
+      payload: course
+    };
+  }
+
+   static CREATE_COURSE = '[Course] Create Course';
+
+  createCourse(course): Action {
+    return {
+      type: CourseActions.CREATE_COURSE,
+      payload: course
+    };
+  }
+
+  static CREATE_COURSE_SUCCESS = '[Course] Create Course Success';
+
+  createCourseSuccess(course): Action {
+    return {
+      type: CourseActions.CREATE_COURSE_SUCCESS,
+      payload: course
+    };
+  }
+
   static REMOVE_COURSE = '[Course] Remove Course';
   removeCourse(course): Action {
     return {
@@ -66,4 +103,40 @@ export class CourseActions {
       payload: course
     };
   }
+    static ACTIVATE_COURSE = '[Course] Activate Course';
+
+  activateCourse(course): Action {
+    return {
+      type: CourseActions.ACTIVATE_COURSE,
+      payload: course
+    };
+  }
+
+  static ACTIVATE_COURSE_SUCCESS = '[Course] Activate AcademicSession Success';
+
+  activateCourseSuccess(course): Action {
+    return {
+      type: CourseActions.ACTIVATE_COURSE_SUCCESS,
+      payload: course
+    };
+  }
+
+  static DEACTIVATE_COURSE = '[Course] Deactivate Course';
+
+  deactivateCourse(course): Action {
+    return {
+      type: CourseActions.DEACTIVATE_COURSE,
+      payload: course
+    };
+  }
+
+  static DEACTIVATE_COURSE_SUCCESS = '[Course] Activate Course Success';
+
+  deactivateCourseSuccess(course): Action {
+    return {
+      type: CourseActions.DEACTIVATE_COURSE_SUCCESS,
+      payload: course
+    };
+  }
 }
+

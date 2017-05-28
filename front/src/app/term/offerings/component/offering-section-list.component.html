@@ -1,28 +1,19 @@
 <md-card>
   <div toolbar-buttons layout="row" layout-align="start center" flex>
-    <md-card-title flex>Sections</md-card-title>
-    
-        <!--  <button md-icon-button [md-menu-trigger-for]="menu1" mdTooltip="Select section actions">
-      <md-icon>more_vert</md-icon>
-    </button>(click)="updateSection(row)"
-    <md-menu x-position="before" #menu1="mdMenu">
-      <button md-menu-item (click)="showSectionDialog()">Add new section</button>
-      <button md-menu-item (click)="updateSection(row)" >Update section</button>
-      <button md-menu-item (click)="deleteSection(row)">Delete section</button>
-    </md-menu> -->
-    
+    <md-card-title>Sections</md-card-title>
+    <md-chip-list *ngIf="sections?.length > 0">
+      <md-chip color="accent">{{sections?.length}}</md-chip>
+    </md-chip-list>
+    <span flex></span>
     <button md-button class="md-icon-button" (click)="showSectionDialog()" mdTooltip="Add new section">
       <md-icon class="md-24 tc-grey-700">add</md-icon>
     </button>
-    <button md-button class="md-icon-button" (click)="updateSection(row)" mdTooltip="Update section"  >
-      <md-icon class="md-24 tc-grey-700">edit</md-icon>
-    </button>
-    <button md-button class="md-icon-button" (click)="deleteSection(row)" mdTooltip="Delete section">
+    <button md-button class="md-icon-button" (click)="deleteSection(row)" mdTooltip="Delete selected sections">
       <md-icon class="md-24 tc-grey-700">delete</md-icon>
     </button>
-    
-  </div> 
-  
+
+  </div>
+
   <md-divider></md-divider>
   <md-card-content>
     <td-data-table [data]="sections" [columns]="columns" [sortBy]="summary"
@@ -35,13 +26,14 @@
       </template>
       <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
         <div layout="row">
-          <a md-button color="accent" class="text-upper"  mdTooltip="View this section"
-             [routerLink]="['/term/sections', row['canonicalCode']]"> <md-icon class="md-24">pageview</md-icon>
-          </a>
-         <!--   <button md-menu-item (click)="updateSection(row)">Update section</button> -->
-          <!--  <a md-button color="accent" class="text-upper" mdTooltip="Delete this section"
-             (click)="deleteSection(row)"> <md-icon class="md-24" >delete</md-icon>
-          </a> -->
+          <button md-icon-button [md-menu-trigger-for]="menu1" mdTooltip="Select section actions">
+            <md-icon>more_vert</md-icon>
+          </button>
+          <md-menu x-position="before" #menu1="mdMenu">
+            <button md-menu-item [routerLink]="['/term/sections', row['canonicalCode']]">View section</button>
+            <button md-menu-item (click)="editDialog(row)">Update section</button>
+            <button md-menu-item (click)="deleteSection(row)">Delete section</button>
+          </md-menu>
         </div>
       </template>
     </td-data-table>

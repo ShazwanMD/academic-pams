@@ -387,7 +387,7 @@ public class TermServiceImpl implements TermService {
     // ====================================================================================================
     @Override
     public AdAssessment findAssessmentById(Long id) {
-        return assessmentDao.findById(id);
+        return assessmentDao.findAssessmentById(id);
     }
 
     @Override

@@ -8,12 +8,24 @@ import { Faculty } from "../app/planner/faculties/faculty.interface";
 import { Course } from "../app/planner/courses/course.interface";
 import { Cohort } from "../app/planner/cohorts/cohort.interface";
 import { AcademicSession } from '../app/planner/academic-sessions/academic-session.interface';
+import { AcademicYear } from "../app/planner/academic-years/academic-year.interface";
 
 @Injectable()
 export class PlannerService {
 
   constructor(private http: Http,
     private _http: HttpInterceptorService) {
+  }
+  
+  // ====================================================================================================
+  // ACADEMIC YEAR
+  // ====================================================================================================
+
+  findAcademicYears(): Observable<AcademicYear[]> {
+    let headers = new Headers({ 'Authorization': 'Bearer TODO' });
+    let options = new RequestOptions({ headers: headers });
+    return this.http.get(environment.endpoint + '/api/planner/academicYears')
+      .map((res: Response) => <AcademicYear[]>res.json());
   }
 
   // ====================================================================================================
@@ -92,6 +104,42 @@ export class PlannerService {
       .map((res: Response) => <Faculty>res.json());
   }
 
+   activateFaculty(faculty: Faculty): Observable<String> {
+    let headers = new Headers({ 'Authorization': 'Bearer TODO' });
+    let options = new RequestOptions({ headers: headers });
+    console.log("activate Faculty");
+    return this.http.get(environment.endpoint + '/api/planner/faculties/' + faculty.code + '/activate', options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+  deactivateFaculty(faculty: Faculty): Observable<String> {
+    let headers = new Headers({ 'Authorization': 'Bearer TODO' });
+    let options = new RequestOptions({ headers: headers });
+    console.log("deactivate Faculty");
+    return this.http.get(environment.endpoint + '/api/planner/faculties/' + faculty.code + '/deactivate', options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+   saveFaculty(faculty: Faculty): Observable<String> {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({ headers: headers });
+    return this.http.post(environment.endpoint + '/api/planner/faculties/' + faculty.code +  '/save', JSON.stringify(faculty), options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+   updatefaculty(faculty: Faculty): Observable<String> {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({ headers: headers });
+    return this.http.put(environment.endpoint + '/api/planner/faculties/' + faculty.code, JSON.stringify(faculty), options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
   // ====================================================================================================
   // PROGRAM
   // ====================================================================================================
@@ -116,8 +164,6 @@ export class PlannerService {
       'Content-Type': 'application/json',
       //'Authorization': 'Bearer ' + this.authService.token
     });
-    console.log("saya disini");
-    console.dir(program);
     let options = new RequestOptions({ headers: headers });
     return this.http.post(environment.endpoint + '/api/planner/programs/' + program.code + '/save', JSON.stringify(program), options)
       .flatMap((res: Response) => Observable.of(res.text()));
@@ -174,6 +220,47 @@ export class PlannerService {
       .map((res: Response) => <Course>res.json());
   }
 
+ saveCourse(course: Course): Observable<String> {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({ headers: headers });
+    return this.http.post(environment.endpoint + '/api/planner/course/' + course.code + '/save', JSON.stringify(course), options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+  updateCourse(course: Course): Observable<String> {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({ headers: headers });
+    return this.http.put(environment.endpoint + '/api/planner/course/' + course.code, JSON.stringify(course), options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+  removeCourse(course: Course): Observable<Course> {
+    return this.http.delete(environment.endpoint + '/api/planner/course/' + course.code)
+      .map((res: Response) => <Course>res.json());
+  }
+
+  activateCourse(course: Course): Observable<String> {
+    let headers = new Headers({ 'Authorization': 'Bearer TODO' });
+    let options = new RequestOptions({ headers: headers });
+    console.log("activate course");
+    return this.http.get(environment.endpoint + '/api/planner/course/' + course.code + '/activate', options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+  deactivateCourse(course: Course): Observable<String> {
+    let headers = new Headers({ 'Authorization': 'Bearer TODO' });
+    let options = new RequestOptions({ headers: headers });
+    console.log("deactivate course");
+    return this.http.get(environment.endpoint + '/api/planner/course/' + course.code + '/deactivate', options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
   // ====================================================================================================
   // COHORT
   // ====================================================================================================
@@ -191,5 +278,46 @@ export class PlannerService {
     let options = new RequestOptions({ headers: headers });
     return this.http.get(environment.endpoint + '/api/planner/cohorts/' + code, options)
       .map((res: Response) => <Cohort>res.json());
+  }
+
+  saveCohort(cohort: Cohort): Observable<String> {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({ headers: headers });
+    return this.http.post(environment.endpoint + '/api/planner/cohorts/' + cohort.code + '/save', JSON.stringify(cohort), options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+  updateCohort(cohort: Cohort): Observable<String> {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({ headers: headers });
+    return this.http.put(environment.endpoint + '/api/planner/cohorts/' + cohort.code, JSON.stringify(cohort), options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+  removeCohort(cohort: Cohort): Observable<Cohort> {
+    return this.http.delete(environment.endpoint + '/api/planner/cohorts/' + cohort.code)
+      .map((res: Response) => <Cohort>res.json());
+  }
+
+  activateCohort(cohort: Cohort): Observable<String> {
+    let headers = new Headers({ 'Authorization': 'Bearer TODO' });
+    let options = new RequestOptions({ headers: headers });
+    console.log("activate cohort");
+    return this.http.get(environment.endpoint + '/api/planner/cohorts/' + cohort.code + '/activate', options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+  deactivateCohort(cohort: Cohort): Observable<String> {
+    let headers = new Headers({ 'Authorization': 'Bearer TODO' });
+    let options = new RequestOptions({ headers: headers });
+    console.log("deactivate cohort");
+    return this.http.get(environment.endpoint + '/api/planner/cohorts/' + cohort.code + '/deactivate', options)
+      .flatMap((res: Response) => Observable.of(res.text()));
   }
 }

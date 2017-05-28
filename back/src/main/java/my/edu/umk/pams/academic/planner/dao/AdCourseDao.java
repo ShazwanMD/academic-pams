@@ -20,7 +20,7 @@ public interface AdCourseDao extends GenericDao<Long, AdCourse> {
     AdCourse findByCodeAndFaculty(String code, AdFaculty faculty);
 
     List<AdCourse> find(String filter, Integer offset, Integer limit);
-
+    
     List<AdCourse> find(AdFaculty faculty);
 
     List<AdCourse> find(String filter, AdFaculty faculty, Integer offset, Integer limit);

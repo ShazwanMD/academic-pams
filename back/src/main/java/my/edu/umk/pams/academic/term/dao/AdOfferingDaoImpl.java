@@ -336,6 +336,8 @@ public class AdOfferingDaoImpl extends GenericDaoSupport<Long, AdOffering> imple
     @Override
     public void updateAssessment(AdOffering offering, AdAssessment assessment, AdUser user) {
         Validate.notNull(user, "User cannot be null");
+        Validate.notNull(offering, "Offering cannot be null");
+        Validate.notNull(assessment, "assessment cannot be null");
         Session session = sessionFactory.getCurrentSession();
         assessment.setOffering(offering);
 

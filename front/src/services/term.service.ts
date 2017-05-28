@@ -52,7 +52,27 @@ export class TermService {
         return this.http.post(environment.endpoint + '/api/term/offerings/' + offering.canonicalCode + '/assessments', JSON.stringify(assessment), options)
             .flatMap((res: Response) => Observable.of(res.text()));
     }
+    
+    updateAssessment(offering: Offering, assessment: Assessment): Observable<String> {
+        console.log(assessment);
+        console.log("addOffering:" + offering.canonicalCode);
+        let headers = new Headers({
+            'Content-Type': 'application/json',
+        });
+        let options = new RequestOptions({ headers: headers });
+        return this.http.put(environment.endpoint + '/api/term/offerings/' + offering.canonicalCode + '/assessments/' + assessment.id,JSON.stringify(assessment), options)
+            .flatMap((res: Response) => Observable.of(res.text()));
+    }
 
+    deleteAssessment(offering: Offering, assessment:Assessment) {
+      let headers = new Headers({
+        'Content-Type': 'application/json',
+      });
+      let options = new RequestOptions({ headers: headers });
+      console.log("deleteAssessmentInService")
+      return this.http.delete(environment.endpoint + '/api/term/offerings/' + offering.canonicalCode + '/assessments/' + assessment.id, options)
+        .flatMap((res: Response) => Observable.of(res.text()));
+    }
     // ==================================================================================================== //
     // ADMISSION APPLICATION
     // ==================================================================================================== //
@@ -430,13 +450,13 @@ export class TermService {
     }
 
     // update Section using dialog
-    updateSection(section: Section): Observable<String> {
+    updateSection(offering: Offering, section: Section): Observable<String> {
         let headers = new Headers({
             'Content-Type': 'application/json',
             //'Authorization': 'Bearer ' + this.authService.token
         });
         let options = new RequestOptions({ headers: headers });
-        return this.http.put(environment.endpoint + '/api/term/sections/' + section.canonicalCode, JSON.stringify(section), options)
+        return this.http.put(environment.endpoint + '/api/term/offerings/' + offering.canonicalCode + '/sections/' , JSON.stringify(section), options)
             .flatMap((res: Response) => Observable.of(res.text()));
     }
     

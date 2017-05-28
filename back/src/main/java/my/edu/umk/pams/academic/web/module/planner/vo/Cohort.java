@@ -12,7 +12,9 @@ import java.io.IOException;
 public class Cohort extends MetaObject{
     private String code;
     private String description;
-   // private String classificton;
+    private Program program;
+    private AcademicSession academicSession;
+    private Cohort cohort;
 
     public String getCode() {
         return code;
@@ -29,14 +31,31 @@ public class Cohort extends MetaObject{
     public void setDescription(String description) {
         this.description = description;
     }
-    
-   /* public String getClassification() {
-        return classification;
+
+    public Program getProgram() {
+        return program;
     }
 
-    public void setClassification(String classification) {
-        this.classification = classification;
-    }*/
+    public void setProgram(Program program) {
+        this.program = program;
+    }
+
+    public AcademicSession getAcademicSession() {
+        return academicSession;
+    }
+
+    public void setAcademicSession(AcademicSession academicSession) {
+        this.academicSession = academicSession;
+    }
+    
+    public Cohort getCohort() {
+        return cohort;
+    }
+
+    public void setCohort(Cohort cohort) {
+        this.cohort = cohort;
+  
+    }
 
     @JsonCreator
     public static Cohort create(String jsonString) {

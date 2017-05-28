@@ -1,14 +1,20 @@
-import {Injectable} from '@angular/core';
-import {Effect, Actions} from '@ngrx/effects';
-import {FacultyActions} from "./faculty.action";
-import {PlannerService} from "../../../services/planner.service";
-
+import { Store } from '@ngrx/store';
+import { Injectable } from '@angular/core';
+import { Effect, Actions } from '@ngrx/effects';
+import { FacultyActions } from "./faculty.action";
+import { PlannerService } from "../../../services/planner.service";
+import { PlannerModuleState } from "./../index";
+import { Faculty } from "./faculty.interface";
 
 @Injectable()
 export class FacultyEffects {
+
+private FACULTY: string[] = "plannerModuleState.faculty".split(".");
+
   constructor(private actions$: Actions,
-              private facultyActions: FacultyActions,
-              private plannerService: PlannerService,) {
+    private facultyActions: FacultyActions,
+    private plannerService: PlannerService,
+    private store$: Store<PlannerModuleState>) {
   }
 
   @Effect() findFaculties$ = this.actions$
@@ -22,15 +28,39 @@ export class FacultyEffects {
     .switchMap(code => this.plannerService.findFacultyByCode(code))
     .map(faculty => this.facultyActions.findFacultyByCodeSuccess(faculty));
 
-  // @Effect() saveFaculty$ = this.actions$
-  //   .ofType(FacultyActions.SAVE_FACULTY)
-  //   .map(action => action.payload)
-  //   .switchMap(faculty => this.svc.saveFaculty(faculty))
-  //   .map(faculty => this.facultyActions.saveFacultiesuccess(faculty));
-  //
-  // @Effect() deleteFaculty$ = this.actions$
-  //   .ofType(FacultyActions.DELETE_FACULTY)
-  //   .map(action => action.payload)
-  //   .switchMap(faculty => this.svc.deleteFaculty(faculty))
-  //   .map(faculty => this.facultyActions.deleteFacultiesuccess(faculty));
+  @Effect() saveFaculty$ = this.actions$
+    .ofType(FacultyActions.SAVE_FACULTY)
+    .map(action => action.payload)
+    .switchMap(faculty => this.plannerService.saveFaculty(faculty))
+    .map(faculty => this.facultyActions.saveFacultySuccess(faculty));
+
+  @Effect() updatefaculty$ = this.actions$
+    .ofType(FacultyActions.UPDATE_FACULTY)
+    .map(action => action.payload)
+    .switchMap(faculty => this.plannerService.updatefaculty(faculty))
+    .map(faculty => this.facultyActions.updateFacultySuccess(faculty))
+    .withLatestFrom(this.store$.select(...this.FACULTY))
+    .map(state => state[1])
+    .map((faculty: Faculty) => this.facultyActions.findFacultyByCode(faculty.code));
+
+  @Effect() activateFaculty$ = this.actions$
+    .ofType(FacultyActions.ACTIVATE_FACULTY)
+    .map(action => action.payload)
+    .switchMap(faculty => this.plannerService.activateFaculty(faculty))
+    .map(message => this.facultyActions.activateFacultySuccess(message))
+    .withLatestFrom(this.store$.select(...this.FACULTY))
+    .map(state => state[1])
+    .map((faculty: Faculty) => this.facultyActions.findFacultyByCode(faculty.code));
+
+  @Effect() deactivateFaculty$ = this.actions$
+    .ofType(FacultyActions.DEACTIVATE_FACULTY)
+    .map(action => action.payload)
+    .switchMap(faculty => this.plannerService.deactivateFaculty(faculty))
+    .map(message => this.facultyActions.deactivateFacultySuccess(message))
+    .withLatestFrom(this.store$.select(...this.FACULTY))
+    .map(state => state[1])
+    .map((faculty: Faculty) => this.facultyActions.findFacultyByCode(faculty.code));
+
+
+
 }

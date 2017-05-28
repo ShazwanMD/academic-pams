@@ -23,7 +23,6 @@ export class CourseDetailPage implements OnInit {
               private route: ActivatedRoute,
               private actions: CourseActions,
               private store: Store<PlannerModuleState>) {
-
     this.course$ = this.store.select(...this.COURSE);
   }
 

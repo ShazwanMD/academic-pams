@@ -5,7 +5,8 @@ import {Router, ActivatedRoute} from '@angular/router';
 import {CommonService} from "../../../../services/common.service";
 import {PlannerService} from "../../../../services/planner.service";
 import {Cohort} from "../cohort.interface";
-import {CohortActions} from "../cohort.action";;
+import {CohortActions} from "../cohort.action";
+;
 import {Store} from "@ngrx/store";
 import {PlannerModuleState} from "../../index";
 import {MdDialogRef} from "@angular/material";
@@ -15,41 +16,31 @@ import {MdDialog} from '@angular/material';
 import {IdentityService} from "../../../../services/identity.service";
 
 @Component({
-    selector: 'pams-cohort-editor',
-    templateUrl: './cohort-editor.dialog.html',
+  selector: 'pams-cohort-editor',
+  templateUrl: './cohort-editor.dialog.html',
 })
 
 export class CohortEditorDialog implements OnInit {
 
-  //private cohort: cohort;
-    private createForm: FormGroup;
-
+  private createForm: FormGroup;
 
   constructor(private router: Router,
-        private route: ActivatedRoute,
-        private formBuilder: FormBuilder,
-        private store: Store<PlannerModuleState>,
-        private actions: CohortActions,
-        private dialog: MdDialogRef<CohortEditorDialog>) {
-    }
+              private route: ActivatedRoute,
+              private formBuilder: FormBuilder,
+              private store: Store<PlannerModuleState>,
+              private actions: CohortActions,
+              private dialog: MdDialogRef<CohortEditorDialog>) {
+  }
 
-    ngOnInit(): void {
-        this.createForm = this.formBuilder.group(<Cohort>{
-            id: null,
-            code: '',
-            description: '',
-            program: <Program>{},
-            academicSession: <AcademicSession>{},
+  ngOnInit(): void {
+    this.createForm = this.formBuilder.group(<Cohort>{
+      program: <Program>{},
+      academicSession: <AcademicSession>{},
+    });
+  }
 
-         });
-          // this.editForm.patchValue(this.cohort);
-     }
-
-
-    save(cohort: Cohort, isValid: boolean) {
-      this.store.dispatch(this.actions.saveCohort(cohort));
-        this.dialog.close();
-        console.dir(cohort);
-    
-}
+  save(cohort: Cohort, isValid: boolean) {
+    this.store.dispatch(this.actions.saveCohort(cohort));
+    this.dialog.close();
+  }
 }

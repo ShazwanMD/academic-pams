@@ -33,7 +33,7 @@ public class PlannerTransformer {
         vo.setstartDate(academicSession.getStartDate());
         vo.setendDate(academicSession.getEndDate());
         vo.setSemester(AcademicSemester.get(academicSession.getSemester().ordinal()));
-        vo.setYear(toAcademicYearVo(academicSession.getYear()));
+        vo.setYear(plannerTransformer.toAcademicYearVo(academicSession.getYear()));
         return vo;
     }
     
@@ -60,9 +60,9 @@ public class PlannerTransformer {
         vo.setCode(faculty.getCode());
         vo.setName(faculty.getName());
         vo.setDescription(faculty.getDescription());
+        vo.setStatus(FacultyStatus.get(faculty.getStatus().ordinal()));
         return vo;
     }
-
     public Program toProgramVo(AdProgram program) {
         Program vo = new Program();
         vo.setId(program.getId());
@@ -71,10 +71,21 @@ public class PlannerTransformer {
         vo.setTitleEn(program.getTitleEn());
         vo.setStatus(ProgramStatus.get(program.getStatus().ordinal()));
         vo.setFaculty(plannerTransformer.toFacultyVo(program.getFaculty()));
+        vo.setLevel(plannerTransformer.toProgramLevelVo(program.getLevel()));
         return vo;
     }
 
-    public Course toCourseVo(AdCourse course) {
+    private ProgramLevel toProgramLevelVo(AdProgramLevel level) {
+		
+    	ProgramLevel vo = new ProgramLevel();
+		vo.setId(level.getId());
+        vo.setCode(level.getCode());
+        vo.setDescription(level.getDescription());
+        vo.setPrefix(level.getPrefix());
+		return vo;
+	}
+
+	public Course toCourseVo(AdCourse course) {
         Course vo = new Course();
         vo.setId(course.getId());
         vo.setCode(course.getCode());
@@ -82,20 +93,20 @@ public class PlannerTransformer {
         vo.setTitleEn(course.getTitleEn());
         vo.setCredit(course.getCredit());
         vo.setFaculty(plannerTransformer.toFacultyVo(course.getFaculty()));
-
         return vo;
     }
 
-    public Cohort toCohortVo(AdCohort cohort) {
+    public Cohort toCohortVo(AdCohort e) {
         Cohort vo = new Cohort();
-        vo.setId(cohort.getId());
-        vo.setCode(cohort.getCode());
-        vo.setDescription(cohort.getDescription());
-        //    vo.setClassification(cohort.getClassification());
+        vo.setId(e.getId());
+        vo.setCode(e.getCode());
+        vo.setDescription(e.getDescription());
+        vo.setProgram(toProgramVo(e.getProgram()));
+        vo.setAcademicSession(toAcademicSessionVo(e.getSession()));
+    // todo zaida    vo.setClassification(plannerTransformer.toAdAcademicClassificationVo(e.getClassification()));
         return vo;
     }
-
-    public List<Cohort> toCohortVos(List<AdCohort> cohorts) {
+	public List<Cohort> toCohortVos(List<AdCohort> cohorts) {
         List<Cohort> vos = cohorts.stream()
                 .map((cohort) -> toCohortVo(cohort))
                 .collect(toList());
@@ -112,6 +123,13 @@ public class PlannerTransformer {
     public List<AcademicSession> toAcademicSessionVos(List<AdAcademicSession> academicSessions) {
         List<AcademicSession> vos = academicSessions.stream()
                 .map((academicSession) -> toAcademicSessionVo(academicSession))
+                .collect(toList());
+        return vos;
+    }
+    
+    public List<AcademicYear> toAcademicYearVos(List<AdAcademicYear> academicYears) {
+        List<AcademicYear> vos = academicYears.stream()
+                .map((academicYear) -> toAcademicYearVo(academicYear))
                 .collect(toList());
         return vos;
     }

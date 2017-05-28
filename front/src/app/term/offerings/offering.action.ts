@@ -135,6 +135,7 @@ export class OfferingActions {
   static UPDATE_OFFERING = '[Offering] Update Offering';
 
   updateOffering(offering): Action {
+      console.log("updateOffering");
     return {
       type: OfferingActions.UPDATE_OFFERING,
       payload: offering
@@ -143,10 +144,11 @@ export class OfferingActions {
 
   static UPDATE_OFFERING_SUCCESS = '[Offering] Update Offering Success';
 
-  updateOfferingSuccess(offering): Action {
+  updateOfferingSuccess(message): Action {
+      console.log("updateOfferingSuccess");
     return {
       type: OfferingActions.UPDATE_OFFERING_SUCCESS,
-      payload: offering
+      payload: message
     };
   }
 
