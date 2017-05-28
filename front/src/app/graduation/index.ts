@@ -2,28 +2,50 @@ import {NgModule, ModuleWithProviders} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {ReactiveFormsModule} from '@angular/forms';
 import {appRoutes, appRoutingProviders} from '../app.routes';
-
 import {CovalentCoreModule} from '@covalent/core';
-
 import {CommonService} from '../../services';
 import {IdentityService} from '../../services';
+import {GraduationPage} from "./graduation.page";
 import {GraduationService} from "../../services/graduation.service";
-import {GraduationCenterPage} from "./graduation-center.page";
+import {GraduationApplicationSubModule} from "./graduation-applications/index";
+import {
+  GraduationApplicationState,
+  graduationApplicationReducer
+} from "./graduation-applications/graduation-application.reducer";
+import {
+  assignedGraduationApplicationTaskListReducer,
+  pooledGraduationApplicationTaskListReducer,
+  GraduationApplicationTaskListState,
+} from "./graduation-applications/graduation-application-task-list.reducer";
 
-// export interface GraduationModuleState {
-//   // todo
-// }
-// ;
-//
-// export const INITIAL_GRADUATION_STATE: GraduationModuleState =
-//   <GraduationModuleState>{
-//     // todo
-//   };
-//
-// export const graduationModuleReducers = {
-// // todo
-// };
+import {
+  GraduationApplicationTaskState,
+  graduationApplicationTaskReducer
+} from "./graduation-applications/graduation-application-task.reducer";
+import {GraduationApplicationTask} from "./graduation-applications/graduation-application-task.interface";
 
+export interface GraduationModuleState {
+  assignedGraduationApplicationTasks: GraduationApplicationTaskListState;
+  pooledGraduationApplicationTasks: GraduationApplicationTaskListState;
+  graduationApplicationTask: GraduationApplicationTaskState;
+  graduationApplication: GraduationApplicationState;
+}
+;
+
+export const INITIAL_Graduation_STATE: GraduationModuleState =
+  <GraduationModuleState>{
+    assignedGraduationApplicationTasks: [],
+    pooledGraduationApplicationTasks: [],
+    graduationApplicationTask: <GraduationApplicationTask>{},
+    graduationApplication: {},
+  };
+
+export const GraduationModuleReducers = {
+  assignedGraduationApplicationTasks: assignedGraduationApplicationTaskListReducer,
+  pooledGraduationApplicationTasks: pooledGraduationApplicationTaskListReducer,
+  graduationApplicationTask: graduationApplicationTaskReducer,
+  graduationApplication: graduationApplicationReducer,
+};
 
 @NgModule({
   imports: [
@@ -31,13 +53,11 @@ import {GraduationCenterPage} from "./graduation-center.page";
     BrowserModule,
     ReactiveFormsModule,
     CovalentCoreModule.forRoot(),
-
-    // our modules
-    // ngrx
+    GraduationApplicationSubModule.forRoot(),
   ],
   declarations: [
     // page
-    GraduationCenterPage
+    GraduationPage,
   ],
   exports: [],
 })
@@ -54,4 +74,3 @@ export class GraduationModule {
     };
   }
 }
-

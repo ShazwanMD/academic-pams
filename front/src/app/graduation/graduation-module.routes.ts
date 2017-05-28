@@ -1,7 +1,8 @@
 import {Routes, RouterModule} from '@angular/router';
-import {GraduationCenterPage} from "./graduation-center.page";
-
+import {GraduationPage} from "./graduation.page";
+import {GraduationApplicationRoutes} from "./graduation-applications/graduation-application.routes";
 
 export const GraduationModuleRoutes: Routes = [
-  {path: 'graduation', component: GraduationCenterPage},
+  {path: 'graduation', component: GraduationPage},
+  ...GraduationApplicationRoutes,
 ];

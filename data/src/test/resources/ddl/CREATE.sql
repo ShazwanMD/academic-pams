@@ -694,9 +694,9 @@
         M_TS timestamp,
         M_ID int8,
         M_ST int4,
-        STATUS int4 not null,
         NAME varchar(255) not null,
         PREFIX varchar(5),
+        status int4,
         primary key (ID)
     );
 
@@ -771,6 +771,58 @@
         M_ST int4,
         NAME varchar(255) not null,
         GUARDIAN_TYPE int4,
+        STUDENT_ID int8,
+        primary key (ID)
+    );
+
+    create table AD_GRDN_APLN (
+        ID int8 not null,
+        AUDIT_NO varchar(255),
+        CANCEL_COMMENT varchar(255),
+        CGPA numeric(19, 2) not null,
+        CREDIT_HOUR int4 not null,
+        DESCRIPTION varchar(255),
+        AV_TS timestamp,
+        AV_ID int8,
+        CL_ID int8,
+        CL_TS timestamp,
+        CK_TS timestamp,
+        CK_ID int8,
+        DT_TS timestamp,
+        DT_ID int8,
+        EV_TS timestamp,
+        EV_ID int8,
+        PR_TS timestamp,
+        PR_ID int8,
+        PS_TS timestamp,
+        PS_ID int8,
+        RG_TS timestamp,
+        RG_ID int8,
+        RM_TS timestamp,
+        RM_ID int8,
+        RQ_TS timestamp,
+        RQ_ID int8,
+        SL_TS timestamp,
+        SL_ID int8,
+        FD_ST int4,
+        UP_TS timestamp,
+        UP_ID int8,
+        UV_TS timestamp,
+        UV_ID int8,
+        VF_TS timestamp,
+        VF_ID int8,
+        MEMO varchar(255),
+        C_TS timestamp,
+        C_ID int8,
+        D_TS timestamp,
+        D_ID int8,
+        M_TS timestamp,
+        M_ID int8,
+        M_ST int4,
+        REFERENCE_NO varchar(255),
+        REMOVE_COMMENT varchar(255),
+        SOURCE_NO varchar(255),
+        SESSION_ID int8,
         STUDENT_ID int8,
         primary key (ID)
     );
@@ -1669,6 +1721,16 @@
         foreign key (STUDENT_ID)
         references AD_STDN;
 
+    alter table AD_GRDN_APLN
+        add constraint FK24D1D41F3C7922CA
+        foreign key (SESSION_ID)
+        references AD_ACDM_SESN;
+
+    alter table AD_GRDN_APLN
+        add constraint FK24D1D41F54FCB007
+        foreign key (STUDENT_ID)
+        references AD_STDN;
+
     alter table AD_GROP
         add constraint FKE7DAD2A8E43AD0B6
         foreign key (ID)
@@ -1732,7 +1794,7 @@
         references AD_PRGM;
 
     alter table AD_OFRG
-        add constraint FKE7DE48E8293A8391_TODO
+        add constraint FKE7DE48E83C7922CA
         foreign key (SESSION_ID)
         references AD_ACDM_SESN;
 
@@ -1990,6 +2052,8 @@
     create sequence SQ_AD_GRDE_CODE;
 
     create sequence SQ_AD_GRDN;
+
+    create sequence SQ_AD_GRDN_APLN;
 
     create sequence SQ_AD_GROP_MMBR;
 

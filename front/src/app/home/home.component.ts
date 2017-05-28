@@ -26,7 +26,7 @@ export class HomeComponent implements OnInit {
       },
         {
           title: 'Planner',
-         // route: '/planner/academic-sessions',
+          // route: '/planner/academic-sessions',
           route: '/planner',
           icon: 'assignment',
           color: 'blue-700',
@@ -40,27 +40,13 @@ export class HomeComponent implements OnInit {
           color: 'blue-700',
           description: '',
         },
-        /*{
+        {
           title: 'Graduation',
           route: '/graduation',
           icon: 'assignment',
           color: 'blue-700',
           description: '',
-        },*/
-       /* {
-          title: 'Identities',
-          route: '/identity',
-          icon: 'assignment',
-          color: 'blue-700',
-          description: ' ',
-        },*/
-       /* {
-          title: 'System',
-          route: '/system',
-          icon: 'assignment',
-          color: 'blue-700',
-          description: ' ',
-        },*/
+        },
         {
           title: 'Setup',
           route: '/setup',
@@ -68,7 +54,6 @@ export class HomeComponent implements OnInit {
           color: 'blue-700',
           description: ' ',
         },
-        
       ];
     }
     ;

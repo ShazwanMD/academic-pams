@@ -57,7 +57,7 @@ public class GraduationTransformer {
         task.setAssignee(task.getAssignee());
         task.setCandidate(task.getCandidate());
         task.setApplication(toGraduationApplicationVo(application));
-        task.setStudent(identityTransformer.toStudentVo(application.getStudent()));
+        task.setStudent(identityTransformer.toStudentVo(application.getStudent())); // flatten
         task.setFlowState(FlowState.get(application.getFlowdata().getState().ordinal()));
         task.setMetaState(MetaState.get(application.getMetadata().getState().ordinal()));
         return task;

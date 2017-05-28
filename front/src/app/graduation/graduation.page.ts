@@ -2,21 +2,18 @@ import {Component, OnInit} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 
 @Component({
-  selector: 'pams-planner-page',
-  templateUrl: './planner.page.html',
+  selector: 'pams-graduation-page',
+  templateUrl: './graduation.page.html',
 })
 
-export class PlannerPage implements OnInit {
-
-  private _router: Router;
-  private _route: ActivatedRoute;
+export class GraduationPage implements OnInit {
 
   constructor(private router: Router,
               private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
-    this._route.params.subscribe(() => {
+    this.route.params.subscribe(() => {
     });
   }
 }
