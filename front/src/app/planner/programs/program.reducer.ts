@@ -11,6 +11,20 @@ export function programReducer(state = initialState, action: Action): ProgramSta
     case ProgramActions.FIND_PROGRAM_BY_CODE_SUCCESS: {
       return action.payload;
     }
+    case ProgramActions.CREATE_PROGRAM_SUCCESS: {
+      return action.payload;
+    }
+    case ProgramActions.FIND_PROGRAM_LEVEL_BY_CODE_SUCCESS:{
+       return action.payload;
+    }
+
+     case ProgramActions.FIND_PROGRAM_BY_CODE_SUCCESS:{
+          return action.payload;
+     }
+
+      case ProgramActions.REMOVE_PROGRAM_SUCCESS:{
+         return action.payload;
+      }
 
     default: {
       return state;
