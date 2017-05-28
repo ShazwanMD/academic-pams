@@ -1,9 +1,12 @@
 package my.edu.umk.pams.academic.web.module.profile.controller;
 
 import my.edu.umk.pams.academic.identity.model.*;
+import my.edu.umk.pams.academic.web.module.common.controller.CommonTransformer;
 import my.edu.umk.pams.academic.web.module.identity.vo.Student;
 import my.edu.umk.pams.academic.web.module.identity.vo.StudentStatus;
+import my.edu.umk.pams.academic.web.module.planner.controller.PlannerTransformer;
 import my.edu.umk.pams.academic.web.module.profile.vo.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -16,55 +19,63 @@ import static java.util.stream.Collectors.toList;
 @Component
 public class ProfileTransformer {
 
-    public Student toStudentVo(AdStudent student) {
-        Student m = new Student();
-        m.setId(student.getId());
-        m.setIdentityNo(student.getIdentityNo());
-        m.setName(student.getName());
-        m.setEmail(student.getEmail());
-        m.setMobile(student.getMobile());
-        m.setPhone(student.getPhone());
-        m.setFax(student.getFax());
-        m.setStudentStatus(StudentStatus.get(student.getStudentStatus().ordinal()));
-        return m;
+    @Autowired
+    private CommonTransformer commonTransformer;
+
+    @Autowired
+    private PlannerTransformer plannerTransformer;
+
+    public Student toStudentVo(AdStudent e) {
+        Student vo = new Student();
+        vo.setId(e.getId());
+        vo.setIdentityNo(e.getIdentityNo());
+        vo.setName(e.getName());
+        vo.setEmail(e.getEmail());
+        vo.setMobile(e.getMobile());
+        vo.setPhone(e.getPhone());
+        vo.setFax(e.getFax());
+        vo.setStudentStatus(StudentStatus.get(e.getStudentStatus().ordinal()));
+        vo.setStudyMode(commonTransformer.toStudyModeVo(e.getStudyMode()));
+        vo.setCohort(plannerTransformer.toCohortVo(e.getCohort()));
+        return vo;
     }
 
     public Guardian toGuardianVo(AdGuardian guardian) {
-        Guardian m = new Guardian();
-        m.setId(guardian.getId());
-        m.setName(guardian.getName());
-        m.setIdentityNo(guardian.getIdentityNo());
-        m.setGuardianType(GuardianType.get(guardian.getType().ordinal()));
-        return m;
+        Guardian vo = new Guardian();
+        vo.setId(guardian.getId());
+        vo.setName(guardian.getName());
+        vo.setIdentityNo(guardian.getIdentityNo());
+        vo.setGuardianType(GuardianType.get(guardian.getType().ordinal()));
+        return vo;
     }
 
     public Guarantor toGuarantorVo(AdGuarantor guarantor) {
-        Guarantor m = new Guarantor();
-        m.setId(guarantor.getId());
-        m.setName(guarantor.getName());
-        m.setIdentityNo(guarantor.getIdentityNo());
-        m.setGuarantorType(GuarantorType.get(guarantor.getType().ordinal()));     
-        return m;
+        Guarantor vo = new Guarantor();
+        vo.setId(guarantor.getId());
+        vo.setName(guarantor.getName());
+        vo.setIdentityNo(guarantor.getIdentityNo());
+        vo.setGuarantorType(GuarantorType.get(guarantor.getType().ordinal()));     
+        return vo;
     }
 
     public Address toAddressVo(AdAddress address) {
-        Address m = new Address();
-        m.setId(address.getId());
-        m.setAddress1(address.getAddress1());
-        m.setAddress2(address.getAddress2());
-        m.setAddress3(address.getAddress3());
-        m.setPostcode(address.getPostCode());
-        m.setAddressType(AddressType.get(address.getType().ordinal()));
-        return m;
+        Address vo = new Address();
+        vo.setId(address.getId());
+        vo.setAddress1(address.getAddress1());
+        vo.setAddress2(address.getAddress2());
+        vo.setAddress3(address.getAddress3());
+        vo.setPostcode(address.getPostCode());
+        vo.setAddressType(AddressType.get(address.getType().ordinal()));
+        return vo;
     }
 
     public Contact toContactVo(AdContact contact) {
-        Contact m = new Contact();
-        m.setId(contact.getId());
-        m.setName(contact.getName());
-        m.setIdentityNo(contact.getIdentityNo());
-        m.setContactType(ContactType.get(contact.getType().ordinal()));
-        return m;
+        Contact vo = new Contact();
+        vo.setId(contact.getId());
+        vo.setName(contact.getName());
+        vo.setIdentityNo(contact.getIdentityNo());
+        vo.setContactType(ContactType.get(contact.getType().ordinal()));
+        return vo;
     }
 
     public List<Student> toStudentVos(List<AdStudent> students) {

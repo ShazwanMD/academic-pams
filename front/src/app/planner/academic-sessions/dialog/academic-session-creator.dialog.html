@@ -34,23 +34,17 @@
 
   <div layout="row" class="inset" flex>
     <pams-academic-semester-select
-      [placeholder]="'Select Semester'" 
+      [placeholder]="'Select Semester'"
       [innerFormControl]="createForm.controls['semester']" >
     </pams-academic-semester-select>
   </div>
 
-<!--   <div layout="row" class="inset" flex>
-    <md-input-container flex>
-      <input mdInput placeholder="Year" formControlName="year" flex/>
-    </md-input-container>
-    
-  </div> -->
   <div layout="row" class="pad-bottom pad-top" >
-       <pams-academic-year-select 
+       <pams-academic-year-select
         [placeholder]="'Select Academic Year'"
         [innerFormControl]="createForm.controls['year']">
       </pams-academic-year-select>
-    </div> 
+    </div>
 
 </form>
 

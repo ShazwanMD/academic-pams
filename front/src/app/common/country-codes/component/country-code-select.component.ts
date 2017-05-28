@@ -15,7 +15,7 @@ import {CountryCode} from './../country-code.interface';
 export class CountryCodeSelectComponent implements OnInit {
 
   private COUNTRY_CODE: string[] = "commonModuleState.countryCodes".split(".");
-  @Input() placeHolder: string;
+  @Input() placeholder: string;
   @Input() innerFormControl: FormControl;
   countryCodes$: Observable<CountryCode[]>;
 

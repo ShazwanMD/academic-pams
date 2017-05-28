@@ -1,22 +1,24 @@
-import { Injectable } from '@angular/core';
-import { Headers } from '@angular/http';
-import { Response, Http, RequestOptions } from '@angular/http';
-import { HttpInterceptorService } from '@covalent/http';
-import { Observable } from "rxjs";
-import { environment } from "../environments/environment";
+import {Injectable} from '@angular/core';
+import {Headers} from '@angular/http';
+import {Response, Http, RequestOptions} from '@angular/http';
+import {HttpInterceptorService} from '@covalent/http';
+import {Observable} from "rxjs";
+import {environment} from "../environments/environment";
 
-import { Student } from "../app/identity/student.interface";
-import { Address } from './../app/profile/address.interface';
-import { Guardian } from "../app/profile/guardian.interface";
-import { Contact } from "../app/profile/contact.interface";
-import { Guarantor } from "../app/profile/guarantor.interface";
-import { Enrollment } from './../app/term/enrollments/enrollment.interface';
+import {Student} from "../app/identity/student.interface";
+import {Address} from './../app/profile/address.interface';
+import {Guardian} from "../app/profile/guardian.interface";
+import {Contact} from "../app/profile/contact.interface";
+import {Guarantor} from "../app/profile/guarantor.interface";
+import {Enrollment} from './../app/term/enrollments/enrollment.interface';
+import {SwitchStudyMode} from "../app/profile/switch-study-mode.interface";
+import {TransferCohort} from "../app/profile/transfer-cohort.interface";
 
 @Injectable()
 export class ProfileService {
 
   constructor(private http: Http,
-    private _http: HttpInterceptorService) {
+              private _http: HttpInterceptorService) {
   }
 
   // ====================================================================================================
@@ -69,7 +71,7 @@ export class ProfileService {
     let headers = new Headers({
       'Content-Type': 'application/json',
     });
-    let options = new RequestOptions({ headers: headers });
+    let options = new RequestOptions({headers: headers});
     return this.http.put(environment.endpoint + '/api/profile/students/' + student.identityNo, JSON.stringify(student), options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
@@ -81,7 +83,7 @@ export class ProfileService {
     let headers = new Headers({
       'Content-Type': 'application/json',
     });
-    let options = new RequestOptions({ headers: headers });
+    let options = new RequestOptions({headers: headers});
     return this.http.post(environment.endpoint + '/api/profile/students/' + student.identityNo + '/addresses', JSON.stringify(address), options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
@@ -91,7 +93,7 @@ export class ProfileService {
     let headers = new Headers({
       'Content-Type': 'application/json',
     });
-    let options = new RequestOptions({ headers: headers });
+    let options = new RequestOptions({headers: headers});
     return this.http.put(environment.endpoint + '/api/profile/students/' + student.identityNo + '/addresses/' + address.id, JSON.stringify(address), options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
@@ -100,7 +102,7 @@ export class ProfileService {
     let headers = new Headers({
       'Content-Type': 'application/json',
     });
-    let options = new RequestOptions({ headers: headers });
+    let options = new RequestOptions({headers: headers});
     return this.http.delete(environment.endpoint + '/api/profile/students/' + student.identityNo + '/addresses/' + address.id, options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
@@ -112,7 +114,7 @@ export class ProfileService {
     let headers = new Headers({
       'Content-Type': 'application/json',
     });
-    let options = new RequestOptions({ headers: headers });
+    let options = new RequestOptions({headers: headers});
     return this.http.post(environment.endpoint + '/api/profile/students/' + student.identityNo + '/guardians', JSON.stringify(guardian), options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
@@ -130,7 +132,7 @@ export class ProfileService {
     let headers = new Headers({
       'Content-Type': 'application/json',
     });
-    let options = new RequestOptions({ headers: headers });
+    let options = new RequestOptions({headers: headers});
     return this.http.delete(environment.endpoint + '/api/profile/students/' + student.identityNo + '/guardians/' + guardian.id, options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
@@ -142,7 +144,7 @@ export class ProfileService {
     let headers = new Headers({
       'Content-Type': 'application/json',
     });
-    let options = new RequestOptions({ headers: headers });
+    let options = new RequestOptions({headers: headers});
     return this.http.post(environment.endpoint + '/api/profile/students/' + student.identityNo + '/guarantors', JSON.stringify(guarantor), options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
@@ -160,7 +162,7 @@ export class ProfileService {
     let headers = new Headers({
       'Content-Type': 'application/json',
     });
-    let options = new RequestOptions({ headers: headers });
+    let options = new RequestOptions({headers: headers});
     return this.http.delete(environment.endpoint + '/api/profile/students/' + student.identityNo + '/guarantors/' + guarantor.id, options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
@@ -172,7 +174,7 @@ export class ProfileService {
     let headers = new Headers({
       'Content-Type': 'application/json',
     });
-    let options = new RequestOptions({ headers: headers });
+    let options = new RequestOptions({headers: headers});
     return this.http.post(environment.endpoint + '/api/profile/students/' + student.identityNo + '/contacts', JSON.stringify(contact), options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
@@ -190,39 +192,56 @@ export class ProfileService {
     let headers = new Headers({
       'Content-Type': 'application/json',
     });
-    let options = new RequestOptions({ headers: headers });
+    let options = new RequestOptions({headers: headers});
     console.log("delete contact");
     return this.http.delete(environment.endpoint + '/api/profile/students/' + student.identityNo + '/contacts/' + contact.id, options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   /*==================================================================================================*/
-  //STUDENT ACTIVATION/DEACTIVATE
+  //STUDENT ACTIVATION/DEACTIVATE/BAR/TRANSFER/SWITCH
   /*==================================================================================================*/
   deactivateStudent(student: Student): Observable<String> {
-    let headers = new Headers({ 'Authorization': 'Bearer TODO' });
-    let options = new RequestOptions({ headers: headers });
+    let headers = new Headers({'Authorization': 'Bearer TODO'});
+    let options = new RequestOptions({headers: headers});
     console.log("deactivate student");
     return this.http.post(environment.endpoint + '/api/profile/students/' + student.identityNo + '/deactivate', options)
       .map((res: Response) => <String>res.json());
   }
 
   activateStudent(student: Student): Observable<String> {
-    let headers = new Headers({ 'Authorization': 'Bearer TODO' });
-    let options = new RequestOptions({ headers: headers });
+    let headers = new Headers({'Authorization': 'Bearer TODO'});
+    let options = new RequestOptions({headers: headers});
     console.log("activate student");
     return this.http.post(environment.endpoint + '/api/profile/students/' + student.identityNo + '/activate', options)
       .map((res: Response) => <String>res.json());
   }
 
-  /*==================================================================================================*/
-  //BARRING STUDENT
-  /*==================================================================================================*/
   barStudent(student: Student): Observable<String> {
-    let headers = new Headers({ 'Authorization': 'Bearer TODO' });
-    let options = new RequestOptions({ headers: headers });
+    let headers = new Headers({'Authorization': 'Bearer TODO'});
+    let options = new RequestOptions({headers: headers});
     console.log("bar student");
     return this.http.post(environment.endpoint + '/api/profile/students/' + student.identityNo + '/barStudent', options)
+      .map((res: Response) => <String>res.json());
+  }
+
+  switchStudyMode(student: Student, switcher: SwitchStudyMode) {
+    console.log("switchStudyMode");
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+    });
+    let options = new RequestOptions({headers: headers});
+    return this.http.post(environment.endpoint + '/api/profile/students/' + student.identityNo + '/switchStudyMode', JSON.stringify(switcher), options)
+      .map((res: Response) => <String>res.json());
+  }
+
+  transferCohort(student: Student, transferer: TransferCohort) {
+    console.log("transferCohort");
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+    });
+    let options = new RequestOptions({headers: headers});
+    return this.http.post(environment.endpoint + '/api/profile/students/' + student.identityNo + '/transferCohort', JSON.stringify(transferer), options)
       .map((res: Response) => <String>res.json());
   }
 }

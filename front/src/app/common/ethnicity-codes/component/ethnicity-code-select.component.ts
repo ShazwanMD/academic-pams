@@ -16,7 +16,7 @@ import {CommonModuleState} from './../../index';
 export class EthnicityCodeSelectComponent implements OnInit {
 
   private ETHNICITY_CODE: string[] = "commonModuleState.ethnicityCodes".split(".");
-  @Input() placeHolder: string;
+  @Input() placeholder: string;
   @Input() innerFormControl: FormControl;
   ethnicityCodes$: Observable<EthnicityCode[]>;
 

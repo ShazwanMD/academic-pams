@@ -3,7 +3,7 @@ import { AddressEditorDialog } from './dialog/address-editor.dialog';
 import { GuardianEditorDialog } from './dialog/guardian-editor.dialog';
 import { GuarantorEditorDialog } from './dialog/guarantor-editor.dialog';
 import { Enrollment } from './../term/enrollments/enrollment.interface';
-import { ProfileEnrollmentListComponent } from './components/profile-enrollment-list.component';
+import { ProfileEnrollmentListComponent } from './component/profile-enrollment-list.component';
 import { Address } from './address.interface';
 import {NgModule, ModuleWithProviders} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
@@ -16,9 +16,9 @@ import {ProfileService} from "../../services/profile.service";
 import {ProfileActions} from "./profile.action";
 import {Student} from "../identity/student.interface";
 import {ProfileCenterPage} from "./profile-center.page";
-import {ProfileStatusComponent} from "./components/profile-status.component";
-import {ProfileListComponent} from "./components/profile-list.component";
-import {ProfileComponent} from "./components/profile.component";
+import {ProfileStatusComponent} from "./component/profile-status.component";
+import {ProfileListComponent} from "./component/profile-list.component";
+import {ProfileComponent} from "./component/profile.component";
 import {ProfileDetailPage} from "./profile-detail.page";
 import {EffectsModule} from "@ngrx/effects";
 import {ProfileEffects} from "./profile.effect";
@@ -34,10 +34,15 @@ import {studentReducer, StudentState} from "./student.reducer";
 import {studentListReducer, StudentListState} from "./student-list.reducer";
 import {ContactEditorDialog} from "./dialog/contact-editor.dialog";
 import {DetailEditorDialog} from "./dialog/detail-editor.dialog";
-import {ContactTypeSelectComponent} from "./components/contact-type-select.component";
-import {GuarantorTypeSelectComponent} from "./components/guarantor-type-select.component";
-import {GuardianTypeSelectComponent} from "./components/guardian-type-select.component";
-import {AddressTypeSelectComponent} from './components/address-type-select.component';
+import {ContactTypeSelectComponent} from "./component/contact-type-select.component";
+import {GuarantorTypeSelectComponent} from "./component/guarantor-type-select.component";
+import {GuardianTypeSelectComponent} from "./component/guardian-type-select.component";
+import {AddressTypeSelectComponent} from './component/address-type-select.component';
+import {ProfileActionComponent} from "./component/profile-action.component";
+import {StudyModeSwitcherDialog} from "./dialog/study-mode-switcher.dialog";
+import {CommonModule} from "../common/index";
+import {AcademicSessionSubModule} from "../planner/academic-sessions/index";
+import {CohortTransfererDialog} from "./dialog/cohort-transferer.dialog";
 
 export interface ProfileModuleState {
   students: StudentListState;
@@ -77,6 +82,8 @@ export const profileModuleReducers = {
     BrowserModule,
     ReactiveFormsModule,
     CovalentCoreModule.forRoot(),
+    CommonModule.forRoot(),
+    AcademicSessionSubModule.forRoot(),
     EffectsModule.run(ProfileEffects),
   ],
   declarations: [
@@ -86,6 +93,7 @@ export const profileModuleReducers = {
 
     // component
     ProfileComponent,
+    ProfileActionComponent,
     ProfileListComponent,
     ProfileStatusComponent,
     ProfileEnrollmentListComponent,
@@ -99,7 +107,9 @@ export const profileModuleReducers = {
     ContactEditorDialog,
     GuarantorEditorDialog,
     GuardianEditorDialog,
-    AddressEditorDialog
+    AddressEditorDialog,
+    StudyModeSwitcherDialog,
+    CohortTransfererDialog,
   ],
   exports: [
     ContactTypeSelectComponent,
@@ -113,7 +123,9 @@ export const profileModuleReducers = {
     ContactEditorDialog,
     GuarantorEditorDialog,
     GuardianEditorDialog,
-    AddressEditorDialog
+    AddressEditorDialog,
+    StudyModeSwitcherDialog,
+    CohortTransfererDialog,
   ],
 })
 export class ProfileModule {

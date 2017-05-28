@@ -1,0 +1,14 @@
+<h2 md-dialog-title>Cohort Transfer</h2>
+<md-dialog-content>
+  <form [formGroup]="transferForm">
+    <div layout="row" flex>
+      <pams-academic-session-select
+        [placeholder]="'To'"
+        [innerFormControl]="switchForm.controls['academicSession']">
+      </pams-academic-session-select>
+    </div>
+  </form>
+</md-dialog-content>
+<md-dialog-actions align="end">
+  <button md-raised-button color="accent" (click)="submit(transferForm.value, transferForm.validate)">Transfer</button>
+</md-dialog-actions>

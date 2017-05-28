@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Action} from '@ngrx/store';
+import {SwitchStudyMode} from "./switch-study-mode.interface";
 
 @Injectable()
 export class ProfileActions {
@@ -8,6 +9,7 @@ export class ProfileActions {
   /*BARRING PROCESS*/
   /*==================================================================================================*/
   static BAR_STUDENT = '[Profile] Bar Student';
+
   barStudent(student): Action {
     return {
       type: ProfileActions.BAR_STUDENT,
@@ -16,6 +18,7 @@ export class ProfileActions {
   }
 
   static BAR_STUDENT_SUCCESS = '[Profile] Bar Student Success';
+
   barStudentSuccess(student): Action {
     return {
       type: ProfileActions.BAR_STUDENT_SUCCESS,
@@ -27,6 +30,7 @@ export class ProfileActions {
   /*ACTIVATE / DEACTIVATE STUDENT*/
   /*==================================================================================================*/
   static ACTIVATE_STUDENT = '[Profile] Activate Student';
+
   activateStudent(student): Action {
     return {
       type: ProfileActions.ACTIVATE_STUDENT,
@@ -35,6 +39,7 @@ export class ProfileActions {
   }
 
   static ACTIVATE_STUDENT_SUCCESS = '[Profile] Activate Student Success';
+
   activateStudentSuccess(student): Action {
     return {
       type: ProfileActions.ACTIVATE_STUDENT_SUCCESS,
@@ -42,7 +47,8 @@ export class ProfileActions {
     };
   }
 
- static DEACTIVATE_STUDENT = '[Profile] Deactivate Student';
+  static DEACTIVATE_STUDENT = '[Profile] Deactivate Student';
+
   deactivateStudent(student): Action {
     return {
       type: ProfileActions.DEACTIVATE_STUDENT,
@@ -51,6 +57,7 @@ export class ProfileActions {
   }
 
   static DEACTIVATE_STUDENT_SUCCESS = '[Profile] Activate Student Success';
+
   deactivateStudentSuccess(student): Action {
     return {
       type: ProfileActions.DEACTIVATE_STUDENT_SUCCESS,
@@ -62,6 +69,7 @@ export class ProfileActions {
   /*FINDING THINGS*/
   /*==================================================================================================*/
   static FIND_STUDENTS = '[Profile] Find Students';
+
   findStudents(): Action {
     return {
       type: ProfileActions.FIND_STUDENTS
@@ -69,6 +77,7 @@ export class ProfileActions {
   }
 
   static FIND_STUDENTS_SUCCESS = '[Profile] Find Students Success';
+
   findStudentsSuccess(students): Action {
     return {
       type: ProfileActions.FIND_STUDENTS_SUCCESS,
@@ -77,6 +86,7 @@ export class ProfileActions {
   }
 
   static FIND_STUDENT_BY_IDENTITY_NO = '[Profile] Find Student By Identity No';
+
   findStudentByIdentityNo(identityNo): Action {
     return {
       type: ProfileActions.FIND_STUDENT_BY_IDENTITY_NO,
@@ -85,6 +95,7 @@ export class ProfileActions {
   }
 
   static FIND_STUDENT_BY_IDENTITY_NO_SUCCESS = '[Profile] Find Student By Identity No Success';
+
   findStudentByIdentityNoSuccess(student): Action {
     return {
       type: ProfileActions.FIND_STUDENT_BY_IDENTITY_NO_SUCCESS,
@@ -93,6 +104,7 @@ export class ProfileActions {
   }
 
   static FIND_ADDRESSES = '[Profile] Find Addresses';
+
   findAddresses(student): Action {
     return {
       type: ProfileActions.FIND_ADDRESSES,
@@ -101,6 +113,7 @@ export class ProfileActions {
   }
 
   static FIND_ADDRESSES_SUCCESS = '[Profile] Find Addresses Success';
+
   findAddressesSuccess(addresses): Action {
     return {
       type: ProfileActions.FIND_ADDRESSES_SUCCESS,
@@ -109,6 +122,7 @@ export class ProfileActions {
   }
 
   static FIND_GUARANTORS = '[Profile] Find Guarantors';
+
   findGuarantors(student): Action {
     return {
       type: ProfileActions.FIND_GUARANTORS,
@@ -117,6 +131,7 @@ export class ProfileActions {
   }
 
   static FIND_GUARANTORS_SUCCESS = '[Profile] Find Guarantors Success';
+
   findGuarantorsSuccess(guarantors): Action {
     return {
       type: ProfileActions.FIND_GUARANTORS_SUCCESS,
@@ -125,6 +140,7 @@ export class ProfileActions {
   }
 
   static FIND_CONTACTS = '[Profile] Find Contacts';
+
   findContacts(student): Action {
     return {
       type: ProfileActions.FIND_CONTACTS,
@@ -133,6 +149,7 @@ export class ProfileActions {
   }
 
   static FIND_CONTACTS_SUCCESS = '[Profile] Find Contacts Success';
+
   findContactsSuccess(contacts): Action {
     return {
       type: ProfileActions.FIND_CONTACTS_SUCCESS,
@@ -141,6 +158,7 @@ export class ProfileActions {
   }
 
   static FIND_GUARDIANS = '[Profile] Find Guardians';
+
   findGuardians(student): Action {
     return {
       type: ProfileActions.FIND_GUARDIANS,
@@ -149,6 +167,7 @@ export class ProfileActions {
   }
 
   static FIND_GUARDIANS_SUCCESS = '[Profile] Find Guardians Success';
+
   findGuardiansSuccess(guardians): Action {
     return {
       type: ProfileActions.FIND_GUARDIANS_SUCCESS,
@@ -157,6 +176,7 @@ export class ProfileActions {
   }
 
   static FIND_ENROLLMENTS_BY_STUDENT = '[Profile] Find Enrollments';
+
   findEnrollments(student): Action {
     return {
       type: ProfileActions.FIND_ENROLLMENTS_BY_STUDENT,
@@ -165,6 +185,7 @@ export class ProfileActions {
   }
 
   static FIND_ENROLLMENTS_BY_STUDENT_SUCCESS = '[Profile] Find Enrollments Success';
+
   findEnrollmentsSuccess(enrollments): Action {
     return {
       type: ProfileActions.FIND_ENROLLMENTS_BY_STUDENT_SUCCESS,
@@ -176,6 +197,7 @@ export class ProfileActions {
   /*ADD / UPD STUDENT*/
   /*==================================================================================================*/
   static UPDATE_STUDENT = '[Profile] Update Student';
+
   updateStudent(identityNo): Action {
     return {
       type: ProfileActions.UPDATE_STUDENT,
@@ -184,6 +206,7 @@ export class ProfileActions {
   }
 
   static UPDATE_STUDENT_SUCCESS = '[Profile] Update Student Success';
+
   updateStudentSuccess(message): Action {
     return {
       type: ProfileActions.UPDATE_STUDENT_SUCCESS,
@@ -195,6 +218,7 @@ export class ProfileActions {
   /*ADD / UPD / DEL ADDRESS*/
   /*==================================================================================================*/
   static ADD_ADDRESS = '[Profile] Add Address';
+
   addAddress(student, address): Action {
     return {
       type: ProfileActions.ADD_ADDRESS,
@@ -203,6 +227,7 @@ export class ProfileActions {
   }
 
   static ADD_ADDRESS_SUCCESS = '[Profile] Add Address Success';
+
   addAddressSuccess(message): Action {
     return {
       type: ProfileActions.ADD_ADDRESS_SUCCESS,
@@ -211,6 +236,7 @@ export class ProfileActions {
   }
 
   static UPDATE_ADDRESS = '[Profile] Update Address';
+
   updateAddress(student, address): Action {
     return {
       type: ProfileActions.UPDATE_ADDRESS,
@@ -219,6 +245,7 @@ export class ProfileActions {
   }
 
   static UPDATE_ADDRESS_SUCCESS = '[Profile] Update Address Success';
+
   updateAddressSuccess(message): Action {
     return {
       type: ProfileActions.UPDATE_ADDRESS_SUCCESS,
@@ -227,14 +254,16 @@ export class ProfileActions {
   }
 
   static REMOVE_ADDRESS = '[Profile] Remove Address';
+
   deleteAddress(student, address): Action {
     return {
       type: ProfileActions.REMOVE_ADDRESS,
-      payload: {student:student, address:address}
+      payload: {student: student, address: address}
     };
   }
 
   static REMOVE_ADDRESS_SUCCESS = '[Profile] Remove Address Success';
+
   deleteAddressSuccess(message): Action {
     return {
       type: ProfileActions.REMOVE_ADDRESS_SUCCESS,
@@ -246,6 +275,7 @@ export class ProfileActions {
   /*ADD / UPD / DEL GUARANTOR*/
   /*==================================================================================================*/
   static ADD_GUARANTOR = '[Profile] Add Guarantor';
+
   addGuarantor(student, guarantor): Action {
     return {
       type: ProfileActions.ADD_GUARANTOR,
@@ -254,6 +284,7 @@ export class ProfileActions {
   }
 
   static ADD_GUARANTOR_SUCCESS = '[Profile] Add Guarantor Success';
+
   addGuarantorSuccess(message): Action {
     return {
       type: ProfileActions.ADD_GUARANTOR_SUCCESS,
@@ -262,6 +293,7 @@ export class ProfileActions {
   }
 
   static UPDATE_GUARANTOR = '[Profile] Update Guarantor';
+
   updateGuarantor(student, guarantor): Action {
     return {
       type: ProfileActions.UPDATE_GUARANTOR,
@@ -270,32 +302,37 @@ export class ProfileActions {
   }
 
   static UPDATE_GUARANTOR_SUCCESS = '[Profile] Update Guarantor Success';
+
   updateGuarantorSuccess(message): Action {
     return {
       type: ProfileActions.UPDATE_GUARANTOR_SUCCESS,
       payload: message
     };
   }
-  
+
   static REMOVE_GUARANTOR = '[Profile] Remove Guarantor';
+
   deleteGuarantor(student, guarantor): Action {
     return {
       type: ProfileActions.REMOVE_GUARANTOR,
-      payload: {student:student, guarantor:guarantor}
+      payload: {student: student, guarantor: guarantor}
     };
   }
 
   static REMOVE_GUARANTOR_SUCCESS = '[Profile] Remove Guarantor Success';
+
   deleteGuarantorSuccess(message): Action {
     return {
       type: ProfileActions.REMOVE_GUARANTOR_SUCCESS,
       payload: message
     };
   }
+
   /*==================================================================================================*/
   /*ADD / UPD / DEL GUARDIAN*/
   /*==================================================================================================*/
   static ADD_GUARDIAN = '[Profile] Add Guardian';
+
   addGuardian(student, guardian): Action {
     return {
       type: ProfileActions.ADD_GUARDIAN,
@@ -304,14 +341,16 @@ export class ProfileActions {
   }
 
   static ADD_GUARDIAN_SUCCESS = '[Profile] Add Guardian Success';
+
   addGuardianSuccess(message): Action {
     return {
       type: ProfileActions.ADD_GUARDIAN_SUCCESS,
       payload: message
     };
   }
-  
+
   static UPDATE_GUARDIAN = '[Profile] Update Guardian';
+
   updateGuardian(student, guardian): Action {
     return {
       type: ProfileActions.UPDATE_GUARDIAN,
@@ -320,32 +359,37 @@ export class ProfileActions {
   }
 
   static UPDATE_GUARDIAN_SUCCESS = '[Profile] Update Guardian Success';
+
   updateGuardianSuccess(message): Action {
     return {
       type: ProfileActions.UPDATE_GUARDIAN_SUCCESS,
       payload: message
     };
   }
-  
+
   static REMOVE_GUARDIAN = '[Profile] Remove Guardian';
+
   deleteGuardian(student, guardian): Action {
     return {
       type: ProfileActions.REMOVE_GUARDIAN,
-      payload: {student:student, guardian:guardian}
+      payload: {student: student, guardian: guardian}
     };
   }
 
   static REMOVE_GUARDIAN_SUCCESS = '[Profile] Remove Guardian Success';
+
   deleteGuardianSuccess(message): Action {
     return {
       type: ProfileActions.REMOVE_GUARDIAN_SUCCESS,
       payload: message
     };
   }
+
   /*==================================================================================================*/
   /*ADD / UPD / DEL CONTACT*/
   /*==================================================================================================*/
   static ADD_CONTACT = '[Profile] Add Contact';
+
   addContact(student, contact): Action {
     return {
       type: ProfileActions.ADD_CONTACT,
@@ -354,6 +398,7 @@ export class ProfileActions {
   }
 
   static ADD_CONTACT_SUCCESS = '[Profile] Add Contact Success';
+
   addContactSuccess(message): Action {
     return {
       type: ProfileActions.ADD_CONTACT_SUCCESS,
@@ -362,6 +407,7 @@ export class ProfileActions {
   }
 
   static UPDATE_CONTACT = '[Profile] Update Contact'
+
   updateContact(student, contact): Action {
     return {
       type: ProfileActions.UPDATE_CONTACT,
@@ -370,26 +416,65 @@ export class ProfileActions {
   }
 
   static UPDATE_CONTACT_SUCCESS = '[Profile] Update Contact Success';
+
   updateContactSuccess(message): Action {
     return {
       type: ProfileActions.UPDATE_CONTACT_SUCCESS,
       payload: message
     };
   }
-  
+
   static REMOVE_CONTACT = '[Profile] Remove Contact';
-  deleteContact(student,contact): Action {
+
+  deleteContact(student, contact): Action {
     //console.log("Ini-->",contact);
     return {
       type: ProfileActions.REMOVE_CONTACT,
-      payload: {student:student, contact:contact}
+      payload: {student: student, contact: contact}
     };
   }
 
   static REMOVE_CONTACT_SUCCESS = '[Profile] Remove Contact Success';
+
   deleteContactSuccess(message): Action {
     return {
       type: ProfileActions.REMOVE_CONTACT_SUCCESS,
+      payload: message
+    };
+  }
+
+  static SWITCH_STUDY_MODE = '[Profile] Switch Study Mode';
+
+  switchStudyMode(student, switcher): Action {
+    return {
+      type: ProfileActions.SWITCH_STUDY_MODE,
+      payload: {student: student, switchStudyMode: switcher}
+    };
+  }
+
+  static SWITCH_STUDY_MODE_SUCCESS = '[Profile] Switch Study Mode Success';
+
+  switchStudyModeSuccess(message): Action {
+    return {
+      type: ProfileActions.SWITCH_STUDY_MODE_SUCCESS,
+      payload: message
+    };
+  }
+
+  static TRANSFER_COHORT = '[Profile] Transfer Cohort ';
+
+  transferCohort(student, transfer): Action {
+    return {
+      type: ProfileActions.TRANSFER_COHORT,
+      payload: {student: student, transferCohort: transfer}
+    };
+  }
+
+  static TRANSFER_COHORT_SUCCESS = '[Profile] Transfer Cohort Success';
+
+  transferCohortSuccess(message): Action {
+    return {
+      type: ProfileActions.TRANSFER_COHORT_SUCCESS,
       payload: message
     };
   }

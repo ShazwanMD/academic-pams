@@ -16,7 +16,7 @@ import {CommonModuleState} from './../../index';
 export class GradeCodeSelectComponent implements OnInit {
 
   private GRADE_CODE: string[] = "commonModuleState.gradeCodes".split(".");
-  @Input() placeHolder: string;
+  @Input() placeholder: string;
   @Input() innerFormControl: FormControl;
   gradeCodes$: Observable<GradeCode[]>;
 

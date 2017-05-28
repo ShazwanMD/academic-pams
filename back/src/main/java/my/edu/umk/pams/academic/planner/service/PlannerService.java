@@ -104,7 +104,10 @@ public interface PlannerService {
 
     AdCohort findCohortByCode(String code);
 
+    @Deprecated
     AdCohort findByParent(AdCohort parent);
+
+    AdCohort findCohortById(Long id);
 
     List<AdCohort> findCohortRoots();
 
@@ -298,7 +301,6 @@ public interface PlannerService {
     //====================================================================================================
     List<AdAcademicYear> findAcademicYears(Integer offset, Integer limit);
 
-    List<AdAcademicYear> findAcademicYears(String filter, Integer offset, Integer limit);	
-
+    List<AdAcademicYear> findAcademicYears(String filter, Integer offset, Integer limit);
 
 }

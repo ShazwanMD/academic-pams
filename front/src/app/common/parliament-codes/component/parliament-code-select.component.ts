@@ -16,7 +16,7 @@ import {CommonModuleState} from './../../index';
 export class ParliamentCodeSelectComponent implements OnInit {
 
   private PARLIAMENT_CODE: string[] = "commonModuleState.parliamentCodes".split(".");
-  @Input() placeHolder: string;
+  @Input() placeholder: string;
   @Input() innerFormControl: FormControl;
   parliamentCodes$: Observable<ParliamentCode[]>;
 

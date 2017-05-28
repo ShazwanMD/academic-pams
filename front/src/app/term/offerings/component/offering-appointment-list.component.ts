@@ -1,5 +1,5 @@
 import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, ViewContainerRef} from '@angular/core';
-import { Section } from '../../sections/section.interface';
+import {Section} from '../../sections/section.interface';
 import {Appointment} from "../../appointments/appointment.interface";
 import {Offering} from "../offering.interface";
 import {Store} from "@ngrx/store";
@@ -12,31 +12,27 @@ import {AppointmentCreateTaskCreatorDialog} from "../../appointments/dialog/appo
   selector: 'pams-offering-appointment-list',
   templateUrl: './offering-appointment-list.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  
+
 })
 export class OfferingAppointmentListComponent {
 
-  private creatorDialogRef: MdDialogRef<AppointmentCreateTaskCreatorDialog>;  
-    
   @Input() offering: Offering;
   @Input() appointments: Appointment[];
   @Output() view = new EventEmitter<Appointment>();
+  private creatorDialogRef: MdDialogRef<AppointmentCreateTaskCreatorDialog>;
+  private columns: any[] = [
+    {name: 'id', label: 'Id'},
+    {name: 'action', label: ''}
+  ];
 
-   constructor(private router: Router,
+  constructor(private router: Router,
               private route: ActivatedRoute,
-              //private actions: SectionActions,
               private store: Store<TermModuleState>,
               private vcf: ViewContainerRef,
               private dialog: MdDialog) {
-  }  
-    
-    
-      private columns: any[] = [
-    { name: 'id', label: 'Id' },
-    { name: 'action', label: '' }
-  ];
+  }
 
-    showDialog(): void {
+  showDialog(): void {
     console.log("showDialog");
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
@@ -51,7 +47,5 @@ export class OfferingAppointmentListComponent {
       // load something here
     });
   }
-    
-    
 }
 

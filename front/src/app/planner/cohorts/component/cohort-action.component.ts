@@ -45,6 +45,4 @@ export class CohortActionComponent {
     let snackBarRef = this.snackBar.open("Delate Cohort", "OK");
    // snackBarRef.afterDismissed().subscribe(() => this.store.dispatch(this.actions.delateCohort(this.cohort)));
   }
-
-
 }

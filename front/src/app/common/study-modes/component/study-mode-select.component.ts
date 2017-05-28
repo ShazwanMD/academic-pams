@@ -15,15 +15,14 @@ import {CommonModuleState} from './../../index';
 
 export class StudyModeSelectComponent implements OnInit {
 
-  private STUDY_MODE: string[] = "commonModuleState.studyModes".split(".");
-  @Input() placeHolder: string;
+  @Input() placeholder: string;
   @Input() innerFormControl: FormControl;
+  private STUDY_MODES: string[] = "commonModuleState.studyModes".split(".");
   studyModes$: Observable<StudyMode[]>;
 
   constructor(private store: Store<CommonModuleState>,
               private actions: CommonActions) {
-    this.studyModes$ = this.store.select(...this.STUDY_MODE);
-
+    this.studyModes$ = this.store.select(...this.STUDY_MODES);
   }
 
   ngOnInit() {

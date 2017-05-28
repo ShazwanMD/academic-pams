@@ -1,6 +1,6 @@
-import { Student } from './../identity/student.interface';
-import { Address } from './address.interface';
-import { Guarantor } from './guarantor.interface';
+import {Student} from './../identity/student.interface';
+import {Address} from './address.interface';
+import {Guarantor} from './guarantor.interface';
 import {Injectable} from '@angular/core';
 import {Effect, Actions} from '@ngrx/effects';
 import {ProfileService} from "../../services/profile.service";
@@ -19,8 +19,8 @@ export class ProfileEffects {
               private profileActions: ProfileActions,
               private profileService: ProfileService,
               private store$: Store<TermModuleState>) {
-  
-}
+
+  }
 
   /*==================================================================================================*/
   /*BARRING - EFFECT*/
@@ -30,6 +30,24 @@ export class ProfileEffects {
     .map(action => action.payload)
     .switchMap(student => this.profileService.barStudent(student))
     .map(message => this.profileActions.barStudentSuccess(message))
+    .withLatestFrom(this.store$.select(...this.STUDENT))
+    .map(state => state[1])
+    .map((student: Student) => this.profileActions.findStudentByIdentityNo(student.identityNo));
+
+  @Effect() transferCohort$ = this.actions$
+    .ofType(ProfileActions.TRANSFER_COHORT)
+    .map(action => action.payload)
+    .switchMap(payload => this.profileService.switchStudyMode(payload.student, payload.switchStudyMode))
+    .map(message => this.profileActions.switchStudyModeSuccess(message))
+    // .withLatestFrom(this.store$.select(...this.STUDENT))
+    // .map(state => state[1])
+    // .map((student: Student) => this.profileActions.findStudentByIdentityNo(student.identityNo));
+
+  @Effect() switchStudyMode$ = this.actions$
+    .ofType(ProfileActions.SWITCH_STUDY_MODE)
+    .map(action => action.payload)
+    .switchMap(payload => this.profileService.switchStudyMode(payload.student, payload.switchStudyMode))
+    .map(message => this.profileActions.switchStudyModeSuccess(message))
     .withLatestFrom(this.store$.select(...this.STUDENT))
     .map(state => state[1])
     .map((student: Student) => this.profileActions.findStudentByIdentityNo(student.identityNo));
@@ -130,7 +148,7 @@ export class ProfileEffects {
   /*==================================================================================================*/
   /*ADDRESS - EFFECT*/
   /*==================================================================================================*/
-@Effect() addAddress$ = this.actions$
+  @Effect() addAddress$ = this.actions$
     .ofType(ProfileActions.ADD_ADDRESS)
     .map(action => action.payload)
     .switchMap(payload => this.profileService.addAddress(payload.student, payload.address))
@@ -139,7 +157,7 @@ export class ProfileEffects {
     .map(state => state[1])
     .map((student: Student) => this.profileActions.findStudentByIdentityNo(student.identityNo));
 
-@Effect() updateAddress$ = this.actions$
+  @Effect() updateAddress$ = this.actions$
     .ofType(ProfileActions.UPDATE_ADDRESS)
     .map(action => action.payload)
     .switchMap(payload => this.profileService.updateAddress(payload.student, payload.address))
@@ -148,7 +166,7 @@ export class ProfileEffects {
     .map(state => state[1])
     .map((student: Student) => this.profileActions.findStudentByIdentityNo(student.identityNo));
 
-@Effect() deleteAddress$ = this.actions$
+  @Effect() deleteAddress$ = this.actions$
     .ofType(ProfileActions.REMOVE_ADDRESS)
     .map(action => action.payload)
     .switchMap(payload => this.profileService.deleteAddress(payload.student, payload.address))
@@ -177,7 +195,7 @@ export class ProfileEffects {
     .withLatestFrom(this.store$.select(...this.STUDENT))
     .map(state => state[1])
     .map((student: Student) => this.profileActions.findStudentByIdentityNo(student.identityNo));
-  
+
   @Effect() deleteContact$ = this.actions$
     .ofType(ProfileActions.REMOVE_CONTACT)
     .map(action => action.payload)

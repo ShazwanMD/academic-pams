@@ -8,6 +8,7 @@ import my.edu.umk.pams.academic.identity.event.StudentBarredEvent;
 import my.edu.umk.pams.academic.identity.model.*;
 import my.edu.umk.pams.academic.identity.service.IdentityService;
 import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
+import my.edu.umk.pams.academic.planner.model.AdCohort;
 import my.edu.umk.pams.academic.planner.model.AdFaculty;
 import my.edu.umk.pams.academic.planner.model.AdProgramLevel;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
@@ -36,7 +37,7 @@ import java.util.Map;
 public class ProfileServiceImpl implements ProfileService {
 
     private static final Logger LOG = LoggerFactory.getLogger(ProfileServiceImpl.class);
-    
+
     private String academicSesion = "201720181";
 
     @Autowired
@@ -44,13 +45,13 @@ public class ProfileServiceImpl implements ProfileService {
 
     @Autowired
     private SecurityService securityService;
-    
+
     @Autowired
     private SystemService systemService;
 
     @Autowired
     private IdentityService identityService;
-    
+
     @Autowired
     private PlannerService plannerService;
 
@@ -59,7 +60,7 @@ public class ProfileServiceImpl implements ProfileService {
 
     @Autowired
     private ApplicationContext applicationContext;
-    
+
     @Autowired
     private AdAcademicSessionDao academicSessionDao;
 
@@ -133,7 +134,7 @@ public class ProfileServiceImpl implements ProfileService {
         sessionFactory.getCurrentSession().flush();
     }
 
-    
+
     /*============================================================================================*/
     /*ADDRESS*/
     /*============================================================================================*/
@@ -163,13 +164,13 @@ public class ProfileServiceImpl implements ProfileService {
         studentDao.addGuarantor(student, guarantor, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
-    
-    
+
+
     @Override
-	public void updateGuarantor(AdStudent student, AdGuarantor guarantor) {
-		studentDao.updateGuarantor(student, guarantor, securityService.getCurrentUser());
+    public void updateGuarantor(AdStudent student, AdGuarantor guarantor) {
+        studentDao.updateGuarantor(student, guarantor, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
-	}
+    }
 
     @Override
     public void deleteGuarantor(AdStudent student, AdGuarantor guarantor) {
@@ -185,12 +186,12 @@ public class ProfileServiceImpl implements ProfileService {
         studentDao.addGuardian(student, guardian, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
-    
-	@Override
-	public void updateGuardian(AdStudent student, AdGuardian guardian) {
-		studentDao.updateGuardian(student, guardian, securityService.getCurrentUser());
+
+    @Override
+    public void updateGuardian(AdStudent student, AdGuardian guardian) {
+        studentDao.updateGuardian(student, guardian, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
-	}
+    }
 
     @Override
     public void deleteGuardian(AdStudent student, AdGuardian guardian) {
@@ -206,13 +207,13 @@ public class ProfileServiceImpl implements ProfileService {
         studentDao.addContact(student, contact, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
-    
+
     @Override
     public void updateContact(AdStudent student, AdContact contact) {
         studentDao.updateContact(student, contact, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
-    
+
     @Override
     public void deleteContact(AdStudent student, AdContact contact) {
         studentDao.deleteContact(student, contact, securityService.getCurrentUser());
@@ -253,82 +254,64 @@ public class ProfileServiceImpl implements ProfileService {
     /*============================================================================================*/
     /*BUSSINESS - TRANSFER FACULTY*/
     /*============================================================================================*/
+
     @Override
-	public void transferFaculty(AdStudent student, AdAcademicSession academicSession, AdFaculty fromFaculty,AdFaculty toFaculty) {
-		Map<String, Object> map = new HashMap<String, Object>();
-		
-		// From Faculty
-		fromFaculty = student.getCohort().getProgram().getFaculty();
-		fromFaculty.getPrefix();
-		
-		// Transfer Faculty
-		toFaculty = student.getCohort().getProgram().getFaculty();
-		toFaculty.getPrefix();
-		
-		//Session
-		academicSession = student.getCohort().getSession();
-		academicSession.getYear().getYear();
-		
-		//Program Level
-		AdProgramLevel programLevel = student.getCohort().getProgram().getLevel();
-		programLevel.getPrefix();
-		
-		//StudyMode
-		AdStudyMode studyMode = student.getStudyMode();
-		studyMode.getPrefix();
+    public String transferFaculty(AdStudent student, AdAcademicSession academicSession, AdFaculty fromFaculty, AdFaculty toFaculty) {
+        AdProgramLevel programLevel = student.getCohort().getProgram().getLevel();
+        AdStudyMode studyMode = student.getStudyMode();
 
-		map.put("facultyCode", toFaculty);
-		map.put("academicSession", academicSession);
-		map.put("programLevel", programLevel);
-		map.put("studyMode", studyMode);
-		
-		String transferFaculty = systemService.generateFormattedReferenceNo(AcademicConstants.STUDENT_MATRIC_NO, map);
-		student.setMatricNo(transferFaculty);
-		studentDao.update(student, securityService.getCurrentUser());
-		LOG.debug("Student New MatricNo:{}",student.getMatricNo());
-	}
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("facultyCode", toFaculty);
+        map.put("academicSession", academicSession);
+        map.put("programLevel", programLevel);
+        map.put("studyMode", studyMode);
 
-	public void generateMatricNo(AdStudent student ,AdStudyMode studyMode ,AdAcademicSession academicSession) {
+        String generatedMatricNo = systemService.generateFormattedReferenceNo(AcademicConstants.STUDENT_MATRIC_NO, map);
+        student.setMatricNo(generatedMatricNo);
+        studentDao.update(student, securityService.getCurrentUser());
+        LOG.debug("Student New MatricNo:{}", student.getMatricNo());
 
-	}
+        return generatedMatricNo;
+    }
 
-	/*============================================================================================*/
+    @Override
+    public String transferCohort(AdStudent student, AdAcademicSession academicSession, AdCohort fromCohort, AdCohort toCohort) {
+        AdProgramLevel programLevel = toCohort.getProgram().getLevel();
+        AdFaculty faculty = toCohort.getProgram().getFaculty();
+        AdStudyMode studyMode = student.getStudyMode();
+
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("facultyCode", faculty);
+        map.put("academicSession", academicSession);
+        map.put("programLevel", programLevel);
+        map.put("studyMode", studyMode);
+
+        String generatedMatricNo = systemService.generateFormattedReferenceNo(AcademicConstants.STUDENT_MATRIC_NO, map);
+        student.setMatricNo(generatedMatricNo);
+        studentDao.update(student, securityService.getCurrentUser());
+        LOG.debug("Student New MatricNo:{}", student.getMatricNo());
+
+        return generatedMatricNo;
+    }
+
+    /*============================================================================================*/
     /*BUSSINESS - SWITCH STUDYMODE*/
     /*============================================================================================*/
-	@Override
-    public void switchStudyMode(AdStudent student, AdAcademicSession academicSession, AdStudyMode fromMode, AdStudyMode toMode) {
+    @Override
+    public String switchStudyMode(AdStudent student, AdAcademicSession academicSession, AdStudyMode fromMode, AdStudyMode toMode) {
+        AdFaculty facultyCode = student.getCohort().getProgram().getFaculty();
+        AdProgramLevel programLevel = student.getCohort().getProgram().getLevel();
 
-    	Map<String, Object> map = new HashMap<String, Object>();
-    	
-		// From Faculty
-		AdFaculty facultyCode = student.getCohort().getProgram().getFaculty();
-		facultyCode.getPrefix();
-		
-		//Session
-		academicSession = student.getCohort().getSession();
-		academicSession.getYear().getYear();
-		
-		//Program Level
-		AdProgramLevel programLevel = student.getCohort().getProgram().getLevel();
-		programLevel.getPrefix();
-		
-		//StudyMode
-		fromMode = student.getStudyMode();
-		fromMode.getPrefix();
-		
-		//Switch Mode
-		toMode = student.getStudyMode();
-		toMode.getPrefix();
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("facultyCode", facultyCode);
+        map.put("academicSession", academicSession);
+        map.put("programLevel", programLevel);
+        map.put("studyMode", toMode);
 
-		map.put("facultyCode", facultyCode);
-		map.put("academicSession", academicSession);
-		map.put("programLevel", programLevel);
-		map.put("studyMode", toMode);
-
-		String switchStudyMode = systemService.generateFormattedReferenceNo(AcademicConstants.STUDENT_MATRIC_NO, map);
-		student.setMatricNo(switchStudyMode);
-		LOG.debug("Student New MatricNo :{}",student.getMatricNo());
-		studentDao.update(student, securityService.getCurrentUser());
-		
+        String generatedMatricNo = systemService.generateFormattedReferenceNo(AcademicConstants.STUDENT_MATRIC_NO, map);
+        student.setMatricNo(generatedMatricNo);
+        LOG.debug("Student New MatricNo :{}", student.getMatricNo());
+        studentDao.update(student, securityService.getCurrentUser());
+        return generatedMatricNo;
     }
 }

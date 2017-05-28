@@ -1,6 +1,11 @@
 package my.edu.umk.pams.academic.web.module.profile.vo;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import my.edu.umk.pams.academic.web.module.core.vo.MetaObject;
+import my.edu.umk.pams.academic.web.module.identity.vo.Student;
+
+import java.io.IOException;
 
 /**
  * @author PAMS
@@ -60,5 +65,17 @@ public class Address extends MetaObject{
 
     public void setPostcode(String postcode) {
         this.postcode = postcode;
+    }
+
+    @JsonCreator
+    public static Address create(String jsonString) {
+        Address o = null;
+        try {
+            ObjectMapper mapper = new ObjectMapper();
+            o = mapper.readValue(jsonString, Address.class);
+        } catch (IOException e) {
+            // handle
+        }
+        return o;
     }
 }

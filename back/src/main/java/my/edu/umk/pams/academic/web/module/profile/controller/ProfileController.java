@@ -1,17 +1,17 @@
 package my.edu.umk.pams.academic.web.module.profile.controller;
 
+import my.edu.umk.pams.academic.common.model.AdStudyMode;
 import my.edu.umk.pams.academic.common.service.CommonService;
 import my.edu.umk.pams.academic.identity.model.*;
 import my.edu.umk.pams.academic.identity.service.IdentityService;
+import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
+import my.edu.umk.pams.academic.planner.model.AdCohort;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
 import my.edu.umk.pams.academic.profile.service.ProfileService;
 import my.edu.umk.pams.academic.term.model.AdEnrollment;
 import my.edu.umk.pams.academic.term.service.TermService;
 import my.edu.umk.pams.academic.web.module.identity.vo.Student;
-import my.edu.umk.pams.academic.web.module.profile.vo.Address;
-import my.edu.umk.pams.academic.web.module.profile.vo.Contact;
-import my.edu.umk.pams.academic.web.module.profile.vo.Guarantor;
-import my.edu.umk.pams.academic.web.module.profile.vo.Guardian;
+import my.edu.umk.pams.academic.web.module.profile.vo.*;
 import my.edu.umk.pams.academic.web.module.term.controller.TermTransformer;
 import my.edu.umk.pams.academic.web.module.term.vo.Enrollment;
 import org.slf4j.Logger;
@@ -88,10 +88,8 @@ public class ProfileController {
     @RequestMapping(value = "/students/{identityNo}/addresses/{id}", method = RequestMethod.PUT)
     public ResponseEntity<String> updateAddress(@PathVariable String identityNo, @RequestBody Address vo) {
         dummyLogin();
-        //LOG.debug("id address:{}",vo.getId());
         AdStudent student = profileService.findStudentByMatricNo(identityNo);
         AdAddress address = profileService.findAddressById(vo.getId());
-        	//address.setId(vo.getId());
             address.setAddress1(vo.getAddress1());
             address.setAddress2(vo.getAddress2());
             address.setAddress3(vo.getAddress3());
@@ -104,7 +102,6 @@ public class ProfileController {
     @RequestMapping(value = "/students/{identityNo}/addresses/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<String> deleteAddress(@PathVariable String identityNo, @PathVariable Long id) {
         dummyLogin();
-        //LOG.debug("id address masa nak delete:{}",vo.getId());
         LOG.debug("id address masa nak delete:{}",id);
         AdStudent student = profileService.findStudentByMatricNo(identityNo);
         AdAddress address = profileService.findAddressById(id);
@@ -144,17 +141,6 @@ public class ProfileController {
         profileService.updateContact(student, contact);
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
-    
-    /*DELETE CONTACT*/
-    /*@RequestMapping(value = "/students/{identityNo}/contacts", method = RequestMethod.DELETE)
-    public ResponseEntity<String> deleteContact(@PathVariable String identityNo) {
-        dummyLogin();
-        AdStudent student = profileService.findStudentByMatricNo(identityNo);
-        List<AdContact> contacts = profileService.findContacts(student);
-        for (AdContact contact : contacts)
-            profileService.deleteContact(student, contact);
-        return new ResponseEntity<String>("Success", HttpStatus.OK);
-    }*/
     
     @RequestMapping(value = "/students/{identityNo}/contacts/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<String> deleteContact(@PathVariable String identityNo, @PathVariable Long id) {
@@ -346,6 +332,32 @@ public class ProfileController {
         student.setStudentStatus(AdStudentStatus.BARRED);
         profileService.barStudent(student);
         return new ResponseEntity<AdStudentStatus>(student.getStudentStatus(), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/students/{identityNo}/switchStudyMode", method = RequestMethod.POST)
+    public ResponseEntity<String> switchStudyMode(@PathVariable String identityNo, @RequestBody SwitchStudyMode vo) {
+        dummyLogin();
+
+        AdStudent student = profileService.findStudentByMatricNo(identityNo);
+        AdAcademicSession academicSession = plannerService.findAcademicSessionById(vo.getAcademicSession().getId());
+        AdStudyMode from = commonService.findStudyModeById(vo.getFrom().getId());
+        AdStudyMode to = commonService.findStudyModeById(vo.getTo().getId());
+
+        String newMatricNo = profileService.switchStudyMode(student, academicSession, from, to);
+        return new ResponseEntity<String>(newMatricNo, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/students/{identityNo}/transferCohort", method = RequestMethod.POST)
+    public ResponseEntity<String> transferCohort(@PathVariable String identityNo, @RequestBody TransferCohort vo) {
+        dummyLogin();
+
+        AdStudent student = profileService.findStudentByMatricNo(identityNo);
+        AdAcademicSession academicSession = plannerService.findAcademicSessionById(vo.getAcademicSession().getId());
+        AdCohort from = plannerService.findCohortById(vo.getFrom().getId());
+        AdCohort to = plannerService.findCohortById(vo.getTo().getId());
+
+        String newMatricNo = profileService.transferCohort(student, academicSession, from, to);
+        return new ResponseEntity<String>(newMatricNo, HttpStatus.OK);
     }
 
     //====================================================================================================

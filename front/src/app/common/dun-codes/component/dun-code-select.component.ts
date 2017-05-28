@@ -16,7 +16,7 @@ import {CommonModuleState} from './../../index';
 export class DunCodeSelectComponent implements OnInit {
 
   private DUN_CODE: string[] = "commonModuleState.dunCodes".split(".");
-  @Input() placeHolder: string;
+  @Input() placeholder: string;
   @Input() innerFormControl: FormControl;
   dunCodes$: Observable<DunCode[]>;
 

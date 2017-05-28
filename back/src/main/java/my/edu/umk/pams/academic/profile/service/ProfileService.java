@@ -3,6 +3,7 @@ package my.edu.umk.pams.academic.profile.service;
 import my.edu.umk.pams.academic.common.model.AdStudyMode;
 import my.edu.umk.pams.academic.identity.model.*;
 import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
+import my.edu.umk.pams.academic.planner.model.AdCohort;
 import my.edu.umk.pams.academic.planner.model.AdFaculty;
 
 import java.util.List;
@@ -63,15 +64,13 @@ public interface ProfileService {
     //====================================================================================================
     // GENERATOR
     //====================================================================================================
-    
-    //Generate Matric NO
-    void generateMatricNo(AdStudent student ,AdStudyMode studyMode, AdAcademicSession academicSession);
 
-    // todo(sam): complete kan
-    void transferFaculty(AdStudent student, AdAcademicSession academicSession, AdFaculty fromFaculty, AdFaculty toFaculty);
+	@Deprecated
+    String transferFaculty(AdStudent student, AdAcademicSession academicSession, AdFaculty fromFaculty, AdFaculty toFaculty);
 
-    // todo(sam): complete kan
-    void switchStudyMode(AdStudent student, AdAcademicSession academicSession, AdStudyMode fromMode, AdStudyMode toMode);
+    String transferCohort(AdStudent student, AdAcademicSession academicSession, AdCohort fromCohort, AdCohort toCohort);
+
+    String switchStudyMode(AdStudent student, AdAcademicSession academicSession, AdStudyMode fromMode, AdStudyMode toMode);
 
 	void barStudent(AdStudent student);
 }

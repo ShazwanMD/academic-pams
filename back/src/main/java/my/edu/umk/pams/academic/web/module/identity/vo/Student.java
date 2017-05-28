@@ -2,6 +2,8 @@ package my.edu.umk.pams.academic.web.module.identity.vo;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import my.edu.umk.pams.academic.web.module.common.vo.StudyMode;
+import my.edu.umk.pams.academic.web.module.planner.vo.Cohort;
 
 import java.io.IOException;
 
@@ -9,26 +11,44 @@ import java.io.IOException;
  * @author PAMS
  */
 public class Student extends Actor {
-	
-	private StudentStatus studentStatus;
 
-        public StudentStatus getStudentStatus() {
-		return studentStatus;
-	}
+    private Cohort cohort;
+    private StudyMode studyMode;
+    private StudentStatus studentStatus;
 
-	public void setStudentStatus(StudentStatus studentStatus) {
-		this.studentStatus = studentStatus;
-	}
+    public Cohort getCohort() {
+        return cohort;
+    }
 
-		@JsonCreator
-        public static Student create(String jsonString) {
-            Student o = null;
-            try {
-                ObjectMapper mapper = new ObjectMapper();
-                o = mapper.readValue(jsonString, Student.class);
-            } catch (IOException e) {
-                // handle
-            }
-            return o;
+    public void setCohort(Cohort cohort) {
+        this.cohort = cohort;
+    }
+
+    public StudyMode getStudyMode() {
+        return studyMode;
+    }
+
+    public void setStudyMode(StudyMode studyMode) {
+        this.studyMode = studyMode;
+    }
+
+    public StudentStatus getStudentStatus() {
+        return studentStatus;
+    }
+
+    public void setStudentStatus(StudentStatus studentStatus) {
+        this.studentStatus = studentStatus;
+    }
+
+    @JsonCreator
+    public static Student create(String jsonString) {
+        Student o = null;
+        try {
+            ObjectMapper mapper = new ObjectMapper();
+            o = mapper.readValue(jsonString, Student.class);
+        } catch (IOException e) {
+            // handle
         }
+        return o;
+    }
 }

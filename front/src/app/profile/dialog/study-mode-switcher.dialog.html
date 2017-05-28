@@ -1,0 +1,23 @@
+<h2 md-dialog-title>Study Mode Switcher</h2>
+<md-dialog-content>
+  <form [formGroup]="switchForm">
+    <div layout="row" class="pad-bottom pad-top" flex>
+      {{switchForm.controls['from']?.code}}
+    </div>
+    <div layout="row" class="pad-bottom pad-top" flex>
+      <pams-study-mode-select
+        [placeholder]="'To'"
+        [innerFormControl]="switchForm.controls['to']">
+      </pams-study-mode-select>
+    </div>
+    <div layout="row" class="pad-bottom pad-top" flex>
+      <pams-academic-session-select
+        [placeholder]="'Academic Session'"
+        [innerFormControl]="switchForm.controls['academicSession']">
+      </pams-academic-session-select>
+    </div>
+  </form>
+</md-dialog-content>
+<md-dialog-actions align="end">
+  <button md-raised-button color="accent" (click)="switch(switchForm.value, switchForm.validate)"> Switch</button>
+</md-dialog-actions>
