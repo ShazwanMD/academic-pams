@@ -24,6 +24,24 @@ export class ProgramActions {
     };
   }
 
+ static FIND_PROGRAM_LEVEL_BY_CODE = '[Program] Find Program Level By Code';
+  findProgramLevelByCode(code): Action {
+    return {
+      type: ProgramActions.FIND_PROGRAM_LEVEL_BY_CODE,
+      payload: code
+    };
+  }
+
+  static FIND_PROGRAM_LEVEL_BY_CODE_SUCCESS = '[Program] Find ProgramLevel By Code Success';
+  findProgramLevelByCodeSuccess(message): Action {
+    return {
+      type: ProgramActions.FIND_PROGRAM_LEVEL_BY_CODE_SUCCESS,
+      payload: message
+    };
+  }
+
+
+
   static FIND_PROGRAM_BY_CODE = '[Program] Find Program By Code';
 
   findProgramByCode(code): Action {
@@ -44,19 +62,21 @@ export class ProgramActions {
 
   static SAVE_PROGRAM = '[Program] Save Program';
 
-  saveProgram(program): Action {
+  saveProgram(program,faculty): Action {
+console.log(faculty)
+console.log(program)
+
     return {
       type: ProgramActions.SAVE_PROGRAM,
-      payload: program
+      payload: {program:program, faculty:faculty}
     };
   }
 
   static SAVE_PROGRAM_SUCCESS = '[Program] Save Program Success';
-
-  saveProgramSuccess(program): Action {
+  saveProgramSuccess(message): Action {
     return {
       type: ProgramActions.SAVE_PROGRAM_SUCCESS,
-      payload: program
+      payload: message
     };
   }
 
