@@ -65,11 +65,11 @@ export class TermService {
     }
 
     deleteAssessment(offering: Offering, assessment:Assessment) {
-        console.log(assessment);
       let headers = new Headers({
         'Content-Type': 'application/json',
       });
       let options = new RequestOptions({ headers: headers });
+      console.log("deleteAssessmentInService")
       return this.http.delete(environment.endpoint + '/api/term/offerings/' + offering.canonicalCode + '/assessments/' + assessment.id, options)
         .flatMap((res: Response) => Observable.of(res.text()));
     }
