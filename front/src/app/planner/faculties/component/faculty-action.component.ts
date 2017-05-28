@@ -37,13 +37,12 @@ export class FacultyActionComponent {
         }
         );
     }
+
     deactivate(): void {
         let snackBarRef = this.snackBar.open("Deactivating Faculty", "OK");
-        snackBarRef.afterDismissed().subscribe(() => {
-            this.store.dispatch(this.actions.deactivateFaculty(this.faculty))
-        }
+        snackBarRef.afterDismissed().subscribe ( () => {
+            this.store.dispatch(this.actions.deactivateFaculty((this.faculty))
+            )}
         );
     }
-
-
-}
+    }
