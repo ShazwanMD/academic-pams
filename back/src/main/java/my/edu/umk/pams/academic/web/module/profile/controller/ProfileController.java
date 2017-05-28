@@ -102,11 +102,11 @@ public class ProfileController {
     
     /*DELETE ADDRESS*/
     @RequestMapping(value = "/students/{identityNo}/addresses/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity<String> deleteAddress(@PathVariable String identityNo, @RequestBody Address vo) {
+    public ResponseEntity<String> deleteAddress(@PathVariable String identityNo,@PathVariable Long id) {
         dummyLogin();
-        LOG.debug("id address masa nak delete:{}",vo.getId());
+        //LOG.debug("id address masa nak delete:{}",vo.getId());
         AdStudent student = profileService.findStudentByMatricNo(identityNo);
-        AdAddress address = profileService.findAddressById(vo.getId());
+        AdAddress address = profileService.findAddressById(id);
         profileService.deleteAddress(student, address);
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
@@ -156,10 +156,10 @@ public class ProfileController {
     }*/
     
     @RequestMapping(value = "/students/{identityNo}/contacts/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity<String> deleteContact(@PathVariable String identityNo, @RequestBody Contact vo) {
+    public ResponseEntity<String> deleteContact(@PathVariable String identityNo,@PathVariable Long id) {
         dummyLogin();
         AdStudent student = profileService.findStudentByMatricNo(identityNo);
-        AdContact contact = profileService.findContactById(vo.getId());
+        AdContact contact = profileService.findContactById(id);
         profileService.deleteContact(student, contact);
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
@@ -199,10 +199,10 @@ public class ProfileController {
    
    /*DELETE GUARANTOR*/
    @RequestMapping(value = "/students/{identityNo}/guarantors/{id}", method = RequestMethod.DELETE)
-   public ResponseEntity<String> deleteGuarantor(@PathVariable String identityNo, @RequestBody Guarantor vo) {
+   public ResponseEntity<String> deleteGuarantor(@PathVariable String identityNo,@PathVariable Long id) {
        dummyLogin();
        AdStudent student = profileService.findStudentByMatricNo(identityNo);
-       AdGuarantor guarantor = profileService.findGuarantorById(vo.getId());
+       AdGuarantor guarantor = profileService.findGuarantorById(id);
        profileService.deleteGuarantor(student, guarantor);
        return new ResponseEntity<String>("Success", HttpStatus.OK);
    }
@@ -242,10 +242,10 @@ public class ProfileController {
    
    /*DELETE GUARDIAN*/
    @RequestMapping(value = "/students/{identityNo}/guardians/{id}", method = RequestMethod.DELETE)
-   public ResponseEntity<String> deleteGuardian(@PathVariable String identityNo, @RequestBody Guardian vo) {
+   public ResponseEntity<String> deleteGuardian(@PathVariable String identityNo,@PathVariable Long id) {
        dummyLogin();
        AdStudent student = profileService.findStudentByMatricNo(identityNo);
-       AdGuardian guardian = profileService.findGuardianById(vo.getId());
+       AdGuardian guardian = profileService.findGuardianById(id);
        profileService.deleteGuardian(student, guardian);
        return new ResponseEntity<String>("Success", HttpStatus.OK);
    }
