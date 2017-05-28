@@ -17,6 +17,18 @@ export function programListReducer(state = initialState, action: Action): Progra
     case ProgramActions.CREATE_PROGRAM_SUCCESS: {
       return [...state, action.payload];
     }
+    case ProgramActions.FIND_PROGRAM_LEVEL_BY_CODE_SUCCESS:{
+       return [...state, action.payload];
+    }
+
+     case ProgramActions.FIND_PROGRAM_BY_CODE_SUCCESS:{
+          return [...state, action.payload];
+     }
+
+      case ProgramActions.REMOVE_PROGRAM_SUCCESS:{
+         return [...state, action.payload];
+      }
+
     default: {
       return state;
     }
