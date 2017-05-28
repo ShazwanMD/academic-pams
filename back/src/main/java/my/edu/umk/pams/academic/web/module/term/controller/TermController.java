@@ -582,8 +582,6 @@ public class TermController {
         throw new UnsupportedOperationException();
     }
 
-
-
     @RequestMapping(value = "/offerings/{canonicalCode}/sections", method = RequestMethod.DELETE)
     public ResponseEntity<String> deleteSection(@PathVariable String canonicalCode, @PathVariable Long sectionId) {
         dummyLogin();
