@@ -60,6 +60,7 @@ public class PlannerTransformer {
         vo.setCode(faculty.getCode());
         vo.setName(faculty.getName());
         vo.setDescription(faculty.getDescription());
+        vo.setPrefix(faculty.getPrefix());
         vo.setStatus(FacultyStatus.get(faculty.getStatus().ordinal()));
         return vo;
     }
