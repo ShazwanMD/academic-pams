@@ -92,6 +92,42 @@ export class PlannerService {
       .map((res: Response) => <Faculty>res.json());
   }
 
+   activateFaculty(faculty: Faculty): Observable<String> {
+    let headers = new Headers({ 'Authorization': 'Bearer TODO' });
+    let options = new RequestOptions({ headers: headers });
+    console.log("activate Faculty");
+    return this.http.get(environment.endpoint + '/api/planner/faculties/' + faculty.code + '/activate', options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+  deactivateFaculty(faculty: Faculty): Observable<String> {
+    let headers = new Headers({ 'Authorization': 'Bearer TODO' });
+    let options = new RequestOptions({ headers: headers });
+    console.log("deactivate Faculty");
+    return this.http.get(environment.endpoint + '/api/planner/faculties/' + faculty.code + '/deactivate', options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+   saveFaculty(faculty: Faculty): Observable<String> {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({ headers: headers });
+    return this.http.post(environment.endpoint + '/api/planner/faculties/' + faculty.code +  '/save', JSON.stringify(faculty), options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+   updatefaculty(faculty: Faculty): Observable<String> {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({ headers: headers });
+    return this.http.put(environment.endpoint + '/api/planner/faculties/' + faculty.code, JSON.stringify(faculty), options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
   // ====================================================================================================
   // PROGRAM
   // ====================================================================================================
