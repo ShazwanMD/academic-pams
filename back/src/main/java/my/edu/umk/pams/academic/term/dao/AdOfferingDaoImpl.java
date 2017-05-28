@@ -359,16 +359,47 @@ public class AdOfferingDaoImpl extends GenericDaoSupport<Long, AdOffering> imple
 
     @Override
     public void addSection(AdOffering offering, AdSection section, AdUser user) {
+    	 Validate.notNull(user, "User cannot be null");
+         Validate.notNull(offering, "Offering cannot be null");
+         Validate.notNull(section, "assessment cannot be null");
+         Session session = sessionFactory.getCurrentSession();
+         section.setOffering(offering);
 
+         // prepare metadata
+         AdMetadata metadata = new AdMetadata();
+         metadata.setCreatedDate(new Timestamp(System.currentTimeMillis()));
+         metadata.setCreatorId(user.getId());
+         metadata.setState(AdMetaState.ACTIVE);
+         section.setMetadata(metadata);
+         session.save(section);
     }
 
     @Override
     public void updateSection(AdOffering offering, AdSection section, AdUser user) {
+    	 Validate.notNull(user, "User cannot be null");
+         Validate.notNull(offering, "Offering cannot be null");
+         Validate.notNull(section, "assessment cannot be null");
+         Session session = sessionFactory.getCurrentSession();
+         section.setOffering(offering);
 
+         // prepare metadata
+         AdMetadata metadata = section.getMetadata();
+         metadata.setModifiedDate(new Timestamp(System.currentTimeMillis()));
+         metadata.setModifierId(user.getId());
+         section.setMetadata(metadata);
+         session.update(section);
     }
 
     @Override
     public void deleteSection(AdOffering offering, AdSection section, AdUser user) {
-
+    	 Validate.notNull(user, "User cannot be null");
+         Session session = sessionFactory.getCurrentSession();
+         session.delete(section);
     }
+
+	@Override
+	public void removeSection(AdOffering offering, AdSection section, AdUser user) {
+		// TODO Auto-generated method stub
+		
+	}
 }

@@ -360,25 +360,25 @@ public class TermServiceImpl implements TermService {
     @Override
     public void addSection(AdOffering offering, AdSection section) {
         section.setOffering(offering);
-        sectionDao.save(section, securityService.getCurrentUser());
+        offeringDao.addSection(offering, section, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void deleteSection(AdOffering offering, AdSection section) {
-        sectionDao.delete(section, securityService.getCurrentUser());
+    	offeringDao.deleteSection(offering, section, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void updateSection(AdOffering offering, AdSection section) {
-        sectionDao.updateSection(offering,section, securityService.getCurrentUser());
+    	offeringDao.updateSection(offering,section, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
     
     @Override
-    public void removeSection(AdSection section) {
-        sectionDao.remove(section, securityService.getCurrentUser());
+    public void removeSection(AdOffering offering, AdSection section) {
+    	offeringDao.removeSection(offering, section, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 

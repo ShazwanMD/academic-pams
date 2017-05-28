@@ -80,5 +80,7 @@ public interface AdOfferingDao extends GenericDao<Long, AdOffering> {
     void updateSection(AdOffering offering, AdSection section, AdUser user);
 
     void deleteSection(AdOffering offering, AdSection section, AdUser user);
+    
+    void removeSection(AdOffering offering, AdSection section, AdUser user);
 
 }
