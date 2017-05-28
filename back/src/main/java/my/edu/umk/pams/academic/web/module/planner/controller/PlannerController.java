@@ -64,7 +64,6 @@ public class PlannerController {
 	@RequestMapping(value = "/academicSessions/{code}", method = RequestMethod.GET)
 
 	public ResponseEntity<AcademicSession> findAcademicSessionByCode(@PathVariable String code) {
-		LOG.debug("SessionCode:{}", code);
 		return new ResponseEntity<AcademicSession>(
 				plannerTransformer.toAcademicSessionVo(plannerService.findAcademicSessionByCode(code)), HttpStatus.OK);
 	}
@@ -185,7 +184,7 @@ public class PlannerController {
 		dummyLogin();
 		LOG.debug("activate program");
 		AdFaculty faculty = plannerService.findFacultyByCode(code);
-		faculty.setStatus(AdFacultyStatus.ACTIVATED);
+		faculty.setStatus(AdFacultyStatus.ACTIVE);
 		plannerService.updateFaculty(faculty);
 		return new ResponseEntity<String>(faculty.getCode(),HttpStatus.OK);
 	}
@@ -195,7 +194,7 @@ public class PlannerController {
 		dummyLogin();
 		LOG.debug("deactivate program");
 		AdFaculty faculty = plannerService.findFacultyByCode(code);
-		faculty.setStatus(AdFacultyStatus.INACTIVATED);
+		faculty.setStatus(AdFacultyStatus.INACTIVE);
 		plannerService.updateFaculty(faculty);
 		return new ResponseEntity<String>(faculty.getCode(),HttpStatus.OK);
 	}

@@ -5,13 +5,12 @@
   </div>
 
   <div md-content flex md-scroll-y>
-    <div layout="column" layout-gt-md="row" class="inset">
+    <div layout="column" layout-gt-md="row" class="insert">
       <div flex-gt-md="70">
         <pams-faculty [faculty]="faculty$ | async"></pams-faculty>
       </div>
 
       <div flex-gt-md="30">
-
         <pams-faculty-status [faculty]="faculty$ | async">
         </pams-faculty-status>
         <pams-faculty-action [faculty]="faculty$ | async">

@@ -60,10 +60,10 @@ export class AssessmentActions {
     }
 
     static REMOVE_ASSESSMENT = '[Assessment] Remove Assessment';
-    deleteAssessment( offering,assessment): Action {
+    deleteAssessment( offering, assessment): Action {
         return {
             type: AssessmentActions.REMOVE_ASSESSMENT,
-            payload: { offering:offering,assessment:assessment}
+            payload: { offering:offering, assessment:assessment}
         };
     }
 

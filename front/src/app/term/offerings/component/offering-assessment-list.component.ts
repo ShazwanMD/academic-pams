@@ -82,6 +82,7 @@ export class OfferingAssessmentListComponent {
     //DELETE
     deleteAssessment(assessment:Assessment): void {
     this.store.dispatch(this.actions.deleteAssessment(this.offering,assessment))
+    console.log("deleteAssessment:{}",assessment)
     }
 
 

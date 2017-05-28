@@ -129,13 +129,12 @@ public class TermController {
     }
     
     @RequestMapping(value = "/offerings/{canonicalCode}/assessments/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity<String> deleteAssessment(@PathVariable String canonicalCode, @RequestBody Assessment vo) {
+    public ResponseEntity<String> deleteAssessment(@PathVariable String canonicalCode, @PathVariable Long id) {
         dummyLogin();
-        LOG.debug("assessment:{}", vo);
+        LOG.debug("assessment:{}", id);
         LOG.debug("Offering Canonical:{}", canonicalCode);
-
         AdOffering offering = termService.findOfferingByCanonicalCode(canonicalCode);
-        AdAssessment assessment = termService.findAssessmentById(vo.getId());
+        AdAssessment assessment = termService.findAssessmentById(id);
         termService.deleteAssessment(offering, assessment);
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
