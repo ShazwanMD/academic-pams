@@ -6,7 +6,6 @@ import my.edu.umk.pams.academic.identity.model.AdStaff;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.identity.model.AdUser;
 import my.edu.umk.pams.academic.term.model.*;
-import my.edu.umk.pams.academic.term.model.AdAdmission;
 import my.edu.umk.pams.academic.planner.model.*;
 
 import java.util.List;
@@ -137,5 +136,11 @@ public interface AdSectionDao extends GenericDao<Long, AdSection> {
     void updateAppointment(AdSection section, AdAppointment appointment, AdUser user);
 
     void deleteAppointment(AdSection section, AdAppointment appointment, AdUser user);
+    
+    void addSection(AdOffering offering, AdSection section, AdUser user);
+
+    void updateSection(AdOffering offering, AdSection section, AdUser user);
+
+    void deleteSection(AdOffering offering, AdSection section, AdUser user);
 
 }

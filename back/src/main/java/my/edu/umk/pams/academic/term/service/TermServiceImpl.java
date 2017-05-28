@@ -371,11 +371,11 @@ public class TermServiceImpl implements TermService {
     }
 
     @Override
-    public void updateSection(AdSection section) {
-        sectionDao.update(section, securityService.getCurrentUser());
+    public void updateSection(AdOffering offering, AdSection section) {
+        sectionDao.updateSection(offering,section, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
-
+    
     @Override
     public void removeSection(AdSection section) {
         sectionDao.remove(section, securityService.getCurrentUser());

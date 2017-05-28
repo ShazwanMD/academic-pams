@@ -56,5 +56,5 @@ export class SectionEffects {
   .map(state => state[1])
   //.mergeMap(action => from([action, this.sectionActions.findSections()]));
   .map((offering: Offering) => this.offeringActions.findOfferingByCanonicalCode(offering.canonicalCode));
-
-}
+  
+ }

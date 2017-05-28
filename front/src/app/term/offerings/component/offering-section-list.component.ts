@@ -55,14 +55,14 @@ export class OfferingSectionListComponent {
       this.showUpdateDialog(section)
     } */
   
-  editDialog(canonicalCode: Section): void {
+  /*editDialog(canonicalCode: Section): void {
       this.showEditorDialog(canonicalCode);
-    }
+    }*/
   
   filter(): void {
   }
 
-  private showEditorDialog(canonicalCode: Section): void {
+ /* private showEditorDialog(canonicalCode: Section): void {
       console.log("update section dialog");
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
@@ -75,7 +75,29 @@ export class OfferingSectionListComponent {
     this.creatorDialogRef.afterClosed().subscribe(res => {
         console.log("close dialog for update section");
     });
+  }*/
+  
+  editDialog( section: Section, isValid: boolean ): void {
+      console.log("Section:{}",section)
+      let config = new MdDialogConfig();
+      config.viewContainerRef = this.vcf;
+      config.role = 'dialog';
+      config.width = '60%';
+      config.height = '80%';
+      config.position = { top: '0px' };
+      this.creatorDialogRef = this.dialog.open( SectionEditorDialog, config );
+      if ( isValid ) {
+          this.creatorDialogRef.componentInstance.section = section;
+          this.creatorDialogRef.componentInstance.offering = this.offering;
+
+      }
+      this.creatorDialogRef.afterClosed().subscribe( res => {
+          console.log( "close dialog section" );
+          // load something here
+      } );
   }
+  
+  
          
   /* //show update dialog for section
     
@@ -102,7 +124,7 @@ export class OfferingSectionListComponent {
     config.viewContainerRef = this.vcf;
     config.role = 'dialog';
     config.width = '50%';
-    config.height = '50%';
+    config.height = '40%';
     config.position = {top: '0px'};
     this.creatorDialogRef = this.dialog.open(SectionEditorDialog, config);
     this.creatorDialogRef.componentInstance.offering = this.offering;

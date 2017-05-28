@@ -127,7 +127,7 @@ public interface TermService {
     void deleteSection(AdOffering offering, AdSection section);
 
 
-    void updateSection(AdSection section);
+    void updateSection(AdOffering offering, AdSection section);
 
     void removeSection(AdSection section);
 

@@ -451,15 +451,17 @@ export class TermService {
 
     // update Section using dialog
     updateSection(offering: Offering, section: Section): Observable<String> {
+        console.log(section);
         let headers = new Headers({
             'Content-Type': 'application/json',
             //'Authorization': 'Bearer ' + this.authService.token
         });
         let options = new RequestOptions({ headers: headers });
-        return this.http.put(environment.endpoint + '/api/term/offerings/' + offering.canonicalCode + '/sections/' , JSON.stringify(section), options)
+        return this.http.put(environment.endpoint + '/api/term/offerings/' + offering.canonicalCode + '/sections/' + section.id, JSON.stringify(section), options)
             .flatMap((res: Response) => Observable.of(res.text()));
     }
     
+     
     //update offering using editorDialog
      updateOffering(offering: Offering): Observable<String> {
     let headers = new Headers({

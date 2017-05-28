@@ -544,14 +544,21 @@ public class TermController {
     
     
     //update section
-    @RequestMapping(value = "/sections/{canonicalCode}", method = RequestMethod.PUT)
-    public ResponseEntity<Section> updateSection(@PathVariable String canonicalCode,
-    @RequestBody Section vo) {
-        AdSection section = (AdSection) termService.findSectionByCanonicalCode(canonicalCode);
-        return new ResponseEntity<Section>(
-                termTransformer.toSectionVo(section), HttpStatus.OK);
+    @RequestMapping(value = "/offerings/{canonicalCode}/sections/{id}", method = RequestMethod.PUT)
+    public ResponseEntity<String> updateSection(@PathVariable String canonicalCode, @RequestBody Section vo) {
+    	dummyLogin();
+    	
+    	AdOffering offering = termService.findOfferingByCanonicalCode(canonicalCode);
+        AdSection section = termService.findSectionByCanonicalCode(canonicalCode);
+        
+        section.setCanonicalCode(vo.getCanonicalCode());
+        section.setCode(vo.getCode());
+        section.setCapacity(vo.getCapacity());
+        section.setOrdinal(vo.getOrdinal()); 
+        termService.updateSection(offering, section);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
-
+    
     @RequestMapping(value = "/offerings/{canonicalCode}/appointments", method = RequestMethod.POST)
     public ResponseEntity<String> addAppointment(@PathVariable String canonicalCode, @RequestBody Appointment vo) {
         dummyLogin();
@@ -577,7 +584,7 @@ public class TermController {
 
 
 
-    @RequestMapping(value = "/offerings/{canonicalCode}/sections/{sectionId}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/offerings/{canonicalCode}/sections", method = RequestMethod.DELETE)
     public ResponseEntity<String> deleteSection(@PathVariable String canonicalCode, @PathVariable Long sectionId) {
         dummyLogin();
         AdOffering offering = termService.findOfferingByCanonicalCode(canonicalCode);
