@@ -461,7 +461,7 @@ export class TermService {
             .flatMap((res: Response) => Observable.of(res.text()));
     }
     
-     
+      
     //update offering using editorDialog
      updateOffering(offering: Offering): Observable<String> {
     let headers = new Headers({

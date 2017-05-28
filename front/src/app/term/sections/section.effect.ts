@@ -48,7 +48,7 @@ export class SectionEffects {
   
  
   //update section
-  @Effect() updateSections$ = this.actions$
+  @Effect() updateSection$ = this.actions$
   .ofType(SectionActions.UPDATE_SECTION)
   .map(action => action.payload)
   .switchMap(payload => this.termService.updateSection(payload.offering, payload.section))
@@ -58,4 +58,5 @@ export class SectionEffects {
   //.mergeMap(action => from([action, this.sectionActions.findSections()]));
   .map((offering: Offering) => this.offeringActions.findOfferingByCanonicalCode(offering.canonicalCode));
   
+    
  }

@@ -549,15 +549,17 @@ public class TermController {
     	dummyLogin();
     	
     	AdOffering offering = termService.findOfferingByCanonicalCode(canonicalCode);
-        AdSection section = termService.findSectionByCanonicalCode(canonicalCode);
+        AdSection section = termService.findSectionByCanonicalCode(vo.getCanonicalCode());
         
         section.setCanonicalCode(vo.getCanonicalCode());
         section.setCode(vo.getCode());
         section.setCapacity(vo.getCapacity());
         section.setOrdinal(vo.getOrdinal()); 
+        section.setOffering(offering);
         termService.updateSection(offering, section);
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
+    
     
     @RequestMapping(value = "/offerings/{canonicalCode}/appointments", method = RequestMethod.POST)
     public ResponseEntity<String> addAppointment(@PathVariable String canonicalCode, @RequestBody Appointment vo) {

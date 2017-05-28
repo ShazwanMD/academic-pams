@@ -714,6 +714,7 @@ public class AdSectionDaoImpl extends GenericDaoSupport<Long, AdSection> impleme
 		session.update(section);
 	}
 
+	 
 	@Override
 	public void deleteSection(AdOffering offering, AdSection section, AdUser user) {
 		Validate.notNull(user, "User cannot be null");

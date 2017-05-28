@@ -140,7 +140,7 @@ public interface AdSectionDao extends GenericDao<Long, AdSection> {
     void addSection(AdOffering offering, AdSection section, AdUser user);
 
     void updateSection(AdOffering offering, AdSection section, AdUser user);
-
+    
     void deleteSection(AdOffering offering, AdSection section, AdUser user);
 
 }

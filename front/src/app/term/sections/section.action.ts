@@ -147,7 +147,7 @@ export class SectionActions {
    //update section for capacity and ordinal
     static UPDATE_SECTION = '[Section] Update Section';
 
-  updateSection(offering,section): Action {
+  updateSection(offering, section): Action {
     console.log("updateSection");
     return {
       type: SectionActions.UPDATE_SECTION,
