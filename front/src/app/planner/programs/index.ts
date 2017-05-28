@@ -1,3 +1,4 @@
+ import { ProgramLevelSelectComponent } from './component/program-level-select.component';
 
 import '@ngrx/core/add/operator/select';
 import {appRoutes, appRoutingProviders} from '../../app.routes';
@@ -46,6 +47,7 @@ import {ProgramStatusSelectComponent} from "./component/program-status-select.co
     ProgramActionComponent,
     ProgramStatusComponent,
     ProgramStatusSelectComponent,
+    ProgramLevelSelectComponent,
 
     // dialog
     ProgramEditorDialog,
@@ -58,6 +60,7 @@ import {ProgramStatusSelectComponent} from "./component/program-status-select.co
     ProgramComponent,
     ProgramStatusComponent,
     ProgramStatusSelectComponent,
+    ProgramLevelSelectComponent,
 
   ],
 
@@ -82,5 +85,3 @@ export class ProgramSubModule {
     };
   }
 }
-
-

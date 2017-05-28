@@ -1,3 +1,6 @@
+
+import { ProgramLevelSelectComponent } from './programs/component/program-level-select.component';
+import { ProgramLevel } from './programs/program-level.interface';
 import {NgModule, ModuleWithProviders} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {ReactiveFormsModule} from '@angular/forms';
@@ -61,6 +64,8 @@ export const INITIAL_PLANNER_STATE: PlannerModuleState =
     faculty: <Faculty>{},
     programs: <Program[]>[],
     program: <Program>{},
+    level:<ProgramLevel>{},
+    levels:<ProgramLevel[]>[],
     courses: <Course[]>[],
     course: <Course>{},
     cohorts: <Cohort[]>[],
@@ -117,4 +122,3 @@ export class PlannerModule {
     };
   }
 }
-
