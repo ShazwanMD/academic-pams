@@ -93,7 +93,9 @@ public class PlannerController {
 		academicSession.setStartDate(vo.getstartDate());
 		academicSession.setEndDate(vo.getendDate());
 		academicSession.setSemester(AdAcademicSemester.get(vo.getSemester().ordinal()));
-		vo.setYear(plannerTransformer.toAcademicYearVo(academicSession.getYear()));
+//		academicSession.setYear(plannerTransformer.toAcademicYearVo(academicYear.getYear()));
+		academicSession.setYear(plannerService.findByCode(academicSession.getYear().getYear()));
+
 		plannerService.saveAcademicSession(academicSession);
 		return new ResponseEntity<String>("Success", HttpStatus.OK);
 	}

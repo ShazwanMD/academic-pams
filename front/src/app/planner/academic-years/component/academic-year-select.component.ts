@@ -13,15 +13,14 @@ import {PlannerModuleState} from "../../index";
 })
 export class AcademicYearSelectComponent implements OnInit {
 
-  private ACADEMICYEARS: string[] = "plannerModuleState.courses".split(".");
+  private ACADEMIC_YEARS: string[] = "plannerModuleState.years".split(".");
   private academicYears$: Observable<AcademicYear[]>;
   @Input() placeholder: string;
   @Input() innerFormControl: FormControl;
 
   constructor(private store: Store<PlannerModuleState>,
-              private actions: AcademicYearActions
-          ) {
-    this.academicYears$ = this.store.select(...this.ACADEMICYEARS);
+              private actions: AcademicYearActions) {
+    this.academicYears$ = this.store.select(...this.ACADEMIC_YEARS);
   }
 
   ngOnInit() {

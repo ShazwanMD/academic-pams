@@ -5,14 +5,14 @@ import {AcademicYear} from './academic-year.interface';
 @Injectable()
 export class AcademicYearActions {
 
-  static FIND_ACADEMICYEARS = '[Course] Find AcademicYears';
+  static FIND_ACADEMICYEARS = '[AcademicYear] Find AcademicYears';
   findAcademicYears(): Action {
     return {
-      type: AcademicYearActions.FIND_ACADEMICYEARS
+      type: AcademicYearActions.FIND_ACADEMICYEARS,
     };
   }
 
-  static FIND_ACADEMICYEARS_SUCCESS = '[Course] Find AcademicYears Success';
+  static FIND_ACADEMICYEARS_SUCCESS = '[AcademicYear] Find AcademicYears Success';
   findAcademicYearsSuccess(academicYears): Action {
     return {
       type: AcademicYearActions.FIND_ACADEMICYEARS_SUCCESS,
