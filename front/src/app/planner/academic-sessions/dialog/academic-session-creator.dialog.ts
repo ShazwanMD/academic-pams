@@ -22,7 +22,6 @@ export class AcademicSessionCreatorDialog implements OnInit {
     private create: boolean = false;
     private _academicSession: AcademicSession;
     private year: AcademicYear; 
-    private semester: AcademicSemester;
 
     constructor(private formBuilder: FormBuilder,
         private viewContainerRef: ViewContainerRef,
@@ -52,9 +51,10 @@ export class AcademicSessionCreatorDialog implements OnInit {
         if (this.create) this.createForm.patchValue(this._academicSession);
     }
 
-    save(code: AcademicSession, isValid: boolean) {
-        if (!code.id) this.store.dispatch(this.actions.saveAcademicSession(code));
-        else this.store.dispatch(this.actions.updateAcademicSession(code));
+    save(academicSession: AcademicSession, isValid: boolean) {
+        console.log("saving academic session");
+        if (!academicSession.id) this.store.dispatch(this.actions.saveAcademicSession(academicSession));
+        else this.store.dispatch(this.actions.updateAcademicSession(academicSession));
         this.dialog.close();
     }
 }
