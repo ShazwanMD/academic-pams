@@ -268,7 +268,7 @@ public class ProfileServiceImpl implements ProfileService {
 
         String generatedMatricNo = systemService.generateFormattedReferenceNo(AcademicConstants.STUDENT_MATRIC_NO, map);
         student.setMatricNo(generatedMatricNo);
-        studentDao.update(student, securityService.getCurrentUser());
+        updateStudent(student);
         LOG.debug("Student New MatricNo:{}", student.getMatricNo());
 
         return generatedMatricNo;
@@ -288,7 +288,7 @@ public class ProfileServiceImpl implements ProfileService {
 
         String generatedMatricNo = systemService.generateFormattedReferenceNo(AcademicConstants.STUDENT_MATRIC_NO, map);
         student.setMatricNo(generatedMatricNo);
-        studentDao.update(student, securityService.getCurrentUser());
+        updateStudent(student);
         LOG.debug("Student New MatricNo:{}", student.getMatricNo());
 
         return generatedMatricNo;
@@ -311,7 +311,7 @@ public class ProfileServiceImpl implements ProfileService {
         String generatedMatricNo = systemService.generateFormattedReferenceNo(AcademicConstants.STUDENT_MATRIC_NO, map);
         student.setMatricNo(generatedMatricNo);
         LOG.debug("Student New MatricNo :{}", student.getMatricNo());
-        studentDao.update(student, securityService.getCurrentUser());
+        updateStudent(student);
         return generatedMatricNo;
     }
 }

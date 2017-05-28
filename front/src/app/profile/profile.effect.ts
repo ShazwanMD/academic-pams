@@ -8,6 +8,7 @@ import {ProfileActions} from "./profile.action";
 import {from} from "rxjs/observable/from";
 import {TermModuleState} from "../term/index";
 import {Store} from "@ngrx/store";
+import {Router} from "@angular/router";
 
 
 @Injectable()
@@ -18,8 +19,8 @@ export class ProfileEffects {
   constructor(private actions$: Actions,
               private profileActions: ProfileActions,
               private profileService: ProfileService,
+              private router: Router,
               private store$: Store<TermModuleState>) {
-
   }
 
   /*==================================================================================================*/
@@ -38,19 +39,17 @@ export class ProfileEffects {
     .ofType(ProfileActions.TRANSFER_COHORT)
     .map(action => action.payload)
     .switchMap(payload => this.profileService.switchStudyMode(payload.student, payload.switchStudyMode))
-    .map(message => this.profileActions.switchStudyModeSuccess(message))
-    // .withLatestFrom(this.store$.select(...this.STUDENT))
-    // .map(state => state[1])
-    // .map((student: Student) => this.profileActions.findStudentByIdentityNo(student.identityNo));
+    .map(message => this.profileActions.switchStudyModeSuccess(message));
+  // .withLatestFrom(this.store$.select(...this.STUDENT))
+  // .map(state => state[1])
+  // .map((student: Student) => this.profileActions.findStudentByIdentityNo(student.identityNo));
 
   @Effect() switchStudyMode$ = this.actions$
     .ofType(ProfileActions.SWITCH_STUDY_MODE)
     .map(action => action.payload)
     .switchMap(payload => this.profileService.switchStudyMode(payload.student, payload.switchStudyMode))
-    .map(message => this.profileActions.switchStudyModeSuccess(message))
-    .withLatestFrom(this.store$.select(...this.STUDENT))
-    .map(state => state[1])
-    .map((student: Student) => this.profileActions.findStudentByIdentityNo(student.identityNo));
+    .map(matricNo => this.profileActions.switchStudyModeSuccess(matricNo))
+    .do(action => this.router.navigate(['/profile/profile-detail/', action.payload])).ignoreElements();
 
   /*==================================================================================================*/
   /*ACTIVATE / DEACTIVATE - STUDENT EFFECT*/

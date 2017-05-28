@@ -206,7 +206,7 @@ export class ProfileService {
     let options = new RequestOptions({headers: headers});
     console.log("deactivate student");
     return this.http.post(environment.endpoint + '/api/profile/students/' + student.identityNo + '/deactivate', options)
-      .map((res: Response) => <String>res.json());
+      .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   activateStudent(student: Student): Observable<String> {
@@ -214,7 +214,7 @@ export class ProfileService {
     let options = new RequestOptions({headers: headers});
     console.log("activate student");
     return this.http.post(environment.endpoint + '/api/profile/students/' + student.identityNo + '/activate', options)
-      .map((res: Response) => <String>res.json());
+      .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   barStudent(student: Student): Observable<String> {
@@ -222,26 +222,26 @@ export class ProfileService {
     let options = new RequestOptions({headers: headers});
     console.log("bar student");
     return this.http.post(environment.endpoint + '/api/profile/students/' + student.identityNo + '/barStudent', options)
-      .map((res: Response) => <String>res.json());
+      .flatMap((res: Response) => Observable.of(res.text()));
   }
 
-  switchStudyMode(student: Student, switcher: SwitchStudyMode) {
+  switchStudyMode(student: Student, switcher: SwitchStudyMode): Observable<String> {
     console.log("switchStudyMode");
     let headers = new Headers({
       'Content-Type': 'application/json',
     });
     let options = new RequestOptions({headers: headers});
     return this.http.post(environment.endpoint + '/api/profile/students/' + student.identityNo + '/switchStudyMode', JSON.stringify(switcher), options)
-      .map((res: Response) => <String>res.json());
+      .flatMap((res: Response) => Observable.of(res.text()));
   }
 
-  transferCohort(student: Student, transferer: TransferCohort) {
+  transferCohort(student: Student, transferer: TransferCohort): Observable<String> {
     console.log("transferCohort");
     let headers = new Headers({
       'Content-Type': 'application/json',
     });
     let options = new RequestOptions({headers: headers});
     return this.http.post(environment.endpoint + '/api/profile/students/' + student.identityNo + '/transferCohort', JSON.stringify(transferer), options)
-      .map((res: Response) => <String>res.json());
+      .flatMap((res: Response) => Observable.of(res.text()));
   }
 }
