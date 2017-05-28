@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
-import { AcademicYear } from './../academic-year.interface';
+import { AcademicYear } from '../../academic-years/academic-year.interface';
 import { AcademicSemester } from '../academic-semester-type.enum';
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, ViewContainerRef, OnInit } from '@angular/core';
 import { MdDialogRef, MdDialog, MdDialogConfig } from '@angular/material';

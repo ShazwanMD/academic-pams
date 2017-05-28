@@ -127,6 +127,13 @@ public class PlannerTransformer {
                 .collect(toList());
         return vos;
     }
+    
+    public List<AcademicYear> toAcademicYearVos(List<AdAcademicYear> academicYears) {
+        List<AcademicYear> vos = academicYears.stream()
+                .map((academicYear) -> toAcademicYearVo(academicYear))
+                .collect(toList());
+        return vos;
+    }
 
     public List<Faculty> toFacultyVos(List<AdFaculty> faculties) {
         List<Faculty> vos = faculties.stream()

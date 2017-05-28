@@ -320,6 +320,16 @@ public class PlannerController {
 	public ResponseEntity<Course> deactivateCourse(@PathVariable String code, @RequestBody Course course) {
 		throw new UnsupportedOperationException();
 	}
+	
+	// ====================================================================================================
+	// academicYear
+	// ====================================================================================================
+
+		@RequestMapping(value = "/academicYears", method = RequestMethod.GET)
+		public ResponseEntity<List<AcademicYear>> findAcademicYears() {
+			return new ResponseEntity<List<AcademicYear>>(plannerTransformer.toAcademicYearVos(plannerService.findAcademicYears(0, 100)),
+					HttpStatus.OK);
+		}
 
 	// ====================================================================================================
 	// COHORT

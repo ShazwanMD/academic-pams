@@ -8,12 +8,24 @@ import { Faculty } from "../app/planner/faculties/faculty.interface";
 import { Course } from "../app/planner/courses/course.interface";
 import { Cohort } from "../app/planner/cohorts/cohort.interface";
 import { AcademicSession } from '../app/planner/academic-sessions/academic-session.interface';
+import { AcademicYear } from "../app/planner/academic-years/academic-year.interface";
 
 @Injectable()
 export class PlannerService {
 
   constructor(private http: Http,
     private _http: HttpInterceptorService) {
+  }
+  
+  // ====================================================================================================
+  // ACADEMIC YEAR
+  // ====================================================================================================
+
+  findAcademicYears(): Observable<AcademicYear[]> {
+    let headers = new Headers({ 'Authorization': 'Bearer TODO' });
+    let options = new RequestOptions({ headers: headers });
+    return this.http.get(environment.endpoint + '/api/planner/academicYears')
+      .map((res: Response) => <AcademicYear[]>res.json());
   }
 
   // ====================================================================================================

@@ -9,7 +9,7 @@ import { AcademicSession } from '../academic-session.interface';
 import { PlannerModuleState } from "../../index";
 import { AcademicSessionActions } from "../academic-session.action";
 import { AcademicSemester } from '../academic-semester-type.enum';
-import { AcademicYear } from '../academic-year.interface';
+import { AcademicYear } from '../../academic-years/academic-year.interface';
 
 @Component({
     selector: 'pams-academic-session-creator',
