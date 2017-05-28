@@ -114,6 +114,14 @@ public class PlannerTransformer {
         return vos;
     }
 
+	  public List<ProgramLevel> toProgramLevelVos(List<AdProgramLevel> programLevels) {
+	        List<ProgramLevel> vos = programLevels.stream()
+	        .map((programLevel) -> toProgramLevelVo(programLevel))
+	        .collect(toList());
+	        return vos;
+	    }
+	
+	
     public List<StudyCenter> toStudyCenterVos(List<AdStudyCenter> studyCenters) {
         List<StudyCenter> vos = studyCenters.stream()
                 .map((studyCenter) -> toStudyCenterVo(studyCenter))

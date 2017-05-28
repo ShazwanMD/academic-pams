@@ -37,19 +37,26 @@
         <md-card-subtitle>---</md-card-subtitle>
         <md-divider></md-divider>
         <md-card-content>
+          
           <div layout="column" layout-gt-md="row" class="insert">
           <div flex-gt-md="20">
             <img src="./../assets/ico/uda.jpg" width="120" height="150"/>
           </div>
-          <div flex-gt-md="80">
+          
+          <div flex-gt-md="40">
             <b>Student ID</b> : {{student.identityNo}}<br/><br/>
             <b>Name</b> : {{student.name}}<br/><br/>
             <b>Email</b> : {{student.email}}<br/><br/>
             <b>Phone</b> : {{student.phone}}<br/><br/>
-            <b>Mobile</b> : {{student.mobile}}<br/><br/>
+            <b>Mobile</b> : {{student.mobile}}
+          </div>
+
+          <div flex-gt-md="40">
             <b>Status</b> : {{student.studentStatus}}
           </div>
+
           </div>
+
           <br/><br/><br/>
 
     <!--TAB OTHERS INFORMATION-->
