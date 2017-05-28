@@ -104,6 +104,7 @@ public class ProfileController {
     @RequestMapping(value = "/students/{identityNo}/addresses/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<String> deleteAddress(@PathVariable String identityNo, @PathVariable Long id) {
         dummyLogin();
+        //LOG.debug("id address masa nak delete:{}",vo.getId());
         LOG.debug("id address masa nak delete:{}",id);
         AdStudent student = profileService.findStudentByMatricNo(identityNo);
         AdAddress address = profileService.findAddressById(id);
