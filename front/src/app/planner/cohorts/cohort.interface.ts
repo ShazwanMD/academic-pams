@@ -5,7 +5,6 @@ export interface Cohort extends MetaObject {
     id: number;
     code: string;
     description: string;
-    //program?: Program;
     program: Program;
     academicSession: AcademicSession;
 }

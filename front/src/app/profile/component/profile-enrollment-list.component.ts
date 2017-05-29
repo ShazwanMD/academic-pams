@@ -1,5 +1,5 @@
-import { Enrollment } from './../../term/enrollments/enrollment.interface';
 import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy} from '@angular/core';
+import {Enrollment} from "../../term/enrollments/enrollment.interface";
 
 @Component({
   selector: 'pams-profile-enrollment-list',
@@ -9,16 +9,4 @@ import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy} from '@
 export class ProfileEnrollmentListComponent {
 
   @Input() enrollments: Enrollment[];
-  //@Output() view = new EventEmitter<Enrollment>();
-
-  /*
-  private columns: any[] = [
-    {name: 'admission.cohort.code', label: 'COHORT'},
-    {name: 'section.offering.course.faculty.name', label: 'FACULTY'},
-    {name: 'section.offering.program.code', label: 'PROGRAM'},
-    {name: 'section.offering.course.code', label: 'COURSE'},
-    
-    {name: 'action', label: ''}
-  ];
-  */
 }

@@ -1,0 +1,75 @@
+<br/>
+
+<!--COHORT INFORMATION-->
+<md-card>
+  <div md-content flex md-scroll-y>
+    <div layout="column" layout-gt-md="row" class="insert">
+      <div flex-gt-md="50">
+        <md-card-title>Cohort Information</md-card-title>
+      </div>
+    </div>
+  </div>
+  <md-divider></md-divider>
+  <md-card-content>
+    <div layout="column" layout-gt-md="row" class="insert">
+      <div flex-gt-md="50">
+        <b>Cohort Code</b><br/>{{cohort?.code}}
+      </div>
+      <div flex-gt-md="50">
+        <b>Description</b><br/>{{cohort?.description}}
+      </div>
+    </div>
+  </md-card-content>
+</md-card>
+
+<br/>
+
+<!--FACULTY INFORMATION-->
+<md-card>
+  <div md-content flex md-scroll-y>
+    <div layout="column" layout-gt-md="row" class="insert">
+
+      <div flex-gt-md="50">
+        <md-card-title>Faculty Information</md-card-title>
+      </div>
+
+    </div>
+  </div>
+  <md-divider></md-divider>
+  <md-card-content>
+    <div layout="column" layout-gt-md="row" class="insert">
+      <div flex-gt-md="50">
+        <b>Faculty Code</b><br/>{{cohort?.program?.faculty?.name}}
+      </div>
+      <div flex-gt-md="50">
+        <b>Faculty Name</b><br/>{{cohort?.program?.faculty?.description}}
+      </div>
+    </div>
+  </md-card-content>
+</md-card>
+
+<br/>
+
+<!--PROGRAM INFORMATION-->
+<md-card>
+  <div md-content flex md-scroll-y>
+    <div layout="column" layout-gt-md="row" class="insert">
+
+      <div flex-gt-md="50">
+        <md-card-title>Program Information</md-card-title>
+      </div>
+
+    </div>
+  </div>
+  <md-divider></md-divider>
+  <md-card-content>
+    <div layout="column" layout-gt-md="row" class="insert">
+      <div flex-gt-md="50">
+        <b>Program Code</b><br/>{{cohort?.program?.code}}
+      </div>
+      <div flex-gt-md="50">
+        <b>Program Title</b><br/>{{cohort?.program?.titleEn}}
+      </div>
+    </div>
+  </md-card-content>
+</md-card>
