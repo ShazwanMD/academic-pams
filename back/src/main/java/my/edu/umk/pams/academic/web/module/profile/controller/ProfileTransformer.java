@@ -54,7 +54,7 @@ public class ProfileTransformer {
         vo.setId(guarantor.getId());
         vo.setName(guarantor.getName());
         vo.setIdentityNo(guarantor.getIdentityNo());
-        vo.setGuarantorType(GuarantorType.get(guarantor.getType().ordinal()));     
+        vo.setGuarantorType(GuarantorType.get(guarantor.getType().ordinal()));
         return vo;
     }
 

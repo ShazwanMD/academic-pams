@@ -279,11 +279,15 @@
       </md-tab>
 
       <!--MULA TAB COURSE INFORMATION-->
+      <md-tab label="Cohort Information">
+        <pams-profile-cohort
+          [cohort]="student.cohort">
+        </pams-profile-cohort>
+      </md-tab>
       <md-tab label="Course Information">
         <pams-profile-enrollment-list
           [enrollments]="enrollments">
         </pams-profile-enrollment-list>
-
       </md-tab>
     </md-tab-group>
 

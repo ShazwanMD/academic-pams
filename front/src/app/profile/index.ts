@@ -1,10 +1,8 @@
-
-import { AddressEditorDialog } from './dialog/address-editor.dialog';
-import { GuardianEditorDialog } from './dialog/guardian-editor.dialog';
-import { GuarantorEditorDialog } from './dialog/guarantor-editor.dialog';
-import { Enrollment } from './../term/enrollments/enrollment.interface';
-import { ProfileEnrollmentListComponent } from './component/profile-enrollment-list.component';
-import { Address } from './address.interface';
+import {AddressEditorDialog} from './dialog/address-editor.dialog';
+import {GuardianEditorDialog} from './dialog/guardian-editor.dialog';
+import {GuarantorEditorDialog} from './dialog/guarantor-editor.dialog';
+import {Enrollment} from './../term/enrollments/enrollment.interface';
+import {Address} from './address.interface';
 import {NgModule, ModuleWithProviders} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {ReactiveFormsModule} from '@angular/forms';
@@ -43,6 +41,8 @@ import {StudyModeSwitcherDialog} from "./dialog/study-mode-switcher.dialog";
 import {CommonModule} from "../common/index";
 import {AcademicSessionSubModule} from "../planner/academic-sessions/index";
 import {CohortTransfererDialog} from "./dialog/cohort-transferer.dialog";
+import {ProfileCohortComponent} from "./component/profile-cohort.component";
+import {ProfileEnrollmentListComponent} from "./component/profile-enrollment-list.component";
 
 export interface ProfileModuleState {
   students: StudentListState;
@@ -52,7 +52,8 @@ export interface ProfileModuleState {
   guardians: GuardianListState;
   contacts: ContactListState;
   enrollments: EnrollmentListState;
-};
+}
+;
 
 export const INITIAL_PROFILE_STATE: ProfileModuleState =
   <ProfileModuleState>{
@@ -93,6 +94,7 @@ export const profileModuleReducers = {
 
     // component
     ProfileComponent,
+    ProfileCohortComponent,
     ProfileActionComponent,
     ProfileListComponent,
     ProfileStatusComponent,
@@ -118,7 +120,7 @@ export const profileModuleReducers = {
     GuardianTypeSelectComponent,
     AddressTypeSelectComponent,
   ],
-  entryComponents:[
+  entryComponents: [
     DetailEditorDialog,
     ContactEditorDialog,
     GuarantorEditorDialog,
