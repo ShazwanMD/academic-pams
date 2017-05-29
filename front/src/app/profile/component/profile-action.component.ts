@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs';
 import {MdDialog, MdDialogConfig, MdDialogRef, MdSnackBar} from '@angular/material';
 import {Input, Component, ViewContainerRef, ChangeDetectionStrategy} from '@angular/core';
 import {Store} from '@ngrx/store';
@@ -14,8 +15,9 @@ import {CohortTransfererDialog} from "../dialog/cohort-transferer.dialog";
 })
 
 export class ProfileActionComponent {
-
   @Input() student: Student;
+
+    private student$: Observable<Student>;
   private switcherDialogRef: MdDialogRef<StudyModeSwitcherDialog>;
   private transfererDialogRef: MdDialogRef<CohortTransfererDialog>;
 
@@ -23,8 +25,10 @@ export class ProfileActionComponent {
               private store: Store<ProfileModuleState>,
               private vcf: ViewContainerRef,
               private dialog: MdDialog,
+   
               private snackBar: MdSnackBar) {
-  }
+  
+}
 
 
   showTransferDialog(): void {
@@ -56,6 +60,39 @@ export class ProfileActionComponent {
       // load something here
     });
   }
+
+  deactivate(): void {
+    let snackBarRef = this.snackBar.open("Deactivating Student : ?", "OK");
+    snackBarRef.afterDismissed().subscribe(() => {
+        this.student$.take(1).subscribe(student =>
+          this.store.dispatch(this.actions.deactivateStudent(student)))
+      }
+    );
+
+  }
+
+  activate(): void {
+    let snackBarRef = this.snackBar.open("Activating Student : ?", "OK");
+    snackBarRef.afterDismissed().subscribe(() => {
+        this.student$.take(1).subscribe(student =>
+          this.store.dispatch(this.actions.activateStudent(student)))
+      }
+    );
+
+  }
+
+  bar(): void {
+    let snackBarRef = this.snackBar.open("Barred Student : ?", "OK");
+    snackBarRef.afterDismissed().subscribe(() => {
+        this.student$.take(1).subscribe(student =>
+          this.store.dispatch(this.actions.barStudent(student)))
+      }
+    );
+  }
+
+  disbar(): void {
+  }
+  
 
 }
 

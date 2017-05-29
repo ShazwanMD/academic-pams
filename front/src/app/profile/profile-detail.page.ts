@@ -1,6 +1,8 @@
+import { StudyModeSwitcherDialog } from './dialog/study-mode-switcher.dialog';
+import { CohortTransfererDialog } from './dialog/cohort-transferer.dialog';
 import {Enrollment} from './../term/enrollments/enrollment.interface';
 import {Address} from './address.interface';
-import {Component, OnInit, ChangeDetectionStrategy, ViewContainerRef} from '@angular/core';
+import {Input,Component, OnInit, ChangeDetectionStrategy, ViewContainerRef} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 
 import {Store} from "@ngrx/store";
@@ -10,7 +12,7 @@ import {ProfileModuleState} from "./index";
 import {Contact} from "./contact.interface";
 import {Guardian} from "./guardian.interface";
 import {Guarantor} from "./guarantor.interface";
-import {MdSnackBar} from '@angular/material';
+import { MdSnackBar, MdDialogConfig, MdDialog, MdDialogRef } from '@angular/material';
 import {Observable} from 'rxjs';
 
 @Component({
@@ -19,7 +21,7 @@ import {Observable} from 'rxjs';
 })
 
 export class ProfileDetailPage implements OnInit {
-
+  @Input() student: Student;
   private STUDENT: string[] = "profileModuleState.student".split(".");
   private ADDRESSES: string[] = "profileModuleState.addresses".split(".");
   private GUARANTORS: string[] = "profileModuleState.guarantors".split(".");
@@ -34,11 +36,13 @@ export class ProfileDetailPage implements OnInit {
   private contacts$: Observable<Contact>;
   private enrollments$: Observable<Enrollment>;
 
-
+  private switcherDialogRef: MdDialogRef<StudyModeSwitcherDialog>;
+  private transfererDialogRef: MdDialogRef<CohortTransfererDialog>;  
   constructor(private router: Router,
               private route: ActivatedRoute,
               private actions: ProfileActions,
               private vcf: ViewContainerRef,
+               private dialog: MdDialog,
               private store: Store<ProfileModuleState>,
 
               private snackBar: MdSnackBar) {
@@ -62,7 +66,9 @@ export class ProfileDetailPage implements OnInit {
     });
   }
 
-  deactivate(): void {
+
+
+deactivate(): void {
     let snackBarRef = this.snackBar.open("Deactivating Student : ?", "OK");
     snackBarRef.afterDismissed().subscribe(() => {
         this.student$.take(1).subscribe(student =>
@@ -93,5 +99,37 @@ export class ProfileDetailPage implements OnInit {
 
   disbar(): void {
   }
+
+
+    showTransferDialog(): void {
+    let config = new MdDialogConfig();
+    config.viewContainerRef = this.vcf;
+    config.role = 'dialog';
+    config.width = '60%';
+    config.height = '80%';
+    config.position = {top: '0px'};
+    this.transfererDialogRef = this.dialog.open(CohortTransfererDialog, config);
+    this.transfererDialogRef.componentInstance.student = this.student;
+    this.transfererDialogRef.afterClosed().subscribe(res => {
+      console.log("close dialog");
+      // load something here
+    });
+  }
+
+  showSwitchDialog(): void {
+    let config = new MdDialogConfig();
+    config.viewContainerRef = this.vcf;
+    config.role = 'dialog';
+    config.width = '60%';
+    config.height = '80%';
+    config.position = {top: '0px'};
+    this.switcherDialogRef = this.dialog.open(StudyModeSwitcherDialog, config);
+    this.switcherDialogRef.componentInstance.student = this.student;
+    this.switcherDialogRef.afterClosed().subscribe(res => {
+      console.log("close dialog");
+      // load something here
+    });
+  }
+  
 }
 
