@@ -121,6 +121,43 @@ public class PlannerController {
 	}
 
 	// ====================================================================================================
+	// PROGRAM LEVEL
+	// ====================================================================================================
+
+	@RequestMapping(value = "/programLevels", method = RequestMethod.GET)
+	public ResponseEntity<List<ProgramLevel>> findProgramLevels() {
+		List<AdProgramLevel> programLevels = plannerService.findProgramLevels(0, 100);
+		return new ResponseEntity<List<ProgramLevel>>(plannerTransformer.toProgramLevelVos(programLevels),
+				HttpStatus.OK);
+	}
+
+	@RequestMapping(value = "/programLevels/{code}", method = RequestMethod.GET)
+	public ResponseEntity<ProgramLevel> findProgramLevelByCode(@PathVariable String code) {
+		return new ResponseEntity<ProgramLevel>(
+				plannerTransformer.toProgramLevelVo(plannerService.findProgramLevelByCode(code)), HttpStatus.OK);
+	}
+
+	@RequestMapping(value = "/programLevels/{code}/update", method = RequestMethod.PUT)
+	public ResponseEntity<String> updateProgramLevel(@PathVariable String code, @RequestBody ProgramLevel vo) {
+		dummyLogin();
+		LOG.debug("LevelCode:{}", code);
+		AdProgramLevel programLevel = plannerService.findProgramLevelByCode(code);
+		programLevel.setDescription(vo.getDescription());
+		plannerService.updateProgramLevel(programLevel);
+		return new ResponseEntity<String>(programLevel.getCode(), HttpStatus.OK);
+	}
+
+	@RequestMapping(value = "/programLevels/{code}/save", method = RequestMethod.POST)
+	public ResponseEntity<String> saveProgramLevel(@PathVariable String code, @RequestBody ProgramLevel vo) {
+		dummyLogin();
+		AdProgramLevel programLevel = new AdProgramLevelImpl();
+		programLevel.setCode(vo.getCode());
+		programLevel.setDescription(vo.getDescription());
+		plannerService.saveProgramLevel(programLevel);
+		return new ResponseEntity<String>("Success", HttpStatus.OK);
+	}
+
+	// ====================================================================================================
 	// FACULTY
 	// ====================================================================================================
 
