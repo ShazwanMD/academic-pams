@@ -6,7 +6,7 @@
 
   <td-layout-manage-list #list>
     <md-nav-list list-items>
-      <a md-list-item [routerLink]="['/faculties-create']">
+      <a md-list-item (click)="createDialog()">
         <md-icon>create</md-icon>
         Create Faculty
       </a>
@@ -31,7 +31,8 @@
 
       <pams-faculty-list
         [faculties]="faculties$ | async"
-        (view)="viewFaculty($event)"></pams-faculty-list>
+        (view)="viewFaculty($event)">
+      </pams-faculty-list>
 
       <md-divider></md-divider>
       <md-card-actions>
