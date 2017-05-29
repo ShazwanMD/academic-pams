@@ -20,14 +20,18 @@
        <div layout="row" class="inset" flex>
       <pams-staff-select
         [placeholder]="'Select Staff'"
-        [innerFormControl]="createForm.controls['student']">
+        [innerFormControl]="createForm.controls['staff']">
       </pams-staff-select>
       </div> 
 
 </form>
 </md-dialog-content>
 <md-dialog-actions align="end">
-<button md-raised-button color="accent"
-	(click)="save(createForm.value, createForm.valid)">Save</button>
+<!-- <button md-raised-button color="accent"
+	(click)="save(createForm.value, createForm.valid)">Save</button> -->
+	
+ <button md-raised-button color="accent" (click)="submit(editorForm.value, editorForm.valid)">
+    {{edit ? 'Update' : 'Save'}}
+  </button> 
 </md-dialog-actions>
 

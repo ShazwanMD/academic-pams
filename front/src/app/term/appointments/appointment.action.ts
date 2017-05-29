@@ -21,21 +21,22 @@ export class AppointmentActions {
   }
 
   static SAVE_APPOINTMENT = '[Appointment] Save Appointment';
-  saveAppointment(appointment): Action {
+  saveAppointment(offering, appointment): Action {
     return {
       type: AppointmentActions.SAVE_APPOINTMENT,
-      payload: appointment
+      payload: {offering:offering, appointment:appointment}
     };
   }
-
+    
+    
   static SAVE_APPOINTMENT_SUCCESS = '[Appointment] Save Appointment Success';
-  saveAppointmentSuccess(appointment): Action {
+  saveAppointmentSuccess(message): Action {
     return {
       type: AppointmentActions.SAVE_APPOINTMENT_SUCCESS,
-      payload: appointment
+      payload: message
     };
   }
-
+ 
   static REMOVE_APPOINTMENT = '[Appointment] Remove Appointment';
   removeAppointment(appointment): Action {
     return {

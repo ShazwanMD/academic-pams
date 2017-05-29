@@ -14,9 +14,11 @@ import {StaffActions} from "../staff.action";
 export class StaffSelectComponent implements OnInit {
 
   private STAFFS: string[] = "identityModuleState.staffs".split(".");
+    
+  private staffs$: Observable<Actor[]>;
   @Input() placeholder: string;
   @Input() innerFormControl: FormControl;
-  staffs$: Observable<Actor[]>;
+
 
   constructor(private store: Store<IdentityModuleState>,
               private actions: StaffActions) {
