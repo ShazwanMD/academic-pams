@@ -16,7 +16,8 @@ export class PlannerPage implements OnInit {
   }
 
   ngOnInit(): void {
+
   //   // this._route.params.subscribe(() => {
-    // });
-  }
+
+}
   }
