@@ -10,7 +10,6 @@ import {AppointmentStatus} from "./appointment-status.enum";
 
 export interface Appointment {
     id: number;
-    //student: Staff;
     staff: Actor;
     section: Section;
     session: AcademicSession;

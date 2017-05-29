@@ -25,8 +25,9 @@ import {Router, ActivatedRoute} from '@angular/router';
 
 export class AppointmentCreateTaskCreatorDialog implements OnInit {
 
-    private createForm: FormGroup;
-    private _offering: Offering;
+    private editorForm: FormGroup;
+    //private _offering: Offering;
+    private _section: Section;
     private _appointment: Appointment;
     private edit: boolean = false;
 
@@ -40,8 +41,12 @@ export class AppointmentCreateTaskCreatorDialog implements OnInit {
                 private viewContainerRef: ViewContainerRef) {
     }
 
-    set offering(value: Offering) {
+    /*set offering(value: Offering) {
         this._offering = value;
+    }*/
+    
+    set section(value: Section) {
+        this._section = value;
     }
 
      set appointment(value: Appointment) {
@@ -50,7 +55,7 @@ export class AppointmentCreateTaskCreatorDialog implements OnInit {
   }
     
     ngOnInit(): void {
-        this.createForm = this.formBuilder.group(<Appointment>{
+        this.editorForm = this.formBuilder.group(<Appointment>{
             id: null,
             staff: <Actor>{},
             session: <AcademicSession>{},
@@ -60,25 +65,23 @@ export class AppointmentCreateTaskCreatorDialog implements OnInit {
             appointmentStatus: AppointmentStatus.NEW
         });
 
-     // set offering by default
-    this.createForm.patchValue({'offering': this._offering});
-    if (this.edit) this.createForm.patchValue(this._appointment);
-  }
+        // set offering by default
+        this.editorForm.patchValue({'offering': this._section});
+        if (this.edit) this.editorForm.patchValue(this._appointment);
+      }
 
   
-   submit( appointment: Appointment, isValid: boolean) {
-      console.log(appointment);
-      
-    // set codes
-    //appointment.canonicalCode = this._offering.canonicalCode + "" + appointment.ordinal
-    // appointment.code = this._offering.code + "" + appointment.ordinal
-      if (!appointment.id) 
-      
-      this.store.dispatch(this.actions.saveAppointment(this._offering, appointment));
-          
-      else  this.store.dispatch(this.actions.updateAppointment(this._offering, appointment));
-      this.dialog.close();  
-    } 
-      
-    
-}
+    submit( appointment: Appointment, isValid: boolean) {
+        console.log(appointment);
+        
+        // set codes
+       //section.canonicalCode = this._offering.canonicalCode + "" + section.ordinal
+       //section.code = this._offering.code + "" + section.ordinal
+        if (!appointment.id) 
+        
+        this.store.dispatch(this.actions.addAppointment(this._section, appointment));
+            
+        else  this.store.dispatch(this.actions.updateAppointment(this._section, appointment));
+        this.dialog.close();
+      }
+  }

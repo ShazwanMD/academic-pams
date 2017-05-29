@@ -5,7 +5,9 @@ import {TermService} from "../../../services/term.service";
 import {Store} from "@ngrx/store";
 import {OfferingActions} from "../offerings/offering.action";
 import {Offering} from "../offerings/offering.interface";
+import {Section} from "../sections/section.interface";
 import {TermModuleState} from "../index";
+import { SectionActions } from "../sections/section.action";
 
 
 @Injectable()
@@ -16,6 +18,7 @@ export class AppointmentEffects {
   constructor(private actions$: Actions,
               private appointmentActions: AppointmentActions,
               private offeringActions: OfferingActions,
+              private sectionActions: SectionActions,
               private termService: TermService,
               private store$: Store<TermModuleState> ) {
   }
@@ -27,15 +30,27 @@ export class AppointmentEffects {
     .map(appointment => this.appointmentActions.findAppointmentByIdSuccess(appointment));
     
     //save appointment
-     @Effect() saveAppointment$ =
+     @Effect() addAppointment$ =
      this.actions$
-      .ofType(AppointmentActions.SAVE_APPOINTMENT)
+      .ofType(AppointmentActions.ADD_APPOINTMENT)
       .map(action => action.payload)
-      .switchMap(payload => this.termService.saveAppointment(payload.offering, payload.appointment))
-      .map(message => this.appointmentActions.saveAppointmentSuccess(message))
+      .switchMap(payload => this.termService.addAppointment(payload.section, payload.appointment))
+      .map(message => this.appointmentActions.addAppointmentSuccess(message))
       .withLatestFrom(this.store$.select(...this.OFFERING))
       .map(state => state[1])
-      .map((offering: Offering) => this.offeringActions.findOfferingByCanonicalCode(offering.canonicalCode));
+      .map((section: Section) => this.sectionActions.findSectionByCanonicalCode(section.canonicalCode));
+     
+     //update appointment
+      @Effect() updateAppointment$ = this.actions$
+     .ofType(AppointmentActions.UPDATE_APPOINTMENT)
+     .map(action => action.payload)
+     .switchMap(payload => this.termService.updateAppointment(payload.offering, payload.appointment))
+     .map(message => this.appointmentActions.updateAppointmentSuccess(message))
+     .withLatestFrom(this.store$.select(...this.OFFERING))
+     .map(state => state[1])
+     //.mergeMap(action => from([action, this.appointmentActions.findAppointments()]));
+     .map((offering: Offering) => this.offeringActions.findOfferingByCanonicalCode(offering.canonicalCode));
+     
     
     //remove appointment
       @Effect() removeAppointment$ = this.actions$

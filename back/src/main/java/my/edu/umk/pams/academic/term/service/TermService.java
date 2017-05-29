@@ -436,10 +436,10 @@ public interface TermService {
 
     // todo(uda): business method is appoint()
     @Deprecated
-    void saveAppointment(AdAppointment appointment);
+    void saveAppointment(AdAppointment appointment); //use addAppointment
 
     void addAppointment(AdSection section, AdAppointment appointment);
-
+    
     void updateAppointment(AdAppointment appointment);
 
     void deleteAppointment(AdAppointment appointment);

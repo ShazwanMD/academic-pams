@@ -20,19 +20,19 @@ export class AppointmentActions {
     };
   }
 
-  static SAVE_APPOINTMENT = '[Appointment] Save Appointment';
-  saveAppointment(offering, appointment): Action {
+  static ADD_APPOINTMENT = '[Appointment] Add Appointment';
+  addAppointment(section, appointment): Action {
     return {
-      type: AppointmentActions.SAVE_APPOINTMENT,
-      payload: {offering:offering, appointment:appointment}
+      type: AppointmentActions.ADD_APPOINTMENT,
+      payload: {section:section, appointment:appointment}
     };
   }
     
     
-  static SAVE_APPOINTMENT_SUCCESS = '[Appointment] Save Appointment Success';
-  saveAppointmentSuccess(message): Action {
+  static ADD_APPOINTMENT_SUCCESS = '[Appointment] Add Appointment Success';
+  addAppointmentSuccess(message): Action {
     return {
-      type: AppointmentActions.SAVE_APPOINTMENT_SUCCESS,
+      type: AppointmentActions.ADD_APPOINTMENT_SUCCESS,
       payload: message
     };
   }

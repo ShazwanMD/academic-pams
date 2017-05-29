@@ -1,6 +1,7 @@
 package my.edu.umk.pams.academic.web.module.term.controller;
 
 import my.edu.umk.pams.academic.common.service.CommonService;
+import my.edu.umk.pams.academic.identity.model.AdStaff;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.identity.service.IdentityService;
 import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
@@ -568,15 +569,13 @@ public class TermController {
         AdOffering offering = termService.findOfferingByCanonicalCode(canonicalCode);
         AdSection section = termService.findSectionById(vo.getSection().getId());
         AdAppointment appointment = new AdAppointmentImpl();
-        appointment.setStatus(AdAppointmentStatus.CONFIRMED); // todo(sam): enum
-        // select, vo
-        // etc
-        appointment.setStaff(identityService.findStaffById(vo.getStaff().getId()));
+        appointment.setStatus(AdAppointmentStatus.CONFIRMED);
         appointment.setSection(section);
+        appointment.setStaff(identityService.findStaffById(vo.getStaff().getId()));
         termService.addAppointment(section, appointment);
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
-
+    
     @RequestMapping(value = "/offerings/{canonicalCode}/enrollments", method = RequestMethod.POST)
     public ResponseEntity<String> addEnrollment(@PathVariable String canonicalCode, @RequestBody Enrollment vo) {
         dummyLogin();

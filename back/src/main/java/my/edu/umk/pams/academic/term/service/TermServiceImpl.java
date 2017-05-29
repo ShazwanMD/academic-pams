@@ -1292,7 +1292,7 @@ public class TermServiceImpl implements TermService {
         appointmentDao.save(appointment, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
-
+    
     @Override
     public void updateAppointment(AdAppointment appointment) {
         appointmentDao.update(appointment, securityService.getCurrentUser());
