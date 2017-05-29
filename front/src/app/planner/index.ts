@@ -1,4 +1,3 @@
-import {ProgramLevel} from './programs/program-level.interface';
 import {NgModule, ModuleWithProviders} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {ReactiveFormsModule} from '@angular/forms';
@@ -42,6 +41,10 @@ import {AcademicSessionListState, academicSessionListReducer} from "./academic-s
 import {AcademicYearListState, academicYearListReducer} from "./academic-years/academic-year-list.reducer";
 import {AcademicYear} from "./academic-years/academic-year.interface";
 import {AcademicYearSubModule} from "./academic-years/index";
+import {programLevelListReducer, ProgramLevelListState} from "./program-levels/program-level-list.reducer";
+import {programLevelReducer, ProgramLevelState} from "./program-levels/program-level.reducer";
+import {ProgramLevelSubModule} from "./program-levels/index";
+import {ProgramLevel} from "./program-levels/program-level.interface";
 
 
 export interface PlannerModuleState {
@@ -52,6 +55,8 @@ export interface PlannerModuleState {
   faculty: FacultyState;
   programs: ProgramListState;
   program: ProgramState;
+  programLevels: ProgramLevelListState;
+  programLevel: ProgramLevelState;
   courses: CourseListState;
   course: CourseState;
   cohorts: CohortListState;
@@ -68,6 +73,8 @@ export const INITIAL_PLANNER_STATE: PlannerModuleState =
     faculty: <Faculty>{},
     programs: <Program[]>[],
     program: <Program>{},
+    programLevels: <ProgramLevel[]>[],
+    programLevel: <ProgramLevel>{},
     level: <ProgramLevel>{},
     levels: <ProgramLevel[]>[],
     courses: <Course[]>[],
@@ -84,6 +91,8 @@ export const plannerModuleReducers = {
   faculty: facultyReducer,
   programs: programListReducer,
   program: programReducer,
+  programLevels: programLevelListReducer,
+  programLevel: programLevelReducer,
   courses: courseListReducer,
   course: courseReducer,
   cohorts: cohortListReducer,
@@ -105,13 +114,13 @@ export const plannerModuleReducers = {
     CohortSubModule.forRoot(),
     AcademicSessionSubModule.forRoot(),
     AcademicYearSubModule.forRoot(),
+    ProgramLevelSubModule.forRoot(),
   ],
 
   declarations: [
     // page
     PlannerPage,
   ],
-
   exports: [],
 })
 
