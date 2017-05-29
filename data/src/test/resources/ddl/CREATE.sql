@@ -120,6 +120,7 @@
         M_TS timestamp,
         M_ID int8,
         M_ST int4,
+        ORDINAL int4,
         STANDING int4 not null,
         STATUS int4 not null,
         COHORT_ID int8 not null,

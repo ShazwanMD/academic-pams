@@ -39,6 +39,10 @@ public class AdAdmissionImpl implements AdAdmission {
     @Column(name = "CREDIT_TAKEN")
     private Integer creditTaken = 0;
 
+    // note: semester ke berapa
+    @Column(name = "ORDINAL")
+    private Integer ordinal = 0;
+
     @Enumerated(EnumType.ORDINAL)
     @Column(name = "STATUS", nullable = false)
     private AdAdmissionStatus status = AdAdmissionStatus.ADMITTED;
@@ -112,6 +116,16 @@ public class AdAdmissionImpl implements AdAdmission {
     @Override
     public void setCreditTaken(Integer creditTaken) {
         this.creditTaken = creditTaken;
+    }
+
+    @Override
+    public Integer getOrdinal() {
+        return ordinal;
+    }
+
+    @Override
+    public void setOrdinal(Integer ordinal) {
+        this.ordinal = ordinal;
     }
 
     @Override

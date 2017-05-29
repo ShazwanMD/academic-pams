@@ -29,12 +29,12 @@ import static java.util.stream.Collectors.toList;
  */
 @Component("termTransformer")
 public class TermTransformer {
-	
-	 private static final Logger LOG = LoggerFactory.getLogger(TermTransformer.class);
+
+    private static final Logger LOG = LoggerFactory.getLogger(TermTransformer.class);
 
     @Autowired
     private TermService termService;
-    
+
     @Autowired
     private CommonService commonService;
 
@@ -43,13 +43,13 @@ public class TermTransformer {
 
     @Autowired
     private IdentityTransformer identityTransformer;
-    
+
     @Autowired
     private CommonTransformer commonTransformer;
 
     @Autowired
     private PlannerTransformer plannerTransformer;
-    
+
     @Autowired
     private TermTransformer termTransformer;
 
@@ -87,6 +87,7 @@ public class TermTransformer {
     public Admission toAdmissionVo(AdAdmission admission) {
         Admission vo = new Admission();
         vo.setId(admission.getId());
+        vo.setOrdinal(admission.getOrdinal());
         vo.setGpa(admission.getGpa());
         vo.setCgpa(admission.getCgpa());
         vo.setCreditEarned(admission.getCreditEarned());
@@ -96,7 +97,6 @@ public class TermTransformer {
         vo.setCohort(plannerTransformer.toCohortVo(admission.getCohort()));
         vo.setAdmissionStatus(AdmissionStatus.get(admission.getStatus().ordinal()));
         vo.setAcademicStanding(AcademicStanding.get(admission.getStanding().ordinal()));
-        //vo.setEnrollmentStanding(EnrollmentStanding.get(enrollment.getStanding().ordinal()));
         return vo;
     }
 
@@ -155,11 +155,11 @@ public class TermTransformer {
         Enrollment vo = new Enrollment();
         vo.setId(enrollment.getId());
         vo.setAdmission(this.toAdmissionVo(enrollment.getAdmission()));
-       // vo.setGradeCode(commonTransformer.toGradeCodeVo(enrollment.getGradeCode()));
+        // vo.setGradeCode(commonTransformer.toGradeCodeVo(enrollment.getGradeCode()));
         vo.setSection(this.toSectionVo(enrollment.getSection()));
         vo.setEnrollmentStanding(EnrollmentStanding.get(enrollment.getStanding().ordinal()));
         vo.setEnrollmentStatus(EnrollmentStatus.get(enrollment.getStatus().ordinal()));
-               
+
         return vo;
     }
 
@@ -247,7 +247,7 @@ public class TermTransformer {
                 .collect(toList());
         return vos;
     }
-    
+
     public List<Appointment> toAppointmentVos(List<AdAppointment> appointments) {
         List<Appointment> vos = appointments.stream()
                 .map((appointment) -> toAppointmentVo(appointment))
