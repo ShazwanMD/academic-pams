@@ -16,6 +16,13 @@
         [innerFormControl]="createForm.controls['appointmentStatus']">
       </pams-appointment-status-select>
       </div> 
+      
+       <div layout="row" class="inset" flex>
+      <pams-staff-select
+        [placeholder]="'Select Staff'"
+        [innerFormControl]="createForm.controls['student']">
+      </pams-staff-select>
+      </div> 
 
 </form>
 </md-dialog-content>
