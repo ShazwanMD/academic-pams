@@ -20,6 +20,7 @@ import {AppointmentEditorDialog} from "./dialog/appointment-editor.dialog";
 import {AppointmentCreateTaskCreatorDialog} from "./dialog/appointment-create-task-creator.dialog";
 import {AppointmentUpdateTaskCreatorDialog} from "./dialog/appointment-update-task-creator.dialog";
 import {SectionSubModule} from "../sections/index";
+import {IdentityModule} from "../../identity/index";
 
 @NgModule({
   imports: [
@@ -28,6 +29,7 @@ import {SectionSubModule} from "../sections/index";
     ReactiveFormsModule,
     CovalentCoreModule.forRoot(),
     SectionSubModule.forRoot(),
+    IdentityModule.forRoot(),
 
     
     EffectsModule.run(AppointmentEffects),
