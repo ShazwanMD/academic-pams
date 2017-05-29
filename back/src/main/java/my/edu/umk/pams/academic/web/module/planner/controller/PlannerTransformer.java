@@ -76,8 +76,7 @@ public class PlannerTransformer {
         return vo;
     }
 
-    private ProgramLevel toProgramLevelVo(AdProgramLevel level) {
-		
+    public ProgramLevel toProgramLevelVo(AdProgramLevel level) {
     	ProgramLevel vo = new ProgramLevel();
 		vo.setId(level.getId());
         vo.setCode(level.getCode());

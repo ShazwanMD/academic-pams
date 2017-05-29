@@ -25,6 +25,7 @@ import {FacultySubModule} from "../faculties/index";
 import {ProgramActionComponent} from "./component/program-action.component";
 import {ProgramStatusComponent} from "./component/program-status.component";
 import {ProgramStatusSelectComponent} from "./component/program-status-select.component";
+ import {ProgramLevelSubModule} from "../program-levels/index";
 
 @NgModule({
   imports: [
@@ -33,6 +34,7 @@ import {ProgramStatusSelectComponent} from "./component/program-status-select.co
     ReactiveFormsModule,
     CovalentCoreModule.forRoot(),
     FacultySubModule.forRoot(),
+    ProgramLevelSubModule.forRoot(),
     EffectsModule.run(ProgramEffects),
   ],
   declarations: [
@@ -47,7 +49,6 @@ import {ProgramStatusSelectComponent} from "./component/program-status-select.co
     ProgramActionComponent,
     ProgramStatusComponent,
     ProgramStatusSelectComponent,
-    ProgramLevelSelectComponent,
 
     // dialog
     ProgramEditorDialog,
@@ -60,7 +61,6 @@ import {ProgramStatusSelectComponent} from "./component/program-status-select.co
     ProgramComponent,
     ProgramStatusComponent,
     ProgramStatusSelectComponent,
-    ProgramLevelSelectComponent,
 
   ],
 
