@@ -54,7 +54,7 @@ public class Cohort extends MetaObject{
 
     public void setCohort(Cohort cohort) {
         this.cohort = cohort;
-  
+ 
     }
 
     @JsonCreator

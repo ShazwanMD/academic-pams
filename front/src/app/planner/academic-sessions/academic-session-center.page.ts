@@ -6,8 +6,6 @@ import { MdDialog } from '@angular/material';
 import { Store } from "@ngrx/store";
 import { Observable } from "rxjs";
 
-import { IdentityService } from '../../../services';
-import { CommonService } from '../../../services';
 import { AcademicSession } from './academic-session.interface';
 import { AcademicSessionActions } from "./academic-session.action";
 import { PlannerModuleState } from "../index";
