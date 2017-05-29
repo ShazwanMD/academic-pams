@@ -76,14 +76,18 @@ export class OfferingEffects {
         .map( state => state[1] )
         .map(( offering: Offering ) => this.offeringActions.findOfferingByCanonicalCode( offering.canonicalCode ) );
     */
- //update offering
+ 
+    //update offering
     
-    @Effect() updateOfferings$ = this.actions$
+    @Effect() updateOffering$ = this.actions$
     .ofType(OfferingActions.UPDATE_OFFERING)
     .map(action => action.payload)
     .switchMap(payload => this.termService.updateOffering(payload))
     .map(message => this.offeringActions.updateOfferingSuccess(message))
     .withLatestFrom( this.store$.select( ...this.OFFERING ) )
-    .mergeMap(action => from([action, this.offeringActions.findOfferings()]));
+    .map(state => state[1])
+    //.mergeMap(action => from([action, this.offeringActions.findOfferings()]));
+    .map((offering: Offering) => this.offeringActions.findOfferingByCanonicalCode(offering.canonicalCode));
+    
 
 }
