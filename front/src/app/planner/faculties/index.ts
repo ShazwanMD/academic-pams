@@ -56,10 +56,12 @@ import { FacultyProgramListComponent } from "./component/faculty-program-list.co
     FacultySelectComponent,
     FacultyActionComponent,
     FacultyStatusComponent,
+    FacultyProgramListComponent,
   ],
 
   entryComponents: [
     FacultyCreatorDialog,
+      FacultyProgramListComponent,
   ],
 })
 

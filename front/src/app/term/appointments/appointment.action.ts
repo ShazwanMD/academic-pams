@@ -52,4 +52,26 @@ export class AppointmentActions {
       payload: appointment
     };
   }
+    
+      //update section for capacity and ordinal
+    static UPDATE_APPOINTMENT = '[Appointment] Update Appointment';
+
+  updateAppointment(offering, appointment): Action {
+    console.log("updateAppointment");
+    return {
+      type: AppointmentActions.UPDATE_APPOINTMENT,
+      payload: {offering:offering, appointment:appointment}
+    };
+  }
+
+  static UPDATE_APPOINTMENT_SUCCESS = '[Appointment] Update Appointment Success';
+
+  updateAppointmentSuccess(message): Action {
+    console.log("updateAppointmentSuccess");
+    return {
+      type: AppointmentActions.UPDATE_APPOINTMENT_SUCCESS,
+      payload: message
+    };
+  } 
+    
 }

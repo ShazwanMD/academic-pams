@@ -60,23 +60,14 @@ export class AppointmentCreateTaskCreatorDialog implements OnInit {
             appointmentStatus: AppointmentStatus.NEW
         });
 
-        // set offering by default
-     //   this.createForm.patchValue({ 'offering': this._offering });
-   // }
-    
      // set offering by default
     this.createForm.patchValue({'offering': this._offering});
     if (this.edit) this.createForm.patchValue(this._appointment);
   }
 
-
-    /* save(offeringApplication: OfferingApplication, isValid: boolean) {
-       this.store.dispatch(this.actions.startOfferingApplicationTask(offeringApplication));
-       this.dialog.close();
-     } */
-    
+  
    submit( appointment: Appointment, isValid: boolean) {
-    /*  console.log(appointment);
+      console.log(appointment);
       
     // set codes
     //appointment.canonicalCode = this._offering.canonicalCode + "" + appointment.ordinal
@@ -86,7 +77,7 @@ export class AppointmentCreateTaskCreatorDialog implements OnInit {
       this.store.dispatch(this.actions.saveAppointment(this._offering, appointment));
           
       else  this.store.dispatch(this.actions.updateAppointment(this._offering, appointment));
-      this.dialog.close();  */
+      this.dialog.close();  
     } 
       
     
