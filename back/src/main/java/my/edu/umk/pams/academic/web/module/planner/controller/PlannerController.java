@@ -124,38 +124,8 @@ public class PlannerController {
 	// FACULTY
 	// ====================================================================================================
 
-	@RequestMapping(value = "/faculties", method = RequestMethod.GET)
-	public ResponseEntity<List<Faculty>> findFaculties() {
-		List<AdFaculty> faculties = plannerService.findFaculties(0, 100);
-		return new ResponseEntity<List<Faculty>>(plannerTransformer.toFacultyVos(faculties), HttpStatus.OK);
-	}
-
-	@RequestMapping(value = "/faculties/{code}", method = RequestMethod.GET)
-	public ResponseEntity<Faculty> findFacultyByCode(@PathVariable String code) throws UnsupportedEncodingException {
-		return new ResponseEntity<Faculty>(plannerTransformer.toFacultyVo(plannerService.findFacultyByCode(code)),
-				HttpStatus.OK);
-	}
-
-	@RequestMapping(value = "/faculties/{code}/programs", method = RequestMethod.GET)
-	public ResponseEntity<List<Program>> findProgramsByFaculty(@PathVariable String code)
-			throws UnsupportedEncodingException {
-		AdFaculty faculty = plannerService.findFacultyByCode(code);
-		return new ResponseEntity<List<Program>>(plannerTransformer.toProgramVos(plannerService.findPrograms(faculty)),
-				HttpStatus.OK);
-	}
-
-	@RequestMapping(value = "/faculties/{code}/courses", method = RequestMethod.GET)
-	public ResponseEntity<List<Course>> findCoursesByFaculty(@PathVariable String code)
-			throws UnsupportedEncodingException {
-		AdFaculty faculty = plannerService.findFacultyByCode(code);
-		return new ResponseEntity<List<Course>>(plannerTransformer.toCourseVos(plannerService.findCourses(faculty)),
-				HttpStatus.OK);
-	}
-
-	// business methods
-
-	@RequestMapping(value = "/faculties/create", method = RequestMethod.POST)
-	public ResponseEntity<String> createFaculty(@RequestBody Faculty vo) {
+	@RequestMapping(value = "/faculties/{code}/save", method = RequestMethod.POST)
+ 	public ResponseEntity<String> saveFaculty(@PathVariable String code, @RequestBody Faculty vo) {
 		dummyLogin();
 		AdFaculty faculty = new AdFacultyImpl();
 		faculty.setCode(vo.getCode());
@@ -200,6 +170,33 @@ public class PlannerController {
 		plannerService.updateFaculty(faculty);
 		return new ResponseEntity<String>(faculty.getCode(),HttpStatus.OK);
 	}
+	@RequestMapping(value = "/faculties", method = RequestMethod.GET)
+	public ResponseEntity<List<Faculty>> findFaculties() {
+		List<AdFaculty> faculties = plannerService.findFaculties(0, 100);
+		return new ResponseEntity<List<Faculty>>(plannerTransformer.toFacultyVos(faculties), HttpStatus.OK);
+	}
+
+	@RequestMapping(value = "/faculties/{code}", method = RequestMethod.GET)
+	public ResponseEntity<Faculty> findFacultyByCode(@PathVariable String code) throws UnsupportedEncodingException {
+		return new ResponseEntity<Faculty>(plannerTransformer.toFacultyVo(plannerService.findFacultyByCode(code)),
+				HttpStatus.OK);
+	}
+
+	@RequestMapping(value = "/faculties/{code}/programs", method = RequestMethod.GET)
+	public ResponseEntity<List<Program>> findProgramsByFaculty(@PathVariable String code)
+			throws UnsupportedEncodingException {
+		AdFaculty faculty = plannerService.findFacultyByCode(code);
+		return new ResponseEntity<List<Program>>(plannerTransformer.toProgramVos(plannerService.findPrograms(faculty)),
+				HttpStatus.OK);
+	}
+
+	@RequestMapping(value = "/faculties/{code}/courses", method = RequestMethod.GET)
+	public ResponseEntity<List<Course>> findCoursesByFaculty(@PathVariable String code)
+			throws UnsupportedEncodingException {
+		AdFaculty faculty = plannerService.findFacultyByCode(code);
+		return new ResponseEntity<List<Course>>(plannerTransformer.toCourseVos(plannerService.findCourses(faculty)),
+				HttpStatus.OK);
+	}
 
 	// ====================================================================================================
 	// PROGRAM
@@ -243,7 +240,6 @@ public class PlannerController {
 	@RequestMapping(value = "/programs/{code}", method = RequestMethod.PUT)
 	public ResponseEntity<String> updateProgram(@PathVariable String code, @RequestBody Program vo) {
 		dummyLogin();
-
 		AdProgram program = plannerService.findProgramByCode(code);
 		program.setCode(vo.getCode());
 		program.setTitleMs(vo.getTitleMs());
