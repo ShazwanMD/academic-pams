@@ -15,12 +15,44 @@
           <md-card-title>Action</md-card-title>
           <md-card-subtitle>Actions available on current course</md-card-subtitle>
           <md-divider></md-divider>
-
           <md-nav-list flex dense>
-            <md-list-item [routerLink]="['/courses-reopen', course?.code]">
-              <md-icon md-list-avatar>gavel</md-icon>
-              <h4 md-line>Deactivate</h4>
-              <p md-line>Deactivate this course</p>
+<a md-list-item (click)="showDialog()">
+               <md-icon md-list-avatar>assignment_ind</md-icon>
+              <h4 md-line>Update Course</h4>
+              <p md-line>Update this course</p>
+ </a>
+<a md-list-item (click)="delate()">
+              <md-icon md-list-avatar>done_all</md-icon>
+              <h4 md-line>Delete Course</h4>
+              <p md-line>Delete this course</p>
+            
+           </a> 
+            <md-divider></md-divider>
+            <h3 md-subheader>Planner Menu</h3>
+            <md-list-item [routerLink]="['/planner/academic-sessions']">
+              <md-icon md-list-avatar>visibility</md-icon>
+              <h4 md-line>Academic Session</h4>
+              <p md-line>Watch this academic session</p>
+            </md-list-item>
+            <md-list-item [routerLink]="['/planner/faculties']">
+              <md-icon md-list-avatar>email</md-icon>
+              <h4 md-line>Faculty</h4>
+              <p md-line>Share this course with others</p>
+            </md-list-item>
+             <md-list-item [routerLink]="['/planner/programs']">
+              <md-icon md-list-avatar>email</md-icon>
+              <h4 md-line>Program</h4>
+              <p md-line>Share this course with others</p>
+            </md-list-item>
+             <md-list-item [routerLink]="['/planner/courses']">
+              <md-icon md-list-avatar>email</md-icon>
+              <h4 md-line>Course</h4>
+              <p md-line>Share this course with others</p>
+            </md-list-item>
+             <md-list-item [routerLink]="['/planner/cohorts']">
+              <md-icon md-list-avatar>email</md-icon>
+              <h4 md-line>Course</h4>
+              <p md-line>Share this course with others</p>
             </md-list-item>
           </md-nav-list>
         </md-card>
