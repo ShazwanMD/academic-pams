@@ -5,6 +5,7 @@ import { NgModule, ModuleWithProviders } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CovalentCoreModule } from '@covalent/core';
+import { EffectsModule } from '@ngrx/effects';
 
 import { PlannerService } from "../../../services";
 import { CommonService } from "../../../services";
@@ -15,12 +16,14 @@ import { FacultyDetailPage } from "./faculty-detail.page";
 import { FacultyListComponent } from "./component/faculty-list.component";
 import { Faculty } from "./faculty.interface";
 import { FacultyActions } from "./faculty.action";
-import { EffectsModule } from "@ngrx/effects";
 import { FacultyEffects } from "./faculty.effect";
 import { FacultyComponent } from "./component/faculty.component";
 import { FacultySelectComponent } from "./component/faculty-select.component";
 import { FacultyActionComponent } from "./component/faculty-action.component";
 import { FacultyStatusComponent } from "./component/faculty-status.component";
+import { FacultyCreatorDialog } from "./dialog/faculty-creator.dialog";
+import { FacultyStatusSelectComponent } from "./component/faculty-status-select.component";
+import { FacultyProgramListComponent } from "./component/faculty-program-list.component";
 
 @NgModule({
   imports: [
@@ -41,8 +44,11 @@ import { FacultyStatusComponent } from "./component/faculty-status.component";
     FacultySelectComponent,
     FacultyActionComponent,
     FacultyStatusComponent,
+    FacultyProgramListComponent,
+    FacultyStatusSelectComponent,
     
     //dialog
+    FacultyCreatorDialog,
 
   ],
 
@@ -53,8 +59,7 @@ import { FacultyStatusComponent } from "./component/faculty-status.component";
   ],
 
   entryComponents: [
-    FacultyActionComponent,
-    FacultyStatusComponent,
+    FacultyCreatorDialog,
   ],
 })
 
