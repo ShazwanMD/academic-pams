@@ -1,7 +1,7 @@
 <md-select [placeholder]="placeholder"
 	(change)="selectChangeEvent($event.value)" flex>
 	 <md-option *ngFor="let level of programLevels$ | async" [value]="level">
-{{level.code}}: {{level.description}}
+{{level.code}}
  </md-option> </md-select>
  
  

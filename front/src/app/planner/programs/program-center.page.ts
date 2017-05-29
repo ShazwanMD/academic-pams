@@ -1,3 +1,4 @@
+import { Faculty } from './../faculties/faculty.interface';
 import {Router, ActivatedRoute} from '@angular/router';
 import {Component, OnInit, ViewContainerRef} from '@angular/core';
 import {MdDialogRef} from '@angular/material';
@@ -49,6 +50,7 @@ export class ProgramCenterPage implements OnInit {
     console.log("program: " + program.code);
     this.router.navigate(['/programs-detail', program.code]);
   }
+
 
   ngOnInit(): void {
     console.log("find programs");

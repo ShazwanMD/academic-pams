@@ -1,11 +1,40 @@
-<md-card>
+
+<!--<md-card>
+  <div toolbar-buttons layout="row" layout-align="start left" flex>
   <md-card-title>{{program?.code}}</md-card-title>
   <md-card-subtitle>{{program?.titleMs}}</md-card-subtitle>
   <md-card-subtitle>{{program?.titleEn}}</md-card-subtitle>
+
+ <span flex></span>
+    <button md-button class="md-icon-button" (click)="editorDialog()" mdTooltip="Edit program">
+      <md-icon class="md-24 tc-grey-700">add</md-icon>
+    </button>
+    <button md-button class="md-icon-button" (click)="removeProgrsm(row)" mdTooltip="Remove programs">
+      <md-icon class="md-24 tc-grey-700">delete</md-icon>
+    </button>
+  </div>-->
+
+  <md-card>
+  <div toolbar-buttons layout="row" layout-align="start center" flex>
+    <md-card-title>{{program?.code}}</md-card-title>
+     <!--<md-card-subtitle>{{program?.titleMs}}</md-card-subtitle><br>-->
+   
+    <span flex></span>
+    <button md-button class="md-icon-button" (click)="editorDialog()" mdTooltip="Edit program">
+      <md-icon class="md-24 tc-grey-700">add</md-icon>
+    </button>
+    <button md-button class="md-icon-button" (click)="removeProgrsm(row)" mdTooltip="Remove programs">
+      <md-icon class="md-24 tc-grey-700">delete</md-icon>
+    </button>
+  </div>
+
   <md-divider></md-divider>
   <md-card-content>
     <!--Tab Section Here-->
+
+  
     <md-tab-group>
+      
       <md-tab label="Program Detail"><br>
         <div>Code : {{program?.code}}</div>
         <br>
@@ -28,9 +57,27 @@
 
       </md-tab>
     </md-tab-group>
-
   </md-card-content>
   <md-card-actions layout-align="end center">
+
+    <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
+        <div layout="row">
+          <span flex>{{value}}</span>
+        </div>
+      </template>
+      <template tdDataTableTemplate="action" let-value="value" let-row="row"
+                let-column="column">
+        <div layout="row">
+          <button md-icon-button [md-menu-trigger-for]="menu1" mdTooltip="Select actions">
+            <md-icon>more_vert</md-icon>
+          </button>
+          <md-menu x-position="before" #menu1="mdMenu">
+            <button md-menu-item [routerLink]="['/planner/programs', row['id']]">View program</button>
+             <button md-menu-item (click)="EditProgram(row)">EditProgram</button>
+            <button md-menu-item (click)="removeProgram(row)">Remove Program</button>
+          </md-menu>
+        </div>
+      </template>
   </md-card-actions>
 </md-card>
 
