@@ -37,7 +37,7 @@ private FACULTY: string[] = "plannerModuleState.faculty".split(".");
   @Effect() updatefaculty$ = this.actions$
     .ofType(FacultyActions.UPDATE_FACULTY)
     .map(action => action.payload)
-    .switchMap(faculty => this.plannerService.updatefaculty(faculty))
+    .switchMap(faculty => this.plannerService.updateFaculty(faculty))
     .map(faculty => this.facultyActions.updateFacultySuccess(faculty))
     .withLatestFrom(this.store$.select(...this.FACULTY))
     .map(state => state[1])

@@ -1,0 +1,29 @@
+<!-- Basic Card -->
+<md-card>
+  <md-card-title>{{programLevel.description}}</md-card-title>
+  <md-card-subtitle>{{programLevel.code}}</md-card-subtitle>
+  <md-divider></md-divider>
+  <md-card-content>
+    <!--Tab Section Here-->
+    <md-tab-group>
+      <md-tab label="Program Level Detail"><br>
+        <div>Code : {{programLevel.code}}</div>
+        <br>
+        <div>Description : {{programLevel.description}}</div>
+        <br>
+      </md-tab>
+
+      <md-tab label="Information"><br>
+        <div>Detail Description of Program Level</div>
+        <br>
+
+        <md-list-item (click)="editLevel()">
+          <button md-button color="accent" class="text-upper">UPDATE</button>
+        </md-list-item>
+
+      </md-tab>
+    </md-tab-group>
+
+  </md-card-content>
+  <md-divider></md-divider>
+</md-card>

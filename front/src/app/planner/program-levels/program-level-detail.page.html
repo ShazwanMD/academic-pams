@@ -1,0 +1,22 @@
+<td-layout-nav>
+  <div toolbar-content layout="row" layout-align="center center" flex>
+    <span>PAMS: Postgraduate Management System</span>
+    <span flex></span>
+  </div>
+
+  <div md-content flex md-scroll-y>
+    <div layout="column" layout-gt-md="row" class="inset">
+      <div flex-gt-md="70">
+        <pams-program-level [programLevel]="programLevel$ | async"></pams-program-level>
+      </div>
+
+      <div flex-gt-md="30">
+
+        <pams-program-level-status [programLevel]="programLevel$ | async">
+        </pams-program-level-status>
+        <pams-program-level-action [programLevel]="programLevel$ | async">
+        </pams-program-level-action>
+      </div>
+    </div>
+  </div>
+</td-layout-nav>

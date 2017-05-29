@@ -1,0 +1,20 @@
+<h2 md-dialog-title>Program Level Form</h2>
+<md-card-title>Create New Program Level</md-card-title>
+
+<form [formGroup]="createForm">
+  <div layout="row" class="inset" flex>
+    <md-input-container flex>
+      <input mdInput placeholder="Code" formControlName="code" flex/>
+    </md-input-container>
+  </div>
+
+  <div layout="row" class="inset" flex>
+    <md-input-container flex>
+      <input mdInput placeholder="Description" formControlName="description" flex/>
+    </md-input-container>
+  </div>
+</form>
+
+<md-dialog-actions align="end">
+  <button md-raised-button color="accent" (click)="save(createForm.value, createForm.valid)">Save</button>
+</md-dialog-actions>
