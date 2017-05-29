@@ -17,13 +17,13 @@ import {AssignedGraduationApplicationTaskListComponent} from "./component/assign
 import {PooledGraduationApplicationTaskListComponent} from "./component/pooled-graduation-application-task-list.component";
 import {GraduationApplicationDraftTaskPanel} from "./panel/graduation-application-draft-task.panel";
 import {GraduationApplicationTaskWorkflowPanel} from "./panel/graduation-application-task-workflow.panel";
-import {GraduationApplicationTaskViewPage} from "./graduation-application-task-view.page";
 import {GraduationApplicationCheckTaskPanel} from "./panel/graduation-application-check-task.panel";
 import {GraduationApplicationVerifyTaskPanel} from "./panel/graduation-application-verify-task.panel";
 import {GraduationApplicationRegisterTaskPanel} from "./panel/graduation-application-register-task.panel";
 import {GraduationApplicationEditorDialog} from "./dialog/graduation-application-editor.dialog";
 import {AcademicSessionSubModule} from "../../planner/academic-sessions/index";
 import {ProfileModule} from "../../profile/index";
+import {GraduationApplicationTaskDetailPage} from "./graduation-application-task-detail.page";
 
 @NgModule({
   imports: [
@@ -40,7 +40,7 @@ import {ProfileModule} from "../../profile/index";
   declarations: [
     // page
     GraduationApplicationCenterPage,
-    GraduationApplicationTaskViewPage,
+    GraduationApplicationTaskDetailPage,
 
     //component
     AssignedGraduationApplicationTaskListComponent,

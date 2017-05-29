@@ -48,16 +48,15 @@ export class GraduationApplicationCenterPage implements OnInit {
     });
   }
 
-  claim(task: GraduationApplicationTask) {
+  claimTask(task: GraduationApplicationTask) {
     console.log("graduationApplication: " + task.taskId);
     this.store.dispatch(this.actions.claimGraduationApplicationTask(task));
   }
 
-  view(task: GraduationApplicationTask) {
+  viewTask(task: GraduationApplicationTask) {
     console.log("graduationApplication: " + task.taskId);
-    this.router.navigate(['/graduation/graduation-applications/view-task', task.taskId]);
+    this.router.navigate(['/graduation/graduation-applications/graduation-application-task-detail', task.taskId]);
   }
-
 
   ngOnInit(): void {
     console.log("find assigned/pooled graduation application tasks");

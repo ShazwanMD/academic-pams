@@ -1,7 +1,4 @@
-import {
-  Component, OnInit, ViewChild, ViewContainerRef,
-  ComponentFactoryResolver, ComponentRef
-} from '@angular/core';
+import {Component, OnInit,} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 import {GraduationApplicationTask} from "./graduation-application-task.interface";
 import {Observable} from "rxjs";
@@ -11,10 +8,10 @@ import {GraduationApplicationActions} from "./graduation-application.action";
 
 
 @Component({
-  selector: 'pams-graduation-application-task-iew',
-  templateUrl: './graduation-application-task-view.page.html',
+  selector: 'pams-graduation-application-task-detail',
+  templateUrl: './graduation-application-task-detail.page.html',
 })
-export class GraduationApplicationTaskViewPage implements OnInit {
+export class GraduationApplicationTaskDetailPage implements OnInit {
 
   private GRADUATION_APPLICATION_TASK = "graduationModuleState.graduationApplicationTask".split(".");
   private graduationApplicationTask$: Observable<GraduationApplicationTask>;
@@ -27,7 +24,7 @@ export class GraduationApplicationTaskViewPage implements OnInit {
   }
 
   ngOnInit(): void {
-    this.route.params.subscribe((params: {taskId: string}) => {
+    this.route.params.subscribe((params: { taskId: string }) => {
       let taskId: string = params.taskId;
       this.store.dispatch(this.actions.findGraduationApplicationTaskByTaskId(taskId));
     });
