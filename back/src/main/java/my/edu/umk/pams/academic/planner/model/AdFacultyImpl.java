@@ -30,7 +30,10 @@ public class AdFacultyImpl implements AdFaculty {
 
     @Column(name = "DESCRIPTION", nullable = true)
     private String description;
-
+    
+    @Column(name = "STATUS", nullable = false)
+    private AdFacultyStatus status = AdFacultyStatus.NEW;
+	
     @OneToMany(targetEntity = AdProgramImpl.class, mappedBy = "faculty", fetch = FetchType.LAZY)
     private List<AdProgram> programs;
 
@@ -39,10 +42,10 @@ public class AdFacultyImpl implements AdFaculty {
 
     @Embedded
     private AdMetadata metadata;
-
-	private AdFacultyStatus status;
+     
 
     public AdFacultyImpl() {
+    	 setStatus(AdFacultyStatus.NEW);
     }
 
     public AdFacultyImpl(String code, String name) {

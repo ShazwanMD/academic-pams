@@ -124,6 +124,52 @@ public class PlannerController {
 	// FACULTY
 	// ====================================================================================================
 
+	@RequestMapping(value = "/faculties/{code}/save", method = RequestMethod.POST)
+	public ResponseEntity<String> saveFaculty(@PathVariable String code, @RequestBody Faculty vo) {
+		dummyLogin();
+		AdFaculty faculty = new AdFacultyImpl();
+		faculty.setCode(vo.getCode());
+		faculty.setDescription(vo.getDescription());
+		faculty.setName(vo.getName());
+		faculty.setPrefix(vo.getPrefix());
+		faculty.setStatus(AdFacultyStatus.get(vo.getStatus().ordinal()));
+		plannerService.saveFaculty(faculty);
+		return new ResponseEntity<String>("Success", HttpStatus.OK);
+	}	
+	
+	@RequestMapping(value = "/faculties/{code}/update", method = RequestMethod.PUT)
+	public ResponseEntity<String> updateFaculty(@PathVariable String code, @RequestBody Faculty vo) {
+			dummyLogin();
+			LOG.debug("faculty code:{}", code);
+			AdFaculty faculty = plannerService.findFacultyByCode(code);
+			faculty.setDescription(vo.getDescription());
+			faculty.setName(vo.getName());
+			faculty.setPrefix(vo.getPrefix());
+			faculty.setStatus(AdFacultyStatus.get(vo.getStatus().ordinal()));
+			plannerService.updateFaculty(faculty);
+			return new ResponseEntity<String>("Success", HttpStatus.OK);
+		}
+
+	@RequestMapping(value = "/faculties/{code}/activate", method = RequestMethod.GET)
+	public ResponseEntity<String> activateFacultiy(@PathVariable String code) {
+		dummyLogin();
+		LOG.debug("activate program");
+		AdFaculty faculty = plannerService.findFacultyByCode(code);
+		faculty.setStatus(AdFacultyStatus.ACTIVE);
+		plannerService.updateFaculty(faculty);
+		return new ResponseEntity<String>(faculty.getCode(),HttpStatus.OK);
+	}
+
+	@RequestMapping(value = "/faculties/{code}/deactivate", method = RequestMethod.GET)
+	public ResponseEntity<String> deactivateFaculty(@PathVariable String code) {
+		dummyLogin();
+		LOG.debug("deactivate program");
+		AdFaculty faculty = plannerService.findFacultyByCode(code);
+		faculty.setStatus(AdFacultyStatus.INACTIVE);
+		plannerService.updateFaculty(faculty);
+		return new ResponseEntity<String>(faculty.getCode(),HttpStatus.OK);
+	}
+	
 	@RequestMapping(value = "/faculties", method = RequestMethod.GET)
 	public ResponseEntity<List<Faculty>> findFaculties() {
 		List<AdFaculty> faculties = plannerService.findFaculties(0, 100);
@@ -152,55 +198,6 @@ public class PlannerController {
 				HttpStatus.OK);
 	}
 
-	// business methods
-
-	@RequestMapping(value = "/faculties/create", method = RequestMethod.POST)
-	public ResponseEntity<String> createFaculty(@RequestBody Faculty vo) {
-		dummyLogin();
-		AdFaculty faculty = new AdFacultyImpl();
-		faculty.setCode(vo.getCode());
-		faculty.setDescription(vo.getDescription());
-		faculty.setName(vo.getName());
-		faculty.setPrefix(vo.getPrefix());
-		faculty.setStatus(AdFacultyStatus.get(vo.getStatus().ordinal()));
-		plannerService.saveFaculty(faculty);
-		return new ResponseEntity<String>("Success", HttpStatus.OK);
-	}	
-
-	@RequestMapping(value = "/faculties/{code}/update", method = RequestMethod.PUT)
-	public ResponseEntity<String> updateFaculty(@PathVariable String code, @RequestBody Faculty vo) {
-			dummyLogin();
-			LOG.debug("faculty code:{}", code);
-			AdFaculty faculty = plannerService.findFacultyByCode(code);
-			faculty.setDescription(vo.getDescription());
-			faculty.setName(vo.getName());
-			faculty.setPrefix(vo.getPrefix());
-			faculty.setStatus(AdFacultyStatus.get(vo.getStatus().ordinal()));
-			plannerService.updateFaculty(faculty);
-			return new ResponseEntity<String>("Success", HttpStatus.OK);
-		}
-	
-
-	@RequestMapping(value = "/faculties/{code}/activate", method = RequestMethod.GET)
-	public ResponseEntity<String> activateFacultiy(@PathVariable String code) {
-		dummyLogin();
-		LOG.debug("activate program");
-		AdFaculty faculty = plannerService.findFacultyByCode(code);
-		faculty.setStatus(AdFacultyStatus.ACTIVE);
-		plannerService.updateFaculty(faculty);
-		return new ResponseEntity<String>(faculty.getCode(),HttpStatus.OK);
-	}
-
-	@RequestMapping(value = "/faculties/{code}/deactivate", method = RequestMethod.GET)
-	public ResponseEntity<String> deactivateFaculty(@PathVariable String code) {
-		dummyLogin();
-		LOG.debug("deactivate program");
-		AdFaculty faculty = plannerService.findFacultyByCode(code);
-		faculty.setStatus(AdFacultyStatus.INACTIVE);
-		plannerService.updateFaculty(faculty);
-		return new ResponseEntity<String>(faculty.getCode(),HttpStatus.OK);
-	}
-
 	// ====================================================================================================
 	// PROGRAM
 	// ====================================================================================================
@@ -227,7 +224,6 @@ public class PlannerController {
 	@RequestMapping(value = "/programs/{code}/save", method = RequestMethod.POST)
 	public ResponseEntity<String> saveProgram(@PathVariable String code, @RequestBody Program vo) {
 		dummyLogin();
-
 		AdProgram program = new AdProgramImpl();
 		AdFaculty faculty =new AdFacultyImpl();
 		program.setCode(vo.getCode());
