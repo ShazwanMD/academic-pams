@@ -7,5 +7,5 @@ export interface Course extends MetaObject{
   titleEn:string;
   credit:number;
   status: CourseStatus;
-  faculty?:Faculty; // todo
+  faculty?:Faculty;
 }

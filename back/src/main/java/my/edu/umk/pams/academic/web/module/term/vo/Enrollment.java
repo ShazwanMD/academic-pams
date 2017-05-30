@@ -3,6 +3,7 @@ package my.edu.umk.pams.academic.web.module.term.vo;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import my.edu.umk.pams.academic.web.module.core.vo.MetaObject;
+import my.edu.umk.pams.academic.web.module.planner.vo.Course;
 
 import java.io.IOException;
 
@@ -16,6 +17,9 @@ public class Enrollment extends MetaObject {
     //private GradeCode gradeCode;
     private EnrollmentStanding standing;
     private EnrollmentStatus status;
+
+    // denormalize
+    private Course course;
 
     public Section getSection() {
         return section;
@@ -48,7 +52,15 @@ public class Enrollment extends MetaObject {
     public void setEnrollmentStatus(EnrollmentStatus status) {
         this.status = status;
     }
-    
+
+    public Course getCourse() {
+        return course;
+    }
+
+    public void setCourse(Course course) {
+        this.course = course;
+    }
+
     /*public GradeCode getGradeCode() {
         return gradeCode;
     }
