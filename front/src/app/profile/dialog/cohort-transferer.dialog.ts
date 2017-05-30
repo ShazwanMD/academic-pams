@@ -46,6 +46,7 @@ export class CohortTransfererDialog implements OnInit {
   }
 
   transfer(transferer: TransferCohort, isValid: boolean) {
+        console.log(JSON.stringify(transferer));
     this.store.dispatch(this.actions.transferCohort(this._student, transferer));
     this.dialog.close();
   }
