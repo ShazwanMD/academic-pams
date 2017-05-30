@@ -17,6 +17,7 @@ import {AppointmentCreateTaskCreatorDialog} from "../../appointments/dialog/appo
 export class OfferingAppointmentListComponent {
 
   @Input() section: Section;
+   @Input() offering: Offering;
   @Input() appointments: Appointment[];
   @Output() view = new EventEmitter<Appointment>();
   private creatorDialogRef: MdDialogRef<AppointmentCreateTaskCreatorDialog>;

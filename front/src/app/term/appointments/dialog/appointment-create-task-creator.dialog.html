@@ -1,26 +1,26 @@
 <h2 md-dialog-title>Create New Appointment</h2>
 <md-dialog-content>
-<form [formGroup]="createForm">
+<form [formGroup]="editorForm">
 
 		
 	<div layout="row" class="inset" flex>
        <pams-section-select
         [placeholder]="'Select Section'"
-        [innerFormControl]="createForm.controls['section']">
+        [innerFormControl]="editorForm.controls['section']">
       </pams-section-select> 
       </div> 
 	
 	  <div layout="row" class="inset" flex>
       <pams-appointment-status-select
         [placeholder]="'Appoinment Status'"
-        [innerFormControl]="createForm.controls['appointmentStatus']">
+        [innerFormControl]="editorForm.controls['appointmentStatus']">
       </pams-appointment-status-select>
       </div> 
       
        <div layout="row" class="inset" flex>
       <pams-staff-select
         [placeholder]="'Select Staff'"
-        [innerFormControl]="createForm.controls['staff']">
+        [innerFormControl]="editorForm.controls['staff']">
       </pams-staff-select>
       </div> 
 
@@ -28,7 +28,7 @@
 </md-dialog-content>
 <md-dialog-actions align="end">
 <!-- <button md-raised-button color="accent"
-	(click)="save(createForm.value, createForm.valid)">Save</button> -->
+	(click)="save(editorForm.value, editorForm.valid)">Save</button> -->
 	
  <button md-raised-button color="accent" (click)="submit(editorForm.value, editorForm.valid)">
     {{edit ? 'Update' : 'Save'}}
