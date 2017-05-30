@@ -261,7 +261,6 @@ public class PlannerController {
 	@RequestMapping(value = "/programs/{code}/save", method = RequestMethod.POST)
 	public ResponseEntity<String> saveProgram(@PathVariable String code, @RequestBody Program vo) {
 		dummyLogin();
-
 		AdProgram program = new AdProgramImpl();
 		program.setCode(vo.getCode());
 		program.setTitleMs(vo.getTitleMs());

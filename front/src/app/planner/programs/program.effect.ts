@@ -8,7 +8,6 @@ import {PlannerService} from "../../../services/planner.service";
 import {Store} from "@ngrx/store";
 import {PlannerModuleState} from "../index";
 
-
 @Injectable()
 export class ProgramEffects {
 
@@ -22,7 +21,6 @@ export class ProgramEffects {
               private facultyActions: FacultyActions,
               private store$: Store<PlannerModuleState>) {
   }
-
   @Effect() findPrograms$ = this.actions$
     .ofType(ProgramActions.FIND_PROGRAMS)
     .switchMap(() => this.plannerService.findPrograms())

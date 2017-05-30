@@ -120,7 +120,6 @@ public class PlannerTransformer {
 	        return vos;
 	    }
 	
-	
     public List<StudyCenter> toStudyCenterVos(List<AdStudyCenter> studyCenters) {
         List<StudyCenter> vos = studyCenters.stream()
                 .map((studyCenter) -> toStudyCenterVo(studyCenter))

@@ -18,7 +18,6 @@ import { facultyListReducer } from '../../faculties/faculty-list.reducer';
 })
 
 export class ProgramCreatorDialog implements OnInit {
-
   private creatorForm: FormGroup;
   private create: boolean = false;
   private _program: Program;

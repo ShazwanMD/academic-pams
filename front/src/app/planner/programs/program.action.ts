@@ -40,8 +40,6 @@ export class ProgramActions {
     };
   }
 
-
-
   static FIND_PROGRAM_BY_CODE = '[Program] Find Program By Code';
 
   findProgramByCode(code): Action {
