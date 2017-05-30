@@ -2,14 +2,11 @@
 <div toolbar-content layout="row" layout-align="center center" flex>
 	<span>PAMS: Postgraduate Management System</span> <span flex></span>
 </div>
-
 <div md-content flex md-scroll-y>
 	<div layout="column" layout-gt-md="row" class="inset">
 		<div flex-gt-md="70">
 			<pams-section [section]="section$ | async"></pams-section>
-		</div>
-		
- <div flex-gt-md="30">
+		</div> <div flex-gt-md="30">
             <md-card> <md-card-title>Term Menu</md-card-title> <md-card-subtitle>Actions
             available on current section</md-card-subtitle> <md-divider></md-divider> <md-nav-list
                 flex dense> 
@@ -34,8 +31,7 @@
             <h4 md-line>Offerings</h4>
             <p md-line>Watch this offerings</p>
             </md-list-item>
-            
-            
+                    
             <!--  <md-list-item [routerLink]="['/term/appointments']"> <md-icon md-list-avatar>email</md-icon>
             <h4 md-line>Appointment</h4>
             <p md-line>Watch this appointment</p>
@@ -45,7 +41,8 @@
             </md-list-item> --> <!-- <md-list-item [routerLink]="['/term/sections']"> <md-icon md-list-avatar>email</md-icon>
             <h4 md-line>Section</h4>
             <p md-line>Watch this section</p>
-            </md-list-item> --> </md-nav-list> </md-card>
+            </md-list-item> --> 
+            </md-nav-list> </md-card>
         </div>
 	</div>
 </div>

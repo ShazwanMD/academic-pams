@@ -9,7 +9,6 @@ import {SectionActions} from "./section.action";
 import {TermModuleState} from "../index";
 import {MdDialog, MdDialogConfig, MdDialogRef} from "@angular/material";
 
-
 @Component({
   selector: 'pams-section-detail',
   templateUrl: './section-detail.page.html',
