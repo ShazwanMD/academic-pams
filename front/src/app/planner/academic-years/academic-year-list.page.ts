@@ -1,5 +1,5 @@
 import { Store } from '@ngrx/store';
-import { MdDialog } from '@angular/material';
+import { MdDialog, MdDialogRef } from '@angular/material';
 import { AcademicYearActions } from "./academic-year.action";
 import { PlannerModuleState } from "./../index";
 import { AcademicYear } from "./academic-year.interface";
