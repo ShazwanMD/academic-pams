@@ -354,9 +354,7 @@ public class PlannerController {
 	@RequestMapping(value = "/courses/{code}/deactivate", method = RequestMethod.POST)
 	public ResponseEntity<String> deactivateCourse(@PathVariable String code, @RequestBody Course course) {
 		throw new UnsupportedOperationException();
-		
 	}
-	
 	
 	// ====================================================================================================
 	// academicYear

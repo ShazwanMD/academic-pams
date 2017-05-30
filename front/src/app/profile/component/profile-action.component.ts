@@ -25,9 +25,7 @@ export class ProfileActionComponent {
               private store: Store<ProfileModuleState>,
               private vcf: ViewContainerRef,
               private dialog: MdDialog,
-   
               private snackBar: MdSnackBar) {
-  
 }
 
 
@@ -92,7 +90,7 @@ export class ProfileActionComponent {
 
   disbar(): void {
   }
-  
+
 
 }
 

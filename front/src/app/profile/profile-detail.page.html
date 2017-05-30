@@ -16,14 +16,11 @@
           [enrollments]="enrollments$ | async">
         </pams-profile>
       </div>
-
-  
-
       <md-card>
-  
+
         <pams-profile-status [profile]="student$ | async"></pams-profile-status>
         <pams-profile-action [student]="student$ | async"></pams-profile-action>
-    
+
     <md-nav-list flex dense>
     <md-list-item (click)="deactivate()">
       <md-icon md-list-avatar>gavel</md-icon>
