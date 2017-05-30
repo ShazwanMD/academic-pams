@@ -16,7 +16,7 @@ import {AppointmentCreateTaskCreatorDialog} from "../../appointments/dialog/appo
 })
 export class OfferingAppointmentListComponent {
 
-  @Input() offering: Offering;
+  @Input() section: Section;
   @Input() appointments: Appointment[];
   @Output() view = new EventEmitter<Appointment>();
   private creatorDialogRef: MdDialogRef<AppointmentCreateTaskCreatorDialog>;
@@ -41,7 +41,7 @@ export class OfferingAppointmentListComponent {
     config.height = '50%';
     config.position = {top: '0px'};
     this.creatorDialogRef = this.dialog.open(AppointmentCreateTaskCreatorDialog, config);
-    this.creatorDialogRef.componentInstance.offering = this.offering;
+    this.creatorDialogRef.componentInstance.section = this.section;
     this.creatorDialogRef.afterClosed().subscribe(res => {
       console.log("close dialog");
       // load something here

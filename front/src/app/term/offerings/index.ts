@@ -20,6 +20,7 @@ import {OfferingEditorDialog} from "./dialog/offering-editor.dialog";
 import {OfferingUpdateDialog} from "./dialog/offering-update.dialog";
 import {CourseSubModule} from "../../planner/courses/index";
 import {ProgramSubModule} from "../../planner/programs/index";
+import {SectionSubModule} from "../sections/index";
 import {AcademicSessionSubModule} from "../../planner/academic-sessions/index";
 import {OfferingSectionListComponent} from "./component/offering-section-list.component";
 import {OfferingAssessmentListComponent} from "./component/offering-assessment-list.component";
@@ -34,6 +35,7 @@ import {OfferingActionComponent} from "./component/offering-action.component";
     ReactiveFormsModule,
     CourseSubModule.forRoot(),
     ProgramSubModule.forRoot(),
+    SectionSubModule.forRoot(),
     AcademicSessionSubModule.forRoot(),
     CovalentCoreModule.forRoot(),
     EffectsModule.run(OfferingEffects),

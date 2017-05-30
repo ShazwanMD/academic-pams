@@ -26,7 +26,7 @@ import {Router, ActivatedRoute} from '@angular/router';
 export class AppointmentCreateTaskCreatorDialog implements OnInit {
 
     private editorForm: FormGroup;
-    //private _offering: Offering;
+    private _offering: Offering;
     private _section: Section;
     private _appointment: Appointment;
     private edit: boolean = false;
@@ -66,7 +66,7 @@ export class AppointmentCreateTaskCreatorDialog implements OnInit {
         });
 
         // set offering by default
-        this.editorForm.patchValue({'offering': this._section});
+        this.editorForm.patchValue({'section': this._section});
         if (this.edit) this.editorForm.patchValue(this._appointment);
       }
 
