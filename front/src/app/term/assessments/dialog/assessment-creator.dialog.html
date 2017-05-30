@@ -1,72 +1,70 @@
 <h2 md-dialog-title>Add New Assessment</h2>
-<md-dialog-content>
-  <form [formGroup]="editorForm">
+<md-card-title>Create New Academic Session</md-card-title>
+<form [formGroup]="editorForm">
 
-    <div layout="row" class="pad-bottom">
-      <md-input-container flex mdTooltip="Please insert assessment Code">
-        <input mdInput
-               placeholder="Code"
-               formControlName="code" flex/>
-      </md-input-container>
-    </div>
+  <div layout="row" class="pad-bottom">
+    <md-input-container flex mdTooltip="Please insert assessment Code">
+      <input mdInput
+             placeholder="Code"
+             formControlName="code" flex/>
+    </md-input-container>
+  </div>
 
-    <div layout="row" class="pad-bottom">
-      <md-input-container flex mdTooltip="Please insert assessment Description">
-        <input mdInput
-               placeholder="Description"
-               formControlName="description" flex/>
-      </md-input-container>
-    </div>
-
-
-    <div layout="row" class="pad-bottom">
-      <md-input-container flex mdTooltip="Please insert assessment Ordinal">
-        <input mdInput
-               placeholder="Ordinal"
-               typ="number"
-               formControlName="ordinal" flex/>
-      </md-input-container>
-    </div>
+  <div layout="row" class="pad-bottom">
+    <md-input-container flex mdTooltip="Please insert assessment Description">
+      <input mdInput
+             placeholder="Description"
+             formControlName="description" flex/>
+    </md-input-container>
+  </div>
 
 
-    <div layout="row" class="pad-bottom">
-      <md-input-container flex mdTooltip="Please insert assessment Total Score">
-        <input mdInput
-               placeholder="Total Score"
-               typ="number"
-               formControlName="totalScore" flex/>
-      </md-input-container>
-    </div>
-
-    <div layout="row" class="pad-bottom">
-      <md-input-container flex mdTooltip="Please insert assessment Weight">
-        <input mdInput
-               placeholder="Weight"
-               typ="number"
-               formControlName="weight" flex/>
-      </md-input-container>
-    </div>
-
-    <div layout="row" class="pad_bottom">
-      <pams-assessment-category-select
-        [placeholder]="'Assessment Category'"
-        [innerFormControl]="editorForm.controls['assessmentCategory']">
-      </pams-assessment-category-select>
-    </div>
-
-    <div layout="row" class="pad_bottom pad_top">
-      <pams-assessment-type-select
-        [placeholder]="'Assessment Type'"
-        [innerFormControl]="editorForm.controls['assessmentType']">
-      </pams-assessment-type-select>
-    </div>
+  <div layout="row" class="pad-bottom">
+    <md-input-container flex mdTooltip="Please insert assessment Ordinal">
+      <input mdInput
+             placeholder="Ordinal"
+             typ="number"
+             formControlName="ordinal" flex/>
+    </md-input-container>
+  </div>
 
 
-  </form>
-</md-dialog-content>
+  <div layout="row" class="pad-bottom">
+    <md-input-container flex mdTooltip="Please insert assessment Total Score">
+      <input mdInput
+             placeholder="Total Score"
+             typ="number"
+             formControlName="totalScore" flex/>
+    </md-input-container>
+  </div>
+
+  <div layout="row" class="pad-bottom">
+    <md-input-container flex mdTooltip="Please insert assessment Weight">
+      <input mdInput
+             placeholder="Weight"
+             typ="number"
+             formControlName="weight" flex/>
+    </md-input-container>
+  </div>
+
+  <div layout="row" class="pad-bottom">
+    <pams-assessment-category-select
+      [placeholder]="'Assessment Category'"
+      [innerFormControl]="editorForm.controls['assessmentCategory']">
+    </pams-assessment-category-select>
+  </div>
+
+  <div layout="row" class="pad-bottom pad-top">
+    <pams-assessment-type-select
+      [placeholder]="'Assessment Type'"
+      [innerFormControl]="editorForm.controls['assessmentType']">
+    </pams-assessment-type-select>
+  </div>
+</form>
+
 <md-dialog-actions align="end">
   <button md-raised-button color="accent" (click)="submit(editorForm.value, edit)">
-  {{edit ? 'Update' : 'Save'}}
+    {{edit ? 'Update' : 'Save'}}
   </button>
 </md-dialog-actions>
 

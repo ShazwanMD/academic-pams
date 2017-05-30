@@ -4,9 +4,6 @@ import {FormBuilder} from '@angular/forms';
 import {Store} from "@ngrx/store";
 import {MdDialogRef} from "@angular/material";
 import {TermModuleState} from "../../index";
-import {FlowState} from "../../../core/flow-state.enum";
-import {MetaState} from "../../../core/meta-state.enum";
-//import {AppointmentApplication} from '../appointment-application.interface';
 import {AppointmentActions} from "../appointment.action";
 import { Section } from "../../sections/section.interface";
 import {Actor} from "../../../identity/actor.interface";
@@ -44,7 +41,7 @@ export class AppointmentCreateTaskCreatorDialog implements OnInit {
     set offering(value: Offering) {
         this._offering = value;
     }
-    
+
     set section(value: Section) {
         this._section = value;
     }
@@ -53,7 +50,7 @@ export class AppointmentCreateTaskCreatorDialog implements OnInit {
     this._appointment = value;
     this.edit = true;
   }
-    
+
     ngOnInit(): void {
         this.editorForm = this.formBuilder.group(<Appointment>{
             id: null,
@@ -70,18 +67,18 @@ export class AppointmentCreateTaskCreatorDialog implements OnInit {
         if (this.edit) this.editorForm.patchValue(this._appointment);
       }
 
-  
+
     submit( appointment: Appointment, isValid: boolean) {
         console.log(appointment);
         console.log(this._section);
-        
+
         // set codes
        //section.canonicalCode = this._offering.canonicalCode + "" + section.ordinal
        //section.code = this._offering.code + "" + section.ordinal
-        if (!appointment.id) 
-        
+        if (!appointment.id)
+
         this.store.dispatch(this.actions.addAppointment(this._section, appointment));
-            
+
         else  this.store.dispatch(this.actions.updateAppointment(this._section, appointment));
         this.dialog.close();
       }

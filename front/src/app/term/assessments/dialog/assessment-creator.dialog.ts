@@ -43,7 +43,7 @@ export class AssessmentCreatorDialog implements OnInit {
 
   ngOnInit(): void {
     this.editorForm = this.formBuilder.group(<Assessment>{
-      id:0,
+      id: 0,
       code: '',
       canonicalCode: '',
       description: '',
@@ -57,20 +57,16 @@ export class AssessmentCreatorDialog implements OnInit {
 
     // set offering by default
     this.editorForm.patchValue({'offering': this._offering});
-    // Assessment
     if (this.edit) this.editorForm.patchValue(this._assessment);
   }
 
   submit(assessment: Assessment, isValid: boolean) {
     console.log(assessment);
-    console.log("canonical Code: "  + this._offering.canonicalCode + "-" + assessment.code);
+    console.log("canonical Code: " + this._offering.canonicalCode + "-" + assessment.code);
     // set canonical code
     assessment.canonicalCode = this._offering.canonicalCode + "-" + assessment.code;
-    
-    if(isValid)
-        assessment.id = this._assessment.id;
-   
-    if(isValid)this.store.dispatch(this.actions.updateAssessment(this._offering, assessment));
+
+    if (this.edit) this.store.dispatch(this.actions.updateAssessment(this._offering, assessment));
     else this.store.dispatch(this.actions.addAssessment(this._offering, assessment))
     this.dialog.close();
   }

@@ -20,7 +20,6 @@ export class AssessmentEffects {
         private termService: TermService ) {
     }
 
-
     @Effect() addAssessment$ =
     this.actions$
         .ofType( AssessmentActions.ADD_ASSESSMENT )

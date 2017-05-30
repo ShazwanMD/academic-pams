@@ -50,24 +50,24 @@ export class OfferingSectionListComponent {
   filter(): void {
   }
 
-  editDialog( section: Section, isValid: boolean ): void {
-      console.log("Section:{}",section)
-      let config = new MdDialogConfig();
-      config.viewContainerRef = this.vcf;
-      config.role = 'dialog';
-      config.width = '60%';
-      config.height = '80%';
-      config.position = { top: '0px' };
-      this.creatorDialogRef = this.dialog.open( SectionEditorDialog, config );
-      if ( isValid ) {
-          this.creatorDialogRef.componentInstance.section = section;
-          this.creatorDialogRef.componentInstance.offering = this.offering;
+  editDialog(section: Section, isValid: boolean): void {
+    console.log("Section:{}", section)
+    let config = new MdDialogConfig();
+    config.viewContainerRef = this.vcf;
+    config.role = 'dialog';
+    config.width = '60%';
+    config.height = '80%';
+    config.position = {top: '0px'};
+    this.creatorDialogRef = this.dialog.open(SectionEditorDialog, config);
+    if (isValid) {
+      this.creatorDialogRef.componentInstance.section = section;
+      this.creatorDialogRef.componentInstance.offering = this.offering;
 
-      }
-      this.creatorDialogRef.afterClosed().subscribe( res => {
-          console.log( "close dialog section" );
-          // load something here
-      } );
+    }
+    this.creatorDialogRef.afterClosed().subscribe(res => {
+      console.log("close dialog section");
+      // load something here
+    });
   }
 
   showSectionDialog(): void {
@@ -87,8 +87,8 @@ export class OfferingSectionListComponent {
   }
 
   deleteSection(section: Section): void {
-      console.log("deleteSection");
-      console.log(section);
+    console.log("deleteSection");
+    console.log(section);
     this.store.dispatch(this.actions.deleteSection(this.offering, section))
   }
 }

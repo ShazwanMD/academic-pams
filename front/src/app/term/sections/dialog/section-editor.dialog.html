@@ -13,17 +13,17 @@
     <div layout="row" class="pad-bottom" >
       <md-input-container flex mdTooltip="Please insert ordinal"  >
         <input mdInput
-               placeholder="Ordinal"
+               placeholder="Section No"
                formControlName="ordinal"  flex/>
       </md-input-container>
     </div>
-  
+
   </form>
 </md-dialog-content>
 <md-dialog-actions align="end">
   <button md-raised-button color="accent" (click)="submit(editorForm.value, editorForm.valid)">
     {{edit ? 'Update' : 'Save'}}
-  </button> 
-  
+  </button>
+
 </md-dialog-actions>
 

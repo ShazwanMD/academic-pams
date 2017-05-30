@@ -33,12 +33,11 @@ export class SectionEditorDialog implements OnInit {
   set offering(value: Offering) {
     this._offering = value;
   }
-    
+
   set section(value: Section) {
     this._section = value;
     this.edit = true;
   }
-
 
   ngOnInit(): void {
     this.editorForm = this.formBuilder.group(<Section>{
@@ -55,27 +54,18 @@ export class SectionEditorDialog implements OnInit {
     if (this.edit) this.editorForm.patchValue(this._section);
   }
 
- /* submit(section: Section, isValid: boolean) {
-    console.log(section);  
+  submit(section: Section, isValid: boolean) {
     // set codes
-    section.canonicalCode = this._offering.canonicalCode + "" + section.ordinal
-    section.code = this._offering.code + "" + section.ordinal
+    section.code = this._offering.code + "-" + section.ordinal;
+    section.canonicalCode = this._offering.canonicalCode + "-" + section.ordinal;
 
-    // dispatch action
-    this.store.dispatch(this.actions.addSection(this._offering, section));
+    console.log("code:" + section.code);
+    console.log("canonical code:" + section.canonicalCode);
+    console.log("edit" + this.edit);
+
+    // dispatch
+    if (!this.edit) this.store.dispatch(this.actions.addSection(this._offering, section));
+    else  this.store.dispatch(this.actions.updateSection(this._offering, section));
     this.dialog.close();
-  }*/
-  submit( section: Section, isValid: boolean) {
-      console.log(section);
-      
-      // set codes
-     section.canonicalCode = this._offering.canonicalCode + "" + section.ordinal
-     section.code = this._offering.code + "" + section.ordinal
-      if (!section.id) 
-      
-      this.store.dispatch(this.actions.addSection(this._offering, section));
-          
-      else  this.store.dispatch(this.actions.updateSection(this._offering, section));
-      this.dialog.close();
-    }
+  }
 }

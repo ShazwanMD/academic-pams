@@ -30,8 +30,6 @@ import {IdentityModule} from "../../identity/index";
     CovalentCoreModule.forRoot(),
     SectionSubModule.forRoot(),
     IdentityModule.forRoot(),
-
-    
     EffectsModule.run(AppointmentEffects),
   ],
   declarations: [
@@ -43,16 +41,16 @@ import {IdentityModule} from "../../identity/index";
     AppointmentComponent,
     AppointmentStatusSelectComponent,
 
-  //dialog
+    //dialog
     AppointmentEditorDialog,
     AppointmentCreateTaskCreatorDialog,
     AppointmentUpdateTaskCreatorDialog,
 
   ],
   exports: [
-  AppointmentCreateTaskCreatorDialog],
-  
-   entryComponents: [
+    AppointmentCreateTaskCreatorDialog
+  ],
+  entryComponents: [
     AppointmentCreateTaskCreatorDialog,
   ],
 })
