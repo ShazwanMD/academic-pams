@@ -7,7 +7,7 @@
 
     <!--
     ====================================================================================================
-    ==  DRAFTED > REGISTERED > VERIFIED  > APPROVED >>  COMPLETED >> END
+    ==  DRAFTED > REGISTERED  > APPROVED >>  COMPLETED >> END
     ====================================================================================================
     -->
 
@@ -61,54 +61,7 @@
         <serviceTask id="enrollmentApplication_register_ST"
                      activiti:expression="#{enrollmentApplication_register_ST.execute(execution)}"/>
 
-        <sequenceFlow id="flow3.1" sourceRef="enrollmentApplication_register_ST" targetRef="enrollmentApplication_register_UT"/>
-
-        <userTask id="enrollmentApplication_register_UT"
-                  name="my.edu.umk.pams.academic.term.model.AdEnrollmentApplication:REGISTERED"
-                  activiti:candidateGroups="${enrollmentApplicationRouter.findRegistererCandidates(enrollmentApplicationId)}">
-            <documentation>
-                Register Enrollment Application
-            </documentation>
-
-        </userTask>
-
-        <!-- accept -->
-        <sequenceFlow id="flow3.2" sourceRef="enrollmentApplication_register_UT" targetRef="enrollmentApplication_verify_ST">
-            <conditionExpression>${!removeDecision}</conditionExpression>
-        </sequenceFlow>
-
-        <!-- delete -->
-        <sequenceFlow id="flow3.4" sourceRef="enrollmentApplication_register_UT" targetRef="enrollmentApplication_remove_ST">
-            <conditionExpression>${removeDecision}</conditionExpression>
-        </sequenceFlow>
-        <!--
-        ====================================================================================================
-        == STATE : VERIFIED
-        == SERVICE TASK : verify a enrollmentApplication
-        == USER TASK :
-        ====================================================================================================
-        -->
-        <serviceTask id="enrollmentApplication_verify_ST"
-                     activiti:expression="#{enrollmentApplication_verify_ST.execute(execution)}"/>
-
-        <sequenceFlow id="flow4.1" sourceRef="enrollmentApplication_verify_ST" targetRef="enrollmentApplication_verify_UT"/>
-
-        <userTask id="enrollmentApplication_verify_UT"
-                  name="my.edu.umk.pams.academic.term.model.AdEnrollmentApplication:VERIFIED"
-                  activiti:candidateGroups="${enrollmentApplicationRouter.findVerifierCandidates(enrollmentApplicationId)}">
-            <documentation>
-                Verify Enrollment Application
-            </documentation>
-
-        </userTask>
-
-        <sequenceFlow id="flow4.2" sourceRef="enrollmentApplication_verify_UT" targetRef="enrollmentApplication_remove_ST">
-            <conditionExpression>${removeDecision}</conditionExpression>
-        </sequenceFlow>
-
-        <sequenceFlow id="flow4.3" sourceRef="enrollmentApplication_verify_UT" targetRef="enrollmentApplication_approve_ST">
-            <conditionExpression>${!removeDecision}</conditionExpression>
-        </sequenceFlow>
+        <sequenceFlow id="flow3.1" sourceRef="enrollmentApplication_register_ST" targetRef="enrollmentApplication_approve_ST"/>
 
         <!--
         ====================================================================================================
