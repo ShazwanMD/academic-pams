@@ -65,7 +65,7 @@ public interface ProfileService {
     // GENERATOR
     //====================================================================================================
 
-	@Deprecated
+	@Deprecated // use transfer cohort
     String transferFaculty(AdStudent student, AdAcademicSession academicSession, AdFaculty fromFaculty, AdFaculty toFaculty);
 
     String transferCohort(AdStudent student, AdAcademicSession academicSession, AdCohort fromCohort, AdCohort toCohort);

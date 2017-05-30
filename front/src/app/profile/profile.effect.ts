@@ -39,10 +39,8 @@ export class ProfileEffects {
     .ofType(ProfileActions.TRANSFER_COHORT)
     .map(action => action.payload)
     .switchMap(payload => this.profileService.transferCohort(payload.student, payload.transferCohort))
-    .map(matricNo => this.profileActions.transferCohortSuccess(matricNo));
-     // .withLatestFrom(this.store$.select(...this.STUDENT))
-  // .map(state => state[1])
-  // .map((student: Student) => this.profileActions.findStudentByIdentityNo(student.identityNo));
+    .map(matricNo => this.profileActions.transferCohortSuccess(matricNo))
+    .do(action => this.router.navigate(['/profile/profile-detail/', action.payload])).ignoreElements();
 
   @Effect() switchStudyMode$ = this.actions$
     .ofType(ProfileActions.SWITCH_STUDY_MODE)
