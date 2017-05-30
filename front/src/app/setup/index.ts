@@ -1,3 +1,4 @@
+import { StudyCentreSelectComponent } from './study-centers/component/study-center-select.component';
 import { StudyCenterEditorDialog } from './study-centers/dialog/study-center-editor.dialog';
 import { StudyCenterListPage } from './study-centers/study-center-list.page';
 import { StudyCenter } from './study-centers/study-center.interface';
@@ -139,6 +140,7 @@ export const setupModuleReducers = {
     EthnicityCodeListPage,
     StudyModeListPage,
     StudyCenterListPage,
+    
     //Dialog
     GradeCodeEditorDialog,
     MaritalCodeEditorDialog,
@@ -148,8 +150,15 @@ export const setupModuleReducers = {
     StateCodeEditorDialog,
     StudyModeEditorDialog,
     StudyCenterEditorDialog,
+
+    //Component
+    StudyCentreSelectComponent,
   ],
-  exports: [],
+
+  exports: [
+    StudyCentreSelectComponent
+  ],
+  
   entryComponents:[
     GradeCodeEditorDialog,
     MaritalCodeEditorDialog,
