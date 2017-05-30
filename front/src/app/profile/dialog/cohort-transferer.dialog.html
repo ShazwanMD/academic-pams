@@ -1,21 +1,16 @@
 <h2 md-dialog-title>Cohort Transfer</h2>
 <md-dialog-content>
   <form [formGroup]="transferForm">
-        <div layout="row" class="pad-bottom pad-top" flex>
-      
-         
-      <b>From </b>{{_student?.cohort?.program?.faculty?.name}}<br/>
-   
-      <b> Prefix </b>{{_student?.cohort?.program?.faculty?.prefix}}<br/>
-      
+    <div layout="row" class="pad-bottom pad-top" flex>
+      <span flex="10">From:</span> <span>{{_student?.cohort?.code}}</span>
     </div>
-      <div layout="row" flex>
+    <div layout="row" class="pad-bottom pad-top" flex>
       <pams-cohort-select
         [placeholder]="'To'"
         [innerFormControl]="transferForm.controls['to']">
       </pams-cohort-select>
     </div>
-         <div layout="row" flex>
+    <div layout="row" class="pad-bottom pad-top" flex>
       <pams-academic-session-select
         [placeholder]="'Academic Session'"
         [innerFormControl]="transferForm.controls['academicSession']">
@@ -24,5 +19,6 @@
   </form>
 </md-dialog-content>
 <md-dialog-actions align="end">
-  <button md-raised-button color="accent" (click)="transfer(transferForm.value, transferForm.validate)">Transfer</button>
+  <button md-raised-button color="accent" (click)="transfer(transferForm.value, transferForm.validate)">Transfer
+  </button>
 </md-dialog-actions>
