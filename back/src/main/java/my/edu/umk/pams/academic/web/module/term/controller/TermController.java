@@ -562,7 +562,7 @@ public class TermController {
     }
     
     
-    @RequestMapping(value = "/offerings/{canonicalCode}/appointments", method = RequestMethod.POST)
+    @RequestMapping(value = "/sections/{canonicalCode}/appointments", method = RequestMethod.POST)
     public ResponseEntity<String> addAppointment(@PathVariable String canonicalCode, @RequestBody Appointment vo) {
         dummyLogin();
 

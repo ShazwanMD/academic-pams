@@ -41,9 +41,9 @@ export class AppointmentCreateTaskCreatorDialog implements OnInit {
                 private viewContainerRef: ViewContainerRef) {
     }
 
-    /*set offering(value: Offering) {
+    set offering(value: Offering) {
         this._offering = value;
-    }*/
+    }
     
     set section(value: Section) {
         this._section = value;
@@ -73,6 +73,7 @@ export class AppointmentCreateTaskCreatorDialog implements OnInit {
   
     submit( appointment: Appointment, isValid: boolean) {
         console.log(appointment);
+        console.log(this._section);
         
         // set codes
        //section.canonicalCode = this._offering.canonicalCode + "" + section.ordinal

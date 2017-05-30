@@ -26,6 +26,7 @@
         </pams-offering-enrollment-list>
 
          <pams-offering-appointment-list
+          [section]="section$ | async"
           [offering]="offering$ | async"
           [appointments]="appointments$ | async">
         </pams-offering-appointment-list>

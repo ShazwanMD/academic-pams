@@ -17,7 +17,7 @@ import {AppointmentCreateTaskCreatorDialog} from "../../appointments/dialog/appo
 export class OfferingAppointmentListComponent {
 
   @Input() section: Section;
-   @Input() offering: Offering;
+  @Input() offering: Offering;
   @Input() appointments: Appointment[];
   @Output() view = new EventEmitter<Appointment>();
   private creatorDialogRef: MdDialogRef<AppointmentCreateTaskCreatorDialog>;
@@ -35,6 +35,8 @@ export class OfferingAppointmentListComponent {
 
   showDialog(): void {
     console.log("showDialog");
+    console.log("Section to pass:"+ this.section);
+   
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
     config.role = 'dialog';

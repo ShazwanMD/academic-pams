@@ -475,6 +475,7 @@ export class TermService {
     // save appointment
       addAppointment(section: Section, appointment: Appointment): Observable<String> {
         console.log("addAppointment");
+          console.log(section);
         let headers = new Headers({
             'Content-Type': 'application/json',
             //'Authorization': 'Bearer ' + this.authService.token
