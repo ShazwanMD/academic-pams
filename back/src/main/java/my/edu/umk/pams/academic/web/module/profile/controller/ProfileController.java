@@ -337,7 +337,6 @@ public class ProfileController {
     @RequestMapping(value = "/students/{identityNo}/switchStudyMode", method = RequestMethod.POST)
     public ResponseEntity<String> switchStudyMode(@PathVariable String identityNo, @RequestBody SwitchStudyMode vo) {
         dummyLogin();
-
         AdStudent student = profileService.findStudentByMatricNo(identityNo);
         AdAcademicSession academicSession = plannerService.findAcademicSessionById(vo.getAcademicSession().getId());
         AdStudyMode from = commonService.findStudyModeById(vo.getFrom().getId());
@@ -350,14 +349,16 @@ public class ProfileController {
     @RequestMapping(value = "/students/{identityNo}/transferCohort", method = RequestMethod.POST)
     public ResponseEntity<String> transferCohort(@PathVariable String identityNo, @RequestBody TransferCohort vo) {
         dummyLogin();
-
+        
         AdStudent student = profileService.findStudentByMatricNo(identityNo);
         AdAcademicSession academicSession = plannerService.findAcademicSessionById(vo.getAcademicSession().getId());
         AdCohort from = plannerService.findCohortById(vo.getFrom().getId());
         AdCohort to = plannerService.findCohortById(vo.getTo().getId());
 
         String newMatricNo = profileService.transferCohort(student, academicSession, from, to);
+        
         return new ResponseEntity<String>(newMatricNo, HttpStatus.OK);
+        
     }
 
     //====================================================================================================
