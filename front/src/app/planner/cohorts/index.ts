@@ -1,3 +1,4 @@
+import { CohortSelectComponent } from './component/cohort-select.component';
 import '@ngrx/core/add/operator/select';
 import {appRoutes, appRoutingProviders} from '../../app.routes';
 import {NgModule, ModuleWithProviders} from '@angular/core';
@@ -43,16 +44,18 @@ import {CohortUpdateDialog} from './dialog/cohort-update.dialog';
         // component
         CohortListComponent,
         CohortComponent,
+        CohortSelectComponent,
 
         //dialog
         CohortEditorDialog,
         CohortUpdateDialog,
 
     ],
-    exports: [],
+    exports: [CohortSelectComponent,],
     entryComponents: [
         CohortEditorDialog,
         CohortUpdateDialog,
+        CohortSelectComponent,
 
     ]
 

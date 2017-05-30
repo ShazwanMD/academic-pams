@@ -14,8 +14,8 @@ import {AcademicSession} from "../../planner/academic-sessions/academic-session.
 import {TransferCohort} from "../transfer-cohort.interface";
 
 @Component({
-  selector: 'pams-guardian-editor',
-  templateUrl: './guardian-editor.dialog.html',
+  selector: 'pams-cohort-transferer',
+  templateUrl: './cohort-transferer.dialog.html',
 })
 
 export class CohortTransfererDialog implements OnInit {

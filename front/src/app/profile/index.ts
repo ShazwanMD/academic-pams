@@ -1,3 +1,4 @@
+import { CohortSubModule } from './../planner/cohorts/index';
 import {AddressEditorDialog} from './dialog/address-editor.dialog';
 import {GuardianEditorDialog} from './dialog/guardian-editor.dialog';
 import {GuarantorEditorDialog} from './dialog/guarantor-editor.dialog';
@@ -86,6 +87,7 @@ export const profileModuleReducers = {
     CommonModule.forRoot(),
     AcademicSessionSubModule.forRoot(),
     EffectsModule.run(ProfileEffects),
+    CohortSubModule.forRoot(),
   ],
   declarations: [
     // page
