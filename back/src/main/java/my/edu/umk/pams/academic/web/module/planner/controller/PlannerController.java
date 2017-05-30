@@ -263,15 +263,15 @@ public class PlannerController {
 		dummyLogin();
 
 		AdProgram program = new AdProgramImpl();
-		AdFaculty faculty =new AdFacultyImpl();
 		program.setCode(vo.getCode());
 		program.setTitleMs(vo.getTitleMs());
 		program.setTitleEn(vo.getTitleEn());
 		program.setStatus(AdProgramStatus.get(vo.getStatus().ordinal()));
 		program.setFaculty(plannerService.findFacultyById(vo.getFaculty().getId()));
 		program.setLevel(plannerService.findProgramLevelById(vo.getLevel().getId()));
-		plannerService.saveProgram(program,faculty);
+		plannerService.saveProgram(program);
 		return new ResponseEntity<String>("Success", HttpStatus.OK);
+		
 	}
 
 	@RequestMapping(value = "/programs/{code}", method = RequestMethod.PUT)

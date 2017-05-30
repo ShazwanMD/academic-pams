@@ -160,7 +160,7 @@ export class PlannerService {
       .map((res: Response) => <Program>res.json());
   }
 
-  saveProgram(program: Program, faculty: Faculty): Observable<String> {
+  saveProgram(program: Program): Observable<String> {
     let headers = new Headers({
       'Content-Type': 'application/json',
       //'Authorization': 'Bearer ' + this.authService.token

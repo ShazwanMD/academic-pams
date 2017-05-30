@@ -1,3 +1,4 @@
+import { ProgramCreatorDialog } from './dialog/program-creator.dialog';
 import '@ngrx/core/add/operator/select';
 import {appRoutes, appRoutingProviders} from '../../app.routes';
 import {NgModule, ModuleWithProviders} from '@angular/core';
@@ -13,7 +14,7 @@ import {ProgramActions} from "./program.action";
 import {ProgramDetailPage} from "./program-detail.page";
 import {ProgramComponent} from "./component/program.component";
 import {ProgramEditorDialog} from "./dialog/program-editor.dialog";
-import {ProgramCreatorDialog} from "./dialog/program-creator.dialog";
+
 import {EffectsModule} from "@ngrx/effects";
 import {ProgramEffects} from "./program.effect";
 import {ProgramSelectComponent} from "./component/program-select.component";

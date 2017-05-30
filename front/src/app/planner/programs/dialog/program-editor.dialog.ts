@@ -53,7 +53,7 @@ export class ProgramEditorDialog implements OnInit {
 
   submit(program: Program, isValid: boolean) {
     console.log(JSON.stringify(program));
-    if (!program.id) this.store.dispatch(this.actions.saveProgram(this._faculty,program));
+    if (!program.id) this.store.dispatch(this.actions.saveProgram(this.program));
     else  this.store.dispatch(this.actions.updateProgram(program));
     this.dialog.close();
 

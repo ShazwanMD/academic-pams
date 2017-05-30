@@ -46,7 +46,7 @@ public class WhenAdminAddAProgram extends Stage<WhenAdminAddAProgram> {
         program.setLevel(programLevel);
         program.setTitleEn("Master of Enterpreneurship");
         program.setTitleMs("Master of Enterpreneurship");
-        plannerService.saveProgram(program,faculty);
+        plannerService.saveProgram(program);
 
         return self();
     }

@@ -62,21 +62,21 @@ export class ProgramActions {
 
   static SAVE_PROGRAM = '[Program] Save Program';
 
-  saveProgram(program,faculty): Action {
-console.log(faculty)
+  saveProgram(program): Action {
+
 console.log(program)
 
     return {
       type: ProgramActions.SAVE_PROGRAM,
-      payload: {program:program, faculty:faculty}
+      payload: program
     };
   }
 
   static SAVE_PROGRAM_SUCCESS = '[Program] Save Program Success';
-  saveProgramSuccess(message): Action {
+  saveProgramSuccess(program): Action {
     return {
       type: ProgramActions.SAVE_PROGRAM_SUCCESS,
-      payload: message
+      payload: program
     };
   }
 

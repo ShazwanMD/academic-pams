@@ -250,7 +250,7 @@ public interface PlannerService {
 
     boolean isProgramExists(String code, AdFaculty faculty);
     
-    void saveProgram(AdProgram program, AdFaculty faculty);
+    void saveProgram(AdProgram program);
 
     void updateProgram(AdProgram program);
 

@@ -1,5 +1,5 @@
+import {Faculty} from '../../faculties/faculty.interface';
 import {Program} from './../program.interface';
-import {Faculty} from './../../faculties/faculty.interface';
 import {Component, ViewContainerRef, OnInit} from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
 import {FormBuilder} from '@angular/forms';
@@ -10,6 +10,7 @@ import {PlannerModuleState} from "../../index";
 import {MdDialogRef} from "@angular/material";
 import {ProgramStatus} from "../program-status.enum";
 import {ProgramLevel} from "../../program-levels/program-level.interface";
+import { facultyListReducer } from '../../faculties/faculty-list.reducer';
 
 @Component({
   selector: 'pams-program-creator',
@@ -19,8 +20,9 @@ import {ProgramLevel} from "../../program-levels/program-level.interface";
 export class ProgramCreatorDialog implements OnInit {
 
   private creatorForm: FormGroup;
+  private create: boolean = false;
   private _program: Program;
-  private _faculty: Faculty;
+  private faculty: Faculty;
 
   constructor(private formBuilder: FormBuilder,
               private store: Store<PlannerModuleState>,
@@ -30,6 +32,11 @@ export class ProgramCreatorDialog implements OnInit {
               private viewContainerRef: ViewContainerRef,
               private dialog: MdDialogRef<ProgramCreatorDialog>) {
   }
+
+  set program(value: Program) {
+        this._program = value;
+        this.create = true;
+    }
 
   ngOnInit(): void {
     this.creatorForm = this.formBuilder.group(<Program>{
@@ -41,11 +48,15 @@ export class ProgramCreatorDialog implements OnInit {
       faculty: <Faculty>{},
       level: <ProgramLevel>{},
     });
+
+    if (this.create) this.creatorForm.patchValue(this._program);
   }
 
   submit(program: Program, isValid: boolean) {
-    console.log(JSON.stringify(program));
-    this.store.dispatch(this.actions.saveProgram(this._program, this._faculty));
-    this.dialog.close();
+       console.log("adding program");
+        if (!program.id) this.store.dispatch(this.actions.saveProgram(program));
+        else this.store.dispatch(this.actions.updateProgram(program));
+        this.dialog.close();
+        console.log(program);
   }
 }

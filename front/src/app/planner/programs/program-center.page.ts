@@ -42,9 +42,7 @@ export class ProgramCenterPage implements OnInit {
     this.programs$ = this.store.select(...this.PROGRAMS);
   }
 
-  goBack(route: string): void {
-    this.router.navigate(['/programs']);
-  }
+ 
 
   viewProgram(program: Program) {
     console.log("program: " + program.code);
@@ -61,8 +59,6 @@ export class ProgramCenterPage implements OnInit {
     this.showDialog(null);
   }
 
-  filter(): void {
-  }
 
   private showDialog(code: Program): void {
     console.log("save");
@@ -73,9 +69,20 @@ export class ProgramCenterPage implements OnInit {
     config.height = '70';
     config.position = {top: '1px'};
     this.creatorDialogRef = this.dialog.open(ProgramCreatorDialog, config);
-    this.creatorDialogRef.afterClosed().subscribe(res => {
+    if (code) this.creatorDialogRef.componentInstance.program = code;
+
+    
+    //set
+     this.creatorDialogRef.afterClosed().subscribe(res => {
       console.log("close dialog");
     });
+  }
+
+   goBack(route: string): void {
+    this.router.navigate(['/programs']);
+   }
+
+  filter(): void {
   }
 
 }

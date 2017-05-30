@@ -1,6 +1,6 @@
 import {FacultyActions} from './../faculties/faculty.action';
 import {Faculty} from './../faculties/faculty.interface';
-import {Program} from './program.interface';
+import { Program } from './program.interface';
 import {Injectable} from '@angular/core';
 import {Effect, Actions} from '@ngrx/effects';
 import {ProgramActions} from "./program.action";
@@ -45,12 +45,11 @@ export class ProgramEffects {
   @Effect() saveProgram$ = this.actions$
     .ofType(ProgramActions.SAVE_PROGRAM)
     .map(action => action.payload)
-    .switchMap(payload => this.plannerService.saveProgram(payload.program, payload.faculty))
-    .map(message => this.programActions.saveProgramSuccess(message))
-    .withLatestFrom(this.store$.select(...this.FACULTIES))
+    .switchMap(program => this.plannerService.saveProgram(program))
+    .map(program => this.programActions.saveProgramSuccess(program))
+    .withLatestFrom(this.store$.select(...this.PROGRAM))
     .map(state => state[1])
-    .map((faculty: Faculty) =>
-      this.facultyActions.findFacultyByCode(faculty.code));
+   .map((program: Program) => this.programActions.findProgramByCode(program.code));
 
 
   @Effect() updateProgram$ = this.actions$
