@@ -1,7 +1,7 @@
 <md-card>
   <md-card-title>{{faculty?.code}}</md-card-title>
   <md-card-subtitle>{{faculty?.name}}</md-card-subtitle>
-  <md-divider></md-divider>
+  <md-divider> </md-divider>
   <md-card-content>
 
     <md-tab-group>
@@ -16,13 +16,13 @@
         <br>
       </md-tab>
 
-      <md-tab label="Information">
         <md-tab label=" Program Information">
           <pams-faculty-program-list [programs]="programs">
           </pams-faculty-program-list>
-        </md-tab></md-tab>
+        </md-tab>
+
     </md-tab-group>
 
   </md-card-content>
-  <md-divider></md-divider>
+  <md-divider> </md-divider>
 </md-card>
