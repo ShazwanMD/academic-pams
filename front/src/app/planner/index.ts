@@ -1,3 +1,4 @@
+import { AcademicYearListPage } from './academic-years/academic-year-list.page';
 import {NgModule, ModuleWithProviders} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {ReactiveFormsModule} from '@angular/forms';
@@ -26,8 +27,6 @@ import {CourseSubModule} from "./courses/index";
 import {CohortSubModule} from "./cohorts/index";
 import {CohortState, cohortReducer} from "./cohorts/cohort.reducer";
 import {CohortListState, cohortListReducer} from "./cohorts/cohort-list.reducer";
-
-
 import {Faculty} from "./faculties/faculty.interface";
 import {Program} from "./programs/program.interface";
 import {Cohort} from "./cohorts/cohort.interface";
@@ -45,18 +44,22 @@ import {programLevelListReducer, ProgramLevelListState} from "./program-levels/p
 import {programLevelReducer, ProgramLevelState} from "./program-levels/program-level.reducer";
 import {ProgramLevelSubModule} from "./program-levels/index";
 import {ProgramLevel} from "./program-levels/program-level.interface";
+import { AcademicYearState, academicYearReducer } from "./academic-years/academic-year.reducer";
 
 
 export interface PlannerModuleState {
   academicSessions: AcademicSessionListState,
   academicSession: AcademicSessionState;
   academicYears: AcademicYearListState,
+  academicYear: AcademicYearState;
   faculties: FacultyListState;
   faculty: FacultyState;
   programs: ProgramListState;
   program: ProgramState;
   programLevels: ProgramLevelListState;
   programLevel: ProgramLevelState;
+
+
   courses: CourseListState;
   course: CourseState;
   cohorts: CohortListState;
@@ -69,14 +72,13 @@ export const INITIAL_PLANNER_STATE: PlannerModuleState =
     academicSession: <AcademicSession>{},
     academicSessions: <AcademicSession[]>[],
     academicYears: <AcademicYear[]>[],
+    academicYear:<AcademicYear>{},
     faculties: <Faculty[]>[],
     faculty: <Faculty>{},
     programs: <Program[]>[],
     program: <Program>{},
     programLevels: <ProgramLevel[]>[],
     programLevel: <ProgramLevel>{},
-    level: <ProgramLevel>{},
-    levels: <ProgramLevel[]>[],
     courses: <Course[]>[],
     course: <Course>{},
     cohorts: <Cohort[]>[],
@@ -87,6 +89,7 @@ export const plannerModuleReducers = {
   academicSession: academicSessionReducer,
   academicSessions: academicSessionListReducer,
   academicYears: academicYearListReducer,
+  academicYear: academicYearReducer,
   faculties: facultyListReducer,
   faculty: facultyReducer,
   programs: programListReducer,
