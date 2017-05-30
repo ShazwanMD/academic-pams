@@ -439,9 +439,11 @@ export class TermService {
         return this.http.post(environment.endpoint + '/api/term/offerings/' + offering.code + '/save', JSON.stringify(offering), options)
           .flatMap((res: Response) => Observable.of(res.text()));
       }
-
-    addSection(offering: Offering, section: Section): Observable<String> {
-        console.log("addSection");
+       
+    //add new section
+     addSection(offering: Offering, section: Section): Observable<String> {
+        console.log("addSection:" + section);
+        console.log("addOffering:" + offering.canonicalCode);
         let headers = new Headers({
             'Content-Type': 'application/json',
             //'Authorization': 'Bearer ' + this.authService.token
@@ -450,7 +452,7 @@ export class TermService {
         return this.http.post(environment.endpoint + '/api/term/offerings/' + offering.canonicalCode + '/sections', JSON.stringify(section), options)
             .flatMap((res: Response) => Observable.of(res.text()));
     }
-
+    
     //delete Section using editorDialog
     deleteSection(offering: Offering, section: Section) {
         let headers = new Headers({

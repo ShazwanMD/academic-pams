@@ -39,7 +39,7 @@
       </button>
     </div>
 
-    <md-card>
+  <!--   <md-card>
       <md-tab-group [selectedIndex]="0">
         <md-tab label="Assigned">
           <pams-enrollment-application-task-list
@@ -52,6 +52,22 @@
             (view)="view($event)"></pams-enrollment-application-task-list>
         </md-tab>
       </md-tab-group>
+    </md-card> -->
+    
+       <md-card class="">
+      <td-search-box class="push-left push-right"
+                     placeholder="search"
+                     [alwaysVisible]="true"
+                     (searchDebounce)="filter($event)">
+      </td-search-box>
+
+      <pams-enrollment-application-task-list
+        [enrollmentApplicationTasks]="enrollmentApplicationTasks$ | async" (view)="viewOffering($event)"></pams-enrollment-application-task-list>
+      <md-divider></md-divider>
+      <md-card-actions>
+        <a md-button color="accent" class="text-upper"
+           [routerLink]="['/offerings-search']"> <span>View More</span>
+        </a></md-card-actions>
     </md-card>
 
   </td-layout-manage-list>

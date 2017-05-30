@@ -36,6 +36,10 @@ export class EnrollmentApplicationCenterPage implements OnInit {
     this.router.navigate(['/term/enrollment-applications']);
   }
 
+      filter(): void {
+
+  }
+    
   view(invoice: EnrollmentApplicationTask) {
     console.log("invoice: " + invoice.taskId);
     this.router.navigate(['/view-task', invoice.taskId]);
