@@ -226,7 +226,7 @@ export class ProfileService {
   }
 
   switchStudyMode(student: Student, switcher: SwitchStudyMode): Observable<String> {
-    console.log("switchStudyMode");
+    console.log(switcher);
     let headers = new Headers({
       'Content-Type': 'application/json',
     });
@@ -236,7 +236,7 @@ export class ProfileService {
   }
 
   transferCohort(student: Student, transferer: TransferCohort): Observable<String> {
-    console.log("transferCohort");
+    console.log(transferer);
     let headers = new Headers({
       'Content-Type': 'application/json',
     });
