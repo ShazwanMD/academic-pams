@@ -39,7 +39,7 @@ export class OfferingSectionListComponent {
   }
 
   private columns: any[] = [
-    {name: 'ordinal', label: 'Ordinal'},
+    {name: 'ordinal', label: 'Section No'},
     {name: 'code', label: 'Code'},
     {name: 'capacity', label: 'Capacity'},
     {name: 'appointmentCount', label: 'Appointment'},
@@ -76,7 +76,7 @@ export class OfferingSectionListComponent {
     config.viewContainerRef = this.vcf;
     config.role = 'dialog';
     config.width = '50%';
-    config.height = '40%';
+    config.height = '80%';
     config.position = {top: '0px'};
     this.creatorDialogRef = this.dialog.open(SectionEditorDialog, config);
     this.creatorDialogRef.componentInstance.offering = this.offering;
