@@ -22,7 +22,6 @@ import { Student } from "../../../identity/student.interface";
 export class AdmissionApplicationTaskCreatorDialog implements OnInit {
 
   private createForm: FormGroup;
-
   constructor(private formBuilder: FormBuilder,
     private store: Store<TermModuleState>,
     private actions: AdmissionApplicationActions,

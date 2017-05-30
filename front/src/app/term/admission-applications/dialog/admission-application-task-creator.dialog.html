@@ -5,7 +5,7 @@
     <div layout="row" class="pad-bottom">
       <md-input-container flex>
         <input mdInput #referenceNo 
-        placeholder="referenceNo" 
+        placeholder="Reference No" 
         formControlName="referenceNo" flex/>
       </md-input-container>
     </div>
@@ -13,7 +13,7 @@
     <div layout="row" class="pad-bottom">
       <md-input-container flex>
         <input mdInput #sourceNo 
-        placeholder="sourceNo" 
+        placeholder="Source No" 
         formControlName="sourceNo"flex/>
       </md-input-container>
     </div>
@@ -21,7 +21,7 @@
     <div layout="row" class="pad-bottom">
       <md-input-container flex>
         <input mdInput #auditNo 
-        placeholder="AuditNo" 
+        placeholder="Audit No" 
         formControlName="auditNo" flex/>
       </md-input-container>
     </div>
@@ -37,25 +37,34 @@
     <div layout="row" class="pad-bottom">
       <md-input-container flex>
         <input mdInput #cancelComment 
-        placeholder="CancelComment" formControlName="cancelComment"flex/>
+        placeholder="Cancel Comment" 
+        formControlName="cancelComment"flex/>
+      </md-input-container>
+    </div>
+
+    <div layout="row" class="pad-bottom">
+      <md-input-container flex>
+        <input mdInput #cancelComment 
+        placeholder="Remove Comment" 
+        formControlName="removeComment"flex/>
       </md-input-container>
     </div>
 
     <div layout="row" class="pad-bottom">
       <md-input-container flex>
         <input mdInput #description 
-        placeholder="description" 
+        placeholder="Description" 
         formControlName="description" flex/>
       </md-input-container>
     </div>
 
     <!--select actor-->
-    <!--<div layout="row" class="pad-bottom pad-top">
-      <pams-actor-select
+    <div layout="row" class="pad-bottom pad-top">
+      <pams-staff-select
         [placeholder]="'Select Advisor'" 
         [innerFormControl]="createForm.controls['actor']">
-      </pams-actor-select>
-    </div>-->
+      </pams-staff-select>
+    </div>
 
     <!--Select student-->
     <div layout="row" class="pad-bottom pad-top">
@@ -82,12 +91,12 @@
     </div>
 
     <!--select study center-->
-    <!--<div layout="row" class="pad-bottom pad-top">
+    <div layout="row" class="pad-bottom pad-top">
       <pams-study-center-select
         [placeholder]="'Select Study Center'" 
         [innerFormControl]="createForm.controls['studyCenter']">
       </pams-study-center-select>
-    </div>-->
+    </div>
 
   </form>
 </md-dialog-content>
