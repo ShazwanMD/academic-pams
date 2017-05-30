@@ -164,5 +164,43 @@ export class SectionActions {
       payload: message
     };
   } 
+    
+  //find enrollment by section
+  static FIND_ENROLLMENTS_BY_SECTION = '[Section] Find Enrollments By Section';
+
+  findEnrollmentsBySection(section): Action {
+    return {
+      type: SectionActions.FIND_ENROLLMENTS_BY_SECTION,
+      payload: section
+    };
+  }
+
+  static FIND_ENROLLMENTS_BY_SECTION_SUCCESS = '[Section] Find Enrollments By Section Success';
+
+  findEnrollmentsBySectionSuccess(enrollments): Action {
+    return {
+      type: SectionActions.FIND_ENROLLMENTS_BY_SECTION_SUCCESS,
+      payload: enrollments
+    };
+  }
+    
+    //find appointment by section
+  static FIND_APPOINTMENTS_BY_SECTION = '[Section] Find Appointments By Section';
+
+  findAppointmentsBySection(section): Action {
+    return {
+      type: SectionActions.FIND_APPOINTMENTS_BY_SECTION,
+      payload: section
+    };
+  }
+
+  static FIND_APPOINTMENTS_BY_SECTION_SUCCESS = '[Section] Find Appointments By Section Success';
+
+  findAppointmentsBySectionSuccess(appointments): Action {
+    return {
+      type: SectionActions.FIND_APPOINTMENTS_BY_SECTION_SUCCESS,
+      payload: appointments
+    };
+  }
 
 }
