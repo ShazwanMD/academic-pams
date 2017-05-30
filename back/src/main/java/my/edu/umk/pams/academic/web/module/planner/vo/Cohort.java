@@ -15,8 +15,17 @@ public class Cohort extends MetaObject{
     private Program program;
     private AcademicSession academicSession;
     private Cohort cohort;
+    private Long id;
 
-    public String getCode() {
+    public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getCode() {
         return code;
     }
 

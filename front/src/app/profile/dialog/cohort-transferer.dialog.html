@@ -2,7 +2,12 @@
 <md-dialog-content>
   <form [formGroup]="transferForm">
         <div layout="row" class="pad-bottom pad-top" flex>
-      <span>From {{_student?.cohort?.code}}</span>
+      
+         
+      <b>From </b>{{_student?.cohort?.program?.faculty?.name}}<br/>
+   
+      <b> Prefix </b>{{_student?.cohort?.program?.faculty?.prefix}}<br/>
+      
     </div>
       <div layout="row" flex>
       <pams-cohort-select
