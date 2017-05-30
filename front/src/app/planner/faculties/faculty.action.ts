@@ -35,6 +35,14 @@ export class FacultyActions {
     };
   }
 
+static FIND_PROGRAM_BY_FACULTY =  '[Faculty] Find Program By Faculty';
+findProgramsByFaculty(faculty): Action {
+  return{
+    type: FacultyActions.FIND_PROGRAM_BY_FACULTY,
+    payload: faculty
+  };
+}
+
   static SAVE_FACULTY = '[Faculty] Save Faculty';
   saveFaculty(faculty): Action {
     return {

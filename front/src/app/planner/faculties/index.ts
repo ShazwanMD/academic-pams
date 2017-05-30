@@ -1,3 +1,4 @@
+import { ProgramSubModule } from './../programs/index';
 
 import '@ngrx/core/add/operator/select';
 import { appRoutes, appRoutingProviders } from '../../app.routes';
@@ -33,6 +34,7 @@ import { FacultyEditorDialog } from './dialog/faculty-editor.dialog';
     BrowserModule,
     ReactiveFormsModule,
     CovalentCoreModule.forRoot(),
+    // ProgramSubModule.forRoot(),
     EffectsModule.run(FacultyEffects),
   ],
   declarations: [
