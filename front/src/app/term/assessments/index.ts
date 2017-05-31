@@ -29,12 +29,12 @@ import {PlannerService} from "../../../services/planner.service";
     //page
     AssessmentDetailPage,
 
-    //Component
+    //component
     AssessmentListComponent,
     AssessmentTypeSelectComponent,
     AssessmentComponent,
 
-    //Dialog
+    //dialog
     AssessmentCreatorDialog,
     AssessmentCategorySelectComponent,
   ],
