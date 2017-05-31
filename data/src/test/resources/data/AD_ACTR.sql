@@ -108,8 +108,6 @@ UPDATE AD_USER
 SET actor_id = currval('SQ_AD_ACTR')
 WHERE email = 'student9@umk.edu.my';
 
-
-
 -- lecturer 1
 INSERT INTO AD_ACTR (ID, IDENTITY_NO, NAME, EMAIL, PHONE, MOBILE, FAX, ACTOR_TYPE, C_TS, C_ID, M_ST)
 VALUES
@@ -278,3 +276,258 @@ INSERT INTO AD_STAF (ID,STAFF_TYPE,FACULTY_ID) VALUES (currval('SQ_AD_ACTR'), 1,
 UPDATE AD_USER
 SET actor_id = currval('SQ_AD_ACTR')
 WHERE email = 'CPS 9@umk.edu.my';
+
+-- student 10
+INSERT INTO AD_ACTR (ID, IDENTITY_NO, NAME, EMAIL, PHONE, MOBILE, FAX, ACTOR_TYPE, C_TS, C_ID, M_ST)
+VALUES
+  (nextval('SQ_AD_ACTR'), 'A17M0010F', 'STUDENT 10', 'student10@umk.edu.my', '097111775', '0123450004', NULL, 1,
+                          CURRENT_TIMESTAMP, 1, 1);
+
+INSERT INTO AD_STDN (ID, STUDENT_STATUS, COHORT_ID,STUDY_MODE_ID) VALUES (currval('SQ_AD_ACTR'), 1, 70,1);
+
+UPDATE AD_USER
+SET actor_id = currval('SQ_AD_ACTR')
+WHERE email = 'student10@umk.edu.my';
+
+-- student 11
+INSERT INTO AD_ACTR (ID, IDENTITY_NO, NAME, EMAIL, PHONE, MOBILE, FAX, ACTOR_TYPE, C_TS, C_ID, M_ST)
+VALUES
+  (nextval('SQ_AD_ACTR'), 'A17M0011F', 'STUDENT 11', 'student11@umk.edu.my', '097111775', '0123450004', NULL, 1,
+                          CURRENT_TIMESTAMP, 1, 1);
+
+INSERT INTO AD_STDN (ID, STUDENT_STATUS, COHORT_ID,STUDY_MODE_ID) VALUES (currval('SQ_AD_ACTR'), 1, 70,1);
+
+UPDATE AD_USER
+SET actor_id = currval('SQ_AD_ACTR')
+WHERE email = 'student11@umk.edu.my';
+
+-- student 12
+INSERT INTO AD_ACTR (ID, IDENTITY_NO, NAME, EMAIL, PHONE, MOBILE, FAX, ACTOR_TYPE, C_TS, C_ID, M_ST)
+VALUES
+  (nextval('SQ_AD_ACTR'), 'A17M0012F', 'STUDENT 12', 'student12@umk.edu.my', '097111775', '0123450004', NULL, 1,
+                          CURRENT_TIMESTAMP, 1, 1);
+
+INSERT INTO AD_STDN (ID, STUDENT_STATUS, COHORT_ID,STUDY_MODE_ID) VALUES (currval('SQ_AD_ACTR'), 1, 70,1);
+
+UPDATE AD_USER
+SET actor_id = currval('SQ_AD_ACTR')
+WHERE email = 'student12@umk.edu.my';
+
+-- student 13
+INSERT INTO AD_ACTR (ID, IDENTITY_NO, NAME, EMAIL, PHONE, MOBILE, FAX, ACTOR_TYPE, C_TS, C_ID, M_ST)
+VALUES
+  (nextval('SQ_AD_ACTR'), 'A17M0013F', 'STUDENT 13', 'student13@umk.edu.my', '097111775', '0123450004', NULL, 1,
+                          CURRENT_TIMESTAMP, 1, 1);
+
+INSERT INTO AD_STDN (ID, STUDENT_STATUS, COHORT_ID,STUDY_MODE_ID) VALUES (currval('SQ_AD_ACTR'), 1, 70,1);
+
+UPDATE AD_USER
+SET actor_id = currval('SQ_AD_ACTR')
+WHERE email = 'student13@umk.edu.my';
+
+-- student 14
+INSERT INTO AD_ACTR (ID, IDENTITY_NO, NAME, EMAIL, PHONE, MOBILE, FAX, ACTOR_TYPE, C_TS, C_ID, M_ST)
+VALUES
+  (nextval('SQ_AD_ACTR'), 'A17M0014F', 'STUDENT 14', 'student14@umk.edu.my', '097111775', '0123450004', NULL, 1,
+                          CURRENT_TIMESTAMP, 1, 1);
+
+INSERT INTO AD_STDN (ID, STUDENT_STATUS, COHORT_ID,STUDY_MODE_ID) VALUES (currval('SQ_AD_ACTR'), 1, 70,1);
+
+UPDATE AD_USER
+SET actor_id = currval('SQ_AD_ACTR')
+WHERE email = 'student14@umk.edu.my';
+
+-- student 15
+INSERT INTO AD_ACTR (ID, IDENTITY_NO, NAME, EMAIL, PHONE, MOBILE, FAX, ACTOR_TYPE, C_TS, C_ID, M_ST)
+VALUES
+  (nextval('SQ_AD_ACTR'), 'A17M0015F', 'STUDENT 15', 'student15@umk.edu.my', '097111775', '0123450004', NULL, 1,
+                          CURRENT_TIMESTAMP, 1, 1);
+
+INSERT INTO AD_STDN (ID, STUDENT_STATUS, COHORT_ID,STUDY_MODE_ID) VALUES (currval('SQ_AD_ACTR'), 1, 70,1);
+
+UPDATE AD_USER
+SET actor_id = currval('SQ_AD_ACTR')
+WHERE email = 'student15@umk.edu.my';
+
+-- student 16
+INSERT INTO AD_ACTR (ID, IDENTITY_NO, NAME, EMAIL, PHONE, MOBILE, FAX, ACTOR_TYPE, C_TS, C_ID, M_ST)
+VALUES
+  (nextval('SQ_AD_ACTR'), 'A17M0016F', 'STUDENT 16', 'student16@umk.edu.my', '097111775', '0123450004', NULL, 1,
+                          CURRENT_TIMESTAMP, 1, 1);
+
+INSERT INTO AD_STDN (ID, STUDENT_STATUS, COHORT_ID,STUDY_MODE_ID) VALUES (currval('SQ_AD_ACTR'), 1, 70,1);
+
+UPDATE AD_USER
+SET actor_id = currval('SQ_AD_ACTR')
+WHERE email = 'student16@umk.edu.my';
+
+-- student 17
+INSERT INTO AD_ACTR (ID, IDENTITY_NO, NAME, EMAIL, PHONE, MOBILE, FAX, ACTOR_TYPE, C_TS, C_ID, M_ST)
+VALUES
+  (nextval('SQ_AD_ACTR'), 'A17M0017F', 'STUDENT 17', 'student17@umk.edu.my', '097111775', '0123450004', NULL, 1,
+                          CURRENT_TIMESTAMP, 1, 1);
+
+INSERT INTO AD_STDN (ID, STUDENT_STATUS, COHORT_ID,STUDY_MODE_ID) VALUES (currval('SQ_AD_ACTR'), 1, 70,1);
+
+UPDATE AD_USER
+SET actor_id = currval('SQ_AD_ACTR')
+WHERE email = 'student17@umk.edu.my';
+
+-- student 18
+INSERT INTO AD_ACTR (ID, IDENTITY_NO, NAME, EMAIL, PHONE, MOBILE, FAX, ACTOR_TYPE, C_TS, C_ID, M_ST)
+VALUES
+  (nextval('SQ_AD_ACTR'), 'A17M0018F', 'STUDENT 18', 'student18@umk.edu.my', '097111775', '0123450004', NULL, 1,
+                          CURRENT_TIMESTAMP, 1, 1);
+
+INSERT INTO AD_STDN (ID, STUDENT_STATUS, COHORT_ID,STUDY_MODE_ID) VALUES (currval('SQ_AD_ACTR'), 1, 70,1);
+
+UPDATE AD_USER
+SET actor_id = currval('SQ_AD_ACTR')
+WHERE email = 'student18@umk.edu.my';
+
+-- student 19
+INSERT INTO AD_ACTR (ID, IDENTITY_NO, NAME, EMAIL, PHONE, MOBILE, FAX, ACTOR_TYPE, C_TS, C_ID, M_ST)
+VALUES
+  (nextval('SQ_AD_ACTR'), 'A17M0019F', 'STUDENT 19', 'student19@umk.edu.my', '097111775', '0123450004', NULL, 1,
+                          CURRENT_TIMESTAMP, 1, 1);
+
+INSERT INTO AD_STDN (ID, STUDENT_STATUS, COHORT_ID,STUDY_MODE_ID) VALUES (currval('SQ_AD_ACTR'), 1, 70,1);
+
+UPDATE AD_USER
+SET actor_id = currval('SQ_AD_ACTR')
+WHERE email = 'student19@umk.edu.my';
+
+-- student 20
+INSERT INTO AD_ACTR (ID, IDENTITY_NO, NAME, EMAIL, PHONE, MOBILE, FAX, ACTOR_TYPE, C_TS, C_ID, M_ST)
+VALUES
+  (nextval('SQ_AD_ACTR'), 'A17M0020F', 'STUDENT 20', 'student20@umk.edu.my', '097111775', '0123450004', NULL, 1,
+                          CURRENT_TIMESTAMP, 1, 1);
+
+INSERT INTO AD_STDN (ID, STUDENT_STATUS, COHORT_ID,STUDY_MODE_ID) VALUES (currval('SQ_AD_ACTR'), 1, 70,1);
+
+UPDATE AD_USER
+SET actor_id = currval('SQ_AD_ACTR')
+WHERE email = 'student20@umk.edu.my';
+
+-- student 21
+INSERT INTO AD_ACTR (ID, IDENTITY_NO, NAME, EMAIL, PHONE, MOBILE, FAX, ACTOR_TYPE, C_TS, C_ID, M_ST)
+VALUES
+  (nextval('SQ_AD_ACTR'), 'A17M0021F', 'STUDENT 21', 'student21@umk.edu.my', '097111775', '0123450004', NULL, 1,
+                          CURRENT_TIMESTAMP, 1, 1);
+
+INSERT INTO AD_STDN (ID, STUDENT_STATUS, COHORT_ID,STUDY_MODE_ID) VALUES (currval('SQ_AD_ACTR'), 1, 70,1);
+
+UPDATE AD_USER
+SET actor_id = currval('SQ_AD_ACTR')
+WHERE email = 'student21@umk.edu.my';
+
+-- student 22
+INSERT INTO AD_ACTR (ID, IDENTITY_NO, NAME, EMAIL, PHONE, MOBILE, FAX, ACTOR_TYPE, C_TS, C_ID, M_ST)
+VALUES
+  (nextval('SQ_AD_ACTR'), 'A17M0022F', 'STUDENT 22', 'student22@umk.edu.my', '097111775', '0123450004', NULL, 1,
+                          CURRENT_TIMESTAMP, 1, 1);
+
+INSERT INTO AD_STDN (ID, STUDENT_STATUS, COHORT_ID,STUDY_MODE_ID) VALUES (currval('SQ_AD_ACTR'), 1, 70,1);
+
+UPDATE AD_USER
+SET actor_id = currval('SQ_AD_ACTR')
+WHERE email = 'student22@umk.edu.my';
+
+-- student 23
+INSERT INTO AD_ACTR (ID, IDENTITY_NO, NAME, EMAIL, PHONE, MOBILE, FAX, ACTOR_TYPE, C_TS, C_ID, M_ST)
+VALUES
+  (nextval('SQ_AD_ACTR'), 'A17M0023F', 'STUDENT 23', 'student23@umk.edu.my', '097111775', '0123450004', NULL, 1,
+                          CURRENT_TIMESTAMP, 1, 1);
+
+INSERT INTO AD_STDN (ID, STUDENT_STATUS, COHORT_ID,STUDY_MODE_ID) VALUES (currval('SQ_AD_ACTR'), 1, 70,1);
+
+UPDATE AD_USER
+SET actor_id = currval('SQ_AD_ACTR')
+WHERE email = 'student23@umk.edu.my';
+
+-- student 24
+INSERT INTO AD_ACTR (ID, IDENTITY_NO, NAME, EMAIL, PHONE, MOBILE, FAX, ACTOR_TYPE, C_TS, C_ID, M_ST)
+VALUES
+  (nextval('SQ_AD_ACTR'), 'A17M0024F', 'STUDENT 24', 'student24@umk.edu.my', '097111775', '0123450004', NULL, 1,
+                          CURRENT_TIMESTAMP, 1, 1);
+
+INSERT INTO AD_STDN (ID, STUDENT_STATUS, COHORT_ID,STUDY_MODE_ID) VALUES (currval('SQ_AD_ACTR'), 1, 70,1);
+
+UPDATE AD_USER
+SET actor_id = currval('SQ_AD_ACTR')
+WHERE email = 'student24@umk.edu.my';
+
+-- student 25
+INSERT INTO AD_ACTR (ID, IDENTITY_NO, NAME, EMAIL, PHONE, MOBILE, FAX, ACTOR_TYPE, C_TS, C_ID, M_ST)
+VALUES
+  (nextval('SQ_AD_ACTR'), 'A17M0025F', 'STUDENT 25', 'student25@umk.edu.my', '097111775', '0123450004', NULL, 1,
+                          CURRENT_TIMESTAMP, 1, 1);
+
+INSERT INTO AD_STDN (ID, STUDENT_STATUS, COHORT_ID,STUDY_MODE_ID) VALUES (currval('SQ_AD_ACTR'), 1, 70,1);
+
+UPDATE AD_USER
+SET actor_id = currval('SQ_AD_ACTR')
+WHERE email = 'student25@umk.edu.my';
+
+-- student 26
+INSERT INTO AD_ACTR (ID, IDENTITY_NO, NAME, EMAIL, PHONE, MOBILE, FAX, ACTOR_TYPE, C_TS, C_ID, M_ST)
+VALUES
+  (nextval('SQ_AD_ACTR'), 'A17M0026F', 'STUDENT 26', 'student26@umk.edu.my', '097111775', '0123450004', NULL, 1,
+                          CURRENT_TIMESTAMP, 1, 1);
+
+INSERT INTO AD_STDN (ID, STUDENT_STATUS, COHORT_ID,STUDY_MODE_ID) VALUES (currval('SQ_AD_ACTR'), 1, 70,1);
+
+UPDATE AD_USER
+SET actor_id = currval('SQ_AD_ACTR')
+WHERE email = 'student26@umk.edu.my';
+
+-- student 27
+INSERT INTO AD_ACTR (ID, IDENTITY_NO, NAME, EMAIL, PHONE, MOBILE, FAX, ACTOR_TYPE, C_TS, C_ID, M_ST)
+VALUES
+  (nextval('SQ_AD_ACTR'), 'A17M0027F', 'STUDENT 27', 'student27@umk.edu.my', '097111775', '0123450004', NULL, 1,
+                          CURRENT_TIMESTAMP, 1, 1);
+
+INSERT INTO AD_STDN (ID, STUDENT_STATUS, COHORT_ID,STUDY_MODE_ID) VALUES (currval('SQ_AD_ACTR'), 1, 70,1);
+
+UPDATE AD_USER
+SET actor_id = currval('SQ_AD_ACTR')
+WHERE email = 'student27@umk.edu.my';
+
+-- student 28
+INSERT INTO AD_ACTR (ID, IDENTITY_NO, NAME, EMAIL, PHONE, MOBILE, FAX, ACTOR_TYPE, C_TS, C_ID, M_ST)
+VALUES
+  (nextval('SQ_AD_ACTR'), 'A17M0028F', 'STUDENT 28', 'student28@umk.edu.my', '097111775', '0123450004', NULL, 1,
+                          CURRENT_TIMESTAMP, 1, 1);
+
+INSERT INTO AD_STDN (ID, STUDENT_STATUS, COHORT_ID,STUDY_MODE_ID) VALUES (currval('SQ_AD_ACTR'), 1, 70,1);
+
+UPDATE AD_USER
+SET actor_id = currval('SQ_AD_ACTR')
+WHERE email = 'student28@umk.edu.my';
+
+-- student 29
+INSERT INTO AD_ACTR (ID, IDENTITY_NO, NAME, EMAIL, PHONE, MOBILE, FAX, ACTOR_TYPE, C_TS, C_ID, M_ST)
+VALUES
+  (nextval('SQ_AD_ACTR'), 'A17M0029F', 'STUDENT 29', 'student29@umk.edu.my', '097111775', '0123450004', NULL, 1,
+                          CURRENT_TIMESTAMP, 1, 1);
+
+INSERT INTO AD_STDN (ID, STUDENT_STATUS, COHORT_ID,STUDY_MODE_ID) VALUES (currval('SQ_AD_ACTR'), 1, 70,1);
+
+UPDATE AD_USER
+SET actor_id = currval('SQ_AD_ACTR')
+WHERE email = 'student29@umk.edu.my';
+
+-- student 30
+INSERT INTO AD_ACTR (ID, IDENTITY_NO, NAME, EMAIL, PHONE, MOBILE, FAX, ACTOR_TYPE, C_TS, C_ID, M_ST)
+VALUES
+  (nextval('SQ_AD_ACTR'), 'A17M0030F', 'STUDENT 30', 'student30@umk.edu.my', '097111775', '0123450004', NULL, 1,
+                          CURRENT_TIMESTAMP, 1, 1);
+
+INSERT INTO AD_STDN (ID, STUDENT_STATUS, COHORT_ID,STUDY_MODE_ID) VALUES (currval('SQ_AD_ACTR'), 1, 70,1);
+
+UPDATE AD_USER
+SET actor_id = currval('SQ_AD_ACTR')
+WHERE email = 'student30@umk.edu.my';
+
+
+
