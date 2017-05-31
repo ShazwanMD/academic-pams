@@ -1,4 +1,4 @@
-import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, ViewContainerRef} from '@angular/core';
+import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, ViewContainerRef, OnInit} from '@angular/core';
 import {Section} from '../../sections/section.interface';
 import {MdDialog, MdDialogConfig, MdDialogRef} from "@angular/material";
 import {ActivatedRoute, Router} from "@angular/router";
@@ -13,15 +13,23 @@ import {Offering} from "../offering.interface";
   templateUrl: './offering-section-list.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class OfferingSectionListComponent {
-
-  private creatorDialogRef: MdDialogRef<SectionEditorDialog>;
-  private edit: boolean = false;
+export class OfferingSectionListComponent implements OnInit {
 
   @Input() section: Section;
   @Input() offering: Offering;
   @Input() sections: Section[];
   @Output() view = new EventEmitter<Section>();
+
+  private selectedRows: Section[];
+  private creatorDialogRef: MdDialogRef<SectionEditorDialog>;
+  private columns: any[] = [
+    {name: 'ordinal', label: 'Section No'},
+    {name: 'code', label: 'Code'},
+    {name: 'capacity', label: 'Capacity'},
+    {name: 'appointmentCount', label: 'Appointment'},
+    {name: 'enrollmentCount', label: 'Enrollment'},
+    {name: 'action', label: ''}
+  ];
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -32,22 +40,16 @@ export class OfferingSectionListComponent {
   }
 
   ngOnInit(): void {
-    this.route.params.subscribe((params: { canonicalCode: string }) => {
-      let canonicalCode: string = params.canonicalCode;
-      this.store.dispatch(this.actions.findOfferingByCanonicalCode(canonicalCode));
-    });
+    this.selectedRows = this.sections.filter(value => value.selected);
   }
 
-  private columns: any[] = [
-    {name: 'ordinal', label: 'Section No'},
-    {name: 'code', label: 'Code'},
-    {name: 'capacity', label: 'Capacity'},
-    {name: 'appointmentCount', label: 'Appointment'},
-    {name: 'enrollmentCount', label: 'Enrollment'},
-    {name: 'action', label: ''}
-  ];
-
   filter(): void {
+  }
+
+  selectRow(section: Section): void {
+  }
+
+  selectAllRows(sections: Section[]): void {
   }
 
   editDialog(section: Section, isValid: boolean): void {
@@ -70,7 +72,7 @@ export class OfferingSectionListComponent {
     });
   }
 
-  showSectionDialog(): void {
+  addSectionDialog(): void {
     console.log("showDialog");
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
@@ -88,7 +90,6 @@ export class OfferingSectionListComponent {
 
   deleteSection(section: Section): void {
     console.log("deleteSection");
-    console.log(section);
     this.store.dispatch(this.actions.deleteSection(this.offering, section))
   }
 }
