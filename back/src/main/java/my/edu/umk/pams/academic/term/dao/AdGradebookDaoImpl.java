@@ -211,7 +211,6 @@ public class AdGradebookDaoImpl extends GenericDaoSupport<Long, AdGradebook> imp
 
 	@Override
 	public void addGradebook(AdSection section, AdEnrollment enrollment, AdGradebook gradebook) {
-        
         Validate.notNull(section, "Offering cannot be null");
         Validate.notNull(enrollment, "assessment cannot be null");
         Session session = sessionFactory.getCurrentSession();
