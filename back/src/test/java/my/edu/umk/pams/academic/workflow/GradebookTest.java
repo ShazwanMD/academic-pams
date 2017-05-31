@@ -70,16 +70,30 @@ public class GradebookTest {
     @Test
     @Rollback(false)
     public void testWorkflow() {
+        AdAcademicSession academicSession = plannerService.findCurrentAcademicSession();
+        AdStudent a17P001 = identityService.findStudentByMatricNo("A17P001");
+        AdAdmission admission1 = termService.findAdmissionByAcademicSessionCohortAndStudent(academicSession, a17P001.getCohort(), a17P001);
+        LOG.debug("student: {}", a17P001.getId());
+        LOG.debug("cohort: {}", a17P001.getCohort().getCode());
+        LOG.debug("admission: {}", admission1.getId());
+
+        AdStudent a17P002 = identityService.findStudentByMatricNo("A17P001");
+        AdAdmission admission2 = termService.findAdmissionByAcademicSessionCohortAndStudent(academicSession, a17P002.getCohort(), a17P002);
+        LOG.debug("student: {}", a17P002.getId());
+        LOG.debug("cohort: {}", a17P002.getCohort().getCode());
+        LOG.debug("admission: {}", admission2.getId());
+
         AdStudent student1 = identityService.findStudentByMatricNo("A17P001");
         enroll(student1);
-//        AdStudent student2 = identityService.findStudentByMatricNo("A17P002");
-//        enroll(student2);
+        AdStudent student2 = identityService.findStudentByMatricNo("A17P002");
+        enroll(student2);
     }
 
     private void enroll(AdStudent student) {
         AdCohort cohort = student.getCohort(); // current cohort
         AdAcademicSession academicSession = plannerService.findCurrentAcademicSession();
         AdAdmission admission = termService.findAdmissionByAcademicSessionCohortAndStudent(academicSession, cohort, student);
+        LOG.debug("admission: {}", admission.getId());
 
         AdEnrollmentApplication application = new AdEnrollmentApplicationImpl();
         application.setDescription(student.getMatricNo() + ";" + student.getCohort().getCode());
