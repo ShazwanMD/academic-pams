@@ -64,10 +64,10 @@ export class CohortActions {
     }
 
     static UPDATE_COHORT_SUCCESS = '[Cohort] Update Cohort Success';
-    updateCohortSuccess( cohort ): Action {
+    updateCohortSuccess( message ): Action {
         return {
             type: CohortActions.UPDATE_COHORT_SUCCESS,
-            payload: cohort
+            payload: message
         };
     }
 

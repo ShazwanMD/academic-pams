@@ -1,3 +1,5 @@
+import { CohortActionComponent } from './component/cohort-action.component';
+import { AcademicClassificationSelectComponent } from './component/academic-classification-select.component';
 import { CohortSelectComponent } from './component/cohort-select.component';
 import '@ngrx/core/add/operator/select';
 import {appRoutes, appRoutingProviders} from '../../app.routes';
@@ -45,17 +47,23 @@ import {CohortUpdateDialog} from './dialog/cohort-update.dialog';
         CohortListComponent,
         CohortComponent,
         CohortSelectComponent,
+        AcademicClassificationSelectComponent,
+        CohortActionComponent,
 
         //dialog
         CohortEditorDialog,
         CohortUpdateDialog,
 
     ],
-    exports: [CohortSelectComponent,],
+    exports: [CohortSelectComponent,
+        AcademicClassificationSelectComponent,
+           CohortActionComponent,],
     entryComponents: [
         CohortEditorDialog,
         CohortUpdateDialog,
         CohortSelectComponent,
+        AcademicClassificationSelectComponent,
+           CohortActionComponent,
 
     ]
 

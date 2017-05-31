@@ -4,12 +4,12 @@ import { AcademicClassification } from "../academic-classification.enum";
 
 @Component({
     selector: 'pams-academic-classification',
-    templateUrl: './academic-classification.component.html'
+    templateUrl: './academic-classification-select.component.html'
 })
 export class AcademicClassificationSelectComponent implements OnInit {
 
     private academicClassifications: AcademicClassification[] = <AcademicClassification[]>[];
-    @Input() placeholder: string:
+    @Input() placeholder: string;
     @Input() innerFormControl: FormControl;
 
     constructor() {
