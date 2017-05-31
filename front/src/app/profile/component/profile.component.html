@@ -52,8 +52,10 @@
 
               <div flex-gt-md="40">
                 <b>Status</b> : {{student.studentStatus}}<br/><br/>
-                <b>Study Mode</b> : {{student.studyMode?.code}}<br/><br/>
+                <b>Study Mode</b> : {{student.studyMode?.description}}<br/><br/>
                 <b>Cohort</b> : {{student.cohort?.code}}<br/><br/>
+                <b>program</b> : {{student.cohort?.program?.titleMs}}<br/><br/>
+                <b>Faculty</b> : {{student.cohort?.program?.faculty?.name}}<br/><br/>
               </div>
 
             </div>
