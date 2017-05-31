@@ -6,7 +6,6 @@ import {Store} from "@ngrx/store";
 import {TermModuleState} from "../index";
 import {OfferingActions} from "../offerings/offering.action";
 import {Offering} from "../offerings/offering.interface";
-import {from} from "rxjs/observable/from";
 
 
 @Injectable()

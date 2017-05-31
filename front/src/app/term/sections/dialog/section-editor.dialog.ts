@@ -65,7 +65,7 @@ export class SectionEditorDialog implements OnInit {
 
     // dispatch
     if (!this.edit) this.store.dispatch(this.actions.addSection(this._offering, section));
-    else  this.store.dispatch(this.actions.updateSection(this._offering, section));
+    // else  this.store.dispatch(this.actions.updateSection(this._offering, section));
     this.dialog.close();
   }
 }
