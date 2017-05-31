@@ -366,19 +366,19 @@ public class TermServiceImpl implements TermService {
 
     @Override
     public void deleteSection(AdOffering offering, AdSection section) {
-    	offeringDao.deleteSection(offering, section, securityService.getCurrentUser());
+        offeringDao.deleteSection(offering, section, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void updateSection(AdOffering offering, AdSection section) {
-    	offeringDao.updateSection(offering,section, securityService.getCurrentUser());
+        offeringDao.updateSection(offering, section, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
-    
+
     @Override
     public void removeSection(AdOffering offering, AdSection section) {
-    	offeringDao.removeSection(offering, section, securityService.getCurrentUser());
+        offeringDao.removeSection(offering, section, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
@@ -1037,42 +1037,24 @@ public class TermServiceImpl implements TermService {
         Validate.notNull(section, "Section cannot be null");
         Validate.notNull(student, "Student cannot be null");
 
-        if (isEnrollmentExists(section, student)) // todo(uda): throw something
-            // here OfferingException
-
-            // todo(uda): close for now
-            // if (!override &&
-            // mapManager.hasExceededCredit(dasFinder.findCurrentAcademicSession(),
-            // student)) {
-            // throw new EnrollmentException("Student exceed allowed credit
-            // count");
-            // }
-
-            // if (override &&
-            // mapManager.hasExceededCredit(dasFinder.findCurrentAcademicSession(),
-            // student)) {
-            // throw new EnrollmentException("Student exceed allowed credit
-            // count");
-            // }
-
+        if (!isEnrollmentExists(section, student)) {// todo(uda): throw something here OfferingException
             LOG.debug("section id: {}", section.getId());
 
-        // find admission
-        AdOffering offering = section.getOffering();
+            // find admission
+            AdOffering offering = section.getOffering();
 
-        // create enrollment
-        AdEnrollment enrollment = new AdEnrollmentImpl();
-        enrollment.setAdmission(admission);
-        enrollment.setSection(section);
-        enrollment.setStatus(AdEnrollmentStatus.CONFIRMED);
-        saveEnrollment(enrollment);
-        sessionFactory.getCurrentSession().refresh(enrollment);
+            // create enrollment
+            AdEnrollment enrollment = new AdEnrollmentImpl();
+            enrollment.setAdmission(admission);
+            enrollment.setSection(section);
+            enrollment.setStatus(AdEnrollmentStatus.CONFIRMED);
+            saveEnrollment(enrollment);
+            sessionFactory.getCurrentSession().refresh(enrollment);
 
-        // TODO: check process calendar
-        // TODO: PRA, WAJIB, BERDENDA
-        AdStudyCenter studyCenter = admission.getStudyCenter();
-        // todo: EnrollmentConfirmedEvent event = new EnrollmentConfirmedEvent();
-        // todo: applicationContext.publishEvent(event);
+            // AdStudyCenter studyCenter = admission.getStudyCenter();
+            EnrollmentConfirmedEvent event = new EnrollmentConfirmedEvent(enrollment);
+            applicationContext.publishEvent(event);
+        }
     }
 
     @Override
@@ -1133,27 +1115,17 @@ public class TermServiceImpl implements TermService {
     }
 
     @Override
-    public void addGradebooks(AdSection section, AdEnrollment enrollment, AdGradebook gradebook) {
-        AdOffering offering = section.getOffering();
-        Validate.notNull(offering, "Offering cannot be null");
+    public void addGradebook(AdSection section, AdEnrollment enrollment, AdGradebook gradebook) {
+        Validate.notNull(section, "Section cannot be null");
+        Validate.notNull(enrollment, "Enrollment cannot be null");
+        Validate.notNull(gradebook, "Gradebook cannot be null");
         gradebookDao.addGradebook(section, enrollment, gradebook);
         sessionFactory.getCurrentSession().flush();
-        // List<AdAssessment> assessments = findAssessments(session, term);
-        // LOG.debug("assessments found: " + assessments.size());
-        // for (AcAssessment assessment : assessments) {
-        // if (!assessmentService.isGradebookExists(assessment, enrollment)) {
-        // LOG.debug("section: " + section.getId());
-        // AcGradebook gradebook = new AcGradebookImpl();
-        // gradebook.setAssessment(assessment);
-        // gradebook.setEnrollment(enrollment);
-        // gradebook.setSection(section);
-        // ptkManager.saveGradebook(gradebook);
-        // }
-        // }
     }
 
+    @Deprecated
     @Override
-    public void addGradebooks(AdSection section, AdAssessment assessment) {
+    public void addGradebook(AdSection section, AdAssessment assessment) {
         AdOffering offering = section.getOffering();
         Validate.notNull(offering, "Offering cannot be null");
         List<AdEnrollment> enrollments = findEnrollments(section);
@@ -1292,7 +1264,7 @@ public class TermServiceImpl implements TermService {
         appointmentDao.save(appointment, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
-    
+
     @Override
     public void updateAppointment(AdAppointment appointment) {
         appointmentDao.update(appointment, securityService.getCurrentUser());

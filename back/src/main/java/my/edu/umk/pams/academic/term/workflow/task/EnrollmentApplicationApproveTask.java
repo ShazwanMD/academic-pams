@@ -45,7 +45,5 @@ public class EnrollmentApplicationApproveTask extends BpmnActivityBehavior
         termService.updateEnrollmentApplication(application);
 
         termService.postToEnrollment(application);
-
-        // todo: fire event
     }
 }
