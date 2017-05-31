@@ -3,6 +3,8 @@ package my.edu.umk.pams.academic.web.module.planner.controller;
 import my.edu.umk.pams.academic.common.model.AdStudyCenter;
 import my.edu.umk.pams.academic.planner.model.*;
 import my.edu.umk.pams.academic.web.module.planner.vo.*;
+import my.edu.umk.pams.academic.web.module.term.controller.TermTransformer;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +25,9 @@ public class PlannerTransformer {
 
     @Autowired
     private PlannerTransformer plannerTransformer;
+    
+    @Autowired
+    private TermTransformer termTransformer;
 
     public AcademicSession toAcademicSessionVo(AdAcademicSession academicSession) {
         AcademicSession vo = new AcademicSession();
@@ -103,7 +108,8 @@ public class PlannerTransformer {
         vo.setDescription(e.getDescription());
         vo.setProgram(toProgramVo(e.getProgram()));
         vo.setAcademicSession(toAcademicSessionVo(e.getSession()));
-    // todo zaida    vo.setClassification(plannerTransformer.toAdAcademicClassificationVo(e.getClassification()));
+        vo.setProgram(plannerTransformer.toProgramVo(e.getProgram()));
+        vo.setClassification(AcademicClassification.get(e.getClassification().ordinal()));
         return vo;
     }
 	public List<Cohort> toCohortVos(List<AdCohort> cohorts) {
