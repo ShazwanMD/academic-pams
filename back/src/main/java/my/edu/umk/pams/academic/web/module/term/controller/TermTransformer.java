@@ -80,8 +80,13 @@ public class TermTransformer {
 		vo.setSourceNo(e.getSourceNo());
 		vo.setAuditNo(e.getAuditNo());
 		vo.setDescription(e.getDescription());
-		vo.setFlowState(FlowState.get(e.getFlowdata().getState().ordinal()));
-		vo.setMetaState(MetaState.get(e.getMetadata().getState().ordinal()));
+		vo.setCancelComment(e.getCancelComment());
+		vo.setRemoveComment(e.getRemoveComment());
+		vo.setSession(plannerTransformer.toAcademicSessionVo(e.getSession()));
+		vo.setStudent(identityTransformer.toStudentVo(e.getStudent()));
+		vo.setProgram(plannerTransformer.toProgramVo(e.getProgram()));
+		vo.setAdvisor(identityTransformer.toStaffVo(e.getAdvisor()));
+		vo.setStudyCenter(commonTransformer.toStudyCenterVo(e.getStudyCenter()));
 		return vo;
 	}
 
