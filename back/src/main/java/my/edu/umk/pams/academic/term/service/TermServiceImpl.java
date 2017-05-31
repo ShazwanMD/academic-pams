@@ -1070,7 +1070,7 @@ public class TermServiceImpl implements TermService {
 
         AdStudyCenter studyCenter = admission.getStudyCenter();
         AdCohort cohort = student.getCohort();
-        EnrollmentWithdrawnEvent event = new EnrollmentWithdrawnEvent();
+        EnrollmentWithdrawnEvent event = new EnrollmentWithdrawnEvent(enrollment);
         applicationContext.publishEvent(event);
     }
 

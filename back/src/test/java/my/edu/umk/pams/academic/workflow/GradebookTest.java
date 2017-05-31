@@ -34,9 +34,9 @@ import java.util.List;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = TestAppConfiguration.class)
-public class EnrollmentApplicationWorkflowTest {
+public class GradebookTest {
 
-    private static final Logger LOG = LoggerFactory.getLogger(EnrollmentApplicationWorkflowTest.class);
+    private static final Logger LOG = LoggerFactory.getLogger(GradebookTest.class);
 
     @Autowired
     private SessionFactory sessionFactory;
@@ -70,8 +70,13 @@ public class EnrollmentApplicationWorkflowTest {
     @Test
     @Rollback(false)
     public void testWorkflow() {
-        // find account
-        AdStudent student = identityService.findStudentByMatricNo("A17P002");
+        AdStudent student1 = identityService.findStudentByMatricNo("A17P001");
+        enroll(student1);
+//        AdStudent student2 = identityService.findStudentByMatricNo("A17P002");
+//        enroll(student2);
+    }
+
+    private void enroll(AdStudent student) {
         AdCohort cohort = student.getCohort(); // current cohort
         AdAcademicSession academicSession = plannerService.findCurrentAcademicSession();
         AdAdmission admission = termService.findAdmissionByAcademicSessionCohortAndStudent(academicSession, cohort, student);

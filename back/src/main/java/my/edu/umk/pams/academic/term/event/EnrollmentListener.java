@@ -32,6 +32,7 @@ public class EnrollmentListener implements ApplicationListener<EnrollmentEvent> 
             AdSection section = enrollment.getSection();
             AdOffering offering = section.getOffering();
             List<AdAssessment> assessments = termService.findAssessments(offering);
+            LOG.debug("found {} assessments ", assessments.size());
             for (AdAssessment assessment : assessments) {
                 AdGradebook gradebook = new AdGradebookImpl();
                 gradebook.setSection(section);
