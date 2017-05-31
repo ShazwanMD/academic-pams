@@ -24,9 +24,9 @@ export class OfferingDetailPage implements OnInit {
 
   @Input() offering: Offering;
   @Input() section: Section;
-  
+
   private OFFERING: string[] = "termModuleState.offering".split(".");
-  private SECTION: string[] = "termModuleState.section".split(".");  
+  private SECTION: string[] = "termModuleState.section".split(".");
   private SECTIONS: string[] = "termModuleState.sections".split(".");
   private ASSESSMENTS: string[] = "termModuleState.assessments".split(".");
   private ENROLLMENTS: string[] = "termModuleState.enrollments".split(".");
@@ -38,8 +38,7 @@ export class OfferingDetailPage implements OnInit {
   private assessments$: Observable<Assessment[]>;
   private appointments: Observable<Appointment[]>;
   private enrollments$: Observable<Enrollment[]>;
-    
-  
+
   private editorDialogRef: MdDialogRef<OfferingUpdateDialog>;
 
   constructor(private router: Router,
@@ -64,11 +63,8 @@ export class OfferingDetailPage implements OnInit {
       this.store.dispatch(this.actions.findOfferingByCanonicalCode(canonicalCode));
     });
   }
-   
-    
-     
-  //update offeringEditorDialog
-    showUpdateDialog(): void {
+
+  showUpdateDialog(): void {
     console.log("edit offering");
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
@@ -84,7 +80,7 @@ export class OfferingDetailPage implements OnInit {
       console.log("close dialog update offering");
     });
   }
-  
+
   goBack(route: string): void {
     this.router.navigate(['/offerings']);
   }

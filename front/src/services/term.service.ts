@@ -17,6 +17,7 @@ import {AdmissionApplicationTask} from "../app/term/admission-applications/admis
 import {Appointment} from "../app/term/appointments/appointment.interface";
 import {Section} from "../app/term/sections/section.interface";
 import {AdmissionApplicationItem} from "../app/term/admission-applications/admission-application-item.interface";
+import {GradebookMatrix} from "../app/term/offerings/gradebook-matrix.interface";
 
 @Injectable()
 export class TermService {
@@ -410,6 +411,12 @@ export class TermService {
         console.log("findAppointmentsByOffering");
         return this.http.get(environment.endpoint + '/api/term/offerings/' + offering.canonicalCode + '/appointments')
             .map((res: Response) => <Appointment[]>res.json());
+    }
+
+    findGradebookMatricesByOffering(offering: Offering): Observable<GradebookMatrix[]> {
+        console.log("findGradebookMatricesByOffering");
+        return this.http.get(environment.endpoint + '/api/term/offerings/' + offering.canonicalCode + '/gradebookMatrices')
+            .map((res: Response) => <GradebookMatrix[]>res.json());
     }
 
     //save offering

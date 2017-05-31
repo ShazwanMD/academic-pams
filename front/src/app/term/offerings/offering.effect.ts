@@ -59,6 +59,12 @@ export class OfferingEffects {
     .switchMap(offering => this.termService.findAppointmentsByOffering(offering))
     .map(sections => this.offeringActions.findAppointmentsByOfferingSuccess(sections));
 
+  @Effect() findGradebookMatrices = this.actions$
+    .ofType(OfferingActions.FIND_GRADEBOOK_MATRICESS_BY_OFFERING)
+    .map(action => action.payload)
+    .switchMap(offering => this.termService.findGradebookMatricesByOffering(offering))
+    .map(sections => this.offeringActions.findGradebookMatricessByOfferingSuccess(sections));
+
   @Effect() saveOffering$ = this.actions$
     .ofType(OfferingActions.SAVE_OFFERING)
     .map(action => action.payload)

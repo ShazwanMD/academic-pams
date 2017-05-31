@@ -10,6 +10,7 @@ import my.edu.umk.pams.academic.security.integration.AdAutoLoginToken;
 import my.edu.umk.pams.academic.system.service.SystemService;
 import my.edu.umk.pams.academic.term.model.*;
 import my.edu.umk.pams.academic.term.service.TermService;
+import my.edu.umk.pams.academic.web.module.planner.controller.PlannerTransformer;
 import my.edu.umk.pams.academic.web.module.term.vo.*;
 import my.edu.umk.pams.academic.workflow.service.WorkflowService;
 import org.activiti.engine.task.Task;
@@ -25,6 +26,8 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.UnsupportedEncodingException;
+import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -57,6 +60,9 @@ public class TermController {
 
     @Autowired
     private TermTransformer termTransformer;
+
+    @Autowired
+    private PlannerTransformer plannerTransformer;
 
     @Autowired
     private AuthenticationManager authenticationManager;
@@ -631,6 +637,29 @@ public class TermController {
         AdSection section = termService.findSectionByCanonicalCode(canonicalCode);
         return new ResponseEntity<Section>(termTransformer.toSectionVo(section), HttpStatus.OK);
     }
+
+
+    // gradebook
+    @RequestMapping(value = "/offerings/{canonicalCode}/gradebookMatrices", method = RequestMethod.GET)
+    public ResponseEntity<List<GradebookMatrix>> findGradebookMatrices(@PathVariable String canonicalCode) {
+        AdOffering offering = termService.findOfferingByCanonicalCode(canonicalCode);
+        List<AdEnrollment> enrollments = termService.findEnrollments(offering);
+        List<GradebookMatrix> matrices = new ArrayList<GradebookMatrix>();
+        for (AdEnrollment enrollment : enrollments) {
+            GradebookMatrix matrix = new GradebookMatrix();
+            matrix.setEnrollment(termTransformer.toSimpleEnrollmentVo(enrollment));
+            List<AdAssessment> assessments = termService.findAssessments(offering);
+            for (AdAssessment assessment : assessments) {
+                Gradebook gradebook = new Gradebook();
+                gradebook.setScore(BigDecimal.ZERO);
+                gradebook.setAssessment(termTransformer.toAssessmentVo(assessment));
+                matrix.addGradebook(gradebook);
+            }
+            matrices.add(matrix);
+        }
+        return new ResponseEntity<List<GradebookMatrix>>(matrices, HttpStatus.OK);
+    }
+
 
     // ====================================================================================================
     // PRIVATE METHODS

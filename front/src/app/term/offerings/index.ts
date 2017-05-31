@@ -26,6 +26,7 @@ import {OfferingAssessmentListComponent} from "./component/offering-assessment-l
 import {OfferingEnrollmentListComponent} from "./component/offering-enrollment-list.component";
 import {OfferingAppointmentListComponent} from "./component/offering-appointment-list.component";
 import {OfferingActionComponent} from "./component/offering-action.component";
+import {GradebookDetailPage} from "./gradebook-detail.page";
 
 @NgModule({
   imports: [
@@ -43,6 +44,7 @@ import {OfferingActionComponent} from "./component/offering-action.component";
     // page
     OfferingCenterPage,
     OfferingDetailPage,
+    GradebookDetailPage,
 
     // component
     OfferingListComponent,

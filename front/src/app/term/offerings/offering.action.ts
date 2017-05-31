@@ -114,6 +114,26 @@ export class OfferingActions {
     };
   }
 
+  static FIND_GRADEBOOK_MATRICESS_BY_OFFERING = '[Offering] Find Gradebook_matricess By Offering';
+
+  findGradebookMatricessByOffering(offering): Action {
+    return {
+      type: OfferingActions.FIND_GRADEBOOK_MATRICESS_BY_OFFERING,
+      payload: offering
+    };
+  }
+
+  static FIND_GRADEBOOK_MATRICESS_BY_OFFERING_SUCCESS = '[Offering] Find Gradebook_matricess By Offering Success';
+
+  findGradebookMatricessByOfferingSuccess(gradebook_matricess): Action {
+    return {
+      type: OfferingActions.FIND_GRADEBOOK_MATRICESS_BY_OFFERING_SUCCESS,
+      payload: gradebook_matricess
+    };
+  }
+
+
+
   static SAVE_OFFERING = '[Offering] Save Offering';
 
   saveOffering(offering): Action {

@@ -83,10 +83,16 @@ public class GradebookTest {
         LOG.debug("cohort: {}", a17P002.getCohort().getCode());
         LOG.debug("admission: {}", admission2.getId());
 
-        AdStudent student1 = identityService.findStudentByMatricNo("A17P001");
-        enroll(student1);
-        AdStudent student2 = identityService.findStudentByMatricNo("A17P002");
-        enroll(student2);
+//        AdStudent student1 = identityService.findStudentByMatricNo("A17P001");
+//        enroll(student1);
+//        AdStudent student2 = identityService.findStudentByMatricNo("A17P002");
+//        enroll(student2);
+
+        AdSection section = termService.findSectionByCanonicalCode("MGSEB-MBA-GST5023-201720181-01");
+        List<AdGradebook> gradebooks = termService.findGradebooks(section.getOffering());
+
+        LOG.debug("offering canonical code: {}", section.getOffering().getCanonicalCode());
+        LOG.debug("count: {}", gradebooks.size());
     }
 
     private void enroll(AdStudent student) {

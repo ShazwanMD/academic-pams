@@ -170,6 +170,14 @@ public class TermTransformer {
 		return vo;
 	}
 
+	public Enrollment toSimpleEnrollmentVo(AdEnrollment enrollment) {
+		Enrollment vo = new Enrollment();
+		vo.setId(enrollment.getId());
+		vo.setEnrollmentStanding(EnrollmentStanding.get(enrollment.getStanding().ordinal()));
+		vo.setEnrollmentStatus(EnrollmentStatus.get(enrollment.getStatus().ordinal()));
+		return vo;
+	}
+
 	public Offering toOfferingVo(AdOffering offering) {
 		Offering vo = new Offering();
 		vo.setId(offering.getId());

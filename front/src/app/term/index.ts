@@ -50,6 +50,8 @@ import { SectionSubModule } from "./sections/index";
 import { AdmissionApplicationSubModule } from "./admission-applications/index";
 import { assessmentReducer, AssessmentState } from "./assessments/assessment.reducer";
 import {assessmentListReducer, AssessmentListState} from "./offerings/assessment-list.reducer";
+import {gradebookMatrixListReducer, GradebookMatrixListState} from "./offerings/gradebook-matrix-list.reducer";
+import {GradebookMatrix} from "./offerings/gradebook-matrix.interface";
 export interface TermModuleState {
   admissions: AdmissionListState;
   admission: AdmissionState;
@@ -63,14 +65,11 @@ export interface TermModuleState {
   appointment: AppointmentState;
   assessment: AssessmentState;
   assessments: AssessmentListState;
-  admissionApplications: AdmissionApplicationListState, 
-  // admissionApplicationTasks:AdmissionApplicationListState,
-  // admissionApplicationTask:AdmissionApplicationState,
+  admissionApplications: AdmissionApplicationListState,
   assignedEnrollmentApplicationTasks: EnrollmentApplicationTaskListState,
   pooledEnrollmentApplicationTasks: EnrollmentApplicationTaskListState,
   enrollmentApplicationTask: EnrollmentApplicationTaskState,
-
-
+  gradebookMatrices: GradebookMatrixListState,
 }
 ;
 
@@ -88,11 +87,10 @@ export const INITIAL_TERM_STATE: TermModuleState =
     admissionApplications: <AdmissionApplication[]>[],
     assessment: <Assessment[]>[],
     appointment: <Appointment>{},
-
-
     assignedEnrollmentApplicationTasks: <EnrollmentApplicationTask[]>[],
     pooledEnrollmentApplicationTasks: <EnrollmentApplicationTask[]>[],
     enrollmentApplicationTask: <EnrollmentApplicationTask>{},
+    gradebookMatrices: <GradebookMatrix[]>[],
   };
 
 export const termModuleReducers = {
@@ -109,13 +107,10 @@ export const termModuleReducers = {
   assessment: assessmentReducer,
   assessments: assessmentListReducer,
   admissionApplications: admissionApplicationListReducer,
-
-  // assignedAdmissionApplicationTasks:admissionApplicationTaskListReducer,
-  // pooledAdmissionApplicationTasks:admissionApplicationTaskListReducer,
-  // admissionApplicationTask:admissionApplicationTaskReducer,
   assignedEnrollmentApplicationTasks: assignedEnrollmentApplicationTaskListReducer,
   pooledEnrollmentApplicationTasks: pooledEnrollmentApplicationTaskListReducer,
   enrollmentApplicationTask: enrollmentApplicationTaskReducer,
+  gradebookMatrices: gradebookMatrixListReducer,
 };
 
 @NgModule({
