@@ -356,7 +356,6 @@ public class ProfileController {
         AdCohort to = plannerService.findCohortById(vo.getTo().getId());
 
         String newMatricNo = profileService.transferCohort(student, academicSession, from, to);
-        
         return new ResponseEntity<String>(newMatricNo, HttpStatus.OK);
         
     }

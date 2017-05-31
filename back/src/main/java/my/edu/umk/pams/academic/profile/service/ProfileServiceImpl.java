@@ -276,8 +276,8 @@ public class ProfileServiceImpl implements ProfileService {
 
     @Override
     public String transferCohort(AdStudent student, AdAcademicSession academicSession, AdCohort fromCohort, AdCohort toCohort) {
-        AdProgramLevel programLevel = toCohort.getProgram().getLevel();
-        AdFaculty faculty = toCohort.getProgram().getFaculty();
+        AdProgramLevel programLevel = student.getCohort().getProgram().getLevel();
+        AdFaculty faculty = student.getCohort().getProgram().getFaculty();
         AdStudyMode studyMode = student.getStudyMode();
 
         Map<String, Object> map = new HashMap<String, Object>();
@@ -288,8 +288,10 @@ public class ProfileServiceImpl implements ProfileService {
 
         String generatedMatricNo = systemService.generateFormattedReferenceNo(AcademicConstants.STUDENT_MATRIC_NO, map);
         student.setMatricNo(generatedMatricNo);
+        student.setCohort(toCohort);
         updateStudent(student);
         LOG.debug("Student New MatricNo:{}", student.getMatricNo());
+        LOG.debug("Student New Cohort:{}", student.getCohort().getCode());
 
         return generatedMatricNo;
     }
@@ -310,8 +312,8 @@ public class ProfileServiceImpl implements ProfileService {
 
         String generatedMatricNo = systemService.generateFormattedReferenceNo(AcademicConstants.STUDENT_MATRIC_NO, map);
         student.setMatricNo(generatedMatricNo);
-        LOG.debug("Student New MatricNo :{}", student.getMatricNo());
         updateStudent(student);
+        LOG.debug("Student New MatricNo :{}", student.getMatricNo());
         return generatedMatricNo;
     }
 }
