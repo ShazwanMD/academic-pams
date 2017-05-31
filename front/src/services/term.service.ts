@@ -1,3 +1,4 @@
+import { AdmissionApplication } from './../app/term/admission-applications/admission-application.interface';
 import {Assessment} from './../app/term/assessments/assessment.interface';
 import {Offering} from '../app/term/offerings/offering.interface';
 import {Injectable} from '@angular/core';
@@ -13,7 +14,6 @@ import {EnrollmentApplicationTask} from "../app/term/enrollment-applications/enr
 import {Admission} from "../app/term/admissions/admission.interface";
 import {Enrollment} from "../app/term/enrollments/enrollment.interface";
 import {AdmissionApplicationTask} from "../app/term/admission-applications/admission-application-task.interface";
-import {AdmissionApplication} from "../app/term/admission-applications/admission-application.interface";
 import {Appointment} from "../app/term/appointments/appointment.interface";
 import {Section} from "../app/term/sections/section.interface";
 import {AdmissionApplicationItem} from "../app/term/admission-applications/admission-application-item.interface";
@@ -77,6 +77,13 @@ export class TermService {
     // ADMISSION APPLICATION
     // ==================================================================================================== //
 
+    findAdmissionApplications(): Observable<AdmissionApplication[]> {
+        console.log("findAdmissionApplication");
+        return this.http.get(environment.endpoint + '/api/term/admissionApplications/')
+            .map((res: Response) => <AdmissionApplication[]>res.json());
+
+    }
+    
     findAssignedAdmissionApplicationTasks(): Observable<AdmissionApplicationTask[]> {
         console.log("findAssignedAdmissionApplicationTasks");
         return this.http.get(environment.endpoint + '/api/term/admissionApplications/assignedTasks')
