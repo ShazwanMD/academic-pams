@@ -44,7 +44,7 @@ export class AcademicSessionCreatorDialog implements OnInit {
             startDate: null,
             endDate: null,
             semester: AcademicSemester.SEMESTER_1,
-            year: <AcademicYear>{},
+            /*year: <AcademicYear>{},*/
 
         });
 

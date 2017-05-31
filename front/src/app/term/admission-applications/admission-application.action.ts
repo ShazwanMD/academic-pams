@@ -4,6 +4,23 @@ import {Action} from '@ngrx/store';
 @Injectable()
 export class AdmissionApplicationActions {
 
+      
+static FIND_ADMISSION_APPLICATIONS = '[AdmissionApplication] Find Admission Application';
+  findAdmissionApplications(): Action {
+    return {
+      type: AdmissionApplicationActions.FIND_ADMISSION_APPLICATIONS
+    };
+  }
+
+static FIND_ADMISSION_APPLICATIONS_SUCCESS = '[AdmissionApplication] Find Admission Application Success';
+  findAdmissionApplicationsSuccess(message): Action {
+    return {
+      type: AdmissionApplicationActions.FIND_ADMISSION_APPLICATIONS_SUCCESS,
+            payload: message
+    };
+  }
+
+
   static FIND_ASSIGNED_ADMISSION_APPLICATION_TASKS = '[AdmissionApplication] Find Assigned AdmissionApplication Tasks';
 
   findAssignedAdmissionApplicationTasks(): Action {

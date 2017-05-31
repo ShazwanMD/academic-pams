@@ -1,3 +1,4 @@
+import { AdmissionApplication } from './admissions/admission-application.interface';
 import { AssessmentSubModule } from './assessments/index';
 import { AssessmentActions } from './assessments/assessment.action';
 import { Assessment } from './assessments/assessment.interface';
@@ -42,6 +43,7 @@ import {
 } from "./enrollment-applications/enrollment-application-task-list.reducer";
 import { sectionReducer, SectionState } from "./sections/section.reducer";
 import { sectionListReducer, SectionListState } from "./offerings/section-list.reducer";
+import { admissionApplicationListReducer, AdmissionApplicationListState } from "./admission-applications/admission-applications-list.reducer";
 import { Section } from "./sections/section.interface";
 import { SectionActions } from "./sections/section.action";
 import { SectionSubModule } from "./sections/index";
@@ -61,6 +63,7 @@ export interface TermModuleState {
   appointment: AppointmentState;
   assessment: AssessmentState;
   assessments: AssessmentListState;
+  admissionApplications: AdmissionApplicationListState, 
   // admissionApplicationTasks:AdmissionApplicationListState,
   // admissionApplicationTask:AdmissionApplicationState,
   assignedEnrollmentApplicationTasks: EnrollmentApplicationTaskListState,
@@ -82,8 +85,11 @@ export const INITIAL_TERM_STATE: TermModuleState =
     enrollments: <Enrollment[]>[],
     enrollment: <Enrollment>{},
     appointments: <Appointment[]>[],
+    admissionApplications: <AdmissionApplication[]>[],
     assessment: <Assessment[]>[],
     appointment: <Appointment>{},
+
+
     assignedEnrollmentApplicationTasks: <EnrollmentApplicationTask[]>[],
     pooledEnrollmentApplicationTasks: <EnrollmentApplicationTask[]>[],
     enrollmentApplicationTask: <EnrollmentApplicationTask>{},
@@ -102,6 +108,7 @@ export const termModuleReducers = {
   appointment: appointmentReducer,
   assessment: assessmentReducer,
   assessments: assessmentListReducer,
+  admissionApplications: admissionApplicationListReducer,
 
   // assignedAdmissionApplicationTasks:admissionApplicationTaskListReducer,
   // pooledAdmissionApplicationTasks:admissionApplicationTaskListReducer,

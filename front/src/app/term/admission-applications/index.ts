@@ -1,3 +1,4 @@
+import { AdmissionApplicationListComponent } from './component/admission-application-list.component';
 import '@ngrx/core/add/operator/select';
 import { appRoutes, appRoutingProviders } from '../../app.routes';
 import { NgModule, ModuleWithProviders } from '@angular/core';
@@ -48,15 +49,20 @@ import { IdentityModule } from "../../identity/index";
     AdmissionApplicationDraftTaskPanel,
     AdmissionApplicationTaskListComponent,
     AdmissionApplicationTaskStatusComponent,
+    AdmissionApplicationListComponent,
 
     //dialog
     AdmissionApplicationTaskCreatorDialog,
   ],
-  exports: [],
+
+  exports: [
+  ],
+  
   entryComponents: [
     AdmissionApplicationTaskCreatorDialog,
     AdmissionApplicationDraftTaskPanel,
   ]
+  
 })
 
 export class AdmissionApplicationSubModule {

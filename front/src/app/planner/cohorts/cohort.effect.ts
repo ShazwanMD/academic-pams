@@ -3,8 +3,9 @@ import {Effect, Actions} from '@ngrx/effects';
 import {CohortActions} from "./cohort.action";
 import {PlannerService} from "../../../services/planner.service";
 import {Cohort} from "./cohort.interface";
-import {PlannerModuleState} from "../index";
+//import {PlannerModuleState} from "../index";
 import {Store} from "@ngrx/store";
+import { PlannerModuleState } from './../index';
 
 
 @Injectable()
@@ -38,12 +39,12 @@ export class CohortEffects {
   @Effect() updateCohort$ = this.actions$
     .ofType(CohortActions.UPDATE_COHORT)
     .map(action => action.payload)
-    .switchMap(cohort => this.plannerService.updateCohort(cohort))
-    .map(cohort => this.cohortActions.updateCohortSuccess(cohort))
+    .switchMap(payload => this.plannerService.updateCohort(payload.cohort))
+    .map(message => this.cohortActions.updateCohortSuccess(message))
     .withLatestFrom(this.store$.select(...this.COHORT))
     .map(state => state[1])
     .map((cohort: Cohort) => this.cohortActions.findCohortByCode(cohort.code));
-
+  
   @Effect() activateCohort$ = this.actions$
     .ofType(CohortActions.ACTIVATE_COHORT)
     .map(action => action.payload)

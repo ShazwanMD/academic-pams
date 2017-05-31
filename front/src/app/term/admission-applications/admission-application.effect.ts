@@ -19,6 +19,13 @@ export class AdmissionApplicationEffects {
               private store$: Store<TermModuleState>) {
   }
 
+@Effect() findAdmissionApplications$ = this.actions$
+    .ofType(AdmissionApplicationActions.FIND_ADMISSION_APPLICATIONS)
+    .switchMap(() => this.termService.findAdmissionApplications())
+    .map(message => this.admissionApplicationActions.findAdmissionApplicationsSuccess(message));
+
+
+
   @Effect() findAssignedAdmissionApplicationTasks$ = this.actions$
     .ofType(AdmissionApplicationActions.FIND_ASSIGNED_ADMISSION_APPLICATION_TASKS)
     .switchMap(() => this.termService.findAssignedAdmissionApplicationTasks())

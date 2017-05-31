@@ -157,6 +157,13 @@ public class TermController {
     }
 
     // workflow
+    
+    @RequestMapping(value = "/admissionApplications", method = RequestMethod.GET)
+    public ResponseEntity<List<AdmissionApplication>> findAdmissionsApplications() {
+        AdAcademicSession academicSession = plannerService.findCurrentAcademicSession();
+        return new ResponseEntity<List<AdmissionApplication>>(
+                termTransformer.toAdmissionApplicationVos(termService.findAdmissionApplications(academicSession)), HttpStatus.OK);
+    }
 
     @RequestMapping(value = "/admissionApplications/assignedTasks", method = RequestMethod.GET)
     public ResponseEntity<List<AdmissionApplicationTask>> findAssignedAdmissionApplications() {
@@ -179,7 +186,7 @@ public class TermController {
         dummyLogin();
 
         AdStudent student = identityService.findStudentById(vo.getStudent().getId());
-        AdAcademicSession academicSession = plannerService.findAcademicSessionById(vo.getAcademicSession().getId());
+        AdAcademicSession academicSession = plannerService.findAcademicSessionById(vo.getSession().getId());
         AdAdmissionApplication application = new AdAdmissionApplicationImpl();
         application.setDescription(vo.getDescription());
         application.setStudent(student);
