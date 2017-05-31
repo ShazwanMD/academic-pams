@@ -1,3 +1,4 @@
+import { CohortUpdateDialog } from './../dialog/cohort-update.dialog';
 import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, ViewContainerRef} from '@angular/core';
 import {Cohort} from "../cohort.interface";
 import {CohortEditorDialog} from "../dialog/cohort-editor.dialog";
@@ -14,7 +15,7 @@ import {PlannerModuleState} from "../../index";
 export class CohortActionComponent {
 
   @Input() cohort: Cohort;
-  private editorDialogRef: MdDialogRef<CohortEditorDialog>;
+  private editorDialogRef: MdDialogRef<CohortUpdateDialog>;
 
   constructor(private actions: CohortActions,
               private store: Store<PlannerModuleState>,
@@ -26,15 +27,15 @@ export class CohortActionComponent {
 
   editorDialog(): void {
     console.log("edit");
+    console.log(this.cohort);  
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
     config.role = 'dialog';
     config.width = '60%';
     config.height = '50%';
     config.position = {top: '0px'};
-    this.editorDialogRef = this.dialog.open(CohortEditorDialog, config);
-   // this.editorDialogRef.componentInstance.cohort = this.cohort;
-
+    this.editorDialogRef = this.dialog.open(CohortUpdateDialog, config);
+    this.editorDialogRef.componentInstance.cohort = this.cohort;
     // set
     this.editorDialogRef.afterClosed().subscribe(res => {
       console.log("close dialog");
