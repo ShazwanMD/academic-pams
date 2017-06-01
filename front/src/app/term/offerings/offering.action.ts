@@ -136,10 +136,10 @@ export class OfferingActions {
 
   static SAVE_OFFERING = '[Offering] Save Offering';
 
-  saveOffering(offering): Action {
+  saveOffering(program, course, offering): Action {
     return {
       type: OfferingActions.SAVE_OFFERING,
-      payload: offering
+      payload: {program:program, course:course, offering:offering}
     };
   }
 

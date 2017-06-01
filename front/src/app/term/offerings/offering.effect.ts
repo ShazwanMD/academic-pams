@@ -68,7 +68,7 @@ export class OfferingEffects {
   @Effect() saveOffering$ = this.actions$
     .ofType(OfferingActions.SAVE_OFFERING)
     .map(action => action.payload)
-    .switchMap(offering => this.termService.saveOffering(offering))
+    .switchMap(payload=> this.termService.saveOffering(payload.program, payload.course, payload.offering))
     .map(offering => this.offeringActions.saveOfferingSuccess(offering))
     .switchMap(() => this.termService.findOfferings())
     .map(offerings => this.offeringActions.findOfferingsSuccess(offerings));

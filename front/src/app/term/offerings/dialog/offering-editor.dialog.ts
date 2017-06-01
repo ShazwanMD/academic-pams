@@ -1,3 +1,4 @@
+
 import {Component, ViewContainerRef, OnInit} from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
 import {FormBuilder} from '@angular/forms';
@@ -28,6 +29,8 @@ export class OfferingEditorDialog implements OnInit {
   private createForm: FormGroup;
   private edit: boolean = false;
   private _offering: Offering;
+  private _program:Program;
+  private _course:Course;
     
   
 
@@ -41,6 +44,17 @@ export class OfferingEditorDialog implements OnInit {
     
     set offering(value: Offering) {
     this._offering = value;
+    this.edit = true;
+  }
+
+
+  set program(value: Program) {
+    this._program = value;
+    this.edit = true;
+  }
+
+  set course(value: Course) {
+    this._course = value;
     this.edit = true;
   }
   
@@ -59,6 +73,8 @@ export class OfferingEditorDialog implements OnInit {
         
     });
 
+this.createForm.patchValue({'program': this._program});
+this.createForm.patchValue({'course' : this._course});
    if (this.edit) this.createForm.patchValue(this._offering);
   }
 
@@ -70,13 +86,21 @@ export class OfferingEditorDialog implements OnInit {
  */
     
     //submit update button
-     submit(offering: Offering, isValid: boolean) {
+     submit(offering: Offering,  isValid: boolean) {
      console.log(JSON.stringify(offering));
-    if (!offering.id) this.store.dispatch(this.actions.saveOffering(offering));
+
+
+offering.canonicalCode =this.program.code + "-" + this.course.code;
+
+console.log("code:" + this.program.code);
+console.log("courseCode:"  + this.course.code);
+console.log("conicalCode:"  + offering.canonicalCode);
+
+    if (!this.edit) this.store.dispatch(this.actions.saveOffering(this._program,this. course, this.offering));
     else  this.store.dispatch(this.actions.updateOffering(offering));
     this.dialog.close();
-    console.log(offering);
 
   }
 }
+
 

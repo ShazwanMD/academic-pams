@@ -1,3 +1,5 @@
+import { Course } from './../app/planner/courses/course.interface';
+import { Program } from './../app/planner/programs/program.interface';
 import { AdmissionApplication } from './../app/term/admission-applications/admission-application.interface';
 import {Assessment} from './../app/term/assessments/assessment.interface';
 import {Offering} from '../app/term/offerings/offering.interface';
@@ -420,7 +422,12 @@ export class TermService {
     }
 
     //save offering
-    saveOffering(offering: Offering): Observable<String> {
+    saveOffering(program: Program, course: Course, offering: Offering, ): Observable<String> {
+
+          console.log("saveoffering:" + offering.canonicalCode);
+          console.log("program:" + program.code);
+          console.log("course:" + course.code);
+
         let headers = new Headers({
           'Content-Type': 'application/json',
           //'Authorization': 'Bearer ' + this.authService.token
@@ -428,7 +435,7 @@ export class TermService {
         console.log("save offering");
         console.dir(offering);
         let options = new RequestOptions({ headers: headers });
-        return this.http.post(environment.endpoint + '/api/term/offerings/' + offering.code + '/save', JSON.stringify(offering), options)
+        return this.http.post(environment.endpoint + '/api/term/offerings/' + offering.canonicalCode + '/programs' + program.code +'/courses'+ course.code +'/save', JSON.stringify(offering), options)
           .flatMap((res: Response) => Observable.of(res.text()));
       }
 
