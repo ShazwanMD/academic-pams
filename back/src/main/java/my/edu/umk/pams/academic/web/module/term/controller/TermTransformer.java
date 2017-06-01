@@ -199,7 +199,7 @@ public class TermTransformer {
 		vo.setCanonicalCode(section.getCanonicalCode());
 		vo.setCapacity(section.getCapacity());
 		vo.setOrdinal(section.getOrdinal());
-		// vo.setOffering(this.toOfferingVo(section.getOffering()));
+		vo.setOffering(this.toOfferingVo(section.getOffering()));
 		return vo;
 	}
 

@@ -6,7 +6,7 @@ import {Store} from "@ngrx/store";
 import {TermModuleState} from "../index";
 import {OfferingActions} from "../offerings/offering.action";
 import {Offering} from "../offerings/offering.interface";
-
+import { from } from "rxjs/observable/from";
 
 @Injectable()
 export class SectionEffects {
@@ -25,21 +25,22 @@ export class SectionEffects {
     .map(action => action.payload)
     .switchMap(canonicalCode => this.termService.findSectionByCanonicalCode(canonicalCode))
     .map(section => this.sectionActions.findSectionByCanonicalCodeSuccess(section));
-
+  
   @Effect() findEnrollmentsBySection$ = this.actions$
-    .ofType(SectionActions.FIND_ENROLLMENTS_BY_SECTION)
-    .map(action => action.payload)
-    .switchMap(section => this.termService.findEnrollmentsBySection(section))
-    .map(enrollments => this.sectionActions.findEnrollmentsBySectionSuccess(enrollments));
+  .ofType(SectionActions.FIND_ENROLLMENTS_BY_SECTION)
+  .map(action => action.payload)
+  .switchMap(section => this.termService.findEnrollmentsBySection(section))
+  .map(sections => this.sectionActions.findEnrollmentsBySectionSuccess(sections));
 
-  @Effect() findAppointmentsBySection$ = this.actions$
-    .ofType(SectionActions.FIND_APPOINTMENTS_BY_SECTION)
-    .map(action => action.payload)
-    .switchMap(section => this.termService.findAppointmentsBySection(section))
-    .map(appointments => this.sectionActions.findAppointmentsBySectionSuccess(appointments));
+@Effect() findAppointmentsBySection$ = this.actions$
+  .ofType(SectionActions.FIND_APPOINTMENTS_BY_SECTION)
+  .map(action => action.payload)
+  .switchMap(section => this.termService.findAppointmentsBySection(section))
+  .map(sections => this.sectionActions.findAppointmentsBySectionSuccess(sections));
 
-  @Effect() addSection$ = this.actions$
-    .ofType(SectionActions.ADD_SECTION)
+@Effect() addSection$ =
+    this.actions$
+      .ofType(SectionActions.ADD_SECTION)
       .map(action => action.payload)
       .switchMap(payload => this.termService.addSection(payload.offering, payload.section))
       .map(message => this.sectionActions.addSectionSuccess(message))
@@ -55,13 +56,16 @@ export class SectionEffects {
     .withLatestFrom(this.store$.select(...this.OFFERING))
     .map(state => state[1])
     .map((offering: Offering) => this.offeringActions.findOfferingByCanonicalCode(offering.canonicalCode));
-
+  
+  //update section
   @Effect() updateSection$ = this.actions$
-    .ofType(SectionActions.UPDATE_SECTION)
-    .map(action => action.payload)
-    .switchMap(payload => this.termService.updateSection(payload.offering, payload.section))
-    .map(message => this.sectionActions.updateSectionSuccess(message))
-    .withLatestFrom(this.store$.select(...this.OFFERING))
-    .map(state => state[1])
-    .map((offering: Offering) => this.offeringActions.findOfferingByCanonicalCode(offering.canonicalCode));
-}
+  .ofType(SectionActions.UPDATE_SECTION)
+  .map(action => action.payload)
+  .switchMap(payload => this.termService.updateSection(payload.offering, payload.section))
+  .map(message => this.sectionActions.updateSectionSuccess(message))
+  .withLatestFrom(this.store$.select(...this.OFFERING))
+  .map(state => state[1])
+  //.mergeMap(action => from([action, this.sectionActions.findSections()]));
+  .map((offering: Offering) => this.offeringActions.findOfferingByCanonicalCode(offering.canonicalCode));
+    
+ }

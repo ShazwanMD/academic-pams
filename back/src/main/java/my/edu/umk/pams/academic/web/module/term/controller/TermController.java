@@ -444,6 +444,8 @@ public class TermController {
                                                               @PathVariable String sectionCanonicalCode) {
         throw new UnsupportedOperationException();
     }
+    
+    
 
     // assessments
     @RequestMapping(value = "/offerings/{canonicalCode}/assessments", method = RequestMethod.GET)
@@ -570,19 +572,7 @@ public class TermController {
     }
 
 
-    @RequestMapping(value = "/sections/{canonicalCode}/appointments", method = RequestMethod.POST)
-    public ResponseEntity<String> addAppointment(@PathVariable String canonicalCode, @RequestBody Appointment vo) {
-        dummyLogin();
-
-        AdOffering offering = termService.findOfferingByCanonicalCode(canonicalCode);
-        AdSection section = termService.findSectionById(vo.getSection().getId());
-        AdAppointment appointment = new AdAppointmentImpl();
-        appointment.setStatus(AdAppointmentStatus.CONFIRMED);
-        appointment.setSection(section);
-        appointment.setStaff(identityService.findStaffById(vo.getStaff().getId()));
-        termService.addAppointment(section, appointment);
-        return new ResponseEntity<String>("Success", HttpStatus.OK);
-    }
+   
 
     @RequestMapping(value = "/offerings/{canonicalCode}/enrollments", method = RequestMethod.POST)
     public ResponseEntity<String> addEnrollment(@PathVariable String canonicalCode, @RequestBody Enrollment vo) {
@@ -637,8 +627,46 @@ public class TermController {
         AdSection section = termService.findSectionByCanonicalCode(canonicalCode);
         return new ResponseEntity<Section>(termTransformer.toSectionVo(section), HttpStatus.OK);
     }
+    
+    // find appointment by section
+    @RequestMapping(value = "/sections/{canonicalCode}/appointments", method = RequestMethod.POST)
+    public ResponseEntity<String> addAppointment(@PathVariable String canonicalCode, @RequestBody Appointment vo) {
+        dummyLogin();
+
+        AdOffering offering = termService.findOfferingByCanonicalCode(canonicalCode);
+        AdSection section = termService.findSectionById(vo.getSection().getId());
+        AdAppointment appointment = new AdAppointmentImpl();
+        appointment.setStatus(AdAppointmentStatus.CONFIRMED);
+        appointment.setSection(section);
+        appointment.setStaff(identityService.findStaffById(vo.getStaff().getId()));
+        termService.addAppointment(section, appointment);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
 
 
+    // find enrollments by section
+    @RequestMapping(value = "/sections/{canonicalCode}/enrollments", method = RequestMethod.GET)
+    public ResponseEntity<List<Enrollment>> findEnrollmentsBySection(@PathVariable String canonicalCode) {
+        AdSection section = termService.findSectionByCanonicalCode(canonicalCode);
+        List<AdEnrollment> enrollments = termService.findEnrollments(section);
+        List<Enrollment> enrollmentVos = termTransformer.toEnrollmentVos(enrollments);
+        return new ResponseEntity<List<Enrollment>>(enrollmentVos, HttpStatus.OK);
+        
+      }
+    
+    // find appointment by section
+    /*
+    @RequestMapping(value = "/sections/{canonicalCode}/appointments", method = RequestMethod.GET)
+    public ResponseEntity<List<Appointment>> findAppointmentsBySection(@PathVariable String canonicalCode) {
+        AdSection section = termService.findSectionByCanonicalCode(canonicalCode);
+        List<AdAppointment> appointments = termService.findAppointments(section);
+        List<Appointment> appointmentVos = termTransformer.toAppointmentVos(appointments);
+        return new ResponseEntity<List<Appointment>>(appointmentVos, HttpStatus.OK);
+        
+      }
+      */
+    
+    
     // gradebook
     @RequestMapping(value = "/offerings/{canonicalCode}/gradebookMatrices", method = RequestMethod.GET)
     public ResponseEntity<List<GradebookMatrix>> findGradebookMatrices(@PathVariable String canonicalCode) {

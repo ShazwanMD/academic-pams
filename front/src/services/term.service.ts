@@ -359,20 +359,20 @@ export class TermService {
         return this.http.get(environment.endpoint + '/api/term/sections/' + canonicalCode)
             .map((res: Response) => <Section>res.json());
     }
-    //find enrollment by section
-     findEnrollmentsBySection(section: Section): Observable<Section[]> {
+    
+   //find enrollments by section
+    findEnrollmentsBySection(section: Section): Observable<Enrollment[]> {
         console.log("findEnrollmentsBySection");
         return this.http.get(environment.endpoint + '/api/term/sections/' + section.canonicalCode + '/enrollments')
-            .map((res: Response) => <Section[]>res.json());
+            .map((res: Response) => <Enrollment[]>res.json());
     }
-
-    //find appointment by section
-     findAppointmentsBySection(section: Section): Observable<Section[]> {
+    //find appointments by section
+    findAppointmentsBySection(section: Section): Observable<Appointment[]> {
         console.log("findAppointmentsBySection");
         return this.http.get(environment.endpoint + '/api/term/sections/' + section.canonicalCode + '/appointments')
-            .map((res: Response) => <Section[]>res.json());
+            .map((res: Response) => <Appointment[]>res.json());
     }
-
+    
     // ==================================================================================================== //
     // OFFERING
     // ==================================================================================================== //
