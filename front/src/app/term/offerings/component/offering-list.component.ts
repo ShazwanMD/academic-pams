@@ -16,6 +16,7 @@ export class OfferingListComponent {
     {name: 'code', label: 'Code'},
     {name: 'course.titleEn', label: 'TitleEn'},
     {name: 'program.code', label: 'Program'},
+    {name: 'capacity.number', label: 'Capacity'},
     {name: 'course.credit', label: 'Credit'},
     {name: 'action', label: ''}
   ];
