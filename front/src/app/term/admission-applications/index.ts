@@ -55,12 +55,14 @@ import { IdentityModule } from "../../identity/index";
     AdmissionApplicationListComponent,
     AdmissionApplicationComponent,
     
+    
 
     //dialog
     AdmissionApplicationTaskCreatorDialog,
   ],
 
   exports: [
+  AdmissionApplicationComponent,
   ],
   
   entryComponents: [
