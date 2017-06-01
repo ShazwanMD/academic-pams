@@ -1,4 +1,6 @@
-import { AdmissionApplicationListComponent } from './component/admission-application-list.component';
+import { AdmissionApplicationDetailPage } from "./admission-application-detail.page";
+import { AdmissionApplicationComponent } from "./component/admission-application.component";
+import { AdmissionApplicationListComponent } from "./component/admission-application-list.component";
 import '@ngrx/core/add/operator/select';
 import { appRoutes, appRoutingProviders } from '../../app.routes';
 import { NgModule, ModuleWithProviders } from '@angular/core';
@@ -43,6 +45,7 @@ import { IdentityModule } from "../../identity/index";
     // page
     AdmissionApplicationTaskViewPage,
     AdmissionApplicationCenterPage,
+    AdmissionApplicationDetailPage,
 
     // component
     AdmissionApplicationTaskWorkflowPanel,
@@ -50,6 +53,8 @@ import { IdentityModule } from "../../identity/index";
     AdmissionApplicationTaskListComponent,
     AdmissionApplicationTaskStatusComponent,
     AdmissionApplicationListComponent,
+    AdmissionApplicationComponent,
+    
 
     //dialog
     AdmissionApplicationTaskCreatorDialog,

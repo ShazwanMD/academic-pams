@@ -14,7 +14,7 @@
 
   <td-layout-manage-list #list>
     <md-nav-list list-items>
-      <a md-list-item (click)="showDialog()">
+      <a md-list-item (click)="createDialog()">
         <md-icon>create</md-icon>
         Create Admission Application
       </a>
@@ -41,7 +41,7 @@
     <md-card>
       <md-tab-group>
         <md-tab label="List of Application">
-          <pams-admission-application-list [admissionApplications]="admissionApplications$ | async" (view)="view($event)">
+          <pams-admission-application-list [admissionApplications]="admissionApplications$ | async" (view)="viewAdmissionApplicationByCode($event)">
           </pams-admission-application-list>
         </md-tab>
       </md-tab-group>
@@ -49,7 +49,7 @@
       <md-divider></md-divider>
       
       <md-card-actions>
-        <a md-button color="accent" class="text-upper" [routerLink]="['/faculties-search']">
+        <a md-button color="accent" class="text-upper" [routerLink]="['/admission-applications-search']">
           <span>View More</span>
         </a>
       </md-card-actions>
