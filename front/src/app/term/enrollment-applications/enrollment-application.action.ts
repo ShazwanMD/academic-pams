@@ -4,6 +4,24 @@ import {Action} from '@ngrx/store';
 @Injectable()
 export class EnrollmentApplicationActions {
 
+    //find enrollment applications
+    static FIND_ENROLLMENT_APPLICATIONS = '[EnrollmentApplication] Find EnrollmentApplications';
+
+    findEnrollmentApplications(): Action {
+        return {
+            type: EnrollmentApplicationActions.FIND_ENROLLMENT_APPLICATIONS
+        };
+    }
+
+    static FIND_ENROLLMENT_APPLICATIONS_SUCCESS = '[EnrollmentApplication] Find EnrollmentApplications Success';
+
+    findEnrollmentApplicationsSuccess(enrollmentApplications): Action {
+        return {
+            type: EnrollmentApplicationActions.FIND_ENROLLMENT_APPLICATIONS_SUCCESS,
+            payload: enrollmentApplications
+        };
+    }
+
     static FIND_ASSIGNED_ENROLLMENT_APPLICATION_TASKS = '[EnrollmentApplication] Find Assigned EnrollmentApplication Tasks';
 
     findAssignedEnrollmentApplicationTasks(): Action {

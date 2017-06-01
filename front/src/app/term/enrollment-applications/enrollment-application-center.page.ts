@@ -8,6 +8,7 @@ import {MdDialog, MdDialogConfig, MdDialogRef} from "@angular/material";
 import {EnrollmentApplicationTask} from "./enrollment-application-task.interface";
 import {TermModuleState} from "../index";
 import {EnrollmentApplicationActions} from "./enrollment-application.action";
+import {EnrollmentApplication} from "./enrollment-application.interface";
 
 @Component({
   selector: 'pams-enrollment-application-center',
@@ -21,7 +22,10 @@ export class EnrollmentApplicationCenterPage implements OnInit {
   private assignedEnrollmentApplicationTasks$: Observable<EnrollmentApplicationTask[]>;
   private pooledEnrollmentApplicationTasks$: Observable<EnrollmentApplicationTask[]>;
   private creatorDialogRef: MdDialogRef<EnrollmentApplicationTaskCreatorDialog>;
-
+  private ENROLLMENT_APPLICATIONS: string[] = "termModuleState.enrollmentApplications".split(".");
+  private enrollmentApplications$: Observable<EnrollmentApplication[]>;
+    
+    
   constructor(private router: Router,
               private route: ActivatedRoute,
               private actions: EnrollmentApplicationActions,
@@ -30,6 +34,7 @@ export class EnrollmentApplicationCenterPage implements OnInit {
               private dialog: MdDialog) {
     this.assignedEnrollmentApplicationTasks$ = this.store.select(...this.ASSIGNED_ENROLLMENT_APPLICATION_TASKS);
     this.pooledEnrollmentApplicationTasks$ = this.store.select(...this.POOLED_ENROLLMENT_APPLICATION_TASKS);
+    this.enrollmentApplications$ = this.store.select(...this.ENROLLMENT_APPLICATIONS);
   }
 
   goBack(route: string): void {
@@ -43,6 +48,11 @@ export class EnrollmentApplicationCenterPage implements OnInit {
   view(invoice: EnrollmentApplicationTask) {
     console.log("invoice: " + invoice.taskId);
     this.router.navigate(['/view-task', invoice.taskId]);
+  }
+    
+    viewEnrollmentApplication(enrollmentApplication: EnrollmentApplication) {
+    console.log("EnrollmentApplication: " + enrollmentApplication.id);
+    this.router.navigate(['/enrollment-applications-detail', enrollmentApplication.id]);
   }
 
   showDialog(): void {
@@ -61,9 +71,10 @@ export class EnrollmentApplicationCenterPage implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log("find assigned invoice tasks");
-    this.store.dispatch(this.actions.findAssignedEnrollmentApplicationTasks());
-    this.store.dispatch(this.actions.findPooledEnrollmentApplicationTasks());
+    console.log("find enrollment applications");
+    //this.store.dispatch(this.actions.findAssignedEnrollmentApplicationTasks());
+    //this.store.dispatch(this.actions.findPooledEnrollmentApplicationTasks());
+      this.store.dispatch(this.actions.findEnrollmentApplications());
   }
 
 }
