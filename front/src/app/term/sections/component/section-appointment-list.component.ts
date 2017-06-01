@@ -1,4 +1,3 @@
-/*
 import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, ViewContainerRef} from '@angular/core';
 import {Appointment} from "../../appointments/appointment.interface";
 import {Section} from "../section.interface";
@@ -49,4 +48,4 @@ export class SectionAppointmentListComponent {
   }
 }
 
-*/
+

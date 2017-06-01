@@ -233,9 +233,15 @@ public class TermTransformer {
 				.collect(toCollection(() -> new ArrayList<AdmissionApplication>()));
 	}
 
-	public List<EnrollmentApplication> toEnrollmentApplicationVos(List<AdEnrollmentApplication> items) {
+	//enrollmentApplicationVos
+	/*public List<EnrollmentApplication> toEnrollmentApplicationVos(List<AdEnrollmentApplication> items) {
 		return items.stream().map((task) -> toEnrollmentApplicationVo(task))
 				.collect(toCollection(() -> new ArrayList<EnrollmentApplication>()));
+	}*/
+	
+	public List<EnrollmentApplication> toEnrollmentApplicationVos(List<AdEnrollmentApplication> enrollmentApplications) {
+		List<EnrollmentApplication> vos = enrollmentApplications.stream().map((enrollmentApplication) -> toEnrollmentApplicationVo(enrollmentApplication)).collect(toList());
+		return vos;
 	}
 
 	public List<EnrollmentApplicationItem> toEnrollmentApplicationItemVos(List<AdEnrollmentApplicationItem> items) {

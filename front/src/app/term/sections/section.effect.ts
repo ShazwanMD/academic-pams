@@ -8,6 +8,7 @@ import {OfferingActions} from "../offerings/offering.action";
 import {Offering} from "../offerings/offering.interface";
 import { from } from "rxjs/observable/from";
 
+
 @Injectable()
 export class SectionEffects {
 
@@ -47,7 +48,7 @@ export class SectionEffects {
       .withLatestFrom(this.store$.select(...this.OFFERING))
       .map(state => state[1])
       .map((offering: Offering) => this.offeringActions.findOfferingByCanonicalCode(offering.canonicalCode));
-
+    
   @Effect() deleteSection$ = this.actions$
     .ofType(SectionActions.REMOVE_SECTION)
     .map(action => action.payload)
@@ -57,6 +58,7 @@ export class SectionEffects {
     .map(state => state[1])
     .map((offering: Offering) => this.offeringActions.findOfferingByCanonicalCode(offering.canonicalCode));
   
+ 
   //update section
   @Effect() updateSection$ = this.actions$
   .ofType(SectionActions.UPDATE_SECTION)
@@ -67,5 +69,6 @@ export class SectionEffects {
   .map(state => state[1])
   //.mergeMap(action => from([action, this.sectionActions.findSections()]));
   .map((offering: Offering) => this.offeringActions.findOfferingByCanonicalCode(offering.canonicalCode));
+  
     
  }

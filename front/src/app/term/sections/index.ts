@@ -15,7 +15,7 @@ import {SectionDetailPage} from "./section-detail.page";
 import {SectionComponent} from "./component/section.component";
 import {SectionListComponent} from "./component/section-list.component";
 import {SectionEnrollmentListComponent} from "./component/section-enrollment-list.component";
-//import {SectionAppointmentListComponent} from "./component/section-appointment-list.component";
+import {SectionAppointmentListComponent} from "./component/section-appointment-list.component";
 import {SectionSelectComponent} from "./component/section-select.component";
 import {SectionEditorDialog} from "./dialog/section-editor.dialog";
 
@@ -37,7 +37,7 @@ import {SectionEditorDialog} from "./dialog/section-editor.dialog";
     SectionComponent,
     SectionSelectComponent,
     SectionEnrollmentListComponent,
-    //SectionAppointmentListComponent,
+    SectionAppointmentListComponent,
     
 
     //dialog
@@ -48,7 +48,7 @@ import {SectionEditorDialog} from "./dialog/section-editor.dialog";
     SectionSelectComponent,
     SectionListComponent,
     SectionEnrollmentListComponent,
-    //SectionAppointmentListComponent,
+    SectionAppointmentListComponent,
     SectionEditorDialog,
   ],
   entryComponents: [

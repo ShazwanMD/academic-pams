@@ -257,13 +257,11 @@ public class TermController {
     // ====================================================================================================
     // workflow
 
-    @RequestMapping(value = "/enrollmentApplications/", method = RequestMethod.GET)
-    public ResponseEntity<List<EnrollmentApplication>> findEnrollmentApplications() {
+    @RequestMapping(value = "/enrollmentApplications", method = RequestMethod.GET)
+    public ResponseEntity<List<EnrollmentApplication>> findenrollmentApplications() {
         AdAcademicSession academicSession = plannerService.findCurrentAcademicSession();
-        List<AdEnrollmentApplication> enrollmentApplications = termService.findEnrollmentApplications(academicSession,
-                0, 100);
-        return new ResponseEntity<List<EnrollmentApplication>>(
-                termTransformer.toEnrollmentApplicationVos(enrollmentApplications), HttpStatus.OK);
+        List<AdEnrollmentApplication> enrollmentApplications = termService.findEnrollmentApplications(academicSession);
+        return new ResponseEntity<List<EnrollmentApplication>>(termTransformer.toEnrollmentApplicationVos(enrollmentApplications), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/enrollmentApplications/{referenceNo}", method = RequestMethod.GET)
