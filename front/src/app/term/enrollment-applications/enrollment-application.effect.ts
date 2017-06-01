@@ -19,6 +19,11 @@ export class EnrollmentApplicationEffects {
               private termService: TermService,
               private store$: Store<TermModuleState>) {
   }
+    
+     @Effect() findEnrollmentApplications$ = this.actions$
+    .ofType(EnrollmentApplicationActions.FIND_ENROLLMENT_APPLICATIONS)
+    .switchMap(() => this.termService.findEnrollmentApplications())
+    .map(enrollmentApplications => this.enrollmentApplicationActions.findEnrollmentApplicationsSuccess(enrollmentApplications));
 
   @Effect() findAssignedEnrollmentApplicationTasks$ = this.actions$
     .ofType(EnrollmentApplicationActions.FIND_ASSIGNED_ENROLLMENT_APPLICATION_TASKS)

@@ -5,18 +5,29 @@ import {AppointmentCreateTaskCreatorDialog} from "../../appointments/dialog/appo
 import {ActivatedRoute, Router} from "@angular/router";
 import {Store} from "@ngrx/store";
 import {TermModuleState} from "../../index";
+import {Enrollment} from "../../enrollments/enrollment.interface";
 
 @Component({
   selector: 'pams-section',
   templateUrl: './section.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  
 })
-    
-
 export class SectionComponent {
 
   @Input() section: Section;
+  @Input() enrollments: Enrollment[];
   @Output() view = new EventEmitter<Section>();
+  @Output() view2 = new EventEmitter<Enrollment>();
+    
+      
+  //display data enrollments
+   private columns: any[] = [
+    {name: 'id', label: 'Id'},
+    {name: 'action', label: ''}
+  ];
+    
+    
   private creatorDialogRef: MdDialogRef<AppointmentCreateTaskCreatorDialog>;
     
       constructor(private router: Router,
