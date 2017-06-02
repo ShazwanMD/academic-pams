@@ -2,16 +2,32 @@
   <div toolbar-content layout="row" layout-align="center center" flex>
     <span>PAMS: Postgraduate Management System</span> <span flex></span>
   </div>
-
+<md-card>
   <div md-content flex md-scroll-y>
     <div layout="column" layout-gt-md="row" class="inset">
-      <div flex-gt-md="70">
-      <!--render dynamic table here-->
+<!--       <div flex-gt-md="70">
+      render dynamic table here
       {{gradebookMatrices$ | async | json}}
-      </div>
+      </div> -->
+          <td-data-table
+      [data]="gradebookMatrices$ | async "
+      [columns]="columns"
+      [sortBy]="summary"
+      [sortOrder]="ASC"
+      [sortable]="false"
+      [multiple]="true"
+      [selectable]="true" dense>
+      <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
+        <div layout="row">
+          <span flex>{{value}}</span>
+        </div>
+      </template>
+
+    </td-data-table>
 
       <div flex-gt-md="30">
       </div>
     </div>
   </div>
+  </md-card>
 </td-layout-nav>
