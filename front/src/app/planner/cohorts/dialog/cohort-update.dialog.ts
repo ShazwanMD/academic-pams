@@ -1,3 +1,4 @@
+import { Program } from './../../programs/program.interface';
 import { Component, ViewContainerRef, OnInit, AfterViewInit } from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
 import {FormBuilder} from '@angular/forms';
@@ -10,7 +11,7 @@ import {CohortActions} from "../cohort.action";
 import {MdDialogRef} from "@angular/material";
 import {PlannerModuleState} from "../../index";
 import {Store} from "@ngrx/store";
-
+import {AcademicClassification} from "../academic-classification.enum";
 
 @Component({
   selector: 'pams-cohort-update',
@@ -18,6 +19,7 @@ import {Store} from "@ngrx/store";
 })
 
 export class CohortUpdateDialog implements OnInit {
+  private _program: Program;
   private _cohort: Cohort;
   private updateForm: FormGroup;
   private update: boolean = false;
@@ -31,6 +33,9 @@ export class CohortUpdateDialog implements OnInit {
               private dialog: MdDialogRef<CohortUpdateDialog >) {
             
   }
+  set program(value: Program){
+    this._program = value;
+  }
 
  set cohort(value: Cohort) {
         this._cohort = value;
@@ -42,14 +47,19 @@ export class CohortUpdateDialog implements OnInit {
        id: null,
        code: '',
        description:'',
+       academicClassification: AcademicClassification.LEVEL_MASTER
+
      });
      
        if (this.update) this.updateForm.patchValue(this._cohort);
   }
      
-      save(code: Cohort, isValid: boolean) {
-        if (!code.id) this.store.dispatch(this.actions.saveCohort(code));
-        else  this.store.dispatch(this.actions.updateCohort(code));
+      save(cohort: Cohort, isValid: boolean) {
+           console.log(JSON.stringify(cohort));
+           cohort.code = this._cohort.code
+        
+        if(!cohort.id)this.store.dispatch(this.actions.saveCohort(this.cohort));
+        else this.store.dispatch(this.actions.updateCohort(cohort))
         this.dialog.close();
    
    }

@@ -20,41 +20,41 @@
           [sections]="sections$ | async">
         </pams-offering-section-list>
 
-       <!--  <pams-offering-enrollment-list
-          [offering]="offering$ | async"
-          [enrollments]="enrollments$ | async">
-        </pams-offering-enrollment-list>
+        <!--  <pams-offering-enrollment-list
+           [offering]="offering$ | async"
+           [enrollments]="enrollments$ | async">
+         </pams-offering-enrollment-list>
 
-         <pams-offering-appointment-list
-          [section]="section$ | async"
-          [offering]="offering$ | async"
-          [appointments]="appointments$ | async">
-        </pams-offering-appointment-list> -->
- 
+          <pams-offering-appointment-list
+           [section]="section$ | async"
+           [offering]="offering$ | async"
+           [appointments]="appointments$ | async">
+         </pams-offering-appointment-list> -->
+
 
       </div>
 
       <div flex-gt-md="30">
-       <pams-offering-action [offering]="offering$ | async"></pams-offering-action>
+        <pams-offering-action [offering]="offering$ | async"></pams-offering-action>
         <md-card>
           <md-card-title>Term Menu</md-card-title>
           <md-card-subtitle>Go to previous menu
           </md-card-subtitle>
-           <md-divider></md-divider>
+          <md-divider></md-divider>
           <md-nav-list
             flex dense>
-           <md-list-item [routerLink]="['/term/admissions']" > <md-icon md-list-avatar>menu</md-icon>
-      <h4 md-line>Admissions</h4>
-      <p md-line>Watch this admissions</p>
-    </md-list-item>
-     <md-list-item [routerLink]="['/term/offerings']" > <md-icon md-list-avatar>menu</md-icon>
-      <h4 md-line>Offerings</h4>
-      <p md-line>Watch this offerings</p>
-    </md-list-item>
-           
+            <md-list-item [routerLink]="['/term/admissions']">
+              <md-icon md-list-avatar>menu</md-icon>
+              <h4 md-line>Admissions</h4>
+              <p md-line>Watch this admissions</p>
+            </md-list-item>
+            <md-list-item [routerLink]="['/term/offerings']">
+              <md-icon md-list-avatar>menu</md-icon>
+              <h4 md-line>Offerings</h4>
+              <p md-line>Watch this offerings</p>
+            </md-list-item>
+
             <md-divider></md-divider>
-           
-            
           </md-nav-list>
         </md-card>
       </div>

@@ -3,9 +3,65 @@ import { Action } from '@ngrx/store';
 
 @Injectable()
 export class SectionActions {
+    
+    static SAVE_SECTION = '[Section] Save Section';
 
-// baru buat 24/5/17 to make delete button action try and error
- static FIND_OFFERING_BY_CANONICAL_CODE = '[Offering] Find Offering By Canonical Code';
+    saveSection(section): Action {
+      return {
+        type: SectionActions.SAVE_SECTION,
+        payload: section
+      };
+    }
+
+    static SAVE_SECTION_SUCCESS = '[Section] Save Section Success';
+
+    saveSectionSuccess(section): Action {
+      return {
+        type: SectionActions.SAVE_SECTION_SUCCESS,
+        payload: section
+      };
+    }
+    
+    
+ //find enrollments by section
+    static FIND_ENROLLMENTS_BY_SECTION = '[Section] Find Enrollments By Section';
+
+    findEnrollmentsBySection(section): Action {
+      return {
+        type: SectionActions.FIND_ENROLLMENTS_BY_SECTION,
+        payload: section
+      };
+    }
+
+    static FIND_ENROLLMENTS_BY_SECTION_SUCCESS = '[Section] Find Enrollments By Section Success';
+
+    findEnrollmentsBySectionSuccess(enrollments): Action {
+      return {
+        type: SectionActions.FIND_ENROLLMENTS_BY_SECTION_SUCCESS,
+        payload: enrollments
+      };
+    } 
+    
+  //find appointments by section
+    static FIND_APPOINTMENTS_BY_SECTION = '[Section] Find Appointments By Section';
+
+    findAppointmentsBySection(section): Action {
+      return {
+        type: SectionActions.FIND_APPOINTMENTS_BY_SECTION,
+        payload: section
+      };
+    }
+
+    static FIND_APPOINTMENTS_BY_SECTION_SUCCESS = '[Section] Find Appointments By Section Success';
+
+    findAppointmentsBySectionSuccess(appointments): Action {
+      return {
+        type: SectionActions.FIND_APPOINTMENTS_BY_SECTION_SUCCESS,
+        payload: appointments
+      };
+    }  
+    
+  static FIND_OFFERING_BY_CANONICAL_CODE = '[Offering] Find Offering By Canonical Code';
 
   findOfferingByCanonicalCode(canonicalCode): Action {
     return {
@@ -43,8 +99,7 @@ export class SectionActions {
       };
   }
   
-  //find section by offering
-
+  //find sections by offering
   static FIND_SECTIONS_BY_OFFERING = '[Offering] Find Sections By Offering';
 
   findSectionsByOffering(offering): Action {
@@ -164,43 +219,5 @@ export class SectionActions {
       payload: message
     };
   } 
-    
-  //find enrollment by section
-  static FIND_ENROLLMENTS_BY_SECTION = '[Section] Find Enrollments By Section';
-
-  findEnrollmentsBySection(section): Action {
-    return {
-      type: SectionActions.FIND_ENROLLMENTS_BY_SECTION,
-      payload: section
-    };
-  }
-
-  static FIND_ENROLLMENTS_BY_SECTION_SUCCESS = '[Section] Find Enrollments By Section Success';
-
-  findEnrollmentsBySectionSuccess(enrollments): Action {
-    return {
-      type: SectionActions.FIND_ENROLLMENTS_BY_SECTION_SUCCESS,
-      payload: enrollments
-    };
-  }
-    
-    //find appointment by section
-  static FIND_APPOINTMENTS_BY_SECTION = '[Section] Find Appointments By Section';
-
-  findAppointmentsBySection(section): Action {
-    return {
-      type: SectionActions.FIND_APPOINTMENTS_BY_SECTION,
-      payload: section
-    };
-  }
-
-  static FIND_APPOINTMENTS_BY_SECTION_SUCCESS = '[Section] Find Appointments By Section Success';
-
-  findAppointmentsBySectionSuccess(appointments): Action {
-    return {
-      type: SectionActions.FIND_APPOINTMENTS_BY_SECTION_SUCCESS,
-      payload: appointments
-    };
-  }
 
 }

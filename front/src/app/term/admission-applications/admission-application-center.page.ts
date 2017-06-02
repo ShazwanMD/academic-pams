@@ -50,36 +50,60 @@ export class AdmissionApplicationCenterPage implements OnInit {
         this.pooledAdmissionApplicationTasks$ = this.store.select(...this.POOLED_ADMISSION_APPLICATION_TASKS);
   }
 
-  goBack(route: string): void {
-    this.router.navigate(['/term/admission-applications']);
-  }
 
-  view(invoice: AdmissionApplicationTask) {
-    console.log("invoice: " + invoice.taskId);
-    this.router.navigate(['/view-task', invoice.taskId]);
-  }
 
-  showDialog(): void {
-    console.log("showDialog");
-    let config = new MdDialogConfig();
-    config.viewContainerRef = this.vcf;
-    config.role = 'dialog';
-    config.width = '60%';
-    config.height = '85%';
-    config.position = { top: '0px' };
-    this.creatorDialogRef = this.dialog.open(AdmissionApplicationTaskCreatorDialog, config);
-    this.creatorDialogRef.afterClosed().subscribe(res => {
-      console.log("close dialog");
-      // load something here
-    });
-  }
-
-  ngOnInit(): void {
+ ngOnInit(): void {
     console.log("find assigned invoice tasks");
     this.store.dispatch(this.actions.findAssignedAdmissionApplicationTasks());
     this.store.dispatch(this.actions.findPooledAdmissionApplicationTasks());
     this.store.dispatch(this.actions.findAdmissionApplications());
   }
 
+  viewAdmissionApplicationByCode(admissionApplication: AdmissionApplication) {
+    console.log(admissionApplication.auditNo);
+    this.router.navigate(['/admission-application-detail', admissionApplication.id]);
+  }
+
+  // view(invoice: AdmissionApplicationTask) {
+  //   console.log("invoice: " + invoice.taskId);
+  //   this.router.navigate(['/view-task', invoice.taskId]);
+  // }
+
+  // showDialog(): void {
+  //   console.log("showDialog");
+  //   let config = new MdDialogConfig();
+  //   config.viewContainerRef = this.vcf;
+  //   config.role = 'dialog';
+  //   config.width = '60%';
+  //   config.height = '85%';
+  //   config.position = { top: '0px' };
+  //   this.creatorDialogRef = this.dialog.open(AdmissionApplicationTaskCreatorDialog, config);
+  //   this.creatorDialogRef.afterClosed().subscribe(res => {
+  //     console.log("close dialog");
+  //     // load something here
+  //   });
+  // }
+
+  private createDialog(auditNo: AdmissionApplication): void {
+    console.log("create");
+    let config = new MdDialogConfig();
+    config.viewContainerRef = this.vcf;
+    config.role = 'dialog';
+    config.width = '65%';
+    config.height = '75%';
+    config.position = { top: '0px' };
+    this.creatorDialogRef = this.dialog.open(AdmissionApplicationTaskCreatorDialog, config);
+    // if (auditNo) this.creatorDialogRef.componentInstance.admissionApplication = auditNo;
+
+    //set
+    this.creatorDialogRef.afterClosed().subscribe(res => {
+      console.log("close dialog");
+    });
+  }
+
+
+  goBack(route: string): void {
+    this.router.navigate(['/term/admission-applications']);
+  }
 }
 

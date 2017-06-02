@@ -312,6 +312,7 @@ public class ProfileServiceImpl implements ProfileService {
 
         String generatedMatricNo = systemService.generateFormattedReferenceNo(AcademicConstants.STUDENT_MATRIC_NO, map);
         student.setMatricNo(generatedMatricNo);
+        student.setStudyMode(toMode);
         updateStudent(student);
         LOG.debug("Student New MatricNo :{}", student.getMatricNo());
         return generatedMatricNo;

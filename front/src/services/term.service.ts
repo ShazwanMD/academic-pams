@@ -1,3 +1,5 @@
+import { Course } from './../app/planner/courses/course.interface';
+import { Program } from './../app/planner/programs/program.interface';
 import { AdmissionApplication } from './../app/term/admission-applications/admission-application.interface';
 import {Assessment} from './../app/term/assessments/assessment.interface';
 import {Offering} from '../app/term/offerings/offering.interface';
@@ -17,6 +19,7 @@ import {AdmissionApplicationTask} from "../app/term/admission-applications/admis
 import {Appointment} from "../app/term/appointments/appointment.interface";
 import {Section} from "../app/term/sections/section.interface";
 import {AdmissionApplicationItem} from "../app/term/admission-applications/admission-application-item.interface";
+import {GradebookMatrix} from "../app/term/offerings/gradebook-matrix.interface";
 
 @Injectable()
 export class TermService {
@@ -24,7 +27,6 @@ export class TermService {
     constructor(private _http: HttpInterceptorService,
         private http: Http) {
     }
-
 
     findAssessmentById(id): Observable<Assessment> {
         console.log("findAssessmentById");
@@ -43,7 +45,7 @@ export class TermService {
 
     addAssessment(offering: Offering, assessment: Assessment): Observable<String> {
         console.log("addAssessment:" + assessment);
-        console.log("addOffering:" + offering.canonicalCode);
+        console.log("offering:" + offering.canonicalCode);
         let headers = new Headers({
             'Content-Type': 'application/json',
             //'Authorization': 'Bearer ' + this.authService.token
@@ -52,7 +54,7 @@ export class TermService {
         return this.http.post(environment.endpoint + '/api/term/offerings/' + offering.canonicalCode + '/assessments', JSON.stringify(assessment), options)
             .flatMap((res: Response) => Observable.of(res.text()));
     }
-    
+
     updateAssessment(offering: Offering, assessment: Assessment): Observable<String> {
         console.log(assessment);
         console.log("addOffering:" + offering.canonicalCode);
@@ -83,7 +85,7 @@ export class TermService {
             .map((res: Response) => <AdmissionApplication[]>res.json());
 
     }
-    
+
     findAssignedAdmissionApplicationTasks(): Observable<AdmissionApplicationTask[]> {
         console.log("findAssignedAdmissionApplicationTasks");
         return this.http.get(environment.endpoint + '/api/term/admissionApplications/assignedTasks')
@@ -177,7 +179,6 @@ export class TermService {
             .flatMap((res: Response) => Observable.of(res.text()));
     }
 
-
     // ==================================================================================================== //
     // ADMISSION
     // ==================================================================================================== //
@@ -193,12 +194,6 @@ export class TermService {
         return this.http.get(environment.endpoint + '/api/term/admissions/current')
             .map((res: Response) => <Admission[]>res.json());
     }
-
-    // findAdmissionsByAcademicSession(session:AcademicSession): Observable<Admission[]> {
-    //   console.log("findCurrentAdmissions");
-    //   return this.http.get(environment.endpoint + '/api/term/admissions/' + session.code)
-    //     .map((res: Response) => <Admission[]>res.json());
-    // }
 
     findAdmissionById(id): Observable<Admission> {
         console.log("findAdmissionById");
@@ -243,20 +238,6 @@ export class TermService {
         return this.http.post(environment.endpoint + '/api/term/enrollmentApplications/startTask', JSON.stringify(enrollmentApplication), options)
             .flatMap((res: Response) => Observable.of(res.text()));
     }
-    
-    /*
-     saveProgram(program: Program): Observable<String> {
-    let headers = new Headers({
-      'Content-Type': 'application/json',
-      //'Authorization': 'Bearer ' + this.authService.token
-    });
-    console.log("saya disini");
-    console.dir(program);
-    let options = new RequestOptions({ headers: headers });
-    return this.http.post(environment.endpoint + '/api/planner/programs/' + program.code + '/save', JSON.stringify(program), options)
-      .flatMap((res: Response) => Observable.of(res.text()));
-  }
-    */
 
     completeEnrollmentApplicationTask(enrollmentApplicationTask: EnrollmentApplicationTask): Observable<String> {
         console.log("TaskId: " + enrollmentApplicationTask.taskId);
@@ -380,20 +361,20 @@ export class TermService {
         return this.http.get(environment.endpoint + '/api/term/sections/' + canonicalCode)
             .map((res: Response) => <Section>res.json());
     }
-    //find enrollment by section
-     findEnrollmentsBySection(section: Section): Observable<Section[]> {
+    
+   //find enrollments by section
+    findEnrollmentsBySection(section: Section): Observable<Enrollment[]> {
         console.log("findEnrollmentsBySection");
         return this.http.get(environment.endpoint + '/api/term/sections/' + section.canonicalCode + '/enrollments')
-            .map((res: Response) => <Section[]>res.json());
+            .map((res: Response) => <Enrollment[]>res.json());
     }
-    
-    //find appointment by section
-     findAppointmentsBySection(section: Section): Observable<Section[]> {
+    //find appointments by section
+    findAppointmentsBySection(section: Section): Observable<Appointment[]> {
         console.log("findAppointmentsBySection");
         return this.http.get(environment.endpoint + '/api/term/sections/' + section.canonicalCode + '/appointments')
-            .map((res: Response) => <Section[]>res.json());
+            .map((res: Response) => <Appointment[]>res.json());
     }
-
+    
     // ==================================================================================================== //
     // OFFERING
     // ==================================================================================================== //
@@ -409,7 +390,7 @@ export class TermService {
         return this.http.get(environment.endpoint + '/api/term/offerings/' + canonicalCode)
             .map((res: Response) => <Offering>res.json());
     }
-    
+
     findSectionsByOffering(offering: Offering): Observable<Section[]> {
         console.log("findSectionsByOffering");
         return this.http.get(environment.endpoint + '/api/term/offerings/' + offering.canonicalCode + '/sections')
@@ -433,9 +414,20 @@ export class TermService {
         return this.http.get(environment.endpoint + '/api/term/offerings/' + offering.canonicalCode + '/appointments')
             .map((res: Response) => <Appointment[]>res.json());
     }
-    
+
+    findGradebookMatricesByOffering(offering: Offering): Observable<GradebookMatrix[]> {
+        console.log("findGradebookMatricesByOffering");
+        return this.http.get(environment.endpoint + '/api/term/offerings/' + offering.canonicalCode + '/gradebookMatrices')
+            .map((res: Response) => <GradebookMatrix[]>res.json());
+    }
+
     //save offering
-    saveOffering(offering: Offering): Observable<String> {
+    saveOffering(program: Program, course: Course, offering: Offering, ): Observable<String> {
+
+          console.log("saveoffering:" + offering.canonicalCode);
+          console.log("program:" + program.code);
+          console.log("course:" + course.code);
+
         let headers = new Headers({
           'Content-Type': 'application/json',
           //'Authorization': 'Bearer ' + this.authService.token
@@ -443,14 +435,14 @@ export class TermService {
         console.log("save offering");
         console.dir(offering);
         let options = new RequestOptions({ headers: headers });
-        return this.http.post(environment.endpoint + '/api/term/offerings/' + offering.code + '/save', JSON.stringify(offering), options)
+        return this.http.post(environment.endpoint + '/api/term/offerings/' + offering.canonicalCode + '/programs' + program.code +'/courses'+ course.code +'/save', JSON.stringify(offering), options)
           .flatMap((res: Response) => Observable.of(res.text()));
       }
-       
+
     //add new section
      addSection(offering: Offering, section: Section): Observable<String> {
         console.log("addSection:" + section);
-        console.log("addOffering:" + offering.canonicalCode);
+        console.log("offering:" + offering.canonicalCode);
         let headers = new Headers({
             'Content-Type': 'application/json',
             //'Authorization': 'Bearer ' + this.authService.token
@@ -459,7 +451,7 @@ export class TermService {
         return this.http.post(environment.endpoint + '/api/term/offerings/' + offering.canonicalCode + '/sections', JSON.stringify(section), options)
             .flatMap((res: Response) => Observable.of(res.text()));
     }
-    
+
     //delete Section using editorDialog
     deleteSection(offering: Offering, section: Section) {
         let headers = new Headers({
@@ -470,7 +462,7 @@ export class TermService {
         return this.http.delete(environment.endpoint + '/api/term/offerings/' + offering.canonicalCode + '/sections/' + section.id, options)
             .flatMap((res: Response) => Observable.of(res.text()));
     }
-    
+
    // update Section using dialog
     updateSection(offering: Offering, section: Section): Observable<String> {
         console.log(section);
@@ -482,7 +474,7 @@ export class TermService {
         return this.http.put(environment.endpoint + '/api/term/offerings/' + offering.canonicalCode + '/sections/' + section.id, JSON.stringify(section), options)
             .flatMap((res: Response) => Observable.of(res.text()));
     }
-          
+
     //update offering using editorDialog
      updateOffering(offering: Offering): Observable<String> {
     let headers = new Headers({
@@ -506,7 +498,7 @@ export class TermService {
         return this.http.post(environment.endpoint + '/api/term/sections/' + section.canonicalCode + '/appointments', JSON.stringify(appointment), options)
             .flatMap((res: Response) => Observable.of(res.text()));
     }
-    
+
     // remove appointment
      removeAppointment(offering: Offering, appointment: Appointment) {
         let headers = new Headers({
@@ -516,8 +508,8 @@ export class TermService {
         let options = new RequestOptions({ headers: headers });
         return this.http.delete(environment.endpoint + '/api/term/offerings/' + offering.canonicalCode + '/appointments/' + appointment.id, options)
             .flatMap((res: Response) => Observable.of(res.text()));
-    } 
-        
+    }
+
     //update appointment
     updateAppointment(offering: Offering, appointment: Appointment): Observable<String> {
         console.log(appointment);
@@ -529,7 +521,7 @@ export class TermService {
         return this.http.put(environment.endpoint + '/api/term/offerings/' + offering.canonicalCode + '/appointments/' + appointment.id, JSON.stringify(appointment), options)
             .flatMap((res: Response) => Observable.of(res.text()));
     }
-    
+
     deleteEnrollment(offering: Offering, enrollment: Enrollment) {
         let headers = new Headers({
             'Content-Type': 'application/json',

@@ -3,7 +3,7 @@ import {TermModuleState} from './../../index';
 import {Store} from '@ngrx/store';
 import {AssessmentCreatorDialog} from './../../assessments/dialog/assessment-creator.dialog';
 import {AssessmentActions} from './../../assessments/assessment.action';
-import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, ViewContainerRef} from '@angular/core';
+import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, ViewContainerRef, OnInit} from '@angular/core';
 import {Assessment} from '../../assessments/assessment.interface';
 import {Offering} from "../offering.interface";
 import {MdDialog, MdDialogConfig, MdDialogRef} from "@angular/material";
@@ -14,13 +14,22 @@ import {ActivatedRoute, Router} from "@angular/router";
   templateUrl: './offering-assessment-list.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class OfferingAssessmentListComponent {
+export class OfferingAssessmentListComponent implements OnInit {
 
   @Input() offering: Offering;
   @Input() assessments: Assessment[];
   @Output() view = new EventEmitter<Assessment>();
 
+  private selectedRows: Assessment[];
   private creatorDialogRef: MdDialogRef<AssessmentCreatorDialog>;
+  private columns: any[] = [
+    {name: 'id', label: 'Id'},
+    {name: 'code', label: 'Code'},
+    {name: 'canonicalCode', label: 'Canonical Code'},
+    {name: 'assessmentType', label: 'Assessment Type'},
+    {name: 'assessmentCategory', label: 'Assessment Category'},
+    {name: 'action', label: ''}
+  ];
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -31,16 +40,20 @@ export class OfferingAssessmentListComponent {
               private dialog: MdDialog,) {
   }
 
-  private columns: any[] = [
-    {name: 'id', label: 'Id'},
-    {name: 'code', label: 'Code'},
-    {name: 'canonicalCode', label: 'Canonical Code'},
-    {name: 'assessmentType', label: 'Assessment Type'},
-    {name: 'assessmentCategory', label: 'Assessment Category'},
-    {name: 'action', label: ''}
-  ];
+  ngOnInit(): void {
+    this.selectedRows = this.assessments.filter(value => value.selected);
+  }
 
-  addAssessmentDialog(): void {
+  filter(): void {
+  }
+
+  selectRow(assessment: Assessment): void {
+  }
+
+  selectAllRows(assessments: Assessment[]): void {
+  }
+
+  createDialog(): void {
     console.log("showDialog");
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;

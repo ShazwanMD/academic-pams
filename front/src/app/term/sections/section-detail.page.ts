@@ -1,4 +1,4 @@
-import {Component, OnInit, ChangeDetectionStrategy, ViewContainerRef} from '@angular/core';
+import {Component, OnInit, ChangeDetectionStrategy, ViewContainerRef, Input, EventEmitter, Output} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 
 import {TermService} from '../../../services';
@@ -8,6 +8,9 @@ import {Section} from "./section.interface";
 import {SectionActions} from "./section.action";
 import {TermModuleState} from "../index";
 import {MdDialog, MdDialogConfig, MdDialogRef} from "@angular/material";
+import {Appointment} from "../appointments/appointment.interface";
+import {Enrollment} from "../enrollments/enrollment.interface";
+
 
 @Component({
   selector: 'pams-section-detail',
@@ -16,8 +19,15 @@ import {MdDialog, MdDialogConfig, MdDialogRef} from "@angular/material";
 
 export class SectionDetailPage implements OnInit {
 
+    @Input() section: Section;
+    
   private SECTION: string[] = "termModuleState.section".split(".");
-  private section$: Observable<Section>;
+private ENROLLMENTS: string[] = "termModuleState.enrollments".split(".");
+private APPOINTMENTS: string[] = "termModuleState.appointments".split(".");
+
+private section$: Observable<Section>;
+private appointments: Observable<Appointment[]>;
+private enrollments$: Observable<Enrollment[]>;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -27,7 +37,11 @@ export class SectionDetailPage implements OnInit {
               private vcf: ViewContainerRef,
               private dialog: MdDialog) {
 
-    this.section$ = this.store.select(...this.SECTION);
+   
+      this.section$ = this.store.select(...this.SECTION);
+    
+    this.enrollments$ = this.store.select(...this.ENROLLMENTS);
+    this.appointments = this.store.select(...this.APPOINTMENTS);
   }
 
   showDialog(): void {
@@ -35,11 +49,13 @@ export class SectionDetailPage implements OnInit {
 
   showDialogDel(): void {
   }
-
+  
+  
   ngOnInit(): void {
     this.route.params.subscribe((params: { canonicalCode: string }) => {
       let canonicalCode: string = params.canonicalCode;
       this.store.dispatch(this.actions.findSectionByCanonicalCode(canonicalCode));
+            
     });
   }
 
@@ -47,4 +63,3 @@ export class SectionDetailPage implements OnInit {
     this.router.navigate(['/sections']);
   }
 }
-

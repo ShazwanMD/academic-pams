@@ -1,4 +1,4 @@
-import {Component, OnInit, ChangeDetectionStrategy} from '@angular/core';
+import {Component,Input, OnInit, ChangeDetectionStrategy} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 import {CohortUpdateDialog} from './dialog/cohort-update.dialog';
 import {IdentityService} from '../../../services';
@@ -18,10 +18,9 @@ import {MdSnackBar} from '@angular/material';
 })
 
 export class CohortDetailPage implements OnInit {
-
+  @Input() cohorts: Cohort[];
   private COHORT: string[] = "plannerModuleState.cohort".split(".");
   private cohort$: Observable<Cohort>;
-    private creatorDialogRef: MdDialogRef<CohortUpdateDialog>;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -48,28 +47,5 @@ export class CohortDetailPage implements OnInit {
   filter(): void {
   }
 
-    showDialog(): void {
-    console.log("showDialog");
-    let config = new MdDialogConfig();
-    config.viewContainerRef = this.vcf;
-    config.role = 'dialog';
-    config.width = '40%';
-    config.position = {top: '0px'};
-    this.creatorDialogRef = this.dialog.open(CohortUpdateDialog, config);
-   
-    }
-    
-    
-  
-
- delate(): void {
-    let snackBarRef = this.snackBar.open("Delate Cohort", "OK");
-    snackBarRef.afterDismissed().subscribe(() => {
-        this.cohort$.take(1).subscribe(cohort =>
-          this.store.dispatch(this.actions.removeCohort(cohort)))
-      }
-        );
-}
-
-    }
+ }
 

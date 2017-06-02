@@ -170,6 +170,14 @@ public class TermTransformer {
 		return vo;
 	}
 
+	public Enrollment toSimpleEnrollmentVo(AdEnrollment enrollment) {
+		Enrollment vo = new Enrollment();
+		vo.setId(enrollment.getId());
+		vo.setEnrollmentStanding(EnrollmentStanding.get(enrollment.getStanding().ordinal()));
+		vo.setEnrollmentStatus(EnrollmentStatus.get(enrollment.getStatus().ordinal()));
+		return vo;
+	}
+
 	public Offering toOfferingVo(AdOffering offering) {
 		Offering vo = new Offering();
 		vo.setId(offering.getId());
@@ -191,7 +199,7 @@ public class TermTransformer {
 		vo.setCanonicalCode(section.getCanonicalCode());
 		vo.setCapacity(section.getCapacity());
 		vo.setOrdinal(section.getOrdinal());
-		// vo.setOffering(this.toOfferingVo(section.getOffering()));
+		vo.setOffering(this.toOfferingVo(section.getOffering()));
 		return vo;
 	}
 
@@ -225,9 +233,15 @@ public class TermTransformer {
 				.collect(toCollection(() -> new ArrayList<AdmissionApplication>()));
 	}
 
-	public List<EnrollmentApplication> toEnrollmentApplicationVos(List<AdEnrollmentApplication> items) {
+	//enrollmentApplicationVos
+	/*public List<EnrollmentApplication> toEnrollmentApplicationVos(List<AdEnrollmentApplication> items) {
 		return items.stream().map((task) -> toEnrollmentApplicationVo(task))
 				.collect(toCollection(() -> new ArrayList<EnrollmentApplication>()));
+	}*/
+	
+	public List<EnrollmentApplication> toEnrollmentApplicationVos(List<AdEnrollmentApplication> enrollmentApplications) {
+		List<EnrollmentApplication> vos = enrollmentApplications.stream().map((enrollmentApplication) -> toEnrollmentApplicationVo(enrollmentApplication)).collect(toList());
+		return vos;
 	}
 
 	public List<EnrollmentApplicationItem> toEnrollmentApplicationItemVos(List<AdEnrollmentApplicationItem> items) {

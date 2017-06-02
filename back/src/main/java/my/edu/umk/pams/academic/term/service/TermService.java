@@ -391,9 +391,10 @@ public interface TermService {
 
     void deleteEnrollment(AdEnrollment enrollment);
 
-    void addGradebooks(AdSection section, AdEnrollment enrollment, AdGradebook gradebook);
+    void addGradebook(AdSection section, AdEnrollment enrollment, AdGradebook gradebook);
 
-    void addGradebooks(AdSection section, AdAssessment assessment);
+    @Deprecated
+    void addGradebook(AdSection section, AdAssessment assessment);
 
     //====================================================================================================
     // APPOINTMENT

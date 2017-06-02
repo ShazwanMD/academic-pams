@@ -6,14 +6,19 @@
       <md-chip color="accent">{{assessments?.length}}</md-chip>
     </md-chip-list>
     <span flex></span>
-    <button md-button class="md-icon-button" (click)="addAssessmentDialog()" mdTooltip="Add new assesssment">
-      <md-icon class="md-24 tc-grey-700">add</md-icon>
+    <button md-button class="md-icon-button" (click)="createDialog()">
+      <md-icon class="md-24 tc-grey-300" [ngClass]="{'tc-grey-700': selectedRows.length === 0}">add</md-icon>
     </button>
-    <button md-button class="md-icon-button" (click)="deleteAssessment(row)" mdTooltip="Delete selected assesssments">
-      <md-icon class="md-24 tc-grey-700">delete</md-icon>
+    <!--<button md-button class="md-icon-button" (click)="edit(selectedRows[0])" [disabled]="selectedRows.length != 1">-->
+    <!--<md-icon class="md-24 tc-grey-300" [ngClass]="{'tc-grey-700': selectedRows.length === 1}">edit</md-icon>-->
+    <!--</button>-->
+    <button md-button class="md-icon-button" (click)="deleteAssessment(selectedRows[0])"
+            [disabled]="selectedRows.length != 1">
+      <md-icon class="md-24 tc-grey-300" [ngClass]="{'tc-grey-700': selectedRows.length === 1}">delete</md-icon>
     </button>
-
   </div>
+
+
   <md-divider></md-divider>
   <md-card-content>
     <td-data-table
@@ -23,7 +28,11 @@
       [sortOrder]="ASC"
       [sortable]="false"
       [multiple]="true"
-      [selectable]="true" dense>
+      [selectable]="true"
+      [(ngModel)]="selectedRows"
+      (rowSelect)="selectRow($event)"
+      (selectAll)="selectAllRows($event)"
+      dense>
       <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
         <div layout="row">
           <span flex>{{value}}</span>

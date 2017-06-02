@@ -61,8 +61,12 @@
                      (searchDebounce)="filter($event)">
       </td-search-box>
 
-      <pams-enrollment-application-task-list
-        [enrollmentApplicationTasks]="enrollmentApplicationTasks$ | async" (view)="viewOffering($event)"></pams-enrollment-application-task-list>
+       <pams-enrollment-applications-list
+        [enrollmentApplications]="enrollmentApplications$ | async" (view)="viewEnrollmentApplication($event)">
+        </pams-enrollment-applications-list>
+
+      <!-- <pams-enrollment-application-task-list
+        [enrollmentApplicationTasks]="enrollmentApplicationTasks$ | async" (view)="viewOffering($event)"></pams-enrollment-application-task-list> -->
       <md-divider></md-divider>
       <md-card-actions>
         <a md-button color="accent" class="text-upper"

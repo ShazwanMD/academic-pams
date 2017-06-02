@@ -66,12 +66,12 @@ public class EnrollmentApplicationWorkflowTest {
         SecurityContextHolder.getContext().setAuthentication(authed);
     }
 
-    // note: draft > register > verify > approve
+    // note: draft > register >> approve
     @Test
     @Rollback(false)
     public void testWorkflow() {
         // find account
-        AdStudent student = identityService.findStudentByMatricNo("A17P001");
+        AdStudent student = identityService.findStudentByMatricNo("A17P002");
         AdCohort cohort = student.getCohort(); // current cohort
         AdAcademicSession academicSession = plannerService.findCurrentAcademicSession();
         AdAdmission admission = termService.findAdmissionByAcademicSessionCohortAndStudent(academicSession, cohort, student);
@@ -105,33 +105,5 @@ public class EnrollmentApplicationWorkflowTest {
         // we're done, let's submit drafted task
         // transition to REGISTERED
         workflowService.completeTask(draftedTask);
-
-        // ADVISOR
-        // find and pick pooled registered application
-        // assuming there is exactly one
-        List<Task> pooledRegisteredApplications = termService.findPooledEnrollmentApplicationTasks(0, 100);
-        Assert.notEmpty(pooledRegisteredApplications, "Tasks should not be empty");
-        workflowService.assignTask(pooledRegisteredApplications.get(0));
-
-        // find and complete assigned registered application
-        // assuming there is exactly one
-        // transition to VERIFIED
-        List<Task> assignedRegisteredApplications = termService.findAssignedEnrollmentApplicationTasks(0, 100);
-        Assert.notEmpty(assignedRegisteredApplications, "Tasks should not be empty");
-        workflowService.completeTask(assignedRegisteredApplications.get(0));
-
-        // MGSEB/CPS
-        // find and pick pooled verified application
-        // assuming there is exactly one
-        List<Task> pooledVerifiedApplications = termService.findPooledEnrollmentApplicationTasks(0, 100);
-        Assert.notEmpty(pooledVerifiedApplications, "Tasks should not be empty");
-        workflowService.assignTask(pooledVerifiedApplications.get(0));
-
-        // find and complete assigned verified application
-        // assuming there is exactly one
-        // transition to APPROVED (COMPLETED)
-        List<Task> assignedVerifiedApplications = termService.findAssignedEnrollmentApplicationTasks(0, 100);
-        Assert.notEmpty(assignedVerifiedApplications, "Tasks should not be empty");
-        workflowService.completeTask(assignedVerifiedApplications.get(0)); // TO APPROVE
     }
 }

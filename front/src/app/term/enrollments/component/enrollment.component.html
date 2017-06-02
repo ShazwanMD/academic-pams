@@ -1,34 +1,34 @@
 <md-card>
-  <md-card-title>{{enrollment.admission.student.name}}</md-card-title>
-  <md-card-subtitle>Enroll Course: {{enrollment.section.offering.course.titleEn}} </md-card-subtitle>
+  <md-card-title>{{enrollment?.admission?.student?.name}}</md-card-title>
+  <md-card-subtitle>Enroll Course: {{enrollment?.section?.offering?.course?.titleEn}} </md-card-subtitle>
   <md-divider></md-divider>
   <md-card-content>
   <!--Tab Section Here-->
   <md-tab-group>
   <md-tab label="Enrollment Detail"><br>
 
-    <div>Status       : {{enrollment.enrollmentStatus}}</div><br>
-    <div>Standing :{{enrollment.enrollmentStanding}}</div><br>
-    <div>Session Description : {{enrollment.section.code}}</div><br>
+    <div>Status       : {{enrollment?.enrollmentStatus}}</div><br>
+    <div>Standing :{{enrollment?.enrollmentStanding}}</div><br>
+    <div>Session Description : {{enrollment?.section?.code}}</div><br>
  
   </md-tab>
   
    <md-tab label="Student Detail"><br>
 
-    <div>name    : {{enrollment.admission.student.name}}</div><br>
-    <div>identityNo    : {{enrollment.admission.student.identityNo}}</div><br>
-    <div>email    : {{enrollment.admission.student.email}}</div><br>
-    <div>phone    : {{enrollment.admission.student.phone}}</div><br>
-    <div>mobile    : {{enrollment.admission.student.mobile}}</div><br>
+    <div>name    : {{enrollment?.admission?.student?.name}}</div><br>
+    <div>identityNo    : {{enrollment?.admission?.student?.identityNo}}</div><br>
+    <div>email    : {{enrollment?.admission?.student?.email}}</div><br>
+    <div>phone    : {{enrollment?.admission?.student?.phone}}</div><br>
+    <div>mobile    : {{enrollment?.admission?.student?.mobile}}</div><br>
    
   </md-tab>
 
   <md-tab label=" Course Information">
 
-    <div>Course : {{enrollment.section.code}}</div><br>
-     <div>Program Code : {{enrollment.section.offering.program.code}}</div><br>
-    <div>Program : {{enrollment.section.offering.program.titleEn}}</div><br>
-     <div>Faculty : {{enrollment.section.offering.program.faculty.description}}</div><br>
+    <div>Course : {{enrollment?.section?.code}}</div><br>
+     <div>Program Code : {{enrollment?.section?.offering?.program?.code}}</div><br>
+    <div>Program : {{enrollment?.section?.offering?.program?.titleEn}}</div><br>
+     <div>Faculty : {{enrollment?.section?.offering?.program?.faculty?.description}}</div><br>
     
 
 

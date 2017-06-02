@@ -17,6 +17,8 @@ import {EnrollmentApplicationDraftTaskPanel} from "./panel/enrollment-applicatio
 import {EnrollmentApplicationTaskCreatorDialog} from "./dialog/enrollment-application-task-creator.dialog";
 import {EnrollmentApplicationItemComponent} from "./component/enrollment-application-item-list.component";
 import {EnrollmentApplicationTaskListComponent} from "./component/enrollment-application-task-list.component";
+import {EnrollmentApplicationsListComponent} from "./component/enrollment-applications-list.component";
+
 
 import {EnrollmentApplicationTaskViewPage} from "./enrollment-application-task-view.page";
 import {EnrollmentApplicationTaskWorkflowPanel} from "./panel/enrollment-application-task-workflow.panel";
@@ -48,6 +50,7 @@ import {EnrollmentApplicationTypeSelectComponent} from "./component/enrollment-a
     EnrollmentApplicationDraftTaskPanel,
     EnrollmentApplicationItemComponent,
     EnrollmentApplicationTaskListComponent,
+    EnrollmentApplicationsListComponent,
     EnrollmentApplicationTaskStatusComponent,
     EnrollmentApplicationActionSelectComponent,
     EnrollmentApplicationTypeSelectComponent,

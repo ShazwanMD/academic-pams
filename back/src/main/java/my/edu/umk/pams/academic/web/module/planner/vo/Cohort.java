@@ -14,8 +14,9 @@ public class Cohort extends MetaObject{
     private String description;
     private Program program;
     private AcademicSession academicSession;
-    private Cohort cohort;
     private Long id;
+    private Curriculum curriculum;
+    private AcademicClassification classification;
 
     public Long getId() {
 		return id;
@@ -56,17 +57,24 @@ public class Cohort extends MetaObject{
     public void setAcademicSession(AcademicSession academicSession) {
         this.academicSession = academicSession;
     }
-    
-    public Cohort getCohort() {
-        return cohort;
-    }
 
-    public void setCohort(Cohort cohort) {
-        this.cohort = cohort;
-  
-    }
+    public Curriculum getCurriculum() {
+		return curriculum;
+	}
 
-    @JsonCreator
+	public void setCurriculum(Curriculum curriculum) {
+		this.curriculum = curriculum;
+	}
+
+	public AcademicClassification getClassification() {
+		return classification;
+	}
+
+	public void setClassification(AcademicClassification classification) {
+		this.classification = classification;
+	}
+
+	@JsonCreator
     public static Cohort create(String jsonString) {
         Cohort o = null;
         try {

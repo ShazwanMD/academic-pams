@@ -4,7 +4,7 @@ import {AssessmentType} from "./assessment-type.enum";
 import {AssessmentCategory} from "./assessment-category.enum";
 
 export interface Assessment extends MetaObject {
-  id:number;
+  id: number;
   code: string;
   canonicalCode: string;
   description: string;
@@ -14,4 +14,7 @@ export interface Assessment extends MetaObject {
   assessmentType: AssessmentType;
   assessmentCategory: AssessmentCategory;
   offering: Offering;
+
+  // transient
+  selected: boolean;
 }

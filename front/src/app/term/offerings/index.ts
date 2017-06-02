@@ -4,7 +4,6 @@ import {NgModule, ModuleWithProviders} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {ReactiveFormsModule} from '@angular/forms';
 import {CovalentCoreModule} from '@covalent/core';
-import {OfferingApplicationActions} from "./offering-application.action";
 import {TermService} from '../../../services';
 import {CommonService} from '../../../services';
 import {IdentityService} from '../../../services';
@@ -27,6 +26,7 @@ import {OfferingAssessmentListComponent} from "./component/offering-assessment-l
 import {OfferingEnrollmentListComponent} from "./component/offering-enrollment-list.component";
 import {OfferingAppointmentListComponent} from "./component/offering-appointment-list.component";
 import {OfferingActionComponent} from "./component/offering-action.component";
+import {GradebookDetailPage} from "./gradebook-detail.page";
 
 @NgModule({
   imports: [
@@ -44,6 +44,7 @@ import {OfferingActionComponent} from "./component/offering-action.component";
     // page
     OfferingCenterPage,
     OfferingDetailPage,
+    GradebookDetailPage,
 
     // component
     OfferingListComponent,
@@ -57,7 +58,7 @@ import {OfferingActionComponent} from "./component/offering-action.component";
     //dialog
     OfferingEditorDialog,
     OfferingUpdateDialog,
-    
+
 
   ],
   exports: [
@@ -65,7 +66,7 @@ import {OfferingActionComponent} from "./component/offering-action.component";
    entryComponents: [
     OfferingEditorDialog,
        OfferingUpdateDialog,
-   
+
   ]
 })
 
@@ -79,7 +80,6 @@ export class OfferingSubModule {
         IdentityService,
         CommonService,
         OfferingActions,
-        OfferingApplicationActions,
       ],
     };
   }

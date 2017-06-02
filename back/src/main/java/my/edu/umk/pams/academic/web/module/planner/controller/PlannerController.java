@@ -401,7 +401,11 @@ public class PlannerController {
 		dummyLogin();
 
 		AdCohort cohort = plannerService.findCohortByCode(code);
-		cohort.setDescription(vo.getCode());
+		cohort.setCode(vo.getCode());
+		cohort.setDescription(vo.getDescription());
+		cohort.setSession(plannerService.findAcademicSessionByCode(vo.getAcademicSession().getCode()));
+		cohort.setProgram(plannerService.findProgramByCode(vo.getProgram().getCode()));
+		cohort.setClassification(AdAcademicClassification.get(vo.getClassification().ordinal()));
 		plannerService.updateCohort(cohort);
 		return new ResponseEntity<String>("Success", HttpStatus.OK);
 	}
