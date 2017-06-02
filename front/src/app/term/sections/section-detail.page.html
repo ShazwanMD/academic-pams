@@ -18,11 +18,16 @@
          <pams-section-appointment-list
           [section]="section$ | async"
           [appointments]="appointments$ | async">
+          
         </pams-section-appointment-list>
         
     </div>
     
  <div flex-gt-md="30">
+ <pams-section-action 
+ [section]="section$ | async"
+ [offering]="offering$ | async">
+ </pams-section-action>
             <md-card> <md-card-title>Term Menu</md-card-title> <md-card-subtitle>Actions
             available on current section</md-card-subtitle> <md-divider></md-divider> <md-nav-list
                 flex dense> 

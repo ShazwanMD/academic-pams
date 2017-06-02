@@ -27,6 +27,7 @@ export class SectionActions {
     static FIND_ENROLLMENTS_BY_SECTION = '[Section] Find Enrollments By Section';
 
     findEnrollmentsBySection(section): Action {
+        console.log("findEnrollmentsBySection");
       return {
         type: SectionActions.FIND_ENROLLMENTS_BY_SECTION,
         payload: section
@@ -34,8 +35,9 @@ export class SectionActions {
     }
 
     static FIND_ENROLLMENTS_BY_SECTION_SUCCESS = '[Section] Find Enrollments By Section Success';
-
+    
     findEnrollmentsBySectionSuccess(enrollments): Action {
+        console.log("findEnrollmentsBySectionSuccess");
       return {
         type: SectionActions.FIND_ENROLLMENTS_BY_SECTION_SUCCESS,
         payload: enrollments
@@ -46,6 +48,7 @@ export class SectionActions {
     static FIND_APPOINTMENTS_BY_SECTION = '[Section] Find Appointments By Section';
 
     findAppointmentsBySection(section): Action {
+        console.log("findAppointmentsBySection");
       return {
         type: SectionActions.FIND_APPOINTMENTS_BY_SECTION,
         payload: section
@@ -55,6 +58,7 @@ export class SectionActions {
     static FIND_APPOINTMENTS_BY_SECTION_SUCCESS = '[Section] Find Appointments By Section Success';
 
     findAppointmentsBySectionSuccess(appointments): Action {
+        console.log("findAppointmentsBySectionSuccess");
       return {
         type: SectionActions.FIND_APPOINTMENTS_BY_SECTION_SUCCESS,
         payload: appointments

@@ -18,6 +18,7 @@ import {SectionEnrollmentListComponent} from "./component/section-enrollment-lis
 import {SectionAppointmentListComponent} from "./component/section-appointment-list.component";
 import {SectionSelectComponent} from "./component/section-select.component";
 import {SectionEditorDialog} from "./dialog/section-editor.dialog";
+import {SectionActionComponent} from "./component/section-action.component";
 
 @NgModule({
   imports: [
@@ -38,6 +39,7 @@ import {SectionEditorDialog} from "./dialog/section-editor.dialog";
     SectionSelectComponent,
     SectionEnrollmentListComponent,
     SectionAppointmentListComponent,
+    SectionActionComponent,
     
 
     //dialog

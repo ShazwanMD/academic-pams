@@ -23,6 +23,7 @@ export class OfferingSectionListComponent implements OnInit {
   private selectedRows: Section[];
   private creatorDialogRef: MdDialogRef<SectionEditorDialog>;
   private columns: any[] = [
+    {name: 'id', label: 'Id'},
     {name: 'ordinal', label: 'Section No'},
     {name: 'code', label: 'Code'},
     {name: 'capacity', label: 'Capacity'},

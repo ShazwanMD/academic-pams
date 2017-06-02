@@ -10,6 +10,7 @@ import {TermModuleState} from "../index";
 import {MdDialog, MdDialogConfig, MdDialogRef} from "@angular/material";
 import {Appointment} from "../appointments/appointment.interface";
 import {Enrollment} from "../enrollments/enrollment.interface";
+import {Offering} from "../offerings/offering.interface";
 
 
 @Component({
@@ -20,11 +21,14 @@ import {Enrollment} from "../enrollments/enrollment.interface";
 export class SectionDetailPage implements OnInit {
 
     @Input() section: Section;
-    
-  private SECTION: string[] = "termModuleState.section".split(".");
+    @Input() offering: Offering;
+
+private OFFERING: string[] = "termModuleState.offering".split(".");
+private SECTION: string[] = "termModuleState.section".split(".");
 private ENROLLMENTS: string[] = "termModuleState.enrollments".split(".");
 private APPOINTMENTS: string[] = "termModuleState.appointments".split(".");
 
+private offering$: Observable<Offering>;
 private section$: Observable<Section>;
 private appointments: Observable<Appointment[]>;
 private enrollments$: Observable<Enrollment[]>;
@@ -39,7 +43,7 @@ private enrollments$: Observable<Enrollment[]>;
 
    
       this.section$ = this.store.select(...this.SECTION);
-    
+      this.offering$ = this.store.select(...this.OFFERING);
     this.enrollments$ = this.store.select(...this.ENROLLMENTS);
     this.appointments = this.store.select(...this.APPOINTMENTS);
   }

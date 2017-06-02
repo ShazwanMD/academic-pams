@@ -13,6 +13,7 @@ import { from } from "rxjs/observable/from";
 export class SectionEffects {
 
   private OFFERING: string[] = "termModuleState.offering".split(".");
+  private SECTION: string[] = "termModuleState.section".split(".");
 
   constructor(private actions$: Actions,
               private sectionActions: SectionActions,
@@ -20,12 +21,17 @@ export class SectionEffects {
               private termService: TermService,
               private store$: Store<TermModuleState>) {
   }
-
-  @Effect() findSectionByCanonicalCode$ = this.actions$
+   
+    @Effect() findSectionByCanonicalCode$ = this.actions$
     .ofType(SectionActions.FIND_SECTION_BY_CANONICAL_CODE)
     .map(action => action.payload)
     .switchMap(canonicalCode => this.termService.findSectionByCanonicalCode(canonicalCode))
-    .map(section => this.sectionActions.findSectionByCanonicalCodeSuccess(section));
+    .map(section => this.sectionActions.findSectionByCanonicalCodeSuccess(section))
+    .mergeMap(action => from([action,
+    
+      this.sectionActions.findEnrollmentsBySection(action.payload),
+      this.sectionActions.findAppointmentsBySection(action.payload)
+    ]));
   
   @Effect() findEnrollmentsBySection$ = this.actions$
   .ofType(SectionActions.FIND_ENROLLMENTS_BY_SECTION)

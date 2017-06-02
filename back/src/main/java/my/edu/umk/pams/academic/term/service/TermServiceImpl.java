@@ -1162,6 +1162,7 @@ public class TermServiceImpl implements TermService {
     public List<AdAppointment> findAppointments(AdOffering offering) {
         return appointmentDao.find(offering);
     }
+    
 
     @Override
     public List<AdAppointment> findAppointments(AdSection section) {
