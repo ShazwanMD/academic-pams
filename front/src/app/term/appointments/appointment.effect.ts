@@ -14,6 +14,7 @@ import { SectionActions } from "../sections/section.action";
 export class AppointmentEffects {
         
   private OFFERING: string[] = "termModuleState.offering".split(".");
+  private SECTION: string[] = "termModuleState.section".split(".");
     
   constructor(private actions$: Actions,
               private appointmentActions: AppointmentActions,
@@ -36,17 +37,17 @@ export class AppointmentEffects {
       .map(action => action.payload)
       .switchMap(payload => this.termService.addAppointment(payload.section, payload.appointment))
       .map(message => this.appointmentActions.addAppointmentSuccess(message))
-      .withLatestFrom(this.store$.select(...this.OFFERING))
+      .withLatestFrom(this.store$.select(...this.SECTION))
       .map(state => state[1])
       .map((section: Section) => this.sectionActions.findSectionByCanonicalCode(section.canonicalCode));
-     
+       
      //update appointment
       @Effect() updateAppointment$ = this.actions$
      .ofType(AppointmentActions.UPDATE_APPOINTMENT)
      .map(action => action.payload)
      .switchMap(payload => this.termService.updateAppointment(payload.offering, payload.appointment))
      .map(message => this.appointmentActions.updateAppointmentSuccess(message))
-     .withLatestFrom(this.store$.select(...this.OFFERING))
+     .withLatestFrom(this.store$.select(...this.SECTION))
      .map(state => state[1])
      //.mergeMap(action => from([action, this.appointmentActions.findAppointments()]));
      .map((offering: Offering) => this.offeringActions.findOfferingByCanonicalCode(offering.canonicalCode));
@@ -58,7 +59,7 @@ export class AppointmentEffects {
     .map(action => action.payload)
     .switchMap(payload => this.termService.removeAppointment(payload.offering, payload.appointment))
     .map(message => this.appointmentActions.removeAppointmentSuccess(message))
-    .withLatestFrom(this.store$.select(...this.OFFERING))
+    .withLatestFrom(this.store$.select(...this.SECTION))
     .map(state => state[1])
     .map((offering: Offering) => this.offeringActions.findOfferingByCanonicalCode(offering.canonicalCode));
   

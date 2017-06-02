@@ -32,11 +32,13 @@ export class SectionEditorDialog implements OnInit {
 
     set offering(value: Offering) {
         this._offering = value;
+        console.log(this._offering.code);
     }
-
+    
     set section(value: Section) {
         this._section = value;
         this.edit = true;
+        console.log(this._section.code);
     }
 
     ngOnInit(): void {

@@ -30,7 +30,7 @@ import {IdentityModule} from "../../identity/index";
     CovalentCoreModule.forRoot(),
     SectionSubModule.forRoot(),
     IdentityModule.forRoot(),
-    EffectsModule.run(AppointmentEffects),
+    //EffectsModule.run(AppointmentEffects), move to app modules
   ],
   declarations: [
     // page
