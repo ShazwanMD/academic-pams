@@ -12,13 +12,14 @@ import {MdDialogRef} from "@angular/material";
 import {PlannerModuleState} from "../../index";
 import {Store} from "@ngrx/store";
 import {AcademicClassification} from "../academic-classification.enum";
-
+import { AcademicSession } from './../../academic-sessions/academic-session.interface';
 @Component({
   selector: 'pams-cohort-update',
   templateUrl: './cohort-update.dialog.html',
 })
 
 export class CohortUpdateDialog implements OnInit {
+  private _session: AcademicSession;
   private _program: Program;
   private _cohort: Cohort;
   private updateForm: FormGroup;
@@ -36,6 +37,10 @@ export class CohortUpdateDialog implements OnInit {
   set program(value: Program){
     this._program = value;
   }
+  
+  set session(value: AcademicSession){
+      this._session = value;
+    }
 
  set cohort(value: Cohort) {
         this._cohort = value;
