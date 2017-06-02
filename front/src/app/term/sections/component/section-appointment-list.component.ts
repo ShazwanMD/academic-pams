@@ -17,7 +17,9 @@ export class SectionAppointmentListComponent {
 
   @Input() section: Section;
   @Input() appointments: Appointment[];
-  @Output() view = new EventEmitter<Appointment>();
+  @Output() view = new EventEmitter<Section>();
+  
+  
   private creatorDialogRef: MdDialogRef<AppointmentCreateTaskCreatorDialog>;
   private columns: any[] = [
     {name: 'id', label: 'Id'},

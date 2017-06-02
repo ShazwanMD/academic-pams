@@ -652,8 +652,8 @@ public class TermController {
         
       }
     
-    // find appointment by section
-    /*
+    // find appointments by section
+    
     @RequestMapping(value = "/sections/{canonicalCode}/appointments", method = RequestMethod.GET)
     public ResponseEntity<List<Appointment>> findAppointmentsBySection(@PathVariable String canonicalCode) {
         AdSection section = termService.findSectionByCanonicalCode(canonicalCode);
@@ -662,7 +662,7 @@ public class TermController {
         return new ResponseEntity<List<Appointment>>(appointmentVos, HttpStatus.OK);
         
       }
-      */
+      
     
     
     // gradebook
