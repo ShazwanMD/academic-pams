@@ -19,6 +19,27 @@ export class AppointmentActions {
       payload: appointment
     };
   }
+  
+  //find appointments by section
+  static FIND_APPOINTMENTS_BY_SECTION = '[Appointment] Find Appointments By Section';
+
+  findAppointmentsBySection(section): Action {
+    console.log("findAppointmentsBySection");
+    return {
+      type: AppointmentActions.FIND_APPOINTMENTS_BY_SECTION,
+      payload: section
+    };
+  }
+
+  static FIND_APPOINTMENTS_BY_SECTION_SUCCESS = '[Appointment] Find Appointments By Section Success';
+
+  findAppointmentsBySectionSuccess(appointments): Action {
+    console.log("findAppointmentsBySectionSuccess");
+    return {
+      type: AppointmentActions.FIND_APPOINTMENTS_BY_SECTION_SUCCESS,
+      payload: appointments
+    };
+  }
 
   static ADD_APPOINTMENT = '[Appointment] Add Appointment';
   addAppointment(section, appointment): Action {

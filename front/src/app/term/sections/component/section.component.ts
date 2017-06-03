@@ -1,11 +1,11 @@
 import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, ViewContainerRef} from '@angular/core';
 import {Section} from "../section.interface";
 import {MdDialog, MdDialogConfig, MdDialogRef} from "@angular/material";
-import {AppointmentCreateTaskCreatorDialog} from "../../appointments/dialog/appointment-create-task-creator.dialog";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Store} from "@ngrx/store";
 import {TermModuleState} from "../../index";
 import {Enrollment} from "../../enrollments/enrollment.interface";
+import { AppointmentEditorDialog } from "../../appointments/dialog/appointment-editor.dialog";
 
 @Component({
   selector: 'pams-section',
@@ -27,7 +27,7 @@ export class SectionComponent {
   ];
 
 
-  private creatorDialogRef: MdDialogRef<AppointmentCreateTaskCreatorDialog>;
+  private creatorDialogRef: MdDialogRef<AppointmentEditorDialog>;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -46,7 +46,7 @@ export class SectionComponent {
     config.width = '50%';
     config.height = '50%';
     config.position = {top: '0px'};
-    this.creatorDialogRef = this.dialog.open(AppointmentCreateTaskCreatorDialog, config);
+    this.creatorDialogRef = this.dialog.open(AppointmentEditorDialog, config);
     this.creatorDialogRef.componentInstance.section = this.section;
     this.creatorDialogRef.afterClosed().subscribe(res => {
       console.log("close dialog");

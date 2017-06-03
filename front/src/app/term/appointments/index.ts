@@ -17,8 +17,6 @@ import {AppointmentDetailPage} from "./appointment-detail.page";
 import {AppointmentComponent} from "./component/appointment.component";
 import {AppointmentStatusSelectComponent} from "./component/appointment-status-select.component";
 import {AppointmentEditorDialog} from "./dialog/appointment-editor.dialog";
-import {AppointmentCreateTaskCreatorDialog} from "./dialog/appointment-create-task-creator.dialog";
-import {AppointmentUpdateTaskCreatorDialog} from "./dialog/appointment-update-task-creator.dialog";
 import {SectionSubModule} from "../sections/index";
 import {IdentityModule} from "../../identity/index";
 
