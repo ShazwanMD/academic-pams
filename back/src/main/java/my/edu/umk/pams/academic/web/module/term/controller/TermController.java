@@ -283,7 +283,7 @@ public class TermController {
         application.setCancelComment(vo.getCancelComment());
         application.setRemoveComment(vo.getRemoveComment());
         application.setSourceNo(vo.getSourceNo());
-        application.setType(AdEnrollmentApplicationType.get(vo.getEnrollmentApplicationType().ordinal()));
+        application.setType(AdEnrollmentApplicationType.get(vo.getApplicationType().ordinal()));
 
         String referenceNo = termService.startEnrollmentApplicationTask(application);
         return new ResponseEntity<String>(referenceNo, HttpStatus.OK);
