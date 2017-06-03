@@ -25,7 +25,6 @@ import {SectionActionComponent} from "./component/section-action.component";
     appRoutes,
     BrowserModule,
     ReactiveFormsModule,
-    //SectionModule.forRoot(),
     CovalentCoreModule.forRoot(),
     // EffectsModule.run(SectionEffects), // lazy load bug, moved to app root. Fix in Angular 4
   ],

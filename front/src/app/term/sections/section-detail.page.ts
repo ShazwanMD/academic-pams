@@ -59,8 +59,6 @@ export class SectionDetailPage implements OnInit {
     this.route.params.subscribe((params: { canonicalCode: string }) => {
       let canonicalCode: string = params.canonicalCode;
       this.store.dispatch(this.actions.findSectionByCanonicalCode(canonicalCode));
-
-
     });
   }
 

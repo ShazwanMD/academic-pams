@@ -28,7 +28,6 @@ export class SectionEffects {
     .switchMap(canonicalCode => this.termService.findSectionByCanonicalCode(canonicalCode))
     .map(section => this.sectionActions.findSectionByCanonicalCodeSuccess(section))
     .mergeMap(action => from([action,
-
       this.sectionActions.findEnrollmentsBySection(action.payload),
       this.sectionActions.findAppointmentsBySection(action.payload)
     ]));
