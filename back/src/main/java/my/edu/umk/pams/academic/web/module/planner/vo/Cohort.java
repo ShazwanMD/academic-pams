@@ -16,7 +16,7 @@ public class Cohort extends MetaObject{
     private AcademicSession academicSession;
     private Long id;
     private Curriculum curriculum;
-    private AcademicClassification classification;
+    private AcademicClassification academicClassification;
 
     public Long getId() {
 		return id;
@@ -67,11 +67,11 @@ public class Cohort extends MetaObject{
 	}
 
 	public AcademicClassification getClassification() {
-		return classification;
+		return academicClassification;
 	}
 
-	public void setClassification(AcademicClassification classification) {
-		this.classification = classification;
+	public void setClassification(AcademicClassification academicClassification) {
+		this.academicClassification = academicClassification;
 	}
 
 	@JsonCreator

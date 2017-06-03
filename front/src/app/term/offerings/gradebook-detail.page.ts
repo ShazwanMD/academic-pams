@@ -1,3 +1,4 @@
+import { Student } from './../../identity/student.interface';
 import {Component, OnInit, ChangeDetectionStrategy, ViewContainerRef, Input, EventEmitter, Output} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 import {OfferingUpdateDialog} from "./dialog/offering-update.dialog";
@@ -21,7 +22,8 @@ import {Assessment} from "../assessments/assessment.interface";
 })
 
 export class GradebookDetailPage implements OnInit {
-
+  @Input() enrollment: Enrollment;
+  @Input() student: Student;
   private OFFERING: string[] = "termModuleState.offering".split(".");
   private GRADEBOOK_MATRICES: string[] = "termModuleState.gradebookMatrices".split(".");
   private offering$: Observable<Offering>;
