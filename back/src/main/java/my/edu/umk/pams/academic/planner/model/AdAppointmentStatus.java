@@ -1,15 +1,17 @@
 package my.edu.umk.pams.academic.planner.model;
 
+import my.edu.umk.pams.academic.term.model.AdAssessmentCategory;
+
 /**
  * @author PAMS
  */
 public enum AdAppointmentStatus {
-    NEW("Baru"),
-    CONFIRMED("Confirmed"),
-    SUBSTITUTED("Diganti"),
-    DISMISSED("Dilepaskan");
+    NEW,
+    CONFIRMED,
+    SUBSTITUTED,
+    DISMISSED;
 
-    private String description;
+    /*private String description;
 
     AdAppointmentStatus(String description) {
         this.description = description;
@@ -21,5 +23,9 @@ public enum AdAppointmentStatus {
 
     public void setDescription(String description) {
         this.description = description;
-    }
+    }*/
+	
+	 public static AdAppointmentStatus get(int index){
+	        return values()[index];
+	    }
 }

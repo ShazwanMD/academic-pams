@@ -519,18 +519,18 @@ export class TermService {
             .flatMap((res: Response) => Observable.of(res.text()));
     }
 
-    //update appointment
-    updateAppointment(offering: Offering, appointment: Appointment): Observable<String> {
+    //update appointmentbysection
+    updateAppointment(section: Section, appointment: Appointment): Observable<String> {
         console.log(appointment);
         let headers = new Headers({
             'Content-Type': 'application/json',
             //'Authorization': 'Bearer ' + this.authService.token
         });
         let options = new RequestOptions({ headers: headers });
-        return this.http.put(environment.endpoint + '/api/term/offerings/' + offering.canonicalCode + '/appointments/' + appointment.id, JSON.stringify(appointment), options)
+        return this.http.put(environment.endpoint + '/api/term/sections/' + section.canonicalCode + '/appointments/' + appointment.id, JSON.stringify(appointment), options)
             .flatMap((res: Response) => Observable.of(res.text()));
     }
-
+    
     deleteEnrollment(offering: Offering, enrollment: Enrollment) {
         let headers = new Headers({
             'Content-Type': 'application/json',

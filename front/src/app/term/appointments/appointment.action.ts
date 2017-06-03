@@ -77,11 +77,11 @@ export class AppointmentActions {
       //update section for capacity and ordinal
     static UPDATE_APPOINTMENT = '[Appointment] Update Appointment';
 
-  updateAppointment(offering, appointment): Action {
+  updateAppointment(section, appointment): Action {
     console.log("updateAppointment");
     return {
       type: AppointmentActions.UPDATE_APPOINTMENT,
-      payload: {offering:offering, appointment:appointment}
+      payload: {section:section, appointment:appointment}
     };
   }
 

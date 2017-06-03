@@ -221,7 +221,8 @@ public class TermController {
 	}
 
 	@RequestMapping(value = "/admissionApplications/{referenceNo}", method = RequestMethod.GET)
-	public ResponseEntity<AdmissionApplication> findAdmissionApplicationByReferenceNo(@PathVariable String referenceNo) {
+	public ResponseEntity<AdmissionApplication> findAdmissionApplicationByReferenceNo(
+			@PathVariable String referenceNo) {
 		dummyLogin();
 		AdAdmissionApplication application = termService.findAdmissionApplicationByReferenceNo(referenceNo);
 		return new ResponseEntity<AdmissionApplication>(termTransformer.toAdmissionApplicationVo(application),
@@ -641,6 +642,20 @@ public class TermController {
 		return new ResponseEntity<String>("Success", HttpStatus.OK);
 	}
 
+	// update appointment by section
+	@RequestMapping(value = "/sections/{canonicalCode}/appointments/{id}", method = RequestMethod.PUT)
+	public ResponseEntity<String> updateAppointment(@PathVariable String canonicalCode, @RequestBody Appointment vo) {
+		dummyLogin();
+
+		AdSection section = termService.findSectionByCanonicalCode(canonicalCode);
+		AdAppointment appointment = termService.findAppointmentById(vo.getId());
+		appointment.setSection(section);
+		appointment.setStaff(identityService.findStaffById(vo.getStaff().getId()));
+		appointment.setStatus(AdAppointmentStatus.get(vo.getAppointmentStatus().ordinal()));
+		termService.updateAppointment(section, appointment);
+		return new ResponseEntity<String>("Success", HttpStatus.OK);
+	}
+
 	// find enrollments by section
 	@RequestMapping(value = "/sections/{canonicalCode}/enrollments", method = RequestMethod.GET)
 	public ResponseEntity<List<Enrollment>> findEnrollmentsBySection(@PathVariable String canonicalCode) {
@@ -652,7 +667,6 @@ public class TermController {
 	}
 
 	// find appointments by section
-
 	@RequestMapping(value = "/sections/{canonicalCode}/appointments", method = RequestMethod.GET)
 	public ResponseEntity<List<Appointment>> findAppointmentsBySection(@PathVariable String canonicalCode) {
 		AdSection section = termService.findSectionByCanonicalCode(canonicalCode);
