@@ -1,4 +1,4 @@
-import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, ViewContainerRef} from '@angular/core';
+import {Component, Input, ChangeDetectionStrategy, ViewContainerRef} from '@angular/core';
 import {Section} from "../section.interface";
 import {Offering} from "../../offerings/offering.interface";
 import {SectionEditorDialog} from "../dialog/section-editor.dialog";
@@ -14,7 +14,6 @@ import {TermModuleState} from "../../index";
 })
 export class SectionActionComponent {
 
-  @Input() _section: Section;
   @Input() section: Section;
   @Input() offering: Offering;
   private editorDialogRef: MdDialogRef<SectionEditorDialog>;
@@ -28,9 +27,9 @@ export class SectionActionComponent {
 
   updateDialog(): void {
     console.log("open section dialog");
-    console.log("canonicalcode",this.section.canonicalCode);
-    
-    
+    console.log("canonicalcode", this.section.canonicalCode);
+
+
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
     config.role = 'dialog';
@@ -40,13 +39,12 @@ export class SectionActionComponent {
     this.editorDialogRef = this.dialog.open(SectionEditorDialog, config);
     this.editorDialogRef.componentInstance.section = this.section;
     this.editorDialogRef.componentInstance.offering = this.offering;
-  
+
 
     // set
     this.editorDialogRef.afterClosed().subscribe(res => {
       console.log("close dialog section update");
-      
+
     });
   }
-
 }

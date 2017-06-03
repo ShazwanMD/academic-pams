@@ -40,10 +40,10 @@ import {SectionActionComponent} from "./component/section-action.component";
     SectionEnrollmentListComponent,
     SectionAppointmentListComponent,
     SectionActionComponent,
-    
+
 
     //dialog
-    SectionEditorDialog, 
+    SectionEditorDialog,
 
   ],
   exports: [
@@ -54,8 +54,8 @@ import {SectionActionComponent} from "./component/section-action.component";
     SectionEditorDialog,
   ],
   entryComponents: [
-   SectionEditorDialog,
-   SectionSelectComponent,
+    SectionEditorDialog,
+    SectionSelectComponent,
   ],
 })
 

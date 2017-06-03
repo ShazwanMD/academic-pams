@@ -1,4 +1,4 @@
-<h2 md-dialog-title>{{edit ? 'Update' : 'Save'}} Section {{_section?.code}}    </h2><!-- {{_section?.code}} {{_section?.canonicalCode}} -->
+<h2 md-dialog-title>{{edit ? 'Update' : 'Save'}} Section {{_section?.code}} </h2>
 <md-dialog-content>
   <form [formGroup]="editorForm">
 
@@ -10,11 +10,11 @@
       </md-input-container>
     </div>
 
-    <div layout="row" class="pad-bottom" >
-      <md-input-container flex mdTooltip="Please insert ordinal"  >
+    <div layout="row" class="pad-bottom">
+      <md-input-container flex mdTooltip="Please insert ordinal">
         <input mdInput
                placeholder="Section No"
-               formControlName="ordinal"  flex/>
+               formControlName="ordinal" flex/>
       </md-input-container>
     </div>
 

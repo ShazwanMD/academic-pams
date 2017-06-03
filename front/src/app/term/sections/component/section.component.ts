@@ -1,5 +1,5 @@
 import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, ViewContainerRef} from '@angular/core';
-import { Section } from "../section.interface";
+import {Section} from "../section.interface";
 import {MdDialog, MdDialogConfig, MdDialogRef} from "@angular/material";
 import {AppointmentCreateTaskCreatorDialog} from "../../appointments/dialog/appointment-create-task-creator.dialog";
 import {ActivatedRoute, Router} from "@angular/router";
@@ -11,7 +11,7 @@ import {Enrollment} from "../../enrollments/enrollment.interface";
   selector: 'pams-section',
   templateUrl: './section.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  
+
 })
 export class SectionComponent {
 
@@ -19,28 +19,27 @@ export class SectionComponent {
   @Input() enrollments: Enrollment[];
   @Output() view = new EventEmitter<Section>();
   @Output() view2 = new EventEmitter<Enrollment>();
-    
-      
+
   //display data enrollments
-   private columns: any[] = [
+  private columns: any[] = [
     {name: 'id', label: 'Id'},
     {name: 'action', label: ''}
   ];
-    
-    
+
+
   private creatorDialogRef: MdDialogRef<AppointmentCreateTaskCreatorDialog>;
-    
-      constructor(private router: Router,
+
+  constructor(private router: Router,
               private route: ActivatedRoute,
               private store: Store<TermModuleState>,
               private vcf: ViewContainerRef,
               private dialog: MdDialog) {
   }
-    
+
   showDialog(): void {
     console.log("showDialog");
-    console.log("Section to pass:"+ this.section);
-   
+    console.log("Section to pass:" + this.section);
+
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
     config.role = 'dialog';
@@ -54,5 +53,5 @@ export class SectionComponent {
       // load something here
     });
   }
-     
+
 }

@@ -1,5 +1,4 @@
 import {Action} from '@ngrx/store';
-import {Observable} from 'rxjs/Observable';
 
 import * as _ from 'lodash';
 import {Section} from "./section.interface";

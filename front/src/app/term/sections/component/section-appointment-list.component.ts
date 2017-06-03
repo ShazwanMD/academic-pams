@@ -18,16 +18,15 @@ export class SectionAppointmentListComponent {
   @Input() section: Section;
   @Input() appointments: Appointment[];
   @Output() view = new EventEmitter<Appointment>();
-  
-  
+
+
   private creatorDialogRef: MdDialogRef<AppointmentCreateTaskCreatorDialog>;
-  
+
   private columns: any[] = [
     {name: 'id', label: 'Id'},
     {name: 'staff.name', label: 'Staff'},
     {name: 'staff.identityNo', label: 'IdentityNo'},
     {name: 'appointmentStatus', label: 'Appointment Status'},
-    //{name: 'section.offering.course.code', label: 'Course'},
     {name: 'action', label: ''}
   ];
 

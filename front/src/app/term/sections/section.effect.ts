@@ -6,7 +6,7 @@ import {Store} from "@ngrx/store";
 import {TermModuleState} from "../index";
 import {OfferingActions} from "../offerings/offering.action";
 import {Offering} from "../offerings/offering.interface";
-import { from } from "rxjs/observable/from";
+import {from} from "rxjs/observable/from";
 
 
 @Injectable()
@@ -21,31 +21,31 @@ export class SectionEffects {
               private termService: TermService,
               private store$: Store<TermModuleState>) {
   }
-   
-    @Effect() findSectionByCanonicalCode$ = this.actions$
+
+  @Effect() findSectionByCanonicalCode$ = this.actions$
     .ofType(SectionActions.FIND_SECTION_BY_CANONICAL_CODE)
     .map(action => action.payload)
     .switchMap(canonicalCode => this.termService.findSectionByCanonicalCode(canonicalCode))
     .map(section => this.sectionActions.findSectionByCanonicalCodeSuccess(section))
     .mergeMap(action => from([action,
-    
+
       this.sectionActions.findEnrollmentsBySection(action.payload),
       this.sectionActions.findAppointmentsBySection(action.payload)
     ]));
-  
+
   @Effect() findEnrollmentsBySection$ = this.actions$
-  .ofType(SectionActions.FIND_ENROLLMENTS_BY_SECTION)
-  .map(action => action.payload)
-  .switchMap(section => this.termService.findEnrollmentsBySection(section))
-  .map(sections => this.sectionActions.findEnrollmentsBySectionSuccess(sections));
+    .ofType(SectionActions.FIND_ENROLLMENTS_BY_SECTION)
+    .map(action => action.payload)
+    .switchMap(section => this.termService.findEnrollmentsBySection(section))
+    .map(sections => this.sectionActions.findEnrollmentsBySectionSuccess(sections));
 
-@Effect() findAppointmentsBySection$ = this.actions$
-  .ofType(SectionActions.FIND_APPOINTMENTS_BY_SECTION)
-  .map(action => action.payload)
-  .switchMap(section => this.termService.findAppointmentsBySection(section))
-  .map(sections => this.sectionActions.findAppointmentsBySectionSuccess(sections));
+  @Effect() findAppointmentsBySection$ = this.actions$
+    .ofType(SectionActions.FIND_APPOINTMENTS_BY_SECTION)
+    .map(action => action.payload)
+    .switchMap(section => this.termService.findAppointmentsBySection(section))
+    .map(sections => this.sectionActions.findAppointmentsBySectionSuccess(sections));
 
-@Effect() addSection$ =
+  @Effect() addSection$ =
     this.actions$
       .ofType(SectionActions.ADD_SECTION)
       .map(action => action.payload)
@@ -54,7 +54,7 @@ export class SectionEffects {
       .withLatestFrom(this.store$.select(...this.OFFERING))
       .map(state => state[1])
       .map((offering: Offering) => this.offeringActions.findOfferingByCanonicalCode(offering.canonicalCode));
-    
+
   @Effect() deleteSection$ = this.actions$
     .ofType(SectionActions.REMOVE_SECTION)
     .map(action => action.payload)
@@ -63,18 +63,16 @@ export class SectionEffects {
     .withLatestFrom(this.store$.select(...this.OFFERING))
     .map(state => state[1])
     .map((offering: Offering) => this.offeringActions.findOfferingByCanonicalCode(offering.canonicalCode));
-  
- 
-  //update section
+
+
   @Effect() updateSection$ = this.actions$
-  .ofType(SectionActions.UPDATE_SECTION)
-  .map(action => action.payload)
-  .switchMap(payload => this.termService.updateSection(payload.offering, payload.section))
-  .map(message => this.sectionActions.updateSectionSuccess(message))
-  .withLatestFrom(this.store$.select(...this.OFFERING))
-  .map(state => state[1])
-  //.mergeMap(action => from([action, this.sectionActions.findSections()]));
-  .map((offering: Offering) => this.offeringActions.findOfferingByCanonicalCode(offering.canonicalCode));
-  
-    
- }
+    .ofType(SectionActions.UPDATE_SECTION)
+    .map(action => action.payload)
+    .switchMap(payload => this.termService.updateSection(payload.offering, payload.section))
+    .map(message => this.sectionActions.updateSectionSuccess(message))
+    .withLatestFrom(this.store$.select(...this.OFFERING))
+    .map(state => state[1])
+    .map((offering: Offering) => this.offeringActions.findOfferingByCanonicalCode(offering.canonicalCode));
+
+
+}
