@@ -49,14 +49,13 @@ export class AppointmentDetailPage implements OnInit {
     });
   }
 
+ 
+  
   ngOnInit(): void {
-    this.route.params.subscribe((params: { id: string }) => {
-      let id: string = params.id;
-      this.store.dispatch(this.actions.findAppointmentById(id));
-      //this.appointment$ = this.termService.findAppointmentByCanonicalCode(canonicalCode);
-
-
-    });
+      this.route.params.subscribe((params: { id: string }) => {
+          let id: string = params.id;
+          this.store.dispatch(this.actions.findAppointmentById(id));
+      });
   }
 
   goBack(route: string): void {

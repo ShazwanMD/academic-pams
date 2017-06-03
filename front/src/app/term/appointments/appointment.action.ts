@@ -5,10 +5,10 @@ import {Action} from '@ngrx/store';
 export class AppointmentActions {
 
   static FIND_APPOINTMENT_BY_ID = '[Appointment] Find Appointment By Id';
-  findAppointmentById(id): Action {
+  findAppointmentById(appointment): Action {
     return {
       type: AppointmentActions.FIND_APPOINTMENT_BY_ID,
-      payload: id
+      payload: appointment
     };
   }
 
