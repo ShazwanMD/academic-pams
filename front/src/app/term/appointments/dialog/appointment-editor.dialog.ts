@@ -23,7 +23,6 @@ import {Router, ActivatedRoute} from '@angular/router';
 export class AppointmentEditorDialog implements OnInit {
 
   private editorForm: FormGroup;
-  private _offering: Offering;
   private _section: Section;
   private _appointment: Appointment;
   private edit: boolean = false;
@@ -37,9 +36,6 @@ export class AppointmentEditorDialog implements OnInit {
               private viewContainerRef: ViewContainerRef) {
   }
 
-  set offering(value: Offering) {
-    this._offering = value;
-  }
 
   set section(value: Section) {
     this._section = value;

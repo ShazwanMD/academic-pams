@@ -43,15 +43,13 @@ import {IdentityModule} from "../../identity/index";
 
     //dialog
     AppointmentEditorDialog,
-    AppointmentCreateTaskCreatorDialog,
-    AppointmentUpdateTaskCreatorDialog,
 
   ],
   exports: [
-    AppointmentCreateTaskCreatorDialog
+    AppointmentEditorDialog,
   ],
   entryComponents: [
-    AppointmentCreateTaskCreatorDialog,
+    AppointmentEditorDialog,
   ],
 })
 
