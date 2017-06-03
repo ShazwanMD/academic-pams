@@ -632,6 +632,20 @@ public class TermController {
 		termService.addAppointment(section, appointment);
 		return new ResponseEntity<String>("Success", HttpStatus.OK);
 	}
+	
+	// update appointment by section
+		@RequestMapping(value = "/sections/{canonicalCode}/appointments/{id}", method = RequestMethod.PUT)
+		public ResponseEntity<String> updateAppointment(@PathVariable String canonicalCode, @RequestBody Appointment vo) {
+			dummyLogin();
+
+			AdSection section = termService.findSectionByCanonicalCode(canonicalCode);
+			AdAppointment appointment = termService.findAppointmentById(vo.getId());
+			appointment.setSection(section);
+			appointment.setStaff(identityService.findStaffById(vo.getStaff().getId()));
+			appointment.setStatus(AdAppointmentStatus.get(vo.getAppointmentStatus().ordinal()));
+			termService.updateAppointment(section, appointment);
+			return new ResponseEntity<String>("Success", HttpStatus.OK);
+		}
 
 	@RequestMapping(value = "/sections/{canonicalCode}/enrollments", method = RequestMethod.GET)
 	public ResponseEntity<List<Enrollment>> findEnrollmentsBySection(@PathVariable String canonicalCode) {
