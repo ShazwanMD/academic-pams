@@ -30,7 +30,7 @@ private APPOINTMENTS: string[] = "termModuleState.appointments".split(".");
 
 private offering$: Observable<Offering>;
 private section$: Observable<Section>;
-private appointments: Observable<Appointment[]>;
+private appointments$: Observable<Appointment[]>;
 private enrollments$: Observable<Enrollment[]>;
 
   constructor(private router: Router,
@@ -45,7 +45,7 @@ private enrollments$: Observable<Enrollment[]>;
       this.section$ = this.store.select(...this.SECTION);
       this.offering$ = this.store.select(...this.OFFERING);
     this.enrollments$ = this.store.select(...this.ENROLLMENTS);
-    this.appointments = this.store.select(...this.APPOINTMENTS);
+    this.appointments$ = this.store.select(...this.APPOINTMENTS);
   }
 
   showDialog(): void {
@@ -59,6 +59,7 @@ private enrollments$: Observable<Enrollment[]>;
     this.route.params.subscribe((params: { canonicalCode: string }) => {
       let canonicalCode: string = params.canonicalCode;
       this.store.dispatch(this.actions.findSectionByCanonicalCode(canonicalCode));
+      
             
     });
   }

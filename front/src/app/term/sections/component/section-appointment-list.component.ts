@@ -24,9 +24,10 @@ export class SectionAppointmentListComponent {
   
   private columns: any[] = [
     {name: 'id', label: 'Id'},
+    {name: 'staff.name', label: 'Staff'},
+    {name: 'staff.identityNo', label: 'IdentityNo'},
     {name: 'appointmentStatus', label: 'Appointment Status'},
-    {name: 'course.id', label: 'Course'},
-    {name: 'session.id', label: 'Academic Session'},
+    //{name: 'section.offering.course.code', label: 'Course'},
     {name: 'action', label: ''}
   ];
 
