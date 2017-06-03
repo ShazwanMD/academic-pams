@@ -6,37 +6,15 @@
     <div md-content flex md-scroll-y>
         <div layout="column" layout-gt-md="row" class="inset">
             <div flex-gt-md="70">
-                <!-- <pams-admission-application [admissionApplication]="admissionApplication$ | async">
-                </pams-admission-application> -->
-
+                <pams-admission-application [admissionApplication]="admissionApplication$ | async">
+                </pams-admission-application>
             </div>
 
             <div flex-gt-md="30">
-               <!--  <pams-admission-application-action [admissionApplication]="admissionApplication$ | async">
-                </pams-admission-application-action> -->
-                
-                <md-card>
-                    <md-card-title>Term Menu</md-card-title>
-                    <md-card-subtitle>Go to previous menu
-                    </md-card-subtitle>
-                    <md-divider></md-divider>
-                    
-                    <md-nav-list flex dense>
-                        <md-list-item [routerLink]="['/term/admissions']">
-                            <md-icon md-list-avatar>menu</md-icon>
-                            <h4 md-line>Admissions</h4>
-                            <p md-line>Watch this admissions</p>
-                        </md-list-item>
-                        <md-list-item [routerLink]="['/term/offerings']">
-                            <md-icon md-list-avatar>menu</md-icon>
-                            <h4 md-line>Offerings</h4>
-                            <p md-line>Watch this offerings</p>
-                        </md-list-item>
+                <pams-admission-application-action [admissionApplication]="admissionApplication$ | async">
+                </pams-admission-application-action>
 
-                        <md-divider></md-divider>
 
-                    </md-nav-list>
-                </md-card>
             </div>
         </div>
     </div>

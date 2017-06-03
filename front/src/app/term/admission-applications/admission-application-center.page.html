@@ -41,7 +41,7 @@
     <md-card>
       <md-tab-group>
         <md-tab label="List of Application">
-          <pams-admission-application-list [admissionApplications]="admissionApplications$ | async" (view)="viewAdmissionApplicationByCode($event)">
+          <pams-admission-application-list [admissionApplications]="admissionApplications$ | async" (view)="viewAdmissionApplication($event)">
           </pams-admission-application-list>
         </md-tab>
       </md-tab-group>

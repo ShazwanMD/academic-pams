@@ -18,7 +18,6 @@ export class AdmissionApplicationDetailPage implements OnInit {
   @Input() admissionApplication: AdmissionApplication;
 
   private ADMISSION_APPLICATION: string[] = "termModuleState.admissionApplication".split(".");
-
   private admissionApplication$: Observable<AdmissionApplication>;
  
   constructor(private router: Router,
@@ -26,9 +25,7 @@ export class AdmissionApplicationDetailPage implements OnInit {
     private actions: AdmissionApplicationActions,
     private store: Store<TermModuleState>,
     private vcf: ViewContainerRef,
-    private dialog: MdDialog,
-    private dialogDelete: MdDialog) {
-
+    private dialog: MdDialog) {
       this.admissionApplication$ = this.store.select(...this.ADMISSION_APPLICATION);
    }
 

@@ -50,18 +50,16 @@ export class AdmissionApplicationCenterPage implements OnInit {
         this.pooledAdmissionApplicationTasks$ = this.store.select(...this.POOLED_ADMISSION_APPLICATION_TASKS);
   }
 
-
-
  ngOnInit(): void {
-    console.log("find assigned invoice tasks");
+    console.log("find application");
     this.store.dispatch(this.actions.findAssignedAdmissionApplicationTasks());
     this.store.dispatch(this.actions.findPooledAdmissionApplicationTasks());
     this.store.dispatch(this.actions.findAdmissionApplications());
   }
 
-  viewAdmissionApplicationByCode(admissionApplication: AdmissionApplication) {
-    console.log(admissionApplication.auditNo);
-    this.router.navigate(['/admission-application-detail', admissionApplication.id]);
+  viewAdmissionApplication(admissionApplication: AdmissionApplication) {
+    console.log(admissionApplication.referenceNo);
+    this.router.navigate(['/admission-application-detail', admissionApplication.referenceNo]);
   }
 
   // view(invoice: AdmissionApplicationTask) {
@@ -84,16 +82,16 @@ export class AdmissionApplicationCenterPage implements OnInit {
   //   });
   // }
 
-  private createDialog(auditNo: AdmissionApplication): void {
+  private createDialog(referenceNo: AdmissionApplication): void {
     console.log("create");
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
     config.role = 'dialog';
     config.width = '65%';
-    config.height = '75%';
+    config.height = '85%';
     config.position = { top: '0px' };
     this.creatorDialogRef = this.dialog.open(AdmissionApplicationTaskCreatorDialog, config);
-    // if (auditNo) this.creatorDialogRef.componentInstance.admissionApplication = auditNo;
+    if (referenceNo) this.creatorDialogRef.componentInstance.admissionApplication = referenceNo;
 
     //set
     this.creatorDialogRef.afterClosed().subscribe(res => {
