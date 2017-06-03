@@ -10,7 +10,7 @@ import {Appointment} from "./appointment.interface";
 import {AppointmentActions} from "./appointment.action";
 import {TermModuleState} from "../index";
 import {MdDialog, MdDialogConfig, MdDialogRef} from "@angular/material";
-import {AppointmentUpdateTaskCreatorDialog} from "./dialog/appointment-update-task-creator.dialog";
+import { AppointmentEditorDialog } from "./dialog/appointment-editor.dialog";
 
 @Component({
   selector: 'pams-appointment-detail',
@@ -21,7 +21,7 @@ export class AppointmentDetailPage implements OnInit {
 
   private APPOINTMENT: string[] = "termModuleState.appointment".split(".");
   private appointment$: Observable<Appointment>;
-  private creatorDialogRef: MdDialogRef<AppointmentUpdateTaskCreatorDialog>;
+  private creatorDialogRef: MdDialogRef<AppointmentEditorDialog>;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -42,21 +42,20 @@ export class AppointmentDetailPage implements OnInit {
     config.width = '40%';
     config.height = '45%';
     config.position = {top: '3px'};
-    this.creatorDialogRef = this.dialog.open(AppointmentUpdateTaskCreatorDialog, config);
+    this.creatorDialogRef = this.dialog.open(AppointmentEditorDialog, config);
     this.creatorDialogRef.afterClosed().subscribe(res => {
       console.log("close dialog");
       // load something here
     });
   }
 
+ 
+  
   ngOnInit(): void {
-    this.route.params.subscribe((params: { id: string }) => {
-      let id: string = params.id;
-      this.store.dispatch(this.actions.findAppointmentById(id));
-      //this.appointment$ = this.termService.findAppointmentByCanonicalCode(canonicalCode);
-
-
-    });
+      this.route.params.subscribe((params: { id: string }) => {
+          let id: string = params.id;
+          this.store.dispatch(this.actions.findAppointmentById(id));
+      });
   }
 
   goBack(route: string): void {

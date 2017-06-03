@@ -1,3 +1,6 @@
+import { PlannerService } from './../../../services/planner.service';
+import { CourseActions } from './../../planner/courses/course.action';
+import { ProgramActions } from './../../planner/programs/program.action';
 import {Injectable} from '@angular/core';
 import {Effect, Actions} from '@ngrx/effects';
 import {OfferingActions} from "./offering.action";
@@ -14,7 +17,10 @@ export class OfferingEffects {
 
   constructor(private actions$: Actions,
               private offeringActions: OfferingActions,
+              private programActions:ProgramActions,
+              private courseActions:CourseActions,
               private termService: TermService,
+              private plannerService: PlannerService,
               private store$: Store<TermModuleState>) {
   }
 
@@ -56,8 +62,13 @@ export class OfferingEffects {
     .map(action => action.payload)
     .switchMap(payload=> this.termService.saveOffering(payload.program, payload.course, payload.offering))
     .map(offering => this.offeringActions.saveOfferingSuccess(offering))
-    .switchMap(() => this.termService.findOfferings())
-    .map(offerings => this.offeringActions.findOfferingsSuccess(offerings));
+   .switchMap(canonicalCode => this.termService.findOfferingByCanonicalCode(canonicalCode))
+    .map(offering => this.offeringActions.findOfferingByCanonicalCodeSuccess(offering))
+     .mergeMap(action => from([action,
+      this.programActions.findProgramByCode(action.payload),
+      this.courseActions.findCourseByCode(action.payload),
+    ]));
+
 
   @Effect() updateOfferings$ = this.actions$
     .ofType(OfferingActions.UPDATE_OFFERING)

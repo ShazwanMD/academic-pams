@@ -34,7 +34,7 @@
             <md-icon>more_vert</md-icon>
           </button>
           <md-menu x-position="before" #menu1="mdMenu">
-            <button md-menu-item [routerLink]="['/term/appointments', row['canonicalCode']]">View appointment</button>
+            <button md-menu-item [routerLink]="['/term/appointments', row['id']]">View appointment details</button>
             <button md-menu-item (click)="updateAppointment(row)">Update appointment</button>
             <button md-menu-item (click)="deleteAppointment(row)">Delete appointment</button>
           </md-menu>

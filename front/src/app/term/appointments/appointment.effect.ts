@@ -13,8 +13,7 @@ import { SectionActions } from "../sections/section.action";
 @Injectable()
 export class AppointmentEffects {
         
-  private OFFERING: string[] = "termModuleState.offering".split(".");
-  private SECTION: string[] = "termModuleState.section".split(".");
+   private SECTION: string[] = "termModuleState.section".split(".");
     
   constructor(private actions$: Actions,
               private appointmentActions: AppointmentActions,
@@ -29,7 +28,7 @@ export class AppointmentEffects {
     .map(action => action.payload)
     .switchMap(id => this.termService.findAppointmentById(id))
     .map(appointment => this.appointmentActions.findAppointmentByIdSuccess(appointment));
-    
+ 
     //save appointment
      @Effect() addAppointment$ =
      this.actions$

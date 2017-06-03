@@ -85,16 +85,14 @@ this.createForm.patchValue({'course' : this._course});
     }
  */
     
-    //submit update button
+    //submit 
      submit(offering: Offering,  isValid: boolean) {
      console.log(JSON.stringify(offering));
 
-
-offering.canonicalCode =this.program.code + "-" + this.course.code;
-
-console.log("code:" + this.program.code);
-console.log("courseCode:"  + this.course.code);
-console.log("conicalCode:"  + offering.canonicalCode);
+     offering.canonicalCode =this.program.code + "-" + this.course.code;
+     console.log("code:" + this.program.code);
+     console.log("courseCode:"  + this.course.code);
+    console.log("conicalCode:"  + offering.canonicalCode);
 
     if (!this.edit) this.store.dispatch(this.actions.saveOffering(this._program,this. course, this.offering));
     else  this.store.dispatch(this.actions.updateOffering(offering));
@@ -102,5 +100,6 @@ console.log("conicalCode:"  + offering.canonicalCode);
 
   }
 }
+
 
 

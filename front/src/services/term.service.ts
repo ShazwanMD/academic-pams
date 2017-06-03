@@ -348,7 +348,7 @@ export class TermService {
         return this.http.get(environment.endpoint + '/api/term/appointments/current')
             .map((res: Response) => <Appointment[]>res.json());
     }
-
+  
     findAppointmentById(id): Observable<Appointment> {
         console.log("findAppointmentById");
         return this.http.get(environment.endpoint + '/api/term/appointments/' + id)

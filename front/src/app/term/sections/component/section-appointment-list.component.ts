@@ -5,7 +5,6 @@ import {Store} from "@ngrx/store";
 import {ActivatedRoute, Router} from "@angular/router";
 import {MdDialog, MdDialogConfig, MdDialogRef} from "@angular/material";
 import {TermModuleState} from "../../index";
-import {AppointmentCreateTaskCreatorDialog} from "../../appointments/dialog/appointment-create-task-creator.dialog";
 import {AppointmentEditorDialog} from "../../appointments/dialog/appointment-editor.dialog";
 
 @Component({

@@ -8,9 +8,9 @@
   <md-tab-group>
   <md-tab label="Staff Detail"><br>
 
-    <div>Name:{{appointment.staff.name}} </div><br>
-    <div>ID:{{appointment.staff.identityNo}} </div><br>
-    <div>Email:{{appointment.staff.email}} </div><br>
+    <div>Name:{{appointment?.staff?.name}} </div><br>
+    <div>ID:{{appointment?.staff?.identityNo}} </div><br>
+    <div>Email:{{appointment?.staff?.email}} </div><br>
     
    
 <!-- <button md-button  color="accent" class="text-upper" >UPDATE</button> -->
@@ -18,12 +18,12 @@
 
   <md-tab label="Section Information">
   
-    <div>Code:{{appointment.section.code}} </div><br>
-    <div>Session:{{appointment.section.session.code}} </div><br>
-   <div>Course Offer:{{appointment.section.offering.code}} </div><br>
-   <div>Title:{{appointment.section.offering.course.title}} </div><br>
-    <div>Faculty:{{appointment.section.offering.course.faculty.description}} </div><br>
-   <div>Course Offer:{{appointment.section.offering.program.code}} </div><br> 
+    <div>Code:{{appointment?.section?.code}} </div><br>
+    <div>Session:{{appointment?.section?.session?.code}} </div><br>
+   <div>Course Offer:{{appointment?.section?.offering?.code}} </div><br>
+   <div>Title:{{appointment?.section?.offering?.course?.title}} </div><br>
+    <div>Faculty:{{appointment?.section?.offering?.course?.faculty?.description}} </div><br>
+   <div>Course Offer:{{appointment?.section?.offering?.program?.code}} </div><br> 
    
 <!-- <button md-button  color="accent" class="text-upper" >UPDATE</button> -->
   </md-tab>

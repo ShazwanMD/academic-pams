@@ -21,6 +21,26 @@ export class EnrollmentActions {
       payload: enrollment
     };
   }
+  
+  static FIND_ENROLLMENTS_BY_SECTION = '[Enrollment] Find Enrollments By Section';
+
+  findEnrollmentsBySection(section): Action {
+    console.log("findEnrollmentsBySection");
+    return {
+      type: EnrollmentActions.FIND_ENROLLMENTS_BY_SECTION,
+      payload: section
+    };
+  }
+
+  static FIND_ENROLLMENTS_BY_SECTION_SUCCESS = '[Enrollment] Find Enrollments By Section Success';
+
+  findEnrollmentsBySectionSuccess(enrollments): Action {
+    console.log("findEnrollmentsBySectionSuccess");
+    return {
+      type: EnrollmentActions.FIND_ENROLLMENTS_BY_SECTION_SUCCESS,
+      payload: enrollments
+    };
+  }
 
   static SAVE_ENROLLMENT = '[Enrollment] Save Enrollment';
 
