@@ -1,25 +1,25 @@
 import { Course } from './../app/planner/courses/course.interface';
 import { Program } from './../app/planner/programs/program.interface';
 import { AdmissionApplication } from './../app/term/admission-applications/admission-application.interface';
-import {Assessment} from './../app/term/assessments/assessment.interface';
-import {Offering} from '../app/term/offerings/offering.interface';
-import {Injectable} from '@angular/core';
-import {Response, Http} from '@angular/http';
-import {Headers, RequestOptions} from '@angular/http';
-import {HttpInterceptorService} from '@covalent/http';
-import {Observable} from 'rxjs/Observable';
+import { Assessment } from './../app/term/assessments/assessment.interface';
+import { Offering } from '../app/term/offerings/offering.interface';
+import { Injectable } from '@angular/core';
+import { Response, Http } from '@angular/http';
+import { Headers, RequestOptions } from '@angular/http';
+import { HttpInterceptorService } from '@covalent/http';
+import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/filter';
-import {environment} from "../environments/environment";
-import {EnrollmentApplication} from "../app/term/enrollment-applications/enrollment-application.interface";
-import {EnrollmentApplicationItem} from "../app/term/enrollment-applications/enrollment-application-item.interface";
-import {EnrollmentApplicationTask} from "../app/term/enrollment-applications/enrollment-application-task.interface";
-import {Admission} from "../app/term/admissions/admission.interface";
-import {Enrollment} from "../app/term/enrollments/enrollment.interface";
-import {AdmissionApplicationTask} from "../app/term/admission-applications/admission-application-task.interface";
-import {Appointment} from "../app/term/appointments/appointment.interface";
-import {Section} from "../app/term/sections/section.interface";
-import {AdmissionApplicationItem} from "../app/term/admission-applications/admission-application-item.interface";
-import {GradebookMatrix} from "../app/term/offerings/gradebook-matrix.interface";
+import { environment } from "../environments/environment";
+import { EnrollmentApplication } from "../app/term/enrollment-applications/enrollment-application.interface";
+import { EnrollmentApplicationItem } from "../app/term/enrollment-applications/enrollment-application-item.interface";
+import { EnrollmentApplicationTask } from "../app/term/enrollment-applications/enrollment-application-task.interface";
+import { Admission } from "../app/term/admissions/admission.interface";
+import { Enrollment } from "../app/term/enrollments/enrollment.interface";
+import { AdmissionApplicationTask } from "../app/term/admission-applications/admission-application-task.interface";
+import { Appointment } from "../app/term/appointments/appointment.interface";
+import { Section } from "../app/term/sections/section.interface";
+import { AdmissionApplicationItem } from "../app/term/admission-applications/admission-application-item.interface";
+import { GradebookMatrix } from "../app/term/offerings/gradebook-matrix.interface";
 
 @Injectable()
 export class TermService {
@@ -62,18 +62,18 @@ export class TermService {
             'Content-Type': 'application/json',
         });
         let options = new RequestOptions({ headers: headers });
-        return this.http.put(environment.endpoint + '/api/term/offerings/' + offering.canonicalCode + '/assessments/' + assessment.id,JSON.stringify(assessment), options)
+        return this.http.put(environment.endpoint + '/api/term/offerings/' + offering.canonicalCode + '/assessments/' + assessment.id, JSON.stringify(assessment), options)
             .flatMap((res: Response) => Observable.of(res.text()));
     }
 
-    deleteAssessment(offering: Offering, assessment:Assessment) {
-      let headers = new Headers({
-        'Content-Type': 'application/json',
-      });
-      let options = new RequestOptions({ headers: headers });
-      console.log("deleteAssessmentInService")
-      return this.http.delete(environment.endpoint + '/api/term/offerings/' + offering.canonicalCode + '/assessments/' + assessment.id, options)
-        .flatMap((res: Response) => Observable.of(res.text()));
+    deleteAssessment(offering: Offering, assessment: Assessment) {
+        let headers = new Headers({
+            'Content-Type': 'application/json',
+        });
+        let options = new RequestOptions({ headers: headers });
+        console.log("deleteAssessmentInService")
+        return this.http.delete(environment.endpoint + '/api/term/offerings/' + offering.canonicalCode + '/assessments/' + assessment.id, options)
+            .flatMap((res: Response) => Observable.of(res.text()));
     }
     // ==================================================================================================== //
     // ADMISSION APPLICATION
@@ -124,6 +124,15 @@ export class TermService {
             .flatMap((res: Response) => Observable.of(res.text()));
     }
 
+    saveAdmissionApplication(admissionApplication: AdmissionApplication):  Observable<String> {
+        let headers = new Headers({
+            'Content-Type': 'application/json',
+            //'Authorization': 'Bearer ' + this.authService.token
+        });
+        let options = new RequestOptions({ headers: headers });
+        return this.http.post(environment.endpoint + '/api/term/admissionApplications' + '/save', JSON.stringify(admissionApplication), options)
+            .flatMap((res: Response) => Observable.of(res.text()));
+    }
 
     findAdmissionApplicationByReferenceNo(referenceNo: string): Observable<AdmissionApplication> {
         return this.http.get(environment.endpoint + '/api/term/admissionApplications/' + referenceNo)
@@ -361,8 +370,8 @@ export class TermService {
         return this.http.get(environment.endpoint + '/api/term/sections/' + canonicalCode)
             .map((res: Response) => <Section>res.json());
     }
-    
-   //find enrollments by section
+
+    //find enrollments by section
     findEnrollmentsBySection(section: Section): Observable<Enrollment[]> {
         console.log("findEnrollmentsBySection");
         return this.http.get(environment.endpoint + '/api/term/sections/' + section.canonicalCode + '/enrollments')
@@ -374,7 +383,7 @@ export class TermService {
         return this.http.get(environment.endpoint + '/api/term/sections/' + section.canonicalCode + '/appointments')
             .map((res: Response) => <Appointment[]>res.json());
     }
-    
+
     // ==================================================================================================== //
     // OFFERING
     // ==================================================================================================== //
@@ -424,23 +433,23 @@ export class TermService {
     //save offering
     saveOffering(program: Program, course: Course, offering: Offering, ): Observable<String> {
 
-          console.log("saveoffering:" + offering.canonicalCode);
-          console.log("program:" + program.code);
-          console.log("course:" + course.code);
+        console.log("saveoffering:" + offering.canonicalCode);
+        console.log("program:" + program.code);
+        console.log("course:" + course.code);
 
         let headers = new Headers({
-          'Content-Type': 'application/json',
-          //'Authorization': 'Bearer ' + this.authService.token
+            'Content-Type': 'application/json',
+            //'Authorization': 'Bearer ' + this.authService.token
         });
         console.log("save offering");
         console.dir(offering);
         let options = new RequestOptions({ headers: headers });
-        return this.http.post(environment.endpoint + '/api/term/offerings/' + offering.canonicalCode + '/programs' + program.code +'/courses'+ course.code +'/save', JSON.stringify(offering), options)
-          .flatMap((res: Response) => Observable.of(res.text()));
-      }
+        return this.http.post(environment.endpoint + '/api/term/offerings/' + offering.canonicalCode + '/programs' + program.code + '/courses' + course.code + '/save', JSON.stringify(offering), options)
+            .flatMap((res: Response) => Observable.of(res.text()));
+    }
 
     //add new section
-     addSection(offering: Offering, section: Section): Observable<String> {
+    addSection(offering: Offering, section: Section): Observable<String> {
         console.log("addSection:" + section);
         console.log("offering:" + offering.canonicalCode);
         let headers = new Headers({
@@ -463,7 +472,7 @@ export class TermService {
             .flatMap((res: Response) => Observable.of(res.text()));
     }
 
-   // update Section using dialog
+    // update Section using dialog
     updateSection(offering: Offering, section: Section): Observable<String> {
         console.log(section);
         let headers = new Headers({
@@ -476,20 +485,20 @@ export class TermService {
     }
 
     //update offering using editorDialog
-     updateOffering(offering: Offering): Observable<String> {
-    let headers = new Headers({
-      'Content-Type': 'application/json',
-      //'Authorization': 'Bearer ' + this.authService.token
-    });
-    let options = new RequestOptions({ headers: headers });
-    return this.http.put(environment.endpoint + '/api/term/offerings/' + offering.canonicalCode, JSON.stringify(offering), options)
-      .flatMap((res: Response) => Observable.of(res.text()));
-  }
+    updateOffering(offering: Offering): Observable<String> {
+        let headers = new Headers({
+            'Content-Type': 'application/json',
+            //'Authorization': 'Bearer ' + this.authService.token
+        });
+        let options = new RequestOptions({ headers: headers });
+        return this.http.put(environment.endpoint + '/api/term/offerings/' + offering.canonicalCode, JSON.stringify(offering), options)
+            .flatMap((res: Response) => Observable.of(res.text()));
+    }
 
     // save appointment
-      addAppointment(section: Section, appointment: Appointment): Observable<String> {
+    addAppointment(section: Section, appointment: Appointment): Observable<String> {
         console.log("addAppointment");
-          console.log(section);
+        console.log(section);
         let headers = new Headers({
             'Content-Type': 'application/json',
             //'Authorization': 'Bearer ' + this.authService.token
@@ -500,7 +509,7 @@ export class TermService {
     }
 
     // remove appointment
-     removeAppointment(offering: Offering, appointment: Appointment) {
+    removeAppointment(offering: Offering, appointment: Appointment) {
         let headers = new Headers({
             'Content-Type': 'application/json',
             //'Authorization': 'Bearer ' + this.authService.token
