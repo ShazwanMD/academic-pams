@@ -1,17 +1,14 @@
 <md-card>
-
     <md-divider></md-divider>
     <md-card-content>
         <md-tab-group>
-            <md-tab label="Admission Application Information">
+            <md-tab label="Application Information">
                 <md-card>
                     <div md-content flex md-scroll-y>
                         <div layout="column" layout-gt-md="row" class="insert">
-
                             <div flex-gt-md="50">
-                                <md-card-title>Admission Application Details Info</md-card-title>
+                                <md-card-title>Application Details </md-card-title>
                             </div>
-
                             <div flex-gt-md="50" align="right">
                             </div>
                         </div>
@@ -19,7 +16,7 @@
 
                     <md-divider></md-divider>
                     <md-card-content><br>
-                        <!--<div>Audit No : {{admissionApplication.auditNo}}</div>
+                        <div>Audit No : {{admissionApplication.auditNo}}</div>
                         <br>
                         <div>Source No : {{admissionApplication.sourceNo}}</div>
                         <br>
@@ -31,47 +28,73 @@
                         <br>
                         <div>Description : {{admissionApplication.description}}</div>
                         <br>
-                        <div>Advisor : {{admissionApplication?.advisor?.identityNo}}</div>
-                        <br>
-                        <div>Program Code : {{admissionApplication?.program?.code}}</div>
-                        <br>
-                        <div>Session Code : {{admissionApplication?.session?.code'}}</div>
-                        <br>
-                        <div>Student ID : {{admissionApplication?.student?.identityNo}}</div>
-                        <br>
-                        <div>Study Center : {{admissionApplication?.studyCenter?.code}}</div>
-                        <br>-->
-                        
                     </md-card-content>
                 </md-card>
             </md-tab>
-<!--
-      <md-tab label="Program Information">
-        <md-card>
-          <div md-content flex md-scroll-y>
-            <div layout="column" layout-gt-md="row" class="insert">
 
-              <div flex-gt-md="50">
-                <md-card-title>Program Details Info</md-card-title>
-              </div>
+            <md-tab label="Advisor & Student Information">
+                <md-card>
+                    <div md-content flex md-scroll-y>
+                        <div layout="column" layout-gt-md="row" class="insert">
 
-              <div flex-gt-md="50" align="right">
-              </div>
-            </div>
-          </div>
+                            <div flex-gt-md="50">
+                                <md-card-title>Advisor and Student Details</md-card-title>
+                            </div>
+                        </div>
+                    </div>
+                    <md-divider></md-divider>
+                    <md-card-content>
+                        <br>
+                        <div>Advisor : {{advisor?.identityNo}}</div>
+                        <br>
+                        <div>Advisor : {{advisor?.name}}</div>
+                        <br>
+                        <div>Student ID : {{student?.identityNo}}</div>
+                        <br>
+                        <div>Student ID : {{student?.name}}</div>
+                        <br>
+                    </md-card-content>
+                </md-card>
+            </md-tab>
 
-          <md-divider></md-divider>
-          <md-card-content><br>
-            <div>Program Code : {{offering?.program?.code}}</div>
-            <br>
-            <div>Program Title(MS) :{{offering?.program?.titleMs}}</div>
-            <br>
-            <div>Program Title(EN) :{{offering?.program?.titleEn}}</div>
-            <br>-->-->
+            <md-tab label="Program Information">
+                <md-card>
+                    <div md-content flex md-scroll-y>
+                        <div layout="column" layout-gt-md="row" class="insert">
+                            <div flex-gt-md="50">
+                                <md-card-title>Program Details</md-card-title>
+                            </div>
+                        </div>
+                    </div>
+                    <md-divider></md-divider>
+                    <md-card-content>
+                        <br>
+                        <div>Program Code : {{program?.code}}</div>
+                        <br>
+                    </md-card-content>
+                </md-card>
+            </md-tab>
 
-            <!--</md-card-content>
-        </md-card>
-      </md-tab>-->
+            <md-tab label="Academic Session & Study Center Information">
+                <md-card>
+                    <div md-content flex md-scroll-y>
+                        <div layout="column" layout-gt-md="row" class="insert">
+                            <div flex-gt-md="50">
+                                <md-card-title>Advisor Details</md-card-title>
+                            </div>
+                        </div>
+                    </div>
+                    <md-divider></md-divider>
+                    <md-card-content>
+                        <br>
+                        <div>Session Code : {{session?.code}}</div>
+                        <br>
+                        <div>Study Center : {{studyCenter?.code}}</div>
+                        <br>
+                    </md-card-content>
+                </md-card>
+            </md-tab>
+
         </md-tab-group>
     </md-card-content>
 </md-card>

@@ -8,7 +8,7 @@ import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy} from '@
 })
 export class AdmissionApplicationComponent {
 
-  @Input() offering: AdmissionApplication;
+  @Input() admissionApplication: AdmissionApplication;
 
 private columns: any[] = [
     { name: 'auditNo', label: 'Audit No' },
