@@ -19,6 +19,7 @@ import {AppointmentStatusSelectComponent} from "./component/appointment-status-s
 import {AppointmentEditorDialog} from "./dialog/appointment-editor.dialog";
 import {SectionSubModule} from "../sections/index";
 import {IdentityModule} from "../../identity/index";
+import { AppointmentActionComponent } from "./component/appointment-action.component";
 
 @NgModule({
   imports: [
@@ -38,6 +39,7 @@ import {IdentityModule} from "../../identity/index";
     AppointmentListComponent,
     AppointmentComponent,
     AppointmentStatusSelectComponent,
+    AppointmentActionComponent,
 
     //dialog
     AppointmentEditorDialog,
