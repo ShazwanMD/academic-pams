@@ -348,7 +348,7 @@ export class TermService {
         return this.http.get(environment.endpoint + '/api/term/appointments/current')
             .map((res: Response) => <Appointment[]>res.json());
     }
-  
+
     findAppointmentById(id): Observable<Appointment> {
         console.log("findAppointmentById");
         return this.http.get(environment.endpoint + '/api/term/appointments/' + id)
@@ -431,9 +431,9 @@ export class TermService {
     }
 
     //save offering
-    saveOffering(program: Program, course: Course, offering: Offering, ): Observable<String> {
-
-        console.log("saveoffering:" + offering.canonicalCode);
+    saveOffering(program: Program, course: Course, offering: Offering): Observable<String> {
+        console.log("saveOffering");
+        console.log("offering:" + offering.canonicalCode);
         console.log("program:" + program.code);
         console.log("course:" + course.code);
 
@@ -442,9 +442,8 @@ export class TermService {
             //'Authorization': 'Bearer ' + this.authService.token
         });
         console.log("save offering");
-        console.dir(offering);
         let options = new RequestOptions({ headers: headers });
-        return this.http.post(environment.endpoint + '/api/term/offerings/' + offering.canonicalCode + '/programs' + program.code + '/courses' + course.code + '/save', JSON.stringify(offering), options)
+        return this.http.post(environment.endpoint + '/api/term/offerings', JSON.stringify(offering), options)
             .flatMap((res: Response) => Observable.of(res.text()));
     }
 

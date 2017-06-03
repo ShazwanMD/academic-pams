@@ -53,6 +53,8 @@ import {gradebookMatrixListReducer, GradebookMatrixListState} from "./offerings/
 import {GradebookMatrix} from "./offerings/gradebook-matrix.interface";
 import {appointmentListReducer, AppointmentListState} from "./sections/appointment-list.reducer";
 import {enrollmentListReducer, EnrollmentListState} from "./sections/enrollment-list.reducer";
+import {CourseListState} from "../planner/courses/course-list.reducer";
+import {ProgramListState} from "../planner/programs/program-list.reducer";
 export interface TermModuleState {
   admissions: AdmissionListState;
   admission: AdmissionState;

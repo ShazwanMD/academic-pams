@@ -142,7 +142,7 @@ public class TermTransformer {
 		vo.setSourceNo(e.getSourceNo());
 		vo.setAuditNo(e.getAuditNo());
 		vo.setDescription(e.getDescription());
-		vo.setEnrollmentApplicationType(EnrollmentApplicationType.get(vo.getEnrollmentApplicationType().ordinal()));
+		vo.setApplicationType(EnrollmentApplicationType.get(e.getType().ordinal()));
 		vo.setRemoveComment(e.getRemoveComment());
 		vo.setCancelComment(e.getCancelComment());
 		vo.setFlowState(FlowState.get(e.getFlowdata().getState().ordinal()));

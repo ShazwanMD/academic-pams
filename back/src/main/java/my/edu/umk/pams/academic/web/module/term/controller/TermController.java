@@ -66,77 +66,6 @@ public class TermController {
 
 	@Autowired
 	private AuthenticationManager authenticationManager;
-
-	// ====================================================================================================
-	// Assessment
-	// ====================================================================================================
-	// finder
-
-	@RequestMapping(value = "/assessments/{id}", method = RequestMethod.GET)
-	public ResponseEntity<Assessment> findAssessmentById(@PathVariable Long id) {
-		AdAssessment assessment = termService.findAssessmentById(id);
-		return new ResponseEntity<Assessment>(termTransformer.toAssessmentVo(assessment), HttpStatus.OK);
-	}
-
-	@RequestMapping(value = "/assessments", method = RequestMethod.GET)
-	public ResponseEntity<List<Assessment>> findAssessments() {
-		AdAcademicSession academicSession = plannerService.findCurrentAcademicSession();
-		List<AdAssessment> assessments = termService.findAssessments(0, Integer.MAX_VALUE);
-		return new ResponseEntity<List<Assessment>>(termTransformer.toAssessmentVos(assessments), HttpStatus.OK);
-	}
-
-	@RequestMapping(value = "/offerings/{canonicalCode}/assessments/{id}", method = RequestMethod.PUT)
-	public ResponseEntity<String> updateAssessment(@PathVariable String canonicalCode, @RequestBody Assessment vo) {
-		dummyLogin();
-		LOG.debug("assessment_ID:{}", vo.getId());
-		LOG.debug("Offering Canonical:{}", canonicalCode);
-
-		AdOffering offering = termService.findOfferingByCanonicalCode(canonicalCode);
-		AdAssessment assessment = termService.findAssessmentById(vo.getId());
-		assessment.setCode(vo.getCode());
-		assessment.setCanonicalCode(vo.getCanonicalCode());
-		assessment.setDescription(vo.getDescription());
-		assessment.setOrdinal(vo.getOrdinal());
-		assessment.setWeight(vo.getWeight());
-		assessment.setTotalScore(vo.getTotalScore());
-		assessment.setType(AdAssessmentType.get(vo.getAssessmentType().ordinal()));
-		assessment.setCategory(AdAssessmentCategory.get(vo.getAssessmentCategory().ordinal()));
-		assessment.setOffering(offering);
-		termService.updateAssessment(offering, assessment);
-		return new ResponseEntity<String>("Success", HttpStatus.OK);
-	}
-
-	@RequestMapping(value = "/offerings/{canonicalCode}/assessments", method = RequestMethod.POST)
-	public ResponseEntity<String> addAssessment(@PathVariable String canonicalCode, @RequestBody Assessment vo) {
-		dummyLogin();
-		LOG.debug("assessment:{}", vo);
-		LOG.debug("Offering Canonical:{}", canonicalCode);
-
-		AdOffering offering = termService.findOfferingByCanonicalCode(canonicalCode);
-		AdAssessment assessment = new AdAssessmentImpl();
-		assessment.setCode(vo.getCode());
-		assessment.setCanonicalCode(vo.getCanonicalCode());
-		assessment.setDescription(vo.getDescription());
-		assessment.setOrdinal(vo.getOrdinal());
-		assessment.setWeight(vo.getWeight());
-		assessment.setTotalScore(vo.getTotalScore());
-		assessment.setType(AdAssessmentType.get(vo.getAssessmentType().ordinal()));
-		assessment.setCategory(AdAssessmentCategory.get(vo.getAssessmentCategory().ordinal()));
-		assessment.setOffering(termService.findOfferingById(vo.getOffering().getId()));
-		termService.addAssessment(offering, assessment);
-		return new ResponseEntity<String>("Success", HttpStatus.OK);
-	}
-
-	@RequestMapping(value = "/offerings/{canonicalCode}/assessments/{id}", method = RequestMethod.DELETE)
-	public ResponseEntity<String> deleteAssessment(@PathVariable String canonicalCode, @PathVariable Long id) {
-		dummyLogin();
-		LOG.debug("assessment:{}", id);
-		LOG.debug("Offering Canonical:{}", canonicalCode);
-		AdOffering offering = termService.findOfferingByCanonicalCode(canonicalCode);
-		AdAssessment assessment = termService.findAssessmentById(id);
-		termService.deleteAssessment(offering, assessment);
-		return new ResponseEntity<String>("Success", HttpStatus.OK);
-	}
 	// ====================================================================================================
 	// ADMISSION
 	// ====================================================================================================
@@ -355,7 +284,7 @@ public class TermController {
 		application.setCancelComment(vo.getCancelComment());
 		application.setRemoveComment(vo.getRemoveComment());
 		application.setSourceNo(vo.getSourceNo());
-		application.setType(AdEnrollmentApplicationType.get(vo.getEnrollmentApplicationType().ordinal()));
+		application.setType(AdEnrollmentApplicationType.get(vo.getApplicationType().ordinal()));
 
 		String referenceNo = termService.startEnrollmentApplicationTask(application);
 		return new ResponseEntity<String>(referenceNo, HttpStatus.OK);
@@ -435,7 +364,6 @@ public class TermController {
 		return new ResponseEntity<Offering>(termTransformer.toOfferingVo(offering), HttpStatus.OK);
 	}
 
-	// sections
 	@RequestMapping(value = "/offerings/{canonicalCode}/sections", method = RequestMethod.GET)
 	public ResponseEntity<List<Section>> findSectionsByOffering(@PathVariable String canonicalCode)
 			throws UnsupportedEncodingException {
@@ -451,7 +379,6 @@ public class TermController {
 		throw new UnsupportedOperationException();
 	}
 
-	// assessments
 	@RequestMapping(value = "/offerings/{canonicalCode}/assessments", method = RequestMethod.GET)
 	public ResponseEntity<List<Assessment>> findAssessmentsByOffering(@PathVariable String canonicalCode)
 			throws UnsupportedEncodingException {
@@ -469,7 +396,6 @@ public class TermController {
 		return new ResponseEntity<Assessment>(HttpStatus.OK);
 	}
 
-	// appointments
 	@RequestMapping(value = "/offerings/{canonicalCode}/appointments", method = RequestMethod.GET)
 	public ResponseEntity<List<Appointment>> findAppointmentsByOffering(@PathVariable String canonicalCode) {
 		AdOffering offering = termService.findOfferingByCanonicalCode(canonicalCode);
@@ -484,7 +410,6 @@ public class TermController {
 		throw new UnsupportedOperationException();
 	}
 
-	// enrollments
 	@RequestMapping(value = "/offerings/{canonicalCode}/enrollments", method = RequestMethod.GET)
 	public ResponseEntity<List<Enrollment>> findEnrollmentsByOffering(@PathVariable String canonicalCode) {
 		AdOffering offering = termService.findOfferingByCanonicalCode(canonicalCode);
@@ -499,7 +424,59 @@ public class TermController {
 		throw new UnsupportedOperationException();
 	}
 
-	// business
+	@RequestMapping(value = "/offerings/{canonicalCode}/assessments/{id}", method = RequestMethod.PUT)
+	public ResponseEntity<String> updateAssessment(@PathVariable String canonicalCode, @RequestBody Assessment vo) {
+		dummyLogin();
+		LOG.debug("assessment_ID:{}", vo.getId());
+		LOG.debug("Offering Canonical:{}", canonicalCode);
+
+		AdOffering offering = termService.findOfferingByCanonicalCode(canonicalCode);
+		AdAssessment assessment = termService.findAssessmentById(vo.getId());
+		assessment.setCode(vo.getCode());
+		assessment.setCanonicalCode(vo.getCanonicalCode());
+		assessment.setDescription(vo.getDescription());
+		assessment.setOrdinal(vo.getOrdinal());
+		assessment.setWeight(vo.getWeight());
+		assessment.setTotalScore(vo.getTotalScore());
+		assessment.setType(AdAssessmentType.get(vo.getAssessmentType().ordinal()));
+		assessment.setCategory(AdAssessmentCategory.get(vo.getAssessmentCategory().ordinal()));
+		assessment.setOffering(offering);
+		termService.updateAssessment(offering, assessment);
+		return new ResponseEntity<String>("Success", HttpStatus.OK);
+	}
+
+	@RequestMapping(value = "/offerings/{canonicalCode}/assessments", method = RequestMethod.POST)
+	public ResponseEntity<String> addAssessment(@PathVariable String canonicalCode, @RequestBody Assessment vo) {
+		dummyLogin();
+		LOG.debug("assessment:{}", vo);
+		LOG.debug("Offering Canonical:{}", canonicalCode);
+
+		AdOffering offering = termService.findOfferingByCanonicalCode(canonicalCode);
+		AdAssessment assessment = new AdAssessmentImpl();
+		assessment.setCode(vo.getCode());
+		assessment.setCanonicalCode(vo.getCanonicalCode());
+		assessment.setDescription(vo.getDescription());
+		assessment.setOrdinal(vo.getOrdinal());
+		assessment.setWeight(vo.getWeight());
+		assessment.setTotalScore(vo.getTotalScore());
+		assessment.setType(AdAssessmentType.get(vo.getAssessmentType().ordinal()));
+		assessment.setCategory(AdAssessmentCategory.get(vo.getAssessmentCategory().ordinal()));
+		assessment.setOffering(termService.findOfferingById(vo.getOffering().getId()));
+		termService.addAssessment(offering, assessment);
+		return new ResponseEntity<String>("Success", HttpStatus.OK);
+	}
+
+	@RequestMapping(value = "/offerings/{canonicalCode}/assessments/{id}", method = RequestMethod.DELETE)
+	public ResponseEntity<String> deleteAssessment(@PathVariable String canonicalCode, @PathVariable Long id) {
+		dummyLogin();
+		LOG.debug("assessment:{}", id);
+		LOG.debug("Offering Canonical:{}", canonicalCode);
+		AdOffering offering = termService.findOfferingByCanonicalCode(canonicalCode);
+		AdAssessment assessment = termService.findAssessmentById(id);
+		termService.deleteAssessment(offering, assessment);
+		return new ResponseEntity<String>("Success", HttpStatus.OK);
+	}
+
 	@RequestMapping(value = "/offerings/{canonicalCode}/sections", method = RequestMethod.POST)
 	public ResponseEntity<String> addSection(@PathVariable String canonicalCode, @RequestBody Section vo) {
 		dummyLogin();
@@ -517,9 +494,8 @@ public class TermController {
 		return new ResponseEntity<String>("Success", HttpStatus.OK);
 	}
 
-	// save offering
-	@RequestMapping(value = "/offerings/{code}/save", method = RequestMethod.POST)
-	public ResponseEntity<String> saveOffering(@PathVariable String code, @RequestBody Offering vo) {
+	@RequestMapping(value = "/offerings", method = RequestMethod.POST)
+	public ResponseEntity<String> saveOffering(@RequestBody Offering vo) {
 		dummyLogin();
 
 		AdOffering offering = new AdOfferingImpl();
@@ -536,7 +512,6 @@ public class TermController {
 		return new ResponseEntity<String>("Success", HttpStatus.OK);
 	}
 
-	// update offering
 	@RequestMapping(value = "/offerings/{canonicalCode}", method = RequestMethod.PUT)
 	public ResponseEntity<String> updateOffering(@PathVariable String canonicalCode, @RequestBody Offering vo) {
 		dummyLogin();
@@ -555,7 +530,6 @@ public class TermController {
 		return new ResponseEntity<String>("Success Update Offering", HttpStatus.OK);
 	}
 
-	// update section
 	@RequestMapping(value = "/offerings/{canonicalCode}/sections/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<String> updateSection(@PathVariable String canonicalCode, @RequestBody Section vo) {
 		dummyLogin();
@@ -611,6 +585,24 @@ public class TermController {
 	}
 
 	// ====================================================================================================
+	// ASSESSMENT
+	// ====================================================================================================
+	// finder
+
+	@RequestMapping(value = "/assessments/{id}", method = RequestMethod.GET)
+	public ResponseEntity<Assessment> findAssessmentById(@PathVariable Long id) {
+		AdAssessment assessment = termService.findAssessmentById(id);
+		return new ResponseEntity<Assessment>(termTransformer.toAssessmentVo(assessment), HttpStatus.OK);
+	}
+
+	@RequestMapping(value = "/assessments", method = RequestMethod.GET)
+	public ResponseEntity<List<Assessment>> findAssessments() {
+		AdAcademicSession academicSession = plannerService.findCurrentAcademicSession();
+		List<AdAssessment> assessments = termService.findAssessments(0, Integer.MAX_VALUE);
+		return new ResponseEntity<List<Assessment>>(termTransformer.toAssessmentVos(assessments), HttpStatus.OK);
+	}
+
+	// ====================================================================================================
 	// SECTION
 	// ====================================================================================================
 
@@ -627,7 +619,6 @@ public class TermController {
 		return new ResponseEntity<Section>(termTransformer.toSectionVo(section), HttpStatus.OK);
 	}
 
-	// find appointment by section
 	@RequestMapping(value = "/sections/{canonicalCode}/appointments", method = RequestMethod.POST)
 	public ResponseEntity<String> addAppointment(@PathVariable String canonicalCode, @RequestBody Appointment vo) {
 		dummyLogin();
@@ -642,21 +633,6 @@ public class TermController {
 		return new ResponseEntity<String>("Success", HttpStatus.OK);
 	}
 
-	// update appointment by section
-	@RequestMapping(value = "/sections/{canonicalCode}/appointments/{id}", method = RequestMethod.PUT)
-	public ResponseEntity<String> updateAppointment(@PathVariable String canonicalCode, @RequestBody Appointment vo) {
-		dummyLogin();
-
-		AdSection section = termService.findSectionByCanonicalCode(canonicalCode);
-		AdAppointment appointment = termService.findAppointmentById(vo.getId());
-		appointment.setSection(section);
-		appointment.setStaff(identityService.findStaffById(vo.getStaff().getId()));
-		appointment.setStatus(AdAppointmentStatus.get(vo.getAppointmentStatus().ordinal()));
-		termService.updateAppointment(section, appointment);
-		return new ResponseEntity<String>("Success", HttpStatus.OK);
-	}
-
-	// find enrollments by section
 	@RequestMapping(value = "/sections/{canonicalCode}/enrollments", method = RequestMethod.GET)
 	public ResponseEntity<List<Enrollment>> findEnrollmentsBySection(@PathVariable String canonicalCode) {
 		AdSection section = termService.findSectionByCanonicalCode(canonicalCode);
@@ -666,7 +642,6 @@ public class TermController {
 
 	}
 
-	// find appointments by section
 	@RequestMapping(value = "/sections/{canonicalCode}/appointments", method = RequestMethod.GET)
 	public ResponseEntity<List<Appointment>> findAppointmentsBySection(@PathVariable String canonicalCode) {
 		AdSection section = termService.findSectionByCanonicalCode(canonicalCode);
