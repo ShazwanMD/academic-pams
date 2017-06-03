@@ -18,7 +18,6 @@ import { EnrollmentSubModule } from "./enrollments/index";
 import { offeringReducer, OfferingState } from "./offerings/offering.reducer";
 import { enrollmentReducer, EnrollmentState } from "./enrollments/enrollment.reducer";
 import { offeringListReducer, OfferingListState } from "./offerings/offering-list.reducer";
-import { enrollmentListReducer, EnrollmentListState } from "./offerings/enrollment-list.reducer";
 import { Offering } from "./offerings/offering.interface";
 import { Enrollment } from "./enrollments/enrollment.interface";
 import { AdmissionActions } from "./admissions/admission.action";
@@ -26,7 +25,6 @@ import { AdmissionSubModule } from "./admissions/index";
 import { Admission } from "./admissions/admission.interface";
 import { admissionListReducer, AdmissionListState } from "./admissions/admission-list.reducer";
 import { admissionReducer, AdmissionState } from "./admissions/admission.reducer";
-import { appointmentListReducer, AppointmentListState } from "./offerings/appointment-list.reducer";
 import { appointmentReducer, AppointmentState } from "./appointments/appointment.reducer";
 import { AppointmentSubModule } from "./appointments/index";
 import { AppointmentActions } from "./appointments/appointment.action";
@@ -53,6 +51,8 @@ import { assessmentReducer, AssessmentState } from "./assessments/assessment.red
 import {assessmentListReducer, AssessmentListState} from "./offerings/assessment-list.reducer";
 import {gradebookMatrixListReducer, GradebookMatrixListState} from "./offerings/gradebook-matrix-list.reducer";
 import {GradebookMatrix} from "./offerings/gradebook-matrix.interface";
+import {appointmentListReducer, AppointmentListState} from "./sections/appointment-list.reducer";
+import {enrollmentListReducer, EnrollmentListState} from "./sections/enrollment-list.reducer";
 export interface TermModuleState {
   admissions: AdmissionListState;
   admission: AdmissionState;
