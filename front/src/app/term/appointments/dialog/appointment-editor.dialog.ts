@@ -63,8 +63,8 @@ export class AppointmentEditorDialog implements OnInit {
   }
 
 
-  submit(section: Section, appointment: Appointment, isValid: boolean) {
-    console.log(appointment);
+  submit(appointment: Appointment, isValid: boolean) {
+    console.log("appointment",appointment);
     console.log("section", this.section);
     console.log(this._section);
     console.log(this._appointment);
