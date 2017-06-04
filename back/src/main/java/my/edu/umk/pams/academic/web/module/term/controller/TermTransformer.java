@@ -173,6 +173,8 @@ public class TermTransformer {
 	public Enrollment toSimpleEnrollmentVo(AdEnrollment enrollment) {
 		Enrollment vo = new Enrollment();
 		vo.setId(enrollment.getId());
+		vo.setAdmission(this.toAdmissionVo(enrollment.getAdmission()));
+		vo.setSection(this.toSectionVo(enrollment.getSection()));
 		vo.setEnrollmentStanding(EnrollmentStanding.get(enrollment.getStanding().ordinal()));
 		vo.setEnrollmentStatus(EnrollmentStatus.get(enrollment.getStatus().ordinal()));
 		return vo;

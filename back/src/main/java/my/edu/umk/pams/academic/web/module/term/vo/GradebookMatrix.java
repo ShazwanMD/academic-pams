@@ -9,8 +9,11 @@ import java.util.List;
 public class GradebookMatrix {
 
     private Enrollment enrollment;
+    
     private List<Gradebook> gradebooks = new ArrayList<>();
 
+    
+    
     public Enrollment getEnrollment() {
         return enrollment;
     }

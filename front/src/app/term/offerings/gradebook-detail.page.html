@@ -2,66 +2,22 @@
   <div toolbar-content layout="row" layout-align="center center" flex>
     <span>PAMS: Postgraduate Management System</span> <span flex></span>
   </div>
+
 <md-card>
+
   <div md-content flex md-scroll-y>
+     
     <div layout="column" layout-gt-md="row" class="inset">
-
+ <div flex-gt-md="70">
   <!--     render dynamic table here -->
-     <!--{{gradebookMatrices$ | async | json}}-->
+     <!--{{gradebookMatrices$ | async | json}}
+     
+     {{assessments$ | async | json}}-->
    
-
-
-<div *ngFor="let d of gradebookMatrices$ | async">
-			<table border=1>
-				<thead>
-					<tr>
-						<th>Enrollment</th>
-						<th>code</th>
-						<th>description</th>
-						<th>weight</th>
-						<th>totalScore</th>
-						<th>assessmentType</th>
-						<th>assessmentCategory</th>
-            <th>score</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>{{gradebookMatrices.code}}</td>		
-						<td>GST5023-FINAL-1</td>
-						<td>FINAL 1</td>
-						<td>10</td>
-						<td>100</td>
-						<td>QUIZ</td>
-						<td>COURSE_WORK</td>
-				    <td>0</td>
-        	</tr>
-					<tr>
-						<td>1</td>
-						<td>GST5023-QUIZ-1</td>
-						<td>QUIZ 1</td>
-						<td>10</td>
-						<td>100</td>
-						<td>QUIZ</td>
-						<td>COURSE_WORK</td>
-					  <td>0</td>
-          </tr>
-					<tr>
-						<td>1</td>
-						<td>GST5023-QUIZ-2</td>
-						<td>QUIZ 2</td>
-						<td>10</td>
-						<td>100</td>
-						<td>QUIZ</td>
-						<td>COURSE_WORK</td>
-					  <td>0</td>
-          
-          </tr>
-				</tbody>
-			</table>
-
-</div>
-<!--           <td-data-table
+<!--<pams-gradebook
+[gradebookMatrices]= "gradebookMatrices$ | async">
+</pams-gradebook>-->
+     <td-data-table
       [data]="gradebookMatrices$ | async "
       [columns]="columns"
       [sortBy]="summary"
@@ -75,8 +31,8 @@
         </div>
       </template>
 
-    </td-data-table> -->
-
+    </td-data-table>
+ </div>
     
       <div flex-gt-md="30">
         <md-card>

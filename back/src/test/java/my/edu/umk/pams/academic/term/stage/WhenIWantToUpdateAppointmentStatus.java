@@ -46,7 +46,7 @@ public class WhenIWantToUpdateAppointmentStatus extends Stage<WhenIWantToUpdateA
 		LOG.debug("appointment {} ", appointment.getId());
 
 		appointment.setStatus(AdAppointmentStatus.DISMISSED);
-		termService.updateAppointment(appointment);
+//		termService.updateAppointment(appointment);
 
 		return self();
 
