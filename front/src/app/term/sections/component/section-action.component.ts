@@ -28,8 +28,6 @@ export class SectionActionComponent {
   updateDialog(): void {
     console.log("open section dialog");
     console.log("canonicalcode", this.section.canonicalCode);
-
-
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
     config.role = 'dialog';

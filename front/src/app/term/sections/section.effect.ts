@@ -6,6 +6,7 @@ import {Store} from "@ngrx/store";
 import {TermModuleState} from "../index";
 import {OfferingActions} from "../offerings/offering.action";
 import {Offering} from "../offerings/offering.interface";
+import {Section} from "../sections/section.interface";
 import {from} from "rxjs/observable/from";
 
 
@@ -76,7 +77,8 @@ export class SectionEffects {
     .map(message => this.sectionActions.updateSectionSuccess(message))
     .withLatestFrom(this.store$.select(...this.OFFERING))
     .map(state => state[1])
-    .map((offering: Offering) => this.offeringActions.findOfferingByCanonicalCode(offering.canonicalCode));
+    .map((offering: Offering) => this.offeringActions.findOfferingByCanonicalCode(offering.canonicalCode))
+    //.map((section: Section) => this.sectionActions.findSectionByCanonicalCode(section.canonicalCode));
 
 
 }

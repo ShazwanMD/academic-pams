@@ -27,6 +27,7 @@ export class EnrollmentApplicationDraftTaskPanel implements OnInit {
               private dialog: MdDialog,
               private actions: EnrollmentApplicationActions,
               private store: Store<TermModuleState>) {
+      this.enrollmentApplicationItems$ = this.store.select(...this.ENROLLMENT_APPLICATION_ITEMS);
   }
 
   ngOnInit(): void {
