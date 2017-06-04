@@ -28,7 +28,7 @@ export class EnrollmentApplicationItemComponent {
 
 
   showDialog(): void {
-    console.log("showDialog");
+    console.log("show Dialog EnrollmentApplicationItem");
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
     config.role = 'dialog';
