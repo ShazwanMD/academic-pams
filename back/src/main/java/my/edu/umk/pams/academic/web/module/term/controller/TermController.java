@@ -117,6 +117,7 @@ public class TermController {
 		termService.saveAdmissionApplication(application);
 		return new ResponseEntity<String>("Success", HttpStatus.OK);
 	}
+	
 
 	@RequestMapping(value = "/admissionApplications/assignedTasks", method = RequestMethod.GET)
 	public ResponseEntity<List<AdmissionApplicationTask>> findAssignedAdmissionApplications() {

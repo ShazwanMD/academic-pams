@@ -20,6 +20,7 @@ export class AcademicYearSelectComponent implements OnInit {
 
   constructor(private store: Store<PlannerModuleState>,
               private actions: AcademicYearActions) {
+                
     this.academicYears$ = this.store.select(...this.ACADEMIC_YEARS);
   }
 
