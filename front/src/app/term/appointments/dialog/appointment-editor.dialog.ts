@@ -63,9 +63,11 @@ export class AppointmentEditorDialog implements OnInit {
   }
 
 
-  submit(appointment: Appointment, isValid: boolean) {
+  submit(section: Section, appointment: Appointment, isValid: boolean) {
     console.log(appointment);
+    console.log("section", this.section);
     console.log(this._section);
+    console.log(this._appointment);
 
     // set codes
     if (!this.edit) this.store.dispatch(this.actions.addAppointment(this._section, appointment));
