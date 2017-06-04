@@ -54,9 +54,9 @@ export class GradebookDetailPage implements OnInit {
   private columns: any[] =
   [
     { label: 'Student name', name: 'enrollment.admission.student.name' },
-    { label: 'Assessment ', name: 'gradebooks.0.assessment.description' },
-    { label: 'Assessment ', name: 'gradebooks.1.assessment.description' },
-    { label: 'Assessment ', name: 'gradebooks.2.assessment.description' }
+    { label: 'Assessment ', name: 'gradebooks.0.score' },
+    { label: 'Assessment ', name: 'gradebooks.1.score' },
+    { label: 'Assessment ', name: 'gradebooks.2.score' }
   ];
 
   ngOnInit(): void {
