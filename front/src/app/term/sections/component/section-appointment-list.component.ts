@@ -80,7 +80,6 @@ export class SectionAppointmentListComponent implements OnInit {
         this.creatorDialogRef.componentInstance.section = this.section;
 
       }
-    this.creatorDialogRef.componentInstance.section = this.section;
     this.creatorDialogRef.afterClosed().subscribe(res => {
       console.log("close dialog");
       // load something here

@@ -38,8 +38,8 @@ export class AppointmentEffects {
       .map(message => this.appointmentActions.addAppointmentSuccess(message))
       .withLatestFrom(this.store$.select(...this.SECTION))
       .map(state => state[1])
-      .map((section: Section) => this.sectionActions.findSectionByCanonicalCode(section.canonicalCode));
-       
+      .map((section: Section) => this.sectionActions.findSectionByCanonicalCode(section.canonicalCode)); 
+     
      //update appointment
       @Effect() updateAppointment$ = this.actions$
      .ofType(AppointmentActions.UPDATE_APPOINTMENT)
@@ -51,7 +51,6 @@ export class AppointmentEffects {
      //.mergeMap(action => from([action, this.appointmentActions.findAppointments()]));
      .map((section: Section) => this.sectionActions.findSectionByCanonicalCode(section.canonicalCode));
      
-    
     //remove appointment
       @Effect() removeAppointment$ = this.actions$
     .ofType(AppointmentActions.REMOVE_APPOINTMENT)
