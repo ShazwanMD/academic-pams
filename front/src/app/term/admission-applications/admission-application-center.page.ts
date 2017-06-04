@@ -18,12 +18,12 @@ import { AdmissionApplicationActions } from "./admission-application.action";
 export class AdmissionApplicationCenterPage implements OnInit {
 
   private ADMISSION_APPLICATION: string[] = "termModuleState.admissionApplications".split(".");
-  private ASSIGNED_ADMISSION_APPLICATION_TASKS: string[] = "termModuleState.assignedAdmissionApplicationTasks".split(".");
-  private POOLED_ADMISSION_APPLICATION_TASKS: string[] = "termModuleState.pooledAdmissionApplicationTasks".split(".");
+  // private ASSIGNED_ADMISSION_APPLICATION_TASKS: string[] = "termModuleState.assignedAdmissionApplicationTasks".split(".");
+  // private POOLED_ADMISSION_APPLICATION_TASKS: string[] = "termModuleState.pooledAdmissionApplicationTasks".split(".");
 
   private admissionApplications$: Observable<AdmissionApplication>;
-  private assignedAdmissionApplicationTasks$: Observable<AdmissionApplicationTask[]>;
-  private pooledAdmissionApplicationTasks$: Observable<AdmissionApplicationTask[]>;
+  // private assignedAdmissionApplicationTasks$: Observable<AdmissionApplicationTask[]>;
+  // private pooledAdmissionApplicationTasks$: Observable<AdmissionApplicationTask[]>;
   
   private creatorDialogRef: MdDialogRef<AdmissionApplicationTaskCreatorDialog>;
     private columns: any[] = [
@@ -46,14 +46,14 @@ export class AdmissionApplicationCenterPage implements OnInit {
     private vcf: ViewContainerRef,
     private dialog: MdDialog) {
         this.admissionApplications$ = this.store.select(...this.ADMISSION_APPLICATION);
-        this.assignedAdmissionApplicationTasks$ = this.store.select(...this.ASSIGNED_ADMISSION_APPLICATION_TASKS);
-        this.pooledAdmissionApplicationTasks$ = this.store.select(...this.POOLED_ADMISSION_APPLICATION_TASKS);
+        // this.assignedAdmissionApplicationTasks$ = this.store.select(...this.ASSIGNED_ADMISSION_APPLICATION_TASKS);
+        // this.pooledAdmissionApplicationTasks$ = this.store.select(...this.POOLED_ADMISSION_APPLICATION_TASKS);
   }
 
  ngOnInit(): void {
     console.log("find application");
-    this.store.dispatch(this.actions.findAssignedAdmissionApplicationTasks());
-    this.store.dispatch(this.actions.findPooledAdmissionApplicationTasks());
+    // this.store.dispatch(this.actions.findAssignedAdmissionApplicationTasks());
+    // this.store.dispatch(this.actions.findPooledAdmissionApplicationTasks());
     this.store.dispatch(this.actions.findAdmissionApplications());
   }
 
@@ -99,8 +99,7 @@ export class AdmissionApplicationCenterPage implements OnInit {
     });
   }
 
-
-  goBack(route: string): void {
+ goBack(route: string): void {
     this.router.navigate(['/term/admission-applications']);
   }
 }
