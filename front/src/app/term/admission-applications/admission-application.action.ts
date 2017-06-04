@@ -211,10 +211,10 @@ export class AdmissionApplicationActions {
   }
 
   static SAVE_ADMISSION_APPLICATION_SUCCESS = '[AdmissionApplication] Save AdmissionApplication Success';
-  saveAdmissionApplicationSuccess(message): Action {
+  saveAdmissionApplicationSuccess(admissionApplication): Action {
     return {
       type: AdmissionApplicationActions.SAVE_ADMISSION_APPLICATION_SUCCESS,
-      payload: message
+      payload: admissionApplication
     };
   }
   static REMOVE_ADMISSION_APPLICATION = '[AdmissionApplication] Remove AdmissionApplication';

@@ -103,7 +103,7 @@ export class AdmissionApplicationEffects {
     .ofType(AdmissionApplicationActions.SAVE_ADMISSION_APPLICATION)
     .map(action => action.payload)
     .switchMap(payload => this.termService.saveAdmissionApplication(payload.admissionApplication))
-    .map(message => this.admissionApplicationActions.saveAdmissionApplicationSuccess(message))
+    .map(admissionApplication => this.admissionApplicationActions.saveAdmissionApplicationSuccess(admissionApplication))
     .mergeMap(action => from([action,
       this.admissionApplicationActions.findAdmissionApplications()
     ]

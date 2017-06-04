@@ -13,7 +13,7 @@ export class ProgramEffects {
 
   private PROGRAM: string[] = "plannerModuleState.program".split(".");
 
-  private FACULTIES: string[] = "plannerModuleState.program".split(".");
+  private FACULTIES: string[] = "plannerModuleState.faculties".split(".");
 
   constructor(private actions$: Actions,
               private programActions: ProgramActions,

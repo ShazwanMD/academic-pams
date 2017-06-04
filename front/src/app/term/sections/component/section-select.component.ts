@@ -3,8 +3,8 @@ import {Observable} from "rxjs";
 import {Store} from "@ngrx/store";
 import {FormControl} from "@angular/forms";
 import {SectionActions} from "../section.action";
-import {TermModuleState} from "../../index";
 import {Section} from "../section.interface";
+import {TermModuleState} from "../../index";
 
 
 @Component({
@@ -13,7 +13,7 @@ import {Section} from "../section.interface";
 })
 export class SectionSelectComponent implements OnInit {
 
-  private SECTIONS = "termModuleState.sections".split(".");
+  private SECTIONS: string[] = "termModuleState.sections".split(".");
   private sections$: Observable<Section[]>;
   @Input() placeholder: string;
   @Input() innerFormControl: FormControl;
@@ -24,8 +24,7 @@ export class SectionSelectComponent implements OnInit {
   }
 
   ngOnInit() {
-    // todo(uda): on hold
-    // this.store.dispatch(this.actions.findSections());
+    this.store.dispatch(this.actions.findSections());
   }
 
   selectChangeEvent(event: Section) {

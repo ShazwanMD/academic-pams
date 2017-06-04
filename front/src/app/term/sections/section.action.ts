@@ -4,6 +4,27 @@ import {Action} from '@ngrx/store';
 @Injectable()
 export class SectionActions {
 
+    static FIND_SECTIONS = '[Section] Find Sections';
+
+    findSections(): Action {
+        console.log("findSections");
+      return {
+        type: SectionActions.FIND_SECTIONS
+      };
+    }
+
+    static FIND_SECTIONS_SUCCESS = '[Section] Find Sections Success';
+
+    findSectionsSuccess(sections): Action {
+      console.log("findSectionsSuccess");
+      console.log("sections: " + sections.length);
+      return {
+        type: SectionActions.FIND_SECTIONS_SUCCESS,
+        payload: sections
+      };
+    }
+    
+    
   static SAVE_SECTION = '[Section] Save Section';
 
   saveSection(section): Action {
@@ -81,24 +102,6 @@ export class SectionActions {
     };
   }
 
-  static FIND_SECTIONS = '[Section] Find Sections';
-
-  findSections(): Action {
-    console.log("findSections");
-    return {
-      type: SectionActions.FIND_SECTIONS
-    };
-  }
-
-  static FIND_SECTIONS_SUCCESS = '[Section] Find Sections Success';
-
-  findSectionsSuccess(canonicalCodes): Action {
-    console.log("findSectionsSuccess");
-    return {
-      type: SectionActions.FIND_SECTIONS_SUCCESS,
-      payload: canonicalCodes
-    };
-  }
 
   static FIND_SECTIONS_BY_OFFERING = '[Offering] Find Sections By Offering';
 
