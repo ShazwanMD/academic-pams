@@ -27,7 +27,7 @@ export class AssignedEnrollmentApplicationTaskListComponent {
 
   viewTask(task: EnrollmentApplicationTask): void {
     console.log("Emitting task");
-    let snackBarRef = this.snackBar.open("Viewing enrollmentApplication", "OK");
+    let snackBarRef = this.snackBar.open("Viewing enrollment application", "OK");
     snackBarRef.afterDismissed().subscribe(() => {
       this.view.emit(task);
     });

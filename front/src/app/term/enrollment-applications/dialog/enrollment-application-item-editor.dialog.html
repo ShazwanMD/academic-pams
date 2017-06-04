@@ -4,9 +4,10 @@
     <div layout="row" class="pad-bottom">
       <pams-section-select
         [placeholder]="'Select Section'"
-        [innerFormControl]="editForm.controls.section">
+        [innerFormControl]="editForm.controls['section']">
       </pams-section-select>
     </div>
+       
   </form>
 </md-dialog-content>
 <md-dialog-actions align="end">
