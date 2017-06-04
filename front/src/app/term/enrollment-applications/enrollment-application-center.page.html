@@ -1,33 +1,16 @@
-<td-layout-nav logo="assets:canang_logo">
+<td-layout-nav>
   <div toolbar-content layout="row" layout-align="center center" flex>
-    <span>Enrollment Application Center</span>
+    <span>PAMS: Postgraduate Management System</span>
     <span flex></span>
   </div>
-
-  <md-nav-list menu-items>
-    <a *ngFor="let item of routes" md-list-item [routerLink]="[item.route]" (click)="layout.close()">
-      <md-icon>{{item.icon}}</md-icon>
-      {{item.title}}
-    </a>
-  </md-nav-list>
-
 
   <td-layout-manage-list #list>
     <md-nav-list list-items>
       <a md-list-item (click)="showDialog()">
         <md-icon>create</md-icon>
-        Create Enrollment Application
+        Create New Enrollment Application
       </a>
-       
       <md-divider></md-divider>
-       <a md-list-item [routerLink]="['/term/admissions']">
-        <md-icon>create</md-icon>
-        Admissions
-      </a>
-      <a md-list-item [routerLink]="['/term/offerings']">
-        <md-icon>create</md-icon>
-        Offerings
-      </a>
     </md-nav-list>
     <div toolbar-buttons layout="row" layout-align="start center" flex>
       <span flex>Enrollment Center</span>
@@ -39,39 +22,19 @@
       </button>
     </div>
 
-  <!--   <md-card>
+    <md-card>
       <md-tab-group [selectedIndex]="0">
         <md-tab label="Assigned">
-          <pams-enrollment-application-task-list
+          <pams-assigned-enrollment-application-task-list
             [enrollmentApplicationTasks]="assignedEnrollmentApplicationTasks$ | async"
-            (view)="view($event)"></pams-enrollment-application-task-list>
+            (view)="viewTask($event)"></pams-assigned-enrollment-application-task-list>
         </md-tab>
         <md-tab label="Pooled">
-          <pams-enrollment-application-task-list
+          <pams-pooled-enrollment-application-task-list
             [enrollmentApplicationTasks]="pooledEnrollmentApplicationTasks$ | async"
-            (view)="view($event)"></pams-enrollment-application-task-list>
+            (claim)="claimTask($event)"></pams-pooled-enrollment-application-task-list>
         </md-tab>
       </md-tab-group>
-    </md-card> -->
-    
-       <md-card class="">
-      <td-search-box class="push-left push-right"
-                     placeholder="search"
-                     [alwaysVisible]="true"
-                     (searchDebounce)="filter($event)">
-      </td-search-box>
-
-       <pams-enrollment-applications-list
-        [enrollmentApplications]="enrollmentApplications$ | async" (view)="viewEnrollmentApplication($event)">
-        </pams-enrollment-applications-list>
-
-      <!-- <pams-enrollment-application-task-list
-        [enrollmentApplicationTasks]="enrollmentApplicationTasks$ | async" (view)="viewOffering($event)"></pams-enrollment-application-task-list> -->
-      <md-divider></md-divider>
-      <md-card-actions>
-        <a md-button color="accent" class="text-upper"
-           [routerLink]="['/offerings-search']"> <span>View More</span>
-        </a></md-card-actions>
     </md-card>
 
   </td-layout-manage-list>

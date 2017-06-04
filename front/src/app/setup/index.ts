@@ -156,7 +156,7 @@ export const setupModuleReducers = {
   ],
 
   exports: [
-    StudyCentreSelectComponent
+    StudyCentreSelectComponent,
   ],
   
   entryComponents:[

@@ -98,6 +98,26 @@ public class TermController {
 				termTransformer.toAdmissionApplicationVos(termService.findAdmissionApplications(academicSession)),
 				HttpStatus.OK);
 	}
+	
+	@RequestMapping(value = "/admissionApplications/save", method = RequestMethod.POST)
+	public ResponseEntity<String> saveAdmissionApplication(@RequestBody AdmissionApplication vo) {
+		dummyLogin();
+		AdAdmissionApplication application = new AdAdmissionApplicationImpl();
+		application.setReferenceNo(vo.getReferenceNo());
+		application.setAuditNo(vo.getAuditNo());
+		application.setSourceNo(vo.getSourceNo());
+		application.setDescription(vo.getDescription());
+		application.setCancelComment(vo.getCancelComment());
+		application.setRemoveComment(vo.getRemoveComment());
+		application.setAdvisor(identityService.findStaffByStaffNo(vo.getAdvisor().getIdentityNo()));
+		application.setStudent(identityService.findStudentByMatricNo(vo.getStudent().getIdentityNo()));
+		application.setProgram(plannerService.findProgramByCode(vo.getProgram().getCode()));
+		application.setSession(plannerService.findAcademicSessionByCode(vo.getSession().getCode()));
+		application.setStudyCenter(commonService.findStudyCenterByCode(vo.getStudyCenter().getCode()));
+		termService.saveAdmissionApplication(application);
+		return new ResponseEntity<String>("Success", HttpStatus.OK);
+	}
+	
 
 	@RequestMapping(value = "/admissionApplications/assignedTasks", method = RequestMethod.GET)
 	public ResponseEntity<List<AdmissionApplicationTask>> findAssignedAdmissionApplications() {
@@ -118,7 +138,6 @@ public class TermController {
 	@RequestMapping(value = "/admissionApplications/startTask", method = RequestMethod.POST)
 	public void startAdmissionApplicationTask(@RequestBody AdmissionApplication vo) throws Exception {
 		dummyLogin();
-
 		AdStudent student = identityService.findStudentById(vo.getStudent().getId());
 		AdAcademicSession academicSession = plannerService.findAcademicSessionById(vo.getSession().getId());
 		AdAdmissionApplication application = new AdAdmissionApplicationImpl();

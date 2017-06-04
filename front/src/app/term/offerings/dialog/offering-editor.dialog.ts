@@ -16,8 +16,6 @@ import {TermModuleState} from "../../index";
   templateUrl: './offering-editor.dialog.html',
 })
 
-// note(uda): need to clean this up further
-// note: lots of unused _xxx
 export class OfferingEditorDialog implements OnInit {
 
   private createForm: FormGroup;
@@ -37,17 +35,6 @@ export class OfferingEditorDialog implements OnInit {
 
   set offering(value: Offering) {
     this._offering = value;
-    this.edit = true;
-  }
-
-
-  set program(value: Program) {
-    this._program = value;
-    this.edit = true;
-  }
-
-  set course(value: Course) {
-    this._course = value;
     this.edit = true;
   }
 

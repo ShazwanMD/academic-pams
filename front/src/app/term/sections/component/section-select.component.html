@@ -1,8 +1,6 @@
-<md-select
-  [placeholder]="placeholder"
-  (change)="selectChangeEvent($event.value)" flex>
+<md-select [placeholder]="placeholder"
+	(change)="selectChangeEvent($event.value)" flex>
+	 <md-option *ngFor="let section of sections$ | async" [value]="section">
+{{section.code}}: {{section.canonicalCode}}
+ </md-option> </md-select>
 
-  <md-option *ngFor="let section of sections$ | async" [value]="section">
-    {{section.code}}: {{section.canonicalCode}}
-  </md-option>
-</md-select>

@@ -192,6 +192,9 @@ public interface TermService {
 
     void postToAdmission(AdAdmissionApplication application);
 
+    void saveAdmissionApplication(AdAdmissionApplication application);
+
+
     // finder
 
 
@@ -232,10 +235,6 @@ public interface TermService {
     List<AdAdmission> findAdmissions(AdAcademicSession academicSession, Integer offset, Integer limit);
 
     Integer countAdmission(AdAcademicSession academicSession, AdStudent student);
-
-    @Deprecated
-        // use startAdmissionApplication
-    void saveAdmissionApplication(AdAdmissionApplication application);
 
     void admit(AdAcademicSession academicSession, AdStudent student, AdStudyCenter studyCenter, AdProgram program);
 
