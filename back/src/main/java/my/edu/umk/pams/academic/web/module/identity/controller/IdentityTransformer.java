@@ -1,11 +1,19 @@
 package my.edu.umk.pams.academic.web.module.identity.controller;
 
+import my.edu.umk.pams.academic.common.service.CommonService;
 import my.edu.umk.pams.academic.identity.model.AdActor;
 import my.edu.umk.pams.academic.identity.model.AdStaff;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
+import my.edu.umk.pams.academic.term.service.TermService;
+import my.edu.umk.pams.academic.web.module.common.controller.CommonTransformer;
 import my.edu.umk.pams.academic.web.module.identity.vo.Actor;
 import my.edu.umk.pams.academic.web.module.identity.vo.Staff;
 import my.edu.umk.pams.academic.web.module.identity.vo.Student;
+import my.edu.umk.pams.academic.web.module.planner.controller.PlannerTransformer;
+import my.edu.umk.pams.academic.web.module.term.controller.TermTransformer;
+import my.edu.umk.pams.academic.workflow.service.WorkflowService;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -17,6 +25,27 @@ import static java.util.stream.Collectors.toList;
  */
 @Component("identityTransformer")
 public class IdentityTransformer {
+	
+	@Autowired
+	private TermService termService;
+
+	@Autowired
+	private CommonService commonService;
+
+	@Autowired
+	private WorkflowService workflowService;
+
+	@Autowired
+	private IdentityTransformer identityTransformer;
+
+	@Autowired
+	private CommonTransformer commonTransformer;
+
+	@Autowired
+	private PlannerTransformer plannerTransformer;
+
+	@Autowired
+	private TermTransformer termTransformer;
 
     public Staff toStaffVo(AdStaff staff) {
         Staff vo = new Staff();
@@ -27,6 +56,7 @@ public class IdentityTransformer {
         vo.setMobile(staff.getMobile());
         vo.setPhone(staff.getPhone());
         vo.setFax(staff.getFax());
+        
         return vo;
     }
 
@@ -40,6 +70,8 @@ public class IdentityTransformer {
         vo.setMobile(student.getMobile());
         vo.setPhone(student.getPhone());
         vo.setFax(student.getFax());
+        vo.setCohort(plannerTransformer.toCohortVo(student.getCohort()));
+       
         return vo;
     }
 
