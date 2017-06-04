@@ -29,6 +29,7 @@ import {EnrollmentApplicationTypeSelectComponent} from "./component/enrollment-a
 import {AssignedEnrollmentApplicationTaskListComponent} from "./component/assigned-enrollment-application-task-list.component";
 import {PooledEnrollmentApplicationTaskListComponent} from "./component/pooled-enrollment-application-task-list.component";
 import {EnrollmentApplicationTaskDetailPage} from "./enrollment-application-task-detail.page";
+import { IdentityModule } from "../../identity/index";
 
 
 @NgModule({
@@ -40,6 +41,7 @@ import {EnrollmentApplicationTaskDetailPage} from "./enrollment-application-task
     AdmissionSubModule.forRoot(),
     AcademicSessionSubModule.forRoot(),
     SectionSubModule.forRoot(),
+    IdentityModule.forRoot(),
     EffectsModule.run(EnrollmentApplicationEffects),
   ],
   declarations: [
