@@ -1,6 +1,5 @@
 package my.edu.umk.pams.academic.term.model;
 
-
 import my.edu.umk.pams.academic.common.model.AdStudyCenter;
 import my.edu.umk.pams.academic.core.model.AdDocument;
 import my.edu.umk.pams.academic.identity.model.AdStaff;
@@ -19,7 +18,31 @@ import my.edu.umk.pams.academic.planner.model.AdProgram;
  */
 public interface AdAdmissionApplication extends AdDocument {
 
-    AdStudent getStudent();
+    String getReferenceNo ();
+    
+    void setReferenceNo(String referenceNo);
+
+    String getSourceNo ();
+    
+    void setSourceNo(String sourceNo);
+
+    String getAuditNo ();
+    
+    void setAuditNo(String auditNo);
+
+    String getDescription ();
+
+    void setDescription(String description);
+    
+    String getRemoveComment ();
+
+    void setRemoveComment(String removeComment);
+    
+    String getCancelComment ();
+    
+    void setCancelComment(String cancelComment);
+    
+	AdStudent getStudent();
 
     void setStudent(AdStudent student);
 

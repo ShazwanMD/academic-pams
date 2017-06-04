@@ -73,20 +73,20 @@ public class TermTransformer {
 		return task;
 	}
 
-	public AdmissionApplication toAdmissionApplicationVo(AdAdmissionApplication e) {
+	public AdmissionApplication toAdmissionApplicationVo(AdAdmissionApplication application) {
 		AdmissionApplication vo = new AdmissionApplication();
-		vo.setId(e.getId());
-		vo.setReferenceNo(e.getReferenceNo());
-		vo.setSourceNo(e.getSourceNo());
-		vo.setAuditNo(e.getAuditNo());
-		vo.setDescription(e.getDescription());
-		vo.setCancelComment(e.getCancelComment());
-		vo.setRemoveComment(e.getRemoveComment());
-		vo.setSession(plannerTransformer.toAcademicSessionVo(e.getSession()));
-		vo.setStudent(identityTransformer.toStudentVo(e.getStudent()));
-		vo.setProgram(plannerTransformer.toProgramVo(e.getProgram()));
-		vo.setAdvisor(identityTransformer.toStaffVo(e.getAdvisor()));
-		vo.setStudyCenter(commonTransformer.toStudyCenterVo(e.getStudyCenter()));
+		vo.setId(application.getId());
+		vo.setReferenceNo(application.getReferenceNo());
+		vo.setSourceNo(application.getSourceNo());
+		vo.setAuditNo(application.getAuditNo());
+		vo.setDescription(application.getDescription());
+		vo.setCancelComment(application.getCancelComment());
+		vo.setRemoveComment(application.getRemoveComment());
+		vo.setSession(plannerTransformer.toAcademicSessionVo(application.getSession()));
+		vo.setStudent(identityTransformer.toStudentVo(application.getStudent()));
+		vo.setProgram(plannerTransformer.toProgramVo(application.getProgram()));
+		vo.setAdvisor(identityTransformer.toStaffVo(application.getAdvisor()));
+		vo.setStudyCenter(commonTransformer.toStudyCenterVo(application.getStudyCenter()));
 		return vo;
 	}
 
