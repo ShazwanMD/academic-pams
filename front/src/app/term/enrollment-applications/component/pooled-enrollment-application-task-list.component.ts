@@ -1,6 +1,6 @@
 import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy} from '@angular/core';
 import {MdSnackBar} from "@angular/material";
-import {EnrollmentApplicationTask} from "../../../term/enrollment-applications/enrollment-application-task.interface";
+import {EnrollmentApplicationTask} from "../enrollment-application-task.interface";
 
 @Component({
   selector: 'pams-pooled-enrollment-application-task-list',

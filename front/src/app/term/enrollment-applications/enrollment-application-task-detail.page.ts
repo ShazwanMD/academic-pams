@@ -11,10 +11,10 @@ import {EnrollmentApplicationActions} from "./enrollment-application.action";
 
 
 @Component({
-  selector: 'pams-enrollment-application-task-iew',
-  templateUrl: './enrollment-application-task-view.page.html',
+  selector: 'pams-enrollment-application-task-detail',
+  templateUrl: './enrollment-application-task-detail.page.html',
 })
-export class EnrollmentApplicationTaskViewPage implements OnInit {
+export class EnrollmentApplicationTaskDetailPage implements OnInit {
 
   private ENROLLMENT_APPLICATION_TASK: string[] = "termModuleState.enrollmentApplicationTask".split(".");
   private enrollmentApplicationTask$: Observable<EnrollmentApplicationTask>;

@@ -20,13 +20,15 @@ import {EnrollmentApplicationTaskListComponent} from "./component/enrollment-app
 import {EnrollmentApplicationsListComponent} from "./component/enrollment-applications-list.component";
 
 
-import {EnrollmentApplicationTaskViewPage} from "./enrollment-application-task-view.page";
 import {EnrollmentApplicationTaskWorkflowPanel} from "./panel/enrollment-application-task-workflow.panel";
 import {EnrollmentApplicationTaskStatusComponent} from "./component/enrollment-application-task-status.component";
 import {EnrollmentApplicationItemEditorDialog} from "./dialog/enrollment-application-item-editor.dialog";
 import {SectionSubModule} from "../sections/index";
 import {EnrollmentApplicationActionSelectComponent} from "./component/enrollment-application-action-select.component";
 import {EnrollmentApplicationTypeSelectComponent} from "./component/enrollment-application-type-select.component";
+import {AssignedEnrollmentApplicationTaskListComponent} from "./component/assigned-enrollment-application-task-list.component";
+import {PooledEnrollmentApplicationTaskListComponent} from "./component/pooled-enrollment-application-task-list.component";
+import {EnrollmentApplicationTaskDetailPage} from "./enrollment-application-task-detail.page";
 
 
 @NgModule({
@@ -43,7 +45,7 @@ import {EnrollmentApplicationTypeSelectComponent} from "./component/enrollment-a
   declarations: [
     // page
     EnrollmentApplicationCenterPage,
-    EnrollmentApplicationTaskViewPage,
+    EnrollmentApplicationTaskDetailPage,
 
     // component
     EnrollmentApplicationTaskWorkflowPanel,
@@ -54,6 +56,8 @@ import {EnrollmentApplicationTypeSelectComponent} from "./component/enrollment-a
     EnrollmentApplicationTaskStatusComponent,
     EnrollmentApplicationActionSelectComponent,
     EnrollmentApplicationTypeSelectComponent,
+    AssignedEnrollmentApplicationTaskListComponent,
+    PooledEnrollmentApplicationTaskListComponent,
 
     //dialog
     EnrollmentApplicationTaskCreatorDialog,
