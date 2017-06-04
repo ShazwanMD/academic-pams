@@ -49,6 +49,22 @@ export class SectionAppointmentListComponent implements OnInit {
 
     selectAllRows(appointments: Appointment[]): void {
     }
+    
+    addDialog(): void {
+        console.log("showAddDialog");
+        let config = new MdDialogConfig();
+        config.viewContainerRef = this.vcf;
+        config.role = 'dialog';
+        config.width = '50%';
+        config.height = '80%';
+        config.position = {top: '0px'};
+        this.creatorDialogRef = this.dialog.open(AppointmentEditorDialog, config);
+        this.creatorDialogRef.componentInstance.section = this.section;
+        this.creatorDialogRef.afterClosed().subscribe(res => {
+          console.log("close add dialog");
+          // load something here
+        });
+      }
 
   editDialog(appointment: Appointment, isValid: boolean): void {
     console.log("showDialog");

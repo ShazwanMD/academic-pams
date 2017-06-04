@@ -47,8 +47,7 @@ export class AdmissionApplicationEffects {
     .ofType(AdmissionApplicationActions.FIND_ADMISSION_APPLICATION_BY_REFERENCE_NO)
     .map(action => action.payload)
     .switchMap(referenceNo => this.termService.findAdmissionApplicationByReferenceNo(referenceNo))
-    .map(admissionApplication => this.admissionApplicationActions.findAdmissionApplicationByReferenceNoSuccess(admissionApplication))
-    .mergeMap(action => from([action, this.admissionApplicationActions.findAdmissionApplicationItems(action.payload)]));
+    .map(admissionApplication => this.admissionApplicationActions.findAdmissionApplicationByReferenceNoSuccess(admissionApplication));
 
   @Effect() findAdmissionApplicationItems$ = this.actions$
     .ofType(AdmissionApplicationActions.FIND_ADMISSION_APPLICATION_ITEMS)
@@ -99,6 +98,16 @@ export class AdmissionApplicationEffects {
         this.admissionApplicationActions.findPooledAdmissionApplicationTasks()
       ]
     ));
+
+  @Effect() saveAdmissionApplication$ = this.actions$
+    .ofType(AdmissionApplicationActions.SAVE_ADMISSION_APPLICATION)
+    .map(action => action.payload)
+    .switchMap(payload => this.termService.saveAdmissionApplication(payload.admissionApplication))
+    .map(message => this.admissionApplicationActions.saveAdmissionApplicationSuccess(message))
+    .mergeMap(action => from([action,
+      this.admissionApplicationActions.findAdmissionApplications()
+    ]
+  ));
 
   @Effect() updateAdmissionApplication$ = this.actions$
     .ofType(AdmissionApplicationActions.UPDATE_ADMISSION_APPLICATION)

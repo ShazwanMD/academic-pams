@@ -11,12 +11,6 @@
       <p md-line>Update this cohort</p>
     </md-list-item>
 
-    <md-list-item (click)= "delate()">
-      <md-icon md-list-avatar>gavel</md-icon>
-      <h4 md-line>Delate</h4>
-      <p md-line>Delate this cohort</p>
-    </md-list-item>
-
     <md-divider></md-divider>
     <h3 md-subheader>Planner Menu</h3>
 
@@ -29,6 +23,12 @@
       <h4 md-line>Faculty</h4>
       <p md-line>List of faculties</p>
     </md-list-item>
+    
+      <md-list-item [routerLink]="['/planner/programs']">
+              <md-icon md-list-avatar>menu</md-icon>
+              <h4 md-line>Program</h4>
+              <p md-line>List of programs</p>
+            </md-list-item>
 
     <md-list-item [routerLink]="['/planner/courses']"> <md-icon md-list-avatar>menu</md-icon>
       <h4 md-line>Courses</h4>

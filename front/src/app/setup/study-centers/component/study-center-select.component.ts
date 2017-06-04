@@ -13,7 +13,7 @@ import { StudyCenter } from './../study-center.interface';
 
 export class StudyCentreSelectComponent implements OnInit {
 
-    private STUDY_CENTER: string[] = "setupModuleState.studyCenter".split(".");
+    private STUDY_CENTER: string[] = "setupModuleState.studyCenters".split(".");
     @Input() placeholder: string;
     @Input() innerFormControl: FormControl;
     studyCenters$: Observable<StudyCenter[]>;

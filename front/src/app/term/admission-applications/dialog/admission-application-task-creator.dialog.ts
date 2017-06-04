@@ -59,10 +59,10 @@ export class AdmissionApplicationTaskCreatorDialog implements OnInit {
     if (this.create) this.createForm.patchValue(this._admissionApplication);
   }
 
-  // save(admissionApplication: AdmissionApplication, isValid: boolean) {
-  //   this.store.dispatch (this.actions.addAmissionApplication(admissionApplication));
-  //   this.dialog.close();
-  
+  save(admissionApplication: AdmissionApplication, isValid: boolean) {
+    this.store.dispatch (this.actions.saveAdmissionApplication(admissionApplication));
+    this.dialog.close();
+  }
   
   // save(admissionApplication: AdmissionApplication, isValid: boolean) {
   //   this.store.dispatch(this.actions.startAdmissionApplicationTask(admissionApplication));

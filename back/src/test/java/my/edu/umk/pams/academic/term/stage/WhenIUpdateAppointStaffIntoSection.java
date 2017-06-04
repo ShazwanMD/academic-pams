@@ -65,7 +65,7 @@ public class WhenIUpdateAppointStaffIntoSection extends Stage<WhenIUpdateAppoint
 		//update staff lama ke staff baru
 		appointment.setStaff(staff);
 		appointment.setStatus(AdAppointmentStatus.SUBSTITUTED);
-		termService.updateAppointment(appointment);
+		termService.updateAppointment(section,appointment);
 		
 		Assert.notNull(appointment, "appointment should be not null");
 		LOG.debug("new appoint staff: {}", appointment.getStaff().getId());
