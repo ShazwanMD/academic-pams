@@ -13,11 +13,13 @@ import {PlannerModuleState} from "../../index";
 export class FacultySelectComponent implements OnInit {
 
   private FACULTIES: string[] = "plannerModuleState.faculties".split(".");
+  private faculties$: Observable<Faculty[]>;
   @Input() placeholder: string;
   @Input() innerFormControl: FormControl;
 
   constructor(private store: Store<PlannerModuleState>,
               private actions: FacultyActions) {
+    this.faculties$ = this.store.select(...this.FACULTIES);
   }
 
   ngOnInit() {

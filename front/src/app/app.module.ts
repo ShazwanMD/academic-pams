@@ -30,6 +30,8 @@ import {TermModule, termModuleReducers, TermModuleState, INITIAL_TERM_STATE} fro
 import {PlannerModule, plannerModuleReducers, PlannerModuleState, INITIAL_PLANNER_STATE} from "./planner/index";
 import {SetupModule, setupModuleReducers, SetupModuleState, INITIAL_SETUP_STATE} from "./setup/index";
 import {IdentityModule, identityModuleReducers, IdentityModuleState, INITIAL_IDENTITY_STATE} from "./identity/index";
+import {SectionEffects} from "./term/sections/section.effect";
+import {EffectsModule} from "@ngrx/effects";
 // interceptor
 const httpInterceptorProviders: Type<any>[] = [
   RequestInterceptor,
@@ -105,7 +107,7 @@ export function applicationReducer(applicationState: any = INITIAL_APP_STATE, ac
     TermModule.forRoot(),
     GraduationModule.forRoot(),
     SetupModule.forRoot(),
-
+    EffectsModule.run(SectionEffects), // lazy load bug, moved from section root. Fix in Angular 4
 
   ], // modules needed to run this module
   providers: [

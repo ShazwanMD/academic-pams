@@ -373,7 +373,7 @@ public class AdOfferingDaoImpl extends GenericDaoSupport<Long, AdOffering> imple
          section.setMetadata(metadata);
          session.save(section);
     }
-
+    
     @Override
     public void updateSection(AdOffering offering, AdSection section, AdUser user) {
     	 Validate.notNull(user, "User cannot be null");

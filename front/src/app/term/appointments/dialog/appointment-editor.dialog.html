@@ -1,18 +1,17 @@
-<h2 md-dialog-title>Create New Appointment</h2>
+<h2 md-dialog-title> {{edit ? 'Update' : 'Save'}} Appointment Id:{{_appointment.id}}</h2>
 <md-dialog-content>
   <form [formGroup]="editorForm">
-    <div layout="row" class="inset" flex>
-      <pams-section-select
-        [placeholder]="'Select Section'"
-        [innerFormControl]="editorForm.controls['section']">
-      </pams-section-select>
-    </div>
-
     <div layout="row" class="inset" flex>
       <pams-appointment-status-select
         [placeholder]="'Appoinment Status'"
         [innerFormControl]="editorForm.controls['appointmentStatus']">
       </pams-appointment-status-select>
+       <md-input-container flex >
+        <input mdInput
+               placeholder="appointmentStatus"
+               formControlName="appointmentStatus" flex/>
+      </md-input-container>
+      
     </div>
 
     <div layout="row" class="inset" flex>
@@ -20,6 +19,7 @@
         [placeholder]="'Select Staff'"
         [innerFormControl]="editorForm.controls['staff']">
       </pams-staff-select>
+           
     </div>
 
   </form>

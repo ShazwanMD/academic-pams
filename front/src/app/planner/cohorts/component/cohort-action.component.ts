@@ -26,7 +26,7 @@ export class CohortActionComponent {
   }
 
   editorDialog(): void {
-    console.log("edit");
+    console.log("CohortAction");
     console.log(this.cohort);  
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;

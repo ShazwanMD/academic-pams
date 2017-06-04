@@ -1162,6 +1162,7 @@ public class TermServiceImpl implements TermService {
     public List<AdAppointment> findAppointments(AdOffering offering) {
         return appointmentDao.find(offering);
     }
+    
 
     @Override
     public List<AdAppointment> findAppointments(AdSection section) {
@@ -1266,7 +1267,7 @@ public class TermServiceImpl implements TermService {
     }
 
     @Override
-    public void updateAppointment(AdAppointment appointment) {
+    public void updateAppointment(AdSection section, AdAppointment appointment) {
         appointmentDao.update(appointment, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }

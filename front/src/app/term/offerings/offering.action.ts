@@ -59,43 +59,6 @@ export class OfferingActions {
     };
   }
 
-
-  static FIND_ENROLLMENTS_BY_OFFERING = '[Offering] Find Enrollments By Offering';
-
-  findEnrollmentsByOffering(offering): Action {
-    return {
-      type: OfferingActions.FIND_ENROLLMENTS_BY_OFFERING,
-      payload: offering
-    };
-  }
-
-  static FIND_ENROLLMENTS_BY_OFFERING_SUCCESS = '[Offering] Find Enrollments By Offering Success';
-
-  findEnrollmentsByOfferingSuccess(enrollments): Action {
-    return {
-      type: OfferingActions.FIND_ENROLLMENTS_BY_OFFERING_SUCCESS,
-      payload: enrollments
-    };
-  }
-
-  static FIND_APPOINTMENTS_BY_OFFERING = '[Offering] Find Appointments By Offering';
-
-  findAppointmentsByOffering(offering): Action {
-    return {
-      type: OfferingActions.FIND_APPOINTMENTS_BY_OFFERING,
-      payload: offering
-    };
-  }
-
-  static FIND_APPOINTMENTS_BY_OFFERING_SUCCESS = '[Offering] Find Appointments By Offering Success';
-
-  findAppointmentsByOfferingSuccess(appointments): Action {
-    return {
-      type: OfferingActions.FIND_APPOINTMENTS_BY_OFFERING_SUCCESS,
-      payload: appointments
-    };
-  }
-
   static FIND_ASSESSMENTS_BY_OFFERING = '[Offering] Find Assessments By Offering';
 
   findAssessmentsByOffering(offering): Action {
@@ -136,10 +99,10 @@ export class OfferingActions {
 
   static SAVE_OFFERING = '[Offering] Save Offering';
 
-  saveOffering(offering): Action {
+  saveOffering(program, course, offering): Action {
     return {
       type: OfferingActions.SAVE_OFFERING,
-      payload: offering
+      payload: {program:program, course:course, offering:offering}
     };
   }
 

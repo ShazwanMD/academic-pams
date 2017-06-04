@@ -1,4 +1,8 @@
-import { AdmissionApplicationListComponent } from './component/admission-application-list.component';
+import { AdmissionApplicationTaskEditorDialog } from './dialog/admission-application-task-editor.dialog';
+import { AdmissionApplicationActionComponent } from './component/admission-application-action.component';
+import { AdmissionApplicationDetailPage } from "./admission-application-detail.page";
+import { AdmissionApplicationComponent } from "./component/admission-application.component";
+import { AdmissionApplicationListComponent } from "./component/admission-application-list.component";
 import '@ngrx/core/add/operator/select';
 import { appRoutes, appRoutingProviders } from '../../app.routes';
 import { NgModule, ModuleWithProviders } from '@angular/core';
@@ -39,10 +43,12 @@ import { IdentityModule } from "../../identity/index";
     IdentityModule.forRoot(),
     EffectsModule.run(AdmissionApplicationEffects),
   ],
+
   declarations: [
     // page
     AdmissionApplicationTaskViewPage,
     AdmissionApplicationCenterPage,
+    AdmissionApplicationDetailPage,
 
     // component
     AdmissionApplicationTaskWorkflowPanel,
@@ -50,19 +56,26 @@ import { IdentityModule } from "../../identity/index";
     AdmissionApplicationTaskListComponent,
     AdmissionApplicationTaskStatusComponent,
     AdmissionApplicationListComponent,
+    AdmissionApplicationComponent,
+    AdmissionApplicationActionComponent,
 
     //dialog
     AdmissionApplicationTaskCreatorDialog,
+    AdmissionApplicationTaskEditorDialog,
   ],
 
   exports: [
+    AdmissionApplicationComponent,
+    AdmissionApplicationActionComponent,
+    AdmissionApplicationListComponent,
+
   ],
-  
+
   entryComponents: [
     AdmissionApplicationTaskCreatorDialog,
+    AdmissionApplicationTaskEditorDialog,
     AdmissionApplicationDraftTaskPanel,
   ]
-  
 })
 
 export class AdmissionApplicationSubModule {

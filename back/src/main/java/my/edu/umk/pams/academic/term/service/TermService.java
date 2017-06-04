@@ -441,7 +441,9 @@ public interface TermService {
 
     void addAppointment(AdSection section, AdAppointment appointment);
     
-    void updateAppointment(AdAppointment appointment);
+    //void updateAppointment(AdAppointment appointment);
+    
+    void updateAppointment(AdSection section, AdAppointment appointment);
 
     void deleteAppointment(AdAppointment appointment);
 

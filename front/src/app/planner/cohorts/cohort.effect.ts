@@ -39,7 +39,7 @@ export class CohortEffects {
   @Effect() updateCohort$ = this.actions$
     .ofType(CohortActions.UPDATE_COHORT)
     .map(action => action.payload)
-    .switchMap(payload => this.plannerService.updateCohort(payload.cohort))
+    .switchMap(cohort => this.plannerService.updateCohort(cohort))
     .map(message => this.cohortActions.updateCohortSuccess(message))
     .withLatestFrom(this.store$.select(...this.COHORT))
     .map(state => state[1])

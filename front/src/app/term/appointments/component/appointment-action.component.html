@@ -1,0 +1,25 @@
+<md-card>
+  <md-card-title>Action</md-card-title>
+  <md-card-subtitle>Actions available on current appointment</md-card-subtitle>
+  <md-divider></md-divider>
+
+  <md-nav-list flex dense>
+
+    <md-list-item (click)= "updateDialog()">
+      <md-icon md-list-avatar>done_all</md-icon>
+      <h4 md-line>Edit Appointment {{appointment?.staff?.identityNo}} </h4>
+      <p md-line>Edit this appointment </p>
+    </md-list-item>
+     <md-list-item [routerLink]="['/term/sections', section.canonicalCode]">
+      <md-icon md-list-avatar>done_all</md-icon>
+      <h4 md-line>List of Appointments</h4>
+      <p md-line>Review appointments for this section </p>
+    </md-list-item>
+   <!--   <md-list-item [routerLink]="['/term/offerings', offering.canonicalCode, 'gradebook-detail']">
+      <md-icon md-list-avatar>done_all</md-icon>
+      <h4 md-line>Gradebook</h4>
+      <p md-line>View gradebook</p>
+    </md-list-item> -->
+    <md-divider></md-divider>
+  </md-nav-list>
+</md-card>

@@ -1,133 +1,84 @@
-<md-card> 
-<md-card-title> {{section?.code}}</md-card-title>
-<md-card-subtitle> {{section?.code}}</md-card-subtitle> <md-divider></md-divider>
-<md-card-content> <!--Tab Section Here--> <md-tab-group>
-<md-tab label="Section Detail"> <br>
-
 <md-card>
-<div md-content flex md-scroll-y>
-	<div layout="column" layout-gt-md="row" class="insert">
-
-		<div flex-gt-md="50">
-			<md-card-title>Section Details Info </md-card-title>
-		</div>
-		<div flex-gt-md="50" align="right">
-			<!-- <button md-icon-button (click)="addAddressDialog(save)">
-      <md-icon>add</md-icon>
-    </button> -->
-		</div>
-	</div>
-</div>
-<md-divider></md-divider> <md-card-content>
-<div>Section Code : {{section?.code}}</div>
-<br>
-<div>Section Capacity : {{section?.capacity}}</div>
-<br>
-<div>Section canonicalCode : {{section?.canonicalCode}}</div>
-<br>
-<div>Section ordinal : {{section?.ordinal}}</div>
-<br>
-
-</md-card-content> </md-card> </md-tab> 
- </md-tab-group> </md-card-content> </md-card>
-
-<!-- ENROLLMENT -->
-<md-card>
-  <div toolbar-buttons layout="row" layout-align="start center" flex>
-    <md-card-title>Enrollments</md-card-title>
-    <md-chip-list *ngIf="enrollments?.length > 0">
-      <md-chip color="accent">{{enrollments?.length}}</md-chip>
-    </md-chip-list>
-    <span flex></span>
-    <button md-button class="md-icon-button" [routerLink]="['/term/enrollment-applications']"
-            mdTooltip="Add new enrollment">
-      <md-icon class="md-24 tc-grey-700">add</md-icon>
-    </button>
-  </div>
+  <md-card-title>{{section?.offering?.course?.titleEn}}</md-card-title>
+  <md-card-subtitle>{{section?.code}}</md-card-subtitle>
   <md-divider></md-divider>
-  <md-card-content>
-    <td-data-table
-      [data]="enrollments"
-      [columns]="columns"
-      [sortBy]="summary"
-      [sortOrder]="ASC"
-      [sortable]="false"
-      [multiple]="true"
-      [selectable]="true" dense>
-      <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
-        <div layout="row">
-          <span flex>{{value}}</span>
+  <md-card-content> <!--Tab Section Here-->
+    <md-tab-group>
+      <md-tab label="Section Detail"><br>
+        <div layout="column" class="inset">
+          <div layout="row" class="pad-bottom">
+            <span flex="20">Code</span>
+            <span>{{section?.code}}</span>
+          </div>
+          <div layout="row" class="pad-bottom">
+            <span flex="20">Capacity</span>
+            <span>{{section?.capacity}}</span>
+          </div>
+          <div layout="row" class="pad-bottom">
+            <span flex="20">Section Number</span>
+            <span>{{section?.ordinal}}</span>
+          </div>
         </div>
-      </template>
-      <template tdDataTableTemplate="action" let-value="value" let-row="row"
-                let-column="column">
-        <div layout="row">
-          <!-- <a md-button color="accent" class="text-upper" mdTooltip="View this enrollment"
-             [routerLink]="['/term/enrollments', row['id']]"> <span> VIEW</span> <md-icon class="md-24">pageview</md-icon>
-          </a> -->
+      </md-tab>
+      <md-tab label="Course Information">
+        <md-card>
+          <div md-content flex md-scroll-y>
+            <div layout="column" layout-gt-md="row" class="insert">
 
-          <button md-icon-button [md-menu-trigger-for]="menu1" mdTooltip="Select enrollment actions">
-            <md-icon>more_vert</md-icon>
-          </button>
-          <md-menu x-position="before" #menu1="mdMenu">
-            <button md-menu-item [routerLink]="['/term/enrollments', row['id']]">View enrollment</button>
-            <button md-menu-item (click)="updateEnrollment(row)">Update enrollment</button>
+              <div flex-gt-md="50">
+                <md-card-title>Course Details Info</md-card-title>
+              </div>
 
-          </md-menu>
-        </div>
-      </template>
+              <div flex-gt-md="50" align="right">
+                <!-- <button md-icon-button (click)="addAddressDialog(save)">
+                <md-icon>add</md-icon>
+              </button> -->
+              </div>
+            </div>
+          </div>
+          <md-divider></md-divider>
+          <md-card-content>
+            <div>Code : {{section?.offering?.course?.code}}</div>
+            <br>
+            <div>Title : {{section?.offering?.course?.titleMs}}</div>
+            <br>
+            <div>Credit : {{section?.offering?.course?.credit}}</div>
+            <br>
 
-    </td-data-table>
+          </md-card-content>
+        </md-card>
+      </md-tab>
+      <md-tab label="Program Information">
+        <md-card>
+          <div md-content flex md-scroll-y>
+            <div layout="column" layout-gt-md="row" class="insert">
+
+              <div flex-gt-md="50">
+                <md-card-title>Program Details Info</md-card-title>
+              </div>
+
+              <div flex-gt-md="50" align="right">
+              </div>
+            </div>
+          </div>
+
+          <md-divider></md-divider>
+          <md-card-content>
+            <div>Code : {{section?.offering?.program?.code}}</div>
+            <br>
+            <div>Title : {{section?.offering?.program?.titleMs}}</div>
+            <br>
+            <div>Status : {{section?.offering?.program?.status}}</div>
+            <br>
+            <div>Faculty : {{section?.offering?.program?.faculty?.name}}</div>
+            <br>
+            <div>Faculty Desc. :
+              {{section?.offering?.program?.faculty?.description}}
+            </div>
+            <br>
+          </md-card-content>
+        </md-card>
+      </md-tab>
+    </md-tab-group>
   </md-card-content>
 </md-card>
-
-<!-- APPOINTMENT -->
-<md-card>
-  <div toolbar-buttons layout="row" layout-align="start center" flex>
-    <md-card-title>Appointments</md-card-title>
-    <md-chip-list *ngIf="appointments?.length > 0">
-      <md-chip color="accent">{{appointments?.length}}</md-chip>
-    </md-chip-list>
-    <span flex></span>
-    <button md-button class="md-icon-button" (click)="showDialog()">
-      <md-icon class="md-24 tc-grey-700">add</md-icon>
-    </button>
-    <button md-button class="md-icon-button" (click)="deleteAppointment(row)" mdTooltip="Delete selected appointments">
-      <md-icon class="md-24 tc-grey-700">delete</md-icon>
-    </button>
-  </div>
-  <md-divider></md-divider>
-  <md-card-content>
-    <td-data-table
-      [data]="appointments"
-      [columns]="columns"
-      [sortBy]="summary"
-      [sortOrder]="ASC"
-      [sortable]="false"
-      [multiple]="true"
-      [selectable]="true" dense>
-      <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
-        <div layout="row">
-          <span flex>{{value}}</span>
-        </div>
-      </template>
-      <template tdDataTableTemplate="action" let-value="value" let-row="row"
-                let-column="column">
-        <div layout="row">
-          <button md-icon-button [md-menu-trigger-for]="menu1" mdTooltip="Select section actions">
-            <md-icon>more_vert</md-icon>
-          </button>
-          <md-menu x-position="before" #menu1="mdMenu">
-            <button md-menu-item [routerLink]="['/term/appointments', row['canonicalCode']]">View appointment</button>
-            <button md-menu-item (click)="updateAppointment(row)">Update appointment</button>
-            <button md-menu-item (click)="deleteAppointment(row)">Delete appointment</button>
-          </md-menu>
-        </div>
-      </template>
-    </td-data-table>
-  </md-card-content>
-</md-card>
-
-
-
-

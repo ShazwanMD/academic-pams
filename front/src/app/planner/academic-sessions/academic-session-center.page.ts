@@ -69,7 +69,7 @@ export class AcademicSessionCenterPage implements OnInit {
     config.height = '90%';
     config.position =  {top: '0px'};
     this.creatorDialogRef = this.dialog.open(AcademicSessionCreatorDialog, config);
-    if (code) this.creatorDialogRef.componentInstance.academicSession = code;  
+    if (code)this.creatorDialogRef.componentInstance.academicSession = code;  
     
     //set
     this.creatorDialogRef.afterClosed().subscribe(res => { 

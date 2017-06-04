@@ -1,65 +1,57 @@
-<h2 md-dialog-title>Offering Task Creator  {{edit ? 'Update' : 'Save'}}</h2>
+<h2 md-dialog-title>{{edit ? 'Update' : 'Save'}} Offering Creator </h2>
 <md-dialog-content>
   <form [formGroup]="createForm">
 
-     <div layout="row" class="pad-bottom">
+    <div layout="row" class="pad-bottom">
       <md-input-container flex mdTooltip="Please insert code">
         <input mdInput
                placeholder="Code"
                formControlName="code" flex/>
       </md-input-container>
-    </div>  
-   
-    <!--<div layout="row" class="pad-bottom">
-      <md-input-container flex mdTooltip="Please insert canonicalCode">
-        <input mdInput
-               placeholder="Canonical Code"
-               formControlName="canonicalCode" flex/>
-      </md-input-container>
-    </div>  -->
+    </div>
 
     <div layout="row" class="pad-bottom">
       <md-input-container flex mdTooltip="Please insert capacity">
         <input mdInput
                placeholder="Capacity"
-               formControlName="capacity" flex/>
+               formControlName="capacity" type="number" flex/>
       </md-input-container>
-    </div> 
-    
-      <!--<div layout="row" class="pad-bottom">
+    </div>
+
+    <div layout="row" class="pad-bottom">
       <md-input-container flex mdTooltip="Please insert titleMs">
         <input mdInput
                placeholder="titleMs"
                formControlName="titleMs" flex/>
       </md-input-container>
-    </div> -->
-    
-      <!--<div layout="row" class="pad-bottom">
+    </div>
+
+    <div layout="row" class="pad-bottom">
       <md-input-container flex mdTooltip="Please insert titleEn">
         <input mdInput
                placeholder="titleEn"
                formControlName="titleEn" flex/>
       </md-input-container>
-    </div> 
-   -->
- <div layout="row" class="pad-bottom pad-top" >
-       <pams-course-select mdTooltip="Please select course"
-        [placeholder]="'Select Course'"
-        [innerFormControl]="createForm.controls['course']">
+    </div>
+
+    <div layout="row" class="pad-bottom pad-top">
+      <pams-course-select mdTooltip="Please select course"
+                          [placeholder]="'Select Course'"
+                          [innerFormControl]="createForm.controls.course">
       </pams-course-select>
-    </div> 
-    
-     <div layout="row" class="pad-bottom pad-top">
+    </div>
+
+    <div layout="row" class="pad-bottom pad-top">
       <pams-program-select mdTooltip="Please select program"
-        [placeholder]="'Select Program'"
-        [innerFormControl]="createForm.controls['program']">
+                           [placeholder]="'Select Program'"
+                           [innerFormControl]="createForm.controls.program">
       </pams-program-select>
-    </div> 
-    
-     <div layout="row" class="pad-bottom pad-top">
+    </div>
+
+    <div layout="row" class="pad-bottom pad-top">
       <pams-academic-session-select mdTooltip="Please select academic session"
-        [placeholder]="'Select Session'"
-        [innerFormControl]="createForm.controls['academicSession']">
+                                    [placeholder]="'Select Session'"
+                                    [innerFormControl]="createForm.controls['academicSession']">
       </pams-academic-session-select>
 
     </div>
@@ -67,8 +59,8 @@
   </form>
 </md-dialog-content>
 <md-dialog-actions align="end">
-<button md-raised-button color="accent" (click)="submit(createForm.value, createForm.valid)">
-     {{edit ? 'Update' : 'Save'}}
+  <button md-raised-button color="accent" (click)="submit(createForm.value, createForm.valid)">
+    {{edit ? 'Update' : 'Save'}}
   </button>
 </md-dialog-actions>
 

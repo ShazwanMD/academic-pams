@@ -1,3 +1,4 @@
+
 import { Actor } from './../../../identity/actor.interface';
 import { StudyCenter } from './../../../setup/study-centers/study-center.interface';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -22,15 +23,24 @@ import { Student } from "../../../identity/student.interface";
 export class AdmissionApplicationTaskCreatorDialog implements OnInit {
 
   private createForm: FormGroup;
+  private create: boolean = false;
+  private _admissionApplication: AdmissionApplication;
+
   constructor(private formBuilder: FormBuilder,
     private store: Store<TermModuleState>,
     private actions: AdmissionApplicationActions,
     private router: Router,
     private route: ActivatedRoute,
     private vcf: ViewContainerRef,
-    private dialog: MdDialogRef<AdmissionApplicationTaskCreatorDialog>) {
+    private dialog: MdDialogRef<AdmissionApplicationTaskCreatorDialog>)
+  // private dialog: MdDialogRef<AdmissionApplicationTaskCreatorDialog>)
+    {
   }
 
+  set admissionApplication(value: AdmissionApplication) {
+    this._admissionApplication = value;
+    this.create = true;
+  }
   ngOnInit(): void {
     this.createForm = this.formBuilder.group(<AdmissionApplication>{
       id: null,
@@ -46,10 +56,17 @@ export class AdmissionApplicationTaskCreatorDialog implements OnInit {
       program: <Program>{},
       studyCenter: <StudyCenter>{},
     });
+    if (this.create) this.createForm.patchValue(this._admissionApplication);
   }
 
-  save(admissionApplication: AdmissionApplication, isValid: boolean) {
-    this.store.dispatch(this.actions.startAdmissionApplicationTask(admissionApplication));
-    this.dialog.close();
-  }
+  // save(admissionApplication: AdmissionApplication, isValid: boolean) {
+  //   this.store.dispatch (this.actions.addAmissionApplication(admissionApplication));
+  //   this.dialog.close();
+  
+  
+  // save(admissionApplication: AdmissionApplication, isValid: boolean) {
+  //   this.store.dispatch(this.actions.startAdmissionApplicationTask(admissionApplication));
+  //   this.dialog.close();
+  // }
+
 }

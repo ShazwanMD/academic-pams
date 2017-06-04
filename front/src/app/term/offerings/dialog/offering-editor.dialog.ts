@@ -1,15 +1,9 @@
-import {Component, ViewContainerRef, OnInit} from '@angular/core';
-import {FormGroup, FormControl} from '@angular/forms';
+import {Component, OnInit} from '@angular/core';
+import {FormGroup} from '@angular/forms';
 import {FormBuilder} from '@angular/forms';
 import {Router, ActivatedRoute} from '@angular/router';
-import {IdentityService} from "../../../../services/identity.service";
-import {CommonService} from "../../../../services/common.service";
-import {PlannerService} from "../../../../services/planner.service";
-import {TermService} from "../../../../services/term.service";
 import {Offering} from "../offering.interface";
-//import {Course} from "../../planner/courses/course.interface";
 import {OfferingActions} from "../offering.action";
-import {MdDialog} from '@angular/material';
 import {MdDialogRef} from "@angular/material";
 import {Store} from "@ngrx/store";
 import {AcademicSession} from "../../../planner/academic-sessions/academic-session.interface";
@@ -22,14 +16,16 @@ import {TermModuleState} from "../../index";
   templateUrl: './offering-editor.dialog.html',
 })
 
+// note(uda): need to clean this up further
+// note: lots of unused _xxx
 export class OfferingEditorDialog implements OnInit {
 
-  //private offering: Offering;
   private createForm: FormGroup;
   private edit: boolean = false;
   private _offering: Offering;
-    
-  
+  private _program: Program;
+  private _course: Course;
+
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -38,45 +34,57 @@ export class OfferingEditorDialog implements OnInit {
               private actions: OfferingActions,
               public dialog: MdDialogRef<OfferingEditorDialog>) {
   }
-    
-    set offering(value: Offering) {
+
+  set offering(value: Offering) {
     this._offering = value;
     this.edit = true;
   }
-  
- 
+
+
+  set program(value: Program) {
+    this._program = value;
+    this.edit = true;
+  }
+
+  set course(value: Course) {
+    this._course = value;
+    this.edit = true;
+  }
+
   ngOnInit(): void {
     this.createForm = this.formBuilder.group(<Offering>{
       id: null,
       code: '',
       canonicalCode: '',
       capacity: 0,
-      titleMs:'',
-      titleEn:'',
-      academicSession:<AcademicSession>{},
+      titleMs: '',
+      titleEn: '',
+      academicSession: <AcademicSession>{},
       course: <Course>{},
       program: <Program>{},
-        
     });
-
-   if (this.edit) this.createForm.patchValue(this._offering);
+    if (this.edit) this.createForm.patchValue(this._offering);
   }
 
- /* submit(offering: Offering, isValid: boolean) {
-      console.log(JSON.stringify(offering));
-      this.store.dispatch(this.actions.saveOffering(offering));
-      this.dialog.close();
-    }
- */
-    
-    //submit update button
-     submit(offering: Offering, isValid: boolean) {
-     console.log(JSON.stringify(offering));
-    if (!offering.id) this.store.dispatch(this.actions.saveOffering(offering));
+  submit(offering: Offering, isValid: boolean) {
+    // workaround
+    this._program = offering.program;
+    this._course = offering.course;
+
+    // console.log(JSON.stringify(offering));
+    console.log("program: " + JSON.stringify(this._program));
+    console.log("course: " + JSON.stringify(this._course));
+
+    offering.canonicalCode = this._program.code + "-" + this._course.code;
+    console.log("code:" + this._program.code);
+    console.log("courseCode:" + this._course.code);
+    console.log("conicalCode:" + offering.canonicalCode);
+
+    if (!this.edit) this.store.dispatch(this.actions.saveOffering(this._program, this._course, offering));
     else  this.store.dispatch(this.actions.updateOffering(offering));
     this.dialog.close();
-    console.log(offering);
-
   }
 }
+
+
 

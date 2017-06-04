@@ -399,13 +399,10 @@ public class PlannerController {
 	@RequestMapping(value = "/cohorts/{code}", method = RequestMethod.PUT)
 	public ResponseEntity<String> updateCohort(@PathVariable String code, @RequestBody Cohort vo) {
 		dummyLogin();
-
+		
 		AdCohort cohort = plannerService.findCohortByCode(code);
 		cohort.setCode(vo.getCode());
 		cohort.setDescription(vo.getDescription());
-		cohort.setSession(plannerService.findAcademicSessionByCode(vo.getAcademicSession().getCode()));
-		cohort.setProgram(plannerService.findProgramByCode(vo.getProgram().getCode()));
-		cohort.setClassification(AdAcademicClassification.get(vo.getClassification().ordinal()));
 		plannerService.updateCohort(cohort);
 		return new ResponseEntity<String>("Success", HttpStatus.OK);
 	}

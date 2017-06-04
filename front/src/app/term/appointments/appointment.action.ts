@@ -5,10 +5,10 @@ import {Action} from '@ngrx/store';
 export class AppointmentActions {
 
   static FIND_APPOINTMENT_BY_ID = '[Appointment] Find Appointment By Id';
-  findAppointmentById(id): Action {
+  findAppointmentById(appointment): Action {
     return {
       type: AppointmentActions.FIND_APPOINTMENT_BY_ID,
-      payload: id
+      payload: appointment
     };
   }
 
@@ -17,6 +17,27 @@ export class AppointmentActions {
     return {
       type: AppointmentActions.FIND_APPOINTMENT_BY_ID_SUCCESS,
       payload: appointment
+    };
+  }
+  
+  //find appointments by section
+  static FIND_APPOINTMENTS_BY_SECTION = '[Appointment] Find Appointments By Section';
+
+  findAppointmentsBySection(section): Action {
+    console.log("findAppointmentsBySection");
+    return {
+      type: AppointmentActions.FIND_APPOINTMENTS_BY_SECTION,
+      payload: section
+    };
+  }
+
+  static FIND_APPOINTMENTS_BY_SECTION_SUCCESS = '[Appointment] Find Appointments By Section Success';
+
+  findAppointmentsBySectionSuccess(appointments): Action {
+    console.log("findAppointmentsBySectionSuccess");
+    return {
+      type: AppointmentActions.FIND_APPOINTMENTS_BY_SECTION_SUCCESS,
+      payload: appointments
     };
   }
 
@@ -56,11 +77,11 @@ export class AppointmentActions {
       //update section for capacity and ordinal
     static UPDATE_APPOINTMENT = '[Appointment] Update Appointment';
 
-  updateAppointment(offering, appointment): Action {
+  updateAppointment(section, appointment): Action {
     console.log("updateAppointment");
     return {
       type: AppointmentActions.UPDATE_APPOINTMENT,
-      payload: {offering:offering, appointment:appointment}
+      payload: {section:section, appointment:appointment}
     };
   }
 

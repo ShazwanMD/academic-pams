@@ -13,10 +13,10 @@ export class AdmissionApplicationListComponent {
   @Output() view = new EventEmitter<AdmissionApplication>();
 
   private columns: any[] = [
-    { name: 'auditNo', label: 'Audit No' },
-    // { name: 'description', label: 'Description' },
+    // { name: 'auditNo', label: 'Audit No' },
+    { name: 'referenceNo', label: 'Reference No' },
+    { name: 'description', label: 'Description' },
     // { name: 'sourceNo', label: 'Source No' },
-    // { name: 'referenceNo', label: 'Reference No' },
     // { name: 'cancelComment', label: 'Cancel Comment' },
     // { name: 'removeComment', label: 'Remove Comment' },
     { name: 'advisor.identityNo', label: 'Advisor' },
@@ -25,6 +25,6 @@ export class AdmissionApplicationListComponent {
     { name: 'student.identityNo', label: 'Student' },
     { name: 'studyCenter.code', label: 'Study Center' },
     { name: 'action', label: '' }
-    
+
   ];
 }

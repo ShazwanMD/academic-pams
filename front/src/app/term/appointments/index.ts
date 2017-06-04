@@ -17,10 +17,9 @@ import {AppointmentDetailPage} from "./appointment-detail.page";
 import {AppointmentComponent} from "./component/appointment.component";
 import {AppointmentStatusSelectComponent} from "./component/appointment-status-select.component";
 import {AppointmentEditorDialog} from "./dialog/appointment-editor.dialog";
-import {AppointmentCreateTaskCreatorDialog} from "./dialog/appointment-create-task-creator.dialog";
-import {AppointmentUpdateTaskCreatorDialog} from "./dialog/appointment-update-task-creator.dialog";
 import {SectionSubModule} from "../sections/index";
 import {IdentityModule} from "../../identity/index";
+import { AppointmentActionComponent } from "./component/appointment-action.component";
 
 @NgModule({
   imports: [
@@ -30,7 +29,7 @@ import {IdentityModule} from "../../identity/index";
     CovalentCoreModule.forRoot(),
     SectionSubModule.forRoot(),
     IdentityModule.forRoot(),
-    EffectsModule.run(AppointmentEffects),
+    EffectsModule.run(AppointmentEffects)
   ],
   declarations: [
     // page
@@ -40,18 +39,17 @@ import {IdentityModule} from "../../identity/index";
     AppointmentListComponent,
     AppointmentComponent,
     AppointmentStatusSelectComponent,
+    AppointmentActionComponent,
 
     //dialog
     AppointmentEditorDialog,
-    AppointmentCreateTaskCreatorDialog,
-    AppointmentUpdateTaskCreatorDialog,
 
   ],
   exports: [
-    AppointmentCreateTaskCreatorDialog
+    AppointmentEditorDialog,
   ],
   entryComponents: [
-    AppointmentCreateTaskCreatorDialog,
+    AppointmentEditorDialog,
   ],
 })
 

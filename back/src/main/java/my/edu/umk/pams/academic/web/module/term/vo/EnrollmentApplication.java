@@ -13,98 +13,98 @@ import java.io.IOException;
  */
 public class EnrollmentApplication extends Document {
 
-	private String referenceNo;
-	private String sourceNo;
-	private String auditNo;
-	private String description;
-	private String removeComment;
-	private String cancelComment;
-	private Admission admission;
-	private AcademicSession academicSession;
-	private EnrollmentApplicationType enrollmentApplicationType;
+    private String referenceNo;
+    private String sourceNo;
+    private String auditNo;
+    private String description;
+    private String removeComment;
+    private String cancelComment;
+    private Admission admission;
+    private AcademicSession academicSession;
+    private EnrollmentApplicationType applicationType;
 
-	public String getReferenceNo() {
-		return referenceNo;
-	}
+    public String getReferenceNo() {
+        return referenceNo;
+    }
 
-	public void setReferenceNo(String referenceNo) {
-		this.referenceNo = referenceNo;
-	}
+    public void setReferenceNo(String referenceNo) {
+        this.referenceNo = referenceNo;
+    }
 
-	public String getSourceNo() {
-		return sourceNo;
-	}
+    public String getSourceNo() {
+        return sourceNo;
+    }
 
-	public void setSourceNo(String sourceNo) {
-		this.sourceNo = sourceNo;
-	}
+    public void setSourceNo(String sourceNo) {
+        this.sourceNo = sourceNo;
+    }
 
-	public String getAuditNo() {
-		return auditNo;
-	}
+    public String getAuditNo() {
+        return auditNo;
+    }
 
-	public void setAuditNo(String auditNo) {
-		this.auditNo = auditNo;
-	}
+    public void setAuditNo(String auditNo) {
+        this.auditNo = auditNo;
+    }
 
-	public String getDescription() {
-		return description;
-	}
+    public String getDescription() {
+        return description;
+    }
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
-	public String getRemoveComment() {
-		return removeComment;
-	}
+    public String getRemoveComment() {
+        return removeComment;
+    }
 
-	public void setRemoveComment(String removeComment) {
-		this.removeComment = removeComment;
-	}
+    public void setRemoveComment(String removeComment) {
+        this.removeComment = removeComment;
+    }
 
-	public String getCancelComment() {
-		return cancelComment;
-	}
+    public String getCancelComment() {
+        return cancelComment;
+    }
 
-	public void setCancelComment(String cancelComment) {
-		this.cancelComment = cancelComment;
-	}
+    public void setCancelComment(String cancelComment) {
+        this.cancelComment = cancelComment;
+    }
 
-	public Admission getAdmission() {
-		return admission;
-	}
+    public Admission getAdmission() {
+        return admission;
+    }
 
-	public void setAdmission(Admission admission) {
-		this.admission = admission;
-	}
+    public void setAdmission(Admission admission) {
+        this.admission = admission;
+    }
 
-	public AcademicSession getAcademicSession() {
-		return academicSession;
-	}
+    public AcademicSession getAcademicSession() {
+        return academicSession;
+    }
 
-	public void setAcademicSession(AcademicSession academicSession) {
-		this.academicSession = academicSession;
-	}
+    public void setAcademicSession(AcademicSession academicSession) {
+        this.academicSession = academicSession;
+    }
 
-	public EnrollmentApplicationType getEnrollmentApplicationType() {
-		return enrollmentApplicationType;
-	}
+    public EnrollmentApplicationType getApplicationType() {
+        return applicationType;
+    }
 
-	public void setEnrollmentApplicationType(EnrollmentApplicationType enrollmentApplicationType) {
-		this.enrollmentApplicationType = enrollmentApplicationType;
-	}
+    public void setApplicationType(EnrollmentApplicationType applicationType) {
+        this.applicationType = applicationType;
+    }
 
-	@JsonCreator
-	public static EnrollmentApplication create(String jsonString) {
-		EnrollmentApplication o = null;
-		try {
-			ObjectMapper mapper = new ObjectMapper();
-			o = mapper.readValue(jsonString, EnrollmentApplication.class);
-		} catch (IOException e) {
-			// handle
-		}
-		return o;
-	}
+    @JsonCreator
+    public static EnrollmentApplication create(String jsonString) {
+        EnrollmentApplication o = null;
+        try {
+            ObjectMapper mapper = new ObjectMapper();
+            o = mapper.readValue(jsonString, EnrollmentApplication.class);
+        } catch (IOException e) {
+            // handle
+        }
+        return o;
+    }
 
 }

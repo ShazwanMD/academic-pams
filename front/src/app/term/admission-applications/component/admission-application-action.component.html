@@ -1,0 +1,52 @@
+<md-card>
+
+    <md-card-title>Action</md-card-title>
+    <md-card-subtitle>Actions available on current offering</md-card-subtitle>
+    <md-divider></md-divider>
+
+    <md-nav-list flex dense>
+
+        <md-list-item (click)="editDialog()">
+            <md-icon md-list-avatar>done_all</md-icon>
+            <h4 md-line>Edit Admission Application</h4>
+            <p md-line>Edit this application </p>
+        </md-list-item>
+
+        <md-list-item [routerLink]="['/term/admission-applications']">
+            <md-icon md-list-avatar>done_all</md-icon>
+            <h4 md-line>Create New Admission Application</h4>
+            <p md-line>Create new application </p>
+        </md-list-item>
+
+        <md-list-item [routerLink]="['/term/admission-applications']">
+            <md-icon md-list-avatar>done_all</md-icon>
+            <h4 md-line>Approve Application</h4>
+            <p md-line>Approve</p>
+        </md-list-item>
+
+        <md-divider></md-divider>
+    </md-nav-list>
+
+
+    <md-card-title>Term Menu</md-card-title>
+    <md-card-subtitle>Go to previous menu
+    </md-card-subtitle>
+    <md-divider></md-divider>
+
+    <md-nav-list flex dense>
+        <md-list-item [routerLink]="['/term/admissions']">
+            <md-icon md-list-avatar>menu</md-icon>
+            <h4 md-line>Admissions</h4>
+            <p md-line>Watch this admissions</p>
+        </md-list-item>
+
+        <md-list-item [routerLink]="['/term/offerings']">
+            <md-icon md-list-avatar>menu</md-icon>
+            <h4 md-line>Offerings</h4>
+            <p md-line>Watch this offerings</p>
+        </md-list-item>
+
+        <md-divider></md-divider>
+
+    </md-nav-list>
+</md-card>

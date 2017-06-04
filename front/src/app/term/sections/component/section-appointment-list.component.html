@@ -1,0 +1,45 @@
+<md-card>
+  <div toolbar-buttons layout="row" layout-align="start center" flex>
+    <md-card-title>Appointments</md-card-title>
+    <md-chip-list *ngIf="appointments?.length > 0">
+      <md-chip color="accent">{{appointments?.length}}</md-chip>
+    </md-chip-list>
+    <span flex></span>
+    <button md-button class="md-icon-button" (click)="showDialog()">
+      <md-icon class="md-24 tc-grey-700">add</md-icon>
+    </button>
+    <button md-button class="md-icon-button" (click)="deleteAppointment(row)" mdTooltip="Delete selected appointments">
+      <md-icon class="md-24 tc-grey-700">delete</md-icon>
+    </button>
+  </div>
+  <md-divider></md-divider>
+  <md-card-content>
+    <td-data-table
+      [data]="appointments"
+      [columns]="columns"
+      [sortBy]="summary"
+      [sortOrder]="ASC"
+      [sortable]="false"
+      [multiple]="true"
+      [selectable]="true" dense>
+      <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
+        <div layout="row">
+          <span flex>{{value}}</span>
+        </div>
+      </template>
+      <template tdDataTableTemplate="action" let-value="value" let-row="row"
+                let-column="column">
+        <div layout="row">
+          <button md-icon-button [md-menu-trigger-for]="menu1" mdTooltip="Select section actions">
+            <md-icon>more_vert</md-icon>
+          </button>
+          <md-menu x-position="before" #menu1="mdMenu">
+            <button md-menu-item [routerLink]="['/term/appointments', row['id']]">View appointment details</button>
+            <button md-menu-item (click)="editDialog(row, true)">Update appointment</button>
+            <button md-menu-item (click)="deleteAppointment(row)">Delete appointment</button>
+          </md-menu>
+        </div>
+      </template>
+    </td-data-table>
+  </md-card-content>
+</md-card>

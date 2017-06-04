@@ -1,3 +1,6 @@
+import {PlannerService} from './../../../services/planner.service';
+import {CourseActions} from './../../planner/courses/course.action';
+import {ProgramActions} from './../../planner/programs/program.action';
 import {Injectable} from '@angular/core';
 import {Effect, Actions} from '@ngrx/effects';
 import {OfferingActions} from "./offering.action";
@@ -14,7 +17,10 @@ export class OfferingEffects {
 
   constructor(private actions$: Actions,
               private offeringActions: OfferingActions,
+              private programActions: ProgramActions,
+              private courseActions: CourseActions,
               private termService: TermService,
+              private plannerService: PlannerService,
               private store$: Store<TermModuleState>) {
   }
 
@@ -31,8 +37,6 @@ export class OfferingEffects {
     .mergeMap(action => from([action,
       this.offeringActions.findSectionsByOffering(action.payload),
       this.offeringActions.findAssessmentsByOffering(action.payload),
-      this.offeringActions.findEnrollmentsByOffering(action.payload),
-      this.offeringActions.findAppointmentsByOffering(action.payload)
     ]));
 
   @Effect() findSectionsByOffering$ = this.actions$
@@ -47,18 +51,6 @@ export class OfferingEffects {
     .switchMap(offering => this.termService.findAssessmentsByOffering(offering))
     .map(sections => this.offeringActions.findAssessmentsByOfferingSuccess(sections));
 
-  @Effect() findEnrollmentsByOffering$ = this.actions$
-    .ofType(OfferingActions.FIND_ENROLLMENTS_BY_OFFERING)
-    .map(action => action.payload)
-    .switchMap(offering => this.termService.findEnrollmentsByOffering(offering))
-    .map(sections => this.offeringActions.findEnrollmentsByOfferingSuccess(sections));
-
-  @Effect() findAppointmentsByOffering$ = this.actions$
-    .ofType(OfferingActions.FIND_APPOINTMENTS_BY_OFFERING)
-    .map(action => action.payload)
-    .switchMap(offering => this.termService.findAppointmentsByOffering(offering))
-    .map(sections => this.offeringActions.findAppointmentsByOfferingSuccess(sections));
-
   @Effect() findGradebookMatrices = this.actions$
     .ofType(OfferingActions.FIND_GRADEBOOK_MATRICESS_BY_OFFERING)
     .map(action => action.payload)
@@ -68,10 +60,12 @@ export class OfferingEffects {
   @Effect() saveOffering$ = this.actions$
     .ofType(OfferingActions.SAVE_OFFERING)
     .map(action => action.payload)
-    .switchMap(offering => this.termService.saveOffering(offering))
+    .switchMap(payload => this.termService.saveOffering(payload.program, payload.course, payload.offering))
     .map(offering => this.offeringActions.saveOfferingSuccess(offering))
-    .switchMap(() => this.termService.findOfferings())
-    .map(offerings => this.offeringActions.findOfferingsSuccess(offerings));
+    .mergeMap(action => from([action,
+      this.offeringActions.findOfferings()
+    ]));
+
 
   @Effect() updateOfferings$ = this.actions$
     .ofType(OfferingActions.UPDATE_OFFERING)

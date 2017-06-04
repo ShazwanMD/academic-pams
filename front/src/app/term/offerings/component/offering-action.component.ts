@@ -25,7 +25,7 @@ export class OfferingActionComponent {
 
   updateDialog(): void {
     console.log("open offering dialog");
-    console.log(this.offering);
+    console.log(this.offering.code);
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
     config.role = 'dialog';
