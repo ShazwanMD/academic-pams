@@ -1,4 +1,4 @@
-export enum AdmissionStanding {
+export enum AcademicStanding {
    
     TBD, //0
     KB,
