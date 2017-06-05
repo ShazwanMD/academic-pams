@@ -11,7 +11,7 @@
       </md-input-container>
     </div> 
     
-     <div layout="row" class="pad-bottom">
+     <!--<div layout="row" class="pad-bottom">
       <md-input-container flex mdTooltip="Please insert titleMs">
         <input mdInput
                placeholder="titleMs"
@@ -26,7 +26,29 @@
                formControlName="titleEn" flex/>
       </md-input-container>
     </div>
-    
+    -->
+
+    <div layout="row" class="pad-bottom pad-top">
+      <pams-course-select mdTooltip="Please select course"
+                          [placeholder]="'Select Course'"
+                          [innerFormControl]="createForm.controls.course">
+      </pams-course-select>
+    </div>
+
+    <div layout="row" class="pad-bottom pad-top">
+      <pams-program-select mdTooltip="Please select program"
+                           [placeholder]="'Select Program'"
+                           [innerFormControl]="createForm.controls.program">
+      </pams-program-select>
+    </div>
+
+    <div layout="row" class="pad-bottom pad-top">
+      <pams-academic-session-select mdTooltip="Please select academic session"
+                                    [placeholder]="'Select Session'"
+                                    [innerFormControl]="createForm.controls['academicSession']">
+      </pams-academic-session-select>
+
+    </div>
  
   </form>
 </md-dialog-content>

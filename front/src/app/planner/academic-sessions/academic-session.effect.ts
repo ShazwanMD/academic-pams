@@ -48,4 +48,22 @@ export class AcademicSessionEffects {
     .map(state => state[1])
     .map((academicSession: AcademicSession) => this.academicSessionActions.findAcademicSessionByCode(academicSession.code));
 
+  @Effect() saveAcademicSession$ = this.actions$
+    .ofType(AcademicSessionActions.SAVE_ACADEMIC_SESSION)
+    .map(action => action.payload)
+    .switchMap(academicSession => this.plannerService.saveAcademicSession(academicSession))
+    .map(academicSession => this.academicSessionActions.saveAcademicSessionSuccess(academicSession))
+    .withLatestFrom(this.store$.select(...this.ACADEMIC_SESSION))
+    .map(state => state[1])
+   .map((academicSession: AcademicSession) => this.academicSessionActions.findAcademicSessionByCode(academicSession.code));
+
+  @Effect() updateAcademicSession$ = this.actions$
+    .ofType(AcademicSessionActions.UPDATE_ACADEMIC_SESSION)
+    .map(action => action.payload)
+    .switchMap(academicSession => this.plannerService.updateAcademicSession(academicSession))
+    .map(academicSession => this.academicSessionActions.updateAcademisSessionSuccess(academicSession))
+    .withLatestFrom(this.store$.select(...this.ACADEMIC_SESSION))
+    .map(state => state[1])
+    .map((academicSession: AcademicSession) => this.academicSessionActions.findAcademicSessionByCode(academicSession.code));
+
 }

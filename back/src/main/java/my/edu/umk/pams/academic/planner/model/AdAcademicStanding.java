@@ -28,6 +28,10 @@ public enum AdAcademicStanding {
     public void setDescription(String description) {
         this.description = description;
     }
+    
+    public static AdAcademicStanding get(int index) {
+        return values()[index];
+    }
 }
 
 

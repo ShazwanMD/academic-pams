@@ -53,8 +53,15 @@ export class AcademicSessionCreatorDialog implements OnInit {
 
     save(academicSession: AcademicSession, isValid: boolean) {
         console.log("saving academic session");
-        if (!academicSession.id) this.store.dispatch(this.actions.saveAcademicSession(academicSession));
+
+        if (!this.create) this.store.dispatch (this.actions.saveAcademicSession(this._academicSession));
         else this.store.dispatch(this.actions.updateAcademicSession(academicSession));
         this.dialog.close();
+
+
+        
+        // if (!academicSession.id) this.store.dispatch(this.actions.saveAcademicSession(academicSession));
+        // else this.store.dispatch(this.actions.updateAcademicSession(academicSession));
+        // this.dialog.close();
     }
 }

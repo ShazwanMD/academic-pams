@@ -4,6 +4,8 @@ import my.edu.umk.pams.academic.common.service.CommonService;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.identity.service.IdentityService;
 import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
+import my.edu.umk.pams.academic.planner.model.AdAcademicStanding;
+import my.edu.umk.pams.academic.planner.model.AdAdmissionStatus;
 import my.edu.umk.pams.academic.planner.model.AdAppointmentStatus;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
 import my.edu.umk.pams.academic.security.integration.AdAutoLoginToken;
@@ -91,6 +93,24 @@ public class TermController {
 
 	// workflow
 
+	@RequestMapping(value = "/admissions", method = RequestMethod.POST)
+	public ResponseEntity<String> saveAdmission(@RequestBody Admission vo) {
+		dummyLogin();
+		AdAdmission admission= new AdAdmissionImpl();
+		admission.setCgpa(vo.getCgpa());
+		admission.setCreditEarned(vo.getCreditEarned());
+		admission.setCreditTaken(vo.getCreditTaken());
+		admission.setGpa(vo.getGpa());
+		admission.setStatus(AdAdmissionStatus.get(vo.getStatus().ordinal()));
+		admission.setStanding(AdAcademicStanding.get(vo.getStanding().ordinal()));
+		admission.setCohort(plannerService.findCohortByCode(vo.getCohort().getCode()));
+		admission.setStudent(identityService.findStudentByMatricNo(vo.getStudent().getIdentityNo()));
+		admission.setStudyCenter(commonService.findStudyCenterByCode(vo.getStudyCenter().getCode()));
+		admission.setSession(plannerService.findAcademicSessionByCode(vo.getAcademicSession().getCode()));
+		termService.saveAdmission(admission);		
+		return new ResponseEntity<String>("Success", HttpStatus.OK)	;
+	}
+	
 	@RequestMapping(value = "/admissionApplications", method = RequestMethod.GET)
 	public ResponseEntity<List<AdmissionApplication>> findAdmissionsApplications() {
 		AdAcademicSession academicSession = plannerService.findCurrentAcademicSession();
@@ -571,7 +591,7 @@ public class TermController {
 
 		throw new UnsupportedOperationException();
 	}
-
+    //delete section by offering
 	@RequestMapping(value = "/offerings/{canonicalCode}/sections/{sectionId}", method = RequestMethod.DELETE)
 	public ResponseEntity<String> deleteSection(@PathVariable String canonicalCode, @PathVariable Long sectionId) {
 		dummyLogin();
@@ -645,7 +665,8 @@ public class TermController {
 		AdOffering offering = termService.findOfferingByCanonicalCode(canonicalCode);
 		AdSection section = termService.findSectionById(vo.getSection().getId());
 		AdAppointment appointment = new AdAppointmentImpl();
-		appointment.setStatus(AdAppointmentStatus.CONFIRMED);
+		appointment.setStatus(AdAppointmentStatus.get(vo.getAppointmentStatus().ordinal()));
+		//appointment.setStatus(AdAppointmentStatus.CONFIRMED);
 		appointment.setSection(section);
 		appointment.setStaff(identityService.findStaffById(vo.getStaff().getId()));
 		termService.addAppointment(section, appointment);
@@ -666,6 +687,19 @@ public class TermController {
 			return new ResponseEntity<String>("Success", HttpStatus.OK);
 		}
 
+				
+		 //delete appointment by section
+		@RequestMapping(value = "/sections/{canonicalCode}/appointments/{appointmentId}", method = RequestMethod.DELETE)
+		public ResponseEntity<String> removeAppointment(@PathVariable String canonicalCode, @PathVariable Long appointmentId) {
+			dummyLogin();
+
+			LOG.debug("appointment:{}", appointmentId);
+			AdSection section = termService.findSectionByCanonicalCode(canonicalCode);
+			AdAppointment appointment = termService.findAppointmentById(appointmentId);
+			termService.removeAppointment(section, appointment);
+			return new ResponseEntity<String>("Success", HttpStatus.OK);
+		}
+		
 	@RequestMapping(value = "/sections/{canonicalCode}/enrollments", method = RequestMethod.GET)
 	public ResponseEntity<List<Enrollment>> findEnrollmentsBySection(@PathVariable String canonicalCode) {
 		AdSection section = termService.findSectionByCanonicalCode(canonicalCode);

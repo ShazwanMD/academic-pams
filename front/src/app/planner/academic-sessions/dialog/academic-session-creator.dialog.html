@@ -39,15 +39,15 @@
     </pams-academic-semester-select>
   </div>
 
-  <!-- <div layout="row" class="pad-bottom pad-top" >
+   <div layout="row" class="pad-bottom pad-top" >
        <pams-academic-year-select
         [placeholder]="'Select Academic Year'"
-        [innerFormControl]="createForm.controls['year']">
+        [innerFormControl]="createForm.controls['academicYear']">
       </pams-academic-year-select>
-    </div> -->
+    </div> 
 
 </form>
 
 <md-dialog-actions align="end">
-  <button md-raised-button color="accent" (click)="save(createForm.value, createForm.valid)">Save</button>
+  <button md-raised-button color="accent" (click)="save(createForm.value, createForm.valid)">    {{edit ? 'Update' : 'Save'}}</button>
 </md-dialog-actions>

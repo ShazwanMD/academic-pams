@@ -58,19 +58,22 @@ export class AppointmentActions {
     };
   }
  
+  //remove appointment
   static REMOVE_APPOINTMENT = '[Appointment] Remove Appointment';
   removeAppointment(section,appointment): Action {
+       console.log("deleteAppointment");
     return {
       type: AppointmentActions.REMOVE_APPOINTMENT,
-      payload: appointment
+       payload: { section: section, appointment: appointment }
     };
   }
 
   static REMOVE_APPOINTMENT_SUCCESS = '[Appointment] Remove Appointment Success';
-  removeAppointmentSuccess(appointment): Action {
+  removeAppointmentSuccess(message): Action {
+       console.log("removeAppointmentSuccess");
     return {
       type: AppointmentActions.REMOVE_APPOINTMENT_SUCCESS,
-      payload: appointment
+      payload: message
     };
   }
     

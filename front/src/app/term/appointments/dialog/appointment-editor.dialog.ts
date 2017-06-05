@@ -54,7 +54,8 @@ export class AppointmentEditorDialog implements OnInit {
       section: <Section>{},
       course: <Course>{},
       offering: <Offering>{},
-      appointmentStatus: AppointmentStatus.NEW
+      appointmentStatus: <AppointmentStatus>{},
+      // appointmentStatus: AppointmentStatus.NEW
     });
 
     // set offering by default
