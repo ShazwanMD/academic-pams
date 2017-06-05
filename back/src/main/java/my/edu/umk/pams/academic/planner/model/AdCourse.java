@@ -26,6 +26,10 @@ public interface AdCourse extends AdMetaObject {
     Integer getCredit();
 
     void setCredit(Integer credit);
+    
+    AdCourseStatus getStatus();
+
+    void setStatus(AdCourseStatus status);
 
     AdAcademicClassification getClassification();
 

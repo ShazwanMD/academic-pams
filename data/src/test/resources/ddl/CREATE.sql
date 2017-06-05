@@ -417,6 +417,7 @@
         M_ST int4,
         TITLE_EN varchar(255) not null,
         TITLE_MS varchar(255) not null,
+        STATUS int4 not null,
         FACULTY_ID int8 not null,
         primary key (ID)
     );
@@ -696,7 +697,7 @@
         M_ST int4,
         NAME varchar(255) not null,
         PREFIX varchar(5),
-        status int4,
+        STATUS int4 not null,
         primary key (ID)
     );
 

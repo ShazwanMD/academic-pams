@@ -59,8 +59,8 @@ export class SectionAppointmentListComponent implements OnInit {
         let config = new MdDialogConfig();
         config.viewContainerRef = this.vcf;
         config.role = 'dialog';
-        config.width = '50%';
-        config.height = '80%';
+        config.width = '40%';
+        config.height = '40%';
         config.position = { top: '0px' };
         this.creatorDialogRef = this.dialog.open(AppointmentEditorDialog, config);
         this.creatorDialogRef.componentInstance.section = this.section;

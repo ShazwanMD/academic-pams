@@ -43,7 +43,7 @@ export class AcademicSessionEditorDialog implements OnInit {
             startDate: null,
             endDate: null,
             semester: AcademicSemester.SEMESTER_1,
-            year: <AcademicYear>{},
+            // year: <AcademicYear>{},
         });
 
         if (this.edit) this.editorForm.patchValue(this._academicSession);
