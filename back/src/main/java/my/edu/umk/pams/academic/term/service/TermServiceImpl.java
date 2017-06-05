@@ -1277,6 +1277,13 @@ public class TermServiceImpl implements TermService {
         appointmentDao.delete(appointment, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
+    
+    //remove appointment by section
+    @Override
+    public void removeAppointment(AdSection section, AdAppointment appointment) {
+    	sectionDao.removeAppointment(section, appointment, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
 
     @Override
     public AdGradebook findGradebookById(Long id) {
@@ -1518,4 +1525,6 @@ public class TermServiceImpl implements TermService {
         map.put(WorkflowConstants.CANCEL_DECISION, false);
         return map;
     }
+
+	
 }

@@ -14,6 +14,8 @@ export class CourseActions {
 
   static FIND_COURSES_SUCCESS = '[Course] Find Courses Success';
   findCoursesSuccess(courses): Action {
+    console.log("findCoursesSuccess");
+    console.log("courses: " + courses.length);
     return {
       type: CourseActions.FIND_COURSES_SUCCESS,
       payload: courses

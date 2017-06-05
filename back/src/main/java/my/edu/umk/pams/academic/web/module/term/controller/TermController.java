@@ -591,7 +591,7 @@ public class TermController {
 
 		throw new UnsupportedOperationException();
 	}
-
+    //delete section by offering
 	@RequestMapping(value = "/offerings/{canonicalCode}/sections/{sectionId}", method = RequestMethod.DELETE)
 	public ResponseEntity<String> deleteSection(@PathVariable String canonicalCode, @PathVariable Long sectionId) {
 		dummyLogin();
@@ -687,6 +687,19 @@ public class TermController {
 			return new ResponseEntity<String>("Success", HttpStatus.OK);
 		}
 
+				
+		 //delete appointment by section
+		@RequestMapping(value = "/sections/{canonicalCode}/appointments/{appointmentId}", method = RequestMethod.DELETE)
+		public ResponseEntity<String> removeAppointment(@PathVariable String canonicalCode, @PathVariable Long appointmentId) {
+			dummyLogin();
+
+			LOG.debug("appointment:{}", appointmentId);
+			AdSection section = termService.findSectionByCanonicalCode(canonicalCode);
+			AdAppointment appointment = termService.findAppointmentById(appointmentId);
+			termService.removeAppointment(section, appointment);
+			return new ResponseEntity<String>("Success", HttpStatus.OK);
+		}
+		
 	@RequestMapping(value = "/sections/{canonicalCode}/enrollments", method = RequestMethod.GET)
 	public ResponseEntity<List<Enrollment>> findEnrollmentsBySection(@PathVariable String canonicalCode) {
 		AdSection section = termService.findSectionByCanonicalCode(canonicalCode);

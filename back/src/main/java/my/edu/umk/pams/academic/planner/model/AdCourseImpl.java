@@ -29,6 +29,9 @@ public class AdCourseImpl implements AdCourse {
 
     @Column(name = "TITLE_MS", nullable = false)
     private String titleMs;
+    
+    @Column(name = "STATUS", nullable = false)
+    private AdCourseStatus status = AdCourseStatus.NEW;    
 
     @Column(name = "CREDIT", nullable = false)
     private Integer credit = 0;
@@ -89,6 +92,16 @@ public class AdCourseImpl implements AdCourse {
     @Override
     public void setTitleMs(String titleMs) {
         this.titleMs = titleMs;
+    }
+    
+    @Override
+    public AdCourseStatus getStatus() {
+        return status;
+    }
+
+    @Override
+    public void setStatus(AdCourseStatus status) {
+        this.status = status;
     }
 
     @Override

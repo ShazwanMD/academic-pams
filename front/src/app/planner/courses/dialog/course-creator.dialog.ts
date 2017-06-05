@@ -19,6 +19,10 @@ import {CourseStatus} from "../course-status.enum";
 export class CourseCreatorDialog implements OnInit {
 
   private creatorForm: FormGroup;
+  private create: boolean = false;
+  private _course:Course;
+  private faculty: Faculty;
+
 
   constructor(private formBuilder: FormBuilder,
               private store: Store<PlannerModuleState>,
@@ -29,20 +33,30 @@ export class CourseCreatorDialog implements OnInit {
               private dialog: MdDialogRef<CourseCreatorDialog>) {
   }
 
+   set program(value: Course) {
+        this._course = value;
+        this.create = true;
+    }
+
+
   ngOnInit(): void {
     this.creatorForm = this.formBuilder.group(<Course>{
       id: null,
       code: '',
       titleMs: '',
       titleEn: '',
-      status: CourseStatus.INACTIVATED,
+      status: CourseStatus.INACTIVE,
       faculty: <Faculty>{},
     });
+
+   if (this.create) this.creatorForm.patchValue(this._course);
   }
 
   submit(course: Course, isValid: boolean) {
-    console.log(JSON.stringify(course));
-    this.store.dispatch(this.actions.saveCourse(course));
-    this.dialog.close();
+     console.log("adding program");
+        if (!course.id) this.store.dispatch(this.actions.saveCourse(course));
+        else this.store.dispatch(this.actions.updateCourse(course));
+        this.dialog.close();
+        console.log(course);
   }
 }
