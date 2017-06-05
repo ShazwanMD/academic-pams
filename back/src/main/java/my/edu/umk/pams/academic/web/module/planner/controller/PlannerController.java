@@ -313,7 +313,7 @@ public class PlannerController {
 	}
 
 	// ====================================================================================================
-	// course
+	// Course
 	// ====================================================================================================
 
 	@RequestMapping(value = "/courses", method = RequestMethod.GET)
@@ -344,16 +344,26 @@ public class PlannerController {
 	}
 
 	@RequestMapping(value = "/courses/{code}/activate", method = RequestMethod.POST)
-	public ResponseEntity<String> activateCourse(@PathVariable String code, @RequestBody Course course) {
-		throw new UnsupportedOperationException();
-	
+	public ResponseEntity<String> activateCourse(@PathVariable String code) {
+		dummyLogin();
+		LOG.debug("activate course");
+		AdCourse course = plannerService.findCourseByCode(code);
+		course.setStatus(AdCourseStatus.ACTIVE);
+		plannerService.updateCourse(course);
+		return new ResponseEntity<String>(course.getCode(), HttpStatus.OK);
 	}
 
 	@RequestMapping(value = "/courses/{code}/deactivate", method = RequestMethod.POST)
-	public ResponseEntity<String> deactivateCourse(@PathVariable String code, @RequestBody Course course) {
-		throw new UnsupportedOperationException();
+	public ResponseEntity<String> deactivateCourse(@PathVariable String code) {
+		dummyLogin();
+		LOG.debug("deactivate course");
+		AdCourse course = plannerService.findCourseByCode(code);
+		course.setStatus(AdCourseStatus.INACTIVE);
+		plannerService.updateCourse(course);		
+		return new ResponseEntity<String>(course.getCode(), HttpStatus.OK);
 	}
-	
+
+
 	// ====================================================================================================
 	// academicYear
 	// ====================================================================================================
