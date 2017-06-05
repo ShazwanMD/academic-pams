@@ -4,6 +4,8 @@ import my.edu.umk.pams.academic.common.service.CommonService;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.identity.service.IdentityService;
 import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
+import my.edu.umk.pams.academic.planner.model.AdAcademicStanding;
+import my.edu.umk.pams.academic.planner.model.AdAdmissionStatus;
 import my.edu.umk.pams.academic.planner.model.AdAppointmentStatus;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
 import my.edu.umk.pams.academic.security.integration.AdAutoLoginToken;
@@ -91,6 +93,24 @@ public class TermController {
 
 	// workflow
 
+	@RequestMapping(value = "/admissions", method = RequestMethod.POST)
+	public ResponseEntity<String> saveAdmission(@RequestBody Admission vo) {
+		dummyLogin();
+		AdAdmission admission= new AdAdmissionImpl();
+		admission.setCgpa(vo.getCgpa());
+		admission.setCreditEarned(vo.getCreditEarned());
+		admission.setCreditTaken(vo.getCreditTaken());
+		admission.setGpa(vo.getGpa());
+		admission.setStatus(AdAdmissionStatus.get(vo.getStatus().ordinal()));
+		admission.setStanding(AdAcademicStanding.get(vo.getStanding().ordinal()));
+		admission.setCohort(plannerService.findCohortByCode(vo.getCohort().getCode()));
+		admission.setStudent(identityService.findStudentByMatricNo(vo.getStudent().getIdentityNo()));
+		admission.setStudyCenter(commonService.findStudyCenterByCode(vo.getStudyCenter().getCode()));
+		admission.setSession(plannerService.findAcademicSessionByCode(vo.getAcademicSession().getCode()));
+		termService.saveAdmission(admission);		
+		return new ResponseEntity<String>("Success", HttpStatus.OK)	;
+	}
+	
 	@RequestMapping(value = "/admissionApplications", method = RequestMethod.GET)
 	public ResponseEntity<List<AdmissionApplication>> findAdmissionsApplications() {
 		AdAcademicSession academicSession = plannerService.findCurrentAcademicSession();

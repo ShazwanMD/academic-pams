@@ -238,8 +238,6 @@ public interface TermService {
 
     void admit(AdAcademicSession academicSession, AdStudent student, AdStudyCenter studyCenter, AdProgram program);
 
-    @Deprecated
-        // use startAdmissionApplication
     void saveAdmission(AdAdmission admission);
 
     void updateAdmission(AdAdmission admission);

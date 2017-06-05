@@ -27,4 +27,9 @@ public enum AdAdmissionStatus {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    public static AdAdmissionStatus get(int index) {
+        return values()[index];
+    }
 }
+

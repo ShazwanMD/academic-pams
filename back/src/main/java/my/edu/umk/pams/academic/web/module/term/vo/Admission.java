@@ -3,6 +3,7 @@ package my.edu.umk.pams.academic.web.module.term.vo;
 import my.edu.umk.pams.academic.planner.model.AdAcademicStanding;
 
 import my.edu.umk.pams.academic.planner.model.AdAdmissionStatus;
+import my.edu.umk.pams.academic.web.module.common.vo.StudyCenter;
 import my.edu.umk.pams.academic.web.module.core.vo.MetaObject;
 
 import my.edu.umk.pams.academic.web.module.identity.vo.Student;
@@ -29,6 +30,7 @@ public class Admission extends MetaObject{
     private Cohort cohort;
     private AdmissionStatus status;
     private AcademicStanding standing;
+	private StudyCenter studyCenter;
 
     public BigDecimal getGpa() {
         return gpa;
@@ -86,22 +88,31 @@ public class Admission extends MetaObject{
         this.cohort = cohort;
     }
     
-    public AdmissionStatus getAdmissionStatus() {
+    public AdmissionStatus getStatus() {
         return status;
     }
 
-    public void setAdmissionStatus(AdmissionStatus status) {
+    public void setStatus(AdmissionStatus status) {
         this.status = status;
     }
     
-    public AcademicStanding getAcademicStanding() {
+    public AcademicStanding getStanding() {
         return standing;
     }
 
-    public void setAcademicStanding(AcademicStanding standing) {
+    public void setStanding(AcademicStanding standing) {
         this.standing = standing;
     }
     
+    public StudyCenter getStudyCenter() {
+ 		return studyCenter;
+ 	}
+
+ 	public void setStudyCenter(StudyCenter studyCenter) {
+ 		this.studyCenter = studyCenter;
+ 	}
+
+
     
     @JsonCreator
     public static Admission create(String jsonString) {
