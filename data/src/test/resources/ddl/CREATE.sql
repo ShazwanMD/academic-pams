@@ -1710,12 +1710,6 @@
         foreign key (SECTION_ID)
         references AD_SCTN;
 
-    alter table AD_GRDE_CODE
-        add constraint uc_AD_GRDE_CODE_1 unique (CODE);
-
-    alter table AD_GRDE_CODE
-        add constraint uc_AD_GRDE_CODE_2 unique (ORDINAL);
-
     alter table AD_GRDN
         add constraint FKE7DAD15154FCB007
         foreign key (STUDENT_ID)

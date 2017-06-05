@@ -17,11 +17,11 @@ public class AdGradeCodeImpl implements AdGradeCode {
     private Long id;
 
     @NotNull
-    @Column(name = "ORDINAL", unique = true, nullable = false)
+    @Column(name = "ORDINAL", unique = false, nullable = false)
     private Integer ordinal;
 
     @NotNull
-    @Column(name = "CODE", unique = true, nullable = false)
+    @Column(name = "CODE", unique = false, nullable = false)
     private String code;
 
     @NotNull

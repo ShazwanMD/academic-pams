@@ -39,7 +39,7 @@ public class AdGradeCodeDaoImpl extends GenericDaoSupport<Long, AdGradeCode> imp
         Query query = session.createQuery("select s from AdGradeCode s where " +
                 "(upper(s.code) like upper(:filter) " +
                 "or upper(s.description) like upper(:filter)) " +
-                "and s.metadata.state = :state ");
+                "and s.metadata.state = :state order by s.ordinal");
         query.setString("filter", WILDCARD + filter + WILDCARD);
         query.setInteger("state", AdMetaState.ACTIVE.ordinal());
         query.setFirstResult(offset);
