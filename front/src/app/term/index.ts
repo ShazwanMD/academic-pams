@@ -40,7 +40,6 @@ import {
   EnrollmentApplicationTaskListState, pooledEnrollmentApplicationTaskListReducer
 } from "./enrollment-applications/enrollment-application-task-list.reducer";
 import { sectionReducer, SectionState } from "./sections/section.reducer";
-import { sectionListReducer, SectionListState } from "./offerings/section-list.reducer";
 import { admissionApplicationListReducer, AdmissionApplicationListState } from "./admission-applications/admission-applications-list.reducer";
 import { admissionApplicationReducer, AdmissionApplicationState } from "./admission-applications/admission-application.reducer";
 import { Section } from "./sections/section.interface";
@@ -55,6 +54,7 @@ import {appointmentListReducer, AppointmentListState} from "./sections/appointme
 import {enrollmentListReducer, EnrollmentListState} from "./sections/enrollment-list.reducer";
 import {CourseListState} from "../planner/courses/course-list.reducer";
 import {ProgramListState} from "../planner/programs/program-list.reducer";
+import {sectionListReducer, SectionListState} from "./sections/section-list.reducer";
 export interface TermModuleState {
   admissions: AdmissionListState;
   admission: AdmissionState;
