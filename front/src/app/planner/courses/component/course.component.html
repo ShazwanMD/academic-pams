@@ -1,16 +1,16 @@
 <md-card>
-  <md-card-title>{{course?.titleMs}}</md-card-title>
+  <md-card-title>{{course?.titleEn | uppercase}}</md-card-title>
   <md-card-subtitle>{{course?.code}}</md-card-subtitle>
   <md-divider></md-divider>
   <md-card-content>
     <!--Tab Section Here-->
     <md-tab-group>
       <md-tab label=" Course Detail"><br>
-        <div>Code : {{course?.code}}</div>
+        <div>Code : {{course?.code | uppercase}}</div>
         <br>
-        <div>Title(MS) : {{course?.titleMs}}</div>
+        <div>Title(Ms) : {{course?.titleMs | uppercase}}</div>
         <br>
-        <div>Title(EN) : {{course?.titleEn}}</div>
+        <div>Title(En) : {{course?.titleEn | uppercase}}</div>
         <br>
       </md-tab>
       <md-tab label="Faculty Information">
