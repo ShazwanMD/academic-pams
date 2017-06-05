@@ -23,7 +23,7 @@ export class EnrollmentApplicationItemComponent implements OnInit {
 
   private columns: any[] = [
     {name: 'section.code', label: 'Section'},
-    {name: 'action', label: ''}
+    {name: 'action', label: 'Action'}
   ];
 
 

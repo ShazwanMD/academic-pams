@@ -155,6 +155,7 @@ public class TermTransformer {
 		EnrollmentApplicationItem vo = new EnrollmentApplicationItem();
 		vo.setId(e.getId());
 		vo.setSection(toSectionVo(e.getSection()));
+		vo.setAction(EnrollmentApplicationAction.get(e.getAction().ordinal()));
 		vo.setMetaState(MetaState.get(e.getMetadata().getState().ordinal()));
 		return vo;
 	}

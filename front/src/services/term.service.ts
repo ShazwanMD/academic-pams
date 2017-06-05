@@ -154,7 +154,7 @@ export class TermService {
             //'Authorization': 'Bearer ' + this.authService.token
         });
         let options = new RequestOptions({ headers: headers });
-        return this.http.post(environment.endpoint + '/api/billing/admissionApplications/completeTask', JSON.stringify(admissionApplicationTask), options)
+        return this.http.post(environment.endpoint + '/api/term/admissionApplications/completeTask', JSON.stringify(admissionApplicationTask), options)
             .flatMap((res: Response) => Observable.of(res.text()));
     }
 
@@ -164,7 +164,7 @@ export class TermService {
             //'Authorization': 'Bearer ' + this.authService.token
         });
         let options = new RequestOptions({ headers: headers });
-        return this.http.post(environment.endpoint + '/api/billing/admissionApplications/claimTask', JSON.stringify(admissionApplicationTask), options)
+        return this.http.post(environment.endpoint + '/api/term/admissionApplications/claimTask', JSON.stringify(admissionApplicationTask), options)
             .flatMap((res: Response) => Observable.of(res.text()));
     }
 
@@ -174,7 +174,7 @@ export class TermService {
             //'Authorization': 'Bearer ' + this.authService.token
         });
         let options = new RequestOptions({ headers: headers });
-        return this.http.post(environment.endpoint + '/api/billing/admissionApplications/releaseTask', JSON.stringify(admissionApplicationTask), options)
+        return this.http.post(environment.endpoint + '/api/term/admissionApplications/releaseTask', JSON.stringify(admissionApplicationTask), options)
             .flatMap((res: Response) => Observable.of(res.text()));
     }
 
@@ -255,7 +255,7 @@ export class TermService {
             //'Authorization': 'Bearer ' + this.authService.token
         });
         let options = new RequestOptions({ headers: headers });
-        return this.http.post(environment.endpoint + '/api/billing/enrollmentApplications/completeTask', JSON.stringify(enrollmentApplicationTask), options)
+        return this.http.post(environment.endpoint + '/api/term/enrollmentApplications/completeTask', JSON.stringify(enrollmentApplicationTask), options)
             .flatMap((res: Response) => Observable.of(res.text()));
     }
 
@@ -265,7 +265,7 @@ export class TermService {
             //'Authorization': 'Bearer ' + this.authService.token
         });
         let options = new RequestOptions({ headers: headers });
-        return this.http.post(environment.endpoint + '/api/billing/enrollmentApplications/claimTask', JSON.stringify(enrollmentApplicationTask), options)
+        return this.http.post(environment.endpoint + '/api/term/enrollmentApplications/claimTask', JSON.stringify(enrollmentApplicationTask), options)
             .flatMap((res: Response) => Observable.of(res.text()));
     }
 
@@ -275,7 +275,7 @@ export class TermService {
             //'Authorization': 'Bearer ' + this.authService.token
         });
         let options = new RequestOptions({ headers: headers });
-        return this.http.post(environment.endpoint + '/api/billing/enrollmentApplications/releaseTask', JSON.stringify(enrollmentApplicationTask), options)
+        return this.http.post(environment.endpoint + '/api/term/enrollmentApplications/releaseTask', JSON.stringify(enrollmentApplicationTask), options)
             .flatMap((res: Response) => Observable.of(res.text()));
     }
 
@@ -517,7 +517,7 @@ export class TermService {
         return this.http.delete(environment.endpoint + '/api/term/sections/' + section.canonicalCode + '/appointments/' + appointment.id, options)
             .flatMap((res: Response) => Observable.of(res.text()));
     }
-    
+
     //update appointment by section
     updateAppointment(section: Section, appointment: Appointment): Observable<String> {
         console.log(appointment);
@@ -529,7 +529,7 @@ export class TermService {
         return this.http.put(environment.endpoint + '/api/term/sections/' + section.canonicalCode + '/appointments/' + appointment.id, JSON.stringify(appointment), options)
             .flatMap((res: Response) => Observable.of(res.text()));
     }
-    
+
     deleteEnrollment(offering: Offering, enrollment: Enrollment) {
         let headers = new Headers({
             'Content-Type': 'application/json',

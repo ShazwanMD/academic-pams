@@ -1,21 +1,13 @@
-import { Gradebook } from './gradebook.interface';
 import { GradebookMatrix } from './gradebook-matrix.interface';
-import { Student } from './../../identity/student.interface';
+import { Student } from '../../identity/student.interface';
 import { Component, OnInit, ChangeDetectionStrategy, ViewContainerRef, Input, EventEmitter, Output } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { OfferingUpdateDialog } from "./dialog/offering-update.dialog";
-import { IdentityService } from '../../../services';
-import { TermService } from '../../../services';
-import { CommonService } from '../../../services';
 import { Store } from "@ngrx/store";
 import { Observable } from "rxjs";
 import { Offering } from "./offering.interface";
 import { OfferingActions } from "./offering.action";
 import { TermModuleState } from "../index";
-import { Section } from "../sections/section.interface";
-import { MdDialog, MdDialogConfig, MdDialogRef } from "@angular/material";
 import { Enrollment } from "../enrollments/enrollment.interface";
-import { Appointment } from "../appointments/appointment.interface";
 import { Assessment } from "../assessments/assessment.interface";
 
 @Component({

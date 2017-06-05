@@ -23,22 +23,13 @@ import {Assessment} from "../assessments/assessment.interface";
 export class OfferingDetailPage implements OnInit {
 
   @Input() offering: Offering;
-  @Input() section: Section;
 
   private OFFERING: string[] = "termModuleState.offering".split(".");
-  private SECTION: string[] = "termModuleState.section".split(".");
-  private SECTIONS: string[] = "termModuleState.sections".split(".");
-  private ASSESSMENTS: string[] = "termModuleState.assessments".split(".");
-  private ENROLLMENTS: string[] = "termModuleState.enrollments".split(".");
-  private APPOINTMENTS: string[] = "termModuleState.appointments".split(".");
-
+  private SECTIONS: string[] = "termModuleState.offeringSections".split(".");
+  private ASSESSMENTS: string[] = "termModuleState.offeringAssessments".split(".");
   private offering$: Observable<Offering>;
-  private section$: Observable<Section>;
   private sections$: Observable<Section[]>;
   private assessments$: Observable<Assessment[]>;
-  private appointments: Observable<Appointment[]>;
-  private enrollments$: Observable<Enrollment[]>;
-
   private editorDialogRef: MdDialogRef<OfferingUpdateDialog>;
 
   constructor(private router: Router,
@@ -46,15 +37,11 @@ export class OfferingDetailPage implements OnInit {
               private actions: OfferingActions,
               private store: Store<TermModuleState>,
               private vcf: ViewContainerRef,
-              private dialog: MdDialog,
-              private dialogDelete: MdDialog) {
+              private dialog: MdDialog) {
 
     this.offering$ = this.store.select(...this.OFFERING);
-    this.section$ = this.store.select(...this.SECTION);
     this.sections$ = this.store.select(...this.SECTIONS);
     this.assessments$ = this.store.select(...this.ASSESSMENTS);
-    this.enrollments$ = this.store.select(...this.ENROLLMENTS);
-    this.appointments = this.store.select(...this.APPOINTMENTS);
   }
 
   ngOnInit(): void {
