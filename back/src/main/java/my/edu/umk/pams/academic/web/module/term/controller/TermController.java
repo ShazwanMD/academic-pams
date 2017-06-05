@@ -645,7 +645,8 @@ public class TermController {
 		AdOffering offering = termService.findOfferingByCanonicalCode(canonicalCode);
 		AdSection section = termService.findSectionById(vo.getSection().getId());
 		AdAppointment appointment = new AdAppointmentImpl();
-		appointment.setStatus(AdAppointmentStatus.CONFIRMED);
+		appointment.setStatus(AdAppointmentStatus.get(vo.getAppointmentStatus().ordinal()));
+		//appointment.setStatus(AdAppointmentStatus.CONFIRMED);
 		appointment.setSection(section);
 		appointment.setStaff(identityService.findStaffById(vo.getStaff().getId()));
 		termService.addAppointment(section, appointment);

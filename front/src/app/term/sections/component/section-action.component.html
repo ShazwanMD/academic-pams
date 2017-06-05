@@ -5,7 +5,7 @@
 
   <md-nav-list flex dense>
 
-    <md-list-item (click)="updateDialog()">
+    <md-list-item [routerLink]="['/term/offerings', offering.canonicalCode]"><!-- (click)="updateDialog()" -->
       <md-icon md-list-avatar>done_all</md-icon>
       <h4 md-line>Edit Section {{section?.code}} </h4>
       <p md-line>Edit this section </p>
