@@ -28,6 +28,7 @@ export class GradebookDetailPage implements OnInit {
   @Input() enrollment: Enrollment;
   @Input() student: Student;
   @Input() gradebookMatrices: GradebookMatrix;
+  @Input() offerings: Offering;
 
   private OFFERING: string[] = "termModuleState.offering".split(".");
   private GRADEBOOK_MATRICES: string[] = "termModuleState.gradebookMatrices".split(".");
@@ -60,19 +61,20 @@ export class GradebookDetailPage implements OnInit {
   ];
 
   ngOnInit(): void {
-
+    console.log(this.gradebookMatrices)
     this.route.params.subscribe((params: { canonicalCode: string }) => {
       let canonicalCode: string = params.canonicalCode;
       this.store.dispatch(this.actions.findOfferingByCanonicalCode(canonicalCode));
     });
 
     this.offering$.subscribe((offering: Offering) => {
+      console.log(offering);
       if (offering.canonicalCode) this.store.dispatch(this.actions.findGradebookMatricessByOffering(offering))
     });
   }
 
   goBack(route: string): void {
-    this.router.navigate(['/offerings']);
+    this.router.navigate(['/offerings', + this.offerings.canonicalCode]);
   }
 }
 
