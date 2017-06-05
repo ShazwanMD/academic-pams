@@ -13,7 +13,7 @@ export class OfferingListComponent {
 
   private columns: any[] = [
     {name: 'id', label: 'Id'},
-    {name: 'code', label: 'Code'},
+    {name: 'course.code', label: 'Code'},
     {name: 'course.titleEn', label: 'TitleEn'},
     {name: 'program.code', label: 'Program'},
     {name: 'capacity.number', label: 'Capacity'},
