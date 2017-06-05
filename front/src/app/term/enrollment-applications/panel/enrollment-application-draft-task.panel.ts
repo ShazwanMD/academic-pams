@@ -22,7 +22,7 @@ export class EnrollmentApplicationDraftTaskPanel implements OnInit {
   private ENROLLMENT_APPLICATION_TASK: string[] = "termModuleState.enrollmentApplicationTask".split(".");
   private enrollmentApplicationItems$: Observable<EnrollmentApplicationItem[]>;
   private enrollmentApplicationTask$: Observable<EnrollmentApplication[]>;
-  
+
   @Input() enrollmentApplicationTask: EnrollmentApplicationTask;
 
   constructor(private router: Router,
@@ -40,6 +40,7 @@ export class EnrollmentApplicationDraftTaskPanel implements OnInit {
   }
 
   editItem(item: EnrollmentApplicationItem) {
+    console.log(JSON.stringify(this.enrollmentApplicationTask.application));
     let config = new MdDialogConfig();
     config.viewContainerRef = this.viewContainerRef;
     config.role = 'dialog';
@@ -47,6 +48,7 @@ export class EnrollmentApplicationDraftTaskPanel implements OnInit {
     config.height = '60%';
     config.position = {top: '0px'};
     let editorDialogRef = this.dialog.open(EnrollmentApplicationItemEditorDialog, config);
+    editorDialogRef.componentInstance.enrollmentApplication = this.enrollmentApplicationTask.application;
     editorDialogRef.componentInstance.enrollmentApplicationItem = item;
   }
 

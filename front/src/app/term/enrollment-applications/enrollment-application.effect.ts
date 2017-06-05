@@ -19,7 +19,7 @@ export class EnrollmentApplicationEffects {
               private termService: TermService,
               private store$: Store<TermModuleState>) {
   }
-    
+
      @Effect() findEnrollmentApplications$ = this.actions$
     .ofType(EnrollmentApplicationActions.FIND_ENROLLMENT_APPLICATIONS)
     .switchMap(() => this.termService.findEnrollmentApplications())
@@ -109,7 +109,7 @@ export class EnrollmentApplicationEffects {
     this.actions$
       .ofType(EnrollmentApplicationActions.ADD_ENROLLMENT_APPLICATION_ITEM)
       .map(action => action.payload)
-      .switchMap(payload => this.termService.addEnrollmentApplicationItem(payload.enrollmentApplication, payload.item))
+      .switchMap(payload => this.termService.addEnrollmentApplicationItem(payload.application, payload.item))
       .map(message => this.enrollmentApplicationActions.addEnrollmentApplicationItemSuccess(message))
       .withLatestFrom(this.store$.select(...this.ENROLLMENT_APPLICATION_TASK))
       .map(state => state[1])
