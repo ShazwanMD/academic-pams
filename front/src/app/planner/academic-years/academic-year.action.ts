@@ -15,7 +15,7 @@ export class AcademicYearActions {
   static FIND_ACADEMICYEARS_SUCCESS = '[AcademicYear] Find AcademicYears Success';
   findAcademicYearsSuccess(academicYears): Action {
 
-    console.log("findAcademicYearsSuccess");
+    //console.log("findAcademicYearsSuccess");
     return {
       type: AcademicYearActions.FIND_ACADEMICYEARS_SUCCESS,
       payload: academicYears

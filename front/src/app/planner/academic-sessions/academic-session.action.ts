@@ -42,7 +42,8 @@ export class AcademicSessionActions {
 
     static SAVE_ACADEMIC_SESSION = '[AcademicSession] Save AcademicSession';
     saveAcademicSession(academicSession): Action {
-        console.log("academicSession: " + academicSession)
+        console.log("Acadmic Session save:");
+        console.dir(academicSession);
         return {
             type: AcademicSessionActions.SAVE_ACADEMIC_SESSION,
             payload: academicSession

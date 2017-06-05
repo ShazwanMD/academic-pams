@@ -78,11 +78,11 @@ public class PlannerController {
 		academicSession.setStartDate(vo.getstartDate());
 		academicSession.setEndDate(vo.getendDate());
 		academicSession.setSemester(AdAcademicSemester.get(vo.getSemester().ordinal()));
-		academicSession.setYear(plannerService.findByCode(academicSession.getYear().getYear()));
+//		academicSession.setYear(plannerService.findByCode(academicSession.getYear().getYear()));
 		plannerService.updateAcademicSession(academicSession);
 		return new ResponseEntity<String>(academicSession.getCode(), HttpStatus.OK);
 	}
-
+	
 	@RequestMapping(value = "/academicSessions/{code}/save", method = RequestMethod.POST)
 	public ResponseEntity<String> saveAcademicSession(@PathVariable String code, @RequestBody AcademicSession vo) {
 		dummyLogin();
@@ -94,8 +94,7 @@ public class PlannerController {
 		academicSession.setEndDate(vo.getendDate());
 		academicSession.setSemester(AdAcademicSemester.get(vo.getSemester().ordinal()));
 //		academicSession.setYear(plannerTransformer.toAcademicYearVo(academicYear.getYear()));
-		academicSession.setYear(plannerService.findByCode(academicSession.getYear().getYear()));
-
+		academicSession.setYear(plannerService.findByCode(vo.getYear().getCode()));
 		plannerService.saveAcademicSession(academicSession);
 		return new ResponseEntity<String>("Success", HttpStatus.OK);
 	}

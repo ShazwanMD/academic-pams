@@ -24,12 +24,15 @@ export class AcademicYearSelectComponent implements OnInit {
     this.academicYears$ = this.store.select(...this.ACADEMIC_YEARS);
   }
 
-  ngOnInit() {
+  ngOnInit(): void{
     this.store.dispatch(this.actions.findAcademicYears());
   }
 
   selectChangeEvent(event: AcademicYear) {
-    this.innerFormControl.setValue(event, {emitEvent: false});
+   // this.innerFormControl.setValue(event, {emitEvent: false});
+ //   console.log("hikhik");
+    console.log(event);
+  //  this.innerFormControl.setValue(event, { emitEvent: false });
   }
 }
 
