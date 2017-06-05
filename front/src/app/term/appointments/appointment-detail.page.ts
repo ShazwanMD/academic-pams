@@ -43,8 +43,8 @@ export class AppointmentDetailPage implements OnInit {
         let config = new MdDialogConfig();
         config.viewContainerRef = this.vcf;
         config.role = 'dialog';
-        config.width = '40%';
-        config.height = '45%';
+        config.width = '30%';
+        config.height = '30%';
         config.position = { top: '3px' };
         this.creatorDialogRef = this.dialog.open( AppointmentEditorDialog, config );
         this.creatorDialogRef.afterClosed().subscribe( res => {
