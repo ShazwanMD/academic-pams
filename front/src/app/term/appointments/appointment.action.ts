@@ -59,7 +59,7 @@ export class AppointmentActions {
   }
  
   static REMOVE_APPOINTMENT = '[Appointment] Remove Appointment';
-  removeAppointment(appointment): Action {
+  removeAppointment(section,appointment): Action {
     return {
       type: AppointmentActions.REMOVE_APPOINTMENT,
       payload: appointment
