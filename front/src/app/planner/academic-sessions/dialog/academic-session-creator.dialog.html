@@ -49,5 +49,5 @@
 </form>
 
 <md-dialog-actions align="end">
-  <button md-raised-button color="accent" (click)="save(createForm.value, createForm.valid)">Save</button>
+  <button md-raised-button color="accent" (click)="save(createForm.value, createForm.valid)">    {{edit ? 'Update' : 'Save'}}</button>
 </md-dialog-actions>

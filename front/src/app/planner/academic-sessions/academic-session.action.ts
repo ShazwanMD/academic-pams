@@ -42,8 +42,7 @@ export class AcademicSessionActions {
 
     static SAVE_ACADEMIC_SESSION = '[AcademicSession] Save AcademicSession';
     saveAcademicSession(academicSession): Action {
-        console.log("saveAcademicSession");
-        console.log("academicSession: " + academicSession);
+        console.log("academicSession: " + academicSession)
         return {
             type: AcademicSessionActions.SAVE_ACADEMIC_SESSION,
             payload: academicSession
@@ -52,8 +51,7 @@ export class AcademicSessionActions {
 
     static SAVE_ACADEMIC_SESSION_SUCCESS = '[AcademicSession] Save AcademicSession Success';
     saveAcademicSessionSuccess(academicSession): Action {
-        console.log("saveAcademicSessionSucces");
-        console.log("academicSession: " + academicSession);
+        console.log("academicSession: " + academicSession)
         return {
             type: AcademicSessionActions.SAVE_ACADEMIC_SESSION_SUCCESS,
             payload: academicSession
@@ -62,8 +60,7 @@ export class AcademicSessionActions {
 
     static UPDATE_ACADEMIC_SESSION = '[AcademicSession] Update AcademicSession';
     updateAcademicSession(academicSession): Action {
-        console.log("updateAcademicSession");
-        console.log("academicSession: " + academicSession);
+        console.log("updateAcademicSession")
         return {
             type: AcademicSessionActions.UPDATE_ACADEMIC_SESSION,
             payload: academicSession
