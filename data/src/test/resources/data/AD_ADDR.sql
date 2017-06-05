@@ -8,12 +8,12 @@ VALUES
 
 INSERT INTO AD_ADDR (ID, ADDRESS1, ADDRESS2, ADDRESS3, POSTCODE, ADDRESS_TYPE, COUNTRY_CODE_ID, DUN_CODE_ID, PARLIAMENT_CODE_ID, STATE_CODE_ID, STUDENT_ID, C_TS, C_ID, M_ST)
 VALUES
-  (nextval('SQ_AD_ACTR'), 'M05 0519', 'Jalan Bukit Gambir', 'Universiti Sains Malaysia', '11800', 1, 128, 1, 1, 7, (SELECT ID
+  (nextval('SQ_AD_ACTR'), 'Asrama 1', 'Jalan PC', 'Universiti Malaysia Kelantan', '16000', 0, 128, 1, 1, 7, (SELECT ID
                                 FROM AD_ACTR A
                                 WHERE A.IDENTITY_NO = 'A17M0009F'), CURRENT_TIMESTAMP, 1, 1);                                
 
 INSERT INTO AD_ADDR (ID, ADDRESS1, ADDRESS2, ADDRESS3, POSTCODE, ADDRESS_TYPE, COUNTRY_CODE_ID, DUN_CODE_ID, PARLIAMENT_CODE_ID, STATE_CODE_ID, STUDENT_ID, C_TS, C_ID, M_ST)
 VALUES
-  (nextval('SQ_AD_ACTR'), 'M05 0519', 'Jalan Bukit Gambir', 'Universiti Sains Malaysia', '11800', 0, 128, 1, 1, 7, (SELECT ID
+  (nextval('SQ_AD_ACTR'), 'LOT 431', 'Jalan Bukit Gambir', 'Jalan Kota Bharu', '15150', 1, 128, 1, 1, 7, (SELECT ID
                                 FROM AD_ACTR A
                                 WHERE A.IDENTITY_NO = 'A17M0009F'), CURRENT_TIMESTAMP, 1, 1);                                      

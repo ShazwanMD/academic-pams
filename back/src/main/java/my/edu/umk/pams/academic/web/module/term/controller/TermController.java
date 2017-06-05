@@ -702,6 +702,7 @@ public class TermController {
 			}
 			matrices.add(matrix);
 		}
+		LOG.debug("Enrollment:{}",enrollments);
 		return new ResponseEntity<List<GradebookMatrix>>(matrices, HttpStatus.OK);
 	}
 
