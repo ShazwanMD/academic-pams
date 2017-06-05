@@ -23,6 +23,10 @@ public class AdContactImpl implements AdContact {
     @NotNull
     @Column(name = "IDENTITY_NO", nullable = false)
     private String identityNo;
+    
+    @NotNull
+    @Column(name = "PHONE", nullable = true)
+    private String phone;
 
     @NotNull
     @Column(name = "CONTACT_TYPE")
@@ -35,7 +39,15 @@ public class AdContactImpl implements AdContact {
     @Embedded
     private AdMetadata metadata;
 
-    public Long getId() {
+    public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public Long getId() {
         return id;
     }
 

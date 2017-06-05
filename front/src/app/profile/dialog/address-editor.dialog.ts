@@ -42,7 +42,7 @@ export class AddressEditorDialog implements OnInit {
 
   ngOnInit(): void {
     this.editorForm = this.formBuilder.group(<Address>{
-      addressType: AddressType.MAILING,
+      addressType: AddressType.CURRENT,
       address1: '',
       address2: '',
       address3: '',

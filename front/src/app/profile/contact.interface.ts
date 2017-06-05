@@ -4,4 +4,5 @@ export interface Contact extends MetaObject{
   name:string;
   identityNo:string;
   contactType:ContactType;
+  phone:string;
 }

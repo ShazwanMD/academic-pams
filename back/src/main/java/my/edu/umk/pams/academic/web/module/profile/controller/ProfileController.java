@@ -121,6 +121,7 @@ public class ProfileController {
         AdContact contact = new AdContactImpl();
         contact.setIdentityNo(vo.getIdentityNo());
         contact.setName(vo.getName());
+        contact.setPhone(vo.getPhone());
         contact.setType(AdContactType.get(vo.getContactType().ordinal()));
         contact.setStudent(student);
         profileService.addContact(student, contact);
@@ -136,6 +137,7 @@ public class ProfileController {
         AdContact contact = profileService.findContactById(vo.getId());
         contact.setName(vo.getName());
         contact.setIdentityNo(vo.getIdentityNo());
+        contact.setPhone(vo.getPhone());
         contact.setType(AdContactType.get(vo.getContactType().ordinal()));
         contact.setStudent(student);
         profileService.updateContact(student, contact);

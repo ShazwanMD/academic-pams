@@ -359,6 +359,7 @@
         M_ID int8,
         M_ST int4,
         NAME varchar(255) not null,
+        PHONE varchar(255),
         CONTACT_TYPE int4,
         STUDENT_ID int8,
         primary key (ID)

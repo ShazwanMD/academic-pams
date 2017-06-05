@@ -74,6 +74,7 @@ public class ProfileTransformer {
         vo.setId(contact.getId());
         vo.setName(contact.getName());
         vo.setIdentityNo(contact.getIdentityNo());
+        vo.setPhone(contact.getPhone());
         vo.setContactType(ContactType.get(contact.getType().ordinal()));
         return vo;
     }

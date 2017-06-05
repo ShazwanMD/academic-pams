@@ -85,6 +85,7 @@ export class ProfileComponent implements OnInit {
   private columnContact: any[] = [
     { name: 'contactType', label: 'Contact Type' },
     { name: 'name', label: 'Name' },
+    { name: 'phone', label: 'Mobile No' },
     { name: 'action', label: 'Action' }
   ];
 
