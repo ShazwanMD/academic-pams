@@ -3,8 +3,10 @@ package my.edu.umk.pams.academic.term.dao;
 
 import my.edu.umk.pams.academic.core.GenericDao;
 import my.edu.umk.pams.academic.identity.model.AdStaff;
+import my.edu.umk.pams.academic.identity.model.AdUser;
 import my.edu.umk.pams.academic.term.model.AdAdmission;
 import my.edu.umk.pams.academic.term.model.AdAppointment;
+import my.edu.umk.pams.academic.term.model.AdAssessment;
 import my.edu.umk.pams.academic.term.model.AdOffering;
 import my.edu.umk.pams.academic.term.model.AdSection;
 import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
@@ -105,5 +107,6 @@ public interface AdAppointmentDao extends GenericDao<Long, AdAppointment> {
 
     boolean isClashed(AdSection section, AdStaff staff);
 
-    boolean hasAppointment(AdSection section);
+    boolean hasAppointment(AdSection section);    
+    
 }

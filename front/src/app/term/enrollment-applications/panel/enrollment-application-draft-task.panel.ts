@@ -2,6 +2,7 @@ import {Component, Input, OnInit, ViewContainerRef} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 import {MdSnackBar, MdDialog, MdDialogRef, MdDialogConfig} from "@angular/material";
 import {EnrollmentApplicationItem} from "../enrollment-application-item.interface";
+import {EnrollmentApplication} from "../enrollment-application.interface";
 import {EnrollmentApplicationItemEditorDialog} from "../dialog/enrollment-application-item-editor.dialog";
 import {EnrollmentApplicationTask} from "../enrollment-application-task.interface";
 import {Observable} from "rxjs/Observable";
@@ -18,7 +19,10 @@ import {Store} from "@ngrx/store";
 export class EnrollmentApplicationDraftTaskPanel implements OnInit {
 
   private ENROLLMENT_APPLICATION_ITEMS: string[] = "termModuleState.enrollmentApplicationItems".split(".");
+  private ENROLLMENT_APPLICATION_TASK: string[] = "termModuleState.enrollmentApplicationTask".split(".");
   private enrollmentApplicationItems$: Observable<EnrollmentApplicationItem[]>;
+  private enrollmentApplicationTask$: Observable<EnrollmentApplication[]>;
+  
   @Input() enrollmentApplicationTask: EnrollmentApplicationTask;
 
   constructor(private router: Router,
@@ -28,6 +32,7 @@ export class EnrollmentApplicationDraftTaskPanel implements OnInit {
               private actions: EnrollmentApplicationActions,
               private store: Store<TermModuleState>) {
       this.enrollmentApplicationItems$ = this.store.select(...this.ENROLLMENT_APPLICATION_ITEMS);
+       this.enrollmentApplicationTask$ = this.store.select(...this.ENROLLMENT_APPLICATION_TASK);
   }
 
   ngOnInit(): void {

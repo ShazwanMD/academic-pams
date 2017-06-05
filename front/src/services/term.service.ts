@@ -507,18 +507,18 @@ export class TermService {
             .flatMap((res: Response) => Observable.of(res.text()));
     }
 
-    // remove appointment
-    removeAppointment(offering: Offering, appointment: Appointment) {
+    // remove appointment by section
+    removeAppointment(section: Section, appointment: Appointment) {
         let headers = new Headers({
             'Content-Type': 'application/json',
             //'Authorization': 'Bearer ' + this.authService.token
         });
         let options = new RequestOptions({ headers: headers });
-        return this.http.delete(environment.endpoint + '/api/term/offerings/' + offering.canonicalCode + '/appointments/' + appointment.id, options)
+        return this.http.delete(environment.endpoint + '/api/term/sections/' + section.canonicalCode + '/appointments/' + appointment.id, options)
             .flatMap((res: Response) => Observable.of(res.text()));
     }
-
-    //update appointmentbysection
+    
+    //update appointment by section
     updateAppointment(section: Section, appointment: Appointment): Observable<String> {
         console.log(appointment);
         let headers = new Headers({
