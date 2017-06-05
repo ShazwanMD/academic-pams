@@ -24,6 +24,19 @@ import { Assessment } from "../assessments/assessment.interface";
 })
 
 export class GradebookDetailPage implements OnInit {
+  
+  num:Number;
+
+  getLoop(){
+  this.num = 3;
+    let a = [];
+    for(let i = 0; i < this.num; i++) {
+      var format = "label: 'Assessment ', name: 'gradebooks."+ a.push(i) +".score'";
+      console.log("-->",format);
+    }
+    return format;
+  }
+  
   @Input() assessments: Assessment;
   @Input() enrollment: Enrollment;
   @Input() student: Student;
@@ -49,18 +62,15 @@ export class GradebookDetailPage implements OnInit {
     this.assessments$ = this.store.select(...this.ASSESSMENTS);
     this.gradebookMatrices$ = this.store.select(...this.GRADEBOOK_MATRICES);
     this.enrollments$ = this.store.select(...this.ENROLLMENTS);
-  }
+}
 
   private columns: any[] =
   [
     { label: 'Student name', name: 'enrollment.admission.student.name' },
-    { label: 'Assessment ', name: 'gradebooks.0.score' },
-    { label: 'Assessment ', name: 'gradebooks.1.score' },
-    { label: 'Assessment ', name: 'gradebooks.2.score' }
+    { label: 'Assessment', name: 'gradebooks.0.score' }
   ];
 
   ngOnInit(): void {
-
     this.route.params.subscribe((params: { canonicalCode: string }) => {
       let canonicalCode: string = params.canonicalCode;
       this.store.dispatch(this.actions.findOfferingByCanonicalCode(canonicalCode));
@@ -75,4 +85,3 @@ export class GradebookDetailPage implements OnInit {
     this.router.navigate(['/offerings']);
   }
 }
-
