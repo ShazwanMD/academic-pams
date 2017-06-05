@@ -13,7 +13,7 @@ import {PlannerModuleState} from "../../index";
 })
 export class AcademicYearSelectComponent implements OnInit {
 
-  private ACADEMIC_YEARS: string[] = "plannerModuleState.years".split(".");
+  private ACADEMIC_YEARS: string[] = "plannerModuleState.academicYears".split(".");
   private academicYears$: Observable<AcademicYear[]>;
   @Input() placeholder: string;
   @Input() innerFormControl: FormControl;
