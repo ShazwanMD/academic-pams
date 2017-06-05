@@ -1,4 +1,4 @@
-import { CourseCreatorDialog } from './dialog/course-creator.dialog';
+import {CourseCreatorDialog} from './dialog/course-creator.dialog';
 import { CourseActions } from './course.action';
 import { Course } from './course.interface';
 import { Faculty } from './../faculties/faculty.interface';
