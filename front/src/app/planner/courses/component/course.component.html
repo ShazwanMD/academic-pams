@@ -1,8 +1,6 @@
 <md-card>
   <md-card-title>{{course?.titleMs}}</md-card-title>
   <md-card-subtitle>{{course?.code}}</md-card-subtitle>
-  <md-card-subtitle>{{course?.titleMs}}</md-card-subtitle>
-  <md-card-subtitle>{{course?.titleEn}}</md-card-subtitle>
   <md-divider></md-divider>
   <md-card-content>
     <!--Tab Section Here-->
@@ -15,13 +13,11 @@
         <div>Title(EN) : {{course?.titleEn}}</div>
         <br>
       </md-tab>
-      <md-tab label="Information">
-      
-       <div>Description details of the course(faculty)</div>
+      <md-tab label="Faculty Information">
         <br>
         <div>Code : {{course?.faculty?.code}}</div>
         <br>
-        <div>Name : {{course?.faculty?.name}}</div>
+        <div>Short Name : {{course?.faculty?.name}}</div>
         <br>
         <div>Description : {{course?.faculty?.description}}</div>
         <br>
