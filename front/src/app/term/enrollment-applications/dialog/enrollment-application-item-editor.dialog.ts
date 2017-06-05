@@ -48,7 +48,7 @@ export class EnrollmentApplicationItemEditorDialog implements OnInit {
     this.editForm = this.formBuilder.group(<EnrollmentApplicationItem>{
       id: null,
       action: EnrollmentApplicationAction.ADD,
-      section: <Section>{}
+      section: <Section>{},
     });
     if (this.edit) this.editForm.patchValue(this._enrollmentApplicationItem);
   }

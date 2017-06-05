@@ -1,4 +1,4 @@
-import {Component, Input, ChangeDetectionStrategy, ViewContainerRef} from '@angular/core';
+import {Component, Input, ChangeDetectionStrategy, ViewContainerRef, OnInit} from '@angular/core';
 import {MdDialog, MdDialogConfig, MdDialogRef} from "@angular/material";
 import {ActivatedRoute, Router} from "@angular/router";
 import {TermModuleState} from "../../index";
@@ -13,10 +13,19 @@ import {EnrollmentApplicationActions} from "../enrollment-application.action";
   templateUrl: './enrollment-application-item-list.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class EnrollmentApplicationItemComponent {
+export class EnrollmentApplicationItemComponent implements OnInit {
+
   @Input() enrollmentApplication: EnrollmentApplication;
   @Input() enrollmentApplicationItems: EnrollmentApplicationItem[];
+
   private editorDialogRef: MdDialogRef<EnrollmentApplicationItemEditorDialog>;
+  private selectedRows: EnrollmentApplicationItem[];
+
+  private columns: any[] = [
+    {name: 'section.code', label: 'Section'},
+    {name: 'action', label: ''}
+  ];
+
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -26,8 +35,20 @@ export class EnrollmentApplicationItemComponent {
               private dialog: MdDialog) {
   }
 
+  ngOnInit(): void {
+    this.selectedRows = this.enrollmentApplicationItems.filter(value => value.selected);
+  }
 
-  showDialog(): void {
+  filter(): void {
+  }
+
+  selectRow(item: EnrollmentApplicationItem): void {
+  }
+
+  selectAllRows(items: EnrollmentApplicationItem[]): void {
+  }
+
+  createDialog(): void {
     console.log("show Dialog EnrollmentApplicationItem");
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;

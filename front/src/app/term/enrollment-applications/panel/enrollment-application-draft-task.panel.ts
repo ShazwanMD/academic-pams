@@ -31,13 +31,17 @@ export class EnrollmentApplicationDraftTaskPanel implements OnInit {
               private dialog: MdDialog,
               private actions: EnrollmentApplicationActions,
               private store: Store<TermModuleState>) {
-      this.enrollmentApplicationItems$ = this.store.select(...this.ENROLLMENT_APPLICATION_ITEMS);
-       this.enrollmentApplicationTask$ = this.store.select(...this.ENROLLMENT_APPLICATION_TASK);
+    this.enrollmentApplicationItems$ = this.store.select(...this.ENROLLMENT_APPLICATION_ITEMS);
+    this.enrollmentApplicationTask$ = this.store.select(...this.ENROLLMENT_APPLICATION_TASK);
   }
 
   ngOnInit(): void {
     this.store.dispatch(this.actions.findEnrollmentApplicationItems(this.enrollmentApplicationTask.application))
   }
+
+  filter(): void {
+  }
+
 
   editItem(item: EnrollmentApplicationItem) {
     console.log(JSON.stringify(this.enrollmentApplicationTask.application));
