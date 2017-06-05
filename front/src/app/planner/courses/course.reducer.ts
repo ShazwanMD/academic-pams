@@ -11,6 +11,19 @@ export function courseReducer(state = initialState, action: Action): CourseState
     case CourseActions.FIND_COURSE_BY_CODE_SUCCESS: {
       return action.payload;
     }
+   case CourseActions.CREATE_COURSE_SUCCESS: {
+      return action.payload;
+  
+    }
+
+     case CourseActions.FIND_COURSE_BY_CODE_SUCCESS:{
+          return action.payload;
+     }
+
+      case CourseActions.REMOVE_COURSE_SUCCESS:{
+         return action.payload;
+      }  
+      
     default: {
       return state;
     }

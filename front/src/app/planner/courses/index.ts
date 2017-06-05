@@ -1,15 +1,13 @@
+import { CourseCenterPage } from './course-center.page';
 import '@ngrx/core/add/operator/select';
 import {appRoutes, appRoutingProviders} from '../../app.routes';
 import {NgModule, ModuleWithProviders} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {ReactiveFormsModule} from '@angular/forms';
 import {CovalentCoreModule} from '@covalent/core';
-
 import {PlannerService} from '../../../services';
 import {CommonService} from '../../../services';
 import {IdentityService} from '../../../services';
-
-import {CourseCenterPage} from "./course-center.page";
 import {CourseListComponent} from "./component/course-list.component";
 import {CourseActions} from "./course.action";
 import {EffectsModule} from "@ngrx/effects";
@@ -31,7 +29,9 @@ import {CourseStatusSelectComponent} from "./component/course-status-select.comp
     CovalentCoreModule.forRoot(),
     EffectsModule.run(CourseEffects),
   ],
+  
   declarations: [
+
     // page
     CourseCenterPage,
     CourseDetailPage,
@@ -40,7 +40,7 @@ import {CourseStatusSelectComponent} from "./component/course-status-select.comp
     CourseListComponent,
     CourseComponent,
     CourseSelectComponent,
-     CourseActionComponent,
+    CourseActionComponent,
     CourseStatusComponent,
     CourseStatusSelectComponent,
 
