@@ -125,6 +125,7 @@ public class TermTransformer {
 		task.setTaskId(t.getId());
 		task.setReferenceNo(application.getReferenceNo());
 		task.setSourceNo(application.getSourceNo());
+		task.setMatricNo(application.getAdmission().getStudent().getMatricNo());
 		task.setDescription(application.getDescription());
 		task.setTaskName(t.getName());
 		task.setAssignee(task.getAssignee());

@@ -23,6 +23,7 @@ export class EnrollmentApplicationItemComponent implements OnInit {
 
   private columns: any[] = [
     {name: 'section.code', label: 'Section'},
+    {name: 'section.ordinal', label: 'Section No'},
     {name: 'action', label: 'Action'}
   ];
 
@@ -47,6 +48,11 @@ export class EnrollmentApplicationItemComponent implements OnInit {
 
   selectAllRows(items: EnrollmentApplicationItem[]): void {
   }
+
+  delete(item: EnrollmentApplicationItem): void {
+    this.store.dispatch(this.actions.deleteEnrollmentApplicationItem(this.enrollmentApplication, item));
+  }
+
 
   createDialog(): void {
     console.log("show Dialog EnrollmentApplicationItem");

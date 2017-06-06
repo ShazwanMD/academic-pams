@@ -20,7 +20,7 @@ export class EnrollmentApplicationEffects {
               private store$: Store<TermModuleState>) {
   }
 
-     @Effect() findEnrollmentApplications$ = this.actions$
+  @Effect() findEnrollmentApplications$ = this.actions$
     .ofType(EnrollmentApplicationActions.FIND_ENROLLMENT_APPLICATIONS)
     .switchMap(() => this.termService.findEnrollmentApplications())
     .map(enrollmentApplications => this.enrollmentApplicationActions.findEnrollmentApplicationsSuccess(enrollmentApplications));
@@ -105,13 +105,23 @@ export class EnrollmentApplicationEffects {
     .switchMap(enrollmentApplication => this.termService.updateEnrollmentApplication(enrollmentApplication))
     .map(enrollmentApplication => this.enrollmentApplicationActions.updateEnrollmentApplicationSuccess(enrollmentApplication));
 
-  @Effect() addEnrollmentApplicationItem$ =
-    this.actions$
-      .ofType(EnrollmentApplicationActions.ADD_ENROLLMENT_APPLICATION_ITEM)
-      .map(action => action.payload)
-      .switchMap(payload => this.termService.addEnrollmentApplicationItem(payload.application, payload.item))
-      .map(message => this.enrollmentApplicationActions.addEnrollmentApplicationItemSuccess(message))
-      .withLatestFrom(this.store$.select(...this.ENROLLMENT_APPLICATION_TASK))
-      .map(state => state[1])
-      .map((task: EnrollmentApplicationTask) => this.enrollmentApplicationActions.findEnrollmentApplicationItems(task.application));
+  @Effect() addEnrollmentApplicationItem$ = this.actions$
+    .ofType(EnrollmentApplicationActions.ADD_ENROLLMENT_APPLICATION_ITEM)
+    .map(action => action.payload)
+    .switchMap(payload => this.termService.addEnrollmentApplicationItem(payload.application, payload.item))
+    .map(message => this.enrollmentApplicationActions.addEnrollmentApplicationItemSuccess(message))
+    .withLatestFrom(this.store$.select(...this.ENROLLMENT_APPLICATION_TASK))
+    .map(state => state[1])
+    .map((task: EnrollmentApplicationTask) => this.enrollmentApplicationActions.findEnrollmentApplicationItems(task.application));
+
+  @Effect() deleteEnrollmentApplicationItem$ = this.actions$
+    .ofType(EnrollmentApplicationActions.DELETE_ENROLLMENT_APPLICATION_ITEM)
+    .map(action => action.payload)
+    .switchMap(payload => this.termService.deleteEnrollmentApplicationItem(payload.application, payload.item))
+    .map(message => this.enrollmentApplicationActions.deleteEnrollmentApplicationItemSuccess(message))
+    .withLatestFrom(this.store$.select(...this.ENROLLMENT_APPLICATION_TASK))
+    .map(state => state[1])
+    .map(enrollmentApplication => this.enrollmentApplicationActions.findEnrollmentApplicationItems(enrollmentApplication));
+
+
 }
