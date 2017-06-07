@@ -40,7 +40,7 @@ export class ProfileActionComponent {
     }
 
 
-  showTransferDialog(): void {
+  showTransferDialog(student:Student): void {
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
     config.role = 'dialog';
