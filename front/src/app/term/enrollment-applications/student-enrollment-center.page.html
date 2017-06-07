@@ -21,10 +21,20 @@
         <md-icon class="md-24">more_vert</md-icon>
       </button>
     </div>
-
-    <md-card>
+<!-- List Student Enrollment Data -->
+ <md-card>
       <md-tab-group [selectedIndex]="0">
         <md-tab label="Drafted Subject Registration">
+          <pams-student-enrollment-list
+            [studentEnrollmentApplicationTasks]="studentEnrollmentApplicationTasks$ | async"
+            (view)="viewTask($event)"></pams-student-enrollment-list>
+        </md-tab>
+      </md-tab-group>
+    </md-card>
+
+ <md-card>
+      <md-tab-group [selectedIndex]="0">
+        <md-tab label="Current Subject Registration">
           <pams-student-enrollment-list
             [studentEnrollmentApplicationTasks]="studentEnrollmentApplicationTasks$ | async"
             (view)="viewTask($event)"></pams-student-enrollment-list>
