@@ -118,6 +118,28 @@ public class PlannerController {
 		plannerService.updateAcademicSession(academicSession);
 		return new ResponseEntity<String>(academicSession.getCode(), HttpStatus.OK);
 	}
+	
+	
+	// ====================================================================================================
+		// ACADEMIC YEAR
+		// ====================================================================================================
+	
+	@RequestMapping(value = "/academicYears/{code}/save", method = RequestMethod.POST)
+	public ResponseEntity<String> saveAcademicYear(@PathVariable String code, @RequestBody AcademicYear vo) {
+		dummyLogin();
+		AdAcademicYear year= new AdAcademicYearImpl();
+		year.setCode(vo.getCode());
+		year.setDescription(vo.getDescription());
+		year.setYear(vo.getYear());
+		plannerService. saveAcademicYear(year);
+		return new ResponseEntity<String>("Success", HttpStatus.OK);
+	}
+	
+	
+	
+	
+	
+	
 
 	// ====================================================================================================
 	// PROGRAM LEVEL
