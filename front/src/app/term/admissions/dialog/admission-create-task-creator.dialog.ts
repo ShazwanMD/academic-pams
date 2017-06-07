@@ -30,9 +30,13 @@ import { AdmissionStatus } from "../admission-status.enum";
 
 export class AdmissionCreateTaskCreatorDialog implements OnInit {
 
-  private createForm: FormGroup;
+  private creatorForm: FormGroup;
   private create: boolean = false;
   private _admission: Admission;
+  private session: AcademicSession;
+  private cohort: Cohort;
+  private student: Student;
+  private studyCenter: StudyCenter;
 
   constructor(private formBuilder: FormBuilder,
     private store: Store<TermModuleState>,
@@ -40,7 +44,7 @@ export class AdmissionCreateTaskCreatorDialog implements OnInit {
     private dialog: MdDialogRef<AdmissionCreateTaskCreatorDialog>,
     private router: Router,
     private route: ActivatedRoute,
-    private vcf: ViewContainerRef, ) {
+    private vcf: ViewContainerRef) {
   }
 
   set admission(value: Admission) {
@@ -49,7 +53,7 @@ export class AdmissionCreateTaskCreatorDialog implements OnInit {
   }
 
   ngOnInit(): void {
-    this.createForm = this.formBuilder.group(<Admission>{
+    this.creatorForm = this.formBuilder.group(<Admission>{
       id: null,
       gpa: '',
       cgpa: '',
@@ -57,19 +61,21 @@ export class AdmissionCreateTaskCreatorDialog implements OnInit {
       creditEarned: '',
       standing: AcademicStanding.TBD,
       status: AdmissionStatus.ADMITTED,
-      cohort:<Cohort>{},
-      session:<AcademicSession>{},
+      cohort: <Cohort>{},
+      academicSession: <AcademicSession>{},
       studyCenter: <StudyCenter>{},
-      student:<Student>{},
+      student: <Student>{},
     });
-    if (this.create) this.createForm.patchValue(this._admission);
+
+    if (this.create) this.creatorForm.patchValue(this._admission);
   }
-    submit(admission: Admission, isValid: boolean) {
-      //  console.log("adding admission");
-      //   if (!admission.id) this.store.dispatch(this.actions.saveAdmission(admission));
-      //   else this.store.dispatch(this.actions.updateAdmission(admission));
-      //   this.dialog.close();
-      //   console.log(admission);
+
+  save(admission: Admission, isValid: boolean) {
+     console.log("adding admission");
+      if (!admission.id) this.store.dispatch(this.actions.saveAdmission(admission));
+      else this.store.dispatch(this.actions.updateAdmission(admission));
+      this.dialog.close();
+      console.log(admission);
   }
 
   /* save(offeringApplication: OfferingApplication, isValid: boolean) {
