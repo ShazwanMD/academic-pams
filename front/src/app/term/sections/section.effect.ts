@@ -21,12 +21,12 @@ export class SectionEffects {
               private termService: TermService,
               private store$: Store<TermModuleState>) {
   }
-  
+
   @Effect() findSections$ = this.actions$
   .ofType(SectionActions.FIND_SECTIONS)
   .switchMap(() => this.termService.findSections())
   .map(sections => this.sectionActions.findSectionsSuccess(sections));
-  
+
   @Effect() findSectionByCanonicalCode$ = this.actions$
     .ofType(SectionActions.FIND_SECTION_BY_CANONICAL_CODE)
     .map(action => action.payload)
@@ -76,7 +76,8 @@ export class SectionEffects {
     .map(message => this.sectionActions.updateSectionSuccess(message))
     .withLatestFrom(this.store$.select(...this.OFFERING))
     .map(state => state[1])
-    .map((offering: Offering) => this.offeringActions.findOfferingByCanonicalCode(offering.canonicalCode));
+    .map((offering: Offering) => this.offeringActions.findOfferingByCanonicalCode(offering.canonicalCode))
+    //.map((section: Section) => this.sectionActions.findSectionByCanonicalCode(section.canonicalCode));
 
 
 }

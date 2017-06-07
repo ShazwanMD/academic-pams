@@ -6,7 +6,7 @@
 
   <td-layout-manage-list #list>
     <md-nav-list list-items>
-      <a md-list-item [routerLink]="['/courses-create']">
+     <a md-list-item (click)="createDialog()">
         <md-icon>create</md-icon>
         Create Course
       </a>

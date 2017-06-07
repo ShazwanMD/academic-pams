@@ -51,7 +51,7 @@ public class WhenIUpdateMailingAddress extends Stage<WhenIUpdateMailingAddress> 
             address.setAddress2("Jalan SK Bunut Payong");
             address.setAddress3("Jalan Kuala Krai");
             address.setPostCode("15150");
-            address.setType(AdAddressType.MAILING);
+            address.setType(AdAddressType.PERMANENT);
             address.setStateCode(commonService.findStateCodeByCode("MY-03"));
             address.setCountryCode(commonService.findCountryCodeByCode("MY"));
 

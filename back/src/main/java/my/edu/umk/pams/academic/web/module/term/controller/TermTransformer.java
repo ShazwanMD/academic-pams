@@ -100,8 +100,8 @@ public class TermTransformer {
 		vo.setStudent(identityTransformer.toStudentVo(admission.getStudent()));
 		vo.setAcademicSession(plannerTransformer.toAcademicSessionVo(admission.getSession()));
 		vo.setCohort(plannerTransformer.toCohortVo(admission.getCohort()));
-		vo.setAdmissionStatus(AdmissionStatus.get(admission.getStatus().ordinal()));
-		vo.setAcademicStanding(AcademicStanding.get(admission.getStanding().ordinal()));
+		vo.setStatus(AdmissionStatus.get(admission.getStatus().ordinal()));
+		vo.setStanding(AcademicStanding.get(admission.getStanding().ordinal()));
 		// vo.setEnrollmentStanding(EnrollmentStanding.get(enrollment.getStanding().ordinal()));
 		return vo;
 	}
@@ -125,6 +125,7 @@ public class TermTransformer {
 		task.setTaskId(t.getId());
 		task.setReferenceNo(application.getReferenceNo());
 		task.setSourceNo(application.getSourceNo());
+		task.setMatricNo(application.getAdmission().getStudent().getMatricNo());
 		task.setDescription(application.getDescription());
 		task.setTaskName(t.getName());
 		task.setAssignee(task.getAssignee());
@@ -155,6 +156,7 @@ public class TermTransformer {
 		EnrollmentApplicationItem vo = new EnrollmentApplicationItem();
 		vo.setId(e.getId());
 		vo.setSection(toSectionVo(e.getSection()));
+		vo.setAction(EnrollmentApplicationAction.get(e.getAction().ordinal()));
 		vo.setMetaState(MetaState.get(e.getMetadata().getState().ordinal()));
 		return vo;
 	}
@@ -174,6 +176,8 @@ public class TermTransformer {
 	public Enrollment toSimpleEnrollmentVo(AdEnrollment enrollment) {
 		Enrollment vo = new Enrollment();
 		vo.setId(enrollment.getId());
+		vo.setAdmission(this.toAdmissionVo(enrollment.getAdmission()));
+		vo.setSection(this.toSectionVo(enrollment.getSection()));
 		vo.setEnrollmentStanding(EnrollmentStanding.get(enrollment.getStanding().ordinal()));
 		vo.setEnrollmentStatus(EnrollmentStatus.get(enrollment.getStatus().ordinal()));
 		return vo;

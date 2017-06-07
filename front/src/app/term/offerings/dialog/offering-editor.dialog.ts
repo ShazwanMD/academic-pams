@@ -32,12 +32,7 @@ export class OfferingEditorDialog implements OnInit {
               private actions: OfferingActions,
               public dialog: MdDialogRef<OfferingEditorDialog>) {
   }
-
-  set offering(value: Offering) {
-    this._offering = value;
-    this.edit = true;
-  }
-
+  
   ngOnInit(): void {
     this.createForm = this.formBuilder.group(<Offering>{
       id: null,

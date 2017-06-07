@@ -22,6 +22,8 @@ export class EnrollmentApplicationItemEditorDialog implements OnInit {
   private editForm: FormGroup;
   private _enrollmentApplicationItem: EnrollmentApplicationItem;
   private _enrollmentApplication: EnrollmentApplication;
+  private edit: boolean = false;
+
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -33,29 +35,28 @@ export class EnrollmentApplicationItemEditorDialog implements OnInit {
 
   }
 
-  set enrollmentApplicationItem(value: EnrollmentApplicationItem) {
-    this._enrollmentApplicationItem = value;
-  }
-
   set enrollmentApplication(value: EnrollmentApplication) {
     this._enrollmentApplication = value;
+  }
+
+  set enrollmentApplicationItem(value: EnrollmentApplicationItem) {
+    this._enrollmentApplicationItem = value;
+    this.edit = true;
   }
 
   ngOnInit(): void {
     this.editForm = this.formBuilder.group(<EnrollmentApplicationItem>{
       id: null,
       action: EnrollmentApplicationAction.ADD,
-      section: <Section>{}
+      section: <Section>{},
     });
-    // this.editForm.patchValue(this._item);
+    if (this.edit) this.editForm.patchValue(this._enrollmentApplicationItem);
   }
 
   save(item: EnrollmentApplicationItem, isValid: boolean) {
-    this.store.dispatch(this.actions.addEnrollmentApplicationItem(this._enrollmentApplication, item))
-    this.close();
-  }
-
-  close(): void {
+    console.log("enrollmentApplicationItem", item);
+    console.log("enrollmentApplication", this._enrollmentApplication);
+    this.store.dispatch(this.actions.addEnrollmentApplicationItem(this._enrollmentApplication, item));
     this.dialog.close();
   }
 }

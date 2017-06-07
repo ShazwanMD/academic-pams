@@ -8,6 +8,8 @@ import java.math.BigDecimal;
 public class Gradebook {
     private BigDecimal score;
     private Assessment assessment;
+    private Section section;
+    private Enrollment enrollment;
 
     public BigDecimal getScore() {
         return score;
@@ -24,5 +26,23 @@ public class Gradebook {
     public void setAssessment(Assessment assessment) {
         this.assessment = assessment;
     }
+
+	public Section getSection() {
+		return section;
+	}
+
+	public void setSection(Section section) {
+		this.section = section;
+	}
+
+	public Enrollment getEnrollment() {
+		return enrollment;
+	}
+
+	public void setEnrollment(Enrollment enrollment) {
+		this.enrollment = enrollment;
+	}
+    
+    
 }
 

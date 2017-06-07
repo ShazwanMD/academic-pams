@@ -99,6 +99,7 @@ public class PlannerTransformer {
         vo.setTitleEn(course.getTitleEn());
         vo.setCredit(course.getCredit());
         vo.setFaculty(plannerTransformer.toFacultyVo(course.getFaculty()));
+        vo.setStatus(CourseStatus.get(course.getStatus().ordinal()));
         return vo;
     }
 

@@ -8,8 +8,11 @@ export interface EnrollmentApplicationTask extends Document{
   candidate:string;
   assignee:string;
 
-  totalAmount:number;
   application:EnrollmentApplication;
+
+  // denormalize
+  matricNo: string;
+
 
   flowState:FlowState;
 }

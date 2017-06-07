@@ -25,6 +25,7 @@
 
       <div flex-gt-md="30">
         <pams-section-action
+        [offering]="offering$ | async"
           [section]="section$ | async">
         </pams-section-action>
         <md-card>

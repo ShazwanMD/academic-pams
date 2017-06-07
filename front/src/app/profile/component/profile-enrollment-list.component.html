@@ -22,10 +22,13 @@
   <md-card-content *ngFor="let enrollment of enrollments">
     <div layout="column" layout-gt-md="row" class="insert">
       <div flex-gt-md="50">
-        <b>Course Code</b><br/>{{enrollment?.section?.offering?.course?.code}}
+        <b>Course Code</b><br/>{{enrollment?.section?.offering?.code}}
       </div>
       <div flex-gt-md="50">
-        <b>Course Title</b><br/>{{enrollment?.section?.offering?.course?.title}}
+        <b>Course Title</b><br/>{{enrollment?.section?.offering?.titleEn}}
+      </div>
+      <div flex-gt-md="50">
+        <b>Section</b><br/>{{enrollment?.section?.ordinal}}
       </div>
     </div>
   </md-card-content>

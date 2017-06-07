@@ -52,13 +52,15 @@ export class AppointmentEffects {
      .map((section: Section) => this.sectionActions.findSectionByCanonicalCode(section.canonicalCode));
      
     //remove appointment
-      @Effect() removeAppointment$ = this.actions$
-    .ofType(AppointmentActions.REMOVE_APPOINTMENT)
-    .map(action => action.payload)
-    .switchMap(payload => this.termService.removeAppointment(payload.section, payload.appointment))
-    .map(message => this.appointmentActions.removeAppointmentSuccess(message))
-    .withLatestFrom(this.store$.select(...this.SECTION))
-    .map(state => state[1])
-    .map((section: Section) => this.sectionActions.findSectionByCanonicalCode(section.canonicalCode));
-  
+       @Effect() removeAppointment$ = this.actions$
+     .ofType(AppointmentActions.REMOVE_APPOINTMENT)
+     .map(action => action.payload)
+     .switchMap(payload => this.termService.removeAppointment(payload.section, payload.appointment))
+     .map(message => this.appointmentActions.removeAppointmentSuccess(message))
+     .withLatestFrom(this.store$.select(...this.SECTION))
+     .map(state => state[1])
+     .map((section: Section) => this.sectionActions.findSectionByCanonicalCode(section.canonicalCode));
+    
+     
 }
+ 

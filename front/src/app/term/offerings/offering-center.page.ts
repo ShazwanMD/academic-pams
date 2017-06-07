@@ -30,11 +30,9 @@ export class OfferingCenterPage implements OnInit {
               private dialog: MdDialog) {
     this.offerings$ = this.store.select(...this.OFFERINGS);
   }
-
   goBack(route: string): void {
     this.router.navigate(['/offerings']);
   }
-
   viewOffering(offering: Offering) {
     console.log("offering: " + offering.id);
     this.router.navigate(['/offerings-detail', offering.id]);
@@ -43,7 +41,6 @@ export class OfferingCenterPage implements OnInit {
   filter(): void {
 
   }
-  
   createDialog(): void {
       this.showDialog(null);
     }
@@ -54,7 +51,7 @@ export class OfferingCenterPage implements OnInit {
     config.viewContainerRef = this.vcf;
     config.role = 'dialog';
     config.width = '40%';
-    config.height = '90%';
+    config.height = '60%';
     config.position = {top: '0px'};
     this.creatorDialogRef = this.dialog.open(OfferingEditorDialog, config);
     this.creatorDialogRef.afterClosed().subscribe(res => {

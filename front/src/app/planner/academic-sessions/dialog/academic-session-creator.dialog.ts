@@ -21,7 +21,7 @@ export class AcademicSessionCreatorDialog implements OnInit {
     private createForm: FormGroup;
     private create: boolean = false;
     private _academicSession: AcademicSession;
-    private year: AcademicYear; 
+    //private year: AcademicYear; 
 
     constructor(private formBuilder: FormBuilder,
         private viewContainerRef: ViewContainerRef,
@@ -44,7 +44,7 @@ export class AcademicSessionCreatorDialog implements OnInit {
             startDate: null,
             endDate: null,
             semester: AcademicSemester.SEMESTER_1,
-            /*year: <AcademicYear>{},*/
+            year: <AcademicYear>{},
 
         });
 
@@ -52,9 +52,24 @@ export class AcademicSessionCreatorDialog implements OnInit {
     }
 
     save(academicSession: AcademicSession, isValid: boolean) {
-        console.log("saving academic session");
-        if (!academicSession.id) this.store.dispatch(this.actions.saveAcademicSession(academicSession));
-        else this.store.dispatch(this.actions.updateAcademicSession(academicSession));
+      //  console.log("saving academic session first");
+   //      console.log(JSON.stringify(academicSession));
+       
+  //      console.dir(academicSession.year.year);
+        // console.log(this.year);
+      
+       // console.dir(academicSession);
+       console.dir(academicSession.year);
+       console.dir(this);
+      
+       // if (!academicSession.id) this.store.dispatch (this.actions.saveAcademicSession(academicSession));
+      //  else this.store.dispatch(this.actions.updateAcademicSession(academicSession));
         this.dialog.close();
+
+
+        
+        // if (!academicSession.id) this.store.dispatch(this.actions.saveAcademicSession(academicSession));
+        // else this.store.dispatch(this.actions.updateAcademicSession(academicSession));
+        // this.dialog.close();
     }
 }

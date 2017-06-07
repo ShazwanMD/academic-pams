@@ -261,4 +261,23 @@ export class EnrollmentApplicationActions {
         };
     }
 
+
+    static DELETE_ENROLLMENT_APPLICATION_ITEM = '[EnrollmentApplication] Delete EnrollmentApplication Item';
+
+    deleteEnrollmentApplicationItem(application, item): Action {
+        return {
+            type: EnrollmentApplicationActions.DELETE_ENROLLMENT_APPLICATION_ITEM,
+            payload: { application: application, item: item }
+        };
+    }
+
+    static DELETE_ENROLLMENT_APPLICATION_ITEM_SUCCESS = '[EnrollmentApplication] Delete EnrollmentApplication Item Success';
+
+    deleteEnrollmentApplicationItemSuccess(message): Action {
+        return {
+            type: EnrollmentApplicationActions.DELETE_ENROLLMENT_APPLICATION_ITEM_SUCCESS,
+            payload: message
+        };
+    }
+
 }

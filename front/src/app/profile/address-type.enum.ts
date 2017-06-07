@@ -1,4 +1,4 @@
 export enum AddressType {
-    MAILING,     //0
-    BILLING   //1
+    PERMANENT,     //0
+    CURRENT    //11
 }

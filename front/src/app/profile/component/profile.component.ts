@@ -60,7 +60,7 @@ export class ProfileComponent implements OnInit {
     { name: 'addressType', label: 'Address Type' },
     { name: 'address1', label: 'Address 1' },
     { name: 'address2', label: 'Address 2' },
-    { name: 'address3', label: 'Address 3' },
+    { name: 'address3', label: 'City' },
     { name: 'postcode', label: 'Postcode' },
     { name: 'action', label: 'Action' }
   ];
@@ -84,8 +84,8 @@ export class ProfileComponent implements OnInit {
   //Contact
   private columnContact: any[] = [
     { name: 'contactType', label: 'Contact Type' },
-    { name: 'identityNo', label: 'Identity No' },
     { name: 'name', label: 'Name' },
+    { name: 'phone', label: 'Mobile No' },
     { name: 'action', label: 'Action' }
   ];
 

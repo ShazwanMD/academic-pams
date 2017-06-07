@@ -21,63 +21,45 @@
         </div>
       </md-tab>
       <md-tab label="Course Information">
-        <md-card>
-          <div md-content flex md-scroll-y>
-            <div layout="column" layout-gt-md="row" class="insert">
-
-              <div flex-gt-md="50">
-                <md-card-title>Course Details Info</md-card-title>
-              </div>
-
-              <div flex-gt-md="50" align="right">
-                <!-- <button md-icon-button (click)="addAddressDialog(save)">
-                <md-icon>add</md-icon>
-              </button> -->
-              </div>
-            </div>
+        <div layout="column" class="inset">
+          <div layout="row" class="pad-bottom">
+            <span flex="20">Code</span>
+            <span>{{section?.offering?.course?.code}}</span>
           </div>
-          <md-divider></md-divider>
-          <md-card-content>
-            <div>Code : {{section?.offering?.course?.code}}</div>
-            <br>
-            <div>Title : {{section?.offering?.course?.titleMs}}</div>
-            <br>
-            <div>Credit : {{section?.offering?.course?.credit}}</div>
-            <br>
-
-          </md-card-content>
-        </md-card>
+          <div layout="row" class="pad-bottom">
+            <span flex="20">Title</span>
+            <span>{{section?.offering?.course?.titleMs}}</span>
+          </div>
+          <div layout="row" class="pad-bottom">
+            <span flex="20">Credit</span>
+            <span>{{section?.offering?.course?.credit}}</span>
+          </div>
+        </div>
       </md-tab>
       <md-tab label="Program Information">
-        <md-card>
-          <div md-content flex md-scroll-y>
-            <div layout="column" layout-gt-md="row" class="insert">
-
-              <div flex-gt-md="50">
-                <md-card-title>Program Details Info</md-card-title>
-              </div>
-
-              <div flex-gt-md="50" align="right">
-              </div>
-            </div>
+       
+        <div layout="column" class="inset">
+          <div layout="row" class="pad-bottom">
+            <span flex="20">Code</span>
+            <span>{{section?.offering?.program?.code}}</span>
           </div>
-
-          <md-divider></md-divider>
-          <md-card-content>
-            <div>Code : {{section?.offering?.program?.code}}</div>
-            <br>
-            <div>Title : {{section?.offering?.program?.titleMs}}</div>
-            <br>
-            <div>Status : {{section?.offering?.program?.status}}</div>
-            <br>
-            <div>Faculty : {{section?.offering?.program?.faculty?.name}}</div>
-            <br>
-            <div>Faculty Desc. :
-              {{section?.offering?.program?.faculty?.description}}
-            </div>
-            <br>
-          </md-card-content>
-        </md-card>
+          <div layout="row" class="pad-bottom">
+            <span flex="20">Title</span>
+            <span>{{section?.offering?.program?.titleMs}}</span>
+          </div>
+          <div layout="row" class="pad-bottom">
+            <span flex="20">Status</span>
+            <span>{{section?.offering?.program?.status}}</span>
+          </div>
+           <div layout="row" class="pad-bottom">
+            <span flex="20">Faculty</span>
+            <span>{{section?.offering?.program?.faculty?.name}}</span>
+          </div>
+          <div layout="row" class="pad-bottom">
+            <span flex="20">Faculty Desc.</span>
+            <span>{{section?.offering?.program?.faculty?.description}}</span>
+          </div>
+        </div>
       </md-tab>
     </md-tab-group>
   </md-card-content>

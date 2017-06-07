@@ -15,8 +15,17 @@ public class Contact extends MetaObject {
     private String identityNo;
     private String name;
     private ContactType contactType;
+    private String phone;
+    
+    public String getPhone() {
+		return phone;
+	}
 
-    public Long getId() {
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public Long getId() {
         return id;
     }
 

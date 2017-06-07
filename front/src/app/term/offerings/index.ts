@@ -1,3 +1,4 @@
+import { GradebookComponent } from './component/gradebook.component';
 import '@ngrx/core/add/operator/select';
 import {appRoutes, appRoutingProviders} from '../../app.routes';
 import {NgModule, ModuleWithProviders} from '@angular/core';
@@ -54,6 +55,7 @@ import {GradebookDetailPage} from "./gradebook-detail.page";
     OfferingEnrollmentListComponent,
     OfferingAppointmentListComponent,
     OfferingActionComponent,
+    GradebookComponent,
 
     //dialog
     OfferingEditorDialog,
@@ -66,6 +68,7 @@ import {GradebookDetailPage} from "./gradebook-detail.page";
    entryComponents: [
     OfferingEditorDialog,
        OfferingUpdateDialog,
+    GradebookComponent,
 
   ]
 })
