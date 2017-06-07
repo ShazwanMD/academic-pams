@@ -52,5 +52,37 @@ export class AdmissionActions {
     };
   }
 
+  static SAVE_ADMISSION = '[AdmissionApplication] Save AdmissionApplication';
+  saveAdmission(admission): Action {
+    return {
+      type: AdmissionActions.SAVE_ADMISSION,
+      payload: admission
+    };
+  }
+
+  static SAVE_ADMISSION_SUCCESS = '[AdmissionApplication] Save AdmissionApplication Success';
+  saveAdmissionSuccess(message): Action {
+    return {
+      type: AdmissionActions.SAVE_ADMISSION_SUCCESS,
+      payload: message
+    };
+  }
+
+  static UPDATE_ADMISSION = '[Program] Update Program';
+  updateAdmission(admission): Action {
+    return {
+      type: AdmissionActions.UPDATE_ADMISSION,
+      payload: admission
+    };
+  }
+
+  static UPDATE_ADMISSION_SUCCESS = '[Program] Update Program Success';
+  updateAdmissionSuccess(message): Action {
+    return {
+      type: AdmissionActions.UPDATE_ADMISSION_SUCCESS,
+      payload: message
+    };
+  }
+
 
 }
