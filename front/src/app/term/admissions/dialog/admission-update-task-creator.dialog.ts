@@ -11,8 +11,6 @@ import { AdmissionStatus } from "../admission-status.enum";
 import { AcademicStanding } from "../academic-standing.enum";
 import { AdmissionActions } from "../admission.action";
 import { Router, ActivatedRoute } from '@angular/router';
-
-
 //import {OfferingApplicationActions} from "../offering-application.action";
 
 @Component({
@@ -21,8 +19,10 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 
 export class AdmissionUpdateTaskCreatorDialog implements OnInit {
-  private createForm: FormGroup;
- 
+  private editorForm: FormGroup;
+  private edit: boolean = false;
+  private _admission: Admission;
+
   constructor(private formBuilder: FormBuilder,
     private store: Store<TermModuleState>,
     private actions: AdmissionActions,
@@ -32,9 +32,13 @@ export class AdmissionUpdateTaskCreatorDialog implements OnInit {
     private vcf: ViewContainerRef) {
   }
 
-  ngOnInit(): void {
-    this.createForm = this.formBuilder.group(<Admission>{
+  set admission(value: Admission) {
+    this._admission = value;
+    this.edit = true;
+  }
 
+  ngOnInit(): void {
+    this.editorForm = this.formBuilder.group(<Admission>{
       id: null,
       gpa: '',
       cgpa: '',
@@ -43,8 +47,13 @@ export class AdmissionUpdateTaskCreatorDialog implements OnInit {
       // standing: AcademicStanding.TBD,
       // status: AdmissionStatus.ADMITTED,
     });
+    if (this.edit) this.editorForm.patchValue(this._admission);
+  }
 
-
+  submit(admission: Admission, isValid: boolean) {
+    console.log(JSON.stringify(admission));
+    this.store.dispatch(this.actions.updateAdmission(admission));
+    this.dialog.close();
   }
 
   /* update(offeringApplication: OfferingApplication, isValid: boolean) {
