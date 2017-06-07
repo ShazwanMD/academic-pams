@@ -1,3 +1,4 @@
+import { Router, ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import {MdDialog, MdDialogConfig, MdDialogRef, MdSnackBar} from '@angular/material';
 import {Input, Component, ViewContainerRef, ChangeDetectionStrategy} from '@angular/core';
@@ -21,12 +22,22 @@ export class ProfileActionComponent {
   private switcherDialogRef: MdDialogRef<StudyModeSwitcherDialog>;
   private transfererDialogRef: MdDialogRef<CohortTransfererDialog>;
 
-  constructor(private actions: ProfileActions,
+  constructor(private router: Router,
+    private route: ActivatedRoute,
+    private actions: ProfileActions,
               private store: Store<ProfileModuleState>,
               private vcf: ViewContainerRef,
               private dialog: MdDialog,
               private snackBar: MdSnackBar) {
 }
+
+    ngOnInit(): void {
+      this.route.params.subscribe((params: { identityNo: string }) => {
+        let identityNo: string = params.identityNo;
+        this.store.dispatch(this.actions.findStudentByIdentityNo(identityNo));
+      });
+
+    }
 
 
   showTransferDialog(): void {
@@ -44,7 +55,7 @@ export class ProfileActionComponent {
     });
   }
 
-  showSwitchDialog(): void {
+  showSwitchDialog(student:Student): void {
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
     config.role = 'dialog';
