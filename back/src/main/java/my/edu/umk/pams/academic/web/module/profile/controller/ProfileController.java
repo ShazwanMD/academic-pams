@@ -267,8 +267,10 @@ public class ProfileController {
         student.setMobile(vo.getMobile());
         student.setFax(vo.getFax());
         student.setStudyMode(commonService.findStudyModeById(vo.getStudyMode().getId()));
+        student.setCohort(plannerService.findCohortById(vo.getCohort().getId()));
         profileService.updateStudent(student);
-        LOG.debug("StudyMode:{}",student.getStudyMode());
+        LOG.debug("StudyMode:{}",student.getStudyMode().getDescription());
+        LOG.debug("Cohort Student Baru:{}", student.getCohort().getCode());
         return new ResponseEntity<String>("Success", HttpStatus.OK);
 
     }
