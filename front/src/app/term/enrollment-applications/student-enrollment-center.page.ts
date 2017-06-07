@@ -16,11 +16,11 @@ import {EnrollmentApplicationTaskCreatorDialog} from "./dialog/enrollment-applic
 
 export class StudentEnrollmentCenterPage implements OnInit {
 
-  private ASSIGNED_ENROLLMENT_APPLICATION_TASKS = "termModuleState.assignedEnrollmentApplicationTasks".split(".")
+  private STUDENT_ENROLLMENT_APPLICATION_TASKS = "termModuleState.assignedEnrollmentApplicationTasks".split(".")
   private POOLED_ENROLLMENT_APPLICATION_TASKS = "termModuleState.pooledEnrollmentApplicationTasks".split(".")
   private creatorDialogRef: MdDialogRef<EnrollmentApplicationTaskCreatorDialog>;
 
-  private assignedEnrollmentApplicationTasks$: Observable<EnrollmentApplicationTask>;
+  private studentEnrollmentApplicationTasks$: Observable<EnrollmentApplicationTask>;
   private pooledEnrollmentApplicationTasks$: Observable<EnrollmentApplicationTask>;
 
   constructor(private router: Router,
@@ -30,7 +30,7 @@ export class StudentEnrollmentCenterPage implements OnInit {
               private store: Store<TermModuleState>,
               private dialog: MdDialog) {
 
-    this.assignedEnrollmentApplicationTasks$ = this.store.select(...this.ASSIGNED_ENROLLMENT_APPLICATION_TASKS);
+    this.studentEnrollmentApplicationTasks$ = this.store.select(...this.STUDENT_ENROLLMENT_APPLICATION_TASKS);
     this.pooledEnrollmentApplicationTasks$ = this.store.select(...this.POOLED_ENROLLMENT_APPLICATION_TASKS);
   }
 

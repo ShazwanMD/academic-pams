@@ -9,13 +9,13 @@ import {EnrollmentApplicationTask} from "../enrollment-application-task.interfac
 })
 export class StudentEnrollmentListComponent {
 
-  @Input() enrollmentApplicationTasks: EnrollmentApplicationTask[];
+  @Input() studentEnrollmentApplicationTasks: EnrollmentApplicationTask[];
   @Output() view = new EventEmitter<EnrollmentApplicationTask>();
 
   private columns: any[] = [
     {name: 'referenceNo', label: 'ReferenceNo'},
-    {name: 'application.admission.student.identityNo', label: 'Student'},
-    {name: 'description', label: 'Description'},
+    {name: 'application.admission.student.identityNo', label: 'Student ID'},
+    {name: 'application.admission.student.name', label: 'Name'},
     {name: 'application.admission.cgpa', label: 'CGPA'},
     {name: 'application.admission.cohort.code', label: 'Cohort'},
     {name: 'flowState', label: 'Status'},
