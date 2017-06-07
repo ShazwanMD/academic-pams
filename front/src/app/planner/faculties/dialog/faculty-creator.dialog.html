@@ -1,47 +1,32 @@
 <h2 md-dialog-title>Create New Faculty</h2>
 <md-dialog-content>
-  <form [formGroup]="creatorForm">
-    <div layout="row" class="pad-bottom">
-      <md-input-container flex>
-        <input mdInput #code
-               placeholder="Code"
-               formControlName="code"
-               flex/>
-      </md-input-container>
-    </div>
-    <div layout="row" class="pad-bottom">
-      <md-input-container flex>
-        <input mdInput #description
-               placeholder="Description"
-               formControlName="description"
-               flex/>
-      </md-input-container>
-    </div>
-    <div layout="row" class="pad-bottom">
-      <md-input-container flex>
-        <input mdInput #name
-               placeholder="Name"
-               formControlName="name"
-               flex/>
-      </md-input-container>
-    </div>
-    <div layout="row" class="pad-bottom">
-      <md-input-container flex>
-        <input mdInput #prefix
-               placeholder="Prefix"
-               formControlName="prefix"
-               flex/>
-      </md-input-container>
-    </div>
-    <div layout="row" class="pad-bottom pad-top">
-      <pams-faculty-status-select
-        [placeholder]="'Select Status'"
-        [innerFormControl]="creatorForm.controls['status']">
-      </pams-faculty-status-select>
-    </div>
-    
-  </form>
+<form [formGroup]="creatorForm">
+	<div layout="row" class="pad-bottom">
+		<md-input-container flex> <input mdInput #code
+			placeholder="Code" formControlName="code" flex /> </md-input-container>
+	</div>
+	<div layout="row" class="pad-bottom">
+		<md-input-container flex> <input mdInput
+			#description placeholder="Description" formControlName="description"
+			flex /> </md-input-container>
+	</div>
+	<div layout="row" class="pad-bottom">
+		<md-input-container flex> <input mdInput #name
+			placeholder="Name" formControlName="name" flex /> </md-input-container>
+	</div>
+	<div layout="row" class="pad-bottom">
+		<md-input-container flex> <input mdInput #prefix
+			placeholder="Prefix" formControlName="prefix" flex /> </md-input-container>
+	</div>
+	<div layout="row" class="pad-bottom pad-top">
+		<pams-faculty-status-select [placeholder]="'Select Status'"
+			[innerFormControl]="creatorForm.controls['status']">
+		</pams-faculty-status-select>
+	</div>
+
+</form>
 </md-dialog-content>
 <md-dialog-actions align="end">
-  <button md-raised-button color="accent" (click)="save(creatorForm.value, creatorForm.valid)">Add Faculty</button>
+<button md-raised-button color="accent"
+	(click)="save(creatorForm.value, creatorForm.valid)">Save</button>
 </md-dialog-actions>

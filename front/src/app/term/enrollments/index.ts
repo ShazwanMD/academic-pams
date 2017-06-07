@@ -13,6 +13,7 @@ import {EffectsModule} from "@ngrx/effects";
 import {EnrollmentEffects} from "./enrollment.effect";
 import {EnrollmentDetailPage} from "./enrollment-detail.page";
 import {EnrollmentComponent} from "./component/enrollment.component";
+import {EnrollmentActionComponent} from "./component/enrollment-action.component";
 import {EnrollmentEditorDialog} from "./dialog/enrollment-editor.dialog";
 
 @NgModule({
@@ -30,6 +31,7 @@ import {EnrollmentEditorDialog} from "./dialog/enrollment-editor.dialog";
     // component
     EnrollmentListComponent,
     EnrollmentComponent,
+    EnrollmentActionComponent,
 
   //dialog
     EnrollmentEditorDialog,

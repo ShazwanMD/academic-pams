@@ -5,9 +5,15 @@
 
   <td-layout-manage-list #list>
     <md-nav-list list-items>
-      <a md-list-item [routerLink]="['/term/admission-applications']">
+        <md-divider></md-divider>
+        <a md-list-item [routerLink]="['/term/admission-applications']">
         <md-icon>create</md-icon>
         Create Admission Application
+      </a>
+		<md-divider></md-divider>
+        <a md-list-item (click)="createDialog()">
+        <md-icon>create</md-icon>
+        Create Admission
       </a>
       <md-divider></md-divider> <!-- previous menu start -->
       <a md-list-item [routerLink]="['/term/offerings']">
