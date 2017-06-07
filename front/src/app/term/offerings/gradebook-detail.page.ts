@@ -24,19 +24,10 @@ import { Assessment } from "../assessments/assessment.interface";
 })
 
 export class GradebookDetailPage implements OnInit {
-  
-  num:Number;
 
-  getLoop(){
-  this.num = 3;
-    let a = [];
-    for(let i = 0; i < this.num; i++) {
-      var format = "label: 'Assessment ', name: 'gradebooks."+ a.push(i) +".score'";
-      console.log("-->",format);
-    }
-    return format;
-  }
-  
+  //format: String;
+  //num: Number;
+
   @Input() assessments: Assessment;
   @Input() enrollment: Enrollment;
   @Input() student: Student;
@@ -53,7 +44,8 @@ export class GradebookDetailPage implements OnInit {
   private offering$: Observable<Offering>;
   private gradebookMatrices$: Observable<GradebookMatrix>;
 
-  constructor(private router: Router,
+  constructor(
+    private router: Router,
     private route: ActivatedRoute,
     private actions: OfferingActions,
     private store: Store<TermModuleState>,
@@ -63,23 +55,28 @@ export class GradebookDetailPage implements OnInit {
     this.assessments$ = this.store.select(...this.ASSESSMENTS);
     this.gradebookMatrices$ = this.store.select(...this.GRADEBOOK_MATRICES);
     this.enrollments$ = this.store.select(...this.ENROLLMENTS);
+
+    //console.log("atas -->",this.getLoop());
+
 }
+
 
   private columns: any[] =
   [
     { label: 'Student name', name: 'enrollment.admission.student.name' },
-    { label: 'Assessment', name: 'gradebooks.0.score' }
+    //{ label: 'Assessment', name: 'gradebooks.0.score' },
+    //{ label: 'Assessment', name: 'gradebooks.1.score' },
+    //{ label: 'Assessment', name: 'gradebooks.2.score' },
+    //this.getLoop()
   ];
 
   ngOnInit(): void {
-    console.log(this.gradebookMatrices)
     this.route.params.subscribe((params: { canonicalCode: string }) => {
       let canonicalCode: string = params.canonicalCode;
       this.store.dispatch(this.actions.findOfferingByCanonicalCode(canonicalCode));
     });
 
     this.offering$.subscribe((offering: Offering) => {
-      console.log(offering);
       if (offering.canonicalCode) this.store.dispatch(this.actions.findGradebookMatricessByOffering(offering))
     });
   }
@@ -87,4 +84,14 @@ export class GradebookDetailPage implements OnInit {
   goBack(route: string): void {
     this.router.navigate(['/offerings', + this.offerings.canonicalCode]);
   }
+
+  // getLoop(){
+  // this.num = 3;
+  //   let a = [];
+  //   for(var i=0; i < this.num; i++) {
+  //     var format = "{ label: 'Assessment', name: 'gradebooks."+a.push(i)+".score' },";
+  //   }
+  //   return format;
+  // }
+
 }
