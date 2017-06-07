@@ -54,13 +54,13 @@ export class HomeComponent implements OnInit {
           color: 'blue-700',
           description: ' ',
         },
-         {
+         /*{
           title: 'Subject Registration',
           route: '/term',
           icon: 'assignment',
           color: 'blue-700',
           description: ' ',
-        },
+        }, */
         
       ];
     }

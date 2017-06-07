@@ -9,6 +9,7 @@ import {CommonService} from '../../../services';
 import {IdentityService} from '../../../services';
 import {EffectsModule} from "@ngrx/effects";
 import {EnrollmentApplicationCenterPage} from "./enrollment-application-center.page";
+import {StudentEnrollmentCenterPage} from "./student-enrollment-center.page";
 import {EnrollmentApplicationEffects} from "./enrollment-application.effect";
 import {EnrollmentApplicationActions} from "./enrollment-application.action";
 import {AdmissionSubModule} from "../admissions/index";
@@ -27,6 +28,7 @@ import {SectionSubModule} from "../sections/index";
 import {EnrollmentApplicationActionSelectComponent} from "./component/enrollment-application-action-select.component";
 import {EnrollmentApplicationTypeSelectComponent} from "./component/enrollment-application-type-select.component";
 import {AssignedEnrollmentApplicationTaskListComponent} from "./component/assigned-enrollment-application-task-list.component";
+import {StudentEnrollmentListComponent} from "./component/student-enrollment-list.component";
 import {PooledEnrollmentApplicationTaskListComponent} from "./component/pooled-enrollment-application-task-list.component";
 import {EnrollmentApplicationTaskDetailPage} from "./enrollment-application-task-detail.page";
 import { IdentityModule } from "../../identity/index";
@@ -47,6 +49,7 @@ import { IdentityModule } from "../../identity/index";
   declarations: [
     // page
     EnrollmentApplicationCenterPage,
+    StudentEnrollmentCenterPage,
     EnrollmentApplicationTaskDetailPage,
 
     // component
@@ -59,6 +62,7 @@ import { IdentityModule } from "../../identity/index";
     EnrollmentApplicationActionSelectComponent,
     EnrollmentApplicationTypeSelectComponent,
     AssignedEnrollmentApplicationTaskListComponent,
+    StudentEnrollmentListComponent,
     PooledEnrollmentApplicationTaskListComponent,
 
     //dialog
