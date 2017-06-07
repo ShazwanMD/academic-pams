@@ -1,80 +1,80 @@
-import {Injectable} from '@angular/core';
-import {Action} from '@ngrx/store';
+import { Injectable } from '@angular/core';
+import { Action } from '@ngrx/store';
 
 @Injectable()
 export class EnrollmentActions {
 
-  static FIND_ENROLLMENT_BY_ID = '[Enrollment] Find Enrollment By Id';
+    static FIND_ENROLLMENT_BY_ID = '[Enrollment] Find Enrollment By Id';
 
-  findEnrollmentById(enrollment): Action {
-    return {
-      type: EnrollmentActions.FIND_ENROLLMENT_BY_ID,
-      payload: enrollment
-    };
-  }
+    findEnrollmentById( enrollment ): Action {
+        return {
+            type: EnrollmentActions.FIND_ENROLLMENT_BY_ID,
+            payload: enrollment
+        };
+    }
 
-  static FIND_ENROLLMENT_BY_ID_SUCCESS = '[Enrollment] Find Enrollment By Id Success';
+    static FIND_ENROLLMENT_BY_ID_SUCCESS = '[Enrollment] Find Enrollment By Id Success';
 
-  findEnrollmentByIdSuccess(enrollment): Action {
-    return {
-      type: EnrollmentActions.FIND_ENROLLMENT_BY_ID_SUCCESS,
-      payload: enrollment
-    };
-  }
-  
-  static FIND_ENROLLMENTS_BY_SECTION = '[Enrollment] Find Enrollments By Section';
+    findEnrollmentByIdSuccess( enrollment ): Action {
+        return {
+            type: EnrollmentActions.FIND_ENROLLMENT_BY_ID_SUCCESS,
+            payload: enrollment
+        };
+    }
 
-  findEnrollmentsBySection(section): Action {
-    console.log("findEnrollmentsBySection");
-    return {
-      type: EnrollmentActions.FIND_ENROLLMENTS_BY_SECTION,
-      payload: section
-    };
-  }
+    static FIND_ENROLLMENTS_BY_SECTION = '[Enrollment] Find Enrollments By Section';
 
-  static FIND_ENROLLMENTS_BY_SECTION_SUCCESS = '[Enrollment] Find Enrollments By Section Success';
+    findEnrollmentsBySection( section ): Action {
+        console.log( "findEnrollmentsBySection" );
+        return {
+            type: EnrollmentActions.FIND_ENROLLMENTS_BY_SECTION,
+            payload: section
+        };
+    }
 
-  findEnrollmentsBySectionSuccess(enrollments): Action {
-    console.log("findEnrollmentsBySectionSuccess");
-    return {
-      type: EnrollmentActions.FIND_ENROLLMENTS_BY_SECTION_SUCCESS,
-      payload: enrollments
-    };
-  }
+    static FIND_ENROLLMENTS_BY_SECTION_SUCCESS = '[Enrollment] Find Enrollments By Section Success';
 
-  static SAVE_ENROLLMENT = '[Enrollment] Save Enrollment';
+    findEnrollmentsBySectionSuccess( enrollments ): Action {
+        console.log( "findEnrollmentsBySectionSuccess" );
+        return {
+            type: EnrollmentActions.FIND_ENROLLMENTS_BY_SECTION_SUCCESS,
+            payload: enrollments
+        };
+    }
 
-  saveEnrollment(enrollment): Action {
-    return {
-      type: EnrollmentActions.SAVE_ENROLLMENT,
-      payload: enrollment
-    };
-  }
+    static SAVE_ENROLLMENT = '[Enrollment] Save Enrollment';
 
-  static SAVE_ENROLLMENT_SUCCESS = '[Enrollment] Save Enrollment Success';
+    saveEnrollment( enrollment ): Action {
+        return {
+            type: EnrollmentActions.SAVE_ENROLLMENT,
+            payload: enrollment
+        };
+    }
 
-  saveEnrollmentSuccess(enrollment): Action {
-    return {
-      type: EnrollmentActions.SAVE_ENROLLMENT_SUCCESS,
-      payload: enrollment
-    };
-  }
+    static SAVE_ENROLLMENT_SUCCESS = '[Enrollment] Save Enrollment Success';
 
-  static REMOVE_ENROLLMENT = '[Enrollment] Remove Enrollment';
+    saveEnrollmentSuccess( enrollment ): Action {
+        return {
+            type: EnrollmentActions.SAVE_ENROLLMENT_SUCCESS,
+            payload: enrollment
+        };
+    }
 
-  removeEnrollment(enrollment): Action {
-    return {
-      type: EnrollmentActions.REMOVE_ENROLLMENT,
-      payload: enrollment
-    };
-  }
+    static REMOVE_ENROLLMENT = '[Enrollment] Remove Enrollment';
 
-  static REMOVE_ENROLLMENT_SUCCESS = '[Enrollment] Remove Enrollment Success';
+    removeEnrollment( enrollment ): Action {
+        return {
+            type: EnrollmentActions.REMOVE_ENROLLMENT,
+            payload: enrollment
+        };
+    }
 
-  removeEnrollmentSuccess(enrollment): Action {
-    return {
-      type: EnrollmentActions.REMOVE_ENROLLMENT_SUCCESS,
-      payload: enrollment
-    };
-  }
+    static REMOVE_ENROLLMENT_SUCCESS = '[Enrollment] Remove Enrollment Success';
+
+    removeEnrollmentSuccess( enrollment ): Action {
+        return {
+            type: EnrollmentActions.REMOVE_ENROLLMENT_SUCCESS,
+            payload: enrollment
+        };
+    }
 }

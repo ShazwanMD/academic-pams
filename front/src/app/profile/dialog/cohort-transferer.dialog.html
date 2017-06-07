@@ -7,14 +7,8 @@
     <div layout="row" class="pad-bottom pad-top" flex>
       <pams-cohort-select
         [placeholder]="'To'"
-        [innerFormControl]="transferForm.controls['to']">
+        [innerFormControl]="transferForm.controls['cohort']">
       </pams-cohort-select>
-    </div>
-    <div layout="row" class="pad-bottom pad-top" flex>
-      <pams-academic-session-select
-        [placeholder]="'Academic Session'"
-        [innerFormControl]="transferForm.controls['academicSession']">
-      </pams-academic-session-select>
     </div>
   </form>
 </md-dialog-content>

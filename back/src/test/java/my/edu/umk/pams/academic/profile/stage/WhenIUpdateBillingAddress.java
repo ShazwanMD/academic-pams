@@ -44,7 +44,7 @@ public class WhenIUpdateBillingAddress extends Stage<WhenIUpdateBillingAddress> 
     	student = profileService.findStudentByMatricNo(matricNo);
     	addresses = student.getAddresses();
         for (AdAddress address : addresses) {
-            if (address.getType().equals(AdAddressType.BILLING)) {
+            if (address.getType().equals(AdAddressType.CURRENT)) {
                 address.setAddress1("Lot 431,");
                 address.setAddress2("Lorong Teratai");
                 address.setAddress3("Kota Bharu");

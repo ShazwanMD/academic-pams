@@ -1,32 +1,28 @@
-<h2 md-dialog-title> {{edit ? 'Update' : 'Save'}} Appointment </h2>
+<h2 md-dialog-title>{{edit ? 'Update' : 'Save'}} Appointment</h2>
 <md-dialog-content>
-  <form [formGroup]="editorForm">
-    <div layout="row" class="inset" flex>
-      <pams-appointment-status-select
-        [placeholder]="'Appoinment Status'"
-        [innerFormControl]="editorForm.controls['appointmentStatus']">
-      </pams-appointment-status-select>
-       <md-input-container flex >
+<form [formGroup]="editorForm">
+	<div layout="row" class="inset" flex>
+		<pams-appointment-status-select [placeholder]="'Appoinment Status'"
+			[innerFormControl]="editorForm.controls['appointmentStatus']">
+		</pams-appointment-status-select>
+		<!--   <md-input-container flex >
         <input mdInput
                placeholder="appointmentStatus"
                formControlName="appointmentStatus" flex/>
-      </md-input-container>
-      
-    </div>
+      </md-input-container> -->
+	</div>
+	 <div layout="row" class="inset" flex>
+		<pams-staff-select [placeholder]="'Select Staff'"
+			[innerFormControl]="editorForm.controls['staff']">
+		</pams-staff-select>
 
-    <div layout="row" class="inset" flex>
-      <pams-staff-select
-        [placeholder]="'Select Staff'"
-        [innerFormControl]="editorForm.controls['staff']">
-      </pams-staff-select>
-           
-    </div>
+	</div>
 
-  </form>
+</form>
 </md-dialog-content>
 <md-dialog-actions align="end">
-  <button md-raised-button color="accent" (click)="submit(editorForm.value, editorForm.valid)">
-    {{edit ? 'Update' : 'Save'}}
-  </button>
+<button md-raised-button color="accent"
+	(click)="submit(editorForm.value, editorForm.valid)">{{edit ?
+	'Update' : 'Save'}}</button>
 </md-dialog-actions>
 

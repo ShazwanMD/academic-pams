@@ -1,0 +1,7 @@
+<md-select
+  [placeholder]="placeholder"
+  (change)="selectChangeEvent($event.value)" flex>
+  <md-option *ngFor="let standing of standings" [value]="standing">
+    {{standing}}
+  </md-option>
+</md-select>

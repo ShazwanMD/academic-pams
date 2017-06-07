@@ -1,3 +1,4 @@
+import { StudyMode } from './../../common/study-modes/study-mode.interface';
 import {Guardian} from './../guardian.interface';
 import {Component, ViewContainerRef, OnInit, AfterViewInit} from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
@@ -23,6 +24,7 @@ export class CohortTransfererDialog implements OnInit {
   private transferForm: FormGroup;
   private _student: Student;
   private _cohort: Cohort;
+    private edit: boolean = false;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -35,6 +37,7 @@ export class CohortTransfererDialog implements OnInit {
 
   set student(value: Student) {
     this._student = value;
+        this.edit = true;
   }
 
   set cohort(value: Cohort) {
@@ -42,17 +45,28 @@ export class CohortTransfererDialog implements OnInit {
   }
 
   ngOnInit(): void {
-    this.transferForm = this.formBuilder.group(<TransferCohort>{
-      from: <Cohort>{},
-      to: <Cohort>{},
-      academicSession: <AcademicSession>{}
+    this.transferForm = this.formBuilder.group(<Student>{
+      id: null,
+      identityNo:'',
+      name: '',
+      email: '',
+      phone:'',
+      mobile:'',
+      fax:'',
+      cohort:<Cohort>{},
+      studyMode: <StudyMode>{},
+  
     });
+    console.log("patching values : " + JSON.stringify(this._student.cohort));
     this.transferForm.patchValue({from: this._student.cohort});
     this.transferForm.patchValue({to: this._student.cohort});
+    if (this.edit) this.transferForm.patchValue(this._student);
   }
 
-  transfer(transferer: TransferCohort, isValid: boolean) {
-    this.store.dispatch(this.actions.transferCohort(this._student, transferer));
+  transfer(student: Student, isValid: boolean) {
+    console.log(student);
+    console.log("Cohort:{}" + student.cohort);
+    this.store.dispatch(this.actions.updateStudent(student));
     this.dialog.close();
   }
 }

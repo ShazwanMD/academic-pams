@@ -48,6 +48,10 @@ public class PlannerServiceImpl implements PlannerService {
     private AdCourseDao courseDao;
     
     @Autowired
+    private AdAcademicYearDao yearDao;
+    
+    
+    @Autowired
     private AdOfferingDao offeringDao;
 
     @Autowired
@@ -783,6 +787,13 @@ public class PlannerServiceImpl implements PlannerService {
     // ACADEMIC YEAR
     //====================================================================================================
 
+    @Override
+    public void saveAcademicYear(AdAcademicYear year) {
+    	yearDao.save(year, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
+    
+    
     @Override
     public List<AdAcademicYear> findAcademicYears(Integer offset, Integer limit) {
         return academicYearDao.find(offset, limit);

@@ -1,13 +1,19 @@
 <h2 md-dialog-title>Enrollment Item Editor</h2>
-<md-dialog-content>
+<md-dialog-content flex>
   <form [formGroup]="editForm">
     <div layout="row" class="pad-bottom">
       <pams-section-select
-        [placeholder]="'Select Section'"
+        [placeholder]="'Select Section ------------------------------------------------------------'"
         [innerFormControl]="editForm.controls['section']">
       </pams-section-select>
     </div>
-       
+    <div layout="row" class="pad-bottom">
+      <pams-enrollment-application-action-select
+        [placeholder]="'Select Action'"
+        [innerFormControl]="editForm.controls['action']">
+      </pams-enrollment-application-action-select>
+    </div>
+
   </form>
 </md-dialog-content>
 <md-dialog-actions align="end">

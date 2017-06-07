@@ -78,11 +78,11 @@ public class PlannerController {
 		academicSession.setStartDate(vo.getstartDate());
 		academicSession.setEndDate(vo.getendDate());
 		academicSession.setSemester(AdAcademicSemester.get(vo.getSemester().ordinal()));
-		academicSession.setYear(plannerService.findByCode(academicSession.getYear().getYear()));
+//		academicSession.setYear(plannerService.findByCode(academicSession.getYear().getYear()));
 		plannerService.updateAcademicSession(academicSession);
 		return new ResponseEntity<String>(academicSession.getCode(), HttpStatus.OK);
 	}
-
+	
 	@RequestMapping(value = "/academicSessions/{code}/save", method = RequestMethod.POST)
 	public ResponseEntity<String> saveAcademicSession(@PathVariable String code, @RequestBody AcademicSession vo) {
 		dummyLogin();
@@ -94,8 +94,7 @@ public class PlannerController {
 		academicSession.setEndDate(vo.getendDate());
 		academicSession.setSemester(AdAcademicSemester.get(vo.getSemester().ordinal()));
 //		academicSession.setYear(plannerTransformer.toAcademicYearVo(academicYear.getYear()));
-		academicSession.setYear(plannerService.findByCode(academicSession.getYear().getYear()));
-
+		academicSession.setYear(plannerService.findByCode(vo.getYear().getCode()));
 		plannerService.saveAcademicSession(academicSession);
 		return new ResponseEntity<String>("Success", HttpStatus.OK);
 	}
@@ -119,6 +118,28 @@ public class PlannerController {
 		plannerService.updateAcademicSession(academicSession);
 		return new ResponseEntity<String>(academicSession.getCode(), HttpStatus.OK);
 	}
+	
+	
+	// ====================================================================================================
+		// ACADEMIC YEAR
+		// ====================================================================================================
+	
+	@RequestMapping(value = "/academicYears/{code}/save", method = RequestMethod.POST)
+	public ResponseEntity<String> saveAcademicYear(@PathVariable String code, @RequestBody AcademicYear vo) {
+		dummyLogin();
+		AdAcademicYear year= new AdAcademicYearImpl();
+		year.setCode(vo.getCode());
+		year.setDescription(vo.getDescription());
+		year.setYear(vo.getYear());
+		plannerService. saveAcademicYear(year);
+		return new ResponseEntity<String>("Success", HttpStatus.OK);
+	}
+	
+	
+	
+	
+	
+	
 
 	// ====================================================================================================
 	// PROGRAM LEVEL
@@ -314,7 +335,7 @@ public class PlannerController {
 	}
 
 	// ====================================================================================================
-	// course
+	// Course
 	// ====================================================================================================
 
 	@RequestMapping(value = "/courses", method = RequestMethod.GET)
@@ -345,16 +366,26 @@ public class PlannerController {
 	}
 
 	@RequestMapping(value = "/courses/{code}/activate", method = RequestMethod.POST)
-	public ResponseEntity<String> activateCourse(@PathVariable String code, @RequestBody Course course) {
-		throw new UnsupportedOperationException();
-	
+	public ResponseEntity<String> activateCourse(@PathVariable String code) {
+		dummyLogin();
+		LOG.debug("activate course");
+		AdCourse course = plannerService.findCourseByCode(code);
+		course.setStatus(AdCourseStatus.ACTIVE);
+		plannerService.updateCourse(course);
+		return new ResponseEntity<String>(course.getCode(), HttpStatus.OK);
 	}
 
 	@RequestMapping(value = "/courses/{code}/deactivate", method = RequestMethod.POST)
-	public ResponseEntity<String> deactivateCourse(@PathVariable String code, @RequestBody Course course) {
-		throw new UnsupportedOperationException();
+	public ResponseEntity<String> deactivateCourse(@PathVariable String code) {
+		dummyLogin();
+		LOG.debug("deactivate course");
+		AdCourse course = plannerService.findCourseByCode(code);
+		course.setStatus(AdCourseStatus.INACTIVE);
+		plannerService.updateCourse(course);		
+		return new ResponseEntity<String>(course.getCode(), HttpStatus.OK);
 	}
-	
+
+
 	// ====================================================================================================
 	// academicYear
 	// ====================================================================================================

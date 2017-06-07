@@ -3,11 +3,11 @@ import {Action} from '@ngrx/store';
 import {Assessment} from "../assessments/assessment.interface";
 import {OfferingActions} from "./offering.action";
 
-export type AssessmentListState = Assessment[];
+export type OfferingAssessmentListState = Assessment[];
 
-const initialState: AssessmentListState = <Assessment[]>[];
+const initialState: OfferingAssessmentListState = <Assessment[]>[];
 
-export function assessmentListReducer(state = initialState, action: Action): AssessmentListState {
+export function offeringAssessmentListReducer(state = initialState, action: Action): OfferingAssessmentListState {
   switch (action.type) {
     case OfferingActions.FIND_ASSESSMENTS_BY_OFFERING_SUCCESS: {
       return action.payload;

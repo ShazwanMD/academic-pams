@@ -25,7 +25,7 @@ export class OfferingAssessmentListComponent implements OnInit {
   private columns: any[] = [
     {name: 'id', label: 'Id'},
     {name: 'code', label: 'Code'},
-    {name: 'canonicalCode', label: 'Canonical Code'},
+    {name: 'weight', label: 'Weight %'},
     {name: 'assessmentType', label: 'Assessment Type'},
     {name: 'assessmentCategory', label: 'Assessment Category'},
     {name: 'action', label: ''}

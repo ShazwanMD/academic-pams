@@ -121,6 +121,7 @@ public class ProfileController {
         AdContact contact = new AdContactImpl();
         contact.setIdentityNo(vo.getIdentityNo());
         contact.setName(vo.getName());
+        contact.setPhone(vo.getPhone());
         contact.setType(AdContactType.get(vo.getContactType().ordinal()));
         contact.setStudent(student);
         profileService.addContact(student, contact);
@@ -136,6 +137,7 @@ public class ProfileController {
         AdContact contact = profileService.findContactById(vo.getId());
         contact.setName(vo.getName());
         contact.setIdentityNo(vo.getIdentityNo());
+        contact.setPhone(vo.getPhone());
         contact.setType(AdContactType.get(vo.getContactType().ordinal()));
         contact.setStudent(student);
         profileService.updateContact(student, contact);
@@ -258,14 +260,17 @@ public class ProfileController {
     @RequestMapping(value = "/students/{matricNo}", method = RequestMethod.PUT)
     public ResponseEntity<String> updateStudent(@PathVariable String matricNo, @RequestBody Student vo) {
         dummyLogin();
-
         AdStudent student = profileService.findStudentById(vo.getId());
         student.setName(vo.getName());
         student.setPhone(vo.getPhone());
         student.setEmail(vo.getEmail());
         student.setMobile(vo.getMobile());
         student.setFax(vo.getFax());
+        student.setStudyMode(commonService.findStudyModeById(vo.getStudyMode().getId()));
+        student.setCohort(plannerService.findCohortById(vo.getCohort().getId()));
         profileService.updateStudent(student);
+        LOG.debug("StudyMode:{}",student.getStudyMode().getDescription());
+        LOG.debug("Cohort Student Baru:{}", student.getCohort().getCode());
         return new ResponseEntity<String>("Success", HttpStatus.OK);
 
     }

@@ -7,7 +7,6 @@ import {TermModuleState} from "../../index";
 import {Admission} from "../../admissions/admission.interface";
 import {FlowState} from "../../../core/flow-state.enum";
 import {MetaState} from "../../../core/meta-state.enum";
-import {AdmissionUpdate} from '../admission-update.interface';
 //import {OfferingApplicationActions} from "../offering-application.action";
 
 @Component({
@@ -26,7 +25,7 @@ export class AdmissionDeleteTaskCreatorDialog implements OnInit {
   }
 
   ngOnInit(): void {
-    this.createForm = this.formBuilder.group(<AdmissionUpdate>{
+    this.createForm = this.formBuilder.group(<Admission>{
      
        /*// id:null,
         capacity:'',

@@ -22,6 +22,7 @@ export class StudyModeSwitcherDialog implements OnInit {
 
   private switchForm: FormGroup;
   private _student: Student;
+    private edit: boolean = false;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -34,23 +35,33 @@ export class StudyModeSwitcherDialog implements OnInit {
 
   set student(value: Student) {
     this._student = value;
+        this.edit = true;
   }
 
   ngOnInit(): void {
-    this.switchForm = this.formBuilder.group(<SwitchStudyMode>{
-      from: <StudyMode>{},
-      to: <StudyMode>{},
-      academicSession: <AcademicSession>{}
+    this.switchForm = this.formBuilder.group(<Student>{
+      id: null,
+      identityNo:'',
+      name: '',
+      email: '',
+      phone:'',
+      mobile:'',
+      fax:'',
+      studyMode: <StudyMode>{},
     });
 
     console.log("patching values : " + JSON.stringify(this._student.studyMode));
     this.switchForm.patchValue({"from": this._student.studyMode});
+    if (this.edit) this.switchForm.patchValue(this._student);
 
   }
 
-  switch(switcher: SwitchStudyMode): void {
-    console.log(JSON.stringify(switcher));
-    this.store.dispatch(this.actions.switchStudyMode(this._student, switcher));
+
+  
+  switch(student: Student, isValid: boolean) {
+    console.log(student);
+    console.log("StudyMode:{}" + student.studyMode);
+    this.store.dispatch(this.actions.updateStudent(student));
     this.dialog.close();
   }
 }

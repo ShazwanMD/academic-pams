@@ -1,21 +1,13 @@
-import { Gradebook } from './gradebook.interface';
 import { GradebookMatrix } from './gradebook-matrix.interface';
-import { Student } from './../../identity/student.interface';
+import { Student } from '../../identity/student.interface';
 import { Component, OnInit, ChangeDetectionStrategy, ViewContainerRef, Input, EventEmitter, Output } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { OfferingUpdateDialog } from "./dialog/offering-update.dialog";
-import { IdentityService } from '../../../services';
-import { TermService } from '../../../services';
-import { CommonService } from '../../../services';
 import { Store } from "@ngrx/store";
 import { Observable } from "rxjs";
 import { Offering } from "./offering.interface";
 import { OfferingActions } from "./offering.action";
 import { TermModuleState } from "../index";
-import { Section } from "../sections/section.interface";
-import { MdDialog, MdDialogConfig, MdDialogRef } from "@angular/material";
 import { Enrollment } from "../enrollments/enrollment.interface";
-import { Appointment } from "../appointments/appointment.interface";
 import { Assessment } from "../assessments/assessment.interface";
 
 @Component({
@@ -27,6 +19,16 @@ export class GradebookDetailPage implements OnInit {
 
   //format: String;
   //num: Number;
+
+  /*getLoop() {
+    this.num = 3;
+    let a = [];
+    for (let i = 0; i < this.num; i++) {
+      var format = "label: 'Assessment ', name: 'gradebooks." + a.push(i) + ".score'";
+      console.log("-->", format);
+    }
+    return format;
+  }*/
 
   @Input() assessments: Assessment;
   @Input() enrollment: Enrollment;
@@ -60,7 +62,6 @@ export class GradebookDetailPage implements OnInit {
 
 }
 
-
   private columns: any[] =
   [
     { label: 'Student name', name: 'enrollment.admission.student.name' },
@@ -68,6 +69,9 @@ export class GradebookDetailPage implements OnInit {
     //{ label: 'Assessment', name: 'gradebooks.1.score' },
     //{ label: 'Assessment', name: 'gradebooks.2.score' },
     //this.getLoop()
+    /*{ label: 'FINAL', name: 'gradebooks.0.score' },
+    { label: 'QUIZ 1', name: 'gradebooks.1.score' },
+    { label: 'QUIZ 2', name: 'gradebooks.2.score' }*/
   ];
 
   ngOnInit(): void {

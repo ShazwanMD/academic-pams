@@ -125,6 +125,7 @@ public class TermTransformer {
 		task.setTaskId(t.getId());
 		task.setReferenceNo(application.getReferenceNo());
 		task.setSourceNo(application.getSourceNo());
+		task.setMatricNo(application.getAdmission().getStudent().getMatricNo());
 		task.setDescription(application.getDescription());
 		task.setTaskName(t.getName());
 		task.setAssignee(task.getAssignee());
@@ -155,6 +156,7 @@ public class TermTransformer {
 		EnrollmentApplicationItem vo = new EnrollmentApplicationItem();
 		vo.setId(e.getId());
 		vo.setSection(toSectionVo(e.getSection()));
+		vo.setAction(EnrollmentApplicationAction.get(e.getAction().ordinal()));
 		vo.setMetaState(MetaState.get(e.getMetadata().getState().ordinal()));
 		return vo;
 	}

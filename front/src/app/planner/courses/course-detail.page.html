@@ -7,23 +7,14 @@
   <div md-content flex md-scroll-y>
     <div layout="column" layout-gt-md="row" class="inset">
       <div flex-gt-md="70">
-        <pams-course [course]="course$ | async"></pams-course>
+        <pams-course
+          [course]="course$ | async">
+        </pams-course>
       </div>
 
       <div flex-gt-md="30">
-        <md-card>
-          <md-card-title>Action</md-card-title>
-          <md-card-subtitle>Actions available on current course</md-card-subtitle>
-          <md-divider></md-divider>
-
-          <md-nav-list flex dense>
-            <md-list-item [routerLink]="['/courses-reopen', course?.code]">
-              <md-icon md-list-avatar>gavel</md-icon>
-              <h4 md-line>Deactivate</h4>
-              <p md-line>Deactivate this course</p>
-            </md-list-item>
-          </md-nav-list>
-        </md-card>
+        <pams-course-status [course]="course$ | async"></pams-course-status>
+        <pams-course-action [course]="course$ | async"></pams-course-action>
       </div>
     </div>
   </div>

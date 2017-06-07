@@ -45,6 +45,7 @@ export class ContactEditorDialog implements OnInit {
       id: null,
       name: '',
       identityNo: '',
+      phone:'',
       contactType: ContactType.FATHER
     });
 

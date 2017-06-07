@@ -31,7 +31,11 @@ export class CourseEffects {
     .ofType(CourseActions.SAVE_COURSE)
     .map(action => action.payload)
     .switchMap(course => this.plannerService.saveCourse(course))
-    .map(course => this.courseActions.saveCourseSuccess(course));
+    .map(course => this.courseActions.saveCourseSuccess(course))
+     .withLatestFrom(this.store$.select(...this.COURSE))
+    .map(state => state[1])
+   .map((course: Course) => this.courseActions.findCourseByCode(course.code));
+    
 
   @Effect() updateCourse$ = this.actions$
     .ofType(CourseActions.UPDATE_COURSE)
