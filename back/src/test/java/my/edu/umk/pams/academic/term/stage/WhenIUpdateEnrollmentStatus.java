@@ -110,7 +110,11 @@ public class WhenIUpdateEnrollmentStatus extends Stage<WhenIUpdateEnrollmentStat
 		LOG.debug("Enrollment status:{}", enrollment.getStatus());
 
 		enrollment.setStatus(AdEnrollmentStatus.CONFIRMED);
+<<<<<<< HEAD
 //		termService.updateEnrollment(enrollment);
+=======
+		termService.updateEnrollment(section, enrollment);
+>>>>>>> branch 'master' of http://10.20.5.79/pams/academic.git
 
 		LOG.debug("New updated enrollment status:{}", enrollment.getStatus());
 

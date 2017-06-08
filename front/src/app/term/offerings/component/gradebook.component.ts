@@ -41,9 +41,10 @@ export class GradebookComponent implements  OnChanges{
           for(var j = 0; j < b.length; j++){
             this.columns[j+1] = {
               label:b[j].assessment.assessmentType,
-              name:Number(b[j].score),
+              name:'gradebooks.'+j+'.score',
             }
           }
+           console.log( this.columns);
         }
           console.log(i['gradebooks']);
       });

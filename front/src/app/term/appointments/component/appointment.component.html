@@ -1,13 +1,21 @@
 <!-- Basic Card -->
 <md-card> <md-card-title>APPOINTMENTS</md-card-title>
 <md-card-subtitle>Section {{appointment?.section?.code}}</md-card-subtitle>
-<md-divider></md-divider> <md-card-content>
+<md-divider></md-divider> 
+<md-card-content>
 <!--Tab Section Here--> <md-tab-group> <md-tab
 	label="Staff Detail">
 <br>
 <div layout="column" class="inset">
 	<div layout="row" class="pad-bottom">
-		<span flex="20">Name</span> <span>{{appointment?.staff?.name}}</span>
+	<span flex="20">
+	<img src=".\..\assets\ico\01001A.jpg" width="120" height="150"/>
+	<!-- <img [src]= "'./../assets/ico/'+{{appointment?.staff?.identityNo}}+'.jpg'" width="120" height="150"/> -->
+	
+	</span>
+	</div>
+	<div layout="row" class="pad-bottom">
+	<span flex="20">Name</span> <span>{{appointment?.staff?.name}}</span>
 	</div>
 	<div layout="row" class="pad-bottom">
 		<span flex="20">ID</span> <span>{{appointment?.staff?.identityNo}}</span>

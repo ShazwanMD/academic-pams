@@ -1,3 +1,4 @@
+import { Gradebook } from './gradebook.interface';
 import { GradebookMatrix } from './gradebook-matrix.interface';
 import { Student } from '../../identity/student.interface';
 import { Component, OnInit, ChangeDetectionStrategy, ViewContainerRef, Input, EventEmitter, Output } from '@angular/core';
@@ -17,22 +18,10 @@ import { Assessment } from "../assessments/assessment.interface";
 
 export class GradebookDetailPage implements OnInit {
 
-  //format: String;
-  //num: Number;
-
-  /*getLoop() {
-    this.num = 3;
-    let a = [];
-    for (let i = 0; i < this.num; i++) {
-      var format = "label: 'Assessment ', name: 'gradebooks." + a.push(i) + ".score'";
-      console.log("-->", format);
-    }
-    return format;
-  }*/
-
   //@Input() assessments: Assessment;
   @Input() enrollment: Enrollment;
   @Input() student: Student;
+  @Input() gradebooks: Gradebook;
   @Input() gradebookMatrices: GradebookMatrix;
   @Input() offerings: Offering;
 
@@ -58,21 +47,8 @@ export class GradebookDetailPage implements OnInit {
     this.gradebookMatrices$ = this.store.select(...this.GRADEBOOK_MATRICES);
     this.enrollments$ = this.store.select(...this.ENROLLMENTS);
 
-    //console.log("atas -->",this.getLoop());
-
 }
 
-  private columns: any[] =
-  [
-   // { label: 'Student name', name: 'enrollment.admission.student.name' },
-    //{ label: 'Assessment', name: 'gradebooks.0.score' },
-    //{ label: 'Assessment', name: 'gradebooks.1.score' },
-    //{ label: 'Assessment', name: 'gradebooks.2.score' },
-    //this.getLoop()
-    /*{ label: 'FINAL', name: 'gradebooks.0.score' },
-    { label: 'QUIZ 1', name: 'gradebooks.1.score' },
-    { label: 'QUIZ 2', name: 'gradebooks.2.score' }*/
-  ];
 
   ngOnInit(): void {
     this.route.params.subscribe((params: { canonicalCode: string }) => {
@@ -89,13 +65,5 @@ export class GradebookDetailPage implements OnInit {
     this.router.navigate(['/offerings', + this.offerings.canonicalCode]);
   }
 
-  // getLoop(){
-  // this.num = 3;
-  //   let a = [];
-  //   for(var i=0; i < this.num; i++) {
-  //     var format = "{ label: 'Assessment', name: 'gradebooks."+a.push(i)+".score' },";
-  //   }
-  //   return format;
-  // }
 
 }
