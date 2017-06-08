@@ -8,4 +8,8 @@ public enum AdEnrollmentStatus {
     WAIT_LISTED,  //1
     CONFIRMED,   //2
     WITHDRAWN;   //3
+	
+	 public static AdEnrollmentStatus get(int index){
+	        return values()[index];
+	    }
 }

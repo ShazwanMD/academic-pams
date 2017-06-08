@@ -384,7 +384,9 @@ public interface TermService {
     @Deprecated
     void saveEnrollment(AdEnrollment enrollment);
 
-    void updateEnrollment(AdEnrollment enrollment);
+    //void updateEnrollment(AdEnrollment enrollment);
+    
+    void updateEnrollment(AdSection section, AdEnrollment enrollment);
 
     void deleteEnrollment(AdEnrollment enrollment);
 
