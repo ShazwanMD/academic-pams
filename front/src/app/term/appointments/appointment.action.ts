@@ -61,7 +61,7 @@ export class AppointmentActions {
   //remove appointment
   static REMOVE_APPOINTMENT = '[Appointment] Remove Appointment';
   removeAppointment(section,appointment): Action {
-       console.log("deleteAppointment");
+       console.log("removeAppointment");
     return {
       type: AppointmentActions.REMOVE_APPOINTMENT,
        payload: { section: section, appointment: appointment }
