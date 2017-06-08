@@ -29,6 +29,7 @@ import {EnrollmentApplicationActionSelectComponent} from "./component/enrollment
 import {EnrollmentApplicationTypeSelectComponent} from "./component/enrollment-application-type-select.component";
 import {AssignedEnrollmentApplicationTaskListComponent} from "./component/assigned-enrollment-application-task-list.component";
 import {StudentEnrollmentListComponent} from "./component/student-enrollment-list.component";
+import {StudentOfferingListComponent} from "./component/student-offering-list.component";
 import {PooledEnrollmentApplicationTaskListComponent} from "./component/pooled-enrollment-application-task-list.component";
 import {EnrollmentApplicationTaskDetailPage} from "./enrollment-application-task-detail.page";
 import { IdentityModule } from "../../identity/index";
@@ -63,6 +64,7 @@ import { IdentityModule } from "../../identity/index";
     EnrollmentApplicationTypeSelectComponent,
     AssignedEnrollmentApplicationTaskListComponent,
     StudentEnrollmentListComponent,
+    StudentOfferingListComponent,
     PooledEnrollmentApplicationTaskListComponent,
 
     //dialog

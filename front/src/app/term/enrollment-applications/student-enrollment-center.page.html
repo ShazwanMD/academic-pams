@@ -22,6 +22,48 @@
       </button>
     </div>
 <!-- List Student Enrollment Data -->
+     <md-card>
+    
+      <md-tab-group [selectedIndex]="0">
+        <md-tab label="SEMESTER 1">
+        
+         <td-search-box class="push-left push-right"
+                     placeholder="search"
+                     [alwaysVisible]="true"
+                     ><!-- (searchDebounce)="filter($event)" -->
+      </td-search-box>
+        
+           <pams-student-offering-list
+        [offerings]="offerings$ | async" (view)="viewOffering($event)"></pams-student-offering-list>
+         <md-divider></md-divider>
+     
+        </md-tab>
+        <md-tab label="SEMESTER 2">
+        VIEW DATA SEMESTER 2
+        <!--    <pams-student-offering-list
+        [offerings]="offerings$ | async" (view)="viewOffering($event)"></pams-student-offering-list> -->
+         <md-divider></md-divider>
+    
+        </md-tab>
+         <md-tab label="SEMESTER 3">
+        VIEW DATA SEMESTER 3
+        <!--    <pams-student-offering-list
+        [offerings]="offerings$ | async" (view)="viewOffering($event)"></pams-student-offering-list> -->
+         <md-divider></md-divider>
+     
+        </md-tab>
+         <md-tab label="SEMESTER 4">
+        VIEW DATA SEMESTER 4
+        <!--    <pams-student-offering-list
+        [offerings]="offerings$ | async" (view)="viewOffering($event)"></pams-student-offering-list> -->
+         <md-divider></md-divider>
+     
+        </md-tab>
+      </md-tab-group>
+    </md-card>
+    
+    
+    
  <md-card>
       <md-tab-group [selectedIndex]="0">
         <md-tab label="Drafted Subject Registration">
@@ -32,7 +74,7 @@
       </md-tab-group>
     </md-card>
 
- <md-card>
+ <!-- <md-card>
       <md-tab-group [selectedIndex]="0">
         <md-tab label="Current Subject Registration">
           <pams-student-enrollment-list
@@ -40,7 +82,7 @@
             (view)="viewTask($event)"></pams-student-enrollment-list>
         </md-tab>
       </md-tab-group>
-    </md-card>
+    </md-card> -->
 
   </td-layout-manage-list>
 </td-layout-nav>
