@@ -9,13 +9,13 @@ import javax.persistence.*;
  * @author PAMS
  */
 @Entity(name = "AdEnrollmentApplicationItem")
-@Table(name = "AD_ENMT_APPL_ITEM")
+@Table(name = "AD_ENMT_APLN_ITEM")
 public class AdEnrollmentApplicationItemImpl implements AdEnrollmentApplicationItem {
 
     @Id
     @Column(name = "ID", nullable = false)
-    @GeneratedValue(generator = "SQ_AD_ENMT_APPL_ITEM")
-    @SequenceGenerator(name = "SQ_AD_ENMT_APPL_ITEM", sequenceName = "SQ_AD_ENMT_APPL_ITEM", allocationSize = 1)
+    @GeneratedValue(generator = "SQ_AD_ENMT_APLN_ITEM")
+    @SequenceGenerator(name = "SQ_AD_ENMT_APLN_ITEM", sequenceName = "SQ_AD_ENMT_APLN_ITEM", allocationSize = 1)
     private Long id;
 
     @Enumerated
