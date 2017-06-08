@@ -94,6 +94,8 @@ export class SectionAppointmentListComponent implements OnInit {
         console.log("removeAppointment:{}", appointment)
         this.store.dispatch(this.actions.removeAppointment(this.section, appointment))
 
+         console.log("deleteAppoiment:{}", appointment)
+
     }
 }
 
