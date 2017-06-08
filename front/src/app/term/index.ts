@@ -70,6 +70,7 @@ import {
 
 import { offeringSectionListReducer, OfferingSectionListState } from "./offerings/offering-section-list.reducer";
 import { AdmissionApplicationTaskListState, pooledAdmissionApplicationTaskListReducer, assignedAdmissionApplicationTaskListReducer } from "./admission-applications/admission-application-task-list.reducer";
+import { OfferingAssessmentListState, offeringAssessmentListReducer } from "./offerings/offering-assessment-list.reducer";
 
 
 export interface TermModuleState {
@@ -77,6 +78,7 @@ export interface TermModuleState {
   admission: AdmissionState;
   offerings: OfferingListState;
   offering: OfferingState;
+  offeringAssessments: OfferingAssessmentListState;
   offeringSections: OfferingSectionListState;
   section: SectionState;
   sections: SectionListState;
@@ -128,6 +130,7 @@ export const INITIAL_TERM_STATE: TermModuleState =
 export const termModuleReducers = {
   offerings: offeringListReducer,
   offering: offeringReducer,
+  offeringAssessments: offeringAssessmentListReducer,
   offeringSections: offeringSectionListReducer,
   sections: sectionListReducer,
   section: sectionReducer,
@@ -143,7 +146,6 @@ export const termModuleReducers = {
   admissionApplication: admissionApplicationReducer,
   assignedEnrollmentApplicationTasks: assignedEnrollmentApplicationTaskListReducer,
   pooledEnrollmentApplicationTasks: pooledEnrollmentApplicationTaskListReducer,
-  
   assignedAdmissionApplicationTasks: assignedAdmissionApplicationTaskListReducer,
   pooledAdmissionApplicationTasks: pooledAdmissionApplicationTaskListReducer,
   enrollmentApplicationTask: enrollmentApplicationTaskReducer,
@@ -195,4 +197,3 @@ export class TermModule {
     };
   }
 }
-
