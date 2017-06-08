@@ -1,7 +1,12 @@
-import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy} from '@angular/core';
+import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, ViewContainerRef} from '@angular/core';
 import {Section} from '../../sections/section.interface';
 import {Enrollment} from "../../enrollments/enrollment.interface";
 import {Offering} from "../offering.interface";
+import {ActivatedRoute, Router} from "@angular/router";
+import {Store} from "@ngrx/store";
+import {MdDialog, MdDialogConfig, MdDialogRef} from "@angular/material";
+import {AppointmentEditorDialog} from '../../appointments/dialog/appointment-editor.dialog';
+import {TermModuleState} from './../../index';
 
 @Component({
   selector: 'pams-offering-enrollment-list',
@@ -12,7 +17,9 @@ export class OfferingEnrollmentListComponent {
 
   @Input() offering: Offering;
   @Input() enrollments: Enrollment[];
-  @Output() view = new EventEmitter<Section>();
+  @Output() view = new EventEmitter<Enrollment>();
+  private creatorDialogRef: MdDialogRef<AppointmentEditorDialog>;
+    
 
   private columns: any[] = [
     {name: 'id', label: 'Id'},
@@ -22,5 +29,17 @@ export class OfferingEnrollmentListComponent {
     {name: 'enrollmentStanding', label: 'Standing'},
     {name: 'action', label: ''}
   ];
+
+ constructor(private router: Router,
+              private route: ActivatedRoute,
+              private store: Store<TermModuleState>,
+              private vcf: ViewContainerRef,
+              private dialog: MdDialog) {
+  }
+
+
+
+
+
 }
 

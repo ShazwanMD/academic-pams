@@ -33,7 +33,7 @@
           </button>
           <md-menu x-position="before" #menu1="mdMenu">
             <button md-menu-item [routerLink]="['/term/enrollments', row['id']]">View enrollment</button>
-            <button md-menu-item (click)="updateEnrollment(row)">Update enrollment</button>
+            <button md-menu-item (click)="editDialog(row, true)">Update enrollment</button>
 
           </md-menu>
         </div>

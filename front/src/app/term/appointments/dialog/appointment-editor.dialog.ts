@@ -14,7 +14,6 @@ import { Appointment } from "../appointment.interface";
 import { AppointmentStatus } from "../appointment-status.enum";
 import { Router, ActivatedRoute } from '@angular/router';
 
-
 @Component( {
     selector: 'pams-appointment-editor',
     templateUrl: './appointment-editor.dialog.html',

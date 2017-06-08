@@ -365,6 +365,19 @@ export class TermService {
     return this.http.get(environment.endpoint + '/api/term/enrollments/' + id)
       .map((res: Response) => <Enrollment[]>res.json());
   }
+    
+    //update enrollment by section
+     //update appointment by section
+  updateEnrollment(section: Section, enrollment: Enrollment): Observable<String> {
+    console.log(enrollment);
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({ headers: headers });
+    return this.http.put(environment.endpoint + '/api/term/sections/' + section.canonicalCode + '/enrollments/' + enrollment.id, JSON.stringify(enrollment), options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
 
   // ==================================================================================================== //
   // APPOINTMENT

@@ -63,7 +63,7 @@ public class AdStaffDaoImpl extends GenericDaoSupport<Long, AdStaff> implements 
         Query query = session.createQuery("select s from AdStaff s where " +
                 "(upper(s.identityNo) like upper(:filter) " +
                 "or upper(s.name) like upper(:filter)) " +
-                "and s.metadata.state = :state ");
+                "and s.metadata.state = :state order by s.name asc ");
         query.setString("filter", WILDCARD + filter + WILDCARD);
         query.setInteger("state", AdMetaState.ACTIVE.ordinal());
         return (List<AdStaff>) query.list();

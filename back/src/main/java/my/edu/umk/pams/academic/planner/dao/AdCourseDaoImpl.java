@@ -63,7 +63,8 @@ public class AdCourseDaoImpl extends GenericDaoSupport<Long, AdCourse> implement
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select s from AdCourse s where " +
                 "(upper(s.code) like upper(:filter) " +
-                "or upper(s.title) like upper(:filter)) " +
+                "or upper(s.titleEn) like upper(:filter)) " +
+                "or upper(s.titleMs) like upper(:filter)) " +
                 "and s.metadata.state = :state " +
                 "order by s.code asc");
         query.setString("filter", WILDCARD + filter + WILDCARD);
@@ -168,7 +169,7 @@ public class AdCourseDaoImpl extends GenericDaoSupport<Long, AdCourse> implement
     @Override
     public Integer count(AdProgram program) {
         Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery("select count(s.course) from AcOffering s where " +
+        Query query = session.createQuery("select count(s.course) from AdOffering s where " +
                 "s.program = :program " +
                 "and s.metadata.state = :state ");
         query.setEntity("program", program);
