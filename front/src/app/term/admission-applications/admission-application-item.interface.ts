@@ -1,6 +1,11 @@
-import {Section} from "../sections/section.interface";
-import {AdmissionApplicationAction} from "./admission-application-action.enum";
+import { Section } from "../sections/section.interface";
+import { AdmissionApplicationAction } from "./admission-application-action.enum";
+
 export interface AdmissionApplicationItem {
   action: AdmissionApplicationAction;
   section: Section;
+  
+  // transient
+  selected?: boolean;
 }
+

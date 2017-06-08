@@ -1,3 +1,6 @@
+import { Section } from '../../sections/section.interface';
+import { AdmissionApplicationAction } from '../admission-application-action.enum';
+import { AdmissionApplicationItem } from './../admission-application-item.interface';
 
 import { Actor } from './../../../identity/actor.interface';
 import { StudyCenter } from './../../../setup/study-centers/study-center.interface';
@@ -25,6 +28,7 @@ export class AdmissionApplicationTaskCreatorDialog implements OnInit {
   private createForm: FormGroup;
   private create: boolean = false;
   private _admissionApplication: AdmissionApplication;
+  private _admissionApplicationItem: AdmissionApplicationItem;
 
   constructor(private formBuilder: FormBuilder,
     private store: Store<TermModuleState>,
@@ -34,38 +38,63 @@ export class AdmissionApplicationTaskCreatorDialog implements OnInit {
     private vcf: ViewContainerRef,
     private dialog: MdDialogRef<AdmissionApplicationTaskCreatorDialog>)
   // private dialog: MdDialogRef<AdmissionApplicationTaskCreatorDialog>)
-    {
+  {
   }
 
   set admissionApplication(value: AdmissionApplication) {
     this._admissionApplication = value;
+    // this.create = true;
+  }
+
+  set admissionApplicationItem(value: AdmissionApplicationItem) {
+    this._admissionApplicationItem = value;
     this.create = true;
   }
+
   ngOnInit(): void {
-    this.createForm = this.formBuilder.group(<AdmissionApplication>{
+    this.createForm = this.formBuilder.group(<AdmissionApplicationItem>{
       id: null,
-      referenceNo: '',
-      sourceNo: '',
-      auditNo: '',
       description: '',
-      cancelComment: '',
-      removeComment: '',
       actor: <Actor>{},
       student: <Student>{},
       academicSession: <AcademicSession>{},
       program: <Program>{},
       studyCenter: <StudyCenter>{},
+      action: AdmissionApplicationAction.ADD,
+      section: <Section>{},
     });
-    if (this.create) this.createForm.patchValue(this._admissionApplication);
+    if (this.create) this.createForm.patchValue(this._admissionApplicationItem);
   }
 
-  save(admissionApplication: AdmissionApplication, isValid: boolean) {
-    this.store.dispatch (this.actions.saveAdmissionApplication(admissionApplication));
+  save(item: AdmissionApplicationItem, isValid: boolean) {
+    console.log("admissionApplicationItem", item);
+    console.log("admissionApplication", this._admissionApplication);
+    this.store.dispatch(this.actions.addAdmissionApplicationItem(this._admissionApplication, item));
     this.dialog.close();
   }
-  
+
+//------------------------------------------------------------//
+
+  // ngOnInit(): void {
+  //   this.createForm = this.formBuilder.group(<AdmissionApplication>{
+  //     id: null,
+  //     referenceNo: '',
+  //     sourceNo: '',
+  //     auditNo: '',
+  //     description: '',
+  //     cancelComment: '',
+  //     removeComment: '',
+  //     actor: <Actor>{},
+  //     student: <Student>{},
+  //     academicSession: <AcademicSession>{},
+  //     program: <Program>{},
+  //     studyCenter: <StudyCenter>{},
+  //   });
+  //   if (this.create) this.createForm.patchValue(this._admissionApplication);
+  // }
+
   // save(admissionApplication: AdmissionApplication, isValid: boolean) {
-  //   this.store.dispatch(this.actions.startAdmissionApplicationTask(admissionApplication));
+  //   this.store.dispatch (this.actions.saveAdmissionApplication(admissionApplication));
   //   this.dialog.close();
   // }
 
