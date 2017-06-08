@@ -9,7 +9,7 @@ const initialState: SectionAppointmentListState = <Appointment[]>[];
 
 export function sectionAppointmentListReducer(state = initialState, action: Action): SectionAppointmentListState {
   switch (action.type) {
-    case SectionActions.FIND_APPOINTMENTS_BY_SECTION: {
+    case SectionActions.FIND_APPOINTMENTS_BY_SECTION_SUCCESS: {
       return action.payload;
     }
     default: {
