@@ -40,7 +40,7 @@ export class GradebookComponent implements  OnChanges{
         if (b.length>0){
           for(var j = 0; j < b.length; j++){
             this.columns[j+1] = {
-              label:b[j].assessment.assessmentType,
+              label:b[j].assessment.description,
               name:'gradebooks.'+j+'.score',
             }
           }
