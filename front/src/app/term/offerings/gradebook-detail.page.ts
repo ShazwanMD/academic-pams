@@ -30,7 +30,7 @@ export class GradebookDetailPage implements OnInit {
     return format;
   }*/
 
-  @Input() assessments: Assessment;
+  //@Input() assessments: Assessment;
   @Input() enrollment: Enrollment;
   @Input() student: Student;
   @Input() gradebookMatrices: GradebookMatrix;
@@ -64,7 +64,7 @@ export class GradebookDetailPage implements OnInit {
 
   private columns: any[] =
   [
-    { label: 'Student name', name: 'enrollment.admission.student.name' },
+   // { label: 'Student name', name: 'enrollment.admission.student.name' },
     //{ label: 'Assessment', name: 'gradebooks.0.score' },
     //{ label: 'Assessment', name: 'gradebooks.1.score' },
     //{ label: 'Assessment', name: 'gradebooks.2.score' },
