@@ -16,4 +16,8 @@ export interface Appointment {
     offering: Offering;
     course: Course;
     appointmentStatus: AppointmentStatus;
+
+ // transient
+  selected: boolean;
+
 }
