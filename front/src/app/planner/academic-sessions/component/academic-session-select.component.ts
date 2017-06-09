@@ -10,6 +10,7 @@ import {AcademicSessionActions} from "../academic-session.action";
 @Component({
   selector: 'pams-academic-session-select',
   templateUrl: './academic-session-select.component.html',
+  styleUrls: ['./academic-session-select.scss'],
 })
 export class AcademicSessionSelectComponent implements OnInit {
 

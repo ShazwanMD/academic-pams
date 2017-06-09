@@ -10,6 +10,7 @@ import {Admission} from "../admission.interface";
 @Component({
   selector: 'pams-admission-select',
   templateUrl: './admission-select.component.html',
+  styleUrls: ['./admission-select.scss'],
 })
 export class AdmissionSelectComponent implements OnInit {
 

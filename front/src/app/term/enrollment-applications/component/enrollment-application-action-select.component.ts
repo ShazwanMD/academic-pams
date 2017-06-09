@@ -6,6 +6,7 @@ import {EnrollmentApplicationAction} from "../enrollment-application-action.enum
 @Component({
   selector: 'pams-enrollment-application-action-select',
   templateUrl: './enrollment-application-action-select.component.html',
+  styleUrls: ['./enrollment-application-action-select.scss'],
 })
 export class EnrollmentApplicationActionSelectComponent implements OnInit {
 
