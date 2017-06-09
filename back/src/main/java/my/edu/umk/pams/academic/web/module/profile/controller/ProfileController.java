@@ -79,6 +79,8 @@ public class ProfileController {
         address.setAddress3(vo.getAddress3());
         address.setPostCode(vo.getPostcode());
         address.setType(AdAddressType.get(vo.getAddressType().ordinal()));
+        address.setStateCode(commonService.findStateCodeById(vo.getStateCode().getId()));
+        address.setCountryCode(commonService.findCountryCodeById(vo.getCountryCode().getId()));
         address.setStudent(student);
         profileService.addAddress(student, address);
         return new ResponseEntity<String>("Success", HttpStatus.OK);
@@ -94,6 +96,8 @@ public class ProfileController {
             address.setAddress2(vo.getAddress2());
             address.setAddress3(vo.getAddress3());
             address.setPostCode(vo.getPostcode());
+            address.setStateCode(commonService.findStateCodeById(vo.getStateCode().getId()));
+            address.setCountryCode(commonService.findCountryCodeById(vo.getCountryCode().getId()));
             profileService.updateAddress(student, address);
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }

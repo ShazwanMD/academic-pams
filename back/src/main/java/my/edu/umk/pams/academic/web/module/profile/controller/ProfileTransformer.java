@@ -66,6 +66,8 @@ public class ProfileTransformer {
         vo.setAddress3(address.getAddress3());
         vo.setPostcode(address.getPostCode());
         vo.setAddressType(AddressType.get(address.getType().ordinal()));
+        vo.setStateCode(commonTransformer.toStateCodeVo(address.getStateCode()));
+        vo.setCountryCode(commonTransformer.toCountryCodeVo(address.getCountryCode()));
         return vo;
     }
 
