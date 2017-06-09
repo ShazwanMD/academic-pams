@@ -15,6 +15,7 @@ import {OfferingActions} from "./offering.action";
 import {EffectsModule} from "@ngrx/effects";
 import {OfferingEffects} from "./offering.effect";
 import {OfferingDetailPage} from "./offering-detail.page";
+import {StudentOfferingDetailPage} from "./student-offering-detail.page";
 import {OfferingComponent} from "./component/offering.component";
 import {OfferingEditorDialog} from "./dialog/offering-editor.dialog";
 import {OfferingUpdateDialog} from "./dialog/offering-update.dialog";
@@ -23,7 +24,9 @@ import {ProgramSubModule} from "../../planner/programs/index";
 import {SectionSubModule} from "../sections/index";
 import {AcademicSessionSubModule} from "../../planner/academic-sessions/index";
 import {OfferingSectionListComponent} from "./component/offering-section-list.component";
+import {StudentOfferingSectionListComponent} from "./component/student-offering-section-list.component";
 import {OfferingAssessmentListComponent} from "./component/offering-assessment-list.component";
+import {StudentOfferingAssessmentListComponent} from "./component/student-offering-assessment-list.component";
 import {OfferingEnrollmentListComponent} from "./component/offering-enrollment-list.component";
 import {OfferingAppointmentListComponent} from "./component/offering-appointment-list.component";
 import {OfferingActionComponent} from "./component/offering-action.component";
@@ -45,13 +48,16 @@ import {GradebookDetailPage} from "./gradebook-detail.page";
     // page
     OfferingCenterPage,
     OfferingDetailPage,
+    StudentOfferingDetailPage,
     GradebookDetailPage,
 
     // component
     OfferingListComponent,
     OfferingComponent,
     OfferingSectionListComponent,
+    StudentOfferingSectionListComponent,
     OfferingAssessmentListComponent,
+    StudentOfferingAssessmentListComponent,
     OfferingEnrollmentListComponent,
     OfferingAppointmentListComponent,
     OfferingActionComponent,
