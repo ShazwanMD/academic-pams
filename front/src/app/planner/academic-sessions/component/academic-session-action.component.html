@@ -5,6 +5,12 @@
 
           <md-nav-list flex dense>
 
+            <md-list-item (click)= "editorDialog()">
+            <md-icon md-list-avatar>done_all</md-icon>
+            <h4 md-line>Edit</h4>
+            <p md-line>Edit this academic session </p>
+            </md-list-item>
+
             <md-list-item (click)="activate()">
               <md-icon md-list-avatar>done_all</md-icon>
               <h4 md-line>Activate</h4>
