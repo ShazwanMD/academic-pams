@@ -1,4 +1,4 @@
-<h2 md-dialog-title>Student Address Editor</h2>
+<h2 md-dialog-title>Address</h2>
 <md-dialog-content>
   <form [formGroup]="editorForm">
     <div layout="row" class="inset" flex>
@@ -26,7 +26,7 @@
     <div layout="row" class="inset" flex>
       <md-input-container flex>
         <input mdInput
-               placeholder="Address 3"
+               placeholder="City"
                formControlName="address3"
                flex/>
       </md-input-container>
@@ -38,6 +38,19 @@
                formControlName="postcode"
                flex/>
       </md-input-container>
+    </div>
+
+        <div layout="row" class="pad-bottom pad-top" flex>
+      <pams-state-code-select
+        [placeholder]="'State'"
+        [innerFormControl]="editorForm.controls.stateCode">
+      </pams-state-code-select>
+    </div>
+            <div layout="row" class="pad-bottom pad-top" flex>
+      <pams-country-code-select
+        [placeholder]="'Country'"
+        [innerFormControl]="editorForm.controls.countryCode">
+      </pams-country-code-select>
     </div>
   </form>
 </md-dialog-content>

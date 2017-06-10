@@ -1,3 +1,4 @@
+import { Cohort } from './../../planner/cohorts/cohort.interface';
 import {Guardian} from './../guardian.interface';
 import {Component, ViewContainerRef, OnInit, AfterViewInit} from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
@@ -48,6 +49,7 @@ export class StudyModeSwitcherDialog implements OnInit {
       mobile:'',
       fax:'',
       studyMode: <StudyMode>{},
+      cohort: <Cohort>{},
     });
 
     console.log("patching values : " + JSON.stringify(this._student.studyMode));
