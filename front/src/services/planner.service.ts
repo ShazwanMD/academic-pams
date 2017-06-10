@@ -144,6 +144,7 @@ export class PlannerService {
     return this.http.put(environment.endpoint + '/api/planner/faculties/' + faculty.code, JSON.stringify(faculty), options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
+  
 
   // ====================================================================================================
   // PROGRAM
