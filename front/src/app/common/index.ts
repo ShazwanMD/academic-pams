@@ -1,4 +1,3 @@
-import { CountryCode } from './country-codes/country-code.interface';
 import {StudyModeSelectComponent} from './study-modes/component/study-mode-select.component';
 import {RaceCodeSelectComponent} from './race-codes/component/race-code-select.component';
 import {StateCodeSelectComponent} from './state-codes/component/state-code-select.component';
@@ -15,13 +14,13 @@ import {CommonService} from '../../services';
 import {IdentityService} from '../../services';
 import {EffectsModule} from "@ngrx/effects";
 import {studyModeListReducer, StudyModeListState} from "./study-modes/study-mode-list.reducer";
-import { StateCodeListState, stateCodeListReducer } from "./state-codes/state-code-list.reducer";
-import { CountryCodeListState, countryCodeListReducer } from "./country-codes/country-code-list.reducer";
+import {StateCodeListState, stateCodeListReducer} from "./state-codes/state-code-list.reducer";
+import {CountryCodeListState, countryCodeListReducer} from "./country-codes/country-code-list.reducer";
 
 export interface CommonModuleState {
   studyModes: StudyModeListState,
   stateCodes: StateCodeListState,
-  CountryCodes: CountryCodeListState,
+  countryCodes: CountryCodeListState,
 }
 ;
 
@@ -29,7 +28,7 @@ export const INITIAL_COMMON_STATE: CommonModuleState =
   <CommonModuleState>{
     studyModes: [],
     stateCodes: [],
-    CountryCodes: [],
+    countryCodes: [],
   };
 export const commonModuleReducers = {
   studyModes: studyModeListReducer,
