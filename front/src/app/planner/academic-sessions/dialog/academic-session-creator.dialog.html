@@ -22,13 +22,13 @@
 
   <div layout="row" class="inset" flex>
     <md-input-container flex>
-      <input mdInput placeholder="Start Date" formControlName="startDate" flex/>
+      <input mdInput type="date" placeholder="Start Date" formControlName="startDate" flex/>
     </md-input-container>
   </div>
 
   <div layout="row" class="inset" flex>
     <md-input-container flex>
-      <input mdInput placeholder="End Date" formControlName="endDate" flex/>
+      <input mdInput type="date" placeholder="End Date" formControlName="endDate" flex/>
     </md-input-container>
   </div>
 
@@ -42,7 +42,7 @@
    <div layout="row" class="pad-bottom pad-top" >
        <pams-academic-year-select
         [placeholder]="'Select Academic Year'"
-        [innerFormControl]="createForm.controls['academicYear']">
+        [innerFormControl]="createForm.controls['year']">
       </pams-academic-year-select>
     </div> 
 
