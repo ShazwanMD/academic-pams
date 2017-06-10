@@ -152,7 +152,6 @@ export class ProfileComponent implements OnInit {
     this.contactCreatorDialogRef = this.dialog.open(ContactEditorDialog, config);
     this.contactCreatorDialogRef.componentInstance.student = this.student;
     this.contactCreatorDialogRef.afterClosed().subscribe(res => {
-      console.log("close dialog");
     });
   }
 
@@ -169,7 +168,7 @@ export class ProfileComponent implements OnInit {
       this.contactCreatorDialogRef.componentInstance.contact = contact;
       this.contactCreatorDialogRef.componentInstance.student = this.student;
     }
-    this.addressCreatorDialogRef.afterClosed().subscribe(res => {
+    this.contactCreatorDialogRef.afterClosed().subscribe(res => {
     });
   }
 
