@@ -1,5 +1,6 @@
+import { FacultyEditorDialog } from './../dialog/faculty-editor.dialog';
 import { Store } from '@ngrx/store';
-import { MdSnackBar } from '@angular/material';
+import { MdSnackBar, MdDialogConfig, MdDialogRef } from '@angular/material';
 import { MdDialog } from '@angular/material';
 import { PlannerModuleState } from '../..';
 import { Observable } from 'rxjs/Observable';
@@ -21,12 +22,32 @@ export class FacultyActionComponent {
 
     @Input() faculty: Faculty;
 
+     private editorDialogRef: MdDialogRef<FacultyEditorDialog>;
+
     constructor(private actions: FacultyActions,
         private store: Store<PlannerModuleState>,
         private vcf: ViewContainerRef,
         private dialog: MdDialog,
         private snackBar: MdSnackBar) {
 
+    }
+
+        editorDialog(): void {
+        console.log("edit");
+        console.log(this.faculty);
+        let config = new MdDialogConfig();
+        config.viewContainerRef = this.vcf;
+        config.role = 'dialog';
+        config.width = '60%';
+        config.height = '50%';
+        config.position = {top: '0px'};
+        this.editorDialogRef = this.dialog.open(FacultyEditorDialog, config);
+        this.editorDialogRef.componentInstance.faculty = this.faculty;
+
+        // set
+        this.editorDialogRef.afterClosed().subscribe(res => {
+        console.log("close dialog");
+        });
     }
 
     activate(): void {
