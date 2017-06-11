@@ -12,10 +12,12 @@ import {SectionActions} from "./section.action";
 import {EffectsModule} from "@ngrx/effects";
 import {SectionEffects} from "./section.effect";
 import {SectionDetailPage} from "./section-detail.page";
+import {StudentSectionDetailPage} from "./student-section-detail.page";
 import {SectionComponent} from "./component/section.component";
 import {SectionListComponent} from "./component/section-list.component";
 import {SectionEnrollmentListComponent} from "./component/section-enrollment-list.component";
 import {SectionAppointmentListComponent} from "./component/section-appointment-list.component";
+import {StudentSectionAppointmentListComponent} from "./component/student-section-appointment-list.component";
 import {SectionSelectComponent} from "./component/section-select.component";
 import {SectionEditorDialog} from "./dialog/section-editor.dialog";
 import {SectionActionComponent} from "./component/section-action.component";
@@ -31,6 +33,7 @@ import {SectionActionComponent} from "./component/section-action.component";
   declarations: [
     // page
     SectionDetailPage,
+    StudentSectionDetailPage,
 
     // component
     SectionListComponent,
@@ -38,6 +41,7 @@ import {SectionActionComponent} from "./component/section-action.component";
     SectionSelectComponent,
     SectionEnrollmentListComponent,
     SectionAppointmentListComponent,
+    StudentSectionAppointmentListComponent,
     SectionActionComponent,
     
 
@@ -51,6 +55,7 @@ import {SectionActionComponent} from "./component/section-action.component";
     SectionListComponent,
     SectionEnrollmentListComponent,
     SectionAppointmentListComponent,
+    StudentSectionAppointmentListComponent,
     SectionEditorDialog,
   ],
   entryComponents: [
