@@ -43,6 +43,7 @@ import {PipeModule} from "../../app.pipe.module";
     PipeModule,
     IdentityModule.forRoot(),
     EffectsModule.run(AdmissionApplicationEffects),
+    PipeModule
   ],
 
   declarations: [
