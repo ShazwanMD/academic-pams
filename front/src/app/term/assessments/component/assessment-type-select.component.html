@@ -3,6 +3,6 @@
   (change)="selectChangeEvent($event.value)" flex>
 
   <md-option *ngFor="let assessmentType of assessmentTypes" [value]="assessmentType">
-    {{assessmentType}}
+    {{assessmentType | assessmentTypePipe}}
   </md-option>
 </md-select>
