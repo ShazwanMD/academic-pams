@@ -396,6 +396,17 @@ public class PlannerController {
 		}
 
 	// ====================================================================================================
+	// CURRICULUM
+	// ====================================================================================================
+
+	@RequestMapping(value = "/curriculums", method = RequestMethod.GET)
+	public ResponseEntity<List<Curriculum>> findCurriculums(@PathVariable String code) {
+		AdProgram program = plannerService.findProgramByCode(code);
+		List<Curriculum> curriculums = plannerTransformer.toCurriculumVos(plannerService.findCurriculums(program));
+		return new ResponseEntity<List<Curriculum>>(curriculums, HttpStatus.OK);
+	}
+
+	// ====================================================================================================
 	// COHORT
 	// ====================================================================================================
 
