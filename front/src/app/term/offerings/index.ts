@@ -31,6 +31,7 @@ import {OfferingEnrollmentListComponent} from "./component/offering-enrollment-l
 import {OfferingAppointmentListComponent} from "./component/offering-appointment-list.component";
 import {OfferingActionComponent} from "./component/offering-action.component";
 import {GradebookDetailPage} from "./gradebook-detail.page";
+import {PipeModule} from "../../app.pipe.module";
 
 @NgModule({
   imports: [
@@ -43,6 +44,8 @@ import {GradebookDetailPage} from "./gradebook-detail.page";
     AcademicSessionSubModule.forRoot(),
     CovalentCoreModule.forRoot(),
     EffectsModule.run(OfferingEffects),
+
+    PipeModule
   ],
   declarations: [
     // page

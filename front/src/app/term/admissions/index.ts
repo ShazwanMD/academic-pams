@@ -27,6 +27,7 @@ import {AdmissionCreateTaskCreatorDialog} from "./dialog/admission-create-task-c
 import {AdmissionUpdateTaskCreatorDialog} from "./dialog/admission-update-task-creator.dialog";
 import {AdmissionDeleteTaskCreatorDialog} from "./dialog/admission-delete-task-creator.dialog";
 import {AdmissionApplicationActions} from "./admission-application.action";
+import {PipeModule} from "../../app.pipe.module";
 
 @NgModule({
   imports: [
@@ -38,7 +39,7 @@ import {AdmissionApplicationActions} from "./admission-application.action";
     AcademicSessionSubModule.forRoot(),
     SetupModule.forRoot(),
         IdentityModule.forRoot(),
-
+    PipeModule,
     EffectsModule.run(AdmissionEffects),
   ],
   declarations: [

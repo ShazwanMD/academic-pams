@@ -27,6 +27,7 @@ import { AdmissionApplicationTaskStatusComponent } from "./component/admission-a
 import { SectionSubModule } from "../sections/index";
 import { AdmissionApplicationCenterPage } from "./admission-application-center.page";
 import { IdentityModule } from "../../identity/index";
+import {PipeModule} from "../../app.pipe.module";
 
 @NgModule({
   imports: [
@@ -39,6 +40,7 @@ import { IdentityModule } from "../../identity/index";
     ProgramSubModule.forRoot(),
     SectionSubModule.forRoot(),
     SetupModule.forRoot(),
+    PipeModule,
     IdentityModule.forRoot(),
     EffectsModule.run(AdmissionApplicationEffects),
   ],
