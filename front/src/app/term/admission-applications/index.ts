@@ -1,3 +1,5 @@
+import { PooledAdmissionApplicationTaskListComponent } from './component/pooled-admission-application-task-list.component';
+import { AssignedAdmissionApplicationTaskListComponent } from './component/assigned-admission-application-task-list.component';
 import { AdmissionApplicationTaskEditorDialog } from './dialog/admission-application-task-editor.dialog';
 import { AdmissionApplicationActionComponent } from './component/admission-application-action.component';
 import { AdmissionApplicationComponent } from "./component/admission-application.component";
@@ -56,6 +58,8 @@ import { IdentityModule } from "../../identity/index";
     AdmissionApplicationListComponent,
     AdmissionApplicationComponent,
     AdmissionApplicationActionComponent,
+    AssignedAdmissionApplicationTaskListComponent,
+    PooledAdmissionApplicationTaskListComponent,
 
     //dialog
     AdmissionApplicationTaskCreatorDialog,
@@ -66,6 +70,8 @@ import { IdentityModule } from "../../identity/index";
     AdmissionApplicationComponent,
     AdmissionApplicationActionComponent,
     AdmissionApplicationListComponent,
+    AssignedAdmissionApplicationTaskListComponent,
+    PooledAdmissionApplicationTaskListComponent,
 
   ],
 
