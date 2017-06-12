@@ -9,16 +9,14 @@
         <pams-offering
           [offering]="offering$ | async">
         </pams-offering>
-
+ <pams-offering-section-list
+          [offering]="offering$ | async"
+          [sections]="sections$ | async">
+        </pams-offering-section-list>
         <pams-offering-assessment-list
           [offering]="offering$ | async"
           [assessments]="assessments$ | async">
         </pams-offering-assessment-list>
-
-        <pams-offering-section-list
-          [offering]="offering$ | async"
-          [sections]="sections$ | async">
-        </pams-offering-section-list>
       </div>
 
       <div flex-gt-md="30">
