@@ -9,12 +9,19 @@ import { Component, ChangeDetectionStrategy, EventEmitter, Output, Input } from 
 })
 export class AssignedAdmissionApplicationTaskListComponent {
 
-  @Input() admissionApplicationTasks: AdmissionApplicationTask[]; 
+  @Input() admissionApplicationTasks: AdmissionApplicationTask[];
   @Output() view = new EventEmitter<AdmissionApplicationTask>();
 
   private columns: any[] = [
+    { name: 'referenceNo', label: 'Reference No' },
+    { name: 'actor.name', label: 'Advisor' },
+    { name: 'program.code', label: 'Program' },
+    { name: 'academicSession.code', label: 'Academic Session' },
+    { name: 'student.identityNo', label: 'Student' },
+    { name: 'studyCenter.code', label: 'Study Center' },
+    { name: 'flowState', label: 'Status' },
+    { name: 'action', label: '' }
 
-    {name: 'action', label: ''}
   ];
 
   constructor(private snackBar: MdSnackBar) {

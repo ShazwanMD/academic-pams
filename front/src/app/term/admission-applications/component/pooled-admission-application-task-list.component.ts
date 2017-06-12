@@ -12,12 +12,15 @@ export class PooledAdmissionApplicationTaskListComponent {
   @Output() claim = new EventEmitter<AdmissionApplicationTask>();
 
   private columns: any[] = [
-    {name: 'referenceNo', label: 'ReferenceNo'},
-    {name: 'student.identityNo', label: 'Student'},
-    {name: 'cgpa', label: 'CGPA'},
-    {name: 'creditHour', label: 'Credit Hour'},
-    {name: 'flowState', label: 'Status'},
-    {name: 'action', label: ''}
+    { name: 'referenceNo', label: 'Reference No' },
+    { name: 'actor.name', label: 'Advisor' },
+    { name: 'program.code', label: 'Program' },
+    { name: 'academicSession.code', label: 'Academic Session' },
+    { name: 'student.identityNo', label: 'Student' },
+    { name: 'studyCenter.code', label: 'Study Center' },
+    { name: 'flowState', label: 'Status' },
+    { name: 'action', label: '' }
+
   ];
 
   constructor(private snackBar: MdSnackBar) {
@@ -25,7 +28,7 @@ export class PooledAdmissionApplicationTaskListComponent {
 
   claimTask(task: AdmissionApplicationTask): void {
     console.log("Emitting task");
-    let snackBarRef = this.snackBar.open("Claiming enrollmentApplication", "OK");
+    let snackBarRef = this.snackBar.open("Claiming registration application", "OK");
     snackBarRef.afterDismissed().subscribe(() => {
       this.claim.emit(task);
     });
