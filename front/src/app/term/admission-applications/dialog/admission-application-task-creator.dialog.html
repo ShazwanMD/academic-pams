@@ -1,7 +1,7 @@
 <h2 md-dialog-title>Semester Registration</h2>
 <md-dialog-content>
   <form [formGroup]="createForm">
-<!--
+
     <div layout="row" class="pad-bottom">
       <md-input-container flex>
         <input mdInput #referenceNo 
@@ -10,7 +10,7 @@
       </md-input-container>
     </div>
 
-    <div layout="row" class="pad-bottom">
+    <!--<div layout="row" class="pad-bottom">
       <md-input-container flex>
         <input mdInput #sourceNo 
         placeholder="Source No" 
@@ -51,12 +51,12 @@
     </div>-->
 
     <!--select actor-->
-    <div layout="row" class="pad-bottom pad-top">
+    <!--<div layout="row" class="pad-bottom pad-top">
       <pams-staff-select
         [placeholder]="'Select Advisor'" 
         [innerFormControl]="createForm.controls['actor']">
       </pams-staff-select>
-    </div>
+    </div>-->
 
     <!--Select student-->
     <div layout="row" class="pad-bottom pad-top">
@@ -75,20 +75,20 @@
     </div>
 
     <!--select program-->
-    <div layout="row" class="pad-bottom pad-top">
+    <!--<div layout="row" class="pad-bottom pad-top">
       <pams-program-select 
         [placeholder]="'Select Program'" 
         [innerFormControl]="createForm.controls['program']">
       </pams-program-select>
-    </div>
+    </div>-->
 
     <!--select study center-->
-    <div layout="row" class="pad-bottom pad-top">
+    <!--<div layout="row" class="pad-bottom pad-top">
       <pams-study-center-select
         [placeholder]="'Select Study Center'" 
         [innerFormControl]="createForm.controls['studyCenter']">
       </pams-study-center-select>
-    </div>
+    </div>-->
 
   </form>
 </md-dialog-content>
