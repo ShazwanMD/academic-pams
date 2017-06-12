@@ -28,6 +28,7 @@ import { AdmissionApplicationTaskWorkflowPanel } from "./panel/admission-applica
 import { AdmissionApplicationTaskStatusComponent } from "./component/admission-application-task-status.component";
 import { SectionSubModule } from "../sections/index";
 import { AdmissionApplicationCenterPage } from "./admission-application-center.page";
+import { StudentAdmissionApplicationCenterPage } from "./student-admission-application-center.page";
 import { IdentityModule } from "../../identity/index";
 import {PipeModule} from "../../app.pipe.module";
 
@@ -52,6 +53,7 @@ import {PipeModule} from "../../app.pipe.module";
     // page
     AdmissionApplicationTaskViewPage,
     AdmissionApplicationCenterPage,
+    StudentAdmissionApplicationCenterPage,
 
     // component
     AdmissionApplicationTaskWorkflowPanel,

@@ -8,7 +8,7 @@
     <md-nav-list list-items>
       <a md-list-item (click)="showDialog()">
         <md-icon>create</md-icon>
-        Subject Registration
+        Course Enrollments
       </a>
       <md-divider></md-divider>
     </md-nav-list>
@@ -66,7 +66,7 @@
     
  <md-card>
       <md-tab-group [selectedIndex]="0">
-        <md-tab label="Drafted Subject Registration">
+        <md-tab label="Drafted Course Enrollments">
           <pams-student-enrollment-list
             [studentEnrollmentApplicationTasks]="studentEnrollmentApplicationTasks$ | async"
             (view)="viewTask($event)"></pams-student-enrollment-list>
