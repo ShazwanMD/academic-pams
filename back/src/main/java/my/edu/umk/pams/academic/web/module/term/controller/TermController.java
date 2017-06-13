@@ -15,6 +15,10 @@ import my.edu.umk.pams.academic.web.module.planner.controller.PlannerTransformer
 import my.edu.umk.pams.academic.web.module.term.vo.*;
 import my.edu.umk.pams.academic.workflow.service.WorkflowService;
 import org.activiti.engine.task.Task;
+import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +33,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -811,10 +816,18 @@ public class TermController {
     public ResponseEntity<String> uploadGradebook(@PathVariable String canonicalCode, @RequestParam("file") MultipartFile file) {
         dummyLogin();
 
-        // todo(sam):
-        // baca file
-        // parse excel
-        // masuk dalam gradebook
+        // todo(sam): decide on format
+        try {
+            Workbook workbook = WorkbookFactory.create(file.getInputStream());
+            Sheet sheet = workbook.getSheetAt(0); // first sheet
+
+            // todo(sam): read cell row by row
+            // todo(sam): dapat value, update gradebook
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InvalidFormatException e) {
+            e.printStackTrace();
+        }
 
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }

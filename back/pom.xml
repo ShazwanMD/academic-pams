@@ -26,6 +26,8 @@
         <postgresql.version>42.0.0</postgresql.version>
         <slf4j-api.version>1.6.1</slf4j-api.version>
         <velocity.version>1.7</velocity.version>
+        <poi.version>3.8</poi.version>
+        <poi-ooxml.version>3.8-beta4</poi-ooxml.version>
     </properties>
 
     <dependencies>
@@ -321,6 +323,16 @@
             <version>1.0.5.RELEASE</version>
         </dependency>
         <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>${poi.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>${poi-ooxml.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-all</artifactId>
             <version>1.9.5</version>
@@ -423,7 +435,9 @@
                     <execution>
                         <id>copy-resources</id>
                         <phase>prepare-package</phase>
-                        <goals><goal>copy-resources</goal></goals>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
                         <configuration>
                             <outputDirectory>${basedir}/target/classes/static/report</outputDirectory>
                             <resources>
@@ -494,36 +508,36 @@
                 </configuration>
             </plugin>
             <!--<plugin>-->
-                <!--<groupId>org.eclipse.jetty</groupId>-->
-                <!--<artifactId>jetty-maven-plugin</artifactId>-->
-                <!--<version>9.4.4.v20170414</version>-->
-                <!--<configuration>-->
-                    <!--<httpConnector>-->
-                        <!--<port>8080</port>-->
-                    <!--</httpConnector>-->
-                    <!--<reload>manual</reload>-->
-                    <!--<stopPort>9966</stopPort>-->
-                    <!--<stopKey>foo</stopKey>-->
-                    <!--<stopWait>10</stopWait>-->
-                    <!--<skip>true</skip>-->
-                <!--</configuration>-->
-                <!--<executions>-->
-                    <!--<execution>-->
-                        <!--<id>start-jetty</id>-->
-                        <!--<phase>pre-integration-test</phase>-->
-                        <!--<goals>-->
-                            <!--<goal>stop</goal>-->
-                            <!--<goal>start</goal>-->
-                        <!--</goals>-->
-                    <!--</execution>-->
-                    <!--<execution>-->
-                        <!--<id>stop-jetty</id>-->
-                        <!--<phase>post-integration-test</phase>-->
-                        <!--<goals>-->
-                            <!--<goal>stop</goal>-->
-                        <!--</goals>-->
-                    <!--</execution>-->
-                <!--</executions>-->
+            <!--<groupId>org.eclipse.jetty</groupId>-->
+            <!--<artifactId>jetty-maven-plugin</artifactId>-->
+            <!--<version>9.4.4.v20170414</version>-->
+            <!--<configuration>-->
+            <!--<httpConnector>-->
+            <!--<port>8080</port>-->
+            <!--</httpConnector>-->
+            <!--<reload>manual</reload>-->
+            <!--<stopPort>9966</stopPort>-->
+            <!--<stopKey>foo</stopKey>-->
+            <!--<stopWait>10</stopWait>-->
+            <!--<skip>true</skip>-->
+            <!--</configuration>-->
+            <!--<executions>-->
+            <!--<execution>-->
+            <!--<id>start-jetty</id>-->
+            <!--<phase>pre-integration-test</phase>-->
+            <!--<goals>-->
+            <!--<goal>stop</goal>-->
+            <!--<goal>start</goal>-->
+            <!--</goals>-->
+            <!--</execution>-->
+            <!--<execution>-->
+            <!--<id>stop-jetty</id>-->
+            <!--<phase>post-integration-test</phase>-->
+            <!--<goals>-->
+            <!--<goal>stop</goal>-->
+            <!--</goals>-->
+            <!--</execution>-->
+            <!--</executions>-->
             <!--</plugin>-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
