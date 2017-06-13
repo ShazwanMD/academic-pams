@@ -16,9 +16,9 @@ import my.edu.umk.pams.academic.web.module.term.vo.*;
 import my.edu.umk.pams.academic.workflow.service.WorkflowService;
 import org.activiti.engine.task.Task;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.ss.usermodel.WorkbookFactory;
+import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +32,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
@@ -828,20 +828,42 @@ public class TermController {
         } catch (InvalidFormatException e) {
             e.printStackTrace();
         }
-
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/offerings/{canonicalCode}/downloadGradebook", method = RequestMethod.POST)
+    @RequestMapping(value = "/offerings/{canonicalCode}/downloadGradebook", method = RequestMethod.GET)
     public ResponseEntity downloadGradebook(@PathVariable String canonicalCode) {
         dummyLogin();
 
-        File generated = null; // todo: generated excel;
+        AdOffering offering = termService.findOfferingByCanonicalCode(canonicalCode);
         ByteArrayResource resource = null;
-        resource = new ByteArrayResource(new byte[1]); // todo:
+        try {
+            XSSFWorkbook workbook = new XSSFWorkbook();
+            XSSFSheet sheet = workbook.createSheet("Gradebook " + offering.getCode());
+
+            int rowNum = 0;
+            List<AdEnrollment> enrollments = termService.findEnrollments(offering);
+            for (AdEnrollment enrollment : enrollments) {
+                Row row = sheet.createRow(rowNum++);
+                int colNum = 0;
+                List<AdAssessment> assessments = termService.findAssessments(offering);
+                Cell name = row.createCell(colNum++);
+                name.setCellValue((String) enrollment.getAdmission().getStudent().getMatricNo());
+                for (AdAssessment assessment : assessments) {
+                    Cell grade = row.createCell(colNum++);
+                    grade.setCellValue((Integer) 0);
+                }
+            }
+
+            ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+            workbook.write(outputStream);
+            resource = new ByteArrayResource(outputStream.toByteArray());
+        } catch (IOException e) {
+            LOG.error("error");
+        }
 
         return ResponseEntity.ok()
-                .header("Content-Disposition", "attachment; filename=gradebook.xslx")
+                .header("Content-Disposition", "attachment; filename=" + offering.getCode() + ".xlsx")
                 .body(resource);
     }
 
