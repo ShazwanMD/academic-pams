@@ -1,5 +1,6 @@
 package my.edu.umk.pams.academic.web.module.term.controller;
 
+import my.edu.umk.pams.academic.common.model.AdStudyCenter;
 import my.edu.umk.pams.academic.common.service.CommonService;
 
 import my.edu.umk.pams.academic.identity.model.AdStudent;
@@ -10,6 +11,7 @@ import my.edu.umk.pams.academic.planner.model.AdAdmissionStatus;
 import my.edu.umk.pams.academic.planner.model.AdAppointmentStatus;
 import my.edu.umk.pams.academic.planner.model.AdCohort;
 import my.edu.umk.pams.academic.planner.model.AdEnrollmentStatus;
+import my.edu.umk.pams.academic.planner.model.AdProgram;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
 import my.edu.umk.pams.academic.security.integration.AdAutoLoginToken;
 import my.edu.umk.pams.academic.system.service.SystemService;
@@ -94,8 +96,6 @@ public class TermController {
 				HttpStatus.OK);
 	}
 
-	// workflow
-
 	@RequestMapping(value = "/admissions", method = RequestMethod.POST)
 	public ResponseEntity<String> saveAdmission(@RequestBody Admission vo) {
 		dummyLogin();
@@ -133,6 +133,9 @@ public class TermController {
 		termService.updateAdmission(admission);
 		return new ResponseEntity<String>("Success Update Admission", HttpStatus.OK);
 	}
+	
+	// workflow
+
 
 	@RequestMapping(value = "/admissionApplications", method = RequestMethod.GET)
 	public ResponseEntity<List<AdmissionApplication>> findAdmissionsApplications() {
@@ -160,6 +163,13 @@ public class TermController {
 		termService.saveAdmissionApplication(application);
 		return new ResponseEntity<String>("Success", HttpStatus.OK);
 	}
+	
+	@RequestMapping(value = "/admissionApplications/{referenceNo}/update", method = RequestMethod.PUT)
+	public ResponseEntity<AdmissionApplication> updateAdmissionApplication(@PathVariable String referenceNo,
+			@RequestBody AdmissionApplication vo) {
+		AdAdmissionApplication application = (AdAdmissionApplication) termService.findEnrollmentApplicationByReferenceNo(referenceNo);
+		return new ResponseEntity<AdmissionApplication>(termTransformer.toAdmissionApplicationVo(application), HttpStatus.OK);
+	}
 
 	@RequestMapping(value = "/admissionApplications/assignedTasks", method = RequestMethod.GET)
 	public ResponseEntity<List<AdmissionApplicationTask>> findAssignedAdmissionApplications() {
@@ -178,17 +188,30 @@ public class TermController {
 	}
 
 	@RequestMapping(value = "/admissionApplications/startTask", method = RequestMethod.POST)
-	public void startAdmissionApplicationTask(@RequestBody AdmissionApplication vo) throws Exception {
+	public ResponseEntity<String> startAdmissionApplicationTask(@RequestBody AdmissionApplication vo) throws Exception {
+		
+		LOG.debug("start task");
 		dummyLogin();
 		AdStudent student = identityService.findStudentById(vo.getStudent().getId());
 		AdAcademicSession academicSession = plannerService.findAcademicSessionById(vo.getSession().getId());
+		AdStudyCenter studyCenter = commonService.findStudyCenterById(vo.getStudyCenter().getId());
+		AdProgram program = plannerService.findProgramById(vo.getProgram().getId());
+		
 		AdAdmissionApplication application = new AdAdmissionApplicationImpl();
 		application.setDescription(vo.getDescription());
+		application.setReferenceNo(vo.getReferenceNo());
 		application.setStudent(student);
 		application.setSession(academicSession);
+		application.setStudyCenter(studyCenter);
+		application.setProgram(program);
+		application.setAuditNo(vo.getAuditNo());
+		application.setCancelComment(vo.getCancelComment());
+		application.setRemoveComment(vo.getRemoveComment());
+		application.setSourceNo(vo.getSourceNo());
 		termService.startAdmissionApplicationTask(application);
-	}
-
+		return new ResponseEntity<String>(HttpStatus.OK);
+		}
+	
 	@RequestMapping(value = "/admissionApplications/viewTask/{taskId}", method = RequestMethod.GET)
 	public ResponseEntity<AdmissionApplicationTask> findAdmissionApplicationTaskByTaskId(@PathVariable String taskId) {
 		return new ResponseEntity<AdmissionApplicationTask>(
