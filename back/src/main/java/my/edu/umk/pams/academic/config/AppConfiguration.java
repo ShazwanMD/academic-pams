@@ -19,6 +19,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @ComponentScan(basePackages = {
         // internals
         "my.edu.umk.pams.academic.identity",
+        "my.edu.umk.pams.academic.graduation",
         "my.edu.umk.pams.academic.security",
         "my.edu.umk.pams.academic.system",
         "my.edu.umk.pams.academic.workflow",
