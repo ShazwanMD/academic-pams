@@ -98,6 +98,7 @@ public class PlannerTransformer {
         vo.setTitleMs(course.getTitleMs());
         vo.setTitleEn(course.getTitleEn());
         vo.setCredit(course.getCredit());
+        vo.setClassification(AcademicClassification.get(course.getClassification().ordinal()));
         vo.setFaculty(plannerTransformer.toFacultyVo(course.getFaculty()));
         vo.setStatus(CourseStatus.get(course.getStatus().ordinal()));
         return vo;
