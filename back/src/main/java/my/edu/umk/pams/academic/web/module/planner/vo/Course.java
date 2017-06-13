@@ -18,6 +18,7 @@ public class Course extends MetaObject {
     private Faculty faculty;
     private Course course;
 	private CourseStatus status;
+	public AcademicClassification classification;
 
     public String getCode() {
         return code;
@@ -51,12 +52,12 @@ public class Course extends MetaObject {
         this.credit = credit;
     }
 
-    public String getDescription() {
-        return description;
+    public AcademicClassification getClassification() {
+		return classification;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setClassification(AcademicClassification classification) {
+        this.classification = classification;
     }
 
     public Faculty getFaculty() {
