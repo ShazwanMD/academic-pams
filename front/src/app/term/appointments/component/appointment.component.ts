@@ -12,11 +12,12 @@ import { TermModuleState } from "../../index";
 })
 export class AppointmentComponent {
 
+    @Input() imgPath:string = "./../assets/ico/"; //.\..\assets\ico\01001A.jpg  //--  "app/header/"
+    imgFileName:string = "01001A.jpg";
+     
     @Input() appointment: Appointment;
     @Output() view = new EventEmitter<Appointment>();
-    // @Output() addComment = new EventEmitter<ProgramComment>();
-    // @Output() addAttachment = new EventEmitter<ProgramAttachment>(
-   
+    
     constructor(private router: Router,
         private route: ActivatedRoute,
         private store: Store<TermModuleState>,
