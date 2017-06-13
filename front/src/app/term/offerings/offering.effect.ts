@@ -10,7 +10,6 @@ import {from} from "rxjs/observable/from";
 import {Store} from "@ngrx/store";
 import {TermModuleState} from "../index";
 import {Offering} from "./offering.interface";
-import {Observable} from "rxjs/Observable";
 
 @Injectable()
 export class OfferingEffects {
@@ -92,6 +91,9 @@ export class OfferingEffects {
     .ofType(OfferingActions.DOWNLOAD_GRADEBOOK)
     .map(action => action.payload)
     .switchMap(offering => this.termService.downloadGradebook(offering))
-    .map(blob => window.open(window.URL.createObjectURL(blob))).ignoreElements();
+    .map(blob => {
+      let url = window.URL.createObjectURL(blob);
+      window.open(url)
+    }).ignoreElements();
 }
 

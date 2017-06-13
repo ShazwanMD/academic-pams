@@ -4,7 +4,7 @@ import {AdmissionApplication} from './../app/term/admission-applications/admissi
 import {Assessment} from './../app/term/assessments/assessment.interface';
 import {Offering} from '../app/term/offerings/offering.interface';
 import {Injectable} from '@angular/core';
-import {Response, Http} from '@angular/http';
+import {Response, Http, ResponseContentType} from '@angular/http';
 import {Headers, RequestOptions} from '@angular/http';
 import {HttpInterceptorService} from '@covalent/http';
 import {Observable} from 'rxjs/Observable';
@@ -570,11 +570,12 @@ export class TermService {
   }
 
   uploadGradebook(offering: Offering, file: File): Observable<String> {
+    console.log('uploadGradebook');
     let headers = new Headers({
       'Content-Type': 'application/json',
       //'Authorization': 'Bearer ' + this.authService.token
     });
-    let options = new RequestOptions({ headers: headers });
+    let options = new RequestOptions({headers: headers});
     let formData = new FormData();
     formData.append("file", file)
     return this.http.post(environment.endpoint + '/api/term/offerings/' + offering.canonicalCode + '/uploadGradebook', formData)
@@ -582,7 +583,9 @@ export class TermService {
   }
 
   downloadGradebook(offering: Offering): Observable<Blob> {
-    return this.http.get(environment.endpoint + '/api/term/offerings/' + offering.canonicalCode + '/downloadGradebook')
-      .map(data => new Blob([data], {type: 'application/vnd.ms-excel'}));
+    console.log('downloadGradebook');
+    let options = new RequestOptions({responseType: ResponseContentType.ArrayBuffer});
+    return this.http.get(environment.endpoint + '/api/term/offerings/' + offering.canonicalCode + '/downloadGradebook', options)
+      .map((res: Response) => new Blob([res.arrayBuffer()], {type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'}));
   }
 }

@@ -153,7 +153,7 @@ export class OfferingActions {
   }
 
 
-  static UPLOAD_GRADEBOOK = '[Offering] Remove Offering';
+  static UPLOAD_GRADEBOOK = '[Offering] Upload gradebook';
 
   uploadGradebook(offering, file): Action {
     return {
@@ -162,7 +162,7 @@ export class OfferingActions {
     };
   }
 
-  static UPLOAD_GRADEBOOK_SUCCESS = '[Offering] Upload Offering Success';
+  static UPLOAD_GRADEBOOK_SUCCESS = '[Offering] Upload Gradebook Success';
 
   uploadGradebookSuccess(offering): Action {
     return {
@@ -171,7 +171,7 @@ export class OfferingActions {
     };
   }
 
-  static DOWNLOAD_GRADEBOOK = '[Offering] Remove Offering';
+  static DOWNLOAD_GRADEBOOK = '[Offering] Download Gradebook';
 
   downloadGradebook(offering): Action {
     return {
@@ -180,7 +180,7 @@ export class OfferingActions {
     };
   }
 
-  static DOWNLOAD_GRADEBOOK_SUCCESS = '[Offering] Download Offering Success';
+  static DOWNLOAD_GRADEBOOK_SUCCESS = '[Offering] Download Gradebook Success';
 
   downloadGradebookSuccess(offering): Action {
     return {
