@@ -24,7 +24,7 @@ public class AdmissionApplication extends Document {
 	private String cancelComment;
 	private String removeComment;
 	private Student student;
-    private AcademicSession session;
+    private AcademicSession academicSession;
     private Program program;
     private StudyCenter studyCenter;
     private Staff advisor;
@@ -86,12 +86,12 @@ public class AdmissionApplication extends Document {
 		this.student = student;
 	}
 
-	public AcademicSession getSession() {
-		return session;
+	public AcademicSession getAcademicSession() {
+		return academicSession;
 	}
 
-	public void setSession(AcademicSession session) {
-		this.session = session;
+	public void setAcademicSession(AcademicSession academicSession) {
+		this.academicSession = academicSession;
 	}
 
 	public Program getProgram() {

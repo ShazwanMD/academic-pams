@@ -82,7 +82,7 @@ public class TermTransformer {
 		vo.setDescription(application.getDescription());
 		vo.setCancelComment(application.getCancelComment());
 		vo.setRemoveComment(application.getRemoveComment());
-		vo.setSession(plannerTransformer.toAcademicSessionVo(application.getSession()));
+		vo.setAcademicSession(plannerTransformer.toAcademicSessionVo(application.getSession()));
 		vo.setStudent(identityTransformer.toStudentVo(application.getStudent()));
 		vo.setProgram(plannerTransformer.toProgramVo(application.getProgram()));
 		vo.setAdvisor(identityTransformer.toStaffVo(application.getAdvisor()));

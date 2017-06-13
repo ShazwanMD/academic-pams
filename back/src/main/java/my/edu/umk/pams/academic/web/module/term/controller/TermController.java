@@ -160,7 +160,7 @@ public class TermController {
         application.setAdvisor(identityService.findStaffByStaffNo(vo.getAdvisor().getIdentityNo()));
         application.setStudent(identityService.findStudentByMatricNo(vo.getStudent().getIdentityNo()));
         application.setProgram(plannerService.findProgramByCode(vo.getProgram().getCode()));
-        application.setSession(plannerService.findAcademicSessionByCode(vo.getSession().getCode()));
+        application.setSession(plannerService.findAcademicSessionByCode(vo.getAcademicSession().getCode()));
         application.setStudyCenter(commonService.findStudyCenterByCode(vo.getStudyCenter().getCode()));
         termService.saveAdmissionApplication(application);
         return new ResponseEntity<String>("Success", HttpStatus.OK);
@@ -193,13 +193,14 @@ public class TermController {
     public ResponseEntity<String> startAdmissionApplicationTask(@RequestBody AdmissionApplication vo) throws Exception {
 
         LOG.debug("start task");
-        dummyLogin();
-        AdStudent student = identityService.findStudentById(vo.getStudent().getId());
-        AdAcademicSession academicSession = plannerService.findAcademicSessionById(vo.getSession().getId());
-        AdStudyCenter studyCenter = commonService.findStudyCenterById(vo.getStudyCenter().getId());
-        AdProgram program = plannerService.findProgramById(vo.getProgram().getId());
-        AdStaff advisor = identityService.findStaffById(vo.getAdvisor().getId());
-        AdAdmissionApplication application = new AdAdmissionApplicationImpl();
+		dummyLogin();
+		AdStudent student = identityService.findStudentById(vo.getStudent().getId());
+		AdAcademicSession academicSession = plannerService.findAcademicSessionById(vo.getAcademicSession().getId());
+		AdStudyCenter studyCenter = commonService.findStudyCenterById(vo.getStudyCenter().getId());
+		AdProgram program = plannerService.findProgramById(vo.getProgram().getId());
+		AdStaff advisor = identityService.findStaffById(vo.getAdvisor().getId());
+        
+	    AdAdmissionApplication application = new AdAdmissionApplicationImpl();
         application.setDescription(vo.getDescription());
         application.setReferenceNo(vo.getReferenceNo());
         application.setStudent(student);

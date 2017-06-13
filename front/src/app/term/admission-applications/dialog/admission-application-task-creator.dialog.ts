@@ -43,13 +43,13 @@ export class AdmissionApplicationTaskCreatorDialog implements OnInit {
 
     ngOnInit(): void {
     this.createForm = this.formBuilder.group(<AdmissionApplication>{
-      id: null,
+       id: null,
       referenceNo: '',
-      sourceNo: '',
-      auditNo: '',
+      sourceNo: 'N/A',
+      auditNo: 'N/A',
       description: '',
-      cancelComment: '',
-      removeComment: '',
+      cancelComment: 'N/A',
+      removeComment: 'N/A',
       actor: <Actor>{},
       student: <Student>{},
       academicSession: <AcademicSession>{},
@@ -60,6 +60,15 @@ export class AdmissionApplicationTaskCreatorDialog implements OnInit {
   }
 
   save(admissionApplication: AdmissionApplication, isValid: boolean) {
+	   console.log("referenceNo: " + admissionApplication.referenceNo)
+      console.log("sourceNo: " + admissionApplication.sourceNo)
+      console.log("auditNo: " + admissionApplication.auditNo)
+      console.log("description: " + admissionApplication.description)
+      console.log("cancelComment: " + admissionApplication.cancelComment)
+      console.log("removeComment: " + admissionApplication.removeComment)
+      console.log("academicSession: " + admissionApplication.academicSession.id)
+      console.log("student: " + admissionApplication.student.id)
+      console.log(JSON.stringify(admissionApplication));
     this.store.dispatch (this.actions.startAdmissionApplicationTask(admissionApplication));
     this.dialog.close();
   }
