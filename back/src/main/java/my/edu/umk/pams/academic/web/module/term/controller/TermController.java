@@ -2,7 +2,7 @@ package my.edu.umk.pams.academic.web.module.term.controller;
 
 import my.edu.umk.pams.academic.common.model.AdStudyCenter;
 import my.edu.umk.pams.academic.common.service.CommonService;
-
+import my.edu.umk.pams.academic.identity.model.AdStaff;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.identity.service.IdentityService;
 import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
@@ -196,7 +196,7 @@ public class TermController {
 		AdAcademicSession academicSession = plannerService.findAcademicSessionById(vo.getSession().getId());
 		AdStudyCenter studyCenter = commonService.findStudyCenterById(vo.getStudyCenter().getId());
 		AdProgram program = plannerService.findProgramById(vo.getProgram().getId());
-		
+		AdStaff advisor = identityService.findStaffById(vo.getAdvisor().getId());
 		AdAdmissionApplication application = new AdAdmissionApplicationImpl();
 		application.setDescription(vo.getDescription());
 		application.setReferenceNo(vo.getReferenceNo());
@@ -204,12 +204,13 @@ public class TermController {
 		application.setSession(academicSession);
 		application.setStudyCenter(studyCenter);
 		application.setProgram(program);
+		application.setAdvisor(advisor);
 		application.setAuditNo(vo.getAuditNo());
 		application.setCancelComment(vo.getCancelComment());
 		application.setRemoveComment(vo.getRemoveComment());
 		application.setSourceNo(vo.getSourceNo());
-		termService.startAdmissionApplicationTask(application);
-		return new ResponseEntity<String>(HttpStatus.OK);
+		String referenceNo = termService.startAdmissionApplicationTask(application);
+		return new ResponseEntity<String>(referenceNo, HttpStatus.OK);
 		}
 	
 	@RequestMapping(value = "/admissionApplications/viewTask/{taskId}", method = RequestMethod.GET)

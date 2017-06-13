@@ -60,7 +60,7 @@ export class AdmissionApplicationTaskCreatorDialog implements OnInit {
   }
 
   save(admissionApplication: AdmissionApplication, isValid: boolean) {
-    this.store.dispatch (this.actions.saveAdmissionApplication(admissionApplication));
+    this.store.dispatch (this.actions.startAdmissionApplicationTask(admissionApplication));
     this.dialog.close();
   }
 }
