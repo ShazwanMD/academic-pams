@@ -31,6 +31,16 @@
       (rowSelect)="selectRow($event)"
       (selectAll)="selectAllRows($event)"
       dense>
+      <template tdDataTableTemplate="assessmentType" let-value="value" let-row="row"	let-column="column">
+        <div layout="row">
+          <span flex>{{value | assessmentTypePipe }}</span>
+        </div>
+      </template>
+      <template tdDataTableTemplate="assessmentCategory" let-value="value" let-row="row"	let-column="column">
+        <div layout="row">
+          <span flex>{{value | assessmentCategoryPipe }}</span>
+        </div>
+      </template>
       <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
         <div layout="row">
           <span flex>{{value}}</span>
