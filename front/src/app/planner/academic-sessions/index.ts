@@ -21,7 +21,7 @@ import {AcademicSessionStatusComponent} from "./component/academic-session-statu
 import {AcademicSessionEditorDialog} from "./dialog/academic-session-editor.dialog";
 import {AcademicSemesterSelectComponent} from "./component/academic-semester-select.component";
 import {AcademicSessionActionComponent} from "./component/academic-session-action.component";
-import {AcademicYearSubModule} from "../../planner/academic-years/index";
+import {AcademicYearSubModule} from "../academic-years/index";
 
 
 @NgModule({
@@ -31,7 +31,7 @@ import {AcademicYearSubModule} from "../../planner/academic-years/index";
     ReactiveFormsModule,
     AcademicYearSubModule.forRoot(),
     CovalentCoreModule.forRoot(),
-    EffectsModule.run(AcademicSessionEffects),
+    // EffectsModule.run(AcademicSessionEffects), // lazy load bug, moved to app root. Fix in Angular 4
   ],
   declarations: [
     //page

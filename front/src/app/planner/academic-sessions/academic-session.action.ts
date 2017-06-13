@@ -42,8 +42,7 @@ export class AcademicSessionActions {
 
     static SAVE_ACADEMIC_SESSION = '[AcademicSession] Save AcademicSession';
     saveAcademicSession(academicSession): Action {
-        console.log("Acadmic Session save:");
-        console.dir(academicSession);
+        console.log("saveAcademicSession");
         return {
             type: AcademicSessionActions.SAVE_ACADEMIC_SESSION,
             payload: academicSession
@@ -51,11 +50,11 @@ export class AcademicSessionActions {
     }
 
     static SAVE_ACADEMIC_SESSION_SUCCESS = '[AcademicSession] Save AcademicSession Success';
-    saveAcademicSessionSuccess(academicSession): Action {
-        console.log("academicSession: " + academicSession)
+    saveAcademicSessionSuccess(message): Action {
+        console.log("saveAcademicSessionSuccess");
         return {
             type: AcademicSessionActions.SAVE_ACADEMIC_SESSION_SUCCESS,
-            payload: academicSession
+            payload: message
         };
     }
 
