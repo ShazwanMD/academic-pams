@@ -2,6 +2,6 @@
   [placeholder]="placeholder"
   (change)="selectChangeEvent($event.value)" flex>
   <md-option *ngFor="let status of statuses" [value]="status">
-    {{status}}
+    {{status | admissionStatusPipe}}
   </md-option>
 </md-select>

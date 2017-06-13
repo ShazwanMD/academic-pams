@@ -68,13 +68,8 @@ export class PlannerService {
       //'Authorization': 'Bearer ' + this.authService.token
     });
     let options = new RequestOptions({headers: headers});
-    console.log("helo");
-    console.dir(academicSession)
     return this.http.post(environment.endpoint + '/api/planner/academicSessions/' + academicSession.code + '/save', JSON.stringify(academicSession), options)
       .flatMap((res: Response) => Observable.of(res.text()));
-
-
-
   }
 
   updateAcademicSession(academicSession: AcademicSession): Observable<String> {

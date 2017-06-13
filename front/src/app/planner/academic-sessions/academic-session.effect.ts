@@ -6,6 +6,7 @@ import {Store} from "@ngrx/store";
 import {Observable} from "rxjs";
 import {PlannerModuleState} from "../index";
 import {AcademicSession} from "./academic-session.interface";
+import {from} from "rxjs/observable/from";
 
 @Injectable()
 export class AcademicSessionEffects {
@@ -52,10 +53,8 @@ export class AcademicSessionEffects {
     .ofType(AcademicSessionActions.SAVE_ACADEMIC_SESSION)
     .map(action => action.payload)
     .switchMap(academicSession => this.plannerService.saveAcademicSession(academicSession))
-    .map(academicSession => this.academicSessionActions.saveAcademicSessionSuccess(academicSession))
-    .withLatestFrom(this.store$.select(...this.ACADEMIC_SESSION))
-    .map(state => state[1])
-   .map((academicSession: AcademicSession) => this.academicSessionActions.findAcademicSessionByCode(academicSession.code));
+    .map(message => this.academicSessionActions.saveAcademicSessionSuccess(message))
+    .mergeMap(action => from([action, this.academicSessionActions.findAcademicSessions()]));
 
   @Effect() updateAcademicSession$ = this.actions$
     .ofType(AcademicSessionActions.UPDATE_ACADEMIC_SESSION)

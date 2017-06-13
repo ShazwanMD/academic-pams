@@ -61,7 +61,6 @@ export class AcademicSessionCenterPage implements OnInit {
   }
 
   private showDialog(code: AcademicSession): void {
-    console.log("create");
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
     config.role = 'dialog';
@@ -71,9 +70,8 @@ export class AcademicSessionCenterPage implements OnInit {
     this.creatorDialogRef = this.dialog.open(AcademicSessionCreatorDialog, config);
     if (code)this.creatorDialogRef.componentInstance.academicSession = code;  
     
-    //set
-    this.creatorDialogRef.afterClosed().subscribe(res => { 
-      console.log ("close dialog");
+    this.creatorDialogRef.afterClosed().subscribe(res => {
+      // console.log ("close dialog");
     });
   }
 }
