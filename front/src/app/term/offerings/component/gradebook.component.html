@@ -1,4 +1,13 @@
 <md-card>
+  <div toolbar-buttons layout="row" layout-align="start center" flex>
+    <md-card-title>Gradebooks
+    </md-card-title>
+    <span flex></span>
+    <button md-button class="md-icon-button" (click)="download()">
+      <md-icon class="md-24 tc-grey-700">file_download</md-icon>
+    </button>
+  </div>
+  <md-divider></md-divider>
   <md-card-content>
     <td-data-table #dataTable
       [data]="gradebookMatrices"

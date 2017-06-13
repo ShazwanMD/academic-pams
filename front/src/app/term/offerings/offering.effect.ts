@@ -1,15 +1,15 @@
-import { SectionActions } from './../sections/section.action';
-import { PlannerService } from './../../../services/planner.service';
-import { CourseActions } from './../../planner/courses/course.action';
-import { ProgramActions } from './../../planner/programs/program.action';
-import { Injectable } from '@angular/core';
-import { Effect, Actions } from '@ngrx/effects';
-import { OfferingActions } from "./offering.action";
-import { TermService } from "../../../services/term.service";
-import { from } from "rxjs/observable/from";
-import { Store } from "@ngrx/store";
-import { TermModuleState } from "../index";
-import { Offering } from "./offering.interface";
+import {SectionActions} from './../sections/section.action';
+import {PlannerService} from './../../../services/planner.service';
+import {CourseActions} from './../../planner/courses/course.action';
+import {ProgramActions} from './../../planner/programs/program.action';
+import {Injectable} from '@angular/core';
+import {Effect, Actions} from '@ngrx/effects';
+import {OfferingActions} from "./offering.action";
+import {TermService} from "../../../services/term.service";
+import {from} from "rxjs/observable/from";
+import {Store} from "@ngrx/store";
+import {TermModuleState} from "../index";
+import {Offering} from "./offering.interface";
 import {Observable} from "rxjs/Observable";
 
 @Injectable()
@@ -18,13 +18,13 @@ export class OfferingEffects {
   private OFFERING: string[] = "termModuleState.offering".split(".");
 
   constructor(private actions$: Actions,
-    private offeringActions: OfferingActions,
-    private programActions: ProgramActions,
-    private courseActions: CourseActions,
-    private sectionActions: SectionActions,
-    private termService: TermService,
-    private plannerService: PlannerService,
-    private store$: Store<TermModuleState>) {
+              private offeringActions: OfferingActions,
+              private programActions: ProgramActions,
+              private courseActions: CourseActions,
+              private sectionActions: SectionActions,
+              private termService: TermService,
+              private plannerService: PlannerService,
+              private store$: Store<TermModuleState>) {
   }
 
   @Effect() findOfferings$ = this.actions$
@@ -91,6 +91,7 @@ export class OfferingEffects {
   @Effect() downloadGradebook$ = this.actions$
     .ofType(OfferingActions.DOWNLOAD_GRADEBOOK)
     .map(action => action.payload)
-    .switchMap(offering => Observable.of(this.termService.downloadGradebook(offering)));
+    .switchMap(offering => this.termService.downloadGradebook(offering))
+    .map(blob => window.open(window.URL.createObjectURL(blob))).ignoreElements();
 }
 

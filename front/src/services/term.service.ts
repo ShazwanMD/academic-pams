@@ -569,19 +569,20 @@ export class TermService {
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
-  // todo:
   uploadGradebook(offering: Offering, file: File): Observable<String> {
-    return Observable.of("");
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({ headers: headers });
+    let formData = new FormData();
+    formData.append("file", file)
+    return this.http.post(environment.endpoint + '/api/term/offerings/' + offering.canonicalCode + '/uploadGradebook', formData)
+      .flatMap((res: Response) => Observable.of(res.text()));
   }
 
-  // todo:
-  downloadGradebook(offering: Offering): void {
-    this.http.get(environment.endpoint + '/api/term/offerings/' + offering.canonicalCode + '/downloadGradebook')
-      .subscribe((res: Response) => {
-          var blob = new Blob([res], {type: 'text/csv'});
-          var url = window.URL.createObjectURL(blob);
-          window.open(url);
-        }
-      );
+  downloadGradebook(offering: Offering): Observable<Blob> {
+    return this.http.get(environment.endpoint + '/api/term/offerings/' + offering.canonicalCode + '/downloadGradebook')
+      .map(data => new Blob([data], {type: 'application/vnd.ms-excel'}));
   }
 }
