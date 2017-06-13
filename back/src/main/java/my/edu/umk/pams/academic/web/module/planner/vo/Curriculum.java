@@ -3,8 +3,10 @@ package my.edu.umk.pams.academic.web.module.planner.vo;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import my.edu.umk.pams.academic.web.module.core.vo.MetaObject;
+import my.edu.umk.pams.academic.web.module.planner.vo.subject.Subject;
 
 import java.io.IOException;
+import java.util.List;
 
 /**
  * @author PAMS
@@ -12,6 +14,24 @@ import java.io.IOException;
 public class Curriculum extends MetaObject{
     private String code;
     private String description;
+    private List<Subject> subjects;
+    private Program program;
+
+    public List<Subject> getSubjects() {
+        return subjects;
+    }
+
+    public void setSubjects(List<Subject> subjects) {
+        this.subjects = subjects;
+    }
+
+    public Program getProgram() {
+        return program;
+    }
+
+    public void setProgram(Program program) {
+        this.program = program;
+    }
 
     public String getCode() {
         return code;
