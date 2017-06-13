@@ -3,6 +3,7 @@ package my.edu.umk.pams.academic.web.module.planner.controller;
 import my.edu.umk.pams.academic.common.model.AdStudyCenter;
 import my.edu.umk.pams.academic.planner.model.*;
 import my.edu.umk.pams.academic.web.module.planner.vo.*;
+import my.edu.umk.pams.academic.web.module.planner.vo.subject.Subject;
 import my.edu.umk.pams.academic.web.module.term.controller.TermTransformer;
 
 import org.slf4j.Logger;
@@ -98,11 +99,31 @@ public class PlannerTransformer {
         vo.setTitleMs(course.getTitleMs());
         vo.setTitleEn(course.getTitleEn());
         vo.setCredit(course.getCredit());
-        vo.setClassification(AcademicClassification.get(course.getClassification().ordinal()));
         vo.setFaculty(plannerTransformer.toFacultyVo(course.getFaculty()));
         vo.setStatus(CourseStatus.get(course.getStatus().ordinal()));
         return vo;
     }
+
+    public List<Curriculum> toCurriculumVos(List<AdCurriculum> curriculums) {
+        return curriculums.stream().map(this::toCurriculumVo).collect(toList());
+    }
+
+	public Curriculum toCurriculumVo(AdCurriculum e) {
+        Curriculum vo = new Curriculum();
+        vo.setCode(e.getCode());
+        vo.setSubjects(plannerTransformer.toSubjectVos(e.getSubjects()));
+        vo.setProgram(plannerTransformer.toProgramVo(e.getProgram()));
+        return vo;
+    }
+
+    public List<Subject> toSubjectVos(List<AdSubject> subjects) {
+        return subjects.stream().map(this::toSubjectVo).collect(toList());
+    }
+
+    public Subject toSubjectVo(AdSubject e) {
+        return new Subject();
+    }
+
 
     public Cohort toCohortVo(AdCohort e) {
         Cohort vo = new Cohort();
