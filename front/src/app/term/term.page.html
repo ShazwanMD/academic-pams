@@ -4,14 +4,14 @@
     <span flex></span>
   </div>
 
- <md-nav-list menu-items>
+  <md-nav-list menu-items>
     <a *ngFor="let item of routes" md-list-item [routerLink]="[item.route]" (click)="layout.close()">
       <md-icon>{{item.icon}}</md-icon>
       {{item.title}}
     </a>
   </md-nav-list>
 
- <td-layout-manage-list #list>
+  <td-layout-manage-list #list>
     <md-nav-list list-items>
     <a md-list-item >
         <md-icon></md-icon>
@@ -43,7 +43,7 @@
        Course Enrollments
       </a>
       
-   </md-nav-list>
+    </md-nav-list>
     <div toolbar-buttons layout="row" layout-align="start center" flex>
       <span flex>Term Page Center</span>
       <button md-button class="md-icon-button">
@@ -54,13 +54,13 @@
       </button>
     </div>
 
-   <md-card class="">
+    <md-card class="">
       <md-card-title>Term Page Center</md-card-title>
       <md-card-subtitle> Welcome to Term Page Center</md-card-subtitle>
 
-     <md-divider></md-divider>
+      <md-divider></md-divider>
 
-     <md-divider></md-divider>
+      <md-divider></md-divider>
       <md-card-actions>
         <a md-button color="accent" class="text-upper" [routerLink]="['/accounts-search']">
           <span>View More</span>

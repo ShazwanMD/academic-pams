@@ -29,6 +29,7 @@ import { AdmissionApplicationTaskStatusComponent } from "./component/admission-a
 import { SectionSubModule } from "../sections/index";
 import { AdmissionApplicationCenterPage } from "./admission-application-center.page";
 import { IdentityModule } from "../../identity/index";
+import { StudentAdmissionApplicationCenterPage } from "./student-admission-application-center.page";
 
 @NgModule({
   imports: [
@@ -49,6 +50,7 @@ import { IdentityModule } from "../../identity/index";
     // page
     AdmissionApplicationTaskViewPage,
     AdmissionApplicationCenterPage,
+    StudentAdmissionApplicationCenterPage,
 
     // component
     AdmissionApplicationTaskWorkflowPanel,
