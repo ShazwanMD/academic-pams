@@ -19,8 +19,8 @@ public class Subject extends MetaObject {
 //    todo()
 //    public SubjectType getSubjectType();
 //    public void setSubjectType(SubjectType subjectType);
-//    public AcademicPeriod getPeriod();
-//    public void setPeriod(AcademicPeriod period);
+//    public AcademicPeriod getOrdinal();
+//    public void setOrdinal(AcademicPeriod period);
 
     public Curriculum getCurriculum() {return curriculum;}
 

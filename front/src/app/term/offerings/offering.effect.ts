@@ -1,7 +1,7 @@
-import {SectionActions} from './../sections/section.action';
-import {PlannerService} from './../../../services/planner.service';
-import {CourseActions} from './../../planner/courses/course.action';
-import {ProgramActions} from './../../planner/programs/program.action';
+import {SectionActions} from '../sections/section.action';
+import {PlannerService} from '../../../services/planner.service';
+import {CourseActions} from '../../planner/courses/course.action';
+import {ProgramActions} from '../../planner/programs/program.action';
 import {Injectable} from '@angular/core';
 import {Effect, Actions} from '@ngrx/effects';
 import {OfferingActions} from "./offering.action";
@@ -78,7 +78,6 @@ export class OfferingEffects {
 
     .withLatestFrom(this.store$.select(...this.OFFERING))
     .map(state => state[1])
-    //.mergeMap(action => from([action, this.offeringActions.findOfferings()]));
     .map((offering: Offering) => this.offeringActions.findOfferingByCanonicalCode(offering.canonicalCode));
 
   @Effect() uploadGradebook$ = this.actions$

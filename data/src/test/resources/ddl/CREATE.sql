@@ -1184,7 +1184,7 @@
         M_TS timestamp,
         M_ID int8,
         M_ST int4,
-        PERIOD int4 not null,
+        ORDINAL int4 not null,
         SUBJECT_TYPE int4 not null,
         CURRICULUM_ID int8 not null,
         primary key (ID)
@@ -2115,4 +2115,4 @@
 
     create sequence SQ_AD_WTCH;
 
-    create sequence SQ_CNG_SBJT;
+    create sequence SQ_AD_SBJT;

@@ -39,7 +39,7 @@ public class ThenTheChargeScheduleIsReviewed extends Stage<ThenTheChargeSchedule
 //		LOG.debug("program: {}", schedule.getProgram().getId());
 //		LOG.debug("amount: {}", schedule.getAmount());
 //		LOG.debug("studyCenter: {}", schedule.getStudyCenter().getCode());
-//		LOG.debug("period: {}", schedule.getPeriod());
+//		LOG.debug("period: {}", schedule.getOrdinal());
 //		LOG.debug("code: {}", schedule.getCode());
 
 		return self();

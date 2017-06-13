@@ -125,7 +125,7 @@ public class WhenISetupChargeSchedule extends Stage<WhenISetupChargeSchedule> {
 //		schedule = new AdChargeScheduleImpl();
 //		schedule.setAmount(new BigDecimal("150.00"));
 //		schedule.setCode(refNo);
-//		schedule.setPeriod(AdAcademicPeriod.I);
+//		schedule.setOrdinal(AdAcademicPeriod.I);
 //		schedule.setProgram(program);
 		//schedule.setStudyCenter(center);
 //		schedule.setCohort(cohort);
@@ -140,7 +140,7 @@ public class WhenISetupChargeSchedule extends Stage<WhenISetupChargeSchedule> {
 //		LOG.debug("program: {}", schedule.getProgram().getId());
 //		LOG.debug("amount: {}", schedule.getAmount());
 		//LOG.debug("studyCenter: {}", schedule.getStudyCenter().getCode());
-//		LOG.debug("period: {}", schedule.getPeriod());
+//		LOG.debug("period: {}", schedule.getOrdinal());
 //		LOG.debug("code: {}", schedule.getCode());
 
 		return self();
@@ -157,7 +157,7 @@ public class WhenISetupChargeSchedule extends Stage<WhenISetupChargeSchedule> {
 		//update charge schedule
 //		schedule.setAmount(new BigDecimal("190.00"));
 //		schedule.setCode(refNo);
-//		schedule.setPeriod(AdAcademicPeriod.II);
+//		schedule.setOrdinal(AdAcademicPeriod.II);
 //		schedule.setProgram(program);
 //		schedule.setStudyCenter(center);
 //		schedule.setCohort(cohort);
@@ -172,7 +172,7 @@ public class WhenISetupChargeSchedule extends Stage<WhenISetupChargeSchedule> {
 //		LOG.debug("program: {}", schedule.getProgram().getId());
 //		LOG.debug("amount: {}", schedule.getAmount());
 //		LOG.debug("studyCenter: {}", schedule.getStudyCenter().getCode());
-//		LOG.debug("period: {}", schedule.getPeriod());
+//		LOG.debug("period: {}", schedule.getOrdinal());
 //		LOG.debug("code: {}", schedule.getCode());
 		
 		return self();

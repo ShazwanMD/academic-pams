@@ -15,15 +15,15 @@ public abstract class AdSubjectImpl implements AdSubject {
 
     @Id
     @Column(name = "ID", nullable = false)
-    @GeneratedValue(generator = "SQ_CNG_SBJT")
-    @SequenceGenerator(name = "SQ_CNG_SBJT", sequenceName = "SQ_CNG_SBJT", allocationSize = 1)
+    @GeneratedValue(generator = "SQ_AD_SBJT")
+    @SequenceGenerator(name = "SQ_AD_SBJT", sequenceName = "SQ_AD_SBJT", allocationSize = 1)
     private Long id;
 
     @Column(name = "SUBJECT_TYPE", nullable = false)
     private AdSubjectType subjectType;
 
-    @Column(name = "PERIOD", nullable = false)
-    private AdAcademicPeriod period;
+    @Column(name = "ORDINAL", nullable = false)
+    private Integer ordinal;
 
     @ManyToOne(targetEntity = AdCurriculumImpl.class)
     @JoinColumn(name = "CURRICULUM_ID", nullable = false)
@@ -52,13 +52,13 @@ public abstract class AdSubjectImpl implements AdSubject {
     }
 
     @Override
-    public AdAcademicPeriod getPeriod() {
-        return period;
+    public Integer getOrdinal() {
+        return ordinal;
     }
 
     @Override
-    public void setPeriod(AdAcademicPeriod period) {
-        this.period = period;
+    public void setOrdinal(Integer ordinal) {
+        this.ordinal = ordinal;
     }
 
     @Override

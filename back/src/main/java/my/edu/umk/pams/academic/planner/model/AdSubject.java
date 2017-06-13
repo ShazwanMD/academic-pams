@@ -11,9 +11,9 @@ public interface AdSubject extends AdMetaObject {
 
     void setSubjectType(AdSubjectType subjectType);
 
-    AdAcademicPeriod getPeriod();
+    Integer getOrdinal();
 
-    void setPeriod(AdAcademicPeriod period);
+    void setOrdinal(Integer ordinal);
 
     AdCurriculum getCurriculum();
 

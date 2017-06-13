@@ -1,25 +1,14 @@
 package my.edu.umk.pams.academic.planner.stage;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
-
-import my.edu.umk.pams.academic.planner.model.AdAcademicPeriod;
-import my.edu.umk.pams.academic.planner.model.AdBundleSubject;
-import my.edu.umk.pams.academic.planner.model.AdBundleSubjectImpl;
-import my.edu.umk.pams.academic.planner.model.AdBundleSubjectPart;
-import my.edu.umk.pams.academic.planner.model.AdBundleSubjectPartImpl;
-import my.edu.umk.pams.academic.planner.model.AdCourse;
-import my.edu.umk.pams.academic.planner.model.AdCurriculum;
-import my.edu.umk.pams.academic.planner.model.AdFaculty;
-import my.edu.umk.pams.academic.planner.model.AdSingleSubject;
-import my.edu.umk.pams.academic.planner.model.AdSubjectType;
+import my.edu.umk.pams.academic.planner.model.*;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @JGivenStage
 public class WhenBundleSubjectAdd extends Stage<WhenBundleSubjectAdd> {
@@ -53,7 +42,7 @@ public class WhenBundleSubjectAdd extends Stage<WhenBundleSubjectAdd> {
 		bundleSubject = new AdBundleSubjectImpl();
 		bundleSubject.setSubjectType(AdSubjectType.REQUIRED);
 		bundleSubject.setCurriculum(curriculum);
-		bundleSubject.setPeriod(AdAcademicPeriod.II);
+		bundleSubject.setOrdinal(2);
 
 		plannerService.addSubject(curriculum, bundleSubject);
 		LOG.debug("bundle subject : {}", bundleSubject.getCurriculum().getCode());

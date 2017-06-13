@@ -72,14 +72,14 @@ public class CurriculumTest {
         // single subject
         AdSingleSubject subject = new AdSingleSubjectImpl();
         subject.setCourse(plannerService.findCourseByCode("GST2113"));
-        subject.setPeriod(AdAcademicPeriod.I);
+        subject.setOrdinal(1);
         subject.setSubjectType(AdSubjectType.CORE);
         plannerService.addSubject(curriculum, subject);
 
         // elective/bundle subject
         AdBundleSubject bundleSubject = new AdBundleSubjectImpl();
         bundleSubject.setSubjectType(AdSubjectType.ELECTIVE);
-        bundleSubject.setPeriod(AdAcademicPeriod.II);
+        bundleSubject.setOrdinal(2);
         plannerService.addSubject(curriculum, bundleSubject);
 
         // prepare part

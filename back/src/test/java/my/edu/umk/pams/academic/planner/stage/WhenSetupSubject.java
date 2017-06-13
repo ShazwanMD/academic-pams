@@ -48,14 +48,14 @@ public class WhenSetupSubject extends Stage<WhenSetupSubject> {
 		LOG.debug("course : {}", course.getCode());
 
 		subject = new AdSingleSubjectImpl();
-		subject.setPeriod(AdAcademicPeriod.I);
+		subject.setOrdinal(1);
 		subject.setSubjectType(AdSubjectType.CORE);
 		subject.setCourse(course);
 		subject.setCurriculum(curriculum);
 		plannerService.addSubject(curriculum, subject);
 
 		LOG.debug("subject type : {}", subject.getSubjectType());
-		LOG.debug("subject period : {}", subject.getPeriod());
+		LOG.debug("subject period : {}", subject.getOrdinal());
 		LOG.debug("course : {}", subject.getCourse().getCode());
 		LOG.debug("curriculum : {}", subject.getCurriculum().getCode());
 		
