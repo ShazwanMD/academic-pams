@@ -14,6 +14,7 @@ import {AppointmentActions} from "./appointment.action";
 import {EffectsModule} from "@ngrx/effects";
 //import {AppointmentEffects} from "./appointment.effect";
 import {AppointmentDetailPage} from "./appointment-detail.page";
+import {StudentAppointmentDetailPage} from "./student-appointment-detail.page";
 import {AppointmentComponent} from "./component/appointment.component";
 import {AppointmentStatusSelectComponent} from "./component/appointment-status-select.component";
 import {AppointmentEditorDialog} from "./dialog/appointment-editor.dialog";
@@ -34,6 +35,8 @@ import { AppointmentActionComponent } from "./component/appointment-action.compo
   declarations: [
     // page
     AppointmentDetailPage,
+    StudentAppointmentDetailPage,
+    
 
     // component
     AppointmentListComponent,
@@ -67,5 +70,3 @@ export class AppointmentSubModule {
     };
   }
 }
-
-
