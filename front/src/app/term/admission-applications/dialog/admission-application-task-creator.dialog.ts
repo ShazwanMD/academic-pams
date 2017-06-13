@@ -1,5 +1,3 @@
-import { Section } from '../../sections/section.interface';
-
 import { Actor } from './../../../identity/actor.interface';
 import { StudyCenter } from './../../../setup/study-centers/study-center.interface';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -33,7 +31,7 @@ export class AdmissionApplicationTaskCreatorDialog implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private vcf: ViewContainerRef,
-    private dialog: MdDialogRef<AdmissionApplicationTaskCreatorDialog>)  {
+    private dialog: MdDialogRef<AdmissionApplicationTaskCreatorDialog>) {
   }
 
   set admissionApplication(value: AdmissionApplication) {
@@ -41,9 +39,9 @@ export class AdmissionApplicationTaskCreatorDialog implements OnInit {
     this.create = true;
   }
 
-    ngOnInit(): void {
+  ngOnInit(): void {
     this.createForm = this.formBuilder.group(<AdmissionApplication>{
-       id: null,
+      id: null,
       referenceNo: '',
       sourceNo: 'N/A',
       auditNo: 'N/A',
@@ -60,16 +58,20 @@ export class AdmissionApplicationTaskCreatorDialog implements OnInit {
   }
 
   save(admissionApplication: AdmissionApplication, isValid: boolean) {
-	   console.log("referenceNo: " + admissionApplication.referenceNo)
-      console.log("sourceNo: " + admissionApplication.sourceNo)
-      console.log("auditNo: " + admissionApplication.auditNo)
-      console.log("description: " + admissionApplication.description)
-      console.log("cancelComment: " + admissionApplication.cancelComment)
-      console.log("removeComment: " + admissionApplication.removeComment)
-      console.log("academicSession: " + admissionApplication.academicSession.id)
-      console.log("student: " + admissionApplication.student.id)
-      console.log(JSON.stringify(admissionApplication));
-    this.store.dispatch (this.actions.startAdmissionApplicationTask(admissionApplication));
+    console.log("referenceNo: " + admissionApplication.referenceNo)
+    console.log("sourceNo: " + admissionApplication.sourceNo)
+    console.log("auditNo: " + admissionApplication.auditNo)
+    console.log("description: " + admissionApplication.description)
+    console.log("cancelComment: " + admissionApplication.cancelComment)
+    console.log("removeComment: " + admissionApplication.removeComment)
+    console.log("academicSession: " + admissionApplication.academicSession.id)
+    console.log("student: " + admissionApplication.student.id)
+    console.log("studyCenter: " + admissionApplication.studyCenter.id)
+    console.log("program: " + admissionApplication.program.id)
+    console.log("advisor: " + admissionApplication.actor.id)
+    console.log(JSON.stringify(admissionApplication));
+    
+    this.store.dispatch(this.actions.startAdmissionApplicationTask(admissionApplication));
     this.dialog.close();
   }
 }
