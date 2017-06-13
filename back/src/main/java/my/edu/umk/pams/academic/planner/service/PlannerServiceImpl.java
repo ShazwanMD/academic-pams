@@ -770,6 +770,11 @@ public class PlannerServiceImpl implements PlannerService {
     	courseDao.save(course, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
+	@Override
+	public void addCourse(AdCourse course) {
+		courseDao.save(course, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+	}
 
     @Override
     public void updateCourse(AdCourse course) {
@@ -803,4 +808,6 @@ public class PlannerServiceImpl implements PlannerService {
     public List<AdAcademicYear> findAcademicYears(String filter, Integer offset, Integer limit) {
         return academicYearDao.find(filter, offset, limit);
     }
+
+
 }
