@@ -10,6 +10,7 @@ import { from } from "rxjs/observable/from";
 import { Store } from "@ngrx/store";
 import { TermModuleState } from "../index";
 import { Offering } from "./offering.interface";
+import {Observable} from "rxjs/Observable";
 
 @Injectable()
 export class OfferingEffects {
@@ -59,7 +60,7 @@ export class OfferingEffects {
     .switchMap(offering => this.termService.findGradebookMatricesByOffering(offering))
     .map(sections => this.offeringActions.findGradebookMatricessByOfferingSuccess(sections));
 
-    
+
   @Effect() saveOffering$ = this.actions$
     .ofType(OfferingActions.SAVE_OFFERING)
     .map(action => action.payload)
@@ -80,5 +81,16 @@ export class OfferingEffects {
     .map(state => state[1])
     //.mergeMap(action => from([action, this.offeringActions.findOfferings()]));
     .map((offering: Offering) => this.offeringActions.findOfferingByCanonicalCode(offering.canonicalCode));
+
+  @Effect() uploadGradebook$ = this.actions$
+    .ofType(OfferingActions.UPLOAD_GRADEBOOK)
+    .map(action => action.payload)
+    .switchMap(payload => this.termService.uploadGradebook(payload.offering, payload.file))
+    .map(message => this.offeringActions.uploadGradebookSuccess(message));
+
+  @Effect() downloadGradebook$ = this.actions$
+    .ofType(OfferingActions.DOWNLOAD_GRADEBOOK)
+    .map(action => action.payload)
+    .switchMap(offering => Observable.of(this.termService.downloadGradebook(offering)));
 }
 

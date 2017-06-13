@@ -96,13 +96,12 @@ export class OfferingActions {
   }
 
 
-
   static SAVE_OFFERING = '[Offering] Save Offering';
 
   saveOffering(program, course, offering): Action {
     return {
       type: OfferingActions.SAVE_OFFERING,
-      payload: {program:program, course:course, offering:offering}
+      payload: {program: program, course: course, offering: offering}
     };
   }
 
@@ -118,7 +117,7 @@ export class OfferingActions {
   static UPDATE_OFFERING = '[Offering] Update Offering';
 
   updateOffering(offering): Action {
-      console.log("updateOffering");
+    console.log("updateOffering");
     return {
       type: OfferingActions.UPDATE_OFFERING,
       payload: offering
@@ -128,7 +127,7 @@ export class OfferingActions {
   static UPDATE_OFFERING_SUCCESS = '[Offering] Update Offering Success';
 
   updateOfferingSuccess(message): Action {
-      console.log("updateOfferingSuccess");
+    console.log("updateOfferingSuccess");
     return {
       type: OfferingActions.UPDATE_OFFERING_SUCCESS,
       payload: message
@@ -152,4 +151,44 @@ export class OfferingActions {
       payload: offering
     };
   }
+
+
+  static UPLOAD_GRADEBOOK = '[Offering] Remove Offering';
+
+  uploadGradebook(offering, file): Action {
+    return {
+      type: OfferingActions.UPLOAD_GRADEBOOK,
+      payload: {offering: offering, file: file}
+    };
+  }
+
+  static UPLOAD_GRADEBOOK_SUCCESS = '[Offering] Upload Offering Success';
+
+  uploadGradebookSuccess(offering): Action {
+    return {
+      type: OfferingActions.UPLOAD_GRADEBOOK_SUCCESS,
+      payload: offering
+    };
+  }
+
+  static DOWNLOAD_GRADEBOOK = '[Offering] Remove Offering';
+
+  downloadGradebook(offering): Action {
+    return {
+      type: OfferingActions.DOWNLOAD_GRADEBOOK,
+      payload: offering
+    };
+  }
+
+  static DOWNLOAD_GRADEBOOK_SUCCESS = '[Offering] Download Offering Success';
+
+  downloadGradebookSuccess(offering): Action {
+    return {
+      type: OfferingActions.DOWNLOAD_GRADEBOOK_SUCCESS,
+      payload: offering
+    };
+  }
+
+
 }
+
