@@ -1,5 +1,5 @@
-import { AssignedAdmissionApplicationTaskListComponent } from './component/assigned-admission-application-task-list.component';
 import { PooledAdmissionApplicationTaskListComponent } from './component/pooled-admission-application-task-list.component';
+import { AssignedAdmissionApplicationTaskListComponent } from './component/assigned-admission-application-task-list.component';
 import { AdmissionApplicationTaskEditorDialog } from './dialog/admission-application-task-editor.dialog';
 import { AdmissionApplicationActionComponent } from './component/admission-application-action.component';
 import { AdmissionApplicationComponent } from "./component/admission-application.component";
@@ -28,8 +28,9 @@ import { AdmissionApplicationTaskWorkflowPanel } from "./panel/admission-applica
 import { AdmissionApplicationTaskStatusComponent } from "./component/admission-application-task-status.component";
 import { SectionSubModule } from "../sections/index";
 import { AdmissionApplicationCenterPage } from "./admission-application-center.page";
-import { IdentityModule } from "../../identity/index";
 import { StudentAdmissionApplicationCenterPage } from "./student-admission-application-center.page";
+import { IdentityModule } from "../../identity/index";
+import {PipeModule} from "../../app.pipe.module";
 
 @NgModule({
   imports: [
@@ -42,6 +43,7 @@ import { StudentAdmissionApplicationCenterPage } from "./student-admission-appli
     ProgramSubModule.forRoot(),
     SectionSubModule.forRoot(),
     SetupModule.forRoot(),
+    PipeModule,
     IdentityModule.forRoot(),
     EffectsModule.run(AdmissionApplicationEffects),
   ],
@@ -62,7 +64,6 @@ import { StudentAdmissionApplicationCenterPage } from "./student-admission-appli
     AdmissionApplicationActionComponent,
     AssignedAdmissionApplicationTaskListComponent,
     PooledAdmissionApplicationTaskListComponent,
-    
 
     //dialog
     AdmissionApplicationTaskCreatorDialog,
@@ -73,6 +74,8 @@ import { StudentAdmissionApplicationCenterPage } from "./student-admission-appli
     AdmissionApplicationComponent,
     AdmissionApplicationActionComponent,
     AdmissionApplicationListComponent,
+    AssignedAdmissionApplicationTaskListComponent,
+    PooledAdmissionApplicationTaskListComponent,
 
   ],
 
