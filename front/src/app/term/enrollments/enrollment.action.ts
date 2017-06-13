@@ -77,4 +77,26 @@ export class EnrollmentActions {
             payload: enrollment
         };
     }
+    
+    //update enrollment
+          //update section for capacity and ordinal
+    static UPDATE_ENROLLMENT = '[Enrollment] Update Enrollment';
+
+  updateEnrollment(section, enrollment): Action {
+    console.log("updateEnrollment");
+    return {
+      type: EnrollmentActions.UPDATE_ENROLLMENT,
+      payload: {section:section, enrollment: enrollment}
+    };
+  }
+
+  static UPDATE_ENROLLMENT_SUCCESS = '[Enrollment] Update Enrollment Success';
+
+  updateEnrollmentSuccess(message): Action {
+    console.log("updateEnrollmentSuccess");
+    return {
+      type: EnrollmentActions.UPDATE_ENROLLMENT_SUCCESS,
+      payload: message
+    };
+  } 
 }

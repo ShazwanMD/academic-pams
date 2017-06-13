@@ -7,10 +7,10 @@ import { TermModuleState } from "../../index";
 import { Admission } from "../../admissions/admission.interface";
 import { FlowState } from "../../../core/flow-state.enum";
 import { MetaState } from "../../../core/meta-state.enum";
-import { AdmissionUpdate } from '../admission-update.interface';
 import { AdmissionStatus } from "../admission-status.enum";
 import { AcademicStanding } from "../academic-standing.enum";
-
+import { AdmissionActions } from "../admission.action";
+import { Router, ActivatedRoute } from '@angular/router';
 //import {OfferingApplicationActions} from "../offering-application.action";
 
 @Component({
@@ -19,18 +19,26 @@ import { AcademicStanding } from "../academic-standing.enum";
 })
 
 export class AdmissionUpdateTaskCreatorDialog implements OnInit {
-
-  private createForm: FormGroup;
+  private editorForm: FormGroup;
+  private edit: boolean = false;
+  private _admission: Admission;
 
   constructor(private formBuilder: FormBuilder,
     private store: Store<TermModuleState>,
-    //private actions: OfferingApplicationActions,
-    private dialog: MdDialogRef<AdmissionUpdateTaskCreatorDialog>) {
+    private actions: AdmissionActions,
+    private dialog: MdDialogRef<AdmissionUpdateTaskCreatorDialog>,
+    private router: Router,
+    private route: ActivatedRoute,
+    private vcf: ViewContainerRef) {
+  }
+
+  set admission(value: Admission) {
+    this._admission = value;
+    this.edit = true;
   }
 
   ngOnInit(): void {
-    this.createForm = this.formBuilder.group(<AdmissionUpdate>{
-
+    this.editorForm = this.formBuilder.group(<Admission>{
       id: null,
       gpa: '',
       cgpa: '',
@@ -39,8 +47,13 @@ export class AdmissionUpdateTaskCreatorDialog implements OnInit {
       // standing: AcademicStanding.TBD,
       // status: AdmissionStatus.ADMITTED,
     });
+    if (this.edit) this.editorForm.patchValue(this._admission);
+  }
 
-
+  submit(admission: Admission, isValid: boolean) {
+    console.log(JSON.stringify(admission));
+    this.store.dispatch(this.actions.updateAdmission(admission));
+    this.dialog.close();
   }
 
   /* update(offeringApplication: OfferingApplication, isValid: boolean) {

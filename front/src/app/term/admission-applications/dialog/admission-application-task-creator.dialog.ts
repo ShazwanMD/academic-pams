@@ -1,3 +1,4 @@
+import { Section } from '../../sections/section.interface';
 
 import { Actor } from './../../../identity/actor.interface';
 import { StudyCenter } from './../../../setup/study-centers/study-center.interface';
@@ -32,16 +33,15 @@ export class AdmissionApplicationTaskCreatorDialog implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private vcf: ViewContainerRef,
-    private dialog: MdDialogRef<AdmissionApplicationTaskCreatorDialog>)
-  // private dialog: MdDialogRef<AdmissionApplicationTaskCreatorDialog>)
-    {
+    private dialog: MdDialogRef<AdmissionApplicationTaskCreatorDialog>)  {
   }
 
   set admissionApplication(value: AdmissionApplication) {
     this._admissionApplication = value;
     this.create = true;
   }
-  ngOnInit(): void {
+
+    ngOnInit(): void {
     this.createForm = this.formBuilder.group(<AdmissionApplication>{
       id: null,
       referenceNo: '',
@@ -63,10 +63,4 @@ export class AdmissionApplicationTaskCreatorDialog implements OnInit {
     this.store.dispatch (this.actions.saveAdmissionApplication(admissionApplication));
     this.dialog.close();
   }
-  
-  // save(admissionApplication: AdmissionApplication, isValid: boolean) {
-  //   this.store.dispatch(this.actions.startAdmissionApplicationTask(admissionApplication));
-  //   this.dialog.close();
-  // }
-
 }

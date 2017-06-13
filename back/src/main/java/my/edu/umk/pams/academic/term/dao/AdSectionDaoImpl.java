@@ -725,7 +725,7 @@ public class AdSectionDaoImpl extends GenericDaoSupport<Long, AdSection> impleme
 	public void removeAppointment(AdSection section, AdAppointment appointment, AdUser user) {
 		Validate.notNull(user, "User cannot be null");
 		Session session = sessionFactory.getCurrentSession();
-		session.delete(section);
+		session.delete(appointment);
 		
 	}
 }

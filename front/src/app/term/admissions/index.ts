@@ -1,3 +1,9 @@
+import {IdentityModule} from '../../identity/index';
+import {SetupModule} from '../../setup/index';
+import {AcademicSessionSubModule} from '../../planner/academic-sessions/index';
+import {CohortSubModule} from '../../planner/cohorts/index';
+import {AcademicStandingSelectComponent} from './component/academic-standing-select.component';
+import {AdmissionStatusSelectComponent} from './component/admission-status-select.component';
 import '@ngrx/core/add/operator/select';
 import { appRoutes, appRoutingProviders } from '../../app.routes';
 import { NgModule, ModuleWithProviders } from '@angular/core';
@@ -28,6 +34,11 @@ import {AdmissionApplicationActions} from "./admission-application.action";
     BrowserModule,
     ReactiveFormsModule,
     CovalentCoreModule.forRoot(),
+    CohortSubModule.forRoot(),
+    AcademicSessionSubModule.forRoot(),
+    SetupModule.forRoot(),
+        IdentityModule.forRoot(),
+
     EffectsModule.run(AdmissionEffects),
   ],
   declarations: [
@@ -39,6 +50,8 @@ import {AdmissionApplicationActions} from "./admission-application.action";
     AdmissionListComponent,
     AdmissionComponent,
     AdmissionSelectComponent,
+    AdmissionStatusSelectComponent,
+    AcademicStandingSelectComponent,
     
     //dialog
     AdmissionCreateTaskCreatorDialog,

@@ -16,7 +16,7 @@ export interface Admission extends MetaObject {
   creditEarned: '';
   cohort: Cohort;
   student: Student;
-  session: AcademicSession;
+  academicSession: AcademicSession;
   standing: AcademicStanding;
   status: AdmissionStatus;
   studyCenter: StudyCenter;

@@ -328,7 +328,7 @@
                                 <srcFile>src/test/resources/data/AD_ADMN_APLN.sql</srcFile>
                                 <srcFile>src/test/resources/data/AD_ADMN.sql</srcFile>
                                 <srcFile>src/test/resources/data/AD_ENMT_APLN.sql</srcFile>
-                                <srcFile>src/test/resources/data/AD_ENMT_APPL_ITEM.sql</srcFile>
+                                <srcFile>src/test/resources/data/AD_ENMT_APLN_ITEM.sql</srcFile>
                                 <srcFile>src/test/resources/data/AD_ENMT.sql</srcFile>
                                  <srcFile>src/test/resources/data/AD_ASMT.sql</srcFile>
 

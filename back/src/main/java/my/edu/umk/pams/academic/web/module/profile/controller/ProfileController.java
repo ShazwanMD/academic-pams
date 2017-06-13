@@ -79,6 +79,8 @@ public class ProfileController {
         address.setAddress3(vo.getAddress3());
         address.setPostCode(vo.getPostcode());
         address.setType(AdAddressType.get(vo.getAddressType().ordinal()));
+        address.setStateCode(commonService.findStateCodeById(vo.getStateCode().getId()));
+        address.setCountryCode(commonService.findCountryCodeById(vo.getCountryCode().getId()));
         address.setStudent(student);
         profileService.addAddress(student, address);
         return new ResponseEntity<String>("Success", HttpStatus.OK);
@@ -94,6 +96,8 @@ public class ProfileController {
             address.setAddress2(vo.getAddress2());
             address.setAddress3(vo.getAddress3());
             address.setPostCode(vo.getPostcode());
+            address.setStateCode(commonService.findStateCodeById(vo.getStateCode().getId()));
+            address.setCountryCode(commonService.findCountryCodeById(vo.getCountryCode().getId()));
             profileService.updateAddress(student, address);
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
@@ -260,14 +264,17 @@ public class ProfileController {
     @RequestMapping(value = "/students/{matricNo}", method = RequestMethod.PUT)
     public ResponseEntity<String> updateStudent(@PathVariable String matricNo, @RequestBody Student vo) {
         dummyLogin();
-
         AdStudent student = profileService.findStudentById(vo.getId());
         student.setName(vo.getName());
         student.setPhone(vo.getPhone());
         student.setEmail(vo.getEmail());
         student.setMobile(vo.getMobile());
         student.setFax(vo.getFax());
+        student.setStudyMode(commonService.findStudyModeById(vo.getStudyMode().getId()));
+        student.setCohort(plannerService.findCohortById(vo.getCohort().getId()));
         profileService.updateStudent(student);
+        LOG.debug("StudyMode:{}",student.getStudyMode().getDescription());
+        LOG.debug("Cohort Student Baru:{}", student.getCohort().getCode());
         return new ResponseEntity<String>("Success", HttpStatus.OK);
 
     }

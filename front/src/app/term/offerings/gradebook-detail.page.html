@@ -7,7 +7,7 @@
     <div layout="column" layout-gt-md="row" class="inset">
       <div flex-gt-md="70">
 
-        <md-card>
+        <!--<md-card>
           <md-card-content>
             <td-data-table
               [data]="gradebookMatrices$ | async "
@@ -23,7 +23,11 @@
               </template>
             </td-data-table>
           </md-card-content>
-        </md-card>
+        </md-card>-->
+
+        <pams-gradebook
+        [gradebookMatrices]="gradebookMatrices$ | async">
+        </pams-gradebook>
 
       </div>
 

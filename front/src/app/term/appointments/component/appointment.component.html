@@ -1,36 +1,72 @@
 <!-- Basic Card -->
-<md-card>
-  <md-card-title>APPOINTMENTS</md-card-title>
-  <md-card-subtitle>List of appoinment</md-card-subtitle>
-  <md-divider></md-divider>
-  <md-card-content>
-  <!--Tab Section Here-->
-  <md-tab-group>
-  <md-tab label="Staff Detail"><br>
+<md-card> <md-card-title>APPOINTMENTS</md-card-title>
+<md-card-subtitle>Section {{appointment?.section?.code}}</md-card-subtitle>
+<md-divider></md-divider> 
+<md-card-content>
+<!--Tab Section Here--> <md-tab-group> <md-tab
+	label="Staff Detail">
+<br>
+<!-- <div layout="column" class="inset">
+	<div layout="row" class="pad-bottom">
+	<span flex="20">
+	<img src=".\..\assets\ico\01001A.jpg" width="120" height="150"/>
+	<img [src]= "'./../assets/ico/'+{{appointment?.staff?.identityNo}}+'.jpg'" width="120" height="150"/>
+	
+	</span>
+	</div>
+	<div layout="row" class="pad-bottom">
+	<span flex="20">Name</span> <span>{{appointment?.staff?.name}}</span>
+	</div>
+	<div layout="row" class="pad-bottom">
+		<span flex="20">ID</span> <span>{{appointment?.staff?.identityNo}}</span>
+	</div>
+	<div layout="row" class="pad-bottom">
+		<span flex="20">Email</span> <span>{{appointment?.staff?.email}}</span>
+	</div>
+		<div layout="row" class="pad-bottom">
+		<span flex="20">Status</span> <span>{{appointment?.appointmentStatus}}</span>
+	</div>
+</div> -->
 
-    <div>Name:{{appointment?.staff?.name}} </div><br>
-    <div>ID:{{appointment?.staff?.identityNo}} </div><br>
-    <div>Email:{{appointment?.staff?.email}} </div><br>
-    
-   
+ <div layout="column" layout-gt-md="row" class="insert">
+              <div flex-gt-md="20">
+               <img src=".\..\assets\ico\01001A.jpg" width="120" height="150"/>
+              </div>
+
+              <div flex-gt-md="40">
+                <b>Name</b> : {{appointment?.staff?.name}}<br/><br/>
+                <b>Staff ID </b> : {{appointment?.staff?.identityNo}}<br/><br/>
+                <b>Email</b> : {{appointment?.staff?.email}}<br/><br/>
+                <b>Status</b> : {{appointment?.appointmentStatus}}<br/><br/>
+                
+              </div>
+
+              <div flex-gt-md="40">
+                <b></b>  <br/><br/>
+                <b></b>  <br/><br/>
+                <b></b> <br/><br/>
+                <b></b>  <br/><br/>
+                <b></b>  <br/><br/>
+              </div>
+
+            </div>
+
 <!-- <button md-button  color="accent" class="text-upper" >UPDATE</button> -->
-  </md-tab>
-
-  <md-tab label="Section Information">
-  
-    <div>Code:{{appointment?.section?.code}} </div><br>
-    <div>Session:{{appointment?.section?.session?.code}} </div><br>
-   <div>Course Offer:{{appointment?.section?.offering?.code}} </div><br>
-   <div>Title:{{appointment?.section?.offering?.course?.title}} </div><br>
-    <div>Faculty:{{appointment?.section?.offering?.course?.faculty?.description}} </div><br>
-   <div>Course Offer:{{appointment?.section?.offering?.program?.code}} </div><br> 
-   
+</md-tab> <md-tab label="Section Information">
+<div layout="column" class="inset">
+	<div layout="row" class="pad-bottom">
+		<span flex="20">Code</span> <span>{{appointment?.section?.code}}
+		</span>
+	</div>
+	<div layout="row" class="pad-bottom">
+		<span flex="20">Course Offer</span> <span>{{appointment?.section?.offering?.code}}</span>
+	</div>
+	<div layout="row" class="pad-bottom">
+		<span flex="20">Faculty</span> <span>{{appointment?.section?.offering?.course?.faculty?.description}}</span>
+	</div>
+	<div layout="row" class="pad-bottom">
+		<span flex="20">Program</span> <span>{{appointment?.section?.offering?.program?.code}}</span>
+	</div>
+</div>
 <!-- <button md-button  color="accent" class="text-upper" >UPDATE</button> -->
-  </md-tab>
-  </md-tab-group>
-
-  </md-card-content>
-  <md-divider></md-divider>
-
-
-
+</md-tab> </md-tab-group> </md-card-content> <md-divider></md-divider>

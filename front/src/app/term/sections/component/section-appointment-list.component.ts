@@ -1,3 +1,4 @@
+import {FormBuilder} from '@angular/forms';
 import { AppointmentActions } from './../../appointments/appointment.action';
 import { SectionActions } from './../section.action';
 import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, ViewContainerRef, OnInit} from '@angular/core';
@@ -19,12 +20,13 @@ export class SectionAppointmentListComponent implements OnInit {
 
 
     @Input() section: Section;
-    @Input() appointment: Appointment;
     @Input() appointments: Appointment[];
     @Output() view = new EventEmitter<Appointment>();
 
-    private creatorDialogRef: MdDialogRef<AppointmentEditorDialog>;
+
     private selectedRows: Appointment[];
+    private creatorDialogRef: MdDialogRef<AppointmentEditorDialog>;
+
     private columns: any[] = [
         { name: 'id', label: 'Id' },
         { name: 'staff.name', label: 'Staff' },
@@ -37,13 +39,14 @@ export class SectionAppointmentListComponent implements OnInit {
         private route: ActivatedRoute,
         private actions: AppointmentActions,
         private store: Store<TermModuleState>,
+         private formBuilder: FormBuilder,
         private vcf: ViewContainerRef,
         private dialog: MdDialog) {
     }
 
     ngOnInit(): void {
-        // this.selectedRows = this.appointments.filter(value => value.selected);
-    }
+        this.selectedRows = this.appointments.filter(value => value.selected);
+  }
 
     filter(): void {
     }
@@ -93,6 +96,8 @@ export class SectionAppointmentListComponent implements OnInit {
     removeAppointment(appointment: Appointment): void {
         console.log("removeAppointment:{}", appointment)
         this.store.dispatch(this.actions.removeAppointment(this.section, appointment))
+
+         console.log("deleteAppoiment:{}", appointment)
 
     }
 }

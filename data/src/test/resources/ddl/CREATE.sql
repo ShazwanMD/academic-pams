@@ -416,9 +416,9 @@
         M_TS timestamp,
         M_ID int8,
         M_ST int4,
+        STATUS int4 not null,
         TITLE_EN varchar(255) not null,
         TITLE_MS varchar(255) not null,
-        STATUS int4 not null,
         FACULTY_ID int8 not null,
         primary key (ID)
     );
@@ -655,7 +655,7 @@
         primary key (ID)
     );
 
-    create table AD_ENMT_APPL_ITEM (
+    create table AD_ENMT_APLN_ITEM (
         ID int8 not null,
         ACTION int4,
         C_TS timestamp,
@@ -1675,13 +1675,13 @@
         foreign key (SESSION_ID)
         references AD_ACDM_SESN;
 
-    alter table AD_ENMT_APPL_ITEM
-        add constraint FK4878A29478AB75B1
+    alter table AD_ENMT_APLN_ITEM
+        add constraint FK784966CE78AB75B1
         foreign key (APPLICATION_ID)
         references AD_ENMT_APLN;
 
-    alter table AD_ENMT_APPL_ITEM
-        add constraint FK4878A29441D87DF5
+    alter table AD_ENMT_APLN_ITEM
+        add constraint FK784966CE41D87DF5
         foreign key (SECTION_ID)
         references AD_SCTN;
 
@@ -2033,7 +2033,7 @@
 
     create sequence SQ_AD_ENMT_APLN;
 
-    create sequence SQ_AD_ENMT_APPL_ITEM;
+    create sequence SQ_AD_ENMT_APLN_ITEM;
 
     create sequence SQ_AD_ETNY_CODE;
 

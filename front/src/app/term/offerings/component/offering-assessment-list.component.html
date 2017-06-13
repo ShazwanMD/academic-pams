@@ -45,7 +45,8 @@
             <md-icon>more_vert</md-icon>
           </button>
           <md-menu x-position="before" #menu1="mdMenu">
-            <button md-menu-item [routerLink]="['/term/assessments', row['id']]">View assesssment</button>
+            <button md-menu-item [routerLink]="['/term/assessments', offering.canonicalCode, row['id']]">View assesssment</button>
+            <!--[routerLink]="['/term/offerings', offering.canonicalCode, 'assessment-detail']"-->
             <button md-menu-item (click)="updateAssessment(row, true)">Update assesssment</button>
             <button md-menu-item (click)="deleteAssessment(row)">Delete assesssment</button>
           </md-menu>

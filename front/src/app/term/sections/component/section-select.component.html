@@ -1,5 +1,6 @@
 <md-select [placeholder]="placeholder"
            (change)="selectChangeEvent($event.value)" flex>
+
   <md-option *ngFor="let section of sections$ | async" [value]="section">
     {{section.code}} Section No: {{section.ordinal}}
   </md-option>

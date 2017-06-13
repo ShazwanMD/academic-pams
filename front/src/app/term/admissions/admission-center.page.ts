@@ -17,7 +17,7 @@ export class AdmissionCenterPage implements OnInit {
 
   private ADMISSIONS: string[] = "termModuleState.admissions".split(".");
   private admissions$: Observable<Admission[]>;
-  private createDialogRef: MdDialogRef<AdmissionCreateTaskCreatorDialog>;
+  private creatorDialogRef: MdDialogRef<AdmissionCreateTaskCreatorDialog>;
   private columns: any[] = [
     { gpa: 'gpa', label: 'GPA' },
     { gpa: 'cgpa', label: 'CGPA' },
@@ -26,7 +26,7 @@ export class AdmissionCenterPage implements OnInit {
     { gpa: 'standing', label: 'Academic Standing' },
     { gpa: 'status', label: 'Admission Status' },
     { gpa: 'cohort.code', label: 'Cohort' },
-    { gpa: 'session.code', label: 'Program' },
+    { gpa: 'session.code', label: 'AcademicSession' },
     { gpa: 'student.identityNo', label: 'Student' },
     { gpa: 'studyCenter.code', label: 'Study Center' },
     { name: 'action', label: '' }
@@ -59,11 +59,11 @@ export class AdmissionCenterPage implements OnInit {
     config.width = '65%';
     config.height = '85%';
     config.position = { top: '0px' };
-    this.createDialogRef = this.dialog.open(AdmissionCreateTaskCreatorDialog, config);
-    if (id) this.createDialogRef.componentInstance.admission = id;
+    this.creatorDialogRef = this.dialog.open(AdmissionCreateTaskCreatorDialog, config);
+    if (id) this.creatorDialogRef.componentInstance.admission = id;
 
     //set
-    this.createDialogRef.afterClosed().subscribe(res => {
+    this.creatorDialogRef.afterClosed().subscribe(res => {
       console.log("close dialog");
     });
   }

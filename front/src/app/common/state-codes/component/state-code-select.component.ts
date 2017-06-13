@@ -1,11 +1,11 @@
-import {StateCode} from './../state-code.interface';
-import {Observable} from 'rxjs/Observable';
-import {Component, Input, OnInit} from '@angular/core';
+import { StateCode } from './../state-code.interface';
+import { Observable } from 'rxjs/Observable';
+import { Component, Input, OnInit } from '@angular/core';
 
-import {Store} from '@ngrx/store';
-import {FormControl} from '@angular/forms';
-import {CommonActions} from './../../gender-codes/common.action';
-import {CommonModuleState} from './../../index';
+import { Store } from '@ngrx/store';
+import { FormControl } from '@angular/forms';
+import { CommonActions } from './../../gender-codes/common.action';
+import { CommonModuleState } from './../../index';
 
 
 @Component({
@@ -15,14 +15,15 @@ import {CommonModuleState} from './../../index';
 
 export class StateCodeSelectComponent implements OnInit {
 
-  private STATE_CODE: string[] = "commonModuleState.stateCodes".split(".");
   @Input() placeholder: string;
   @Input() innerFormControl: FormControl;
   stateCodes$: Observable<StateCode[]>;
+  private STATE_CODES: string[] = "commonModuleState.stateCodes".split(".");
+
 
   constructor(private store: Store<CommonModuleState>,
-              private actions: CommonActions) {
-    this.stateCodes$ = this.store.select(...this.STATE_CODE);
+    private actions: CommonActions) {
+    this.stateCodes$ = this.store.select(...this.STATE_CODES);
 
   }
 
@@ -31,6 +32,6 @@ export class StateCodeSelectComponent implements OnInit {
   }
 
   selectChangeEvent(event: StateCode) {
-    this.innerFormControl.setValue(event, {emitEvent: false});
+    this.innerFormControl.setValue(event, { emitEvent: false });
   }
 }

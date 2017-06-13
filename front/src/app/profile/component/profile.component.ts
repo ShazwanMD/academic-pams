@@ -1,3 +1,4 @@
+import { StateCode } from './../../common/state-codes/state-code.interface';
 import { AddressTypeSelectComponent } from './address-type-select.component';
 import { AddressType } from "../address-type.enum";
 import { ActivatedRoute } from '@angular/router';
@@ -31,7 +32,7 @@ import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 })
 
 export class ProfileComponent implements OnInit {
-
+  private stateCode: StateCode;
   //Input Param for Interface
   @Input() student: Student;
   @Input() addressess: Address[];
@@ -62,6 +63,8 @@ export class ProfileComponent implements OnInit {
     { name: 'address2', label: 'Address 2' },
     { name: 'address3', label: 'City' },
     { name: 'postcode', label: 'Postcode' },
+    { name: 'stateCode.description', label: 'State' },
+    { name: 'countryCode.description', label: 'Country' },
     { name: 'action', label: 'Action' }
   ];
 
@@ -96,28 +99,28 @@ export class ProfileComponent implements OnInit {
     private vcf: ViewContainerRef,
     private store: Store<ProfileModuleState>,
     private formBuilder: FormBuilder,
-    private dialog: MdDialog) {}
+    private dialog: MdDialog) { }
 
-    ngOnInit(): void {
-      this.route.params.subscribe((params: { identityNo: string }) => {
-        let identityNo: string = params.identityNo;
-        this.store.dispatch(this.actions.findStudentByIdentityNo(identityNo));
-      });
+  ngOnInit(): void {
+    this.route.params.subscribe((params: { identityNo: string }) => {
+      let identityNo: string = params.identityNo;
+      this.store.dispatch(this.actions.findStudentByIdentityNo(identityNo));
+    });
 
-    }
+  }
 
-    goBack(route: string): void {
-      this.router.navigate(['/profiles']);
-    }
+  goBack(route: string): void {
+    this.router.navigate(['/profiles']);
+  }
 
   /*=========================================================================================*/
   /*STUDENT INFORMATION*/
   /*=========================================================================================*/
-  
+
   //EDIT STUDENT INFORMATION
   editStudent(): void {
-      this.showDialog(this.student)
-    }
+    this.showDialog(this.student)
+  }
 
   private showDialog(student: Student): void {
     console.log("edit");
@@ -133,173 +136,173 @@ export class ProfileComponent implements OnInit {
       console.log("close dialog");
     });
   }
-    
-    /*=========================================================================================*/
-    /*CONTACT*/
-    /*=========================================================================================*/
-    //ADD CONTACT DIALOG
-    addContactDialog(): void {
-      console.log("edit");
-      let config = new MdDialogConfig();
-      config.viewContainerRef = this.vcf;
-      config.role = 'dialog';
-      config.width = '70%';
-      config.height = '80%';
-      config.position = { top: '0px' };
-      this.contactCreatorDialogRef = this.dialog.open(ContactEditorDialog, config);
+
+  /*=========================================================================================*/
+  /*CONTACT*/
+  /*=========================================================================================*/
+  //ADD CONTACT DIALOG
+  addContactDialog(): void {
+    console.log("edit");
+    let config = new MdDialogConfig();
+    config.viewContainerRef = this.vcf;
+    config.role = 'dialog';
+    config.width = '70%';
+    config.height = '80%';
+    config.position = { top: '0px' };
+    this.contactCreatorDialogRef = this.dialog.open(ContactEditorDialog, config);
+    this.contactCreatorDialogRef.componentInstance.student = this.student;
+    this.contactCreatorDialogRef.afterClosed().subscribe(res => {
+    });
+  }
+
+  //EDIT CONTACT DIALOG
+  editContactDialog(contact: Contact, isValid: boolean): void {
+    let config = new MdDialogConfig();
+    config.viewContainerRef = this.vcf;
+    config.role = 'dialog';
+    config.width = '70%';
+    config.height = '80%';
+    config.position = { top: '0px' };
+    this.contactCreatorDialogRef = this.dialog.open(ContactEditorDialog, config);
+    if (isValid) {
+      this.contactCreatorDialogRef.componentInstance.contact = contact;
       this.contactCreatorDialogRef.componentInstance.student = this.student;
-      this.contactCreatorDialogRef.afterClosed().subscribe(res => {
-        console.log("close dialog");
-      });
     }
+    this.contactCreatorDialogRef.afterClosed().subscribe(res => {
+    });
+  }
 
-    //EDIT CONTACT DIALOG
-    editContactDialog(contact: Contact, isValid: boolean): void {
-      let config = new MdDialogConfig();
-      config.viewContainerRef = this.vcf;
-      config.role = 'dialog';
-      config.width = '70%';
-      config.height = '80%';
-      config.position = { top: '0px' };
-      this.contactCreatorDialogRef = this.dialog.open(ContactEditorDialog, config);
-      if(isValid) {
-        this.contactCreatorDialogRef.componentInstance.contact = contact;
-        this.contactCreatorDialogRef.componentInstance.student = this.student;
-      } 
+  //DELETE CONTACT
+  deleteContact(contact: Contact): void {
+    this.store.dispatch(this.actions.deleteContact(this.student, contact))
+    //console.log("ini->",contact);
+  }
+
+  /*=========================================================================================*/
+  /*ADDRESS*/
+  /*=========================================================================================*/
+  //ADD ADDRESS DIALOG
+  addAddressDialog(): void {
+    console.log("Ini utk Add Address student");
+    console.log(this.stateCode);
+    let config = new MdDialogConfig();
+    config.viewContainerRef = this.vcf;
+    config.role = 'dialog';
+    config.width = '70%';
+    config.height = '80%';
+    config.position = { top: '0px' };
+    this.addressCreatorDialogRef = this.dialog.open(AddressEditorDialog, config);
+    this.addressCreatorDialogRef.componentInstance.student = this.student;
     this.addressCreatorDialogRef.afterClosed().subscribe(res => {
-      });
-    }
+      console.log("close this dialog");
+    });
+  }
 
-    //DELETE CONTACT
-    deleteContact(contact: Contact): void {
-      this.store.dispatch(this.actions.deleteContact(this.student, contact))
-      //console.log("ini->",contact);
-    }
-
-    /*=========================================================================================*/
-    /*ADDRESS*/
-    /*=========================================================================================*/
-    //ADD ADDRESS DIALOG
-    addAddressDialog(): void {
-      console.log("Ini utk Add Address student");
-      let config = new MdDialogConfig();
-      config.viewContainerRef = this.vcf;
-      config.role = 'dialog';
-      config.width = '70%';
-      config.height = '80%';
-      config.position = { top: '0px' };
-      this.addressCreatorDialogRef = this.dialog.open(AddressEditorDialog, config);
+  //EDIT ADDRESS DIALOG
+  editAddressDialog(address: Address, isValid: boolean): void {
+    let config = new MdDialogConfig();
+    config.viewContainerRef = this.vcf;
+    config.role = 'dialog';
+    config.width = '70%';
+    config.height = '80%';
+    config.position = { top: '0px' };
+    this.addressCreatorDialogRef = this.dialog.open(AddressEditorDialog, config);
+    if (isValid) {
+      this.addressCreatorDialogRef.componentInstance.address = address;
       this.addressCreatorDialogRef.componentInstance.student = this.student;
-      this.addressCreatorDialogRef.afterClosed().subscribe(res => {
-        console.log("close this dialog");
-      });
     }
-
-    //EDIT ADDRESS DIALOG
-    editAddressDialog(address: Address, isValid: boolean): void {
-      let config = new MdDialogConfig();
-      config.viewContainerRef = this.vcf;
-      config.role = 'dialog';
-      config.width = '70%';
-      config.height = '80%';
-      config.position = { top: '0px' };
-      this.addressCreatorDialogRef = this.dialog.open(AddressEditorDialog, config);
-      if(isValid) {
-        this.addressCreatorDialogRef.componentInstance.address = address;
-        this.addressCreatorDialogRef.componentInstance.student = this.student;
-      } 
     this.addressCreatorDialogRef.afterClosed().subscribe(res => {
-      });
-    }
+    });
+  }
 
-    //DELETE ADDRESS
-    deleteAddress(contact: Contact): void {
+  //DELETE ADDRESS
+  deleteAddress(contact: Contact): void {
     this.store.dispatch(this.actions.deleteAddress(this.student, contact))
-    }
+  }
 
-    /*=========================================================================================*/
-    /*GUARANTOR*/
-    /*=========================================================================================*/
-    //ADD GUARANTOR DIALOG
-    addGuarantorDialog(): void {
-      //console.log("add");
-      let config = new MdDialogConfig();
-      config.viewContainerRef = this.vcf;
-      config.role = 'dialog';
-      config.width = '70%';
-      config.height = '80%';
-      config.position = { top: '0px' };
-      this.guarantorCreatorDialogRef = this.dialog.open(GuarantorEditorDialog, config);
-      this.guarantorCreatorDialogRef.componentInstance.student = this.student;
-      this.guarantorCreatorDialogRef.afterClosed().subscribe(res => {
-        //console.log("close dialog");
-      });
-    }
-
-    //EDIT GUARANTOR DIALOG
-    editGuarantorDialog(guarantor: Guarantor, isValid: boolean): void {
-      //console.log("Ini utk Edit Address student", student);
-      let config = new MdDialogConfig();
-      config.viewContainerRef = this.vcf;
-      config.role = 'dialog';
-      config.width = '70%';
-      config.height = '80%';
-      config.position = { top: '0px' };
-      this.guarantorCreatorDialogRef = this.dialog.open(GuarantorEditorDialog, config);
-      //console.log(isValid);
-      if(isValid) {
-        this.guarantorCreatorDialogRef.componentInstance.guarantor = guarantor;
-        //console.log(this.addressCreatorDialogRef.componentInstance);
-        this.guarantorCreatorDialogRef.componentInstance.student = this.student;
-      } 
+  /*=========================================================================================*/
+  /*GUARANTOR*/
+  /*=========================================================================================*/
+  //ADD GUARANTOR DIALOG
+  addGuarantorDialog(): void {
+    //console.log("add");
+    let config = new MdDialogConfig();
+    config.viewContainerRef = this.vcf;
+    config.role = 'dialog';
+    config.width = '70%';
+    config.height = '80%';
+    config.position = { top: '0px' };
+    this.guarantorCreatorDialogRef = this.dialog.open(GuarantorEditorDialog, config);
+    this.guarantorCreatorDialogRef.componentInstance.student = this.student;
     this.guarantorCreatorDialogRef.afterClosed().subscribe(res => {
-        //console.log("close this dialog");
-      });
-    }
+      //console.log("close dialog");
+    });
+  }
 
-    //DELETE GUARANTOR
-    deleteGuarantor(guarantor: Guarantor): void {
+  //EDIT GUARANTOR DIALOG
+  editGuarantorDialog(guarantor: Guarantor, isValid: boolean): void {
+    //console.log("Ini utk Edit Address student", student);
+    let config = new MdDialogConfig();
+    config.viewContainerRef = this.vcf;
+    config.role = 'dialog';
+    config.width = '70%';
+    config.height = '80%';
+    config.position = { top: '0px' };
+    this.guarantorCreatorDialogRef = this.dialog.open(GuarantorEditorDialog, config);
+    //console.log(isValid);
+    if (isValid) {
+      this.guarantorCreatorDialogRef.componentInstance.guarantor = guarantor;
+      //console.log(this.addressCreatorDialogRef.componentInstance);
+      this.guarantorCreatorDialogRef.componentInstance.student = this.student;
+    }
+    this.guarantorCreatorDialogRef.afterClosed().subscribe(res => {
+      //console.log("close this dialog");
+    });
+  }
+
+  //DELETE GUARANTOR
+  deleteGuarantor(guarantor: Guarantor): void {
     this.store.dispatch(this.actions.deleteGuarantor(this.student, guarantor))
-    }
+  }
 
-    /*=========================================================================================*/
-    /*GUARDIAN*/
-    /*=========================================================================================*/
-    //ADD GUARDIAN DIALOG
-    addGuardianDialog(): void {
-      console.log("addGuardian");
-      let config = new MdDialogConfig();
-      config.viewContainerRef = this.vcf;
-      config.role = 'dialog';
-      config.width = '70%';
-      config.height = '80%';
-      config.position = { top: '0px' };
-      this.guardianCreatorDialogRef = this.dialog.open(GuardianEditorDialog, config);
-      this.guardianCreatorDialogRef.componentInstance.student = this.student;
-      this.guardianCreatorDialogRef.afterClosed().subscribe(res => {
-        console.log("close dialog");
-      });
-    }
-
-    //EDIT GUARDIAN DIALOG
-    editGuardianDialog(guardian: Guardian, isValid: boolean): void {
-      let config = new MdDialogConfig();
-      config.viewContainerRef = this.vcf;
-      config.role = 'dialog';
-      config.width = '70%';
-      config.height = '80%';
-      config.position = { top: '0px' };
-      this.guardianCreatorDialogRef = this.dialog.open(GuardianEditorDialog, config);
-      if(isValid) {
-        this.guardianCreatorDialogRef.componentInstance.guardian = guardian;
-        this.guardianCreatorDialogRef.componentInstance.student = this.student;
-      } 
+  /*=========================================================================================*/
+  /*GUARDIAN*/
+  /*=========================================================================================*/
+  //ADD GUARDIAN DIALOG
+  addGuardianDialog(): void {
+    console.log("addGuardian");
+    let config = new MdDialogConfig();
+    config.viewContainerRef = this.vcf;
+    config.role = 'dialog';
+    config.width = '70%';
+    config.height = '80%';
+    config.position = { top: '0px' };
+    this.guardianCreatorDialogRef = this.dialog.open(GuardianEditorDialog, config);
+    this.guardianCreatorDialogRef.componentInstance.student = this.student;
     this.guardianCreatorDialogRef.afterClosed().subscribe(res => {
-      });
-    }
+      console.log("close dialog");
+    });
+  }
 
-    //DELETE GUARDIAN
-    deleteGuardian(guardian: Guardian): void {
-    this.store.dispatch(this.actions.deleteGuardian(this.student, guardian))
+  //EDIT GUARDIAN DIALOG
+  editGuardianDialog(guardian: Guardian, isValid: boolean): void {
+    let config = new MdDialogConfig();
+    config.viewContainerRef = this.vcf;
+    config.role = 'dialog';
+    config.width = '70%';
+    config.height = '80%';
+    config.position = { top: '0px' };
+    this.guardianCreatorDialogRef = this.dialog.open(GuardianEditorDialog, config);
+    if (isValid) {
+      this.guardianCreatorDialogRef.componentInstance.guardian = guardian;
+      this.guardianCreatorDialogRef.componentInstance.student = this.student;
     }
+    this.guardianCreatorDialogRef.afterClosed().subscribe(res => {
+    });
+  }
+
+  //DELETE GUARDIAN
+  deleteGuardian(guardian: Guardian): void {
+    this.store.dispatch(this.actions.deleteGuardian(this.student, guardian))
+  }
 }

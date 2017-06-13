@@ -6,6 +6,7 @@ import {CommonService} from '../../../services';
 import {Store} from "@ngrx/store";
 import {Observable} from "rxjs";
 import {Enrollment} from "./enrollment.interface";
+import {Appointment} from "../appointments/appointment.interface";
 import {EnrollmentActions} from "./enrollment.action";
 import {TermModuleState} from "../index";
 import {MdDialog, MdDialogConfig, MdDialogRef} from "@angular/material";
@@ -19,7 +20,9 @@ import {EnrollmentApplicationTaskCreatorDialog} from "../enrollment-applications
 export class EnrollmentDetailPage implements OnInit {
 
     private ENROLLMENT: string[] = "termModuleState.enrollment".split(".");
+    private APPOINTMENT: string[] = "termModuleState.appointment".split(".");
     private enrollment$: Observable<Enrollment>;
+    private appointment$: Observable<Appointment>;
     private creatorDialogRef: MdDialogRef<EnrollmentApplicationTaskCreatorDialog>;
 
     constructor(private router: Router,
@@ -30,6 +33,7 @@ export class EnrollmentDetailPage implements OnInit {
         private dialog: MdDialog) {
 
         this.enrollment$ = this.store.select(...this.ENROLLMENT);
+         this.appointment$ = this.store.select(...this.APPOINTMENT);
     }
 
     showDialog(): void {

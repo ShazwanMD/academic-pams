@@ -1,6 +1,7 @@
+import { AssignedAdmissionApplicationTaskListComponent } from './component/assigned-admission-application-task-list.component';
+import { PooledAdmissionApplicationTaskListComponent } from './component/pooled-admission-application-task-list.component';
 import { AdmissionApplicationTaskEditorDialog } from './dialog/admission-application-task-editor.dialog';
 import { AdmissionApplicationActionComponent } from './component/admission-application-action.component';
-import { AdmissionApplicationDetailPage } from "./admission-application-detail.page";
 import { AdmissionApplicationComponent } from "./component/admission-application.component";
 import { AdmissionApplicationListComponent } from "./component/admission-application-list.component";
 import '@ngrx/core/add/operator/select';
@@ -28,6 +29,7 @@ import { AdmissionApplicationTaskStatusComponent } from "./component/admission-a
 import { SectionSubModule } from "../sections/index";
 import { AdmissionApplicationCenterPage } from "./admission-application-center.page";
 import { IdentityModule } from "../../identity/index";
+import { StudentAdmissionApplicationCenterPage } from "./student-admission-application-center.page";
 
 @NgModule({
   imports: [
@@ -48,7 +50,7 @@ import { IdentityModule } from "../../identity/index";
     // page
     AdmissionApplicationTaskViewPage,
     AdmissionApplicationCenterPage,
-    AdmissionApplicationDetailPage,
+    StudentAdmissionApplicationCenterPage,
 
     // component
     AdmissionApplicationTaskWorkflowPanel,
@@ -58,6 +60,9 @@ import { IdentityModule } from "../../identity/index";
     AdmissionApplicationListComponent,
     AdmissionApplicationComponent,
     AdmissionApplicationActionComponent,
+    AssignedAdmissionApplicationTaskListComponent,
+    PooledAdmissionApplicationTaskListComponent,
+    
 
     //dialog
     AdmissionApplicationTaskCreatorDialog,

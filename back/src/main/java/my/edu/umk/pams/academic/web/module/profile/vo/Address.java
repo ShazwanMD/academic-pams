@@ -2,6 +2,9 @@ package my.edu.umk.pams.academic.web.module.profile.vo;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+import my.edu.umk.pams.academic.web.module.common.vo.CountryCode;
+import my.edu.umk.pams.academic.web.module.common.vo.StateCode;
 import my.edu.umk.pams.academic.web.module.core.vo.MetaObject;
 import my.edu.umk.pams.academic.web.module.identity.vo.Student;
 
@@ -18,8 +21,27 @@ public class Address extends MetaObject{
     private String address3;
     private String postcode;
     private AddressType addressType;
+    private StateCode stateCode;
+    private CountryCode countryCode;
     
-    public Long getId() {
+    
+    public CountryCode getCountryCode() {
+		return countryCode;
+	}
+
+	public void setCountryCode(CountryCode countryCode) {
+		this.countryCode = countryCode;
+	}
+
+	public StateCode getStateCode() {
+		return stateCode;
+	}
+
+	public void setStateCode(StateCode stateCode) {
+		this.stateCode = stateCode;
+	}
+
+	public Long getId() {
         return id;
     }
 

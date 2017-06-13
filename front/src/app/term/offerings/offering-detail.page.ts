@@ -68,6 +68,10 @@ export class OfferingDetailPage implements OnInit {
     });
   }
 
+    filter(): void {
+
+  }
+
   goBack(route: string): void {
     this.router.navigate(['/offerings']);
   }

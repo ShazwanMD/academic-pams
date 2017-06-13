@@ -1,3 +1,5 @@
+import { CountryCode } from './../../common/country-codes/country-code.interface';
+import { StateCode } from './../../common/state-codes/state-code.interface';
 import { Address } from './../address.interface';
 import {Component, ViewContainerRef, OnInit, AfterViewInit} from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
@@ -21,6 +23,7 @@ export class AddressEditorDialog implements OnInit {
   private edit: boolean = false;
   private _student: Student;
   private _address: Address;
+  private stateCode: StateCode;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -46,10 +49,12 @@ export class AddressEditorDialog implements OnInit {
       address1: '',
       address2: '',
       address3: '',
-      postcode: ''
+      postcode: '',
+      stateCode: <StateCode>{},
+      countryCode: <CountryCode>{},
     });
     //console.log(this._address, this._student)
-    if (this.edit) this.editorForm.patchValue(this._address);
+     if (this.edit) this.editorForm.patchValue(this._address);
   }
 
   submit(address: Address, isValid: boolean) {

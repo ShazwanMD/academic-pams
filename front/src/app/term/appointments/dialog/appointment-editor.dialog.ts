@@ -14,7 +14,6 @@ import { Appointment } from "../appointment.interface";
 import { AppointmentStatus } from "../appointment-status.enum";
 import { Router, ActivatedRoute } from '@angular/router';
 
-
 @Component( {
     selector: 'pams-appointment-editor',
     templateUrl: './appointment-editor.dialog.html',
@@ -54,8 +53,8 @@ export class AppointmentEditorDialog implements OnInit {
             section: <Section>{},
             course: <Course>{},
             offering: <Offering>{},
-            appointmentStatus: <AppointmentStatus>{},
-            // appointmentStatus: AppointmentStatus.NEW
+            //appointmentStatus: <AppointmentStatus>{},
+            appointmentStatus: AppointmentStatus.CONFIRMED
         } );
 
         // set offering by default

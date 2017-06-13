@@ -195,7 +195,7 @@ public class PlannerController {
 		return new ResponseEntity<String>("Success", HttpStatus.OK);
 	}	
 
-	@RequestMapping(value = "/faculties/{code}/update", method = RequestMethod.PUT)
+	@RequestMapping(value = "/faculties/{code}", method = RequestMethod.PUT)
 	public ResponseEntity<String> updateFaculty(@PathVariable String code, @RequestBody Faculty vo) {
 			dummyLogin();
 			LOG.debug("faculty code:{}", code);
@@ -207,7 +207,6 @@ public class PlannerController {
 			plannerService.updateFaculty(faculty);
 			return new ResponseEntity<String>("Success", HttpStatus.OK);
 		}
-	
 
 	@RequestMapping(value = "/faculties/{code}/activate", method = RequestMethod.GET)
 	public ResponseEntity<String> activateFacultiy(@PathVariable String code) {

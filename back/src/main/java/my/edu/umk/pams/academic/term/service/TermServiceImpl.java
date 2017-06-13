@@ -1066,7 +1066,7 @@ public class TermServiceImpl implements TermService {
 
         AdEnrollment enrollment = findEnrollmentBySectionAndStudent(section, student);
         enrollment.setStatus(AdEnrollmentStatus.WITHDRAWN);
-        updateEnrollment(enrollment);
+        updateEnrollment(section,enrollment);
 
         AdStudyCenter studyCenter = admission.getStudyCenter();
         AdCohort cohort = student.getCohort();
@@ -1080,11 +1080,19 @@ public class TermServiceImpl implements TermService {
         sessionFactory.getCurrentSession().flush();
     }
 
-    @Override
+   /* @Override
     public void updateEnrollment(AdEnrollment enrollment) {
         enrollmentDao.update(enrollment, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
+    }*/
+    
+    //update enrollment by section
+    @Override
+    public void updateEnrollment(AdSection section, AdEnrollment enrollment) {
+    	enrollmentDao.update(enrollment, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
     }
+
 
     @Override
     public void deleteEnrollment(AdEnrollment enrollment) {
@@ -1266,6 +1274,7 @@ public class TermServiceImpl implements TermService {
         sessionFactory.getCurrentSession().flush();
     }
 
+    //update appointment by section
     @Override
     public void updateAppointment(AdSection section, AdAppointment appointment) {
         appointmentDao.update(appointment, securityService.getCurrentUser());
@@ -1525,6 +1534,7 @@ public class TermServiceImpl implements TermService {
         map.put(WorkflowConstants.CANCEL_DECISION, false);
         return map;
     }
-
+    
+   
 	
 }

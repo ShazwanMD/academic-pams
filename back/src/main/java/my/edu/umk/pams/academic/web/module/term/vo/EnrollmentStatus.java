@@ -5,24 +5,10 @@ package my.edu.umk.pams.academic.web.module.term.vo;
  */
 public enum EnrollmentStatus {
 
-	NEW("Baru"), // 0
-	WAIT_LISTED("Dalam Proses"), // 1
-	CONFIRMED("Sah"), // 2
-	WITHDRAWN("Tangguh"); // 3
-
-	private String description;
-
-	EnrollmentStatus(String description) {
-		this.description = description;
-	}
-
-	public String getEnrollmentStatus() {
-		return description;
-	}
-
-	public void setEnrollmentStatus(String description) {
-		this.description = description;
-	}
+	NEW, // 0-baru
+	WAIT_LISTED, // 1-dalam proses
+	CONFIRMED, // 2-sah
+	WITHDRAWN; // 3-tangguh
 
 	public static EnrollmentStatus get(int index) {
 		return values()[index];

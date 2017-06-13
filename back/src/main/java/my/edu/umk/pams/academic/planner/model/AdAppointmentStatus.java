@@ -1,7 +1,5 @@
 package my.edu.umk.pams.academic.planner.model;
 
-import my.edu.umk.pams.academic.term.model.AdAssessmentCategory;
-
 /**
  * @author PAMS
  */

@@ -61,6 +61,9 @@ import { FacultyEditorDialog } from './dialog/faculty-editor.dialog';
     FacultySelectComponent,
     FacultyActionComponent,
     FacultyStatusComponent,
+     FacultyListComponent,
+    FacultyComponent,
+
   ],
 
   entryComponents: [

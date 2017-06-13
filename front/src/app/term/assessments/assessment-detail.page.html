@@ -6,7 +6,30 @@
 <div md-content flex md-scroll-y>
 	<div layout="column" layout-gt-md="row" class="inset">
 		<div flex-gt-md="70">
-			<pams-assessment [assessment]="assessment$ | async"></pams-assessment>
+	<!--<pams-assessment [assessment]="assessment$ | async"></pams-assessment>-->
+
+    <md-card>
+        <md-card-title>List of Student</md-card-title>
+        <md-card-subtitle>Assessment</md-card-subtitle>
+        <md-divider></md-divider>
+        <md-card-content>
+            <td-data-table
+            [data]="gradebookMatrices$ | async "
+            [columns]="columns"
+            [sortBy]="summary"
+            [sortOrder]="ASC"
+            [sortable]="false"
+            [multiple]="true"
+            [selectable]="true" dense>
+            <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
+                <div layout="row">
+                <span flex>{{value}}</span>
+                </div>
+            </template>
+            </td-data-table>
+        </md-card-content>
+    </md-card>
+
 		</div> 
 		
  <div flex-gt-md="30">

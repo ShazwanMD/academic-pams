@@ -1,3 +1,4 @@
+import { Gradebook } from './gradebook.interface';
 import { GradebookMatrix } from './gradebook-matrix.interface';
 import { Student } from '../../identity/student.interface';
 import { Component, OnInit, ChangeDetectionStrategy, ViewContainerRef, Input, EventEmitter, Output } from '@angular/core';
@@ -17,21 +18,10 @@ import { Assessment } from "../assessments/assessment.interface";
 
 export class GradebookDetailPage implements OnInit {
 
-  num: Number;
-
-  getLoop() {
-    this.num = 3;
-    let a = [];
-    for (let i = 0; i < this.num; i++) {
-      var format = "label: 'Assessment ', name: 'gradebooks." + a.push(i) + ".score'";
-      console.log("-->", format);
-    }
-    return format;
-  }
-
-  @Input() assessments: Assessment;
+  //@Input() assessments: Assessment;
   @Input() enrollment: Enrollment;
   @Input() student: Student;
+  @Input() gradebooks: Gradebook;
   @Input() gradebookMatrices: GradebookMatrix;
   @Input() offerings: Offering;
 
@@ -45,7 +35,8 @@ export class GradebookDetailPage implements OnInit {
   private offering$: Observable<Offering>;
   private gradebookMatrices$: Observable<GradebookMatrix>;
 
-  constructor(private router: Router,
+  constructor(
+    private router: Router,
     private route: ActivatedRoute,
     private actions: OfferingActions,
     private store: Store<TermModuleState>,
@@ -55,25 +46,17 @@ export class GradebookDetailPage implements OnInit {
     this.assessments$ = this.store.select(...this.ASSESSMENTS);
     this.gradebookMatrices$ = this.store.select(...this.GRADEBOOK_MATRICES);
     this.enrollments$ = this.store.select(...this.ENROLLMENTS);
-  }
 
-  private columns: any[] =
-  [
-    { label: 'Student name', name: 'enrollment.admission.student.name' },
-    { label: 'FINAL', name: 'gradebooks.0.score' },
-    { label: 'QUIZ 1', name: 'gradebooks.1.score' },
-    { label: 'QUIZ 2', name: 'gradebooks.2.score' }
-  ];
+}
+
 
   ngOnInit(): void {
-    console.log(this.gradebookMatrices)
     this.route.params.subscribe((params: { canonicalCode: string }) => {
       let canonicalCode: string = params.canonicalCode;
       this.store.dispatch(this.actions.findOfferingByCanonicalCode(canonicalCode));
     });
 
     this.offering$.subscribe((offering: Offering) => {
-      console.log(offering);
       if (offering.canonicalCode) this.store.dispatch(this.actions.findGradebookMatricessByOffering(offering))
     });
   }
@@ -81,4 +64,6 @@ export class GradebookDetailPage implements OnInit {
   goBack(route: string): void {
     this.router.navigate(['/offerings', + this.offerings.canonicalCode]);
   }
+
+
 }

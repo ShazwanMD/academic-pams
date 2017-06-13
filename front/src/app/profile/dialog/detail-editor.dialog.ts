@@ -1,3 +1,4 @@
+import { StudyMode } from './../../common/study-modes/study-mode.interface';
 import { ProfileActions } from './../profile.action';
 import {ProfileModuleState} from "./../index";
 import { Student } from './../../identity/student.interface';
@@ -43,6 +44,7 @@ export class DetailEditorDialog implements OnInit {
       phone:'',
       mobile:'',
       fax:''
+  
     });
 
     if (this.edit) this.editorForm.patchValue(this._student);
@@ -52,6 +54,6 @@ export class DetailEditorDialog implements OnInit {
     console.log(student);
     //console.log("student email: " + student.email);
     this.store.dispatch(this.actions.updateStudent(student));
-    //this.dialog.close();
+    this.dialog.close();
   }
 }

@@ -2,8 +2,8 @@
   <div layout="column" layout-gt-md="row" class="inset">
     <div flex-gt-md="70">
       <md-card>
-        <md-card-title>{{enrollmentApplicationTask?.referenceNo}}</md-card-title>
-        <md-card-subtitle>{{enrollmentApplicationTask?.description}}</md-card-subtitle>
+        <md-card-title>{{enrollmentApplicationTask?.application?.admission?.student?.name}}</md-card-title>
+        <md-card-subtitle>{{enrollmentApplicationTask?.application?.admission?.status}}</md-card-subtitle>
 
         <div layout="row" layout-wrap hide-xs hide-sm class="push-sm">
           <div layout="column" flex>
@@ -18,7 +18,7 @@
             <md-list dense>
               <md-list-item>
                 <h4 md-line>{{enrollmentApplicationTask?.matricNo}}</h4>
-                <p md-line>Student</p>
+                <p md-line>Student Matric.No</p>
               </md-list-item>
             </md-list>
           </div>

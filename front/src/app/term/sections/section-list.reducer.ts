@@ -34,3 +34,4 @@ export function sectionListReducer(state = initialState, action: Action): Sectio
     }
   }
 }
+

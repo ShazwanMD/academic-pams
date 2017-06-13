@@ -110,7 +110,9 @@ public class WhenIUpdateEnrollmentStatus extends Stage<WhenIUpdateEnrollmentStat
 		LOG.debug("Enrollment status:{}", enrollment.getStatus());
 
 		enrollment.setStatus(AdEnrollmentStatus.CONFIRMED);
-		termService.updateEnrollment(enrollment);
+
+//		termService.updateEnrollment(enrollment);
+
 
 		LOG.debug("New updated enrollment status:{}", enrollment.getStatus());
 

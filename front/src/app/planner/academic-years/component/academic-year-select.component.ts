@@ -29,7 +29,8 @@ export class AcademicYearSelectComponent implements OnInit {
   }
 
   selectChangeEvent(event: AcademicYear) {
-   // this.innerFormControl.setValue(event, {emitEvent: false});
+
+    this.innerFormControl.setValue(event, {emitEvent: false});
  //   console.log("hikhik");
     console.log(event);
   //  this.innerFormControl.setValue(event, { emitEvent: false });

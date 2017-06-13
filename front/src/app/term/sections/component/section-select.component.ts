@@ -10,6 +10,7 @@ import {TermModuleState} from "../../index";
 @Component({
   selector: 'pams-section-select',
   templateUrl: './section-select.component.html',
+  styleUrls: ['./section-select.scss'],
 })
 export class SectionSelectComponent implements OnInit {
 
