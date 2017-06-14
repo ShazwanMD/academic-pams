@@ -24,6 +24,10 @@ export class AdmissionEnrollmentListComponent implements OnInit {
   private creatorDialogRef: MdDialogRef<EnrollmentEditorDialog>;
   private columns: any[] = [
     {name: 'id', label: 'Id'},
+    {name: 'standing', label: 'Standing'},
+    {name: 'status', label: 'Status'},
+    {name: 'admission.id', label: 'Admission'},
+    {name: 'section.id', label: 'Section'},
     {name: 'action', label: ''}
   ];
 

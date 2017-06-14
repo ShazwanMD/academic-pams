@@ -39,11 +39,11 @@
     </div>
 
     <md-card class="">
-      <td-search-box class="push-left push-right"
+       <td-search-box class="push-left push-right"
                      placeholder="search"
                      [alwaysVisible]="true"
                      (searchDebounce)="filter($event)">
-      </td-search-box>
+      </td-search-box> 
 
       <pams-admission-list
         [admissions]="admissions$ | async" (view)="viewAdmission($event)"></pams-admission-list>

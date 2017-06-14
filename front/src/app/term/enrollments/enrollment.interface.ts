@@ -17,4 +17,5 @@ export interface Enrollment extends MetaObject {
 
   // denormalize
   course?: Course;
+  selected: boolean;
 }

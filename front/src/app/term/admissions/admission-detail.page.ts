@@ -1,4 +1,4 @@
-import {Component, OnInit, ChangeDetectionStrategy, ViewContainerRef} from '@angular/core';
+import {Component, OnInit, ChangeDetectionStrategy, ViewContainerRef, Input, EventEmitter, Output} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 
 import {IdentityService} from '../../../services';
@@ -11,6 +11,7 @@ import {TermModuleState} from "../index";
 import { AdmissionUpdateTaskCreatorDialog } from "./dialog/admission-update-task-creator.dialog";
 import {MdDialog, MdDialogConfig, MdDialogRef} from "@angular/material";
 import { AdmissionDeleteTaskCreatorDialog } from "./dialog/admission-delete-task-creator.dialog";
+import { Enrollment } from "../enrollments/enrollment.interface";
 
 @Component({
   selector: 'pams-admission-detail',
@@ -19,8 +20,12 @@ import { AdmissionDeleteTaskCreatorDialog } from "./dialog/admission-delete-task
 
 export class AdmissionDetailPage implements OnInit {
 
+  @Input() admission: Admission;  
+    
   private ADMISSION: string[] = "termModuleState.admission".split(".");
+  private ENROLLMENTS: string[] = "termModuleState.admissionEnrollments".split(".");
   private admission$: Observable<Admission>;
+  private enrollments$: Observable<Enrollment[]>;
   private creatorDialogRef: MdDialogRef<AdmissionUpdateTaskCreatorDialog>;
   private creatorDialogRefDel: MdDialogRef<AdmissionDeleteTaskCreatorDialog>;
 
@@ -32,6 +37,7 @@ export class AdmissionDetailPage implements OnInit {
               private dialog: MdDialog,) {
 
     this.admission$ = this.store.select(...this.ADMISSION);
+    this.enrollments$ = this.store.select(...this.ENROLLMENTS);
   }
 
   showDialog(): void {
