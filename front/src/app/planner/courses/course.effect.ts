@@ -35,6 +35,15 @@ export class CourseEffects {
      .withLatestFrom(this.store$.select(...this.COURSE))
     .map(state => state[1])
    .map((course: Course) => this.courseActions.findCourseByCode(course.code));
+
+    @Effect() addCourse$ = this.actions$
+    .ofType(CourseActions.ADD_COURSE)
+    .map(action => action.payload)
+    .switchMap(course => this.plannerService.addCourse(course))
+    .map(course => this.courseActions.addCourseSuccess(course))
+     .withLatestFrom(this.store$.select(...this.COURSE))
+    .map(state => state[1])
+   .map((course: Course) => this.courseActions.findCourseByCode(course.code));
     
 
   @Effect() updateCourse$ = this.actions$
