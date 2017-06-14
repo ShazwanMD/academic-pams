@@ -37,14 +37,14 @@ export class StudentAdmissionApplicationCenterPage implements OnInit {
   }
 
   private columns: any[] = [
-    { name: 'auditNo', label: 'Audit No' },
+    { name: 'auditNo', label: 'Audit Nos' },
     { name: 'description', label: 'Description' },
     { name: 'sourceNo', label: 'Source No' },
     { name: 'referenceNo', label: 'Reference No' },
     { name: 'actor.name', label: 'Advisor' },
     { name: 'program.code', label: 'Program' },
     { name: 'academicSession.code', label: 'Academic Session' },
-    { name: 'student.identityNo', label: 'Student' },
+    { name: 'application.student.name', label: 'Student' },
     { name: 'studyCenter.code', label: 'Study Center' },
     { name: 'action', label: '' }
   ];
