@@ -77,7 +77,7 @@ public class WhenIRegisterAdmissionInNewSemester extends Stage<WhenIRegisterAdmi
 		application.setRemoveComment("removeComment04");
 		application.setCancelComment("cancelComment04");
 		application.setStudent(student);
-		application.setAdvisor(advisor);
+		application.setActor(advisor);
 		application.setProgram(program);
 		application.setSession(academicSession);
 		application.setStudyCenter(studyCenter);
@@ -87,7 +87,7 @@ public class WhenIRegisterAdmissionInNewSemester extends Stage<WhenIRegisterAdmi
 		LOG.debug("=================new data added=====================");
 		LOG.debug("application {}", application.getId());
 		LOG.debug("application {}", application.getStudent().getName());
-		LOG.debug("application {}", application.getAdvisor().getName());
+		LOG.debug("application {}", application.getActor().getName());
 		LOG.debug("application {}", application.getReferenceNo());
 		LOG.debug("application {}", application.getSourceNo());
 

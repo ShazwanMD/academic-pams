@@ -4,6 +4,7 @@ import my.edu.umk.pams.academic.common.model.AdStudyCenter;
 import my.edu.umk.pams.academic.common.model.AdStudyCenterImpl;
 import my.edu.umk.pams.academic.core.AdFlowdata;
 import my.edu.umk.pams.academic.core.AdMetadata;
+import my.edu.umk.pams.academic.identity.model.AdActor;
 import my.edu.umk.pams.academic.identity.model.AdStaff;
 import my.edu.umk.pams.academic.identity.model.AdStaffImpl;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
@@ -52,9 +53,13 @@ public class AdAdmissionApplicationImpl implements AdAdmissionApplication {
     @JoinColumn(name = "STUDENT_ID")
     private AdStudent student;
 
+//    @ManyToOne(targetEntity = AdStaffImpl.class)
+//    @JoinColumn(name = "ADVISOR_ID")
+//    private AdStaff advisor;
+    
     @ManyToOne(targetEntity = AdStaffImpl.class)
     @JoinColumn(name = "ADVISOR_ID")
-    private AdStaff advisor;
+    private AdActor advisor;
 
     @ManyToOne(targetEntity = AdAcademicSessionImpl.class)
     @JoinColumn(name = "SESSION_ID")
@@ -164,16 +169,24 @@ public class AdAdmissionApplicationImpl implements AdAdmissionApplication {
         this.student = student;
     }
 
-    @Override
-    public AdStaff getAdvisor() {
-        return advisor;
-    }
+//    @Override
+//    public AdStaff getAdvisor() {
+//        return advisor;
+//    }
+//
+//    @Override
+//    public void setAdvisor(AdStaff advisor) {
+//        this.advisor = advisor;
+//    }
 
-    @Override
-    public void setAdvisor(AdStaff advisor) {
-        this.advisor = advisor;
-    }
+    public AdActor getActor() {
+		return advisor;
+	}
 
+	public void setActor(AdActor advisor) {
+		this.advisor = advisor;
+	}
+    
     @Override
     public AdProgram getProgram() {
         return program;
@@ -218,4 +231,5 @@ public class AdAdmissionApplicationImpl implements AdAdmissionApplication {
     public void setFlowdata(AdFlowdata flowdata) {
         this.flowdata = flowdata;
     }
+
 }

@@ -85,7 +85,8 @@ public class TermTransformer {
 		vo.setAcademicSession(plannerTransformer.toAcademicSessionVo(application.getSession()));
 		vo.setStudent(identityTransformer.toStudentVo(application.getStudent()));
 		vo.setProgram(plannerTransformer.toProgramVo(application.getProgram()));
-		vo.setAdvisor(identityTransformer.toStaffVo(application.getAdvisor()));
+//		vo.setAdvisor(identityTransformer.toStaffVo(application.getAdvisor()));
+		vo.setActor(identityTransformer.toActorVo(application.getActor()));
 		vo.setStudyCenter(commonTransformer.toStudyCenterVo(application.getStudyCenter()));
 		return vo;
 	}

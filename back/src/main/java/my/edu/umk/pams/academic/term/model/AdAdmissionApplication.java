@@ -2,10 +2,12 @@ package my.edu.umk.pams.academic.term.model;
 
 import my.edu.umk.pams.academic.common.model.AdStudyCenter;
 import my.edu.umk.pams.academic.core.model.AdDocument;
+import my.edu.umk.pams.academic.identity.model.AdActor;
 import my.edu.umk.pams.academic.identity.model.AdStaff;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
 import my.edu.umk.pams.academic.planner.model.AdProgram;
+import my.edu.umk.pams.academic.web.module.identity.vo.Actor;
 
 /**
  *
@@ -46,9 +48,13 @@ public interface AdAdmissionApplication extends AdDocument {
 
     void setStudent(AdStudent student);
 
-    AdStaff getAdvisor();
+//    AdStaff getAdvisor();
+//
+//    void setAdvisor(AdStaff advisor);
+    
+    AdActor getActor();
 
-    void setAdvisor(AdStaff advisor);
+	void setActor(AdActor advisor); 
 
     AdProgram getProgram();
 

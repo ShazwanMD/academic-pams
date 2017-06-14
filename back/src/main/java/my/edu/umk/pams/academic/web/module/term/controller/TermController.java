@@ -2,6 +2,7 @@ package my.edu.umk.pams.academic.web.module.term.controller;
 
 import my.edu.umk.pams.academic.common.model.AdStudyCenter;
 import my.edu.umk.pams.academic.common.service.CommonService;
+import my.edu.umk.pams.academic.identity.model.AdActor;
 import my.edu.umk.pams.academic.identity.model.AdStaff;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.identity.service.IdentityService;
@@ -157,7 +158,7 @@ public class TermController {
         application.setDescription(vo.getDescription());
         application.setCancelComment(vo.getCancelComment());
         application.setRemoveComment(vo.getRemoveComment());
-        application.setAdvisor(identityService.findStaffByStaffNo(vo.getAdvisor().getIdentityNo()));
+//        application.setAdvisor(identityService.findStaffByStaffNo(vo.getActor().getIdentityNo()));
         application.setStudent(identityService.findStudentByMatricNo(vo.getStudent().getIdentityNo()));
         application.setProgram(plannerService.findProgramByCode(vo.getProgram().getCode()));
         application.setSession(plannerService.findAcademicSessionByCode(vo.getAcademicSession().getCode()));
@@ -193,13 +194,17 @@ public class TermController {
     public ResponseEntity<String> startAdmissionApplicationTask(@RequestBody AdmissionApplication vo) throws Exception {
 
         LOG.debug("start task");
+       
 		dummyLogin();
 		AdStudent student = identityService.findStudentById(vo.getStudent().getId());
 		AdAcademicSession academicSession = plannerService.findAcademicSessionById(vo.getAcademicSession().getId());
 		AdStudyCenter studyCenter = commonService.findStudyCenterById(vo.getStudyCenter().getId());
 		AdProgram program = plannerService.findProgramById(vo.getProgram().getId());
-		AdStaff advisor = identityService.findStaffById(vo.getAdvisor().getId());
-        
+//		AdStaff advisor = identityService.findStaffById(vo.getActor().getId());
+		AdActor advisor = identityService.findActorById(vo.getActor().getId());
+
+		
+//		LOG.debug("sv" + advisor.getIdentityNo());
 	    AdAdmissionApplication application = new AdAdmissionApplicationImpl();
         application.setDescription(vo.getDescription());
         application.setReferenceNo(vo.getReferenceNo());
@@ -207,12 +212,13 @@ public class TermController {
         application.setSession(academicSession);
         application.setStudyCenter(studyCenter);
         application.setProgram(program);
-        application.setAdvisor(advisor);
+        application.setActor(advisor);
         application.setAuditNo(vo.getAuditNo());
         application.setCancelComment(vo.getCancelComment());
         application.setRemoveComment(vo.getRemoveComment());
         application.setSourceNo(vo.getSourceNo());
         String referenceNo = termService.startAdmissionApplicationTask(application);
+        LOG.debug("Advisor:{}", application.getActor().getIdentityNo());
         return new ResponseEntity<String>(referenceNo, HttpStatus.OK);
     }
 
