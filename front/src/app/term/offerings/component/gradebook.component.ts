@@ -1,3 +1,5 @@
+import { Gradebook } from './../gradebook.interface';
+import { FormGroup, FormBuilder } from '@angular/forms';
 import {
   Component, Input, ChangeDetectionStrategy,
   OnChanges, SimpleChange, ViewChild
@@ -31,6 +33,7 @@ export class GradebookComponent implements OnChanges {
               private store: Store<TermModuleState>) {
   }
 
+
   ngOnChanges(changes: { [propName: string]: SimpleChange }) {
     if (changes['gradebookMatrices'] && this.gradebookMatrices) {
       var a = changes['gradebookMatrices']['currentValue'];
@@ -57,4 +60,11 @@ export class GradebookComponent implements OnChanges {
   download(): void {
     this.store.dispatch(this.actions.downloadGradebook(this.offering));
   }
+
+  upload(file: File): void {
+    console.log("gradebookComponent", file);
+    this.store.dispatch(this.actions.uploadGradebook(this.offering, file));
+
+  }
+
 }

@@ -825,14 +825,32 @@ public class TermController {
     }
 
     @RequestMapping(value = "/offerings/{canonicalCode}/uploadGradebook", method = RequestMethod.POST)
-    public ResponseEntity<String> uploadGradebook(@PathVariable String canonicalCode, @RequestParam("file") MultipartFile file) {
+    public ResponseEntity<String> uploadGradebook(@PathVariable String canonicalCode,
+//    		@RequestParam("file")
+    @RequestBody MultipartFile file) {
         dummyLogin();
+        LOG.debug("BackEnd:{}", file);
 
         // todo(sam): decide on format
         try {
+        	int i = 1;
             Workbook workbook = WorkbookFactory.create(file.getInputStream());
             Sheet sheet = workbook.getSheetAt(0); // first sheet
-
+            
+            while (i <= sheet.getLastRowNum()) {
+            	
+            	AdGradebook gradebook = new AdGradebookImpl();
+            	
+            	Row row = sheet.getRow(i++);
+            	//convert string to big decimal
+            	String str=row.getCell(i).getStringCellValue();
+            	BigDecimal bd=new BigDecimal(str);
+            	//set score
+            	gradebook.setScore(bd);
+            	termService.updateGradebook(gradebook);
+             	LOG.debug("Gradebook:{}",gradebook);
+            
+            }
             // todo(sam): read cell row by row
             // todo(sam): dapat value, update gradebook
         } catch (IOException e) {

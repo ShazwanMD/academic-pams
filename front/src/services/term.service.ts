@@ -578,6 +578,7 @@ export class TermService {
 
   uploadGradebook(offering: Offering, file: File): Observable<String> {
     console.log('uploadGradebook');
+    console.log("ServiceUpload:{}",file);
     let headers = new Headers({
       'Content-Type': 'application/json',
       //'Authorization': 'Bearer ' + this.authService.token
