@@ -2,60 +2,39 @@
 
 <md-dialog-content>
   <form [formGroup]="editorForm">
-    <!--<div layout="row" class="inset" flex>
+    <div layout="row" class="inset" flex>
       <md-input-container flex>
-        <input mdInput placeholder="Code" formControlName="code" flex/>
+        <input mdInput type="text" placeholder="Description" formControlName="description" flex/>
       </md-input-container>
-    </div>-->
+    </div>
+    <div class="error" *ngIf="editorForm.get('description').invalid && editorForm.get('description').touched">
+      Description should be at least {{minLength}} characters!
+    </div>
 
-    <!--<div layout="row" class="inset" flex>
+
+    <div layout="row" class="inset" flex>
       <md-input-container flex>
-        <input mdInput placeholder="Description" formControlName="description" flex/>
+        <input mdInput type="date" placeholder="Start Date" formControlName="startDate" flex/>
       </md-input-container>
     </div>
 
-  <div layout="row" class="inset" flex>
-    <md-input-container flex>
-      <input mdInput placeholder="Current" formControlName="current" flex readonly/>
-    </md-input-container>
-  </div>-->
-
-     <div layout="row"  class="inset" flex>
-            <md-input-container flex>
-              <input mdInput type="date" placeholder="Start Date" formControlName="startDate" flex/>
-            </md-input-container>
-          </div>
-
-   <div layout="row" class="inset" flex>
-            <md-input-container flex>
-              <input mdInput type="date" placeholder="End Date" formControlName="endDate"flex/>
-            </md-input-container>
-          </div>
+    <div layout="row" class="inset" flex>
+      <md-input-container flex>
+        <input mdInput type="date" placeholder="End Date" formControlName="endDate" flex/>
+      </md-input-container>
+    </div>
 
     <div layout="row" class="inset" flex>
-       <pams-academic-semester-select
+      <pams-academic-semester-select
         [placeholder]="'Select Semester'"
         [innerFormControl]="editorForm.controls['semester']">
       </pams-academic-semester-select>
     </div>
-
-   <!--  <div layout="row" class="inset" flex>
-      <md-input-container flex>
-        <input mdInput placeholder="Year" formControlName="year" flex/>
-      </md-input-container>
-    </div> -->
-
-   <!--<div layout="row" class="pad-bottom pad-top" >
-       <pams-academic-year-select 
-        [placeholder]="'Select Academic Year'"
-        [innerFormControl]="editorForm.controls['academicYear']">
-      </pams-academic-year-select>
-    </div>  -->
-
-
   </form>
 </md-dialog-content>
 
 <md-dialog-actions align="end">
-  <button md-raised-button color="accent" (click)="submit(editorForm.value, editorForm.valid)">    {{edit ? 'Update' : 'Save'}}</button>
+  <button md-raised-button color="accent" [disabled]="editorForm.invalid"
+          (click)="submit(editorForm.value, editorForm.valid)"> {{edit ? 'Update' : 'Save'}}
+  </button>
 </md-dialog-actions>
