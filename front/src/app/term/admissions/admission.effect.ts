@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 import { Effect, Actions } from '@ngrx/effects';
 import { AdmissionActions } from "./admission.action";
 import { TermService } from "../../../services/term.service";
+import { EnrollmentActions } from "../enrollments/enrollment.action";
 
 
 @Injectable()
@@ -15,6 +16,7 @@ export class AdmissionEffects {
 
   constructor(private actions$: Actions,
     private admissionActions: AdmissionActions,
+    private enrollmentActions: EnrollmentActions,
     private termService: TermService,
     private store$: Store<TermModuleState>) {
 
