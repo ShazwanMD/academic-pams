@@ -1,94 +1,19 @@
 <h2 md-dialog-title>Semester Registration</h2>
 <md-dialog-content>
   <form [formGroup]="createForm">
-
-    <div layout="row" class="pad-bottom">
-      <md-input-container flex>
-        <input mdInput #referenceNo 
-        placeholder="Reference No" 
-        formControlName="referenceNo" flex/>
-      </md-input-container>
-    </div>
-
-    <div layout="row" class="pad-bottom">
-      <md-input-container flex>
-        <input mdInput #sourceNo 
-        placeholder="Source No" 
-        formControlName="sourceNo"flex/>
-      </md-input-container>
-    </div>
-
-    <div layout="row" class="pad-bottom">
-      <md-input-container flex>
-        <input mdInput #auditNo 
-        placeholder="Audit No" 
-        formControlName="auditNo" flex/>
-      </md-input-container>
-    </div>
-    
-    <div layout="row" class="pad-bottom">
-      <md-input-container flex>
-        <input mdInput #description 
-        placeholder="Description" 
-        formControlName="description" flex/>
-      </md-input-container>
-    </div>
-    
-    <!--<!--<div layout="row" class="pad-bottom">
-      <md-input-container flex>
-        <input mdInput #cancelComment 
-        placeholder="Cancel Comment" 
-        formControlName="cancelComment"flex/>
-      </md-input-container>
-    </div>-->
-
-    <!--<div layout="row" class="pad-bottom">
-      <md-input-container flex>
-        <input mdInput #cancelComment 
-        placeholder="Remove Comment" 
-        formControlName="removeComment"flex/>
-      </md-input-container>
-    </div>-->
-
-    <!--select actor-->
-    <!--<div layout="row" class="pad-bottom pad-top">
-      <pams-staff-select
-        [placeholder]="'Select Advisor'" 
-        [innerFormControl]="createForm.controls['actor']">
-      </pams-staff-select>
-    </div>-->
-
-    <!--Select student-->
-    <div layout="row" class="pad-bottom pad-top">
-      <pams-student-select 
-        [placeholder]="'Select Student'" 
-        [innerFormControl]="createForm.controls['student']">
+    <div fxLayout fxLayout.xs="column" fxLayoutWrap fxLayoutGap="25px" class="inset">
+      <pams-student-select
+        [placeholder]="'Select Student'"
+        [innerFormControl]="createForm.controls['student']"
+        fxFlex="calc(100%-25px)" class="pad-bottom">
       </pams-student-select>
-    </div>
 
-    <!--select academic session-->
-    <div layout="row" class="pad-bottom pad-top">
-      <pams-academic-session-select 
-        [placeholder]="'Select Session'" 
-        [innerFormControl]="createForm.controls['academicSession']">
+      <pams-academic-session-select
+        [placeholder]="'Select Session'"
+        [innerFormControl]="createForm.controls['academicSession']"
+        fxFlex="calc(100%-25px)" class="pad-bottom">
       </pams-academic-session-select>
     </div>
-
-    <!--select program-->
-    <!--<div layout="row" class="pad-bottom pad-top">
-      <pams-program-select 
-        [placeholder]="'Select Program'" 
-        [innerFormControl]="createForm.controls['program']">
-      </pams-program-select>
-    </div>-->
-
-    <!--select study center-->
-    <!--<div layout="row" class="pad-bottom pad-top">
-      <pams-study-center-select
-        [placeholder]="'Select Study Center'" 
-        [innerFormControl]="createForm.controls['studyCenter']">
-      </pams-study-center-select>
-    </div>-->
 
   </form>
 </md-dialog-content>

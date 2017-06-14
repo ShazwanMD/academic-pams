@@ -196,9 +196,9 @@ public class TermController {
 		dummyLogin();
 		AdStudent student = identityService.findStudentById(vo.getStudent().getId());
 		AdAcademicSession academicSession = plannerService.findAcademicSessionById(vo.getAcademicSession().getId());
-		AdStudyCenter studyCenter = commonService.findStudyCenterById(vo.getStudyCenter().getId());
-		AdProgram program = plannerService.findProgramById(vo.getProgram().getId());
-		AdStaff advisor = identityService.findStaffById(vo.getAdvisor().getId());
+		AdStudyCenter studyCenter = commonService.findStudyCenterById(1L); // todo: dummy study center
+		AdProgram program = student.getCohort().getProgram();
+		AdStaff advisor = identityService.findStaffByStaffNo("01615B"); // todo: dummy advisor
         
 	    AdAdmissionApplication application = new AdAdmissionApplicationImpl();
         application.setDescription(vo.getDescription());

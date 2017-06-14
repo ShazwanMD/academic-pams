@@ -29,23 +29,15 @@
       </button>
     </div>
     <md-card>
-      <!--<md-tab-group>
-        <md-tab label="List of Application">
-          <pams-admission-application-list [admissionApplications]="admissionApplications$ | async" (view)="viewAdmissionApplication($event)">
-          </pams-admission-application-list>
-        </md-tab>
-      </md-tab-group>-->
-
       <md-card>
         <md-tab-group [selectedIndex]="0">>
           <md-tab label="Student Application">
-            <pams-assigned-admission-application-task-list [admissionApplicationTasks]="assignedAdmissionApplicationTasks$ | async" (view)="claimTask($event)"></pams-assigned-admission-application-task-list>
+            <pams-assigned-admission-application-task-list
+              [admissionApplicationTasks]="assignedAdmissionApplicationTasks$ | async"
+              (view)="viewTask($event)"></pams-assigned-admission-application-task-list>
           </md-tab>
-         <!--  <md-tab label="List of Applications">
-            <pams-pooled-admission-application-task-list [admissionApplicationTasks]="pooledAdmissionApplicationTasks$ | async" (view)="viewApplication($event)"></pams-pooled-admission-application-task-list>
-          </md-tab> -->
         </md-tab-group>
       </md-card>
-     </md-card>
+    </md-card>
   </td-layout-manage-list>
 </td-layout-nav>

@@ -1,23 +1,22 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Observable} from "rxjs";
-import {Store} from "@ngrx/store";
-import {FormControl} from "@angular/forms";
-import {Actor} from "../actor.interface";
-import {ActorActions} from "../actor.action";
-import {IdentityModuleState} from "../index";
-import {StudentActions} from "../student.action";
-import {Student} from "../student.interface";
-
+import {Observable} from 'rxjs';
+import {Store} from '@ngrx/store';
+import {FormControl} from '@angular/forms';
+import {Actor} from '../actor.interface';
+import {IdentityModuleState} from '../index';
+import {StudentActions} from '../student.action';
+import {Student} from '../student.interface';
 
 @Component({
   selector: 'pams-student-select',
   templateUrl: './student-select.component.html',
+  styleUrls: ['./student-select.scss'],
 })
 export class StudentSelectComponent implements OnInit {
 
+  private STUDENTS: string[] = 'identityModuleState.students'.split('.');
   @Input() placeholder: string;
   @Input() innerFormControl: FormControl;
-  private STUDENTS: string[] = "identityModuleState.students".split(".");
   students$: Observable<Student[]>;
 
   constructor(private store: Store<IdentityModuleState>,
@@ -26,7 +25,7 @@ export class StudentSelectComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log("find students");
+    console.log('find students');
     this.store.dispatch(this.actions.findStudents());
   }
 

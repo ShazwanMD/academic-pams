@@ -1,5 +1,5 @@
 import { MdSnackBar } from '@angular/material';
-import { AdmissionApplicationTask } from './../admission-application-task.interface';
+import { AdmissionApplicationTask } from '../admission-application-task.interface';
 import { Component, ChangeDetectionStrategy, EventEmitter, Output, Input } from '@angular/core';
 
 @Component({
@@ -9,9 +9,6 @@ import { Component, ChangeDetectionStrategy, EventEmitter, Output, Input } from 
 })
 export class AssignedAdmissionApplicationTaskListComponent {
 
-  @Input() admissionApplicationTasks: AdmissionApplicationTask[];
-  @Output() view = new EventEmitter<AdmissionApplicationTask>();
-
   private columns: any[] = [
     { name: 'referenceNo', label: 'Reference No' },
     { name: 'actor.name', label: 'Advisor' },
@@ -20,16 +17,18 @@ export class AssignedAdmissionApplicationTaskListComponent {
     { name: 'application.student.name', label: 'Student' },
     { name: 'studyCenter.code', label: 'Study Center' },
     { name: 'flowState', label: 'Status' },
-    { name: 'action', label: '' }
-
+    { name: 'action', label: '' },
   ];
+
+  @Input() admissionApplicationTasks: AdmissionApplicationTask[];
+  @Output() view = new EventEmitter<AdmissionApplicationTask>();
 
   constructor(private snackBar: MdSnackBar) {
   }
 
   viewTask(task: AdmissionApplicationTask): void {
-    console.log("Approving task");
-    let snackBarRef = this.snackBar.open("Viewing semester registration", "OK");
+    console.log('viewing task');
+    let snackBarRef = this.snackBar.open('Viewing semester registration', 'OK');
     snackBarRef.afterDismissed().subscribe(() => {
       this.view.emit(task);
     });
