@@ -1,3 +1,4 @@
+import { Faculty } from '../../faculties/faculty.interface';
 import {Component, ViewContainerRef, OnInit} from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
 import {FormBuilder} from '@angular/forms';
@@ -16,6 +17,7 @@ import {CourseStatus} from "../course-status.enum";
 
 export class CourseEditorDialog implements OnInit {
   private _course: Course;
+  private _faculty: Faculty;
   private editForm: FormGroup;
   private edit: boolean = false;
 
@@ -31,6 +33,10 @@ export class CourseEditorDialog implements OnInit {
   set course(value: Course) {
     this._course = value;
     this.edit = true;
+  }
+  
+   set faculty (value: Faculty) {
+    this._faculty = value;
   }
 
   ngOnInit(): void {
