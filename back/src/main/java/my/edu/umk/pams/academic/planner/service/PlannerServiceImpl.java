@@ -28,7 +28,7 @@ public class PlannerServiceImpl implements PlannerService {
 
     @Autowired
     private AdAcademicSessionDao academicSessionDao;
-    
+
     @Autowired
     private AdAcademicYearDao academicYearDao;
 
@@ -46,11 +46,11 @@ public class PlannerServiceImpl implements PlannerService {
 
     @Autowired
     private AdCourseDao courseDao;
-    
+
     @Autowired
     private AdAcademicYearDao yearDao;
-    
-    
+
+
     @Autowired
     private AdOfferingDao offeringDao;
 
@@ -115,11 +115,11 @@ public class PlannerServiceImpl implements PlannerService {
     public boolean isAcademicSessionCodeExists(String code) {
         return academicSessionDao.isCodeExists(code);
     }
-    
-	@Override
-	public AdAcademicYear findByCode(String code) {
-		return academicYearDao.findByCode(code);
-	}
+
+    @Override
+    public AdAcademicYear findByCode(String code) {
+        return academicYearDao.findByCode(code);
+    }
 
     @Override
     public void saveAcademicSession(AdAcademicSession academicSession) {
@@ -161,32 +161,32 @@ public class PlannerServiceImpl implements PlannerService {
 
     @Override
     public AdSubject findSubjectByCurriculumAndCourse(AdCurriculum curriculum, AdCourse course) {
-        return null;
+        return curriculumDao.findSubjectById(0L); // todo: dummy
     }
 
     @Override
     public List<AdCurriculum> findCurriculums(Integer offset, Integer limit) {
-        return null;
+        return curriculumDao.find(offset, limit);
     }
 
     @Override
     public List<AdCurriculum> findCurriculums(String filter, Integer offset, Integer limit) {
-        return null;
+        return curriculumDao.find(filter, offset, limit);
     }
 
     @Override
     public List<AdCurriculum> findCurriculums(AdProgram program) {
-    	 return curriculumDao.find(program);
+        return curriculumDao.find(program);
     }
 
     @Override
     public List<AdCurriculum> findCurriculums(AdProgram program, Integer offset, Integer limit) {
-        return null;
+        return curriculumDao.find(program, offset, limit);
     }
 
     @Override
     public List<AdSubject> findSubjects(AdCurriculum curriculum) {
-        return null;
+        return curriculumDao.findSubjects(curriculum);
     }
 
     @Override
@@ -281,22 +281,22 @@ public class PlannerServiceImpl implements PlannerService {
     public void addPrerequisites(AdCourse course, AdCourse... prereqCourses) {
         courseDao.addPrerequisites(course, securityService.getCurrentUser(), prereqCourses);
         sessionFactory.getCurrentSession().flush();
-       
-    }
-    
-    @Override
-	public void updatePrerequisite(AdCourse course, AdCourse... prerequisites) {
-    	courseDao.updatePrerequisites(course, securityService.getCurrentUser(), prerequisites);
-        sessionFactory.getCurrentSession().flush();
-	
-	}
 
-    
-	@Override
-	public void removePrerequisite(AdCourse course, AdCourse... prerequisites) {
-		courseDao.removePrerequisites(course, securityService.getCurrentUser(), prerequisites);
-	        sessionFactory.getCurrentSession().flush();
-	}
+    }
+
+    @Override
+    public void updatePrerequisite(AdCourse course, AdCourse... prerequisites) {
+        courseDao.updatePrerequisites(course, securityService.getCurrentUser(), prerequisites);
+        sessionFactory.getCurrentSession().flush();
+
+    }
+
+
+    @Override
+    public void removePrerequisite(AdCourse course, AdCourse... prerequisites) {
+        courseDao.removePrerequisites(course, securityService.getCurrentUser(), prerequisites);
+        sessionFactory.getCurrentSession().flush();
+    }
 
     //====================================================================================================
     // COHORT
@@ -453,6 +453,7 @@ public class PlannerServiceImpl implements PlannerService {
     public boolean isFacultyExists(String code) {
         return facultyDao.isExists(code);
     }
+
     @Override
     public void saveFaculty(AdFaculty faculty) {
         facultyDao.save(faculty, securityService.getCurrentUser());
@@ -489,8 +490,6 @@ public class PlannerServiceImpl implements PlannerService {
         sessionFactory.getCurrentSession().flush();
     }
 
-    
-    
 
     //====================================================================================================
     // PROGRAM LEVEL
@@ -669,7 +668,6 @@ public class PlannerServiceImpl implements PlannerService {
     }
 
 
-
     //====================================================================================================
     // COURSE
     //====================================================================================================
@@ -748,14 +746,14 @@ public class PlannerServiceImpl implements PlannerService {
     public boolean isCourseExists(String code, AdFaculty faculty) {
         return courseDao.isExists(code, faculty);
     }
-    
+
     @Override
     public void saveCourse(AdCourse course, AdFaculty faculty) {
-    	courseDao.save(course, securityService.getCurrentUser());
+        courseDao.save(course, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
-    
-    
+
+
 //	@Override
 //	public void addCourse(AdCourse course) {
 //		courseDao.save(course, securityService.getCurrentUser());
@@ -764,17 +762,17 @@ public class PlannerServiceImpl implements PlannerService {
 
     @Override
     public void updateCourse(AdCourse course) {
-    	courseDao.update(course, securityService.getCurrentUser());
+        courseDao.update(course, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void removeCourse(AdCourse course) {
-    	courseDao.remove(course, securityService.getCurrentUser());
+        courseDao.remove(course, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
-    
-    
+
+
 //    @Override
 //    public void addCourse(AdFaculty faculty, AdCourse course) {
 //        facultyDao.addCourse(faculty, course, securityService.getCurrentUser());
@@ -799,11 +797,11 @@ public class PlannerServiceImpl implements PlannerService {
 
     @Override
     public void saveAcademicYear(AdAcademicYear year) {
-    	yearDao.save(year, securityService.getCurrentUser());
+        yearDao.save(year, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
-    
-    
+
+
     @Override
     public List<AdAcademicYear> findAcademicYears(Integer offset, Integer limit) {
         return academicYearDao.find(offset, limit);
@@ -814,11 +812,11 @@ public class PlannerServiceImpl implements PlannerService {
         return academicYearDao.find(filter, offset, limit);
     }
 
-	@Override
-	public void addCourse(AdFaculty faculty, AdCourse course) {
-		// TODO Auto-generated method stub
-		
-	}
+    @Override
+    public void addCourse(AdFaculty faculty, AdCourse course) {
+        // TODO Auto-generated method stub
+
+    }
 
 
 }

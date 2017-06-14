@@ -10,6 +10,7 @@ import {Cohort} from "../app/planner/cohorts/cohort.interface";
 import {AcademicSession} from '../app/planner/academic-sessions/academic-session.interface';
 import {AcademicYear} from "../app/planner/academic-years/academic-year.interface";
 import {ProgramLevel} from "../app/planner/program-levels/program-level.interface";
+import {Curriculum} from "../app/planner/curriculums/curriculum.interface";
 
 @Injectable()
 export class PlannerService {
@@ -17,6 +18,7 @@ export class PlannerService {
   constructor(private http: Http,
               private _http: HttpInterceptorService) {
   }
+
   // ====================================================================================================
   // ACADEMIC YEAR
   // ====================================================================================================
@@ -139,7 +141,6 @@ export class PlannerService {
     return this.http.put(environment.endpoint + '/api/planner/faculties/' + faculty.code, JSON.stringify(faculty), options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
-  
 
   // ====================================================================================================
   // PROGRAM
@@ -231,7 +232,7 @@ export class PlannerService {
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
-   addCourse(course: Course): Observable<String> {
+  addCourse(course: Course): Observable<String> {
     let headers = new Headers({
       'Content-Type': 'application/json',
       //'Authorization': 'Bearer ' + this.authService.token
@@ -331,6 +332,53 @@ export class PlannerService {
     return this.http.get(environment.endpoint + '/api/planner/cohorts/' + cohort.code + '/deactivate', options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
+
+  // ====================================================================================================
+  // CURRICULUM
+  // ====================================================================================================
+
+  findCurriculums(): Observable<Curriculum[]> {
+    console.log("findCurriculums");
+    let headers = new Headers({'Authorization': 'Bearer TODO'});
+    let options = new RequestOptions({headers: headers});
+    return this.http.get(environment.endpoint + '/api/planner/curriculums', options)
+      .map(res => <Curriculum[]>res.json())
+  }
+
+  findCurriculumByCode(code: string): Observable<Curriculum> {
+    let headers = new Headers({'Authorization': 'Bearer TODO'});
+    let options = new RequestOptions({headers: headers});
+    return this.http.get(environment.endpoint + '/api/planner/curriculums/' + code, options)
+      .map((res: Response) => <Curriculum>res.json());
+  }
+
+  saveCurriculum(curriculum: Curriculum): Observable<String> {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
+    return this.http.post(environment.endpoint + '/api/planner/curriculums/' + curriculum.code + '/save', JSON.stringify(curriculum), options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+  updateCurriculum(curriculum: Curriculum): Observable<String> {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
+    return this.http.put(environment.endpoint + '/api/planner/curriculums/' + curriculum.code, JSON.stringify(curriculum), options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+  removeCurriculum(curriculum: Curriculum): Observable<Curriculum> {
+    return this.http.delete(environment.endpoint + '/api/planner/curriculums/' + curriculum.code)
+      .map((res: Response) => <Curriculum>res.json());
+  }
+
+  // todo: add single
+  // todo: add bundle
 
 
   // ====================================================================================================

@@ -112,6 +112,7 @@ public class PlannerTransformer {
 	public Curriculum toCurriculumVo(AdCurriculum e) {
         Curriculum vo = new Curriculum();
         vo.setCode(e.getCode());
+        vo.setCode(e.getCode());
         vo.setSubjects(plannerTransformer.toSubjectVos(e.getSubjects()));
         vo.setProgram(plannerTransformer.toProgramVo(e.getProgram()));
         return vo;

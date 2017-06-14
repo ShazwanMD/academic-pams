@@ -11,7 +11,7 @@
 
     <div layout="row" class="pad-bottom pad-top">
       <pams-program-select
-        [placeholder]="'Select program'"
+        [placeholder]="'Select Program'"
         [innerFormControl]="createForm.controls['program']">
       </pams-program-select>
     </div>
@@ -19,7 +19,7 @@
   </form>
 </md-dialog-content>
 <md-dialog-actions align="end">
-  <button md-raised-button color="accent" (click)="save(createForm.value, 1)">
+  <button md-raised-button color="accent" (click)="save(createForm.value, createForm.valid)">
     Save
   </button>
 </md-dialog-actions>

@@ -415,13 +415,9 @@ public class PlannerController {
 		plannerService.updateCourse(course);		
 		return new ResponseEntity<String>(course.getCode(), HttpStatus.OK);
 	}
-	
-	
-	
-
 
 	// ====================================================================================================
-	// academicYear
+	// ACADEMIC YEAR
 	// ====================================================================================================
 
 		@RequestMapping(value = "/academicYears", method = RequestMethod.GET)
@@ -435,9 +431,8 @@ public class PlannerController {
 	// ====================================================================================================
 
 	@RequestMapping(value = "/curriculums", method = RequestMethod.GET)
-	public ResponseEntity<List<Curriculum>> findCurriculums(@PathVariable String code) {
-		AdProgram program = plannerService.findProgramByCode(code);
-		List<Curriculum> curriculums = plannerTransformer.toCurriculumVos(plannerService.findCurriculums(program));
+	public ResponseEntity<List<Curriculum>> findCurriculums() {
+		List<Curriculum> curriculums = plannerTransformer.toCurriculumVos(plannerService.findCurriculums(0, Integer.MAX_VALUE));
 		return new ResponseEntity<List<Curriculum>>(curriculums, HttpStatus.OK);
 	}
 

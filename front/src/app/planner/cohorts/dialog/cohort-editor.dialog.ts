@@ -1,19 +1,15 @@
-import {Component, ViewContainerRef, OnInit} from '@angular/core';
-import {FormGroup, FormControl} from '@angular/forms';
+import {Component, OnInit} from '@angular/core';
+import {FormGroup} from '@angular/forms';
 import {FormBuilder} from '@angular/forms';
 import {Router, ActivatedRoute} from '@angular/router';
-import {CommonService} from "../../../../services/common.service";
-import {PlannerService} from "../../../../services/planner.service";
-import {Cohort} from "../cohort.interface";
-import {CohortActions} from "../cohort.action";
+import {Cohort} from '../cohort.interface';
+import {CohortActions} from '../cohort.action';
 ;
-import {Store} from "@ngrx/store";
-import {PlannerModuleState} from "../../index";
-import {MdDialogRef} from "@angular/material";
-import {AcademicSession} from "../../../planner/academic-sessions/academic-session.interface";
-import {Program} from './../../programs/program.interface';
-import {MdDialog} from '@angular/material';
-import {IdentityService} from "../../../../services/identity.service";
+import {Store} from '@ngrx/store';
+import {PlannerModuleState} from '../../index';
+import {MdDialogRef} from '@angular/material';
+import {AcademicSession} from '../../academic-sessions/academic-session.interface';
+import {Program} from '../../programs/program.interface';
 
 @Component({
   selector: 'pams-cohort-editor',
@@ -39,7 +35,7 @@ export class CohortEditorDialog implements OnInit {
     });
   }
 
-  save(cohort: Cohort, isValid: boolean) {
+  save(cohort: Cohort, isValid: boolean): void {
     this.store.dispatch(this.actions.saveCohort(cohort));
     this.dialog.close();
   }
