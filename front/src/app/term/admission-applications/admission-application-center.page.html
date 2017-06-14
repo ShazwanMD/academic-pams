@@ -37,7 +37,7 @@
         <md-icon class="md-24">more_vert</md-icon>
       </button>
     </div>
-    <md-card>
+
       <!--<md-tab-group>
         <md-tab label="List of Application">
           <pams-admission-application-list [admissionApplications]="admissionApplications$ | async" (view)="viewAdmissionApplication($event)">
@@ -47,11 +47,11 @@
 
       <md-card>
         <md-tab-group [selectedIndex]="0">>
-          <md-tab label="List of Enrollments">
-            <pams-assigned-admission-application-task-list [admissionApplicationTasks]="assignedAdmissionApplicationTasks$ | async" (view)="claimTask($event)"></pams-assigned-admission-application-task-list>
+          <md-tab label="Assigned">
+            <pams-assigned-admission-application-task-list [admissionApplicationTasks]="assignedAdmissionApplicationTasks$ | async" (view)="viewTask($event)"></pams-assigned-admission-application-task-list>
           </md-tab>
-          <md-tab label="List of Applications">
-            <pams-pooled-admission-application-task-list [admissionApplicationTasks]="pooledAdmissionApplicationTasks$ | async" (view)="viewApplication($event)"></pams-pooled-admission-application-task-list>
+          <md-tab label="Pooled">
+            <pams-pooled-admission-application-task-list [admissionApplicationTasks]="pooledAdmissionApplicationTasks$ | async" (claim)="claimTask($event)"></pams-pooled-admission-application-task-list>
           </md-tab>
         </md-tab-group>
       </md-card>
@@ -61,6 +61,6 @@
           <span>View More</span>
         </a>
       </md-card-actions>-->
-    </md-card>
+
   </td-layout-manage-list>
 </td-layout-nav>

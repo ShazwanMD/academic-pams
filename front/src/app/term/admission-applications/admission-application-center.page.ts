@@ -41,7 +41,7 @@ export class AdmissionApplicationCenterPage implements OnInit {
     { name: 'description', label: 'Description' },
     { name: 'sourceNo', label: 'Source No' },
     { name: 'referenceNo', label: 'Reference No' },
-    { name: 'actor.name', label: 'Advisor' },
+    { name: 'admissionApplication.actor.id', label: 'Advisor' },
     { name: 'program.code', label: 'Program' },
     { name: 'academicSession.code', label: 'Academic Session' },
     { name: 'student.identityNo', label: 'Student' },
@@ -69,7 +69,7 @@ createDialog(): void {
     this.store.dispatch(this.actions.claimAdmissionApplicationTask(task));
   }
 
-  viewApplication(task: AdmissionApplicationTask) {
+  viewTask(task: AdmissionApplicationTask) {
     console.log("students applications: " + task.taskId);
     this.router.navigate(['/term/admission-applications/admission-application-task-view', task.taskId]);
   }
