@@ -17,11 +17,9 @@ import { AdmissionApplicationActions } from "./admission-application.action";
 
 export class StudentAdmissionApplicationCenterPage implements OnInit {
 
-  // private ADMISSION_APPLICATION: string[] = "termModuleState.admissionApplications".split(".");
   private ASSIGNED_ADMISSION_APPLICATION_TASKS: string[] = "termModuleState.assignedAdmissionApplicationTasks".split(".");
   private POOLED_ADMISSION_APPLICATION_TASKS: string[] = "termModuleState.pooledAdmissionApplicationTasks".split(".");
 
-  // private admissionApplications$: Observable<AdmissionApplication>;
   private assignedAdmissionApplicationTasks$: Observable<AdmissionApplicationTask>;
   private pooledAdmissionApplicationTasks$: Observable<AdmissionApplicationTask>;
 
@@ -34,7 +32,6 @@ export class StudentAdmissionApplicationCenterPage implements OnInit {
     private vcf: ViewContainerRef,
     private dialog: MdDialog) {
 
-      // this.admissionApplications$ = this.store.select(...this.ADMISSION_APPLICATION);
       this.assignedAdmissionApplicationTasks$ = this.store.select(...this.ASSIGNED_ADMISSION_APPLICATION_TASKS);
       this.pooledAdmissionApplicationTasks$ = this.store.select(...this.POOLED_ADMISSION_APPLICATION_TASKS);
   }
@@ -82,8 +79,9 @@ createDialog(): void {
     this.store.dispatch(this.actions.findAssignedAdmissionApplicationTasks());
     this.store.dispatch(this.actions.findPooledAdmissionApplicationTasks());
   }
-  
+
   goBack(route: string): void {
     this.router.navigate(['/term/admission-applications']);
   }
 }
+
