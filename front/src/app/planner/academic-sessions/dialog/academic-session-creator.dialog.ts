@@ -1,5 +1,5 @@
 import { Component, ViewContainerRef, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import {FormGroup, Validators} from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
 import { Store } from "@ngrx/store";
 import { MdDialogRef } from "@angular/material";
@@ -21,6 +21,7 @@ export class AcademicSessionCreatorDialog implements OnInit {
     private create: boolean = false;
     private _academicSession: AcademicSession;
     //private year: AcademicYear; 
+    private minLength = 10; // Contoh
 
     constructor(private formBuilder: FormBuilder,
         private viewContainerRef: ViewContainerRef,
@@ -35,26 +36,22 @@ export class AcademicSessionCreatorDialog implements OnInit {
     }
 
     ngOnInit(): void {
-        this.createForm = this.formBuilder.group(<AcademicSession>{
-            id: null,
-            code: '',
-            description: '',
-            current: true,
-            startDate: null,
-            endDate: null,
-            semester: AcademicSemester.SEMESTER_1,
-            year: <AcademicYear>{},
-
+        this.createForm = this.formBuilder.group({
+            id: [null],
+            code: [''],
+            description: ['', Validators.minLength(this.minLength)],
+            current: [true],
+            startDate: [null, Validators.required],
+            endDate: [null, Validators.required],
+            semester: [AcademicSemester.SEMESTER_1, Validators.required],
+            year: [<AcademicYear>{}, Validators.required],
         });
 
         if (this.create) this.createForm.patchValue(this._academicSession);
     }
 
-    save(academicSession: AcademicSession, isValid: boolean) {
-     
-       console.dir(academicSession.year);
-       console.dir(this);
-      
+    save() {
+       let academicSession = this.createForm.value;
        if (!academicSession.id) this.store.dispatch (this.actions.saveAcademicSession(academicSession));
       else this.store.dispatch(this.actions.updateAcademicSession(academicSession));
         this.dialog.close();
