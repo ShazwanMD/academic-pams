@@ -370,7 +370,7 @@ public class PlannerController {
 		course.setStatus(AdCourseStatus.get(vo.getStatus().ordinal()));
 		course.setFaculty(plannerService.findFacultyById(vo.getFaculty().getId()));
 		course.setClassification(AdAcademicClassification.get(vo.getClassification().ordinal()));
-		plannerService.addCourse(course);
+		plannerService.addCourse(new AdFacultyImpl(), course);
 		return new ResponseEntity<String>("Success", HttpStatus.OK);
 		
 	}
@@ -386,7 +386,7 @@ public class PlannerController {
 		course.setStatus(AdCourseStatus.get(vo.getStatus().ordinal()));
 		course.setFaculty(plannerService.findFacultyById(vo.getFaculty().getId()));
 		course.setClassification(AdAcademicClassification.get(vo.getClassification().ordinal()));
-		plannerService.addCourse(course);
+		plannerService.addCourse(new AdFacultyImpl(), course);
 		return new ResponseEntity<String>("Success", HttpStatus.OK);
 		
 	}
