@@ -1,3 +1,4 @@
+import { Staff } from './../../../identity/staff.interface';
 import { Actor } from './../../../identity/actor.interface';
 import { StudyCenter } from './../../../setup/study-centers/study-center.interface';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -49,6 +50,7 @@ export class AdmissionApplicationTaskCreatorDialog implements OnInit {
       cancelComment: 'N/A',
       removeComment: 'N/A',
       actor: <Actor>{},
+      // staff: <Staff>{},
       student: <Student>{},
       academicSession: <AcademicSession>{},
       program: <Program>{},

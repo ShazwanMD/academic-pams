@@ -40,18 +40,18 @@ export class AdmissionApplicationTaskEditorDialog implements OnInit {
 
     ngOnInit(): void {
         this.editForm = this.formBuilder.group(<AdmissionApplication>{
-            id: null,
-            referenceNo: '',
-            sourceNo: '',
-            auditNo: '',
-            description: '',
-            cancelComment: '',
-            removeComment: '',
-            actor: <Actor>{},
-            student: <Student>{},
-            academicSession: <AcademicSession>{},
-            program: <Program>{},
-            studyCenter: <StudyCenter>{},
+            // id: null,
+            // referenceNo: '',
+            // sourceNo: '',
+            // auditNo: '',
+            // description: '',
+            // cancelComment: '',
+            // removeComment: '',
+            // actor: <Actor>{},
+            // student: <Student>{},
+            // academicSession: <AcademicSession>{},
+            // program: <Program>{},
+            // studyCenter: <StudyCenter>{},
         });
         if (this.edit) this.editForm.patchValue(this._admissionApplication);
     }
