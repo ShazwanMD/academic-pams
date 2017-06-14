@@ -38,7 +38,24 @@ export class CourseActions {
     };
   }
 
-  static SAVE_COURSE = '[Course] Save Course';
+  static ADD_COURSE = '[Course] Add Course';
+  addCourse(course): Action {
+    return {
+      type: CourseActions.ADD_COURSE,
+      payload: course
+    };
+  }
+
+  static ADD_COURSE_SUCCESS = '[Course] Add Course Success';
+  addCourseSuccess(course): Action {
+    return {
+      type: CourseActions.ADD_COURSE_SUCCESS,
+      payload: course
+    };
+  }
+
+
+    static SAVE_COURSE = '[Course] Add Course';
   saveCourse(course): Action {
     return {
       type: CourseActions.SAVE_COURSE,
@@ -46,7 +63,7 @@ export class CourseActions {
     };
   }
 
-  static SAVE_COURSE_SUCCESS = '[Course] Save Course Success';
+  static SAVE_COURSE_SUCCESS = '[Course] Add Course Success';
   saveCourseSuccess(course): Action {
     return {
       type: CourseActions.SAVE_COURSE_SUCCESS,

@@ -1,0 +1,53 @@
+<md-card>
+  <div toolbar-buttons layout="row" layout-align="start center" flex>
+    <md-card-title>Course Enrollments
+    </md-card-title>
+    <md-chip-list *ngIf="enrollments?.length > 0">
+      <md-chip color="accent">{{enrollments?.length}}</md-chip>
+    </md-chip-list>
+    <span flex></span>
+   <!--  <button md-button class="md-icon-button" (click)="addEnrollmentDialog()">
+      <md-icon class="md-24 tc-grey-300" [ngClass]="{'tc-grey-700': selectedRows.length === 0}">add</md-icon>
+    </button>
+    <button md-button class="md-icon-button" (click)="edit(selectedRows[0])" [disabled]="selectedRows.length != 1">
+    <md-icon class="md-24 tc-grey-300" [ngClass]="{'tc-grey-700': selectedRows.length === 1}">edit</md-icon>
+    </button>
+    <button md-button class="md-icon-button" (click)="deleteEnrollment(selectedRows[0])"
+            [disabled]="selectedRows.length != 1">
+      <md-icon class="md-24 tc-grey-300" [ngClass]="{'tc-grey-700': selectedRows.length === 1}">delete</md-icon>
+    </button> -->
+  </div>
+  <md-divider></md-divider>
+  <md-card-content>
+    <td-data-table
+      [data]="enrollments"
+      [columns]="columns"
+      [sortBy]="summary"
+      [sortOrder]="ASC"
+      [sortable]="false"
+      [multiple]="true"
+      [selectable]="true"
+      [(ngModel)]="selectedRows"
+      (rowSelect)="selectRow($event)"
+      (selectAll)="selectAllRows($event)"
+      dense>
+      <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
+        <div layout="row">
+          <span flex>{{value}}</span>
+        </div>
+      </template>
+      <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
+        <div layout="row">
+          <button md-icon-button [md-menu-trigger-for]="menu1" mdTooltip="Select enrollment actions">
+            <md-icon>more_vert</md-icon>
+          </button>
+          <md-menu x-position="before" #menu1="mdMenu">
+            <button md-menu-item [routerLink]="['/term/enrollments', row['canonicalCode']]">View enrollment</button>
+            <button md-menu-item (click)="editDialog(row, true)">Update enrollment</button>
+            <button md-menu-item (click)="deleteEnrollment(row)">Delete enrollment</button>
+          </md-menu>
+        </div>
+      </template>
+    </td-data-table>
+  </md-card-content>
+</md-card>

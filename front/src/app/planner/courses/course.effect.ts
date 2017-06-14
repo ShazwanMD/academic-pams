@@ -15,7 +15,6 @@ export class CourseEffects {
               private plannerService: PlannerService,
               private store$: Store<PlannerModuleState>) {
   }
-
   @Effect() findCourses$ = this.actions$
     .ofType(CourseActions.FIND_COURSES)
     .switchMap(() => this.plannerService.findCourses())
@@ -32,6 +31,15 @@ export class CourseEffects {
     .map(action => action.payload)
     .switchMap(course => this.plannerService.saveCourse(course))
     .map(course => this.courseActions.saveCourseSuccess(course))
+     .withLatestFrom(this.store$.select(...this.COURSE))
+    .map(state => state[1])
+   .map((course: Course) => this.courseActions.findCourseByCode(course.code));
+
+    @Effect() addCourse$ = this.actions$
+    .ofType(CourseActions.ADD_COURSE)
+    .map(action => action.payload)
+    .switchMap(course => this.plannerService.addCourse(course))
+    .map(course => this.courseActions.addCourseSuccess(course))
      .withLatestFrom(this.store$.select(...this.COURSE))
     .map(state => state[1])
    .map((course: Course) => this.courseActions.findCourseByCode(course.code));

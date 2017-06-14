@@ -1,3 +1,5 @@
+import {AcademicSessionEditorDialog} from '../dialog/academic-session-editor.dialog';
+import {MdDialogRef, MdDialogConfig} from '@angular/material/dialog';
 import {MdDialog, MdSnackBar} from '@angular/material';
 import {Input, Component, ViewContainerRef, ChangeDetectionStrategy} from '@angular/core';
 import {Observable} from 'rxjs';
@@ -18,12 +20,32 @@ export class AcademicSessionActionComponent {
 
   @Input() academicSession: AcademicSession;
 
+  private editorDialogRef:MdDialogRef<AcademicSessionEditorDialog>;
+
+
   constructor(private actions: AcademicSessionActions,
               private store: Store<PlannerModuleState>,
               private vcf: ViewContainerRef,
               private dialog: MdDialog,
               private snackBar: MdSnackBar) {
 
+  }
+
+   editSession(): void {
+    console.log("edit");
+    let config = new MdDialogConfig();
+    config.viewContainerRef = this.vcf;
+    config.role = 'dialog';
+    config.width = '60%';
+    config.height = '80%';
+    config.position = { top: '0px' };
+    this.editorDialogRef = this.dialog.open(AcademicSessionEditorDialog, config);
+    this.editorDialogRef.componentInstance.academicSession = this.academicSession;
+
+    // set
+    this.editorDialogRef.afterClosed().subscribe(res => {
+      console.log("close dialog");
+    });
   }
 
   activate(): void {

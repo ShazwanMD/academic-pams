@@ -78,7 +78,7 @@ export class PlannerService {
       //'Authorization': 'Bearer ' + this.authService.token
     });
     let options = new RequestOptions({headers: headers});
-    return this.http.put(environment.endpoint + '/api/planner/academicSessions/' + academicSession.code, JSON.stringify(academicSession), options)
+    return this.http.put(environment.endpoint + '/api/planner/academicSessions/' + academicSession.code + '/update', JSON.stringify(academicSession), options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
@@ -228,6 +228,16 @@ export class PlannerService {
     });
     let options = new RequestOptions({headers: headers});
     return this.http.post(environment.endpoint + '/api/planner/course/' + course.code + '/save', JSON.stringify(course), options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+   addCourse(course: Course): Observable<String> {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
+    return this.http.post(environment.endpoint + '/api/planner/courses/' + course.code + '/add', JSON.stringify(course), options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 

@@ -8,17 +8,50 @@
     <md-tab-group>
       <md-tab label="Academic Session Detail"><br>
 
-        <div>Code : {{academicSession.code}}</div>
+        <div layout="column" class="inset">
+          <div layout="row" class="pad-bottom">
+            <span flex="15">Code</span>
+            <span>{{academicSession.code}}</span>
+          </div>
+
+          <div layout="row" class="pad-bottom">
+            <span flex="15">Description</span>
+            <span>{{academicSession.description}}</span>
+          </div>
+
+          <div layout="row" class="pad-bottom">
+            <span flex="15">Status </span>
+            <span>{{academicSession.current}}</span>
+          </div>
+
+           <div layout="row" class="pad-bottom">
+            <span flex="15">Start Date </span>
+            <span>{{academicSession.startDate}}</span>
+          </div>
+
+          <div layout="row" class="pad-bottom">
+            <span flex="15">End Date </span>
+            <span>{{academicSession.endDate}}</span>
+          </div>
+
+          <div layout="row" class="pad-bottom">
+            <span flex="15">Semester </span>
+            <span>{{academicSession.semester}}</span>
+          </div>
+         
+          <div layout="row" class="pad-bottom">
+            <span flex="15">Year </span>
+            <span>{{academicSession?.year?.year}}</span>
+          </div>
+
+          </div>
+
+        <!--<div>Code : {{academicSession.code}}</div>
         <br>
         <div>Description : {{academicSession.description}}</div>
         <br>
         <div>Status : {{academicSession.current}}</div>
         <br>
-      </md-tab>
-
-      <md-tab label="Information"><br>
-        <div>Detail Description of Academic Session</div><br>
-
         <div>Start Date : {{academicSession.startDate}}</div>
         <br>
         <div>End Date : {{academicSession.endDate}}</div>
@@ -26,36 +59,11 @@
         <div>Semester : {{academicSession.semester}}</div>
         <br>
         <div>Year : {{academicSession?.year?.year}}</div>
-        <br>
+        <br>-->
 
-        <!--<md-card-actions layout-align="end center">
-        <td-data-table
-            [data]="academicSessions"
-            [columns]="columns"
-            [sortBy]="summary"
-            [sortOrder]="ASC"
-            [sortable]="false"
-            [multiple]="false"
-            [selectable]="false"
-            (rowSelect)="edit.emit($event)" dense>
-
-            <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column" >
-              <div layout="row">
-                <span flex >{{value}}</span>
-              </div>
-            </template>
-            
-            <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
-              <div layout="row">
-                <button md-raised-button color="accent" (click)="editSession(row, true)">UDPATE</button>
-              </div>
-            </template>
-
-          </td-data-table>-->
-
-          <md-list-item (click)="editSession()">
+          <!--<md-list-item (click)="editSession()">
             <button md-button color="accent" class="text-upper">UPDATE</button>
-          </md-list-item>
+          </md-list-item>-->
           
       </md-tab>
     </md-tab-group>
@@ -63,3 +71,4 @@
   </md-card-content>
   <md-divider></md-divider>
 </md-card>
+

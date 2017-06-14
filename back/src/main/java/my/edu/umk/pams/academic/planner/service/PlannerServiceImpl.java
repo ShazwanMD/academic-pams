@@ -490,23 +490,7 @@ public class PlannerServiceImpl implements PlannerService {
     }
 
     
-    @Override
-    public void addCourse(AdFaculty faculty, AdCourse course) {
-        facultyDao.addCourse(faculty, course, securityService.getCurrentUser());
-        sessionFactory.getCurrentSession().flush();
-    }
-
-    @Override
-    public void updateCourse(AdFaculty faculty, AdCourse course) {
-        facultyDao.updateCourse(faculty, course, securityService.getCurrentUser());
-        sessionFactory.getCurrentSession().flush();
-    }
-
-    @Override
-    public void removeCourse(AdFaculty faculty, AdCourse course) {
-        facultyDao.removeCourse(faculty, course, securityService.getCurrentUser());
-        sessionFactory.getCurrentSession().flush();
-    }
+    
 
     //====================================================================================================
     // PROGRAM LEVEL
@@ -770,11 +754,13 @@ public class PlannerServiceImpl implements PlannerService {
     	courseDao.save(course, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
-	@Override
-	public void addCourse(AdCourse course) {
-		courseDao.save(course, securityService.getCurrentUser());
-        sessionFactory.getCurrentSession().flush();
-	}
+    
+    
+//	@Override
+//	public void addCourse(AdCourse course) {
+//		courseDao.save(course, securityService.getCurrentUser());
+//        sessionFactory.getCurrentSession().flush();
+//	}
 
     @Override
     public void updateCourse(AdCourse course) {
@@ -785,6 +771,25 @@ public class PlannerServiceImpl implements PlannerService {
     @Override
     public void removeCourse(AdCourse course) {
     	courseDao.remove(course, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
+    
+    
+//    @Override
+//    public void addCourse(AdFaculty faculty, AdCourse course) {
+//        facultyDao.addCourse(faculty, course, securityService.getCurrentUser());
+//        sessionFactory.getCurrentSession().flush();
+//    }
+
+    @Override
+    public void updateCourse(AdFaculty faculty, AdCourse course) {
+        facultyDao.updateCourse(faculty, course, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
+
+    @Override
+    public void removeCourse(AdFaculty faculty, AdCourse course) {
+        facultyDao.removeCourse(faculty, course, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
@@ -808,6 +813,12 @@ public class PlannerServiceImpl implements PlannerService {
     public List<AdAcademicYear> findAcademicYears(String filter, Integer offset, Integer limit) {
         return academicYearDao.find(filter, offset, limit);
     }
+
+	@Override
+	public void addCourse(AdFaculty faculty, AdCourse course) {
+		// TODO Auto-generated method stub
+		
+	}
 
 
 }

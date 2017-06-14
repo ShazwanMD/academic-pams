@@ -1,3 +1,5 @@
+import {CourseClassification} from '../course-classification.enum';
+import { CourseClassificationComponent } from './../component/course-classification.component';
 import {Course} from './../course.interface';
 import {Faculty} from './../../faculties/faculty.interface';
 import {Component, ViewContainerRef, OnInit} from '@angular/core';
@@ -5,11 +7,11 @@ import {FormGroup, FormControl} from '@angular/forms';
 import {FormBuilder} from '@angular/forms';
 import {Router, ActivatedRoute} from '@angular/router';
 import {CourseActions} from "../course.action";
-;
 import {Store} from "@ngrx/store";
 import {PlannerModuleState} from "../../index";
 import {MdDialogRef} from "@angular/material";
 import {CourseStatus} from "../course-status.enum";
+
 
 @Component({
   selector: 'pams-course-creator',
@@ -33,7 +35,7 @@ export class CourseCreatorDialog implements OnInit {
               private dialog: MdDialogRef<CourseCreatorDialog>) {
   }
 
-   set program(value: Course) {
+   set course(value: Course) {
         this._course = value;
         this.create = true;
     }
@@ -45,7 +47,8 @@ export class CourseCreatorDialog implements OnInit {
       code: '',
       titleMs: '',
       titleEn: '',
-      status: CourseStatus.INACTIVE,
+      classification: CourseClassification.LEVEL_100,
+      status: CourseStatus.ACTIVE,
       faculty: <Faculty>{},
     });
 
@@ -53,8 +56,8 @@ export class CourseCreatorDialog implements OnInit {
   }
 
   submit(course: Course, isValid: boolean) {
-     console.log("adding program");
-        if (!course.id) this.store.dispatch(this.actions.saveCourse(course));
+     console.log("adding course");
+        if (!course.id) this.store.dispatch(this.actions.addCourse(course));
         else this.store.dispatch(this.actions.updateCourse(course));
         this.dialog.close();
         console.log(course);
