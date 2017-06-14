@@ -292,7 +292,7 @@ public interface PlannerService {
     
     void saveCourse(AdCourse course , AdFaculty faculty);
     
-    void addCourse(AdCourse course);
+//    void addCourse(AdCourse course);
 
     void updateCourse(AdCourse course);
 

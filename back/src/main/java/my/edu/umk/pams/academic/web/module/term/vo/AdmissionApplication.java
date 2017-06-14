@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import my.edu.umk.pams.academic.web.module.common.vo.StudyCenter;
 import my.edu.umk.pams.academic.web.module.core.vo.Document;
+import my.edu.umk.pams.academic.web.module.identity.vo.Actor;
 import my.edu.umk.pams.academic.web.module.identity.vo.Staff;
 import my.edu.umk.pams.academic.web.module.identity.vo.Student;
 import my.edu.umk.pams.academic.web.module.planner.vo.AcademicSession;
@@ -27,8 +28,17 @@ public class AdmissionApplication extends Document {
     private AcademicSession academicSession;
     private Program program;
     private StudyCenter studyCenter;
-    private Staff advisor;
+//    private Staff advisor;
+    private Actor advisor;
 
+
+	public Actor getActor() {
+		return advisor;
+	}
+
+	public void setActor(Actor advisor) {
+		this.advisor = advisor;
+	}
 
 	public String getAuditNo() {
 		return auditNo;
@@ -110,13 +120,13 @@ public class AdmissionApplication extends Document {
 		this.studyCenter = studyCenter;
 	}
     
-	public Staff getAdvisor(){
-		return advisor;
-	}
-
-	public void setAdvisor(Staff advisor) {
-		this.advisor = advisor;
-	}
+//	public Staff getAdvisor(){
+//		return advisor;
+//	}
+//
+//	public void setAdvisor(Staff advisor) {
+//		this.advisor = advisor;
+//	}
 
 
     @JsonCreator
