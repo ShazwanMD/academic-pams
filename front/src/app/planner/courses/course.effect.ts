@@ -15,7 +15,6 @@ export class CourseEffects {
               private plannerService: PlannerService,
               private store$: Store<PlannerModuleState>) {
   }
-
   @Effect() findCourses$ = this.actions$
     .ofType(CourseActions.FIND_COURSES)
     .switchMap(() => this.plannerService.findCourses())
