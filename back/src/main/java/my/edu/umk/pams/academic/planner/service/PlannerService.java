@@ -291,8 +291,6 @@ public interface PlannerService {
     boolean isCourseExists(String code, AdFaculty faculty);
     
     void saveCourse(AdCourse course , AdFaculty faculty);
-    
-    void addCourse(AdCourse course);
 
     void updateCourse(AdCourse course);
 
