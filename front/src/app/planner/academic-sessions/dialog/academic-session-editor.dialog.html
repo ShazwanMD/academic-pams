@@ -2,13 +2,13 @@
 
 <md-dialog-content>
   <form [formGroup]="editorForm">
-    <div layout="row" class="inset" flex>
+    <!--<div layout="row" class="inset" flex>
       <md-input-container flex>
         <input mdInput placeholder="Code" formControlName="code" flex/>
       </md-input-container>
-    </div>
+    </div>-->
 
-    <div layout="row" class="inset" flex>
+    <!--<div layout="row" class="inset" flex>
       <md-input-container flex>
         <input mdInput placeholder="Description" formControlName="description" flex/>
       </md-input-container>
@@ -18,19 +18,19 @@
     <md-input-container flex>
       <input mdInput placeholder="Current" formControlName="current" flex readonly/>
     </md-input-container>
-  </div>
+  </div>-->
 
-    <div layout="row" class="inset" flex>
-      <md-input-container flex>
-        <input mdInput placeholder="Start Date" formControlName="startDate" flex/>
-      </md-input-container>
-    </div>
+     <div layout="row"  class="inset" flex>
+            <md-input-container flex>
+              <input mdInput type="date" placeholder="Start Date" formControlName="startDate" flex/>
+            </md-input-container>
+          </div>
 
-    <div layout="row" class="inset" flex>
-      <md-input-container flex>
-        <input mdInput placeholder="End Date" formControlName="endDate" flex/>
-      </md-input-container>
-    </div>
+   <div layout="row" class="inset" flex>
+            <md-input-container flex>
+              <input mdInput type="date" placeholder="End Date" formControlName="endDate"flex/>
+            </md-input-container>
+          </div>
 
     <div layout="row" class="inset" flex>
        <pams-academic-semester-select
@@ -51,6 +51,7 @@
         [innerFormControl]="editorForm.controls['academicYear']">
       </pams-academic-year-select>
     </div>  -->
+
 
   </form>
 </md-dialog-content>
