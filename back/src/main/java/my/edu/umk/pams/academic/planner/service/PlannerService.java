@@ -141,6 +141,8 @@ public interface PlannerService {
     void updateCohort(AdCohort cohort);
 
     void removeCohort(AdCohort cohort);
+    
+    
 
     //====================================================================================================
     // FACULTY
@@ -291,8 +293,6 @@ public interface PlannerService {
     boolean isCourseExists(String code, AdFaculty faculty);
     
     void saveCourse(AdCourse course , AdFaculty faculty);
-    
-    void addCourse(AdCourse course);
 
     void updateCourse(AdCourse course);
 
@@ -307,7 +307,5 @@ public interface PlannerService {
     List<AdAcademicYear> findAcademicYears(String filter, Integer offset, Integer limit);
     
     void saveAcademicYear(AdAcademicYear year);
-
-	
 
 }

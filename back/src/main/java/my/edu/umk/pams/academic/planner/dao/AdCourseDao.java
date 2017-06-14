@@ -50,6 +50,9 @@ public interface AdCourseDao extends GenericDao<Long, AdCourse> {
 	void removePrerequisites(AdCourse course, AdUser user, AdCourse... prereqCourses);
 
     AdCoursePrerequisite findByCourseAndPrerequisite(AdCourse course, AdCourse prereqCourse);
+    
+
+	
 
 	
 }

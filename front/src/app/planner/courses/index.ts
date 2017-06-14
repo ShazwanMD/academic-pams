@@ -1,3 +1,6 @@
+import {CourseClassificationComponent} from './component/course-classification.component';
+import {CourseClassificationSelectComponent} from './component/course-classification-select.component';
+
 import { CourseCenterPage } from './course-center.page';
 import '@ngrx/core/add/operator/select';
 import {appRoutes, appRoutingProviders} from '../../app.routes';
@@ -17,9 +20,12 @@ import {CourseDetailPage} from "./course-detail.page";
 import {CourseEditorDialog} from "./dialog/course-editor.dialog";
 import {CourseCreatorDialog} from "./dialog/course-creator.dialog";
 import {CourseSelectComponent} from "./component/course-select.component";
+import {FacultySubModule} from "../faculties/index";
 import {CourseActionComponent} from "./component/course-action.component";
 import {CourseStatusComponent} from "./component/course-status.component";
 import {CourseStatusSelectComponent} from "./component/course-status-select.component";
+
+
 
 @NgModule({
   imports: [
@@ -27,6 +33,7 @@ import {CourseStatusSelectComponent} from "./component/course-status-select.comp
     BrowserModule,
     ReactiveFormsModule,
     CovalentCoreModule.forRoot(),
+    FacultySubModule.forRoot(),
     EffectsModule.run(CourseEffects),
   ],
   
@@ -43,6 +50,8 @@ import {CourseStatusSelectComponent} from "./component/course-status-select.comp
     CourseActionComponent,
     CourseStatusComponent,
     CourseStatusSelectComponent,
+    CourseClassificationSelectComponent,
+    CourseClassificationComponent,
 
     // dialog
     CourseEditorDialog,
@@ -55,6 +64,8 @@ import {CourseStatusSelectComponent} from "./component/course-status-select.comp
     CourseComponent,
     CourseStatusComponent,
     CourseStatusSelectComponent,
+    CourseClassificationSelectComponent,
+    CourseClassificationComponent,
 
   ],
   
