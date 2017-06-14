@@ -25,11 +25,28 @@ export class AdmissionEffects {
     .switchMap(() => this.termService.findAdmissions())
     .map(admissions => this.admissionActions.findAdmissionsSuccess(admissions));
 
-  @Effect() findAdmissionById$ = this.actions$
+ /* @Effect() findAdmissionById$ = this.actions$
     .ofType(AdmissionActions.FIND_ADMISSION_BY_ID)
     .map(action => action.payload)
     .switchMap(id => this.termService.findAdmissionById(id))
     .map(admission => this.admissionActions.findAdmissionByIdSuccess(admission));
+  */
+  
+  //created on 14/6/17
+  @Effect() findAdmissionById$ = this.actions$
+  .ofType(AdmissionActions.FIND_ADMISSION_BY_ID)
+  .map(action => action.payload)
+  .switchMap(id => this.termService.findAdmissionById(id))
+  .map(admission => this.admissionActions.findAdmissionByIdSuccess(admission))
+  .mergeMap(action => from([action,
+    this.admissionActions.findEnrollmentsByAdmission(action.payload),
+   ]));
+  
+  @Effect() findEnrollmentsByAdmission$ = this.actions$
+  .ofType(AdmissionActions.FIND_ENROLLMENTS_BY_ADMISSION)
+  .map(action => action.payload)
+  .switchMap(admission => this.termService.findEnrollmentsByAdmission(admission))
+  .map(enrollments => this.admissionActions.findEnrollmentsByAdmissionSuccess(enrollments));
 
   @Effect() saveAdmission$ = this.actions$
     .ofType(AdmissionActions.SAVE_ADMISSION)

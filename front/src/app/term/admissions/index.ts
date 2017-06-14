@@ -28,6 +28,7 @@ import {AdmissionUpdateTaskCreatorDialog} from "./dialog/admission-update-task-c
 import {AdmissionDeleteTaskCreatorDialog} from "./dialog/admission-delete-task-creator.dialog";
 import {AdmissionApplicationActions} from "./admission-application.action";
 import {PipeModule} from "../../app.pipe.module";
+import { AdmissionEnrollmentListComponent } from "./component/admission-enrollment-list.component";
 
 @NgModule({
   imports: [
@@ -53,6 +54,7 @@ import {PipeModule} from "../../app.pipe.module";
     AdmissionSelectComponent,
     AdmissionStatusSelectComponent,
     AcademicStandingSelectComponent,
+    AdmissionEnrollmentListComponent,
     
     //dialog
     AdmissionCreateTaskCreatorDialog,

@@ -192,6 +192,13 @@ export class TermService {
       .map((res: Response) => <Admission>res.json());
   }
 
+  //find enrollments by admission created on 14/6/2017
+  findEnrollmentsByAdmission(admission: Admission): Observable<Enrollment[]> {
+      console.log("findEnrollmentsByAdmission");
+      return this.http.get(environment.endpoint + '/api/term/admissions/' + admission.id + '/enrollments')
+        .map((res: Response) => <Enrollment[]>res.json());
+    }
+    
   saveAdmission(admission: Admission): Observable<String> {
     console.log("saveAdmission");
     let headers = new Headers({
