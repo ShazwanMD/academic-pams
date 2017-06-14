@@ -358,6 +358,38 @@ public class PlannerController {
 	public ResponseEntity<Course> createCourse(@RequestBody Course course) {
 		throw new UnsupportedOperationException();
 	}
+	
+	
+	@RequestMapping(value = "/courses/{code}/save", method = RequestMethod.POST)
+	public ResponseEntity<String> saveCourse(@PathVariable String code, @RequestBody Course vo) {
+		dummyLogin();
+		AdCourse course = new AdCourseImpl();
+		course.setCode(vo.getCode());
+		course.setTitleMs(vo.getTitleMs());
+		course.setTitleEn(vo.getTitleEn());
+		course.setStatus(AdCourseStatus.get(vo.getStatus().ordinal()));
+		course.setFaculty(plannerService.findFacultyById(vo.getFaculty().getId()));
+		course.setClassification(AdAcademicClassification.get(vo.getClassification().ordinal()));
+		plannerService.addCourse(course);
+		return new ResponseEntity<String>("Success", HttpStatus.OK);
+		
+	}
+	
+	
+	@RequestMapping(value = "/courses/{code}/add", method = RequestMethod.POST)
+	public ResponseEntity<String> addCourse(@PathVariable String code, @RequestBody Course vo) {
+		dummyLogin();
+		AdCourse course = new AdCourseImpl();
+		course.setCode(vo.getCode());
+		course.setTitleMs(vo.getTitleMs());
+		course.setTitleEn(vo.getTitleEn());
+		course.setStatus(AdCourseStatus.get(vo.getStatus().ordinal()));
+		course.setFaculty(plannerService.findFacultyById(vo.getFaculty().getId()));
+		course.setClassification(AdAcademicClassification.get(vo.getClassification().ordinal()));
+		plannerService.addCourse(course);
+		return new ResponseEntity<String>("Success", HttpStatus.OK);
+		
+	}
 
 	@RequestMapping(value = "/courses/{code}/update", method = RequestMethod.POST)
 	public ResponseEntity<Course> updateCourse(@PathVariable String code, @RequestBody Course course) {
@@ -383,6 +415,9 @@ public class PlannerController {
 		plannerService.updateCourse(course);		
 		return new ResponseEntity<String>(course.getCode(), HttpStatus.OK);
 	}
+	
+	
+	
 
 
 	// ====================================================================================================

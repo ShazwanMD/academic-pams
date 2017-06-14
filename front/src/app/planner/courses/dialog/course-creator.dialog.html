@@ -26,13 +26,27 @@
       </md-input-container>
     </div>
 
-<!--
+      <div layout="row" class="pad-bottom pad-top">
+      <pams-course-status-select
+        [placeholder]="'Status'"
+        [innerFormControl]="creatorForm.controls.status">
+      </pams-course-status-select>
+
+    </div>
+    
     <div layout="row" class="pad-bottom pad-top">
+      <pams-course-classification-select
+        [placeholder]="'Select classification'"
+        [innerFormControl]="creatorForm.controls.classification">
+      </pams-course-classification-select>
+    </div>
+
+  <div layout="row" class="pad-bottom pad-top">
       <pams-faculty-select
         [placeholder]="'Select faculty'"
         [innerFormControl]="creatorForm.controls.faculty">
       </pams-faculty-select>
-    </div>-->
+    </div>
 
   </form>
 </md-dialog-content>
