@@ -231,6 +231,16 @@ export class PlannerService {
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
+   addCourse(course: Course): Observable<String> {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({headers: headers});
+    return this.http.post(environment.endpoint + '/api/planner/courses/' + course.code + '/add', JSON.stringify(course), options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
   updateCourse(course: Course): Observable<String> {
     let headers = new Headers({
       'Content-Type': 'application/json',
