@@ -64,7 +64,7 @@ export class StudentAdmissionApplicationCenterPage implements OnInit {
   }
 
   claimTask(task: AdmissionApplicationTask): void {
-    console.log('approved application:' + task.taskId);
+    console.log('claim application:' + task.taskId);
     this.store.dispatch(this.actions.claimAdmissionApplicationTask(task));
   }
 

@@ -1,12 +1,12 @@
 import {
   Component, OnInit, ViewChild, ViewContainerRef,
-  ComponentFactoryResolver, ComponentRef, Input, AfterViewInit
+  ComponentFactoryResolver, ComponentRef, Input, AfterViewInit,
 } from '@angular/core';
-import {Observable} from "rxjs";
-import {AdmissionApplicationTask} from "../admission-application-task.interface";
-import {FlowState} from "../../../core/flow-state.enum";
-import {AdmissionApplicationDraftTaskPanel} from "./admission-application-draft-task.panel";
-
+import {Observable} from 'rxjs';
+import {AdmissionApplicationTask} from '../admission-application-task.interface';
+import {FlowState} from '../../../core/flow-state.enum';
+import {AdmissionApplicationDraftTaskPanel} from './admission-application-draft-task.panel';
+import {AdmissionApplicationRegisterTaskPanel} from './admission-application-register-task.panel';
 
 @Component({
   selector: 'pams-admission-application-task-workflow',
@@ -25,14 +25,17 @@ export class AdmissionApplicationTaskWorkflowPanel implements OnInit {
 
   ngOnInit(): void {
     let componentFactory;
-    this.admissionApplicationTaskObservable.subscribe(task => {
+    this.admissionApplicationTaskObservable.subscribe((task) => {
       if (task.flowState) {
 
-        console.log("task flowState: " + task.flowState);
+        console.log('task flowState: ' + task.flowState);
         if (this.componentRef) this.componentRef.destroy();
         switch (FlowState[task.flowState.toString()]) {
           case FlowState.DRAFTED:
             componentFactory = this.cfr.resolveComponentFactory(AdmissionApplicationDraftTaskPanel);
+            break;
+          case FlowState.REGISTERED:
+            componentFactory = this.cfr.resolveComponentFactory(AdmissionApplicationRegisterTaskPanel);
             break;
         }
         this.componentRef = this.taskPanel.createComponent(componentFactory);
@@ -41,7 +44,7 @@ export class AdmissionApplicationTaskWorkflowPanel implements OnInit {
     });
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     if (this.componentRef) {
       this.componentRef.destroy();
     }

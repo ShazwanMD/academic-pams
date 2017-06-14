@@ -4,17 +4,12 @@ import {MdSnackBar, MdDialog, MdDialogRef, MdDialogConfig} from '@angular/materi
 import {TermService} from '../../../../services/term.service';
 import {AdmissionApplicationTask} from '../admission-application-task.interface';
 
-/*@Component({
- selector: 'pams-admission-application-register-task',
- templateUrl: './admission-application-register-task.panel.html',
- })*/
-
 @Component({
-  selector: 'pams-admission-application-draft-task',
-  templateUrl: './admission-application-draft-task.panel.html',
+  selector: 'pams-admission-application-register-task',
+  templateUrl: './admission-application-register-task.panel.html',
 })
 
-export class AdmissionApplicationDraftTaskPanel implements OnInit {
+export class AdmissionApplicationRegisterTaskPanel implements OnInit {
 
   private _router: Router;
   private _route: ActivatedRoute;
@@ -42,11 +37,11 @@ export class AdmissionApplicationDraftTaskPanel implements OnInit {
   ngOnInit(): void {
     this._route.params.subscribe((params: { taskId: string }) => {
       let taskId: string = params.taskId;
-      // ngrx
     });
+
   }
 
-  register(): void {
+  approve(): void {
     this._termService.completeAdmissionApplicationTask(this.admissionApplicationTask).subscribe((res) => {
       let snackBarRef = this._snackBar.open('AdmissionApplication  completed', 'OK');
       snackBarRef.afterDismissed().subscribe(() => {

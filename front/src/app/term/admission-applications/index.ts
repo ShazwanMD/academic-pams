@@ -31,6 +31,7 @@ import {IdentityModule} from '../../identity/index';
 import {PipeModule} from '../../app.pipe.module';
 import {AdmissionApplicationTaskDetailPage} from './admission-application-task-detail.page';
 import {AdmissionApplicationTaskListComponent} from './component/admission-application-task-list.component';
+import {AdmissionApplicationRegisterTaskPanel} from './panel/admission-application-register-task.panel';
 
 @NgModule({
   imports: [
@@ -57,6 +58,7 @@ import {AdmissionApplicationTaskListComponent} from './component/admission-appli
     // component
     AdmissionApplicationTaskWorkflowPanel,
     AdmissionApplicationDraftTaskPanel,
+    AdmissionApplicationRegisterTaskPanel,
     AdmissionApplicationTaskListComponent,
     AdmissionApplicationTaskStatusComponent,
     AdmissionApplicationListComponent,
@@ -83,6 +85,7 @@ import {AdmissionApplicationTaskListComponent} from './component/admission-appli
     AdmissionApplicationTaskCreatorDialog,
     AdmissionApplicationTaskEditorDialog,
     AdmissionApplicationDraftTaskPanel,
+    AdmissionApplicationRegisterTaskPanel,
   ],
 })
 
@@ -100,4 +103,3 @@ export class AdmissionApplicationSubModule {
     };
   }
 }
-

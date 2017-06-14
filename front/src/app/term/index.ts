@@ -71,13 +71,17 @@ import {offeringSectionListReducer, OfferingSectionListState} from './offerings/
 import {
   AdmissionApplicationTaskListState,
   pooledAdmissionApplicationTaskListReducer,
-  assignedAdmissionApplicationTaskListReducer
+  assignedAdmissionApplicationTaskListReducer,
 } from './admission-applications/admission-application-task-list.reducer';
 import {OfferingAssessmentListState, offeringAssessmentListReducer} from './offerings/offering-assessment-list.reducer';
 import {
   admissionEnrollmentListReducer,
   AdmissionEnrollmentListState,
 } from './admissions/admission-enrollment-list.reducer';
+import {
+  admissionApplicationTaskReducer,
+  AdmissionApplicationTaskState
+} from "./admission-applications/admission-application-task.reducer";
 
 export interface TermModuleState {
   admissions: AdmissionListState;
@@ -99,6 +103,7 @@ export interface TermModuleState {
   assignedEnrollmentApplicationTasks: EnrollmentApplicationTaskListState;
   pooledEnrollmentApplicationTasks: EnrollmentApplicationTaskListState;
   assignedAdmissionApplicationTasks: AdmissionApplicationTaskListState;
+  admissionApplicationTask: AdmissionApplicationTaskState;
   pooledAdmissionApplicationTasks: AdmissionApplicationTaskListState;
   enrollmentApplicationTask: EnrollmentApplicationTaskState;
   enrollmentApplicationItems: EnrollmentApplicationItemListState;
@@ -129,6 +134,7 @@ export const INITIAL_TERM_STATE: TermModuleState =
     pooledEnrollmentApplicationTasks: <EnrollmentApplicationTask[]>[],
     assignedAdmissionApplicationTasks: <AdmissionApplicationTask[]>[],
     pooledAdmissionApplicationTasks: <AdmissionApplicationTask[]>[],
+    admissionApplicationTask: <AdmissionApplicationTask>{},
     enrollmentApplicationTask: <EnrollmentApplicationTask>{},
     enrollmentApplicationItems: <EnrollmentApplicationItem[]>[],
     gradebookMatrices: <GradebookMatrix[]>[],
@@ -156,6 +162,7 @@ export const termModuleReducers = {
   pooledEnrollmentApplicationTasks: pooledEnrollmentApplicationTaskListReducer,
   assignedAdmissionApplicationTasks: assignedAdmissionApplicationTaskListReducer,
   pooledAdmissionApplicationTasks: pooledAdmissionApplicationTaskListReducer,
+  admissionApplicationTask: admissionApplicationTaskReducer,
   enrollmentApplicationTask: enrollmentApplicationTaskReducer,
   enrollmentApplicationItems: enrollmentApplicationItemListReducer,
   gradebookMatrices: gradebookMatrixListReducer,

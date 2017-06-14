@@ -50,9 +50,6 @@ public class TermTransformer {
 	@Autowired
 	private PlannerTransformer plannerTransformer;
 
-	@Autowired
-	private TermTransformer termTransformer;
-
 	public AdmissionApplicationTask toAdmissionApplicationTaskVo(Task t) {
 		Map<String, Object> vars = workflowService.getVariables(t.getExecutionId());
 		AdAdmissionApplication application = termService

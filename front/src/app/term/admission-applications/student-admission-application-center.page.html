@@ -36,6 +36,11 @@
               [admissionApplicationTasks]="assignedAdmissionApplicationTasks$ | async"
               (view)="viewTask($event)"></pams-assigned-admission-application-task-list>
           </md-tab>
+          <md-tab label="Student Application">
+            <pams-pooled-admission-application-task-list
+              [admissionApplicationTasks]="pooledAdmissionApplicationTasks$ | async"
+              (claim)="claimTask($event)"></pams-pooled-admission-application-task-list>
+          </md-tab>
         </md-tab-group>
       </md-card>
     </md-card>

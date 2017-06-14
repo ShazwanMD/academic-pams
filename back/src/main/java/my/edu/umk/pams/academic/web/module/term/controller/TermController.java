@@ -193,14 +193,14 @@ public class TermController {
     public ResponseEntity<String> startAdmissionApplicationTask(@RequestBody AdmissionApplication vo) throws Exception {
 
         LOG.debug("start task");
-		dummyLogin();
-		AdStudent student = identityService.findStudentById(vo.getStudent().getId());
-		AdAcademicSession academicSession = plannerService.findAcademicSessionById(vo.getAcademicSession().getId());
-		AdStudyCenter studyCenter = commonService.findStudyCenterById(1L); // todo: dummy study center
-		AdProgram program = student.getCohort().getProgram();
-		AdStaff advisor = identityService.findStaffByStaffNo("01615B"); // todo: dummy advisor
-        
-	    AdAdmissionApplication application = new AdAdmissionApplicationImpl();
+        dummyLogin();
+        AdStudent student = identityService.findStudentById(vo.getStudent().getId());
+        AdAcademicSession academicSession = plannerService.findAcademicSessionById(vo.getAcademicSession().getId());
+        AdStudyCenter studyCenter = commonService.findStudyCenterById(1L); // todo: dummy study center
+        AdProgram program = student.getCohort().getProgram();
+        AdStaff advisor = identityService.findStaffByStaffNo("01615B"); // todo: dummy advisor
+
+        AdAdmissionApplication application = new AdAdmissionApplicationImpl();
         application.setDescription(vo.getDescription());
         application.setReferenceNo(vo.getReferenceNo());
         application.setStudent(student);
@@ -245,7 +245,7 @@ public class TermController {
         return new ResponseEntity<AdmissionApplication>(termTransformer.toAdmissionApplicationVo(application),
                 HttpStatus.OK);
     }
-    
+
     //find enrollments by admission created on 14/6/17
     @RequestMapping(value = "/admissions/{id}/enrollments", method = RequestMethod.GET)
     public ResponseEntity<List<Enrollment>> findEnrollmentsByAdmission(@PathVariable Long id)
@@ -255,7 +255,7 @@ public class TermController {
         List<Enrollment> enrollmentVos = termTransformer.toEnrollmentVos(enrollments);
         return new ResponseEntity<List<Enrollment>>(enrollmentVos, HttpStatus.OK);
     }
-        
+
     // ====================================================================================================
     // ENROLLMENT
     // ====================================================================================================
@@ -827,29 +827,29 @@ public class TermController {
     @RequestMapping(value = "/offerings/{canonicalCode}/uploadGradebook", method = RequestMethod.POST)
     public ResponseEntity<String> uploadGradebook(@PathVariable String canonicalCode,
 //    		@RequestParam("file")
-    @RequestBody MultipartFile file) {
+                                                  @RequestBody MultipartFile file) {
         dummyLogin();
         LOG.debug("BackEnd:{}", file);
 
         // todo(sam): decide on format
         try {
-        	int i = 1;
+            int i = 1;
             Workbook workbook = WorkbookFactory.create(file.getInputStream());
             Sheet sheet = workbook.getSheetAt(0); // first sheet
-            
+
             while (i <= sheet.getLastRowNum()) {
-            	
-            	AdGradebook gradebook = new AdGradebookImpl();
-            	
-            	Row row = sheet.getRow(i++);
-            	//convert string to big decimal
-            	String str=row.getCell(i).getStringCellValue();
-            	BigDecimal bd=new BigDecimal(str);
-            	//set score
-            	gradebook.setScore(bd);
-            	termService.updateGradebook(gradebook);
-             	LOG.debug("Gradebook:{}",gradebook);
-            
+
+                AdGradebook gradebook = new AdGradebookImpl();
+
+                Row row = sheet.getRow(i++);
+                //convert string to big decimal
+                String str = row.getCell(i).getStringCellValue();
+                BigDecimal bd = new BigDecimal(str);
+                //set score
+                gradebook.setScore(bd);
+                termService.updateGradebook(gradebook);
+                LOG.debug("Gradebook:{}", gradebook);
+
             }
             // todo(sam): read cell row by row
             // todo(sam): dapat value, update gradebook
