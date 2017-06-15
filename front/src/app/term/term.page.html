@@ -1,71 +1,48 @@
 <td-layout-nav>
-  <div toolbar-content layout="row" layout-align="center center" flex>
-    <span>PAMS: Postgraduate Management System</span>
-    <span flex></span>
-  </div>
+<div toolbar-content layout="row" layout-align="center center" flex>
+	<span>PAMS: Postgraduate Management System</span> <span flex></span>
+</div>
 
-  <md-nav-list menu-items>
-    <a *ngFor="let item of routes" md-list-item [routerLink]="[item.route]" (click)="layout.close()">
-      <md-icon>{{item.icon}}</md-icon>
-      {{item.title}}
-    </a>
-  </md-nav-list>
+<md-nav-list menu-items> <a *ngFor="let item of routes"
+	md-list-item [routerLink]="[item.route]" (click)="layout.close()">
+	<md-icon>{{item.icon}}</md-icon> {{item.title}}
+</a> </md-nav-list> <td-layout-manage-list #list> <md-nav-list
+	list-items> <a md-list-item> <md-icon></md-icon> <span
+	style="color: red; font-weight: bold">ADMINISTRATOR</span>
+</a> <a md-list-item [routerLink]="['/term/admissions']"
+	mdTooltip="View admission page"> <md-icon>person_add</md-icon>
+	Admission
+</a> <a md-list-item [routerLink]="['/term/offerings']"
+	mdTooltip="View offerings page"> <md-icon>create</md-icon>
+	Offerings
+</a> <a md-list-item [routerLink]="['/term/enrollment-applications']"
+	mdTooltip="View enrollment page"> <md-icon>create</md-icon>
+	Enrollments
+</a> <md-divider></md-divider> <a md-list-item> <md-icon></md-icon> <span
+	style="color: red; font-weight: bold">STUDENT</span>
+</a> <a md-list-item
+	[routerLink]="['/term/admission-applications/student-admission-application-center']"
+	mdTooltip="View semester registration"> <md-icon>person_add</md-icon>
+	Semester Registration
+</a> <a md-list-item
+	[routerLink]="['/term/enrollment-applications/student-enrollment-center']"
+	mdTooltip="View course enrollment"> <md-icon>create</md-icon>
+	Course Enrollments
+</a> </md-nav-list>
+<div toolbar-buttons layout="row" layout-align="start center" flex>
+	<span flex>Term Page Center</span>
+	<button md-button class="md-icon-button">
+		<md-icon class="md-24">settings</md-icon>
+	</button>
+	<button md-button class="md-icon-button">
+		<md-icon class="md-24">more_vert</md-icon>
+	</button>
+</div>
 
-  <td-layout-manage-list #list>
-    <md-nav-list list-items>
-    <a md-list-item >
-        <md-icon></md-icon>
-        <span style="color:red;font-weight:bold">ADMINISTRATOR</span>
-      </a>
-      <a md-list-item [routerLink]="['/term/admissions']"   mdTooltip="View admission page">
-        <md-icon>person_add</md-icon>
-        Admission
-      </a>
-      <a md-list-item [routerLink]="['/term/offerings']"   mdTooltip="View offerings page">
-        <md-icon>create</md-icon>
-        Offerings
-      </a>
-       <a md-list-item [routerLink]="['/term/enrollment-applications']"   mdTooltip="View enrollment page">
-        <md-icon>create</md-icon>
-       Enrollments
-      </a>
-      <md-divider></md-divider>
-       <a md-list-item >
-        <md-icon></md-icon>
-       <span style="color:red;font-weight:bold">STUDENT</span>
-      </a>
-      <a md-list-item [routerLink]="['/term/admission-applications/student-admission-application-center']"  mdTooltip="View semester registration">
-      <md-icon>person_add</md-icon>
-        Semester Registration
-      </a>
-       <a md-list-item [routerLink]="['/term/enrollment-applications/student-enrollment-center']"  mdTooltip="View course enrollment">
-        <md-icon>create</md-icon>
-       Course Enrollments
-      </a>
-      
-    </md-nav-list>
-    <div toolbar-buttons layout="row" layout-align="start center" flex>
-      <span flex>Term Page Center</span>
-      <button md-button class="md-icon-button">
-        <md-icon class="md-24">settings</md-icon>
-      </button>
-      <button md-button class="md-icon-button">
-        <md-icon class="md-24">more_vert</md-icon>
-      </button>
-    </div>
+<md-card class=""> <md-card-title>Term Page
+Center</md-card-title> <md-card-subtitle> Welcome to Term Page Center</md-card-subtitle>
 
-    <md-card class="">
-      <md-card-title>Term Page Center</md-card-title>
-      <md-card-subtitle> Welcome to Term Page Center</md-card-subtitle>
-
-      <md-divider></md-divider>
-
-      <md-divider></md-divider>
-      <md-card-actions>
-        <a md-button color="accent" class="text-upper" [routerLink]="['/accounts-search']">
-          <span>View More</span>
-        </a>
-      </md-card-actions>
-    </md-card>
-  </td-layout-manage-list>
-</td-layout-nav>
+<md-divider></md-divider> <md-divider></md-divider> <md-card-actions>
+<a md-button color="accent" class="text-upper"
+	[routerLink]="['/accounts-search']"> <span>View More</span>
+</a> </md-card-actions> </md-card> </td-layout-manage-list> </td-layout-nav>
