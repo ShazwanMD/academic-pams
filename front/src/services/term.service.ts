@@ -198,7 +198,7 @@ export class TermService {
       return this.http.get(environment.endpoint + '/api/term/admissions/' + admission.id + '/enrollments')
         .map((res: Response) => <Enrollment[]>res.json());
     }
-    
+
   saveAdmission(admission: Admission): Observable<String> {
     console.log("saveAdmission");
     let headers = new Headers({
@@ -578,14 +578,14 @@ export class TermService {
 
   uploadGradebook(offering: Offering, file: File): Observable<String> {
     console.log('uploadGradebook');
-    console.log("ServiceUpload:{}",file);
+    console.log("file:",file);
     let headers = new Headers({
       'Content-Type': 'application/json',
       //'Authorization': 'Bearer ' + this.authService.token
     });
     let options = new RequestOptions({headers: headers});
     let formData = new FormData();
-    formData.append("file", file)
+    formData.append("file", file);
     return this.http.post(environment.endpoint + '/api/term/offerings/' + offering.canonicalCode + '/uploadGradebook', formData)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
