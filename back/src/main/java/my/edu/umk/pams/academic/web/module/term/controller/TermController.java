@@ -825,13 +825,10 @@ public class TermController {
     }
 
     @RequestMapping(value = "/offerings/{canonicalCode}/uploadGradebook", method = RequestMethod.POST)
-    public ResponseEntity<String> uploadGradebook(@PathVariable String canonicalCode,
-//    		@RequestParam("file")
-                                                  @RequestBody MultipartFile file) {
+    public ResponseEntity<String> uploadGradebook(@PathVariable String canonicalCode, @RequestParam("file") MultipartFile file) {
         dummyLogin();
         LOG.debug("BackEnd:{}", file);
 
-        // todo(sam): decide on format
         try {
             int i = 1;
             Workbook workbook = WorkbookFactory.create(file.getInputStream());
