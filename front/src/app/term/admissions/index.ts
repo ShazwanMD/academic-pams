@@ -19,6 +19,7 @@ import {EffectsModule} from '@ngrx/effects';
 import {AdmissionActions} from './admission.action';
 import {AdmissionListComponent} from './component/admission-list.component';
 import {AdmissionComponent} from './component/admission.component';
+import {AdmissionEnrollmentInfoComponent} from './component/admission-enrollment-info.component';
 import {AdmissionDetailPage} from './admission-detail.page';
 import {AdmissionCenterPage} from './admission-center.page';
 import {AdmissionEffects} from './admission.effect';
@@ -29,6 +30,7 @@ import {AdmissionDeleteTaskCreatorDialog} from './dialog/admission-delete-task-c
 import {AdmissionApplicationActions} from './admission-application.action';
 import {PipeModule} from '../../app.pipe.module';
 import {AdmissionEnrollmentListComponent} from './component/admission-enrollment-list.component';
+import { AdmissionEnrollmentDialog } from "./dialog/admission-enrollment.dialog";
 
 @NgModule({
   imports: [
@@ -51,6 +53,7 @@ import {AdmissionEnrollmentListComponent} from './component/admission-enrollment
     // component
     AdmissionListComponent,
     AdmissionComponent,
+    AdmissionEnrollmentInfoComponent,
     AdmissionSelectComponent,
     AdmissionStatusSelectComponent,
     AcademicStandingSelectComponent,
@@ -58,12 +61,14 @@ import {AdmissionEnrollmentListComponent} from './component/admission-enrollment
 
     // dialog
     AdmissionCreateTaskCreatorDialog,
+    AdmissionEnrollmentDialog,
     AdmissionUpdateTaskCreatorDialog,
     AdmissionDeleteTaskCreatorDialog,
   ],
   exports: [
     AdmissionSelectComponent,
   ],
+  entryComponents: [AdmissionEnrollmentDialog,]
 })
 
 export class AdmissionSubModule {
