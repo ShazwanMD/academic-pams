@@ -824,32 +824,94 @@ public class TermController {
         return new ResponseEntity<List<GradebookMatrix>>(matrices, HttpStatus.OK);
     }
 
+    private List<AdEnrollment> toEnrollments(Sheet sheet, AdOffering offering){
+        List<AdEnrollment> enrollments = new ArrayList<>();
+        int FIRST_COLUMN = 0;
+        int rowNum = 0;
+        while (rowNum <= sheet.getLastRowNum()) {
+            if (rowNum != 0) {
+                Row currentRow = sheet.getRow(rowNum);
+                String matricNo = currentRow.getCell(FIRST_COLUMN).getStringCellValue();
+                enrollments.add(termService.findEnrollmentByMatricNoAndOffering(matricNo, offering));
+            }
+            rowNum++;
+        }
+        LOG.debug("enrollments parsed size: " + enrollments.size());
+        return enrollments;
+    }
+    private List<AdAssessment> toAssessments(Sheet sheet){
+        List<AdAssessment> assessments = new ArrayList<>();
+        int FIRST_ROWNUM = 0;
+        Row FIRST_ROW = sheet.getRow(FIRST_ROWNUM);
+        int colNum = 0;
+        short lastCellNum = FIRST_ROW.getLastCellNum();
+        while (colNum < lastCellNum) {
+            if (colNum != 0) {
+                String assessmentCode = FIRST_ROW.getCell(colNum).getStringCellValue();
+                assessments.add(termService.findAssessmentByCanonicalCode(assessmentCode));
+            }
+            colNum++;
+        }
+        LOG.debug("assessments parsed size: " + assessments.size());
+        return assessments;
+    }
+
+    private AdSection toSection(Sheet sheet){
+        int FIRST_ROWNUM = 0;
+        Row row = sheet.getRow(FIRST_ROWNUM);
+        int i = 0;
+        String sectionCode = row.getCell(i).getStringCellValue();
+        LOG.debug("section parsed: " + sectionCode);
+        return termService.findSectionByCanonicalCode(sectionCode);
+    }
+
     @RequestMapping(value = "/offerings/{canonicalCode}/uploadGradebook", method = RequestMethod.POST)
     public ResponseEntity<String> uploadGradebook(@PathVariable String canonicalCode, @RequestParam("file") MultipartFile file) {
         dummyLogin();
-        LOG.debug("BackEnd:{}", file);
+        LOG.debug("BackEnd:{}", file.getName());
 
         try {
-            int i = 1;
             Workbook workbook = WorkbookFactory.create(file.getInputStream());
             Sheet sheet = workbook.getSheetAt(0); // first sheet
-
+            AdOffering offering = termService.findOfferingByCanonicalCode(canonicalCode);
+            List<AdEnrollment> enrollments = toEnrollments(sheet, offering);
+            List<AdAssessment> assessments = toAssessments(sheet);
+            AdSection section = toSection(sheet);
+            int i = 1; //skip row 0
             while (i <= sheet.getLastRowNum()) {
+                Row row = sheet.getRow(i);
+                int j = 1;
+                while (j < row.getLastCellNum()) {
+                    Cell cell = row.getCell(j);
+                    AdEnrollment enrollment = enrollments.get(i - 1);
+                    AdAssessment assessment = assessments.get(j - 1);
+                    AdGradebook gradebook = termService.findGradebookByAssessmentAndEnrollment(assessment, enrollment);
+                    boolean update = true;
+                    if (gradebook == null) {
+                        gradebook = new AdGradebookImpl();
+                        update = false;
+                    };
+                    gradebook.setEnrollment(enrollment);
+                    gradebook.setSection(section);
+                    gradebook.setAssessment(assessment);;
+                    gradebook.setScore(new BigDecimal(cell.getNumericCellValue()));
 
-                AdGradebook gradebook = new AdGradebookImpl();
-
-                Row row = sheet.getRow(i++);
-                //convert string to big decimal
-                String str = row.getCell(i).getStringCellValue();
-                BigDecimal bd = new BigDecimal(str);
-                //set score
-                gradebook.setScore(bd);
-                termService.updateGradebook(gradebook);
-                LOG.debug("Gradebook:{}", gradebook);
-
+                    BigDecimal score = gradebook.getScore();
+                    String assessmentDescription = assessment.getDescription();
+                    String name = enrollment.getAdmission().getStudent().getName();
+                    String message = score + ", " + assessmentDescription + ", " + name + ".";
+                    if (update) {
+                        termService.updateGradebook(gradebook);
+                        LOG.debug("Gradebook UPDATED {}", message);
+                    } else {
+                        termService.saveGradebook(gradebook);
+                        LOG.debug("Gradebook SAVED: {}", message);
+                    }
+                    j++;
+                }
+                i++;
             }
-            // todo(sam): read cell row by row
-            // todo(sam): dapat value, update gradebook
+            // todo(sam) kena tambah api klau xde e.g. findSectionByEnrollment(enrollment)
         } catch (IOException e) {
             e.printStackTrace();
         } catch (InvalidFormatException e) {
@@ -870,15 +932,30 @@ public class TermController {
 
             int rowNum = 0;
             List<AdEnrollment> enrollments = termService.findEnrollments(offering);
+            List<AdAssessment> assessments = termService.findAssessments(offering);
+
+            int headerNum = 0;
+            AdSection section = enrollments.get(0).getSection();
+            Row header = sheet.createRow(rowNum++);
+            Cell sectionCode = header.createCell(headerNum++);            // Cell A1 is for section code
+            sectionCode.setCellValue(section.getCanonicalCode());
+            LOG.debug("addSectionHeader " + section.getCanonicalCode());
+            for (AdAssessment assessment : assessments) {
+                Cell assessmentCode = header.createCell(headerNum++);   // Cell A2... is for assessment code
+                assessmentCode.setCellValue(assessment.getCanonicalCode());
+                LOG.debug("addAssessmentHeader " + assessment.getCanonicalCode());
+            }
+
             for (AdEnrollment enrollment : enrollments) {
                 Row row = sheet.createRow(rowNum++);
                 int colNum = 0;
-                List<AdAssessment> assessments = termService.findAssessments(offering);
                 Cell name = row.createCell(colNum++);
-                name.setCellValue((String) enrollment.getAdmission().getStudent().getMatricNo());
+                name.setCellValue(enrollment.getAdmission().getStudent().getMatricNo());
+                LOG.debug("addMatricNo " + section.getCanonicalCode());
                 for (AdAssessment assessment : assessments) {
                     Cell grade = row.createCell(colNum++);
-                    grade.setCellValue((Integer) 0);
+                    AdGradebook gradebookByAssessmentAndEnrollment = termService.findGradebookByAssessmentAndEnrollment(assessment, enrollment);
+                    grade.setCellValue(gradebookByAssessmentAndEnrollment.getScore().doubleValue());
                 }
             }
 
