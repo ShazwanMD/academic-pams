@@ -36,19 +36,6 @@ export class AdmissionApplicationCenterPage implements OnInit {
       this.pooledAdmissionApplicationTasks$ = this.store.select(...this.POOLED_ADMISSION_APPLICATION_TASKS);
   }
 
-  private columns: any[] = [
-    { name: 'auditNo', label: 'Audit No' },
-    { name: 'description', label: 'Description' },
-    { name: 'sourceNo', label: 'Source No' },
-    { name: 'referenceNo', label: 'Reference No' },
-    { name: 'actor.name', label: 'Advisor' },
-    { name: 'program.code', label: 'Program' },
-    { name: 'academicSession.code', label: 'Academic Session' },
-    { name: 'student.identityNo', label: 'Student' },
-    { name: 'studyCenter.code', label: 'Study Center' },
-    { name: 'action', label: '' }
-  ];
-
 createDialog(): void {
     console.log("showDialog");
     let config = new MdDialogConfig();
@@ -69,9 +56,9 @@ createDialog(): void {
     this.store.dispatch(this.actions.claimAdmissionApplicationTask(task));
   }
 
-  viewApplication(task: AdmissionApplicationTask) {
+  viewTask(task: AdmissionApplicationTask) {
     console.log("students applications: " + task.taskId);
-    this.router.navigate(['/term/admission-applications/admission-application-task-view', task.taskId]);
+    this.router.navigate(['/term/admission-applications/admission-application-task-detail', task.taskId]);
   }
 
   ngOnInit(): void {

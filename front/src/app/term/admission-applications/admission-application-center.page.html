@@ -38,29 +38,16 @@
       </button>
     </div>
     <md-card>
-      <!--<md-tab-group>
-        <md-tab label="List of Application">
-          <pams-admission-application-list [admissionApplications]="admissionApplications$ | async" (view)="viewAdmissionApplication($event)">
-          </pams-admission-application-list>
-        </md-tab>
-      </md-tab-group>-->
-
       <md-card>
         <md-tab-group [selectedIndex]="0">>
           <md-tab label="List of Enrollments">
-            <pams-assigned-admission-application-task-list [admissionApplicationTasks]="assignedAdmissionApplicationTasks$ | async" (view)="claimTask($event)"></pams-assigned-admission-application-task-list>
+            <pams-assigned-admission-application-task-list [admissionApplicationTasks]="assignedAdmissionApplicationTasks$ | async" (view)="viewTask($event)"></pams-assigned-admission-application-task-list>
           </md-tab>
           <md-tab label="List of Applications">
-            <pams-pooled-admission-application-task-list [admissionApplicationTasks]="pooledAdmissionApplicationTasks$ | async" (view)="viewApplication($event)"></pams-pooled-admission-application-task-list>
+            <pams-pooled-admission-application-task-list [admissionApplicationTasks]="pooledAdmissionApplicationTasks$ | async" (claim)="claimTask($event)"></pams-pooled-admission-application-task-list>
           </md-tab>
         </md-tab-group>
       </md-card>
-
-      <!--<md-card-actions>
-        <a md-button color="accent" class="text-upper" [routerLink]="['/admission-applications-search']">
-          <span>View More</span>
-        </a>
-      </md-card-actions>-->
     </md-card>
   </td-layout-manage-list>
 </td-layout-nav>

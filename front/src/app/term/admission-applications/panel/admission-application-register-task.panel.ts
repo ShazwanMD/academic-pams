@@ -1,4 +1,5 @@
-import {Component, OnInit, ViewContainerRef} from '@angular/core';
+import { AdmissionApplication } from './../admission-application.interface';
+import { Component, OnInit, ViewContainerRef, Input } from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 import {MdSnackBar, MdDialog, MdDialogRef, MdDialogConfig} from '@angular/material';
 import {TermService} from '../../../../services/term.service';
@@ -10,6 +11,8 @@ import {AdmissionApplicationTask} from '../admission-application-task.interface'
 })
 
 export class AdmissionApplicationRegisterTaskPanel implements OnInit {
+
+@Input() application: AdmissionApplication;
 
   private _router: Router;
   private _route: ActivatedRoute;
