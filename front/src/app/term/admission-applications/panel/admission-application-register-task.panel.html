@@ -47,11 +47,11 @@
                 </div>
               </md-tab>
 
-              <md-tab label="Program Detail"><br>
+              <md-tab label="Program Detailssss"><br>
                 <div layout="column" class="inset">
                   <div layout="row" class="pad-bottom">
                     <span flex="15">Code </span>
-                    <span> {{admissionApplicationTask?.application?.program?.code}}</span>
+                    <span> {{admissionApplicationTask?.application?.advisor?.name}}</span>
                   </div>
                   <div layout="row" class="pad-bottom">
                     <span flex="15">Title(MS)</span>
@@ -68,15 +68,15 @@
                 <div layout="column" class="inset">
                   <div layout="row" class="pad-bottom">
                     <span flex="15">Advisor ID </span>
-                    <span> {{admissionApplicationTask?.application?.actor?.identityNo}}</span>
+                    <span>{{admissionApplicationTask?.application?.auditNo}}</span>
                   </div>
                   <div layout="row" class="pad-bottom">
                     <span flex="15">Advisor Name</span>
-                    <span> {{admissionApplicationTask?.application?.actor?.name}}</span>
+                    <span> {{admissionApplicationTask?.application?.advisor?.name}}</span>
                   </div>
                   <div layout="row" class="pad-bottom">
                     <span flex="15">Advisor Type</span>
-                    <span> {{admissionApplicationTask?.application?.actor?.actorType}}</span>
+                    <span> {{admissionApplicationTask?.application?.advisor?.actorType}}</span>
                   </div>
                 </div>
               </md-tab>

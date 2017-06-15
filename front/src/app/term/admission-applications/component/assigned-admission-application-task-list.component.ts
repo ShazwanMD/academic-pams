@@ -11,7 +11,7 @@ export class AssignedAdmissionApplicationTaskListComponent {
 
   private columns: any[] = [
     { name: 'referenceNo', label: 'Reference No' },
-    { name: 'application.actor.name', label: 'Advisor ID' },
+    { name: 'application.advisor.identityNo', label: 'Advisor ID' },
     { name: 'application.student.cohort.program.code', label: 'Program' },
     { name: 'application.academicSession.code', label: 'Academic Session' },
     { name: 'application.student.identityNo', label: 'Student ID' },

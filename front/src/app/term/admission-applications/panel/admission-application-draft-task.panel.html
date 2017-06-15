@@ -64,19 +64,19 @@
                 </div>
               </md-tab>
 
-              <md-tab label="Advisor and Student Detail"><br>
+              <md-tab label="Advisor and Student Details"><br>
                 <div layout="column" class="inset">
                   <div layout="row" class="pad-bottom">
                     <span flex="15">Advisor ID </span>
-                    <span> {{admissionApplicationTask?.application?.actor?.identityNo}}</span>
+                    <span> {{admissionApplicationTask?.application?.advisor?.identityNo}}</span>
                   </div>
                   <div layout="row" class="pad-bottom">
                     <span flex="15">Advisor Name</span>
-                    <span> {{admissionApplicationTask?.application?.actor?.name}}</span>
+                    <span> {{admissionApplicationTask?.application?.advisor?.name}}</span>
                   </div>
                   <div layout="row" class="pad-bottom">
                     <span flex="15">Advisor Type</span>
-                    <span> {{admissionApplicationTask?.application?.actor?.actorType}}</span>
+                    <span> {{admissionApplicationTask?.application?.advisor?.actorType}}</span>
                   </div>
                 </div>
               </md-tab>
