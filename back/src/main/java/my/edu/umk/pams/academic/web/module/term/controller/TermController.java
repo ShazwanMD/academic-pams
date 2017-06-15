@@ -757,7 +757,6 @@ public class TermController {
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
 
-    // update appointment by section
     @RequestMapping(value = "/sections/{canonicalCode}/appointments/{id}", method = RequestMethod.PUT)
     public ResponseEntity<String> updateAppointment(@PathVariable String canonicalCode, @RequestBody Appointment vo) {
         dummyLogin();
@@ -771,7 +770,6 @@ public class TermController {
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
 
-    // delete appointment by section
     @RequestMapping(value = "/sections/{canonicalCode}/appointments/{appointmentId}", method = RequestMethod.DELETE)
     public ResponseEntity<String> removeAppointment(@PathVariable String canonicalCode,
                                                     @PathVariable Long appointmentId) {
@@ -802,7 +800,6 @@ public class TermController {
 
     }
 
-    // gradebook
     @RequestMapping(value = "/offerings/{canonicalCode}/gradebookMatrices", method = RequestMethod.GET)
     public ResponseEntity<List<GradebookMatrix>> findGradebookMatrices(@PathVariable String canonicalCode) {
         AdOffering offering = termService.findOfferingByCanonicalCode(canonicalCode);
@@ -822,47 +819,6 @@ public class TermController {
         }
         LOG.debug("Enrollment:{}", enrollments);
         return new ResponseEntity<List<GradebookMatrix>>(matrices, HttpStatus.OK);
-    }
-
-    private List<AdEnrollment> toEnrollments(Sheet sheet, AdOffering offering){
-        List<AdEnrollment> enrollments = new ArrayList<>();
-        int FIRST_COLUMN = 0;
-        int rowNum = 0;
-        while (rowNum <= sheet.getLastRowNum()) {
-            if (rowNum != 0) {
-                Row currentRow = sheet.getRow(rowNum);
-                String matricNo = currentRow.getCell(FIRST_COLUMN).getStringCellValue();
-                enrollments.add(termService.findEnrollmentByMatricNoAndOffering(matricNo, offering));
-            }
-            rowNum++;
-        }
-        LOG.debug("enrollments parsed size: " + enrollments.size());
-        return enrollments;
-    }
-    private List<AdAssessment> toAssessments(Sheet sheet){
-        List<AdAssessment> assessments = new ArrayList<>();
-        int FIRST_ROWNUM = 0;
-        Row FIRST_ROW = sheet.getRow(FIRST_ROWNUM);
-        int colNum = 0;
-        short lastCellNum = FIRST_ROW.getLastCellNum();
-        while (colNum < lastCellNum) {
-            if (colNum != 0) {
-                String assessmentCode = FIRST_ROW.getCell(colNum).getStringCellValue();
-                assessments.add(termService.findAssessmentByCanonicalCode(assessmentCode));
-            }
-            colNum++;
-        }
-        LOG.debug("assessments parsed size: " + assessments.size());
-        return assessments;
-    }
-
-    private AdSection toSection(Sheet sheet){
-        int FIRST_ROWNUM = 0;
-        Row row = sheet.getRow(FIRST_ROWNUM);
-        int i = 0;
-        String sectionCode = row.getCell(i).getStringCellValue();
-        LOG.debug("section parsed: " + sectionCode);
-        return termService.findSectionByCanonicalCode(sectionCode);
     }
 
     @RequestMapping(value = "/offerings/{canonicalCode}/uploadGradebook", method = RequestMethod.POST)
@@ -890,10 +846,12 @@ public class TermController {
                     if (gradebook == null) {
                         gradebook = new AdGradebookImpl();
                         update = false;
-                    };
+                    }
+                    ;
                     gradebook.setEnrollment(enrollment);
                     gradebook.setSection(section);
-                    gradebook.setAssessment(assessment);;
+                    gradebook.setAssessment(assessment);
+                    ;
                     gradebook.setScore(new BigDecimal(cell.getNumericCellValue()));
 
                     BigDecimal score = gradebook.getScore();
@@ -974,6 +932,48 @@ public class TermController {
     // ====================================================================================================
     // PRIVATE METHODS
     // ====================================================================================================
+
+    private List<AdEnrollment> toEnrollments(Sheet sheet, AdOffering offering) {
+        List<AdEnrollment> enrollments = new ArrayList<>();
+        int FIRST_COLUMN = 0;
+        int rowNum = 0;
+        while (rowNum <= sheet.getLastRowNum()) {
+            if (rowNum != 0) {
+                Row currentRow = sheet.getRow(rowNum);
+                String matricNo = currentRow.getCell(FIRST_COLUMN).getStringCellValue();
+                enrollments.add(termService.findEnrollmentByMatricNoAndOffering(matricNo, offering));
+            }
+            rowNum++;
+        }
+        LOG.debug("enrollments parsed size: " + enrollments.size());
+        return enrollments;
+    }
+
+    private List<AdAssessment> toAssessments(Sheet sheet) {
+        List<AdAssessment> assessments = new ArrayList<>();
+        int FIRST_ROWNUM = 0;
+        Row FIRST_ROW = sheet.getRow(FIRST_ROWNUM);
+        int colNum = 0;
+        short lastCellNum = FIRST_ROW.getLastCellNum();
+        while (colNum < lastCellNum) {
+            if (colNum != 0) {
+                String assessmentCode = FIRST_ROW.getCell(colNum).getStringCellValue();
+                assessments.add(termService.findAssessmentByCanonicalCode(assessmentCode));
+            }
+            colNum++;
+        }
+        LOG.debug("assessments parsed size: " + assessments.size());
+        return assessments;
+    }
+
+    private AdSection toSection(Sheet sheet) {
+        int FIRST_ROWNUM = 0;
+        Row row = sheet.getRow(FIRST_ROWNUM);
+        int i = 0;
+        String sectionCode = row.getCell(i).getStringCellValue();
+        LOG.debug("section parsed: " + sectionCode);
+        return termService.findSectionByCanonicalCode(sectionCode);
+    }
 
     private List<Section> decorateSection(List<Section> sections) {
         for (Section section : sections) {
