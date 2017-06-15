@@ -22,8 +22,10 @@ export class EnrollmentApplicationItemComponent implements OnInit {
   private selectedRows: EnrollmentApplicationItem[];
 
   private columns: any[] = [
-    {name: 'section.code', label: 'Section'},
-    {name: 'section.ordinal', label: 'Section No'},
+    {name: 'section.ordinal', label: 'Section'},
+    {name: 'section.code', label: 'Code'},
+    {name: 'section.offering.titleEn', label: 'Title'},
+    {name: 'section.offering.course.credit', label: 'Credit'},
     {name: 'action', label: 'Action'}
   ];
 
