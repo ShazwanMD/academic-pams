@@ -10,7 +10,6 @@ import org.springframework.web.servlet.config.annotation.DefaultServletHandlerCo
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
-@ComponentScan
 @Configuration
 public class WebConfiguration extends WebMvcConfigurerAdapter {
 
@@ -20,12 +19,6 @@ public class WebConfiguration extends WebMvcConfigurerAdapter {
         internalResourceViewResolver.setPrefix("/WEB-INF/");
         internalResourceViewResolver.setSuffix(".jsp");
         return internalResourceViewResolver;
-    }
-
-    @Bean
-    public CommonsMultipartResolver multipartResolver() {
-        CommonsMultipartResolver resolver = new CommonsMultipartResolver();
-        return resolver;
     }
 
     @Override
