@@ -21,6 +21,7 @@ export class AdmissionEnrollmentInfoComponent {
     ];
 
     @Input() admission: Admission;
+    @Input() enrollment: Enrollment;
     @Input() enrollments: Enrollment[];
     @Output() view: EventEmitter<Enrollment> = new EventEmitter<Enrollment>();
 }

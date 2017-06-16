@@ -4,9 +4,9 @@
       <img md-card-avatar src=".\..\assets\ico\student\A17M0009F.jpg">
       <md-card-title>Name: {{admission?.student?.name}}</md-card-title>
       <md-card-subtitle>Identity No.:{{admission?.student?.identityNo}}</md-card-subtitle>
-      <md-card-subtitle>Session:{{admission?.student?.identityNo}}</md-card-subtitle>    
+      <md-card-subtitle>Session:{{admission?.student?.cohort?.academicSession?.code}}</md-card-subtitle>    
    </md-card-header>
-  <p>&nbsp;</p>  
+ <p>&nbsp;</p> 
 <table style="height: 100%;" border="0" width="100%" cellspacing="0" cellpadding="0">
 <tbody>
 <tr>
@@ -52,6 +52,7 @@
 </tbody>
 </table>  
    <md-card-content>
+   <p align="left">Total Credits: 100</p>
       <p>PAMS:Postgraduate Management System@2017</p>
    </md-card-content>
 </md-card>

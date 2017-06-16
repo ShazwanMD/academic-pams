@@ -58,9 +58,16 @@ export class OfferingEditorDialog implements OnInit {
     console.log("course: " + JSON.stringify(this._course));
 
     offering.canonicalCode = this._program.code + "-" + this._course.code;
+    offering.code = this._course.code;
+    offering.titleMs = this._course.titleMs;
+    offering.titleEn = this._course.titleEn;
+    
     console.log("code:" + this._program.code);
     console.log("courseCode:" + this._course.code);
     console.log("conicalCode:" + offering.canonicalCode);
+    console.log("offeringcode:" + offering.code);
+    console.log("offeringtitleMs:" + offering.titleMs);
+    console.log("offeringtitleEn:" + offering.titleEn);
 
     if (!this.edit) this.store.dispatch(this.actions.saveOffering(this._program, this._course, offering));
     else  this.store.dispatch(this.actions.updateOffering(offering));
