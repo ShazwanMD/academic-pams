@@ -15,7 +15,7 @@ export class AdmissionEnrollmentInfoComponent {
         { name: 'section.offering.titleEn', label: 'Title' },
         { name: 'section.offering.course.credit', label: 'Credit' },
         { name: 'section.offering.program.code', label: 'Program' },
-        { name: 'section.offering.course.faculty.name', label: 'Faculty' },
+        //{ name: 'section.offering.course.faculty.name', label: 'Faculty' },
         { name: 'enrollmentStatus', label: 'Status' },
         { name: 'action', label: '' },
     ];
