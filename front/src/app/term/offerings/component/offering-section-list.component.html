@@ -6,7 +6,7 @@
       <md-chip color="accent">{{sections?.length}}</md-chip>
     </md-chip-list>
     <span flex></span>
-    <button md-button class="md-icon-button" (click)="addSectionDialog()">
+    <button md-button class="md-icon-button" (click)="addSectionDialog()" mdTooltip="Add new section">
       <md-icon class="md-24 tc-grey-300" [ngClass]="{'tc-grey-700': selectedRows.length === 0}">add</md-icon>
     </button>
     <!--<button md-button class="md-icon-button" (click)="edit(selectedRows[0])" [disabled]="selectedRows.length != 1">-->
