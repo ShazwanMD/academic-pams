@@ -23,7 +23,7 @@
                 <button md-icon-button [md-menu-trigger-for]="menu1">
                   <md-icon>more_vert</md-icon>
                 </button>
-                <md-menu x-position="before" #menu1="mdMenu">
+                <md-menu x-position="before" #menu1="mdMenu" mdTooltip="Select student info actions">
                   <button md-menu-item (click)="editStudent()">Edit</button>
                   <!--
                   <button md-menu-item (click)="transferFaculty(row)">Transfer Faculty</button>

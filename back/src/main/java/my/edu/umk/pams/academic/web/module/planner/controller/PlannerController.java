@@ -435,7 +435,14 @@ public class PlannerController {
 		List<Curriculum> curriculums = plannerTransformer.toCurriculumVos(plannerService.findCurriculums(0, Integer.MAX_VALUE));
 		return new ResponseEntity<List<Curriculum>>(curriculums, HttpStatus.OK);
 	}
-
+	
+	@RequestMapping(value = "/curriculums/{code}", method = RequestMethod.GET)
+	public ResponseEntity<Curriculum> findCurriculumByCode(@PathVariable String code) {
+		Curriculum curriculum = plannerTransformer.toCurriculumVo(plannerService.findCurriculumByCode(code));
+		return new ResponseEntity<Curriculum>(curriculum, HttpStatus.OK);
+	}
+	
+	
 	// ====================================================================================================
 	// COHORT
 	// ====================================================================================================

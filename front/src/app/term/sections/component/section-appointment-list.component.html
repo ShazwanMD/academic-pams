@@ -4,7 +4,7 @@
 	<md-chip-list *ngIf="appointments?.length > 0"> <md-chip
 		color="accent">{{appointments?.length}}</md-chip> </md-chip-list>
 	<span flex></span>
-	<button md-button class="md-icon-button" (click)="addDialog()">
+	<button md-button class="md-icon-button" (click)="addDialog()" mdTooltip="Add new appointment">
 		<md-icon class="md-24 tc-grey-700">add</md-icon>
 	</button>
 	<button md-button class="md-icon-button"
@@ -28,7 +28,7 @@
 	let-column="column">
 <div layout="row">
 	<button md-icon-button [md-menu-trigger-for]="menu1"
-		mdTooltip="Select section actions">
+		mdTooltip="Select appointment actions">
 		<md-icon>more_vert</md-icon>
 	</button>
 	<md-menu x-position="before" #menu1="mdMenu">
