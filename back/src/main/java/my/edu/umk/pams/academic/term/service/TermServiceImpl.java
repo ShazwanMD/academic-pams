@@ -829,6 +829,12 @@ public class TermServiceImpl implements TermService {
         return enrollmentApplicationDao.findItems(application);
     }
 
+    //find enrollmentApplications by admission created 18/6/17
+	  @Override
+	    public List<AdEnrollmentApplication> findEnrollmentApplications(AdAdmission admission) {
+	        return enrollmentApplicationDao.find(admission);
+	    }
+    
     @Override
     public Integer countEnrollmentApplication(AdAcademicSession session) {
         return enrollmentApplicationDao.count(session);
@@ -1534,7 +1540,7 @@ public class TermServiceImpl implements TermService {
         map.put(WorkflowConstants.CANCEL_DECISION, false);
         return map;
     }
-    
-   
+
+	 
 	
 }

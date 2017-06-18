@@ -7,6 +7,8 @@ import my.edu.umk.pams.academic.core.GenericDaoSupport;
 import my.edu.umk.pams.academic.identity.model.AdStaff;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.identity.model.AdUser;
+import my.edu.umk.pams.academic.term.model.AdAdmission;
+import my.edu.umk.pams.academic.term.model.AdEnrollment;
 import my.edu.umk.pams.academic.term.model.AdEnrollmentApplication;
 import my.edu.umk.pams.academic.term.model.AdEnrollmentApplicationImpl;
 import my.edu.umk.pams.academic.term.model.AdEnrollmentApplicationItem;
@@ -238,6 +240,19 @@ public class AdEnrollmentApplicationDaoImpl extends GenericDaoSupport<Long, AdEn
         Session session = sessionFactory.getCurrentSession();
         session.delete(item);
     }
+
+	 @Override
+	    public List<AdEnrollmentApplication> find(AdAdmission admission) {
+	        Session session = sessionFactory.getCurrentSession();
+	        Query query = session.createQuery("select s from AdEnrollmentApplication s where " +
+	                "s.admission = :admission " +
+	                "and s.metadata.state = :state " +
+	                "order by s.id asc");
+	        query.setInteger("state", AdMetaState.ACTIVE.ordinal());
+	        query.setEntity("admission", admission);
+	        query.setCacheable(true);
+	        return (List<AdEnrollmentApplication>) query.list();
+	    }
 
 	
 }

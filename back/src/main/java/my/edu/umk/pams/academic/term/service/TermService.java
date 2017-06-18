@@ -286,6 +286,8 @@ public interface TermService {
     AdEnrollmentApplicationItem findEnrollmentApplicationItemBySection(AdSection section);
 
     List<AdEnrollmentApplication> findEnrollmentApplications(AdAcademicSession session);
+    
+    List<AdEnrollmentApplication> findEnrollmentApplications(AdAdmission admission);
 
     List<AdEnrollmentApplication> findEnrollmentApplications(AdAcademicSession session, Integer offset, Integer limit);
 

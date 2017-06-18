@@ -255,6 +255,16 @@ public class TermController {
         List<Enrollment> enrollmentVos = termTransformer.toEnrollmentVos(enrollments);
         return new ResponseEntity<List<Enrollment>>(enrollmentVos, HttpStatus.OK);
     }
+    
+  //find enrollment applications by admission created on 18/6/17
+    @RequestMapping(value = "/admissions/{id}/enrollmentApplications", method = RequestMethod.GET)
+    public ResponseEntity<List<EnrollmentApplication>> findEnrollmentApplicationsByAdmission(@PathVariable Long id)
+            throws UnsupportedEncodingException {
+        AdAdmission admission = termService.findAdmissionById(id);
+        List<AdEnrollmentApplication> enrollmentApplications = termService.findEnrollmentApplications(admission);
+        List<EnrollmentApplication> enrollmentApplicationVos = termTransformer.toEnrollmentApplicationVos(enrollmentApplications);
+        return new ResponseEntity<List<EnrollmentApplication>>(enrollmentApplicationVos, HttpStatus.OK);
+    }
 
     // ====================================================================================================
     // ENROLLMENT
