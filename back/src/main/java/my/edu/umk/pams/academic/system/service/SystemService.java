@@ -12,6 +12,7 @@ import java.util.Map;
  */
 public interface SystemService {
 
+
     //====================================================================================================
     // MODULE SUB MODULE
     //====================================================================================================
@@ -144,4 +145,23 @@ public interface SystemService {
 
     // TODO:
     void sendWithAttachment(String email, String s, String s1, String s2, String s3, HashMap<String, Object> vars);
+
+
+    //====================================================================================================
+    // EMAIL QUEUE
+    //====================================================================================================
+
+    List<AdEmailQueue> findEmailQueues();
+
+    List<AdEmailQueue> findEmailQueues(AdEmailQueueStatus status);
+
+    List<AdEmailQueue> findEmailQueues(AdEmailQueueStatus status, Integer offset, Integer limit);
+
+    Integer countEmailQueue();
+
+    void saveEmailQueue(AdEmailQueue emailQueue);
+
+    void updateEmailQueue(AdEmailQueue emailQueue);
+
+    void sendEmail();
 }

@@ -5,7 +5,6 @@ import my.edu.umk.pams.academic.security.service.SecurityService;
 import my.edu.umk.pams.academic.system.dao.*;
 import my.edu.umk.pams.academic.system.model.*;
 import my.edu.umk.pams.academic.util.Util;
-
 import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,9 +16,15 @@ import org.springframework.expression.common.TemplateParserContext;
 import org.springframework.expression.spel.SpelParserConfiguration;
 import org.springframework.expression.spel.standard.SpelExpressionParser;
 import org.springframework.expression.spel.support.StandardEvaluationContext;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMailMessage;
+import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
 import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
@@ -69,13 +74,19 @@ public class SystemServiceImpl implements SystemService {
     private AdEmailTemplateDao emailTemplateDao;
 
     @Autowired
+    private AdEmailQueueDao emailQueueDao;
+
+    @Autowired
+    private SecurityService securityService;
+
+    @Autowired
+    private JavaMailSender mailSender;
+
+    @Autowired
     private SessionFactory sessionFactory;
 
     @Autowired
     private ApplicationContext applicationContext;
-    
-    @Autowired
-    private SecurityService securityService;
 
 
     //====================================================================================================
@@ -277,7 +288,7 @@ public class SystemServiceImpl implements SystemService {
             // get old and new value
             Integer oldValue = referenceNo.getCurrentValue();
             Integer newValue = referenceNo.getCurrentValue() + referenceNo.getIncrementValue();
-
+            LOG.debug("referenceNo, Util.getCurrentUser() :" + Util.getCurrentUser());
             // update
             referenceNo.setCurrentValue(newValue);
             referenceNoDao.save(referenceNo, Util.getCurrentUser());
@@ -444,5 +455,63 @@ public class SystemServiceImpl implements SystemService {
     @Override
     public void sendWithAttachment(String email, String s, String s1, String s2, String s3, HashMap<String, Object> vars) {
 
+    }
+
+    //====================================================================================================
+    // EMAIL QUEUE
+    //====================================================================================================
+
+    @Override
+    public List<AdEmailQueue> findEmailQueues() {
+        return emailQueueDao.find();
+    }
+
+    @Override
+    public List<AdEmailQueue> findEmailQueues(AdEmailQueueStatus status) {
+        return emailQueueDao.find(status);
+    }
+
+    @Override
+    public List<AdEmailQueue> findEmailQueues(AdEmailQueueStatus status, Integer offset, Integer limit) {
+        return emailQueueDao.find(status); // todo(uda): limit offset
+    }
+
+    @Override
+    public Integer countEmailQueue() {
+        return emailQueueDao.count();
+    }
+
+    @Override
+    public void saveEmailQueue(AdEmailQueue emailQueue) {
+        emailQueueDao.save(emailQueue, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
+
+    @Override
+    public void updateEmailQueue(AdEmailQueue emailQueue) {
+        emailQueueDao.update(emailQueue, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
+
+    @Scheduled(cron = "*/5 * * * * *")
+    public void sendEmail() {
+        try {
+            List<AdEmailQueue> queues = emailQueueDao.find(AdEmailQueueStatus.QUEUED);
+            for (AdEmailQueue queue : queues) {
+                MimeMessage mimeMessage = mailSender.createMimeMessage();
+                MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true);
+                helper.setFrom(queue.getTo());
+                helper.setTo(queue.getTo());
+                helper.setSubject(queue.getSubject());
+                helper.setText(queue.getBody());
+                mailSender.send(mimeMessage);
+
+                // update queue
+                queue.setQueueStatus(AdEmailQueueStatus.SENT);
+                updateEmailQueue(queue);
+            }
+        } catch (MessagingException e) {
+            LOG.error("error " + e);
+        }
     }
 }
