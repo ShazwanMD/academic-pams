@@ -86,13 +86,19 @@ export class OfferingEffects {
     .switchMap(payload => this.termService.uploadGradebook(payload.offering, payload.file))
     .map(message => this.offeringActions.uploadGradebookSuccess(message));
 
-  @Effect() downloadGradebook$ = this.actions$
-    .ofType(OfferingActions.DOWNLOAD_GRADEBOOK)
-    .map(action => action.payload)
-    .switchMap(offering => this.termService.downloadGradebook(offering))
-    .map(blob => {
-      let url = window.URL.createObjectURL(blob);
-      window.open(url)
-    }).ignoreElements();
+    @Effect() downloadGradebook$ = this.actions$
+      .ofType(OfferingActions.DOWNLOAD_GRADEBOOK)
+      .map(action => action.payload)
+      .switchMap(offering => this.termService.downloadGradebook(offering))
+      .map(file => {
+          let url = URL.createObjectURL(file);
+          let a = document.createElement('a');
+          a.href = url ;
+          a.download = file.name;
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          URL.revokeObjectURL(url);
+      }).ignoreElements();
 }
 

@@ -604,10 +604,14 @@ export class TermService {
 
   }
 
-  downloadGradebook(offering: Offering): Observable<Blob> {
+  downloadGradebook(offering: Offering): Observable<File> {
     console.log('downloadGradebook');
     let options = new RequestOptions({ responseType: ResponseContentType.ArrayBuffer });
     return this.http.get(environment.endpoint + '/api/term/offerings/' + offering.canonicalCode + '/downloadGradebook', options)
-      .map((res: Response) => new Blob([res.arrayBuffer()], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' }));
+      .map((res: Response) => {
+        let type = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet';
+        let filename = offering.canonicalCode + '.xlsx';
+        return new File([res.arrayBuffer()], filename, {type: type});
+      });
   }
 }
