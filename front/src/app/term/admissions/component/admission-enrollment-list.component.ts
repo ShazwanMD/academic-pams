@@ -16,9 +16,9 @@ import { AdmissionEnrollmentDialog } from "../dialog/admission-enrollment.dialog
 export class AdmissionEnrollmentListComponent implements OnInit {
 
     private columns: any[] = [
-        { name: 'section.id', label: 'Section No.' },
-        { name: 'section.code', label: 'Code Section' },
-        { name: 'section.offering.titleEn', label: 'Course Title' },
+        { name: 'section.id', label: 'Section' },
+        { name: 'section.code', label: 'Code' },
+        { name: 'section.offering.titleEn', label: 'Title' },
         { name: 'section.offering.program.code', label: 'Program' },
         { name: 'section.offering.course.faculty.name', label: 'Faculty' },
         { name: 'enrollmentStatus', label: 'Status' },
