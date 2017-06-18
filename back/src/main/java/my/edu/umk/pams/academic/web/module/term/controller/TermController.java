@@ -896,12 +896,12 @@ public class TermController {
             AdSection section = enrollments.get(0).getSection();
             Row header = sheet.createRow(rowNum++);
             Cell sectionCode = header.createCell(headerNum++);            // Cell A1 is for section code
-            sectionCode.setCellValue(section.getCanonicalCode());
-            LOG.debug("addSectionHeader " + section.getCanonicalCode());
+            sectionCode.setCellValue(section.getCode());
+            LOG.debug("addSectionHeader " + section.getCode());
             for (AdAssessment assessment : assessments) {
                 Cell assessmentCode = header.createCell(headerNum++);   // Cell A2... is for assessment code
-                assessmentCode.setCellValue(assessment.getCanonicalCode());
-                LOG.debug("addAssessmentHeader " + assessment.getCanonicalCode());
+                assessmentCode.setCellValue(assessment.getDescription());
+                LOG.debug("addAssessmentHeader " + assessment.getDescription());
             }
 
             for (AdEnrollment enrollment : enrollments) {
@@ -909,11 +909,12 @@ public class TermController {
                 int colNum = 0;
                 Cell name = row.createCell(colNum++);
                 name.setCellValue(enrollment.getAdmission().getStudent().getMatricNo());
-                LOG.debug("addMatricNo " + section.getCanonicalCode());
+                LOG.debug("addMatricNo " + enrollment.getAdmission().getStudent().getMatricNo());
                 for (AdAssessment assessment : assessments) {
                     Cell grade = row.createCell(colNum++);
                     AdGradebook gradebookByAssessmentAndEnrollment = termService.findGradebookByAssessmentAndEnrollment(assessment, enrollment);
                     grade.setCellValue(gradebookByAssessmentAndEnrollment.getScore().doubleValue());
+                    
                 }
             }
 
