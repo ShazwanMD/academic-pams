@@ -55,6 +55,25 @@ export class AdmissionActions {
     };
   }
   
+  //FIND ENROLLMENTAPPLICATIONS BY ADMISSION
+  static FIND_ENROLLMENTAPPLICATIONS_BY_ADMISSION = '[Admission] Find EnrollmentApplications By Admission';
+
+ findEnrollmentApplicationsByAdmission(admission): Action {
+   return {
+     type: AdmissionActions.FIND_ENROLLMENTAPPLICATIONS_BY_ADMISSION,
+     payload: admission
+   };
+ }
+
+ static FIND_ENROLLMENTAPPLICATIONS_BY_ADMISSION_SUCCESS = '[Admission] Find EnrollmentApplications By Admission Success';
+
+ findEnrollmentApplicationsByAdmissionSuccess(enrollmentApplications): Action {
+   return {
+     type: AdmissionActions.FIND_ENROLLMENTAPPLICATIONS_BY_ADMISSION_SUCCESS,
+     payload: enrollmentApplications
+   };
+ }
+  
   static FIND_ADMISSION_BY_CURRENT = '[Admission] Find Admission By Current';
   findAdmissionByCurrent(admission): Action {
     return {

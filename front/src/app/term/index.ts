@@ -22,6 +22,7 @@ import {offeringReducer, OfferingState} from './offerings/offering.reducer';
 import {enrollmentReducer, EnrollmentState} from './enrollments/enrollment.reducer';
 import {offeringListReducer, OfferingListState} from './offerings/offering-list.reducer';
 import {Offering} from './offerings/offering.interface';
+import {EnrollmentApplication} from './enrollment-applications/enrollment-application.interface';
 import {Enrollment} from './enrollments/enrollment.interface';
 import {AdmissionActions} from './admissions/admission.action';
 import {AdmissionSubModule} from './admissions/index';
@@ -79,6 +80,10 @@ import {
   AdmissionEnrollmentListState,
 } from './admissions/admission-enrollment-list.reducer';
 import {
+    admissionEnrollmentApplicationListReducer,
+    AdmissionEnrollmentApplicationListState,
+  } from './admissions/admission-enrollmentApplication-list.reducer';
+import {
   admissionApplicationTaskReducer,
   AdmissionApplicationTaskState
 } from "./admission-applications/admission-application-task.reducer";
@@ -87,6 +92,7 @@ export interface TermModuleState {
   admissions: AdmissionListState;
   admission: AdmissionState;
   admissionEnrollments: AdmissionEnrollmentListState;
+  admissionEnrollmentApplications: AdmissionEnrollmentApplicationListState;
   offerings: OfferingListState;
   offering: OfferingState;
   offeringAssessments: OfferingAssessmentListState;
@@ -116,6 +122,7 @@ export const INITIAL_TERM_STATE: TermModuleState =
     admissions: <Admission[]>[],
     admission: <Admission>{},
     admissionEnrollments: <Enrollment[]>[],
+    admissionEnrollmentApplications: <EnrollmentApplication[]>[],
     offerings: <Offering[]>[],
     offering: <Offering>{},
     offeringSections: <Section[]>[],
@@ -144,6 +151,7 @@ export const termModuleReducers = {
   admissions: admissionListReducer,
   admission: admissionReducer,
   admissionEnrollments: admissionEnrollmentListReducer,
+  admissionEnrollmentApplications: admissionEnrollmentApplicationListReducer,
   admissionApplications: admissionApplicationListReducer,
   admissionApplication: admissionApplicationReducer,
   offerings: offeringListReducer,

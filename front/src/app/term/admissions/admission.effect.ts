@@ -42,6 +42,7 @@ export class AdmissionEffects {
   .map(admission => this.admissionActions.findAdmissionByIdSuccess(admission))
   .mergeMap(action => from([action,
     this.admissionActions.findEnrollmentsByAdmission(action.payload),
+    this.admissionActions.findEnrollmentApplicationsByAdmission(action.payload),
    ]));
   
   @Effect() findEnrollmentsByAdmission$ = this.actions$
@@ -49,6 +50,12 @@ export class AdmissionEffects {
   .map(action => action.payload)
   .switchMap(admission => this.termService.findEnrollmentsByAdmission(admission))
   .map(enrollments => this.admissionActions.findEnrollmentsByAdmissionSuccess(enrollments));
+  
+  @Effect() findEnrollmentApplicationsByAdmission$ = this.actions$
+  .ofType(AdmissionActions.FIND_ENROLLMENTAPPLICATIONS_BY_ADMISSION)
+  .map(action => action.payload)
+  .switchMap(admission => this.termService.findEnrollmentApplicationsByAdmission(admission))
+  .map(enrollmentApplications => this.admissionActions.findEnrollmentApplicationsByAdmissionSuccess(enrollmentApplications));
 
   @Effect() saveAdmission$ = this.actions$
     .ofType(AdmissionActions.SAVE_ADMISSION)
