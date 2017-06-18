@@ -11,4 +11,6 @@ export interface EnrollmentApplication extends Document {
     admission: Admission;
     academicSession: AcademicSession;
     applicationType: EnrollmentApplicationType;
+
+    selected: boolean;
 }

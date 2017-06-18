@@ -32,6 +32,7 @@ import {PipeModule} from '../../app.pipe.module';
 import {AdmissionEnrollmentListComponent} from './component/admission-enrollment-list.component';
 import { AdmissionEnrollmentDialog } from "./dialog/admission-enrollment.dialog";
 import { AdmissionActionComponent } from "./component/admission-action.component";
+import { AdmissionEnrollmentApplicationListComponent } from "./component/admission-enrollmentApplication-list.component";
 
 @NgModule({
   imports: [
@@ -60,6 +61,7 @@ import { AdmissionActionComponent } from "./component/admission-action.component
     AdmissionStatusSelectComponent,
     AcademicStandingSelectComponent,
     AdmissionEnrollmentListComponent,
+    AdmissionEnrollmentApplicationListComponent,
 
     // dialog
     AdmissionCreateTaskCreatorDialog,

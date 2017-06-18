@@ -205,6 +205,13 @@ export class TermService {
     return this.http.get(environment.endpoint + '/api/term/admissions/' + admission.id + '/enrollments')
       .map((res: Response) => <Enrollment[]>res.json());
   }
+  
+//find enrollmentApplications by admission created on 18/6/2017
+  findEnrollmentApplicationsByAdmission(admission: Admission): Observable<EnrollmentApplication[]> {
+    console.log("findEnrollmentApplicationsByAdmission");
+    return this.http.get(environment.endpoint + '/api/term/admissions/' + admission.id + '/enrollmentApplications')
+      .map((res: Response) => <EnrollmentApplication[]>res.json());
+  }
 
   saveAdmission(admission: Admission): Observable<String> {
     console.log("saveAdmission");

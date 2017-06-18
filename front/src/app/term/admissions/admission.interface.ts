@@ -10,10 +10,10 @@ import { AcademicStanding } from "./academic-standing.enum";
 export interface Admission extends MetaObject {
 
   id: null;
-  gpa: '';
-  cgpa: '';
-  creditTaken: '';
-  creditEarned: '';
+  gpa: number;
+  cgpa: number;
+  creditTaken: number;
+  creditEarned: number;
   cohort: Cohort;
   student: Student;
   academicSession: AcademicSession;

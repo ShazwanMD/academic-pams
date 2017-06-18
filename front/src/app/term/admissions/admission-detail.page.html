@@ -10,6 +10,12 @@
           [admission]="admission$ | async"
           [enrollments]="enrollments$ | async">
         </pams-admission-enrollment-list>
+         
+         <pams-admission-enrollmentApplication-list
+          [admission]="admission$ | async"
+          [enrollmentApplications]="enrollmentApplications$ | async">
+        </pams-admission-enrollmentApplication-list>
+      
       </div>
       <div flex-gt-md="30">
        <pams-admission-action [admission]="admission$ | async"></pams-admission-action>
