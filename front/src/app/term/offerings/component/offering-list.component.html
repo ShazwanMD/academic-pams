@@ -1,22 +1,16 @@
-<td-data-table
-  [data]="offerings"
-  [columns]="columns"
-  [sortBy]="code"
-  [sortOrder]="ASC"
-  [sortable]="false"
-  [multiple]="false"
-  [selectable]="false"
-  (rowSelect)="view.emit($event)" dense>
-  <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
-    <div layout="row">
-      <span flex>{{value}}</span>
-    </div>
-  </template>
-  <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
-    <div layout="row" mdTooltip="View offering details info">
-      <a md-button color="accent" class="text-upper" [routerLink]="['/term/offerings', row['canonicalCode']]">
-        <span>View</span>
-      </a>
-    </div>
-  </template>
-</td-data-table>
+<td-data-table [data]="offerings" [columns]="columns" [sortBy]="code"
+	[sortOrder]="ASC" [sortable]="false" [multiple]="false"
+	[selectable]="false" (rowSelect)="view.emit($event)" dense>
+<template tdDataTableTemplate="key" let-value="value" let-row="row"
+	let-column="column">
+<div layout="row">
+	<span flex>{{value}}</span>
+</div>
+</template> <template tdDataTableTemplate="action" let-value="value" let-row="row"
+	let-column="column">
+<div layout="row" mdTooltip="View offering details info">
+	<a md-button color="accent" class="text-upper"
+		[routerLink]="['/term/offerings', row['canonicalCode']]"> <span>View</span>
+	</a>
+</div>
+</template> </td-data-table>
