@@ -7,16 +7,16 @@ export interface Curriculum extends MetaObject {
   code: string;
   description: string;
   core: string,
-  curriculum: number,
-  elective: number,
-  general: number,
-  language: number,
-  other: number,
-  required: number,
-  totalCredit: number,
-  period: number,
-  maxPeriod: number,
-  ordinal: number,
+  curriculum: string,
+  elective: string,
+  general: string,
+  language: string,
+  other: string,
+  required: string,
+  totalCredit: string,
+  period: string,
+  maxPeriod: string,
+  ordinal: string,
   program: Program;
-  academicSession: AcademicSession;
+  // academicSession: AcademicSession;
 }
