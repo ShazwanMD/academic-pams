@@ -3,12 +3,12 @@
 	<form [formGroup]="creatorForm">
 
 	<!--Select student-->
-    <div layout="row" class="pad-bottom pad-top">
+   <!--  <div layout="row" class="pad-bottom pad-top">
       <pams-student-select 
         [placeholder]="'Select Student'" 
         [innerFormControl]="creatorForm.controls['student']">
       </pams-student-select>
-      </div>
+      </div> -->
 	<div layout="row" class="pad-bottom">
 			<md-input-container flex mdTooltip="Please insert gpa"> 
 				<input mdInput #gpa 
@@ -36,12 +36,12 @@
 				[innerFormControl]="creatorForm.controls.academicSession">
 			 </pams-academic-session-select> 
 		</div>
-		<div layout="row" class="pad-bottom pad-top" mdTooltip="Please select cohort">
+		<!-- <div layout="row" class="pad-bottom pad-top" mdTooltip="Please select cohort">
 			 <pams-cohort-select 
 			 		[placeholder]="'Select Cohort'"
 					[innerFormControl]="creatorForm.controls['cohort']">
 			 </pams-cohort-select>
-		</div>
+		</div> -->
 		<div layout="row" class="pad-bottom pad-top" mdTooltip="Please select study center">
       <pams-study-center-select
 			 		[placeholder]="'Select Study Center'"
