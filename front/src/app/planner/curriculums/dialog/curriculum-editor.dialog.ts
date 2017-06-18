@@ -18,7 +18,9 @@ import {Program} from '../../programs/program.interface';
 
 export class CurriculumEditorDialog implements OnInit {
 
-  private createForm: FormGroup;
+    private editorForm: FormGroup;
+    private edit: boolean = false;
+    private _curriculum: Curriculum;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -29,14 +31,34 @@ export class CurriculumEditorDialog implements OnInit {
   }
 
   ngOnInit(): void {
-    this.createForm = this.formBuilder.group(<Curriculum>{
+    this.editorForm = this.formBuilder.group(<Curriculum>{
+      id:null,
+      code:'',
+      description:'',
+      core:'',
+      curriculum:'',
+      elective:'',
+      general:'',
+      language:'',
+      maxPeriod:'',
+      ordinal:'',
+      other:'',
+      period:'',
+      required:'',
+      totalCredit:'',
       program: <Program>{},
       academicSession: <AcademicSession>{},
     });
+
+    if (this.edit) this.editorForm.patchValue(this._curriculum);
+
   }
 
   save(curriculum: Curriculum, isValid: boolean): void {
-    this.store.dispatch(this.actions.saveCurriculum(curriculum));
-    this.dialog.close();
+
+ if (!curriculum.id) this.store.dispatch(this.actions.saveCurriculum(curriculum));
+        else this.store.dispatch(this.actions.updateCurriculum(curriculum));
+        this.dialog.close();
+    
   }
 }
