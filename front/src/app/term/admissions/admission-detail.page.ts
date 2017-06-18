@@ -6,10 +6,9 @@ import {Observable} from 'rxjs';
 import {Admission} from './admission.interface';
 import {AdmissionActions} from './admission.action';
 import {TermModuleState} from '../index';
-import {AdmissionUpdateTaskCreatorDialog} from './dialog/admission-update-task-creator.dialog';
 import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';
-import {AdmissionDeleteTaskCreatorDialog} from './dialog/admission-delete-task-creator.dialog';
 import {Enrollment} from '../enrollments/enrollment.interface';
+import { AdmissionCreateTaskCreatorDialog } from "./dialog/admission-create-task-creator.dialog";
 
 @Component({
   selector: 'pams-admission-detail',
@@ -18,14 +17,15 @@ import {Enrollment} from '../enrollments/enrollment.interface';
 
 export class AdmissionDetailPage implements OnInit {
 
+  @Input() admission: Admission;
+    
   private ADMISSION: string[] = 'termModuleState.admission'.split('.');
   private ENROLLMENTS: string[] = 'termModuleState.admissionEnrollments'.split('.');
   private admission$: Observable<Admission>;
   private enrollments$: Observable<Enrollment[]>;
-  private creatorDialogRef: MdDialogRef<AdmissionUpdateTaskCreatorDialog>;
-  private creatorDialogRefDel: MdDialogRef<AdmissionDeleteTaskCreatorDialog>;
-  @Input() admission: Admission;
-
+  private creatorDialogRef: MdDialogRef<AdmissionCreateTaskCreatorDialog>;
+  private creatorDialogRefDel: MdDialogRef<AdmissionCreateTaskCreatorDialog>;
+  
   constructor(private router: Router,
               private route: ActivatedRoute,
               private actions: AdmissionActions,
@@ -45,7 +45,7 @@ export class AdmissionDetailPage implements OnInit {
     config.width = '40%';
     config.height = '70%';
     config.position = {top: '3px'};
-    this.creatorDialogRef = this.dialog.open(AdmissionUpdateTaskCreatorDialog, config);
+    this.creatorDialogRef = this.dialog.open(AdmissionCreateTaskCreatorDialog, config);
     this.creatorDialogRef.afterClosed().subscribe((res) => {
       console.log('close dialog');
       // load something here
@@ -58,9 +58,9 @@ export class AdmissionDetailPage implements OnInit {
     config.viewContainerRef = this.vcf;
     config.role = 'dialog';
     config.width = '40%';
-    config.height = '45%';
+    config.height = '70%';
     config.position = {top: '3px'};
-    this.creatorDialogRefDel = this.dialog.open(AdmissionDeleteTaskCreatorDialog, config);
+    this.creatorDialogRefDel = this.dialog.open(AdmissionCreateTaskCreatorDialog, config);
     this.creatorDialogRefDel.afterClosed().subscribe((res) => {
       console.log('close dialog');
       // load something here

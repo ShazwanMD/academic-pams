@@ -12,7 +12,7 @@
         </pams-admission-enrollment-list>
       </div>
       <div flex-gt-md="30">
-        <md-card>
+       <!--  <md-card>
           <md-card-title>Action</md-card-title>
           <md-card-subtitle>Actions
             available on current admission
@@ -26,12 +26,12 @@
               <h4 md-line>Update Admission</h4>
               <p md-line>Update this admission</p>
             </md-list-item>
-           <!--  <md-list-item
+            <md-list-item
               (click)="showDialogDelete()">
               <md-icon md-list-avatar>done_all</md-icon>
               <h4 md-line>Delete Admission</h4>
               <p md-line>Delete this admission</p>
-            </md-list-item> -->
+            </md-list-item>
             <md-divider></md-divider>
             <h3 md-subheader>Term Menu</h3>
 
@@ -48,7 +48,8 @@
             </md-list-item>
 
           </md-nav-list>
-        </md-card>
+        </md-card> -->
+         <pams-admission-action [admission]="admission$ | async"></pams-admission-action>
       </div>
     </div>
   </div>

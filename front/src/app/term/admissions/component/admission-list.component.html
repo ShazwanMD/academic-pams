@@ -23,7 +23,7 @@
         </div>
     </template>
     <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
-        <div layout="row">
+        <div layout="row" mdTooltip="View admission details info">
             <a md-button color="accent" class="text-upper"
                [routerLink]="['/term/admissions', row['id']]"> <span>View</span>
             </a>
