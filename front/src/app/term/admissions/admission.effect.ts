@@ -71,6 +71,6 @@ export class AdmissionEffects {
     .withLatestFrom(this.store$.select(...this.ADMISSION))
     .map(state => state[1])
     // .mergeMap(action => from([action, this.admissionActions.findAdmissions()]))
-    .map((admission: Admission) => this.admissionActions.findAdmissions())
+    .map((admission: Admission) => this.admissionActions.findAdmissionById(admission.id));
   ;
 }

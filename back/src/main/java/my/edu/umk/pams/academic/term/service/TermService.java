@@ -227,7 +227,7 @@ public interface TermService {
     //====================================================================================================
 
     AdAdmission findAdmissionById(Long id);
-    
+     
     AdAdmission findAdmissionByAcademicSessionCohortAndStudent(AdAcademicSession academicSession, AdCohort cohort, AdStudent student);
 
     List<AdAdmission> findAdmissions(Integer offset, Integer limit);
@@ -286,6 +286,8 @@ public interface TermService {
     AdEnrollmentApplicationItem findEnrollmentApplicationItemBySection(AdSection section);
 
     List<AdEnrollmentApplication> findEnrollmentApplications(AdAcademicSession session);
+    
+    List<AdEnrollmentApplication> findEnrollmentApplications(AdAdmission admission);
 
     List<AdEnrollmentApplication> findEnrollmentApplications(AdAcademicSession session, Integer offset, Integer limit);
 

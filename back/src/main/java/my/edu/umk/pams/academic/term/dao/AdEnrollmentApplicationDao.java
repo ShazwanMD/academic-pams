@@ -5,6 +5,8 @@ import my.edu.umk.pams.academic.core.GenericDao;
 import my.edu.umk.pams.academic.identity.model.AdStaff;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.identity.model.AdUser;
+import my.edu.umk.pams.academic.term.model.AdAdmission;
+import my.edu.umk.pams.academic.term.model.AdEnrollment;
 import my.edu.umk.pams.academic.term.model.AdEnrollmentApplication;
 import my.edu.umk.pams.academic.term.model.AdEnrollmentApplicationItem;
 import my.edu.umk.pams.academic.term.model.AdSection;
@@ -28,6 +30,8 @@ public interface AdEnrollmentApplicationDao extends GenericDao<Long, AdEnrollmen
     AdEnrollmentApplicationItem findItemBySection(AdSection section);
 
     List<AdEnrollmentApplication> find(AdAcademicSession session);
+    
+    List<AdEnrollmentApplication> find(AdAdmission admission);
 
     List<AdEnrollmentApplication> find(AdAcademicSession session, Integer offset, Integer limit);
 

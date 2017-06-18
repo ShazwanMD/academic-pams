@@ -116,12 +116,10 @@ public class TermController {
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/admissions", method = RequestMethod.PUT)
-    public ResponseEntity<String> updateAdmission(@PathVariable AdAcademicSession academicSession,
-                                                  @PathVariable AdCohort cohort, @PathVariable AdStudent student, @RequestBody Admission vo) {
+    @RequestMapping(value = "/admissions/{id}", method = RequestMethod.PUT)
+    public ResponseEntity<String> updateAdmission(@PathVariable Long id, @RequestBody Admission vo) {
         dummyLogin();
-        AdAdmission admission = termService.findAdmissionByAcademicSessionCohortAndStudent(academicSession, cohort,
-                student);
+        AdAdmission admission = termService.findAdmissionById(id);
         admission.setCgpa(vo.getCgpa());
         admission.setCreditEarned(vo.getCreditEarned());
         admission.setCreditTaken(vo.getCreditTaken());
@@ -134,8 +132,8 @@ public class TermController {
         admission.setSession(plannerService.findAcademicSessionByCode(vo.getAcademicSession().getCode()));
         termService.updateAdmission(admission);
         return new ResponseEntity<String>("Success Update Admission", HttpStatus.OK);
-    }
-
+    }  
+    
     // workflow
 
 
@@ -254,6 +252,16 @@ public class TermController {
         List<AdEnrollment> enrollments = termService.findEnrollments(admission);
         List<Enrollment> enrollmentVos = termTransformer.toEnrollmentVos(enrollments);
         return new ResponseEntity<List<Enrollment>>(enrollmentVos, HttpStatus.OK);
+    }
+    
+  //find enrollment applications by admission created on 18/6/17
+    @RequestMapping(value = "/admissions/{id}/enrollmentApplications", method = RequestMethod.GET)
+    public ResponseEntity<List<EnrollmentApplication>> findEnrollmentApplicationsByAdmission(@PathVariable Long id)
+            throws UnsupportedEncodingException {
+        AdAdmission admission = termService.findAdmissionById(id);
+        List<AdEnrollmentApplication> enrollmentApplications = termService.findEnrollmentApplications(admission);
+        List<EnrollmentApplication> enrollmentApplicationVos = termTransformer.toEnrollmentApplicationVos(enrollmentApplications);
+        return new ResponseEntity<List<EnrollmentApplication>>(enrollmentApplicationVos, HttpStatus.OK);
     }
 
     // ====================================================================================================

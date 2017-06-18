@@ -87,16 +87,18 @@ export class AdmissionActions {
     };
   }
 
-  static UPDATE_ADMISSION = '[Program] Update Program';
+  static UPDATE_ADMISSION = '[Admission] Update Admission';
   updateAdmission(admission): Action {
+      console.log("updateAdmission");
     return {
       type: AdmissionActions.UPDATE_ADMISSION,
       payload: admission
     };
   }
 
-  static UPDATE_ADMISSION_SUCCESS = '[Program] Update Program Success';
+  static UPDATE_ADMISSION_SUCCESS = '[Admission] Update Admission Success';
   updateAdmissionSuccess(message): Action {
+      console.log("updateAdmissionSuccess");
     return {
       type: AdmissionActions.UPDATE_ADMISSION_SUCCESS,
       payload: message

@@ -1,110 +1,34 @@
-<md-card>
-  <md-card-title>{{offering?.course?.titleMs}}</md-card-title>
-  <md-card-subtitle>{{offering?.course?.code}}</md-card-subtitle>
-  <md-card-subtitle>{{offering?.course?.titleMs}}</md-card-subtitle>
-  <md-divider></md-divider>
-  <md-card-content>
-    <md-tab-group>
-      <md-tab label="Offering Information">
-       <!--  <md-card>
-          <div md-content flex md-scroll-y>
-            <div layout="column" layout-gt-md="row" class="insert">
-
-              <div flex-gt-md="50">
-                <md-card-title>Offering Details Info</md-card-title>
-              </div>
-
-              <div flex-gt-md="50" align="right">
-              </div>
-            </div>
-          </div>
-
-          <md-divider></md-divider>
-          <md-card-content><br>
-            <div>Code : {{offering?.code}}</div>
-            <br>
-            <div>CanonicalCode : {{offering?.canonicalCode}}</div>
-            <br>
-            <div>Capacity : {{offering?.capacity}}</div>
-            <br>
-            <div>Title(MS) : {{offering?.titleMs}}</div>
-            <br>
-            <div>Title(EN) : {{offering?.titleEn}}</div>
-            <br>
-
-          </md-card-content>
-        </md-card> -->
-        
-        <div layout="column" class="inset">
-          <div layout="row" class="pad-bottom">
-            <span flex="15">Code </span>
-            <span>{{offering?.course?.code}}</span>
-          </div>
-           <div layout="row" class="pad-bottom">
-            <span flex="15">Capacity</span>
-            <span>{{offering?.capacity}}</span>
-          </div>
-          <!--<div layout="row" class="pad-bottom">
-            <span flex="20">CanonicalCode</span>
-            <span>{{offering?.canonicalCode}}</span>
-          </div>-->
-          <div layout="row" class="pad-bottom">
-            <span flex="15">Title(MS)</span>
-            <span>{{offering?.course?.titleMs}}</span>
-          </div>
-           <div layout="row" class="pad-bottom">
-            <span flex="15">Title(EN)</span>
-            <span>{{offering?.course?.titleEn}}</span>
-          </div>
-         
-        </div>
-      </md-tab>
-     
-      <md-tab label="Program Information">
-        <!-- <md-card>
-          <div md-content flex md-scroll-y>
-            <div layout="column" layout-gt-md="row" class="insert">
-
-              <div flex-gt-md="50">
-                <md-card-title>Program Details Info</md-card-title>
-              </div>
-
-              <div flex-gt-md="50" align="right">
-              </div>
-            </div>
-          </div>
-
-          <md-divider></md-divider>
-          <md-card-content><br>
-            <div>Program Code : {{offering?.program?.code}}</div>
-            <br>
-            <div>Program Title(MS) :{{offering?.program?.titleMs}}</div>
-            <br>
-            <div>Program Title(EN) :{{offering?.program?.titleEn}}</div>
-            <br>
-
-          </md-card-content>
-        </md-card> -->
-         <div layout="column" class="inset">
-          <div layout="row" class="pad-bottom">
-            <span flex="15">Code</span>
-            <span>{{offering?.program?.code}}</span>
-          </div>
-         
-          <div layout="row" class="pad-bottom">
-            <span flex="15">Title(MS)</span>
-            <span>{{offering?.program?.titleMs}}</span>
-          </div>
-           <div layout="row" class="pad-bottom">
-            <span flex="15">Title(EN)</span>
-            <span>{{offering?.program?.titleEn}}</span>
-          </div>
-         
-        </div>
-      </md-tab>
-    </md-tab-group>
-  </md-card-content>
-</md-card>
+<md-card> <md-card-title>{{offering?.course?.titleMs}}</md-card-title>
+<md-card-subtitle>{{offering?.course?.code}}</md-card-subtitle> <md-card-subtitle>{{offering?.course?.titleMs}}</md-card-subtitle>
+<md-divider></md-divider> <md-card-content> <md-tab-group>
+<md-tab label="Offering Information"> 
+<div layout="column" class="inset">
+	<div layout="row" class="pad-bottom">
+		<span flex="15">Code </span> <span>{{offering?.course?.code}}</span>
+	</div>
+	<div layout="row" class="pad-bottom">
+		<span flex="15">Capacity</span> <span>{{offering?.capacity}}</span>
+	</div>
+	<div layout="row" class="pad-bottom">
+		<span flex="15">Title(MS)</span> <span>{{offering?.course?.titleMs}}</span>
+	</div>
+	<div layout="row" class="pad-bottom">
+		<span flex="15">Title(EN)</span> <span>{{offering?.course?.titleEn}}</span>
+	</div>
+</div>
+</md-tab> <md-tab label="Program Information"> 
+<div layout="column" class="inset">
+	<div layout="row" class="pad-bottom">
+		<span flex="15">Code</span> <span>{{offering?.program?.code}}</span>
+	</div>
+	<div layout="row" class="pad-bottom">
+		<span flex="15">Title(MS)</span> <span>{{offering?.program?.titleMs}}</span>
+	</div>
+	<div layout="row" class="pad-bottom">
+		<span flex="15">Title(EN)</span> <span>{{offering?.program?.titleEn}}</span>
+	</div>
+</div>
+</md-tab> </md-tab-group> </md-card-content> </md-card>
 
 
 
