@@ -913,8 +913,12 @@ public class TermController {
                 for (AdAssessment assessment : assessments) {
                     Cell grade = row.createCell(colNum++);
                     AdGradebook gradebookByAssessmentAndEnrollment = termService.findGradebookByAssessmentAndEnrollment(assessment, enrollment);
-                    grade.setCellValue(gradebookByAssessmentAndEnrollment.getScore().doubleValue());
+                  
                     
+                    if(null != gradebookByAssessmentAndEnrollment)
+                    	  grade.setCellValue(gradebookByAssessmentAndEnrollment.getScore().doubleValue());
+                    	else  
+                    	 grade.setCellValue((double)0);
                 }
             }
 
