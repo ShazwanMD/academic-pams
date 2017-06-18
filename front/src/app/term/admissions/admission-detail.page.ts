@@ -9,6 +9,7 @@ import {TermModuleState} from '../index';
 import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';
 import {Enrollment} from '../enrollments/enrollment.interface';
 import { AdmissionCreateTaskCreatorDialog } from "./dialog/admission-create-task-creator.dialog";
+import { EnrollmentApplication } from "../enrollment-applications/enrollment-application.interface";
 
 @Component({
   selector: 'pams-admission-detail',
@@ -21,8 +22,10 @@ export class AdmissionDetailPage implements OnInit {
     
   private ADMISSION: string[] = 'termModuleState.admission'.split('.');
   private ENROLLMENTS: string[] = 'termModuleState.admissionEnrollments'.split('.');
+  private ENROLLMENTAPPLICATIONS: string[] = 'termModuleState.admissionEnrollmentApplications'.split('.');
   private admission$: Observable<Admission>;
   private enrollments$: Observable<Enrollment[]>;
+  private enrollmentApplications$: Observable<EnrollmentApplication[]>;
   private creatorDialogRef: MdDialogRef<AdmissionCreateTaskCreatorDialog>;
   private creatorDialogRefDel: MdDialogRef<AdmissionCreateTaskCreatorDialog>;
   
@@ -35,6 +38,7 @@ export class AdmissionDetailPage implements OnInit {
 
     this.admission$ = this.store.select(...this.ADMISSION);
     this.enrollments$ = this.store.select(...this.ENROLLMENTS);
+    this.enrollmentApplications$ = this.store.select(...this.ENROLLMENTAPPLICATIONS);
   }
 
   showDialog(): void {
