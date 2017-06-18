@@ -112,7 +112,17 @@ public class PlannerTransformer {
 	public Curriculum toCurriculumVo(AdCurriculum e) {
         Curriculum vo = new Curriculum();
         vo.setCode(e.getCode());
-        vo.setCode(e.getCode());
+        vo.setCoreCredit(e.getCoreCredit());
+        vo.setCurriculumCredit(e.getCurriculumCredit());
+        vo.setElectiveCredit(e.getElectiveCredit());
+        vo.setGeneralCredit(e.getGeneralCredit());
+        vo.setLanguageCredit(e.getLanguageCredit());
+        vo.setMaxPeriod(e.getMaxPeriod());
+        vo.setOrdinal(e.getOrdinal());
+        vo.setOtherCredit(e.getOthersCredit());
+        vo.setPeriod(e.getPeriod());
+        vo.setRequiredCredit(e.getRequiredCredit());
+        vo.setTotalCredit(e.getRequiredCredit());
         vo.setSubjects(plannerTransformer.toSubjectVos(e.getSubjects()));
         vo.setProgram(plannerTransformer.toProgramVo(e.getProgram()));
         return vo;
