@@ -227,7 +227,7 @@ public interface TermService {
     //====================================================================================================
 
     AdAdmission findAdmissionById(Long id);
-    
+     
     AdAdmission findAdmissionByAcademicSessionCohortAndStudent(AdAcademicSession academicSession, AdCohort cohort, AdStudent student);
 
     List<AdAdmission> findAdmissions(Integer offset, Integer limit);

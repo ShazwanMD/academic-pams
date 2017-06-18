@@ -123,6 +123,7 @@ export class TermService {
     return this.http.put(environment.endpoint + '/api/term/admissionApplications', JSON.stringify(admissionApplication))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
+  
 
   saveAdmissionApplication(admissionApplication: AdmissionApplication): Observable<String> {
     let headers = new Headers({
@@ -217,11 +218,10 @@ export class TermService {
       //'Authorization': 'Bearer ' + this.authService.token
     });
     let options = new RequestOptions({ headers: headers });
-    return this.http.put(environment.endpoint + '/api/term/admissions/', JSON.stringify(admission), options)
+    return this.http.put(environment.endpoint + '/api/term/admissions/' + admission.id, JSON.stringify(admission), options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
-
-
+  
   // ==================================================================================================== //
   // ENROLLMENT APPLICATION
   // ==================================================================================================== //

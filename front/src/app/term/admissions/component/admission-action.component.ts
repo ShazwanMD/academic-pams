@@ -30,7 +30,7 @@ export class AdmissionActionComponent {
     config.viewContainerRef = this.vcf;
     config.role = 'dialog';
     config.width = '60%';
-    config.height = '50%';
+    config.height = '95%';
     config.position = {top: '0px'};
     this.editorDialogRef = this.dialog.open(AdmissionCreateTaskCreatorDialog, config);
     this.editorDialogRef.componentInstance.admission = this.admission;

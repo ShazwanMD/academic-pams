@@ -116,12 +116,10 @@ public class TermController {
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/admissions", method = RequestMethod.PUT)
-    public ResponseEntity<String> updateAdmission(@PathVariable AdAcademicSession academicSession,
-                                                  @PathVariable AdCohort cohort, @PathVariable AdStudent student, @RequestBody Admission vo) {
+    @RequestMapping(value = "/admissions/{id}", method = RequestMethod.PUT)
+    public ResponseEntity<String> updateAdmission(@PathVariable Long id, @RequestBody Admission vo) {
         dummyLogin();
-        AdAdmission admission = termService.findAdmissionByAcademicSessionCohortAndStudent(academicSession, cohort,
-                student);
+        AdAdmission admission = termService.findAdmissionById(id);
         admission.setCgpa(vo.getCgpa());
         admission.setCreditEarned(vo.getCreditEarned());
         admission.setCreditTaken(vo.getCreditTaken());
@@ -134,8 +132,8 @@ public class TermController {
         admission.setSession(plannerService.findAcademicSessionByCode(vo.getAcademicSession().getCode()));
         termService.updateAdmission(admission);
         return new ResponseEntity<String>("Success Update Admission", HttpStatus.OK);
-    }
-
+    }  
+    
     // workflow
 
 

@@ -42,7 +42,7 @@ export class AdmissionDetailPage implements OnInit {
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
     config.role = 'dialog';
-    config.width = '40%';
+    config.width = '80%';
     config.height = '70%';
     config.position = {top: '3px'};
     this.creatorDialogRef = this.dialog.open(AdmissionCreateTaskCreatorDialog, config);
@@ -57,7 +57,7 @@ export class AdmissionDetailPage implements OnInit {
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
     config.role = 'dialog';
-    config.width = '40%';
+    config.width = '80%';
     config.height = '70%';
     config.position = {top: '3px'};
     this.creatorDialogRefDel = this.dialog.open(AdmissionCreateTaskCreatorDialog, config);
