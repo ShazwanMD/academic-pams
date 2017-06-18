@@ -1,12 +1,112 @@
 <h2 md-dialog-title>Create New Curriculum</h2>
 <md-dialog-content>
-  <form [formGroup]="createForm">
+  <form [formGroup]="editorForm">
+     <div layout="row" class="insert">
+      <md-input-container flex>
+        <input mdInput placeholder="Code"
+               formControlName="code"
+               flex/>
+      </md-input-container>
+    </div>
 
-    <div layout="row" class="pad-bottom pad-top">
-      <pams-academic-session-select
-        [placeholder]="'Select Session'"
-        [innerFormControl]="createForm.controls['academicSession']">
-      </pams-academic-session-select>
+     <div layout="row" class="insert">
+      <md-input-container flex>
+        <input mdInput
+               placeholder="coreCredit"
+               formControlName="core"
+               flex/>
+      </md-input-container>
+    </div>
+
+     <div layout="row" class="insert">
+      <md-input-container flex>
+        <input mdInput 
+               placeholder="curriculumCredit"
+               formControlName="curriculum"
+               flex/>
+      </md-input-container>
+    </div>
+
+     <div layout="row" class="insert">
+      <md-input-container flex>
+        <input mdInput
+               placeholder="electiveCredit"
+               formControlName="elective"
+               flex/>
+      </md-input-container>
+    </div>
+
+     <div layout="row" class="insert">
+      <md-input-container flex>
+        <input mdInput
+               placeholder="generalCredit"
+               formControlName="general"
+               flex/>
+      </md-input-container>
+    </div>
+
+     <div layout="row" class="insert">
+      <md-input-container flex>
+        <input mdInput 
+               placeholder="languageCredit"
+               formControlName="language"
+               flex/>
+      </md-input-container>
+    </div>
+
+     <div layout="row" class="insert">
+      <md-input-container flex>
+        <input mdInput 
+               placeholder="maxPeriod"
+               formControlName="maxPeriod"
+               flex/>
+      </md-input-container>
+    </div>
+
+<div layout="row" class="insert">
+      <md-input-container flex>
+        <input mdInput 
+               placeholder="ordinal"
+               formControlName="ordinal"
+               flex/>
+      </md-input-container>
+    </div>
+
+      <div layout="row" class="insert">
+      <md-input-container flex>
+        <input mdInput
+               placeholder="otherCredit"
+               formControlName="other"
+               flex/>
+      </md-input-container>
+    </div>
+
+     <div layout="row" class="insert">
+      <md-input-container flex>
+        <input mdInput 
+               placeholder="period"
+               formControlName="period"
+               flex/>
+    </md-input-container>
+    </div>
+
+
+       <div layout="row" class="insert">
+      <md-input-container flex>
+        <input mdInput 
+               placeholder="requiredCredit"
+               formControlName="required"
+               flex/>
+      </md-input-container>
+    </div>
+
+    <div layout="row" class="insert">
+      <md-input-container flex>
+        <input mdInput 
+               placeholder="totalCredit"
+               formControlName="totalCredit"
+               flex/>
+      </md-input-container>
     </div>
 
     <div layout="row" class="pad-bottom pad-top">
@@ -19,7 +119,7 @@
   </form>
 </md-dialog-content>
 <md-dialog-actions align="end">
-  <button md-raised-button color="accent" (click)="save(createForm.value, createForm.valid)">
+  <button md-raised-button color="accent" (click)="save(editorForm.value, editorForm.valid)">
     Save
   </button>
 </md-dialog-actions>

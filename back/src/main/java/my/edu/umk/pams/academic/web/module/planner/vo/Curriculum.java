@@ -14,6 +14,17 @@ import java.util.List;
 public class Curriculum extends MetaObject{
     private String code;
     private String description;
+    private Integer coreCredit;
+    private Integer curriculumCredit;
+    private Integer electiveCredit;
+    private Integer generalCredit;
+    private Integer languageCredit;
+    private Integer maxPeriod;
+    private Integer ordinal;
+    private Integer otherCredit;
+    private Integer period;
+    private Integer requiredCredit;
+    private Integer totalCredit;
     private List<Subject> subjects;
     private Program program;
 
@@ -48,7 +59,96 @@ public class Curriculum extends MetaObject{
     public void setDescription(String description) {
         this.description = description;
     }
+    
+    public Integer getCoreCredit() {
+        return coreCredit;
+    }
 
+    public void setCoreCredit(Integer coreCredit) {
+        this.coreCredit = coreCredit;
+    }
+    
+    public Integer getCurriculumCredit() {
+        return curriculumCredit;
+    }
+
+    public void setCurriculumCredit(Integer curriculumCredit) {
+        this.curriculumCredit = curriculumCredit;
+    }
+    
+    public Integer getElectiveCredit() {
+        return electiveCredit;
+    }
+
+    public void setElectiveCredit(Integer electiveCredit) {
+        this.electiveCredit = electiveCredit;
+    }
+    
+    public Integer getGeneralCredit() {
+        return generalCredit;
+    }
+
+    public void setGeneralCredit(Integer generalCredit) {
+        this.generalCredit = generalCredit;
+    }
+    
+    public Integer getLanguageCredit() {
+        return languageCredit;
+    }
+
+    public void setLanguageCredit(Integer languageCredit) {
+        this.languageCredit = languageCredit;
+    }
+    
+    public Integer getMaxPeriod() {
+        return maxPeriod;
+    }
+
+    public void setMaxPeriod(Integer maxPeriod) {
+        this.maxPeriod = maxPeriod;
+    }
+    
+    public Integer getOrdinal() {
+        return ordinal;
+    }
+
+    public void setOrdinal(Integer ordinal) {
+        this.ordinal = ordinal;
+    }
+    
+    public Integer getOtherCredit() {
+        return otherCredit;
+    }
+
+    public void setOtherCredit(Integer otherCredit) {
+        this.otherCredit = otherCredit;
+    }
+    
+    public Integer getPeriod() {
+        return period;
+    }
+
+    public void setPeriod(Integer period) {
+        this.period = period;
+    }
+    
+    public Integer getRequiredCredit() {
+        return requiredCredit;
+    }
+
+    public void setRequiredCredit(Integer requiredCredit) {
+        this.requiredCredit = requiredCredit;
+    }
+    
+    public Integer getTotalCredit() {
+        return totalCredit;
+    }
+
+    public void setTotalCredit(Integer totalCredit) {
+        this.totalCredit = totalCredit;
+    }
+    
+    
     @JsonCreator
     public static Curriculum create(String jsonString) {
         Curriculum o = null;
@@ -60,5 +160,4 @@ public class Curriculum extends MetaObject{
         }
         return o;
     }
-
 }
