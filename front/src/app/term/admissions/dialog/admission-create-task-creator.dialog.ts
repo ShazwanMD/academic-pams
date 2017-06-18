@@ -53,10 +53,10 @@ export class AdmissionCreateTaskCreatorDialog implements OnInit {
   ngOnInit(): void {
     this.creatorForm = this.formBuilder.group(<Admission>{
       id: null,
-      gpa: '',
-      cgpa: '',
-      creditTaken: '',
-      creditEarned: '',
+      gpa: 0,
+      cgpa: 0,
+      creditTaken: 0,
+      creditEarned: 0,
       standing: AcademicStanding.TBD,
       status: AdmissionStatus.ADMITTED,
       cohort: <Cohort>{},

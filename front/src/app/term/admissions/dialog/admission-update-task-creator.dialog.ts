@@ -40,10 +40,10 @@ export class AdmissionUpdateTaskCreatorDialog implements OnInit {
   ngOnInit(): void {
     this.editorForm = this.formBuilder.group(<Admission>{
       id: null,
-      gpa: '',
-      cgpa: '',
-      creditTaken: '',
-      creditEarned: '',
+      gpa: 0,
+      cgpa: 0,
+      creditTaken: 0,
+      creditEarned: 0,
       // standing: AcademicStanding.TBD,
       // status: AdmissionStatus.ADMITTED,
     });
