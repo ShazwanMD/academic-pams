@@ -68,7 +68,7 @@ export class CourseCenterPage implements OnInit {
     config.width = '60%';
     config.height = '70';
     config.position = {top: '1px'};
-    this.creatorDialogRef = this.dialog.open(CourseCreatorDialog, config);
+    this.creatorDialogRef = this.dialog.open(CourseCreatorDialog, config); if (code) this.creatorDialogRef.componentInstance.course = code;;
   
 
     
