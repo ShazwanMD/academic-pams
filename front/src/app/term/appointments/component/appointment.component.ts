@@ -12,7 +12,7 @@ import { TermModuleState } from "../../index";
 })
 export class AppointmentComponent {
 
-    @Input() imgPath:string = "./../assets/ico/"; //.\..\assets\ico\01001A.jpg  //--  "app/header/"
+    @Input() imgPath:string = "./../assets/ico/lecturer/"; //.\..\assets\ico\01001A.jpg  //--  "app/header/"
     imgFileName:string = "01001A.jpg";
      
     @Input() appointment: Appointment;
