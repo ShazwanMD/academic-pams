@@ -167,7 +167,7 @@ public class TermController {
     @RequestMapping(value = "/admissionApplications/{referenceNo}/update", method = RequestMethod.PUT)
     public ResponseEntity<AdmissionApplication> updateAdmissionApplication(@PathVariable String referenceNo,
                                                                            @RequestBody AdmissionApplication vo) {
-        AdAdmissionApplication application = (AdAdmissionApplication) termService.findEnrollmentApplicationByReferenceNo(referenceNo);
+        AdAdmissionApplication application = (AdAdmissionApplication) termService.findAdmissionApplicationByReferenceNo(referenceNo);
         return new ResponseEntity<AdmissionApplication>(termTransformer.toAdmissionApplicationVo(application), HttpStatus.OK);
     }
 

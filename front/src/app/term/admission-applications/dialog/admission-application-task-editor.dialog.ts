@@ -1,3 +1,4 @@
+import { AdmissionApplicationTask } from './../admission-application-task.interface';
 import { TermModuleState } from './../../index';
 import { ActivatedRoute } from '@angular/router';
 import { Actor } from './../../../identity/actor.interface';
@@ -23,6 +24,9 @@ export class AdmissionApplicationTaskEditorDialog implements OnInit {
     private editForm: FormGroup;
     private edit: boolean = false;
     private _admissionApplication: AdmissionApplication;
+    
+    private _admissionApplicationTask: AdmissionApplicationTask;
+     private admissionApplicationTask: AdmissionApplicationTask = <AdmissionApplicationTask>{};
 
     constructor(private router: Router,
         private route: ActivatedRoute,
@@ -57,9 +61,15 @@ export class AdmissionApplicationTaskEditorDialog implements OnInit {
     }
     submit(admissionApplication: AdmissionApplication, isValid: boolean) {
         console.log("updating application");
-        if (!admissionApplication.id) this.store.dispatch(this.actions.saveAdmissionApplication(admissionApplication));
-        else this.store.dispatch(this.actions.updateAdmissionApplication(admissionApplication));
+        console.log('referenceNo: ' + admissionApplication.referenceNo);
+
+        this.store.dispatch(this.actions.updateAdmissionApplication(this._admissionApplication));
         this.dialog.close();
+
+
+        // if (!admissionApplication.id) this.store.dispatch(this.actions.saveAdmissionApplication(admissionApplication));
+        // else this.store.dispatch(this.actions.updateAdmissionApplication(admissionApplication));
+        // this.dialog.close();
     }
 
 }

@@ -1,11 +1,12 @@
-import {Injectable} from '@angular/core';
-import {Effect, Actions} from '@ngrx/effects';
-import {AdmissionApplicationActions} from "./admission-application.action";
-import {from} from "rxjs/observable/from";
-import {TermService} from "../../../services/term.service";
-import {TermModuleState} from "../index";
-import {Store} from "@ngrx/store";
+import { Injectable } from '@angular/core';
+import { Effect, Actions } from '@ngrx/effects';
+import { AdmissionApplicationActions } from "./admission-application.action";
+import { from } from "rxjs/observable/from";
+import { TermService } from "../../../services/term.service";
+import { TermModuleState } from "../index";
+import { Store } from "@ngrx/store";
 import 'rxjs/add/operator/withLatestFrom';
+import { AdmissionApplicationTask } from "./admission-application-task.interface";
 
 
 @Injectable()
@@ -14,12 +15,12 @@ export class AdmissionApplicationEffects {
   private ADMISSION_APPLICATION_TASK: string[] = "termModuleState.admissionApplicationTask".split(".");
 
   constructor(private actions$: Actions,
-              private admissionApplicationActions: AdmissionApplicationActions,
-              private termService: TermService,
-              private store$: Store<TermModuleState>) {
+    private admissionApplicationActions: AdmissionApplicationActions,
+    private termService: TermService,
+    private store$: Store<TermModuleState>) {
   }
 
-@Effect() findAdmissionApplications$ = this.actions$
+  @Effect() findAdmissionApplications$ = this.actions$
     .ofType(AdmissionApplicationActions.FIND_ADMISSION_APPLICATIONS)
     .switchMap(() => this.termService.findAdmissionApplications())
     .map(message => this.admissionApplicationActions.findAdmissionApplicationsSuccess(message));
@@ -55,9 +56,9 @@ export class AdmissionApplicationEffects {
     .switchMap(admissionApplication => this.termService.startAdmissionApplicationTask(admissionApplication))
     .map(message => this.admissionApplicationActions.startAdmissionApplicationTaskSuccess(message))
     .mergeMap(action => from([action,
-        this.admissionApplicationActions.findAssignedAdmissionApplicationTasks(),
-        this.admissionApplicationActions.findPooledAdmissionApplicationTasks()
-      ]
+      this.admissionApplicationActions.findAssignedAdmissionApplicationTasks(),
+      this.admissionApplicationActions.findPooledAdmissionApplicationTasks()
+    ]
     ));
 
   @Effect() completeAdmissionApplicationTask$ = this.actions$
@@ -66,9 +67,9 @@ export class AdmissionApplicationEffects {
     .switchMap(admissionApplicationTask => this.termService.completeAdmissionApplicationTask(admissionApplicationTask))
     .map(message => this.admissionApplicationActions.completeAdmissionApplicationTaskSuccess(message))
     .mergeMap(action => from([action,
-        this.admissionApplicationActions.findAssignedAdmissionApplicationTasks(),
-        this.admissionApplicationActions.findPooledAdmissionApplicationTasks()
-      ]
+      this.admissionApplicationActions.findAssignedAdmissionApplicationTasks(),
+      this.admissionApplicationActions.findPooledAdmissionApplicationTasks()
+    ]
     ));
 
   @Effect() claimAdmissionApplicationTask$ = this.actions$
@@ -77,9 +78,9 @@ export class AdmissionApplicationEffects {
     .switchMap(admissionApplicationTask => this.termService.claimAdmissionApplicationTask(admissionApplicationTask))
     .map(message => this.admissionApplicationActions.claimAdmissionApplicationTaskSuccess(message))
     .mergeMap(action => from([action,
-        this.admissionApplicationActions.findAssignedAdmissionApplicationTasks(),
-        this.admissionApplicationActions.findPooledAdmissionApplicationTasks()
-      ]
+      this.admissionApplicationActions.findAssignedAdmissionApplicationTasks(),
+      this.admissionApplicationActions.findPooledAdmissionApplicationTasks()
+    ]
     ));
 
   @Effect() releaseAdmissionApplicationTask$ = this.actions$
@@ -88,9 +89,9 @@ export class AdmissionApplicationEffects {
     .switchMap(admissionApplicationTask => this.termService.releaseAdmissionApplicationTask(admissionApplicationTask))
     .map(message => this.admissionApplicationActions.releaseAdmissionApplicationTaskSuccess(message))
     .mergeMap(action => from([action,
-        this.admissionApplicationActions.findAssignedAdmissionApplicationTasks(),
-        this.admissionApplicationActions.findPooledAdmissionApplicationTasks()
-      ]
+      this.admissionApplicationActions.findAssignedAdmissionApplicationTasks(),
+      this.admissionApplicationActions.findPooledAdmissionApplicationTasks()
+    ]
     ));
 
   @Effect() saveAdmissionApplication$ = this.actions$
@@ -101,12 +102,16 @@ export class AdmissionApplicationEffects {
     .mergeMap(action => from([action,
       this.admissionApplicationActions.findAdmissionApplications()
     ]
-  ));
+    ));
 
   @Effect() updateAdmissionApplication$ = this.actions$
     .ofType(AdmissionApplicationActions.UPDATE_ADMISSION_APPLICATION)
     .map(action => action.payload)
     .switchMap(admissionApplication => this.termService.updateAdmissionApplication(admissionApplication))
-    .map(admissionApplication => this.admissionApplicationActions.updateAdmissionApplicationSuccess(admissionApplication));
-
+    .map(admissionApplication => this.admissionApplicationActions.updateAdmissionApplicationSuccess(admissionApplication))
+    .mergeMap(action => from([action,
+        this.admissionApplicationActions.findPooledAdmissionApplicationTasks(),
+        this.admissionApplicationActions.findAssignedAdmissionApplicationTasks()
+      ]
+    ));
 }
