@@ -9,8 +9,8 @@ import { Admission } from '../admission.interface';
 import { AdmissionEnrollmentDialog } from "../dialog/admission-enrollment.dialog";
 
 @Component( {
-    selector: 'pams-admission-enrollmentApplication-list',
-    templateUrl: './admission-enrollmentApplication-list.component.html',
+    selector: 'pams-admission-enrollment-application-list',
+    templateUrl: './admission-enrollment-application-list.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 } )
 export class AdmissionEnrollmentApplicationListComponent implements OnInit {
