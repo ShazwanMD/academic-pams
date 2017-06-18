@@ -78,11 +78,11 @@ public class PlannerController {
 		academicSession.setStartDate(vo.getstartDate());
 		academicSession.setEndDate(vo.getendDate());
 		academicSession.setSemester(AdAcademicSemester.get(vo.getSemester().ordinal()));
-//		academicSession.setYear(plannerService.findByCode(academicSession.getYear().getYear()));
+		// academicSession.setYear(plannerService.findByCode(academicSession.getYear().getYear()));
 		plannerService.updateAcademicSession(academicSession);
 		return new ResponseEntity<String>(academicSession.getCode(), HttpStatus.OK);
 	}
-	
+
 	@RequestMapping(value = "/academicSessions/{code}/save", method = RequestMethod.POST)
 	public ResponseEntity<String> saveAcademicSession(@PathVariable String code, @RequestBody AcademicSession vo) {
 		dummyLogin();
@@ -93,7 +93,7 @@ public class PlannerController {
 		academicSession.setStartDate(vo.getstartDate());
 		academicSession.setEndDate(vo.getendDate());
 		academicSession.setSemester(AdAcademicSemester.get(vo.getSemester().ordinal()));
-//		academicSession.setYear(plannerTransformer.toAcademicYearVo(academicYear.getYear()));
+		// academicSession.setYear(plannerTransformer.toAcademicYearVo(academicYear.getYear()));
 		academicSession.setYear(plannerService.findByCode(vo.getYear().getCode()));
 		plannerService.saveAcademicSession(academicSession);
 		return new ResponseEntity<String>("Success", HttpStatus.OK);
@@ -118,28 +118,21 @@ public class PlannerController {
 		plannerService.updateAcademicSession(academicSession);
 		return new ResponseEntity<String>(academicSession.getCode(), HttpStatus.OK);
 	}
-	
-	
+
 	// ====================================================================================================
-		// ACADEMIC YEAR
-		// ====================================================================================================
-	
+	// ACADEMIC YEAR
+	// ====================================================================================================
+
 	@RequestMapping(value = "/academicYears/{code}/save", method = RequestMethod.POST)
 	public ResponseEntity<String> saveAcademicYear(@PathVariable String code, @RequestBody AcademicYear vo) {
 		dummyLogin();
-		AdAcademicYear year= new AdAcademicYearImpl();
+		AdAcademicYear year = new AdAcademicYearImpl();
 		year.setCode(vo.getCode());
 		year.setDescription(vo.getDescription());
 		year.setYear(vo.getYear());
-		plannerService. saveAcademicYear(year);
+		plannerService.saveAcademicYear(year);
 		return new ResponseEntity<String>("Success", HttpStatus.OK);
 	}
-	
-	
-	
-	
-	
-	
 
 	// ====================================================================================================
 	// PROGRAM LEVEL
@@ -183,7 +176,7 @@ public class PlannerController {
 	// ====================================================================================================
 
 	@RequestMapping(value = "/faculties/{code}/save", method = RequestMethod.POST)
- 	public ResponseEntity<String> saveFaculty(@PathVariable String code, @RequestBody Faculty vo) {
+	public ResponseEntity<String> saveFaculty(@PathVariable String code, @RequestBody Faculty vo) {
 		dummyLogin();
 		AdFaculty faculty = new AdFacultyImpl();
 		faculty.setCode(vo.getCode());
@@ -193,20 +186,20 @@ public class PlannerController {
 		faculty.setStatus(AdFacultyStatus.get(vo.getStatus().ordinal()));
 		plannerService.saveFaculty(faculty);
 		return new ResponseEntity<String>("Success", HttpStatus.OK);
-	}	
+	}
 
 	@RequestMapping(value = "/faculties/{code}", method = RequestMethod.PUT)
 	public ResponseEntity<String> updateFaculty(@PathVariable String code, @RequestBody Faculty vo) {
-			dummyLogin();
-			LOG.debug("faculty code:{}", code);
-			AdFaculty faculty = plannerService.findFacultyByCode(code);
-			faculty.setDescription(vo.getDescription());
-			faculty.setName(vo.getName());
-			faculty.setPrefix(vo.getPrefix());
-			faculty.setStatus(AdFacultyStatus.get(vo.getStatus().ordinal()));
-			plannerService.updateFaculty(faculty);
-			return new ResponseEntity<String>("Success", HttpStatus.OK);
-		}
+		dummyLogin();
+		LOG.debug("faculty code:{}", code);
+		AdFaculty faculty = plannerService.findFacultyByCode(code);
+		faculty.setDescription(vo.getDescription());
+		faculty.setName(vo.getName());
+		faculty.setPrefix(vo.getPrefix());
+		faculty.setStatus(AdFacultyStatus.get(vo.getStatus().ordinal()));
+		plannerService.updateFaculty(faculty);
+		return new ResponseEntity<String>("Success", HttpStatus.OK);
+	}
 
 	@RequestMapping(value = "/faculties/{code}/activate", method = RequestMethod.GET)
 	public ResponseEntity<String> activateFacultiy(@PathVariable String code) {
@@ -215,7 +208,7 @@ public class PlannerController {
 		AdFaculty faculty = plannerService.findFacultyByCode(code);
 		faculty.setStatus(AdFacultyStatus.ACTIVE);
 		plannerService.updateFaculty(faculty);
-		return new ResponseEntity<String>(faculty.getCode(),HttpStatus.OK);
+		return new ResponseEntity<String>(faculty.getCode(), HttpStatus.OK);
 	}
 
 	@RequestMapping(value = "/faculties/{code}/deactivate", method = RequestMethod.GET)
@@ -225,8 +218,9 @@ public class PlannerController {
 		AdFaculty faculty = plannerService.findFacultyByCode(code);
 		faculty.setStatus(AdFacultyStatus.INACTIVE);
 		plannerService.updateFaculty(faculty);
-		return new ResponseEntity<String>(faculty.getCode(),HttpStatus.OK);
+		return new ResponseEntity<String>(faculty.getCode(), HttpStatus.OK);
 	}
+
 	@RequestMapping(value = "/faculties", method = RequestMethod.GET)
 	public ResponseEntity<List<Faculty>> findFaculties() {
 		List<AdFaculty> faculties = plannerService.findFaculties(0, 100);
@@ -290,7 +284,7 @@ public class PlannerController {
 		program.setLevel(plannerService.findProgramLevelById(vo.getLevel().getId()));
 		plannerService.saveProgram(program);
 		return new ResponseEntity<String>("Success", HttpStatus.OK);
-		
+
 	}
 
 	@RequestMapping(value = "/programs/{code}", method = RequestMethod.PUT)
@@ -358,8 +352,7 @@ public class PlannerController {
 	public ResponseEntity<Course> createCourse(@RequestBody Course course) {
 		throw new UnsupportedOperationException();
 	}
-	
-	
+
 	@RequestMapping(value = "/courses/{code}/save", method = RequestMethod.POST)
 	public ResponseEntity<String> saveCourse(@PathVariable String code, @RequestBody Course vo) {
 		dummyLogin();
@@ -372,10 +365,9 @@ public class PlannerController {
 		course.setClassification(AdAcademicClassification.get(vo.getClassification().ordinal()));
 		plannerService.addCourse(new AdFacultyImpl(), course);
 		return new ResponseEntity<String>("Success", HttpStatus.OK);
-		
+
 	}
-	
-	
+
 	@RequestMapping(value = "/courses/{code}/add", method = RequestMethod.POST)
 	public ResponseEntity<String> addCourse(@PathVariable String code, @RequestBody Course vo) {
 		dummyLogin();
@@ -388,7 +380,7 @@ public class PlannerController {
 		course.setClassification(AdAcademicClassification.get(vo.getClassification().ordinal()));
 		plannerService.addCourse(new AdFacultyImpl(), course);
 		return new ResponseEntity<String>("Success", HttpStatus.OK);
-		
+
 	}
 
 	@RequestMapping(value = "/courses/{code}/update", method = RequestMethod.POST)
@@ -412,7 +404,7 @@ public class PlannerController {
 		LOG.debug("deactivate course");
 		AdCourse course = plannerService.findCourseByCode(code);
 		course.setStatus(AdCourseStatus.INACTIVE);
-		plannerService.updateCourse(course);		
+		plannerService.updateCourse(course);
 		return new ResponseEntity<String>(course.getCode(), HttpStatus.OK);
 	}
 
@@ -420,11 +412,11 @@ public class PlannerController {
 	// ACADEMIC YEAR
 	// ====================================================================================================
 
-		@RequestMapping(value = "/academicYears", method = RequestMethod.GET)
-		public ResponseEntity<List<AcademicYear>> findAcademicYears() {
-			return new ResponseEntity<List<AcademicYear>>(plannerTransformer.toAcademicYearVos(plannerService.findAcademicYears(0, 100)),
-					HttpStatus.OK);
-		}
+	@RequestMapping(value = "/academicYears", method = RequestMethod.GET)
+	public ResponseEntity<List<AcademicYear>> findAcademicYears() {
+		return new ResponseEntity<List<AcademicYear>>(
+				plannerTransformer.toAcademicYearVos(plannerService.findAcademicYears(0, 100)), HttpStatus.OK);
+	}
 
 	// ====================================================================================================
 	// CURRICULUM
@@ -432,17 +424,38 @@ public class PlannerController {
 
 	@RequestMapping(value = "/curriculums", method = RequestMethod.GET)
 	public ResponseEntity<List<Curriculum>> findCurriculums() {
-		List<Curriculum> curriculums = plannerTransformer.toCurriculumVos(plannerService.findCurriculums(0, Integer.MAX_VALUE));
+		List<Curriculum> curriculums = plannerTransformer
+				.toCurriculumVos(plannerService.findCurriculums(0, Integer.MAX_VALUE));
 		return new ResponseEntity<List<Curriculum>>(curriculums, HttpStatus.OK);
 	}
-	
+
 	@RequestMapping(value = "/curriculums/{code}", method = RequestMethod.GET)
 	public ResponseEntity<Curriculum> findCurriculumByCode(@PathVariable String code) {
 		Curriculum curriculum = plannerTransformer.toCurriculumVo(plannerService.findCurriculumByCode(code));
 		return new ResponseEntity<Curriculum>(curriculum, HttpStatus.OK);
 	}
 	
-	
+	@RequestMapping(value = "/curriculums/{code}/save", method = RequestMethod.POST)
+	public ResponseEntity<String> saveCurriculum(@PathVariable String code, @RequestBody Curriculum vo) {
+		dummyLogin();
+		AdCurriculum curriculum = new AdCurriculumImpl();
+		curriculum.setCode(vo.getCode());
+		curriculum.setCoreCredit(vo.getCoreCredit());
+		curriculum.setCurriculumCredit(vo.getCurriculumCredit());
+		curriculum.setElectiveCredit(vo.getElectiveCredit());
+		curriculum.setGeneralCredit(vo.getGeneralCredit());
+		curriculum.setLanguageCredit(vo.getLanguageCredit());
+		curriculum.setMaxPeriod(vo.getMaxPeriod());
+		curriculum.setOrdinal(vo.getOrdinal());
+		curriculum.setPeriod(vo.getPeriod());
+		curriculum.setRequiredCredit(vo.getRequiredCredit());
+		curriculum.setTotalCredit(vo.getTotalCredit());
+		curriculum.setProgram(plannerService.findProgramByCode(vo.getProgram().getCode()));
+		plannerService.saveCurriculum(curriculum);
+		return new ResponseEntity<String>("Success", HttpStatus.OK);
+
+	}
+
 	// ====================================================================================================
 	// COHORT
 	// ====================================================================================================
@@ -477,7 +490,7 @@ public class PlannerController {
 	@RequestMapping(value = "/cohorts/{code}", method = RequestMethod.PUT)
 	public ResponseEntity<String> updateCohort(@PathVariable String code, @RequestBody Cohort vo) {
 		dummyLogin();
-		
+
 		AdCohort cohort = plannerService.findCohortByCode(code);
 		cohort.setCode(vo.getCode());
 		cohort.setDescription(vo.getDescription());
