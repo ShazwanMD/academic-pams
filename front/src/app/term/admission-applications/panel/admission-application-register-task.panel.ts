@@ -1,9 +1,11 @@
+import { AdmissionApplicationTaskEditorDialog } from './../dialog/admission-application-task-editor.dialog';
+import { Store } from '@ngrx/store';
 import { AdmissionApplication } from './../admission-application.interface';
 import { Component, OnInit, ViewContainerRef, Input } from '@angular/core';
-import {Router, ActivatedRoute} from '@angular/router';
-import {MdSnackBar, MdDialog, MdDialogRef, MdDialogConfig} from '@angular/material';
-import {TermService} from '../../../../services/term.service';
-import {AdmissionApplicationTask} from '../admission-application-task.interface';
+import { Router, ActivatedRoute } from '@angular/router';
+import { MdSnackBar, MdDialog, MdDialogRef, MdDialogConfig } from '@angular/material';
+import { TermService } from '../../../../services/term.service';
+import { AdmissionApplicationTask } from '../admission-application-task.interface';
 
 @Component({
   selector: 'pams-admission-application-register-task',
@@ -12,7 +14,7 @@ import {AdmissionApplicationTask} from '../admission-application-task.interface'
 
 export class AdmissionApplicationRegisterTaskPanel implements OnInit {
 
-@Input() application: AdmissionApplication;
+  @Input() application: AdmissionApplication;
 
   private _router: Router;
   private _route: ActivatedRoute;
@@ -20,15 +22,16 @@ export class AdmissionApplicationRegisterTaskPanel implements OnInit {
   private _snackBar: MdSnackBar;
   private _viewContainerRef: ViewContainerRef;
   private _dialog: MdDialog;
+  private editorDialogRef: MdDialogRef<AdmissionApplicationTaskEditorDialog>;
 
   private admissionApplicationTask: AdmissionApplicationTask = <AdmissionApplicationTask>{};
 
   constructor(router: Router,
-              route: ActivatedRoute,
-              viewContainerRef: ViewContainerRef,
-              dialog: MdDialog,
-              termService: TermService,
-              snackBar: MdSnackBar) {
+    route: ActivatedRoute,
+    viewContainerRef: ViewContainerRef,
+    dialog: MdDialog,
+    termService: TermService,
+    snackBar: MdSnackBar) {
     this._router = router;
     this._route = route;
     this._termService = termService;
@@ -42,6 +45,19 @@ export class AdmissionApplicationRegisterTaskPanel implements OnInit {
       let taskId: string = params.taskId;
     });
 
+  }
+
+  edit(): void {
+    console.log("open admission app update dialog");
+    console.log(this.admissionApplicationTask.id);
+    let config = new MdDialogConfig();
+    config.viewContainerRef = this._viewContainerRef;
+    config.role = 'dialog';
+    config.width = '60%';
+    config.height = '50%';
+    config.position = { top: '0px' };
+    this.editorDialogRef = this._dialog.open(AdmissionApplicationTaskEditorDialog, config);
+    this.editorDialogRef.componentInstance.admissionApplication = this.admissionApplicationTask.application;
   }
 
   approve(): void {

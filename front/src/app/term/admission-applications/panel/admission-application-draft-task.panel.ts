@@ -1,8 +1,9 @@
-import {Component, OnInit, ViewContainerRef} from '@angular/core';
-import {Router, ActivatedRoute} from '@angular/router';
-import {MdSnackBar, MdDialog, MdDialogRef, MdDialogConfig} from '@angular/material';
-import {TermService} from '../../../../services/term.service';
-import {AdmissionApplicationTask} from '../admission-application-task.interface';
+import { AdmissionApplicationTaskEditorDialog } from './../dialog/admission-application-task-editor.dialog';
+import { Component, OnInit, ViewContainerRef } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { MdSnackBar, MdDialog, MdDialogRef, MdDialogConfig } from '@angular/material';
+import { TermService } from '../../../../services/term.service';
+import { AdmissionApplicationTask } from '../admission-application-task.interface';
 
 /*@Component({
  selector: 'pams-admission-application-register-task',
@@ -22,15 +23,15 @@ export class AdmissionApplicationDraftTaskPanel implements OnInit {
   private _snackBar: MdSnackBar;
   private _viewContainerRef: ViewContainerRef;
   private _dialog: MdDialog;
-
+  private editorDialogRef: MdDialogRef<AdmissionApplicationTaskEditorDialog>;
   private admissionApplicationTask: AdmissionApplicationTask = <AdmissionApplicationTask>{};
 
   constructor(router: Router,
-              route: ActivatedRoute,
-              viewContainerRef: ViewContainerRef,
-              dialog: MdDialog,
-              termService: TermService,
-              snackBar: MdSnackBar) {
+    route: ActivatedRoute,
+    viewContainerRef: ViewContainerRef,
+    dialog: MdDialog,
+    termService: TermService,
+    snackBar: MdSnackBar) {
     this._router = router;
     this._route = route;
     this._termService = termService;
@@ -44,6 +45,19 @@ export class AdmissionApplicationDraftTaskPanel implements OnInit {
       let taskId: string = params.taskId;
       // ngrx
     });
+  }
+
+  edit(): void {
+    console.log("open admission app update dialog");
+    console.log(this.admissionApplicationTask.id);
+    let config = new MdDialogConfig();
+    config.viewContainerRef = this._viewContainerRef;
+    config.role = 'dialog';
+    config.width = '60%';
+    config.height = '50%';
+    config.position = { top: '0px' };
+    this.editorDialogRef = this._dialog.open(AdmissionApplicationTaskEditorDialog, config);
+    this.editorDialogRef.componentInstance.admissionApplication = this.admissionApplicationTask.application;
   }
 
   register(): void {
