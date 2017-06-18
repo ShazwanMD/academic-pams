@@ -70,7 +70,6 @@ export class AdmissionApplicationTaskCreatorDialog implements OnInit {
 
     // setup description
     admissionApplication.description = admissionApplication.student.identityNo + ' ' + admissionApplication.academicSession.code;
-
     this.store.dispatch(this.actions.startAdmissionApplicationTask(admissionApplication));
     this.dialog.close();
   }

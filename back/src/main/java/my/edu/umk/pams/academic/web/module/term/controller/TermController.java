@@ -167,7 +167,7 @@ public class TermController {
     @RequestMapping(value = "/admissionApplications/{referenceNo}/update", method = RequestMethod.PUT)
     public ResponseEntity<AdmissionApplication> updateAdmissionApplication(@PathVariable String referenceNo,
                                                                            @RequestBody AdmissionApplication vo) {
-        AdAdmissionApplication application = (AdAdmissionApplication) termService.findEnrollmentApplicationByReferenceNo(referenceNo);
+        AdAdmissionApplication application = (AdAdmissionApplication) termService.findAdmissionApplicationByReferenceNo(referenceNo);
         return new ResponseEntity<AdmissionApplication>(termTransformer.toAdmissionApplicationVo(application), HttpStatus.OK);
     }
 
@@ -822,10 +822,13 @@ public class TermController {
                 gradebook.setScore(BigDecimal.ZERO);
                 gradebook.setAssessment(termTransformer.toAssessmentVo(assessment));
                 matrix.addGradebook(gradebook);
+     
             }
+            
             matrices.add(matrix);
         }
         LOG.debug("Enrollment:{}", enrollments);
+
         return new ResponseEntity<List<GradebookMatrix>>(matrices, HttpStatus.OK);
     }
 
@@ -840,6 +843,7 @@ public class TermController {
             AdOffering offering = termService.findOfferingByCanonicalCode(canonicalCode);
             List<AdEnrollment> enrollments = toEnrollments(sheet, offering);
             List<AdAssessment> assessments = toAssessments(sheet);
+            LOG.debug("Assessments:{}", assessments);
             AdSection section = toSection(sheet);
             int i = 1; //skip row 0
             while (i <= sheet.getLastRowNum()) {
@@ -849,6 +853,7 @@ public class TermController {
                     Cell cell = row.getCell(j);
                     AdEnrollment enrollment = enrollments.get(i - 1);
                     AdAssessment assessment = assessments.get(j - 1);
+                    LOG.debug("Assessment:{}", assessment);
                     AdGradebook gradebook = termService.findGradebookByAssessmentAndEnrollment(assessment, enrollment);
                     boolean update = true;
                     if (gradebook == null) {
@@ -908,7 +913,7 @@ public class TermController {
             LOG.debug("addSectionHeader " + section.getCode());
             for (AdAssessment assessment : assessments) {
                 Cell assessmentCode = header.createCell(headerNum++);   // Cell A2... is for assessment code
-                assessmentCode.setCellValue(assessment.getDescription());
+                assessmentCode.setCellValue(assessment.getCanonicalCode());
                 LOG.debug("addAssessmentHeader " + assessment.getDescription());
             }
 
