@@ -1,0 +1,163 @@
+<?xml version = "1.0"?>
+<!DOCTYPE jasperReport PUBLIC
+        "//JasperReports//DTD Report Design//EN"
+        "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports
+   http://jasperreports.sourceforge.net/xsd/jasperreport.xsd"
+              name="jasper_report_template" pageWidth="595"
+              pageHeight="842" columnWidth="515"
+              leftMargin="40" rightMargin="40" topMargin="50" bottomMargin="50">
+
+    <parameter name="matric_no" class="java.lang.String"/>
+    <parameter name="academic_session_code" class="java.lang.String"/>
+
+    <queryString>
+        <![CDATA[
+            SELECT c.code as code, c.title_ms as title_ms from ad_stdn s
+            inner join ad_actr a on a.id = s.id
+            inner join ad_admn d on d.student_id = s.id
+            inner join ad_enmt e on e.admission_id =  d.id
+            inner join ad_sctn sc on sc.id = e.section_id
+            inner join ad_ofrg o on o.id = sc.offering_id
+            inner join ad_crse c on c.id = o.course_id
+            inner join ad_acdm_sesn x on x.id = d.session_id
+            where x.code = $P{academic_session_code}
+            and a.identity_no = $P{matric_no}
+    ]]>
+    </queryString>
+
+    <field name="code" class="java.lang.String">
+        <fieldDescription><![CDATA[code]]></fieldDescription>
+    </field>
+
+    <field name="title_ms" class="java.lang.String">
+        <fieldDescription><![CDATA[title_ms]]></fieldDescription>
+    </field>
+
+    <title>
+        <band height="70">
+
+            <line>
+                <reportElement x="0" y="0" width="515" height="1"/>
+            </line>
+
+            <textField isBlankWhenNull="true" bookmarkLevel="1">
+                <reportElement x="0" y="10" width="515" height="30"/>
+
+                <textElement textAlignment="Center">
+                    <font size="22"/>
+                </textElement>
+
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$P{matric_no}]]>
+                </textFieldExpression>
+
+                <anchorNameExpression>
+                    <![CDATA["title_ms"]]>
+                </anchorNameExpression>
+            </textField>
+
+            <textField isBlankWhenNull="true">
+                <reportElement x="0" y="40" width="515" height="20"/>
+
+                <textElement textAlignment="Center">
+                    <font size="10"/>
+                </textElement>
+
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$P{matric_no}]]>
+                </textFieldExpression>
+            </textField>
+
+        </band>
+    </title>
+
+    <columnHeader>
+        <band height="23">
+
+            <staticText>
+                <reportElement mode="Opaque" x="0" y="3" width="535" height="15"
+                               backcolor="#70A9A9"/>
+
+                <box>
+                    <bottomPen lineWidth="1.0" lineColor="#CCCCCC"/>
+                </box>
+
+                <textElement/>
+
+                <text>
+                    <![CDATA[]]>
+                </text>
+            </staticText>
+
+            <staticText>
+                <reportElement x="414" y="3" width="121" height="15"/>
+
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font isBold="true"/>
+                </textElement>
+
+                <text>
+                    <![CDATA[code]]>
+                </text>
+            </staticText>
+
+            <staticText>
+                <reportElement x="0" y="3" width="136" height="15"/>
+
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font isBold="true"/>
+                </textElement>
+
+                <text><![CDATA[title_ms]]></text>
+            </staticText>
+
+        </band>
+    </columnHeader>
+
+    <detail>
+        <band height="16">
+
+            <staticText>
+                <reportElement mode="Opaque" x="0" y="0" width="535" height="14"
+                               backcolor="#E5ECF9"/>
+
+                <box>
+                    <bottomPen lineWidth="0.25" lineColor="#CCCCCC"/>
+                </box>
+
+                <textElement/>
+
+                <text>
+                    <![CDATA[]]>
+                </text>
+            </staticText>
+
+            <textField>
+                <reportElement x="414" y="0" width="121" height="15"/>
+
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="9"/>
+                </textElement>
+
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$F{code}]]>
+                </textFieldExpression>
+            </textField>
+
+            <textField>
+                <reportElement x="0" y="0" width="136" height="15"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle"/>
+
+                <textFieldExpression class="java.lang.String">
+                    <![CDATA[$F{title_ms}]]>
+                </textFieldExpression>
+            </textField>
+
+        </band>
+    </detail>
+
+</jasperReport>
