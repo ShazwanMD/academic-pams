@@ -18,5 +18,5 @@ export interface Curriculum extends MetaObject {
   maxPeriod: string,
   ordinal: string,
   program: Program;
-  // academicSession: AcademicSession;
+  academicSession: AcademicSession;
 }
