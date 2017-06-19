@@ -257,11 +257,11 @@ export class PlannerService {
       .map((res: Response) => <Course>res.json());
   }
 
-  activateCourse(course: Course): Observable<String> {
+   activateCourse(course: Course): Observable<String> {
     let headers = new Headers({'Authorization': 'Bearer TODO'});
     let options = new RequestOptions({headers: headers});
     console.log("activate course");
-    return this.http.get(environment.endpoint + '/api/planner/course/' + course.code + '/activate', options)
+    return this.http.get(environment.endpoint + '/api/planner/courses/' + course.code + '/activate', options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
@@ -269,7 +269,7 @@ export class PlannerService {
     let headers = new Headers({'Authorization': 'Bearer TODO'});
     let options = new RequestOptions({headers: headers});
     console.log("deactivate course");
-    return this.http.get(environment.endpoint + '/api/planner/course/' + course.code + '/deactivate', options)
+    return this.http.get(environment.endpoint + '/api/planner/courses/' + course.code + '/deactivate', options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
