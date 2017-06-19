@@ -5,6 +5,7 @@ import {PlannerService} from '../../../services/planner.service';
 import {Curriculum} from './curriculum.interface';
 import {Store} from '@ngrx/store';
 import {PlannerModuleState} from '../index';
+import {from} from "rxjs/observable/from";
 
 @Injectable()
 export class CurriculumEffects {
@@ -32,7 +33,8 @@ export class CurriculumEffects {
     .ofType(CurriculumActions.SAVE_CURRICULUM)
     .map((action) => action.payload)
     .switchMap((curriculum) => this.plannerService.saveCurriculum(curriculum))
-    .map((curriculum) => this.curriculumActions.saveCurriculumSuccess(curriculum));
+    .map((curriculum) => this.curriculumActions.saveCurriculumSuccess(curriculum))
+    // .mergeMap(action => from([action, this.curriculumActions.findCurriculumByCode()]));
 
   @Effect() updateCurriculum$ = this.actions$
     .ofType(CurriculumActions.UPDATE_CURRICULUM)
