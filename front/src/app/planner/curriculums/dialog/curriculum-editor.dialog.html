@@ -1,7 +1,7 @@
 <h2 md-dialog-title>Create New Curriculum</h2>
 <md-dialog-content>
   <form [formGroup]="editorForm">
-     <div layout="row" class="insert">
+     <div layout="row" class="pad-bottom">
       <md-input-container flex>
         <input mdInput placeholder="Code"
                formControlName="code"
@@ -12,8 +12,8 @@
      <div layout="row" class="insert">
       <md-input-container flex>
         <input mdInput
-               placeholder="coreCredit"
-               formControlName="core" type="number"
+               placeholder=" Core Credit"
+               formControlName="coreCredit" type="number"
                flex/>
       </md-input-container>
     </div>
@@ -21,8 +21,8 @@
      <div layout="row" class="insert">
       <md-input-container flex>
         <input mdInput 
-               placeholder="curriculumCredit"
-               formControlName="curriculum" type="number"
+               placeholder="Curriculum Credit"
+               formControlName="curriculumCredit" type="number"
                flex/>
       </md-input-container>
     </div>
@@ -30,8 +30,8 @@
      <div layout="row" class="insert">
       <md-input-container flex>
         <input mdInput
-               placeholder="electiveCredit"
-               formControlName="elective" type="number"
+               placeholder="Elective Credit"
+               formControlName="electiveCredit" type="number"
                flex/>
       </md-input-container>
     </div>
@@ -39,8 +39,8 @@
      <div layout="row" class="insert">
       <md-input-container flex>
         <input mdInput
-               placeholder="generalCredit"
-               formControlName="general" type="number"
+               placeholder="General Credit"
+               formControlName="generalCredit" type="number"
                flex/>
       </md-input-container>
     </div>
@@ -48,8 +48,8 @@
      <div layout="row" class="insert">
       <md-input-container flex>
         <input mdInput 
-               placeholder="languageCredit"
-               formControlName="language" type="number"
+               placeholder="language Credit"
+               formControlName="languageCredit" type="number"
                flex/>
       </md-input-container>
     </div>
@@ -57,7 +57,7 @@
      <div layout="row" class="insert">
       <md-input-container flex>
         <input mdInput 
-               placeholder="maxPeriod"
+               placeholder="Max Period"
                formControlName="maxPeriod" type="number"
                flex/>
       </md-input-container>
@@ -75,8 +75,8 @@
       <div layout="row" class="insert">
       <md-input-container flex>
         <input mdInput
-               placeholder="otherCredit"
-               formControlName="other" type="number"
+               placeholder="Other Credit"
+               formControlName="otherCredit" type="number"
                flex/>
       </md-input-container>
     </div>
@@ -94,8 +94,8 @@
        <div layout="row" class="insert">
       <md-input-container flex>
         <input mdInput 
-               placeholder="requiredCredit"
-               formControlName="required" type="number"
+               placeholder="required"
+               formControlName="requiredCredit" type="number"
                flex/>
       </md-input-container>
     </div>
@@ -103,16 +103,15 @@
     <div layout="row" class="insert">
       <md-input-container flex>
         <input mdInput 
-               placeholder="totalCredit"
+               placeholder="total Credit"
                formControlName="totalCredit" type="number"
                flex/>
       </md-input-container>
     </div>
-
     <div layout="row" class="pad-bottom pad-top">
       <pams-program-select
         [placeholder]="'Select Program'"
-        [innerFormControl]="createForm.controls['program']">
+        [innerFormControl]="editorForm.controls['program']">
       </pams-program-select>
     </div>
 
