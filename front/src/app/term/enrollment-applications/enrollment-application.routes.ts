@@ -8,5 +8,5 @@ export const EnrollmentApplicationRoutes: Routes = [
   {path: 'term/enrollment-applications', component: EnrollmentApplicationCenterPage},
   {path: 'term/enrollment-applications/student-enrollment-center', component: StudentEnrollmentCenterPage},
   {path: 'term/enrollment-applications/enrollment-application-task-detail/:taskId', component: EnrollmentApplicationTaskDetailPage},
-  {path: 'term/enrollment-applications/:referenceNo', component: StudentEnrollmentApplicationTaskDetailPage},
+  {path: 'term/enrollment-applications/:referenceNo/student-enrollment-application-task-detail', component: StudentEnrollmentApplicationTaskDetailPage},
 ];
