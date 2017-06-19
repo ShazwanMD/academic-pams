@@ -32,6 +32,7 @@ import {StudentEnrollmentListComponent} from "./component/student-enrollment-lis
 import {StudentOfferingListComponent} from "./component/student-offering-list.component";
 import {PooledEnrollmentApplicationTaskListComponent} from "./component/pooled-enrollment-application-task-list.component";
 import {EnrollmentApplicationTaskDetailPage} from "./enrollment-application-task-detail.page";
+import {StudentEnrollmentApplicationTaskDetailPage} from "./student-enrollment-application-task-detail.page";
 import { IdentityModule } from "../../identity/index";
 
 
@@ -52,6 +53,7 @@ import { IdentityModule } from "../../identity/index";
     EnrollmentApplicationCenterPage,
     StudentEnrollmentCenterPage,
     EnrollmentApplicationTaskDetailPage,
+    StudentEnrollmentApplicationTaskDetailPage,
 
     // component
     EnrollmentApplicationTaskWorkflowPanel,

@@ -14,13 +14,17 @@
 	</button>
 </div>
 <md-divider></md-divider> <md-card-content> <td-data-table
-	[data]="appointments" [columns]="columns" [sortBy]="summary"
-	[sortOrder]="ASC" [sortable]="false" [multiple]="true"
-	[selectable]="true"  [(ngModel)]="selectedRows"
-      (rowSelect)="selectRow($event)"
-      (selectAll)="selectAllRows($event)" dense> <template
-	tdDataTableTemplate="key" let-value="value" let-row="row"
-	let-column="column">
+	[data]="appointments" 
+	[columns]="columns" 
+	[sortBy]="summary"
+	[sortOrder]="ASC" 
+	[sortable]="false" 
+	[multiple]="true"
+	[selectable]="true"  
+	[(ngModel)]="selectedRows"
+    (rowSelect)="selectRow($event)"
+    (selectAll)="selectAllRows($event)" dense> 
+    <template	tdDataTableTemplate="key" let-value="value" let-row="row"	let-column="column">
 <div layout="row">
 	<span flex>{{value}}</span>
 </div>

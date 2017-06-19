@@ -38,7 +38,7 @@ export class AdmissionEnrollmentApplicationListComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        //this.selectedRows = this.enrollmentApplications.filter(value => value.selected);
+        this.selectedRows = this.enrollmentApplications.filter(value => value.selected);
     }
 
     filter(): void {

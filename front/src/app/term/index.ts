@@ -82,7 +82,7 @@ import {
 import {
     admissionEnrollmentApplicationListReducer,
     AdmissionEnrollmentApplicationListState,
-  } from './admissions/admission-enrollmentApplication-list.reducer';
+  } from './admissions/admission-enrollment-application-list.reducer';
 import {
   admissionApplicationTaskReducer,
   AdmissionApplicationTaskState
