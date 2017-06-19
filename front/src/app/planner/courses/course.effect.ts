@@ -54,6 +54,7 @@ export class CourseEffects {
     .map(state => state[1])
     .map((course: Course) => this.courseActions.findCourseByCode(course.code));
 
+
   @Effect() activateCourse$ = this.actions$
     .ofType(CourseActions.ACTIVATE_COURSE)
     .map(action => action.payload)
