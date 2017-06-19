@@ -20,23 +20,7 @@ export class CurriculumCenterPage implements OnInit {
   private CURRICULUMS: string[] = 'plannerModuleState.curriculums'.split('.');
   private curriculums$: Observable<Curriculum[]>;
   private editorDialogRef: MdDialogRef<CurriculumEditorDialog>;
-
-    private columns: any[] = [
-   {name: 'code', label: 'Code'},
-    {name: 'core.number', label: 'Core Credit'},
-    {name: 'curriculum', label: 'Curriculum Credit'},
-    {name: 'elective', label: 'Elective Credit'},
-    // {name: 'general', label: 'General Credit'},
-    // {name: 'language', label: 'Language Credit'},
-    // {name: 'other', label: 'Other Credit'},
-    // {name: 'required', label: 'Required Credit'},
-    // {name: 'totalCredit', label: 'Total Credit'},
-    // {name: 'ordinal', label: 'Ordinal'},
-    {name: 'program.code', label: 'Program'},
-    {name: 'action', label: ''},
-  ];
-
-
+  
   constructor(private router: Router,
               private route: ActivatedRoute,
               private actions: CurriculumActions,
