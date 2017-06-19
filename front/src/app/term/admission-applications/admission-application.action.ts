@@ -234,20 +234,4 @@ export class AdmissionApplicationActions {
     };
   }
 
-  static ADD_ADMISSION_APPLICATION_ITEM = '[AdmissionApplication] Add AdmissionApplication Item';
-  addAdmissionApplicationItem(application, item): Action {
-    return {
-      type: AdmissionApplicationActions.ADD_ADMISSION_APPLICATION_ITEM,
-      payload: { application: application, item: item }
-    };
-  }
-
-  static ADD_ADMISSION_APPLICATION_ITEM_SUCCESS = '[AdmissionApplication] Add AdmissionApplication Item Success';
-  addAdmissionApplicationItemSuccess(message): Action {
-    return {
-      type: AdmissionApplicationActions.ADD_ADMISSION_APPLICATION_ITEM_SUCCESS,
-      payload: message
-    };
-  }
-
 }
