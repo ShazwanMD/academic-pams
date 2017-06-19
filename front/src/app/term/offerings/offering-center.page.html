@@ -19,9 +19,11 @@
 	</button>
 </div>
 
-<md-card class=""> <td-search-box class="push-left push-right"
+<md-card class=""> 
+<!-- <td-search-box class="push-left push-right"
 	placeholder="search" [alwaysVisible]="true"
-	(searchDebounce)="filter($event)"> </td-search-box> <pams-offering-list
+	(searchDebounce)="filter($event)"> </td-search-box> -->
+	 <pams-offering-list
 	[offerings]="offerings$ | async" (view)="viewOffering($event)"></pams-offering-list>
 <md-divider></md-divider> <md-card-actions> <a
 	md-button color="accent" class="text-upper"

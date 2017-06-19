@@ -1,4 +1,4 @@
-import { Component, Input, EventEmitter, Output, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, EventEmitter, Output, ChangeDetectionStrategy, AfterViewInit } from '@angular/core';
 import { Admission } from "../admission.interface";
 import { TdDataTableSortingOrder, TdDataTableService, ITdDataTableSortChangeEvent, IPageChangeEvent } from '@covalent/core';
 
@@ -7,7 +7,7 @@ import { TdDataTableSortingOrder, TdDataTableService, ITdDataTableSortChangeEven
   templateUrl: './admission-list.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AdmissionListComponent {
+export class AdmissionListComponent implements AfterViewInit  {
 
   @Input() admissions: Admission[];
   @Output() view = new EventEmitter<Admission>();
