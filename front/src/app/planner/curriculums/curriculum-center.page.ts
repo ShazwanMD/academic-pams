@@ -23,7 +23,7 @@ export class CurriculumCenterPage implements OnInit {
 
     private columns: any[] = [
    {name: 'code', label: 'Code'},
-    {name: 'core', label: 'Core Credit'},
+    {name: 'core.number', label: 'Core Credit'},
     {name: 'curriculum', label: 'Curriculum Credit'},
     {name: 'elective', label: 'Elective Credit'},
     // {name: 'general', label: 'General Credit'},

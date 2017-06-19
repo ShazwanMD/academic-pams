@@ -117,12 +117,12 @@ public class PlannerTransformer {
         vo.setElectiveCredit(e.getElectiveCredit());
         vo.setGeneralCredit(e.getGeneralCredit());
         vo.setLanguageCredit(e.getLanguageCredit());
+        vo.setOtherCredit(e.getOthersCredit());
+        vo.setRequiredCredit(e.getRequiredCredit());
+        vo.setTotalCredit(e.getTotalCredit());
+        vo.setPeriod(e.getPeriod());
         vo.setMaxPeriod(e.getMaxPeriod());
         vo.setOrdinal(e.getOrdinal());
-        vo.setOtherCredit(e.getOthersCredit());
-        vo.setPeriod(e.getPeriod());
-        vo.setRequiredCredit(e.getRequiredCredit());
-        vo.setTotalCredit(e.getRequiredCredit());
         vo.setSubjects(plannerTransformer.toSubjectVos(e.getSubjects()));
         vo.setProgram(plannerTransformer.toProgramVo(e.getProgram()));
         return vo;
