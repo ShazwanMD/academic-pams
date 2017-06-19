@@ -6,18 +6,18 @@
   <td-layout-manage-list #list>
     <md-nav-list list-items>
       <a md-list-item (click)="createDialog()">
-        <md-icon>create</md-icon>
+        <md-icon>person_add</md-icon>
         Semester Registration
       </a>
       <md-divider></md-divider>
-      <a md-list-item [routerLink]="['/term/admissions']">
+      <a md-list-item [routerLink]="['/term/enrollment-applications/student-enrollment-center']">
         <md-icon>create</md-icon>
-        Admissions
+        Course Enrollments
       </a>
-      <a md-list-item [routerLink]="['/term/offerings']">
+      <!-- <a md-list-item [routerLink]="['/term/offerings']">
         <md-icon>create</md-icon>
         Offerings
-      </a>
+      </a> -->
     </md-nav-list>
     <div toolbar-buttons layout="row" layout-align="start center" flex>
       <span flex>Student Admission Application Center</span>

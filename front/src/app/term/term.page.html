@@ -11,14 +11,16 @@
 	style="color: red; font-weight: bold">ADMINISTRATOR</span>
 </a> <a md-list-item [routerLink]="['/term/admissions']"> 
 <md-icon>person_add</md-icon>
-	Admission
-</a> <a md-list-item [routerLink]="['/term/offerings']"> 
-<md-icon>create</md-icon>
-	Offerings
+	Semester Registration
 </a> <a md-list-item [routerLink]="['/term/enrollment-applications']"> 
 <md-icon>create</md-icon>
-	Enrollments
-</a> <md-divider></md-divider> <a md-list-item> <md-icon></md-icon> <span
+	Course Enrollments
+</a> 
+<a md-list-item [routerLink]="['/term/offerings']"> 
+<md-icon>create</md-icon>
+	Offerings
+</a> 
+<md-divider></md-divider> <a md-list-item> <md-icon></md-icon> <span
 	style="color: red; font-weight: bold">STUDENT</span>
 </a> <a md-list-item
 	[routerLink]="['/term/admission-applications/student-admission-application-center']"> 
