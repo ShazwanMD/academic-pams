@@ -222,10 +222,12 @@ export class PlannerService {
       .map((res: Response) => <Course>res.json());
   }
 
-  saveCourse(course: Course): Observable<String> {
+    saveCourse(course: Course): Observable<String> {
+    console. log (course.code);
     let headers = new Headers({
       'Content-Type': 'application/json',
       //'Authorization': 'Bearer ' + this.authService.token
+
     });
     let options = new RequestOptions({headers: headers});
     return this.http.post(environment.endpoint + '/api/planner/course/' + course.code + '/save', JSON.stringify(course), options)
