@@ -445,11 +445,12 @@ public class PlannerController {
 		curriculum.setElectiveCredit(vo.getElectiveCredit());
 		curriculum.setGeneralCredit(vo.getGeneralCredit());
 		curriculum.setLanguageCredit(vo.getLanguageCredit());
-		curriculum.setMaxPeriod(vo.getMaxPeriod());
-		curriculum.setOrdinal(vo.getOrdinal());
-		curriculum.setPeriod(vo.getPeriod());
+		curriculum.setOthersCredit(vo.getOtherCredit());
 		curriculum.setRequiredCredit(vo.getRequiredCredit());
 		curriculum.setTotalCredit(vo.getTotalCredit());
+		curriculum.setPeriod(vo.getPeriod());
+		curriculum.setMaxPeriod(vo.getMaxPeriod());
+		curriculum.setOrdinal(vo.getOrdinal());
 		curriculum.setProgram(plannerService.findProgramByCode(vo.getProgram().getCode()));
 		plannerService.saveCurriculum(curriculum);
 		return new ResponseEntity<String>("Success", HttpStatus.OK);
