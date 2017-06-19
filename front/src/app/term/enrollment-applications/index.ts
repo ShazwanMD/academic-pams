@@ -34,6 +34,7 @@ import {PooledEnrollmentApplicationTaskListComponent} from "./component/pooled-e
 import {EnrollmentApplicationTaskDetailPage} from "./enrollment-application-task-detail.page";
 import {StudentEnrollmentApplicationTaskDetailPage} from "./student-enrollment-application-task-detail.page";
 import { IdentityModule } from "../../identity/index";
+import { StudentEnrollmentApplicationItemComponent } from "./component/student-enrollment-application-item.component";
 
 
 @NgModule({
@@ -68,6 +69,7 @@ import { IdentityModule } from "../../identity/index";
     StudentEnrollmentListComponent,
     StudentOfferingListComponent,
     PooledEnrollmentApplicationTaskListComponent,
+    StudentEnrollmentApplicationItemComponent,
 
     //dialog
     EnrollmentApplicationTaskCreatorDialog,
