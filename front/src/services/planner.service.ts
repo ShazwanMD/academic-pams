@@ -353,6 +353,7 @@ export class PlannerService {
   }
 
   saveCurriculum(curriculum: Curriculum): Observable<String> {
+    console. log (curriculum.code);
     let headers = new Headers({
       'Content-Type': 'application/json',
       //'Authorization': 'Bearer ' + this.authService.token
