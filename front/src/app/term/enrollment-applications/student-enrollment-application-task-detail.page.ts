@@ -16,21 +16,21 @@ import {EnrollmentApplicationActions} from "./enrollment-application.action";
 })
 export class StudentEnrollmentApplicationTaskDetailPage implements OnInit {
 
-  private ENROLLMENT_APPLICATION_TASK: string[] = "termModuleState.enrollmentApplicationTask".split(".");
-  private enrollmentApplicationTask$: Observable<EnrollmentApplicationTask>;
+  //private ENROLLMENT_APPLICATION_TASK: string[] = "termModuleState.enrollmentApplicationTask".split(".");
+  //private enrollmentApplicationTask$: Observable<EnrollmentApplicationTask>;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
               private store: Store<TermModuleState>,
               private actions: EnrollmentApplicationActions) {
-    this.enrollmentApplicationTask$ = this.store.select(...this.ENROLLMENT_APPLICATION_TASK)
+    //this.enrollmentApplicationTask$ = this.store.select(...this.ENROLLMENT_APPLICATION_TASK)
   }
 
   ngOnInit(): void {
-    this.route.params.subscribe((params: { taskId: string }) => {
+    /*this.route.params.subscribe((params: { taskId: string }) => {
       let taskId: string = params.taskId;
       this.store.dispatch(this.actions.findEnrollmentApplicationTaskByTaskId(taskId));
-    });
+    });*/
   }
 
   goBack(): void {

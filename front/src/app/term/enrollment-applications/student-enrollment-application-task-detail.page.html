@@ -4,10 +4,79 @@
     <span>PAMS: Postgraduate Management System</span>
     <span flex></span>
   </div>
-  test
+  
+     <md-card>
+        <md-card-title>Student Name</md-card-title>
+        <md-card-subtitle>Student Status</md-card-subtitle>
 
-<!--   <pams-enrollment-application-task-workflow
-    [enrollmentApplicationTaskObservable]="enrollmentApplicationTask$">
-  </pams-enrollment-application-task-workflow> -->
+        <div layout="row" layout-wrap hide-xs hide-sm class="push-sm">
+          <div layout="column" flex>
+            <md-list dense>
+              <md-list-item>
+                <h4 md-line>--</h4>
+                <p md-line>Reference No</p>
+              </md-list-item>
+            </md-list>
+          </div>
+          <div layout="column" flex>
+            <md-list dense>
+              <md-list-item>
+                <h4 md-line>--</h4>
+                <p md-line>Student Matric.No</p>
+              </md-list-item>
+            </md-list>
+          </div>
+        </div>
+
+        <md-card-actions>
+        </md-card-actions>
+      </md-card>
+      <md-card>
+  <div toolbar-buttons layout="row" layout-align="start center" flex>
+    <md-card-title>Courses/Sections
+    </md-card-title>
+  <!--   <md-chip-list *ngIf="enrollmentApplicationItems?.length > 0">
+      <md-chip color="accent">{{enrollmentApplicationItems?.length}}</md-chip>
+    </md-chip-list>
+    <span flex></span>
+    <button md-button class="md-icon-button" (click)="createDialog()">
+      <md-icon class="md-24 tc-grey-300" [ngClass]="{'tc-grey-700': selectedRows.length === 0}">add</md-icon>
+    </button>
+    <button md-button class="md-icon-button" (click)="edit(selectedRows[0])" [disabled]="selectedRows.length != 1">
+      <md-icon class="md-24 tc-grey-300" [ngClass]="{'tc-grey-700': selectedRows.length === 1}">edit</md-icon>
+    </button>
+    <button md-button class="md-icon-button" (click)="delete(selectedRows[0])" [disabled]="selectedRows.length != 1">
+      <md-icon class="md-24 tc-grey-300" [ngClass]="{'tc-grey-700': selectedRows.length === 1}">delete</md-icon>
+    </button> -->
+  </div>
+  <md-divider></md-divider>
+ <!--  <td-data-table
+    [data]="enrollmentApplicationItems"
+    [columns]="columns"
+    [sortBy]="summary"
+    [sortOrder]="ASC"
+    [multiple]="true"
+    [selectable]="true"
+    [(ngModel)]="selectedRows"
+    (rowSelect)="selectRow($event)"
+    (selectAll)="selectAllRows($event)"
+    dense>
+    <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
+      <div layout="row" flex="40">
+        <span>{{value}}</span>
+      </div>
+    </template>
+    <template tdDataTableTemplate="section.ordinal" let-value="value" let-row="row" let-column="column">
+      <div layout="row" flex="10">
+        <span>{{value}}</span>
+      </div>
+    </template>
+  </td-data-table> -->
+</md-card>
+
+<!--   <pams-student-admission-enrollment-application-task-item
+     [enrollmentApplication]="enrollmentApplication$ | async"
+          [enrollmentApplicationItems]="enrollmentApplicationItems$ | async">
+  </pams-student-admission-enrollment-application-task-item> -->
 
 </td-layout-nav>
