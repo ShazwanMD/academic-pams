@@ -5,10 +5,16 @@
 <td-layout-manage-list #list> <md-nav-list
 	list-items> <a md-list-item (click)="createDialog()">
 	<md-icon>create</md-icon> Create New Offering
-</a> <md-divider></md-divider> <a md-list-item
-	[routerLink]="['/term/admissions']"> <md-icon>create</md-icon>
-	Admissions
-</a> </md-nav-list>
+</a> <md-divider></md-divider> 
+<a md-list-item [routerLink]="['/term/admissions']"> 
+<md-icon>person_add</md-icon>
+	Semester Registration
+</a> 
+<a md-list-item [routerLink]="['/term/enrollment-applications']"> 
+<md-icon>create</md-icon>
+	Course Enrollments
+</a> 
+</md-nav-list>
 <div toolbar-buttons layout="row" layout-align="start center" flex>
 	<span flex>Offering Center</span>
 	<button md-button class="md-icon-button">
@@ -20,12 +26,12 @@
 </div>
 
 <md-card class=""> 
-<!-- <td-search-box class="push-left push-right"
-	placeholder="search" [alwaysVisible]="true"
-	(searchDebounce)="filter($event)"> </td-search-box> -->
 	 <pams-offering-list
 	[offerings]="offerings$ | async" (view)="viewOffering($event)"></pams-offering-list>
-<md-divider></md-divider> <md-card-actions> <a
+<md-divider></md-divider> <!-- <md-card-actions> 
+<a
 	md-button color="accent" class="text-upper"
 	[routerLink]="['/offerings-search']"> <span>View More</span>
-</a></md-card-actions> </md-card> </td-layout-manage-list> </td-layout-nav>
+</a>
+</md-card-actions> --> 
+</md-card> </td-layout-manage-list> </td-layout-nav>
