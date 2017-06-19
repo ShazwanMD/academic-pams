@@ -6,9 +6,6 @@
       <md-chip color="accent">{{enrollmentApplications?.length}}</md-chip>
     </md-chip-list> -->
     <span flex></span>
-     <!--  <button md-button class="md-icon-button" (click)="createDialog()">
-      <md-icon >add</md-icon>
-    </button> -->
       <button md-button class="md-icon-button" (click)="edit(selectedRows[0])" >
       <md-icon >edit</md-icon>
     </button>
@@ -27,8 +24,6 @@
       <md-icon class="md-24 tc-grey-300" [ngClass]="{'tc-grey-700': selectedRows.length === 1}">delete</md-icon>
     </button> -->
   </div>
-
-
   <md-divider></md-divider>
   <md-card-content>
     <td-data-table
@@ -43,33 +38,19 @@
       (rowSelect)="selectRow($event)"
       (selectAll)="selectAllRows($event)"
       dense>
-      <template tdDataTableTemplate="assessmentType" let-value="value" let-row="row"	let-column="column">
+      <template tdDataTableTemplate="key" let-value="value" let-row="row"	let-column="column">
         <div layout="row">
           <span flex>{{value }}</span>
         </div>
       </template>
-      <template tdDataTableTemplate="assessmentCategory" let-value="value" let-row="row"	let-column="column">
+      <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
         <div layout="row">
-          <span flex>{{value  }}</span>
-        </div>
-      </template>
-      <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
-        <div layout="row">
-          <span flex>{{value}}</span>
-        </div>
-      </template>
-      <template tdDataTableTemplate="action" let-value="value" let-row="row"
-                let-column="column">
-        <div layout="row">
-         <!--  <button md-icon-button [md-menu-trigger-for]="menu1" mdTooltip="Select enrollment actions">
+          <button md-icon-button [md-menu-trigger-for]="menu1" mdTooltip="Select enrollment application actions" >
             <md-icon>more_vert</md-icon>
           </button>
           <md-menu x-position="before" #menu1="mdMenu">
-            <button md-menu-item >View enrollment</button>
-            
-            <button md-menu-item >Update enrollment</button>
-            <button md-menu-item >Delete enrollment</button>
-          </md-menu> -->
+            <button md-menu-item [routerLink]="['/term/enrollment-applications', row['referenceNo'], 'student-enrollment-application-task-detail']" >Add/Drop</button>
+          </md-menu>
         </div>
       </template>
     </td-data-table>
