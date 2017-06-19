@@ -46,6 +46,7 @@ export class CourseEditorDialog implements OnInit {
       titleMs: '',
       titleEn: '',
       status: CourseStatus.NEW,
+     // classification: CourseClassification.NEW,
     });
 
     if (this.edit) this.editForm.patchValue(this._course);
