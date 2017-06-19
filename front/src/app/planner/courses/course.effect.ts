@@ -62,8 +62,7 @@ export class CourseEffects {
     .withLatestFrom(this.store$.select(...this.COURSE))
     .map(state => state[1])
     .map((course: Course) => this.courseActions.findCourseByCode(course.code));
-
-
+  
   @Effect() deactivateCourse$ = this.actions$
     .ofType(CourseActions.DEACTIVATE_COURSE)
     .map(action => action.payload)
@@ -72,4 +71,5 @@ export class CourseEffects {
     .withLatestFrom(this.store$.select(...this.COURSE))
     .map(state => state[1])
     .map((course: Course) => this.courseActions.findCourseByCode(course.code));
+    
 }
