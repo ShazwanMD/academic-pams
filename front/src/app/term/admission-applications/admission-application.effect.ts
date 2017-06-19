@@ -108,10 +108,5 @@ export class AdmissionApplicationEffects {
     .ofType(AdmissionApplicationActions.UPDATE_ADMISSION_APPLICATION)
     .map(action => action.payload)
     .switchMap(admissionApplication => this.termService.updateAdmissionApplication(admissionApplication))
-    .map(admissionApplication => this.admissionApplicationActions.updateAdmissionApplicationSuccess(admissionApplication))
-    .mergeMap(action => from([action,
-        this.admissionApplicationActions.findPooledAdmissionApplicationTasks(),
-        this.admissionApplicationActions.findAssignedAdmissionApplicationTasks()
-      ]
-    ));
+    .map(admissionApplication => this.admissionApplicationActions.updateAdmissionApplicationSuccess(admissionApplication));
 }
