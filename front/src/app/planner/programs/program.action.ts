@@ -142,7 +142,7 @@ console.log(program)
     };
   }
 
-  static ACTIVATE_PROGRAM_SUCCESS = '[Program] Activate AcademicSession Success';
+  static ACTIVATE_PROGRAM_SUCCESS = '[Program] Activate Program Success';
 
   activateProgramSuccess(program): Action {
     return {
