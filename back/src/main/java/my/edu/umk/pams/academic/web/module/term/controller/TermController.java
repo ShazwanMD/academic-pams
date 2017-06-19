@@ -882,7 +882,6 @@ public class TermController {
                 }
                 i++;
             }
-            // todo(sam) kena tambah api klau xde e.g. findSectionByEnrollment(enrollment)
         } catch (IOException e) {
             e.printStackTrace();
         } catch (InvalidFormatException e) {

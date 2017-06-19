@@ -4,13 +4,13 @@ import {
   Component, Input, ChangeDetectionStrategy,
   OnChanges, SimpleChange, ViewChild
 } from '@angular/core';
-import {OfferingActions} from "../offering.action";
-import {Store} from "@ngrx/store";
-import {TermModuleState} from "../../index";
-import {GradebookMatrix} from "../gradebook-matrix.interface";
-import {TdDataTableComponent} from "@covalent/core";
-import {Offering} from "../offering.interface";
-import {Assessment} from "../../assessments/assessment.interface";
+import { OfferingActions } from "../offering.action";
+import { Store } from "@ngrx/store";
+import { TermModuleState } from "../../index";
+import { GradebookMatrix } from "../gradebook-matrix.interface";
+import { TdDataTableComponent } from "@covalent/core";
+import { Offering } from "../offering.interface";
+import { Assessment } from "../../assessments/assessment.interface";
 
 @Component({
   selector: 'pams-gradebook',
@@ -25,12 +25,12 @@ export class GradebookComponent implements OnChanges {
   @ViewChild('dataTable') dataTable: TdDataTableComponent;
 
   columns: any[] = [
-    {label: 'Student name', name: 'enrollment.admission.student.name'}
+    { label: 'Student name', name: 'enrollment.admission.student.name' }
   ];
 
 
   constructor(private actions: OfferingActions,
-              private store: Store<TermModuleState>) {
+    private store: Store<TermModuleState>) {
   }
 
 
