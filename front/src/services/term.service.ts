@@ -326,6 +326,7 @@ export class TermService {
   }
 
   findEnrollmentApplicationByReferenceNo(referenceNo: string): Observable<EnrollmentApplication> {
+      console.log("findEnrollmentApplicationByReferenceNo");
     return this.http.get(environment.endpoint + '/api/term/enrollmentApplications/' + referenceNo)
       .map((res: Response) => <EnrollmentApplication>res.json());
   }
