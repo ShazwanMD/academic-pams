@@ -4,30 +4,10 @@
     <span>PAMS: Postgraduate Management System</span>
     <span flex></span>
   </div>
-  <md-card>
-        <md-card-title>--</md-card-title>
-        <md-card-subtitle>--</md-card-subtitle>
-        <div layout="row" layout-wrap hide-xs hide-sm class="push-sm">
-          <div layout="column" flex>
-            <md-list dense>
-              <md-list-item>
-                <h4 md-line>--</h4>
-                <p md-line>Reference No</p>
-              </md-list-item>
-            </md-list>
-          </div>
-          <div layout="column" flex>
-            <md-list dense>
-              <md-list-item>
-                <h4 md-line>--</h4>
-                <p md-line>Student Matric.No</p>
-              </md-list-item>
-            </md-list>
-          </div>
-        </div>
-        <md-card-actions>
-        </md-card-actions>
-      </md-card> 
+   <pams-student-enrollment-application-list
+            [enrollmentApplication]="enrollmentApplication$ | async">
+        </pams-student-enrollment-application-list>
+
    <pams-student-enrollment-application-item
           [enrollmentApplication]="enrollmentApplication$ | async"
            [enrollmentApplicationItems]="enrollmentApplicationItems$ | async">

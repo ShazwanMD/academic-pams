@@ -35,6 +35,7 @@ import {EnrollmentApplicationTaskDetailPage} from "./enrollment-application-task
 import {StudentEnrollmentApplicationTaskDetailPage} from "./student-enrollment-application-task-detail.page";
 import { IdentityModule } from "../../identity/index";
 import { StudentEnrollmentApplicationItemComponent } from "./component/student-enrollment-application-item.component";
+import { StudentEnrollmentApplicationListComponent } from "./component/student-enrollment-application-list.component";
 
 
 @NgModule({
@@ -67,6 +68,7 @@ import { StudentEnrollmentApplicationItemComponent } from "./component/student-e
     EnrollmentApplicationTypeSelectComponent,
     AssignedEnrollmentApplicationTaskListComponent,
     StudentEnrollmentListComponent,
+    StudentEnrollmentApplicationListComponent,
     StudentOfferingListComponent,
     PooledEnrollmentApplicationTaskListComponent,
     StudentEnrollmentApplicationItemComponent,
