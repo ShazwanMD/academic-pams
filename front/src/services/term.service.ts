@@ -126,7 +126,7 @@ export class TermService {
       //'Authorization': 'Bearer ' + this.authService.token
     });
     let options = new RequestOptions({ headers: headers });
-    return this.http.put(environment.endpoint + '/api/term/admissionApplications/' + admissionApplication.referenceNo + '/update', JSON.stringify(admissionApplication))
+    return this.http.put(environment.endpoint + '/api/term/admissionApplications/' + admissionApplication.referenceNo + '/update', JSON.stringify(admissionApplication), options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
   

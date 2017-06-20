@@ -76,7 +76,17 @@
                   </div>
                   <div layout="row" class="pad-bottom">
                     <span flex="15">Advisor Type</span>
-                    <span> {{admissionApplicationTask?.application?.advisor?.actorType}}</span>
+                    <span> {{admissionApplicationTask?.application?.advisor?.staffType}}</span>
+                  </div>
+                  <md-divider></md-divider>
+                  <br>
+                  <div layout="row" class="pad-bottom">
+                    <span flex="15">Student ID </span>
+                    <span> {{admissionApplicationTask?.application?.student?.identityNo}}</span>
+                  </div>
+                  <div layout="row" class="pad-bottom">
+                    <span flex="15">Student Name</span>
+                    <span> {{admissionApplicationTask?.application?.student?.name}}</span>
                   </div>
                 </div>
               </md-tab>
@@ -91,12 +101,14 @@
                     <span flex="15">Description</span>
                     <span> {{admissionApplicationTask?.application?.academicSession?.description}}</span>
                   </div>
+                  <md-divider></md-divider>
+                  <br>
                   <div layout="row" class="pad-bottom">
                     <span flex="15">Study Center</span>
                     <span> {{admissionApplicationTask?.application?.studyCenter?.description}}</span>
                   </div>
                   <div layout="row" class="pad-bottom">
-                    <span flex="15">Study Center</span>
+                    <span flex="15">Code</span>
                     <span> {{admissionApplicationTask?.application?.studyCenter?.code}}</span>
                   </div>
                 </div>
