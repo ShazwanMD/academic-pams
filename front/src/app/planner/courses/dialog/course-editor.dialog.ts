@@ -52,7 +52,8 @@ export class CourseEditorDialog implements OnInit {
     if (this.edit) this.editForm.patchValue(this._course);
   }
 
-  submit(course: Course, isValid: boolean) {
+  save(course: Course, isValid: boolean) {
+    
     console.log(JSON.stringify(course));
     if (!course.id) this.store.dispatch(this.actions.saveCourse(course));
     else  this.store.dispatch(this.actions.updateCourse(course));
