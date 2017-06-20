@@ -2,7 +2,6 @@
   <div toolbar-content layout="row" layout-align="center center" flex>
     <span>PAMS: Postgraduate Management System</span> <span flex></span>
   </div>
-
   <div md-content flex md-scroll-y>
     <div layout="column" layout-gt-md="row" class="inset">
       <div flex-gt-md="70">
@@ -14,15 +13,11 @@
           [section]="section$ | async"
           [enrollments]="enrollments$ | async">
         </pams-section-enrollment-list>
-
         <pams-section-appointment-list
           [section]="section$ | async"
           [appointments]="appointments$ | async">
-
         </pams-section-appointment-list>
-
       </div>
-
       <div flex-gt-md="30">
         <pams-section-action
         [offering]="offering$ | async"
@@ -38,10 +33,9 @@
             flex dense>
             <md-list-item [routerLink]="['/term/admissions']">
               <md-icon md-list-avatar>email</md-icon>
-              <h4 md-line>Admissions</h4>
-              <p md-line>Watch this admissions</p>
+              <h4 md-line>Semester Registration</h4>
+              <p md-line>Watch this semester registration</p>
             </md-list-item>
-
             <md-list-item [routerLink]="['/term/offerings']">
               <md-icon md-list-avatar>email</md-icon>
               <h4 md-line>Offerings</h4>

@@ -7,15 +7,19 @@ import {TermModuleState} from "../index";
 import {Store} from "@ngrx/store";
 import 'rxjs/add/operator/withLatestFrom';
 import {EnrollmentApplicationTask} from "./enrollment-application-task.interface";
+import { AdmissionActions } from "../admissions/admission.action";
 
 
 @Injectable()
 export class EnrollmentApplicationEffects {
 
   private ENROLLMENT_APPLICATION_TASK: string[] = "termModuleState.enrollmentApplicationTask".split(".");
+  private ADMISSION: string[] = "termModuleState.admission".split(".");  
+  private ENROLLMENTAPPLICATION: string[] = "termModuleState.enrollmentApplication".split(".");
 
   constructor(private actions$: Actions,
               private enrollmentApplicationActions: EnrollmentApplicationActions,
+              private admissionActions: AdmissionActions,
               private termService: TermService,
               private store$: Store<TermModuleState>) {
   }
@@ -47,7 +51,8 @@ export class EnrollmentApplicationEffects {
     .map(action => action.payload)
     .switchMap(referenceNo => this.termService.findEnrollmentApplicationByReferenceNo(referenceNo))
     .map(enrollmentApplication => this.enrollmentApplicationActions.findEnrollmentApplicationByReferenceNoSuccess(enrollmentApplication))
-    .mergeMap(action => from([action, this.enrollmentApplicationActions.findEnrollmentApplicationItems(action.payload)]));
+    .mergeMap(action => from([action, 
+     this.enrollmentApplicationActions.findEnrollmentApplicationItems(action.payload)]));
 
   @Effect() findEnrollmentApplicationItems$ = this.actions$
     .ofType(EnrollmentApplicationActions.FIND_ENROLLMENT_APPLICATION_ITEMS)

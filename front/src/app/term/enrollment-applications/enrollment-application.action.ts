@@ -179,10 +179,10 @@ export class EnrollmentApplicationActions {
 
     static FIND_ENROLLMENT_APPLICATION_BY_REFERENCE_NO_SUCCESS = '[EnrollmentApplication] Find EnrollmentApplication By Reference No Success';
 
-    findEnrollmentApplicationByReferenceNoSuccess(application): Action {
+    findEnrollmentApplicationByReferenceNoSuccess(enrollmentApplication): Action {
         return {
             type: EnrollmentApplicationActions.FIND_ENROLLMENT_APPLICATION_BY_REFERENCE_NO_SUCCESS,
-            payload: application
+            payload: enrollmentApplication
         };
     }
 
