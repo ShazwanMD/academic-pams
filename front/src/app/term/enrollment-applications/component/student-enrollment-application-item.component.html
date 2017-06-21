@@ -38,5 +38,17 @@
         <span>{{value}} </span>
       </div>
     </template>
+     <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
+        <div layout="row">
+          <button md-icon-button [md-menu-trigger-for]="menu1" mdTooltip="Select appropriate actions">
+            <md-icon>more_vert</md-icon>
+          </button>
+          <md-menu x-position="before" #menu1="mdMenu">
+          
+            <button md-menu-item (click)="editDialog(row, true)">Update item</button>
+            <button md-menu-item (click)="deleteItem(row)">Delete item</button>
+          </md-menu>
+        </div>
+      </template>
   </td-data-table>
 </md-card>

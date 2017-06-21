@@ -58,14 +58,14 @@ export class StudentEnrollmentApplicationItemComponent {
 }*/
 
 
-import {Component, Input, ChangeDetectionStrategy, ViewContainerRef, OnInit} from '@angular/core';
+import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, ViewContainerRef, OnInit} from '@angular/core';
 import {MdDialog, MdDialogConfig, MdDialogRef} from "@angular/material";
 import {ActivatedRoute, Router} from "@angular/router";
 import {TermModuleState} from "../../index";
 import {Store} from "@ngrx/store";
 import {EnrollmentApplication} from "../enrollment-application.interface";
 import {EnrollmentApplicationItem} from "../enrollment-application-item.interface";
-import {EnrollmentApplicationItemEditorDialog} from "../dialog/enrollment-application-item-editor.dialog";
+import {EnrollmentApplicationItemUpdateDialog} from "../dialog/enrollment-application-item-update.dialog";
 import {EnrollmentApplicationActions} from "../enrollment-application.action";
 
 @Component({
@@ -77,9 +77,12 @@ import {EnrollmentApplicationActions} from "../enrollment-application.action";
   export class StudentEnrollmentApplicationItemComponent implements OnInit {
 
   @Input() enrollmentApplication: EnrollmentApplication;
+  @Input() enrollmentApplicationItem: EnrollmentApplicationItem;
   @Input() enrollmentApplicationItems: EnrollmentApplicationItem[];
+  
+  @Output() view = new EventEmitter<EnrollmentApplicationItem>();
 
-  private editorDialogRef: MdDialogRef<EnrollmentApplicationItemEditorDialog>;
+  private editorDialogRef: MdDialogRef<EnrollmentApplicationItemUpdateDialog>;
   private selectedRows: EnrollmentApplicationItem[];
 
   private columns: any[] = [
@@ -127,7 +130,7 @@ import {EnrollmentApplicationActions} from "../enrollment-application.action";
     config.width = '50%';
     config.height = '40%';
     config.position = {top: '0px'};
-    this.editorDialogRef = this.dialog.open(EnrollmentApplicationItemEditorDialog, config);
+    this.editorDialogRef = this.dialog.open(EnrollmentApplicationItemUpdateDialog, config);
     this.editorDialogRef.componentInstance.enrollmentApplication = this.enrollmentApplication;
 
     // close
@@ -135,5 +138,25 @@ import {EnrollmentApplicationActions} from "../enrollment-application.action";
       // do something
     });
   }
+  
+  //edit dialog
+  editDialog(enrollmentApplicationItem: EnrollmentApplicationItem, isValid: boolean): void {
+      console.log("EnrollmentApplicationItem:{}", enrollmentApplicationItem)
+      let config = new MdDialogConfig();
+      config.viewContainerRef = this.vcf;
+      config.role = 'dialog';
+      config.width = '60%';
+      config.height = '80%';
+      this.editorDialogRef = this.dialog.open(EnrollmentApplicationItemUpdateDialog, config);
+      if (isValid) {
+        this.editorDialogRef.componentInstance.enrollmentApplicationItem = enrollmentApplicationItem;
+        this.editorDialogRef.componentInstance.enrollmentApplication = this.enrollmentApplication;
+
+      }
+      this.editorDialogRef.afterClosed().subscribe(res => {
+        console.log("close dialog enrollmentApplicationItem");
+        // load something here
+      });
+    }
 }
 

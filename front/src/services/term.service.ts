@@ -318,6 +318,19 @@ export class TermService {
     return this.http.post(environment.endpoint + '/api/term/enrollmentApplications/' + enrollmentApplication.referenceNo + '/enrollmentApplicationItems', JSON.stringify(item), options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
+  
+  //update enrollmentApplicationItem
+  updateEnrollmentApplicationItem(application: EnrollmentApplication, item: EnrollmentApplicationItem): Observable<String> {
+    console.log(item);
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({ headers: headers });
+    return this.http.put(environment.endpoint + '/api/term/enrollmentApplications/' + application.referenceNo + '/enrollmentApplicationItems/' + item.id, JSON.stringify(item), options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+  
 
   findEnrollmentApplications(): Observable<EnrollmentApplication[]> {
     console.log("findEnrollmentApplications");

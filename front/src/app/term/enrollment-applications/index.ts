@@ -37,6 +37,7 @@ import { IdentityModule } from "../../identity/index";
 import { StudentEnrollmentApplicationItemComponent } from "./component/student-enrollment-application-item.component";
 import { StudentEnrollmentApplicationListComponent } from "./component/student-enrollment-application-list.component";
 import { StudentEnrollmentApplicationTaskDetailActionComponent } from "./component/student-enrollment-application-task-detail-action.component";
+import { EnrollmentApplicationItemUpdateDialog } from "./dialog/enrollment-application-item-update.dialog";
 
 
 @NgModule({
@@ -78,6 +79,7 @@ import { StudentEnrollmentApplicationTaskDetailActionComponent } from "./compone
     //dialog
     EnrollmentApplicationTaskCreatorDialog,
     EnrollmentApplicationItemEditorDialog,
+    EnrollmentApplicationItemUpdateDialog,
   ],
   exports: [
     EnrollmentApplicationActionSelectComponent,
@@ -85,6 +87,7 @@ import { StudentEnrollmentApplicationTaskDetailActionComponent } from "./compone
   entryComponents: [
     EnrollmentApplicationTaskCreatorDialog,
     EnrollmentApplicationItemEditorDialog,
+    EnrollmentApplicationItemUpdateDialog,
     EnrollmentApplicationDraftTaskPanel,
   ]
 })

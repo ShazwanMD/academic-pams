@@ -1,4 +1,4 @@
-<h2 md-dialog-title>Add/Drop Section</h2>
+<h2 md-dialog-title>Add/Drop Section Ref: {{_enrollmentApplicationItem?.application?.referenceNo}} </h2>
 <md-dialog-content flex>
   <form [formGroup]="editForm">
     <div fxLayout fxLayout.xs="column" fxLayoutWrap fxLayoutGap="25px">
@@ -6,15 +6,26 @@
         [placeholder]="'Select Section'"
         [innerFormControl]="editForm.controls['section']"  fxFlex="calc(67%-25px)" class="pad-bottom">
       </pams-section-select>
-
+      
       <pams-enrollment-application-action-select
         [placeholder]="'Add/Drop'"
         [innerFormControl]="editForm.controls['action']"  fxFlex="calc(33%-25px)" class="pad-bottom">
       </pams-enrollment-application-action-select>
+      
+       <div layout="row" class="pad-bottom">
+      <md-input-container flex mdTooltip="Please insert add/drop">
+        <input mdInput
+               placeholder="Add/Drop"
+              formControlName="action" flex/>
+      </md-input-container>
+    </div>
+      
     </div>
   </form>
 </md-dialog-content>
 <md-dialog-actions align="end">
-  <button md-raised-button color="accent" (click)="save(editForm.value, editForm.valid)">Save</button>
+  <button md-raised-button color="accent" (click)="save(editForm.value, editForm.valid)">
+   {{edit ? 'Update' : 'Save'}}
+  </button>
 </md-dialog-actions>
 

@@ -279,5 +279,25 @@ export class EnrollmentApplicationActions {
             payload: message
         };
     }
+    
+    static UPDATE_ENROLLMENT_APPLICATION_ITEM = '[EnrollmentApplication] Update EnrollmentApplication Item';
+
+    updateEnrollmentApplicationItem(application, item): Action {
+        console.log("updateEnrollmentApplicationItem");
+        return {
+            type: EnrollmentApplicationActions.UPDATE_ENROLLMENT_APPLICATION_ITEM,
+            payload: { application: application, item: item }
+        };
+    }
+
+    static UPDATE_ENROLLMENT_APPLICATION_ITEM_SUCCESS = '[EnrollmentApplication] Update EnrollmentApplication Item Success';
+
+    updateEnrollmentApplicationItemSuccess(message): Action {
+        console.log("updateEnrollmentApplicationItemSuccess");
+        return {
+            type: EnrollmentApplicationActions.UPDATE_ENROLLMENT_APPLICATION_ITEM_SUCCESS,
+            payload: message
+        };
+    }
 
 }

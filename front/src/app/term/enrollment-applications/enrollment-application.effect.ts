@@ -128,5 +128,13 @@ export class EnrollmentApplicationEffects {
     .map(state => state[1])
     .map(enrollmentApplication => this.enrollmentApplicationActions.findEnrollmentApplicationItems(enrollmentApplication));
 
-
+  @Effect() updateEnrollmentApplicationItem$ = this.actions$
+  .ofType(EnrollmentApplicationActions.UPDATE_ENROLLMENT_APPLICATION_ITEM)
+  .map(action => action.payload)
+  .switchMap(payload => this.termService.updateEnrollmentApplicationItem(payload.application, payload.item))
+  .map(message => this.enrollmentApplicationActions.updateEnrollmentApplicationItemSuccess(message))
+  .withLatestFrom(this.store$.select(...this.ENROLLMENT_APPLICATION_TASK))
+  .map(state => state[1])
+  .map((application: EnrollmentApplicationTask) => this.enrollmentApplicationActions.findEnrollmentApplicationByReferenceNo(application.referenceNo))
+   
 }
