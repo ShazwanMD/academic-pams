@@ -277,6 +277,8 @@ public interface TermService {
     void deleteEnrollmentApplicationItem(AdEnrollmentApplication application, AdEnrollmentApplicationItem item);
 
     void postToEnrollment(AdEnrollmentApplication application);
+    
+    void removeEnrollmentApplication(AdAdmission admission, AdEnrollmentApplication application);
 
     //====================================================================================================
     // ENROLLMENT APPLICATION

@@ -1,6 +1,6 @@
 <md-card>
   <div toolbar-buttons layout="row" layout-align="start center" flex>
-    <md-card-title>Add/Drop Courses {{enrollmentApplicationItem?.application?.admission?.student?.name}}
+    <md-card-title>Add/Drop Courses Id: {{enrollmentApplication?.id}}
     </md-card-title>
      <md-chip-list *ngIf="enrollmentApplicationItems?.length > 0">
       <md-chip color="accent">{{enrollmentApplicationItems?.length}}</md-chip>
@@ -38,7 +38,7 @@
         <span>{{value}} </span>
       </div>
     </template>
-     <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
+     <template tdDataTableTemplate="action2" let-value="value" let-row="row" let-column="column">
         <div layout="row">
           <button md-icon-button [md-menu-trigger-for]="menu1" mdTooltip="Select appropriate actions">
             <md-icon>more_vert</md-icon>

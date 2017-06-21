@@ -8,6 +8,7 @@ import {Store} from "@ngrx/store";
 import 'rxjs/add/operator/withLatestFrom';
 import {EnrollmentApplicationTask} from "./enrollment-application-task.interface";
 import { AdmissionActions } from "../admissions/admission.action";
+import {Admission} from "../admissions/admission.interface";
 
 
 @Injectable()
@@ -137,4 +138,14 @@ export class EnrollmentApplicationEffects {
   .map(state => state[1])
   .map((application: EnrollmentApplicationTask) => this.enrollmentApplicationActions.findEnrollmentApplicationByReferenceNo(application.referenceNo))
    
+  @Effect() removeEnrollmentApplication$ = this.actions$
+  .ofType(EnrollmentApplicationActions.REMOVE_ENROLLMENT_APPLICATION)
+  .map(action => action.payload)
+  .switchMap(payload => this.termService.removeEnrollmentApplication(payload.admission, payload.application))
+  .map(message => this.enrollmentApplicationActions.removeEnrollmentApplicationSuccess(message))
+  .withLatestFrom(this.store$.select(...this.ADMISSION))
+  .map(state => state[1])
+  .map((admission: Admission) => this.admissionActions.findAdmissionById(admission.id));
+
+  
 }

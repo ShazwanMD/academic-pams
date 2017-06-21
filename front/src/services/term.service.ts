@@ -359,6 +359,17 @@ export class TermService {
     return this.http.delete(environment.endpoint + '/api/term/enrollmentApplications/' + application.referenceNo + '/enrollmentApplicationItems/' + item.id, options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
+  
+  //remove EnrollmentApplication using editorDialog
+  removeEnrollmentApplication(admission: Admission, application: EnrollmentApplication) {
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      //'Authorization': 'Bearer ' + this.authService.token
+    });
+    let options = new RequestOptions({ headers: headers });
+    return this.http.delete(environment.endpoint + '/api/term/admissions/' + admission.id + '/enrollment-applications/' + application.id, options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
 
   // ==================================================================================================== //
   // ENROLLMENT

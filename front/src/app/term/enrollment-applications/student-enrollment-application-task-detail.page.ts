@@ -10,7 +10,6 @@ import { Admission } from "../admissions/admission.interface";
 import { EnrollmentApplicationItem } from "./enrollment-application-item.interface";
 import { TermService } from "../../../services/term.service";
 
-
 @Component({
   selector: 'pams-student-enrollment-application-task-detail',
   templateUrl: './student-enrollment-application-task-detail.page.html',
@@ -20,9 +19,9 @@ export class StudentEnrollmentApplicationTaskDetailPage implements OnInit {
     @Input() enrollmentApplication: EnrollmentApplication;
     @Input() admission: Admission;
     
-    private ENROLLMENTAPPLICATION: string[] = "termModuleState.enrollmentApplication".split(".");
+    private ENROLLMENT_APPLICATION: string[] = "termModuleState.enrollmentApplication".split(".");
     private ADMISSION: string[] = "termModuleState.admission".split(".");
-    private ENROLLMENTAPPLICATIONITEMS: string[] = "termModuleState.enrollmentApplicationItems".split(".");
+    private ENROLLMENT_APPLICATION_ITEMS: string[] = "termModuleState.enrollmentApplicationItems".split(".");
 
     private admission$: Observable<Admission>;
     private enrollmentApplication$: Observable<EnrollmentApplication>;
@@ -35,9 +34,9 @@ export class StudentEnrollmentApplicationTaskDetailPage implements OnInit {
               private termService: TermService,
               private actions: EnrollmentApplicationActions) {
     
-      this.enrollmentApplication$ = this.store.select(...this.ENROLLMENTAPPLICATION);
+      this.enrollmentApplication$ = this.store.select(...this.ENROLLMENT_APPLICATION);
       this.admission$ = this.store.select(...this.ADMISSION);
-      this.enrollmentApplicationItems$ = this.store.select(...this.ENROLLMENTAPPLICATIONITEMS);
+      this.enrollmentApplicationItems$ = this.store.select(...this.ENROLLMENT_APPLICATION_ITEMS);
   }
 
   ngOnInit(): void {
