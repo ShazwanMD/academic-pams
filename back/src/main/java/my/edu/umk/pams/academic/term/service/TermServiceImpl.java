@@ -1562,6 +1562,13 @@ public class TermServiceImpl implements TermService {
         return map;
     }
 
+		
+	 @Override
+	    public void removeEnrollmentApplication(AdAdmission admission, AdEnrollmentApplication application) {
+	        admissionDao.removeEnrollmentApplication(admission, application, securityService.getCurrentUser());
+	        sessionFactory.getCurrentSession().flush();
+	    }
+
 	 
 	
 }

@@ -3,8 +3,12 @@ package my.edu.umk.pams.academic.term.dao;
 
 import my.edu.umk.pams.academic.core.GenericDao;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
+import my.edu.umk.pams.academic.identity.model.AdUser;
 import my.edu.umk.pams.academic.planner.model.AdCohort;
 import my.edu.umk.pams.academic.term.model.AdAdmission;
+import my.edu.umk.pams.academic.term.model.AdEnrollmentApplication;
+import my.edu.umk.pams.academic.term.model.AdOffering;
+import my.edu.umk.pams.academic.term.model.AdSection;
 import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
 import my.edu.umk.pams.academic.planner.model.AdProgram;
 
@@ -68,5 +72,7 @@ public interface AdAdmissionDao extends GenericDao<Long, AdAdmission> {
     boolean hasAdmission(AdProgram program);
 
     Integer count(String filter, AdStudent student, AdAcademicSession academicSession);
+    
+    void removeEnrollmentApplication(AdAdmission admission, AdEnrollmentApplication application, AdUser user);
 
 }
