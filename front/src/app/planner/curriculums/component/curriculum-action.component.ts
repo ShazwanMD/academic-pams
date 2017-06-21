@@ -1,4 +1,4 @@
-import { CurriculumUpdateDialog } from '../dialog/curriculum-update.dialog';
+import { CurriculumUpdateDialog} from '../dialog/curriculum-update.dialog';
 import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, ViewContainerRef} from '@angular/core';
 import {Curriculum} from '../curriculum.interface';
 import {MdDialog, MdDialogConfig, MdDialogRef, MdSnackBar} from '@angular/material';
@@ -14,7 +14,7 @@ import {PlannerModuleState} from '../../index';
 export class CurriculumActionComponent {
 
   @Input() curriculum: Curriculum;
-  private editorDialogRef: MdDialogRef<CurriculumUpdateDialog>;
+  private updateDialogRef: MdDialogRef<CurriculumUpdateDialog>;
 
   constructor(private actions: CurriculumActions,
               private store: Store<PlannerModuleState>,
@@ -24,7 +24,7 @@ export class CurriculumActionComponent {
 
   }
 
-  editorDialog(): void {
+  updateDialog(): void {
     console.log('CurriculumAction');
     console.log(this.curriculum);
     let config = new MdDialogConfig();
@@ -33,10 +33,10 @@ export class CurriculumActionComponent {
     config.width = '60%';
     config.height = '50%';
     config.position = {top: '0px'};
-    this.editorDialogRef = this.dialog.open(CurriculumUpdateDialog, config);
-    this.editorDialogRef.componentInstance.curriculum = this.curriculum;
+    this.updateDialogRef = this.dialog.open(CurriculumUpdateDialog, config);
+    this.updateDialogRef.componentInstance.curriculum = this.curriculum;
     // set
-    this.editorDialogRef.afterClosed().subscribe((res) => {
+    this.updateDialogRef.afterClosed().subscribe((res) => {
       console.log('close dialog');
     });
   }
