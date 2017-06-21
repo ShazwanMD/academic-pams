@@ -1,5 +1,6 @@
 package my.edu.umk.pams.academic.term.dao;
 
+import my.edu.umk.pams.academic.core.AdFlowState;
 import my.edu.umk.pams.academic.core.GenericDao;
 
 import my.edu.umk.pams.academic.identity.model.AdStaff;
@@ -26,11 +27,11 @@ public interface AdEnrollmentApplicationDao extends GenericDao<Long, AdEnrollmen
     AdEnrollmentApplication findByReferenceNo(String referenceNo);
 
     AdEnrollmentApplicationItem findItemById(Long id);
-    
+
     AdEnrollmentApplicationItem findItemBySection(AdSection section);
 
     List<AdEnrollmentApplication> find(AdAcademicSession session);
-    
+
     List<AdEnrollmentApplication> find(AdAdmission admission);
 
     List<AdEnrollmentApplication> find(AdAcademicSession session, Integer offset, Integer limit);
@@ -40,6 +41,10 @@ public interface AdEnrollmentApplicationDao extends GenericDao<Long, AdEnrollmen
     List<AdEnrollmentApplication> find(String filter, AdAcademicSession session, AdStudent student, Integer offset, Integer limit);
 
     List<AdEnrollmentApplication> find(String filter, AdAcademicSession session, AdStaff advisor, Integer offset, Integer limit);
+
+    List<AdEnrollmentApplication> findByFlowState(AdFlowState flowState);
+
+    List<AdEnrollmentApplication> findByFlowStates(AdFlowState... flowState);
 
     List<AdEnrollmentApplicationItem> findItems(AdEnrollmentApplication intake);
 

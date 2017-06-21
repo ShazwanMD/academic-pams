@@ -2,6 +2,7 @@ package my.edu.umk.pams.academic.web.module.term.controller;
 
 import my.edu.umk.pams.academic.common.model.AdStudyCenter;
 import my.edu.umk.pams.academic.common.service.CommonService;
+import my.edu.umk.pams.academic.core.AdFlowState;
 import my.edu.umk.pams.academic.identity.model.AdStaff;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.identity.service.IdentityService;
@@ -132,8 +133,8 @@ public class TermController {
         admission.setSession(plannerService.findAcademicSessionByCode(vo.getAcademicSession().getCode()));
         termService.updateAdmission(admission);
         return new ResponseEntity<String>("Success Update Admission", HttpStatus.OK);
-    }  
-    
+    }
+
     // workflow
 
 
@@ -142,6 +143,18 @@ public class TermController {
         AdAcademicSession academicSession = plannerService.findCurrentAcademicSession();
         return new ResponseEntity<List<AdmissionApplication>>(
                 termTransformer.toAdmissionApplicationVos(termService.findAdmissionApplications(academicSession)),
+                HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/admissionApplications/archived", method = RequestMethod.GET)
+    public ResponseEntity<List<AdmissionApplication>> findArchivedAdmissionsApplications() {
+        List<AdAdmissionApplication> admissionApplications = termService.findAdmissionApplicationsByFlowStates(
+                AdFlowState.COMPLETED,
+                AdFlowState.REMOVED,
+                AdFlowState.CANCELLED
+        );
+        return new ResponseEntity<List<AdmissionApplication>>(
+                termTransformer.toAdmissionApplicationVos(admissionApplications),
                 HttpStatus.OK);
     }
 
@@ -253,8 +266,8 @@ public class TermController {
         List<Enrollment> enrollmentVos = termTransformer.toEnrollmentVos(enrollments);
         return new ResponseEntity<List<Enrollment>>(enrollmentVos, HttpStatus.OK);
     }
-    
-  //find enrollment applications by admission created on 18/6/17
+
+    //find enrollment applications by admission created on 18/6/17
     @RequestMapping(value = "/admissions/{id}/enrollmentApplications", method = RequestMethod.GET)
     public ResponseEntity<List<EnrollmentApplication>> findEnrollmentApplicationsByAdmission(@PathVariable Long id)
             throws UnsupportedEncodingException {
@@ -316,6 +329,16 @@ public class TermController {
     public ResponseEntity<List<EnrollmentApplication>> findenrollmentApplications() {
         AdAcademicSession academicSession = plannerService.findCurrentAcademicSession();
         List<AdEnrollmentApplication> enrollmentApplications = termService.findEnrollmentApplications(academicSession);
+        return new ResponseEntity<List<EnrollmentApplication>>(
+                termTransformer.toEnrollmentApplicationVos(enrollmentApplications), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/enrollmentApplications/archived", method = RequestMethod.GET)
+    public ResponseEntity<List<EnrollmentApplication>> findArchivedEnrollmentApplications() {
+        AdAcademicSession academicSession = plannerService.findCurrentAcademicSession();
+        List<AdEnrollmentApplication> enrollmentApplications = termService.findEnrollmentApplicationsByFlowStates(
+                AdFlowState.COMPLETED, AdFlowState.CANCELLED, AdFlowState.REMOVED
+        );
         return new ResponseEntity<List<EnrollmentApplication>>(
                 termTransformer.toEnrollmentApplicationVos(enrollmentApplications), HttpStatus.OK);
     }
@@ -822,9 +845,9 @@ public class TermController {
                 gradebook.setScore(BigDecimal.ZERO);
                 gradebook.setAssessment(termTransformer.toAssessmentVo(assessment));
                 matrix.addGradebook(gradebook);
-     
+
             }
-            
+
             matrices.add(matrix);
         }
         LOG.debug("Enrollment:{}", enrollments);
@@ -925,12 +948,12 @@ public class TermController {
                 for (AdAssessment assessment : assessments) {
                     Cell grade = row.createCell(colNum++);
                     AdGradebook gradebookByAssessmentAndEnrollment = termService.findGradebookByAssessmentAndEnrollment(assessment, enrollment);
-                  
-                    
-                    if(null != gradebookByAssessmentAndEnrollment)
-                    	  grade.setCellValue(gradebookByAssessmentAndEnrollment.getScore().doubleValue());
-                    	else  
-                    	 grade.setCellValue((double)0);
+
+
+                    if (null != gradebookByAssessmentAndEnrollment)
+                        grade.setCellValue(gradebookByAssessmentAndEnrollment.getScore().doubleValue());
+                    else
+                        grade.setCellValue((double) 0);
                 }
             }
 

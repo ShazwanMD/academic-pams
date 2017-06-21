@@ -3,6 +3,7 @@ package my.edu.umk.pams.academic.term.service;
 import my.edu.umk.pams.academic.common.model.AdGradeCode;
 import my.edu.umk.pams.academic.common.model.AdStudyCenter;
 import my.edu.umk.pams.academic.common.service.CommonService;
+import my.edu.umk.pams.academic.core.AdFlowState;
 import my.edu.umk.pams.academic.identity.model.AdStaff;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.planner.model.*;
@@ -571,6 +572,16 @@ public class TermServiceImpl implements TermService {
     }
 
     @Override
+    public List<AdAdmissionApplication> findAdmissionApplicationsByFlowState(AdFlowState flowState) {
+        return admissionApplicationDao.findByFlowState(flowState);
+    }
+
+    @Override
+    public List<AdAdmissionApplication> findAdmissionApplicationsByFlowStates(AdFlowState... flowStates) {
+        return admissionApplicationDao.findByFlowStates(flowStates);
+    }
+
+    @Override
     public List<AdAdmissionApplication> findAdmissionApplications(AdAcademicSession session) {
         return admissionApplicationDao.find(session);
     }
@@ -793,6 +804,16 @@ public class TermServiceImpl implements TermService {
     @Override
     public AdEnrollmentApplicationItem findEnrollmentApplicationItemBySection(AdSection section) {
         return enrollmentApplicationDao.findItemBySection(section);
+    }
+
+    @Override
+    public List<AdEnrollmentApplication> findEnrollmentApplicationsByFlowState(AdFlowState flowState) {
+        return enrollmentApplicationDao.findByFlowState(flowState);
+    }
+
+    @Override
+    public List<AdEnrollmentApplication> findEnrollmentApplicationsByFlowStates(AdFlowState... flowStates) {
+        return enrollmentApplicationDao.findByFlowStates(flowStates);
     }
 
     @Override

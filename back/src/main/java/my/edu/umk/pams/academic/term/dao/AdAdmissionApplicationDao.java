@@ -1,5 +1,6 @@
 package my.edu.umk.pams.academic.term.dao;
 
+import my.edu.umk.pams.academic.core.AdFlowState;
 import my.edu.umk.pams.academic.core.GenericDao;
 import my.edu.umk.pams.academic.identity.model.AdStaff;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
@@ -14,40 +15,44 @@ import java.util.List;
  */
 public interface AdAdmissionApplicationDao extends GenericDao<Long, AdAdmissionApplication> {
 
-	// ====================================================================================================
-	// FINDER
-	// ====================================================================================================
+    // ====================================================================================================
+    // FINDER
+    // ====================================================================================================
 
-	AdAdmissionApplication findByReferenceNo(String referenceNo);
+    AdAdmissionApplication findByReferenceNo(String referenceNo);
 
-	AdAdmissionApplication findByProgramAndStudent(AdProgram program, AdStudent student);
+    AdAdmissionApplication findByProgramAndStudent(AdProgram program, AdStudent student);
 
-	List<AdAdmissionApplication> find(AdAcademicSession session);
+    List<AdAdmissionApplication> find(AdAcademicSession session);
 
-	List<AdAdmissionApplication> find(AdAcademicSession session, Integer offset, Integer limit);
+    List<AdAdmissionApplication> find(AdAcademicSession session, Integer offset, Integer limit);
 
-	List<AdAdmissionApplication> find(String filter, AdAcademicSession session, Integer offset, Integer limit);
+    List<AdAdmissionApplication> find(String filter, AdAcademicSession session, Integer offset, Integer limit);
 
-	List<AdAdmissionApplication> find(String filter, AdAcademicSession session, AdStudent student, Integer offset,
-			Integer limit);
+    List<AdAdmissionApplication> find(String filter, AdAcademicSession session, AdStudent student, Integer offset,
+                                      Integer limit);
 
-	List<AdAdmissionApplication> find(String filter, AdAcademicSession session, AdStaff advisor, Integer offset,
-			Integer limit);
+    List<AdAdmissionApplication> find(String filter, AdAcademicSession session, AdStaff advisor, Integer offset,
+                                      Integer limit);
 
-	// ====================================================================================================
-	// HELPER
-	// ====================================================================================================
+    List<AdAdmissionApplication> findByFlowState(AdFlowState flowState);
 
-	Integer count(AdAcademicSession session);
+    List<AdAdmissionApplication> findByFlowStates(AdFlowState... flowStates);
 
-	Integer count(String filter, AdAcademicSession session);
+    // ====================================================================================================
+    // HELPER
+    // ====================================================================================================
 
-	Integer count(String filter, AdAcademicSession session, AdStudent student);
+    Integer count(AdAcademicSession session);
 
-	Integer count(String filter, AdAcademicSession session, AdStaff staff);
+    Integer count(String filter, AdAcademicSession session);
 
-	// ====================================================================================================
-	// CRUD
-	// ====================================================================================================
+    Integer count(String filter, AdAcademicSession session, AdStudent student);
+
+    Integer count(String filter, AdAcademicSession session, AdStaff staff);
+
+    // ====================================================================================================
+    // CRUD
+    // ====================================================================================================
 
 }
