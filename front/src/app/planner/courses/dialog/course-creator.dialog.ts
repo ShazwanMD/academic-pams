@@ -62,4 +62,6 @@ export class CourseCreatorDialog implements OnInit {
         this.dialog.close();
         console.log(course);
   }
+
+  
 }
