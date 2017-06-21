@@ -43,7 +43,6 @@ export class CurriculumUpdateDialog implements OnInit {
     this._curriculum = value;
     this.update = true;
   }
-
   ngOnInit(): void {
     this.updateForm = this.formBuilder.group(<Curriculum>{
       id: null,
@@ -63,7 +62,6 @@ export class CurriculumUpdateDialog implements OnInit {
       program: <Program>{}
   
     });
-
     if (this.update) this.updateForm.patchValue(this._curriculum);
   }
 
