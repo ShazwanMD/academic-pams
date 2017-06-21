@@ -1,4 +1,4 @@
-<h2 md-dialog-title>update cohort</h2>
+<h2 md-dialog-title>curriculum</h2>
 <md-dialog-content>
   <form [formGroup]="updateForm">
     <div layout="column" class="inset" flex>
@@ -19,7 +19,7 @@
   </form>
 </md-dialog-content>
 <md-dialog-actions align="end">
-  <button md-raised-button color="accent" (click)="save(updateForm.value, updateForm.valid)">
-    {{edit ? 'Update' : 'Save'}}
+  <button md-raised-button color="accent" (click)="submit(updateForm.value, updateForm.valid)">
+    Update
   </button>
 </md-dialog-actions>
