@@ -1,6 +1,7 @@
 package my.edu.umk.pams.academic.term.dao;
 
 
+import my.edu.umk.pams.academic.core.AdFlowState;
 import my.edu.umk.pams.academic.core.AdMetaState;
 import my.edu.umk.pams.academic.core.AdMetadata;
 import my.edu.umk.pams.academic.core.GenericDaoSupport;
@@ -47,17 +48,17 @@ public class AdEnrollmentApplicationDaoImpl extends GenericDaoSupport<Long, AdEn
         Session session = sessionFactory.getCurrentSession();
         return (AdEnrollmentApplicationItem) session.get(AdEnrollmentApplicationItemImpl.class, id);
     }
-    
+
     @Override
-	public AdEnrollmentApplicationItem findItemBySection(AdSection section) {
-    	 Session session = sessionFactory.getCurrentSession();
-    	 Query query = session.createQuery("select p from AdEnrollmentApplicationItem p " +
-                 "where p.section = :section ");
-         query.setEntity("section", section);
-         return (AdEnrollmentApplicationItem) query.uniqueResult();
-    	   	 
-    	 // return (AdEnrollmentApplicationItem) session.get(AdEnrollmentApplicationItemImpl.class, section);
-	}
+    public AdEnrollmentApplicationItem findItemBySection(AdSection section) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select p from AdEnrollmentApplicationItem p " +
+                "where p.section = :section ");
+        query.setEntity("section", section);
+        return (AdEnrollmentApplicationItem) query.uniqueResult();
+
+        // return (AdEnrollmentApplicationItem) session.get(AdEnrollmentApplicationItemImpl.class, section);
+    }
 
     @Override
     public List<AdEnrollmentApplication> find(AdAcademicSession session) {
@@ -122,6 +123,28 @@ public class AdEnrollmentApplicationDaoImpl extends GenericDaoSupport<Long, AdEn
         query.setEntity("advisor", advisor);
         query.setFirstResult(offset);
         query.setMaxResults(limit);
+        return (List<AdEnrollmentApplication>) query.list();
+    }
+
+    @Override
+    public List<AdEnrollmentApplication> findByFlowState(AdFlowState flowState) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select p from AdEnrollmentApplication p where " +
+                "p.flowState.state = :flowState " +
+                "and p.metaState.state = :metaState");
+        query.setInteger("flowState", flowState.ordinal());
+        query.setInteger("metaState", AdMetaState.ACTIVE.ordinal());
+        return (List<AdEnrollmentApplication>) query.list();
+    }
+
+    @Override
+    public List<AdEnrollmentApplication> findByFlowStates(AdFlowState... flowStates) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select p from AdEnrollmentApplication p where " +
+                "p.flowState.state in (:flowStates) " +
+                "and p.metaState.state = :metaState");
+        query.setParameterList("flowStates", flowStates);
+        query.setInteger("metaState", AdMetaState.ACTIVE.ordinal());
         return (List<AdEnrollmentApplication>) query.list();
     }
 
@@ -241,18 +264,18 @@ public class AdEnrollmentApplicationDaoImpl extends GenericDaoSupport<Long, AdEn
         session.delete(item);
     }
 
-	 @Override
-	    public List<AdEnrollmentApplication> find(AdAdmission admission) {
-	        Session session = sessionFactory.getCurrentSession();
-	        Query query = session.createQuery("select s from AdEnrollmentApplication s where " +
-	                "s.admission = :admission " +
-	                "and s.metadata.state = :state " +
-	                "order by s.id asc");
-	        query.setInteger("state", AdMetaState.ACTIVE.ordinal());
-	        query.setEntity("admission", admission);
-	        query.setCacheable(true);
-	        return (List<AdEnrollmentApplication>) query.list();
-	    }
+    @Override
+    public List<AdEnrollmentApplication> find(AdAdmission admission) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select s from AdEnrollmentApplication s where " +
+                "s.admission = :admission " +
+                "and s.metadata.state = :state " +
+                "order by s.id asc");
+        query.setInteger("state", AdMetaState.ACTIVE.ordinal());
+        query.setEntity("admission", admission);
+        query.setCacheable(true);
+        return (List<AdEnrollmentApplication>) query.list();
+    }
 
-	
+
 }

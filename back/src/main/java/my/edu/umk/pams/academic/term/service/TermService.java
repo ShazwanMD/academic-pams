@@ -2,6 +2,7 @@ package my.edu.umk.pams.academic.term.service;
 
 import my.edu.umk.pams.academic.common.model.AdStudyCenter;
 
+import my.edu.umk.pams.academic.core.AdFlowState;
 import my.edu.umk.pams.academic.identity.model.AdStaff;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.planner.model.*;
@@ -204,6 +205,10 @@ public interface TermService {
 
     AdAdmissionApplication findAdmissionApplicationByProgramAndStudent(AdProgram program, AdStudent student);
 
+    List<AdAdmissionApplication> findAdmissionApplicationsByFlowState(AdFlowState flowState);
+
+    List<AdAdmissionApplication> findAdmissionApplicationsByFlowStates(AdFlowState... flowStates);
+
     List<AdAdmissionApplication> findAdmissionApplications(AdAcademicSession session);
 
     List<AdAdmissionApplication> findAdmissionApplications(AdAcademicSession session, Integer offset, Integer limit);
@@ -227,7 +232,7 @@ public interface TermService {
     //====================================================================================================
 
     AdAdmission findAdmissionById(Long id);
-     
+
     AdAdmission findAdmissionByAcademicSessionCohortAndStudent(AdAcademicSession academicSession, AdCohort cohort, AdStudent student);
 
     List<AdAdmission> findAdmissions(Integer offset, Integer limit);
@@ -285,8 +290,12 @@ public interface TermService {
 
     AdEnrollmentApplicationItem findEnrollmentApplicationItemBySection(AdSection section);
 
+    List<AdEnrollmentApplication> findEnrollmentApplicationsByFlowState(AdFlowState flowState);
+
+    List<AdEnrollmentApplication> findEnrollmentApplicationsByFlowStates(AdFlowState... flowStates);
+
     List<AdEnrollmentApplication> findEnrollmentApplications(AdAcademicSession session);
-    
+
     List<AdEnrollmentApplication> findEnrollmentApplications(AdAdmission admission);
 
     List<AdEnrollmentApplication> findEnrollmentApplications(AdAcademicSession session, Integer offset, Integer limit);
@@ -387,7 +396,7 @@ public interface TermService {
     void saveEnrollment(AdEnrollment enrollment);
 
     //void updateEnrollment(AdEnrollment enrollment);
-    
+
     void updateEnrollment(AdSection section, AdEnrollment enrollment);
 
     void deleteEnrollment(AdEnrollment enrollment);
@@ -441,11 +450,11 @@ public interface TermService {
     void saveAppointment(AdAppointment appointment); //use addAppointment
 
     void addAppointment(AdSection section, AdAppointment appointment);
-    
+
     //void updateAppointment(AdAppointment appointment);
-    
+
     void updateAppointment(AdSection section, AdAppointment appointment);
-    
+
     void removeAppointment(AdSection section, AdAppointment appointment);
 
     void deleteAppointment(AdAppointment appointment);

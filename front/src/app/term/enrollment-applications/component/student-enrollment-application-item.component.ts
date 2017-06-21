@@ -83,6 +83,8 @@ import {EnrollmentApplicationActions} from "../enrollment-application.action";
   private selectedRows: EnrollmentApplicationItem[];
 
   private columns: any[] = [
+   
+    {name: 'application.admission.student.identityNo', label: 'identityNo'},  
     {name: 'section.ordinal', label: 'Section'},
     {name: 'section.code', label: 'Code'},
     {name: 'section.offering.titleEn', label: 'Title'},
@@ -100,7 +102,7 @@ import {EnrollmentApplicationActions} from "../enrollment-application.action";
   }
 
   ngOnInit(): void {
-    //this.selectedRows = this.enrollmentApplicationItems.filter(value => value.selected);
+    this.selectedRows = this.enrollmentApplicationItems.filter(value => value.selected);
   }
 
   filter(): void {

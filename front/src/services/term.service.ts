@@ -126,7 +126,7 @@ export class TermService {
       //'Authorization': 'Bearer ' + this.authService.token
     });
     let options = new RequestOptions({ headers: headers });
-    return this.http.put(environment.endpoint + '/api/term/admissionApplications/' + admissionApplication.referenceNo + '/update', JSON.stringify(admissionApplication))
+    return this.http.put(environment.endpoint + '/api/term/admissionApplications/' + admissionApplication.referenceNo + '/update', JSON.stringify(admissionApplication), options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
   
@@ -326,6 +326,7 @@ export class TermService {
   }
 
   findEnrollmentApplicationByReferenceNo(referenceNo: string): Observable<EnrollmentApplication> {
+      console.log("findEnrollmentApplicationByReferenceNo");
     return this.http.get(environment.endpoint + '/api/term/enrollmentApplications/' + referenceNo)
       .map((res: Response) => <EnrollmentApplication>res.json());
   }

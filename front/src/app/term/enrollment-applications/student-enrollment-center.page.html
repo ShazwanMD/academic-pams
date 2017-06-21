@@ -37,7 +37,7 @@
  <md-divider></md-divider> 
  <pams-student-enrollment-list
             [studentEnrollmentApplicationTasks]="studentEnrollmentApplicationTasks$ | async"
-            (view)="viewTask($event)"></pams-student-enrollment-list>
+            (view)="viewTask($event)"   mdTooltip="View enrollment info"></pams-student-enrollment-list>
  </md-card>
     <md-card> <md-card-title>Curriculum</md-card-title>
 <!-- <md-card-subtitle> SESSION 201720181
@@ -51,22 +51,22 @@
 <md-tab-group> 
 <md-tab label="Semester 1"> <br>
  <pams-student-offering-list
-        [offerings]="offerings$ | async" (view)="viewOffering($event)"></pams-student-offering-list>
+        [offerings]="offerings$ | async" (view)="viewOffering($event)"  mdTooltip="view curriculum info"></pams-student-offering-list>
 
 </md-tab> 
 <md-tab label="Semester 2"> <br>
  <pams-student-offering-list
-        [offerings]="offerings$ | async" (view)="viewOffering($event)"></pams-student-offering-list>
+        [offerings]="offerings$ | async" (view)="viewOffering($event)" mdTooltip="view curriculum info"></pams-student-offering-list>
 
 </md-tab> 
 <md-tab label="Semester 3"> <br>
  <pams-student-offering-list
-        [offerings]="offerings$ | async" (view)="viewOffering($event)"></pams-student-offering-list>
+        [offerings]="offerings$ | async" (view)="viewOffering($event)" mdTooltip="view curriculum info"></pams-student-offering-list>
 
 </md-tab> 
 <md-tab label="Semester 4"> <br>
  <pams-student-offering-list
-        [offerings]="offerings$ | async" (view)="viewOffering($event)"></pams-student-offering-list>
+        [offerings]="offerings$ | async" (view)="viewOffering($event)" mdTooltip="view curriculum info"></pams-student-offering-list>
 
 </md-tab> 
 

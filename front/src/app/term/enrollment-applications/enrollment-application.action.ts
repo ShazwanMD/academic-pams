@@ -179,10 +179,10 @@ export class EnrollmentApplicationActions {
 
     static FIND_ENROLLMENT_APPLICATION_BY_REFERENCE_NO_SUCCESS = '[EnrollmentApplication] Find EnrollmentApplication By Reference No Success';
 
-    findEnrollmentApplicationByReferenceNoSuccess(application): Action {
+    findEnrollmentApplicationByReferenceNoSuccess(enrollmentApplication): Action {
         return {
             type: EnrollmentApplicationActions.FIND_ENROLLMENT_APPLICATION_BY_REFERENCE_NO_SUCCESS,
-            payload: application
+            payload: enrollmentApplication
         };
     }
 
@@ -264,10 +264,10 @@ export class EnrollmentApplicationActions {
 
     static DELETE_ENROLLMENT_APPLICATION_ITEM = '[EnrollmentApplication] Delete EnrollmentApplication Item';
 
-    deleteEnrollmentApplicationItem(application, item): Action {
+    deleteEnrollmentApplicationItem(enrollmentApplication, item): Action {
         return {
             type: EnrollmentApplicationActions.DELETE_ENROLLMENT_APPLICATION_ITEM,
-            payload: { application: application, item: item }
+            payload: { application: enrollmentApplication, item: item }
         };
     }
 
