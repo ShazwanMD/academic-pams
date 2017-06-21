@@ -6,7 +6,10 @@ import {Curriculum} from '../curriculum.interface';
   templateUrl: './curriculum.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
+
 export class CurriculumComponent {
 
   @Input() curriculum: Curriculum;
+
+     
 }
