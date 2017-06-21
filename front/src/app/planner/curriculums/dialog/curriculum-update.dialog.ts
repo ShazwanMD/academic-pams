@@ -49,16 +49,30 @@ export class CurriculumUpdateDialog implements OnInit {
       id: null,
       code: '',
       description: '',
+      coreCredit: 0,
+      curriculumCredit: 0,
+      electiveCredit: 0,
+      generalCredit: 0,
+      languageCredit: 0,
+      otherCredit: 0,
+      requiredCredit: 0,
+      totalCredit: 0,
+      period: 0,
+      maxPeriod: 0,
+      ordinal: 0,
+      program: <Program>{}
+  
     });
 
     if (this.update) this.updateForm.patchValue(this._curriculum);
   }
 
-  save(curriculum: Curriculum, isValid: boolean): void {
+  submit(curriculum: Curriculum, isValid: boolean): void {
     console.log(JSON.stringify(curriculum));
-    curriculum.code = this._curriculum.code;
+    // curriculum.code = this._curriculum.code;
 
-    if (!curriculum.id) this.store.dispatch(this.actions.saveCurriculum(this._curriculum));
+    console.log('updating curriculum');
+    if (!curriculum.id) this.store.dispatch(this.actions.saveCurriculum(curriculum));
     else this.store.dispatch(this.actions.updateCurriculum(curriculum));
     this.dialog.close();
 
