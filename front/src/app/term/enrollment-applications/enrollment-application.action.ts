@@ -264,10 +264,10 @@ export class EnrollmentApplicationActions {
 
     static DELETE_ENROLLMENT_APPLICATION_ITEM = '[EnrollmentApplication] Delete EnrollmentApplication Item';
 
-    deleteEnrollmentApplicationItem(application, item): Action {
+    deleteEnrollmentApplicationItem(enrollmentApplication, item): Action {
         return {
             type: EnrollmentApplicationActions.DELETE_ENROLLMENT_APPLICATION_ITEM,
-            payload: { application: application, item: item }
+            payload: { application: enrollmentApplication, item: item }
         };
     }
 
