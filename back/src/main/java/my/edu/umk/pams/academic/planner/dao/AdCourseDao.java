@@ -51,6 +51,7 @@ public interface AdCourseDao extends GenericDao<Long, AdCourse> {
 
     AdCoursePrerequisite findByCourseAndPrerequisite(AdCourse course, AdCourse prereqCourse);
     
+    void save(AdProgram program, AdFaculty faculty, AdUser currentUser);
 
 	
 
