@@ -227,19 +227,19 @@ export class EnrollmentApplicationActions {
 
     static REMOVE_ENROLLMENT_APPLICATION = '[EnrollmentApplication] Remove EnrollmentApplication';
 
-    removeEnrollmentApplication(application): Action {
+    removeEnrollmentApplication(admission, application): Action {
         return {
             type: EnrollmentApplicationActions.REMOVE_ENROLLMENT_APPLICATION,
-            payload: application
+            payload: { admission: admission, application: application }
         };
     }
 
     static REMOVE_ENROLLMENT_APPLICATION_SUCCESS = '[EnrollmentApplication] Remove EnrollmentApplication Success';
 
-    removeEnrollmentApplicationSuccess(application): Action {
+    removeEnrollmentApplicationSuccess(message): Action {
         return {
             type: EnrollmentApplicationActions.REMOVE_ENROLLMENT_APPLICATION_SUCCESS,
-            payload: application
+            payload: message
         };
     }
 

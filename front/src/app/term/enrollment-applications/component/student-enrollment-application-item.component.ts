@@ -56,8 +56,6 @@ export class StudentEnrollmentApplicationItemComponent {
   }
 
 }*/
-
-
 import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, ViewContainerRef, OnInit} from '@angular/core';
 import {MdDialog, MdDialogConfig, MdDialogRef} from "@angular/material";
 import {ActivatedRoute, Router} from "@angular/router";
@@ -92,9 +90,9 @@ import {EnrollmentApplicationActions} from "../enrollment-application.action";
     {name: 'section.code', label: 'Code'},
     {name: 'section.offering.titleEn', label: 'Title'},
     {name: 'section.offering.course.credit', label: 'Credit'},
-    {name: 'action', label: 'Action'}
+    {name: 'action', label: 'Action'},  
+    {name: 'action2', label: 'Action'}
   ];
-
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -120,7 +118,6 @@ import {EnrollmentApplicationActions} from "../enrollment-application.action";
   delete(item: EnrollmentApplicationItem): void {
     this.store.dispatch(this.actions.deleteEnrollmentApplicationItem(this.enrollmentApplication, item));
   }
-
 
   createDialog(): void {
     console.log("show Dialog EnrollmentApplicationItem");

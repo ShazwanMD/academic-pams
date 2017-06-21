@@ -18,6 +18,9 @@ export class AdmissionEnrollmentApplicationListComponent implements OnInit {
     private columns: any[] = [
         { name: 'id', label: 'Id' },//referenceNo
         { name: 'referenceNo', label: 'Reference No.' },
+        { name: 'auditNo', label: 'Audit No.' },
+        { name: 'sourceNo', label: 'Source No.' },
+        { name: 'description', label: 'Description' },
         { name: 'applicationType', label: 'Application Type' },
         { name: 'action', label: '' },
     ];
@@ -65,5 +68,10 @@ export class AdmissionEnrollmentApplicationListComponent implements OnInit {
           // load something here
         });
       }
+    
+    delete(admission: Admission, application: EnrollmentApplication): void {
+        this.store.dispatch(this.actions.removeEnrollmentApplication(this.admission, application));
+      }
+
 }
 

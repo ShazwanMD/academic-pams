@@ -276,6 +276,18 @@ public class TermController {
         List<EnrollmentApplication> enrollmentApplicationVos = termTransformer.toEnrollmentApplicationVos(enrollmentApplications);
         return new ResponseEntity<List<EnrollmentApplication>>(enrollmentApplicationVos, HttpStatus.OK);
     }
+    
+    // delete enrollmentApplication by admission
+    @RequestMapping(value = "/admissions/{id}/enrollment-applications/{enrollmentApplicationId}", method = RequestMethod.DELETE)
+    public ResponseEntity<String> removeEnrollmentApplication(@PathVariable Long id, @PathVariable Long enrollmentApplicationId) {
+        dummyLogin();
+
+        LOG.debug("enrollmentApplicationId:{}", enrollmentApplicationId);
+        AdAdmission admission = termService.findAdmissionById(id);
+        AdEnrollmentApplication application = termService.findEnrollmentApplicationById(enrollmentApplicationId);
+        termService.removeEnrollmentApplication(admission, application);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
 
     // ====================================================================================================
     // ENROLLMENT
