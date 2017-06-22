@@ -33,11 +33,12 @@ export class OfferingCenterPage implements OnInit {
   goBack(route: string): void {
     this.router.navigate(['/offerings']);
   }
+  
   viewOffering(offering: Offering) {
     console.log("offering: " + offering.id);
-    this.router.navigate(['/offerings-detail', offering.id]);
+    this.router.navigate(['/term/offerings', offering.canonicalCode]);
   }
-
+  
   filter(): void {
 
   }
