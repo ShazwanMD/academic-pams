@@ -19,6 +19,7 @@ import { EnrollmentApplication } from "../enrollment-applications/enrollment-app
 export class AdmissionDetailPage implements OnInit {
 
   @Input() admission: Admission;
+  @Input() enrollment: Enrollment;
     
   private ADMISSION: string[] = 'termModuleState.admission'.split('.');
   private ENROLLMENTS: string[] = 'termModuleState.admissionEnrollments'.split('.');
@@ -81,4 +82,11 @@ export class AdmissionDetailPage implements OnInit {
   goBack(route: string): void {
     this.router.navigate(['/admissions']);
   }
+  
+  viewTask(enrollment: Enrollment) {
+      console.log("task: " + enrollment.id);
+      this.router.navigate(['/term/admissions', enrollment.id]);
+      
+    } 
+  
 }

@@ -8,7 +8,7 @@
         <pams-admission [admission]="admission$ | async"></pams-admission>
         <pams-admission-enrollment-list
           [admission]="admission$ | async"
-          [enrollments]="enrollments$ | async">
+          [enrollments]="enrollments$ | async" (view)="viewTask($event)">
         </pams-admission-enrollment-list>
          <pams-admission-enrollment-application-list
           [admission]="admission$ | async"

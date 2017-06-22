@@ -1,12 +1,13 @@
 import { Component, Input, EventEmitter, Output, ChangeDetectionStrategy, ViewContainerRef, OnInit } from '@angular/core';
 import { Enrollment } from '../../enrollments/enrollment.interface';
-import { MdDialog, MdDialogConfig, MdDialogRef } from '@angular/material';
+import { MdDialog, MdDialogConfig, MdDialogRef, MdSnackBar } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EnrollmentActions } from '../../enrollments/enrollment.action';
 import { Store } from '@ngrx/store';
 import { TermModuleState } from '../../index';
 import { Admission } from '../admission.interface';
 import { AdmissionEnrollmentDialog } from "../dialog/admission-enrollment.dialog";
+import { TdDataTableSortingOrder, TdDataTableService, ITdDataTableSortChangeEvent, IPageChangeEvent } from '@covalent/core';
 
 @Component( {
     selector: 'pams-admission-enrollment-list',
@@ -14,6 +15,11 @@ import { AdmissionEnrollmentDialog } from "../dialog/admission-enrollment.dialog
     changeDetection: ChangeDetectionStrategy.OnPush,
 } )
 export class AdmissionEnrollmentListComponent implements OnInit {
+    
+    @Input() enrollment: Enrollment;
+    @Input() admission: Admission;
+    @Input() enrollments: Enrollment[];
+    @Output() view: EventEmitter<Enrollment> = new EventEmitter<Enrollment>();
 
     private columns: any[] = [
         { name: 'section.id', label: 'Section' },
@@ -25,27 +31,31 @@ export class AdmissionEnrollmentListComponent implements OnInit {
         { name: 'enrollmentStatus', label: 'Status' },
         { name: 'action', label: '' },
     ];
-
-    @Input() enrollment: Enrollment;
-    @Input() admission: Admission;
-    @Input() enrollments: Enrollment[];
-    @Output() view: EventEmitter<Enrollment> = new EventEmitter<Enrollment>();
+    
+    filteredData: any[];
+    filteredTotal: number;
+    searchTerm: string = '';
+    fromRow: number = 1;
+    currentPage: number = 1;
+    pageSize: number = 5;
+    sortBy: string = 'section.id';
+    sortOrder: TdDataTableSortingOrder = TdDataTableSortingOrder.Descending;
 
     private selectedRows: Enrollment[];
     private creatorDialogRef: MdDialogRef<AdmissionEnrollmentDialog>;
-    constructor( private router: Router,
-        private route: ActivatedRoute,
-        private actions: EnrollmentActions,
-        private store: Store<TermModuleState>,
-        private vcf: ViewContainerRef,
-        private dialog: MdDialog ) {
+   
+    constructor(private _dataTableService: TdDataTableService,
+                private router: Router,
+                private route: ActivatedRoute,
+                private actions: EnrollmentActions,
+                private store: Store<TermModuleState>,
+                private vcf: ViewContainerRef,
+                private snackBar: MdSnackBar,
+                private dialog: MdDialog ) {
     }
-
+   
     ngOnInit(): void {
         this.selectedRows = this.enrollments.filter(value => value.selected);
-    }
-
-    filter(): void {
     }
 
     selectRow( enrollment: Enrollment ): void {
@@ -69,5 +79,47 @@ export class AdmissionEnrollmentListComponent implements OnInit {
           // load something here
         });
       }
+    
+    ngAfterViewInit(): void {
+        this.filteredData = this.enrollments;
+        this.filteredTotal = this.enrollments.length;
+        this.filter();
+      }
+
+      sort(sortEvent: ITdDataTableSortChangeEvent): void {
+        this.sortBy = sortEvent.name;
+        this.sortOrder = sortEvent.order;
+        this.filter();
+      }
+
+      search(searchTerm: string): void {
+        this.searchTerm = searchTerm;
+        this.filter();
+      }
+
+      page(pagingEvent: IPageChangeEvent): void {
+        this.fromRow = pagingEvent.fromRow;
+        this.currentPage = pagingEvent.page;
+        this.pageSize = pagingEvent.pageSize;
+        this.filter();
+      }
+
+      filter(): void {
+        let newData: any[] = this.enrollments;
+        newData = this._dataTableService.filterData(newData, this.searchTerm, true);
+        this.filteredTotal = newData.length;
+        newData = this._dataTableService.sortData(newData, this.sortBy, this.sortOrder);
+        newData = this._dataTableService.pageData(newData, this.fromRow, this.currentPage * this.pageSize);
+        this.filteredData = newData;
+      }
+      
+      viewTask(enrollment: Enrollment): void {
+          console.log("Emitting enrollment");
+          let snackBarRef = this.snackBar.open("Viewing enrollment info", "OK");
+          snackBarRef.afterDismissed().subscribe(() => {
+            this.view.emit(enrollment);
+          });
+        } 
+      
 }
 

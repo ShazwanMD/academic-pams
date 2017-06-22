@@ -41,7 +41,6 @@ export class AdmissionCenterPage implements OnInit {
     this.admissions$ = this.store.select(...this.ADMISSIONS);
   }
 
-
   viewAdmission(admission: Admission) {
     console.log("admission: " + admission.id);
     this.router.navigate(['/term/admissions', admission.id]);
