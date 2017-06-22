@@ -29,7 +29,7 @@ export class OfferingListComponent implements AfterViewInit  {
   fromRow: number = 1;
   currentPage: number = 1;
   pageSize: number = 5;
-  sortBy: string = 'course.code';
+  sortBy: string = 'id';
   sortOrder: TdDataTableSortingOrder = TdDataTableSortingOrder.Descending;
 
   

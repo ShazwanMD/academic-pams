@@ -22,6 +22,7 @@ export class AdmissionListComponent implements AfterViewInit  {
     { name: 'status', label: 'Admission Status' },
     { name: 'action', label: '' }
   ];
+  
   filteredData: any[];
   filteredTotal: number;
   searchTerm: string = '';

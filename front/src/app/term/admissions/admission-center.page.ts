@@ -1,6 +1,6 @@
 import { AdmissionCreateTaskCreatorDialog } from './dialog/admission-create-task-creator.dialog';
 import { MdDialogRef, MdDialog, MdDialogConfig } from '@angular/material';
-import { Component, OnInit, ChangeDetectionStrategy, ViewContainerRef } from '@angular/core';
+import {Component, OnInit, ChangeDetectionStrategy, ViewContainerRef} from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { Store } from "@ngrx/store";
@@ -18,20 +18,7 @@ export class AdmissionCenterPage implements OnInit {
   private ADMISSIONS: string[] = "termModuleState.admissions".split(".");
   private admissions$: Observable<Admission[]>;
   private creatorDialogRef: MdDialogRef<AdmissionCreateTaskCreatorDialog>;
-  private columns: any[] = [
-    { gpa: 'gpa', label: 'GPA' },
-    { gpa: 'cgpa', label: 'CGPA' },
-    { gpa: 'creditTaken', label: 'Credit Taken' },
-    { gpa: 'creditEarned', label: 'Credit Earned' },
-    { gpa: 'standing', label: 'Academic Standing' },
-    { gpa: 'status', label: 'Admission Status' },
-    { gpa: 'cohort.code', label: 'Cohort' },
-    { gpa: 'session.code', label: 'AcademicSession' },
-    { gpa: 'student.identityNo', label: 'Student' },
-    { gpa: 'studyCenter.code', label: 'Study Center' },
-    { name: 'action', label: '' }
-  ];
-
+  
   constructor(private router: Router,
     private route: ActivatedRoute,
     private actions: AdmissionActions,
