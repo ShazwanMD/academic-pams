@@ -21,8 +21,6 @@
       <md-icon class="md-24 tc-grey-300" [ngClass]="{'tc-grey-700': selectedRows.length === 1}">delete</md-icon>
     </button> -->
   </div>
-
-
   <md-divider></md-divider>
   <md-card-content>
     <td-data-table
@@ -55,15 +53,6 @@
       <template tdDataTableTemplate="action" let-value="value" let-row="row"
                 let-column="column">
         <div layout="row">
-         <!--  <button md-icon-button [md-menu-trigger-for]="menu1" mdTooltip="Select enrollment actions">
-            <md-icon>more_vert</md-icon>
-          </button>
-          <md-menu x-position="before" #menu1="mdMenu">
-            <button md-menu-item >View enrollment</button>
-            
-            <button md-menu-item >Update enrollment</button>
-            <button md-menu-item >Delete enrollment</button>
-          </md-menu> -->
         </div>
       </template>
     </td-data-table>

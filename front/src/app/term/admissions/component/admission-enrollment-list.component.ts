@@ -17,6 +17,7 @@ export class AdmissionEnrollmentListComponent implements OnInit {
 
     private columns: any[] = [
         { name: 'section.id', label: 'Section' },
+        { name: 'section.offering.academicSession.code', label: 'Session' },
         { name: 'section.code', label: 'Code' },
         { name: 'section.offering.titleEn', label: 'Title' },
         { name: 'section.offering.program.code', label: 'Program' },
