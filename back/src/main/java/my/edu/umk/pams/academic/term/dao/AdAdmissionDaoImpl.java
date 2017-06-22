@@ -3,9 +3,11 @@ package my.edu.umk.pams.academic.term.dao;
 import my.edu.umk.pams.academic.core.AdMetaState;
 import my.edu.umk.pams.academic.core.GenericDaoSupport;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
+import my.edu.umk.pams.academic.identity.model.AdUser;
 import my.edu.umk.pams.academic.planner.model.AdCohort;
 import my.edu.umk.pams.academic.term.model.AdAdmission;
 import my.edu.umk.pams.academic.term.model.AdAdmissionImpl;
+import my.edu.umk.pams.academic.term.model.AdEnrollmentApplication;
 import my.edu.umk.pams.academic.term.model.AdOffering;
 import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
 import my.edu.umk.pams.academic.planner.model.AdProgram;
@@ -364,5 +366,8 @@ public class AdAdmissionDaoImpl extends GenericDaoSupport<Long, AdAdmission> imp
     
 	}
 
-	
+    @Override
+    public void removeEnrollmentApplication(AdAdmission admission, AdEnrollmentApplication application, AdUser user) {
+        // todo(syikin) Please implement or remove contract
+    }
 }

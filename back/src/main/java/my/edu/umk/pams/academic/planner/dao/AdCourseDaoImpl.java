@@ -300,4 +300,9 @@ public class AdCourseDaoImpl extends GenericDaoSupport<Long, AdCourse> implement
             });
 
         }
+
+    @Override
+    public void save(AdCourse course, AdFaculty faculty, AdUser currentUser) {
+        // todo(zaidanawi) Please implement or remove contract
+    }
 }
