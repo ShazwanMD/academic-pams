@@ -66,9 +66,9 @@ export class StudentEnrollmentCenterPage implements OnInit {
     this.router.navigate(['/term/enrollment-applications/enrollment-application-task-detail', task.taskId]);
   }
     
-     viewOffering(offering: Offering) {
+  viewOffering(offering: Offering) {
     console.log("offering: " + offering.id);
-    this.router.navigate(['/offerings-detail', offering.id]);
+    this.router.navigate(['/term/offerings', offering.canonicalCode, 'student-offering-detail']);
   }
 
   ngOnInit(): void {

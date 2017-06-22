@@ -1,6 +1,7 @@
 import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, AfterViewInit} from '@angular/core';
 import {Offering} from "../../offerings/offering.interface";
 import { TdDataTableSortingOrder, TdDataTableService, ITdDataTableSortChangeEvent, IPageChangeEvent } from '@covalent/core';
+import { MdSnackBar } from "@angular/material";
 
 @Component({
   selector: 'pams-student-offering-list',
@@ -32,7 +33,8 @@ export class StudentOfferingListComponent implements AfterViewInit  {
   sortOrder: TdDataTableSortingOrder = TdDataTableSortingOrder.Descending;
 
   
-  constructor(private _dataTableService: TdDataTableService) {}
+  constructor(private _dataTableService: TdDataTableService,
+          private snackBar: MdSnackBar ) {}
   
   ngAfterViewInit(): void {
     this.filteredData = this.offerings;
@@ -66,4 +68,13 @@ export class StudentOfferingListComponent implements AfterViewInit  {
     newData = this._dataTableService.pageData(newData, this.fromRow, this.currentPage * this.pageSize);
     this.filteredData = newData;
   }
+  
+  viewOffering(offering: Offering): void {
+      console.log("Emitting offering");
+      let snackBarRef = this.snackBar.open("Viewing offering info", "OK");
+      snackBarRef.afterDismissed().subscribe(() => {
+        this.view.emit(offering);
+      });
+    } 
+  
 }

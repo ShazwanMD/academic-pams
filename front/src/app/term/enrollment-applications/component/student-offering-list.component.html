@@ -43,7 +43,7 @@
   </template>
   <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
     <div layout="row">
-      <a md-button color="accent" class="text-upper" [routerLink]="['/term/offerings', row['canonicalCode'], 'student-offering-detail']">
+      <a md-button color="accent" class="text-upper" (click)="viewOffering(row)" mdTooltip="View offerings info"><!-- [routerLink]="['/term/offerings', row['canonicalCode'], 'student-offering-detail']" -->
         <span>View</span>
       </a>
     </div>
