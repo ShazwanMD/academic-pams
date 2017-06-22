@@ -1,6 +1,7 @@
 import { Component, Input, EventEmitter, Output, ChangeDetectionStrategy, AfterViewInit } from '@angular/core';
 import { Admission } from "../admission.interface";
 import { TdDataTableSortingOrder, TdDataTableService, ITdDataTableSortChangeEvent, IPageChangeEvent } from '@covalent/core';
+import {MdSnackBar} from "@angular/material";
 
 @Component({
   selector: 'pams-admission-list',
@@ -31,7 +32,8 @@ export class AdmissionListComponent implements AfterViewInit  {
   sortOrder: TdDataTableSortingOrder = TdDataTableSortingOrder.Descending;
 
   
-  constructor(private _dataTableService: TdDataTableService) {}
+  constructor(private _dataTableService: TdDataTableService,
+              private snackBar: MdSnackBar) {}
   
   ngAfterViewInit(): void {
     this.filteredData = this.admissions;
@@ -65,4 +67,12 @@ export class AdmissionListComponent implements AfterViewInit  {
     newData = this._dataTableService.pageData(newData, this.fromRow, this.currentPage * this.pageSize);
     this.filteredData = newData;
   }
+  
+  viewAdmission(admission: Admission): void {
+    console.log("Emitting admission");
+    let snackBarRef = this.snackBar.open("Viewing semester registration", "OK");
+    snackBarRef.afterDismissed().subscribe(() => {
+      this.view.emit(admission);
+    });
+  } 
 }

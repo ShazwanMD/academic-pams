@@ -44,9 +44,10 @@ export class AdmissionCenterPage implements OnInit {
 
   viewAdmission(admission: Admission) {
     console.log("admission: " + admission.id);
-    this.router.navigate(['/admissions-detail', admission.id]);
+    this.router.navigate(['/term/admissions', admission.id]);
+    
   }
-
+  
   ngOnInit(): void {
     this.store.dispatch(this.actions.findAdmissions());
   }
