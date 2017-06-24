@@ -35,6 +35,7 @@ import {AppointmentEffects} from "./term/appointments/appointment.effect";
 import {EffectsModule} from "@ngrx/effects";
 import {AcademicSessionEffects} from "./planner/academic-sessions/academic-session.effect";
 import {PipeModule} from "./app.pipe.module";
+import {environment} from "../environments/environment";
 // interceptor
 const httpInterceptorProviders: Type<any>[] = [
   RequestInterceptor,
@@ -103,7 +104,7 @@ export function applicationReducer(applicationState: any = INITIAL_APP_STATE, ac
     NgxChartsModule,
 
     StoreModule.provideStore(applicationReducer),
-    StoreDevtoolsModule.instrumentOnlyWithExtension(),
+    environment.imports,
 
     PipeModule,
     IdentityModule.forRoot(),
