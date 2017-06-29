@@ -53,7 +53,7 @@ export class CourseEditorDialog implements OnInit {
   }
 
   save(course: Course, isValid: boolean) {
-    
+
     console.log(JSON.stringify(course));
     if (!course.id) this.store.dispatch(this.actions.saveCourse(course));
     else  this.store.dispatch(this.actions.updateCourse(course));
@@ -62,3 +62,4 @@ export class CourseEditorDialog implements OnInit {
   }
 }
 
+ 
