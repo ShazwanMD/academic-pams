@@ -38,7 +38,11 @@ export class CurriculumCenterPage implements OnInit {
   filter(): void {
   }
 
-  showDialog(code: Curriculum): void {
+  createDialog(): void {
+      this.showDialog(null);
+    }
+
+  private showDialog(code: Curriculum): void {
     console.log('showDialog');
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;

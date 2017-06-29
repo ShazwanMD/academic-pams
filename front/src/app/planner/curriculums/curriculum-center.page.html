@@ -6,7 +6,7 @@
 
   <td-layout-manage-list #list>
     <md-nav-list list-items>
-      <a md-list-item (click)="showDialog()">
+      <a md-list-item (click)="createDialog()">
         <md-icon>create</md-icon>
         Create New Curriculum
       </a>
@@ -23,11 +23,11 @@
     </div>
 
     <md-card class="">
-      <td-search-box class="push-left push-right"
+      <!--<td-search-box class="push-left push-right"
                      placeholder="search"
                      [alwaysVisible]="true"
                      (searchDebounce)="filter($event)">
-      </td-search-box>
+      </td-search-box>-->
 
       <pams-curriculum-list
         [curriculums]="curriculums$ | async"
@@ -40,3 +40,9 @@
     </md-card>
   </td-layout-manage-list>
 </td-layout-nav>
+
+
+
+
+
+
