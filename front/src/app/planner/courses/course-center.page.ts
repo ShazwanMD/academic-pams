@@ -43,7 +43,7 @@ export class CourseCenterPage implements OnInit {
   }
   viewCourse(course: Course) {
     console.log("course: " + course.code);
-    this.router.navigate(['/courses-detail', course.code]);
+    this.router.navigate(['./courses-detail', course.code]);
   }
 
 
