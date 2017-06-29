@@ -23,15 +23,15 @@ export class CourseCenterPage implements OnInit {
 
   private COURSES: string[] = "plannerModuleState.courses".split(".");
   private courses$: Observable<Course[]>;
-
   private creatorDialogRef: MdDialogRef<CourseCreatorDialog>;
-  private columns: any[] = [
-    {name: 'code', label: 'Code'},
-    {name: 'titleMs', label: 'TitleMs'},
-    {name: 'titleEn', label: 'TitleEn'},
-    {name: 'status', label: 'Status'},
-    {name: 'action', label: ''}
-  ];
+ 
+  // private columns: any[] = [
+  //   {name: 'code', label: 'Code'},
+  //   {name: 'titleMs', label: 'TitleMs'},
+  //   {name: 'titleEn', label: 'TitleEn'},
+  //   {name: 'status', label: 'Status'},
+  //   {name: 'action', label: ''}
+  // ];
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -41,9 +41,6 @@ export class CourseCenterPage implements OnInit {
               private dialog: MdDialog) {
     this.courses$ = this.store.select(...this.COURSES);
   }
-
- 
-
   viewCourse(course: Course) {
     console.log("course: " + course.code);
     this.router.navigate(['/courses-detail', course.code]);
@@ -69,10 +66,6 @@ export class CourseCenterPage implements OnInit {
     config.height = '70';
     config.position = {top: '1px'};
     this.creatorDialogRef = this.dialog.open(CourseCreatorDialog, config); if (code) this.creatorDialogRef.componentInstance.course = code;;
-  
-
-    
-    //set
      this.creatorDialogRef.afterClosed().subscribe(res => {
       console.log("close dialog");
     });
