@@ -18,9 +18,9 @@
   </template>
   <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
     <div layout="row">
-      <a md-button color="accent" class="text-upper"  mdTooltip="View courses info">
+      <a md-button color="accent" class="text-upper" [routerLink]="['./course-detail', row['code']]" >
        
-        <span>View</span>
+        <span>View</span><!-- (click)="viewCourse(row)" -->
       </a>
     </div>
   </template>
