@@ -33,8 +33,8 @@ export class CourseDetailPage implements OnInit {
     });
   }
 
-  goBack(route: string): void {
-    this.router.navigate(['/courses']);
+ // goBack(route: string): void {
+   // this.router.navigate(['/courses']);
   }
-}
+
 
