@@ -23,22 +23,13 @@
     </div>
 
     <md-card class="">
-      <td-search-box class="push-left push-right"
-                     placeholder="search"
-                     [alwaysVisible]="true"
-                     (searchDebounce)="filter($event)">
-      </td-search-box>
-
+    
       <pams-course-list
         [courses]="courses$ | async"
-        (view)="viewCourse($event)"></pams-course-list>
+        (view)="viewCourse($event)"  mdTooltip="View offerings info"></pams-course-list>
 
       <md-divider></md-divider>
-      <md-card-actions>
-        <a md-button color="accent" class="text-upper" [routerLink]="['/courses-search']">
-          <span>View More</span>
-        </a>
-      </md-card-actions>
+    
     </md-card>
   </td-layout-manage-list>
 </td-layout-nav>
