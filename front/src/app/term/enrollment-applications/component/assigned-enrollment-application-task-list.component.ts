@@ -28,7 +28,7 @@ export class AssignedEnrollmentApplicationTaskListComponent {
   searchTerm: string = '';
   fromRow: number = 1;
   currentPage: number = 1;
-  pageSize: number = 5;
+  pageSize: number = 15;
   sortBy: string = 'referenceNo';
   sortOrder: TdDataTableSortingOrder = TdDataTableSortingOrder.Descending;
 
