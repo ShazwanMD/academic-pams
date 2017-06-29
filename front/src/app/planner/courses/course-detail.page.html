@@ -10,7 +10,10 @@
         <pams-course
           [course]="course$ | async">
         </pams-course>
-      </div>
+ <div md-content flex md-scroll-y>
+    <div layout="column" layout-gt-md="row" class="inset">
+      <div flex-gt-md="70">
+        <pams-course [course]="course$ | async"></pams-course>
 
       <div flex-gt-md="30">
         <pams-course-status [course]="course$ | async"></pams-course-status>
@@ -18,4 +21,8 @@
       </div>
     </div>
   </div>
+    </div>
+      </div>
+        </div>
+          </div>
 </td-layout-nav>
