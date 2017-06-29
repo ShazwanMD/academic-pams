@@ -30,6 +30,7 @@ export class OfferingCenterPage implements OnInit {
               private dialog: MdDialog) {
     this.offerings$ = this.store.select(...this.OFFERINGS);
   }
+  
   goBack(route: string): void {
     this.router.navigate(['/offerings']);
   }
@@ -39,9 +40,6 @@ export class OfferingCenterPage implements OnInit {
     this.router.navigate(['/term/offerings', offering.canonicalCode]);
   }
   
-  filter(): void {
-
-  }
   createDialog(): void {
       this.showDialog(null);
     }
@@ -65,4 +63,3 @@ export class OfferingCenterPage implements OnInit {
     this.store.dispatch(this.actions.findOfferings());
   }
 }
-

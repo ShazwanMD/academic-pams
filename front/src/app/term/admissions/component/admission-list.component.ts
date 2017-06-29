@@ -14,6 +14,7 @@ export class AdmissionListComponent implements AfterViewInit  {
   @Output() view = new EventEmitter<Admission>();
 
   private columns: any[] = [
+    { name: 'id', label: 'Id' },
     { name: 'student.name', label: 'Name' },
     { name: 'student.identityNo', label: 'Matric No' },
     { name: 'academicSession.code', label: 'Session' },
@@ -28,8 +29,8 @@ export class AdmissionListComponent implements AfterViewInit  {
   searchTerm: string = '';
   fromRow: number = 1;
   currentPage: number = 1;
-  pageSize: number = 5;
-  sortBy: string = 'student.identityNo';
+  pageSize: number = 15;
+  sortBy: string = 'status';
   sortOrder: TdDataTableSortingOrder = TdDataTableSortingOrder.Descending;
 
   

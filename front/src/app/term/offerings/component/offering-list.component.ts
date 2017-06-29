@@ -32,7 +32,6 @@ export class OfferingListComponent implements AfterViewInit  {
   sortBy: string = 'id';
   sortOrder: TdDataTableSortingOrder = TdDataTableSortingOrder.Descending;
 
-  
   constructor(private _dataTableService: TdDataTableService,
           private snackBar: MdSnackBar) {}
   
@@ -78,4 +77,3 @@ export class OfferingListComponent implements AfterViewInit  {
     } 
   
 }
-

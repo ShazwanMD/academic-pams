@@ -30,13 +30,9 @@
 </div>
   <md-card class=""> 
 	<pams-admission-list
-	[admissions]="admissions$ | async" (view)="viewAdmission($event)" mdTooltip="View semester registration">
+	 [admissions]="admissions$ | async"
+        (view)="viewAdmission($event)" mdTooltip="View admission info">
 	</pams-admission-list>
 <md-divider></md-divider> 
-<!-- <md-card-actions> <a
-	md-button color="accent" class="text-upper"
-	[routerLink]="['/admissions-search']"> 
-	<span>View More</span>
-</a></md-card-actions>  -->
 </md-card> </td-layout-manage-list> </td-layout-nav>
 
