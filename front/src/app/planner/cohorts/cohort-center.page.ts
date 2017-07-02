@@ -14,7 +14,7 @@ import {MdDialog, MdDialogConfig, MdDialogRef} from "@angular/material";
 @Component({
   selector: 'pams-cohort-center',
   templateUrl: './cohort-center.page.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  // changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CohortCenterPage implements OnInit {
 
@@ -32,19 +32,20 @@ export class CohortCenterPage implements OnInit {
     this.cohorts$ = this.store.select(...this.COHORTS);
   }
 
-  goBack(route: string): void {
-    this.router.navigate(['/cohorts']);
-  }
-
   viewCohort(cohort: Cohort) {
     console.log("cohort: " + cohort.id);
     this.router.navigate(['/cohorts-detail', cohort.id]);
   }
 
-  filter(): void {
+  ngOnInit(): void {
+    this.store.dispatch(this.actions.findCohorts());
   }
 
-    showDialog(): void {
+    createDialog(): void {
+    this.showDialog(null);
+  }
+
+    private showDialog(code: Cohort): void {
     console.log("showDialog");
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
@@ -55,7 +56,7 @@ export class CohortCenterPage implements OnInit {
    // this.creatorDialogRef.componentInstance.offering = this.offering;
     this.creatorDialogRef.afterClosed().subscribe(res => {
       console.log("close dialog");
-      // load something here
+     
     });
   }
 
@@ -66,7 +67,11 @@ export class CohortCenterPage implements OnInit {
     //{name: 'action', label: ''}
 //  ];
 
- ngOnInit(): void {
-    this.store.dispatch(this.actions.findCohorts());
- }
- }
+//  goBack(route: string): void {
+//     this.router.navigate(['/cohort']);
+//    }
+
+  filter(): void {
+  }
+
+}
