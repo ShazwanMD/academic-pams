@@ -37,7 +37,7 @@
         <md-icon class="md-24">more_vert</md-icon>
       </button>
     </div>
-    <md-card>
+   
       <md-card>
         <md-tab-group [selectedIndex]="0">>
           <md-tab label="List of Enrollments">
@@ -47,7 +47,7 @@
             <pams-pooled-admission-application-task-list [admissionApplicationTasks]="pooledAdmissionApplicationTasks$ | async" (claim)="claimTask($event)"></pams-pooled-admission-application-task-list>
           </md-tab>
         </md-tab-group>
-      </md-card>
+    
     </md-card>
   </td-layout-manage-list>
 </td-layout-nav>

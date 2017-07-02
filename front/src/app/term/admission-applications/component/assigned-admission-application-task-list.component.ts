@@ -15,11 +15,10 @@ export class AssignedAdmissionApplicationTaskListComponent {
     
   private columns: any[] = [
     { name: 'referenceNo', label: 'Reference No' },
-    { name: 'application.advisor.identityNo', label: 'Advisor ID' },
-    { name: 'application.student.cohort.program.code', label: 'Program' },
-    { name: 'application.academicSession.code', label: 'Academic Session' },
     { name: 'application.student.identityNo', label: 'Student ID' },
-    { name: 'application.studyCenter.description', label: 'Study Center' },
+    { name: 'application.academicSession.code', label: 'Academic Session' },
+    { name: 'application.advisor.identityNo', label: 'Advisor ID' },
+    { name: 'description', label: 'Description' },
     { name: 'flowState', label: 'Status' },
     { name: 'action', label: '' },
   ];
@@ -33,7 +32,7 @@ export class AssignedAdmissionApplicationTaskListComponent {
   searchTerm: string = '';
   fromRow: number = 1;
   currentPage: number = 1;
-  pageSize: number = 5;
+  pageSize: number = 20;
   sortBy: string = 'referenceNo';
   sortOrder: TdDataTableSortingOrder = TdDataTableSortingOrder.Descending;
   
