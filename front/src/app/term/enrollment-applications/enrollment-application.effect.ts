@@ -82,7 +82,7 @@ export class EnrollmentApplicationEffects {
         this.enrollmentApplicationActions.findPooledEnrollmentApplicationTasks()
       ]
     ));
-
+  
   @Effect() claimEnrollmentApplicationTask$ = this.actions$
     .ofType(EnrollmentApplicationActions.CLAIM_ENROLLMENT_APPLICATION_TASK)
     .map(action => action.payload)
@@ -104,7 +104,7 @@ export class EnrollmentApplicationEffects {
         this.enrollmentApplicationActions.findPooledEnrollmentApplicationTasks()
       ]
     ));
-
+  
   @Effect() updateEnrollmentApplication$ = this.actions$
     .ofType(EnrollmentApplicationActions.UPDATE_ENROLLMENT_APPLICATION)
     .map(action => action.payload)

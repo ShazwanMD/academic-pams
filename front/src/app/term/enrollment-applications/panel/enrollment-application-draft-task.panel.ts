@@ -60,6 +60,11 @@ export class EnrollmentApplicationDraftTaskPanel implements OnInit {
     this.store.dispatch(this.actions.completeEnrollmentApplicationTask(this.enrollmentApplicationTask));
     this.goBack();
   }
+  
+  remove() {
+      this.store.dispatch(this.actions.releaseEnrollmentApplicationTask(this.enrollmentApplicationTask));
+      this.goBack();
+    }
 
   goBack(): void {
     this.router.navigate(['/term/enrollment-applications']);
