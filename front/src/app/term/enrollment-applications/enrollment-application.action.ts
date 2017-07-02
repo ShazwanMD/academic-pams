@@ -113,8 +113,8 @@ export class EnrollmentApplicationActions {
             payload: message
         };
     }
-
-    static CLAIM_ENROLLMENT_APPLICATION_TASK = '[EnrollmentApplication] Assign EnrollmentApplication Task';
+    
+   static CLAIM_ENROLLMENT_APPLICATION_TASK = '[EnrollmentApplication] Assign EnrollmentApplication Task';
 
     claimEnrollmentApplicationTask(application): Action {
         return {

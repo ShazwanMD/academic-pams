@@ -1,6 +1,7 @@
 package my.edu.umk.pams.academic.web.module.term.controller;
 
 import my.edu.umk.pams.academic.common.model.AdStudyCenter;
+
 import my.edu.umk.pams.academic.common.service.CommonService;
 import my.edu.umk.pams.academic.core.AdFlowState;
 import my.edu.umk.pams.academic.identity.model.AdStaff;
@@ -15,6 +16,7 @@ import my.edu.umk.pams.academic.term.service.TermService;
 import my.edu.umk.pams.academic.web.module.planner.controller.PlannerTransformer;
 import my.edu.umk.pams.academic.web.module.term.vo.*;
 import my.edu.umk.pams.academic.workflow.service.WorkflowService;
+
 import org.activiti.engine.task.Task;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.*;
@@ -475,7 +477,15 @@ public class TermController {
         Task task = termService.findEnrollmentApplicationTaskByTaskId(vo.getTaskId());
         workflowService.completeTask(task);
     }
-
+    
+    @RequestMapping(value = "/enrollmentApplications/releaseTask", method = RequestMethod.POST)
+    public ResponseEntity<String> releaseEnrollmentApplicationTask(@RequestBody EnrollmentApplicationTask vo) {
+        dummyLogin();
+        Task task = termService.findEnrollmentApplicationTaskByTaskId(vo.getTaskId());
+        workflowService.releaseTask(task);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
+    
     // ====================================================================================================
     // APPOINTMENT
     // ====================================================================================================
