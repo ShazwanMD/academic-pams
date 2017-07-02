@@ -1,4 +1,4 @@
-import { Faculty } from '../../faculties/faculty.interface';
+import {Faculty} from '../../faculties/faculty.interface';
 import {Component, ViewContainerRef, OnInit} from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
 import {FormBuilder} from '@angular/forms';
@@ -46,13 +46,14 @@ export class CourseEditorDialog implements OnInit {
       titleMs: '',
       titleEn: '',
       status: CourseStatus.NEW,
+      // faculty:<Faculty>{},
      // classification: CourseClassification.NEW,
     });
 
     if (this.edit) this.editForm.patchValue(this._course);
   }
 
-  save(course: Course, isValid: boolean) {
+  submit(course: Course, isValid: boolean) {
 
     console.log(JSON.stringify(course));
     if (!course.id) this.store.dispatch(this.actions.saveCourse(course));

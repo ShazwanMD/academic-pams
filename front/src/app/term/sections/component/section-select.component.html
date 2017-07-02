@@ -2,7 +2,7 @@
            (change)="selectChangeEvent($event.value)" flex>
 
   <md-option *ngFor="let section of sections$ | async" [value]="section">
-    {{section.code}} Section No: {{section.ordinal}}
+    {{section.code}}  ({{section.offering.titleEn}}) Section No: {{section.ordinal}}
   </md-option>
 </md-select>
 

@@ -283,7 +283,18 @@ export class TermService {
     return this.http.post(environment.endpoint + '/api/term/enrollmentApplications/completeTask', JSON.stringify(enrollmentApplicationTask), options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
-
+  
+  /*removeEnrollmentApplicationTask(enrollmentApplicationTask: EnrollmentApplicationTask): Observable<String> {
+      console.log("TaskId: " + enrollmentApplicationTask.taskId);
+      let headers = new Headers({
+        'Content-Type': 'application/json',
+        //'Authorization': 'Bearer ' + this.authService.token
+      });
+      let options = new RequestOptions({ headers: headers });
+      return this.http.delete(environment.endpoint + '/api/term/enrollmentApplications/deleteTask', JSON.stringify(enrollmentApplicationTask), options)
+        .flatMap((res: Response) => Observable.of(res.text()));
+    }*/
+  
   claimEnrollmentApplicationTask(enrollmentApplicationTask: EnrollmentApplicationTask): Observable<String> {
     let headers = new Headers({
       'Content-Type': 'application/json',
@@ -303,7 +314,7 @@ export class TermService {
     return this.http.post(environment.endpoint + '/api/term/enrollmentApplications/releaseTask', JSON.stringify(enrollmentApplicationTask), options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
-
+  
   updateEnrollmentApplication(enrollmentApplication: EnrollmentApplication): Observable<String> {
     return this.http.put(environment.endpoint + '/api/term/enrollmentApplications', JSON.stringify(enrollmentApplication))
       .flatMap((res: Response) => Observable.of(res.text()));
