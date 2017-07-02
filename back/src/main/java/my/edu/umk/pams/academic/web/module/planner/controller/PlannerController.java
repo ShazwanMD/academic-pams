@@ -383,11 +383,22 @@ public class PlannerController {
 
 	}
 
-	@RequestMapping(value = "/courses/{code}/update", method = RequestMethod.POST)
-	public ResponseEntity<Course> updateCourse(@PathVariable String code, @RequestBody Course course) {
-		throw new UnsupportedOperationException();
+	@RequestMapping(value = "/courses/{code}", method = RequestMethod.POST)
+	public ResponseEntity<String> updateCourse(@PathVariable String code, @RequestBody Course vo) {
+	
+		
+		AdCourse course  = plannerService.findCourseByCode(code);
+		course.setCode(vo.getCode());
+		course.setCredit(vo.getCredit());
+		course.setTitleMs(vo.getTitleMs());
+		course.setTitleEn(vo.getTitleEn());
+		course.setStatus(AdCourseStatus.get(vo.getStatus().ordinal()));
+		course.setFaculty(plannerService.findFacultyById(vo.getFaculty().getId()));
+		course.setClassification(AdAcademicClassification.get(vo.getClassification().ordinal()));
+		plannerService.updateCourse(course);
+		return new ResponseEntity<String>("Success", HttpStatus.OK);
 	}
-
+	
 	@RequestMapping(value = "/courses/{code}/activate", method = RequestMethod.GET)
 	  public ResponseEntity<String> activateCourse(@PathVariable String code) {
 	    dummyLogin();
