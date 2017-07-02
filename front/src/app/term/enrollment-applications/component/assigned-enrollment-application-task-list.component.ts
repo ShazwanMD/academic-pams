@@ -17,7 +17,6 @@ export class AssignedEnrollmentApplicationTaskListComponent {
     {name: 'referenceNo', label: 'ReferenceNo'},
     {name: 'application.admission.student.identityNo', label: 'Student'},
     {name: 'description', label: 'Description'},
-    {name: 'application.admission.cgpa', label: 'CGPA'},
     {name: 'application.admission.cohort.code', label: 'Cohort'},
     {name: 'flowState', label: 'Status'},
     {name: 'action', label: ''}

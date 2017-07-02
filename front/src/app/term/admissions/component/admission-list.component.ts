@@ -15,12 +15,14 @@ export class AdmissionListComponent implements AfterViewInit  {
 
   private columns: any[] = [
     { name: 'id', label: 'Id' },
-    { name: 'student.name', label: 'Name' },
     { name: 'student.identityNo', label: 'Matric No' },
-    { name: 'academicSession.code', label: 'Session' },
-    { name: 'cohort.code', label: 'Cohort' },
-    { name: 'standing', label: 'Academic Standing' },
-    { name: 'status', label: 'Admission Status' },
+    { name: 'standing', label: 'Standing' },
+    { name: 'status', label: 'Status' },
+    { name: 'gpa', label: 'GPA' },
+    { name: 'cgpa', label: 'CGPA' },
+    { name: 'creditEarned', label: 'Credit Earned' },
+    { name: 'creditTaken', label: 'Credit Taken' },
+    
     { name: 'action', label: '' }
   ];
   
@@ -29,8 +31,8 @@ export class AdmissionListComponent implements AfterViewInit  {
   searchTerm: string = '';
   fromRow: number = 1;
   currentPage: number = 1;
-  pageSize: number = 15;
-  sortBy: string = 'status';
+  pageSize: number = 30;
+  sortBy: string = 'id';
   sortOrder: TdDataTableSortingOrder = TdDataTableSortingOrder.Descending;
 
   

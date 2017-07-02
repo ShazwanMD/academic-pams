@@ -16,7 +16,6 @@
         <md-icon class="md-24">more_vert</md-icon>
       </button>
     </div>
-
     <div layout="row" layout-wrap>
       <template let-stat let-last="last" ngFor [ngForOf]="stats">
         <div flex-md="100" flex-gt-md="33" layout="column">
@@ -32,8 +31,6 @@
         </div>
       </template>
     </div>
-
-
     <md-card class="">
       <md-card-title>Students</md-card-title>
       <md-card-subtitle>List of students</md-card-subtitle>
@@ -44,11 +41,7 @@
         (view)="viewProfile($event)" mdTooltip="View student profile "></pams-profile-list>
 
       <md-divider></md-divider>
-      <!--<md-card-actions>
-        <a md-button color="accent" class="text-upper" [routerLink]="['/accounts-search']">
-          <span>View More</span>
-        </a>
-      </md-card-actions>-->
+    
     </md-card>
 
   </td-layout-manage-list>
