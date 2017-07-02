@@ -40,12 +40,12 @@ export class CohortDetailPage implements OnInit {
     });
   }
 
-  goBack(route: string): void {
-    this.router.navigate(['/cohorts']);
+ // goBack(route: string): void {
+   // this.router.navigate(['/cohorts']);
   }
 
-  filter(): void {
-  }
+ // filter(): void {
+  
 
- }
+ 
 
