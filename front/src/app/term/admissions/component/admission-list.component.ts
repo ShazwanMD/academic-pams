@@ -18,6 +18,7 @@ export class AdmissionListComponent implements AfterViewInit  {
     { name: 'student.identityNo', label: 'Matric No' },
     { name: 'standing', label: 'Standing' },
     { name: 'status', label: 'Status' },
+    { name: 'academicSession.code', label: 'Academic Session' },
     { name: 'gpa', label: 'GPA' },
     { name: 'cgpa', label: 'CGPA' },
     { name: 'creditEarned', label: 'Credit Earned' },

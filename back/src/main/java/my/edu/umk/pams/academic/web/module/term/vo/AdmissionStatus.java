@@ -2,7 +2,9 @@ package my.edu.umk.pams.academic.web.module.term.vo;
 
 public enum AdmissionStatus {
 
-    ADMITTED,
+	REGULAR,
+	PROBATION,
+	ADMITTED,
     POSTPONED,
     SUSPENDED,
     CANCELLED;

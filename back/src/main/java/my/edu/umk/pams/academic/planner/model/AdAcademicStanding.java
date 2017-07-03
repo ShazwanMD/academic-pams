@@ -10,10 +10,10 @@ package my.edu.umk.pams.academic.planner.model;
  */
 public enum AdAcademicStanding {
 
-    TBD("To Be Determined"),
     KB("Kedudukan Baik"),
     KS("Kedudukan Bersyarat"),
-    KG("Kedudukan Gagal");
+    KG("Kedudukan Gagal"),
+    TBD("To Be Determined");
 
     private String description;
 

@@ -9,11 +9,13 @@ package my.edu.umk.pams.academic.planner.model;
  */
 public enum AdAdmissionStatus {
 
-    ADMITTED("BERDAFTAR"),
+	REGULAR("BIASA"),
+	PROBATION("BERSYARAT"),
+	ADMITTED("BERDAFTAR"),
     POSTPONED("TANGGUH"),
     SUSPENDED("GANTUNG"),
     CANCELLED("BATAL");
-
+   
     private String description;
 
     AdAdmissionStatus(String description) {
