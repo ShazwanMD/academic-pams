@@ -13,6 +13,14 @@
         [innerFormControl]="createForm.controls['academicSession']"
         fxFlex="calc(100%-25px)" class="pad-bottom"  mdTooltip="Please select session">
       </pams-academic-session-select>
+      
+     
+			<md-input-container fxFlex="calc(100%-25px)" class="pad-bottom" mdTooltip="Please insert ordinal"> 
+				<input mdInput #gpa 
+				placeholder="SEMESTER" 
+				formControlName="ordinal"  /> 
+				</md-input-container>
+		
     </div>
 
   </form>

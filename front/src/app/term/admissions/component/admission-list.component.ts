@@ -22,9 +22,7 @@ export class AdmissionListComponent implements AfterViewInit  {
     { name: 'ordinal', label: 'Semester' },
     { name: 'gpa', label: 'GPA' },
     { name: 'cgpa', label: 'CGPA' },
-    { name: 'creditEarned', label: 'Credit Earned' },
-    { name: 'creditTaken', label: 'Credit Taken' },
-    
+      
     { name: 'action', label: '' }
   ];
   

@@ -39,7 +39,7 @@ export class SectionEnrollmentListComponent implements AfterViewInit {
     searchTerm: string = '';
     fromRow: number = 1;
     currentPage: number = 1;
-    pageSize: number = 20;
+    pageSize: number = 5;
     sortBy: string = 'id';
     sortOrder: TdDataTableSortingOrder = TdDataTableSortingOrder.Descending;
 

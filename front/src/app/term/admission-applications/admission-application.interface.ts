@@ -10,6 +10,7 @@ export interface AdmissionApplication extends MetaObject{
     sourceNo: string;
     auditNo: string;
     description: string;
+    ordinal: number;
     cancelComment: string;
     removeComment: string;
     actor: Actor;

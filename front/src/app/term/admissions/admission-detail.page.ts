@@ -85,7 +85,7 @@ export class AdmissionDetailPage implements OnInit {
   
   viewTask(enrollment: Enrollment) {
       console.log("task: " + enrollment.id);
-      this.router.navigate(['/term/admissions', enrollment.id]);
+      this.router.navigate(['/term/enrollments', enrollment.id]);
       
     } 
   

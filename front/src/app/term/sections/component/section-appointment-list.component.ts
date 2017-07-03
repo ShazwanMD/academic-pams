@@ -1,7 +1,7 @@
 import {FormBuilder} from '@angular/forms';
 import { AppointmentActions } from './../../appointments/appointment.action';
 import { SectionActions } from './../section.action';
-import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, ViewContainerRef, OnInit} from '@angular/core';
+import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, ViewContainerRef, OnInit, AfterViewInit} from '@angular/core';
 import {Appointment} from "../../appointments/appointment.interface";
 import {Section} from "../section.interface";
 import {Store} from "@ngrx/store";
@@ -9,7 +9,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {MdDialog, MdDialogConfig, MdDialogRef} from "@angular/material";
 import {TermModuleState} from "../../index";
 import {AppointmentEditorDialog} from "../../appointments/dialog/appointment-editor.dialog";
-import { TdDataTableSortingOrder, TdDataTableService } from "@covalent/core";
+import { TdDataTableSortingOrder, TdDataTableService, IPageChangeEvent, ITdDataTableSortChangeEvent } from "@covalent/core";
 
 @Component({
     selector: 'pams-section-appointment-list',
@@ -17,7 +17,7 @@ import { TdDataTableSortingOrder, TdDataTableService } from "@covalent/core";
     changeDetection: ChangeDetectionStrategy.OnPush,
 
 })
-export class SectionAppointmentListComponent implements OnInit {
+export class SectionAppointmentListComponent implements AfterViewInit {
 
 
     @Input() section: Section;
@@ -41,7 +41,7 @@ export class SectionAppointmentListComponent implements OnInit {
     searchTerm: string = '';
     fromRow: number = 1;
     currentPage: number = 1;
-    pageSize: number = 20;
+    pageSize: number = 5;
     sortBy: string = 'id';
     sortOrder: TdDataTableSortingOrder = TdDataTableSortingOrder.Descending;
 
@@ -60,7 +60,37 @@ export class SectionAppointmentListComponent implements OnInit {
         this.selectedRows = this.appointments.filter(value => value.selected);
   }
 
+    ngAfterViewInit(): void {
+        this.filteredData = this.appointments;
+        this.filteredTotal = this.appointments.length;
+        this.filter();
+    }
+
+    sort( sortEvent: ITdDataTableSortChangeEvent ): void {
+        this.sortBy = sortEvent.name;
+        this.sortOrder = sortEvent.order;
+        this.filter();
+    }
+
+    search( searchTerm: string ): void {
+        this.searchTerm = searchTerm;
+        this.filter();
+    }
+
+    page( pagingEvent: IPageChangeEvent ): void {
+        this.fromRow = pagingEvent.fromRow;
+        this.currentPage = pagingEvent.page;
+        this.pageSize = pagingEvent.pageSize;
+        this.filter();
+    }
+
     filter(): void {
+        let newData: any[] = this.appointments;
+        newData = this._dataTableService.filterData( newData, this.searchTerm, true );
+        this.filteredTotal = newData.length;
+        newData = this._dataTableService.sortData( newData, this.sortBy, this.sortOrder );
+        newData = this._dataTableService.pageData( newData, this.fromRow, this.currentPage * this.pageSize );
+        this.filteredData = newData;
     }
 
     selectRow(appointment: Appointment): void {

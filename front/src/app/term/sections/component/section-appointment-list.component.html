@@ -71,8 +71,9 @@
             <md-icon>more_vert</md-icon>
           </button>
           <md-menu x-position="before" #menu1="mdMenu">
-            <button md-menu-item [routerLink]="['/term/enrollments', row['id']]">View appointment details</button>
+            <button md-menu-item [routerLink]="['/term/appointments', row['id']]">View appointment details</button>
             <button md-menu-item (click)="editDialog(row, true)">Update appointment</button>
+            <button md-menu-item (click)="removeAppointment(row)">Delete appointment</button>
 
           </md-menu>
      <!--  <a md-button color="accent" class="text-upper" (click)="viewOffering(row)" mdTooltip="View enrollment info">

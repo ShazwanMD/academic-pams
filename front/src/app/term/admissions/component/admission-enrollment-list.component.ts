@@ -27,7 +27,7 @@ export class AdmissionEnrollmentListComponent implements OnInit {
         { name: 'section.code', label: 'Code' },
         { name: 'section.offering.titleEn', label: 'Title' },
         { name: 'section.offering.program.code', label: 'Program' },
-        { name: 'section.offering.course.faculty.name', label: 'Faculty' },
+        { name: 'enrollmentStanding', label: 'Standing' },
         { name: 'enrollmentStatus', label: 'Status' },
         { name: 'action', label: '' },
     ];

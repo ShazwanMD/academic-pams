@@ -45,6 +45,7 @@ export class AdmissionApplicationTaskCreatorDialog implements OnInit {
       sourceNo: 'TBD',
       auditNo: 'TBD',
       description: '',
+      ordinal:2,
       cancelComment: 'N/A',
       removeComment: 'N/A',
       actor: <Actor>{},
