@@ -11,5 +11,10 @@ public enum AdSubjectType {
     GENERAL, //Umum Universiti
     LANGUAGE, // english
     CURRICULUM,// kokurikulum
-    OTHERS; // kredit2 lain
+    OTHERS;
+
+	
+    public static AdSubjectType get(int index) {
+        return values()[index];
+    }
 }
