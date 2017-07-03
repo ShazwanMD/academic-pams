@@ -250,8 +250,9 @@ export class PlannerService {
       //'Authorization': 'Bearer ' + this.authService.token
     });
     let options = new RequestOptions({headers: headers});
-    return this.http.put(environment.endpoint + '/api/planner/course/' + course.code, JSON.stringify(course), options)
+    return this.http.put(environment.endpoint + '/api/planner/courses/' + course.code, JSON.stringify(course), options)
       .flatMap((res: Response) => Observable.of(res.text()));
+ 
   }
 
   removeCourse(course: Course): Observable<Course> {
