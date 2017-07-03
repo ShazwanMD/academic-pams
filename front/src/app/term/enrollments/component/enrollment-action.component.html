@@ -8,23 +8,12 @@
               <h4 md-line>Add Course Enrollment</h4>
               <p md-line>Add course to this enrollment</p>
             </md-list-item><!-- [routerLink]="['/appointments-resolve', appointment?.code] -->
-            <md-list-item
-              [routerLink]="['/appointments-resolve', enrollment?.id]">
-              <md-icon md-list-avatar>done_all</md-icon>
-              <h4 md-line>Drop Course Enrollment</h4>
-              <p md-line>Drop course to this enrollment</p>
-            </md-list-item>
-            <md-list-item
-              [routerLink]="['/appointments-resolve', enrollment?.id]">
-              <md-icon md-list-avatar>done_all</md-icon>
-              <h4 md-line>Withdraw Course Enrollment</h4>
-              <p md-line>Withdraw this enrollment</p>
-            </md-list-item>
+                      
             <md-divider></md-divider>
             <h3 md-subheader>Term Menu</h3>
             <md-list-item [routerLink]="['/term/admissions']">
               <md-icon md-list-avatar>email</md-icon>
-              <h4 md-line>Admissions</h4>
+              <h4 md-line>Semester Registration</h4>
               <p md-line>List of admissions</p>
             </md-list-item>
             <md-list-item [routerLink]="['/term/offerings']">
