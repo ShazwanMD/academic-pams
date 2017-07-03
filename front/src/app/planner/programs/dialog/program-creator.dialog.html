@@ -1,49 +1,38 @@
 <h2 md-dialog-title>Create New Program</h2>
 <md-dialog-content>
   <form [formGroup]="creatorForm">
-    <div layout="row" class="pad-bottom">
-      <md-input-container flex>
+    <div fxLayout fxLayout.xs="column" fxLayoutWrap fxLayoutGap="25px" class="inset">
+      <md-input-container fxFlex="calc(100%-25px)">
         <input mdInput #code
                placeholder="Code"
                formControlName="code"
-               flex/>
+               value="Code"/>
       </md-input-container>
-    </div>
-    <div layout="row" class="pad-bottom">
-      <md-input-container flex>
+      <md-input-container  fxFlex="calc(100%-25px)">
         <input mdInput #title
                placeholder="TitleMs"
                formControlName="titleMs"
-               flex/>
+               mdTooltip="Please insert titleMs" />
       </md-input-container>
-    </div>
-    <div layout="row" class="pad-bottom">
-      <md-input-container flex>
+      <md-input-container fxFlex="calc(100%-25px)">
         <input mdInput #title
                placeholder="TitleEn"
                formControlName="titleEn"
-               flex/>
+               mdTooltip="Please insert titleEn" />
       </md-input-container>
-    </div>
-
-    <div layout="row" class="pad-bottom pad-top">
       <pams-program-status-select
         [placeholder]="'Status'"
-        [innerFormControl]="creatorForm.controls.status">
+        [innerFormControl]="creatorForm.controls.status"
+         fxFlex="calc(100%-25px)" class="pad-bottom" mdTooltip="Please select status">
       </pams-program-status-select>
-
-    </div>
-    <div layout="row" class="pad-bottom pad-top">
       <pams-faculty-select
         [placeholder]="'Select faculty'"
-        [innerFormControl]="creatorForm.controls.faculty">
+        [innerFormControl]="creatorForm.controls.faculty" fxFlex="calc(100%-25px)" class="pad-bottom">
       </pams-faculty-select>
-    </div>
-
-     <div layout="row" class="pad-bottom pad-top">
       <pams-program-level-select
         [placeholder]="'level'"
-        [innerFormControl]="creatorForm.controls.level">
+        [innerFormControl]="creatorForm.controls.level"
+         fxFlex="calc(100%-25px)" class="pad-bottom"  mdTooltip="Please select level">
       </pams-program-level-select>
     </div>
   </form>

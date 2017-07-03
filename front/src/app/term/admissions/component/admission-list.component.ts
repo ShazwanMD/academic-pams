@@ -19,6 +19,7 @@ export class AdmissionListComponent implements AfterViewInit  {
     { name: 'standing', label: 'Standing' },
     { name: 'status', label: 'Status' },
     { name: 'academicSession.code', label: 'Academic Session' },
+    { name: 'ordinal', label: 'Semester' },
     { name: 'gpa', label: 'GPA' },
     { name: 'cgpa', label: 'CGPA' },
     { name: 'creditEarned', label: 'Credit Earned' },
@@ -32,7 +33,7 @@ export class AdmissionListComponent implements AfterViewInit  {
   searchTerm: string = '';
   fromRow: number = 1;
   currentPage: number = 1;
-  pageSize: number = 30;
+  pageSize: number = 5;
   sortBy: string = 'id';
   sortOrder: TdDataTableSortingOrder = TdDataTableSortingOrder.Descending;
 
