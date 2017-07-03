@@ -383,7 +383,7 @@ public class PlannerController {
 
 	}
 
-	@RequestMapping(value = "/courses/{code}", method = RequestMethod.POST)
+	@RequestMapping(value = "/courses/{code}", method = RequestMethod.PUT)
 	public ResponseEntity<String> updateCourse(@PathVariable String code, @RequestBody Course vo) {
 	
 		
@@ -398,6 +398,7 @@ public class PlannerController {
 		plannerService.updateCourse(course);
 		return new ResponseEntity<String>("Success", HttpStatus.OK);
 	}
+	
 	
 	@RequestMapping(value = "/courses/{code}/activate", method = RequestMethod.GET)
 	  public ResponseEntity<String> activateCourse(@PathVariable String code) {
