@@ -48,6 +48,8 @@ public interface PlannerService {
     AdCurriculum findCurriculumByCode(String code);
 
     AdSubject findSubjectById(Long id);
+    
+    AdSubject findSubjectByCurriculum(AdCurriculum curriculum);
 
     AdSubject findSubjectByCurriculumAndCourse(AdCurriculum curriculum, AdCourse course);
 
