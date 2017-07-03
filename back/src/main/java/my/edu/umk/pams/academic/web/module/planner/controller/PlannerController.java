@@ -5,6 +5,8 @@ import my.edu.umk.pams.academic.identity.service.IdentityService;
 import my.edu.umk.pams.academic.planner.model.*;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
 import my.edu.umk.pams.academic.web.module.planner.vo.*;
+import my.edu.umk.pams.academic.web.module.planner.vo.subject.Subject;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -471,6 +473,14 @@ public class PlannerController {
 		return new ResponseEntity<String>("Success", HttpStatus.OK);
 
 	}
+	
+	  @RequestMapping(value = "/curriculums/{code}/subjects", method = RequestMethod.GET)
+	    public ResponseEntity<List<Subject>> findSubjectByCurriculum(@PathVariable String code) {
+		AdCurriculum curriculum = plannerService.findCurriculumByCode(code);
+	        List<AdSubject> subjects = plannerService.findSubjects(curriculum);
+			List<Subject> subjectVos = plannerTransformer.toSubjectVos(subjects);
+	        return new ResponseEntity<List<Subject>>(subjectVos, HttpStatus.OK);
+	    }
 
 	// ====================================================================================================
 	// COHORT
