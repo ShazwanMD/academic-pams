@@ -66,7 +66,7 @@ public class AdCourseImpl implements AdCourse {
 
     @Override
     public String getCode() {
-        return code;
+        return code;   
     }
 
     @Override
