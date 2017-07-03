@@ -158,6 +158,11 @@ public class PlannerServiceImpl implements PlannerService {
     public AdSubject findSubjectById(Long id) {
         return curriculumDao.findSubjectById(id);
     }
+    
+    @Override
+    public AdSubject findSubjectByCurriculum(AdCurriculum curriculum) {
+        return curriculumDao.findSubjectById(0L);
+    }
 
     @Override
     public AdSubject findSubjectByCurriculumAndCourse(AdCurriculum curriculum, AdCourse course) {
