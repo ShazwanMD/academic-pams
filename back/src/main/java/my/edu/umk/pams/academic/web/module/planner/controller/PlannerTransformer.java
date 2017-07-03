@@ -131,11 +131,16 @@ public class PlannerTransformer {
     public List<Subject> toSubjectVos(List<AdSubject> subjects) {
         return subjects.stream().map(this::toSubjectVo).collect(toList());
     }
-
-    public Subject toSubjectVo(AdSubject e) {
-        return new Subject();
-    }
-
+    
+	public Subject toSubjectVo(AdSubject subject) {
+		Subject vo = new Subject();
+		vo.setId(subject.getId());
+		vo.setOrdinal(subject.getOrdinal());
+		vo.setSubjectType(SubjectType.get(subject.getSubjectType().ordinal()));
+		vo.setCurriculum(plannerTransformer.toCurriculumVo(subject.getCurriculum()));
+		
+		return vo;
+	}
 
     public Cohort toCohortVo(AdCohort e) {
         Cohort vo = new Cohort();
