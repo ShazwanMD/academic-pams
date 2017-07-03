@@ -2,8 +2,11 @@ package my.edu.umk.pams.academic.web.module.planner.vo.subject;
 
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+
+import my.edu.umk.pams.academic.planner.model.AdSubjectType;
 import my.edu.umk.pams.academic.web.module.core.vo.MetaObject;
 import my.edu.umk.pams.academic.web.module.planner.vo.Curriculum;
+import my.edu.umk.pams.academic.web.module.planner.vo.SubjectType;
 
 @JsonTypeInfo(
         use = JsonTypeInfo.Id.NAME,
@@ -15,17 +18,33 @@ import my.edu.umk.pams.academic.web.module.planner.vo.Curriculum;
 })
 public class Subject extends MetaObject {
     private Curriculum curriculum;
-
-//    todo()
-//    public SubjectType getSubjectType();
-//    public void setSubjectType(SubjectType subjectType);
-//    public AcademicPeriod getOrdinal();
-//    public void setOrdinal(AcademicPeriod period);
-
-    public Curriculum getCurriculum() {return curriculum;}
+    private Integer ordinal;
+    private SubjectType subjectType;
+ 
+    public Curriculum getCurriculum() {
+         return curriculum;
+    }
 
     public void setCurriculum(Curriculum curriculum) {
         this.curriculum = curriculum;
     }
+    
+    public Integer getOrdinal() {
+        return ordinal;
+    }
 
+    public void setOrdinal(Integer ordinal) {
+        this.ordinal = ordinal;
+    }
+    
+    public SubjectType getSubjectType(){
+    	return subjectType;
+    }
+    
+    public void setSubjectType(SubjectType subjectType){
+    this.subjectType = subjectType;
+    	
+    }
+   
 }
+   
