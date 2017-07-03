@@ -51,6 +51,10 @@ public interface AdAdmission extends AdMetaObject {
     Integer getCreditEarned(); // dapat
 
     void setCreditEarned(Integer CreditEarned);
+    
+    Integer getOrdinal(); // semester taken by student
+
+    void setOrdinal(Integer Ordinal);
 
     AdStudent getStudent();
 

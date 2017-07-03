@@ -38,6 +38,9 @@ public class AdAdmissionImpl implements AdAdmission {
 
     @Column(name = "CREDIT_TAKEN")
     private Integer creditTaken = 0;
+    
+    @Column(name = "ORDINAL")
+    private Integer ordinal = 0;
 
     @Enumerated(EnumType.ORDINAL)
     @Column(name = "STATUS", nullable = false)
@@ -112,6 +115,17 @@ public class AdAdmissionImpl implements AdAdmission {
     @Override
     public void setCreditTaken(Integer creditTaken) {
         this.creditTaken = creditTaken;
+    }
+    
+    //add ordinal=semester taken
+    @Override
+    public Integer getOrdinal() {
+        return ordinal;
+    }
+
+    @Override
+    public void setOrdinal(Integer ordinal) {
+        this.ordinal = ordinal;
     }
 
     @Override

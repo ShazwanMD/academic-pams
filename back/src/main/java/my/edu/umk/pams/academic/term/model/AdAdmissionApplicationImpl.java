@@ -47,6 +47,9 @@ public class AdAdmissionApplicationImpl implements AdAdmissionApplication {
 
     @Column(name = "CANCEL_COMMENT")
     private String cancelComment;
+    
+    @Column(name = "ORDINAL")
+    private Integer ordinal;
 
     @ManyToOne(targetEntity = AdStudentImpl.class)
     @JoinColumn(name = "STUDENT_ID")
@@ -121,6 +124,16 @@ public class AdAdmissionApplicationImpl implements AdAdmissionApplication {
     @Override
     public void setDescription(String description) {
         this.description = description;
+    }
+    
+    @Override
+    public Integer getOrdinal() {
+        return ordinal;
+    }
+
+    @Override
+    public void setOrdinal(Integer ordinal) {
+        this.ordinal = ordinal;
     }
 
 

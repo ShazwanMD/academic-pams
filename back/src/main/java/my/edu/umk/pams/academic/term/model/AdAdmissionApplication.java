@@ -34,6 +34,10 @@ public interface AdAdmissionApplication extends AdDocument {
 
     void setDescription(String description);
     
+    Integer getOrdinal ();
+
+    void setOrdinal(Integer ordinal);
+    
     String getRemoveComment ();
 
     void setRemoveComment(String removeComment);

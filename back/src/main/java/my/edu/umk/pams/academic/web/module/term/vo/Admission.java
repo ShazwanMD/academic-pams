@@ -2,6 +2,7 @@ package my.edu.umk.pams.academic.web.module.term.vo;
 
 import my.edu.umk.pams.academic.planner.model.AdAcademicStanding;
 
+
 import my.edu.umk.pams.academic.planner.model.AdAdmissionStatus;
 import my.edu.umk.pams.academic.web.module.common.vo.StudyCenter;
 import my.edu.umk.pams.academic.web.module.core.vo.MetaObject;
@@ -25,6 +26,7 @@ public class Admission extends MetaObject{
     private BigDecimal cgpa;
     private Integer creditTaken;
     private Integer creditEarned;
+    private Integer ordinal;
     private Student student;
     private AcademicSession academicSession;
     private Cohort cohort;
@@ -62,6 +64,14 @@ public class Admission extends MetaObject{
 
     public void setCreditEarned(Integer creditEarned) {
         this.creditEarned = creditEarned;
+    }
+    
+    public Integer getOrdinal() {
+        return ordinal;
+    }
+
+    public void setOrdinal(Integer ordinal) {
+        this.ordinal = ordinal;
     }
 
     public Student getStudent() {

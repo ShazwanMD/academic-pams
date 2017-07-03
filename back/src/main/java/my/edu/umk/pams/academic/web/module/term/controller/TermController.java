@@ -126,6 +126,7 @@ public class TermController {
         admission.setCgpa(vo.getCgpa());
         admission.setCreditEarned(vo.getCreditEarned());
         admission.setCreditTaken(vo.getCreditTaken());
+        admission.setOrdinal(vo.getOrdinal());
         admission.setGpa(vo.getGpa());
         admission.setStatus(AdAdmissionStatus.get(vo.getStatus().ordinal()));
         admission.setStanding(AdAcademicStanding.get(vo.getStanding().ordinal()));
@@ -138,8 +139,6 @@ public class TermController {
     }
 
     // workflow
-
-
     @RequestMapping(value = "/admissionApplications", method = RequestMethod.GET)
     public ResponseEntity<List<AdmissionApplication>> findAdmissionsApplications() {
         AdAcademicSession academicSession = plannerService.findCurrentAcademicSession();
@@ -167,6 +166,7 @@ public class TermController {
         application.setReferenceNo(vo.getReferenceNo());
         application.setAuditNo(vo.getAuditNo());
         application.setSourceNo(vo.getSourceNo());
+        application.setOrdinal(vo.getOrdinal());
         application.setDescription(vo.getDescription());
         application.setCancelComment(vo.getCancelComment());
         application.setRemoveComment(vo.getRemoveComment());
@@ -223,6 +223,7 @@ public class TermController {
         application.setAdvisor(advisor);
         application.setAuditNo(vo.getAuditNo());
         application.setCancelComment(vo.getCancelComment());
+        application.setOrdinal(vo.getOrdinal());
         application.setRemoveComment(vo.getRemoveComment());
         application.setSourceNo(vo.getSourceNo());
         String referenceNo = termService.startAdmissionApplicationTask(application);

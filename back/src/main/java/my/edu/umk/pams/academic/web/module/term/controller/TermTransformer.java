@@ -76,6 +76,7 @@ public class TermTransformer {
 		vo.setReferenceNo(application.getReferenceNo());
 		vo.setSourceNo(application.getSourceNo());
 		vo.setAuditNo(application.getAuditNo());
+		vo.setOrdinal(application.getOrdinal());
 		vo.setDescription(application.getDescription());
 		vo.setCancelComment(application.getCancelComment());
 		vo.setRemoveComment(application.getRemoveComment());
@@ -94,6 +95,7 @@ public class TermTransformer {
 		vo.setCgpa(admission.getCgpa());
 		vo.setCreditEarned(admission.getCreditEarned());
 		vo.setCreditTaken(admission.getCreditTaken());
+		vo.setOrdinal(admission.getOrdinal());
 		vo.setStudent(identityTransformer.toStudentVo(admission.getStudent()));
 		vo.setAcademicSession(plannerTransformer.toAcademicSessionVo(admission.getSession()));
 		vo.setCohort(plannerTransformer.toCohortVo(admission.getCohort()));

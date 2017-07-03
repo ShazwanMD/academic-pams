@@ -20,6 +20,7 @@ public class AdmissionApplication extends Document {
 	private String auditNo;
 	private String sourceNo;
 	private String referenceNo;
+	private Integer ordinal;
 	private String description;
 	private String cancelComment;
 	private String removeComment;
@@ -52,6 +53,14 @@ public class AdmissionApplication extends Document {
 
 	public void setReferenceNo(String referenceNo) {
 		this.referenceNo = referenceNo;
+	}
+	
+	public Integer getOrdinal() {
+		return ordinal;
+	}
+
+	public void setOrdinal(Integer ordinal) {
+		this.ordinal = ordinal;
 	}
 
 	public String getDescription() {
