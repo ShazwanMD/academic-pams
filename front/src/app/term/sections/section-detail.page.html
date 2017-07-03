@@ -9,14 +9,14 @@
         <pams-section
           [section]="section$ | async">
         </pams-section>
+         <pams-section-appointment-list
+          [section]="section$ | async"
+          [appointments]="appointments$ | async">
+        </pams-section-appointment-list>
         <pams-section-enrollment-list
           [section]="section$ | async"
           [enrollments]="enrollments$ | async">
         </pams-section-enrollment-list>
-        <pams-section-appointment-list
-          [section]="section$ | async"
-          [appointments]="appointments$ | async">
-        </pams-section-appointment-list>
       </div>
       <div flex-gt-md="30">
         <pams-section-action

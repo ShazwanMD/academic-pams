@@ -28,6 +28,7 @@ export class SectionEnrollmentListComponent implements AfterViewInit {
     private columns: any[] = [
         { name: 'id', label: 'Id' },
         { name: 'admission.student.identityNo', label: 'Identity No.' },
+        { name: 'admission.student.name', label: 'Name' },
         { name: 'enrollmentStatus', label: 'Status' },
         { name: 'enrollmentStanding', label: 'Standing' },
         { name: 'action', label: '' }

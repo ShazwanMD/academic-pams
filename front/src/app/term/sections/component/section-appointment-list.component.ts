@@ -9,6 +9,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {MdDialog, MdDialogConfig, MdDialogRef} from "@angular/material";
 import {TermModuleState} from "../../index";
 import {AppointmentEditorDialog} from "../../appointments/dialog/appointment-editor.dialog";
+import { TdDataTableSortingOrder, TdDataTableService } from "@covalent/core";
 
 @Component({
     selector: 'pams-section-appointment-list',
@@ -34,8 +35,19 @@ export class SectionAppointmentListComponent implements OnInit {
         { name: 'appointmentStatus', label: 'Appointment Status' },
         { name: 'action', label: '' }
     ];
+    
+    filteredData: any[];
+    filteredTotal: number;
+    searchTerm: string = '';
+    fromRow: number = 1;
+    currentPage: number = 1;
+    pageSize: number = 20;
+    sortBy: string = 'id';
+    sortOrder: TdDataTableSortingOrder = TdDataTableSortingOrder.Descending;
 
-    constructor(private router: Router,
+    constructor(
+        private _dataTableService: TdDataTableService,
+        private router: Router,
         private route: ActivatedRoute,
         private actions: AppointmentActions,
         private store: Store<TermModuleState>,
