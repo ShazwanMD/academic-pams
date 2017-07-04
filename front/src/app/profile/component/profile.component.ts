@@ -73,6 +73,7 @@ export class ProfileComponent implements OnInit {
     { name: 'guarantorType', label: 'Guarantor Type' },
     { name: 'identityNo', label: 'Identity No' },
     { name: 'name', label: 'Name' },
+    { name: 'phone', label: 'Phone No' },
     { name: 'action', label: 'Action' }
   ];
 
@@ -81,6 +82,7 @@ export class ProfileComponent implements OnInit {
     { name: 'guardianType', label: 'Guardian Type' },
     { name: 'identityNo', label: 'Identity No' },
     { name: 'name', label: 'Name' },
+    { name: 'phone', label: 'Phone No' },
     { name: 'action', label: 'Action' }
   ];
 
