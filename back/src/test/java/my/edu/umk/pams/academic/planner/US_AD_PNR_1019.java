@@ -6,7 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.tngtech.jgiven.annotation.As;
@@ -20,7 +20,7 @@ import my.edu.umk.pams.bdd.stage.GivenIAmCPSAdministrator;
 import my.edu.umk.pams.bdd.tags.Issue;
 import my.edu.umk.pams.bdd.tags.Submodule;
 
-@RunWith(SpringJUnit4ClassRunner.class)
+@RunWith(SpringRunner.class)
 @Transactional
 @ContextConfiguration(classes = TestAppConfiguration.class)
 @As("As an academic administrator, i want view and update Study Center so that Study Center is viewed and updated")
