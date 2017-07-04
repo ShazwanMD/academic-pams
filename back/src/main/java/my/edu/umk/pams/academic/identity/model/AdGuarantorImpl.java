@@ -23,6 +23,10 @@ public class AdGuarantorImpl implements AdGuarantor {
     @NotNull
     @Column(name = "IDENTITY_NO", nullable = false)
     private String identityNo;
+    
+    @NotNull
+    @Column(name = "PHONE", nullable = true)
+    private String phone;
 
     @NotNull
     @Column(name = "GUARANTOR_TYPE")
@@ -42,6 +46,14 @@ public class AdGuarantorImpl implements AdGuarantor {
     public void setId(Long id) {
         this.id = id;
     }
+    
+    public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
 
     @Override
     public String getName() {

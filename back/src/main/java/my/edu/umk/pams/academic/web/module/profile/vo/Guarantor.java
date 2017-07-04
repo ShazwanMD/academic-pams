@@ -14,9 +14,18 @@ public class Guarantor extends MetaObject {
     private Long id;
     private String identityNo;
     private String name;
+    private String phoneNo;
     private GuarantorType guarantorType;
+    
+    public String getPhoneNo() {
+		return phoneNo;
+	}
 
-    //sini
+	public void setPhoneNo(String phoneNo) {
+		this.phoneNo = phoneNo;
+	}
+
+	//sini
     public Long getId() {
         return id;
     }
