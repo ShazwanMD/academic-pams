@@ -118,9 +118,11 @@ export class TermService {
     return this.http.post(environment.endpoint + '/api/term/admissionApplications/startTask', JSON.stringify(admissionApplication), options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
-
+  
+  //update admission application
   updateAdmissionApplication(admissionApplication: AdmissionApplication): Observable<String> {
     console.log ("update admission app:" + admissionApplication.referenceNo)
+    console.log (JSON.stringify(admissionApplication))
     let headers = new Headers({
       'Content-Type': 'application/json',
       //'Authorization': 'Bearer ' + this.authService.token
@@ -130,7 +132,6 @@ export class TermService {
       .flatMap((res: Response) => Observable.of(res.text()));
   }
   
-
   saveAdmissionApplication(admissionApplication: AdmissionApplication): Observable<String> {
     let headers = new Headers({
       'Content-Type': 'application/json',

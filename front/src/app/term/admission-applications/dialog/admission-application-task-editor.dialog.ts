@@ -66,10 +66,8 @@ export class AdmissionApplicationTaskEditorDialog implements OnInit {
         this.store.dispatch(this.actions.updateAdmissionApplication(this._admissionApplication));
         this.dialog.close();
 
-
         // if (!admissionApplication.id) this.store.dispatch(this.actions.saveAdmissionApplication(admissionApplication));
         // else this.store.dispatch(this.actions.updateAdmissionApplication(admissionApplication));
         // this.dialog.close();
     }
-
 }

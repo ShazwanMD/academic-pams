@@ -17,6 +17,7 @@ export class AssignedAdmissionApplicationTaskListComponent {
     { name: 'referenceNo', label: 'Reference No' },
     { name: 'application.student.identityNo', label: 'Student ID' },
     { name: 'application.academicSession.code', label: 'Academic Session' },
+    { name: 'application.ordinal', label: 'Semester' },
     { name: 'application.advisor.identityNo', label: 'Advisor ID' },
     { name: 'description', label: 'Description' },
     { name: 'flowState', label: 'Status' },

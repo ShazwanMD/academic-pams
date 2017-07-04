@@ -1,9 +1,10 @@
 import { AdmissionApplicationTaskEditorDialog } from './../dialog/admission-application-task-editor.dialog';
-import { Component, OnInit, ViewContainerRef } from '@angular/core';
+import { Component, OnInit, ViewContainerRef, Input } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MdSnackBar, MdDialog, MdDialogRef, MdDialogConfig } from '@angular/material';
 import { TermService } from '../../../../services/term.service';
 import { AdmissionApplicationTask } from '../admission-application-task.interface';
+import {AdmissionApplication} from "../admission-application.interface";
 
 /*@Component({
  selector: 'pams-admission-application-register-task',
@@ -17,6 +18,8 @@ import { AdmissionApplicationTask } from '../admission-application-task.interfac
 
 export class AdmissionApplicationDraftTaskPanel implements OnInit {
 
+  @Input() admissionApplication: AdmissionApplication;
+    
   private _router: Router;
   private _route: ActivatedRoute;
   private _termService: TermService;

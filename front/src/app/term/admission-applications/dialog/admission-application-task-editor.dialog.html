@@ -1,4 +1,4 @@
-<h2 md-dialog-title>Create New Program</h2>
+<h2 md-dialog-title>{{edit ? 'Update' : 'Save'}} Admission Application Ref: {{_admissionApplication?.referenceNo}}</h2>
 <md-dialog-content>
   <form [formGroup]="editForm">
     <div layout="row" class="pad-bottom">
