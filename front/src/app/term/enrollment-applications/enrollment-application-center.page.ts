@@ -39,7 +39,7 @@ export class EnrollmentApplicationCenterPage implements OnInit {
     config.viewContainerRef = this.vcf;
     config.role = 'dialog';
     config.width = '70%';
-    config.height = '40%';
+    config.height = '50%';
     config.position = {top: '0px'};
     this.creatorDialogRef = this.dialog.open(EnrollmentApplicationTaskCreatorDialog, config);
     this.creatorDialogRef.afterClosed().subscribe(res => {

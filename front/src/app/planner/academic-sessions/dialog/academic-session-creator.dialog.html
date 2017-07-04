@@ -11,7 +11,10 @@
 
   <div layout="row" class="inset" flex>
     <md-input-container flex>
-      <input mdInput placeholder="Description" formControlName="description" flex/>
+      <input mdInput 
+      placeholder="Description" 
+      formControlName="description" 
+      flex/>
     </md-input-container>
     <div class="error" *ngIf="createForm.get('description').invalid && createForm.get('description').touched">
       Description should be at least {{minLength}} characters!

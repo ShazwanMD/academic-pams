@@ -1,19 +1,19 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Observable} from "rxjs";
-import {Store} from "@ngrx/store";
-import {FormControl} from "@angular/forms";
-import {ProgramActions} from "../program.action";
-import {Program} from "../program.interface";
-import {PlannerModuleState} from "../../index";
-
+import {Observable} from 'rxjs';
+import {Store} from '@ngrx/store';
+import {FormControl} from '@angular/forms';
+import {ProgramActions} from '../program.action';
+import {Program} from '../program.interface';
+import {PlannerModuleState} from '../../index';
 
 @Component({
   selector: 'pams-program-select',
   templateUrl: './program-select.component.html',
+  styleUrls: ['./program-select.component.scss'],
 })
 export class ProgramSelectComponent implements OnInit {
 
-  private PROGRAMS: string[] = "plannerModuleState.programs".split(".");
+  private PROGRAMS: string[] = 'plannerModuleState.programs'.split('.');
 
   private programs$: Observable<Program[]>;
   @Input() placeholder: string;
@@ -32,4 +32,4 @@ export class ProgramSelectComponent implements OnInit {
     this.innerFormControl.setValue(event, {emitEvent: false});
   }
 }
-
+
