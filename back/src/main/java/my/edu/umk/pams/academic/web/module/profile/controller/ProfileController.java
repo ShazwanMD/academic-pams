@@ -169,6 +169,7 @@ public class ProfileController {
         AdGuarantor guarantor = new AdGuarantorImpl();
         guarantor.setIdentityNo(vo.getIdentityNo());
         guarantor.setName(vo.getName());
+        guarantor.setPhone(vo.getPhoneNo());
         guarantor.setType(AdGuarantorType.get(vo.getGuarantorType().ordinal()));
         guarantor.setStudent(student);
         profileService.addGuarantor(student, guarantor);
@@ -184,6 +185,7 @@ public class ProfileController {
        AdGuarantor guarantor = profileService.findGuarantorById(vo.getId());
        guarantor.setName(vo.getName());
 	   guarantor.setIdentityNo(vo.getIdentityNo());
+       guarantor.setPhone(vo.getPhoneNo());
 	   guarantor.setType(AdGuarantorType.get(vo.getGuarantorType().ordinal()));
 	   guarantor.setStudent(student);
        profileService.updateGuarantor(student, guarantor);
@@ -212,6 +214,7 @@ public class ProfileController {
        AdGuardian guardian = new AdGuardianImpl();
        guardian.setIdentityNo(vo.getIdentityNo());
        guardian.setName(vo.getName());
+       guardian.setPhone(vo.getPhone());
        guardian.setType(AdGuardianType.get(vo.getGuardianType().ordinal()));
        guardian.setStudent(student);
        profileService.addGuardian(student, guardian);
@@ -226,6 +229,7 @@ public class ProfileController {
        AdStudent student = profileService.findStudentByMatricNo(identityNo);
        AdGuardian guardian = profileService.findGuardianById(vo.getId());
        guardian.setName(vo.getName());
+       guardian.setPhone(vo.getPhone());
        guardian.setIdentityNo(vo.getIdentityNo());
        guardian.setType(AdGuardianType.get(vo.getGuardianType().ordinal()));
        guardian.setStudent(student);

@@ -44,6 +44,7 @@ public class ProfileTransformer {
         Guardian vo = new Guardian();
         vo.setId(guardian.getId());
         vo.setName(guardian.getName());
+        vo.setPhone(guardian.getPhone());
         vo.setIdentityNo(guardian.getIdentityNo());
         vo.setGuardianType(GuardianType.get(guardian.getType().ordinal()));
         return vo;
@@ -53,6 +54,7 @@ public class ProfileTransformer {
         Guarantor vo = new Guarantor();
         vo.setId(guarantor.getId());
         vo.setName(guarantor.getName());
+        vo.setPhoneNo(guarantor.getPhone());
         vo.setIdentityNo(guarantor.getIdentityNo());
         vo.setGuarantorType(GuarantorType.get(guarantor.getType().ordinal()));
         return vo;
