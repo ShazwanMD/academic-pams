@@ -1,57 +1,28 @@
 <h2 md-dialog-title>{{edit ? 'Update' : 'Save'}} Offering </h2>
 <md-dialog-content>
   <form [formGroup]="createForm">
-
-    <!--<div layout="row" class="pad-bottom">
-      <md-input-container flex mdTooltip="Please insert code">
-        <input mdInput
-               placeholder="Code"
-               formControlName="code" flex/>
-      </md-input-container>
-    </div>-->
-
-    <div layout="row" class="pad-bottom">
-      <md-input-container flex mdTooltip="Please insert capacity">
+       <div fxLayout fxLayout.xs="column" fxLayoutWrap fxLayoutGap="25px" class="inset">
+      <md-input-container fxFlex="calc(100%-25px)" mdTooltip="Please insert capacity">
         <input mdInput
                placeholder="Capacity"
-               formControlName="capacity" type="number" flex/>
+               formControlName="capacity" type="number" />
       </md-input-container>
-    </div>
-
-    <!--<div layout="row" class="pad-bottom">
-      <md-input-container flex mdTooltip="Please insert titleMs">
-        <input mdInput
-               placeholder="titleMs"
-               formControlName="titleMs" flex/>
-      </md-input-container>
-    </div>-->
-
-    <!--<div layout="row" class="pad-bottom">
-      <md-input-container flex mdTooltip="Please insert titleEn">
-        <input mdInput
-               placeholder="titleEn"
-               formControlName="titleEn" flex/>
-      </md-input-container>
-    </div>-->
-
-    <div layout="row" class="pad-bottom pad-top">
-      <pams-course-select mdTooltip="Please select course"
+        <pams-course-select mdTooltip="Please select course"
                           [placeholder]="'Select Course'"
-                          [innerFormControl]="createForm.controls.course">
+                          [innerFormControl]="createForm.controls.course"
+                          fxFlex="calc(100%-25px)" class="pad-bottom"  >
       </pams-course-select>
-    </div>
-
-    <div layout="row" class="pad-bottom pad-top">
+   
       <pams-program-select mdTooltip="Please select program"
                            [placeholder]="'Select Program'"
-                           [innerFormControl]="createForm.controls.program">
+                           [innerFormControl]="createForm.controls.program"
+                           fxFlex="calc(100%-25px)" class="pad-bottom"  >
       </pams-program-select>
-    </div>
-
-    <div layout="row" class="pad-bottom pad-top">
+   
       <pams-academic-session-select mdTooltip="Please select academic session"
                                     [placeholder]="'Select Session'"
-                                    [innerFormControl]="createForm.controls['academicSession']">
+                                    [innerFormControl]="createForm.controls['academicSession']"
+                                    fxFlex="calc(100%-25px)" class="pad-bottom"  >
       </pams-academic-session-select>
 
     </div>

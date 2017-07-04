@@ -126,6 +126,7 @@
         SESSION_ID int8 not null,
         STUDENT_ID int8 not null,
         STUDY_CENTER_ID int8,
+        ORDINAL int4,
         primary key (ID)
     );
 
@@ -178,6 +179,7 @@
         SESSION_ID int8,
         STUDENT_ID int8,
         STUDY_CENTER_ID int8,
+        ORDINAL int4,
         primary key (ID)
     );
 
