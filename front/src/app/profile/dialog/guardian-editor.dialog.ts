@@ -45,6 +45,7 @@ export class GuardianEditorDialog implements OnInit {
       id: null,
       name: '',
       identityNo: '',
+      phone:'',
       guardianType: GuardianType.GUARDIAN
     });
 

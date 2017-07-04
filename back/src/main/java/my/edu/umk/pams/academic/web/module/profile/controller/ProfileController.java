@@ -165,14 +165,16 @@ public class ProfileController {
     @RequestMapping(value = "/students/{identityNo}/guarantors", method = RequestMethod.POST)
     public ResponseEntity<String> addGuarantor(@PathVariable String identityNo, @RequestBody Guarantor vo) {
         dummyLogin();
+
         AdStudent student = profileService.findStudentByMatricNo(identityNo);
         AdGuarantor guarantor = new AdGuarantorImpl();
         guarantor.setIdentityNo(vo.getIdentityNo());
         guarantor.setName(vo.getName());
-        guarantor.setPhone(vo.getPhoneNo());
+        guarantor.setPhone(vo.getPhone());
         guarantor.setType(AdGuarantorType.get(vo.getGuarantorType().ordinal()));
         guarantor.setStudent(student);
         profileService.addGuarantor(student, guarantor);
+        LOG.debug("Guarantor:{}", guarantor.getPhone());
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
    
@@ -185,7 +187,7 @@ public class ProfileController {
        AdGuarantor guarantor = profileService.findGuarantorById(vo.getId());
        guarantor.setName(vo.getName());
 	   guarantor.setIdentityNo(vo.getIdentityNo());
-       guarantor.setPhone(vo.getPhoneNo());
+       guarantor.setPhone(vo.getPhone());
 	   guarantor.setType(AdGuarantorType.get(vo.getGuarantorType().ordinal()));
 	   guarantor.setStudent(student);
        profileService.updateGuarantor(student, guarantor);

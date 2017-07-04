@@ -45,6 +45,7 @@ export class GuarantorEditorDialog implements OnInit {
       id: null,
       name: '',
       identityNo: '',
+      phone:'',
       guarantorType: GuarantorType.PRIMARY
     });
 

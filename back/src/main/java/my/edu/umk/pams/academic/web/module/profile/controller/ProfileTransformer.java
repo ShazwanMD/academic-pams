@@ -54,7 +54,7 @@ public class ProfileTransformer {
         Guarantor vo = new Guarantor();
         vo.setId(guarantor.getId());
         vo.setName(guarantor.getName());
-        vo.setPhoneNo(guarantor.getPhone());
+        vo.setPhone(guarantor.getPhone());
         vo.setIdentityNo(guarantor.getIdentityNo());
         vo.setGuarantorType(GuarantorType.get(guarantor.getType().ordinal()));
         return vo;

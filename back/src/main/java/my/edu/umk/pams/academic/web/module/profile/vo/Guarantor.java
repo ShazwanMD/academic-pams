@@ -14,15 +14,15 @@ public class Guarantor extends MetaObject {
     private Long id;
     private String identityNo;
     private String name;
-    private String phoneNo;
+    private String phone;
     private GuarantorType guarantorType;
     
-    public String getPhoneNo() {
-		return phoneNo;
+    public String getPhone() {
+		return phone;
 	}
 
-	public void setPhoneNo(String phoneNo) {
-		this.phoneNo = phoneNo;
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 
 	//sini
