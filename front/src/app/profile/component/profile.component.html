@@ -44,7 +44,7 @@
 
               <div flex-gt-md="40">
                 <b>Student ID</b> : {{student.identityNo}}<br/><br/>
-                <b>Current Semester</b> : 1<br/><br/>
+                <b>Current Semester</b> : {{student.cohort?.academicSession.semester}}<br/><br/>
                 <b>Name</b> : {{student.name}}<br/><br/>
                 <b>Email</b> : {{student.email}}<br/><br/>
                 <b>Phone</b> : {{student.phone}}<br/><br/>
