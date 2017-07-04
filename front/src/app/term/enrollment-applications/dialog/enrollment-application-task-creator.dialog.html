@@ -1,4 +1,4 @@
-<h2 md-dialog-title>Create New Enrollment Application</h2>
+<h2 md-dialog-title>Create New Enrollment Application v1</h2>
 <md-dialog-content>
   <form [formGroup]="createForm">
     <div fxLayout fxLayout.xs="column" fxLayoutWrap fxLayoutGap="25px">
@@ -8,6 +8,9 @@
                formControlName="description"
                value="Description"/>
       </md-input-container>
+      <div class="error" *ngIf="createForm.get('description').invalid && createForm.get('description').touched">
+      <font size="3" color="red">Description should be at least {{minLength}} characters!</font>
+    </div>
 
       <pams-admission-select
         [placeholder]="'Select Student'"
@@ -22,8 +25,11 @@
   </form>
 </md-dialog-content>
 <md-dialog-actions align="end">
-  <button md-raised-button color="accent"
-          (click)="save(createForm.value, createForm.valid)">Save
+<button md-raised-button color="accent" [disabled]="createForm.invalid" (click)="save(createForm.value)"> {{edit ?
+    'Update' : 'Save'}}
   </button>
+  <!-- <button md-raised-button color="accent"
+          (click)="save(createForm.value, createForm.valid)">Save
+  </button> -->
 </md-dialog-actions>
 

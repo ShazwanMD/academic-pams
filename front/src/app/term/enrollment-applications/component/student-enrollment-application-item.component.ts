@@ -91,7 +91,7 @@ import {EnrollmentApplicationActions} from "../enrollment-application.action";
     {name: 'section.offering.titleEn', label: 'Title'},
     {name: 'section.offering.course.credit', label: 'Credit'},
     {name: 'action', label: 'Action'},  
-    {name: 'action2', label: 'Action'}
+    
   ];
 
   constructor(private router: Router,

@@ -1,5 +1,5 @@
 import {Component, ViewContainerRef, OnInit} from '@angular/core';
-import {FormGroup, FormControl} from '@angular/forms';
+import {FormGroup, FormControl, Validators} from '@angular/forms';
 import {FormBuilder} from '@angular/forms';
 import {Store} from "@ngrx/store";
 import {MdDialogRef} from "@angular/material";
@@ -19,6 +19,7 @@ import {EnrollmentApplicationType} from "../enrollment-application-type.enum";
 export class EnrollmentApplicationTaskCreatorDialog implements OnInit {
 
   private createForm: FormGroup;
+  private minLength: number = 10;
 
   constructor(private formBuilder: FormBuilder,
               private store: Store<TermModuleState>,
@@ -27,16 +28,30 @@ export class EnrollmentApplicationTaskCreatorDialog implements OnInit {
   }
 
   ngOnInit(): void {
-    this.createForm = this.formBuilder.group(<EnrollmentApplication>{
-      id: null,
-      auditNo: 'N/A',
-      sourceNo: 'N/A',
-      description: '',
-      applicationType: EnrollmentApplicationType.PRA,
-      admission: <Admission>{},
-      academicSession: <AcademicSession>{}
+      this.createForm = this.formBuilder.group({
+      id: [null],
+      auditNo: ['N/A'],
+      sourceNo: ['N/A'],
+      description: ['', Validators.required],
+      applicationType: [EnrollmentApplicationType.PRA, Validators.required],
+      admission: [<Admission>{},Validators.required],
+      academicSession: [<AcademicSession>{}, Validators.required],
+     
     });
   }
+  
+ /* //asal
+  ngOnInit(): void {
+      this.createForm = this.formBuilder.group(<EnrollmentApplication>{
+        id: null,
+        auditNo: 'N/A',
+        sourceNo: 'N/A',
+        description: '',
+        applicationType: EnrollmentApplicationType.PRA,
+        admission: <Admission>{},
+        academicSession: <AcademicSession>{}
+      });
+    }*/
 
   save(application: EnrollmentApplication, isValid: boolean) {
 
