@@ -20,5 +20,9 @@ public interface AdGuardian extends AdMetaObject {
     AdStudent getStudent();
 
     void setStudent(AdStudent student);
+    
+    String getPhone();
+
+    void setPhone(String phone);
 
 }

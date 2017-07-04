@@ -14,9 +14,18 @@ public class Guardian extends MetaObject{
 	private Long id;
 	private String identityNo;
     private String name;
+    private String phone;
     private GuardianType guardianType;
     
-    public Long getId() {
+    public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public Long getId() {
         return id;
     }
 

@@ -19,8 +19,12 @@ public class AdGuardianImpl implements AdGuardian {
     @NotNull
     @Column(name = "NAME", nullable = false)
     private String name;
-
+    
     @NotNull
+    @Column(name = "PHONE", nullable = true)
+    private String phone;
+
+	@NotNull
     @Column(name = "IDENTITY_NO", nullable = false)
     private String identityNo;
 
@@ -42,6 +46,14 @@ public class AdGuardianImpl implements AdGuardian {
     public void setId(Long id) {
         this.id = id;
     }
+    
+    public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
 
     @Override
     public String getName() {
