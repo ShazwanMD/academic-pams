@@ -877,7 +877,7 @@ public class TermController {
             			gradebook.setScore(BigDecimal.ZERO);
             			gradebook.setAssessment(termTransformer.toAssessmentVo(assessment));
             			//  gradebook.setEnrollment(termTransformer.toEnrollmentVo(enrollment));
-            			//  gradebook.setSection(termTransformer.toSectionVo(enrollment.getSection()));
+//            			gradebook.setSection(termTransformer.toSectionVo(enrollment.getSection()));
             		}
             		matrix.addGradebook(gradebook);
 //            		LOG.debug("adGradebook:{}",adGradebook.getScore());
@@ -971,7 +971,7 @@ public class TermController {
             AdSection section = enrollments.get(0).getSection();
             Row header = sheet.createRow(rowNum++);
             Cell sectionCode = header.createCell(headerNum++);            // Cell A1 is for section code
-            sectionCode.setCellValue(section.getCode());
+            sectionCode.setCellValue(section.getCanonicalCode());
             LOG.debug("addSectionHeader " + section.getCode());
             for (AdAssessment assessment : assessments) {
                 Cell assessmentCode = header.createCell(headerNum++);   // Cell A2... is for assessment code
@@ -1007,7 +1007,8 @@ public class TermController {
         return ResponseEntity.ok()
                 .header("Content-Disposition", "attachment; filename=" + offering.getCode() + ".xlsx")
                 .body(resource);
-    }
+        }
+    
 
     // ====================================================================================================
     // PRIVATE METHODS
