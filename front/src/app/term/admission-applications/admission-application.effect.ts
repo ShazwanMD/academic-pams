@@ -111,9 +111,9 @@ export class AdmissionApplicationEffects {
     .map(action => action.payload)
     .switchMap(payload => this.termService.updateAdmissionApplication(payload))
     .map(message => this.admissionApplicationActions.updateAdmissionApplicationSuccess(message))
-   
+     
    .withLatestFrom(this.store$.select(...this.ADMISSION_APPLICATION_TASK))
    .map(state => state[1])
-   .map((application: AdmissionApplicationTask) => this.admissionApplicationActions.findAdmissionApplicationTaskByTaskId(application.taskId));
+   .map((admissionApplicationTask: AdmissionApplicationTask) => this.admissionApplicationActions.findAdmissionApplicationTaskByTaskId(admissionApplicationTask.taskId));
 
 }
