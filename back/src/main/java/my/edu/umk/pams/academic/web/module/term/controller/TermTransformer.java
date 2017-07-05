@@ -98,6 +98,7 @@ public class TermTransformer {
 		vo.setOrdinal(admission.getOrdinal());
 		vo.setStudent(identityTransformer.toStudentVo(admission.getStudent()));
 		vo.setAcademicSession(plannerTransformer.toAcademicSessionVo(admission.getSession()));
+		vo.setStudyCenter(commonTransformer.toStudyCenterVo(admission.getStudyCenter()));
 		vo.setCohort(plannerTransformer.toCohortVo(admission.getCohort()));
 		vo.setStatus(AdmissionStatus.get(admission.getStatus().ordinal()));
 		vo.setStanding(AcademicStanding.get(admission.getStanding().ordinal()));

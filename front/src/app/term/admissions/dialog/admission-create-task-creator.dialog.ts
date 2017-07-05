@@ -57,6 +57,7 @@ export class AdmissionCreateTaskCreatorDialog implements OnInit {
       cgpa: 0,
       creditTaken: 0,
       creditEarned: 0,
+      ordinal:0,
       standing: AcademicStanding.TBD,
       status: AdmissionStatus.ADMITTED,
       cohort: <Cohort>{},

@@ -14,6 +14,7 @@ export interface Admission extends MetaObject {
   cgpa: number;
   creditTaken: number;
   creditEarned: number;
+  ordinal: number;
   cohort: Cohort;
   student: Student;
   academicSession: AcademicSession;
