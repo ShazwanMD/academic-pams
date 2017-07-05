@@ -179,11 +179,36 @@ public class TermController {
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/admissionApplications/{referenceNo}/update", method = RequestMethod.PUT)
+   /* @RequestMapping(value = "/admissionApplications/{referenceNo}/update", method = RequestMethod.PUT)
     public ResponseEntity<AdmissionApplication> updateAdmissionApplication(@PathVariable String referenceNo,
                                                                            @RequestBody AdmissionApplication vo) {
         AdAdmissionApplication application = (AdAdmissionApplication) termService.findAdmissionApplicationByReferenceNo(referenceNo);
         return new ResponseEntity<AdmissionApplication>(termTransformer.toAdmissionApplicationVo(application), HttpStatus.OK);
+    }*/
+    
+    @RequestMapping(value = "/admissionApplications/{referenceNo}/update", method = RequestMethod.PUT)
+    public ResponseEntity<String> updateAdmissionApplication(@PathVariable String referenceNo, @RequestBody AdmissionApplication vo) {
+    	dummyLogin();
+    	
+    	LOG.debug("TermApplicationRef:{}", referenceNo);
+    	AdAdmissionApplication application = termService.findAdmissionApplicationByReferenceNo(referenceNo);
+    	AdStaff advisor = identityService.findStaffByStaffNo("01615B"); 
+    	
+    	application.setAuditNo(vo.getAuditNo());
+    	application.setSourceNo(vo.getSourceNo());
+    	application.setCancelComment(vo.getCancelComment());
+    	application.setDescription(vo.getDescription());
+    	application.setOrdinal(vo.getOrdinal());
+    	application.setReferenceNo(vo.getReferenceNo());
+    	application.setAdvisor(advisor);
+    	application.setRemoveComment(vo.getRemoveComment());
+    	application.setProgram(plannerService.findProgramByCode(vo.getProgram().getCode()));
+    	application.setStudent(identityService.findStudentByMatricNo(vo.getStudent().getIdentityNo()));
+    	application.setSession(plannerService.findAcademicSessionByCode(vo.getAcademicSession().getCode()));
+    	application.setStudyCenter(commonService.findStudyCenterByCode(vo.getStudyCenter().getCode()));
+    	
+    	termService.updateAdmissionApplication(application);
+    	return new ResponseEntity<String>("Success Update Admission Application", HttpStatus.OK);
     }
 
     @RequestMapping(value = "/admissionApplications/assignedTasks", method = RequestMethod.GET)
