@@ -23,10 +23,10 @@ export class CurriculumActions {
     }
 
     static FIND_CURRICULUM_BY_CODE = '[Curriculum] Find Curriculum By Code';
-    findCurriculumByCode( code ): Action {
+    findCurriculumByCode( curriculum  ): Action {
         return {
             type: CurriculumActions.FIND_CURRICULUM_BY_CODE,
-            payload: code
+            payload: curriculum 
         };
     }
 
@@ -35,6 +35,23 @@ export class CurriculumActions {
         return {
             type: CurriculumActions.FIND_CURRICULUM_BY_CODE_SUCCESS,
             payload: curriculum
+        };
+    }
+
+
+    static FIND_SUBJECTS_BY_CURRICULUM = '[Curriculum] Find Subject By Curriculum';
+    findSubjectsByCurriculum(curriculum): Action {
+        return {
+            type: CurriculumActions.FIND_SUBJECTS_BY_CURRICULUM,
+            payload: curriculum
+        };
+    }
+
+    static FIND_SUBJECTS_BY_CURRICULUM_SUCCESS = '[Curriculum] Find Subject By Curriculum Success';
+    findSubjectsByCurriculumSuccess( subjects ): Action {
+        return {
+            type: CurriculumActions.FIND_SUBJECTS_BY_CURRICULUM_SUCCESS,
+            payload: subjects
         };
     }
 
