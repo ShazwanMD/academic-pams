@@ -223,6 +223,15 @@ public class TermTransformer {
 		// vo.setOffering(this.toOfferingVo(assessment.getOffering()));
 		return vo;
 	}
+	
+	public Gradebook toGradebookVo(AdGradebook gradebook) {
+		Gradebook vo = new Gradebook();
+		vo.setAssessment(toAssessmentVo(gradebook.getAssessment()));
+		vo.setEnrollment(toEnrollmentVo(gradebook.getEnrollment()));
+		vo.setScore(gradebook.getScore());
+		vo.setSection(toSectionVo(gradebook.getSection()));
+		return vo;
+	}
 
 	public List<AdmissionApplicationTask> toAdmissionApplicationTaskVos(List<Task> tasks) {
 		return tasks.stream().map((task) -> toAdmissionApplicationTaskVo(task))

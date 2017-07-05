@@ -864,10 +864,27 @@ public class TermController {
             matrix.setEnrollment(termTransformer.toSimpleEnrollmentVo(enrollment));
             List<AdAssessment> assessments = termService.findAssessments(offering);
             for (AdAssessment assessment : assessments) {
-                Gradebook gradebook = new Gradebook();
-                gradebook.setScore(BigDecimal.ZERO);
-                gradebook.setAssessment(termTransformer.toAssessmentVo(assessment));
-                matrix.addGradebook(gradebook);
+//            		AdGradebook adGradebook = termService.findGradebookByAssessmentAndEnrollment(assessment, enrollment);
+//            		Gradebook gradebook = termTransformer.toGradebookVo(adGradebook);
+//            		matrix.addGradebook(gradebook);
+            		AdGradebook adGradebook = termService.findGradebookByAssessmentAndEnrollment(assessment, enrollment);
+              		LOG.debug("adGradebook:{}",adGradebook.getScore());
+            		Gradebook gradebook;
+            		if (adGradebook != null) {
+            			gradebook = termTransformer.toGradebookVo(adGradebook);
+            		} else {
+            			gradebook = new Gradebook();
+            			gradebook.setScore(BigDecimal.ZERO);
+            			gradebook.setAssessment(termTransformer.toAssessmentVo(assessment));
+            			//  gradebook.setEnrollment(termTransformer.toEnrollmentVo(enrollment));
+            			//  gradebook.setSection(termTransformer.toSectionVo(enrollment.getSection()));
+            		}
+            		matrix.addGradebook(gradebook);
+            		LOG.debug("adGradebook:{}",adGradebook.getScore());
+//                Gradebook gradebook = new Gradebook();
+//                gradebook.setScore(BigDecimal.ZERO);
+//                gradebook.setAssessment(termTransformer.toAssessmentVo(assessment));
+//                matrix.addGradebook(gradebook);
 
             }
 
