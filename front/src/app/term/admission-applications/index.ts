@@ -32,6 +32,7 @@ import {PipeModule} from '../../app.pipe.module';
 import {AdmissionApplicationTaskDetailPage} from './admission-application-task-detail.page';
 import {AdmissionApplicationTaskListComponent} from './component/admission-application-task-list.component';
 import {AdmissionApplicationRegisterTaskPanel} from './panel/admission-application-register-task.panel';
+import { StudentAdmissionApplicationTaskDetailPage } from "./student-admission-application-task-detail.page";
 
 @NgModule({
   imports: [
@@ -52,6 +53,7 @@ import {AdmissionApplicationRegisterTaskPanel} from './panel/admission-applicati
   declarations: [
     // page
     AdmissionApplicationTaskDetailPage,
+    StudentAdmissionApplicationTaskDetailPage,
     AdmissionApplicationCenterPage,
     StudentAdmissionApplicationCenterPage,
 

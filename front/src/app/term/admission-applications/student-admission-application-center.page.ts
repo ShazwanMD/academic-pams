@@ -70,7 +70,7 @@ export class StudentAdmissionApplicationCenterPage implements OnInit {
 
   viewTask(task: AdmissionApplicationTask): void {
     console.log('students applications: ' + task.taskId);
-    this.router.navigate(['/term/admission-applications/admission-application-task-detail', task.taskId]);
+    this.router.navigate(['/term/admission-applications/student-admission-application-task-detail', task.taskId]);
   }
 
   ngOnInit(): void {

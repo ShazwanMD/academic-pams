@@ -12,14 +12,15 @@
       <md-divider></md-divider>
     </md-nav-list> -->
      <md-nav-list list-items>
-      <a md-list-item [routerLink]="['/term/admission-applications/student-admission-application-center']">
+       <a md-list-item (click)="showDialog()">
+        <md-icon>create</md-icon>
+        Create New Enrollment Application 
+      </a>
+     
+      <md-divider></md-divider>
+        <a md-list-item [routerLink]="['/term/admission-applications/student-admission-application-center']">
         <md-icon>person_add</md-icon>
         Semester Registration
-      </a>
-      <md-divider></md-divider>
-       <a md-list-item [routerLink]="['/term/enrollment-applications/enrollment-application-task-detail/34']">
-        <md-icon>create</md-icon>
-        Add/Drop Courses
       </a>
     </md-nav-list>
     <div toolbar-buttons layout="row" layout-align="start center" flex>

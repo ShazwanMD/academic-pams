@@ -7,7 +7,7 @@
     <md-nav-list list-items>
       <a md-list-item (click)="createDialog()">
         <md-icon>person_add</md-icon>
-        Semester Registration
+        Create New Semester Registration
       </a>
       <md-divider></md-divider>
       <a md-list-item [routerLink]="['/term/enrollment-applications/student-enrollment-center']">
@@ -16,7 +16,7 @@
       </a>
     </md-nav-list>
     <div toolbar-buttons layout="row" layout-align="start center" flex>
-      <span flex>Student Admission Application Center</span>
+      <span flex>Student Semester Registration Center</span>
       <button md-button class="md-icon-button">
         <md-icon class="md-24">settings</md-icon>
       </button>
@@ -32,11 +32,12 @@
               [admissionApplicationTasks]="assignedAdmissionApplicationTasks$ | async"
               (view)="viewTask($event)"></pams-assigned-admission-application-task-list>
           </md-tab>
-          <md-tab label="Student Application">
+         <!--  <md-tab label="Student Application">
             <pams-pooled-admission-application-task-list
               [admissionApplicationTasks]="pooledAdmissionApplicationTasks$ | async"
-              (claim)="claimTask($event)"></pams-pooled-admission-application-task-list>
-          </md-tab>
+              (claim)="claimTask($event)">
+              </pams-pooled-admission-application-task-list>
+          </md-tab> -->
         </md-tab-group>
       </md-card>
   
