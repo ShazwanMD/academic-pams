@@ -14,7 +14,7 @@ import { AdmissionApplication } from "./admission-application.interface";
 export class AdmissionApplicationEffects {
 
   private ADMISSION_APPLICATION_TASK: string[] = "termModuleState.admissionApplicationTask".split(".");
-private ADMISSION_APPLICATION: string[] = "termModuleState.admissionApplication".split(".");
+  private ADMISSION_APPLICATION: string[] = "termModuleState.admissionApplication".split(".");
 
   constructor(private actions$: Actions,
     private admissionApplicationActions: AdmissionApplicationActions,
@@ -112,8 +112,8 @@ private ADMISSION_APPLICATION: string[] = "termModuleState.admissionApplication"
     .switchMap(payload => this.termService.updateAdmissionApplication(payload))
     .map(message => this.admissionApplicationActions.updateAdmissionApplicationSuccess(message))
    
-   .withLatestFrom(this.store$.select(...this.ADMISSION_APPLICATION))
+   .withLatestFrom(this.store$.select(...this.ADMISSION_APPLICATION_TASK))
    .map(state => state[1])
-   .map((application: AdmissionApplication) => this.admissionApplicationActions.findAdmissionApplicationByReferenceNo(application.referenceNo));
+   .map((application: AdmissionApplicationTask) => this.admissionApplicationActions.findAdmissionApplicationTaskByTaskId(application.taskId));
 
 }
