@@ -9,6 +9,7 @@ import {PlannerModuleState} from "../../index";
 @Component({
   selector: 'pams-faculty-select',
   templateUrl: './faculty-select.component.html',
+  styleUrls: ['./faculty-select.component.scss'],
 })
 export class FacultySelectComponent implements OnInit {
 

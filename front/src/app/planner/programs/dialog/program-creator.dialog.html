@@ -26,9 +26,14 @@
          fxFlex="calc(100%-25px)" class="pad-bottom" mdTooltip="Please select status">
       </pams-program-status-select>
       <pams-faculty-select
-        [placeholder]="'Select faculty'"
-        [innerFormControl]="creatorForm.controls.faculty" fxFlex="calc(100%-25px)" class="pad-bottom">
+        [placeholder]="'Select faculty'" required md-maxlength="25"
+        [innerFormControl]="creatorForm.controls.faculty" 
+        fxFlex="calc(100%-50px)" class="pad-bottom" mdTooltip="Please select faculty">
       </pams-faculty-select>
+      
+      <!-- <pams-ethnicity-code-select [placeholder]="'Ethnicity'" required md-maxlength="10"
+                                         [innerFormControl]="applicationForm.controls.ethnicityCode"
+                                         fxFlex="calc(50%-25px)" class="pad-bottom"> -->
       <pams-program-level-select
         [placeholder]="'level'"
         [innerFormControl]="creatorForm.controls.level"
