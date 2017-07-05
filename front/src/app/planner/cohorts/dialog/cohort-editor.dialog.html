@@ -3,17 +3,20 @@
   <form [formGroup]="createForm">
 
     <div layout="row" class="pad-bottom pad-top">
-      <pams-academic-session-select
+      <pams-academic-session-select mdTooltip="Please select session"
         [placeholder]="'Select Session'"
-        [innerFormControl]="createForm.controls['academicSession']">
+        [innerFormControl]="createForm.controls['academicSession']"
+        fxFlex="calc(100%-25px)" class="pad-bottom"  >
       </pams-academic-session-select>
     </div>
 
     <div layout="row" class="pad-bottom pad-top">
-      <pams-program-select
+      <pams-program-select mdTooltip="Please select program"
         [placeholder]="'Select Program'"
-        [innerFormControl]="createForm.controls['program']">
+        [innerFormControl]="createForm.controls['program']"
+        fxFlex="calc(100%-25px)" class="pad-bottom"  >
       </pams-program-select>
+      
     </div>
 
   </form>
