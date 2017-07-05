@@ -57,6 +57,13 @@ public class AdCurriculumDaoImpl extends GenericDaoSupport<Long, AdCurriculum> i
         Session session = sessionFactory.getCurrentSession();
         return (AdSubject) session.get(AdSubjectImpl.class, id);
     }
+    
+    @Override
+    public AdSubject findSubjects() {
+        Session session = sessionFactory.getCurrentSession();
+        return (AdSubject) session.get(AdSubjectImpl.class, session);
+        
+    }
 
     @Override
     public List<AdCurriculum> find(Integer offset, Integer limit) {
@@ -121,6 +128,19 @@ public class AdCurriculumDaoImpl extends GenericDaoSupport<Long, AdCurriculum> i
         query.setEntity("curriculum", curriculum);
         query.setCacheable(true);
         return (List<AdSubject>) query.list();
+    }
+    
+    @Override
+    public AdSubject findSubjectsByCurriculum(AdCurriculum curriculum) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select s from AdSubject s where " +
+                "s.curriculum = :curriculum " +
+                "and s.metadata.state = :state " +
+                "order by s.course.code asc");
+        query.setInteger("state", AdMetaState.ACTIVE.ordinal());
+        query.setEntity("curriculum", curriculum);
+        query.setCacheable(true);
+        return (AdSubject) query.list();
     }
 
     @Override
@@ -276,5 +296,7 @@ public class AdCurriculumDaoImpl extends GenericDaoSupport<Long, AdCurriculum> i
         Session session = sessionFactory.getCurrentSession();
         session.delete(part);
     }
+
+	
 
 }
