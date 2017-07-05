@@ -49,7 +49,9 @@ public interface PlannerService {
 
     AdSubject findSubjectById(Long id);
     
-    AdSubject findSubjectByCurriculum(AdCurriculum curriculum);
+    AdSubject findSubjects();
+    
+    AdSubject findSubjectsByCurriculum(AdCurriculum curriculum);
 
     AdSubject findSubjectByCurriculumAndCourse(AdCurriculum curriculum, AdCourse course);
 

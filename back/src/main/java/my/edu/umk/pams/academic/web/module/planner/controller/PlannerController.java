@@ -475,7 +475,7 @@ public class PlannerController {
 	}
 	
 	  @RequestMapping(value = "/curriculums/{code}/subjects", method = RequestMethod.GET)
-	    public ResponseEntity<List<Subject>> findSubjectByCurriculum(@PathVariable String code) {
+	    public ResponseEntity<List<Subject>> findSubjectsByCurriculum(@PathVariable String code) {
 		AdCurriculum curriculum = plannerService.findCurriculumByCode(code);
 	        List<AdSubject> subjects = plannerService.findSubjects(curriculum);
 			List<Subject> subjectVos = plannerTransformer.toSubjectVos(subjects);

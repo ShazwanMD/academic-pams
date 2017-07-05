@@ -159,9 +159,15 @@ public class PlannerServiceImpl implements PlannerService {
         return curriculumDao.findSubjectById(id);
     }
     
+    
     @Override
-    public AdSubject findSubjectByCurriculum(AdCurriculum curriculum) {
-        return curriculumDao.findSubjectById(0L);
+    public AdSubject findSubjects() {
+        return curriculumDao.findSubjects();
+    }
+    
+    @Override
+    public AdSubject findSubjectsByCurriculum(AdCurriculum curriculum) {
+        return curriculumDao.findSubjectsByCurriculum(curriculum);
     }
 
     @Override
@@ -254,7 +260,7 @@ public class PlannerServiceImpl implements PlannerService {
 
     @Override
     public void addSubject(AdCurriculum curriculum, AdSubject subject) {
-        curriculumDao.addSubject(curriculum, subject, securityService.getCurrentUser());
+        curriculumDao.addSubject(curriculum,subject, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
