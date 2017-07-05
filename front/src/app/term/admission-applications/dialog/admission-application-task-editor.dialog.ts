@@ -59,11 +59,11 @@ export class AdmissionApplicationTaskEditorDialog implements OnInit {
         });
         if (this.edit) this.editForm.patchValue(this._admissionApplication);
     }
-    submit(admissionApplication: AdmissionApplication, isValid: boolean) {
+    submit(application: AdmissionApplication, isValid: boolean) {
         console.log("updating application");
-        console.log('referenceNo: ' + admissionApplication.referenceNo);
-
-        this.store.dispatch(this.actions.updateAdmissionApplication(this._admissionApplication));
+        console.log('referenceNo: ' + application.referenceNo);
+        console.log(JSON.stringify(application));
+        this.store.dispatch(this.actions.updateAdmissionApplication(application));
         this.dialog.close();
 
         // if (!admissionApplication.id) this.store.dispatch(this.actions.saveAdmissionApplication(admissionApplication));

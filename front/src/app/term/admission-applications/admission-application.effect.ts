@@ -7,12 +7,14 @@ import { TermModuleState } from "../index";
 import { Store } from "@ngrx/store";
 import 'rxjs/add/operator/withLatestFrom';
 import { AdmissionApplicationTask } from "./admission-application-task.interface";
+import { AdmissionApplication } from "./admission-application.interface";
 
 
 @Injectable()
 export class AdmissionApplicationEffects {
 
   private ADMISSION_APPLICATION_TASK: string[] = "termModuleState.admissionApplicationTask".split(".");
+private ADMISSION_APPLICATION: string[] = "termModuleState.admissionApplication".split(".");
 
   constructor(private actions$: Actions,
     private admissionApplicationActions: AdmissionApplicationActions,
@@ -107,6 +109,11 @@ export class AdmissionApplicationEffects {
   @Effect() updateAdmissionApplication$ = this.actions$
     .ofType(AdmissionApplicationActions.UPDATE_ADMISSION_APPLICATION)
     .map(action => action.payload)
-    .switchMap(admissionApplication => this.termService.updateAdmissionApplication(admissionApplication))
-    .map(admissionApplication => this.admissionApplicationActions.updateAdmissionApplicationSuccess(admissionApplication));
+    .switchMap(payload => this.termService.updateAdmissionApplication(payload))
+    .map(message => this.admissionApplicationActions.updateAdmissionApplicationSuccess(message))
+   
+   .withLatestFrom(this.store$.select(...this.ADMISSION_APPLICATION))
+   .map(state => state[1])
+   .map((application: AdmissionApplication) => this.admissionApplicationActions.findAdmissionApplicationByReferenceNo(application.referenceNo));
+
 }

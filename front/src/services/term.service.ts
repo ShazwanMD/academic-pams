@@ -120,15 +120,15 @@ export class TermService {
   }
   
   //update admission application
-  updateAdmissionApplication(admissionApplication: AdmissionApplication): Observable<String> {
-    console.log ("update admission app:" + admissionApplication.referenceNo)
-    console.log (JSON.stringify(admissionApplication))
+  updateAdmissionApplication(application: AdmissionApplication): Observable<String> {
+    console.log ("update admission app:" + application.referenceNo)
+    console.log (JSON.stringify(application))
     let headers = new Headers({
       'Content-Type': 'application/json',
       //'Authorization': 'Bearer ' + this.authService.token
     });
     let options = new RequestOptions({ headers: headers });
-    return this.http.put(environment.endpoint + '/api/term/admissionApplications/' + admissionApplication.referenceNo + '/update', JSON.stringify(admissionApplication), options)
+    return this.http.put(environment.endpoint + '/api/term/admissionApplications/' + application.referenceNo + '/update', JSON.stringify(application), options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
   

@@ -186,23 +186,23 @@ export class AdmissionApplicationActions {
   }
 
 
-  static UPDATE_ADMISSION_APPLICATION = '[AdmissionApplication] Update AdmissionApplication';
+  static UPDATE_ADMISSION_APPLICATION = '[AdmissionApplication] Update Admission Application';
   updateAdmissionApplication(application): Action {
     return {
       type: AdmissionApplicationActions.UPDATE_ADMISSION_APPLICATION,
       payload: application
     };
   }
-
-  static UPDATE_ADMISSION_APPLICATION_SUCCESS = '[AdmissionApplication] Update AdmissionApplication Success';
-  updateAdmissionApplicationSuccess(application): Action {
+  
+  static UPDATE_ADMISSION_APPLICATION_SUCCESS = '[AdmissionApplication] Update Admission Application Success';
+  updateAdmissionApplicationSuccess(message): Action {
     return {
       type: AdmissionApplicationActions.UPDATE_ADMISSION_APPLICATION_SUCCESS,
-      payload: application
+      payload: message
     };
   }
-
-  static SAVE_ADMISSION_APPLICATION = '[AdmissionApplication] Save AdmissionApplication';
+  
+  static SAVE_ADMISSION_APPLICATION = '[AdmissionApplication] Save Admission Application';
   saveAdmissionApplication(admissionApplication): Action {
     return {
       type: AdmissionApplicationActions.SAVE_ADMISSION_APPLICATION,

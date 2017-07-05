@@ -39,10 +39,6 @@ export class AdmissionApplicationActionComponent {
         this.editorDialogRef.afterClosed().subscribe(res => {
             console.log("close dialog");
         });
-
-
     }
-
-
 
 }
