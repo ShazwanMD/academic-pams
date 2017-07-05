@@ -1,3 +1,4 @@
+import {Curriculum} from '../../curriculums/curriculum.interface';
 import {CourseClassification} from '../course-classification.enum';
 import { CourseClassificationComponent } from './../component/course-classification.component';
 import {Course} from './../course.interface';
@@ -24,6 +25,7 @@ export class CourseCreatorDialog implements OnInit {
   private create: boolean = false;
   private _course:Course;
   private faculty: Faculty;
+  private _curriculum: Curriculum;
 
 
   constructor(private formBuilder: FormBuilder,
@@ -35,10 +37,16 @@ export class CourseCreatorDialog implements OnInit {
               private dialog: MdDialogRef<CourseCreatorDialog>) {
   }
 
+
+  set curriculum(value:Curriculum){
+  this._curriculum= value;
+}
    set course(value: Course) {
         this._course = value;
         this.create = true;
     }
+
+
 
 
   ngOnInit(): void {
@@ -52,6 +60,7 @@ export class CourseCreatorDialog implements OnInit {
       faculty: <Faculty>{},
     });
 
+    this.creatorForm.patchValue({'curriculum':this._curriculum});
    if (this.create) this.creatorForm.patchValue(this._course);
   }
 
