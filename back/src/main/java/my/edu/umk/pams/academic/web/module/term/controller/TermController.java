@@ -868,7 +868,7 @@ public class TermController {
 //            		Gradebook gradebook = termTransformer.toGradebookVo(adGradebook);
 //            		matrix.addGradebook(gradebook);
             		AdGradebook adGradebook = termService.findGradebookByAssessmentAndEnrollment(assessment, enrollment);
-              		LOG.debug("adGradebook:{}",adGradebook.getScore());
+//              		LOG.debug("adGradebook:{}",adGradebook.getScore());
             		Gradebook gradebook;
             		if (adGradebook != null) {
             			gradebook = termTransformer.toGradebookVo(adGradebook);
@@ -880,7 +880,7 @@ public class TermController {
             			//  gradebook.setSection(termTransformer.toSectionVo(enrollment.getSection()));
             		}
             		matrix.addGradebook(gradebook);
-            		LOG.debug("adGradebook:{}",adGradebook.getScore());
+//            		LOG.debug("adGradebook:{}",adGradebook.getScore());
 //                Gradebook gradebook = new Gradebook();
 //                gradebook.setScore(BigDecimal.ZERO);
 //                gradebook.setAssessment(termTransformer.toAssessmentVo(assessment));
