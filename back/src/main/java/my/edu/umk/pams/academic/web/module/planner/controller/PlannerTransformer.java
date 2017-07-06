@@ -95,16 +95,16 @@ public class PlannerTransformer {
     public Course toCourseVo(AdCourse course) {
         Course vo = new Course();
         vo.setId(course.getId());
-        vo.setCode(course.getCode());
-        vo.setTitleMs(course.getTitleMs());
-        vo.setTitleEn(course.getTitleEn());
-        vo.setCredit(course.getCredit());
         vo.setClassification(AcademicClassification.get(course.getClassification().ordinal()));
+        vo.setCode(course.getCode());
+        vo.setCredit(course.getCredit());
+        vo.setTitleMs(course.getTitleMs());
+        vo.setTitleEn(course.getTitleEn());     
         vo.setFaculty(plannerTransformer.toFacultyVo(course.getFaculty()));
         vo.setStatus(CourseStatus.get(course.getStatus().ordinal()));
         return vo;
     }
-    
+      
     public List<Curriculum> toCurriculumVos(List<AdCurriculum> curriculums) {
         return curriculums.stream().map(this::toCurriculumVo).collect(toList());
     }

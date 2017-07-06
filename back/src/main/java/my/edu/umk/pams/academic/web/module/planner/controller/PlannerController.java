@@ -385,7 +385,7 @@ public class PlannerController {
 
 	}
 
-	@RequestMapping(value = "/courses/{code}", method = RequestMethod.PUT)
+	/*@RequestMapping(value = "/courses/{code}", method = RequestMethod.PUT)
 	public ResponseEntity<String> updateCourse(@PathVariable String code, @RequestBody Course vo) {
 	
 		
@@ -399,8 +399,22 @@ public class PlannerController {
 		course.setClassification(AdAcademicClassification.get(vo.getClassification().ordinal()));
 		plannerService.updateCourse(course);
 		return new ResponseEntity<String>("Success", HttpStatus.OK);
-	}
+	}*/
 	
+	@RequestMapping(value = "/courses/{code}", method = RequestMethod.PUT)
+	public ResponseEntity<String> updateCourse(@PathVariable String code, @RequestBody Course vo) {
+		dummyLogin();
+		AdCourse course = plannerService.findCourseByCode(code);
+		course.setClassification(AdAcademicClassification.get(vo.getClassification().ordinal()));
+		course.setCode(vo.getCode());
+		course.setCredit(vo.getCredit());
+		course.setStatus(AdCourseStatus.get(vo.getStatus().ordinal()));
+		course.setTitleEn(vo.getTitleEn());
+		course.setTitleMs(vo.getTitleMs());
+		course.setFaculty(plannerService.findFacultyById(vo.getFaculty().getId()));
+		plannerService.updateCourse(course);
+		return new ResponseEntity<String>("Success", HttpStatus.OK);
+	}
 	
 	@RequestMapping(value = "/courses/{code}/activate", method = RequestMethod.GET)
 	  public ResponseEntity<String> activateCourse(@PathVariable String code) {

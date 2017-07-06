@@ -11,15 +11,13 @@ import java.io.IOException;
  */
 public class Course extends MetaObject {
     private String code;
+    public AcademicClassification classification;
+    private Integer credit;
+    private CourseStatus status;
     private String titleMs;
     private String titleEn;
-    private Integer credit;
-    private String description;
     private Faculty faculty;
-    private Course course;
-	private CourseStatus status;
-	public AcademicClassification classification;
-
+   
     public String getCode() {
         return code;
     }
@@ -68,13 +66,6 @@ public class Course extends MetaObject {
         this.faculty = faculty;
     }
     
-    public Course getCourse() {
-        return course;
-    }
-
-    public void setCourse(Course course) {
-        this.course = course;
-    }
 
     public CourseStatus getStatus() {
  		return status;
