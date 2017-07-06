@@ -33,6 +33,9 @@ import {AdmissionEnrollmentListComponent} from './component/admission-enrollment
 import { AdmissionEnrollmentDialog } from "./dialog/admission-enrollment.dialog";
 import { AdmissionActionComponent } from "./component/admission-action.component";
 import { AdmissionEnrollmentApplicationListComponent } from "./component/admission-enrollment-application-list.component";
+import { AdmissionApplicationListComponent } from "../admission-applications/component/admission-application-list.component";
+import { AdmissionApplicationSubModule } from "../admission-applications/index";
+
 
 @NgModule({
   imports: [
@@ -54,6 +57,7 @@ import { AdmissionEnrollmentApplicationListComponent } from "./component/admissi
 
     // component
     AdmissionListComponent,
+    AdmissionApplicationListComponent,
     AdmissionComponent,
     AdmissionActionComponent,
     AdmissionEnrollmentInfoComponent,
@@ -71,6 +75,7 @@ import { AdmissionEnrollmentApplicationListComponent } from "./component/admissi
   ],
   exports: [
     AdmissionSelectComponent,
+    AdmissionApplicationListComponent,
   ],
   entryComponents: [AdmissionEnrollmentDialog,]
 })

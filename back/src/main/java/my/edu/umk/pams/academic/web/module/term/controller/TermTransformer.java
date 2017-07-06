@@ -69,7 +69,7 @@ public class TermTransformer {
 		task.setMetaState(MetaState.get(application.getMetadata().getState().ordinal()));
 		return task;
 	}
-
+	
 	public AdmissionApplication toAdmissionApplicationVo(AdAdmissionApplication application) {
 		AdmissionApplication vo = new AdmissionApplication();
 		vo.setId(application.getId());

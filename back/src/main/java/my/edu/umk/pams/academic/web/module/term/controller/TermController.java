@@ -275,6 +275,15 @@ public class TermController {
         Task task = termService.findAdmissionApplicationTaskByTaskId(vo.getTaskId());
         workflowService.completeTask(task);
     }
+    
+    //release task admission application created 6/7/17
+    @RequestMapping(value = "/admissionApplications/releaseTask", method = RequestMethod.POST)
+    public ResponseEntity<String> releaseAdmissionApplicationTask(@RequestBody AdmissionApplicationTask vo) {
+        dummyLogin();
+        Task task = termService.findAdmissionApplicationTaskByTaskId(vo.getTaskId());
+        workflowService.releaseTask(task);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
 
     @RequestMapping(value = "/admissionApplications/{referenceNo}", method = RequestMethod.GET)
     public ResponseEntity<AdmissionApplication> findAdmissionApplicationByReferenceNo(

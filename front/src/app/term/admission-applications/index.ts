@@ -63,7 +63,7 @@ import { StudentAdmissionApplicationTaskDetailPage } from "./student-admission-a
     AdmissionApplicationRegisterTaskPanel,
     AdmissionApplicationTaskListComponent,
     AdmissionApplicationTaskStatusComponent,
-    AdmissionApplicationListComponent,
+   // AdmissionApplicationListComponent,
     AdmissionApplicationComponent,
     AdmissionApplicationActionComponent,
     AssignedAdmissionApplicationTaskListComponent,
@@ -77,7 +77,7 @@ import { StudentAdmissionApplicationTaskDetailPage } from "./student-admission-a
   exports: [
     AdmissionApplicationComponent,
     AdmissionApplicationActionComponent,
-    AdmissionApplicationListComponent,
+   // AdmissionApplicationListComponent,
     AssignedAdmissionApplicationTaskListComponent,
     PooledAdmissionApplicationTaskListComponent,
 

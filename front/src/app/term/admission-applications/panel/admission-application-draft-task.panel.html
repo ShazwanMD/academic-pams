@@ -44,6 +44,10 @@
                     <span flex="15">Description</span>
                     <span> {{admissionApplicationTask?.description}}</span>
                   </div>
+                   <div layout="row" class="pad-bottom">
+                    <span flex="15">Semester</span>
+                    <span> {{admissionApplicationTask?.application?.ordinal}}</span>
+                  </div>
                 </div>
               </md-tab>
 
@@ -142,7 +146,7 @@
             <h4 md-line>Approve application</h4>
             <p md-line>Approve this application</p>
           </md-list-item>
-          <md-list-item>
+          <md-list-item (click)="remove()">
             <md-icon md-list-avatar>remove_circle</md-icon>
             <h4 md-line>Remove application</h4>
             <p md-line>Remove this application</p>
