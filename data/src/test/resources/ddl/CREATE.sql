@@ -760,6 +760,7 @@
         M_ID int8,
         M_ST int4,
         ORDINAL int4 not null,
+        POINT numeric(19, 2),
         primary key (ID)
     );
 
