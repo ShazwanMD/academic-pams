@@ -7,6 +7,7 @@ import {Store} from "@ngrx/store";
 import {TermModuleState} from "../../index";
 import {SectionEditorDialog} from "../../sections/dialog/section-editor.dialog";
 import {Offering} from "../offering.interface";
+import { MdSnackBar } from "@angular/material";
 
 @Component({
   selector: 'pams-offering-section-list',
@@ -14,11 +15,13 @@ import {Offering} from "../offering.interface";
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class OfferingSectionListComponent implements OnInit {
-
+    
+ 
   @Input() section: Section;
   @Input() offering: Offering;
   @Input() sections: Section[];
   @Output() view = new EventEmitter<Section>();
+
 
   private selectedRows: Section[];
   private creatorDialogRef: MdDialogRef<SectionEditorDialog>;
@@ -37,7 +40,8 @@ export class OfferingSectionListComponent implements OnInit {
               private actions: SectionActions,
               private store: Store<TermModuleState>,
               private vcf: ViewContainerRef,
-              private dialog: MdDialog,) {
+              private dialog: MdDialog,
+              private snackBar: MdSnackBar) {
   }
 
   ngOnInit(): void {
@@ -89,9 +93,25 @@ export class OfferingSectionListComponent implements OnInit {
     });
   }
 
+   
   deleteSection(section: Section): void {
-    console.log("deleteSection");
+      if(section.enrollmentCount > 0) {
+          console.log("Don't delete this Section"); //try to print at console
+          let snackBarRef = this.snackBar.open("Section cannot be deleted", "OK");
+          
+          snackBarRef.afterDismissed().subscribe(() => {
+            this.view.emit(section);
+            
+          });
+          
+      } else {
+    console.log("deleteSection"); //move on
     this.store.dispatch(this.actions.deleteSection(this.offering, section))
+      }
   }
+  
+  goBack(route: string): void {
+      this.router.navigate(['/offerings']);
+    }
 }
 

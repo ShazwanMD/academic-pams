@@ -75,5 +75,13 @@ export class OfferingDetailPage implements OnInit {
   goBack(route: string): void {
     this.router.navigate(['/offerings']);
   }
+  
+  deleteSection(section: Section): void {
+      console.log('section: ' + section.canonicalCode);
+      this.router.navigate(['/term/offerings']);    
+      //history.go(0);
+      //this.router.navigate(['/term/offerings', this.offering.canonicalCode]);
+    }
+  
 }
 
