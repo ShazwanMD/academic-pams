@@ -3,5 +3,6 @@ export interface GradeCode extends MetaObject{
     code:string;
     description:string;
     ordinal:number;
+    point:number;
 
 }

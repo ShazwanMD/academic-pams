@@ -1,3 +1,4 @@
+import { Cohort } from './../../planner/cohorts/cohort.interface';
 import { StudyMode } from './../../common/study-modes/study-mode.interface';
 import { ProfileActions } from './../profile.action';
 import {ProfileModuleState} from "./../index";
@@ -43,7 +44,9 @@ export class DetailEditorDialog implements OnInit {
       email: '',
       phone:'',
       mobile:'',
-      fax:''
+      fax:'',
+      studyMode:<StudyMode>{},
+      cohort:<Cohort>{}
   
     });
 

@@ -21,6 +21,7 @@ export class GradeCodeListPage implements OnInit {
     {name: 'code', label: 'Code'},
     {name: 'ordinal', label: 'Ordinal'},
     {name: 'description', label: 'Description'},
+    {name: 'point', label:'Point'},
     {name: 'action', label: ''}
   ];
 

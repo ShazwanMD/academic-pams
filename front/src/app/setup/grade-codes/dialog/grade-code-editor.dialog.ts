@@ -39,7 +39,8 @@ export class GradeCodeEditorDialog implements OnInit {
       id: null,
       code: '',
       description: '',
-      ordinal:0
+      ordinal:0,
+      point:0
     });
 
     if (this.edit) this.editorForm.patchValue(this._gradeCode);
