@@ -8,6 +8,7 @@ import { Observable } from "rxjs";
 import { Admission } from "./admission.interface";
 import { AdmissionActions } from "./admission.action";
 import { TermModuleState } from "../index";
+import { AdmissionApplication } from "../admission-applications/admission-application.interface";
 
 @Component( {
     selector: 'pams-admission-center',
@@ -36,9 +37,17 @@ export class AdmissionCenterPage implements OnInit {
         this.router.navigate( ['/term/admissions', admission.id] );
 
     }
+    
+    viewAdmissionApplication( admissionApplication: AdmissionApplication ) {
+       // console.log( "admission application: " + admissionApplication.id );
+        //this.router.navigate( ['/term/admission-applications', admissionApplication.id] );
+
+    }
+
 
     ngOnInit(): void {
         this.store.dispatch( this.actions.findAdmissions() );
+        this.store.dispatch( this.actions.findAdmissionApplications() );
     }
 
     private createDialog( id: Admission ): void {

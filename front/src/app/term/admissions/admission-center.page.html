@@ -33,5 +33,16 @@
         (view)="viewAdmission($event)" mdTooltip="View admission info">
 	</pams-admission-list>
 <md-divider></md-divider> 
-</md-card> </td-layout-manage-list> </td-layout-nav>
+</md-card> 
+<!-- display admission application list -->
+<md-card class=""> <md-card-title>Semester Registration Application</md-card-title>
+	 <pams-admission-application-list
+	 [admissionApplications]="admissionApplications$ | async"
+        (view)="viewAdmissionApplication($event)" mdTooltip="View admission application info">
+	</pams-admission-application-list>
+<md-divider></md-divider> 
+</md-card> 
+
+
+</td-layout-manage-list> </td-layout-nav>
 

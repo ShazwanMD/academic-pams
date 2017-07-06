@@ -84,7 +84,7 @@ export class TermService {
       .map((res: Response) => <AdmissionApplication[]>res.json());
 
   }
-
+  
   findAssignedAdmissionApplicationTasks(): Observable<AdmissionApplicationTask[]> {
     console.log("findAssignedAdmissionApplicationTasks");
     return this.http.get(environment.endpoint + '/api/term/admissionApplications/assignedTasks')

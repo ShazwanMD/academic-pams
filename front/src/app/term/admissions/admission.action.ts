@@ -19,6 +19,24 @@ export class AdmissionActions {
       payload: admissions
     };
   }
+  
+  //find admission applications
+  static FIND_ADMISSION_APPLICATIONS = '[Admission Application] Find Admission Applications';
+
+  findAdmissionApplications(): Action {
+    return {
+      type: AdmissionActions.FIND_ADMISSION_APPLICATIONS
+    };
+  }
+
+  static FIND_ADMISSION_APPLICATIONS_SUCCESS = '[Admission Application] Find Admission Applications Success';
+  findAdmissionApplicationsSuccess(admissionApplications): Action {
+    return {
+      type: AdmissionActions.FIND_ADMISSION_APPLICATIONS_SUCCESS,
+      payload: admissionApplications
+    };
+  }
+
 
   static FIND_ADMISSION_BY_ID = '[Admission] Find Admission By Id';
   findAdmissionById(id): Action {
