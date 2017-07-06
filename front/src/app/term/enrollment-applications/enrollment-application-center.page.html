@@ -21,7 +21,6 @@
         <md-icon class="md-24">more_vert</md-icon>
       </button>
     </div>
-
     <md-card>
       <md-tab-group [selectedIndex]="0">
         <md-tab label="Assigned">
@@ -35,6 +34,11 @@
             (claim)="claimTask($event)"></pams-pooled-enrollment-application-task-list>
         </md-tab>
       </md-tab-group>
+    </md-card>
+     <md-card><md-card-title>List Of Applications</md-card-title>
+          <pams-enrollment-applications-list
+            [enrollmentApplications]="enrollmentApplications$ | async"
+            (view)="viewApplication($event)" ></pams-enrollment-applications-list>
     </md-card>
 
   </td-layout-manage-list>

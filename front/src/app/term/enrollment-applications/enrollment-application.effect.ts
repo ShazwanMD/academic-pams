@@ -16,7 +16,7 @@ export class EnrollmentApplicationEffects {
 
   private ENROLLMENT_APPLICATION_TASK: string[] = "termModuleState.enrollmentApplicationTask".split(".");
   private ADMISSION: string[] = "termModuleState.admission".split(".");  
-  private ENROLLMENTAPPLICATION: string[] = "termModuleState.enrollmentApplication".split(".");
+  private ENROLLMENT_APPLICATION: string[] = "termModuleState.enrollmentApplication".split(".");
 
   constructor(private actions$: Actions,
               private enrollmentApplicationActions: EnrollmentApplicationActions,
@@ -29,12 +29,11 @@ export class EnrollmentApplicationEffects {
     .ofType(EnrollmentApplicationActions.FIND_ENROLLMENT_APPLICATIONS)
     .switchMap(() => this.termService.findEnrollmentApplications())
     .map(enrollmentApplications => this.enrollmentApplicationActions.findEnrollmentApplicationsSuccess(enrollmentApplications));
-
+ 
   @Effect() findAssignedEnrollmentApplicationTasks$ = this.actions$
     .ofType(EnrollmentApplicationActions.FIND_ASSIGNED_ENROLLMENT_APPLICATION_TASKS)
     .switchMap(() => this.termService.findAssignedEnrollmentApplicationTasks())
     .map(enrollmentApplications => this.enrollmentApplicationActions.findAssignedEnrollmentApplicationTasksSuccess(enrollmentApplications));
-
 
   @Effect() findPooledEnrollmentApplicationTasks$ = this.actions$
     .ofType(EnrollmentApplicationActions.FIND_POOLED_ENROLLMENT_APPLICATION_TASKS)
