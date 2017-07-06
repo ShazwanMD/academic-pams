@@ -48,6 +48,7 @@ export class AdmissionApplicationTaskEditorDialog implements OnInit {
             referenceNo: '',
             sourceNo: '',
             auditNo: '',
+            ordinal:0,
             description: '',
             cancelComment: '',
             removeComment: '',
