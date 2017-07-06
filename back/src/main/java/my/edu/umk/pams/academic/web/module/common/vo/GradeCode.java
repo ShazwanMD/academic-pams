@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 
 /**
  * @author PAMS
@@ -14,8 +15,18 @@ public class GradeCode {
     private String code;
     private String description;
     private Integer ordinal;
+    private BigDecimal point;
+    
 
-    public Long getId() {
+    public BigDecimal getPoint() {
+		return point;
+	}
+
+	public void setPoint(BigDecimal point) {
+		this.point = point;
+	}
+
+	public Long getId() {
         return id;
     }
 

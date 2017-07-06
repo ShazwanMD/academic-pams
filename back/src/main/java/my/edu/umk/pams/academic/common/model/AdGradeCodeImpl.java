@@ -2,6 +2,8 @@ package my.edu.umk.pams.academic.common.model;
 
 import my.edu.umk.pams.academic.core.AdMetadata;
 
+import java.math.BigDecimal;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
@@ -27,11 +29,23 @@ public class AdGradeCodeImpl implements AdGradeCode {
     @NotNull
     @Column(name = "DESCRIPTION", nullable = false)
     private String description;
+    
+    @Column(name = "POINT", nullable = true)
+    private BigDecimal point;
 
     @Embedded
     private AdMetadata metadata;
+    
 
-    public Long getId() {
+    public BigDecimal getPoint() {
+		return point;
+	}
+
+	public void setPoint(BigDecimal point) {
+		this.point = point;
+	}
+
+	public Long getId() {
         return id;
     }
 

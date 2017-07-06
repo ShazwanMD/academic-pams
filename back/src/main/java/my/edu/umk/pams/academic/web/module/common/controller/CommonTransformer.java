@@ -92,6 +92,7 @@ public class CommonTransformer {
 	        vo.setCode(e.getCode());
 	        vo.setOrdinal(e.getOrdinal());
 	        vo.setDescription(e.getDescription());
+	        vo.setPoint(e.getPoint());
 	        return vo;
 	        }
 

@@ -1,5 +1,7 @@
 package my.edu.umk.pams.academic.common.model;
 
+import java.math.BigDecimal;
+
 import my.edu.umk.pams.academic.core.AdMetaObject;
 
 /**
@@ -18,4 +20,8 @@ public interface AdGradeCode extends AdMetaObject {
     String getDescription();
 
     void setDescription(String description);
+    
+    BigDecimal getPoint();
+
+    void setPoint(BigDecimal point);
 }

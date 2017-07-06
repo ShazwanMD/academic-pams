@@ -643,6 +643,7 @@ public ResponseEntity<String> saveGradeCode(@RequestBody GradeCode vo) {
       gradeCode.setCode(vo.getCode());
       gradeCode.setOrdinal(vo.getOrdinal());
       gradeCode.setDescription(vo.getDescription());
+      gradeCode.setPoint(vo.getPoint());
       commonService.saveGradeCode(gradeCode);
       return new ResponseEntity<String>("Success", HttpStatus.OK);
       }
@@ -655,6 +656,7 @@ public ResponseEntity<String> updateGradeCode(@PathVariable String code, @Reques
       gradeCode.setCode(vo.getCode());
       gradeCode.setOrdinal(vo.getOrdinal());
       gradeCode.setDescription(vo.getDescription());
+      gradeCode.setPoint(vo.getPoint());
       commonService.updateGradeCode(gradeCode);
       return new ResponseEntity<String>("Success", HttpStatus.OK);
       }
