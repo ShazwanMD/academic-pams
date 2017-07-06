@@ -5,6 +5,9 @@ import { MdSnackBar, MdDialog, MdDialogRef, MdDialogConfig } from '@angular/mate
 import { TermService } from '../../../../services/term.service';
 import { AdmissionApplicationTask } from '../admission-application-task.interface';
 import {AdmissionApplication} from "../admission-application.interface";
+import { Store } from "@ngrx/store";
+import { TermModuleState } from "../../index";
+import { AdmissionApplicationActions } from "../admission-application.action";
 
 /*@Component({
  selector: 'pams-admission-application-register-task',
@@ -34,7 +37,9 @@ export class AdmissionApplicationDraftTaskPanel implements OnInit {
     viewContainerRef: ViewContainerRef,
     dialog: MdDialog,
     termService: TermService,
-    snackBar: MdSnackBar) {
+    snackBar: MdSnackBar,
+    private store: Store<TermModuleState>,
+    private actions: AdmissionApplicationActions) {
     this._router = router;
     this._route = route;
     this._termService = termService;
@@ -71,6 +76,12 @@ export class AdmissionApplicationDraftTaskPanel implements OnInit {
       });
     });
   }
+  
+  //release admission application
+  remove() {
+      this.store.dispatch(this.actions.releaseAdmissionApplicationTask(this.admissionApplicationTask));
+      this.goBack();
+    }
 
   goBack(): void {
     this._router.navigate(['/term/admission-applications/student-admission-application-center']);

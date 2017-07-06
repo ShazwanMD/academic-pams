@@ -177,7 +177,7 @@ export class TermService {
     return this.http.post(environment.endpoint + '/api/term/admissionApplications/releaseTask', JSON.stringify(admissionApplicationTask), options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
-
+  
   // ==================================================================================================== //
   // ADMISSION
   // ==================================================================================================== //
