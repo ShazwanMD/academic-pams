@@ -59,7 +59,7 @@ export class OfferingSectionListComponent implements OnInit {
     config.viewContainerRef = this.vcf;
     config.role = 'dialog';
     config.width = '60%';
-    config.height = '80%';
+    config.height = '40%';
     config.position = {top: '0px'};
     this.creatorDialogRef = this.dialog.open(SectionEditorDialog, config);
     if (isValid) {
