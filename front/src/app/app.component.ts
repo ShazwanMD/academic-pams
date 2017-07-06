@@ -11,7 +11,6 @@ export class AppComponent {
 
   constructor(private _iconRegistry: MdIconRegistry,
               private _domSanitizer: DomSanitizer) {
-    //console.log("app comp");
     this._iconRegistry.addSvgIconInNamespace('assets', 'covalent',
       this._domSanitizer.bypassSecurityTrustResourceUrl('assets/icons/covalent.svg'));
     this._iconRegistry.addSvgIconInNamespace('assets', 'covalent-mark',

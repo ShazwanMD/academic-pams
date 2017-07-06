@@ -9,9 +9,9 @@
         <pams-offering
           [offering]="offering$ | async">
         </pams-offering>
- <pams-offering-section-list
+        <pams-offering-section-list
           [offering]="offering$ | async"
-          [sections]="sections$ | async" (view)="deleteSection($event)"  >
+          [sections]="sections$ | async" (view)="deleteSection($event)">
         </pams-offering-section-list>
         <pams-offering-assessment-list
           [offering]="offering$ | async"

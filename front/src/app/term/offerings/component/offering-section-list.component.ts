@@ -1,13 +1,13 @@
 import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, ViewContainerRef, OnInit} from '@angular/core';
 import {Section} from '../../sections/section.interface';
-import {MdDialog, MdDialogConfig, MdDialogRef} from "@angular/material";
-import {ActivatedRoute, Router} from "@angular/router";
-import {SectionActions} from "../../sections/section.action";
-import {Store} from "@ngrx/store";
-import {TermModuleState} from "../../index";
-import {SectionEditorDialog} from "../../sections/dialog/section-editor.dialog";
-import {Offering} from "../offering.interface";
-import { MdSnackBar } from "@angular/material";
+import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';
+import {ActivatedRoute, Router} from '@angular/router';
+import {SectionActions} from '../../sections/section.action';
+import {Store} from '@ngrx/store';
+import {TermModuleState} from '../../index';
+import {SectionEditorDialog} from '../../sections/dialog/section-editor.dialog';
+import {Offering} from '../offering.interface';
+import { MdSnackBar } from '@angular/material';
 
 @Component({
   selector: 'pams-offering-section-list',
@@ -15,13 +15,11 @@ import { MdSnackBar } from "@angular/material";
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class OfferingSectionListComponent implements OnInit {
-    
- 
+
   @Input() section: Section;
   @Input() offering: Offering;
   @Input() sections: Section[];
   @Output() view = new EventEmitter<Section>();
-
 
   private selectedRows: Section[];
   private creatorDialogRef: MdDialogRef<SectionEditorDialog>;
@@ -32,7 +30,7 @@ export class OfferingSectionListComponent implements OnInit {
     {name: 'capacity', label: 'Capacity'},
     {name: 'appointmentCount', label: 'Appointment'},
     {name: 'enrollmentCount', label: 'Enrollment'},
-    {name: 'action', label: ''}
+    {name: 'action', label: ''},
   ];
 
   constructor(private router: Router,
@@ -45,7 +43,7 @@ export class OfferingSectionListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.selectedRows = this.sections.filter(value => value.selected);
+    this.selectedRows = this.sections.filter((value) => value.selected);
   }
 
   filter(): void {
@@ -58,7 +56,7 @@ export class OfferingSectionListComponent implements OnInit {
   }
 
   editDialog(section: Section, isValid: boolean): void {
-    console.log("Section:{}", section)
+    console.log('Section:{}', section);
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
     config.role = 'dialog';
@@ -71,14 +69,14 @@ export class OfferingSectionListComponent implements OnInit {
       this.creatorDialogRef.componentInstance.offering = this.offering;
 
     }
-    this.creatorDialogRef.afterClosed().subscribe(res => {
-      console.log("close dialog section");
+    this.creatorDialogRef.afterClosed().subscribe((res) => {
+      console.log('close dialog section');
       // load something here
     });
   }
 
   addSectionDialog(): void {
-    console.log("showDialog");
+    console.log('showDialog');
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
     config.role = 'dialog';
@@ -87,29 +85,22 @@ export class OfferingSectionListComponent implements OnInit {
     config.position = {top: '0px'};
     this.creatorDialogRef = this.dialog.open(SectionEditorDialog, config);
     this.creatorDialogRef.componentInstance.offering = this.offering;
-    this.creatorDialogRef.afterClosed().subscribe(res => {
-      console.log("close dialog");
+    this.creatorDialogRef.afterClosed().subscribe((res) => {
+      console.log('close dialog');
       // load something here
     });
   }
 
-   
   deleteSection(section: Section): void {
-      if(section.enrollmentCount > 0) {
+      if (section.enrollmentCount > 0) {
           console.log("Don't delete this Section"); //try to print at console
-          let snackBarRef = this.snackBar.open("Section cannot be deleted", "OK");
-          
-          snackBarRef.afterDismissed().subscribe(() => {
-            this.view.emit(section);
-            
-          });
-          
+          let snackBarRef = this.snackBar.open('Section cannot be deleted', 'OK');
       } else {
-    console.log("deleteSection"); //move on
-    this.store.dispatch(this.actions.deleteSection(this.offering, section))
+    console.log('deleteSection'); // move on
+    this.store.dispatch(this.actions.deleteSection(this.offering, section));
       }
   }
-  
+
   goBack(route: string): void {
       this.router.navigate(['/offerings']);
     }
