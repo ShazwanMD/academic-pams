@@ -116,8 +116,8 @@ public class AdAdmissionApplicationDaoImpl extends GenericDaoSupport<Long, AdAdm
     public List<AdAdmissionApplication> findByFlowState(AdFlowState flowState) {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select p from AdAdmissionApplication p where " +
-                "p.flowState.state = :flowState " +
-                "and p.metaState.state = :metaState");
+                "p.flowdata.state = :flowState " +
+                "and p.metadata.state = :metaState");
         query.setInteger("flowState", flowState.ordinal());
         query.setInteger("metaState", AdMetaState.ACTIVE.ordinal());
         return (List<AdAdmissionApplication>) query.list();
@@ -127,8 +127,8 @@ public class AdAdmissionApplicationDaoImpl extends GenericDaoSupport<Long, AdAdm
     public List<AdAdmissionApplication> findByFlowStates(AdFlowState... flowStates) {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select p from AdAdmissionApplication p where " +
-                "p.flowState.state in (:flowStates) " +
-                "and p.metaState.state = :metaState");
+                "p.flowdata.state in (:flowStates) " +
+                "and p.metadata.state = :metaState");
         query.setParameterList("flowStates", flowStates);
         query.setInteger("metaState", AdMetaState.ACTIVE.ordinal());
         return (List<AdAdmissionApplication>) query.list();

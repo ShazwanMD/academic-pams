@@ -1107,12 +1107,6 @@ public class TermServiceImpl implements TermService {
         sessionFactory.getCurrentSession().flush();
     }
 
-   /* @Override
-    public void updateEnrollment(AdEnrollment enrollment) {
-        enrollmentDao.update(enrollment, securityService.getCurrentUser());
-        sessionFactory.getCurrentSession().flush();
-    }*/
-    
     //update enrollment by section
     @Override
     public void updateEnrollment(AdSection section, AdEnrollment enrollment) {
@@ -1562,13 +1556,9 @@ public class TermServiceImpl implements TermService {
         return map;
     }
 
-		
 	 @Override
 	    public void removeEnrollmentApplication(AdAdmission admission, AdEnrollmentApplication application) {
 	        admissionDao.removeEnrollmentApplication(admission, application, securityService.getCurrentUser());
 	        sessionFactory.getCurrentSession().flush();
 	    }
-
-	 
-	
 }

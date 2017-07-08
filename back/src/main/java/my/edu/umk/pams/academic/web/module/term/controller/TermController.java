@@ -179,13 +179,6 @@ public class TermController {
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
 
-   /* @RequestMapping(value = "/admissionApplications/{referenceNo}/update", method = RequestMethod.PUT)
-    public ResponseEntity<AdmissionApplication> updateAdmissionApplication(@PathVariable String referenceNo,
-                                                                           @RequestBody AdmissionApplication vo) {
-        AdAdmissionApplication application = (AdAdmissionApplication) termService.findAdmissionApplicationByReferenceNo(referenceNo);
-        return new ResponseEntity<AdmissionApplication>(termTransformer.toAdmissionApplicationVo(application), HttpStatus.OK);
-    }*/
-    
     @RequestMapping(value = "/admissionApplications/{referenceNo}/update", method = RequestMethod.PUT)
     public ResponseEntity<String> updateAdmissionApplication(@PathVariable String referenceNo, @RequestBody AdmissionApplication vo) {
     	dummyLogin();

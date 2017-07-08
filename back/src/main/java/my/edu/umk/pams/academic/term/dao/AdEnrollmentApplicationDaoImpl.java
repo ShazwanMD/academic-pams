@@ -130,8 +130,8 @@ public class AdEnrollmentApplicationDaoImpl extends GenericDaoSupport<Long, AdEn
     public List<AdEnrollmentApplication> findByFlowState(AdFlowState flowState) {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select p from AdEnrollmentApplication p where " +
-                "p.flowState.state = :flowState " +
-                "and p.metaState.state = :metaState");
+                "p.flowdata.state = :flowState " +
+                "and p.metadata.state = :metaState");
         query.setInteger("flowState", flowState.ordinal());
         query.setInteger("metaState", AdMetaState.ACTIVE.ordinal());
         return (List<AdEnrollmentApplication>) query.list();

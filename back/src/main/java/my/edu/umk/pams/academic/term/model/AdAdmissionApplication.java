@@ -18,33 +18,9 @@ import my.edu.umk.pams.academic.planner.model.AdProgram;
  */
 public interface AdAdmissionApplication extends AdDocument {
 
-    String getReferenceNo ();
-    
-    void setReferenceNo(String referenceNo);
-
-    String getSourceNo ();
-    
-    void setSourceNo(String sourceNo);
-
-    String getAuditNo ();
-    
-    void setAuditNo(String auditNo);
-
-    String getDescription ();
-
-    void setDescription(String description);
-    
     Integer getOrdinal ();
 
     void setOrdinal(Integer ordinal);
-    
-    String getRemoveComment ();
-
-    void setRemoveComment(String removeComment);
-    
-    String getCancelComment ();
-    
-    void setCancelComment(String cancelComment);
     
 	AdStudent getStudent();
 
