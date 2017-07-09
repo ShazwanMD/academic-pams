@@ -84,6 +84,7 @@ export class AdmissionApplicationDraftTaskPanel implements OnInit {
     }
 
   goBack(): void {
-    this._router.navigate(['/term/admission-applications/student-admission-application-center']);
+   // this._router.navigate(['/term/admission-applications/student-admission-application-center']);
+    this._router.navigate(['/term/admission-applications']);
   }
 }
