@@ -2,6 +2,7 @@ package my.edu.umk.pams.academic.web.module.term.controller;
 
 import my.edu.umk.pams.academic.common.model.AdStudyCenter;
 
+
 import my.edu.umk.pams.academic.common.service.CommonService;
 import my.edu.umk.pams.academic.core.AdFlowState;
 import my.edu.umk.pams.academic.identity.model.AdStaff;
@@ -146,7 +147,7 @@ public class TermController {
                 termTransformer.toAdmissionApplicationVos(termService.findAdmissionApplications(academicSession)),
                 HttpStatus.OK);
     }
-
+    
     @RequestMapping(value = "/admissionApplications/archived", method = RequestMethod.GET)
     public ResponseEntity<List<AdmissionApplication>> findArchivedAdmissionsApplications() {
         List<AdAdmissionApplication> admissionApplications = termService.findAdmissionApplicationsByFlowStates(
@@ -154,9 +155,7 @@ public class TermController {
                 AdFlowState.REMOVED,
                 AdFlowState.CANCELLED
         );
-        return new ResponseEntity<List<AdmissionApplication>>(
-                termTransformer.toAdmissionApplicationVos(admissionApplications),
-                HttpStatus.OK);
+        return new ResponseEntity<List<AdmissionApplication>>(termTransformer.toAdmissionApplicationVos(admissionApplications), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/admissionApplications/save", method = RequestMethod.POST)

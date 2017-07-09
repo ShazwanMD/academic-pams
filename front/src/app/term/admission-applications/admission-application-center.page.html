@@ -38,8 +38,13 @@
             <pams-pooled-admission-application-task-list [admissionApplicationTasks]="pooledAdmissionApplicationTasks$ | async" (claim)="claimTask($event)"></pams-pooled-admission-application-task-list>
           </md-tab>
             <md-tab label="Archived Applications">
-            <pams-archived-admission-application-list [admissionApplications]="archivedAdmissionApplications$ | async" (view)="viewTask($event)"></pams-archived-admission-application-list>
+            <pams-archived-admission-application-list [admissionApplications]="archivedAdmissionApplications$ | async" (view)="viewAdmissionApplication($event)"></pams-archived-admission-application-list>
           </md-tab>
+          <!--  <md-tab label="Archived">
+          <pams-archived-invoice-list
+            [invoices]="archivedInvoices$ | async"
+            (view)="viewInvoice($event)"></pams-archived-invoice-list>
+        </md-tab> -->
         </md-tab-group>
     
     </md-card>

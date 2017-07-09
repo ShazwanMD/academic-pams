@@ -41,10 +41,10 @@ export class AdmissionApplicationEffects {
     .map(admissionApplications => this.admissionApplicationActions.findPooledAdmissionApplicationTasksSuccess(admissionApplications));
 
   //archived
-  @Effect() findArchivedAdmissionApplicationTasks$ = this.actions$
-  .ofType(AdmissionApplicationActions.FIND_ARCHIVED_ADMISSION_APPLICATION_TASKS)
-  .switchMap(() => this.termService.findArchivedAdmissionApplicationTasks())
-  .map(admissionApplications => this.admissionApplicationActions.findArchivedAdmissionApplicationTasksSuccess(admissionApplications));
+  @Effect() findArchivedAdmissionApplications$ = this.actions$
+  .ofType(AdmissionApplicationActions.FIND_ARCHIVED_ADMISSION_APPLICATIONS)
+  .switchMap(() => this.termService.findArchivedAdmissionApplications())
+  .map(admissionApplications => this.admissionApplicationActions.findArchivedAdmissionApplicationsSuccess(admissionApplications));
 
   @Effect() findAdmissionApplicationTaskByTaskId = this.actions$
     .ofType(AdmissionApplicationActions.FIND_ADMISSION_APPLICATION_TASK_BY_TASK_ID)
