@@ -16,6 +16,7 @@ export class AdmissionListComponent implements AfterViewInit  {
   private columns: any[] = [
     { name: 'id', label: 'Id' },
     { name: 'student.identityNo', label: 'Matric No' },
+    { name: 'student.name', label: 'Name' },
     { name: 'standing', label: 'Standing' },
     { name: 'status', label: 'Status' },
     { name: 'academicSession.code', label: 'Academic Session' },
