@@ -1,6 +1,5 @@
-import { Injectable } from '@angular/core';
-import { Response } from '@angular/http';
-import { HttpInterceptorService } from '@covalent/http';
+import {Injectable} from '@angular/core';
+import {HttpInterceptorService} from '@covalent/http';
 
 @Injectable()
 export class SystemService {
