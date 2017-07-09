@@ -19,9 +19,11 @@ export class AdmissionApplicationCenterPage implements OnInit {
 
   private ASSIGNED_ADMISSION_APPLICATION_TASKS: string[] = "termModuleState.assignedAdmissionApplicationTasks".split(".");
   private POOLED_ADMISSION_APPLICATION_TASKS: string[] = "termModuleState.pooledAdmissionApplicationTasks".split(".");
+  private ARCHIVED_ADMISSION_APPLICATION_TASKS: string[] = "termModuleState.archivedAdmissionApplicationTasks".split(".");
 
   private assignedAdmissionApplicationTasks$: Observable<AdmissionApplicationTask>;
   private pooledAdmissionApplicationTasks$: Observable<AdmissionApplicationTask>;
+  private archivedAdmissionApplicationTasks$: Observable<AdmissionApplicationTask>;
 
   private creatorDialogRef: MdDialogRef<AdmissionApplicationTaskCreatorDialog>;
 
@@ -34,6 +36,7 @@ export class AdmissionApplicationCenterPage implements OnInit {
 
       this.assignedAdmissionApplicationTasks$ = this.store.select(...this.ASSIGNED_ADMISSION_APPLICATION_TASKS);
       this.pooledAdmissionApplicationTasks$ = this.store.select(...this.POOLED_ADMISSION_APPLICATION_TASKS);
+      this.archivedAdmissionApplicationTasks$ = this.store.select(...this.ARCHIVED_ADMISSION_APPLICATION_TASKS);
   }
 
 createDialog(): void {
@@ -65,6 +68,7 @@ createDialog(): void {
     console.log("find approved/review application tasks");
     this.store.dispatch(this.actions.findAssignedAdmissionApplicationTasks());
     this.store.dispatch(this.actions.findPooledAdmissionApplicationTasks());
+    this.store.dispatch(this.actions.findArchivedAdmissionApplicationTasks());
   }
 
   goBack(route: string): void {

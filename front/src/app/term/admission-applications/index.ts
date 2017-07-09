@@ -1,4 +1,5 @@
 import {PooledAdmissionApplicationTaskListComponent} from './component/pooled-admission-application-task-list.component';
+import {ArchivedAdmissionApplicationListComponent} from './component/archived-admission-application-list.component';
 import {AssignedAdmissionApplicationTaskListComponent} from './component/assigned-admission-application-task-list.component';
 import {AdmissionApplicationTaskEditorDialog} from './dialog/admission-application-task-editor.dialog';
 import {AdmissionApplicationActionComponent} from './component/admission-application-action.component';
@@ -68,6 +69,7 @@ import { StudentAdmissionApplicationTaskDetailPage } from "./student-admission-a
     AdmissionApplicationActionComponent,
     AssignedAdmissionApplicationTaskListComponent,
     PooledAdmissionApplicationTaskListComponent,
+    ArchivedAdmissionApplicationListComponent,
 
     // dialog
     AdmissionApplicationTaskCreatorDialog,
@@ -80,6 +82,7 @@ import { StudentAdmissionApplicationTaskDetailPage } from "./student-admission-a
    // AdmissionApplicationListComponent,
     AssignedAdmissionApplicationTaskListComponent,
     PooledAdmissionApplicationTaskListComponent,
+    ArchivedAdmissionApplicationListComponent,
 
   ],
 

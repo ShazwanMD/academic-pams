@@ -52,7 +52,23 @@ export class AdmissionApplicationActions {
       payload: tasks
     };
   }
+  //archived
+  static FIND_ARCHIVED_ADMISSION_APPLICATION_TASKS = '[AdmissionApplication] Find Archived AdmissionApplication Tasks';
+  findArchivedAdmissionApplicationTasks(): Action {
+    return {
+      type: AdmissionApplicationActions.FIND_ARCHIVED_ADMISSION_APPLICATION_TASKS
+    };
+  }
 
+  static FIND_ARCHIVED_ADMISSION_APPLICATION_TASKS_SUCCESS = '[AdmissionApplication] Find Archived AdmissionApplication Tasks Success';
+  findArchivedAdmissionApplicationTasksSuccess(tasks): Action {
+    console.log("findArchivedAdmissionApplicationTasksSuccess");
+    return {
+      type: AdmissionApplicationActions.FIND_ARCHIVED_ADMISSION_APPLICATION_TASKS_SUCCESS,
+      payload: tasks
+    };
+  }
+  
   static FIND_ADMISSION_APPLICATION_TASK_BY_TASK_ID = '[AdmissionApplication] Find AdmissionApplication Task By Task Id';
   findAdmissionApplicationTaskByTaskId(taskId): Action {
     console.log("findAdmissionApplicationTaskByTaskId");
