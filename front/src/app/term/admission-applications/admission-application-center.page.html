@@ -30,11 +30,14 @@
     </div>
    
       <md-card>
-        <md-tab-group [selectedIndex]="0">>
+        <md-tab-group [selectedIndex]="0">
           <md-tab label="Assigned Applications">
             <pams-assigned-admission-application-task-list [admissionApplicationTasks]="assignedAdmissionApplicationTasks$ | async" (view)="viewTask($event)"></pams-assigned-admission-application-task-list>
           </md-tab>
           <md-tab label="Pooled Applications">
+            <pams-pooled-admission-application-task-list [admissionApplicationTasks]="pooledAdmissionApplicationTasks$ | async" (claim)="claimTask($event)"></pams-pooled-admission-application-task-list>
+          </md-tab>
+           <md-tab label="Archived Applications">
             <pams-pooled-admission-application-task-list [admissionApplicationTasks]="pooledAdmissionApplicationTasks$ | async" (claim)="claimTask($event)"></pams-pooled-admission-application-task-list>
           </md-tab>
         </md-tab-group>

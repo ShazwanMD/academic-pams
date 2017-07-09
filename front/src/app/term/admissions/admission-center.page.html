@@ -28,21 +28,21 @@
 	</button>
 </div>
   <md-card class=""> 
+  <md-tab-group [selectedIndex]="0">
+ <md-tab label="Completed Registration">
 	<pams-admission-list
 	 [admissions]="admissions$ | async"
         (view)="viewAdmission($event)" mdTooltip="View admission info">
-	</pams-admission-list>
-<md-divider></md-divider> 
-</md-card> 
-<!-- display admission application list -->
-<md-card class=""> <md-card-title>Semester Registration Application</md-card-title>
+	</pams-admission-list></md-tab>
+	<md-tab label="Archived Registration">
 	 <pams-admission-application-list
 	 [admissionApplications]="admissionApplications$ | async"
         (view)="viewAdmissionApplication($event)" mdTooltip="View admission application info">
-	</pams-admission-application-list>
+	</pams-admission-application-list> </md-tab>
+	
+	</md-tab-group>
 <md-divider></md-divider> 
 </md-card> 
-
-
+<!-- display admission application list -->
 </td-layout-manage-list> </td-layout-nav>
 
