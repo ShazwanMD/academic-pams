@@ -27,12 +27,12 @@
         <md-tab label="Assigned">
           <pams-assigned-graduation-application-task-list
             [graduationApplicationTasks]="assignedGraduationApplicationTasks$ | async"
-            (view)="view($event)"></pams-assigned-graduation-application-task-list>
+            (view)="viewTask($event)"></pams-assigned-graduation-application-task-list>
         </md-tab>
         <md-tab label="Pooled">
           <pams-pooled-graduation-application-task-list
             [graduationApplicationTasks]="pooledGraduationApplicationTasks$ | async"
-            (claim)="claim($event)"></pams-pooled-graduation-application-task-list>
+            (claim)="claimTask($event)"></pams-pooled-graduation-application-task-list>
         </md-tab>
       </md-tab-group>
     </md-card>

@@ -1,3 +1,4 @@
+import { GraduationApplicationTaskStatusComponent } from './component/graduation-application-task-status.component';
 import {NgModule, ModuleWithProviders} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {ReactiveFormsModule} from '@angular/forms';
@@ -50,6 +51,7 @@ import {GraduationApplicationTaskDetailPage} from "./graduation-application-task
     GraduationApplicationRegisterTaskPanel,
     GraduationApplicationVerifyTaskPanel,
     GraduationApplicationCheckTaskPanel,
+    GraduationApplicationTaskStatusComponent,
 
     // dialog
     GraduationApplicationCreatorDialog,
