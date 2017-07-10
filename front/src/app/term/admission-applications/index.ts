@@ -35,6 +35,7 @@ import {AdmissionApplicationTaskListComponent} from './component/admission-appli
 import {AdmissionApplicationRegisterTaskPanel} from './panel/admission-application-register-task.panel';
 import { StudentAdmissionApplicationTaskDetailPage } from './student-admission-application-task-detail.page';
 import { AdmissionApplicationListState, archivedAdmissionApplicationListReducer } from './admission-application-list.reducer';
+import { AdmissionApplicationDetailPage } from "./admission-application-detail.page";
 
 @NgModule({
   imports: [
@@ -57,6 +58,7 @@ import { AdmissionApplicationListState, archivedAdmissionApplicationListReducer 
     AdmissionApplicationTaskDetailPage,
     StudentAdmissionApplicationTaskDetailPage,
     AdmissionApplicationCenterPage,
+    AdmissionApplicationDetailPage,
     StudentAdmissionApplicationCenterPage,
 
     // component

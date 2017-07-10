@@ -1,4 +1,4 @@
-<md-card>
+<!-- <md-card>
     <md-divider></md-divider>
     <md-card-content>
         <md-tab-group>
@@ -16,17 +16,17 @@
 
                     <md-divider></md-divider>
                     <md-card-content><br>
-                        <div>Audit No : {{admissionApplication.auditNo}}</div>
+                        <div>Audit No : {{admissionApplication?.auditNo}}</div>
                         <br>
-                        <div>Source No : {{admissionApplication.sourceNo}}</div>
+                        <div>Source No : {{admissionApplication?.sourceNo}}</div>
                         <br>
-                        <div>Reference No : {{admissionApplication.referenceNo}}</div>
+                        <div>Reference No : {{admissionApplication?.referenceNo}}</div>
                         <br>
-                        <div>Cancel Comment : {{admissionApplication.cancelComment}}</div>
+                        <div>Cancel Comment : {{admissionApplication?.cancelComment}}</div>
                         <br>
-                        <div>Remove Comment : {{admissionApplication.removeComment}}</div>
+                        <div>Remove Comment : {{admissionApplication?.removeComment}}</div>
                         <br>
-                        <div>Description : {{admissionApplication.description}}</div>
+                        <div>Description : {{admissionApplication?.description}}</div>
                         <br>
                     </md-card-content>
                 </md-card>
@@ -99,4 +99,88 @@
 
         </md-tab-group>
     </md-card-content>
-</md-card>
+</md-card> -->
+
+<md-card> <md-card-title>{{admissionApplication?.referenceNo}}</md-card-title>
+<md-card-subtitle>{{admissionApplication?.description}}</md-card-subtitle> <md-card-subtitle>{{admissionApplication?.auditNo}}</md-card-subtitle>
+<md-divider></md-divider> <md-card-content> <md-tab-group>
+<md-tab label="Application Information"> 
+<div layout="column" class="inset">
+	<div layout="row" class="pad-bottom">
+		<span flex="15">Source No </span> <span>{{admissionApplication?.sourceNo}}</span>
+	</div>
+	<div layout="row" class="pad-bottom">
+		<span flex="15">Audit No</span> <span>{{admissionApplication?.auditNo}}</span>
+	</div>
+	<div layout="row" class="pad-bottom">
+		<span flex="15">Cancel Comment</span> <span>{{admissionApplication?.cancelComment}}</span>
+	</div>
+	<div layout="row" class="pad-bottom">
+		<span flex="15">Remove Comment</span> <span>{{admissionApplication?.removeComment}}</span>
+	</div>
+	<div layout="row" class="pad-bottom">
+		<span flex="15">Ordinal</span> <span>{{admissionApplication?.ordinal}}</span>
+	</div>
+</div>
+</md-tab> 
+<md-tab label="Student Information"> 
+<div layout="column" class="inset">
+	<div layout="row" class="pad-bottom">
+		<span flex="15">Name</span> <span>{{admissionApplication?.student?.name}}</span>
+	</div>
+	<div layout="row" class="pad-bottom">
+		<span flex="15">Identity No</span> <span>{{admissionApplication?.student?.identityNo}}</span>
+	</div>
+	<div layout="row" class="pad-bottom">
+		<span flex="15">Email</span> <span>{{admissionApplication?.student?.email}}</span>
+	</div>
+	<div layout="row" class="pad-bottom">
+		<span flex="15">Phone</span> <span>{{admissionApplication?.student?.phone}}</span>
+	</div>
+	<div layout="row" class="pad-bottom">
+		<span flex="15">Mobile</span> <span>{{admissionApplication?.student?.mobile}}</span>
+	</div>
+	<div layout="row" class="pad-bottom">
+		<span flex="15">Cohort</span> <span>{{admissionApplication?.student?.cohort?.code}}</span>
+	</div>
+</div>
+</md-tab> 
+
+<md-tab label="Study Center Information"> 
+<div layout="column" class="inset">
+	<div layout="row" class="pad-bottom">
+		<span flex="15">Name</span> <span>{{admissionApplication?.studyCenter?.code}}</span>
+	</div>
+	<div layout="row" class="pad-bottom">
+		<span flex="15">Identity No</span> <span>{{admissionApplication?.studyCenter?.description}}</span>
+	</div>	
+</div>
+</md-tab> 
+
+<md-tab label="Advisor Information"> 
+<div layout="column" class="inset">
+	<div layout="row" class="pad-bottom">
+		<span flex="15">Name</span> <span>{{admissionApplication?.advisor?.name}}</span>
+	</div>
+	<div layout="row" class="pad-bottom">
+		<span flex="15">Identity No</span> <span>{{admissionApplication?.advisor?.identityNo}}</span>
+	</div>
+	<div layout="row" class="pad-bottom">
+		<span flex="15">Email</span> <span>{{admissionApplication?.advisor?.email}}</span>
+	</div>
+	<!-- <div layout="row" class="pad-bottom">
+		<span flex="15">Phone</span> <span>{{admissionApplication?.advisor?.phone}}</span>
+	</div>
+	<div layout="row" class="pad-bottom">
+		<span flex="15">Mobile</span> <span>{{admissionApplication?.advisor?.mobile}}</span>
+	</div> -->
+	
+</div>
+</md-tab> 
+
+ </md-tab-group> </md-card-content> </md-card>
+
+
+
+
+

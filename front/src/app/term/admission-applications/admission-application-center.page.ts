@@ -65,9 +65,10 @@ createDialog(): void {
   }
   
   viewAdmissionApplication(admissionApplication: AdmissionApplication) {
-      console.log("students applications: " + admissionApplication.id);
-      this.router.navigate(['/term/admission-applications/admission-application-task-detail', admissionApplication.id]);
-    }
+      console.log("students applications: " + admissionApplication.referenceNo);
+      this.router.navigate(['/term/admission-applications', admissionApplication.referenceNo]);
+  //this.router.navigate(['/term/offerings', offering.canonicalCode]); 
+  }
 
 
   ngOnInit(): void {
