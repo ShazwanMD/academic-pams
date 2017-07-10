@@ -33,22 +33,8 @@ import {PipeModule} from '../../app.pipe.module';
 import {AdmissionApplicationTaskDetailPage} from './admission-application-task-detail.page';
 import {AdmissionApplicationTaskListComponent} from './component/admission-application-task-list.component';
 import {AdmissionApplicationRegisterTaskPanel} from './panel/admission-application-register-task.panel';
-import { StudentAdmissionApplicationTaskDetailPage } from "./student-admission-application-task-detail.page";
-import { AdmissionApplicationListState, archivedAdmissionApplicationListReducer } from "./admission-applications-list.reducer";
-
-export interface TermModuleState {
-    archivedAdmissionApplications: AdmissionApplicationListState; 
-    
-}
-
-export const INITIAL_TERM_STATE: TermModuleState =
-<TermModuleState>{
-        archivedAdmissionApplications: [],   
-}
-
-export const termModuleReducers = {
-        archivedAdmissionApplications: archivedAdmissionApplicationListReducer,     
-}
+import { StudentAdmissionApplicationTaskDetailPage } from './student-admission-application-task-detail.page';
+import { AdmissionApplicationListState, archivedAdmissionApplicationListReducer } from './admission-application-list.reducer';
 
 @NgModule({
   imports: [

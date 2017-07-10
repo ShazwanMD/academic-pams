@@ -45,10 +45,6 @@ import {
 } from './enrollment-applications/enrollment-application-task-list.reducer';
 import {sectionReducer, SectionState} from './sections/section.reducer';
 import {
-  admissionApplicationListReducer,
-  AdmissionApplicationListState,
-} from './admission-applications/admission-applications-list.reducer';
-import {
   admissionApplicationReducer,
   AdmissionApplicationState,
 } from './admission-applications/admission-application.reducer';
@@ -80,19 +76,19 @@ import {
   AdmissionEnrollmentListState,
 } from './admissions/admission-enrollment-list.reducer';
 import {
-    admissionEnrollmentApplicationListReducer,
-    AdmissionEnrollmentApplicationListState,
-  } from './admissions/admission-enrollment-application-list.reducer';
+  admissionEnrollmentApplicationListReducer,
+  AdmissionEnrollmentApplicationListState,
+} from './admissions/admission-enrollment-application-list.reducer';
 import {
   admissionApplicationTaskReducer,
-  AdmissionApplicationTaskState
-} from "./admission-applications/admission-application-task.reducer";
+  AdmissionApplicationTaskState,
+} from './admission-applications/admission-application-task.reducer';
+import {
+  admissionApplicationListReducer,
+  AdmissionApplicationListState, archivedAdmissionApplicationListReducer,
+} from './admission-applications/admission-application-list.reducer';
 
 export interface TermModuleState {
-  admissions: AdmissionListState;
-  admission: AdmissionState;
-  admissionEnrollments: AdmissionEnrollmentListState;
-  admissionEnrollmentApplications: AdmissionEnrollmentApplicationListState;
   offerings: OfferingListState;
   offering: OfferingState;
   offeringAssessments: OfferingAssessmentListState;
@@ -105,12 +101,18 @@ export interface TermModuleState {
   enrollment: EnrollmentState;
   appointments: AppointmentListState;
   appointment: AppointmentState;
-  admissionApplications: AdmissionApplicationListState;
+  // admission
+  admissions: AdmissionListState;
+  admission: AdmissionState;
+  admissionEnrollments: AdmissionEnrollmentListState;
+  admissionEnrollmentApplications: AdmissionEnrollmentApplicationListState;
+  assignedAdmissionApplicationTasks: AdmissionApplicationTaskListState;
+  pooledAdmissionApplicationTasks: AdmissionApplicationTaskListState;
+  archivedAdmissionApplications: AdmissionApplicationListState;
+  admissionApplicationTask: AdmissionApplicationTaskState;
+  // enrollment
   assignedEnrollmentApplicationTasks: EnrollmentApplicationTaskListState;
   pooledEnrollmentApplicationTasks: EnrollmentApplicationTaskListState;
-  assignedAdmissionApplicationTasks: AdmissionApplicationTaskListState;
-  admissionApplicationTask: AdmissionApplicationTaskState;
-  pooledAdmissionApplicationTasks: AdmissionApplicationTaskListState;
   enrollmentApplicationTask: EnrollmentApplicationTaskState;
   enrollmentApplicationItems: EnrollmentApplicationItemListState;
   gradebookMatrices: GradebookMatrixListState;
@@ -119,10 +121,6 @@ export interface TermModuleState {
 
 export const INITIAL_TERM_STATE: TermModuleState =
   <TermModuleState>{
-    admissions: <Admission[]>[],
-    admission: <Admission>{},
-    admissionEnrollments: <Enrollment[]>[],
-    admissionEnrollmentApplications: <EnrollmentApplication[]>[],
     offerings: <Offering[]>[],
     offering: <Offering>{},
     offeringSections: <Section[]>[],
@@ -135,25 +133,26 @@ export const INITIAL_TERM_STATE: TermModuleState =
     enrollment: <Enrollment>{},
     appointments: <Appointment[]>[],
     appointment: <Appointment>{},
+    // admission
+    admissions: <Admission[]>[],
+    admission: <Admission>{},
+    admissionEnrollments: <Enrollment[]>[],
+    admissionEnrollmentApplications: <EnrollmentApplication[]>[],
     admissionApplications: <AdmissionApplication[]>[],
     admissionApplication: <AdmissionApplication>{},
-    assignedEnrollmentApplicationTasks: <EnrollmentApplicationTask[]>[],
-    pooledEnrollmentApplicationTasks: <EnrollmentApplicationTask[]>[],
     assignedAdmissionApplicationTasks: <AdmissionApplicationTask[]>[],
     pooledAdmissionApplicationTasks: <AdmissionApplicationTask[]>[],
+    archivedAdmissionApplications: <AdmissionApplication[]>[],
     admissionApplicationTask: <AdmissionApplicationTask>{},
+    // enrollment
+    assignedEnrollmentApplicationTasks: <EnrollmentApplicationTask[]>[],
+    pooledEnrollmentApplicationTasks: <EnrollmentApplicationTask[]>[],
     enrollmentApplicationTask: <EnrollmentApplicationTask>{},
     enrollmentApplicationItems: <EnrollmentApplicationItem[]>[],
     gradebookMatrices: <GradebookMatrix[]>[],
   };
 
 export const termModuleReducers = {
-  admissions: admissionListReducer,
-  admission: admissionReducer,
-  admissionEnrollments: admissionEnrollmentListReducer,
-  admissionEnrollmentApplications: admissionEnrollmentApplicationListReducer,
-  admissionApplications: admissionApplicationListReducer,
-  admissionApplication: admissionApplicationReducer,
   offerings: offeringListReducer,
   offering: offeringReducer,
   offeringAssessments: offeringAssessmentListReducer,
@@ -166,11 +165,20 @@ export const termModuleReducers = {
   enrollment: enrollmentReducer,
   appointments: appointmentListReducer,
   appointment: appointmentReducer,
-  assignedEnrollmentApplicationTasks: assignedEnrollmentApplicationTaskListReducer,
-  pooledEnrollmentApplicationTasks: pooledEnrollmentApplicationTaskListReducer,
+  // admission
+  admissions: admissionListReducer,
+  admission: admissionReducer,
+  admissionEnrollments: admissionEnrollmentListReducer,
+  admissionEnrollmentApplications: admissionEnrollmentApplicationListReducer,
+  admissionApplications: admissionApplicationListReducer,
+  admissionApplication: admissionApplicationReducer,
   assignedAdmissionApplicationTasks: assignedAdmissionApplicationTaskListReducer,
   pooledAdmissionApplicationTasks: pooledAdmissionApplicationTaskListReducer,
+  archivedAdmissionApplications: archivedAdmissionApplicationListReducer,
   admissionApplicationTask: admissionApplicationTaskReducer,
+  // enrollment
+  assignedEnrollmentApplicationTasks: assignedEnrollmentApplicationTaskListReducer,
+  pooledEnrollmentApplicationTasks: pooledEnrollmentApplicationTaskListReducer,
   enrollmentApplicationTask: enrollmentApplicationTaskReducer,
   enrollmentApplicationItems: enrollmentApplicationItemListReducer,
   gradebookMatrices: gradebookMatrixListReducer,

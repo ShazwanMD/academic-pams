@@ -13,8 +13,6 @@ export interface Enrollment extends MetaObject {
   admission: Admission;
   enrollmentStatus: EnrollmentStatus;
   enrollmentStanding: EnrollmentStanding;
-
-
   // denormalize
   course?: Course;
   selected: boolean;
