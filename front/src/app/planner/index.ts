@@ -87,6 +87,9 @@ export const INITIAL_PLANNER_STATE: PlannerModuleState = <PlannerModuleState>{
     cohort: <Cohort>{},
     curriculums: <Curriculum[]>[],
     curriculum: <Curriculum>{},
+    // subjects:<Subject>{},
+    // subject:<Subject[]>[],
+
   }
 ;
 
@@ -107,6 +110,9 @@ export const plannerModuleReducers = {
   cohort: cohortReducer,
   curriculums: curriculumListReducer,
   curriculum: curriculumReducer,
+  // subjects: subjectListReducer,
+  // subject: subjectReducer,
+
 };
 
 @NgModule({
@@ -123,8 +129,10 @@ export const plannerModuleReducers = {
     FacultySubModule.forRoot(),
     ProgramSubModule.forRoot(),
     CourseSubModule.forRoot(),
+    // SubjectSubModule.forRoot(),
     CohortSubModule.forRoot(),
     CurriculumSubModule.forRoot()
+    
   ],
 
   declarations: [
