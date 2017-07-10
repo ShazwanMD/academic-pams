@@ -30,7 +30,7 @@ export class ArchivedAdmissionApplicationListComponent {
   constructor(private snackBar: MdSnackBar,
           private _dataTableService: TdDataTableService) {
   }
-  /*
+  
   filteredData: any[];
   filteredTotal: number;
   searchTerm: string = '';
@@ -41,8 +41,8 @@ export class ArchivedAdmissionApplicationListComponent {
   sortOrder: TdDataTableSortingOrder = TdDataTableSortingOrder.Descending;
   
   ngAfterViewInit(): void {
-      this.filteredData = this.admissionApplicationTasks;
-      this.filteredTotal = this.admissionApplicationTasks.length;
+      this.filteredData = this.admissionApplications;
+      this.filteredTotal = this.admissionApplications.length;
       this.filter();
     }
 
@@ -65,7 +65,7 @@ export class ArchivedAdmissionApplicationListComponent {
     }
 
     filter(): void {
-      let newData: any[] = this.admissionApplicationTasks;
+      let newData: any[] = this.admissionApplications;
       newData = this._dataTableService.filterData(newData, this.searchTerm, true);
       this.filteredTotal = newData.length;
       newData = this._dataTableService.sortData(newData, this.sortBy, this.sortOrder);
@@ -73,7 +73,7 @@ export class ArchivedAdmissionApplicationListComponent {
       this.filteredData = newData;
     }
     
-    */
+    
 
   viewAdmissionApplication(admissionApplication: AdmissionApplication): void {
     console.log("Emitting task");
