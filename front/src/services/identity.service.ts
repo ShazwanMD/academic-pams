@@ -10,44 +10,44 @@ import {Student} from '../app/identity/student.interface';
 @Injectable()
 export class IdentityService {
 
-  private identity_api: string = environment.endpoint + '/api/identity';
+  private IDENTITY_API: string = environment.endpoint + '/api/identity';
 
   constructor(private _http: HttpInterceptorService) {
   }
 
   findActors(): Observable<Actor[]> {
     console.log('findActors');
-    return this._http.get(this.identity_api + '/actors')
+    return this._http.get(this.IDENTITY_API + '/actors')
       .map((res: Response) => <Actor[]>res.json());
   }
 
   findActorByIdentityNo(identityNo: string): Observable<Actor> {
     console.log('findActorByIdenittyNo');
-    return this._http.get(this.identity_api + '/actors/' + identityNo)
+    return this._http.get(this.IDENTITY_API + '/actors/' + identityNo)
       .map((res: Response) => <Actor>res.json());
   }
 
   findStudents(): Observable<Student[]> {
     console.log('findStudents');
-    return this._http.get(this.identity_api + '/students')
+    return this._http.get(this.IDENTITY_API + '/students')
       .map((res: Response) => <Student[]>res.json());
   }
 
   findStudentByIdentityNo(identityNo: string): Observable<Student> {
     console.log('findStudentByIdentityNo');
-    return this._http.get(this.identity_api + '/students/' + identityNo)
+    return this._http.get(this.IDENTITY_API + '/students/' + identityNo)
       .map((res: Response) => <Student>res.json());
   }
 
   findStaffs(): Observable<Staff[]> {
     console.log('findStaffs');
-    return this._http.get(this.identity_api + '/staffs')
+    return this._http.get(this.IDENTITY_API + '/staffs')
       .map((res: Response) => <Staff[]>res.json());
   }
 
   findStaffByIdentityNo(identityNo: string): Observable<Staff> {
     console.log('findStaffByIdentityNo');
-    return this._http.get(this.identity_api + '/staffs/' + identityNo)
+    return this._http.get(this.IDENTITY_API + '/staffs/' + identityNo)
       .map((res: Response) => <Staff>res.json());
   }
 }

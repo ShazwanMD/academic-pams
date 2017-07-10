@@ -9,7 +9,7 @@ import {GraduationApplicationTask} from '../app/graduation/graduation-applicatio
 @Injectable()
 export class GraduationService {
 
-  private graduation_api: string = environment.endpoint + '/api/graduation';
+  private GRADUATION_API: string = environment.endpoint + '/api/graduation';
 
   constructor(private _http: HttpInterceptorService) {
   }
@@ -20,62 +20,62 @@ export class GraduationService {
 
   findCompletedGraduationApplications(): Observable<GraduationApplication[]> {
     console.log('findCompletedGraduationApplications');
-    return this._http.get(this.graduation_api + '/graduationApplications/state/COMPLETED')
+    return this._http.get(this.GRADUATION_API + '/graduationApplications/state/COMPLETED')
       .map((res: Response) => <GraduationApplication[]>res.json());
   }
 
   findAssignedGraduationApplicationTasks(): Observable<GraduationApplicationTask[]> {
     console.log('findAssignedGraduationApplicationTasks');
-    return this._http.get(this.graduation_api + '/graduationApplications/assignedTasks')
+    return this._http.get(this.GRADUATION_API + '/graduationApplications/assignedTasks')
       .map((res: Response) => <GraduationApplicationTask[]>res.json());
   }
 
   findPooledGraduationApplicationTasks(): Observable<GraduationApplicationTask[]> {
     console.log('findPooledGraduationApplicationTasks');
-    return this._http.get(this.graduation_api + '/graduationApplications/pooledTasks')
+    return this._http.get(this.GRADUATION_API + '/graduationApplications/pooledTasks')
       .map((res: Response) => <GraduationApplicationTask[]>res.json());
   }
 
   findGraduationApplicationTaskByTaskId(taskId: string): Observable<GraduationApplicationTask> {
     console.log('findGraduationApplicationTaskByTaskId');
-    return this._http.get(this.graduation_api + '/graduationApplications/viewTask/' + taskId)
+    return this._http.get(this.GRADUATION_API + '/graduationApplications/viewTask/' + taskId)
       .map((res: Response) => <GraduationApplicationTask>res.json());
   }
 
   findGraduationApplicationByReferenceNo(referenceNo: string): Observable<GraduationApplication> {
-    return this._http.get(this.graduation_api + '/graduationApplications/' + referenceNo)
+    return this._http.get(this.GRADUATION_API + '/graduationApplications/' + referenceNo)
       .map((res: Response) => <GraduationApplication>res.json());
   }
 
   findGraduationApplicationByTaskId(taskId: string): Observable<GraduationApplication> {
-    return this._http.get(this.graduation_api + '/graduationApplications/' + taskId)
+    return this._http.get(this.GRADUATION_API + '/graduationApplications/' + taskId)
       .map((res: Response) => <GraduationApplication>res.json());
   }
 
   startGraduationApplicationTask(graduationApplication: GraduationApplication): Observable<String> {
-    return this._http.post(this.graduation_api + '/graduationApplications/startTask', JSON.stringify(graduationApplication))
+    return this._http.post(this.GRADUATION_API + '/graduationApplications/startTask', JSON.stringify(graduationApplication))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   completeGraduationApplicationTask(graduationApplicationTask: GraduationApplicationTask): Observable<String> {
     console.log('TaskId: ' + graduationApplicationTask.taskId);
-    return this._http.post(this.graduation_api + '/graduationApplications/completeTask', JSON.stringify(graduationApplicationTask))
+    return this._http.post(this.GRADUATION_API + '/graduationApplications/completeTask', JSON.stringify(graduationApplicationTask))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   claimGraduationApplicationTask(graduationApplicationTask: GraduationApplicationTask): Observable<String> {
-    return this._http.post(this.graduation_api + '/graduationApplications/claimTask', JSON.stringify(graduationApplicationTask))
+    return this._http.post(this.GRADUATION_API + '/graduationApplications/claimTask', JSON.stringify(graduationApplicationTask))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   releaseGraduationApplicationTask(graduationApplicationTask: GraduationApplicationTask): Observable<String> {
-    return this._http.post(this.graduation_api + '/graduationApplications/releaseTask', JSON.stringify(graduationApplicationTask))
+    return this._http.post(this.GRADUATION_API + '/graduationApplications/releaseTask', JSON.stringify(graduationApplicationTask))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   updateGraduationApplication(graduationApplication: GraduationApplication): Observable<Boolean> {
     return Observable.of(true);
-    // return this._http.put(this.graduation_api + '/graduationApplications', JSON.stringify(graduationApplication))
+    // return this._http.put(this.GRADUATION_API + '/graduationApplications', JSON.stringify(graduationApplication))
     //   .flatMap(data => Observable.of(true));
   }
 }

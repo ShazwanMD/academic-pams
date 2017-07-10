@@ -16,7 +16,7 @@ import {Curriculum} from '../app/planner/curriculums/curriculum.interface';
 @Injectable()
 export class PlannerService {
 
-  private planner_api: string = environment.endpoint + '/api/planner';
+  private PLANNER_API: string = environment.endpoint + '/api/planner';
 
   constructor(private _http: HttpInterceptorService) {
   }
@@ -26,7 +26,7 @@ export class PlannerService {
   // ====================================================================================================
 
   findAcademicYears(): Observable<AcademicYear[]> {
-    return this._http.get(this.planner_api + '/academicYears')
+    return this._http.get(this.PLANNER_API + '/academicYears')
       .map((res: Response) => <AcademicYear[]>res.json());
   }
 
@@ -35,24 +35,24 @@ export class PlannerService {
   // ====================================================================================================
 
   findAcademicSessions(): Observable<AcademicSession[]> {
-    return this._http.get(this.planner_api + '/academicSessions')
+    return this._http.get(this.PLANNER_API + '/academicSessions')
       .map((res: Response) => <AcademicSession[]>res.json());
   }
 
   findAcademicSessionByCode(code: string): Observable<AcademicSession> {
-    return this._http.get(this.planner_api + '/academicSessions/' + code)
+    return this._http.get(this.PLANNER_API + '/academicSessions/' + code)
       .map((res: Response) => <AcademicSession>res.json());
   }
 
   activateAcademicSession(academicSession: AcademicSession): Observable<String> {
     console.log('activate academic session');
-    return this._http.get(this.planner_api + '/academicSessions/' + academicSession.code + '/activate')
+    return this._http.get(this.PLANNER_API + '/academicSessions/' + academicSession.code + '/activate')
       .map((res: Response) => <String>res.json());
   }
 
   deactivateAcademicSession(academicSession: AcademicSession): Observable<String> {
     console.log('deactivate academic session');
-    return this._http.get(this.planner_api + '/academicSessions/' + academicSession.code + '/deactivate')
+    return this._http.get(this.PLANNER_API + '/academicSessions/' + academicSession.code + '/deactivate')
       .map((res: Response) => <String>res.json());
   }
 
@@ -62,7 +62,7 @@ export class PlannerService {
       //'Authorization': 'Bearer ' + this.authService.token
     });
     let options = new RequestOptions({headers: headers});
-    return this._http.post(this.planner_api + '/academicSessions/' + academicSession.code + '/save', JSON.stringify(academicSession))
+    return this._http.post(this.PLANNER_API + '/academicSessions/' + academicSession.code + '/save', JSON.stringify(academicSession))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
@@ -72,7 +72,7 @@ export class PlannerService {
       //'Authorization': 'Bearer ' + this.authService.token
     });
     let options = new RequestOptions({headers: headers});
-    return this._http.put(this.planner_api + '/academicSessions/' + academicSession.code + '/update', JSON.stringify(academicSession))
+    return this._http.put(this.PLANNER_API + '/academicSessions/' + academicSession.code + '/update', JSON.stringify(academicSession))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
@@ -82,7 +82,7 @@ export class PlannerService {
 
   findFaculties(): Observable<Faculty[]> {
     console.log('findFaculties');
-    return this._http.get(this.planner_api + '/faculties')
+    return this._http.get(this.PLANNER_API + '/faculties')
       .map(res => {
         return <Faculty[]>res.json();
       })
@@ -90,29 +90,29 @@ export class PlannerService {
 
   findFacultyByCode(code: string): Observable<Faculty> {
     console.log('findFacultyByCode');
-    return this._http.get(this.planner_api + '/faculties/' + code)
+    return this._http.get(this.PLANNER_API + '/faculties/' + code)
       .map((res: Response) => <Faculty>res.json());
   }
 
   activateFaculty(faculty: Faculty): Observable<String> {
     console.log('activate Faculty');
-    return this._http.get(this.planner_api + '/faculties/' + faculty.code + '/activate')
+    return this._http.get(this.PLANNER_API + '/faculties/' + faculty.code + '/activate')
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   deactivateFaculty(faculty: Faculty): Observable<String> {
     console.log('deactivate Faculty');
-    return this._http.get(this.planner_api + '/faculties/' + faculty.code + '/deactivate')
+    return this._http.get(this.PLANNER_API + '/faculties/' + faculty.code + '/deactivate')
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   saveFaculty(faculty: Faculty): Observable<String> {
-    return this._http.post(this.planner_api + '/faculties/' + faculty.code + '/save', JSON.stringify(faculty))
+    return this._http.post(this.PLANNER_API + '/faculties/' + faculty.code + '/save', JSON.stringify(faculty))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   updateFaculty(faculty: Faculty): Observable<String> {
-    return this._http.put(this.planner_api + '/faculties/' + faculty.code, JSON.stringify(faculty))
+    return this._http.put(this.PLANNER_API + '/faculties/' + faculty.code, JSON.stringify(faculty))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
@@ -124,41 +124,41 @@ export class PlannerService {
     console.log('findPrograms');
     // let headers = new Headers({'Authorization': 'Bearer TODO'});
     // let options = new RequestOptions({headers: headers});
-    return this._http.get(this.planner_api + '/programs')
+    return this._http.get(this.PLANNER_API + '/programs')
       .map((res: Response) => <Program[]>res.json());
   }
 
   findProgramByCode(code: string): Observable<Program> {
     // let headers = new Headers({'Authorization': 'Bearer TODO'});
     // let options = new RequestOptions({headers: headers});
-    return this._http.get(this.planner_api + '/programs/' + code)
+    return this._http.get(this.PLANNER_API + '/programs/' + code)
       .map((res: Response) => <Program>res.json());
   }
 
   saveProgram(program: Program): Observable<String> {
-    return this._http.post(this.planner_api + '/programs/' + program.code + '/save', JSON.stringify(program))
+    return this._http.post(this.PLANNER_API + '/programs/' + program.code + '/save', JSON.stringify(program))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   updateProgram(program: Program): Observable<String> {
-    return this._http.put(this.planner_api + '/programs/' + program.code, JSON.stringify(program))
+    return this._http.put(this.PLANNER_API + '/programs/' + program.code, JSON.stringify(program))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   removeProgram(program: Program): Observable<Program> {
-    return this._http.delete(this.planner_api + '/programs/' + program.code)
+    return this._http.delete(this.PLANNER_API + '/programs/' + program.code)
       .map((res: Response) => <Program>res.json());
   }
 
   activateProgram(program: Program): Observable<String> {
     console.log('activate program');
-    return this._http.get(this.planner_api + '/programs/' + program.code + '/activate')
+    return this._http.get(this.PLANNER_API + '/programs/' + program.code + '/activate')
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   deactivateProgram(program: Program): Observable<String> {
     console.log('deactivate program');
-    return this._http.get(this.planner_api + '/programs/' + program.code + '/deactivate')
+    return this._http.get(this.PLANNER_API + '/programs/' + program.code + '/deactivate')
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
@@ -169,12 +169,12 @@ export class PlannerService {
 
   findCourses(): Observable<Course[]> {
     console.log('findCourses');
-    return this._http.get(this.planner_api + '/courses')
+    return this._http.get(this.PLANNER_API + '/courses')
       .map((res: Response) => <Course[]>res.json());
   }
 
   findCourseByCode(code: string): Observable<Course> {
-    return this._http.get(this.planner_api + '/courses/' + code)
+    return this._http.get(this.PLANNER_API + '/courses/' + code)
       .map((res: Response) => <Course>res.json());
   }
 
@@ -186,35 +186,35 @@ export class PlannerService {
 
     });
     let options = new RequestOptions({headers: headers});
-    return this._http.post(this.planner_api + '/course/' + course.code + '/save', JSON.stringify(course))
+    return this._http.post(this.PLANNER_API + '/course/' + course.code + '/save', JSON.stringify(course))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   addCourse(course: Course): Observable<String> {
-    return this._http.post(this.planner_api + '/courses/' + course.code + '/add', JSON.stringify(course))
+    return this._http.post(this.PLANNER_API + '/courses/' + course.code + '/add', JSON.stringify(course))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   updateCourse(course: Course): Observable<String> {
-    return this._http.put(this.planner_api + '/courses/' + course.code, JSON.stringify(course))
+    return this._http.put(this.PLANNER_API + '/courses/' + course.code, JSON.stringify(course))
       .flatMap((res: Response) => Observable.of(res.text()));
 
   }
 
   removeCourse(course: Course): Observable<Course> {
-    return this._http.delete(this.planner_api + '/course/' + course.code)
+    return this._http.delete(this.PLANNER_API + '/course/' + course.code)
       .map((res: Response) => <Course>res.json());
   }
 
   activateCourse(course: Course): Observable<String> {
     console.log('activate course');
-    return this._http.get(this.planner_api + '/courses/' + course.code + '/activate')
+    return this._http.get(this.PLANNER_API + '/courses/' + course.code + '/activate')
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   deactivateCourse(course: Course): Observable<String> {
     console.log('deactivate course');
-    return this._http.get(this.planner_api + '/courses/' + course.code + '/deactivate')
+    return this._http.get(this.PLANNER_API + '/courses/' + course.code + '/deactivate')
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
@@ -224,39 +224,39 @@ export class PlannerService {
 
   findCohorts(): Observable<Cohort[]> {
     console.log('findCohorts');
-    return this._http.get(this.planner_api + '/cohorts')
+    return this._http.get(this.PLANNER_API + '/cohorts')
       .map(res => <Cohort[]>res.json())
   }
 
   findCohortByCode(code: string): Observable<Cohort> {
-    return this._http.get(this.planner_api + '/cohorts/' + code)
+    return this._http.get(this.PLANNER_API + '/cohorts/' + code)
       .map((res: Response) => <Cohort>res.json());
   }
 
   saveCohort(cohort: Cohort): Observable<String> {
-    return this._http.post(this.planner_api + '/cohorts/' + cohort.code + '/save', JSON.stringify(cohort))
+    return this._http.post(this.PLANNER_API + '/cohorts/' + cohort.code + '/save', JSON.stringify(cohort))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   updateCohort(cohort: Cohort): Observable<String> {
-    return this._http.put(this.planner_api + '/cohorts/' + cohort.code, JSON.stringify(cohort))
+    return this._http.put(this.PLANNER_API + '/cohorts/' + cohort.code, JSON.stringify(cohort))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   removeCohort(cohort: Cohort): Observable<Cohort> {
-    return this._http.delete(this.planner_api + '/cohorts/' + cohort.code)
+    return this._http.delete(this.PLANNER_API + '/cohorts/' + cohort.code)
       .map((res: Response) => <Cohort>res.json());
   }
 
   activateCohort(cohort: Cohort): Observable<String> {
     console.log('activate cohort');
-    return this._http.get(this.planner_api + '/cohorts/' + cohort.code + '/activate')
+    return this._http.get(this.PLANNER_API + '/cohorts/' + cohort.code + '/activate')
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   deactivateCohort(cohort: Cohort): Observable<String> {
     console.log('deactivate cohort');
-    return this._http.get(this.planner_api + '/cohorts/' + cohort.code + '/deactivate')
+    return this._http.get(this.PLANNER_API + '/cohorts/' + cohort.code + '/deactivate')
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
@@ -266,12 +266,12 @@ export class PlannerService {
 
   findCurriculums(): Observable<Curriculum[]> {
     console.log('findCurriculums');
-    return this._http.get(this.planner_api + '/curriculums')
+    return this._http.get(this.PLANNER_API + '/curriculums')
       .map(res => <Curriculum[]>res.json())
   }
 
   findCurriculumById(): Observable<Curriculum> {
-    return this._http.get(this.planner_api + '/curriculums/')
+    return this._http.get(this.PLANNER_API + '/curriculums/')
       .map((res: Response) => <Curriculum>res.json());
   }
 
@@ -283,17 +283,17 @@ export class PlannerService {
 
   saveCurriculum(curriculum: Curriculum): Observable<String> {
     console.log(curriculum.code);
-    return this._http.post(this.planner_api + '/curriculums/' + curriculum.code + '/save', JSON.stringify(curriculum))
+    return this._http.post(this.PLANNER_API + '/curriculums/' + curriculum.code + '/save', JSON.stringify(curriculum))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   updateCurriculum(curriculum: Curriculum): Observable<String> {
-    return this._http.put(this.planner_api + '/curriculums/' + curriculum.code, JSON.stringify(curriculum))
+    return this._http.put(this.PLANNER_API + '/curriculums/' + curriculum.code, JSON.stringify(curriculum))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   removeCurriculum(curriculum: Curriculum): Observable<Curriculum> {
-    return this._http.delete(this.planner_api + '/curriculums/' + curriculum.code)
+    return this._http.delete(this.PLANNER_API + '/curriculums/' + curriculum.code)
       .map((res: Response) => <Curriculum>res.json());
   }
 
@@ -306,36 +306,36 @@ export class PlannerService {
 
 // findSubjects(): Observable<Subject[]> {
 //     console.log("findSubjects");
-//     return this._http.get(this.planner_api + '/subjects')
+//     return this._http.get(this.PLANNER_API + '/subjects')
 //       .map(res => <Subject[]>res.json())
 //   }
 
 //   findSubjectById(): Observable<Subject> {
-//     return this._http.get(this.planner_api + '/subjects/' )
+//     return this._http.get(this.PLANNER_API + '/subjects/' )
 //       .map((res: Response) => <Subject>res.json());
 //   }
 
 //    addSubject(subject: Subject ): Observable<String> {
 //     console. log (subject.id);
-//     return this._http.post(this.planner_api + '/subjects/' + subject.id + '/add', JSON.stringify(subject))
+//     return this._http.post(this.PLANNER_API + '/subjects/' + subject.id + '/add', JSON.stringify(subject))
 //       .flatMap((res: Response) => Observable.of(res.text()));
 //   }
 
 //   updateSubject(subject: Subject): Observable<String> {
-//     return this._http.put(this.planner_api + '/subjects/' + subject.id, JSON.stringify(subject))
+//     return this._http.put(this.PLANNER_API + '/subjects/' + subject.id, JSON.stringify(subject))
 //       .flatMap((res: Response) => Observable.of(res.text()));
 //   }
 
 
 //  activateSubject(subject: Subject): Observable<String> {
 //     console.log("activate subject");
-//     return this._http.get(this.planner_api + '/subjects/' + subject.id + '/activate')
+//     return this._http.get(this.PLANNER_API + '/subjects/' + subject.id + '/activate')
 //       .flatMap((res: Response) => Observable.of(res.text()));
 //   }
 
 //   deactivateSubject(subject: Subject): Observable<String> {
 //     console.log("deactivate cohort");
-//     return this._http.get(this.planner_api + '/subjects/' + subject.id + '/deactivate')
+//     return this._http.get(this.PLANNER_API + '/subjects/' + subject.id + '/deactivate')
 //       .flatMap((res: Response) => Observable.of(res.text()));
 //   }
 
@@ -345,34 +345,34 @@ export class PlannerService {
   // ====================================================================================================
 
   findProgramLevels(): Observable<ProgramLevel[]> {
-    return this._http.get(this.planner_api + '/programLevels')
+    return this._http.get(this.PLANNER_API + '/programLevels')
       .map((res: Response) => <ProgramLevel[]>res.json());
   }
 
   findProgramLevelByCode(code: string): Observable<ProgramLevel> {
-    return this._http.get(this.planner_api + '/programLevels/' + code)
+    return this._http.get(this.PLANNER_API + '/programLevels/' + code)
       .map((res: Response) => <ProgramLevel>res.json());
   }
 
   activateProgramLevel(programLevel: ProgramLevel): Observable<String> {
     console.log('activate program level');
-    return this._http.get(this.planner_api + '/programLevels/' + programLevel.code + '/activate')
+    return this._http.get(this.PLANNER_API + '/programLevels/' + programLevel.code + '/activate')
       .map((res: Response) => <String>res.json());
   }
 
   deactivateProgramLevel(programLevel: ProgramLevel): Observable<String> {
     console.log('deactivate program level');
-    return this._http.get(this.planner_api + '/programLevels/' + programLevel.code + '/deactivate')
+    return this._http.get(this.PLANNER_API + '/programLevels/' + programLevel.code + '/deactivate')
       .map((res: Response) => <String>res.json());
   }
 
   saveProgramLevel(programLevel: ProgramLevel): Observable<String> {
-    return this._http.post(this.planner_api + '/programLevels/', JSON.stringify(programLevel))
+    return this._http.post(this.PLANNER_API + '/programLevels/', JSON.stringify(programLevel))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   updateProgramLevel(programLevel: ProgramLevel): Observable<String> {
-    return this._http.put(this.planner_api + '/programLevels/' + programLevel.code, JSON.stringify(programLevel))
+    return this._http.put(this.PLANNER_API + '/programLevels/' + programLevel.code, JSON.stringify(programLevel))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 

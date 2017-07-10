@@ -1,4 +1,4 @@
-import {StudyCenter} from './../app/setup/study-centers/study-center.interface';
+import {StudyCenter} from '../app/setup/study-centers/study-center.interface';
 import {StudyMode} from '../app/common/study-modes/study-mode.interface';
 import {EthnicityCode} from '../app/common/ethnicity-codes/ethnicity-code.interface';
 import {NationalityCode} from '../app/common/nationality-codes/nationality-code.interface';
@@ -21,7 +21,7 @@ import {BankCode} from '../app/common/bank-codes/bank-code.interface';
 @Injectable()
 export class CommonService {
 
-  private common_api: string = environment.endpoint + '/api/common';
+  private COMMON_API: string = environment.endpoint + '/api/common';
 
   constructor(private _http: HttpInterceptorService) {
   }
@@ -32,22 +32,22 @@ export class CommonService {
 
   findStudyCenters(): Observable<StudyCenter[]> {
     console.log('findStudyCenters()');
-    return this._http.get(this.common_api + '/studyCenters')
+    return this._http.get(this.COMMON_API + '/studyCenters')
       .map((res: Response) => <StudyMode[]>res.json());
   }
 
   saveStudyCenter(code: StudyCenter) {
-    return this._http.post(this.common_api + '/studyCenters', JSON.stringify(code))
+    return this._http.post(this.COMMON_API + '/studyCenters', JSON.stringify(code))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   updateStudyCenter(code: StudyCenter) {
-    return this._http.put(this.common_api + '/studyCenters/' + code.code, JSON.stringify(code))
+    return this._http.put(this.COMMON_API + '/studyCenters/' + code.code, JSON.stringify(code))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   removeStudyCenter(code: StudyCenter) {
-    return this._http.delete(this.common_api + '/studyCenters/' + code.code)
+    return this._http.delete(this.COMMON_API + '/studyCenters/' + code.code)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
@@ -58,28 +58,28 @@ export class CommonService {
 
   findStudyModes(): Observable<StudyMode[]> {
     console.log('findStudyModes()');
-    return this._http.get(this.common_api + '/studyModes')
+    return this._http.get(this.COMMON_API + '/studyModes')
       .map((res: Response) => <StudyMode[]>res.json());
   }
 
   findStudyModeByCode(code: string): Observable<StudyMode> {
     console.log('findStudyModeByCode');
-    return this._http.get(this.common_api + '/studyModes/' + code)
+    return this._http.get(this.COMMON_API + '/studyModes/' + code)
       .map((res: Response) => <StudyMode>res.json());
   }
 
   saveStudyMode(code: StudyMode) {
-    return this._http.post(this.common_api + '/studyModes', JSON.stringify(code))
+    return this._http.post(this.COMMON_API + '/studyModes', JSON.stringify(code))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   updateStudyMode(code: StudyMode) {
-    return this._http.put(this.common_api + '/studyModes/' + code.code, JSON.stringify(code))
+    return this._http.put(this.COMMON_API + '/studyModes/' + code.code, JSON.stringify(code))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   removeStudyMode(code: StudyMode) {
-    return this._http.delete(this.common_api + '/studyModes/' + code.code)
+    return this._http.delete(this.COMMON_API + '/studyModes/' + code.code)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
@@ -90,28 +90,28 @@ export class CommonService {
 
   findGenderCodes(): Observable<GenderCode[]> {
     console.log('findGenderCodes');
-    return this._http.get(this.common_api + '/genderCodes')
+    return this._http.get(this.COMMON_API + '/genderCodes')
       .map((res: Response) => <GenderCode[]>res.json());
   }
 
   findGenderCodeByCode(code: string): Observable<GenderCode> {
     console.log('findGenderCodeByCode');
-    return this._http.get(this.common_api + '/genderCodes/' + code)
+    return this._http.get(this.COMMON_API + '/genderCodes/' + code)
       .map((res: Response) => <GenderCode>res.json());
   }
 
   saveGenderCode(code: GenderCode) {
-    return this._http.post(this.common_api + '/genderCodes', JSON.stringify(code))
+    return this._http.post(this.COMMON_API + '/genderCodes', JSON.stringify(code))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   updateGenderCode(code: GenderCode) {
-    return this._http.put(this.common_api + '/genderCodes/' + code.code, JSON.stringify(code))
+    return this._http.put(this.COMMON_API + '/genderCodes/' + code.code, JSON.stringify(code))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   removeGenderCode(code: GenderCode) {
-    return this._http.delete(this.common_api + '/genderCodes/' + code.code)
+    return this._http.delete(this.COMMON_API + '/genderCodes/' + code.code)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
@@ -122,13 +122,13 @@ export class CommonService {
 
   findCountryCodes(): Observable<CountryCode[]> {
     console.log('findCountryCodes()');
-    return this._http.get(this.common_api + '/countryCodes')
+    return this._http.get(this.COMMON_API + '/countryCodes')
       .map((res: Response) => <CountryCode[]>res.json());
   }
 
   findCountryCodeByCode(code: string): Observable<CountryCode> {
     console.log('findCountryCodeByCode');
-    return this._http.get(this.common_api + '/countryCodes/' + code)
+    return this._http.get(this.COMMON_API + '/countryCodes/' + code)
       .map((res: Response) => <CountryCode>res.json());
   }
 
@@ -139,28 +139,28 @@ export class CommonService {
 
   findMaritalCodes(): Observable<MaritalCode[]> {
     console.log('findMaritalCodes()');
-    return this._http.get(this.common_api + '/maritalCodes')
+    return this._http.get(this.COMMON_API + '/maritalCodes')
       .map((res: Response) => <MaritalCode[]>res.json());
   }
 
   findMaritalCodeByCode(code: string): Observable<MaritalCode> {
     console.log('findMaritalCodeByCode');
-    return this._http.get(this.common_api + '/maritalCodes/' + code)
+    return this._http.get(this.COMMON_API + '/maritalCodes/' + code)
       .map((res: Response) => <MaritalCode>res.json());
   }
 
   saveMaritalCode(code: MaritalCode) {
-    return this._http.post(this.common_api + '/maritalCodes', JSON.stringify(code))
+    return this._http.post(this.COMMON_API + '/maritalCodes', JSON.stringify(code))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   updateMaritalCode(code: MaritalCode) {
-    return this._http.put(this.common_api + '/maritalCodes/' + code.code, JSON.stringify(code))
+    return this._http.put(this.COMMON_API + '/maritalCodes/' + code.code, JSON.stringify(code))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   removeMaritalCode(code: MaritalCode) {
-    return this._http.delete(this.common_api + '/maritalCodes/' + code.code)
+    return this._http.delete(this.COMMON_API + '/maritalCodes/' + code.code)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
@@ -171,13 +171,13 @@ export class CommonService {
 
   findBankCodes(): Observable<BankCode[]> {
     console.log('findBankCodes()');
-    return this._http.get(this.common_api + '/bankCodes')
+    return this._http.get(this.COMMON_API + '/bankCodes')
       .map((res: Response) => <BankCode[]>res.json());
   }
 
   findBankCodeByCode(code: string): Observable<BankCode> {
     console.log('findBankCodeByCode');
-    return this._http.get(this.common_api + '/bankCodes/' + code)
+    return this._http.get(this.COMMON_API + '/bankCodes/' + code)
       .map((res: Response) => <BankCode>res.json());
   }
 
@@ -188,13 +188,13 @@ export class CommonService {
 
   findRaceCodes(): Observable<RaceCode[]> {
     console.log('findRaceCodes()');
-    return this._http.get(this.common_api + '/raceCodes')
+    return this._http.get(this.COMMON_API + '/raceCodes')
       .map((res: Response) => <RaceCode[]>res.json());
   }
 
   findRaceCodeByCode(code: string): Observable<RaceCode> {
     console.log('findRaceCodeByCode');
-    return this._http.get(this.common_api + '/raceCodes/' + code)
+    return this._http.get(this.COMMON_API + '/raceCodes/' + code)
       .map((res: Response) => <RaceCode>res.json());
   }
 
@@ -205,28 +205,28 @@ export class CommonService {
 
   findStateCodes(): Observable<StateCode[]> {
     console.log('findStateCodes()');
-    return this._http.get(this.common_api + '/stateCodes')
+    return this._http.get(this.COMMON_API + '/stateCodes')
       .map((res: Response) => <StateCode[]>res.json());
   }
 
   findStateCodeByCode(code: string): Observable<StateCode> {
     console.log('findStateCodeByCode');
-    return this._http.get(this.common_api + '/stateCodes/' + code)
+    return this._http.get(this.COMMON_API + '/stateCodes/' + code)
       .map((res: Response) => <StateCode>res.json());
   }
 
   saveStateCode(code: StateCode) {
-    return this._http.post(this.common_api + '/stateCodes', JSON.stringify(code))
+    return this._http.post(this.COMMON_API + '/stateCodes', JSON.stringify(code))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   updateStateCode(code: StateCode) {
-    return this._http.put(this.common_api + '/stateCodes/' + code.code, JSON.stringify(code))
+    return this._http.put(this.COMMON_API + '/stateCodes/' + code.code, JSON.stringify(code))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   removeStateCode(code: StateCode) {
-    return this._http.delete(this.common_api + '/stateCodes/' + code.code)
+    return this._http.delete(this.COMMON_API + '/stateCodes/' + code.code)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
@@ -237,13 +237,13 @@ export class CommonService {
 
   findParliamentCodes(): Observable<ParliamentCode[]> {
     console.log('findParliamentCodes()');
-    return this._http.get(this.common_api + '/parliamentCodes')
+    return this._http.get(this.COMMON_API + '/parliamentCodes')
       .map((res: Response) => <ParliamentCode[]>res.json());
   }
 
   findParliamentCodeByCode(code: string): Observable<ParliamentCode> {
     console.log('findParliamentCodeByCode');
-    return this._http.get(this.common_api + '/parliamentCodes/' + code)
+    return this._http.get(this.COMMON_API + '/parliamentCodes/' + code)
       .map((res: Response) => <ParliamentCode>res.json());
   }
 
@@ -254,13 +254,13 @@ export class CommonService {
 
   findDunCodes(): Observable<DunCode[]> {
     console.log('findDunCodes()');
-    return this._http.get(this.common_api + '/dunCodes')
+    return this._http.get(this.COMMON_API + '/dunCodes')
       .map((res: Response) => <DunCode[]>res.json());
   }
 
   findDunCodeByCode(code: string): Observable<DunCode> {
     console.log('findDunCodeByCode');
-    return this._http.get(this.common_api + '/dunCodes/' + code)
+    return this._http.get(this.COMMON_API + '/dunCodes/' + code)
       .map((res: Response) => <DunCode>res.json());
   }
 
@@ -271,28 +271,28 @@ export class CommonService {
 
   findGradeCodes(): Observable<GradeCode[]> {
     console.log('findGradeCodes()');
-    return this._http.get(this.common_api + '/gradeCodes')
+    return this._http.get(this.COMMON_API + '/gradeCodes')
       .map((res: Response) => <GradeCode[]>res.json());
   }
 
   findGradeCodeByCode(code: string): Observable<GradeCode> {
     console.log('findGradeCodeByCode');
-    return this._http.get(this.common_api + '/gradeCodes/' + code)
+    return this._http.get(this.COMMON_API + '/gradeCodes/' + code)
       .map((res: Response) => <GradeCode>res.json());
   }
 
   saveGradeCode(code: GradeCode) {
-    return this._http.post(this.common_api + '/gradeCodes', JSON.stringify(code))
+    return this._http.post(this.COMMON_API + '/gradeCodes', JSON.stringify(code))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   updateGradeCode(code: GradeCode) {
-    return this._http.put(this.common_api + '/gradeCodes/' + code.code, JSON.stringify(code))
+    return this._http.put(this.COMMON_API + '/gradeCodes/' + code.code, JSON.stringify(code))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   removeGradeCode(code: GradeCode) {
-    return this._http.delete(this.common_api + '/gradeCodes/' + code.code)
+    return this._http.delete(this.COMMON_API + '/gradeCodes/' + code.code)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
@@ -303,28 +303,28 @@ export class CommonService {
 
   findReligionCodes(): Observable<ReligionCode[]> {
     console.log('findReligionCodes()');
-    return this._http.get(this.common_api + '/religionCodes')
+    return this._http.get(this.COMMON_API + '/religionCodes')
       .map((res: Response) => <ReligionCode[]>res.json());
   }
 
   findReligionCodeByCode(code: string): Observable<ReligionCode> {
     console.log('findReligionCodeByCode');
-    return this._http.get(this.common_api + '/religionCodes/' + code)
+    return this._http.get(this.COMMON_API + '/religionCodes/' + code)
       .map((res: Response) => <ReligionCode>res.json());
   }
 
   saveReligionCode(code: ReligionCode) {
-    return this._http.post(this.common_api + '/religionCodes', JSON.stringify(code))
+    return this._http.post(this.COMMON_API + '/religionCodes', JSON.stringify(code))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   updateReligionCode(code: ReligionCode) {
-    return this._http.put(this.common_api + '/religionCodes/' + code.code, JSON.stringify(code))
+    return this._http.put(this.COMMON_API + '/religionCodes/' + code.code, JSON.stringify(code))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   removeReligionCode(code: ReligionCode) {
-    return this._http.delete(this.common_api + '/religionCodes/' + code.code)
+    return this._http.delete(this.COMMON_API + '/religionCodes/' + code.code)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
@@ -335,28 +335,28 @@ export class CommonService {
 
   findNationalityCodes(): Observable<NationalityCode[]> {
     console.log('findNationalityCodes()');
-    return this._http.get(this.common_api + '/nationalityCodes')
+    return this._http.get(this.COMMON_API + '/nationalityCodes')
       .map((res: Response) => <NationalityCode[]>res.json());
   }
 
   findNationalityCodeByCode(code: string): Observable<NationalityCode> {
     console.log('findNationalityCodeByCode');
-    return this._http.get(this.common_api + '/nationalityCodes/' + code)
+    return this._http.get(this.COMMON_API + '/nationalityCodes/' + code)
       .map((res: Response) => <NationalityCode>res.json());
   }
 
   saveNationalityCode(code: NationalityCode) {
-    return this._http.post(this.common_api + '/nationalityCodes', JSON.stringify(code))
+    return this._http.post(this.COMMON_API + '/nationalityCodes', JSON.stringify(code))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   updateNationalityCode(code: NationalityCode) {
-    return this._http.put(this.common_api + '/nationalityCodes/' + code.code, JSON.stringify(code))
+    return this._http.put(this.COMMON_API + '/nationalityCodes/' + code.code, JSON.stringify(code))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   removeNationalityCode(code: NationalityCode) {
-    return this._http.delete(this.common_api + '/nationalityCodes/' + code.code)
+    return this._http.delete(this.COMMON_API + '/nationalityCodes/' + code.code)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
@@ -367,13 +367,13 @@ export class CommonService {
 
   findEthnicityCodes(): Observable<EthnicityCode[]> {
     console.log('findEthnicityCodes()');
-    return this._http.get(this.common_api + '/ethnicityCodes')
+    return this._http.get(this.COMMON_API + '/ethnicityCodes')
       .map((res: Response) => <EthnicityCode[]>res.json());
   }
 
   findEthnicityCodeByCode(code: string): Observable<EthnicityCode> {
     console.log('findEthnicityCodeByCode');
-    return this._http.get(this.common_api + '/ethnicityCodes/' + code)
+    return this._http.get(this.COMMON_API + '/ethnicityCodes/' + code)
       .map((res: Response) => <EthnicityCode>res.json());
   }
 
