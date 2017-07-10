@@ -5,7 +5,7 @@ import {environment} from '../environments/environment';
 @Injectable()
 export class SystemService {
 
-  private system_api: string = environment.endpoint + '/api/system';
+  private SYSTEM_API: string = environment.endpoint + '/api/system';
 
   constructor(private _http: HttpInterceptorService) {
   }
