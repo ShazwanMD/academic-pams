@@ -36,6 +36,6 @@ export class GraduationApplicationVerifyTaskPanel implements OnInit {
   }
 
   goBack(): void {
-    this.router.navigate(['/billing/graduationApplications']);
+    this.router.navigate(['graduation/graduation-applications']);
   }
 }

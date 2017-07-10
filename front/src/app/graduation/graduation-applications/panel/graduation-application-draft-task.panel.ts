@@ -37,7 +37,7 @@ export class GraduationApplicationDraftTaskPanel implements OnInit {
   }
 
   goBack(): void {
-    this.router.navigate(['/graduations/graduationApplications']);
+    this.router.navigate(['graduation/graduation-applications']);
   }
 
   showDialog(): void {

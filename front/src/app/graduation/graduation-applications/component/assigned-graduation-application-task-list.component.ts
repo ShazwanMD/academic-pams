@@ -27,7 +27,7 @@ export class AssignedGraduationApplicationTaskListComponent {
 
   viewTask(task: GraduationApplicationTask): void {
     console.log("Emitting task");
-    let snackBarRef = this.snackBar.open("Viewing graduationApplication", "OK");
+    let snackBarRef = this.snackBar.open("Viewing Graduate Applicant", "OK");
     snackBarRef.afterDismissed().subscribe(() => {
       this.view.emit(task);
     });
