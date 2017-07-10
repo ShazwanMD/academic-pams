@@ -23,15 +23,15 @@ export class CurriculumEffects {
     .switchMap(() => this.plannerService.findCurriculums())
     .map((curriculums) => this.curriculumActions.findCurriculumsSuccess(curriculums));
 
-  // @Effect() findCurriculumByCode$ = this.actions$
-  //   .ofType(CurriculumActions.FIND_CURRICULUM_BY_CODE)
-  //   .map((action) => action.payload)
-  //   .switchMap((curriculum ) => this.plannerService.findCurriculumByCode(curriculum ))
-  //   .map((curriculum) => this.curriculumActions.findCurriculumByCodeSuccess(curriculum));
+  @Effect() findCurriculumByCode$ = this.actions$
+    .ofType(CurriculumActions.FIND_CURRICULUM_BY_CODE)
+    .map((action) => action.payload)
+    .switchMap((code) => this.plannerService.findCurriculumByCode(code))
+    .map((curriculum) => this.curriculumActions.findCurriculumByCodeSuccess(curriculum));
 
-     @Effect() findSubjectsByCurriculum$ = this.actions$
+  @Effect() findSubjectsByCurriculum$ = this.actions$
     .ofType(CurriculumActions.FIND_SUBJECTS_BY_CURRICULUM)
-    .switchMap(curriculum=> this.plannerService.findSubjectsByCurriculum(curriculum))
+    .switchMap(curriculum => this.plannerService.findSubjectsByCurriculum(curriculum))
     .map(subjects => this.curriculumActions.findSubjectsByCurriculumSuccess(subjects));
 
   @Effect() saveCurriculum$ = this.actions$
@@ -39,7 +39,7 @@ export class CurriculumEffects {
     .map((action) => action.payload)
     .switchMap((curriculum) => this.plannerService.saveCurriculum(curriculum))
     .map((curriculum) => this.curriculumActions.saveCurriculumSuccess(curriculum))
-    // .mergeMap(action => from([action, this.curriculumActions.findCurriculumByCode()]));
+  // .mergeMap(action => from([action, this.curriculumActions.findCurriculumByCode()]));
 
   @Effect() updateCurriculum$ = this.actions$
     .ofType(CurriculumActions.UPDATE_CURRICULUM)

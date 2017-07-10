@@ -250,8 +250,8 @@ export class PlannerService {
       .map(res => <Curriculum[]>res.json())
   }
 
-  findCurriculumById(): Observable<Curriculum> {
-    return this._http.get(this.PLANNER_API + '/curriculums/')
+  findCurriculumByCode(code:string): Observable<Curriculum> {
+    return this._http.get(this.PLANNER_API + '/curriculums/' + code)
       .map((res: Response) => <Curriculum>res.json());
   }
 
