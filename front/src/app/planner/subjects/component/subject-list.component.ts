@@ -1,21 +1,23 @@
-import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, AfterViewInit} from '@angular/core';
-import {Subject} from "../Subject.interface";
-import { TdDataTableSortingOrder, TdDataTableService, ITdDataTableSortChangeEvent, IPageChangeEvent } from '@covalent/core';
-import { PlannerModuleState } from './../../index';
-import { Observable } from 'rxjs';
-// import { SubjectActions } from './../Subject.action';
-import { MdSnackBar } from "@angular/material";
+import {AfterViewInit, ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
+import {
+  IPageChangeEvent,
+  ITdDataTableSortChangeEvent,
+  TdDataTableService,
+  TdDataTableSortingOrder
+} from '@covalent/core';
+import {MdSnackBar} from '@angular/material';
+import {Subject} from '../subject.interface';
 
 @Component({
   selector: 'pams-Subject-list',
   templateUrl: './Subject-list.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SubjectListComponent implements AfterViewInit  {
+export class SubjectListComponent implements AfterViewInit {
 
-  
-    @Input() subjects: Subject[];
-    @Output() view = new EventEmitter<Subject>();
+
+  @Input() subjects: Subject[];
+  @Output() view = new EventEmitter<Subject>();
 
   private columns: any[] = [
     {name: 'id', label: 'Id'},
@@ -35,11 +37,12 @@ export class SubjectListComponent implements AfterViewInit  {
   sortOrder: TdDataTableSortingOrder = TdDataTableSortingOrder.Descending;
 
 
-   constructor(private _dataTableService: TdDataTableService,
-          private snackBar: MdSnackBar) {}
-  
-  
-   ngAfterViewInit(): void {
+  constructor(private _dataTableService: TdDataTableService,
+              private snackBar: MdSnackBar) {
+  }
+
+
+  ngAfterViewInit(): void {
     this.filteredData = this.subjects;
     this.filteredTotal = this.subjects.length;
     this.filter();
@@ -73,10 +76,10 @@ export class SubjectListComponent implements AfterViewInit  {
   }
 
   viewSubject(Subject: Subject): void {
-   console.log("Emitting subjects");
-   let snackBarRef = this.snackBar.open("Viewing subjects info", "OK");
-   snackBarRef.afterDismissed().subscribe(() => {
-   this.view.emit(Subject);
+    console.log('Emitting subjects');
+    let snackBarRef = this.snackBar.open('Viewing subjects info', 'OK');
+    snackBarRef.afterDismissed().subscribe(() => {
+      this.view.emit(Subject);
     });
   }
 }

@@ -1,14 +1,11 @@
-import {MdTabsModule} from '@angular/material';
-import {Subject} from "../Subject.interface";
-import { Store } from '@ngrx/store';
-import { Router, ActivatedRoute } from '@angular/router';
-import { FormBuilder } from '@angular/forms';
-// import { SubjectActions } from './../Subject.action';
-import { PlannerModuleState } from './../../index';
-import { Component, Input, EventEmitter, Output, ChangeDetectionStrategy, ViewContainerRef } from '@angular/core';
-import { SubjectCreatorDialog } from "../dialog/Subject-creator.dialog";
-
-import {MdDialog, MdDialogConfig, MdDialogRef} from "@angular/material";
+import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';
+import {Store} from '@ngrx/store';
+import {ActivatedRoute, Router} from '@angular/router';
+import {FormBuilder} from '@angular/forms';
+import {PlannerModuleState} from '../../index';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output, ViewContainerRef} from '@angular/core';
+import {Subject} from '../subject.interface';
+import {SubjectCreatorDialog} from '../dialog/subject-creator.dialog';
 
 @Component({
   selector: 'pams-Subject',
@@ -23,19 +20,18 @@ export class SubjectComponent {
 
   private creatorDialogRef: MdDialogRef<SubjectCreatorDialog>;
 
-  constructor(
-              private formBuilder: FormBuilder,
+  constructor(private formBuilder: FormBuilder,
               private router: Router,
               private route: ActivatedRoute,
               private store: Store<PlannerModuleState>,
               private vcf: ViewContainerRef,
               // private actions: SubjectActions,
-              private dialog: MdDialog,){
+              private dialog: MdDialog,) {
 
   }
 
-   saveSubjectDialog(subject:Subject): void {
-    console.log("showDialog");
+  saveSubjectDialog(subject: Subject): void {
+    console.log('showDialog');
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
     config.role = 'dialog';
@@ -45,10 +41,10 @@ export class SubjectComponent {
     this.creatorDialogRef = this.dialog.open(SubjectCreatorDialog, config);
     // this.creatorDialogRef.componentInstance.Subject= this.Subject;
     this.creatorDialogRef.afterClosed().subscribe(res => {
-      console.log("close dialog");
+      console.log('close dialog');
       // load something here
     });
-   }
+  }
 }
 
 //   removeSubject(Subject:Subject): void {
