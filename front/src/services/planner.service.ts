@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Headers, RequestOptions, Response} from '@angular/http';
+import {Response} from '@angular/http';
 import {HttpInterceptorService} from '@covalent/http';
 import {Observable} from 'rxjs';
 import {environment} from '../environments/environment';
@@ -57,21 +57,11 @@ export class PlannerService {
   }
 
   saveAcademicSession(academicSession: AcademicSession): Observable<String> {
-    let headers = new Headers({
-      'Content-Type': 'application/json',
-      //'Authorization': 'Bearer ' + this.authService.token
-    });
-    let options = new RequestOptions({headers: headers});
     return this._http.post(this.PLANNER_API + '/academicSessions/' + academicSession.code + '/save', JSON.stringify(academicSession))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
   updateAcademicSession(academicSession: AcademicSession): Observable<String> {
-    let headers = new Headers({
-      'Content-Type': 'application/json',
-      //'Authorization': 'Bearer ' + this.authService.token
-    });
-    let options = new RequestOptions({headers: headers});
     return this._http.put(this.PLANNER_API + '/academicSessions/' + academicSession.code + '/update', JSON.stringify(academicSession))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
@@ -122,15 +112,11 @@ export class PlannerService {
 
   findPrograms(): Observable<Program[]> {
     console.log('findPrograms');
-    // let headers = new Headers({'Authorization': 'Bearer TODO'});
-    // let options = new RequestOptions({headers: headers});
     return this._http.get(this.PLANNER_API + '/programs')
       .map((res: Response) => <Program[]>res.json());
   }
 
   findProgramByCode(code: string): Observable<Program> {
-    // let headers = new Headers({'Authorization': 'Bearer TODO'});
-    // let options = new RequestOptions({headers: headers});
     return this._http.get(this.PLANNER_API + '/programs/' + code)
       .map((res: Response) => <Program>res.json());
   }
@@ -180,12 +166,6 @@ export class PlannerService {
 
   saveCourse(course: Course): Observable<String> {
     console.log(course.code);
-    let headers = new Headers({
-      'Content-Type': 'application/json',
-      //'Authorization': 'Bearer ' + this.authService.token
-
-    });
-    let options = new RequestOptions({headers: headers});
     return this._http.post(this.PLANNER_API + '/course/' + course.code + '/save', JSON.stringify(course))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
