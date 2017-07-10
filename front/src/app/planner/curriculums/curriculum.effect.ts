@@ -29,11 +29,6 @@ export class CurriculumEffects {
     .switchMap((code) => this.plannerService.findCurriculumByCode(code))
     .map((curriculum) => this.curriculumActions.findCurriculumByCodeSuccess(curriculum));
 
-  @Effect() findSubjectsByCurriculum$ = this.actions$
-    .ofType(CurriculumActions.FIND_SUBJECTS_BY_CURRICULUM)
-    .switchMap(curriculum => this.plannerService.findSubjectsByCurriculum(curriculum))
-    .map(subjects => this.curriculumActions.findSubjectsByCurriculumSuccess(subjects));
-
   @Effect() saveCurriculum$ = this.actions$
     .ofType(CurriculumActions.SAVE_CURRICULUM)
     .map((action) => action.payload)
