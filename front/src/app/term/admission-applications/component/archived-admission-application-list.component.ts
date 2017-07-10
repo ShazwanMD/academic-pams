@@ -12,7 +12,7 @@ import { AdmissionApplication } from "./../admission-application.interface";
 })
 export class ArchivedAdmissionApplicationListComponent {
 
-  @Input() admissionApplications: AdmissionApplicationTask[];
+  @Input() admissionApplications: AdmissionApplication[];
   @Output() view = new EventEmitter<AdmissionApplication>();
 
   private columns: any[] = [

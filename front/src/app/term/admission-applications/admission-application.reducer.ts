@@ -6,9 +6,14 @@ export type AdmissionApplicationState = AdmissionApplication;
 
 const initialState: AdmissionApplicationState = <AdmissionApplication>{};
 
-export function admissionApplicationReducer(state = initialState, action: Action): AdmissionApplicationState {
+export function admissionApplicationReducer( state = initialState, action: Action ): AdmissionApplicationState {
 
-    switch (action.type) {
+    switch ( action.type ) {
+
+        case AdmissionApplicationActions.FIND_ADMISSION_APPLICATION_BY_ID_SUCCESS: {
+            return action.payload;
+        }
+
         case AdmissionApplicationActions.FIND_ADMISSION_APPLICATIONS_SUCCESS: {
             return action.payload;
         }
