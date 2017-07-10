@@ -17,13 +17,13 @@ export class ArchivedAdmissionApplicationListComponent {
 
   private columns: any[] = [
     { name: 'referenceNo', label: 'Reference No' },
-    { name: 'application.student.identityNo', label: 'Matric.No' },
-    { name: 'application.student.name', label: 'Name' },
-    { name: 'application.ordinal', label: 'Semester' },
-    { name: 'application.advisor.identityNo', label: 'Advisor' },
-    { name: 'application.student.cohort.program.code', label: 'Program' },
-    { name: 'application.studyCenter.description', label: 'Study Center' },
-    { name: 'flowState', label: 'Status' },
+    { name: 'student.identityNo', label: 'Matric.No' },
+    { name: 'student.name', label: 'Name' },
+    { name: 'ordinal', label: 'Semester' },
+    { name: 'advisor.identityNo', label: 'Advisor' },
+    { name: 'student.cohort.program.code', label: 'Program' },
+    { name: 'studyCenter.description', label: 'Study Center' },
+   
     { name: 'action', label: '' },
   ];
 
