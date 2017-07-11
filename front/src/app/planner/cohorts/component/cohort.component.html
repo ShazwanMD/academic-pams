@@ -1,5 +1,5 @@
-<md-card> <md-card-title>COHORT</md-card-title> 
-<md-card-subtitle>List of cohort</md-card-subtitle>
+<md-card> <md-card-title>{{cohort?.description}}</md-card-title> 
+<md-card-subtitle>{{cohort?.code}}</md-card-subtitle>
 
  <md-divider></md-divider>
   <md-card-content>
@@ -7,24 +7,24 @@
 <md-tab-group>
 <md-tab label="Cohort Detail"> <br>
 
-<div>Code : {{cohort.code}}</div>
+<div>Code : {{cohort?.code}}</div>
 <br>
-<div>Description : {{cohort.description}}</div>
+<div>Description : {{cohort?.description}}</div>
 <br>
-<div>Classification : {{cohort.academicClassification}}</div>
+<div>Classification : {{cohort?.academicClassification}}</div>
 <br>
 
 
 </md-tab> 
 
-<md-tab label="Information"><br>
-<div>Description Details Of The Cohort</div>
+<md-tab label="Information Details"><br>
+
 <br>
-<div>Code : {{cohort.code}}</div>
+<div>Code : {{cohort?.code}}</div>
 <br>
-<div>Curriculum :{{cohort.description}} </div>
+<div>Curriculum :{{cohort?.description}} </div>
 <br>
-<div>Elective : {{cohort.id}}</div>
+<div>Elective : {{cohort?.id}}</div>
 <br>
 
 </md-tab> 
