@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Repository("adGradeCodeDao")
@@ -19,6 +20,18 @@ public class AdGradeCodeDaoImpl extends GenericDaoSupport<Long, AdGradeCode> imp
 
     public AdGradeCodeDaoImpl() {
         super(AdGradeCodeImpl.class);
+    }
+    
+    @Override
+    public AdGradeCode findByScore(BigDecimal score) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select s from AdGradeCode s where " +
+                ":score >= s.min and :score <= s.max " +
+                "and s.metadata.state = :state");
+        query.setBigDecimal("score", score);
+        query.setCacheable(true);
+        query.setInteger("state", AdMetaState.ACTIVE.ordinal());
+        return (AdGradeCode) query.uniqueResult();
     }
 
     @Override

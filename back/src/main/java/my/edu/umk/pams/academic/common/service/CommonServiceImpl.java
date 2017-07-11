@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Transactional
@@ -406,6 +407,11 @@ public class CommonServiceImpl implements CommonService {
 	@Override
 	public AdGradeCode findGradeCodeById(Long id) {
 		return gradeCodeDao.findById(id);
+	}
+	
+	@Override
+	public AdGradeCode findByScore(BigDecimal score) {
+		return gradeCodeDao.findByScore(score);
 	}
 
 	@Override
@@ -1683,5 +1689,7 @@ public class CommonServiceImpl implements CommonService {
 		parliamentCodeDao.remove(ParliamentCode, securityService.getCurrentUser());
 		sessionFactory.getCurrentSession().flush();
 	}
+
+
 
 }

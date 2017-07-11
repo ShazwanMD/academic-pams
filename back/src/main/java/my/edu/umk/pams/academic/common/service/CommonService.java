@@ -3,6 +3,7 @@ package my.edu.umk.pams.academic.common.service;
 import my.edu.umk.pams.academic.common.model.*;
 import my.edu.umk.pams.academic.web.module.common.vo.StudyCenter;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public  interface CommonService{
@@ -277,6 +278,8 @@ public  interface CommonService{
 	// ====================================================================================================
 
 	AdGradeCode findGradeCodeById(Long id);
+	
+	AdGradeCode findByScore(BigDecimal score);
 
 	AdGradeCode findGradeCodeByCode(String code);
 
@@ -680,6 +683,8 @@ public  interface CommonService{
     void updateParliamentCode(AdParliamentCode ParliamentCode);
 
     void removeParliamentCode(AdParliamentCode ParliamentCode);
+
+
 
 
 

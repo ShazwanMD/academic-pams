@@ -26,6 +26,7 @@ import my.edu.umk.pams.academic.term.model.AdAdmission;
 import my.edu.umk.pams.academic.term.model.AdAssessment;
 import my.edu.umk.pams.academic.term.model.AdEnrollment;
 import my.edu.umk.pams.academic.term.model.AdGradebook;
+import my.edu.umk.pams.academic.term.model.AdGradebookImpl;
 import my.edu.umk.pams.academic.term.model.AdOffering;
 import my.edu.umk.pams.academic.term.model.AdSection;
 import my.edu.umk.pams.academic.term.service.TermService;
@@ -88,28 +89,61 @@ public class WhenCreateGradeBook extends Stage<WhenCreateGradeBook> {
 
 	public WhenCreateGradeBook create_gradeBook() {
 		
-		List<AdEnrollment> enrollments = termService.findEnrollments(offering);
-		for (AdEnrollment enrollment : enrollments) {
-			List<AdAssessment> assessments = termService.findAssessments(offering);
-			for (AdAssessment assessment : assessments) {
-				List<AdGradebook> gradebooks = termService.findGradebooks(assessment);
-				for (AdGradebook gradebook : gradebooks) {
-					gradebook.setAssessment(assessment);
-					gradebook.setEnrollment(enrollment);
-					gradebook.setSection(enrollment.getSection());
-					gradebook.setScore(new BigDecimal(BigInteger.valueOf(50)));
-					
-					termService.saveGradebook(gradebook);
-					termService.normalizeGradebooks(enrollment);
-				}
-
-				
+//		List<AdEnrollment> enrollments = termService.findEnrollments(offering);
+//		for (AdEnrollment enrollment : enrollments) {
+//			List<AdAssessment> assessments = termService.findAssessments(offering);
+//			for (AdAssessment assessment : assessments) {
+//				List<AdGradebook> gradebooks = termService.findGradebooks(assessment);
+//				for (AdGradebook gradebook : gradebooks) {
+//					gradebook.setAssessment(assessment);
+//					gradebook.setEnrollment(enrollment);
+//					gradebook.setSection(enrollment.getSection());
+//					gradebook.setScore(new BigDecimal(BigInteger.valueOf(50)));
+//					
+//					termService.saveGradebook(gradebook);
+//					termService.normalizeGradebooks(enrollment);
+//				}
+//
+//				
+//	
+//			}
+//			termService.calculateGradebook(offering);
+//			LOG.debug("enrollmentTotalScore:{}",enrollment.getTotalScore());
+//		}
+		
+		gradebook = termService.findGradebookByAssessmentAndEnrollment(assessment, enrollment);
 	
-			}
-			termService.calculateGradebook(offering);
-			LOG.debug("enrollmentTotalScore:{}",enrollment.getTotalScore());
-		}
-
+		AdGradebook gradebook = new AdGradebookImpl();
+		gradebook.setScore(new BigDecimal(BigInteger.valueOf(50)));
+		gradebook.setAssessment(termService.findAssessmentByCanonicalCode("MASTER/MBA/GST5013/201720181/Q1"));
+		gradebook.setEnrollment(enrollment);
+		gradebook.setSection(section);
+		termService.addGradebook(section, enrollment, gradebook);
+		LOG.debug("gradebookQ1:{}", gradebook.getEnrollment().getAdmission().getStudent().getName());
+		LOG.debug("gradebookQ1:{}", gradebook.getAssessment().getCanonicalCode());
+		LOG.debug("gradebookQ1:{}", gradebook.getScore());
+		
+		AdGradebook gradebook2 = new AdGradebookImpl();
+		gradebook2.setScore(new BigDecimal(BigInteger.valueOf(50)));
+		gradebook2.setAssessment(termService.findAssessmentByCanonicalCode("MASTER/MBA/GST5013/201720181/Q2"));
+		gradebook2.setEnrollment(enrollment);
+		gradebook2.setSection(section);
+		termService.addGradebook(section, enrollment, gradebook2);
+		LOG.debug("gradebookQ2:{}", gradebook2.getEnrollment().getAdmission().getStudent().getName());
+		LOG.debug("gradebookQ2:{}", gradebook2.getAssessment().getCanonicalCode());
+		LOG.debug("gradebookQ2:{}", gradebook2.getScore());
+		
+		termService.calculateGradebook(offering);
+		LOG.debug("Enrollment_Total_Score:{}",enrollment.getTotalScore());
+		
+		List<AdGradeCode> gradeCodes = commonService.findGradeCodes();
+		commonService.findByScore(enrollment.getTotalScore());
+		LOG.debug("findByScore:{}",commonService.findByScore(enrollment.getTotalScore()).getCode());
+		
+		
+		enrollment.setGradeCode(commonService.findByScore(enrollment.getTotalScore()));
+		termService.updateEnrollment(section, enrollment);
+		LOG.debug("gradeCode_IN_Enrollment_Table:{}",enrollment.getGradeCode().getCode());
 		return self();
 	}
 }
