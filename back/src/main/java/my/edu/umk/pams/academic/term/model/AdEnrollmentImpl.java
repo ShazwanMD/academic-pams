@@ -49,11 +49,11 @@ public class AdEnrollmentImpl implements AdEnrollment {
 
     @Embedded
     private AdMetadata metadata;
-    
+    @Override
     public BigDecimal getTotalScore() {
 		return totalScore;
 	}
-
+    @Override
 	public void setTotalScore(BigDecimal totalScore) {
 		this.totalScore = totalScore;
 	}

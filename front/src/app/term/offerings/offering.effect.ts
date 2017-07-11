@@ -84,7 +84,10 @@ export class OfferingEffects {
     .ofType(OfferingActions.UPLOAD_GRADEBOOK)
     .map(action => action.payload)
     .switchMap(payload => this.termService.uploadGradebook(payload.offering, payload.file))
-    .map(message => this.offeringActions.uploadGradebookSuccess(message));
+    .map(message => this.offeringActions.uploadGradebookSuccess(message))
+    .withLatestFrom(this.store$.select(...this.OFFERING))
+    .map(state => state[1])
+    .map((offering: Offering) => this.offeringActions.findGradebookMatricessByOffering(offering));    
 
     @Effect() downloadGradebook$ = this.actions$
       .ofType(OfferingActions.DOWNLOAD_GRADEBOOK)

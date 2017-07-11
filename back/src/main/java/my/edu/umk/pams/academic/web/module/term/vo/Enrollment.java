@@ -6,6 +6,7 @@ import my.edu.umk.pams.academic.web.module.core.vo.MetaObject;
 import my.edu.umk.pams.academic.web.module.planner.vo.Course;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 
 /**
  * @author PAMS
@@ -17,8 +18,19 @@ public class Enrollment extends MetaObject {
     //private GradeCode gradeCode;
     private EnrollmentStanding standing;
     private EnrollmentStatus status;
+    private BigDecimal totalScore;
+    
+    
 
-    // denormalize
+    public BigDecimal getTotalScore() {
+		return totalScore;
+	}
+
+	public void setTotalScore(BigDecimal totalScore) {
+		this.totalScore = totalScore;
+	}
+
+	// denormalize
     private Course course;
 
     public Section getSection() {

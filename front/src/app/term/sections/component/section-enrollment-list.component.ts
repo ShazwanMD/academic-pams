@@ -31,6 +31,7 @@ export class SectionEnrollmentListComponent implements AfterViewInit {
         { name: 'admission.student.name', label: 'Name' },
         { name: 'enrollmentStatus', label: 'Status' },
         { name: 'enrollmentStanding', label: 'Standing' },
+        { name: 'totalScore', label: 'TotalScore' },
         { name: 'action', label: '' }
     ];
 

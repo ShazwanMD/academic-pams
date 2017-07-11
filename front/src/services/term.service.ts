@@ -5,7 +5,7 @@ import {Assessment} from '../app/term/assessments/assessment.interface';
 import {Offering} from '../app/term/offerings/offering.interface';
 import {Injectable} from '@angular/core';
 import {Http} from '@angular/http';
-import {RequestOptions, Response, ResponseContentType} from '@angular/http';
+import {RequestOptions, Response, ResponseContentType,Headers} from '@angular/http';
 import {HttpInterceptorService} from '@covalent/http';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/filter';
@@ -489,11 +489,11 @@ export class TermService {
     let headers: Headers = new Headers({
       'Content-Type': 'application/json',
     });
-    let options: RequestOptions = new RequestOptions({headers: headers});
+    let options: RequestOptions = new RequestOptions({headers : headers});
     let formData: FormData = new FormData();
     formData.append('file', file);
     console.log('formData', formData);
-    return this.http.post(this.TERM_API + '/offerings/' + offering.canonicalCode + '/uploadGradebook', formData, options)
+    return this.http.post(this.TERM_API + '/offerings/' + offering.canonicalCode + '/uploadGradebook', formData)
       .flatMap((res: Response) => Observable.of(res.text()));
 
   }

@@ -1,40 +1,41 @@
 import { EnrollmentActions } from '../../enrollments/enrollment.action';
 import { SectionActions } from '../section.action';
-import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, ViewContainerRef, OnInit} from '@angular/core';
-import {Enrollment} from "../../enrollments/enrollment.interface";
-import {Section} from "../section.interface";
-import {Store} from "@ngrx/store";
-import {ActivatedRoute, Router} from "@angular/router";
-import {MdDialog, MdDialogConfig, MdDialogRef} from "@angular/material";
-import {TermModuleState} from "../../index";
-import {EnrollmentEditorDialog} from "../../enrollments/dialog/enrollment-editor.dialog";
+import { Component, Input, EventEmitter, Output, ChangeDetectionStrategy, ViewContainerRef, OnInit } from '@angular/core';
+import { Enrollment } from "../../enrollments/enrollment.interface";
+import { Section } from "../section.interface";
+import { Store } from "@ngrx/store";
+import { ActivatedRoute, Router } from "@angular/router";
+import { MdDialog, MdDialogConfig, MdDialogRef } from "@angular/material";
+import { TermModuleState } from "../../index";
+import { EnrollmentEditorDialog } from "../../enrollments/dialog/enrollment-editor.dialog";
 
 
 
 @Component({
-  selector: 'pams-student-section-enrollment-list',
-  templateUrl: './student-section-enrollment-list.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'pams-student-section-enrollment-list',
+    templateUrl: './student-section-enrollment-list.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class StudentSectionEnrollmentListComponent implements OnInit {
 
-  @Input() section: Section;
-  @Input() enrollment: Enrollment;
-  @Input() enrollments: Enrollment[];
-  @Output() view = new EventEmitter<Enrollment>();
-    
-  private creatorDialogRef: MdDialogRef<EnrollmentEditorDialog>;
-  private selectedRows: Enrollment[];
+    @Input() section: Section;
+    @Input() enrollment: Enrollment;
+    @Input() enrollments: Enrollment[];
+    @Output() view = new EventEmitter<Enrollment>();
 
-  private columns: any[] = [
-    {name: 'id', label: 'Id'},
-    {name: 'admission.student.name', label: 'Student'},
-    {name: 'admission.student.email', label: 'Email'},
-    {name: 'enrollmentStatus', label: 'Status'},
-    {name: 'enrollmentStanding', label: 'Standing'},
-    {name: 'action', label: ''}
-  ];
-    
+    private creatorDialogRef: MdDialogRef<EnrollmentEditorDialog>;
+    private selectedRows: Enrollment[];
+
+    private columns: any[] = [
+        { name: 'id', label: 'Id' },
+        { name: 'admission.student.name', label: 'Student' },
+        { name: 'admission.student.email', label: 'Email' },
+        { name: 'enrollmentStatus', label: 'Status' },
+        { name: 'enrollmentStanding', label: 'Standing' },
+        { name: 'totalScore', label: 'TotalScore' },
+        { name: 'action', label: '' }
+    ];
+
     constructor(private router: Router,
         private route: ActivatedRoute,
         private actions: EnrollmentActions,
@@ -54,10 +55,10 @@ export class StudentSectionEnrollmentListComponent implements OnInit {
     }
 
     selectAllRows(enrollments: Enrollment[]): void {
-    } 
-    
+    }
+
     //edit dialog
-     editDialog(enrollment: Enrollment, isValid: boolean): void {
+    editDialog(enrollment: Enrollment, isValid: boolean): void {
         console.log("showDialogEnrollment");
         let config = new MdDialogConfig();
         config.viewContainerRef = this.vcf;
@@ -76,5 +77,5 @@ export class StudentSectionEnrollmentListComponent implements OnInit {
             // load something here
         });
     }
-    
+
 }
