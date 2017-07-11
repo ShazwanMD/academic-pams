@@ -210,7 +210,7 @@ public class TermServiceImpl implements TermService {
 		sessionFactory.getCurrentSession().flush();
 	}
 
-	public void calculateGrade(AdOffering offering) {
+	public void calculateGradebook(AdOffering offering) {
 		List<AdEnrollment> enrollments = findEnrollments(offering);
 		for (AdEnrollment enrollment : enrollments) {
 			List<AdGradebook> gradebooks = findGradebooks(enrollment);

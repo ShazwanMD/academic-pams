@@ -508,4 +508,11 @@ export class TermService {
         return new File([res.arrayBuffer()], filename, {type: type});
       });
   }
+
+  calculateGradebook(offering: Offering): Observable<String> {
+    console.log('downloadGradebook');
+    let options: RequestOptions = new RequestOptions({responseType: ResponseContentType.ArrayBuffer});
+    return this._http.post(this.TERM_API + '/offerings/' + offering.canonicalCode + '/calculateGradebook', options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
 }

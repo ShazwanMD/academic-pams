@@ -100,5 +100,11 @@ export class OfferingEffects {
           document.body.removeChild(a);
           URL.revokeObjectURL(url);
       }).ignoreElements();
+
+    @Effect() calculateGradebook$ = this.actions$
+      .ofType(OfferingActions.CALCULATE_GRADEBOOK)
+      .map(action => action.payload)
+      .switchMap(offering => this.termService.calculateGradebook(offering))
+      .map(message => this.offeringActions.calculateGradebookSuccess(message));
 }
 

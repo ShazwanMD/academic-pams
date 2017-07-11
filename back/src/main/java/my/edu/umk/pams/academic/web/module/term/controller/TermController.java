@@ -787,6 +787,14 @@ public class TermController {
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
 
+    @RequestMapping(value = "/offerings/{canonicalCode}/calculateGradebook", method = RequestMethod.POST)
+    public ResponseEntity<String> calculate(@PathVariable String canonicalCode) {
+        dummyLogin();
+        AdOffering offering = termService.findOfferingByCanonicalCode(canonicalCode);
+        termService.calculateGradebook(offering);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
+
     // ====================================================================================================
     // ASSESSMENT
     // ====================================================================================================
@@ -921,13 +929,13 @@ public class TermController {
         return new ResponseEntity<List<GradebookMatrix>>(matrices, HttpStatus.OK);
     }
 
-//calculateGrade
+//calculateGradebook
     @RequestMapping(value = "/offerings/{canonicalCode}/calculateGradebook", method = RequestMethod.POST)
     public ResponseEntity<String> calculateGradebook(@PathVariable String canonicalCode) {
         dummyLogin();
         
         AdOffering offering = termService.findOfferingByCanonicalCode(canonicalCode);
-        termService.calculateGrade(offering);
+        termService.calculateGradebook(offering);
 		return  new ResponseEntity<String>("Success", HttpStatus.OK);
         
     }

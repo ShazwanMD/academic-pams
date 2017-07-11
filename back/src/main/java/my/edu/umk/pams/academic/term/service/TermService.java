@@ -70,8 +70,7 @@ public interface TermService {
 
     void updateOffering(AdOffering offering);
 
-    void calculateGrade(AdOffering offering);
-    
+    void calculateGradebook(AdOffering offering);
     
     //==========+==========================================================================================
     // SECTION
