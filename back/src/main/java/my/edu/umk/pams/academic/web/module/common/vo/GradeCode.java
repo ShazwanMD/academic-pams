@@ -16,9 +16,26 @@ public class GradeCode {
     private String description;
     private Integer ordinal;
     private BigDecimal point;
-    
+    private BigDecimal min;
+    private BigDecimal max;   
 
-    public BigDecimal getPoint() {
+    public BigDecimal getMin() {
+		return min;
+	}
+
+	public void setMin(BigDecimal min) {
+		this.min = min;
+	}
+
+	public BigDecimal getMax() {
+		return max;
+	}
+
+	public void setMax(BigDecimal max) {
+		this.max = max;
+	}
+
+	public BigDecimal getPoint() {
 		return point;
 	}
 

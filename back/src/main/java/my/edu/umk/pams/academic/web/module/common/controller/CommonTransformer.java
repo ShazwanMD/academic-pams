@@ -93,6 +93,8 @@ public class CommonTransformer {
 	        vo.setOrdinal(e.getOrdinal());
 	        vo.setDescription(e.getDescription());
 	        vo.setPoint(e.getPoint());
+	        vo.setMax(e.getMax());
+	        vo.setMin(e.getMin());
 	        return vo;
 	        }
 
