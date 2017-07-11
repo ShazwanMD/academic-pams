@@ -70,6 +70,8 @@ public interface TermService {
 
     void updateOffering(AdOffering offering);
 
+    void calculateGradebook(AdOffering offering);
+    
     //==========+==========================================================================================
     // SECTION
     //====================================================================================================
@@ -500,5 +502,6 @@ public interface TermService {
     void deleteGradebook(AdGradebook gradebook);
 
     BigDecimal normalizeGradebooks(AdEnrollment enrollment);
+
 
 }

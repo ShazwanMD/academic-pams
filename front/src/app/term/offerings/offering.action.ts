@@ -189,6 +189,23 @@ export class OfferingActions {
     };
   }
 
+  static CALCULATE_GRADEBOOK = '[Offering] Calculate Gradebook';
+
+  calculateGradebook(offering): Action {
+    return {
+      type: OfferingActions.CALCULATE_GRADEBOOK,
+      payload: offering
+    };
+  }
+
+  static CALCULATE_GRADEBOOK_SUCCESS = '[Offering] Calculate Gradebook Success';
+
+  calculateGradebookSuccess(offering): Action {
+    return {
+      type: OfferingActions.CALCULATE_GRADEBOOK_SUCCESS,
+      payload: offering
+    };
+  }
 
 }
 

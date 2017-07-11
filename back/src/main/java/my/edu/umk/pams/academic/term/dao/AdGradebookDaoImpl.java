@@ -147,7 +147,7 @@ public class AdGradebookDaoImpl extends GenericDaoSupport<Long, AdGradebook> imp
         Query query = session.createQuery("select s from AdGradebook s where " +
                 "s.assessment = :assessment " +
                 "and s.metadata.state = :state " +
-                "order by s.enrollment.student.name asc");
+                "order by s.enrollment");
         query.setInteger("state", AdMetaState.ACTIVE.ordinal());
         query.setEntity("assessment", assessment);
         query.setCacheable(true);

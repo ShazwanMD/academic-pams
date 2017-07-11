@@ -7,6 +7,10 @@ import my.edu.umk.pams.academic.security.service.SecurityService;
 import my.edu.umk.pams.academic.term.dao.AdAssessmentDao;
 import my.edu.umk.pams.academic.term.dao.AdOfferingDao;
 import my.edu.umk.pams.academic.term.dao.AdSectionDao;
+import my.edu.umk.pams.academic.term.model.AdAdmission;
+import my.edu.umk.pams.academic.term.model.AdEnrollment;
+import my.edu.umk.pams.academic.term.service.TermService;
+
 import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -65,6 +69,9 @@ public class PlannerServiceImpl implements PlannerService {
     @Autowired
     private AdAssessmentDao assessmentDao;
 
+    @Autowired
+    private TermService termService;
+    
     @Autowired
     private SecurityService securityService;
 
@@ -138,6 +145,21 @@ public class PlannerServiceImpl implements PlannerService {
         sessionFactory.getCurrentSession().flush();
     }
 
+    //calculateGPA
+    public void calculateGpa(AdAcademicSession academicSession){
+    	List<AdAdmission> admissions = termService.findAdmissions(academicSession, 0, 999999);
+    	for (AdAdmission admission : admissions) {
+    		// each admission
+    		// tengok enrollments 
+    		// setiap enrollment, kumpul kan untuk GPA
+    		// and then update admission
+    		List<AdEnrollment> enrollments = termService.findEnrollments(admission);
+    		for (AdEnrollment enrollment : enrollments) {
+			
+			}
+    		termService.updateAdmission(admission);   	
+		}
+    }
 
     //====================================================================================================
     // CURRICULUM

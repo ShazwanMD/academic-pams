@@ -1,10 +1,10 @@
 import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, ViewContainerRef} from '@angular/core';
-import {Offering} from "../offering.interface";
-import {OfferingUpdateDialog} from "../dialog/offering-update.dialog";
-import {MdDialog, MdDialogConfig, MdDialogRef, MdSnackBar} from "@angular/material";
-import {OfferingActions} from "../offering.action";
-import {Store} from "@ngrx/store";
-import {TermModuleState} from "../../index";
+import {Offering} from '../offering.interface';
+import {OfferingUpdateDialog} from '../dialog/offering-update.dialog';
+import {MdDialog, MdDialogConfig, MdDialogRef, MdSnackBar} from '@angular/material';
+import {OfferingActions} from '../offering.action';
+import {Store} from '@ngrx/store';
+import {TermModuleState} from '../../index';
 
 @Component({
   selector: 'pams-offering-action',
@@ -24,7 +24,7 @@ export class OfferingActionComponent {
   }
 
   updateDialog(): void {
-    console.log("open offering dialog");
+    console.log('open offering dialog');
     console.log(this.offering.code);
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
@@ -36,10 +36,13 @@ export class OfferingActionComponent {
     this.editorDialogRef.componentInstance.offering = this.offering;
 
     // set
-    this.editorDialogRef.afterClosed().subscribe(res => {
-      console.log("close dialog offering update");
-      
+    this.editorDialogRef.afterClosed().subscribe((res) => {
+      console.log('close dialog offering update');
+
     });
   }
 
+  calculateGradebook(): void {
+    this.store.dispatch(this.actions.calculateGradebook(this.offering));
+  }
 }

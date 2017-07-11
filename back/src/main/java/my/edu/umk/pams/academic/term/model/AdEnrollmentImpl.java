@@ -7,6 +7,8 @@ import my.edu.umk.pams.academic.core.AdMetadata;
 import my.edu.umk.pams.academic.planner.model.AdEnrollmentStanding;
 import my.edu.umk.pams.academic.planner.model.AdEnrollmentStatus;
 
+import java.math.BigDecimal;
+
 import javax.persistence.*;
 
 /**
@@ -41,11 +43,22 @@ public class AdEnrollmentImpl implements AdEnrollment {
     @ManyToOne(targetEntity = AdAdmissionImpl.class)
     @JoinColumn(name = "ADMISSION_ID")
     private AdAdmission admission;
+    
+    @Column(name = "TOTAL_SCORE", nullable = true)
+    private BigDecimal totalScore = BigDecimal.ZERO;
 
     @Embedded
     private AdMetadata metadata;
+    
+    public BigDecimal getTotalScore() {
+		return totalScore;
+	}
 
-    public Long getId() {
+	public void setTotalScore(BigDecimal totalScore) {
+		this.totalScore = totalScore;
+	}
+
+	public Long getId() {
         return id;
     }
 

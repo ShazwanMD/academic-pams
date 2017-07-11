@@ -112,8 +112,8 @@ public class WhenGetEnrollment extends Stage<WhenGetEnrollment> {
 		offering = new AdOfferingImpl();
 		offering.setCanonicalCode("MASTER/MBA/GST5013/201720181");
 		offering.setCode("MASTER/MBA/GST5013");
-		offering.setTitleMs(course.getTitleMs());
-		offering.setTitleEn(course.getTitleEn());
+		offering.setTitleMs("s");
+		offering.setTitleEn("s");
 		offering.setCapacity(100);
 		offering.setProgram(program);
 		offering.setCourse(course);
