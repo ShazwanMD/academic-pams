@@ -517,7 +517,7 @@ export class TermService {
   }
 
   calculateGradebook(offering: Offering): Observable<String> {
-    console.log('downloadGradebook');
+    console.log('CalculateTotalScore');
     let options: RequestOptions = new RequestOptions({responseType: ResponseContentType.ArrayBuffer});
     return this._http.post(this.TERM_API + '/offerings/' + offering.canonicalCode + '/calculateGradebook', options)
       .flatMap((res: Response) => Observable.of(res.text()));

@@ -217,7 +217,7 @@ public class TermServiceImpl implements TermService {
 			BigDecimal totalScore = BigDecimal.ZERO;
 			for (AdGradebook gradebook : gradebooks) {
 				BigDecimal assessmentScore = gradebook.getScore().multiply(gradebook.getAssessment().getWeight())
-						.divide(BigDecimal.valueOf(100)).setScale(1, RoundingMode.HALF_UP);
+						.divide(BigDecimal.valueOf(100)).setScale(2, RoundingMode.HALF_UP);
 				totalScore = totalScore.add(assessmentScore);
 
 			}
