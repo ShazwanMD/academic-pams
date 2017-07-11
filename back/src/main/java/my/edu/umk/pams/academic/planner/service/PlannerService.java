@@ -38,7 +38,10 @@ public interface PlannerService {
     void updateAcademicSession(AdAcademicSession academicSession);
 
     void removeAcademicSession(AdAcademicSession academicSession);
-
+    
+    //CalculateGPA
+    void calculateGpa(AdAcademicSession academicSession);
+    
     //====================================================================================================
     // CURRICULUM
     //====================================================================================================

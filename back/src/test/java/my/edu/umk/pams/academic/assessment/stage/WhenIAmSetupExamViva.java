@@ -44,7 +44,7 @@ public class WhenIAmSetupExamViva extends Stage<WhenIAmSetupExamViva> {
 	private AdAssessment assessment;
 
 	@ExpectedScenarioState
-	private AdOffering offer;
+	private AdOffering offering;
 
 	@ExpectedScenarioState
 	private AdAcademicSession session;
@@ -107,44 +107,43 @@ public class WhenIAmSetupExamViva extends Stage<WhenIAmSetupExamViva> {
 		LOG.debug("Program Level :{}", level.getCode());
 				
 		// setup assessment
-		AdAssessment assessmentQ1 = new AdAssessmentImpl();
-		assessmentQ1.setCode("MASTER/MBA/GST5013/Q1");
-		assessmentQ1.setCanonicalCode("MASTER/MBA/GST5013/201720181/Q1");
-		assessmentQ1.setDescription("Economics & Business Environment");
-		assessmentQ1.setOrdinal(0);
-		assessmentQ1.setWeight(new BigDecimal(BigInteger.valueOf(10)));
-		assessmentQ1.setTotalScore(new BigDecimal(BigInteger.valueOf(100)));
-		assessmentQ1.setType(AdAssessmentType.QUIZ);
-		assessmentQ1.setCategory(AdAssessmentCategory.COURSE_WORK);
-		assessmentQ1.setOffering(offer);
-		termService.addAssessment( offer, assessmentQ1);
-		Assert.notNull(assessmentQ1, "quiz1 is null");
+		assessment = new AdAssessmentImpl();
+		assessment.setCode("MASTER/MBA/GST5013/Q1");
+		assessment.setCanonicalCode("MASTER/MBA/GST5013/201720181/Q1");
+		assessment.setDescription("Economics & Business Environment");
+		assessment.setOrdinal(0);
+		assessment.setWeight(new BigDecimal(BigInteger.valueOf(10)));
+		assessment.setTotalScore(new BigDecimal(BigInteger.valueOf(100)));
+		assessment.setType(AdAssessmentType.QUIZ);
+		assessment.setCategory(AdAssessmentCategory.COURSE_WORK);
+		assessment.setOffering(offering);
+		termService.addAssessment( offering, assessment);
+		Assert.notNull(assessment, "quiz1 is null");
 		//LOG Debug Quiz 1
 		LOG.debug("QUIZ 1 :========>");
-		LOG.debug("QUIZ 1 CanonicalCOde :{}", assessmentQ1.getCanonicalCode());
-		LOG.debug("QUIZ 1 Category :{}", assessmentQ1.getCategory().name());
-		LOG.debug("QUIZ 1 Code :{}", assessmentQ1.getCode());
-		LOG.debug("QUIZ 1 Desc :{}", assessmentQ1.getDescription());
-		LOG.debug("QUIZ 1 Type :{}", assessmentQ1.getType().name());
-		LOG.debug("QUIZ 1 TotalScore :{}", assessmentQ1.getTotalScore().byteValueExact());
-		LOG.debug("Weight :{}", assessmentQ1.getWeight().toBigInteger());
+		LOG.debug("QUIZ 1 CanonicalCOde :{}", assessment.getCanonicalCode());
+		LOG.debug("QUIZ 1 Category :{}", assessment.getCategory().name());
+		LOG.debug("QUIZ 1 Code :{}", assessment.getCode());
+		LOG.debug("QUIZ 1 Desc :{}", assessment.getDescription());
+		LOG.debug("QUIZ 1 Type :{}", assessment.getType().name());
+		LOG.debug("QUIZ 1 TotalScore :{}", assessment.getTotalScore().byteValueExact());
+		LOG.debug("Weight :{}", assessment.getWeight().toBigInteger());
 		LOG.debug("");
 		// assert
-		Assert.notNull(assessmentQ1, "assessmentQ1 Quiz1 is not setup");
+		Assert.notNull(assessment, "assessmentQ1 Quiz1 is not setup");
 
-		/*// setup assessment2
+		// setup assessment2
 		assessment = new AdAssessmentImpl();
 		assessment.setCode("MASTER/MBA/GST5013/Q2");
 		assessment.setCanonicalCode("MASTER/MBA/GST5013/201720181/Q2");
 		assessment.setDescription("Economics & Business Environment");
-		assessment.setOrdinal(0);
-		assessment.setWeight(new BigDecimal(BigInteger.valueOf(5)));
-		assessment.setTotalScore(new BigDecimal(BigInteger.valueOf(50)));
+		assessment.setOrdinal(1);
+		assessment.setWeight(new BigDecimal(BigInteger.valueOf(90)));
+		assessment.setTotalScore(new BigDecimal(BigInteger.valueOf(100)));
 		assessment.setType(AdAssessmentType.QUIZ);
 		assessment.setCategory(AdAssessmentCategory.COURSE_WORK);
-		assessment.setSession(session);
-		assessment.setOffering(offer);
-		termService.addAssessment(session, offer, assessment);
+		assessment.setOffering(offering);
+		termService.addAssessment(offering, assessment);
 		Assert.notNull(assessment, "quiz2 is null");
 		//LOG Debug Quiz 2
 		LOG.debug("QUIZ 2 :========>");
@@ -159,7 +158,7 @@ public class WhenIAmSetupExamViva extends Stage<WhenIAmSetupExamViva> {
 		// assert
 		Assert.notNull(assessment, "Assessments Quiz2 is not setup");
 
-		// setup assessment3
+		/*// setup assessment3
 		assessment = new AdAssessmentImpl();
 		assessment.setCode("MASTER/MBA/GST5013/T1");
 		assessment.setCanonicalCode("MASTER/MBA/GST5013/201720181/T1");

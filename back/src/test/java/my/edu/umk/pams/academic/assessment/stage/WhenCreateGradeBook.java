@@ -88,22 +88,31 @@ public class WhenCreateGradeBook extends Stage<WhenCreateGradeBook> {
 	private AdGradebook gradebook;
 
 	@ExpectedScenarioState
-	private AdOffering offer;
+	private AdOffering offering;
 
 	public WhenCreateGradeBook create_gradeBook() {
+		
+		List<AdEnrollment> enrollments = termService.findEnrollments(offering);
+		for (AdEnrollment enrollment : enrollments) {
+			List<AdAssessment> assessments = termService.findAssessments(offering);
+			for (AdAssessment assessment : assessments) {
+				List<AdGradebook> gradebooks = termService.findGradebooks(assessment);
+				for (AdGradebook gradebook : gradebooks) {
+					gradebook.setAssessment(assessment);
+					gradebook.setEnrollment(enrollment);
+					gradebook.setSection(enrollment.getSection());
+					gradebook.setScore(new BigDecimal(BigInteger.valueOf(50)));
+					
+					termService.saveGradebook(gradebook);
+					termService.normalizeGradebooks(enrollment);
+				}
 
-		gradebook = new AdGradebookImpl();
-		gradebook.setAssessment(assessment);
-		Assert.notNull(assessment, "Assessment Must Not Null");
-		gradebook.setEnrollment(enrollment);
-		Assert.notNull(enrollment, "enrollment Must Not Null");
-		gradebook.setSection(section);
-		Assert.notNull(section, "section Must Not Null");
-		gradebook.setScore(new BigDecimal(BigInteger.valueOf(50)));
-
-		termService.saveGradebook(gradebook);
-
-		termService.normalizeGradebooks(enrollment);
+				
+	
+			}
+			termService.calculateGrade(offering);
+			LOG.debug("enrollmentTotalScore:{}",enrollment.getTotalScore());
+		}
 
 		return self();
 	}

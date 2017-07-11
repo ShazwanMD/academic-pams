@@ -604,6 +604,7 @@
         ADMISSION_ID int8,
         GRADE_CODE_ID int8,
         SECTION_ID int8,
+        TOTAL_SCORE numeric(19, 2),
         primary key (ID)
     );
 
