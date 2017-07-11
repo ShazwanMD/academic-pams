@@ -5,6 +5,7 @@ import { FormControl } from '@angular/forms';
 @Component({
     selector: 'pams-admission-status-select',
     templateUrl: './admission-status-select.component.html',
+  styleUrls: ['./admission-status-select.scss'],
 })
 
 export class AdmissionStatusSelectComponent implements OnInit {
@@ -19,7 +20,7 @@ export class AdmissionStatusSelectComponent implements OnInit {
                 this.statuses.push(AdmissionStatus[n.toString()]);
         }
     }
-    
+
     ngOnInit() {
   }
 

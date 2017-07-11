@@ -1,6 +1,5 @@
 import {AssessmentCategorySelectComponent} from './component/assessment-category-select.component';
 import {AssessmentTypeSelectComponent} from './component/assessment-type-select.component';
-import {AssessmentCreatorDialog} from './dialog/assessment-creator.dialog';
 import {AssessmentListComponent} from './component/assessment-list.component';
 import {AssessmentComponent} from './component/assessment.component';
 import {EffectsModule} from '@ngrx/effects';
@@ -12,11 +11,11 @@ import {NgModule, ModuleWithProviders} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {ReactiveFormsModule} from '@angular/forms';
 import {CovalentCoreModule} from '@covalent/core';
-import {AssessmentDetailPage} from "./assessment-detail.page";
-import {TermService} from "../../../services/term.service";
-import {PlannerService} from "../../../services/planner.service";
-import {PipeModule} from "../../app.pipe.module";
-
+import {AssessmentDetailPage} from './assessment-detail.page';
+import {TermService} from '../../../services/term.service';
+import {PlannerService} from '../../../services/planner.service';
+import {PipeModule} from '../../app.pipe.module';
+import {AssessmentEditorDialog} from "./dialog/assessment-creator.dialog";
 
 @NgModule({
   imports: [
@@ -37,11 +36,11 @@ import {PipeModule} from "../../app.pipe.module";
     AssessmentComponent,
 
     //dialog
-    AssessmentCreatorDialog,
+    AssessmentEditorDialog,
     AssessmentCategorySelectComponent,
   ],
   exports: [
-    AssessmentCreatorDialog,
+    AssessmentEditorDialog,
     AssessmentTypeSelectComponent,
     AssessmentCategorySelectComponent,
     AssessmentDetailPage,
@@ -49,7 +48,7 @@ import {PipeModule} from "../../app.pipe.module";
   ],
 
   entryComponents: [
-    AssessmentCreatorDialog,
+    AssessmentEditorDialog,
 
   ],
 })

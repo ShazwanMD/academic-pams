@@ -206,7 +206,7 @@ export class TermService {
     return this._http.get(this.TERM_API + '/enrollmentApplications/pooledTasks')
       .map((res: Response) => <EnrollmentApplicationTask[]>res.json());
   }
-  
+
   //archived enrollmentApplications
   findArchivedEnrollmentApplications(): Observable<EnrollmentApplication[]> {
       console.log('findArchivedEnrollmentApplications');
@@ -447,20 +447,17 @@ export class TermService {
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
-  //delete Section using editorDialog
   deleteSection(offering: Offering, section: Section) {
     return this._http.delete(this.TERM_API + '/offerings/' + offering.canonicalCode + '/sections/' + section.id)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
-  // update Section using dialog
   updateSection(offering: Offering, section: Section): Observable<String> {
     console.log(section);
     return this._http.put(this.TERM_API + '/offerings/' + offering.canonicalCode + '/sections/' + section.id, JSON.stringify(section))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
-  //update offering using editorDialog
   updateOffering(offering: Offering): Observable<String> {
     return this._http.put(this.TERM_API + '/offerings/' + offering.canonicalCode, JSON.stringify(offering))
       .flatMap((res: Response) => Observable.of(res.text()));

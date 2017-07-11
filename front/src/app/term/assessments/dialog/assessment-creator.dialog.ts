@@ -5,19 +5,18 @@ import {Assessment} from './../assessment.interface';
 import {Component, ViewContainerRef, OnInit} from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
 import {FormBuilder} from '@angular/forms';
-import {Store} from "@ngrx/store";
-import {MdDialogRef} from "@angular/material";
-import {TermModuleState} from "../../index";
-import {AssessmentType} from "../assessment-type.enum";
-import {AssessmentCategory} from "../assessment-category.enum";
-
+import {Store} from '@ngrx/store';
+import {MdDialogRef} from '@angular/material';
+import {TermModuleState} from '../../index';
+import {AssessmentType} from '../assessment-type.enum';
+import {AssessmentCategory} from '../assessment-category.enum';
 
 @Component({
-  selector: 'pams-assessment-creator',
-  templateUrl: './assessment-creator.dialog.html',
+  selector: 'pams-assessment-editor',
+  templateUrl: './assessment-editor.dialog.html',
 })
 
-export class AssessmentCreatorDialog implements OnInit {
+export class AssessmentEditorDialog implements OnInit {
 
   private _offering: Offering;
   private _assessment: Assessment;
@@ -29,7 +28,7 @@ export class AssessmentCreatorDialog implements OnInit {
               private route: ActivatedRoute,
               private store: Store<TermModuleState>,
               private actions: AssessmentActions,
-              private dialog: MdDialogRef<AssessmentCreatorDialog>) {
+              private dialog: MdDialogRef<AssessmentEditorDialog>) {
   }
 
   set offering(value: Offering) {
@@ -52,7 +51,7 @@ export class AssessmentCreatorDialog implements OnInit {
       weight: 0,
       offering: <Offering>{},
       assessmentType: AssessmentType.QUIZ,
-      assessmentCategory: AssessmentCategory.COURSE_WORK
+      assessmentCategory: AssessmentCategory.COURSE_WORK,
     });
 
     // set offering by default
@@ -62,12 +61,12 @@ export class AssessmentCreatorDialog implements OnInit {
 
   submit(assessment: Assessment, isValid: boolean) {
     console.log(assessment);
-    console.log("canonical Code: " + this._offering.canonicalCode + "-" + assessment.code);
+    console.log('canonical Code: ' + this._offering.canonicalCode + '-' + assessment.code);
     // set canonical code
-    assessment.canonicalCode = this._offering.canonicalCode + "-" + assessment.code;
+    assessment.canonicalCode = this._offering.canonicalCode + '-' + assessment.code;
 
     if (this.edit) this.store.dispatch(this.actions.updateAssessment(this._offering, assessment));
-    else this.store.dispatch(this.actions.addAssessment(this._offering, assessment))
+    else this.store.dispatch(this.actions.addAssessment(this._offering, assessment));
     this.dialog.close();
   }
 }

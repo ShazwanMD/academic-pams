@@ -733,12 +733,11 @@ public class TermController {
     }
 
     @RequestMapping(value = "/offerings/{canonicalCode}/sections/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<String> updateSection(@PathVariable String canonicalCode, @RequestBody Section vo) {
+    public ResponseEntity<String> updateSection(@PathVariable String canonicalCode, @PathVariable Long id, @RequestBody Section vo) {
         dummyLogin();
 
         AdOffering offering = termService.findOfferingByCanonicalCode(canonicalCode);
-        AdSection section = termService.findSectionByCanonicalCode(vo.getCanonicalCode());
-
+        AdSection section = termService.findSectionById(id);
         section.setCanonicalCode(vo.getCanonicalCode());
         section.setCode(vo.getCode());
         section.setCapacity(vo.getCapacity());

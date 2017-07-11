@@ -16,15 +16,9 @@ import { MdSnackBar } from '@angular/material';
 })
 export class OfferingSectionListComponent implements OnInit {
 
-  @Input() section: Section;
-  @Input() offering: Offering;
-  @Input() sections: Section[];
-  @Output() view = new EventEmitter<Section>();
-
   private selectedRows: Section[];
   private creatorDialogRef: MdDialogRef<SectionEditorDialog>;
   private columns: any[] = [
-    {name: 'id', label: 'Id'},
     {name: 'ordinal', label: 'Section No'},
     {name: 'code', label: 'Code'},
     {name: 'capacity', label: 'Capacity'},
@@ -32,6 +26,11 @@ export class OfferingSectionListComponent implements OnInit {
     {name: 'enrollmentCount', label: 'Enrollment'},
     {name: 'action', label: ''},
   ];
+
+  @Input() section: Section;
+  @Input() offering: Offering;
+  @Input() sections: Section[];
+  @Output() view = new EventEmitter<Section>();
 
   constructor(private router: Router,
               private route: ActivatedRoute,

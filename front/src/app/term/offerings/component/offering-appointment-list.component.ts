@@ -1,13 +1,12 @@
 import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, ViewContainerRef} from '@angular/core';
 import {Section} from '../../sections/section.interface';
-import {Appointment} from "../../appointments/appointment.interface";
-import {Offering} from "../offering.interface";
-import {Store} from "@ngrx/store";
-import {ActivatedRoute, Router} from "@angular/router";
-import {MdDialog, MdDialogConfig, MdDialogRef} from "@angular/material";
-import {TermModuleState} from "../../index";
-import { AppointmentEditorDialog } from "../../appointments/dialog/appointment-editor.dialog";
-
+import {Appointment} from '../../appointments/appointment.interface';
+import {Offering} from '../offering.interface';
+import {Store} from '@ngrx/store';
+import {ActivatedRoute, Router} from '@angular/router';
+import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';
+import {TermModuleState} from '../../index';
+import {AppointmentEditorDialog} from '../../appointments/dialog/appointment-editor.dialog';
 
 @Component({
   selector: 'pams-offering-appointment-list',
@@ -17,15 +16,16 @@ import { AppointmentEditorDialog } from "../../appointments/dialog/appointment-e
 })
 export class OfferingAppointmentListComponent {
 
+  private creatorDialogRef: MdDialogRef<AppointmentEditorDialog>;
+  private columns: any[] = [
+    {name: 'id', label: 'Id'},
+    {name: 'action', label: ''},
+  ];
+
   @Input() section: Section;
   @Input() offering: Offering;
   @Input() appointments: Appointment[];
   @Output() view = new EventEmitter<Appointment>();
-  private creatorDialogRef: MdDialogRef<AppointmentEditorDialog>;
-  private columns: any[] = [
-    {name: 'id', label: 'Id'},
-    {name: 'action', label: ''}
-  ];
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -35,9 +35,9 @@ export class OfferingAppointmentListComponent {
   }
 
   showDialog(): void {
-    console.log("showDialog");
-    console.log("Section to pass:"+ this.section);
-   
+    console.log('showDialog');
+    console.log('Section to pass:' + this.section);
+
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
     config.role = 'dialog';
@@ -46,10 +46,9 @@ export class OfferingAppointmentListComponent {
     config.position = {top: '0px'};
     this.creatorDialogRef = this.dialog.open(AppointmentEditorDialog, config);
     this.creatorDialogRef.componentInstance.section = this.section;
-    this.creatorDialogRef.afterClosed().subscribe(res => {
-      console.log("close dialog");
+    this.creatorDialogRef.afterClosed().subscribe((res) => {
+      console.log('close dialog');
       // load something here
     });
   }
 }
-

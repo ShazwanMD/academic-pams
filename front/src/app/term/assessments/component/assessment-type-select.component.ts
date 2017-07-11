@@ -1,11 +1,11 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {FormControl} from "@angular/forms";
-import {AssessmentType} from "../assessment-type.enum";
-
+import {FormControl} from '@angular/forms';
+import {AssessmentType} from '../assessment-type.enum';
 
 @Component({
   selector: 'pams-assessment-type-select',
   templateUrl: './assessment-type-select.component.html',
+  styleUrls: ['./assessment-type-select.component.scss'],
 })
 export class AssessmentTypeSelectComponent implements OnInit {
 
@@ -14,8 +14,8 @@ export class AssessmentTypeSelectComponent implements OnInit {
   @Input() innerFormControl: FormControl;
 
   constructor() {
-    for (var n in AssessmentType) {
-      if(typeof AssessmentType[n] === 'string')
+    for (let n in AssessmentType) {
+      if (typeof AssessmentType[n] === 'string')
         this.assessmentTypes.push(AssessmentType[n.toString()]);
     }
   }
@@ -27,4 +27,4 @@ export class AssessmentTypeSelectComponent implements OnInit {
     this.innerFormControl.setValue(event, {emitEvent: false});
   }
 }
-
+

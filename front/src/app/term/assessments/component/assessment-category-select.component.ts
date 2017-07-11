@@ -1,11 +1,12 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {FormControl} from "@angular/forms";
-import {AssessmentCategory} from "../assessment-category.enum";
-
+import {FormControl} from '@angular/forms';
+import {AssessmentCategory} from '../assessment-category.enum';
 
 @Component({
   selector: 'pams-assessment-category-select',
   templateUrl: './assessment-category-select.component.html',
+  styleUrls: ['./assessment-category-select.component.scss'],
+
 })
 export class AssessmentCategorySelectComponent implements OnInit {
 
@@ -14,8 +15,8 @@ export class AssessmentCategorySelectComponent implements OnInit {
   @Input() innerFormControl: FormControl;
 
   constructor() {
-    for (var n in AssessmentCategory) {
-      if(typeof AssessmentCategory[n] === 'string')
+    for (let n in AssessmentCategory) {
+      if (typeof AssessmentCategory[n] === 'string')
         this.assessmentCategorys.push(AssessmentCategory[n.toString()]);
     }
   }
@@ -27,4 +28,4 @@ export class AssessmentCategorySelectComponent implements OnInit {
     this.innerFormControl.setValue(event, {emitEvent: false});
   }
 }
-
+

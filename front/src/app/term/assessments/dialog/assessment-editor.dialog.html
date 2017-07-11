@@ -1,0 +1,58 @@
+<h2 md-dialog-title>Add New Assessment</h2>
+<md-card-title>Create New Academic Session</md-card-title>
+<form [formGroup]="editorForm">
+  <div fxLayout fxLayout.xs="column" fxLayoutWrap fxLayoutGap="25px" class="inset">
+
+    <md-input-container flex mdTooltip="Please insert assessment Code">
+      <input mdInput
+             placeholder="Code"
+             formControlName="code" fxFlex="calc(100%-25px)"/>
+    </md-input-container>
+
+    <md-input-container flex mdTooltip="Please insert assessment Description">
+      <input mdInput
+             placeholder="Description"
+             formControlName="description" flex/>
+    </md-input-container>
+
+    <md-input-container fxFlex="calc(100%-25px)" mdTooltip="Please insert assessment Ordinal">
+      <input mdInput
+             placeholder="Ordinal"
+             typ="number"
+             formControlName="ordinal"/>
+    </md-input-container>
+
+    <md-input-container fxFlex="calc(100%-25px)" mdTooltip="Please insert assessment Total Score">
+      <input mdInput
+             placeholder="Total Score"
+             typ="number"
+             formControlName="totalScore"/>
+    </md-input-container>
+
+    <md-input-container flex mdTooltip="Please insert assessment Weight">
+      <input mdInput
+             placeholder="Weight"
+             typ="number"
+             formControlName="weight"/>
+    </md-input-container>
+
+    <pams-assessment-category-select
+      [placeholder]="'Assessment Category'"
+      [innerFormControl]="editorForm.controls['assessmentCategory']"
+      fxFlex="calc(100%-25px)" class="pad-bottom">
+    </pams-assessment-category-select>
+
+    <pams-assessment-type-select
+      [placeholder]="'Assessment Type'"
+      [innerFormControl]="editorForm.controls['assessmentType']"
+      fxFlex="calc(100%-25px)" class="pad-bottom">
+    </pams-assessment-type-select>
+  </div>
+</form>
+
+<md-dialog-actions align="end">
+  <button md-raised-button color="accent" (click)="submit(editorForm.value, edit)">
+    {{edit ? 'Update' : 'Save'}}
+  </button>
+</md-dialog-actions>
+

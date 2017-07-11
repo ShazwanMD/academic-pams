@@ -1,12 +1,12 @@
 import {Component, ViewContainerRef, OnInit} from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
 import {FormBuilder} from '@angular/forms';
-import {Store} from "@ngrx/store";
-import {MdDialogRef} from "@angular/material";
-import {TermModuleState} from "../../index";
-import {Section} from "../section.interface";
-import {SectionActions} from "../section.action";
-import {Offering} from "../../offerings/offering.interface";
+import {Store} from '@ngrx/store';
+import {MdDialogRef} from '@angular/material';
+import {TermModuleState} from '../../index';
+import {Section} from '../section.interface';
+import {SectionActions} from '../section.action';
+import {Offering} from '../../offerings/offering.interface';
 import {Router, ActivatedRoute} from '@angular/router';
 
 @Component({
@@ -35,7 +35,7 @@ export class SectionEditorDialog implements OnInit {
 
   }
 
-  set section(value: Section) { //set value section yang dibawa
+  set section(value: Section) {
     this._section = value;
     this.edit = true;
 
@@ -43,12 +43,12 @@ export class SectionEditorDialog implements OnInit {
 
   ngOnInit(): void {
     this.editorForm = this.formBuilder.group(<Section>{
-      id: null,
+      id: undefined,
       code: '',
       canonicalCode: '',
       capacity: 0,
       ordinal: 0,
-      offering: <Offering>{}
+      offering: <Offering>{},
     });
 
     // set offering by default
@@ -56,10 +56,10 @@ export class SectionEditorDialog implements OnInit {
     if (this.edit) this.editorForm.patchValue(this._section);
   }
 
-  submit(section: Section, isValid: boolean) {
+  submit(section: Section, isValid: boolean): void {
     // set codes
-    section.canonicalCode = this._offering.canonicalCode + "" + section.ordinal
-    section.code = this._offering.code + "" + section.ordinal
+    section.canonicalCode = this._offering.canonicalCode + '' + section.ordinal;
+    section.code = this._offering.code + '' + section.ordinal;
 
     if (!section.id)
       this.store.dispatch(this.actions.addSection(this._offering, section));

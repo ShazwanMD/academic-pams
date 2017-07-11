@@ -76,8 +76,6 @@ export class SectionEffects {
     .map(message => this.sectionActions.updateSectionSuccess(message))
     .withLatestFrom(this.store$.select(...this.OFFERING))
     .map(state => state[1])
-    .map((offering: Offering) => this.offeringActions.findOfferingByCanonicalCode(offering.canonicalCode))
-    //.map((section: Section) => this.sectionActions.findSectionByCanonicalCode(section.canonicalCode));
-
+    .map((offering: Offering) => this.offeringActions.findOfferingByCanonicalCode(offering.canonicalCode));
 
 }
