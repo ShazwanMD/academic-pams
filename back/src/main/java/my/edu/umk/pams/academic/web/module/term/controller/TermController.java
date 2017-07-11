@@ -791,7 +791,16 @@ public class TermController {
     public ResponseEntity<String> calculate(@PathVariable String canonicalCode) {
         dummyLogin();
         AdOffering offering = termService.findOfferingByCanonicalCode(canonicalCode);
-        termService.calculateGradebook(offering);
+        List<AdEnrollment> enrollments = termService.findEnrollments(offering);
+        for (AdEnrollment enrollment : enrollments) {
+            termService.calculateGradebook(offering);
+           
+            enrollment.setGradeCode( commonService.findByScore(enrollment.getTotalScore()));
+            termService.updateEnrollment(enrollment.getSection(), enrollment);
+		}
+   
+        
+   
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
 
