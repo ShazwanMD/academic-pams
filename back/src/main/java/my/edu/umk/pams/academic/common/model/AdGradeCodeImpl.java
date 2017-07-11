@@ -32,12 +32,33 @@ public class AdGradeCodeImpl implements AdGradeCode {
     
     @Column(name = "POINT", nullable = true)
     private BigDecimal point;
+    
+    @Column(name = "MIN", nullable = true)
+    private BigDecimal min;
+    
+    @Column(name = "MAX", nullable = true)
+    private BigDecimal max;
 
     @Embedded
-    private AdMetadata metadata;
-    
+    private AdMetadata metadata;  
 
-    public BigDecimal getPoint() {
+    public BigDecimal getMin() {
+		return min;
+	}
+
+	public void setMin(BigDecimal min) {
+		this.min = min;
+	}
+
+	public BigDecimal getMax() {
+		return max;
+	}
+
+	public void setMax(BigDecimal max) {
+		this.max = max;
+	}
+
+	public BigDecimal getPoint() {
 		return point;
 	}
 

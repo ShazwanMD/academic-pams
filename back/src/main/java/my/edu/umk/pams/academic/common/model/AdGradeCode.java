@@ -9,19 +9,28 @@ import my.edu.umk.pams.academic.core.AdMetaObject;
  */
 public interface AdGradeCode extends AdMetaObject {
 
-    Integer getOrdinal();
+	Integer getOrdinal();
 
-    void setOrdinal(Integer ordinal);
+	void setOrdinal(Integer ordinal);
 
-    String getCode();
+	String getCode();
 
-    void setCode(String code);
+	void setCode(String code);
 
-    String getDescription();
+	String getDescription();
 
-    void setDescription(String description);
-    
-    BigDecimal getPoint();
+	void setDescription(String description);
 
-    void setPoint(BigDecimal point);
+	BigDecimal getPoint();
+
+	void setPoint(BigDecimal point);
+
+	BigDecimal getMin();
+
+	void setMin(BigDecimal min);
+
+	BigDecimal getMax();
+
+	void setMax(BigDecimal max);
+
 }

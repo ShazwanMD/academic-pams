@@ -762,6 +762,8 @@
         M_ST int4,
         ORDINAL int4 not null,
         POINT numeric(19, 2),
+        MIN numeric(19, 2),
+        MAX numeric(19, 2),
         primary key (ID)
     );
 
