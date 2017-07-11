@@ -13,7 +13,6 @@ import java.util.List;
  */
 public class Curriculum extends MetaObject{
     private String code;
-    private String description;
     private Integer coreCredit;
     private Integer curriculumCredit;
     private Integer electiveCredit;
@@ -51,15 +50,7 @@ public class Curriculum extends MetaObject{
     public void setCode(String code) {
         this.code = code;
     }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-    
+  
     public Integer getCoreCredit() {
         return coreCredit;
     }

@@ -4,8 +4,13 @@ import my.edu.umk.pams.academic.common.service.CommonService;
 import my.edu.umk.pams.academic.identity.service.IdentityService;
 import my.edu.umk.pams.academic.planner.model.*;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
+import my.edu.umk.pams.academic.term.model.AdEnrollment;
+import my.edu.umk.pams.academic.term.model.AdOffering;
+import my.edu.umk.pams.academic.term.model.AdSection;
 import my.edu.umk.pams.academic.web.module.planner.vo.*;
 import my.edu.umk.pams.academic.web.module.planner.vo.subject.Subject;
+import my.edu.umk.pams.academic.web.module.term.vo.Enrollment;
+import my.edu.umk.pams.academic.web.module.term.vo.Section;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -437,11 +442,17 @@ public class PlannerController {
 	// CURRICULUM
 	// ====================================================================================================
 
-	@RequestMapping(value = "/curriculums", method = RequestMethod.GET)
+	/*@RequestMapping(value = "/curriculums", method = RequestMethod.GET)
 	public ResponseEntity<List<Curriculum>> findCurriculums() {
 		List<Curriculum> curriculums = plannerTransformer
 				.toCurriculumVos(plannerService.findCurriculums(0, Integer.MAX_VALUE));
 		return new ResponseEntity<List<Curriculum>>(curriculums, HttpStatus.OK);
+	}*/
+	
+	@RequestMapping(value = "/curriculums", method = RequestMethod.GET)
+	public ResponseEntity<List<Curriculum>> findCurriculums() {
+		return new ResponseEntity<List<Curriculum>>(plannerTransformer.toCurriculumVos(plannerService.findCurriculums(0, 100)),
+				HttpStatus.OK);
 	}
 
 	@RequestMapping(value = "/curriculums/{code}", method = RequestMethod.GET)
@@ -473,13 +484,13 @@ public class PlannerController {
 	}
 	
 	  @RequestMapping(value = "/curriculums/{code}/subjects", method = RequestMethod.GET)
-	    public ResponseEntity<List<Subject>> findSubjectsByCurriculum(@PathVariable String code) {
+	    public ResponseEntity<List<Subject>> findSubjectsByCurriculum(@PathVariable String code)  throws UnsupportedEncodingException {
 		AdCurriculum curriculum = plannerService.findCurriculumByCode(code);
 	        List<AdSubject> subjects = plannerService.findSubjects(curriculum);
 			List<Subject> subjectVos = plannerTransformer.toSubjectVos(subjects);
 	        return new ResponseEntity<List<Subject>>(subjectVos, HttpStatus.OK);
 	    }
-
+	  
 	// ====================================================================================================
 	// COHORT
 	// ====================================================================================================
