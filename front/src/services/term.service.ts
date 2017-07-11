@@ -4,6 +4,7 @@ import {AdmissionApplication} from '../app/term/admission-applications/admission
 import {Assessment} from '../app/term/assessments/assessment.interface';
 import {Offering} from '../app/term/offerings/offering.interface';
 import {Injectable} from '@angular/core';
+import {Http} from '@angular/http';
 import {RequestOptions, Response, ResponseContentType} from '@angular/http';
 import {HttpInterceptorService} from '@covalent/http';
 import {Observable} from 'rxjs/Observable';
@@ -24,7 +25,8 @@ export class TermService {
 
   private TERM_API: string = environment.endpoint + '/api/term';
 
-  constructor(private _http: HttpInterceptorService) {
+  constructor(private _http: HttpInterceptorService,
+              private http: Http) {
   }
 
   findAssessmentById(id): Observable<Assessment> {
@@ -471,7 +473,6 @@ export class TermService {
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
-  //update appointment by section
   updateAppointment(section: Section, appointment: Appointment): Observable<String> {
     console.log(appointment);
     return this._http.put(this.TERM_API + '/sections/' + section.canonicalCode + '/appointments/' + appointment.id, JSON.stringify(appointment))
@@ -485,10 +486,14 @@ export class TermService {
 
   uploadGradebook(offering: Offering, file: File): Observable<String> {
     console.log('uploadGradebook', file);
-    let formData = new FormData();
+    let headers: Headers = new Headers({
+      'Content-Type': 'application/json',
+    });
+    let options: RequestOptions = new RequestOptions({headers: headers});
+    let formData: FormData = new FormData();
     formData.append('file', file);
     console.log('formData', formData);
-    return this._http.post(this.TERM_API + '/offerings/' + offering.canonicalCode + '/uploadGradebook', formData)
+    return this.http.post(this.TERM_API + '/offerings/' + offering.canonicalCode + '/uploadGradebook', formData, options)
       .flatMap((res: Response) => Observable.of(res.text()));
 
   }
