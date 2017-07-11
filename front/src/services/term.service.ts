@@ -206,6 +206,13 @@ export class TermService {
     return this._http.get(this.TERM_API + '/enrollmentApplications/pooledTasks')
       .map((res: Response) => <EnrollmentApplicationTask[]>res.json());
   }
+  
+  //archived enrollmentApplications
+  findArchivedEnrollmentApplications(): Observable<EnrollmentApplication[]> {
+      console.log('findArchivedEnrollmentApplications');
+      return this._http.get(this.TERM_API + '/enrollmentApplications/archived')
+        .map((res: Response) => <EnrollmentApplication[]>res.json());
+    }
 
   findEnrollmentApplicationTaskByTaskId(taskId: string): Observable<EnrollmentApplicationTask> {
     console.log('findEnrollmentApplicationTaskByTaskId');

@@ -31,6 +31,7 @@ import {AssignedEnrollmentApplicationTaskListComponent} from "./component/assign
 import {StudentEnrollmentListComponent} from "./component/student-enrollment-list.component";
 import {StudentOfferingListComponent} from "./component/student-offering-list.component";
 import {PooledEnrollmentApplicationTaskListComponent} from "./component/pooled-enrollment-application-task-list.component";
+import {ArchivedEnrollmentApplicationListComponent} from "./component/archived-enrollment-application-list.component";
 import {EnrollmentApplicationTaskDetailPage} from "./enrollment-application-task-detail.page";
 import {StudentEnrollmentApplicationTaskDetailPage} from "./student-enrollment-application-task-detail.page";
 import { IdentityModule } from "../../identity/index";
@@ -65,6 +66,7 @@ import { EnrollmentApplicationItemUpdateDialog } from "./dialog/enrollment-appli
     EnrollmentApplicationItemComponent,
     EnrollmentApplicationTaskListComponent,
     EnrollmentApplicationsListComponent,
+    
     EnrollmentApplicationTaskStatusComponent,
     EnrollmentApplicationActionSelectComponent,
     EnrollmentApplicationTypeSelectComponent,
@@ -74,6 +76,7 @@ import { EnrollmentApplicationItemUpdateDialog } from "./dialog/enrollment-appli
     StudentEnrollmentApplicationTaskDetailActionComponent,
     StudentOfferingListComponent,
     PooledEnrollmentApplicationTaskListComponent,
+    ArchivedEnrollmentApplicationListComponent,
     StudentEnrollmentApplicationItemComponent,
 
     //dialog
@@ -83,6 +86,7 @@ import { EnrollmentApplicationItemUpdateDialog } from "./dialog/enrollment-appli
   ],
   exports: [
     EnrollmentApplicationActionSelectComponent,
+    ArchivedEnrollmentApplicationListComponent,
   ],
   entryComponents: [
     EnrollmentApplicationTaskCreatorDialog,

@@ -8,7 +8,7 @@ import { TdDataTableSortingOrder, TdDataTableService, ITdDataTableSortChangeEven
   templateUrl: './assigned-enrollment-application-task-list.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AssignedEnrollmentApplicationTaskListComponent {
+export class AssignedEnrollmentApplicationTaskListComponent implements AfterViewInit {
 
   @Input() enrollmentApplicationTasks: EnrollmentApplicationTask[];
   @Output() view = new EventEmitter<EnrollmentApplicationTask>();

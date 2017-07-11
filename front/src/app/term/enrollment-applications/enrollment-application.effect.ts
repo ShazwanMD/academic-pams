@@ -40,6 +40,12 @@ export class EnrollmentApplicationEffects {
     .switchMap(() => this.termService.findPooledEnrollmentApplicationTasks())
     .map(enrollmentApplications => this.enrollmentApplicationActions.findPooledEnrollmentApplicationTasksSuccess(enrollmentApplications));
 
+  //archived
+  @Effect() findArchivedEnrollmentApplications$ = this.actions$
+  .ofType(EnrollmentApplicationActions.FIND_ARCHIVED_ENROLLMENT_APPLICATIONS)
+  .switchMap(() => this.termService.findArchivedEnrollmentApplications())
+  .map(enrollmentApplications => this.enrollmentApplicationActions.findArchivedEnrollmentApplicationsSuccess(enrollmentApplications));
+  
   @Effect() findEnrollmentApplicationTaskByTaskId = this.actions$
     .ofType(EnrollmentApplicationActions.FIND_ENROLLMENT_APPLICATION_TASK_BY_TASK_ID)
     .map(action => action.payload)

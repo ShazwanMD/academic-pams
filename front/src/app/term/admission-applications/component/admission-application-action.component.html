@@ -1,27 +1,12 @@
+<md-card class="bgc-green-600" flex> <md-card-content
+	class="text-center">
+<div class="md-display-1">COMPLETED</div>
+<div layout="column" layout-padding>
+	<div class="md-subhead tc-grey-100">Status</div>
+
+</div>
+</md-card-content> </md-card>
 <md-card>
-
-    <md-card-title>Action</md-card-title>
-    <md-card-subtitle>Actions available on current admission application</md-card-subtitle>
-    <md-divider></md-divider>
-
-    <md-nav-list flex dense>
-
-        <md-list-item (click)="editDialog()">
-            <md-icon md-list-avatar>done_all</md-icon>
-            <h4 md-line>Edit Admission Application</h4>
-            <p md-line>Edit this application </p>
-        </md-list-item>
-
-        <md-list-item [routerLink]="['/term/admission-applications']">
-            <md-icon md-list-avatar>done_all</md-icon>
-            <h4 md-line>Approve Application</h4>
-            <p md-line>Approve</p>
-        </md-list-item>
-
-        <md-divider></md-divider>
-    </md-nav-list>
-
-
     <md-card-title>Term Menu</md-card-title>
     <md-card-subtitle>Go to previous menu
     </md-card-subtitle>
@@ -30,8 +15,14 @@
     <md-nav-list flex dense>
         <md-list-item [routerLink]="['/term/admissions']">
             <md-icon md-list-avatar>menu</md-icon>
-            <h4 md-line>Admissions</h4>
-            <p md-line>Watch this admissions</p>
+            <h4 md-line>Semester Registrations</h4>
+            <p md-line>Watch this semester registrations</p>
+        </md-list-item>
+        
+         <md-list-item [routerLink]="['/term/enrollment-applications']">
+            <md-icon md-list-avatar>menu</md-icon>
+            <h4 md-line>Course Enrollments</h4>
+            <p md-line>Watch this course enrollments</p>
         </md-list-item>
 
         <md-list-item [routerLink]="['/term/offerings']">

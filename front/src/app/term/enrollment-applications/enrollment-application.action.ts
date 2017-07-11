@@ -57,6 +57,23 @@ export class EnrollmentApplicationActions {
             payload: tasks
         };
     }
+    
+     //archived
+    static FIND_ARCHIVED_ENROLLMENT_APPLICATIONS = '[EnrollmentApplication] Find Archived EnrollmentApplications';
+    findArchivedEnrollmentApplications(): Action {
+      return {
+        type: EnrollmentApplicationActions.FIND_ARCHIVED_ENROLLMENT_APPLICATIONS
+      };
+    }
+
+    static FIND_ARCHIVED_ENROLLMENT_APPLICATIONS_SUCCESS = '[EnrollmentApplication] Find Archived EnrollmentApplications Success';
+    findArchivedEnrollmentApplicationsSuccess(enrollmentApplications): Action {
+      console.log("findArchivedEnrollmentApplicationsSuccess");
+      return {
+        type: EnrollmentApplicationActions.FIND_ARCHIVED_ENROLLMENT_APPLICATIONS_SUCCESS,
+        payload: enrollmentApplications
+      };
+    }
 
     static FIND_ENROLLMENT_APPLICATION_TASK_BY_TASK_ID = '[EnrollmentApplication] Find EnrollmentApplication Task By Task Id';
 

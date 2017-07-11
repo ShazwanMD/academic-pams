@@ -9,6 +9,17 @@ export type EnrollmentApplicationListState = EnrollmentApplication[];
 
 const initialState: EnrollmentApplicationListState = <EnrollmentApplication[]>[];
 
+export function archivedEnrollmentApplicationListReducer(state = initialState, action: Action): EnrollmentApplicationListState {
+    switch (action.type) {
+      case EnrollmentApplicationActions.FIND_ARCHIVED_ENROLLMENT_APPLICATIONS_SUCCESS: {
+        return action.payload;
+      }
+      default: {
+        return state;
+      }
+    }
+  }
+
 export function enrollmentApplicationListReducer(state = initialState, action: Action): EnrollmentApplicationListState {
   switch (action.type) {
     case EnrollmentApplicationActions.FIND_ENROLLMENT_APPLICATIONS_SUCCESS: {

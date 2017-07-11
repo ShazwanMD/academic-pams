@@ -87,6 +87,10 @@ import {
   admissionApplicationListReducer,
   AdmissionApplicationListState, archivedAdmissionApplicationListReducer,
 } from './admission-applications/admission-application-list.reducer';
+import {
+    enrollmentApplicationListReducer,
+    EnrollmentApplicationListState, archivedEnrollmentApplicationListReducer,
+  } from './enrollment-applications/enrollment-application-list.reducer';
 
 export interface TermModuleState {
   offerings: OfferingListState;
@@ -113,6 +117,7 @@ export interface TermModuleState {
   // enrollment
   assignedEnrollmentApplicationTasks: EnrollmentApplicationTaskListState;
   pooledEnrollmentApplicationTasks: EnrollmentApplicationTaskListState;
+  archivedEnrollmentApplications: EnrollmentApplicationListState;
   enrollmentApplicationTask: EnrollmentApplicationTaskState;
   enrollmentApplicationItems: EnrollmentApplicationItemListState;
   gradebookMatrices: GradebookMatrixListState;
@@ -147,6 +152,7 @@ export const INITIAL_TERM_STATE: TermModuleState =
     // enrollment
     assignedEnrollmentApplicationTasks: <EnrollmentApplicationTask[]>[],
     pooledEnrollmentApplicationTasks: <EnrollmentApplicationTask[]>[],
+    archivedEnrollmentApplications: <EnrollmentApplication[]>[],
     enrollmentApplicationTask: <EnrollmentApplicationTask>{},
     enrollmentApplicationItems: <EnrollmentApplicationItem[]>[],
     gradebookMatrices: <GradebookMatrix[]>[],
@@ -179,6 +185,7 @@ export const termModuleReducers = {
   // enrollment
   assignedEnrollmentApplicationTasks: assignedEnrollmentApplicationTaskListReducer,
   pooledEnrollmentApplicationTasks: pooledEnrollmentApplicationTaskListReducer,
+  archivedEnrollmentApplications: archivedEnrollmentApplicationListReducer,
   enrollmentApplicationTask: enrollmentApplicationTaskReducer,
   enrollmentApplicationItems: enrollmentApplicationItemListReducer,
   gradebookMatrices: gradebookMatrixListReducer,
