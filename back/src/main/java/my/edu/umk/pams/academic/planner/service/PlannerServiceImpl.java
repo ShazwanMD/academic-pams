@@ -50,7 +50,6 @@ public class PlannerServiceImpl implements PlannerService {
     @Autowired
     private AdAcademicYearDao yearDao;
 
-
     @Autowired
     private AdOfferingDao offeringDao;
 
