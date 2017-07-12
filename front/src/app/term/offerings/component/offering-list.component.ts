@@ -16,11 +16,15 @@ import {MdSnackBar} from '@angular/material';
 export class OfferingListComponent implements AfterViewInit {
 
   private columns: any[] = [
-    {name: 'course.code', label: 'Code'},
-    {name: 'course.titleEn', label: 'TitleEn'},
+    {name: 'id', label: 'Id'},
+    {name: 'code', label: 'Code'},
+    {name: 'course.status', label: 'Status'},
+    {name: 'titleEn', label: 'TitleEn'},
+    {name: 'capacity', label: 'Capacity'},
     {name: 'program.code', label: 'Program'},
-    {name: 'capacity.number', label: 'Capacity'},
-    {name: 'course.credit', label: 'Credit'},
+    {name: 'course.faculty.name', label: 'Faculty'},
+    {name: 'program.level.code', label: 'Level'},
+   
     {name: 'action', label: ''},
   ];
 
