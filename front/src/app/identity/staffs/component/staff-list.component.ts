@@ -15,7 +15,7 @@ export class StaffListComponent implements AfterViewInit {
 
   private columns: any[] = [
     {name: 'id', label: 'Id'},
-    {name: 'staff.name', label: 'Staf Name'},
+    {name: 'identityNo', label: 'Staf Name'},
     {name: 'section.code', label: 'Section'},
     {name: 'section.session.code', label: 'Academic Session'},
     {name: 'section.offering.course.title', label: 'Course Offering'},

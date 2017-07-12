@@ -7,6 +7,8 @@ import { CovalentCoreModule } from '@covalent/core';
 import { CommonService } from '../../services';
 import { IdentityService } from '../../services';
 import { IdentityComponent } from "./identity.component";
+import { StaffSubModule } from "./staffs/index";
+
 import { studentListReducer, StudentListState } from "./student-list.reducer";
 import { actorListReducer, ActorListState } from "./actor-list.reducer";
 import { staffListReducer, StaffListState } from "./staff-list.reducer";
@@ -20,60 +22,61 @@ import { EffectsModule } from "@ngrx/effects";
 
 
 export interface IdentityModuleState {
-  actors: ActorListState;
-  students: StudentListState;
-  staffs: StaffListState;
+    actors: ActorListState;
+    students: StudentListState;
+    staffs: StaffListState;
 }
 ;
 
 export const INITIAL_IDENTITY_STATE: IdentityModuleState = <IdentityModuleState>{
-  actors: [],
-  students: [],
-  staffs: [],
+    actors: [],
+    students: [],
+    staffs: [],
 };
 
 export const identityModuleReducers = {
-  actors: actorListReducer,
-  students: studentListReducer,
-  staffs: staffListReducer,
+    actors: actorListReducer,
+    students: studentListReducer,
+    staffs: staffListReducer,
 };
 
 
-@NgModule({
-  imports: [
-    appRoutes,
-    BrowserModule,
-    ReactiveFormsModule,
-    CovalentCoreModule.forRoot(),
-    EffectsModule.run(ActorEffects),
-  ],
-  declarations: [
-    IdentityComponent,
-    StudentSelectComponent,
-    StaffSelectComponent,
-    ActorSelectComponent,
-   
-  ],
-  exports: [
-    IdentityComponent,
-    StudentSelectComponent,
-    StaffSelectComponent,
-    ActorSelectComponent,
-   
-  ],
-})
+@NgModule( {
+    imports: [
+        appRoutes,
+        BrowserModule,
+        ReactiveFormsModule,
+        CovalentCoreModule.forRoot(),
+        StaffSubModule.forRoot(),
+        EffectsModule.run( ActorEffects ),
+    ],
+    declarations: [
+        IdentityComponent,
+        StudentSelectComponent,
+        StaffSelectComponent,
+        ActorSelectComponent,
+
+    ],
+    exports: [
+        IdentityComponent,
+        StudentSelectComponent,
+        StaffSelectComponent,
+        ActorSelectComponent,
+
+    ],
+} )
 export class IdentityModule {
-  static forRoot(): ModuleWithProviders {
-    return {
-      ngModule: IdentityModule,
-      providers: [
-        appRoutingProviders,
-        IdentityService,
-        CommonService,
-        ActorActions,
-        StudentActions,
-        StaffActions,
-      ],
-    };
-  }
+    static forRoot(): ModuleWithProviders {
+        return {
+            ngModule: IdentityModule,
+            providers: [
+                appRoutingProviders,
+                IdentityService,
+                CommonService,
+                ActorActions,
+                StudentActions,
+                StaffActions,
+            ],
+        };
+    }
 }

@@ -9,7 +9,7 @@ import {TermService} from '../../../services';
 import {CommonService} from '../../../services';
 import {IdentityService} from '../../../services';
 
-//import {StaffListComponent} from "./component/staff-list.component";
+import {StaffListComponent} from "./component/staff-list.component";
 import {StaffActions} from "./staff.action";
 import {EffectsModule} from "@ngrx/effects";
 
@@ -28,9 +28,6 @@ import { StaffCenterPage } from "./staff-center.page";
     BrowserModule,
     ReactiveFormsModule,
     CovalentCoreModule.forRoot(),
-   
-    IdentityModule.forRoot(),
-  
   ],
   declarations: [
     // page
@@ -38,7 +35,7 @@ import { StaffCenterPage } from "./staff-center.page";
     StaffCenterPage,
    
     // component
-    //StaffListComponent,
+    StaffListComponent,
     StaffComponent,
    
    // StaffActionComponent,
@@ -51,6 +48,7 @@ import { StaffCenterPage } from "./staff-center.page";
    // StaffEditorDialog,
    StaffComponent,
    StaffCenterPage,
+   StaffDetailPage,
   ],
   entryComponents: [
     //StaffEditorDialog,

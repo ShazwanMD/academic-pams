@@ -8,5 +8,4 @@ export const StaffRoutes: Routes = [
   {path: 'identity/staffs', component: StaffCenterPage},
   {path: 'identity/staffs/:id', component: StaffDetailPage},
  
- 
 ];
