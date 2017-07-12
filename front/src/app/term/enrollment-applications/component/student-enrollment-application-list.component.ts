@@ -34,23 +34,4 @@ export class StudentEnrollmentApplicationListComponent {
         private vcf: ViewContainerRef,
         private dialog: MdDialog ) {
     }
-
-   /* showDialog(): void {
-        console.log( "showDialog" );
-        console.log( "enrollmentApplication to pass:" + this.enrollmentApplication );
-
-        let config = new MdDialogConfig();
-        config.viewContainerRef = this.vcf;
-        config.role = 'dialog';
-        config.width = '50%';
-        config.height = '50%';
-        config.position = { top: '0px' };
-        this.creatorDialogRef = this.dialog.open( EnrollmentApplicationItemEditorDialog, config );
-        this.creatorDialogRef.componentInstance.enrollmentApplication = this.enrollmentApplication;
-        this.creatorDialogRef.afterClosed().subscribe( res => {
-            console.log( "close dialog" );
-            // load something here
-        } );
-    }*/
-
 }
