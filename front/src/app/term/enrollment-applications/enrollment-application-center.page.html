@@ -33,10 +33,10 @@
             [enrollmentApplicationTasks]="pooledEnrollmentApplicationTasks$ | async"
             (claim)="claimTask($event)"></pams-pooled-enrollment-application-task-list>
         </md-tab> -->
-           <!-- <md-tab label="Archived Applications">
+            <md-tab label="Archived Applications">
             <pams-archived-enrollment-application-list [enrollmentApplications]="archivedEnrollmentApplications$ | async" (view)="viewEnrollmentApplication($event)">
             </pams-archived-enrollment-application-list>
-          </md-tab> -->
+          </md-tab>
         
       </md-tab-group>
     </md-card>

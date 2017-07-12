@@ -17,12 +17,12 @@ export class ArchivedEnrollmentApplicationListComponent implements AfterViewInit
 
   private columns: any[] = [
     { name: 'referenceNo', label: 'Reference No' },
-    { name: 'student.identityNo', label: 'Matric.No' },
-    { name: 'student.name', label: 'Name' },
-    { name: 'ordinal', label: 'Semester' },
-    { name: 'advisor.identityNo', label: 'Advisor' },
-    { name: 'student.cohort.program.code', label: 'Program' },
-    { name: 'studyCenter.description', label: 'Study Center' },
+    { name: 'admission.student.name', label: 'Name' },
+    { name: 'admission.student.identityNo', label: 'Matric No.' },
+    { name: 'admission.ordinal', label: 'Semester' },
+    { name: 'admission.student.cohort.program.code', label: 'Program' },
+    { name: 'admission.studyCenter.description', label: 'Study Center' },
+    { name: 'flowState', label: 'Status' },
    
     { name: 'action', label: '' },
   ];
