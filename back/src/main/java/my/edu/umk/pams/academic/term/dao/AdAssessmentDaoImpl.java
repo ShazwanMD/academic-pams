@@ -62,7 +62,7 @@ public class AdAssessmentDaoImpl extends GenericDaoSupport<Long, AdAssessment> i
         Query query = session.createQuery("select s from AdAssessment s where " +
                 "s.offering = :offering " +
                 "and s.metadata.state = :state " +
-                "order by s.ordinal");
+                "order by s.ordinal asc");
         query.setInteger("state", AdMetaState.ACTIVE.ordinal());
         query.setEntity("offering", offering);
         query.setCacheable(true);
@@ -75,7 +75,7 @@ public class AdAssessmentDaoImpl extends GenericDaoSupport<Long, AdAssessment> i
         Query query = session.createQuery("select s from AdAssessment s where " +
                 "s.offering = :offering " +
                 "and s.metadata.state = :state "+
-                "order by s.ordinal");
+                "order by s.ordinal asc");
         query.setInteger("state", AdMetaState.ACTIVE.ordinal());
         query.setEntity("offering", offering);
         query.setFirstResult(offset);

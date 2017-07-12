@@ -66,7 +66,7 @@ public class AdSectionDaoImpl extends GenericDaoSupport<Long, AdSection> impleme
 	public List<AdSection> find(AdOffering offering) {
 		Session session = sessionFactory.getCurrentSession();
 		Query query = session.createQuery("select s from AdSection s where " + "s.offering = :offering "
-				+ "and s.metadata.state = :state " + "order by s.code asc");
+				+ "and s.metadata.state = :state " + "order by s.ordinal asc");
 		query.setInteger("state", AdMetaState.ACTIVE.ordinal());
 		query.setEntity("offering", offering);
 		query.setCacheable(true);
@@ -77,7 +77,7 @@ public class AdSectionDaoImpl extends GenericDaoSupport<Long, AdSection> impleme
 	public List<AdSection> find(AdOffering offering, Integer offset, Integer limit) {
 		Session session = sessionFactory.getCurrentSession();
 		Query query = session.createQuery("select s from AdSection s where " + "s.offering = :offering "
-				+ "and s.metadata.state = :state " + "order by s.code asc");
+				+ "and s.metadata.state = :state " + "order by s.ordinal asc");
 		query.setInteger("state", AdMetaState.ACTIVE.ordinal());
 		query.setEntity("offering", offering);
 		query.setFirstResult(offset);
@@ -89,11 +89,13 @@ public class AdSectionDaoImpl extends GenericDaoSupport<Long, AdSection> impleme
 	@Override
 	public List<AdSection> find(String filter, AdAcademicSession academicSession, Integer offset, Integer limit) {
 		Session session = sessionFactory.getCurrentSession();
-		Query query = session.createQuery("select s from AdSection s where " + "(upper(s.code) like upper(:filter) "
+		Query query = session.createQuery("select s from AdSection s where "
+				+ "(upper(s.code) like upper(:filter) "
 				+ "or upper(s.offering.code) like upper(:filter) "
 				+ "or upper(s.offering.canonicalCode) like upper(:filter) "
-				+ "or upper(s.offering.title) like upper(:filter)) " + "and s.session = :academicSession "
-				+ "and s.metadata.state = :state " + "order by s.code asc");
+				+ "or upper(s.offering.title) like upper(:filter)) "
+				+ "and s.session = :academicSession "
+				+ "and s.metadata.state = :state " + "order by s.ordinal asc");
 		query.setString("filter", WILDCARD + filter + WILDCARD);
 		query.setEntity("academicSession", academicSession);
 		query.setInteger("state", AdMetaState.ACTIVE.ordinal());
@@ -106,9 +108,9 @@ public class AdSectionDaoImpl extends GenericDaoSupport<Long, AdSection> impleme
 	@Override
 	public List<AdSection> find(AdAcademicSession academicSession) {
 		Session session = sessionFactory.getCurrentSession();
-		Query query = session.createQuery("select s from AdSection s where " + "s.session = :academicSession "
+		Query query = session.createQuery("select s from AdSection s where "
+				+ "s.session = :academicSession "
 				+ "and s.metadata.state = :state ");
-		// "order by s.term.program.code asc, s.term.code asc, s.code asc");
 		query.setInteger("state", AdMetaState.ACTIVE.ordinal());
 		query.setEntity("academicSession", academicSession);
 		query.setCacheable(true);
@@ -118,7 +120,8 @@ public class AdSectionDaoImpl extends GenericDaoSupport<Long, AdSection> impleme
 	@Override
 	public List<AdSection> find(AdAcademicSession academicSession, Integer offset, Integer limit) {
 		Session session = sessionFactory.getCurrentSession();
-		Query query = session.createQuery("select s from AdSection s where " + "s.session = :academicSession "
+		Query query = session.createQuery("select s from AdSection s where "
+				+ "s.session = :academicSession "
 				+ "and s.metadata.state = :state " + "order by s.code asc");
 		query.setInteger("state", AdMetaState.ACTIVE.ordinal());
 		query.setEntity("academicSession", academicSession);
@@ -131,8 +134,10 @@ public class AdSectionDaoImpl extends GenericDaoSupport<Long, AdSection> impleme
 	@Override
 	public List<AdSection> find(AdAcademicSession academicSession, AdOffering offering) {
 		Session session = sessionFactory.getCurrentSession();
-		Query query = session.createQuery("select s from AdSection s where " + "s.session = :academicSession "
-				+ "and s.offering = :offering " + "and s.metadata.state = :state " + "order by s.code asc");
+		Query query = session.createQuery("select s from AdSection s where "
+				+ "s.session = :academicSession "
+				+ "and s.offering = :offering " + "and s.metadata.state = :state "
+				+ "order by s.code asc");
 		query.setInteger("state", AdMetaState.ACTIVE.ordinal());
 		query.setEntity("academicSession", academicSession);
 		query.setEntity("offering", offering);
@@ -143,8 +148,10 @@ public class AdSectionDaoImpl extends GenericDaoSupport<Long, AdSection> impleme
 	@Override
 	public List<AdSection> find(AdAcademicSession academicSession, AdOffering offering, Integer offset, Integer limit) {
 		Session session = sessionFactory.getCurrentSession();
-		Query query = session.createQuery("select s from AdSection s where " + "s.session = :academicSession "
-				+ "and s.offering = :offering " + "and s.metadata.state = :state " + "order by s.code asc");
+		Query query = session.createQuery("select s from AdSection s where "
+				+ "s.session = :academicSession "
+				+ "and s.offering = :offering " + "and s.metadata.state = :state "
+				+ "order by s.code asc");
 		query.setInteger("state", AdMetaState.ACTIVE.ordinal());
 		query.setEntity("academicSession", academicSession);
 		query.setEntity("offering", offering);
