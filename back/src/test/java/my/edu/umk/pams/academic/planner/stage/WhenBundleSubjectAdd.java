@@ -40,7 +40,7 @@ public class WhenBundleSubjectAdd extends Stage<WhenBundleSubjectAdd> {
 
 		// add bundle subject
 		bundleSubject = new AdBundleSubjectImpl();
-		bundleSubject.setSubjectType(AdSubjectType.REQUIRED);
+		bundleSubject.setSubjectType(AdSubjectType.CORE_ELECTIVE);
 		bundleSubject.setCurriculum(curriculum);
 		bundleSubject.setOrdinal(2);
 
