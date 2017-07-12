@@ -21,6 +21,7 @@ import {AppointmentEditorDialog} from "./dialog/appointment-editor.dialog";
 import {SectionSubModule} from "../sections/index";
 import {IdentityModule} from "../../identity/index";
 import { AppointmentActionComponent } from "./component/appointment-action.component";
+import { AppointmentCenterPage } from "./appointment-center.page";
 
 @NgModule({
   imports: [
@@ -35,6 +36,7 @@ import { AppointmentActionComponent } from "./component/appointment-action.compo
   declarations: [
     // page
     AppointmentDetailPage,
+    AppointmentCenterPage,
     StudentAppointmentDetailPage,
     
 
