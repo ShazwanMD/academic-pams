@@ -9,7 +9,7 @@ import {Appointment} from "../appointment.interface";
 export class AppointmentListComponent {
 
   @Input() appointments: Appointment[];
-  @Output() view = new EventEmitter<Appointment>();
+  @Output() view: EventEmitter<Appointment> = new EventEmitter<Appointment>();
 
   private columns: any[] = [
     {name: 'id', label: 'Id'},

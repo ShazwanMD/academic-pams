@@ -338,8 +338,8 @@ export class TermService {
     return this._http.get(this.TERM_API + '/appointments')
       .map((res: Response) => <Appointment[]>res.json());
   }
-
-  findCurrentAppointments(): Observable<Appointment[]> {
+  
+ findCurrentAppointments(): Observable<Appointment[]> {
     console.log('findCurrentAppointments');
     return this._http.get(this.TERM_API + '/appointments/current')
       .map((res: Response) => <Appointment[]>res.json());
