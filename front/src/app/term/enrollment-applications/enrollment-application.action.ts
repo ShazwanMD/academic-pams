@@ -184,23 +184,21 @@ export class EnrollmentApplicationActions {
             payload: application
         };
     }
-
+    
     static FIND_ENROLLMENT_APPLICATION_BY_REFERENCE_NO = '[EnrollmentApplication] Find EnrollmentApplication By Reference No';
-
     findEnrollmentApplicationByReferenceNo(referenceNo): Action {
-        return {
-            type: EnrollmentApplicationActions.FIND_ENROLLMENT_APPLICATION_BY_REFERENCE_NO,
-            payload: referenceNo
-        };
+      return {
+        type: EnrollmentApplicationActions.FIND_ENROLLMENT_APPLICATION_BY_REFERENCE_NO,
+        payload: referenceNo
+      };
     }
 
     static FIND_ENROLLMENT_APPLICATION_BY_REFERENCE_NO_SUCCESS = '[EnrollmentApplication] Find EnrollmentApplication By Reference No Success';
-
     findEnrollmentApplicationByReferenceNoSuccess(enrollmentApplication): Action {
-        return {
-            type: EnrollmentApplicationActions.FIND_ENROLLMENT_APPLICATION_BY_REFERENCE_NO_SUCCESS,
-            payload: enrollmentApplication
-        };
+      return {
+        type: EnrollmentApplicationActions.FIND_ENROLLMENT_APPLICATION_BY_REFERENCE_NO_SUCCESS,
+        payload: enrollmentApplication
+      };
     }
 
     static FIND_ENROLLMENT_APPLICATION_ITEMS = '[EnrollmentApplication] Find EnrollmentApplication Items';

@@ -48,6 +48,10 @@ import {
   admissionApplicationReducer,
   AdmissionApplicationState,
 } from './admission-applications/admission-application.reducer';
+import {
+    enrollmentApplicationReducer,
+    EnrollmentApplicationState,
+  } from './enrollment-applications/enrollment-application.reducer';
 import {Section} from './sections/section.interface';
 import {SectionActions} from './sections/section.action';
 import {SectionSubModule} from './sections/index';
@@ -188,6 +192,7 @@ export const termModuleReducers = {
   archivedEnrollmentApplications: archivedEnrollmentApplicationListReducer,
   enrollmentApplicationTask: enrollmentApplicationTaskReducer,
   enrollmentApplicationItems: enrollmentApplicationItemListReducer,
+  enrollmentApplication: enrollmentApplicationReducer,
   gradebookMatrices: gradebookMatrixListReducer,
 };
 

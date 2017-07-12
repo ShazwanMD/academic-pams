@@ -276,12 +276,12 @@ export class TermService {
     return this._http.get(this.TERM_API + '/enrollmentApplications')
       .map((res: Response) => <EnrollmentApplication[]>res.json());
   }
-
+  
   findEnrollmentApplicationByReferenceNo(referenceNo: string): Observable<EnrollmentApplication> {
-    console.log('findEnrollmentApplicationByReferenceNo');
-    return this._http.get(this.TERM_API + '/enrollmentApplications/' + referenceNo)
-      .map((res: Response) => <EnrollmentApplication>res.json());
-  }
+      console.log('findEnrollmentApplicationByReferenceNo');
+      return this._http.get(this.TERM_API + '/enrollmentApplications/' + referenceNo)
+        .map((res: Response) => <EnrollmentApplication>res.json());
+    }
 
   findEnrollmentApplicationItems(application: EnrollmentApplication): Observable<EnrollmentApplicationItem[]> {
     return this._http.get(this.TERM_API + '/enrollmentApplications/' + application.referenceNo + '/enrollmentApplicationItems')
