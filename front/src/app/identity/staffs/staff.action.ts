@@ -23,18 +23,18 @@ export class StaffActions {
   }
   
   //find staff by id
-  static FIND_STAFF_BY_ID = '[Staff] Find Staff By Id';
-  findStaffById(staff): Action {
+  static FIND_STAFF_BY_IDENTITY_NO = '[Staff] Find Staff By Identity No';
+  findStaffByIdentityNo(staff): Action {
     return {
-      type: StaffActions.FIND_STAFF_BY_ID,
+      type: StaffActions.FIND_STAFF_BY_IDENTITY_NO,
       payload: staff
     };
   }
 
-  static FIND_STAFF_BY_ID_SUCCESS = '[Staff] Find Staff By Id Success';
-  findStaffByIdSuccess(staff): Action {
+  static FIND_STAFF_BY_IDENTITY_NO_SUCCESS = '[Staff] Find Staff By Identity No Success';
+  findStaffByIdentityNoSuccess(staff): Action {
     return {
-      type: StaffActions.FIND_STAFF_BY_ID_SUCCESS,
+      type: StaffActions.FIND_STAFF_BY_IDENTITY_NO_SUCCESS,
       payload: staff
     };
   }

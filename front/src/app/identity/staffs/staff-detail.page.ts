@@ -32,9 +32,9 @@ export class StaffDetailPage implements OnInit {
     }
 
     ngOnInit(): void {
-        this.route.params.subscribe(( params: { id: string } ) => {
-            let id: string = params.id;
-            this.store.dispatch( this.actions.findStaffById( id ) );
+        this.route.params.subscribe(( params: { identityNo: string } ) => {
+            let identityNo: string = params.identityNo;
+            this.store.dispatch( this.actions.findStaffByIdentityNo( identityNo ) );
         } );
     }
 

@@ -1,22 +1,19 @@
 <!-- Basic Card -->
 <md-card> <md-card-title>STAFFS</md-card-title>
-<md-card-subtitle>Profile --</md-card-subtitle>
+<md-card-subtitle>Profile {{staff?.name}} </md-card-subtitle>
 <md-divider></md-divider> 
 <md-card-content>
 <!--Tab Section Here--> <md-tab-group> <md-tab	label="Staff Detail">
 <br>
  <div layout="column" layout-gt-md="row" class="insert">
               <div flex-gt-md="20">
-              <img src=".\..\assets\ico\lecturer\{{appointment?.staff?.identityNo}}.jpg"  width="150" height="190"/> 
-             
+              <!-- <img src=".\..\assets\ico\lecturer\{{staff?.identityNo}}.jpg"  width="150" height="190"/>  -->
+              <img src=".\..\assets\ico\lecturer\01001A.jpg"  width="150" height="190"/> 
               <div flex-gt-md="40"><br/>
-                <b>Name</b> : {{staff?.identityNo}}<br/><br/>
-                <b>Staff ID </b> : --<br/><br/>
-                <b>Email</b> : --<br/><br/>
-                <b>Status</b> : --<br/><br/>
-                
+                <b>Identity No</b> : {{staff?.identityNo}}<br/><br/>
+                <b>Name </b> : {{staff?.name}}<br/><br/>
+                <b>Email</b> : {{staff?.email}}<br/><br/>
               </div> 
-
                <div flex-gt-md="40">
                 <b></b>  <br/><br/>
                 <b></b>  <br/><br/>
