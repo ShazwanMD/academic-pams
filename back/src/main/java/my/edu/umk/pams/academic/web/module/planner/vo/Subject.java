@@ -1,5 +1,4 @@
 package my.edu.umk.pams.academic.web.module.planner.vo;
-
 import java.util.List;
 
 import my.edu.umk.pams.academic.web.module.core.vo.MetaObject;
