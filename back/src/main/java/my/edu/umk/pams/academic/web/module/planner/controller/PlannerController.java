@@ -4,12 +4,8 @@ import my.edu.umk.pams.academic.common.service.CommonService;
 import my.edu.umk.pams.academic.identity.service.IdentityService;
 import my.edu.umk.pams.academic.planner.model.*;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
-import my.edu.umk.pams.academic.term.model.AdEnrollment;
-import my.edu.umk.pams.academic.term.model.AdOffering;
-import my.edu.umk.pams.academic.term.model.AdSection;
 import my.edu.umk.pams.academic.web.module.planner.vo.*;
 import my.edu.umk.pams.academic.web.module.planner.vo.subject.Subject;
-import my.edu.umk.pams.academic.web.module.term.vo.Enrollment;
 import my.edu.umk.pams.academic.web.module.term.vo.Section;
 
 import org.slf4j.Logger;
@@ -483,13 +479,14 @@ public class PlannerController {
 
 	}
 	
-	  @RequestMapping(value = "/curriculums/{code}/subjects", method = RequestMethod.GET)
-	    public ResponseEntity<List<Subject>> findSubjectsByCurriculum(@PathVariable String code)  throws UnsupportedEncodingException {
-		AdCurriculum curriculum = plannerService.findCurriculumByCode(code);
-	        List<AdSubject> subjects = plannerService.findSubjects(curriculum);
-			List<Subject> subjectVos = plannerTransformer.toSubjectVos(subjects);
-	        return new ResponseEntity<List<Subject>>(subjectVos, HttpStatus.OK);
-	    }
+	@RequestMapping(value = "/curriculums/{code}/subjects", method = RequestMethod.GET)
+    public ResponseEntity<List<Subject>> findSubjectsByCurriculum(@PathVariable String code)  throws UnsupportedEncodingException {
+	AdCurriculum curriculum = plannerService.findCurriculumByCode(code);
+        List<AdSubject> subjects = plannerService.findSubjects(curriculum);
+		List<Subject> subjectVos = plannerTransformer.toSubjectVos(subjects);
+        return new ResponseEntity<List<Subject>>(subjectVos, HttpStatus.OK);
+    }
+	
 	  
 	// ====================================================================================================
 	// COHORT
@@ -532,6 +529,85 @@ public class PlannerController {
 		plannerService.updateCohort(cohort);
 		return new ResponseEntity<String>("Success", HttpStatus.OK);
 	}
+	
+	// ====================================================================================================
+		// SUBJECT
+		// ====================================================================================================
+	
+	
+	@RequestMapping(value = "/subjects", method = RequestMethod.GET)
+	  public ResponseEntity<List<Subject>> findSubjects(@PathVariable String code)  throws UnsupportedEncodingException {
+			AdCurriculum curriculum = plannerService.findCurriculumByCode(code);
+		        List<AdSubject> subjects = plannerService.findSubjects(curriculum);
+				List<Subject> subjectVos = plannerTransformer.toSubjectVos(subjects);
+		        return new ResponseEntity<List<Subject>>(subjectVos, HttpStatus.OK);
+		    }
+	
+	 @RequestMapping(value = "/subjects/{id}", method = RequestMethod.GET)
+	    public ResponseEntity<Subject> findSubjectById(@PathVariable Long id) {
+	        AdSubject subject = plannerService.findSubjectById(id);
+	        return new ResponseEntity<Subject>(plannerTransformer.toSubjectVo(subject), HttpStatus.OK);
+	    }
+	
+	 
+//	 @RequestMapping(value = "/subjects/{id}/add", method = RequestMethod.POST)
+//		public ResponseEntity<String> addSubject(@PathVariable Long id, @RequestBody Subject vo) {
+//			dummyLogin();
+//			AdCurriculum curriculum = plannerService.findCurriculumById(id);
+//			AdSubject subject = new AdSubjectImpl();
+//			subject.setOrdinal (vo.getOrdinal());
+//			subject.setSubjectType(AdSubjectType.get(vo.getSubjectType().ordinal()));
+//			subject.setCurriculum(plannerService.findCurriculumByCode(vo.getCurriculum().getCode()));
+//			plannerService.addSubject(curriculum, subject);
+//		
+//			return new ResponseEntity<String>("Success", HttpStatus.OK);
+//		}
+	 
+	 
+	 @RequestMapping(value = "/subjects/{id}", method = RequestMethod.PUT)
+		public ResponseEntity<String> updateSubject(@PathVariable Long id, @RequestBody Subject vo) {
+			dummyLogin();
+			
+			AdCurriculum curriculum = plannerService.findCurriculumById(id);
+			AdSubject subject = plannerService.findSubjectById(id);
+			subject.setOrdinal (vo.getOrdinal());
+			subject.setSubjectType(AdSubjectType.get(vo.getSubjectType().ordinal()));
+			subject.setCurriculum(plannerService.findCurriculumByCode(vo.getCurriculum().getCode()));
+			plannerService.updateSubject(curriculum,subject);
+			return new ResponseEntity<String>("Success", HttpStatus.OK);
+		}
+	 
+	 
+	 @RequestMapping(value = "/subjects/{id}/activate", method = RequestMethod.GET)
+	  public ResponseEntity<String> activateSubject(@PathVariable Long id, @RequestBody Subject vo) {
+	    dummyLogin();
+	    LOG.debug("activate subjects");
+	    AdCurriculum curriculum = plannerService.findCurriculumById(id);
+	    AdSubject subject = plannerService.findSubjectById(id);
+	    subject.setSubjectType(AdSubjectType.get(vo.getSubjectType().ordinal()));
+		subject.setCurriculum(plannerService.findCurriculumByCode(vo.getCurriculum().getCode()));
+	    plannerService.updateSubject(curriculum,subject);
+	    return new ResponseEntity<String>("success", HttpStatus.OK);
+	
+	}
+
+	@RequestMapping(value = "/subjects/{id}/deactivate", method = RequestMethod.GET)
+	  public ResponseEntity<String> deactivateSubject(@PathVariable Long id, @RequestBody Subject vo) {
+	    dummyLogin();
+	    LOG.debug("deactivate subjects");
+	    AdCurriculum curriculum = plannerService.findCurriculumById(id);
+	    AdSubject subject = plannerService.findSubjectById(id);
+	    subject.setSubjectType(AdSubjectType.get(vo.getSubjectType().ordinal()));
+		subject.setCurriculum(plannerService.findCurriculumByCode(vo.getCurriculum().getCode()));
+	    plannerService.updateSubject(curriculum,subject);
+	    return new ResponseEntity<String>("success", HttpStatus.OK);
+	
+	}
+	 
+
+	
+	
+	
 
 	// ====================================================================================================
 	// PRIVATE METHODS
