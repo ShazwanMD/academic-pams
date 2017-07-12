@@ -234,7 +234,23 @@ public class TermServiceImpl implements TermService {
 //	private AdGradeCode lookupGradeCode(BigDecimal totalScore){
 //		if(totalScore >-)
 //	}
+	
+	public void calculate(AdAcademicSession academicSession, AdOffering offering){
+	   List<AdEnrollment> enrollments = findEnrollments(offering);
+       for (AdEnrollment enrollment : enrollments) {
+           calculateGradebook(offering);
+           enrollment.setGradeCode( commonService.findByScore(enrollment.getTotalScore()));
+           updateEnrollment(enrollment.getSection(), enrollment);
+           
+           List<AdAdmission> Admissions = findAdmissions(academicSession);
+           for (AdAdmission adAdmission : Admissions) {
+				plannerService.calculateGpa(academicSession);
+			}
+                   
+		}
+	}
 
+	
 	// ====================================================================================================
 	// SECTION
 	// ====================================================================================================

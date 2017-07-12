@@ -20,6 +20,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @JGivenStage
 public class WhenGetEnrollment extends Stage<WhenGetEnrollment> {
@@ -164,6 +165,23 @@ public class WhenGetEnrollment extends Stage<WhenGetEnrollment> {
 		LOG.debug("Grade Code :{}", enrollment.getGradeCode().getCode());
 		termService.saveEnrollment(enrollment);
 
+	/*	AdAcademicSession academicSession = plannerService.findCurrentAcademicSession();
+		AdStudent student = identityService.findStudentByMatricNo("A17M0009F");
+		AdAdmission currentAdmission = termService.findAdmissionByAcademicSessionCohortAndStudent(academicSession, cohort, student);
+		
+		List<AdAdmission> admissions = termService.findAdmissionsStudent(program, student)
+		BigDecimal totalCreditTaken = BigDecimal.ZERO; // dapat
+		BigDecimal totalCreditEarned = BigDecimal.ZERO; // kira
+		for (AdAdmission adAdmission : admissions) {
+		  totalCreditTaken = totalCreditTaken.add(adAdmission.getCreditTaken());
+		  totalCreditEarned = totalCreditEarned.add(adAdmission.getCreditEarned());
+	    		
+		}
+		
+		BigDecimal cgpa = totalCreditTaken.divide(totalCreditEarned);
+		currentAdmission.setCgpa(cgpa);*/
+		
+	
 		return self();
 	}
 }

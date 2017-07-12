@@ -72,6 +72,7 @@ public interface TermService {
 
     void calculateGradebook(AdOffering offering);
     
+    void calculate(AdAcademicSession academicSession, AdOffering offering);
     //==========+==========================================================================================
     // SECTION
     //====================================================================================================

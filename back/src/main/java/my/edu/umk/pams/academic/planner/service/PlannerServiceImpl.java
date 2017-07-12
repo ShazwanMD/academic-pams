@@ -153,7 +153,7 @@ public class PlannerServiceImpl implements PlannerService {
     public void calculateGpa(AdAcademicSession academicSession){
        	List<AdAdmission> admissions = termService.findAdmissions(academicSession);
     	for (AdAdmission admission : admissions) {
-    		LOG.debug("admission:{}",admission.getCohort().getProgram().getOfferings());
+    		LOG.debug("admission:{}",admission.getCohort().getCode());
     		
        		List<AdEnrollment> enrollments = termService.findEnrollments(admission);
        		BigDecimal totalCredit = BigDecimal.ZERO;

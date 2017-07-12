@@ -147,8 +147,8 @@ public class WhenCreateGradeBook extends Stage<WhenCreateGradeBook> {
 		
 		//CalculateGPA
 		AdAcademicSession session = plannerService.findCurrentAcademicSession();
-//		plannerService.calculateGpa(session);
-//		LOG.debug("GPA:{}",admission.getGpa());
+		plannerService.calculateGpa(session);
+		LOG.debug("GPA:{}",admission.getGpa());
 		return self();
 	}
 }

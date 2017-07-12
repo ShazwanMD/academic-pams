@@ -789,18 +789,10 @@ public class TermController {
     @RequestMapping(value = "/offerings/{canonicalCode}/calculateGradebook", method = RequestMethod.POST)
     public ResponseEntity<String> calculate(@PathVariable String canonicalCode) {
         dummyLogin();
+        AdAcademicSession academicSession = plannerService.findCurrentAcademicSession();
         AdOffering offering = termService.findOfferingByCanonicalCode(canonicalCode);
-        List<AdEnrollment> enrollments = termService.findEnrollments(offering);
-        for (AdEnrollment enrollment : enrollments) {
-            termService.calculateGradebook(offering);
-           
-            enrollment.setGradeCode( commonService.findByScore(enrollment.getTotalScore()));
-            termService.updateEnrollment(enrollment.getSection(), enrollment);
-		}
-   
-        
-   
-        return new ResponseEntity<String>("Success", HttpStatus.OK);
+        termService.calculate(academicSession, offering);
+    return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
 
     // ====================================================================================================
