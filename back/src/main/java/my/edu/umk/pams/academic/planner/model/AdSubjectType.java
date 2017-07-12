@@ -13,7 +13,6 @@ public enum AdSubjectType {
     CURRICULUM,// kokurikulum
     OTHERS;
 
-	
     public static AdSubjectType get(int index) {
         return values()[index];
     }
