@@ -529,5 +529,17 @@ UPDATE AD_USER
 SET actor_id = currval('SQ_AD_ACTR')
 WHERE email = 'sarahatiqah@umk.edu.my';
 
+-- student 31
+INSERT INTO AD_ACTR (ID, IDENTITY_NO, NAME, EMAIL, PHONE, MOBILE, FAX, ACTOR_TYPE, C_TS, C_ID, M_ST)
+VALUES
+  (nextval('SQ_AD_ACTR'), 'A17M0031F', 'SAM', 'sam@umk.edu.my', '097111775', '0123450004', NULL, 1,
+                          CURRENT_TIMESTAMP, 1, 1);
+
+INSERT INTO AD_STDN (ID, STUDENT_STATUS, COHORT_ID,STUDY_MODE_ID) VALUES (currval('SQ_AD_ACTR'), 0, 79,1);
+
+UPDATE AD_USER
+SET actor_id = currval('SQ_AD_ACTR')
+WHERE email = 'sam@umk.edu.my';
+
 
 

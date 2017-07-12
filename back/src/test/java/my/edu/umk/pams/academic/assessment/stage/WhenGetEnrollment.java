@@ -98,31 +98,38 @@ public class WhenGetEnrollment extends Stage<WhenGetEnrollment> {
 		student = profileService.findStudentByMatricNo("A17M0009F");
 
 		cohort = student.getCohort();
-
+		LOG.debug("Cohort:{}",cohort.getCode());
+		
 		program = cohort.getProgram();
-
+		LOG.debug("Program:{}",program.getCode());
+		
 		faculty = program.getFaculty();
 
 		session = plannerService.findCurrentAcademicSession();
 
-		course = plannerService.findCourseByCodeAndFaculty("GST5013", faculty);
-
+	
+		AdCourse course = 	plannerService.findCourseByCode("GST5013");
+		LOG.debug("Offering Course:{}",course.getCode());
+	
 		studyCenter = commonService.findStudyCenterByCode("A");
 
 		offering = new AdOfferingImpl();
-		offering.setCanonicalCode("MASTER/MBA/GST5013/201720181");
-		offering.setCode("MASTER/MBA/GST5013");
+		offering.setCanonicalCode("MASTER-MBA-GST5013-201720181");
+		offering.setCode("MASTER-MBA-GST5013");
 		offering.setTitleMs("s");
 		offering.setTitleEn("s");
 		offering.setCapacity(100);
 		offering.setProgram(program);
 		offering.setCourse(course);
-		offering.getSections();
+		offering.setSession(session);
 		termService.saveOffering(offering);
+		LOG.debug("Offering Course:{}",offering.getCourse().getCode());
+		LOG.debug("Offering Session:{}",offering.getSession().getCode());
+		
 
 		section = new AdSectionImpl();
 		section.setCode("Section A");
-		section.setCanonicalCode("MASTER/MBA/GST5013/201720181/Section A");
+		section.setCanonicalCode("MASTER-MBA-GST5013-201720181-Section A");
 		section.setOrdinal(1);
 		section.setCapacity(20);
 		section.setOffering(offering);

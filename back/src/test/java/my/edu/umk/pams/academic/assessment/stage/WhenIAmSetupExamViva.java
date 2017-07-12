@@ -108,8 +108,8 @@ public class WhenIAmSetupExamViva extends Stage<WhenIAmSetupExamViva> {
 				
 		// setup assessment
 		assessment = new AdAssessmentImpl();
-		assessment.setCode("MASTER/MBA/GST5013/Q1");
-		assessment.setCanonicalCode("MASTER/MBA/GST5013/201720181/Q1");
+		assessment.setCode("MASTER-MBA-GST5013-Q1");
+		assessment.setCanonicalCode("MASTER-MBA-GST5013-201720181-Q1");
 		assessment.setDescription("Economics & Business Environment");
 		assessment.setOrdinal(0);
 		assessment.setWeight(new BigDecimal(BigInteger.valueOf(10)));
@@ -134,8 +134,8 @@ public class WhenIAmSetupExamViva extends Stage<WhenIAmSetupExamViva> {
 
 		// setup assessment2
 		assessment = new AdAssessmentImpl();
-		assessment.setCode("MASTER/MBA/GST5013/Q2");
-		assessment.setCanonicalCode("MASTER/MBA/GST5013/201720181/Q2");
+		assessment.setCode("MASTER-MBA-GST5013-Q2");
+		assessment.setCanonicalCode("MASTER-MBA-GST5013-201720181-Q2");
 		assessment.setDescription("Economics & Business Environment");
 		assessment.setOrdinal(1);
 		assessment.setWeight(new BigDecimal(BigInteger.valueOf(90)));

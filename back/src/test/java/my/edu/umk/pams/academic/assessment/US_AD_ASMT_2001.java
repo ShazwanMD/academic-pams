@@ -40,7 +40,7 @@ public class US_AD_ASMT_2001 extends SpringScenarioTest<GivenIAmAcademicStaff, W
 //		addStage(WhenSetupGradeCode.class).setup_gradeCode();
 		addStage(WhenGetEnrollment.class).get_enrollment();
 		
-		when().i_setup_assessments();
+		when().i_setup_assessments();	
 		
 		addStage(WhenCreateGradeBook.class).create_gradeBook();
 		then().exam_setup();

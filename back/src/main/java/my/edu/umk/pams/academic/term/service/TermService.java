@@ -240,6 +240,8 @@ public interface TermService {
     List<AdAdmission> findAdmissions(Integer offset, Integer limit);
 
     List<AdAdmission> findAdmissions(AdAcademicSession academicSession, Integer offset, Integer limit);
+    
+    List<AdAdmission> findAdmissions(AdAcademicSession academicSession);
 
     Integer countAdmission(AdAcademicSession academicSession, AdStudent student);
 

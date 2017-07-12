@@ -1,5 +1,6 @@
 package my.edu.umk.pams.academic.planner.service;
 
+import my.edu.umk.pams.academic.common.model.AdGradeCode;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.planner.dao.*;
 import my.edu.umk.pams.academic.planner.model.*;
@@ -9,6 +10,7 @@ import my.edu.umk.pams.academic.term.dao.AdOfferingDao;
 import my.edu.umk.pams.academic.term.dao.AdSectionDao;
 import my.edu.umk.pams.academic.term.model.AdAdmission;
 import my.edu.umk.pams.academic.term.model.AdEnrollment;
+import my.edu.umk.pams.academic.term.model.AdOffering;
 import my.edu.umk.pams.academic.term.service.TermService;
 
 import org.hibernate.SessionFactory;
@@ -18,6 +20,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.List;
 
 
@@ -147,16 +151,41 @@ public class PlannerServiceImpl implements PlannerService {
 
     //calculateGPA
     public void calculateGpa(AdAcademicSession academicSession){
-    	List<AdAdmission> admissions = termService.findAdmissions(academicSession, 0, 999999);
+       	List<AdAdmission> admissions = termService.findAdmissions(academicSession);
     	for (AdAdmission admission : admissions) {
-    		// each admission
-    		// tengok enrollments 
-    		// setiap enrollment, kumpul kan untuk GPA
-    		// and then update admission
-    		List<AdEnrollment> enrollments = termService.findEnrollments(admission);
+    		LOG.debug("admission:{}",admission.getCohort().getProgram().getOfferings());
+    		
+       		List<AdEnrollment> enrollments = termService.findEnrollments(admission);
+       		BigDecimal totalCredit = BigDecimal.ZERO;
+       		BigDecimal totalCalculateGpa = BigDecimal.ZERO;
     		for (AdEnrollment enrollment : enrollments) {
-			
+    			LOG.debug("Enrollment:{}",enrollment.getGradeCode());
+    			//Offering
+    			AdOffering offering = enrollment.getSection().getOffering();
+    			LOG.debug("offering:{}",offering.getCanonicalCode());
+    			
+    			//Course
+    			
+    			AdCourse course = offering.getCourse();
+    			LOG.debug("Course:{}",course);
+    			
+    			//CreditHour
+    			Integer credit = course.getCredit();
+    			LOG.debug("credit:{}",credit);
+    			
+    	 		BigDecimal creditHour = new BigDecimal(credit);
+    			LOG.debug("CreditHour:{}",creditHour);
+    			
+    			AdGradeCode gradeCode = enrollment.getGradeCode();
+    			LOG.debug("gradeCode:{}",gradeCode);
+    			
+    			BigDecimal gradePointxCredit = gradeCode.getPoint();
+    			BigDecimal calculateGpaByCourse = gradePointxCredit.multiply(creditHour);
+    			totalCredit = totalCredit.add(creditHour);	
+    			totalCalculateGpa = totalCalculateGpa.add(calculateGpaByCourse);
 			}
+    		BigDecimal gpa = totalCalculateGpa.divide(totalCredit).setScale(2, RoundingMode.HALF_UP);
+    		admission.setGpa(gpa);
     		termService.updateAdmission(admission);   	
 		}
     }
