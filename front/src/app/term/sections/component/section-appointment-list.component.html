@@ -71,7 +71,7 @@
             <md-icon>more_vert</md-icon>
           </button>
           <md-menu x-position="before" #menu1="mdMenu">
-            <button md-menu-item [routerLink]="['/term/appointments', row['id']]">View appointment details</button>
+            <button md-menu-item [routerLink]="['/identity/staffs', row['id']]">View staff details</button>
             <button md-menu-item (click)="editDialog(row, true)">Update appointment</button>
             <button md-menu-item (click)="removeAppointment(row)">Delete appointment</button>
 

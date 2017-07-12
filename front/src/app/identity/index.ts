@@ -18,6 +18,7 @@ import { ActorActions } from "./actor.action";
 import { ActorEffects } from "./actor.effect";
 import { EffectsModule } from "@ngrx/effects";
 
+
 export interface IdentityModuleState {
   actors: ActorListState;
   students: StudentListState;
@@ -51,12 +52,14 @@ export const identityModuleReducers = {
     StudentSelectComponent,
     StaffSelectComponent,
     ActorSelectComponent,
+   
   ],
   exports: [
     IdentityComponent,
     StudentSelectComponent,
     StaffSelectComponent,
     ActorSelectComponent,
+   
   ],
 })
 export class IdentityModule {
