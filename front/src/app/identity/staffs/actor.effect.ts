@@ -56,12 +56,12 @@ export class ActorEffects {
   @Effect() findStaffByIdentityNo$ = this.actions$
   .ofType(StaffActions.FIND_STAFF_BY_IDENTITY_NO)
   .map(action => action.payload)
-  .switchMap(identityNo => this.termService.findStaffByIdentityNo(identityNo))
-  .map(staff => this.staffActions.findStaffByIdentityNoSuccess(staff)),
+  .switchMap(identityNo => this.identityService.findStaffByIdentityNo(identityNo))
+  .map(staff => this.staffActions.findStaffByIdentityNoSuccess(staff));
  /* .mergeMap(action => from([action,
     this.staffActions.findStaffByAdmission(action.payload),
     this.admissionActions.findEnrollmentApplicationsByAdmission(action.payload),*/
-   ]));
+   // ]));
   
 
   @Effect() findStaff$ = this.actions$
