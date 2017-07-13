@@ -14,10 +14,9 @@ import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 
 import my.edu.umk.pams.academic.assessment.stage.ThenExamVivaSetup;
-import my.edu.umk.pams.academic.assessment.stage.WhenCreateGradeBook;
-import my.edu.umk.pams.academic.assessment.stage.WhenGetEnrollment;
+import my.edu.umk.pams.academic.assessment.stage.WhenUpdateGradeBook;
+import my.edu.umk.pams.academic.assessment.stage.GivenAnEnrollment;
 import my.edu.umk.pams.academic.assessment.stage.WhenIAmSetupExamViva;
-import my.edu.umk.pams.academic.assessment.stage.WhenSetupGradeCode;
 import my.edu.umk.pams.academic.config.TestAppConfiguration;
 import my.edu.umk.pams.bdd.stage.GivenIAmAcademicStaff;
 
@@ -38,11 +37,11 @@ public class US_AD_ASMT_2001 extends SpringScenarioTest<GivenIAmAcademicStaff, W
 		given().i_am_a_staff_in_current_academic_session();
 		
 //		addStage(WhenSetupGradeCode.class).setup_gradeCode();
-		addStage(WhenGetEnrollment.class).get_enrollment();
+		addStage(GivenAnEnrollment.class).create_enrollment();
 		
 		when().i_setup_assessments();	
 //		
-		addStage(WhenCreateGradeBook.class).create_gradeBook();
+		addStage(WhenUpdateGradeBook.class).update_gradeBook();
 		then().exam_setup();
 		
 	}
