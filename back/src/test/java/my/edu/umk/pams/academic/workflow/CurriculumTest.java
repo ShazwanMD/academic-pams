@@ -7,6 +7,9 @@ import my.edu.umk.pams.academic.planner.model.*;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
 import my.edu.umk.pams.academic.term.service.TermService;
 import my.edu.umk.pams.academic.workflow.service.WorkflowService;
+
+import java.util.List;
+
 import org.hibernate.SessionFactory;
 import org.junit.Before;
 import org.junit.Test;
@@ -52,6 +55,14 @@ public class CurriculumTest {
     @Autowired
     private IdentityService identityService;
 
+	private AdProgram program;
+
+	private List<AdSubject> subjects;
+
+	private AdCourse course;
+
+	private AdSubjectType subjectType;
+
     @Before
     public void before() {
         UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken("root", "abc123");
@@ -63,20 +74,33 @@ public class CurriculumTest {
     @Rollback(false)
     public void testWorkflow() {
         AdCurriculum curriculum = new AdCurriculumImpl();
-        curriculum.setCode("MGSEB-MBA");
+        curriculum.setCode("abcfffssyy");
         curriculum.setCoreCredit(10);
         curriculum.setCurriculumCredit(10);
+        curriculum.setElectiveCredit(10);
+        curriculum.setGeneralCredit(10);
+        curriculum.setLanguageCredit(10);
+        curriculum.setMaxPeriod(10);
+        curriculum.setOrdinal(10);
+        curriculum.setOthersCredit(10);
+        curriculum.setPeriod(10);
+		curriculum.setProgram(program);
+        curriculum.setRequiredCredit(0);
+		curriculum.setSubjects(subjects);
+        curriculum.setTotalCredit(10);
         plannerService.saveCurriculum(curriculum);
-        curriculum = plannerService.findCurriculumByCode("MGSEB-MBA");
+        curriculum = plannerService.findCurriculumByCode("abc");
+      LOG.debug("code{}",curriculum.getCode());
+      
 
-        // ================================
-        // SEMESTER 1
-        // ================================
+      //   ================================
+     //    SEMESTER 1
+       //  ================================
         AdSingleSubject subject11 = new AdSingleSubjectImpl();
-        subject11.setCourse(plannerService.findCourseByCode("GST5021"));
+        subject11.setCourse(plannerService.findCourseByCode("GST5013"));
         subject11.setOrdinal(1); // semester 1
         subject11.setSubjectType(AdSubjectType.CORE); 
-        plannerService.addSubject(curriculum, subject11);
+        plannerService.addSubject(curriculum, subject11);    
 
         AdSingleSubject subject12 = new AdSingleSubjectImpl();
         subject12.setCourse(plannerService.findCourseByCode("GST5023"));
@@ -224,9 +248,6 @@ public class CurriculumTest {
         //PENGKHUSUSAN (HUMAN RESOURCE MANAGEMENT)
         AdBundleSubjectPart part4 = new AdBundleSubjectPartImpl();
         part.setCourse(plannerService.findCourseByCode("GSE6133"));
-        
-        
-        
         
      
     }
