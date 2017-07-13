@@ -5,4 +5,9 @@ export interface Subject extends MetaObject{
   id: null;
 //   subjectType: SubjectType;
   curriculum?:Curriculum;
+
+
+  // transient
+
+  selected: boolean;
 }
