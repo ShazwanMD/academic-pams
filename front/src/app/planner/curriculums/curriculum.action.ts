@@ -38,6 +38,22 @@ export class CurriculumActions {
         };
     }
 
+    static FIND_SUBJECTS_BY_CURRICULUM = '[Subject] Find Subject';
+    findSubjectsByCurriculum( curriculum ): Action {
+        return {
+            type: CurriculumActions.FIND_SUBJECTS_BY_CURRICULUM,
+            payload: curriculum
+        };
+    }
+
+     static FIND_SUBJECTS_BY_CURRICULUM_SUCCESS = '[Subject] Find Subject';
+    findSubjectsByCurriculumSuccess( curriculum ): Action {
+        return {
+            type: CurriculumActions.FIND_SUBJECTS_BY_CURRICULUM_SUCCESS,
+            payload: curriculum
+        };
+    }
+
     static SAVE_CURRICULUM = '[Curriculum] Save Curriculum';
     saveCurriculum( curriculum ): Action {
         return {
