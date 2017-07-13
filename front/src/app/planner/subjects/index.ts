@@ -1,3 +1,4 @@
+import {CurriculumActions} from '../curriculums/curriculum.action';
 
 import {SubjectCenterPage } from './subject-center.page';
 import '@ngrx/core/add/operator/select';
@@ -10,9 +11,9 @@ import {PlannerService} from '../../../services';
 import {CommonService} from '../../../services';
 import {IdentityService} from '../../../services';
 import {SubjectListComponent} from "./component/subject-list.component";
-// import {SubjectActions} from "./subject.action";
+import {SubjectActions} from './subject.action';
 import {EffectsModule} from "@ngrx/effects";
-// import {SubjectEffects} from "./subject.effect";
+import {SubjectEffects} from './subject.effect';
 import {SubjectComponent} from "./component/subject.component";
 import {SubjectDetailPage} from "./subject-detail.page";
 import {SubjectEditorDialog} from "./dialog/subject-editor.dialog";
@@ -25,7 +26,7 @@ import {SubjectCreatorDialog} from "./dialog/subject-creator.dialog";
     BrowserModule,
     ReactiveFormsModule,
     CovalentCoreModule.forRoot(),
-    // EffectsModule.run(SubjectEffects),
+   EffectsModule.run(SubjectEffects),
   ],
   
   declarations: [
@@ -37,7 +38,6 @@ import {SubjectCreatorDialog} from "./dialog/subject-creator.dialog";
     // component
     SubjectListComponent,
     SubjectComponent,
-  
 
     // dialog
     SubjectEditorDialog,
@@ -66,7 +66,8 @@ export class SubjectSubModule {
         PlannerService,
         IdentityService,
         CommonService,
-        // SubjectActions,
+        SubjectActions,
+        CurriculumActions,
       ],
     };
   }
