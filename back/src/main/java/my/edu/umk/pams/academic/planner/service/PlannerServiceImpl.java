@@ -149,48 +149,43 @@ public class PlannerServiceImpl implements PlannerService {
         sessionFactory.getCurrentSession().flush();
     }
 
-    //calculateGPA
-    public void calculateGpa(AdAcademicSession academicSession){
-       	List<AdAdmission> admissions = termService.findAdmissions(academicSession);
-    	for (AdAdmission admission : admissions) {
-    		LOG.debug("admission:{}",admission.getCohort().getCode());
+    public void calculateGpa(AdAcademicSession academicSession, AdAdmission admission){
+        LOG.debug("admission:{}",admission.getCohort().getCode());
     		
-       		List<AdEnrollment> enrollments = termService.findEnrollments(admission);
-       		BigDecimal totalCredit = BigDecimal.ZERO;
-       		BigDecimal totalCalculateGpa = BigDecimal.ZERO;
-    		for (AdEnrollment enrollment : enrollments) {
-    			LOG.debug("Enrollment:{}",enrollment.getGradeCode());
-    			//Offering
-    			AdOffering offering = enrollment.getSection().getOffering();
-    			LOG.debug("offering:{}",offering.getCanonicalCode());
+        List<AdEnrollment> enrollments = termService.findEnrollments(admission);
+        BigDecimal totalCredit = BigDecimal.ZERO;
+        BigDecimal totalCalculateGpa = BigDecimal.ZERO;
+        for (AdEnrollment enrollment : enrollments) {
+            LOG.debug("Enrollment:{}",enrollment.getGradeCode());
+            //Offering
+            AdOffering offering = enrollment.getSection().getOffering();
+            LOG.debug("offering:{}",offering.getCanonicalCode());
     			
-    			//Course
+            //Course
+            AdCourse course = offering.getCourse();
+            LOG.debug("Course:{}",course);
     			
-    			AdCourse course = offering.getCourse();
-    			LOG.debug("Course:{}",course);
+            //CreditHour
+            Integer credit = course.getCredit();
+            LOG.debug("credit:{}",credit);
     			
-    			//CreditHour
-    			Integer credit = course.getCredit();
-    			LOG.debug("credit:{}",credit);
+            BigDecimal creditHour = new BigDecimal(credit);
+            LOG.debug("CreditHour:{}",creditHour);
     			
-    	 		BigDecimal creditHour = new BigDecimal(credit);
-    			LOG.debug("CreditHour:{}",creditHour);
+            AdGradeCode gradeCode = enrollment.getGradeCode();
+            LOG.debug("gradeCode:{}", gradeCode.getCode());
     			
-    			AdGradeCode gradeCode = enrollment.getGradeCode();
-    			LOG.debug("gradeCode:{}",gradeCode);
+            BigDecimal gradePointxCredit = gradeCode.getPoint();
     			
-    			BigDecimal gradePointxCredit = gradeCode.getPoint();
+            BigDecimal calculateGpaByCourse = gradePointxCredit.multiply(creditHour);
+            totalCalculateGpa = totalCalculateGpa.add(calculateGpaByCourse);
     			
-    			BigDecimal calculateGpaByCourse = gradePointxCredit.multiply(creditHour);
-    			totalCalculateGpa = totalCalculateGpa.add(calculateGpaByCourse);
-    			
-    			totalCredit = totalCredit.add(creditHour);	
-			}
-    		BigDecimal gpa = totalCalculateGpa.divide(totalCredit).setScale(2, RoundingMode.HALF_UP);
+            totalCredit = totalCredit.add(creditHour);
+        }
+        BigDecimal gpa = totalCalculateGpa.divide(totalCredit).setScale(2, RoundingMode.HALF_UP);
     		
-    		admission.setGpa(gpa);
-    		termService.updateAdmission(admission);   	
-		}
+        admission.setGpa(gpa);
+        termService.updateAdmission(admission);
     }
 
     //====================================================================================================

@@ -2,6 +2,7 @@ package my.edu.umk.pams.academic.planner.service;
 
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.planner.model.*;
+import my.edu.umk.pams.academic.term.model.AdAdmission;
 import my.edu.umk.pams.academic.web.module.planner.vo.AcademicYear;
 
 import java.util.List;
@@ -41,7 +42,7 @@ public interface PlannerService {
     void removeAcademicSession(AdAcademicSession academicSession);
     
     //CalculateGPA
-    void calculateGpa(AdAcademicSession academicSession);
+    void calculateGpa(AdAcademicSession academicSession, AdAdmission admission);
     
     //====================================================================================================
     // CURRICULUM

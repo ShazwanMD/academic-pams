@@ -235,6 +235,7 @@ public class TermServiceImpl implements TermService {
 		List<AdEnrollment> enrollments = findEnrollments(offering);
 		for (AdEnrollment enrollment : enrollments) {
 			List<AdGradebook> gradebooks = findGradebooks(enrollment);
+			LOG.debug("Found " + gradebooks.size() + " gradebooks");
 			BigDecimal totalScore = BigDecimal.ZERO;
 			for (AdGradebook gradebook : gradebooks) {
 				BigDecimal assessmentScore = gradebook.getScore().multiply(gradebook.getAssessment().getWeight())
@@ -265,7 +266,7 @@ public class TermServiceImpl implements TermService {
            
            List<AdAdmission> Admissions = findAdmissions(academicSession);
            for (AdAdmission adAdmission : Admissions) {
-				plannerService.calculateGpa(academicSession);
+				plannerService.calculateGpa(academicSession, adAdmission);
 			}
                    
 		}
