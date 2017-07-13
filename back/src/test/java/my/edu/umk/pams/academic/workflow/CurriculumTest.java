@@ -224,7 +224,6 @@ public class CurriculumTest {
         plannerService.addSubjectPart(bundleSubject, part37);
         plannerService.addSubjectPart(bundleSubject, part38);
         
-        
         // elective (option)/bundle subject  // option student tp admin dh ttpkan 
         AdBundleSubject bundleSubject1 = new AdBundleSubjectImpl();
         bundleSubject1.setSubjectType(AdSubjectType.ELECTIVE);
@@ -248,6 +247,9 @@ public class CurriculumTest {
         //PENGKHUSUSAN (HUMAN RESOURCE MANAGEMENT)
         AdBundleSubjectPart part4 = new AdBundleSubjectPartImpl();
         part.setCourse(plannerService.findCourseByCode("GSE6133"));
+        
+        
+        
         
      
     }
