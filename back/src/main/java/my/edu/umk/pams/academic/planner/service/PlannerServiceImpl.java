@@ -180,11 +180,14 @@ public class PlannerServiceImpl implements PlannerService {
     			LOG.debug("gradeCode:{}",gradeCode);
     			
     			BigDecimal gradePointxCredit = gradeCode.getPoint();
+    			
     			BigDecimal calculateGpaByCourse = gradePointxCredit.multiply(creditHour);
-    			totalCredit = totalCredit.add(creditHour);	
     			totalCalculateGpa = totalCalculateGpa.add(calculateGpaByCourse);
+    			
+    			totalCredit = totalCredit.add(creditHour);	
 			}
     		BigDecimal gpa = totalCalculateGpa.divide(totalCredit).setScale(2, RoundingMode.HALF_UP);
+    		
     		admission.setGpa(gpa);
     		termService.updateAdmission(admission);   	
 		}

@@ -146,9 +146,9 @@ public class WhenCreateGradeBook extends Stage<WhenCreateGradeBook> {
 		LOG.debug("gradeCode_IN_Enrollment_Table:{}",enrollment.getGradeCode().getCode());
 		
 		//CalculateGPA
-		AdAcademicSession session = plannerService.findCurrentAcademicSession();
-		plannerService.calculateGpa(session);
-		LOG.debug("GPA:{}",admission.getGpa());
+//		AdAcademicSession session = plannerService.findCurrentAcademicSession();
+//		plannerService.calculateGpa(session);
+//		LOG.debug("GPA:{}",admission.getGpa());
 		return self();
 	}
 }
