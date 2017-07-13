@@ -23,6 +23,7 @@ export class OfferingEditorDialog implements OnInit {
   private _offering: Offering;
   private _program: Program;
   private _course: Course;
+  private isOfferingExists: boolean;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -50,7 +51,8 @@ export class OfferingEditorDialog implements OnInit {
     }
   }
 
-  submit(offering: Offering, isValid: boolean): void {
+  submit(offering: Offering, isValid: boolean, isOfferingExists: boolean): void {
+           
     // workaround
     this._program = offering.program;
     this._course = offering.course;
@@ -71,9 +73,14 @@ export class OfferingEditorDialog implements OnInit {
     console.log('offeringtitleMs:' + offering.titleMs);
     console.log('offeringtitleEn:' + offering.titleEn);
 
+   if(isOfferingExists == true){
+       console.log('Duplicate data offering.Data will not be submit');
+   } else {
+   
     if (!this.edit) this.store.dispatch(this.actions.saveOffering(this._program, this._course, offering));
     else  this.store.dispatch(this.actions.updateOffering(offering));
     this.dialog.close();
+  }
   }
 }
 

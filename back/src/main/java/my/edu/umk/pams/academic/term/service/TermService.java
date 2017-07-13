@@ -65,6 +65,8 @@ public interface TermService {
     Integer countOfferingWithSection(boolean authorized, String filter, AdAcademicSession session);
 
     boolean isOfferingExists(AdProgram program, AdCourse course);
+    
+    boolean isOfferingExists(String canonicalCode);
 
     void saveOffering(AdOffering offering);
 

@@ -60,6 +60,9 @@ public class AdOfferingImpl implements AdOffering {
 
     @Transient
     private Integer assessmentCount = 0;
+    
+    @Transient
+    private boolean isOfferingExist = true;
 
 
     public Long getId() {
@@ -182,6 +185,16 @@ public class AdOfferingImpl implements AdOffering {
     @Override
     public void setAssessmentCount(Integer assessmentCount) {
         this.assessmentCount = assessmentCount;
+    }
+    
+    @Override
+    public boolean getIsOfferingExist() {
+        return isOfferingExist;
+    }
+
+    @Override
+    public void setIsOfferingExist(boolean isOfferingExist) {
+        this.isOfferingExist = isOfferingExist;
     }
 
     @Override

@@ -61,4 +61,8 @@ public interface AdOffering extends AdMetaObject {
     Integer getAssessmentCount();
 
     void setAssessmentCount(Integer assessmentCount);
+    
+    boolean getIsOfferingExist();
+    
+    void setIsOfferingExist(boolean isOfferingExist);
 }
