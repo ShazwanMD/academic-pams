@@ -284,16 +284,16 @@ export class PlannerService {
   // SUBJECT
   // ====================================================================================================
 
-// findSubjects(): Observable<Subject[]> {
-//     console.log("findSubjects");
-//     return this._http.get(this.PLANNER_API + '/subjects')
-//       .map(res => <Subject[]>res.json())
-//   }
+findSubjects(): Observable<Subject[]> {
+    console.log("findSubjects");
+    return this._http.get(this.PLANNER_API + '/subjects')
+      .map(res => <Subject[]>res.json())
+  }
 
-//   findSubjectById(): Observable<Subject> {
-//     return this._http.get(this.PLANNER_API + '/subjects/' )
-//       .map((res: Response) => <Subject>res.json());
-//   }
+  // findSubjectById(): Observable<Subject> {
+  //   return this._http.get(this.PLANNER_API + '/subjects/' )
+  //     .map((res: Response) => <Subject>res.json());
+  // }
 
 //    addSubject(subject: Subject ): Observable<String> {
 //     console. log (subject.id);
@@ -313,11 +313,11 @@ export class PlannerService {
 //       .flatMap((res: Response) => Observable.of(res.text()));
 //   }
 
-//   deactivateSubject(subject: Subject): Observable<String> {
-//     console.log("deactivate cohort");
-//     return this._http.get(this.PLANNER_API + '/subjects/' + subject.id + '/deactivate')
-//       .flatMap((res: Response) => Observable.of(res.text()));
-//   }
+  // deactivateSubject(subject: Subject): Observable<String> {
+  //   console.log("deactivate cohort");
+  //   return this._http.get(this.PLANNER_API + '/subjects/' + subject.id + '/deactivate')
+  //     .flatMap((res: Response) => Observable.of(res.text()));
+  // }
 
 
   // ====================================================================================================
