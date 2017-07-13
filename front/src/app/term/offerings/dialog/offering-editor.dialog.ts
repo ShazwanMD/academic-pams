@@ -72,15 +72,17 @@ export class OfferingEditorDialog implements OnInit {
     console.log('offeringcode:' + offering.code);
     console.log('offeringtitleMs:' + offering.titleMs);
     console.log('offeringtitleEn:' + offering.titleEn);
-
-   if(isOfferingExists == true){
-       console.log('Duplicate data offering.Data will not be submit');
-   } else {
    
-    if (!this.edit) this.store.dispatch(this.actions.saveOffering(this._program, this._course, offering));
-    else  this.store.dispatch(this.actions.updateOffering(offering));
-    this.dialog.close();
-  }
+    if (!this.edit) {
+        this.store.dispatch(this.actions.saveOffering(this._program, this._course, offering));
+        console.log('Offering data will be save');
+        this.dialog.close();
+    
+    } else {  
+        this.store.dispatch(this.actions.updateOffering(offering));
+        console.log('Offering data will be update');
+        this.dialog.close();
+    }
   }
 }
 

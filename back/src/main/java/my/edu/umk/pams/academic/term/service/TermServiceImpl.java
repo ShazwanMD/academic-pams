@@ -204,9 +204,9 @@ public class TermServiceImpl implements TermService {
 	}
 	
 	@Override
-	public void saveOffering(AdOffering offering) {
+	public void saveOffering(AdOffering offering) throws Exception {
 		if (isOfferingExists(offering.getCanonicalCode())) {
-			System.out.println ("Duplicate offering record");							
+			throw new Exception ("Duplicate offering record");							
 		} else {
 		
 		offeringDao.save(offering, securityService.getCurrentUser());
@@ -420,10 +420,14 @@ public class TermServiceImpl implements TermService {
 	}
 
 	@Override
-	public void addSection(AdOffering offering, AdSection section) {
+	public void addSection(AdOffering offering, AdSection section) throws Exception {
+		if (isSectionExists(section.getCanonicalCode())) {
+			throw new Exception ("Duplicate section record");							
+		} else {
 		section.setOffering(offering);
 		offeringDao.addSection(offering, section, securityService.getCurrentUser());
 		sessionFactory.getCurrentSession().flush();
+	}
 	}
 
 	@Override
@@ -1631,3 +1635,4 @@ public class TermServiceImpl implements TermService {
 
 	
 }
+

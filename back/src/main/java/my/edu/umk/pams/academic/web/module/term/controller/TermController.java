@@ -680,7 +680,7 @@ public class TermController {
     }
 
     @RequestMapping(value = "/offerings/{canonicalCode}/sections", method = RequestMethod.POST)
-    public ResponseEntity<String> addSection(@PathVariable String canonicalCode, @RequestBody Section vo) {
+    public ResponseEntity<String> addSection(@PathVariable String canonicalCode, @RequestBody Section vo) throws Exception {
         dummyLogin();
 
         LOG.debug("adding section code: {}", vo.getCode());
@@ -697,7 +697,7 @@ public class TermController {
     }
 
     @RequestMapping(value = "/offerings", method = RequestMethod.POST)
-    public ResponseEntity<String> saveOffering(@RequestBody Offering vo) {
+    public ResponseEntity<String> saveOffering(@RequestBody Offering vo) throws Exception {
         dummyLogin();
 
         AdOffering offering = new AdOfferingImpl();

@@ -6,12 +6,12 @@ import {CurriculumUpdateDialog} from './dialog/curriculum-update.dialog';
 import {Store} from '@ngrx/store';
 import {Observable} from 'rxjs';
 import {Curriculum} from './curriculum.interface';
-import {Subject} from './curriculum-subject.interface';
 import {CurriculumActions} from './curriculum.action';
 import {PlannerModuleState} from '../index';
 import {MdDialog} from '@angular/material';
 import {ViewContainerRef} from '@angular/core';
 import {MdSnackBar} from '@angular/material';
+import { Subject } from "../subjects/subject.interface";
 
 @Component({
   selector: 'pams-curriculum-detail',

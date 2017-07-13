@@ -68,7 +68,7 @@ public interface TermService {
     
     boolean isOfferingExists(String canonicalCode);
 
-    void saveOffering(AdOffering offering);
+    void saveOffering(AdOffering offering) throws Exception;
 
     void updateOffering(AdOffering offering);
 
@@ -128,7 +128,7 @@ public interface TermService {
     @Deprecated
     void saveSection(AdSection section); // use addSection
 
-    void addSection(AdOffering offering, AdSection section);
+    void addSection(AdOffering offering, AdSection section) throws Exception;
 
     void deleteSection(AdOffering offering, AdSection section);
 
