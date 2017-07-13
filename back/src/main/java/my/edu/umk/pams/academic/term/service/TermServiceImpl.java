@@ -1,6 +1,7 @@
 package my.edu.umk.pams.academic.term.service;
 
 import my.edu.umk.pams.academic.common.model.AdGradeCode;
+
 import my.edu.umk.pams.academic.common.model.AdStudyCenter;
 import my.edu.umk.pams.academic.common.service.CommonService;
 import my.edu.umk.pams.academic.core.AdFlowState;
@@ -196,13 +197,33 @@ public class TermServiceImpl implements TermService {
 	public boolean isOfferingExists(AdProgram program, AdCourse course) {
 		return offeringDao.isExists(program, course);
 	}
-
+	
+	@Override
+	public boolean isOfferingExists(String canonicalCode) {
+				  return offeringDao.isExists(canonicalCode);
+	}
+	
 	@Override
 	public void saveOffering(AdOffering offering) {
+		if (isOfferingExists(offering.getCanonicalCode())) {
+			System.out.println ("Duplicate offering record");							
+		} else {
+		
 		offeringDao.save(offering, securityService.getCurrentUser());
 		sessionFactory.getCurrentSession().flush();
-
+		}
 	}
+	
+ 
+
+/* @Override
+ 	public void saveOffering(AdOffering offering) throws Exception {
+      if (isOfferingExists(offering.getCanonicalCode()))
+       throws new Exception("Duplicate offering record");
+	            
+       offeringDao.save(offering, securityService.getCurrentUser());
+	        sessionFactory.getCurrentSession().flush();
+	    }*/
 
 	@Override
 	public void updateOffering(AdOffering offering) {
@@ -1606,4 +1627,6 @@ public class TermServiceImpl implements TermService {
 		admissionDao.removeEnrollmentApplication(admission, application, securityService.getCurrentUser());
 		sessionFactory.getCurrentSession().flush();
 	}
+
+	
 }

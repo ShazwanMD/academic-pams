@@ -1,6 +1,6 @@
-<md-card> <md-card-title>Name:{{enrollmentApplication?.admission?.student?.name}}</md-card-title>
-<md-card-subtitle>ReferenceNo:{{enrollmentApplication?.referenceNo}}</md-card-subtitle> 
-<md-card-subtitle>IdentityNo:{{enrollmentApplication?.admission?.student?.identityNo}}</md-card-subtitle>
+<md-card> <md-card-title>{{enrollmentApplication?.admission?.student?.name}}</md-card-title>
+<md-card-subtitle>{{enrollmentApplication?.referenceNo}}</md-card-subtitle> 
+<md-card-subtitle>{{enrollmentApplication?.admission?.student?.identityNo}}</md-card-subtitle>
 <md-divider></md-divider>
 <md-card-content> <!--Tab Section Here--> <md-tab-group>
 <md-tab label="Enrollment Application Information">
@@ -29,7 +29,6 @@
 	<div layout="row" class="pad-bottom">
 		<span flex="20">Cohort</span> <span>{{enrollmentApplication?.admission?.student?.cohort?.code}}</span>
 	</div>
-	
 </div>
 </md-tab>
 <md-tab label="Session Information">
@@ -50,8 +49,6 @@
 	<div layout="row" class="pad-bottom">
 		<span flex="20">Semester</span> <span>{{enrollmentApplication?.admission?.student?.cohort?.academicSession?.semester}}</span>
 	</div>
-	
 </div>
 </md-tab>
-
  </md-tab-group> </md-card-content> </md-card>
