@@ -1,6 +1,14 @@
 <div md-content flex md-scroll-y>
   <div layout="column" layout-gt-md="row" class="inset">
     <div flex-gt-md="70">
+    <md-card class="bgc-grey-600" flex> <md-card-content
+	class="text-center">
+<div class="md-display-1">APPLICATION SUCCESS</div>
+<div layout="column" layout-padding>
+	<div class="md-subhead tc-grey-100">This Application Will Be Processed.Thank You.</div>
+
+</div>
+</md-card-content> </md-card>
       <md-card>
         <md-card-title>{{admissionApplicationTask?.application?.student?.name}}</md-card-title>
         <md-card-subtitle>{{admissionApplicationTask?.description}}</md-card-subtitle>
@@ -128,9 +136,9 @@
 
     </div>
     <div flex-gt-md="30">
-      <pams-admission-application-task-status [admissionApplicationTask]="admissionApplicationTask">
+       <pams-admission-application-task-status [admissionApplicationTask]="admissionApplicationTask">
       </pams-admission-application-task-status>
-
+ 
       <md-card>
         <md-card-title>Action</md-card-title>
         <md-card-subtitle>Actions available on current Application</md-card-subtitle>
