@@ -136,7 +136,7 @@ INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE_MS, TITLE_EN, CREDIT, CLASSIFIC
 VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
                                 FROM AD_FCTY F
                                 WHERE F.CODE = 'A10'),
-                               'Module1 ',
+                               'Module1',
                                'Kelestarian & Ekonomi Alam Sekitar', 'Sustainability & Environmental Economics', 3, 1,
                                1, 0,
                                CURRENT_TIMESTAMP, 1);
@@ -145,16 +145,16 @@ INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE_MS, TITLE_EN, CREDIT, CLASSIFIC
 VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
                                 FROM AD_FCTY F
                                 WHERE F.CODE = 'A10'),
-                               'Module2 ',
+                               'Module2',
                                'Seminar Perakaunan & Kawalan',
-                               'Seminar in Accounting & Control ', 3, 1, 1, 0,
+                               'Seminar in Accounting & Control', 3, 1, 1, 0,
                                CURRENT_TIMESTAMP, 1);
 
 INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE_MS, TITLE_EN, CREDIT, CLASSIFICATION, M_ST, C_ID, C_TS, STATUS)
 VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
                                 FROM AD_FCTY F
                                 WHERE F.CODE = 'A10'),
-                               'Module3 ',
+                               'Module3',
                                 'Keputusan Kewangan Lanjutan',
                                'Advanced Financial Decision', 3, 1, 1, 0,
                                CURRENT_TIMESTAMP, 1);
@@ -163,7 +163,7 @@ INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE_MS, TITLE_EN, CREDIT, CLASSIFIC
 VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
                                 FROM AD_FCTY F
                                 WHERE F.CODE = 'A10'),
-                               'Module4 ',
+                               'Module4',
                                 'Strategi Pemasaran Lanjutan',
                                'Advanced Marketing Strategy', 3, 1, 1, 0,
                                CURRENT_TIMESTAMP, 1);
@@ -172,7 +172,7 @@ INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE_MS, TITLE_EN, CREDIT, CLASSIFIC
 VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
                                 FROM AD_FCTY F
                                 WHERE F.CODE = 'A10'),
-                               'Module5 ',
+                               'Module5',
                                'Seminar Pengurusan Sumber Manusia', 'Seminar In Human Resource Management', 3, 1, 1, 0,
                                CURRENT_TIMESTAMP, 1);
 
@@ -180,7 +180,7 @@ INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE_MS, TITLE_EN, CREDIT, CLASSIFIC
 VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
                                 FROM AD_FCTY F
                                 WHERE F.CODE = 'A10'),
-                               'Module6 ',
+                               'Module6',
                                'Seminar Pengurusan Strategik', 'Seminar in Strategic Management', 3, 1, 1, 0,
                                CURRENT_TIMESTAMP, 1);
 
@@ -223,7 +223,7 @@ INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE_MS, TITLE_EN, CREDIT, CLASSIFIC
 VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
                                 FROM AD_FCTY F
                                 WHERE F.CODE = 'A10'),
-                               'DBA/YEAR2/SEMESTER4/Module11',
+                               'DBA-YEAR2-SEMESTER4-Module11',
                                'Seminar lanjutan Metodologi Penyelidikan/Kaedah kes',
                                'Seminar Advanced Research Methodology / Case Methodology', 3, 1, 1, 0,
                                CURRENT_TIMESTAMP, 1);
@@ -232,7 +232,7 @@ INSERT INTO AD_CRSE (ID, FACULTY_ID, CODE, TITLE_MS, TITLE_EN, CREDIT, CLASSIFIC
 VALUES (nextval('SQ_AD_CRSE'), (SELECT ID
                                 FROM AD_FCTY F
                                 WHERE F.CODE = 'A10'),
-                               'DBA/YEAR2/SEMESTER4/Module12',
+                               'DBA-YEAR2-SEMESTER4-Module12',
                                'Disertasi (Bahagian 1)',
                                'Dissertation ( Part 1)', 10, 1, 1, 0,
                                CURRENT_TIMESTAMP, 1);

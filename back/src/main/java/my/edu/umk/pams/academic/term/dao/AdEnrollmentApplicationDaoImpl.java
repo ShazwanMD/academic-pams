@@ -9,6 +9,7 @@ import my.edu.umk.pams.academic.identity.model.AdStaff;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.identity.model.AdUser;
 import my.edu.umk.pams.academic.term.model.AdAdmission;
+import my.edu.umk.pams.academic.term.model.AdAdmissionApplication;
 import my.edu.umk.pams.academic.term.model.AdEnrollment;
 import my.edu.umk.pams.academic.term.model.AdEnrollmentApplication;
 import my.edu.umk.pams.academic.term.model.AdEnrollmentApplicationImpl;
@@ -126,7 +127,7 @@ public class AdEnrollmentApplicationDaoImpl extends GenericDaoSupport<Long, AdEn
         return (List<AdEnrollmentApplication>) query.list();
     }
 
-    @Override
+   /* @Override
     public List<AdEnrollmentApplication> findByFlowState(AdFlowState flowState) {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select p from AdEnrollmentApplication p where " +
@@ -146,7 +147,32 @@ public class AdEnrollmentApplicationDaoImpl extends GenericDaoSupport<Long, AdEn
         query.setParameterList("flowStates", flowStates);
         query.setInteger("metaState", AdMetaState.ACTIVE.ordinal());
         return (List<AdEnrollmentApplication>) query.list();
+    }*/
+    
+    //sample to delete
+    @Override
+    public List<AdEnrollmentApplication> findByFlowState(AdFlowState flowState) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select p from AdEnrollmentApplication p where " +
+                "p.flowdata.state = :flowState " +
+                "and p.metadata.state = :metaState");
+        query.setInteger("flowState", flowState.ordinal());
+        query.setInteger("metaState", AdMetaState.ACTIVE.ordinal());
+        return (List<AdEnrollmentApplication>) query.list();
     }
+
+    @Override
+    public List<AdEnrollmentApplication> findByFlowStates(AdFlowState... flowStates) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select p from AdEnrollmentApplication p where " +
+                "p.flowdata.state in (:flowStates) " +
+                "and p.metadata.state = :metaState");
+        query.setParameterList("flowStates", flowStates);
+        query.setInteger("metaState", AdMetaState.ACTIVE.ordinal());
+        return (List<AdEnrollmentApplication>) query.list();
+    }
+    //sample nd
+    
 
     @Override
     public List<AdEnrollmentApplicationItem> findItems(AdEnrollmentApplication application) {

@@ -91,7 +91,7 @@ export class OfferingSectionListComponent implements OnInit {
   }
 
   deleteSection(section: Section): void {
-      if (section.enrollmentCount > 0) {
+      if (section.enrollmentCount || section.appointmentCount  > 0) {
           console.log("Don't delete this Section"); //try to print at console
           let snackBarRef = this.snackBar.open('Section cannot be deleted', 'OK');
       } else {

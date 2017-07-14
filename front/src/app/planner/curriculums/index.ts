@@ -1,5 +1,8 @@
+import {SubjectSubModule} from '../subjects/index';
+import {SubjectActions} from '../subjects/subject.action';
 import {CurriculumActionComponent} from './component/curriculum-action.component';
 import {CurriculumSelectComponent} from './component/curriculum-select.component';
+import { CurriculumSubjectListComponent,} from './component/curriculum-subject-list.component';
 import '@ngrx/core/add/operator/select';
 import {appRoutes, appRoutingProviders} from '../../app.routes';
 import {NgModule, ModuleWithProviders} from '@angular/core';
@@ -30,6 +33,7 @@ import {CurriculumUpdateDialog} from './dialog/curriculum-update.dialog';
     BrowserModule,
     ReactiveFormsModule,
     ProgramSubModule.forRoot(),
+    SubjectSubModule.forRoot(),
     CovalentCoreModule.forRoot(),
     EffectsModule.run(CurriculumEffects),
     AcademicSessionSubModule.forRoot(),
@@ -46,6 +50,7 @@ import {CurriculumUpdateDialog} from './dialog/curriculum-update.dialog';
     CurriculumComponent,
     CurriculumSelectComponent,
     CurriculumActionComponent,
+    CurriculumSubjectListComponent,
 
     // dialog
     CurriculumEditorDialog,
@@ -59,6 +64,9 @@ import {CurriculumUpdateDialog} from './dialog/curriculum-update.dialog';
     CurriculumUpdateDialog,
     CurriculumSelectComponent,
     CurriculumActionComponent,
+    CurriculumSubjectListComponent,
+    
+
   ],
 })
 
@@ -72,6 +80,8 @@ export class CurriculumSubModule {
         IdentityService,
         CommonService,
         CurriculumActions,
+        SubjectActions,
+        
       ],
     };
   }

@@ -13,4 +13,6 @@ export interface Offering extends MetaObject {
   course: Course;
   program: Program;
   academicSession: AcademicSession;
+
+  isOfferingExist: boolean;
 }

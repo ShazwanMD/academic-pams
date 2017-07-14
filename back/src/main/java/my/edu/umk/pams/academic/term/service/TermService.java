@@ -65,13 +65,16 @@ public interface TermService {
     Integer countOfferingWithSection(boolean authorized, String filter, AdAcademicSession session);
 
     boolean isOfferingExists(AdProgram program, AdCourse course);
+    
+    boolean isOfferingExists(String canonicalCode);
 
-    void saveOffering(AdOffering offering);
+    void saveOffering(AdOffering offering) throws Exception;
 
     void updateOffering(AdOffering offering);
 
     void calculateGradebook(AdOffering offering);
     
+    void calculate(AdAcademicSession academicSession, AdOffering offering);
     //==========+==========================================================================================
     // SECTION
     //====================================================================================================
@@ -125,7 +128,7 @@ public interface TermService {
     @Deprecated
     void saveSection(AdSection section); // use addSection
 
-    void addSection(AdOffering offering, AdSection section);
+    void addSection(AdOffering offering, AdSection section) throws Exception;
 
     void deleteSection(AdOffering offering, AdSection section);
 
@@ -240,6 +243,8 @@ public interface TermService {
     List<AdAdmission> findAdmissions(Integer offset, Integer limit);
 
     List<AdAdmission> findAdmissions(AdAcademicSession academicSession, Integer offset, Integer limit);
+    
+    List<AdAdmission> findAdmissions(AdAcademicSession academicSession);
 
     Integer countAdmission(AdAcademicSession academicSession, AdStudent student);
 

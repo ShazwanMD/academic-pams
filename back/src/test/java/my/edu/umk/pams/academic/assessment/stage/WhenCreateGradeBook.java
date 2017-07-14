@@ -115,7 +115,7 @@ public class WhenCreateGradeBook extends Stage<WhenCreateGradeBook> {
 	
 		AdGradebook gradebook = new AdGradebookImpl();
 		gradebook.setScore(new BigDecimal(BigInteger.valueOf(50)));
-		gradebook.setAssessment(termService.findAssessmentByCanonicalCode("MASTER/MBA/GST5013/201720181/Q1"));
+		gradebook.setAssessment(termService.findAssessmentByCanonicalCode("MASTER-MBA-GST5013-201720181-Q1"));
 		gradebook.setEnrollment(enrollment);
 		gradebook.setSection(section);
 		termService.addGradebook(section, enrollment, gradebook);
@@ -125,7 +125,7 @@ public class WhenCreateGradeBook extends Stage<WhenCreateGradeBook> {
 		
 		AdGradebook gradebook2 = new AdGradebookImpl();
 		gradebook2.setScore(new BigDecimal(BigInteger.valueOf(50)));
-		gradebook2.setAssessment(termService.findAssessmentByCanonicalCode("MASTER/MBA/GST5013/201720181/Q2"));
+		gradebook2.setAssessment(termService.findAssessmentByCanonicalCode("MASTER-MBA-GST5013-201720181-Q2"));
 		gradebook2.setEnrollment(enrollment);
 		gradebook2.setSection(section);
 		termService.addGradebook(section, enrollment, gradebook2);
@@ -140,10 +140,15 @@ public class WhenCreateGradeBook extends Stage<WhenCreateGradeBook> {
 		commonService.findByScore(enrollment.getTotalScore());
 		LOG.debug("findByScore:{}",commonService.findByScore(enrollment.getTotalScore()).getCode());
 		
-		
+		//Set GradeCode
 		enrollment.setGradeCode(commonService.findByScore(enrollment.getTotalScore()));
 		termService.updateEnrollment(section, enrollment);
 		LOG.debug("gradeCode_IN_Enrollment_Table:{}",enrollment.getGradeCode().getCode());
+		
+		//CalculateGPA
+//		AdAcademicSession session = plannerService.findCurrentAcademicSession();
+//		plannerService.calculateGpa(session);
+//		LOG.debug("GPA:{}",admission.getGpa());
 		return self();
 	}
 }

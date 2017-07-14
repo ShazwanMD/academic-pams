@@ -48,23 +48,7 @@ export class AdmissionApplicationDetailPage implements OnInit {
     });
   }
 
- /* showUpdateDialog(): void {
-    console.log("edit admissionApp");
-    let config = new MdDialogConfig();
-    config.viewContainerRef = this.vcf;
-    config.role = 'dialog';
-    config.width = '60%';
-    config.height = '50%';
-    config.position = {top: '0px'};
-    this.editorDialogRef = this.dialog.open(OfferingUpdateDialog, config);
-    this.editorDialogRef.componentInstance.admissionApplication = this.admissionApplication;
-
-    // set
-    this.editorDialogRef.afterClosed().subscribe(res => {
-      console.log("close dialog update offering");
-    });
-  }*/
-
+ 
     filter(): void {
 
   }

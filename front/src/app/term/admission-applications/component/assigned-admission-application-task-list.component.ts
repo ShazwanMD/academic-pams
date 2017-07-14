@@ -14,6 +14,7 @@ export class AssignedAdmissionApplicationTaskListComponent {
     @Output() view = new EventEmitter<AdmissionApplicationTask>();
     
   private columns: any[] = [
+    { name: 'id', label: 'Id' },
     { name: 'referenceNo', label: 'Reference No' },
     { name: 'application.student.identityNo', label: 'Matric No.' },
     { name: 'application.student.name', label: 'Name' },

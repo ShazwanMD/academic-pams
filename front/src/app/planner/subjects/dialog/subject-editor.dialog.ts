@@ -35,6 +35,11 @@ export class SubjectEditorDialog implements OnInit {
     this._subject = value;
     this.edit = true;
   }
+
+  set Curriculum(value: Curriculum) {
+    this._curriculum = value;
+    this.edit = true;
+  }
   
 
   ngOnInit(): void {

@@ -155,7 +155,6 @@ public class PlannerTransformer {
 		
 		return vo;
 	}
-
     public Cohort toCohortVo(AdCohort e) {
         Cohort vo = new Cohort();
         vo.setId(e.getId());

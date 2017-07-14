@@ -35,8 +35,8 @@ export class OfferingCenterPage implements OnInit {
   }
 
   viewOffering(offering: Offering): void {
-    console.log('offering: ' + offering.id);
-    this.router.navigate(['/term/offerings', offering.canonicalCode]);
+    console.log('offering ccode: ' + offering.canonicalCode);
+    this.router.navigate(['/term/offerings',offering.canonicalCode]);
   }
 
   createDialog(): void {

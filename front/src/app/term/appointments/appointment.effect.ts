@@ -14,6 +14,7 @@ import { SectionActions } from "../sections/section.action";
 export class AppointmentEffects {
         
    private SECTION: string[] = "termModuleState.section".split(".");
+private APPOINTMENT: string[] = "termModuleState.appointment".split(".");
     
   constructor(private actions$: Actions,
               private appointmentActions: AppointmentActions,
@@ -22,6 +23,12 @@ export class AppointmentEffects {
               private termService: TermService,
               private store$: Store<TermModuleState> ) {
   }
+  
+  @Effect() findAppointments$ = this.actions$
+  .ofType(AppointmentActions.FIND_APPOINTMENTS)
+  .switchMap(() => this.termService.findAppointments())
+  .map(appointments => this.appointmentActions.findAppointmentsSuccess(appointments));
+
 
   @Effect() findAppointmentById$ = this.actions$
     .ofType(AppointmentActions.FIND_APPOINTMENT_BY_ID)

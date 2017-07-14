@@ -1,6 +1,7 @@
 package my.edu.umk.pams.academic.term.service;
 
 import my.edu.umk.pams.academic.common.model.AdGradeCode;
+
 import my.edu.umk.pams.academic.common.model.AdStudyCenter;
 import my.edu.umk.pams.academic.common.service.CommonService;
 import my.edu.umk.pams.academic.core.AdFlowState;
@@ -196,13 +197,33 @@ public class TermServiceImpl implements TermService {
 	public boolean isOfferingExists(AdProgram program, AdCourse course) {
 		return offeringDao.isExists(program, course);
 	}
-
+	
 	@Override
-	public void saveOffering(AdOffering offering) {
+	public boolean isOfferingExists(String canonicalCode) {
+				  return offeringDao.isExists(canonicalCode);
+	}
+	
+	@Override
+	public void saveOffering(AdOffering offering) throws Exception {
+		if (isOfferingExists(offering.getCanonicalCode())) {
+			throw new Exception ("Duplicate offering record");							
+		} else {
+		
 		offeringDao.save(offering, securityService.getCurrentUser());
 		sessionFactory.getCurrentSession().flush();
-
+		}
 	}
+	
+ 
+
+/* @Override
+ 	public void saveOffering(AdOffering offering) throws Exception {
+      if (isOfferingExists(offering.getCanonicalCode()))
+       throws new Exception("Duplicate offering record");
+	            
+       offeringDao.save(offering, securityService.getCurrentUser());
+	        sessionFactory.getCurrentSession().flush();
+	    }*/
 
 	@Override
 	public void updateOffering(AdOffering offering) {
@@ -214,6 +235,7 @@ public class TermServiceImpl implements TermService {
 		List<AdEnrollment> enrollments = findEnrollments(offering);
 		for (AdEnrollment enrollment : enrollments) {
 			List<AdGradebook> gradebooks = findGradebooks(enrollment);
+			LOG.debug("Found " + gradebooks.size() + " gradebooks");
 			BigDecimal totalScore = BigDecimal.ZERO;
 			for (AdGradebook gradebook : gradebooks) {
 				BigDecimal assessmentScore = gradebook.getScore().multiply(gradebook.getAssessment().getWeight())
@@ -234,7 +256,23 @@ public class TermServiceImpl implements TermService {
 //	private AdGradeCode lookupGradeCode(BigDecimal totalScore){
 //		if(totalScore >-)
 //	}
+	
+	public void calculate(AdAcademicSession academicSession, AdOffering offering){
+	   List<AdEnrollment> enrollments = findEnrollments(offering);
+       for (AdEnrollment enrollment : enrollments) {
+           calculateGradebook(offering);
+           enrollment.setGradeCode( commonService.findByScore(enrollment.getTotalScore()));
+           updateEnrollment(enrollment.getSection(), enrollment);
+           
+           List<AdAdmission> Admissions = findAdmissions(academicSession);
+           for (AdAdmission adAdmission : Admissions) {
+				plannerService.calculateGpa(academicSession, adAdmission);
+			}
+                   
+		}
+	}
 
+	
 	// ====================================================================================================
 	// SECTION
 	// ====================================================================================================
@@ -382,10 +420,14 @@ public class TermServiceImpl implements TermService {
 	}
 
 	@Override
-	public void addSection(AdOffering offering, AdSection section) {
+	public void addSection(AdOffering offering, AdSection section) throws Exception {
+		if (isSectionExists(section.getCanonicalCode())) {
+			throw new Exception ("Duplicate section record");							
+		} else {
 		section.setOffering(offering);
 		offeringDao.addSection(offering, section, securityService.getCurrentUser());
 		sessionFactory.getCurrentSession().flush();
+	}
 	}
 
 	@Override
@@ -682,6 +724,11 @@ public class TermServiceImpl implements TermService {
 	@Override
 	public List<AdAdmission> findAdmissions(AdAcademicSession academicSession, Integer offset, Integer limit) {
 		return admissionDao.find(academicSession); // todo: limit/offset
+	}
+	
+	@Override
+	public List<AdAdmission> findAdmissions(AdAcademicSession academicSession) {
+		return admissionDao.find(academicSession);
 	}
 
 	@Override
@@ -1585,4 +1632,7 @@ public class TermServiceImpl implements TermService {
 		admissionDao.removeEnrollmentApplication(admission, application, securityService.getCurrentUser());
 		sessionFactory.getCurrentSession().flush();
 	}
+
+	
 }
+

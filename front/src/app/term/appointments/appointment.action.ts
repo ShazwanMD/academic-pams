@@ -4,6 +4,24 @@ import {Action} from '@ngrx/store';
 @Injectable()
 export class AppointmentActions {
 
+    //find appointments
+    static FIND_APPOINTMENTS = '[Appointment] Find Appointments';
+
+    findAppointments(): Action {
+      return {
+        type: AppointmentActions.FIND_APPOINTMENTS
+      };
+    }
+
+    static FIND_APPOINTMENTS_SUCCESS = '[Appointment] Find Appointments Success';
+
+    findAppointmentsSuccess(appointments): Action {
+      return {
+        type: AppointmentActions.FIND_APPOINTMENTS_SUCCESS,
+        payload: appointments
+      };
+    }
+    
   static FIND_APPOINTMENT_BY_ID = '[Appointment] Find Appointment By Id';
   findAppointmentById(appointment): Action {
     return {

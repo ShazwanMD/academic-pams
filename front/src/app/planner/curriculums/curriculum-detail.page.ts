@@ -1,3 +1,5 @@
+import {CurriculumEditorDialog} from './dialog/curriculum-editor.dialog';
+import {MdDialogRef, MdDialogConfig} from '@angular/material/dialog';
 import {Component, Input, OnInit, ChangeDetectionStrategy} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 import {CurriculumUpdateDialog} from './dialog/curriculum-update.dialog';
@@ -9,6 +11,7 @@ import {PlannerModuleState} from '../index';
 import {MdDialog} from '@angular/material';
 import {ViewContainerRef} from '@angular/core';
 import {MdSnackBar} from '@angular/material';
+import { Subject } from "../subjects/subject.interface";
 
 @Component({
   selector: 'pams-curriculum-detail',
@@ -17,8 +20,13 @@ import {MdSnackBar} from '@angular/material';
 
 export class CurriculumDetailPage implements OnInit {
   private CURRICULUM: string[] = 'plannerModuleState.curriculum'.split('.');
+  // private SUBJECTS : string[] = 'plannerModuleState.subjects'.split('.');
   private curriculum$: Observable<Curriculum>;
-  @Input() curriculums: Curriculum[];
+  private subjects$: Observable<Subject[]>;
+
+  private editorDialogRef: MdDialogRef<CurriculumEditorDialog>;
+
+  @Input() curriculum: Curriculum;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -29,12 +37,30 @@ export class CurriculumDetailPage implements OnInit {
               private snackBar: MdSnackBar) {
 
     this.curriculum$ = this.store.select(...this.CURRICULUM);
+    // this.subjects$ = this.store.select(...this.SUBJECTS);
   }
 
   ngOnInit(): void {
     this.route.params.subscribe((params: { code: string }) => {
       let code: string = params.code;
       this.store.dispatch(this.actions.findCurriculumByCode(code));
+    });
+  }
+
+   showUpdateDialog(): void {
+    console.log("edit offering");
+    let config = new MdDialogConfig();
+    config.viewContainerRef = this.vcf;
+    config.role = 'dialog';
+    config.width = '60%';
+    config.height = '50%';
+    config.position = {top: '0px'};
+    this.editorDialogRef = this.dialog.open(CurriculumEditorDialog, config);
+    this.editorDialogRef.componentInstance.curriculum= this.curriculum;
+
+
+    this.editorDialogRef.afterClosed().subscribe(res => {
+      console.log("close dialog ");
     });
   }
 

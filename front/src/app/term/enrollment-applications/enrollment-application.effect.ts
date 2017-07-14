@@ -52,14 +52,23 @@ export class EnrollmentApplicationEffects {
     .switchMap(taskId => this.termService.findEnrollmentApplicationTaskByTaskId(taskId))
     .map(task => this.enrollmentApplicationActions.findEnrollmentApplicationTaskByTaskIdSuccess(task));
 
-  @Effect() findEnrollmentApplicationByReferenceNo$ = this.actions$
+  /*@Effect() findEnrollmentApplicationByReferenceNo$ = this.actions$
     .ofType(EnrollmentApplicationActions.FIND_ENROLLMENT_APPLICATION_BY_REFERENCE_NO)
     .map(action => action.payload)
     .switchMap(referenceNo => this.termService.findEnrollmentApplicationByReferenceNo(referenceNo))
     .map(enrollmentApplication => this.enrollmentApplicationActions.findEnrollmentApplicationByReferenceNoSuccess(enrollmentApplication))
     .mergeMap(action => from([action, 
      this.enrollmentApplicationActions.findEnrollmentApplicationItems(action.payload)]));
-
+*/
+  
+  @Effect() findEnrollmentApplicationByReferenceNo$ = this.actions$
+  .ofType(EnrollmentApplicationActions.FIND_ENROLLMENT_APPLICATION_BY_REFERENCE_NO)
+  .map(action => action.payload)
+  .switchMap(referenceNo => this.termService.findEnrollmentApplicationByReferenceNo(referenceNo))
+  .map(enrollmentApplication => this.enrollmentApplicationActions.findEnrollmentApplicationByReferenceNoSuccess(enrollmentApplication))
+  .mergeMap(action => from([action, 
+   this.enrollmentApplicationActions.findEnrollmentApplicationItems(action.payload)]));
+  
   @Effect() findEnrollmentApplicationItems$ = this.actions$
     .ofType(EnrollmentApplicationActions.FIND_ENROLLMENT_APPLICATION_ITEMS)
     .map(action => action.payload)

@@ -1,3 +1,10 @@
+import {CurriculumActions} from './curriculums/curriculum.action';
+import {SubjectActions} from './subjects/subject.action';
+import {curriculumSubjectListReducer,CurriculumSubjectListState} from './curriculums/curriculum-subject-list.reducer';
+import {SubjectSubModule} from './subjects/index';
+import {subjectReducer, SubjectState} from './subjects/subject.reducer';
+import {subjectListReducer, SubjectListState} from './subjects/subject-list.reducer';
+import {Subject} from './subjects/subject.interface';
 import {AcademicYearListPage} from './academic-years/academic-year-list.page';
 import {NgModule, ModuleWithProviders} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
@@ -67,6 +74,9 @@ export interface PlannerModuleState {
   cohort: CohortState;
   curriculums: CurriculumListState;
   curriculum: CurriculumState;
+  curriculumSubjects: CurriculumSubjectListState;
+  subjects: SubjectListState;
+  subject: SubjectState;
 }
 ;
 
@@ -87,9 +97,9 @@ export const INITIAL_PLANNER_STATE: PlannerModuleState = <PlannerModuleState>{
     cohort: <Cohort>{},
     curriculums: <Curriculum[]>[],
     curriculum: <Curriculum>{},
-    // subjects:<Subject>{},
-    // subject:<Subject[]>[],
-
+    curriculumSubjects:<Subject[]>[],
+    subjects:<Subject[]>[],
+    subject:<Subject>{},
   }
 ;
 
@@ -110,8 +120,11 @@ export const plannerModuleReducers = {
   cohort: cohortReducer,
   curriculums: curriculumListReducer,
   curriculum: curriculumReducer,
-  // subjects: subjectListReducer,
-  // subject: subjectReducer,
+  curriculumSubjects: curriculumSubjectListReducer,
+  subjects: subjectListReducer,
+  subject: subjectReducer,
+  
+
 
 };
 
@@ -129,7 +142,7 @@ export const plannerModuleReducers = {
     FacultySubModule.forRoot(),
     ProgramSubModule.forRoot(),
     CourseSubModule.forRoot(),
-    // SubjectSubModule.forRoot(),
+    SubjectSubModule.forRoot(),
     CohortSubModule.forRoot(),
     CurriculumSubModule.forRoot()
     
@@ -151,6 +164,9 @@ export class PlannerModule {
         IdentityService,
         CommonService,
         PlannerService,
+        SubjectActions,
+        CurriculumActions,
+        
       ],
     };
   }

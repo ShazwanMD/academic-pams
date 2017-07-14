@@ -108,8 +108,8 @@ public class WhenIAmSetupExamViva extends Stage<WhenIAmSetupExamViva> {
 				
 		// setup assessment
 		assessment = new AdAssessmentImpl();
-		assessment.setCode("MASTER/MBA/GST5013/Q1");
-		assessment.setCanonicalCode("MASTER/MBA/GST5013/201720181/Q1");
+		assessment.setCode("MASTER-MBA-GST5013-Q1");
+		assessment.setCanonicalCode("MASTER-MBA-GST5013-201720181-Q1");
 		assessment.setDescription("Economics & Business Environment");
 		assessment.setOrdinal(0);
 		assessment.setWeight(new BigDecimal(BigInteger.valueOf(10)));
@@ -129,13 +129,12 @@ public class WhenIAmSetupExamViva extends Stage<WhenIAmSetupExamViva> {
 		LOG.debug("QUIZ 1 TotalScore :{}", assessment.getTotalScore().byteValueExact());
 		LOG.debug("Weight :{}", assessment.getWeight().toBigInteger());
 		LOG.debug("");
-		// assert
 		Assert.notNull(assessment, "assessmentQ1 Quiz1 is not setup");
 
 		// setup assessment2
 		assessment = new AdAssessmentImpl();
-		assessment.setCode("MASTER/MBA/GST5013/Q2");
-		assessment.setCanonicalCode("MASTER/MBA/GST5013/201720181/Q2");
+		assessment.setCode("MASTER-MBA-GST5013-Q2");
+		assessment.setCanonicalCode("MASTER-MBA-GST5013-201720181-Q2");
 		assessment.setDescription("Economics & Business Environment");
 		assessment.setOrdinal(1);
 		assessment.setWeight(new BigDecimal(BigInteger.valueOf(90)));
@@ -155,7 +154,6 @@ public class WhenIAmSetupExamViva extends Stage<WhenIAmSetupExamViva> {
 		LOG.debug("QUIZ 2 TotalScore :{}", assessment.getTotalScore().byteValueExact());
 		LOG.debug("Weight :{}", assessment.getWeight().toBigInteger());
 		LOG.debug("");
-		// assert
 		Assert.notNull(assessment, "Assessments Quiz2 is not setup");
 
 		/*// setup assessment3
@@ -182,7 +180,6 @@ public class WhenIAmSetupExamViva extends Stage<WhenIAmSetupExamViva> {
 		LOG.debug("TEST 1 TotalScore :{}", assessment.getTotalScore().byteValueExact());
 		LOG.debug("Weight :{}", assessment.getWeight().toBigInteger());
 		LOG.debug("");
-		// assert
 		Assert.notNull(assessment, "Assessments Test 1 is not setup");
 
 		// setup assessment4
@@ -209,7 +206,6 @@ public class WhenIAmSetupExamViva extends Stage<WhenIAmSetupExamViva> {
 		LOG.debug("QUIZ 3  TotalScore :{}", assessment.getTotalScore().byteValueExact());
 		LOG.debug("Weight :{}", assessment.getWeight().toBigInteger());
 		LOG.debug("");
-		// assert
 		Assert.notNull(assessment, "Assessments Quiz3 is not setup");
 
 		// setup assessment4
@@ -236,7 +232,6 @@ public class WhenIAmSetupExamViva extends Stage<WhenIAmSetupExamViva> {
 		LOG.debug("QUIZ 4 TotalScore :{}", assessment.getTotalScore().byteValueExact());
 		LOG.debug("Weight :{}", assessment.getWeight().toBigInteger());
 		LOG.debug("");
-		// assert
 		Assert.notNull(assessment, "Assessments Quiz4 is not setup");
 
 		// setup assessment5
@@ -263,7 +258,6 @@ public class WhenIAmSetupExamViva extends Stage<WhenIAmSetupExamViva> {
 		LOG.debug("TEST 2 TotalScore :{}", assessment.getTotalScore().byteValueExact());
 		LOG.debug("Weight :{}", assessment.getWeight().toBigInteger());
 		LOG.debug("");
-		// assert
 		Assert.notNull(assessment, "Assessments Test 2 is not setup");
 
 		// setup assessment6
@@ -290,7 +284,6 @@ public class WhenIAmSetupExamViva extends Stage<WhenIAmSetupExamViva> {
 		LOG.debug("FinalExam TotalScore :{}", assessment.getTotalScore().byteValueExact());
 		LOG.debug("Weight :{}", assessment.getWeight().toBigInteger());
 		LOG.debug("");
-		// assert
 		Assert.notNull(assessment, "Assessments FinalExam is not setup");
 */		
 			return self();	

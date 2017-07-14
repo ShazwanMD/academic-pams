@@ -1,5 +1,4 @@
 import {Action} from '@ngrx/store';
-
 import * as _ from 'lodash';
 import {Curriculum} from './curriculum.interface';
 import {CurriculumActions} from './curriculum.action';

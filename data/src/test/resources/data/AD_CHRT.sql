@@ -1337,7 +1337,7 @@ INSERT INTO AD_CHRT (
 VALUES (
   nextval('SQ_AD_CHRT'),
   (SELECT ID FROM AD_PRGM where code = 'MGSEB-MBA'),
-  (SELECT ID FROM AD_CRLM where code = 'MGSEB-MBA' || '-CRLM-001'),
+  (SELECT ID FROM AD_CRLM where code = 'MGSEB-MBA' || '-CRLM-0001'),
   (SELECT CODE || '-CHRT-001' FROM AD_PRGM where code = 'MGSEB-MBA'),
   'COHORT 001',
   1,

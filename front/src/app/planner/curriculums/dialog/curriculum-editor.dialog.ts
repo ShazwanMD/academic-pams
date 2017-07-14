@@ -3,6 +3,7 @@ import {FormGroup} from '@angular/forms';
 import {FormBuilder} from '@angular/forms';
 import {Router, ActivatedRoute} from '@angular/router';
 import {Curriculum} from '../curriculum.interface';
+import {Subject} from '../../subjects/subject.interface';
 import {CurriculumActions} from '../curriculum.action';
 ;
 import {Store} from '@ngrx/store';
@@ -21,6 +22,7 @@ export class CurriculumEditorDialog implements OnInit {
     private editorForm: FormGroup;
     private edit: boolean = false;
     private _curriculum: Curriculum;
+    private _subject:Subject;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -28,6 +30,16 @@ export class CurriculumEditorDialog implements OnInit {
               private store: Store<PlannerModuleState>,
               private actions: CurriculumActions,
               private dialog: MdDialogRef<CurriculumEditorDialog>) {
+  }
+
+    set curriculum(value: Curriculum) {
+    this._curriculum = value;
+    this.edit = true;
+  }
+
+   set subject(value: Subject) {
+    this._subject = value;
+    this.edit = true;
   }
 
   ngOnInit(): void {

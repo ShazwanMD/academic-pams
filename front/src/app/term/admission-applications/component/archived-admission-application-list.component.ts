@@ -1,6 +1,6 @@
 import { MdSnackBar } from '@angular/material';
 import { AdmissionApplicationTask } from './../admission-application-task.interface';
-import { Component, Input, Output, ChangeDetectionStrategy, EventEmitter } from '@angular/core';
+import { Component, Input, Output, ChangeDetectionStrategy, EventEmitter, AfterViewInit } from '@angular/core';
 import { TdDataTableService, IPageChangeEvent, ITdDataTableSortChangeEvent, TdDataTableSortingOrder } from "@covalent/core";
 import { AdmissionApplication } from "./../admission-application.interface";
 
@@ -10,7 +10,7 @@ import { AdmissionApplication } from "./../admission-application.interface";
   templateUrl: './archived-admission-application-list.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ArchivedAdmissionApplicationListComponent {
+export class ArchivedAdmissionApplicationListComponent implements AfterViewInit {
 
   @Input() admissionApplications: AdmissionApplication[];
   @Output() view = new EventEmitter<AdmissionApplication>();
