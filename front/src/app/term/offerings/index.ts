@@ -32,6 +32,7 @@ import {OfferingAppointmentListComponent} from "./component/offering-appointment
 import {OfferingActionComponent} from "./component/offering-action.component";
 import {GradebookDetailPage} from "./gradebook-detail.page";
 import {PipeModule} from "../../app.pipe.module";
+import { StudentOfferingCenterPage } from "./student-offering-center.page";
 
 @NgModule({
   imports: [
@@ -50,6 +51,7 @@ import {PipeModule} from "../../app.pipe.module";
   declarations: [
     // page
     OfferingCenterPage,
+    StudentOfferingCenterPage,
     OfferingDetailPage,
     StudentOfferingDetailPage,
     GradebookDetailPage,

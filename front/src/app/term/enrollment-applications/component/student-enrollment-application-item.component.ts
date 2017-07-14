@@ -1,63 +1,5 @@
-/*import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, ViewContainerRef} from '@angular/core';
-import {EnrollmentApplication} from "../enrollment-application.interface";
-import {EnrollmentApplicationItem} from "../enrollment-application-item.interface";
-import {MdDialog, MdDialogConfig, MdDialogRef} from "@angular/material";
-import {ActivatedRoute, Router} from "@angular/router";
-import {Store} from "@ngrx/store";
-import {TermModuleState} from "../../index";
-import {Enrollment} from "../../enrollments/enrollment.interface";
-//import { AppointmentEditorDialog } from "../../appointments/dialog/appointment-editor.dialog";
-
-@Component({
-  selector: 'pams-student-enrollment-application-item',
-  templateUrl: './student-enrollment-application-item.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-
-})
-export class StudentEnrollmentApplicationItemComponent {
-
-  @Input() enrollmentApplication: EnrollmentApplication;
-  @Input() enrollmentApplicationItems: EnrollmentApplicationItem[];
-  @Output() view = new EventEmitter<EnrollmentApplication>();
-  @Output() view2 = new EventEmitter<EnrollmentApplicationItem>();
-
-  //display data enrollmentapplicationItems
-  private columns: any[] = [
-    {name: 'id', label: 'Id'},
-    {name: 'action', label: ''}
-  ];
-
-
-  //private creatorDialogRef: MdDialogRef<AppointmentEditorDialog>;
-
-  constructor(private router: Router,
-              private route: ActivatedRoute,
-              private store: Store<TermModuleState>,
-              private vcf: ViewContainerRef,
-              private dialog: MdDialog) {
-  }
-
-  showDialog(): void {
-    console.log("showDialog");
-    console.log("enrollmentApplication to pass:" + this.enrollmentApplication);
-
-    let config = new MdDialogConfig();
-    config.viewContainerRef = this.vcf;
-    config.role = 'dialog';
-    config.width = '50%';
-    config.height = '50%';
-    config.position = {top: '0px'};
-    this.creatorDialogRef = this.dialog.open(AppointmentEditorDialog, config);
-    this.creatorDialogRef.componentInstance.enrollmentApplication = this.enrollmentApplication;
-    this.creatorDialogRef.afterClosed().subscribe(res => {
-      console.log("close dialog");
-      // load something here
-    });
-  }
-
-}*/
-import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, ViewContainerRef, OnInit} from '@angular/core';
-import {MdDialog, MdDialogConfig, MdDialogRef} from "@angular/material";
+import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, ViewContainerRef, OnInit, AfterViewInit} from '@angular/core';
+import {MdDialog, MdDialogConfig, MdDialogRef, MdSnackBar} from "@angular/material";
 import {ActivatedRoute, Router} from "@angular/router";
 import {TermModuleState} from "../../index";
 import {Store} from "@ngrx/store";
@@ -65,6 +7,7 @@ import {EnrollmentApplication} from "../enrollment-application.interface";
 import {EnrollmentApplicationItem} from "../enrollment-application-item.interface";
 import {EnrollmentApplicationItemUpdateDialog} from "../dialog/enrollment-application-item-update.dialog";
 import {EnrollmentApplicationActions} from "../enrollment-application.action";
+import { TdDataTableService, TdDataTableSortingOrder, ITdDataTableSortChangeEvent, IPageChangeEvent } from "@covalent/core";
 
 @Component({
     selector: 'pams-student-enrollment-application-item',
@@ -72,7 +15,7 @@ import {EnrollmentApplicationActions} from "../enrollment-application.action";
     changeDetection: ChangeDetectionStrategy.OnPush,
 
   })
-  export class StudentEnrollmentApplicationItemComponent implements OnInit {
+  export class StudentEnrollmentApplicationItemComponent implements AfterViewInit  {
 
   @Input() enrollmentApplication: EnrollmentApplication;
   @Input() enrollmentApplicationItem: EnrollmentApplicationItem;
@@ -85,12 +28,13 @@ import {EnrollmentApplicationActions} from "../enrollment-application.action";
 
   private columns: any[] = [
    
-    {name: 'application.admission.student.identityNo', label: 'identityNo'},  
+    {name: 'id', label: 'Id'},  
     {name: 'section.ordinal', label: 'Section'},
     {name: 'section.code', label: 'Code'},
     {name: 'section.offering.titleEn', label: 'Title'},
     {name: 'section.offering.course.credit', label: 'Credit'},
-    {name: 'action', label: 'Action'},  
+    //{name: 'action', label: 'Action'},
+    {name: 'action', label: ''},
     
   ];
 
@@ -99,14 +43,65 @@ import {EnrollmentApplicationActions} from "../enrollment-application.action";
               private actions: EnrollmentApplicationActions,
               private store: Store<TermModuleState>,
               private vcf: ViewContainerRef,
-              private dialog: MdDialog) {
+              private dialog: MdDialog,
+              private _dataTableService: TdDataTableService,
+              private snackBar: MdSnackBar) {
   }
+  
+  filteredData: any[];
+  filteredTotal: number;
+  searchTerm: string = '';
+  fromRow: number = 1;
+  currentPage: number = 1;
+  pageSize: number = 5;
+  sortBy: string = 'id';
+  sortOrder: TdDataTableSortingOrder = TdDataTableSortingOrder.Descending;
 
+  ngAfterViewInit(): void {
+      this.filteredData = this.enrollmentApplicationItems;
+      this.filteredTotal = this.enrollmentApplicationItems.length;
+      this.filter();
+    }
+
+    sort(sortEvent: ITdDataTableSortChangeEvent): void {
+      this.sortBy = sortEvent.name;
+      this.sortOrder = sortEvent.order;
+      this.filter();
+    }
+
+    search(searchTerm: string): void {
+      this.searchTerm = searchTerm;
+      this.filter();
+    }
+
+    page(pagingEvent: IPageChangeEvent): void {
+      this.fromRow = pagingEvent.fromRow;
+      this.currentPage = pagingEvent.page;
+      this.pageSize = pagingEvent.pageSize;
+      this.filter();
+    }
+
+    filter(): void {
+      let newData: any[] = this.enrollmentApplicationItems;
+      newData = this._dataTableService.filterData(newData, this.searchTerm, true);
+      this.filteredTotal = newData.length;
+      newData = this._dataTableService.sortData(newData, this.sortBy, this.sortOrder);
+      newData = this._dataTableService.pageData(newData, this.fromRow, this.currentPage * this.pageSize);
+      this.filteredData = newData;
+    }
+
+    viewEnrollmentApplicationItem(enrollmentApplicationItem: EnrollmentApplicationItem): void {
+      console.log('Emitting enrollmentApplicationItem');
+      let snackBarRef = this.snackBar.open('Viewing enrollmentApplicationItem info', 'OK');
+      snackBarRef.afterDismissed().subscribe(() => {
+        this.view.emit(enrollmentApplicationItem);
+      });
+    }
+
+  
+  
   ngOnInit(): void {
     this.selectedRows = this.enrollmentApplicationItems.filter(value => value.selected);
-  }
-
-  filter(): void {
   }
 
   selectRow(item: EnrollmentApplicationItem): void {

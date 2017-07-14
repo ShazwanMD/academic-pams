@@ -14,9 +14,10 @@ export class AssignedEnrollmentApplicationTaskListComponent implements AfterView
   @Output() view = new EventEmitter<EnrollmentApplicationTask>();
 
   private columns: any[] = [
+    {name: 'id', label: 'Id'},
     {name: 'referenceNo', label: 'ReferenceNo'},
-    {name: 'application.admission.student.identityNo', label: 'Student'},
-    {name: 'description', label: 'Description'},
+    {name: 'application.admission.student.name', label: 'Name'},
+    {name: 'application.admission.student.identityNo', label: 'Matric No'},
     {name: 'application.admission.cohort.code', label: 'Cohort'},
     {name: 'flowState', label: 'Status'},
     {name: 'action', label: ''}

@@ -1,4 +1,4 @@
-<md-card>
+<!--  <md-card>
   <div toolbar-buttons layout="row" layout-align="start center" flex>
     <md-card-title>Add/Drop Courses History
     </md-card-title>
@@ -6,15 +6,15 @@
       <md-chip color="accent">{{enrollmentApplicationItems?.length}}</md-chip>
     </md-chip-list>
     <span flex></span>
-     <button md-button class="md-icon-button" [routerLink]="['/term/enrollment-applications']"><!-- (click)="createDialog()" -->
+     <button md-button class="md-icon-button" [routerLink]="['/term/enrollment-applications']">(click)="createDialog()"
       <md-icon class="md-24 tc-grey-300" [ngClass]="{'tc-grey-700': selectedRows.length === 0}">add</md-icon>
     </button>
-   <!--  <button md-button class="md-icon-button" (click)="edit(selectedRows[0])" [disabled]="selectedRows.length != 1">
+    <button md-button class="md-icon-button" (click)="edit(selectedRows[0])" [disabled]="selectedRows.length != 1">
       <md-icon class="md-24 tc-grey-300" [ngClass]="{'tc-grey-700': selectedRows.length === 1}">edit</md-icon>
     </button>
     <button md-button class="md-icon-button" (click)="delete(selectedRows[0])" [disabled]="selectedRows.length != 1">
       <md-icon class="md-24 tc-grey-300" [ngClass]="{'tc-grey-700': selectedRows.length === 1}">delete</md-icon>
-    </button>  -->
+    </button> 
   </div>
   <md-divider></md-divider>
   <td-data-table
@@ -38,7 +38,7 @@
         <span>{{value}} </span>
       </div>
     </template>
-    <!--  <template tdDataTableTemplate="action2" let-value="value" let-row="row" let-column="column">
+     <template tdDataTableTemplate="action2" let-value="value" let-row="row" let-column="column">
         <div layout="row">
           <button md-icon-button [md-menu-trigger-for]="menu1" mdTooltip="Select appropriate actions">
             <md-icon>more_vert</md-icon>
@@ -49,6 +49,55 @@
             <button md-menu-item (click)="deleteItem(row)">Delete item</button>
           </md-menu>
         </div>
-      </template> -->
+      </template>
   </td-data-table>
-</md-card>
+</md-card> -->
+
+  <div toolbar-buttons layout="row" layout-align="start center" flex>
+    <md-card-title>Add/Drop Courses History
+    </md-card-title>
+     <md-chip-list *ngIf="enrollmentApplicationItems?.length > 0">
+      <md-chip color="accent">{{enrollmentApplicationItems?.length}}</md-chip>
+    </md-chip-list>
+    <span flex></span>
+      <button md-button class="md-icon-button" [routerLink]="['/term/enrollment-applications']">
+      <md-icon class="md-24 tc-grey-300" [ngClass]="{'tc-grey-700': selectedRows.length === 0}">add</md-icon>
+    </button>
+    
+  </div>
+  <md-divider></md-divider>
+ <div layout="row" layout-align="start center" class="pad-left-sm pad-right-sm">
+    <td-search-box #searchBox backIcon="arrow_back" class="push-right-sm" placeholder="Search here" (searchDebounce)="search($event)" [alwaysVisible]="true" flex>
+    </td-search-box>
+</div>
+<md-divider></md-divider>
+<td-data-table
+    #dataTable
+    [data]="filteredData"
+    [columns]="columns"
+    [sortable]="true"
+    [sortBy]="sortBy"
+    [sortOrder]="sortOrder"
+    (sortChange)="sort($event)">
+  <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
+    <div layout="row">
+      <span flex>{{value}}</span>
+    </div>
+  </template>
+  <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
+    <!-- <div layout="row">
+      <a md-button color="accent" class="text-upper" (click)="viewEnrollmentApplicationItem(row)" mdTooltip="View items info">
+        [routerLink]="['/term/offerings', row['canonicalCode']]"
+        <span>View</span>
+      </a>
+    </div> -->
+  </template>
+</td-data-table>
+<div class="md-padding" *ngIf="!dataTable.hasData" layout="row" layout-align="center center">
+    <h3>No results to display.</h3>
+</div> 
+<td-paging-bar #pagingBar [pageSizes]="[5, 10, 15, 20]" [total]="filteredTotal" (change)="page($event)">
+    <span td-paging-bar-label hide-xs>Row per page:</span>
+    {{pagingBar.range}} <span hide-xs>of {{pagingBar.total}}</span>
+</td-paging-bar>
+ 

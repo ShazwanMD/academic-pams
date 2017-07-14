@@ -9,10 +9,11 @@
          <pams-student-enrollment-application-list
             [enrollmentApplication]="enrollmentApplication$ | async">
         </pams-student-enrollment-application-list>
+        <md-card class=""> 
    <pams-student-enrollment-application-item
           [enrollmentApplication]="enrollmentApplication$ | async"
            [enrollmentApplicationItems]="enrollmentApplicationItems$ | async">
-        </pams-student-enrollment-application-item>
+        </pams-student-enrollment-application-item> </md-card>
       </div>
       <div flex-gt-md="30">
         <!--  <pams-student-enrollment-application-task-detail-action

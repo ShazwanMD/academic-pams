@@ -170,6 +170,7 @@ public class TermTransformer {
 		vo.setSection(this.toSectionVo(enrollment.getSection()));
 		vo.setEnrollmentStanding(EnrollmentStanding.get(enrollment.getStanding().ordinal()));
 		vo.setEnrollmentStatus(EnrollmentStatus.get(enrollment.getStatus().ordinal()));
+		vo.setTotalScore(enrollment.getTotalScore());
 
 		return vo;
 	}

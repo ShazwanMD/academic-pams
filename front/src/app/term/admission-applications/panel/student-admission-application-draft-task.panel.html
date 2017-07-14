@@ -3,9 +3,9 @@
     <div flex-gt-md="70">
     <md-card class="bgc-grey-600" flex> <md-card-content
 	class="text-center">
-<div class="md-display-1">APPLICATION SUCCESS</div>
+<div class="md-display-1">Application Success</div>
 <div layout="column" layout-padding>
-	<div class="md-subhead tc-grey-100">This Application Will Be Processed.Thank You.</div>
+	<div class="md-subhead tc-grey-100">Application {{admissionApplicationTask?.referenceNo}} will be processed.Thank You</div>
 
 </div>
 </md-card-content> </md-card>
@@ -139,7 +139,7 @@
        <pams-admission-application-task-status [admissionApplicationTask]="admissionApplicationTask">
       </pams-admission-application-task-status>
  
-      <md-card>
+    <!--   <md-card>
         <md-card-title>Action</md-card-title>
         <md-card-subtitle>Actions available on current Application</md-card-subtitle>
         <md-divider></md-divider>
@@ -148,19 +148,45 @@
             <md-icon md-list-avatar>done</md-icon>
             <h4 md-line>Edit application {{admissionApplicationTask?.application?.student?.identityNo}} </h4>
             <p md-line>Edit this application</p>
-          </md-list-item>
-         <!--  <md-list-item (click)="register()">
+          </md-list-item> 
+           <md-list-item (click)="register()">
             <md-icon md-list-avatar>done</md-icon>
             <h4 md-line>Approve application</h4>
             <p md-line>Approve this application</p>
-          </md-list-item> -->
+          </md-list-item> 
           <md-list-item (click)="remove()">
             <md-icon md-list-avatar>remove_circle</md-icon>
             <h4 md-line>Remove application</h4>
             <p md-line>Remove this application</p>
-          </md-list-item>
+          </md-list-item> 
         </md-nav-list>
-      </md-card>
+      </md-card> -->
+        <md-card>
+          <md-card-title>Term Menu</md-card-title>
+          <md-card-subtitle>Actions
+            available on current section
+          </md-card-subtitle>
+          <md-divider></md-divider>
+          <md-nav-list
+            flex dense>
+            <md-list-item [routerLink]="['/term/admissions']">
+              <md-icon md-list-avatar>email</md-icon>
+              <h4 md-line>Semester Registration</h4>
+              <p md-line>Watch this semester registration</p>
+            </md-list-item>
+             <md-list-item [routerLink]="['/term/enrollment-applications/student-enrollment-center']">
+              <md-icon md-list-avatar>email</md-icon>
+              <h4 md-line>Course Enrollment</h4>
+              <p md-line>Watch this course enrollment</p>
+            </md-list-item>
+            <md-list-item [routerLink]="['/term/offerings']">
+              <md-icon md-list-avatar>email</md-icon>
+              <h4 md-line>Offerings</h4>
+              <p md-line>Watch this offerings</p>
+            </md-list-item>
+          </md-nav-list>
+        </md-card>
+      
     </div>
   </div>
 </div>
