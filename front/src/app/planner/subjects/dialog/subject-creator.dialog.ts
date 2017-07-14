@@ -1,5 +1,5 @@
 import {Curriculum} from '../../curriculums/curriculum.interface';
-import {Subject} from './../subject.interface';
+import {Subject} from '../subject.interface';
 import {Component, ViewContainerRef, OnInit} from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
 import {FormBuilder} from '@angular/forms';
@@ -11,8 +11,8 @@ import {MdDialogRef} from "@angular/material";
 
 
 @Component({
-  selector: 'pams-Subject-creator',
-  templateUrl: './Subject-creator.dialog.html',
+  selector: 'pams-subject-creator',
+  templateUrl: './subject-creator.dialog.html',
 })
 
 export class SubjectCreatorDialog implements OnInit {
