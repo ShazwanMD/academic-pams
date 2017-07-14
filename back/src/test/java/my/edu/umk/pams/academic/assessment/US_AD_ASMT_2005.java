@@ -40,7 +40,7 @@ private static final Logger LOG = LoggerFactory.getLogger(US_AD_ASMT_2005.class)
 	
 	@Test
 	@Rollback
-	public void scenario2005(){
+	public void scenario2005() throws Exception {
 		given().i_am_a_staff_in_$_academic_session(ACADEMIC_SESSION);
 			when().I_review_result();
 				then().result_student_reviewed();
