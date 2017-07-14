@@ -9,8 +9,8 @@ import {MdSnackBar} from '@angular/material';
 import {Subject} from '../subject.interface';
 
 @Component({
-  selector: 'pams-Subject-list',
-  templateUrl: './Subject-list.component.html',
+  selector: 'pams-subject-list',
+  templateUrl: './subject-list.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SubjectListComponent implements AfterViewInit {
