@@ -22,12 +22,13 @@ import {AcademicSessionSubModule} from '../../planner/academic-sessions/index';
 import {SetupModule} from '../../setup/index';
 import {ProgramSubModule} from '../../planner/programs/index';
 import {AdmissionApplicationDraftTaskPanel} from './panel/admission-application-draft-task.panel';
+import {StudentAdmissionApplicationDraftTaskPanel} from './panel/student-admission-application-draft-task.panel';
 import {AdmissionApplicationTaskCreatorDialog} from './dialog/admission-application-task-creator.dialog';
 import {AdmissionApplicationTaskWorkflowPanel} from './panel/admission-application-task-workflow.panel';
+import {StudentAdmissionApplicationTaskWorkflowPanel} from './panel/student-admission-application-task-workflow.panel';
 import {AdmissionApplicationTaskStatusComponent} from './component/admission-application-task-status.component';
 import {SectionSubModule} from '../sections/index';
 import {AdmissionApplicationCenterPage} from './admission-application-center.page';
-import {StudentAdmissionApplicationCenterPage} from './student-admission-application-center.page';
 import {IdentityModule} from '../../identity/index';
 import {PipeModule} from '../../app.pipe.module';
 import {AdmissionApplicationTaskDetailPage} from './admission-application-task-detail.page';
@@ -36,6 +37,7 @@ import {AdmissionApplicationRegisterTaskPanel} from './panel/admission-applicati
 import { StudentAdmissionApplicationTaskDetailPage } from './student-admission-application-task-detail.page';
 import { AdmissionApplicationListState, archivedAdmissionApplicationListReducer } from './admission-application-list.reducer';
 import { AdmissionApplicationDetailPage } from "./admission-application-detail.page";
+import {StudentAdmissionApplicationCenterPage } from "./admission-application-center2.page";
 
 @NgModule({
   imports: [
@@ -63,7 +65,9 @@ import { AdmissionApplicationDetailPage } from "./admission-application-detail.p
 
     // component
     AdmissionApplicationTaskWorkflowPanel,
+    StudentAdmissionApplicationTaskWorkflowPanel,
     AdmissionApplicationDraftTaskPanel,
+    StudentAdmissionApplicationDraftTaskPanel,
     AdmissionApplicationRegisterTaskPanel,
     AdmissionApplicationTaskListComponent,
     AdmissionApplicationTaskStatusComponent,
@@ -86,6 +90,8 @@ import { AdmissionApplicationDetailPage } from "./admission-application-detail.p
     AssignedAdmissionApplicationTaskListComponent,
     PooledAdmissionApplicationTaskListComponent,
     ArchivedAdmissionApplicationListComponent,
+    StudentAdmissionApplicationCenterPage,
+    StudentAdmissionApplicationTaskWorkflowPanel,
 
   ],
 
@@ -93,6 +99,7 @@ import { AdmissionApplicationDetailPage } from "./admission-application-detail.p
     AdmissionApplicationTaskCreatorDialog,
     AdmissionApplicationTaskEditorDialog,
     AdmissionApplicationDraftTaskPanel,
+    StudentAdmissionApplicationDraftTaskPanel,
     AdmissionApplicationRegisterTaskPanel,
   ],
 })

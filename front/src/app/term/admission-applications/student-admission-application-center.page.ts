@@ -35,20 +35,7 @@ export class StudentAdmissionApplicationCenterPage implements OnInit {
     this.pooledAdmissionApplicationTasks$ = this.store.select(...this.POOLED_ADMISSION_APPLICATION_TASKS);
   }
 
-  private columns: any[] = [
-    {name: 'auditNo', label: 'Audit Nos'},
-    {name: 'description', label: 'Description'},
-    {name: 'sourceNo', label: 'Source No'},
-    {name: 'referenceNo', label: 'Reference No'},
-    {name: 'actor.name', label: 'Advisor'},
-    {name: 'program.code', label: 'Program'},
-    {name: 'academicSession.code', label: 'Academic Session'},
-    {name: 'application.student.name', label: 'Student'},
-    {name: 'studyCenter.code', label: 'Study Center'},
-    {name: 'action', label: ''},
-  ];
-
-  createDialog(): void {
+   createDialog(): void {
     console.log('showDialog');
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
