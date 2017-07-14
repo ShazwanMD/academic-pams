@@ -78,7 +78,7 @@ public class WhenReviewStudentResult extends Stage<WhenReviewStudentResult> {
 	@ProvidedScenarioState
 	private AdGradeCode grade;
 
-	public WhenReviewStudentResult I_review_result() {
+	public WhenReviewStudentResult I_review_result() throws Exception {
 				
 		// student
 		LOG.debug("=================================");
