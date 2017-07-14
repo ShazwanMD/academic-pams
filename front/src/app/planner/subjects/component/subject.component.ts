@@ -8,8 +8,8 @@ import {Subject} from '../subject.interface';
 import {SubjectCreatorDialog} from '../dialog/subject-creator.dialog';
 
 @Component({
-  selector: 'pams-Subject',
-  templateUrl: 'Subject.component.html',
+  selector: 'pams-subject',
+  templateUrl: 'subject.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SubjectComponent {
