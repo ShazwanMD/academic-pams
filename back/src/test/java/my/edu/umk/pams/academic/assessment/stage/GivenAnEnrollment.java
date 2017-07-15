@@ -79,7 +79,7 @@ public class GivenAnEnrollment extends Stage<GivenAnEnrollment> {
     @ProvidedScenarioState
     private AdCourse course;
 
-    public GivenAnEnrollment create_enrollment() {
+    public GivenAnEnrollment create_enrollment() throws Exception {
 
         student = profileService.findStudentByMatricNo("A17M0009F");
         cohort = student.getCohort();
@@ -132,7 +132,7 @@ public class GivenAnEnrollment extends Stage<GivenAnEnrollment> {
         LOG.debug("CGPA :{}", admission.getCgpa());
     }
 
-    private void createSection() {
+    private void createSection() throws Exception {
         section = new AdSectionImpl();
         section.setCode("Section A");
         section.setCanonicalCode("MASTER-MBA-GST5013-201720181-Section A");
@@ -142,7 +142,7 @@ public class GivenAnEnrollment extends Stage<GivenAnEnrollment> {
         termService.addSection(offering, section);
     }
 
-    private void createOffering() {
+    private void createOffering() throws Exception {
         offering = new AdOfferingImpl();
         offering.setCanonicalCode("MASTER-MBA-GST5013-201720181");
         offering.setCode("MASTER-MBA-GST5013");

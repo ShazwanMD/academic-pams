@@ -378,4 +378,13 @@ export class CommonService {
   }
 
 
+  // ====================================================================================================
+  // PRIVATE METHODS
+  // ====================================================================================================
+
+  private handleError(error: Response | any) {
+    let body: any = error.json();
+    return Observable.throw(body);
+  }
+
 }

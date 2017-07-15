@@ -50,4 +50,15 @@ export class IdentityService {
     return this._http.get(this.IDENTITY_API + '/staffs/' + identityNo)
       .map((res: Response) => <Staff>res.json());
   }
+
+
+  // ====================================================================================================
+  // PRIVATE METHODS
+  // ====================================================================================================
+
+  private handleError(error: Response | any) {
+    let body: any = error.json();
+    return Observable.throw(body);
+  }
+
 }

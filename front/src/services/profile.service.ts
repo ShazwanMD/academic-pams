@@ -177,4 +177,14 @@ export class ProfileService {
     return this._http.post(this.PROFILE_API + '/students/' + student.identityNo + '/transferCohort', JSON.stringify(transferer))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
+
+
+  // ====================================================================================================
+  // PRIVATE METHODS
+  // ====================================================================================================
+
+  private handleError(error: Response | any) {
+    let body: any = error.json();
+    return Observable.throw(body);
+  }
 }

@@ -5,7 +5,7 @@ import {Assessment} from '../app/term/assessments/assessment.interface';
 import {Offering} from '../app/term/offerings/offering.interface';
 import {Injectable} from '@angular/core';
 import {Http} from '@angular/http';
-import {RequestOptions, Response, ResponseContentType,Headers} from '@angular/http';
+import {RequestOptions, Response, ResponseContentType, Headers} from '@angular/http';
 import {HttpInterceptorService} from '@covalent/http';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/filter';
@@ -29,19 +29,17 @@ export class TermService {
               private http: Http) {
   }
 
-  findAssessmentById(id): Observable<Assessment> {
+  findAssessmentById(id: number): Observable<Assessment> {
     console.log('findAssessmentById');
     return this._http.get(this.TERM_API + '/assessments/' + id)
       .map((res: Response) => <Assessment>res.json());
   }
-
 
   findAssessments(): Observable<Assessment[]> {
     console.log('findAssessments');
     return this._http.get(this.TERM_API + '/assessments')
       .map((res: Response) => <Assessment[]>res.json());
   }
-
 
   addAssessment(offering: Offering, assessment: Assessment): Observable<String> {
     console.log('addAssessment:' + assessment);
@@ -57,7 +55,7 @@ export class TermService {
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
-  deleteAssessment(offering: Offering, assessment: Assessment) {
+  deleteAssessment(offering: Offering, assessment: Assessment): Observable<String> {
     console.log('deleteAssessmentInService')
     return this._http.delete(this.TERM_API + '/offerings/' + offering.canonicalCode + '/assessments/' + assessment.id)
       .flatMap((res: Response) => Observable.of(res.text()));
@@ -109,10 +107,9 @@ export class TermService {
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
-  //update admission application
   updateAdmissionApplication(application: AdmissionApplication): Observable<String> {
-    console.log('update admission app:' + application.referenceNo)
-    console.log(JSON.stringify(application))
+    console.log('update admission app:' + application.referenceNo);
+    console.log(JSON.stringify(application));
     return this._http.put(this.TERM_API + '/admissionApplications/' + application.referenceNo + '/update', JSON.stringify(application))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
@@ -159,20 +156,18 @@ export class TermService {
       .map((res: Response) => <Admission[]>res.json());
   }
 
-  findAdmissionById(id): Observable<Admission> {
+  findAdmissionById(id: number): Observable<Admission> {
     console.log('findAdmissionById');
     return this._http.get(this.TERM_API + '/admissions/' + id)
       .map((res: Response) => <Admission>res.json());
   }
 
-  //find enrollments by admission created on 14/6/2017
   findEnrollmentsByAdmission(admission: Admission): Observable<Enrollment[]> {
     console.log('findEnrollmentsByAdmission');
     return this._http.get(this.TERM_API + '/admissions/' + admission.id + '/enrollments')
       .map((res: Response) => <Enrollment[]>res.json());
   }
 
-//find enrollmentApplications by admission created on 18/6/2017
   findEnrollmentApplicationsByAdmission(admission: Admission): Observable<EnrollmentApplication[]> {
     console.log('findEnrollmentApplicationsByAdmission');
     return this._http.get(this.TERM_API + '/admissions/' + admission.id + '/enrollmentApplications')
@@ -207,12 +202,11 @@ export class TermService {
       .map((res: Response) => <EnrollmentApplicationTask[]>res.json());
   }
 
-  //archived enrollmentApplications
   findArchivedEnrollmentApplications(): Observable<EnrollmentApplication[]> {
-      console.log('findArchivedEnrollmentApplications');
-      return this._http.get(this.TERM_API + '/enrollmentApplications/archived')
-        .map((res: Response) => <EnrollmentApplication[]>res.json());
-    }
+    console.log('findArchivedEnrollmentApplications');
+    return this._http.get(this.TERM_API + '/enrollmentApplications/archived')
+      .map((res: Response) => <EnrollmentApplication[]>res.json());
+  }
 
   findEnrollmentApplicationTaskByTaskId(taskId: string): Observable<EnrollmentApplicationTask> {
     console.log('findEnrollmentApplicationTaskByTaskId');
@@ -259,29 +253,29 @@ export class TermService {
   }
 
   addEnrollmentApplicationItem(enrollmentApplication: EnrollmentApplication, item: EnrollmentApplicationItem): Observable<String> {
-    return this._http.post(this.TERM_API + '/enrollmentApplications/' + enrollmentApplication.referenceNo + '/enrollmentApplicationItems', JSON.stringify(item))
+    return this._http.post(this.TERM_API + '/enrollmentApplications/' + enrollmentApplication.referenceNo
+      + '/enrollmentApplicationItems', JSON.stringify(item))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
-  //update enrollmentApplicationItem
   updateEnrollmentApplicationItem(application: EnrollmentApplication, item: EnrollmentApplicationItem): Observable<String> {
     console.log(item);
-    return this._http.put(this.TERM_API + '/enrollmentApplications/' + application.referenceNo + '/enrollmentApplicationItems/' + item.id, JSON.stringify(item))
+    return this._http.put(this.TERM_API + '/enrollmentApplications/' + application.referenceNo
+      + '/enrollmentApplicationItems/' + item.id, JSON.stringify(item))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
-
 
   findEnrollmentApplications(): Observable<EnrollmentApplication[]> {
     console.log('findEnrollmentApplications');
     return this._http.get(this.TERM_API + '/enrollmentApplications')
       .map((res: Response) => <EnrollmentApplication[]>res.json());
   }
-  
+
   findEnrollmentApplicationByReferenceNo(referenceNo: string): Observable<EnrollmentApplication> {
-      console.log('findEnrollmentApplicationByReferenceNo');
-      return this._http.get(this.TERM_API + '/enrollmentApplications/' + referenceNo)
-        .map((res: Response) => <EnrollmentApplication>res.json());
-    }
+    console.log('findEnrollmentApplicationByReferenceNo');
+    return this._http.get(this.TERM_API + '/enrollmentApplications/' + referenceNo)
+      .map((res: Response) => <EnrollmentApplication>res.json());
+  }
 
   findEnrollmentApplicationItems(application: EnrollmentApplication): Observable<EnrollmentApplicationItem[]> {
     return this._http.get(this.TERM_API + '/enrollmentApplications/' + application.referenceNo + '/enrollmentApplicationItems')
@@ -293,8 +287,7 @@ export class TermService {
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
-  //remove EnrollmentApplication using editorDialog
-  removeEnrollmentApplication(admission: Admission, application: EnrollmentApplication) {
+  removeEnrollmentApplication(admission: Admission, application: EnrollmentApplication): Observable<String> {
     return this._http.delete(this.TERM_API + '/admissions/' + admission.id + '/enrollment-applications/' + application.id)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
@@ -321,8 +314,6 @@ export class TermService {
       .map((res: Response) => <Enrollment[]>res.json());
   }
 
-  //update enrollment by section
-  //update appointment by section
   updateEnrollment(section: Section, enrollment: Enrollment): Observable<String> {
     console.log(enrollment);
     return this._http.put(this.TERM_API + '/sections/' + section.canonicalCode + '/enrollments/' + enrollment.id, JSON.stringify(enrollment))
@@ -338,8 +329,8 @@ export class TermService {
     return this._http.get(this.TERM_API + '/appointments')
       .map((res: Response) => <Appointment[]>res.json());
   }
-  
- findCurrentAppointments(): Observable<Appointment[]> {
+
+  findCurrentAppointments(): Observable<Appointment[]> {
     console.log('findCurrentAppointments');
     return this._http.get(this.TERM_API + '/appointments/current')
       .map((res: Response) => <Appointment[]>res.json());
@@ -427,7 +418,6 @@ export class TermService {
       .map((res: Response) => <GradebookMatrix[]>res.json());
   }
 
-  //save offering
   saveOffering(program: Program, course: Course, offering: Offering): Observable<String> {
     console.log('saveOffering');
     console.log('offering:' + offering.canonicalCode);
@@ -436,10 +426,10 @@ export class TermService {
 
     console.log('save offering');
     return this._http.post(this.TERM_API + '/offerings', JSON.stringify(offering))
-      .flatMap((res: Response) => Observable.of(res.text()));
+      .flatMap((res: Response) => Observable.of(res.text()))
+      .catch((error) => this.handleError(error));
   }
 
-  //add new section
   addSection(offering: Offering, section: Section): Observable<String> {
     console.log('addSection:' + section);
     console.log('offering:' + offering.canonicalCode);
@@ -463,7 +453,6 @@ export class TermService {
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
-  // save appointment
   addAppointment(section: Section, appointment: Appointment): Observable<String> {
     console.log('addAppointment');
     console.log(section);
@@ -472,7 +461,7 @@ export class TermService {
   }
 
   // remove appointment by section
-  removeAppointment(section: Section, appointment: Appointment) {
+  removeAppointment(section: Section, appointment: Appointment): Observable<String> {
     return this._http.delete(this.TERM_API + '/sections/' + section.canonicalCode + '/appointments/' + appointment.id)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
@@ -483,7 +472,7 @@ export class TermService {
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
-  deleteEnrollment(offering: Offering, enrollment: Enrollment) {
+  deleteEnrollment(offering: Offering, enrollment: Enrollment): Observable<String> {
     return this._http.delete(this.TERM_API + '/offerings/' + offering.canonicalCode + '/enrollments/' + enrollment.id)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
@@ -493,7 +482,7 @@ export class TermService {
     let headers: Headers = new Headers({
       'Content-Type': 'application/json',
     });
-    let options: RequestOptions = new RequestOptions({headers : headers});
+    let options: RequestOptions = new RequestOptions({headers: headers});
     let formData: FormData = new FormData();
     formData.append('file', file);
     console.log('formData', formData);
@@ -518,5 +507,15 @@ export class TermService {
     let options: RequestOptions = new RequestOptions({responseType: ResponseContentType.ArrayBuffer});
     return this._http.post(this.TERM_API + '/offerings/' + offering.canonicalCode + '/calculateGradebook', options)
       .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+
+  // ====================================================================================================
+  // PRIVATE METHODS
+  // ====================================================================================================
+
+  private handleError(error: Response | any) {
+    let body: any = error.json();
+    return Observable.throw(body);
   }
 }

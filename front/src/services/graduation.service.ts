@@ -78,4 +78,14 @@ export class GraduationService {
     // return this._http.put(this.GRADUATION_API + '/graduationApplications', JSON.stringify(graduationApplication))
     //   .flatMap(data => Observable.of(true));
   }
+
+
+  // ====================================================================================================
+  // PRIVATE METHODS
+  // ====================================================================================================
+
+  private handleError(error: Response | any) {
+    let body: any = error.json();
+    return Observable.throw(body);
+  }
 }
