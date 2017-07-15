@@ -31,7 +31,7 @@ public class US_AD_ASMT_2002 extends SpringScenarioTest<GivenIAmAcademicStaff, W
 
     @Test
     @Rollback
-    public void scenarioEXAM() {
+    public void scenarioEXAM() throws Exception {
         given().i_am_a_staff_in_current_academic_session();
         when().i_update_examination_info();
         then().exam_info_updated();

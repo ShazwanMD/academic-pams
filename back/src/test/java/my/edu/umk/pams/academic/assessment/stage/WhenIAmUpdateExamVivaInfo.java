@@ -52,7 +52,7 @@ public class WhenIAmUpdateExamVivaInfo extends Stage<WhenIAmUpdateExamVivaInfo> 
 	@ExpectedScenarioState
 	private AdUser user;
 
-	public WhenIAmUpdateExamVivaInfo i_update_examination_info() {
+	public WhenIAmUpdateExamVivaInfo i_update_examination_info() throws Exception {
 
 		offering = new AdOfferingImpl();
 		offering.setCanonicalCode("FIAT/MASTER/PBH/GST5060");

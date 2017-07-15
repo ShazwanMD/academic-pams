@@ -33,7 +33,7 @@ public class US_AD_TRM_1001
 
 	@Test
 	@Rollback
-	public void adminReadyForSectionsBySelectedProgram() {
+	public void adminReadyForSectionsBySelectedProgram() throws Exception {
 		given().I_am_a_CPS_administrator_in_current_academic_session().and().I_pick_faculty_$(FACULTY_CODE).and()
 				.I_pick_program_$(PROGRAM_CODE);
 		when().I_create_course_offerings_for_the_program_$(PROGRAM_CODE);
@@ -42,7 +42,7 @@ public class US_AD_TRM_1001
 	
 	@Test
 	@Rollback
-	public void adminReadyForSectionsBySelectedCourse() {
+	public void adminReadyForSectionsBySelectedCourse() throws Exception {
 		given().I_am_a_CPS_administrator_in_current_academic_session().and().I_pick_faculty_$(FACULTY_CODE).and()
 				.I_pick_program_$(PROGRAM_CODE);
 		when().I_create_course_offerings_for_the_program_by_selected_course_$(COURSE_CODE);

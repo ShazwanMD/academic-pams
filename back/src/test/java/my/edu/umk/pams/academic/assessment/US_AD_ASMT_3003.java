@@ -27,7 +27,7 @@ public class US_AD_ASMT_3003 extends SpringScenarioTest<GivenIAmAdministrator, W
 
 	@Test
 	@Rollback
-	public void scenarioExam(){
+	public void scenarioExam() throws Exception{
 		String username = "mgseb";
 		String password = "abc123";
 		given().i_am_a_$_administrator_in_current_academic_session(username, password);

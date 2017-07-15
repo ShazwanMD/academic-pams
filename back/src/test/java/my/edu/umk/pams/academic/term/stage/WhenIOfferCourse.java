@@ -47,7 +47,7 @@ public class WhenIOfferCourse extends Stage<WhenIOfferCourse> {
 	@ProvidedScenarioState
 	private AdCourse course;
 
-	public WhenIOfferCourse I_create_course_offerings_for_the_program_$(String code) {
+	public WhenIOfferCourse I_create_course_offerings_for_the_program_$(String code) throws Exception {
 
 		// find faculty of the program
 		LOG.debug("========New offering will be inserted by bundle========");
@@ -83,7 +83,7 @@ public class WhenIOfferCourse extends Stage<WhenIOfferCourse> {
 		return self();
 	}
 	
-	public WhenIOfferCourse I_create_course_offerings_for_the_program_by_selected_course_$(String code) {
+	public WhenIOfferCourse I_create_course_offerings_for_the_program_by_selected_course_$(String code) throws Exception {
 
 		//when admin had to offer 1 extra subject
 		

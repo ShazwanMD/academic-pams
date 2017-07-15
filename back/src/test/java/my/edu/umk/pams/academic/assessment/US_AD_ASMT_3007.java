@@ -51,7 +51,7 @@ public class US_AD_ASMT_3007 extends SpringScenarioTest<GivenIAmAdministrator, W
 	
 	@Test
 	@Rollback
-	public void scenario3007_mgseb(){
+	public void scenario3007_mgseb() throws Exception{
 					
 		String USERNAME = "mgseb";
 		String PASSWORD = "abc123";
