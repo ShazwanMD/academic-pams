@@ -11,7 +11,8 @@
         </pams-section>
          <pams-section-appointment-list
           [section]="section$ | async"
-          [appointments]="appointments$ | async">
+          [appointments]="appointments$ | async"
+          [appointment]="appointment$ | async">
         </pams-section-appointment-list>
         <pams-section-enrollment-list
           [section]="section$ | async"

@@ -29,6 +29,7 @@ export class AdmissionEnrollmentListComponent implements OnInit {
         { name: 'section.offering.program.code', label: 'Program' },
         { name: 'enrollmentStanding', label: 'Standing' },
         { name: 'enrollmentStatus', label: 'Status' },
+        { name: 'totalScore', label: 'Total Score' },
         { name: 'action', label: '' },
     ];
     

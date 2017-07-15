@@ -8,6 +8,6 @@ export interface Actor{
   mobile:string;
   fax:string;
   actorType:ActorType;
-  //studentStatus:StudentStatus;
+ 
  
 }

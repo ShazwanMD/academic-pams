@@ -22,6 +22,7 @@ export class SectionAppointmentListComponent implements AfterViewInit {
 
     @Input() section: Section;
     @Input() appointments: Appointment[];
+    @Input() appointment: Appointment;
     @Output() view = new EventEmitter<Appointment>();
 
 

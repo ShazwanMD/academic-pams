@@ -12,6 +12,7 @@ import { StaffSubModule } from "./staffs/index";
 import { studentListReducer, StudentListState } from "./student-list.reducer";
 import { actorListReducer, ActorListState } from "./actor-list.reducer";
 import { staffListReducer, StaffListState } from "./staff-list.reducer";
+import { staffReducer, StaffState } from "./staffs/staff.reducer";
 import { StudentSelectComponent } from "./component/student-select.component";
 import { StaffSelectComponent } from "./component/staff-select.component";
 import { StudentActions } from "./student.action";
@@ -25,6 +26,7 @@ export interface IdentityModuleState {
     actors: ActorListState;
     students: StudentListState;
     staffs: StaffListState;
+    staff: StaffState;
 }
 ;
 
@@ -38,6 +40,8 @@ export const identityModuleReducers = {
     actors: actorListReducer,
     students: studentListReducer,
     staffs: staffListReducer,
+    staff: staffReducer,
+    
 };
 
 

@@ -22,15 +22,18 @@ export class SectionDetailPage implements OnInit {
 
   @Input() section: Section;
   @Input() offering: Offering;
+  @Input() appointment: Appointment;
 
   private OFFERING: string[] = "termModuleState.offering".split(".");
   private SECTION: string[] = "termModuleState.section".split(".");
   private ENROLLMENTS: string[] = "termModuleState.enrollments".split(".");
   private APPOINTMENTS: string[] = "termModuleState.appointments".split(".");
+  private APPOINTMENT: string[] = "termModuleState.appointment".split(".");
 
   private offering$: Observable<Offering>;
   private section$: Observable<Section>;
   private appointments$: Observable<Appointment[]>;
+  private appointment$: Observable<Appointment>;
   private enrollments$: Observable<Enrollment[]>;
 
   constructor(private router: Router,
@@ -46,6 +49,7 @@ export class SectionDetailPage implements OnInit {
     this.offering$ = this.store.select(...this.OFFERING);
     this.enrollments$ = this.store.select(...this.ENROLLMENTS);
     this.appointments$ = this.store.select(...this.APPOINTMENTS);
+    this.appointment$ = this.store.select(...this.APPOINTMENT);
   }
 
   showDialog(): void {

@@ -6,6 +6,6 @@ import {StaffCenterPage} from "./staff-center.page";
 // Route Configuration
 export const StaffRoutes: Routes = [
   {path: 'identity/staffs', component: StaffCenterPage},
-  {path: 'identity/staffs/:id', component: StaffDetailPage},
+  {path: 'identity/staffs/:identityNo', component: StaffDetailPage},
  
 ];

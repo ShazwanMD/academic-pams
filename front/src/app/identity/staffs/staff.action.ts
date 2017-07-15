@@ -24,10 +24,10 @@ export class StaffActions {
   
   //find staff by id
   static FIND_STAFF_BY_IDENTITY_NO = '[Staff] Find Staff By Identity No';
-  findStaffByIdentityNo(staff): Action {
+  findStaffByIdentityNo(identityNo): Action {
     return {
       type: StaffActions.FIND_STAFF_BY_IDENTITY_NO,
-      payload: staff
+      payload: identityNo
     };
   }
 
