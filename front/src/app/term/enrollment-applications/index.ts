@@ -40,6 +40,7 @@ import { StudentEnrollmentApplicationListComponent } from "./component/student-e
 import { StudentEnrollmentApplicationTaskDetailActionComponent } from "./component/student-enrollment-application-task-detail-action.component";
 import { EnrollmentApplicationItemUpdateDialog } from "./dialog/enrollment-application-item-update.dialog";
 import { EnrollmentApplicationListState, archivedEnrollmentApplicationListReducer } from './enrollment-application-list.reducer';
+import { EnrollmentApplicationDetailPage } from "./enrollment-application-detail.page";
 
 @NgModule({
   imports: [
@@ -58,6 +59,7 @@ import { EnrollmentApplicationListState, archivedEnrollmentApplicationListReduce
     EnrollmentApplicationCenterPage,
     StudentEnrollmentCenterPage,
     EnrollmentApplicationTaskDetailPage,
+    EnrollmentApplicationDetailPage,
     StudentEnrollmentApplicationTaskDetailPage,
 
     // component
