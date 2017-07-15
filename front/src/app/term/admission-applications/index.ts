@@ -37,7 +37,9 @@ import {AdmissionApplicationRegisterTaskPanel} from './panel/admission-applicati
 import { StudentAdmissionApplicationTaskDetailPage } from './student-admission-application-task-detail.page';
 import { AdmissionApplicationListState, archivedAdmissionApplicationListReducer } from './admission-application-list.reducer';
 import { AdmissionApplicationDetailPage } from "./admission-application-detail.page";
+import { StudentAdmissionApplicationDetailPage } from "./student-admission-application-detail.page";
 import {StudentAdmissionApplicationCenterPage } from "./admission-application-center2.page";
+import { StudentAdmissionApplicationActionComponent } from "./component/student-admission-application-action.component";
 
 @NgModule({
   imports: [
@@ -61,6 +63,7 @@ import {StudentAdmissionApplicationCenterPage } from "./admission-application-ce
     StudentAdmissionApplicationTaskDetailPage,
     AdmissionApplicationCenterPage,
     AdmissionApplicationDetailPage,
+    StudentAdmissionApplicationDetailPage,
     StudentAdmissionApplicationCenterPage,
 
     // component
@@ -74,6 +77,7 @@ import {StudentAdmissionApplicationCenterPage } from "./admission-application-ce
    // AdmissionApplicationListComponent,
     AdmissionApplicationComponent,
     AdmissionApplicationActionComponent,
+    StudentAdmissionApplicationActionComponent,
     AssignedAdmissionApplicationTaskListComponent,
     PooledAdmissionApplicationTaskListComponent,
     ArchivedAdmissionApplicationListComponent,
@@ -86,6 +90,7 @@ import {StudentAdmissionApplicationCenterPage } from "./admission-application-ce
   exports: [
     AdmissionApplicationComponent,
     AdmissionApplicationActionComponent,
+    StudentAdmissionApplicationActionComponent,
    // AdmissionApplicationListComponent,
     AssignedAdmissionApplicationTaskListComponent,
     PooledAdmissionApplicationTaskListComponent,

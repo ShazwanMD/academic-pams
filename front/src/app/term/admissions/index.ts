@@ -35,6 +35,11 @@ import { AdmissionActionComponent } from "./component/admission-action.component
 import { AdmissionEnrollmentApplicationListComponent } from "./component/admission-enrollment-application-list.component";
 import { AdmissionApplicationListComponent } from "../admission-applications/component/admission-application-list.component";
 import { AdmissionApplicationSubModule } from "../admission-applications/index";
+import { StudentAdmissionCenterPage } from "./student-admission-center.page";
+import { StudentAdmissionDetailPage } from "./student-admission-detail.page";
+import { StudentAdmissionActionComponent } from "./component/student-admission-action.component";
+import { StudentAdmissionEnrollmentListComponent } from "./component/student-admission-enrollment-list.component";
+import { StudentAdmissionEnrollmentApplicationListComponent } from "./component/student-admission-enrollment-application-list.component";
 
 
 @NgModule({
@@ -53,19 +58,24 @@ import { AdmissionApplicationSubModule } from "../admission-applications/index";
   declarations: [
     // page
     AdmissionCenterPage,
+    StudentAdmissionCenterPage,
     AdmissionDetailPage,
+    StudentAdmissionDetailPage,
 
     // component
     AdmissionListComponent,
     AdmissionApplicationListComponent,
     AdmissionComponent,
     AdmissionActionComponent,
+    StudentAdmissionActionComponent,
     AdmissionEnrollmentInfoComponent,
     AdmissionSelectComponent,
     AdmissionStatusSelectComponent,
     AcademicStandingSelectComponent,
     AdmissionEnrollmentListComponent,
+    StudentAdmissionEnrollmentListComponent,
     AdmissionEnrollmentApplicationListComponent,
+    StudentAdmissionEnrollmentApplicationListComponent,
 
     // dialog
     AdmissionCreateTaskCreatorDialog,

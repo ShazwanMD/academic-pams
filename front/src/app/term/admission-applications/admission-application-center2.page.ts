@@ -66,7 +66,7 @@ createDialog(): void {
   
   viewAdmissionApplication(admissionApplication: AdmissionApplication) {
       console.log("students applications: " + admissionApplication.referenceNo);
-      this.router.navigate(['/term/admission-applications', admissionApplication.referenceNo]);
+      this.router.navigate(['/term/admission-applications', admissionApplication.referenceNo, 'student-admission-application-detail']);
   //this.router.navigate(['/term/offerings', offering.canonicalCode]); 
   }
 
