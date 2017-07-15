@@ -32,8 +32,11 @@ export class StaffAppointmentListComponent implements AfterViewInit {
 
     private columns: any[] = [
         { name: 'id', label: 'Id' },
-        { name: 'staff.name', label: 'Staff' },
-        { name: 'staff.identityNo', label: 'IdentityNo' },
+        { name: 'section.offering.code', label: 'Section Code' },
+        { name: 'section.offering.titleEn', label: 'Section Title' },
+        { name: 'section.offering.capacity', label: 'Capacity' },
+        { name: 'section.offering.course.program.code', label: 'Program' },
+        { name: 'section.offering.course.faculty.name', label: 'Faculty' },
         { name: 'appointmentStatus', label: 'Appointment Status' },
         { name: 'action', label: '' }
     ];
