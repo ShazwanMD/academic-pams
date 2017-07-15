@@ -29,6 +29,15 @@ public class AdStaffDaoImpl extends GenericDaoSupport<Long, AdStaff> implements 
         query.setString("identityNo", staffNo);
         return (AdStaff) query.uniqueResult();
     }
+    
+    @Override
+    public AdStaff findByIdentityNo(String identityNo) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select p from AdStaff p where " +
+                "p.identityNo = :identityNo ");
+        query.setString("identityNo", identityNo);
+        return (AdStaff) query.uniqueResult();
+    }
 
     @Override
     public AdStaff findByNricNo(String nricNo) {

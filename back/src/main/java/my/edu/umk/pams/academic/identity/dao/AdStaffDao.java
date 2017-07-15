@@ -13,6 +13,8 @@ import java.util.List;
 public interface AdStaffDao extends GenericDao<Long, AdStaff> {
 
     AdStaff findByStaffNo(String staffNo);
+    
+    AdStaff findByIdentityNo(String identityNo);
 
     AdStaff findByNricNo(String nricNo);
 

@@ -145,6 +145,8 @@ public interface IdentityService {
     AdStaff findStaffById(Long id);
 
     AdStaff findStaffByStaffNo(String StaffNo);
+    
+    AdStaff findStaffByIdentityNo(String identityNo);
 
     AdStaff findStaffByNricNo(String nricNo);
 

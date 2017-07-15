@@ -1247,6 +1247,11 @@ public class TermServiceImpl implements TermService {
     public AdAppointment findAppointmentBySectionAndStaff(AdSection section, AdStaff staff) {
         return appointmentDao.findBySectionAndStaff(section, staff);
     }
+    
+    @Override
+    public AdAppointment findAppointmentByStaff(AdStaff staff) {
+        return appointmentDao.findByStaff(staff);
+    }
 
     @Override
     public List<AdAppointment> findAppointments(AdOffering offering) {
@@ -1256,6 +1261,11 @@ public class TermServiceImpl implements TermService {
     @Override
     public List<AdAppointment> findAppointments(AdSection section) {
         return appointmentDao.find(section);
+    }
+    
+    @Override
+    public List<AdAppointment> findAppointments(AdStaff staff) {
+        return appointmentDao.find(staff);
     }
 
     @Override

@@ -422,10 +422,14 @@ public interface TermService {
     AdAppointment findAppointmentById(Long id);
 
     AdAppointment findAppointmentBySectionAndStaff(AdSection section, AdStaff staff);
+    
+    AdAppointment findAppointmentByStaff(AdStaff staff);
 
     List<AdAppointment> findAppointments(AdOffering offering);
 
     List<AdAppointment> findAppointments(AdSection section);
+    
+    List<AdAppointment> findAppointments(AdStaff staff);
 
     List<AdAppointment> findAppointments(AdAcademicSession academicSession);
 

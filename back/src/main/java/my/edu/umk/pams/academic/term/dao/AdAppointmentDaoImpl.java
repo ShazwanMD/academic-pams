@@ -59,6 +59,18 @@ public class AdAppointmentDaoImpl extends GenericDaoSupport<Long, AdAppointment>
     }
     
     @Override
+    public AdAppointment findByStaff(AdStaff staff) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select s from AdAppointment s where " +
+                "and s.staff = :staff " +
+                "and s.metadata.state = :state ");
+        query.setInteger("state", AdMetaState.ACTIVE.ordinal());
+        query.setEntity("staff", staff);
+        query.setCacheable(true);
+        return (AdAppointment) query.uniqueResult();
+    }
+    
+    @Override
     public AdAppointment findById(Long id) {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select o from AdAppointment o where " +

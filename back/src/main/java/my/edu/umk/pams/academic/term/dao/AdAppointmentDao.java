@@ -28,6 +28,8 @@ public interface AdAppointmentDao extends GenericDao<Long, AdAppointment> {
 	AdAppointment findByStaffNoAndOffering(String staffNo, AdOffering offering);
 
     AdAppointment findBySectionAndStaff(AdSection section, AdStaff staff);
+    
+    AdAppointment findByStaff(AdStaff staff);
 
     List<AdAppointment> find(AdAcademicSession adAcemicSession);
 

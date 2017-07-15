@@ -404,6 +404,11 @@ public class IdentityServiceImpl implements IdentityService {
     public AdStaff findStaffByNricNo(String nricNo) {
         return staffDao.findByStaffNo(nricNo);
     }
+    
+    @Override
+    public AdStaff findStaffByIdentityNo(String identityNo) {
+        return staffDao.findByIdentityNo(identityNo);
+    }
 
     @Override
     public List<AdStaff> findStaffs(Integer offset, Integer limit) {

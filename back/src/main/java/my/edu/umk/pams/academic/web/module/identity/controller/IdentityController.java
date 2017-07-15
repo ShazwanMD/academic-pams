@@ -1,12 +1,21 @@
 package my.edu.umk.pams.academic.web.module.identity.controller;
 
 import my.edu.umk.pams.academic.common.service.CommonService;
+import my.edu.umk.pams.academic.identity.model.AdStaff;
 import my.edu.umk.pams.academic.identity.service.IdentityService;
+import my.edu.umk.pams.academic.planner.model.AdAppointmentStatus;
 import my.edu.umk.pams.academic.security.service.SecurityService;
 import my.edu.umk.pams.academic.system.service.SystemService;
+import my.edu.umk.pams.academic.term.model.AdAppointment;
+import my.edu.umk.pams.academic.term.model.AdAppointmentImpl;
+import my.edu.umk.pams.academic.term.model.AdOffering;
+import my.edu.umk.pams.academic.term.model.AdSection;
+import my.edu.umk.pams.academic.term.service.TermService;
 import my.edu.umk.pams.academic.web.module.identity.vo.Actor;
 import my.edu.umk.pams.academic.web.module.identity.vo.Staff;
 import my.edu.umk.pams.academic.web.module.identity.vo.Student;
+import my.edu.umk.pams.academic.web.module.term.controller.TermTransformer;
+import my.edu.umk.pams.academic.web.module.term.vo.Appointment;
 import my.edu.umk.pams.academic.workflow.service.WorkflowService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,6 +25,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -36,6 +46,9 @@ public class IdentityController {
     private IdentityService identityService;
 
     @Autowired
+    private TermService termService;
+
+    @Autowired
     private SecurityService securityService;
 
     @Autowired
@@ -49,6 +62,9 @@ public class IdentityController {
 
     @Autowired
     private IdentityTransformer identityTransformer;
+    
+    @Autowired
+    private TermTransformer termTransformer;
 
     @Autowired
     AuthenticationManager authenticationManager;
@@ -78,7 +94,17 @@ public class IdentityController {
         return new ResponseEntity<Staff>(identityTransformer
                 .toStaffVo(identityService.findStaffByStaffNo(identityNo)), HttpStatus.OK);
     }
+    
+    //find appointments by staff
+    @RequestMapping(value = "/staffs/{identityNo}/appointments", method = RequestMethod.GET)
+    public ResponseEntity<List<Appointment>> findAppointmentsByStaff(@PathVariable String identityNo) {
+        AdStaff staff = identityService.findStaffByIdentityNo(identityNo);
+        List<AdAppointment> appointments = termService.findAppointments(staff);
+        List<Appointment> appointmentVos = termTransformer.toAppointmentVos(appointments);
+        return new ResponseEntity<List<Appointment>>(appointmentVos, HttpStatus.OK);
 
+    }
+    
     // ==================================================================================================== //
     // STUDENT
     // ==================================================================================================== //
