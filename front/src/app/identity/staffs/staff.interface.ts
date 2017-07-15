@@ -8,5 +8,7 @@ export interface Staff extends Actor {
     program:Program;
     studentStatus:number;
 
+    selected: boolean;
+
     
 }

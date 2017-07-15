@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy, ViewContainerRef } from '@angular/core';
+import {Component, OnInit, ChangeDetectionStrategy, ViewContainerRef, Input, EventEmitter, Output} from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { IdentityService } from '../../../services';
 import { TermService } from '../../../services';
@@ -9,6 +9,7 @@ import { Staff } from "./staff.interface";
 import {StaffActions } from "./staff.action";
 import { IdentityModuleState } from "../index";
 import { MdDialog, MdDialogConfig, MdDialogRef } from "@angular/material";
+import { Appointment } from "../../term/appointments/appointment.interface";
 
 @Component( {
     selector: 'pams-staff-detail',
@@ -16,9 +17,16 @@ import { MdDialog, MdDialogConfig, MdDialogRef } from "@angular/material";
 } )
 
 export class StaffDetailPage implements OnInit {
-
+    
+    @Input() staff: Staff;
+    @Input() appointment: Appointment;
+    
     private STAFF: string[] = "identityModuleState.staff".split( "." );
+    private APPOINTMENTS: string[] = "termModuleState.appointments".split(".");
+   
+    
     private staff$: Observable<Staff>;
+    private appointments$: Observable<Appointment[]>;
   
     constructor( private router: Router,
         private route: ActivatedRoute,
@@ -28,7 +36,8 @@ export class StaffDetailPage implements OnInit {
         private vcf: ViewContainerRef,
         private dialog: MdDialog ) {
 
-        this.staff$ = this.store.select( ...this.STAFF );    
+        this.staff$ = this.store.select( ...this.STAFF );  
+        this.appointments$ = this.store.select(...this.APPOINTMENTS);
     }
 
     ngOnInit(): void {

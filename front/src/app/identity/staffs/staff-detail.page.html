@@ -8,6 +8,11 @@
 		<div flex-gt-md="70">
 			<pams-staff [staff]="staff$ | async">
 			</pams-staff>
+			<!-- findAppointmentsByStaff -->
+			<pams-staff-appointment-list
+          [staff]="staff$ | async"
+          [appointments]="appointments$ | async">
+        </pams-staff-appointment-list>
 		</div>
 		<div flex-gt-md="30">
 			<!-- <pams-appointment-action [appointment]="appointment$ | async"

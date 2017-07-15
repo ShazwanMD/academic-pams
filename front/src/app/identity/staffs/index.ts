@@ -21,6 +21,7 @@ import {StaffComponent} from "./component/staff.component";
 import {IdentityModule} from "../../identity/index";
 //import { StaffActionComponent } from "./component/staff-action.component";
 import { StaffCenterPage } from "./staff-center.page";
+import { StaffAppointmentListComponent } from "./component/staff-appointment-list.component";
 
 @NgModule({
   imports: [
@@ -37,6 +38,7 @@ import { StaffCenterPage } from "./staff-center.page";
     // component
     StaffListComponent,
     StaffComponent,
+    StaffAppointmentListComponent,
    
    // StaffActionComponent,
 
@@ -49,6 +51,7 @@ import { StaffCenterPage } from "./staff-center.page";
    StaffComponent,
    StaffCenterPage,
    StaffDetailPage,
+   StaffAppointmentListComponent,
   ],
   entryComponents: [
     //StaffEditorDialog,
