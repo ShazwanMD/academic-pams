@@ -1,48 +1,48 @@
 <td-layout-nav>
-<div toolbar-content layout="row" layout-align="center center" flex>
-	<span>PAMS: Postgraduate Management System</span> <span flex></span>
-</div>
-<td-layout-manage-list #list> <md-nav-list
-	list-items> <a md-list-item
-	[routerLink]="['/term/admission-applications']"
-	mdTooltip="Semester Registration"> <md-icon>create</md-icon>
-	Semester Registration
-</a> 
- <md-divider></md-divider> 
- <!-- previous menu start --> 
- <a
-	md-list-item [routerLink]="['/term/enrollment-applications']"> <md-icon>create</md-icon> Course Enrollments
-</a> 
- <a	md-list-item [routerLink]="['/term/offerings']"
-	mdTooltip="View offerings"> <md-icon>create</md-icon> Offerings
-</a> 
-<!-- previous menu end --> 
-</md-nav-list>
-<div toolbar-buttons layout="row" layout-align="start center" flex>
-	<span flex>Semester Registration Center</span>
-	<button md-button class="md-icon-button">
-		<md-icon class="md-24">settings</md-icon>
-	</button>
-	<button md-button class="md-icon-button">
-		<md-icon class="md-24">more_vert</md-icon>
-	</button>
-</div>
-  <md-card class=""> 
-  <md-tab-group [selectedIndex]="0">
- <md-tab label="Completed Registration">
-	<pams-admission-list
-	 [admissions]="admissions$ | async"
-        (view)="viewAdmission($event)" mdTooltip="View admission info">
-	</pams-admission-list></md-tab>
-	<!-- <md-tab label="Archived Registration">
-	 <pams-admission-application-list
-	 [admissionApplications]="admissionApplications$ | async"
-        (view)="viewAdmissionApplication($event)" mdTooltip="View admission application info">
-	</pams-admission-application-list> </md-tab> -->
-	
-	</md-tab-group>
-<md-divider></md-divider> 
-</md-card> 
-<!-- display admission application list -->
-</td-layout-manage-list> </td-layout-nav>
+    <div toolbar-content layout="row" layout-align="center center" flex>
+        <span>PAMS: Postgraduate Management System</span> <span flex></span>
+    </div>
+    <td-layout-manage-list #list>
+        <!-- LEFT MENU -->
+        <md-nav-list list-items>
+            <a md-list-item [routerLink]="['/term/admission-applications']" mdTooltip="Semester Registration">
+                <md-icon>create</md-icon> Semester Registration
+            </a>
+            <a md-list-item [routerLink]="['/term/enrollment-applications']">
+                <md-icon>create</md-icon> Course Enrollments
+            </a>
+            <a md-list-item [routerLink]="['/term/offerings']" mdTooltip="View offerings">
+                <md-icon>create</md-icon> Offerings
+            </a>
+        </md-nav-list>
+        <!-- TOP TOOLBAR -->
+        <div toolbar-buttons layout="row" layout-align="start center" flex>
+            <span flex>Semester Registration Center</span>
+            <button md-button class="md-icon-button">
+                <md-icon class="md-24">settings</md-icon>
+            </button>
+            <button md-button class="md-icon-button">
+                <md-icon class="md-24">more_vert</md-icon>
+            </button>
+        </div>
+        <!-- CONTENT -->
+        <md-card class="">
+            <md-tab-group [selectedIndex]="0">
+                <!-- COMPLETED REGISTRATIONS -->
+                <md-tab label="Completed Registration">
+                    <pams-admission-list [admissions]="admissions$ | async" (view)="viewAdmission($event)" mdTooltip="View admission info">
+                    </pams-admission-list>
+                </md-tab>
+                <!-- ARCHIVED REGISTRATIONS -->
+                <!-- <md-tab label="Archived Registration">
+                    <pams-admission-application-list [admissionApplications]="admissionApplications$ | async"
+                        (view)="viewAdmissionApplication($event)" mdTooltip="View admission application info">
+                    </pams-admission-application-list>
+                </md-tab> -->
+            </md-tab-group>
+            <md-divider></md-divider>
+        </md-card>
+        <!-- display admission application list -->
+    </td-layout-manage-list>
+</td-layout-nav>
 
