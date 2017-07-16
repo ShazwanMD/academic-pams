@@ -36,7 +36,6 @@ export const INITIAL_IDENTITY_STATE: IdentityModuleState = <IdentityModuleState>
     actors: [],
     students: [],
     staffs: [],
-    
     staffAppointments: <Appointment[]>[],
 };
 
@@ -46,7 +45,6 @@ export const identityModuleReducers = {
     staffs: staffListReducer,
     staff: staffReducer,
     staffAppointments: staffAppointmentListReducer,
-    
 };
 
 
