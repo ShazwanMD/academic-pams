@@ -252,10 +252,10 @@ public class TermServiceImpl implements TermService {
             enrollment.setGradeCode(commonService.findByScore(enrollment.getTotalScore()));
             updateEnrollment(enrollment.getSection(), enrollment);
 
-            List<AdAdmission> Admissions = findAdmissions(academicSession);
-            for (AdAdmission adAdmission : Admissions) {
-                plannerService.calculateGpa(academicSession, adAdmission);
-            }
+//            List<AdAdmission> Admissions = findAdmissions(academicSession);
+//            for (AdAdmission adAdmission : Admissions) {
+//                plannerService.calculateGpa(academicSession, adAdmission);
+//            }
 
         }
     }

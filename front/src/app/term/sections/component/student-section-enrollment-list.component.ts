@@ -32,7 +32,8 @@ export class StudentSectionEnrollmentListComponent implements OnInit {
         { name: 'admission.student.email', label: 'Email' },
         { name: 'enrollmentStatus', label: 'Status' },
         { name: 'enrollmentStanding', label: 'Standing' },
-        { name: 'totalScore', label: 'TotalScore' },
+        { name: 'totalScore', label: 'TotalScore' },      
+        { name: 'gradeCode.code', label: 'Grade Code' },       
         { name: 'action', label: '' }
     ];
 

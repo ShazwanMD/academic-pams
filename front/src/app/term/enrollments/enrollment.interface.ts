@@ -1,3 +1,4 @@
+import { GradeCode } from './../../common/grade-codes/grade-code.interface';
 import { Section } from "../sections/section.interface";
 import { Admission } from "../admissions/admission.interface";
 import { Student } from "../../identity/student.interface";
@@ -17,4 +18,5 @@ export interface Enrollment extends MetaObject {
   course?: Course;
   selected: boolean;
   totalScore: number;
+  gradeCode: GradeCode;
 }

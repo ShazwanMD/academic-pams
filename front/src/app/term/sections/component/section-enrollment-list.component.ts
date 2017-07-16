@@ -10,11 +10,11 @@ import { TermModuleState } from "../../index";
 import { EnrollmentEditorDialog } from "../../enrollments/dialog/enrollment-editor.dialog";
 import { TdDataTableSortingOrder, TdDataTableService, IPageChangeEvent, ITdDataTableSortChangeEvent } from "@covalent/core";
 
-@Component( {
+@Component({
     selector: 'pams-section-enrollment-list',
     templateUrl: './section-enrollment-list.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
-} )
+})
 export class SectionEnrollmentListComponent implements AfterViewInit {
 
     @Input() section: Section;
@@ -32,6 +32,7 @@ export class SectionEnrollmentListComponent implements AfterViewInit {
         { name: 'enrollmentStatus', label: 'Status' },
         { name: 'enrollmentStanding', label: 'Standing' },
         { name: 'totalScore', label: 'TotalScore' },
+        { name: 'gradeCode.code', label: 'Grade Code' },
         { name: 'action', label: '' }
     ];
 
@@ -51,7 +52,7 @@ export class SectionEnrollmentListComponent implements AfterViewInit {
         private actions: EnrollmentActions,
         private store: Store<TermModuleState>,
         private vcf: ViewContainerRef,
-        private dialog: MdDialog ) {
+        private dialog: MdDialog) {
     }
 
     ngAfterViewInit(): void {
@@ -60,18 +61,18 @@ export class SectionEnrollmentListComponent implements AfterViewInit {
         this.filter();
     }
 
-    sort( sortEvent: ITdDataTableSortChangeEvent ): void {
+    sort(sortEvent: ITdDataTableSortChangeEvent): void {
         this.sortBy = sortEvent.name;
         this.sortOrder = sortEvent.order;
         this.filter();
     }
 
-    search( searchTerm: string ): void {
+    search(searchTerm: string): void {
         this.searchTerm = searchTerm;
         this.filter();
     }
 
-    page( pagingEvent: IPageChangeEvent ): void {
+    page(pagingEvent: IPageChangeEvent): void {
         this.fromRow = pagingEvent.fromRow;
         this.currentPage = pagingEvent.page;
         this.pageSize = pagingEvent.pageSize;
@@ -80,38 +81,38 @@ export class SectionEnrollmentListComponent implements AfterViewInit {
 
     filter(): void {
         let newData: any[] = this.enrollments;
-        newData = this._dataTableService.filterData( newData, this.searchTerm, true );
+        newData = this._dataTableService.filterData(newData, this.searchTerm, true);
         this.filteredTotal = newData.length;
-        newData = this._dataTableService.sortData( newData, this.sortBy, this.sortOrder );
-        newData = this._dataTableService.pageData( newData, this.fromRow, this.currentPage * this.pageSize );
+        newData = this._dataTableService.sortData(newData, this.sortBy, this.sortOrder);
+        newData = this._dataTableService.pageData(newData, this.fromRow, this.currentPage * this.pageSize);
         this.filteredData = newData;
     }
 
-    selectRow( enrollment: Enrollment ): void {
+    selectRow(enrollment: Enrollment): void {
     }
 
-    selectAllRows( enrollments: Enrollment[] ): void {
+    selectAllRows(enrollments: Enrollment[]): void {
     }
 
     //edit dialog
-    editDialog( enrollment: Enrollment, isValid: boolean ): void {
-        console.log( "showDialogEnrollment" );
+    editDialog(enrollment: Enrollment, isValid: boolean): void {
+        console.log("showDialogEnrollment");
         let config = new MdDialogConfig();
         config.viewContainerRef = this.vcf;
         config.role = 'dialog';
         config.width = '50%';
         config.height = '50%';
         config.position = { top: '0px' };
-        this.creatorDialogRef = this.dialog.open( EnrollmentEditorDialog, config );
-        if ( isValid ) {
+        this.creatorDialogRef = this.dialog.open(EnrollmentEditorDialog, config);
+        if (isValid) {
             this.creatorDialogRef.componentInstance.enrollment = enrollment;
             this.creatorDialogRef.componentInstance.section = this.section;
 
         }
-        this.creatorDialogRef.afterClosed().subscribe( res => {
-            console.log( "close dialog" );
+        this.creatorDialogRef.afterClosed().subscribe(res => {
+            console.log("close dialog");
             // load something here
-        } );
+        });
     }
 
 }

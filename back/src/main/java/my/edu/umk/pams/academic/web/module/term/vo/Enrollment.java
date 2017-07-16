@@ -2,6 +2,8 @@ package my.edu.umk.pams.academic.web.module.term.vo;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+import my.edu.umk.pams.academic.common.model.AdGradeCode;
 import my.edu.umk.pams.academic.web.module.core.vo.MetaObject;
 import my.edu.umk.pams.academic.web.module.planner.vo.Course;
 
@@ -19,10 +21,18 @@ public class Enrollment extends MetaObject {
     private EnrollmentStanding standing;
     private EnrollmentStatus status;
     private BigDecimal totalScore;
+    private AdGradeCode gradeCode;
     
-    
+   
+    public AdGradeCode getGradeCode() {
+		return gradeCode;
+	}
 
-    public BigDecimal getTotalScore() {
+	public void setGradeCode(AdGradeCode gradeCode) {
+		this.gradeCode = gradeCode;
+	}
+
+	public BigDecimal getTotalScore() {
 		return totalScore;
 	}
 

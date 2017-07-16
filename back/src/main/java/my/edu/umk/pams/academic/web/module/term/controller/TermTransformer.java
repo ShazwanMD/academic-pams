@@ -171,6 +171,7 @@ public class TermTransformer {
 		vo.setEnrollmentStanding(EnrollmentStanding.get(enrollment.getStanding().ordinal()));
 		vo.setEnrollmentStatus(EnrollmentStatus.get(enrollment.getStatus().ordinal()));
 		vo.setTotalScore(enrollment.getTotalScore());
+		vo.setGradeCode(enrollment.getGradeCode());
 
 		return vo;
 	}

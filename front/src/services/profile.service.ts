@@ -1,3 +1,4 @@
+import { HttpInterceptorService } from '@covalent/http';
 import {Injectable} from '@angular/core';
 import {Http, Response} from '@angular/http';
 import {Observable} from 'rxjs';
@@ -17,7 +18,7 @@ export class ProfileService {
 
   private PROFILE_API: string = environment.endpoint + '/api/profile';
 
-  constructor(private _http: Http) {
+  constructor(private http: Http,private _http: HttpInterceptorService) {
   }
 
   // ====================================================================================================
