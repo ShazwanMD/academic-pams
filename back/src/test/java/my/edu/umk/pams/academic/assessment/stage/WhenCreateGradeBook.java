@@ -142,7 +142,7 @@ public class WhenCreateGradeBook extends Stage<WhenCreateGradeBook> {
 		
 		//Set GradeCode
 		enrollment.setGradeCode(commonService.findByScore(enrollment.getTotalScore()));
-		termService.updateEnrollment(section, enrollment);
+		termService.updateEnrollment(enrollment);
 		LOG.debug("gradeCode_IN_Enrollment_Table:{}",enrollment.getGradeCode().getCode());
 		
 		//CalculateGPA

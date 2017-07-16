@@ -149,7 +149,7 @@ public class PlannerServiceImpl implements PlannerService {
         sessionFactory.getCurrentSession().flush();
     }
 
-    public void calculateGpa(AdAcademicSession academicSession, AdAdmission admission){
+    public void calculateGpa(AdAdmission admission){
         LOG.debug("admission:{}",admission.getCohort().getCode());
     		
         List<AdEnrollment> enrollments = termService.findEnrollments(admission);

@@ -74,7 +74,7 @@ public interface TermService {
 
     void calculateGradebook(AdOffering offering);
     
-    void calculate(AdAcademicSession academicSession, AdOffering offering);
+    void calculate(AdOffering offering);
     //==========+==========================================================================================
     // SECTION
     //====================================================================================================
@@ -404,9 +404,10 @@ public interface TermService {
     @Deprecated
     void saveEnrollment(AdEnrollment enrollment);
 
-    //void updateEnrollment(AdEnrollment enrollment);
+    void updateEnrollment(AdEnrollment enrollment);
 
-    void updateEnrollment(AdSection section, AdEnrollment enrollment);
+//    todo(sam/syikin) Remove?
+//    void updateEnrollment(AdSection section, AdEnrollment enrollment);
 
     void deleteEnrollment(AdEnrollment enrollment);
 

@@ -354,11 +354,10 @@ public class TermController {
     public ResponseEntity<String> updateEnrollment(@PathVariable String canonicalCode, @RequestBody Enrollment vo) {
         dummyLogin();
 
-        AdSection section = termService.findSectionByCanonicalCode(canonicalCode);
         AdEnrollment enrollment = termService.findEnrollmentById(vo.getId());
         enrollment.setStatus(AdEnrollmentStatus.get(vo.getEnrollmentStatus().ordinal()));
-        termService.updateEnrollment(section, enrollment);
-        return new ResponseEntity<String>("Success", HttpStatus.OK);
+        termService.updateEnrollment(enrollment);
+        return new ResponseEntity<>("Success", HttpStatus.OK);
     }
 
     // ====================================================================================================
@@ -791,7 +790,7 @@ public class TermController {
         dummyLogin();
         AdAcademicSession academicSession = plannerService.findCurrentAcademicSession();
         AdOffering offering = termService.findOfferingByCanonicalCode(canonicalCode);
-        termService.calculate(academicSession, offering);
+        termService.calculate(offering);
     return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
 

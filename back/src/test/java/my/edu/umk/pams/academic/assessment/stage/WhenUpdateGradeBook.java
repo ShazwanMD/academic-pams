@@ -102,13 +102,12 @@ public class WhenUpdateGradeBook extends Stage<WhenUpdateGradeBook> {
 
 		//Set GradeCode
 		enrollment.setGradeCode(gradeCode);
-		termService.updateEnrollment(section, enrollment);
+		termService.updateEnrollment(enrollment);
 		LOG.debug("gradeCode_IN_Enrollment_Table:{}",enrollment.getGradeCode().getCode());
 		Assert.isTrue(enrollment.getGradeCode().equals(gradeCode), "gradeCode cannot be different");
 
 		//CalculateGPA
-		AdAcademicSession session = plannerService.findCurrentAcademicSession();
-		plannerService.calculateGpa(session, admission);
+		plannerService.calculateGpa(admission);
 		LOG.debug("GPA:{}", admission.getGpa());
 
 		BigDecimal expectedGpa = new BigDecimal("2.00");

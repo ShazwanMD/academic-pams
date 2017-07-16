@@ -232,7 +232,7 @@ public class TermServiceImpl implements TermService {
 
             }
             enrollment.setTotalScore(totalScore);
-            updateEnrollment(enrollment.getSection(), enrollment);
+            updateEnrollment(enrollment);
 
             // convert total score to gradecode  A, B, C,
 //			enrollment.setGradeCode(lookupGradeCode(totalScore));
@@ -245,18 +245,13 @@ public class TermServiceImpl implements TermService {
 //		if(totalScore >-)
 //	}
 
-    public void calculate(AdAcademicSession academicSession, AdOffering offering) {
-        List<AdEnrollment> enrollments = findEnrollments(offering);
-        for (AdEnrollment enrollment : enrollments) {
-            calculateGradebook(offering);
+    public void calculate(AdOffering offering) {
+        calculateGradebook(offering);
+
+        for (AdEnrollment enrollment : findEnrollments(offering)) {
             enrollment.setGradeCode(commonService.findByScore(enrollment.getTotalScore()));
-            updateEnrollment(enrollment.getSection(), enrollment);
-
-//            List<AdAdmission> Admissions = findAdmissions(academicSession);
-//            for (AdAdmission adAdmission : Admissions) {
-//                plannerService.calculateGpa(academicSession, adAdmission);
-//            }
-
+            updateEnrollment(enrollment);
+            plannerService.calculateGpa(enrollment.getAdmission());
         }
     }
 
@@ -1155,7 +1150,7 @@ public class TermServiceImpl implements TermService {
 
         AdEnrollment enrollment = findEnrollmentBySectionAndStudent(section, student);
         enrollment.setStatus(AdEnrollmentStatus.WITHDRAWN);
-        updateEnrollment(section, enrollment);
+        updateEnrollment(enrollment);
 
         AdStudyCenter studyCenter = admission.getStudyCenter();
         AdCohort cohort = student.getCohort();
@@ -1171,7 +1166,7 @@ public class TermServiceImpl implements TermService {
 
     // update enrollment by section
     @Override
-    public void updateEnrollment(AdSection section, AdEnrollment enrollment) {
+    public void updateEnrollment(AdEnrollment enrollment) {
         enrollmentDao.update(enrollment, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
