@@ -6,6 +6,7 @@ import {Actor} from '../app/identity/actor.interface';
 import {environment} from '../environments/environment';
 import {Staff} from '../app/identity/staff.interface';
 import {Student} from '../app/identity/student.interface';
+import { Appointment } from "../app/term/appointments/appointment.interface";
 
 @Injectable()
 export class IdentityService {
@@ -50,7 +51,13 @@ export class IdentityService {
     return this._http.get(this.IDENTITY_API + '/staffs/' + identityNo)
       .map((res: Response) => <Staff>res.json());
   }
-
+  
+  //find appointments by staff
+  findAppointmentsByStaff(staff: Staff): Observable<Appointment[]> {
+    console.log('findAppointmentsByStaff');
+    return this._http.get(this.IDENTITY_API + '/staffs/' + staff.identityNo + '/appointments')
+      .map((res: Response) => <Appointment[]>res.json());
+  }
 
   // ====================================================================================================
   // PRIVATE METHODS

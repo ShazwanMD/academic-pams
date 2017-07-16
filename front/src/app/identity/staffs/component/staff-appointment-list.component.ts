@@ -35,7 +35,7 @@ export class StaffAppointmentListComponent implements AfterViewInit {
         { name: 'section.offering.code', label: 'Section Code' },
         { name: 'section.offering.titleEn', label: 'Section Title' },
         { name: 'section.offering.capacity', label: 'Capacity' },
-        { name: 'section.offering.course.program.code', label: 'Program' },
+        { name: 'section.offering.program.code', label: 'Program' },
         { name: 'section.offering.course.faculty.name', label: 'Faculty' },
         { name: 'appointmentStatus', label: 'Appointment Status' },
         { name: 'action', label: '' }

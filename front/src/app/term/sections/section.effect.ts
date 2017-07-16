@@ -34,8 +34,7 @@ export class SectionEffects {
     .map(section => this.sectionActions.findSectionByCanonicalCodeSuccess(section))
     .mergeMap(action => from([action,
       this.sectionActions.findEnrollmentsBySection(action.payload),
-      this.sectionActions.findAppointmentsBySection(action.payload)
-    ]));
+      this.sectionActions.findAppointmentsBySection(action.payload)]));
 
   @Effect() findEnrollmentsBySection$ = this.actions$
     .ofType(SectionActions.FIND_ENROLLMENTS_BY_SECTION)

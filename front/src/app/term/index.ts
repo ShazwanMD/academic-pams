@@ -128,8 +128,7 @@ export interface TermModuleState {
 }
 ;
 
-export const INITIAL_TERM_STATE: TermModuleState =
-  <TermModuleState>{
+export const INITIAL_TERM_STATE: TermModuleState = <TermModuleState>{
     offerings: <Offering[]>[],
     offering: <Offering>{},
     offeringSections: <Section[]>[],

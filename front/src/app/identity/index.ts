@@ -20,13 +20,15 @@ import { StaffActions } from "./staff.action";
 import { ActorActions } from "./actor.action";
 import { ActorEffects } from "./actor.effect";
 import { EffectsModule } from "@ngrx/effects";
-
+import {StaffAppointmentListState, staffAppointmentListReducer} from './staffs/staff-appointment-list.reducer';
+import {Appointment} from '../term/appointments/appointment.interface';
 
 export interface IdentityModuleState {
     actors: ActorListState;
     students: StudentListState;
     staffs: StaffListState;
     staff: StaffState;
+    staffAppointments: StaffAppointmentListState;
 }
 ;
 
@@ -34,6 +36,8 @@ export const INITIAL_IDENTITY_STATE: IdentityModuleState = <IdentityModuleState>
     actors: [],
     students: [],
     staffs: [],
+    
+    staffAppointments: <Appointment[]>[],
 };
 
 export const identityModuleReducers = {
@@ -41,6 +45,7 @@ export const identityModuleReducers = {
     students: studentListReducer,
     staffs: staffListReducer,
     staff: staffReducer,
+    staffAppointments: staffAppointmentListReducer,
     
 };
 

@@ -39,7 +39,27 @@ export class StaffActions {
     };
   }
   
+  //find appointments by staff
+  static FIND_APPOINTMENTS_BY_STAFF = '[Staff] Find Appointments By Staff';
 
+  findAppointmentsByStaff(staff): Action {
+      console.log("findAppointmentsByStaff");
+      return {
+          type: StaffActions.FIND_APPOINTMENTS_BY_STAFF,
+          payload: staff
+      };
+  }
+
+  static FIND_APPOINTMENTS_BY_STAFF_SUCCESS = '[Staff] Find Appointments By Staff Success';
+
+  findAppointmentsByStaffSuccess(appointments): Action {
+      console.log("findAppointmentsByStaffSuccess");
+      return {
+          type: StaffActions.FIND_APPOINTMENTS_BY_STAFF_SUCCESS,
+          payload: appointments
+      };
+  }
+  
   static FIND_STAFF = '[Staff] Find Staff';
 
   findStaff(identityNo): Action {

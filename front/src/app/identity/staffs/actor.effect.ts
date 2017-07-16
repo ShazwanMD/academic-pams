@@ -9,10 +9,13 @@ import {StaffActions} from "./staff.action";
 
 @Injectable()
 export class ActorEffects {
+    
+    private STAFF: string[] = "identityModuleState.staff".split(".");
+
   constructor(private actions$: Actions,
               private actorActions: ActorActions,
-              private studentActions: StudentActions,
               private staffActions: StaffActions,
+              private studentActions: StudentActions,
               private identityService: IdentityService) {
   }
 
@@ -57,12 +60,19 @@ export class ActorEffects {
   .ofType(StaffActions.FIND_STAFF_BY_IDENTITY_NO)
   .map(action => action.payload)
   .switchMap(identityNo => this.identityService.findStaffByIdentityNo(identityNo))
-  .map(staff => this.staffActions.findStaffByIdentityNoSuccess(staff));
- /* .mergeMap(action => from([action,
-    this.staffActions.findStaffByAdmission(action.payload),
-    this.admissionActions.findEnrollmentApplicationsByAdmission(action.payload),*/
-   // ]));
+  .map(staff => this.staffActions.findStaffByIdentityNoSuccess(staff))
+  .mergeMap(action => from([action,
+                            this.staffActions.findAppointmentsByStaff(action.payload)
+                            //this.sectionActions.findAppointmentsBySection(action.payload)
+                            ]));
+    
   
+  //find appointment by staff
+  @Effect() findAppointmentsByStaff$ = this.actions$
+  .ofType(StaffActions.FIND_APPOINTMENTS_BY_STAFF)
+  .map(action => action.payload)
+  .switchMap(staff => this.identityService.findAppointmentsByStaff(staff))
+  .map(staffs => this.staffActions.findAppointmentsByStaffSuccess(staffs));
 
   @Effect() findStaff$ = this.actions$
     .ofType(StaffActions.FIND_STAFF)
