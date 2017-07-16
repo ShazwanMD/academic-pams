@@ -16,6 +16,7 @@ export class ArchivedEnrollmentApplicationListComponent implements AfterViewInit
   @Output() view = new EventEmitter<EnrollmentApplication>();
 
   private columns: any[] = [
+    { name: 'id', label: 'Id' },
     { name: 'referenceNo', label: 'Reference No' },
     { name: 'admission.student.name', label: 'Name' },
     { name: 'admission.student.identityNo', label: 'Matric No.' },
@@ -37,7 +38,7 @@ export class ArchivedEnrollmentApplicationListComponent implements AfterViewInit
   fromRow: number = 1;
   currentPage: number = 1;
   pageSize: number = 20;
-  sortBy: string = 'referenceNo';
+  sortBy: string = 'id';
   sortOrder: TdDataTableSortingOrder = TdDataTableSortingOrder.Descending;
   
   ngAfterViewInit(): void {

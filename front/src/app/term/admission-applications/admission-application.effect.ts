@@ -87,9 +87,7 @@ export class AdmissionApplicationEffects {
     .map(message => this.admissionApplicationActions.claimAdmissionApplicationTaskSuccess(message))
     .mergeMap(action => from([action,
       this.admissionApplicationActions.findAssignedAdmissionApplicationTasks(),
-      this.admissionApplicationActions.findPooledAdmissionApplicationTasks()
-    ]
-    ));
+      this.admissionApplicationActions.findPooledAdmissionApplicationTasks()]));
 
   @Effect() releaseAdmissionApplicationTask$ = this.actions$
     .ofType(AdmissionApplicationActions.RELEASE_ADMISSION_APPLICATION_TASK)

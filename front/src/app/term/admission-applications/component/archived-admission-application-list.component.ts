@@ -16,6 +16,7 @@ export class ArchivedAdmissionApplicationListComponent implements AfterViewInit 
   @Output() view = new EventEmitter<AdmissionApplication>();
 
   private columns: any[] = [
+    { name: 'id', label: 'Id' },
     { name: 'referenceNo', label: 'Reference No' },
     { name: 'student.identityNo', label: 'Matric.No' },
     { name: 'student.name', label: 'Name' },
