@@ -74,7 +74,7 @@ public class CurriculumTest {
     @Rollback(false)
     public void testWorkflow() {
         AdCurriculum curriculum = new AdCurriculumImpl();
-        curriculum.setCode("abcfffssyy");
+        curriculum.setCode("ainmj");
         curriculum.setCoreCredit(10);
         curriculum.setCurriculumCredit(10);
         curriculum.setElectiveCredit(10);
@@ -84,12 +84,12 @@ public class CurriculumTest {
         curriculum.setOrdinal(10);
         curriculum.setOthersCredit(10);
         curriculum.setPeriod(10);
-		curriculum.setProgram(program);
+		curriculum.setProgram(plannerService.findProgramByCode("FIAT-PHD-PBT"));
         curriculum.setRequiredCredit(0);
 		curriculum.setSubjects(subjects);
         curriculum.setTotalCredit(10);
         plannerService.saveCurriculum(curriculum);
-        curriculum = plannerService.findCurriculumByCode("abc");
+        curriculum = plannerService.findCurriculumByCode("abcfffssyy");
       LOG.debug("code{}",curriculum.getCode());
       
 
