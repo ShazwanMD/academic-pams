@@ -20,7 +20,7 @@ import { Subject } from "../subjects/subject.interface";
 
 export class CurriculumDetailPage implements OnInit {
   private CURRICULUM: string[] = 'plannerModuleState.curriculum'.split('.');
-  // private SUBJECTS : string[] = 'plannerModuleState.subjects'.split('.');
+  private SUBJECTS : string[] = 'plannerModuleState.subjects'.split('.');
   private curriculum$: Observable<Curriculum>;
   private subjects$: Observable<Subject[]>;
 
@@ -37,7 +37,7 @@ export class CurriculumDetailPage implements OnInit {
               private snackBar: MdSnackBar) {
 
     this.curriculum$ = this.store.select(...this.CURRICULUM);
-    // this.subjects$ = this.store.select(...this.SUBJECTS);
+    this.subjects$ = this.store.select(...this.SUBJECTS);
   }
 
   ngOnInit(): void {

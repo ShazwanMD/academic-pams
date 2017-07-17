@@ -8,16 +8,21 @@
     <div layout="column" layout-gt-md="row" class="inset">
       <div flex-gt-md="70">
         <pams-curriculum [curriculum]="curriculum$ | async"></pams-curriculum>
+
+  <pams-curriculum-subject-list
+                [curriculum]="curriculum$ | async"
+                [subjects]="subjects$ | async">
+               </pams-curriculum-subject-list>
+               <!--<pams-subject
+               [subject]= "subject$ | async">
+               </pams-subject>-->
       </div>
 
       <div flex-gt-md="30">
                <pams-curriculum-action 
                [curriculum]="curriculum$ | async">
                </pams-curriculum-action>
-                <!--<pams-curriculum-subject-list
-                [curriculum]="curriculum$ | async"
-                [subjects]="subjects$ | async">
-               </pams-curriculum-subject-list>-->
+              
       </div>
        <!--<div flex-gt-md="70">
         <pams-curriculum [curriculum]="curriculum$ | async"></pams-curriculum>
