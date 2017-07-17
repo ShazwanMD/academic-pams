@@ -494,7 +494,7 @@ public class PlannerController {
 
 	@RequestMapping(value = "/cohorts", method = RequestMethod.GET)
 	public ResponseEntity<List<Cohort>> findCohorts() {
-		return new ResponseEntity<List<Cohort>>(plannerTransformer.toCohortVos(plannerService.findCohorts("%", 0, 100)),
+	return new ResponseEntity<List<Cohort>>(plannerTransformer.toCohortVos(plannerService.findCohorts("%", 0, 100)),
 				HttpStatus.OK);
 	}
 

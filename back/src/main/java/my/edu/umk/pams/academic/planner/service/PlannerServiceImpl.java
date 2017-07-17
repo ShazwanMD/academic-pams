@@ -11,6 +11,7 @@ import my.edu.umk.pams.academic.term.dao.AdSectionDao;
 import my.edu.umk.pams.academic.term.model.AdAdmission;
 import my.edu.umk.pams.academic.term.model.AdEnrollment;
 import my.edu.umk.pams.academic.term.model.AdOffering;
+import my.edu.umk.pams.academic.term.model.AdSection;
 import my.edu.umk.pams.academic.term.service.TermService;
 
 import org.hibernate.SessionFactory;
@@ -45,7 +46,10 @@ public class PlannerServiceImpl implements PlannerService {
 
     @Autowired
     private AdFacultyDao facultyDao;
-
+    
+    @Autowired
+    private AdSubjectDao subjectDao;
+    
     @Autowired
     private AdProgramLevelDao programLevelDao;
 
@@ -245,9 +249,9 @@ public class PlannerServiceImpl implements PlannerService {
 
     @Override
     public List<AdSubject> findSubjects(AdCurriculum curriculum) {
-        return curriculumDao.findSubjects(curriculum);
+        return subjectDao.find(curriculum);
     }
-
+    
     @Override
     public List<AdSubject> findSubjects(String filter, AdCurriculum curriculum) {
         return null;
