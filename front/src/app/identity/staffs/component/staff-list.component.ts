@@ -15,11 +15,11 @@ export class StaffListComponent implements AfterViewInit {
 
   private columns: any[] = [
     {name: 'id', label: 'Id'},
-    {name: 'identityNo', label: 'Staf Name'},
-    {name: 'section.code', label: 'Section'},
-    {name: 'section.session.code', label: 'Academic Session'},
-    {name: 'section.offering.course.title', label: 'Course Offering'},
-    {name: 'section.offering.program.code', label: 'Program'},
+    {name: 'identityNo', label: 'Identity No.'},
+    {name: 'name', label: 'Name'},
+    {name: 'email', label: 'Email'},
+    //{name: 'phone', label: 'Phone'},
+   
     {name: 'action', label: ''}
   ];
   filteredData: any[];
