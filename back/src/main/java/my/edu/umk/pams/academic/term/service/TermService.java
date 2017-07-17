@@ -73,8 +73,8 @@ public interface TermService {
     void updateOffering(AdOffering offering);
 
     void calculateGradebook(AdOffering offering);
-    
-    void calculate(AdOffering offering);
+       
+    void calculateGPA(AdEnrollment enrollment);
     //==========+==========================================================================================
     // SECTION
     //====================================================================================================

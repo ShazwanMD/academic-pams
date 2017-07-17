@@ -790,7 +790,7 @@ public class TermController {
         dummyLogin();
         AdAcademicSession academicSession = plannerService.findCurrentAcademicSession();
         AdOffering offering = termService.findOfferingByCanonicalCode(canonicalCode);
-        termService.calculate(offering);
+        termService.calculateGradebook(offering);
     return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
 
