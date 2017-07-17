@@ -22,6 +22,7 @@ import {StudentSectionAppointmentListComponent} from "./component/student-sectio
 import {SectionSelectComponent} from "./component/section-select.component";
 import {SectionEditorDialog} from "./dialog/section-editor.dialog";
 import {SectionActionComponent} from "./component/section-action.component";
+import { LecturerSectionDetailPage } from "./lecturer-section-detail.page";
 
 @NgModule({
   imports: [
@@ -35,6 +36,7 @@ import {SectionActionComponent} from "./component/section-action.component";
     // page
     SectionDetailPage,
     StudentSectionDetailPage,
+    LecturerSectionDetailPage,
 
     // component
     SectionListComponent,
