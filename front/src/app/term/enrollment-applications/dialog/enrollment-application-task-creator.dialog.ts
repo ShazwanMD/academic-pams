@@ -32,7 +32,7 @@ export class EnrollmentApplicationTaskCreatorDialog implements OnInit {
       id: [null],
       auditNo: ['N/A'],
       sourceNo: ['N/A'],
-      description: ['', Validators.required],
+      description: ['', Validators.minLength(this.minLength)],
       applicationType: [EnrollmentApplicationType.PRA, Validators.required],
       admission: [<Admission>{},Validators.required],
       academicSession: [<AcademicSession>{}, Validators.required],
