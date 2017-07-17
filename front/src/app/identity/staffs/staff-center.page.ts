@@ -34,8 +34,8 @@ export class StaffCenterPage implements OnInit {
   }
 
   viewStaff(staff: Staff): void {
-    console.log('staff ccode: ' + staff.id);
-    this.router.navigate(['/term/staffs',staff.id]);
+    console.log('staff identityNo: ' + staff.identityNo);
+    this.router.navigate(['/identity/staffs',staff.identityNo]);
   }
 
  

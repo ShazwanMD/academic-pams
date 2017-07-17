@@ -4,6 +4,7 @@ import {StaffActions} from "./staff.action";
 import {IdentityService} from "../../../services/identity.service";
 import {IdentityModuleState} from "../index";
 import {Store} from "@ngrx/store";
+import {from} from 'rxjs/observable/from';
 
 @Injectable()
 export class StaffEffects {
@@ -27,7 +28,8 @@ private STAFF: string[] = "identityModuleState.staff".split(".");
     .ofType(StaffActions.FIND_STAFF_BY_IDENTITY_NO)
     .map(action => action.payload)
     .switchMap(identityNo => this.identityService.findStaffByIdentityNo(identityNo))
-    .map(staff => this.staffActions.findStaffByIdentityNoSuccess(staff));
+    .map(staff => this.staffActions.findStaffByIdentityNoSuccess(staff))
+    .mergeMap((action) => from([action,this.staffActions.findAppointmentsByStaff(action.payload)]));
   
 //find appointment by staff
   @Effect() findAppointmentsByStaff$ = this.actions$

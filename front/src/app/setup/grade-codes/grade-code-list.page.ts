@@ -21,7 +21,7 @@ export class GradeCodeListPage implements OnInit {
     {name: 'code', label: 'Code'},
     {name: 'ordinal', label: 'Ordinal'},
     {name: 'description', label: 'Description'},
-    {name: 'point', label:'Point'},
+    {name: 'point', label:'Point',numeric: true, format: v => v.toFixed(2), filter: true},
     {name: 'min', label:'Min'},
     {name: 'max', label:'Max'},
     {name: 'action', label: ''}

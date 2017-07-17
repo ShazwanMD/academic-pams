@@ -1,6 +1,6 @@
 <md-card>
 <div toolbar-buttons layout="row" layout-align="start center" flex>
-	<md-card-title>Other Appointments</md-card-title>
+	<md-card-title>Section</md-card-title>
 	<md-chip-list *ngIf="appointments?.length > 0"> <md-chip
 		color="accent">{{appointments?.length}}</md-chip> </md-chip-list>
 	<span flex></span>
@@ -66,8 +66,8 @@
     </div>
   </template>
   <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
-   <!--  <div layout="row">
-    <button md-icon-button [md-menu-trigger-for]="menu1" mdTooltip="Select enrollment actions">
+     <div layout="row">
+  <!--  <button md-icon-button [md-menu-trigger-for]="menu1" mdTooltip="Select enrollment actions">
             <md-icon>more_vert</md-icon>
           </button>
            <md-menu x-position="before" #menu1="mdMenu">
@@ -75,12 +75,11 @@
             <button md-menu-item (click)="editDialog(row, true)">Update appointment</button>
             <button md-menu-item (click)="removeAppointment(row)">Delete appointment</button>
             
-          </md-menu> 
-      <a md-button color="accent" class="text-upper" (click)="viewOffering(row)" mdTooltip="View enrollment info">
-        [routerLink]="['/term/offerings', row['canonicalCode']]"
+          </md-menu></div>  -->
+      <a md-button color="accent" class="text-upper" mdTooltip="View section info" [routerLink]="['/term/sections', row.section.canonicalCode]">
         <span>View</span>
       </a>
-    </div> -->
+    </div>
   </template>
 </td-data-table>
 <div class="md-padding" *ngIf="!dataTable.hasData" layout="row" layout-align="center center">

@@ -21,8 +21,8 @@ export class AdmissionListComponent implements AfterViewInit  {
     { name: 'status', label: 'Status' },
     { name: 'academicSession.code', label: 'Academic Session' },
     { name: 'ordinal', label: 'Semester' },
-    { name: 'gpa', label: 'GPA' },
-    { name: 'cgpa', label: 'CGPA' },
+    { name: 'gpa', label: 'GPA' ,numeric: true, format: v => v.toFixed(2), filter: true},
+    { name: 'cgpa', label: 'CGPA' , numeric: true, format: v => v.toFixed(2), filter: true},
       
     { name: 'action', label: '' }
   ];

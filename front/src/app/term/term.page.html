@@ -6,7 +6,9 @@
 	md-list-item [routerLink]="[item.route]" (click)="layout.close()">
 	<md-icon>{{item.icon}}</md-icon> {{item.title}}
 </a> </md-nav-list> <td-layout-manage-list #list> <md-nav-list
-	list-items> <a md-list-item> <md-icon></md-icon> <span
+	list-items> 
+	
+	<a md-list-item> <md-icon></md-icon> <span
 	style="color: red; font-weight: bold">ADMINISTRATOR</span>
 </a> 
 <a md-list-item [routerLink]="['/term/admissions']"> 
@@ -25,7 +27,8 @@
 <md-icon>create</md-icon>
 	 Appointments
 </a>  -->
-<md-divider></md-divider> <a md-list-item> <md-icon></md-icon> <span
+<md-divider></md-divider> 
+<a md-list-item> <md-icon></md-icon> <span
 	style="color: red; font-weight: bold">STUDENT</span>
 </a> <a md-list-item
 	[routerLink]="['/term/admission-applications/admission-application-center2']"> 
@@ -35,7 +38,17 @@
 	[routerLink]="['/term/enrollment-applications/student-enrollment-center']"> 
 	<md-icon>create</md-icon>
 	Course Enrollments
-</a> </md-nav-list>
+</a> 
+<md-divider></md-divider> 
+<a md-list-item> <md-icon></md-icon> <span
+	style="color: red; font-weight: bold">LECTURER</span>
+</a>
+<a md-list-item
+	[routerLink]="['/identity/staffs']"> 
+	<md-icon>person_add</md-icon>
+	Staff Center
+</a>
+</md-nav-list>
 <div toolbar-buttons layout="row" layout-align="start center" flex>
 	<span flex>Term Page Center</span>
 	<button md-button class="md-icon-button">
