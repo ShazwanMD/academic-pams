@@ -22,6 +22,7 @@ import { ActorEffects } from "./actor.effect";
 import { EffectsModule } from "@ngrx/effects";
 import {StaffAppointmentListState, staffAppointmentListReducer} from './staffs/staff-appointment-list.reducer';
 import {Appointment} from '../term/appointments/appointment.interface';
+import { Staff } from "./staffs/staff.interface";
 
 export interface IdentityModuleState {
     actors: ActorListState;
@@ -35,7 +36,9 @@ export interface IdentityModuleState {
 export const INITIAL_IDENTITY_STATE: IdentityModuleState = <IdentityModuleState>{
     actors: [],
     students: [],
-    staffs: [],
+    
+    staffs: <Staff[]>[],
+    staff: <Staff>{},
     staffAppointments: <Appointment[]>[],
 };
 

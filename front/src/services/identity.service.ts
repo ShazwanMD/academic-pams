@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Response} from '@angular/http';
 import {HttpInterceptorService} from '@covalent/http';
+import {Http} from '@angular/http';
 import {Observable} from 'rxjs';
 import {Actor} from '../app/identity/actor.interface';
 import {environment} from '../environments/environment';
@@ -13,7 +14,8 @@ export class IdentityService {
 
   private IDENTITY_API: string = environment.endpoint + '/api/identity';
 
-  constructor(private _http: HttpInterceptorService) {
+  constructor(private _http: HttpInterceptorService,
+          private http: Http) {
   }
 
   findActors(): Observable<Actor[]> {

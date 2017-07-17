@@ -1,6 +1,6 @@
 import {Component, OnInit, ChangeDetectionStrategy, ViewContainerRef, Input, EventEmitter, Output} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
-import {TermService} from '../../../services';
+import {TermService, IdentityService} from '../../../services';
 import {Store} from '@ngrx/store';
 import {Observable} from 'rxjs';
 import {Staff} from './staff.interface';
@@ -27,7 +27,7 @@ export class StaffDetailPage implements OnInit {
   constructor(private router: Router,
               private route: ActivatedRoute,
               private actions: StaffActions,
-              private termService: TermService,
+              private identityService: IdentityService,
               private store: Store<IdentityModuleState>,
               private vcf: ViewContainerRef,
               private dialog: MdDialog) {
