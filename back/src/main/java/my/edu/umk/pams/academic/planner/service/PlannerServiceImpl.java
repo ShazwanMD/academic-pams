@@ -157,10 +157,10 @@ public class PlannerServiceImpl implements PlannerService {
         LOG.debug("admission:{}",admission.getCohort().getCode());
     		
         List<AdEnrollment> enrollments = termService.findEnrollments(admission);
-        BigDecimal totalCredit = BigDecimal.ZERO;
-        BigDecimal totalCreditCgpa = BigDecimal.ZERO;
-        BigDecimal totalCalculateGpa = BigDecimal.ZERO;
-        BigDecimal totalCalculateCgpa = BigDecimal.ZERO;
+        BigDecimal totalCreditHoursPerSemester = BigDecimal.ZERO;
+        BigDecimal totalGradePointHoursPerSemester = BigDecimal.ZERO;
+        BigDecimal totalCreditHoursPerStudent = BigDecimal.ZERO;
+        BigDecimal totalGradePointHoursPerStudent = BigDecimal.ZERO;
         for (AdEnrollment enrollment : enrollments) {
             LOG.debug("Enrollment:{}",enrollment.getGradeCode());
             //Offering
@@ -181,21 +181,21 @@ public class PlannerServiceImpl implements PlannerService {
             AdGradeCode gradeCode = enrollment.getGradeCode();
             LOG.debug("gradeCode:{}", gradeCode.getCode());
     			
-            BigDecimal gradePointxCredit = gradeCode.getPoint();
+            BigDecimal gradePoint = gradeCode.getPoint();
     			
-            BigDecimal calculateGpaByCourse = gradePointxCredit.multiply(creditHour);
+            BigDecimal gradePointHoursPerCourse = gradePoint.multiply(creditHour);
             
             //GPA
-            totalCalculateGpa = totalCalculateGpa.add(calculateGpaByCourse);
-            totalCredit = totalCredit.add(creditHour);
+            totalGradePointHoursPerSemester = totalGradePointHoursPerSemester.add(gradePointHoursPerCourse);
+            totalCreditHoursPerSemester = totalCreditHoursPerSemester.add(creditHour);
             
             //CGPA
-            totalCalculateCgpa = totalCalculateCgpa.add(totalCalculateGpa);
-            totalCreditCgpa = totalCreditCgpa.add(totalCredit);
+            totalGradePointHoursPerStudent = totalGradePointHoursPerStudent.add(totalGradePointHoursPerSemester);
+            totalCreditHoursPerStudent = totalCreditHoursPerStudent.add(totalCreditHoursPerSemester);
               
         }
-        BigDecimal gpa = totalCalculateGpa.divide(totalCredit).setScale(2, RoundingMode.HALF_UP);   
-        BigDecimal cgpa = totalCalculateCgpa.divide(totalCreditCgpa).setScale(2, RoundingMode.HALF_UP);
+        BigDecimal gpa = totalGradePointHoursPerSemester.divide(totalCreditHoursPerSemester).setScale(2, RoundingMode.HALF_UP);
+        BigDecimal cgpa = totalGradePointHoursPerStudent.divide(totalCreditHoursPerStudent).setScale(2, RoundingMode.HALF_UP);
         admission.setCgpa(cgpa);
         admission.setGpa(gpa);
         termService.updateAdmission(admission);
