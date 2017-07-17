@@ -53,15 +53,28 @@ export class EnrollmentApplicationTaskCreatorDialog implements OnInit {
         this._academicSession = enrollmentApplication.academicSession;
         this._admission = enrollmentApplication.admission;
 
-        console.log( "auditNo: " + enrollmentApplication.auditNo )
-        console.log( "sourceNo: " + enrollmentApplication.sourceNo )
         console.log( "description: " + enrollmentApplication.description )
         console.log( "admission: " + enrollmentApplication.admission.id )
         console.log( "academicSession: " + enrollmentApplication.academicSession.id )
-        console.log( "enrollmentApplicationType: " + enrollmentApplication.applicationType )
         console.log( JSON.stringify( enrollmentApplication ) );
-        this.store.dispatch( this.actions.startEnrollmentApplicationTask( enrollmentApplication ) );
+        this.store.dispatch( this.actions.startEnrollmentApplicationTask(enrollmentApplication));
         this.dialog.close();
     }
 }
-
+//
+//submit(enrollmenApplication: EnrollmenApplication, isValid: boolean): void {
+//    // workaround
+//    this._program = enrollmenApplication.program;
+//    this._course = enrollmenApplication.course;
+//
+//    enrollmenApplication. = this.enrollmenApplication.code + '-' + this._course.code;
+//    enrollmenApplication.code = this.enrollmenApplication.code;
+//    offering.titleMs = this._course.titleMs;
+//    offering.titleEn = this._course.titleEn;
+//
+//    this.store.dispatch(this.actions.saveOffering(this._program, this._course, offering));
+//    console.log('Save a new offering');
+//    this.dialog.close();
+//  }
+//}
+//
