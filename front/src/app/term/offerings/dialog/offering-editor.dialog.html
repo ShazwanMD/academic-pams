@@ -1,56 +1,47 @@
 <h2 md-dialog-title>{{edit ? 'Update' : 'Save'}} Offering </h2>
 <md-dialog-content>
-  <form [formGroup]="createForm" novalidate>
-       <div fxLayout fxLayout.xs="column" fxLayoutWrap fxLayoutGap="25px" class="inset">
-      <md-input-container fxFlex="calc(100%-25px)" mdTooltip="Please insert capacity">
-        <input mdInput
-               placeholder="Capacity"
-               formControlName="capacity" type="number"/>
-      </md-input-container>
-      
-                     
-                  <div class="error" *ngIf="createForm.get('capacity').invalid && createForm.get('capacity').touched">
-      <font size="3" color="red">Description should be in number type</font>
-    </div>
+    <form [formGroup]="createForm" novalidate>
+        <div fxLayout fxLayout.xs="column" fxLayoutWrap fxLayoutGap="25px" class="inset">
+            <md-input-container fxFlex="calc(100%-25px)" mdTooltip="Please insert capacity">
+                <input mdInput placeholder="Capacity" formControlName="capacity" type="number"/>
+            </md-input-container>
+            <div  class="tc-red-600" *ngIf="createForm.get('capacity').invalid && createForm.get('capacity').touched">
+                Description should be in number type
+            </div>
 
-      
-        <pams-course-select mdTooltip="Please select course"
-                          [placeholder]="'Select Course'"
-                            [innerFormControl]="createForm.controls.course"
-                          fxFlex="calc(100%-25px)" class="pad-bottom"  >
-      </pams-course-select>
-      <div class="error" class="tc-red-600"
-                   *ngIf="createForm.get('course').invalid && createForm.get('course').touched">
+            <pams-course-select mdTooltip="Please select course"
+                                [placeholder]="'Select Course'"
+                                [innerFormControl]="createForm.controls['course']"
+                                fxFlex="calc(100%-25px)" class="pad-bottom">
+            </pams-course-select>
+            <div class="tc-red-600" *ngIf="createForm.get('course').invalid && createForm.get('course').touched">
                 Please add your course!
-              </div> 
-    
-      <pams-program-select mdTooltip="Please select program"
-                           [placeholder]="'Select Program'"
-                            [innerFormControl]="createForm.controls.program"
-                           fxFlex="calc(100%-25px)" class="pad-bottom"  >
-      </pams-program-select>
-        <div class="error" class="tc-red-600"
-                   *ngIf="createForm.get('program').invalid && createForm.get('program').touched">
+            </div>
+
+            <pams-program-select mdTooltip="Please select program"
+                                 [placeholder]="'Select Program'"
+                                 [innerFormControl]="createForm.controls['program']"
+                                 fxFlex="calc(100%-25px)" class="pad-bottom">
+            </pams-program-select>
+            <div class="tc-red-600" *ngIf="createForm.get('program').invalid && createForm.get('program').touched">
                 Please add your program!
-              </div> 
-   
-      <pams-academic-session-select mdTooltip="Please select academic session"
-                                    [placeholder]="'Select Session'"
-                                     [innerFormControl]="createForm.controls.academicSession"
-                                    fxFlex="calc(100%-25px)" class="pad-bottom"  >
-      </pams-academic-session-select>
-      <div class="error" class="tc-red-600"
-                   *ngIf="createForm.get('academicSession').invalid && createForm.get('academicSession').touched">
+            </div>
+
+            <pams-academic-session-select mdTooltip="Please select academic session"
+                                          [placeholder]="'Select Session'"
+                                          [innerFormControl]="createForm.controls['academicSession']"
+                                          fxFlex="calc(100%-25px)" class="pad-bottom">
+            </pams-academic-session-select>
+            <div class="tc-red-600"*ngIf="createForm.get('academicSession').invalid && createForm.get('academicSession').touched">
                 Please add your academic session!
-              </div> 
-    </div>
+            </div>
+        </div>
 
-<div layout="row" layout-align="start center">
-              <!--{{createForm.valid}}-->
-               <button md-raised-button color="accent" (click)="submit(createForm.value, createForm.valid)"  [disabled] = "!createForm.valid">
+        <div layout="row" layout-align="start center">
+            <button md-raised-button color="accent" (click)="submit(createForm.value, createForm.valid)" [disabled]="!createForm.valid">
                 Save
-              </button>
- </div>
+            </button>
+        </div>
 
-  </form>
+    </form>
 </md-dialog-content>
