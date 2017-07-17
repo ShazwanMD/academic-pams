@@ -9,6 +9,7 @@ import {TermModuleState} from "../../index";
 import {AcademicSession} from "../../../planner/academic-sessions/academic-session.interface";
 import {Admission} from "../../admissions/admission.interface";
 import {EnrollmentApplicationType} from "../enrollment-application-type.enum";
+import { ActivatedRoute, Router } from "@angular/router";
 
 
 @Component({
@@ -19,50 +20,48 @@ import {EnrollmentApplicationType} from "../enrollment-application-type.enum";
 export class EnrollmentApplicationTaskCreatorDialog implements OnInit {
 
   private createForm: FormGroup;
+  private _academicSession: AcademicSession;
+  private _admission: Admission;
   private minLength: number = 10;
 
-  constructor(private formBuilder: FormBuilder,
+  constructor(private router: Router,
+              private formBuilder: FormBuilder,
+              private route: ActivatedRoute,
               private store: Store<TermModuleState>,
               private actions: EnrollmentApplicationActions,
               private dialog: MdDialogRef<EnrollmentApplicationTaskCreatorDialog>) {
   }
-
+  
+  
   ngOnInit(): void {
       this.createForm = this.formBuilder.group({
-      id: [null],
-      auditNo: ['N/A'],
-      sourceNo: ['N/A'],
+      id: [undefined],
+     /* auditNo: ['N/A'],
+      sourceNo: ['N/A'],*/
       description: ['', Validators.required],
-      applicationType: [EnrollmentApplicationType.PRA, Validators.required],
-      admission: [<Admission>{},Validators.required],
-      academicSession: [<AcademicSession>{}, Validators.required],
+     /* applicationType: [EnrollmentApplicationType.PRA, Validators.required],*/
+      admission: [undefined, Validators.required],
+      academicSession: [undefined, Validators.required],
      
     });
   }
   
- /* //asal
-  ngOnInit(): void {
-      this.createForm = this.formBuilder.group(<EnrollmentApplication>{
-        id: null,
-        auditNo: 'N/A',
-        sourceNo: 'N/A',
-        description: '',
-        applicationType: EnrollmentApplicationType.PRA,
-        admission: <Admission>{},
-        academicSession: <AcademicSession>{}
-      });
-    }*/
+ 
+   
+  save(enrollmentApplication: EnrollmentApplication, isValid: boolean): void{
+      
+      this._academicSession = enrollmentApplication.academicSession;
+      this._admission = enrollmentApplication.admission;
 
-  save(application: EnrollmentApplication, isValid: boolean) {
-
-    console.log("auditNo: " + application.auditNo)
-    console.log("sourceNo: " + application.sourceNo)
-    console.log("description: " + application.description)
-    console.log("admission: " + application.admission.id)
-    console.log("academicSession: " + application.academicSession.id)
-    console.log("enrollmentApplicationType: " + application.applicationType)
-    console.log(JSON.stringify(application));
-    this.store.dispatch(this.actions.startEnrollmentApplicationTask(application));
+    console.log("auditNo: " + enrollmentApplication.auditNo)
+    console.log("sourceNo: " + enrollmentApplication.sourceNo)
+    console.log("description: " + enrollmentApplication.description)
+    console.log("admission: " + enrollmentApplication.admission.id)
+    console.log("academicSession: " + enrollmentApplication.academicSession.id)
+    console.log("enrollmentApplicationType: " + enrollmentApplication.applicationType)
+    console.log(JSON.stringify(enrollmentApplication));
+    this.store.dispatch(this.actions.startEnrollmentApplicationTask(enrollmentApplication));
     this.dialog.close();
   }
 }
+
