@@ -89,5 +89,4 @@ export class CurriculumListComponent {
    this.view.emit(curriculum);
     });
    } 
-
 }
