@@ -16,6 +16,8 @@ import my.edu.umk.pams.academic.planner.model.AdCurriculum;
 import my.edu.umk.pams.academic.planner.model.AdSubject;
 import my.edu.umk.pams.academic.planner.model.AdSubjectImpl;
 import my.edu.umk.pams.academic.planner.model.AdSubjectType;
+import my.edu.umk.pams.academic.term.model.AdOffering;
+import my.edu.umk.pams.academic.term.model.AdSection;
 
 @Repository("adSubjectDao")
 public class AdSubjectDaoImpl extends GenericDaoSupport<Long, AdSubject> implements AdSubjectDao {
@@ -39,7 +41,7 @@ public AdSubject findSubjects() {
 }
 
 @Override
-public List<AdSubject> findSubjects(AdCurriculum curriculum) {
+public List<AdSubject> find(AdCurriculum curriculum) {
     Session session = sessionFactory.getCurrentSession();
     Query query = session.createQuery("select s from AdSubject s where " +
             "s.curriculum = :curriculum " +
@@ -50,7 +52,6 @@ public List<AdSubject> findSubjects(AdCurriculum curriculum) {
     query.setCacheable(true);
     return (List<AdSubject>) query.list();
 }
-
 
 @Override
 public List<AdSubject> findSubjects(AdSubjectType subjectType, AdCurriculum curriculum) {
