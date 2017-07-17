@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormGroup} from '@angular/forms';
-import {FormBuilder} from '@angular/forms';
+import {FormBuilder, Validators} from '@angular/forms';
 import {Router, ActivatedRoute} from '@angular/router';
 import {Offering} from '../offering.interface';
 import {OfferingActions} from '../offering.action';
@@ -35,16 +35,16 @@ export class OfferingEditorDialog implements OnInit {
   }
 
   ngOnInit(): void {
-    this.createForm = this.formBuilder.group(<Offering>{
-      id: undefined,
+      this.createForm = this.formBuilder.group({
+      id: [undefined],
       code: '',
       canonicalCode: '',
-      capacity: 0,
+      capacity: ['', Validators.required],
       titleMs: '',
       titleEn: '',
-      academicSession: <AcademicSession>{},
-      course: <Course>{},
-      program: <Program>{},
+      academicSession: [<AcademicSession>{}, Validators.required],
+      course:[<Course>{}, Validators.required],
+      program: [<Program>{}, Validators.required],
     });
     if (this.edit) {
       this.createForm.patchValue(this._offering);
