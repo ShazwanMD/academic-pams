@@ -158,7 +158,9 @@ public class PlannerServiceImpl implements PlannerService {
     		
         List<AdEnrollment> enrollments = termService.findEnrollments(admission);
         BigDecimal totalCredit = BigDecimal.ZERO;
+        BigDecimal totalCreditCgpa = BigDecimal.ZERO;
         BigDecimal totalCalculateGpa = BigDecimal.ZERO;
+        BigDecimal totalCalculateCgpa = BigDecimal.ZERO;
         for (AdEnrollment enrollment : enrollments) {
             LOG.debug("Enrollment:{}",enrollment.getGradeCode());
             //Offering
@@ -182,14 +184,22 @@ public class PlannerServiceImpl implements PlannerService {
             BigDecimal gradePointxCredit = gradeCode.getPoint();
     			
             BigDecimal calculateGpaByCourse = gradePointxCredit.multiply(creditHour);
+            
+            //GPA
             totalCalculateGpa = totalCalculateGpa.add(calculateGpaByCourse);
-    			
             totalCredit = totalCredit.add(creditHour);
+            
+            //CGPA
+            totalCalculateCgpa = totalCalculateCgpa.add(totalCalculateGpa);
+            totalCreditCgpa = totalCreditCgpa.add(totalCredit);
+              
         }
-        BigDecimal gpa = totalCalculateGpa.divide(totalCredit).setScale(2, RoundingMode.HALF_UP);
-    		
+        BigDecimal gpa = totalCalculateGpa.divide(totalCredit).setScale(2, RoundingMode.HALF_UP);   
+        BigDecimal cgpa = totalCalculateCgpa.divide(totalCreditCgpa).setScale(2, RoundingMode.HALF_UP);
+        admission.setCgpa(cgpa);
         admission.setGpa(gpa);
         termService.updateAdmission(admission);
+  
     }
 
     //====================================================================================================

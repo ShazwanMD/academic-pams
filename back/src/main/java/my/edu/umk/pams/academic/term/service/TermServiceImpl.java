@@ -245,6 +245,11 @@ public class TermServiceImpl implements TermService {
 		plannerService.calculateGpa(enrollment.getAdmission());
 
 	}
+	
+	public void calculateCGPA(AdAdmission admission) {
+
+
+	}
 
 	// ====================================================================================================
 	// SECTION
