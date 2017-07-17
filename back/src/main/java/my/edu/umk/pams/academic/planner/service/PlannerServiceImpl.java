@@ -321,7 +321,7 @@ public class PlannerServiceImpl implements PlannerService {
     }
     @Override
     public void addSubject( AdCurriculum curriculum,AdSubject subject) {
-        curriculumDao.addSubject(subject, securityService.getCurrentUser());
+        curriculumDao.addSubject(curriculum, subject, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
