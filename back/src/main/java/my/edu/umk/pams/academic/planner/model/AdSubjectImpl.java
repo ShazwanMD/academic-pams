@@ -11,7 +11,7 @@ import javax.persistence.*;
 @Entity(name = "AdSubject")
 @Table(name = "AD_SBJT")
 @Inheritance(strategy = InheritanceType.JOINED)
-public abstract class AdSubjectImpl implements AdSubject {
+public class AdSubjectImpl implements AdSubject {
 
     @Id
     @Column(name = "ID", nullable = false)
@@ -80,4 +80,10 @@ public abstract class AdSubjectImpl implements AdSubject {
     public void setMetadata(AdMetadata metadata) {
         this.metadata = metadata;
     }
+    
+    @Override
+    public Class<?> getInterfaceClass() {
+        return AdSubject.class;
+    }
+
 }
