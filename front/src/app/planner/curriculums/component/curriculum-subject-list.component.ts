@@ -1,7 +1,8 @@
+import {SubjectCreatorDialog} from '../../subjects/dialog/subject-creator.dialog';
 import {CurriculumEditorDialog} from '../dialog/curriculum-editor.dialog';
 import {CurriculumActions} from '../curriculum.action';
 
-import {SubjectEditorDialog} from '../../subjects/dialog/subject-editor.dialog';
+import { SubjectEditorDialog} from '../../subjects/dialog/subject-editor.dialog';
 import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, ViewContainerRef, OnInit} from '@angular/core';
 import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -19,11 +20,12 @@ import {Subject} from '../../subjects/subject.interface';
 export class CurriculumSubjectListComponent implements OnInit {
 
   private selectedRows: Subject[];
-  private editorDialogRef: MdDialogRef<CurriculumEditorDialog>;
+  private creatorDialogRef: MdDialogRef<SubjectCreatorDialog>;
 
   private columns: any[] = [
     {name: 'id', label: 'Id'},
     {name: 'ordinal', label: 'Ordinal'},
+    {name:'subjectType', label: 'SubjectType'},
     {name: 'curriculum.code', label: 'Code'},
     {name: 'action', label: ''},
   ];
@@ -64,14 +66,30 @@ export class CurriculumSubjectListComponent implements OnInit {
     config.width = '60%';
     config.height = '40%';
     config.position = {top: '0px'};
-    this.editorDialogRef = this.dialog.open(CurriculumEditorDialog, config);
+    this.creatorDialogRef = this.dialog.open(SubjectCreatorDialog, config);
     if (isValid) {
-      this.editorDialogRef.componentInstance.subject = subject;
-      this.editorDialogRef.componentInstance.curriculum = this.curriculum;
+      this.creatorDialogRef .componentInstance.subject = subject;
+      this.creatorDialogRef .componentInstance.curriculum = this.curriculum;
 
     }
-    this.editorDialogRef.afterClosed().subscribe((res) => {
+    this.creatorDialogRef .afterClosed().subscribe((res) => {
       console.log('close dialog section');
+      // load something here
+    });
+  }
+
+    addSubjectDialog(): void {
+    console.log('showDialog');
+    let config = new MdDialogConfig();
+    config.viewContainerRef = this.vcf;
+    config.role = 'dialog';
+    config.width = '50%';
+    config.height = '80%';
+    config.position = {top: '0px'};
+    this.creatorDialogRef = this.dialog.open(SubjectCreatorDialog, config);
+    this.creatorDialogRef.componentInstance.curriculum = this.curriculum;
+    this.creatorDialogRef.afterClosed().subscribe((res) => {
+      console.log('close dialog');
       // load something here
     });
   }
