@@ -33,21 +33,19 @@ export class EnrollmentApplicationTaskCreatorDialog implements OnInit {
     }
 
 
-    ngOnInit(): void {
-        this.createForm = this.formBuilder.group( {
-            id: [undefined],
-            /* auditNo: ['N/A'],
-             sourceNo: ['N/A'],*/
-            description: ['', Validators.required],
-            /* applicationType: [EnrollmentApplicationType.PRA, Validators.required],*/
-            admission: [undefined, Validators.required],
-            academicSession: [undefined, Validators.required],
-
-        } );
-    }
-
-
-
+  ngOnInit(): void {
+      this.createForm = this.formBuilder.group({
+      id: [null],
+      auditNo: ['N/A'],
+      sourceNo: ['N/A'],
+      description: ['', Validators.minLength(this.minLength)],
+      applicationType: [EnrollmentApplicationType.PRA, Validators.required],
+      admission: [<Admission>{},Validators.required],
+      academicSession: [<AcademicSession>{}, Validators.required],
+     
+    });
+  }
+  
     save( enrollmentApplication: EnrollmentApplication, isValid: boolean ): void {
 
         this._academicSession = enrollmentApplication.academicSession;
@@ -61,20 +59,4 @@ export class EnrollmentApplicationTaskCreatorDialog implements OnInit {
         this.dialog.close();
     }
 }
-//
-//submit(enrollmenApplication: EnrollmenApplication, isValid: boolean): void {
-//    // workaround
-//    this._program = enrollmenApplication.program;
-//    this._course = enrollmenApplication.course;
-//
-//    enrollmenApplication. = this.enrollmenApplication.code + '-' + this._course.code;
-//    enrollmenApplication.code = this.enrollmenApplication.code;
-//    offering.titleMs = this._course.titleMs;
-//    offering.titleEn = this._course.titleEn;
-//
-//    this.store.dispatch(this.actions.saveOffering(this._program, this._course, offering));
-//    console.log('Save a new offering');
-//    this.dialog.close();
-//  }
-//}
-//
+

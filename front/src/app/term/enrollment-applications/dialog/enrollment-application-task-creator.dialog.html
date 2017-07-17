@@ -1,3 +1,4 @@
+
 <h2 md-dialog-title>Create New Enrollment Application</h2>
 <md-dialog-content>
   <form [formGroup]="createForm" novalidate>
@@ -9,8 +10,6 @@
      <div  class="tc-red-600" *ngIf="createForm.get('description').invalid && createForm.get('description').touched">
       <font size="3" color="red">Description should be at least {{minLength}} characters!</font>
      </div>
-      
-      
       
     <!--   <div [hidden]="!description.errors.required">
              Description is required
