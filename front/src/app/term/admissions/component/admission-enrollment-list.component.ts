@@ -30,6 +30,8 @@ export class AdmissionEnrollmentListComponent implements OnInit {
         { name: 'enrollmentStanding', label: 'Standing' },
         { name: 'enrollmentStatus', label: 'Status' },
         { name: 'totalScore', label: 'Total Score' },
+        { name: 'gradeCode.code', label: 'Grade' },
+       // { name: 'gradeCode.description', label: 'Desc.' },
         { name: 'action', label: '' },
     ];
     

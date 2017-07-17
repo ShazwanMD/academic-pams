@@ -76,7 +76,7 @@
             <button md-menu-item (click)="removeAppointment(row)">Delete appointment</button>
             
           </md-menu></div>  -->
-      <a md-button color="accent" class="text-upper" mdTooltip="View section info" [routerLink]="['/term/sections', row.section.canonicalCode]">
+      <a md-button color="accent" class="text-upper" mdTooltip="View section info" [routerLink]="['/term/sections', row.section.canonicalCode, 'lecturer-section-detail']">
         <span>View</span>
       </a>
     </div>

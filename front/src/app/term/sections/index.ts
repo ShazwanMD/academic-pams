@@ -13,6 +13,7 @@ import {EffectsModule} from "@ngrx/effects";
 import {SectionEffects} from "./section.effect";
 import {SectionDetailPage} from "./section-detail.page";
 import {StudentSectionDetailPage} from "./student-section-detail.page";
+import {LecturerSectionDetailPage} from "./lecturer-section-detail.page";
 import {SectionComponent} from "./component/section.component";
 import {SectionListComponent} from "./component/section-list.component";
 import {SectionEnrollmentListComponent} from "./component/section-enrollment-list.component";
@@ -35,6 +36,8 @@ import {SectionActionComponent} from "./component/section-action.component";
     // page
     SectionDetailPage,
     StudentSectionDetailPage,
+    LecturerSectionDetailPage,
+    
 
     // component
     SectionListComponent,
