@@ -22,7 +22,7 @@ export class StaffDetailPage implements OnInit {
   private appointments$: Observable<Appointment[]>;
 
   @Input() staff: Staff;
-  @Input() appointment: Appointment;
+ // @Input() appointment: Appointment;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
