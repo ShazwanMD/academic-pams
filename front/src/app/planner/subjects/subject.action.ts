@@ -47,10 +47,10 @@ export class SubjectActions {
     }
 
     static ADD_SUBJECT_SUCCESS = '[Subject] Add Subject Success';
-    addSubjectSuccess( subject ): Action {
+    addSubjectSuccess( message ): Action {
         return {
             type: SubjectActions.ADD_SUBJECT_SUCCESS,
-            payload: subject
+            payload: message
         };
     }
     static UPDATE_SUBJECT = '[Subject] Update Subject';
