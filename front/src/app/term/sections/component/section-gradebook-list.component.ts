@@ -44,7 +44,7 @@ export class SectionGradebookListComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        // this.selectedRows = this.appointments.filter(value => value.selected);
+       //  this.selectedRows = this.gradebooks.filter(value => value.selected);
     }
 
     filter(): void {
@@ -56,7 +56,7 @@ export class SectionGradebookListComponent implements OnInit {
     selectAllRows(gradebooks: Gradebook[]): void {
     }
 
-    //edit dialog
+   /* //edit dialog
     editDialog(enrollment: Enrollment, isValid: boolean): void {
         console.log("showDialogEnrollment");
         let config = new MdDialogConfig();
@@ -75,6 +75,6 @@ export class SectionGradebookListComponent implements OnInit {
             console.log("close dialog");
             // load something here
         });
-    }
+    }*/
 
 }

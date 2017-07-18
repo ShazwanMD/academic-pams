@@ -9,8 +9,6 @@ import { MdDialog, MdDialogConfig, MdDialogRef } from "@angular/material";
 import { TermModuleState } from "../../index";
 import { EnrollmentEditorDialog } from "../../enrollments/dialog/enrollment-editor.dialog";
 
-
-
 @Component({
     selector: 'pams-student-section-enrollment-list',
     templateUrl: './student-section-enrollment-list.component.html',
@@ -46,7 +44,7 @@ export class StudentSectionEnrollmentListComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        // this.selectedRows = this.appointments.filter(value => value.selected);
+         this.selectedRows = this.enrollments.filter(value => value.selected);
     }
 
     filter(): void {
