@@ -5,7 +5,6 @@ import {SectionGradebookListState, sectionGradebookListReducer} from './sections
 import {AdmissionApplication} from './admissions/admission-application.interface';
 import {AssessmentSubModule} from './assessments/index';
 import {AssessmentActions} from './assessments/assessment.action';
-import {GradebookActions} from './gradebooks/gradebook.action';
 import {Assessment} from './assessments/assessment.interface';
 import {Appointment} from './appointments/appointment.interface';
 import {NgModule, ModuleWithProviders} from '@angular/core';
@@ -38,6 +37,7 @@ import {appointmentReducer, AppointmentState} from './appointments/appointment.r
 import {AppointmentSubModule} from './appointments/index';
 import {AppointmentActions} from './appointments/appointment.action';
 import {EnrollmentActions} from './enrollments/enrollment.action';
+import {GradebookActions} from './gradebooks/gradebook.action';
 import {EnrollmentApplicationTask} from './enrollment-applications/enrollment-application-task.interface';
 import {EnrollmentApplicationSubModule} from './enrollment-applications/index';
 import {
@@ -109,12 +109,14 @@ export interface TermModuleState {
   section: SectionState;
   sections: SectionListState;
   sectionAppointments: SectionAppointmentListState;
+  sectionGradebooks: SectionGradebookListState;
   assessment: AssessmentState;
   enrollments: EnrollmentListState;
   enrollment: EnrollmentState;
 
   // gradebook
   gradebook: GradebookState;
+  
 
   appointments: AppointmentListState;
   appointment: AppointmentState;
