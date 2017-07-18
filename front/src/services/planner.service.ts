@@ -295,11 +295,12 @@ findSubjects(): Observable<Subject[]> {
   //     .map((res: Response) => <Subject>res.json());
   // }
 
-//    addSubject(subject: Subject ): Observable<String> {
-//     console. log (subject.id);
-//     return this._http.post(this.PLANNER_API + '/subjects/' + subject.id + '/add', JSON.stringify(subject))
-//       .flatMap((res: Response) => Observable.of(res.text()));
-//   }
+   addSubject(curriculum: Curriculum,subject: Subject ): Observable<String> {
+    console.log('addSubject:' + subject);
+    console.log('curriculum:' + curriculum.code);
+    return this._http.post(this.PLANNER_API + '/curriculums/' + curriculum.code + '/subjects', JSON.stringify(subject))
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
 
 //   updateSubject(subject: Subject): Observable<String> {
 //     return this._http.put(this.PLANNER_API + '/subjects/' + subject.id, JSON.stringify(subject))

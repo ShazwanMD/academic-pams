@@ -4,6 +4,9 @@ import my.edu.umk.pams.academic.common.service.CommonService;
 import my.edu.umk.pams.academic.identity.service.IdentityService;
 import my.edu.umk.pams.academic.planner.model.*;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
+import my.edu.umk.pams.academic.term.model.AdOffering;
+import my.edu.umk.pams.academic.term.model.AdSection;
+import my.edu.umk.pams.academic.term.model.AdSectionImpl;
 import my.edu.umk.pams.academic.web.module.planner.vo.*;
 import my.edu.umk.pams.academic.web.module.planner.vo.subject.Subject;
 import my.edu.umk.pams.academic.web.module.term.vo.Section;
@@ -550,19 +553,18 @@ public class PlannerController {
 	    }
 	
 	 
-//	 @RequestMapping(value = "/subjects/{id}/add", method = RequestMethod.POST)
-//		public ResponseEntity<String> addSubject(@PathVariable Long id, @RequestBody Subject vo) {
-//			dummyLogin();
-//			AdCurriculum curriculum = plannerService.findCurriculumById(id);
-//			AdSubject subject = new AdSubjectImpl();
-//			subject.setOrdinal (vo.getOrdinal());
-//			subject.setSubjectType(AdSubjectType.get(vo.getSubjectType().ordinal()));
-//			subject.setCurriculum(plannerService.findCurriculumByCode(vo.getCurriculum().getCode()));
-//			plannerService.addSubject(curriculum, subject);
-//		
-//			return new ResponseEntity<String>("Success", HttpStatus.OK);
-//		}
-	 
+	 @RequestMapping(value = "/curriculum/{code}/subject", method = RequestMethod.POST)
+		public ResponseEntity<String> addSubject(@PathVariable Long id, @RequestBody Subject vo) {
+			dummyLogin();
+			AdCurriculum curriculum = plannerService.findCurriculumById(id);
+		    AdSubject subject = new AdSubjectImpl();
+			subject.setOrdinal (vo.getOrdinal());
+			subject.setSubjectType(AdSubjectType.get(vo.getSubjectType().ordinal()));
+			subject.setCurriculum(plannerService.findCurriculumByCode(vo.getCurriculum().getCode()));
+			plannerService.addSubject(curriculum, subject);
+		
+			return new ResponseEntity<String>("Success", HttpStatus.OK);
+		}
 	 
 	 @RequestMapping(value = "/subjects/{id}", method = RequestMethod.PUT)
 		public ResponseEntity<String> updateSubject(@PathVariable Long id, @RequestBody Subject vo) {
