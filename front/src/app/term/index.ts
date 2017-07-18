@@ -1,5 +1,6 @@
 import {AdmissionApplicationTask} from './admission-applications/admission-application-task.interface';
 import {SectionAppointmentListState, sectionAppointmentListReducer} from './sections/section-appointment-list.reducer';
+import {SectionGradebookListState, sectionGradebookListReducer} from './sections/section-gradebook-list.reducer';
 
 import {AdmissionApplication} from './admissions/admission-application.interface';
 import {AssessmentSubModule} from './assessments/index';
@@ -65,7 +66,6 @@ import {gradebookMatrixListReducer, GradebookMatrixListState} from './offerings/
 import {GradebookMatrix} from './offerings/gradebook-matrix.interface';
 import {appointmentListReducer, AppointmentListState} from './sections/appointment-list.reducer';
 import {enrollmentListReducer, EnrollmentListState} from './sections/enrollment-list.reducer';
-import {gradebookListReducer, GradebookListState} from './sections/gradebook-list.reducer';
 import {sectionListReducer, SectionListState} from './sections/section-list.reducer';
 import {EnrollmentApplicationItem} from './enrollment-applications/enrollment-application-item.interface';
 import {
@@ -113,7 +113,7 @@ export interface TermModuleState {
   enrollments: EnrollmentListState;
   enrollment: EnrollmentState;
 
-  gradebooks: GradebookListState;
+  // gradebook
   gradebook: GradebookState;
 
   appointments: AppointmentListState;
@@ -145,6 +145,7 @@ export const INITIAL_TERM_STATE: TermModuleState = <TermModuleState>{
     sections: <Section[]>[],
     section: <Section>{},
     sectionAppointments: <Appointment[]>[],
+    sectionGradebooks: <Gradebook[]>[],
     assessment: <Assessment[]>[],
     enrollments: <Enrollment[]>[],
     enrollment: <Enrollment>{},
@@ -182,6 +183,7 @@ export const termModuleReducers = {
   sections: sectionListReducer,
   section: sectionReducer,
   sectionAppointments: sectionAppointmentListReducer,
+  sectionGradebooks: sectionGradebookListReducer,
   assessment: assessmentReducer,
   enrollments: enrollmentListReducer,
   enrollment: enrollmentReducer,
