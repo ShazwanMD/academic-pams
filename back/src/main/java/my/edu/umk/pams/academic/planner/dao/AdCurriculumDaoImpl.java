@@ -287,7 +287,10 @@ public class AdCurriculumDaoImpl extends GenericDaoSupport<Long, AdCurriculum> i
         metadata.setCreatorId(user.getId());
         metadata.setState(AdMetaState.ACTIVE);
         subject.setMetadata(metadata);
+       // LOG.debug("GOING INTO SUBJECT PART");
+       // System.out.print(part.getCourse().getCode());
         session.save(subject);
+        session.save(part);
     }
 
     @Override
