@@ -1,12 +1,14 @@
 package my.edu.umk.pams.academic.web.module.identity.controller;
 
 import my.edu.umk.pams.academic.common.service.CommonService;
+
 import my.edu.umk.pams.academic.identity.model.AdActor;
 import my.edu.umk.pams.academic.identity.model.AdStaff;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.term.service.TermService;
 import my.edu.umk.pams.academic.web.module.common.controller.CommonTransformer;
 import my.edu.umk.pams.academic.web.module.identity.vo.Actor;
+import my.edu.umk.pams.academic.web.module.identity.vo.ActorType;
 import my.edu.umk.pams.academic.web.module.identity.vo.Staff;
 import my.edu.umk.pams.academic.web.module.identity.vo.Student;
 import my.edu.umk.pams.academic.web.module.planner.controller.PlannerTransformer;
@@ -56,10 +58,12 @@ public class IdentityTransformer {
         vo.setMobile(staff.getMobile());
         vo.setPhone(staff.getPhone());
         vo.setFax(staff.getFax());
-        
+        vo.setActorType(ActorType.get(staff.getActorType().ordinal()));
+        vo.setProgram(plannerTransformer.toProgramVo(staff.getProgram()));
+        vo.setFaculty(plannerTransformer.toFacultyVo(staff.getFaculty()));
+       
         return vo;
     }
-
 
     public Student toStudentVo(AdStudent student) {
         Student vo = new Student();

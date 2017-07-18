@@ -275,6 +275,11 @@ public class TermTransformer {
 		List<Enrollment> vos = enrollments.stream().map((enrollment) -> toEnrollmentVo(enrollment)).collect(toList());
 		return vos;
 	}
+	
+	public List<Gradebook> toGradebookVos(List<AdGradebook> gradebooks) {
+		List<Gradebook> vos = gradebooks.stream().map((gradebook) -> toGradebookVo(gradebook)).collect(toList());
+		return vos;
+	}
 
 	public List<Appointment> toAppointmentVos(List<AdAppointment> appointments) {
 		List<Appointment> vos = appointments.stream().map((appointment) -> toAppointmentVo(appointment))
