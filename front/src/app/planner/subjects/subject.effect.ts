@@ -7,7 +7,7 @@ import {SubjectActions} from "./subject.action";
 import {PlannerService} from "../../../services/planner.service";
 import {Store} from "@ngrx/store";
 import {PlannerModuleState} from "../index";
-import {Subject} from './subject.interface';
+import {Subject} from '../curriculums/subject.interface';
 @Injectable()
 export class SubjectEffects {
 

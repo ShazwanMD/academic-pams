@@ -12,10 +12,10 @@ import my.edu.umk.pams.academic.web.module.planner.controller.PlannerTransformer
 import my.edu.umk.pams.academic.web.module.planner.vo.Course;
 import my.edu.umk.pams.academic.web.module.planner.vo.Curriculum;
 import my.edu.umk.pams.academic.web.module.planner.vo.Program;
-import my.edu.umk.pams.academic.web.module.planner.vo.subject.BundleSubject;
-import my.edu.umk.pams.academic.web.module.planner.vo.subject.BundleSubjectPart;
-import my.edu.umk.pams.academic.web.module.planner.vo.subject.SingleSubject;
-import my.edu.umk.pams.academic.web.module.planner.vo.subject.Subject;
+import my.edu.umk.pams.academic.web.module.planner.vo.BundleSubject;
+import my.edu.umk.pams.academic.web.module.planner.vo.BundleSubjectPart;
+import my.edu.umk.pams.academic.web.module.planner.vo.SingleSubject;
+import my.edu.umk.pams.academic.web.module.planner.vo.Subject;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

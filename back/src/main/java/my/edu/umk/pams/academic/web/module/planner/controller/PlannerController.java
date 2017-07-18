@@ -4,12 +4,8 @@ import my.edu.umk.pams.academic.common.service.CommonService;
 import my.edu.umk.pams.academic.identity.service.IdentityService;
 import my.edu.umk.pams.academic.planner.model.*;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
-import my.edu.umk.pams.academic.term.model.AdOffering;
-import my.edu.umk.pams.academic.term.model.AdSection;
-import my.edu.umk.pams.academic.term.model.AdSectionImpl;
 import my.edu.umk.pams.academic.web.module.planner.vo.*;
-import my.edu.umk.pams.academic.web.module.planner.vo.subject.Subject;
-import my.edu.umk.pams.academic.web.module.term.vo.Section;
+import my.edu.umk.pams.academic.web.module.planner.vo.Subject;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

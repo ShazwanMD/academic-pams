@@ -35,10 +35,9 @@ import {CurriculumUpdateDialog} from './dialog/curriculum-update.dialog';
     ProgramSubModule.forRoot(),
     SubjectSubModule.forRoot(),
     CovalentCoreModule.forRoot(),
-    EffectsModule.run(CurriculumEffects),
     AcademicSessionSubModule.forRoot(),
     IdentityModule.forRoot(),
-
+    EffectsModule.run(CurriculumEffects),
   ],
   declarations: [
     // page
@@ -57,16 +56,16 @@ import {CurriculumUpdateDialog} from './dialog/curriculum-update.dialog';
     CurriculumUpdateDialog,
 
   ],
-  exports: [CurriculumSelectComponent,
-    CurriculumActionComponent,],
+  exports: [
+    CurriculumSelectComponent,
+    CurriculumActionComponent,
+  ],
   entryComponents: [
     CurriculumEditorDialog,
     CurriculumUpdateDialog,
     CurriculumSelectComponent,
     CurriculumActionComponent,
     CurriculumSubjectListComponent,
-    
-
   ],
 })
 
@@ -80,8 +79,6 @@ export class CurriculumSubModule {
         IdentityService,
         CommonService,
         CurriculumActions,
-        SubjectActions,
-        
       ],
     };
   }

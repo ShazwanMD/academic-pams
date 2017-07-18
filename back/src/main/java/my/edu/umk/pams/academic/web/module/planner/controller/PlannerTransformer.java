@@ -2,11 +2,9 @@ package my.edu.umk.pams.academic.web.module.planner.controller;
 
 import my.edu.umk.pams.academic.common.model.AdStudyCenter;
 import my.edu.umk.pams.academic.planner.model.*;
-import my.edu.umk.pams.academic.term.model.AdEnrollment;
 import my.edu.umk.pams.academic.web.module.planner.vo.*;
-import my.edu.umk.pams.academic.web.module.planner.vo.subject.Subject;
+import my.edu.umk.pams.academic.web.module.planner.vo.Subject;
 import my.edu.umk.pams.academic.web.module.term.controller.TermTransformer;
-import my.edu.umk.pams.academic.web.module.term.vo.Enrollment;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -40,8 +38,8 @@ public class PlannerTransformer {
         vo.setCurrent(academicSession.isCurrent());
         vo.setstartDate(academicSession.getStartDate());
         vo.setendDate(academicSession.getEndDate());
-        vo.setSemester(AcademicSemester.get(academicSession.getSemester().ordinal()));
-        vo.setYear(plannerTransformer.toAcademicYearVo(academicSession.getYear()));
+//        vo.setSemester(AcademicSemester.get(academicSession.getSemester().ordinal()));
+//        vo.setYear(plannerTransformer.toAcademicYearVo(academicSession.getYear()));
         return vo;
     }
     
@@ -137,22 +135,30 @@ public class PlannerTransformer {
         return vo;
     }
 
-   /* public List<Subject> toSubjectVos(List<AdSubject> subjects) {
-        return subjects.stream().map(this::toSubjectVo).collect(toList());
-    }*/
-    	
     public List<Subject> toSubjectVos(List<AdSubject> subjects) {
-		List<Subject> vos = subjects.stream().map((subject) -> toSubjectVo(subject)).collect(toList());
+		List<Subject> vos = subjects.stream()
+                .map((subject) -> toSubjectVo(subject))
+                .collect(toList());
 		return vos;
 	}
     
 	public Subject toSubjectVo(AdSubject subject) {
-		Subject vo = new Subject();
+        Subject vo = null;
+        if(subject instanceof AdSingleSubject) {
+            vo = new SingleSubject();
+            ((SingleSubject) vo).setCourse(toCourseVo(((AdSingleSubject) subject).getCourse()));
+        }else if(subject instanceof AdBundleSubject){
+            vo = new BundleSubject();
+            List<AdBundleSubjectPart> parts = ((AdBundleSubject) subject).getParts();
+            for (AdBundleSubjectPart part : parts) {
+                BundleSubjectPart partVo = new BundleSubjectPart();
+                partVo.setCourse(toCourseVo(part.getCourse()));
+                ((BundleSubject) vo).addPart(partVo);
+            }
+        }
 		vo.setId(subject.getId());
 		vo.setOrdinal(subject.getOrdinal());
 		vo.setSubjectType(SubjectType.get(subject.getSubjectType().ordinal()));
-		vo.setCurriculum(plannerTransformer.toCurriculumVo(subject.getCurriculum()));
-		
 		return vo;
 	}
     public Cohort toCohortVo(AdCohort e) {

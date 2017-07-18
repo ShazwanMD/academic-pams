@@ -6,7 +6,7 @@ import {
   TdDataTableSortingOrder
 } from '@covalent/core';
 import {MdSnackBar} from '@angular/material';
-import {Subject} from '../subject.interface';
+import {Subject} from '../../curriculums/subject.interface';
 
 @Component({
   selector: 'pams-subject-list',

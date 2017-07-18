@@ -1,6 +1,4 @@
-package my.edu.umk.pams.academic.web.module.planner.vo.subject;
-
-import my.edu.umk.pams.academic.web.module.planner.vo.Course;
+package my.edu.umk.pams.academic.web.module.planner.vo;
 
 public class SingleSubject extends Subject {
     private Course course;

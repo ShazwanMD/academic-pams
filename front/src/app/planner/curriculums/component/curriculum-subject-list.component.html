@@ -2,22 +2,22 @@
   <div toolbar-buttons layout="row" layout-align="start center" flex>
     <md-card-title>Subjects
     </md-card-title>
-    <md-chip-list *ngIf="sections?.length > 0">
+    <md-chip-list *ngIf="subjects?.length > 0">
       <md-chip color="accent">{{subjects?.length}}</md-chip>
     </md-chip-list>
     <span flex></span>
-    <button md-button class="md-icon-button" (click)="addSubjectDialog()" mdTooltip="Add new subject">
-      <md-icon class="md-24 tc-grey-300" [ngClass]="{'tc-grey-700': selectedRows.length === 0}">add</md-icon>
-    </button>
-    <button md-button class="md-icon-button" (click)="deleteSubject(selectedRows[0])"
-            [disabled]="selectedRows.length != 1">
-      <md-icon class="md-24 tc-grey-300" [ngClass]="{'tc-grey-700': selectedRows.length === 1}">delete</md-icon>
-    </button>
+    <!--<button md-button class="md-icon-button" (click)="addSubjectDialog()" mdTooltip="Add new subject">-->
+      <!--<md-icon class="md-24 tc-grey-300" [ngClass]="{'tc-grey-700': selectedRows.length === 0}">add</md-icon>-->
+    <!--</button>-->
+    <!--<button md-button class="md-icon-button" (click)="deleteSubject(selectedRows[0])"-->
+            <!--[disabled]="selectedRows.length != 1">-->
+      <!--<md-icon class="md-24 tc-grey-300" [ngClass]="{'tc-grey-700': selectedRows.length === 1}">delete</md-icon>-->
+    <!--</button>-->
   </div>
   <md-divider></md-divider>
   <md-card-content>
     <td-data-table
-      [data]="curriculum"
+      [data]="subjects"
       [columns]="columns"
       [sortBy]="summary"
       [sortOrder]="ASC"
@@ -33,18 +33,18 @@
           <span flex>{{value}}</span>
         </div>
       </template>
-      <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
-        <div layout="row">
-          <button md-icon-button [md-menu-trigger-for]="menu1" mdTooltip="Select subject actions">
-            <md-icon>more_vert</md-icon>
-          </button>
-          <md-menu x-position="before" #menu1="mdMenu">
-            <button md-menu-item [routerLink]="['/planner/curriculums', row['code']]">View subject details</button>
-            <button md-menu-item (click)="editDialog(row, true)">Update subject</button>
-            <button md-menu-item (click)="deleteSubject(row)">Delete subject</button>
-          </md-menu>
-        </div>
-      </template>
+      <!--<template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">-->
+        <!--<div layout="row">-->
+          <!--<button md-icon-button [md-menu-trigger-for]="menu1" mdTooltip="Select subject actions">-->
+            <!--<md-icon>more_vert</md-icon>-->
+          <!--</button>-->
+          <!--<md-menu x-position="before" #menu1="mdMenu">-->
+            <!--<button md-menu-item [routerLink]="['/planner/curriculums', row['code']]">View subject details</button>-->
+            <!--<button md-menu-item (click)="editDialog(row, true)">Update subject</button>-->
+            <!--<button md-menu-item (click)="deleteSubject(row)">Delete subject</button>-->
+          <!--</md-menu>-->
+        <!--</div>-->
+      <!--</template>-->
     </td-data-table>
   </md-card-content>
 </md-card>

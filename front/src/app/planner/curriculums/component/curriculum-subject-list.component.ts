@@ -1,16 +1,14 @@
 import {SubjectCreatorDialog} from '../../subjects/dialog/subject-creator.dialog';
-import {CurriculumEditorDialog} from '../dialog/curriculum-editor.dialog';
 import {CurriculumActions} from '../curriculum.action';
 
-import { SubjectEditorDialog} from '../../subjects/dialog/subject-editor.dialog';
 import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, ViewContainerRef, OnInit} from '@angular/core';
 import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Store} from '@ngrx/store';
 import {PlannerModuleState} from '../../index';
-import { MdSnackBar } from '@angular/material';
+import {MdSnackBar} from '@angular/material';
 import {Curriculum} from '../curriculum.interface';
-import {Subject} from '../../subjects/subject.interface';
+import {Subject} from '../subject.interface';
 
 @Component({
   selector: 'pams-curriculum-subject-list',
@@ -19,22 +17,17 @@ import {Subject} from '../../subjects/subject.interface';
 })
 export class CurriculumSubjectListComponent implements OnInit {
 
-  private selectedRows: Subject[];
   private creatorDialogRef: MdDialogRef<SubjectCreatorDialog>;
-
   private columns: any[] = [
     {name: 'id', label: 'Id'},
     {name: 'ordinal', label: 'Ordinal'},
-    {name:'subjectType', label: 'SubjectType'},
-    {name: 'curriculum.code', label: 'Code'},
+    {name: 'course', label: 'course'},
     {name: 'action', label: ''},
   ];
 
   @Input() curriculum: Curriculum;
-  @Input() subject: Subject;
   @Input() subjects: Subject[];
-  @Output() view = new EventEmitter<Subject>();
-
+  @Output() view: EventEmitter<Subject> = new EventEmitter<Subject>();
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -46,10 +39,10 @@ export class CurriculumSubjectListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.selectedRows = this.subjects.filter((value) => value.selected);
   }
 
   filter(): void {
+    // no op
   }
 
   selectRow(subject: Subject): void {
@@ -68,17 +61,17 @@ export class CurriculumSubjectListComponent implements OnInit {
     config.position = {top: '0px'};
     this.creatorDialogRef = this.dialog.open(SubjectCreatorDialog, config);
     if (isValid) {
-      this.creatorDialogRef .componentInstance.subject = subject;
-      this.creatorDialogRef .componentInstance.curriculum = this.curriculum;
+      this.creatorDialogRef.componentInstance.subject = subject;
+      this.creatorDialogRef.componentInstance.curriculum = this.curriculum;
 
     }
-    this.creatorDialogRef .afterClosed().subscribe((res) => {
+    this.creatorDialogRef.afterClosed().subscribe((res) => {
       console.log('close dialog section');
       // load something here
     });
   }
 
-    addSubjectDialog(): void {
+  addSubjectDialog(): void {
     console.log('showDialog');
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
@@ -95,6 +88,6 @@ export class CurriculumSubjectListComponent implements OnInit {
   }
 
   goBack(route: string): void {
-      this.router.navigate(['/subjects']);
-    }
+    this.router.navigate(['/subjects']);
+  }
 }

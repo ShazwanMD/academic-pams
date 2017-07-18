@@ -2,6 +2,7 @@ package my.edu.umk.pams.academic.web.module.planner.vo;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
 import my.edu.umk.pams.academic.web.module.core.vo.MetaObject;
 
 import java.io.IOException;
@@ -17,7 +18,7 @@ public class Course extends MetaObject {
     private String titleMs;
     private String titleEn;
     private Faculty faculty;
-   
+
     public String getCode() {
         return code;
     }
@@ -51,7 +52,7 @@ public class Course extends MetaObject {
     }
 
     public AcademicClassification getClassification() {
-		return classification;
+        return classification;
     }
 
     public void setClassification(AcademicClassification classification) {
@@ -65,15 +66,15 @@ public class Course extends MetaObject {
     public void setFaculty(Faculty faculty) {
         this.faculty = faculty;
     }
-    
+
 
     public CourseStatus getStatus() {
- 		return status;
- 	}
+        return status;
+    }
 
- 	public void setStatus(CourseStatus status) {
- 		this.status = status;
- 	}
+    public void setStatus(CourseStatus status) {
+        this.status = status;
+    }
 
     @JsonCreator
     public static Course create(String jsonString) {

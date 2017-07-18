@@ -4,12 +4,10 @@ import {Component, ViewContainerRef, OnInit} from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
 import {FormBuilder} from '@angular/forms';
 import {Router, ActivatedRoute} from '@angular/router';
-import {Subject} from "../subject.interface";
-// import {SubjectActions} from "../subject.action";
-import {MdDialogRef} from "@angular/material";
-import {PlannerModuleState} from "../../index";
-import {Store} from "@ngrx/store";
-
+import {Subject} from '../../curriculums/subject.interface';
+import {MdDialogRef} from '@angular/material';
+import {PlannerModuleState} from '../../index';
+import {Store} from '@ngrx/store';
 
 @Component({
   selector: 'pams-subject-editor',
@@ -25,7 +23,6 @@ export class SubjectEditorDialog implements OnInit {
   constructor(private router: Router,
               private route: ActivatedRoute,
               private formBuilder: FormBuilder,
-              // private actions: SubjectActions,
               private store: Store<PlannerModuleState>,
               private viewContainerRef: ViewContainerRef,
               private dialog: MdDialogRef<SubjectEditorDialog>) {
@@ -40,27 +37,16 @@ export class SubjectEditorDialog implements OnInit {
     this._curriculum = value;
     this.edit = true;
   }
-  
 
   ngOnInit(): void {
-    this.editForm = this.formBuilder.group(<Subject>{
-       id: null,
-    //  subjectType: SubjectType.CORE,
+    this.editForm = this.formBuilder.group({
       curriculum: <Curriculum>{},
-     
+
     });
 
-    if (this.edit) this.editForm.patchValue(this._subject);
+    if (this.edit) {
+      this.editForm.patchValue(this._subject);
+    }
   }
-
-  // submit(subject: Subject, isValid: boolean) {
-
-  //   console.log(JSON.stringify(subject));
-  //   if (!subject.id) this.store.dispatch(this.actions.addSubject(this._curriculum,subject));
-  //   else  this.store.dispatch(this.actions.updateSubject(subject));
-  //   this.dialog.close();
-
-  // }
 }
 
- 

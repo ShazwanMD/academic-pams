@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Action } from '@ngrx/store';
-import { Subject } from './subject.interface';
+import { Subject } from '../curriculums/subject.interface';
 
 @Injectable()
 export class SubjectActions {

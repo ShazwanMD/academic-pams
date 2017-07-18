@@ -1,10 +1,10 @@
 import {CurriculumActions} from './curriculums/curriculum.action';
 import {SubjectActions} from './subjects/subject.action';
-import {curriculumSubjectListReducer,CurriculumSubjectListState} from './curriculums/curriculum-subject-list.reducer';
+import {curriculumSubjectListReducer, CurriculumSubjectListState} from './curriculums/curriculum-subject-list.reducer';
 import {SubjectSubModule} from './subjects/index';
 import {subjectReducer, SubjectState} from './subjects/subject.reducer';
 import {subjectListReducer, SubjectListState} from './subjects/subject-list.reducer';
-import {Subject} from './subjects/subject.interface';
+import {Subject} from './curriculums/subject.interface';
 import {AcademicYearListPage} from './academic-years/academic-year-list.page';
 import {NgModule, ModuleWithProviders} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
@@ -52,10 +52,10 @@ import {programLevelReducer, ProgramLevelState} from './program-levels/program-l
 import {ProgramLevelSubModule} from './program-levels/index';
 import {ProgramLevel} from './program-levels/program-level.interface';
 import {AcademicYearState, academicYearReducer} from './academic-years/academic-year.reducer';
-import {curriculumListReducer, CurriculumListState} from "./curriculums/curriculum-list.reducer";
-import {curriculumReducer, CurriculumState} from "./curriculums/curriculum.reducer";
-import {Curriculum} from "./curriculums/curriculum.interface";
-import {CurriculumSubModule} from "./curriculums/index";
+import {curriculumListReducer, CurriculumListState} from './curriculums/curriculum-list.reducer';
+import {curriculumReducer, CurriculumState} from './curriculums/curriculum.reducer';
+import {Curriculum} from './curriculums/curriculum.interface';
+import {CurriculumSubModule} from './curriculums/index';
 
 export interface PlannerModuleState {
   academicSessions: AcademicSessionListState;
@@ -74,11 +74,8 @@ export interface PlannerModuleState {
   cohort: CohortState;
   curriculums: CurriculumListState;
   curriculum: CurriculumState;
-  curriculumSubjects: CurriculumSubjectListState;
-  subjects: SubjectListState;
-  subject: SubjectState;
+  subjects: CurriculumSubjectListState;
 }
-;
 
 export const INITIAL_PLANNER_STATE: PlannerModuleState = <PlannerModuleState>{
     academicSession: <AcademicSession>{},
@@ -97,11 +94,8 @@ export const INITIAL_PLANNER_STATE: PlannerModuleState = <PlannerModuleState>{
     cohort: <Cohort>{},
     curriculums: <Curriculum[]>[],
     curriculum: <Curriculum>{},
-    curriculumSubjects:<Subject[]>[],
-    subjects:<Subject[]>[],
-    subject:<Subject>{},
-  }
-;
+    subjects: <Subject[]>[],
+  };
 
 export const plannerModuleReducers = {
   academicSession: academicSessionReducer,
@@ -120,11 +114,7 @@ export const plannerModuleReducers = {
   cohort: cohortReducer,
   curriculums: curriculumListReducer,
   curriculum: curriculumReducer,
-  curriculumSubjects: curriculumSubjectListReducer,
-  subjects: subjectListReducer,
-  subject: subjectReducer,
-  
-
+  subjects: curriculumSubjectListReducer,
 
 };
 
@@ -142,14 +132,11 @@ export const plannerModuleReducers = {
     FacultySubModule.forRoot(),
     ProgramSubModule.forRoot(),
     CourseSubModule.forRoot(),
-    SubjectSubModule.forRoot(),
     CohortSubModule.forRoot(),
-    CurriculumSubModule.forRoot()
-    
+    CurriculumSubModule.forRoot(),
   ],
 
   declarations: [
-    // page
     PlannerPage,
   ],
   exports: [],
@@ -164,9 +151,7 @@ export class PlannerModule {
         IdentityService,
         CommonService,
         PlannerService,
-        SubjectActions,
         CurriculumActions,
-        
       ],
     };
   }

@@ -1,6 +1,6 @@
 import {Action} from '@ngrx/store';
 import {SubjectActions} from "./subject.action";
-import {Subject} from "./subject.interface";
+import {Subject} from "../curriculums/subject.interface";
 
 export type SubjectState = Subject;
 

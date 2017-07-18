@@ -1,10 +1,10 @@
-import {Subject} from '../subjects/subject.interface';
+import {Subject} from './subject.interface';
 import {CurriculumActions} from './curriculum.action';
 import {Action} from '@ngrx/store';
 
 export type CurriculumSubjectListState = Subject[];
 
-const initialState:CurriculumSubjectListState = <Subject[]>[];
+const initialState: CurriculumSubjectListState = <Subject[]>[];
 
 export function curriculumSubjectListReducer(state = initialState, action: Action): CurriculumSubjectListState {
   switch (action.type) {

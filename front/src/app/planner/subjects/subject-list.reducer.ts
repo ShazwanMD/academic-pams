@@ -3,7 +3,7 @@ import {Action} from '@ngrx/store';
 import {Observable} from 'rxjs/Observable';
 
 import * as _ from 'lodash';
-import {Subject} from "./subject.interface";
+import {Subject} from "../curriculums/subject.interface";
 
 
 export type SubjectListState = Subject[];

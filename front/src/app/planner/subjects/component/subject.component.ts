@@ -4,7 +4,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {FormBuilder} from '@angular/forms';
 import {PlannerModuleState} from '../../index';
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output, ViewContainerRef} from '@angular/core';
-import {Subject} from '../subject.interface';
+import {Subject} from '../../curriculums/subject.interface';
 import {SubjectCreatorDialog} from '../dialog/subject-creator.dialog';
 
 @Component({

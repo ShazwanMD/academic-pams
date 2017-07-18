@@ -3,7 +3,7 @@ import {FormGroup} from '@angular/forms';
 import {FormBuilder} from '@angular/forms';
 import {Router, ActivatedRoute} from '@angular/router';
 import {Curriculum} from '../curriculum.interface';
-import {Subject} from '../../subjects/subject.interface';
+import {Subject} from '../subject.interface';
 import {CurriculumActions} from '../curriculum.action';
 ;
 import {Store} from '@ngrx/store';

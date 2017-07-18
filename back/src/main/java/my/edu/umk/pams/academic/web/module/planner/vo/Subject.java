@@ -1,44 +1,39 @@
 package my.edu.umk.pams.academic.web.module.planner.vo;
-import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 import my.edu.umk.pams.academic.web.module.core.vo.MetaObject;
 
+@JsonTypeInfo(
+        use = JsonTypeInfo.Id.NAME,
+        include = JsonTypeInfo.As.PROPERTY,
+        property = "type")
+@JsonSubTypes({
+        @JsonSubTypes.Type(value = SingleSubject.class, name = "single"),
+        @JsonSubTypes.Type(value = BundleSubject.class, name = "bundle")
+})
 public class Subject extends MetaObject {
-	
-	private Long id;
-	private Integer ordinal;
-	private SubjectType subjectType;
-    private Curriculum curriculum;
+
+    private Integer ordinal;
+    private SubjectType subjectType;
+ 
+    public Integer getOrdinal() {
+        return ordinal;
+    }
+
+    public void setOrdinal(Integer ordinal) {
+        this.ordinal = ordinal;
+    }
     
-    public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-	
-	public Integer getOrdinal() {
-	     return ordinal;
-	}
-
-	public void setOrdinal(Integer ordinal) {
-	    this.ordinal = ordinal;
-	    }
-	
-	 public SubjectType getsubjectType() {
-	        return subjectType;
-	    }
-
-	    public void setSubjectType(SubjectType subjectType) {
-	        this.subjectType = subjectType;
-	    }
-	    
-	    public Curriculum getCurriculum() {
-			return curriculum;
-		}
-
-		public void setCurriculum(Curriculum curriculum) {
-			this.curriculum = curriculum;
-		}
+    public SubjectType getSubjectType(){
+    	return subjectType;
+    }
+    
+    public void setSubjectType(SubjectType subjectType){
+    this.subjectType = subjectType;
+    	
+    }
+   
 }
+   

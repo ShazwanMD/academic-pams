@@ -7,7 +7,7 @@ import {Program} from '../app/planner/programs/program.interface';
 import {Faculty} from '../app/planner/faculties/faculty.interface';
 import {Course} from '../app/planner/courses/course.interface';
 import {Cohort} from '../app/planner/cohorts/cohort.interface';
-import {Subject} from '../app/planner/subjects/subject.interface';
+import {Subject} from '../app/planner/curriculums/subject.interface';
 import {AcademicSession} from '../app/planner/academic-sessions/academic-session.interface';
 import {AcademicYear} from '../app/planner/academic-years/academic-year.interface';
 import {ProgramLevel} from '../app/planner/program-levels/program-level.interface';
@@ -256,7 +256,7 @@ export class PlannerService {
   }
 
   findSubjectsByCurriculum(curriculum: Curriculum): Observable<Subject[]> {
-    console.log('findEnrollmentsByOffering');
+    console.log('findSubjectsByCurriculum');
     return this._http.get(this.PLANNER_API + '/curriculums/' + curriculum.code + '/subjects')
       .map((res: Response) => <Subject[]>res.json());
   }

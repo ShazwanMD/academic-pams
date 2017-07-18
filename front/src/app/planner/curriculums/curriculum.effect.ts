@@ -5,7 +5,7 @@ import {PlannerService} from '../../../services/planner.service';
 import {Curriculum} from './curriculum.interface';
 import {Store} from '@ngrx/store';
 import {PlannerModuleState} from '../index';
-import {from} from "rxjs/observable/from";
+import {from} from 'rxjs/observable/from';
 
 @Injectable()
 export class CurriculumEffects {
@@ -27,20 +27,22 @@ export class CurriculumEffects {
     .ofType(CurriculumActions.FIND_CURRICULUM_BY_CODE)
     .map((action) => action.payload)
     .switchMap((code) => this.plannerService.findCurriculumByCode(code))
-    .map((curriculum) => this.curriculumActions.findCurriculumByCodeSuccess(curriculum));
+    .map((curriculum) => this.curriculumActions.findCurriculumByCodeSuccess(curriculum))
+    .mergeMap((action) => from([action,
+      this.curriculumActions.findSubjectsByCurriculum(action.payload),
+    ]));
 
-      @Effect() findSubjectsByCurriculum$ = this.actions$
+  @Effect() findSubjectsByCurriculum$ = this.actions$
     .ofType(CurriculumActions.FIND_SUBJECTS_BY_CURRICULUM)
-    .map(action => action.payload)
-    .switchMap(curriulum => this.plannerService.findSubjectsByCurriculum(curriulum))
-    .map(subjects => this.curriculumActions.findSubjectsByCurriculumSuccess(subjects));
+    .map((action) => action.payload)
+    .switchMap((curriculum) => this.plannerService.findSubjectsByCurriculum(curriculum))
+    .map((subjects) => this.curriculumActions.findSubjectsByCurriculumSuccess(subjects));
 
   @Effect() saveCurriculum$ = this.actions$
     .ofType(CurriculumActions.SAVE_CURRICULUM)
     .map((action) => action.payload)
     .switchMap((curriculum) => this.plannerService.saveCurriculum(curriculum))
-    .map((curriculum) => this.curriculumActions.saveCurriculumSuccess(curriculum))
-  // .mergeMap(action => from([action, this.curriculumActions.findCurriculumByCode()]));
+    .map((curriculum) => this.curriculumActions.saveCurriculumSuccess(curriculum));
 
   @Effect() updateCurriculum$ = this.actions$
     .ofType(CurriculumActions.UPDATE_CURRICULUM)

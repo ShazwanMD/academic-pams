@@ -11,7 +11,7 @@ import {PlannerModuleState} from '../index';
 import {MdDialog} from '@angular/material';
 import {ViewContainerRef} from '@angular/core';
 import {MdSnackBar} from '@angular/material';
-import { Subject } from "../subjects/subject.interface";
+import {Subject} from './subject.interface';
 
 @Component({
   selector: 'pams-curriculum-detail',
@@ -20,7 +20,7 @@ import { Subject } from "../subjects/subject.interface";
 
 export class CurriculumDetailPage implements OnInit {
   private CURRICULUM: string[] = 'plannerModuleState.curriculum'.split('.');
-  private SUBJECTS : string[] = 'plannerModuleState.subjects'.split('.');
+  private SUBJECTS: string[] = 'plannerModuleState.subjects'.split('.');
   private curriculum$: Observable<Curriculum>;
   private subjects$: Observable<Subject[]>;
 
@@ -47,8 +47,8 @@ export class CurriculumDetailPage implements OnInit {
     });
   }
 
-   showUpdateDialog(): void {
-    console.log("edit offering");
+  showUpdateDialog(): void {
+    console.log('edit offering');
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
     config.role = 'dialog';
@@ -56,11 +56,10 @@ export class CurriculumDetailPage implements OnInit {
     config.height = '50%';
     config.position = {top: '0px'};
     this.editorDialogRef = this.dialog.open(CurriculumEditorDialog, config);
-    this.editorDialogRef.componentInstance.curriculum= this.curriculum;
+    this.editorDialogRef.componentInstance.curriculum = this.curriculum;
 
-
-    this.editorDialogRef.afterClosed().subscribe(res => {
-      console.log("close dialog ");
+    this.editorDialogRef.afterClosed().subscribe((res) => {
+      console.log('close dialog ');
     });
   }
 
@@ -69,7 +68,7 @@ export class CurriculumDetailPage implements OnInit {
   }
 
   filter(): void {
+    // no op
   }
-
 }
 

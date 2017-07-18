@@ -3,7 +3,6 @@ package my.edu.umk.pams.academic.web.module.planner.vo;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import my.edu.umk.pams.academic.web.module.core.vo.MetaObject;
-import my.edu.umk.pams.academic.web.module.planner.vo.subject.Subject;
 
 import java.io.IOException;
 import java.util.List;
