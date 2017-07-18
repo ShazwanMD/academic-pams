@@ -1,6 +1,7 @@
+import {Injectable} from '@angular/core';
+import {select} from '@ngrx/core';
 import {Curriculum} from '../curriculums/curriculum.interface';
 import {CurriculumActions} from '../curriculums/curriculum.action';
-import {Injectable} from '@angular/core';
 import {Effect, Actions} from '@ngrx/effects';
 import {SubjectActions} from "./subject.action";
 import {PlannerService} from "../../../services/planner.service";
@@ -10,11 +11,13 @@ import {Subject} from './subject.interface';
 @Injectable()
 export class SubjectEffects {
 
+   
+   private CURRICULUM: string[] = "plannerModuleState.curriculum".split(".")
    private SUBJECT: string[] = "plannerModuleState.subject".split(".");
 
   constructor(private actions$: Actions,
               private subjectActions: SubjectActions,
-              private currriculum: CurriculumActions,
+              private currriculumActions: CurriculumActions,
               private plannerService: PlannerService,
               private store$: Store<PlannerModuleState>) {
   }
@@ -29,15 +32,19 @@ export class SubjectEffects {
   //   .map(action => action.payload)
   //   .switchMap(id => this.plannerService.findSubjectById(id))
   //   .map(subjects => this.SubjectActions.findSubjectByIdSuccess(subjects));
+  
+//  @Effect() addSubject$  = this.actions$
+//     .ofType(SubjectActions.ADD_SUBJECT)
+//     .map(action => action.payload)
+//     .switchMap(payload => this.plannerService.addSubject(payload.curriculum,payload.subject))
+//     .map(message=> this.subjectActions.addSubjectSuccess(message))
+//      .withLatestFrom(this.store$.select(...this.CURRICULUM))
+//       .map(state => state[1])
+//       .map((curriculum: Curriculum) => this.curriculumActions.findCurriculumByCode(curriculum.code));
 
-  //   @Effect() addSubject$ = this.actions$
-  //   .ofType(SubjectActions.ADD_SUBJECT)
-  //   .map(action => action.payload)
-  //   .switchMap(payload => this.plannerService.addSubject(payload.curriculum,payload.subject))
-  // .map(subject => this.subjectActions.addSubjectSuccess(subject))
-  //   .mergeMap(action => from([action,
-  //     this.subjectActions.findSubjects()
-  //   ]));
+    // //.mergeMap(action => from([action,
+    //   this.subjectActions.findSubjects()
+    // ]))
 
   // @Effect() updateSubject$ = this.actions$
   //   .ofType(SubjectActions.UPDATE_SUBJECT)
