@@ -33,19 +33,19 @@ export class EnrollmentApplicationTaskCreatorDialog implements OnInit {
     }
 
 
-  ngOnInit(): void {
-      this.createForm = this.formBuilder.group({
-      id: [null],
-      auditNo: ['N/A'],
-      sourceNo: ['N/A'],
-      description: ['', Validators.minLength(this.minLength)],
-      applicationType: [EnrollmentApplicationType.PRA, Validators.required],
-      admission: [<Admission>{},Validators.required],
-      academicSession: [<AcademicSession>{}, Validators.required],
-     
-    });
-  }
-  
+    ngOnInit(): void {
+        this.createForm = this.formBuilder.group( {
+            id: [null],
+            auditNo: ['N/A'],
+            sourceNo: ['N/A'],
+            description: ['', Validators.minLength( this.minLength )],
+            applicationType: [EnrollmentApplicationType.PRA, Validators.required],
+            admission: [<Admission>{}, Validators.required],
+            academicSession: [<AcademicSession>{}, Validators.required],
+
+        } );
+    }
+
     save( enrollmentApplication: EnrollmentApplication, isValid: boolean ): void {
 
         this._academicSession = enrollmentApplication.academicSession;
@@ -55,7 +55,7 @@ export class EnrollmentApplicationTaskCreatorDialog implements OnInit {
         console.log( "admission: " + enrollmentApplication.admission.id )
         console.log( "academicSession: " + enrollmentApplication.academicSession.id )
         console.log( JSON.stringify( enrollmentApplication ) );
-        this.store.dispatch( this.actions.startEnrollmentApplicationTask(enrollmentApplication));
+        this.store.dispatch( this.actions.startEnrollmentApplicationTask( enrollmentApplication ) );
         this.dialog.close();
     }
 }
