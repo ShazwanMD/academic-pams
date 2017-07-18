@@ -45,8 +45,7 @@ public List<AdSubject> find(AdCurriculum curriculum) {
     Session session = sessionFactory.getCurrentSession();
     Query query = session.createQuery("select s from AdSubject s where " +
             "s.curriculum = :curriculum " +
-            "and s.metadata.state = :state " +
-            "order by s.course.code asc");
+            "and s.metadata.state = :state");
     query.setInteger("state", AdMetaState.ACTIVE.ordinal());
     query.setEntity("curriculum", curriculum);
     query.setCacheable(true);

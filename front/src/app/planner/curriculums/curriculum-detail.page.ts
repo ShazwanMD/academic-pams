@@ -19,6 +19,7 @@ import {Subject} from './subject.interface';
 })
 
 export class CurriculumDetailPage implements OnInit {
+
   private CURRICULUM: string[] = 'plannerModuleState.curriculum'.split('.');
   private SUBJECTS: string[] = 'plannerModuleState.subjects'.split('.');
   private curriculum$: Observable<Curriculum>;

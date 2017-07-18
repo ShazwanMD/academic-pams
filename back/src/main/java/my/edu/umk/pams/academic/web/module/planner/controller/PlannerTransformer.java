@@ -26,7 +26,7 @@ public class PlannerTransformer {
 
     @Autowired
     private PlannerTransformer plannerTransformer;
-    
+
     @Autowired
     private TermTransformer termTransformer;
 
@@ -42,9 +42,9 @@ public class PlannerTransformer {
 //        vo.setYear(plannerTransformer.toAcademicYearVo(academicSession.getYear()));
         return vo;
     }
-    
+
     public AcademicYear toAcademicYearVo(AdAcademicYear academicYear) {
-    	AcademicYear vo = new AcademicYear();
+        AcademicYear vo = new AcademicYear();
         vo.setId(academicYear.getId());
         vo.setCode(academicYear.getCode());
         vo.setDescription(academicYear.getDescription());
@@ -68,9 +68,10 @@ public class PlannerTransformer {
         vo.setDescription(faculty.getDescription());
         vo.setPrefix(faculty.getPrefix());
         vo.setStatus(FacultyStatus.get(faculty.getStatus().ordinal()));
-        
+
         return vo;
     }
+
     public Program toProgramVo(AdProgram program) {
         Program vo = new Program();
         vo.setId(program.getId());
@@ -84,13 +85,13 @@ public class PlannerTransformer {
     }
 
     public ProgramLevel toProgramLevelVo(AdProgramLevel level) {
-    	ProgramLevel vo = new ProgramLevel();
-		vo.setId(level.getId());
+        ProgramLevel vo = new ProgramLevel();
+        vo.setId(level.getId());
         vo.setCode(level.getCode());
         vo.setDescription(level.getDescription());
         vo.setPrefix(level.getPrefix());
-		return vo;
-	}
+        return vo;
+    }
 
     public Course toCourseVo(AdCourse course) {
         Course vo = new Course();
@@ -99,7 +100,7 @@ public class PlannerTransformer {
         vo.setCode(course.getCode());
         vo.setCredit(course.getCredit());
         vo.setTitleMs(course.getTitleMs());
-        vo.setTitleEn(course.getTitleEn());     
+        vo.setTitleEn(course.getTitleEn());
         vo.setFaculty(plannerTransformer.toFacultyVo(course.getFaculty()));
         vo.setStatus(CourseStatus.get(course.getStatus().ordinal()));
         return vo;
@@ -108,7 +109,7 @@ public class PlannerTransformer {
     /*public List<Curriculum> toCurriculumVos(List<AdCurriculum> curriculums) {
         return curriculums.stream().map(this::toCurriculumVo).collect(toList());
     }*/
-    
+
     public List<Curriculum> toCurriculumVos(List<AdCurriculum> curriculums) {
         List<Curriculum> vos = curriculums.stream()
                 .map((curriculum) -> toCurriculumVo(curriculum))
@@ -116,7 +117,7 @@ public class PlannerTransformer {
         return vos;
     }
 
-	public Curriculum toCurriculumVo(AdCurriculum e) {
+    public Curriculum toCurriculumVo(AdCurriculum e) {
         Curriculum vo = new Curriculum();
         vo.setCode(e.getCode());
         vo.setCoreCredit(e.getCoreCredit());
@@ -136,18 +137,18 @@ public class PlannerTransformer {
     }
 
     public List<Subject> toSubjectVos(List<AdSubject> subjects) {
-		List<Subject> vos = subjects.stream()
+        List<Subject> vos = subjects.stream()
                 .map((subject) -> toSubjectVo(subject))
                 .collect(toList());
-		return vos;
-	}
-    
-	public Subject toSubjectVo(AdSubject subject) {
+        return vos;
+    }
+
+    public Subject toSubjectVo(AdSubject subject) {
         Subject vo = null;
-        if(subject instanceof AdSingleSubject) {
+        if (subject instanceof AdSingleSubject) {
             vo = new SingleSubject();
             ((SingleSubject) vo).setCourse(toCourseVo(((AdSingleSubject) subject).getCourse()));
-        }else if(subject instanceof AdBundleSubject){
+        } else if (subject instanceof AdBundleSubject) {
             vo = new BundleSubject();
             List<AdBundleSubjectPart> parts = ((AdBundleSubject) subject).getParts();
             for (AdBundleSubjectPart part : parts) {
@@ -156,11 +157,12 @@ public class PlannerTransformer {
                 ((BundleSubject) vo).addPart(partVo);
             }
         }
-		vo.setId(subject.getId());
-		vo.setOrdinal(subject.getOrdinal());
-		vo.setSubjectType(SubjectType.get(subject.getSubjectType().ordinal()));
-		return vo;
-	}
+        vo.setId(subject.getId());
+        vo.setOrdinal(subject.getOrdinal());
+        vo.setSubjectType(SubjectType.get(subject.getSubjectType().ordinal()));
+        return vo;
+    }
+
     public Cohort toCohortVo(AdCohort e) {
         Cohort vo = new Cohort();
         vo.setId(e.getId());
@@ -172,20 +174,21 @@ public class PlannerTransformer {
         vo.setClassification(AcademicClassification.get(e.getClassification().ordinal()));
         return vo;
     }
-	public List<Cohort> toCohortVos(List<AdCohort> cohorts) {
+
+    public List<Cohort> toCohortVos(List<AdCohort> cohorts) {
         List<Cohort> vos = cohorts.stream()
                 .map((cohort) -> toCohortVo(cohort))
                 .collect(toList());
         return vos;
     }
 
-	  public List<ProgramLevel> toProgramLevelVos(List<AdProgramLevel> programLevels) {
-	        List<ProgramLevel> vos = programLevels.stream()
-	        .map((programLevel) -> toProgramLevelVo(programLevel))
-	        .collect(toList());
-	        return vos;
-	    }
-	
+    public List<ProgramLevel> toProgramLevelVos(List<AdProgramLevel> programLevels) {
+        List<ProgramLevel> vos = programLevels.stream()
+                .map((programLevel) -> toProgramLevelVo(programLevel))
+                .collect(toList());
+        return vos;
+    }
+
     public List<StudyCenter> toStudyCenterVos(List<AdStudyCenter> studyCenters) {
         List<StudyCenter> vos = studyCenters.stream()
                 .map((studyCenter) -> toStudyCenterVo(studyCenter))
@@ -199,7 +202,7 @@ public class PlannerTransformer {
                 .collect(toList());
         return vos;
     }
-    
+
     public List<AcademicYear> toAcademicYearVos(List<AdAcademicYear> academicYears) {
         List<AcademicYear> vos = academicYears.stream()
                 .map((academicYear) -> toAcademicYearVo(academicYear))

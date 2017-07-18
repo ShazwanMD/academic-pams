@@ -46,10 +46,10 @@ public class PlannerServiceImpl implements PlannerService {
 
     @Autowired
     private AdFacultyDao facultyDao;
-    
+
     @Autowired
     private AdSubjectDao subjectDao;
-    
+
     @Autowired
     private AdProgramLevelDao programLevelDao;
 
@@ -79,7 +79,7 @@ public class PlannerServiceImpl implements PlannerService {
 
     @Autowired
     private TermService termService;
-    
+
     @Autowired
     private SecurityService securityService;
 
@@ -153,63 +153,62 @@ public class PlannerServiceImpl implements PlannerService {
         sessionFactory.getCurrentSession().flush();
     }
 
-    public void calculateGpa(AdAdmission admission){
-        LOG.debug("admission:{}",admission.getCohort().getCode());
-    		
+    public void calculateGpa(AdAdmission admission) {
+        LOG.debug("admission:{}", admission.getCohort().getCode());
+
         List<AdEnrollment> enrollments = termService.findEnrollments(admission);
         BigDecimal totalCreditHoursPerSemester = BigDecimal.ZERO;
         BigDecimal totalGradePointHoursPerSemester = BigDecimal.ZERO;
         BigDecimal totalCreditHoursPerStudent = BigDecimal.ZERO;
         BigDecimal totalGradePointHoursPerStudent = BigDecimal.ZERO;
         for (AdEnrollment enrollment : enrollments) {
-            LOG.debug("Enrollment:{}",enrollment.getGradeCode());
+            LOG.debug("Enrollment:{}", enrollment.getGradeCode());
             //Offering
             AdOffering offering = enrollment.getSection().getOffering();
-            LOG.debug("offering:{}",offering.getCanonicalCode());
-    			
+            LOG.debug("offering:{}", offering.getCanonicalCode());
+
             //Course
             AdCourse course = offering.getCourse();
-            LOG.debug("Course:{}",course);
-    			
+            LOG.debug("Course:{}", course);
+
             //CreditHour
             Integer credit = course.getCredit();
-            LOG.debug("credit:{}",credit);
-    			
+            LOG.debug("credit:{}", credit);
+
             BigDecimal creditHour = new BigDecimal(credit);
-            LOG.debug("CreditHour:{}",creditHour);
-    			
+            LOG.debug("CreditHour:{}", creditHour);
+
             AdGradeCode gradeCode = enrollment.getGradeCode();
             LOG.debug("gradeCode:{}", gradeCode.getCode());
-    			
+
             BigDecimal gradePoint = gradeCode.getPoint();
-    			
+
             BigDecimal gradePointHoursPerCourse = gradePoint.multiply(creditHour);
-            
+
             //GPA
             totalGradePointHoursPerSemester = totalGradePointHoursPerSemester.add(gradePointHoursPerCourse);
-            LOG.debug("totalGradePointHoursPerSemester:{}",totalGradePointHoursPerSemester);
-            
-            totalCreditHoursPerSemester = totalCreditHoursPerSemester.add(creditHour);
-            LOG.debug("totalCreditHoursPerSemester:{}",totalCreditHoursPerSemester);
-            
+            LOG.debug("totalGradePointHoursPerSemester:{}", totalGradePointHoursPerSemester);
 
-              
+            totalCreditHoursPerSemester = totalCreditHoursPerSemester.add(creditHour);
+            LOG.debug("totalCreditHoursPerSemester:{}", totalCreditHoursPerSemester);
+
+
         }
         //CGPA
         totalGradePointHoursPerStudent = totalGradePointHoursPerStudent.add(totalGradePointHoursPerSemester);
-        LOG.debug("totalGradePointHoursPerStudent:{}",totalGradePointHoursPerStudent);
-        
+        LOG.debug("totalGradePointHoursPerStudent:{}", totalGradePointHoursPerStudent);
+
         totalCreditHoursPerStudent = totalCreditHoursPerStudent.add(totalCreditHoursPerSemester);
-        LOG.debug("totalCreditHoursPerStudent:{}",totalCreditHoursPerStudent);
-        
+        LOG.debug("totalCreditHoursPerStudent:{}", totalCreditHoursPerStudent);
+
         BigDecimal gpa = totalGradePointHoursPerSemester.divide(totalCreditHoursPerSemester).setScale(2, RoundingMode.HALF_UP);
-        LOG.debug("GPA:{}",gpa);
-        BigDecimal cgpa = totalGradePointHoursPerStudent.divide(totalCreditHoursPerStudent,2, RoundingMode.HALF_UP).setScale(2, RoundingMode.HALF_UP);
-        LOG.debug("CGPA:{}",cgpa);
+        LOG.debug("GPA:{}", gpa);
+        BigDecimal cgpa = totalGradePointHoursPerStudent.divide(totalCreditHoursPerStudent, 2, RoundingMode.HALF_UP).setScale(2, RoundingMode.HALF_UP);
+        LOG.debug("CGPA:{}", cgpa);
         admission.setGpa(gpa);
         admission.setCgpa(cgpa);
         termService.updateAdmission(admission);
-  
+
     }
 
     //====================================================================================================
@@ -230,21 +229,22 @@ public class PlannerServiceImpl implements PlannerService {
     public AdSubject findSubjectById(Long id) {
         return curriculumDao.findSubjectById(id);
     }
-    
-    
+
+
     @Override
     public AdSubject findSubjects() {
         return curriculumDao.findSubjects();
     }
-    
-    @Override
-    public AdSubject findSubjectsByCurriculum(AdCurriculum curriculum) {
-        return curriculumDao.findSubjectsByCurriculum(curriculum);
-    }
+
 
     @Override
     public AdSubject findSubjectByCurriculumAndCourse(AdCurriculum curriculum, AdCourse course) {
         return curriculumDao.findSubjectById(0L); // todo: dummy
+    }
+
+    @Override
+    public AdSubject findSubject(AdCurriculum curriculum, AdSubjectType subjectType, Integer ordinal) {
+        return curriculumDao.findSubject(curriculum, subjectType, ordinal);
     }
 
     @Override
@@ -271,7 +271,7 @@ public class PlannerServiceImpl implements PlannerService {
     public List<AdSubject> findSubjects(AdCurriculum curriculum) {
         return subjectDao.find(curriculum);
     }
-    
+
     @Override
     public List<AdSubject> findSubjects(String filter, AdCurriculum curriculum) {
         return null;
@@ -329,9 +329,10 @@ public class PlannerServiceImpl implements PlannerService {
         curriculumDao.remove(curriculum, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
+
     @Override
-    public void addSubject( AdCurriculum curriculum,AdSubject subject) {
-        curriculumDao.addSubject(curriculum,subject, securityService.getCurrentUser());
+    public void addSubject(AdCurriculum curriculum, AdSubject subject) {
+        curriculumDao.addSubject(curriculum, subject, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 

@@ -24,7 +24,7 @@ public interface AdCurriculumDao extends GenericDao<Long, AdCurriculum> {
     
     AdSubject findSubjects();
     
-    AdSubject findSubjectsByCurriculum(AdCurriculum curriculum);
+    AdSubject findSubject(AdCurriculum curriculum, AdSubjectType subjectType, Integer ordinal);
 
     List<AdCurriculum> find(String filter, Integer offset, Integer limit);
 

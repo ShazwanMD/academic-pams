@@ -56,9 +56,9 @@ public interface PlannerService {
     
     AdSubject findSubjects();
     
-    AdSubject findSubjectsByCurriculum(AdCurriculum curriculum);
-
     AdSubject findSubjectByCurriculumAndCourse(AdCurriculum curriculum, AdCourse course);
+
+    AdSubject findSubject(AdCurriculum curriculum, AdSubjectType subjectType, Integer ordinal);
 
     List<AdCurriculum> findCurriculums(Integer offset, Integer limit);
 

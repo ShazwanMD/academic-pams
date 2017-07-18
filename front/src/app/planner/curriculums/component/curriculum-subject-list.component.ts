@@ -1,7 +1,8 @@
 import {SubjectCreatorDialog} from '../../subjects/dialog/subject-creator.dialog';
 import {CurriculumActions} from '../curriculum.action';
-
-import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, ViewContainerRef, OnInit} from '@angular/core';
+import {
+  Component, Input, ChangeDetectionStrategy, OnInit, Output, EventEmitter, ViewContainerRef,
+} from '@angular/core';
 import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Store} from '@ngrx/store';
@@ -21,7 +22,8 @@ export class CurriculumSubjectListComponent implements OnInit {
   private columns: any[] = [
     {name: 'id', label: 'Id'},
     {name: 'ordinal', label: 'Ordinal'},
-    {name: 'course', label: 'course'},
+    {name: 'course.code', label: 'Course'},
+    {name: 'parts', label: 'Parts'},
     {name: 'action', label: ''},
   ];
 
@@ -53,7 +55,7 @@ export class CurriculumSubjectListComponent implements OnInit {
 
   editDialog(subject: Subject, isValid: boolean): void {
     console.log('Subject:{}', subject);
-    let config = new MdDialogConfig();
+    let config: MdDialogConfig = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
     config.role = 'dialog';
     config.width = '60%';
@@ -73,7 +75,7 @@ export class CurriculumSubjectListComponent implements OnInit {
 
   addSubjectDialog(): void {
     console.log('showDialog');
-    let config = new MdDialogConfig();
+    let config: MdDialogConfig = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
     config.role = 'dialog';
     config.width = '50%';

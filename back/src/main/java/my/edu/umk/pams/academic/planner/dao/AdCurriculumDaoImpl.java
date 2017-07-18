@@ -5,6 +5,7 @@ import my.edu.umk.pams.academic.core.AdMetadata;
 import my.edu.umk.pams.academic.core.GenericDaoSupport;
 import my.edu.umk.pams.academic.identity.model.AdUser;
 import my.edu.umk.pams.academic.planner.model.*;
+
 import org.apache.commons.lang.Validate;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -57,22 +58,28 @@ public class AdCurriculumDaoImpl extends GenericDaoSupport<Long, AdCurriculum> i
         Session session = sessionFactory.getCurrentSession();
         return (AdSubject) session.get(AdSubjectImpl.class, id);
     }
-    
+
     @Override
     public AdSubject findSubjects() {
         Session session = sessionFactory.getCurrentSession();
         return (AdSubject) session.get(AdSubjectImpl.class, session);
-        
+
     }
 
     @Override
-    public List<AdCurriculum> find(Integer offset, Integer limit) {
+    public AdSubject findSubject(AdCurriculum curriculum, AdSubjectType subjectType, Integer ordinal) {
         Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery("select s from AdCurriculum s where " +
-                "s.metadata.state = :state");
-        query.setCacheable(true);
+        Query query = session.createQuery("select s from AdSubject s where " +
+                "s.curriculum = :curriculum " +
+                "and s.subjectType = :subjectType " +
+                "and s.ordinal = :ordinal " +
+                "and s.metadata.state = :state");
+        query.setEntity("curriculum", curriculum);
+        query.setInteger("subjectType", subjectType.ordinal());
+        query.setInteger("ordinal", ordinal);
         query.setInteger("state", AdMetaState.ACTIVE.ordinal());
-        return query.list();
+        query.setCacheable(true);
+        return (AdSubject) query.uniqueResult();
     }
 
     @Override
@@ -128,19 +135,6 @@ public class AdCurriculumDaoImpl extends GenericDaoSupport<Long, AdCurriculum> i
         query.setEntity("curriculum", curriculum);
         query.setCacheable(true);
         return (List<AdSubject>) query.list();
-    }
-    
-    @Override
-    public AdSubject findSubjectsByCurriculum(AdCurriculum curriculum) {
-        Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery("select s from AdSubject s where " +
-                "s.curriculum = :curriculum " +
-                "and s.metadata.state = :state " +
-                "order by s.course.code asc");
-        query.setInteger("state", AdMetaState.ACTIVE.ordinal());
-        query.setEntity("curriculum", curriculum);
-        query.setCacheable(true);
-        return (AdSubject) query.list();
     }
 
     @Override
@@ -286,10 +280,7 @@ public class AdCurriculumDaoImpl extends GenericDaoSupport<Long, AdCurriculum> i
         metadata.setCreatedDate(new Timestamp(System.currentTimeMillis()));
         metadata.setCreatorId(user.getId());
         metadata.setState(AdMetaState.ACTIVE);
-        subject.setMetadata(metadata);
-       // LOG.debug("GOING INTO SUBJECT PART");
-       // System.out.print(part.getCourse().getCode());
-        session.save(subject);
+        part.setMetadata(metadata);
         session.save(part);
     }
 
@@ -300,6 +291,5 @@ public class AdCurriculumDaoImpl extends GenericDaoSupport<Long, AdCurriculum> i
         session.delete(part);
     }
 
-	
 
 }
