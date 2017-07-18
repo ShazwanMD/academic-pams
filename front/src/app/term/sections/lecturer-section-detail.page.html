@@ -14,6 +14,10 @@
           [section]="section$ | async"
           [enrollments]="enrollments$ | async">
         </pams-student-section-enrollment-list>
+         <pams-section-gradebook-list
+          [section]="section$ | async"
+          [gradebooks]="gradebooks$ | async">
+        </pams-section-gradebook-list>
       </div>
 
       <div flex-gt-md="30">

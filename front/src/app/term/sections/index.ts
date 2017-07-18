@@ -19,6 +19,7 @@ import {SectionEnrollmentListComponent} from "./component/section-enrollment-lis
 import {StudentSectionEnrollmentListComponent} from "./component/student-section-enrollment-list.component";
 import {SectionAppointmentListComponent} from "./component/section-appointment-list.component";
 import {StudentSectionAppointmentListComponent} from "./component/student-section-appointment-list.component";
+import {SectionGradebookListComponent} from "./component/section-gradebook-list.component";
 import {SectionSelectComponent} from "./component/section-select.component";
 import {SectionEditorDialog} from "./dialog/section-editor.dialog";
 import {SectionActionComponent} from "./component/section-action.component";
@@ -37,6 +38,7 @@ import { LecturerSectionDetailPage } from "./lecturer-section-detail.page";
     SectionDetailPage,
     StudentSectionDetailPage,
     LecturerSectionDetailPage,
+    
 
     // component
     SectionListComponent,
@@ -46,6 +48,7 @@ import { LecturerSectionDetailPage } from "./lecturer-section-detail.page";
     StudentSectionEnrollmentListComponent,
     SectionAppointmentListComponent,
     StudentSectionAppointmentListComponent,
+    SectionGradebookListComponent,
     SectionActionComponent,
     
 
@@ -61,6 +64,7 @@ import { LecturerSectionDetailPage } from "./lecturer-section-detail.page";
     StudentSectionEnrollmentListComponent,
     SectionAppointmentListComponent,
     StudentSectionAppointmentListComponent,
+    SectionGradebookListComponent,
     SectionEditorDialog,
   ],
   entryComponents: [

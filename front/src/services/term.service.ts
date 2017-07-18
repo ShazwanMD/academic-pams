@@ -19,6 +19,7 @@ import {AdmissionApplicationTask} from '../app/term/admission-applications/admis
 import {Appointment} from '../app/term/appointments/appointment.interface';
 import {Section} from '../app/term/sections/section.interface';
 import {GradebookMatrix} from '../app/term/offerings/gradebook-matrix.interface';
+import { Gradebook } from "../app/term/gradebooks/gradebook.interface";
 
 @Injectable()
 export class TermService {
@@ -320,6 +321,16 @@ export class TermService {
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
+  //==================================================================================================== //
+  // GRADEBOOK
+  // ==================================================================================================== //
+
+  findGradebookById(id: number): Observable<Gradebook[]> {
+      console.log('findGradebookById');
+      return this._http.get(this.TERM_API + '/gradebooks/' + id)
+        .map((res: Response) => <Gradebook[]>res.json());
+    }
+  
   // ==================================================================================================== //
   // APPOINTMENT
   // ==================================================================================================== //
@@ -363,6 +374,13 @@ export class TermService {
     console.log('findEnrollmentsBySection');
     return this._http.get(this.TERM_API + '/sections/' + section.canonicalCode + '/enrollments')
       .map((res: Response) => <Enrollment[]>res.json());
+  }
+  
+  //find gradebooks by section
+  findGradebooksBySection(section: Section): Observable<Gradebook[]> {
+    console.log('findGradebooksBySection');
+    return this._http.get(this.TERM_API + '/sections/' + section.canonicalCode + '/gradebooks')
+      .map((res: Response) => <Gradebook[]>res.json());
   }
 
   //find appointments by section

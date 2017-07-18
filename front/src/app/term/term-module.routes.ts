@@ -7,6 +7,7 @@ import {AppointmentRoutes} from "./appointments/appointment.routes";
 import {EnrollmentApplicationRoutes} from "./enrollment-applications/enrollment-application.routes";
 import {AdmissionApplicationRoutes} from "./admission-applications/admission-application.routes";
 import {EnrollmentRoutes} from "./enrollments/enrollment.routes";
+import {GradebookRoutes} from "./gradebooks/gradebook.routes";
 import {AssessmentRoutes} from './assessments/assessment.routes';
 import {SectionRoutes} from "./sections/section.routes";
 
@@ -16,6 +17,7 @@ export const TermModuleRoutes: Routes = [
   ...OfferingRoutes,
   ...EnrollmentApplicationRoutes,
   ...EnrollmentRoutes,
+  ...GradebookRoutes,
   ...AdmissionRoutes,
   ...AdmissionApplicationRoutes,
   ...AppointmentRoutes,
