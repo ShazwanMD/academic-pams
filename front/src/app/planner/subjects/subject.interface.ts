@@ -4,6 +4,7 @@ import {Faculty} from "../faculties/faculty.interface";
 import {MetaObject} from "../../core/meta-object.interface";
 export interface Subject extends MetaObject{
   id: null;
+  ordinal: number,
   subjectType: SubjectType;
   curriculum?:Curriculum;
 
