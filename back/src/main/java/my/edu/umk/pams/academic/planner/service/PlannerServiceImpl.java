@@ -192,24 +192,20 @@ public class PlannerServiceImpl implements PlannerService {
             totalCreditHoursPerSemester = totalCreditHoursPerSemester.add(creditHour);
             LOG.debug("totalCreditHoursPerSemester:{}",totalCreditHoursPerSemester);
             
-//            
-//            //CGPA
-//            totalGradePointHoursPerStudent = totalGradePointHoursPerStudent.add(totalGradePointHoursPerSemester);
-//            LOG.debug("totalGradePointHoursPerStudent:{}",totalGradePointHoursPerStudent);
-//            
-//            totalCreditHoursPerStudent = totalCreditHoursPerStudent.add(totalCreditHoursPerSemester);
-//            LOG.debug("totalCreditHoursPerStudent:{}",totalCreditHoursPerStudent);
+
               
         }
-        
         //CGPA
         totalGradePointHoursPerStudent = totalGradePointHoursPerStudent.add(totalGradePointHoursPerSemester);
         LOG.debug("totalGradePointHoursPerStudent:{}",totalGradePointHoursPerStudent);
         
         totalCreditHoursPerStudent = totalCreditHoursPerStudent.add(totalCreditHoursPerSemester);
         LOG.debug("totalCreditHoursPerStudent:{}",totalCreditHoursPerStudent);
+        
         BigDecimal gpa = totalGradePointHoursPerSemester.divide(totalCreditHoursPerSemester).setScale(2, RoundingMode.HALF_UP);
+        LOG.debug("GPA:{}",gpa);
         BigDecimal cgpa = totalGradePointHoursPerStudent.divide(totalCreditHoursPerStudent,2, RoundingMode.HALF_UP).setScale(2, RoundingMode.HALF_UP);
+        LOG.debug("CGPA:{}",cgpa);
         admission.setGpa(gpa);
         admission.setCgpa(cgpa);
         termService.updateAdmission(admission);

@@ -14,6 +14,7 @@ import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.SpringScenarioTest;
 
 import my.edu.umk.pams.academic.assessment.stage.ThenExamVivaSetup;
+import my.edu.umk.pams.academic.assessment.stage.WhenEnrollSem2;
 import my.edu.umk.pams.academic.assessment.stage.WhenUpdateGradeBook;
 import my.edu.umk.pams.academic.assessment.stage.GivenAnEnrollment;
 import my.edu.umk.pams.academic.assessment.stage.WhenIAmSetupExamViva;
@@ -31,18 +32,34 @@ public class US_AD_ASMT_2001 extends SpringScenarioTest<GivenIAmAcademicStaff, W
 	@ProvidedScenarioState
 	private static String staffNo = "01001A";
 	
+	@ProvidedScenarioState
+	private static String academicSession2 = "201720182";
+	
+	@ProvidedScenarioState
+	private static String academicSessionCode = "201720181";
+	
 	@Test
 	@Rollback
-	public void scenarioEXAM() throws Exception{
-		given().i_am_a_staff_in_current_academic_session();
+	public void scenarioExamSem1() throws Exception{
+		given().i_am_a_staff_in_$_academic_session(academicSessionCode);
 		
-//		addStage(WhenSetupGradeCode.class).setup_gradeCode();
+
 		addStage(GivenAnEnrollment.class).create_enrollment();
 		
 		when().i_setup_assessments();	
-//		
+		
 		addStage(WhenUpdateGradeBook.class).update_gradeBook();
-		then().exam_setup();
+
+		
+
+		given().i_am_a_staff_in_$_academic_session(academicSession2);
+		
+		addStage(WhenEnrollSem2.class).enrollSem2();
+		
+		when().i_setup_assessments_Sem2();	
+		
+		addStage(WhenUpdateGradeBook.class).update_gradeBook_Sem2();
+//		then().exam_setup();
 		
 	}
 }

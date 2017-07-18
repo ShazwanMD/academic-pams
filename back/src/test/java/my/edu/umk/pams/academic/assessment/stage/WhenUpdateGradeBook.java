@@ -109,16 +109,63 @@ public class WhenUpdateGradeBook extends Stage<WhenUpdateGradeBook> {
 		//CalculateGPA
 		plannerService.calculateGpa(admission);
 		LOG.debug("GPA:{}", admission.getGpa());
+		LOG.debug("CGPA:{}", admission.getCgpa());
 
 		BigDecimal expectedGpa = new BigDecimal("2.00");
 		BigDecimal actualGpa = admission.getGpa();
 		Assert.isTrue(expectedGpa.equals(actualGpa), "Expected gpa " + expectedGpa + "found " + actualGpa);
 		return self();
 	}
+	
+	public WhenUpdateGradeBook update_gradeBook_Sem2() {
+		Assert.notNull(assessment, "Assessment cannot be null");
+		Assert.notNull(enrollment, "Enrollment cannot be null");
+		Assert.notNull(section, "Section cannot be null");
+
+		//Setup 2 gradebooks for each assessment
+		createGradebookSem2("MASTER-MBA-GST5063-201720182-Q1");
+		createGradebookSem2("MASTER-MBA-GST5063-201720182-Q2");
+
+		termService.calculateGradebook(offering);
+		LOG.debug("Enrollment_Total_Score:{}",enrollment.getTotalScore());
+		
+		AdGradeCode gradeCode = commonService.findByScore(enrollment.getTotalScore());
+		LOG.debug("findByScore:{}", gradeCode.getCode());
+		Assert.notNull(gradeCode, "gradeCode cannot be null");
+
+		//Set GradeCode
+		enrollment.setGradeCode(gradeCode);
+		termService.updateEnrollment(enrollment);
+		LOG.debug("gradeCode_IN_Enrollment_Table:{}",enrollment.getGradeCode().getCode());
+		Assert.isTrue(enrollment.getGradeCode().equals(gradeCode), "gradeCode cannot be different");
+
+		//CalculateGPA
+		plannerService.calculateGpa(admission);
+		LOG.debug("GPA:{}", admission.getGpa());
+		LOG.debug("CGPA:{}", admission.getCgpa());
+//
+//		BigDecimal expectedGpa = new BigDecimal("2.00");
+//		BigDecimal actualGpa = admission.getGpa();
+//		Assert.isTrue(expectedGpa.equals(actualGpa), "Expected gpa " + expectedGpa + "found " + actualGpa);
+		return self();
+	}
 
 	private void createGradebook(String assessmentCode) {
 		AdGradebook gradebook = new AdGradebookImpl();
 		gradebook.setScore(new BigDecimal(BigInteger.valueOf(50)));
+		gradebook.setAssessment(termService.findAssessmentByCanonicalCode(assessmentCode));
+		gradebook.setEnrollment(enrollment);
+		gradebook.setSection(section);
+		termService.addGradebook(section, enrollment, gradebook);
+		LOG.debug("gradebook Assessment:{}", gradebook.getAssessment().getCanonicalCode());
+		LOG.debug("gradebook Enrollee:{}", gradebook.getEnrollment().getAdmission().getStudent().getName());
+		LOG.debug("gradebook Score:{}", gradebook.getScore());
+		Assert.notNull(gradebook, "gradebook cannot be null");
+	}
+	
+	private void createGradebookSem2(String assessmentCode) {
+		AdGradebook gradebook = new AdGradebookImpl();
+		gradebook.setScore(new BigDecimal(BigInteger.valueOf(80)));
 		gradebook.setAssessment(termService.findAssessmentByCanonicalCode(assessmentCode));
 		gradebook.setEnrollment(enrollment);
 		gradebook.setSection(section);
