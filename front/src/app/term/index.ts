@@ -22,6 +22,7 @@ import {EnrollmentSubModule} from './enrollments/index';
 import {GradebookSubModule} from './gradebooks/index';
 import {offeringReducer, OfferingState} from './offerings/offering.reducer';
 import {enrollmentReducer, EnrollmentState} from './enrollments/enrollment.reducer';
+import {gradebookReducer, GradebookState} from './gradebooks/gradebook.reducer';
 import {offeringListReducer, OfferingListState} from './offerings/offering-list.reducer';
 import {Offering} from './offerings/offering.interface';
 import {EnrollmentApplication} from './enrollment-applications/enrollment-application.interface';
@@ -64,6 +65,7 @@ import {gradebookMatrixListReducer, GradebookMatrixListState} from './offerings/
 import {GradebookMatrix} from './offerings/gradebook-matrix.interface';
 import {appointmentListReducer, AppointmentListState} from './sections/appointment-list.reducer';
 import {enrollmentListReducer, EnrollmentListState} from './sections/enrollment-list.reducer';
+import {gradebookListReducer, GradebookListState} from './sections/gradebook-list.reducer';
 import {sectionListReducer, SectionListState} from './sections/section-list.reducer';
 import {EnrollmentApplicationItem} from './enrollment-applications/enrollment-application-item.interface';
 import {
@@ -110,6 +112,9 @@ export interface TermModuleState {
   assessment: AssessmentState;
   enrollments: EnrollmentListState;
   enrollment: EnrollmentState;
+
+  gradebooks: GradebookListState;
+  gradebook: GradebookState;
 
   appointments: AppointmentListState;
   appointment: AppointmentState;

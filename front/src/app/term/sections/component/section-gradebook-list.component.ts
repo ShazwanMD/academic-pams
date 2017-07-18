@@ -9,6 +9,7 @@ import { MdDialog, MdDialogConfig, MdDialogRef } from "@angular/material";
 import { TermModuleState } from "../../index";
 import { EnrollmentEditorDialog } from "../../enrollments/dialog/enrollment-editor.dialog";
 import {Gradebook} from "../../gradebooks/gradebook.interface";
+import { GradebookActions } from "../../gradebooks/gradebook.action";
 
 
 @Component({
@@ -27,19 +28,16 @@ export class SectionGradebookListComponent implements OnInit {
     private selectedRows: Gradebook[];
 
     private columns: any[] = [
-        { name: 'id', label: 'Id' },
-        { name: 'admission.student.name', label: 'Student' },
-        { name: 'admission.student.email', label: 'Email' },
-        { name: 'enrollmentStatus', label: 'Status' },
-        { name: 'enrollmentStanding', label: 'Standing' },
-        { name: 'totalScore', label: 'TotalScore' },      
-        { name: 'gradeCode.code', label: 'Grade Code' },       
+        { name: 'assessment.description', label: 'Assessment' },
+        { name: 'score', label: 'Score' },
+        { name: 'enrollment.admission.student.name', label: 'Name' },
+           
         { name: 'action', label: '' }
     ];
 
     constructor(private router: Router,
         private route: ActivatedRoute,
-        private actions: EnrollmentActions,
+        private actions: GradebookActions,
         private store: Store<TermModuleState>,
         private vcf: ViewContainerRef,
         private dialog: MdDialog) {
@@ -52,10 +50,10 @@ export class SectionGradebookListComponent implements OnInit {
     filter(): void {
     }
 
-    selectRow(enrollment: Enrollment): void {
+    selectRow(gradebook: Gradebook): void {
     }
 
-    selectAllRows(enrollments: Enrollment[]): void {
+    selectAllRows(gradebooks: Gradebook[]): void {
     }
 
     //edit dialog
