@@ -24,7 +24,7 @@ export class SubjectListComponent implements AfterViewInit {
     {name: 'ordinal', label: 'Ordinal'},
     {name: 'subjectType', label: 'SubjectType'},
     {name: 'curriculum', label: 'Curriculum'},
-    // {name: 'action', label: ''}
+    {name: 'action', label: ''}
   ];
 
   filteredData: any[];
