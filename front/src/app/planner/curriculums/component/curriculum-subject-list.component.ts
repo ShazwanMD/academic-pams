@@ -1,7 +1,7 @@
 import {SubjectCreatorDialog} from '../../subjects/dialog/subject-creator.dialog';
 import {CurriculumActions} from '../curriculum.action';
 import {
-  Component, Input, ChangeDetectionStrategy, OnInit, Output, EventEmitter, ViewContainerRef,
+  Component, Input, ChangeDetectionStrategy, OnInit, Output, EventEmitter, SimpleChange, OnChanges, ViewContainerRef,
 } from '@angular/core';
 import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -16,7 +16,7 @@ import {Subject} from '../subject.interface';
   templateUrl: './curriculum-subject-list.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CurriculumSubjectListComponent implements OnInit {
+export class CurriculumSubjectListComponent implements OnInit, OnChanges {
 
   private creatorDialogRef: MdDialogRef<SubjectCreatorDialog>;
   private columns: any[] = [
@@ -41,6 +41,24 @@ export class CurriculumSubjectListComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  ngOnChanges(changes: { [propName: string]: SimpleChange }) {
+    if (changes['subjects'] && this.subjects) {
+      console.log('subject length:' + this.subjects.length);
+      this.subjects.forEach((s: Subject) => {
+        console.log('subject: ' + s.type);
+        console.log('subject: ' + s.ordinal);
+
+        if (s.type === 'single') {
+          console.log('single subject: ' + s.ordinal);
+        } else if (s.type === 'bundle') {
+          console.log('bundle subject: ' + s.ordinal);
+        } else {
+          console.log('subject');
+        }
+      });
+    }
   }
 
   filter(): void {
