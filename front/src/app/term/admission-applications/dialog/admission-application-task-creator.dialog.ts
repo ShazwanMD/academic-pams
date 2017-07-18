@@ -3,7 +3,7 @@ import {StudyCenter} from '../../../setup/study-centers/study-center.interface';
 import {Router, ActivatedRoute} from '@angular/router';
 import {Component, ViewContainerRef, OnInit} from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
-import {FormBuilder} from '@angular/forms';
+import {FormBuilder, Validators} from '@angular/forms';
 import {Store} from '@ngrx/store';
 import {MdDialogRef} from '@angular/material';
 import {AdmissionApplicationActions} from '../admission-application.action';
@@ -21,52 +21,39 @@ import {Student} from '../../../identity/student.interface';
 export class AdmissionApplicationTaskCreatorDialog implements OnInit {
 
   private createForm: FormGroup;
+  private _academicSession: AcademicSession;
+  private _student : Student;
   private create: boolean = false;
-  private _admissionApplication: AdmissionApplication;
 
   constructor(private formBuilder: FormBuilder,
               private store: Store<TermModuleState>,
               private actions: AdmissionApplicationActions,
               private router: Router,
               private route: ActivatedRoute,
-              private vcf: ViewContainerRef,
               private dialog: MdDialogRef<AdmissionApplicationTaskCreatorDialog>) {
   }
 
-  set admissionApplication(value: AdmissionApplication) {
-    this._admissionApplication = value;
-    this.create = true;
-  }
+//  set admissionApplication(value: AdmissionApplication) {
+//    this._admissionApplication = value;
+//    this.create = true;
+//  }
 
   ngOnInit(): void {
-    this.createForm = this.formBuilder.group(<AdmissionApplication>{
-      id: undefined,
-      referenceNo: '',
-      sourceNo: 'TBD',
-      auditNo: 'TBD',
-      description: '',
-      ordinal:0,
-      cancelComment: 'N/A',
-      removeComment: 'N/A',
-      actor: <Actor>{},
-      student: <Student>{},
-      academicSession: <AcademicSession>{},
-      program: <Program>{},
-      studyCenter: <StudyCenter>{},
+    this.createForm = this.formBuilder.group( {
+      id: [undefined],
+      semester: ['', Validators.required],
+      student: [<Student>{}, Validators.required],
+      academicSession: [<AcademicSession>{}, Validators.required],     
     });
-    if (this.create) this.createForm.patchValue(this._admissionApplication);
   }
 
-  save(admissionApplication: AdmissionApplication, isValid: boolean) {
-    console.log('referenceNo: ' + admissionApplication.referenceNo);
-    console.log('sourceNo: ' + admissionApplication.sourceNo);
-    console.log('auditNo: ' + admissionApplication.auditNo);
-    console.log('description: ' + admissionApplication.description);
+  save(admissionApplication: AdmissionApplication, isValid: boolean) : void {
+      
+      this._academicSession = admissionApplication.academicSession;
+      this._student= admissionApplication.student;
+
     console.log('academicSession: ' + admissionApplication.academicSession.id);
     console.log('student: ' + admissionApplication.student.id);
-    console.log('studyCenter: ' + admissionApplication.studyCenter.id);
-    console.log('program: ' + admissionApplication.program.id);
-    console.log('advisor: ' + admissionApplication.actor.id);
     console.log(JSON.stringify(admissionApplication));
 
     // setup description
