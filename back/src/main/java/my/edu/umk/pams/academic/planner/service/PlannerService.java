@@ -12,6 +12,7 @@ import java.util.List;
  */
 public interface PlannerService {
 
+	
     //====================================================================================================
     // ACADEMIC SESSIONs
     //====================================================================================================
@@ -91,7 +92,7 @@ public interface PlannerService {
 
     void removeCurriculum(AdCurriculum curriculum);
 
-    void addSubject(AdCurriculum curriculum,AdSubject subject);
+    void addSubject(AdCurriculum curriculum, AdSubject subject);
 
     void updateSubject(AdCurriculum curriculum, AdSubject subject);
 

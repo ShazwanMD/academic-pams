@@ -4,6 +4,7 @@ import {SectionAppointmentListState, sectionAppointmentListReducer} from './sect
 import {AdmissionApplication} from './admissions/admission-application.interface';
 import {AssessmentSubModule} from './assessments/index';
 import {AssessmentActions} from './assessments/assessment.action';
+import {GradebookActions} from './gradebooks/gradebook.action';
 import {Assessment} from './assessments/assessment.interface';
 import {Appointment} from './appointments/appointment.interface';
 import {NgModule, ModuleWithProviders} from '@angular/core';
@@ -18,12 +19,14 @@ import {TermPage} from './term.page';
 import {OfferingSubModule} from './offerings/index';
 import {OfferingActions} from './offerings/offering.action';
 import {EnrollmentSubModule} from './enrollments/index';
+import {GradebookSubModule} from './gradebooks/index';
 import {offeringReducer, OfferingState} from './offerings/offering.reducer';
 import {enrollmentReducer, EnrollmentState} from './enrollments/enrollment.reducer';
 import {offeringListReducer, OfferingListState} from './offerings/offering-list.reducer';
 import {Offering} from './offerings/offering.interface';
 import {EnrollmentApplication} from './enrollment-applications/enrollment-application.interface';
 import {Enrollment} from './enrollments/enrollment.interface';
+import {Gradebook} from './gradebooks/gradebook.interface';
 import {AdmissionActions} from './admissions/admission.action';
 import {AdmissionSubModule} from './admissions/index';
 import {Admission} from './admissions/admission.interface';
@@ -107,6 +110,7 @@ export interface TermModuleState {
   assessment: AssessmentState;
   enrollments: EnrollmentListState;
   enrollment: EnrollmentState;
+
   appointments: AppointmentListState;
   appointment: AppointmentState;
   // admission
@@ -139,6 +143,10 @@ export const INITIAL_TERM_STATE: TermModuleState = <TermModuleState>{
     assessment: <Assessment[]>[],
     enrollments: <Enrollment[]>[],
     enrollment: <Enrollment>{},
+    
+    gradebooks: <Gradebook[]>[],
+    gradebook: <Gradebook>{},
+    
     appointments: <Appointment[]>[],
     appointment: <Appointment>{},
     // admission
@@ -205,6 +213,7 @@ export const termModuleReducers = {
     AdmissionApplicationSubModule.forRoot(),
     EnrollmentApplicationSubModule.forRoot(),
     EnrollmentSubModule.forRoot(),
+    GradebookSubModule.forRoot(),
     AdmissionSubModule.forRoot(),
     AppointmentSubModule.forRoot(),
     SectionSubModule.forRoot(),
@@ -234,6 +243,7 @@ export class TermModule {
         SectionActions,
         OfferingActions,
         AssessmentActions,
+        GradebookActions,
 
       ],
     };

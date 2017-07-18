@@ -187,17 +187,23 @@ public class PlannerServiceImpl implements PlannerService {
             
             //GPA
             totalGradePointHoursPerSemester = totalGradePointHoursPerSemester.add(gradePointHoursPerCourse);
+            LOG.debug("totalGradePointHoursPerSemester:{}",totalGradePointHoursPerSemester);
+            
             totalCreditHoursPerSemester = totalCreditHoursPerSemester.add(creditHour);
+            LOG.debug("totalCreditHoursPerSemester:{}",totalCreditHoursPerSemester);
             
             //CGPA
             totalGradePointHoursPerStudent = totalGradePointHoursPerStudent.add(totalGradePointHoursPerSemester);
+            LOG.debug("totalGradePointHoursPerStudent:{}",totalGradePointHoursPerStudent);
+            
             totalCreditHoursPerStudent = totalCreditHoursPerStudent.add(totalCreditHoursPerSemester);
+            LOG.debug("totalCreditHoursPerStudent:{}",totalCreditHoursPerStudent);
               
         }
         BigDecimal gpa = totalGradePointHoursPerSemester.divide(totalCreditHoursPerSemester).setScale(2, RoundingMode.HALF_UP);
-        BigDecimal cgpa = totalGradePointHoursPerStudent.divide(totalCreditHoursPerStudent).setScale(2, RoundingMode.HALF_UP);
-        admission.setCgpa(cgpa);
+        BigDecimal cgpa = totalGradePointHoursPerStudent.divide(totalCreditHoursPerStudent,2, RoundingMode.HALF_UP).setScale(2, RoundingMode.HALF_UP);
         admission.setGpa(gpa);
+        admission.setCgpa(cgpa);
         termService.updateAdmission(admission);
   
     }
@@ -321,7 +327,7 @@ public class PlannerServiceImpl implements PlannerService {
     }
     @Override
     public void addSubject( AdCurriculum curriculum,AdSubject subject) {
-        curriculumDao.addSubject(curriculum, subject, securityService.getCurrentUser());
+        curriculumDao.addSubject(curriculum,subject, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 

@@ -13,16 +13,17 @@ import {EffectsModule} from "@ngrx/effects";
 import {SectionEffects} from "./section.effect";
 import {SectionDetailPage} from "./section-detail.page";
 import {StudentSectionDetailPage} from "./student-section-detail.page";
-import {LecturerSectionDetailPage} from "./lecturer-section-detail.page";
 import {SectionComponent} from "./component/section.component";
 import {SectionListComponent} from "./component/section-list.component";
 import {SectionEnrollmentListComponent} from "./component/section-enrollment-list.component";
 import {StudentSectionEnrollmentListComponent} from "./component/student-section-enrollment-list.component";
 import {SectionAppointmentListComponent} from "./component/section-appointment-list.component";
 import {StudentSectionAppointmentListComponent} from "./component/student-section-appointment-list.component";
+import {SectionGradebookListComponent} from "./component/section-gradebook-list.component";
 import {SectionSelectComponent} from "./component/section-select.component";
 import {SectionEditorDialog} from "./dialog/section-editor.dialog";
 import {SectionActionComponent} from "./component/section-action.component";
+import { LecturerSectionDetailPage } from "./lecturer-section-detail.page";
 
 @NgModule({
   imports: [
@@ -47,6 +48,7 @@ import {SectionActionComponent} from "./component/section-action.component";
     StudentSectionEnrollmentListComponent,
     SectionAppointmentListComponent,
     StudentSectionAppointmentListComponent,
+    SectionGradebookListComponent,
     SectionActionComponent,
     
 
@@ -62,6 +64,7 @@ import {SectionActionComponent} from "./component/section-action.component";
     StudentSectionEnrollmentListComponent,
     SectionAppointmentListComponent,
     StudentSectionAppointmentListComponent,
+    SectionGradebookListComponent,
     SectionEditorDialog,
   ],
   entryComponents: [

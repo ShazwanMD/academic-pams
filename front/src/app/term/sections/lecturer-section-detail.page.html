@@ -14,6 +14,10 @@
           [section]="section$ | async"
           [enrollments]="enrollments$ | async">
         </pams-student-section-enrollment-list>
+         <pams-section-gradebook-list
+          [section]="section$ | async"
+          [gradebooks]="gradebooks$ | async">
+        </pams-section-gradebook-list>
       </div>
 
       <div flex-gt-md="30">
@@ -22,7 +26,7 @@
           [section]="section$ | async">
         </pams-section-action> -->
         <md-card>
-          <md-card-title>Term Menu</md-card-title>
+          <md-card-title>Lecturer Term Menu</md-card-title>
           <md-card-subtitle>Actions
             available on current section
           </md-card-subtitle>
@@ -31,10 +35,11 @@
             flex dense>
             <md-list-item [routerLink]="['/term']">
               <md-icon md-list-avatar>email</md-icon>
-              <h4 md-line>Staff Center</h4>
-              <p md-line>Watch this center</p>
+              <h4 md-line>Homepage Registration</h4>
+              <p md-line>Watch this page</p>
             </md-list-item>
 
+          
           </md-nav-list>
         </md-card>
       </div>
