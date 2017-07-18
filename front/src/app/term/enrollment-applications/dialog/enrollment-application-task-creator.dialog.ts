@@ -22,7 +22,7 @@ export class EnrollmentApplicationTaskCreatorDialog implements OnInit {
     private createForm: FormGroup;
     private _academicSession: AcademicSession;
     private _admission: Admission;
-    private minLength: number = 10;
+    private minLength: number = 3;
 
     constructor( private router: Router,
         private formBuilder: FormBuilder,
