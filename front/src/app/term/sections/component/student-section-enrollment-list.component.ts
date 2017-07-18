@@ -44,7 +44,7 @@ export class StudentSectionEnrollmentListComponent implements OnInit {
     }
 
     ngOnInit(): void {
-         this.selectedRows = this.enrollments.filter(value => value.selected);
+        // this.selectedRows = this.enrollments.filter(value => value.selected);
     }
 
     filter(): void {
