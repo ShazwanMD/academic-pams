@@ -1,10 +1,10 @@
 import {AdmissionApplicationTask} from './admission-applications/admission-application-task.interface';
 import {SectionAppointmentListState, sectionAppointmentListReducer} from './sections/section-appointment-list.reducer';
+import {SectionGradebookListState, sectionGradebookListReducer} from './sections/section-gradebook-list.reducer';
 
 import {AdmissionApplication} from './admissions/admission-application.interface';
 import {AssessmentSubModule} from './assessments/index';
 import {AssessmentActions} from './assessments/assessment.action';
-import {GradebookActions} from './gradebooks/gradebook.action';
 import {Assessment} from './assessments/assessment.interface';
 import {Appointment} from './appointments/appointment.interface';
 import {NgModule, ModuleWithProviders} from '@angular/core';
@@ -22,6 +22,7 @@ import {EnrollmentSubModule} from './enrollments/index';
 import {GradebookSubModule} from './gradebooks/index';
 import {offeringReducer, OfferingState} from './offerings/offering.reducer';
 import {enrollmentReducer, EnrollmentState} from './enrollments/enrollment.reducer';
+import {gradebookReducer, GradebookState} from './gradebooks/gradebook.reducer';
 import {offeringListReducer, OfferingListState} from './offerings/offering-list.reducer';
 import {Offering} from './offerings/offering.interface';
 import {EnrollmentApplication} from './enrollment-applications/enrollment-application.interface';
@@ -36,6 +37,7 @@ import {appointmentReducer, AppointmentState} from './appointments/appointment.r
 import {AppointmentSubModule} from './appointments/index';
 import {AppointmentActions} from './appointments/appointment.action';
 import {EnrollmentActions} from './enrollments/enrollment.action';
+import {GradebookActions} from './gradebooks/gradebook.action';
 import {EnrollmentApplicationTask} from './enrollment-applications/enrollment-application-task.interface';
 import {EnrollmentApplicationSubModule} from './enrollment-applications/index';
 import {
@@ -107,9 +109,14 @@ export interface TermModuleState {
   section: SectionState;
   sections: SectionListState;
   sectionAppointments: SectionAppointmentListState;
+  sectionGradebooks: SectionGradebookListState;
   assessment: AssessmentState;
   enrollments: EnrollmentListState;
   enrollment: EnrollmentState;
+
+  // gradebook
+  gradebook: GradebookState;
+  
 
   appointments: AppointmentListState;
   appointment: AppointmentState;
@@ -140,6 +147,7 @@ export const INITIAL_TERM_STATE: TermModuleState = <TermModuleState>{
     sections: <Section[]>[],
     section: <Section>{},
     sectionAppointments: <Appointment[]>[],
+    sectionGradebooks: <Gradebook[]>[],
     assessment: <Assessment[]>[],
     enrollments: <Enrollment[]>[],
     enrollment: <Enrollment>{},
@@ -177,6 +185,7 @@ export const termModuleReducers = {
   sections: sectionListReducer,
   section: sectionReducer,
   sectionAppointments: sectionAppointmentListReducer,
+  sectionGradebooks: sectionGradebookListReducer,
   assessment: assessmentReducer,
   enrollments: enrollmentListReducer,
   enrollment: enrollmentReducer,

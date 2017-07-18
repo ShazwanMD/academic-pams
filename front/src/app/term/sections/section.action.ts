@@ -62,6 +62,27 @@ export class SectionActions {
             payload: enrollments
         };
     }
+    
+    //find gradebooks by section
+    static FIND_GRADEBOOKS_BY_SECTION = '[Section] Find Gradebooks By Section';
+
+    findGradebooksBySection(section): Action {
+        console.log("findGradebooksBySection");
+        return {
+            type: SectionActions.FIND_GRADEBOOKS_BY_SECTION,
+            payload: section
+        };
+    }
+
+    static FIND_GRADEBOOKS_BY_SECTION_SUCCESS = '[Section] Find Gradebooks By Section Success';
+
+    findGradebooksBySectionSuccess(gradebooks): Action {
+        console.log("findGradebooksBySectionSuccess");
+        return {
+            type: SectionActions.FIND_GRADEBOOKS_BY_SECTION_SUCCESS,
+            payload: gradebooks
+        };
+    }
 
     //find appointments by section
     static FIND_APPOINTMENTS_BY_SECTION = '[Section] Find Appointments By Section';

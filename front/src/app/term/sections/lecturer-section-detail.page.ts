@@ -11,6 +11,7 @@ import { MdDialog, MdDialogConfig, MdDialogRef } from "@angular/material";
 import { Appointment } from "../appointments/appointment.interface";
 import { Enrollment } from "../enrollments/enrollment.interface";
 import { Offering } from "../offerings/offering.interface";
+import { Gradebook } from "../gradebooks/gradebook.interface";
 
 @Component( {
     selector: 'pams-lecturer-section-detail',
@@ -25,11 +26,11 @@ export class LecturerSectionDetailPage implements OnInit {
     private OFFERING: string[] = "termModuleState.offering".split( "." );
     private SECTION: string[] = "termModuleState.section".split( "." );
     private ENROLLMENTS: string[] = "termModuleState.enrollments".split( "." );
-    private APPOINTMENTS: string[] = "termModuleState.appointments".split( "." );
+    private GRADEBOOKS: string[] = "termModuleState.gradebooks".split( "." );
 
     private offering$: Observable<Offering>;
     private section$: Observable<Section>;
-    private appointments$: Observable<Appointment[]>;
+    private gradebooks$: Observable<Gradebook[]>;
     private enrollments$: Observable<Enrollment[]>;
 
     constructor( private router: Router,
@@ -44,7 +45,7 @@ export class LecturerSectionDetailPage implements OnInit {
         this.section$ = this.store.select( ...this.SECTION );
         this.offering$ = this.store.select( ...this.OFFERING );
         this.enrollments$ = this.store.select( ...this.ENROLLMENTS );
-        this.appointments$ = this.store.select( ...this.APPOINTMENTS );
+        this.gradebooks$ = this.store.select( ...this.GRADEBOOKS );
     }
 
     showDialog(): void {

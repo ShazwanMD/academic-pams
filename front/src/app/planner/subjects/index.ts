@@ -18,6 +18,7 @@ import {SubjectComponent} from "./component/subject.component";
 import {SubjectDetailPage} from "./subject-detail.page";
 import {SubjectEditorDialog} from "./dialog/subject-editor.dialog";
 import {SubjectCreatorDialog} from "./dialog/subject-creator.dialog";
+import {SubjectTypeSelectComponent} from "./component/subject-type-select.component"
 
 
 @NgModule({
@@ -38,6 +39,7 @@ import {SubjectCreatorDialog} from "./dialog/subject-creator.dialog";
     // component
     SubjectListComponent,
     SubjectComponent,
+    SubjectTypeSelectComponent,
 
     // dialog
     SubjectEditorDialog,
@@ -48,6 +50,7 @@ import {SubjectCreatorDialog} from "./dialog/subject-creator.dialog";
  
     SubjectListComponent,
     SubjectComponent,
+     SubjectTypeSelectComponent,
 
   ],
   

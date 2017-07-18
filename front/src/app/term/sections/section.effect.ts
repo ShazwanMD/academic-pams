@@ -34,6 +34,7 @@ export class SectionEffects {
     .map(section => this.sectionActions.findSectionByCanonicalCodeSuccess(section))
     .mergeMap(action => from([action,
       this.sectionActions.findEnrollmentsBySection(action.payload),
+      this.sectionActions.findGradebooksBySection(action.payload),
       this.sectionActions.findAppointmentsBySection(action.payload)]));
 
   @Effect() findEnrollmentsBySection$ = this.actions$
@@ -41,6 +42,13 @@ export class SectionEffects {
     .map(action => action.payload)
     .switchMap(section => this.termService.findEnrollmentsBySection(section))
     .map(sections => this.sectionActions.findEnrollmentsBySectionSuccess(sections));
+
+  //find gradebookbysection
+  @Effect() findGradebooksBySection$ = this.actions$
+  .ofType(SectionActions.FIND_GRADEBOOKS_BY_SECTION)
+  .map(action => action.payload)
+  .switchMap(section => this.termService.findGradebooksBySection(section))
+  .map(sections => this.sectionActions.findGradebooksBySectionSuccess(sections));
 
   @Effect() findAppointmentsBySection$ = this.actions$
     .ofType(SectionActions.FIND_APPOINTMENTS_BY_SECTION)

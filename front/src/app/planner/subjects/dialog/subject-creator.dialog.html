@@ -1,27 +1,31 @@
-<h2 md-dialog-title>Create New Course</h2>
+<h2 md-dialog-title>Create New Subject</h2>
 <md-dialog-content>
   <form [formGroup]="creatorForm">
-    <div layout="row" class="pad-bottom">
+    <div layout="row" class="insert">
       <md-input-container flex>
         <input mdInput 
-               placeholder="SubjectType"
-               formControlName="subjetType"
+               placeholder="ordinal"
+               formControlName="ordinal" type="number"
                flex/>
       </md-input-container>
     </div>
-    <div layout="row" class="pad-bottom">
-      <md-input-container flex>
-        <input mdInput 
-               placeholder="Ordinal"
-               formControlName="ordinal"
-               flex/>
-      </md-input-container>
+     <div layout="row" class="pad-bottom pad-top">
+      <pams-subject-type-select
+        [placeholder]="'SubjectType'"
+        [innerFormControl]="creatorForm.controls['subjectType']">
+      </pams-subject-type-select>
     </div>
 
+    <!--<div layout="row" class="pad-bottom pad-top">
+      <pams-curriculum-select
+        [placeholder]="'Select Curriculum'"
+        [innerFormControl]="editorForm.controls['curriculum']">
+      </pams-curriculum-select>
+    </div>-->
   </form>
 </md-dialog-content>
 <md-dialog-actions align="end">
   <button md-raised-button color="accent" (click)="submit(creatorForm.value, edit)">
-    {{edit ? 'Update' : 'Save'}}
+    Save
   </button>
 </md-dialog-actions>
