@@ -31,8 +31,6 @@ export class EnrollmentApplicationTaskCreatorDialog implements OnInit {
         private actions: EnrollmentApplicationActions,
         private dialog: MdDialogRef<EnrollmentApplicationTaskCreatorDialog> ) {
     }
-
-
     ngOnInit(): void {
         this.createForm = this.formBuilder.group( {
             id: [null],
