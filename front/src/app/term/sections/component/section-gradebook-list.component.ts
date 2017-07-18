@@ -29,8 +29,12 @@ export class SectionGradebookListComponent implements OnInit {
 
     private columns: any[] = [
         { name: 'assessment.description', label: 'Assessment' },
-        { name: 'score', label: 'Score' },
+        { name: 'assessment.weight', label: 'weight(%)' },
+        { name: 'assessment.assessmentCategory', label: 'assessmentCategory' },
+        { name: 'enrollment.admission.student.identityNo', label: 'Identity No' },
         { name: 'enrollment.admission.student.name', label: 'Name' },
+        { name: 'score', label: 'Score' },
+        { name: 'enrollment.gradeCode.code', label: 'Grade' },
            
         { name: 'action', label: '' }
     ];

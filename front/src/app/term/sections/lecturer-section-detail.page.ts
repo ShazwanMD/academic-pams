@@ -23,10 +23,10 @@ export class LecturerSectionDetailPage implements OnInit {
     @Input() section: Section;
     @Input() offering: Offering;
 
-    private OFFERING: string[] = "termModuleState.offering".split( "." );
+   private OFFERING: string[] = "termModuleState.offering".split( "." );
     private SECTION: string[] = "termModuleState.section".split( "." );
     private ENROLLMENTS: string[] = "termModuleState.enrollments".split( "." );
-    private GRADEBOOKS: string[] = "termModuleState.gradebooks".split( "." );
+    private GRADEBOOKS: string[] = "termModuleState.sectionGradebooks".split( "." );
 
     private offering$: Observable<Offering>;
     private section$: Observable<Section>;
@@ -52,6 +52,10 @@ export class LecturerSectionDetailPage implements OnInit {
     }
 
     showDialogDel(): void {
+    }
+    
+    filter(): void {
+
     }
 
     ngOnInit(): void {
