@@ -74,7 +74,7 @@ public interface TermService {
 
     void calculateGradebook(AdOffering offering);
        
-    void calculateGPA(AdEnrollment enrollment);
+    void calculateGPA(AdAdmission admission);
     
     void calculateCGPA(AdAdmission admission);
     //==========+==========================================================================================

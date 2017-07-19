@@ -234,15 +234,18 @@ public class TermServiceImpl implements TermService {
 			enrollment.setTotalScore(totalScore);
 			enrollment.setGradeCode(commonService.findByScore(enrollment.getTotalScore()));
 			updateEnrollment(enrollment);
+			LOG.debug("calculateGradebookTotalScore:{}",enrollment.getTotalScore());
+			LOG.debug("calculateGradebookGradeCode:{}",enrollment.getGradeCode().getCode());
 			
-			calculateGPA(enrollment);
+			
+//			calculateGPA(enrollment);
 		}
 
 	}
 
-	public void calculateGPA(AdEnrollment enrollment) {
+	public void calculateGPA(AdAdmission admission) {
 
-		plannerService.calculateGpa(enrollment.getAdmission());
+		plannerService.calculateGpa(admission);
 
 	}
 	

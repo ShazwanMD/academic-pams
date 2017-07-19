@@ -216,6 +216,7 @@ public class WhenAggregateAllSessions extends Stage<WhenAggregateAllSessions> {
 		Assert.notNull(gradebook2, "gradebook2 cannot be null");
 		
 		termService.calculateGradebook(offering);
+		termService.calculateGPA(admission);
         
 //=========================================================================================
 //							SEM 2
@@ -301,7 +302,7 @@ public class WhenAggregateAllSessions extends Stage<WhenAggregateAllSessions> {
 		Assert.notNull(assessment3, "assessment3 Quiz1 is not setup");
 		
 		AdGradebook gradebook3 = new AdGradebookImpl();
-		gradebook3.setScore(new BigDecimal(BigInteger.valueOf(50)));
+		gradebook3.setScore(new BigDecimal(BigInteger.valueOf(80)));
 		gradebook3.setAssessment(assessment3);
 		gradebook3.setEnrollment(enrollment2);
 		gradebook3.setSection(section2);
@@ -334,7 +335,7 @@ public class WhenAggregateAllSessions extends Stage<WhenAggregateAllSessions> {
 		Assert.notNull(assessment4, "assessment4 Final is not setup");
 		
 		AdGradebook gradebook4 = new AdGradebookImpl();
-		gradebook4.setScore(new BigDecimal(BigInteger.valueOf(50)));
+		gradebook4.setScore(new BigDecimal(BigInteger.valueOf(40)));
 		gradebook4.setAssessment(assessment4);
 		gradebook4.setEnrollment(enrollment2);
 		gradebook4.setSection(section2);
@@ -345,6 +346,7 @@ public class WhenAggregateAllSessions extends Stage<WhenAggregateAllSessions> {
 		Assert.notNull(gradebook4, "gradebook4 cannot be null");
         
 		termService.calculateGradebook(offering2);
+		termService.calculateGPA(admission2);
         
  //=========================================================================================    
  //					SEM 3
@@ -473,6 +475,7 @@ public class WhenAggregateAllSessions extends Stage<WhenAggregateAllSessions> {
 		Assert.notNull(gradebook6, "gradebook6 cannot be null");
 		
 		termService.calculateGradebook(offering3);
+		termService.calculateGPA(admission3);
                
 
         academicSessions.forEach(a -> {
