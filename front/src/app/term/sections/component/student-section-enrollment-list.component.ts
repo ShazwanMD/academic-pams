@@ -1,6 +1,6 @@
 import { EnrollmentActions } from '../../enrollments/enrollment.action';
 import { SectionActions } from '../section.action';
-import { Component, Input, EventEmitter, Output, ChangeDetectionStrategy, ViewContainerRef, OnInit } from '@angular/core';
+import { Component, Input, EventEmitter, Output, ChangeDetectionStrategy, ViewContainerRef, OnInit, AfterViewInit } from '@angular/core';
 import { Enrollment } from "../../enrollments/enrollment.interface";
 import { Section } from "../section.interface";
 import { Store } from "@ngrx/store";
@@ -8,13 +8,14 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { MdDialog, MdDialogConfig, MdDialogRef } from "@angular/material";
 import { TermModuleState } from "../../index";
 import { EnrollmentEditorDialog } from "../../enrollments/dialog/enrollment-editor.dialog";
+import { TdDataTableSortingOrder, TdDataTableService, IPageChangeEvent, ITdDataTableSortChangeEvent } from "@covalent/core";
 
 @Component({
     selector: 'pams-student-section-enrollment-list',
     templateUrl: './student-section-enrollment-list.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class StudentSectionEnrollmentListComponent implements OnInit {
+export class StudentSectionEnrollmentListComponent implements AfterViewInit {
 
     @Input() section: Section;
     @Input() enrollment: Enrollment;
@@ -34,8 +35,19 @@ export class StudentSectionEnrollmentListComponent implements OnInit {
         { name: 'gradeCode.code', label: 'Grade Code' },       
         { name: 'action', label: '' }
     ];
+    
+    filteredData: any[];
+    filteredTotal: number;
+    searchTerm: string = '';
+    fromRow: number = 1;
+    currentPage: number = 1;
+    pageSize: number = 5;
+    sortBy: string = 'id';
+    sortOrder: TdDataTableSortingOrder = TdDataTableSortingOrder.Descending;
 
-    constructor(private router: Router,
+    constructor(
+        private _dataTableService: TdDataTableService,    
+        private router: Router,
         private route: ActivatedRoute,
         private actions: EnrollmentActions,
         private store: Store<TermModuleState>,
@@ -43,11 +55,37 @@ export class StudentSectionEnrollmentListComponent implements OnInit {
         private dialog: MdDialog) {
     }
 
-    ngOnInit(): void {
-        // this.selectedRows = this.enrollments.filter(value => value.selected);
+    ngAfterViewInit(): void {
+        this.filteredData = this.enrollments;
+        this.filteredTotal = this.enrollments.length;
+        this.filter();
+    }
+
+    sort(sortEvent: ITdDataTableSortChangeEvent): void {
+        this.sortBy = sortEvent.name;
+        this.sortOrder = sortEvent.order;
+        this.filter();
+    }
+
+    search(searchTerm: string): void {
+        this.searchTerm = searchTerm;
+        this.filter();
+    }
+
+    page(pagingEvent: IPageChangeEvent): void {
+        this.fromRow = pagingEvent.fromRow;
+        this.currentPage = pagingEvent.page;
+        this.pageSize = pagingEvent.pageSize;
+        this.filter();
     }
 
     filter(): void {
+        let newData: any[] = this.enrollments;
+        newData = this._dataTableService.filterData(newData, this.searchTerm, true);
+        this.filteredTotal = newData.length;
+        newData = this._dataTableService.sortData(newData, this.sortBy, this.sortOrder);
+        newData = this._dataTableService.pageData(newData, this.fromRow, this.currentPage * this.pageSize);
+        this.filteredData = newData;
     }
 
     selectRow(enrollment: Enrollment): void {
