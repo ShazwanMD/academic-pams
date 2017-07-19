@@ -214,6 +214,8 @@ public class WhenAggregateAllSessions extends Stage<WhenAggregateAllSessions> {
 		LOG.debug("gradebook Enrollee:{}", gradebook2.getEnrollment().getAdmission().getStudent().getName());
 		LOG.debug("gradebook Score:{}", gradebook2.getScore());
 		Assert.notNull(gradebook2, "gradebook2 cannot be null");
+		
+		termService.calculateGradebook(offering);
 
 //=========================================================================================
 //							SEM 2
@@ -342,7 +344,7 @@ public class WhenAggregateAllSessions extends Stage<WhenAggregateAllSessions> {
 		LOG.debug("gradebook Score:{}", gradebook4.getScore());
 		Assert.notNull(gradebook4, "gradebook4 cannot be null");
         
-        
+		termService.calculateGradebook(offering2);
  //=========================================================================================    
  //					SEM 3
  //========================================================================================       
@@ -469,7 +471,7 @@ public class WhenAggregateAllSessions extends Stage<WhenAggregateAllSessions> {
 		LOG.debug("gradebook Score:{}", gradebook6.getScore());
 		Assert.notNull(gradebook6, "gradebook6 cannot be null");
 		
-        
+		termService.calculateGradebook(offering3);
         
 
         academicSessions.forEach(a -> {
