@@ -486,6 +486,13 @@ public class WhenAggregateAllSessions extends Stage<WhenAggregateAllSessions> {
             LOG.debug(format, array);
         });
 
+        // todo(sam) relocate to better position
+        List<AdAdmission> allAdmissions = termService.findAdmissions(0, 9999); // possible issue with this line
+        int ACTUAL_ADMISSIONS = allAdmissions.size();
+        int EXPECTED_ADMISSIONS = allAdmissions.size();
+        String message = "Expected " + EXPECTED_ADMISSIONS + " admissions but found " + ACTUAL_ADMISSIONS + ".";
+        Assert.isTrue(EXPECTED == ACTUAL, message);
+
 
         return self();
     }
