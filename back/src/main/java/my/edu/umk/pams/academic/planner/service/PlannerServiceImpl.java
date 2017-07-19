@@ -154,7 +154,7 @@ public class PlannerServiceImpl implements PlannerService {
     }
 
     public void calculateGpa(AdAdmission admission) {
-        LOG.debug("admission:{}", admission.getCohort().getCode());
+        LOG.debug("admission:{}", admission.getSession().getCode());
 
         List<AdEnrollment> enrollments = termService.findEnrollments(admission);
         BigDecimal totalCreditHoursPerSemester = BigDecimal.ZERO;
@@ -162,7 +162,7 @@ public class PlannerServiceImpl implements PlannerService {
         BigDecimal totalCreditHoursPerStudent = BigDecimal.ZERO;
         BigDecimal totalGradePointHoursPerStudent = BigDecimal.ZERO;
         for (AdEnrollment enrollment : enrollments) {
-            LOG.debug("Enrollment:{}", enrollment.getGradeCode());
+            LOG.debug("Enrollment:{}", enrollment.getGradeCode().getCode());
             //Offering
             AdOffering offering = enrollment.getSection().getOffering();
             LOG.debug("offering:{}", offering.getCanonicalCode());
@@ -193,13 +193,16 @@ public class PlannerServiceImpl implements PlannerService {
             LOG.debug("totalCreditHoursPerSemester:{}", totalCreditHoursPerSemester);
 
 
+
         }
+        
         //CGPA
         totalGradePointHoursPerStudent = totalGradePointHoursPerStudent.add(totalGradePointHoursPerSemester);
         LOG.debug("totalGradePointHoursPerStudent:{}", totalGradePointHoursPerStudent);
 
         totalCreditHoursPerStudent = totalCreditHoursPerStudent.add(totalCreditHoursPerSemester);
         LOG.debug("totalCreditHoursPerStudent:{}", totalCreditHoursPerStudent);
+
 
         BigDecimal gpa = totalGradePointHoursPerSemester.divide(totalCreditHoursPerSemester).setScale(2, RoundingMode.HALF_UP);
         LOG.debug("GPA:{}", gpa);

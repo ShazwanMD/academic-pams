@@ -107,7 +107,7 @@ public class WhenUpdateGradeBook extends Stage<WhenUpdateGradeBook> {
 		Assert.isTrue(enrollment.getGradeCode().equals(gradeCode), "gradeCode cannot be different");
 
 		//CalculateGPA
-		plannerService.calculateGpa(admission);
+//		plannerService.calculateGpa(admission);
 		LOG.debug("GPA:{}", admission.getGpa());
 		LOG.debug("CGPA:{}", admission.getCgpa());
 
@@ -140,7 +140,7 @@ public class WhenUpdateGradeBook extends Stage<WhenUpdateGradeBook> {
 		Assert.isTrue(enrollment.getGradeCode().equals(gradeCode), "gradeCode cannot be different");
 
 		//CalculateGPA
-		plannerService.calculateGpa(admission);
+//		plannerService.calculateGpa(admission);
 		LOG.debug("GPA:{}", admission.getGpa());
 		LOG.debug("CGPA:{}", admission.getCgpa());
 //

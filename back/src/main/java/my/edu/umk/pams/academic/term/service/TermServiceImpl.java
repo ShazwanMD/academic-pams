@@ -249,10 +249,6 @@ public class TermServiceImpl implements TermService {
 
 	}
 	
-	public void calculateCGPA(AdAdmission admission) {
-
-
-	}
 
 	// ====================================================================================================
 	// SECTION

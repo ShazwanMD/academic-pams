@@ -76,7 +76,7 @@ public interface TermService {
        
     void calculateGPA(AdAdmission admission);
     
-    void calculateCGPA(AdAdmission admission);
+
     //==========+==========================================================================================
     // SECTION
     //====================================================================================================

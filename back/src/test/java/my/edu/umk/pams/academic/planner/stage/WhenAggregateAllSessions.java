@@ -78,14 +78,7 @@ public class WhenAggregateAllSessions extends Stage<WhenAggregateAllSessions> {
     private List<AdAcademicSession> academicSessions;
 
     public WhenAggregateAllSessions I_gather_aggregate_applications() throws Exception {
-
-        academicSessions = plannerService.findAcademicSessions(0, 9999); // get all
-        final int ACTUAL = academicSessions.size();
-        final int EXPECTED = 3; // This is all we have now
-        LOG.debug("Found {} AcademicSessions for ALL times", ACTUAL);
-        Assert.isTrue(EXPECTED >= ACTUAL, "Expected " + EXPECTED + " but found " + ACTUAL);
-        
-        
+              
 //=========================================================================================
 //								SEM 1
 //=========================================================================================
@@ -476,7 +469,21 @@ public class WhenAggregateAllSessions extends Stage<WhenAggregateAllSessions> {
 		
 		termService.calculateGradebook(offering3);
 		termService.calculateGPA(admission3);
-               
+		
+
+        academicSessions = plannerService.findAcademicSessions(0, 9999); // get all		
+        final int ACTUAL = academicSessions.size();
+        final int EXPECTED = 3; // This is all we have now
+        LOG.debug("Found {} AcademicSessions for ALL times", ACTUAL);
+        Assert.isTrue(EXPECTED >= ACTUAL, "Expected " + EXPECTED + " but found " + ACTUAL);
+        
+        // todo(sam) relocate to better position
+        List<AdAdmission> allAdmissions = termService.findAdmissions(0, 9999); // possible issue with this line
+        int ACTUAL_ADMISSIONS = allAdmissions.size();
+        int EXPECTED_ADMISSIONS = allAdmissions.size();
+        String message = "Expected " + EXPECTED_ADMISSIONS + " admissions but found " + ACTUAL_ADMISSIONS + ".";
+        Assert.isTrue(EXPECTED == ACTUAL, message);
+             
 
         academicSessions.forEach(a -> {
             String format = "AcademicSession {} {} has {} applications";
@@ -486,13 +493,8 @@ public class WhenAggregateAllSessions extends Stage<WhenAggregateAllSessions> {
             LOG.debug(format, array);
         });
 
-        // todo(sam) relocate to better position
-        List<AdAdmission> allAdmissions = termService.findAdmissions(0, 9999); // possible issue with this line
-        int ACTUAL_ADMISSIONS = allAdmissions.size();
-        int EXPECTED_ADMISSIONS = allAdmissions.size();
-        String message = "Expected " + EXPECTED_ADMISSIONS + " admissions but found " + ACTUAL_ADMISSIONS + ".";
-        Assert.isTrue(EXPECTED == ACTUAL, message);
-
+        
+        
 
         return self();
     }
