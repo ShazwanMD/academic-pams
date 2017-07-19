@@ -41,25 +41,30 @@ public class US_AD_ASMT_2001 extends SpringScenarioTest<GivenIAmAcademicStaff, W
 	@Test
 	@Rollback
 	public void scenarioExamSem1() throws Exception{
-		given().i_am_a_staff_in_$_academic_session(academicSessionCode);
+		given().i_am_a_staff_in_$_academic_session("201720181");
 		
-
+//		addStage(WhenSetupGradeCode.class).setup_gradeCode();
 		addStage(GivenAnEnrollment.class).create_enrollment();
 		
 		when().i_setup_assessments();	
 		
 		addStage(WhenUpdateGradeBook.class).update_gradeBook();
-
+		then().exam_setup();
+		
+	}
+	
+	@Test
+	@Rollback
+	public void scenarioExamSem2() throws Exception{
+		given().i_am_a_staff_in_$_academic_session("201720182");
 		
 
-		given().i_am_a_staff_in_$_academic_session(academicSession2);
-		
 		addStage(WhenEnrollSem2.class).enrollSem2();
 		
 		when().i_setup_assessments_Sem2();	
-		
+	
 		addStage(WhenUpdateGradeBook.class).update_gradeBook_Sem2();
-//		then().exam_setup();
+
 		
 	}
 }

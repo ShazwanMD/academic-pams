@@ -9,6 +9,7 @@ import my.edu.umk.pams.academic.planner.service.PlannerService;
 import my.edu.umk.pams.academic.term.model.AdAdmission;
 import my.edu.umk.pams.academic.term.model.AdAdmissionApplication;
 import my.edu.umk.pams.academic.term.model.AdEnrollment;
+import my.edu.umk.pams.academic.term.model.AdEnrollmentImpl;
 import my.edu.umk.pams.academic.term.model.AdSection;
 import my.edu.umk.pams.academic.term.service.TermService;
 import org.slf4j.Logger;
@@ -37,6 +38,7 @@ public class ThenGradePointCalculated extends Stage<ThenGradePointCalculated> {
     public ThenGradePointCalculated grade_point_is_calculated() {
         Assert.notEmpty(applications, "applications cannot be empty");
         // By Application
+ 
         applications.forEach(a -> {
             List<AdEnrollment> enrollmentsByStudent = termService.findEnrollments(a.getStudent());
             LOG.debug("Found {} enrollmentsByStudent", enrollmentsByStudent.size());

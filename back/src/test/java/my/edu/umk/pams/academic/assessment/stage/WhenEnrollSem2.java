@@ -98,6 +98,8 @@ public class WhenEnrollSem2 extends Stage<WhenEnrollSem2> {
     
     public WhenEnrollSem2 enrollSem2() throws Exception{
     	
+    	AdAcademicSession academicSessionCode2 = plannerService.findAcademicSessionByCode("201720182");
+    	
         student = profileService.findStudentByMatricNo("A17M0009F");
         LOG.debug("Student Name:{}",student.getName());
         cohort = student.getCohort();
@@ -135,6 +137,7 @@ public class WhenEnrollSem2 extends Stage<WhenEnrollSem2> {
     }
 
     private void createAdmission() {
+    	AdAcademicSession academicSessionCode2 = plannerService.findAcademicSessionByCode("201720182");
         admission = new AdAdmissionImpl();
         admission.setGpa(BigDecimal.ZERO);
         admission.setCgpa(BigDecimal.ZERO);
@@ -144,7 +147,7 @@ public class WhenEnrollSem2 extends Stage<WhenEnrollSem2> {
         admission.setStatus(AdAdmissionStatus.ADMITTED);
         admission.setStanding(AdAcademicStanding.TBD);
         admission.setStudyCenter(studyCenter);
-        admission.setSession(session);
+        admission.setSession(academicSessionCode2);
         admission.setCohort(cohort);
         termService.saveAdmission(admission);
 //        LOG.debug("Admission Student Name :{}", admission.getStudent().getName());
@@ -172,6 +175,7 @@ public class WhenEnrollSem2 extends Stage<WhenEnrollSem2> {
     }
 
     private void createOffering() throws Exception {
+    	AdAcademicSession academicSessionCode2 = plannerService.findAcademicSessionByCode("201720182");
         offering = new AdOfferingImpl();
         offering.setCanonicalCode("MASTER-MBA-GST5063-201720182");
         offering.setCode("MASTER-MBA-GST5063");
@@ -180,7 +184,7 @@ public class WhenEnrollSem2 extends Stage<WhenEnrollSem2> {
         offering.setCapacity(100);
         offering.setProgram(program);
         offering.setCourse(course);
-        offering.setSession(session);
+        offering.setSession(academicSessionCode2);
         termService.saveOffering(offering);
         LOG.debug("Offering Course:{}", offering.getCourse().getCode());
 
