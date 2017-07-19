@@ -19,7 +19,7 @@ export class AcademicSessionCreatorDialog implements OnInit {
   private createForm: FormGroup;
   private create: boolean = false;
   private _academicSession: AcademicSession;
-  private minLength: number = 10; // contoh
+  private minLength: number = 5; // contoh
 
   constructor(private formBuilder: FormBuilder,
               private store: Store<PlannerModuleState>,
