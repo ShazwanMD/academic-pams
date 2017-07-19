@@ -74,20 +74,23 @@ public class CurriculumBundleTest {
 
     private AdSubjectType subjectType;
 
+    
     @Before
     public void before() {
         UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken("root", "abc123");
         Authentication authed = authenticationManager.authenticate(token);
         SecurityContextHolder.getContext().setAuthentication(authed);
     }
+    
 
     @Test
     @Rollback(false)
     public void testWorkflow() {
         AdCurriculum curriculum = new AdCurriculumImpl();
-        String code = "bcdefg" + System.currentTimeMillis();
+        String code = "MGSEB-MBA-CLM-0001" ;
+        //+ System.currentTimeMillis()
         curriculum.setCode(code);
-        curriculum.setCoreCredit(10);
+        curriculum.setCoreCredit(100);
         curriculum.setCurriculumCredit(10);
         curriculum.setElectiveCredit(10);
         curriculum.setGeneralCredit(10);
@@ -96,10 +99,10 @@ public class CurriculumBundleTest {
         curriculum.setOrdinal(10);
         curriculum.setOthersCredit(10);
         curriculum.setPeriod(10);
-        curriculum.setProgram(plannerService.findProgramByCode("FIAT-PHD-PBT"));
+        curriculum.setProgram(plannerService.findProgramByCode("MGSEB-MBA"));
         curriculum.setRequiredCredit(0);
         curriculum.setSubjects(subjects);
-        curriculum.setTotalCredit(10);
+        curriculum.setTotalCredit(124);
         plannerService.saveCurriculum(curriculum);
         curriculum = plannerService.findCurriculumByCode(code);
         LOG.debug("code: {}", curriculum.getCode());
@@ -134,10 +137,50 @@ public class CurriculumBundleTest {
         subject15.setOrdinal(1); // semester 1
         subject15.setSubjectType(AdSubjectType.CORE);
         plannerService.addSubject(curriculum, subject15);
-
-
-
-
+/*
+        AdSingleSubject subject21 = new AdSingleSubjectImpl();
+        subject11.setCourse(plannerService.findCourseByCode("GST5033"));
+        subject11.setOrdinal(1); // semester 2
+        subject11.setSubjectType(AdSubjectType.CORE);
+        plannerService.addSubject(curriculum, subject21);
+        
+        AdSingleSubject subject22 = new AdSingleSubjectImpl();
+        subject11.setCourse(plannerService.findCourseByCode("GST5073"));
+        subject11.setOrdinal(1); // semester 2
+        subject11.setSubjectType(AdSubjectType.CORE);
+        plannerService.addSubject(curriculum, subject22);
+        
+        AdSingleSubject subject23 = new AdSingleSubjectImpl();
+        subject11.setCourse(plannerService.findCourseByCode("GST5083"));
+        subject11.setOrdinal(1); // semester 2
+        subject11.setSubjectType(AdSubjectType.CORE);
+        plannerService.addSubject(curriculum, subject23);
+        
+        AdSingleSubject subject24 = new AdSingleSubjectImpl();
+        subject11.setCourse(plannerService.findCourseByCode("GST5113"));
+        subject11.setOrdinal(1); // semester 2
+        subject11.setSubjectType(AdSubjectType.CORE);
+        plannerService.addSubject(curriculum, subject24);
+        
+        AdSingleSubject subject25 = new AdSingleSubjectImpl();
+        subject11.setCourse(plannerService.findCourseByCode("GST5103"));
+        subject11.setOrdinal(1); // semester 2
+        subject11.setSubjectType(AdSubjectType.CORE);
+        plannerService.addSubject(curriculum, subject25);
+        
+        AdSingleSubject subject31 = new AdSingleSubjectImpl();
+        subject11.setCourse(plannerService.findCourseByCode("GST5093"));
+        subject11.setOrdinal(1); // semester 2
+        subject11.setSubjectType(AdSubjectType.CORE);
+        plannerService.addSubject(curriculum, subject31);
+        
+        AdSingleSubject subject32 = new AdSingleSubjectImpl();
+        subject11.setCourse(plannerService.findCourseByCode("GST5123"));
+        subject11.setOrdinal(1); // semester 2
+        subject11.setSubjectType(AdSubjectType.CORE);
+        plannerService.addSubject(curriculum, subject32);
+        
+  */      
         // test bundle
 
         // elective/bundle subject // core elective
@@ -156,9 +199,51 @@ public class CurriculumBundleTest {
         part32.setCourse(plannerService.findCourseByCode("GSK6163"));
         AdBundleSubjectPart part33 = new AdBundleSubjectPartImpl();
         part33.setCourse(plannerService.findCourseByCode("GSK6173"));
-
+        AdBundleSubjectPart part34 = new AdBundleSubjectPartImpl();
+        part34.setCourse(plannerService.findCourseByCode("GSE6013"));
+        
+    /*    
+        //PENGKHUSUSAN (FINANCE)
+        AdBundleSubjectPart part35 = new AdBundleSubjectPartImpl();
+        part35.setCourse(plannerService.findCourseByCode("GSK6033"));
+        AdBundleSubjectPart part37 = new AdBundleSubjectPartImpl();
+        part37.setCourse(plannerService.findCourseByCode("GSK6173"));
+        AdBundleSubjectPart part38 = new AdBundleSubjectPartImpl();
+        part38.setCourse(plannerService.findCourseByCode("GSE6043"));
+        
+        //PENGKHUSUSAN (MARKETING)
+        
+        AdBundleSubjectPart part39 = new AdBundleSubjectPartImpl();
+        part39.setCourse(plannerService.findCourseByCode("GSK6053"));
+        AdBundleSubjectPart part310 = new AdBundleSubjectPartImpl();
+        part310.setCourse(plannerService.findCourseByCode("GSK6063"));
+        AdBundleSubjectPart part311 = new AdBundleSubjectPartImpl();
+        part311.setCourse(plannerService.findCourseByCode("GSE6093"));
+        
+       // PENGKHUSUSAN (HUMAN RESOURCE MANAGEMENT)
+        
+        AdBundleSubjectPart part312 = new AdBundleSubjectPartImpl();
+        part312.setCourse(plannerService.findCourseByCode("GSK6073"));
+        AdBundleSubjectPart part313 = new AdBundleSubjectPartImpl();
+        part313.setCourse(plannerService.findCourseByCode("GSK6083"));
+        AdBundleSubjectPart part314 = new AdBundleSubjectPartImpl();
+        part314.setCourse(plannerService.findCourseByCode("GSE6133"));
+*/
         plannerService.addSubjectPart(addedBundleSubject, part31);
         plannerService.addSubjectPart(addedBundleSubject, part32);
         plannerService.addSubjectPart(addedBundleSubject, part33);
+        plannerService.addSubjectPart(addedBundleSubject, part34);
+        /*
+        plannerService.addSubjectPart(addedBundleSubject, part35);
+        plannerService.addSubjectPart(addedBundleSubject, part37);
+        plannerService.addSubjectPart(addedBundleSubject, part38);
+        plannerService.addSubjectPart(addedBundleSubject, part39);
+        plannerService.addSubjectPart(addedBundleSubject, part31);
+        plannerService.addSubjectPart(addedBundleSubject, part310);
+        plannerService.addSubjectPart(addedBundleSubject, part311);
+        plannerService.addSubjectPart(addedBundleSubject, part312);
+        plannerService.addSubjectPart(addedBundleSubject, part313);
+        plannerService.addSubjectPart(addedBundleSubject, part314);
+        */
     }
 }
