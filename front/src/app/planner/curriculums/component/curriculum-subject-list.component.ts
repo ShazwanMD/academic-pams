@@ -22,6 +22,7 @@ export class CurriculumSubjectListComponent implements OnInit {
   private columns: any[] = [
     {name: 'id', label: 'Id'},
     {name: 'ordinal', label: 'Ordinal'},
+    {name: 'type', label: 'Type'},
     {name: 'course.code', label: 'Course'},
     {name: 'parts', label: 'Parts'},
     {name: 'action', label: ''},
