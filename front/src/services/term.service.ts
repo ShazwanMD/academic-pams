@@ -320,7 +320,15 @@ export class TermService {
     return this._http.put(this.TERM_API + '/sections/' + section.canonicalCode + '/enrollments/' + enrollment.id, JSON.stringify(enrollment))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
-
+  
+  //find gradebooks by enrollment
+  findGradebooksByEnrollment(enrollment: Enrollment): Observable<Gradebook[]> {
+    console.log('findGradebooksByEnrollment');
+    return this._http.get(this.TERM_API + '/enrollments/' + enrollment.id + '/gradebooks')
+      .map((res: Response) => <Gradebook[]>res.json());
+  }
+  
+  
   //==================================================================================================== //
   // GRADEBOOK
   // ==================================================================================================== //

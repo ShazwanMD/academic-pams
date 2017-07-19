@@ -1,4 +1,4 @@
-import {Component, OnInit, ChangeDetectionStrategy, ViewContainerRef} from '@angular/core';
+import {Component, OnInit, ChangeDetectionStrategy, ViewContainerRef, Input} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 
 import {IdentityService} from '../../../services';
@@ -11,6 +11,7 @@ import {EnrollmentActions} from "./enrollment.action";
 import {TermModuleState} from "../index";
 import {MdDialog, MdDialogConfig, MdDialogRef} from "@angular/material";
 import {EnrollmentApplicationTaskCreatorDialog} from "../enrollment-applications/dialog/enrollment-application-task-creator.dialog";
+import { Gradebook } from "../gradebooks/gradebook.interface";
 
 @Component({
     selector: 'pams-enrollment-detail',
@@ -19,9 +20,13 @@ import {EnrollmentApplicationTaskCreatorDialog} from "../enrollment-applications
 
 export class EnrollmentDetailPage implements OnInit {
 
+    @Input() enrollment: Enrollment;
+    
     private ENROLLMENT: string[] = "termModuleState.enrollment".split(".");
+    private GRADEBOOKS: string[] = 'termModuleState.enrollmentGradebooks'.split('.');
     private APPOINTMENT: string[] = "termModuleState.appointment".split(".");
     private enrollment$: Observable<Enrollment>;
+    private gradebooks$: Observable<Gradebook[]>;
     private appointment$: Observable<Appointment>;
     private creatorDialogRef: MdDialogRef<EnrollmentApplicationTaskCreatorDialog>;
 
@@ -33,7 +38,8 @@ export class EnrollmentDetailPage implements OnInit {
         private dialog: MdDialog) {
 
         this.enrollment$ = this.store.select(...this.ENROLLMENT);
-         this.appointment$ = this.store.select(...this.APPOINTMENT);
+        this.gradebooks$ = this.store.select(...this.GRADEBOOKS);
+        this.appointment$ = this.store.select(...this.APPOINTMENT);
     }
 
     showDialog(): void {

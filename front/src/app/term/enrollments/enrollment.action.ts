@@ -20,28 +20,28 @@ export class EnrollmentActions {
             type: EnrollmentActions.FIND_ENROLLMENT_BY_ID_SUCCESS,
             payload: enrollment
         };
-    }
+    }  
+    
+    //find gradebooks by enrollment
+    static FIND_GRADEBOOKS_BY_ENROLLMENT = '[Enrollment] Find Gradebooks By Enrollment';
 
-    static FIND_ENROLLMENTS_BY_SECTION = '[Enrollment] Find Enrollments By Section';
-
-    findEnrollmentsBySection( section ): Action {
-        console.log( "findEnrollmentsBySection" );
+    findGradebooksByEnrollment(enrollment): Action {
         return {
-            type: EnrollmentActions.FIND_ENROLLMENTS_BY_SECTION,
-            payload: section
+            type: EnrollmentActions.FIND_GRADEBOOKS_BY_ENROLLMENT,
+            payload: enrollment
         };
     }
 
-    static FIND_ENROLLMENTS_BY_SECTION_SUCCESS = '[Enrollment] Find Enrollments By Section Success';
+    static FIND_GRADEBOOKS_BY_ENROLLMENT_SUCCESS = '[Enrollment] Find Gradebooks By Enrollment Success';
 
-    findEnrollmentsBySectionSuccess( enrollments ): Action {
-        console.log( "findEnrollmentsBySectionSuccess" );
+    findGradebooksByEnrollmentSuccess(gradebooks): Action {
         return {
-            type: EnrollmentActions.FIND_ENROLLMENTS_BY_SECTION_SUCCESS,
-            payload: enrollments
+            type: EnrollmentActions.FIND_GRADEBOOKS_BY_ENROLLMENT_SUCCESS,
+            payload: gradebooks
         };
     }
-
+    //endfind gradebooks by enrollment
+    
     static SAVE_ENROLLMENT = '[Enrollment] Save Enrollment';
 
     saveEnrollment( enrollment ): Action {
@@ -50,6 +50,7 @@ export class EnrollmentActions {
             payload: enrollment
         };
     }
+   
 
     static SAVE_ENROLLMENT_SUCCESS = '[Enrollment] Save Enrollment Success';
 

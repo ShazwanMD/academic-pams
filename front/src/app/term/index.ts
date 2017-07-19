@@ -1,6 +1,7 @@
 import {AdmissionApplicationTask} from './admission-applications/admission-application-task.interface';
 import {SectionAppointmentListState, sectionAppointmentListReducer} from './sections/section-appointment-list.reducer';
 import {SectionGradebookListState, sectionGradebookListReducer} from './sections/section-gradebook-list.reducer';
+import {EnrollmentGradebookListState, enrollmentGradebookListReducer} from './enrollments/enrollment-gradebook-list.reducer';
 
 import {AdmissionApplication} from './admissions/admission-application.interface';
 import {AssessmentSubModule} from './assessments/index';
@@ -110,6 +111,7 @@ export interface TermModuleState {
   sections: SectionListState;
   sectionAppointments: SectionAppointmentListState;
   sectionGradebooks: SectionGradebookListState;
+  enrollmentGradebooks: EnrollmentGradebookListState;
   assessment: AssessmentState;
   enrollments: EnrollmentListState;
   enrollment: EnrollmentState;
@@ -148,6 +150,7 @@ export const INITIAL_TERM_STATE: TermModuleState = <TermModuleState>{
     section: <Section>{},
     sectionAppointments: <Appointment[]>[],
     sectionGradebooks: <Gradebook[]>[],
+    enrollmentGradebooks: <Gradebook[]>[],
     assessment: <Assessment[]>[],
     enrollments: <Enrollment[]>[],
     enrollment: <Enrollment>{},
@@ -186,6 +189,7 @@ export const termModuleReducers = {
   section: sectionReducer,
   sectionAppointments: sectionAppointmentListReducer,
   sectionGradebooks: sectionGradebookListReducer,
+  enrollmentGradebooks: enrollmentGradebookListReducer,
   assessment: assessmentReducer,
   enrollments: enrollmentListReducer,
   enrollment: enrollmentReducer,

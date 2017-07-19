@@ -17,11 +17,15 @@ export class EnrollmentGradebookListComponent implements OnInit {
 
   private selectedRows: Gradebook[];
   private columns: any[] = [
-    {name: 'ordinal', label: 'Section No'},
-    {name: 'code', label: 'Code'},
-    {name: 'capacity', label: 'Capacity'},
-    {name: 'appointmentCount', label: 'Appointment'},
-    {name: 'enrollmentCount', label: 'Enrollment'},
+    {name: 'assessment.code', label: 'Code'},
+    {name: 'assessment.description', label: 'Assessment'},
+    {name: 'assessment.assessmentType', label: 'Type'},
+    {name: 'assessment.assessmentCategory', label: 'Category'},   
+    {name: 'assessment.totalScore', label: 'Total Score'},
+    {name: 'score', label: 'Marks'},
+    { name: 'enrollment.gradeCode.code', label: 'Grade' },
+    { name: 'enrollment.gradeCode.description', label: 'Status' },
+    
     {name: 'action', label: ''},
   ];
 
