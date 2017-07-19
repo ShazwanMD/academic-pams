@@ -699,6 +699,11 @@ public class TermServiceImpl implements TermService {
 	}
 
 	@Override
+	public List<AdAdmission> findAdmissions(AdStudent student, Integer offset, Integer limit) {
+		return admissionDao.find(student, offset, limit);
+	}
+
+	@Override
 	public List<AdAdmission> findAdmissions(AdAcademicSession academicSession, Integer offset, Integer limit) {
 		return admissionDao.find(academicSession); // todo: limit/offset
 	}
