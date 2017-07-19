@@ -28,11 +28,19 @@
       (rowSelect)="selectRow($event)"
       (selectAll)="selectAllRows($event)"
       dense>
-      <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
+      <template tdDataTableTemplate="parts" let-value="value" let-row="row" let-column="columns.parts">
         <div layout="row">
-          <span flex>{{value}}</span>
-        </div>
+        <span *ngIf="row.type=='bundle'" flex> </span>
+          <template *ngIf="row.type=='bundle'" let-group ngFor [ngForOf]="subjects">
+          <tr *ngFor="let row of group.parts">{{row.course.code}}<br/></tr>
+          </template>
+                
+    </div>
       </template>
+
+
+     
+     
       <!--<template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">-->
         <!--<div layout="row">-->
           <!--<button md-icon-button [md-menu-trigger-for]="menu1" mdTooltip="Select subject actions">-->
@@ -48,3 +56,4 @@
     </td-data-table>
   </md-card-content>
 </md-card>
+
