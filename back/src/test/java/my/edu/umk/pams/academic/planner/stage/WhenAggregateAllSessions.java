@@ -89,8 +89,8 @@ public class WhenAggregateAllSessions extends Stage<WhenAggregateAllSessions> {
 //=========================================================================================
 //								SEM 1
 //=========================================================================================
-        
-        AdAdmissionApplication application = new AdAdmissionApplicationImpl();
+
+		AdAdmissionApplication application = new AdAdmissionApplicationImpl();
         application.setOrdinal(1);
         application.setStudent(identityService.findStudentByMatricNo("A17P006"));
         application.setAdvisor(identityService.findStaffByIdentityNo("01610B"));
@@ -216,11 +216,11 @@ public class WhenAggregateAllSessions extends Stage<WhenAggregateAllSessions> {
 		Assert.notNull(gradebook2, "gradebook2 cannot be null");
 		
 		termService.calculateGradebook(offering);
-
+        
 //=========================================================================================
 //							SEM 2
 //=========================================================================================
-        
+
         AdAdmissionApplication application2 = new AdAdmissionApplicationImpl();
         application2.setOrdinal(1);
         application2.setStudent(identityService.findStudentByMatricNo("A17P006"));
@@ -303,9 +303,9 @@ public class WhenAggregateAllSessions extends Stage<WhenAggregateAllSessions> {
 		AdGradebook gradebook3 = new AdGradebookImpl();
 		gradebook3.setScore(new BigDecimal(BigInteger.valueOf(50)));
 		gradebook3.setAssessment(assessment3);
-		gradebook3.setEnrollment(enrollment);
+		gradebook3.setEnrollment(enrollment2);
 		gradebook3.setSection(section2);
-		termService.addGradebook(section2, enrollment, gradebook3);
+		termService.addGradebook(section2, enrollment2, gradebook3);
 		LOG.debug("gradebook Assessment:{}", gradebook3.getAssessment().getCanonicalCode());
 		LOG.debug("gradebook Enrollee:{}", gradebook3.getEnrollment().getAdmission().getStudent().getName());
 		LOG.debug("gradebook Score:{}", gradebook3.getScore());
@@ -336,18 +336,19 @@ public class WhenAggregateAllSessions extends Stage<WhenAggregateAllSessions> {
 		AdGradebook gradebook4 = new AdGradebookImpl();
 		gradebook4.setScore(new BigDecimal(BigInteger.valueOf(50)));
 		gradebook4.setAssessment(assessment4);
-		gradebook4.setEnrollment(enrollment);
+		gradebook4.setEnrollment(enrollment2);
 		gradebook4.setSection(section2);
-		termService.addGradebook(section2, enrollment, gradebook4);
+		termService.addGradebook(section2, enrollment2, gradebook4);
 		LOG.debug("gradebook Assessment:{}", gradebook4.getAssessment().getCanonicalCode());
 		LOG.debug("gradebook Enrollee:{}", gradebook4.getEnrollment().getAdmission().getStudent().getName());
 		LOG.debug("gradebook Score:{}", gradebook4.getScore());
 		Assert.notNull(gradebook4, "gradebook4 cannot be null");
         
 		termService.calculateGradebook(offering2);
+        
  //=========================================================================================    
  //					SEM 3
- //========================================================================================       
+ //======================================================================================== 
         AdAdmissionApplication application3 = new AdAdmissionApplicationImpl();
         application3.setOrdinal(1);
         application3.setStudent(identityService.findStudentByMatricNo("A17P006"));
@@ -428,11 +429,11 @@ public class WhenAggregateAllSessions extends Stage<WhenAggregateAllSessions> {
 		Assert.notNull(assessment5, "assessment5 Quiz1 is not setup");
 		
 		AdGradebook gradebook5 = new AdGradebookImpl();
-		gradebook5.setScore(new BigDecimal(BigInteger.valueOf(50)));
+		gradebook5.setScore(new BigDecimal(BigInteger.valueOf(60)));
 		gradebook5.setAssessment(assessment5);
-		gradebook5.setEnrollment(enrollment);
+		gradebook5.setEnrollment(enrollment3);
 		gradebook5.setSection(section3);
-		termService.addGradebook(section3, enrollment, gradebook5);
+		termService.addGradebook(section3, enrollment3, gradebook5);
 		LOG.debug("gradebook Assessment:{}", gradebook5.getAssessment().getCanonicalCode());
 		LOG.debug("gradebook Enrollee:{}", gradebook5.getEnrollment().getAdmission().getStudent().getName());
 		LOG.debug("gradebook Score:{}", gradebook5.getScore());
@@ -461,18 +462,18 @@ public class WhenAggregateAllSessions extends Stage<WhenAggregateAllSessions> {
 		Assert.notNull(assessment6, "assessment6 Final is not setup");
 
 		AdGradebook gradebook6 = new AdGradebookImpl();
-		gradebook6.setScore(new BigDecimal(BigInteger.valueOf(50)));
+		gradebook6.setScore(new BigDecimal(BigInteger.valueOf(70)));
 		gradebook6.setAssessment(assessment6);
-		gradebook6.setEnrollment(enrollment);
+		gradebook6.setEnrollment(enrollment3);
 		gradebook6.setSection(section3);
-		termService.addGradebook(section3, enrollment, gradebook6);
+		termService.addGradebook(section3, enrollment3, gradebook6);
 		LOG.debug("gradebook Assessment:{}", gradebook6.getAssessment().getCanonicalCode());
 		LOG.debug("gradebook Enrollee:{}", gradebook6.getEnrollment().getAdmission().getStudent().getName());
 		LOG.debug("gradebook Score:{}", gradebook6.getScore());
 		Assert.notNull(gradebook6, "gradebook6 cannot be null");
 		
 		termService.calculateGradebook(offering3);
-        
+               
 
         academicSessions.forEach(a -> {
             String format = "AcademicSession {} {} has {} applications";
