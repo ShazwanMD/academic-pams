@@ -1,4 +1,4 @@
-<md-card>
+<!-- <md-card>
   <div toolbar-buttons layout="row" layout-align="start center" flex>
     <md-card-title>Enrollment Applications
     </md-card-title>
@@ -11,13 +11,13 @@
             mdTooltip="Add new enrollment">
       <md-icon class="md-24 tc-grey-300" [ngClass]="{'tc-grey-700': selectedRows.length === 0}">add</md-icon>
     </button>
-  <!--  <button md-button class="md-icon-button" (click)="edit(selectedRows[0])" [disabled]="selectedRows.length != 1">
+   <button md-button class="md-icon-button" (click)="edit(selectedRows[0])" [disabled]="selectedRows.length != 1">
     <md-icon class="md-24 tc-grey-300" [ngClass]="{'tc-grey-700': selectedRows.length === 1}">edit</md-icon>
     </button>
      <button md-button class="md-icon-button" (click)="deleteAdmissionEnrollment(selectedRows[0])"
             [disabled]="selectedRows.length != 1">
       <md-icon class="md-24 tc-grey-300" [ngClass]="{'tc-grey-700': selectedRows.length === 1}">delete</md-icon>
-    </button>  -->
+    </button> 
   </div>
   <md-divider></md-divider>
   <md-card-content>
@@ -51,3 +51,69 @@
     </td-data-table>
   </md-card-content>
 </md-card>
+ -->
+ 
+ <md-card>
+  <div toolbar-buttons layout="row" layout-align="start center" flex>
+    <md-card-title>Enrollment Applications
+    </md-card-title>
+    <md-chip-list *ngIf="enrollmentApplications?.length > 0">
+      <md-chip color="accent">{{enrollmentApplications?.length}}</md-chip>
+    </md-chip-list>
+    <span flex></span>
+    <button md-button class="md-icon-button" (click)="showDialog()" mdTooltip="Click to view details course registration info">
+      <md-icon >assignment</md-icon>
+    </button>
+    <button md-button class="md-icon-button" [routerLink]="['/term/enrollment-applications']"
+            mdTooltip="Add new enrollment">
+      <md-icon class="md-24 tc-grey-300" [ngClass]="{'tc-grey-700': selectedRows.length === 0}">add</md-icon>
+    </button>
+    <!--<button md-button class="md-icon-button" (click)="edit(selectedRows[0])" [disabled]="selectedRows.length != 1">-->
+    <!--<md-icon class="md-24 tc-grey-300" [ngClass]="{'tc-grey-700': selectedRows.length === 1}">edit</md-icon>-->
+    <!--</button>-->
+  <!--   <button md-button class="md-icon-button" (click)="deleteAdmissionEnrollment(selectedRows[0])"
+            [disabled]="selectedRows.length != 1">
+      <md-icon class="md-24 tc-grey-300" [ngClass]="{'tc-grey-700': selectedRows.length === 1}">delete</md-icon>
+    </button> -->
+  </div>
+  <md-divider></md-divider>
+  <md-card-content>    
+    <div layout="row" layout-align="start center" class="pad-left-sm pad-right-sm">
+    <td-search-box #searchBox backIcon="arrow_back" class="push-right-sm" placeholder="Search here" (searchDebounce)="search($event)" [alwaysVisible]="true" flex>
+    </td-search-box>
+</div>
+<md-divider></md-divider>
+<td-data-table
+    #dataTable
+    [data]="filteredData"
+    [columns]="columns"
+    [sortable]="true"
+    [sortBy]="sortBy"
+    [sortOrder]="sortOrder"
+    (sortChange)="sort($event)">
+  <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
+    <div layout="row">
+      <span flex>{{value}}</span>
+    </div>
+  </template>
+   <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
+    <div layout="row">
+      <a md-button color="accent" class="text-upper" [routerLink]="['/term/enrollment-applications', row['referenceNo'], 'enrollment-application-detail']" mdTooltip="View enrollment info">
+        <!-- [routerLink]="['/term/offerings', row['canonicalCode']]" -->
+        <span>View</span>
+      </a>
+    </div>
+  </template>
+</td-data-table>
+<div class="md-padding" *ngIf="!dataTable.hasData" layout="row" layout-align="center center">
+    <h3>No results to display.</h3>
+</div> 
+<td-paging-bar #pagingBar [pageSizes]="[5, 10, 15, 20]" [total]="filteredTotal" (change)="page($event)">
+    <span td-paging-bar-label hide-xs>Row per page:</span>
+    {{pagingBar.range}} <span hide-xs>of {{pagingBar.total}}</span>
+</td-paging-bar>
+    
+    
+  </md-card-content>
+</md-card>
+ 

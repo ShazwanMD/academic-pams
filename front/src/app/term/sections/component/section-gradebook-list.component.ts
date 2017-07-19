@@ -29,6 +29,7 @@ export class SectionGradebookListComponent implements AfterViewInit {
     private selectedRows: Gradebook[];
 
     private columns: any[] = [
+        { name: 'id', label: 'Id' },
         { name: 'assessment.description', label: 'Assessment' },
         { name: 'assessment.weight', label: 'weight(%)' },
         { name: 'assessment.assessmentCategory', label: 'assessmentCategory' },

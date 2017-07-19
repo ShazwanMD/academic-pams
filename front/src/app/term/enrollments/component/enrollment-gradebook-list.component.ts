@@ -17,6 +17,7 @@ import { TdDataTableSortingOrder, TdDataTableService, IPageChangeEvent, ITdDataT
 export class EnrollmentGradebookListComponent implements AfterViewInit {
 
   private columns: any[] = [
+    {name: 'id', label: 'Id'},
     {name: 'assessment.code', label: 'Code'},
     {name: 'assessment.description', label: 'Assessment'},
     {name: 'assessment.assessmentType', label: 'Type'},
@@ -50,7 +51,7 @@ export class EnrollmentGradebookListComponent implements AfterViewInit {
   fromRow: number = 1;
   currentPage: number = 1;
   pageSize: number = 5;
-  sortBy: string = 'score';
+  sortBy: string = 'id';
   sortOrder: TdDataTableSortingOrder = TdDataTableSortingOrder.Descending;
 
   ngAfterViewInit(): void {
