@@ -35,7 +35,7 @@ public class US_AD_PNR_0001
 	@Rollback
 	public void scenario001() throws Exception {
 		given().i_am_a_staff_in_current_academic_session(); // no effect
-		when().I_gather_aggregate_applications();
+		when().I_gather_aggregate_admissions();
 		then().grade_point_is_calculated();
 	}
 }

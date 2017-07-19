@@ -1,13 +1,5 @@
 package my.edu.umk.pams.academic.planner.stage;
 
-/**
- * I Am Student
- * I Review Course Info
- * Course Information Reviewed
- *
- * @author zaida
- */
-
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
 import com.tngtech.jgiven.integration.spring.JGivenStage;
@@ -15,11 +7,7 @@ import com.tngtech.jgiven.integration.spring.JGivenStage;
 import my.edu.umk.pams.academic.common.service.CommonService;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.identity.service.IdentityService;
-import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
-import my.edu.umk.pams.academic.planner.model.AdAcademicStanding;
-import my.edu.umk.pams.academic.planner.model.AdAdmissionStatus;
-import my.edu.umk.pams.academic.planner.model.AdEnrollmentStanding;
-import my.edu.umk.pams.academic.planner.model.AdEnrollmentStatus;
+import my.edu.umk.pams.academic.planner.model.*;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
 import my.edu.umk.pams.academic.profile.service.ProfileService;
 import my.edu.umk.pams.academic.term.model.AdAdmission;
@@ -72,20 +60,19 @@ public class WhenAggregateAllSessions extends Stage<WhenAggregateAllSessions> {
     private AdStudent student;
 
     @ProvidedScenarioState
-    private List<AdAdmissionApplication> applications;
+    private List<AdAdmission> admissions;
 
-    @ProvidedScenarioState
-    private List<AdAcademicSession> academicSessions;
+    public WhenAggregateAllSessions I_gather_aggregate_admissions() throws Exception {
 
-    public WhenAggregateAllSessions I_gather_aggregate_applications() throws Exception {
-              
+        student = identityService.findStudentByMatricNo("A17P006");
+
 //=========================================================================================
 //								SEM 1
 //=========================================================================================
 
 		AdAdmissionApplication application = new AdAdmissionApplicationImpl();
         application.setOrdinal(1);
-        application.setStudent(identityService.findStudentByMatricNo("A17P006"));
+        application.setStudent(student);
         application.setAdvisor(identityService.findStaffByIdentityNo("01610B"));
         application.setProgram(plannerService.findProgramByCode("MGSEB-MBA"));
         application.setStudyCenter(commonService.findStudyCenterByCode("A"));
@@ -101,7 +88,7 @@ public class WhenAggregateAllSessions extends Stage<WhenAggregateAllSessions> {
         
         AdAdmission admission = new AdAdmissionImpl();
         admission.setStudyCenter(commonService.findStudyCenterByCode("A"));
-        admission.setStudent(identityService.findStudentByMatricNo("A17P006"));
+        admission.setStudent(student);
         admission.setSession(plannerService.findAcademicSessionByCode("201720181"));
         admission.setStatus(AdAdmissionStatus.REGULAR);
         admission.setStanding(AdAcademicStanding.KB);
@@ -217,7 +204,7 @@ public class WhenAggregateAllSessions extends Stage<WhenAggregateAllSessions> {
 
         AdAdmissionApplication application2 = new AdAdmissionApplicationImpl();
         application2.setOrdinal(1);
-        application2.setStudent(identityService.findStudentByMatricNo("A17P006"));
+        application2.setStudent(student);
         application2.setAdvisor(identityService.findStaffByIdentityNo("01610B"));
         application2.setProgram(plannerService.findProgramByCode("MGSEB-MBA"));
         application2.setStudyCenter(commonService.findStudyCenterByCode("A"));
@@ -233,7 +220,7 @@ public class WhenAggregateAllSessions extends Stage<WhenAggregateAllSessions> {
         
         AdAdmission admission2 = new AdAdmissionImpl();
         admission2.setStudyCenter(commonService.findStudyCenterByCode("A"));
-        admission2.setStudent(identityService.findStudentByMatricNo("A17P006"));
+        admission2.setStudent(student);
         admission2.setSession(plannerService.findAcademicSessionByCode("201720182"));
         admission2.setStatus(AdAdmissionStatus.REGULAR);
         admission2.setStanding(AdAcademicStanding.KB);
@@ -346,7 +333,7 @@ public class WhenAggregateAllSessions extends Stage<WhenAggregateAllSessions> {
  //======================================================================================== 
         AdAdmissionApplication application3 = new AdAdmissionApplicationImpl();
         application3.setOrdinal(1);
-        application3.setStudent(identityService.findStudentByMatricNo("A17P006"));
+        application3.setStudent(student);
         application3.setAdvisor(identityService.findStaffByIdentityNo("01610B"));
         application3.setProgram(plannerService.findProgramByCode("MGSEB-MBA"));
         application3.setStudyCenter(commonService.findStudyCenterByCode("A"));
@@ -362,7 +349,7 @@ public class WhenAggregateAllSessions extends Stage<WhenAggregateAllSessions> {
         
         AdAdmission admission3 = new AdAdmissionImpl();
         admission3.setStudyCenter(commonService.findStudyCenterByCode("A"));
-        admission3.setStudent(identityService.findStudentByMatricNo("A17P006"));
+        admission3.setStudent(student);
         admission3.setSession(plannerService.findAcademicSessionByCode("201720183"));
         admission3.setStatus(AdAdmissionStatus.REGULAR);
         admission3.setStanding(AdAcademicStanding.KB);
@@ -469,32 +456,39 @@ public class WhenAggregateAllSessions extends Stage<WhenAggregateAllSessions> {
 		
 		termService.calculateGradebook(offering3);
 		termService.calculateGPA(admission3);
-		
 
-        academicSessions = plannerService.findAcademicSessions(0, 9999); // get all		
-        final int ACTUAL = academicSessions.size();
-        final int EXPECTED = 3; // This is all we have now
-        LOG.debug("Found {} AcademicSessions for ALL times", ACTUAL);
-        Assert.isTrue(EXPECTED >= ACTUAL, "Expected " + EXPECTED + " but found " + ACTUAL);
-        
-        // todo(sam) relocate to better position
-        List<AdAdmission> allAdmissions = termService.findAdmissions(0, 9999); // possible issue with this line
-        int ACTUAL_ADMISSIONS = allAdmissions.size();
-        int EXPECTED_ADMISSIONS = allAdmissions.size();
+        admissions = plannerService.findAdmissions(student);
+        int ACTUAL_ADMISSIONS = admissions.size();
+        int EXPECTED_ADMISSIONS = 4; // todo(sam) Instead of 3. Possibly valid scenario to handle?
+        boolean expression = EXPECTED_ADMISSIONS == ACTUAL_ADMISSIONS;
         String message = "Expected " + EXPECTED_ADMISSIONS + " admissions but found " + ACTUAL_ADMISSIONS + ".";
-        Assert.isTrue(EXPECTED == ACTUAL, message);
-             
 
-        academicSessions.forEach(a -> {
-            String format = "AcademicSession {} {} has {} applications";
-
-            applications = termService.findAdmissionApplications(a);
-            Object[] array = {a.getCode(), a.getSemester(), applications.size()};
-            LOG.debug(format, array);
+        admissions.forEach(a -> {
+            Long admissionId = a.getId();
+            String student = a.getStudent().getName();
+            Long studentId = a.getStudent().getId();
+            String session = a.getSession().getCode();
+            BigDecimal gpa = a.getGpa();
+            BigDecimal cgpa = a.getCgpa();
+            AdAcademicSemester semester = a.getSession().getSemester();
+            List<AdEnrollment> enrollments = termService.findEnrollments(a);
+            int enrollmentsPerAdmission = enrollments.size();
+            Object[] array;
+            if (!enrollments.isEmpty()){
+                AdEnrollment firstEnrollment = enrollments.get(0); // todo(sam) Handle multiples
+                String grade = firstEnrollment.getGradeCode().getCode();
+                BigDecimal point = firstEnrollment.getGradeCode().getPoint();
+                BigDecimal creditHour = new BigDecimal(firstEnrollment.getSection().getOffering().getCourse().getCredit());
+                BigDecimal pointHours = point.multiply(creditHour);
+                array = new Object[]{admissionId, student, studentId, session, semester, enrollmentsPerAdmission, point, grade, creditHour, pointHours, gpa, cgpa};
+            } else {
+                array = new Object[]{admissionId, student, studentId, session, semester, enrollmentsPerAdmission, "point", "grade", "creditHour", "pointHours", gpa, cgpa};
+            }
+            String msg = "{} {}[{}] {} {} {} enrollments {}({})x{}={};  {}g {}cg";
+            if (expression) LOG.debug(msg, array);
         });
 
-        
-        
+        Assert.isTrue(expression, message);
 
         return self();
     }
