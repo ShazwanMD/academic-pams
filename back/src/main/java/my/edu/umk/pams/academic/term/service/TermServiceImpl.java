@@ -238,7 +238,7 @@ public class TermServiceImpl implements TermService {
 			LOG.debug("calculateGradebookGradeCode:{}",enrollment.getGradeCode().getCode());
 			
 			
-//			calculateGPA(enrollment);
+			calculateGPA(enrollment.getAdmission());
 		}
 
 	}

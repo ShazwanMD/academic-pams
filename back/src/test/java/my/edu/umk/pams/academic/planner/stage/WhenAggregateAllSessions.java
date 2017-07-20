@@ -196,7 +196,7 @@ public class WhenAggregateAllSessions extends Stage<WhenAggregateAllSessions> {
 		Assert.notNull(gradebook2, "gradebook2 cannot be null");
 		
 		termService.calculateGradebook(offering);
-		termService.calculateGPA(admission);
+//		termService.calculateGPA(admission);
         
 //=========================================================================================
 //							SEM 2
@@ -326,7 +326,7 @@ public class WhenAggregateAllSessions extends Stage<WhenAggregateAllSessions> {
 		Assert.notNull(gradebook4, "gradebook4 cannot be null");
         
 		termService.calculateGradebook(offering2);
-		termService.calculateGPA(admission2);
+//		termService.calculateGPA(admission2);
         
  //=========================================================================================    
  //					SEM 3
@@ -455,7 +455,7 @@ public class WhenAggregateAllSessions extends Stage<WhenAggregateAllSessions> {
 		Assert.notNull(gradebook6, "gradebook6 cannot be null");
 		
 		termService.calculateGradebook(offering3);
-		termService.calculateGPA(admission3);
+//		termService.calculateGPA(admission3);
 
         admissions = plannerService.findAdmissions(student);
         int ACTUAL_ADMISSIONS = admissions.size();
