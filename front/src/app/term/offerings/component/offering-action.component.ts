@@ -1,3 +1,4 @@
+import { GpaCalculateDialog } from './../dialog/gpa-calculate.dialog';
 import { GradebookCalculateDialog } from './../dialog/gradebook-calculate.dialog';
 import { Component, Input, EventEmitter, Output, ChangeDetectionStrategy, ViewContainerRef } from '@angular/core';
 import { Offering } from '../offering.interface';
@@ -16,7 +17,8 @@ export class OfferingActionComponent {
 
   @Input() offering: Offering;
   private editorDialogRef: MdDialogRef<OfferingUpdateDialog>;
-    private GradebookCalculateDialog: MdDialogRef<GradebookCalculateDialog>;
+  private GradebookCalculateDialog: MdDialogRef<GradebookCalculateDialog>;
+  private GpaCalculateDialog: MdDialogRef<GpaCalculateDialog>;
 
 
   constructor(private actions: OfferingActions,
@@ -46,7 +48,7 @@ export class OfferingActionComponent {
     });
   }
 
-    calculateGradebooks(): void {
+  calculateGradebooks(): void {
     console.log('Open Calculate Alert Box');
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
@@ -55,7 +57,7 @@ export class OfferingActionComponent {
     config.height = '50%';
     config.position = { top: '0px' };
     this.GradebookCalculateDialog = this.dialog.open(GradebookCalculateDialog, config);
-   this.GradebookCalculateDialog.componentInstance.offering = this.offering;
+    this.GradebookCalculateDialog.componentInstance.offering = this.offering;
     this.GradebookCalculateDialog.afterClosed().subscribe((res) => {
       console.log('Close Calculate Alert Box');
 
@@ -71,13 +73,29 @@ export class OfferingActionComponent {
   //   );
   // }
 
-    calculateGPA(): void {
-    console.log("calculate GPA");
-    let snackBarRef = this.snackBar.open('Calculate GPA :', 'OK');
-    snackBarRef.afterDismissed().subscribe(() => {
-    this.store.dispatch(this.actions.calculateGPA(this.offering));
+  calculateCGPA(): void {
+    console.log('Open Calculate Alert Box');
+    let config = new MdDialogConfig();
+    config.viewContainerRef = this.vcf;
+    config.role = 'dialog';
+    config.width = '60%';
+    config.height = '50%';
+    config.position = { top: '0px' };
+    this.GpaCalculateDialog = this.dialog.open(GpaCalculateDialog, config);
+    this.GpaCalculateDialog.componentInstance.offering = this.offering;
+    this.GpaCalculateDialog.afterClosed().subscribe((res) => {
+      console.log('Close Calculate Alert Box');
+
+    });
   }
-    );
-  }
-  
+
+  //   calculateGPA(): void {
+  //   console.log("calculate GPA");
+  //   let snackBarRef = this.snackBar.open('Calculate GPA :', 'OK');
+  //   snackBarRef.afterDismissed().subscribe(() => {
+  //   this.store.dispatch(this.actions.calculateGPA(this.offering));
+  // }
+  //   );
+  // }
+
 }
