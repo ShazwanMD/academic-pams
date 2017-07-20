@@ -6,25 +6,28 @@
 	<span flex></span>
 	<!-- <button md-button class="md-icon-button" (click)="addDialog()">
 		<md-icon class="md-24 tc-grey-700">add</md-icon>
-	</button> -->
-	<!-- <button md-button class="md-icon-button"
+	</button> 
+	<button md-button class="md-icon-button"
 		(click)="removeAppointment(selectedRows[0])"
 		[disabled]="selectedRows.length != 1">
 		<md-icon class="md-24 tc-grey-700">delete</md-icon>
 	</button> -->
 </div>
-<md-divider></md-divider> <md-card-content> <td-data-table
+<md-divider></md-divider> <md-card-content>
+<td-data-table
 	[data]="appointments" [columns]="columns" [sortBy]="summary"
 	[sortOrder]="ASC" [sortable]="false" [multiple]="true"
-	[selectable]="true"  [(ngModel)]="selectedRows"
+	[selectable]="false"  [(ngModel)]="selectedRows"
       (rowSelect)="selectRow($event)"
-      (selectAll)="selectAllRows($event)" dense> <template
+      (selectAll)="selectAllRows($event)" dense> 
+ <template
 	tdDataTableTemplate="key" let-value="value" let-row="row"
 	let-column="column">
 <div layout="row">
 	<span flex>{{value}}</span>
 </div>
-</template> <template tdDataTableTemplate="action" let-value="value" let-row="row"
+</template>
+ <!-- <template tdDataTableTemplate="action" let-value="value" let-row="row"
 	let-column="column">
 <div layout="row">
 	<button md-icon-button [md-menu-trigger-for]="menu1"
@@ -34,10 +37,19 @@
 	<md-menu x-position="before" #menu1="mdMenu">
 	<button md-menu-item [routerLink]="['/term/appointments', row['id'],'student-appointment-detail']">View
 		appointment details</button>
-	<!-- <button md-menu-item (click)="editDialog(row, true)">Update
+	<button md-menu-item (click)="editDialog(row, true)">Update
 		appointment</button>
 	<button md-menu-item (click)="removeAppointment(row)">Delete
-		appointment</button> -->
+		appointment</button>
 	</md-menu>
 </div>
-</template> </td-data-table> </md-card-content> </md-card>
+</template>  -->
+ <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
+    <div layout="row">
+      <a md-button color="accent" class="text-upper" [routerLink]="['/term/appointments', row['id'],'student-appointment-detail']" mdTooltip="View appointments detail">
+        <!-- [routerLink]="['/term/offerings', row['canonicalCode']]" -->
+        <span>View</span>
+      </a>
+    </div>
+  </template>
+</td-data-table> </md-card-content> </md-card>

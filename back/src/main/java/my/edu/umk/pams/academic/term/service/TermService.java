@@ -74,9 +74,9 @@ public interface TermService {
 
     void calculateGradebook(AdOffering offering);
        
-    void calculateGPA(AdEnrollment enrollment);
+    void calculateGPA(AdOffering offering);
     
-    void calculateCGPA(AdAdmission admission);
+
     //==========+==========================================================================================
     // SECTION
     //====================================================================================================
@@ -243,6 +243,8 @@ public interface TermService {
     AdAdmission findAdmissionByAcademicSessionCohortAndStudent(AdAcademicSession academicSession, AdCohort cohort, AdStudent student);
 
     List<AdAdmission> findAdmissions(Integer offset, Integer limit);
+
+    List<AdAdmission> findAdmissions(AdStudent student, Integer offset, Integer limit);
 
     List<AdAdmission> findAdmissions(AdAcademicSession academicSession, Integer offset, Integer limit);
     

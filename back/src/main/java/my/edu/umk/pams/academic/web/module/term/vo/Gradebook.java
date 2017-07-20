@@ -10,6 +10,7 @@ public class Gradebook {
     private Assessment assessment;
     private Section section;
     private Enrollment enrollment;
+    private Long id;
 
     public BigDecimal getScore() {
         return score;
@@ -42,6 +43,14 @@ public class Gradebook {
 	public void setEnrollment(Enrollment enrollment) {
 		this.enrollment = enrollment;
 	}
+	
+	 public Long getId() {
+	        return id;
+	    }
+
+	    public void setId(Long id) {
+	        this.id = id;
+	    }
     
     
 }

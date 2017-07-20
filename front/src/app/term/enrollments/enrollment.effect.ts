@@ -6,6 +6,7 @@ import {Store} from "@ngrx/store";
 import { SectionActions } from "../sections/section.action";
 import {Section} from "../sections/section.interface";
 import {TermModuleState} from "../index";
+import {from} from "rxjs/observable/from";
 
 
 @Injectable()
@@ -24,7 +25,9 @@ export class EnrollmentEffects {
         .ofType(EnrollmentActions.FIND_ENROLLMENT_BY_ID)
         .map(action => action.payload)
         .switchMap(id => this.termService.findEnrollmentById(id))
-        .map(enrollment => this.enrollmentActions.findEnrollmentByIdSuccess(enrollment));
+        .map(enrollment => this.enrollmentActions.findEnrollmentByIdSuccess(enrollment))
+        .mergeMap(action => from([action,
+        this.enrollmentActions.findGradebooksByEnrollment(action.payload)]));
 
     //update enrollment by section
     @Effect() updateEnrollment$ = this.actions$
@@ -36,6 +39,13 @@ export class EnrollmentEffects {
         .map(state => state[1])
         //.mergeMap(action => from([action, this.appointmentActions.findAppointments()]));
         .map((section: Section) => this.sectionActions.findSectionByCanonicalCode(section.canonicalCode));
+
+    //find gradebooksbyenrollment
+    @Effect() findGradebooksByEnrollment$ = this.actions$
+    .ofType(EnrollmentActions.FIND_GRADEBOOKS_BY_ENROLLMENT)
+    .map(action => action.payload)
+    .switchMap(enrollment => this.termService.findGradebooksByEnrollment(enrollment))
+    .map(enrollments => this.enrollmentActions.findGradebooksByEnrollmentSuccess(enrollments));
 
 
 }

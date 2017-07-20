@@ -36,18 +36,26 @@
           <span flex>{{value}}</span>
         </div>
       </template>
-      <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
+     <!--  <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
         <div layout="row">
          <button md-icon-button [md-menu-trigger-for]="menu1" mdTooltip="Select section actions">
             <md-icon>more_vert</md-icon>
           </button>
           <md-menu x-position="before" #menu1="mdMenu">
             <button md-menu-item [routerLink]="['/term/sections', row['canonicalCode'], 'student-section-detail']">View section details</button>
-           <!--  <button md-menu-item (click)="editDialog(row, true)">Update section</button>
-            <button md-menu-item (click)="deleteSection(row)">Delete section</button> -->
+            <button md-menu-item (click)="editDialog(row, true)">Update section</button>
+            <button md-menu-item (click)="deleteSection(row)">Delete section</button>
           </md-menu>
         </div>
-      </template>
+      </template> -->
+      <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
+    <div layout="row">
+      <a md-button color="accent" class="text-upper" [routerLink]="['/term/sections', row['canonicalCode'], 'student-section-detail']" mdTooltip="View sections info">
+        <!-- [routerLink]="['/term/offerings', row['canonicalCode']]" -->
+        <span>View</span>
+      </a>
+    </div>
+  </template>
     </td-data-table>
   </md-card-content>
 </md-card>

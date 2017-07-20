@@ -22,6 +22,7 @@ export class AdmissionEnrollmentListComponent implements OnInit {
     @Output() view: EventEmitter<Enrollment> = new EventEmitter<Enrollment>();
 
     private columns: any[] = [
+        { name: 'id', label: 'Id' },
         { name: 'section.id', label: 'Section' },
         { name: 'section.offering.academicSession.code', label: 'Session' },
         { name: 'section.code', label: 'Code' },
@@ -39,7 +40,7 @@ export class AdmissionEnrollmentListComponent implements OnInit {
     fromRow: number = 1;
     currentPage: number = 1;
     pageSize: number = 5;
-    sortBy: string = 'section.id';
+    sortBy: string = 'id';
     sortOrder: TdDataTableSortingOrder = TdDataTableSortingOrder.Descending;
 
     private selectedRows: Enrollment[];

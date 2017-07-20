@@ -21,25 +21,4 @@ export class GradebookActions {
             payload: gradebook
         };
     }
-
-    static FIND_GRADEBOOKS_BY_SECTION = '[Gradebook] Find Gradebooks By Section';
-
-    findGradebooksBySection( section ): Action {
-        console.log( "findGradebooksBySection" );
-        return {
-            type: GradebookActions.FIND_GRADEBOOKS_BY_SECTION,
-            payload: section
-        };
-    }
-
-    static FIND_GRADEBOOKS_BY_SECTION_SUCCESS = '[Gradebook] Find Gradebooks By Section Success';
-
-    findGradebooksBySectionSuccess( gradebooks ): Action {
-        console.log( "findEnrollmentsBySectionSuccess" );
-        return {
-            type: GradebookActions.FIND_GRADEBOOKS_BY_SECTION_SUCCESS,
-            payload: gradebooks
-        };
-    }
-
 }

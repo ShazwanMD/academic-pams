@@ -123,26 +123,6 @@ export class SectionActions {
         };
     }
 
-
-    static FIND_SECTIONS_BY_OFFERING = '[Offering] Find Sections By Offering';
-
-    findSectionsByOffering(offering): Action {
-        return {
-            type: SectionActions.FIND_SECTIONS_BY_OFFERING,
-            payload: offering
-        };
-    }
-
-    static FIND_SECTIONS_BY_OFFERING_SUCCESS = '[Offering] Find Sections By Offering Success';
-
-    findSectionsByOfferingSuccess(sections): Action {
-        return {
-            type: SectionActions.FIND_SECTIONS_BY_OFFERING_SUCCESS,
-            payload: sections
-        };
-    }
-
-
     static FIND_SECTION_BY_CANONICAL_CODE = '[Section] Find Section By Canonical Code';
 
     findSectionByCanonicalCode(canonicalCode): Action {

@@ -359,6 +359,16 @@ public class TermController {
         termService.updateEnrollment(enrollment);
         return new ResponseEntity<>("Success", HttpStatus.OK);
     }
+    
+    //find gradebooksByEnrollment
+    @RequestMapping(value = "/enrollments/{id}/gradebooks", method = RequestMethod.GET)
+    public ResponseEntity<List<Gradebook>> findGradebooksByEnrollment(@PathVariable Long id) {
+        AdEnrollment enrollment = termService.findEnrollmentById(id);
+        List<AdGradebook> gradebooks = termService.findGradebooks(enrollment);
+        List<Gradebook> gradebookVos = termTransformer.toGradebookVos(gradebooks);
+        return new ResponseEntity<List<Gradebook>>(gradebookVos, HttpStatus.OK);
+
+    }
 
     // ====================================================================================================
     // ENROLLMENT APPLICATION
@@ -791,6 +801,15 @@ public class TermController {
         AdAcademicSession academicSession = plannerService.findCurrentAcademicSession();
         AdOffering offering = termService.findOfferingByCanonicalCode(canonicalCode);
         termService.calculateGradebook(offering);
+    return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
+    
+    @RequestMapping(value = "/offerings/{canonicalCode}/calculateGPA", method = RequestMethod.POST)
+    public ResponseEntity<String> calculateGPA(@PathVariable String canonicalCode) {
+        dummyLogin();
+        AdAcademicSession academicSession = plannerService.findCurrentAcademicSession();
+        AdOffering offering = termService.findOfferingByCanonicalCode(canonicalCode);
+        termService.calculateGPA(offering);
     return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
 

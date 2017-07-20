@@ -8,10 +8,7 @@ import my.edu.umk.pams.academic.security.service.SecurityService;
 import my.edu.umk.pams.academic.term.dao.AdAssessmentDao;
 import my.edu.umk.pams.academic.term.dao.AdOfferingDao;
 import my.edu.umk.pams.academic.term.dao.AdSectionDao;
-import my.edu.umk.pams.academic.term.model.AdAdmission;
-import my.edu.umk.pams.academic.term.model.AdEnrollment;
-import my.edu.umk.pams.academic.term.model.AdOffering;
-import my.edu.umk.pams.academic.term.model.AdSection;
+import my.edu.umk.pams.academic.term.model.*;
 import my.edu.umk.pams.academic.term.service.TermService;
 
 import org.hibernate.SessionFactory;
@@ -22,8 +19,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.util.List;
+
+import static java.math.RoundingMode.HALF_UP;
 
 
 /**
@@ -153,62 +151,96 @@ public class PlannerServiceImpl implements PlannerService {
         sessionFactory.getCurrentSession().flush();
     }
 
+    static int TWO = 2;
     public void calculateGpa(AdAdmission admission) {
-        LOG.debug("admission:{}", admission.getCohort().getCode());
+        LOG.debug("admission:{}", admission.getSession().getCode());
 
-        List<AdEnrollment> enrollments = termService.findEnrollments(admission);
-        BigDecimal totalCreditHoursPerSemester = BigDecimal.ZERO;
-        BigDecimal totalGradePointHoursPerSemester = BigDecimal.ZERO;
-        BigDecimal totalCreditHoursPerStudent = BigDecimal.ZERO;
-        BigDecimal totalGradePointHoursPerStudent = BigDecimal.ZERO;
-        for (AdEnrollment enrollment : enrollments) {
-            LOG.debug("Enrollment:{}", enrollment.getGradeCode());
-            //Offering
-            AdOffering offering = enrollment.getSection().getOffering();
-            LOG.debug("offering:{}", offering.getCanonicalCode());
+        BigDecimal hoursPerSemester = getHoursPerSemester(admission);
+        BigDecimal pointHoursPerSemester = getPointHoursPerSemester(admission);
 
-            //Course
-            AdCourse course = offering.getCourse();
-            LOG.debug("Course:{}", course);
+        BigDecimal hoursPerStudent = getHoursPerStudent(admission.getStudent());
+        BigDecimal pointHoursPerStudent = getPointHoursPerStudent(admission.getStudent());
 
-            //CreditHour
-            Integer credit = course.getCredit();
-            LOG.debug("credit:{}", credit);
+        BigDecimal gpa = pointHoursPerSemester.divide(hoursPerSemester, TWO, HALF_UP).setScale(TWO, HALF_UP);
+        LOG.debug("GPA:{}", gpa);
 
-            BigDecimal creditHour = new BigDecimal(credit);
-            LOG.debug("CreditHour:{}", creditHour);
+        BigDecimal cgpa = pointHoursPerStudent.divide(hoursPerStudent, TWO, HALF_UP).setScale(TWO, HALF_UP);
+        LOG.debug("CGPA:{}", cgpa);
+
+        admission.setGpa(gpa);
+        admission.setCgpa(cgpa);
+
+        termService.updateAdmission(admission);
+    }
+
+    private BigDecimal getCreditHour(AdEnrollment enrollment) {
+        LOG.debug("Enrollment:{}", enrollment.getGradeCode().getCode());
+        //Offering
+        AdOffering offering = enrollment.getSection().getOffering();
+        LOG.debug("offering:{}", offering.getCanonicalCode());
+
+        //Course
+        AdCourse course = offering.getCourse();
+        LOG.debug("Course:{}", course);
+
+        //CreditHour
+        Integer credit = course.getCredit();
+        LOG.debug("credit:{}", credit);
+
+        BigDecimal creditHour = new BigDecimal(credit);
+        LOG.debug("CreditHour:{}", creditHour);
+
+        return creditHour;
+    }
+
+    private BigDecimal getHoursPerSemester(AdAdmission admission) {
+        BigDecimal hoursPerSemester = BigDecimal.ZERO;
+
+        for (AdEnrollment enrollment : termService.findEnrollments(admission)) {
+            hoursPerSemester = hoursPerSemester.add(getCreditHour(enrollment));
+            LOG.debug("hoursPerSemester:{}", hoursPerSemester);
+        }
+        return hoursPerSemester;
+    }
+
+    private BigDecimal getPointHoursPerSemester(AdAdmission admission) {
+        BigDecimal pointHoursPerSemester = BigDecimal.ZERO;
+
+        for (AdEnrollment enrollment : termService.findEnrollments(admission)) {
+            BigDecimal creditHour = getCreditHour(enrollment);
 
             AdGradeCode gradeCode = enrollment.getGradeCode();
             LOG.debug("gradeCode:{}", gradeCode.getCode());
 
-            BigDecimal gradePoint = gradeCode.getPoint();
+            BigDecimal point = gradeCode.getPoint();
+            BigDecimal pointHoursPerEnrollment = point.multiply(creditHour);
 
-            BigDecimal gradePointHoursPerCourse = gradePoint.multiply(creditHour);
-
-            //GPA
-            totalGradePointHoursPerSemester = totalGradePointHoursPerSemester.add(gradePointHoursPerCourse);
-            LOG.debug("totalGradePointHoursPerSemester:{}", totalGradePointHoursPerSemester);
-
-            totalCreditHoursPerSemester = totalCreditHoursPerSemester.add(creditHour);
-            LOG.debug("totalCreditHoursPerSemester:{}", totalCreditHoursPerSemester);
-
-
+            pointHoursPerSemester = pointHoursPerSemester.add(pointHoursPerEnrollment);
+            LOG.debug("pointHoursPerSemester:{}", pointHoursPerSemester);
         }
-        //CGPA
-        totalGradePointHoursPerStudent = totalGradePointHoursPerStudent.add(totalGradePointHoursPerSemester);
-        LOG.debug("totalGradePointHoursPerStudent:{}", totalGradePointHoursPerStudent);
+        return pointHoursPerSemester;
+    }
 
-        totalCreditHoursPerStudent = totalCreditHoursPerStudent.add(totalCreditHoursPerSemester);
-        LOG.debug("totalCreditHoursPerStudent:{}", totalCreditHoursPerStudent);
+    private BigDecimal getHoursPerStudent(AdStudent student) {
+        BigDecimal hoursPerStudent = BigDecimal.ZERO;
+        List<AdAdmission> admissions = findAdmissions(student);
+        for (AdAdmission admission : admissions) {
+            hoursPerStudent = hoursPerStudent.add(getHoursPerSemester(admission));
+        }
+        return hoursPerStudent;
+    }
 
-        BigDecimal gpa = totalGradePointHoursPerSemester.divide(totalCreditHoursPerSemester).setScale(2, RoundingMode.HALF_UP);
-        LOG.debug("GPA:{}", gpa);
-        BigDecimal cgpa = totalGradePointHoursPerStudent.divide(totalCreditHoursPerStudent, 2, RoundingMode.HALF_UP).setScale(2, RoundingMode.HALF_UP);
-        LOG.debug("CGPA:{}", cgpa);
-        admission.setGpa(gpa);
-        admission.setCgpa(cgpa);
-        termService.updateAdmission(admission);
+    private BigDecimal getPointHoursPerStudent(AdStudent student) {
+        BigDecimal pointHoursPerStudent = BigDecimal.ZERO;
+        for (AdAdmission admission : findAdmissions(student)) {
+            pointHoursPerStudent = pointHoursPerStudent.add(getPointHoursPerSemester(admission));
+        }
+        return pointHoursPerStudent;
+    }
 
+    // todo(sam) Fix 2nd & 3rd params
+    public List<AdAdmission> findAdmissions(AdStudent student){
+        return termService.findAdmissions(student, 0, 9999);
     }
 
     //====================================================================================================

@@ -14,9 +14,11 @@ import {EnrollmentEffects} from "./enrollment.effect";
 import {EnrollmentDetailPage} from "./enrollment-detail.page";
 import {EnrollmentComponent} from "./component/enrollment.component";
 import {EnrollmentActionComponent} from "./component/enrollment-action.component";
+import {StudentEnrollmentActionComponent} from "./component/student-enrollment-action.component";
 import {EnrollmentEditorDialog} from "./dialog/enrollment-editor.dialog";
 import {EnrollmentStatusSelectComponent} from "./component/enrollment-status-select.component";
 import { EnrollmentGradebookListComponent } from "./component/enrollment-gradebook-list.component";
+import { StudentEnrollmentDetailPage } from "./student-enrollment-detail.page";
 
 @NgModule({
   imports: [
@@ -29,12 +31,14 @@ import { EnrollmentGradebookListComponent } from "./component/enrollment-gradebo
   declarations: [
     // page
     EnrollmentDetailPage,
+    StudentEnrollmentDetailPage,
 
     // component
     EnrollmentListComponent,
     EnrollmentGradebookListComponent,
     EnrollmentComponent,
     EnrollmentActionComponent,
+    StudentEnrollmentActionComponent,
     EnrollmentStatusSelectComponent,
 
   //dialog

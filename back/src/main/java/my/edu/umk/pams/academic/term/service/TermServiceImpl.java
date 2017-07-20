@@ -234,22 +234,27 @@ public class TermServiceImpl implements TermService {
 			enrollment.setTotalScore(totalScore);
 			enrollment.setGradeCode(commonService.findByScore(enrollment.getTotalScore()));
 			updateEnrollment(enrollment);
+			LOG.debug("calculateGradebookTotalScore:{}",enrollment.getTotalScore());
+			LOG.debug("calculateGradebookGradeCode:{}",enrollment.getGradeCode().getCode());
 			
-			calculateGPA(enrollment);
+			
+//			calculateGPA(offering);
 		}
 
 	}
 
-	public void calculateGPA(AdEnrollment enrollment) {
-
-		plannerService.calculateGpa(enrollment.getAdmission());
+	public void calculateGPA(AdOffering offering) {
+		List<AdEnrollment> enrollments = findEnrollments(offering);
+		for (AdEnrollment enrollment : enrollments) {
+			
+			plannerService.calculateGpa(enrollment.getAdmission());
+			
+		}
+		
+	
 
 	}
 	
-	public void calculateCGPA(AdAdmission admission) {
-
-
-	}
 
 	// ====================================================================================================
 	// SECTION
@@ -697,6 +702,11 @@ public class TermServiceImpl implements TermService {
 	@Override
 	public List<AdAdmission> findAdmissions(Integer offset, Integer limit) {
 		return admissionDao.find(offset, limit);
+	}
+
+	@Override
+	public List<AdAdmission> findAdmissions(AdStudent student, Integer offset, Integer limit) {
+		return admissionDao.find(student, offset, limit);
 	}
 
 	@Override

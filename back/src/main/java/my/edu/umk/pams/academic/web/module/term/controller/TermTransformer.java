@@ -228,6 +228,7 @@ public class TermTransformer {
 	
 	public Gradebook toGradebookVo(AdGradebook gradebook) {
 		Gradebook vo = new Gradebook();
+		vo.setId(gradebook.getId());
 		vo.setAssessment(toAssessmentVo(gradebook.getAssessment()));
 		vo.setEnrollment(toEnrollmentVo(gradebook.getEnrollment()));
 		vo.setScore(gradebook.getScore());

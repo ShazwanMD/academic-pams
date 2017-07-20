@@ -19,7 +19,7 @@ export class AcademicSessionCreatorDialog implements OnInit {
   private createForm: FormGroup;
   private create: boolean = false;
   private _academicSession: AcademicSession;
-  private minLength: number = 10; // contoh
+  private minLength: number = 5; // contoh
 
   constructor(private formBuilder: FormBuilder,
               private store: Store<PlannerModuleState>,
@@ -35,13 +35,15 @@ export class AcademicSessionCreatorDialog implements OnInit {
   ngOnInit(): void {
     this.createForm = this.formBuilder.group({
       id: [undefined],
-      code: [''],
+      code: ['', Validators.required],
       description: ['', Validators.minLength(this.minLength)],
       current: [true],
-      startDate: [undefined, Validators.required],
-      endDate: [undefined, Validators.required],
-      semester: [AcademicSemester.SEMESTER_1, Validators.required],
-      year: [<AcademicYear>{}, Validators.required],
+      startDate: ['', Validators.required],
+      endDate: ['', Validators.required],
+      semester: ['', Validators.required],
+      // semester: [AcademicSemester.SEMESTER_1, Validators.required],
+      //year: [<AcademicYear>{}, Validators.required],
+      year: ['', Validators.required],
     });
 
     if (this.create) this.createForm.patchValue(this._academicSession);

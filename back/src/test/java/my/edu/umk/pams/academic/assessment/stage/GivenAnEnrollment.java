@@ -79,7 +79,10 @@ public class GivenAnEnrollment extends Stage<GivenAnEnrollment> {
     @ProvidedScenarioState
     private AdCourse course;
 
+
     public GivenAnEnrollment create_enrollment() throws Exception {
+    	
+    	AdAcademicSession academicSessionCode = plannerService.findAcademicSessionByCode("201720181");
 
         student = profileService.findStudentByMatricNo("A17M0009F");
         LOG.debug("Student Name:{}",student.getName());
@@ -118,6 +121,7 @@ public class GivenAnEnrollment extends Stage<GivenAnEnrollment> {
     }
 
     private void createAdmission() {
+    	AdAcademicSession academicSessionCode = plannerService.findAcademicSessionByCode("201720181");
         admission = new AdAdmissionImpl();
         admission.setGpa(BigDecimal.ZERO);
         admission.setCgpa(BigDecimal.ZERO);
@@ -127,7 +131,7 @@ public class GivenAnEnrollment extends Stage<GivenAnEnrollment> {
         admission.setStatus(AdAdmissionStatus.ADMITTED);
         admission.setStanding(AdAcademicStanding.TBD);
         admission.setStudyCenter(studyCenter);
-        admission.setSession(session);
+        admission.setSession(academicSessionCode);
         admission.setCohort(cohort);
         termService.saveAdmission(admission);
 //        LOG.debug("Admission Student Name :{}", admission.getStudent().getName());
@@ -155,6 +159,7 @@ public class GivenAnEnrollment extends Stage<GivenAnEnrollment> {
     }
 
     private void createOffering() throws Exception {
+    	AdAcademicSession academicSessionCode = plannerService.findAcademicSessionByCode("201720181");
         offering = new AdOfferingImpl();
         offering.setCanonicalCode("MASTER-MBA-GST5013-201720181");
         offering.setCode("MASTER-MBA-GST5013");
@@ -163,7 +168,7 @@ public class GivenAnEnrollment extends Stage<GivenAnEnrollment> {
         offering.setCapacity(100);
         offering.setProgram(program);
         offering.setCourse(course);
-        offering.setSession(session);
+        offering.setSession(academicSessionCode);
         termService.saveOffering(offering);
         LOG.debug("Offering Course:{}", offering.getCourse().getCode());
 

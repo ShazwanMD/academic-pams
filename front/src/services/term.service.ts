@@ -320,7 +320,15 @@ export class TermService {
     return this._http.put(this.TERM_API + '/sections/' + section.canonicalCode + '/enrollments/' + enrollment.id, JSON.stringify(enrollment))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
-
+  
+  //find gradebooks by enrollment
+  findGradebooksByEnrollment(enrollment: Enrollment): Observable<Gradebook[]> {
+    console.log('findGradebooksByEnrollment');
+    return this._http.get(this.TERM_API + '/enrollments/' + enrollment.id + '/gradebooks')
+      .map((res: Response) => <Gradebook[]>res.json());
+  }
+  
+  
   //==================================================================================================== //
   // GRADEBOOK
   // ==================================================================================================== //
@@ -524,6 +532,13 @@ export class TermService {
     console.log('CalculateTotalScore');
     let options: RequestOptions = new RequestOptions({responseType: ResponseContentType.ArrayBuffer});
     return this._http.post(this.TERM_API + '/offerings/' + offering.canonicalCode + '/calculateGradebook', options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+    calculateGPA(offering: Offering): Observable<String> {
+    console.log('CalculateGpa');
+    let options: RequestOptions = new RequestOptions({responseType: ResponseContentType.ArrayBuffer});
+    return this._http.post(this.TERM_API + '/offerings/' + offering.canonicalCode + '/calculateGPA', options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 

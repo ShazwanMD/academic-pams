@@ -14,11 +14,11 @@ import {EnrollmentApplicationTaskCreatorDialog} from "../enrollment-applications
 import { Gradebook } from "../gradebooks/gradebook.interface";
 
 @Component({
-    selector: 'pams-enrollment-detail',
-    templateUrl: './enrollment-detail.page.html',
+    selector: 'pams-student-enrollment-detail',
+    templateUrl: './student-enrollment-detail.page.html',
 })
 
-export class EnrollmentDetailPage implements OnInit {
+export class StudentEnrollmentDetailPage implements OnInit {
 
     @Input() enrollment: Enrollment;
     
