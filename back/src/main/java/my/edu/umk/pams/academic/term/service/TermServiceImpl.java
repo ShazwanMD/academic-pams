@@ -238,14 +238,20 @@ public class TermServiceImpl implements TermService {
 			LOG.debug("calculateGradebookGradeCode:{}",enrollment.getGradeCode().getCode());
 			
 			
-			calculateGPA(enrollment.getAdmission());
+//			calculateGPA(offering);
 		}
 
 	}
 
-	public void calculateGPA(AdAdmission admission) {
-
-		plannerService.calculateGpa(admission);
+	public void calculateGPA(AdOffering offering) {
+		List<AdEnrollment> enrollments = findEnrollments(offering);
+		for (AdEnrollment enrollment : enrollments) {
+			
+			plannerService.calculateGpa(enrollment.getAdmission());
+			
+		}
+		
+	
 
 	}
 	

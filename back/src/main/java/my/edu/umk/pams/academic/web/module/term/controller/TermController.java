@@ -803,6 +803,15 @@ public class TermController {
         termService.calculateGradebook(offering);
     return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
+    
+    @RequestMapping(value = "/offerings/{canonicalCode}/calculateGPA", method = RequestMethod.POST)
+    public ResponseEntity<String> calculateGPA(@PathVariable String canonicalCode) {
+        dummyLogin();
+        AdAcademicSession academicSession = plannerService.findCurrentAcademicSession();
+        AdOffering offering = termService.findOfferingByCanonicalCode(canonicalCode);
+        termService.calculateGPA(offering);
+    return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
 
     // ====================================================================================================
     // ASSESSMENT
