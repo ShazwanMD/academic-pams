@@ -51,4 +51,13 @@ export class OfferingActionComponent {
   }
     );
   }
+
+    calculateGPA(): void {
+    console.log("calculate GPA");
+    let snackBarRef = this.snackBar.open('Calculate GPA :', 'OK');
+    snackBarRef.afterDismissed().subscribe(() => {
+    this.store.dispatch(this.actions.calculateGPA(this.offering));
+  }
+    );
+  }
 }

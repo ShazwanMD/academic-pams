@@ -1,5 +1,5 @@
-import {Injectable} from '@angular/core';
-import {Action} from '@ngrx/store';
+import { Injectable } from '@angular/core';
+import { Action } from '@ngrx/store';
 
 @Injectable()
 export class OfferingActions {
@@ -101,7 +101,7 @@ export class OfferingActions {
   saveOffering(program, course, offering): Action {
     return {
       type: OfferingActions.SAVE_OFFERING,
-      payload: {program: program, course: course, offering: offering}
+      payload: { program: program, course: course, offering: offering }
     };
   }
 
@@ -158,7 +158,7 @@ export class OfferingActions {
   uploadGradebook(offering, file): Action {
     return {
       type: OfferingActions.UPLOAD_GRADEBOOK,
-      payload: {offering: offering, file: file}
+      payload: { offering: offering, file: file }
     };
   }
 
@@ -203,6 +203,24 @@ export class OfferingActions {
   calculateGradebookSuccess(offering): Action {
     return {
       type: OfferingActions.CALCULATE_GRADEBOOK_SUCCESS,
+      payload: offering
+    };
+  }
+
+  static CALCULATE_GPA = '[Offering] Calculate GPA';
+
+  calculateGPA(offering): Action {
+    return {
+      type: OfferingActions.CALCULATE_GPA,
+      payload: offering
+    };
+  }
+
+  static CALCULATE_GPA_SUCCESS = '[Offering] Calculate GPA Success';
+
+  calculateGPASuccess(offering): Action {
+    return {
+      type: OfferingActions.CALCULATE_GPA_SUCCESS,
       payload: offering
     };
   }

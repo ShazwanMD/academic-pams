@@ -1,16 +1,16 @@
-import {SectionActions} from '../sections/section.action';
-import {PlannerService} from '../../../services/planner.service';
-import {CourseActions} from '../../planner/courses/course.action';
-import {ProgramActions} from '../../planner/programs/program.action';
-import {Injectable} from '@angular/core';
-import {Effect, Actions} from '@ngrx/effects';
-import {OfferingActions} from './offering.action';
-import {TermService} from '../../../services/term.service';
-import {from} from 'rxjs/observable/from';
-import {Observable} from 'rxjs/Observable';
-import {Store} from '@ngrx/store';
-import {TermModuleState} from '../index';
-import {Offering} from './offering.interface';
+import { SectionActions } from '../sections/section.action';
+import { PlannerService } from '../../../services/planner.service';
+import { CourseActions } from '../../planner/courses/course.action';
+import { ProgramActions } from '../../planner/programs/program.action';
+import { Injectable } from '@angular/core';
+import { Effect, Actions } from '@ngrx/effects';
+import { OfferingActions } from './offering.action';
+import { TermService } from '../../../services/term.service';
+import { from } from 'rxjs/observable/from';
+import { Observable } from 'rxjs/Observable';
+import { Store } from '@ngrx/store';
+import { TermModuleState } from '../index';
+import { Offering } from './offering.interface';
 
 @Injectable()
 export class OfferingEffects {
@@ -18,13 +18,13 @@ export class OfferingEffects {
   private OFFERING: string[] = 'termModuleState.offering'.split('.');
 
   constructor(private actions$: Actions,
-              private offeringActions: OfferingActions,
-              private programActions: ProgramActions,
-              private courseActions: CourseActions,
-              private sectionActions: SectionActions,
-              private termService: TermService,
-              private plannerService: PlannerService,
-              private store$: Store<TermModuleState>) {
+    private offeringActions: OfferingActions,
+    private programActions: ProgramActions,
+    private courseActions: CourseActions,
+    private sectionActions: SectionActions,
+    private termService: TermService,
+    private plannerService: PlannerService,
+    private store$: Store<TermModuleState>) {
   }
 
   @Effect() findOfferings$ = this.actions$
@@ -110,5 +110,11 @@ export class OfferingEffects {
     .map((action) => action.payload)
     .switchMap((offering) => this.termService.calculateGradebook(offering))
     .map((message) => this.offeringActions.calculateGradebookSuccess(message));
+
+  @Effect() calculateGPA$ = this.actions$
+    .ofType(OfferingActions.CALCULATE_GPA)
+    .map((action) => action.payload)
+    .switchMap((offering) => this.termService.calculateGPA(offering))
+    .map((message) => this.offeringActions.calculateGPASuccess(message));
 }
 

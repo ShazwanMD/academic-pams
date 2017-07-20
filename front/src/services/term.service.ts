@@ -535,6 +535,13 @@ export class TermService {
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
+    calculateGPA(offering: Offering): Observable<String> {
+    console.log('CalculateGpa');
+    let options: RequestOptions = new RequestOptions({responseType: ResponseContentType.ArrayBuffer});
+    return this._http.post(this.TERM_API + '/offerings/' + offering.canonicalCode + '/calculateGPA', options)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
 
   // ====================================================================================================
   // PRIVATE METHODS
