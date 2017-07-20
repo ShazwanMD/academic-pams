@@ -1,3 +1,4 @@
+import { GradebookCalculateDialog } from './dialog/gradebook-calculate.dialog';
 import { GradebookComponent } from './component/gradebook.component';
 import '@ngrx/core/add/operator/select';
 import {appRoutes, appRoutingProviders} from '../../app.routes';
@@ -71,6 +72,7 @@ import { StudentOfferingCenterPage } from "./student-offering-center.page";
     //dialog
     OfferingEditorDialog,
     OfferingUpdateDialog,
+    GradebookCalculateDialog,
 
 
   ],
@@ -79,6 +81,7 @@ import { StudentOfferingCenterPage } from "./student-offering-center.page";
    entryComponents: [
     OfferingEditorDialog,
        OfferingUpdateDialog,
+       GradebookCalculateDialog,
     GradebookComponent,
 
   ]

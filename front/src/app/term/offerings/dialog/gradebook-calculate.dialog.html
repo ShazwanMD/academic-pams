@@ -1,0 +1,17 @@
+<h2 md-dialog-title>Confirmation To Calculate Gradebook</h2>
+<md-dialog-content>
+    <md-card>
+        <p>Are You Sure To Calculate {{offering?.course.code}}?</p>
+        
+    </md-card>
+</md-dialog-content>
+<md-dialog-actions align="end">
+  <button md-raised-button color="accent" (click)="calculate()">
+    calculate
+  </button>
+</md-dialog-actions>
+<md-dialog-actions align="end">
+  <button md-raised-button color="accent" (click)="cancel()">
+    cancel
+  </button>
+</md-dialog-actions>

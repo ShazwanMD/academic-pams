@@ -1,3 +1,4 @@
+import { GradebookCalculateDialog } from './../dialog/gradebook-calculate.dialog';
 import { Component, Input, EventEmitter, Output, ChangeDetectionStrategy, ViewContainerRef } from '@angular/core';
 import { Offering } from '../offering.interface';
 import { OfferingUpdateDialog } from '../dialog/offering-update.dialog';
@@ -15,6 +16,8 @@ export class OfferingActionComponent {
 
   @Input() offering: Offering;
   private editorDialogRef: MdDialogRef<OfferingUpdateDialog>;
+    private GradebookCalculateDialog: MdDialogRef<GradebookCalculateDialog>;
+
 
   constructor(private actions: OfferingActions,
     private store: Store<TermModuleState>,
@@ -43,14 +46,30 @@ export class OfferingActionComponent {
     });
   }
 
-  calculateGradebook(): void {
-    console.log("calculate TotalScore");
-    let snackBarRef = this.snackBar.open('Calculate Gradebook Score :', 'OK');
-    snackBarRef.afterDismissed().subscribe(() => {
-    this.store.dispatch(this.actions.calculateGradebook(this.offering));
+    calculateGradebooks(): void {
+    console.log('Open Calculate Alert Box');
+    let config = new MdDialogConfig();
+    config.viewContainerRef = this.vcf;
+    config.role = 'dialog';
+    config.width = '60%';
+    config.height = '50%';
+    config.position = { top: '0px' };
+    this.GradebookCalculateDialog = this.dialog.open(GradebookCalculateDialog, config);
+   this.GradebookCalculateDialog.componentInstance.offering = this.offering;
+    this.GradebookCalculateDialog.afterClosed().subscribe((res) => {
+      console.log('Close Calculate Alert Box');
+
+    });
   }
-    );
-  }
+
+  // calculateGradebook(): void {
+  //   console.log("calculate TotalScore");
+  //   let snackBarRef = this.snackBar.open('Calculate Gradebook Score :', 'OK');
+  //   snackBarRef.afterDismissed().subscribe(() => {
+  //   this.store.dispatch(this.actions.calculateGradebook(this.offering));
+  // }
+  //   );
+  // }
 
     calculateGPA(): void {
     console.log("calculate GPA");
@@ -60,4 +79,5 @@ export class OfferingActionComponent {
   }
     );
   }
+  
 }
