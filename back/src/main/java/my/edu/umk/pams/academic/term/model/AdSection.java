@@ -44,6 +44,10 @@ public interface AdSection extends AdMetaObject {
     Integer getAppointmentCount();
 
     void setAppointmentCount(Integer appointmentCount);
+    
+    boolean getIsExists();
+
+    void setIsExists(boolean IsExists);
 
     Integer getEnrollmentCount();
 

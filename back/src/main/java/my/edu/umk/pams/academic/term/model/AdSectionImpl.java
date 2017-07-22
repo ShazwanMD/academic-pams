@@ -55,6 +55,9 @@ public class AdSectionImpl implements AdSection {
 
     @Transient
     private Integer appointmentCount = 0;
+    
+    @Transient
+    private boolean isExists = true;
 
 
     @Override
@@ -181,5 +184,15 @@ public class AdSectionImpl implements AdSection {
     @Override
     public void setAppointmentCount(Integer appointmentCount) {
         this.appointmentCount = appointmentCount;
+    }
+    
+    @Override
+    public boolean getIsExists() {
+        return isExists;
+    }
+
+    @Override
+    public void setIsExists(boolean isExists) {
+        this.isExists = isExists;
     }
 }

@@ -68,7 +68,7 @@ public interface TermService {
     
     boolean isOfferingExists(String canonicalCode);
 
-    void saveOffering(AdOffering offering) throws Exception;
+    void saveOffering(AdOffering offering) ;
 
     void updateOffering(AdOffering offering);
 
@@ -102,7 +102,7 @@ public interface TermService {
     List<AdSection> findSections(String filter, AdAcademicSession academicSession, AdAdmission admission, Integer offset, Integer limit);
 
     Integer countSection();
-
+    
     Integer countSection(String filter, AdAcademicSession academicSession);
 
     Integer countSection(AdOffering offering);
@@ -122,6 +122,8 @@ public interface TermService {
     boolean hasSection(AdAcademicSession academicSession, AdOffering offering);
 
     boolean isSectionExists(String canonicalCode);
+    
+    boolean isExists(String canonicalCode);
 
     void openSection(AdSection section); // todo(uda): throws SectionException;
 

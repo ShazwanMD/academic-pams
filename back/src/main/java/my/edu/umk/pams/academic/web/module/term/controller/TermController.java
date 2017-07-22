@@ -1125,6 +1125,7 @@ public class TermController {
             AdSection s = termService.findSectionById(section.getId());
             section.setAppointmentCount(termService.countAppointment(s));
             section.setEnrollmentCount(termService.countEnrollment(s));
+            section.setIsExists(section.getIsExists());
         }
         return sections;
     }

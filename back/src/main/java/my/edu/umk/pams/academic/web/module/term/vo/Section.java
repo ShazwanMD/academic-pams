@@ -20,6 +20,7 @@ public class Section extends MetaObject {
     // transient
     private Integer enrollmentCount;
     private Integer appointmentCount;
+    private boolean isExists;
 
     public String getCode() {
         return code;
@@ -67,6 +68,14 @@ public class Section extends MetaObject {
 
     public void setAppointmentCount(Integer appointmentCount) {
         this.appointmentCount = appointmentCount;
+    }
+    
+    public boolean getIsExists() {
+        return isExists;
+    }
+
+    public void setIsExists(boolean isExists) {
+        this.isExists = isExists;
     }
 
     public Offering getOffering() {

@@ -205,12 +205,15 @@ public class TermServiceImpl implements TermService {
 	}
 
 	@Override
-	public void saveOffering(AdOffering offering) throws Exception {
-		if (isOfferingExists(offering.getCanonicalCode()))
-			throw new Exception("Duplicate offering record");
-
+	public void saveOffering(AdOffering offering) {
+		if (isOfferingExists(offering.getCanonicalCode())){
+			System.out.println("Duplicate data");
+			//LOG.debug("Data duplicate.Sorry");
+			//throw new Exception("Duplicate offering record");
+	}else{
 		offeringDao.save(offering, securityService.getCurrentUser());
 		sessionFactory.getCurrentSession().flush();
+	}
 	}
 
 	@Override
@@ -367,6 +370,11 @@ public class TermServiceImpl implements TermService {
 
 	@Override
 	public boolean isSectionExists(String canonicalCode) {
+		return sectionDao.isExists(canonicalCode);
+	}
+	
+	@Override
+	public boolean isExists(String canonicalCode) {
 		return sectionDao.isExists(canonicalCode);
 	}
 
