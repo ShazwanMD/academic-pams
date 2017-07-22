@@ -82,7 +82,8 @@ export class EnrollmentApplicationEffects {
     .map(message => this.enrollmentApplicationActions.startEnrollmentApplicationTaskSuccess(message))
     .mergeMap(action => from([action,
         this.enrollmentApplicationActions.findAssignedEnrollmentApplicationTasks(),
-        this.enrollmentApplicationActions.findPooledEnrollmentApplicationTasks()
+        this.enrollmentApplicationActions.findPooledEnrollmentApplicationTasks(),
+        this.enrollmentApplicationActions.findArchivedEnrollmentApplications()
       ]
     ));
 
@@ -93,7 +94,8 @@ export class EnrollmentApplicationEffects {
     .map(message => this.enrollmentApplicationActions.completeEnrollmentApplicationTaskSuccess(message))
     .mergeMap(action => from([action,
         this.enrollmentApplicationActions.findAssignedEnrollmentApplicationTasks(),
-        this.enrollmentApplicationActions.findPooledEnrollmentApplicationTasks()
+        this.enrollmentApplicationActions.findPooledEnrollmentApplicationTasks(),
+        this.enrollmentApplicationActions.findArchivedEnrollmentApplications()
       ]
     ));
   
@@ -104,9 +106,11 @@ export class EnrollmentApplicationEffects {
     .map(message => this.enrollmentApplicationActions.claimEnrollmentApplicationTaskSuccess(message))
     .mergeMap(action => from([action,
         this.enrollmentApplicationActions.findAssignedEnrollmentApplicationTasks(),
-        this.enrollmentApplicationActions.findPooledEnrollmentApplicationTasks()
-      ]
-    ));
+        this.enrollmentApplicationActions.findPooledEnrollmentApplicationTasks(),
+        this.enrollmentApplicationActions.findArchivedEnrollmentApplications()]))
+  .withLatestFrom(this.store$.select(...this.ENROLLMENT_APPLICATION_TASK))
+  .map(state => state[1])
+  .map((application: EnrollmentApplicationTask) => this.enrollmentApplicationActions.findEnrollmentApplicationByReferenceNo(application.referenceNo));
 
   @Effect() releaseEnrollmentApplicationTask$ = this.actions$
     .ofType(EnrollmentApplicationActions.RELEASE_ENROLLMENT_APPLICATION_TASK)
@@ -115,7 +119,8 @@ export class EnrollmentApplicationEffects {
     .map(message => this.enrollmentApplicationActions.releaseEnrollmentApplicationTaskSuccess(message))
     .mergeMap(action => from([action,
         this.enrollmentApplicationActions.findAssignedEnrollmentApplicationTasks(),
-        this.enrollmentApplicationActions.findPooledEnrollmentApplicationTasks()
+        this.enrollmentApplicationActions.findPooledEnrollmentApplicationTasks(),
+        this.enrollmentApplicationActions.findArchivedEnrollmentApplications()
       ]
     ));
   
@@ -150,7 +155,7 @@ export class EnrollmentApplicationEffects {
   .map(message => this.enrollmentApplicationActions.updateEnrollmentApplicationItemSuccess(message))
   .withLatestFrom(this.store$.select(...this.ENROLLMENT_APPLICATION_TASK))
   .map(state => state[1])
-  .map((application: EnrollmentApplicationTask) => this.enrollmentApplicationActions.findEnrollmentApplicationByReferenceNo(application.referenceNo))
+  .map((application: EnrollmentApplicationTask) => this.enrollmentApplicationActions.findEnrollmentApplicationByReferenceNo(application.referenceNo));
    
   @Effect() removeEnrollmentApplication$ = this.actions$
   .ofType(EnrollmentApplicationActions.REMOVE_ENROLLMENT_APPLICATION)
