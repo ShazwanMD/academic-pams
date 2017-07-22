@@ -224,6 +224,7 @@ public class TermController {
 
         LOG.debug("start task");
         dummyLogin();
+        
         AdStudent student = identityService.findStudentById(vo.getStudent().getId());
         AdAcademicSession academicSession = plannerService.findAcademicSessionById(vo.getAcademicSession().getId());
         AdStudyCenter studyCenter = commonService.findStudyCenterById(1L); // todo: dummy study center

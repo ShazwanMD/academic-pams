@@ -18,7 +18,7 @@ export class AssignedAdmissionApplicationTaskListComponent {
     { name: 'referenceNo', label: 'Reference No' },
     { name: 'application.student.identityNo', label: 'Matric No.' },
     { name: 'application.student.name', label: 'Name' },
-    { name: 'application.ordinal', label: 'Semester' },
+    //{ name: 'application.ordinal', label: 'Semester' },
     { name: 'application.advisor.identityNo', label: 'Advisor' },
     { name: 'application.student.cohort.program.code', label: 'Program' },
     { name: 'application.studyCenter.description', label: 'Study Center' },
