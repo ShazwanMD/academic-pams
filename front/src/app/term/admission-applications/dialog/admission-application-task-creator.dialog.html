@@ -21,12 +21,12 @@
                 Please add your academic Session!
             </div>
             
-             <md-input-container fxFlex="calc(100%-25px)">
+            <!--  <md-input-container fxFlex="calc(100%-25px)">
         <input mdInput placeholder="semester"  formControlName="semester"  value="semester"/>
       </md-input-container>   
      <div  class="tc-red-600" *ngIf="createForm.get('semester').invalid && createForm.get('semester').touched">
       <font size="3" color="red">Please add your academic Semester!</font>
-     </div>
+     </div> -->
 
      
     </div>
@@ -37,8 +37,5 @@
 <button md-raised-button color="accent" [disabled]="createForm.invalid" (click)="save(createForm.value)"> {{edit ?
     'Update' : 'Save'}}
   </button>
-  <!-- <button md-raised-button color="accent"
-          (click)="save(createForm.value, createForm.valid)">Save
-  </button> -->
 </md-dialog-actions>
 
