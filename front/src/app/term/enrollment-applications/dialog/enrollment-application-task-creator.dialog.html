@@ -8,17 +8,8 @@
         <input mdInput placeholder="description"  formControlName="description"  value="Description"/>
       </md-input-container>   
      <div  class="tc-red-600" *ngIf="createForm.get('description').invalid && createForm.get('description').touched">
-      <font size="3" color="red">Description should be at least {{minLength}} characters!</font>
+      <font size="3" color="red">Pleasae insert description should be at least {{minLength}} characters!</font>
      </div>
-      
-    <!--   <div [hidden]="!description.errors.required">
-             Description is required
-       </div>
-       <div [hidden]="!description.errors.minlength">
-             Description must be at least  characters long.
-        </div>
-        </div> -->
-     
       <pams-admission-select
         [placeholder]="'Select Student'"
         [innerFormControl]="createForm.controls.admission" fxFlex="calc(100%-25px)" class="pad-bottom">

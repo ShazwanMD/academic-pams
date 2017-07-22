@@ -34,12 +34,15 @@ export class EnrollmentApplicationTaskCreatorDialog implements OnInit {
     ngOnInit(): void {
         this.createForm = this.formBuilder.group( {
             id: [null],
-            auditNo: ['N/A'],
-            sourceNo: ['N/A'],
-            description: ['', Validators.minLength( this.minLength )],
+            description: ['',Validators.required],
             applicationType: [EnrollmentApplicationType.PRA, Validators.required],
-            admission: [<Admission>{}, Validators.required],
-            academicSession: [<AcademicSession>{}, Validators.required],
+            admission: ['', Validators.required],
+            academicSession: ['', Validators.required],
+            //auditNo: ['N/A'],
+            //sourceNo: ['N/A'],
+            //admission: [<Admission>{}, Validators.required],
+            //academicSession: [<AcademicSession>{}, Validators.required],
+            //description: ['',Validators.required, Validators.minLength( this.minLength )],
 
         } );
     }
