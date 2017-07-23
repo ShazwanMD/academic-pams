@@ -5,12 +5,15 @@
     <td-layout-manage-list #list>
         <!-- LEFT MENU -->
         <md-nav-list list-items>
-         <a md-list-item [routerLink]="['/term/offerings']" mdTooltip="View offerings">
+        
+             <a md-list-item [routerLink]="['/term/admission-applications']" mdTooltip="Semester Registration">
+                <md-icon>create</md-icon> Semester Registration Task
+            </a>
+            <md-divider></md-divider> 
+             <a md-list-item [routerLink]="['/term/offerings']" mdTooltip="View offerings">
                 <md-icon>create</md-icon> Offerings
             </a>
-            <a md-list-item [routerLink]="['/term/admission-applications']" mdTooltip="Semester Registration">
-                <md-icon>create</md-icon> Semester Registration
-            </a>
+           
             <a md-list-item [routerLink]="['/term/enrollment-applications']">
                 <md-icon>create</md-icon> Course Enrollments
             </a>
