@@ -87,7 +87,7 @@ public class CurriculumBundleTest {
     @Rollback(false)
     public void testWorkflow() {
         AdCurriculum curriculum = new AdCurriculumImpl();
-        String code = "MGSEB-MBA-CLM-0001" ;
+        String code = "MGSEB-MBA-CRLM-0001" ;
         //+ System.currentTimeMillis()
         curriculum.setCode(code);
         curriculum.setCoreCredit(100);
@@ -137,50 +137,50 @@ public class CurriculumBundleTest {
         subject15.setOrdinal(1); // semester 1
         subject15.setSubjectType(AdSubjectType.CORE);
         plannerService.addSubject(curriculum, subject15);
-/*
-        AdSingleSubject subject21 = new AdSingleSubjectImpl();
-        subject11.setCourse(plannerService.findCourseByCode("GST5033"));
-        subject11.setOrdinal(1); // semester 2
-        subject11.setSubjectType(AdSubjectType.CORE);
+        
+       
+         AdSingleSubject subject21 = new AdSingleSubjectImpl();
+        subject21.setCourse(plannerService.findCourseByCode("GST5033"));
+        subject21.setOrdinal(2); // semester 2
+        subject21.setSubjectType(AdSubjectType.CORE);
         plannerService.addSubject(curriculum, subject21);
         
         AdSingleSubject subject22 = new AdSingleSubjectImpl();
-        subject11.setCourse(plannerService.findCourseByCode("GST5073"));
-        subject11.setOrdinal(1); // semester 2
-        subject11.setSubjectType(AdSubjectType.CORE);
+        subject22.setCourse(plannerService.findCourseByCode("GST5073"));
+        subject22.setOrdinal(2); // semester 2
+        subject22.setSubjectType(AdSubjectType.CORE);
         plannerService.addSubject(curriculum, subject22);
         
         AdSingleSubject subject23 = new AdSingleSubjectImpl();
-        subject11.setCourse(plannerService.findCourseByCode("GST5083"));
-        subject11.setOrdinal(1); // semester 2
-        subject11.setSubjectType(AdSubjectType.CORE);
+        subject23.setCourse(plannerService.findCourseByCode("GST5083"));
+        subject23.setOrdinal(2); // semester 2
+        subject23.setSubjectType(AdSubjectType.CORE);
         plannerService.addSubject(curriculum, subject23);
         
         AdSingleSubject subject24 = new AdSingleSubjectImpl();
-        subject11.setCourse(plannerService.findCourseByCode("GST5113"));
-        subject11.setOrdinal(1); // semester 2
-        subject11.setSubjectType(AdSubjectType.CORE);
+        subject24.setCourse(plannerService.findCourseByCode("GST5113"));
+        subject24.setOrdinal(2); // semester 2
+        subject24.setSubjectType(AdSubjectType.CORE);
         plannerService.addSubject(curriculum, subject24);
         
         AdSingleSubject subject25 = new AdSingleSubjectImpl();
-        subject11.setCourse(plannerService.findCourseByCode("GST5103"));
-        subject11.setOrdinal(1); // semester 2
-        subject11.setSubjectType(AdSubjectType.CORE);
+        subject25.setCourse(plannerService.findCourseByCode("GST5103"));
+        subject25.setOrdinal(2); // semester 2
+        subject25.setSubjectType(AdSubjectType.CORE);
         plannerService.addSubject(curriculum, subject25);
         
         AdSingleSubject subject31 = new AdSingleSubjectImpl();
-        subject11.setCourse(plannerService.findCourseByCode("GST5093"));
-        subject11.setOrdinal(1); // semester 2
-        subject11.setSubjectType(AdSubjectType.CORE);
+        subject31.setCourse(plannerService.findCourseByCode("GST5093"));
+        subject31.setOrdinal(3); // semester 2
+        subject31.setSubjectType(AdSubjectType.CORE);
         plannerService.addSubject(curriculum, subject31);
         
         AdSingleSubject subject32 = new AdSingleSubjectImpl();
-        subject11.setCourse(plannerService.findCourseByCode("GST5123"));
-        subject11.setOrdinal(1); // semester 2
-        subject11.setSubjectType(AdSubjectType.CORE);
+        subject32.setCourse(plannerService.findCourseByCode("GST5123"));
+        subject32.setOrdinal(3); // semester 2
+        subject32.setSubjectType(AdSubjectType.CORE);
         plannerService.addSubject(curriculum, subject32);
         
-  */      
         // test bundle
 
         // elective/bundle subject // core elective
