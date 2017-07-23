@@ -18,6 +18,7 @@ import {Subject} from '../subject.interface';
 })
 export class CurriculumSubjectListComponent implements OnInit, OnChanges {
 
+private selectedRows: Subject[];
   private creatorDialogRef: MdDialogRef<SubjectCreatorDialog>;
   private columns: any[] = [
     {name: 'id', label: 'Id'},
@@ -42,6 +43,7 @@ export class CurriculumSubjectListComponent implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {
+    this.selectedRows = this.subjects.filter((value) => value.selected);
   }
 
   ngOnChanges(changes: { [propName: string]: SimpleChange }) {
