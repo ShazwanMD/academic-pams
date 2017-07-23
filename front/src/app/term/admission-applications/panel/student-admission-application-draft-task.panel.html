@@ -41,20 +41,47 @@
               <md-tab label="Application Detail"><br>
                 <div layout="column" class="inset">
                   <div layout="row" class="pad-bottom">
-                    <span flex="15">Audit No </span>
-                    <span> {{admissionApplicationTask?.application?.auditNo}}</span>
-                  </div>
-                  <div layout="row" class="pad-bottom">
-                    <span flex="15">Source No</span>
-                    <span> {{admissionApplicationTask?.application?.sourceNo}}</span>
-                  </div>
-                  <div layout="row" class="pad-bottom">
                     <span flex="15">Description</span>
                     <span> {{admissionApplicationTask?.description}}</span>
                   </div>
+                </div>
+              </md-tab>
+              
+               <md-tab label="Student Details"><br>
+                <div layout="column" class="inset">
+                  <!-- <div layout="row" class="pad-bottom">
+                    <span flex="15">Advisor ID </span>
+                    <span> {{admissionApplicationTask?.application?.advisor?.identityNo}}</span>
+                  </div>
+                  <div layout="row" class="pad-bottom">
+                    <span flex="15">Advisor Name</span>
+                    <span> {{admissionApplicationTask?.application?.advisor?.name}}</span>
+                  </div>
+                  <div layout="row" class="pad-bottom">
+                    <span flex="15">Advisor Type</span>
+                    <span> {{admissionApplicationTask?.application?.advisor?.staffType}}</span>
+                  </div> 
+                  -->
+                 
+                  <div layout="row" class="pad-bottom">
+                    <span flex="15">Matric No. </span>
+                    <span> {{admissionApplicationTask?.application?.student?.identityNo}}</span>
+                  </div>
+                  <div layout="row" class="pad-bottom">
+                    <span flex="15">Name</span>
+                    <span> {{admissionApplicationTask?.application?.student?.name}}</span>
+                  </div>
                    <div layout="row" class="pad-bottom">
-                    <span flex="15">Semester</span>
-                    <span> {{admissionApplicationTask?.application?.ordinal}}</span>
+                    <span flex="15">Phone</span>
+                    <span> {{admissionApplicationTask?.application?.student?.phone}}</span>
+                  </div>
+                   <div layout="row" class="pad-bottom">
+                    <span flex="15">Email</span>
+                    <span> {{admissionApplicationTask?.application?.student?.email}}</span>
+                  </div>
+                   <div layout="row" class="pad-bottom">
+                    <span flex="15">Mobile</span>
+                    <span> {{admissionApplicationTask?.application?.student?.mobile}}</span>
                   </div>
                 </div>
               </md-tab>
@@ -72,33 +99,6 @@
                   <div layout="row" class="pad-bottom">
                     <span flex="15">Title(EN)</span>
                     <span> {{admissionApplicationTask?.application?.program?.titleEn}}</span>
-                  </div>
-                </div>
-              </md-tab>
-
-              <md-tab label="Advisor and Student Details"><br>
-                <div layout="column" class="inset">
-                  <div layout="row" class="pad-bottom">
-                    <span flex="15">Advisor ID </span>
-                    <span> {{admissionApplicationTask?.application?.advisor?.identityNo}}</span>
-                  </div>
-                  <div layout="row" class="pad-bottom">
-                    <span flex="15">Advisor Name</span>
-                    <span> {{admissionApplicationTask?.application?.advisor?.name}}</span>
-                  </div>
-                  <div layout="row" class="pad-bottom">
-                    <span flex="15">Advisor Type</span>
-                    <span> {{admissionApplicationTask?.application?.advisor?.staffType}}</span>
-                  </div>
-                  <md-divider></md-divider>
-                  <br>
-                  <div layout="row" class="pad-bottom">
-                    <span flex="15">Student ID </span>
-                    <span> {{admissionApplicationTask?.application?.student?.identityNo}}</span>
-                  </div>
-                  <div layout="row" class="pad-bottom">
-                    <span flex="15">Student Name</span>
-                    <span> {{admissionApplicationTask?.application?.student?.name}}</span>
                   </div>
                 </div>
               </md-tab>

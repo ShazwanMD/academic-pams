@@ -24,6 +24,7 @@ import {SectionSelectComponent} from "./component/section-select.component";
 import {SectionEditorDialog} from "./dialog/section-editor.dialog";
 import {SectionActionComponent} from "./component/section-action.component";
 import { LecturerSectionDetailPage } from "./lecturer-section-detail.page";
+import { LecturerSectionEnrollmentListComponent } from "./component/lecturer-section-enrollment-list.component";
 
 @NgModule({
   imports: [
@@ -46,6 +47,7 @@ import { LecturerSectionDetailPage } from "./lecturer-section-detail.page";
     SectionSelectComponent,
     SectionEnrollmentListComponent,
     StudentSectionEnrollmentListComponent,
+    LecturerSectionEnrollmentListComponent,
     SectionAppointmentListComponent,
     StudentSectionAppointmentListComponent,
     SectionGradebookListComponent,
@@ -62,6 +64,7 @@ import { LecturerSectionDetailPage } from "./lecturer-section-detail.page";
     SectionListComponent,
     SectionEnrollmentListComponent,
     StudentSectionEnrollmentListComponent,
+    LecturerSectionEnrollmentListComponent,
     SectionAppointmentListComponent,
     StudentSectionAppointmentListComponent,
     SectionGradebookListComponent,

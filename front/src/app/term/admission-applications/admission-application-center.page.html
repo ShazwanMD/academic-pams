@@ -5,19 +5,23 @@
   </div>
   <td-layout-manage-list #list>
     <md-nav-list list-items>
+     
       <a md-list-item (click)="createDialog()">
         <md-icon>create</md-icon>
         Create Semester Registration
       </a>
       <md-divider></md-divider>
-      <a md-list-item [routerLink]="['/term/admissions']">
-        <md-icon>create</md-icon>
-        Semester Registration
-      </a>
+      
       <a md-list-item [routerLink]="['/term/offerings']">
         <md-icon>create</md-icon>
         Offerings
       </a>
+      
+      <a md-list-item [routerLink]="['/term/admissions']">
+        <md-icon>create</md-icon>
+        Semester Registration
+      </a>
+     
     </md-nav-list>
     <div toolbar-buttons layout="row" layout-align="start center" flex>
       <span flex>Semester Registration Center</span>

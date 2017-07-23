@@ -1,0 +1,29 @@
+ <md-card>
+          <md-card-title>Term Menu </md-card-title>
+          <md-card-subtitle>Go to homepage menu</md-card-subtitle>
+          <md-divider></md-divider>
+          <md-nav-list flex dense>
+            <md-list-item [routerLink]="['/identity/staffs']">
+              <md-icon md-list-avatar>person_add</md-icon>
+              <h4 md-line>Staff Center</h4>
+              <p md-line>Watch this staff center</p>
+            </md-list-item>
+            
+            
+            <md-divider></md-divider>
+            <h3 md-subheader>Term Menu</h3>
+            <md-list-item [routerLink]="['/term/admission-applications/admission-application-center2']">
+              <md-icon md-list-avatar>email</md-icon>
+              <h4 md-line>Semester Registration</h4>
+              <p md-line>List of semester registrations</p>
+            </md-list-item>
+            <md-list-item [routerLink]="['/term/offerings/student-offering-center']">
+              <md-icon md-list-avatar>email</md-icon>
+              <h4 md-line>Offerings</h4>
+              <p md-line>List of offerings</p>
+            </md-list-item>
+          
+          
+          
+          </md-nav-list>
+        </md-card>
