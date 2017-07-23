@@ -4,4 +4,5 @@ export interface Subject extends MetaObject {
   type: string;
   ordinal: number;
   subjectType: SubjectType;
+   selected: boolean;
 }
