@@ -4,7 +4,7 @@ import {AssessmentActions} from './../assessment.action';
 import {Assessment} from './../assessment.interface';
 import {Component, ViewContainerRef, OnInit} from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
-import {FormBuilder} from '@angular/forms';
+import {FormBuilder, Validators} from '@angular/forms';
 import {Store} from '@ngrx/store';
 import {MdDialogRef} from '@angular/material';
 import {TermModuleState} from '../../index';
@@ -41,17 +41,18 @@ export class AssessmentEditorDialog implements OnInit {
   }
 
   ngOnInit(): void {
-    this.editorForm = this.formBuilder.group(<Assessment>{
+    this.editorForm = this.formBuilder.group({
       id: 0,
-      code: '',
+      code: ['', Validators.required],
       canonicalCode: '',
-      description: '',
-      totalScore: 0,
-      ordinal: 0,
-      weight: 0,
-      offering: <Offering>{},
-      assessmentType: AssessmentType.QUIZ,
-      assessmentCategory: AssessmentCategory.COURSE_WORK,
+      description: ['', Validators.required],
+      totalScore: ['', Validators.required],
+      ordinal: ['', Validators.required],
+      weight: ['', Validators.required],
+      offering: ['', Validators.required],
+      assessmentType: ['', Validators.required],
+      assessmentCategory: ['', Validators.required]
+      
     });
 
     // set offering by default

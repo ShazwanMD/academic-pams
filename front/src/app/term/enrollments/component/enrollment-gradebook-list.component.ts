@@ -24,9 +24,8 @@ export class EnrollmentGradebookListComponent implements AfterViewInit {
     {name: 'assessment.assessmentCategory', label: 'Category'},   
     {name: 'assessment.totalScore', label: 'Total Score'},
     {name: 'score', label: 'Marks'},
-    { name: 'enrollment.gradeCode.code', label: 'Grade' },
+    {name: 'enrollment.gradeCode.code', label: 'Grade' }, 
     { name: 'enrollment.gradeCode.description', label: 'Status' },
-    
     {name: 'action', label: ''},
   ];
 

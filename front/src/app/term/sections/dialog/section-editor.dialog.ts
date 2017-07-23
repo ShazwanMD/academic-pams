@@ -1,6 +1,5 @@
 import {Component, ViewContainerRef, OnInit} from '@angular/core';
-import {FormGroup, FormControl} from '@angular/forms';
-import {FormBuilder} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Store} from '@ngrx/store';
 import {MdDialogRef} from '@angular/material';
 import {TermModuleState} from '../../index';
@@ -42,13 +41,14 @@ export class SectionEditorDialog implements OnInit {
   }
 
   ngOnInit(): void {
-    this.editorForm = this.formBuilder.group(<Section>{
+    this.editorForm = this.formBuilder.group({
       id: undefined,
-      code: '',
+      code: '', 
       canonicalCode: '',
-      capacity: 0,
-      ordinal: 0,
-      offering: <Offering>{},
+      capacity: ['', Validators.required],
+      ordinal: ['', Validators.required],
+      offering: ['', Validators.required],
+      //offering: <Offering>{},
     });
 
     // set offering by default
