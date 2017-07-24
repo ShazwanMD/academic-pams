@@ -45,6 +45,7 @@ export class OfferingCenterPage implements OnInit {
 
   ngOnInit(): void {
     this.store.dispatch(this.actions.findOfferings());
+    
   }
 
   private showDialog(code: Offering): void {

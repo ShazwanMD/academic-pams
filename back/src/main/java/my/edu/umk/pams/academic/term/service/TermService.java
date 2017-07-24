@@ -132,7 +132,7 @@ public interface TermService {
     @Deprecated
     void saveSection(AdSection section); // use addSection
 
-    void addSection(AdOffering offering, AdSection section) throws Exception;
+    void addSection(AdOffering offering, AdSection section);
 
     void deleteSection(AdOffering offering, AdSection section);
 

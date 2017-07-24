@@ -31,8 +31,9 @@ export class LecturerSectionEnrollmentListComponent implements AfterViewInit {
         { name: 'admission.student.email', label: 'Email' },
         { name: 'enrollmentStatus', label: 'Status' },
         { name: 'enrollmentStanding', label: 'Standing' },
-        { name: 'totalScore', label: 'TotalScore' },      
-        { name: 'gradeCode.code', label: 'Grade Code' },       
+        { name: 'totalScore', label: 'TotalScore' },  
+        
+        { name: 'gradeCode.code', label: 'Grade Code' },  
         { name: 'action', label: '' }
     ];
     

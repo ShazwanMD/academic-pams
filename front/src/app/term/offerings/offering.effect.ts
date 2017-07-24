@@ -30,8 +30,8 @@ export class OfferingEffects {
   @Effect() findOfferings$ = this.actions$
     .ofType(OfferingActions.FIND_OFFERINGS)
     .switchMap(() => this.termService.findOfferings())
-    .map((offerings) => this.offeringActions.findOfferingsSuccess(offerings));
-
+    .map((offerings) => this.offeringActions.findOfferingsSuccess(offerings))
+ 
   @Effect() findOfferingByCanonicalCode$ = this.actions$
     .ofType(OfferingActions.FIND_OFFERING_BY_CANONICAL_CODE)
     .map((action) => action.payload)

@@ -26,21 +26,10 @@
       <span flex>{{value}}</span>
     </div>
   </template>
- <!--  <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
-     <div layout="row">
-    <button md-icon-button [md-menu-trigger-for]="menu1" mdTooltip="Select enrollment actions">
-            <md-icon>more_vert</md-icon>
-          </button>
-          <md-menu x-position="before" #menu1="mdMenu">
-            <button md-menu-item [routerLink]="['/term/enrollments', row['id'], 'student-enrollment-detail']">View gradebooks info</button>
-           </md-menu>
-    </div> 
-  </template> -->
-   <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
+  <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
     <div layout="row">
       <a md-button color="accent" class="text-upper" [routerLink]="['/term/enrollments', row['id'], 'lecturer-enrollment-detail']" mdTooltip="View gradebook info">
-        <!-- [routerLink]="['/term/offerings', row['canonicalCode']]" -->
-        <span>View</span>
+       <span>View</span>
       </a>
     </div>
   </template>

@@ -208,7 +208,6 @@ public class TermServiceImpl implements TermService {
 	public void saveOffering(AdOffering offering) {
 		if (isOfferingExists(offering.getCanonicalCode())){
 			System.out.println("Duplicate data");
-			//LOG.debug("Data duplicate.Sorry");
 			//throw new Exception("Duplicate offering record");
 	}else{
 		offeringDao.save(offering, securityService.getCurrentUser());
@@ -411,9 +410,10 @@ public class TermServiceImpl implements TermService {
 	}
 
 	@Override
-	public void addSection(AdOffering offering, AdSection section) throws Exception {
+	public void addSection(AdOffering offering, AdSection section) {
 		if (isSectionExists(section.getCanonicalCode())) {
-			throw new Exception("Duplicate section record");
+			//throw new Exception("Duplicate section record");
+			System.out.println("Duplicate data");
 		} else {
 			section.setOffering(offering);
 			offeringDao.addSection(offering, section, securityService.getCurrentUser());
@@ -512,9 +512,15 @@ public class TermServiceImpl implements TermService {
 
 	@Override
 	public void addAssessment(AdOffering offering, AdAssessment assessment) {
+		
+		if (isAssessmentExists(assessment.getCanonicalCode())) {
+			//throw new Exception("Duplicate section record");
+			System.out.println("Duplicate data assessment");
+		} else {
 		assessment.setOffering(offering);
 		assessmentDao.save(assessment, securityService.getCurrentUser());
 		sessionFactory.getCurrentSession().flush();
+	}
 	}
 
 	@Override
@@ -1368,9 +1374,14 @@ public class TermServiceImpl implements TermService {
 
 	@Override
 	public void addAppointment(AdSection section, AdAppointment appointment) {
+		if (isAppointmentExists(appointment.getSection(), appointment.getStaff())) {
+			//throw new Exception("Duplicate section record");
+			System.out.println("Duplicate data appointment");
+		} else {
 		appointment.setSection(section);
 		appointmentDao.save(appointment, securityService.getCurrentUser());
 		sessionFactory.getCurrentSession().flush();
+	}
 	}
 
 	// update appointment by section
