@@ -2,7 +2,7 @@ import {Faculty} from '../../faculties/faculty.interface';
 import {Program} from './../program.interface';
 import {Component, ViewContainerRef, OnInit} from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
-import {FormBuilder} from '@angular/forms';
+import {FormBuilder, Validators} from '@angular/forms';
 import {Router, ActivatedRoute} from '@angular/router';
 import {ProgramActions} from "../program.action";
 import {Store} from "@ngrx/store";
@@ -38,14 +38,18 @@ export class ProgramCreatorDialog implements OnInit {
     }
 
   ngOnInit(): void {
-    this.creatorForm = this.formBuilder.group(<Program>{
+    this.creatorForm = this.formBuilder.group({
       id: null,
-      code: '',
-      titleMs: '',
-      titleEn: '',
-      status: ProgramStatus.INACTIVATED,
-      faculty: <Faculty>{},
-      level: <ProgramLevel>{},
+      code: ['', Validators.required],
+      titleMs: ['', Validators.required],
+      titleEn: ['', Validators.required],
+      status: [ProgramStatus.INACTIVATED, Validators.required],
+      faculty: ['', Validators.required],
+      level: ['', Validators.required],
+      //status: ProgramStatus.INACTIVATED,
+      
+      //faculty: <Faculty>{},
+      //level: <ProgramLevel>{},
     });
 
     if (this.create) this.creatorForm.patchValue(this._program);

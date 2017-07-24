@@ -1,12 +1,16 @@
 <h2 md-dialog-title>Create New Curriculum</h2>
 <md-dialog-content>
-  <form [formGroup]="editorForm">
+  <form [formGroup]="editorForm" novalidate>
      <div layout="row" class="pad-bottom">
       <md-input-container flex>
         <input mdInput placeholder="Code"
                formControlName="code"
                flex/>
       </md-input-container>
+       <div  class="tc-red-600" *ngIf="editorForm.get('code').invalid && editorForm.get('code').touched">
+                Please insert a new code!
+            </div>
+            
     </div>
 
      <div layout="row" class="insert">
@@ -16,6 +20,10 @@
                formControlName="coreCredit" type="number"
                flex/>
       </md-input-container>
+       <div  class="tc-red-600" *ngIf="editorForm.get('coreCredit').invalid && editorForm.get('coreCredit').touched">
+                Please insert a new coreCredit!
+            </div>
+            
     </div>
 
      <div layout="row" class="insert">
@@ -25,6 +33,10 @@
                formControlName="curriculumCredit" type="number"
                flex/>
       </md-input-container>
+       <div  class="tc-red-600" *ngIf="editorForm.get('curriculumCredit').invalid && editorForm.get('curriculumCredit').touched">
+                Please insert a new curriculumCredit!
+            </div>
+            
     </div>
 
      <div layout="row" class="insert">
@@ -34,6 +46,9 @@
                formControlName="electiveCredit" type="number"
                flex/>
       </md-input-container>
+       <div  class="tc-red-600" *ngIf="editorForm.get('electiveCredit').invalid && editorForm.get('electiveCredit').touched">
+                Please insert a new electiveCredit!
+            </div>
     </div>
 
      <div layout="row" class="insert">
@@ -43,6 +58,10 @@
                formControlName="generalCredit" type="number"
                flex/>
       </md-input-container>
+       <div  class="tc-red-600" *ngIf="editorForm.get('generalCredit').invalid && editorForm.get('generalCredit').touched">
+                 Please insert a new generalCredit!
+            </div>
+            
     </div>
 
      <div layout="row" class="insert">
@@ -52,6 +71,10 @@
                formControlName="languageCredit" type="number"
                flex/>
       </md-input-container>
+       <div  class="tc-red-600" *ngIf="editorForm.get('languageCredit').invalid && editorForm.get('languageCredit').touched">
+                 Please insert a new languageCredit!
+            </div>
+            
     </div>
 
      <div layout="row" class="insert">
@@ -61,6 +84,10 @@
                formControlName="maxPeriod" type="number"
                flex/>
       </md-input-container>
+       <div  class="tc-red-600" *ngIf="editorForm.get('maxPeriod').invalid && editorForm.get('maxPeriod').touched">
+                Please insert a new maxPeriod!
+            </div>
+            
     </div>
 
 <div layout="row" class="insert">
@@ -70,6 +97,10 @@
                formControlName="ordinal" type="number"
                flex/>
       </md-input-container>
+       <div  class="tc-red-600" *ngIf="editorForm.get('ordinal').invalid && editorForm.get('ordinal').touched">
+               Please insert a new ordinal!
+            </div>
+            
     </div>
 
       <div layout="row" class="insert">
@@ -79,6 +110,9 @@
                formControlName="otherCredit" type="number"
                flex/>
       </md-input-container>
+       <div  class="tc-red-600" *ngIf="editorForm.get('otherCredit').invalid && editorForm.get('otherCredit').touched">
+                Please insert a new otherCredit!
+            </div>         
     </div>
 
      <div layout="row" class="insert">
@@ -88,6 +122,10 @@
                formControlName="period" type="number"
                flex/>
     </md-input-container>
+     <div  class="tc-red-600" *ngIf="editorForm.get('period').invalid && editorForm.get('period').touched">
+                Please insert a new period!
+            </div>
+            
     </div>
 
 
@@ -98,6 +136,10 @@
                formControlName="requiredCredit" type="number"
                flex/>
       </md-input-container>
+       <div  class="tc-red-600" *ngIf="editorForm.get('requiredCredit').invalid && editorForm.get('requiredCredit').touched">
+                 Please insert a new requiredCredit!
+            </div>
+            
     </div>
 
     <div layout="row" class="insert">
@@ -107,18 +149,26 @@
                formControlName="totalCredit" type="number"
                flex/>
       </md-input-container>
+       <div  class="tc-red-600" *ngIf="editorForm.get('totalCredit').invalid && editorForm.get('totalCredit').touched">
+                Please insert a new totalCredit!
+            </div>
+            
     </div>
     <div layout="row" class="pad-bottom pad-top">
       <pams-program-select
         [placeholder]="'Select Program'"
         [innerFormControl]="editorForm.controls['program']">
       </pams-program-select>
+       <div  class="tc-red-600" *ngIf="editorForm.get('program').invalid && editorForm.get('program').touched">
+                Please choose a program!
+            </div>
+            
     </div>
 
   </form>
 </md-dialog-content>
 <md-dialog-actions align="end">
-  <button md-raised-button color="accent" (click)="save(editorForm.value, editorForm.valid)">
+  <button md-raised-button color="accent" (click)="save(editorForm.value, editorForm.valid)" [disabled]="!editorForm.valid" >
     Save
   </button>
 </md-dialog-actions>

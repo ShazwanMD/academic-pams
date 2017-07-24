@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormGroup} from '@angular/forms';
-import {FormBuilder} from '@angular/forms';
+import {FormBuilder, Validators} from '@angular/forms';
 import {Router, ActivatedRoute} from '@angular/router';
 import {Curriculum} from '../curriculum.interface';
 import {Subject} from '../subject.interface';
@@ -43,23 +43,25 @@ export class CurriculumEditorDialog implements OnInit {
   }
 
   ngOnInit(): void {
-    this.editorForm = this.formBuilder.group(<Curriculum>{
-      id:null,
-      code:'',
+    this.editorForm = this.formBuilder.group({
+      id:[undefined],
+      code:['', Validators.required],
       description:'',
-      coreCredit: 0,
-      curriculumCredit: 0,
-      electiveCredit: 0,
-      generalCredit: 0,
-      languageCredit: 0,
-      otherCredit: 0,
-      requiredCredit: 0,
-      totalCredit: 0,
-      period: 0,
-      maxPeriod: 0,
-      ordinal:0,
-      program: <Program>{},
-      academicSession: <AcademicSession>{},
+      coreCredit: ['', Validators.required],
+      curriculumCredit: ['', Validators.required],
+      electiveCredit: ['', Validators.required],
+      generalCredit: ['', Validators.required],
+      languageCredit: ['', Validators.required],
+      otherCredit: ['', Validators.required],
+      requiredCredit: ['', Validators.required],
+      totalCredit: ['', Validators.required],
+      period: ['', Validators.required],
+      maxPeriod: ['', Validators.required],
+      ordinal:['', Validators.required],
+      program: ['', Validators.required],
+      //academicSession: <AcademicSession>{},
+      //program: <Program>{},
+      //academicSession: <AcademicSession>{},
     });
 
     if (this.edit) this.editorForm.patchValue(this._curriculum);
