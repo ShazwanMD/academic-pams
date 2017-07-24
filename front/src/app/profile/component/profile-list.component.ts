@@ -21,12 +21,12 @@ export class ProfileListComponent implements AfterViewInit {
 
   filteredData: any[];
   filteredTotal: number;
-  searchTerm: string = '';
+  searchTerm: string = 'identityNo';
   fromRow: number = 1;
   currentPage: number = 1;
   pageSize: number = 5;
-  sortBy: string = 'identityNo';
-  sortOrder: TdDataTableSortingOrder = TdDataTableSortingOrder.Descending;
+  sortBy: string = 'name';
+  sortOrder: TdDataTableSortingOrder = TdDataTableSortingOrder.Ascending;
 
   
   constructor(private _dataTableService: TdDataTableService) {}
