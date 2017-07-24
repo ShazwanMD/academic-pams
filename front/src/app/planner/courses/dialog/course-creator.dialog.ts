@@ -5,7 +5,7 @@ import {Course} from './../course.interface';
 import {Faculty} from './../../faculties/faculty.interface';
 import {Component, ViewContainerRef, OnInit} from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
-import {FormBuilder} from '@angular/forms';
+import {FormBuilder, Validators} from '@angular/forms';
 import {Router, ActivatedRoute} from '@angular/router';
 import {CourseActions} from "../course.action";
 import {Store} from "@ngrx/store";
@@ -21,19 +21,19 @@ import {CourseStatus} from "../course-status.enum";
 
 export class CourseCreatorDialog implements OnInit {
 
-  private creatorForm: FormGroup;
+  private createForm: FormGroup;
   private create: boolean = false;
   private _course:Course;
   private faculty: Faculty;
   private _curriculum: Curriculum;
-
+  private minLength: number = 1; 
 
   constructor(private formBuilder: FormBuilder,
               private store: Store<PlannerModuleState>,
               private actions: CourseActions,
-              private router: Router,
+              /*private router: Router,
               private route: ActivatedRoute,
-              private viewContainerRef: ViewContainerRef,
+              private viewContainerRef: ViewContainerRef,*/
               private dialog: MdDialogRef<CourseCreatorDialog>) {
   }
 
@@ -46,26 +46,23 @@ export class CourseCreatorDialog implements OnInit {
         this.create = true;
     }
 
-
-
-
   ngOnInit(): void {
-    this.creatorForm = this.formBuilder.group(<Course>{
-      id: null,
-      code: '',
+    this.createForm = this.formBuilder.group({
+      id: [undefined],
+      code: ['', Validators.required],
       titleMs: '',
       titleEn: '',
       classification: CourseClassification.LEVEL_100,
-      status: CourseStatus.ACTIVE,
-      faculty: <Faculty>{},
+      status: ['', Validators.required],
+      faculty: ['', Validators.required],
     });
 
-    this.creatorForm.patchValue({'curriculum':this._curriculum});
-   if (this.create) this.creatorForm.patchValue(this._course);
+    this.createForm.patchValue({'curriculum':this._curriculum});
+   if (this.create) this.createForm.patchValue(this._course);
   }
 
-  submit(course: Course, isValid: boolean) {
-     console.log("adding course");
+  save(course: Course, isValid: boolean) {
+     /*console.log("adding course");*/
         if (!course.id) this.store.dispatch(this.actions.addCourse(course));
         else this.store.dispatch(this.actions.updateCourse(course));
         this.dialog.close();

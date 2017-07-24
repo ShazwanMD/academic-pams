@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormGroup} from '@angular/forms';
-import {FormBuilder} from '@angular/forms';
+import {FormBuilder, Validators} from '@angular/forms';
 import {Router, ActivatedRoute} from '@angular/router';
 import {Cohort} from '../cohort.interface';
 import {CohortActions} from '../cohort.action';
@@ -29,9 +29,10 @@ export class CohortEditorDialog implements OnInit {
   }
 
   ngOnInit(): void {
-    this.createForm = this.formBuilder.group(<Cohort>{
-      program: <Program>{},
-      academicSession: <AcademicSession>{},
+    this.createForm = this.formBuilder.group({
+      id: [undefined],
+      program: ['', Validators.required],
+      academicSession: ['', Validators.required],
     });
   }
 
