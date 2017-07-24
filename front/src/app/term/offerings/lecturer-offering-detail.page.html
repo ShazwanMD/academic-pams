@@ -7,28 +7,18 @@
 	<div layout="column" layout-gt-md="row" class="inset">
 		<div flex-gt-md="70">
 			<pams-offering [offering]="offering$ | async"> </pams-offering>
-			<pams-student-offering-section-list [offering]="offering$ | async"
+			<pams-lecturer-offering-section-list [offering]="offering$ | async"
 				[sections]="sections$ | async">
-			</pams-student-offering-section-list>
+			</pams-lecturer-offering-section-list>
 			<pams-student-offering-assessment-list [offering]="offering$ | async"
 				[assessments]="assessments$ | async">
 			</pams-student-offering-assessment-list>
 		</div>
 		<div flex-gt-md="30">
 			<!--  <pams-offering-action [offering]="offering$ | async"></pams-offering-action> -->
-			<md-card> <md-card-title>Term Menu</md-card-title> <md-card-subtitle>Go
-			to previous menu </md-card-subtitle> <md-divider></md-divider> <md-nav-list flex dense>
-			<md-list-item
-				[routerLink]="['/identity/staffs']">
-			<md-icon md-list-avatar>menu</md-icon>
-			<h4 md-line>Staff Center</h4>
-			<p md-line>Watch this staff center page</p>
-			</md-list-item> <md-list-item
-				[routerLink]="['/term/offerings/lecturer-offering-center']">
-			<md-icon md-list-avatar>menu</md-icon>
-			<h4 md-line>Offerings</h4>
-			<p md-line>Watch this offerings</p>
-			</md-list-item> <md-divider></md-divider> </md-nav-list> </md-card>
+					
+			 <pams-lecturer-offering-action [offering]="offering$ | async"></pams-lecturer-offering-action>
+			
 		</div>
 	</div>
 </div>

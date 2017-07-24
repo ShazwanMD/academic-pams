@@ -26,8 +26,9 @@ export class StudentSectionAppointmentListComponent implements OnInit {
     private columns: any[] = [
         { name: 'id', label: 'Id' },
         { name: 'staff.name', label: 'Staff' },
-        { name: 'staff.identityNo', label: 'IdentityNo' },
-        { name: 'appointmentStatus', label: 'Appointment Status' },
+        { name: 'staff.email', label: 'Email' },
+        { name: 'staff.program.code', label: 'Program' },
+        { name: 'staff.faculty.name', label: 'Faculty' },
         { name: 'action', label: '' }
     ];
 

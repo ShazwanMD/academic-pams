@@ -37,6 +37,8 @@ import { PipeModule } from "../../app.pipe.module";
 import { StudentOfferingCenterPage } from "./student-offering-center.page";
 import { LecturerOfferingCenterPage } from "./lecturer-offering-center.page";
 import { LecturerOfferingDetailPage } from "./lecturer-offering-detail.page";
+import { LecturerOfferingActionComponent } from "./component/lecturer-offering-action.component";
+import { LecturerOfferingSectionListComponent } from "./component/lecturer-offering-section-list.component";
 
 @NgModule({
   imports: [
@@ -67,11 +69,13 @@ import { LecturerOfferingDetailPage } from "./lecturer-offering-detail.page";
     OfferingComponent,
     OfferingSectionListComponent,
     StudentOfferingSectionListComponent,
+    LecturerOfferingSectionListComponent,
     OfferingAssessmentListComponent,
     StudentOfferingAssessmentListComponent,
     OfferingEnrollmentListComponent,
     OfferingAppointmentListComponent,
     OfferingActionComponent,
+    LecturerOfferingActionComponent,
     GradebookComponent,
 
     //dialog

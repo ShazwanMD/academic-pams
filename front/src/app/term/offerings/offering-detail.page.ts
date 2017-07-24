@@ -52,7 +52,7 @@ export class OfferingDetailPage implements OnInit {
     config.viewContainerRef = this.vcf;
     config.role = 'dialog';
     config.width = '60%';
-    config.height = '50%';
+    config.height = '40%';
     config.position = {top: '0px'};
     this.editorDialogRef = this.dialog.open(OfferingUpdateDialog, config);
     this.editorDialogRef.componentInstance.offering = this.offering;
