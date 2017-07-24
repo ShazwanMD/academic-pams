@@ -47,6 +47,7 @@ public class PlannerController {
     @Autowired
     private PlannerTransformer plannerTransformer;
 
+
     // ====================================================================================================
     // ACADEMIC SESSION
     // ====================================================================================================
@@ -466,6 +467,7 @@ public class PlannerController {
         curriculum.setMaxPeriod(vo.getMaxPeriod());
         curriculum.setOrdinal(vo.getOrdinal());
         curriculum.setProgram(plannerService.findProgramByCode(vo.getProgram().getCode()));
+        curriculum.setSubjects(plannerService.findSubjects(curriculum));
         plannerService.saveCurriculum(curriculum);
         return new ResponseEntity<String>("Success", HttpStatus.OK);
 
@@ -549,9 +551,26 @@ public class PlannerController {
         subject.setOrdinal(vo.getOrdinal());
         subject.setSubjectType(AdSubjectType.get(vo.getSubjectType().ordinal()));
         plannerService.addSubject(curriculum, subject);
+    	
+        AdSingleSubject subject1 = new AdSingleSubjectImpl();
+    	subject1.setCourse (plannerService.findCourseByCode(null));
+        subject.setOrdinal(vo.getOrdinal());
+        subject.setSubjectType(AdSubjectType.get(vo.getSubjectType().ordinal()));
+    	plannerService.addSubject(curriculum, subject);
+    	
+    	AdBundleSubject bundleSubject = new AdBundleSubjectImpl();
+        bundleSubject.setSubjectType(AdSubjectType.CORE_ELECTIVE);
+        bundleSubject.setOrdinal(1);
+        plannerService.addSubject(curriculum, bundleSubject);
+        
+        AdBundleSubject addedBundleSubject = (AdBundleSubject)
+        plannerService.findSubject(curriculum, AdSubjectType.CORE_ELECTIVE, 1);
+        
 
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
+    
+  
 
     @RequestMapping(value = "/subjects/{id}", method = RequestMethod.PUT)
     public ResponseEntity<String> updateSubject(@PathVariable Long id, @RequestBody Subject vo) {
