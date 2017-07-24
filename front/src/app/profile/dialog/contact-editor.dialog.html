@@ -3,24 +3,21 @@
   <form [formGroup]="editorForm">
     <div layout="row" class="inset" flex>
       <md-input-container flex>
-        <input mdInput
-               placeholder="Name"
-               formControlName="name"
-               flex/>
+        <input mdInput placeholder="Name" formControlName="name" flex/>
       </md-input-container>
     </div>
     <div layout="row" class="inset" flex>
       <md-input-container flex>
-        <input mdInput
-               placeholder="NRIC/Passport"
-               formControlName="identityNo"
-               flex/>
+        <input mdInput placeholder="NRIC/Passport" formControlName="identityNo" flex/>
       </md-input-container>
     </div>
     <div layout="row" class="inset" flex>
-      <pams-contact-type-select
-        [placeholder]="'Contact Type'"
-        [innerFormControl]="editorForm.controls['contactType']">
+      <md-input-container flex>
+        <input mdInput placeholder="Phone Number" formControlName="phone" flex/>
+      </md-input-container>
+    </div>
+    <div layout="row" class="inset" flex>
+      <pams-contact-type-select [placeholder]="'Contact Type'" [innerFormControl]="editorForm.controls['contactType']">
       </pams-contact-type-select>
     </div>
   </form>
