@@ -544,7 +544,17 @@ public class AdSectionDaoImpl extends GenericDaoSupport<Long, AdSection> impleme
 		query.setInteger("state", AdMetaState.ACTIVE.ordinal());
 		return ((Long) query.uniqueResult()).intValue();
 	}
-
+	
+	@Override
+	public Integer count(String canonicalCode) {
+		Session session = sessionFactory.getCurrentSession();
+		Query query = session.createQuery("select count(s) from AdSection s where " + "s.canonicalCode = :canonicalCode  "
+				+ "and s.metadata.state = :state ");
+		query.setString("canonicalCode", canonicalCode);
+		query.setInteger("state", AdMetaState.ACTIVE.ordinal());
+		return ((Long) query.uniqueResult()).intValue();
+	}
+	
 	@Override
 	public boolean hasSection(AdAcademicSession academicSession) {
 		Session session = sessionFactory.getCurrentSession();
@@ -735,4 +745,6 @@ public class AdSectionDaoImpl extends GenericDaoSupport<Long, AdSection> impleme
 		session.delete(appointment);
 		
 	}
+
+	
 }

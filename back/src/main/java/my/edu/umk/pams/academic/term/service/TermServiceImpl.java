@@ -331,6 +331,13 @@ public class TermServiceImpl implements TermService {
 	public Integer countSection(AdOffering offering) {
 		return sectionDao.count(offering);
 	}
+	
+		
+	@Override
+	public Integer countSection(String canonicalCode) {
+		return sectionDao.count(canonicalCode);
+		//return sectionDao.isExists(canonicalCode);
+	}
 
 	@Override
 	public Integer countSection(AdAcademicSession academicSession) {
@@ -372,11 +379,6 @@ public class TermServiceImpl implements TermService {
 		return sectionDao.isExists(canonicalCode);
 	}
 	
-	@Override
-	public boolean isExists(String canonicalCode) {
-		return sectionDao.isExists(canonicalCode);
-	}
-
 	@Override
 	public void openSection(AdSection section) {
 		// todo(uda): exception = Section already exists

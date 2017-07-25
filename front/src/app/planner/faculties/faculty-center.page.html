@@ -23,13 +23,7 @@
     </div>
 
     <md-card class="">
-      <td-search-box class="push-left push-right"
-                     placeholder="search"
-                     [alwaysVisible]="true"
-                     (searchDebounce)="filter($event)">
-      </td-search-box>
-
-      <pams-faculty-list
+     <pams-faculty-list
         [faculties]="faculties$ | async"
         (view)="viewFaculty($event)">
       </pams-faculty-list>

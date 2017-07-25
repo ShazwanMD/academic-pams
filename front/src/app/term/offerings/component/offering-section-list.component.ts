@@ -24,7 +24,7 @@ export class OfferingSectionListComponent implements OnInit {
     {name: 'capacity', label: 'Capacity'},
     {name: 'appointmentCount', label: 'Appointment'},
     {name: 'enrollmentCount', label: 'Enrollment'},
-    //{name: 'isExists', label: 'isExists'},
+    //{name: 'sectionCount', label: 'No of section'},
     {name: 'action', label: ''},
   ];
 

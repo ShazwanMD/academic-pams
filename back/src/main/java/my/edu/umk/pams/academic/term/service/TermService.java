@@ -106,6 +106,8 @@ public interface TermService {
     Integer countSection(String filter, AdAcademicSession academicSession);
 
     Integer countSection(AdOffering offering);
+     
+    Integer countSection(String canonicalCode);
 
     Integer countSection(AdAcademicSession academicSession);
 
@@ -123,8 +125,6 @@ public interface TermService {
 
     boolean isSectionExists(String canonicalCode);
     
-    boolean isExists(String canonicalCode);
-
     void openSection(AdSection section); // todo(uda): throws SectionException;
 
     void closeSection(AdSection section);// todo(uda): throws SectionException;

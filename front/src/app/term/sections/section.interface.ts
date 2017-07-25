@@ -10,5 +10,7 @@ export interface Section extends MetaObject {
   // transient
   enrollmentCount?: number;
   appointmentCount?: number;
+  sectionCount?: number;
+  
   selected: boolean;
 }

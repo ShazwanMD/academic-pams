@@ -1126,7 +1126,9 @@ public class TermController {
             AdSection s = termService.findSectionById(section.getId());
             section.setAppointmentCount(termService.countAppointment(s));
             section.setEnrollmentCount(termService.countEnrollment(s));
-            section.setIsExists(section.getIsExists());
+            String canonicalCode = "FSB-MASTER-MFB-MBG1"; //test dummy value
+			section.setSectionCount(termService.countSection(canonicalCode));
+            
         }
         return sections;
     }

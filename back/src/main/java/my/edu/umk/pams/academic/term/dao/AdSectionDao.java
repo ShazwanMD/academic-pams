@@ -74,7 +74,7 @@ public interface AdSectionDao extends GenericDao<Long, AdSection> {
 	Integer count(String filter, AdAcademicSession academicSession);
 
 	Integer count(AdOffering offering);
-
+	
 	Integer count(AdCourse course);
 
 	Integer count(AdAcademicSession academicSession);
@@ -106,6 +106,8 @@ public interface AdSectionDao extends GenericDao<Long, AdSection> {
 	Integer countEnrollment(AdSection section);
 
 	Integer countAppointment(AdSection section);
+	
+	Integer count(String canonicalCode);
 
 	boolean hasSection(AdAcademicSession academicSession);
 
