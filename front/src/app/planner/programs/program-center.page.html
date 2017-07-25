@@ -22,25 +22,12 @@
       </button>
     </div>
     <md-card class="">
-
-      <td-search-box class="push-left push-right"
-                     placeholder="search"
-                     [alwaysVisible]="true"
-                     (searchDebounce)="filter($event)">
-      </td-search-box>
-
       <pams-program-list
         [programs]="programs$ | async"
         (view)="viewProgram($event)"></pams-program-list>
 
       <md-divider></md-divider>
       <md-card-actions>
-
-
-        
-        <a md-button color="accent" class="text-upper" [routerLink]="['/programs-search']">
-          <span>View More</span>
-        </a>
 
       </md-card-actions>
 
