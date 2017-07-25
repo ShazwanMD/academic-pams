@@ -3,13 +3,13 @@ import { StudyMode } from './../../common/study-modes/study-mode.interface';
 import { ProfileActions } from './../profile.action';
 import {ProfileModuleState} from "./../index";
 import { Student } from './../../identity/student.interface';
-
 import {Component, ViewContainerRef, OnInit, AfterViewInit} from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
 import {FormBuilder} from '@angular/forms';
 import {Router, ActivatedRoute} from '@angular/router';
 import {Store} from "@ngrx/store";
 import {MdDialogRef} from "@angular/material";
+import { StudentStatus } from "../student-status.enum";
 
 
 @Component({
@@ -46,7 +46,8 @@ export class DetailEditorDialog implements OnInit {
       mobile:'',
       fax:'',
       studyMode:<StudyMode>{},
-      cohort:<Cohort>{}
+      cohort:<Cohort>{},
+      studentStatus:<StudentStatus>{}
   
     });
 

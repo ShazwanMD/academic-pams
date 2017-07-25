@@ -1,0 +1,20 @@
+<h2 md-dialog-title>Student Status Switcher</h2>
+<md-dialog-content>
+  <form [formGroup]="switchForm">
+    <div layout="row" class="pad-bottom pad-top" flex>
+      <span>From {{_student.studentStatus}}</span>
+    </div>
+    <div layout="row" class="pad-bottom pad-top" flex>
+      <pams-student-status-select [placeholder]="'To'" [innerFormControl]="switchForm.controls['studentStatus']">
+      </pams-student-status-select>
+    </div>
+    <div layout="row" class="inset" flex>
+      <md-input-container flex>
+        <input mdInput placeholder="Student Status Description" formControlName="studentStatusDescription" flex/>
+      </md-input-container>
+    </div>
+  </form>
+</md-dialog-content>
+<md-dialog-actions align="end">
+  <button md-raised-button color="accent" (click)="switch(switchForm.value, switchForm.valid)"> Switch</button>
+</md-dialog-actions>

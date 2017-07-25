@@ -41,4 +41,8 @@ public interface AdStudent extends AdActor {
 	AdStudyMode getStudyMode();
 	
 	void setStudyMode(AdStudyMode studyMode);
+	
+	String getStudentStatusDescription();
+	
+	void setStudentStatusDescription(String studentStatusDescription);
 }

@@ -37,12 +37,25 @@ public class AdStudentImpl extends AdActorImpl implements AdStudent {
 	@OneToOne(targetEntity = AdStudyModeImpl.class)
 	@JoinColumn(name = "STUDY_MODE_ID", nullable = true)
 	private AdStudyMode studyMode;
-
+	
+	@Column(name = "STUDENT_STATUS_DESCRIPTION")
+	private String studentStatusDescription;
 
 	public AdStudentImpl() {
 		super();
 		setActorType(AdActorType.STUDENT);
 	}
+	
+	@Override
+	public String getStudentStatusDescription() {
+		return studentStatusDescription;
+	}
+
+	@Override
+	public void setStudentStatusDescription(String studentStatusDescription) {
+		this.studentStatusDescription = studentStatusDescription;
+	}
+
 
 	@Override
 	public String getMatricNo() {

@@ -37,6 +37,7 @@ public class ProfileTransformer {
         vo.setStudentStatus(StudentStatus.get(e.getStudentStatus().ordinal()));
         vo.setStudyMode(commonTransformer.toStudyModeVo(e.getStudyMode()));
         vo.setCohort(plannerTransformer.toCohortVo(e.getCohort()));
+        vo.setStudentStatusDescription(e.getStudentStatusDescription());
         return vo;
     }
 

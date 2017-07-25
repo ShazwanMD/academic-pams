@@ -5,4 +5,5 @@ export interface Student extends Actor {
     studyMode:StudyMode;
     cohort:Cohort;
     studentStatus: number;
+    studentStatusDescription: string;
 }
