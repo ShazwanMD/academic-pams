@@ -1,3 +1,5 @@
+import { StudentStatusDialog } from './dialog/student-status.dialog';
+import { StudentStatusSelectComponent } from './component/student-status-select.component';
 import { CohortSubModule } from './../planner/cohorts/index';
 import {AddressEditorDialog} from './dialog/address-editor.dialog';
 import {GuardianEditorDialog} from './dialog/guardian-editor.dialog';
@@ -105,6 +107,7 @@ export const profileModuleReducers = {
     GuarantorTypeSelectComponent,
     GuardianTypeSelectComponent,
     AddressTypeSelectComponent,
+    StudentStatusSelectComponent,
 
     //dialog
     DetailEditorDialog,
@@ -114,6 +117,7 @@ export const profileModuleReducers = {
     AddressEditorDialog,
     StudyModeSwitcherDialog,
     CohortTransfererDialog,
+    StudentStatusDialog,
   ],
   exports: [
     ContactTypeSelectComponent,
@@ -121,6 +125,7 @@ export const profileModuleReducers = {
     GuarantorTypeSelectComponent,
     GuardianTypeSelectComponent,
     AddressTypeSelectComponent,
+    StudentStatusSelectComponent,
   ],
   entryComponents: [
     DetailEditorDialog,
@@ -130,6 +135,7 @@ export const profileModuleReducers = {
     AddressEditorDialog,
     StudyModeSwitcherDialog,
     CohortTransfererDialog,
+    StudentStatusDialog,
   ],
 })
 export class ProfileModule {

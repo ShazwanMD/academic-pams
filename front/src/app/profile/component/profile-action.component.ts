@@ -1,3 +1,4 @@
+import { StudentStatusDialog } from './../dialog/student-status.dialog';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import {MdDialog, MdDialogConfig, MdDialogRef, MdSnackBar} from '@angular/material';
@@ -21,6 +22,7 @@ export class ProfileActionComponent {
     private student$: Observable<Student>;
   private switcherDialogRef: MdDialogRef<StudyModeSwitcherDialog>;
   private transfererDialogRef: MdDialogRef<CohortTransfererDialog>;
+  private studentStatusDialogRef: MdDialogRef<StudentStatusDialog>;
 
   constructor(private router: Router,
     private route: ActivatedRoute,
@@ -65,6 +67,21 @@ export class ProfileActionComponent {
     this.switcherDialogRef = this.dialog.open(StudyModeSwitcherDialog, config);
     this.switcherDialogRef.componentInstance.student = this.student;
     this.switcherDialogRef.afterClosed().subscribe(res => {
+      console.log("close dialog");
+      // load something here
+    });
+  }
+
+    studentStatusDialog(student:Student): void {
+    let config = new MdDialogConfig();
+    config.viewContainerRef = this.vcf;
+    config.role = 'dialog';
+    config.width = '60%';
+    config.height = '80%';
+    config.position = {top: '0px'};
+    this.studentStatusDialogRef = this.dialog.open(StudentStatusDialog, config);
+    this.studentStatusDialogRef.componentInstance.student = this.student;
+    this.studentStatusDialogRef.afterClosed().subscribe(res => {
       console.log("close dialog");
       // load something here
     });
