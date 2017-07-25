@@ -39,8 +39,9 @@
 
             <div layout="column" layout-gt-md="row" class="insert">
               <div flex-gt-md="20">    
-                <img src=".\..\assets\ico\student\{{student.identityNo}}.jpg" width="120" height="150"/>
+                <img src="http://localhost:4200/assets/ico/student/{{student.identityNo}}.jpg" width="120" height="150">
               </div>
+
 
               <div flex-gt-md="40">
                 <b>Student ID</b> : {{student.identityNo}}<br/><br/>
@@ -85,15 +86,8 @@
                   <md-divider></md-divider>
                   <md-card-content>
 
-                    <td-data-table
-                      [data]="addressess"
-                      [columns]="columnAddr"
-                      [sortBy]="summary"
-                      [sortOrder]="ASC"
-                      [sortable]="false"
-                      [multiple]="false"
-                      [selectable]="false"
-                      (rowSelect)="edit.emit($event)" dense>
+                    <td-data-table [data]="addressess" [columns]="columnAddr" [sortBy]="summary" [sortOrder]="ASC" [sortable]="false" [multiple]="false"
+                      [selectable]="false" (rowSelect)="edit.emit($event)" dense>
 
                       <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
                         <div layout="row">
@@ -138,15 +132,8 @@
                   </div>
                   <md-divider></md-divider>
                   <md-card-content>
-                    <td-data-table
-                      [data]="guarantors"
-                      [columns]="columnGuarantor"
-                      [sortBy]="summary"
-                      [sortOrder]="ASC"
-                      [sortable]="false"
-                      [multiple]="false"
-                      [selectable]="false"
-                      (rowSelect)="edit.emit($event)" dense>
+                    <td-data-table [data]="guarantors" [columns]="columnGuarantor" [sortBy]="summary" [sortOrder]="ASC" [sortable]="false" [multiple]="false"
+                      [selectable]="false" (rowSelect)="edit.emit($event)" dense>
 
                       <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
                         <div layout="row">
@@ -190,15 +177,8 @@
                   </div>
                   <md-divider></md-divider>
                   <md-card-content>
-                    <td-data-table
-                      [data]="guardians"
-                      [columns]="columnGuardian"
-                      [sortBy]="summary"
-                      [sortOrder]="ASC"
-                      [sortable]="false"
-                      [multiple]="false"
-                      [selectable]="false"
-                      (rowSelect)="edit.emit($event)" dense>
+                    <td-data-table [data]="guardians" [columns]="columnGuardian" [sortBy]="summary" [sortOrder]="ASC" [sortable]="false" [multiple]="false"
+                      [selectable]="false" (rowSelect)="edit.emit($event)" dense>
 
                       <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
                         <div layout="row">
@@ -241,15 +221,8 @@
                   </div>
                   <md-divider></md-divider>
                   <md-card-content>
-                    <td-data-table
-                      [data]="contacts"
-                      [columns]="columnContact"
-                      [sortBy]="summary"
-                      [sortOrder]="ASC"
-                      [sortable]="false"
-                      [multiple]="false"
-                      [selectable]="false"
-                      (rowSelect)="edit.emit($event)" dense>
+                    <td-data-table [data]="contacts" [columns]="columnContact" [sortBy]="summary" [sortOrder]="ASC" [sortable]="false" [multiple]="false"
+                      [selectable]="false" (rowSelect)="edit.emit($event)" dense>
 
                       <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
                         <div layout="row">
@@ -280,13 +253,11 @@
 
       <!--MULA TAB COURSE INFORMATION-->
       <md-tab label="Cohort Information">
-        <pams-profile-cohort
-          [cohort]="student.cohort">
+        <pams-profile-cohort [cohort]="student.cohort">
         </pams-profile-cohort>
       </md-tab>
       <md-tab label="Course Information">
-        <pams-profile-enrollment-list
-          [enrollments]="enrollments">
+        <pams-profile-enrollment-list [enrollments]="enrollments">
         </pams-profile-enrollment-list>
       </md-tab>
     </md-tab-group>

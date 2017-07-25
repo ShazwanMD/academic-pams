@@ -3,7 +3,7 @@
   <form [formGroup]="editorForm">
     <div layout="row" class="inset" flex>
       <md-input-container flex>
-        <input mdInput
+        <input readonly mdInput
                placeholder="Name"
                formControlName="name"
                flex/>
@@ -11,8 +11,8 @@
     </div>
 
         <div layout="row" class="inset" flex>
-      <md-input-container flex>
-        <input mdInput
+      <md-input-container  flex>
+        <input readonly mdInput
                placeholder="MatricNo"
                formControlName="identityNo"
                flex/>
@@ -21,7 +21,7 @@
 
     <div layout="row" class="inset" flex>
       <md-input-container flex>
-        <input mdInput
+        <input readonly mdInput
                placeholder="Email"
                formControlName="email"
                flex/>

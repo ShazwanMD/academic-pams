@@ -1,7 +1,5 @@
 package my.edu.umk.pams.academic.identity.model;
 
-import my.edu.umk.pams.academic.planner.model.AdProgramStatus;
-
 public enum AdStudentStatus {
 	MATRICULATED, //0
 	ACTIVE,		  //1
@@ -13,4 +11,6 @@ public enum AdStudentStatus {
         return values()[index];
     }
 
+
+    
 }

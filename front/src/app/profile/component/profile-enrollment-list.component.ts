@@ -12,6 +12,7 @@ export class ProfileEnrollmentListComponent {
 
 
   private columns: any[] = [
+    { name: 'admission.academicSession.code', label: 'Semester' },
     { name: 'section.offering.code', label: 'Course Code' },
     { name: 'section.offering.course.credit', label: 'Credit' },
     { name: 'gradeCode.code', label: 'Grade' }
