@@ -87,38 +87,5 @@ export class ProfileActionComponent {
     });
   }
 
-  deactivate(): void {
-    let snackBarRef = this.snackBar.open("Deactivating Student : ?", "OK");
-    snackBarRef.afterDismissed().subscribe(() => {
-        this.student$.take(1).subscribe(student =>
-          this.store.dispatch(this.actions.deactivateStudent(student)))
-      }
-    );
-
-  }
-
-  activate(): void {
-    let snackBarRef = this.snackBar.open("Activating Student : ?", "OK");
-    snackBarRef.afterDismissed().subscribe(() => {
-        this.student$.take(1).subscribe(student =>
-          this.store.dispatch(this.actions.activateStudent(student)))
-      }
-    );
-
-  }
-
-  bar(): void {
-    let snackBarRef = this.snackBar.open("Barred Student : ?", "OK");
-    snackBarRef.afterDismissed().subscribe(() => {
-        this.student$.take(1).subscribe(student =>
-          this.store.dispatch(this.actions.barStudent(student)))
-      }
-    );
-  }
-
-  disbar(): void {
-  }
-
-
 }
 

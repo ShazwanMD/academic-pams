@@ -13,6 +13,7 @@ import {GuardianType} from "../guardian-type.enum";
 import {AcademicSession} from "../../planner/academic-sessions/academic-session.interface";
 import {StudyMode} from "../../common/study-modes/study-mode.interface";
 import {SwitchStudyMode} from "../switch-study-mode.interface";
+import { StudentStatus } from "../student-status.enum";
 
 @Component({
   selector: 'pams-study-mode-switcher',
@@ -50,6 +51,8 @@ export class StudyModeSwitcherDialog implements OnInit {
       fax:'',
       studyMode: <StudyMode>{},
       cohort: <Cohort>{},
+      studentStatus:<StudentStatus>{},
+      studentStatusDescription:'',
     });
 
     console.log("patching values : " + JSON.stringify(this._student.studyMode));

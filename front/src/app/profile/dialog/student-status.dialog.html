@@ -2,10 +2,10 @@
 <md-dialog-content>
   <form [formGroup]="switchForm">
     <div layout="row" class="pad-bottom pad-top" flex>
-      <span>From {{_student.studentStatus}}</span>
+      <span>Current Student Status : {{_student.studentStatus}}</span>
     </div>
     <div layout="row" class="pad-bottom pad-top" flex>
-      <pams-student-status-select [placeholder]="'To'" [innerFormControl]="switchForm.controls['studentStatus']">
+      <pams-student-status-select [placeholder]="'To : '" [innerFormControl]="switchForm.controls['studentStatus']">
       </pams-student-status-select>
     </div>
     <div layout="row" class="inset" flex>

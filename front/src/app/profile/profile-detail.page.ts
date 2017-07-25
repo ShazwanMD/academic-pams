@@ -99,37 +99,5 @@ deactivate(): void {
 
   disbar(): void {
   }
-
-
-    showTransferDialog(): void {
-    let config = new MdDialogConfig();
-    config.viewContainerRef = this.vcf;
-    config.role = 'dialog';
-    config.width = '60%';
-    config.height = '80%';
-    config.position = {top: '0px'};
-    this.transfererDialogRef = this.dialog.open(CohortTransfererDialog, config);
-    this.transfererDialogRef.componentInstance.student = this.student;
-    this.transfererDialogRef.afterClosed().subscribe(res => {
-      console.log("close dialog");
-      // load something here
-    });
-  }
-
-  showSwitchDialog(): void {
-    let config = new MdDialogConfig();
-    config.viewContainerRef = this.vcf;
-    config.role = 'dialog';
-    config.width = '60%';
-    config.height = '80%';
-    config.position = {top: '0px'};
-    this.switcherDialogRef = this.dialog.open(StudyModeSwitcherDialog, config);
-    this.switcherDialogRef.componentInstance.student = this.student;
-    this.switcherDialogRef.afterClosed().subscribe(res => {
-      console.log("close dialog");
-      // load something here
-    });
-  }
-  
 }
 
