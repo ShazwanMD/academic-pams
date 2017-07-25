@@ -1,3 +1,4 @@
+
 import { SubjectActions } from './../../subjects/subject.action';
 import { Course } from './../../courses/course.interface';
 import { SingleSubject } from './../single-subject.interface';
@@ -14,6 +15,7 @@ import {PlannerModuleState} from '../../index';
 import {MdDialogRef} from '@angular/material';
 import {AcademicSession} from '../../academic-sessions/academic-session.interface';
 import {Program} from '../../programs/program.interface';
+import { SubjectType } from "../../subjects/subject-type.enum";
 
 @Component({
   selector: 'pams-curriculum-single-subject',
@@ -29,6 +31,7 @@ export class CurriculumSingleSubjectDialog implements OnInit {
     private _subject: Subject;
     private _curriculum: Curriculum;
 
+
   constructor(private router: Router,
               private route: ActivatedRoute,
               private formBuilder: FormBuilder,
@@ -42,6 +45,11 @@ export class CurriculumSingleSubjectDialog implements OnInit {
     this.edit = true;
   }
 
+    set curriculum(value: Curriculum) {
+    this._curriculum= value;
+    this.edit = true;
+  }
+
    set subject(value: Subject) {
     this._subject = value;
     this.edit = true;
@@ -49,9 +57,12 @@ export class CurriculumSingleSubjectDialog implements OnInit {
 
   ngOnInit(): void {
     this.editorForm = this.formBuilder.group(<SingleSubject>{
-      id:null,
-      ordinal:0,
+      id: undefined,
+      type: '',
+      ordinal: 0,
+      subjectType: SubjectType.CORE,
       course: <Course>{},
+
     });
 
     if (this.edit) this.editorForm.patchValue(this._singleSubject);

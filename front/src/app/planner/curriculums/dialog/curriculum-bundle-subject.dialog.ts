@@ -43,6 +43,11 @@ export class CurriculumBundleSubjectDialog implements OnInit {
     this.edit = true;
   }
 
+    set curriculum(value: Curriculum) {
+    this._curriculum= value;
+    this.edit = true;
+  }
+
    set subject(value: Subject) {
     this._subject = value;
     this.edit = true;
