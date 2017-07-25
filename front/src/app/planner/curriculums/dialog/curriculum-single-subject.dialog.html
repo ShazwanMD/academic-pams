@@ -1,0 +1,24 @@
+<h2 md-dialog-title>Create New Single Subject</h2>
+<md-dialog-content>
+  <form [formGroup]="creatorForm">
+    <div layout="row" class="insert">
+      <md-input-container flex>
+        <input mdInput 
+               placeholder="ordinal"
+               formControlName="ordinal" type="number"
+               flex/>
+      </md-input-container>
+    </div>
+    <div layout="row" class="pad-bottom pad-top">
+      <pams-course-select
+        [placeholder]="'Select course'"
+        [innerFormControl]="createForm.controls['course']">
+      </pams-course-select>
+      </div>
+  </form>
+</md-dialog-content>
+<md-dialog-actions align="end">
+  <button md-raised-button color="accent" (click)="submit(creatorForm.value, edit)">
+    Save
+  </button>
+</md-dialog-actions>
