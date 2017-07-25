@@ -1,0 +1,18 @@
+<h2 md-dialog-title>Create New B Subject</h2>
+<md-dialog-content>
+  <form [formGroup]="creatorForm">
+    <div layout="row" class="insert">
+      <md-input-container flex>
+        <input mdInput 
+               placeholder="id"
+               formControlName="id" type="number"
+               flex/>
+      </md-input-container>
+    </div>
+  </form>
+</md-dialog-content>
+<md-dialog-actions align="end">
+  <button md-raised-button color="accent" (click)="submit(creatorForm.value, edit)">
+    Save
+  </button>
+</md-dialog-actions>
