@@ -152,6 +152,7 @@ export class PlannerModule {
         CommonService,
         PlannerService,
         CurriculumActions,
+        SubjectActions,
       ],
     };
   }
