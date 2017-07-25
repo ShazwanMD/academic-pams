@@ -6,15 +6,23 @@
       <md-chip color="accent">{{subjects?.length}}</md-chip>
     </md-chip-list>
     <span flex></span>
-    <button md-button class="md-icon-button" (click)="addSubjectDialog()" mdTooltip="Add new subject">
+    <!--<button md-button class="md-icon-button" (click)="addSubjectDialog()" mdTooltip="Add new subject">
       <md-icon class="md-24 tc-grey-300" [ngClass]="{'tc-grey-700': selectedRows.length === 0}">add</md-icon>
-    </button>
-    <button md-button class="md-icon-button" (click)="deleteSubject(selectedRows[0])"
-            [disabled]="selectedRows.length != 1">
-      <md-icon class="md-24 tc-grey-300" [ngClass]="{'tc-grey-700': selectedRows.length === 1}">delete</md-icon>
-    </button>
-  </div>
+    </button>-->
+    <button md-icon-button [md-menu-trigger-for]="menu">
+    <md-icon>add</md-icon>
+  </button>
+  <md-menu x-position="before" #menu="mdMenu">
+    <button md-menu-item (click)="showSingleSubjectDialog()">Single Subject</button>
+        <button md-menu-item (click)="showBundleSubjectDialog()">Bundle Subject</button>
+    <button md-menu-item (click)="showBundleSubjectPartDialog()">Bundle Subject Part</button>
+  </md-menu>
+</div>
   <md-divider></md-divider>
+  <!--<pams-single-subject
+  [curriculum]="curriculum"
+  [singleSubject]="singleSubject">
+</pams-single-subject>-->
   <md-card-content>
     <td-data-table
       [data]="subjects"
@@ -34,12 +42,8 @@
           <template *ngIf="row.type=='bundle'" let-group ngFor [ngForOf]="subjects">
           <tr *ngFor="let row of group.parts">{{row.course.code}}<br/></tr>
           </template>
-                
     </div>
       </template>
-
-
-     
      
       <!--<template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">-->
         <!--<div layout="row">-->
@@ -53,7 +57,7 @@
           <!--</md-menu>-->
         <!--</div>-->
       <!--</template>-->
-    </td-data-table>
+    <!--</td-data-table>
   </md-card-content>
-</md-card>
+</md-card>-->-->
 
