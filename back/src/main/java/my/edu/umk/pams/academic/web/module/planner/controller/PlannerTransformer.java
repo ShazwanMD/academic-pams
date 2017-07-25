@@ -160,6 +160,8 @@ public class PlannerTransformer {
         vo.setId(subject.getId());
         vo.setOrdinal(subject.getOrdinal());
         vo.setSubjectType(SubjectType.get(subject.getSubjectType().ordinal()));
+//        vo.setCurriculum(toCurriculumVo(subject.getCurriculum()));
+    
         return vo;
     }
 

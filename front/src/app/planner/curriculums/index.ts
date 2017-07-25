@@ -1,5 +1,5 @@
-// import { SingleSubjectComponent } from './component/curriculum-single-subject.component';
-
+import { SingleSubjectComponent } from './component/curriculum-single-subject.component';
+import { CurriculumSingleSubjectDialog } from './dialog/curriculum-single-subject.dialog';
 import {SubjectSubModule} from '../subjects/index';
 import {SubjectActions} from '../subjects/subject.action';
 import {CurriculumActionComponent} from './component/curriculum-action.component';
@@ -28,7 +28,7 @@ import {CurriculumComponent} from './component/curriculum.component';
 import {IdentityModule} from '../../identity/index';
 import {AcademicSessionSubModule} from '../academic-sessions/index';
 import {CurriculumUpdateDialog} from './dialog/curriculum-update.dialog';
-// import { SingleSubjectEditorDialog } from "./dialog/curriculum-single-subject.dialog";
+
 
 @NgModule({
   imports: [
@@ -53,18 +53,19 @@ import {CurriculumUpdateDialog} from './dialog/curriculum-update.dialog';
     CurriculumSelectComponent,
     CurriculumActionComponent,
     CurriculumSubjectListComponent,
-    // SingleSubjectComponent,
-
+    SingleSubjectComponent,
+    
     // dialog
     CurriculumEditorDialog,
     CurriculumUpdateDialog,
-    // SingleSubjectEditorDialog ,
+    CurriculumSingleSubjectDialog,
 
   ],
   exports: [
     CurriculumSelectComponent,
     CurriculumActionComponent,
-    // SingleSubjectComponent,
+    SingleSubjectComponent,
+    CurriculumSubjectListComponent,
 
 
   ],
@@ -74,6 +75,8 @@ import {CurriculumUpdateDialog} from './dialog/curriculum-update.dialog';
     CurriculumSelectComponent,
     CurriculumActionComponent,
     CurriculumSubjectListComponent,
+    CurriculumSingleSubjectDialog,
+    
 
   ],
 })

@@ -547,8 +547,9 @@ public class PlannerController {
         dummyLogin();
         LOG.info("Haiii");
         AdCurriculum curriculum = plannerService.findCurriculumById(id);
+        AdCourse course =  plannerService.findCourseByCode(vo.getCourse().getCode());
         AdSingleSubject subject = new AdSingleSubjectImpl();
-     	subject.setCourse (plannerService.findCourseByCode(null));
+     	subject.setCourse (course);
         subject.setOrdinal(vo.getOrdinal());
         subject.setSubjectType(AdSubjectType.get(vo.getSubjectType().ordinal()));
      	plannerService.addSubject(curriculum, subject);
