@@ -166,7 +166,7 @@ export class PlannerService {
 
   saveCourse(course: Course): Observable<String> {
     console.log(course.code);
-    return this._http.post(this.PLANNER_API + '/course/' + course.code + '/save', JSON.stringify(course))
+    return this._http.post(this.PLANNER_API + '/courses/' + course.code + '/save', JSON.stringify(course))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
