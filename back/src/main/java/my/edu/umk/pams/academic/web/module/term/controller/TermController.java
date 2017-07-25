@@ -1,8 +1,6 @@
 package my.edu.umk.pams.academic.web.module.term.controller;
 
 import my.edu.umk.pams.academic.common.model.AdStudyCenter;
-
-
 import my.edu.umk.pams.academic.common.service.CommonService;
 import my.edu.umk.pams.academic.core.AdFlowState;
 import my.edu.umk.pams.academic.identity.model.AdStaff;
@@ -1126,8 +1124,8 @@ public class TermController {
             AdSection s = termService.findSectionById(section.getId());
             section.setAppointmentCount(termService.countAppointment(s));
             section.setEnrollmentCount(termService.countEnrollment(s));
-            String canonicalCode = "FSB-MASTER-MFB-MBG1"; //test dummy value
-			section.setSectionCount(termService.countSection(canonicalCode));
+            //String canonicalCode = "FSB-MASTER-MFB-MBG1"; //test dummy value
+			//section.setSectionCount(termService.countSection(canonicalCode));
             
         }
         return sections;
