@@ -2,7 +2,7 @@
 import { SubjectActions } from './../../subjects/subject.action';
 import { Course } from './../../courses/course.interface';
 import { SingleSubject } from './../single-subject.interface';
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import {FormGroup} from '@angular/forms';
 import {FormBuilder} from '@angular/forms';
 import {Router, ActivatedRoute} from '@angular/router';
@@ -24,57 +24,55 @@ import { SubjectType } from "../../subjects/subject-type.enum";
 
 export class CurriculumSingleSubjectDialog implements OnInit {
    
+private creatorForm: FormGroup;
+  private create: boolean = false;
+  private _subject: Subject;
+  private _curriculum: Curriculum;
+   private _singleSubject: SingleSubject;
 
-    private editorForm: FormGroup;
-    private edit: boolean = false;
-    private _singleSubject: SingleSubject;
-    private _subject: Subject;
-    private _curriculum: Curriculum;
-
-
-  constructor(private router: Router,
-              private route: ActivatedRoute,
-              private formBuilder: FormBuilder,
+  constructor(private formBuilder: FormBuilder,
               private store: Store<PlannerModuleState>,
               private actions: SubjectActions,
-              private dialog: MdDialogRef<CurriculumSingleSubjectDialog >) {
+              private router: Router,
+              private route: ActivatedRoute,
+              private viewContainerRef: ViewContainerRef,
+              private dialog: MdDialogRef<CurriculumSingleSubjectDialog>) {
   }
 
-    set singleSubject(value: SingleSubject) {
-    this. _singleSubject = value;
-    this.edit = true;
+  set curriculum(value: Curriculum) {
+    this._curriculum = value;
   }
 
-    set curriculum(value: Curriculum) {
-    this._curriculum= value;
-    this.edit = true;
-  }
-
-   set subject(value: Subject) {
+  set subject(value: Subject) {
     this._subject = value;
-    this.edit = true;
+    this.create = true;
+  }
+
+  set singleSubject(value: SingleSubject) {
+    this._singleSubject = value;
+    this.create = true;
   }
 
   ngOnInit(): void {
-    this.editorForm = this.formBuilder.group(<SingleSubject>{
+    this.creatorForm = this.formBuilder.group({
       id: undefined,
-      type: '',
       ordinal: 0,
       subjectType: SubjectType.CORE,
-      course: <Course>{},
-
+      course:<Course>{},
+      curriculum: <Curriculum>{},
     });
 
-    if (this.edit) this.editorForm.patchValue(this._singleSubject);
-
+    this.creatorForm.patchValue({'curriculum': this._curriculum});
+    if (this.create) this.creatorForm.patchValue(this._singleSubject);
   }
 
-  save(singleSubject:  SingleSubject, isValid: boolean): void {
-
-      if (!singleSubject.id) this.store.dispatch(this.actions.addSubject(this._curriculum, this.subject));
-      else this.store.dispatch(this.actions.updateSubject(this.subject));
+  submit(singleSubject: SingleSubject, isValid: boolean): void {
+    console.log('adding Subject');
+    if (!singleSubject.id) this.store.dispatch(this.actions.addSubject(this._curriculum, singleSubject));
+    else this.store.dispatch(this.actions.updateSubject(singleSubject));
     this.dialog.close();
-    console.log(this.subject);
-    
+    console.log(singleSubject);
   }
+
 }
+
