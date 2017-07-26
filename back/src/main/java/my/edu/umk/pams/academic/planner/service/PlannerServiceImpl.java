@@ -3,6 +3,7 @@ package my.edu.umk.pams.academic.planner.service;
 import my.edu.umk.pams.academic.common.model.AdGradeCode;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.planner.dao.*;
+import my.edu.umk.pams.academic.planner.event.ProgramEvent;
 import my.edu.umk.pams.academic.planner.model.*;
 import my.edu.umk.pams.academic.security.service.SecurityService;
 import my.edu.umk.pams.academic.term.dao.AdAssessmentDao;
@@ -15,6 +16,7 @@ import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -83,6 +85,9 @@ public class PlannerServiceImpl implements PlannerService {
 
     @Autowired
     private SessionFactory sessionFactory;
+
+    @Autowired
+    private ApplicationContext applicationContext;
 
     //====================================================================================================
     // ACADEMIC SESSION
@@ -778,6 +783,12 @@ public class PlannerServiceImpl implements PlannerService {
     public void saveProgram(AdProgram program) {
         programDao.save(program, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
+
+//        ProgramCodePayload payload = new ProgramCodePayload();
+//        payload.setCode(program.getCode())
+//        payload.setCode(program.getDescription());
+//        ProgramEvent event = new ProgramEvent(payload);
+//        applicationContext.publishEvent(event);
     }
 
     @Override
