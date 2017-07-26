@@ -1,4 +1,4 @@
-import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, AfterViewInit} from '@angular/core';
+import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, AfterViewInit, OnChanges, SimpleChange} from '@angular/core';
 import {MdSnackBar} from "@angular/material";
 import {EnrollmentApplicationTask} from "../enrollment-application-task.interface";
 import { TdDataTableSortingOrder, TdDataTableService, ITdDataTableSortChangeEvent, IPageChangeEvent } from '@covalent/core';
@@ -8,7 +8,7 @@ import { TdDataTableSortingOrder, TdDataTableService, ITdDataTableSortChangeEven
   templateUrl: './assigned-enrollment-application-task-list.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AssignedEnrollmentApplicationTaskListComponent implements AfterViewInit {
+export class AssignedEnrollmentApplicationTaskListComponent implements AfterViewInit, OnChanges {
 
   @Input() enrollmentApplicationTasks: EnrollmentApplicationTask[];
   @Output() view = new EventEmitter<EnrollmentApplicationTask>();
@@ -35,6 +35,15 @@ export class AssignedEnrollmentApplicationTaskListComponent implements AfterView
   constructor(private _dataTableService: TdDataTableService,
               private snackBar: MdSnackBar) {
   }
+  
+  ngOnChanges(changes: {[ propName: string]: SimpleChange}) {
+      console.log("changes",changes,changes['enrollmentApplicationTasks']);
+        if (changes['enrollmentApplicationTasks']){
+        this.filteredData = changes['enrollmentApplicationTasks'].currentValue; 
+        this.filteredTotal = changes['enrollmentApplicationTasks'].currentValue.length;
+        this.filter();
+      }
+    }
   
   ngAfterViewInit(): void {
       this.filteredData = this.enrollmentApplicationTasks;
