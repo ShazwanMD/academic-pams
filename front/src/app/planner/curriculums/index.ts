@@ -1,3 +1,5 @@
+import { CourseActions } from './../courses/course.action';
+import { CourseSubModule } from './../courses/index';
 import { SingleSubjectComponent } from './component/curriculum-single-subject.component';
 import { CurriculumSingleSubjectDialog } from './dialog/curriculum-single-subject.dialog';
 import {SubjectSubModule} from '../subjects/index';
@@ -39,6 +41,7 @@ import {CurriculumUpdateDialog} from './dialog/curriculum-update.dialog';
     SubjectSubModule.forRoot(),
     CovalentCoreModule.forRoot(),
     AcademicSessionSubModule.forRoot(),
+    CourseSubModule.forRoot(),
     IdentityModule.forRoot(),
     EffectsModule.run(CurriculumEffects),
   ],
@@ -92,6 +95,8 @@ export class CurriculumSubModule {
         CommonService,
         CurriculumActions,
         SubjectActions,
+        CourseActions,
+
       ],
     };
   }

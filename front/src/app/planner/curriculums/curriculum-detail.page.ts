@@ -25,6 +25,7 @@ export class CurriculumDetailPage implements OnInit {
   private curriculum$: Observable<Curriculum>;
   private subjects$: Observable<Subject[]>;
 
+
   private editorDialogRef: MdDialogRef<CurriculumEditorDialog>;
 
   @Input() curriculum: Curriculum;

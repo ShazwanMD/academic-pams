@@ -22,6 +22,7 @@ import {Subject} from '../subject.interface';
 export class CurriculumSubjectListComponent implements OnInit, OnChanges {
 
 private selectedRows: Subject[];
+// private Curriculum:: MdDialogRef<>;
 private singleSubjectDialogRef: MdDialogRef<CurriculumSingleSubjectDialog>;
 private bundleSubjectDialogRef: MdDialogRef<CurriculumBundleSubjectDialog>;
 private bundleSubjectPartDialogRef: MdDialogRef<CurriculumBundleSubjectPartDialog>;
@@ -119,6 +120,24 @@ private bundleSubjectPartDialogRef: MdDialogRef<CurriculumBundleSubjectPartDialo
       // no op
     });
   }
+
+    //     editorDialog(): void {
+    //     console.log("edit");
+    //     console.log(this.curriculum);
+    //     let config = new MdDialogConfig();
+    //     config.viewContainerRef = this.vcf;
+    //     config.role = 'dialog';
+    //     config.width = '60%';
+    //     config.height = '50%';
+    //     config.position = {top: '0px'};
+    //     this.editorDialogRef = this.dialog.open(FacultyEditorDialog, config);
+    //     this.editorDialogRef.componentInstance.faculty = this.faculty;
+
+    //     // set
+    //     this.editorDialogRef.afterClosed().subscribe(res => {
+    //     console.log("close dialog");
+    //     });
+    // }
 
   selectRow(subject: Subject): void {
   }

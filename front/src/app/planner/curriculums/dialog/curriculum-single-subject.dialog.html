@@ -15,13 +15,24 @@
         [innerFormControl]="creatorForm.controls['subjectType']">
       </pams-subject-type-select>
     </div>
-    <!--<div layout="row" class="pad-bottom pad-top">
+    
+    <div layout="row" class="pad-bottom pad-top">
       <pams-course-select
-        [placeholder]="'Select Program'"
-        [innerFormControl]="createForm.controls['course']">
+        [placeholder]="'Select course'"
+        [innerFormControl]="creatorForm.controls['course']">
       </pams-course-select>
-      </div>-->
+      </div>
+
+      <!--<div layout="row" class="pad-bottom">
+      <md-input-container flex>
+        <input mdInput #code
+               placeholder="Curriculum"
+               formControlName="curriculum"
+               flex/>
+      </md-input-container>
+    </div>-->
   </form>
+   
 </md-dialog-content>
 <md-dialog-actions align="end">
   <button md-raised-button color="accent" (click)="submit(creatorForm.value, edit)">
