@@ -154,7 +154,7 @@ public class PlannerServiceImpl implements PlannerService {
     static int TWO = 2;
     public void calculateGpa(AdAdmission admission) {
         LOG.debug("admission:{}", admission.getSession().getCode());
-
+     
         BigDecimal hoursPerSemester = getHoursPerSemester(admission);
         BigDecimal pointHoursPerSemester = getPointHoursPerSemester(admission);
 
@@ -169,8 +169,18 @@ public class PlannerServiceImpl implements PlannerService {
 
         admission.setGpa(gpa);
         admission.setCgpa(cgpa);
+        
+        //Condition To Check Standing
+        if(cgpa.doubleValue() >= 0.00 && cgpa.doubleValue() <= 1.99){
+        	admission.setStanding(AdAcademicStanding.KG);  
+        }else if(cgpa.doubleValue() >= 2.00 && cgpa.doubleValue() <= 4.00){
+        	admission.setStanding(AdAcademicStanding.KB);  
+        }
+        
 
         termService.updateAdmission(admission);
+        LOG.debug("Admission CGPA:{}",admission.getCgpa());
+        LOG.debug("Admission Standing:{}",admission.getStanding().name());
     }
 
     private BigDecimal getCreditHour(AdEnrollment enrollment) {
