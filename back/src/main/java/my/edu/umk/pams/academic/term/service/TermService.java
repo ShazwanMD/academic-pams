@@ -247,6 +247,8 @@ public interface TermService {
     AdAdmission findAdmissionByAcademicSessionCohortAndStudent(AdAcademicSession academicSession, AdCohort cohort, AdStudent student);
 
     List<AdAdmission> findAdmissions(Integer offset, Integer limit);
+    
+    List<AdAdmission> findAdmissions(AdStudent student);
 
     List<AdAdmission> findAdmissions(AdStudent student, Integer offset, Integer limit);
 

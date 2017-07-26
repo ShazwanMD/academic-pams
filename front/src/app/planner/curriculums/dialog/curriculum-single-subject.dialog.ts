@@ -68,11 +68,12 @@ private creatorForm: FormGroup;
 
   submit(singleSubject: SingleSubject, isValid: boolean): void {
     console.log('adding Subject');
-    if (!singleSubject.id) this.store.dispatch(this.actions.addSubject(this._curriculum, singleSubject));
-    else this.store.dispatch(this.actions.updateSubject(singleSubject));
+    this.store.dispatch(this.actions.addSingleSubject(this._curriculum, singleSubject));
     this.dialog.close();
-    console.log(singleSubject);
-  }
+    
+console.log('Done');
+     
+ }
 
 }
 

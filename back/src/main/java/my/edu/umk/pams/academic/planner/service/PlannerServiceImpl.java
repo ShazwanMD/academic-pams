@@ -255,7 +255,7 @@ public class PlannerServiceImpl implements PlannerService {
 
     // todo(sam) Fix 2nd & 3rd params
     public List<AdAdmission> findAdmissions(AdStudent student){
-        return termService.findAdmissions(student, 0, 9999);
+        return termService.findAdmissions(student);
     }
 
     //====================================================================================================
@@ -380,6 +380,18 @@ public class PlannerServiceImpl implements PlannerService {
     @Override
     public void addSubject(AdCurriculum curriculum, AdSubject subject) {
         curriculumDao.addSubject(curriculum, subject, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
+    
+    @Override
+    public void addSingleSubject(AdCurriculum curriculum, AdSubject subject) {
+        curriculumDao.addSingleSubject(curriculum, subject, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+    }
+    
+    @Override
+    public void addBundleSubject(AdCurriculum curriculum, AdSubject subject) {
+        curriculumDao.addBundleSubject(curriculum, subject, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 

@@ -1,4 +1,4 @@
-import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, AfterViewInit} from '@angular/core';
+import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, AfterViewInit, SimpleChange, OnChanges} from '@angular/core';
 import {AcademicSession} from "../academic-session.interface";
 import { TdDataTableSortingOrder, ITdDataTableSortChangeEvent, IPageChangeEvent, TdDataTableService } from "@covalent/core";
 import { MdSnackBar } from "@angular/material";
@@ -12,7 +12,7 @@ import { AcademicSessionActions } from './../academic-session.action';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 
-export class AcademicSessionListComponent implements AfterViewInit  {
+export class AcademicSessionListComponent implements AfterViewInit, OnChanges {
 
   
     @Input() academicSessions: AcademicSession[];
@@ -48,6 +48,15 @@ export class AcademicSessionListComponent implements AfterViewInit  {
     sortOrder: TdDataTableSortingOrder = TdDataTableSortingOrder.Descending;
   
     
+    ngOnChanges(changes: {[ propName: string]: SimpleChange}) {
+      console.log("changes",changes,changes['academicSessions']);
+          if (changes['academicSessions']){
+          this.filteredData = changes['academicSessions'].currentValue; 
+          this.filteredTotal = changes['academicSessions'].currentValue.length;
+          this.filter();
+        }
+      }  
+       
      ngAfterViewInit(): void {
       this.filteredData = this.academicSessions;
       this.filteredTotal = this.academicSessions.length;

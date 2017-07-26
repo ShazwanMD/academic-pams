@@ -2,7 +2,7 @@ import { PlannerModuleState } from './../../index';
 import { Observable } from 'rxjs';
 import { ProgramActions } from './../program.action';
 import { Store } from '@ngrx/store';
-import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy} from '@angular/core';
+import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, OnChanges, AfterViewInit,SimpleChange} from '@angular/core';
 import {Program} from "../program.interface";
 import { TdDataTableSortingOrder, TdDataTableService, IPageChangeEvent, ITdDataTableSortChangeEvent } from "@covalent/core";
 import { MdSnackBar } from "@angular/material";
@@ -12,7 +12,7 @@ import { MdSnackBar } from "@angular/material";
   templateUrl: './program-list.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ProgramListComponent {
+export class ProgramListComponent implements OnChanges, AfterViewInit{
 
 
  private PROGRAMS:string[] = "plannerModuleState.bankCodes".split(".");
@@ -47,7 +47,15 @@ export class ProgramListComponent {
   sortBy: string = 'code';
   sortOrder: TdDataTableSortingOrder = TdDataTableSortingOrder.Descending;
 
-  
+     ngOnChanges(changes: {[ propName: string]: SimpleChange}) {
+         console.log("changes",changes,changes['programs']);
+             if (changes['programs']){
+             this.filteredData = changes['programs'].currentValue; 
+             this.filteredTotal = changes['programs'].currentValue.length;
+             this.filter();
+           }
+         }
+     
    ngAfterViewInit(): void {
     this.filteredData = this.programs;
     this.filteredTotal = this.programs.length;

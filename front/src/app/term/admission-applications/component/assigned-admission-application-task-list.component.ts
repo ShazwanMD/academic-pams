@@ -1,14 +1,15 @@
 import { MdSnackBar } from '@angular/material';
 import { AdmissionApplicationTask } from '../admission-application-task.interface';
-import { Component, ChangeDetectionStrategy, EventEmitter, Output, Input } from '@angular/core';
+import { Component, ChangeDetectionStrategy, EventEmitter, Output, Input,OnChanges, SimpleChanges, SimpleChange } from '@angular/core';
 import { TdDataTableSortingOrder, TdDataTableService, ITdDataTableSortChangeEvent, IPageChangeEvent } from '@covalent/core';
+
 
 @Component({
   selector: 'pams-assigned-admission-application-task-list',
   templateUrl: './assigned-admission-application-task-list.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AssignedAdmissionApplicationTaskListComponent {
+export class AssignedAdmissionApplicationTaskListComponent implements OnChanges  {
 
     @Input() admissionApplicationTasks: AdmissionApplicationTask[];
     @Output() view = new EventEmitter<AdmissionApplicationTask>();
@@ -39,8 +40,17 @@ export class AssignedAdmissionApplicationTaskListComponent {
   sortBy: string = 'referenceNo';
   sortOrder: TdDataTableSortingOrder = TdDataTableSortingOrder.Descending;
   
+  ngOnChanges(changes: {[ propName: string]: SimpleChange}) {
+    console.log("changes",changes,changes['admissionApplicationTasks']);
+      if (changes['admissionApplicationTasks']){
+      this.filteredData = changes['admissionApplicationTasks'].currentValue; 
+      this.filteredTotal = changes['admissionApplicationTasks'].currentValue.length;
+      this.filter();
+    }
+  }
+  
   ngAfterViewInit(): void {
-      this.filteredData = this.admissionApplicationTasks;
+      this.filteredData = this.admissionApplicationTasks; 
       this.filteredTotal = this.admissionApplicationTasks.length;
       this.filter();
     }

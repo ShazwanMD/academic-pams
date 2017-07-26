@@ -50,6 +50,7 @@ public interface PlannerService {
 
     List<AdAdmission> findAdmissions(AdStudent student);
 
+    
     //====================================================================================================
     // CURRICULUM
     //====================================================================================================
@@ -99,6 +100,10 @@ public interface PlannerService {
     void removeCurriculum(AdCurriculum curriculum);
 
     void addSubject(AdCurriculum curriculum, AdSubject subject);
+    
+    void addSingleSubject (AdCurriculum curriculum, AdSubject subject);
+    
+    void addBundleSubject (AdCurriculum curriculum, AdSubject subject);
 
     void updateSubject(AdCurriculum curriculum, AdSubject subject);
 

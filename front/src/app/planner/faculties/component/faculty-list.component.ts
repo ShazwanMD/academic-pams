@@ -1,4 +1,4 @@
-import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, AfterViewInit} from '@angular/core';
+import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, AfterViewInit, OnChanges, SimpleChange} from '@angular/core';
 import {Faculty} from "../faculty.interface";
 import { TdDataTableSortingOrder, ITdDataTableSortChangeEvent, IPageChangeEvent, TdDataTableService } from "@covalent/core";
 import { MdSnackBar } from "@angular/material";
@@ -12,7 +12,7 @@ import { Observable } from 'rxjs';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 
-export class FacultyListComponent implements AfterViewInit  {
+export class FacultyListComponent implements AfterViewInit, OnChanges {
 
   
     @Input() faculties: Faculty[];
@@ -48,6 +48,15 @@ export class FacultyListComponent implements AfterViewInit  {
     sortOrder: TdDataTableSortingOrder = TdDataTableSortingOrder.Descending;
   
     
+       ngOnChanges(changes: {[ propName: string]: SimpleChange}) {
+           console.log("changes",changes,changes['faculties']);
+               if (changes['faculties']){
+               this.filteredData = changes['faculties'].currentValue; 
+               this.filteredTotal = changes['faculties'].currentValue.length;
+               this.filter();
+             }
+           }
+       
      ngAfterViewInit(): void {
       this.filteredData = this.faculties;
       this.filteredTotal = this.faculties.length;

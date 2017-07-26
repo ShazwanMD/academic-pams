@@ -1,4 +1,4 @@
-import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy} from '@angular/core';
+import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, AfterViewInit, OnChanges, SimpleChange} from '@angular/core';
 import {Cohort} from "../cohort.interface";
 import { TdDataTableSortingOrder, TdDataTableService, ITdDataTableSortChangeEvent, IPageChangeEvent } from '@covalent/core';
 import { MdSnackBar } from "@angular/material";
@@ -8,7 +8,7 @@ import { MdSnackBar } from "@angular/material";
   templateUrl: './cohort-list.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CohortListComponent {
+export class CohortListComponent implements AfterViewInit, OnChanges {
 
   @Input() cohorts: Cohort[];
   @Output() view = new EventEmitter<Cohort>();
@@ -32,6 +32,15 @@ export class CohortListComponent {
    constructor(private _dataTableService: TdDataTableService,
           private snackBar: MdSnackBar) {}
   
+   
+   ngOnChanges(changes: {[ propName: string]: SimpleChange}) {
+       console.log("changes",changes,changes['cohorts']);
+           if (changes['cohorts']){
+           this.filteredData = changes['cohorts'].currentValue; 
+           this.filteredTotal = changes['cohorts'].currentValue.length;
+           this.filter();
+         }
+       }  
   
    ngAfterViewInit(): void {
     this.filteredData = this.cohorts;

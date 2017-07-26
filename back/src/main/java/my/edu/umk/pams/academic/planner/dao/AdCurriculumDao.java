@@ -1,6 +1,5 @@
 package my.edu.umk.pams.academic.planner.dao;
 
-
 import my.edu.umk.pams.academic.core.GenericDao;
 import my.edu.umk.pams.academic.identity.model.AdUser;
 import my.edu.umk.pams.academic.planner.model.*;
@@ -67,5 +66,12 @@ public interface AdCurriculumDao extends GenericDao<Long, AdCurriculum> {
     void addSubjectPart(AdBundleSubject subject, AdBundleSubjectPart part, AdUser user);
 
     void deleteSubjectPart(AdBundleSubject subject, AdBundleSubjectPart part, AdUser user);
+
+	void addSingleSubject(AdCurriculum curriculum, AdSubject subject, AdUser currentUser);
+
+	void addBundleSubject(AdCurriculum curriculum, AdSubject subject, AdUser currentUser);
+	
+	
+	
 
 }

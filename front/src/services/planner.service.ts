@@ -277,8 +277,6 @@ export class PlannerService {
       .map((res: Response) => <Curriculum>res.json());
   }
 
-  // todo: add single
-  // todo: add bundle
 
   // ====================================================================================================
   // SUBJECT
@@ -290,11 +288,6 @@ findSubjects(): Observable<Subject[]> {
       .map(res => <Subject[]>res.json())
   }
 
-  // findSubjectById(): Observable<Subject> {
-  //   return this._http.get(this.PLANNER_API + '/subjects/' )
-  //     .map((res: Response) => <Subject>res.json());
-  // }
-
    addSubject(curriculum: Curriculum,subject: Subject ): Observable<String> {
     console.log('addSubject:' + subject);
     console.log('curriculum:' + curriculum.code);
@@ -302,10 +295,39 @@ findSubjects(): Observable<Subject[]> {
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
+   addSingleSubject(curriculum: Curriculum,subject: Subject ): Observable<String> {
+    console.log('addSubject:' + subject);
+    console.log('curriculum:' + curriculum.code);
+    return this._http.post(this.PLANNER_API + '/curriculums/' + curriculum.code + '/singleSubjects', JSON.stringify(subject))
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+   addBundleSubject(curriculum: Curriculum,subject: Subject ): Observable<String> {
+    console.log('addSubject:' + subject);
+    console.log('curriculum:' + curriculum.code);
+    return this._http.post(this.PLANNER_API + '/curriculums/' + curriculum.code + '/bundleSubjects', JSON.stringify(subject))
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+   addSubjectPart(curriculum: Curriculum,subject: Subject ): Observable<String> {
+    console.log('addSubject:' + subject);
+    console.log('curriculum:' + curriculum.code);
+    return this._http.post(this.PLANNER_API + '/curriculums/' + curriculum.code + '/bundleSubjects', JSON.stringify(subject))
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+
+
+
 //   updateSubject(subject: Subject): Observable<String> {
 //     return this._http.put(this.PLANNER_API + '/subjects/' + subject.id, JSON.stringify(subject))
 //       .flatMap((res: Response) => Observable.of(res.text()));
 //   }
+
+ // findSubjectById(): Observable<Subject> {
+  //   return this._http.get(this.PLANNER_API + '/subjects/' )
+  //     .map((res: Response) => <Subject>res.json());
+  // }
 
 
 //  activateSubject(subject: Subject): Observable<String> {

@@ -1,4 +1,4 @@
-import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, ViewContainerRef} from '@angular/core';
+import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, ViewContainerRef, SimpleChange, OnChanges} from '@angular/core';
 import {MdSnackBar} from "@angular/material";
 import {EnrollmentApplicationTask} from "../enrollment-application-task.interface";
 import { TdDataTableSortingOrder, TdDataTableService, ITdDataTableSortChangeEvent, IPageChangeEvent } from '@covalent/core';
@@ -8,7 +8,7 @@ import { TdDataTableSortingOrder, TdDataTableService, ITdDataTableSortChangeEven
   templateUrl: './student-enrollment-list.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class StudentEnrollmentListComponent {
+export class StudentEnrollmentListComponent implements OnChanges {
 
   @Input() studentEnrollmentApplicationTasks: EnrollmentApplicationTask[];
   @Output() view = new EventEmitter<EnrollmentApplicationTask>();
@@ -36,6 +36,15 @@ export class StudentEnrollmentListComponent {
   sortBy: string = 'referenceNo';
   sortOrder: TdDataTableSortingOrder = TdDataTableSortingOrder.Descending;
 
+  ngOnChanges(changes: {[ propName: string]: SimpleChange}) {
+      console.log("changes",changes,changes['studentEnrollmentApplicationTasks']);
+        if (changes['studentEnrollmentApplicationTasks']){
+        this.filteredData = changes['studentEnrollmentApplicationTasks'].currentValue; 
+        this.filteredTotal = changes['studentEnrollmentApplicationTasks'].currentValue.length;
+        this.filter();
+      }
+    }
+  
   ngAfterViewInit(): void {
       this.filteredData = this.studentEnrollmentApplicationTasks;
       this.filteredTotal = this.studentEnrollmentApplicationTasks.length;

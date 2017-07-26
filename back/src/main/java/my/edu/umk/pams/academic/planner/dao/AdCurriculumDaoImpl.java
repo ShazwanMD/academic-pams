@@ -247,6 +247,44 @@ public class AdCurriculumDaoImpl extends GenericDaoSupport<Long, AdCurriculum> i
         subject.setMetadata(metadata);
         session.save(subject);
     }
+    
+    @Override
+	public void addSingleSubject(AdCurriculum curriculum, AdSubject subject, AdUser currentUser) {
+    	Validate.notNull(currentUser, "User cannot be null");
+        Validate.notNull(curriculum, "Curriculum cannot be null");
+        Validate.notNull(subject, "Subject cannot be null");
+        Session session = sessionFactory.getCurrentSession();
+        subject.setCurriculum(curriculum);
+        
+        // prepare metadata
+        AdMetadata metadata = new AdMetadata();
+        metadata.setCreatedDate(new Timestamp(System.currentTimeMillis()));
+        metadata.setCreatorId(currentUser.getId());
+        metadata.setState(AdMetaState.ACTIVE);
+        subject.setMetadata(metadata);
+        session.save(subject);
+		
+	}
+
+	@Override
+	public void addBundleSubject(AdCurriculum curriculum, AdSubject subject, AdUser currentUser) {
+		
+		Validate.notNull(currentUser, "User cannot be null");
+        Validate.notNull(curriculum, "Curriculum cannot be null");
+        Validate.notNull(subject, "Subject cannot be null");
+        Session session = sessionFactory.getCurrentSession();
+        subject.setCurriculum(curriculum);
+        
+        // prepare metadata
+        AdMetadata metadata = new AdMetadata();
+        metadata.setCreatedDate(new Timestamp(System.currentTimeMillis()));
+        metadata.setCreatorId(currentUser.getId());
+        metadata.setState(AdMetaState.ACTIVE);
+        subject.setMetadata(metadata);
+        session.save(subject);
+		
+	}
+
 
     public void updateSubject(AdCurriculum curriculum, AdSubject subject, AdUser user) {
         Validate.notNull(user, "User cannot be null");
@@ -291,5 +329,5 @@ public class AdCurriculumDaoImpl extends GenericDaoSupport<Long, AdCurriculum> i
         session.delete(part);
     }
 
-
+	
 }
