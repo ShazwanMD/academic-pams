@@ -88,6 +88,12 @@ export class AdmissionApplicationEffects {
     .mergeMap(action => from([action,
       this.admissionApplicationActions.findAssignedAdmissionApplicationTasks(),
       this.admissionApplicationActions.findPooledAdmissionApplicationTasks()]));
+      
+   //.withLatestFrom(this.store$.select(...this.ADMISSION_APPLICATION_TASK))
+   //.map(state => state[1])
+   //.map((admissionApplicationTask: AdmissionApplicationTask) => this.admissionApplicationActions.findAdmissionApplications());
+
+    
 
   @Effect() releaseAdmissionApplicationTask$ = this.actions$
     .ofType(AdmissionApplicationActions.RELEASE_ADMISSION_APPLICATION_TASK)
@@ -96,7 +102,8 @@ export class AdmissionApplicationEffects {
     .map(message => this.admissionApplicationActions.releaseAdmissionApplicationTaskSuccess(message))
     .mergeMap(action => from([action,
       this.admissionApplicationActions.findAssignedAdmissionApplicationTasks(),
-      this.admissionApplicationActions.findPooledAdmissionApplicationTasks()
+      this.admissionApplicationActions.findPooledAdmissionApplicationTasks(),
+      this.admissionApplicationActions.findAdmissionApplications()
     ]
     ));
 
