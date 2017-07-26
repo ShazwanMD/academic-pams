@@ -33,18 +33,29 @@ export class SubjectEffects {
   //   .switchMap(id => this.plannerService.findSubjectById(id))
   //   .map(subjects => this.SubjectActions.findSubjectByIdSuccess(subjects));
   
-//  @Effect() addSubject$  = this.actions$
-//     .ofType(SubjectActions.ADD_SUBJECT)
+//  @Effect() addSingleSubject$  = this.actions$
+//     .ofType(SubjectActions.ADD_SINGLE_SUBJECT)
 //     .map(action => action.payload)
 //     .switchMap(payload => this.plannerService.addSubject(payload.curriculum,payload.subject))
 //     .map(message=> this.subjectActions.addSubjectSuccess(message))
-//      .withLatestFrom(this.store$.select(...this.CURRICULUM))
-//       .map(state => state[1])
-//       .map((curriculum: Curriculum) => this.curriculumActions.findCurriculumByCode(curriculum.code));
+//     .withLatestFrom(this.store$.select(...this.CURRICULUM))
+//     .map(state => state[1])
+//     .map((curriculum: Curriculum) => this.curriculumActions.findCurriculumByCode(curriculum.code));
+//     .mergeMap(action => from([action,
+//       this.subjectActions.findSubjects()
+//     ]));
 
-    // //.mergeMap(action => from([action,
-    //   this.subjectActions.findSubjects()
-    // ]))
+  @Effect() addSingleSubject$ =
+    this.actions$
+      .ofType(SubjectActions.ADD_SINGLE_SUBJECT)
+      .map(action => action.payload)
+      .switchMap(payload => this.plannerService.addSubject(payload.curriculum,payload.subject));
+     // .map(message => this.subjectActions.addSubjectSuccess(message))
+     // .withLatestFrom(this.store$.select(...this.CURRICULUM))
+     // .map(state => state[1]);
+      //.map((curriculum: Curriculum) => this.currriculumActions.findCurriculumByCode(curriculum.code));
+
+
 
   // @Effect() updateSubject$ = this.actions$
   //   .ofType(SubjectActions.UPDATE_SUBJECT)
