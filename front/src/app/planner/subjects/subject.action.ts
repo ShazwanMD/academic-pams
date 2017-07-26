@@ -38,8 +38,8 @@ export class SubjectActions {
         };
     }
 
-    static ADD_SINGLE_SUBJECT= '[Subject] Add Single Subject';
-    addSingleSubject( curriculum,subject ): Action {
+    static ADD_SUBJECT= '[Subject] Add Single Subject';
+    addSubject( curriculum,subject ): Action {
         return {
             type: SubjectActions.ADD_SINGLE_SUBJECT,
             payload: {curriculum: curriculum, subject: subject}
@@ -53,6 +53,58 @@ export class SubjectActions {
             payload: message
         };
     }
+
+    static ADD_SINGLE_SUBJECT= '[Subject] Add Single Subject';
+    addSingleSubject( curriculum,subject ): Action {
+        return {
+            type: SubjectActions.ADD_SINGLE_SUBJECT,
+            payload: {curriculum: curriculum, subject: subject}
+        };
+    }
+
+    static ADD_SINGLE_SUBJECT_SUCCESS = '[Subject] Add Single Subject Success';
+    addSingleSubjectSuccess( message ): Action {
+        return {
+            type: SubjectActions.ADD_SINGLE_SUBJECT_SUCCESS,
+            payload: message
+        };
+    }
+
+    static ADD_BUNDLE_SUBJECT= '[Subject] Add Bundle Subject Success';
+    addBundleSubject( curriculum,subject ): Action {
+        return {
+            type: SubjectActions.ADD_BUNDLE_SUBJECT,
+            payload: {curriculum: curriculum, subject: subject}
+        };
+    }
+
+    static ADD_BUNDLE_SUBJECT_SUCCESS = '[Subject] Add Bundle Subject Success';
+    addBundleSubjecttSuccess( message ): Action {
+        return {
+            type: SubjectActions.ADD_BUNDLE_SUBJECT_SUCCESS,
+            payload: message
+        };
+    }
+
+       static ADD_SUBJECT_PART= '[Subject] Add Bundle Subject Success';
+    addSubjectPart( curriculum,subject ): Action {
+        return {
+            type: SubjectActions.ADD_BUNDLE_SUBJECT,
+            payload: {curriculum: curriculum, subject: subject}
+        };
+    }
+
+    static ADD_SUBJECT_PART_SUCCESS = '[Subject] Add Bundle Subject Success';
+    addSubjectParttSuccess( message ): Action {
+        return {
+            type: SubjectActions.ADD_SUBJECT_PART_SUCCESS,
+            payload: message
+        };
+    }
+
+
+
+
     static UPDATE_SUBJECT = '[Subject] Update Subject';
 
     updateSubject( subject ): Action {

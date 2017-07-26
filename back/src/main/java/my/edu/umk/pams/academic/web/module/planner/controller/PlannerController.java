@@ -542,7 +542,7 @@ public class PlannerController {
         return new ResponseEntity<Subject>(plannerTransformer.toSubjectVo(subject), HttpStatus.OK);
     }
     
-    @RequestMapping(value = "/curriculums/{code}/singleSubject", method = RequestMethod.POST)
+    @RequestMapping(value = "/curriculums/{code}/singleSubjects", method = RequestMethod.POST)
     public ResponseEntity<String> addSingleSubject(@PathVariable Long id, @RequestBody SingleSubject vo) {
         dummyLogin();
         LOG.info("Haiii");
@@ -557,7 +557,7 @@ public class PlannerController {
      	
     }
     
-    @RequestMapping(value = "/curriculums/{code}/bundleSubject", method = RequestMethod.POST)
+    @RequestMapping(value = "/curriculums/{code}/bundleSubjects", method = RequestMethod.POST)
     public ResponseEntity<String> addBundleSubject(@PathVariable Long id, @RequestBody BundleSubject vo) {
         dummyLogin();
         LOG.info("Haiii");
