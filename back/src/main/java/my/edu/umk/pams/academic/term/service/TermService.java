@@ -233,6 +233,8 @@ public interface TermService {
     Integer countAdmissionApplication(String filter, AdAcademicSession session);
 
     Integer countAdmissionApplication(String filter, AdAcademicSession session, AdStudent student);
+    
+    Integer countAdmissionApplication(AdAcademicSession session, AdStudent student);
 
     Integer countAdmissionApplication(String filter, AdAcademicSession session, AdStaff staff);
 

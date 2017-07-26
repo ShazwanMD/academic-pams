@@ -582,6 +582,10 @@ public class TermServiceImpl implements TermService {
 		String refNo = systemService.generateFormattedReferenceNo(ADMISSION_APPLICATION_REFERENCE_NO, param);
 		application.setReferenceNo(refNo);
 
+		if(countAdmissionApplication(application.getSession(), application.getStudent()) > 0){
+			LOG.debug("DUPLICATE refno {}", refNo);
+			
+		}else{
 		LOG.debug("saving application with refno {}", refNo);
 
 		admissionApplicationDao.save(application, securityService.getCurrentUser());
@@ -590,6 +594,8 @@ public class TermServiceImpl implements TermService {
 
 		// trigger workflow
 		workflowService.processWorkflow(application, prepareVariables(application));
+		return refNo;
+	}
 		return refNo;
 	}
 
@@ -687,6 +693,11 @@ public class TermServiceImpl implements TermService {
 	@Override
 	public Integer countAdmissionApplication(String filter, AdAcademicSession session, AdStudent student) {
 		return admissionApplicationDao.count(filter, session, student);
+	}
+	
+	@Override
+	public Integer countAdmissionApplication(AdAcademicSession session, AdStudent student) {
+		return admissionApplicationDao.count(session, student);
 	}
 
 	@Override
