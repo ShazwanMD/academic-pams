@@ -1,4 +1,4 @@
-import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, AfterViewInit} from '@angular/core';
+import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, AfterViewInit, OnChanges, SimpleChange} from '@angular/core';
 import {Course} from "../course.interface";
 import { TdDataTableSortingOrder, TdDataTableService, ITdDataTableSortChangeEvent, IPageChangeEvent } from '@covalent/core';
 import { PlannerModuleState } from './../../index';
@@ -11,7 +11,7 @@ import { MdSnackBar } from "@angular/material";
   templateUrl: './course-list.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CourseListComponent implements AfterViewInit  {
+export class CourseListComponent implements AfterViewInit,  OnChanges  {
 
   
     @Input() courses: Course[];
@@ -39,6 +39,15 @@ export class CourseListComponent implements AfterViewInit  {
           private snackBar: MdSnackBar) {}
   
   
+   ngOnChanges(changes: {[ propName: string]: SimpleChange}) {
+       console.log("changes",changes,changes['courses']);
+           if (changes['courses']){
+           this.filteredData = changes['courses'].currentValue; 
+           this.filteredTotal = changes['courses'].currentValue.length;
+           this.filter();
+         }
+       }
+   
    ngAfterViewInit(): void {
     this.filteredData = this.courses;
     this.filteredTotal = this.courses.length;
