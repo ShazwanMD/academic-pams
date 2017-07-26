@@ -152,7 +152,7 @@ VALUES
   (nextval('SQ_AD_ACTR'), '01607B', 'Dr. Muhamad Saufi Bin Che Rusuli', 'msaufi@umk.edu.my', NULL, NULL, NULL, 0,
                           CURRENT_TIMESTAMP, 1, 1);
 
-INSERT INTO AD_STAF (ID,STAFF_TYPE,FACULTY_ID) VALUES (currval('SQ_AD_ACTR'), 1, 10);
+INSERT INTO AD_STAF (ID, STAFF_TYPE,FACULTY_ID,PROGRAM_ID) VALUES (currval('SQ_AD_ACTR'), 1, 10,80);
 
 
 UPDATE AD_USER
@@ -166,7 +166,7 @@ VALUES
   (nextval('SQ_AD_ACTR'), '01608B', 'Prof. Dr. Balakrishnan A/L Parasuraman', 'balakrishnan@umk.edu.my', NULL, NULL, NULL, 0,
                           CURRENT_TIMESTAMP, 1, 1);
 
-INSERT INTO AD_STAF (ID,STAFF_TYPE,FACULTY_ID) VALUES (currval('SQ_AD_ACTR'), 1, 1);
+INSERT INTO AD_STAF (ID, STAFF_TYPE,FACULTY_ID,PROGRAM_ID) VALUES (currval('SQ_AD_ACTR'), 1, 1,80);
 
 
 UPDATE AD_USER
@@ -179,7 +179,7 @@ VALUES
   (nextval('SQ_AD_ACTR'), '01609B', 'Prof. Dr. Hishamuddin Bin Md Som', 'hishamuddin.ms@umk.edu.my', NULL, NULL, NULL, 0,
                           CURRENT_TIMESTAMP, 1, 1);
 
-INSERT INTO AD_STAF (ID,STAFF_TYPE,FACULTY_ID) VALUES (currval('SQ_AD_ACTR'), 1, 2);
+INSERT INTO AD_STAF (ID, STAFF_TYPE,FACULTY_ID,PROGRAM_ID) VALUES (currval('SQ_AD_ACTR'), 1, 2,80);
 
 
 UPDATE AD_USER
@@ -192,7 +192,7 @@ VALUES
   (nextval('SQ_AD_ACTR'), '01610B', 'Prof. Dr. Nik Maheran Binti Nik Muhammad', 'nikmaheran@umk.edu.my', NULL, NULL, NULL, 0,
                           CURRENT_TIMESTAMP, 1, 1);
 
-INSERT INTO AD_STAF (ID,STAFF_TYPE,FACULTY_ID) VALUES (currval('SQ_AD_ACTR'), 1,3);
+INSERT INTO AD_STAF (ID, STAFF_TYPE,FACULTY_ID,PROGRAM_ID) VALUES (currval('SQ_AD_ACTR'), 1,3,80);
 
 
 UPDATE AD_USER
@@ -205,7 +205,7 @@ VALUES
   (nextval('SQ_AD_ACTR'), '01611B', 'Prof. Dr. Raja Suzana Binti Raja Kasim', 'rajasuzana@umk.edu.my', NULL, NULL, NULL, 0,
                           CURRENT_TIMESTAMP, 1, 1);
 
-INSERT INTO AD_STAF (ID,STAFF_TYPE,FACULTY_ID) VALUES (currval('SQ_AD_ACTR'), 1, 4);
+INSERT INTO AD_STAF (ID, STAFF_TYPE,FACULTY_ID,PROGRAM_ID) VALUES (currval('SQ_AD_ACTR'), 1, 4,80);
 
 
 UPDATE AD_USER
@@ -218,7 +218,7 @@ VALUES
   (nextval('SQ_AD_ACTR'), '01612B', 'Prof. Dr. Razli Bin Che Razak', 'razlicr@umk.edu.my', NULL, NULL, NULL, 0,
                           CURRENT_TIMESTAMP, 1, 1);
 
-INSERT INTO AD_STAF (ID,STAFF_TYPE,FACULTY_ID) VALUES (currval('SQ_AD_ACTR'), 1, 5);
+INSERT INTO AD_STAF (ID, STAFF_TYPE,FACULTY_ID,PROGRAM_ID) VALUES (currval('SQ_AD_ACTR'), 1, 5,80);
 
 
 UPDATE AD_USER
@@ -231,7 +231,7 @@ VALUES
   (nextval('SQ_AD_ACTR'), '01613B', 'Prof. Dr. Sazali Bin Abd. Wahab', 'sazali@umk.edu.my', NULL, NULL, NULL, 0,
                           CURRENT_TIMESTAMP, 1, 1);
 
-INSERT INTO AD_STAF (ID,STAFF_TYPE,FACULTY_ID) VALUES (currval('SQ_AD_ACTR'), 1, 6);
+INSERT INTO AD_STAF (ID, STAFF_TYPE,FACULTY_ID,PROGRAM_ID) VALUES (currval('SQ_AD_ACTR'), 1, 6,80);
 
 
 UPDATE AD_USER
@@ -244,7 +244,7 @@ VALUES
   (nextval('SQ_AD_ACTR'), '01614B', 'Prof. Madya Dr. Mohd Rafi Bin Yaacob', 'rafi@umk.edu.my', NULL, NULL, NULL, 0,
                           CURRENT_TIMESTAMP, 1, 1);
 
-INSERT INTO AD_STAF (ID,STAFF_TYPE,FACULTY_ID) VALUES (currval('SQ_AD_ACTR'), 1, 7);
+INSERT INTO AD_STAF (ID, STAFF_TYPE,FACULTY_ID,PROGRAM_ID) VALUES (currval('SQ_AD_ACTR'), 1, 7,80);
 
 
 UPDATE AD_USER
@@ -257,7 +257,7 @@ VALUES
   (nextval('SQ_AD_ACTR'), '01615B', 'Prof. Madya Dr. Abu Sofian Bin Yaacob', 'abusofian@umk.edu.my', NULL, NULL, NULL, 0,
                           CURRENT_TIMESTAMP, 1, 1);
 
-INSERT INTO AD_STAF (ID,STAFF_TYPE,FACULTY_ID) VALUES (currval('SQ_AD_ACTR'), 1,8);
+INSERT INTO AD_STAF (ID, STAFF_TYPE,FACULTY_ID,PROGRAM_ID) VALUES (currval('SQ_AD_ACTR'), 1,8,80);
 
 
 UPDATE AD_USER
@@ -270,7 +270,7 @@ VALUES
   (nextval('SQ_AD_ACTR'), '01616B', 'Prof. Madya Dr. Mohammad Bin Ismail', 'mohammad.i@umk.edu.my', NULL, NULL, NULL, 0,
                           CURRENT_TIMESTAMP, 1, 1);
 
-INSERT INTO AD_STAF (ID,STAFF_TYPE,FACULTY_ID) VALUES (currval('SQ_AD_ACTR'), 1, 9);
+INSERT INTO AD_STAF (ID, STAFF_TYPE,FACULTY_ID,PROGRAM_ID) VALUES (currval('SQ_AD_ACTR'), 1, 9,80);
 
 
 UPDATE AD_USER

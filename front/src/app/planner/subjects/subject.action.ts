@@ -38,10 +38,10 @@ export class SubjectActions {
         };
     }
 
-    static ADD_SUBJECT= '[Subject] Add Subject';
-    addSubject( curriculum,subject ): Action {
+    static ADD_SINGLE_SUBJECT= '[Subject] Add Single Subject';
+    addSingleSubject( curriculum,subject ): Action {
         return {
-            type: SubjectActions.ADD_SUBJECT,
+            type: SubjectActions.ADD_SINGLE_SUBJECT,
             payload: {curriculum: curriculum, subject: subject}
         };
     }

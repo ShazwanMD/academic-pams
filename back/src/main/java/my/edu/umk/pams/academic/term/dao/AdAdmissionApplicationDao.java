@@ -48,6 +48,8 @@ public interface AdAdmissionApplicationDao extends GenericDao<Long, AdAdmissionA
     Integer count(String filter, AdAcademicSession session);
 
     Integer count(String filter, AdAcademicSession session, AdStudent student);
+    
+    Integer count(AdAcademicSession session, AdStudent student);
 
     Integer count(String filter, AdAcademicSession session, AdStaff staff);
 

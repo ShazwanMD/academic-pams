@@ -51,13 +51,14 @@ export class SubjectCreatorDialog implements OnInit {
     this.creatorForm.patchValue({'curriculum': this._curriculum});
     if (this.create) this.creatorForm.patchValue(this._subject);
   }
+    
 
-  submit(subject: Subject, isValid: boolean): void {
-    console.log('adding Subject');
-    if (!subject.id) this.store.dispatch(this.actions.addSubject(this._curriculum, subject));
-    else this.store.dispatch(this.actions.updateSubject(subject));
-    this.dialog.close();
-    console.log(subject);
-  }
+  // submit(subject: Subject, isValid: boolean): void {
+  //   console.log('adding Subject');
+  //   if (!subject.id) this.store.dispatch(this.actions.addSubject(this._curriculum, subject));
+  //   else this.store.dispatch(this.actions.updateSubject(subject));
+  //   this.dialog.close();
+  //   console.log(subject);
+  // }
 
 }

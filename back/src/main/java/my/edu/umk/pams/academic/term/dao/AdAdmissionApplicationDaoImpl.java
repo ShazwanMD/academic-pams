@@ -165,6 +165,16 @@ public class AdAdmissionApplicationDaoImpl extends GenericDaoSupport<Long, AdAdm
         query.setEntity("student", student);
         return ((Long) query.uniqueResult()).intValue();
     }
+    
+    @Override
+	public Integer count(AdAcademicSession session, AdStudent student) {
+    	Session currentSession = sessionFactory.getCurrentSession();
+        Query query = currentSession.createQuery("select count(p) from AdAdmissionApplication p " + "where "
+                + "p.session = :session " + "and p.student = :student");
+        query.setEntity("session", session);
+        query.setEntity("student", student);
+        return ((Long) query.uniqueResult()).intValue();
+	}
 
     @Override
     public Integer count(String filter, AdAcademicSession session, AdStaff staff) {
@@ -178,5 +188,7 @@ public class AdAdmissionApplicationDaoImpl extends GenericDaoSupport<Long, AdAdm
         return ((Long) query.uniqueResult()).intValue();
 
     }
+
+	
 
 }
