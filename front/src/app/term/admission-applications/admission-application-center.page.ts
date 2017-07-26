@@ -1,5 +1,5 @@
 import { AdmissionApplication } from './admission-application.interface';
-import { Component, OnInit, ChangeDetectionStrategy, ViewContainerRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ViewContainerRef, SimpleChanges, OnChanges } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { Store, State } from "@ngrx/store";
@@ -15,7 +15,7 @@ import { AdmissionApplicationActions } from "./admission-application.action";
   templateUrl: './admission-application-center.page.html',
 })
 
-export class AdmissionApplicationCenterPage implements OnInit {
+export class AdmissionApplicationCenterPage implements OnInit, OnChanges {
 
   private ASSIGNED_ADMISSION_APPLICATION_TASKS: string[] = "termModuleState.assignedAdmissionApplicationTasks".split(".");
   private POOLED_ADMISSION_APPLICATION_TASKS: string[] = "termModuleState.pooledAdmissionApplicationTasks".split(".");
@@ -70,7 +70,10 @@ createDialog(): void {
   //this.router.navigate(['/term/offerings', offering.canonicalCode]); 
   }
 
-
+  ngOnChanges(changes: SimpleChanges) {
+      console.log("changesCenter", changes);
+    }
+  
   ngOnInit(): void {
     console.log("find approved/review application tasks");
     this.store.dispatch(this.actions.findAssignedAdmissionApplicationTasks());

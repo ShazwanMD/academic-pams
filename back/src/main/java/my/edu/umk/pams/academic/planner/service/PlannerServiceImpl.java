@@ -250,7 +250,7 @@ public class PlannerServiceImpl implements PlannerService {
 
     // todo(sam) Fix 2nd & 3rd params
     public List<AdAdmission> findAdmissions(AdStudent student){
-        return termService.findAdmissions(student, 0, 9999);
+        return termService.findAdmissions(student);
     }
 
     //====================================================================================================
