@@ -38,15 +38,17 @@ export class PooledAdmissionApplicationTaskListComponent implements OnChanges{
   sortBy: string = 'referenceNo';
   sortOrder: TdDataTableSortingOrder = TdDataTableSortingOrder.Descending;
   
-    (changes: {[ propName: string]: SimpleChange}) {
-         console.log("changes",changes,changes['admissionApplicationTasks']);
-           if (changes['admissionApplicationTasks']){
-           this.filteredData = changes['admissionApplicationTasks'].currentValue; 
-           this.filteredTotal = changes['admissionApplicationTasks'].currentValue.length;
-           this.filter();
-         }
-       }
+   
   
+    ngOnChanges(changes: {[ propName: string]: SimpleChange}) {
+        console.log("changes",changes,changes['admissionApplicationTasks']);
+          if (changes['admissionApplicationTasks']){
+          this.filteredData = changes['admissionApplicationTasks'].currentValue; 
+          this.filteredTotal = changes['admissionApplicationTasks'].currentValue.length;
+          this.filter();
+        }
+      }
+    
    ngAfterViewInit(): void {
       this.filteredData = this.admissionApplicationTasks;
       this.filteredTotal = this.admissionApplicationTasks.length;
