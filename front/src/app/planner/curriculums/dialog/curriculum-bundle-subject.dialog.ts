@@ -64,10 +64,10 @@ export class CurriculumBundleSubjectDialog implements OnInit {
 
   save(bundleSubject:  BundleSubject, isValid: boolean): void {
 
-      if (!bundleSubject.id) this.store.dispatch(this.actions.addSubject(this._curriculum, this.subject));
-      else this.store.dispatch(this.actions.updateSubject(this.subject));
-    this.dialog.close();
-    console.log(this.subject);
+    //   if (!bundleSubject.id) this.store.dispatch(this.actions.addSubject(this._curriculum, this.subject));
+    //   else this.store.dispatch(this.actions.updateSubject(this.subject));
+    // this.dialog.close();
+    // console.log(this.subject);
     
   }
 }
