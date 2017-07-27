@@ -1,7 +1,7 @@
 import { GradeCode } from './../../../common/grade-codes/grade-code.interface';
 import {Component, ViewContainerRef, OnInit, AfterViewInit} from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
-import {FormBuilder} from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import {Router, ActivatedRoute} from '@angular/router';
 import {Store} from "@ngrx/store";
 import {MdDialogRef} from "@angular/material";
@@ -35,14 +35,14 @@ export class GradeCodeEditorDialog implements OnInit {
   }
 
   ngOnInit(): void {
-    this.editorForm = this.formBuilder.group(<GradeCode>{
+    this.editorForm = this.formBuilder.group({
       id: null,
-      code: '',
-      description: '',
-      ordinal:0,
-      point:0,
-      max:0,
-      min:0
+      code: ['', Validators.required],
+      description: ['', Validators.required],
+      ordinal:[0, Validators.required],
+      point:[0, Validators.required],
+      max:[0, Validators.required],
+      min:[0, Validators.required],
     });
 
     if (this.edit) this.editorForm.patchValue(this._gradeCode);

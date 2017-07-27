@@ -1,65 +1,83 @@
-<h2 md-dialog-title>Grade Code Editor</h2>
+<h2 md-dialog-title>Grade Code</h2>
 <md-dialog-content>
-  <form [formGroup]="editorForm">
-    <div layout="row" class="inset" flex>
-      <md-input-container flex>
+  <form [formGroup]="editorForm" novalidate>
+        <div fxLayout fxLayout.xs="column" fxLayoutWrap fxLayoutGap="25px"  class="inset">
+     <md-input-container flex mdTooltip="Please insert Grade Code">
         <input mdInput
                placeholder="Code"
                formControlName="code"
-               flex/>
+               fxFlex="calc(100%-25px)"/>
       </md-input-container>
+          <div  class="tc-red-600" *ngIf="editorForm.get('code').invalid && editorForm.get('code').touched">
+                Please insert Grade Code!
+          </div>
     </div>
 
-    <div layout="row" class="inset" flex>
-      <md-input-container flex>
+    <div fxLayout fxLayout.xs="column" fxLayoutWrap fxLayoutGap="25px"  class="inset">
+      <md-input-container flex mdTooltip="Please insert Description">
         <input mdInput
                placeholder="Description"
                formControlName="description"
-               flex/>
+               fxFlex="calc(100%-25px)"/>
       </md-input-container>
+      <div  class="tc-red-600" *ngIf="editorForm.get('description').invalid && editorForm.get('description').touched">
+                Please insert Description!
+          </div>
     </div>
 
     
-    <div layout="row" class="inset" flex>
-      <md-input-container flex>
+    <div fxLayout fxLayout.xs="column" fxLayoutWrap fxLayoutGap="25px"  class="inset">
+      <md-input-container flex mdTooltip="Please insert Ordinal">
         <input mdInput
                placeholder="Ordinal"
                formControlName="ordinal"
-               flex/>
+               fxFlex="calc(100%-25px)"/>
       </md-input-container>
+        <div  class="tc-red-600" *ngIf="editorForm.get('ordinal').invalid && editorForm.get('ordinal').touched">
+                Please insert Ordinal!
+          </div>
     </div>
 
-        <div layout="row" class="inset" flex>
-      <md-input-container flex>
+        <div fxLayout fxLayout.xs="column" fxLayoutWrap fxLayoutGap="25px"  class="inset">
+      <md-input-container flex mdTooltip="Please insert Point">
         <input mdInput
                placeholder="Point"
                formControlName="point"
-               flex/>
+               fxFlex="calc(100%-25px)"/>
       </md-input-container>
+        <div  class="tc-red-600" *ngIf="editorForm.get('point').invalid && editorForm.get('point').touched">
+                Please insert Point!
+          </div>
     </div>
 
-            <div layout="row" class="inset" flex>
-      <md-input-container flex>
+<div fxLayout fxLayout.xs="column" fxLayoutWrap fxLayoutGap="25px"  class="inset">
+      <md-input-container flex mdTooltip="Please insert Min">
         <input mdInput
                placeholder="Min"
                formControlName="min"
-               flex/>
+               fxFlex="calc(100%-25px)"/>
       </md-input-container>
+        <div  class="tc-red-600" *ngIf="editorForm.get('min').invalid && editorForm.get('min').touched">
+                Please insert Min!
+          </div>
     </div>
 
-            <div layout="row" class="inset" flex>
-      <md-input-container flex>
+<div fxLayout fxLayout.xs="column" fxLayoutWrap fxLayoutGap="25px"  class="inset">
+      <md-input-container flex mdTooltip="Please insert Max">
         <input mdInput
                placeholder="Max"
                formControlName="max"
-               flex/>
+               fxFlex="calc(100%-25px)"/>
       </md-input-container>
+        <div  class="tc-red-600" *ngIf="editorForm.get('max').invalid && editorForm.get('max').touched">
+                Please insert Max!
+          </div>
     </div>
 
   </form>
 </md-dialog-content>
 <md-dialog-actions align="end">
-  <button md-raised-button color="accent" (click)="submit(editorForm.value, editorForm.valid)">
+  <button md-raised-button color="accent" (click)="submit(editorForm.value,edit)" [disabled]="!editorForm.valid">
     {{edit ? 'Update' : 'Save'}}
   </button>
 </md-dialog-actions>
