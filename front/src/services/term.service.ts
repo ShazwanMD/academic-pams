@@ -23,12 +23,13 @@ import { Gradebook } from "../app/term/gradebooks/gradebook.interface";
 
 @Injectable()
 export class TermService {
-
-  private TERM_API: string = environment.endpoint + '/api/term';
+  
+   private TERM_API: string = environment.endpoint + '/api/term';
 
   constructor(private _http: HttpInterceptorService,
               private http: Http) {
   }
+  
 
   findAssessmentById(id: number): Observable<Assessment> {
     console.log('findAssessmentById');
@@ -402,6 +403,12 @@ export class TermService {
   // OFFERING
   // ==================================================================================================== //
 
+  isOfferingExists(offering: Offering): Observable<Boolean> {
+      console.log('isOfferingExists');
+      return this._http.get(this.TERM_API + '/offerings/' + offering.canonicalCode + '/isExists')
+        .map((res: Response) => <Boolean>res.json());
+    }
+  
   findOfferings(): Observable<Offering[]> {
     console.log('findOfferings');
     return this._http.get(this.TERM_API + '/offerings')
@@ -449,8 +456,8 @@ export class TermService {
     console.log('offering:' + offering.canonicalCode);
     console.log('program:' + program.code);
     console.log('course:' + course.code);
-
     console.log('save offering');
+      
     return this._http.post(this.TERM_API + '/offerings', JSON.stringify(offering))
        .flatMap((res: Response) => Observable.of(res.text()))
        .catch((error) => this.handleError(error));

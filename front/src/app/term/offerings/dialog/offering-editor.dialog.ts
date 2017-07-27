@@ -22,10 +22,11 @@ export class OfferingEditorDialog implements OnInit {
     private _course: Course;
     private _offering: Offering;
     private str: string;
+   // private isOfferingExists: boolean;
 
     private OFFERINGS: string[] = 'termModuleState.offerings'.split( '.' );
     private offerings$: Observable<Offering[]>;
-private test: string;
+   
 
     constructor( private router: Router,
         private route: ActivatedRoute,
@@ -66,20 +67,19 @@ private test: string;
 
         console.log(this.store.dispatch(this.actions.saveOffering( this._program, this._course, offering )));
         console.log(this.actions.saveOfferingSuccess(offering));
+        //console.log(this.actions.isOfferingExists(offering));
 
         //still working on to compare with db
         if ( offering.canonicalCode == "MGSEB-MBA-GST5023" ) {
            
             //if (this.isOfferingExists == true){
             console.log( "DATA ALREADY EXISTED", offering.canonicalCode, "Alert!" );
-            console.log( offering.canonicalCode );
+            console.log( offering.canonicalCode );         
+            
             let snackBarRef = this.snackBar.open( 'Offering is already existed!', 'OK' );
             this.dialog.close();
 
         } else {
-
-            //   this.str = JSON.stringify(this.actions.saveOffering(this._program, this._course, offering));
-            // console.log(this.str);
 
             this.dialog.close();
         }
