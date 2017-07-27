@@ -737,7 +737,7 @@ public class TermController {
 	
 	}
 
-	private boolean isOfferingExists(String canonicalCode)  {
+	/*private boolean isOfferingExists(String canonicalCode)  {
 		AdOffering offering = new AdOfferingImpl();
 		offering = termService.findOfferingByCanonicalCode(canonicalCode);
 		
@@ -749,7 +749,13 @@ public class TermController {
 			System.out.println("Not Exist");
 			return false;
 		}
-	}
+	}*/
+	
+	private boolean isOfferingExists(String canonicalCode)  {
+		System.out.println(termService.isOfferingExists(canonicalCode));
+        return termService.isOfferingExists(canonicalCode);
+        
+    }
 
 	@RequestMapping(value = "/offerings/{canonicalCode}", method = RequestMethod.PUT)
 	public ResponseEntity<String> updateOffering(@PathVariable String canonicalCode, @RequestBody Offering vo) {
