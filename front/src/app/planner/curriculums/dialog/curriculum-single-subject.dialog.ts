@@ -56,17 +56,17 @@ export class CurriculumSingleSubjectDialog implements OnInit {
       ordinal: 0,
       subjectType: SubjectType.CORE,
       course: <Course>{},
-      curriculum: <Curriculum>{},
     });
 
-    this.creatorForm.patchValue({'curriculum': this._curriculum});
     if (this.create) {
       this.creatorForm.patchValue(this._singleSubject);
     }
   }
 
   submit(singleSubject: SingleSubject, isValid: boolean): void {
-    console.log('adding singleubject');
+    console.log('adding singlesubject');
+    console.log('subject type: ' + singleSubject.subjectType);
+    console.log('course: ' + singleSubject.course.code);
     this.store.dispatch(this.actions.addSingleSubject(this._curriculum, singleSubject));
     console.log('adding single subject to ' + this._curriculum);
     this.dialog.close();

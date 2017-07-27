@@ -288,6 +288,7 @@ export class PlannerService {
       .map((res) => <Subject[]>res.json());
   }
 
+  // deprecated
   addSubject(curriculum: Curriculum, subject: Subject): Observable<String> {
     console.log('addSubject:' + subject);
     console.log('curriculum:' + curriculum.code);

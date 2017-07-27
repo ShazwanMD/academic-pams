@@ -484,13 +484,17 @@ public class PlannerController {
     public ResponseEntity<String> addSingleSubject(@PathVariable String code, @RequestBody SingleSubject vo) {
         dummyLogin();
         LOG.info("Adding single subject");
-        AdCurriculum curriculum = plannerService.findCurriculumByCode(code);
-        AdCourse course = plannerService.findCourseByCode(vo.getCourse().getCode());
-        AdSingleSubject subject = new AdSingleSubjectImpl();
-        subject.setCourse(course);
-        subject.setOrdinal(vo.getOrdinal());
-        subject.setSubjectType(AdSubjectType.get(vo.getSubjectType().ordinal()));
-        plannerService.addSubject(curriculum, subject);
+        try {
+            AdCurriculum curriculum = plannerService.findCurriculumByCode(code);
+            AdCourse course = plannerService.findCourseByCode(vo.getCourse().getCode());
+            AdSingleSubject subject = new AdSingleSubjectImpl();
+            subject.setCourse(course);
+            subject.setOrdinal(vo.getOrdinal());
+            subject.setSubjectType(AdSubjectType.get(vo.getSubjectType().ordinal()));
+            plannerService.addSubject(curriculum, subject);
+        } catch (Exception e) {
+            LOG.error("error occurred", e);
+        }
         return new ResponseEntity<String>("Success", HttpStatus.OK);
 
     }
