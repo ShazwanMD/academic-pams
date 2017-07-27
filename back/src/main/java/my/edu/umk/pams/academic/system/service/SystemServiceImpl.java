@@ -492,26 +492,4 @@ public class SystemServiceImpl implements SystemService {
         emailQueueDao.update(emailQueue, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
-
-    @Scheduled(cron = "*/5 * * * * *")
-    public void sendEmail() {
-        try {
-            List<AdEmailQueue> queues = emailQueueDao.find(AdEmailQueueStatus.QUEUED);
-            for (AdEmailQueue queue : queues) {
-                MimeMessage mimeMessage = mailSender.createMimeMessage();
-                MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true);
-                helper.setFrom(queue.getTo());
-                helper.setTo(queue.getTo());
-                helper.setSubject(queue.getSubject());
-                helper.setText(queue.getBody());
-                mailSender.send(mimeMessage);
-
-                // update queue
-                queue.setQueueStatus(AdEmailQueueStatus.SENT);
-                updateEmailQueue(queue);
-            }
-        } catch (MessagingException e) {
-            LOG.error("error " + e);
-        }
-    }
 }

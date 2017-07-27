@@ -289,6 +289,8 @@
                                 <!--SYSTEM-->
                                 <srcFile>src/test/resources/data/AD_RFRN_NO.sql</srcFile>
                                 <srcFile>src/test/resources/data/AD_CNFG.sql</srcFile>
+                                <srcFile>src/test/resources/data/AD_MODL.sql</srcFile>
+                                <srcFile>src/test/resources/data/ACL.sql</srcFile>
 
                                 <!--IDENTITY-->
                                 <srcFile>src/test/resources/data/AD_PCPL.sql</srcFile>

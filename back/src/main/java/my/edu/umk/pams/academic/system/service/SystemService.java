@@ -162,6 +162,4 @@ public interface SystemService {
     void saveEmailQueue(AdEmailQueue emailQueue);
 
     void updateEmailQueue(AdEmailQueue emailQueue);
-
-    void sendEmail();
 }
