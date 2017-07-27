@@ -3,13 +3,13 @@ import {Action} from '@ngrx/store';
 
 @Injectable()
 export class AdmissionApplicationActions {
-    
-static ADD_ADMISSION = '[AdmissionApplication] Add AdmissionApplication';
+
+  static ADD_ADMISSION = '[AdmissionApplication] Add AdmissionApplication';
 
   addAdmission(admission): Action {
     return {
       type: AdmissionApplicationActions.ADD_ADMISSION,
-      payload: {admission:admission}
+      payload: {admission: admission}
     };
   }
 

@@ -1,13 +1,12 @@
-import {AdmissionApplicationTask} from './admission-applications/admission-application-task.interface';
+import {AdmissionApplicationTask} from '../shared/model/term/admission-application-task.interface';
 import {SectionAppointmentListState, sectionAppointmentListReducer} from './sections/section-appointment-list.reducer';
 import {SectionGradebookListState, sectionGradebookListReducer} from './sections/section-gradebook-list.reducer';
 import {EnrollmentGradebookListState, enrollmentGradebookListReducer} from './enrollments/enrollment-gradebook-list.reducer';
 
-import {AdmissionApplication} from './admissions/admission-application.interface';
 import {AssessmentSubModule} from './assessments/index';
 import {AssessmentActions} from './assessments/assessment.action';
-import {Assessment} from './assessments/assessment.interface';
-import {Appointment} from './appointments/appointment.interface';
+import {Assessment} from '../shared/model/term/assessment.interface';
+import {Appointment} from '../shared/model/term/appointment.interface';
 import {NgModule, ModuleWithProviders} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {ReactiveFormsModule} from '@angular/forms';
@@ -25,13 +24,13 @@ import {offeringReducer, OfferingState} from './offerings/offering.reducer';
 import {enrollmentReducer, EnrollmentState} from './enrollments/enrollment.reducer';
 import {gradebookReducer, GradebookState} from './gradebooks/gradebook.reducer';
 import {offeringListReducer, OfferingListState} from './offerings/offering-list.reducer';
-import {Offering} from './offerings/offering.interface';
-import {EnrollmentApplication} from './enrollment-applications/enrollment-application.interface';
-import {Enrollment} from './enrollments/enrollment.interface';
-import {Gradebook} from './gradebooks/gradebook.interface';
+import {Offering} from '../shared/model/term/offering.interface';
+import {EnrollmentApplication} from '../shared/model/term/enrollment-application.interface';
+import {Enrollment} from '../shared/model/term/enrollment.interface';
+import {Gradebook} from '../shared/model/term/gradebook.interface';
 import {AdmissionActions} from './admissions/admission.action';
 import {AdmissionSubModule} from './admissions/index';
-import {Admission} from './admissions/admission.interface';
+import {Admission} from '../shared/model/term/admission.interface';
 import {admissionListReducer, AdmissionListState} from './admissions/admission-list.reducer';
 import {admissionReducer, AdmissionState} from './admissions/admission.reducer';
 import {appointmentReducer, AppointmentState} from './appointments/appointment.reducer';
@@ -39,7 +38,7 @@ import {AppointmentSubModule} from './appointments/index';
 import {AppointmentActions} from './appointments/appointment.action';
 import {EnrollmentActions} from './enrollments/enrollment.action';
 import {GradebookActions} from './gradebooks/gradebook.action';
-import {EnrollmentApplicationTask} from './enrollment-applications/enrollment-application-task.interface';
+import {EnrollmentApplicationTask} from '../shared/model/term/enrollment-application-task.interface';
 import {EnrollmentApplicationSubModule} from './enrollment-applications/index';
 import {
   enrollmentApplicationTaskReducer,
@@ -58,17 +57,17 @@ import {
     enrollmentApplicationReducer,
     EnrollmentApplicationState,
   } from './enrollment-applications/enrollment-application.reducer';
-import {Section} from './sections/section.interface';
+import {Section} from '../shared/model/term/section.interface';
 import {SectionActions} from './sections/section.action';
 import {SectionSubModule} from './sections/index';
 import {AdmissionApplicationSubModule} from './admission-applications/index';
 import {assessmentReducer, AssessmentState} from './assessments/assessment.reducer';
 import {gradebookMatrixListReducer, GradebookMatrixListState} from './offerings/gradebook-matrix-list.reducer';
-import {GradebookMatrix} from './offerings/gradebook-matrix.interface';
+import {GradebookMatrix} from '../shared/model/term/gradebook-matrix.interface';
 import {appointmentListReducer, AppointmentListState} from './sections/appointment-list.reducer';
 import {enrollmentListReducer, EnrollmentListState} from './sections/enrollment-list.reducer';
 import {sectionListReducer, SectionListState} from './sections/section-list.reducer';
-import {EnrollmentApplicationItem} from './enrollment-applications/enrollment-application-item.interface';
+import {EnrollmentApplicationItem} from '../shared/model/term/enrollment-application-item.interface';
 import {
   enrollmentApplicationItemListReducer,
   EnrollmentApplicationItemListState,
@@ -101,6 +100,7 @@ import {
     enrollmentApplicationListReducer,
     EnrollmentApplicationListState, archivedEnrollmentApplicationListReducer,
   } from './enrollment-applications/enrollment-application-list.reducer';
+import {AdmissionApplication} from '../shared/model/term/admission-application.interface';
 
 export interface TermModuleState {
   offerings: OfferingListState;
@@ -118,7 +118,7 @@ export interface TermModuleState {
 
   // gradebook
   gradebook: GradebookState;
-  
+
 
   appointments: AppointmentListState;
   appointment: AppointmentState;
@@ -154,10 +154,10 @@ export const INITIAL_TERM_STATE: TermModuleState = <TermModuleState>{
     assessment: <Assessment[]>[],
     enrollments: <Enrollment[]>[],
     enrollment: <Enrollment>{},
-    
+
     gradebooks: <Gradebook[]>[],
     gradebook: <Gradebook>{},
-    
+
     appointments: <Appointment[]>[],
     appointment: <Appointment>{},
     // admission

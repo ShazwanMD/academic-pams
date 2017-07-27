@@ -1,14 +1,14 @@
-import { AdmissionApplication } from './admission-application.interface';
+import { AdmissionApplication } from '../../shared/model/term/admission-application.interface';
 import { Component, OnInit, ChangeDetectionStrategy, ViewContainerRef, SimpleChanges, OnChanges } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import { Store, State } from "@ngrx/store";
-import { Observable } from "rxjs";
-import { AdmissionApplicationTaskCreatorDialog } from "./dialog/admission-application-task-creator.dialog";
-import { MdDialog, MdDialogConfig, MdDialogRef } from "@angular/material";
-import { AdmissionApplicationTask } from "./admission-application-task.interface";
-import { TermModuleState } from "../index";
-import { AdmissionApplicationActions } from "./admission-application.action";
+import { Store, State } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { AdmissionApplicationTaskCreatorDialog } from './dialog/admission-application-task-creator.dialog';
+import { MdDialog, MdDialogConfig, MdDialogRef } from '@angular/material';
+import { AdmissionApplicationTask } from '../../shared/model/term/admission-application-task.interface';
+import { TermModuleState } from '../index';
+import { AdmissionApplicationActions } from './admission-application.action';
 
 @Component({
   selector: 'pams-admission-application-center',
@@ -17,14 +17,12 @@ import { AdmissionApplicationActions } from "./admission-application.action";
 
 export class AdmissionApplicationCenterPage implements OnInit, OnChanges {
 
-  private ASSIGNED_ADMISSION_APPLICATION_TASKS: string[] = "termModuleState.assignedAdmissionApplicationTasks".split(".");
-  private POOLED_ADMISSION_APPLICATION_TASKS: string[] = "termModuleState.pooledAdmissionApplicationTasks".split(".");
-  private ARCHIVED_ADMISSION_APPLICATIONS: string[] = "termModuleState.archivedAdmissionApplications".split(".");
-
+  private ASSIGNED_ADMISSION_APPLICATION_TASKS: string[] = 'termModuleState.assignedAdmissionApplicationTasks'.split('.');
+  private POOLED_ADMISSION_APPLICATION_TASKS: string[] = 'termModuleState.pooledAdmissionApplicationTasks'.split('.');
+  private ARCHIVED_ADMISSION_APPLICATIONS: string[] = 'termModuleState.archivedAdmissionApplications'.split('.');
   private assignedAdmissionApplicationTasks$: Observable<AdmissionApplicationTask>;
   private pooledAdmissionApplicationTasks$: Observable<AdmissionApplicationTask>;
   private archivedAdmissionApplications$: Observable<AdmissionApplication>;
-
   private creatorDialogRef: MdDialogRef<AdmissionApplicationTaskCreatorDialog>;
 
   constructor(private router: Router,
@@ -40,7 +38,7 @@ export class AdmissionApplicationCenterPage implements OnInit, OnChanges {
   }
 
 createDialog(): void {
-    console.log("showDialog");
+    console.log('showDialog');
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
     config.role = 'dialog';
@@ -48,34 +46,34 @@ createDialog(): void {
     config.height = '40%';
     config.position = { top: '0px' };
     this.creatorDialogRef = this.dialog.open(AdmissionApplicationTaskCreatorDialog, config);
-    this.creatorDialogRef.afterClosed().subscribe(res => {
-      console.log("close dialog");
+    this.creatorDialogRef.afterClosed().subscribe((res) => {
+      console.log('close dialog');
       // load something here
     });
   }
 
   claimTask(task: AdmissionApplicationTask) {
-    console.log("approved application:" + task.taskId);
+    console.log('approved application:' + task.taskId);
     this.store.dispatch(this.actions.claimAdmissionApplicationTask(task));
   }
 
   viewTask(task: AdmissionApplicationTask) {
-    console.log("students applications: " + task.taskId);
+    console.log('students applications: ' + task.taskId);
     this.router.navigate(['/term/admission-applications/admission-application-task-detail', task.taskId]);
   }
-  
+
   viewAdmissionApplication(admissionApplication: AdmissionApplication) {
-      console.log("students applications: " + admissionApplication.referenceNo);
+      console.log('students applications: ' + admissionApplication.referenceNo);
       this.router.navigate(['/term/admission-applications', admissionApplication.referenceNo]);
-  //this.router.navigate(['/term/offerings', offering.canonicalCode]); 
+  //this.router.navigate(['/term/offerings', offering.canonicalCode]);
   }
 
   ngOnChanges(changes: SimpleChanges) {
-      console.log("changesCenter", changes);
+      console.log('changesCenter', changes);
     }
-  
+
   ngOnInit(): void {
-    console.log("find approved/review application tasks");
+    console.log('find approved/review application tasks');
     this.store.dispatch(this.actions.findAssignedAdmissionApplicationTasks());
     this.store.dispatch(this.actions.findPooledAdmissionApplicationTasks());
     this.store.dispatch(this.actions.findArchivedAdmissionApplications());

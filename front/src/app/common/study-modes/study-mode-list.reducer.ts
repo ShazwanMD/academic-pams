@@ -1,5 +1,5 @@
-import {StudyMode} from './study-mode.interface';
-import {CommonActions} from './../gender-codes/common.action';
+import {StudyMode} from '../../shared/model/common/study-mode.interface';
+import {CommonActions} from '../common.action';
 import {Action} from '@ngrx/store';
 
 export type StudyModeListState = StudyMode[];

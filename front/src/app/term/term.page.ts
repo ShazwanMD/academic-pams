@@ -1,4 +1,4 @@
-import {Admission} from './admissions/admission.interface';
+import {Admission} from '../shared/model/term/admission.interface';
 import {PlannerService} from './../../services/planner.service';
 import {Router, ActivatedRoute} from '@angular/router';
 import {Store} from "@ngrx/store";

@@ -5,7 +5,7 @@ import {Observable} from 'rxjs/Observable';
 import {SetupModuleState} from './../index';
 import {Store} from '@ngrx/store';
 import {Component, OnInit, ViewContainerRef} from '@angular/core';
-import {GenderCode} from './../../common/gender-codes/gender-code.interface';
+import {GenderCode} from '../../shared/model/common/gender-code.interface';
 
 
 @Component({

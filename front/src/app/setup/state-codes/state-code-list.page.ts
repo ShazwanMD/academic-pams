@@ -1,4 +1,4 @@
-import {CountryCode} from './../../common/country-codes/country-code.interface';
+import {CountryCode} from '../../shared/model/common/country-code.interface';
 import {MdDialog, MdDialogRef, MdDialogConfig} from '@angular/material';
 import {StateCodeEditorDialog} from './dialog/state-code-editor.dialog';
 import {Observable} from 'rxjs/Observable';
@@ -6,7 +6,7 @@ import {Store} from '@ngrx/store';
 import {Component, OnInit, ViewContainerRef} from '@angular/core';
 import {SetupModuleState} from './../index';
 import {SetupActions} from './../setup.action';
-import {StateCode} from './../../common/state-codes/state-code.interface';
+import {StateCode} from '../../shared/model/common/state-code.interface';
 
 
 @Component({

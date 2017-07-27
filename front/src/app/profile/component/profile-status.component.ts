@@ -1,5 +1,5 @@
 import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy} from '@angular/core';
-import {Student} from "../../identity/student.interface";
+import {Student} from '../../shared/model/identity/student.interface';
 
 @Component({
   selector: 'pams-profile-status',

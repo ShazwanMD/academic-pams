@@ -1,9 +1,7 @@
 import {Action} from '@ngrx/store';
-import {Observable} from 'rxjs/Observable';
 
-import * as _ from 'lodash';
-import {Student} from "../identity/student.interface";
-import {ProfileActions} from "./profile.action";
+import {Student} from '../shared/model/identity/student.interface';
+import {ProfileActions} from './profile.action';
 
 export type StudentListState = Student[];
 

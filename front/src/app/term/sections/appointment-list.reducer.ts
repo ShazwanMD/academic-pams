@@ -1,7 +1,7 @@
 import {Action} from '@ngrx/store';
 
-import {Appointment} from "../appointments/appointment.interface";
-import {SectionActions} from "./section.action";
+import {Appointment} from '../../shared/model/term/appointment.interface';
+import {SectionActions} from './section.action';
 
 export type AppointmentListState = Appointment[];
 

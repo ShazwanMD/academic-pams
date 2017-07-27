@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {Effect, Actions} from '@ngrx/effects';
 import {CohortActions} from "./cohort.action";
 import {PlannerService} from "../../../services/planner.service";
-import {Cohort} from "./cohort.interface";
+import {Cohort} from "../../shared/model/planner/cohort.interface";
 //import {PlannerModuleState} from "../index";
 import {Store} from "@ngrx/store";
 import { PlannerModuleState } from './../index';
@@ -44,7 +44,7 @@ export class CohortEffects {
     .withLatestFrom(this.store$.select(...this.COHORT))
     .map(state => state[1])
     .map((cohort: Cohort) => this.cohortActions.findCohortByCode(cohort.code));
-  
+
   @Effect() activateCohort$ = this.actions$
     .ofType(CohortActions.ACTIVATE_COHORT)
     .map(action => action.payload)

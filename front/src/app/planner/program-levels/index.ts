@@ -6,19 +6,18 @@ import {BrowserModule} from '@angular/platform-browser';
 import {ReactiveFormsModule} from '@angular/forms';
 import {CovalentCoreModule} from '@covalent/core';
 
-import {PlannerService} from "../../../services";
+import {PlannerService} from '../../../services';
 
-import {ProgramLevelCenterPage} from "./program-level-center.page";
-import {ProgramLevelListComponent} from "./component/program-level-list.component";
-import {ProgramLevelComponent} from "./component/program-level.component";
-import {ProgramLevelDetailPage} from "./program-level-detail.page";
-import {ProgramLevelActions} from "./program-level.action";
-import {ProgramLevelEffects} from "./program-level.effect";
+import {ProgramLevelCenterPage} from './program-level-center.page';
+import {ProgramLevelListComponent} from './component/program-level-list.component';
+import {ProgramLevelComponent} from './component/program-level.component';
+import {ProgramLevelDetailPage} from './program-level-detail.page';
+import {ProgramLevelActions} from './program-level.action';
+import {ProgramLevelEffects} from './program-level.effect';
 import {ProgramLevelSelectComponent} from './component/program-level-select.component';
-import {ProgramLevelCreatorDialog} from "./dialog/program-level-creator.dialog";
-import {ProgramLevelEditorDialog} from "./dialog/program-level-editor.dialog";
-import {ProgramLevelActionComponent} from "./component/program-level-action.component";
-
+import {ProgramLevelCreatorDialog} from './dialog/program-level-creator.dialog';
+import {ProgramLevelEditorDialog} from './dialog/program-level-editor.dialog';
+import {ProgramLevelActionComponent} from './component/program-level-action.component';
 
 @NgModule({
   imports: [
@@ -38,7 +37,6 @@ import {ProgramLevelActionComponent} from "./component/program-level-action.comp
     ProgramLevelComponent,
     ProgramLevelSelectComponent,
     ProgramLevelActionComponent,
-
 
     //dialog
     ProgramLevelCreatorDialog,

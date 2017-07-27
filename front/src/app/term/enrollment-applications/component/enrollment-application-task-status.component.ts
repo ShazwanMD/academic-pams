@@ -1,5 +1,5 @@
 import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy} from '@angular/core';
-import {EnrollmentApplicationTask} from "../enrollment-application-task.interface";
+import {EnrollmentApplicationTask} from '../../../shared/model/term/enrollment-application-task.interface';
 
 @Component({
   selector: 'pams-enrollment-application-task-status',

@@ -3,7 +3,7 @@ import {
   ComponentFactoryResolver, ComponentRef, Input, AfterViewInit,
 } from '@angular/core';
 import {Observable} from 'rxjs';
-import {AdmissionApplicationTask} from '../admission-application-task.interface';
+import {AdmissionApplicationTask} from '../../../shared/model/term/admission-application-task.interface';
 import {FlowState} from '../../../core/flow-state.enum';
 import {AdmissionApplicationDraftTaskPanel} from './admission-application-draft-task.panel';
 import {AdmissionApplicationRegisterTaskPanel} from './admission-application-register-task.panel';

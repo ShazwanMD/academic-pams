@@ -1,5 +1,5 @@
 import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy} from '@angular/core';
-import {ProgramLevel} from "../program-level.interface";
+import {ProgramLevel} from '../../../shared/model/planner/program-level.interface';
 
 @Component({
   selector: 'pams-program-level-list',
@@ -9,13 +9,13 @@ import {ProgramLevel} from "../program-level.interface";
 
 export class ProgramLevelListComponent {
 
-  @Input() programLevels: ProgramLevel[];
-  @Output() view = new EventEmitter<ProgramLevel>();
-
   private columns: any [] = [
     {name: 'code', label: 'Code'},
     {name: 'description', label: 'Description'},
     {name: 'action', label: ''},
 
   ];
+
+  @Input() programLevels: ProgramLevel[];
+  @Output() view = new EventEmitter<ProgramLevel>();
 }

@@ -1,6 +1,6 @@
 import {Action} from '@ngrx/store';
-import {SectionActions} from "./section.action";
-import {Section} from "./section.interface";
+import {SectionActions} from './section.action';
+import {Section} from '../../shared/model/term/section.interface';
 
 export type SectionState = Section;
 

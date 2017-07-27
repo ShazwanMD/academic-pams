@@ -1,11 +1,11 @@
 import { StudentStatusDialog } from './dialog/student-status.dialog';
 import { StudentStatusSelectComponent } from './component/student-status-select.component';
-import { CohortSubModule } from './../planner/cohorts/index';
+import { CohortSubModule } from '../planner/cohorts/index';
 import {AddressEditorDialog} from './dialog/address-editor.dialog';
 import {GuardianEditorDialog} from './dialog/guardian-editor.dialog';
 import {GuarantorEditorDialog} from './dialog/guarantor-editor.dialog';
-import {Enrollment} from './../term/enrollments/enrollment.interface';
-import {Address} from './address.interface';
+import {Enrollment} from '../shared/model/term/enrollment.interface';
+import {Address} from '../shared/model/profile/address.interface';
 import {NgModule, ModuleWithProviders} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {ReactiveFormsModule} from '@angular/forms';
@@ -13,39 +13,39 @@ import {appRoutes, appRoutingProviders} from '../app.routes';
 import {CovalentCoreModule} from '@covalent/core';
 import {CommonService} from '../../services';
 import {IdentityService} from '../../services';
-import {ProfileService} from "../../services/profile.service";
-import {ProfileActions} from "./profile.action";
-import {Student} from "../identity/student.interface";
-import {ProfileCenterPage} from "./profile-center.page";
-import {ProfileStatusComponent} from "./component/profile-status.component";
-import {ProfileListComponent} from "./component/profile-list.component";
-import {ProfileComponent} from "./component/profile.component";
-import {ProfileDetailPage} from "./profile-detail.page";
-import {EffectsModule} from "@ngrx/effects";
-import {ProfileEffects} from "./profile.effect";
-import {Guarantor} from "./guarantor.interface";
-import {Guardian} from "./guardian.interface";
-import {Contact} from "./contact.interface";
-import {addressListReducer, AddressListState} from "./address-list.reducer";
-import {contactListReducer, ContactListState} from "./contact-list.reducer";
-import {guardianListReducer, GuardianListState} from "./guardian-list.reducer";
-import {guarantorListReducer, GuarantorListState} from "./guarantor-list.reducer";
-import {enrollmentListReducer, EnrollmentListState} from "./enrollment-list.reducer";
-import {studentReducer, StudentState} from "./student.reducer";
-import {studentListReducer, StudentListState} from "./student-list.reducer";
-import {ContactEditorDialog} from "./dialog/contact-editor.dialog";
-import {DetailEditorDialog} from "./dialog/detail-editor.dialog";
-import {ContactTypeSelectComponent} from "./component/contact-type-select.component";
-import {GuarantorTypeSelectComponent} from "./component/guarantor-type-select.component";
-import {GuardianTypeSelectComponent} from "./component/guardian-type-select.component";
+import {ProfileService} from '../../services/profile.service';
+import {ProfileActions} from './profile.action';
+import {Student} from '../shared/model/identity/student.interface';
+import {ProfileCenterPage} from './profile-center.page';
+import {ProfileStatusComponent} from './component/profile-status.component';
+import {ProfileListComponent} from './component/profile-list.component';
+import {ProfileComponent} from './component/profile.component';
+import {ProfileDetailPage} from './profile-detail.page';
+import {EffectsModule} from '@ngrx/effects';
+import {ProfileEffects} from './profile.effect';
+import {Guarantor} from '../shared/model/profile/guarantor.interface';
+import {Guardian} from '../shared/model/profile/guardian.interface';
+import {Contact} from '../shared/model/profile/contact.interface';
+import {addressListReducer, AddressListState} from './address-list.reducer';
+import {contactListReducer, ContactListState} from './contact-list.reducer';
+import {guardianListReducer, GuardianListState} from './guardian-list.reducer';
+import {guarantorListReducer, GuarantorListState} from './guarantor-list.reducer';
+import {enrollmentListReducer, EnrollmentListState} from './enrollment-list.reducer';
+import {studentReducer, StudentState} from './student.reducer';
+import {studentListReducer, StudentListState} from './student-list.reducer';
+import {ContactEditorDialog} from './dialog/contact-editor.dialog';
+import {DetailEditorDialog} from './dialog/detail-editor.dialog';
+import {ContactTypeSelectComponent} from './component/contact-type-select.component';
+import {GuarantorTypeSelectComponent} from './component/guarantor-type-select.component';
+import {GuardianTypeSelectComponent} from './component/guardian-type-select.component';
 import {AddressTypeSelectComponent} from './component/address-type-select.component';
-import {ProfileActionComponent} from "./component/profile-action.component";
-import {StudyModeSwitcherDialog} from "./dialog/study-mode-switcher.dialog";
-import {CommonModule} from "../common/index";
-import {AcademicSessionSubModule} from "../planner/academic-sessions/index";
-import {CohortTransfererDialog} from "./dialog/cohort-transferer.dialog";
-import {ProfileCohortComponent} from "./component/profile-cohort.component";
-import {ProfileEnrollmentListComponent} from "./component/profile-enrollment-list.component";
+import {ProfileActionComponent} from './component/profile-action.component';
+import {StudyModeSwitcherDialog} from './dialog/study-mode-switcher.dialog';
+import {CommonModule} from '../common/index';
+import {AcademicSessionSubModule} from '../planner/academic-sessions/index';
+import {CohortTransfererDialog} from './dialog/cohort-transferer.dialog';
+import {ProfileCohortComponent} from './component/profile-cohort.component';
+import {ProfileEnrollmentListComponent} from './component/profile-enrollment-list.component';
 
 export interface ProfileModuleState {
   students: StudentListState;
@@ -78,7 +78,6 @@ export const profileModuleReducers = {
   contacts: contactListReducer,
   enrollments: enrollmentListReducer,
 };
-
 
 @NgModule({
   imports: [
@@ -147,7 +146,7 @@ export class ProfileModule {
         IdentityService,
         CommonService,
         ProfileService,
-        ProfileActions
+        ProfileActions,
       ],
     };
   }

@@ -1,7 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {FormControl} from "@angular/forms";
-import {GuardianType} from "../guardian-type.enum";
-
+import {FormControl} from '@angular/forms';
+import {GuardianType} from '../../shared/model/profile/guardian-type.enum';
 
 @Component({
   selector: 'pams-guardian-type-select',
@@ -14,8 +13,8 @@ export class GuardianTypeSelectComponent implements OnInit {
   @Input() innerFormControl: FormControl;
 
   constructor() {
-    for (var n in GuardianType) {
-      if(typeof GuardianType[n] === 'string')
+    for (let n in GuardianType) {
+      if (typeof GuardianType[n] === 'string')
         this.guardianTypes.push(GuardianType[n.toString()]);
     }
   }
@@ -27,4 +26,4 @@ export class GuardianTypeSelectComponent implements OnInit {
     this.innerFormControl.setValue(event, {emitEvent: false});
   }
 }
-
+

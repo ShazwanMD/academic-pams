@@ -1,6 +1,6 @@
 import {Action} from '@ngrx/store';
-import {GradebookActions} from "./gradebook.action";
-import {Gradebook} from "./gradebook.interface";
+import {GradebookActions} from './gradebook.action';
+import {Gradebook} from '../../shared/model/term/gradebook.interface';
 
 export type GradebookState = Gradebook;
 

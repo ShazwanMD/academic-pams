@@ -1,5 +1,4 @@
-import { SingleSubject } from './single-subject.interface';
-import {Subject} from './subject.interface';
+import { SingleSubject } from '../../shared/model/planner/single-subject.interface';
 import {CurriculumActions} from './curriculum.action';
 import {Action} from '@ngrx/store';
 

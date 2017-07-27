@@ -1,12 +1,11 @@
 import {
   Component, OnInit, ViewChild, ViewContainerRef,
-  ComponentFactoryResolver, ComponentRef, Input, AfterViewInit
+  ComponentFactoryResolver, ComponentRef, Input, AfterViewInit,
 } from '@angular/core';
-import {Observable} from "rxjs";
-import {EnrollmentApplicationTask} from "../enrollment-application-task.interface";
-import {FlowState} from "../../../core/flow-state.enum";
-import {EnrollmentApplicationDraftTaskPanel} from "./enrollment-application-draft-task.panel";
-
+import {Observable} from 'rxjs';
+import {EnrollmentApplicationTask} from '../../../shared/model/term/enrollment-application-task.interface';
+import {FlowState} from '../../../core/flow-state.enum';
+import {EnrollmentApplicationDraftTaskPanel} from './enrollment-application-draft-task.panel';
 
 @Component({
   selector: 'pams-enrollment-application-task-workflow',
@@ -14,9 +13,9 @@ import {EnrollmentApplicationDraftTaskPanel} from "./enrollment-application-draf
 })
 export class EnrollmentApplicationTaskWorkflowPanel implements OnInit {
 
+  private componentRef: ComponentRef<any>;
   @ViewChild('taskPanel', {read: ViewContainerRef})
   private taskPanel: ViewContainerRef;
-  private componentRef: ComponentRef<any>;
   @Input() enrollmentApplicationTaskObservable: Observable<EnrollmentApplicationTask>;
 
   constructor(private viewContainerRef: ViewContainerRef,
@@ -25,10 +24,10 @@ export class EnrollmentApplicationTaskWorkflowPanel implements OnInit {
 
   ngOnInit(): void {
     let componentFactory;
-    this.enrollmentApplicationTaskObservable.subscribe(task => {
+    this.enrollmentApplicationTaskObservable.subscribe((task) => {
       if (task.flowState) {
 
-        console.log("task flowState: " + task.flowState);
+        console.log('task flowState: ' + task.flowState);
         if (this.componentRef) this.componentRef.destroy();
         switch (FlowState[task.flowState.toString()]) {
           case FlowState.DRAFTED:

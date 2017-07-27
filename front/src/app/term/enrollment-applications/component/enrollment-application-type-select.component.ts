@@ -1,7 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {FormControl} from "@angular/forms";
-import {EnrollmentApplicationType} from "../enrollment-application-type.enum";
-
+import {FormControl} from '@angular/forms';
+import {EnrollmentApplicationType} from '../../../shared/model/term/enrollment-application-type.enum';
 
 @Component({
     selector: 'pams-enrollment-application-type-select',
@@ -10,11 +9,12 @@ import {EnrollmentApplicationType} from "../enrollment-application-type.enum";
 export class EnrollmentApplicationTypeSelectComponent implements OnInit {
 
     private enrollmentApplicationTypes: EnrollmentApplicationType[] = <EnrollmentApplicationType[]>[];
+
     @Input() placeholder: string;
     @Input() innerFormControl: FormControl;
 
     constructor() {
-        for (var n in EnrollmentApplicationType) {
+        for (let n in EnrollmentApplicationType) {
             if (typeof EnrollmentApplicationType[n] === 'string')
                 this.enrollmentApplicationTypes.push(EnrollmentApplicationType[n.toString()]);
         }

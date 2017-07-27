@@ -1,4 +1,4 @@
-import { DunCode } from './../../common/dun-codes/dun-code.interface';
+import { DunCode } from '../../shared/model/common/dun-code.interface';
 import {SetupActions} from './../setup.action';
 import {Action} from '@ngrx/store';
 

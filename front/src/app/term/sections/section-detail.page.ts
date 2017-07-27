@@ -2,16 +2,15 @@ import {Component, OnInit, ChangeDetectionStrategy, ViewContainerRef, Input, Eve
 import {Router, ActivatedRoute} from '@angular/router';
 
 import {TermService} from '../../../services';
-import {Store} from "@ngrx/store";
-import {Observable} from "rxjs";
-import {Section} from "./section.interface";
-import {SectionActions} from "./section.action";
-import {TermModuleState} from "../index";
-import {MdDialog, MdDialogConfig, MdDialogRef} from "@angular/material";
-import {Appointment} from "../appointments/appointment.interface";
-import {Enrollment} from "../enrollments/enrollment.interface";
-import {Offering} from "../offerings/offering.interface";
-
+import {Store} from '@ngrx/store';
+import {Observable} from 'rxjs';
+import {Section} from '../../shared/model/term/section.interface';
+import {SectionActions} from './section.action';
+import {TermModuleState} from '../index';
+import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';
+import {Appointment} from '../../shared/model/term/appointment.interface';
+import {Enrollment} from '../../shared/model/term/enrollment.interface';
+import {Offering} from '../../shared/model/term/offering.interface';
 
 @Component({
   selector: 'pams-section-detail',
@@ -20,21 +19,21 @@ import {Offering} from "../offerings/offering.interface";
 
 export class SectionDetailPage implements OnInit {
 
-  @Input() section: Section;
-  @Input() offering: Offering;
-  @Input() appointment: Appointment;
-
-  private OFFERING: string[] = "termModuleState.offering".split(".");
-  private SECTION: string[] = "termModuleState.section".split(".");
-  private ENROLLMENTS: string[] = "termModuleState.enrollments".split(".");
-  private APPOINTMENTS: string[] = "termModuleState.appointments".split(".");
-  private APPOINTMENT: string[] = "termModuleState.appointment".split(".");
-
+  private OFFERING: string[] = 'termModuleState.offering'.split('.');
+  private SECTION: string[] = 'termModuleState.section'.split('.');
+  private ENROLLMENTS: string[] = 'termModuleState.enrollments'.split('.');
+  private APPOINTMENTS: string[] = 'termModuleState.appointments'.split('.');
+  private APPOINTMENT: string[] = 'termModuleState.appointment'.split('.');
   private offering$: Observable<Offering>;
   private section$: Observable<Section>;
   private appointments$: Observable<Appointment[]>;
   private appointment$: Observable<Appointment>;
   private enrollments$: Observable<Enrollment[]>;
+
+  @Input() section: Section;
+  @Input() offering: Offering;
+  @Input() appointment: Appointment;
+
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -43,7 +42,6 @@ export class SectionDetailPage implements OnInit {
               private store: Store<TermModuleState>,
               private vcf: ViewContainerRef,
               private dialog: MdDialog) {
-
 
     this.section$ = this.store.select(...this.SECTION);
     this.offering$ = this.store.select(...this.OFFERING);
@@ -57,7 +55,6 @@ export class SectionDetailPage implements OnInit {
 
   showDialogDel(): void {
   }
-
 
   ngOnInit(): void {
     this.route.params.subscribe((params: { canonicalCode: string }) => {

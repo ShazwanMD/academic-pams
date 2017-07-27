@@ -1,4 +1,4 @@
-import { AdmissionApplication } from './../admission-application.interface';
+import {AdmissionApplication} from '../../../shared/model/term/admission-application.interface';
 import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy} from '@angular/core';
 
 @Component({
@@ -8,23 +8,22 @@ import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy} from '@
 })
 export class AdmissionApplicationComponent {
 
-  @Input() admissionApplication: AdmissionApplication;
-
-private columns: any[] = [
-    { name: 'auditNo', label: 'Audit No' },
-    { name: 'description', label: 'Description' },
-    { name: 'sourceNo', label: 'Source No' },
-    { name: 'referenceNo', label: 'Reference No' },
-    { name: 'cancelComment', label: 'Cancel Comment' },
-    { name: 'removeComment', label: 'Remove Comment' },
-    { name: 'advisor.identityNo', label: 'Advisor' },
-    { name: 'program.code', label: 'Program' },
-    { name: 'session.code', label: 'Academic Session' },
-    { name: 'student.identityNo', label: 'Student' },
-    { name: 'studyCenter.code', label: 'Study Center' },
-    { name: 'action', label: '' }
-    
+  private columns: any[] = [
+    {name: 'auditNo', label: 'Audit No'},
+    {name: 'description', label: 'Description'},
+    {name: 'sourceNo', label: 'Source No'},
+    {name: 'referenceNo', label: 'Reference No'},
+    {name: 'cancelComment', label: 'Cancel Comment'},
+    {name: 'removeComment', label: 'Remove Comment'},
+    {name: 'advisor.identityNo', label: 'Advisor'},
+    {name: 'program.code', label: 'Program'},
+    {name: 'session.code', label: 'Academic Session'},
+    {name: 'student.identityNo', label: 'Student'},
+    {name: 'studyCenter.code', label: 'Study Center'},
+    {name: 'action', label: ''}
   ];
+
+  @Input() admissionApplication: AdmissionApplication;
 
 }
 

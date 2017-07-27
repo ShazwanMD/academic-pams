@@ -4,14 +4,14 @@ import {Http, Response} from '@angular/http';
 import {Observable} from 'rxjs';
 import {environment} from '../environments/environment';
 
-import {Student} from '../app/identity/student.interface';
-import {Address} from '../app/profile/address.interface';
-import {Guardian} from '../app/profile/guardian.interface';
-import {Contact} from '../app/profile/contact.interface';
-import {Guarantor} from '../app/profile/guarantor.interface';
-import {Enrollment} from '../app/term/enrollments/enrollment.interface';
-import {SwitchStudyMode} from '../app/profile/switch-study-mode.interface';
-import {TransferCohort} from '../app/profile/transfer-cohort.interface';
+import {Student} from '../app/shared/model/identity/student.interface';
+import {Address} from '../app/shared/model/profile/address.interface';
+import {Guardian} from '../app/shared/model/profile/guardian.interface';
+import {Contact} from '../app/shared/model/profile/contact.interface';
+import {Guarantor} from '../app/shared/model/profile/guarantor.interface';
+import {Enrollment} from '../app/shared/model/term/enrollment.interface';
+import {SwitchStudyMode} from '../app/shared/model/profile/switch-study-mode.interface';
+import {TransferCohort} from '../app/shared/model/profile/transfer-cohort.interface';
 
 @Injectable()
 export class ProfileService {

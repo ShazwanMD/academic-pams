@@ -1,6 +1,6 @@
 import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, ViewContainerRef} from '@angular/core';
 import {MdSnackBar} from "@angular/material";
-import {GraduationApplicationTask} from "../graduation-application-task.interface";
+import {GraduationApplicationTask} from "../../../shared/model/graduation/graduation-application-task.interface";
 
 @Component({
   selector: 'pams-assigned-graduation-application-task-list',

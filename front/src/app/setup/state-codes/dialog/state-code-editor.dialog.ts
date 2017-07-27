@@ -1,5 +1,5 @@
-import { CountryCode } from './../../../common/country-codes/country-code.interface';
-import { StateCode } from './../../../common/state-codes/state-code.interface';
+import { CountryCode } from '../../../shared/model/common/country-code.interface';
+import { StateCode } from '../../../shared/model/common/state-code.interface';
 import { SetupActions } from './../../setup.action';
 import { SetupModuleState } from './../../index';
 import {Component, ViewContainerRef, OnInit, AfterViewInit} from '@angular/core';

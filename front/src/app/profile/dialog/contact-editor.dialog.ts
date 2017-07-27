@@ -2,13 +2,13 @@ import {Component, ViewContainerRef, OnInit, AfterViewInit} from '@angular/core'
 import {FormGroup, FormControl} from '@angular/forms';
 import {FormBuilder} from '@angular/forms';
 import {Router, ActivatedRoute} from '@angular/router';
-import {Store} from "@ngrx/store";
-import {MdDialogRef} from "@angular/material";
-import {Contact} from "../contact.interface";
-import {Student} from "../../identity/student.interface";
-import {ProfileModuleState} from "../index";
-import {ProfileActions} from "../profile.action";
-import { ContactType } from "../contact-type.enum";
+import {Store} from '@ngrx/store';
+import {MdDialogRef} from '@angular/material';
+import {Contact} from '../../shared/model/profile/contact.interface';
+import {Student} from '../../shared/model/identity/student.interface';
+import {ProfileModuleState} from '../index';
+import {ProfileActions} from '../profile.action';
+import { ContactType } from '../../shared/model/profile/contact-type.enum';
 
 @Component({
   selector: 'pams-contact-editor',
@@ -45,8 +45,8 @@ export class ContactEditorDialog implements OnInit {
       id: null,
       name: '',
       identityNo: '',
-      phone:'',
-      contactType: ContactType.FATHER
+      phone: '',
+      contactType: ContactType.FATHER,
     });
 
     if (this.edit) this.editorForm.patchValue(this._contact);
@@ -54,10 +54,10 @@ export class ContactEditorDialog implements OnInit {
 
   submit(contact: Contact, isValid: boolean) {
 
-    if(isValid)
+    if (isValid)
     contact.id = this._contact.id;
 
-    if(isValid)this.store.dispatch(this.actions.updateContact(this._student, contact));
+    if (isValid)this.store.dispatch(this.actions.updateContact(this._student, contact));
     else this.store.dispatch(this.actions.addContact(this._student, contact));
     this.dialog.close();
   }

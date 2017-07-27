@@ -1,7 +1,7 @@
 import {Routes, RouterModule} from '@angular/router';
 
-import {CurriculumCenterPage} from "./curriculum-center.page";
-import {CurriculumDetailPage} from "./curriculum-detail.page";
+import {CurriculumCenterPage} from './curriculum-center.page';
+import {CurriculumDetailPage} from './curriculum-detail.page';
 
 export const CurriculumRoutes: Routes = [
   {path: 'planner/curriculums', component: CurriculumCenterPage},

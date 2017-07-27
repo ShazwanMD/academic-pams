@@ -2,13 +2,12 @@ import {Component, OnInit, ChangeDetectionStrategy, ViewContainerRef} from '@ang
 import {Router, ActivatedRoute} from '@angular/router';
 
 import {TermService} from '../../../services';
-import {Store} from "@ngrx/store";
-import {Observable} from "rxjs";
-import {Assessment} from "./assessment.interface";
-import {AssessmentActions} from "./assessment.action";
-import {TermModuleState} from "../index";
-import {MdDialog, MdDialogConfig, MdDialogRef} from "@angular/material";
-
+import {Store} from '@ngrx/store';
+import {Observable} from 'rxjs';
+import {Assessment} from '../../shared/model/term/assessment.interface';
+import {AssessmentActions} from './assessment.action';
+import {TermModuleState} from '../index';
+import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';
 
 @Component({
   selector: 'pams-assessment-detail',
@@ -17,7 +16,7 @@ import {MdDialog, MdDialogConfig, MdDialogRef} from "@angular/material";
 
 export class AssessmentDetailPage implements OnInit {
 
-  private ASSESSMENT: string[] = "termModuleState.assessment".split(".");
+  private ASSESSMENT: string[] = 'termModuleState.assessment'.split('.');
   private assessment$: Observable<Assessment>;
 
   constructor(private router: Router,
@@ -41,12 +40,12 @@ export class AssessmentDetailPage implements OnInit {
     this.route.params.subscribe((params: { id: number }) => {
       let id: number = params.id;
       this.store.dispatch(this.actions.findAssessmentById(id));
-      console.log(id)
-    }); 
+      console.log(id);
+    });
   }
 
   goBack(route: string): void {
     this.router.navigate(['/assessments']);
   }
 }
-
+

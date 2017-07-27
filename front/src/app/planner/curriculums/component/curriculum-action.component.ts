@@ -1,6 +1,6 @@
 import { CurriculumUpdateDialog} from '../dialog/curriculum-update.dialog';
 import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, ViewContainerRef} from '@angular/core';
-import {Curriculum} from '../curriculum.interface';
+import {Curriculum} from '../../../shared/model/planner/curriculum.interface';
 import {MdDialog, MdDialogConfig, MdDialogRef, MdSnackBar} from '@angular/material';
 import {CurriculumActions} from '../curriculum.action';
 import {Store} from '@ngrx/store';
@@ -13,8 +13,8 @@ import {PlannerModuleState} from '../../index';
 })
 export class CurriculumActionComponent {
 
-  @Input() curriculum: Curriculum;
   private updateDialogRef: MdDialogRef<CurriculumUpdateDialog>;
+  @Input() curriculum: Curriculum;
 
   constructor(private actions: CurriculumActions,
               private store: Store<PlannerModuleState>,

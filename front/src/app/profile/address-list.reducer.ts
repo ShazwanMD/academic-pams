@@ -1,7 +1,7 @@
 import {Action} from '@ngrx/store';
 
-import {Address} from "./address.interface";
-import {ProfileActions} from "./profile.action";
+import {Address} from '../shared/model/profile/address.interface';
+import {ProfileActions} from './profile.action';
 
 export type AddressListState = Address[];
 

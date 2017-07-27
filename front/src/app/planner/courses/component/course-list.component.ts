@@ -1,28 +1,35 @@
-import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, AfterViewInit, OnChanges, SimpleChange} from '@angular/core';
-import {Course} from "../course.interface";
-import { TdDataTableSortingOrder, TdDataTableService, ITdDataTableSortChangeEvent, IPageChangeEvent } from '@covalent/core';
-import { PlannerModuleState } from './../../index';
-import { Observable } from 'rxjs';
-import { CourseActions } from './../course.action';
-import { MdSnackBar } from "@angular/material";
+import {
+  Component,
+  Input,
+  EventEmitter,
+  Output,
+  ChangeDetectionStrategy,
+  AfterViewInit,
+  OnChanges,
+  SimpleChange
+} from '@angular/core';
+import {Course} from '../../../shared/model/planner/course.interface';
+import {
+  TdDataTableSortingOrder,
+  TdDataTableService,
+  ITdDataTableSortChangeEvent,
+  IPageChangeEvent
+} from '@covalent/core';
+import {MdSnackBar} from '@angular/material';
 
 @Component({
   selector: 'pams-course-list',
   templateUrl: './course-list.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CourseListComponent implements AfterViewInit,  OnChanges  {
-
-  
-    @Input() courses: Course[];
-    @Output() view = new EventEmitter<Course>();
+export class CourseListComponent implements AfterViewInit, OnChanges {
 
   private columns: any[] = [
     {name: 'code', label: 'Code'},
     {name: 'titleEn', label: 'Title(En)'},
     {name: 'titleMs', label: 'Title(Ms)'},
     {name: 'credit', label: 'Credit'},
-    {name: 'action', label: ''}
+    {name: 'action', label: ''},
   ];
 
   filteredData: any[];
@@ -34,21 +41,24 @@ export class CourseListComponent implements AfterViewInit,  OnChanges  {
   sortBy: string = 'code';
   sortOrder: TdDataTableSortingOrder = TdDataTableSortingOrder.Descending;
 
+  @Input() courses: Course[];
+  @Output() view = new EventEmitter<Course>();
 
-   constructor(private _dataTableService: TdDataTableService,
-          private snackBar: MdSnackBar) {}
-  
-  
-   ngOnChanges(changes: {[ propName: string]: SimpleChange}) {
-       console.log("changes",changes,changes['courses']);
-           if (changes['courses']){
-           this.filteredData = changes['courses'].currentValue; 
-           this.filteredTotal = changes['courses'].currentValue.length;
-           this.filter();
-         }
-       }
-   
-   ngAfterViewInit(): void {
+
+  constructor(private _dataTableService: TdDataTableService,
+              private snackBar: MdSnackBar) {
+  }
+
+  ngOnChanges(changes: { [ propName: string]: SimpleChange }) {
+    console.log('changes', changes, changes['courses']);
+    if (changes['courses']) {
+      this.filteredData = changes['courses'].currentValue;
+      this.filteredTotal = changes['courses'].currentValue.length;
+      this.filter();
+    }
+  }
+
+  ngAfterViewInit(): void {
     this.filteredData = this.courses;
     this.filteredTotal = this.courses.length;
     this.filter();
@@ -82,10 +92,10 @@ export class CourseListComponent implements AfterViewInit,  OnChanges  {
   }
 
   viewCourse(course: Course): void {
-   console.log("Emitting courses");
-   let snackBarRef = this.snackBar.open("Viewing courses info", "OK");
-   snackBarRef.afterDismissed().subscribe(() => {
-   this.view.emit(course);
+    console.log('Emitting courses');
+    let snackBarRef = this.snackBar.open('Viewing courses info', 'OK');
+    snackBarRef.afterDismissed().subscribe(() => {
+      this.view.emit(course);
     });
   }
 }

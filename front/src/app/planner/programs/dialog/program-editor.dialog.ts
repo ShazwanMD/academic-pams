@@ -1,14 +1,14 @@
-import { Faculty } from './../../faculties/faculty.interface';
+import { Faculty } from '../../../shared/model/planner/faculty.interface';
 import {Component, ViewContainerRef, OnInit} from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
 import {FormBuilder} from '@angular/forms';
 import {Router, ActivatedRoute} from '@angular/router';
-import {Program} from "../program.interface";
-import {ProgramActions} from "../program.action";
-import {MdDialogRef} from "@angular/material";
-import {PlannerModuleState} from "../../index";
-import {Store} from "@ngrx/store";
-import {ProgramStatus} from "../program-status.enum";
+import {Program} from '../../../shared/model/planner/program.interface';
+import {ProgramActions} from '../program.action';
+import {MdDialogRef} from '@angular/material';
+import {PlannerModuleState} from '../../index';
+import {Store} from '@ngrx/store';
+import {ProgramStatus} from '../../../shared/model/planner/program-status.enum';
 
 @Component({
   selector: 'pams-program-editor',
@@ -41,7 +41,7 @@ export class ProgramEditorDialog implements OnInit {
 
   ngOnInit(): void {
     this.editForm = this.formBuilder.group(<Program>{
-      id: null,
+      id: undefined,
       code: '',
       titleMs: '',
       titleEn: '',
@@ -53,7 +53,7 @@ export class ProgramEditorDialog implements OnInit {
 
   submit(program: Program, isValid: boolean) {
     console.log(JSON.stringify(program));
-    if (!program.id) this.store.dispatch(this.actions.saveProgram(this.program));
+    if (!program.id) this.store.dispatch(this.actions.saveProgram(program));
     else  this.store.dispatch(this.actions.updateProgram(program));
     this.dialog.close();
 

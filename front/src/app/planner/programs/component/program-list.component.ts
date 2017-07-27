@@ -1,42 +1,56 @@
-import { PlannerModuleState } from './../../index';
-import { Observable } from 'rxjs';
-import { ProgramActions } from './../program.action';
-import { Store } from '@ngrx/store';
-import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, OnChanges, AfterViewInit,SimpleChange} from '@angular/core';
-import {Program} from "../program.interface";
-import { TdDataTableSortingOrder, TdDataTableService, IPageChangeEvent, ITdDataTableSortChangeEvent } from "@covalent/core";
-import { MdSnackBar } from "@angular/material";
+import {PlannerModuleState} from '../../index';
+import {Observable} from 'rxjs';
+import {ProgramActions} from '../program.action';
+import {Store} from '@ngrx/store';
+import {
+  Component,
+  Input,
+  EventEmitter,
+  Output,
+  ChangeDetectionStrategy,
+  OnChanges,
+  AfterViewInit,
+  SimpleChange
+} from '@angular/core';
+import {Program} from '../../../shared/model/planner/program.interface';
+import {
+  TdDataTableSortingOrder,
+  TdDataTableService,
+  IPageChangeEvent,
+  ITdDataTableSortChangeEvent
+} from '@covalent/core';
+import {MdSnackBar} from '@angular/material';
 
 @Component({
   selector: 'pams-program-list',
   templateUrl: './program-list.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ProgramListComponent implements OnChanges, AfterViewInit{
+export class ProgramListComponent implements OnChanges, AfterViewInit {
 
-
- private PROGRAMS:string[] = "plannerModuleState.bankCodes".split(".");
- private programs$: Observable<Program>;
+  private PROGRAMS: string[] = 'plannerModuleState.bankCodes'.split('.');
+  private programs$: Observable<Program>;
   @Input() programs: Program[];
   @Output() view = new EventEmitter<Program>();
 
   private columns: any[] = [
     {name: 'code', label: 'Code'},
     {name: 'titleEn', label: 'TitleEn'},
-    {name: 'action', label: ''}
+    {name: 'action', label: ''},
   ];
 
   constructor(private _dataTableService: TdDataTableService,
-          private snackBar: MdSnackBar) {}
-  
-  viewProgram(program:Program): void {
-      console.log("Emitting programs");
-      let snackBarRef = this.snackBar.open("Viewing program info", "OK");
-      snackBarRef.afterDismissed().subscribe(() => {
+              private snackBar: MdSnackBar) {
+  }
+
+  viewProgram(program: Program): void {
+    console.log('Emitting programs');
+    let snackBarRef = this.snackBar.open('Viewing program info', 'OK');
+    snackBarRef.afterDismissed().subscribe(() => {
       this.view.emit(program);
-       });
-      
-     }
+    });
+
+  }
 
   filteredData: any[];
   filteredTotal: number;
@@ -47,16 +61,16 @@ export class ProgramListComponent implements OnChanges, AfterViewInit{
   sortBy: string = 'code';
   sortOrder: TdDataTableSortingOrder = TdDataTableSortingOrder.Descending;
 
-     ngOnChanges(changes: {[ propName: string]: SimpleChange}) {
-         console.log("changes",changes,changes['programs']);
-             if (changes['programs']){
-             this.filteredData = changes['programs'].currentValue; 
-             this.filteredTotal = changes['programs'].currentValue.length;
-             this.filter();
-           }
-         }
-     
-   ngAfterViewInit(): void {
+  ngOnChanges(changes: { [ propName: string]: SimpleChange }) {
+    console.log('changes', changes, changes['programs']);
+    if (changes['programs']) {
+      this.filteredData = changes['programs'].currentValue;
+      this.filteredTotal = changes['programs'].currentValue.length;
+      this.filter();
+    }
+  }
+
+  ngAfterViewInit(): void {
     this.filteredData = this.programs;
     this.filteredTotal = this.programs.length;
     this.filter();
@@ -70,7 +84,7 @@ export class ProgramListComponent implements OnChanges, AfterViewInit{
 
   search(searchTerm: string): void {
     this.searchTerm = searchTerm;
-    
+
     this.filter();
   }
 
@@ -88,23 +102,20 @@ export class ProgramListComponent implements OnChanges, AfterViewInit{
     newData = this._dataTableService.sortData(newData, this.sortBy, this.sortOrder);
     newData = this._dataTableService.pageData(newData, this.fromRow, this.currentPage * this.pageSize);
     this.filteredData = newData;
- }
- 
+  }
+
 }
 
-  
-  
-  
- /*constructor(private store: Store<PlannerModuleState>,
-              private actions: ProgramActions) {
-   this.programs$ = this.store.select(...this.PROGRAMS);
-  }
+/*constructor(private store: Store<PlannerModuleState>,
+ private actions: ProgramActions) {
+ this.programs$ = this.store.select(...this.PROGRAMS);
+ }
 
-  ngOnInit() {
-    this.store.dispatch(this.actions.findPrograms());
+ ngOnInit() {
+ this.store.dispatch(this.actions.findPrograms());
 
-  }
+ }
 
-  filter(): void {
-  }
-}*/
+ filter(): void {
+ }
+ }*/

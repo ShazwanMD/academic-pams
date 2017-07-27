@@ -1,4 +1,4 @@
-import { ParliamentCode } from './../../common/parliament-codes/parliament-code.interface';
+import { ParliamentCode } from '../../shared/model/common/parliament-code.interface';
 import {SetupActions} from './../setup.action';
 import {Action} from '@ngrx/store';
 

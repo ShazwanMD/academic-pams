@@ -1,4 +1,4 @@
-import { EthnicityCode } from './../../common/ethnicity-codes/ethnicity-code.interface';
+import { EthnicityCode } from '../../shared/model/common/ethnicity-code.interface';
 import {SetupActions} from './../setup.action';
 import {Action} from '@ngrx/store';
 

@@ -1,93 +1,94 @@
-import { Injectable } from '@angular/core';
-import { Action } from '@ngrx/store';
+import {Injectable} from '@angular/core';
+import {Action} from '@ngrx/store';
 
 @Injectable()
 export class EnrollmentActions {
 
-    static FIND_ENROLLMENT_BY_ID = '[Enrollment] Find Enrollment By Id';
+  static FIND_ENROLLMENT_BY_ID = '[Enrollment] Find Enrollment By Id';
 
-    findEnrollmentById( enrollment ): Action {
-        return {
-            type: EnrollmentActions.FIND_ENROLLMENT_BY_ID,
-            payload: enrollment
-        };
-    }
+  findEnrollmentById(enrollment): Action {
+    return {
+      type: EnrollmentActions.FIND_ENROLLMENT_BY_ID,
+      payload: enrollment
+    };
+  }
 
-    static FIND_ENROLLMENT_BY_ID_SUCCESS = '[Enrollment] Find Enrollment By Id Success';
+  static FIND_ENROLLMENT_BY_ID_SUCCESS = '[Enrollment] Find Enrollment By Id Success';
 
-    findEnrollmentByIdSuccess( enrollment ): Action {
-        return {
-            type: EnrollmentActions.FIND_ENROLLMENT_BY_ID_SUCCESS,
-            payload: enrollment
-        };
-    }  
-    
-    //find gradebooks by enrollment
-    static FIND_GRADEBOOKS_BY_ENROLLMENT = '[Enrollment] Find Gradebooks By Enrollment';
+  findEnrollmentByIdSuccess(enrollment): Action {
+    return {
+      type: EnrollmentActions.FIND_ENROLLMENT_BY_ID_SUCCESS,
+      payload: enrollment
+    };
+  }
 
-    findGradebooksByEnrollment(enrollment): Action {
-        return {
-            type: EnrollmentActions.FIND_GRADEBOOKS_BY_ENROLLMENT,
-            payload: enrollment
-        };
-    }
+  //find gradebooks by enrollment
+  static FIND_GRADEBOOKS_BY_ENROLLMENT = '[Enrollment] Find Gradebooks By Enrollment';
 
-    static FIND_GRADEBOOKS_BY_ENROLLMENT_SUCCESS = '[Enrollment] Find Gradebooks By Enrollment Success';
+  findGradebooksByEnrollment(enrollment): Action {
+    return {
+      type: EnrollmentActions.FIND_GRADEBOOKS_BY_ENROLLMENT,
+      payload: enrollment
+    };
+  }
 
-    findGradebooksByEnrollmentSuccess(gradebooks): Action {
-        return {
-            type: EnrollmentActions.FIND_GRADEBOOKS_BY_ENROLLMENT_SUCCESS,
-            payload: gradebooks
-        };
-    }
-    //endfind gradebooks by enrollment
-    
-    static SAVE_ENROLLMENT = '[Enrollment] Save Enrollment';
+  static FIND_GRADEBOOKS_BY_ENROLLMENT_SUCCESS = '[Enrollment] Find Gradebooks By Enrollment Success';
 
-    saveEnrollment( enrollment ): Action {
-        return {
-            type: EnrollmentActions.SAVE_ENROLLMENT,
-            payload: enrollment
-        };
-    }
-   
+  findGradebooksByEnrollmentSuccess(gradebooks): Action {
+    return {
+      type: EnrollmentActions.FIND_GRADEBOOKS_BY_ENROLLMENT_SUCCESS,
+      payload: gradebooks
+    };
+  }
 
-    static SAVE_ENROLLMENT_SUCCESS = '[Enrollment] Save Enrollment Success';
+  //endfind gradebooks by enrollment
 
-    saveEnrollmentSuccess( enrollment ): Action {
-        return {
-            type: EnrollmentActions.SAVE_ENROLLMENT_SUCCESS,
-            payload: enrollment
-        };
-    }
+  static SAVE_ENROLLMENT = '[Enrollment] Save Enrollment';
 
-    static REMOVE_ENROLLMENT = '[Enrollment] Remove Enrollment';
+  saveEnrollment(enrollment): Action {
+    return {
+      type: EnrollmentActions.SAVE_ENROLLMENT,
+      payload: enrollment
+    };
+  }
 
-    removeEnrollment( enrollment ): Action {
-        return {
-            type: EnrollmentActions.REMOVE_ENROLLMENT,
-            payload: enrollment
-        };
-    }
 
-    static REMOVE_ENROLLMENT_SUCCESS = '[Enrollment] Remove Enrollment Success';
+  static SAVE_ENROLLMENT_SUCCESS = '[Enrollment] Save Enrollment Success';
 
-    removeEnrollmentSuccess( enrollment ): Action {
-        return {
-            type: EnrollmentActions.REMOVE_ENROLLMENT_SUCCESS,
-            payload: enrollment
-        };
-    }
-    
-    //update enrollment
-          //update section for capacity and ordinal
-    static UPDATE_ENROLLMENT = '[Enrollment] Update Enrollment';
+  saveEnrollmentSuccess(enrollment): Action {
+    return {
+      type: EnrollmentActions.SAVE_ENROLLMENT_SUCCESS,
+      payload: enrollment
+    };
+  }
+
+  static REMOVE_ENROLLMENT = '[Enrollment] Remove Enrollment';
+
+  removeEnrollment(enrollment): Action {
+    return {
+      type: EnrollmentActions.REMOVE_ENROLLMENT,
+      payload: enrollment
+    };
+  }
+
+  static REMOVE_ENROLLMENT_SUCCESS = '[Enrollment] Remove Enrollment Success';
+
+  removeEnrollmentSuccess(enrollment): Action {
+    return {
+      type: EnrollmentActions.REMOVE_ENROLLMENT_SUCCESS,
+      payload: enrollment
+    };
+  }
+
+  //update enrollment
+  //update section for capacity and ordinal
+  static UPDATE_ENROLLMENT = '[Enrollment] Update Enrollment';
 
   updateEnrollment(section, enrollment): Action {
     console.log("updateEnrollment");
     return {
       type: EnrollmentActions.UPDATE_ENROLLMENT,
-      payload: {section:section, enrollment: enrollment}
+      payload: {section: section, enrollment: enrollment}
     };
   }
 
@@ -99,5 +100,5 @@ export class EnrollmentActions {
       type: EnrollmentActions.UPDATE_ENROLLMENT_SUCCESS,
       payload: message
     };
-  } 
+  }
 }

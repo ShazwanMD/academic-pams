@@ -1,6 +1,6 @@
 import {Action} from '@ngrx/store';
-import {EnrollmentApplicationActions} from "./enrollment-application.action";
-import {EnrollmentApplication} from "./enrollment-application.interface";
+import {EnrollmentApplicationActions} from './enrollment-application.action';
+import {EnrollmentApplication} from '../../shared/model/term/enrollment-application.interface';
 
 export type EnrollmentApplicationState = EnrollmentApplication;
 
@@ -16,10 +16,10 @@ export function enrollmentApplicationReducer(state = initialState, action: Actio
       return action.payload;
     }
     case EnrollmentApplicationActions.FIND_ENROLLMENT_APPLICATIONS_SUCCESS: {
-        return action.payload;
+      return action.payload;
     }
     case EnrollmentApplicationActions.FIND_ENROLLMENT_APPLICATION_BY_REFERENCE_NO_SUCCESS: {
-        return action.payload;
+      return action.payload;
     }
     default: {
       return state;

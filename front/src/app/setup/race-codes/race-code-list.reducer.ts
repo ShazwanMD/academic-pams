@@ -1,6 +1,6 @@
 import {SetupActions} from './../setup.action';
 import {Action} from '@ngrx/store';
-import {RaceCode} from "../../common/race-codes/race-code.interface";
+import {RaceCode} from "../../shared/model/common/race-code.interface";
 
 
 export type RaceCodeListState = RaceCode[];

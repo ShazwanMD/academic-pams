@@ -1,6 +1,4 @@
-import {Student} from './../identity/student.interface';
-import {Address} from './address.interface';
-import {Guarantor} from './guarantor.interface';
+import {Student} from '../shared/model/identity/student.interface';
 import {Injectable} from '@angular/core';
 import {Effect, Actions} from '@ngrx/effects';
 import {ProfileService} from "../../services/profile.service";
@@ -9,7 +7,6 @@ import {from} from "rxjs/observable/from";
 import {TermModuleState} from "../term/index";
 import {Store} from "@ngrx/store";
 import {Router} from "@angular/router";
-
 
 @Injectable()
 export class ProfileEffects {

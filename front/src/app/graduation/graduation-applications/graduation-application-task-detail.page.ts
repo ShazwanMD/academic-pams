@@ -1,6 +1,6 @@
 import {Component, OnInit,} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
-import {GraduationApplicationTask} from "./graduation-application-task.interface";
+import {GraduationApplicationTask} from "../../shared/model/graduation/graduation-application-task.interface";
 import {Observable} from "rxjs";
 import {GraduationModuleState} from "../index";
 import {Store} from "@ngrx/store";

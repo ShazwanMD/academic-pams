@@ -1,7 +1,5 @@
 import { Component, ChangeDetectionStrategy, Output, Input, EventEmitter, AfterViewInit } from '@angular/core';
-import { AdmissionApplication } from "./../admission-application.interface";
-import { IPageChangeEvent, ITdDataTableSortChangeEvent, TdDataTableSortingOrder, TdDataTableService } from "@covalent/core";
-//import { MdSnackBar } from "@angular/material";
+import { AdmissionApplication } from '../../../shared/model/term/admission-application.interface';
 
 @Component({
   selector: 'pams-admission-application-list',
@@ -11,25 +9,21 @@ import { IPageChangeEvent, ITdDataTableSortChangeEvent, TdDataTableSortingOrder,
 
 export class AdmissionApplicationListComponent   {
 
-  @Input() admissionApplications: AdmissionApplication[];
-  @Output() view = new EventEmitter<AdmissionApplication>();
-
   private columns: any[] = [
-    // { name: 'auditNo', label: 'Audit No' },
     { name: 'referenceNo', label: 'Reference No' },
     { name: 'description', label: 'Description' },
-    // { name: 'sourceNo', label: 'Source No' },
-    // { name: 'cancelComment', label: 'Cancel Comment' },
-    // { name: 'removeComment', label: 'Remove Comment' },
     { name: 'advisor.identityNo', label: 'Advisor' },
     { name: 'program.code', label: 'Program' },
     { name: 'session.code', label: 'Academic Session' },
     { name: 'student.identityNo', label: 'Student' },
     { name: 'studyCenter.code', label: 'Study Center' },
-    { name: 'action', label: '' }
+    { name: 'action', label: '' },
 
   ];
-  
+
+  @Input() admissionApplications: AdmissionApplication[];
+  @Output() view = new EventEmitter<AdmissionApplication>();
+
   /*filteredData: any[];
   filteredTotal: number;
   searchTerm: string = '';
@@ -41,7 +35,7 @@ export class AdmissionApplicationListComponent   {
 
   constructor(private _dataTableService: TdDataTableService,
           private snackBar: MdSnackBar) {}
-  
+
   ngAfterViewInit(): void {
     this.filteredData = this.admissionApplications;
     this.filteredTotal = this.admissionApplications.length;
@@ -74,7 +68,7 @@ export class AdmissionApplicationListComponent   {
     newData = this._dataTableService.pageData(newData, this.fromRow, this.currentPage * this.pageSize);
     this.filteredData = newData;
   }*/
-  
+
   /*viewAdmissionApplication(admissionApplication: AdmissionApplication): void {
       console.log("Emitting admissionApplication");
       let snackBarRef = this.snackBar.open("Viewing admissionApplication info", "OK");

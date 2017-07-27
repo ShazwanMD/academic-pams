@@ -1,12 +1,11 @@
-import {EthnicityCode} from './../ethnicity-code.interface';
+import {EthnicityCode} from '../../../shared/model/common/ethnicity-code.interface';
 import {Observable} from 'rxjs/Observable';
 import {Component, Input, OnInit} from '@angular/core';
 
 import {Store} from '@ngrx/store';
 import {FormControl} from '@angular/forms';
-import {CommonActions} from './../../gender-codes/common.action';
-import {CommonModuleState} from './../../index';
-
+import {CommonActions} from '../../common.action';
+import {CommonModuleState} from '../../index';
 
 @Component({
   selector: 'pams-ethnicity-code-select',
@@ -15,10 +14,10 @@ import {CommonModuleState} from './../../index';
 
 export class EthnicityCodeSelectComponent implements OnInit {
 
-  private ETHNICITY_CODE: string[] = "commonModuleState.ethnicityCodes".split(".");
+  private ETHNICITY_CODE: string[] = 'commonModuleState.ethnicityCodes'.split('.');
+  private ethnicityCodes$: Observable<EthnicityCode[]>;
   @Input() placeholder: string;
   @Input() innerFormControl: FormControl;
-  ethnicityCodes$: Observable<EthnicityCode[]>;
 
   constructor(private store: Store<CommonModuleState>,
               private actions: CommonActions) {

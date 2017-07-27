@@ -1,8 +1,6 @@
-
 import {Component, Input, OnInit} from '@angular/core';
-import {FormControl} from "@angular/forms";
-import { ProgramStatus } from "../program-status.enum";
-
+import {FormControl} from '@angular/forms';
+import {ProgramStatus} from '../../../shared/model/planner/program-status.enum';
 
 @Component({
   selector: 'pams-program-status-select',
@@ -15,8 +13,8 @@ export class ProgramStatusSelectComponent implements OnInit {
   @Input() innerFormControl: FormControl;
 
   constructor() {
-    for (var n in ProgramStatus) {
-      if(typeof ProgramStatus[n] === 'string')
+    for (let n in ProgramStatus) {
+      if (typeof ProgramStatus[n] === 'string')
         this.programStatuss.push(ProgramStatus[n.toString()]);
     }
   }

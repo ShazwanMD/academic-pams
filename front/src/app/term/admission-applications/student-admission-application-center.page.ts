@@ -5,7 +5,7 @@ import {Store, State} from '@ngrx/store';
 import {Observable} from 'rxjs';
 import {AdmissionApplicationTaskCreatorDialog} from './dialog/admission-application-task-creator.dialog';
 import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';
-import {AdmissionApplicationTask} from './admission-application-task.interface';
+import {AdmissionApplicationTask} from '../../shared/model/term/admission-application-task.interface';
 import {TermModuleState} from '../index';
 import {AdmissionApplicationActions} from './admission-application.action';
 
@@ -18,10 +18,8 @@ export class StudentAdmissionApplicationCenterPage implements OnInit {
 
   private ASSIGNED_ADMISSION_APPLICATION_TASKS: string[] = 'termModuleState.assignedAdmissionApplicationTasks'.split('.');
   private POOLED_ADMISSION_APPLICATION_TASKS: string[] = 'termModuleState.pooledAdmissionApplicationTasks'.split('.');
-
   private assignedAdmissionApplicationTasks$: Observable<AdmissionApplicationTask>;
   private pooledAdmissionApplicationTasks$: Observable<AdmissionApplicationTask>;
-
   private creatorDialogRef: MdDialogRef<AdmissionApplicationTaskCreatorDialog>;
 
   constructor(private router: Router,

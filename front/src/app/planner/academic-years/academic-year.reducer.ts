@@ -1,5 +1,5 @@
-import { AcademicYear } from "./academic-year.interface";
-import { AcademicYearActions } from "./academic-year.action";
+import { AcademicYear } from '../../shared/model/planner/academic-year.interface';
+import { AcademicYearActions } from './academic-year.action';
 import { Action } from '@ngrx/store';
 
 export type AcademicYearState = AcademicYear;

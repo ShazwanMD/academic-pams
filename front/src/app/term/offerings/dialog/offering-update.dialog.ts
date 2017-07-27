@@ -2,20 +2,14 @@ import {Component, ViewContainerRef, OnInit} from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
 import {FormBuilder} from '@angular/forms';
 import {Router, ActivatedRoute} from '@angular/router';
-import {IdentityService} from "../../../../services/identity.service";
-import {CommonService} from "../../../../services/common.service";
-import {PlannerService} from "../../../../services/planner.service";
-import {TermService} from "../../../../services/term.service";
-import {Offering} from "../offering.interface";
-//import {Course} from "../../planner/courses/course.interface";
-import {OfferingActions} from "../offering.action";
-import {MdDialog} from '@angular/material';
-import {MdDialogRef} from "@angular/material";
-import {Store} from "@ngrx/store";
-import {AcademicSession} from "../../../planner/academic-sessions/academic-session.interface";
-import {Course} from "../../../planner/courses/course.interface";
-import {Program} from "../../../planner/programs/program.interface";
-import {TermModuleState} from "../../index";
+import {Offering} from '../../../shared/model/term/offering.interface';
+import {OfferingActions} from '../offering.action';
+import {MdDialogRef} from '@angular/material';
+import {Store} from '@ngrx/store';
+import {AcademicSession} from '../../../shared/model/planner/academic-session.interface';
+import {Course} from '../../../shared/model/planner/course.interface';
+import {Program} from '../../../shared/model/planner/program.interface';
+import {TermModuleState} from '../../index';
 
 @Component({
   selector: 'pams-offering-update',
@@ -23,13 +17,9 @@ import {TermModuleState} from "../../index";
 })
 
 export class OfferingUpdateDialog implements OnInit {
-
-  //private offering: Offering;
   private createForm: FormGroup;
   private edit: boolean = false;
   private _offering: Offering;
-    
-  
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -39,37 +29,35 @@ export class OfferingUpdateDialog implements OnInit {
               private actions: OfferingActions,
               public dialog: MdDialogRef<OfferingUpdateDialog>) {
   }
-    
+
     set offering(value: Offering) {
     this._offering = value;
     this.edit = true;
   }
-  
- 
+
   ngOnInit(): void {
     this.createForm = this.formBuilder.group(<Offering>{
       id: null,
-      code:'',
-      canonicalCode:'',
+      code: '',
+      canonicalCode: '',
       capacity: 0,
-      titleMs:'',
-      titleEn:'',
-      academicSession:<AcademicSession>{},
+      titleMs: '',
+      titleEn: '',
+      academicSession: <AcademicSession>{},
       course: <Course>{},
       program: <Program>{},
-        
+
     });
 
-   if (this.edit) this.createForm.patchValue(this._offering);
+    if (this.edit) this.createForm.patchValue(this._offering);
   }
-    
+
      submit(offering: Offering, isValid: boolean) {
       console.log(JSON.stringify(offering));
       this.store.dispatch(this.actions.updateOffering(offering));
       this.dialog.close();
     }
- 
-    
+
     //submit update button
     /*
      submit(offering: Offering, isValid: boolean) {

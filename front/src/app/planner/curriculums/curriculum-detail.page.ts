@@ -1,18 +1,17 @@
-import { SingleSubject } from './single-subject.interface';
+import { SingleSubject } from '../../shared/model/planner/single-subject.interface';
 import {CurriculumEditorDialog} from './dialog/curriculum-editor.dialog';
 import {MdDialogRef, MdDialogConfig} from '@angular/material/dialog';
 import {Component, Input, OnInit, ChangeDetectionStrategy} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
-import {CurriculumUpdateDialog} from './dialog/curriculum-update.dialog';
 import {Store} from '@ngrx/store';
 import {Observable} from 'rxjs';
-import {Curriculum} from './curriculum.interface';
+import {Curriculum} from '../../shared/model/planner/curriculum.interface';
 import {CurriculumActions} from './curriculum.action';
 import {PlannerModuleState} from '../index';
 import {MdDialog} from '@angular/material';
 import {ViewContainerRef} from '@angular/core';
 import {MdSnackBar} from '@angular/material';
-import {Subject} from './subject.interface';
+import {Subject} from '../../shared/model/planner/subject.interface';
 
 @Component({
   selector: 'pams-curriculum-detail',
@@ -27,8 +26,6 @@ export class CurriculumDetailPage implements OnInit {
   private curriculum$: Observable<Curriculum>;
   private subjects$: Observable<Subject[]>;
   private singleSubject$: Observable<SingleSubject[]>;
-
-
   private editorDialogRef: MdDialogRef<CurriculumEditorDialog>;
 
   @Input() curriculum: Curriculum;

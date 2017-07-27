@@ -1,5 +1,5 @@
 import { Component, Input, EventEmitter, Output, ChangeDetectionStrategy } from '@angular/core';
-import { Admission } from "../admission.interface";
+import { Admission } from '../../../shared/model/term/admission.interface';
 
 @Component({
   selector: 'pams-admission',

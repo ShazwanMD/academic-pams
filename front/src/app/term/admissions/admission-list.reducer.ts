@@ -2,8 +2,8 @@ import { Action } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 
 import * as _ from 'lodash';
-import { Admission } from "./admission.interface";
-import { AdmissionActions } from "./admission.action";
+import { Admission } from '../../shared/model/term/admission.interface';
+import { AdmissionActions } from './admission.action';
 
 export type AdmissionListState = Admission[];
 

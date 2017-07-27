@@ -1,6 +1,6 @@
 import { StaffAppointmentListState} from './staff-appointment-list.reducer';
 import { StaffActions} from './staff.action';
-import {Appointment} from '../../term/appointments/appointment.interface';
+import {Appointment} from '../../shared/model/term/appointment.interface';
 import {Action} from '@ngrx/store';
 
 export type StaffAppointmentListState = Appointment[];

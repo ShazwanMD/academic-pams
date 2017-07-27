@@ -1,4 +1,4 @@
-import { NationalityCode } from './../../../common/nationality-codes/nationality-code.interface';
+import { NationalityCode } from '../../../shared/model/common/nationality-code.interface';
 import { SetupActions } from './../../setup.action';
 import { SetupModuleState } from './../../index';
 import {Component, ViewContainerRef, OnInit, AfterViewInit} from '@angular/core';

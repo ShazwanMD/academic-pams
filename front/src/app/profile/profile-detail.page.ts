@@ -1,18 +1,18 @@
-import { StudyModeSwitcherDialog } from './dialog/study-mode-switcher.dialog';
-import { CohortTransfererDialog } from './dialog/cohort-transferer.dialog';
-import {Enrollment} from './../term/enrollments/enrollment.interface';
-import {Address} from './address.interface';
-import {Input,Component, OnInit, ChangeDetectionStrategy, ViewContainerRef} from '@angular/core';
+import {StudyModeSwitcherDialog} from './dialog/study-mode-switcher.dialog';
+import {CohortTransfererDialog} from './dialog/cohort-transferer.dialog';
+import {Enrollment} from '../shared/model/term/enrollment.interface';
+import {Address} from '../shared/model/profile/address.interface';
+import {Input, Component, OnInit, ChangeDetectionStrategy, ViewContainerRef} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 
-import {Store} from "@ngrx/store";
-import {Student} from "../identity/student.interface";
-import {ProfileActions} from "./profile.action";
-import {ProfileModuleState} from "./index";
-import {Contact} from "./contact.interface";
-import {Guardian} from "./guardian.interface";
-import {Guarantor} from "./guarantor.interface";
-import { MdSnackBar, MdDialogConfig, MdDialog, MdDialogRef } from '@angular/material';
+import {Store} from '@ngrx/store';
+import {Student} from '../shared/model/identity/student.interface';
+import {ProfileActions} from './profile.action';
+import {ProfileModuleState} from './index';
+import {Contact} from '../shared/model/profile/contact.interface';
+import {Guardian} from '../shared/model/profile/guardian.interface';
+import {Guarantor} from '../shared/model/profile/guarantor.interface';
+import {MdSnackBar, MdDialogConfig, MdDialog, MdDialogRef} from '@angular/material';
 import {Observable} from 'rxjs';
 
 @Component({
@@ -21,13 +21,12 @@ import {Observable} from 'rxjs';
 })
 
 export class ProfileDetailPage implements OnInit {
-  @Input() student: Student;
-  private STUDENT: string[] = "profileModuleState.student".split(".");
-  private ADDRESSES: string[] = "profileModuleState.addresses".split(".");
-  private GUARANTORS: string[] = "profileModuleState.guarantors".split(".");
-  private GUARDIANS: string[] = "profileModuleState.guardians".split(".");
-  private CONTACTS: string[] = "profileModuleState.contacts".split(".");
-  private ENROLLMENTS: string[] = "profileModuleState.enrollments".split(".");
+  private STUDENT: string[] = 'profileModuleState.student'.split('.');
+  private ADDRESSES: string[] = 'profileModuleState.addresses'.split('.');
+  private GUARANTORS: string[] = 'profileModuleState.guarantors'.split('.');
+  private GUARDIANS: string[] = 'profileModuleState.guardians'.split('.');
+  private CONTACTS: string[] = 'profileModuleState.contacts'.split('.');
+  private ENROLLMENTS: string[] = 'profileModuleState.enrollments'.split('.');
 
   private student$: Observable<Student>;
   private addressess$: Observable<Student>;
@@ -35,16 +34,17 @@ export class ProfileDetailPage implements OnInit {
   private guardians$: Observable<Guardian>;
   private contacts$: Observable<Contact>;
   private enrollments$: Observable<Enrollment>;
-
   private switcherDialogRef: MdDialogRef<StudyModeSwitcherDialog>;
-  private transfererDialogRef: MdDialogRef<CohortTransfererDialog>;  
+  private transfererDialogRef: MdDialogRef<CohortTransfererDialog>;
+
+  @Input() student: Student;
+
   constructor(private router: Router,
               private route: ActivatedRoute,
               private actions: ProfileActions,
               private vcf: ViewContainerRef,
-               private dialog: MdDialog,
+              private dialog: MdDialog,
               private store: Store<ProfileModuleState>,
-
               private snackBar: MdSnackBar) {
 
     this.student$ = this.store.select(...this.STUDENT);
@@ -66,34 +66,32 @@ export class ProfileDetailPage implements OnInit {
     });
   }
 
-
-
-deactivate(): void {
-    let snackBarRef = this.snackBar.open("Deactivating Student : ?", "OK");
+  deactivate(): void {
+    let snackBarRef = this.snackBar.open('Deactivating Student : ?', 'OK');
     snackBarRef.afterDismissed().subscribe(() => {
-        this.student$.take(1).subscribe(student =>
-          this.store.dispatch(this.actions.deactivateStudent(student)))
-      }
+        this.student$.take(1).subscribe((student) =>
+          this.store.dispatch(this.actions.deactivateStudent(student)));
+      },
     );
 
   }
 
   activate(): void {
-    let snackBarRef = this.snackBar.open("Activating Student : ?", "OK");
+    let snackBarRef = this.snackBar.open('Activating Student : ?', 'OK');
     snackBarRef.afterDismissed().subscribe(() => {
-        this.student$.take(1).subscribe(student =>
-          this.store.dispatch(this.actions.activateStudent(student)))
-      }
+        this.student$.take(1).subscribe((student) =>
+          this.store.dispatch(this.actions.activateStudent(student)));
+      },
     );
 
   }
 
   bar(): void {
-    let snackBarRef = this.snackBar.open("Barred Student : ?", "OK");
+    let snackBarRef = this.snackBar.open('Barred Student : ?', 'OK');
     snackBarRef.afterDismissed().subscribe(() => {
-        this.student$.take(1).subscribe(student =>
-          this.store.dispatch(this.actions.barStudent(student)))
-      }
+        this.student$.take(1).subscribe((student) =>
+          this.store.dispatch(this.actions.barStudent(student)));
+      },
     );
   }
 

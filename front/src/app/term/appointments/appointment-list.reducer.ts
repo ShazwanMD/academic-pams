@@ -1,9 +1,8 @@
 import {Action} from '@ngrx/store';
-import {Observable} from 'rxjs/Observable';
 
 import * as _ from 'lodash';
-import {Appointment} from "./appointment.interface";
-import {AppointmentActions} from "./appointment.action";
+import {Appointment} from '../../shared/model/term/appointment.interface';
+import {AppointmentActions} from './appointment.action';
 
 export type AppointmentListState = Appointment[];
 
@@ -20,13 +19,13 @@ export function appointmentListReducer(state = initialState, action: Action): Ap
         return [
           ...state.slice(0, index),
           action.payload,
-          ...state.slice(index + 1)
+          ...state.slice(index + 1),
         ];
       }
       return state;
     }
     case AppointmentActions.REMOVE_APPOINTMENT_SUCCESS: {
-      return state.filter(appointment => {
+      return state.filter((appointment) => {
         return appointment.id !== action.payload.id;
       });
     }

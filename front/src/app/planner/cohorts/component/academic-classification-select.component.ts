@@ -1,10 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormControl } from "@angular/forms";
-import { AcademicClassification } from "../academic-classification.enum";
+import { FormControl } from '@angular/forms';
+import { AcademicClassification } from '../../../shared/model/planner/academic-classification.enum';
 
 @Component({
     selector: 'pams-academic-classification',
-    templateUrl: './academic-classification-select.component.html'
+    templateUrl: './academic-classification-select.component.html',
 })
 export class AcademicClassificationSelectComponent implements OnInit {
 
@@ -13,7 +13,7 @@ export class AcademicClassificationSelectComponent implements OnInit {
     @Input() innerFormControl: FormControl;
 
     constructor() {
-        for (var n in AcademicClassification) {
+        for (let n in AcademicClassification) {
             if (typeof AcademicClassification[n] === 'string')
                 this.academicClassifications.push(AcademicClassification[n.toString()]);
         }

@@ -1,11 +1,10 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Observable} from "rxjs";
-import {Store} from "@ngrx/store";
-import {FormControl} from "@angular/forms";
-import {AcademicSession} from "../academic-session.interface";
-import {PlannerModuleState} from "../../index";
-import {AcademicSessionActions} from "../academic-session.action";
-
+import {Observable} from 'rxjs';
+import {Store} from '@ngrx/store';
+import {FormControl} from '@angular/forms';
+import {AcademicSession} from '../../../shared/model/planner/academic-session.interface';
+import {PlannerModuleState} from '../../index';
+import {AcademicSessionActions} from '../academic-session.action';
 
 @Component({
   selector: 'pams-academic-session-select',
@@ -14,7 +13,7 @@ import {AcademicSessionActions} from "../academic-session.action";
 })
 export class AcademicSessionSelectComponent implements OnInit {
 
-  private ACADEMIC_SESSIONS: string[] = "plannerModuleState.academicSessions".split(".");
+  private ACADEMIC_SESSIONS: string[] = 'plannerModuleState.academicSessions'.split('.');
   private academicSessions$: Observable<AcademicSession[]>;
   @Input() placeholder: string;
   @Input() innerFormControl: FormControl;
@@ -32,4 +31,4 @@ export class AcademicSessionSelectComponent implements OnInit {
     this.innerFormControl.setValue(event, {emitEvent: false});
   }
 }
-
+

@@ -1,5 +1,5 @@
 import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy} from '@angular/core';
-import {GraduationApplication} from "../graduation-application.interface";
+import {GraduationApplication} from "../../../shared/model/graduation/graduation-application.interface";
 
 @Component({
   selector: 'pams-graduation-application',

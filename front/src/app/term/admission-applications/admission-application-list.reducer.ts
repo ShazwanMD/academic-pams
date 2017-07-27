@@ -1,6 +1,6 @@
 import { Action } from '@ngrx/store';
-import { AdmissionApplication } from '../admissions/admission-application.interface';
 import { AdmissionApplicationActions } from './admission-application.action';
+import {AdmissionApplication} from '../../shared/model/term/admission-application.interface';
 
 export type AdmissionApplicationListState = AdmissionApplication[];
 

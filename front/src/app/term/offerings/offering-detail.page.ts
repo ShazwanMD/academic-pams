@@ -3,12 +3,12 @@ import {Router, ActivatedRoute} from '@angular/router';
 import {OfferingUpdateDialog} from './dialog/offering-update.dialog';
 import {Store} from '@ngrx/store';
 import {Observable} from 'rxjs';
-import {Offering} from './offering.interface';
+import {Offering} from '../../shared/model/term/offering.interface';
 import {OfferingActions} from './offering.action';
 import {TermModuleState} from '../index';
-import {Section} from '../sections/section.interface';
+import {Section} from '../../shared/model/term/section.interface';
 import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';
-import {Assessment} from '../assessments/assessment.interface';
+import {Assessment} from '../../shared/model/term/assessment.interface';
 
 @Component({
   selector: 'pams-offering-detail',

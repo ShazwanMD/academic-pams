@@ -1,6 +1,6 @@
 import {Action} from '@ngrx/store';
-import {EnrollmentApplicationTask} from "./enrollment-application-task.interface";
-import {EnrollmentApplicationActions} from "./enrollment-application.action";
+import {EnrollmentApplicationTask} from '../../shared/model/term/enrollment-application-task.interface';
+import {EnrollmentApplicationActions} from './enrollment-application.action';
 
 export type EnrollmentApplicationTaskState = EnrollmentApplicationTask;
 

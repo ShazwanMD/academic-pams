@@ -6,7 +6,7 @@ import {Component, OnInit, ViewContainerRef, ChangeDetectionStrategy} from '@ang
 import {CommonService} from '../../../services';
 import {Store} from "@ngrx/store";
 import {Observable} from "rxjs";
-import {Cohort} from "./cohort.interface";
+import {Cohort} from "../../shared/model/planner/cohort.interface";
 import {PlannerService} from './../../../services/planner.service';
 import {PlannerModuleState} from "../index";
 import {MdDialog, MdDialogConfig, MdDialogRef} from "@angular/material";
@@ -56,7 +56,7 @@ export class CohortCenterPage implements OnInit {
    // this.creatorDialogRef.componentInstance.offering = this.offering;
     this.creatorDialogRef.afterClosed().subscribe(res => {
       console.log("close dialog");
-     
+
     });
   }
 

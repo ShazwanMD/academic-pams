@@ -3,16 +3,11 @@ import { Component, OnInit, ViewContainerRef, Input } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MdSnackBar, MdDialog, MdDialogRef, MdDialogConfig } from '@angular/material';
 import { TermService } from '../../../../services/term.service';
-import { AdmissionApplicationTask } from '../admission-application-task.interface';
-import {AdmissionApplication} from "../admission-application.interface";
-import { Store } from "@ngrx/store";
-import { TermModuleState } from "../../index";
-import { AdmissionApplicationActions } from "../admission-application.action";
-
-/*@Component({
- selector: 'pams-admission-application-register-task',
- templateUrl: './admission-application-register-task.panel.html',
- })*/
+import { AdmissionApplicationTask } from '../../../shared/model/term/admission-application-task.interface';
+import {AdmissionApplication} from '../../../shared/model/term/admission-application.interface';
+import { Store } from '@ngrx/store';
+import { TermModuleState } from '../../index';
+import { AdmissionApplicationActions } from '../admission-application.action';
 
 @Component({
   selector: 'pams-admission-application-draft-task',
@@ -21,8 +16,6 @@ import { AdmissionApplicationActions } from "../admission-application.action";
 
 export class AdmissionApplicationDraftTaskPanel implements OnInit {
 
-  @Input() admissionApplication: AdmissionApplication;
-    
   private _router: Router;
   private _route: ActivatedRoute;
   private _termService: TermService;
@@ -31,6 +24,7 @@ export class AdmissionApplicationDraftTaskPanel implements OnInit {
   private _dialog: MdDialog;
   private editorDialogRef: MdDialogRef<AdmissionApplicationTaskEditorDialog>;
   private admissionApplicationTask: AdmissionApplicationTask = <AdmissionApplicationTask>{};
+  @Input() admissionApplication: AdmissionApplication;
 
   constructor(router: Router,
     route: ActivatedRoute,
@@ -56,7 +50,7 @@ export class AdmissionApplicationDraftTaskPanel implements OnInit {
   }
 
   edit(): void {
-    console.log("open admission app update dialog");
+    console.log('open admission app update dialog');
     console.log(this.admissionApplicationTask.id);
     let config = new MdDialogConfig();
     config.viewContainerRef = this._viewContainerRef;
@@ -76,8 +70,7 @@ export class AdmissionApplicationDraftTaskPanel implements OnInit {
       });
     });
   }
-  
-  //release admission application
+
   remove() {
       this.store.dispatch(this.actions.releaseAdmissionApplicationTask(this.admissionApplicationTask));
       this.goBack();

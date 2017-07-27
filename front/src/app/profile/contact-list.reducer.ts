@@ -1,7 +1,7 @@
 import {Action} from '@ngrx/store';
 
-import {Contact} from "./contact.interface";
-import {ProfileActions} from "./profile.action";
+import {Contact} from '../shared/model/profile/contact.interface';
+import {ProfileActions} from './profile.action';
 
 export type ContactListState = Contact[];
 

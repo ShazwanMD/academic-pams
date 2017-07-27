@@ -1,5 +1,5 @@
 import { EnrollmentActions} from './enrollment.action';
-import {Gradebook} from '../gradebooks/gradebook.interface';
+import {Gradebook} from '../../shared/model/term/gradebook.interface';
 import {Action} from '@ngrx/store';
 
 export type EnrollmentGradebookListState = Gradebook[];

@@ -2,15 +2,14 @@ import {Component, ViewContainerRef, OnInit} from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
 import {FormBuilder} from '@angular/forms';
 import {Router, ActivatedRoute} from '@angular/router';
-import {Section} from "../../sections/section.interface";
-import {EnrollmentApplicationItem} from "../enrollment-application-item.interface";
-import {EnrollmentApplicationAction} from "../enrollment-application-action.enum";
-import {TermModuleState} from "../../index";
-import {EnrollmentApplicationActions} from "../enrollment-application.action";
-import {Store} from "@ngrx/store";
-import {MdDialogRef} from "@angular/material";
-import {EnrollmentApplication} from "../enrollment-application.interface";
-
+import {Section} from '../../../shared/model/term/section.interface';
+import {EnrollmentApplicationItem} from '../../../shared/model/term/enrollment-application-item.interface';
+import {EnrollmentApplicationAction} from '../../../shared/model/term/enrollment-application-action.enum';
+import {TermModuleState} from '../../index';
+import {EnrollmentApplicationActions} from '../enrollment-application.action';
+import {Store} from '@ngrx/store';
+import {MdDialogRef} from '@angular/material';
+import {EnrollmentApplication} from '../../../shared/model/term/enrollment-application.interface';
 
 @Component({
   selector: 'pams-enrollment-application-item-editor',
@@ -23,7 +22,6 @@ export class EnrollmentApplicationItemEditorDialog implements OnInit {
   private _enrollmentApplicationItem: EnrollmentApplicationItem;
   private _enrollmentApplication: EnrollmentApplication;
   private edit: boolean = false;
-
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -54,8 +52,8 @@ export class EnrollmentApplicationItemEditorDialog implements OnInit {
   }
 
   save(item: EnrollmentApplicationItem, isValid: boolean) {
-    console.log("enrollmentApplicationItem", item);
-    console.log("enrollmentApplication", this._enrollmentApplication);
+    console.log('enrollmentApplicationItem', item);
+    console.log('enrollmentApplication', this._enrollmentApplication);
     this.store.dispatch(this.actions.addEnrollmentApplicationItem(this._enrollmentApplication, item));
     this.dialog.close();
   }

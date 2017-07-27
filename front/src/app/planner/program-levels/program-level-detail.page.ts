@@ -3,11 +3,10 @@ import {Router, ActivatedRoute} from '@angular/router';
 import {Store} from '@ngrx/store';
 import {Observable} from 'rxjs';
 
-import {PlannerModuleState} from "../index";
+import {PlannerModuleState} from '../index';
 
-import {ProgramLevel} from "./program-level.interface";
-import {ProgramLevelActions} from "./program-level.action";
-
+import {ProgramLevel} from '../../shared/model/planner/program-level.interface';
+import {ProgramLevelActions} from './program-level.action';
 
 @Component({
   selector: 'pams-program-level-detail',
@@ -16,7 +15,7 @@ import {ProgramLevelActions} from "./program-level.action";
 
 export class ProgramLevelDetailPage implements OnInit {
 
-  private PROGRAM_LEVEL: string[] = "plannerModuleState.programLevel".split(".");
+  private PROGRAM_LEVEL: string[] = 'plannerModuleState.programLevel'.split('.');
   private programLevel$: Observable<ProgramLevel>;
 
   constructor(private router: Router,

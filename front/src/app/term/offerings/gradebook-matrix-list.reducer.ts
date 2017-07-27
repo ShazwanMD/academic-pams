@@ -1,8 +1,7 @@
-import { Action } from '@ngrx/store';
+import {Action} from '@ngrx/store';
 
-import { Section } from "../sections/section.interface";
-import {OfferingActions} from "./offering.action";
-import {GradebookMatrix} from "./gradebook-matrix.interface";
+import {OfferingActions} from './offering.action';
+import {GradebookMatrix} from '../../shared/model/term/gradebook-matrix.interface';
 
 export type GradebookMatrixListState = GradebookMatrix[];
 

@@ -1,13 +1,13 @@
 import {Component, OnInit} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 
-import {Store} from "@ngrx/store";
-import {Observable} from "rxjs";
+import {Store} from '@ngrx/store';
+import {Observable} from 'rxjs';
 
-import {Program} from "./program.interface";
-import {ProgramActions} from "./program.action";
+import {Program} from '../../shared/model/planner/program.interface';
+import {ProgramActions} from './program.action';
 
-import {PlannerModuleState} from "../index";
+import {PlannerModuleState} from '../index';
 
 @Component({
   selector: 'pams-program-detail',
@@ -16,7 +16,7 @@ import {PlannerModuleState} from "../index";
 
 export class ProgramDetailPage implements OnInit {
 
-  private PROGRAM: string[] = "plannerModuleState.program".split(".");
+  private PROGRAM: string[] = 'plannerModuleState.program'.split('.');
   private program$: Observable<Program>;
 
   constructor(private router: Router,
@@ -33,4 +33,4 @@ export class ProgramDetailPage implements OnInit {
     });
   }
 }
-
+

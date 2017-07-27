@@ -7,16 +7,10 @@ import {CovalentCoreModule} from '@covalent/core';
 import {TermService} from '../../../services';
 import {CommonService} from '../../../services';
 import {IdentityService} from '../../../services';
-//import {GradebookListComponent} from "./component/gradebook-list.component";
-import {GradebookActions} from "./gradebook.action";
-import {EffectsModule} from "@ngrx/effects";
-import {GradebookEffects} from "./gradebook.effect";
-import {GradebookDetailPage} from "./gradebook-detail.page";
-//import {GradebookComponent} from "./component/gradebook.component";
-//import {GradebookActionComponent} from "./component/gradebook-action.component";
-//import {GradebookEditorDialog} from "./dialog/gradebook-editor.dialog";
-//import {GradebookStatusSelectComponent} from "./component/gradebook-status-select.component";
-
+import {GradebookActions} from './gradebook.action';
+import {EffectsModule} from '@ngrx/effects';
+import {GradebookEffects} from './gradebook.effect';
+import {GradebookDetailPage} from './gradebook-detail.page';
 
 @NgModule({
   imports: [
@@ -29,22 +23,9 @@ import {GradebookDetailPage} from "./gradebook-detail.page";
   declarations: [
     // page
     GradebookDetailPage,
-
-    // component
-   // GradebookListComponent,
-   // GradebookComponent,
-   // GradebookActionComponent,
-   // GradebookStatusSelectComponent,
-
-  //dialog
-  //  GradebookEditorDialog,
   ],
-  exports: [
- // GradebookEditorDialog,
-      ],
-   entryComponents: [
-  //  GradebookEditorDialog,
-  ],
+  exports: [],
+  entryComponents: [],
 })
 
 export class GradebookSubModule {
@@ -61,5 +42,4 @@ export class GradebookSubModule {
     };
   }
 }
-
 

@@ -1,13 +1,13 @@
 import { StudyCenterListPage } from './study-centers/study-center-list.page';
 import { StudyCenter } from './study-centers/study-center.interface';
 import { StudyModeListPage } from './study-modes/study-mode-list.page';
-import { StudyMode } from './../common/study-modes/study-mode.interface';
+import { StudyMode } from '../shared/model/common/study-mode.interface';
 import { EthnicityCodeListPage } from './ethnicity-codes/ethnicity-code-list.page';
 import { NationalityCodeListPage } from './nationality-codes/nationality-code-list.page';
 import { ReligionCodeListPage } from './religion-codes/religion-code-list.page';
 import { GradeCodeListPage } from './grade-codes/grade-code-list.page';
 import { DunCodeListPage } from './dun-codes/dun-code-list.page';
-import { DunCode } from './../common/dun-codes/dun-code.interface';
+import { DunCode } from '../shared/model/common/dun-code.interface';
 import { ParliamentCodeListPage } from './parliament-codes/parliament-code-list.page';
 import { StateCodeListPage } from './state-codes/state-code-list.page';
 import {GenderCodeListPage} from './gender-codes/gender-code-list.page';

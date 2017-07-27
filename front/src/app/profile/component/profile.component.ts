@@ -1,27 +1,25 @@
-import { StateCode } from './../../common/state-codes/state-code.interface';
-import { AddressTypeSelectComponent } from './address-type-select.component';
-import { AddressType } from "../address-type.enum";
+import { StateCode } from '../../shared/model/common/state-code.interface';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Component, Input, EventEmitter, Output, ChangeDetectionStrategy, ViewContainerRef, OnInit } from '@angular/core';
 
-import { ProfileModuleState } from './../index';
-import { ProfileActions } from './../profile.action';
+import { ProfileModuleState } from '../index';
+import { ProfileActions } from '../profile.action';
 import { MdDialog, MdDialogConfig, MdDialogRef } from '@angular/material';
 
-import { Enrollment } from './../../term/enrollments/enrollment.interface';
-import { Contact } from './../contact.interface';
-import { Guardian } from './../guardian.interface';
-import { Guarantor } from './../guarantor.interface';
-import { Address } from './../address.interface';
-import { Student } from "../../identity/student.interface";
+import { Enrollment } from '../../shared/model/term/enrollment.interface';
+import { Contact } from '../../shared/model/profile/contact.interface';
+import { Guardian } from '../../shared/model/profile/guardian.interface';
+import { Guarantor } from '../../shared/model/profile/guarantor.interface';
+import { Address } from '../../shared/model/profile/address.interface';
+import { Student } from '../../shared/model/identity/student.interface';
 
-import { ContactEditorDialog } from "../dialog/contact-editor.dialog";
-import { DetailEditorDialog } from "../dialog/detail-editor.dialog";
-import { AddressEditorDialog } from './../dialog/address-editor.dialog';
-import { GuardianEditorDialog } from './../dialog/guardian-editor.dialog';
-import { GuarantorEditorDialog } from './../dialog/guarantor-editor.dialog';
+import { ContactEditorDialog } from '../dialog/contact-editor.dialog';
+import { DetailEditorDialog } from '../dialog/detail-editor.dialog';
+import { AddressEditorDialog } from '../dialog/address-editor.dialog';
+import { GuardianEditorDialog } from '../dialog/guardian-editor.dialog';
+import { GuarantorEditorDialog } from '../dialog/guarantor-editor.dialog';
 
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 
@@ -33,15 +31,6 @@ import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 
 export class ProfileComponent implements OnInit {
   private stateCode: StateCode;
-  //Input Param for Interface
-  @Input() student: Student;
-  @Input() addressess: Address[];
-  @Input() guarantors: Guarantor[];
-  @Input() guardians: Guardian[];
-  @Input() contacts: Contact[];
-  @Input() enrollments: Enrollment[];
-
-  //All Creator Dialog Ref
   private creatorDialogRef: MdDialogRef<DetailEditorDialog>;
   private contactCreatorDialogRef: MdDialogRef<ContactEditorDialog>;
   private guarantorCreatorDialogRef: MdDialogRef<GuarantorEditorDialog>;
@@ -53,9 +42,8 @@ export class ProfileComponent implements OnInit {
     { name: 'name', label: 'Name' },
     { name: 'phone', label: 'Phone' },
     { name: 'mobile', label: 'Mobile' },
-    { name: 'action', label: '' }
+    { name: 'action', label: '' },
   ];
-
   //Address
   private columnAddr: any[] = [
     { name: 'addressType', label: 'Address Type' },
@@ -65,7 +53,7 @@ export class ProfileComponent implements OnInit {
     { name: 'postcode', label: 'Postcode' },
     { name: 'stateCode.description', label: 'State' },
     { name: 'countryCode.description', label: 'Country' },
-    { name: 'action', label: 'Action' }
+    { name: 'action', label: 'Action' },
   ];
 
   //Guarantor
@@ -74,7 +62,7 @@ export class ProfileComponent implements OnInit {
     { name: 'identityNo', label: 'Identity No' },
     { name: 'name', label: 'Name' },
     { name: 'phone', label: 'Mobile No' },
-    { name: 'action', label: 'Action' }
+    { name: 'action', label: 'Action' },
   ];
 
   //Guardian
@@ -83,7 +71,7 @@ export class ProfileComponent implements OnInit {
     { name: 'identityNo', label: 'Identity No' },
     { name: 'name', label: 'Name' },
     { name: 'phone', label: 'Mobile No' },
-    { name: 'action', label: 'Action' }
+    { name: 'action', label: 'Action' },
   ];
 
   //Contact
@@ -91,8 +79,16 @@ export class ProfileComponent implements OnInit {
     { name: 'contactType', label: 'Contact Type' },
     { name: 'name', label: 'Name' },
     { name: 'phone', label: 'Mobile No' },
-    { name: 'action', label: 'Action' }
+    { name: 'action', label: 'Action' },
   ];
+
+  @Input() student: Student;
+  @Input() addressess: Address[];
+  @Input() guarantors: Guarantor[];
+  @Input() guardians: Guardian[];
+  @Input() contacts: Contact[];
+  @Input() enrollments: Enrollment[];
+
 
   //Constructor
   constructor(private router: Router,
@@ -119,13 +115,12 @@ export class ProfileComponent implements OnInit {
   /*STUDENT INFORMATION*/
   /*=========================================================================================*/
 
-  //EDIT STUDENT INFORMATION
   editStudent(): void {
-    this.showDialog(this.student)
+    this.showDialog(this.student);
   }
 
   private showDialog(student: Student): void {
-    console.log("edit");
+    console.log('edit');
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
     config.role = 'dialog';
@@ -134,8 +129,8 @@ export class ProfileComponent implements OnInit {
     config.position = { top: '0px' };
     this.creatorDialogRef = this.dialog.open(DetailEditorDialog, config);
     if (student) this.creatorDialogRef.componentInstance.student = this.student; // set
-    this.creatorDialogRef.afterClosed().subscribe(res => {
-      console.log("close dialog");
+    this.creatorDialogRef.afterClosed().subscribe((res) => {
+      console.log('close dialog');
     });
   }
 
@@ -144,7 +139,7 @@ export class ProfileComponent implements OnInit {
   /*=========================================================================================*/
   //ADD CONTACT DIALOG
   addContactDialog(): void {
-    console.log("edit");
+    console.log('edit');
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
     config.role = 'dialog';
@@ -153,7 +148,7 @@ export class ProfileComponent implements OnInit {
     config.position = { top: '0px' };
     this.contactCreatorDialogRef = this.dialog.open(ContactEditorDialog, config);
     this.contactCreatorDialogRef.componentInstance.student = this.student;
-    this.contactCreatorDialogRef.afterClosed().subscribe(res => {
+    this.contactCreatorDialogRef.afterClosed().subscribe((res) => {
     });
   }
 
@@ -170,13 +165,13 @@ export class ProfileComponent implements OnInit {
       this.contactCreatorDialogRef.componentInstance.contact = contact;
       this.contactCreatorDialogRef.componentInstance.student = this.student;
     }
-    this.contactCreatorDialogRef.afterClosed().subscribe(res => {
+    this.contactCreatorDialogRef.afterClosed().subscribe((res) => {
     });
   }
 
   //DELETE CONTACT
   deleteContact(contact: Contact): void {
-    this.store.dispatch(this.actions.deleteContact(this.student, contact))
+    this.store.dispatch(this.actions.deleteContact(this.student, contact));
     //console.log("ini->",contact);
   }
 
@@ -185,7 +180,7 @@ export class ProfileComponent implements OnInit {
   /*=========================================================================================*/
   //ADD ADDRESS DIALOG
   addAddressDialog(): void {
-    console.log("Ini utk Add Address student");
+    console.log('Ini utk Add Address student');
     console.log(this.stateCode);
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
@@ -195,8 +190,8 @@ export class ProfileComponent implements OnInit {
     config.position = { top: '0px' };
     this.addressCreatorDialogRef = this.dialog.open(AddressEditorDialog, config);
     this.addressCreatorDialogRef.componentInstance.student = this.student;
-    this.addressCreatorDialogRef.afterClosed().subscribe(res => {
-      console.log("close this dialog");
+    this.addressCreatorDialogRef.afterClosed().subscribe((res) => {
+      console.log('close this dialog');
     });
   }
 
@@ -213,13 +208,13 @@ export class ProfileComponent implements OnInit {
       this.addressCreatorDialogRef.componentInstance.address = address;
       this.addressCreatorDialogRef.componentInstance.student = this.student;
     }
-    this.addressCreatorDialogRef.afterClosed().subscribe(res => {
+    this.addressCreatorDialogRef.afterClosed().subscribe((res) => {
     });
   }
 
   //DELETE ADDRESS
   deleteAddress(contact: Contact): void {
-    this.store.dispatch(this.actions.deleteAddress(this.student, contact))
+    this.store.dispatch(this.actions.deleteAddress(this.student, contact));
   }
 
   /*=========================================================================================*/
@@ -236,7 +231,7 @@ export class ProfileComponent implements OnInit {
     config.position = { top: '0px' };
     this.guarantorCreatorDialogRef = this.dialog.open(GuarantorEditorDialog, config);
     this.guarantorCreatorDialogRef.componentInstance.student = this.student;
-    this.guarantorCreatorDialogRef.afterClosed().subscribe(res => {
+    this.guarantorCreatorDialogRef.afterClosed().subscribe((res) => {
       //console.log("close dialog");
     });
   }
@@ -257,14 +252,14 @@ export class ProfileComponent implements OnInit {
       //console.log(this.addressCreatorDialogRef.componentInstance);
       this.guarantorCreatorDialogRef.componentInstance.student = this.student;
     }
-    this.guarantorCreatorDialogRef.afterClosed().subscribe(res => {
+    this.guarantorCreatorDialogRef.afterClosed().subscribe((res) => {
       //console.log("close this dialog");
     });
   }
 
   //DELETE GUARANTOR
   deleteGuarantor(guarantor: Guarantor): void {
-    this.store.dispatch(this.actions.deleteGuarantor(this.student, guarantor))
+    this.store.dispatch(this.actions.deleteGuarantor(this.student, guarantor));
   }
 
   /*=========================================================================================*/
@@ -272,7 +267,7 @@ export class ProfileComponent implements OnInit {
   /*=========================================================================================*/
   //ADD GUARDIAN DIALOG
   addGuardianDialog(): void {
-    console.log("addGuardian");
+    console.log('addGuardian');
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
     config.role = 'dialog';
@@ -281,8 +276,8 @@ export class ProfileComponent implements OnInit {
     config.position = { top: '0px' };
     this.guardianCreatorDialogRef = this.dialog.open(GuardianEditorDialog, config);
     this.guardianCreatorDialogRef.componentInstance.student = this.student;
-    this.guardianCreatorDialogRef.afterClosed().subscribe(res => {
-      console.log("close dialog");
+    this.guardianCreatorDialogRef.afterClosed().subscribe((res) => {
+      console.log('close dialog');
     });
   }
 
@@ -299,12 +294,12 @@ export class ProfileComponent implements OnInit {
       this.guardianCreatorDialogRef.componentInstance.guardian = guardian;
       this.guardianCreatorDialogRef.componentInstance.student = this.student;
     }
-    this.guardianCreatorDialogRef.afterClosed().subscribe(res => {
+    this.guardianCreatorDialogRef.afterClosed().subscribe((res) => {
     });
   }
 
   //DELETE GUARDIAN
   deleteGuardian(guardian: Guardian): void {
-    this.store.dispatch(this.actions.deleteGuardian(this.student, guardian))
+    this.store.dispatch(this.actions.deleteGuardian(this.student, guardian));
   }
 }

@@ -1,6 +1,6 @@
 import {Action} from '@ngrx/store';
 import {CohortActions} from "./cohort.action";
-import {Cohort} from "./cohort.interface";
+import {Cohort} from "../../shared/model/planner/cohort.interface";
 
 export type CohortState = Cohort;
 

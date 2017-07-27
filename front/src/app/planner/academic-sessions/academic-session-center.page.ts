@@ -3,14 +3,12 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { MdDialogRef } from '@angular/material';
 import { MdDialogConfig } from '@angular/material';
 import { MdDialog } from '@angular/material';
-import { Store } from "@ngrx/store";
-import { Observable } from "rxjs";
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 
-import { IdentityService } from '../../../services';
-import { CommonService } from '../../../services';
-import { AcademicSession } from './academic-session.interface';
-import { AcademicSessionActions } from "./academic-session.action";
-import { PlannerModuleState } from "../index";
+import { AcademicSession } from '../../shared/model/planner/academic-session.interface';
+import { AcademicSessionActions } from './academic-session.action';
+import { PlannerModuleState } from '../index';
 import { AcademicSessionCreatorDialog } from './dialog/academic-session-creator.dialog';
 
 @Component({
@@ -19,7 +17,7 @@ import { AcademicSessionCreatorDialog } from './dialog/academic-session-creator.
 })
 export class AcademicSessionCenterPage implements OnInit {
 
-  private ACADEMIC_SESSIONS: string[] = "plannerModuleState.academicSessions".split(".");
+  private ACADEMIC_SESSIONS: string[] = 'plannerModuleState.academicSessions'.split('.');
   private academicSessions$: Observable<AcademicSession[]>;
 
   private creatorDialogRef: MdDialogRef<AcademicSessionCreatorDialog>;
@@ -31,7 +29,7 @@ export class AcademicSessionCenterPage implements OnInit {
     { name: 'endDate', label: 'End Date' },
     { name: 'semester', label: 'AcademicSemester' },
     { name: 'year', label: 'AcademicYear' },
-    { name: 'action', label: '' }
+    { name: 'action', label: '' },
   ];
 
   constructor(private router: Router,
@@ -48,7 +46,7 @@ export class AcademicSessionCenterPage implements OnInit {
   }
 
   viewAcademicSession(academicSession: AcademicSession) {
-    console.log("academicSession: " + academicSession.code);
+    console.log('academicSession: ' + academicSession.code);
     this.router.navigate(['/academic-session-detail', academicSession.code]);
   }
 
@@ -68,12 +66,11 @@ export class AcademicSessionCenterPage implements OnInit {
     config.height = '90%';
     config.position =  {top: '0px'};
     this.creatorDialogRef = this.dialog.open(AcademicSessionCreatorDialog, config);
-    if (code)this.creatorDialogRef.componentInstance.academicSession = code;  
-    
-    this.creatorDialogRef.afterClosed().subscribe(res => {
+    if (code)this.creatorDialogRef.componentInstance.academicSession = code;
+
+    this.creatorDialogRef.afterClosed().subscribe((res) => {
       // console.log ("close dialog");
     });
   }
 }
-
-
+

@@ -1,5 +1,5 @@
 import {Component, Input, ChangeDetectionStrategy} from '@angular/core';
-import {Curriculum} from '../curriculum.interface';
+import {Curriculum} from '../../../shared/model/planner/curriculum.interface';
 
 @Component({
   selector: 'pams-curriculum',
@@ -11,5 +11,5 @@ export class CurriculumComponent {
 
   @Input() curriculum: Curriculum;
 
-     
+
 }

@@ -22,7 +22,7 @@ import {
   GraduationApplicationTaskState,
   graduationApplicationTaskReducer
 } from "./graduation-applications/graduation-application-task.reducer";
-import {GraduationApplicationTask} from "./graduation-applications/graduation-application-task.interface";
+import {GraduationApplicationTask} from "../shared/model/graduation/graduation-application-task.interface";
 
 export interface GraduationModuleState {
   assignedGraduationApplicationTasks: GraduationApplicationTaskListState;

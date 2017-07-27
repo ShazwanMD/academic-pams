@@ -1,7 +1,12 @@
-import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy,  AfterViewInit} from '@angular/core';
-import { TdDataTableSortingOrder, TdDataTableService, ITdDataTableSortChangeEvent, IPageChangeEvent } from '@covalent/core';
-import {Appointment} from "../appointment.interface";
-import {MdSnackBar} from "@angular/material";
+import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, AfterViewInit} from '@angular/core';
+import {
+  TdDataTableSortingOrder,
+  TdDataTableService,
+  ITdDataTableSortChangeEvent,
+  IPageChangeEvent
+} from '@covalent/core';
+import {Appointment} from '../../../shared/model/term/appointment.interface';
+import {MdSnackBar} from '@angular/material';
 
 @Component({
   selector: 'pams-appointment-list',
@@ -10,9 +15,6 @@ import {MdSnackBar} from "@angular/material";
 })
 export class AppointmentListComponent implements AfterViewInit {
 
-  @Input() appointments: Appointment[];
-  @Output() view: EventEmitter<Appointment> = new EventEmitter<Appointment>();
-
   private columns: any[] = [
     {name: 'id', label: 'Id'},
     {name: 'staff.name', label: 'Staf Name'},
@@ -20,7 +22,7 @@ export class AppointmentListComponent implements AfterViewInit {
     {name: 'section.session.code', label: 'Academic Session'},
     {name: 'section.offering.course.title', label: 'Course Offering'},
     {name: 'section.offering.program.code', label: 'Program'},
-    {name: 'action', label: ''}
+    {name: 'action', label: ''},
   ];
   filteredData: any[];
   filteredTotal: number;
@@ -31,10 +33,13 @@ export class AppointmentListComponent implements AfterViewInit {
   sortBy: string = 'id';
   sortOrder: TdDataTableSortingOrder = TdDataTableSortingOrder.Descending;
 
-  
+  @Input() appointments: Appointment[];
+  @Output() view: EventEmitter<Appointment> = new EventEmitter<Appointment>();
+
   constructor(private _dataTableService: TdDataTableService,
-              private snackBar: MdSnackBar) {}
-  
+              private snackBar: MdSnackBar) {
+  }
+
   ngAfterViewInit(): void {
     this.filteredData = this.appointments;
     this.filteredTotal = this.appointments.length;
@@ -67,13 +72,13 @@ export class AppointmentListComponent implements AfterViewInit {
     newData = this._dataTableService.pageData(newData, this.fromRow, this.currentPage * this.pageSize);
     this.filteredData = newData;
   }
-  
+
   viewAppointment(appointment: Appointment): void {
-    console.log("Emitting appointment");
-    let snackBarRef = this.snackBar.open("Viewing appointment", "OK");
+    console.log('Emitting appointment');
+    let snackBarRef = this.snackBar.open('Viewing appointment', 'OK');
     snackBarRef.afterDismissed().subscribe(() => {
       this.view.emit(appointment);
     });
-  } 
+  }
 }
 

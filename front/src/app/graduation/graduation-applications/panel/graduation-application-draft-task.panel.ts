@@ -1,7 +1,7 @@
 import {Component, OnInit, ViewContainerRef, Input} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 import {MdSnackBar, MdDialog, MdDialogRef, MdDialogConfig} from "@angular/material";
-import {GraduationApplicationTask} from "../graduation-application-task.interface";
+import {GraduationApplicationTask} from "../../../shared/model/graduation/graduation-application-task.interface";
 import {GraduationApplicationActions} from "../graduation-application.action";
 import {Store} from "@ngrx/store";
 import {GraduationModuleState} from "../../index";

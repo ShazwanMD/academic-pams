@@ -1,6 +1,6 @@
 import {Action} from '@ngrx/store';
-import {EnrollmentActions} from "./enrollment.action";
-import {Enrollment} from "./enrollment.interface";
+import {EnrollmentActions} from './enrollment.action';
+import {Enrollment} from '../../shared/model/term/enrollment.interface';
 
 export type EnrollmentState = Enrollment;
 

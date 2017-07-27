@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {FormControl} from '@angular/forms';
-import {AssessmentType} from '../assessment-type.enum';
+import {AssessmentType} from '../../../shared/model/term/assessment-type.enum';
 
 @Component({
   selector: 'pams-assessment-type-select',
@@ -27,4 +27,4 @@ export class AssessmentTypeSelectComponent implements OnInit {
     this.innerFormControl.setValue(event, {emitEvent: false});
   }
 }
-
+

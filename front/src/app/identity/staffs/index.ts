@@ -9,19 +9,15 @@ import {TermService} from '../../../services';
 import {CommonService} from '../../../services';
 import {IdentityService} from '../../../services';
 
-import {StaffListComponent} from "./component/staff-list.component";
-import {StaffActions} from "./staff.action";
-import {EffectsModule} from "@ngrx/effects";
+import {StaffListComponent} from './component/staff-list.component';
+import {StaffActions} from './staff.action';
 
-import {StaffDetailPage} from "./staff-detail.page";
+import {StaffDetailPage} from './staff-detail.page';
 
-import {StaffComponent} from "./component/staff.component";
+import {StaffComponent} from './component/staff.component';
 
-//import {StaffEditorDialog} from "./dialog/staff-editor.dialog";
-import {IdentityModule} from "../../identity/index";
-//import { StaffActionComponent } from "./component/staff-action.component";
-import { StaffCenterPage } from "./staff-center.page";
-import { StaffAppointmentListComponent } from "./component/staff-appointment-list.component";
+import { StaffCenterPage } from './staff-center.page';
+import { StaffAppointmentListComponent } from './component/staff-appointment-list.component';
 
 @NgModule({
   imports: [
@@ -34,27 +30,19 @@ import { StaffAppointmentListComponent } from "./component/staff-appointment-lis
     // page
     StaffDetailPage,
     StaffCenterPage,
-   
+
     // component
     StaffListComponent,
     StaffComponent,
     StaffAppointmentListComponent,
-   
-   // StaffActionComponent,
-
-    //dialog
-    //StaffEditorDialog,
-
   ],
   exports: [
-   // StaffEditorDialog,
    StaffComponent,
    StaffCenterPage,
    StaffDetailPage,
    StaffAppointmentListComponent,
   ],
   entryComponents: [
-    //StaffEditorDialog,
   ],
 })
 

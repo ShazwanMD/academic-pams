@@ -1,10 +1,10 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Observable} from "rxjs";
-import {Store} from "@ngrx/store";
-import {FormControl} from "@angular/forms";
-import {FacultyActions} from "../faculty.action";
-import {Faculty} from "../faculty.interface";
-import {PlannerModuleState} from "../../index";
+import {Observable} from 'rxjs';
+import {Store} from '@ngrx/store';
+import {FormControl} from '@angular/forms';
+import {FacultyActions} from '../faculty.action';
+import {Faculty} from '../../../shared/model/planner/faculty.interface';
+import {PlannerModuleState} from '../../index';
 
 @Component({
   selector: 'pams-faculty-select',
@@ -13,7 +13,7 @@ import {PlannerModuleState} from "../../index";
 })
 export class FacultySelectComponent implements OnInit {
 
-  private FACULTIES: string[] = "plannerModuleState.faculties".split(".");
+  private FACULTIES: string[] = 'plannerModuleState.faculties'.split('.');
   private faculties$: Observable<Faculty[]>;
   @Input() placeholder: string;
   @Input() innerFormControl: FormControl;
@@ -31,5 +31,4 @@ export class FacultySelectComponent implements OnInit {
     this.innerFormControl.setValue(event, {emitEvent: false});
   }
 }
-
 

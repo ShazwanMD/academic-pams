@@ -1,11 +1,11 @@
 import {Component, OnInit, ChangeDetectionStrategy} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 
-import {Store} from "@ngrx/store";
-import {Observable} from "rxjs";
-import {ProfileActions} from "./profile.action";
-import {Student} from "../identity/student.interface";
-import {ProfileModuleState} from "./index";
+import {Store} from '@ngrx/store';
+import {Observable} from 'rxjs';
+import {ProfileActions} from './profile.action';
+import {Student} from '../shared/model/identity/student.interface';
+import {ProfileModuleState} from './index';
 
 @Component({
   selector: 'pams-profile-center',
@@ -14,7 +14,7 @@ import {ProfileModuleState} from "./index";
 
 export class ProfileCenterPage implements OnInit {
 
-  private STUDENTS: string[] = "profileModuleState.students".split(".");
+  private STUDENTS: string[] = 'profileModuleState.students'.split('.');
   private students$: Observable<Student[]>;
 
   constructor(private router: Router,
@@ -30,13 +30,13 @@ export class ProfileCenterPage implements OnInit {
   }
 
   viewProfile(student: Student) {
-    console.log("profile: " + student.identityNo);
+    console.log('profile: ' + student.identityNo);
     this.router.navigate(['/profiles-detail', student.identityNo]);
   }
 
   ngOnInit(): void {
-    console.log("find profiles");
+    console.log('find profiles');
     this.store.dispatch(this.actions.findStudents());
   }
 }
-
+

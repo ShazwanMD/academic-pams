@@ -6,7 +6,7 @@ import {Observable} from 'rxjs';
 import {Store} from '@ngrx/store';
 
 import {PlannerModuleState} from "../../index";
-import {AcademicSession} from "./../academic-session.interface";
+import {AcademicSession} from "../../../shared/model/planner/academic-session.interface";
 import {AcademicSessionActions} from "../academic-session.action";
 
 
@@ -18,10 +18,9 @@ import {AcademicSessionActions} from "../academic-session.action";
 
 export class AcademicSessionActionComponent {
 
+  private editorDialogRef: MdDialogRef<AcademicSessionEditorDialog>;
+
   @Input() academicSession: AcademicSession;
-
-  private editorDialogRef:MdDialogRef<AcademicSessionEditorDialog>;
-
 
   constructor(private actions: AcademicSessionActions,
               private store: Store<PlannerModuleState>,
@@ -31,14 +30,14 @@ export class AcademicSessionActionComponent {
 
   }
 
-   editSession(): void {
+  editSession(): void {
     console.log("edit");
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
     config.role = 'dialog';
     config.width = '60%';
     config.height = '80%';
-    config.position = { top: '0px' };
+    config.position = {top: '0px'};
     this.editorDialogRef = this.dialog.open(AcademicSessionEditorDialog, config);
     this.editorDialogRef.componentInstance.academicSession = this.academicSession;
 

@@ -1,5 +1,5 @@
 import {Pipe, PipeTransform} from '@angular/core';
-import {AcademicStanding} from "./academic-standing.enum";
+import {AcademicStanding} from '../../shared/model/term/academic-standing.enum';
 
 @Pipe({name: 'academicStandingPipe'})
 export class AcademicStandingPipe implements PipeTransform {

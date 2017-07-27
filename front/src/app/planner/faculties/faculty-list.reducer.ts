@@ -2,7 +2,7 @@ import {Action} from '@ngrx/store';
 import {Observable} from 'rxjs/Observable';
 
 import * as _ from 'lodash';
-import {Faculty} from "./faculty.interface";
+import {Faculty} from "../../shared/model/planner/faculty.interface";
 import {FacultyActions} from "./faculty.action";
 
 export type FacultyListState = Faculty[];

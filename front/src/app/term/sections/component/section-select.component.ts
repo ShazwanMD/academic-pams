@@ -1,11 +1,10 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Observable} from "rxjs";
-import {Store} from "@ngrx/store";
-import {FormControl} from "@angular/forms";
-import {SectionActions} from "../section.action";
-import {Section} from "../section.interface";
-import {TermModuleState} from "../../index";
-
+import {Observable} from 'rxjs';
+import {Store} from '@ngrx/store';
+import {FormControl} from '@angular/forms';
+import {SectionActions} from '../section.action';
+import {Section} from '../../../shared/model/term/section.interface';
+import {TermModuleState} from '../../index';
 
 @Component({
   selector: 'pams-section-select',
@@ -14,7 +13,7 @@ import {TermModuleState} from "../../index";
 })
 export class SectionSelectComponent implements OnInit {
 
-  private SECTIONS: string[] = "termModuleState.sections".split(".");
+  private SECTIONS: string[] = 'termModuleState.sections'.split('.');
   private sections$: Observable<Section[]>;
   @Input() placeholder: string;
   @Input() innerFormControl: FormControl;
@@ -32,4 +31,4 @@ export class SectionSelectComponent implements OnInit {
     this.innerFormControl.setValue(event, {emitEvent: false});
   }
 }
-
+

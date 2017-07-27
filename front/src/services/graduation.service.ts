@@ -2,9 +2,9 @@ import {Injectable} from '@angular/core';
 import {Response} from '@angular/http';
 import {HttpInterceptorService} from '@covalent/http';
 import {Observable} from 'rxjs/Observable';
-import {GraduationApplication} from '../app/graduation/graduation-applications/graduation-application.interface';
+import {GraduationApplication} from '../app/shared/model/graduation/graduation-application.interface';
 import {environment} from '../environments/environment';
-import {GraduationApplicationTask} from '../app/graduation/graduation-applications/graduation-application-task.interface';
+import {GraduationApplicationTask} from '../app/shared/model/graduation/graduation-application-task.interface';
 
 @Injectable()
 export class GraduationService {

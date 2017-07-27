@@ -1,7 +1,7 @@
-import { GpaCalculateDialog } from './../dialog/gpa-calculate.dialog';
-import { GradebookCalculateDialog } from './../dialog/gradebook-calculate.dialog';
+import { GpaCalculateDialog } from '../dialog/gpa-calculate.dialog';
+import { GradebookCalculateDialog } from '../dialog/gradebook-calculate.dialog';
 import { Component, Input, EventEmitter, Output, ChangeDetectionStrategy, ViewContainerRef } from '@angular/core';
-import { Offering } from '../offering.interface';
+import { Offering } from '../../../shared/model/term/offering.interface';
 import { OfferingUpdateDialog } from '../dialog/offering-update.dialog';
 import { MdDialog, MdDialogConfig, MdDialogRef, MdSnackBar } from '@angular/material';
 import { OfferingActions } from '../offering.action';
@@ -15,11 +15,11 @@ import { TermModuleState } from '../../index';
 })
 export class LecturerOfferingActionComponent {
 
-  @Input() offering: Offering;
   private editorDialogRef: MdDialogRef<OfferingUpdateDialog>;
   private GradebookCalculateDialog: MdDialogRef<GradebookCalculateDialog>;
   private GpaCalculateDialog: MdDialogRef<GpaCalculateDialog>;
 
+  @Input() offering: Offering;
 
   constructor(private actions: OfferingActions,
     private store: Store<TermModuleState>,

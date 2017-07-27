@@ -2,7 +2,7 @@ import {Action} from '@ngrx/store';
 import {Observable} from 'rxjs/Observable';
 
 import * as _ from 'lodash';
-import {Cohort} from "./cohort.interface";
+import {Cohort} from "../../shared/model/planner/cohort.interface";
 import {CohortActions} from "./cohort.action";
 
 export type CohortListState = Cohort[];

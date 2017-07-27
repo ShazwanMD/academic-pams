@@ -11,21 +11,19 @@ import {CovalentCoreModule} from '@covalent/core';
 import {PlannerService} from '../../../services';
 import {CommonService} from '../../../services';
 import {IdentityService} from '../../../services';
-import {CourseListComponent} from "./component/course-list.component";
-import {CourseActions} from "./course.action";
-import {EffectsModule} from "@ngrx/effects";
-import {CourseEffects} from "./course.effect";
-import {CourseComponent} from "./component/course.component";
-import {CourseDetailPage} from "./course-detail.page";
-import {CourseEditorDialog} from "./dialog/course-editor.dialog";
-import {CourseCreatorDialog} from "./dialog/course-creator.dialog";
-import {CourseSelectComponent} from "./component/course-select.component";
-import {FacultySubModule} from "../faculties/index";
-import {CourseActionComponent} from "./component/course-action.component";
-import {CourseStatusComponent} from "./component/course-status.component";
-import {CourseStatusSelectComponent} from "./component/course-status-select.component";
-
-
+import {CourseListComponent} from './component/course-list.component';
+import {CourseActions} from './course.action';
+import {EffectsModule} from '@ngrx/effects';
+import {CourseEffects} from './course.effect';
+import {CourseComponent} from './component/course.component';
+import {CourseDetailPage} from './course-detail.page';
+import {CourseEditorDialog} from './dialog/course-editor.dialog';
+import {CourseCreatorDialog} from './dialog/course-creator.dialog';
+import {CourseSelectComponent} from './component/course-select.component';
+import {FacultySubModule} from '../faculties/index';
+import {CourseActionComponent} from './component/course-action.component';
+import {CourseStatusComponent} from './component/course-status.component';
+import {CourseStatusSelectComponent} from './component/course-status-select.component';
 
 @NgModule({
   imports: [
@@ -36,7 +34,7 @@ import {CourseStatusSelectComponent} from "./component/course-status-select.comp
     FacultySubModule.forRoot(),
     EffectsModule.run(CourseEffects),
   ],
-  
+
   declarations: [
 
     // page
@@ -56,7 +54,7 @@ import {CourseStatusSelectComponent} from "./component/course-status-select.comp
     // dialog
     CourseEditorDialog,
     CourseCreatorDialog,
-    
+
   ],
   exports: [
     CourseSelectComponent,
@@ -68,7 +66,7 @@ import {CourseStatusSelectComponent} from "./component/course-status-select.comp
     CourseClassificationComponent,
 
   ],
-  
+
    entryComponents: [
     CourseCreatorDialog,
     CourseEditorDialog,
@@ -89,5 +87,4 @@ export class CourseSubModule {
     };
   }
 }
-
-
+

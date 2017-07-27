@@ -1,4 +1,4 @@
-import { GradeCode } from './../../common/grade-codes/grade-code.interface';
+import { GradeCode } from '../../shared/model/common/grade-code.interface';
 import {SetupActions} from './../setup.action';
 import {Action} from '@ngrx/store';
 

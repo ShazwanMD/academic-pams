@@ -1,5 +1,5 @@
 import {Pipe, PipeTransform} from '@angular/core';
-import {AssessmentType} from "./assessment-type.enum";
+import {AssessmentType} from '../../shared/model/term/assessment-type.enum';
 
 @Pipe({name: 'assessmentTypePipe'})
 export class AssessmentTypePipe implements PipeTransform {

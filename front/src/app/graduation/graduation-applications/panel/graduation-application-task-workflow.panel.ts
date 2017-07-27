@@ -3,7 +3,7 @@ import {
   ComponentFactoryResolver, ComponentRef, Input, AfterViewInit
 } from '@angular/core';
 import {Observable} from "rxjs";
-import {GraduationApplicationTask} from "../graduation-application-task.interface";
+import {GraduationApplicationTask} from "../../../shared/model/graduation/graduation-application-task.interface";
 import {GraduationApplicationDraftTaskPanel} from "./graduation-application-draft-task.panel";
 import {FlowState} from "../../../core/flow-state.enum";
 import {GraduationApplicationRegisterTaskPanel} from "./graduation-application-register-task.panel";

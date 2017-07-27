@@ -1,8 +1,6 @@
 import { OnInit, Input, Component } from '@angular/core';
-import { AcademicSemester } from '../academic-semester-type.enum';
+import { AcademicSemester } from '../../../shared/model/planner/academic-semester-type.enum';
 import { FormControl } from '@angular/forms';
-
-
 
 @Component({
     selector: 'pams-academic-semester-select',
@@ -21,7 +19,7 @@ export class AcademicSemesterSelectComponent implements OnInit {
                 this.semesters.push(AcademicSemester[n.toString()]);
         }
     }
-    
+
     ngOnInit() {
   }
 

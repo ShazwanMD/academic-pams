@@ -1,16 +1,14 @@
-import {Faculty} from '../../faculties/faculty.interface';
-import {Program} from './../program.interface';
+import {Faculty} from '../../../shared/model/planner/faculty.interface';
+import {Program} from '../../../shared/model/planner/program.interface';
 import {Component, ViewContainerRef, OnInit} from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
 import {FormBuilder, Validators} from '@angular/forms';
 import {Router, ActivatedRoute} from '@angular/router';
-import {ProgramActions} from "../program.action";
-import {Store} from "@ngrx/store";
-import {PlannerModuleState} from "../../index";
-import {MdDialogRef} from "@angular/material";
-import {ProgramStatus} from "../program-status.enum";
-import {ProgramLevel} from "../../program-levels/program-level.interface";
-import { facultyListReducer } from '../../faculties/faculty-list.reducer';
+import {ProgramActions} from '../program.action';
+import {Store} from '@ngrx/store';
+import {PlannerModuleState} from '../../index';
+import {MdDialogRef} from '@angular/material';
+import {ProgramStatus} from '../../../shared/model/planner/program-status.enum';
 
 @Component({
   selector: 'pams-program-creator',
@@ -47,7 +45,7 @@ export class ProgramCreatorDialog implements OnInit {
       faculty: ['', Validators.required],
       level: ['', Validators.required],
       //status: ProgramStatus.INACTIVATED,
-      
+
       //faculty: <Faculty>{},
       //level: <ProgramLevel>{},
     });
@@ -56,10 +54,10 @@ export class ProgramCreatorDialog implements OnInit {
   }
 
   submit(program: Program, isValid: boolean) {
-       console.log("adding program");
-        if (!program.id) this.store.dispatch(this.actions.saveProgram(program));
+       console.log('adding program');
+       if (!program.id) this.store.dispatch(this.actions.saveProgram(program));
         else this.store.dispatch(this.actions.updateProgram(program));
-        this.dialog.close();
-        console.log(program);
+       this.dialog.close();
+       console.log(program);
   }
 }

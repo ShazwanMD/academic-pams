@@ -1,17 +1,19 @@
 import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, AfterViewInit} from '@angular/core';
-import {Offering} from "../../offerings/offering.interface";
-import { TdDataTableSortingOrder, TdDataTableService, ITdDataTableSortChangeEvent, IPageChangeEvent } from '@covalent/core';
-import { MdSnackBar } from "@angular/material";
+import {Offering} from '../../../shared/model/term/offering.interface';
+import {
+  TdDataTableSortingOrder,
+  TdDataTableService,
+  ITdDataTableSortChangeEvent,
+  IPageChangeEvent
+} from '@covalent/core';
+import {MdSnackBar} from '@angular/material';
 
 @Component({
   selector: 'pams-student-offering-list',
   templateUrl: './student-offering-list.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class StudentOfferingListComponent implements AfterViewInit  {
-
-  @Input() offerings: Offering[];
-  @Output() view = new EventEmitter<Offering>();
+export class StudentOfferingListComponent implements AfterViewInit {
 
   private columns: any[] = [
     {name: 'id', label: 'Id'},
@@ -20,9 +22,9 @@ export class StudentOfferingListComponent implements AfterViewInit  {
     {name: 'program.code', label: 'Program'},
     {name: 'capacity.number', label: 'Capacity'},
     {name: 'course.credit', label: 'Credit'},
-    {name: 'action', label: ''}
+    {name: 'action', label: ''},
   ];
-  
+
   filteredData: any[];
   filteredTotal: number;
   searchTerm: string = '';
@@ -32,10 +34,13 @@ export class StudentOfferingListComponent implements AfterViewInit  {
   sortBy: string = 'course.code';
   sortOrder: TdDataTableSortingOrder = TdDataTableSortingOrder.Descending;
 
-  
+  @Input() offerings: Offering[];
+  @Output() view = new EventEmitter<Offering>();
+
   constructor(private _dataTableService: TdDataTableService,
-          private snackBar: MdSnackBar ) {}
-  
+              private snackBar: MdSnackBar) {
+  }
+
   ngAfterViewInit(): void {
     this.filteredData = this.offerings;
     this.filteredTotal = this.offerings.length;
@@ -68,13 +73,12 @@ export class StudentOfferingListComponent implements AfterViewInit  {
     newData = this._dataTableService.pageData(newData, this.fromRow, this.currentPage * this.pageSize);
     this.filteredData = newData;
   }
-  
+
   viewOffering(offering: Offering): void {
-      console.log("Emitting offering");
-      let snackBarRef = this.snackBar.open("Viewing offering info", "OK");
-      snackBarRef.afterDismissed().subscribe(() => {
-        this.view.emit(offering);
-      });
-    } 
-  
+    console.log('Emitting offering');
+    let snackBarRef = this.snackBar.open('Viewing offering info', 'OK');
+    snackBarRef.afterDismissed().subscribe(() => {
+      this.view.emit(offering);
+    });
+  }
 }

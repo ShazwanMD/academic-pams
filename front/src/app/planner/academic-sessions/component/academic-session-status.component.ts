@@ -1,6 +1,6 @@
 import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy} from '@angular/core';
-import {AcademicSession} from "../academic-session.interface";
-import { AcademicSessionStatus } from "../academic-session-status.enum";
+import {AcademicSession} from '../../../shared/model/planner/academic-session.interface';
+import { AcademicSessionStatus } from '../../../shared/model/planner/academic-session-status.enum';
 
 @Component({
   selector: 'pams-academic-session-status',

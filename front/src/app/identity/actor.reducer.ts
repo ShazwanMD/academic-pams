@@ -1,6 +1,6 @@
 import {Action} from '@ngrx/store';
-import {Actor} from "./actor.interface";
-import {ActorActions} from "./actor.action";
+import {Actor} from '../shared/model/identity/actor.interface';
+import {ActorActions} from './actor.action';
 
 export type ActorState = Actor;
 

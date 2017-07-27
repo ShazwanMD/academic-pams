@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Offering } from '../offering.interface';
+import { Offering } from '../../../shared/model/term/offering.interface';
 import { OfferingActions } from '../offering.action';
 import { MdDialogRef, MdSnackBar } from '@angular/material';
 import { Store } from '@ngrx/store';
-import { Course } from '../../../planner/courses/course.interface';
-import { Program } from '../../../planner/programs/program.interface';
+import { Course } from '../../../shared/model/planner/course.interface';
+import { Program } from '../../../shared/model/planner/program.interface';
 import { TermModuleState } from '../../index';
-import { Observable } from "rxjs/Observable";
+import { Observable } from 'rxjs/Observable';
 
 @Component( {
     selector: 'pams-offering-editor',
@@ -22,11 +22,8 @@ export class OfferingEditorDialog implements OnInit {
     private _course: Course;
     private _offering: Offering;
     private str: string;
-   // private isOfferingExists: boolean;
-
     private OFFERINGS: string[] = 'termModuleState.offerings'.split( '.' );
     private offerings$: Observable<Offering[]>;
-   
 
     constructor( private router: Router,
         private route: ActivatedRoute,
@@ -36,7 +33,6 @@ export class OfferingEditorDialog implements OnInit {
         private actions: OfferingActions,
         public dialog: MdDialogRef<OfferingEditorDialog> ) {
         this.offerings$ = this.store.select( ...this.OFFERINGS );
-        
 
     }
 
@@ -53,8 +49,7 @@ export class OfferingEditorDialog implements OnInit {
             program: [undefined, Validators.required],
         } );
     }
-  
-    
+
     submit( offering: Offering, isValid: boolean ): void {
         // workaround
         this._program = offering.program;
@@ -70,12 +65,12 @@ export class OfferingEditorDialog implements OnInit {
         //console.log(this.actions.isOfferingExists(offering));
 
         //still working on to compare with db
-        if ( offering.canonicalCode == "MGSEB-MBA-GST5023" ) {
-           
+        if ( offering.canonicalCode == 'MGSEB-MBA-GST5023' ) {
+
             //if (this.isOfferingExists == true){
-            console.log( "DATA ALREADY EXISTED", offering.canonicalCode, "Alert!" );
-            console.log( offering.canonicalCode );         
-            
+            console.log( 'DATA ALREADY EXISTED', offering.canonicalCode, 'Alert!' );
+            console.log( offering.canonicalCode );
+
             let snackBarRef = this.snackBar.open( 'Offering is already existed!', 'OK' );
             this.dialog.close();
 

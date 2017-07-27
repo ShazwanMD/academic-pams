@@ -3,7 +3,7 @@ import {Observable} from 'rxjs';
 import {Store} from '@ngrx/store';
 import {FormControl} from '@angular/forms';
 import {ProgramActions} from '../program.action';
-import {Program} from '../program.interface';
+import {Program} from '../../../shared/model/planner/program.interface';
 import {PlannerModuleState} from '../../index';
 
 @Component({
@@ -32,4 +32,4 @@ export class ProgramSelectComponent implements OnInit {
     this.innerFormControl.setValue(event, {emitEvent: false});
   }
 }
-
+

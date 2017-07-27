@@ -1,7 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {FormControl} from "@angular/forms";
-import {ContactType} from "../contact-type.enum";
-
+import {FormControl} from '@angular/forms';
+import {ContactType} from '../../shared/model/profile/contact-type.enum';
 
 @Component({
   selector: 'pams-contact-type-select',
@@ -14,8 +13,8 @@ export class ContactTypeSelectComponent implements OnInit {
   @Input() innerFormControl: FormControl;
 
   constructor() {
-    for (var n in ContactType) {
-      if(typeof ContactType[n] === 'string')
+    for (let n in ContactType) {
+      if (typeof ContactType[n] === 'string')
         this.contactTypes.push(ContactType[n.toString()]);
     }
   }
@@ -27,4 +26,4 @@ export class ContactTypeSelectComponent implements OnInit {
     this.innerFormControl.setValue(event, {emitEvent: false});
   }
 }
-
+

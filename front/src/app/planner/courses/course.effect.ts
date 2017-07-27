@@ -4,7 +4,7 @@ import {CourseActions} from "./course.action";
 import {PlannerService} from "../../../services/planner.service";
 import {Store} from "@ngrx/store";
 import {PlannerModuleState} from "../index";
-import {Course} from './course.interface';
+import {Course} from '../../shared/model/planner/course.interface';
 @Injectable()
 export class CourseEffects {
 

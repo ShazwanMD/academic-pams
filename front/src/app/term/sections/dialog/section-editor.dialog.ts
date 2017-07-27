@@ -3,9 +3,9 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Store} from '@ngrx/store';
 import {MdDialogRef} from '@angular/material';
 import {TermModuleState} from '../../index';
-import {Section} from '../section.interface';
+import {Section} from '../../../shared/model/term/section.interface';
 import {SectionActions} from '../section.action';
-import {Offering} from '../../offerings/offering.interface';
+import {Offering} from '../../../shared/model/term/offering.interface';
 import {Router, ActivatedRoute} from '@angular/router';
 
 @Component({
@@ -43,7 +43,7 @@ export class SectionEditorDialog implements OnInit {
   ngOnInit(): void {
     this.editorForm = this.formBuilder.group({
       id: undefined,
-      code: '', 
+      code: '',
       canonicalCode: '',
       capacity: ['', Validators.required],
       ordinal: ['', Validators.required],

@@ -4,10 +4,10 @@ import {FormBuilder} from '@angular/forms';
 import {Store} from '@ngrx/store';
 import {MdDialogRef} from '@angular/material';
 
-import {AcademicSession} from '../academic-session.interface';
+import {AcademicSession} from '../../../shared/model/planner/academic-session.interface';
 import {PlannerModuleState} from '../../index';
 import {AcademicSessionActions} from '../academic-session.action';
-import {AcademicSemester} from '../academic-semester-type.enum';
+import {AcademicSemester} from '../../../shared/model/planner/academic-semester-type.enum';
 
 @Component({
   selector: 'pams-academic-session-editor',

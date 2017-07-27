@@ -1,6 +1,6 @@
 import { Action } from '@ngrx/store';
 import { AdmissionApplicationActions } from './admission-application.action';
-import { AdmissionApplicationTask } from './admission-application-task.interface';
+import { AdmissionApplicationTask } from '../../shared/model/term/admission-application-task.interface';
 
 export type AdmissionApplicationTaskListState = AdmissionApplicationTask[];
 

@@ -3,11 +3,11 @@ import {Response} from '@angular/http';
 import {HttpInterceptorService} from '@covalent/http';
 import {Http} from '@angular/http';
 import {Observable} from 'rxjs';
-import {Actor} from '../app/identity/actor.interface';
+import {Actor} from '../app/shared/model/identity/actor.interface';
 import {environment} from '../environments/environment';
-import {Staff} from '../app/identity/staff.interface';
-import {Student} from '../app/identity/student.interface';
-import { Appointment } from '../app/term/appointments/appointment.interface';
+import {Staff} from '../app/shared/model/identity/staff.interface';
+import {Student} from '../app/shared/model/identity/student.interface';
+import { Appointment } from '../app/shared/model/term/appointment.interface';
 
 @Injectable()
 export class IdentityService {

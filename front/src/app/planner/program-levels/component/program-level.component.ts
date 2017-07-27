@@ -2,7 +2,7 @@ import {Observable} from 'rxjs';
 import {Store} from '@ngrx/store';
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output, ViewContainerRef, OnInit} from '@angular/core';
 import {MdDialogRef, MdDialog, MdDialogConfig} from '@angular/material';
-import {ProgramLevel} from "../program-level.interface";
+import {ProgramLevel} from '../../../shared/model/planner/program-level.interface';
 import {ProgramLevelEditorDialog} from '../dialog/program-level-editor.dialog';
 import {Router, ActivatedRoute} from '@angular/router';
 import {ProgramLevelActions} from '../program-level.action';
@@ -16,21 +16,19 @@ import {FormControl} from '@angular/forms';
 })
 export class ProgramLevelComponent implements OnInit {
 
+  private editorDialogRef: MdDialogRef<ProgramLevelEditorDialog>;
+  private PROGRAM_LEVEL: string[] = 'plannerModuleState.programLevel'.split('.');
+  private programLevel$: Observable<ProgramLevel>;
+  private columns: any[] = [
+    {name: 'code', label: 'Code'},
+    {name: 'description', label: 'Description'},
+    {name: 'action', label: ''},
+  ];
+
   @Input() programLevel: ProgramLevel;
   @Input() placeholder: string;
   @Input() innerFormControl: FormControl;
   @Output() view = new EventEmitter<ProgramLevel>();
-
-  private editorDialogRef: MdDialogRef<ProgramLevelEditorDialog>;
-
-  private PROGRAM_LEVEL: string[] = "plannerModuleState.programLevel".split(".");
-  private programLevel$: Observable<ProgramLevel>;
-
-  private columns: any[] = [
-    {name: 'code', label: 'Code'},
-    {name: 'description', label: 'Description'},
-    {name: 'action', label: ''}
-  ];
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -49,7 +47,7 @@ export class ProgramLevelComponent implements OnInit {
   }
 
   editLevel(): void {
-    console.log("edit");
+    console.log('edit');
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
     config.role = 'dialog';
@@ -60,8 +58,8 @@ export class ProgramLevelComponent implements OnInit {
     this.editorDialogRef.componentInstance.programLevel = this.programLevel;
 
     // set
-    this.editorDialogRef.afterClosed().subscribe(res => {
-      console.log("close dialog");
+    this.editorDialogRef.afterClosed().subscribe((res) => {
+      console.log('close dialog');
     });
   }
 

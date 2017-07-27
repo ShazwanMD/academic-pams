@@ -1,5 +1,14 @@
-import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, AfterViewInit, OnChanges, SimpleChange} from '@angular/core';
-import {Offering} from '../offering.interface';
+import {
+  Component,
+  Input,
+  EventEmitter,
+  Output,
+  ChangeDetectionStrategy,
+  AfterViewInit,
+  OnChanges,
+  SimpleChange
+} from '@angular/core';
+import {Offering} from '../../../shared/model/term/offering.interface';
 import {
   TdDataTableSortingOrder,
   TdDataTableService,
@@ -13,7 +22,7 @@ import {MdSnackBar} from '@angular/material';
   templateUrl: './offering-list.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class OfferingListComponent implements AfterViewInit,OnChanges {
+export class OfferingListComponent implements AfterViewInit, OnChanges {
 
   private columns: any[] = [
     {name: 'id', label: 'Id'},
@@ -24,7 +33,6 @@ export class OfferingListComponent implements AfterViewInit,OnChanges {
     {name: 'program.code', label: 'Program'},
     {name: 'course.faculty.name', label: 'Faculty'},
     {name: 'program.level.code', label: 'Level'},
-   
     {name: 'action', label: ''},
   ];
 
@@ -43,15 +51,15 @@ export class OfferingListComponent implements AfterViewInit,OnChanges {
   constructor(private _dataTableService: TdDataTableService,
               private snackBar: MdSnackBar) {
   }
-  
-  ngOnChanges(changes: {[ propName: string]: SimpleChange}) {
-      console.log("changes",changes,changes['offerings']);
-        if (changes['offerings']){
-        this.filteredData = changes['offerings'].currentValue; 
-        this.filteredTotal = changes['offerings'].currentValue.length;
-        this.filter();
-      }
+
+  ngOnChanges(changes: { [ propName: string]: SimpleChange }) {
+    console.log("changes", changes, changes['offerings']);
+    if (changes['offerings']) {
+      this.filteredData = changes['offerings'].currentValue;
+      this.filteredTotal = changes['offerings'].currentValue.length;
+      this.filter();
     }
+  }
 
   ngAfterViewInit(): void {
     this.filteredData = this.offerings;

@@ -1,6 +1,6 @@
 import {Action} from '@ngrx/store';
-import {FacultyActions} from "./faculty.action";
-import {Faculty} from "./faculty.interface";
+import {FacultyActions} from './faculty.action';
+import {Faculty} from '../../shared/model/planner/faculty.interface';
 
 export type FacultyState = Faculty;
 

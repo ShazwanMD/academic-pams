@@ -2,10 +2,10 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Observable} from 'rxjs';
 import {Store} from '@ngrx/store';
 import {FormControl} from '@angular/forms';
-import {Actor} from '../actor.interface';
+import {Actor} from '../../shared/model/identity/actor.interface';
 import {IdentityModuleState} from '../index';
 import {StudentActions} from '../student.action';
-import {Student} from '../student.interface';
+import {Student} from '../../shared/model/identity/student.interface';
 
 @Component({
   selector: 'pams-student-select',

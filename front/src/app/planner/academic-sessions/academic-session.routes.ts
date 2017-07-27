@@ -1,8 +1,7 @@
 import { Routes, RouterModule } from '@angular/router';
 
-import { AcademicSessionCenterPage } from "./academic-session-center.page";
-import { AcademicSessionDetailPage } from "./academic-session-detail.page";
-
+import { AcademicSessionCenterPage } from './academic-session-center.page';
+import { AcademicSessionDetailPage } from './academic-session-detail.page';
 
 export const AcademicSessionRoutes: Routes = [
     { path: 'planner/academic-sessions', component: AcademicSessionCenterPage },

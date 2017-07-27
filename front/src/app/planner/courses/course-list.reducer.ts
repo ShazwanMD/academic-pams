@@ -2,7 +2,7 @@ import { Action } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 
 import * as _ from 'lodash';
-import { Course } from "./course.interface";
+import { Course } from "../../shared/model/planner/course.interface";
 import { CourseActions } from "./course.action";
 
 export type CourseListState = Course[];

@@ -9,19 +9,17 @@ import {TermService} from '../../../services';
 import {CommonService} from '../../../services';
 import {IdentityService} from '../../../services';
 
-import {AppointmentListComponent} from "./component/appointment-list.component";
-import {AppointmentActions} from "./appointment.action";
-import {EffectsModule} from "@ngrx/effects";
-//import {AppointmentEffects} from "./appointment.effect";
-import {AppointmentDetailPage} from "./appointment-detail.page";
-import {StudentAppointmentDetailPage} from "./student-appointment-detail.page";
-import {AppointmentComponent} from "./component/appointment.component";
-import {AppointmentStatusSelectComponent} from "./component/appointment-status-select.component";
-import {AppointmentEditorDialog} from "./dialog/appointment-editor.dialog";
-import {SectionSubModule} from "../sections/index";
-import {IdentityModule} from "../../identity/index";
-import { AppointmentActionComponent } from "./component/appointment-action.component";
-import { AppointmentCenterPage } from "./appointment-center.page";
+import {AppointmentListComponent} from './component/appointment-list.component';
+import {AppointmentActions} from './appointment.action';
+import {AppointmentDetailPage} from './appointment-detail.page';
+import {StudentAppointmentDetailPage} from './student-appointment-detail.page';
+import {AppointmentComponent} from './component/appointment.component';
+import {AppointmentStatusSelectComponent} from './component/appointment-status-select.component';
+import {AppointmentEditorDialog} from './dialog/appointment-editor.dialog';
+import {SectionSubModule} from '../sections/index';
+import {IdentityModule} from '../../identity/index';
+import { AppointmentActionComponent } from './component/appointment-action.component';
+import { AppointmentCenterPage } from './appointment-center.page';
 
 @NgModule({
   imports: [
@@ -31,14 +29,12 @@ import { AppointmentCenterPage } from "./appointment-center.page";
     CovalentCoreModule.forRoot(),
     SectionSubModule.forRoot(),
     IdentityModule.forRoot(),
-    //EffectsModule.run(AppointmentEffects)
   ],
   declarations: [
     // page
     AppointmentDetailPage,
     AppointmentCenterPage,
     StudentAppointmentDetailPage,
-    
 
     // component
     AppointmentListComponent,

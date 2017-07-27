@@ -7,10 +7,9 @@ import {Effect, Actions} from '@ngrx/effects';
 import {OfferingActions} from './offering.action';
 import {TermService} from '../../../services/term.service';
 import {from} from 'rxjs/observable/from';
-import {Observable} from 'rxjs/Observable';
 import {Store} from '@ngrx/store';
 import {TermModuleState} from '../index';
-import {Offering} from './offering.interface';
+import {Offering} from '../../shared/model/term/offering.interface';
 import {NotificationService} from '../../../services/notification.service';
 
 @Injectable()

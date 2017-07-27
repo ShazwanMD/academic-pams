@@ -1,11 +1,11 @@
-import { CountryCode } from './country-codes/country-code.interface';
+import {CountryCode} from '../shared/model/common/country-code.interface';
 import {StudyModeSelectComponent} from './study-modes/component/study-mode-select.component';
 import {RaceCodeSelectComponent} from './race-codes/component/race-code-select.component';
 import {StateCodeSelectComponent} from './state-codes/component/state-code-select.component';
 import {CountryCodeSelectComponent} from './country-codes/component/country-code-select.component';
-import {CommonActions} from './gender-codes/common.action';
+import {CommonActions} from './common.action';
 import {GenderCodeSelectComponent} from './gender-codes/component/gender-code-select.component';
-import {CommonEffects} from './gender-codes/common.effect';
+import {CommonEffects} from './common.effect';
 import {NgModule, ModuleWithProviders} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {ReactiveFormsModule} from '@angular/forms';
@@ -13,17 +13,16 @@ import {appRoutes, appRoutingProviders} from '../app.routes';
 import {CovalentCoreModule} from '@covalent/core';
 import {CommonService} from '../../services';
 import {IdentityService} from '../../services';
-import {EffectsModule} from "@ngrx/effects";
-import {studyModeListReducer, StudyModeListState} from "./study-modes/study-mode-list.reducer";
-import { StateCodeListState, stateCodeListReducer } from "./state-codes/state-code-list.reducer";
-import { CountryCodeListState, countryCodeListReducer } from "./country-codes/country-code-list.reducer";
+import {EffectsModule} from '@ngrx/effects';
+import {studyModeListReducer, StudyModeListState} from './study-modes/study-mode-list.reducer';
+import {StateCodeListState, stateCodeListReducer} from './state-codes/state-code-list.reducer';
+import {CountryCodeListState, countryCodeListReducer} from './country-codes/country-code-list.reducer';
 
 export interface CommonModuleState {
-  studyModes: StudyModeListState,
-  stateCodes: StateCodeListState,
-  CountryCodes: CountryCodeListState,
+  studyModes: StudyModeListState;
+  stateCodes: StateCodeListState;
+  CountryCodes: CountryCodeListState;
 }
-;
 
 export const INITIAL_COMMON_STATE: CommonModuleState =
   <CommonModuleState>{
@@ -69,7 +68,7 @@ export class CommonModule {
         appRoutingProviders,
         IdentityService,
         CommonService,
-        CommonActions
+        CommonActions,
       ],
     };
   }

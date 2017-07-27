@@ -1,14 +1,14 @@
-import { Guarantor } from './../guarantor.interface';
+import { Guarantor } from '../../shared/model/profile/guarantor.interface';
 import {Component, ViewContainerRef, OnInit, AfterViewInit} from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
 import {FormBuilder} from '@angular/forms';
 import {Router, ActivatedRoute} from '@angular/router';
-import {Store} from "@ngrx/store";
-import {MdDialogRef} from "@angular/material";
-import {Student} from "../../identity/student.interface";
-import {ProfileModuleState} from "../index";
-import {ProfileActions} from "../profile.action";
-import{GuarantorType} from "../guarantor-type.enum";
+import {Store} from '@ngrx/store';
+import {MdDialogRef} from '@angular/material';
+import {Student} from '../../shared/model/identity/student.interface';
+import {ProfileModuleState} from '../index';
+import {ProfileActions} from '../profile.action';
+import {GuarantorType} from '../../shared/model/profile/guarantor-type.enum';
 
 @Component({
   selector: 'pams-guarantor-editor',
@@ -45,18 +45,18 @@ export class GuarantorEditorDialog implements OnInit {
       id: null,
       name: '',
       identityNo: '',
-      phone:'',
-      guarantorType: GuarantorType.PRIMARY
+      phone: '',
+      guarantorType: GuarantorType.PRIMARY,
     });
 
     if (this.edit) this.editorForm.patchValue(this._guarantor);
   }
 
   submit(guarantor: Guarantor, isValid: boolean) {
-    if(isValid)
+    if (isValid)
     guarantor.id = this._guarantor.id;
 
-    if(isValid) this.store.dispatch(this.actions.updateGuarantor(this._student, guarantor));
+    if (isValid) this.store.dispatch(this.actions.updateGuarantor(this._student, guarantor));
     else this.store.dispatch(this.actions.addGuarantor(this._student, guarantor));
     this.dialog.close();
   }

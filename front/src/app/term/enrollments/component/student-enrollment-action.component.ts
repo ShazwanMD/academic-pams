@@ -1,5 +1,5 @@
 import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy} from '@angular/core';
-import {Enrollment} from "../enrollment.interface";
+import {Enrollment} from '../../../shared/model/term/enrollment.interface';
 
 @Component({
   selector: 'pams-student-enrollment-action',

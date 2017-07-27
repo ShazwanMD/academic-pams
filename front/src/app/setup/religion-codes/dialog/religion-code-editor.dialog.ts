@@ -1,6 +1,6 @@
 import { SetupActions } from './../../setup.action';
 import { SetupModuleState } from './../../index';
-import { ReligionCode } from './../../../common/religion-codes/religion-code.interface';
+import { ReligionCode } from '../../../shared/model/common/religion-code.interface';
 import {Component, ViewContainerRef, OnInit, AfterViewInit} from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
 import {FormBuilder} from '@angular/forms';

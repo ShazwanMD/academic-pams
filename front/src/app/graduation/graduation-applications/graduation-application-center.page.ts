@@ -2,7 +2,7 @@ import {Component, OnInit, ChangeDetectionStrategy, state, ViewContainerRef} fro
 import {Router, ActivatedRoute} from '@angular/router';
 import {GraduationModuleState} from "../index";
 import {Store} from "@ngrx/store";
-import {GraduationApplicationTask} from "./graduation-application-task.interface";
+import {GraduationApplicationTask} from "../../shared/model/graduation/graduation-application-task.interface";
 import {Observable} from "rxjs/Observable";
 import {MdDialogConfig, MdDialogRef, MdDialog} from "@angular/material";
 import {GraduationApplicationCreatorDialog} from "./dialog/graduation-application-creator.dialog";

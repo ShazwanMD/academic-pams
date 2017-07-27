@@ -1,15 +1,13 @@
 import {ActivatedRoute, Router} from '@angular/router';
-import {Offering} from './../../offerings/offering.interface';
-import {AssessmentActions} from './../assessment.action';
-import {Assessment} from './../assessment.interface';
+import {Offering} from '../../../shared/model/term/offering.interface';
+import {AssessmentActions} from '../assessment.action';
+import {Assessment} from '../../../shared/model/term/assessment.interface';
 import {Component, ViewContainerRef, OnInit} from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
 import {FormBuilder, Validators} from '@angular/forms';
 import {Store} from '@ngrx/store';
 import {MdDialogRef} from '@angular/material';
 import {TermModuleState} from '../../index';
-import {AssessmentType} from '../assessment-type.enum';
-import {AssessmentCategory} from '../assessment-category.enum';
 
 @Component({
   selector: 'pams-assessment-editor',
@@ -52,7 +50,7 @@ export class AssessmentEditorDialog implements OnInit {
       offering: ['', Validators.required],
       assessmentType: ['', Validators.required],
       assessmentCategory: ['', Validators.required]
-      
+
     });
 
     // set offering by default

@@ -1,9 +1,8 @@
 import {Action} from '@ngrx/store';
-import {Observable}  from 'rxjs/Observable';
 
 import * as _ from 'lodash';
-import {ProgramLevel} from "./program-level.interface";
-import {ProgramLevelActions} from "./program-level.action";
+import {ProgramLevel} from '../../shared/model/planner/program-level.interface';
+import {ProgramLevelActions} from './program-level.action';
 
 export type ProgramLevelListState = ProgramLevel [];
 
@@ -28,7 +27,7 @@ export function programLevelListReducer(state = initialState, action: Action): P
     }
 
     case ProgramLevelActions.REMOVE_PROGRAM_LEVEL_SUCCESS: {
-      return state.filter(programLevel => {
+      return state.filter((programLevel) => {
         return programLevel.id !== action.payload.id;
       });
     }

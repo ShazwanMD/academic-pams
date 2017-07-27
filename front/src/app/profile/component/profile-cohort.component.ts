@@ -1,7 +1,6 @@
-import {Enrollment} from './../../term/enrollments/enrollment.interface';
 import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy} from '@angular/core';
-import {Cohort} from "../../planner/cohorts/cohort.interface";
-import {Student} from "../../identity/student.interface";
+import {Cohort} from '../../shared/model/planner/cohort.interface';
+import {Student} from '../../shared/model/identity/student.interface';
 
 @Component({
   selector: 'pams-profile-cohort',

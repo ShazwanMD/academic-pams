@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { Faculty } from '../faculty.interface';
-import { selector } from 'rxjs/operator/multicast';
+import { Faculty } from '../../../shared/model/planner/faculty.interface';
 
 @Component({
   selector: 'pams-faculty-status',
@@ -10,6 +9,5 @@ import { selector } from 'rxjs/operator/multicast';
 })
 
 export class FacultyStatusComponent {
-
     @Input() faculty: Faculty;
 }

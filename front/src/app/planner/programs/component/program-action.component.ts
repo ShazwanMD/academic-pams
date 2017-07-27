@@ -1,10 +1,10 @@
 import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, ViewContainerRef} from '@angular/core';
-import {Program} from "../program.interface";
-import {ProgramEditorDialog} from "../dialog/program-editor.dialog";
-import {MdDialog, MdDialogConfig, MdDialogRef, MdSnackBar} from "@angular/material";
-import {ProgramActions} from "../program.action";
-import {Store} from "@ngrx/store";
-import {PlannerModuleState} from "../../index";
+import {Program} from '../../../shared/model/planner/program.interface';
+import {ProgramEditorDialog} from '../dialog/program-editor.dialog';
+import {MdDialog, MdDialogConfig, MdDialogRef, MdSnackBar} from '@angular/material';
+import {ProgramActions} from '../program.action';
+import {Store} from '@ngrx/store';
+import {PlannerModuleState} from '../../index';
 
 @Component({
   selector: 'pams-program-action',
@@ -13,8 +13,8 @@ import {PlannerModuleState} from "../../index";
 })
 export class ProgramActionComponent {
 
-  @Input() program: Program;
   private editorDialogRef: MdDialogRef<ProgramEditorDialog>;
+  @Input() program: Program;
 
   constructor(private actions: ProgramActions,
               private store: Store<PlannerModuleState>,
@@ -25,7 +25,7 @@ export class ProgramActionComponent {
   }
 
   editorDialog(): void {
-    console.log("edit");
+    console.log('edit');
     console.log(this.program);
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
@@ -37,8 +37,8 @@ export class ProgramActionComponent {
     this.editorDialogRef.componentInstance.program = this.program;
 
     // set
-    this.editorDialogRef.afterClosed().subscribe(res => {
-      console.log("close dialog");
+    this.editorDialogRef.afterClosed().subscribe((res) => {
+      console.log('close dialog');
     });
   }
 
@@ -46,14 +46,13 @@ export class ProgramActionComponent {
   //   this.store.dispatch(this.actions.deleteProgram(this._Program))
   // }
 
-
   deactivate(): void {
-    let snackBarRef = this.snackBar.open("Deactivating Program", "OK");
+    let snackBarRef = this.snackBar.open('Deactivating Program', 'OK');
     snackBarRef.afterDismissed().subscribe(() => this.store.dispatch(this.actions.deactivateProgram(this.program)));
   }
 
   activate(): void {
-    let snackBarRef = this.snackBar.open("Activating Program", "OK");
+    let snackBarRef = this.snackBar.open('Activating Program', 'OK');
     snackBarRef.afterDismissed().subscribe(() => this.store.dispatch(this.actions.activateProgram(this.program)));
   }
 }

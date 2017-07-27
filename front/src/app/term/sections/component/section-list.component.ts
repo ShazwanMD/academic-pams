@@ -1,5 +1,5 @@
 import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy} from '@angular/core';
-import {Section} from "../section.interface";
+import {Section} from '../../../shared/model/term/section.interface';
 
 @Component({
   selector: 'pams-section-list',
@@ -8,14 +8,15 @@ import {Section} from "../section.interface";
 })
 export class SectionListComponent {
 
-  @Input() sections: Section[];
-  @Output() view = new EventEmitter<Section>();
-
   private columns: any[] = [
     {name: 'id', label: 'Id'},
     {name: 'code', label: 'Code'},
     {name: 'capacity', label: 'Capacity'},
     {name: 'canonicalCode', label: 'canonicalCode'},
-    {name: 'action', label: ''}
+    {name: 'action', label: ''},
   ];
+
+  @Input() sections: Section[];
+  @Output() view = new EventEmitter<Section>();
+
 }

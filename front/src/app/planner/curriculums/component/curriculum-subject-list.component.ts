@@ -9,10 +9,10 @@ import {
   ViewContainerRef,
   Output
 } from '@angular/core';
-import {Curriculum} from '../curriculum.interface';
-import {BundleSubjectPart} from '../bundle-subject-part.interface';
-import {BundleSubject} from '../bundle-subject.interface';
-import {SingleSubject} from '../single-subject.interface';
+import {Curriculum} from '../../../shared/model/planner/curriculum.interface';
+import {BundleSubjectPart} from '../../../shared/model/planner/bundle-subject-part.interface';
+import {BundleSubject} from '../../../shared/model/planner/bundle-subject.interface';
+import {SingleSubject} from '../../../shared/model/planner/single-subject.interface';
 import {CurriculumBundleSubjectPartDialog} from '../dialog/curriculum-bundle-subject-part.dialog';
 import {CurriculumBundleSubjectDialog} from '../dialog/curriculum-bundle-subject.dialog';
 import {CurriculumSingleSubjectDialog} from '../dialog/curriculum-single-subject.dialog';
@@ -20,7 +20,7 @@ import {CurriculumActions} from '../curriculum.action';
 import {ActivatedRoute, Router} from '@angular/router';
 import {PlannerModuleState} from '../../index';
 import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material'
-import {Subject} from '../subject.interface';
+import {Subject} from '../../../shared/model/planner/subject.interface';
 
 @Component({
   selector: 'pams-curriculum-subject-list',
@@ -33,7 +33,6 @@ export class CurriculumSubjectListComponent implements OnInit, OnChanges {
   private singleSubjectDialogRef: MdDialogRef<CurriculumSingleSubjectDialog>;
   private bundleSubjectDialogRef: MdDialogRef<CurriculumBundleSubjectDialog>;
   private bundleSubjectPartDialogRef: MdDialogRef<CurriculumBundleSubjectPartDialog>;
-
 
   private columns: any[] = [
     {name: 'id', label: 'Id'},

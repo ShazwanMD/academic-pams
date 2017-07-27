@@ -1,6 +1,6 @@
 import {Action} from '@ngrx/store';
-import {OfferingActions} from "./offering.action";
-import {Offering} from "./offering.interface";
+import {OfferingActions} from './offering.action';
+import {Offering} from '../../shared/model/term/offering.interface';
 
 export type OfferingState = Offering;
 

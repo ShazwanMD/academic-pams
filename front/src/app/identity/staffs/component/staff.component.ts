@@ -1,29 +1,26 @@
 import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, ViewContainerRef} from '@angular/core';
-import {Staff} from "../staff.interface";
-import { MdDialog } from "@angular/material";
-import { ActivatedRoute, Router } from "@angular/router";
-import { Store } from "@ngrx/store";
-import { IdentityModuleState } from "../../index";
+import {MdDialog} from '@angular/material';
+import {ActivatedRoute, Router} from '@angular/router';
+import {Store} from '@ngrx/store';
+import {IdentityModuleState} from '../../index';
+import {Staff} from '../../../shared/model/identity/staff.interface';
 
 @Component({
-    selector: 'pams-staff',
-    templateUrl: './staff.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush,
+  selector: 'pams-staff',
+  templateUrl: './staff.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class StaffComponent {
+  private imgFileName: string = '01001A.jpg';
+  @Input() imgPath: string = './../assets/ico/lecturer/';
+  @Input() staff: Staff;
+  @Output() view = new EventEmitter<Staff>();
 
-    @Input() imgPath:string = "./../assets/ico/lecturer/"; //.\..\assets\ico\01001A.jpg  //--  "app/header/"
-    imgFileName:string = "01001A.jpg";
-     
-    @Input() staff: Staff;
-    @Output() view = new EventEmitter<Staff>();
-    
-    constructor(private router: Router,
-        private route: ActivatedRoute,
-        private store: Store<IdentityModuleState>,
-        private vcf: ViewContainerRef,
-        private dialog: MdDialog) {
-    }
-
+  constructor(private router: Router,
+              private route: ActivatedRoute,
+              private store: Store<IdentityModuleState>,
+              private vcf: ViewContainerRef,
+              private dialog: MdDialog) {
+  }
 
 }

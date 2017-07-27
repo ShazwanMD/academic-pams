@@ -5,7 +5,7 @@ import {PlannerService} from "../../../services/planner.service";
 import {Store} from "@ngrx/store";
 import {Observable} from "rxjs";
 import {PlannerModuleState} from "../index";
-import {AcademicSession} from "./academic-session.interface";
+import {AcademicSession} from "../../shared/model/planner/academic-session.interface";
 import {from} from "rxjs/observable/from";
 
 @Injectable()
@@ -29,7 +29,7 @@ export class AcademicSessionEffects {
     .map(action => action.payload)
     .switchMap(code => this.plannerService.findAcademicSessionByCode(code))
     .map(academicSession => this.academicSessionActions.findAcademicSessionByCodeSuccess(academicSession));
-    
+
   @Effect() activateAcademicSession$ = this.actions$
     .ofType(AcademicSessionActions.ACTIVATE_ACADEMIC_SESSION)
     .map(action => action.payload)

@@ -1,14 +1,14 @@
-import {Program} from '../../programs/program.interface';
+import {Program} from '../../../shared/model/planner/program.interface';
 import {Component, ViewContainerRef, OnInit} from '@angular/core';
 import {FormGroup} from '@angular/forms';
 import {FormBuilder} from '@angular/forms';
 import {Router, ActivatedRoute} from '@angular/router';
-import {Curriculum} from '../curriculum.interface';
+import {Curriculum} from '../../../shared/model/planner/curriculum.interface';
 import {CurriculumActions} from '../curriculum.action';
 import {MdDialogRef} from '@angular/material';
 import {PlannerModuleState} from '../../index';
 import {Store} from '@ngrx/store';
-import {AcademicSession} from '../../academic-sessions/academic-session.interface';
+import {AcademicSession} from '../../../shared/model/planner/academic-session.interface';
 @Component({
   selector: 'pams-curriculum-update',
   templateUrl: './curriculum-update.dialog.html',
@@ -60,7 +60,7 @@ export class CurriculumUpdateDialog implements OnInit {
       maxPeriod: 0,
       ordinal: 0,
       program: <Program>{}
-  
+
     });
     if (this.update) this.updateForm.patchValue(this._curriculum);
   }

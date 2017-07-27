@@ -1,7 +1,7 @@
 import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, AfterViewInit, OnChanges, SimpleChange} from '@angular/core';
-import {Cohort} from "../cohort.interface";
+import {Cohort} from '../../../shared/model/planner/cohort.interface';
 import { TdDataTableSortingOrder, TdDataTableService, ITdDataTableSortChangeEvent, IPageChangeEvent } from '@covalent/core';
-import { MdSnackBar } from "@angular/material";
+import { MdSnackBar } from '@angular/material';
 
 @Component({
   selector: 'pams-cohort-list',
@@ -10,13 +10,11 @@ import { MdSnackBar } from "@angular/material";
 })
 export class CohortListComponent implements AfterViewInit, OnChanges {
 
-  @Input() cohorts: Cohort[];
-  @Output() view = new EventEmitter<Cohort>();
 
   private columns: any[] = [
     {name: 'code', label: 'Code'},
     {name: 'description', label: 'Description'},
-    {name: 'action', label: ''}
+    {name: 'action', label: ''},
   ];
 
   filteredData: any[];
@@ -28,20 +26,21 @@ export class CohortListComponent implements AfterViewInit, OnChanges {
   sortBy: string = 'code';
   sortOrder: TdDataTableSortingOrder = TdDataTableSortingOrder.Descending;
 
+  @Input() cohorts: Cohort[];
+  @Output() view = new EventEmitter<Cohort>();
 
-   constructor(private _dataTableService: TdDataTableService,
+  constructor(private _dataTableService: TdDataTableService,
           private snackBar: MdSnackBar) {}
-  
-   
+
    ngOnChanges(changes: {[ propName: string]: SimpleChange}) {
-       console.log("changes",changes,changes['cohorts']);
-           if (changes['cohorts']){
-           this.filteredData = changes['cohorts'].currentValue; 
+       console.log('changes', changes, changes['cohorts']);
+       if (changes['cohorts']){
+           this.filteredData = changes['cohorts'].currentValue;
            this.filteredTotal = changes['cohorts'].currentValue.length;
            this.filter();
          }
-       }  
-  
+       }
+
    ngAfterViewInit(): void {
     this.filteredData = this.cohorts;
     this.filteredTotal = this.cohorts.length;
@@ -76,8 +75,8 @@ export class CohortListComponent implements AfterViewInit, OnChanges {
   }
 
   viewCohort(cohort: Cohort): void {
-   console.log("Emitting cohorts");
-   let snackBarRef = this.snackBar.open("Viewing cohorts info", "OK");
+   console.log('Emitting cohorts');
+   let snackBarRef = this.snackBar.open('Viewing cohorts info', 'OK');
    snackBarRef.afterDismissed().subscribe(() => {
    this.view.emit(cohort);
     });

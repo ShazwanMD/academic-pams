@@ -4,15 +4,13 @@ import {NgModule, ModuleWithProviders} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {ReactiveFormsModule} from '@angular/forms';
 import {CovalentCoreModule} from '@covalent/core';
-import {AcademicYearActions} from "./academic-year.action";
+import {AcademicYearActions} from './academic-year.action';
 import {PlannerService} from '../../../services';
 import {CommonService} from '../../../services';
 import {IdentityService} from '../../../services';
-import {AcademicYearEffects} from "./academic-year.effect";
-//import {AcademicYearActions} from "./academicYear.action";
-import {EffectsModule} from "@ngrx/effects";
-import { AcademicYearSelectComponent } from "./component/academic-year-select.component";
-//import {AcademicYearEffects} from "./academicYear.effect";
+import {AcademicYearEffects} from './academic-year.effect';
+import {EffectsModule} from '@ngrx/effects';
+import { AcademicYearSelectComponent } from './component/academic-year-select.component';
 
 @NgModule({
   imports: [
@@ -24,21 +22,18 @@ import { AcademicYearSelectComponent } from "./component/academic-year-select.co
   ],
   declarations: [
     // page
-    
 
     // component
    AcademicYearSelectComponent,
-   
 
     // dialog
-    
-    
+
   ],
   exports: [
     AcademicYearSelectComponent,
 
   ],
-  
+
    entryComponents: [
 AcademicYearSelectComponent,
   ],
@@ -58,5 +53,4 @@ export class AcademicYearSubModule {
     };
   }
 }
-
-
+

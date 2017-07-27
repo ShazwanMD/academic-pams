@@ -2,7 +2,7 @@ import {MdDialogRef} from '@angular/material';
 import {MdDialogConfig} from '@angular/material';
 import {MdDialog} from '@angular/material';
 import {GradeCodeEditorDialog} from './dialog/grade-code-editor.dialog';
-import {GradeCode} from './../../common/grade-codes/grade-code.interface';
+import {GradeCode} from '../../shared/model/common/grade-code.interface';
 import {Observable} from 'rxjs/Observable';
 import {Store} from '@ngrx/store';
 import {Component, OnInit, ViewContainerRef} from '@angular/core';

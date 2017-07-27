@@ -3,11 +3,10 @@ import {Router, ActivatedRoute} from '@angular/router';
 import {Store} from '@ngrx/store';
 import {Observable} from 'rxjs';
 
-import {PlannerModuleState} from "../index";
+import {PlannerModuleState} from '../index';
 
-import {AcademicSession} from "./academic-session.interface";
-import {AcademicSessionActions} from "./academic-session.action";
-
+import {AcademicSession} from '../../shared/model/planner/academic-session.interface';
+import {AcademicSessionActions} from './academic-session.action';
 
 @Component({
   selector: 'pams-academic-session-detail',
@@ -16,7 +15,7 @@ import {AcademicSessionActions} from "./academic-session.action";
 
 export class AcademicSessionDetailPage implements OnInit {
 
-  private ACADEMIC_SESSION: string[] = "plannerModuleState.academicSession".split(".");
+  private ACADEMIC_SESSION: string[] = 'plannerModuleState.academicSession'.split('.');
   private academicSession$: Observable<AcademicSession>;
 
   constructor(private router: Router,
@@ -32,5 +31,5 @@ export class AcademicSessionDetailPage implements OnInit {
       this.store.dispatch(this.actions.findAcademicSessionByCode(code));
     });
   }
-  
+
 }

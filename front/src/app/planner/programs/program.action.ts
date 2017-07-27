@@ -1,4 +1,4 @@
-import {Program} from './program.interface';
+import {Program} from '../../shared/model/planner/program.interface';
 import {Injectable} from '@angular/core';
 import {Action} from '@ngrx/store';
 

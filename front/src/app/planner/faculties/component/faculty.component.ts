@@ -1,6 +1,5 @@
 import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy} from '@angular/core';
-import {MdTabsModule} from '@angular/material';
-import {Faculty} from "../faculty.interface";
+import {Faculty} from '../../../shared/model/planner/faculty.interface';
 
 @Component({
   selector: 'pams-faculty',

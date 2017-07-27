@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 import {Observable} from 'rxjs';
 import {Store} from '@ngrx/store';
-import {AdmissionApplicationTask} from './admission-application-task.interface';
+import {AdmissionApplicationTask} from '../../shared/model/term/admission-application-task.interface';
 import {TermModuleState} from '../index';
 import {AdmissionApplicationActions} from './admission-application.action';
 

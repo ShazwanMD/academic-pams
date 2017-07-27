@@ -1,15 +1,14 @@
 import {Component, Input, OnInit, ViewContainerRef} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
-import {MdSnackBar, MdDialog, MdDialogRef, MdDialogConfig} from "@angular/material";
-import {EnrollmentApplicationItem} from "../enrollment-application-item.interface";
-import {EnrollmentApplication} from "../enrollment-application.interface";
-import {EnrollmentApplicationItemEditorDialog} from "../dialog/enrollment-application-item-editor.dialog";
-import {EnrollmentApplicationTask} from "../enrollment-application-task.interface";
-import {Observable} from "rxjs/Observable";
-import {EnrollmentApplicationActions} from "../enrollment-application.action";
-import {TermModuleState} from "../../index";
-import {Store} from "@ngrx/store";
-
+import {MdSnackBar, MdDialog, MdDialogRef, MdDialogConfig} from '@angular/material';
+import {EnrollmentApplicationItem} from '../../../shared/model/term/enrollment-application-item.interface';
+import {EnrollmentApplication} from '../../../shared/model/term/enrollment-application.interface';
+import {EnrollmentApplicationItemEditorDialog} from '../dialog/enrollment-application-item-editor.dialog';
+import {EnrollmentApplicationTask} from '../../../shared/model/term/enrollment-application-task.interface';
+import {Observable} from 'rxjs/Observable';
+import {EnrollmentApplicationActions} from '../enrollment-application.action';
+import {TermModuleState} from '../../index';
+import {Store} from '@ngrx/store';
 
 @Component({
   selector: 'pams-enrollment-application-draft-task',
@@ -18,8 +17,8 @@ import {Store} from "@ngrx/store";
 
 export class EnrollmentApplicationDraftTaskPanel implements OnInit {
 
-  private ENROLLMENT_APPLICATION_ITEMS: string[] = "termModuleState.enrollmentApplicationItems".split(".");
-  private ENROLLMENT_APPLICATION_TASK: string[] = "termModuleState.enrollmentApplicationTask".split(".");
+  private ENROLLMENT_APPLICATION_ITEMS: string[] = 'termModuleState.enrollmentApplicationItems'.split('.');
+  private ENROLLMENT_APPLICATION_TASK: string[] = 'termModuleState.enrollmentApplicationTask'.split('.');
   private enrollmentApplicationItems$: Observable<EnrollmentApplicationItem[]>;
   private enrollmentApplicationTask$: Observable<EnrollmentApplication[]>;
 
@@ -36,12 +35,11 @@ export class EnrollmentApplicationDraftTaskPanel implements OnInit {
   }
 
   ngOnInit(): void {
-    this.store.dispatch(this.actions.findEnrollmentApplicationItems(this.enrollmentApplicationTask.application))
+    this.store.dispatch(this.actions.findEnrollmentApplicationItems(this.enrollmentApplicationTask.application));
   }
 
   filter(): void {
   }
-
 
   editItem(item: EnrollmentApplicationItem) {
     console.log(JSON.stringify(this.enrollmentApplicationTask.application));
@@ -60,7 +58,7 @@ export class EnrollmentApplicationDraftTaskPanel implements OnInit {
     this.store.dispatch(this.actions.completeEnrollmentApplicationTask(this.enrollmentApplicationTask));
     this.goBack();
   }
-  
+
   remove() {
       this.store.dispatch(this.actions.releaseEnrollmentApplicationTask(this.enrollmentApplicationTask));
       this.goBack();

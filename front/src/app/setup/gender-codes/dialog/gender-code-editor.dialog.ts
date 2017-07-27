@@ -1,4 +1,4 @@
-import { GenderCode } from './../../../common/gender-codes/gender-code.interface';
+import { GenderCode } from '../../../shared/model/common/gender-code.interface';
 import { SetupActions } from './../../setup.action';
 import { SetupModuleState } from './../../index';
 import {Component, ViewContainerRef, OnInit, AfterViewInit} from '@angular/core';

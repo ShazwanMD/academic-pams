@@ -3,11 +3,11 @@ import {Router, ActivatedRoute} from '@angular/router';
 import {TermService, IdentityService} from '../../../services';
 import {Store} from '@ngrx/store';
 import {Observable} from 'rxjs';
-import {Staff} from './staff.interface';
 import {StaffActions} from './staff.action';
 import {IdentityModuleState} from '../index';
 import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';
-import {Appointment} from '../../term/appointments/appointment.interface';
+import {Appointment} from '../../shared/model/term/appointment.interface';
+import {Staff} from '../../shared/model/identity/staff.interface';
 
 @Component({
   selector: 'pams-staff-detail',
@@ -20,9 +20,7 @@ export class StaffDetailPage implements OnInit {
   private APPOINTMENTS: string[] = 'identityModuleState.staffAppointments'.split('.');
   private staff$: Observable<Staff>;
   private appointments$: Observable<Appointment[]>;
-
   @Input() staff: Staff;
- // @Input() appointment: Appointment;
 
   constructor(private router: Router,
               private route: ActivatedRoute,

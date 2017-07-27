@@ -1,12 +1,11 @@
 import {Component, Input, ChangeDetectionStrategy, ViewContainerRef} from '@angular/core';
-import {EnrollmentApplication} from "../enrollment-application.interface";
-import {Admission} from "../../admissions/admission.interface";
-import {Offering} from "../../offerings/offering.interface";
-import {MdDialog, MdDialogConfig, MdDialogRef, MdSnackBar} from "@angular/material";
-import {EnrollmentApplicationActions} from "../enrollment-application.action";
-import {Store} from "@ngrx/store";
-import {TermModuleState} from "../../index";
-import { EnrollmentApplicationTaskCreatorDialog } from "../dialog/enrollment-application-task-creator.dialog";
+import {EnrollmentApplication} from '../../../shared/model/term/enrollment-application.interface';
+import {Admission} from '../../../shared/model/term/admission.interface';
+import {MdDialog, MdDialogConfig, MdDialogRef, MdSnackBar} from '@angular/material';
+import {EnrollmentApplicationActions} from '../enrollment-application.action';
+import {Store} from '@ngrx/store';
+import {TermModuleState} from '../../index';
+import {EnrollmentApplicationTaskCreatorDialog} from '../dialog/enrollment-application-task-creator.dialog';
 
 @Component({
   selector: 'pams-student-enrollment-application-task-detail-action',
@@ -15,10 +14,10 @@ import { EnrollmentApplicationTaskCreatorDialog } from "../dialog/enrollment-app
 })
 export class StudentEnrollmentApplicationTaskDetailActionComponent {
 
+  private editorDialogRef: MdDialogRef<EnrollmentApplicationTaskCreatorDialog>;
+
   @Input() enrollmentApplication: EnrollmentApplication;
   @Input() admission: Admission;
- 
-  private editorDialogRef: MdDialogRef<EnrollmentApplicationTaskCreatorDialog>;
 
   constructor(private actions: EnrollmentApplicationActions,
               private store: Store<TermModuleState>,
@@ -28,8 +27,8 @@ export class StudentEnrollmentApplicationTaskDetailActionComponent {
   }
 
   updateDialog(): void {
-    console.log("open enrollmentApplication dialog");
-    console.log("referenceNo", this.enrollmentApplication.referenceNo);
+    console.log('open enrollmentApplication dialog');
+    console.log('referenceNo', this.enrollmentApplication.referenceNo);
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
     config.role = 'dialog';
@@ -37,13 +36,12 @@ export class StudentEnrollmentApplicationTaskDetailActionComponent {
     config.height = '50%';
     config.position = {top: '0px'};
     this.editorDialogRef = this.dialog.open(EnrollmentApplicationTaskCreatorDialog, config);
-   // this.editorDialogRef.componentInstance.enrollmentApplication = this.enrollmentApplication;
+    // this.editorDialogRef.componentInstance.enrollmentApplication = this.enrollmentApplication;
     //this.editorDialogRef.componentInstance.admission = this.admission;
 
-
     // set
-    this.editorDialogRef.afterClosed().subscribe(res => {
-      console.log("close dialog enrollmentApplication update");
+    this.editorDialogRef.afterClosed().subscribe((res) => {
+      console.log('close dialog enrollmentApplication update');
 
     });
   }

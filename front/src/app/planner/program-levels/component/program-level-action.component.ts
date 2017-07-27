@@ -2,10 +2,9 @@ import {MdDialog, MdSnackBar} from '@angular/material';
 import {Input, Component, ViewContainerRef, ChangeDetectionStrategy} from '@angular/core';
 import {Store} from '@ngrx/store';
 
-import {PlannerModuleState} from "../../index";
-import {ProgramLevel} from "./../program-level.interface";
-import {ProgramLevelActions} from "../program-level.action";
-
+import {PlannerModuleState} from '../../index';
+import {ProgramLevel} from '../../../shared/model/planner/program-level.interface';
+import {ProgramLevelActions} from '../program-level.action';
 
 @Component({
   selector: 'pams-program-level-action',
@@ -41,5 +40,4 @@ export class ProgramLevelActionComponent {
     // );
   }
 }
-
-
+

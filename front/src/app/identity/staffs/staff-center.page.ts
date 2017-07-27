@@ -3,11 +3,10 @@ import {Component, OnInit, ChangeDetectionStrategy, ViewContainerRef} from '@ang
 import {Router, ActivatedRoute} from '@angular/router';
 import {Store} from '@ngrx/store';
 import {Observable} from 'rxjs';
-import {Staff} from './staff.interface';
 import {StaffActions} from './staff.action';
 import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';
-import { IdentityModuleState } from "../index";
-
+import { IdentityModuleState } from '../index';
+import {Staff} from '../../shared/model/identity/staff.interface';
 
 @Component({
   selector: 'pams-staff-center',
@@ -17,7 +16,6 @@ export class StaffCenterPage implements OnInit {
 
   private STAFFS: string[] = 'identityModuleState.staffs'.split('.');
   private staffs$: Observable<Staff[]>;
-  
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -35,14 +33,11 @@ export class StaffCenterPage implements OnInit {
 
   viewStaff(staff: Staff): void {
     console.log('staff identityNo: ' + staff.identityNo);
-    this.router.navigate(['/identity/staffs',staff.identityNo]);
+    this.router.navigate(['/identity/staffs', staff.identityNo]);
   }
-
- 
 
   ngOnInit(): void {
     this.store.dispatch(this.actions.findStaffs());
   }
-
 
 }

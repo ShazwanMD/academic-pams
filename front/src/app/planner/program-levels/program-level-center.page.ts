@@ -3,14 +3,12 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { MdDialogRef } from '@angular/material';
 import { MdDialogConfig } from '@angular/material';
 import { MdDialog } from '@angular/material';
-import { Store } from "@ngrx/store";
-import { Observable } from "rxjs";
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 
-import { IdentityService } from '../../../services';
-import { CommonService } from '../../../services';
-import { ProgramLevel } from './program-level.interface';
-import { ProgramLevelActions } from "./program-level.action";
-import { PlannerModuleState } from "../index";
+import { ProgramLevel } from '../../shared/model/planner/program-level.interface';
+import { ProgramLevelActions } from './program-level.action';
+import { PlannerModuleState } from '../index';
 import { ProgramLevelCreatorDialog } from './dialog/program-level-creator.dialog';
 
 @Component({
@@ -19,7 +17,7 @@ import { ProgramLevelCreatorDialog } from './dialog/program-level-creator.dialog
 })
 export class ProgramLevelCenterPage implements OnInit {
 
-  private PROGRAM_LEVELS: string[] = "plannerModuleState.programLevels".split(".");
+  private PROGRAM_LEVELS: string[] = 'plannerModuleState.programLevels'.split('.');
   private programLevels$: Observable<ProgramLevel[]>;
 
   private creatorDialogRef: MdDialogRef<ProgramLevelCreatorDialog>;
@@ -31,7 +29,7 @@ export class ProgramLevelCenterPage implements OnInit {
     { name: 'endDate', label: 'End Date' },
     { name: 'semester', label: 'ProgramSemester' },
     { name: 'year', label: 'ProgramYear' },
-    { name: 'action', label: '' }
+    { name: 'action', label: '' },
   ];
 
   constructor(private router: Router,
@@ -48,7 +46,7 @@ export class ProgramLevelCenterPage implements OnInit {
   }
 
   viewProgramLevel(programLevel: ProgramLevel) {
-    console.log("programLevel: " + programLevel.code);
+    console.log('programLevel: ' + programLevel.code);
     this.router.navigate(['/program-level-detail', programLevel.code]);
   }
 
@@ -61,7 +59,7 @@ export class ProgramLevelCenterPage implements OnInit {
   }
 
   private showDialog(code: ProgramLevel): void {
-    console.log("create");
+    console.log('create');
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
     config.role = 'dialog';
@@ -72,10 +70,9 @@ export class ProgramLevelCenterPage implements OnInit {
     if (code) this.creatorDialogRef.componentInstance.programLevel = code;
 
     //set
-    this.creatorDialogRef.afterClosed().subscribe(res => {
-      console.log ("close dialog");
+    this.creatorDialogRef.afterClosed().subscribe((res) => {
+      console.log ('close dialog');
     });
   }
 }
-
 

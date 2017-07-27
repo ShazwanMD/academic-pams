@@ -1,12 +1,12 @@
 import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, ViewContainerRef, OnInit} from '@angular/core';
-import {Section} from '../../sections/section.interface';
+import {Section} from '../../../shared/model/term/section.interface';
 import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';
 import {ActivatedRoute, Router} from '@angular/router';
 import {SectionActions} from '../../sections/section.action';
 import {Store} from '@ngrx/store';
 import {TermModuleState} from '../../index';
 import {SectionEditorDialog} from '../../sections/dialog/section-editor.dialog';
-import {Offering} from '../offering.interface';
+import {Offering} from '../../../shared/model/term/offering.interface';
 import { MdSnackBar } from '@angular/material';
 
 @Component({
@@ -24,7 +24,6 @@ export class OfferingSectionListComponent implements OnInit {
     {name: 'capacity', label: 'Capacity'},
     {name: 'appointmentCount', label: 'Appointment'},
     {name: 'enrollmentCount', label: 'Enrollment'},
-    //{name: 'sectionCount', label: 'No of section'},
     {name: 'action', label: ''},
   ];
 

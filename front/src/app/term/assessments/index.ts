@@ -15,7 +15,7 @@ import {AssessmentDetailPage} from './assessment-detail.page';
 import {TermService} from '../../../services/term.service';
 import {PlannerService} from '../../../services/planner.service';
 import {PipeModule} from '../../app.pipe.module';
-import {AssessmentEditorDialog} from "./dialog/assessment-creator.dialog";
+import {AssessmentEditorDialog} from './dialog/assessment-creator.dialog';
 
 @NgModule({
   imports: [

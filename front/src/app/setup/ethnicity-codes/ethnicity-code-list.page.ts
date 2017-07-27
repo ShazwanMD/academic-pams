@@ -1,4 +1,4 @@
-import {EthnicityCode} from './../../common/ethnicity-codes/ethnicity-code.interface';
+import {EthnicityCode} from '../../shared/model/common/ethnicity-code.interface';
 import {Observable} from 'rxjs/Observable';
 import {Store} from '@ngrx/store';
 import {Component, OnInit} from '@angular/core';

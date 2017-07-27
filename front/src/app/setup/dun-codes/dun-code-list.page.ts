@@ -1,4 +1,4 @@
-import {DunCode} from './../../common/dun-codes/dun-code.interface';
+import {DunCode} from '../../shared/model/common/dun-code.interface';
 import {Observable} from 'rxjs/Observable';
 import {Store} from '@ngrx/store';
 import {Component, OnInit} from '@angular/core';

@@ -2,12 +2,12 @@ import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MdDialog, MdDialogRef, MdDialogConfig } from '@angular/material';
 import { Store } from '@ngrx/store';
-import { Observable } from "rxjs";
+import { Observable } from 'rxjs';
 
-import { Faculty } from "./faculty.interface";
-import { FacultyActions } from "./faculty.action";
-import { PlannerModuleState } from "../index";
-import { FacultyCreatorDialog } from "./dialog/faculty-creator.dialog";
+import { Faculty } from '../../shared/model/planner/faculty.interface';
+import { FacultyActions } from './faculty.action';
+import { PlannerModuleState } from '../index';
+import { FacultyCreatorDialog } from './dialog/faculty-creator.dialog';
 
 @Component({
   selector: 'pams-faculty-center',
@@ -16,7 +16,7 @@ import { FacultyCreatorDialog } from "./dialog/faculty-creator.dialog";
 
 export class FacultyCenterPage implements OnInit {
 
-  private FACULTIES: string[] = "plannerModuleState.faculties".split(".");
+  private FACULTIES: string[] = 'plannerModuleState.faculties'.split('.');
   private faculties$: Observable<Faculty[]>;
 
   private creatorDialogRef: MdDialogRef<FacultyCreatorDialog>;
@@ -26,7 +26,7 @@ export class FacultyCenterPage implements OnInit {
     { name: 'name', label: 'Name' },
     { name: 'prefix', label: 'Prefix' },
     { name: 'status', label: 'FacultyStatus' },
-    { name: 'action', label: '' }
+    { name: 'action', label: '' },
   ];
 
   constructor(private router: Router,
@@ -43,7 +43,7 @@ export class FacultyCenterPage implements OnInit {
   }
 
   viewFaculty(faculty: Faculty) {
-    console.log("faculty: " + faculty.id);
+    console.log('faculty: ' + faculty.id);
     this.router.navigate(['/faculties-detail', faculty.id]);
   }
 
@@ -52,7 +52,7 @@ export class FacultyCenterPage implements OnInit {
   }
 
   private showDialog(code: Faculty): void {
-    console.log("create");
+    console.log('create');
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
     config.role = 'dialog';
@@ -63,8 +63,8 @@ export class FacultyCenterPage implements OnInit {
     if (code) this.creatorDialogRef.componentInstance.faculty = code;
 
     //set
-    this.creatorDialogRef.afterClosed().subscribe(res => {
-      console.log("close dialog");
+    this.creatorDialogRef.afterClosed().subscribe((res) => {
+      console.log('close dialog');
     });
   }
 

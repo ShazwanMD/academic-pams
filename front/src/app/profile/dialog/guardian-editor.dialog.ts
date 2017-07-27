@@ -1,14 +1,14 @@
-import { Guardian } from './../guardian.interface';
+import { Guardian } from '../../shared/model/profile/guardian.interface';
 import {Component, ViewContainerRef, OnInit, AfterViewInit} from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
 import {FormBuilder} from '@angular/forms';
 import {Router, ActivatedRoute} from '@angular/router';
-import {Store} from "@ngrx/store";
-import {MdDialogRef} from "@angular/material";
-import {Student} from "../../identity/student.interface";
-import {ProfileModuleState} from "../index";
-import {ProfileActions} from "../profile.action";
-import {GuardianType} from "../guardian-type.enum";
+import {Store} from '@ngrx/store';
+import {MdDialogRef} from '@angular/material';
+import {Student} from '../../shared/model/identity/student.interface';
+import {ProfileModuleState} from '../index';
+import {ProfileActions} from '../profile.action';
+import {GuardianType} from '../../shared/model/profile/guardian-type.enum';
 
 @Component({
   selector: 'pams-guardian-editor',
@@ -45,19 +45,19 @@ export class GuardianEditorDialog implements OnInit {
       id: null,
       name: '',
       identityNo: '',
-      phone:'',
-      guardianType: GuardianType.GUARDIAN
+      phone: '',
+      guardianType: GuardianType.GUARDIAN,
     });
 
     if (this.edit) this.editorForm.patchValue(this._guardian);
   }
 
   submit(guardian: Guardian, isValid: boolean) {
-    
-    if(isValid)
+
+    if (isValid)
     guardian.id = this._guardian.id;
 
-    if(isValid) this.store.dispatch(this.actions.updateGuardian(this._student, guardian));
+    if (isValid) this.store.dispatch(this.actions.updateGuardian(this._student, guardian));
     else this.store.dispatch(this.actions.addGuardian(this._student, guardian));
     this.dialog.close();
   }

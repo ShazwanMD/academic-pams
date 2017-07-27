@@ -1,8 +1,7 @@
 
 import {Component, Input, OnInit} from '@angular/core';
-import {FormControl} from "@angular/forms";
-import { CourseStatus } from "../course-status.enum";
-
+import {FormControl} from '@angular/forms';
+import { CourseStatus } from '../../../shared/model/planner/course-status.enum';
 
 @Component({
   selector: 'pams-course-status-select',
@@ -15,8 +14,8 @@ export class CourseStatusSelectComponent implements OnInit {
   @Input() innerFormControl: FormControl;
 
   constructor() {
-    for (var n in CourseStatus) {
-      if(typeof CourseStatus[n] === 'string')
+    for (let n in CourseStatus) {
+      if (typeof CourseStatus[n] === 'string')
         this.courseStatuss.push(CourseStatus[n.toString()]);
     }
   }
@@ -28,4 +27,4 @@ export class CourseStatusSelectComponent implements OnInit {
     this.innerFormControl.setValue(event, {emitEvent: false});
   }
 }
-
+

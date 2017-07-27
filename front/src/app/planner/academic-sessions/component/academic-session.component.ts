@@ -1,10 +1,10 @@
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
-import { AcademicYear } from '../../academic-years/academic-year.interface';
-import { AcademicSemester } from '../academic-semester-type.enum';
+import { AcademicYear } from '../../../shared/model/planner/academic-year.interface';
+import { AcademicSemester } from '../../../shared/model/planner/academic-semester-type.enum';
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, ViewContainerRef, OnInit } from '@angular/core';
 import { MdDialogRef, MdDialog, MdDialogConfig } from '@angular/material';
-import { AcademicSession } from "../academic-session.interface";
+import { AcademicSession } from '../../../shared/model/planner/academic-session.interface';
 import { AcademicSessionCreatorDialog } from '../dialog/academic-session-creator.dialog';
 import { AcademicSessionEditorDialog } from '../dialog/academic-session-editor.dialog';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -19,18 +19,9 @@ import { FormControl } from '@angular/forms';
 })
 export class AcademicSessionComponent implements OnInit {
 
-  @Input() academicSession: AcademicSession;
-  @Input() semester: AcademicSemester;
-  @Input() year: AcademicYear;
-  @Input() placeholder: string;
-  @Input() innerFormControl: FormControl;
-  @Output() view = new EventEmitter<AcademicSession>();
-
   private editorDialogRef: MdDialogRef<AcademicSessionEditorDialog>;
-
-  private ACADEMIC_SESSION: string[] = "plannerModuleState.academicSession".split(".");
+  private ACADEMIC_SESSION: string[] = 'plannerModuleState.academicSession'.split('.');
   private academicSession$: Observable<AcademicSession>;
-
   private columns: any[] = [
     { name: 'code', label: 'Code' },
     { name: 'description', label: 'Description' },
@@ -39,8 +30,16 @@ export class AcademicSessionComponent implements OnInit {
     { name: 'endDate', label: 'End Date' },
     { name: 'semester', label: 'AcademicSemester' },
     { name: 'year', label: 'AcademicYear' },
-    { name: 'action', label: '' }
+    { name: 'action', label: '' },
   ];
+
+  @Input() academicSession: AcademicSession;
+  @Input() semester: AcademicSemester;
+  @Input() year: AcademicYear;
+  @Input() placeholder: string;
+  @Input() innerFormControl: FormControl;
+  @Output() view = new EventEmitter<AcademicSession>();
+
 
   constructor(private router: Router,
     private route: ActivatedRoute,
@@ -59,7 +58,7 @@ export class AcademicSessionComponent implements OnInit {
   }
 
   editSession(): void {
-    console.log("edit");
+    console.log('edit');
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
     config.role = 'dialog';
@@ -70,8 +69,8 @@ export class AcademicSessionComponent implements OnInit {
     this.editorDialogRef.componentInstance.academicSession = this.academicSession;
 
     // set
-    this.editorDialogRef.afterClosed().subscribe(res => {
-      console.log("close dialog");
+    this.editorDialogRef.afterClosed().subscribe((res) => {
+      console.log('close dialog');
     });
   }
 

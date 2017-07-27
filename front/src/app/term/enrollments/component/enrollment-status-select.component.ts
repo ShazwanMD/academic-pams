@@ -1,7 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {FormControl} from "@angular/forms";
-import {EnrollmentStatus} from "../enrollment-status.enum";
-
+import {FormControl} from '@angular/forms';
+import {EnrollmentStatus} from '../../../shared/model/term/enrollment-status.enum';
 
 @Component({
   selector: 'pams-enrollment-status-select',
@@ -14,8 +13,8 @@ export class EnrollmentStatusSelectComponent implements OnInit {
   @Input() innerFormControl: FormControl;
 
   constructor() {
-    for (var n in EnrollmentStatus) {
-      if(typeof EnrollmentStatus[n] === 'string')
+    for (let n in EnrollmentStatus) {
+      if (typeof EnrollmentStatus[n] === 'string')
         this.enrollmentStatuss.push(EnrollmentStatus[n.toString()]);
     }
   }
@@ -27,4 +26,4 @@ export class EnrollmentStatusSelectComponent implements OnInit {
     this.innerFormControl.setValue(event, {emitEvent: false});
   }
 }
-
+

@@ -3,12 +3,10 @@ import { Store } from '@ngrx/store';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Component, OnInit, ViewContainerRef } from '@angular/core';
-
-
-import { Faculty } from "./../faculty.interface";
-import { PlannerModuleState } from "../../index";
-import { FacultyActions } from "../faculty.action";
-import { FacultyStatus } from "../faculty-status.enum";
+import { Faculty } from '../../../shared/model/planner/faculty.interface';
+import { PlannerModuleState } from '../../index';
+import { FacultyActions } from '../faculty.action';
+import { FacultyStatus } from '../../../shared/model/planner/faculty-status.enum';
 
 @Component({
     selector: 'pams-faculty-editor',
@@ -43,11 +41,11 @@ export class FacultyEditorDialog implements OnInit {
             prefix: '',
             status: FacultyStatus.NEW,
         });
-               if (this.edit) this.editorForm.patchValue(this._faculty);
+        if (this.edit) this.editorForm.patchValue(this._faculty);
     }
 
     save(faculty: Faculty, isValid: boolean) {
-        console.log("updating faculty");
+        console.log('updating faculty');
         if (!faculty.id) this.store.dispatch(this.actions.saveFaculty(faculty));
         else this.store.dispatch(this.actions.updateFaculty(faculty));
         this.dialog.close();

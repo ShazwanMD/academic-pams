@@ -1,7 +1,7 @@
 import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy,  AfterViewInit} from '@angular/core';
 import { TdDataTableSortingOrder, TdDataTableService, ITdDataTableSortChangeEvent, IPageChangeEvent } from '@covalent/core';
-import {Staff} from "../staff.interface";
 import {MdSnackBar} from "@angular/material";
+import {Staff} from '../../../shared/model/identity/staff.interface';
 
 @Component({
   selector: 'pams-staff-list',
@@ -10,18 +10,16 @@ import {MdSnackBar} from "@angular/material";
 })
 export class StaffListComponent implements AfterViewInit {
 
-  @Input() staffs: Staff[];
-  @Output() view: EventEmitter<Staff> = new EventEmitter<Staff>();
-
   private columns: any[] = [
     {name: 'id', label: 'Id'},
     {name: 'identityNo', label: 'Identity No.'},
     {name: 'name', label: 'Name'},
     {name: 'email', label: 'Email'},
-    //{name: 'phone', label: 'Phone'},
-   
     {name: 'action', label: ''}
   ];
+  @Input() staffs: Staff[];
+  @Output() view: EventEmitter<Staff> = new EventEmitter<Staff>();
+
   filteredData: any[];
   filteredTotal: number;
   searchTerm: string = '';
@@ -31,10 +29,10 @@ export class StaffListComponent implements AfterViewInit {
   sortBy: string = 'id';
   sortOrder: TdDataTableSortingOrder = TdDataTableSortingOrder.Descending;
 
-  
+
   constructor(private _dataTableService: TdDataTableService,
               private snackBar: MdSnackBar) {}
-  
+
   ngAfterViewInit(): void {
     this.filteredData = this.staffs;
     this.filteredTotal = this.staffs.length;
@@ -67,13 +65,13 @@ export class StaffListComponent implements AfterViewInit {
     newData = this._dataTableService.pageData(newData, this.fromRow, this.currentPage * this.pageSize);
     this.filteredData = newData;
   }
-  
+
   viewStaff(staff: Staff): void {
     console.log("Emitting staff");
     let snackBarRef = this.snackBar.open("Viewing staff", "OK");
     snackBarRef.afterDismissed().subscribe(() => {
       this.view.emit(staff);
     });
-  } 
+  }
 }
 

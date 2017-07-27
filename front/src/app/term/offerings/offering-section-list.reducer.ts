@@ -1,7 +1,7 @@
 import {Action} from '@ngrx/store';
 
-import {Section} from "../sections/section.interface";
-import {OfferingActions} from "./offering.action";
+import {Section} from '../../shared/model/term/section.interface';
+import {OfferingActions} from './offering.action';
 
 export type OfferingSectionListState = Section[];
 

@@ -1,12 +1,12 @@
 import {Component, ViewContainerRef, OnInit} from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
 import {FormBuilder} from '@angular/forms';
-import {Store} from "@ngrx/store";
-import {MdDialogRef} from "@angular/material";
+import {Store} from '@ngrx/store';
+import {MdDialogRef} from '@angular/material';
 
-import {ProgramLevel} from '../program-level.interface';
-import {PlannerModuleState} from "../../index";
-import {ProgramLevelActions} from "../program-level.action";
+import {ProgramLevel} from '../../../shared/model/planner/program-level.interface';
+import {PlannerModuleState} from '../../index';
+import {ProgramLevelActions} from '../program-level.action';
 
 @Component({
   selector: 'pams-program-level-editor',
@@ -42,11 +42,10 @@ export class ProgramLevelEditorDialog implements OnInit {
   }
 
   submit(programLevel: ProgramLevel, isValid: boolean) {
-    console.log("updating program level");
+    console.log('updating program level');
     if (!programLevel.id) this.store.dispatch(this.actions.saveProgramLevel(programLevel));
     else this.store.dispatch(this.actions.updateProgramLevel(programLevel));
     this.dialog.close();
   }
 }
-
-
+

@@ -1,6 +1,6 @@
-import { Enrollment } from './../term/enrollments/enrollment.interface';
+import { Enrollment } from '../shared/model/term/enrollment.interface';
 import {Action} from '@ngrx/store';
-import {ProfileActions} from "./profile.action";
+import {ProfileActions} from './profile.action';
 
 export type EnrollmentListState = Enrollment[];
 

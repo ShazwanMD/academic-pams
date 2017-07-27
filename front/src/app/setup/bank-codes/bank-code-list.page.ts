@@ -1,4 +1,4 @@
-import {BankCode} from './../../common/bank-codes/bank-code.interface';
+import {BankCode} from '../../shared/model/common/bank-code.interface';
 import {Component, OnInit} from '@angular/core';
 import {Store} from '@ngrx/store';
 import {SetupModuleState} from './../index';

@@ -1,6 +1,6 @@
 import { Component, Input, EventEmitter, Output, ChangeDetectionStrategy } from '@angular/core';
-import { Admission } from "../admission.interface";
-import { Enrollment } from "../../enrollments/enrollment.interface";
+import { Admission } from '../../../shared/model/term/admission.interface';
+import { Enrollment } from '../../../shared/model/term/enrollment.interface';
 
 @Component( {
     selector: 'pams-admission-enrollment-info',
@@ -15,7 +15,6 @@ export class AdmissionEnrollmentInfoComponent {
         { name: 'section.offering.titleEn', label: 'Title' },
         { name: 'section.offering.course.credit', label: 'Credit' },
         { name: 'section.offering.program.code', label: 'Program' },
-        //{ name: 'section.offering.course.faculty.name', label: 'Faculty' },
         { name: 'enrollmentStatus', label: 'Status' },
         { name: 'action', label: '' },
     ];

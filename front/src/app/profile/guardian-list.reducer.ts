@@ -1,7 +1,7 @@
 import {Action} from '@ngrx/store';
 
-import {Guardian} from "./guardian.interface";
-import {ProfileActions} from "./profile.action";
+import {Guardian} from '../shared/model/profile/guardian.interface';
+import {ProfileActions} from './profile.action';
 
 export type GuardianListState = Guardian[];
 

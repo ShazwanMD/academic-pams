@@ -1,7 +1,7 @@
 import {Action} from '@ngrx/store';
 
-import {EnrollmentApplication} from "../enrollment-applications/enrollment-application.interface";
-import {AdmissionActions} from "./admission.action";
+import {EnrollmentApplication} from '../../shared/model/term/enrollment-application.interface';
+import {AdmissionActions} from './admission.action';
 
 export type AdmissionEnrollmentApplicationListState = EnrollmentApplication[];
 

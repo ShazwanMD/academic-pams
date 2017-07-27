@@ -3,7 +3,7 @@ import {Observable} from 'rxjs';
 import {Store} from '@ngrx/store';
 import {FormControl} from '@angular/forms';
 import {CourseActions} from '../course.action';
-import {Course} from '../course.interface';
+import {Course} from '../../../shared/model/planner/course.interface';
 import {PlannerModuleState} from '../../index';
 
 @Component({

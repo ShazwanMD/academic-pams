@@ -1,10 +1,10 @@
 import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, ViewContainerRef} from '@angular/core';
-import {Course} from "../course.interface";
-import {CourseEditorDialog} from "../dialog/course-editor.dialog";
-import {MdDialog, MdDialogConfig, MdDialogRef, MdSnackBar} from "@angular/material";
-import {CourseActions} from "../course.action";
-import {Store} from "@ngrx/store";
-import {PlannerModuleState} from "../../index";
+import {Course} from '../../../shared/model/planner/course.interface';
+import {CourseEditorDialog} from '../dialog/course-editor.dialog';
+import {MdDialog, MdDialogConfig, MdDialogRef, MdSnackBar} from '@angular/material';
+import {CourseActions} from '../course.action';
+import {Store} from '@ngrx/store';
+import {PlannerModuleState} from '../../index';
 
 @Component({
   selector: 'pams-course-action',
@@ -13,19 +13,18 @@ import {PlannerModuleState} from "../../index";
 })
 export class CourseActionComponent {
 
-  @Input() course: Course;
   private editorDialogRef: MdDialogRef<CourseEditorDialog>;
+  @Input() course: Course;
 
   constructor(private actions: CourseActions,
               private store: Store<PlannerModuleState>,
               private vcf: ViewContainerRef,
               private dialog: MdDialog,
               private snackBar: MdSnackBar) {
-
   }
 
   editorDialog(): void {
-    console.log("edit");
+    console.log('edit');
     console.log(this.course);
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
@@ -37,8 +36,8 @@ export class CourseActionComponent {
     this.editorDialogRef.componentInstance.course = this.course;
 
     // set
-    this.editorDialogRef.afterClosed().subscribe(res => {
-      console.log("close dialog");
+    this.editorDialogRef.afterClosed().subscribe((res) => {
+      console.log('close dialog');
     });
   }
 
@@ -46,14 +45,13 @@ export class CourseActionComponent {
   //   this.store.dispatch(this.actions.deleteCourse(this._Course))
   // }
 
-
   deactivate(): void {
-    let snackBarRef = this.snackBar.open("Deactivating Course", "OK");
+    let snackBarRef = this.snackBar.open('Deactivating Course', 'OK');
     snackBarRef.afterDismissed().subscribe(() => this.store.dispatch(this.actions.deactivateCourse(this.course)));
   }
 
   activate(): void {
-    let snackBarRef = this.snackBar.open("Activating Course", "OK");
+    let snackBarRef = this.snackBar.open('Activating Course', 'OK');
     snackBarRef.afterDismissed().subscribe(() => this.store.dispatch(this.actions.activateCourse(this.course)));
   }
 }

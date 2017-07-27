@@ -1,14 +1,14 @@
-import {Faculty} from '../../faculties/faculty.interface';
+import {Faculty} from '../../../shared/model/planner/faculty.interface';
 import {Component, ViewContainerRef, OnInit} from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
 import {FormBuilder} from '@angular/forms';
 import {Router, ActivatedRoute} from '@angular/router';
-import {Course} from "../course.interface";
-import {CourseActions} from "../course.action";
-import {MdDialogRef} from "@angular/material";
-import {PlannerModuleState} from "../../index";
-import {Store} from "@ngrx/store";
-import {CourseStatus} from "../course-status.enum";
+import {Course} from '../../../shared/model/planner/course.interface';
+import {CourseActions} from '../course.action';
+import {MdDialogRef} from '@angular/material';
+import {PlannerModuleState} from '../../index';
+import {Store} from '@ngrx/store';
+import {CourseStatus} from '../../../shared/model/planner/course-status.enum';
 
 @Component({
   selector: 'pams-course-editor',
@@ -34,7 +34,7 @@ export class CourseEditorDialog implements OnInit {
     this._course = value;
     this.edit = true;
   }
-  
+
    set faculty (value: Faculty) {
     this._faculty = value;
   }
@@ -63,4 +63,3 @@ export class CourseEditorDialog implements OnInit {
   }
 }
 
- 

@@ -1,13 +1,11 @@
 import {Component, OnInit, ChangeDetectionStrategy} from '@angular/core';
 import {Router, ActivatedRoute} from '@angular/router';
 
-import {IdentityService} from '../../../services';
-import {CommonService} from '../../../services';
-import {Store} from "@ngrx/store";
-import {Observable} from "rxjs";
-import {Faculty} from "./faculty.interface";
-import {FacultyActions} from "./faculty.action";
-import {PlannerModuleState} from "../index";
+import {Store} from '@ngrx/store';
+import {Observable} from 'rxjs';
+import {Faculty} from '../../shared/model/planner/faculty.interface';
+import {FacultyActions} from './faculty.action';
+import {PlannerModuleState} from '../index';
 
 @Component({
   selector: 'pams-faculty-detail',
@@ -16,7 +14,7 @@ import {PlannerModuleState} from "../index";
 
 export class FacultyDetailPage implements OnInit {
 
-  private FACULTY: string[] = "plannerModuleState.faculty".split(".");
+  private FACULTY: string[] = 'plannerModuleState.faculty'.split('.');
   private faculty$: Observable<Faculty>;
 
   constructor(private router: Router,

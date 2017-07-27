@@ -1,19 +1,15 @@
-import { StudyMode } from './../../common/study-modes/study-mode.interface';
-import { Guardian } from './../guardian.interface';
+import { StudyMode } from '../../shared/model/common/study-mode.interface';
 import { Component, ViewContainerRef, OnInit, AfterViewInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Store } from "@ngrx/store";
-import { MdDialogRef } from "@angular/material";
-import { Student } from "../../identity/student.interface";
-import { ProfileModuleState } from "../index";
-import { ProfileActions } from "../profile.action";
-import { GuardianType } from "../guardian-type.enum";
-import { Cohort } from "../../planner/cohorts/cohort.interface";
-import { AcademicSession } from "../../planner/academic-sessions/academic-session.interface";
-import { TransferCohort } from "../transfer-cohort.interface";
-import { StudentStatus } from "../student-status.enum";
+import { Store } from '@ngrx/store';
+import { MdDialogRef } from '@angular/material';
+import { Student } from '../../shared/model/identity/student.interface';
+import { ProfileModuleState } from '../index';
+import { ProfileActions } from '../profile.action';
+import { Cohort } from '../../shared/model/planner/cohort.interface';
+import { StudentStatus } from '../../shared/model/profile/student-status.enum';
 
 @Component({
   selector: 'pams-cohort-transferer',
@@ -60,7 +56,7 @@ export class CohortTransfererDialog implements OnInit {
       studentStatusDescription: '',
 
     });
-    console.log("patching values : " + JSON.stringify(this._student.cohort));
+    console.log('patching values : ' + JSON.stringify(this._student.cohort));
     this.transferForm.patchValue({ from: this._student.cohort });
     this.transferForm.patchValue({ to: this._student.cohort });
     if (this.edit) this.transferForm.patchValue(this._student);
@@ -68,7 +64,7 @@ export class CohortTransfererDialog implements OnInit {
 
   transfer(student: Student, isValid: boolean) {
     console.log(student);
-    console.log("Cohort:{}" + student.cohort);
+    console.log('Cohort:{}' + student.cohort);
     this.store.dispatch(this.actions.updateStudent(student));
     this.dialog.close();
   }

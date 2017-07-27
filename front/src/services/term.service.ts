@@ -1,8 +1,8 @@
-import {Course} from '../app/planner/courses/course.interface';
-import {Program} from '../app/planner/programs/program.interface';
-import {AdmissionApplication} from '../app/term/admission-applications/admission-application.interface';
-import {Assessment} from '../app/term/assessments/assessment.interface';
-import {Offering} from '../app/term/offerings/offering.interface';
+import {Course} from '../app/shared/model/planner/course.interface';
+import {Program} from '../app/shared/model/planner/program.interface';
+import {AdmissionApplication} from '../app/shared/model/term/admission-application.interface';
+import {Assessment} from '../app/shared/model/term/assessment.interface';
+import {Offering} from '../app/shared/model/term/offering.interface';
 import {Injectable} from '@angular/core';
 import {Http} from '@angular/http';
 import {RequestOptions, Response, ResponseContentType, Headers} from '@angular/http';
@@ -10,16 +10,16 @@ import {HttpInterceptorService} from '@covalent/http';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/filter';
 import {environment} from '../environments/environment';
-import {EnrollmentApplication} from '../app/term/enrollment-applications/enrollment-application.interface';
-import {EnrollmentApplicationItem} from '../app/term/enrollment-applications/enrollment-application-item.interface';
-import {EnrollmentApplicationTask} from '../app/term/enrollment-applications/enrollment-application-task.interface';
-import {Admission} from '../app/term/admissions/admission.interface';
-import {Enrollment} from '../app/term/enrollments/enrollment.interface';
-import {AdmissionApplicationTask} from '../app/term/admission-applications/admission-application-task.interface';
-import {Appointment} from '../app/term/appointments/appointment.interface';
-import {Section} from '../app/term/sections/section.interface';
-import {GradebookMatrix} from '../app/term/offerings/gradebook-matrix.interface';
-import {Gradebook} from "../app/term/gradebooks/gradebook.interface";
+import {EnrollmentApplication} from '../app/shared/model/term/enrollment-application.interface';
+import {EnrollmentApplicationItem} from '../app/shared/model/term/enrollment-application-item.interface';
+import {EnrollmentApplicationTask} from '../app/shared/model/term/enrollment-application-task.interface';
+import {Admission} from '../app/shared/model/term/admission.interface';
+import {Enrollment} from '../app/shared/model/term/enrollment.interface';
+import {AdmissionApplicationTask} from '../app/shared/model/term/admission-application-task.interface';
+import {Appointment} from '../app/shared/model/term/appointment.interface';
+import {Section} from '../app/shared/model/term/section.interface';
+import {GradebookMatrix} from '../app/shared/model/term/gradebook-matrix.interface';
+import {Gradebook} from "../app/shared/model/term/gradebook.interface";
 
 @Injectable()
 export class TermService {

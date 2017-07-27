@@ -1,7 +1,7 @@
 import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, ViewContainerRef} from '@angular/core';
-import {Section} from '../../sections/section.interface';
-import {Appointment} from '../../appointments/appointment.interface';
-import {Offering} from '../offering.interface';
+import {Section} from '../../../shared/model/term/section.interface';
+import {Appointment} from '../../../shared/model/term/appointment.interface';
+import {Offering} from '../../../shared/model/term/offering.interface';
 import {Store} from '@ngrx/store';
 import {ActivatedRoute, Router} from '@angular/router';
 import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';

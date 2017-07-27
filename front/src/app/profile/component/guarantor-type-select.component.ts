@@ -1,7 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {FormControl} from "@angular/forms";
-import {GuarantorType} from "../guarantor-type.enum";
-
+import {FormControl} from '@angular/forms';
+import {GuarantorType} from '../../shared/model/profile/guarantor-type.enum';
 
 @Component({
   selector: 'pams-guarantor-type-select',
@@ -14,8 +13,8 @@ export class GuarantorTypeSelectComponent implements OnInit {
   @Input() innerFormControl: FormControl;
 
   constructor() {
-    for (var n in GuarantorType) {
-      if(typeof GuarantorType[n] === 'string')
+    for (let n in GuarantorType) {
+      if (typeof GuarantorType[n] === 'string')
         this.guarantorTypes.push(GuarantorType[n.toString()]);
     }
   }
@@ -27,4 +26,4 @@ export class GuarantorTypeSelectComponent implements OnInit {
     this.innerFormControl.setValue(event, {emitEvent: false});
   }
 }
-
+

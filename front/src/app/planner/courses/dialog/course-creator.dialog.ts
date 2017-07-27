@@ -1,18 +1,14 @@
-import {Curriculum} from '../../curriculums/curriculum.interface';
-import {CourseClassification} from '../course-classification.enum';
-import { CourseClassificationComponent } from './../component/course-classification.component';
-import {Course} from './../course.interface';
-import {Faculty} from './../../faculties/faculty.interface';
+import {Curriculum} from '../../../shared/model/planner/curriculum.interface';
+import {CourseClassification} from '../../../shared/model/planner/course-classification.enum';
+import {Course} from '../../../shared/model/planner/course.interface';
+import {Faculty} from '../../../shared/model/planner/faculty.interface';
 import {Component, ViewContainerRef, OnInit} from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
 import {FormBuilder, Validators} from '@angular/forms';
-import {Router, ActivatedRoute} from '@angular/router';
-import {CourseActions} from "../course.action";
-import {Store} from "@ngrx/store";
-import {PlannerModuleState} from "../../index";
-import {MdDialogRef} from "@angular/material";
-import {CourseStatus} from "../course-status.enum";
-
+import {CourseActions} from '../course.action';
+import {Store} from '@ngrx/store';
+import {PlannerModuleState} from '../../index';
+import {MdDialogRef} from '@angular/material';
 
 @Component({
   selector: 'pams-course-creator',
@@ -23,10 +19,10 @@ export class CourseCreatorDialog implements OnInit {
 
   private createForm: FormGroup;
   private create: boolean = false;
-  private _course:Course;
+  private _course: Course;
   private faculty: Faculty;
   private _curriculum: Curriculum;
-  private minLength: number = 1; 
+  private minLength: number = 1;
 
   constructor(private formBuilder: FormBuilder,
               private store: Store<PlannerModuleState>,
@@ -37,9 +33,8 @@ export class CourseCreatorDialog implements OnInit {
               private dialog: MdDialogRef<CourseCreatorDialog>) {
   }
 
-
-  set curriculum(value:Curriculum){
-  this._curriculum= value;
+  set curriculum(value: Curriculum){
+  this._curriculum = value;
 }
    set course(value: Course) {
         this._course = value;
@@ -57,8 +52,8 @@ export class CourseCreatorDialog implements OnInit {
       faculty: ['', Validators.required],
     });
 
-    this.createForm.patchValue({'curriculum':this._curriculum});
-   if (this.create) this.createForm.patchValue(this._course);
+    this.createForm.patchValue({'curriculum': this._curriculum});
+    if (this.create) this.createForm.patchValue(this._course);
   }
 
   save(course: Course, isValid: boolean) {
@@ -69,5 +64,4 @@ export class CourseCreatorDialog implements OnInit {
         console.log(course);
   }
 
-  
 }

@@ -6,15 +6,15 @@ import {
   ChangeDetectionStrategy,
   ViewContainerRef,
   SimpleChange,
-  OnChanges
+  OnChanges,
 } from '@angular/core';
-import {MdSnackBar} from "@angular/material";
-import {EnrollmentApplicationTask} from "../enrollment-application-task.interface";
+import {MdSnackBar} from '@angular/material';
+import {EnrollmentApplicationTask} from '../../../shared/model/term/enrollment-application-task.interface';
 import {
   TdDataTableSortingOrder,
   TdDataTableService,
   ITdDataTableSortChangeEvent,
-  IPageChangeEvent
+  IPageChangeEvent,
 } from '@covalent/core';
 
 @Component({
@@ -24,9 +24,6 @@ import {
 })
 export class StudentEnrollmentListComponent implements OnChanges {
 
-  @Input() studentEnrollmentApplicationTasks: EnrollmentApplicationTask[];
-  @Output() view = new EventEmitter<EnrollmentApplicationTask>();
-
   private columns: any[] = [
     {name: 'referenceNo', label: 'ReferenceNo'},
     {name: 'application.admission.student.identityNo', label: 'Student ID'},
@@ -34,8 +31,11 @@ export class StudentEnrollmentListComponent implements OnChanges {
     {name: 'application.admission.cgpa', label: 'CGPA'},
     {name: 'application.admission.cohort.code', label: 'Cohort'},
     {name: 'flowState', label: 'Status'},
-    {name: 'action', label: ''}
+    {name: 'action', label: ''},
   ];
+
+  @Input() studentEnrollmentApplicationTasks: EnrollmentApplicationTask[];
+  @Output() view = new EventEmitter<EnrollmentApplicationTask>();
 
   constructor(private _dataTableService: TdDataTableService,
               private snackBar: MdSnackBar) {
@@ -51,7 +51,7 @@ export class StudentEnrollmentListComponent implements OnChanges {
   sortOrder: TdDataTableSortingOrder = TdDataTableSortingOrder.Descending;
 
   ngOnChanges(changes: { [ propName: string]: SimpleChange }) {
-    console.log("changes", changes, changes['studentEnrollmentApplicationTasks']);
+    console.log('changes', changes, changes['studentEnrollmentApplicationTasks']);
     if (changes['studentEnrollmentApplicationTasks']) {
       this.filteredData = changes['studentEnrollmentApplicationTasks'].currentValue;
       this.filteredTotal = changes['studentEnrollmentApplicationTasks'].currentValue.length;
@@ -93,8 +93,8 @@ export class StudentEnrollmentListComponent implements OnChanges {
   }
 
   viewTask(task: EnrollmentApplicationTask): void {
-    console.log("Emitting task");
-    let snackBarRef = this.snackBar.open("Viewing student enrollment application", "OK");
+    console.log('Emitting task');
+    let snackBarRef = this.snackBar.open('Viewing student enrollment application', 'OK');
     snackBarRef.afterDismissed().subscribe(() => {
       this.view.emit(task);
     });

@@ -1,17 +1,15 @@
 import { Component, OnInit, ChangeDetectionStrategy, ViewContainerRef } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import { IdentityService } from '../../../services';
 import { TermService } from '../../../services';
-import { CommonService } from '../../../services';
-import { Store } from "@ngrx/store";
-import { Observable } from "rxjs";
-import { Appointment } from "./appointment.interface";
-import { AppointmentActions } from "./appointment.action";
-import { TermModuleState } from "../index";
-import { MdDialog, MdDialogConfig, MdDialogRef } from "@angular/material";
-import { AppointmentEditorDialog } from "./dialog/appointment-editor.dialog";
-import { Section } from "../sections/section.interface";
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { Appointment } from '../../shared/model/term/appointment.interface';
+import { AppointmentActions } from './appointment.action';
+import { TermModuleState } from '../index';
+import { MdDialog, MdDialogConfig, MdDialogRef } from '@angular/material';
+import { AppointmentEditorDialog } from './dialog/appointment-editor.dialog';
+import { Section } from '../../shared/model/term/section.interface';
 
 @Component( {
     selector: 'pams-student-appointment-detail',
@@ -20,8 +18,8 @@ import { Section } from "../sections/section.interface";
 
 export class StudentAppointmentDetailPage implements OnInit {
 
-    private APPOINTMENT: string[] = "termModuleState.appointment".split( "." );
-    private SECTION: string[] = "termModuleState.section".split( "." );
+    private APPOINTMENT: string[] = 'termModuleState.appointment'.split( '.' );
+    private SECTION: string[] = 'termModuleState.section'.split( '.' );
     private appointment$: Observable<Appointment>;
     private section$: Observable<Section>;
     private creatorDialogRef: MdDialogRef<AppointmentEditorDialog>;
@@ -39,7 +37,7 @@ export class StudentAppointmentDetailPage implements OnInit {
     }
 
     showDialog(): void {
-        console.log( "showDialog" );
+        console.log( 'showDialog' );
         let config = new MdDialogConfig();
         config.viewContainerRef = this.vcf;
         config.role = 'dialog';
@@ -47,13 +45,11 @@ export class StudentAppointmentDetailPage implements OnInit {
         config.height = '30%';
         config.position = { top: '3px' };
         this.creatorDialogRef = this.dialog.open( AppointmentEditorDialog, config );
-        this.creatorDialogRef.afterClosed().subscribe( res => {
-            console.log( "close dialog" );
+        this.creatorDialogRef.afterClosed().subscribe( (res) => {
+            console.log( 'close dialog' );
             // load something here
         } );
     }
-
-
 
     ngOnInit(): void {
         this.route.params.subscribe(( params: { id: string } ) => {

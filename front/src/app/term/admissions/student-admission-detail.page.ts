@@ -3,13 +3,13 @@ import {Router, ActivatedRoute} from '@angular/router';
 
 import {Store} from '@ngrx/store';
 import {Observable} from 'rxjs';
-import {Admission} from './admission.interface';
+import {Admission} from '../../shared/model/term/admission.interface';
 import {AdmissionActions} from './admission.action';
 import {TermModuleState} from '../index';
 import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';
-import {Enrollment} from '../enrollments/enrollment.interface';
-import { AdmissionCreateTaskCreatorDialog } from "./dialog/admission-create-task-creator.dialog";
-import { EnrollmentApplication } from "../enrollment-applications/enrollment-application.interface";
+import {Enrollment} from '../../shared/model/term/enrollment.interface';
+import {AdmissionCreateTaskCreatorDialog} from './dialog/admission-create-task-creator.dialog';
+import {EnrollmentApplication} from '../../shared/model/term/enrollment-application.interface';
 
 @Component({
   selector: 'pams-student-admission-detail',
@@ -18,9 +18,6 @@ import { EnrollmentApplication } from "../enrollment-applications/enrollment-app
 
 export class StudentAdmissionDetailPage implements OnInit {
 
-  @Input() admission: Admission;
-  @Input() enrollment: Enrollment;
-    
   private ADMISSION: string[] = 'termModuleState.admission'.split('.');
   private ENROLLMENTS: string[] = 'termModuleState.admissionEnrollments'.split('.');
   private ENROLLMENTAPPLICATIONS: string[] = 'termModuleState.admissionEnrollmentApplications'.split('.');
@@ -29,7 +26,10 @@ export class StudentAdmissionDetailPage implements OnInit {
   private enrollmentApplications$: Observable<EnrollmentApplication[]>;
   private creatorDialogRef: MdDialogRef<AdmissionCreateTaskCreatorDialog>;
   private creatorDialogRefDel: MdDialogRef<AdmissionCreateTaskCreatorDialog>;
-  
+
+  @Input() admission: Admission;
+  @Input() enrollment: Enrollment;
+
   constructor(private router: Router,
               private route: ActivatedRoute,
               private actions: AdmissionActions,
@@ -82,11 +82,11 @@ export class StudentAdmissionDetailPage implements OnInit {
   goBack(route: string): void {
     this.router.navigate(['/admissions']);
   }
-  
+
   viewTask(enrollment: Enrollment) {
-      console.log("task: " + enrollment.id);
-      this.router.navigate(['/term/enrollments', enrollment.id]);
-      
-    } 
-  
+    console.log('task: ' + enrollment.id);
+    this.router.navigate(['/term/enrollments', enrollment.id]);
+
+  }
+
 }

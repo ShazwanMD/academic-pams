@@ -1,6 +1,6 @@
 import {Action} from '@ngrx/store';
 import * as _ from 'lodash';
-import {Curriculum} from './curriculum.interface';
+import {Curriculum} from '../../shared/model/planner/curriculum.interface';
 import {CurriculumActions} from './curriculum.action';
 
 export type CurriculumListState = Curriculum[];

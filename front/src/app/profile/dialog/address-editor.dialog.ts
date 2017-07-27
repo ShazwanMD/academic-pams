@@ -1,16 +1,16 @@
-import { CountryCode } from './../../common/country-codes/country-code.interface';
-import { StateCode } from './../../common/state-codes/state-code.interface';
-import { Address } from './../address.interface';
+import { CountryCode } from '../../shared/model/common/country-code.interface';
+import { StateCode } from '../../shared/model/common/state-code.interface';
+import { Address } from '../../shared/model/profile/address.interface';
 import {Component, ViewContainerRef, OnInit, AfterViewInit} from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
 import {FormBuilder} from '@angular/forms';
 import {Router, ActivatedRoute} from '@angular/router';
-import {Store} from "@ngrx/store";
-import {MdDialogRef} from "@angular/material";
-import {Student} from "../../identity/student.interface";
-import {ProfileModuleState} from "../index";
-import {ProfileActions} from "../profile.action";
-import { AddressType } from "../address-type.enum";
+import {Store} from '@ngrx/store';
+import {MdDialogRef} from '@angular/material';
+import {Student} from '../../shared/model/identity/student.interface';
+import {ProfileModuleState} from '../index';
+import {ProfileActions} from '../profile.action';
+import { AddressType } from '../../shared/model/profile/address-type.enum';
 
 @Component({
   selector: 'pams-address-editor',
@@ -54,7 +54,7 @@ export class AddressEditorDialog implements OnInit {
       countryCode: <CountryCode>{},
     });
     //console.log(this._address, this._student)
-     if (this.edit) this.editorForm.patchValue(this._address);
+    if (this.edit) this.editorForm.patchValue(this._address);
   }
 
   submit(address: Address, isValid: boolean) {
@@ -62,11 +62,11 @@ export class AddressEditorDialog implements OnInit {
     //console.log("ini address saja=",this._address.id);
     //console.log(isValid);
 
-    if(isValid)
+    if (isValid)
     address.id = this._address.id;
     //console.log(address);
-    
-    if(isValid) this.store.dispatch(this.actions.updateAddress(this._student, address));
+
+    if (isValid) this.store.dispatch(this.actions.updateAddress(this._student, address));
     else this.store.dispatch(this.actions.addAddress(this._student, address));
     this.dialog.close();
   }

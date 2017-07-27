@@ -4,227 +4,227 @@ import {Action} from '@ngrx/store';
 @Injectable()
 export class SectionActions {
 
-    static FIND_SECTIONS = '[Section] Find Sections';
+  static FIND_SECTIONS = '[Section] Find Sections';
 
-    findSections(): Action {
-        console.log("findSections");
-        return {
-            type: SectionActions.FIND_SECTIONS
-        };
-    }
+  findSections(): Action {
+    console.log("findSections");
+    return {
+      type: SectionActions.FIND_SECTIONS
+    };
+  }
 
-    static FIND_SECTIONS_SUCCESS = '[Section] Find Sections Success';
+  static FIND_SECTIONS_SUCCESS = '[Section] Find Sections Success';
 
-    findSectionsSuccess(sections): Action {
-        console.log("findSectionsSuccess");
-        console.log("sections: " + sections.length);
-        return {
-            type: SectionActions.FIND_SECTIONS_SUCCESS,
-            payload: sections
-        };
-    }
+  findSectionsSuccess(sections): Action {
+    console.log("findSectionsSuccess");
+    console.log("sections: " + sections.length);
+    return {
+      type: SectionActions.FIND_SECTIONS_SUCCESS,
+      payload: sections
+    };
+  }
 
 
-    static SAVE_SECTION = '[Section] Save Section';
+  static SAVE_SECTION = '[Section] Save Section';
 
-    saveSection(section): Action {
-        return {
-            type: SectionActions.SAVE_SECTION,
-            payload: section
-        };
-    }
+  saveSection(section): Action {
+    return {
+      type: SectionActions.SAVE_SECTION,
+      payload: section
+    };
+  }
 
-    static SAVE_SECTION_SUCCESS = '[Section] Save Section Success';
+  static SAVE_SECTION_SUCCESS = '[Section] Save Section Success';
 
-    saveSectionSuccess(section): Action {
-        return {
-            type: SectionActions.SAVE_SECTION_SUCCESS,
-            payload: section
-        };
-    }
+  saveSectionSuccess(section): Action {
+    return {
+      type: SectionActions.SAVE_SECTION_SUCCESS,
+      payload: section
+    };
+  }
 
-    static FIND_ENROLLMENTS_BY_SECTION = '[Section] Find Enrollments By Section';
+  static FIND_ENROLLMENTS_BY_SECTION = '[Section] Find Enrollments By Section';
 
-    findEnrollmentsBySection(section): Action {
-        console.log("findEnrollmentsBySection");
-        return {
-            type: SectionActions.FIND_ENROLLMENTS_BY_SECTION,
-            payload: section
-        };
-    }
+  findEnrollmentsBySection(section): Action {
+    console.log("findEnrollmentsBySection");
+    return {
+      type: SectionActions.FIND_ENROLLMENTS_BY_SECTION,
+      payload: section
+    };
+  }
 
-    static FIND_ENROLLMENTS_BY_SECTION_SUCCESS = '[Section] Find Enrollments By Section Success';
+  static FIND_ENROLLMENTS_BY_SECTION_SUCCESS = '[Section] Find Enrollments By Section Success';
 
-    findEnrollmentsBySectionSuccess(enrollments): Action {
-        console.log("findEnrollmentsBySectionSuccess");
-        return {
-            type: SectionActions.FIND_ENROLLMENTS_BY_SECTION_SUCCESS,
-            payload: enrollments
-        };
-    }
-    
-    //find gradebooks by section
-    static FIND_GRADEBOOKS_BY_SECTION = '[Section] Find Gradebooks By Section';
+  findEnrollmentsBySectionSuccess(enrollments): Action {
+    console.log("findEnrollmentsBySectionSuccess");
+    return {
+      type: SectionActions.FIND_ENROLLMENTS_BY_SECTION_SUCCESS,
+      payload: enrollments
+    };
+  }
 
-    findGradebooksBySection(section): Action {
-        console.log("findGradebooksBySection");
-        return {
-            type: SectionActions.FIND_GRADEBOOKS_BY_SECTION,
-            payload: section
-        };
-    }
+  //find gradebooks by section
+  static FIND_GRADEBOOKS_BY_SECTION = '[Section] Find Gradebooks By Section';
 
-    static FIND_GRADEBOOKS_BY_SECTION_SUCCESS = '[Section] Find Gradebooks By Section Success';
+  findGradebooksBySection(section): Action {
+    console.log("findGradebooksBySection");
+    return {
+      type: SectionActions.FIND_GRADEBOOKS_BY_SECTION,
+      payload: section
+    };
+  }
 
-    findGradebooksBySectionSuccess(gradebooks): Action {
-        console.log("findGradebooksBySectionSuccess");
-        return {
-            type: SectionActions.FIND_GRADEBOOKS_BY_SECTION_SUCCESS,
-            payload: gradebooks
-        };
-    }
+  static FIND_GRADEBOOKS_BY_SECTION_SUCCESS = '[Section] Find Gradebooks By Section Success';
 
-    //find appointments by section
-    static FIND_APPOINTMENTS_BY_SECTION = '[Section] Find Appointments By Section';
+  findGradebooksBySectionSuccess(gradebooks): Action {
+    console.log("findGradebooksBySectionSuccess");
+    return {
+      type: SectionActions.FIND_GRADEBOOKS_BY_SECTION_SUCCESS,
+      payload: gradebooks
+    };
+  }
 
-    findAppointmentsBySection(section): Action {
-        console.log("findAppointmentsBySection");
-        return {
-            type: SectionActions.FIND_APPOINTMENTS_BY_SECTION,
-            payload: section
-        };
-    }
+  //find appointments by section
+  static FIND_APPOINTMENTS_BY_SECTION = '[Section] Find Appointments By Section';
 
-    static FIND_APPOINTMENTS_BY_SECTION_SUCCESS = '[Section] Find Appointments By Section Success';
+  findAppointmentsBySection(section): Action {
+    console.log("findAppointmentsBySection");
+    return {
+      type: SectionActions.FIND_APPOINTMENTS_BY_SECTION,
+      payload: section
+    };
+  }
 
-    findAppointmentsBySectionSuccess(appointments): Action {
-        console.log("findAppointmentsBySectionSuccess");
-        return {
-            type: SectionActions.FIND_APPOINTMENTS_BY_SECTION_SUCCESS,
-            payload: appointments
-        };
-    }
+  static FIND_APPOINTMENTS_BY_SECTION_SUCCESS = '[Section] Find Appointments By Section Success';
 
-    static FIND_OFFERING_BY_CANONICAL_CODE = '[Offering] Find Offering By Canonical Code';
+  findAppointmentsBySectionSuccess(appointments): Action {
+    console.log("findAppointmentsBySectionSuccess");
+    return {
+      type: SectionActions.FIND_APPOINTMENTS_BY_SECTION_SUCCESS,
+      payload: appointments
+    };
+  }
 
-    findOfferingByCanonicalCode(canonicalCode): Action {
-        return {
-            type: SectionActions.FIND_OFFERING_BY_CANONICAL_CODE,
-            payload: canonicalCode
-        };
-    }
+  static FIND_OFFERING_BY_CANONICAL_CODE = '[Offering] Find Offering By Canonical Code';
 
-    static FIND_OFFERING_BY_CANONICAL_CODE_SUCCESS = '[Offering] Find Offering By Canonical Code Success';
+  findOfferingByCanonicalCode(canonicalCode): Action {
+    return {
+      type: SectionActions.FIND_OFFERING_BY_CANONICAL_CODE,
+      payload: canonicalCode
+    };
+  }
 
-    findOfferingByCanonicalCodeSuccess(offering): Action {
-        return {
-            type: SectionActions.FIND_OFFERING_BY_CANONICAL_CODE_SUCCESS,
-            payload: offering
-        };
-    }
+  static FIND_OFFERING_BY_CANONICAL_CODE_SUCCESS = '[Offering] Find Offering By Canonical Code Success';
 
-    static FIND_SECTION_BY_CANONICAL_CODE = '[Section] Find Section By Canonical Code';
+  findOfferingByCanonicalCodeSuccess(offering): Action {
+    return {
+      type: SectionActions.FIND_OFFERING_BY_CANONICAL_CODE_SUCCESS,
+      payload: offering
+    };
+  }
 
-    findSectionByCanonicalCode(canonicalCode): Action {
-        return {
-            type: SectionActions.FIND_SECTION_BY_CANONICAL_CODE,
-            payload: canonicalCode
-        };
-    }
+  static FIND_SECTION_BY_CANONICAL_CODE = '[Section] Find Section By Canonical Code';
 
-    static FIND_SECTION_BY_CANONICAL_CODE_SUCCESS = '[Section] Find Section By Canonical Code Success';
+  findSectionByCanonicalCode(canonicalCode): Action {
+    return {
+      type: SectionActions.FIND_SECTION_BY_CANONICAL_CODE,
+      payload: canonicalCode
+    };
+  }
 
-    findSectionByCanonicalCodeSuccess(section): Action {
-        return {
-            type: SectionActions.FIND_SECTION_BY_CANONICAL_CODE_SUCCESS,
-            payload: section
-        };
-    }
+  static FIND_SECTION_BY_CANONICAL_CODE_SUCCESS = '[Section] Find Section By Canonical Code Success';
 
-    static FIND_SECTION_BY_CURRENT = '[Section] Find Section By Current';
+  findSectionByCanonicalCodeSuccess(section): Action {
+    return {
+      type: SectionActions.FIND_SECTION_BY_CANONICAL_CODE_SUCCESS,
+      payload: section
+    };
+  }
 
-    findSectionByCurrent(section): Action {
-        return {
-            type: SectionActions.FIND_SECTION_BY_CURRENT,
-            payload: section
-        };
-    }
+  static FIND_SECTION_BY_CURRENT = '[Section] Find Section By Current';
 
-    static FIND_SECTION_BY_CURRENT_SUCCESS = '[Section] Find Section By Current Success';
+  findSectionByCurrent(section): Action {
+    return {
+      type: SectionActions.FIND_SECTION_BY_CURRENT,
+      payload: section
+    };
+  }
 
-    findSectionByCurrentSuccess(section): Action {
-        return {
-            type: SectionActions.FIND_SECTION_BY_CURRENT_SUCCESS,
-            payload: section
-        };
-    }
+  static FIND_SECTION_BY_CURRENT_SUCCESS = '[Section] Find Section By Current Success';
 
-    static FIND_SECTION_BY_ID_SUCCESS = '[Section] Find Section By Id Success';
+  findSectionByCurrentSuccess(section): Action {
+    return {
+      type: SectionActions.FIND_SECTION_BY_CURRENT_SUCCESS,
+      payload: section
+    };
+  }
 
-    findSectionByIdSuccess(section): Action {
-        return {
-            type: SectionActions.FIND_SECTION_BY_ID_SUCCESS,
-            payload: section
-        };
-    }
+  static FIND_SECTION_BY_ID_SUCCESS = '[Section] Find Section By Id Success';
 
-    static ADD_SECTION = '[Section] Add Section';
+  findSectionByIdSuccess(section): Action {
+    return {
+      type: SectionActions.FIND_SECTION_BY_ID_SUCCESS,
+      payload: section
+    };
+  }
 
-    addSection(offering, section): Action {
-        return {
-            type: SectionActions.ADD_SECTION,
-            payload: { offering: offering, section: section }
-        };
-    }
+  static ADD_SECTION = '[Section] Add Section';
 
-    static ADD_SECTION_SUCCESS = '[Section] Add Section Success';
+  addSection(offering, section): Action {
+    return {
+      type: SectionActions.ADD_SECTION,
+      payload: {offering: offering, section: section}
+    };
+  }
 
-    addSectionSuccess(message): Action {
-        return {
-            type: SectionActions.ADD_SECTION_SUCCESS,
-            payload: message
-        };
-    }
+  static ADD_SECTION_SUCCESS = '[Section] Add Section Success';
 
-    //delete section
-    static REMOVE_SECTION = '[Section] Remove Section';
+  addSectionSuccess(message): Action {
+    return {
+      type: SectionActions.ADD_SECTION_SUCCESS,
+      payload: message
+    };
+  }
 
-    deleteSection(offering, section): Action {
-        console.log("deleteSection");
-        return {
-            type: SectionActions.REMOVE_SECTION,
-            payload: { offering: offering, section: section }
-        };
-    }
+  //delete section
+  static REMOVE_SECTION = '[Section] Remove Section';
 
-    static REMOVE_SECTION_SUCCESS = '[Section] Remove Section  Success';
+  deleteSection(offering, section): Action {
+    console.log("deleteSection");
+    return {
+      type: SectionActions.REMOVE_SECTION,
+      payload: {offering: offering, section: section}
+    };
+  }
 
-    deleteSectionSuccess(message): Action {
-        console.log("deleteSectionSuccess");
-        return {
-            type: SectionActions.REMOVE_SECTION_SUCCESS,
-            payload: message
-        };
-    }
+  static REMOVE_SECTION_SUCCESS = '[Section] Remove Section  Success';
 
-    static UPDATE_SECTION = '[Section] Update Section';
+  deleteSectionSuccess(message): Action {
+    console.log("deleteSectionSuccess");
+    return {
+      type: SectionActions.REMOVE_SECTION_SUCCESS,
+      payload: message
+    };
+  }
 
-    updateSection(offering, section): Action {
-        console.log("updateSection");
-        return {
-            type: SectionActions.UPDATE_SECTION,
-            payload: { offering: offering, section: section }
-        };
-    }
+  static UPDATE_SECTION = '[Section] Update Section';
 
-    static UPDATE_SECTION_SUCCESS = '[Section] Update Section Success';
+  updateSection(offering, section): Action {
+    console.log("updateSection");
+    return {
+      type: SectionActions.UPDATE_SECTION,
+      payload: {offering: offering, section: section}
+    };
+  }
 
-    updateSectionSuccess(message): Action {
-        console.log("updateSectionSuccess");
-        return {
-            type: SectionActions.UPDATE_SECTION_SUCCESS,
-            payload: message
-        };
-    }
+  static UPDATE_SECTION_SUCCESS = '[Section] Update Section Success';
+
+  updateSectionSuccess(message): Action {
+    console.log("updateSectionSuccess");
+    return {
+      type: SectionActions.UPDATE_SECTION_SUCCESS,
+      payload: message
+    };
+  }
 
 }

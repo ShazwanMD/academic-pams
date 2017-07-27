@@ -1,5 +1,5 @@
 import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy} from '@angular/core';
-import {Enrollment} from "../enrollment.interface";
+import {Enrollment} from '../../../shared/model/term/enrollment.interface';
 
 @Component({
   selector: 'pams-enrollment-list',
@@ -8,9 +8,6 @@ import {Enrollment} from "../enrollment.interface";
 })
 export class EnrollmentListComponent {
 
-  @Input() enrollments: Enrollment[];
-  @Output() view = new EventEmitter<Enrollment>();
-
   private columns: any[] = [
     {name: 'admission.student.name', label: 'Student Name'},
     {name: 'section.code', label: 'Section'},
@@ -18,6 +15,10 @@ export class EnrollmentListComponent {
     {name: 'section.offering.course.title', label: 'Course Title'},
     {name: 'section.offering.program.code', label: 'Program'},
      {name: 'section.offering.program.faculty.name', label: 'Faculty'},
-    {name: 'action', label: ''}
+    {name: 'action', label: ''},
   ];
+
+  @Input() enrollments: Enrollment[];
+  @Output() view = new EventEmitter<Enrollment>();
+
 }

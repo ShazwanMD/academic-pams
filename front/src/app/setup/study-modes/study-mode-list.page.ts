@@ -1,4 +1,4 @@
-import {StudyMode} from './../../common/study-modes/study-mode.interface';
+import {StudyMode} from '../../shared/model/common/study-mode.interface';
 import {StudyModeEditorDialog} from './dialog/study-mode-editor.dialog';
 import {MdDialog, MdDialogRef, MdDialogConfig} from '@angular/material';
 import {Observable} from 'rxjs/Observable';

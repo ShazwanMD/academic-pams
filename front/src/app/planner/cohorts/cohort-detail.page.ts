@@ -5,7 +5,7 @@ import {IdentityService} from '../../../services';
 import {CommonService} from '../../../services';
 import {Store} from "@ngrx/store";
 import {Observable} from "rxjs";
-import {Cohort} from "./cohort.interface";
+import {Cohort} from "../../shared/model/planner/cohort.interface";
 import {CohortActions} from "./cohort.action";
 import {PlannerModuleState} from "../index";
 import {MdDialog, MdDialogConfig, MdDialogRef} from "@angular/material";
@@ -45,7 +45,7 @@ export class CohortDetailPage implements OnInit {
   }
 
  // filter(): void {
-  
 
- 
+
+
 

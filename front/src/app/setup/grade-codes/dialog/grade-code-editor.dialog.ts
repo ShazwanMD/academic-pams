@@ -1,4 +1,4 @@
-import { GradeCode } from './../../../common/grade-codes/grade-code.interface';
+import { GradeCode } from '../../../shared/model/common/grade-code.interface';
 import {Component, ViewContainerRef, OnInit, AfterViewInit} from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
 import { FormBuilder, Validators } from '@angular/forms';

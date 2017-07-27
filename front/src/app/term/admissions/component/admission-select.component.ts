@@ -4,7 +4,7 @@ import {Store} from '@ngrx/store';
 import {FormControl} from '@angular/forms';
 import {AdmissionActions} from '../admission.action';
 import {TermModuleState} from '../../index';
-import {Admission} from '../admission.interface';
+import {Admission} from '../../../shared/model/term/admission.interface';
 
 @Component({
   selector: 'pams-admission-select',
@@ -31,4 +31,4 @@ export class AdmissionSelectComponent implements OnInit {
     this.innerFormControl.setValue(event, {emitEvent: false});
   }
 }
-
+

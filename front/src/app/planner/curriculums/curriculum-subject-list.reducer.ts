@@ -1,4 +1,4 @@
-import {Subject} from './subject.interface';
+import {Subject} from '../../shared/model/planner/subject.interface';
 import {CurriculumActions} from './curriculum.action';
 import {Action} from '@ngrx/store';
 

@@ -4,7 +4,7 @@ import {Router, ActivatedRoute} from '@angular/router';
 
 import {Store} from '@ngrx/store';
 import {Observable} from 'rxjs';
-import {Offering} from './offering.interface';
+import {Offering} from '../../shared/model/term/offering.interface';
 import {OfferingActions} from './offering.action';
 import {TermModuleState} from '../index';
 import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';
@@ -45,7 +45,7 @@ export class OfferingCenterPage implements OnInit {
 
   ngOnInit(): void {
     this.store.dispatch(this.actions.findOfferings());
-    
+
   }
 
   private showDialog(code: Offering): void {

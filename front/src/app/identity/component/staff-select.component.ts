@@ -1,11 +1,10 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Observable} from "rxjs";
-import {Store} from "@ngrx/store";
-import {FormControl} from "@angular/forms";
-import {Actor} from "../actor.interface";
-import {IdentityModuleState} from "../index";
-import {StaffActions} from "../staff.action";
-
+import {Observable} from 'rxjs';
+import {Store} from '@ngrx/store';
+import {FormControl} from '@angular/forms';
+import {Actor} from '../../shared/model/identity/actor.interface';
+import {IdentityModuleState} from '../index';
+import {StaffActions} from '../staff.action';
 
 @Component({
   selector: 'pams-staff-select',
@@ -13,12 +12,11 @@ import {StaffActions} from "../staff.action";
 })
 export class StaffSelectComponent implements OnInit {
 
-  private STAFFS: string[] = "identityModuleState.staffs".split(".");
-    
+  private STAFFS: string[] = 'identityModuleState.staffs'.split('.');
+
   private staffs$: Observable<Actor[]>;
   @Input() placeholder: string;
   @Input() innerFormControl: FormControl;
-
 
   constructor(private store: Store<IdentityModuleState>,
               private actions: StaffActions) {
@@ -33,4 +31,4 @@ export class StaffSelectComponent implements OnInit {
     this.innerFormControl.setValue(event, {emitEvent: false});
   }
 }
-
+

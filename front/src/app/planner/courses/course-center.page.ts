@@ -1,18 +1,14 @@
 import {CourseCreatorDialog} from './dialog/course-creator.dialog';
 import { CourseActions } from './course.action';
-import { Course } from './course.interface';
-import { Faculty } from './../faculties/faculty.interface';
+import { Course } from '../../shared/model/planner/course.interface';
 import {Router, ActivatedRoute} from '@angular/router';
 import {Component, OnInit, ViewContainerRef} from '@angular/core';
 import {MdDialogRef} from '@angular/material';
 import {MdDialogConfig} from '@angular/material';
 import {MdDialog} from '@angular/material';
-import {IdentityService} from '../../../services';
-import {CommonService} from '../../../services';
-import {Store} from "@ngrx/store";
-import {Observable} from "rxjs";
-import {PlannerModuleState} from "../index";
-
+import {Store} from '@ngrx/store';
+import {Observable} from 'rxjs';
+import {PlannerModuleState} from '../index';
 
 @Component({
   selector: 'pams-course-center',
@@ -21,17 +17,9 @@ import {PlannerModuleState} from "../index";
 
 export class CourseCenterPage implements OnInit {
 
-  private COURSES: string[] = "plannerModuleState.courses".split(".");
+  private COURSES: string[] = 'plannerModuleState.courses'.split('.');
   private courses$: Observable<Course[]>;
   private creatorDialogRef: MdDialogRef<CourseCreatorDialog>;
- 
-  // private columns: any[] = [
-  //   {name: 'code', label: 'Code'},
-  //   {name: 'titleMs', label: 'TitleMs'},
-  //   {name: 'titleEn', label: 'TitleEn'},
-  //   {name: 'status', label: 'Status'},
-  //   {name: 'action', label: ''}
-  // ];
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -42,13 +30,12 @@ export class CourseCenterPage implements OnInit {
     this.courses$ = this.store.select(...this.COURSES);
   }
   viewCourse(course: Course) {
-    console.log("course: " + course.code);
+    console.log('course: ' + course.code);
     this.router.navigate(['./courses-detail', course.code]);
   }
 
-
   ngOnInit(): void {
-    console.log("find courses");
+    console.log('find courses');
     this.store.dispatch(this.actions.findCourses());
   }
 
@@ -56,18 +43,17 @@ export class CourseCenterPage implements OnInit {
     this.showDialog(null);
   }
 
-
   private showDialog(code: Course): void {
-    console.log("save");
+    console.log('save');
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
     config.role = 'dialog';
     config.width = '60%';
     config.height = '70';
     config.position = {top: '1px'};
-    this.creatorDialogRef = this.dialog.open(CourseCreatorDialog, config); if (code) this.creatorDialogRef.componentInstance.course = code;;
-     this.creatorDialogRef.afterClosed().subscribe(res => {
-      console.log("close dialog");
+    this.creatorDialogRef = this.dialog.open(CourseCreatorDialog, config); if (code) this.creatorDialogRef.componentInstance.course = code; ;
+    this.creatorDialogRef.afterClosed().subscribe((res) => {
+      console.log('close dialog');
     });
   }
 
@@ -80,5 +66,3 @@ export class CourseCenterPage implements OnInit {
 
 }
 
-
- 

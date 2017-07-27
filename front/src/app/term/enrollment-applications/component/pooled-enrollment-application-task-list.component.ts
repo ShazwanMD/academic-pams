@@ -1,6 +1,6 @@
 import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy} from '@angular/core';
-import {MdSnackBar} from "@angular/material";
-import {EnrollmentApplicationTask} from "../enrollment-application-task.interface";
+import {MdSnackBar} from '@angular/material';
+import {EnrollmentApplicationTask} from '../../../shared/model/term/enrollment-application-task.interface';
 
 @Component({
   selector: 'pams-pooled-enrollment-application-task-list',
@@ -9,24 +9,24 @@ import {EnrollmentApplicationTask} from "../enrollment-application-task.interfac
 })
 export class PooledEnrollmentApplicationTaskListComponent {
 
-  @Input() enrollmentApplicationTasks: EnrollmentApplicationTask[];
-  @Output() claim = new EventEmitter<EnrollmentApplicationTask>();
-
   private columns: any[] = [
     {name: 'referenceNo', label: 'ReferenceNo'},
     {name: 'student.identityNo', label: 'Student'},
     {name: 'cgpa', label: 'CGPA'},
     {name: 'creditHour', label: 'Credit Hour'},
     {name: 'flowState', label: 'Status'},
-    {name: 'action', label: ''}
+    {name: 'action', label: ''},
   ];
+
+  @Input() enrollmentApplicationTasks: EnrollmentApplicationTask[];
+  @Output() claim = new EventEmitter<EnrollmentApplicationTask>();
 
   constructor(private snackBar: MdSnackBar) {
   }
 
   claimTask(task: EnrollmentApplicationTask): void {
-    console.log("Emitting task");
-    let snackBarRef = this.snackBar.open("Claiming enrollmentApplication", "OK");
+    console.log('Emitting task');
+    let snackBarRef = this.snackBar.open('Claiming enrollmentApplication', 'OK');
     snackBarRef.afterDismissed().subscribe(() => {
       this.claim.emit(task);
     });

@@ -1,7 +1,7 @@
 import {SetupActions} from './../setup.action';
 import {Action} from '@ngrx/store';
-import {CommonActions} from './../../common/gender-codes/common.action';
-import {BankCode} from './../../common/bank-codes/bank-code.interface';
+import {CommonActions} from '../../common/common.action';
+import {BankCode} from '../../shared/model/common/bank-code.interface';
 
 
 export type BankCodeListState = BankCode[];

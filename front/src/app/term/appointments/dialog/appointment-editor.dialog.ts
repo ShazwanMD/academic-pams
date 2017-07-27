@@ -1,17 +1,16 @@
 import { Component, ViewContainerRef, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { FormBuilder, Validators } from '@angular/forms';
-import { Store } from "@ngrx/store";
-import { MdDialogRef } from "@angular/material";
-import { TermModuleState } from "../../index";
-import { AppointmentActions } from "../appointment.action";
-import { Section } from "../../sections/section.interface";
-import { Actor } from "../../../identity/actor.interface";
-import { Course } from "../../../planner/courses/course.interface";
-import { AcademicSession } from "../../../planner/academic-sessions/academic-session.interface";
-import { Offering } from "../../offerings/offering.interface";
-import { Appointment } from "../appointment.interface";
-import { AppointmentStatus } from "../appointment-status.enum";
+import { Store } from '@ngrx/store';
+import { MdDialogRef } from '@angular/material';
+import { TermModuleState } from '../../index';
+import { AppointmentActions } from '../appointment.action';
+import { Section } from '../../../shared/model/term/section.interface';
+import { Course } from '../../../shared/model/planner/course.interface';
+import { AcademicSession } from '../../../shared/model/planner/academic-session.interface';
+import { Offering } from '../../../shared/model/term/offering.interface';
+import { Appointment } from '../../../shared/model/term/appointment.interface';
+import { AppointmentStatus } from '../../../shared/model/term/appointment-status.enum';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component( {
@@ -34,7 +33,6 @@ export class AppointmentEditorDialog implements OnInit {
         private dialog: MdDialogRef<AppointmentEditorDialog>,
         private viewContainerRef: ViewContainerRef ) {
     }
-
 
     set section( value: Section ) {
         this._section = value;
@@ -63,10 +61,9 @@ export class AppointmentEditorDialog implements OnInit {
         if ( this.edit ) this.editorForm.patchValue( this._appointment );
     }
 
-
     submit( appointment: Appointment, isValid: boolean ) {
-        console.log( "appointment", appointment );
-        console.log( "section", this.section );
+        console.log( 'appointment', appointment );
+        console.log( 'section', this.section );
         console.log( this._section );
         console.log( this._appointment );
 

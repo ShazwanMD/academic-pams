@@ -3,11 +3,9 @@ import { MdDialogRef } from '@angular/material';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { OnInit, Component, ViewContainerRef } from '@angular/core';
 
-import { Faculty } from "./../faculty.interface";
-import { PlannerModuleState } from "../../index";
-import { FacultyActions } from "../faculty.action";
-import { ActivatedRoute, Router } from '@angular/router';
-import { FacultyStatus } from "../faculty-status.enum";
+import { Faculty } from '../../../shared/model/planner/faculty.interface';
+import { PlannerModuleState } from '../../index';
+import { FacultyActions } from '../faculty.action';
 
 @Component({
     selector: 'pams-faculty-creator',
@@ -19,14 +17,11 @@ export class FacultyCreatorDialog implements OnInit {
     private createForm: FormGroup;
     private create: boolean = false;
     private _faculty: Faculty;
-    private minLength: number = 1; 
+    private minLength: number = 1;
 
     constructor(private formBuilder: FormBuilder,
         private store: Store<PlannerModuleState>,
         private actions: FacultyActions,
-        /*private router: Router,
-        private route: ActivatedRoute,*/
-        /*private vcf: ViewContainerRef,*/
         private dialog: MdDialogRef<FacultyCreatorDialog>) {
     }
 
@@ -43,7 +38,7 @@ export class FacultyCreatorDialog implements OnInit {
             prefix: '',
             status: ['', Validators.required],
         });
-               if (this.create) this.createForm.patchValue(this._faculty);
+        if (this.create) this.createForm.patchValue(this._faculty);
     }
 
     save(faculty: Faculty, isValid: boolean) {

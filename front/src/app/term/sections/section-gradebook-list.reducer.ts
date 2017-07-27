@@ -1,5 +1,5 @@
-import { SectionActions} from './section.action';
-import {Gradebook} from '../gradebooks/gradebook.interface';
+import {SectionActions} from './section.action';
+import {Gradebook} from '../../shared/model/term/gradebook.interface';
 import {Action} from '@ngrx/store';
 
 export type SectionGradebookListState = Gradebook[];

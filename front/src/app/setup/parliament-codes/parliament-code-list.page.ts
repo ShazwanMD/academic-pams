@@ -1,4 +1,4 @@
-import { ParliamentCode } from './../../common/parliament-codes/parliament-code.interface';
+import { ParliamentCode } from '../../shared/model/common/parliament-code.interface';
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
 import { Component, OnInit } from '@angular/core';

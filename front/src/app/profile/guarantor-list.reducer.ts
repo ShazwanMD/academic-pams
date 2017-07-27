@@ -1,7 +1,7 @@
 import {Action} from '@ngrx/store';
 
-import {Guarantor} from "./guarantor.interface";
-import {ProfileActions} from "./profile.action";
+import {Guarantor} from '../shared/model/profile/guarantor.interface';
+import {ProfileActions} from './profile.action';
 
 export type GuarantorListState = Guarantor[];
 

@@ -1,4 +1,4 @@
-import {CountryCode} from './../../common/country-codes/country-code.interface';
+import {CountryCode} from '../../shared/model/common/country-code.interface';
 import {Component, OnInit} from '@angular/core';
 import {Store} from '@ngrx/store';
 import {SetupModuleState} from './../index';

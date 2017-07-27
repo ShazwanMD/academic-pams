@@ -1,16 +1,14 @@
-import { Gradebook } from './../gradebook.interface';
-import { FormGroup, FormBuilder } from '@angular/forms';
 import {
   Component, Input, ChangeDetectionStrategy,
-  OnChanges, SimpleChange, ViewChild
+  OnChanges, SimpleChange, ViewChild,
 } from '@angular/core';
-import { OfferingActions } from "../offering.action";
-import { Store } from "@ngrx/store";
-import { TermModuleState } from "../../index";
-import { GradebookMatrix } from "../gradebook-matrix.interface";
-import { TdDataTableComponent } from "@covalent/core";
-import { Offering } from "../offering.interface";
-import { Assessment } from "../../assessments/assessment.interface";
+import { OfferingActions } from '../offering.action';
+import { Store } from '@ngrx/store';
+import { TermModuleState } from '../../index';
+import { GradebookMatrix } from '../../../shared/model/term/gradebook-matrix.interface';
+import { TdDataTableComponent } from '@covalent/core';
+import { Offering } from '../../../shared/model/term/offering.interface';
+import { Assessment } from '../../../shared/model/term/assessment.interface';
 
 @Component({
   selector: 'pams-gradebook',
@@ -25,27 +23,25 @@ export class GradebookComponent implements OnChanges {
   @ViewChild('dataTable') dataTable: TdDataTableComponent;
 
   columns: any[] = [
-    { label: 'Student name', name: 'enrollment.admission.student.name' }
+    { label: 'Student name', name: 'enrollment.admission.student.name' },
   ];
-
 
   constructor(private actions: OfferingActions,
     private store: Store<TermModuleState>) {
   }
 
-
   ngOnChanges(changes: { [propName: string]: SimpleChange }) {
     if (changes['gradebookMatrices'] && this.gradebookMatrices) {
-      var a = changes['gradebookMatrices']['currentValue'];
+      let a = changes['gradebookMatrices']['currentValue'];
       if (a.length > 0) {
-        a.forEach(i => {
-          var b = i['gradebooks'];
+        a.forEach((i) => {
+          let b = i['gradebooks'];
           if (b.length > 0) {
-            for (var j = 0; j < b.length; j++) {
+            for (let j = 0; j < b.length; j++) {
               this.columns[j + 1] = {
                 label: b[j].assessment.description,
                 name: 'gradebooks.' + j + '.score',
-              }
+              };
             }
             console.log(this.columns);
           }
@@ -56,13 +52,12 @@ export class GradebookComponent implements OnChanges {
     }
   }
 
-
   download(): void {
     this.store.dispatch(this.actions.downloadGradebook(this.offering));
   }
 
   upload(file: File): void {
-    console.log("gradebookComponent", file);
+    console.log('gradebookComponent', file);
     this.store.dispatch(this.actions.uploadGradebook(this.offering, file));
 
   }

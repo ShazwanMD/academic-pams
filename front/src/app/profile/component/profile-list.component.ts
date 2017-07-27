@@ -1,5 +1,5 @@
 import { Component, Input, EventEmitter, Output, ChangeDetectionStrategy, AfterViewInit } from '@angular/core';
-import {Student} from "../../identity/student.interface";
+import {Student} from '../../shared/model/identity/student.interface';
 import { TdDataTableSortingOrder, TdDataTableService, ITdDataTableSortChangeEvent, IPageChangeEvent } from '@covalent/core';
 
 @Component({
@@ -9,14 +9,12 @@ import { TdDataTableSortingOrder, TdDataTableService, ITdDataTableSortChangeEven
 })
 export class ProfileListComponent implements AfterViewInit {
 
-  @Input() students: Student[];
-  @Output() view = new EventEmitter<Student>();
 
   private columns: any[] = [
     {name: 'identityNo', label: 'MATRIC NO'},
     {name: 'name', label: 'NAME'},
     {name: 'email', label: 'EMAIL'},
-    {name: 'action', label: ''}
+    {name: 'action', label: ''},
   ];
 
   filteredData: any[];
@@ -28,9 +26,11 @@ export class ProfileListComponent implements AfterViewInit {
   sortBy: string = 'name';
   sortOrder: TdDataTableSortingOrder = TdDataTableSortingOrder.Ascending;
 
-  
+  @Input() students: Student[];
+  @Output() view = new EventEmitter<Student>();
+
   constructor(private _dataTableService: TdDataTableService) {}
-  
+
   ngAfterViewInit(): void {
     this.filteredData = this.students;
     this.filteredTotal = this.students.length;

@@ -1,5 +1,5 @@
 import {NationalityCodeEditorDialog} from './dialog/nationality-code-editor.dialog';
-import {NationalityCode} from './../../common/nationality-codes/nationality-code.interface';
+import {NationalityCode} from '../../shared/model/common/nationality-code.interface';
 import {Observable} from 'rxjs/Observable';
 import {Store} from '@ngrx/store';
 import {Component, OnInit, ViewContainerRef} from '@angular/core';

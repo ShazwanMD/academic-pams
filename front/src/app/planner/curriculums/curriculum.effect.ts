@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {Effect, Actions} from '@ngrx/effects';
 import {CurriculumActions} from './curriculum.action';
 import {PlannerService} from '../../../services/planner.service';
-import {Curriculum} from './curriculum.interface';
+import {Curriculum} from '../../shared/model/planner/curriculum.interface';
 import {Store} from '@ngrx/store';
 import {PlannerModuleState} from '../index';
 import {from} from 'rxjs/observable/from';

@@ -1,5 +1,5 @@
-import { CommonActions } from './../gender-codes/common.action';
-import { CountryCode } from './country-code.interface';
+import { CommonActions } from '../common.action';
+import { CountryCode } from '../../shared/model/common/country-code.interface';
 import { Action } from '@ngrx/store';
 
 export type CountryCodeListState = CountryCode[];

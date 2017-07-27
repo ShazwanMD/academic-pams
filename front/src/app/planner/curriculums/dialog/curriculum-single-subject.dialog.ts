@@ -1,16 +1,16 @@
-import {Course} from '../../courses/course.interface';
-import {SingleSubject} from '../single-subject.interface';
+import {Course} from '../../../shared/model/planner/course.interface';
+import {SingleSubject} from '../../../shared/model/planner/single-subject.interface';
 import {Component, OnInit, ViewContainerRef} from '@angular/core';
 import {FormGroup} from '@angular/forms';
 import {FormBuilder} from '@angular/forms';
 import {Router, ActivatedRoute} from '@angular/router';
-import {Curriculum} from '../curriculum.interface';
-import {Subject} from '../subject.interface';
+import {Curriculum} from '../../../shared/model/planner/curriculum.interface';
+import {Subject} from '../../../shared/model/planner/subject.interface';
 import {Store} from '@ngrx/store';
 import {PlannerModuleState} from '../../index';
 import {MdDialogRef} from '@angular/material';
 import {CurriculumActions} from '../curriculum.action';
-import {SubjectType} from '../subject-type.enum';
+import {SubjectType} from '../../../shared/model/planner/subject-type.enum';
 
 @Component({
   selector: 'pams-curriculum-single-subject',

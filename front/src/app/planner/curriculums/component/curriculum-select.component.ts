@@ -4,7 +4,7 @@ import {FormControl} from '@angular/forms';
 import {Component, Input, OnInit} from '@angular/core';
 import {Store} from '@ngrx/store';
 import {Observable} from 'rxjs/Rx';
-import {Curriculum} from '../curriculum.interface';
+import {Curriculum} from '../../../shared/model/planner/curriculum.interface';
 
 @Component({
   selector: 'pams-curriculum-select',

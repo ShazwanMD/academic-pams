@@ -10,8 +10,7 @@ import {
   OnInit,
   AfterViewInit,
 } from '@angular/core';
-import {Appointment} from '../../../term/appointments/appointment.interface';
-import {Staff} from '../staff.interface';
+import {Appointment} from '../../../shared/model/term/appointment.interface';
 import {Store} from '@ngrx/store';
 import {ActivatedRoute, Router} from '@angular/router';
 import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';
@@ -23,6 +22,7 @@ import {
   ITdDataTableSortChangeEvent,
 } from '@covalent/core';
 import {AppointmentActions} from '../../../term/appointments/appointment.action';
+import {Staff} from '../../../shared/model/identity/staff.interface';
 
 @Component({
   selector: 'pams-staff-appointment-list',
@@ -109,42 +109,6 @@ export class StaffAppointmentListComponent implements OnInit, AfterViewInit {
 
   selectAllRows(appointments: Appointment[]): void {
   }
-
-  /*addDialog(): void {
-   console.log("showAddDialog");
-   let config = new MdDialogConfig();
-   config.viewContainerRef = this.vcf;
-   config.role = 'dialog';
-   config.width = '40%';
-   config.height = '40%';
-   config.position = { top: '0px' };
-   this.creatorDialogRef = this.dialog.open(AppointmentEditorDialog, config);
-   this.creatorDialogRef.componentInstance.staff = this.staff;
-   this.creatorDialogRef.afterClosed().subscribe(res => {
-   console.log("close add dialog");
-   // load something here
-   });
-   }*/
-
-  /*editDialog(appointment: Appointment, isValid: boolean): void {
-   console.log("showDialog");
-   let config = new MdDialogConfig();
-   config.viewContainerRef = this.vcf;
-   config.role = 'dialog';
-   config.width = '50%';
-   config.height = '50%';
-   config.position = { top: '0px' };
-   this.creatorDialogRef = this.dialog.open(AppointmentEditorDialog, config);
-   if (isValid) {
-   this.creatorDialogRef.componentInstance.appointment = appointment;
-   this.creatorDialogRef.componentInstance.staff = this.staff;
-
-   }
-   this.creatorDialogRef.afterClosed().subscribe(res => {
-   console.log("close dialog");
-   // load something here
-   });
-   }*/
 
   removeAppointment(appointment: Appointment): void {
     console.log('removeAppointment:{}', appointment);

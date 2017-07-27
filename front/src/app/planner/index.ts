@@ -1,6 +1,6 @@
 import {CurriculumActions} from './curriculums/curriculum.action';
 import {curriculumSubjectListReducer, CurriculumSubjectListState} from './curriculums/curriculum-subject-list.reducer';
-import {Subject} from './curriculums/subject.interface';
+import {Subject} from '../shared/model/planner/subject.interface';
 import {NgModule, ModuleWithProviders} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {ReactiveFormsModule} from '@angular/forms';
@@ -29,27 +29,27 @@ import {CourseSubModule} from './courses/index';
 import {CohortSubModule} from './cohorts/index';
 import {CohortState, cohortReducer} from './cohorts/cohort.reducer';
 import {CohortListState, cohortListReducer} from './cohorts/cohort-list.reducer';
-import {Faculty} from './faculties/faculty.interface';
-import {Program} from './programs/program.interface';
-import {Cohort} from './cohorts/cohort.interface';
-import {Course} from './courses/course.interface';
+import {Faculty} from '../shared/model/planner/faculty.interface';
+import {Program} from '../shared/model/planner/program.interface';
+import {Cohort} from '../shared/model/planner/cohort.interface';
+import {Course} from '../shared/model/planner/course.interface';
 
-import {AcademicSession} from './academic-sessions/academic-session.interface';
+import {AcademicSession} from '../shared/model/planner/academic-session.interface';
 import {AcademicSessionSubModule} from './academic-sessions/index';
 import {AcademicSessionState, academicSessionReducer} from './academic-sessions/academic-session.reducer';
 import {AcademicSessionListState, academicSessionListReducer} from './academic-sessions/academic-session-list.reducer';
 
 import {AcademicYearListState, academicYearListReducer} from './academic-years/academic-year-list.reducer';
-import {AcademicYear} from './academic-years/academic-year.interface';
+import {AcademicYear} from '../shared/model/planner/academic-year.interface';
 import {AcademicYearSubModule} from './academic-years/index';
 import {programLevelListReducer, ProgramLevelListState} from './program-levels/program-level-list.reducer';
 import {programLevelReducer, ProgramLevelState} from './program-levels/program-level.reducer';
 import {ProgramLevelSubModule} from './program-levels/index';
-import {ProgramLevel} from './program-levels/program-level.interface';
+import {ProgramLevel} from '../shared/model/planner/program-level.interface';
 import {AcademicYearState, academicYearReducer} from './academic-years/academic-year.reducer';
 import {curriculumListReducer, CurriculumListState} from './curriculums/curriculum-list.reducer';
 import {curriculumReducer, CurriculumState} from './curriculums/curriculum.reducer';
-import {Curriculum} from './curriculums/curriculum.interface';
+import {Curriculum} from '../shared/model/planner/curriculum.interface';
 import {CurriculumSubModule} from './curriculums/index';
 
 export interface PlannerModuleState {

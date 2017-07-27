@@ -1,11 +1,11 @@
-import {BundleSubjectPart} from '../bundle-subject-part.interface';
-import {Course} from '../../courses/course.interface';
+import {BundleSubjectPart} from '../../../shared/model/planner/bundle-subject-part.interface';
+import {Course} from '../../../shared/model/planner/course.interface';
 import {Component, OnInit} from '@angular/core';
 import {FormGroup} from '@angular/forms';
 import {FormBuilder} from '@angular/forms';
 import {Router, ActivatedRoute} from '@angular/router';
-import {Curriculum} from '../curriculum.interface';
-import {Subject} from '../subject.interface';
+import {Curriculum} from '../../../shared/model/planner/curriculum.interface';
+import {Subject} from '../../../shared/model/planner/subject.interface';
 import {Store} from '@ngrx/store';
 import {PlannerModuleState} from '../../index';
 import {MdDialogRef} from '@angular/material';

@@ -1,4 +1,4 @@
-import {SubjectType} from '../subject-type.enum';
+import {SubjectType} from '../../../shared/model/planner/subject-type.enum';
 import {Component, Input, OnInit} from '@angular/core';
 import {FormControl} from '@angular/forms';
 
@@ -27,4 +27,4 @@ export class SubjectTypeSelectComponent implements OnInit {
     this.innerFormControl.setValue(event, {emitEvent: false});
   }
 }
-
+

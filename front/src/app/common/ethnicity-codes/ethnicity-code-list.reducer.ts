@@ -1,6 +1,6 @@
-import { EthnicityCode } from './ethnicity-code.interface';
+import {EthnicityCode} from '../../shared/model/common/ethnicity-code.interface';
 import {Action} from '@ngrx/store';
-import {CommonActions} from "./../gender-codes/common.action";
+import {CommonActions} from '../common.action';
 
 export type EthnicityCodeListState = EthnicityCode[];
 

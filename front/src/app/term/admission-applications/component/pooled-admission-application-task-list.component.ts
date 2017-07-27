@@ -1,7 +1,7 @@
 import { MdSnackBar } from '@angular/material';
-import { AdmissionApplicationTask } from './../admission-application-task.interface';
+import { AdmissionApplicationTask } from '../../../shared/model/term/admission-application-task.interface';
 import { Component, Input, Output, ChangeDetectionStrategy, EventEmitter, SimpleChange, OnChanges } from '@angular/core';
-import { TdDataTableService, IPageChangeEvent, ITdDataTableSortChangeEvent, TdDataTableSortingOrder } from "@covalent/core";
+import { TdDataTableService, IPageChangeEvent, ITdDataTableSortChangeEvent, TdDataTableSortingOrder } from '@covalent/core';
 @Component({
   selector: 'pams-pooled-admission-application-task-list',
   templateUrl: './pooled-admission-application-task-list.component.html',
@@ -9,15 +9,11 @@ import { TdDataTableService, IPageChangeEvent, ITdDataTableSortChangeEvent, TdDa
 })
 export class PooledAdmissionApplicationTaskListComponent implements OnChanges{
 
-  @Input() admissionApplicationTasks: AdmissionApplicationTask[];
-  @Output() claim = new EventEmitter<AdmissionApplicationTask>();
-
   private columns: any[] = [
     { name: 'id', label: 'Id' },
     { name: 'referenceNo', label: 'Reference No' },
     { name: 'application.student.identityNo', label: 'Matric.No' },
     { name: 'application.student.name', label: 'Name' },
-    //{ name: 'application.ordinal', label: 'Semester' },
     { name: 'application.advisor.identityNo', label: 'Advisor' },
     { name: 'application.student.cohort.program.code', label: 'Program' },
     { name: 'application.studyCenter.description', label: 'Study Center' },
@@ -25,10 +21,6 @@ export class PooledAdmissionApplicationTaskListComponent implements OnChanges{
     { name: 'action', label: '' },
   ];
 
-  constructor(private snackBar: MdSnackBar,
-          private _dataTableService: TdDataTableService) {
-  }
-  
   filteredData: any[];
   filteredTotal: number;
   searchTerm: string = '';
@@ -37,18 +29,24 @@ export class PooledAdmissionApplicationTaskListComponent implements OnChanges{
   pageSize: number = 20;
   sortBy: string = 'referenceNo';
   sortOrder: TdDataTableSortingOrder = TdDataTableSortingOrder.Descending;
-  
-   
-  
+
+  @Input() admissionApplicationTasks: AdmissionApplicationTask[];
+  @Output() claim = new EventEmitter<AdmissionApplicationTask>();
+
+  constructor(private snackBar: MdSnackBar,
+          private _dataTableService: TdDataTableService) {
+  }
+
+
     ngOnChanges(changes: {[ propName: string]: SimpleChange}) {
-        console.log("changes",changes,changes['admissionApplicationTasks']);
-          if (changes['admissionApplicationTasks']){
-          this.filteredData = changes['admissionApplicationTasks'].currentValue; 
+        console.log('changes', changes, changes['admissionApplicationTasks']);
+        if (changes['admissionApplicationTasks']){
+          this.filteredData = changes['admissionApplicationTasks'].currentValue;
           this.filteredTotal = changes['admissionApplicationTasks'].currentValue.length;
           this.filter();
         }
       }
-    
+
    ngAfterViewInit(): void {
       this.filteredData = this.admissionApplicationTasks;
       this.filteredTotal = this.admissionApplicationTasks.length;
@@ -83,8 +81,8 @@ export class PooledAdmissionApplicationTaskListComponent implements OnChanges{
     }
 
   claimTask(task: AdmissionApplicationTask): void {
-    console.log("Emitting task");
-    let snackBarRef = this.snackBar.open("Claiming registration application", "OK");
+    console.log('Emitting task');
+    let snackBarRef = this.snackBar.open('Claiming registration application', 'OK');
     snackBarRef.afterDismissed().subscribe(() => {
       this.claim.emit(task);
     });

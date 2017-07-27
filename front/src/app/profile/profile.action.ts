@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
 import {Action} from '@ngrx/store';
-import {SwitchStudyMode} from "./switch-study-mode.interface";
 
 @Injectable()
 export class ProfileActions {

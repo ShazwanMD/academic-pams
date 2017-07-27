@@ -3,17 +3,17 @@ import {Response} from '@angular/http';
 import {HttpInterceptorService} from '@covalent/http';
 import {Observable} from 'rxjs';
 import {environment} from '../environments/environment';
-import {Program} from '../app/planner/programs/program.interface';
-import {Faculty} from '../app/planner/faculties/faculty.interface';
-import {Course} from '../app/planner/courses/course.interface';
-import {Cohort} from '../app/planner/cohorts/cohort.interface';
-import {Subject} from '../app/planner/curriculums/subject.interface';
-import {SingleSubject} from '../app/planner/curriculums/single-subject.interface';
-import {BundleSubject} from '../app/planner/curriculums/bundle-subject.interface';
-import {AcademicSession} from '../app/planner/academic-sessions/academic-session.interface';
-import {AcademicYear} from '../app/planner/academic-years/academic-year.interface';
-import {ProgramLevel} from '../app/planner/program-levels/program-level.interface';
-import {Curriculum} from '../app/planner/curriculums/curriculum.interface';
+import {Program} from '../app/shared/model/planner/program.interface';
+import {Faculty} from '../app/shared/model/planner/faculty.interface';
+import {Course} from '../app/shared/model/planner/course.interface';
+import {Cohort} from '../app/shared/model/planner/cohort.interface';
+import {Subject} from '../app/shared/model/planner/subject.interface';
+import {SingleSubject} from '../app/shared/model/planner/single-subject.interface';
+import {BundleSubject} from '../app/shared/model/planner/bundle-subject.interface';
+import {AcademicSession} from '../app/shared/model/planner/academic-session.interface';
+import {AcademicYear} from '../app/shared/model/planner/academic-year.interface';
+import {ProgramLevel} from '../app/shared/model/planner/program-level.interface';
+import {Curriculum} from '../app/shared/model/planner/curriculum.interface';
 
 @Injectable()
 export class PlannerService {

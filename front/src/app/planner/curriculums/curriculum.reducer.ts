@@ -1,6 +1,6 @@
 import {Action} from '@ngrx/store';
 import {CurriculumActions} from "./curriculum.action";
-import {Curriculum} from "./curriculum.interface";
+import {Curriculum} from "../../shared/model/planner/curriculum.interface";
 
 export type CurriculumState = Curriculum;
 

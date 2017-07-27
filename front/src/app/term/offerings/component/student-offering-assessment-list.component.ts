@@ -1,13 +1,13 @@
 import {FormBuilder} from '@angular/forms';
-import {TermModuleState} from './../../index';
+import {TermModuleState} from '../../index';
 import {Store} from '@ngrx/store';
-import {AssessmentActions} from './../../assessments/assessment.action';
+import {AssessmentActions} from '../../assessments/assessment.action';
 import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, ViewContainerRef, OnInit} from '@angular/core';
-import {Assessment} from '../../assessments/assessment.interface';
-import {Offering} from '../offering.interface';
+import {Assessment} from '../../../shared/model/term/assessment.interface';
+import {Offering} from '../../../shared/model/term/offering.interface';
 import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';
 import {ActivatedRoute, Router} from '@angular/router';
-import {AssessmentEditorDialog} from "../../assessments/dialog/assessment-creator.dialog";
+import {AssessmentEditorDialog} from '../../assessments/dialog/assessment-creator.dialog';
 
 @Component({
   selector: 'pams-student-offering-assessment-list',
@@ -26,6 +26,7 @@ export class StudentOfferingAssessmentListComponent implements OnInit {
     {name: 'assessmentCategory', label: 'Assessment Category'},
     {name: 'action', label: ''},
   ];
+
   @Input() offering: Offering;
   @Input() assessments: Assessment[];
   @Output() view: EventEmitter<Assessment> = new EventEmitter<Assessment>();
@@ -36,7 +37,7 @@ export class StudentOfferingAssessmentListComponent implements OnInit {
               private store: Store<TermModuleState>,
               private formBuilder: FormBuilder,
               private vcf: ViewContainerRef,
-              private dialog: MdDialog,) {
+              private dialog: MdDialog, ) {
   }
 
   ngOnInit(): void {

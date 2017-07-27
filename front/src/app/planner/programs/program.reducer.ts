@@ -1,6 +1,6 @@
 import {Action} from '@ngrx/store';
-import {ProgramActions} from "./program.action";
-import {Program} from "./program.interface";
+import {ProgramActions} from './program.action';
+import {Program} from '../../shared/model/planner/program.interface';
 
 export type ProgramState = Program;
 
@@ -14,15 +14,15 @@ export function programReducer(state = initialState, action: Action): ProgramSta
     case ProgramActions.CREATE_PROGRAM_SUCCESS: {
       return action.payload;
     }
-    case ProgramActions.FIND_PROGRAM_LEVEL_BY_CODE_SUCCESS:{
+    case ProgramActions.FIND_PROGRAM_LEVEL_BY_CODE_SUCCESS: {
        return action.payload;
     }
 
-     case ProgramActions.FIND_PROGRAM_BY_CODE_SUCCESS:{
+     case ProgramActions.FIND_PROGRAM_BY_CODE_SUCCESS: {
           return action.payload;
      }
 
-      case ProgramActions.REMOVE_PROGRAM_SUCCESS:{
+      case ProgramActions.REMOVE_PROGRAM_SUCCESS: {
          return action.payload;
       }
 

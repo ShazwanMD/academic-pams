@@ -1,15 +1,15 @@
-import {Program} from '../../programs/program.interface';
+import {Program} from '../../../shared/model/planner/program.interface';
 import {Component, ViewContainerRef, OnInit, AfterViewInit} from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
 import {FormBuilder} from '@angular/forms';
 import {Router, ActivatedRoute} from '@angular/router';
-import {Cohort} from '../cohort.interface';
+import {Cohort} from '../../../shared/model/planner/cohort.interface';
 import {CohortActions} from '../cohort.action';
 import {MdDialogRef} from '@angular/material';
 import {PlannerModuleState} from '../../index';
 import {Store} from '@ngrx/store';
-import {AcademicClassification} from '../academic-classification.enum';
-import {AcademicSession} from '../../academic-sessions/academic-session.interface';
+import {AcademicClassification} from '../../../shared/model/planner/academic-classification.enum';
+import {AcademicSession} from '../../../shared/model/planner/academic-session.interface';
 @Component({
   selector: 'pams-cohort-update',
   templateUrl: './cohort-update.dialog.html',

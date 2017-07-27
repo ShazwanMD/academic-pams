@@ -4,315 +4,319 @@ import {Action} from '@ngrx/store';
 @Injectable()
 export class EnrollmentApplicationActions {
 
-    //find enrollment applications
-    static FIND_ENROLLMENT_APPLICATIONS = '[EnrollmentApplication] Find EnrollmentApplications';
+  //find enrollment applications
+  static FIND_ENROLLMENT_APPLICATIONS = '[EnrollmentApplication] Find EnrollmentApplications';
 
-    findEnrollmentApplications(): Action {
-        return {
-            type: EnrollmentApplicationActions.FIND_ENROLLMENT_APPLICATIONS
-        };
-    }
+  findEnrollmentApplications(): Action {
+    return {
+      type: EnrollmentApplicationActions.FIND_ENROLLMENT_APPLICATIONS
+    };
+  }
 
-    static FIND_ENROLLMENT_APPLICATIONS_SUCCESS = '[EnrollmentApplication] Find EnrollmentApplications Success';
+  static FIND_ENROLLMENT_APPLICATIONS_SUCCESS = '[EnrollmentApplication] Find EnrollmentApplications Success';
 
-    findEnrollmentApplicationsSuccess(enrollmentApplications): Action {
-        return {
-            type: EnrollmentApplicationActions.FIND_ENROLLMENT_APPLICATIONS_SUCCESS,
-            payload: enrollmentApplications
-        };
-    }
+  findEnrollmentApplicationsSuccess(enrollmentApplications): Action {
+    return {
+      type: EnrollmentApplicationActions.FIND_ENROLLMENT_APPLICATIONS_SUCCESS,
+      payload: enrollmentApplications
+    };
+  }
 
-    static FIND_ASSIGNED_ENROLLMENT_APPLICATION_TASKS = '[EnrollmentApplication] Find Assigned EnrollmentApplication Tasks';
+  static FIND_ASSIGNED_ENROLLMENT_APPLICATION_TASKS = '[EnrollmentApplication] Find Assigned EnrollmentApplication Tasks';
 
-    findAssignedEnrollmentApplicationTasks(): Action {
-        return {
-            type: EnrollmentApplicationActions.FIND_ASSIGNED_ENROLLMENT_APPLICATION_TASKS
-        };
-    }
+  findAssignedEnrollmentApplicationTasks(): Action {
+    return {
+      type: EnrollmentApplicationActions.FIND_ASSIGNED_ENROLLMENT_APPLICATION_TASKS
+    };
+  }
 
-    static FIND_ASSIGNED_ENROLLMENT_APPLICATION_TASKS_SUCCESS = '[EnrollmentApplication] Find Assigned EnrollmentApplication Tasks Success';
+  static FIND_ASSIGNED_ENROLLMENT_APPLICATION_TASKS_SUCCESS = '[EnrollmentApplication] Find Assigned EnrollmentApplication Tasks Success';
 
-    findAssignedEnrollmentApplicationTasksSuccess(tasks): Action {
-        console.log("findAssignedEnrollmentApplicationTasksSuccess");
-        return {
-            type: EnrollmentApplicationActions.FIND_ASSIGNED_ENROLLMENT_APPLICATION_TASKS_SUCCESS,
-            payload: tasks
-        };
-    }
+  findAssignedEnrollmentApplicationTasksSuccess(tasks): Action {
+    console.log("findAssignedEnrollmentApplicationTasksSuccess");
+    return {
+      type: EnrollmentApplicationActions.FIND_ASSIGNED_ENROLLMENT_APPLICATION_TASKS_SUCCESS,
+      payload: tasks
+    };
+  }
 
-    static FIND_POOLED_ENROLLMENT_APPLICATION_TASKS = '[EnrollmentApplication] Find Pooled EnrollmentApplication Tasks';
+  static FIND_POOLED_ENROLLMENT_APPLICATION_TASKS = '[EnrollmentApplication] Find Pooled EnrollmentApplication Tasks';
 
-    findPooledEnrollmentApplicationTasks(): Action {
-        return {
-            type: EnrollmentApplicationActions.FIND_POOLED_ENROLLMENT_APPLICATION_TASKS
-        };
-    }
+  findPooledEnrollmentApplicationTasks(): Action {
+    return {
+      type: EnrollmentApplicationActions.FIND_POOLED_ENROLLMENT_APPLICATION_TASKS
+    };
+  }
 
-    static FIND_POOLED_ENROLLMENT_APPLICATION_TASKS_SUCCESS = '[EnrollmentApplication] Find Pooled EnrollmentApplication Tasks Success';
+  static FIND_POOLED_ENROLLMENT_APPLICATION_TASKS_SUCCESS = '[EnrollmentApplication] Find Pooled EnrollmentApplication Tasks Success';
 
-    findPooledEnrollmentApplicationTasksSuccess(tasks): Action {
-        console.log("findAssignedEnrollmentApplicationTasksSuccess");
-        return {
-            type: EnrollmentApplicationActions.FIND_POOLED_ENROLLMENT_APPLICATION_TASKS_SUCCESS,
-            payload: tasks
-        };
-    }
-    
-     //archived
-    static FIND_ARCHIVED_ENROLLMENT_APPLICATIONS = '[EnrollmentApplication] Find Archived EnrollmentApplications';
-    findArchivedEnrollmentApplications(): Action {
-      return {
-        type: EnrollmentApplicationActions.FIND_ARCHIVED_ENROLLMENT_APPLICATIONS
-      };
-    }
+  findPooledEnrollmentApplicationTasksSuccess(tasks): Action {
+    console.log("findAssignedEnrollmentApplicationTasksSuccess");
+    return {
+      type: EnrollmentApplicationActions.FIND_POOLED_ENROLLMENT_APPLICATION_TASKS_SUCCESS,
+      payload: tasks
+    };
+  }
 
-    static FIND_ARCHIVED_ENROLLMENT_APPLICATIONS_SUCCESS = '[EnrollmentApplication] Find Archived EnrollmentApplications Success';
-    findArchivedEnrollmentApplicationsSuccess(enrollmentApplications): Action {
-      console.log("findArchivedEnrollmentApplicationsSuccess");
-      return {
-        type: EnrollmentApplicationActions.FIND_ARCHIVED_ENROLLMENT_APPLICATIONS_SUCCESS,
-        payload: enrollmentApplications
-      };
-    }
+  //archived
+  static FIND_ARCHIVED_ENROLLMENT_APPLICATIONS = '[EnrollmentApplication] Find Archived EnrollmentApplications';
 
-    static FIND_ENROLLMENT_APPLICATION_TASK_BY_TASK_ID = '[EnrollmentApplication] Find EnrollmentApplication Task By Task Id';
+  findArchivedEnrollmentApplications(): Action {
+    return {
+      type: EnrollmentApplicationActions.FIND_ARCHIVED_ENROLLMENT_APPLICATIONS
+    };
+  }
 
-    findEnrollmentApplicationTaskByTaskId(taskId): Action {
-        console.log("findEnrollmentApplicationTaskByTaskId");
-        return {
-            type: EnrollmentApplicationActions.FIND_ENROLLMENT_APPLICATION_TASK_BY_TASK_ID,
-            payload: taskId
-        };
-    }
+  static FIND_ARCHIVED_ENROLLMENT_APPLICATIONS_SUCCESS = '[EnrollmentApplication] Find Archived EnrollmentApplications Success';
 
-    static FIND_ENROLLMENT_APPLICATION_TASK_BY_TASK_ID_SUCCESS = '[EnrollmentApplication] Find EnrollmentApplication Task By Task Id Success';
+  findArchivedEnrollmentApplicationsSuccess(enrollmentApplications): Action {
+    console.log("findArchivedEnrollmentApplicationsSuccess");
+    return {
+      type: EnrollmentApplicationActions.FIND_ARCHIVED_ENROLLMENT_APPLICATIONS_SUCCESS,
+      payload: enrollmentApplications
+    };
+  }
 
-    findEnrollmentApplicationTaskByTaskIdSuccess(task): Action {
-        console.log("findEnrollmentApplicationTaskByTaskIdSuccess");
-        return {
-            type: EnrollmentApplicationActions.FIND_ENROLLMENT_APPLICATION_TASK_BY_TASK_ID_SUCCESS,
-            payload: task
-        };
-    }
+  static FIND_ENROLLMENT_APPLICATION_TASK_BY_TASK_ID = '[EnrollmentApplication] Find EnrollmentApplication Task By Task Id';
 
-    static START_ENROLLMENT_APPLICATION_TASK = '[EnrollmentApplication] Start EnrollmentApplication Task';
+  findEnrollmentApplicationTaskByTaskId(taskId): Action {
+    console.log("findEnrollmentApplicationTaskByTaskId");
+    return {
+      type: EnrollmentApplicationActions.FIND_ENROLLMENT_APPLICATION_TASK_BY_TASK_ID,
+      payload: taskId
+    };
+  }
 
-    startEnrollmentApplicationTask(application): Action {
-        return {
-            type: EnrollmentApplicationActions.START_ENROLLMENT_APPLICATION_TASK,
-            payload: application
-        };
-    }
+  static FIND_ENROLLMENT_APPLICATION_TASK_BY_TASK_ID_SUCCESS = '[EnrollmentApplication] Find EnrollmentApplication Task By Task Id Success';
 
-    static START_ENROLLMENT_APPLICATION_TASK_SUCCESS = '[EnrollmentApplication] Start EnrollmentApplication Task Success';
+  findEnrollmentApplicationTaskByTaskIdSuccess(task): Action {
+    console.log("findEnrollmentApplicationTaskByTaskIdSuccess");
+    return {
+      type: EnrollmentApplicationActions.FIND_ENROLLMENT_APPLICATION_TASK_BY_TASK_ID_SUCCESS,
+      payload: task
+    };
+  }
 
-    startEnrollmentApplicationTaskSuccess(task): Action {
-        return {
-            type: EnrollmentApplicationActions.START_ENROLLMENT_APPLICATION_TASK_SUCCESS,
-            payload: task
-        };
-    }
+  static START_ENROLLMENT_APPLICATION_TASK = '[EnrollmentApplication] Start EnrollmentApplication Task';
 
-    static COMPLETE_ENROLLMENT_APPLICATION_TASK = '[EnrollmentApplication] Complete EnrollmentApplication Task';
+  startEnrollmentApplicationTask(application): Action {
+    return {
+      type: EnrollmentApplicationActions.START_ENROLLMENT_APPLICATION_TASK,
+      payload: application
+    };
+  }
 
-    completeEnrollmentApplicationTask(application): Action {
-        return {
-            type: EnrollmentApplicationActions.COMPLETE_ENROLLMENT_APPLICATION_TASK,
-            payload: application
-        };
-    }
+  static START_ENROLLMENT_APPLICATION_TASK_SUCCESS = '[EnrollmentApplication] Start EnrollmentApplication Task Success';
 
-    static COMPLETE_ENROLLMENT_APPLICATION_TASK_SUCCESS = '[EnrollmentApplication] Complete EnrollmentApplication Task Success';
+  startEnrollmentApplicationTaskSuccess(task): Action {
+    return {
+      type: EnrollmentApplicationActions.START_ENROLLMENT_APPLICATION_TASK_SUCCESS,
+      payload: task
+    };
+  }
 
-    completeEnrollmentApplicationTaskSuccess(message): Action {
-        return {
-            type: EnrollmentApplicationActions.COMPLETE_ENROLLMENT_APPLICATION_TASK_SUCCESS,
-            payload: message
-        };
-    }
-    
-   static CLAIM_ENROLLMENT_APPLICATION_TASK = '[EnrollmentApplication] Assign EnrollmentApplication Task';
+  static COMPLETE_ENROLLMENT_APPLICATION_TASK = '[EnrollmentApplication] Complete EnrollmentApplication Task';
 
-    claimEnrollmentApplicationTask(application): Action {
-        return {
-            type: EnrollmentApplicationActions.CLAIM_ENROLLMENT_APPLICATION_TASK,
-            payload: application
-        };
-    }
+  completeEnrollmentApplicationTask(application): Action {
+    return {
+      type: EnrollmentApplicationActions.COMPLETE_ENROLLMENT_APPLICATION_TASK,
+      payload: application
+    };
+  }
 
-    static CLAIM_ENROLLMENT_APPLICATION_TASK_SUCCESS = '[EnrollmentApplication] Assign EnrollmentApplication Task Success';
+  static COMPLETE_ENROLLMENT_APPLICATION_TASK_SUCCESS = '[EnrollmentApplication] Complete EnrollmentApplication Task Success';
 
-    claimEnrollmentApplicationTaskSuccess(task): Action {
-        return {
-            type: EnrollmentApplicationActions.CLAIM_ENROLLMENT_APPLICATION_TASK_SUCCESS,
-            payload: task
-        };
-    }
+  completeEnrollmentApplicationTaskSuccess(message): Action {
+    return {
+      type: EnrollmentApplicationActions.COMPLETE_ENROLLMENT_APPLICATION_TASK_SUCCESS,
+      payload: message
+    };
+  }
 
-    static RELEASE_ENROLLMENT_APPLICATION_TASK = '[EnrollmentApplication] Release EnrollmentApplication Task';
+  static CLAIM_ENROLLMENT_APPLICATION_TASK = '[EnrollmentApplication] Assign EnrollmentApplication Task';
 
-    releaseEnrollmentApplicationTask(application): Action {
-        return {
-            type: EnrollmentApplicationActions.RELEASE_ENROLLMENT_APPLICATION_TASK,
-            payload: application
-        };
-    }
+  claimEnrollmentApplicationTask(application): Action {
+    return {
+      type: EnrollmentApplicationActions.CLAIM_ENROLLMENT_APPLICATION_TASK,
+      payload: application
+    };
+  }
 
-    static RELEASE_ENROLLMENT_APPLICATION_TASK_SUCCESS = '[EnrollmentApplication] Release EnrollmentApplication Task Success';
+  static CLAIM_ENROLLMENT_APPLICATION_TASK_SUCCESS = '[EnrollmentApplication] Assign EnrollmentApplication Task Success';
 
-    releaseEnrollmentApplicationTaskSuccess(task): Action {
-        return {
-            type: EnrollmentApplicationActions.RELEASE_ENROLLMENT_APPLICATION_TASK_SUCCESS,
-            payload: task
-        };
-    }
+  claimEnrollmentApplicationTaskSuccess(task): Action {
+    return {
+      type: EnrollmentApplicationActions.CLAIM_ENROLLMENT_APPLICATION_TASK_SUCCESS,
+      payload: task
+    };
+  }
 
-    static FIND_ENROLLMENT_APPLICATION_BY_ID = '[EnrollmentApplication] Find EnrollmentApplication By Id';
+  static RELEASE_ENROLLMENT_APPLICATION_TASK = '[EnrollmentApplication] Release EnrollmentApplication Task';
 
-    findEnrollmentApplicationById(id): Action {
-        return {
-            type: EnrollmentApplicationActions.FIND_ENROLLMENT_APPLICATION_BY_ID,
-            payload: id
-        };
-    }
+  releaseEnrollmentApplicationTask(application): Action {
+    return {
+      type: EnrollmentApplicationActions.RELEASE_ENROLLMENT_APPLICATION_TASK,
+      payload: application
+    };
+  }
 
-    static FIND_ENROLLMENT_APPLICATION_BY_ID_SUCCESS = '[EnrollmentApplication] Find EnrollmentApplication By Id Success';
+  static RELEASE_ENROLLMENT_APPLICATION_TASK_SUCCESS = '[EnrollmentApplication] Release EnrollmentApplication Task Success';
 
-    findEnrollmentApplicationByIdSuccess(application): Action {
-        return {
-            type: EnrollmentApplicationActions.FIND_ENROLLMENT_APPLICATION_BY_ID_SUCCESS,
-            payload: application
-        };
-    }
-    
-    static FIND_ENROLLMENT_APPLICATION_BY_REFERENCE_NO = '[EnrollmentApplication] Find EnrollmentApplication By Reference No';
-    findEnrollmentApplicationByReferenceNo(referenceNo): Action {
-      return {
-        type: EnrollmentApplicationActions.FIND_ENROLLMENT_APPLICATION_BY_REFERENCE_NO,
-        payload: referenceNo
-      };
-    }
+  releaseEnrollmentApplicationTaskSuccess(task): Action {
+    return {
+      type: EnrollmentApplicationActions.RELEASE_ENROLLMENT_APPLICATION_TASK_SUCCESS,
+      payload: task
+    };
+  }
 
-    static FIND_ENROLLMENT_APPLICATION_BY_REFERENCE_NO_SUCCESS = '[EnrollmentApplication] Find EnrollmentApplication By Reference No Success';
-    findEnrollmentApplicationByReferenceNoSuccess(enrollmentApplication): Action {
-      return {
-        type: EnrollmentApplicationActions.FIND_ENROLLMENT_APPLICATION_BY_REFERENCE_NO_SUCCESS,
-        payload: enrollmentApplication
-      };
-    }
+  static FIND_ENROLLMENT_APPLICATION_BY_ID = '[EnrollmentApplication] Find EnrollmentApplication By Id';
 
-    static FIND_ENROLLMENT_APPLICATION_ITEMS = '[EnrollmentApplication] Find EnrollmentApplication Items';
+  findEnrollmentApplicationById(id): Action {
+    return {
+      type: EnrollmentApplicationActions.FIND_ENROLLMENT_APPLICATION_BY_ID,
+      payload: id
+    };
+  }
 
-    findEnrollmentApplicationItems(application): Action {
-        console.log("findEnrollmentApplicationItems for application: " + application);
-        return {
-            type: EnrollmentApplicationActions.FIND_ENROLLMENT_APPLICATION_ITEMS,
-            payload: application
-        };
-    }
+  static FIND_ENROLLMENT_APPLICATION_BY_ID_SUCCESS = '[EnrollmentApplication] Find EnrollmentApplication By Id Success';
 
-    static FIND_ENROLLMENT_APPLICATION_ITEMS_SUCCESS = '[EnrollmentApplication] Find EnrollmentApplication Items Success';
+  findEnrollmentApplicationByIdSuccess(application): Action {
+    return {
+      type: EnrollmentApplicationActions.FIND_ENROLLMENT_APPLICATION_BY_ID_SUCCESS,
+      payload: application
+    };
+  }
 
-    findEnrollmentApplicationItemsSuccess(items): Action {
-        console.log("findEnrollmentApplicationItemsSuccess");
-        return {
-            type: EnrollmentApplicationActions.FIND_ENROLLMENT_APPLICATION_ITEMS_SUCCESS,
-            payload: items
-        };
-    }
+  static FIND_ENROLLMENT_APPLICATION_BY_REFERENCE_NO = '[EnrollmentApplication] Find EnrollmentApplication By Reference No';
 
+  findEnrollmentApplicationByReferenceNo(referenceNo): Action {
+    return {
+      type: EnrollmentApplicationActions.FIND_ENROLLMENT_APPLICATION_BY_REFERENCE_NO,
+      payload: referenceNo
+    };
+  }
 
-    static UPDATE_ENROLLMENT_APPLICATION = '[EnrollmentApplication] Update EnrollmentApplication';
+  static FIND_ENROLLMENT_APPLICATION_BY_REFERENCE_NO_SUCCESS = '[EnrollmentApplication] Find EnrollmentApplication By Reference No Success';
 
-    updateEnrollmentApplication(application): Action {
-        return {
-            type: EnrollmentApplicationActions.UPDATE_ENROLLMENT_APPLICATION,
-            payload: application
-        };
-    }
+  findEnrollmentApplicationByReferenceNoSuccess(enrollmentApplication): Action {
+    return {
+      type: EnrollmentApplicationActions.FIND_ENROLLMENT_APPLICATION_BY_REFERENCE_NO_SUCCESS,
+      payload: enrollmentApplication
+    };
+  }
 
-    static UPDATE_ENROLLMENT_APPLICATION_SUCCESS = '[EnrollmentApplication] Update EnrollmentApplication Success';
+  static FIND_ENROLLMENT_APPLICATION_ITEMS = '[EnrollmentApplication] Find EnrollmentApplication Items';
 
-    updateEnrollmentApplicationSuccess(application): Action {
-        return {
-            type: EnrollmentApplicationActions.UPDATE_ENROLLMENT_APPLICATION_SUCCESS,
-            payload: application
-        };
-    }
+  findEnrollmentApplicationItems(application): Action {
+    console.log("findEnrollmentApplicationItems for application: " + application);
+    return {
+      type: EnrollmentApplicationActions.FIND_ENROLLMENT_APPLICATION_ITEMS,
+      payload: application
+    };
+  }
 
-    static REMOVE_ENROLLMENT_APPLICATION = '[EnrollmentApplication] Remove EnrollmentApplication';
+  static FIND_ENROLLMENT_APPLICATION_ITEMS_SUCCESS = '[EnrollmentApplication] Find EnrollmentApplication Items Success';
 
-    removeEnrollmentApplication(admission, application): Action {
-        return {
-            type: EnrollmentApplicationActions.REMOVE_ENROLLMENT_APPLICATION,
-            payload: { admission: admission, application: application }
-        };
-    }
-
-    static REMOVE_ENROLLMENT_APPLICATION_SUCCESS = '[EnrollmentApplication] Remove EnrollmentApplication Success';
-
-    removeEnrollmentApplicationSuccess(message): Action {
-        return {
-            type: EnrollmentApplicationActions.REMOVE_ENROLLMENT_APPLICATION_SUCCESS,
-            payload: message
-        };
-    }
-
-    static ADD_ENROLLMENT_APPLICATION_ITEM = '[EnrollmentApplication] Add EnrollmentApplication Item';
-
-    addEnrollmentApplicationItem(application, item): Action {
-        return {
-            type: EnrollmentApplicationActions.ADD_ENROLLMENT_APPLICATION_ITEM,
-            payload: { application: application, item: item }
-        };
-    }
-
-    static ADD_ENROLLMENT_APPLICATION_ITEM_SUCCESS = '[EnrollmentApplication] Add EnrollmentApplication Item Success';
-
-    addEnrollmentApplicationItemSuccess(message): Action {
-        return {
-            type: EnrollmentApplicationActions.ADD_ENROLLMENT_APPLICATION_ITEM_SUCCESS,
-            payload: message
-        };
-    }
+  findEnrollmentApplicationItemsSuccess(items): Action {
+    console.log("findEnrollmentApplicationItemsSuccess");
+    return {
+      type: EnrollmentApplicationActions.FIND_ENROLLMENT_APPLICATION_ITEMS_SUCCESS,
+      payload: items
+    };
+  }
 
 
-    static DELETE_ENROLLMENT_APPLICATION_ITEM = '[EnrollmentApplication] Delete EnrollmentApplication Item';
+  static UPDATE_ENROLLMENT_APPLICATION = '[EnrollmentApplication] Update EnrollmentApplication';
 
-    deleteEnrollmentApplicationItem(enrollmentApplication, item): Action {
-        return {
-            type: EnrollmentApplicationActions.DELETE_ENROLLMENT_APPLICATION_ITEM,
-            payload: { application: enrollmentApplication, item: item }
-        };
-    }
+  updateEnrollmentApplication(application): Action {
+    return {
+      type: EnrollmentApplicationActions.UPDATE_ENROLLMENT_APPLICATION,
+      payload: application
+    };
+  }
 
-    static DELETE_ENROLLMENT_APPLICATION_ITEM_SUCCESS = '[EnrollmentApplication] Delete EnrollmentApplication Item Success';
+  static UPDATE_ENROLLMENT_APPLICATION_SUCCESS = '[EnrollmentApplication] Update EnrollmentApplication Success';
 
-    deleteEnrollmentApplicationItemSuccess(message): Action {
-        return {
-            type: EnrollmentApplicationActions.DELETE_ENROLLMENT_APPLICATION_ITEM_SUCCESS,
-            payload: message
-        };
-    }
-    
-    static UPDATE_ENROLLMENT_APPLICATION_ITEM = '[EnrollmentApplication] Update EnrollmentApplication Item';
+  updateEnrollmentApplicationSuccess(application): Action {
+    return {
+      type: EnrollmentApplicationActions.UPDATE_ENROLLMENT_APPLICATION_SUCCESS,
+      payload: application
+    };
+  }
 
-    updateEnrollmentApplicationItem(application, item): Action {
-        console.log("updateEnrollmentApplicationItem");
-        return {
-            type: EnrollmentApplicationActions.UPDATE_ENROLLMENT_APPLICATION_ITEM,
-            payload: { application: application, item: item }
-        };
-    }
+  static REMOVE_ENROLLMENT_APPLICATION = '[EnrollmentApplication] Remove EnrollmentApplication';
 
-    static UPDATE_ENROLLMENT_APPLICATION_ITEM_SUCCESS = '[EnrollmentApplication] Update EnrollmentApplication Item Success';
+  removeEnrollmentApplication(admission, application): Action {
+    return {
+      type: EnrollmentApplicationActions.REMOVE_ENROLLMENT_APPLICATION,
+      payload: {admission: admission, application: application}
+    };
+  }
 
-    updateEnrollmentApplicationItemSuccess(message): Action {
-        console.log("updateEnrollmentApplicationItemSuccess");
-        return {
-            type: EnrollmentApplicationActions.UPDATE_ENROLLMENT_APPLICATION_ITEM_SUCCESS,
-            payload: message
-        };
-    }
+  static REMOVE_ENROLLMENT_APPLICATION_SUCCESS = '[EnrollmentApplication] Remove EnrollmentApplication Success';
+
+  removeEnrollmentApplicationSuccess(message): Action {
+    return {
+      type: EnrollmentApplicationActions.REMOVE_ENROLLMENT_APPLICATION_SUCCESS,
+      payload: message
+    };
+  }
+
+  static ADD_ENROLLMENT_APPLICATION_ITEM = '[EnrollmentApplication] Add EnrollmentApplication Item';
+
+  addEnrollmentApplicationItem(application, item): Action {
+    return {
+      type: EnrollmentApplicationActions.ADD_ENROLLMENT_APPLICATION_ITEM,
+      payload: {application: application, item: item}
+    };
+  }
+
+  static ADD_ENROLLMENT_APPLICATION_ITEM_SUCCESS = '[EnrollmentApplication] Add EnrollmentApplication Item Success';
+
+  addEnrollmentApplicationItemSuccess(message): Action {
+    return {
+      type: EnrollmentApplicationActions.ADD_ENROLLMENT_APPLICATION_ITEM_SUCCESS,
+      payload: message
+    };
+  }
+
+
+  static DELETE_ENROLLMENT_APPLICATION_ITEM = '[EnrollmentApplication] Delete EnrollmentApplication Item';
+
+  deleteEnrollmentApplicationItem(enrollmentApplication, item): Action {
+    return {
+      type: EnrollmentApplicationActions.DELETE_ENROLLMENT_APPLICATION_ITEM,
+      payload: {application: enrollmentApplication, item: item}
+    };
+  }
+
+  static DELETE_ENROLLMENT_APPLICATION_ITEM_SUCCESS = '[EnrollmentApplication] Delete EnrollmentApplication Item Success';
+
+  deleteEnrollmentApplicationItemSuccess(message): Action {
+    return {
+      type: EnrollmentApplicationActions.DELETE_ENROLLMENT_APPLICATION_ITEM_SUCCESS,
+      payload: message
+    };
+  }
+
+  static UPDATE_ENROLLMENT_APPLICATION_ITEM = '[EnrollmentApplication] Update EnrollmentApplication Item';
+
+  updateEnrollmentApplicationItem(application, item): Action {
+    console.log("updateEnrollmentApplicationItem");
+    return {
+      type: EnrollmentApplicationActions.UPDATE_ENROLLMENT_APPLICATION_ITEM,
+      payload: {application: application, item: item}
+    };
+  }
+
+  static UPDATE_ENROLLMENT_APPLICATION_ITEM_SUCCESS = '[EnrollmentApplication] Update EnrollmentApplication Item Success';
+
+  updateEnrollmentApplicationItemSuccess(message): Action {
+    console.log("updateEnrollmentApplicationItemSuccess");
+    return {
+      type: EnrollmentApplicationActions.UPDATE_ENROLLMENT_APPLICATION_ITEM_SUCCESS,
+      payload: message
+    };
+  }
 
 }

@@ -1,8 +1,8 @@
 import {Action} from '@ngrx/store';
 
 import * as _ from 'lodash';
-import {Section} from "./section.interface";
-import {SectionActions} from "./section.action";
+import {Section} from '../../shared/model/term/section.interface';
+import {SectionActions} from './section.action';
 
 export type SectionListState = Section[];
 
@@ -19,13 +19,13 @@ export function sectionListReducer(state = initialState, action: Action): Sectio
         return [
           ...state.slice(0, index),
           action.payload,
-          ...state.slice(index + 1)
+          ...state.slice(index + 1),
         ];
       }
       return state;
     }
     case SectionActions.REMOVE_SECTION_SUCCESS: {
-      return state.filter(section => {
+      return state.filter((section) => {
         return section.id !== action.payload.id;
       });
     }
@@ -34,4 +34,4 @@ export function sectionListReducer(state = initialState, action: Action): Sectio
     }
   }
 }
-
+
