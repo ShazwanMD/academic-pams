@@ -51,10 +51,7 @@ public class IntegrationConfig {
 
     @Bean
     public ConnectionFactory connectionFactory() {
-        ActiveMQConnectionFactory conn = new ActiveMQConnectionFactory();
-        conn.setBrokerURL(env.getProperty("broker.url"));
-        conn.setClientID("pams-academic");
-        return conn;
+        return new ActiveMQConnectionFactory(env.getProperty("broker.url"));
     }
 
     @Bean

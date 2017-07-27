@@ -52,6 +52,13 @@ public class IntegrationController {
     @Autowired
     private TermService termService;
 
+    //    @RequestMapping(value = "/candidate", method = RequestMethod.POST)
+//    public ResponseEntity<String> test(@RequestBody CandidatePayload payload) {
+//        LOG.info("candidate: " + payload);
+//        return new ResponseEntity<String>("success", HttpStatus.OK);
+//    }
+
+
     // ====================================================================================================
     // COHORT
     // ====================================================================================================
