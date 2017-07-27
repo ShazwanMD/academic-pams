@@ -470,7 +470,6 @@ public class PlannerController {
         curriculum.setSubjects(plannerService.findSubjects(curriculum));
         plannerService.saveCurriculum(curriculum);
         return new ResponseEntity<String>("Success", HttpStatus.OK);
-
     }
 
     @RequestMapping(value = "/curriculums/{code}/subjects", method = RequestMethod.GET)
@@ -482,10 +481,10 @@ public class PlannerController {
 
 
     @RequestMapping(value = "/curriculums/{code}/singleSubjects", method = RequestMethod.POST)
-    public ResponseEntity<String> addSingleSubject(@PathVariable Long id, @RequestBody SingleSubject vo) {
+    public ResponseEntity<String> addSingleSubject(@PathVariable String code, @RequestBody SingleSubject vo) {
         dummyLogin();
         LOG.info("Adding single subject");
-        AdCurriculum curriculum = plannerService.findCurriculumById(id);
+        AdCurriculum curriculum = plannerService.findCurriculumByCode(code);
         AdCourse course = plannerService.findCourseByCode(vo.getCourse().getCode());
         AdSingleSubject subject = new AdSingleSubjectImpl();
         subject.setCourse(course);
@@ -497,16 +496,15 @@ public class PlannerController {
     }
 
     @RequestMapping(value = "/curriculums/{code}/bundleSubjects", method = RequestMethod.POST)
-    public ResponseEntity<String> addBundleSubject(@PathVariable Long id, @RequestBody BundleSubject vo) {
+    public ResponseEntity<String> addBundleSubject(@PathVariable String code, @RequestBody BundleSubject vo) {
         dummyLogin();
         LOG.info("Adding bundle subject");
-        AdCurriculum curriculum = plannerService.findCurriculumById(id);
+        AdCurriculum curriculum = plannerService.findCurriculumByCode(code);
         AdBundleSubject bundleSubject = new AdBundleSubjectImpl();
         bundleSubject.setSubjectType(AdSubjectType.CORE_ELECTIVE);
         bundleSubject.setOrdinal(1);
         plannerService.addSubject(curriculum, bundleSubject);
         return new ResponseEntity<String>("Success", HttpStatus.OK);
-
     }
 
     @RequestMapping(value = "/curriculums/{code}/subject", method = RequestMethod.POST)
