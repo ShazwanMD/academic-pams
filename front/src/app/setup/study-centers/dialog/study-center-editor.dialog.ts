@@ -1,7 +1,7 @@
 import { StudyCenter } from './../study-center.interface';
 import { Component, ViewContainerRef, OnInit, AfterViewInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Store } from "@ngrx/store";
 import { MdDialogRef } from "@angular/material";
@@ -34,10 +34,10 @@ export class StudyCenterEditorDialog implements OnInit {
     }
 
     ngOnInit(): void {
-        this.editorForm = this.formBuilder.group(<StudyCenter>{
+        this.editorForm = this.formBuilder.group({
             id: null,
-            code: '',
-            description: '',
+            code: ['', Validators.required],
+            description: ['', Validators.required],
 
         });
 
