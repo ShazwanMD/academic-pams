@@ -3,24 +3,14 @@
   <form [formGroup]="creatorForm">
     <div layout="row" class="insert">
       <md-input-container flex>
-        <input mdInput 
+        <input mdInput
                placeholder="ordinal"
                formControlName="ordinal" type="number"
                flex/>
       </md-input-container>
     </div>
      <div layout="row" class="pad-bottom pad-top">
-      <pams-subject-type-select
-        [placeholder]="'SubjectType'"
-        [innerFormControl]="creatorForm.controls['subjectType']">
-      </pams-subject-type-select>
     </div>
-    <!--<div layout="row" class="pad-bottom pad-top">
-      <pams-course-select
-        [placeholder]="'Select Program'"
-        [innerFormControl]="createForm.controls['course']">
-      </pams-course-select>
-      </div>-->
   </form>
 </md-dialog-content>
 <md-dialog-actions align="end">

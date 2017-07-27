@@ -1,38 +1,27 @@
 <h2 md-dialog-title>Create New Subject</h2>
 <md-dialog-content>
   <form [formGroup]="creatorForm">
-    <div layout="row" class="insert">
-      <md-input-container flex>
+    <div fxLayout fxLayout.xs="column" fxLayoutWrap fxLayoutGap="25px">
+      <md-input-container  fxFlex="calc(100%-25px)">
         <input mdInput
                placeholder="Semester"
                formControlName="ordinal" type="number"
                flex/>
       </md-input-container>
-    </div>
-     <div layout="row" class="pad-bottom pad-top">
+
       <pams-subject-type-select
         [placeholder]="'SubjectType'"
-        [innerFormControl]="creatorForm.controls['subjectType']">
+        [innerFormControl]="creatorForm.controls['subjectType']"
+        fxFlex="calc(100%-25px)">
       </pams-subject-type-select>
-    </div>
 
-    <div layout="row" class="pad-bottom pad-top">
       <pams-course-select
         [placeholder]="'Select course'"
-        [innerFormControl]="creatorForm.controls['course']">
+        [innerFormControl]="creatorForm.controls['course']"
+        fxFlex="calc(100%-25px)">
       </pams-course-select>
-      </div>
-
-      <!--<div layout="row" class="pad-bottom">
-      <md-input-container flex>
-        <input mdInput #code
-               placeholder="Curriculum"
-               formControlName="curriculum"
-               flex/>
-      </md-input-container>
-    </div>-->
+    </div>
   </form>
-
 </md-dialog-content>
 <md-dialog-actions align="end">
   <button md-raised-button color="accent" (click)="submit(creatorForm.value, edit)">

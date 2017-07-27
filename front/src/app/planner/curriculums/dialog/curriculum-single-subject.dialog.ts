@@ -7,14 +7,12 @@ import {FormBuilder} from '@angular/forms';
 import {Router, ActivatedRoute} from '@angular/router';
 import {Curriculum} from '../curriculum.interface';
 import {Subject} from '../subject.interface';
-import {CurriculumActions} from '../curriculum.action';
 ;
 import {Store} from '@ngrx/store';
 import {PlannerModuleState} from '../../index';
 import {MdDialogRef} from '@angular/material';
-import {AcademicSession} from '../../academic-sessions/academic-session.interface';
-import {Program} from '../../programs/program.interface';
-import {SubjectType} from "../../subjects/subject-type.enum";
+import {SubjectType} from '../../subjects/subject-type.enum';
+import {CurriculumActions} from '../curriculum.action';
 
 @Component({
   selector: 'pams-curriculum-single-subject',
@@ -31,7 +29,7 @@ export class CurriculumSingleSubjectDialog implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
               private store: Store<PlannerModuleState>,
-              private actions: SubjectActions,
+              private actions: CurriculumActions,
               private router: Router,
               private route: ActivatedRoute,
               private viewContainerRef: ViewContainerRef,
@@ -74,4 +72,3 @@ export class CurriculumSingleSubjectDialog implements OnInit {
     this.dialog.close();
   }
 }
-

@@ -1,13 +1,21 @@
-import { Store } from '@ngrx/store';
-import { OnInit, Input, OnChanges, ChangeDetectionStrategy, Component, SimpleChange, ViewContainerRef, Output } from '@angular/core';
-import { Curriculum } from './../curriculum.interface';
-import { BundleSubjectPart } from './../bundle-subject-part.interface';
-import { BundleSubject } from './../bundle-subject.interface';
-import { SingleSubject } from './../single-subject.interface';
-import { CurriculumBundleSubjectPartDialog } from './../dialog/curriculum-bundle-subject-part.dialog';
-import { CurriculumBundleSubjectDialog } from './../dialog/curriculum-bundle-subject.dialog';
-import { CurriculumSingleSubjectDialog } from './../dialog/curriculum-single-subject.dialog';
-import {SubjectCreatorDialog} from '../../subjects/dialog/subject-creator.dialog';
+import {Store} from '@ngrx/store';
+import {
+  OnInit,
+  Input,
+  OnChanges,
+  ChangeDetectionStrategy,
+  Component,
+  SimpleChange,
+  ViewContainerRef,
+  Output
+} from '@angular/core';
+import {Curriculum} from '../curriculum.interface';
+import {BundleSubjectPart} from '../bundle-subject-part.interface';
+import {BundleSubject} from '../bundle-subject.interface';
+import {SingleSubject} from '../single-subject.interface';
+import {CurriculumBundleSubjectPartDialog} from '../dialog/curriculum-bundle-subject-part.dialog';
+import {CurriculumBundleSubjectDialog} from '../dialog/curriculum-bundle-subject.dialog';
+import {CurriculumSingleSubjectDialog} from '../dialog/curriculum-single-subject.dialog';
 import {CurriculumActions} from '../curriculum.action';
 import {ActivatedRoute, Router} from '@angular/router';
 import {PlannerModuleState} from '../../index';
@@ -21,11 +29,10 @@ import {Subject} from '../subject.interface';
 })
 export class CurriculumSubjectListComponent implements OnInit, OnChanges {
 
-private selectedRows: Subject[];
-// private Curriculum:: MdDialogRef<>;
-private singleSubjectDialogRef: MdDialogRef<CurriculumSingleSubjectDialog>;
-private bundleSubjectDialogRef: MdDialogRef<CurriculumBundleSubjectDialog>;
-private bundleSubjectPartDialogRef: MdDialogRef<CurriculumBundleSubjectPartDialog>;
+  private selectedRows: Subject[];
+  private singleSubjectDialogRef: MdDialogRef<CurriculumSingleSubjectDialog>;
+  private bundleSubjectDialogRef: MdDialogRef<CurriculumBundleSubjectDialog>;
+  private bundleSubjectPartDialogRef: MdDialogRef<CurriculumBundleSubjectPartDialog>;
 
 
   private columns: any[] = [
@@ -39,7 +46,7 @@ private bundleSubjectPartDialogRef: MdDialogRef<CurriculumBundleSubjectPartDialo
 
   @Input() curriculum: Curriculum;
   @Input() subjects: Subject[];
-  @Input() singleSubject :SingleSubject[];
+  @Input() singleSubject: SingleSubject[];
   @Input() bundleSubject: BundleSubject[];
   @Input() bundleSubjectPart: BundleSubjectPart[];
 
@@ -77,7 +84,7 @@ private bundleSubjectPartDialogRef: MdDialogRef<CurriculumBundleSubjectPartDialo
     // no op
   }
 
-  showSingleSubjectDialog(singleSubject: SingleSubject): void{
+  showSingleSubjectDialog(singleSubject: SingleSubject): void {
     let config: MdDialogConfig = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
     config.role = 'dialog';
@@ -85,21 +92,21 @@ private bundleSubjectPartDialogRef: MdDialogRef<CurriculumBundleSubjectPartDialo
     config.height = '60%';
     config.position = {top: '65px'};
     this.singleSubjectDialogRef = this.dialog.open(CurriculumSingleSubjectDialog, config);
-    this.singleSubjectDialogRef.componentInstance.curriculum = this.curriculum ;
+    this.singleSubjectDialogRef.componentInstance.curriculum = this.curriculum;
     this.singleSubjectDialogRef.afterClosed().subscribe((res) => {
       // no op
     });
 
   }
-  showBundleSubjectDialog(bundleSubject: BundleSubject): void
-  {
+
+  showBundleSubjectDialog(bundleSubject: BundleSubject): void {
     let config: MdDialogConfig = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
     config.role = 'dialog';
     config.width = '50%';
     config.height = '60%';
     config.position = {top: '65px'};
-    this.bundleSubjectDialogRef= this.dialog.open(CurriculumBundleSubjectDialog, config);
+    this.bundleSubjectDialogRef = this.dialog.open(CurriculumBundleSubjectDialog, config);
     this.bundleSubjectDialogRef.componentInstance.curriculum = this.curriculum;
     this.bundleSubjectDialogRef.afterClosed().subscribe((res) => {
       // no op
@@ -107,7 +114,7 @@ private bundleSubjectPartDialogRef: MdDialogRef<CurriculumBundleSubjectPartDialo
 
   }
 
-  showBundleSubjectPartDialog(bundleSubjectPart: BundleSubjectPart){
+  showBundleSubjectPartDialog(bundleSubjectPart: BundleSubjectPart) {
     let config: MdDialogConfig = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
     config.role = 'dialog';
@@ -115,29 +122,29 @@ private bundleSubjectPartDialogRef: MdDialogRef<CurriculumBundleSubjectPartDialo
     config.height = '60%';
     config.position = {top: '65px'};
     this.bundleSubjectPartDialogRef = this.dialog.open(CurriculumBundleSubjectPartDialog, config);
-    this.bundleSubjectPartDialogRef.componentInstance.curriculum  = this.curriculum ;
+    this.bundleSubjectPartDialogRef.componentInstance.curriculum = this.curriculum;
     this.bundleSubjectPartDialogRef.afterClosed().subscribe((res) => {
       // no op
     });
   }
 
-    //     editorDialog(): void {
-    //     console.log("edit");
-    //     console.log(this.curriculum);
-    //     let config = new MdDialogConfig();
-    //     config.viewContainerRef = this.vcf;
-    //     config.role = 'dialog';
-    //     config.width = '60%';
-    //     config.height = '50%';
-    //     config.position = {top: '0px'};
-    //     this.editorDialogRef = this.dialog.open(FacultyEditorDialog, config);
-    //     this.editorDialogRef.componentInstance.faculty = this.faculty;
+  //     editorDialog(): void {
+  //     console.log("edit");
+  //     console.log(this.curriculum);
+  //     let config = new MdDialogConfig();
+  //     config.viewContainerRef = this.vcf;
+  //     config.role = 'dialog';
+  //     config.width = '60%';
+  //     config.height = '50%';
+  //     config.position = {top: '0px'};
+  //     this.editorDialogRef = this.dialog.open(FacultyEditorDialog, config);
+  //     this.editorDialogRef.componentInstance.faculty = this.faculty;
 
-    //     // set
-    //     this.editorDialogRef.afterClosed().subscribe(res => {
-    //     console.log("close dialog");
-    //     });
-    // }
+  //     // set
+  //     this.editorDialogRef.afterClosed().subscribe(res => {
+  //     console.log("close dialog");
+  //     });
+  // }
 
   selectRow(subject: Subject): void {
   }

@@ -149,4 +149,40 @@ export class CurriculumActions {
     };
   }
 
+  static ADD_SINGLE_SUBJECT = '[Subject] Add Single Subject';
+
+  addSingleSubject(curriculum, subject): Action {
+    return {
+      type: CurriculumActions.ADD_SINGLE_SUBJECT,
+      payload: {curriculum: curriculum, subject: subject}
+    };
+  }
+
+  static ADD_SINGLE_SUBJECT_SUCCESS = '[Subject] Add Single Subject Success';
+
+  addSingleSubjectSuccess(message): Action {
+    return {
+      type: CurriculumActions.ADD_SINGLE_SUBJECT_SUCCESS,
+      payload: message
+    };
+  }
+
+  static ADD_BUNDLE_SUBJECT = '[Subject] Add Bundle Subject Success';
+
+  addBundleSubject(curriculum, subject): Action {
+    return {
+      type: CurriculumActions.ADD_BUNDLE_SUBJECT,
+      payload: {curriculum: curriculum, subject: subject}
+    };
+  }
+
+  static ADD_BUNDLE_SUBJECT_SUCCESS = '[Subject] Add Bundle Subject Success';
+
+  addBundleSubjecttSuccess(message): Action {
+    return {
+      type: CurriculumActions.ADD_BUNDLE_SUBJECT_SUCCESS,
+      payload: message
+    };
+  }
+
 }

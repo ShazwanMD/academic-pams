@@ -52,4 +52,23 @@ export class CurriculumEffects {
     .withLatestFrom(this.store$.select(...this.CURRICULUM))
     .map((state) => state[1])
     .map((curriculum: Curriculum) => this.curriculumActions.findCurriculumByCode(curriculum.code));
+
+  @Effect() addSingleSubject$ =
+    this.actions$
+      .ofType(CurriculumActions.ADD_SINGLE_SUBJECT)
+      .map((action) => action.payload)
+      .switchMap((payload) => this.plannerService.addSingleSubject(payload.curriculum, payload.subject))
+      .map((message) => this.curriculumActions.addSingleSubjectSuccess(message))
+      .withLatestFrom(this.store$.select(...this.CURRICULUM))
+      .map((state) => state[1])
+      .map((curriculum: Curriculum) => this.curriculumActions.findCurriculumByCode(curriculum.code));
+
+  @Effect() addBundleSubject$ =
+    this.actions$
+      .ofType(CurriculumActions.ADD_BUNDLE_SUBJECT)
+      .map((action) => action.payload)
+      .switchMap((payload) => this.plannerService.addSubject(payload.curriculum, payload.subject))
+      .withLatestFrom(this.store$.select(...this.CURRICULUM))
+      .map((state) => state[1])
+      .map((curriculum: Curriculum) => this.curriculumActions.findCurriculumByCode(curriculum.code));
 }

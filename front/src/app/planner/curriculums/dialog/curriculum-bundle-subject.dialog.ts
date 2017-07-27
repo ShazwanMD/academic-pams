@@ -1,21 +1,16 @@
-import { BundleSubject } from './../bundle-subject.interface';
-
-import { SubjectActions } from './../../subjects/subject.action';
-import { Course } from './../../courses/course.interface';
+import { BundleSubject } from '../bundle-subject.interface';
+import { Course } from '../../courses/course.interface';
 import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import {FormGroup} from '@angular/forms';
 import {FormBuilder} from '@angular/forms';
 import {Router, ActivatedRoute} from '@angular/router';
 import {Curriculum} from '../curriculum.interface';
 import {Subject} from '../subject.interface';
-import {CurriculumActions} from '../curriculum.action';
-;
 import {Store} from '@ngrx/store';
 import {PlannerModuleState} from '../../index';
 import {MdDialogRef} from '@angular/material';
-import {AcademicSession} from '../../academic-sessions/academic-session.interface';
-import {Program} from '../../programs/program.interface';
-import { SubjectType } from "../../subjects/subject-type.enum";
+import { SubjectType } from '../../subjects/subject-type.enum';
+import {CurriculumActions} from '../curriculum.action';
 
 @Component({
   selector: 'pams-curriculum-bundle-subject',
@@ -23,7 +18,7 @@ import { SubjectType } from "../../subjects/subject-type.enum";
 })
 
 export class CurriculumBundleSubjectDialog implements OnInit {
-   
+
 private creatorForm: FormGroup;
   private create: boolean = false;
   private _subject: Subject;
@@ -32,7 +27,7 @@ private creatorForm: FormGroup;
 
   constructor(private formBuilder: FormBuilder,
               private store: Store<PlannerModuleState>,
-              private actions: SubjectActions,
+              private actions: CurriculumActions,
               private router: Router,
               private route: ActivatedRoute,
               private viewContainerRef: ViewContainerRef,
@@ -58,7 +53,7 @@ private creatorForm: FormGroup;
       id: undefined,
       ordinal: 0,
       subjectType: SubjectType.CORE,
-      course:<Course>{},
+      course: <Course>{},
       curriculum: <Curriculum>{},
     });
 
@@ -68,13 +63,9 @@ private creatorForm: FormGroup;
 
   submit(bundleSubject: BundleSubject, isValid: boolean): void {
     console.log('adding Bundle Subject');
-    this.store.dispatch(this.actions.addSubject(this._curriculum, bundleSubject));
-     console.log('adding Subject jju' + this._curriculum);
+    this.store.dispatch(this.actions.addBundleSubject(this._curriculum, bundleSubject));
+    console.log('adding Subject jju' + this._curriculum);
     this.dialog.close();
-    
-console.log('Done');
-     
  }
-
 }
 

@@ -1,14 +1,13 @@
-import { CurriculumBundleSubjectDialog } from './dialog/curriculum-bundle-subject.dialog';
-import { BundleSubjectComponent } from './component/curriculum-bundle-subject.component';
-import { CourseActions } from './../courses/course.action';
-import { CourseSubModule } from './../courses/index';
-import { SingleSubjectComponent } from './component/curriculum-single-subject.component';
-import { CurriculumSingleSubjectDialog } from './dialog/curriculum-single-subject.dialog';
+import {CurriculumBundleSubjectDialog} from './dialog/curriculum-bundle-subject.dialog';
+import {BundleSubjectComponent} from './component/curriculum-bundle-subject.component';
+import {CourseActions} from '../courses/course.action';
+import {CourseSubModule} from '../courses/index';
+import {SingleSubjectComponent} from './component/curriculum-single-subject.component';
+import {CurriculumSingleSubjectDialog} from './dialog/curriculum-single-subject.dialog';
 import {SubjectSubModule} from '../subjects/index';
-import {SubjectActions} from '../subjects/subject.action';
 import {CurriculumActionComponent} from './component/curriculum-action.component';
 import {CurriculumSelectComponent} from './component/curriculum-select.component';
-import { CurriculumSubjectListComponent,} from './component/curriculum-subject-list.component';
+import {CurriculumSubjectListComponent,} from './component/curriculum-subject-list.component';
 import '@ngrx/core/add/operator/select';
 import {appRoutes, appRoutingProviders} from '../../app.routes';
 import {NgModule, ModuleWithProviders} from '@angular/core';
@@ -32,7 +31,7 @@ import {CurriculumComponent} from './component/curriculum.component';
 import {IdentityModule} from '../../identity/index';
 import {AcademicSessionSubModule} from '../academic-sessions/index';
 import {CurriculumUpdateDialog} from './dialog/curriculum-update.dialog';
-import {SubjectEffects} from '../subjects/subject.effect';
+import {SubjectTypeSelectComponent} from './component/subject-type-select.component';
 
 
 @NgModule({
@@ -47,7 +46,6 @@ import {SubjectEffects} from '../subjects/subject.effect';
     CourseSubModule.forRoot(),
     IdentityModule.forRoot(),
     EffectsModule.run(CurriculumEffects),
-    EffectsModule.run(SubjectEffects),
   ],
   declarations: [
     // page
@@ -62,6 +60,7 @@ import {SubjectEffects} from '../subjects/subject.effect';
     CurriculumSubjectListComponent,
     SingleSubjectComponent,
     BundleSubjectComponent,
+    SubjectTypeSelectComponent,
     // dialog
     CurriculumEditorDialog,
     CurriculumUpdateDialog,
@@ -85,8 +84,7 @@ import {SubjectEffects} from '../subjects/subject.effect';
     CurriculumSubjectListComponent,
     CurriculumSingleSubjectDialog,
     CurriculumBundleSubjectDialog,
-
-
+    SubjectTypeSelectComponent,
   ],
 })
 
@@ -100,9 +98,7 @@ export class CurriculumSubModule {
         IdentityService,
         CommonService,
         CurriculumActions,
-        SubjectActions,
         CourseActions,
-
       ],
     };
   }

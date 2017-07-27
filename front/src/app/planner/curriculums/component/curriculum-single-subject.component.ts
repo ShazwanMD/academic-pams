@@ -1,22 +1,22 @@
-import { Curriculum } from './../curriculum.interface';
-import { CurriculumSingleSubjectDialog } from './../dialog/curriculum-single-subject.dialog';
+import {CurriculumSingleSubjectDialog} from '../dialog/curriculum-single-subject.dialog';
 
-import { PlannerModuleState } from './../../index';
-import { SubjectActions } from './../../subjects/subject.action';
-import { Subject } from './../subject.interface';
+import {PlannerModuleState} from '../../index';
+import {SubjectActions} from '../../subjects/subject.action';
+import {Subject} from '../subject.interface';
 import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, OnInit, ViewContainerRef} from '@angular/core';
 import {Store} from '@ngrx/store';
 import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';
-import { SingleSubject } from "../single-subject.interface";
+import {SingleSubject} from '../single-subject.interface';
 
 @Component({
   selector: 'pams-curriculum-single-subject',
   templateUrl: './curriculum-single-subject.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SingleSubjectComponent implements OnInit{
-    curriculum: any;
-    private singleSubjectDialogRef: MdDialogRef<CurriculumSingleSubjectDialog>;
+export class SingleSubjectComponent implements OnInit {
+  private curriculum: any;
+  private singleSubjectDialogRef: MdDialogRef<CurriculumSingleSubjectDialog>;
+  private selectedRows: SingleSubject[];
   private singleSubjectColumns: any[] = [
     {name: 'course', label: 'course'},
     {name: 'ordinal', label: 'Ordinal'},
@@ -24,33 +24,38 @@ export class SingleSubjectComponent implements OnInit{
   ];
   @Input() singleSubject: SingleSubject[];
   @Input() subject: Subject;
-  private selectedRows: SingleSubject[];
+
   constructor(private actions: SubjectActions,
               private vcf: ViewContainerRef,
               private store: Store<PlannerModuleState>,
               private dialog: MdDialog) {
   }
-    ngOnInit(): void {
+
+  ngOnInit(): void {
     this.selectedRows = this.singleSubject.filter((value) => value.selected);
   }
+
   delete(): void {
-      console.log('length: ' + this.selectedRows.length);
-      for (let i: number = 0; i < this.selectedRows.length; i++) {
-    //   this.store.dispatch(this.actions.deleteSubject(this.subject, this.selectedRows[i]));
+    console.log('length: ' + this.selectedRows.length);
+    for (let i: number = 0; i < this.selectedRows.length; i++) {
+      //   this.store.dispatch(this.actions.deleteSubject(this.subject, this.selectedRows[i]));
     }
     this.selectedRows = [];
   }
-    edit(singleSubject: SingleSubject): void {
+
+  edit(singleSubject: SingleSubject): void {
     this.showDialog(singleSubject);
   }
 
- selectRow(singleSubject: SingleSubject): void {
+  selectRow(singleSubject: SingleSubject): void {
   }
+
   selectAllRows(singleSubject: SingleSubject[]): void {
   }
-showDialog(singleSubject: SingleSubject): void {
+
+  showDialog(singleSubject: SingleSubject): void {
     console.log('showDialog');
-    let config = new MdDialogConfig();
+    let config: MdDialogConfig = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
     config.role = 'dialog';
     config.width = '50%';

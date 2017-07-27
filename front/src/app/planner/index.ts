@@ -1,11 +1,6 @@
 import {CurriculumActions} from './curriculums/curriculum.action';
-import {SubjectActions} from './subjects/subject.action';
 import {curriculumSubjectListReducer, CurriculumSubjectListState} from './curriculums/curriculum-subject-list.reducer';
-import {SubjectSubModule} from './subjects/index';
-import {subjectReducer, SubjectState} from './subjects/subject.reducer';
-import {subjectListReducer, SubjectListState} from './subjects/subject-list.reducer';
 import {Subject} from './curriculums/subject.interface';
-import {AcademicYearListPage} from './academic-years/academic-year-list.page';
 import {NgModule, ModuleWithProviders} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {ReactiveFormsModule} from '@angular/forms';
@@ -152,7 +147,6 @@ export class PlannerModule {
         CommonService,
         PlannerService,
         CurriculumActions,
-        SubjectActions,
       ],
     };
   }

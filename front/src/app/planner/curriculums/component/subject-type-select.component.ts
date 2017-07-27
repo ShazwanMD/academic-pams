@@ -1,11 +1,11 @@
 import {SubjectType} from '../subject-type.enum';
 import {Component, Input, OnInit} from '@angular/core';
-import {FormControl} from "@angular/forms";
-
+import {FormControl} from '@angular/forms';
 
 @Component({
   selector: 'pams-subject-type-select',
   templateUrl: './subject-type-select.component.html',
+  styleUrls: ['./subject-type-select.component.scss'],
 })
 export class SubjectTypeSelectComponent implements OnInit {
 
@@ -14,8 +14,8 @@ export class SubjectTypeSelectComponent implements OnInit {
   @Input() innerFormControl: FormControl;
 
   constructor() {
-    for (var n in SubjectType) {
-      if(typeof SubjectType[n] === 'string')
+    for (let n in SubjectType) {
+      if (typeof SubjectType[n] === 'string')
         this.subjectTypes.push(SubjectType[n.toString()]);
     }
   }
@@ -27,4 +27,4 @@ export class SubjectTypeSelectComponent implements OnInit {
     this.innerFormControl.setValue(event, {emitEvent: false});
   }
 }
-
+
