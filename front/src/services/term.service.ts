@@ -457,7 +457,6 @@ export class TermService {
     console.log('program:' + program.code);
     console.log('course:' + course.code);
     console.log('save offering');
-
     return this._http.post(this.TERM_API + '/offerings', JSON.stringify(offering))
       .flatMap((res: Response) => Observable.of(res.text()))
       .catch((error) => this.handleError(error));
@@ -521,7 +520,6 @@ export class TermService {
     console.log('formData', formData);
     return this.http.post(this.TERM_API + '/offerings/' + offering.canonicalCode + '/uploadGradebook', formData)
       .flatMap((res: Response) => Observable.of(res.text()));
-
   }
 
   downloadGradebook(offering: Offering): Observable<File> {

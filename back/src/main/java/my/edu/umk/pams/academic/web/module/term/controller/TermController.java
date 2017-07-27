@@ -722,25 +722,22 @@ public class TermController {
         dummyLogin();
 
         LOG.debug("offering canonical code: " + vo.getCanonicalCode());
-        if (isOfferingExists(vo.getCanonicalCode())) {
-            LOG.debug("Data offering already exists! Please insert new data");
-            return new ResponseEntity<String>("duplicate", HttpStatus.OK);
-        } else {
-            System.out.println("Attemting to save data");
-            AdOffering offering = new AdOfferingImpl();
-            offering.setCode(vo.getCode());
-            offering.setCanonicalCode(vo.getCanonicalCode());
-            offering.setCapacity(vo.getCapacity());
-            offering.setTitleMs(vo.getTitleMs());
-            offering.setTitleEn(vo.getTitleEn());
-            offering.setCourse(plannerService.findCourseByCode(vo.getCourse().getCode()));
-            offering.setProgram(plannerService.findProgramByCode(vo.getProgram().getCode()));
-            offering.setSession(plannerService.findAcademicSessionByCode(vo.getAcademicSession().getCode()));
+        if (isOfferingExists(vo.getCanonicalCode()))
+            throw new IllegalArgumentException("Data offering already exists! Please insert new data");
 
-            termService.saveOffering(offering);
-            return new ResponseEntity<String>("success", HttpStatus.OK);
-        }
+        // save data normally
+        AdOffering offering = new AdOfferingImpl();
+        offering.setCode(vo.getCode());
+        offering.setCanonicalCode(vo.getCanonicalCode());
+        offering.setCapacity(vo.getCapacity());
+        offering.setTitleMs(vo.getTitleMs());
+        offering.setTitleEn(vo.getTitleEn());
+        offering.setCourse(plannerService.findCourseByCode(vo.getCourse().getCode()));
+        offering.setProgram(plannerService.findProgramByCode(vo.getProgram().getCode()));
+        offering.setSession(plannerService.findAcademicSessionByCode(vo.getAcademicSession().getCode()));
 
+        termService.saveOffering(offering);
+        return new ResponseEntity<String>("success", HttpStatus.OK);
     }
 
 	/*private boolean isOfferingExists(String canonicalCode)  {

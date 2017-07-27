@@ -1,16 +1,17 @@
-import { SectionActions } from '../sections/section.action';
-import { PlannerService } from '../../../services/planner.service';
-import { CourseActions } from '../../planner/courses/course.action';
-import { ProgramActions } from '../../planner/programs/program.action';
-import { Injectable } from '@angular/core';
-import { Effect, Actions } from '@ngrx/effects';
-import { OfferingActions } from './offering.action';
-import { TermService } from '../../../services/term.service';
-import { from } from 'rxjs/observable/from';
-import { Observable } from 'rxjs/Observable';
-import { Store } from '@ngrx/store';
-import { TermModuleState } from '../index';
-import { Offering } from './offering.interface';
+import {SectionActions} from '../sections/section.action';
+import {PlannerService} from '../../../services/planner.service';
+import {CourseActions} from '../../planner/courses/course.action';
+import {ProgramActions} from '../../planner/programs/program.action';
+import {Injectable} from '@angular/core';
+import {Effect, Actions} from '@ngrx/effects';
+import {OfferingActions} from './offering.action';
+import {TermService} from '../../../services/term.service';
+import {from} from 'rxjs/observable/from';
+import {Observable} from 'rxjs/Observable';
+import {Store} from '@ngrx/store';
+import {TermModuleState} from '../index';
+import {Offering} from './offering.interface';
+import {MdSnackBar, MdSnackBarConfig} from '@angular/material';
 
 @Injectable()
 export class OfferingEffects {
@@ -18,20 +19,21 @@ export class OfferingEffects {
   private OFFERING: string[] = 'termModuleState.offering'.split('.');
 
   constructor(private actions$: Actions,
-    private offeringActions: OfferingActions,
-    private programActions: ProgramActions,
-    private courseActions: CourseActions,
-    private sectionActions: SectionActions,
-    private termService: TermService,
-    private plannerService: PlannerService,
-    private store$: Store<TermModuleState>) {
+              private offeringActions: OfferingActions,
+              private programActions: ProgramActions,
+              private courseActions: CourseActions,
+              private sectionActions: SectionActions,
+              private termService: TermService,
+              private plannerService: PlannerService,
+              private store$: Store<TermModuleState>,
+              private snackBar: MdSnackBar) {
   }
 
   @Effect() findOfferings$ = this.actions$
     .ofType(OfferingActions.FIND_OFFERINGS)
     .switchMap(() => this.termService.findOfferings())
-    .map((offerings) => this.offeringActions.findOfferingsSuccess(offerings))
- 
+    .map((offerings) => this.offeringActions.findOfferingsSuccess(offerings));
+
   @Effect() findOfferingByCanonicalCode$ = this.actions$
     .ofType(OfferingActions.FIND_OFFERING_BY_CANONICAL_CODE)
     .map((action) => action.payload)
@@ -60,18 +62,14 @@ export class OfferingEffects {
     .switchMap((offering) => this.termService.findGradebookMatricesByOffering(offering))
     .map((sections) => this.offeringActions.findGradebookMatricessByOfferingSuccess(sections));
 
-
   @Effect() saveOffering$ = this.actions$
-  .ofType(OfferingActions.SAVE_OFFERING)
-  .map((action) => action.payload)
-  .switchMap((payload) => this.termService.saveOffering(payload.program, payload.course, payload.offering))
-  .map((offering) => this.offeringActions.saveOfferingSuccess(offering))
-  .mergeMap((action) => from([action, this.offeringActions.findOfferings()]))
-  .catch((error) => {
-    console.error('error ' + error.errorMessage);
-    return Observable.empty();
-  });
-  
+    .ofType(OfferingActions.SAVE_OFFERING)
+    .map((action) => action.payload)
+    .switchMap((payload) => this.termService.saveOffering(payload.program, payload.course, payload.offering))
+    .map((offering) => this.offeringActions.saveOfferingSuccess(offering))
+    .mergeMap((action) => from([action, this.offeringActions.findOfferings()]))
+    .catch((error) => this.showError(error));
+
   @Effect() updateOfferings$ = this.actions$
     .ofType(OfferingActions.UPDATE_OFFERING)
     .map((action) => action.payload)
@@ -117,5 +115,12 @@ export class OfferingEffects {
     .map((action) => action.payload)
     .switchMap((offering) => this.termService.calculateGPA(offering))
     .map((message) => this.offeringActions.calculateGPASuccess(message));
+
+  showError(error): Observable<any> {
+    let config: MdSnackBarConfig = new MdSnackBarConfig();
+    config.duration = 3000;
+    this.snackBar.open(error.error, undefined, config);
+    return Observable.empty();
+  }
 }
 
