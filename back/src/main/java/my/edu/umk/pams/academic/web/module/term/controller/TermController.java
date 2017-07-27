@@ -562,7 +562,14 @@ public class TermController {
 		List<AdOffering> offerings = termService.findOfferings(0, 100);
 		return new ResponseEntity<List<Offering>>(termTransformer.toOfferingVos(offerings), HttpStatus.OK);
 	}
-
+	//isOfferingExists
+	@RequestMapping(value = "/offerings/{canonicalCode}/isExists", method = RequestMethod.GET)
+	public ResponseEntity<Boolean> findIsOfferingExists(@PathVariable String canonicalCode)
+			throws UnsupportedEncodingException {
+		boolean offering = termService.isOfferingExists(canonicalCode);
+		return new ResponseEntity<Boolean>(true, HttpStatus.OK);
+	}
+	
 	@RequestMapping(value = "/offerings/{academicSessionCode}/page/{pageNo}", method = RequestMethod.GET)
 	public ResponseEntity<List<Offering>> findOfferings(@PathVariable String academicSessionCode,
 			@PathVariable Integer pageNo) {
@@ -756,7 +763,7 @@ public class TermController {
         return termService.isOfferingExists(canonicalCode);
         
     }
-
+	
 	@RequestMapping(value = "/offerings/{canonicalCode}", method = RequestMethod.PUT)
 	public ResponseEntity<String> updateOffering(@PathVariable String canonicalCode, @RequestBody Offering vo) {
 		dummyLogin();
