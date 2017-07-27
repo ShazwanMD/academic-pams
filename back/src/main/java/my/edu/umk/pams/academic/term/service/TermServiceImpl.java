@@ -205,15 +205,12 @@ public class TermServiceImpl implements TermService {
 	}
 
 	@Override
-	public void saveOffering(AdOffering offering) {
-		if (isOfferingExists(offering.getCanonicalCode())){
-			System.out.println("Duplicate data");
-			//throw new Exception("Duplicate offering record");
-	}else{
+	public void saveOffering(AdOffering offering) {	
+	  //throw new Exception("Duplicate offering record");
 		offeringDao.save(offering, securityService.getCurrentUser());
-		sessionFactory.getCurrentSession().flush();
+		sessionFactory.getCurrentSession().flush();	
 	}
-	}
+	
 
 	@Override
 	public void updateOffering(AdOffering offering) {

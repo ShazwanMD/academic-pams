@@ -99,6 +99,7 @@ export class OfferingActions {
   static SAVE_OFFERING = '[Offering] Save Offering';
 
   saveOffering(program, course, offering): Action {
+      console.log("action here in offering");
     return {
       type: OfferingActions.SAVE_OFFERING,
       payload: { program: program, course: course, offering: offering }
@@ -108,9 +109,11 @@ export class OfferingActions {
   static SAVE_OFFERING_SUCCESS = '[Offering] Save Offering Success';
 
   saveOfferingSuccess(offering): Action {
+      console.log("success here in offering");
     return {
       type: OfferingActions.SAVE_OFFERING_SUCCESS,
       payload: offering
+      
     };
   }
 

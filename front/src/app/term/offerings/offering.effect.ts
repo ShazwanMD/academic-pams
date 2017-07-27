@@ -60,17 +60,18 @@ export class OfferingEffects {
     .switchMap((offering) => this.termService.findGradebookMatricesByOffering(offering))
     .map((sections) => this.offeringActions.findGradebookMatricessByOfferingSuccess(sections));
 
-  @Effect() saveOffering$ = this.actions$
-    .ofType(OfferingActions.SAVE_OFFERING)
-    .map((action) => action.payload)
-    .switchMap((payload) => this.termService.saveOffering(payload.program, payload.course, payload.offering))
-    .map((offering) => this.offeringActions.saveOfferingSuccess(offering))
-    .mergeMap((action) => from([action, this.offeringActions.findOfferings()]))
-    .catch((error) => {
-      console.error('error ' + error.errorMessage);
-      return Observable.empty();
-    });
 
+  @Effect() saveOffering$ = this.actions$
+  .ofType(OfferingActions.SAVE_OFFERING)
+  .map((action) => action.payload)
+  .switchMap((payload) => this.termService.saveOffering(payload.program, payload.course, payload.offering))
+  .map((offering) => this.offeringActions.saveOfferingSuccess(offering))
+  .mergeMap((action) => from([action, this.offeringActions.findOfferings()]))
+  .catch((error) => {
+    console.error('error ' + error.errorMessage);
+    return Observable.empty();
+  });
+  
   @Effect() updateOfferings$ = this.actions$
     .ofType(OfferingActions.UPDATE_OFFERING)
     .map((action) => action.payload)

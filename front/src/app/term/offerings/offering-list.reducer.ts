@@ -15,6 +15,7 @@ export function offeringListReducer(state = initialState, action: Action): Offer
       return action.payload;
     }
     case OfferingActions.SAVE_OFFERING_SUCCESS: {
+        
       let index = _.findIndex(state, {id: action.payload.id});
       if (index >= 0) {
         return [

@@ -452,8 +452,8 @@ export class TermService {
 
     console.log('save offering');
     return this._http.post(this.TERM_API + '/offerings', JSON.stringify(offering))
-      .flatMap((res: Response) => Observable.of(res.text()))
-      .catch((error) => this.handleError(error));
+       .flatMap((res: Response) => Observable.of(res.text()))
+       .catch((error) => this.handleError(error));
   }
 
   addSection(offering: Offering, section: Section): Observable<String> {
