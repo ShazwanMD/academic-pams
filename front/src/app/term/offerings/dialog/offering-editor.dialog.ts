@@ -62,21 +62,25 @@ export class OfferingEditorDialog implements OnInit {
 
         console.log(this.store.dispatch(this.actions.saveOffering( this._program, this._course, offering )));
         console.log(this.actions.saveOfferingSuccess(offering));
+        
+        this.dialog.close();
+        
+        //this.store.dispatch(this.actions.saveOffering( this._program, this._course, offering));
         //console.log(this.actions.isOfferingExists(offering));
 
         //still working on to compare with db
-        if ( offering.canonicalCode == 'MGSEB-MBA-GST5023' ) {
+       // if ( offering.canonicalCode == 'MGSEB-MBA-GST5023' ) {
 
             //if (this.isOfferingExists == true){
-            console.log( 'DATA ALREADY EXISTED', offering.canonicalCode, 'Alert!' );
-            console.log( offering.canonicalCode );
+          //  console.log( 'DATA ALREADY EXISTED', offering.canonicalCode, 'Alert!' );
+           // console.log( offering.canonicalCode );
 
-            let snackBarRef = this.snackBar.open( 'Offering is already existed!', 'OK' );
-            this.dialog.close();
+          //  let snackBarRef = this.snackBar.open( 'Offering is already existed!', 'OK' );
+           // this.dialog.close();
 
-        } else {
+       // } else {
 
-            this.dialog.close();
-        }
+       //     this.dialog.close();
+       // }
     }
 }
