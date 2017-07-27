@@ -1,3 +1,4 @@
+import { SingleSubject } from './single-subject.interface';
 import {CurriculumEditorDialog} from './dialog/curriculum-editor.dialog';
 import {MdDialogRef, MdDialogConfig} from '@angular/material/dialog';
 import {Component, Input, OnInit, ChangeDetectionStrategy} from '@angular/core';
@@ -22,8 +23,10 @@ export class CurriculumDetailPage implements OnInit {
 
   private CURRICULUM: string[] = 'plannerModuleState.curriculum'.split('.');
   private SUBJECTS: string[] = 'plannerModuleState.subjects'.split('.');
+  private SINGLE_SUBJECT: string[] =  'plannerModuleState.singleSubjects'.split('.');
   private curriculum$: Observable<Curriculum>;
   private subjects$: Observable<Subject[]>;
+  private singleSubject$: Observable<SingleSubject[]>;
 
 
   private editorDialogRef: MdDialogRef<CurriculumEditorDialog>;
@@ -40,6 +43,7 @@ export class CurriculumDetailPage implements OnInit {
 
     this.curriculum$ = this.store.select(...this.CURRICULUM);
     this.subjects$ = this.store.select(...this.SUBJECTS);
+    this.singleSubject$ = this.store.select(...this.SINGLE_SUBJECT);
   }
 
   ngOnInit(): void {
