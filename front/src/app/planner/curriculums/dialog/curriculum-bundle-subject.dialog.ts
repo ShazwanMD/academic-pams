@@ -9,8 +9,8 @@ import {Subject} from '../subject.interface';
 import {Store} from '@ngrx/store';
 import {PlannerModuleState} from '../../index';
 import {MdDialogRef} from '@angular/material';
-import { SubjectType } from '../../subjects/subject-type.enum';
 import {CurriculumActions} from '../curriculum.action';
+import {SubjectType} from '../subject-type.enum';
 
 @Component({
   selector: 'pams-curriculum-bundle-subject',

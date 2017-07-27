@@ -1,12 +1,12 @@
 import {CurriculumSingleSubjectDialog} from '../dialog/curriculum-single-subject.dialog';
 
 import {PlannerModuleState} from '../../index';
-import {SubjectActions} from '../../subjects/subject.action';
 import {Subject} from '../subject.interface';
 import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, OnInit, ViewContainerRef} from '@angular/core';
 import {Store} from '@ngrx/store';
 import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';
 import {SingleSubject} from '../single-subject.interface';
+import {CurriculumActions} from '../curriculum.action';
 
 @Component({
   selector: 'pams-curriculum-single-subject',
@@ -25,7 +25,7 @@ export class SingleSubjectComponent implements OnInit {
   @Input() singleSubject: SingleSubject[];
   @Input() subject: Subject;
 
-  constructor(private actions: SubjectActions,
+  constructor(private actions: CurriculumActions,
               private vcf: ViewContainerRef,
               private store: Store<PlannerModuleState>,
               private dialog: MdDialog) {

@@ -288,16 +288,7 @@ export class PlannerService {
       .map((res) => <Subject[]>res.json());
   }
 
-  // deprecated
-  addSubject(curriculum: Curriculum, subject: Subject): Observable<String> {
-    console.log('addSubject:' + subject);
-    console.log('curriculum:' + curriculum.code);
-    return this._http.post(this.PLANNER_API + '/curriculums/' + curriculum.code + '/subjects', JSON.stringify(subject))
-      .flatMap((res: Response) => Observable.of(res.text()));
-  }
-
   addSingleSubject(curriculum: Curriculum, subject: SingleSubject): Observable<String> {
-    console.log('addSubject:' + subject);
     console.log('curriculum:' + curriculum.code);
     return this._http.post(this.PLANNER_API + '/curriculums/' + curriculum.code + '/singleSubjects', JSON.stringify(subject))
       .flatMap((res: Response) => Observable.of(res.text()));

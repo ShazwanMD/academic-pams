@@ -67,7 +67,7 @@ export class CurriculumEffects {
     this.actions$
       .ofType(CurriculumActions.ADD_BUNDLE_SUBJECT)
       .map((action) => action.payload)
-      .switchMap((payload) => this.plannerService.addSubject(payload.curriculum, payload.subject))
+      .switchMap((payload) => this.plannerService.addBundleSubject(payload.curriculum, payload.subject))
       .withLatestFrom(this.store$.select(...this.CURRICULUM))
       .map((state) => state[1])
       .map((curriculum: Curriculum) => this.curriculumActions.findCurriculumByCode(curriculum.code));

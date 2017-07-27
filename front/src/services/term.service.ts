@@ -19,17 +19,17 @@ import {AdmissionApplicationTask} from '../app/term/admission-applications/admis
 import {Appointment} from '../app/term/appointments/appointment.interface';
 import {Section} from '../app/term/sections/section.interface';
 import {GradebookMatrix} from '../app/term/offerings/gradebook-matrix.interface';
-import { Gradebook } from "../app/term/gradebooks/gradebook.interface";
+import {Gradebook} from "../app/term/gradebooks/gradebook.interface";
 
 @Injectable()
 export class TermService {
-  
-   private TERM_API: string = environment.endpoint + '/api/term';
+
+  private TERM_API: string = environment.endpoint + '/api/term';
 
   constructor(private _http: HttpInterceptorService,
               private http: Http) {
   }
-  
+
 
   findAssessmentById(id: number): Observable<Assessment> {
     console.log('findAssessmentById');
@@ -58,7 +58,7 @@ export class TermService {
   }
 
   deleteAssessment(offering: Offering, assessment: Assessment): Observable<String> {
-    console.log('deleteAssessmentInService')
+    console.log('deleteAssessmentInService');
     return this._http.delete(this.TERM_API + '/offerings/' + offering.canonicalCode + '/assessments/' + assessment.id)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
@@ -321,25 +321,25 @@ export class TermService {
     return this._http.put(this.TERM_API + '/sections/' + section.canonicalCode + '/enrollments/' + enrollment.id, JSON.stringify(enrollment))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
-  
+
   //find gradebooks by enrollment
   findGradebooksByEnrollment(enrollment: Enrollment): Observable<Gradebook[]> {
     console.log('findGradebooksByEnrollment');
     return this._http.get(this.TERM_API + '/enrollments/' + enrollment.id + '/gradebooks')
       .map((res: Response) => <Gradebook[]>res.json());
   }
-  
-  
+
+
   //==================================================================================================== //
   // GRADEBOOK
   // ==================================================================================================== //
 
   findGradebookById(id: number): Observable<Gradebook[]> {
-      console.log('findGradebookById');
-      return this._http.get(this.TERM_API + '/gradebooks/' + id)
-        .map((res: Response) => <Gradebook[]>res.json());
-    }
-  
+    console.log('findGradebookById');
+    return this._http.get(this.TERM_API + '/gradebooks/' + id)
+      .map((res: Response) => <Gradebook[]>res.json());
+  }
+
   // ==================================================================================================== //
   // APPOINTMENT
   // ==================================================================================================== //
@@ -384,7 +384,7 @@ export class TermService {
     return this._http.get(this.TERM_API + '/sections/' + section.canonicalCode + '/enrollments')
       .map((res: Response) => <Enrollment[]>res.json());
   }
-  
+
   //find gradebooks by section
   findGradebooksBySection(section: Section): Observable<Gradebook[]> {
     console.log('findGradebooksBySection');
@@ -404,11 +404,11 @@ export class TermService {
   // ==================================================================================================== //
 
   isOfferingExists(offering: Offering): Observable<Boolean> {
-      console.log('isOfferingExists');
-      return this._http.get(this.TERM_API + '/offerings/' + offering.canonicalCode + '/isExists')
-        .map((res: Response) => <Boolean>res.json());
-    }
-  
+    console.log('isOfferingExists');
+    return this._http.get(this.TERM_API + '/offerings/' + offering.canonicalCode + '/isExists')
+      .map((res: Response) => Boolean(res.text()));
+  }
+
   findOfferings(): Observable<Offering[]> {
     console.log('findOfferings');
     return this._http.get(this.TERM_API + '/offerings')
@@ -457,10 +457,10 @@ export class TermService {
     console.log('program:' + program.code);
     console.log('course:' + course.code);
     console.log('save offering');
-      
+
     return this._http.post(this.TERM_API + '/offerings', JSON.stringify(offering))
-       .flatMap((res: Response) => Observable.of(res.text()))
-       .catch((error) => this.handleError(error));
+      .flatMap((res: Response) => Observable.of(res.text()))
+      .catch((error) => this.handleError(error));
   }
 
   addSection(offering: Offering, section: Section): Observable<String> {
@@ -542,7 +542,7 @@ export class TermService {
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
-    calculateGPA(offering: Offering): Observable<String> {
+  calculateGPA(offering: Offering): Observable<String> {
     console.log('CalculateGpa');
     let options: RequestOptions = new RequestOptions({responseType: ResponseContentType.ArrayBuffer});
     return this._http.post(this.TERM_API + '/offerings/' + offering.canonicalCode + '/calculateGPA', options)

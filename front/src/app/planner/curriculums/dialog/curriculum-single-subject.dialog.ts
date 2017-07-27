@@ -1,18 +1,16 @@
-import {SubjectActions} from './../../subjects/subject.action';
-import {Course} from './../../courses/course.interface';
-import {SingleSubject} from './../single-subject.interface';
+import {Course} from '../../courses/course.interface';
+import {SingleSubject} from '../single-subject.interface';
 import {Component, OnInit, ViewContainerRef} from '@angular/core';
 import {FormGroup} from '@angular/forms';
 import {FormBuilder} from '@angular/forms';
 import {Router, ActivatedRoute} from '@angular/router';
 import {Curriculum} from '../curriculum.interface';
 import {Subject} from '../subject.interface';
-;
 import {Store} from '@ngrx/store';
 import {PlannerModuleState} from '../../index';
 import {MdDialogRef} from '@angular/material';
-import {SubjectType} from '../../subjects/subject-type.enum';
 import {CurriculumActions} from '../curriculum.action';
+import {SubjectType} from '../subject-type.enum';
 
 @Component({
   selector: 'pams-curriculum-single-subject',
@@ -53,6 +51,7 @@ export class CurriculumSingleSubjectDialog implements OnInit {
   ngOnInit(): void {
     this.creatorForm = this.formBuilder.group({
       id: undefined,
+      type: 'single',
       ordinal: 0,
       subjectType: SubjectType.CORE,
       course: <Course>{},
