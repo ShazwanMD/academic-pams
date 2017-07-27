@@ -1,8 +1,7 @@
-
-import { SubjectActions } from './../../subjects/subject.action';
-import { Course } from './../../courses/course.interface';
-import { SingleSubject } from './../single-subject.interface';
-import { Component, OnInit, ViewContainerRef } from '@angular/core';
+import {SubjectActions} from './../../subjects/subject.action';
+import {Course} from './../../courses/course.interface';
+import {SingleSubject} from './../single-subject.interface';
+import {Component, OnInit, ViewContainerRef} from '@angular/core';
 import {FormGroup} from '@angular/forms';
 import {FormBuilder} from '@angular/forms';
 import {Router, ActivatedRoute} from '@angular/router';
@@ -15,7 +14,7 @@ import {PlannerModuleState} from '../../index';
 import {MdDialogRef} from '@angular/material';
 import {AcademicSession} from '../../academic-sessions/academic-session.interface';
 import {Program} from '../../programs/program.interface';
-import { SubjectType } from "../../subjects/subject-type.enum";
+import {SubjectType} from "../../subjects/subject-type.enum";
 
 @Component({
   selector: 'pams-curriculum-single-subject',
@@ -23,12 +22,12 @@ import { SubjectType } from "../../subjects/subject-type.enum";
 })
 
 export class CurriculumSingleSubjectDialog implements OnInit {
-   
-private creatorForm: FormGroup;
+
+  private creatorForm: FormGroup;
   private create: boolean = false;
   private _subject: Subject;
   private _curriculum: Curriculum;
-   private _singleSubject: SingleSubject;
+  private _singleSubject: SingleSubject;
 
   constructor(private formBuilder: FormBuilder,
               private store: Store<PlannerModuleState>,
@@ -58,23 +57,21 @@ private creatorForm: FormGroup;
       id: undefined,
       ordinal: 0,
       subjectType: SubjectType.CORE,
-      course:<Course>{},
+      course: <Course>{},
       curriculum: <Curriculum>{},
     });
 
     this.creatorForm.patchValue({'curriculum': this._curriculum});
-    if (this.create) this.creatorForm.patchValue(this._singleSubject);
+    if (this.create) {
+      this.creatorForm.patchValue(this._singleSubject);
+    }
   }
 
   submit(singleSubject: SingleSubject, isValid: boolean): void {
-    console.log('adding Subject');
-    this.store.dispatch(this.actions.addSubject(this._curriculum, singleSubject));
-     console.log('adding Subject jju' + this._curriculum);
+    console.log('adding singleubject');
+    this.store.dispatch(this.actions.addSingleSubject(this._curriculum, singleSubject));
+    console.log('adding single subject to ' + this._curriculum);
     this.dialog.close();
-    
-console.log('Done');
-     
- }
-
+  }
 }
 

@@ -87,8 +87,7 @@ public class CurriculumBundleTest {
     @Rollback(false)
     public void testWorkflow() {
         AdCurriculum curriculum = new AdCurriculumImpl();
-        String code = "MGSEB-MBA-CRLM-0001" ;
-        //+ System.currentTimeMillis()
+        String code = "MGSEB-MBA-CRLM-0001" + System.currentTimeMillis();
         curriculum.setCode(code);
         curriculum.setCoreCredit(100);
         curriculum.setCurriculumCredit(10);

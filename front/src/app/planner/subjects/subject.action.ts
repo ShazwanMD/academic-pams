@@ -1,178 +1,188 @@
-import { Injectable } from '@angular/core';
-import { Action } from '@ngrx/store';
-import { Subject } from '../curriculums/subject.interface';
+import {Injectable} from '@angular/core';
+import {Action} from '@ngrx/store';
+import {Subject} from '../curriculums/subject.interface';
 
 @Injectable()
 export class SubjectActions {
 
-    static FIND_SUBJECTS = '[Subject] Find Subjects';
-    findSubjects(): Action {
-        return {
-            type: SubjectActions.FIND_SUBJECTS
-        };
-    }
+  static FIND_SUBJECTS = '[Subject] Find Subjects';
 
-    static FIND_SUBJECTS_SUCCESS = '[Subject] Find Subjects Success';
-    findSubjectsSuccess( subjects ): Action {
-        console.log( "findSubjectsSuccess" );
-        console.log( "Subjects: " + subjects.length );
-        return {
-            type: SubjectActions.FIND_SUBJECTS_SUCCESS,
-            payload: subjects
-        };
-    }
+  findSubjects(): Action {
+    return {
+      type: SubjectActions.FIND_SUBJECTS
+    };
+  }
 
-     static FIND_SUBJECT_BY_ID = '[Subject] Find Subject by Id';
-    findSubjectById( id ): Action {
-        return {
-            type: SubjectActions.FIND_SUBJECT_BY_ID,
-            payload: id
-        };
-    }
+  static FIND_SUBJECTS_SUCCESS = '[Subject] Find Subjects Success';
 
-     static FIND_SUBJECT_BY_ID_SUCCESS = '[Subject] Find Subject By Id Success';
-    findSubjectByIdSuccess( subject ): Action {
-        return {
-            type: SubjectActions.FIND_SUBJECT_BY_ID_SUCCESS,
-            payload: subject
-        };
-    }
+  findSubjectsSuccess(subjects): Action {
+    console.log("findSubjectsSuccess");
+    console.log("Subjects: " + subjects.length);
+    return {
+      type: SubjectActions.FIND_SUBJECTS_SUCCESS,
+      payload: subjects
+    };
+  }
 
-    static ADD_SUBJECT= '[Subject] Add Subject';
-    addSubject( curriculum,subject ): Action {
-        return {
-            type: SubjectActions.ADD_SUBJECT,
-            payload: {curriculum: curriculum, subject: subject}
-        };
-    }
+  static FIND_SUBJECT_BY_ID = '[Subject] Find Subject by Id';
 
-    static ADD_SUBJECT_SUCCESS = '[Subject] Add Subject Success';
-    addSubjectSuccess( message ): Action {
-        return {
-            type: SubjectActions.ADD_SUBJECT_SUCCESS,
-            payload: message
-        };
-    }
+  findSubjectById(id): Action {
+    return {
+      type: SubjectActions.FIND_SUBJECT_BY_ID,
+      payload: id
+    };
+  }
 
-    static ADD_SINGLE_SUBJECT= '[Subject] Add Single Subject';
-    addSingleSubject( curriculum,subject ): Action {
-        return {
-            type: SubjectActions.ADD_SINGLE_SUBJECT,
-            payload: {curriculum: curriculum, subject: subject}
-        };
-    }
+  static FIND_SUBJECT_BY_ID_SUCCESS = '[Subject] Find Subject By Id Success';
 
-    static ADD_SINGLE_SUBJECT_SUCCESS = '[Subject] Add Single Subject Success';
-    addSingleSubjectSuccess( message ): Action {
-        return {
-            type: SubjectActions.ADD_SINGLE_SUBJECT_SUCCESS,
-            payload: message
-        };
-    }
+  findSubjectByIdSuccess(subject): Action {
+    return {
+      type: SubjectActions.FIND_SUBJECT_BY_ID_SUCCESS,
+      payload: subject
+    };
+  }
 
-    static ADD_BUNDLE_SUBJECT= '[Subject] Add Bundle Subject Success';
-    addBundleSubject( curriculum,subject ): Action {
-        return {
-            type: SubjectActions.ADD_BUNDLE_SUBJECT,
-            payload: {curriculum: curriculum, subject: subject}
-        };
-    }
+  static ADD_SUBJECT = '[Subject] Add Subject';
 
-    static ADD_BUNDLE_SUBJECT_SUCCESS = '[Subject] Add Bundle Subject Success';
-    addBundleSubjecttSuccess( message ): Action {
-        return {
-            type: SubjectActions.ADD_BUNDLE_SUBJECT_SUCCESS,
-            payload: message
-        };
-    }
+  addSubject(curriculum, subject): Action {
+    return {
+      type: SubjectActions.ADD_SUBJECT,
+      payload: {curriculum: curriculum, subject: subject}
+    };
+  }
 
-       static ADD_SUBJECT_PART= '[Subject] Add Bundle Subject Success';
-    addSubjectPart( curriculum,subject ): Action {
-        return {
-            type: SubjectActions.ADD_BUNDLE_SUBJECT,
-            payload: {curriculum: curriculum, subject: subject}
-        };
-    }
+  static ADD_SUBJECT_SUCCESS = '[Subject] Add Subject Success';
 
-    static ADD_SUBJECT_PART_SUCCESS = '[Subject] Add Bundle Subject Success';
-    addSubjectParttSuccess( message ): Action {
-        return {
-            type: SubjectActions.ADD_SUBJECT_PART_SUCCESS,
-            payload: message
-        };
-    }
+  addSubjectSuccess(message): Action {
+    return {
+      type: SubjectActions.ADD_SUBJECT_SUCCESS,
+      payload: message
+    };
+  }
+
+  static ADD_SINGLE_SUBJECT = '[Subject] Add Single Subject';
+
+  addSingleSubject(curriculum, subject): Action {
+    return {
+      type: SubjectActions.ADD_SINGLE_SUBJECT,
+      payload: {curriculum: curriculum, subject: subject}
+    };
+  }
+
+  static ADD_SINGLE_SUBJECT_SUCCESS = '[Subject] Add Single Subject Success';
+
+  addSingleSubjectSuccess(message): Action {
+    return {
+      type: SubjectActions.ADD_SINGLE_SUBJECT_SUCCESS,
+      payload: message
+    };
+  }
+
+  static ADD_BUNDLE_SUBJECT = '[Subject] Add Bundle Subject Success';
+
+  addBundleSubject(curriculum, subject): Action {
+    return {
+      type: SubjectActions.ADD_BUNDLE_SUBJECT,
+      payload: {curriculum: curriculum, subject: subject}
+    };
+  }
+
+  static ADD_BUNDLE_SUBJECT_SUCCESS = '[Subject] Add Bundle Subject Success';
+
+  addBundleSubjecttSuccess(message): Action {
+    return {
+      type: SubjectActions.ADD_BUNDLE_SUBJECT_SUCCESS,
+      payload: message
+    };
+  }
+
+  static ADD_SUBJECT_PART = '[Subject] Add Bundle Subject Success';
+
+  addSubjectPart(curriculum, subject): Action {
+    return {
+      type: SubjectActions.ADD_BUNDLE_SUBJECT,
+      payload: {curriculum: curriculum, subject: subject}
+    };
+  }
+
+  static ADD_SUBJECT_PART_SUCCESS = '[Subject] Add Bundle Subject Success';
+
+  addSubjectParttSuccess(message): Action {
+    return {
+      type: SubjectActions.ADD_SUBJECT_PART_SUCCESS,
+      payload: message
+    };
+  }
 
 
+  static UPDATE_SUBJECT = '[Subject] Update Subject';
 
+  updateSubject(subject): Action {
+    return {
+      type: SubjectActions.UPDATE_SUBJECT,
+      payload: subject
+    };
+  }
 
-    static UPDATE_SUBJECT = '[Subject] Update Subject';
+  static UPDATE_SUBJECT_SUCCESS = '[Subject] Update Subject Success';
 
-    updateSubject( subject ): Action {
-        return {
-            type: SubjectActions.UPDATE_SUBJECT,
-            payload: subject
-        };
-    }
+  updateSubjectSuccess(subject): Action {
+    return {
+      type: SubjectActions.UPDATE_SUBJECT_SUCCESS,
+      payload: subject
+    };
+  }
 
-    static UPDATE_SUBJECT_SUCCESS = '[Subject] Update Subject Success';
+  //  static FIND_SUBJECTS_BY_CURRICULUM = '[Subject] Find Subject';
+  // findSubjectsByCurriculum( curriculum ): Action {
+  //     return {
+  //         type: SubjectActions.FIND_SUBJECTS_BY_CURRICULUM,
+  //         payload: curriculum
+  //     };
+  // }
 
-    updateSubjectSuccess( subject ): Action {
-        return {
-            type: SubjectActions.UPDATE_SUBJECT_SUCCESS,
-            payload: subject
-        };
-    }
+  //  static FIND_SUBJECTS_BY_CURRICULUM_SUCCESS = '[Subject] Find Subject';
+  // findSubjectsByCurriculumSuccess( curriculum ): Action {
+  //     return {
+  //         type: SubjectActions.FIND_SUBJECTS_BY_CURRICULUM,
+  //         payload: curriculum
+  //     };
+  // }
 
-    //  static FIND_SUBJECTS_BY_CURRICULUM = '[Subject] Find Subject';
-    // findSubjectsByCurriculum( curriculum ): Action {
-    //     return {
-    //         type: SubjectActions.FIND_SUBJECTS_BY_CURRICULUM,
-    //         payload: curriculum
-    //     };
-    // }
+  static ACTIVATE_SUBJECT = '[Subject] Activate Subject';
 
-    //  static FIND_SUBJECTS_BY_CURRICULUM_SUCCESS = '[Subject] Find Subject';
-    // findSubjectsByCurriculumSuccess( curriculum ): Action {
-    //     return {
-    //         type: SubjectActions.FIND_SUBJECTS_BY_CURRICULUM,
-    //         payload: curriculum
-    //     };
-    // }
+  activateSubject(subject): Action {
+    return {
+      type: SubjectActions.ACTIVATE_SUBJECT,
+      payload: subject
+    };
+  }
 
-    static ACTIVATE_SUBJECT = '[Subject] Activate Subject';
+  static ACTIVATE_SUBJECT_SUCCESS = '[Subject] Activate Subject Success';
 
-    activateSubject( subject ): Action {
-        return {
-            type: SubjectActions.ACTIVATE_SUBJECT,
-            payload: subject
-        };
-    }
+  activateSubjectSuccess(subject): Action {
+    return {
+      type: SubjectActions.ACTIVATE_SUBJECT_SUCCESS,
+      payload: subject
+    };
+  }
 
-    static ACTIVATE_SUBJECT_SUCCESS = '[Subject] Activate Subject Success';
+  //deactivate Subject 19/6/17
+  static DEACTIVATE_SUBJECT = '[Subject] Deactivate Subject';
 
-    activateSubjectSuccess( subject ): Action {
-        return {
-            type: SubjectActions.ACTIVATE_SUBJECT_SUCCESS,
-            payload: subject
-        };
-    }
+  deactivateSubject(subject): Action {
+    return {
+      type: SubjectActions.DEACTIVATE_SUBJECT,
+      payload: subject
+    };
+  }
 
-    //deactivate Subject 19/6/17
-    static DEACTIVATE_SUBJECT = '[Subject] Deactivate Subject';
+  static DEACTIVATE_SUBJECT_SUCCESS = '[Subject] Activate Subject Success';
 
-    deactivateSubject( subject ): Action {
-        return {
-            type: SubjectActions.DEACTIVATE_SUBJECT,
-            payload: subject
-        };
-    }
-
-    static DEACTIVATE_SUBJECT_SUCCESS = '[Subject] Activate Subject Success';
-
-    deactivateSubjectSuccess( subject ): Action {
-        return {
-            type: SubjectActions.DEACTIVATE_SUBJECT_SUCCESS,
-            payload: subject
-        };
-    }
+  deactivateSubjectSuccess(subject): Action {
+    return {
+      type: SubjectActions.DEACTIVATE_SUBJECT_SUCCESS,
+      payload: subject
+    };
+  }
 }

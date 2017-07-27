@@ -40,11 +40,13 @@
         <div layout="row">
         <span *ngIf="row.type=='bundle'" flex> </span>
           <template *ngIf="row.type=='bundle'" let-group ngFor [ngForOf]="subjects">
-          <tr *ngFor="let row of group.parts">{{row.course.code}}<br/></tr>
+            <template let-part ngFor [ngForOf]="group.parts">
+              <span>{{part.course.code}}</span>
+            </template>
           </template>
     </div>
       </template>
-     
+
       <!--<template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">-->
         <!--<div layout="row">-->
           <!--<button md-icon-button [md-menu-trigger-for]="menu1" mdTooltip="Select subject actions">-->

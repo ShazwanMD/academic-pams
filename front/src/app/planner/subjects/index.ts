@@ -1,6 +1,6 @@
 import {CurriculumActions} from '../curriculums/curriculum.action';
 
-import {SubjectCenterPage } from './subject-center.page';
+import {SubjectCenterPage} from './subject-center.page';
 import '@ngrx/core/add/operator/select';
 import {appRoutes, appRoutingProviders} from '../../app.routes';
 import {NgModule, ModuleWithProviders} from '@angular/core';
@@ -10,16 +10,15 @@ import {CovalentCoreModule} from '@covalent/core';
 import {PlannerService} from '../../../services';
 import {CommonService} from '../../../services';
 import {IdentityService} from '../../../services';
-import {SubjectListComponent} from "./component/subject-list.component";
+import {SubjectListComponent} from './component/subject-list.component';
 import {SubjectActions} from './subject.action';
-import {EffectsModule} from "@ngrx/effects";
+import {EffectsModule} from '@ngrx/effects';
 import {SubjectEffects} from './subject.effect';
-import {SubjectComponent} from "./component/subject.component";
-import {SubjectDetailPage} from "./subject-detail.page";
-import {SubjectEditorDialog} from "./dialog/subject-editor.dialog";
-import {SubjectCreatorDialog} from "./dialog/subject-creator.dialog";
-import {SubjectTypeSelectComponent} from "./component/subject-type-select.component"
-
+import {SubjectComponent} from './component/subject.component';
+import {SubjectDetailPage} from './subject-detail.page';
+import {SubjectEditorDialog} from './dialog/subject-editor.dialog';
+import {SubjectCreatorDialog} from './dialog/subject-creator.dialog';
+import {SubjectTypeSelectComponent} from './component/subject-type-select.component';
 
 @NgModule({
   imports: [
@@ -27,11 +26,10 @@ import {SubjectTypeSelectComponent} from "./component/subject-type-select.compon
     BrowserModule,
     ReactiveFormsModule,
     CovalentCoreModule.forRoot(),
-   EffectsModule.run(SubjectEffects),
+    // EffectsModule.run(SubjectEffects),
   ],
-  
-  declarations: [
 
+  declarations: [
     // page
     SubjectCenterPage,
     SubjectDetailPage,
@@ -44,17 +42,13 @@ import {SubjectTypeSelectComponent} from "./component/subject-type-select.compon
     // dialog
     SubjectEditorDialog,
     SubjectCreatorDialog,
-    
   ],
   exports: [
- 
     SubjectListComponent,
     SubjectComponent,
-     SubjectTypeSelectComponent,
-
+    SubjectTypeSelectComponent,
   ],
-  
-   entryComponents: [
+  entryComponents: [
     SubjectCreatorDialog,
     SubjectEditorDialog,
   ],
@@ -75,5 +69,4 @@ export class SubjectSubModule {
     };
   }
 }
-
 

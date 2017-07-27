@@ -22,22 +22,9 @@
       </button>
     </div>
 
-    <md-card class="">
-      <!--<td-search-box class="push-left push-right"
-                     placeholder="search"
-                     [alwaysVisible]="true"
-                     (searchDebounce)="filter($event)">
-      </td-search-box>-->
-
-      <pams-curriculum-list
-        [curriculums]="curriculums$ | async"
-        (view)="viewCurriculum($event)"></pams-curriculum-list>
-      <md-divider></md-divider>
-      <md-card-actions>
-        <a md-button color="accent" class="text-upper"
-           [routerLink]="['/curriculums-search']"> <span>View More</span>
-        </a></md-card-actions>
-    </md-card>
+    <pams-curriculum-list
+      [curriculums]="curriculums$ | async"
+      (view)="viewCurriculum($event)"></pams-curriculum-list>
   </td-layout-manage-list>
 </td-layout-nav>
 

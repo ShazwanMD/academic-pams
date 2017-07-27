@@ -32,6 +32,7 @@ import {CurriculumComponent} from './component/curriculum.component';
 import {IdentityModule} from '../../identity/index';
 import {AcademicSessionSubModule} from '../academic-sessions/index';
 import {CurriculumUpdateDialog} from './dialog/curriculum-update.dialog';
+import {SubjectEffects} from '../subjects/subject.effect';
 
 
 @NgModule({
@@ -46,6 +47,7 @@ import {CurriculumUpdateDialog} from './dialog/curriculum-update.dialog';
     CourseSubModule.forRoot(),
     IdentityModule.forRoot(),
     EffectsModule.run(CurriculumEffects),
+    EffectsModule.run(SubjectEffects),
   ],
   declarations: [
     // page
@@ -60,14 +62,11 @@ import {CurriculumUpdateDialog} from './dialog/curriculum-update.dialog';
     CurriculumSubjectListComponent,
     SingleSubjectComponent,
     BundleSubjectComponent,
-    
     // dialog
     CurriculumEditorDialog,
     CurriculumUpdateDialog,
     CurriculumSingleSubjectDialog,
     CurriculumBundleSubjectDialog,
-
-
   ],
   exports: [
     CurriculumSelectComponent,
@@ -86,7 +85,7 @@ import {CurriculumUpdateDialog} from './dialog/curriculum-update.dialog';
     CurriculumSubjectListComponent,
     CurriculumSingleSubjectDialog,
     CurriculumBundleSubjectDialog,
-    
+
 
   ],
 })

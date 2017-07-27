@@ -481,6 +481,64 @@ public class PlannerController {
     }
 
 
+    @RequestMapping(value = "/curriculums/{code}/singleSubjects", method = RequestMethod.POST)
+    public ResponseEntity<String> addSingleSubject(@PathVariable Long id, @RequestBody SingleSubject vo) {
+        dummyLogin();
+        LOG.info("Adding single subject");
+        AdCurriculum curriculum = plannerService.findCurriculumById(id);
+        AdCourse course = plannerService.findCourseByCode(vo.getCourse().getCode());
+        AdSingleSubject subject = new AdSingleSubjectImpl();
+        subject.setCourse(course);
+        subject.setOrdinal(vo.getOrdinal());
+        subject.setSubjectType(AdSubjectType.get(vo.getSubjectType().ordinal()));
+        plannerService.addSubject(curriculum, subject);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+
+    }
+
+    @RequestMapping(value = "/curriculums/{code}/bundleSubjects", method = RequestMethod.POST)
+    public ResponseEntity<String> addBundleSubject(@PathVariable Long id, @RequestBody BundleSubject vo) {
+        dummyLogin();
+        LOG.info("Adding bundle subject");
+        AdCurriculum curriculum = plannerService.findCurriculumById(id);
+        AdBundleSubject bundleSubject = new AdBundleSubjectImpl();
+        bundleSubject.setSubjectType(AdSubjectType.CORE_ELECTIVE);
+        bundleSubject.setOrdinal(1);
+        plannerService.addSubject(curriculum, bundleSubject);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+
+    }
+
+    @RequestMapping(value = "/curriculums/{code}/subject", method = RequestMethod.POST)
+    public ResponseEntity<String> addSubject(@PathVariable Long id, @RequestBody Subject vo) {
+        dummyLogin();
+        LOG.info("Haiii");
+        AdCurriculum curriculum = plannerService.findCurriculumById(id);
+        AdSubject subject = new AdSubjectImpl();
+        subject.setOrdinal(vo.getOrdinal());
+        subject.setSubjectType(AdSubjectType.get(vo.getSubjectType().ordinal()));
+        plannerService.addSubject(curriculum, subject);
+
+        if (vo.getSubjectType().ordinal() == 1) {
+            //bundle subject here
+            AdBundleSubject bundleSubject = new AdBundleSubjectImpl();
+            bundleSubject.setSubjectType(AdSubjectType.CORE_ELECTIVE);
+            bundleSubject.setOrdinal(1);
+            plannerService.addSubject(curriculum, bundleSubject);
+        } else {
+
+            //proced to single subject
+            AdSingleSubject subject1 = new AdSingleSubjectImpl();
+            subject1.setCourse(plannerService.findCourseByCode(null));
+            subject.setOrdinal(vo.getOrdinal());
+            subject.setSubjectType(AdSubjectType.get(vo.getSubjectType().ordinal()));
+            plannerService.addSubject(curriculum, subject);
+
+        }
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
+
+
     // ====================================================================================================
     // COHORT
     // ====================================================================================================
@@ -540,76 +598,6 @@ public class PlannerController {
     public ResponseEntity<Subject> findSubjectById(@PathVariable Long id) {
         AdSubject subject = plannerService.findSubjectById(id);
         return new ResponseEntity<Subject>(plannerTransformer.toSubjectVo(subject), HttpStatus.OK);
-    }
-    
-    @RequestMapping(value = "/curriculums/{code}/singleSubjects", method = RequestMethod.POST)
-    public ResponseEntity<String> addSingleSubject(@PathVariable Long id, @RequestBody SingleSubject vo) {
-        dummyLogin();
-        LOG.info("Haiii");
-        AdCurriculum curriculum = plannerService.findCurriculumById(id);
-        AdCourse course =  plannerService.findCourseByCode(vo.getCourse().getCode());
-        AdSingleSubject subject = new AdSingleSubjectImpl();
-     	subject.setCourse (course);
-        subject.setOrdinal(vo.getOrdinal());
-        subject.setSubjectType(AdSubjectType.get(vo.getSubjectType().ordinal()));
-     	plannerService.addSubject(curriculum, subject);
-        return new ResponseEntity<String>("Success", HttpStatus.OK);
-     	
-    }
-    
-    @RequestMapping(value = "/curriculums/{code}/bundleSubjects", method = RequestMethod.POST)
-    public ResponseEntity<String> addBundleSubject(@PathVariable Long id, @RequestBody BundleSubject vo) {
-        dummyLogin();
-        LOG.info("Haiii");
-        AdCurriculum curriculum = plannerService.findCurriculumById(id);
-        AdBundleSubject bundleSubject = new AdBundleSubjectImpl();
-        bundleSubject.setSubjectType(AdSubjectType.CORE_ELECTIVE);
-        bundleSubject.setOrdinal(1);
-        plannerService.addSubject(curriculum, bundleSubject);
-        return new ResponseEntity<String>("Success", HttpStatus.OK);
-     	
-    }
-
-    @RequestMapping(value = "/curriculums/{code}/subject", method = RequestMethod.POST)
-    public ResponseEntity<String> addSubject(@PathVariable Long id, @RequestBody Subject vo) {
-        dummyLogin();
-        LOG.info("Haiii");
-        AdCurriculum curriculum = plannerService.findCurriculumById(id);
-        AdSubject subject = new AdSubjectImpl();
-        subject.setOrdinal(vo.getOrdinal());
-        subject.setSubjectType(AdSubjectType.get(vo.getSubjectType().ordinal()));
-        plannerService.addSubject(curriculum, subject);
-    	
-        if(vo.getSubjectType().ordinal() == 1) {
-        	//bundle subject here
-        	AdBundleSubject bundleSubject = new AdBundleSubjectImpl();
-            bundleSubject.setSubjectType(AdSubjectType.CORE_ELECTIVE);
-            bundleSubject.setOrdinal(1);
-            plannerService.addSubject(curriculum, bundleSubject);
-        } else {
-        	
-        	//proced to single subject
-        	 AdSingleSubject subject1 = new AdSingleSubjectImpl();
-         	subject1.setCourse (plannerService.findCourseByCode(null));
-             subject.setOrdinal(vo.getOrdinal());
-             subject.setSubjectType(AdSubjectType.get(vo.getSubjectType().ordinal()));
-         	plannerService.addSubject(curriculum, subject);
-         	
-        }
-       /* AdSingleSubject subject1 = new AdSingleSubjectImpl();
-    	subject1.setCourse (plannerService.findCourseByCode(null));
-        subject.setOrdinal(vo.getOrdinal());
-        subject.setSubjectType(AdSubjectType.get(vo.getSubjectType().ordinal()));
-    	plannerService.addSubject(curriculum, subject);
-    	
-    	AdBundleSubject bundleSubject = new AdBundleSubjectImpl();
-        bundleSubject.setSubjectType(AdSubjectType.CORE_ELECTIVE);
-        bundleSubject.setOrdinal(1);
-        plannerService.addSubject(curriculum, bundleSubject);
-        */
-       // AdBundleSubject addedBundleSubject = (AdBundleSubject)
-      //  plannerService.findSubject(curriculum, AdSubjectType.CORE_ELECTIVE, 1);
-        return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
 
     @RequestMapping(value = "/subjects/{id}", method = RequestMethod.PUT)
