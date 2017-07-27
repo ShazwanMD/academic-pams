@@ -11,7 +11,7 @@ import {Observable} from 'rxjs/Observable';
 import {Store} from '@ngrx/store';
 import {TermModuleState} from '../index';
 import {Offering} from './offering.interface';
-import {MdSnackBar, MdSnackBarConfig} from '@angular/material';
+import {NotificationService} from '../../../services/notification.service';
 
 @Injectable()
 export class OfferingEffects {
@@ -25,8 +25,8 @@ export class OfferingEffects {
               private sectionActions: SectionActions,
               private termService: TermService,
               private plannerService: PlannerService,
-              private store$: Store<TermModuleState>,
-              private snackBar: MdSnackBar) {
+              private notificationService: NotificationService,
+              private store$: Store<TermModuleState>) {
   }
 
   @Effect() findOfferings$ = this.actions$
@@ -68,7 +68,7 @@ export class OfferingEffects {
     .switchMap((payload) => this.termService.saveOffering(payload.program, payload.course, payload.offering))
     .map((offering) => this.offeringActions.saveOfferingSuccess(offering))
     .mergeMap((action) => from([action, this.offeringActions.findOfferings()]))
-    .catch((error) => this.showError(error));
+    .catch((error) => this.notificationService.showError(error));
 
   @Effect() updateOfferings$ = this.actions$
     .ofType(OfferingActions.UPDATE_OFFERING)
@@ -115,12 +115,5 @@ export class OfferingEffects {
     .map((action) => action.payload)
     .switchMap((offering) => this.termService.calculateGPA(offering))
     .map((message) => this.offeringActions.calculateGPASuccess(message));
-
-  showError(error): Observable<any> {
-    let config: MdSnackBarConfig = new MdSnackBarConfig();
-    config.duration = 3000;
-    this.snackBar.open(error.error, undefined, config);
-    return Observable.empty();
-  }
 }
 

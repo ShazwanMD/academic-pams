@@ -39,6 +39,7 @@ import { LecturerOfferingCenterPage } from "./lecturer-offering-center.page";
 import { LecturerOfferingDetailPage } from "./lecturer-offering-detail.page";
 import { LecturerOfferingActionComponent } from "./component/lecturer-offering-action.component";
 import { LecturerOfferingSectionListComponent } from "./component/lecturer-offering-section-list.component";
+import {NotificationService} from '../../../services/notification.service';
 
 @NgModule({
   imports: [
@@ -110,6 +111,7 @@ export class OfferingSubModule {
         TermService,
         IdentityService,
         CommonService,
+        NotificationService,
         OfferingActions,
       ],
     };
