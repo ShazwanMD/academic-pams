@@ -1,3 +1,5 @@
+import { CurriculumBundleSubjectDialog } from './dialog/curriculum-bundle-subject.dialog';
+import { BundleSubjectComponent } from './component/curriculum-bundle-subject.component';
 import { CourseActions } from './../courses/course.action';
 import { CourseSubModule } from './../courses/index';
 import { SingleSubjectComponent } from './component/curriculum-single-subject.component';
@@ -57,17 +59,21 @@ import {CurriculumUpdateDialog} from './dialog/curriculum-update.dialog';
     CurriculumActionComponent,
     CurriculumSubjectListComponent,
     SingleSubjectComponent,
+    BundleSubjectComponent,
     
     // dialog
     CurriculumEditorDialog,
     CurriculumUpdateDialog,
     CurriculumSingleSubjectDialog,
+    CurriculumBundleSubjectDialog,
+
 
   ],
   exports: [
     CurriculumSelectComponent,
     CurriculumActionComponent,
     SingleSubjectComponent,
+    BundleSubjectComponent,
     CurriculumSubjectListComponent,
 
 
@@ -79,6 +85,7 @@ import {CurriculumUpdateDialog} from './dialog/curriculum-update.dialog';
     CurriculumActionComponent,
     CurriculumSubjectListComponent,
     CurriculumSingleSubjectDialog,
+    CurriculumBundleSubjectDialog,
     
 
   ],

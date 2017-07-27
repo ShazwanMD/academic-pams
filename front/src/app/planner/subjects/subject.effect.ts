@@ -46,8 +46,8 @@ export class SubjectEffects {
     this.actions$
       .ofType(SubjectActions.ADD_SINGLE_SUBJECT)
       .map(action => action.payload)
-      .switchMap(payload => this.plannerService.addSubject(payload.curriculum,payload.subject));
-     // .map(message => this.subjectActions.addSingleSubjectSuccess(message))
+      .switchMap(payload => this.plannerService.addSubject(payload.curriculum,payload.subject))
+      .map(message => this.subjectActions.addSubjectSuccess(message));
      // .withLatestFrom(this.store$.select(...this.CURRICULUM))
      // .map(state => state[1]);
       //.map((curriculum: Curriculum) => this.currriculumActions.findCurriculumByCode(curriculum.code));

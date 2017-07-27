@@ -68,7 +68,8 @@ private creatorForm: FormGroup;
 
   submit(singleSubject: SingleSubject, isValid: boolean): void {
     console.log('adding Subject');
-    this.store.dispatch(this.actions.addSingleSubject(this._curriculum, singleSubject));
+    this.store.dispatch(this.actions.addSubject(this._curriculum, singleSubject));
+     console.log('adding Subject jju' + this._curriculum);
     this.dialog.close();
     
 console.log('Done');

@@ -1,15 +1,38 @@
-<h2 md-dialog-title>Create New B Subject</h2>
+<h2 md-dialog-title> Bundle Subject</h2>
 <md-dialog-content>
   <form [formGroup]="creatorForm">
     <div layout="row" class="insert">
       <md-input-container flex>
         <input mdInput 
-               placeholder="id"
-               formControlName="id" type="number"
+               placeholder="ordinal"
+               formControlName="ordinal" type="number"
                flex/>
       </md-input-container>
     </div>
+     <div layout="row" class="pad-bottom pad-top">
+      <pams-subject-type-select
+        [placeholder]="'SubjectType'"
+        [innerFormControl]="creatorForm.controls['subjectType']">
+      </pams-subject-type-select>
+    </div>
+    
+    <div layout="row" class="pad-bottom pad-top">
+      <pams-course-select
+        [placeholder]="'Select course'"
+        [innerFormControl]="creatorForm.controls['course']">
+      </pams-course-select>
+      </div>
+
+      <!--<div layout="row" class="pad-bottom">
+      <md-input-container flex>
+        <input mdInput #code
+               placeholder="Curriculum"
+               formControlName="curriculum"
+               flex/>
+      </md-input-container>
+    </div>-->
   </form>
+   
 </md-dialog-content>
 <md-dialog-actions align="end">
   <button md-raised-button color="accent" (click)="submit(creatorForm.value, edit)">
