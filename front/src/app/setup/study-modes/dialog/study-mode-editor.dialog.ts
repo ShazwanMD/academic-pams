@@ -2,7 +2,7 @@ import { StudyMode } from './../../../common/study-modes/study-mode.interface';
 import { SetupActions } from './../../setup.action';
 import { SetupModuleState } from './../../index';
 import {Component, ViewContainerRef, OnInit, AfterViewInit} from '@angular/core';
-import {FormGroup, FormControl} from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import {FormBuilder} from '@angular/forms';
 import {Router, ActivatedRoute} from '@angular/router';
 import {Store} from "@ngrx/store";
@@ -32,11 +32,11 @@ export class StudyModeEditorDialog implements OnInit {
       this.edit = true;
   }
     ngOnInit(): void {
-    this.editorForm = this.formBuilder.group(<StudyMode>{
+    this.editorForm = this.formBuilder.group({
       id: null,
-      code: '',
-      prefix: '',
-      description: '',
+      code:  ['', Validators.required],
+      prefix: ['', Validators.required],
+      description: ['', Validators.required],
     });
 
     if (this.edit) this.editorForm.patchValue(this._studyMode);
