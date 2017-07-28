@@ -1,4 +1,4 @@
-import { StudyCenter } from '../../../setup/study-centers/study-center.interface';
+import { StudyCenter } from '../../../secure/setup/study-centers/study-center.interface';
 import { Cohort } from '../planner/cohort.interface';
 import { Section } from "./section.interface";
 import { Student } from "../identity/student.interface";

@@ -1,8 +1,0 @@
-<md-select
-  [placeholder]="placeholder"
-  (change)="selectChangeEvent($event.value)" flex>
-
-  <md-option *ngFor="let assessmentType of assessmentTypes" [value]="assessmentType">
-    {{assessmentType | assessmentTypePipe}}
-  </md-option>
-</md-select>

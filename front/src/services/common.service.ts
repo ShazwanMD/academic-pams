@@ -1,4 +1,4 @@
-import {StudyCenter} from '../app/setup/study-centers/study-center.interface';
+import {StudyCenter} from '../app/secure/setup/study-centers/study-center.interface';
 import {StudyMode} from '../app/shared/model/common/study-mode.interface';
 import {EthnicityCode} from '../app/shared/model/common/ethnicity-code.interface';
 import {NationalityCode} from '../app/shared/model/common/nationality-code.interface';
@@ -8,7 +8,7 @@ import {DunCode} from '../app/shared/model/common/dun-code.interface';
 import {ParliamentCode} from '../app/shared/model/common/parliament-code.interface';
 import {RaceCode} from '../app/shared/model/common/race-code.interface';
 import {StateCode} from '../app/shared/model/common/state-code.interface';
-import {MaritalCode} from '../app/setup/marital-codes/marital-code.interface';
+import {MaritalCode} from '../app/secure/setup/marital-codes/marital-code.interface';
 import {CountryCode} from '../app/shared/model/common/country-code.interface';
 import {environment} from '../environments/environment';
 import {GenderCode} from '../app/shared/model/common/gender-code.interface';

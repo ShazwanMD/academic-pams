@@ -1,0 +1,44 @@
+<h2 md-dialog-title>Study Mode Editor</h2>
+<md-dialog-content>
+  <form [formGroup]="editorForm" novalidate>
+    <div fxLayout fxLayout.xs="column" fxLayoutWrap fxLayoutGap="25px"  class="inset">
+      <md-input-container flex mdTooltip="Please insert StudyMode Code">
+        <input mdInput
+               placeholder="Code"
+               formControlName="code"
+               fxFlex="calc(100%-25px)"/>
+      </md-input-container>
+          <div  class="tc-red-600" *ngIf="editorForm.get('code').invalid && editorForm.get('code').touched">
+                Please insert StudyMode Code!
+          </div>
+    </div>
+
+    <div fxLayout fxLayout.xs="column" fxLayoutWrap fxLayoutGap="25px"  class="inset">
+      <md-input-container flex mdTooltip="Please insert Description">
+        <input mdInput
+               placeholder="Description"
+               formControlName="description"
+               fxFlex="calc(100%-25px)"/>
+      </md-input-container>
+          <div  class="tc-red-600" *ngIf="editorForm.get('description').invalid && editorForm.get('description').touched">
+                Please insert description!
+          </div>
+    </div>
+    <div fxLayout fxLayout.xs="column" fxLayoutWrap fxLayoutGap="25px"  class="inset">
+      <md-input-container flex mdTooltip="Please insert Prefix">
+        <input mdInput
+               placeholder="Prefix"
+               formControlName="prefix"
+               fxFlex="calc(100%-25px)"/>
+      </md-input-container>
+          <div  class="tc-red-600" *ngIf="editorForm.get('prefix').invalid && editorForm.get('prefix').touched">
+                Please insert prefix!
+          </div>
+    </div>
+  </form>
+</md-dialog-content>
+<md-dialog-actions align="end">
+  <button md-raised-button color="accent" (click)="submit(editorForm.value,edit)" [disabled]="!editorForm.valid">
+    {{edit ? 'Update' : 'Save'}}
+  </button>
+</md-dialog-actions>

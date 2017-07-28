@@ -1,0 +1,158 @@
+<div md-content flex md-scroll-y>
+  <div layout="column" layout-gt-md="row" class="inset">
+    <div flex-gt-md="70">
+      <md-card>
+        <md-card-title>{{admissionApplicationTask?.application?.student?.name}}</md-card-title>
+        <md-card-subtitle>{{admissionApplicationTask?.description}}</md-card-subtitle>
+
+        <div layout="row" layout-wrap hide-xs hide-sm class="push-sm">
+          <div layout="column" flex>
+            <md-list dense>
+              <md-list-item>
+                <h4 md-line>{{admissionApplicationTask?.referenceNo}}</h4>
+                <p md-line>Reference No</p>
+              </md-list-item>
+            </md-list>
+          </div>
+          <div layout="column" flex>
+            <md-list dense>
+              <md-list-item>
+                <h4 md-line>{{admissionApplicationTask?.application?.student?.identityNo}}</h4>
+                <p md-line>Student Matric No</p>
+              </md-list-item>
+            </md-list>
+          </div>
+        </div>
+
+        <md-divider></md-divider>
+        <md-card-content>
+
+          <md-tab-group>
+            <div md-content flex md-scroll-y>
+
+              <md-tab label="Application Detail"><br>
+                <div layout="column" class="inset">
+                 <!--  <div layout="row" class="pad-bottom">
+                    <span flex="15">Audit No </span>
+                    <span> {{admissionApplicationTask?.application?.auditNo}}</span>
+                  </div>
+                  <div layout="row" class="pad-bottom">
+                    <span flex="15">Source No</span>
+                    <span> {{admissionApplicationTask?.application?.sourceNo}}</span>
+                  </div> -->
+                  <div layout="row" class="pad-bottom">
+                    <span flex="15">Description</span>
+                    <span> {{admissionApplicationTask?.description}}</span>
+                  </div>
+                  <!--  <div layout="row" class="pad-bottom">
+                    <span flex="15">Semester</span>
+                    <span> {{admissionApplicationTask?.application?.ordinal}}</span>
+                  </div> -->
+                </div>
+              </md-tab>
+
+              <md-tab label="Program Detail"><br>
+                <div layout="column" class="inset">
+                  <div layout="row" class="pad-bottom">
+                    <span flex="15">Code </span>
+                    <span> {{admissionApplicationTask?.application?.program?.code}}</span>
+                  </div>
+                  <div layout="row" class="pad-bottom">
+                    <span flex="15">Title(MS)</span>
+                    <span> {{admissionApplicationTask?.application?.program?.titleMs}}</span>
+                  </div>
+                  <div layout="row" class="pad-bottom">
+                    <span flex="15">Title(EN)</span>
+                    <span> {{admissionApplicationTask?.application?.program?.titleEn}}</span>
+                  </div>
+                </div>
+              </md-tab>
+
+              <md-tab label="Advisor and Student Details"><br>
+                <div layout="column" class="inset">
+                  <div layout="row" class="pad-bottom">
+                    <span flex="15">Advisor ID </span>
+                    <span> {{admissionApplicationTask?.application?.advisor?.identityNo}}</span>
+                  </div>
+                  <div layout="row" class="pad-bottom">
+                    <span flex="15">Advisor Name</span>
+                    <span> {{admissionApplicationTask?.application?.advisor?.name}}</span>
+                  </div>
+                  <div layout="row" class="pad-bottom">
+                    <span flex="15">Advisor Type</span>
+                    <span> {{admissionApplicationTask?.application?.advisor?.staffType}}</span>
+                  </div>
+                  <md-divider></md-divider>
+                  <br>
+                  <div layout="row" class="pad-bottom">
+                    <span flex="15">Student ID </span>
+                    <span> {{admissionApplicationTask?.application?.student?.identityNo}}</span>
+                  </div>
+                  <div layout="row" class="pad-bottom">
+                    <span flex="15">Student Name</span>
+                    <span> {{admissionApplicationTask?.application?.student?.name}}</span>
+                  </div>
+                </div>
+              </md-tab>
+
+              <md-tab label="Academic Session and Study Center"><br>
+                <div layout="column" class="inset">
+                  <div layout="row" class="pad-bottom">
+                    <span flex="15">Academic Session </span>
+                    <span> {{admissionApplicationTask?.application?.academicSession?.code}}</span>
+                  </div>
+                  <div layout="row" class="pad-bottom">
+                    <span flex="15">Description</span>
+                    <span> {{admissionApplicationTask?.application?.academicSession?.description}}</span>
+                  </div>
+                  <md-divider></md-divider>
+                  <br>
+                  <div layout="row" class="pad-bottom">
+                    <span flex="15">Study Center</span>
+                    <span> {{admissionApplicationTask?.application?.studyCenter?.description}}</span>
+                  </div>
+                  <div layout="row" class="pad-bottom">
+                    <span flex="15">Code</span>
+                    <span> {{admissionApplicationTask?.application?.studyCenter?.code}}</span>
+                  </div>
+                </div>
+              </md-tab>
+
+            </div>
+          </md-tab-group>
+        </md-card-content>
+
+        <md-card-actions>
+        </md-card-actions>
+      </md-card>
+
+    </div>
+    <div flex-gt-md="30">
+      <pams-admission-application-task-status [admissionApplicationTask]="admissionApplicationTask">
+      </pams-admission-application-task-status>
+
+      <md-card>
+        <md-card-title>Action</md-card-title>
+        <md-card-subtitle>Actions available on current Application</md-card-subtitle>
+        <md-divider></md-divider>
+        <md-nav-list dense>
+         <!--  <md-list-item (click)="edit()">
+            <md-icon md-list-avatar>done</md-icon>
+            <h4 md-line>Edit application {{admissionApplicationTask?.application?.student?.identityNo}} </h4>
+            <p md-line>Edit this application</p>
+          </md-list-item> -->
+          <md-list-item (click)="register()">
+            <md-icon md-list-avatar>done</md-icon>
+            <h4 md-line>Approve application</h4>
+            <p md-line>Approve this application</p>
+          </md-list-item>
+          <md-list-item (click)="remove()">
+            <md-icon md-list-avatar>remove_circle</md-icon>
+            <h4 md-line>Remove application</h4>
+            <p md-line>Remove this application</p>
+          </md-list-item>
+        </md-nav-list>
+      </md-card>
+    </div>
+  </div>
+</div>

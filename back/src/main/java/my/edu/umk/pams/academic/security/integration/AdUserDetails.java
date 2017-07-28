@@ -50,7 +50,7 @@ public class AdUserDetails implements UserDetails {
     }
 
     public boolean isEnabled() {
-        return user.isLocked();
+        return user.isEnabled();
     }
 
     public void setUser(AdUser user) {

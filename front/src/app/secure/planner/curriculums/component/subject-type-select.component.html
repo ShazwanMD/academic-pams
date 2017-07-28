@@ -1,0 +1,8 @@
+<md-select
+  [placeholder]="placeholder"
+  (change)="selectChangeEvent($event.value)" flex>
+
+  <md-option *ngFor="let subjectType of subjectTypes" [value]="subjectType">
+    {{subjectType}}
+  </md-option>
+</md-select>

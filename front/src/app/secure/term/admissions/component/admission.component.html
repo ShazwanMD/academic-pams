@@ -1,0 +1,90 @@
+<md-card> 
+<md-card-title>{{admission?.student?.name}}</md-card-title>
+<md-card-subtitle> {{admission?.student?.identityNo}}
+</md-card-subtitle> 
+
+<md-divider></md-divider> <md-card-content> <!--Tab Section Here-->
+<md-tab-group> 
+ <md-tab label="Admission Information">
+             
+        <div layout="column" class="inset">
+          <div layout="row" class="pad-bottom">
+            <span flex="15">GPA </span>
+            <span>{{admission?.gpa}}</span>
+          </div>
+           <div layout="row" class="pad-bottom">
+            <span flex="15">CGPA</span>
+            <span>{{admission?.cgpa}}</span>
+          </div>
+         
+          <div layout="row" class="pad-bottom">
+            <span flex="15">Credit Taken </span>
+            <span>{{admission?.creditTaken}}</span>
+          </div>
+           <div layout="row" class="pad-bottom">
+            <span flex="15">Credit Earned </span>
+            <span>{{admission?.creditEarned}}</span>
+          </div>
+          <div layout="row" class="pad-bottom">
+            <span flex="15">Semester</span>
+            <span>{{admission?.ordinal}}</span>
+          </div>
+         
+        </div>
+      </md-tab>
+
+  <md-tab label="Student Information">
+             
+        <div layout="column" class="inset">
+          <div layout="row" class="pad-bottom">
+            <span flex="15">Identity No. </span>
+            <span>{{admission?.student?.identityNo}}</span>
+          </div>
+           <div layout="row" class="pad-bottom">
+            <span flex="15">Name</span>
+            <span>{{admission?.student?.name}}</span>
+          </div>
+         
+          <div layout="row" class="pad-bottom">
+            <span flex="15">Email</span>
+            <span>{{admission?.student?.email}}</span>
+          </div>
+           <div layout="row" class="pad-bottom">
+            <span flex="15">Phone</span>
+            <span>{{admission?.student?.phone}}</span>
+          </div>
+         
+        </div>
+      </md-tab>
+      <md-tab label="Academic Information">
+             
+        <div layout="column" class="inset">
+          <div layout="row" class="pad-bottom">
+            <span flex="15">Code</span>
+            <span>{{admission?.academicSession?.code}}</span>
+          </div>
+           <div layout="row" class="pad-bottom">
+            <span flex="15">Description</span>
+            <span>{{admission?.academicSession?.description}}</span>
+          </div>        
+        </div>
+      </md-tab>
+       <md-tab label="Cohort Information">
+             
+        <div layout="column" class="inset">
+          <div layout="row" class="pad-bottom">
+            <span flex="15">Code</span>
+            <span>{{admission?.cohort?.code}}</span>
+          </div>
+           <div layout="row" class="pad-bottom">
+            <span flex="15">Description</span>
+            <span>{{admission?.cohort?.description}}</span>
+          </div>        
+        </div>
+      </md-tab>
+      
+  </md-tab-group> </md-card-content> </md-card>
+
+
+
+

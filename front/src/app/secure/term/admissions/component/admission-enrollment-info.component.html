@@ -1,0 +1,58 @@
+<md-card>
+    <md-card-header>
+     
+      <img md-card-avatar src=".\..\assets\ico\student\A17M0009F.jpg">
+      <md-card-title>Name: {{admission?.student?.name}}</md-card-title>
+      <md-card-subtitle>Identity No.:{{admission?.student?.identityNo}}</md-card-subtitle>
+      <md-card-subtitle>Session:{{admission?.student?.cohort?.academicSession?.code}}</md-card-subtitle>    
+   </md-card-header>
+ <p>&nbsp;</p> 
+<table style="height: 100%;" border="0" width="100%" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td style="background-color: #f34444; text-align: center;" colspan="2"><strong>COURSE ENROLLMENTS SLIP</strong></td>
+</tr>
+<tr>
+<td colspan="2">
+ <td-data-table
+      [data]="enrollments"
+      [columns]="columns"
+      [sortBy]="summary"
+      [sortOrder]="ASC"
+      [sortable]="false"
+      [multiple]="true"
+      [selectable]="true"
+      [(ngModel)]="selectedRows"
+      (rowSelect)="selectRow($event)"
+      (selectAll)="selectAllRows($event)"
+      dense>
+      <template tdDataTableTemplate="assessmentType" let-value="value" let-row="row"	let-column="column">
+        <div layout="row">
+          <span flex>{{value }}</span>
+        </div>
+      </template>
+      <template tdDataTableTemplate="assessmentCategory" let-value="value" let-row="row"	let-column="column">
+        <div layout="row">
+          <span flex>{{value  }}</span>
+        </div>
+      </template>
+      <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
+        <div layout="row">
+          <span flex>{{value}}</span>
+        </div>
+      </template>
+      <template tdDataTableTemplate="action" let-value="value" let-row="row"
+                let-column="column">
+        <div layout="row">
+        </div>
+      </template>
+    </td-data-table>
+</td>
+</tr>
+</tbody>
+</table>  
+   <md-card-content>
+   <p align="left">Total Credits: 100</p>
+      <p>PAMS:Postgraduate Management System@2017</p>
+   </md-card-content>
+</md-card>

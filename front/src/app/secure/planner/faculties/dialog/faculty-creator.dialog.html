@@ -1,0 +1,47 @@
+<h2 md-dialog-title>Create New Faculty</h2>
+<md-dialog-content>
+<form [formGroup]="createForm" novalidate>
+	<div layout="row" class="pad-bottom">
+		<md-input-container flex> <input mdInput #code
+			placeholder="Code" formControlName="code" flex /> </md-input-container>
+			<div  class="error" *ngIf="createForm.get('code').invalid && createForm.get('code').touched">
+                 Code should be at least {{minLength}} characters!
+            </div>
+	</div>
+	
+	 <div layout="row" class="inset" flex>
+    <md-input-container flex>
+      <input mdInput 
+      placeholder="Description" 
+      formControlName="description" 
+      flex/>
+    </md-input-container>
+    <div class="error" *ngIf="createForm.get('description').invalid && createForm.get('description').touched">
+      Description should be at least {{minLength}} characters!
+    </div>
+  </div>
+
+	<div layout="row" class="pad-bottom">
+		<md-input-container flex> <input mdInput #name
+			placeholder="Name" formControlName="name" flex /> </md-input-container>
+			<div class="error" *ngIf="createForm.get('name').invalid && createForm.get('name').touched">
+      Name should be at least {{minLength}} characters!
+    </div>
+	</div>
+	
+	<div layout="row" class="pad-bottom">
+		<md-input-container flex> <input mdInput #prefix
+			placeholder="Prefix" formControlName="prefix" flex /> </md-input-container>		
+	</div>
+	
+	<div layout="row" class="pad-bottom pad-top">
+		<pams-faculty-status-select [placeholder]="'Select Status'"
+			[innerFormControl]="createForm.controls['status']">
+		</pams-faculty-status-select>
+	</div>
+
+</form>
+</md-dialog-content>
+<md-dialog-actions align="end">
+<button md-raised-button color="accent" [disabled]="createForm.invalid"(click)="save(createForm.value, createForm.valid)">Save</button>
+</md-dialog-actions>

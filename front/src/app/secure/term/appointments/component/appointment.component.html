@@ -1,0 +1,47 @@
+<!-- Basic Card -->
+<md-card> <md-card-title>{{appointment?.staff?.name}}</md-card-title>
+<md-card-subtitle>Section {{appointment?.section?.code}}</md-card-subtitle>
+<md-divider></md-divider> 
+<md-card-content>
+<!--Tab Section Here--> <md-tab-group> <md-tab
+	label="Staff Detail">
+<br>
+ <div layout="column" layout-gt-md="row" class="insert">
+              <div flex-gt-md="20">
+              <img src=".\..\assets\ico\lecturer\{{appointment?.staff?.identityNo}}.jpg"  width="150" height="190"/> 
+             
+              </div>
+                <div flex-gt-md="40"><br/>
+                <b>Name</b> : {{appointment?.staff?.name}}<br/><br/>
+                <b>Staff ID </b> : {{appointment?.staff?.identityNo}}<br/><br/>
+                <b>Email</b> : {{appointment?.staff?.email}}<br/><br/>
+                <b>Status</b> : {{appointment?.appointmentStatus}}<br/><br/>
+              </div> 
+               <div flex-gt-md="40">
+                <b></b>  <br/><br/>
+                <b></b>  <br/><br/>
+                <b></b> <br/><br/>
+                <b></b>  <br/><br/>
+                <b></b>  <br/><br/>
+              </div>
+            </div>
+
+</md-tab> <md-tab label="Section Information">
+<div layout="column" class="inset">
+	<div layout="row" class="pad-bottom">
+	
+		<span flex="20">Code</span> <span>{{appointment?.section?.code}}
+		</span>
+	</div>
+	<div layout="row" class="pad-bottom">
+		<span flex="20">Course Offer</span> <span>{{appointment?.section?.offering?.code}}</span>
+	</div>
+	<div layout="row" class="pad-bottom">
+		<span flex="20">Faculty</span> <span>{{appointment?.section?.offering?.course?.faculty?.description | uppercase }}</span>
+	</div>
+	<div layout="row" class="pad-bottom">
+		<span flex="20">Program</span> <span>{{appointment?.section?.offering?.program?.code}}</span>
+	</div>
+</div>
+
+</md-tab> </md-tab-group> </md-card-content> <md-divider></md-divider><md-card>

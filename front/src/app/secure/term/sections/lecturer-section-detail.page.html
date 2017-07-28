@@ -1,0 +1,44 @@
+<td-layout-nav>
+  <div toolbar-content layout="row" layout-align="center center" flex>
+    <span>PAMS: Postgraduate Management System</span> <span flex></span>
+  </div>
+  <div md-content flex md-scroll-y>
+    <div layout="column" layout-gt-md="row" class="inset">
+      <div flex-gt-md="70">
+        <!-- DISPLAY SECTION BY OFFERING  -->
+        <pams-section
+          [section]="section$ | async">
+        </pams-section>
+        <pams-lecturer-section-enrollment-list
+          [section]="section$ | async"
+          [enrollments]="enrollments$ | async">
+        </pams-lecturer-section-enrollment-list>
+         <pams-section-gradebook-list
+          [section]="section$ | async"
+          [gradebooks]="gradebooks$ | async">
+        </pams-section-gradebook-list>
+      </div>
+      <div flex-gt-md="30">
+       <!--  <pams-section-action
+        [offering]="offering$ | async"
+          [section]="section$ | async">
+        </pams-section-action> -->
+        <md-card>
+          <md-card-title>Term Menu</md-card-title>
+          <md-card-subtitle>Actions
+            available on current section
+          </md-card-subtitle>
+          <md-divider></md-divider>
+          <md-nav-list
+            flex dense>
+            <md-list-item [routerLink]="['/identity/staffs']">
+              <md-icon md-list-avatar>person_add</md-icon>
+              <h4 md-line>Staff Center</h4>
+              <p md-line>Watch this staff center</p>
+            </md-list-item>
+          </md-nav-list>
+        </md-card>
+      </div>
+    </div>
+  </div>
+</td-layout-nav>

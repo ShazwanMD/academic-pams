@@ -1,21 +1,25 @@
 import {Routes, RouterModule} from '@angular/router';
-
-import {MainComponent} from './main/main.component';
-import {LoginComponent} from './login/login.component';
-import {HomeModuleRoutes} from './home/home-module.routes';
-import {ProfileModuleRoutes} from './profile/profile-module.routes';
-import {IdentityModuleRoutes} from './identity/identity-module.routes';
-import {GraduationModuleRoutes} from './graduation/graduation-module.routes';
-import {TermModuleRoutes} from './term/term-module.routes';
-import {PlannerModuleRoutes} from './planner/planner-module.routes';
-import {SetupModuleRoutes} from './setup/setup-module.routes';
+import {ProfileModuleRoutes} from './secure/profile/profile-module.routes';
+import {IdentityModuleRoutes} from './secure/identity/identity-module.routes';
+import {GraduationModuleRoutes} from './secure/graduation/graduation-module.routes';
+import {TermModuleRoutes} from './secure/term/term-module.routes';
+import {PlannerModuleRoutes} from './secure/planner/planner-module.routes';
+import {SetupModuleRoutes} from './secure/setup/setup-module.routes';
+import {HomePage} from './home/home.page';
+import {LoginPage} from './login/login.page';
+import {ForgetPasswordPage} from './login/forget-password.page';
+import {DashboardPage} from './secure/dashboard.page';
+import {SecurePage} from './secure/secure.page';
+import {AuthenticationGuard} from './secure/identity/guard/authentication.guard';
 
 const routes: Routes = [
-  {path: 'login', component: LoginComponent},
+  {path: '', component: HomePage},
+  {path: 'login', component: LoginPage},
+  {path: 'forget-password', component: ForgetPasswordPage},
   {
-    path: '', component: MainComponent,
+    path: 'secure', component: SecurePage, canActivate: [AuthenticationGuard],
     children: [
-      ...HomeModuleRoutes,
+      {path: '', component: DashboardPage},
       ...ProfileModuleRoutes,
       ...PlannerModuleRoutes,
       ...IdentityModuleRoutes,

@@ -11,27 +11,23 @@ import {NgxChartsModule} from '@swimlane/ngx-charts';
 import {StoreModule, ActionReducer, combineReducers} from '@ngrx/store';
 
 import {AppComponent} from './app.component';
-import {MainComponent} from './main/main.component';
-import {DashboardComponent} from './dashboard/dashboard.component';
-import {LoginComponent} from './login/login.component';
 import {appRoutes, appRoutingProviders} from './app.routes';
-import {HomeComponent} from './home/home.component';
 
 import {
   GraduationModule, graduationModuleReducers, GraduationModuleState,
   INITIAL_GRADUATION_STATE,
-} from './graduation/index';
+} from './secure/graduation/index';
 import {CommonModuleState, INITIAL_COMMON_STATE, commonModuleReducers} from './common/index';
-import {ProfileModule, profileModuleReducers, ProfileModuleState, INITIAL_PROFILE_STATE} from './profile/index';
-import {TermModule, termModuleReducers, TermModuleState, INITIAL_TERM_STATE} from './term/index';
-import {PlannerModule, plannerModuleReducers, PlannerModuleState, INITIAL_PLANNER_STATE} from './planner/index';
-import {SetupModule, setupModuleReducers, SetupModuleState, INITIAL_SETUP_STATE} from './setup/index';
-import {IdentityModule, identityModuleReducers, IdentityModuleState, INITIAL_IDENTITY_STATE} from './identity/index';
-import {SectionEffects} from './term/sections/section.effect';
-import {AppointmentEffects} from './term/appointments/appointment.effect';
-import {StaffEffects} from './identity/staffs/staff.effect';
+import {ProfileModule, profileModuleReducers, ProfileModuleState, INITIAL_PROFILE_STATE} from './secure/profile/index';
+import {TermModule, termModuleReducers, TermModuleState, INITIAL_TERM_STATE} from './secure/term/index';
+import {PlannerModule, plannerModuleReducers, PlannerModuleState, INITIAL_PLANNER_STATE} from './secure/planner/index';
+import {SetupModule, setupModuleReducers, SetupModuleState, INITIAL_SETUP_STATE} from './secure/setup/index';
+import {IdentityModule, identityModuleReducers, IdentityModuleState, INITIAL_IDENTITY_STATE} from './secure/identity/index';
+import {SectionEffects} from './secure/term/sections/section.effect';
+import {AppointmentEffects} from './secure/term/appointments/appointment.effect';
+import {StaffEffects} from './secure/identity/staffs/staff.effect';
 import {EffectsModule} from '@ngrx/effects';
-import {AcademicSessionEffects} from './planner/academic-sessions/academic-session.effect';
+import {AcademicSessionEffects} from './secure/planner/academic-sessions/academic-session.effect';
 import {PipeModule} from './app.pipe.module';
 import {environment} from '../environments/environment';
 import {
@@ -39,13 +35,21 @@ import {
   INITIAL_APPLICATION_CONTEXT_STATE,
 } from './application-context.reducer';
 import {ApplicationContextActions} from './application-context.action';
+import {AdministratorDashboardPanel} from './secure/administrator-dashboard.panel';
+import {AuthorizationGuard} from './secure/identity/guard/authorization.guard';
+import {AuthenticationGuard} from './secure/identity/guard/authentication.guard';
+import {SystemService} from '../services/system.service';
+import {AuthorizationService} from '../services/authorization.service';
+import {AlertService} from '../services/alert.service';
+import {AuthenticationService} from '../services/authentication.service';
+import {ReactiveFormsModule} from '@angular/forms';
 // interceptor
 const httpInterceptorProviders: Type<any>[] = [
   RequestInterceptor,
 ];
 
 // state
-interface ApplicationState {
+export interface ApplicationState {
   applicationContextState: ApplicationContextState;
   commonModuleState: CommonModuleState;
   identityModuleState: IdentityModuleState;
@@ -90,14 +94,11 @@ export function applicationReducer(applicationState: any = INITIAL_APP_STATE, ac
 @NgModule({
   declarations: [
     AppComponent,
-    MainComponent,
-    HomeComponent,
-    DashboardComponent,
-    LoginComponent,
   ],
   imports: [
     appRoutes,
     BrowserModule,
+    ReactiveFormsModule,
     CovalentCoreModule.forRoot(),
     CovalentChartsModule.forRoot(),
     CovalentHttpModule.forRoot({
@@ -108,7 +109,6 @@ export function applicationReducer(applicationState: any = INITIAL_APP_STATE, ac
     CovalentHighlightModule.forRoot(),
     CovalentMarkdownModule.forRoot(),
     NgxChartsModule,
-
     StoreModule.provideStore(applicationReducer),
     environment.imports,
 
@@ -128,10 +128,18 @@ export function applicationReducer(applicationState: any = INITIAL_APP_STATE, ac
   providers: [
     appRoutingProviders,
     httpInterceptorProviders,
+    AuthenticationService,
+    AlertService,
+    AuthorizationService,
+    SystemService,
+    AuthenticationGuard,
+    AuthorizationGuard,
     Title,
     ApplicationContextActions,
   ],
-  entryComponents: [],
+  entryComponents: [
+    AdministratorDashboardPanel,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {

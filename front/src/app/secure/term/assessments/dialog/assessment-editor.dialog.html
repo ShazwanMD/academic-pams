@@ -1,0 +1,78 @@
+<h2 md-dialog-title>Setup Assessment</h2>
+<form [formGroup]="editorForm" novalidate>
+  <div fxLayout fxLayout.xs="column" fxLayoutWrap fxLayoutGap="25px" class="inset">
+
+    <md-input-container flex mdTooltip="Please insert assessment Code">
+      <input mdInput
+             placeholder="Code"
+             formControlName="code" fxFlex="calc(100%-25px)"/>
+    </md-input-container>
+    <div  class="tc-red-600" *ngIf="editorForm.get('code').invalid && editorForm.get('code').touched">
+                Please insert new code!
+            </div>
+
+    <md-input-container flex mdTooltip="Please insert assessment Description">
+      <input mdInput
+             placeholder="Description"
+             formControlName="description" flex/>
+    </md-input-container>
+    <div  class="tc-red-600" *ngIf="editorForm.get('description').invalid && editorForm.get('description').touched">
+                Please insert new description!
+            </div>
+
+    <md-input-container fxFlex="calc(100%-25px)" mdTooltip="Please insert assessment Ordinal">
+      <input mdInput
+             placeholder="Ordinal"
+             typ="number"
+             formControlName="ordinal"/>
+    </md-input-container>
+    <div  class="tc-red-600" *ngIf="editorForm.get('ordinal').invalid && editorForm.get('ordinal').touched">
+                Please insert new ordinal!
+            </div>
+
+    <md-input-container fxFlex="calc(100%-25px)" mdTooltip="Please insert assessment Total Score">
+      <input mdInput
+             placeholder="Total Score"
+             typ="number"
+             formControlName="totalScore"/>
+    </md-input-container>
+     <div  class="tc-red-600" *ngIf="editorForm.get('totalScore').invalid && editorForm.get('totalScore').touched">
+                Please insert new total score!
+            </div>
+
+    <md-input-container flex mdTooltip="Please insert assessment Weight">
+      <input mdInput
+             placeholder="Weight"
+             typ="number"
+             formControlName="weight"/>
+    </md-input-container>
+    <div  class="tc-red-600" *ngIf="editorForm.get('weight').invalid && editorForm.get('weight').touched">
+                Please insert new weight!
+            </div>
+
+    <pams-assessment-category-select
+      [placeholder]="'Assessment Category'"
+      [innerFormControl]="editorForm.controls['assessmentCategory']"
+      fxFlex="calc(100%-25px)" class="pad-bottom">
+    </pams-assessment-category-select>
+    <div  class="tc-red-600" *ngIf="editorForm.get('assessmentCategory').invalid && editorForm.get('assessmentCategory').touched">
+                Please insert new assessmentCategory!
+            </div>
+
+    <pams-assessment-type-select
+      [placeholder]="'Assessment Type'"
+      [innerFormControl]="editorForm.controls['assessmentType']"
+      fxFlex="calc(100%-25px)" class="pad-bottom">
+    </pams-assessment-type-select>
+    <div  class="tc-red-600" *ngIf="editorForm.get('assessmentType').invalid && editorForm.get('assessmentType').touched">
+                Please insert new assessmentCategory!
+            </div>
+  </div>
+</form>
+
+<md-dialog-actions align="end">
+  <button md-raised-button color="accent" (click)="submit(editorForm.value, edit)" [disabled]="!editorForm.valid">
+    {{edit ? 'Update' : 'Save'}}
+  </button>
+</md-dialog-actions>
+

@@ -1,0 +1,71 @@
+<h2 md-dialog-title>Create New Program</h2>
+<md-dialog-content>
+  <form [formGroup]="creatorForm" novalidate>
+    <div fxLayout fxLayout.xs="column" fxLayoutWrap fxLayoutGap="25px" class="inset">
+      <md-input-container fxFlex="calc(100%-25px)">
+        <input mdInput #code
+               placeholder="Code"
+               formControlName="code"
+               value="Code"/>
+      </md-input-container>
+       <div  class="tc-red-600" *ngIf="creatorForm.get('code').invalid && creatorForm.get('code').touched">
+                Please insert a new code!
+            </div>
+            
+      <md-input-container  fxFlex="calc(100%-25px)">
+        <input mdInput #title
+               placeholder="TitleMs"
+               formControlName="titleMs"
+               mdTooltip="Please insert titleMs" />
+      </md-input-container>
+       <div  class="tc-red-600" *ngIf="creatorForm.get('titleMs').invalid && creatorForm.get('titleMs').touched">
+                Please insert a new titleMs!
+            </div>
+            
+      <md-input-container fxFlex="calc(100%-25px)">
+        <input mdInput #title
+               placeholder="TitleEn"
+               formControlName="titleEn"
+               mdTooltip="Please insert titleEn" />
+      </md-input-container>
+       <div  class="tc-red-600" *ngIf="creatorForm.get('titleEn').invalid && creatorForm.get('titleEn').touched">
+                 Please insert a new titleEn!
+            </div>
+      
+      <pams-program-status-select
+        [placeholder]="'Status'"
+        [innerFormControl]="creatorForm.controls.status"
+         fxFlex="calc(100%-25px)" class="pad-bottom" mdTooltip="Please select status">
+      </pams-program-status-select>
+       <div  class="tc-red-600" *ngIf="creatorForm.get('status').invalid && creatorForm.get('status').touched">
+                Please insert a new status!
+            </div>
+            
+      <pams-faculty-select
+        [placeholder]="'Select faculty'" required md-maxlength="25"
+        [innerFormControl]="creatorForm.controls.faculty" 
+        fxFlex="calc(100%-50px)" class="pad-bottom" mdTooltip="Please select faculty">
+      </pams-faculty-select>
+       <div  class="tc-red-600" *ngIf="creatorForm.get('faculty').invalid && creatorForm.get('faculty').touched">
+                Please choose a faculty!
+            </div>
+      
+      <!-- <pams-ethnicity-code-select [placeholder]="'Ethnicity'" required md-maxlength="10"
+                                         [innerFormControl]="applicationForm.controls.ethnicityCode"
+                                         fxFlex="calc(50%-25px)" class="pad-bottom"> -->
+      <pams-program-level-select
+        [placeholder]="'level'"
+        [innerFormControl]="creatorForm.controls.level"
+         fxFlex="calc(100%-25px)" class="pad-bottom"  mdTooltip="Please select level">
+      </pams-program-level-select>
+       <div  class="tc-red-600" *ngIf="creatorForm.get('level').invalid && creatorForm.get('level').touched">
+               Please choose a level!
+            </div>
+    </div>
+  </form>
+</md-dialog-content>
+<md-dialog-actions align="end">
+  <button md-raised-button color="accent" (click)="submit(creatorForm.value, edit)" [disabled]="!creatorForm.valid">
+    {{edit ? 'Update' : 'Save'}}
+  </button>
+</md-dialog-actions>

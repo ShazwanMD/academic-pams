@@ -1,0 +1,36 @@
+<md-card> <md-card-title>{{offering?.course?.titleEn}}</md-card-title>
+<md-card-subtitle>{{offering?.course?.titleMs}}</md-card-subtitle> 
+<md-divider></md-divider> <md-card-content> <md-tab-group>
+<md-tab label="Offering Information"> 
+<div layout="column" class="inset">
+	<div layout="row" class="pad-bottom">
+		<span flex="15">Code </span> <span>{{offering?.course?.code}}</span>
+	</div>
+	<div layout="row" class="pad-bottom">
+		<span flex="15">Capacity</span> <span>{{offering?.capacity}}</span>
+	</div>
+	<div layout="row" class="pad-bottom">
+		<span flex="15">Title(MS)</span> <span>{{offering?.course?.titleMs}}</span>
+	</div>
+	<div layout="row" class="pad-bottom">
+		<span flex="15">Title(EN)</span> <span>{{offering?.course?.titleEn}}</span>
+	</div>
+</div>
+</md-tab> <md-tab label="Program Information"> 
+<div layout="column" class="inset">
+	<div layout="row" class="pad-bottom">
+		<span flex="15">Code</span> <span>{{offering?.program?.code}}</span>
+	</div>
+	<div layout="row" class="pad-bottom">
+		<span flex="15">Title(MS)</span> <span>{{offering?.program?.titleMs}}</span>
+	</div>
+	<div layout="row" class="pad-bottom">
+		<span flex="15">Title(EN)</span> <span>{{offering?.program?.titleEn}}</span>
+	</div>
+</div>
+</md-tab> </md-tab-group> </md-card-content> </md-card>
+
+
+
+
+

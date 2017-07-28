@@ -1,9 +1,9 @@
 import {NgModule}      from '@angular/core';
 import {FlowStatePipe} from './core/flow-state.pipe';
-import {AssessmentCategoryPipe} from './term/assessments/assessment-category.pipe';
-import {AssessmentTypePipe} from './term/assessments/assessment-type.pipe';
-import {AdmissionStatusPipe} from './term/admissions/admission-status.pipe';
-import {AcademicStandingPipe} from './term/admissions/academic-standing.pipe';
+import {AssessmentCategoryPipe} from './secure/term/assessments/assessment-category.pipe';
+import {AssessmentTypePipe} from './secure/term/assessments/assessment-type.pipe';
+import {AdmissionStatusPipe} from './secure/term/admissions/admission-status.pipe';
+import {AcademicStandingPipe} from './secure/term/admissions/academic-standing.pipe';
 
 @NgModule({
   imports: [],

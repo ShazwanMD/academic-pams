@@ -2,8 +2,8 @@ package my.edu.umk.pams.academic.config;
 
 import my.edu.umk.pams.academic.security.integration.AdAutoLoginAuthenticationProvider;
 import my.edu.umk.pams.academic.security.integration.jwt.RestAuthenticationEntryPoint;
-import my.edu.umk.pams.academic.security.integration.jwt.filter.JsonUsernamePasswordAuthenticationFilter;
 import my.edu.umk.pams.academic.security.integration.jwt.filter.JwtAuthenticationFilter;
+import my.edu.umk.pams.academic.security.integration.jwt.filter.LoginAuthenticationFilter;
 import my.edu.umk.pams.academic.security.integration.jwt.handler.JwtAuthenticationFailureHandler;
 import my.edu.umk.pams.academic.security.integration.jwt.handler.JwtAuthenticationSuccessHandler;
 import my.edu.umk.pams.academic.security.integration.jwt.provider.JwtAuthenticationProvider;
@@ -49,9 +49,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Qualifier(value = "userDetailService")
     private UserDetailsService userDetailService;
 
+    private static String API_URL = "/api/**";
+    private static String LOGIN_URL = "/api/authentication/login**";
+
     @Override
     public void configure(WebSecurity web) throws Exception {
         web.ignoring()
+                .antMatchers("/api/integration/**")
+                .antMatchers("/servlet/**")
                 .antMatchers(HttpMethod.GET, "/index.html")
                 .antMatchers(HttpMethod.GET, "/**.ico")
                 .antMatchers(HttpMethod.GET, "/**.woff")
@@ -60,7 +65,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.GET, "/**.css")
                 .antMatchers(HttpMethod.GET, "/assets/**")
                 .antMatchers("/v2/api-docs", "/configuration/ui", "/swagger-resources", "/configuration/security", "/swagger-ui.html", "/webjars/**");
-        ;
     }
 
     @Override
@@ -73,18 +77,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests()
-                .antMatchers("/api/common/**").permitAll()  //todo(uda): .hasRole("USER")
-                .antMatchers("/api/dashboard/**").permitAll()
-                .antMatchers("/api/identity/**").permitAll()
-                .antMatchers("/api/planner/**").permitAll()
-                .antMatchers("/api/term/**").permitAll()
-                .antMatchers("/api/graduation/**").permitAll()
-                .antMatchers("/download/**").permitAll()
-                .antMatchers("/login").permitAll()
-                .anyRequest().permitAll()
-                .and()  // todo(max) Simply use @bean instead of jwtAuthenticationFilter()
-//                .addFilterAfter(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
-                .addFilterAt(jsonUsernamePasswordAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
+                .antMatchers("/api/common/**").hasRole("USER")
+                .antMatchers("/api/system/**").hasRole("USER")
+                .antMatchers("/api/identity/**").hasRole("USER")
+                .antMatchers("/api/planner/**").hasRole("USER")
+                .antMatchers("/api/term/**").hasRole("USER")
+                .antMatchers("/api/graduation/**").hasRole("USER")
+                .antMatchers("/download/**").hasRole("USER")
+                .and()
+                .addFilterAfter(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
+                .addFilterAt(loginAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
                 .exceptionHandling()
                 .authenticationEntryPoint(restAuthenticationEntryPoint());
     }
@@ -118,7 +120,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return new RestAuthenticationEntryPoint();
     }
 
-
     @Bean
     @Override
     public AuthenticationManager authenticationManagerBean() throws Exception {
@@ -135,20 +136,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .passwordEncoder(new PlaintextPasswordEncoder());
     }
 
-    //@Bean // todo(max) reinstate bean to enable authentication
-    public JwtAuthenticationFilter jwtAuthenticationFilter() throws Exception {
-        JwtAuthenticationFilter jwtAuthenticationFilter = new JwtAuthenticationFilter();
+    private JwtAuthenticationFilter jwtAuthenticationFilter() throws Exception {
+        JwtAuthenticationFilter jwtAuthenticationFilter = new JwtAuthenticationFilter(API_URL);
         jwtAuthenticationFilter.setAuthenticationManager(authenticationManager());
         return jwtAuthenticationFilter;
     }
 
-    public JsonUsernamePasswordAuthenticationFilter jsonUsernamePasswordAuthenticationFilter() throws Exception {
-        JsonUsernamePasswordAuthenticationFilter filter = new JsonUsernamePasswordAuthenticationFilter("/api/authentication/login**");
-        filter.setAuthenticationFailureHandler(jwtAuthenticationFailureHandler());
-        filter.setAuthenticationSuccessHandler(jwtAuthenticationSuccessHandler());
-        filter.setAuthenticationManager(authenticationManagerBean());
-        filter.afterPropertiesSet();
-        return filter;
+    private LoginAuthenticationFilter loginAuthenticationFilter() throws Exception {
+        LoginAuthenticationFilter loginAuthenticationFilter = new LoginAuthenticationFilter(LOGIN_URL);
+        loginAuthenticationFilter.setAuthenticationFailureHandler(jwtAuthenticationFailureHandler());
+        loginAuthenticationFilter.setAuthenticationSuccessHandler(jwtAuthenticationSuccessHandler());
+        loginAuthenticationFilter.setAuthenticationManager(authenticationManagerBean());
+        loginAuthenticationFilter.afterPropertiesSet();
+        return loginAuthenticationFilter;
     }
 
     @Bean
@@ -160,5 +160,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public JwtAuthenticationFailureHandler jwtAuthenticationFailureHandler() {
         return new JwtAuthenticationFailureHandler();
     }
-
 }

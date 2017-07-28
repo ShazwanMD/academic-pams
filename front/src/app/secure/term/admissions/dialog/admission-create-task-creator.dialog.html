@@ -1,0 +1,75 @@
+<h2 md-dialog-title>{{edit ? 'Update' : 'Save'}} Admission Id: {{_admission?.id}}</h2>
+<md-dialog-content>
+	<form [formGroup]="creatorForm">
+
+	<!--Select student-->
+   <!--  <div layout="row" class="pad-bottom pad-top">
+      <pams-student-select 
+        [placeholder]="'Select Student'" 
+        [innerFormControl]="creatorForm.controls['student']">
+      </pams-student-select>
+      </div> -->
+	<div layout="row" class="pad-bottom">
+			<md-input-container flex mdTooltip="Please insert gpa"> 
+				<input mdInput #gpa 
+				placeholder="GPA" 
+				formControlName="gpa" flex /> 
+				</md-input-container>
+		</div>
+		<div layout="row" class="pad-bottom">
+			<md-input-container flex mdTooltip="Please insert cgpa"> 
+				<input mdInput #cgpa 
+				placeholder="CGPA" 
+				formControlName="cgpa" flex /> </md-input-container>
+		</div>
+		<div layout="row" class="pad-bottom">
+			<md-input-container flex mdTooltip="Please insert creditTaken"> 
+				<input mdInput #creditTaken placeholder="Credit Taken" formControlName="creditTaken" flex /> </md-input-container>
+		</div>
+		<div layout="row" class="pad-bottom">
+			<md-input-container flex mdTooltip="Please insert creditEarned"> 
+				<input mdInput #creditEarned placeholder="Credit Earned" formControlName="creditEarned" flex /> </md-input-container>
+		</div>
+		<div layout="row" class="pad-bottom">
+			<md-input-container flex mdTooltip="Please insert semester"> 
+				<input mdInput #ordinal placeholder="Semester" formControlName="ordinal" type="number"  flex /> </md-input-container>
+		</div>
+		<div layout="row" class="pad-bottom pad-top" mdTooltip="Please select session">
+			 <pams-academic-session-select ng-style="{'width': getMaxLength() + 'px'}"
+				[placeholder]="'Select Academic Session'"
+				[innerFormControl]="creatorForm.controls.academicSession">
+			 </pams-academic-session-select> 
+		</div>
+		<!-- <div layout="row" class="pad-bottom pad-top" mdTooltip="Please select cohort">
+			 <pams-cohort-select 
+			 		[placeholder]="'Select Cohort'"
+					[innerFormControl]="creatorForm.controls['cohort']">
+			 </pams-cohort-select>
+		</div> -->
+		<div layout="row" class="pad-bottom pad-top" mdTooltip="Please select study center">
+      <pams-study-center-select
+			 		[placeholder]="'Select Study Center'"
+					[innerFormControl]="creatorForm.controls.studyCenter">
+      </pams-study-center-select>
+		</div>
+		<div layout="row" class="pad-bottom pad-top" mdTooltip="Please select standing status">
+			 <pams-academic-standing-select 
+			 		[placeholder]="'Select Academic Standing'"
+					[innerFormControl]="creatorForm.controls['standing']">
+			 </pams-academic-standing-select>
+		</div>
+		<div layout="row" class="pad-bottom pad-top" mdTooltip="Please select admission status">
+			 <pams-admission-status-select 
+			 		[placeholder]="'Select Admission Status'"
+					[innerFormControl]="creatorForm.controls.status">
+			 </pams-admission-status-select>		
+		</div>
+	</form>
+</md-dialog-content>
+<md-dialog-actions align="end">
+	<!-- <button md-raised-button color="accent" (click)="save(creatorForm.value, creatorForm.valid)">Save
+	</button> -->
+	 <button md-raised-button color="accent" (click)="save(creatorForm.value, creatorForm.valid)">
+    {{edit ? 'Update' : 'Save'}}
+  </button>
+</md-dialog-actions>
