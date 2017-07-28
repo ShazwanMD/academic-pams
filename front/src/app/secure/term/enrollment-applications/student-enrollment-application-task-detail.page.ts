@@ -1,5 +1,5 @@
-import {Component, OnInit, ChangeDetectionStrategy, ViewContainerRef, Input, EventEmitter, Output} from '@angular/core';
-import {Router, ActivatedRoute} from '@angular/router';
+import {Component, Input, OnInit} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Observable} from 'rxjs';
 import {Store} from '@ngrx/store';
 import {TermModuleState} from '../index';
@@ -45,6 +45,6 @@ export class StudentEnrollmentApplicationTaskDetailPage implements OnInit {
   }
 
   goBack(): void {
-    this.router.navigate(['/term/enrollment-applications']);
+    this.router.navigate(['/secure/term/enrollment-applications']);
   }
 }

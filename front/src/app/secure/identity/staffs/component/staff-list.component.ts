@@ -1,6 +1,11 @@
-import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy,  AfterViewInit} from '@angular/core';
-import { TdDataTableSortingOrder, TdDataTableService, ITdDataTableSortChangeEvent, IPageChangeEvent } from '@covalent/core';
-import {MdSnackBar} from "@angular/material";
+import {AfterViewInit, ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
+import {
+  IPageChangeEvent,
+  ITdDataTableSortChangeEvent,
+  TdDataTableService,
+  TdDataTableSortingOrder
+} from '@covalent/core';
+import {MdSnackBar} from '@angular/material';
 import {Staff} from '../../../../shared/model/identity/staff.interface';
 
 @Component({
@@ -31,7 +36,8 @@ export class StaffListComponent implements AfterViewInit {
 
 
   constructor(private _dataTableService: TdDataTableService,
-              private snackBar: MdSnackBar) {}
+              private snackBar: MdSnackBar) {
+  }
 
   ngAfterViewInit(): void {
     this.filteredData = this.staffs;

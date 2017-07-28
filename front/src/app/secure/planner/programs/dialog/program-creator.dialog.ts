@@ -1,9 +1,8 @@
 import {Faculty} from '../../../../shared/model/planner/faculty.interface';
 import {Program} from '../../../../shared/model/planner/program.interface';
-import {Component, ViewContainerRef, OnInit} from '@angular/core';
-import {FormGroup, FormControl} from '@angular/forms';
-import {FormBuilder, Validators} from '@angular/forms';
-import {Router, ActivatedRoute} from '@angular/router';
+import {Component, OnInit, ViewContainerRef} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {ActivatedRoute, Router} from '@angular/router';
 import {ProgramActions} from '../program.action';
 import {Store} from '@ngrx/store';
 import {PlannerModuleState} from '../../index';
@@ -31,9 +30,9 @@ export class ProgramCreatorDialog implements OnInit {
   }
 
   set program(value: Program) {
-        this._program = value;
-        this.create = true;
-    }
+    this._program = value;
+    this.create = true;
+  }
 
   ngOnInit(): void {
     this.creatorForm = this.formBuilder.group({
@@ -54,10 +53,10 @@ export class ProgramCreatorDialog implements OnInit {
   }
 
   submit(program: Program, isValid: boolean) {
-       console.log('adding program');
-       if (!program.id) this.store.dispatch(this.actions.saveProgram(program));
-        else this.store.dispatch(this.actions.updateProgram(program));
-       this.dialog.close();
-       console.log(program);
+    console.log('adding program');
+    if (!program.id) this.store.dispatch(this.actions.saveProgram(program));
+    else this.store.dispatch(this.actions.updateProgram(program));
+    this.dialog.close();
+    console.log(program);
   }
 }

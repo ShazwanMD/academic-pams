@@ -1,13 +1,13 @@
-import { AdmissionApplicationTaskEditorDialog } from '../dialog/admission-application-task-editor.dialog';
-import { Component, OnInit, ViewContainerRef, Input } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { MdSnackBar, MdDialog, MdDialogRef, MdDialogConfig } from '@angular/material';
-import { TermService } from '../../../../../services/term.service';
-import { AdmissionApplicationTask } from '../../../../shared/model/term/admission-application-task.interface';
+import {AdmissionApplicationTaskEditorDialog} from '../dialog/admission-application-task-editor.dialog';
+import {Component, Input, OnInit, ViewContainerRef} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
+import {MdDialog, MdDialogConfig, MdDialogRef, MdSnackBar} from '@angular/material';
+import {TermService} from '../../../../../services/term.service';
+import {AdmissionApplicationTask} from '../../../../shared/model/term/admission-application-task.interface';
 import {AdmissionApplication} from '../../../../shared/model/term/admission-application.interface';
-import { Store } from '@ngrx/store';
-import { TermModuleState } from '../../index';
-import { AdmissionApplicationActions } from '../admission-application.action';
+import {Store} from '@ngrx/store';
+import {TermModuleState} from '../../index';
+import {AdmissionApplicationActions} from '../admission-application.action';
 
 @Component({
   selector: 'pams-admission-application-draft-task',
@@ -27,13 +27,13 @@ export class AdmissionApplicationDraftTaskPanel implements OnInit {
   @Input() admissionApplication: AdmissionApplication;
 
   constructor(router: Router,
-    route: ActivatedRoute,
-    viewContainerRef: ViewContainerRef,
-    dialog: MdDialog,
-    termService: TermService,
-    snackBar: MdSnackBar,
-    private store: Store<TermModuleState>,
-    private actions: AdmissionApplicationActions) {
+              route: ActivatedRoute,
+              viewContainerRef: ViewContainerRef,
+              dialog: MdDialog,
+              termService: TermService,
+              snackBar: MdSnackBar,
+              private store: Store<TermModuleState>,
+              private actions: AdmissionApplicationActions) {
     this._router = router;
     this._route = route;
     this._termService = termService;
@@ -57,7 +57,7 @@ export class AdmissionApplicationDraftTaskPanel implements OnInit {
     config.role = 'dialog';
     config.width = '60%';
     config.height = '50%';
-    config.position = { top: '0px' };
+    config.position = {top: '0px'};
     this.editorDialogRef = this._dialog.open(AdmissionApplicationTaskEditorDialog, config);
     this.editorDialogRef.componentInstance.admissionApplication = this.admissionApplicationTask.application;
   }
@@ -72,12 +72,12 @@ export class AdmissionApplicationDraftTaskPanel implements OnInit {
   }
 
   remove() {
-      this.store.dispatch(this.actions.releaseAdmissionApplicationTask(this.admissionApplicationTask));
-      this.goBack();
-    }
+    this.store.dispatch(this.actions.releaseAdmissionApplicationTask(this.admissionApplicationTask));
+    this.goBack();
+  }
 
   goBack(): void {
-   // this._router.navigate(['/term/admission-applications/student-admission-application-center']);
-    this._router.navigate(['/term/admission-applications']);
+    // this._router.navigate(['/secure/term/admission-applications/student-admission-application-center']);
+    this._router.navigate(['/secure/term/admission-applications']);
   }
 }

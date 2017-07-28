@@ -1,6 +1,6 @@
 import {AdmissionApplicationTask} from '../../../../shared/model/term/admission-application-task.interface';
 import {TermModuleState} from '../../index';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Actor} from '../../../../shared/model/identity/actor.interface';
 import {Student} from '../../../../shared/model/identity/student.interface';
 import {StudyCenter} from '../../../setup/study-centers/study-center.interface';
@@ -8,11 +8,10 @@ import {Program} from '../../../../shared/model/planner/program.interface';
 import {AcademicSession} from '../../../../shared/model/planner/academic-session.interface';
 import {Store} from '@ngrx/store';
 import {MdDialogRef} from '@angular/material';
-import {Router} from '@angular/router';
 import {AdmissionApplicationActions} from '../admission-application.action';
 import {AdmissionApplication} from '../../../../shared/model/term/admission-application.interface';
-import {FormGroup, FormBuilder} from '@angular/forms';
-import {OnInit, ViewContainerRef, Component} from '@angular/core';
+import {FormBuilder, FormGroup} from '@angular/forms';
+import {Component, OnInit, ViewContainerRef} from '@angular/core';
 
 @Component({
   selector: 'pams-admission-application-task-editor',

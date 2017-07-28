@@ -3,7 +3,7 @@ import {BundleSubject} from '../../../../shared/model/planner/bundle-subject.int
 
 import {PlannerModuleState} from '../../index';
 import {Subject} from '../../../../shared/model/planner/subject.interface';
-import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, OnInit, ViewContainerRef} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, OnInit, ViewContainerRef} from '@angular/core';
 import {Store} from '@ngrx/store';
 import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';
 import {CurriculumActions} from '../curriculum.action';

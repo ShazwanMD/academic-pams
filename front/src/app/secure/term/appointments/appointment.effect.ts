@@ -1,12 +1,12 @@
 import {Injectable} from '@angular/core';
-import {Effect, Actions} from '@ngrx/effects';
+import {Actions, Effect} from '@ngrx/effects';
 import {AppointmentActions} from './appointment.action';
-import {TermService} from '../../../services/term.service';
 import {Store} from '@ngrx/store';
 import {OfferingActions} from '../offerings/offering.action';
-import {Section} from '../../shared/model/term/section.interface';
 import {TermModuleState} from '../index';
 import {SectionActions} from '../sections/section.action';
+import {TermService} from '../../../../services/term.service';
+import {Section} from '../../../shared/model/term/section.interface';
 
 @Injectable()
 export class AppointmentEffects {

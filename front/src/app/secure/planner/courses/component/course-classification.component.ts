@@ -1,5 +1,5 @@
-import { Course } from '../../../../shared/model/planner/course.interface';
-import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy} from '@angular/core';
+import {Course} from '../../../../shared/model/planner/course.interface';
+import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 
 @Component({
   selector: 'pams-course-classification',

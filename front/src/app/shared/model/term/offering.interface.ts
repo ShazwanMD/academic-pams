@@ -1,7 +1,7 @@
-import {Course} from "../planner/course.interface";
-import {Program} from "../planner/program.interface";
-import {AcademicSession} from "../planner/academic-session.interface";
-import {MetaObject} from "../../../core/meta-object.interface";
+import {Course} from '../planner/course.interface';
+import {Program} from '../planner/program.interface';
+import {AcademicSession} from '../planner/academic-session.interface';
+import {MetaObject} from '../../../core/meta-object.interface';
 
 export interface Offering extends MetaObject {
   id: number;

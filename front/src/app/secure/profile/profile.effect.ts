@@ -1,12 +1,12 @@
 import {Student} from '../../shared/model/identity/student.interface';
 import {Injectable} from '@angular/core';
-import {Effect, Actions} from '@ngrx/effects';
-import {ProfileService} from "../../../services/profile.service";
-import {ProfileActions} from "./profile.action";
-import {from} from "rxjs/observable/from";
-import {TermModuleState} from "../term/index";
-import {Store} from "@ngrx/store";
-import {Router} from "@angular/router";
+import {Actions, Effect} from '@ngrx/effects';
+import {ProfileService} from '../../../services/profile.service';
+import {ProfileActions} from './profile.action';
+import {from} from 'rxjs/observable/from';
+import {TermModuleState} from '../term/index';
+import {Store} from '@ngrx/store';
+import {Router} from '@angular/router';
 
 @Injectable()
 export class ProfileEffects {
@@ -37,14 +37,14 @@ export class ProfileEffects {
     .map(action => action.payload)
     .switchMap(payload => this.profileService.transferCohort(payload.student, payload.transferCohort))
     .map(matricNo => this.profileActions.transferCohortSuccess(matricNo))
-    .do(action => this.router.navigate(['/profile/profile-detail/', action.payload])).ignoreElements();
+    .do(action => this.router.navigate(['/secure/profile/profile-detail/', action.payload])).ignoreElements();
 
   @Effect() switchStudyMode$ = this.actions$
     .ofType(ProfileActions.SWITCH_STUDY_MODE)
     .map(action => action.payload)
     .switchMap(payload => this.profileService.switchStudyMode(payload.student, payload.switchStudyMode))
     .map(matricNo => this.profileActions.switchStudyModeSuccess(matricNo))
-    .do(action => this.router.navigate(['/profile/profile-detail/', action.payload])).ignoreElements();
+    .do(action => this.router.navigate(['/secure/profile/profile-detail/', action.payload])).ignoreElements();
 
   /*==================================================================================================*/
   /*ACTIVATE / DEACTIVATE - STUDENT EFFECT*/

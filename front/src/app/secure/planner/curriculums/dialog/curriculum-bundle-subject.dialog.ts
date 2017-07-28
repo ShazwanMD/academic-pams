@@ -1,9 +1,8 @@
-import { BundleSubject } from '../../../../shared/model/planner/bundle-subject.interface';
-import { Course } from '../../../../shared/model/planner/course.interface';
-import { Component, OnInit, ViewContainerRef } from '@angular/core';
-import {FormGroup} from '@angular/forms';
-import {FormBuilder} from '@angular/forms';
-import {Router, ActivatedRoute} from '@angular/router';
+import {BundleSubject} from '../../../../shared/model/planner/bundle-subject.interface';
+import {Course} from '../../../../shared/model/planner/course.interface';
+import {Component, OnInit, ViewContainerRef} from '@angular/core';
+import {FormBuilder, FormGroup} from '@angular/forms';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Curriculum} from '../../../../shared/model/planner/curriculum.interface';
 import {Subject} from '../../../../shared/model/planner/subject.interface';
 import {Store} from '@ngrx/store';
@@ -19,11 +18,11 @@ import {SubjectType} from '../../../../shared/model/planner/subject-type.enum';
 
 export class CurriculumBundleSubjectDialog implements OnInit {
 
-private creatorForm: FormGroup;
+  private creatorForm: FormGroup;
   private create: boolean = false;
   private _subject: Subject;
   private _curriculum: Curriculum;
-   private _bundleSubject: BundleSubject;
+  private _bundleSubject: BundleSubject;
 
   constructor(private formBuilder: FormBuilder,
               private store: Store<PlannerModuleState>,
@@ -66,6 +65,6 @@ private creatorForm: FormGroup;
     this.store.dispatch(this.actions.addBundleSubject(this._curriculum, bundleSubject));
     console.log('adding Subject jju' + this._curriculum);
     this.dialog.close();
- }
+  }
 }
 

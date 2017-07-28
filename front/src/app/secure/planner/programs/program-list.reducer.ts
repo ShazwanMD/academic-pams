@@ -1,7 +1,4 @@
 import {Action} from '@ngrx/store';
-import {Observable} from 'rxjs/Observable';
-
-import * as _ from 'lodash';
 import {Program} from '../../../shared/model/planner/program.interface';
 import {ProgramActions} from './program.action';
 
@@ -18,16 +15,16 @@ export function programListReducer(state = initialState, action: Action): Progra
       return [...state, action.payload];
     }
     case ProgramActions.FIND_PROGRAM_LEVEL_BY_CODE_SUCCESS: {
-       return [...state, action.payload];
+      return [...state, action.payload];
     }
 
-     case ProgramActions.FIND_PROGRAM_BY_CODE_SUCCESS: {
-          return [...state, action.payload];
-     }
+    case ProgramActions.FIND_PROGRAM_BY_CODE_SUCCESS: {
+      return [...state, action.payload];
+    }
 
-      case ProgramActions.REMOVE_PROGRAM_SUCCESS: {
-         return [...state, action.payload];
-      }
+    case ProgramActions.REMOVE_PROGRAM_SUCCESS: {
+      return [...state, action.payload];
+    }
 
     default: {
       return state;

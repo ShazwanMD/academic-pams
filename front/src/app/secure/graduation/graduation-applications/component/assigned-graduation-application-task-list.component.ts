@@ -1,6 +1,6 @@
-import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, ViewContainerRef} from '@angular/core';
-import {MdSnackBar} from "@angular/material";
-import {GraduationApplicationTask} from "../../../../shared/model/graduation/graduation-application-task.interface";
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
+import {MdSnackBar} from '@angular/material';
+import {GraduationApplicationTask} from '../../../../shared/model/graduation/graduation-application-task.interface';
 
 @Component({
   selector: 'pams-assigned-graduation-application-task-list',
@@ -19,15 +19,15 @@ export class AssignedGraduationApplicationTaskListComponent {
     {name: 'cgpa', label: 'CGPA'},
     {name: 'creditHour', label: 'Credit Hour'},
     {name: 'flowState', label: 'Status'},
-    {name: 'action', label: ''}
+    {name: 'action', label: ''},
   ];
 
   constructor(private snackBar: MdSnackBar) {
   }
 
   viewTask(task: GraduationApplicationTask): void {
-    console.log("Emitting task");
-    let snackBarRef = this.snackBar.open("Viewing Graduate Applicant", "OK");
+    console.log('Emitting task');
+    let snackBarRef = this.snackBar.open('Viewing Graduate Applicant', 'OK');
     snackBarRef.afterDismissed().subscribe(() => {
       this.view.emit(task);
     });

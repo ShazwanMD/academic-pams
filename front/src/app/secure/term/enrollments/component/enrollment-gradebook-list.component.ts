@@ -1,26 +1,24 @@
 import {
-  Component,
-  Input,
-  EventEmitter,
-  Output,
+  AfterViewInit,
   ChangeDetectionStrategy,
-  ViewContainerRef,
-  OnInit,
-  AfterViewInit
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  ViewContainerRef
 } from '@angular/core';
 import {Gradebook} from '../../../../shared/model/term/gradebook.interface';
-import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';
+import {MdDialog, MdSnackBar} from '@angular/material';
 import {ActivatedRoute, Router} from '@angular/router';
 import {GradebookActions} from '../../gradebooks/gradebook.action';
 import {Store} from '@ngrx/store';
 import {TermModuleState} from '../../index';
 import {Enrollment} from '../../../../shared/model/term/enrollment.interface';
-import {MdSnackBar} from '@angular/material';
 import {
-  TdDataTableSortingOrder,
-  TdDataTableService,
   IPageChangeEvent,
-  ITdDataTableSortChangeEvent
+  ITdDataTableSortChangeEvent,
+  TdDataTableService,
+  TdDataTableSortingOrder
 } from '@covalent/core';
 
 @Component({

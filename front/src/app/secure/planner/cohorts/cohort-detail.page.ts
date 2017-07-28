@@ -1,16 +1,11 @@
-import {Component,Input, OnInit, ChangeDetectionStrategy} from '@angular/core';
-import {Router, ActivatedRoute} from '@angular/router';
-import {CohortUpdateDialog} from './dialog/cohort-update.dialog';
-import {IdentityService} from '../../../../services';
-import {CommonService} from '../../../../services';
-import {Store} from "@ngrx/store";
-import {Observable} from "rxjs";
-import {Cohort} from "../../../shared/model/planner/cohort.interface";
-import {CohortActions} from "./cohort.action";
-import {PlannerModuleState} from "../index";
-import {MdDialog, MdDialogConfig, MdDialogRef} from "@angular/material";
-import {ViewContainerRef} from '@angular/core';
-import {MdSnackBar} from '@angular/material';
+import {Component, Input, OnInit, ViewContainerRef} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
+import {Store} from '@ngrx/store';
+import {Observable} from 'rxjs';
+import {Cohort} from '../../../shared/model/planner/cohort.interface';
+import {CohortActions} from './cohort.action';
+import {PlannerModuleState} from '../index';
+import {MdDialog, MdSnackBar} from '@angular/material';
 
 @Component({
   selector: 'pams-cohort-detail',
@@ -40,11 +35,11 @@ export class CohortDetailPage implements OnInit {
     });
   }
 
- // goBack(route: string): void {
-   // this.router.navigate(['/cohorts']);
-  }
+  // goBack(route: string): void {
+  // this.router.navigate(['/cohorts']);
+}
 
- // filter(): void {
+// filter(): void {
 
 
 

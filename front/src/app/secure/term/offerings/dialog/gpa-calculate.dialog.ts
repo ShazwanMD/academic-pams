@@ -1,5 +1,5 @@
-import {Component, ViewContainerRef, OnInit, Input} from '@angular/core';
-import {Router, ActivatedRoute} from '@angular/router';
+import {Component, Input, ViewContainerRef} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Offering} from '../../../../shared/model/term/offering.interface';
 import {OfferingActions} from '../offering.action';
 import {MdDialogRef} from '@angular/material';

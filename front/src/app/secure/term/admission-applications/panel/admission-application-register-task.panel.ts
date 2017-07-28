@@ -1,8 +1,8 @@
 import {AdmissionApplicationTaskEditorDialog} from '../dialog/admission-application-task-editor.dialog';
 import {AdmissionApplication} from '../../../../shared/model/term/admission-application.interface';
-import {Component, OnInit, ViewContainerRef, Input} from '@angular/core';
-import {Router, ActivatedRoute} from '@angular/router';
-import {MdSnackBar, MdDialog, MdDialogRef, MdDialogConfig} from '@angular/material';
+import {Component, Input, OnInit, ViewContainerRef} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
+import {MdDialog, MdDialogConfig, MdDialogRef, MdSnackBar} from '@angular/material';
 import {TermService} from '../../../../../services/term.service';
 import {AdmissionApplicationTask} from '../../../../shared/model/term/admission-application-task.interface';
 
@@ -68,7 +68,7 @@ export class AdmissionApplicationRegisterTaskPanel implements OnInit {
   }
 
   goBack(): void {
-    //this._router.navigate(['/term/admission-applications/student-admission-application-center']);
-    this._router.navigate(['/term/admission-applications']);
+    //this._router.navigate(['/secure/term/admission-applications/student-admission-application-center']);
+    this._router.navigate(['/secure/term/admission-applications']);
   }
 }

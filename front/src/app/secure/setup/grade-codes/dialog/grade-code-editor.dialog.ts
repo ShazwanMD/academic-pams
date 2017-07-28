@@ -1,12 +1,11 @@
-import { GradeCode } from '../../../../shared/model/common/grade-code.interface';
-import {Component, ViewContainerRef, OnInit, AfterViewInit} from '@angular/core';
-import {FormGroup, FormControl} from '@angular/forms';
-import { FormBuilder, Validators } from '@angular/forms';
-import {Router, ActivatedRoute} from '@angular/router';
-import {Store} from "@ngrx/store";
-import {MdDialogRef} from "@angular/material";
-import {SetupModuleState} from "../../index";
-import {SetupActions} from "../../setup.action";
+import {GradeCode} from '../../../../shared/model/common/grade-code.interface';
+import {Component, OnInit, ViewContainerRef} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {ActivatedRoute, Router} from '@angular/router';
+import {Store} from '@ngrx/store';
+import {MdDialogRef} from '@angular/material';
+import {SetupModuleState} from '../../index';
+import {SetupActions} from '../../setup.action';
 
 
 @Component({
@@ -39,10 +38,10 @@ export class GradeCodeEditorDialog implements OnInit {
       id: null,
       code: ['', Validators.required],
       description: ['', Validators.required],
-      ordinal:[0, Validators.required],
-      point:[0, Validators.required],
-      max:[0, Validators.required],
-      min:[0, Validators.required],
+      ordinal: [0, Validators.required],
+      point: [0, Validators.required],
+      max: [0, Validators.required],
+      min: [0, Validators.required],
     });
 
     if (this.edit) this.editorForm.patchValue(this._gradeCode);

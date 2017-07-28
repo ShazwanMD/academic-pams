@@ -1,4 +1,4 @@
-import { Enrollment } from '../../shared/model/term/enrollment.interface';
+import {Enrollment} from '../../shared/model/term/enrollment.interface';
 import {Action} from '@ngrx/store';
 import {ProfileActions} from './profile.action';
 

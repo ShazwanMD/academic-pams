@@ -1,15 +1,13 @@
-import { Component, OnInit, ViewContainerRef } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { MdDialogRef } from '@angular/material';
-import { MdDialogConfig } from '@angular/material';
-import { MdDialog } from '@angular/material';
-import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import {Component, OnInit, ViewContainerRef} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
+import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';
+import {Store} from '@ngrx/store';
+import {Observable} from 'rxjs';
 
-import { ProgramLevel } from '../../../shared/model/planner/program-level.interface';
-import { ProgramLevelActions } from './program-level.action';
-import { PlannerModuleState } from '../index';
-import { ProgramLevelCreatorDialog } from './dialog/program-level-creator.dialog';
+import {ProgramLevel} from '../../../shared/model/planner/program-level.interface';
+import {ProgramLevelActions} from './program-level.action';
+import {PlannerModuleState} from '../index';
+import {ProgramLevelCreatorDialog} from './dialog/program-level-creator.dialog';
 
 @Component({
   selector: 'pams-program-level-center',
@@ -22,22 +20,22 @@ export class ProgramLevelCenterPage implements OnInit {
 
   private creatorDialogRef: MdDialogRef<ProgramLevelCreatorDialog>;
   private columns: any[] = [
-    { name: 'code', label: 'Code' },
-    { name: 'description', label: 'Description' },
-    { name: 'current', label: 'Current' },
-    { name: 'startDate', label: 'Start Date' },
-    { name: 'endDate', label: 'End Date' },
-    { name: 'semester', label: 'ProgramSemester' },
-    { name: 'year', label: 'ProgramYear' },
-    { name: 'action', label: '' },
+    {name: 'code', label: 'Code'},
+    {name: 'description', label: 'Description'},
+    {name: 'current', label: 'Current'},
+    {name: 'startDate', label: 'Start Date'},
+    {name: 'endDate', label: 'End Date'},
+    {name: 'semester', label: 'ProgramSemester'},
+    {name: 'year', label: 'ProgramYear'},
+    {name: 'action', label: ''},
   ];
 
   constructor(private router: Router,
-    private route: ActivatedRoute,
-    private actions: ProgramLevelActions,
-    private store: Store<PlannerModuleState>,
-    private vcf: ViewContainerRef,
-    private dialog: MdDialog) {
+              private route: ActivatedRoute,
+              private actions: ProgramLevelActions,
+              private store: Store<PlannerModuleState>,
+              private vcf: ViewContainerRef,
+              private dialog: MdDialog) {
     this.programLevels$ = this.store.select(...this.PROGRAM_LEVELS);
   }
 
@@ -54,7 +52,7 @@ export class ProgramLevelCenterPage implements OnInit {
     this.showDialog(null);
   }
 
-  filter(): void{
+  filter(): void {
 
   }
 
@@ -65,13 +63,13 @@ export class ProgramLevelCenterPage implements OnInit {
     config.role = 'dialog';
     config.width = '65%';
     config.height = '90%';
-    config.position =  {top: '0px'};
+    config.position = {top: '0px'};
     this.creatorDialogRef = this.dialog.open(ProgramLevelCreatorDialog, config);
     if (code) this.creatorDialogRef.componentInstance.programLevel = code;
 
     //set
     this.creatorDialogRef.afterClosed().subscribe((res) => {
-      console.log ('close dialog');
+      console.log('close dialog');
     });
   }
 }

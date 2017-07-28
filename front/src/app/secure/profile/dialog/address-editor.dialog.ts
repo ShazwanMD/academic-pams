@@ -1,16 +1,15 @@
-import { CountryCode } from '../../../shared/model/common/country-code.interface';
-import { StateCode } from '../../../shared/model/common/state-code.interface';
-import { Address } from '../../../shared/model/profile/address.interface';
-import {Component, ViewContainerRef, OnInit, AfterViewInit} from '@angular/core';
-import {FormGroup, FormControl} from '@angular/forms';
-import {FormBuilder} from '@angular/forms';
-import {Router, ActivatedRoute} from '@angular/router';
+import {CountryCode} from '../../../shared/model/common/country-code.interface';
+import {StateCode} from '../../../shared/model/common/state-code.interface';
+import {Address} from '../../../shared/model/profile/address.interface';
+import {Component, OnInit, ViewContainerRef} from '@angular/core';
+import {FormBuilder, FormGroup} from '@angular/forms';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Store} from '@ngrx/store';
 import {MdDialogRef} from '@angular/material';
 import {Student} from '../../../shared/model/identity/student.interface';
 import {ProfileModuleState} from '../index';
 import {ProfileActions} from '../profile.action';
-import { AddressType } from '../../../shared/model/profile/address-type.enum';
+import {AddressType} from '../../../shared/model/profile/address-type.enum';
 
 @Component({
   selector: 'pams-address-editor',
@@ -63,7 +62,7 @@ export class AddressEditorDialog implements OnInit {
     //console.log(isValid);
 
     if (isValid)
-    address.id = this._address.id;
+      address.id = this._address.id;
     //console.log(address);
 
     if (isValid) this.store.dispatch(this.actions.updateAddress(this._student, address));

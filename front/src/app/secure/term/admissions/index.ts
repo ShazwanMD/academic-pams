@@ -6,14 +6,12 @@ import {AcademicStandingSelectComponent} from './component/academic-standing-sel
 import {AdmissionStatusSelectComponent} from './component/admission-status-select.component';
 import '@ngrx/core/add/operator/select';
 import {appRoutes, appRoutingProviders} from '../../../app.routes';
-import {NgModule, ModuleWithProviders} from '@angular/core';
+import {ModuleWithProviders, NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {ReactiveFormsModule} from '@angular/forms';
 import {CovalentCoreModule} from '@covalent/core';
 
-import {TermService} from '../../../../services';
-import {CommonService} from '../../../../services';
-import {IdentityService} from '../../../../services';
+import {CommonService, IdentityService, TermService} from '../../../../services';
 
 import {EffectsModule} from '@ngrx/effects';
 import {AdmissionActions} from './admission.action';
@@ -30,16 +28,15 @@ import {AdmissionDeleteTaskCreatorDialog} from './dialog/admission-delete-task-c
 import {AdmissionApplicationActions} from './admission-application.action';
 import {PipeModule} from '../../../app.pipe.module';
 import {AdmissionEnrollmentListComponent} from './component/admission-enrollment-list.component';
-import { AdmissionEnrollmentDialog } from "./dialog/admission-enrollment.dialog";
-import { AdmissionActionComponent } from "./component/admission-action.component";
-import { AdmissionEnrollmentApplicationListComponent } from "./component/admission-enrollment-application-list.component";
-import { AdmissionApplicationListComponent } from "../admission-applications/component/admission-application-list.component";
-import { AdmissionApplicationSubModule } from "../admission-applications/index";
-import { StudentAdmissionCenterPage } from "./student-admission-center.page";
-import { StudentAdmissionDetailPage } from "./student-admission-detail.page";
-import { StudentAdmissionActionComponent } from "./component/student-admission-action.component";
-import { StudentAdmissionEnrollmentListComponent } from "./component/student-admission-enrollment-list.component";
-import { StudentAdmissionEnrollmentApplicationListComponent } from "./component/student-admission-enrollment-application-list.component";
+import {AdmissionEnrollmentDialog} from './dialog/admission-enrollment.dialog';
+import {AdmissionActionComponent} from './component/admission-action.component';
+import {AdmissionEnrollmentApplicationListComponent} from './component/admission-enrollment-application-list.component';
+import {AdmissionApplicationListComponent} from '../admission-applications/component/admission-application-list.component';
+import {StudentAdmissionCenterPage} from './student-admission-center.page';
+import {StudentAdmissionDetailPage} from './student-admission-detail.page';
+import {StudentAdmissionActionComponent} from './component/student-admission-action.component';
+import {StudentAdmissionEnrollmentListComponent} from './component/student-admission-enrollment-list.component';
+import {StudentAdmissionEnrollmentApplicationListComponent} from './component/student-admission-enrollment-application-list.component';
 
 
 @NgModule({

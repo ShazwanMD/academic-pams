@@ -1,4 +1,4 @@
-import {Routes, RouterModule} from '@angular/router';
+import {RouterModule, Routes} from '@angular/router';
 import {ProfileModuleRoutes} from './secure/profile/profile-module.routes';
 import {IdentityModuleRoutes} from './secure/identity/identity-module.routes';
 import {GraduationModuleRoutes} from './secure/graduation/graduation-module.routes';

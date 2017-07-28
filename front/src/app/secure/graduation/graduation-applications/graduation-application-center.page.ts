@@ -1,13 +1,12 @@
-import {Component, OnInit, ChangeDetectionStrategy, state, ViewContainerRef} from '@angular/core';
-import {Router, ActivatedRoute} from '@angular/router';
-import {GraduationModuleState} from "../index";
-import {Store} from "@ngrx/store";
-import {GraduationApplicationTask} from "../../../shared/model/graduation/graduation-application-task.interface";
-import {Observable} from "rxjs/Observable";
-import {MdDialogConfig, MdDialogRef, MdDialog} from "@angular/material";
-import {GraduationApplicationCreatorDialog} from "./dialog/graduation-application-creator.dialog";
-import {GraduationApplicationActions} from "./graduation-application.action";
-
+import {Component, OnInit, ViewContainerRef} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
+import {GraduationModuleState} from '../index';
+import {Store} from '@ngrx/store';
+import {GraduationApplicationTask} from '../../../shared/model/graduation/graduation-application-task.interface';
+import {Observable} from 'rxjs/Observable';
+import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';
+import {GraduationApplicationCreatorDialog} from './dialog/graduation-application-creator.dialog';
+import {GraduationApplicationActions} from './graduation-application.action';
 
 @Component({
   selector: 'pams-graduation-application-center',
@@ -16,10 +15,9 @@ import {GraduationApplicationActions} from "./graduation-application.action";
 
 export class GraduationApplicationCenterPage implements OnInit {
 
-  private ASSIGNED_GRADUATION_APPLICATION_TASKS = "graduationModuleState.assignedGraduationApplicationTasks".split(".")
-  private POOLED_GRADUATION_APPLICATION_TASKS = "graduationModuleState.pooledGraduationApplicationTasks".split(".")
+  private ASSIGNED_GRADUATION_APPLICATION_TASKS = 'graduationModuleState.assignedGraduationApplicationTasks'.split('.');
+  private POOLED_GRADUATION_APPLICATION_TASKS = 'graduationModuleState.pooledGraduationApplicationTasks'.split('.');
   private creatorDialogRef: MdDialogRef<GraduationApplicationCreatorDialog>;
-
   private assignedGraduationApplicationTasks$: Observable<GraduationApplicationTask>;
   private pooledGraduationApplicationTasks$: Observable<GraduationApplicationTask>;
 
@@ -42,24 +40,24 @@ export class GraduationApplicationCenterPage implements OnInit {
     config.height = '80%';
     config.position = {top: '0px'};
     this.creatorDialogRef = this.dialog.open(GraduationApplicationCreatorDialog, config);
-    this.creatorDialogRef.afterClosed().subscribe(res => {
-      console.log("close dialog");
+    this.creatorDialogRef.afterClosed().subscribe((res) => {
+      console.log('close dialog');
       // load something here
     });
   }
 
   claimTask(task: GraduationApplicationTask) {
-    console.log("graduationApplication: " + task.taskId);
+    console.log('graduationApplication: ' + task.taskId);
     this.store.dispatch(this.actions.claimGraduationApplicationTask(task));
   }
 
   viewTask(task: GraduationApplicationTask) {
-    console.log("graduationApplication: " + task.taskId);
-    this.router.navigate(['/graduation/graduation-applications/graduation-application-task-detail', task.taskId]);
+    console.log('graduationApplication: ' + task.taskId);
+    this.router.navigate(['/secure/graduation/graduation-applications/graduation-application-task-detail', task.taskId]);
   }
 
   ngOnInit(): void {
-    console.log("find assigned/pooled graduation application tasks");
+    console.log('find assigned/pooled graduation application tasks');
     this.store.dispatch(this.actions.findAssignedGraduationApplicationTasks());
     this.store.dispatch(this.actions.findPooledGraduationApplicationTasks());
   }

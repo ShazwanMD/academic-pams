@@ -1,4 +1,4 @@
 export enum GuarantorType {
-    PRIMARY,//0
-    SECONDARY//1
+  PRIMARY,//0
+  SECONDARY//1
 }

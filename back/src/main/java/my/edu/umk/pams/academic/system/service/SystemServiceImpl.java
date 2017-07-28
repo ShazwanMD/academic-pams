@@ -116,7 +116,7 @@ public class SystemServiceImpl implements SystemService {
     @Override
     public List<AdModule> findModules(boolean authorized) {
         return authorized ?
-                moduleDao.findAuthorized(identityService.findSids(Util.getCurrentUser())) :
+                moduleDao.findAuthorized(identityService.findSids(securityService.getCurrentUser())) :
                 moduleDao.find();
     }
 
@@ -133,7 +133,7 @@ public class SystemServiceImpl implements SystemService {
     @Override
     public List<AdModule> findModules(boolean authorized, Integer offset, Integer limit) {
         return authorized ?
-                moduleDao.findAuthorized(identityService.findSids(Util.getCurrentUser()), offset, limit) :
+                moduleDao.findAuthorized(identityService.findSids(securityService.getCurrentUser()), offset, limit) :
                 moduleDao.find(offset, limit);
     }
 
@@ -145,7 +145,7 @@ public class SystemServiceImpl implements SystemService {
     @Override
     public List<AdSubModule> findSubModules(boolean authorized) {
         return authorized ?
-                subModuleDao.findAuthorized(identityService.findSids(Util.getCurrentUser())) :
+                subModuleDao.findAuthorized(identityService.findSids(securityService.getCurrentUser())) :
                 subModuleDao.find();
     }
 
@@ -176,25 +176,25 @@ public class SystemServiceImpl implements SystemService {
 
     @Override
     public void saveModule(AdModule module) {
-        moduleDao.save(module, Util.getCurrentUser());
+        moduleDao.save(module, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void updateModule(AdModule module) {
-        moduleDao.update(module, Util.getCurrentUser());
+        moduleDao.update(module, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void addSubModule(AdModule module, AdSubModule subModule) {
-        moduleDao.addSubModule(module, subModule, Util.getCurrentUser());
+        moduleDao.addSubModule(module, subModule, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void updateSubModule(AdModule module, AdSubModule subModule) {
-        moduleDao.updateSubModule(module, subModule, Util.getCurrentUser());
+        moduleDao.updateSubModule(module, subModule, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
@@ -271,7 +271,7 @@ public class SystemServiceImpl implements SystemService {
 
             // update
             referenceNo.setCurrentValue(newValue);
-            referenceNoDao.save(referenceNo, Util.getCurrentUser());
+            referenceNoDao.save(referenceNo, securityService.getCurrentUser());
             sessionFactory.getCurrentSession().flush();
             NumberFormat numberFormat = new DecimalFormat(referenceNo.getSequenceFormat());
 
@@ -288,10 +288,10 @@ public class SystemServiceImpl implements SystemService {
             // get old and new value
             Integer oldValue = referenceNo.getCurrentValue();
             Integer newValue = referenceNo.getCurrentValue() + referenceNo.getIncrementValue();
-            LOG.debug("referenceNo, Util.getCurrentUser() :" + Util.getCurrentUser());
+            LOG.debug("referenceNo, securityService.getCurrentUser() :" + securityService.getCurrentUser());
             // update
             referenceNo.setCurrentValue(newValue);
-            referenceNoDao.save(referenceNo, Util.getCurrentUser());
+            referenceNoDao.save(referenceNo, securityService.getCurrentUser());
             sessionFactory.getCurrentSession().flush();
 
             Date now = new Date();
@@ -373,19 +373,19 @@ public class SystemServiceImpl implements SystemService {
 
     @Override
     public void saveConfiguration(AdConfiguration config) {
-        configurationDao.save(config, Util.getCurrentUser());
+        configurationDao.save(config, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void updateConfiguration(AdConfiguration config) {
-        configurationDao.update(config, Util.getCurrentUser());
+        configurationDao.update(config, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void removeConfiguration(AdConfiguration config) {
-        configurationDao.remove(config, Util.getCurrentUser());
+        configurationDao.remove(config, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
@@ -436,19 +436,19 @@ public class SystemServiceImpl implements SystemService {
 
     @Override
     public void saveEmailTemplate(AdEmailTemplate template) {
-        emailTemplateDao.save(template, Util.getCurrentUser());
+        emailTemplateDao.save(template, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void updateEmailTemplate(AdEmailTemplate template) {
-        emailTemplateDao.update(template, Util.getCurrentUser());
+        emailTemplateDao.update(template, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void removeEmailTemplate(AdEmailTemplate template) {
-        emailTemplateDao.remove(template, Util.getCurrentUser());
+        emailTemplateDao.remove(template, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 

@@ -1,5 +1,5 @@
-import {Component, OnInit, ChangeDetectionStrategy, ViewContainerRef} from '@angular/core';
-import {Router, ActivatedRoute} from '@angular/router';
+import {Component, OnInit, ViewContainerRef} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
 
 import {TermService} from '../../../../services';
 import {Store} from '@ngrx/store';
@@ -7,7 +7,7 @@ import {Observable} from 'rxjs';
 import {Assessment} from '../../../shared/model/term/assessment.interface';
 import {AssessmentActions} from './assessment.action';
 import {TermModuleState} from '../index';
-import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';
+import {MdDialog} from '@angular/material';
 
 @Component({
   selector: 'pams-assessment-detail',

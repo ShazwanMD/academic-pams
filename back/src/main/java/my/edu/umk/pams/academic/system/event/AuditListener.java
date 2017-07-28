@@ -1,5 +1,6 @@
 package my.edu.umk.pams.academic.system.event;
 
+import my.edu.umk.pams.academic.security.service.SecurityService;
 import my.edu.umk.pams.academic.system.dao.AdAuditDao;
 import my.edu.umk.pams.academic.system.model.AdAudit;
 import my.edu.umk.pams.academic.system.model.AdAuditImpl;
@@ -20,13 +21,16 @@ public class AuditListener implements ApplicationListener<AuditEvent> {
     @Autowired
     private AdAuditDao auditDao;
 
+    @Autowired
+    private SecurityService securityService;
+
     @Override
     public void onApplicationEvent(AuditEvent auditEvent) {
         AdAudit audit = new AdAuditImpl();
         audit.setClassName(auditEvent.getObject().getInterfaceClass().getCanonicalName());
         audit.setMessage(auditEvent.getMessage());
         audit.setObjectId(auditEvent.getObject().getId());
-        audit.setUserId(Util.getCurrentUser().getId());
-        auditDao.save(audit, Util.getCurrentUser());
+        audit.setUserId(securityService.getCurrentUser().getId());
+        auditDao.save(audit, securityService.getCurrentUser());
     }
 }

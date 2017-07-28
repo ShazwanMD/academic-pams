@@ -1,4 +1,4 @@
-import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
 import {Enrollment} from '../../../../shared/model/term/enrollment.interface';
 
 @Component({
@@ -14,7 +14,7 @@ export class EnrollmentListComponent {
     {name: 'section.session.description', label: 'Session'},
     {name: 'section.offering.course.title', label: 'Course Title'},
     {name: 'section.offering.program.code', label: 'Program'},
-     {name: 'section.offering.program.faculty.name', label: 'Faculty'},
+    {name: 'section.offering.program.faculty.name', label: 'Faculty'},
     {name: 'action', label: ''},
   ];
 

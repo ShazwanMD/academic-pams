@@ -1,7 +1,7 @@
-import {Component, Input, ChangeDetectionStrategy, ViewContainerRef} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, ViewContainerRef} from '@angular/core';
 import {EnrollmentApplication} from '../../../../shared/model/term/enrollment-application.interface';
 import {Admission} from '../../../../shared/model/term/admission.interface';
-import {MdDialog, MdDialogConfig, MdDialogRef, MdSnackBar} from '@angular/material';
+import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';
 import {EnrollmentApplicationActions} from '../enrollment-application.action';
 import {Store} from '@ngrx/store';
 import {TermModuleState} from '../../index';

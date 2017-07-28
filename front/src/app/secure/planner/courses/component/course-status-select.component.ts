@@ -1,7 +1,6 @@
-
 import {Component, Input, OnInit} from '@angular/core';
 import {FormControl} from '@angular/forms';
-import { CourseStatus } from '../../../../shared/model/planner/course-status.enum';
+import {CourseStatus} from '../../../../shared/model/planner/course-status.enum';
 
 @Component({
   selector: 'pams-course-status-select',

@@ -1,10 +1,10 @@
 import {SetupModuleState} from './../../index';
 import {SetupActions} from './../../setup.action';
 import {Component, Input, OnInit} from '@angular/core';
-import {Observable} from "rxjs";
-import {Store} from "@ngrx/store";
-import {FormControl} from "@angular/forms";
-import {MaritalCode} from "../marital-code.interface";
+import {Observable} from 'rxjs';
+import {Store} from '@ngrx/store';
+import {FormControl} from '@angular/forms';
+import {MaritalCode} from '../marital-code.interface';
 
 // pascalCase: MaritalCode
 // snakeCase: marital_code

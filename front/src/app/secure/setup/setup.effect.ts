@@ -1,15 +1,15 @@
-import { SetupActions } from './setup.action';
-import { Effect, Actions } from '@ngrx/effects';
-import { Injectable } from '@angular/core';
-import { from } from "rxjs/observable/from";
-import { CommonService } from "../../../services/common.service";
+import {SetupActions} from './setup.action';
+import {Actions, Effect} from '@ngrx/effects';
+import {Injectable} from '@angular/core';
+import {from} from 'rxjs/observable/from';
+import {CommonService} from '../../../services/common.service';
 
 @Injectable()
 export class SetupEffects {
 
   constructor(private actions$: Actions,
-    private setupActions: SetupActions,
-    private commonService: CommonService) {
+              private setupActions: SetupActions,
+              private commonService: CommonService) {
 
   }
 
@@ -44,10 +44,6 @@ export class SetupEffects {
     .switchMap(payload => this.commonService.removeStudyCenter(payload))
     .map(message => this.setupActions.removeStudyCenterSuccess(message))
     .mergeMap(action => from([action, this.setupActions.findStudyCenters()]));
-
-
-
-
 
 
   @Effect() findStudyModes$ = this.actions$
@@ -306,15 +302,11 @@ export class SetupEffects {
     .mergeMap(action => from([action, this.setupActions.findNationalityCodes()]));
 
 
-
   @Effect() findEthnicityCodes$ = this.actions$
     .ofType(SetupActions.FIND_ETHNICITY_CODES)
     .map(action => action.payload)
     .switchMap(() => this.commonService.findEthnicityCodes())
     .map(codes => this.setupActions.findEthnicityCodesSuccess(codes));
-
-
-
 
 
 }

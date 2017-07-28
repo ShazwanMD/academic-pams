@@ -6,7 +6,7 @@ import {AppointmentStatus} from './appointment-status.enum';
 import {Actor} from '../identity/actor.interface';
 import {MetaObject} from '../../../core/meta-object.interface';
 
-export interface Appointment extends MetaObject{
+export interface Appointment extends MetaObject {
   staff: Actor;
   section: Section;
   session: AcademicSession;

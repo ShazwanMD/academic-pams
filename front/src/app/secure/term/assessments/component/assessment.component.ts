@@ -7,8 +7,8 @@ import {Store} from '@ngrx/store';
 import {Offering} from '../../../../shared/model/term/offering.interface';
 import {Student} from '../../../../shared/model/identity/student.interface';
 import {Assessment} from '../../../../shared/model/term/assessment.interface';
-import {Router, ActivatedRoute} from '@angular/router';
-import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, ViewContainerRef, OnInit} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
+import {ChangeDetectionStrategy, Component, Input, OnInit, ViewContainerRef} from '@angular/core';
 
 @Component({
   selector: 'pams-assessment',

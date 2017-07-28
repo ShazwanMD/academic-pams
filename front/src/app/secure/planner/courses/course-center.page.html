@@ -6,7 +6,7 @@
 
   <td-layout-manage-list #list>
     <md-nav-list list-items>
-     <a md-list-item (click)="createDialog()">
+      <a md-list-item (click)="createDialog()">
         <md-icon>create</md-icon>
         Create Course
       </a>
@@ -23,13 +23,13 @@
     </div>
 
     <md-card class="">
-    
+
       <pams-course-list
         [courses]="courses$ | async"
-        (view)="viewCourse($event)" ></pams-course-list>
+        (view)="viewCourse($event)"></pams-course-list>
 
       <md-divider></md-divider>
-    
+
     </md-card>
   </td-layout-manage-list>
 </td-layout-nav>

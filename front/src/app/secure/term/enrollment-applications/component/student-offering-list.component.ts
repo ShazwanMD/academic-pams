@@ -1,10 +1,10 @@
-import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, AfterViewInit} from '@angular/core';
+import {AfterViewInit, ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
 import {Offering} from '../../../../shared/model/term/offering.interface';
 import {
-  TdDataTableSortingOrder,
-  TdDataTableService,
+  IPageChangeEvent,
   ITdDataTableSortChangeEvent,
-  IPageChangeEvent
+  TdDataTableService,
+  TdDataTableSortingOrder
 } from '@covalent/core';
 import {MdSnackBar} from '@angular/material';
 

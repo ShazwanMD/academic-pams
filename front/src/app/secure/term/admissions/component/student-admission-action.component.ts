@@ -1,10 +1,10 @@
-import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, ViewContainerRef} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, ViewContainerRef} from '@angular/core';
 import {Admission} from '../../../../shared/model/term/admission.interface';
-import {MdDialog, MdDialogConfig, MdDialogRef, MdSnackBar} from '@angular/material';
+import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';
 import {AdmissionActions} from '../admission.action';
 import {Store} from '@ngrx/store';
 import {TermModuleState} from '../../index';
-import { AdmissionCreateTaskCreatorDialog } from '../dialog/admission-create-task-creator.dialog';
+import {AdmissionCreateTaskCreatorDialog} from '../dialog/admission-create-task-creator.dialog';
 
 @Component({
   selector: 'pams-student-admission-action',

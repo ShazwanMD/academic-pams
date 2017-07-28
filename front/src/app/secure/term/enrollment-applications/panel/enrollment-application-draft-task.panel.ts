@@ -1,6 +1,6 @@
 import {Component, Input, OnInit, ViewContainerRef} from '@angular/core';
-import {Router, ActivatedRoute} from '@angular/router';
-import {MdSnackBar, MdDialog, MdDialogRef, MdDialogConfig} from '@angular/material';
+import {ActivatedRoute, Router} from '@angular/router';
+import {MdDialog, MdDialogConfig} from '@angular/material';
 import {EnrollmentApplicationItem} from '../../../../shared/model/term/enrollment-application-item.interface';
 import {EnrollmentApplication} from '../../../../shared/model/term/enrollment-application.interface';
 import {EnrollmentApplicationItemEditorDialog} from '../dialog/enrollment-application-item-editor.dialog';
@@ -60,11 +60,11 @@ export class EnrollmentApplicationDraftTaskPanel implements OnInit {
   }
 
   remove() {
-      this.store.dispatch(this.actions.releaseEnrollmentApplicationTask(this.enrollmentApplicationTask));
-      this.goBack();
-    }
+    this.store.dispatch(this.actions.releaseEnrollmentApplicationTask(this.enrollmentApplicationTask));
+    this.goBack();
+  }
 
   goBack(): void {
-    this.router.navigate(['/term/enrollment-applications']);
+    this.router.navigate(['/secure/term/enrollment-applications']);
   }
 }

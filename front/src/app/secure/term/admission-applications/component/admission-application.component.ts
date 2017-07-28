@@ -1,5 +1,5 @@
 import {AdmissionApplication} from '../../../../shared/model/term/admission-application.interface';
-import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 
 @Component({
   selector: 'pams-admission-application',

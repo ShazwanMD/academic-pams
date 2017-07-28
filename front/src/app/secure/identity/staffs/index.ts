@@ -1,13 +1,11 @@
 import '@ngrx/core/add/operator/select';
 import {appRoutes, appRoutingProviders} from '../../../app.routes';
-import {NgModule, ModuleWithProviders} from '@angular/core';
+import {ModuleWithProviders, NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {ReactiveFormsModule} from '@angular/forms';
 import {CovalentCoreModule} from '@covalent/core';
 
-import {TermService} from '../../../../services';
-import {CommonService} from '../../../../services';
-import {IdentityService} from '../../../../services';
+import {CommonService, IdentityService, TermService} from '../../../../services';
 
 import {StaffListComponent} from './component/staff-list.component';
 import {StaffActions} from './staff.action';
@@ -16,8 +14,8 @@ import {StaffDetailPage} from './staff-detail.page';
 
 import {StaffComponent} from './component/staff.component';
 
-import { StaffCenterPage } from './staff-center.page';
-import { StaffAppointmentListComponent } from './component/staff-appointment-list.component';
+import {StaffCenterPage} from './staff-center.page';
+import {StaffAppointmentListComponent} from './component/staff-appointment-list.component';
 
 @NgModule({
   imports: [
@@ -37,13 +35,12 @@ import { StaffAppointmentListComponent } from './component/staff-appointment-lis
     StaffAppointmentListComponent,
   ],
   exports: [
-   StaffComponent,
-   StaffCenterPage,
-   StaffDetailPage,
-   StaffAppointmentListComponent,
+    StaffComponent,
+    StaffCenterPage,
+    StaffDetailPage,
+    StaffAppointmentListComponent,
   ],
-  entryComponents: [
-  ],
+  entryComponents: [],
 })
 
 export class StaffSubModule {

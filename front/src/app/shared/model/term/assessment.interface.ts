@@ -1,7 +1,7 @@
 import {Offering} from './offering.interface';
-import {MetaObject} from "../../../core/meta-object.interface";
-import {AssessmentType} from "./assessment-type.enum";
-import {AssessmentCategory} from "./assessment-category.enum";
+import {MetaObject} from '../../../core/meta-object.interface';
+import {AssessmentType} from './assessment-type.enum';
+import {AssessmentCategory} from './assessment-category.enum';
 
 export interface Assessment extends MetaObject {
   id: number;

@@ -1,4 +1,4 @@
-import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
 import {Section} from '../../../../shared/model/term/section.interface';
 
 @Component({

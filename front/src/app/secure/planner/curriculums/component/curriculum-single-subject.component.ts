@@ -2,7 +2,7 @@ import {CurriculumSingleSubjectDialog} from '../dialog/curriculum-single-subject
 
 import {PlannerModuleState} from '../../index';
 import {Subject} from '../../../../shared/model/planner/subject.interface';
-import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, OnInit, ViewContainerRef} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, OnInit, ViewContainerRef} from '@angular/core';
 import {Store} from '@ngrx/store';
 import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';
 import {SingleSubject} from '../../../../shared/model/planner/single-subject.interface';

@@ -1,7 +1,7 @@
 import {FacultyActions} from '../faculties/faculty.action';
-import { Program } from '../../../shared/model/planner/program.interface';
+import {Program} from '../../../shared/model/planner/program.interface';
 import {Injectable} from '@angular/core';
-import {Effect, Actions} from '@ngrx/effects';
+import {Actions, Effect} from '@ngrx/effects';
 import {ProgramActions} from './program.action';
 import {PlannerService} from '../../../../services/planner.service';
 import {Store} from '@ngrx/store';
@@ -19,6 +19,7 @@ export class ProgramEffects {
               private facultyActions: FacultyActions,
               private store$: Store<PlannerModuleState>) {
   }
+
   @Effect() findPrograms$ = this.actions$
     .ofType(ProgramActions.FIND_PROGRAMS)
     .switchMap(() => this.plannerService.findPrograms())
@@ -43,7 +44,7 @@ export class ProgramEffects {
     .map((program) => this.programActions.saveProgramSuccess(program))
     .withLatestFrom(this.store$.select(...this.PROGRAM))
     .map((state) => state[1])
-   .map((program: Program) => this.programActions.findProgramByCode(program.code));
+    .map((program: Program) => this.programActions.findProgramByCode(program.code));
 
   @Effect() updateProgram$ = this.actions$
     .ofType(ProgramActions.UPDATE_PROGRAM)

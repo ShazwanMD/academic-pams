@@ -1,11 +1,10 @@
 import {Admission} from '../../shared/model/term/admission.interface';
-import {PlannerService} from '../../../services/planner.service';
-import {Router, ActivatedRoute} from '@angular/router';
-import {Store} from "@ngrx/store";
-import {Observable} from "rxjs";
-import {TermModuleState} from "./index";
-import {AdmissionActions} from "./admissions/admission.action";
-import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, OnInit} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
+import {Store} from '@ngrx/store';
+import {Observable} from 'rxjs';
+import {TermModuleState} from './index';
+import {AdmissionActions} from './admissions/admission.action';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'pams-term-page',

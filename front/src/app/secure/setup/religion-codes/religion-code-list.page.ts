@@ -1,5 +1,5 @@
 import {ReligionCodeEditorDialog} from './dialog/religion-code-editor.dialog';
-import {MdDialog, MdDialogRef, MdDialogConfig} from '@angular/material';
+import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';
 import {ReligionCode} from '../../../shared/model/common/religion-code.interface';
 import {Observable} from 'rxjs/Observable';
 import {Store} from '@ngrx/store';

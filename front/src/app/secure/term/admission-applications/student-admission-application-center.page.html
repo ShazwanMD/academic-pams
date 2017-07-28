@@ -10,7 +10,7 @@
         Create New Semester Registration
       </a>
       <md-divider></md-divider>
-      <a md-list-item [routerLink]="['/term/enrollment-applications/student-enrollment-center']">
+      <a md-list-item [routerLink]="['/secure/term/enrollment-applications/student-enrollment-center']">
         <md-icon>create</md-icon>
         Course Enrollments
       </a>
@@ -24,22 +24,22 @@
         <md-icon class="md-24">more_vert</md-icon>
       </button>
     </div>
-    
-      <md-card>
-        <md-tab-group [selectedIndex]="0">>
-          <md-tab label="Student Application">
-            <pams-assigned-admission-application-task-list
-              [admissionApplicationTasks]="assignedAdmissionApplicationTasks$ | async"
-              (view)="viewTask($event)"></pams-assigned-admission-application-task-list>
-          </md-tab>
-         <!--  <md-tab label="Student Application">
-            <pams-pooled-admission-application-task-list
-              [admissionApplicationTasks]="pooledAdmissionApplicationTasks$ | async"
-              (claim)="claimTask($event)">
-              </pams-pooled-admission-application-task-list>
-          </md-tab> -->
-        </md-tab-group>
-      </md-card>
-  
+
+    <md-card>
+      <md-tab-group [selectedIndex]="0">>
+        <md-tab label="Student Application">
+          <pams-assigned-admission-application-task-list
+            [admissionApplicationTasks]="assignedAdmissionApplicationTasks$ | async"
+            (view)="viewTask($event)"></pams-assigned-admission-application-task-list>
+        </md-tab>
+        <!--  <md-tab label="Student Application">
+           <pams-pooled-admission-application-task-list
+             [admissionApplicationTasks]="pooledAdmissionApplicationTasks$ | async"
+             (claim)="claimTask($event)">
+             </pams-pooled-admission-application-task-list>
+         </md-tab> -->
+      </md-tab-group>
+    </md-card>
+
   </td-layout-manage-list>
 </td-layout-nav>

@@ -1,26 +1,26 @@
-import { OnInit, Input, Component } from '@angular/core';
-import { AcademicSemester } from '../../../../shared/model/planner/academic-semester-type.enum';
-import { FormControl } from '@angular/forms';
+import {Component, Input, OnInit} from '@angular/core';
+import {AcademicSemester} from '../../../../shared/model/planner/academic-semester-type.enum';
+import {FormControl} from '@angular/forms';
 
 @Component({
-    selector: 'pams-academic-semester-select',
-    templateUrl: './academic-semester-select.component.html',
+  selector: 'pams-academic-semester-select',
+  templateUrl: './academic-semester-select.component.html',
 })
 
 export class AcademicSemesterSelectComponent implements OnInit {
-    private semesters: AcademicSemester[] = <AcademicSemester[]>[];
-    @Input() placeholder: string;
-    @Input() innerFormControl: FormControl;
+  private semesters: AcademicSemester[] = <AcademicSemester[]>[];
+  @Input() placeholder: string;
+  @Input() innerFormControl: FormControl;
 
 
-    constructor() {
-        for (var n in AcademicSemester) {
-            if (typeof AcademicSemester[n] === 'string')
-                this.semesters.push(AcademicSemester[n.toString()]);
-        }
+  constructor() {
+    for (var n in AcademicSemester) {
+      if (typeof AcademicSemester[n] === 'string')
+        this.semesters.push(AcademicSemester[n.toString()]);
     }
+  }
 
-    ngOnInit() {
+  ngOnInit() {
   }
 
   selectChangeEvent(event: AcademicSemester) {

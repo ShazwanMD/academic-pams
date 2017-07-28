@@ -1,6 +1,11 @@
-import { Component, Input, EventEmitter, Output, ChangeDetectionStrategy, AfterViewInit } from '@angular/core';
+import {AfterViewInit, ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
 import {Student} from '../../../shared/model/identity/student.interface';
-import { TdDataTableSortingOrder, TdDataTableService, ITdDataTableSortChangeEvent, IPageChangeEvent } from '@covalent/core';
+import {
+  IPageChangeEvent,
+  ITdDataTableSortChangeEvent,
+  TdDataTableService,
+  TdDataTableSortingOrder
+} from '@covalent/core';
 
 @Component({
   selector: 'pams-profile-list',
@@ -29,7 +34,8 @@ export class ProfileListComponent implements AfterViewInit {
   @Input() students: Student[];
   @Output() view = new EventEmitter<Student>();
 
-  constructor(private _dataTableService: TdDataTableService) {}
+  constructor(private _dataTableService: TdDataTableService) {
+  }
 
   ngAfterViewInit(): void {
     this.filteredData = this.students;

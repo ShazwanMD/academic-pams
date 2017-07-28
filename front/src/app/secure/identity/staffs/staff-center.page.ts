@@ -1,11 +1,11 @@
 import {TermService} from '../../../../services/term.service';
-import {Component, OnInit, ChangeDetectionStrategy, ViewContainerRef} from '@angular/core';
-import {Router, ActivatedRoute} from '@angular/router';
+import {Component, OnInit, ViewContainerRef} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Store} from '@ngrx/store';
 import {Observable} from 'rxjs';
 import {StaffActions} from './staff.action';
-import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';
-import { IdentityModuleState } from '../index';
+import {MdDialog} from '@angular/material';
+import {IdentityModuleState} from '../index';
 import {Staff} from '../../../shared/model/identity/staff.interface';
 
 @Component({
@@ -33,7 +33,7 @@ export class StaffCenterPage implements OnInit {
 
   viewStaff(staff: Staff): void {
     console.log('staff identityNo: ' + staff.identityNo);
-    this.router.navigate(['/identity/staffs', staff.identityNo]);
+    this.router.navigate(['/secure/identity/staffs', staff.identityNo]);
   }
 
   ngOnInit(): void {

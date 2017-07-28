@@ -1,8 +1,8 @@
-import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, ViewContainerRef} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, ViewContainerRef} from '@angular/core';
 import {Appointment} from '../../../../shared/model/term/appointment.interface';
 import {Section} from '../../../../shared/model/term/section.interface';
 import {AppointmentEditorDialog} from '../dialog/appointment-editor.dialog';
-import {MdDialog, MdDialogConfig, MdDialogRef, MdSnackBar} from '@angular/material';
+import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';
 import {AppointmentActions} from '../appointment.action';
 import {Store} from '@ngrx/store';
 import {TermModuleState} from '../../index';

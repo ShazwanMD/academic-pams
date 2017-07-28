@@ -28,26 +28,26 @@ export class SetupActions {
     };
   }
 
-static FIND_STUDY_CENTERS = '[Setup] Find Study Centers';
+  static FIND_STUDY_CENTERS = '[Setup] Find Study Centers';
 
-findStudyCenters(): Action {
+  findStudyCenters(): Action {
     console.log("findStudyCenters");
     return {
-        type: SetupActions.FIND_STUDY_CENTERS
+      type: SetupActions.FIND_STUDY_CENTERS
     };
-}
+  }
 
-static FIND_STUDY_CENTERS_SUCCESS = '[Setup] Find Study Centers Success';
+  static FIND_STUDY_CENTERS_SUCCESS = '[Setup] Find Study Centers Success';
 
-findStudyCentersSuccess(codes): Action {
+  findStudyCentersSuccess(codes): Action {
     console.log(codes);
     return {
-        type: SetupActions.FIND_STUDY_CENTERS_SUCCESS,
-        payload: codes
+      type: SetupActions.FIND_STUDY_CENTERS_SUCCESS,
+      payload: codes
     };
-}
+  }
 
-static SAVE_STUDY_CENTER = '[Setup] Save Study Center';
+  static SAVE_STUDY_CENTER = '[Setup] Save Study Center';
 
   saveStudyCenter(code): Action {
     console.log("saveStudyCenter");
@@ -57,7 +57,7 @@ static SAVE_STUDY_CENTER = '[Setup] Save Study Center';
     };
   }
 
-    static SAVE_STUDY_CENTER_SUCCESS = '[Setup] Save Study Center Success';
+  static SAVE_STUDY_CENTER_SUCCESS = '[Setup] Save Study Center Success';
 
   saveStudyCenterSuccess(message): Action {
     console.log("saveStudyCenterSuccess");
@@ -67,7 +67,7 @@ static SAVE_STUDY_CENTER = '[Setup] Save Study Center';
     };
   }
 
-    static UPDATE_STUDY_CENTER = '[Setup] Update Study Center';
+  static UPDATE_STUDY_CENTER = '[Setup] Update Study Center';
 
   updateStudyCenter(code): Action {
     console.log("updateStudyCenter");
@@ -106,31 +106,28 @@ static SAVE_STUDY_CENTER = '[Setup] Save Study Center';
       payload: message
     };
   }
-  
 
 
+  static FIND_STUDY_MODES = '[Setup] Find Study Modes';
 
-
-static FIND_STUDY_MODES = '[Setup] Find Study Modes';
-
-findStudyModes(): Action {
+  findStudyModes(): Action {
     console.log("findStudyModes");
     return {
-        type: SetupActions.FIND_STUDY_MODES
+      type: SetupActions.FIND_STUDY_MODES
     };
-}
+  }
 
-static FIND_STUDY_MODES_SUCCESS = '[Setup] Find Study Modes Success';
+  static FIND_STUDY_MODES_SUCCESS = '[Setup] Find Study Modes Success';
 
-findStudyModesSuccess(codes): Action {
+  findStudyModesSuccess(codes): Action {
     console.log("findStudyModesSuccess");
     return {
-        type: SetupActions.FIND_STUDY_MODES_SUCCESS,
-        payload: codes
+      type: SetupActions.FIND_STUDY_MODES_SUCCESS,
+      payload: codes
     };
-}
+  }
 
- static SAVE_STUDY_MODE = '[Setup] Save Study Mode';
+  static SAVE_STUDY_MODE = '[Setup] Save Study Mode';
 
   saveStudyMode(code): Action {
     console.log("saveStudyMode");
@@ -140,7 +137,7 @@ findStudyModesSuccess(codes): Action {
     };
   }
 
-    static SAVE_STUDY_MODE_SUCCESS = '[Setup] Save Study Mode Success';
+  static SAVE_STUDY_MODE_SUCCESS = '[Setup] Save Study Mode Success';
 
   saveStudyModeSuccess(message): Action {
     console.log("saveStudyModeSuccess");
@@ -150,7 +147,7 @@ findStudyModesSuccess(codes): Action {
     };
   }
 
-    static UPDATE_STUDY_MODE = '[Setup] Update Study Mode';
+  static UPDATE_STUDY_MODE = '[Setup] Update Study Mode';
 
   updateStudyMode(code): Action {
     console.log("updateStudyMode");
@@ -189,7 +186,7 @@ findStudyModesSuccess(codes): Action {
       payload: message
     };
   }
-  
+
 
 //====================================================================================
 // GENDER CODES
@@ -214,7 +211,7 @@ findStudyModesSuccess(codes): Action {
     };
   }
 
- static SAVE_GENDER_CODE = '[Setup] Save Gender Code';
+  static SAVE_GENDER_CODE = '[Setup] Save Gender Code';
 
   saveGenderCode(code): Action {
     console.log("saveGenderCode");
@@ -224,7 +221,7 @@ findStudyModesSuccess(codes): Action {
     };
   }
 
-    static SAVE_GENDER_CODE_SUCCESS = '[Setup] Save Gender Code Success';
+  static SAVE_GENDER_CODE_SUCCESS = '[Setup] Save Gender Code Success';
 
   saveGenderCodeSuccess(message): Action {
     console.log("saveGenderCodeSuccess");
@@ -234,7 +231,7 @@ findStudyModesSuccess(codes): Action {
     };
   }
 
-    static UPDATE_GENDER_CODE = '[Setup] Update Gender Code';
+  static UPDATE_GENDER_CODE = '[Setup] Update Gender Code';
 
   updateGenderCode(code): Action {
     console.log("updateGenderCode");
@@ -273,7 +270,7 @@ findStudyModesSuccess(codes): Action {
       payload: message
     };
   }
-  
+
 
 //====================================================================================
 // COUNTRY CODES
@@ -321,7 +318,7 @@ findStudyModesSuccess(codes): Action {
     };
   }
 
-   static SAVE_MARITAL_CODE = '[Setup] Save Marital Code';
+  static SAVE_MARITAL_CODE = '[Setup] Save Marital Code';
 
   saveMaritalCode(code): Action {
     console.log("saveMaritalCode");
@@ -488,7 +485,7 @@ findStudyModesSuccess(codes): Action {
     };
   }
 
-    static UPDATE_STATE_CODE = '[Setup] Update State Code';
+  static UPDATE_STATE_CODE = '[Setup] Update State Code';
 
   updateStateCode(code): Action {
     console.log("updateStateCode");
@@ -507,70 +504,70 @@ findStudyModesSuccess(codes): Action {
       payload: message
     };
   }
- 
 
 
   static FIND_PARLIAMENT_CODES = '[Setup] Find ParliamentCodes';
 
-findParliamentCodes(): Action {
+  findParliamentCodes(): Action {
     console.log("findParliamentCodes");
     return {
-        type: SetupActions.FIND_PARLIAMENT_CODES
+      type: SetupActions.FIND_PARLIAMENT_CODES
     };
-}
+  }
 
-static FIND_PARLIAMENT_CODES_SUCCESS = '[Setup] Find ParliamentCodes Success';
+  static FIND_PARLIAMENT_CODES_SUCCESS = '[Setup] Find ParliamentCodes Success';
 
-findParliamentCodesSuccess(codes): Action {
+  findParliamentCodesSuccess(codes): Action {
     console.log("findParliamentCodesSuccess");
     return {
-        type: SetupActions.FIND_PARLIAMENT_CODES_SUCCESS,
-        payload: codes
+      type: SetupActions.FIND_PARLIAMENT_CODES_SUCCESS,
+      payload: codes
     };
-}
+  }
 
 
-static FIND_DUN_CODES = '[Setup] Find DunCodes';
+  static FIND_DUN_CODES = '[Setup] Find DunCodes';
 
-findDunCodes(): Action {
+  findDunCodes(): Action {
     console.log("findDunCodes");
     return {
-        type: SetupActions.FIND_DUN_CODES
+      type: SetupActions.FIND_DUN_CODES
     };
-}
+  }
 
-static FIND_DUN_CODES_SUCCESS = '[Setup] Find DunCodes Success';
+  static FIND_DUN_CODES_SUCCESS = '[Setup] Find DunCodes Success';
 
-findDunCodesSuccess(codes): Action {
+  findDunCodesSuccess(codes): Action {
     console.log("findDunCodesSuccess");
     return {
-        type: SetupActions.FIND_DUN_CODES_SUCCESS,
-        payload: codes
+      type: SetupActions.FIND_DUN_CODES_SUCCESS,
+      payload: codes
     };
-}
+  }
 
 //=================================================================
 // Grade Code
 //=================================================================
 
-static FIND_GRADE_CODES = '[Setup] Find GradeCodes';
+  static FIND_GRADE_CODES = '[Setup] Find GradeCodes';
 
-findGradeCodes(): Action {
+  findGradeCodes(): Action {
     console.log("findGradeCodes");
     return {
-        type: SetupActions.FIND_GRADE_CODES
+      type: SetupActions.FIND_GRADE_CODES
     };
-}
+  }
 
-static FIND_GRADE_CODES_SUCCESS = '[Setup] Find GradeCodes Success';
+  static FIND_GRADE_CODES_SUCCESS = '[Setup] Find GradeCodes Success';
 
-findGradeCodesSuccess(codes): Action {
+  findGradeCodesSuccess(codes): Action {
     console.log("findGradeCodesSuccess");
     return {
-        type: SetupActions.FIND_GRADE_CODES_SUCCESS,
-        payload: codes
+      type: SetupActions.FIND_GRADE_CODES_SUCCESS,
+      payload: codes
     };
-}
+  }
+
   static SAVE_GRADE_CODE = '[Setup] Save Grade Code';
 
   saveGradeCode(code): Action {
@@ -630,29 +627,30 @@ findGradeCodesSuccess(codes): Action {
       payload: message
     };
   }
+
 //===========================================================================
 //
 //===========================================================================
-static FIND_RELIGION_CODES = '[Setup] Find ReligionCodes';
+  static FIND_RELIGION_CODES = '[Setup] Find ReligionCodes';
 
-findReligionCodes(): Action {
+  findReligionCodes(): Action {
     console.log("findReligionCodes");
     return {
-        type: SetupActions.FIND_RELIGION_CODES
+      type: SetupActions.FIND_RELIGION_CODES
     };
-}
+  }
 
-static FIND_RELIGION_CODES_SUCCESS = '[Setup] Find ReligionCodes Success';
+  static FIND_RELIGION_CODES_SUCCESS = '[Setup] Find ReligionCodes Success';
 
-findReligionCodesSuccess(codes): Action {
+  findReligionCodesSuccess(codes): Action {
     console.log("findReligionCodesSuccess");
     return {
-        type: SetupActions.FIND_RELIGION_CODES_SUCCESS,
-        payload: codes
+      type: SetupActions.FIND_RELIGION_CODES_SUCCESS,
+      payload: codes
     };
-}
+  }
 
- static SAVE_RELIGION_CODE = '[Setup] Save Religion Code';
+  static SAVE_RELIGION_CODE = '[Setup] Save Religion Code';
 
   saveReligionCode(code): Action {
     console.log("saveReligionCode");
@@ -662,7 +660,7 @@ findReligionCodesSuccess(codes): Action {
     };
   }
 
-    static SAVE_RELIGION_CODE_SUCCESS = '[Setup] Save Religion Code Success';
+  static SAVE_RELIGION_CODE_SUCCESS = '[Setup] Save Religion Code Success';
 
   saveReligionCodeSuccess(message): Action {
     console.log("saveReligionCodeSuccess");
@@ -672,7 +670,7 @@ findReligionCodesSuccess(codes): Action {
     };
   }
 
-    static UPDATE_RELIGION_CODE = '[Setup] Update Religion Code';
+  static UPDATE_RELIGION_CODE = '[Setup] Update Religion Code';
 
   updateReligionCode(code): Action {
     console.log("updateReligionCode");
@@ -713,31 +711,30 @@ findReligionCodesSuccess(codes): Action {
   }
 
 
-
 //================================================================
 //
 //================================================================
 
-static FIND_NATIONALITY_CODES = '[Setup] Find NationalityCodes';
+  static FIND_NATIONALITY_CODES = '[Setup] Find NationalityCodes';
 
-findNationalityCodes(): Action {
+  findNationalityCodes(): Action {
     console.log("findNationalityCodes");
     return {
-        type: SetupActions.FIND_NATIONALITY_CODES
+      type: SetupActions.FIND_NATIONALITY_CODES
     };
-}
+  }
 
-static FIND_NATIONALITY_CODES_SUCCESS = '[Setup] Find NationalityCodes Success';
+  static FIND_NATIONALITY_CODES_SUCCESS = '[Setup] Find NationalityCodes Success';
 
-findNationalityCodesSuccess(codes): Action {
+  findNationalityCodesSuccess(codes): Action {
     console.log("findNationalityCodesSuccess");
     return {
-        type: SetupActions.FIND_NATIONALITY_CODES_SUCCESS,
-        payload: codes
+      type: SetupActions.FIND_NATIONALITY_CODES_SUCCESS,
+      payload: codes
     };
-}
+  }
 
- static SAVE_NATIONALITY_CODE = '[Setup] Save Nationality Code';
+  static SAVE_NATIONALITY_CODE = '[Setup] Save Nationality Code';
 
   saveNationalityCode(code): Action {
     console.log("saveNationalityCode");
@@ -747,7 +744,7 @@ findNationalityCodesSuccess(codes): Action {
     };
   }
 
-    static SAVE_NATIONALITY_CODE_SUCCESS = '[Setup] Save Nationality Code Success';
+  static SAVE_NATIONALITY_CODE_SUCCESS = '[Setup] Save Nationality Code Success';
 
   saveNationalityCodeSuccess(message): Action {
     console.log("saveNationalityCodeSuccess");
@@ -757,7 +754,7 @@ findNationalityCodesSuccess(codes): Action {
     };
   }
 
-    static UPDATE_NATIONALITY_CODE = '[Setup] Update Nationality Code';
+  static UPDATE_NATIONALITY_CODE = '[Setup] Update Nationality Code';
 
   updateNationalityCode(code): Action {
     console.log("updateNationalityCode");
@@ -798,34 +795,24 @@ findNationalityCodesSuccess(codes): Action {
   }
 
 
-static FIND_ETHNICITY_CODES = '[Setup] Find EthnicityCodes';
+  static FIND_ETHNICITY_CODES = '[Setup] Find EthnicityCodes';
 
-findEthnicityCodes(): Action {
+  findEthnicityCodes(): Action {
     console.log("findEthnicityCodes");
     return {
-        type: SetupActions.FIND_ETHNICITY_CODES
+      type: SetupActions.FIND_ETHNICITY_CODES
     };
-}
+  }
 
-static FIND_ETHNICITY_CODES_SUCCESS = '[Setup] Find EthnicityCodes Success';
+  static FIND_ETHNICITY_CODES_SUCCESS = '[Setup] Find EthnicityCodes Success';
 
-findEthnicityCodesSuccess(codes): Action {
+  findEthnicityCodesSuccess(codes): Action {
     console.log("findEthnicityCodesSuccess");
     return {
-        type: SetupActions.FIND_ETHNICITY_CODES_SUCCESS,
-        payload: codes
+      type: SetupActions.FIND_ETHNICITY_CODES_SUCCESS,
+      payload: codes
     };
-}
-
-
-
-
-
-
-
-
-
-
+  }
 
 
 }

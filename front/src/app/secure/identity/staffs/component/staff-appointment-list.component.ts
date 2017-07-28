@@ -1,25 +1,25 @@
 import {FormBuilder} from '@angular/forms';
 
 import {
-  Component,
-  Input,
-  EventEmitter,
-  Output,
-  ChangeDetectionStrategy,
-  ViewContainerRef,
-  OnInit,
   AfterViewInit,
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  ViewContainerRef
 } from '@angular/core';
 import {Appointment} from '../../../../shared/model/term/appointment.interface';
 import {Store} from '@ngrx/store';
 import {ActivatedRoute, Router} from '@angular/router';
-import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';
+import {MdDialog} from '@angular/material';
 import {IdentityModuleState} from '../../index';
 import {
-  TdDataTableSortingOrder,
-  TdDataTableService,
   IPageChangeEvent,
   ITdDataTableSortChangeEvent,
+  TdDataTableService,
+  TdDataTableSortingOrder
 } from '@covalent/core';
 import {AppointmentActions} from '../../../term/appointments/appointment.action';
 import {Staff} from '../../../../shared/model/identity/staff.interface';

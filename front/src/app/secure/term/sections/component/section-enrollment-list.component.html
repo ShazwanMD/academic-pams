@@ -5,86 +5,86 @@
       <md-chip color="accent">{{enrollments?.length}}</md-chip>
     </md-chip-list>
     <span flex></span>
-    <button md-button class="md-icon-button" [routerLink]="['/term/enrollment-applications']"
+    <button md-button class="md-icon-button" [routerLink]="['/secure/term/enrollment-applications']"
             mdTooltip="Add new enrollment">
       <md-icon class="md-24 tc-grey-700">add</md-icon>
     </button>
   </div>
   <md-divider></md-divider>
   <md-card-content>
-  <!--   <td-data-table
-      [data]="enrollments"
+    <!--   <td-data-table
+        [data]="enrollments"
+        [columns]="columns"
+        [sortBy]="summary"
+        [sortOrder]="ASC"
+        [sortable]="false"
+        [multiple]="true"
+        [selectable]="true" dense>
+        <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
+          <div layout="row">
+            <span flex>{{value}}</span>
+          </div>
+        </template>
+        <template tdDataTableTemplate="action" let-value="value" let-row="row"
+                  let-column="column">
+          <div layout="row">
+            <button md-icon-button [md-menu-trigger-for]="menu1" mdTooltip="Select enrollment actions">
+              <md-icon>more_vert</md-icon>
+            </button>
+            <md-menu x-position="before" #menu1="mdMenu">
+              <button md-menu-item [routerLink]="['/secure/term/enrollments', row['id']]">View enrollment</button>
+              <button md-menu-item (click)="editDialog(row, true)">Update enrollment</button>
+
+            </md-menu>
+          </div>
+        </template>
+
+      </td-data-table> -->
+
+    <div layout="row" layout-align="start center" class="pad-left-sm pad-right-sm">
+      <td-search-box #searchBox backIcon="arrow_back" class="push-right-sm" placeholder="Search here"
+                     (searchDebounce)="search($event)" [alwaysVisible]="true" flex>
+      </td-search-box>
+    </div>
+    <md-divider></md-divider>
+    <td-data-table
+      #dataTable
+      [data]="filteredData"
       [columns]="columns"
-      [sortBy]="summary"
-      [sortOrder]="ASC"
-      [sortable]="false"
-      [multiple]="true"
-      [selectable]="true" dense>
+      [sortable]="true"
+      [sortBy]="sortBy"
+      [sortOrder]="sortOrder"
+      (sortChange)="sort($event)">
       <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
         <div layout="row">
           <span flex>{{value}}</span>
         </div>
       </template>
-      <template tdDataTableTemplate="action" let-value="value" let-row="row"
-                let-column="column">
+      <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
         <div layout="row">
           <button md-icon-button [md-menu-trigger-for]="menu1" mdTooltip="Select enrollment actions">
             <md-icon>more_vert</md-icon>
           </button>
           <md-menu x-position="before" #menu1="mdMenu">
-            <button md-menu-item [routerLink]="['/term/enrollments', row['id']]">View enrollment</button>
+            <button md-menu-item [routerLink]="['/secure/term/enrollments', row['id']]">View enrollment details</button>
             <button md-menu-item (click)="editDialog(row, true)">Update enrollment</button>
 
           </md-menu>
+          <!--  <a md-button color="accent" class="text-upper" (click)="viewOffering(row)" mdTooltip="View enrollment info">
+             [routerLink]="['/secure/term/offerings', row['canonicalCode']]"
+             <span>View</span>
+           </a> -->
         </div>
       </template>
-
-    </td-data-table> -->
-    
-    <div layout="row" layout-align="start center" class="pad-left-sm pad-right-sm">
-    <td-search-box #searchBox backIcon="arrow_back" class="push-right-sm" placeholder="Search here" (searchDebounce)="search($event)" [alwaysVisible]="true" flex>
-    </td-search-box>
-</div>
-<md-divider></md-divider>
-<td-data-table
-    #dataTable
-    [data]="filteredData"
-    [columns]="columns"
-    [sortable]="true"
-    [sortBy]="sortBy"
-    [sortOrder]="sortOrder"
-    (sortChange)="sort($event)">
-  <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
-    <div layout="row">
-      <span flex>{{value}}</span>
+    </td-data-table>
+    <div class="md-padding" *ngIf="!dataTable.hasData" layout="row" layout-align="center center">
+      <h3>No results to display.</h3>
     </div>
-  </template>
-  <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
-    <div layout="row">
-    <button md-icon-button [md-menu-trigger-for]="menu1" mdTooltip="Select enrollment actions">
-            <md-icon>more_vert</md-icon>
-          </button>
-          <md-menu x-position="before" #menu1="mdMenu">
-            <button md-menu-item [routerLink]="['/term/enrollments', row['id']]">View enrollment details</button>
-            <button md-menu-item (click)="editDialog(row, true)">Update enrollment</button>
+    <td-paging-bar #pagingBar [pageSizes]="[5, 10, 15, 20, 30]" [total]="filteredTotal" (change)="page($event)">
+      <span td-paging-bar-label hide-xs>Row per page:</span>
+      {{pagingBar.range}} <span hide-xs>of {{pagingBar.total}}</span>
+    </td-paging-bar>
 
-          </md-menu>
-     <!--  <a md-button color="accent" class="text-upper" (click)="viewOffering(row)" mdTooltip="View enrollment info">
-        [routerLink]="['/term/offerings', row['canonicalCode']]"
-        <span>View</span>
-      </a> -->
-    </div>
-  </template>
-</td-data-table>
-<div class="md-padding" *ngIf="!dataTable.hasData" layout="row" layout-align="center center">
-    <h3>No results to display.</h3>
-</div> 
-<td-paging-bar #pagingBar [pageSizes]="[5, 10, 15, 20, 30]" [total]="filteredTotal" (change)="page($event)">
-    <span td-paging-bar-label hide-xs>Row per page:</span>
-    {{pagingBar.range}} <span hide-xs>of {{pagingBar.total}}</span>
-</td-paging-bar>
-    
-    
-    
+
   </md-card-content>
 </md-card>

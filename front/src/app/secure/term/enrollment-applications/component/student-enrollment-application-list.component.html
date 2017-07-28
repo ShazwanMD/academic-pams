@@ -1,54 +1,58 @@
-<md-card> <md-card-title>{{enrollmentApplication?.admission?.student?.name}}</md-card-title>
-<md-card-subtitle>{{enrollmentApplication?.referenceNo}}</md-card-subtitle> 
-<md-card-subtitle>{{enrollmentApplication?.admission?.student?.identityNo}}</md-card-subtitle>
-<md-divider></md-divider>
-<md-card-content> <!--Tab Section Here--> <md-tab-group>
-<md-tab label="Enrollment Application Information">
-<br>
-<div layout="column" class="inset">
-	<!-- <div layout="row" class="pad-bottom">
-		<span flex="20">Audit No</span> <span>{{enrollmentApplication?.auditNo}}</span>
-	</div> -->
-	<div layout="row" class="pad-bottom">
-		<span flex="20">Description</span> <span>{{enrollmentApplication?.description}}</span>
-	</div>
-	<!-- <div layout="row" class="pad-bottom">
-		<span flex="20">Source No</span> <span>{{enrollmentApplication?.sourceNo}}</span>
-	</div> -->
-</div>
-</md-tab> 
-<md-tab label="Admission Information">
-<br>
-<div layout="column" class="inset">
-	<div layout="row" class="pad-bottom">
-		<span flex="20">Email</span> <span>{{enrollmentApplication?.admission?.student?.email}}</span>
-	</div>
-	<div layout="row" class="pad-bottom">
-		<span flex="20">Phone</span> <span>{{enrollmentApplication?.admission?.student?.phone}}</span>
-	</div>
-	<div layout="row" class="pad-bottom">
-		<span flex="20">Cohort</span> <span>{{enrollmentApplication?.admission?.student?.cohort?.code}}</span>
-	</div>
-</div>
-</md-tab>
-<md-tab label="Session Information">
-<br>
-<div layout="column" class="inset">
-	<div layout="row" class="pad-bottom">
-		<span flex="20">Academic Session</span> <span>{{enrollmentApplication?.admission?.student?.cohort?.academicSession?.code}}</span>
-	</div>
-	<div layout="row" class="pad-bottom">
-		<span flex="20">Description</span> <span>{{enrollmentApplication?.admission?.student?.cohort?.academicSession?.description}}</span>
-	</div>
-	<div layout="row" class="pad-bottom">
-		<span flex="20">Start Date</span> <span>{{enrollmentApplication?.admission?.student?.cohort?.academicSession?.startDate}}</span>
-	</div>
-	<div layout="row" class="pad-bottom">
-		<span flex="20">End Date</span> <span>{{enrollmentApplication?.admission?.student?.cohort?.academicSession?.endDate}}</span>
-	</div>
-	<!-- <div layout="row" class="pad-bottom">
-		<span flex="20">Semester</span> <span>{{enrollmentApplication?.admission?.student?.cohort?.academicSession?.semester}}</span>
-	</div> -->
-</div>
-</md-tab>
- </md-tab-group> </md-card-content> </md-card>
+<md-card>
+  <md-card-title>{{enrollmentApplication?.admission?.student?.name}}</md-card-title>
+  <md-card-subtitle>{{enrollmentApplication?.referenceNo}}</md-card-subtitle>
+  <md-card-subtitle>{{enrollmentApplication?.admission?.student?.identityNo}}</md-card-subtitle>
+  <md-divider></md-divider>
+  <md-card-content> <!--Tab Section Here-->
+    <md-tab-group>
+      <md-tab label="Enrollment Application Information">
+        <br>
+        <div layout="column" class="inset">
+          <!-- <div layout="row" class="pad-bottom">
+                <span flex="20">Audit No</span> <span>{{enrollmentApplication?.auditNo}}</span>
+            </div> -->
+          <div layout="row" class="pad-bottom">
+            <span flex="20">Description</span> <span>{{enrollmentApplication?.description}}</span>
+          </div>
+          <!-- <div layout="row" class="pad-bottom">
+                <span flex="20">Source No</span> <span>{{enrollmentApplication?.sourceNo}}</span>
+            </div> -->
+        </div>
+      </md-tab>
+      <md-tab label="Admission Information">
+        <br>
+        <div layout="column" class="inset">
+          <div layout="row" class="pad-bottom">
+            <span flex="20">Email</span> <span>{{enrollmentApplication?.admission?.student?.email}}</span>
+          </div>
+          <div layout="row" class="pad-bottom">
+            <span flex="20">Phone</span> <span>{{enrollmentApplication?.admission?.student?.phone}}</span>
+          </div>
+          <div layout="row" class="pad-bottom">
+            <span flex="20">Cohort</span> <span>{{enrollmentApplication?.admission?.student?.cohort?.code}}</span>
+          </div>
+        </div>
+      </md-tab>
+      <md-tab label="Session Information">
+        <br>
+        <div layout="column" class="inset">
+          <div layout="row" class="pad-bottom">
+            <span flex="20">Academic Session</span> <span>{{enrollmentApplication?.admission?.student?.cohort?.academicSession?.code}}</span>
+          </div>
+          <div layout="row" class="pad-bottom">
+            <span flex="20">Description</span> <span>{{enrollmentApplication?.admission?.student?.cohort?.academicSession?.description}}</span>
+          </div>
+          <div layout="row" class="pad-bottom">
+            <span flex="20">Start Date</span> <span>{{enrollmentApplication?.admission?.student?.cohort?.academicSession?.startDate}}</span>
+          </div>
+          <div layout="row" class="pad-bottom">
+            <span flex="20">End Date</span> <span>{{enrollmentApplication?.admission?.student?.cohort?.academicSession?.endDate}}</span>
+          </div>
+          <!-- <div layout="row" class="pad-bottom">
+                <span flex="20">Semester</span> <span>{{enrollmentApplication?.admission?.student?.cohort?.academicSession?.semester}}</span>
+            </div> -->
+        </div>
+      </md-tab>
+    </md-tab-group>
+  </md-card-content>
+</md-card>

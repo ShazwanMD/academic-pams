@@ -39,9 +39,11 @@
         [innerFormControl]=" editorForm.controls['status']">
       </pams-faculty-status-select>
     </div>
-    
+
   </form>
 </md-dialog-content>
 <md-dialog-actions align="end">
-  <button md-raised-button color="accent" (click)="save( editorForm.value,  editorForm.valid)"> {{edit ? 'Update' : 'Save'}}</button>
+  <button md-raised-button color="accent" (click)="save( editorForm.value,  editorForm.valid)"> {{edit ? 'Update' :
+    'Save'}}
+  </button>
 </md-dialog-actions>

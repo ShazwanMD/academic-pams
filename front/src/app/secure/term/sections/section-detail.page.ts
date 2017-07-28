@@ -1,5 +1,5 @@
-import {Component, OnInit, ChangeDetectionStrategy, ViewContainerRef, Input, EventEmitter, Output} from '@angular/core';
-import {Router, ActivatedRoute} from '@angular/router';
+import {Component, Input, OnInit, ViewContainerRef} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
 
 import {TermService} from '../../../../services';
 import {Store} from '@ngrx/store';
@@ -7,7 +7,7 @@ import {Observable} from 'rxjs';
 import {Section} from '../../../shared/model/term/section.interface';
 import {SectionActions} from './section.action';
 import {TermModuleState} from '../index';
-import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';
+import {MdDialog} from '@angular/material';
 import {Appointment} from '../../../shared/model/term/appointment.interface';
 import {Enrollment} from '../../../shared/model/term/enrollment.interface';
 import {Offering} from '../../../shared/model/term/offering.interface';

@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Effect, Actions} from '@ngrx/effects';
+import {Actions, Effect} from '@ngrx/effects';
 import {SectionActions} from './section.action';
 import {TermService} from '../../../../services/term.service';
 import {Store} from '@ngrx/store';

@@ -1,7 +1,7 @@
-import {Routes, RouterModule} from '@angular/router';
+import {Routes} from '@angular/router';
 
-import {CohortCenterPage} from "./cohort-center.page";
-import {CohortDetailPage} from "./cohort-detail.page";
+import {CohortCenterPage} from './cohort-center.page';
+import {CohortDetailPage} from './cohort-detail.page';
 
 export const CohortRoutes: Routes = [
   {path: 'planner/cohorts', component: CohortCenterPage},

@@ -1,4 +1,4 @@
-import {Component, ViewContainerRef, OnInit} from '@angular/core';
+import {Component, OnInit, ViewContainerRef} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Store} from '@ngrx/store';
 import {MdDialogRef} from '@angular/material';
@@ -6,7 +6,7 @@ import {TermModuleState} from '../../index';
 import {Section} from '../../../../shared/model/term/section.interface';
 import {SectionActions} from '../section.action';
 import {Offering} from '../../../../shared/model/term/offering.interface';
-import {Router, ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'pams-section-editor',

@@ -1,10 +1,10 @@
 import {CurriculumActions} from './curriculum.action';
 import {CurriculumEditorDialog} from './dialog/curriculum-editor.dialog';
-import {Router, ActivatedRoute} from '@angular/router';
-import {Component, OnInit, ViewContainerRef, ChangeDetectionStrategy} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
+import {ChangeDetectionStrategy, Component, OnInit, ViewContainerRef} from '@angular/core';
 import {Store} from '@ngrx/store';
 import {Observable} from 'rxjs';
-import { Curriculum} from '../../../shared/model/planner/curriculum.interface';
+import {Curriculum} from '../../../shared/model/planner/curriculum.interface';
 import {PlannerModuleState} from '../index';
 import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';
 
@@ -37,8 +37,8 @@ export class CurriculumCenterPage implements OnInit {
   }
 
   createDialog(): void {
-      this.showDialog(null);
-    }
+    this.showDialog(null);
+  }
 
   private showDialog(code: Curriculum): void {
     console.log('showDialog');

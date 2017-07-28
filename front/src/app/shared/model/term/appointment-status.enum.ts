@@ -1,7 +1,7 @@
 export enum AppointmentStatus {
-  
-    NEW,
-    CONFIRMED,
-    SUBSTITUTED,
-    DISMISSED
+
+  NEW,
+  CONFIRMED,
+  SUBSTITUTED,
+  DISMISSED
 }

@@ -1,12 +1,12 @@
-import { Injectable } from '@angular/core';
-import { Effect, Actions } from '@ngrx/effects';
-import { AdmissionApplicationActions } from './admission-application.action';
-import { from } from 'rxjs/observable/from';
-import { TermService } from '../../../../services/term.service';
-import { TermModuleState } from '../index';
-import { Store } from '@ngrx/store';
+import {Injectable} from '@angular/core';
+import {Actions, Effect} from '@ngrx/effects';
+import {AdmissionApplicationActions} from './admission-application.action';
+import {from} from 'rxjs/observable/from';
+import {TermService} from '../../../../services/term.service';
+import {TermModuleState} from '../index';
+import {Store} from '@ngrx/store';
 import 'rxjs/add/operator/withLatestFrom';
-import { AdmissionApplicationTask } from '../../../shared/model/term/admission-application-task.interface';
+import {AdmissionApplicationTask} from '../../../shared/model/term/admission-application-task.interface';
 
 @Injectable()
 export class AdmissionApplicationEffects {
@@ -15,9 +15,9 @@ export class AdmissionApplicationEffects {
   private ADMISSION_APPLICATION: string[] = 'termModuleState.admissionApplication'.split('.');
 
   constructor(private actions$: Actions,
-    private admissionApplicationActions: AdmissionApplicationActions,
-    private termService: TermService,
-    private store$: Store<TermModuleState>) {
+              private admissionApplicationActions: AdmissionApplicationActions,
+              private termService: TermService,
+              private store$: Store<TermModuleState>) {
   }
 
   @Effect() findAdmissionApplications$ = this.actions$
@@ -37,9 +37,9 @@ export class AdmissionApplicationEffects {
 
   //archived
   @Effect() findArchivedAdmissionApplications$ = this.actions$
-  .ofType(AdmissionApplicationActions.FIND_ARCHIVED_ADMISSION_APPLICATIONS)
-  .switchMap(() => this.termService.findArchivedAdmissionApplications())
-  .map((admissionApplications) => this.admissionApplicationActions.findArchivedAdmissionApplicationsSuccess(admissionApplications));
+    .ofType(AdmissionApplicationActions.FIND_ARCHIVED_ADMISSION_APPLICATIONS)
+    .switchMap(() => this.termService.findArchivedAdmissionApplications())
+    .map((admissionApplications) => this.admissionApplicationActions.findArchivedAdmissionApplicationsSuccess(admissionApplications));
 
   @Effect() findAdmissionApplicationTaskByTaskId = this.actions$
     .ofType(AdmissionApplicationActions.FIND_ADMISSION_APPLICATION_TASK_BY_TASK_ID)
@@ -59,9 +59,9 @@ export class AdmissionApplicationEffects {
     .switchMap((admissionApplication) => this.termService.startAdmissionApplicationTask(admissionApplication))
     .map((message) => this.admissionApplicationActions.startAdmissionApplicationTaskSuccess(message))
     .mergeMap((action) => from([action,
-      this.admissionApplicationActions.findAssignedAdmissionApplicationTasks(),
-      this.admissionApplicationActions.findPooledAdmissionApplicationTasks(),
-    ],
+        this.admissionApplicationActions.findAssignedAdmissionApplicationTasks(),
+        this.admissionApplicationActions.findPooledAdmissionApplicationTasks(),
+      ],
     ));
 
   @Effect() completeAdmissionApplicationTask$ = this.actions$
@@ -70,9 +70,9 @@ export class AdmissionApplicationEffects {
     .switchMap((admissionApplicationTask) => this.termService.completeAdmissionApplicationTask(admissionApplicationTask))
     .map((message) => this.admissionApplicationActions.completeAdmissionApplicationTaskSuccess(message))
     .mergeMap((action) => from([action,
-      this.admissionApplicationActions.findAssignedAdmissionApplicationTasks(),
-      this.admissionApplicationActions.findPooledAdmissionApplicationTasks(),
-    ],
+        this.admissionApplicationActions.findAssignedAdmissionApplicationTasks(),
+        this.admissionApplicationActions.findPooledAdmissionApplicationTasks(),
+      ],
     ));
 
   @Effect() claimAdmissionApplicationTask$ = this.actions$
@@ -84,9 +84,9 @@ export class AdmissionApplicationEffects {
       this.admissionApplicationActions.findAssignedAdmissionApplicationTasks(),
       this.admissionApplicationActions.findPooledAdmissionApplicationTasks()]));
 
-   //.withLatestFrom(this.store$.select(...this.ADMISSION_APPLICATION_TASK))
-   //.map(state => state[1])
-   //.map((admissionApplicationTask: AdmissionApplicationTask) => this.admissionApplicationActions.findAdmissionApplications());
+  //.withLatestFrom(this.store$.select(...this.ADMISSION_APPLICATION_TASK))
+  //.map(state => state[1])
+  //.map((admissionApplicationTask: AdmissionApplicationTask) => this.admissionApplicationActions.findAdmissionApplications());
 
   @Effect() releaseAdmissionApplicationTask$ = this.actions$
     .ofType(AdmissionApplicationActions.RELEASE_ADMISSION_APPLICATION_TASK)
@@ -94,10 +94,10 @@ export class AdmissionApplicationEffects {
     .switchMap((admissionApplicationTask) => this.termService.releaseAdmissionApplicationTask(admissionApplicationTask))
     .map((message) => this.admissionApplicationActions.releaseAdmissionApplicationTaskSuccess(message))
     .mergeMap((action) => from([action,
-      this.admissionApplicationActions.findAssignedAdmissionApplicationTasks(),
-      this.admissionApplicationActions.findPooledAdmissionApplicationTasks(),
-      this.admissionApplicationActions.findAdmissionApplications(),
-    ],
+        this.admissionApplicationActions.findAssignedAdmissionApplicationTasks(),
+        this.admissionApplicationActions.findPooledAdmissionApplicationTasks(),
+        this.admissionApplicationActions.findAdmissionApplications(),
+      ],
     ));
 
   @Effect() saveAdmissionApplication$ = this.actions$
@@ -106,8 +106,8 @@ export class AdmissionApplicationEffects {
     .switchMap((payload) => this.termService.saveAdmissionApplication(payload.admissionApplication))
     .map((admissionApplication) => this.admissionApplicationActions.saveAdmissionApplicationSuccess(admissionApplication))
     .mergeMap((action) => from([action,
-      this.admissionApplicationActions.findAdmissionApplications(),
-    ],
+        this.admissionApplicationActions.findAdmissionApplications(),
+      ],
     ));
 
   @Effect() updateAdmissionApplication$ = this.actions$
@@ -116,8 +116,8 @@ export class AdmissionApplicationEffects {
     .switchMap((payload) => this.termService.updateAdmissionApplication(payload))
     .map((message) => this.admissionApplicationActions.updateAdmissionApplicationSuccess(message))
 
-   .withLatestFrom(this.store$.select(...this.ADMISSION_APPLICATION_TASK))
-   .map((state) => state[1])
-   .map((admissionApplicationTask: AdmissionApplicationTask) => this.admissionApplicationActions.findAdmissionApplicationTaskByTaskId(admissionApplicationTask.taskId));
+    .withLatestFrom(this.store$.select(...this.ADMISSION_APPLICATION_TASK))
+    .map((state) => state[1])
+    .map((admissionApplicationTask: AdmissionApplicationTask) => this.admissionApplicationActions.findAdmissionApplicationTaskByTaskId(admissionApplicationTask.taskId));
 
 }

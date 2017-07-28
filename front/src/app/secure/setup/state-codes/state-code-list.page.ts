@@ -1,5 +1,4 @@
-import {CountryCode} from '../../../shared/model/common/country-code.interface';
-import {MdDialog, MdDialogRef, MdDialogConfig} from '@angular/material';
+import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';
 import {StateCodeEditorDialog} from './dialog/state-code-editor.dialog';
 import {Observable} from 'rxjs/Observable';
 import {Store} from '@ngrx/store';

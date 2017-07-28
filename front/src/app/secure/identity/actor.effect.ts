@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Effect, Actions} from '@ngrx/effects';
-import {from} from 'rxjs/observable/from';
+import {Actions, Effect} from '@ngrx/effects';
 import {IdentityService} from '../../../services/identity.service';
 import {ActorActions} from './actor.action';
 import {StudentActions} from './student.action';

@@ -1,4 +1,4 @@
-import {OnInit, Input, Component} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {AcademicStanding} from '../../../../shared/model/term/academic-standing.enum';
 @Component({
@@ -7,10 +7,10 @@ import {AcademicStanding} from '../../../../shared/model/term/academic-standing.
 })
 
 export class AcademicStandingSelectComponent implements OnInit {
+
   private standings: AcademicStanding[] = <AcademicStanding[]>[];
   @Input() placeholder: string;
   @Input() innerFormControl: FormControl;
-
 
   constructor() {
     for (var n in AcademicStanding) {

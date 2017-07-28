@@ -1,11 +1,16 @@
 import {
-  Component, OnInit, ViewChild, ViewContainerRef,
-  ComponentFactoryResolver, ComponentRef, Input, AfterViewInit,
+  Component,
+  ComponentFactoryResolver,
+  ComponentRef,
+  Input,
+  OnInit,
+  ViewChild,
+  ViewContainerRef
 } from '@angular/core';
 import {Observable} from 'rxjs';
-import {EnrollmentApplicationTask} from '../../../shared/model/term/enrollment-application-task.interface';
-import {FlowState} from '../../../core/flow-state.enum';
 import {EnrollmentApplicationDraftTaskPanel} from './enrollment-application-draft-task.panel';
+import {EnrollmentApplicationTask} from '../../../../shared/model/term/enrollment-application-task.interface';
+import {FlowState} from '../../../../core/flow-state.enum';
 
 @Component({
   selector: 'pams-enrollment-application-task-workflow',

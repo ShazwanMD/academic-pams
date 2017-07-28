@@ -1,23 +1,27 @@
 <h2 md-dialog-title>{{edit ? 'Update' : 'Save'}} Enrollment</h2>
 <md-dialog-content>
-<form [formGroup]="editorForm">
-<div layout="row" class="inset" flex>
-From: <md-input-container flex>
+  <form [formGroup]="editorForm">
+    <div layout="row" class="inset" flex>
+      From:
+      <md-input-container flex>
         <input mdInput
                placeholder="enrollmentStatus"
                formControlName="enrollmentStatus" flex/>
-      </md-input-container></div>
-	<div layout="row" class="inset" flex>
-		To: <pams-enrollment-status-select [placeholder]="'Enrollment Status'"
-			[innerFormControl]="editorForm.controls['enrollmentStatus']">
-		</pams-enrollment-status-select>
-		
-	</div>
-</form>
+      </md-input-container>
+    </div>
+    <div layout="row" class="inset" flex>
+      To:
+      <pams-enrollment-status-select [placeholder]="'Enrollment Status'"
+                                     [innerFormControl]="editorForm.controls['enrollmentStatus']">
+      </pams-enrollment-status-select>
+
+    </div>
+  </form>
 </md-dialog-content>
 <md-dialog-actions align="end">
-<button md-raised-button color="accent"
-	(click)="submit(editorForm.value, editorForm.valid)">{{edit ?
-	'Update' : 'Save'}}</button>
+  <button md-raised-button color="accent"
+          (click)="submit(editorForm.value, editorForm.valid)">{{edit ?
+    'Update' : 'Save'}}
+  </button>
 </md-dialog-actions>
 

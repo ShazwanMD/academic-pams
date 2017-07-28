@@ -1,6 +1,4 @@
 import {Action} from '@ngrx/store';
-
-import * as _ from 'lodash';
 import {EnrollmentApplication} from '../../../shared/model/term/enrollment-application.interface';
 import {EnrollmentApplicationActions} from './enrollment-application.action';
 

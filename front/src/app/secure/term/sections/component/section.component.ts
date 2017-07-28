@@ -1,4 +1,4 @@
-import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, ViewContainerRef} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output, ViewContainerRef} from '@angular/core';
 import {Section} from '../../../../shared/model/term/section.interface';
 import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';
 import {ActivatedRoute, Router} from '@angular/router';

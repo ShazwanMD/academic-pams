@@ -1,14 +1,11 @@
-import {
-  Component, Input, ChangeDetectionStrategy,
-  OnChanges, SimpleChange, ViewChild,
-} from '@angular/core';
-import { OfferingActions } from '../offering.action';
-import { Store } from '@ngrx/store';
-import { TermModuleState } from '../../index';
-import { GradebookMatrix } from '../../../../shared/model/term/gradebook-matrix.interface';
-import { TdDataTableComponent } from '@covalent/core';
-import { Offering } from '../../../../shared/model/term/offering.interface';
-import { Assessment } from '../../../../shared/model/term/assessment.interface';
+import {ChangeDetectionStrategy, Component, Input, OnChanges, SimpleChange, ViewChild} from '@angular/core';
+import {OfferingActions} from '../offering.action';
+import {Store} from '@ngrx/store';
+import {TermModuleState} from '../../index';
+import {GradebookMatrix} from '../../../../shared/model/term/gradebook-matrix.interface';
+import {TdDataTableComponent} from '@covalent/core';
+import {Offering} from '../../../../shared/model/term/offering.interface';
+import {Assessment} from '../../../../shared/model/term/assessment.interface';
 
 @Component({
   selector: 'pams-gradebook',
@@ -23,11 +20,11 @@ export class GradebookComponent implements OnChanges {
   @ViewChild('dataTable') dataTable: TdDataTableComponent;
 
   columns: any[] = [
-    { label: 'Student name', name: 'enrollment.admission.student.name' },
+    {label: 'Student name', name: 'enrollment.admission.student.name'},
   ];
 
   constructor(private actions: OfferingActions,
-    private store: Store<TermModuleState>) {
+              private store: Store<TermModuleState>) {
   }
 
   ngOnChanges(changes: { [propName: string]: SimpleChange }) {

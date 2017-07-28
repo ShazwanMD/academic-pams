@@ -8,9 +8,9 @@
                placeholder="Capacity"
                formControlName="capacity" type="number" flex/>
       </md-input-container>
-       <div  class="tc-red-600" *ngIf="editorForm.get('capacity').invalid && editorForm.get('capacity').touched">
-                Description should be in number type
-            </div>
+      <div class="tc-red-600" *ngIf="editorForm.get('capacity').invalid && editorForm.get('capacity').touched">
+        Description should be in number type
+      </div>
     </div>
 
     <div layout="row" class="pad-bottom">
@@ -19,15 +19,16 @@
                placeholder="Section No"
                formControlName="ordinal" type="number" flex/>
       </md-input-container>
-       <div class="tc-red-600"*ngIf="editorForm.get('ordinal').invalid && editorForm.get('ordinal').touched">
-                 Section number should be in number type!
-            </div>
+      <div class="tc-red-600" *ngIf="editorForm.get('ordinal').invalid && editorForm.get('ordinal').touched">
+        Section number should be in number type!
+      </div>
     </div>
 
   </form>
 </md-dialog-content>
 <md-dialog-actions align="end">
-  <button md-raised-button color="accent" (click)="submit(editorForm.value, editorForm.valid)" [disabled]="!editorForm.valid">
+  <button md-raised-button color="accent" (click)="submit(editorForm.value, editorForm.valid)"
+          [disabled]="!editorForm.valid">
     {{edit ? 'Update' : 'Save'}}
   </button>
 

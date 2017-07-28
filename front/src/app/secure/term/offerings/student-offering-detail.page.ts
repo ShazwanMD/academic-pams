@@ -1,5 +1,5 @@
-import {Component, OnInit, ChangeDetectionStrategy, ViewContainerRef, Input, EventEmitter, Output} from '@angular/core';
-import {Router, ActivatedRoute} from '@angular/router';
+import {Component, Input, OnInit, ViewContainerRef} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
 import {OfferingUpdateDialog} from './dialog/offering-update.dialog';
 import {Store} from '@ngrx/store';
 import {Observable} from 'rxjs';

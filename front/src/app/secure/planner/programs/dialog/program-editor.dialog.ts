@@ -1,8 +1,7 @@
-import { Faculty } from '../../../../shared/model/planner/faculty.interface';
-import {Component, ViewContainerRef, OnInit} from '@angular/core';
-import {FormGroup, FormControl} from '@angular/forms';
-import {FormBuilder} from '@angular/forms';
-import {Router, ActivatedRoute} from '@angular/router';
+import {Faculty} from '../../../../shared/model/planner/faculty.interface';
+import {Component, OnInit, ViewContainerRef} from '@angular/core';
+import {FormBuilder, FormGroup} from '@angular/forms';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Program} from '../../../../shared/model/planner/program.interface';
 import {ProgramActions} from '../program.action';
 import {MdDialogRef} from '@angular/material';
@@ -35,7 +34,7 @@ export class ProgramEditorDialog implements OnInit {
     this.edit = true;
   }
 
-   set faculty (value: Faculty) {
+  set faculty(value: Faculty) {
     this._faculty = value;
   }
 

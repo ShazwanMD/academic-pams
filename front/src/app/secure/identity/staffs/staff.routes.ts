@@ -1,4 +1,4 @@
-import {Routes, RouterModule} from '@angular/router';
+import {Routes} from '@angular/router';
 import {StaffDetailPage} from './staff-detail.page';
 import {StaffCenterPage} from './staff-center.page';
 

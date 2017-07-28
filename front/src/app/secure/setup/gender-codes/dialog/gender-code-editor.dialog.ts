@@ -1,12 +1,11 @@
-import { GenderCode } from '../../../../shared/model/common/gender-code.interface';
-import { SetupActions } from '../../setup.action';
-import { SetupModuleState } from '../../index';
-import {Component, ViewContainerRef, OnInit, AfterViewInit} from '@angular/core';
-import {FormGroup, FormControl} from '@angular/forms';
-import {FormBuilder} from '@angular/forms';
-import {Router, ActivatedRoute} from '@angular/router';
-import {Store} from "@ngrx/store";
-import {MdDialogRef} from "@angular/material";
+import {GenderCode} from '../../../../shared/model/common/gender-code.interface';
+import {SetupActions} from '../../setup.action';
+import {SetupModuleState} from '../../index';
+import {Component, OnInit, ViewContainerRef} from '@angular/core';
+import {FormBuilder, FormGroup} from '@angular/forms';
+import {ActivatedRoute, Router} from '@angular/router';
+import {Store} from '@ngrx/store';
+import {MdDialogRef} from '@angular/material';
 
 @Component({
   selector: 'pams-gender-code-editor',
@@ -27,12 +26,13 @@ export class GenderCodeEditorDialog implements OnInit {
               private actions: SetupActions) {
   }
 
-  set genderCode(value: GenderCode){
-      this._genderCode = value;
-      this.edit = true;
+  set genderCode(value: GenderCode) {
+    this._genderCode = value;
+    this.edit = true;
   }
-    ngOnInit(): void {
-   this.editorForm = this.formBuilder.group(<GenderCode>{
+
+  ngOnInit(): void {
+    this.editorForm = this.formBuilder.group(<GenderCode>{
       id: null,
       code: '',
       description: '',

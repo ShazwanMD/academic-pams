@@ -24,10 +24,12 @@
 
 
     <md-card>
-      <td-search-box class="push-left push-right" placeholder="search" [alwaysVisible]="true" (searchDebounce)="filter($event)">
+      <td-search-box class="push-left push-right" placeholder="search" [alwaysVisible]="true"
+                     (searchDebounce)="filter($event)">
       </td-search-box>
 
-      <pams-program-level-list [programLevels]="programLevels$ | async" (view)="viewProgramLevel($event)"></pams-program-level-list>
+      <pams-program-level-list [programLevels]="programLevels$ | async"
+                               (view)="viewProgramLevel($event)"></pams-program-level-list>
 
       <md-divider></md-divider>
 

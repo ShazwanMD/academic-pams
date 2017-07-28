@@ -21,9 +21,10 @@ export class StaffActions {
       payload: staffs
     };
   }
-  
+
   //find staff by id
   static FIND_STAFF_BY_IDENTITY_NO = '[Staff] Find Staff By Identity No';
+
   findStaffByIdentityNo(staff): Action {
     return {
       type: StaffActions.FIND_STAFF_BY_IDENTITY_NO,
@@ -32,34 +33,35 @@ export class StaffActions {
   }
 
   static FIND_STAFF_BY_IDENTITY_NO_SUCCESS = '[Staff] Find Staff By Identity No Success';
+
   findStaffByIdentityNoSuccess(staff): Action {
     return {
       type: StaffActions.FIND_STAFF_BY_IDENTITY_NO_SUCCESS,
       payload: staff
     };
   }
-  
+
   //find appointments by staff
   static FIND_APPOINTMENTS_BY_STAFF = '[Staff] Find Appointments By Staff';
 
   findAppointmentsByStaff(staff): Action {
-      console.log("findAppointmentsByStaff");
-      return {
-          type: StaffActions.FIND_APPOINTMENTS_BY_STAFF,
-          payload: staff
-      };
+    console.log("findAppointmentsByStaff");
+    return {
+      type: StaffActions.FIND_APPOINTMENTS_BY_STAFF,
+      payload: staff
+    };
   }
 
   static FIND_APPOINTMENTS_BY_STAFF_SUCCESS = '[Staff] Find Appointments By Staff Success';
 
   findAppointmentsByStaffSuccess(appointments): Action {
-      console.log("findAppointmentsByStaffSuccess");
-      return {
-          type: StaffActions.FIND_APPOINTMENTS_BY_STAFF_SUCCESS,
-          payload: appointments
-      };
+    console.log("findAppointmentsByStaffSuccess");
+    return {
+      type: StaffActions.FIND_APPOINTMENTS_BY_STAFF_SUCCESS,
+      payload: appointments
+    };
   }
-  
+
   static FIND_STAFF = '[Staff] Find Staff';
 
   findStaff(identityNo): Action {

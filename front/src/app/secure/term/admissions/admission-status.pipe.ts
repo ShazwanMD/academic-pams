@@ -1,5 +1,5 @@
 import {Pipe, PipeTransform} from '@angular/core';
-import {AdmissionStatus} from '../../shared/model/term/admission-status.enum';
+import {AdmissionStatus} from '../../../shared/model/term/admission-status.enum';
 
 @Pipe({name: 'admissionStatusPipe'})
 export class AdmissionStatusPipe implements PipeTransform {

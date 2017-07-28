@@ -1,37 +1,41 @@
 <td-layout-nav>
-<div toolbar-content layout="row" layout-align="center center" flex>
-  <span>PAMS: Postgraduate Management System</span> <span flex></span>
-</div>
-<td-layout-manage-list #list> <md-nav-list
-  list-items> 
- <!--  <a md-list-item (click)="createDialog()">
-  <md-icon>create</md-icon> Create New Appointment
-</a>  -->
-<!-- <md-divider></md-divider>  -->
-<a md-list-item [routerLink]="['/term/admissions']"> 
-<md-icon>person_add</md-icon>
-  Semester Registration
-</a> 
-<a md-list-item [routerLink]="['/term/enrollment-applications']"> 
-<md-icon>create</md-icon>
-  Course Enrollments
-</a> 
-<a md-list-item [routerLink]="['/term/offerings']"> 
-<md-icon>create</md-icon>
-	Offerings
-</a> 
-</md-nav-list>
-<div toolbar-buttons layout="row" layout-align="start center" flex>
-  <span flex>Appointment Center</span>
-  <button md-button class="md-icon-button">
-    <md-icon class="md-24">settings</md-icon>
-  </button>
-  <button md-button class="md-icon-button">
-    <md-icon class="md-24">more_vert</md-icon>
-  </button>
-</div>
-<md-card class=""> 
-   <pams-appointment-list
-  [appointments]="appointments$ | async" (view)="viewAppointment($event)"   mdTooltip="View appointments info"></pams-appointment-list>
-<md-divider></md-divider> 
-</md-card> </td-layout-manage-list> </td-layout-nav>
+  <div toolbar-content layout="row" layout-align="center center" flex>
+    <span>PAMS: Postgraduate Management System</span> <span flex></span>
+  </div>
+  <td-layout-manage-list #list>
+    <md-nav-list
+      list-items>
+      <!--  <a md-list-item (click)="createDialog()">
+       <md-icon>create</md-icon> Create New Appointment
+     </a>  -->
+      <!-- <md-divider></md-divider>  -->
+      <a md-list-item [routerLink]="['/secure/term/admissions']">
+        <md-icon>person_add</md-icon>
+        Semester Registration
+      </a>
+      <a md-list-item [routerLink]="['/secure/term/enrollment-applications']">
+        <md-icon>create</md-icon>
+        Course Enrollments
+      </a>
+      <a md-list-item [routerLink]="['/secure/term/offerings']">
+        <md-icon>create</md-icon>
+        Offerings
+      </a>
+    </md-nav-list>
+    <div toolbar-buttons layout="row" layout-align="start center" flex>
+      <span flex>Appointment Center</span>
+      <button md-button class="md-icon-button">
+        <md-icon class="md-24">settings</md-icon>
+      </button>
+      <button md-button class="md-icon-button">
+        <md-icon class="md-24">more_vert</md-icon>
+      </button>
+    </div>
+    <md-card class="">
+      <pams-appointment-list
+        [appointments]="appointments$ | async" (view)="viewAppointment($event)"
+        mdTooltip="View appointments info"></pams-appointment-list>
+      <md-divider></md-divider>
+    </md-card>
+  </td-layout-manage-list>
+</td-layout-nav>

@@ -1,14 +1,14 @@
-import { AdmissionApplication } from '../../../shared/model/term/admission-application.interface';
-import { Component, OnInit, ChangeDetectionStrategy, ViewContainerRef } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import {AdmissionApplication} from '../../../shared/model/term/admission-application.interface';
+import {Component, OnInit, ViewContainerRef} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
 
-import { Store, State } from '@ngrx/store';
-import { Observable } from 'rxjs';
-import { AdmissionApplicationTaskCreatorDialog } from './dialog/admission-application-task-creator.dialog';
-import { MdDialog, MdDialogConfig, MdDialogRef } from '@angular/material';
-import { AdmissionApplicationTask } from '../../../shared/model/term/admission-application-task.interface';
-import { TermModuleState } from '../index';
-import { AdmissionApplicationActions } from './admission-application.action';
+import {Store} from '@ngrx/store';
+import {Observable} from 'rxjs';
+import {AdmissionApplicationTaskCreatorDialog} from './dialog/admission-application-task-creator.dialog';
+import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';
+import {AdmissionApplicationTask} from '../../../shared/model/term/admission-application-task.interface';
+import {TermModuleState} from '../index';
+import {AdmissionApplicationActions} from './admission-application.action';
 
 @Component({
   selector: 'pams-admission-application-center2',
@@ -26,25 +26,25 @@ export class StudentAdmissionApplicationCenterPage implements OnInit {
   private creatorDialogRef: MdDialogRef<AdmissionApplicationTaskCreatorDialog>;
 
   constructor(private router: Router,
-    private route: ActivatedRoute,
-    private actions: AdmissionApplicationActions,
-    private store: Store<TermModuleState>,
-    private vcf: ViewContainerRef,
-    private dialog: MdDialog) {
+              private route: ActivatedRoute,
+              private actions: AdmissionApplicationActions,
+              private store: Store<TermModuleState>,
+              private vcf: ViewContainerRef,
+              private dialog: MdDialog) {
 
-      this.assignedAdmissionApplicationTasks$ = this.store.select(...this.ASSIGNED_ADMISSION_APPLICATION_TASKS);
-      this.pooledAdmissionApplicationTasks$ = this.store.select(...this.POOLED_ADMISSION_APPLICATION_TASKS);
-      this.archivedAdmissionApplications$ = this.store.select(...this.ARCHIVED_ADMISSION_APPLICATIONS);
+    this.assignedAdmissionApplicationTasks$ = this.store.select(...this.ASSIGNED_ADMISSION_APPLICATION_TASKS);
+    this.pooledAdmissionApplicationTasks$ = this.store.select(...this.POOLED_ADMISSION_APPLICATION_TASKS);
+    this.archivedAdmissionApplications$ = this.store.select(...this.ARCHIVED_ADMISSION_APPLICATIONS);
   }
 
-createDialog(): void {
+  createDialog(): void {
     console.log('showDialog');
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
     config.role = 'dialog';
     config.width = '60%';
     config.height = '70%';
-    config.position = { top: '0px' };
+    config.position = {top: '0px'};
     this.creatorDialogRef = this.dialog.open(AdmissionApplicationTaskCreatorDialog, config);
     this.creatorDialogRef.afterClosed().subscribe((res) => {
       console.log('close dialog');
@@ -59,13 +59,13 @@ createDialog(): void {
 
   viewTask(task: AdmissionApplicationTask) {
     console.log('students applications: ' + task.taskId);
-    this.router.navigate(['/term/admission-applications/student-admission-application-task-detail', task.taskId]);
+    this.router.navigate(['/secure/term/admission-applications/student-admission-application-task-detail', task.taskId]);
   }
 
   viewAdmissionApplication(admissionApplication: AdmissionApplication) {
-      console.log('students applications: ' + admissionApplication.referenceNo);
-      this.router.navigate(['/term/admission-applications', admissionApplication.referenceNo, 'student-admission-application-detail']);
-  //this.router.navigate(['/term/offerings', offering.canonicalCode]);
+    console.log('students applications: ' + admissionApplication.referenceNo);
+    this.router.navigate(['/secure/term/admission-applications', admissionApplication.referenceNo, 'student-admission-application-detail']);
+    //this.router.navigate(['/secure/term/offerings', offering.canonicalCode]);
   }
 
   ngOnInit(): void {
@@ -76,7 +76,7 @@ createDialog(): void {
   }
 
   goBack(route: string): void {
-    this.router.navigate(['/term/admission-applications']);
+    this.router.navigate(['/secure/term/admission-applications']);
   }
 }
 

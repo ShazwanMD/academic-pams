@@ -1,5 +1,5 @@
-import { StaffAppointmentListState} from './staff-appointment-list.reducer';
-import { StaffActions} from './staff.action';
+import {StaffAppointmentListState} from './staff-appointment-list.reducer';
+import {StaffActions} from './staff.action';
 import {Appointment} from '../../../shared/model/term/appointment.interface';
 import {Action} from '@ngrx/store';
 

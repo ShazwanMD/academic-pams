@@ -1,6 +1,5 @@
-import {Component, ViewContainerRef, OnInit} from '@angular/core';
-import {FormGroup, FormControl} from '@angular/forms';
-import {FormBuilder} from '@angular/forms';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup} from '@angular/forms';
 import {Store} from '@ngrx/store';
 import {MdDialogRef} from '@angular/material';
 import {TermModuleState} from '../../index';
@@ -21,7 +20,6 @@ export class AdmissionDeleteTaskCreatorDialog implements OnInit {
   }
 
   ngOnInit(): void {
-    this.createForm = this.formBuilder.group(<Admission>{
-    });
+    this.createForm = this.formBuilder.group(<Admission>{});
   }
 }

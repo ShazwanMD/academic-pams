@@ -1,12 +1,10 @@
 import '@ngrx/core/add/operator/select';
 import {appRoutes, appRoutingProviders} from '../../../app.routes';
-import {NgModule, ModuleWithProviders} from '@angular/core';
+import {ModuleWithProviders, NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {ReactiveFormsModule} from '@angular/forms';
 import {CovalentCoreModule} from '@covalent/core';
-import {TermService} from '../../../../services';
-import {CommonService} from '../../../../services';
-import {IdentityService} from '../../../../services';
+import {CommonService, IdentityService, TermService} from '../../../../services';
 import {EffectsModule} from '@ngrx/effects';
 import {EnrollmentApplicationCenterPage} from './enrollment-application-center.page';
 import {StudentEnrollmentCenterPage} from './student-enrollment-center.page';

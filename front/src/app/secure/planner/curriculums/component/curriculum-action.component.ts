@@ -1,5 +1,5 @@
-import { CurriculumUpdateDialog} from '../dialog/curriculum-update.dialog';
-import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, ViewContainerRef} from '@angular/core';
+import {CurriculumUpdateDialog} from '../dialog/curriculum-update.dialog';
+import {ChangeDetectionStrategy, Component, Input, ViewContainerRef} from '@angular/core';
 import {Curriculum} from '../../../../shared/model/planner/curriculum.interface';
 import {MdDialog, MdDialogConfig, MdDialogRef, MdSnackBar} from '@angular/material';
 import {CurriculumActions} from '../curriculum.action';
@@ -43,6 +43,6 @@ export class CurriculumActionComponent {
 
   delate(): void {
     let snackBarRef = this.snackBar.open('Delate Curriculum', 'OK');
-   // snackBarRef.afterDismissed().subscribe(() => this.store.dispatch(this.actions.delateCurriculum(this.curriculum)));
+    // snackBarRef.afterDismissed().subscribe(() => this.store.dispatch(this.actions.delateCurriculum(this.curriculum)));
   }
 }

@@ -10,14 +10,14 @@
           [admission]="admission$ | async"
           [enrollments]="enrollments$ | async" (view)="viewTask($event)">
         </pams-admission-enrollment-list>
-         <pams-admission-enrollment-application-list
+        <pams-admission-enrollment-application-list
           [admission]="admission$ | async"
           [enrollmentApplications]="enrollmentApplications$ | async">
         </pams-admission-enrollment-application-list>
       </div>
       <div flex-gt-md="30">
-       <pams-admission-action [admission]="admission$ | async"></pams-admission-action>
-       </div>
+        <pams-admission-action [admission]="admission$ | async"></pams-admission-action>
+      </div>
     </div>
   </div>
 </td-layout-nav>

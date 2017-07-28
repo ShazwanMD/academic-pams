@@ -1,8 +1,8 @@
-import { SingleSubject } from '../../shared/model/planner/single-subject.interface';
 import {CurriculumActions} from './curriculum.action';
 import {Action} from '@ngrx/store';
+import {SingleSubject} from '../../../shared/model/planner/single-subject.interface';
 
-export type CurriculumSingleSubjectListState  = SingleSubject[];
+export type CurriculumSingleSubjectListState = SingleSubject[];
 
 const initialState: CurriculumSingleSubjectListState = <SingleSubject[]>[];
 

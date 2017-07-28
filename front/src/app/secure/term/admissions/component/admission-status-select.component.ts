@@ -1,5 +1,5 @@
 import {AdmissionStatus} from '../../../../shared/model/term/admission-status.enum';
-import {OnInit, Input, Component} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {FormControl} from '@angular/forms';
 
 @Component({

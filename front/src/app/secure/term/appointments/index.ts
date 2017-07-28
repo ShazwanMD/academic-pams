@@ -1,13 +1,11 @@
 import '@ngrx/core/add/operator/select';
 import {appRoutes, appRoutingProviders} from '../../../app.routes';
-import {NgModule, ModuleWithProviders} from '@angular/core';
+import {ModuleWithProviders, NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {ReactiveFormsModule} from '@angular/forms';
 import {CovalentCoreModule} from '@covalent/core';
 
-import {TermService} from '../../../../services';
-import {CommonService} from '../../../../services';
-import {IdentityService} from '../../../../services';
+import {CommonService, IdentityService, TermService} from '../../../../services';
 
 import {AppointmentListComponent} from './component/appointment-list.component';
 import {AppointmentActions} from './appointment.action';
@@ -18,8 +16,8 @@ import {AppointmentStatusSelectComponent} from './component/appointment-status-s
 import {AppointmentEditorDialog} from './dialog/appointment-editor.dialog';
 import {SectionSubModule} from '../sections/index';
 import {IdentityModule} from '../../identity/index';
-import { AppointmentActionComponent } from './component/appointment-action.component';
-import { AppointmentCenterPage } from './appointment-center.page';
+import {AppointmentActionComponent} from './component/appointment-action.component';
+import {AppointmentCenterPage} from './appointment-center.page';
 
 @NgModule({
   imports: [

@@ -1,7 +1,7 @@
 import {GradebookMatrix} from '../../../shared/model/term/gradebook-matrix.interface';
 import {Student} from '../../../shared/model/identity/student.interface';
-import {Component, OnInit, ChangeDetectionStrategy, ViewContainerRef, Input, EventEmitter, Output} from '@angular/core';
-import {Router, ActivatedRoute} from '@angular/router';
+import {Component, Input, OnInit, ViewContainerRef} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Store} from '@ngrx/store';
 import {Observable} from 'rxjs';
 import {Offering} from '../../../shared/model/term/offering.interface';

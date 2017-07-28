@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {FormGroup} from '@angular/forms';
-import {FormBuilder, Validators} from '@angular/forms';
-import {Router, ActivatedRoute} from '@angular/router';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Curriculum} from '../../../../shared/model/planner/curriculum.interface';
 import {Subject} from '../../../../shared/model/planner/subject.interface';
 import {CurriculumActions} from '../curriculum.action';

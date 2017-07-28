@@ -6,14 +6,15 @@
     <div layout="column" layout-gt-md="row" class="inset">
       <div flex-gt-md="70">
         <!-- DISPLAY ENROLLMENT APPLICATION BY ADMISSION  -->
-         <pams-student-enrollment-application-list
-            [enrollmentApplication]="enrollmentApplication$ | async">
+        <pams-student-enrollment-application-list
+          [enrollmentApplication]="enrollmentApplication$ | async">
         </pams-student-enrollment-application-list>
-        <md-card class=""> 
-   <pams-student-enrollment-application-item
-          [enrollmentApplication]="enrollmentApplication$ | async"
-           [enrollmentApplicationItems]="enrollmentApplicationItems$ | async">
-        </pams-student-enrollment-application-item> </md-card>
+        <md-card class="">
+          <pams-student-enrollment-application-item
+            [enrollmentApplication]="enrollmentApplication$ | async"
+            [enrollmentApplicationItems]="enrollmentApplicationItems$ | async">
+          </pams-student-enrollment-application-item>
+        </md-card>
       </div>
       <div flex-gt-md="30">
         <!--  <pams-student-enrollment-application-task-detail-action
@@ -27,12 +28,12 @@
           <md-divider></md-divider>
           <md-nav-list
             flex dense>
-            <md-list-item [routerLink]="['/term/admission-applications/admission-application-center2']">
+            <md-list-item [routerLink]="['/secure/term/admission-applications/admission-application-center2']">
               <md-icon md-list-avatar>email</md-icon>
               <h4 md-line>Semester Registration</h4>
               <p md-line>Watch this semester registration</p>
             </md-list-item>
-            <md-list-item [routerLink]="['/term/offerings/student-offering-center']">
+            <md-list-item [routerLink]="['/secure/term/offerings/student-offering-center']">
               <md-icon md-list-avatar>email</md-icon>
               <h4 md-line>Offerings</h4>
               <p md-line>Watch this offerings</p>

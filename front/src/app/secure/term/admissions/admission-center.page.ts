@@ -1,7 +1,7 @@
 import {AdmissionCreateTaskCreatorDialog} from './dialog/admission-create-task-creator.dialog';
-import {MdDialogRef, MdDialog, MdDialogConfig} from '@angular/material';
-import {Component, OnInit, ChangeDetectionStrategy, ViewContainerRef} from '@angular/core';
-import {Router, ActivatedRoute} from '@angular/router';
+import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';
+import {Component, OnInit, ViewContainerRef} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
 
 import {Store} from '@ngrx/store';
 import {Observable} from 'rxjs';
@@ -32,13 +32,13 @@ export class AdmissionCenterPage implements OnInit {
 
   viewAdmission(admission: Admission) {
     console.log('admission: ' + admission.id);
-    this.router.navigate(['/term/admissions', admission.id]);
+    this.router.navigate(['/secure/term/admissions', admission.id]);
 
   }
 
   viewAdmissionApplication(admissionApplication: AdmissionApplication) {
     // console.log( "admission application: " + admissionApplication.id );
-    //this.router.navigate( ['/term/admission-applications', admissionApplication.id] );
+    //this.router.navigate( ['/secure/term/admission-applications', admissionApplication.id] );
 
   }
 

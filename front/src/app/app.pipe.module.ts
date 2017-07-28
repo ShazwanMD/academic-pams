@@ -1,4 +1,4 @@
-import {NgModule}      from '@angular/core';
+import {NgModule} from '@angular/core';
 import {FlowStatePipe} from './core/flow-state.pipe';
 import {AssessmentCategoryPipe} from './secure/term/assessments/assessment-category.pipe';
 import {AssessmentTypePipe} from './secure/term/assessments/assessment-type.pipe';

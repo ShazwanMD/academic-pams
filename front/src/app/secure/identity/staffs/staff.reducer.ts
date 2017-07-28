@@ -1,5 +1,5 @@
-import { Action } from '@ngrx/store';
-import { StaffActions } from './staff.action';
+import {Action} from '@ngrx/store';
+import {StaffActions} from './staff.action';
 import {Staff} from '../../../shared/model/identity/staff.interface';
 
 export type StaffState = Staff;

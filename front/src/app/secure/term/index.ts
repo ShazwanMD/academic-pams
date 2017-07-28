@@ -1,19 +1,21 @@
 import {AdmissionApplicationTask} from '../../shared/model/term/admission-application-task.interface';
-import {SectionAppointmentListState, sectionAppointmentListReducer} from './sections/section-appointment-list.reducer';
-import {SectionGradebookListState, sectionGradebookListReducer} from './sections/section-gradebook-list.reducer';
-import {EnrollmentGradebookListState, enrollmentGradebookListReducer} from './enrollments/enrollment-gradebook-list.reducer';
+import {sectionAppointmentListReducer, SectionAppointmentListState} from './sections/section-appointment-list.reducer';
+import {sectionGradebookListReducer, SectionGradebookListState} from './sections/section-gradebook-list.reducer';
+import {
+  enrollmentGradebookListReducer,
+  EnrollmentGradebookListState
+} from './enrollments/enrollment-gradebook-list.reducer';
 
 import {AssessmentSubModule} from './assessments/index';
 import {AssessmentActions} from './assessments/assessment.action';
 import {Assessment} from '../../shared/model/term/assessment.interface';
 import {Appointment} from '../../shared/model/term/appointment.interface';
-import {NgModule, ModuleWithProviders} from '@angular/core';
+import {ModuleWithProviders, NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {ReactiveFormsModule} from '@angular/forms';
 import {appRoutes, appRoutingProviders} from '../../app.routes';
 import {CovalentCoreModule} from '@covalent/core';
-import {CommonService} from '../../../services';
-import {IdentityService} from '../../../services';
+import {CommonService, IdentityService} from '../../../services';
 import {TermService} from '../../../services/term.service';
 import {TermPage} from './term.page';
 import {OfferingSubModule} from './offerings/index';
@@ -22,7 +24,7 @@ import {EnrollmentSubModule} from './enrollments/index';
 import {GradebookSubModule} from './gradebooks/index';
 import {offeringReducer, OfferingState} from './offerings/offering.reducer';
 import {enrollmentReducer, EnrollmentState} from './enrollments/enrollment.reducer';
-import {gradebookReducer, GradebookState} from './gradebooks/gradebook.reducer';
+import {GradebookState} from './gradebooks/gradebook.reducer';
 import {offeringListReducer, OfferingListState} from './offerings/offering-list.reducer';
 import {Offering} from '../../shared/model/term/offering.interface';
 import {EnrollmentApplication} from '../../shared/model/term/enrollment-application.interface';
@@ -42,21 +44,16 @@ import {EnrollmentApplicationTask} from '../../shared/model/term/enrollment-appl
 import {EnrollmentApplicationSubModule} from './enrollment-applications/index';
 import {
   enrollmentApplicationTaskReducer,
-  EnrollmentApplicationTaskState,
+  EnrollmentApplicationTaskState
 } from './enrollment-applications/enrollment-application-task.reducer';
 import {
   assignedEnrollmentApplicationTaskListReducer,
-  EnrollmentApplicationTaskListState, pooledEnrollmentApplicationTaskListReducer,
+  EnrollmentApplicationTaskListState,
+  pooledEnrollmentApplicationTaskListReducer
 } from './enrollment-applications/enrollment-application-task-list.reducer';
 import {sectionReducer, SectionState} from './sections/section.reducer';
-import {
-  admissionApplicationReducer,
-  AdmissionApplicationState,
-} from './admission-applications/admission-application.reducer';
-import {
-    enrollmentApplicationReducer,
-    EnrollmentApplicationState,
-  } from './enrollment-applications/enrollment-application.reducer';
+import {admissionApplicationReducer} from './admission-applications/admission-application.reducer';
+import {enrollmentApplicationReducer} from './enrollment-applications/enrollment-application.reducer';
 import {Section} from '../../shared/model/term/section.interface';
 import {SectionActions} from './sections/section.action';
 import {SectionSubModule} from './sections/index';
@@ -70,36 +67,37 @@ import {sectionListReducer, SectionListState} from './sections/section-list.redu
 import {EnrollmentApplicationItem} from '../../shared/model/term/enrollment-application-item.interface';
 import {
   enrollmentApplicationItemListReducer,
-  EnrollmentApplicationItemListState,
+  EnrollmentApplicationItemListState
 } from './enrollment-applications/enrollment-application-item-list.reducer';
 
 import {offeringSectionListReducer, OfferingSectionListState} from './offerings/offering-section-list.reducer';
 import {
   AdmissionApplicationTaskListState,
-  pooledAdmissionApplicationTaskListReducer,
   assignedAdmissionApplicationTaskListReducer,
+  pooledAdmissionApplicationTaskListReducer
 } from './admission-applications/admission-application-task-list.reducer';
-import {OfferingAssessmentListState, offeringAssessmentListReducer} from './offerings/offering-assessment-list.reducer';
+import {offeringAssessmentListReducer, OfferingAssessmentListState} from './offerings/offering-assessment-list.reducer';
 import {
   admissionEnrollmentListReducer,
-  AdmissionEnrollmentListState,
+  AdmissionEnrollmentListState
 } from './admissions/admission-enrollment-list.reducer';
 import {
   admissionEnrollmentApplicationListReducer,
-  AdmissionEnrollmentApplicationListState,
+  AdmissionEnrollmentApplicationListState
 } from './admissions/admission-enrollment-application-list.reducer';
 import {
   admissionApplicationTaskReducer,
-  AdmissionApplicationTaskState,
+  AdmissionApplicationTaskState
 } from './admission-applications/admission-application-task.reducer';
 import {
   admissionApplicationListReducer,
-  AdmissionApplicationListState, archivedAdmissionApplicationListReducer,
+  AdmissionApplicationListState,
+  archivedAdmissionApplicationListReducer
 } from './admission-applications/admission-application-list.reducer';
 import {
-    enrollmentApplicationListReducer,
-    EnrollmentApplicationListState, archivedEnrollmentApplicationListReducer,
-  } from './enrollment-applications/enrollment-application-list.reducer';
+  archivedEnrollmentApplicationListReducer,
+  EnrollmentApplicationListState
+} from './enrollment-applications/enrollment-application-list.reducer';
 import {AdmissionApplication} from '../../shared/model/term/admission-application.interface';
 
 export interface TermModuleState {
@@ -142,43 +140,43 @@ export interface TermModuleState {
 ;
 
 export const INITIAL_TERM_STATE: TermModuleState = <TermModuleState>{
-    offerings: <Offering[]>[],
-    offering: <Offering>{},
-    offeringSections: <Section[]>[],
-    offeringAssessments: <Assessment[]>[],
-    sections: <Section[]>[],
-    section: <Section>{},
-    sectionAppointments: <Appointment[]>[],
-    sectionGradebooks: <Gradebook[]>[],
-    enrollmentGradebooks: <Gradebook[]>[],
-    assessment: <Assessment[]>[],
-    enrollments: <Enrollment[]>[],
-    enrollment: <Enrollment>{},
+  offerings: <Offering[]>[],
+  offering: <Offering>{},
+  offeringSections: <Section[]>[],
+  offeringAssessments: <Assessment[]>[],
+  sections: <Section[]>[],
+  section: <Section>{},
+  sectionAppointments: <Appointment[]>[],
+  sectionGradebooks: <Gradebook[]>[],
+  enrollmentGradebooks: <Gradebook[]>[],
+  assessment: <Assessment[]>[],
+  enrollments: <Enrollment[]>[],
+  enrollment: <Enrollment>{},
 
-    gradebooks: <Gradebook[]>[],
-    gradebook: <Gradebook>{},
+  gradebooks: <Gradebook[]>[],
+  gradebook: <Gradebook>{},
 
-    appointments: <Appointment[]>[],
-    appointment: <Appointment>{},
-    // admission
-    admissions: <Admission[]>[],
-    admission: <Admission>{},
-    admissionEnrollments: <Enrollment[]>[],
-    admissionEnrollmentApplications: <EnrollmentApplication[]>[],
-    admissionApplications: <AdmissionApplication[]>[],
-    admissionApplication: <AdmissionApplication>{},
-    assignedAdmissionApplicationTasks: <AdmissionApplicationTask[]>[],
-    pooledAdmissionApplicationTasks: <AdmissionApplicationTask[]>[],
-    archivedAdmissionApplications: <AdmissionApplication[]>[],
-    admissionApplicationTask: <AdmissionApplicationTask>{},
-    // enrollment
-    assignedEnrollmentApplicationTasks: <EnrollmentApplicationTask[]>[],
-    pooledEnrollmentApplicationTasks: <EnrollmentApplicationTask[]>[],
-    archivedEnrollmentApplications: <EnrollmentApplication[]>[],
-    enrollmentApplicationTask: <EnrollmentApplicationTask>{},
-    enrollmentApplicationItems: <EnrollmentApplicationItem[]>[],
-    gradebookMatrices: <GradebookMatrix[]>[],
-  };
+  appointments: <Appointment[]>[],
+  appointment: <Appointment>{},
+  // admission
+  admissions: <Admission[]>[],
+  admission: <Admission>{},
+  admissionEnrollments: <Enrollment[]>[],
+  admissionEnrollmentApplications: <EnrollmentApplication[]>[],
+  admissionApplications: <AdmissionApplication[]>[],
+  admissionApplication: <AdmissionApplication>{},
+  assignedAdmissionApplicationTasks: <AdmissionApplicationTask[]>[],
+  pooledAdmissionApplicationTasks: <AdmissionApplicationTask[]>[],
+  archivedAdmissionApplications: <AdmissionApplication[]>[],
+  admissionApplicationTask: <AdmissionApplicationTask>{},
+  // enrollment
+  assignedEnrollmentApplicationTasks: <EnrollmentApplicationTask[]>[],
+  pooledEnrollmentApplicationTasks: <EnrollmentApplicationTask[]>[],
+  archivedEnrollmentApplications: <EnrollmentApplication[]>[],
+  enrollmentApplicationTask: <EnrollmentApplicationTask>{},
+  enrollmentApplicationItems: <EnrollmentApplicationItem[]>[],
+  gradebookMatrices: <GradebookMatrix[]>[],
+};
 
 export const termModuleReducers = {
   offerings: offeringListReducer,

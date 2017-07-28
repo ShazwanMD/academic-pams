@@ -3,7 +3,7 @@ import {PlannerService} from '../../../../services/planner.service';
 import {CourseActions} from '../../planner/courses/course.action';
 import {ProgramActions} from '../../planner/programs/program.action';
 import {Injectable} from '@angular/core';
-import {Effect, Actions} from '@ngrx/effects';
+import {Actions, Effect} from '@ngrx/effects';
 import {OfferingActions} from './offering.action';
 import {TermService} from '../../../../services/term.service';
 import {from} from 'rxjs/observable/from';

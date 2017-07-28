@@ -1,6 +1,6 @@
 import {FormBuilder} from '@angular/forms';
 import {AppointmentActions} from '../../appointments/appointment.action';
-import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, ViewContainerRef, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output, ViewContainerRef} from '@angular/core';
 import {Appointment} from '../../../../shared/model/term/appointment.interface';
 import {Section} from '../../../../shared/model/term/section.interface';
 import {Store} from '@ngrx/store';

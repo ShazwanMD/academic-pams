@@ -30,12 +30,12 @@
       (rowSelect)="selectRow($event)"
       (selectAll)="selectAllRows($event)"
       dense>
-      <template tdDataTableTemplate="assessmentType" let-value="value" let-row="row"	let-column="column">
+      <template tdDataTableTemplate="assessmentType" let-value="value" let-row="row" let-column="column">
         <div layout="row">
           <span flex>{{value | assessmentTypePipe }}</span>
         </div>
       </template>
-      <template tdDataTableTemplate="assessmentCategory" let-value="value" let-row="row"	let-column="column">
+      <template tdDataTableTemplate="assessmentCategory" let-value="value" let-row="row" let-column="column">
         <div layout="row">
           <span flex>{{value | assessmentCategoryPipe }}</span>
         </div>
@@ -52,8 +52,8 @@
             <md-icon>more_vert</md-icon>
           </button>
           <md-menu x-position="before" #menu1="mdMenu">
-            <!-- <button md-menu-item [routerLink]="['/term/assessments', offering.canonicalCode, row['id']]">View assesssment</button> -->
-            <!--[routerLink]="['/term/offerings', offering.canonicalCode, 'assessment-detail']"-->
+            <!-- <button md-menu-item [routerLink]="['/secure/term/assessments', offering.canonicalCode, row['id']]">View assesssment</button> -->
+            <!--[routerLink]="['/secure/term/offerings', offering.canonicalCode, 'assessment-detail']"-->
             <button md-menu-item (click)="updateAssessment(row, true)">Update assesssment</button>
             <button md-menu-item (click)="deleteAssessment(row)">Delete assesssment</button>
           </md-menu>

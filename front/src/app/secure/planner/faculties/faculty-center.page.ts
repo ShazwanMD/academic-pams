@@ -1,13 +1,13 @@
-import { Component, OnInit, ViewContainerRef } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { MdDialog, MdDialogRef, MdDialogConfig } from '@angular/material';
-import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import {Component, OnInit, ViewContainerRef} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
+import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';
+import {Store} from '@ngrx/store';
+import {Observable} from 'rxjs';
 
-import { Faculty } from '../../../shared/model/planner/faculty.interface';
-import { FacultyActions } from './faculty.action';
-import { PlannerModuleState } from '../index';
-import { FacultyCreatorDialog } from './dialog/faculty-creator.dialog';
+import {Faculty} from '../../../shared/model/planner/faculty.interface';
+import {FacultyActions} from './faculty.action';
+import {PlannerModuleState} from '../index';
+import {FacultyCreatorDialog} from './dialog/faculty-creator.dialog';
 
 @Component({
   selector: 'pams-faculty-center',
@@ -21,20 +21,20 @@ export class FacultyCenterPage implements OnInit {
 
   private creatorDialogRef: MdDialogRef<FacultyCreatorDialog>;
   private columns: any[] = [
-    { name: 'code', label: 'Code' },
-    { name: 'description', label: 'Description' },
-    { name: 'name', label: 'Name' },
-    { name: 'prefix', label: 'Prefix' },
-    { name: 'status', label: 'FacultyStatus' },
-    { name: 'action', label: '' },
+    {name: 'code', label: 'Code'},
+    {name: 'description', label: 'Description'},
+    {name: 'name', label: 'Name'},
+    {name: 'prefix', label: 'Prefix'},
+    {name: 'status', label: 'FacultyStatus'},
+    {name: 'action', label: ''},
   ];
 
   constructor(private router: Router,
-    private route: ActivatedRoute,
-    private actions: FacultyActions,
-    private store: Store<PlannerModuleState>,
-    private vcf: ViewContainerRef,
-    private dialog: MdDialog) {
+              private route: ActivatedRoute,
+              private actions: FacultyActions,
+              private store: Store<PlannerModuleState>,
+              private vcf: ViewContainerRef,
+              private dialog: MdDialog) {
     this.faculties$ = this.store.select(...this.FACULTIES);
   }
 
@@ -58,7 +58,7 @@ export class FacultyCenterPage implements OnInit {
     config.role = 'dialog';
     config.width = '65%';
     config.height = '75%';
-    config.position = { top: '0px' };
+    config.position = {top: '0px'};
     this.creatorDialogRef = this.dialog.open(FacultyCreatorDialog, config);
     if (code) this.creatorDialogRef.componentInstance.faculty = code;
 
@@ -72,7 +72,7 @@ export class FacultyCenterPage implements OnInit {
     this.router.navigate(['/faculties']);
   }
 
-  filter(): void{
+  filter(): void {
   }
 
 }

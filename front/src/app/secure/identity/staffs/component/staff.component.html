@@ -1,29 +1,36 @@
- <!-- Basic Card -->
-<md-card> <md-card-title>{{staff?.name}}</md-card-title>
-<md-card-subtitle>Identity No. {{staff?.identityNo}}</md-card-subtitle>
-<md-divider></md-divider> 
-<md-card-content>
-<!--Tab Section Here--> <md-tab-group> <md-tab
-	label="Staff Detail">
-<br>
- <div layout="column" layout-gt-md="row" class="insert">
-              <div flex-gt-md="20">
-              <img src=".\..\assets\ico\lecturer\{{staff?.identityNo}}.jpg"  width="150" height="190"/> 
-             
-              </div>
-                <div flex-gt-md="40"><br/>
-                <b>Name</b> : {{staff?.name}}<br/><br/>
-                <b>Staff ID </b> : {{staff?.identityNo}}<br/><br/>
-                <b>Email</b> : {{staff?.email}}<br/><br/>
-               
-              </div> 
-               <div flex-gt-md="40">
-                <b></b>  <br/><br/>
-                <b></b>  <br/><br/>
-                <b></b> <br/><br/>
-                <b></b>  <br/><br/>
-                <b></b>  <br/><br/>
-              </div>
-            </div>
+<!-- Basic Card -->
+<md-card>
+  <md-card-title>{{staff?.name}}</md-card-title>
+  <md-card-subtitle>Identity No. {{staff?.identityNo}}</md-card-subtitle>
+  <md-divider></md-divider>
+  <md-card-content>
+    <!--Tab Section Here-->
+    <md-tab-group>
+      <md-tab
+        label="Staff Detail">
+        <br>
+        <div layout="column" layout-gt-md="row" class="insert">
+          <div flex-gt-md="20">
+            <img src=".\..\assets\ico\lecturer\{{staff?.identityNo}}.jpg" width="150" height="190"/>
 
-</md-tab>  </md-tab-group> </md-card-content> <md-divider></md-divider><md-card>
+          </div>
+          <div flex-gt-md="40"><br/>
+            <b>Name</b> : {{staff?.name}}<br/><br/>
+            <b>Staff ID </b> : {{staff?.identityNo}}<br/><br/>
+            <b>Email</b> : {{staff?.email}}<br/><br/>
+
+          </div>
+          <div flex-gt-md="40">
+            <b></b> <br/><br/>
+            <b></b> <br/><br/>
+            <b></b> <br/><br/>
+            <b></b> <br/><br/>
+            <b></b> <br/><br/>
+          </div>
+        </div>
+
+      </md-tab>
+    </md-tab-group>
+  </md-card-content>
+  <md-divider></md-divider>
+  <md-card>

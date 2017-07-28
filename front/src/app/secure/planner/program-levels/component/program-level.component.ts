@@ -1,10 +1,10 @@
 import {Observable} from 'rxjs';
 import {Store} from '@ngrx/store';
-import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output, ViewContainerRef, OnInit} from '@angular/core';
-import {MdDialogRef, MdDialog, MdDialogConfig} from '@angular/material';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output, ViewContainerRef} from '@angular/core';
+import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';
 import {ProgramLevel} from '../../../../shared/model/planner/program-level.interface';
 import {ProgramLevelEditorDialog} from '../dialog/program-level-editor.dialog';
-import {Router, ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {ProgramLevelActions} from '../program-level.action';
 import {PlannerModuleState} from '../../index';
 import {FormControl} from '@angular/forms';

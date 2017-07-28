@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Effect, Actions} from '@ngrx/effects';
+import {Actions, Effect} from '@ngrx/effects';
 import {EnrollmentApplicationActions} from './enrollment-application.action';
 import {from} from 'rxjs/observable/from';
 import {TermService} from '../../../../services/term.service';

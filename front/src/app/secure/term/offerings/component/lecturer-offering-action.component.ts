@@ -1,12 +1,12 @@
-import { GpaCalculateDialog } from '../dialog/gpa-calculate.dialog';
-import { GradebookCalculateDialog } from '../dialog/gradebook-calculate.dialog';
-import { Component, Input, EventEmitter, Output, ChangeDetectionStrategy, ViewContainerRef } from '@angular/core';
-import { Offering } from '../../../../shared/model/term/offering.interface';
-import { OfferingUpdateDialog } from '../dialog/offering-update.dialog';
-import { MdDialog, MdDialogConfig, MdDialogRef, MdSnackBar } from '@angular/material';
-import { OfferingActions } from '../offering.action';
-import { Store } from '@ngrx/store';
-import { TermModuleState } from '../../index';
+import {GpaCalculateDialog} from '../dialog/gpa-calculate.dialog';
+import {GradebookCalculateDialog} from '../dialog/gradebook-calculate.dialog';
+import {ChangeDetectionStrategy, Component, Input, ViewContainerRef} from '@angular/core';
+import {Offering} from '../../../../shared/model/term/offering.interface';
+import {OfferingUpdateDialog} from '../dialog/offering-update.dialog';
+import {MdDialog, MdDialogConfig, MdDialogRef, MdSnackBar} from '@angular/material';
+import {OfferingActions} from '../offering.action';
+import {Store} from '@ngrx/store';
+import {TermModuleState} from '../../index';
 
 @Component({
   selector: 'pams-lecturer-offering-action',
@@ -22,10 +22,10 @@ export class LecturerOfferingActionComponent {
   @Input() offering: Offering;
 
   constructor(private actions: OfferingActions,
-    private store: Store<TermModuleState>,
-    private vcf: ViewContainerRef,
-    private dialog: MdDialog,
-    private snackBar: MdSnackBar) {
+              private store: Store<TermModuleState>,
+              private vcf: ViewContainerRef,
+              private dialog: MdDialog,
+              private snackBar: MdSnackBar) {
 
   }
 
@@ -37,7 +37,7 @@ export class LecturerOfferingActionComponent {
     config.role = 'dialog';
     config.width = '60%';
     config.height = '50%';
-    config.position = { top: '0px' };
+    config.position = {top: '0px'};
     this.editorDialogRef = this.dialog.open(OfferingUpdateDialog, config);
     this.editorDialogRef.componentInstance.offering = this.offering;
 
@@ -55,7 +55,7 @@ export class LecturerOfferingActionComponent {
     config.role = 'dialog';
     config.width = '60%';
     config.height = '50%';
-    config.position = { top: '0px' };
+    config.position = {top: '0px'};
     this.GradebookCalculateDialog = this.dialog.open(GradebookCalculateDialog, config);
     this.GradebookCalculateDialog.componentInstance.offering = this.offering;
     this.GradebookCalculateDialog.afterClosed().subscribe((res) => {
@@ -80,7 +80,7 @@ export class LecturerOfferingActionComponent {
     config.role = 'dialog';
     config.width = '60%';
     config.height = '50%';
-    config.position = { top: '0px' };
+    config.position = {top: '0px'};
     this.GpaCalculateDialog = this.dialog.open(GpaCalculateDialog, config);
     this.GpaCalculateDialog.componentInstance.offering = this.offering;
     this.GpaCalculateDialog.afterClosed().subscribe((res) => {

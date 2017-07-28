@@ -1,5 +1,5 @@
-import {MetaObject} from "../../../core/meta-object.interface";
-import {Offering} from "./offering.interface";
+import {MetaObject} from '../../../core/meta-object.interface';
+import {Offering} from './offering.interface';
 export interface Section extends MetaObject {
   code: string;
   canonicalCode: string;

@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Effect, Actions} from '@ngrx/effects';
+import {Actions, Effect} from '@ngrx/effects';
 import {ProgramLevelActions} from './program-level.action';
 import {PlannerService} from '../../../../services/planner.service';
 import {Store} from '@ngrx/store';

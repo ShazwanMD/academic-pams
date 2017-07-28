@@ -1,19 +1,19 @@
 import {
-  Component,
-  Input,
-  EventEmitter,
-  Output,
-  ChangeDetectionStrategy,
   AfterViewInit,
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
   OnChanges,
-  SimpleChange,
+  Output,
+  SimpleChange
 } from '@angular/core';
 import {Faculty} from '../../../../shared/model/planner/faculty.interface';
 import {
-  TdDataTableSortingOrder,
-  ITdDataTableSortChangeEvent,
   IPageChangeEvent,
+  ITdDataTableSortChangeEvent,
   TdDataTableService,
+  TdDataTableSortingOrder
 } from '@covalent/core';
 import {MdSnackBar} from '@angular/material';
 

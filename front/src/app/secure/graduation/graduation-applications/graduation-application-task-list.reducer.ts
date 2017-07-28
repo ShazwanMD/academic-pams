@@ -1,6 +1,6 @@
 import {Action} from '@ngrx/store';
-import {GraduationApplicationTask} from "../../../shared/model/graduation/graduation-application-task.interface";
-import {GraduationApplicationActions} from "./graduation-application.action";
+import {GraduationApplicationTask} from '../../../shared/model/graduation/graduation-application-task.interface';
+import {GraduationApplicationActions} from './graduation-application.action';
 
 export type GraduationApplicationTaskListState = GraduationApplicationTask[];
 

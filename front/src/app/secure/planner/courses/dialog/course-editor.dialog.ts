@@ -1,8 +1,7 @@
 import {Faculty} from '../../../../shared/model/planner/faculty.interface';
-import {Component, ViewContainerRef, OnInit} from '@angular/core';
-import {FormGroup, FormControl} from '@angular/forms';
-import {FormBuilder} from '@angular/forms';
-import {Router, ActivatedRoute} from '@angular/router';
+import {Component, OnInit, ViewContainerRef} from '@angular/core';
+import {FormBuilder, FormGroup} from '@angular/forms';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Course} from '../../../../shared/model/planner/course.interface';
 import {CourseActions} from '../course.action';
 import {MdDialogRef} from '@angular/material';
@@ -35,7 +34,7 @@ export class CourseEditorDialog implements OnInit {
     this.edit = true;
   }
 
-   set faculty (value: Faculty) {
+  set faculty(value: Faculty) {
     this._faculty = value;
   }
 
@@ -47,7 +46,7 @@ export class CourseEditorDialog implements OnInit {
       titleEn: '',
       status: CourseStatus.NEW,
       // faculty:<Faculty>{},
-     // classification: CourseClassification.NEW,
+      // classification: CourseClassification.NEW,
     });
 
     if (this.edit) this.editForm.patchValue(this._course);

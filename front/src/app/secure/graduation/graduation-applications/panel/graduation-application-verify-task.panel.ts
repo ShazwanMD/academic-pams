@@ -1,13 +1,10 @@
-import {Component, OnInit, ViewContainerRef, Input} from '@angular/core';
-import {Router, ActivatedRoute} from '@angular/router';
-import {MdSnackBar, MdDialog, MdDialogRef, MdDialogConfig} from "@angular/material";
-import {GraduationApplicationTask} from "../../../../shared/model/graduation/graduation-application-task.interface";
-import {GraduationApplicationActions} from "../graduation-application.action";
-import {GraduationApplicationTaskState} from "../graduation-application-task.reducer";
-import {Store} from "@ngrx/store";
-import {Observable} from "rxjs";
-import {GraduationModuleState} from "../../index";
-
+import {Component, Input, OnInit, ViewContainerRef} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
+import {MdDialog, MdSnackBar} from '@angular/material';
+import {GraduationApplicationTask} from '../../../../shared/model/graduation/graduation-application-task.interface';
+import {GraduationApplicationActions} from '../graduation-application.action';
+import {Store} from '@ngrx/store';
+import {GraduationModuleState} from '../../index';
 
 @Component({
   selector: 'pams-graduation-application-verify-task',

@@ -1,6 +1,6 @@
 import {TermService} from '../../../../services/term.service';
-import {Component, OnInit, ChangeDetectionStrategy, ViewContainerRef} from '@angular/core';
-import {Router, ActivatedRoute} from '@angular/router';
+import {Component, OnInit, ViewContainerRef} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
 
 import {Store} from '@ngrx/store';
 import {Observable} from 'rxjs';
@@ -36,8 +36,8 @@ export class StudentOfferingCenterPage implements OnInit {
 
   viewOffering(offering: Offering): void {
     console.log('offering ccode: ' + offering.canonicalCode);
-    this.router.navigate(['/term/offerings',offering.canonicalCode, 'student-offering-detail']);
-    //[routerLink]="['/term/offerings', offering.canonicalCode, 'gradebook-detail']"
+    this.router.navigate(['/secure/term/offerings', offering.canonicalCode, 'student-offering-detail']);
+    //[routerLink]="['/secure/term/offerings', offering.canonicalCode, 'gradebook-detail']"
   }
 
   createDialog(): void {

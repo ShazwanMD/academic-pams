@@ -1,15 +1,13 @@
-import { Component, OnInit, ViewContainerRef } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { MdDialogRef } from '@angular/material';
-import { MdDialogConfig } from '@angular/material';
-import { MdDialog } from '@angular/material';
-import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import {Component, OnInit, ViewContainerRef} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
+import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';
+import {Store} from '@ngrx/store';
+import {Observable} from 'rxjs';
 
-import { AcademicSession } from '../../../shared/model/planner/academic-session.interface';
-import { AcademicSessionActions } from './academic-session.action';
-import { PlannerModuleState } from '../index';
-import { AcademicSessionCreatorDialog } from './dialog/academic-session-creator.dialog';
+import {AcademicSession} from '../../../shared/model/planner/academic-session.interface';
+import {AcademicSessionActions} from './academic-session.action';
+import {PlannerModuleState} from '../index';
+import {AcademicSessionCreatorDialog} from './dialog/academic-session-creator.dialog';
 
 @Component({
   selector: 'pams-academic-session-center',
@@ -19,25 +17,24 @@ export class AcademicSessionCenterPage implements OnInit {
 
   private ACADEMIC_SESSIONS: string[] = 'plannerModuleState.academicSessions'.split('.');
   private academicSessions$: Observable<AcademicSession[]>;
-
   private creatorDialogRef: MdDialogRef<AcademicSessionCreatorDialog>;
   private columns: any[] = [
-    { name: 'code', label: 'Code' },
-    { name: 'description', label: 'Description' },
-    { name: 'current', label: 'Current' },
-    { name: 'startDate', label: 'Start Date' },
-    { name: 'endDate', label: 'End Date' },
-    { name: 'semester', label: 'AcademicSemester' },
-    { name: 'year', label: 'AcademicYear' },
-    { name: 'action', label: '' },
+    {name: 'code', label: 'Code'},
+    {name: 'description', label: 'Description'},
+    {name: 'current', label: 'Current'},
+    {name: 'startDate', label: 'Start Date'},
+    {name: 'endDate', label: 'End Date'},
+    {name: 'semester', label: 'AcademicSemester'},
+    {name: 'year', label: 'AcademicYear'},
+    {name: 'action', label: ''},
   ];
 
   constructor(private router: Router,
-    private route: ActivatedRoute,
-    private actions: AcademicSessionActions,
-    private store: Store<PlannerModuleState>,
-    private vcf: ViewContainerRef,
-    private dialog: MdDialog) {
+              private route: ActivatedRoute,
+              private actions: AcademicSessionActions,
+              private store: Store<PlannerModuleState>,
+              private vcf: ViewContainerRef,
+              private dialog: MdDialog) {
     this.academicSessions$ = this.store.select(...this.ACADEMIC_SESSIONS);
   }
 
@@ -54,7 +51,7 @@ export class AcademicSessionCenterPage implements OnInit {
     this.showDialog(null);
   }
 
-  filter(): void{
+  filter(): void {
 
   }
 
@@ -64,9 +61,9 @@ export class AcademicSessionCenterPage implements OnInit {
     config.role = 'dialog';
     config.width = '65%';
     config.height = '90%';
-    config.position =  {top: '0px'};
+    config.position = {top: '0px'};
     this.creatorDialogRef = this.dialog.open(AcademicSessionCreatorDialog, config);
-    if (code)this.creatorDialogRef.componentInstance.academicSession = code;
+    if (code) this.creatorDialogRef.componentInstance.academicSession = code;
 
     this.creatorDialogRef.afterClosed().subscribe((res) => {
       // console.log ("close dialog");

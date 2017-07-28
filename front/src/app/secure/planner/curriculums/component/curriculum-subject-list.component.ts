@@ -1,13 +1,12 @@
 import {Store} from '@ngrx/store';
 import {
-  OnInit,
-  Input,
-  OnChanges,
   ChangeDetectionStrategy,
   Component,
+  Input,
+  OnChanges,
+  OnInit,
   SimpleChange,
-  ViewContainerRef,
-  Output
+  ViewContainerRef
 } from '@angular/core';
 import {Curriculum} from '../../../../shared/model/planner/curriculum.interface';
 import {BundleSubjectPart} from '../../../../shared/model/planner/bundle-subject-part.interface';
@@ -19,7 +18,7 @@ import {CurriculumSingleSubjectDialog} from '../dialog/curriculum-single-subject
 import {CurriculumActions} from '../curriculum.action';
 import {ActivatedRoute, Router} from '@angular/router';
 import {PlannerModuleState} from '../../index';
-import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material'
+import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';
 import {Subject} from '../../../../shared/model/planner/subject.interface';
 
 @Component({

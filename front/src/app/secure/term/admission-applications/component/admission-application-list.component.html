@@ -1,34 +1,34 @@
- <td-data-table 
-[data]="admissionApplications" 
-[columns]="columns" 
-[sortBy]="summary" 
-[sortOrder]="ASC" 
-[sortable]="false"
-[multiple]="false" 
-[selectable]="false" 
-(rowSelect)="view.emit($event)" dense>
+<td-data-table
+  [data]="admissionApplications"
+  [columns]="columns"
+  [sortBy]="summary"
+  [sortOrder]="ASC"
+  [sortable]="false"
+  [multiple]="false"
+  [selectable]="false"
+  (rowSelect)="view.emit($event)" dense>
 
-    <template tdDataTableTemplate="student" let-value="value" let-row="row" let-column="column">
+  <template tdDataTableTemplate="student" let-value="value" let-row="row" let-column="column">
 
-        <div layout="row">
-            <span flex></span>
-        </div>
-    </template>
+    <div layout="row">
+      <span flex></span>
+    </div>
+  </template>
 
-    <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
+  <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
 
-        <div layout="row">
-            <span flex>{{value}}</span>
-        </div>
-    </template>
+    <div layout="row">
+      <span flex>{{value}}</span>
+    </div>
+  </template>
 
-    <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
+  <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
 
-        <div layout="row">
-            <a md-button color="accent" class="text-upper" [routerLink]="['/term/admission-applications', row['id']]"> <span>View</span>
-            </a>
-        </div>
-    </template>
+    <div layout="row">
+      <a md-button color="accent" class="text-upper" [routerLink]="['/secure/term/admission-applications', row['id']]"> <span>View</span>
+      </a>
+    </div>
+  </template>
 </td-data-table>
 <!-- <div layout="row" layout-align="start center" class="pad-left-sm pad-right-sm">
     <td-search-box #searchBox backIcon="arrow_back" class="push-right-sm" placeholder="Search here" (searchDebounce)="search($event)" [alwaysVisible]="true" flex>
@@ -51,7 +51,7 @@
   <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
     <div layout="row">
       <a md-button color="accent" class="text-upper" (click)="viewAdmissionApplication(row)" mdTooltip="View admission applications info">
-        [routerLink]="['/term/offerings', row['canonicalCode']]"
+        [routerLink]="['/secure/term/offerings', row['canonicalCode']]"
         <span>View</span>
       </a>
     </div>
@@ -59,7 +59,7 @@
 </td-data-table>
 <div class="md-padding" *ngIf="!dataTable.hasData" layout="row" layout-align="center center">
     <h3>No results to display.</h3>
-</div> 
+</div>
 <td-paging-bar #pagingBar [pageSizes]="[5, 10, 15, 20]" [total]="filteredTotal" (change)="page($event)">
     <span td-paging-bar-label hide-xs>Row per page:</span>
     {{pagingBar.range}} <span hide-xs>of {{pagingBar.total}}</span>

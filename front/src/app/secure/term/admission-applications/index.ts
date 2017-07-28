@@ -4,16 +4,13 @@ import {AssignedAdmissionApplicationTaskListComponent} from './component/assigne
 import {AdmissionApplicationTaskEditorDialog} from './dialog/admission-application-task-editor.dialog';
 import {AdmissionApplicationActionComponent} from './component/admission-application-action.component';
 import {AdmissionApplicationComponent} from './component/admission-application.component';
-import {AdmissionApplicationListComponent} from './component/admission-application-list.component';
 import '@ngrx/core/add/operator/select';
 import {appRoutes, appRoutingProviders} from '../../../app.routes';
-import {NgModule, ModuleWithProviders} from '@angular/core';
+import {ModuleWithProviders, NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {ReactiveFormsModule} from '@angular/forms';
 import {CovalentCoreModule} from '@covalent/core';
-import {TermService} from '../../../../services';
-import {CommonService} from '../../../../services';
-import {IdentityService} from '../../../../services';
+import {CommonService, IdentityService, TermService} from '../../../../services';
 import {EffectsModule} from '@ngrx/effects';
 import {AdmissionApplicationEffects} from './admission-application.effect';
 import {AdmissionApplicationActions} from './admission-application.action';
@@ -34,12 +31,11 @@ import {PipeModule} from '../../../app.pipe.module';
 import {AdmissionApplicationTaskDetailPage} from './admission-application-task-detail.page';
 import {AdmissionApplicationTaskListComponent} from './component/admission-application-task-list.component';
 import {AdmissionApplicationRegisterTaskPanel} from './panel/admission-application-register-task.panel';
-import { StudentAdmissionApplicationTaskDetailPage } from './student-admission-application-task-detail.page';
-import { AdmissionApplicationListState, archivedAdmissionApplicationListReducer } from './admission-application-list.reducer';
-import { AdmissionApplicationDetailPage } from "./admission-application-detail.page";
-import { StudentAdmissionApplicationDetailPage } from "./student-admission-application-detail.page";
-import {StudentAdmissionApplicationCenterPage } from "./admission-application-center2.page";
-import { StudentAdmissionApplicationActionComponent } from "./component/student-admission-application-action.component";
+import {StudentAdmissionApplicationTaskDetailPage} from './student-admission-application-task-detail.page';
+import {AdmissionApplicationDetailPage} from './admission-application-detail.page';
+import {StudentAdmissionApplicationDetailPage} from './student-admission-application-detail.page';
+import {StudentAdmissionApplicationCenterPage} from './admission-application-center2.page';
+import {StudentAdmissionApplicationActionComponent} from './component/student-admission-application-action.component';
 
 @NgModule({
   imports: [
@@ -74,7 +70,7 @@ import { StudentAdmissionApplicationActionComponent } from "./component/student-
     AdmissionApplicationRegisterTaskPanel,
     AdmissionApplicationTaskListComponent,
     AdmissionApplicationTaskStatusComponent,
-   // AdmissionApplicationListComponent,
+    // AdmissionApplicationListComponent,
     AdmissionApplicationComponent,
     AdmissionApplicationActionComponent,
     StudentAdmissionApplicationActionComponent,
@@ -91,7 +87,7 @@ import { StudentAdmissionApplicationActionComponent } from "./component/student-
     AdmissionApplicationComponent,
     AdmissionApplicationActionComponent,
     StudentAdmissionApplicationActionComponent,
-   // AdmissionApplicationListComponent,
+    // AdmissionApplicationListComponent,
     AssignedAdmissionApplicationTaskListComponent,
     PooledAdmissionApplicationTaskListComponent,
     ArchivedAdmissionApplicationListComponent,

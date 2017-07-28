@@ -1,10 +1,10 @@
 import {MdSnackBar} from '@angular/material';
-import {Component, Input, Output, ChangeDetectionStrategy, EventEmitter, AfterViewInit} from '@angular/core';
+import {AfterViewInit, ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
 import {
-  TdDataTableService,
   IPageChangeEvent,
   ITdDataTableSortChangeEvent,
-  TdDataTableSortingOrder,
+  TdDataTableService,
+  TdDataTableSortingOrder
 } from '@covalent/core';
 import {AdmissionApplication} from '../../../../shared/model/term/admission-application.interface';
 

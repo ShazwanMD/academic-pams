@@ -1,49 +1,56 @@
-<md-card> <md-card-title>{{section?.offering?.course?.titleEn}}</md-card-title>
-<md-card-subtitle>{{section?.offering?.course?.titleMs}}</md-card-subtitle> <md-divider></md-divider>
-<md-card-content> <!--Tab Section Here--> <md-tab-group>
-<md-tab label="Section Detail">
-<br>
-<div layout="column" class="inset">
-	<div layout="row" class="pad-bottom">
-		<span flex="20">Code</span> <span>{{section?.code}}</span>
-	</div>
-	<div layout="row" class="pad-bottom">
-		<span flex="20">Capacity</span> <span>{{section?.capacity}}</span>
-	</div>
-	<div layout="row" class="pad-bottom">
-		<span flex="20">Section Number</span> <span>{{section?.ordinal}}</span>
-	</div>
-</div>
-</md-tab> 
+<md-card>
+  <md-card-title>{{section?.offering?.course?.titleEn}}</md-card-title>
+  <md-card-subtitle>{{section?.offering?.course?.titleMs}}</md-card-subtitle>
+  <md-divider></md-divider>
+  <md-card-content> <!--Tab Section Here-->
+    <md-tab-group>
+      <md-tab label="Section Detail">
+        <br>
+        <div layout="column" class="inset">
+          <div layout="row" class="pad-bottom">
+            <span flex="20">Code</span> <span>{{section?.code}}</span>
+          </div>
+          <div layout="row" class="pad-bottom">
+            <span flex="20">Capacity</span> <span>{{section?.capacity}}</span>
+          </div>
+          <div layout="row" class="pad-bottom">
+            <span flex="20">Section Number</span> <span>{{section?.ordinal}}</span>
+          </div>
+        </div>
+      </md-tab>
 
-<md-tab label="Course Information">
-<div layout="column" class="inset">
-	<div layout="row" class="pad-bottom">
-		<span flex="20">Code</span> <span>{{section?.offering?.course?.code}}</span>
-	</div>
-	<div layout="row" class="pad-bottom">
-		<span flex="20">Title</span> <span>{{section?.offering?.course?.titleMs}}</span>
-	</div>
-	<div layout="row" class="pad-bottom">
-		<span flex="20">Credit</span> <span>{{section?.offering?.course?.credit}}</span>
-	</div>
-</div>
-</md-tab> <md-tab label="Program Information">
-<div layout="column" class="inset">
-	<div layout="row" class="pad-bottom">
-		<span flex="20">Code</span> <span>{{section?.offering?.program?.code}}</span>
-	</div>
-	<div layout="row" class="pad-bottom">
-		<span flex="20">Title</span> <span>{{section?.offering?.program?.titleMs}}</span>
-	</div>
-	<div layout="row" class="pad-bottom">
-		<span flex="20">Status</span> <span>{{section?.offering?.program?.status}}</span>
-	</div>
-	<div layout="row" class="pad-bottom">
-		<span flex="20">Faculty</span> <span>{{section?.offering?.program?.faculty?.name}}</span>
-	</div>
-	<div layout="row" class="pad-bottom">
-		<span flex="20">Faculty Desc.</span> <span>{{section?.offering?.program?.faculty?.description}}</span>
-	</div>
-</div>
-</md-tab> </md-tab-group> </md-card-content> </md-card>
+      <md-tab label="Course Information">
+        <div layout="column" class="inset">
+          <div layout="row" class="pad-bottom">
+            <span flex="20">Code</span> <span>{{section?.offering?.course?.code}}</span>
+          </div>
+          <div layout="row" class="pad-bottom">
+            <span flex="20">Title</span> <span>{{section?.offering?.course?.titleMs}}</span>
+          </div>
+          <div layout="row" class="pad-bottom">
+            <span flex="20">Credit</span> <span>{{section?.offering?.course?.credit}}</span>
+          </div>
+        </div>
+      </md-tab>
+      <md-tab label="Program Information">
+        <div layout="column" class="inset">
+          <div layout="row" class="pad-bottom">
+            <span flex="20">Code</span> <span>{{section?.offering?.program?.code}}</span>
+          </div>
+          <div layout="row" class="pad-bottom">
+            <span flex="20">Title</span> <span>{{section?.offering?.program?.titleMs}}</span>
+          </div>
+          <div layout="row" class="pad-bottom">
+            <span flex="20">Status</span> <span>{{section?.offering?.program?.status}}</span>
+          </div>
+          <div layout="row" class="pad-bottom">
+            <span flex="20">Faculty</span> <span>{{section?.offering?.program?.faculty?.name}}</span>
+          </div>
+          <div layout="row" class="pad-bottom">
+            <span flex="20">Faculty Desc.</span> <span>{{section?.offering?.program?.faculty?.description}}</span>
+          </div>
+        </div>
+      </md-tab>
+    </md-tab-group>
+  </md-card-content>
+</md-card>

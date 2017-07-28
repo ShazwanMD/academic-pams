@@ -23,7 +23,7 @@ export class AcademicYearSelectComponent implements OnInit {
     this.academicYears$ = this.store.select(...this.ACADEMIC_YEARS);
   }
 
-  ngOnInit(): void{
+  ngOnInit(): void {
     this.store.dispatch(this.actions.findAcademicYears());
   }
 

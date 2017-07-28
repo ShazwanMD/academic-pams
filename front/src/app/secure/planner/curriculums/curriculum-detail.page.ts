@@ -1,16 +1,14 @@
-import { SingleSubject } from '../../../shared/model/planner/single-subject.interface';
+import {SingleSubject} from '../../../shared/model/planner/single-subject.interface';
 import {CurriculumEditorDialog} from './dialog/curriculum-editor.dialog';
-import {MdDialogRef, MdDialogConfig} from '@angular/material/dialog';
-import {Component, Input, OnInit, ChangeDetectionStrategy} from '@angular/core';
-import {Router, ActivatedRoute} from '@angular/router';
+import {MdDialogConfig, MdDialogRef} from '@angular/material/dialog';
+import {Component, Input, OnInit, ViewContainerRef} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Store} from '@ngrx/store';
 import {Observable} from 'rxjs';
 import {Curriculum} from '../../../shared/model/planner/curriculum.interface';
 import {CurriculumActions} from './curriculum.action';
 import {PlannerModuleState} from '../index';
-import {MdDialog} from '@angular/material';
-import {ViewContainerRef} from '@angular/core';
-import {MdSnackBar} from '@angular/material';
+import {MdDialog, MdSnackBar} from '@angular/material';
 import {Subject} from '../../../shared/model/planner/subject.interface';
 
 @Component({
@@ -22,7 +20,7 @@ export class CurriculumDetailPage implements OnInit {
 
   private CURRICULUM: string[] = 'plannerModuleState.curriculum'.split('.');
   private SUBJECTS: string[] = 'plannerModuleState.subjects'.split('.');
-  private SINGLE_SUBJECT: string[] =  'plannerModuleState.singleSubjects'.split('.');
+  private SINGLE_SUBJECT: string[] = 'plannerModuleState.singleSubjects'.split('.');
   private curriculum$: Observable<Curriculum>;
   private subjects$: Observable<Subject[]>;
   private singleSubject$: Observable<SingleSubject[]>;

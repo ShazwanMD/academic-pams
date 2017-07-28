@@ -1,27 +1,29 @@
 <h2 md-dialog-title>{{edit ? 'Update' : 'Save'}} Appointment</h2>
 <md-dialog-content>
-<form [formGroup]="editorForm" novalidate>
-	<div layout="row" class="inset" flex>
-		<pams-appointment-status-select [placeholder]="'Appoinment Status'"
-			[innerFormControl]="editorForm.controls['appointmentStatus']">
-		</pams-appointment-status-select>
-		 <div class="tc-red-600" *ngIf="editorForm.get('appointmentStatus').invalid && editorForm.get('appointmentStatus').touched">
-                Please insert new appointment status!
-            </div>
-	</div>
-	 <div layout="row" class="inset" flex>
-		<pams-staff-select [placeholder]="'Select Staff'"
-			[innerFormControl]="editorForm.controls['staff']">
-		</pams-staff-select>
-		 <div class="tc-red-600" *ngIf="editorForm.get('staff').invalid && editorForm.get('staff').touched">
-                Please insert new staff!
-            </div>
-	</div>
-</form>
+  <form [formGroup]="editorForm" novalidate>
+    <div layout="row" class="inset" flex>
+      <pams-appointment-status-select [placeholder]="'Appoinment Status'"
+                                      [innerFormControl]="editorForm.controls['appointmentStatus']">
+      </pams-appointment-status-select>
+      <div class="tc-red-600"
+           *ngIf="editorForm.get('appointmentStatus').invalid && editorForm.get('appointmentStatus').touched">
+        Please insert new appointment status!
+      </div>
+    </div>
+    <div layout="row" class="inset" flex>
+      <pams-staff-select [placeholder]="'Select Staff'"
+                         [innerFormControl]="editorForm.controls['staff']">
+      </pams-staff-select>
+      <div class="tc-red-600" *ngIf="editorForm.get('staff').invalid && editorForm.get('staff').touched">
+        Please insert new staff!
+      </div>
+    </div>
+  </form>
 </md-dialog-content>
 <md-dialog-actions align="end">
-<button md-raised-button color="accent"
-	(click)="submit(editorForm.value, editorForm.valid)" [disabled]="!editorForm.valid">{{edit ?
-	'Update' : 'Save'}}</button>
+  <button md-raised-button color="accent"
+          (click)="submit(editorForm.value, editorForm.valid)" [disabled]="!editorForm.valid">{{edit ?
+    'Update' : 'Save'}}
+  </button>
 </md-dialog-actions>
 

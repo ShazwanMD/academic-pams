@@ -1,4 +1,4 @@
-import {Component, Input, ChangeDetectionStrategy, ViewContainerRef, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, OnInit, ViewContainerRef} from '@angular/core';
 import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';
 import {ActivatedRoute, Router} from '@angular/router';
 import {TermModuleState} from '../../index';

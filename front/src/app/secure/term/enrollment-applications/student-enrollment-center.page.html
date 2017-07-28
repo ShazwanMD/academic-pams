@@ -11,14 +11,14 @@
       </a>
       <md-divider></md-divider>
     </md-nav-list> -->
-     <md-nav-list list-items>
-       <a md-list-item (click)="showDialog()">
+    <md-nav-list list-items>
+      <a md-list-item (click)="showDialog()">
         <md-icon>create</md-icon>
-        Create New Enrollment Application 
+        Create New Enrollment Application
       </a>
-     
+
       <md-divider></md-divider>
-        <a md-list-item [routerLink]="['/term/admission-applications/admission-application-center2']">
+      <a md-list-item [routerLink]="['/secure/term/admission-applications/admission-application-center2']">
         <md-icon>person_add</md-icon>
         Semester Registration
       </a>
@@ -32,54 +32,62 @@
         <md-icon class="md-24">more_vert</md-icon>
       </button>
     </div>
-<!-- List Student Enrollment Data -->
-   
-     <md-card> <!-- <md-card-title>Course Enrollments</md-card-title> -->
- <md-divider></md-divider> 
- <pams-student-enrollment-list
-            [studentEnrollmentApplicationTasks]="studentEnrollmentApplicationTasks$ | async"
-            (view)="viewTask($event)"   mdTooltip="View enrollment info"></pams-student-enrollment-list>
- </md-card>
-    <md-card> <md-card-title>Curriculum</md-card-title>
-<!-- <md-card-subtitle> SESSION 201720181
-</md-card-subtitle> --> <md-divider></md-divider> 
- <!-- <td-search-box class="push-left push-right"
-                     placeholder="search"
-                     [alwaysVisible]="true"
-                     >(searchDebounce)="filter($event)"
-      </td-search-box> -->
-<md-card-content> <!--Tab Section Here-->
-<md-tab-group> 
-<md-tab label="Semester 1"> <br>
- <pams-student-offering-list
-        [offerings]="offerings$ | async" (view)="viewOffering($event)"  mdTooltip="view curriculum-semester 1 info"></pams-student-offering-list>
+    <!-- List Student Enrollment Data -->
 
-</md-tab> 
-<md-tab label="Semester 2"> <br>
- <pams-student-offering-list
-        [offerings]="offerings$ | async" (view)="viewOffering($event)" mdTooltip="view curriculum-semester 2 info"></pams-student-offering-list>
+    <md-card> <!-- <md-card-title>Course Enrollments</md-card-title> -->
+      <md-divider></md-divider>
+      <pams-student-enrollment-list
+        [studentEnrollmentApplicationTasks]="studentEnrollmentApplicationTasks$ | async"
+        (view)="viewTask($event)" mdTooltip="View enrollment info"></pams-student-enrollment-list>
+    </md-card>
+    <md-card>
+      <md-card-title>Curriculum</md-card-title>
+      <!-- <md-card-subtitle> SESSION 201720181
+      </md-card-subtitle> -->
+      <md-divider></md-divider>
+      <!-- <td-search-box class="push-left push-right"
+                          placeholder="search"
+                          [alwaysVisible]="true"
+                          >(searchDebounce)="filter($event)"
+           </td-search-box> -->
+      <md-card-content> <!--Tab Section Here-->
+        <md-tab-group>
+          <md-tab label="Semester 1"><br>
+            <pams-student-offering-list
+              [offerings]="offerings$ | async" (view)="viewOffering($event)"
+              mdTooltip="view curriculum-semester 1 info"></pams-student-offering-list>
 
-</md-tab> 
-<md-tab label="Semester 3"> <br>
- <pams-student-offering-list
-        [offerings]="offerings$ | async" (view)="viewOffering($event)" mdTooltip="view curriculum-semester 3 info"></pams-student-offering-list>
+          </md-tab>
+          <md-tab label="Semester 2"><br>
+            <pams-student-offering-list
+              [offerings]="offerings$ | async" (view)="viewOffering($event)"
+              mdTooltip="view curriculum-semester 2 info"></pams-student-offering-list>
 
-</md-tab> 
-<md-tab label="Semester 4"> <br>
- <pams-student-offering-list
-        [offerings]="offerings$ | async" (view)="viewOffering($event)" mdTooltip="view curriculum-semester 4 info"></pams-student-offering-list>
+          </md-tab>
+          <md-tab label="Semester 3"><br>
+            <pams-student-offering-list
+              [offerings]="offerings$ | async" (view)="viewOffering($event)"
+              mdTooltip="view curriculum-semester 3 info"></pams-student-offering-list>
 
-</md-tab> 
+          </md-tab>
+          <md-tab label="Semester 4"><br>
+            <pams-student-offering-list
+              [offerings]="offerings$ | async" (view)="viewOffering($event)"
+              mdTooltip="view curriculum-semester 4 info"></pams-student-offering-list>
+
+          </md-tab>
 
 
-<!-- <md-tab label="Semester 4"> <br>
+          <!-- <md-tab label="Semester 4"> <br>
 
-<md-card>
-<md-divider></md-divider> <md-card-content>
- <pams-student-offering-list
-        [offerings]="offerings$ | async" (view)="viewOffering($event)"></pams-student-offering-list>
-</md-card-content> </md-card> 
-</md-tab> -->
- </md-tab-group> </md-card-content> </md-card>
+          <md-card>
+          <md-divider></md-divider> <md-card-content>
+           <pams-student-offering-list
+                  [offerings]="offerings$ | async" (view)="viewOffering($event)"></pams-student-offering-list>
+          </md-card-content> </md-card>
+          </md-tab> -->
+        </md-tab-group>
+      </md-card-content>
+    </md-card>
   </td-layout-manage-list>
 </td-layout-nav>

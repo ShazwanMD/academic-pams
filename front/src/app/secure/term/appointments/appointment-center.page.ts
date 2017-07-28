@@ -1,13 +1,13 @@
 import {TermService} from '../../../../services/term.service';
-import {Component, OnInit, ChangeDetectionStrategy, ViewContainerRef} from '@angular/core';
-import {Router, ActivatedRoute} from '@angular/router';
+import {Component, OnInit, ViewContainerRef} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
 
 import {Store} from '@ngrx/store';
 import {Observable} from 'rxjs';
 import {Appointment} from '../../../shared/model/term/appointment.interface';
 import {AppointmentActions} from './appointment.action';
 import {TermModuleState} from '../index';
-import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';
+import {MdDialog} from '@angular/material';
 
 @Component({
   selector: 'pams-appointment-center',
@@ -34,7 +34,7 @@ export class AppointmentCenterPage implements OnInit {
 
   viewAppointment(appointment: Appointment): void {
     console.log('appointment ccode: ' + appointment.id);
-    this.router.navigate(['/term/appointments', appointment.id]);
+    this.router.navigate(['/secure/term/appointments', appointment.id]);
   }
 
   /* createDialog(): void {

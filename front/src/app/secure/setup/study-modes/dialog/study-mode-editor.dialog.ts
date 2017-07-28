@@ -1,12 +1,11 @@
-import { StudyMode } from '../../../../shared/model/common/study-mode.interface';
-import { SetupActions } from '../../setup.action';
-import { SetupModuleState } from '../../index';
-import {Component, ViewContainerRef, OnInit, AfterViewInit} from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-import {FormBuilder} from '@angular/forms';
-import {Router, ActivatedRoute} from '@angular/router';
-import {Store} from "@ngrx/store";
-import {MdDialogRef} from "@angular/material";
+import {StudyMode} from '../../../../shared/model/common/study-mode.interface';
+import {SetupActions} from '../../setup.action';
+import {SetupModuleState} from '../../index';
+import {Component, OnInit, ViewContainerRef} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {ActivatedRoute, Router} from '@angular/router';
+import {Store} from '@ngrx/store';
+import {MdDialogRef} from '@angular/material';
 
 @Component({
   selector: 'pams-study-mode-editor',
@@ -27,14 +26,15 @@ export class StudyModeEditorDialog implements OnInit {
               private actions: SetupActions) {
   }
 
-  set studyMode(value: StudyMode){
-      this._studyMode = value;
-      this.edit = true;
+  set studyMode(value: StudyMode) {
+    this._studyMode = value;
+    this.edit = true;
   }
-    ngOnInit(): void {
+
+  ngOnInit(): void {
     this.editorForm = this.formBuilder.group({
       id: null,
-      code:  ['', Validators.required],
+      code: ['', Validators.required],
       prefix: ['', Validators.required],
       description: ['', Validators.required],
     });

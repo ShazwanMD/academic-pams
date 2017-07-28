@@ -2,9 +2,8 @@ import {Curriculum} from '../../../../shared/model/planner/curriculum.interface'
 import {CourseClassification} from '../../../../shared/model/planner/course-classification.enum';
 import {Course} from '../../../../shared/model/planner/course.interface';
 import {Faculty} from '../../../../shared/model/planner/faculty.interface';
-import {Component, ViewContainerRef, OnInit} from '@angular/core';
-import {FormGroup, FormControl} from '@angular/forms';
-import {FormBuilder, Validators} from '@angular/forms';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {CourseActions} from '../course.action';
 import {Store} from '@ngrx/store';
 import {PlannerModuleState} from '../../index';
@@ -28,18 +27,19 @@ export class CourseCreatorDialog implements OnInit {
               private store: Store<PlannerModuleState>,
               private actions: CourseActions,
               /*private router: Router,
-              private route: ActivatedRoute,
-              private viewContainerRef: ViewContainerRef,*/
+               private route: ActivatedRoute,
+               private viewContainerRef: ViewContainerRef,*/
               private dialog: MdDialogRef<CourseCreatorDialog>) {
   }
 
-  set curriculum(value: Curriculum){
-  this._curriculum = value;
-}
-   set course(value: Course) {
-        this._course = value;
-        this.create = true;
-    }
+  set curriculum(value: Curriculum) {
+    this._curriculum = value;
+  }
+
+  set course(value: Course) {
+    this._course = value;
+    this.create = true;
+  }
 
   ngOnInit(): void {
     this.createForm = this.formBuilder.group({
@@ -57,11 +57,11 @@ export class CourseCreatorDialog implements OnInit {
   }
 
   save(course: Course, isValid: boolean) {
-     /*console.log("adding course");*/
-        if (!course.id) this.store.dispatch(this.actions.addCourse(course));
-        else this.store.dispatch(this.actions.updateCourse(course));
-        this.dialog.close();
-        console.log(course);
+    /*console.log("adding course");*/
+    if (!course.id) this.store.dispatch(this.actions.addCourse(course));
+    else this.store.dispatch(this.actions.updateCourse(course));
+    this.dialog.close();
+    console.log(course);
   }
 
 }

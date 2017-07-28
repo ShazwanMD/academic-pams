@@ -1,15 +1,14 @@
-import { Cohort } from '../../../shared/model/planner/cohort.interface';
-import { StudyMode } from '../../../shared/model/common/study-mode.interface';
-import { ProfileActions } from '../profile.action';
+import {Cohort} from '../../../shared/model/planner/cohort.interface';
+import {StudyMode} from '../../../shared/model/common/study-mode.interface';
+import {ProfileActions} from '../profile.action';
 import {ProfileModuleState} from '../index';
-import { Student } from '../../../shared/model/identity/student.interface';
-import {Component, ViewContainerRef, OnInit, AfterViewInit} from '@angular/core';
-import {FormGroup, FormControl} from '@angular/forms';
-import {FormBuilder} from '@angular/forms';
-import {Router, ActivatedRoute} from '@angular/router';
+import {Student} from '../../../shared/model/identity/student.interface';
+import {Component, OnInit, ViewContainerRef} from '@angular/core';
+import {FormBuilder, FormGroup} from '@angular/forms';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Store} from '@ngrx/store';
 import {MdDialogRef} from '@angular/material';
-import { StudentStatus } from '../../../shared/model/profile/student-status.enum';
+import {StudentStatus} from '../../../shared/model/profile/student-status.enum';
 
 @Component({
   selector: 'pams-detail-editor',

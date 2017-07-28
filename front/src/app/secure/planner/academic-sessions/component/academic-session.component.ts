@@ -1,16 +1,15 @@
-import { Observable } from 'rxjs';
-import { Store } from '@ngrx/store';
-import { AcademicYear } from '../../../../shared/model/planner/academic-year.interface';
-import { AcademicSemester } from '../../../../shared/model/planner/academic-semester-type.enum';
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, ViewContainerRef, OnInit } from '@angular/core';
-import { MdDialogRef, MdDialog, MdDialogConfig } from '@angular/material';
-import { AcademicSession } from '../../../../shared/model/planner/academic-session.interface';
-import { AcademicSessionCreatorDialog } from '../dialog/academic-session-creator.dialog';
-import { AcademicSessionEditorDialog } from '../dialog/academic-session-editor.dialog';
-import { Router, ActivatedRoute } from '@angular/router';
-import { AcademicSessionActions } from '../academic-session.action';
-import { PlannerModuleState } from '../../index';
-import { FormControl } from '@angular/forms';
+import {Observable} from 'rxjs';
+import {Store} from '@ngrx/store';
+import {AcademicYear} from '../../../../shared/model/planner/academic-year.interface';
+import {AcademicSemester} from '../../../../shared/model/planner/academic-semester-type.enum';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output, ViewContainerRef} from '@angular/core';
+import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';
+import {AcademicSession} from '../../../../shared/model/planner/academic-session.interface';
+import {AcademicSessionEditorDialog} from '../dialog/academic-session-editor.dialog';
+import {ActivatedRoute, Router} from '@angular/router';
+import {AcademicSessionActions} from '../academic-session.action';
+import {PlannerModuleState} from '../../index';
+import {FormControl} from '@angular/forms';
 
 @Component({
   selector: 'pams-academic-session',
@@ -23,14 +22,14 @@ export class AcademicSessionComponent implements OnInit {
   private ACADEMIC_SESSION: string[] = 'plannerModuleState.academicSession'.split('.');
   private academicSession$: Observable<AcademicSession>;
   private columns: any[] = [
-    { name: 'code', label: 'Code' },
-    { name: 'description', label: 'Description' },
-    { name: 'current', label: 'Current' },
-    { name: 'startDate', label: 'Start Date' },
-    { name: 'endDate', label: 'End Date' },
-    { name: 'semester', label: 'AcademicSemester' },
-    { name: 'year', label: 'AcademicYear' },
-    { name: 'action', label: '' },
+    {name: 'code', label: 'Code'},
+    {name: 'description', label: 'Description'},
+    {name: 'current', label: 'Current'},
+    {name: 'startDate', label: 'Start Date'},
+    {name: 'endDate', label: 'End Date'},
+    {name: 'semester', label: 'AcademicSemester'},
+    {name: 'year', label: 'AcademicYear'},
+    {name: 'action', label: ''},
   ];
 
   @Input() academicSession: AcademicSession;
@@ -42,11 +41,11 @@ export class AcademicSessionComponent implements OnInit {
 
 
   constructor(private router: Router,
-    private route: ActivatedRoute,
-    private actions: AcademicSessionActions,
-    private vcf: ViewContainerRef,
-    private store: Store<PlannerModuleState>,
-    private dialog: MdDialog) {
+              private route: ActivatedRoute,
+              private actions: AcademicSessionActions,
+              private vcf: ViewContainerRef,
+              private store: Store<PlannerModuleState>,
+              private dialog: MdDialog) {
     this.academicSession$ = this.store.select(...this.ACADEMIC_SESSION);
   }
 
@@ -64,7 +63,7 @@ export class AcademicSessionComponent implements OnInit {
     config.role = 'dialog';
     config.width = '60%';
     config.height = '80%';
-    config.position = { top: '0px' };
+    config.position = {top: '0px'};
     this.editorDialogRef = this.dialog.open(AcademicSessionEditorDialog, config);
     this.editorDialogRef.componentInstance.academicSession = this.academicSession;
 
@@ -75,7 +74,7 @@ export class AcademicSessionComponent implements OnInit {
   }
 
   selectChangeEvent(event: AcademicSession) {
-    this.innerFormControl.setValue(event, { emitEvent: false });
+    this.innerFormControl.setValue(event, {emitEvent: false});
   }
 
 }

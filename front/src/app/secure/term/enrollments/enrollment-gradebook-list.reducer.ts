@@ -1,4 +1,4 @@
-import { EnrollmentActions} from './enrollment.action';
+import {EnrollmentActions} from './enrollment.action';
 import {Gradebook} from '../../../shared/model/term/gradebook.interface';
 import {Action} from '@ngrx/store';
 

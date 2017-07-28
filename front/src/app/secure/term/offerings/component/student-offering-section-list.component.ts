@@ -1,4 +1,4 @@
-import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, ViewContainerRef, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output, ViewContainerRef} from '@angular/core';
 import {Section} from '../../../../shared/model/term/section.interface';
 import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -37,7 +37,7 @@ export class StudentOfferingSectionListComponent implements OnInit {
               private actions: SectionActions,
               private store: Store<TermModuleState>,
               private vcf: ViewContainerRef,
-              private dialog: MdDialog, ) {
+              private dialog: MdDialog,) {
   }
 
   ngOnInit(): void {

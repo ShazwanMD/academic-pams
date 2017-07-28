@@ -1,4 +1,4 @@
-import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, ViewContainerRef} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, ViewContainerRef} from '@angular/core';
 import {Course} from '../../../../shared/model/planner/course.interface';
 import {CourseEditorDialog} from '../dialog/course-editor.dialog';
 import {MdDialog, MdDialogConfig, MdDialogRef, MdSnackBar} from '@angular/material';

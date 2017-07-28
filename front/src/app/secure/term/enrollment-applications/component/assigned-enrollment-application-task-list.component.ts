@@ -1,20 +1,20 @@
 import {
-  Component,
-  Input,
-  EventEmitter,
-  Output,
-  ChangeDetectionStrategy,
   AfterViewInit,
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
   OnChanges,
+  Output,
   SimpleChange
 } from '@angular/core';
 import {MdSnackBar} from '@angular/material';
 import {EnrollmentApplicationTask} from '../../../../shared/model/term/enrollment-application-task.interface';
 import {
-  TdDataTableSortingOrder,
-  TdDataTableService,
+  IPageChangeEvent,
   ITdDataTableSortChangeEvent,
-  IPageChangeEvent
+  TdDataTableService,
+  TdDataTableSortingOrder
 } from '@covalent/core';
 
 @Component({

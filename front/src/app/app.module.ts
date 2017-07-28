@@ -1,28 +1,35 @@
 import {NgModule, Type} from '@angular/core';
-import {BrowserModule, Title}  from '@angular/platform-browser';
+import {BrowserModule, Title} from '@angular/platform-browser';
 import {RequestInterceptor} from '../config/interceptors/request.interceptor';
 
 import {CovalentCoreModule} from '@covalent/core';
-import {CovalentHttpModule, IHttpInterceptor} from '@covalent/http';
+import {CovalentHttpModule} from '@covalent/http';
 import {CovalentHighlightModule} from '@covalent/highlight';
 import {CovalentMarkdownModule} from '@covalent/markdown';
 import {CovalentChartsModule} from '@covalent/charts';
 import {NgxChartsModule} from '@swimlane/ngx-charts';
-import {StoreModule, ActionReducer, combineReducers} from '@ngrx/store';
+import {ActionReducer, combineReducers, StoreModule} from '@ngrx/store';
 
 import {AppComponent} from './app.component';
 import {appRoutes, appRoutingProviders} from './app.routes';
 
 import {
-  GraduationModule, graduationModuleReducers, GraduationModuleState,
-  INITIAL_GRADUATION_STATE,
+  GraduationModule,
+  graduationModuleReducers,
+  GraduationModuleState,
+  INITIAL_GRADUATION_STATE
 } from './secure/graduation/index';
-import {CommonModuleState, INITIAL_COMMON_STATE, commonModuleReducers} from './common/index';
-import {ProfileModule, profileModuleReducers, ProfileModuleState, INITIAL_PROFILE_STATE} from './secure/profile/index';
-import {TermModule, termModuleReducers, TermModuleState, INITIAL_TERM_STATE} from './secure/term/index';
-import {PlannerModule, plannerModuleReducers, PlannerModuleState, INITIAL_PLANNER_STATE} from './secure/planner/index';
-import {SetupModule, setupModuleReducers, SetupModuleState, INITIAL_SETUP_STATE} from './secure/setup/index';
-import {IdentityModule, identityModuleReducers, IdentityModuleState, INITIAL_IDENTITY_STATE} from './secure/identity/index';
+import {commonModuleReducers, CommonModuleState, INITIAL_COMMON_STATE} from './common/index';
+import {INITIAL_PROFILE_STATE, ProfileModule, profileModuleReducers, ProfileModuleState} from './secure/profile/index';
+import {INITIAL_TERM_STATE, TermModule, termModuleReducers, TermModuleState} from './secure/term/index';
+import {INITIAL_PLANNER_STATE, PlannerModule, plannerModuleReducers, PlannerModuleState} from './secure/planner/index';
+import {INITIAL_SETUP_STATE, SetupModule, setupModuleReducers, SetupModuleState} from './secure/setup/index';
+import {
+  IdentityModule,
+  identityModuleReducers,
+  IdentityModuleState,
+  INITIAL_IDENTITY_STATE
+} from './secure/identity/index';
 import {SectionEffects} from './secure/term/sections/section.effect';
 import {AppointmentEffects} from './secure/term/appointments/appointment.effect';
 import {StaffEffects} from './secure/identity/staffs/staff.effect';
@@ -31,8 +38,9 @@ import {AcademicSessionEffects} from './secure/planner/academic-sessions/academi
 import {PipeModule} from './app.pipe.module';
 import {environment} from '../environments/environment';
 import {
-  applicationContextReducer, ApplicationContextState,
-  INITIAL_APPLICATION_CONTEXT_STATE,
+  applicationContextReducer,
+  ApplicationContextState,
+  INITIAL_APPLICATION_CONTEXT_STATE
 } from './application-context.reducer';
 import {ApplicationContextActions} from './application-context.action';
 import {AdministratorDashboardPanel} from './secure/administrator-dashboard.panel';
@@ -43,6 +51,14 @@ import {AuthorizationService} from '../services/authorization.service';
 import {AlertService} from '../services/alert.service';
 import {AuthenticationService} from '../services/authentication.service';
 import {ReactiveFormsModule} from '@angular/forms';
+import {HomePage} from './home/home.page';
+import {SecurePage} from './secure/secure.page';
+import {LoginPage} from './login/login.page';
+import {ForgetPasswordPage} from './login/forget-password.page';
+import {DashboardPage} from './secure/dashboard.page';
+import {AuthorizedShowDirective} from './secure/identity/directive/authorized-show.directive';
+import {AuthenticatedShowDirective} from './secure/identity/directive/authenticated-show.directive';
+import {NotAuthenticatedShowDirective} from './secure/identity/directive/not-authenticated-show.directive';
 // interceptor
 const httpInterceptorProviders: Type<any>[] = [
   RequestInterceptor,
@@ -59,7 +75,6 @@ export interface ApplicationState {
   graduationModuleState: GraduationModuleState;
   setupModuleState: SetupModuleState;
 }
-;
 
 // initial state
 export const INITIAL_APP_STATE: ApplicationState =
@@ -82,8 +97,8 @@ export const applicationReducers = {
   identityModuleState: combineReducers({...identityModuleReducers}),
   profileModuleState: combineReducers({...profileModuleReducers}),
   plannerModuleState: combineReducers({...plannerModuleReducers}),
-  termModuleState: combineReducers({...termModuleReducers, }),
-  graduationModuleState: combineReducers({...graduationModuleReducers, }),
+  termModuleState: combineReducers({...termModuleReducers,}),
+  graduationModuleState: combineReducers({...graduationModuleReducers,}),
   setupModuleState: combineReducers({...setupModuleReducers}),
 };
 export const productionReducer: ActionReducer<ApplicationState> = combineReducers(applicationReducers);
@@ -94,6 +109,16 @@ export function applicationReducer(applicationState: any = INITIAL_APP_STATE, ac
 @NgModule({
   declarations: [
     AppComponent,
+    HomePage,
+    SecurePage,
+    LoginPage,
+    ForgetPasswordPage,
+    DashboardPage,
+    ForgetPasswordPage,
+    AdministratorDashboardPanel,
+    AuthorizedShowDirective,
+    AuthenticatedShowDirective,
+    NotAuthenticatedShowDirective,
   ],
   imports: [
     appRoutes,

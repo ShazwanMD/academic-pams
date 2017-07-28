@@ -11,11 +11,11 @@
         Create New Enrollment Application
       </a>
       <md-divider></md-divider>
-       <a md-list-item [routerLink]="['/term/offerings']">
+      <a md-list-item [routerLink]="['/secure/term/offerings']">
         <md-icon>create</md-icon>
         Offerings
       </a>
-      <a md-list-item [routerLink]="['/term/admissions']">
+      <a md-list-item [routerLink]="['/secure/term/admissions']">
         <md-icon>create</md-icon>
         Semester Registration
       </a>
@@ -34,17 +34,18 @@
         <md-tab label="Assigned Applications">
           <pams-assigned-enrollment-application-task-list
             [enrollmentApplicationTasks]="assignedEnrollmentApplicationTasks$ | async"
-            (view)="viewTask($event)" ></pams-assigned-enrollment-application-task-list>
+            (view)="viewTask($event)"></pams-assigned-enrollment-application-task-list>
         </md-tab>
-       <!--  <md-tab label="Pooled Applications">
-          <pams-pooled-enrollment-application-task-list
-            [enrollmentApplicationTasks]="pooledEnrollmentApplicationTasks$ | async"
-            (claim)="claimTask($event)"></pams-pooled-enrollment-application-task-list>
-        </md-tab> -->
-            <md-tab label="Archived Applications">
-            <pams-archived-enrollment-application-list [enrollmentApplications]="archivedEnrollmentApplications$ | async" (view)="viewEnrollmentApplication($event)">
-            </pams-archived-enrollment-application-list>
-          </md-tab>
+        <!--  <md-tab label="Pooled Applications">
+           <pams-pooled-enrollment-application-task-list
+             [enrollmentApplicationTasks]="pooledEnrollmentApplicationTasks$ | async"
+             (claim)="claimTask($event)"></pams-pooled-enrollment-application-task-list>
+         </md-tab> -->
+        <md-tab label="Archived Applications">
+          <pams-archived-enrollment-application-list [enrollmentApplications]="archivedEnrollmentApplications$ | async"
+                                                     (view)="viewEnrollmentApplication($event)">
+          </pams-archived-enrollment-application-list>
+        </md-tab>
       </md-tab-group>
     </md-card>
   </td-layout-manage-list>

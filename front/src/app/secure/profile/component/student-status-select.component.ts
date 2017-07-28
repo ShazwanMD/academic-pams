@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {FormControl} from '@angular/forms';
-import { StudentStatus } from '../../../shared/model/profile/student-status.enum';
+import {StudentStatus} from '../../../shared/model/profile/student-status.enum';
 
 @Component({
   selector: 'pams-student-status-select',

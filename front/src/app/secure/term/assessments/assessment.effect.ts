@@ -4,7 +4,7 @@ import {Offering} from '../../../shared/model/term/offering.interface';
 import {Store} from '@ngrx/store';
 import {AssessmentActions} from './assessment.action';
 import {Injectable} from '@angular/core';
-import {Effect, Actions} from '@ngrx/effects';
+import {Actions, Effect} from '@ngrx/effects';
 import {TermService} from '../../../../services/term.service';
 
 @Injectable()

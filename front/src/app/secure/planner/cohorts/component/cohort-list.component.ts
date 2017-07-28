@@ -1,7 +1,21 @@
-import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, AfterViewInit, OnChanges, SimpleChange} from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  Output,
+  SimpleChange
+} from '@angular/core';
 import {Cohort} from '../../../../shared/model/planner/cohort.interface';
-import { TdDataTableSortingOrder, TdDataTableService, ITdDataTableSortChangeEvent, IPageChangeEvent } from '@covalent/core';
-import { MdSnackBar } from '@angular/material';
+import {
+  IPageChangeEvent,
+  ITdDataTableSortChangeEvent,
+  TdDataTableService,
+  TdDataTableSortingOrder
+} from '@covalent/core';
+import {MdSnackBar} from '@angular/material';
 
 @Component({
   selector: 'pams-cohort-list',
@@ -30,18 +44,19 @@ export class CohortListComponent implements AfterViewInit, OnChanges {
   @Output() view = new EventEmitter<Cohort>();
 
   constructor(private _dataTableService: TdDataTableService,
-          private snackBar: MdSnackBar) {}
+              private snackBar: MdSnackBar) {
+  }
 
-   ngOnChanges(changes: {[ propName: string]: SimpleChange}) {
-       console.log('changes', changes, changes['cohorts']);
-       if (changes['cohorts']){
-           this.filteredData = changes['cohorts'].currentValue;
-           this.filteredTotal = changes['cohorts'].currentValue.length;
-           this.filter();
-         }
-       }
+  ngOnChanges(changes: { [ propName: string]: SimpleChange }) {
+    console.log('changes', changes, changes['cohorts']);
+    if (changes['cohorts']) {
+      this.filteredData = changes['cohorts'].currentValue;
+      this.filteredTotal = changes['cohorts'].currentValue.length;
+      this.filter();
+    }
+  }
 
-   ngAfterViewInit(): void {
+  ngAfterViewInit(): void {
     this.filteredData = this.cohorts;
     this.filteredTotal = this.cohorts.length;
     this.filter();
@@ -75,10 +90,10 @@ export class CohortListComponent implements AfterViewInit, OnChanges {
   }
 
   viewCohort(cohort: Cohort): void {
-   console.log('Emitting cohorts');
-   let snackBarRef = this.snackBar.open('Viewing cohorts info', 'OK');
-   snackBarRef.afterDismissed().subscribe(() => {
-   this.view.emit(cohort);
+    console.log('Emitting cohorts');
+    let snackBarRef = this.snackBar.open('Viewing cohorts info', 'OK');
+    snackBarRef.afterDismissed().subscribe(() => {
+      this.view.emit(cohort);
     });
   }
 }

@@ -1,7 +1,6 @@
-import {Component, ViewContainerRef, OnInit} from '@angular/core';
-import {FormGroup, FormControl} from '@angular/forms';
-import {FormBuilder} from '@angular/forms';
-import {Router, ActivatedRoute} from '@angular/router';
+import {Component, OnInit, ViewContainerRef} from '@angular/core';
+import {FormBuilder, FormGroup} from '@angular/forms';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Offering} from '../../../../shared/model/term/offering.interface';
 import {OfferingActions} from '../offering.action';
 import {MdDialogRef} from '@angular/material';
@@ -30,7 +29,7 @@ export class OfferingUpdateDialog implements OnInit {
               public dialog: MdDialogRef<OfferingUpdateDialog>) {
   }
 
-    set offering(value: Offering) {
+  set offering(value: Offering) {
     this._offering = value;
     this.edit = true;
   }
@@ -52,21 +51,21 @@ export class OfferingUpdateDialog implements OnInit {
     if (this.edit) this.createForm.patchValue(this._offering);
   }
 
-     submit(offering: Offering, isValid: boolean) {
-      console.log(JSON.stringify(offering));
-      this.store.dispatch(this.actions.updateOffering(offering));
-      this.dialog.close();
-    }
-
-    //submit update button
-    /*
-     submit(offering: Offering, isValid: boolean) {
-     console.log(JSON.stringify(offering));
-    if (!offering.id) this.store.dispatch(this.actions.saveOffering(offering));
-    else  this.store.dispatch(this.actions.updateOffering(offering));
+  submit(offering: Offering, isValid: boolean) {
+    console.log(JSON.stringify(offering));
+    this.store.dispatch(this.actions.updateOffering(offering));
     this.dialog.close();
-
   }
-    */
+
+  //submit update button
+  /*
+   submit(offering: Offering, isValid: boolean) {
+   console.log(JSON.stringify(offering));
+   if (!offering.id) this.store.dispatch(this.actions.saveOffering(offering));
+   else  this.store.dispatch(this.actions.updateOffering(offering));
+   this.dialog.close();
+
+   }
+   */
 }
 

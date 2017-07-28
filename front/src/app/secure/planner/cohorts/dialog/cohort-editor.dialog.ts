@@ -1,15 +1,12 @@
 import {Component, OnInit} from '@angular/core';
-import {FormGroup} from '@angular/forms';
-import {FormBuilder, Validators} from '@angular/forms';
-import {Router, ActivatedRoute} from '@angular/router';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Cohort} from '../../../../shared/model/planner/cohort.interface';
 import {CohortActions} from '../cohort.action';
-;
 import {Store} from '@ngrx/store';
 import {PlannerModuleState} from '../../index';
 import {MdDialogRef} from '@angular/material';
-import {AcademicSession} from '../../../../shared/model/planner/academic-session.interface';
-import {Program} from '../../../../shared/model/planner/program.interface';
+;
 
 @Component({
   selector: 'pams-cohort-editor',

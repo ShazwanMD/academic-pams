@@ -1,4 +1,4 @@
-import { NationalityCode } from '../../../shared/model/common/nationality-code.interface';
+import {NationalityCode} from '../../../shared/model/common/nationality-code.interface';
 import {SetupActions} from '../setup.action';
 import {Action} from '@ngrx/store';
 

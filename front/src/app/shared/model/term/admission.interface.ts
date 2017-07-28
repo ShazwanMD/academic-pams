@@ -1,11 +1,10 @@
-import { StudyCenter } from '../../../secure/setup/study-centers/study-center.interface';
-import { Cohort } from '../planner/cohort.interface';
-import { Section } from "./section.interface";
-import { Student } from "../identity/student.interface";
-import { AcademicSession } from "../planner/academic-session.interface";
-import { MetaObject } from "../../../core/meta-object.interface";
-import { AdmissionStatus } from "./admission-status.enum";
-import { AcademicStanding } from "./academic-standing.enum";
+import {StudyCenter} from '../../../secure/setup/study-centers/study-center.interface';
+import {Cohort} from '../planner/cohort.interface';
+import {Student} from '../identity/student.interface';
+import {AcademicSession} from '../planner/academic-session.interface';
+import {MetaObject} from '../../../core/meta-object.interface';
+import {AdmissionStatus} from './admission-status.enum';
+import {AcademicStanding} from './academic-standing.enum';
 
 export interface Admission extends MetaObject {
 

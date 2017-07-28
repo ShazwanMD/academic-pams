@@ -1,8 +1,6 @@
-import {Router, ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Component, OnInit, ViewContainerRef} from '@angular/core';
-import {MdDialogRef} from '@angular/material';
-import {MdDialogConfig} from '@angular/material';
-import {MdDialog} from '@angular/material';
+import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';
 import {Store} from '@ngrx/store';
 import {Observable} from 'rxjs';
 import {Program} from '../../../shared/model/planner/program.interface';
@@ -68,9 +66,9 @@ export class ProgramCenterPage implements OnInit {
     });
   }
 
-   goBack(route: string): void {
+  goBack(route: string): void {
     this.router.navigate(['/programs']);
-   }
+  }
 
   filter(): void {
   }

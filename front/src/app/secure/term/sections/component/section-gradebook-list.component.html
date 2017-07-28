@@ -5,88 +5,88 @@
       <md-chip color="accent">{{gradebooks?.length}}</md-chip>
     </md-chip-list>
     <span flex></span>
-    <button md-button class="md-icon-button" [routerLink]="['/term/enrollment-applications']"
+    <button md-button class="md-icon-button" [routerLink]="['/secure/term/enrollment-applications']"
             mdTooltip="Add new enrollment">
       <md-icon class="md-24 tc-grey-700">add</md-icon>
     </button>
   </div>
   <md-divider></md-divider>
-  <md-card-content>    
-    <td-data-table 
-[data]="gradebooks" 
-[columns]="columns" 
+  <md-card-content>
+    <td-data-table
+[data]="gradebooks"
+[columns]="columns"
 [sortBy]="code"
-[sortOrder]="ASC" 
-[sortable]="false" 
+[sortOrder]="ASC"
+[sortable]="false"
 [multiple]="false"
-[selectable]="false" 
+[selectable]="false"
 (rowSelect)="view.emit($event)" dense>
 <template tdDataTableTemplate="key" let-value="value" let-row="row"
   let-column="column">
 <div layout="row">
   <span flex>{{value}}</span>
 </div>
-</template> 
+</template>
 <template tdDataTableTemplate="action" let-value="value" let-row="row"
   let-column="column">
 <div layout="row" mdTooltip="View this gradebook details">
   <a md-button color="accent" class="text-upper"
-    [routerLink]="['/term/enrollments', row['id']]"> <span>View Gradebook</span>
+    [routerLink]="['/secure/term/enrollments', row['id']]"> <span>View Gradebook</span>
   </a>
 </div>
 </template> </td-data-table>
 
   </md-card-content>
-</md-card> 
+</md-card>
 
   -->
-  
- <md-card>
+
+<md-card>
   <div toolbar-buttons layout="row" layout-align="start center" flex>
     <md-card-title>Gradebooks</md-card-title>
     <md-chip-list *ngIf="gradebooks?.length > 0">
       <md-chip color="accent">{{gradebooks?.length}}</md-chip>
     </md-chip-list>
     <span flex></span>
-   </div>
+  </div>
   <md-divider></md-divider>
   <md-card-content>
-     <div layout="row" layout-align="start center" class="pad-left-sm pad-right-sm">
-    <td-search-box #searchBox backIcon="arrow_back" class="push-right-sm" placeholder="Search here" (searchDebounce)="search($event)" [alwaysVisible]="true" flex>
-    </td-search-box>
-</div>
-<md-divider></md-divider>
-<td-data-table
-    #dataTable
-    [data]="filteredData"
-    [columns]="columns"
-    [sortable]="true"
-    [sortBy]="sortBy"
-    [sortOrder]="sortOrder"
-    (sortChange)="sort($event)">
-  <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
-    <div layout="row">
-      <span flex>{{value}}</span>
+    <div layout="row" layout-align="start center" class="pad-left-sm pad-right-sm">
+      <td-search-box #searchBox backIcon="arrow_back" class="push-right-sm" placeholder="Search here"
+                     (searchDebounce)="search($event)" [alwaysVisible]="true" flex>
+      </td-search-box>
     </div>
-  </template>
-  <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
-    <!--  <div layout="row">
-    <button md-icon-button [md-menu-trigger-for]="menu1" mdTooltip="Select enrollment actions">
-            <md-icon>more_vert</md-icon>
-          </button>
-          <md-menu x-position="before" #menu1="mdMenu">
-            <button md-menu-item [routerLink]="['/term/enrollments', row['id']]">View gradebooks info</button>
-           </md-menu>
-    </div>  -->
-  </template>
-</td-data-table>
-<div class="md-padding" *ngIf="!dataTable.hasData" layout="row" layout-align="center center">
-    <h3>No results to display.</h3>
-</div> 
-<td-paging-bar #pagingBar [pageSizes]="[5, 10, 15, 20, 30]" [total]="filteredTotal" (change)="page($event)">
-    <span td-paging-bar-label hide-xs>Row per page:</span>
-    {{pagingBar.range}} <span hide-xs>of {{pagingBar.total}}</span>
-</td-paging-bar>  
+    <md-divider></md-divider>
+    <td-data-table
+      #dataTable
+      [data]="filteredData"
+      [columns]="columns"
+      [sortable]="true"
+      [sortBy]="sortBy"
+      [sortOrder]="sortOrder"
+      (sortChange)="sort($event)">
+      <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
+        <div layout="row">
+          <span flex>{{value}}</span>
+        </div>
+      </template>
+      <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
+        <!--  <div layout="row">
+        <button md-icon-button [md-menu-trigger-for]="menu1" mdTooltip="Select enrollment actions">
+                <md-icon>more_vert</md-icon>
+              </button>
+              <md-menu x-position="before" #menu1="mdMenu">
+                <button md-menu-item [routerLink]="['/secure/term/enrollments', row['id']]">View gradebooks info</button>
+               </md-menu>
+        </div>  -->
+      </template>
+    </td-data-table>
+    <div class="md-padding" *ngIf="!dataTable.hasData" layout="row" layout-align="center center">
+      <h3>No results to display.</h3>
+    </div>
+    <td-paging-bar #pagingBar [pageSizes]="[5, 10, 15, 20, 30]" [total]="filteredTotal" (change)="page($event)">
+      <span td-paging-bar-label hide-xs>Row per page:</span>
+      {{pagingBar.range}} <span hide-xs>of {{pagingBar.total}}</span>
+    </td-paging-bar>
   </md-card-content>
 </md-card>
- 

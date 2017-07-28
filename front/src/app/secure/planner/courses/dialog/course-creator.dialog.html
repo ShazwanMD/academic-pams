@@ -1,55 +1,59 @@
 <h2 md-dialog-title>Create New Course</h2>
 <md-dialog-content>
-<form [formGroup]="createForm" novalidate>
+  <form [formGroup]="createForm" novalidate>
 
-	<div layout="row" class="pad-bottom">
-		<md-input-container flex> <input mdInput #code
-			placeholder="Code" formControlName="code" flex /> </md-input-container>
-		<div class="error"
-			*ngIf="createForm.get('code').invalid && createForm.get('code').touched">
-			Code should be at least {{minLength}} characters!</div>
-	</div>
-	<div layout="row" class="pad-bottom">
-		<md-input-container fxFlex="calc(100%-25px)"> <input
-			mdInput #title placeholder="TitleMs" formControlName="titleMs" flex />
-		</md-input-container>
-		<div class="error"
-			*ngIf="createForm.get('titleMs').invalid && createForm.get('titleMs').touched">
-			titleMs should be at least {{minLength}} characters!</div>
-	</div>
+    <div layout="row" class="pad-bottom">
+      <md-input-container flex><input mdInput #code
+                                      placeholder="Code" formControlName="code" flex/></md-input-container>
+      <div class="error"
+           *ngIf="createForm.get('code').invalid && createForm.get('code').touched">
+        Code should be at least {{minLength}} characters!
+      </div>
+    </div>
+    <div layout="row" class="pad-bottom">
+      <md-input-container fxFlex="calc(100%-25px)"><input
+        mdInput #title placeholder="TitleMs" formControlName="titleMs" flex/>
+      </md-input-container>
+      <div class="error"
+           *ngIf="createForm.get('titleMs').invalid && createForm.get('titleMs').touched">
+        titleMs should be at least {{minLength}} characters!
+      </div>
+    </div>
 
-	<div layout="row" class="pad-bottom">
-		<md-input-container fxFlex="calc(100%-25px)"> <input
-			mdInput #title placeholder="TitleEn" formControlName="titleEn" flex />
-		</md-input-container>
-		<div class="error"
-			*ngIf="createForm.get('titleEn').invalid && createForm.get('titleEn').touched">
-			titleEn should be at least {{minLength}} characters!</div>
-	</div>
+    <div layout="row" class="pad-bottom">
+      <md-input-container fxFlex="calc(100%-25px)"><input
+        mdInput #title placeholder="TitleEn" formControlName="titleEn" flex/>
+      </md-input-container>
+      <div class="error"
+           *ngIf="createForm.get('titleEn').invalid && createForm.get('titleEn').touched">
+        titleEn should be at least {{minLength}} characters!
+      </div>
+    </div>
 
 
-	<div layout="row" class="pad-bottom pad-top">
-		<pams-course-status-select [placeholder]="'Status'" required
-			md-maxlength="10" [innerFormControl]="createForm.controls.status"
-			fxFlex="calc(50%-25px)" class="pad-bottom">
-		</pams-course-status-select>
-	</div>
+    <div layout="row" class="pad-bottom pad-top">
+      <pams-course-status-select [placeholder]="'Status'" required
+                                 md-maxlength="10" [innerFormControl]="createForm.controls.status"
+                                 fxFlex="calc(50%-25px)" class="pad-bottom">
+      </pams-course-status-select>
+    </div>
 
-	<div layout="row" class="pad-bottom pad-top">
-		<pams-course-classification-select
-			[placeholder]="'Select classification'" required md-maxlength="10"
-			[innerFormControl]="createForm.controls.classification"
-			fxFlex="calc(100%-25px)" class="pad-bottom">
-		</pams-course-classification-select>
-	</div>
-	<div layout="row" class="pad-bottom pad-top">
-		<pams-faculty-select [placeholder]="'Select faculty'"
-			[innerFormControl]="createForm.controls.faculty"
-			fxFlex="calc(100%-25px)" class="pad-bottom"> </pams-faculty-select>
-	</div>
-</form>
+    <div layout="row" class="pad-bottom pad-top">
+      <pams-course-classification-select
+        [placeholder]="'Select classification'" required md-maxlength="10"
+        [innerFormControl]="createForm.controls.classification"
+        fxFlex="calc(100%-25px)" class="pad-bottom">
+      </pams-course-classification-select>
+    </div>
+    <div layout="row" class="pad-bottom pad-top">
+      <pams-faculty-select [placeholder]="'Select faculty'"
+                           [innerFormControl]="createForm.controls.faculty"
+                           fxFlex="calc(100%-25px)" class="pad-bottom"></pams-faculty-select>
+    </div>
+  </form>
 </md-dialog-content>
 <md-dialog-actions align="end">
-<button md-raised-button color="accent" [disabled]="createForm.invalid"
-	(click)="save(createForm.value, createForm.valid)">Save</button>
+  <button md-raised-button color="accent" [disabled]="createForm.invalid"
+          (click)="save(createForm.value, createForm.valid)">Save
+  </button>
 </md-dialog-actions>

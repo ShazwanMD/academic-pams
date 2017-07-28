@@ -1,12 +1,11 @@
-import { SetupActions } from '../../setup.action';
-import { SetupModuleState } from '../../index';
-import { ReligionCode } from '../../../../shared/model/common/religion-code.interface';
-import {Component, ViewContainerRef, OnInit, AfterViewInit} from '@angular/core';
-import {FormGroup, FormControl} from '@angular/forms';
-import {FormBuilder} from '@angular/forms';
-import {Router, ActivatedRoute} from '@angular/router';
-import {Store} from "@ngrx/store";
-import {MdDialogRef} from "@angular/material";
+import {SetupActions} from '../../setup.action';
+import {SetupModuleState} from '../../index';
+import {ReligionCode} from '../../../../shared/model/common/religion-code.interface';
+import {Component, OnInit, ViewContainerRef} from '@angular/core';
+import {FormBuilder, FormGroup} from '@angular/forms';
+import {ActivatedRoute, Router} from '@angular/router';
+import {Store} from '@ngrx/store';
+import {MdDialogRef} from '@angular/material';
 
 @Component({
   selector: 'pams-religion-code-editor',
@@ -27,11 +26,12 @@ export class ReligionCodeEditorDialog implements OnInit {
               private actions: SetupActions) {
   }
 
-  set religionCode(value: ReligionCode){
-      this._religionCode = value;
-      this.edit = true;
+  set religionCode(value: ReligionCode) {
+    this._religionCode = value;
+    this.edit = true;
   }
-    ngOnInit(): void {
+
+  ngOnInit(): void {
     this.editorForm = this.formBuilder.group(<ReligionCode>{
       id: null,
       code: '',

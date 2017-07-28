@@ -1,8 +1,7 @@
-import { Guarantor } from '../../../shared/model/profile/guarantor.interface';
-import {Component, ViewContainerRef, OnInit, AfterViewInit} from '@angular/core';
-import {FormGroup, FormControl} from '@angular/forms';
-import {FormBuilder} from '@angular/forms';
-import {Router, ActivatedRoute} from '@angular/router';
+import {Guarantor} from '../../../shared/model/profile/guarantor.interface';
+import {Component, OnInit, ViewContainerRef} from '@angular/core';
+import {FormBuilder, FormGroup} from '@angular/forms';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Store} from '@ngrx/store';
 import {MdDialogRef} from '@angular/material';
 import {Student} from '../../../shared/model/identity/student.interface';
@@ -54,7 +53,7 @@ export class GuarantorEditorDialog implements OnInit {
 
   submit(guarantor: Guarantor, isValid: boolean) {
     if (isValid)
-    guarantor.id = this._guarantor.id;
+      guarantor.id = this._guarantor.id;
 
     if (isValid) this.store.dispatch(this.actions.updateGuarantor(this._student, guarantor));
     else this.store.dispatch(this.actions.addGuarantor(this._student, guarantor));

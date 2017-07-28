@@ -1,24 +1,21 @@
 import {
-  Component,
-  Input,
-  EventEmitter,
-  Output,
-  ChangeDetectionStrategy,
   AfterViewInit,
-  SimpleChange,
-  OnChanges
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  Output,
+  SimpleChange
 } from '@angular/core';
-import {AcademicSession} from "../../../../shared/model/planner/academic-session.interface";
+import {AcademicSession} from '../../../../shared/model/planner/academic-session.interface';
 import {
-  TdDataTableSortingOrder,
-  ITdDataTableSortChangeEvent,
   IPageChangeEvent,
-  TdDataTableService
-} from "@covalent/core";
-import {MdSnackBar} from "@angular/material";
-import {PlannerModuleState} from '../../index';
-import {Observable} from 'rxjs';
-import {AcademicSessionActions} from '../academic-session.action';
+  ITdDataTableSortChangeEvent,
+  TdDataTableService,
+  TdDataTableSortingOrder
+} from '@covalent/core';
+import {MdSnackBar} from '@angular/material';
 
 @Component({
   selector: 'pams-academic-session-list',
@@ -52,17 +49,16 @@ export class AcademicSessionListComponent implements AfterViewInit, OnChanges {
   }
 
   viewAcademicSession(academicSession: AcademicSession): void {
-    console.log("Emitting academicSessions");
-    let snackBarRef = this.snackBar.open("Viewing academicSession info", "OK");
+    console.log('Emitting academicSessions');
+    let snackBarRef = this.snackBar.open('Viewing academicSession info', 'OK');
     snackBarRef.afterDismissed().subscribe(() => {
       this.view.emit(academicSession);
     });
 
   }
 
-
   ngOnChanges(changes: { [ propName: string]: SimpleChange }) {
-    console.log("changes", changes, changes['academicSessions']);
+    console.log('changes', changes, changes['academicSessions']);
     if (changes['academicSessions']) {
       this.filteredData = changes['academicSessions'].currentValue;
       this.filteredTotal = changes['academicSessions'].currentValue.length;

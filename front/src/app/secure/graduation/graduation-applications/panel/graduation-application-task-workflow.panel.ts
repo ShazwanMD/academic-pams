@@ -1,15 +1,19 @@
 import {
-  Component, OnInit, ViewChild, ViewContainerRef,
-  ComponentFactoryResolver, ComponentRef, Input, AfterViewInit
+  Component,
+  ComponentFactoryResolver,
+  ComponentRef,
+  Input,
+  OnInit,
+  ViewChild,
+  ViewContainerRef
 } from '@angular/core';
-import {Observable} from "rxjs";
-import {GraduationApplicationTask} from "../../../shared/model/graduation/graduation-application-task.interface";
-import {GraduationApplicationDraftTaskPanel} from "./graduation-application-draft-task.panel";
-import {FlowState} from "../../../core/flow-state.enum";
-import {GraduationApplicationRegisterTaskPanel} from "./graduation-application-register-task.panel";
-import {GraduationApplicationVerifyTaskPanel} from "./graduation-application-verify-task.panel";
-import {GraduationApplicationCheckTaskPanel} from "./graduation-application-check-task.panel";
-
+import {Observable} from 'rxjs';
+import {GraduationApplicationDraftTaskPanel} from './graduation-application-draft-task.panel';
+import {GraduationApplicationRegisterTaskPanel} from './graduation-application-register-task.panel';
+import {GraduationApplicationVerifyTaskPanel} from './graduation-application-verify-task.panel';
+import {GraduationApplicationCheckTaskPanel} from './graduation-application-check-task.panel';
+import {GraduationApplicationTask} from '../../../../shared/model/graduation/graduation-application-task.interface';
+import {FlowState} from '../../../../core/flow-state.enum';
 
 @Component({
   selector: 'pams-graduation-application-task-workflow',
@@ -29,10 +33,10 @@ export class GraduationApplicationTaskWorkflowPanel implements OnInit {
 
   ngOnInit(): void {
     let componentFactory;
-    this.graduationApplicationTaskObservable.subscribe(task => {
+    this.graduationApplicationTaskObservable.subscribe((task) => {
       if (task.flowState) {
 
-        console.log("task flowState: " + task.flowState);
+        console.log('task flowState: ' + task.flowState);
         if (this.componentRef) this.componentRef.destroy();
         switch (FlowState[task.flowState.toString()]) {
           case FlowState.DRAFTED:

@@ -1,6 +1,5 @@
 import {SetupActions} from '../setup.action';
 import {Action} from '@ngrx/store';
-import {CommonActions} from '../../../common/common.action';
 import {CountryCode} from '../../../shared/model/common/country-code.interface';
 
 

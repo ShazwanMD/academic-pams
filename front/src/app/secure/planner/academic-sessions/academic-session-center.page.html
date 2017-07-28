@@ -24,19 +24,20 @@
 
 
     <md-card class="">
-     <!--  <td-search-box class="push-left push-right" placeholder="search" [alwaysVisible]="true" (searchDebounce)="filter($event)">
-      </td-search-box> -->
+      <!--  <td-search-box class="push-left push-right" placeholder="search" [alwaysVisible]="true" (searchDebounce)="filter($event)">
+       </td-search-box> -->
 
-      <pams-academic-session-list [academicSessions]="academicSessions$ | async" (view)="viewAcademicSession($event)"></pams-academic-session-list>
-      
-  
+      <pams-academic-session-list [academicSessions]="academicSessions$ | async"
+                                  (view)="viewAcademicSession($event)"></pams-academic-session-list>
+
+
       <md-divider></md-divider>
 
-   <!--    <md-card-actions>
-        <a md-button color="accent" class="text-upper" [routerLink]="['/session-search']">
-          <span>View More</span>
-        </a>
-      </md-card-actions> -->
+      <!--    <md-card-actions>
+           <a md-button color="accent" class="text-upper" [routerLink]="['/session-search']">
+             <span>View More</span>
+           </a>
+         </md-card-actions> -->
     </md-card>
   </td-layout-manage-list>
 </td-layout-nav>

@@ -1,7 +1,5 @@
 import {Action} from '@ngrx/store';
-
-import * as _ from 'lodash';
-import {StaffActions} from "./staff.action";
+import {StaffActions} from './staff.action';
 import {Staff} from '../../../shared/model/identity/staff.interface';
 
 export type StaffListState = Staff[];

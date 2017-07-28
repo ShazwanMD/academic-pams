@@ -1,6 +1,6 @@
-import {Component, AfterViewInit} from '@angular/core';
-import {Title}     from '@angular/platform-browser';
-import {TdLoadingService, TdDigitsPipe} from '@covalent/core';
+import {AfterViewInit, Component} from '@angular/core';
+import {Title} from '@angular/platform-browser';
+import {TdLoadingService} from '@covalent/core';
 
 @Component({
   selector: 'pams-dashboard',

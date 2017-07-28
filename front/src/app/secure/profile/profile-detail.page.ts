@@ -1,9 +1,8 @@
 import {StudyModeSwitcherDialog} from './dialog/study-mode-switcher.dialog';
 import {CohortTransfererDialog} from './dialog/cohort-transferer.dialog';
 import {Enrollment} from '../../shared/model/term/enrollment.interface';
-import {Address} from '../../shared/model/profile/address.interface';
-import {Input, Component, OnInit, ChangeDetectionStrategy, ViewContainerRef} from '@angular/core';
-import {Router, ActivatedRoute} from '@angular/router';
+import {Component, Input, OnInit, ViewContainerRef} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
 
 import {Store} from '@ngrx/store';
 import {Student} from '../../shared/model/identity/student.interface';
@@ -12,7 +11,7 @@ import {ProfileModuleState} from './index';
 import {Contact} from '../../shared/model/profile/contact.interface';
 import {Guardian} from '../../shared/model/profile/guardian.interface';
 import {Guarantor} from '../../shared/model/profile/guarantor.interface';
-import {MdSnackBar, MdDialogConfig, MdDialog, MdDialogRef} from '@angular/material';
+import {MdDialog, MdDialogRef, MdSnackBar} from '@angular/material';
 import {Observable} from 'rxjs';
 
 @Component({

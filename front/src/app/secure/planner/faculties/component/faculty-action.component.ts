@@ -1,7 +1,6 @@
 import {FacultyEditorDialog} from '../dialog/faculty-editor.dialog';
 import {Store} from '@ngrx/store';
-import {MdSnackBar, MdDialogConfig, MdDialogRef} from '@angular/material';
-import {MdDialog} from '@angular/material';
+import {MdDialog, MdDialogConfig, MdDialogRef, MdSnackBar} from '@angular/material';
 import {PlannerModuleState} from '../../';
 import {ChangeDetectionStrategy, Component, Input, ViewContainerRef} from '@angular/core';
 

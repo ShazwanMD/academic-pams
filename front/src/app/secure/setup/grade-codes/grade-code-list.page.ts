@@ -1,6 +1,4 @@
-import {MdDialogRef} from '@angular/material';
-import {MdDialogConfig} from '@angular/material';
-import {MdDialog} from '@angular/material';
+import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';
 import {GradeCodeEditorDialog} from './dialog/grade-code-editor.dialog';
 import {GradeCode} from '../../../shared/model/common/grade-code.interface';
 import {Observable} from 'rxjs/Observable';
@@ -21,9 +19,9 @@ export class GradeCodeListPage implements OnInit {
     {name: 'code', label: 'Code'},
     {name: 'ordinal', label: 'Ordinal'},
     {name: 'description', label: 'Description'},
-    {name: 'point', label:'Point',numeric: true, format: v => v.toFixed(2), filter: true},
-    {name: 'min', label:'Min'},
-    {name: 'max', label:'Max'},
+    {name: 'point', label: 'Point', numeric: true, format: v => v.toFixed(2), filter: true},
+    {name: 'min', label: 'Min'},
+    {name: 'max', label: 'Max'},
     {name: 'action', label: ''}
   ];
 

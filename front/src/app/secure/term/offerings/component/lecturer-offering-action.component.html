@@ -1,36 +1,38 @@
-<md-card class="bgc-green-600" flex> <md-card-content
-	class="text-center">
-<div class="md-display-1">{{offering?.course?.code}}</div>
-<div layout="column" layout-padding>
-	<div class="md-subhead tc-grey-100">{{offering?.program?.level?.description}}</div>
+<md-card class="bgc-green-600" flex>
+  <md-card-content
+    class="text-center">
+    <div class="md-display-1">{{offering?.course?.code}}</div>
+    <div layout="column" layout-padding>
+      <div class="md-subhead tc-grey-100">{{offering?.program?.level?.description}}</div>
 
-</div>
-</md-card-content> </md-card>
+    </div>
+  </md-card-content>
+</md-card>
 <md-card>
   <md-card-title>Action</md-card-title>
   <md-card-subtitle>Actions available on current offering</md-card-subtitle>
   <md-divider></md-divider>
 
   <md-nav-list flex dense>
-            <md-list-item
-				[routerLink]="['/identity/staffs']">
-			<md-icon md-list-avatar>menu</md-icon>
-			<h4 md-line>Staff Center</h4>
-			<p md-line>Watch this staff center page</p>
-			</md-list-item> 
-			<md-list-item
-				[routerLink]="['/term/offerings/lecturer-offering-center']">
-			<md-icon md-list-avatar>menu</md-icon>
-			<h4 md-line>Offerings</h4>
-			<p md-line>Watch this offerings</p>
-			</md-list-item> 
-	
-     <md-list-item [routerLink]="['/term/offerings', offering.canonicalCode, 'gradebook-detail']">
+    <md-list-item
+      [routerLink]="['/identity/staffs']">
+      <md-icon md-list-avatar>menu</md-icon>
+      <h4 md-line>Staff Center</h4>
+      <p md-line>Watch this staff center page</p>
+    </md-list-item>
+    <md-list-item
+      [routerLink]="['/secure/term/offerings/lecturer-offering-center']">
+      <md-icon md-list-avatar>menu</md-icon>
+      <h4 md-line>Offerings</h4>
+      <p md-line>Watch this offerings</p>
+    </md-list-item>
+
+    <md-list-item [routerLink]="['/secure/term/offerings', offering.canonicalCode, 'gradebook-detail']">
       <md-icon md-list-avatar>done_all</md-icon>
       <h4 md-line>Gradebook</h4>
       <p md-line>View gradebook</p>
     </md-list-item>
-     <md-list-item (click)="calculateGradebooks()">
+    <md-list-item (click)="calculateGradebooks()">
       <md-icon md-list-avatar>add_circle</md-icon>
       <h4 md-line>Calculate Gradebook</h4>
       <p md-line>Calculate gradebook</p>

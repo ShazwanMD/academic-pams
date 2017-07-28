@@ -5,6 +5,7 @@ import {Action} from '@ngrx/store';
 export class AcademicYearActions {
 
   static FIND_ACADEMICYEARS = '[AcademicYear] Find AcademicYears';
+
   findAcademicYears(): Action {
     return {
       type: AcademicYearActions.FIND_ACADEMICYEARS,
@@ -12,19 +13,13 @@ export class AcademicYearActions {
   }
 
   static FIND_ACADEMICYEARS_SUCCESS = '[AcademicYear] Find AcademicYears Success';
+
   findAcademicYearsSuccess(academicYears): Action {
     return {
       type: AcademicYearActions.FIND_ACADEMICYEARS_SUCCESS,
       payload: academicYears
     };
   }
-
-
-
-
-
-
-
 
 
 }

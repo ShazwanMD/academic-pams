@@ -1,4 +1,3 @@
-import {CountryCode} from '../shared/model/common/country-code.interface';
 import {StudyModeSelectComponent} from './study-modes/component/study-mode-select.component';
 import {RaceCodeSelectComponent} from './race-codes/component/race-code-select.component';
 import {StateCodeSelectComponent} from './state-codes/component/state-code-select.component';
@@ -6,17 +5,16 @@ import {CountryCodeSelectComponent} from './country-codes/component/country-code
 import {CommonActions} from './common.action';
 import {GenderCodeSelectComponent} from './gender-codes/component/gender-code-select.component';
 import {CommonEffects} from './common.effect';
-import {NgModule, ModuleWithProviders} from '@angular/core';
+import {ModuleWithProviders, NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {ReactiveFormsModule} from '@angular/forms';
 import {appRoutes, appRoutingProviders} from '../app.routes';
 import {CovalentCoreModule} from '@covalent/core';
-import {CommonService} from '../../services';
-import {IdentityService} from '../../services';
+import {CommonService, IdentityService} from '../../services';
 import {EffectsModule} from '@ngrx/effects';
 import {studyModeListReducer, StudyModeListState} from './study-modes/study-mode-list.reducer';
-import {StateCodeListState, stateCodeListReducer} from './state-codes/state-code-list.reducer';
-import {CountryCodeListState, countryCodeListReducer} from './country-codes/country-code-list.reducer';
+import {stateCodeListReducer, StateCodeListState} from './state-codes/state-code-list.reducer';
+import {countryCodeListReducer, CountryCodeListState} from './country-codes/country-code-list.reducer';
 
 export interface CommonModuleState {
   studyModes: StudyModeListState;

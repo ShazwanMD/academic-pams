@@ -1,13 +1,12 @@
 import {EnrollmentActions} from '../../enrollments/enrollment.action';
 import {
-  Component,
-  Input,
-  EventEmitter,
-  Output,
+  AfterViewInit,
   ChangeDetectionStrategy,
-  ViewContainerRef,
-  OnInit,
-  AfterViewInit
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  ViewContainerRef
 } from '@angular/core';
 import {Enrollment} from '../../../../shared/model/term/enrollment.interface';
 import {Section} from '../../../../shared/model/term/section.interface';
@@ -17,10 +16,10 @@ import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';
 import {TermModuleState} from '../../index';
 import {EnrollmentEditorDialog} from '../../enrollments/dialog/enrollment-editor.dialog';
 import {
-  TdDataTableSortingOrder,
-  TdDataTableService,
   IPageChangeEvent,
-  ITdDataTableSortChangeEvent
+  ITdDataTableSortChangeEvent,
+  TdDataTableService,
+  TdDataTableSortingOrder
 } from '@covalent/core';
 
 @Component({

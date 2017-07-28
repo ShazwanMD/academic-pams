@@ -1,5 +1,5 @@
-import {Component, OnInit, ChangeDetectionStrategy} from '@angular/core';
-import {Router, ActivatedRoute} from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
 
 import {Store} from '@ngrx/store';
 import {Observable} from 'rxjs';
@@ -31,7 +31,7 @@ export class CourseDetailPage implements OnInit {
     });
   }
 
- // goBack(route: string): void {
-   // this.router.navigate(['/courses']);
-  }
+  // goBack(route: string): void {
+  // this.router.navigate(['/courses']);
+}
 

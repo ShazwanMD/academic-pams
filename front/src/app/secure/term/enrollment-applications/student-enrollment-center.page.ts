@@ -1,9 +1,9 @@
-import {Component, OnInit, ChangeDetectionStrategy, state, ViewContainerRef} from '@angular/core';
-import {Router, ActivatedRoute} from '@angular/router';
+import {Component, OnInit, ViewContainerRef} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Store} from '@ngrx/store';
 import {EnrollmentApplicationTask} from '../../../shared/model/term/enrollment-application-task.interface';
 import {Observable} from 'rxjs/Observable';
-import {MdDialogConfig, MdDialogRef, MdDialog} from '@angular/material';
+import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';
 import {EnrollmentApplicationActions} from './enrollment-application.action';
 import {TermModuleState} from '../index';
 import {EnrollmentApplicationTaskCreatorDialog} from './dialog/enrollment-application-task-creator.dialog';
@@ -62,12 +62,12 @@ export class StudentEnrollmentCenterPage implements OnInit {
 
   viewTask(task: EnrollmentApplicationTask) {
     console.log('enrollmentApplication: ' + task.taskId);
-    this.router.navigate(['/term/enrollment-applications/enrollment-application-task-detail', task.taskId]);
+    this.router.navigate(['/secure/term/enrollment-applications/enrollment-application-task-detail', task.taskId]);
   }
 
   viewOffering(offering: Offering) {
     console.log('offering: ' + offering.id);
-    this.router.navigate(['/term/offerings', offering.canonicalCode, 'student-offering-detail']);
+    this.router.navigate(['/secure/term/offerings', offering.canonicalCode, 'student-offering-detail']);
   }
 
   ngOnInit(): void {

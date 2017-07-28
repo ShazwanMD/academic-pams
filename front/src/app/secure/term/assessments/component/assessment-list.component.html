@@ -1,23 +1,25 @@
-<td-data-table 
-[data]="assessments" 
-[columns]="columns"
-	[sortBy]="summary" 
-  [sortOrder]="ASC" 
+<td-data-table
+  [data]="assessments"
+  [columns]="columns"
+  [sortBy]="summary"
+  [sortOrder]="ASC"
   [sortable]="false"
-	[multiple]="false" 
-  [selectable]="false" 
+  [multiple]="false"
+  [selectable]="false"
   (rowSelect)="view.emit($event)"
-	dense> 
-<template tdDataTableTemplate="key" let-value="value" let-row="row"
-	let-column="column">
-<div layout="row">
-	<span flex>{{value}}</span>
-</div>
-</template> <template tdDataTableTemplate="action" let-value="value" let-row="row"
-	let-column="column">
-<div layout="row">
-	<a md-button color="accent" class="text-upper"
-		[routerLink]="['/term/assessments']"> <span>View</span>
-	</a>
-</div>
-</template> </td-data-table>
+  dense>
+  <template tdDataTableTemplate="key" let-value="value" let-row="row"
+            let-column="column">
+    <div layout="row">
+      <span flex>{{value}}</span>
+    </div>
+  </template>
+  <template tdDataTableTemplate="action" let-value="value" let-row="row"
+            let-column="column">
+    <div layout="row">
+      <a md-button color="accent" class="text-upper"
+         [routerLink]="['/secure/term/assessments']"> <span>View</span>
+      </a>
+    </div>
+  </template>
+</td-data-table>

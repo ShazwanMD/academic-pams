@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Effect, Actions} from '@ngrx/effects';
+import {Actions, Effect} from '@ngrx/effects';
 import {CurriculumActions} from './curriculum.action';
 import {PlannerService} from '../../../../services/planner.service';
 import {Curriculum} from '../../../shared/model/planner/curriculum.interface';

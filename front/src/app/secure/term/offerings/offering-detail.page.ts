@@ -1,5 +1,5 @@
-import {Component, OnInit, ChangeDetectionStrategy, ViewContainerRef, Input, EventEmitter, Output} from '@angular/core';
-import {Router, ActivatedRoute} from '@angular/router';
+import {Component, Input, OnInit, ViewContainerRef} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
 import {OfferingUpdateDialog} from './dialog/offering-update.dialog';
 import {Store} from '@ngrx/store';
 import {Observable} from 'rxjs';
@@ -63,7 +63,7 @@ export class OfferingDetailPage implements OnInit {
     });
   }
 
-    filter(): void {
+  filter(): void {
 
   }
 
@@ -72,11 +72,11 @@ export class OfferingDetailPage implements OnInit {
   }
 
   deleteSection(section: Section): void {
-      console.log('section: ' + section.canonicalCode);
-      this.router.navigate(['/term/offerings']);
-      //history.go(0);
-      //this.router.navigate(['/term/offerings', this.offering.canonicalCode]);
-    }
+    console.log('section: ' + section.canonicalCode);
+    this.router.navigate(['/secure/term/offerings']);
+    //history.go(0);
+    //this.router.navigate(['/secure/term/offerings', this.offering.canonicalCode]);
+  }
 
 }
 

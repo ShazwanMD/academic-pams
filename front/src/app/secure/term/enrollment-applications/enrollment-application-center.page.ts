@@ -1,13 +1,13 @@
-import {Component, OnInit, ChangeDetectionStrategy, state, ViewContainerRef} from '@angular/core';
-import {Router, ActivatedRoute} from '@angular/router';
+import {Component, OnInit, ViewContainerRef} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Store} from '@ngrx/store';
 import {EnrollmentApplicationTask} from '../../../shared/model/term/enrollment-application-task.interface';
 import {Observable} from 'rxjs/Observable';
-import {MdDialogConfig, MdDialogRef, MdDialog} from '@angular/material';
+import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';
 import {EnrollmentApplicationActions} from './enrollment-application.action';
 import {TermModuleState} from '../index';
 import {EnrollmentApplicationTaskCreatorDialog} from './dialog/enrollment-application-task-creator.dialog';
-import { EnrollmentApplication } from '../../../shared/model/term/enrollment-application.interface';
+import {EnrollmentApplication} from '../../../shared/model/term/enrollment-application.interface';
 
 @Component({
   selector: 'pams-enrollment-application-center',
@@ -54,9 +54,9 @@ export class EnrollmentApplicationCenterPage implements OnInit {
   }
 
   viewApplication(enrollmentApplication: EnrollmentApplication): void {
-      console.log('enrollmentApplication: ' + enrollmentApplication.id);
-      this.router.navigate(['/term/enrollment-applications', enrollmentApplication.id]);
-    }
+    console.log('enrollmentApplication: ' + enrollmentApplication.id);
+    this.router.navigate(['/secure/term/enrollment-applications', enrollmentApplication.id]);
+  }
 
   claimTask(task: EnrollmentApplicationTask) {
     console.log('enrollmentApplication: ' + task.taskId);
@@ -65,13 +65,13 @@ export class EnrollmentApplicationCenterPage implements OnInit {
 
   viewTask(task: EnrollmentApplicationTask) {
     console.log('enrollmentApplication: ' + task.taskId);
-    this.router.navigate(['/term/enrollment-applications/enrollment-application-task-detail', task.taskId]);
+    this.router.navigate(['/secure/term/enrollment-applications/enrollment-application-task-detail', task.taskId]);
   }
 
   viewEnrollmentApplication(enrollmentApplication: EnrollmentApplication) {
-      console.log('students applications: ' + enrollmentApplication.referenceNo);
-      this.router.navigate(['/term/enrollment-applications', enrollmentApplication.referenceNo]);
-      //this.router.navigate(['/term/offerings', offering.canonicalCode]);
+    console.log('students applications: ' + enrollmentApplication.referenceNo);
+    this.router.navigate(['/secure/term/enrollment-applications', enrollmentApplication.referenceNo]);
+    //this.router.navigate(['/secure/term/offerings', offering.canonicalCode]);
   }
 
   ngOnInit(): void {

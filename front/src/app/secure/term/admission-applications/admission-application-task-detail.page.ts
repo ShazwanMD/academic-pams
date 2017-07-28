@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Router, ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Observable} from 'rxjs';
 import {Store} from '@ngrx/store';
 import {AdmissionApplicationTask} from '../../../shared/model/term/admission-application-task.interface';
@@ -30,7 +30,7 @@ export class AdmissionApplicationTaskDetailPage implements OnInit {
   }
 
   goBack(): void {
-    this.router.navigate(['/term/admission-applications']);
+    this.router.navigate(['/secure/term/admission-applications']);
   }
 }
 

@@ -1,23 +1,20 @@
-import {PlannerModuleState} from '../../index';
 import {Observable} from 'rxjs';
-import {ProgramActions} from '../program.action';
-import {Store} from '@ngrx/store';
 import {
-  Component,
-  Input,
-  EventEmitter,
-  Output,
-  ChangeDetectionStrategy,
-  OnChanges,
   AfterViewInit,
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  Output,
   SimpleChange
 } from '@angular/core';
 import {Program} from '../../../../shared/model/planner/program.interface';
 import {
-  TdDataTableSortingOrder,
-  TdDataTableService,
   IPageChangeEvent,
-  ITdDataTableSortChangeEvent
+  ITdDataTableSortChangeEvent,
+  TdDataTableService,
+  TdDataTableSortingOrder
 } from '@covalent/core';
 import {MdSnackBar} from '@angular/material';
 

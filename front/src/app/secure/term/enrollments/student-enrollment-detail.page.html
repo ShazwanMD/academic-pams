@@ -8,18 +8,18 @@
     <div layout="column" layout-gt-md="row" class="inset">
       <div flex-gt-md="70">
         <pams-enrollment [enrollment]="enrollment$ | async"></pams-enrollment>
-         <pams-enrollment-gradebook-list
+        <pams-enrollment-gradebook-list
           [enrollment]="enrollment$ | async"
           [gradebooks]="gradebooks$ | async">
         </pams-enrollment-gradebook-list>
       </div>
 
       <div flex-gt-md="30">
-       <pams-student-enrollment-action 
-       [enrollment]="enrollment$ | async">
-       </pams-student-enrollment-action>
-      
-       
+        <pams-student-enrollment-action
+          [enrollment]="enrollment$ | async">
+        </pams-student-enrollment-action>
+
+
       </div>
     </div>
   </div>

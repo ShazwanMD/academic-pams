@@ -1,11 +1,9 @@
 import {CourseCreatorDialog} from './dialog/course-creator.dialog';
-import { CourseActions } from './course.action';
-import { Course } from '../../../shared/model/planner/course.interface';
-import {Router, ActivatedRoute} from '@angular/router';
+import {CourseActions} from './course.action';
+import {Course} from '../../../shared/model/planner/course.interface';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Component, OnInit, ViewContainerRef} from '@angular/core';
-import {MdDialogRef} from '@angular/material';
-import {MdDialogConfig} from '@angular/material';
-import {MdDialog} from '@angular/material';
+import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';
 import {Store} from '@ngrx/store';
 import {Observable} from 'rxjs';
 import {PlannerModuleState} from '../index';
@@ -29,6 +27,7 @@ export class CourseCenterPage implements OnInit {
               private dialog: MdDialog) {
     this.courses$ = this.store.select(...this.COURSES);
   }
+
   viewCourse(course: Course) {
     console.log('course: ' + course.code);
     this.router.navigate(['./courses-detail', course.code]);
@@ -51,15 +50,17 @@ export class CourseCenterPage implements OnInit {
     config.width = '60%';
     config.height = '70';
     config.position = {top: '1px'};
-    this.creatorDialogRef = this.dialog.open(CourseCreatorDialog, config); if (code) this.creatorDialogRef.componentInstance.course = code; ;
+    this.creatorDialogRef = this.dialog.open(CourseCreatorDialog, config);
+    if (code) this.creatorDialogRef.componentInstance.course = code;
+    ;
     this.creatorDialogRef.afterClosed().subscribe((res) => {
       console.log('close dialog');
     });
   }
 
-   goBack(route: string): void {
+  goBack(route: string): void {
     this.router.navigate(['/courses']);
-   }
+  }
 
   filter(): void {
   }

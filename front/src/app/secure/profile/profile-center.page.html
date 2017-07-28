@@ -36,12 +36,12 @@
       <md-card-subtitle>List of students</md-card-subtitle>
       <md-divider></md-divider>
 
-     <pams-profile-list
+      <pams-profile-list
         [students]="students$ | async"
         (view)="viewProfile($event)" mdTooltip="View student profile "></pams-profile-list>
 
       <md-divider></md-divider>
-    
+
     </md-card>
 
   </td-layout-manage-list>

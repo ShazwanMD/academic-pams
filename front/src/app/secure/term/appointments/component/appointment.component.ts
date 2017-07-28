@@ -1,4 +1,4 @@
-import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, ViewContainerRef} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output, ViewContainerRef} from '@angular/core';
 import {Appointment} from '../../../../shared/model/term/appointment.interface';
 import {MdDialog} from '@angular/material';
 import {ActivatedRoute, Router} from '@angular/router';

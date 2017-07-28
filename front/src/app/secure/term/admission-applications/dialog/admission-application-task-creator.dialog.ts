@@ -1,8 +1,6 @@
-import {StudyCenter} from '../../../setup/study-centers/study-center.interface';
-import {Router, ActivatedRoute} from '@angular/router';
-import {Component, ViewContainerRef, OnInit} from '@angular/core';
-import {FormGroup, FormControl} from '@angular/forms';
-import {FormBuilder, Validators} from '@angular/forms';
+import {ActivatedRoute, Router} from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Store} from '@ngrx/store';
 import {MdDialogRef} from '@angular/material';
 import {AdmissionApplicationActions} from '../admission-application.action';

@@ -25,10 +25,6 @@
                 </button>
                 <md-menu x-position="before" #menu1="mdMenu" mdTooltip="Select student info actions">
                   <button md-menu-item (click)="editStudent()">Edit</button>
-                  <!--
-                  <button md-menu-item (click)="transferFaculty(row)">Transfer Faculty</button>
-                  <button md-menu-item (click)="switchStudyMode(row)">Switch Study Mode</button>
-                  -->
                 </md-menu>
               </div>
 
@@ -38,7 +34,7 @@
           <md-card-content>
 
             <div layout="column" layout-gt-md="row" class="insert">
-              <div flex-gt-md="20">    
+              <div flex-gt-md="20">
                 <img src="http://localhost:4200/assets/ico/student/{{student.identityNo}}.jpg" width="120" height="150">
               </div>
 
@@ -87,8 +83,9 @@
                   <md-divider></md-divider>
                   <md-card-content>
 
-                    <td-data-table [data]="addressess" [columns]="columnAddr" [sortBy]="summary" [sortOrder]="ASC" [sortable]="false" [multiple]="false"
-                      [selectable]="false" (rowSelect)="edit.emit($event)" dense>
+                    <td-data-table [data]="addressess" [columns]="columnAddr" [sortBy]="summary" [sortOrder]="ASC"
+                                   [sortable]="false" [multiple]="false"
+                                   [selectable]="false" (rowSelect)="edit.emit($event)" dense>
 
                       <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
                         <div layout="row">
@@ -133,8 +130,9 @@
                   </div>
                   <md-divider></md-divider>
                   <md-card-content>
-                    <td-data-table [data]="guarantors" [columns]="columnGuarantor" [sortBy]="summary" [sortOrder]="ASC" [sortable]="false" [multiple]="false"
-                      [selectable]="false" (rowSelect)="edit.emit($event)" dense>
+                    <td-data-table [data]="guarantors" [columns]="columnGuarantor" [sortBy]="summary" [sortOrder]="ASC"
+                                   [sortable]="false" [multiple]="false"
+                                   [selectable]="false" (rowSelect)="edit.emit($event)" dense>
 
                       <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
                         <div layout="row">
@@ -178,8 +176,9 @@
                   </div>
                   <md-divider></md-divider>
                   <md-card-content>
-                    <td-data-table [data]="guardians" [columns]="columnGuardian" [sortBy]="summary" [sortOrder]="ASC" [sortable]="false" [multiple]="false"
-                      [selectable]="false" (rowSelect)="edit.emit($event)" dense>
+                    <td-data-table [data]="guardians" [columns]="columnGuardian" [sortBy]="summary" [sortOrder]="ASC"
+                                   [sortable]="false" [multiple]="false"
+                                   [selectable]="false" (rowSelect)="edit.emit($event)" dense>
 
                       <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
                         <div layout="row">
@@ -222,8 +221,9 @@
                   </div>
                   <md-divider></md-divider>
                   <md-card-content>
-                    <td-data-table [data]="contacts" [columns]="columnContact" [sortBy]="summary" [sortOrder]="ASC" [sortable]="false" [multiple]="false"
-                      [selectable]="false" (rowSelect)="edit.emit($event)" dense>
+                    <td-data-table [data]="contacts" [columns]="columnContact" [sortBy]="summary" [sortOrder]="ASC"
+                                   [sortable]="false" [multiple]="false"
+                                   [selectable]="false" (rowSelect)="edit.emit($event)" dense>
 
                       <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
                         <div layout="row">

@@ -1,14 +1,13 @@
-import {Component, ViewContainerRef, OnInit} from '@angular/core';
-import {FormGroup, FormControl} from '@angular/forms';
-import {FormBuilder} from '@angular/forms';
-import {Router, ActivatedRoute} from '@angular/router';
-import {Store} from "@ngrx/store";
-import {MdDialogRef} from "@angular/material";
-import {GraduationModuleState} from "../../index";
-import {GraduationApplicationActions} from "../graduation-application.action";
-import {GraduationApplication} from "../../../../shared/model/graduation/graduation-application.interface";
-import {AcademicSession} from "../../../../shared/model/planner/academic-session.interface";
-import {Student} from "../../../../shared/model/identity/student.interface";
+import {Component, OnInit, ViewContainerRef} from '@angular/core';
+import {FormBuilder, FormGroup} from '@angular/forms';
+import {ActivatedRoute, Router} from '@angular/router';
+import {Store} from '@ngrx/store';
+import {MdDialogRef} from '@angular/material';
+import {GraduationModuleState} from '../../index';
+import {GraduationApplicationActions} from '../graduation-application.action';
+import {GraduationApplication} from '../../../../shared/model/graduation/graduation-application.interface';
+import {AcademicSession} from '../../../../shared/model/planner/academic-session.interface';
+import {Student} from '../../../../shared/model/identity/student.interface';
 
 @Component({
   selector: 'pams-graduation-application-editor',

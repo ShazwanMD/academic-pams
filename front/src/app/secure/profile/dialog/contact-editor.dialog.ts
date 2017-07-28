@@ -1,14 +1,13 @@
-import {Component, ViewContainerRef, OnInit, AfterViewInit} from '@angular/core';
-import {FormGroup, FormControl} from '@angular/forms';
-import {FormBuilder} from '@angular/forms';
-import {Router, ActivatedRoute} from '@angular/router';
+import {Component, OnInit, ViewContainerRef} from '@angular/core';
+import {FormBuilder, FormGroup} from '@angular/forms';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Store} from '@ngrx/store';
 import {MdDialogRef} from '@angular/material';
 import {Contact} from '../../../shared/model/profile/contact.interface';
 import {Student} from '../../../shared/model/identity/student.interface';
 import {ProfileModuleState} from '../index';
 import {ProfileActions} from '../profile.action';
-import { ContactType } from '../../../shared/model/profile/contact-type.enum';
+import {ContactType} from '../../../shared/model/profile/contact-type.enum';
 
 @Component({
   selector: 'pams-contact-editor',
@@ -55,9 +54,9 @@ export class ContactEditorDialog implements OnInit {
   submit(contact: Contact, isValid: boolean) {
 
     if (isValid)
-    contact.id = this._contact.id;
+      contact.id = this._contact.id;
 
-    if (isValid)this.store.dispatch(this.actions.updateContact(this._student, contact));
+    if (isValid) this.store.dispatch(this.actions.updateContact(this._student, contact));
     else this.store.dispatch(this.actions.addContact(this._student, contact));
     this.dialog.close();
   }

@@ -1,12 +1,11 @@
-import { NationalityCode } from '../../../../shared/model/common/nationality-code.interface';
-import { SetupActions } from '../../setup.action';
-import { SetupModuleState } from '../../index';
-import {Component, ViewContainerRef, OnInit, AfterViewInit} from '@angular/core';
-import {FormGroup, FormControl} from '@angular/forms';
-import {FormBuilder} from '@angular/forms';
-import {Router, ActivatedRoute} from '@angular/router';
-import {Store} from "@ngrx/store";
-import {MdDialogRef} from "@angular/material";
+import {NationalityCode} from '../../../../shared/model/common/nationality-code.interface';
+import {SetupActions} from '../../setup.action';
+import {SetupModuleState} from '../../index';
+import {Component, OnInit, ViewContainerRef} from '@angular/core';
+import {FormBuilder, FormGroup} from '@angular/forms';
+import {ActivatedRoute, Router} from '@angular/router';
+import {Store} from '@ngrx/store';
+import {MdDialogRef} from '@angular/material';
 
 
 @Component({
@@ -28,11 +27,12 @@ export class NationalityCodeEditorDialog implements OnInit {
               private actions: SetupActions) {
   }
 
-  set nationalityCode(value: NationalityCode){
-      this._nationalityCode = value;
-      this.edit = true;
+  set nationalityCode(value: NationalityCode) {
+    this._nationalityCode = value;
+    this.edit = true;
   }
-    ngOnInit(): void {
+
+  ngOnInit(): void {
     this.editorForm = this.formBuilder.group(<NationalityCode>{
       id: null,
       code: '',

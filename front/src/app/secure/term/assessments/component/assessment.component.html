@@ -1,37 +1,37 @@
-    <md-card>
-    <div md-content flex md-scroll-y>
+<md-card>
+  <div md-content flex md-scroll-y>
     <div layout="column" layout-gt-md="row" class="insert">
-    
-    <div flex-gt-md="50">
-    <md-card-title>Assessment</md-card-title>
-    </div>
-    
-    <div flex-gt-md="50" align="right">
-    <button md-icon-button [md-menu-trigger-for]="menu1">
-      <md-icon>more_vert</md-icon>
-    </button>
-    <md-menu x-position="before" #menu1="mdMenu">
-      <!--<button md-menu-item (click)="editStudent()">Edit</button>
-      <button md-menu-item (click)="transferFaculty(row)">Transfer Faculty</button>
-      <button md-menu-item (click)="switchStudyMode(row)">Switch Study Mode</button>-->
-    </md-menu>
-    </div>
-    
-    </div>
-    </div>
-        <md-card-subtitle>---</md-card-subtitle>
-        <md-divider></md-divider>
-        <md-card-content>
 
-        <!--<div layout="column" layout-gt-md="row" class="insert">
-          <div flex-gt-md="100">
-            <b>Assessment code</b> : {{assessment.code}}<br/><br/>
-            <b>Assessment Canonical Code</b> : {{assessment.canonicalCode}}<br/><br/>
-            <b>Assessment Type</b> : {{assessment.assessmentType}}<br/><br/>
-          </div>
-        </div>-->
+      <div flex-gt-md="50">
+        <md-card-title>Assessment</md-card-title>
+      </div>
 
-      <td-data-table
+      <div flex-gt-md="50" align="right">
+        <button md-icon-button [md-menu-trigger-for]="menu1">
+          <md-icon>more_vert</md-icon>
+        </button>
+        <md-menu x-position="before" #menu1="mdMenu">
+          <!--<button md-menu-item (click)="editStudent()">Edit</button>
+          <button md-menu-item (click)="transferFaculty(row)">Transfer Faculty</button>
+          <button md-menu-item (click)="switchStudyMode(row)">Switch Study Mode</button>-->
+        </md-menu>
+      </div>
+
+    </div>
+  </div>
+  <md-card-subtitle>---</md-card-subtitle>
+  <md-divider></md-divider>
+  <md-card-content>
+
+    <!--<div layout="column" layout-gt-md="row" class="insert">
+      <div flex-gt-md="100">
+        <b>Assessment code</b> : {{assessment.code}}<br/><br/>
+        <b>Assessment Canonical Code</b> : {{assessment.canonicalCode}}<br/><br/>
+        <b>Assessment Type</b> : {{assessment.assessmentType}}<br/><br/>
+      </div>
+    </div>-->
+
+    <td-data-table
       [data]="gradebookMatrices$ | async "
       [columns]="columns"
       [sortBy]="summary"
@@ -46,5 +46,5 @@
       </template>
     </td-data-table>
 
-        </md-card-content>
-    </md-card>
+  </md-card-content>
+</md-card>

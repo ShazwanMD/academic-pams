@@ -1,4 +1,4 @@
-import { ReligionCode } from '../../../shared/model/common/religion-code.interface';
+import {ReligionCode} from '../../../shared/model/common/religion-code.interface';
 import {SetupActions} from '../setup.action';
 import {Action} from '@ngrx/store';
 

@@ -2,7 +2,8 @@
   [placeholder]="placeholder"
   (change)="selectChangeEvent($event.value)" flex>
 
-  <md-option *ngFor="let enrollmentApplicationAction of enrollmentApplicationActions" [value]="enrollmentApplicationAction">
+  <md-option *ngFor="let enrollmentApplicationAction of enrollmentApplicationActions"
+             [value]="enrollmentApplicationAction">
     {{enrollmentApplicationAction}}
   </md-option>
 </md-select>

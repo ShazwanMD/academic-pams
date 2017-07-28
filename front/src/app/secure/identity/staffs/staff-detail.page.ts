@@ -1,11 +1,11 @@
-import {Component, OnInit, ChangeDetectionStrategy, ViewContainerRef, Input, EventEmitter, Output} from '@angular/core';
-import {Router, ActivatedRoute} from '@angular/router';
-import {TermService, IdentityService} from '../../../../services';
+import {Component, Input, OnInit, ViewContainerRef} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
+import {IdentityService} from '../../../../services';
 import {Store} from '@ngrx/store';
 import {Observable} from 'rxjs';
 import {StaffActions} from './staff.action';
 import {IdentityModuleState} from '../index';
-import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';
+import {MdDialog} from '@angular/material';
 import {Appointment} from '../../../shared/model/term/appointment.interface';
 import {Staff} from '../../../shared/model/identity/staff.interface';
 

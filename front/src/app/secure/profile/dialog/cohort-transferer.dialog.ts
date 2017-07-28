@@ -1,15 +1,14 @@
-import { StudyMode } from '../../../shared/model/common/study-mode.interface';
-import { Component, ViewContainerRef, OnInit, AfterViewInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
-import { FormBuilder } from '@angular/forms';
-import { Router, ActivatedRoute } from '@angular/router';
-import { Store } from '@ngrx/store';
-import { MdDialogRef } from '@angular/material';
-import { Student } from '../../../shared/model/identity/student.interface';
-import { ProfileModuleState } from '../index';
-import { ProfileActions } from '../profile.action';
-import { Cohort } from '../../../shared/model/planner/cohort.interface';
-import { StudentStatus } from '../../../shared/model/profile/student-status.enum';
+import {StudyMode} from '../../../shared/model/common/study-mode.interface';
+import {Component, OnInit, ViewContainerRef} from '@angular/core';
+import {FormBuilder, FormGroup} from '@angular/forms';
+import {ActivatedRoute, Router} from '@angular/router';
+import {Store} from '@ngrx/store';
+import {MdDialogRef} from '@angular/material';
+import {Student} from '../../../shared/model/identity/student.interface';
+import {ProfileModuleState} from '../index';
+import {ProfileActions} from '../profile.action';
+import {Cohort} from '../../../shared/model/planner/cohort.interface';
+import {StudentStatus} from '../../../shared/model/profile/student-status.enum';
 
 @Component({
   selector: 'pams-cohort-transferer',
@@ -24,12 +23,12 @@ export class CohortTransfererDialog implements OnInit {
   private edit: boolean = false;
 
   constructor(private router: Router,
-    private route: ActivatedRoute,
-    private formBuilder: FormBuilder,
-    private viewContainerRef: ViewContainerRef,
-    private dialog: MdDialogRef<CohortTransfererDialog>,
-    private store: Store<ProfileModuleState>,
-    private actions: ProfileActions) {
+              private route: ActivatedRoute,
+              private formBuilder: FormBuilder,
+              private viewContainerRef: ViewContainerRef,
+              private dialog: MdDialogRef<CohortTransfererDialog>,
+              private store: Store<ProfileModuleState>,
+              private actions: ProfileActions) {
   }
 
   set student(value: Student) {
@@ -57,8 +56,8 @@ export class CohortTransfererDialog implements OnInit {
 
     });
     console.log('patching values : ' + JSON.stringify(this._student.cohort));
-    this.transferForm.patchValue({ from: this._student.cohort });
-    this.transferForm.patchValue({ to: this._student.cohort });
+    this.transferForm.patchValue({from: this._student.cohort});
+    this.transferForm.patchValue({to: this._student.cohort});
     if (this.edit) this.transferForm.patchValue(this._student);
   }
 

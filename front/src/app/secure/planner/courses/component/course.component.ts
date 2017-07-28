@@ -1,16 +1,14 @@
-import {MdTabsModule} from '@angular/material';
+import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';
 import {Course} from '../../../../shared/model/planner/course.interface';
 import {CourseStatus} from '../../../../shared/model/planner/course-status.enum';
-import { Faculty } from '../../../../shared/model/planner/faculty.interface';
-import { Store } from '@ngrx/store';
-import { Router, ActivatedRoute } from '@angular/router';
-import { FormBuilder } from '@angular/forms';
-import { CourseActions } from '../course.action';
-import { PlannerModuleState } from '../../index';
-import { Component, Input, EventEmitter, Output, ChangeDetectionStrategy, ViewContainerRef } from '@angular/core';
-import { CourseCreatorDialog } from '../dialog/course-creator.dialog';
-
-import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';
+import {Faculty} from '../../../../shared/model/planner/faculty.interface';
+import {Store} from '@ngrx/store';
+import {ActivatedRoute, Router} from '@angular/router';
+import {FormBuilder} from '@angular/forms';
+import {CourseActions} from '../course.action';
+import {PlannerModuleState} from '../../index';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output, ViewContainerRef} from '@angular/core';
+import {CourseCreatorDialog} from '../dialog/course-creator.dialog';
 
 @Component({
   selector: 'pams-course',
@@ -30,11 +28,11 @@ export class CourseComponent {
               private route: ActivatedRoute,
               private store: Store<PlannerModuleState>,
               private vcf: ViewContainerRef,
-              private dialog: MdDialog, ){
+              private dialog: MdDialog,) {
 
   }
 
-   saveCourseDialog(course: Course, faculty: Faculty): void {
+  saveCourseDialog(course: Course, faculty: Faculty): void {
     console.log('showDialog');
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
@@ -48,7 +46,7 @@ export class CourseComponent {
       console.log('close dialog');
       // load something here
     });
-   }
+  }
 
   removeCourse(course: Course): void {
     this.store.dispatch(this.actions.removeCourse(this.course));

@@ -6,10 +6,14 @@ import my.edu.umk.pams.academic.identity.event.StaffCreatedEvent;
 import my.edu.umk.pams.academic.identity.event.StaffUpdatedEvent;
 import my.edu.umk.pams.academic.identity.event.StudentCreatedEvent;
 import my.edu.umk.pams.academic.identity.model.*;
+import my.edu.umk.pams.academic.security.service.SecurityService;
+import my.edu.umk.pams.academic.system.service.SystemServiceImpl;
 import my.edu.umk.pams.academic.util.Util;
 
 
 import org.hibernate.SessionFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
@@ -30,12 +34,17 @@ import java.util.Set;
 public class IdentityServiceImpl implements IdentityService {
 
     private static final String GROUP_ROOT = "GRP_ADMN";
+    private static final Logger LOG = LoggerFactory.getLogger(SystemServiceImpl.class);
+
 
     @Autowired
     private SessionFactory sessionFactory;
 
     @Autowired
     private ApplicationContext applicationContext;
+
+    @Autowired
+    private SecurityService securityService;
 
     @Autowired
     private AdPrincipalDao principalDao;
@@ -61,22 +70,36 @@ public class IdentityServiceImpl implements IdentityService {
 
     @Override
     public AdPrincipal findPrincipalById(Long id) {
-        return null;
+        return principalDao.findById(id);
     }
 
     @Override
     public AdPrincipal findPrincipalByName(String name) {
-        return null;
+        return principalDao.findByName(name);
     }
 
     @Override
     public List<AdPrincipal> findPrincipals(String filter, Integer offset, Integer limit) {
-        return null;
+        return principalDao.find(filter, offset, limit);
     }
 
     @Override
     public Set<String> findSids(AdPrincipal principal) {
-        return null;
+        Set<AdGroup> groups = null;
+        Set<String> principals = new HashSet<String>();
+        try {
+            groups = groupDao.findEffectiveAsNative(principal);
+        } catch (Exception e) {
+            LOG.error("Error occured loading principals", e);
+        } finally {
+            if (null != groups) {
+                for (AdGroup group : groups) {
+                    principals.add(group.getName());
+                }
+            }
+            principals.add(principal.getName());
+        }
+        return principals;
     }
 
     @Override
@@ -86,13 +109,13 @@ public class IdentityServiceImpl implements IdentityService {
 
     @Override
     public void addPrincipalRole(AdPrincipal principal, AdPrincipalRole principalRole) {
-        principalDao.addRole(principal, principalRole, Util.getCurrentUser());
+        principalDao.addRole(principal, principalRole, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void deletePrincipalRole(AdPrincipal principal, AdPrincipalRole principalRole) {
-        principalDao.deleteRole(principal, principalRole, Util.getCurrentUser());
+        principalDao.deleteRole(principal, principalRole, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
@@ -152,26 +175,26 @@ public class IdentityServiceImpl implements IdentityService {
 
     @Override
     public void saveUser(AdUser user) {
-        userDao.save(user, Util.getCurrentUser());
+        userDao.save(user, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void updateUser(AdUser user) {
-        userDao.update(user, Util.getCurrentUser());
+        userDao.update(user, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void removeUser(AdUser user) {
-        userDao.remove(user, Util.getCurrentUser());
+        userDao.remove(user, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void changePassword(AdUser user, String newPassword) {
         user.setPassword(newPassword);
-        userDao.update(user, Util.getCurrentUser());
+        userDao.update(user, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
@@ -199,7 +222,7 @@ public class IdentityServiceImpl implements IdentityService {
             group.setName(name);
             group.setEnabled(true);
             group.setLocked(false);
-            groupDao.save(group, Util.getCurrentUser());
+            groupDao.save(group, securityService.getCurrentUser());
         }
         sessionFactory.getCurrentSession().flush();
         sessionFactory.getCurrentSession().refresh(group);
@@ -287,14 +310,14 @@ public class IdentityServiceImpl implements IdentityService {
         group.setName(name);
         group.setEnabled(true);
         group.setLocked(false);
-        groupDao.save(group, Util.getCurrentUser());
+        groupDao.save(group, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
         sessionFactory.getCurrentSession().refresh(group);
 
         for (AdRoleType type : types) {
             AdPrincipalRole role = new AdPrincipalRoleImpl();
             role.setRole(type);
-            principalDao.addRole(group, role, Util.getCurrentUser());
+            principalDao.addRole(group, role, securityService.getCurrentUser());
             sessionFactory.getCurrentSession().flush();
         }
         sessionFactory.getCurrentSession().refresh(group);
@@ -303,25 +326,25 @@ public class IdentityServiceImpl implements IdentityService {
 
     @Override
     public void saveGroup(AdGroup group) {
-        groupDao.save(group, Util.getCurrentUser());
+        groupDao.save(group, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void updateGroup(AdGroup group) {
-        groupDao.update(group, Util.getCurrentUser());
+        groupDao.update(group, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void removeGroup(AdGroup group) {
-        groupDao.remove(group, Util.getCurrentUser());
+        groupDao.remove(group, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void addGroupMember(AdGroup group, AdPrincipal principal) throws RecursiveGroupException {
-        groupDao.addMember(group, principal, Util.getCurrentUser());
+        groupDao.addMember(group, principal, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
@@ -442,19 +465,19 @@ public class IdentityServiceImpl implements IdentityService {
 
     @Override
     public void saveStaff(AdStaff staff) {
-        staffDao.save(staff, Util.getCurrentUser());
+        staffDao.save(staff, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void updateStaff(AdStaff staff) {
-        staffDao.update(staff, Util.getCurrentUser());
+        staffDao.update(staff, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void deleteStaff(AdStaff staff) {
-        staffDao.delete(staff, Util.getCurrentUser());
+        staffDao.delete(staff, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
@@ -507,19 +530,19 @@ public class IdentityServiceImpl implements IdentityService {
 
     @Override
     public void saveStudent(AdStudent student) {
-        studentDao.save(student, Util.getCurrentUser());
+        studentDao.save(student, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void updateStudent(AdStudent student) {
-        studentDao.update(student, Util.getCurrentUser());
+        studentDao.update(student, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
     @Override
     public void deleteStudent(AdStudent student) {
-        studentDao.delete(student, Util.getCurrentUser());
+        studentDao.delete(student, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
 
@@ -534,6 +557,4 @@ public class IdentityServiceImpl implements IdentityService {
         ApplicantUpdatedEvent event = new ApplicantUpdatedEvent(student);
         applicationContext.publishEvent(event);
     }
-
-
 }

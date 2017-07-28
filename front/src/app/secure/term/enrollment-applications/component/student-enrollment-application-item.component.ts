@@ -1,12 +1,11 @@
 import {
-  Component,
-  Input,
-  EventEmitter,
-  Output,
-  ChangeDetectionStrategy,
-  ViewContainerRef,
-  OnInit,
   AfterViewInit,
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  ViewContainerRef
 } from '@angular/core';
 import {MdDialog, MdDialogConfig, MdDialogRef, MdSnackBar} from '@angular/material';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -17,10 +16,10 @@ import {EnrollmentApplicationItem} from '../../../../shared/model/term/enrollmen
 import {EnrollmentApplicationItemUpdateDialog} from '../dialog/enrollment-application-item-update.dialog';
 import {EnrollmentApplicationActions} from '../enrollment-application.action';
 import {
-  TdDataTableService,
-  TdDataTableSortingOrder,
-  ITdDataTableSortChangeEvent,
   IPageChangeEvent,
+  ITdDataTableSortChangeEvent,
+  TdDataTableService,
+  TdDataTableSortingOrder
 } from '@covalent/core';
 
 @Component({

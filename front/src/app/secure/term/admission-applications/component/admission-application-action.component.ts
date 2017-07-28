@@ -1,9 +1,9 @@
 import {AdmissionApplicationTaskEditorDialog} from '../dialog/admission-application-task-editor.dialog';
 import {Store} from '@ngrx/store';
-import {ViewContainerRef, ChangeDetectionStrategy, Input, Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, ViewContainerRef} from '@angular/core';
 import {TermModuleState} from '../../index';
 import {AdmissionApplicationActions} from '../admission-application.action';
-import {MdDialogRef, MdDialogConfig, MdDialog} from '@angular/material';
+import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';
 import {AdmissionApplication} from '../../../../shared/model/term/admission-application.interface';
 
 @Component({

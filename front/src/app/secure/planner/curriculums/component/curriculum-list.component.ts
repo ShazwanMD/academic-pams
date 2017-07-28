@@ -5,7 +5,7 @@ import {
   TdDataTableService,
   TdDataTableSortingOrder
 } from '@covalent/core';
-import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
 import {Curriculum} from '../../../../shared/model/planner/curriculum.interface';
 
 @Component({

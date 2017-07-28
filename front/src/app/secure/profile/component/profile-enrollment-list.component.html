@@ -33,15 +33,15 @@
     </div>
   </md-card-content> -->
   <md-card-content>
-    <td-data-table 
-    [data]="enrollments" 
-    [columns]="columns" 
-    [sortBy]="summary" 
-    [sortOrder]="ASC" 
-    [sortable]="false" 
-    [multiple]="false"
-    [selectable]="false" 
-    (rowSelect)="edit.emit($event)" dense>
+    <td-data-table
+      [data]="enrollments"
+      [columns]="columns"
+      [sortBy]="summary"
+      [sortOrder]="ASC"
+      [sortable]="false"
+      [multiple]="false"
+      [selectable]="false"
+      (rowSelect)="edit.emit($event)" dense>
 
       <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
         <div layout="row">
@@ -62,5 +62,5 @@
       </template> -->
 
     </td-data-table>
-   </md-card-content>
+  </md-card-content>
 </md-card>

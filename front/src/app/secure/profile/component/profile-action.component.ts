@@ -1,8 +1,8 @@
 import {StudentStatusDialog} from '../dialog/student-status.dialog';
-import {Router, ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Observable} from 'rxjs';
 import {MdDialog, MdDialogConfig, MdDialogRef, MdSnackBar} from '@angular/material';
-import {Input, Component, ViewContainerRef, ChangeDetectionStrategy} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, ViewContainerRef} from '@angular/core';
 import {Store} from '@ngrx/store';
 import {ProfileActions} from '../profile.action';
 import {ProfileModuleState} from '../index';

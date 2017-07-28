@@ -1,11 +1,11 @@
 import {Injectable} from '@angular/core';
-import {Effect, Actions} from '@ngrx/effects';
-import {CohortActions} from "./cohort.action";
-import {PlannerService} from "../../../../services/planner.service";
-import {Cohort} from "../../../shared/model/planner/cohort.interface";
+import {Actions, Effect} from '@ngrx/effects';
+import {CohortActions} from './cohort.action';
+import {PlannerService} from '../../../../services/planner.service';
+import {Cohort} from '../../../shared/model/planner/cohort.interface';
 //import {PlannerModuleState} from "../index";
-import {Store} from "@ngrx/store";
-import { PlannerModuleState } from '../index';
+import {Store} from '@ngrx/store';
+import {PlannerModuleState} from '../index';
 
 
 @Injectable()

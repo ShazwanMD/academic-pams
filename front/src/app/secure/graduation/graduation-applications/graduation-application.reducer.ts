@@ -1,6 +1,6 @@
 import {Action} from '@ngrx/store';
-import {GraduationApplication} from "../../../shared/model/graduation/graduation-application.interface";
-import {GraduationApplicationActions} from "./graduation-application.action";
+import {GraduationApplication} from '../../../shared/model/graduation/graduation-application.interface';
+import {GraduationApplicationActions} from './graduation-application.action';
 
 export type GraduationApplicationState = GraduationApplication;
 

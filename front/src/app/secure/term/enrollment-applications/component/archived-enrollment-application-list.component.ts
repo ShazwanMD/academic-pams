@@ -1,9 +1,9 @@
 import {MdSnackBar} from '@angular/material';
-import {Component, Input, Output, ChangeDetectionStrategy, EventEmitter, AfterViewInit} from '@angular/core';
+import {AfterViewInit, ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
 import {
-  TdDataTableService,
   IPageChangeEvent,
   ITdDataTableSortChangeEvent,
+  TdDataTableService,
   TdDataTableSortingOrder
 } from '@covalent/core';
 import {EnrollmentApplication} from '../../../../shared/model/term/enrollment-application.interface';

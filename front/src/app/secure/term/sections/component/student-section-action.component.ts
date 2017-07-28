@@ -1,8 +1,8 @@
-import {Component, Input, ChangeDetectionStrategy, ViewContainerRef} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, ViewContainerRef} from '@angular/core';
 import {Section} from '../../../../shared/model/term/section.interface';
 import {Offering} from '../../../../shared/model/term/offering.interface';
 import {SectionEditorDialog} from '../dialog/section-editor.dialog';
-import {MdDialog, MdDialogConfig, MdDialogRef, MdSnackBar} from '@angular/material';
+import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';
 import {SectionActions} from '../section.action';
 import {Store} from '@ngrx/store';
 import {TermModuleState} from '../../index';

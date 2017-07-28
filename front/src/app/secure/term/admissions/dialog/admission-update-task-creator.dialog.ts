@@ -1,12 +1,11 @@
-import { Component, ViewContainerRef, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
-import { FormBuilder } from '@angular/forms';
-import { Store } from '@ngrx/store';
-import { MdDialogRef } from '@angular/material';
-import { TermModuleState } from '../../index';
-import { Admission } from '../../../../shared/model/term/admission.interface';
-import { AdmissionActions } from '../admission.action';
-import { Router, ActivatedRoute } from '@angular/router';
+import {Component, OnInit, ViewContainerRef} from '@angular/core';
+import {FormBuilder, FormGroup} from '@angular/forms';
+import {Store} from '@ngrx/store';
+import {MdDialogRef} from '@angular/material';
+import {TermModuleState} from '../../index';
+import {Admission} from '../../../../shared/model/term/admission.interface';
+import {AdmissionActions} from '../admission.action';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'pams-admission-update-task-creator',
@@ -19,12 +18,12 @@ export class AdmissionUpdateTaskCreatorDialog implements OnInit {
   private _admission: Admission;
 
   constructor(private formBuilder: FormBuilder,
-    private store: Store<TermModuleState>,
-    private actions: AdmissionActions,
-    private dialog: MdDialogRef<AdmissionUpdateTaskCreatorDialog>,
-    private router: Router,
-    private route: ActivatedRoute,
-    private vcf: ViewContainerRef) {
+              private store: Store<TermModuleState>,
+              private actions: AdmissionActions,
+              private dialog: MdDialogRef<AdmissionUpdateTaskCreatorDialog>,
+              private router: Router,
+              private route: ActivatedRoute,
+              private vcf: ViewContainerRef) {
   }
 
   set admission(value: Admission) {
@@ -52,7 +51,7 @@ export class AdmissionUpdateTaskCreatorDialog implements OnInit {
   }
 
   /* update(offeringApplication: OfferingApplication, isValid: boolean) {
-     this.store.dispatch(this.actions.startOfferingApplicationTask(offeringApplication));
-     this.dialog.close();
+   this.store.dispatch(this.actions.startOfferingApplicationTask(offeringApplication));
+   this.dialog.close();
    } */
 }

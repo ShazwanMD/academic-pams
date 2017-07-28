@@ -1,20 +1,11 @@
 import {MdSnackBar} from '@angular/material';
 import {AdmissionApplicationTask} from '../../../../shared/model/term/admission-application-task.interface';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, Output, SimpleChange} from '@angular/core';
 import {
-  Component,
-  ChangeDetectionStrategy,
-  EventEmitter,
-  Output,
-  Input,
-  OnChanges,
-  SimpleChanges,
-  SimpleChange,
-} from '@angular/core';
-import {
-  TdDataTableSortingOrder,
-  TdDataTableService,
-  ITdDataTableSortChangeEvent,
   IPageChangeEvent,
+  ITdDataTableSortChangeEvent,
+  TdDataTableService,
+  TdDataTableSortingOrder
 } from '@covalent/core';
 
 @Component({

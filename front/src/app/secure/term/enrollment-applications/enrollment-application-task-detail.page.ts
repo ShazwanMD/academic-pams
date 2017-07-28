@@ -1,8 +1,5 @@
-import {
-  Component, OnInit, ViewChild, ViewContainerRef,
-  ComponentFactoryResolver, ComponentRef,
-} from '@angular/core';
-import {Router, ActivatedRoute} from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Observable} from 'rxjs';
 import {Store} from '@ngrx/store';
 import {EnrollmentApplicationTask} from '../../../shared/model/term/enrollment-application-task.interface';
@@ -33,7 +30,7 @@ export class EnrollmentApplicationTaskDetailPage implements OnInit {
   }
 
   goBack(): void {
-    this.router.navigate(['/term/enrollment-applications']);
+    this.router.navigate(['/secure/term/enrollment-applications']);
   }
 }
 

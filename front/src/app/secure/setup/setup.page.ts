@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {Router, ActivatedRoute} from '@angular/router';
-import {SetupModuleState} from "./index";
-import {Store} from "@ngrx/store";
-import {Observable} from "rxjs/Observable";
+import {ActivatedRoute, Router} from '@angular/router';
+import {SetupModuleState} from './index';
+import {Store} from '@ngrx/store';
+import {Observable} from 'rxjs/Observable';
 
 @Component({
   selector: 'pams-setup-page',

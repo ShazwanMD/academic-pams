@@ -1,4 +1,4 @@
 export enum EnrollmentApplicationAction {
-    ADD,
-    DROP
+  ADD,
+  DROP
 }

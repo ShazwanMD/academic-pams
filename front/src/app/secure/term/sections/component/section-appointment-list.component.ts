@@ -1,15 +1,13 @@
 import {FormBuilder} from '@angular/forms';
 import {AppointmentActions} from '../../appointments/appointment.action';
-import {SectionActions} from '../section.action';
 import {
-  Component,
-  Input,
-  EventEmitter,
-  Output,
-  ChangeDetectionStrategy,
-  ViewContainerRef,
-  OnInit,
   AfterViewInit,
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  ViewContainerRef
 } from '@angular/core';
 import {Appointment} from '../../../../shared/model/term/appointment.interface';
 import {Section} from '../../../../shared/model/term/section.interface';
@@ -19,10 +17,10 @@ import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';
 import {TermModuleState} from '../../index';
 import {AppointmentEditorDialog} from '../../appointments/dialog/appointment-editor.dialog';
 import {
-  TdDataTableSortingOrder,
-  TdDataTableService,
   IPageChangeEvent,
   ITdDataTableSortChangeEvent,
+  TdDataTableService,
+  TdDataTableSortingOrder
 } from '@covalent/core';
 
 @Component({

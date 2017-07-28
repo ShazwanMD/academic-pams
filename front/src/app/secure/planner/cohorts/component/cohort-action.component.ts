@@ -1,5 +1,5 @@
-import { CohortUpdateDialog } from '../dialog/cohort-update.dialog';
-import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, ViewContainerRef} from '@angular/core';
+import {CohortUpdateDialog} from '../dialog/cohort-update.dialog';
+import {ChangeDetectionStrategy, Component, Input, ViewContainerRef} from '@angular/core';
 import {Cohort} from '../../../../shared/model/planner/cohort.interface';
 import {MdDialog, MdDialogConfig, MdDialogRef, MdSnackBar} from '@angular/material';
 import {CohortActions} from '../cohort.action';
@@ -43,6 +43,6 @@ export class CohortActionComponent {
 
   delate(): void {
     let snackBarRef = this.snackBar.open('Delate Cohort', 'OK');
-   // snackBarRef.afterDismissed().subscribe(() => this.store.dispatch(this.actions.delateCohort(this.cohort)));
+    // snackBarRef.afterDismissed().subscribe(() => this.store.dispatch(this.actions.delateCohort(this.cohort)));
   }
 }

@@ -1,11 +1,10 @@
-import {Component, OnInit,} from '@angular/core';
-import {Router, ActivatedRoute} from '@angular/router';
-import {GraduationApplicationTask} from "../../../shared/model/graduation/graduation-application-task.interface";
-import {Observable} from "rxjs";
-import {GraduationModuleState} from "../index";
-import {Store} from "@ngrx/store";
-import {GraduationApplicationActions} from "./graduation-application.action";
-
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
+import {GraduationApplicationTask} from '../../../shared/model/graduation/graduation-application-task.interface';
+import {Observable} from 'rxjs';
+import {GraduationModuleState} from '../index';
+import {Store} from '@ngrx/store';
+import {GraduationApplicationActions} from './graduation-application.action';
 
 @Component({
   selector: 'pams-graduation-application-task-detail',
@@ -13,14 +12,14 @@ import {GraduationApplicationActions} from "./graduation-application.action";
 })
 export class GraduationApplicationTaskDetailPage implements OnInit {
 
-  private GRADUATION_APPLICATION_TASK = "graduationModuleState.graduationApplicationTask".split(".");
+  private GRADUATION_APPLICATION_TASK = 'graduationModuleState.graduationApplicationTask'.split('.');
   private graduationApplicationTask$: Observable<GraduationApplicationTask>;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
               private store: Store<GraduationModuleState>,
               private actions: GraduationApplicationActions) {
-    this.graduationApplicationTask$ = this.store.select(...this.GRADUATION_APPLICATION_TASK)
+    this.graduationApplicationTask$ = this.store.select(...this.GRADUATION_APPLICATION_TASK);
   }
 
   ngOnInit(): void {
@@ -31,8 +30,7 @@ export class GraduationApplicationTaskDetailPage implements OnInit {
   }
 
   goBack(): void {
-    this.router.navigate(['/graduation/graduationApplications']);
+    this.router.navigate(['/secure/graduation/graduationApplications']);
   }
 }
-
 

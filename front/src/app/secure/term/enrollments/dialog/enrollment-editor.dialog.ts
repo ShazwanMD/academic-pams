@@ -1,7 +1,6 @@
-import {Component, ViewContainerRef, OnInit} from '@angular/core';
-import {FormGroup, FormControl} from '@angular/forms';
-import {FormBuilder} from '@angular/forms';
-import {Router, ActivatedRoute} from '@angular/router';
+import {Component, OnInit, ViewContainerRef} from '@angular/core';
+import {FormBuilder, FormGroup} from '@angular/forms';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Enrollment} from '../../../../shared/model/term/enrollment.interface';
 import {EnrollmentActions} from '../enrollment.action';
 import {Section} from '../../../../shared/model/term/section.interface';

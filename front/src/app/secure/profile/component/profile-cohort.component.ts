@@ -1,6 +1,5 @@
-import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 import {Cohort} from '../../../shared/model/planner/cohort.interface';
-import {Student} from '../../../shared/model/identity/student.interface';
 
 @Component({
   selector: 'pams-profile-cohort',

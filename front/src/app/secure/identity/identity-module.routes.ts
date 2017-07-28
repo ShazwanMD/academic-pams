@@ -1,4 +1,4 @@
-import {Routes, RouterModule} from '@angular/router';
+import {Routes} from '@angular/router';
 import {IdentityComponent} from './identity.component';
 import {StaffRoutes} from './staffs/staff.routes';
 

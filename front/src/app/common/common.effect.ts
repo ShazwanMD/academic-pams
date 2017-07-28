@@ -1,6 +1,6 @@
 import {CommonActions} from './common.action';
 import {CommonService} from '../../services/common.service';
-import {Effect, Actions} from '@ngrx/effects';
+import {Actions, Effect} from '@ngrx/effects';
 import {Injectable} from '@angular/core';
 
 @Injectable()

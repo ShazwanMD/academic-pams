@@ -5,7 +5,7 @@ import {Store} from '@ngrx/store';
 import {Component, OnInit, ViewContainerRef} from '@angular/core';
 import {SetupModuleState} from '../index';
 import {SetupActions} from '../setup.action';
-import {MdDialog, MdDialogRef, MdDialogConfig} from '@angular/material';
+import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';
 
 @Component({
   selector: 'pams-nationality-list-page',

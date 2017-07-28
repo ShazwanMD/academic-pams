@@ -2,7 +2,7 @@ import {FormBuilder} from '@angular/forms';
 import {TermModuleState} from '../../index';
 import {Store} from '@ngrx/store';
 import {AssessmentActions} from '../../assessments/assessment.action';
-import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, ViewContainerRef, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output, ViewContainerRef} from '@angular/core';
 import {Assessment} from '../../../../shared/model/term/assessment.interface';
 import {Offering} from '../../../../shared/model/term/offering.interface';
 import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';
@@ -37,7 +37,7 @@ export class StudentOfferingAssessmentListComponent implements OnInit {
               private store: Store<TermModuleState>,
               private formBuilder: FormBuilder,
               private vcf: ViewContainerRef,
-              private dialog: MdDialog, ) {
+              private dialog: MdDialog,) {
   }
 
   ngOnInit(): void {

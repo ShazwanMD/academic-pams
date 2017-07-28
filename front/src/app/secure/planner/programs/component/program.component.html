@@ -1,15 +1,14 @@
-
 <md-card>
   <md-card-title>{{program?.titleMs}}</md-card-title>
   <md-card-subtitle>{{program?.code}}</md-card-subtitle>
- <md-divider></md-divider>
+  <md-divider></md-divider>
   <md-card-content>
 
-  <!--<md-card>
-  <div toolbar-buttons layout="row" layout-align="start center" flex>
-    <md-card-title>{{program?.code}}</md-card-title>
-     <md-card-subtitle>{{program?.titleMs}}</md-card-subtitle><br>-->
-   
+    <!--<md-card>
+    <div toolbar-buttons layout="row" layout-align="start center" flex>
+      <md-card-title>{{program?.code}}</md-card-title>
+       <md-card-subtitle>{{program?.titleMs}}</md-card-subtitle><br>-->
+
     <!--<span flex></span>
     <button md-button class="md-icon-button" (click)="editorDialog()" mdTooltip="Edit program">
       <md-icon class="md-24 tc-grey-700">add</md-icon>
@@ -20,9 +19,9 @@
   </div>-->
     <!--Tab Section Here-->
 
-  
+
     <md-tab-group>
-      
+
       <md-tab label="Program Detail"><br>
         <div>Code : {{program?.code}}</div>
         <br>
@@ -60,7 +59,7 @@
             <md-icon>more_vert</md-icon>
           </button>
           <md-menu x-position="before" #menu1="mdMenu">
-            <button md-menu-item [routerLink]="['/planner/programs', row['id']]">View program</button>
+            <button md-menu-item [routerLink]="['/secure/planner/programs', row['id']]">View program</button>
              <button md-menu-item (click)="EditProgram(row)">EditProgram</button>
             <button md-menu-item (click)="removeProgram(row)">Remove Program</button>
           </md-menu>

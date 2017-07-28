@@ -1,68 +1,82 @@
 <td-layout-nav>
-<div toolbar-content layout="row" layout-align="center center" flex>
-	<span>PAMS: Postgraduate Management System</span> <span flex></span>
-</div>
-<md-nav-list menu-items> <a *ngFor="let item of routes"
-	md-list-item [routerLink]="[item.route]" (click)="layout.close()">
-	<md-icon>{{item.icon}}</md-icon> {{item.title}}
-</a> </md-nav-list> <td-layout-manage-list #list> <md-nav-list
-	list-items> 
-	
-	<a md-list-item> <md-icon></md-icon> <span
-	style="color: red; font-weight: bold">ADMINISTRATOR</span>
-</a> 
-<a md-list-item [routerLink]="['/term/offerings']"> 
-<md-icon>create</md-icon>
-	Offerings
-</a> 
-<a md-list-item [routerLink]="['/term/admissions']"> 
-<md-icon>person_add</md-icon>
-	Semester Registration
-</a> 
-<a md-list-item [routerLink]="['/term/enrollment-applications']"> 
-<md-icon>create</md-icon>
-	Course Enrollments
-</a> 
+  <div toolbar-content layout="row" layout-align="center center" flex>
+    <span>PAMS: Postgraduate Management System</span> <span flex></span>
+  </div>
+  <md-nav-list menu-items><a *ngFor="let item of routes"
+                             md-list-item [routerLink]="[item.route]" (click)="layout.close()">
+    <md-icon>{{item.icon}}</md-icon>
+    {{item.title}}
+  </a></md-nav-list>
+  <td-layout-manage-list #list>
+    <md-nav-list
+      list-items>
 
-<!-- <a md-list-item [routerLink]="['/term/appointments']"> 
-<md-icon>create</md-icon>
-	 Appointments
-</a>  -->
-<md-divider></md-divider> 
-<a md-list-item> <md-icon></md-icon> <span
-	style="color: red; font-weight: bold">STUDENT</span>
-</a> <a md-list-item
-	[routerLink]="['/term/admission-applications/admission-application-center2']"> 
-	<md-icon>person_add</md-icon>
-	Semester Registration
-</a> <a md-list-item
-	[routerLink]="['/term/enrollment-applications/student-enrollment-center']"> 
-	<md-icon>create</md-icon>
-	Course Enrollments
-</a> 
-<md-divider></md-divider> 
-<a md-list-item> <md-icon></md-icon> <span
-	style="color: red; font-weight: bold">LECTURER</span>
-</a>
-<a md-list-item
-	[routerLink]="['/identity/staffs']"> 
-	<md-icon>person_add</md-icon>
-	Staff Center
-</a>
-</md-nav-list>
-<div toolbar-buttons layout="row" layout-align="start center" flex>
-	<span flex>Term Page Center</span>
-	<button md-button class="md-icon-button">
-		<md-icon class="md-24">settings</md-icon>
-	</button>
-	<button md-button class="md-icon-button">
-		<md-icon class="md-24">more_vert</md-icon>
-	</button>
-</div>
-<md-card class=""> <md-card-title align="center">Selamat Hari Raya Aidilfitri
-</md-card-title> <md-card-subtitle></md-card-subtitle>
-<md-divider></md-divider> 
-<div align="center">
- <img src=".\..\assets\img\kadraya.jpg" width="80%" height="20%" />
- </div>
-<md-divider></md-divider>  </md-card> </td-layout-manage-list> </td-layout-nav>
+      <a md-list-item>
+        <md-icon></md-icon>
+        <span
+          style="color: red; font-weight: bold">ADMINISTRATOR</span>
+      </a>
+      <a md-list-item [routerLink]="['/secure/term/offerings']">
+        <md-icon>create</md-icon>
+        Offerings
+      </a>
+      <a md-list-item [routerLink]="['/secure/term/admissions']">
+        <md-icon>person_add</md-icon>
+        Semester Registration
+      </a>
+      <a md-list-item [routerLink]="['/secure/term/enrollment-applications']">
+        <md-icon>create</md-icon>
+        Course Enrollments
+      </a>
+
+      <!-- <a md-list-item [routerLink]="['/secure/term/appointments']">
+      <md-icon>create</md-icon>
+           Appointments
+      </a>  -->
+      <md-divider></md-divider>
+      <a md-list-item>
+        <md-icon></md-icon>
+        <span
+          style="color: red; font-weight: bold">STUDENT</span>
+      </a> <a md-list-item
+              [routerLink]="['/secure/term/admission-applications/admission-application-center2']">
+      <md-icon>person_add</md-icon>
+      Semester Registration
+    </a> <a md-list-item
+            [routerLink]="['/secure/term/enrollment-applications/student-enrollment-center']">
+      <md-icon>create</md-icon>
+      Course Enrollments
+    </a>
+      <md-divider></md-divider>
+      <a md-list-item>
+        <md-icon></md-icon>
+        <span
+          style="color: red; font-weight: bold">LECTURER</span>
+      </a>
+      <a md-list-item
+         [routerLink]="['/identity/staffs']">
+        <md-icon>person_add</md-icon>
+        Staff Center
+      </a>
+    </md-nav-list>
+    <div toolbar-buttons layout="row" layout-align="start center" flex>
+      <span flex>Term Page Center</span>
+      <button md-button class="md-icon-button">
+        <md-icon class="md-24">settings</md-icon>
+      </button>
+      <button md-button class="md-icon-button">
+        <md-icon class="md-24">more_vert</md-icon>
+      </button>
+    </div>
+    <md-card class="">
+      <md-card-title align="center">Selamat Hari Raya Aidilfitri
+      </md-card-title>
+      <md-card-subtitle></md-card-subtitle>
+      <md-divider></md-divider>
+      <div align="center">
+        <img src=".\..\assets\img\kadraya.jpg" width="80%" height="20%"/>
+      </div>
+      <md-divider></md-divider>
+    </md-card>
+  </td-layout-manage-list>
+</td-layout-nav>

@@ -1,8 +1,7 @@
 import {Program} from '../../../../shared/model/planner/program.interface';
-import {Component, ViewContainerRef, OnInit} from '@angular/core';
-import {FormGroup} from '@angular/forms';
-import {FormBuilder} from '@angular/forms';
-import {Router, ActivatedRoute} from '@angular/router';
+import {Component, OnInit, ViewContainerRef} from '@angular/core';
+import {FormBuilder, FormGroup} from '@angular/forms';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Curriculum} from '../../../../shared/model/planner/curriculum.interface';
 import {CurriculumActions} from '../curriculum.action';
 import {MdDialogRef} from '@angular/material';
@@ -43,6 +42,7 @@ export class CurriculumUpdateDialog implements OnInit {
     this._curriculum = value;
     this.update = true;
   }
+
   ngOnInit(): void {
     this.updateForm = this.formBuilder.group(<Curriculum>{
       id: null,

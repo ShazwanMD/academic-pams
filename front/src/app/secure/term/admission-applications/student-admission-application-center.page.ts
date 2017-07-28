@@ -1,13 +1,13 @@
-import {Component, OnInit, ChangeDetectionStrategy, ViewContainerRef} from '@angular/core';
-import {Router, ActivatedRoute} from '@angular/router';
+import {Component, OnInit, ViewContainerRef} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
 
-import {Store, State} from '@ngrx/store';
+import {Store} from '@ngrx/store';
 import {Observable} from 'rxjs';
 import {AdmissionApplicationTaskCreatorDialog} from './dialog/admission-application-task-creator.dialog';
 import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';
-import {AdmissionApplicationTask} from '../../shared/model/term/admission-application-task.interface';
 import {TermModuleState} from '../index';
 import {AdmissionApplicationActions} from './admission-application.action';
+import {AdmissionApplicationTask} from '../../../shared/model/term/admission-application-task.interface';
 
 @Component({
   selector: 'pams-student-admission-application-center',
@@ -33,7 +33,7 @@ export class StudentAdmissionApplicationCenterPage implements OnInit {
     this.pooledAdmissionApplicationTasks$ = this.store.select(...this.POOLED_ADMISSION_APPLICATION_TASKS);
   }
 
-   createDialog(): void {
+  createDialog(): void {
     console.log('showDialog');
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
@@ -55,7 +55,7 @@ export class StudentAdmissionApplicationCenterPage implements OnInit {
 
   viewTask(task: AdmissionApplicationTask): void {
     console.log('students applications: ' + task.taskId);
-    this.router.navigate(['/term/admission-applications/student-admission-application-task-detail', task.taskId]);
+    this.router.navigate(['/secure/term/admission-applications/student-admission-application-task-detail', task.taskId]);
   }
 
   ngOnInit(): void {
@@ -65,7 +65,7 @@ export class StudentAdmissionApplicationCenterPage implements OnInit {
   }
 
   goBack(route: string): void {
-    this.router.navigate(['/term/admission-applications']);
+    this.router.navigate(['/secure/term/admission-applications']);
   }
 }
 

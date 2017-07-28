@@ -1,8 +1,8 @@
 import {Action} from '@ngrx/store';
 
 import * as _ from 'lodash';
-import {Appointment} from '../../shared/model/term/appointment.interface';
 import {AppointmentActions} from './appointment.action';
+import {Appointment} from '../../../shared/model/term/appointment.interface';
 
 export type AppointmentListState = Appointment[];
 

@@ -1,4 +1,4 @@
-import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, ViewContainerRef, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output, ViewContainerRef} from '@angular/core';
 import {Enrollment} from '../../../../shared/model/term/enrollment.interface';
 import {MdDialog, MdDialogConfig, MdDialogRef, MdSnackBar} from '@angular/material';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -8,10 +8,10 @@ import {TermModuleState} from '../../index';
 import {Admission} from '../../../../shared/model/term/admission.interface';
 import {AdmissionEnrollmentDialog} from '../dialog/admission-enrollment.dialog';
 import {
-  TdDataTableSortingOrder,
-  TdDataTableService,
+  IPageChangeEvent,
   ITdDataTableSortChangeEvent,
-  IPageChangeEvent
+  TdDataTableService,
+  TdDataTableSortingOrder
 } from '@covalent/core';
 
 @Component({

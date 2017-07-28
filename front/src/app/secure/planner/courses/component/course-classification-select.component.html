@@ -1,7 +1,6 @@
-
-  <md-select [placeholder]="placeholder"
-             (change)="selectChangeEvent($event.value)" flex>
-    <md-option *ngFor="let courseClassification of courseClassifications" [value]="courseClassification">
-      {{courseClassification}}
-    </md-option>
-  </md-select>
+<md-select [placeholder]="placeholder"
+           (change)="selectChangeEvent($event.value)" flex>
+  <md-option *ngFor="let courseClassification of courseClassifications" [value]="courseClassification">
+    {{courseClassification}}
+  </md-option>
+</md-select>

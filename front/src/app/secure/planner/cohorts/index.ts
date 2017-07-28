@@ -3,15 +3,12 @@ import {AcademicClassificationSelectComponent} from './component/academic-classi
 import {CohortSelectComponent} from './component/cohort-select.component';
 import '@ngrx/core/add/operator/select';
 import {appRoutes, appRoutingProviders} from '../../../app.routes';
-import {NgModule, ModuleWithProviders} from '@angular/core';
+import {ModuleWithProviders, NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {ReactiveFormsModule} from '@angular/forms';
 import {CovalentCoreModule} from '@covalent/core';
 
-import {PlannerService} from '../../../../services';
-import {CommonService} from '../../../../services';
-
-import {IdentityService} from '../../../../services';
+import {CommonService, IdentityService, PlannerService} from '../../../../services';
 import {ProgramSubModule} from '../programs/index';
 import {CohortCenterPage} from './cohort-center.page';
 import {CohortListComponent} from './component/cohort-list.component';

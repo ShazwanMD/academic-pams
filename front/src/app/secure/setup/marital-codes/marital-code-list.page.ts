@@ -1,6 +1,4 @@
-import {MdDialogRef} from '@angular/material';
-import {MdDialogConfig} from '@angular/material';
-import {MdDialog} from '@angular/material';
+import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';
 import {MaritalCodeEditorDialog} from './dialog/marital-code-editor.dialog';
 import {MaritalCode} from './marital-code.interface';
 import {SetupActions} from '../setup.action';

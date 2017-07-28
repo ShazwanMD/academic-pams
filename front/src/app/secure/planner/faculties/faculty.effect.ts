@@ -1,20 +1,20 @@
-import { Store } from '@ngrx/store';
-import { Injectable } from '@angular/core';
-import { Effect, Actions } from '@ngrx/effects';
-import { FacultyActions } from './faculty.action';
-import { PlannerService } from '../../../../services/planner.service';
-import { PlannerModuleState } from '../index';
-import { Faculty } from '../../../shared/model/planner/faculty.interface';
+import {Store} from '@ngrx/store';
+import {Injectable} from '@angular/core';
+import {Actions, Effect} from '@ngrx/effects';
+import {FacultyActions} from './faculty.action';
+import {PlannerService} from '../../../../services/planner.service';
+import {PlannerModuleState} from '../index';
+import {Faculty} from '../../../shared/model/planner/faculty.interface';
 
 @Injectable()
 export class FacultyEffects {
 
-private FACULTY: string[] = 'plannerModuleState.faculty'.split('.');
+  private FACULTY: string[] = 'plannerModuleState.faculty'.split('.');
 
   constructor(private actions$: Actions,
-    private facultyActions: FacultyActions,
-    private plannerService: PlannerService,
-    private store$: Store<PlannerModuleState>) {
+              private facultyActions: FacultyActions,
+              private plannerService: PlannerService,
+              private store$: Store<PlannerModuleState>) {
   }
 
   @Effect() findFaculties$ = this.actions$

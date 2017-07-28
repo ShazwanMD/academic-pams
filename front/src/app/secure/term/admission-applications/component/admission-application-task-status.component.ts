@@ -1,4 +1,4 @@
-import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 import {AdmissionApplicationTask} from '../../../../shared/model/term/admission-application-task.interface';
 
 @Component({

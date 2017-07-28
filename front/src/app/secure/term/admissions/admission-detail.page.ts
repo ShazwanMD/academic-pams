@@ -1,5 +1,5 @@
-import {Component, OnInit, ChangeDetectionStrategy, ViewContainerRef, Input, EventEmitter, Output} from '@angular/core';
-import {Router, ActivatedRoute} from '@angular/router';
+import {Component, Input, OnInit, ViewContainerRef} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
 
 import {Store} from '@ngrx/store';
 import {Observable} from 'rxjs';
@@ -8,8 +8,8 @@ import {AdmissionActions} from './admission.action';
 import {TermModuleState} from '../index';
 import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';
 import {Enrollment} from '../../../shared/model/term/enrollment.interface';
-import { AdmissionCreateTaskCreatorDialog } from './dialog/admission-create-task-creator.dialog';
-import { EnrollmentApplication } from '../../../shared/model/term/enrollment-application.interface';
+import {AdmissionCreateTaskCreatorDialog} from './dialog/admission-create-task-creator.dialog';
+import {EnrollmentApplication} from '../../../shared/model/term/enrollment-application.interface';
 
 @Component({
   selector: 'pams-admission-detail',
@@ -84,9 +84,9 @@ export class AdmissionDetailPage implements OnInit {
   }
 
   viewTask(enrollment: Enrollment) {
-      console.log('task: ' + enrollment.id);
-      this.router.navigate(['/term/enrollments', enrollment.id]);
+    console.log('task: ' + enrollment.id);
+    this.router.navigate(['/secure/term/enrollments', enrollment.id]);
 
-    }
+  }
 
 }

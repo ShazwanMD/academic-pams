@@ -3,6 +3,6 @@
 
   <md-option *ngFor="let admission of admissions$ | async" [value]="admission">
     {{admission?.student?.identityNo}}: {{admission?.student?.name}}
-   
+
   </md-option>
 </md-select>

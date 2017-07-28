@@ -1,11 +1,10 @@
-import {Routes, RouterModule} from '@angular/router';
+import {Routes} from '@angular/router';
 import {AdmissionCreateTaskCreatorDialog} from './dialog/admission-create-task-creator.dialog';
 import {AdmissionUpdateTaskCreatorDialog} from './dialog/admission-update-task-creator.dialog';
 import {AdmissionDeleteTaskCreatorDialog} from './dialog/admission-delete-task-creator.dialog';
 import {AdmissionDetailPage} from './admission-detail.page';
 import {AdmissionCenterPage} from './admission-center.page';
 import {StudentEnrollmentApplicationTaskDetailPage} from '../enrollment-applications/student-enrollment-application-task-detail.page';
-import {AdmissionApplicationCenterPage} from '../admission-applications/admission-application-center.page';
 import {StudentAdmissionCenterPage} from './student-admission-center.page';
 import {StudentAdmissionDetailPage} from './student-admission-detail.page';
 

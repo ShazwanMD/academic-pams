@@ -1,8 +1,7 @@
-import { Guardian } from '../../../shared/model/profile/guardian.interface';
-import {Component, ViewContainerRef, OnInit, AfterViewInit} from '@angular/core';
-import {FormGroup, FormControl} from '@angular/forms';
-import {FormBuilder} from '@angular/forms';
-import {Router, ActivatedRoute} from '@angular/router';
+import {Guardian} from '../../../shared/model/profile/guardian.interface';
+import {Component, OnInit, ViewContainerRef} from '@angular/core';
+import {FormBuilder, FormGroup} from '@angular/forms';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Store} from '@ngrx/store';
 import {MdDialogRef} from '@angular/material';
 import {Student} from '../../../shared/model/identity/student.interface';
@@ -55,7 +54,7 @@ export class GuardianEditorDialog implements OnInit {
   submit(guardian: Guardian, isValid: boolean) {
 
     if (isValid)
-    guardian.id = this._guardian.id;
+      guardian.id = this._guardian.id;
 
     if (isValid) this.store.dispatch(this.actions.updateGuardian(this._student, guardian));
     else this.store.dispatch(this.actions.addGuardian(this._student, guardian));

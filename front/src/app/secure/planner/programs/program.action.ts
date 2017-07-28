@@ -1,4 +1,3 @@
-import {Program} from '../../../shared/model/planner/program.interface';
 import {Injectable} from '@angular/core';
 import {Action} from '@ngrx/store';
 
@@ -24,7 +23,8 @@ export class ProgramActions {
     };
   }
 
- static FIND_PROGRAM_LEVEL_BY_CODE = '[Program] Find Program Level By Code';
+  static FIND_PROGRAM_LEVEL_BY_CODE = '[Program] Find Program Level By Code';
+
   findProgramLevelByCode(code): Action {
     return {
       type: ProgramActions.FIND_PROGRAM_LEVEL_BY_CODE,
@@ -33,6 +33,7 @@ export class ProgramActions {
   }
 
   static FIND_PROGRAM_LEVEL_BY_CODE_SUCCESS = '[Program] Find ProgramLevel By Code Success';
+
   findProgramLevelByCodeSuccess(message): Action {
     return {
       type: ProgramActions.FIND_PROGRAM_LEVEL_BY_CODE_SUCCESS,
@@ -62,7 +63,7 @@ export class ProgramActions {
 
   saveProgram(program): Action {
 
-console.log(program)
+    console.log(program)
 
     return {
       type: ProgramActions.SAVE_PROGRAM,
@@ -71,6 +72,7 @@ console.log(program)
   }
 
   static SAVE_PROGRAM_SUCCESS = '[Program] Save Program Success';
+
   saveProgramSuccess(program): Action {
     return {
       type: ProgramActions.SAVE_PROGRAM_SUCCESS,

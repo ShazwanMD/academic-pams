@@ -1,10 +1,10 @@
 import {Faculty} from '../../../../shared/model/planner/faculty.interface';
-import {Router, ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {FormBuilder} from '@angular/forms';
 import {PlannerModuleState} from '../../index';
 import {Store} from '@ngrx/store';
 import {ProgramActions} from '../program.action';
-import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, ViewContainerRef} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output, ViewContainerRef} from '@angular/core';
 import {Program} from '../../../../shared/model/planner/program.interface';
 import {ProgramCreatorDialog} from '../dialog/program-creator.dialog';
 

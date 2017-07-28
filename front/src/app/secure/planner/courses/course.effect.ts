@@ -1,20 +1,21 @@
 import {Injectable} from '@angular/core';
-import {Effect, Actions} from '@ngrx/effects';
-import {CourseActions} from "./course.action";
-import {PlannerService} from "../../../../services/planner.service";
-import {Store} from "@ngrx/store";
-import {PlannerModuleState} from "../index";
+import {Actions, Effect} from '@ngrx/effects';
+import {CourseActions} from './course.action';
+import {PlannerService} from '../../../../services/planner.service';
+import {Store} from '@ngrx/store';
+import {PlannerModuleState} from '../index';
 import {Course} from '../../../shared/model/planner/course.interface';
 @Injectable()
 export class CourseEffects {
 
-   private COURSE: string[] = "plannerModuleState.course".split(".");
+  private COURSE: string[] = "plannerModuleState.course".split(".");
 
   constructor(private actions$: Actions,
               private courseActions: CourseActions,
               private plannerService: PlannerService,
               private store$: Store<PlannerModuleState>) {
   }
+
   @Effect() findCourses$ = this.actions$
     .ofType(CourseActions.FIND_COURSES)
     .switchMap(() => this.plannerService.findCourses())
@@ -26,23 +27,23 @@ export class CourseEffects {
     .switchMap(code => this.plannerService.findCourseByCode(code))
     .map(course => this.courseActions.findCourseByCodeSuccess(course));
 
- @Effect() saveCourse$ = this.actions$
+  @Effect() saveCourse$ = this.actions$
     .ofType(CourseActions.SAVE_COURSE)
     .map(action => action.payload)
     .switchMap(course => this.plannerService.saveCourse(course))
     .map(course => this.courseActions.saveCourseSuccess(course))
-     .withLatestFrom(this.store$.select(...this.COURSE))
+    .withLatestFrom(this.store$.select(...this.COURSE))
     .map(state => state[1])
-   .map((course: Course) => this.courseActions.findCourseByCode(course.code));
+    .map((course: Course) => this.courseActions.findCourseByCode(course.code));
 
-    @Effect() addCourse$ = this.actions$
+  @Effect() addCourse$ = this.actions$
     .ofType(CourseActions.ADD_COURSE)
     .map(action => action.payload)
     .switchMap(course => this.plannerService.addCourse(course))
     .map(course => this.courseActions.addCourseSuccess(course))
-     .withLatestFrom(this.store$.select(...this.COURSE))
+    .withLatestFrom(this.store$.select(...this.COURSE))
     .map(state => state[1])
-   .map((course: Course) => this.courseActions.findCourseByCode(course.code));
+    .map((course: Course) => this.courseActions.findCourseByCode(course.code));
 
 
   @Effect() updateCourse$ = this.actions$

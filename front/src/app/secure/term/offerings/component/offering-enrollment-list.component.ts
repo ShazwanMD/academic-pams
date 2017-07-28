@@ -1,9 +1,9 @@
-import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy, ViewContainerRef} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output, ViewContainerRef} from '@angular/core';
 import {Enrollment} from '../../../../shared/model/term/enrollment.interface';
 import {Offering} from '../../../../shared/model/term/offering.interface';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Store} from '@ngrx/store';
-import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';
+import {MdDialog, MdDialogRef} from '@angular/material';
 import {AppointmentEditorDialog} from '../../appointments/dialog/appointment-editor.dialog';
 import {TermModuleState} from '../../index';
 
@@ -27,7 +27,7 @@ export class OfferingEnrollmentListComponent {
   @Input() enrollments: Enrollment[];
   @Output() view = new EventEmitter<Enrollment>();
 
- constructor(private router: Router,
+  constructor(private router: Router,
               private route: ActivatedRoute,
               private store: Store<TermModuleState>,
               private vcf: ViewContainerRef,

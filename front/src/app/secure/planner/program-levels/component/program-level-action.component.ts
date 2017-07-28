@@ -1,5 +1,5 @@
 import {MdDialog, MdSnackBar} from '@angular/material';
-import {Input, Component, ViewContainerRef, ChangeDetectionStrategy} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, ViewContainerRef} from '@angular/core';
 import {Store} from '@ngrx/store';
 
 import {PlannerModuleState} from '../../index';

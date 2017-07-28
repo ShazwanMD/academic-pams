@@ -1,5 +1,5 @@
 import {Assessment} from '../../../../shared/model/term/assessment.interface';
-import {Component, Input, EventEmitter, Output, ChangeDetectionStrategy} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
 
 @Component({
   selector: 'pams-assessment-list',

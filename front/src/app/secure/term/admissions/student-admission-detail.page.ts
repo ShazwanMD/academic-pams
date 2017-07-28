@@ -1,5 +1,5 @@
-import {Component, OnInit, ChangeDetectionStrategy, ViewContainerRef, Input, EventEmitter, Output} from '@angular/core';
-import {Router, ActivatedRoute} from '@angular/router';
+import {Component, Input, OnInit, ViewContainerRef} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
 
 import {Store} from '@ngrx/store';
 import {Observable} from 'rxjs';
@@ -85,7 +85,7 @@ export class StudentAdmissionDetailPage implements OnInit {
 
   viewTask(enrollment: Enrollment) {
     console.log('task: ' + enrollment.id);
-    this.router.navigate(['/term/enrollments', enrollment.id]);
+    this.router.navigate(['/secure/term/enrollments', enrollment.id]);
 
   }
 

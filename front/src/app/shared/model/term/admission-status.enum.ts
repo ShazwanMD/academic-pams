@@ -1,7 +1,6 @@
 export enum AdmissionStatus {
-   
-    ADMITTED,//0
-    POSTPONED,
-    SUSPENDED,
-    CANCELLED,
+  ADMITTED,//0
+  POSTPONED,
+  SUSPENDED,
+  CANCELLED,
 }
