@@ -7,6 +7,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.integration.dsl.http.Http;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,6 +27,8 @@ import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
 import my.edu.umk.pams.academic.planner.model.AdCohort;
 import my.edu.umk.pams.academic.planner.model.AdCohortImpl;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
+import my.edu.umk.pams.academic.security.integration.AdAutoLoginToken;
+import my.edu.umk.pams.academic.security.integration.NonSerializableSecurityContext;
 import my.edu.umk.pams.academic.term.service.TermService;
 import my.edu.umk.pams.academic.web.module.planner.controller.PlannerTransformer;
 import my.edu.umk.pams.academic.web.module.planner.vo.AcademicSession;
@@ -53,12 +58,6 @@ public class IntegrationController {
     @Autowired
     private TermService termService;
 
-    @RequestMapping(value = "/candidate", method = RequestMethod.POST)
-    public ResponseEntity<String> test(@RequestBody CandidatePayload payload) {
-        LOG.info("candidate: " + payload);
-        return new ResponseEntity<String>("success", HttpStatus.OK);
-    }
-
     // ====================================================================================================
     // COHORT
     // ====================================================================================================
@@ -78,7 +77,9 @@ public class IntegrationController {
     // CANDIDATE
     // ====================================================================================================
     @RequestMapping(value = "/candidate", method = RequestMethod.POST)
-    public ResponseEntity<String> saveCandidate() {
+    public ResponseEntity<String> saveCandidate(@RequestBody CandidatePayload payload) {
+        SecurityContext ctx = loginAsSystem();
+
         // student info
         AdStudent student = new AdStudentImpl();
         student.setMatricNo("TODO");
@@ -95,8 +96,23 @@ public class IntegrationController {
 
         identityService.saveStudent(student);
 
-        // refresh and save address etc
+        // todo: refresh and save address etc
 
+        logoutAsSystem(ctx);
         return new ResponseEntity<String>("sucess", HttpStatus.OK);
+    }
+
+    private SecurityContext loginAsSystem() {
+        SecurityContext savedCtx = SecurityContextHolder.getContext();
+        AdAutoLoginToken authenticationToken = new AdAutoLoginToken("system");
+        Authentication authed = authenticationManager.authenticate(authenticationToken);
+        SecurityContext system = new NonSerializableSecurityContext();
+        system.setAuthentication(authed);
+        SecurityContextHolder.setContext(system);
+        return savedCtx;
+    }
+
+    private void logoutAsSystem(SecurityContext context) {
+        SecurityContextHolder.setContext(context);
     }
 }
