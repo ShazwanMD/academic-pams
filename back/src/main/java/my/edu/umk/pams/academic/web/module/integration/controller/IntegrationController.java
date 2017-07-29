@@ -63,6 +63,8 @@ public class IntegrationController {
     // ====================================================================================================
     @RequestMapping(value = "/cohort", method = RequestMethod.POST)
     public ResponseEntity<String> saveCohort() {
+        SecurityContext ctx = loginAsSystem();
+
         AdCohort cohort = new AdCohortImpl();
         cohort.setCode("TODO");
         cohort.setDescription("TODO");
@@ -70,13 +72,15 @@ public class IntegrationController {
         cohort.setCurriculum(plannerService.findCurriculumByCode("TODO"));
         cohort.setSession(plannerService.findCurrentAcademicSession());
         plannerService.saveCohort(cohort);
+
+        logoutAsSystem(ctx);
         return new ResponseEntity<String>("sucess", HttpStatus.OK);
     }
 
     // ====================================================================================================
     // CANDIDATE
     // ====================================================================================================
-    @RequestMapping(value = "/candidate", method = RequestMethod.POST)
+    @RequestMapping(value = "/candidates", method = RequestMethod.POST)
     public ResponseEntity<String> saveCandidate(@RequestBody CandidatePayload payload) {
         SecurityContext ctx = loginAsSystem();
 
