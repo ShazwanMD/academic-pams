@@ -3,6 +3,7 @@ package my.edu.umk.pams.academic.planner.service;
 import my.edu.umk.pams.academic.common.model.AdGradeCode;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.planner.dao.*;
+import my.edu.umk.pams.academic.planner.event.FacultyAddedEvent;
 import my.edu.umk.pams.academic.planner.event.ProgramAddedEvent;
 import my.edu.umk.pams.academic.planner.event.ProgramEvent;
 import my.edu.umk.pams.academic.planner.model.*;
@@ -604,6 +605,12 @@ public class PlannerServiceImpl implements PlannerService {
     public void saveFaculty(AdFaculty faculty) {
         facultyDao.save(faculty, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
+
+        FacultyCodePayload payload = new FacultyCodePayload();
+        payload.setCode(faculty.getCode());
+        payload.setDescription(faculty.getDescription());
+
+        applicationContext.publishEvent(new FacultyAddedEvent(payload));
     }
 
     @Override
