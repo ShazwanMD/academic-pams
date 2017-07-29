@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.integration.dsl.http.Http;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -26,9 +27,9 @@ import my.edu.umk.pams.academic.planner.service.PlannerService;
 import my.edu.umk.pams.academic.term.service.TermService;
 import my.edu.umk.pams.academic.web.module.planner.controller.PlannerTransformer;
 import my.edu.umk.pams.academic.web.module.planner.vo.AcademicSession;
+import my.edu.umk.pams.connector.payload.CandidatePayload;
 
 /**
- * Created by User on 7/20/2017.
  */
 @Transactional
 @RestController
@@ -52,12 +53,11 @@ public class IntegrationController {
     @Autowired
     private TermService termService;
 
-    //    @RequestMapping(value = "/candidate", method = RequestMethod.POST)
-//    public ResponseEntity<String> test(@RequestBody CandidatePayload payload) {
-//        LOG.info("candidate: " + payload);
-//        return new ResponseEntity<String>("success", HttpStatus.OK);
-//    }
-
+    @RequestMapping(value = "/candidate", method = RequestMethod.POST)
+    public ResponseEntity<String> test(@RequestBody CandidatePayload payload) {
+        LOG.info("candidate: " + payload);
+        return new ResponseEntity<String>("success", HttpStatus.OK);
+    }
 
     // ====================================================================================================
     // COHORT

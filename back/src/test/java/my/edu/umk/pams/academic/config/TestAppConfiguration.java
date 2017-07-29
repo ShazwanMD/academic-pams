@@ -2,13 +2,18 @@ package my.edu.umk.pams.academic.config;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.tngtech.jgiven.integration.spring.EnableJGiven;
+
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.cache.annotation.EnableCaching;
-import org.springframework.context.annotation.*;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Import;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
+import org.springframework.jms.annotation.EnableJms;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
@@ -18,6 +23,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableWebSecurity
 @EnableScheduling
 @EnableBatchProcessing
+@EnableJms
+//@EnableIntegration
 @EnableTransactionManagement
 @EnableCaching
 @ComponentScan(basePackages = {
@@ -55,7 +62,9 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
         TestWorkflowConfig.class,
         TestAccessConfig.class,
         TestCacheConfig.class,
-        TestEmailConfig.class
+        TestEmailConfig.class,
+        TestJmsConfig.class,
+        TestIntegrationConfig.class,
 })
 @PropertySource("classpath:application.properties")
 public class TestAppConfiguration {

@@ -3,6 +3,7 @@ package my.edu.umk.pams.academic.planner.service;
 import my.edu.umk.pams.academic.common.model.AdGradeCode;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.planner.dao.*;
+import my.edu.umk.pams.academic.planner.event.ProgramAddedEvent;
 import my.edu.umk.pams.academic.planner.event.ProgramEvent;
 import my.edu.umk.pams.academic.planner.model.*;
 import my.edu.umk.pams.academic.security.service.SecurityService;
@@ -11,6 +12,9 @@ import my.edu.umk.pams.academic.term.dao.AdOfferingDao;
 import my.edu.umk.pams.academic.term.dao.AdSectionDao;
 import my.edu.umk.pams.academic.term.model.*;
 import my.edu.umk.pams.academic.term.service.TermService;
+import my.edu.umk.pams.academic.web.module.planner.vo.Faculty;
+import my.edu.umk.pams.connector.payload.FacultyCodePayload;
+import my.edu.umk.pams.connector.payload.ProgramCodePayload;
 
 import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
@@ -616,8 +620,21 @@ public class PlannerServiceImpl implements PlannerService {
 
     @Override
     public void addProgram(AdFaculty faculty, AdProgram program) {
+        LOG.debug("adding a program to faculty");
         facultyDao.addProgram(faculty, program, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
+
+        // prepare payload
+        LOG.debug("prepare payload");
+        FacultyCodePayload f = new FacultyCodePayload();
+        f.setCode(faculty.getCode());
+        f.setDescription(faculty.getDescription());
+        ProgramCodePayload p = new ProgramCodePayload();
+        p.setCode(program.getCode());
+        p.setDescription(program.getTitleMs());
+        p.setFacultyCode(f);
+        ProgramAddedEvent event = new ProgramAddedEvent(p);
+        applicationContext.publishEvent(event);
     }
 
     @Override
@@ -795,12 +812,6 @@ public class PlannerServiceImpl implements PlannerService {
     public void saveProgram(AdProgram program) {
         programDao.save(program, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
-
-//        ProgramCodePayload payload = new ProgramCodePayload();
-//        payload.setCode(program.getCode())
-//        payload.setCode(program.getDescription());
-//        ProgramEvent event = new ProgramEvent(payload);
-//        applicationContext.publishEvent(event);
     }
 
     @Override
