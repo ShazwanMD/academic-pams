@@ -713,7 +713,7 @@ public class TermController {
         LOG.debug("adding section canonical code: {}", vo.getCanonicalCode());
         
         if (isSectionExists(vo.getCanonicalCode()))
-        	 throw new IllegalArgumentException("Data offering already exists! Please insert new data");
+        	 throw new IllegalArgumentException("Data section already exists! Please insert new data");
 
         
         AdOffering offering = termService.findOfferingByCanonicalCode(canonicalCode);
@@ -767,6 +767,13 @@ public class TermController {
 		private boolean isAssessmentExists(String canonicalCode) {
 	        System.out.println(termService.isAssessmentExists(canonicalCode));
 	        return termService.isAssessmentExists(canonicalCode);
+
+	    }
+		
+	//isAssessmentExists
+	    private boolean isAppointmentExists(AdSection section, AdStaff staff) {
+	        System.out.println(termService.isAppointmentExists(section,staff));
+	        return termService.isAppointmentExists(section,staff);
 
 	    }
 
@@ -899,7 +906,10 @@ public class TermController {
     @RequestMapping(value = "/sections/{canonicalCode}/appointments", method = RequestMethod.POST)
     public ResponseEntity<String> addAppointment(@PathVariable String canonicalCode, @RequestBody Appointment vo) {
         dummyLogin();
+       // if (isAppointmentExists(vo.getSection(), vo.getStaff())) {
+        //           throw new IllegalArgumentException("Data appointment already exists! Please insert new data");
 
+        
         AdOffering offering = termService.findOfferingByCanonicalCode(canonicalCode);
         AdSection section = termService.findSectionById(vo.getSection().getId());
         AdAppointment appointment = new AdAppointmentImpl();

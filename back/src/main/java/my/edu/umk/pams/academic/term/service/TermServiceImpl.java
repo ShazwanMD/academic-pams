@@ -1386,14 +1386,14 @@ public class TermServiceImpl implements TermService {
 
 	@Override
 	public void addAppointment(AdSection section, AdAppointment appointment) {
-		if (isAppointmentExists(appointment.getSection(), appointment.getStaff())) {
+		/*if (isAppointmentExists(appointment.getSection(), appointment.getStaff())) {
 			//throw new Exception("Duplicate section record");
 			System.out.println("Duplicate data appointment");
-		} else {
+		} else {*/
 		appointment.setSection(section);
 		appointmentDao.save(appointment, securityService.getCurrentUser());
 		sessionFactory.getCurrentSession().flush();
-	}
+	//s}
 	}
 
 	// update appointment by section
