@@ -31,8 +31,6 @@ public class JmsConfig {
         System.out.println("*****************************************************");
         System.out.println("we have jms template: " + jmsTemplate);
         System.out.println("we have connection factory: " + ((ActiveMQConnectionFactory) connectionFactory).getBrokerURL());
-        System.out.println("we have connection factory: " + ((ActiveMQConnectionFactory) connectionFactory).getUserName());
-        System.out.println("we have connection factory: " + ((ActiveMQConnectionFactory) connectionFactory).getPassword());
         JmsSendingMessageHandler handler = new JmsSendingMessageHandler(jmsTemplate);
         handler.setDestinationExpression(new FunctionExpression<>(new DestinationExpressionFunction()));
         handler.setExtractPayload(true);
