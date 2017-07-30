@@ -24,13 +24,30 @@ import javax.annotation.PostConstruct;
 import javax.jms.ConnectionFactory;
 
 import my.edu.umk.pams.academic.term.service.TermServiceImpl;
+import my.edu.umk.pams.connector.payload.CandidatePayload;
+import my.edu.umk.pams.connector.payload.FacultyCodePayload;
 import my.edu.umk.pams.connector.payload.ProgramCodePayload;
 
 @TestConfiguration
-@EnableJms
 public class TestJmsConfig {
 
     private static final Logger LOG = LoggerFactory.getLogger(TestJmsConfig.class);
+
+    @Bean
+    public ConnectionFactory connectionFactory() {
+        return new ActiveMQConnectionFactory("admin", "singerbeng!", "tcp://10.20.5.80:61616");
+    }
+
+    @Bean
+    public JmsTemplate jmsTemplate(final ConnectionFactory connectionFactory) {
+        JmsTemplate template = new JmsTemplate();
+        template.setConnectionFactory(connectionFactory);
+        template.setPubSubDomain(true);
+        template.setDeliveryMode(2);
+        template.setSessionAcknowledgeMode(2);
+        template.setExplicitQosEnabled(true);
+        return template;
+    }
 
     @Bean
     public JmsSendingMessageHandler jmsMessageHandler(final JmsTemplate jmsTemplate, final ConnectionFactory connectionFactory) {
@@ -49,6 +66,8 @@ public class TestJmsConfig {
         public DestinationExpressionFunction() {
             queueMap = new HashMap<>();
             queueMap.put(ProgramCodePayload.class.getName(), new ActiveMQQueue("programCodeQueue"));
+            queueMap.put(FacultyCodePayload.class.getName(), new ActiveMQQueue("facultyCodeQueue"));
+            queueMap.put(CandidatePayload.class.getName(), new ActiveMQQueue("candidateQueue"));
         }
 
         @Override
