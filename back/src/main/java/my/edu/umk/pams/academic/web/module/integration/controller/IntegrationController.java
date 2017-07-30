@@ -19,6 +19,9 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 import my.edu.umk.pams.academic.common.service.CommonService;
+import my.edu.umk.pams.academic.identity.model.AdAddress;
+import my.edu.umk.pams.academic.identity.model.AdAddressImpl;
+import my.edu.umk.pams.academic.identity.model.AdAddressType;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.identity.model.AdStudentImpl;
 import my.edu.umk.pams.academic.identity.model.AdStudentStatus;
@@ -26,7 +29,10 @@ import my.edu.umk.pams.academic.identity.service.IdentityService;
 import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
 import my.edu.umk.pams.academic.planner.model.AdCohort;
 import my.edu.umk.pams.academic.planner.model.AdCohortImpl;
+import my.edu.umk.pams.academic.planner.model.AdFaculty;
+import my.edu.umk.pams.academic.planner.model.AdFacultyImpl;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
+import my.edu.umk.pams.academic.profile.service.ProfileService;
 import my.edu.umk.pams.academic.security.integration.AdAutoLoginToken;
 import my.edu.umk.pams.academic.security.integration.NonSerializableSecurityContext;
 import my.edu.umk.pams.academic.term.service.TermService;
@@ -57,6 +63,9 @@ public class IntegrationController {
 
     @Autowired
     private TermService termService;
+    
+    @Autowired
+    private ProfileService profileService;
 
     // ====================================================================================================
     // COHORT
@@ -86,12 +95,12 @@ public class IntegrationController {
 
         // student info
         AdStudent student = new AdStudentImpl();
-        student.setMatricNo("TODO");
-        student.setName("TODO");
-        student.setEmail("TODO");
-        student.setFax("TODO");
-        student.setPhone("TODO");
-        student.setMobile("TODO");
+        student.setMatricNo(payload.getMatricNo());
+        student.setName(payload.getName());
+        student.setEmail(payload.getEmail());
+        student.setFax(payload.getFax());
+        student.setPhone(payload.getPhone());
+        student.setMobile(payload.getMobile());
 
         // status, mode and cohort
         student.setStudentStatus(AdStudentStatus.MATRICULATED);
@@ -99,12 +108,35 @@ public class IntegrationController {
         student.setCohort(plannerService.findCohortByCode("TODO"));
 
         identityService.saveStudent(student);
+        
+        AdAddress currentAddress = new AdAddressImpl();
+        currentAddress.setAddress1(payload.getSecondaryAddress().getAddress1());
+        currentAddress.setAddress2(payload.getSecondaryAddress().getAddress2());
+        currentAddress.setAddress3(payload.getSecondaryAddress().getAddress3());
+        currentAddress.setPostCode(payload.getSecondaryAddress().getPostcode());
+        currentAddress.setStateCode(commonService.findStateCodeByCode(payload.getSecondaryAddress().getStateCode()));
+        currentAddress.setCountryCode(commonService.findCountryCodeByCode(payload.getSecondaryAddress().getCountryCode()));
+        currentAddress.setStudent(student);
+        currentAddress.setType(AdAddressType.CURRENT);
+        profileService.addAddress(student, currentAddress);
+
+        AdAddress permenantAddress = new AdAddressImpl();
+        permenantAddress.setAddress1(payload.getPrimaryAddress().getAddress1());
+        permenantAddress.setAddress2(payload.getPrimaryAddress().getAddress2());
+        permenantAddress.setAddress3(payload.getPrimaryAddress().getAddress3());
+        permenantAddress.setPostCode(payload.getPrimaryAddress().getPostcode());
+        permenantAddress.setStateCode(commonService.findStateCodeByCode(payload.getPrimaryAddress().getStateCode()));
+        permenantAddress.setCountryCode(commonService.findCountryCodeByCode(payload.getPrimaryAddress().getCountryCode()));
+        permenantAddress.setStudent(student);
+        permenantAddress.setType(AdAddressType.PERMANENT);
+        profileService.addAddress(student, permenantAddress);
 
         // todo: refresh and save address etc
         // todo: save student sebagai users
         // todo: set initial password
         // todo: hantar email notification dan sebagainnya
         // todo: current, permanent
+        
 
         logoutAsSystem(ctx);
         return new ResponseEntity<String>("sucess", HttpStatus.OK);
