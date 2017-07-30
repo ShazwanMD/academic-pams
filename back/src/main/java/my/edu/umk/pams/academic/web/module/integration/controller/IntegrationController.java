@@ -101,6 +101,9 @@ public class IntegrationController {
         identityService.saveStudent(student);
 
         // todo: refresh and save address etc
+        // todo: save student sebagai users
+        // todo: set initial password
+        // todo: hantar email notification dan sebagainnya
 
         logoutAsSystem(ctx);
         return new ResponseEntity<String>("sucess", HttpStatus.OK);
