@@ -120,13 +120,13 @@
         M_TS timestamp,
         M_ID int8,
         M_ST int4,
+        ORDINAL int4,
         STANDING int4 not null,
         STATUS int4 not null,
         COHORT_ID int8 not null,
         SESSION_ID int8 not null,
         STUDENT_ID int8 not null,
         STUDY_CENTER_ID int8,
-        ORDINAL int4,
         primary key (ID)
     );
 
@@ -171,6 +171,7 @@
         M_TS timestamp,
         M_ID int8,
         M_ST int4,
+        ORDINAL int4,
         REFERENCE_NO varchar(255) not null,
         REMOVE_COMMENT varchar(255),
         SOURCE_NO varchar(255),
@@ -179,7 +180,6 @@
         SESSION_ID int8,
         STUDENT_ID int8,
         STUDY_CENTER_ID int8,
-        ORDINAL int4,
         primary key (ID)
     );
 
@@ -601,10 +601,10 @@
         M_ST int4,
         STANDING int4 not null,
         STATUS int4 not null,
+        TOTAL_SCORE numeric(19, 2),
         ADMISSION_ID int8,
         GRADE_CODE_ID int8,
         SECTION_ID int8,
-        TOTAL_SCORE numeric(19, 2),
         primary key (ID)
     );
 
@@ -753,6 +753,7 @@
         ID int8 not null,
         CODE varchar(255) not null,
         DESCRIPTION varchar(255) not null,
+        MAX numeric(19, 2),
         C_TS timestamp,
         C_ID int8,
         D_TS timestamp,
@@ -760,10 +761,9 @@
         M_TS timestamp,
         M_ID int8,
         M_ST int4,
+        MIN numeric(19, 2),
         ORDINAL int4 not null,
         POINT numeric(19, 2),
-        MIN numeric(19, 2),
-        MAX numeric(19, 2),
         primary key (ID)
     );
 
@@ -778,6 +778,7 @@
         M_ID int8,
         M_ST int4,
         NAME varchar(255) not null,
+        PHONE varchar(255),
         GUARDIAN_TYPE int4,
         STUDENT_ID int8,
         primary key (ID)
@@ -819,7 +820,7 @@
         UV_ID int8,
         VF_TS timestamp,
         VF_ID int8,
-        MEMO varchar(255),
+        MEM varchar(255),
         C_TS timestamp,
         C_ID int8,
         D_TS timestamp,
@@ -865,6 +866,7 @@
         M_ID int8,
         M_ST int4,
         NAME varchar(255) not null,
+        PHONE varchar(255),
         GUARANTOR_TYPE int4,
         STUDENT_ID int8,
         primary key (ID)
@@ -1315,6 +1317,7 @@
     );
 
     create table AD_STDN (
+        MEMO varchar(255),
         STUDENT_STATUS int4,
         ID int8 not null,
         COHORT_ID int8,
@@ -1403,6 +1406,7 @@
         USER_ID int8 not null,
         primary key (ID)
     );
+
 
     alter table AD_ACDM_AREA
         add constraint uc_AD_ACDM_AREA_1 unique (CODE);
@@ -2097,6 +2101,8 @@
 
     create sequence SQ_AD_RSCY_CODE;
 
+    create sequence SQ_AD_SBJT;
+
     create sequence SQ_AD_SBJT_CODE;
 
     create sequence SQ_AD_SCHL_CODE;
@@ -2120,5 +2126,3 @@
     create sequence SQ_AD_VENU_CODE;
 
     create sequence SQ_AD_WTCH;
-
-    create sequence SQ_AD_SBJT;
