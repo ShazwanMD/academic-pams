@@ -16,6 +16,7 @@ import {TermService} from '../../../../services/term.service';
 import {PlannerService} from '../../../../services/planner.service';
 import {PipeModule} from '../../../app.pipe.module';
 import {AssessmentEditorDialog} from './dialog/assessment-creator.dialog';
+import { NotificationService } from "../../../../services/notification.service";
 
 @NgModule({
   imports: [
@@ -61,6 +62,7 @@ export class AssessmentSubModule {
         TermService,
         PlannerService,
         AssessmentActions,
+        NotificationService,
       ],
     };
   }

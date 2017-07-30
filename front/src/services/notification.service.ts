@@ -24,9 +24,10 @@ export class NotificationService {
      this.snackBar.open(error.error, undefined, config);*/
     //let snackBarRef = this.snackBar.open('Sorry, duplicate data.Please insert new offering data.', 'OK', {duration:5000});    
     
-    let snackBarRef = this.snackBar.open(error.error, '', {duration:5000});  
+    let snackBarRef = this.snackBar.open('Sorry, duplicate data.Please insert new data', '', {duration:5000});  
     snackBarRef.afterDismissed().subscribe(() => {
         console.log('The snack-bar was dismissed');
+        
         window.location.reload();
       });
     

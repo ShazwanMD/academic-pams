@@ -206,7 +206,7 @@ public class TermServiceImpl implements TermService {
 
 	@Override
 	public void saveOffering(AdOffering offering) {	
-	  //throw new Exception("Duplicate offering record");
+	  
 		offeringDao.save(offering, securityService.getCurrentUser());
 		sessionFactory.getCurrentSession().flush();	
 	}
@@ -410,16 +410,13 @@ public class TermServiceImpl implements TermService {
 
 	@Override
 	public void addSection(AdOffering offering, AdSection section) {
-		if (isSectionExists(section.getCanonicalCode())) {
-			//throw new Exception("Duplicate section record");
-			System.out.println("Duplicate data");
-		} else {
-			section.setOffering(offering);
+			
 			offeringDao.addSection(offering, section, securityService.getCurrentUser());
 			sessionFactory.getCurrentSession().flush();
-		}
+		
 	}
-
+	
+	
 	@Override
 	public void deleteSection(AdOffering offering, AdSection section) {
 		offeringDao.deleteSection(offering, section, securityService.getCurrentUser());
@@ -512,14 +509,14 @@ public class TermServiceImpl implements TermService {
 	@Override
 	public void addAssessment(AdOffering offering, AdAssessment assessment) {
 		
-		if (isAssessmentExists(assessment.getCanonicalCode())) {
+		/*if (isAssessmentExists(assessment.getCanonicalCode())) {
 			//throw new Exception("Duplicate section record");
 			System.out.println("Duplicate data assessment");
-		} else {
+		} else {*/
 		assessment.setOffering(offering);
 		assessmentDao.save(assessment, securityService.getCurrentUser());
 		sessionFactory.getCurrentSession().flush();
-	}
+	//}
 	}
 
 	@Override
