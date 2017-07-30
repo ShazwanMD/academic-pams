@@ -86,7 +86,7 @@ public class ProgramAddTest {
     public void addProgram() {
         AdFaculty faculty = plannerService.findFacultyByCode("A06");
         AdProgram program = new AdProgramImpl();
-        program.setCode("XYZ-" + UUID.randomUUID().toString().substring(0,4));
+        program.setCode("CCI-" + UUID.randomUUID().toString().substring(0,4));
         program.setLevel(plannerService.findProgramLevelByCode("MASTER"));
         program.setStatus(AdProgramStatus.ACTIVATED);
         program.setTitleEn("TEST");
