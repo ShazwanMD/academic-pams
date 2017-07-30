@@ -44,7 +44,7 @@
           <md-menu x-position="before" #menu1="mdMenu">
             <!-- <button md-menu-item [routerLink]="['/secure/term/appointments', row['id']]">View
                   staff details</button> -->
-            <button md-menu-item [routerLink]="['/identity/staffs', row.staff.identityNo]">Staff details info</button>
+            <button md-menu-item [routerLink]="['/secure/identity/staffs', row.staff.identityNo]">Staff details info</button>
             <button md-menu-item (click)="editDialog(row, true)">Update
               appointment
             </button>
