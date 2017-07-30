@@ -8,13 +8,16 @@ export class AssessmentTypePipe implements PipeTransform {
     if (!value) return value;
     switch (AssessmentType[value.toString()]) {
       case AssessmentType.HOMEWORK : {
-        return 'Kerja Rumah';
+          return 'HOMEWORK';
+          //return 'Kerja Rumah';
       }
       case AssessmentType.QUIZ : {
-        return 'Kuiz';
+          return 'QUIZ';
+          //return 'Kuiz';
       }
       case AssessmentType.FINAL_EXAM : {
-        return 'Peperiksaan Akhir';
+          return 'FINAL_EXAM';
+          //return 'Peperiksaan Akhir';
       }
       default: {
         return value;

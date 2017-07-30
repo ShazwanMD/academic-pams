@@ -22,6 +22,7 @@ import {SectionActionComponent} from './component/section-action.component';
 import {LecturerSectionDetailPage} from './lecturer-section-detail.page';
 import {LecturerSectionEnrollmentListComponent} from './component/lecturer-section-enrollment-list.component';
 import {StudentSectionActionComponent} from './component/student-section-action.component';
+import { CapitalizePipe } from './capitalize.pipe';
 
 @NgModule({
   imports: [
@@ -36,6 +37,7 @@ import {StudentSectionActionComponent} from './component/student-section-action.
     SectionDetailPage,
     StudentSectionDetailPage,
     LecturerSectionDetailPage,
+    CapitalizePipe,
 
     // component
     SectionListComponent,

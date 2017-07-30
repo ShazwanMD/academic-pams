@@ -8,10 +8,12 @@ export class AssessmentCategoryPipe implements PipeTransform {
     if (!value) return value;
     switch (AssessmentCategory[value.toString()]) {
       case AssessmentCategory.COURSE_WORK : {
-        return 'Kerja Kursus';
+          return 'COURSE WORK';
+          //return 'Kerja Kursus';
       }
       case AssessmentCategory.EXAM_WORK : {
-        return 'Peperiksaan Akhir';
+            return 'EXAM WORK';
+          //return 'Peperiksaan Akhir';
       }
       default: {
         return 'Ralat';
