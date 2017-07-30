@@ -104,7 +104,7 @@ public class IntegrationController {
 
         // status, mode and cohort
         student.setStudentStatus(AdStudentStatus.MATRICULATED);
-        student.setStudyMode(commonService.findStudyModeByCode(payload.getStudyModeCode()));
+        student.setStudyMode(commonService.findStudyModeByCode(payload.getStudyModeCode().getCode()));
         student.setCohort(plannerService.findCohortByCode(payload.getCohortCode()));
 
         identityService.saveStudent(student);
