@@ -488,9 +488,9 @@ public class TermController {
         AdAdmission admission = termService.findAdmissionById(vo.getAdmission().getId());
         AdAcademicSession academicSession = plannerService.findAcademicSessionById(vo.getAcademicSession().getId());
         
-        if(countEnrollmentApplication("", academicSession, admission.getStudent()) > 0 )
+       /* if(countEnrollmentApplication(null, academicSession, admission.getStudent()) > 0 )
        	 throw new IllegalArgumentException("Data EnrollmentApplication already exists! Please insert new data");
-       
+       */
         AdEnrollmentApplication application = new AdEnrollmentApplicationImpl();
         application.setDescription(vo.getDescription());
         application.setAdmission(admission);
@@ -778,12 +778,10 @@ public class TermController {
 
 	    }
 		
-	//isAppointmentExists => still error
-	    private boolean isAppointmentExists(Section section, Staff staff) {
-			return false;
-	    	//System.out.println(termService.isAppointmentExists(section ,staff));
-	        //return termService.isAppointmentExists(section,staff);
-
+	//isAppointmentExists
+	    private boolean isAppointmentExists(AdSection section, AdStaff staff) {
+			System.out.println(termService.isAppointmentExists(section, staff));
+	        return termService.isAppointmentExists(section,staff);
 	    }
 	    
 	 //countAdmissionApplication
@@ -792,12 +790,12 @@ public class TermController {
 			return termService.countAdmissionApplication(session, student);
 			
 	    }
-	   //countEnrollmentApplication
+	   /*//countEnrollmentApplication
 	   private int countEnrollmentApplication(String string, AdAcademicSession academicSession, AdStudent student) {
-		   System.out.println(termService.countEnrollmentApplication("", academicSession, student));
-		   return termService.countAdmissionApplication("", academicSession, student);
+		   System.out.println(termService.countEnrollmentApplication(null, academicSession, student));
+		   return termService.countAdmissionApplication(null, academicSession, student);
 			
-		}
+		}*/
 	      
     @RequestMapping(value = "/offerings/{canonicalCode}", method = RequestMethod.PUT)
     public ResponseEntity<String> updateOffering(@PathVariable String canonicalCode, @RequestBody Offering vo) {
@@ -929,12 +927,14 @@ public class TermController {
     public ResponseEntity<String> addAppointment(@PathVariable String canonicalCode, @RequestBody Appointment vo) {
         dummyLogin();
         
-        if (isAppointmentExists(vo.getSection(), vo.getStaff()))
-                   throw new IllegalArgumentException("Data appointment already exists! Please insert new data");
-
-        
+                
         AdOffering offering = termService.findOfferingByCanonicalCode(canonicalCode);
         AdSection section = termService.findSectionById(vo.getSection().getId());
+        AdStaff staff = identityService.findStaffByIdentityNo(vo.getStaff().getIdentityNo());
+        
+        if (isAppointmentExists(section, staff))
+            throw new IllegalArgumentException("Data appointment already exists! Please insert new data");
+
         AdAppointment appointment = new AdAppointmentImpl();
         appointment.setStatus(AdAppointmentStatus.get(vo.getAppointmentStatus().ordinal()));
         // appointment.setStatus(AdAppointmentStatus.CONFIRMED);
