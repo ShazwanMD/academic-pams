@@ -13,6 +13,7 @@ import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
+import org.springframework.integration.config.EnableIntegration;
 import org.springframework.jms.annotation.EnableJms;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -23,8 +24,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableWebSecurity
 @EnableScheduling
 @EnableBatchProcessing
+@EnableIntegration
 @EnableJms
-//@EnableIntegration
 @EnableTransactionManagement
 @EnableCaching
 @ComponentScan(basePackages = {

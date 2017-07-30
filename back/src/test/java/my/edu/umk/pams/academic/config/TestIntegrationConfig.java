@@ -16,6 +16,8 @@ import org.springframework.integration.jms.JmsSendingMessageHandler;
 import org.springframework.messaging.MessageChannel;
 import org.springframework.messaging.MessageHandler;
 
+import my.edu.umk.pams.academic.planner.event.FacultyEvent;
+import my.edu.umk.pams.academic.planner.event.ProgramAddedEvent;
 import my.edu.umk.pams.academic.planner.event.ProgramEvent;
 import my.edu.umk.pams.academic.term.event.AdmissionEvent;
 import my.edu.umk.pams.academic.term.event.EnrollmentEvent;
@@ -47,9 +49,9 @@ public class TestIntegrationConfig {
         producer.setEventTypes(
                 AdmissionEvent.class,
                 EnrollmentEvent.class,
-                ProgramEvent.class);
+                ProgramEvent.class,
+                FacultyEvent.class);
         producer.setPayloadExpressionString("payload");
-//        producer.setOutputChannel(eventChannel());
         return producer;
     }
 
