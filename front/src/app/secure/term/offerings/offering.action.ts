@@ -9,6 +9,7 @@ export class OfferingActions {
   findOfferings(): Action {
     return {
       type: OfferingActions.FIND_OFFERINGS
+      
     };
   }
 
