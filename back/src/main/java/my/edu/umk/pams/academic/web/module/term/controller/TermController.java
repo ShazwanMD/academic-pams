@@ -13,6 +13,7 @@ import my.edu.umk.pams.academic.security.integration.AdAutoLoginToken;
 import my.edu.umk.pams.academic.system.service.SystemService;
 import my.edu.umk.pams.academic.term.model.*;
 import my.edu.umk.pams.academic.term.service.TermService;
+import my.edu.umk.pams.academic.web.module.identity.vo.Staff;
 import my.edu.umk.pams.academic.web.module.planner.controller.PlannerTransformer;
 import my.edu.umk.pams.academic.web.module.term.vo.*;
 import my.edu.umk.pams.academic.workflow.service.WorkflowService;
@@ -233,7 +234,9 @@ public class TermController {
         AdStaff advisor = identityService.findStaffByStaffNo("01615B"); // todo:
         // dummy
         // advisor
-
+        if(countAdmissionApplication(academicSession, student)> 0)
+        	 throw new IllegalArgumentException("Data admission already exists! Please insert new data");
+        
         AdAdmissionApplication application = new AdAdmissionApplicationImpl();
         application.setDescription(vo.getDescription());
         application.setReferenceNo(vo.getReferenceNo());
@@ -479,11 +482,15 @@ public class TermController {
 
     @RequestMapping(value = "/enrollmentApplications/startTask", method = RequestMethod.POST)
     public ResponseEntity<String> startEnrollmentApplicationTask(@RequestBody EnrollmentApplication vo)
-            throws Exception {
+           {
         dummyLogin();
 
         AdAdmission admission = termService.findAdmissionById(vo.getAdmission().getId());
         AdAcademicSession academicSession = plannerService.findAcademicSessionById(vo.getAcademicSession().getId());
+        
+        if(countEnrollmentApplication("", academicSession, admission.getStudent()) > 0 )
+       	 throw new IllegalArgumentException("Data EnrollmentApplication already exists! Please insert new data");
+       
         AdEnrollmentApplication application = new AdEnrollmentApplicationImpl();
         application.setDescription(vo.getDescription());
         application.setAdmission(admission);
@@ -498,7 +505,9 @@ public class TermController {
         return new ResponseEntity<String>(referenceNo, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/enrollmentApplications/viewTask/{taskId}", method = RequestMethod.GET)
+   
+
+	@RequestMapping(value = "/enrollmentApplications/viewTask/{taskId}", method = RequestMethod.GET)
     public ResponseEntity<EnrollmentApplicationTask> findEnrollmentApplicationTaskByTaskId(
             @PathVariable String taskId) {
         return new ResponseEntity<EnrollmentApplicationTask>(termTransformer.toEnrollmentApplicationTaskVo(
@@ -760,7 +769,6 @@ public class TermController {
 	private boolean isSectionExists(String canonicalCode) {
         System.out.println(termService.isSectionExists(canonicalCode));
         return termService.isSectionExists(canonicalCode);
-
     }
 	
 	//isAssessmentExists
@@ -770,13 +778,27 @@ public class TermController {
 
 	    }
 		
-	//isAssessmentExists
-	    private boolean isAppointmentExists(AdSection section, AdStaff staff) {
-	        System.out.println(termService.isAppointmentExists(section,staff));
-	        return termService.isAppointmentExists(section,staff);
+	//isAppointmentExists => still error
+	    private boolean isAppointmentExists(Section section, Staff staff) {
+			return false;
+	    	//System.out.println(termService.isAppointmentExists(section ,staff));
+	        //return termService.isAppointmentExists(section,staff);
 
 	    }
-
+	    
+	 //countAdmissionApplication
+	   private Integer countAdmissionApplication(AdAcademicSession session, AdStudent student) {
+			System.out.println(termService.countAdmissionApplication(session, student));
+			return termService.countAdmissionApplication(session, student);
+			
+	    }
+	   //countEnrollmentApplication
+	   private int countEnrollmentApplication(String string, AdAcademicSession academicSession, AdStudent student) {
+		   System.out.println(termService.countEnrollmentApplication("", academicSession, student));
+		   return termService.countAdmissionApplication("", academicSession, student);
+			
+		}
+	      
     @RequestMapping(value = "/offerings/{canonicalCode}", method = RequestMethod.PUT)
     public ResponseEntity<String> updateOffering(@PathVariable String canonicalCode, @RequestBody Offering vo) {
         dummyLogin();
@@ -906,8 +928,9 @@ public class TermController {
     @RequestMapping(value = "/sections/{canonicalCode}/appointments", method = RequestMethod.POST)
     public ResponseEntity<String> addAppointment(@PathVariable String canonicalCode, @RequestBody Appointment vo) {
         dummyLogin();
-       // if (isAppointmentExists(vo.getSection(), vo.getStaff())) {
-        //           throw new IllegalArgumentException("Data appointment already exists! Please insert new data");
+        
+        if (isAppointmentExists(vo.getSection(), vo.getStaff()))
+                   throw new IllegalArgumentException("Data appointment already exists! Please insert new data");
 
         
         AdOffering offering = termService.findOfferingByCanonicalCode(canonicalCode);
@@ -921,7 +944,9 @@ public class TermController {
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/sections/{canonicalCode}/appointments/{id}", method = RequestMethod.PUT)
+   
+
+	@RequestMapping(value = "/sections/{canonicalCode}/appointments/{id}", method = RequestMethod.PUT)
     public ResponseEntity<String> updateAppointment(@PathVariable String canonicalCode, @RequestBody Appointment vo) {
         dummyLogin();
 

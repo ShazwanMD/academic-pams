@@ -9,6 +9,7 @@ import 'rxjs/add/operator/withLatestFrom';
 import {EnrollmentApplicationTask} from '../../../shared/model/term/enrollment-application-task.interface';
 import {AdmissionActions} from '../admissions/admission.action';
 import {Admission} from '../../../shared/model/term/admission.interface';
+import { NotificationService } from "../../../../services/notification.service";
 
 @Injectable()
 export class EnrollmentApplicationEffects {
@@ -21,6 +22,7 @@ export class EnrollmentApplicationEffects {
               private enrollmentApplicationActions: EnrollmentApplicationActions,
               private admissionActions: AdmissionActions,
               private termService: TermService,
+              private notificationService: NotificationService,
               private store$: Store<TermModuleState>) {
   }
 
@@ -82,9 +84,9 @@ export class EnrollmentApplicationEffects {
     .mergeMap((action) => from([action,
         this.enrollmentApplicationActions.findAssignedEnrollmentApplicationTasks(),
         this.enrollmentApplicationActions.findPooledEnrollmentApplicationTasks(),
-        this.enrollmentApplicationActions.findArchivedEnrollmentApplications(),
-      ],
-    ));
+        this.enrollmentApplicationActions.findArchivedEnrollmentApplications(),],))
+    .catch((error) => this.notificationService.showError(error));
+    
 
   @Effect() completeEnrollmentApplicationTask$ = this.actions$
     .ofType(EnrollmentApplicationActions.COMPLETE_ENROLLMENT_APPLICATION_TASK)

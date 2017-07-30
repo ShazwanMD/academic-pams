@@ -7,6 +7,7 @@ import {TermModuleState} from '../index';
 import {SectionActions} from '../sections/section.action';
 import {TermService} from '../../../../services/term.service';
 import {Section} from '../../../shared/model/term/section.interface';
+import { NotificationService } from "../../../../services/notification.service";
 
 @Injectable()
 export class AppointmentEffects {
@@ -19,6 +20,7 @@ export class AppointmentEffects {
               private offeringActions: OfferingActions,
               private sectionActions: SectionActions,
               private termService: TermService,
+              private notificationService: NotificationService,
               private store$: Store<TermModuleState>) {
   }
 
@@ -42,8 +44,9 @@ export class AppointmentEffects {
       .map((message) => this.appointmentActions.addAppointmentSuccess(message))
       .withLatestFrom(this.store$.select(...this.SECTION))
       .map((state) => state[1])
-      .map((section: Section) => this.sectionActions.findSectionByCanonicalCode(section.canonicalCode));
-
+      .map((section: Section) => this.sectionActions.findSectionByCanonicalCode(section.canonicalCode))
+       .catch((error) => this.notificationService.showError(error));
+       
   //update appointment
   @Effect() updateAppointment$ = this.actions$
     .ofType(AppointmentActions.UPDATE_APPOINTMENT)

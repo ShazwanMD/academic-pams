@@ -7,6 +7,7 @@ import {TermModuleState} from '../index';
 import {Store} from '@ngrx/store';
 import 'rxjs/add/operator/withLatestFrom';
 import {AdmissionApplicationTask} from '../../../shared/model/term/admission-application-task.interface';
+import { NotificationService } from "../../../../services/notification.service";
 
 @Injectable()
 export class AdmissionApplicationEffects {
@@ -17,6 +18,7 @@ export class AdmissionApplicationEffects {
   constructor(private actions$: Actions,
               private admissionApplicationActions: AdmissionApplicationActions,
               private termService: TermService,
+              private notificationService: NotificationService,
               private store$: Store<TermModuleState>) {
   }
 
@@ -62,7 +64,8 @@ export class AdmissionApplicationEffects {
         this.admissionApplicationActions.findAssignedAdmissionApplicationTasks(),
         this.admissionApplicationActions.findPooledAdmissionApplicationTasks(),
       ],
-    ));
+    ))
+    .catch((error) => this.notificationService.showError(error));
 
   @Effect() completeAdmissionApplicationTask$ = this.actions$
     .ofType(AdmissionApplicationActions.COMPLETE_ADMISSION_APPLICATION_TASK)

@@ -7,6 +7,9 @@ import my.edu.umk.pams.academic.identity.model.AdStaff;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.planner.model.*;
 import my.edu.umk.pams.academic.term.model.*;
+import my.edu.umk.pams.academic.web.module.identity.vo.Staff;
+import my.edu.umk.pams.academic.web.module.term.vo.Section;
+
 import org.activiti.engine.task.Task;
 
 import java.math.BigDecimal;

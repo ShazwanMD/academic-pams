@@ -5,7 +5,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {ReactiveFormsModule} from '@angular/forms';
 import {CovalentCoreModule} from '@covalent/core';
 
-import {CommonService, IdentityService, TermService} from '../../../../services';
+import {CommonService, IdentityService, TermService, NotificationService} from '../../../../services';
 
 import {AppointmentListComponent} from './component/appointment-list.component';
 import {AppointmentActions} from './appointment.action';
@@ -18,6 +18,8 @@ import {SectionSubModule} from '../sections/index';
 import {IdentityModule} from '../../identity/index';
 import {AppointmentActionComponent} from './component/appointment-action.component';
 import {AppointmentCenterPage} from './appointment-center.page';
+import { EffectsModule } from "@ngrx/effects";
+import { AppointmentEffects } from "./appointment.effect";
 
 @NgModule({
   imports: [
@@ -27,6 +29,7 @@ import {AppointmentCenterPage} from './appointment-center.page';
     CovalentCoreModule.forRoot(),
     SectionSubModule.forRoot(),
     IdentityModule.forRoot(),
+    EffectsModule.run(AppointmentEffects),
   ],
   declarations: [
     // page
@@ -61,7 +64,9 @@ export class AppointmentSubModule {
         TermService,
         IdentityService,
         CommonService,
+        NotificationService,
         AppointmentActions,
+        
       ],
     };
   }
