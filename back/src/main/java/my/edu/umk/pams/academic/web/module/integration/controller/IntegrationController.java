@@ -33,6 +33,9 @@ import my.edu.umk.pams.academic.term.service.TermService;
 import my.edu.umk.pams.academic.web.module.planner.controller.PlannerTransformer;
 import my.edu.umk.pams.academic.web.module.planner.vo.AcademicSession;
 import my.edu.umk.pams.connector.payload.CandidatePayload;
+import my.edu.umk.pams.connector.payload.IntakePayload;
+import my.edu.umk.pams.connector.payload.IntakeSessionCodePayload;
+import my.edu.umk.pams.connector.payload.ProgramCodePayload;
 
 /**
  */
@@ -74,6 +77,36 @@ public class IntegrationController {
         plannerService.saveCohort(cohort);
 
         logoutAsSystem(ctx);
+        return new ResponseEntity<String>("sucess", HttpStatus.OK);
+    }
+
+    // ====================================================================================================
+    // COHORT
+    // ====================================================================================================
+    @RequestMapping(value = "/intakes", method = RequestMethod.POST)
+    public ResponseEntity<String> ingestIntake(@RequestBody IntakePayload payload) {
+        SecurityContext ctx = loginAsSystem();
+
+        IntakeSessionCodePayload intakeSession = payload.getIntakeSession();
+        List<ProgramCodePayload> offeredProgramCodes = payload.getOfferedProgramCodes();
+
+        for (ProgramCodePayload offeredProgramCode : offeredProgramCodes) {
+
+            String cohortCode =
+                    offeredProgramCode.getFacultyCode().getCode()
+                    //todo(sam):  + "-" + offeredProgramCode.getProgramLevel ()
+                    + "-" + offeredProgramCode.getCode ()
+                    + "-CHRT"
+                    + "-" + intakeSession.getCode () ;
+
+            AdCohort cohort = new AdCohortImpl();
+            cohort.setCode(cohortCode);
+//            todo(sam): cohort.setCode(cohortCode);
+//            cohort.setCode(cohortCode);
+//            cohort.setCode(cohortCode);
+//            cohort.setCode(cohortCode);
+            plannerService.saveCohort(cohort);
+        }
         return new ResponseEntity<String>("sucess", HttpStatus.OK);
     }
 
