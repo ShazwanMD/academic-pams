@@ -279,7 +279,7 @@ public class ProfileController {
         student.setStudyMode(commonService.findStudyModeById(vo.getStudyMode().getId()));
         student.setCohort(plannerService.findCohortById(vo.getCohort().getId()));
         student.setStudentStatus(AdStudentStatus.get(vo.getStudentStatus().ordinal()));
-        student.setStudentStatusDescription(vo.getStudentStatusDescription());
+        student.setMemo(vo.getMemo());
         profileService.updateStudent(student);
         LOG.debug("StudyMode:{}",student.getStudyMode().getDescription());
         LOG.debug("Cohort Student Baru:{}", student.getCohort().getCode());

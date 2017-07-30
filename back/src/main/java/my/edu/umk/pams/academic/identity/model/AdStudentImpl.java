@@ -38,8 +38,8 @@ public class AdStudentImpl extends AdActorImpl implements AdStudent {
 	@JoinColumn(name = "STUDY_MODE_ID", nullable = true)
 	private AdStudyMode studyMode;
 	
-	@Column(name = "STUDENT_STATUS_DESCRIPTION")
-	private String studentStatusDescription;
+	@Column(name = "MEMO")
+	private String memo;
 
 	public AdStudentImpl() {
 		super();
@@ -47,13 +47,13 @@ public class AdStudentImpl extends AdActorImpl implements AdStudent {
 	}
 	
 	@Override
-	public String getStudentStatusDescription() {
-		return studentStatusDescription;
+	public String getMemo() {
+		return memo;
 	}
 
 	@Override
-	public void setStudentStatusDescription(String studentStatusDescription) {
-		this.studentStatusDescription = studentStatusDescription;
+	public void setMemo(String memo) {
+		this.memo = memo;
 	}
 
 

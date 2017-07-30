@@ -15,15 +15,15 @@ public class Student extends Actor {
     private Cohort cohort;
     private StudyMode studyMode;
     private StudentStatus studentStatus;
-    private String studentStatusDescription;
+    private String memo;
     
 
-    public String getStudentStatusDescription() {
-		return studentStatusDescription;
+    public String getMemo() {
+		return memo;
 	}
 
-	public void setStudentStatusDescription(String studentStatusDescription) {
-		this.studentStatusDescription = studentStatusDescription;
+	public void setMemo(String memo) {
+		this.memo = memo;
 	}
 
 	public Cohort getCohort() {
