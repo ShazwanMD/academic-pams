@@ -23,6 +23,7 @@ import {LecturerSectionDetailPage} from './lecturer-section-detail.page';
 import {LecturerSectionEnrollmentListComponent} from './component/lecturer-section-enrollment-list.component';
 import {StudentSectionActionComponent} from './component/student-section-action.component';
 import { CapitalizePipe } from './capitalize.pipe';
+import {NotificationService} from '../../../../services/notification.service';
 
 @NgModule({
   imports: [
@@ -83,6 +84,7 @@ export class SectionSubModule {
         IdentityService,
         CommonService,
         SectionActions,
+        NotificationService,
       ],
     };
   }

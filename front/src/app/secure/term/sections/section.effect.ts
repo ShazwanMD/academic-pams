@@ -7,6 +7,7 @@ import {TermModuleState} from '../index';
 import {OfferingActions} from '../offerings/offering.action';
 import {Offering} from '../../../shared/model/term/offering.interface';
 import {from} from 'rxjs/observable/from';
+import {NotificationService} from '../../../../services/notification.service';
 
 @Injectable()
 export class SectionEffects {
@@ -18,6 +19,7 @@ export class SectionEffects {
               private sectionActions: SectionActions,
               private offeringActions: OfferingActions,
               private termService: TermService,
+              private notificationService: NotificationService,
               private store$: Store<TermModuleState>) {
   }
 
@@ -63,8 +65,9 @@ export class SectionEffects {
       .map((message) => this.sectionActions.addSectionSuccess(message))
       .withLatestFrom(this.store$.select(...this.OFFERING))
       .map((state) => state[1])
-      .map((offering: Offering) => this.offeringActions.findOfferingByCanonicalCode(offering.canonicalCode));
-
+      .map((offering: Offering) => this.offeringActions.findOfferingByCanonicalCode(offering.canonicalCode))
+      .catch((error) => this.notificationService.showError(error));
+  
   @Effect() deleteSection$ = this.actions$
     .ofType(SectionActions.REMOVE_SECTION)
     .map((action) => action.payload)

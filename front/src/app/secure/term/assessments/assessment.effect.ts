@@ -6,12 +6,14 @@ import {AssessmentActions} from './assessment.action';
 import {Injectable} from '@angular/core';
 import {Actions, Effect} from '@ngrx/effects';
 import {TermService} from '../../../../services/term.service';
+import { NotificationService } from "../../../../services/notification.service";
 
 @Injectable()
 export class AssessmentEffects {
   private OFFERING: string[] = 'termModuleState.offering'.split('.');
 
   constructor(private actions$: Actions,
+              private notificationService: NotificationService,
               private assessmentActions: AssessmentActions,
               private offeringActions: OfferingActions,
               private store$: Store<TermModuleState>,
@@ -31,8 +33,9 @@ export class AssessmentEffects {
     .map((message) => this.assessmentActions.addAssessmentSuccess(message))
     .withLatestFrom(this.store$.select(...this.OFFERING))
     .map((state) => state[1])
-    .map((offering: Offering) => this.offeringActions.findOfferingByCanonicalCode(offering.canonicalCode));
-
+    .map((offering: Offering) => this.offeringActions.findOfferingByCanonicalCode(offering.canonicalCode))
+    .catch((error) => this.notificationService.showError(error));
+  
   @Effect() updateAssessment$ = this.actions$
     .ofType(AssessmentActions.UPDATE_ASSESSMENT)
     .map((action) => action.payload)

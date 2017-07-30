@@ -1,6 +1,7 @@
 package my.edu.umk.pams.academic.web.module.term.controller;
 
 import my.edu.umk.pams.academic.common.model.AdStudyCenter;
+
 import my.edu.umk.pams.academic.common.service.CommonService;
 import my.edu.umk.pams.academic.core.AdFlowState;
 import my.edu.umk.pams.academic.identity.model.AdStaff;
@@ -673,6 +674,10 @@ public class TermController {
         LOG.debug("assessment:{}", vo);
         LOG.debug("Offering Canonical:{}", canonicalCode);
 
+        if (isAssessmentExists(vo.getCanonicalCode()))
+            throw new IllegalArgumentException("Data assessment already exists! Please insert new data");
+
+        
         AdOffering offering = termService.findOfferingByCanonicalCode(canonicalCode);
         AdAssessment assessment = new AdAssessmentImpl();
         assessment.setCode(vo.getCode());
@@ -701,11 +706,16 @@ public class TermController {
 
     @RequestMapping(value = "/offerings/{canonicalCode}/sections", method = RequestMethod.POST)
     public ResponseEntity<String> addSection(@PathVariable String canonicalCode, @RequestBody Section vo)
-            throws Exception {
+            {
         dummyLogin();
 
         LOG.debug("adding section code: {}", vo.getCode());
         LOG.debug("adding section canonical code: {}", vo.getCanonicalCode());
+        
+        if (isSectionExists(vo.getCanonicalCode()))
+        	 throw new IllegalArgumentException("Data section already exists! Please insert new data");
+
+        
         AdOffering offering = termService.findOfferingByCanonicalCode(canonicalCode);
         AdSection section = new AdSectionImpl();
         section.setCode(vo.getCode());
@@ -739,26 +749,33 @@ public class TermController {
         termService.saveOffering(offering);
         return new ResponseEntity<String>("success", HttpStatus.OK);
     }
-
-	/*private boolean isOfferingExists(String canonicalCode)  {
-        AdOffering offering = new AdOfferingImpl();
-		offering = termService.findOfferingByCanonicalCode(canonicalCode);
-		
-		if (offering != null) {
-			System.out.println("Exist");
-			return true;
-			
-		} else {
-			System.out.println("Not Exist");
-			return false;
-		}
-	}*/
-
-    private boolean isOfferingExists(String canonicalCode) {
+    
+    //isOfferingExists
+	private boolean isOfferingExists(String canonicalCode) {
         System.out.println(termService.isOfferingExists(canonicalCode));
         return termService.isOfferingExists(canonicalCode);
 
     }
+	//isSectionExists
+	private boolean isSectionExists(String canonicalCode) {
+        System.out.println(termService.isSectionExists(canonicalCode));
+        return termService.isSectionExists(canonicalCode);
+
+    }
+	
+	//isAssessmentExists
+		private boolean isAssessmentExists(String canonicalCode) {
+	        System.out.println(termService.isAssessmentExists(canonicalCode));
+	        return termService.isAssessmentExists(canonicalCode);
+
+	    }
+		
+	//isAssessmentExists
+	    private boolean isAppointmentExists(AdSection section, AdStaff staff) {
+	        System.out.println(termService.isAppointmentExists(section,staff));
+	        return termService.isAppointmentExists(section,staff);
+
+	    }
 
     @RequestMapping(value = "/offerings/{canonicalCode}", method = RequestMethod.PUT)
     public ResponseEntity<String> updateOffering(@PathVariable String canonicalCode, @RequestBody Offering vo) {
@@ -889,7 +906,10 @@ public class TermController {
     @RequestMapping(value = "/sections/{canonicalCode}/appointments", method = RequestMethod.POST)
     public ResponseEntity<String> addAppointment(@PathVariable String canonicalCode, @RequestBody Appointment vo) {
         dummyLogin();
+       // if (isAppointmentExists(vo.getSection(), vo.getStaff())) {
+        //           throw new IllegalArgumentException("Data appointment already exists! Please insert new data");
 
+        
         AdOffering offering = termService.findOfferingByCanonicalCode(canonicalCode);
         AdSection section = termService.findSectionById(vo.getSection().getId());
         AdAppointment appointment = new AdAppointmentImpl();
