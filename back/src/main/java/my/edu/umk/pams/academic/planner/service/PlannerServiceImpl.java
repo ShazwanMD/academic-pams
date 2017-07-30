@@ -609,7 +609,7 @@ public class PlannerServiceImpl implements PlannerService {
         FacultyCodePayload payload = new FacultyCodePayload();
         payload.setCode(faculty.getCode());
         payload.setDescription(faculty.getDescription());
-
+        
         applicationContext.publishEvent(new FacultyAddedEvent(payload));
     }
 
@@ -636,10 +636,12 @@ public class PlannerServiceImpl implements PlannerService {
         FacultyCodePayload f = new FacultyCodePayload();
         f.setCode(faculty.getCode());
         f.setDescription(faculty.getDescription());
+        
         ProgramCodePayload p = new ProgramCodePayload();
         p.setCode(program.getCode());
         p.setDescription(program.getTitleMs());
         p.setFacultyCode(f);
+        
         ProgramAddedEvent event = new ProgramAddedEvent(p);
         applicationContext.publishEvent(event);
     }

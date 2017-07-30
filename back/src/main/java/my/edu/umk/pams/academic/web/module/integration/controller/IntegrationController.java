@@ -104,11 +104,12 @@ public class IntegrationController {
 
         // status, mode and cohort
         student.setStudentStatus(AdStudentStatus.MATRICULATED);
-        student.setStudyMode(commonService.findStudyModeByCode("P"));
-        student.setCohort(plannerService.findCohortByCode("TODO"));
+        student.setStudyMode(commonService.findStudyModeByCode(payload.getStudyModeCode()));
+        student.setCohort(plannerService.findCohortByCode(payload.getCohortCode()));
 
         identityService.saveStudent(student);
-        
+               
+        //Mailing Address
         AdAddress currentAddress = new AdAddressImpl();
         currentAddress.setAddress1(payload.getSecondaryAddress().getAddress1());
         currentAddress.setAddress2(payload.getSecondaryAddress().getAddress2());
@@ -120,6 +121,7 @@ public class IntegrationController {
         currentAddress.setType(AdAddressType.CURRENT);
         profileService.addAddress(student, currentAddress);
 
+        //Billing Address
         AdAddress permenantAddress = new AdAddressImpl();
         permenantAddress.setAddress1(payload.getPrimaryAddress().getAddress1());
         permenantAddress.setAddress2(payload.getPrimaryAddress().getAddress2());
