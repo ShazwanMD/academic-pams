@@ -104,6 +104,7 @@ public class IntegrationController {
         // todo: save student sebagai users
         // todo: set initial password
         // todo: hantar email notification dan sebagainnya
+        // todo: current, permanent
 
         logoutAsSystem(ctx);
         return new ResponseEntity<String>("sucess", HttpStatus.OK);
