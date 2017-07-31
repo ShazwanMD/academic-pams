@@ -3,7 +3,10 @@ package my.edu.umk.pams.academic.identity.model;
 import my.edu.umk.pams.academic.common.model.AdStudyMode;
 import my.edu.umk.pams.academic.planner.model.AdCohort;
 
+
 import java.util.List;
+
+import com.ibm.icu.math.BigDecimal;
 
 /**
  * @author PAMS
@@ -21,7 +24,23 @@ public interface AdStudent extends AdActor {
 	AdCohort getCohort();
 
 	void setCohort(AdCohort cohort);
-
+	
+	AdStudyMode getStudyMode();
+	
+	void setStudyMode(AdStudyMode studyMode);
+	
+	String getMemo();
+	
+	void setMemo(String memo);
+	
+	Boolean getOutstanding();
+	
+	void setOutstanding(Boolean outstanding);
+	
+	BigDecimal getBalance();
+	
+	void setBalance(BigDecimal balance);
+	
 	List<AdAddress> getAddresses();
 
 	void setAddresses(List<AdAddress> addresses);
@@ -38,11 +57,6 @@ public interface AdStudent extends AdActor {
 
 	void setGuarantors(List<AdGuarantor> guarantors);
 	
-	AdStudyMode getStudyMode();
+
 	
-	void setStudyMode(AdStudyMode studyMode);
-	
-	String getMemo();
-	
-	void setMemo(String memo);
 }
