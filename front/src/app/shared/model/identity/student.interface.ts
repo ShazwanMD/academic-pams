@@ -6,4 +6,6 @@ export interface Student extends Actor {
   cohort: Cohort;
   studentStatus: number;
   memo: string;
+  balance: number;
+  outstanding: boolean;
 }
