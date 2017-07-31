@@ -52,7 +52,7 @@ export class CohortTransfererDialog implements OnInit {
       cohort: <Cohort>{},
       studyMode: <StudyMode>{},
       studentStatus: <StudentStatus>{},
-      studentStatusDescription: '',
+      memo: '',
 
     });
     console.log('patching values : ' + JSON.stringify(this._student.cohort));

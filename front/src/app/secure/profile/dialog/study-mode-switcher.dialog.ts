@@ -47,7 +47,7 @@ export class StudyModeSwitcherDialog implements OnInit {
       studyMode: <StudyMode>{},
       cohort: <Cohort>{},
       studentStatus: <StudentStatus>{},
-      studentStatusDescription: '',
+      memo: '',
     });
 
     console.log('patching values : ' + JSON.stringify(this._student.studyMode));
