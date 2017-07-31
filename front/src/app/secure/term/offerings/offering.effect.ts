@@ -68,11 +68,7 @@ export class OfferingEffects {
     .map((offering) => this.offeringActions.saveOfferingSuccess(offering))
     .mergeMap((action) => from([action, this.offeringActions.findOfferings()]))
     .catch((error) => this.notificationService.showError(error));
-    /*.finally(()=> {
-         this.offeringActions.findOfferings();
-
-    });*/
-   
+      
   @Effect() updateOfferings$ = this.actions$
     .ofType(OfferingActions.UPDATE_OFFERING)
     .map((action) => action.payload)

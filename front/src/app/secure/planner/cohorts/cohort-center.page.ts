@@ -32,9 +32,9 @@ export class CohortCenterPage implements OnInit {
 
   viewCohort(cohort: Cohort) {
     console.log("cohort: " + cohort.id);
-    this.router.navigate(['/cohorts-detail', cohort.id]);
+    this.router.navigate(['/secure/term/cohorts-detail', cohort.id]);
   }
-
+  
   ngOnInit(): void {
     this.store.dispatch(this.actions.findCohorts());
   }
