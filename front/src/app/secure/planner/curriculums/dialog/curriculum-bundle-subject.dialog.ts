@@ -53,6 +53,7 @@ export class CurriculumBundleSubjectDialog implements OnInit {
       ordinal: 0,
       subjectType: SubjectType.CORE,
       course: <Course>{},
+      course1:<Course>{},
       curriculum: <Curriculum>{},
     });
 

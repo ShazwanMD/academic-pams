@@ -1,6 +1,16 @@
 <h2 md-dialog-title> Bundle Subject</h2>
 <md-dialog-content>
   <form [formGroup]="creatorForm">
+
+    <div layout="row" class="pad-bottom">
+    <md-input-container flex>
+      <input mdInput #code
+             placeholder="Curriculum"
+             formControlName="curriculum"
+             flex/>
+    </md-input-container>
+  </div>
+
     <div layout="row" class="insert">
       <md-input-container flex>
         <input mdInput
@@ -23,14 +33,14 @@
       </pams-course-select>
     </div>
 
-    <!--<div layout="row" class="pad-bottom">
-    <md-input-container flex>
-      <input mdInput #code
-             placeholder="Curriculum"
-             formControlName="curriculum"
-             flex/>
-    </md-input-container>
-  </div>-->
+    <div layout="row" class="pad-bottom pad-top">
+      <pams-course-select
+        [placeholder]="'Select course'"
+        [innerFormControl]="creatorForm.controls['course1']">
+      </pams-course-select>
+     </div>
+
+    
   </form>
 
 </md-dialog-content>

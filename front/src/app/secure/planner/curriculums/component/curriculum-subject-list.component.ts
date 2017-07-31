@@ -35,10 +35,11 @@ export class CurriculumSubjectListComponent implements OnInit, OnChanges {
 
   private columns: any[] = [
     {name: 'id', label: 'Id'},
-    {name: 'ordinal', label: 'Ordinal'},
-    {name: 'type', label: 'Type'},
+    {name: 'ordinal', label: 'Semester'},
+    {name: 'subjectType', label: 'Type'},
     {name: 'course.code', label: 'Course'},
-    {name: 'parts', label: 'Parts'},
+    {name: 'course.credit', label: 'Credit'},
+    // {name: 'parts', label: 'Parts'},
     {name: 'action', label: ''},
   ];
 
