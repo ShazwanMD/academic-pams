@@ -5,7 +5,6 @@ import my.edu.umk.pams.academic.identity.service.IdentityService;
 import my.edu.umk.pams.academic.planner.model.*;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
 import my.edu.umk.pams.academic.web.module.planner.vo.*;
-import my.edu.umk.pams.academic.web.module.planner.vo.Subject;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -89,6 +88,10 @@ public class PlannerController {
     @RequestMapping(value = "/academicSessions/{code}/save", method = RequestMethod.POST)
     public ResponseEntity<String> saveAcademicSession(@PathVariable String code, @RequestBody AcademicSession vo) {
         dummyLogin();
+        
+        if (isAcademicSessionCodeExists(code))
+            throw new IllegalArgumentException("Data course already exists! Please insert new data");
+ 
         AdAcademicSession academicSession = new AdAcademicSessionImpl();
         academicSession.setCode(vo.getCode());
         academicSession.setDescription(vo.getDescription());
@@ -278,6 +281,10 @@ public class PlannerController {
     @RequestMapping(value = "/programs/{code}/save", method = RequestMethod.POST)
     public ResponseEntity<String> saveProgram(@PathVariable String code, @RequestBody Program vo) {
         dummyLogin();
+        AdFaculty faculty = plannerService.findFacultyByCode(code);
+        if (isProgramExists(code, faculty))
+        	throw new IllegalArgumentException("Data program already exists! Please insert new data"); 
+         
         AdProgram program = new AdProgramImpl();
         program.setCode(vo.getCode());
         program.setTitleMs(vo.getTitleMs());
@@ -289,8 +296,32 @@ public class PlannerController {
         return new ResponseEntity<String>("Success", HttpStatus.OK);
 
     }
+    
+  //isProgramExists
+    private boolean isProgramExists(String code, AdFaculty faculty) {
+    	System.out.println("Duplicate data");
+    	return plannerService.isProgramExists(code,faculty);
+	}
 
-    @RequestMapping(value = "/programs/{code}", method = RequestMethod.PUT)
+	//isCourseExists
+    private boolean isCourseExists(String code, AdFaculty faculty) {
+    	 System.out.println(plannerService.isCourseExists(code,faculty));
+         return plannerService.isCourseExists(code,faculty);
+	}
+    
+    //isAcademicSessionCodeExists
+    private boolean isAcademicSessionCodeExists(String code) {
+   	 System.out.println(plannerService.isAcademicSessionCodeExists(code));
+        return plannerService.isAcademicSessionCodeExists(code);
+	}
+    
+  /*//isProgramExists
+    private boolean isProgramExists(String code, AdFaculty faculty) {
+   	 System.out.println(plannerService.isProgramExists(code, faculty));
+        return plannerService.isProgramExists(code, faculty);
+	}*/
+
+	@RequestMapping(value = "/programs/{code}", method = RequestMethod.PUT)
     public ResponseEntity<String> updateProgram(@PathVariable String code, @RequestBody Program vo) {
         dummyLogin();
         AdProgram program = plannerService.findProgramByCode(code);
@@ -359,6 +390,11 @@ public class PlannerController {
     @RequestMapping(value = "/courses/{code}/save", method = RequestMethod.POST)
     public ResponseEntity<String> saveCourse(@PathVariable String code, @RequestBody Course vo) {
         dummyLogin();
+        
+        AdFaculty faculty = plannerService.findFacultyByCode(code);
+        if (isCourseExists(code, faculty))
+            throw new IllegalArgumentException("Data course already exists! Please insert new data");
+ 
         AdCourse course = new AdCourseImpl();
         course.setCode(vo.getCode());
         course.setTitleMs(vo.getTitleMs());

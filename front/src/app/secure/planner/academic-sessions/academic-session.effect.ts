@@ -6,6 +6,7 @@ import {PlannerModuleState} from '../index';
 import {from} from 'rxjs/observable/from';
 import {PlannerService} from '../../../../services/planner.service';
 import {AcademicSession} from '../../../shared/model/planner/academic-session.interface';
+import { NotificationService } from "../../../../services/notification.service";
 
 @Injectable()
 export class AcademicSessionEffects {
@@ -15,6 +16,7 @@ export class AcademicSessionEffects {
   constructor(private actions$: Actions,
               private academicSessionActions: AcademicSessionActions,
               private plannerService: PlannerService,
+              private notificationService: NotificationService,
               private store$: Store<PlannerModuleState>) {
   }
 
@@ -52,7 +54,8 @@ export class AcademicSessionEffects {
     .map((action) => action.payload)
     .switchMap((academicSession) => this.plannerService.saveAcademicSession(academicSession))
     .map((message) => this.academicSessionActions.saveAcademicSessionSuccess(message))
-    .mergeMap((action) => from([action, this.academicSessionActions.findAcademicSessions()]));
+    .mergeMap((action) => from([action, this.academicSessionActions.findAcademicSessions()]))
+    .catch((error) => this.notificationService.showError(error));
 
   @Effect() updateAcademicSession$ = this.actions$
     .ofType(AcademicSessionActions.UPDATE_ACADEMIC_SESSION)

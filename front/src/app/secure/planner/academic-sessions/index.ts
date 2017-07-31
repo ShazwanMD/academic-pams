@@ -5,7 +5,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {ReactiveFormsModule} from '@angular/forms';
 import {CovalentCoreModule} from '@covalent/core';
 
-import {PlannerService} from '../../../../services';
+import {PlannerService, NotificationService} from '../../../../services';
 
 import {AcademicSessionCenterPage} from './academic-session-center.page';
 import {AcademicSessionListComponent} from './component/academic-session-list.component';
@@ -73,6 +73,7 @@ export class AcademicSessionSubModule {
       providers: [
         appRoutingProviders,
         PlannerService,
+        NotificationService,
         AcademicSessionActions,
       ],
     };

@@ -5,7 +5,7 @@ import {ModuleWithProviders, NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {ReactiveFormsModule} from '@angular/forms';
 import {CovalentCoreModule} from '@covalent/core';
-import {CommonService, IdentityService, PlannerService} from '../../../../services';
+import {CommonService, IdentityService, PlannerService, NotificationService} from '../../../../services';
 import {ProgramCenterPage} from './program-center.page';
 import {ProgramListComponent} from './component/program-list.component';
 import {ProgramActions} from './program.action';
@@ -75,6 +75,7 @@ export class ProgramSubModule {
         PlannerService,
         IdentityService,
         CommonService,
+        NotificationService,
         ProgramActions,
       ],
     };
