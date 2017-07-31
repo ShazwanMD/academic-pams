@@ -90,7 +90,7 @@ public class IntegrationController {
  // ====================================================================================================
     // STUDENT ACCOUNT
     // ====================================================================================================
-    @RequestMapping(value = "/candidates", method = RequestMethod.POST)
+    @RequestMapping(value = "/studentAccounts", method = RequestMethod.PUT)
     public ResponseEntity<String> saveStudentAccount(@RequestBody AccountPayload payload) {
         SecurityContext ctx = loginAsSystem();
         
