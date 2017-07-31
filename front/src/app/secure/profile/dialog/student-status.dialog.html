@@ -2,7 +2,7 @@
 <md-dialog-content>
   <form [formGroup]="switchForm">
     <div layout="row" class="pad-bottom pad-top" flex>
-      <span>Current Student Status : {{_student.studentStatus}}</span>
+      <span>Current Status : {{_student.studentStatus}}</span>
     </div>
     <div layout="row" class="pad-bottom pad-top" flex>
       <pams-student-status-select [placeholder]="'To : '" [innerFormControl]="switchForm.controls['studentStatus']">
@@ -10,7 +10,7 @@
     </div>
     <div layout="row" class="inset" flex>
       <md-input-container flex>
-        <input mdInput placeholder="Student Status Description" formControlName="studentStatusDescription" flex/>
+        <input mdInput placeholder="MEMO" formControlName="memo" flex/>
       </md-input-container>
     </div>
   </form>

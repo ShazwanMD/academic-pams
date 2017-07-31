@@ -44,7 +44,7 @@ export class StudentStatusDialog implements OnInit {
       phone: '',
       mobile: '',
       fax: '',
-      studentStatusDescription: '',
+      memo: '',
       studyMode: <StudyMode>{},
       cohort: <Cohort>{},
       studentStatus: <StudentStatus>{},
