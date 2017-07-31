@@ -21,17 +21,10 @@
         <md-icon class="md-24">more_vert</md-icon>
       </button>
     </div>
-    <md-card class="">
+
       <pams-program-list
         [programs]="programs$ | async"
         (view)="viewProgram($event)"></pams-program-list>
-
-      <md-divider></md-divider>
-      <md-card-actions>
-
-      </md-card-actions>
-
-
-    </md-card>
+       
   </td-layout-manage-list>
 </td-layout-nav>

@@ -57,7 +57,7 @@
   </template>
   <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
     <div layout="row">
-      <a md-button color="accent" class="text-upper" (click)="viewCohort(row)" mdTooltip="View cohorts info">
+      <a md-button color="accent" class="text-upper" [routerLink]="['/secure/planner/cohorts', row['code']]" mdTooltip="View cohorts info">
         <span>View</span>
       </a>
     </div>

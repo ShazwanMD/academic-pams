@@ -28,7 +28,7 @@ export class FacultyListComponent implements AfterViewInit, OnChanges {
   private columns: any [] = [
     {name: 'code', label: 'Code'},
     {name: 'description', label: 'Description'},
-    {name: 'current', label: 'Status'},
+    {name: 'status', label: 'Status'},
     {name: 'action', label: ''},
 
   ];
