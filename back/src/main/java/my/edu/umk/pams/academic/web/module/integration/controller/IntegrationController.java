@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import my.edu.umk.pams.academic.common.service.CommonService;
@@ -38,6 +39,7 @@ import my.edu.umk.pams.academic.security.integration.NonSerializableSecurityCont
 import my.edu.umk.pams.academic.term.service.TermService;
 import my.edu.umk.pams.academic.web.module.planner.controller.PlannerTransformer;
 import my.edu.umk.pams.academic.web.module.planner.vo.AcademicSession;
+import my.edu.umk.pams.connector.payload.AccountPayload;
 import my.edu.umk.pams.connector.payload.CandidatePayload;
 
 /**
@@ -85,6 +87,22 @@ public class IntegrationController {
         logoutAsSystem(ctx);
         return new ResponseEntity<String>("sucess", HttpStatus.OK);
     }
+ // ====================================================================================================
+    // STUDENT ACCOUNT
+    // ====================================================================================================
+    @RequestMapping(value = "/candidates", method = RequestMethod.POST)
+    public ResponseEntity<String> saveStudentAccount(@RequestBody AccountPayload payload) {
+        SecurityContext ctx = loginAsSystem();
+        
+        AdStudent student = identityService.findStudentByMatricNo(payload.getMatricNo());
+        student.setBalance(payload.getBalance());
+        student.setOutstanding(payload.isOutstanding());
+        identityService.updateStudent(student);
+     
+        logoutAsSystem(ctx);
+        return new ResponseEntity<String>("sucess", HttpStatus.OK);
+    }
+       
 
     // ====================================================================================================
     // CANDIDATE
@@ -104,8 +122,10 @@ public class IntegrationController {
 
         // status, mode and cohort
         student.setStudentStatus(AdStudentStatus.MATRICULATED);
-        student.setStudyMode(commonService.findStudyModeByCode(payload.getStudyModeCode().getCode()));
+        student.setStudyMode(commonService.findStudyModeByCode(payload.getStudyMode().getCode()));
         student.setCohort(plannerService.findCohortByCode(payload.getCohortCode()));
+        student.setBalance(BigDecimal.ZERO);
+        student.setOutstanding(false);
 
         identityService.saveStudent(student);
                

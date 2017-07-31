@@ -3,10 +3,9 @@ package my.edu.umk.pams.academic.identity.model;
 import my.edu.umk.pams.academic.common.model.AdStudyMode;
 import my.edu.umk.pams.academic.planner.model.AdCohort;
 
-
+import java.math.BigDecimal;
 import java.util.List;
 
-import com.ibm.icu.math.BigDecimal;
 
 /**
  * @author PAMS
@@ -33,7 +32,7 @@ public interface AdStudent extends AdActor {
 	
 	void setMemo(String memo);
 	
-	Boolean getOutstanding();
+	Boolean isOutstanding();
 	
 	void setOutstanding(Boolean outstanding);
 	

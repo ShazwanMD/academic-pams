@@ -7,8 +7,7 @@ import my.edu.umk.pams.academic.planner.model.AdCohortImpl;
 
 import javax.persistence.*;
 
-import com.ibm.icu.math.BigDecimal;
-
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -55,37 +54,26 @@ public class AdStudentImpl extends AdActorImpl implements AdStudent {
 		setActorType(AdActorType.STUDENT);
 	}
 	
-	
-	
+	@Override
 	public BigDecimal getBalance() {
 		return balance;
 	}
-
-
-
+	@Override
 	public void setBalance(BigDecimal balance) {
 		this.balance = balance;
 	}
-
-
-
-	public Boolean getOutstanding() {
+	@Override
+	public Boolean isOutstanding() {
 		return outstanding;
 	}
-
-
-
+	@Override
 	public void setOutstanding(Boolean outstanding) {
 		this.outstanding = outstanding;
 	}
-
-
-
 	@Override
 	public String getMemo() {
 		return memo;
 	}
-
 	@Override
 	public void setMemo(String memo) {
 		this.memo = memo;
