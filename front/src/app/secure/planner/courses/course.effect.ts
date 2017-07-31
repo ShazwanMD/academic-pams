@@ -5,6 +5,7 @@ import {PlannerService} from '../../../../services/planner.service';
 import {Store} from '@ngrx/store';
 import {PlannerModuleState} from '../index';
 import {Course} from '../../../shared/model/planner/course.interface';
+import { NotificationService } from "../../../../services/notification.service";
 @Injectable()
 export class CourseEffects {
 
@@ -13,6 +14,7 @@ export class CourseEffects {
   constructor(private actions$: Actions,
               private courseActions: CourseActions,
               private plannerService: PlannerService,
+              private notificationService: NotificationService,
               private store$: Store<PlannerModuleState>) {
   }
 
@@ -34,7 +36,8 @@ export class CourseEffects {
     .map(course => this.courseActions.saveCourseSuccess(course))
     .withLatestFrom(this.store$.select(...this.COURSE))
     .map(state => state[1])
-    .map((course: Course) => this.courseActions.findCourseByCode(course.code));
+    .map((course: Course) => this.courseActions.findCourseByCode(course.code))
+    .catch((error) => this.notificationService.showError(error));
 
   @Effect() addCourse$ = this.actions$
     .ofType(CourseActions.ADD_COURSE)

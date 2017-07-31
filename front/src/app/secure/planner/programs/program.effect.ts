@@ -6,6 +6,7 @@ import {ProgramActions} from './program.action';
 import {PlannerService} from '../../../../services/planner.service';
 import {Store} from '@ngrx/store';
 import {PlannerModuleState} from '../index';
+import { NotificationService } from "../../../../services/notification.service";
 
 @Injectable()
 export class ProgramEffects {
@@ -17,6 +18,7 @@ export class ProgramEffects {
               private programActions: ProgramActions,
               private plannerService: PlannerService,
               private facultyActions: FacultyActions,
+              private notificationService: NotificationService,
               private store$: Store<PlannerModuleState>) {
   }
 
@@ -45,6 +47,7 @@ export class ProgramEffects {
     .withLatestFrom(this.store$.select(...this.PROGRAM))
     .map((state) => state[1])
     .map((program: Program) => this.programActions.findProgramByCode(program.code));
+    //.catch((error) => this.notificationService.showError(error));
 
   @Effect() updateProgram$ = this.actions$
     .ofType(ProgramActions.UPDATE_PROGRAM)

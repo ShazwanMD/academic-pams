@@ -8,7 +8,7 @@ import {ModuleWithProviders, NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {ReactiveFormsModule} from '@angular/forms';
 import {CovalentCoreModule} from '@covalent/core';
-import {CommonService, IdentityService, PlannerService} from '../../../../services';
+import {CommonService, IdentityService, PlannerService, NotificationService} from '../../../../services';
 import {CourseListComponent} from './component/course-list.component';
 import {CourseActions} from './course.action';
 import {EffectsModule} from '@ngrx/effects';
@@ -80,6 +80,7 @@ export class CourseSubModule {
         PlannerService,
         IdentityService,
         CommonService,
+        NotificationService,
         CourseActions,
       ],
     };
