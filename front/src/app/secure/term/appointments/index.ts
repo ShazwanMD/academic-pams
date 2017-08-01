@@ -29,7 +29,7 @@ import { AppointmentEffects } from "./appointment.effect";
     CovalentCoreModule.forRoot(),
     SectionSubModule.forRoot(),
     IdentityModule.forRoot(),
-    EffectsModule.run(AppointmentEffects),
+    //EffectsModule.run(AppointmentEffects), // lazy load bug, moved to app root. Fix in Angular 4
   ],
   declarations: [
     // page

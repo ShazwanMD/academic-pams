@@ -24,7 +24,7 @@ import { NotificationService } from "../../../../services/notification.service";
     BrowserModule,
     ReactiveFormsModule,
     CovalentCoreModule.forRoot(),
-    EffectsModule.run(AssessmentEffects),
+    //EffectsModule.run(AssessmentEffects), // lazy load bug, moved to app root. Fix in Angular 4
     PipeModule,
   ],
   declarations: [

@@ -59,6 +59,7 @@ import {DashboardPage} from './secure/dashboard.page';
 import {AuthorizedShowDirective} from './secure/identity/directive/authorized-show.directive';
 import {AuthenticatedShowDirective} from './secure/identity/directive/authenticated-show.directive';
 import {NotAuthenticatedShowDirective} from './secure/identity/directive/not-authenticated-show.directive';
+import { AssessmentEffects } from "./secure/term/assessments/assessment.effect";
 // interceptor
 const httpInterceptorProviders: Type<any>[] = [
   RequestInterceptor,
@@ -148,6 +149,7 @@ export function applicationReducer(applicationState: any = INITIAL_APP_STATE, ac
     EffectsModule.run(AppointmentEffects),
     EffectsModule.run(StaffEffects),
     EffectsModule.run(AcademicSessionEffects),
+    EffectsModule.run(AssessmentEffects),
 
   ], // modules needed to run this module
   providers: [

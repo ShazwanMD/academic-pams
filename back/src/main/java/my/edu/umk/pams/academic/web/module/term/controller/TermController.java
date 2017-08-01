@@ -765,6 +765,7 @@ public class TermController {
         return termService.isOfferingExists(canonicalCode);
 
     }
+    
 	//isSectionExists
 	private boolean isSectionExists(String canonicalCode) {
         System.out.println(termService.isSectionExists(canonicalCode));

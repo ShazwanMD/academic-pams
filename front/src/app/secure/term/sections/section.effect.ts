@@ -37,7 +37,7 @@ export class SectionEffects {
       this.sectionActions.findEnrollmentsBySection(action.payload),
       this.sectionActions.findGradebooksBySection(action.payload),
       this.sectionActions.findAppointmentsBySection(action.payload)]));
-
+  
   @Effect() findEnrollmentsBySection$ = this.actions$
     .ofType(SectionActions.FIND_ENROLLMENTS_BY_SECTION)
     .map((action) => action.payload)
