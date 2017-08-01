@@ -38,8 +38,8 @@ public class PlannerTransformer {
         vo.setCurrent(academicSession.isCurrent());
         vo.setstartDate(academicSession.getStartDate());
         vo.setendDate(academicSession.getEndDate());
-//        vo.setSemester(AcademicSemester.get(academicSession.getSemester().ordinal()));
-//        vo.setYear(plannerTransformer.toAcademicYearVo(academicSession.getYear()));
+        vo.setSemester(AcademicSemester.get(academicSession.getSemester().ordinal()));
+        vo.setYear(plannerTransformer.toAcademicYearVo(academicSession.getYear()));
         return vo;
     }
 
