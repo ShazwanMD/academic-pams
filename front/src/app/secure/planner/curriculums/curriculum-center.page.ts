@@ -28,11 +28,6 @@ export class CurriculumCenterPage implements OnInit {
     this.curriculums$ = this.store.select(...this.CURRICULUMS);
   }
 
-  viewCurriculum(curriculum: Curriculum) {
-    console.log('curriculum: ' + curriculum.id);
-    this.router.navigate(['/curriculums-detail', curriculum.id]);
-  }
-
   filter(): void {
   }
 

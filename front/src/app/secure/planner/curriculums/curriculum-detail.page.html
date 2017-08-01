@@ -9,10 +9,20 @@
       <div flex-gt-md="70">
         <pams-curriculum [curriculum]="curriculum$ | async"></pams-curriculum>
 
-        <pams-curriculum-subject-list
-          [curriculum]="curriculum$ | async"
-          [subjects]="subjects$ | async">
-        </pams-curriculum-subject-list>
+
+		<md-card>
+          <md-card-title>Subject</md-card-title>
+          <md-card-subtitle>Subject for this Curriculum</md-card-subtitle>
+          <md-divider></md-divider>
+          <md-tab-group>
+           <md-tab label="Core ({{(curriculum$ | async)?.length}})">
+            <pams-curriculum-subject-list [curriculum]="curriculum$ | async" [subjects]="subjects$ | async">></pams-curriculum-subject-list>
+          </md-tab>
+          <md-tab label="Elective ({{(curriculum$ | async)?.length}})">
+            <pams-curriculum-subject-list [curriculum]="curriculum$ | async" [subjects]="subjects$ | async"></pams-curriculum-subject-list>
+          </md-tab>
+          </md-tab-group>
+        </md-card>
       </div>
 
 
