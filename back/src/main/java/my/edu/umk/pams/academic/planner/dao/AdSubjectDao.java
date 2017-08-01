@@ -6,6 +6,7 @@ import my.edu.umk.pams.academic.core.GenericDao;
 import my.edu.umk.pams.academic.identity.model.AdUser;
 
 import my.edu.umk.pams.academic.planner.model.AdCurriculum;
+import my.edu.umk.pams.academic.planner.model.AdProgram;
 import my.edu.umk.pams.academic.planner.model.AdSubject;
 import my.edu.umk.pams.academic.planner.model.AdSubjectType;
 import my.edu.umk.pams.academic.term.model.AdOffering;
@@ -27,6 +28,10 @@ public interface AdSubjectDao extends GenericDao<Long, AdSubject> {
     void addSubject(AdCurriculum curriculum, AdSubject subject, AdUser user);
 
     void updateSubject(AdCurriculum Curriculum, AdSubject subject, AdUser user);
+    
+    List<AdSubject> find( AdProgram program,AdSubjectType subjectType);
+
+	List<AdSubject> find(AdCurriculum curriculum, AdSubjectType subjectType);
 
 
 }

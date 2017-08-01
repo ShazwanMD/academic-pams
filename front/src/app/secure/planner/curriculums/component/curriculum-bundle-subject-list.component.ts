@@ -26,7 +26,7 @@ import {Subject} from '../../../../shared/model/planner/subject.interface';
   templateUrl: './curriculum-bundle-subject-list.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CurriculumSubjectListComponent implements OnInit, OnChanges {
+export class CurriculumBundleSubjectListComponent implements OnInit, OnChanges {
 
   private selectedRows: Subject[];
   private singleSubjectDialogRef: MdDialogRef<CurriculumSingleSubjectDialog>;

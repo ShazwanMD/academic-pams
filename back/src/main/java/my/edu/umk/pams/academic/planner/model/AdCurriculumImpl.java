@@ -30,7 +30,7 @@ public class AdCurriculumImpl implements AdCurriculum {
     private Integer coreCredit;
 
     // Teras program/pengkhususan
-    @Column(name = "REQUIRED", nullable = false)
+    @Column(name = "REQUIRED", nullable = true)
     private Integer requiredCredit;
 
     // elektif/Opsyen
@@ -38,11 +38,11 @@ public class AdCurriculumImpl implements AdCurriculum {
     private Integer electiveCredit;
 
     //Umum Universiti
-    @Column(name = "GENERAL", nullable = false)
+    @Column(name = "GENERAL", nullable = true)
     private Integer generalCredit;
 
     // english
-    @Column(name = "LANGUAGE", nullable = false)
+    @Column(name = "LANGUAGE", nullable = true)
     private Integer languageCredit;
 
     // kokurikulum

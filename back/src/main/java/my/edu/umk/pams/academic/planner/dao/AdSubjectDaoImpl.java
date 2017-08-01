@@ -13,6 +13,7 @@ import my.edu.umk.pams.academic.core.AdMetadata;
 import my.edu.umk.pams.academic.core.GenericDaoSupport;
 import my.edu.umk.pams.academic.identity.model.AdUser;
 import my.edu.umk.pams.academic.planner.model.AdCurriculum;
+import my.edu.umk.pams.academic.planner.model.AdProgram;
 import my.edu.umk.pams.academic.planner.model.AdSubject;
 import my.edu.umk.pams.academic.planner.model.AdSubjectImpl;
 import my.edu.umk.pams.academic.planner.model.AdSubjectType;
@@ -53,6 +54,20 @@ public List<AdSubject> find(AdCurriculum curriculum) {
 }
 
 @Override
+public List<AdSubject> find(AdCurriculum curriculum,AdSubjectType subjectType) {
+    Session session = sessionFactory.getCurrentSession();
+    Query query = session.createQuery("select s from AdSubject s where " +
+            "s.curriculum = :curriculum " +
+    		"and s.subjectType = :subjectType "+
+            "and s.metadata.state = :state");
+    query.setInteger("state", AdMetaState.ACTIVE.ordinal());
+    query.setEntity("curriculum", curriculum);
+    query.setInteger("subjectType", subjectType.ordinal());
+    query.setCacheable(true);
+    return (List<AdSubject>) query.list();
+}
+
+@Override
 public List<AdSubject> findSubjects(AdSubjectType subjectType, AdCurriculum curriculum) {
     Session session = sessionFactory.getCurrentSession();
     Query query = session.createQuery("select s from AdSubject s where " +
@@ -64,6 +79,19 @@ public List<AdSubject> findSubjects(AdSubjectType subjectType, AdCurriculum curr
     query.setInteger("subjectType", subjectType.ordinal());
     query.setEntity("curriculum", curriculum);
     query.setCacheable(true);
+    return (List<AdSubject>) query.list();
+}
+
+@Override
+public List<AdSubject> find(AdProgram program, AdSubjectType subjectType) {
+    Session session = sessionFactory.getCurrentSession();
+    Query query = session.createQuery("select s from AdCurriculum s where " +
+            "s.program = :program " +
+            "s.program = :program " +
+            "and s.metadata.state = :state ");
+    query.setInteger("state", AdMetaState.ACTIVE.ordinal());
+    query.setEntity("program", program);
+    query.setInteger("subjectType", subjectType.ordinal());
     return (List<AdSubject>) query.list();
 }
 

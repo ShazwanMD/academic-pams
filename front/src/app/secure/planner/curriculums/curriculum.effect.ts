@@ -30,6 +30,8 @@ export class CurriculumEffects {
     .map((curriculum) => this.curriculumActions.findCurriculumByCodeSuccess(curriculum))
     .mergeMap((action) => from([action,
       this.curriculumActions.findSubjectsByCurriculum(action.payload),
+      this.curriculumActions.findSubjectsByCurriculumAndSubjectCoreType(action.payload),
+      this.curriculumActions.findSubjectsByCurriculumAndSubjectElectiveType(action.payload),
     ]));
 
   @Effect() findSubjectsByCurriculum$ = this.actions$
@@ -37,6 +39,18 @@ export class CurriculumEffects {
     .map((action) => action.payload)
     .switchMap((curriculum) => this.plannerService.findSubjectsByCurriculum(curriculum))
     .map((subjects) => this.curriculumActions.findSubjectsByCurriculumSuccess(subjects));
+
+    @Effect() findSubjectsByCurriculumAndSubjectCoreType$ = this.actions$
+    .ofType(CurriculumActions.FIND_SUBJECTS_BY_CURRICULUM_AND_SUBJECT_TYPE_CORE)
+    .map((action) => action.payload)
+    .switchMap((curriculum) => this.plannerService.findSubjectsByCurriculumAndSubjectTypeCore(curriculum))
+    .map((subjects) => this.curriculumActions.findSubjectsByCurriculumAndSubjectCoreTypeSuccess(subjects));
+
+     @Effect() findSubjectsByCurriculumAndSubjectElectiveType$ = this.actions$
+    .ofType(CurriculumActions.FIND_SUBJECTS_BY_CURRICULUM_AND_SUBJECT_TYPE_ELECTIVE)
+    .map((action) => action.payload)
+    .switchMap((curriculum) => this.plannerService.findSubjectsByCurriculumAndSubjectTypeElective(curriculum))
+    .map((subjects) => this.curriculumActions.findSubjectsByCurriculumAndSubjectElectiveTypeSuccess(subjects));
 
   @Effect() saveCurriculum$ = this.actions$
     .ofType(CurriculumActions.SAVE_CURRICULUM)
@@ -68,6 +82,7 @@ export class CurriculumEffects {
       .ofType(CurriculumActions.ADD_BUNDLE_SUBJECT)
       .map((action) => action.payload)
       .switchMap((payload) => this.plannerService.addBundleSubject(payload.curriculum, payload.subject))
+      .map((message) => this.curriculumActions.addBundleSubjectSuccess(message))
       .withLatestFrom(this.store$.select(...this.CURRICULUM))
       .map((state) => state[1])
       .map((curriculum: Curriculum) => this.curriculumActions.findCurriculumByCode(curriculum.code));

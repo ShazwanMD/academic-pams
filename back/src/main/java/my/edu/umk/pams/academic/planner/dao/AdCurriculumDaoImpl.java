@@ -123,6 +123,19 @@ public class AdCurriculumDaoImpl extends GenericDaoSupport<Long, AdCurriculum> i
         query.setCacheable(true);
         return (List<AdCurriculum>) query.list();
     }
+    
+    @Override
+    public List<AdSubject> find(AdProgram program, AdSubjectType subjectType) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select s from AdCurriculum s where " +
+                "s.program = :program " +
+                "s.program = :program " +
+                "and s.metadata.state = :state ");
+        query.setInteger("state", AdMetaState.ACTIVE.ordinal());
+        query.setEntity("program", program);
+        query.setInteger("subjectType", subjectType.ordinal());
+        return (List<AdSubject>) query.list();
+    }
 
     @Override
     public List<AdSubject> findSubjects(AdCurriculum curriculum) {

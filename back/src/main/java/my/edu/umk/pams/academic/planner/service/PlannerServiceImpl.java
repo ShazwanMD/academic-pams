@@ -323,6 +323,11 @@ public class PlannerServiceImpl implements PlannerService {
     public List<AdSubject> findSubjects(AdCurriculum curriculum) {
         return subjectDao.find(curriculum);
     }
+    
+    @Override
+    public List<AdSubject> findSubjectsBySubjectType(AdCurriculum curriculum,AdSubjectType subjectType) {
+        return subjectDao.find(curriculum,subjectType);
+    }
 
     @Override
     public List<AdSubject> findSubjects(String filter, AdCurriculum curriculum) {
