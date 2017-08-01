@@ -72,3 +72,13 @@ export class CurriculumEffects {
       .map((state) => state[1])
       .map((curriculum: Curriculum) => this.curriculumActions.findCurriculumByCode(curriculum.code));
 }
+
+//  @Effect() addSubjectPart$ =
+//     this.actions$
+//       .ofType(CurriculumActions.ADD_SUBJECT_PART)
+//       .map((action) => action.payload)
+//       .switchMap((payload) => this.plannerService.addSubjectPart(payload.curriculum, payload.subject))
+//       .withLatestFrom(this.store$.select(...this.CURRICULUM))
+//       .map((state) => state[1])
+//       .map((curriculum: Curriculum) => this.curriculumActions.findCurriculumByCode(curriculum.code));
+// }

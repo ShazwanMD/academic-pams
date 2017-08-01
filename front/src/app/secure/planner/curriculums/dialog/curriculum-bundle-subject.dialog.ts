@@ -1,6 +1,9 @@
+import {CurriculumBundleSubjectPartDialog} from './curriculum-bundle-subject-part.dialog';
+import {MdDialog, MdDialogConfig} from '@angular/material/dialog';
+import {BundleSubjectPart} from '../../../../shared/model/planner/bundle-subject-part.interface';
 import {BundleSubject} from '../../../../shared/model/planner/bundle-subject.interface';
 import {Course} from '../../../../shared/model/planner/course.interface';
-import {Component, OnInit, ViewContainerRef} from '@angular/core';
+import { Component,  OnInit,  ViewContainerRef} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Curriculum} from '../../../../shared/model/planner/curriculum.interface';
@@ -23,14 +26,16 @@ export class CurriculumBundleSubjectDialog implements OnInit {
   private _subject: Subject;
   private _curriculum: Curriculum;
   private _bundleSubject: BundleSubject;
+  private _bundleSubjectPart: BundleSubjectPart;
+  private bundleSubjectPartDialogRef: MdDialogRef<CurriculumBundleSubjectPartDialog>;
+  private bundleSubjectDialogRef: MdDialogRef<CurriculumBundleSubjectDialog>;
 
   constructor(private formBuilder: FormBuilder,
               private store: Store<PlannerModuleState>,
               private actions: CurriculumActions,
               private router: Router,
-              private route: ActivatedRoute,
-              private viewContainerRef: ViewContainerRef,
-              private dialog: MdDialogRef<CurriculumBundleSubjectDialog>) {
+              private vcf: ViewContainerRef,
+              private route: ActivatedRoute,private dialog: MdDialog,) {
   }
 
   set curriculum(value: Curriculum) {
@@ -53,7 +58,7 @@ export class CurriculumBundleSubjectDialog implements OnInit {
       ordinal: 0,
       subjectType: SubjectType.CORE,
       course: <Course>{},
-      course1:<Course>{},
+      // course1:<Course>{},
       curriculum: <Curriculum>{},
     });
 
@@ -61,11 +66,28 @@ export class CurriculumBundleSubjectDialog implements OnInit {
     if (this.create) this.creatorForm.patchValue(this._bundleSubject);
   }
 
+
   submit(bundleSubject: BundleSubject, isValid: boolean): void {
     console.log('adding Bundle Subject');
     this.store.dispatch(this.actions.addBundleSubject(this._curriculum, bundleSubject));
     console.log('adding Subject jju' + this._curriculum);
-    this.dialog.close();
+    this.bundleSubjectDialogRef.close();
   }
-}
+
+    showBundleSubjectPartDialog(bundleSubjectPart: BundleSubjectPart) {
+    let config: MdDialogConfig = new MdDialogConfig();
+    config.viewContainerRef = this.vcf;
+    config.role = 'dialog';
+    config.width = '50%';
+    config.height = '60%';
+    config.position = {top: '65px'};
+    this.bundleSubjectPartDialogRef = this.dialog.open(CurriculumBundleSubjectPartDialog, config);
+    this.bundleSubjectPartDialogRef.componentInstance.curriculum = this._curriculum;
+    this.bundleSubjectPartDialogRef.afterClosed().subscribe((res) => {
+      // no op
+    });
+  }
+    
+  }
+
 

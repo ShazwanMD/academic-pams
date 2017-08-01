@@ -1,3 +1,4 @@
+import {BundleSubjectPart} from '../app/shared/model/planner/bundle-subject-part.interface';
 import {Injectable} from '@angular/core';
 import {Response} from '@angular/http';
 import {HttpInterceptorService} from '@covalent/http';
@@ -306,6 +307,14 @@ export class PlannerService {
     return this._http.post(this.PLANNER_API + '/curriculums/' + curriculum.code + '/bundleSubjects', JSON.stringify(subject))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
+
+   addSubjectPart(curriculum: Curriculum, subject: BundleSubjectPart): Observable<String> {
+    console.log('addSubjectPart:' + subject);
+    console.log('curriculum:' + curriculum.code);
+    return this._http.post(this.PLANNER_API + '/curriculums/' + curriculum.code + '/bundleSubjects', JSON.stringify(subject))
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
 
 //   updateSubject(subject: Subject): Observable<String> {
 //     return this._http.put(this.PLANNER_API + '/subjects/' + subject.id, JSON.stringify(subject))

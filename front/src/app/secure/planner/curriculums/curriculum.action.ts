@@ -185,4 +185,22 @@ export class CurriculumActions {
     };
   }
 
+   static ADD_SUBJECT_PART = '[Subject] Add Bundle Subject Success';
+
+  addSubjectPart(curriculum, subject): Action {
+    return {
+      type: CurriculumActions.ADD_SUBJECT_PART,
+      payload: {curriculum: curriculum, subject: subject}
+    };
+  }
+
+  static ADD_SUBJECT_PART_SUCCESS = '[Subject] Add Bundle Subject Success';
+
+  addSubjectPartSuccess(message): Action {
+    return {
+      type: CurriculumActions.ADD_SUBJECT_PART_SUCCESS,
+      payload: message
+    };
+  }
+
 }

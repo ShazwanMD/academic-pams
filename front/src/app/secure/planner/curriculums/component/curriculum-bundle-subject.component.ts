@@ -1,3 +1,5 @@
+import {BundleSubjectPart} from '../../../../shared/model/planner/bundle-subject-part.interface';
+import {CurriculumBundleSubjectPartDialog} from '../dialog/curriculum-bundle-subject-part.dialog';
 import {CurriculumBundleSubjectDialog} from '../dialog/curriculum-bundle-subject.dialog';
 import {BundleSubject} from '../../../../shared/model/planner/bundle-subject.interface';
 
@@ -18,6 +20,8 @@ export class BundleSubjectComponent implements OnInit {
   private curriculum: any;
   private bundleSubjectDialogRef: MdDialogRef<CurriculumBundleSubjectDialog>;
   private selectedRows: BundleSubject[];
+  private bundleSubjectPartDialogRef: MdDialogRef<CurriculumBundleSubjectPartDialog>;
+  
   private bundleSubjectColumns: any[] = [
     {name: 'course', label: 'course'},
     {name: 'ordinal', label: 'Ordinal'},
@@ -25,6 +29,7 @@ export class BundleSubjectComponent implements OnInit {
   ];
 
   @Input() bundleSubject: BundleSubject[];
+  @Input() bundleSubjectPart: BundleSubjectPart[];
   @Input() subject: Subject;
 
   constructor(private actions: CurriculumActions,
@@ -53,6 +58,20 @@ export class BundleSubjectComponent implements OnInit {
   }
 
   selectAllRows(bundleSubject: BundleSubject[]): void {
+  }
+
+   showBundleSubjectPartDialog(bundleSubjectPart: BundleSubjectPart) {
+    let config: MdDialogConfig = new MdDialogConfig();
+    config.viewContainerRef = this.vcf;
+    config.role = 'dialog';
+    config.width = '50%';
+    config.height = '60%';
+    config.position = {top: '65px'};
+    this.bundleSubjectPartDialogRef = this.dialog.open(CurriculumBundleSubjectPartDialog, config);
+    this.bundleSubjectPartDialogRef.componentInstance.curriculum = this.curriculum;
+    this.bundleSubjectPartDialogRef.afterClosed().subscribe((res) => {
+      // no op
+    });
   }
 
   showDialog(bundleSubject: BundleSubject): void {

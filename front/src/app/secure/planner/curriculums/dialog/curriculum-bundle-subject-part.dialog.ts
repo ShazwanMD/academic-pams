@@ -55,6 +55,11 @@ export class CurriculumBundleSubjectPartDialog implements OnInit {
     if (this.edit) this.editorForm.patchValue(this._bundleSubjectPart);
   }
 
-  save(bundleSubjectPart: BundleSubjectPart, isValid: boolean): void {
+   submit(bundleSubjectPart: BundleSubjectPart, isValid: boolean): void {
+    console.log('adding bundlesubject');
+    console.log('subject type: ' + bundleSubjectPart);
+    this.store.dispatch(this.actions.addSubjectPart(this._curriculum, bundleSubjectPart));
+    console.log('adding subject to ' + this._curriculum);
+    this.dialog.close();
   }
 }

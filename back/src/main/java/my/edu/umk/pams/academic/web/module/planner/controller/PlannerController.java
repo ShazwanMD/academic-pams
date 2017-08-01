@@ -541,6 +541,19 @@ public class PlannerController {
         plannerService.addSubject(curriculum, bundleSubject);
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
+    
+    @RequestMapping(value = "/curriculums/{code}/SubjectParts", method = RequestMethod.POST)
+    public ResponseEntity<String> addSubjectPart(@PathVariable String code, @RequestBody BundleSubjectPart vo) {
+        dummyLogin();
+        LOG.info("Adding subject part");
+        AdCurriculum curriculum = plannerService.findCurriculumByCode(code);
+        AdCourse course = plannerService.findCourseByCode(vo.getCourse().getCode());
+        AdBundleSubject bundleSubject = new AdBundleSubjectImpl();
+        AdBundleSubjectPart part = new AdBundleSubjectPartImpl();
+        part.setCourse(course);
+        plannerService.addSubjectPart(bundleSubject, part);
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
 
     @RequestMapping(value = "/curriculums/{code}/subject", method = RequestMethod.POST)
     public ResponseEntity<String> addSubject(@PathVariable Long id, @RequestBody Subject vo) {
