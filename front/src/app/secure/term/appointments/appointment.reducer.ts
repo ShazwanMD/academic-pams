@@ -11,6 +11,9 @@ export function appointmentReducer(state = initialState, action: Action): Appoin
     case AppointmentActions.FIND_APPOINTMENT_BY_ID_SUCCESS: {
       return action.payload;
     }
+    case AppointmentActions.ADD_APPOINTMENT_SUCCESS: {
+        return action.payload;
+      }
     default: {
       return state;
     }

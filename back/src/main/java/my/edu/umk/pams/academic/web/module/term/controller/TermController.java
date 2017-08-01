@@ -234,9 +234,13 @@ public class TermController {
 		AdStaff advisor = identityService.findStaffByStaffNo("01615B"); // todo:
 		// dummy
 		// advisor
-		if (countAdmissionApplication(academicSession, student) > 0)
-			throw new IllegalArgumentException("Data admission already exists! Please insert new data");
+		if (countAdmissionApplication(academicSession, student) > 0){
+			//throw new IllegalArgumentException("Data admission already exists! Please insert new data");
 
+			System.out.println("Passed data");
+		return new ResponseEntity<String>("Duplicate", HttpStatus.OK);
+	} else {
+			
 		AdAdmissionApplication application = new AdAdmissionApplicationImpl();
 		application.setDescription(vo.getDescription());
 		application.setReferenceNo(vo.getReferenceNo());
@@ -252,6 +256,7 @@ public class TermController {
 		application.setSourceNo(vo.getSourceNo());
 		String referenceNo = termService.startAdmissionApplicationTask(application);
 		return new ResponseEntity<String>(referenceNo, HttpStatus.OK);
+	}
 	}
 
 	@RequestMapping(value = "/admissionApplications/viewTask/{taskId}", method = RequestMethod.GET)
@@ -719,9 +724,10 @@ public class TermController {
 		LOG.debug("adding section code: {}", vo.getCode());
 		LOG.debug("adding section canonical code: {}", vo.getCanonicalCode());
 
-		if (isSectionExists(vo.getCanonicalCode()))
-			throw new IllegalArgumentException("Data section already exists! Please insert new data");
-
+		if (isSectionExists(vo.getCanonicalCode())){
+			System.out.println("Passed data");
+		return new ResponseEntity<String>("Duplicate", HttpStatus.OK);
+	} else { 
 		AdOffering offering = termService.findOfferingByCanonicalCode(canonicalCode);
 		AdSection section = new AdSectionImpl();
 		section.setCode(vo.getCode());
@@ -732,6 +738,7 @@ public class TermController {
 		termService.addSection(offering, section);
 		return new ResponseEntity<String>("Success", HttpStatus.OK);
 	}
+}
 
 	@RequestMapping(value = "/offerings", method = RequestMethod.POST)
 	public ResponseEntity<String> saveOffering(@RequestBody Offering vo) {
@@ -937,9 +944,13 @@ public class TermController {
 		AdSection section = termService.findSectionById(vo.getSection().getId());
 		AdStaff staff = identityService.findStaffByIdentityNo(vo.getStaff().getIdentityNo());
 
-		if (isAppointmentExists(section, staff))
-			throw new IllegalArgumentException("Data appointment already exists! Please insert new data");
+		if (isAppointmentExists(section, staff)){
+			//throw new IllegalArgumentException("Data appointment already exists! Please insert new data");
 
+		System.out.println("Passed data");
+		return new ResponseEntity<String>("Duplicate", HttpStatus.OK);
+	} else {
+		
 		AdAppointment appointment = new AdAppointmentImpl();
 		appointment.setStatus(AdAppointmentStatus.get(vo.getAppointmentStatus().ordinal()));
 		// appointment.setStatus(AdAppointmentStatus.CONFIRMED);
@@ -947,6 +958,7 @@ public class TermController {
 		appointment.setStaff(identityService.findStaffById(vo.getStaff().getId()));
 		termService.addAppointment(section, appointment);
 		return new ResponseEntity<String>("Success", HttpStatus.OK);
+	}
 	}
 
 	@RequestMapping(value = "/sections/{canonicalCode}/appointments/{id}", method = RequestMethod.PUT)

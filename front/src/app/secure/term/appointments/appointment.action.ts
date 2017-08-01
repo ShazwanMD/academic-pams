@@ -76,7 +76,7 @@ export class AppointmentActions {
   addAppointmentSuccess(message): Action {
     return {
       type: AppointmentActions.ADD_APPOINTMENT_SUCCESS,
-      payload: message
+      payload: {status: message}
     };
   }
 

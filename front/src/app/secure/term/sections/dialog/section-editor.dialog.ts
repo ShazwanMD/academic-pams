@@ -1,12 +1,13 @@
 import {Component, OnInit, ViewContainerRef} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Store} from '@ngrx/store';
-import {MdDialogRef} from '@angular/material';
+import {MdDialogRef, MdSnackBar} from '@angular/material';
 import {TermModuleState} from '../../index';
 import {Section} from '../../../../shared/model/term/section.interface';
 import {SectionActions} from '../section.action';
 import {Offering} from '../../../../shared/model/term/offering.interface';
 import {ActivatedRoute, Router} from '@angular/router';
+import { Observable } from "rxjs/Observable";
 
 @Component({
   selector: 'pams-section-editor',
@@ -15,6 +16,9 @@ import {ActivatedRoute, Router} from '@angular/router';
 
 export class SectionEditorDialog implements OnInit {
 
+  private SECTION: string[] = 'termModuleState.section'.split('.');
+  private section$: Observable<Section[]>;
+    
   private _section: Section;
   private _offering: Offering;
   private editorForm: FormGroup;
@@ -25,8 +29,11 @@ export class SectionEditorDialog implements OnInit {
               private formBuilder: FormBuilder,
               private store: Store<TermModuleState>,
               private actions: SectionActions,
+              private snackBar: MdSnackBar,
               private dialog: MdDialogRef<SectionEditorDialog>,
               private viewContainerRef: ViewContainerRef) {
+      
+      this.section$ = this.store.select(...this.SECTION);
   }
 
   set offering(value: Offering) {
@@ -61,10 +68,29 @@ export class SectionEditorDialog implements OnInit {
     section.canonicalCode = this._offering.canonicalCode + '' + section.ordinal;
     section.code = this._offering.code + '' + section.ordinal;
 
-    if (!section.id)
+    if (!section.id){
+        
+      
       this.store.dispatch(this.actions.addSection(this._offering, section));
-    else this.store.dispatch(this.actions.updateSection(this._offering, section));
-    this.dialog.close();
+      this.dialog.close();
+      
+      this.section$.subscribe(val => console.log('Accumulated object:', val));
+      this.section$.subscribe(val => { window.alert('Duplicate data');});
+      
+      /*this.section$.subscribe(val => {
+          if(val['status']== 'Duplicate'){
+              
+              let snackBarRef = this.snackBar.open('Duplicate data!  Please insert new data', '', {duration:5000});
+              snackBarRef.afterDismissed().subscribe(() => {console.log('The snack-bar was dismissed'); }); 
+              
+          }
+      }*/
+      
+    } else { 
+     
+      this.store.dispatch(this.actions.updateSection(this._offering, section));
+      this.dialog.close();
 
-  }
+    }  
+   }
 }
