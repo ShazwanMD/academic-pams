@@ -59,6 +59,42 @@ export class CurriculumActions {
     };
   }
 
+  static FIND_SUBJECTS_BY_CURRICULUM_AND_SUBJECT_TYPE_CORE= '[Curriculum] Find Subject By Curriculum and Subject Core Type';
+
+  findSubjectsByCurriculumAndSubjectCoreType(curriculum): Action {
+    return {
+      type: CurriculumActions.FIND_SUBJECTS_BY_CURRICULUM_AND_SUBJECT_TYPE_CORE,
+      payload: curriculum,
+    };
+  }
+
+  static FIND_SUBJECTS_BY_CURRICULUM_AND_SUBJECT_TYPE_CORE_SUCCESS = '[Curriculum] Find Subject By Curriculum and Subject Core Type Success';
+
+  findSubjectsByCurriculumAndSubjectCoreTypeSuccess(subjects): Action {
+    return {
+      type: CurriculumActions.FIND_SUBJECTS_BY_CURRICULUM_AND_SUBJECT_TYPE_CORE_SUCCESS,
+      payload: subjects,
+    };
+  }
+
+    static FIND_SUBJECTS_BY_CURRICULUM_AND_SUBJECT_TYPE_ELECTIVE= '[Curriculum] Find Subject By Curriculum and Subject Elective Type';
+
+  findSubjectsByCurriculumAndSubjectElectiveType(curriculum): Action {
+    return {
+      type: CurriculumActions.FIND_SUBJECTS_BY_CURRICULUM_AND_SUBJECT_TYPE_ELECTIVE,
+      payload: curriculum,
+    };
+  }
+
+  static FIND_SUBJECTS_BY_CURRICULUM_AND_SUBJECT_TYPE_ELECTIVE_SUCCESS = '[Curriculum] Find Subject By Curriculum and Subject Elective Type Success';
+
+  findSubjectsByCurriculumAndSubjectElectiveTypeSuccess(subjects): Action {
+    return {
+      type: CurriculumActions.FIND_SUBJECTS_BY_CURRICULUM_AND_SUBJECT_TYPE_ELECTIVE_SUCCESS,
+      payload: subjects,
+    };
+  }
+
   static SAVE_CURRICULUM = '[Curriculum] Save Curriculum';
 
   saveCurriculum(curriculum): Action {
@@ -178,7 +214,7 @@ export class CurriculumActions {
 
   static ADD_BUNDLE_SUBJECT_SUCCESS = '[Subject] Add Bundle Subject Success';
 
-  addBundleSubjecttSuccess(message): Action {
+  addBundleSubjectSuccess(message): Action {
     return {
       type: CurriculumActions.ADD_BUNDLE_SUBJECT_SUCCESS,
       payload: message

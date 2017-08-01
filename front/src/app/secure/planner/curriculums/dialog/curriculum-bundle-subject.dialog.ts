@@ -27,15 +27,14 @@ export class CurriculumBundleSubjectDialog implements OnInit {
   private _curriculum: Curriculum;
   private _bundleSubject: BundleSubject;
   private _bundleSubjectPart: BundleSubjectPart;
-  private bundleSubjectPartDialogRef: MdDialogRef<CurriculumBundleSubjectPartDialog>;
-  private bundleSubjectDialogRef: MdDialogRef<CurriculumBundleSubjectDialog>;
 
   constructor(private formBuilder: FormBuilder,
               private store: Store<PlannerModuleState>,
               private actions: CurriculumActions,
               private router: Router,
               private vcf: ViewContainerRef,
-              private route: ActivatedRoute,private dialog: MdDialog,) {
+              private route: ActivatedRoute,
+              private bundleSubjectDialogRef: MdDialogRef<CurriculumBundleSubjectDialog>,) {
   }
 
   set curriculum(value: Curriculum) {
@@ -55,11 +54,10 @@ export class CurriculumBundleSubjectDialog implements OnInit {
   ngOnInit(): void {
     this.creatorForm = this.formBuilder.group({
       id: undefined,
+      type: 'single',
       ordinal: 0,
-      subjectType: SubjectType.CORE,
+      subjectType: SubjectType.ELECTIVE,
       course: <Course>{},
-      // course1:<Course>{},
-      curriculum: <Curriculum>{},
     });
 
     this.creatorForm.patchValue({'curriculum': this._curriculum});
@@ -70,22 +68,9 @@ export class CurriculumBundleSubjectDialog implements OnInit {
   submit(bundleSubject: BundleSubject, isValid: boolean): void {
     console.log('adding Bundle Subject');
     this.store.dispatch(this.actions.addBundleSubject(this._curriculum, bundleSubject));
-    console.log('adding Subject jju' + this._curriculum);
+    console.log('adding Subject jju' + this._curriculum.code);
+    console.log('adding Subject jju' + this.bundleSubject.ordinal);
     this.bundleSubjectDialogRef.close();
-  }
-
-    showBundleSubjectPartDialog(bundleSubjectPart: BundleSubjectPart) {
-    let config: MdDialogConfig = new MdDialogConfig();
-    config.viewContainerRef = this.vcf;
-    config.role = 'dialog';
-    config.width = '50%';
-    config.height = '60%';
-    config.position = {top: '65px'};
-    this.bundleSubjectPartDialogRef = this.dialog.open(CurriculumBundleSubjectPartDialog, config);
-    this.bundleSubjectPartDialogRef.componentInstance.curriculum = this._curriculum;
-    this.bundleSubjectPartDialogRef.afterClosed().subscribe((res) => {
-      // no op
-    });
   }
     
   }

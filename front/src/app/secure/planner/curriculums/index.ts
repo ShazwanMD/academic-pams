@@ -8,6 +8,7 @@ import {CurriculumSingleSubjectDialog} from './dialog/curriculum-single-subject.
 import {CurriculumActionComponent} from './component/curriculum-action.component';
 import {CurriculumSelectComponent} from './component/curriculum-select.component';
 import {CurriculumSubjectListComponent} from './component/curriculum-subject-list.component';
+import {CurriculumBundleSubjectListComponent} from './component/curriculum-bundle-subject-list.component';
 import '@ngrx/core/add/operator/select';
 import {appRoutes, appRoutingProviders} from '../../../app.routes';
 import {ModuleWithProviders, NgModule} from '@angular/core';
@@ -56,6 +57,7 @@ import {SubjectTypeSelectComponent} from './component/subject-type-select.compon
     SingleSubjectComponent,
     BundleSubjectComponent,
     SubjectTypeSelectComponent,
+    CurriculumBundleSubjectListComponent,
 
     // dialog
     CurriculumEditorDialog,
@@ -63,6 +65,7 @@ import {SubjectTypeSelectComponent} from './component/subject-type-select.compon
     CurriculumSingleSubjectDialog,
     CurriculumBundleSubjectDialog,
     CurriculumBundleSubjectPartDialog,
+    
   ],
   exports: [
     CurriculumSelectComponent,
@@ -81,6 +84,7 @@ import {SubjectTypeSelectComponent} from './component/subject-type-select.compon
     CurriculumBundleSubjectDialog,
     CurriculumBundleSubjectPartDialog,
     SubjectTypeSelectComponent,
+    CurriculumBundleSubjectListComponent,
   ],
 })
 

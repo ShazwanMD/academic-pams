@@ -1,3 +1,4 @@
+import {BundleSubject} from '../../../shared/model/planner/bundle-subject.interface';
 import {SingleSubject} from '../../../shared/model/planner/single-subject.interface';
 import {CurriculumEditorDialog} from './dialog/curriculum-editor.dialog';
 import {MdDialogConfig, MdDialogRef} from '@angular/material/dialog';
@@ -21,13 +22,15 @@ export class CurriculumDetailPage implements OnInit {
   private CURRICULUM: string[] = 'plannerModuleState.curriculum'.split('.');
   private SUBJECTS: string[] = 'plannerModuleState.subjects'.split('.');
   private SINGLE_SUBJECT: string[] = 'plannerModuleState.singleSubjects'.split('.');
+  private BUNDLE_SUBJECT: string[] = 'plannerModuleState.bundleSubjects$'.split('.');
   private curriculum$: Observable<Curriculum>;
   private subjects$: Observable<Subject[]>;
   private singleSubject$: Observable<SingleSubject[]>;
+  private bundleSubject$: Observable<BundleSubject[]>;
   private editorDialogRef: MdDialogRef<CurriculumEditorDialog>;
 
   @Input() curriculum: Curriculum;
-
+  
   constructor(private router: Router,
               private route: ActivatedRoute,
               private actions: CurriculumActions,
@@ -39,6 +42,7 @@ export class CurriculumDetailPage implements OnInit {
     this.curriculum$ = this.store.select(...this.CURRICULUM);
     this.subjects$ = this.store.select(...this.SUBJECTS);
     this.singleSubject$ = this.store.select(...this.SINGLE_SUBJECT);
+    this.bundleSubject$= this.store.select(...this.BUNDLE_SUBJECT);
   }
 
   ngOnInit(): void {

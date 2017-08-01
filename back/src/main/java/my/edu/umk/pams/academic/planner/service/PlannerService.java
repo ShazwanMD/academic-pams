@@ -328,4 +328,6 @@ public interface PlannerService {
     
     void saveAcademicYear(AdAcademicYear year);
 
+	List<AdSubject> findSubjectsBySubjectType(AdCurriculum curriculum, AdSubjectType subjectType);
+
 }
