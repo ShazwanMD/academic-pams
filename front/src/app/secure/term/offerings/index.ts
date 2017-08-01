@@ -38,6 +38,8 @@ import {LecturerOfferingDetailPage} from './lecturer-offering-detail.page';
 import {LecturerOfferingActionComponent} from './component/lecturer-offering-action.component';
 import {LecturerOfferingSectionListComponent} from './component/lecturer-offering-section-list.component';
 import {NotificationService} from '../../../../services/notification.service';
+import { ModalModule } from "angular2-modal/src/angular2-modal";
+import { BootstrapModalModule } from "angular2-modal/plugins/bootstrap/src/bootstrap";
 
 @NgModule({
   imports: [
@@ -97,7 +99,9 @@ import {NotificationService} from '../../../../services/notification.service';
     GpaCalculateDialog,
     GradebookComponent,
 
-  ]
+  ],
+
+  
 })
 
 export class OfferingSubModule {

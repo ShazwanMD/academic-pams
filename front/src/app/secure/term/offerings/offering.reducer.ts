@@ -11,6 +11,9 @@ export function offeringReducer(state = initialState, action: Action): OfferingS
     case OfferingActions.FIND_OFFERING_BY_CANONICAL_CODE_SUCCESS: {
       return action.payload;
     }
+    case OfferingActions.SAVE_OFFERING_SUCCESS: {
+        return action.payload;
+      }
     default: {
       return state;
     }

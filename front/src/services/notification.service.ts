@@ -30,7 +30,7 @@ export class NotificationService {
     snackBarRef.afterDismissed().subscribe(() => {
         console.log('The snack-bar was dismissed');
         
-        window.location.reload();
+       // window.location.reload();
       });
     
     return Observable.of();

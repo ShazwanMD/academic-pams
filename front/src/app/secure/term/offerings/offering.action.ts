@@ -113,7 +113,7 @@ export class OfferingActions {
     console.log("success here in offering");
     return {
       type: OfferingActions.SAVE_OFFERING_SUCCESS,
-      payload: offering
+      payload: {status: offering}
 
     };
   }

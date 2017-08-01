@@ -71,12 +71,7 @@ export class OfferingEffects {
     .map((offering) => this.offeringActions.saveOfferingSuccess(offering))
     .mergeMap((action) => from([action, this.offeringActions.findOfferings()]))
     .catch((error) => this.notificationService.showError(error));
-   /* .finally(() => { 
-        console.log('Before entering router');
-        this.router.navigate(['/secure/term/offerings']);
-        console.log('After entering router');    
-    
-    });*/
+   
        
   @Effect() updateOfferings$ = this.actions$
     .ofType(OfferingActions.UPDATE_OFFERING)
