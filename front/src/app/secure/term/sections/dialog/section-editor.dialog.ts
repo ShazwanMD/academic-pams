@@ -48,7 +48,10 @@ export class SectionEditorDialog implements OnInit {
   }
 
   ngOnInit(): void {
-    this.editorForm = this.formBuilder.group({
+      
+      //this.store.dispatch(this.actions.findSections());   
+      
+      this.editorForm = this.formBuilder.group({
       id: undefined,
       code: '',
       canonicalCode: '',
@@ -69,21 +72,17 @@ export class SectionEditorDialog implements OnInit {
     section.code = this._offering.code + '' + section.ordinal;
 
     if (!section.id){
-        
-      
+    
       this.store.dispatch(this.actions.addSection(this._offering, section));
+      this.section$.subscribe( val => console.log( 'Accumulated object section:', val['status'] ) );
       this.dialog.close();
-      
-     //start
+         
+     //start subscribe
       this.section$.subscribe(val => {
           if(val['status']== 'Duplicate'){
-              
-              let snackBarRef = this.snackBar.open('Duplicate data: ' + section.code + ' Please insert new data', '', {duration:3000});
-              snackBarRef.afterDismissed().subscribe(() => {
-              console.log('The snack-bar was dismissed');
-              console.log('Accumulated object:', val)
-              val['status'] = '';
-             }); 
+             console.log('Accumulated object:', val) 
+             window.alert('Duplicate new data');
+             
               
           }else{
               if(val['status']== 'success'){
@@ -96,7 +95,7 @@ export class SectionEditorDialog implements OnInit {
       
       
       );
-     //end
+     //end subscribe
      
       
     } else { 

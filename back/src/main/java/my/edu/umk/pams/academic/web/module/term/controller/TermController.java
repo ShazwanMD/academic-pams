@@ -685,12 +685,13 @@ public class TermController {
 	@RequestMapping(value = "/offerings/{canonicalCode}/assessments", method = RequestMethod.POST)
 	public ResponseEntity<String> addAssessment(@PathVariable String canonicalCode, @RequestBody Assessment vo) {
 		dummyLogin();
-		LOG.debug("assessment:{}", vo);
-		LOG.debug("Offering Canonical:{}", canonicalCode);
-
-		if (isAssessmentExists(vo.getCanonicalCode()))
-			throw new IllegalArgumentException("Data assessment already exists! Please insert new data");
-
+		
+		if (isAssessmentExists(vo.getCanonicalCode())){
+			//throw new IllegalArgumentException("Data assessment already exists! Please insert new data");
+			System.out.println("Passed data");
+		return new ResponseEntity<String>("Duplicate", HttpStatus.OK);
+	  } else {
+ 	 		
 		AdOffering offering = termService.findOfferingByCanonicalCode(canonicalCode);
 		AdAssessment assessment = new AdAssessmentImpl();
 		assessment.setCode(vo.getCode());
@@ -703,8 +704,9 @@ public class TermController {
 		assessment.setCategory(AdAssessmentCategory.get(vo.getAssessmentCategory().ordinal()));
 		assessment.setOffering(termService.findOfferingById(vo.getOffering().getId()));
 		termService.addAssessment(offering, assessment);
-		return new ResponseEntity<String>("Success", HttpStatus.OK);
+		return new ResponseEntity<String>("success", HttpStatus.OK);
 	}
+}
 
 	@RequestMapping(value = "/offerings/{canonicalCode}/assessments/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<String> deleteAssessment(@PathVariable String canonicalCode, @PathVariable Long id) {
@@ -720,15 +722,14 @@ public class TermController {
 	@RequestMapping(value = "/offerings/{canonicalCode}/sections", method = RequestMethod.POST)
 	public ResponseEntity<String> addSection(@PathVariable String canonicalCode, @RequestBody Section vo) {
 		dummyLogin();
-
-		LOG.debug("adding section code: {}", vo.getCode());
-		LOG.debug("adding section canonical code: {}", vo.getCanonicalCode());
-
-		if (isSectionExists(vo.getCanonicalCode())){
-		System.out.println("Passed data");
-		return new ResponseEntity<String>("Duplicate", HttpStatus.OK);
 		
-	} else { 
+		System.out.println("Before checking isExist");
+		
+		if (isSectionExists(vo.getCanonicalCode())) {
+			System.out.println("Duplicate section");
+			// throw new IllegalArgumentException("Data offering already exists!.Please insert new data");
+			return new ResponseEntity<String>("Duplicate", HttpStatus.OK);
+		} else {
 		
 		AdOffering offering = termService.findOfferingByCanonicalCode(canonicalCode);
 		AdSection section = new AdSectionImpl();
@@ -738,7 +739,7 @@ public class TermController {
 		section.setOrdinal(vo.getOrdinal());
 		section.setOffering(termService.findOfferingById(vo.getOffering().getId()));
 		termService.addSection(offering, section);
-		return new ResponseEntity<String>("Success", HttpStatus.OK);
+		return new ResponseEntity<String>("success", HttpStatus.OK);
 	}
 }
 
@@ -747,7 +748,8 @@ public class TermController {
 		dummyLogin();
 		
 		if (isOfferingExists(vo.getCanonicalCode())) {
-			System.out.println("Passed data");
+			System.out.println("Passed data:Duplicate");
+			
 			// throw new IllegalArgumentException("Data offering already exists!.Please insert new data");
 			return new ResponseEntity<String>("Duplicate", HttpStatus.OK);
 		} else {
@@ -785,7 +787,6 @@ public class TermController {
 	private boolean isAssessmentExists(String canonicalCode) {
 		System.out.println(termService.isAssessmentExists(canonicalCode));
 		return termService.isAssessmentExists(canonicalCode);
-
 	}
 
 	// isAppointmentExists
@@ -946,9 +947,8 @@ public class TermController {
 		AdStaff staff = identityService.findStaffByIdentityNo(vo.getStaff().getIdentityNo());
 
 		if (isAppointmentExists(section, staff)){
-			//throw new IllegalArgumentException("Data appointment already exists! Please insert new data");
-
-		System.out.println("Passed data");
+		//throw new IllegalArgumentException("Data appointment already exists! Please insert new data");
+		System.out.println("Passed data:Duplicate appointment");
 		return new ResponseEntity<String>("Duplicate", HttpStatus.OK);
 	} else {
 		
@@ -958,7 +958,7 @@ public class TermController {
 		appointment.setSection(section);
 		appointment.setStaff(identityService.findStaffById(vo.getStaff().getId()));
 		termService.addAppointment(section, appointment);
-		return new ResponseEntity<String>("Success", HttpStatus.OK);
+		return new ResponseEntity<String>("success", HttpStatus.OK);
 	}
 	}
 

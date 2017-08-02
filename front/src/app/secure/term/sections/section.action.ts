@@ -182,7 +182,7 @@ export class SectionActions {
     addSectionSuccess( message ): Action {
         return {
             type: SectionActions.ADD_SECTION_SUCCESS,
-            payload: { status: message }
+            payload: {status: message}
         };
     }
 

@@ -466,11 +466,11 @@ export class TermService {
   }
 
   addSection(offering: Offering, section: Section): Observable<String> {
-    console.log('addSection:' + section);
+    console.log('addSection:' + section.canonicalCode);
     console.log('offering:' + offering.canonicalCode);
     return this._http.post(this.TERM_API + '/offerings/' + offering.canonicalCode + '/sections', JSON.stringify(section))
-      .flatMap((res: Response) => Observable.of(res.text()))
-      .catch((error) => this.handleError(error));
+      .flatMap((res: Response) => Observable.of(res.text()));
+      //.catch((error) => this.handleError(error));
   }
 
   deleteSection(offering: Offering, section: Section) {
