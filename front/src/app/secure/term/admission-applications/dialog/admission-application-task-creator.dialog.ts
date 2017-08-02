@@ -8,6 +8,7 @@ import {AdmissionApplication} from '../../../../shared/model/term/admission-appl
 import {TermModuleState} from '../../index';
 import {AcademicSession} from '../../../../shared/model/planner/academic-session.interface';
 import {Student} from '../../../../shared/model/identity/student.interface';
+import { Observable } from "rxjs/Observable";
 
 @Component({
   selector: 'pams-admission-application-task-creator',
@@ -16,10 +17,14 @@ import {Student} from '../../../../shared/model/identity/student.interface';
 
 export class AdmissionApplicationTaskCreatorDialog implements OnInit {
 
+  private ADMISSION_APPLICATION: string[] = 'termModuleState.admissionApplication'.split('.');
+  private admissionApplication$: Observable<AdmissionApplication[]>;
+    
   private createForm: FormGroup;
   private _academicSession: AcademicSession;
   private _student: Student;
   private create: boolean = false;
+  
 
   constructor(private formBuilder: FormBuilder,
               private store: Store<TermModuleState>,
@@ -27,6 +32,8 @@ export class AdmissionApplicationTaskCreatorDialog implements OnInit {
               private router: Router,
               private route: ActivatedRoute,
               private dialog: MdDialogRef<AdmissionApplicationTaskCreatorDialog>) {
+      
+      this.admissionApplication$ = this.store.select(...this.ADMISSION_APPLICATION);
   }
 
   ngOnInit(): void {
@@ -48,6 +55,9 @@ export class AdmissionApplicationTaskCreatorDialog implements OnInit {
     // setup description
     admissionApplication.description = admissionApplication.student.identityNo + ' ' + admissionApplication.academicSession.code;
     this.store.dispatch(this.actions.startAdmissionApplicationTask(admissionApplication));
+    
     this.dialog.close();
+    window.alert('Save new data');
+    this.admissionApplication$.subscribe( val => console.log( 'Accumulated object admissionApplication$:', val['status'] ) );
   }
 }

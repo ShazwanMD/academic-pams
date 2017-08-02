@@ -238,6 +238,7 @@ public class TermController {
 			//throw new IllegalArgumentException("Data admission already exists! Please insert new data");
 
 			System.out.println("Passed data");
+			System.out.println("Duplicate admission: "+ student.getName());
 		return new ResponseEntity<String>("Duplicate", HttpStatus.OK);
 	} else {
 			
@@ -255,6 +256,8 @@ public class TermController {
 		application.setRemoveComment(vo.getRemoveComment());
 		application.setSourceNo(vo.getSourceNo());
 		String referenceNo = termService.startAdmissionApplicationTask(application);
+		
+		System.out.println("Success save data: " + student.getName());
 		return new ResponseEntity<String>(referenceNo, HttpStatus.OK);
 	}
 	}
