@@ -22,11 +22,11 @@ export class CurriculumDetailPage implements OnInit {
   private CURRICULUM: string[] = 'plannerModuleState.curriculum'.split('.');
   private SUBJECTS: string[] = 'plannerModuleState.subjects'.split('.');
   private SINGLE_SUBJECT: string[] = 'plannerModuleState.singleSubjects'.split('.');
-  private BUNDLE_SUBJECT: string[] = 'plannerModuleState.bundleSubjects$'.split('.');
+  private BUNDLE_SUBJECT: string[] = 'plannerModuleState.bundleSubjects'.split('.');
   private curriculum$: Observable<Curriculum>;
   private subjects$: Observable<Subject[]>;
-  private singleSubject$: Observable<SingleSubject[]>;
-  private bundleSubject$: Observable<BundleSubject[]>;
+  private singleSubjects$: Observable<Subject[]>;
+  private bundleSubjects$: Observable<Subject[]>;
   private editorDialogRef: MdDialogRef<CurriculumEditorDialog>;
 
   @Input() curriculum: Curriculum;
@@ -40,18 +40,15 @@ export class CurriculumDetailPage implements OnInit {
               private snackBar: MdSnackBar) {
 
     this.curriculum$ = this.store.select(...this.CURRICULUM);
-    this.subjects$ = this.store.select(...this.SUBJECTS);
-    this.singleSubject$ = this.store.select(...this.SINGLE_SUBJECT);
-    this.bundleSubject$= this.store.select(...this.BUNDLE_SUBJECT);
+    this.subjects$ = this.store.select(...this.SUBJECTS);    
+    this.singleSubjects$ = this.store.select(...this.SINGLE_SUBJECT);
+    this.bundleSubjects$= this.store.select(...this.BUNDLE_SUBJECT);
   }
 
   ngOnInit(): void {
     this.route.params.subscribe((params: { code: string}) => {
       let code: string = params.code;
-    //  let curriculum:string = params.curriculum;
       this.store.dispatch(this.actions.findCurriculumByCode(code));
-     // this.store.dispatch(this.actions.findSubjectsByCurriculumAndSubjectCoreType(curriculum));
-     // this.store.dispatch(this.actions.findSubjectsByCurriculumAndSubjectElectiveType(curriculum));
 
     });
   }
@@ -76,8 +73,5 @@ export class CurriculumDetailPage implements OnInit {
     this.router.navigate(['/curriculums']);
   }
 
-  filter(): void {
-    // no op
-  }
 }
 

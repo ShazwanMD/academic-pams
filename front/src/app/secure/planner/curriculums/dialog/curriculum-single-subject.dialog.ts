@@ -12,7 +12,7 @@ import {CurriculumActions} from '../curriculum.action';
 import {SubjectType} from '../../../../shared/model/planner/subject-type.enum';
 
 @Component({
-  selector: 'pams-curriculum-single-subject',
+  selector: 'pams-curriculum-single-subject-dialog',
   templateUrl: './curriculum-single-subject.dialog.html',
 })
 

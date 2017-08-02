@@ -16,3 +16,26 @@ export function curriculumSubjectListReducer(state = initialState, action: Actio
     }
   }
 }
+
+export function curriculumSingleSubjectListReducer(state = initialState, action: Action): CurriculumSubjectListState {
+    switch (action.type) {
+      case CurriculumActions.FIND_SUBJECTS_BY_CURRICULUM_AND_SUBJECT_TYPE_CORE_SUCCESS: {
+        return action.payload;
+      }
+      default: {
+        return state;
+      }
+    }
+  }
+
+export function curriculumBundleSubjectListReducer(state = initialState, action: Action): CurriculumSubjectListState {
+    switch (action.type) {
+      case CurriculumActions.FIND_SUBJECTS_BY_CURRICULUM_AND_SUBJECT_TYPE_ELECTIVE_SUCCESS: {
+        return action.payload;
+      }
+      default: {
+        return state;
+      }
+    }
+  }
+

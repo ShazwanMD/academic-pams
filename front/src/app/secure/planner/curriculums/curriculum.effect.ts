@@ -29,7 +29,6 @@ export class CurriculumEffects {
     .switchMap((code) => this.plannerService.findCurriculumByCode(code))
     .map((curriculum) => this.curriculumActions.findCurriculumByCodeSuccess(curriculum))
     .mergeMap((action) => from([action,
-      this.curriculumActions.findSubjectsByCurriculum(action.payload),
       this.curriculumActions.findSubjectsByCurriculumAndSubjectCoreType(action.payload),
       this.curriculumActions.findSubjectsByCurriculumAndSubjectElectiveType(action.payload),
     ]));

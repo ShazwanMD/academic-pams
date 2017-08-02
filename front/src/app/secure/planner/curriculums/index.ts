@@ -85,6 +85,7 @@ import {SubjectTypeSelectComponent} from './component/subject-type-select.compon
     CurriculumBundleSubjectPartDialog,
     SubjectTypeSelectComponent,
     CurriculumBundleSubjectListComponent,
+    SingleSubjectComponent,
   ],
 })
 

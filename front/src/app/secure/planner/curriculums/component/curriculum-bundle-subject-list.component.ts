@@ -45,9 +45,6 @@ export class CurriculumBundleSubjectListComponent implements OnInit, OnChanges {
 
   @Input() curriculum: Curriculum;
   @Input() subjects: Subject[];
-  @Input() singleSubject: SingleSubject[];
-  @Input() bundleSubject: BundleSubject[];
-  @Input() bundleSubjectPart: BundleSubjectPart[];
 
   constructor(private router: Router,
               private route: ActivatedRoute,
