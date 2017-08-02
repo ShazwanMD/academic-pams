@@ -1,7 +1,9 @@
 package my.edu.umk.pams.academic.config;
 
 import org.apache.activemq.ActiveMQConnectionFactory;
+import org.apache.activemq.command.ActiveMQDestination;
 import org.apache.activemq.command.ActiveMQQueue;
+import org.apache.activemq.command.ActiveMQTopic;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
@@ -38,13 +40,13 @@ public class JmsConfig {
     }
 
     private class DestinationExpressionFunction implements Function<GenericMessage, Object> {
-        private final Map<String, ActiveMQQueue> queueMap;
+        private final Map<String, ActiveMQDestination> queueMap;
 
         // map to queue or topic
         public DestinationExpressionFunction() {
             queueMap = new HashMap<>();
             queueMap.put(ProgramCodePayload.class.getName(), new ActiveMQQueue("programCodeQueue"));
-            queueMap.put(FacultyCodePayload.class.getName(), new ActiveMQQueue("facultyCodeQueue"));
+            queueMap.put(FacultyCodePayload.class.getName(), new ActiveMQTopic("facultyCodeTopic"));
             queueMap.put(CandidatePayload.class.getName(), new ActiveMQQueue("candidateQueue"));
         }
 
