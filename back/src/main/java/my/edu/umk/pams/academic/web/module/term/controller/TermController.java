@@ -743,8 +743,7 @@ public class TermController {
 	@RequestMapping(value = "/offerings", method = RequestMethod.POST)
 	public ResponseEntity<String> saveOffering(@RequestBody Offering vo) {
 		dummyLogin();
-
-		LOG.debug("offering canonical code: " + vo.getCanonicalCode());
+		
 		if (isOfferingExists(vo.getCanonicalCode())) {
 			System.out.println("Passed data");
 			// throw new IllegalArgumentException("Data offering already exists!.Please insert new data");

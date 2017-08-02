@@ -51,7 +51,7 @@ import { BootstrapModalModule } from "angular2-modal/plugins/bootstrap/src/boots
     SectionSubModule.forRoot(),
     AcademicSessionSubModule.forRoot(),
     CovalentCoreModule.forRoot(),
-    EffectsModule.run(OfferingEffects),
+    //EffectsModule.run(OfferingEffects),
 
     PipeModule
   ],

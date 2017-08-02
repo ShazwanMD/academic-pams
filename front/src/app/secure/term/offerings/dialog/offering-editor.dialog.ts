@@ -36,7 +36,7 @@ export class OfferingEditorDialog implements OnInit {
   private OFFERINGS: string[] = 'termModuleState.offerings'.split('.');
   private OFFERING: string[] = 'termModuleState.offering'.split('.');
   private offerings$: Observable<Offering[]>;
-  private offering$: Observable<Offering[]>;
+  private offering: Observable<Offering[]>;
 
 
   courses = 
@@ -106,7 +106,7 @@ export class OfferingEditorDialog implements OnInit {
               public dialog: MdDialogRef<OfferingEditorDialog>) {
       
     this.offerings$ = this.store.select(...this.OFFERINGS);
-    this.offering$ = this.store.select(...this.OFFERING);
+    this.offering = this.store.select(...this.OFFERING);
     this.courses$ = this.store.select(...this.COURSES);
     
     this.courseCtrl = new FormControl();
@@ -135,7 +135,7 @@ export class OfferingEditorDialog implements OnInit {
       academicSession: [undefined, Validators.required],
       course: [undefined, Validators.required],
       program: [undefined, Validators.required],
-      courseCtrl: '',
+      //courseCtrl: '',
     });
   }
 
@@ -151,16 +151,23 @@ export class OfferingEditorDialog implements OnInit {
 
     this.store.dispatch(this.actions.saveOffering(this._program, this._course, offering));      
     this.dialog.close();
-    this.offering$.subscribe(val => console.log('Accumulated object:', val));
-    
-    this.offering$.subscribe(val => {
+      
+    this.offering.subscribe(val => {
         if(val['status']== 'Duplicate'){
             
-            let snackBarRef = this.snackBar.open('Duplicate data!  Please insert new data', '', {duration:5000});
+            let snackBarRef = this.snackBar.open('Duplicate data: ' + offering.code + ' Please insert new data', 'OK', {duration:5000});
             snackBarRef.afterDismissed().subscribe(() => {
             console.log('The snack-bar was dismissed');
+            console.log('Accumulated object:', val)
+            val['status'] = '';
            }); 
             
+        }else{
+            if(val['status']== 'success'){
+            window.alert('Success insert new data:');
+            console.log('Accumulated object:', val)
+            val['status'] = '';
+            }
         }
     }
     
