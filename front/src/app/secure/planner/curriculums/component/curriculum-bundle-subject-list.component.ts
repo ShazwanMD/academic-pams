@@ -29,9 +29,7 @@ import {Subject} from '../../../../shared/model/planner/subject.interface';
 export class CurriculumBundleSubjectListComponent implements OnInit, OnChanges {
 
   private selectedRows: Subject[];
-  private singleSubjectDialogRef: MdDialogRef<CurriculumSingleSubjectDialog>;
   private bundleSubjectDialogRef: MdDialogRef<CurriculumBundleSubjectDialog>;
-  private bundleSubjectPartDialogRef: MdDialogRef<CurriculumBundleSubjectPartDialog>;
 
   private columns: any[] = [
     {name: 'id', label: 'Id'},

@@ -94,36 +94,6 @@ export class CurriculumSubjectListComponent implements OnInit, OnChanges {
     });
 
   }
-
-  showBundleSubjectDialog(bundleSubject: BundleSubject): void {
-    let config: MdDialogConfig = new MdDialogConfig();
-    config.viewContainerRef = this.vcf;
-    config.role = 'dialog';
-    config.width = '50%';
-    config.height = '60%';
-    config.position = {top: '65px'};
-    this.bundleSubjectDialogRef = this.dialog.open(CurriculumBundleSubjectDialog, config);
-    this.bundleSubjectDialogRef.componentInstance.curriculum = this.curriculum;
-    this.bundleSubjectDialogRef.afterClosed().subscribe((res) => {
-      // no op
-    });
-
-  }
-
-  // showBundleSubjectPartDialog(bundleSubjectPart: BundleSubjectPart) {
-  //   let config: MdDialogConfig = new MdDialogConfig();
-  //   config.viewContainerRef = this.vcf;
-  //   config.role = 'dialog';
-  //   config.width = '50%';
-  //   config.height = '60%';
-  //   config.position = {top: '65px'};
-  //   this.bundleSubjectPartDialogRef = this.dialog.open(CurriculumBundleSubjectPartDialog, config);
-  //   this.bundleSubjectPartDialogRef.componentInstance.curriculum = this.curriculum;
-  //   this.bundleSubjectPartDialogRef.afterClosed().subscribe((res) => {
-  //     // no op
-  //   });
-  // }
-
   selectRow(subject: Subject): void {
   }
 

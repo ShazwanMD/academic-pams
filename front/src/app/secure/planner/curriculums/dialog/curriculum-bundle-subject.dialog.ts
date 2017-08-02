@@ -26,7 +26,6 @@ export class CurriculumBundleSubjectDialog implements OnInit {
   private _subject: Subject;
   private _curriculum: Curriculum;
   private _bundleSubject: BundleSubject;
-  private _bundleSubjectPart: BundleSubjectPart;
 
   constructor(private formBuilder: FormBuilder,
               private store: Store<PlannerModuleState>,
@@ -34,7 +33,7 @@ export class CurriculumBundleSubjectDialog implements OnInit {
               private router: Router,
               private vcf: ViewContainerRef,
               private route: ActivatedRoute,
-              private bundleSubjectDialogRef: MdDialogRef<CurriculumBundleSubjectDialog>,) {
+              private dialog: MdDialogRef<CurriculumBundleSubjectDialog>,) {
   }
 
   set curriculum(value: Curriculum) {
@@ -57,22 +56,18 @@ export class CurriculumBundleSubjectDialog implements OnInit {
       type: 'bundle',
       ordinal: 0,
       subjectType: SubjectType.ELECTIVE,
-      course: <Course>{},
+      bundleSubjectPart: <BundleSubjectPart>{},
+      course:<Course>{}
     });
 
-    this.creatorForm.patchValue({'curriculum': this._curriculum});
     if (this.create) this.creatorForm.patchValue(this._bundleSubject);
   }
 
 
   submit(bundleSubject: BundleSubject, isValid: boolean): void {
-    console.log('adding Bundle Subject');
+   
+    console.log('subject type: ' + bundleSubject.subjectType);
     this.store.dispatch(this.actions.addBundleSubject(this._curriculum, bundleSubject));
-    console.log('adding Subject jju' + this._curriculum.code);
-    console.log('adding Subject jju' + this.bundleSubject.ordinal);
-    this.bundleSubjectDialogRef.close();
+    this.dialog.close();
   }
-    
-  }
-
-
+}

@@ -87,8 +87,9 @@ export class CurriculumActions {
   }
 
   static FIND_SUBJECTS_BY_CURRICULUM_AND_SUBJECT_TYPE_ELECTIVE_SUCCESS = '[Curriculum] Find Subject By Curriculum and Subject Elective Type Success';
-
+  
   findSubjectsByCurriculumAndSubjectElectiveTypeSuccess(subjects): Action {
+    console.log("findSubjectsByCurriculumAndSubjectElectiveTypeSuccess");
     return {
       type: CurriculumActions.FIND_SUBJECTS_BY_CURRICULUM_AND_SUBJECT_TYPE_ELECTIVE_SUCCESS,
       payload: subjects,

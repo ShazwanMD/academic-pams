@@ -6,5 +6,4 @@ export enum SubjectType {
   LANGUAGE, // english
   CURRICULUM,// kokurikulum
   OTHERS
-
 }
