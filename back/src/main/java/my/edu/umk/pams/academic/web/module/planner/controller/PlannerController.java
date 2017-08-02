@@ -652,7 +652,7 @@ public class PlannerController {
     public ResponseEntity<List<Subject>> findSubjectsByCurriculumAndSubjectTypeCore(@PathVariable String code,@PathVariable String subjectType) throws UnsupportedEncodingException {
         AdCurriculum curriculum = plannerService.findCurriculumByCode(code);
         AdSubjectType subjType = AdSubjectType.valueOf(subjectType);
-        List<AdSubject> subjects = plannerService.findSubjectsBySubjectType(curriculum, subjType);
+        List<AdSubject> subjects = plannerService.findSubjectsByCurriculumAndSubjectTypeCore(curriculum, subjType);
         return new ResponseEntity<List<Subject>>(plannerTransformer.toSubjectVos(subjects), HttpStatus.OK);
     }
     
@@ -660,7 +660,7 @@ public class PlannerController {
     public ResponseEntity<List<Subject>> findSubjectsByCurriculumAndSubjectTypeElective(@PathVariable String code,@PathVariable String subjectType) throws UnsupportedEncodingException {
         AdCurriculum curriculum = plannerService.findCurriculumByCode(code);
         AdSubjectType subjType = AdSubjectType.valueOf(subjectType);
-        List<AdSubject> subjects = plannerService.findSubjectsBySubjectType(curriculum, subjType);
+        List<AdSubject> subjects = plannerService.findSubjectsByCurriculumAndSubjectTypeElective(curriculum, subjType);
         return new ResponseEntity<List<Subject>>(plannerTransformer.toSubjectVos(subjects), HttpStatus.OK);
     }
     
