@@ -3,18 +3,7 @@
   <form [formGroup]="createForm" novalidate>
     <div fxLayout fxLayout.xs="column" fxLayoutWrap fxLayoutGap="25px" class="inset">
     
-    <!-- start test -->
-   <md-input-container fxFlex="calc(100%-25px)" mdTooltip="For test autocomplete only...">
-  <input mdInput placeholder="Course Autocomplete" [mdAutocomplete]="auto" [formControl]="courseCtrl">
-</md-input-container>
-
-<md-autocomplete #auto="mdAutocomplete">
-  <md-option *ngFor="let course of courses$ | async" [value]="course.titleEn">
-   {{ course.code }} {{ course.titleEn }}
-  </md-option>
-</md-autocomplete> 
-    <!-- end test -->
-    
+      
       <md-input-container fxFlex="calc(100%-25px)" mdTooltip="Please insert capacity">
         <input mdInput placeholder="Capacity" formControlName="capacity" type="number"/>
       </md-input-container>
@@ -45,14 +34,23 @@
                                     [innerFormControl]="createForm.controls['academicSession']"
                                     fxFlex="calc(100%-25px)" class="pad-bottom">
       </pams-academic-session-select>
-      
-      
-     
-      
       <div class="tc-red-600"
            *ngIf="createForm.get('academicSession').invalid && createForm.get('academicSession').touched">
         Please add your academic session!
       </div>
+      
+       <!-- start test -->
+      <!--  <md-input-container fxFlex="calc(100%-25px)" mdTooltip="For test autocomplete only..."  >
+     <input mdInput placeholder="Course Autocomplete" [mdAutocomplete]="auto" [formControl]="courseCtrl" >
+     </md-input-container>
+
+     <md-autocomplete #auto="mdAutocomplete">
+    <md-option *ngFor="let course of courses$ | async" [value]="course.titleEn" disabled >
+      {{ course.code }} {{ course.titleEn }}
+      </md-option>
+</md-autocomplete>  -->
+    <!-- end test -->
+    
     </div>
 
     <div layout="row" layout-align="start center">
