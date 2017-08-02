@@ -46,9 +46,13 @@ export class CurriculumDetailPage implements OnInit {
   }
 
   ngOnInit(): void {
-    this.route.params.subscribe((params: { code: string }) => {
+    this.route.params.subscribe((params: { code: string}) => {
       let code: string = params.code;
+    //  let curriculum:string = params.curriculum;
       this.store.dispatch(this.actions.findCurriculumByCode(code));
+     // this.store.dispatch(this.actions.findSubjectsByCurriculumAndSubjectCoreType(curriculum));
+     // this.store.dispatch(this.actions.findSubjectsByCurriculumAndSubjectElectiveType(curriculum));
+
     });
   }
 

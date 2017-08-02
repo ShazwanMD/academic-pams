@@ -330,4 +330,8 @@ public interface PlannerService {
 
 	List<AdSubject> findSubjectsBySubjectType(AdCurriculum curriculum, AdSubjectType subjectType);
 
+	List<AdSubject> findSubjectsByCurriculumAndSubjectTypeCore (AdCurriculum curriculum, AdSubjectType subjectType);
+	
+	List<AdSubject> findSubjectsByCurriculumAndSubjectTypeElective  (AdCurriculum curriculum, AdSubjectType subjectType);
+
 }

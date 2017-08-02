@@ -54,7 +54,7 @@ export class CurriculumBundleSubjectDialog implements OnInit {
   ngOnInit(): void {
     this.creatorForm = this.formBuilder.group({
       id: undefined,
-      type: 'single',
+      type: 'bundle',
       ordinal: 0,
       subjectType: SubjectType.ELECTIVE,
       course: <Course>{},

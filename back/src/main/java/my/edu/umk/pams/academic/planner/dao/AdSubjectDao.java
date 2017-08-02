@@ -22,6 +22,10 @@ public interface AdSubjectDao extends GenericDao<Long, AdSubject> {
     AdSubject findSubjectsByCurriculum(AdCurriculum curriculum);
 
     List<AdSubject> find(AdCurriculum curriculum);
+    
+    List<AdSubject> findSubjectsByCurriculumAndSubjectTypeCore (AdCurriculum curriculum, AdSubjectType subjectType);
+    
+    List<AdSubject> findSubjectsByCurriculumAndSubjectTypeElective (AdCurriculum curriculum, AdSubjectType subjectType);
 
     List<AdSubject> findSubjects(AdSubjectType subjectType, AdCurriculum curriculum);
 

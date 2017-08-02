@@ -53,6 +53,39 @@ public List<AdSubject> find(AdCurriculum curriculum) {
     return (List<AdSubject>) query.list();
 }
 
+
+
+@Override
+public List<AdSubject> findSubjectsByCurriculumAndSubjectTypeCore(AdCurriculum curriculum, AdSubjectType subjectType) {
+    Session session = sessionFactory.getCurrentSession();
+    Query query = session.createQuery("select s from AdSubject s where " +
+            "s.curriculum = :curriculum " +
+            "and s.subjectType = :subjectType "+
+            "and s.metadata.state = :state");
+    query.setInteger("state", AdMetaState.ACTIVE.ordinal());
+    query.setEntity("curriculum", curriculum);
+    query.setInteger("subjectType", subjectType.ordinal());
+    query.setCacheable(true);
+    return (List<AdSubject>) query.list();
+}
+
+
+@Override
+public List<AdSubject> findSubjectsByCurriculumAndSubjectTypeElective(AdCurriculum curriculum, AdSubjectType subjectType) {
+    Session session = sessionFactory.getCurrentSession();
+    Query query = session.createQuery("select s from AdSubject s where " +
+            "s.curriculum = :curriculum " +
+            "and s.subjectType = :subjectType "+
+            "and s.metadata.state = :state");
+    query.setInteger("state", AdMetaState.ACTIVE.ordinal());
+    query.setEntity("curriculum", curriculum);
+    query.setInteger("subjectType", subjectType.ordinal());
+    query.setCacheable(true);
+    return (List<AdSubject>) query.list();
+}
+
+
+
 @Override
 public List<AdSubject> find(AdCurriculum curriculum,AdSubjectType subjectType) {
     Session session = sessionFactory.getCurrentSession();

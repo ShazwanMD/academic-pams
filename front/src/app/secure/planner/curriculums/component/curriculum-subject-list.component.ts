@@ -113,36 +113,18 @@ export class CurriculumSubjectListComponent implements OnInit, OnChanges {
 
   }
 
-  showBundleSubjectPartDialog(bundleSubjectPart: BundleSubjectPart) {
-    let config: MdDialogConfig = new MdDialogConfig();
-    config.viewContainerRef = this.vcf;
-    config.role = 'dialog';
-    config.width = '50%';
-    config.height = '60%';
-    config.position = {top: '65px'};
-    this.bundleSubjectPartDialogRef = this.dialog.open(CurriculumBundleSubjectPartDialog, config);
-    this.bundleSubjectPartDialogRef.componentInstance.curriculum = this.curriculum;
-    this.bundleSubjectPartDialogRef.afterClosed().subscribe((res) => {
-      // no op
-    });
-  }
-
-  //     editorDialog(): void {
-  //     console.log("edit");
-  //     console.log(this.curriculum);
-  //     let config = new MdDialogConfig();
-  //     config.viewContainerRef = this.vcf;
-  //     config.role = 'dialog';
-  //     config.width = '60%';
-  //     config.height = '50%';
-  //     config.position = {top: '0px'};
-  //     this.editorDialogRef = this.dialog.open(FacultyEditorDialog, config);
-  //     this.editorDialogRef.componentInstance.faculty = this.faculty;
-
-  //     // set
-  //     this.editorDialogRef.afterClosed().subscribe(res => {
-  //     console.log("close dialog");
-  //     });
+  // showBundleSubjectPartDialog(bundleSubjectPart: BundleSubjectPart) {
+  //   let config: MdDialogConfig = new MdDialogConfig();
+  //   config.viewContainerRef = this.vcf;
+  //   config.role = 'dialog';
+  //   config.width = '50%';
+  //   config.height = '60%';
+  //   config.position = {top: '65px'};
+  //   this.bundleSubjectPartDialogRef = this.dialog.open(CurriculumBundleSubjectPartDialog, config);
+  //   this.bundleSubjectPartDialogRef.componentInstance.curriculum = this.curriculum;
+  //   this.bundleSubjectPartDialogRef.afterClosed().subscribe((res) => {
+  //     // no op
+  //   });
   // }
 
   selectRow(subject: Subject): void {
@@ -150,43 +132,6 @@ export class CurriculumSubjectListComponent implements OnInit, OnChanges {
 
   selectAllRows(subject: Subject[]): void {
   }
-
-  // editDialog(subject: Subject, isValid: boolean): void {
-  //   console.log('Subject:{}', subject);
-  //   let config: MdDialogConfig = new MdDialogConfig();
-  //   config.viewContainerRef = this.vcf;
-  //   config.role = 'dialog';
-  //   config.width = '60%';
-  //   config.height = '40%';
-  //   config.position = {top: '0px'};
-  //   this.creatorDialogRef = this.dialog.open(SubjectCreatorDialog, config);
-  //   if (isValid) {
-  //     this.creatorDialogRef.componentInstance.subject = subject;
-  //     this.creatorDialogRef.componentInstance.curriculum = this.curriculum;
-
-  //   }
-  //   this.creatorDialogRef.afterClosed().subscribe((res) => {
-  //     console.log('close dialog section');
-  //     // load something here
-  //   });
-  // }
-
-  // addSubjectDialog(): void {
-  //   console.log('showDialog');
-  //   let config: MdDialogConfig = new MdDialogConfig();
-  //   config.viewContainerRef = this.vcf;
-  //   config.role = 'dialog';
-  //   config.width = '50%';
-  //   config.height = '80%';
-  //   config.position = {top: '0px'};
-  //   this.creatorDialogRef = this.dialog.open(SubjectCreatorDialog, config);
-  //   this.creatorDialogRef.componentInstance.curriculum = this.curriculum;
-  //   this.creatorDialogRef.afterClosed().subscribe((res) => {
-  //     console.log('close dialog');
-  //     // load something here
-  //   });
-  // }
-
   goBack(route: string): void {
     this.router.navigate(['/subjects']);
   }
