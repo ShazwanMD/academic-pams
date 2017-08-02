@@ -39,6 +39,6 @@ public class US_AD_PFL_1001 extends SpringScenarioTest<GivenIAmStudent, WhenIUpd
 //        		.and().I_review_mailing_address()
 //        		.and()
         		.test_countryCode();
-        then().mailing_address_updated();
+//        then().mailing_address_updated();
     }
 }
