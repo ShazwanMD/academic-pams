@@ -74,17 +74,30 @@ export class SectionEditorDialog implements OnInit {
       this.store.dispatch(this.actions.addSection(this._offering, section));
       this.dialog.close();
       
-      this.section$.subscribe(val => console.log('Accumulated object:', val));
-      this.section$.subscribe(val => { window.alert('Duplicate data');});
-      
-      /*this.section$.subscribe(val => {
+     //start
+      this.section$.subscribe(val => {
           if(val['status']== 'Duplicate'){
               
-              let snackBarRef = this.snackBar.open('Duplicate data!  Please insert new data', '', {duration:5000});
-              snackBarRef.afterDismissed().subscribe(() => {console.log('The snack-bar was dismissed'); }); 
+              let snackBarRef = this.snackBar.open('Duplicate data: ' + section.code + ' Please insert new data', '', {duration:3000});
+              snackBarRef.afterDismissed().subscribe(() => {
+              console.log('The snack-bar was dismissed');
+              console.log('Accumulated object:', val)
+              val['status'] = '';
+             }); 
               
+          }else{
+              if(val['status']== 'success'){
+              window.alert('Success insert new data:');
+              console.log('Accumulated object:', val)
+              val['status'] = '';
+              }
           }
-      }*/
+      }
+      
+      
+      );
+     //end
+     
       
     } else { 
      

@@ -75,7 +75,7 @@ export class EnrollmentApplicationCenterPage implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log('find assigned/pooled enrollment application tasks');
+    console.log('find assigned/pooled/archived enrollment application tasks');
     this.store.dispatch(this.actions.findAssignedEnrollmentApplicationTasks());
     this.store.dispatch(this.actions.findPooledEnrollmentApplicationTasks());
     this.store.dispatch(this.actions.findEnrollmentApplications());

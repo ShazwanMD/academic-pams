@@ -9,6 +9,7 @@ import {TermModuleState} from '../../index';
 @Component({
   selector: 'pams-gradebook-calculate',
   templateUrl: './gradebook-calculate.dialog.html',
+    
 })
 export class GradebookCalculateDialog {
 

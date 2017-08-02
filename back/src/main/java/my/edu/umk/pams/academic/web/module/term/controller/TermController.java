@@ -725,9 +725,11 @@ public class TermController {
 		LOG.debug("adding section canonical code: {}", vo.getCanonicalCode());
 
 		if (isSectionExists(vo.getCanonicalCode())){
-			System.out.println("Passed data");
+		System.out.println("Passed data");
 		return new ResponseEntity<String>("Duplicate", HttpStatus.OK);
+		
 	} else { 
+		
 		AdOffering offering = termService.findOfferingByCanonicalCode(canonicalCode);
 		AdSection section = new AdSectionImpl();
 		section.setCode(vo.getCode());

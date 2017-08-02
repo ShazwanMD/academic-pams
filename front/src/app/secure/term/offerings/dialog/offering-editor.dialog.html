@@ -2,7 +2,6 @@
 <md-dialog-content>
   <form [formGroup]="createForm" novalidate>
     <div fxLayout fxLayout.xs="column" fxLayoutWrap fxLayoutGap="25px" class="inset">
-    
       
       <md-input-container fxFlex="calc(100%-25px)" mdTooltip="Please insert capacity">
         <input mdInput placeholder="Capacity" formControlName="capacity" type="number"/>
@@ -41,24 +40,21 @@
       
        <!-- start test -->
       <!--  <md-input-container fxFlex="calc(100%-25px)" mdTooltip="For test autocomplete only..."  >
-     <input mdInput placeholder="Course Autocomplete" [mdAutocomplete]="auto" [formControl]="courseCtrl" >
+     <input  mdInput placeholder="Course Autocomplete" [mdAutocomplete]="auto" [formControl]="courseCtrl" >
      </md-input-container>
-
-     <md-autocomplete #auto="mdAutocomplete">
-    <md-option *ngFor="let course of courses$ | async" [value]="course.titleEn" disabled >
-      {{ course.code }} {{ course.titleEn }}
+     <md-autocomplete #auto="mdAutocomplete" >
+    <md-option *ngFor="let course of filteredCourses | async " [value]="course.code" class="app-searchbox-input">
+       {{ course.code }}&nbsp; - &nbsp; {{ course.titleEn }} 
       </md-option>
 </md-autocomplete>  -->
     <!-- end test -->
     
     </div>
-
     <div layout="row" layout-align="start center">
       <button md-raised-button color="accent" (click)="submit(createForm.value, createForm.valid)"
               [disabled]="!createForm.valid">
         Save
       </button>
     </div>
-
   </form>
 </md-dialog-content>

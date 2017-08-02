@@ -65,8 +65,8 @@ export class SectionEffects {
       .map((message) => this.sectionActions.addSectionSuccess(message))
       .withLatestFrom(this.store$.select(...this.OFFERING))
       .map((state) => state[1])
-      .map((offering: Offering) => this.offeringActions.findOfferingByCanonicalCode(offering.canonicalCode))
-      .catch((error) => this.notificationService.showError(error));
+      .map((offering: Offering) => this.offeringActions.findOfferingByCanonicalCode(offering.canonicalCode));
+      //.catch((error) => this.notificationService.showError(error));
   
   @Effect() deleteSection$ = this.actions$
     .ofType(SectionActions.REMOVE_SECTION)

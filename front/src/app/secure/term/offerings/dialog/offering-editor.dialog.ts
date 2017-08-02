@@ -11,10 +11,12 @@ import {TermModuleState} from '../../index';
 import {Observable} from 'rxjs/Observable';
 import { PlannerModuleState } from "../../../planner/index";
 import { CourseActions } from "../../../planner/courses/course.action";
+import { PlannerService } from "../../../../../services/planner.service";
 
 @Component({
   selector: 'pams-offering-editor',
   templateUrl: './offering-editor.dialog.html',
+  styleUrls: ['./autocomplete.css']
   
 })
 
@@ -25,6 +27,7 @@ export class OfferingEditorDialog implements OnInit {
     
   private COURSES: string[] = 'plannerModuleState.courses'.split('.');
   private courses$: Observable<Course[]>;
+
   //@Input() placeholder: string;
   //@Input() innerFormControl: FormControl;
 
@@ -37,69 +40,14 @@ export class OfferingEditorDialog implements OnInit {
   private OFFERING: string[] = 'termModuleState.offering'.split('.');
   private offerings$: Observable<Offering[]>;
   private offering: Observable<Offering[]>;
-
-
-  courses = 
-      [
-          'Alabama',
-          'Alaska',
-          'Arizona',
-          'Arkansas',
-          'California',
-          'Colorado',
-          'Connecticut',
-          'Delaware',
-          'Florida',
-          'Georgia',
-          'Hawaii',
-          'Idaho',
-          'Illinois',
-          'Indiana',
-          'Iowa',
-          'Kansas',
-          'Kentucky',
-          'Louisiana',
-          'Maine',
-          'Maryland',
-          'Massachusetts',
-          'Michigan',
-          'Minnesota',
-          'Mississippi',
-          'Missouri',
-          'Montana',
-          'Nebraska',
-          'Nevada',
-          'New Hampshire',
-          'New Jersey',
-          'New Mexico',
-          'New York',
-          'North Carolina',
-          'North Dakota',
-          'Ohio',
-          'Oklahoma',
-          'Oregon',
-          'Pennsylvania',
-          'Rhode Island',
-          'South Carolina',
-          'South Dakota',
-          'Tennessee',
-          'Texas',
-          'Utah',
-          'Vermont',
-          'Virginia',
-          'Washington',
-          'West Virginia',
-          'Wisconsin',
-          'Wyoming',
-        ];
-        
-      
-
+  private strListCourse: Course[];
+           
   constructor(private router: Router,
               private route: ActivatedRoute,
               private formBuilder: FormBuilder,
               private store: Store<TermModuleState>,
               private snackBar: MdSnackBar,
+              private plannerService: PlannerService,
               private actions: OfferingActions,
               private store2: Store<PlannerModuleState>,
               private actions2: CourseActions,
@@ -108,6 +56,8 @@ export class OfferingEditorDialog implements OnInit {
     this.offerings$ = this.store.select(...this.OFFERINGS);
     this.offering = this.store.select(...this.OFFERING);
     this.courses$ = this.store.select(...this.COURSES);
+  
+  
     
     this.courseCtrl = new FormControl();
     this.filteredCourses = this.courseCtrl.valueChanges
@@ -116,13 +66,21 @@ export class OfferingEditorDialog implements OnInit {
 
   }
   
+  
   filterCourses(val: string) {
-      return val ? this.courses.filter(s => s.toLowerCase().indexOf(val.toLowerCase()) === 0)
-                 : this.courses;
-    }
- 
-  ngOnInit(): void {
+      this.courses$.subscribe(data => {
+          this.strListCourse = data;
+         });
+      console.log("data account ", this.strListCourse.filter(s => s.titleEn.toLowerCase().indexOf(val.toLowerCase()) != -1));
+     // return val ? this.strListCourse.filter(s => (s.code + " " + s.titleEn).toLowerCase().indexOf(val.toLowerCase()) != -1) : this.strListCourse;
       
+      return val ? this.strListCourse.filter(s => (s.code + " " + s.titleEn).toLowerCase().indexOf(val.toLowerCase()) != -1) : this.strListCourse;
+      
+  }
+   
+  
+  ngOnInit(): void {
+    
     this.store.dispatch(this.actions2.findCourses());
       
     this.createForm = this.formBuilder.group({
@@ -135,8 +93,9 @@ export class OfferingEditorDialog implements OnInit {
       academicSession: [undefined, Validators.required],
       course: [undefined, Validators.required],
       program: [undefined, Validators.required],
-      //courseCtrl: '',
+      courseCtrl: '',
     });
+    
   }
 
   submit(offering: Offering, isValid: boolean): void {
@@ -155,24 +114,22 @@ export class OfferingEditorDialog implements OnInit {
     this.offering.subscribe(val => {
         if(val['status']== 'Duplicate'){
             
-            let snackBarRef = this.snackBar.open('Duplicate data: ' + offering.code + ' Please insert new data', 'OK', {duration:5000});
+            let snackBarRef = this.snackBar.open('Duplicate data: ' + offering.code + ' Please insert new data', '', {duration:3000});
             snackBarRef.afterDismissed().subscribe(() => {
             console.log('The snack-bar was dismissed');
             console.log('Accumulated object:', val)
             val['status'] = '';
            }); 
             
-        }else{
+        } else {
             if(val['status']== 'success'){
             window.alert('Success insert new data:');
             console.log('Accumulated object:', val)
             val['status'] = '';
             }
         }
-    }
-    
-    
-    );
+    } 
+  );
   
    }
 }
