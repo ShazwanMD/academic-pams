@@ -54,8 +54,8 @@ export class AcademicSessionEffects {
     .map((action) => action.payload)
     .switchMap((academicSession) => this.plannerService.saveAcademicSession(academicSession))
     .map((message) => this.academicSessionActions.saveAcademicSessionSuccess(message))
-    .mergeMap((action) => from([action, this.academicSessionActions.findAcademicSessions()]))
-    .catch((error) => this.notificationService.showError(error));
+    .mergeMap((action) => from([action, this.academicSessionActions.findAcademicSessions()]));
+    //.catch((error) => this.notificationService.showError(error));
 
   @Effect() updateAcademicSession$ = this.actions$
     .ofType(AcademicSessionActions.UPDATE_ACADEMIC_SESSION)

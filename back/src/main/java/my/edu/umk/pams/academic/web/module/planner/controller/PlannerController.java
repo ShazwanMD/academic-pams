@@ -89,6 +89,12 @@ public class PlannerController {
     public ResponseEntity<String> saveAcademicSession(@PathVariable String code, @RequestBody AcademicSession vo) {
         dummyLogin();
         
+        if (isAcademicSessionCodeExists(code)){
+            /*throw new IllegalArgumentException("Data course already exists! Please insert new data");*/
+        	return new ResponseEntity<String>("Duplicate", HttpStatus.OK);
+    } else 
+    {
+ 
         if (isAcademicSessionCodeExists(code))
             throw new IllegalArgumentException("Data course already exists! Please insert new data");
  
@@ -103,6 +109,7 @@ public class PlannerController {
         academicSession.setYear(plannerService.findByCode(vo.getYear().getCode()));
         plannerService.saveAcademicSession(academicSession);
         return new ResponseEntity<String>("Success", HttpStatus.OK);
+    }
     }
 
     @RequestMapping(value = "/academicSessions/{code}/activate", method = RequestMethod.GET)
@@ -648,7 +655,7 @@ public class PlannerController {
     }
 
     
-    @RequestMapping(value = "/curriculums/{code}/subjects/subjectType/{subjectType}", method = RequestMethod.GET)
+    @RequestMapping(value = "/curriculums/{code}/subjects/subjectTypeCore/{subjectType}", method = RequestMethod.GET)
     public ResponseEntity<List<Subject>> findSubjectsByCurriculumAndSubjectTypeCore(@PathVariable String code,@PathVariable String subjectType) throws UnsupportedEncodingException {
         AdCurriculum curriculum = plannerService.findCurriculumByCode(code);
         AdSubjectType subjType = AdSubjectType.valueOf(subjectType);
@@ -656,7 +663,7 @@ public class PlannerController {
         return new ResponseEntity<List<Subject>>(plannerTransformer.toSubjectVos(subjects), HttpStatus.OK);
     }
     
-    @RequestMapping(value = "/curriculums/{code}/subjects/subjectType/{subjectType}", method = RequestMethod.GET)
+    @RequestMapping(value = "/curriculums/{code}/subjects/subjectTypeElective/{subjectType}", method = RequestMethod.GET)
     public ResponseEntity<List<Subject>> findSubjectsByCurriculumAndSubjectTypeElective(@PathVariable String code,@PathVariable String subjectType) throws UnsupportedEncodingException {
         AdCurriculum curriculum = plannerService.findCurriculumByCode(code);
         AdSubjectType subjType = AdSubjectType.valueOf(subjectType);

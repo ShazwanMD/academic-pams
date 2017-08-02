@@ -59,7 +59,7 @@ export class AcademicSessionActions {
     console.log("saveAcademicSessionSuccess");
     return {
       type: AcademicSessionActions.SAVE_ACADEMIC_SESSION_SUCCESS,
-      payload: message
+      payload: {status: message}
     };
   }
 
