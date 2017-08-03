@@ -84,8 +84,8 @@ export class EnrollmentApplicationEffects {
     .mergeMap((action) => from([action,
         this.enrollmentApplicationActions.findAssignedEnrollmentApplicationTasks(),
         this.enrollmentApplicationActions.findPooledEnrollmentApplicationTasks(),
-        this.enrollmentApplicationActions.findArchivedEnrollmentApplications(),],))
-    .catch((error) => this.notificationService.showError(error));
+        this.enrollmentApplicationActions.findArchivedEnrollmentApplications(),],));
+    //.catch((error) => this.notificationService.showError(error));
     
 
   @Effect() completeEnrollmentApplicationTask$ = this.actions$

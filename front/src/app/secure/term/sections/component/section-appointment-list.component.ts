@@ -7,7 +7,9 @@ import {
   EventEmitter,
   Input,
   Output,
-  ViewContainerRef
+  ViewContainerRef,
+OnChanges,
+SimpleChange
 } from '@angular/core';
 import {Appointment} from '../../../../shared/model/term/appointment.interface';
 import {Section} from '../../../../shared/model/term/section.interface';
@@ -29,7 +31,7 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
 
 })
-export class SectionAppointmentListComponent implements AfterViewInit {
+export class SectionAppointmentListComponent implements AfterViewInit, OnChanges {
 
   @Input() section: Section;
   @Input() appointments: Appointment[];
@@ -65,6 +67,15 @@ export class SectionAppointmentListComponent implements AfterViewInit {
               private vcf: ViewContainerRef,
               private dialog: MdDialog) {
   }
+  
+  ngOnChanges(changes: { [ propName: string]: SimpleChange }) {
+      console.log("changes", changes, changes['appointments']);
+      if (changes['appointments']) {
+        this.filteredData = changes['appointments'].currentValue;
+        this.filteredTotal = changes['appointments'].currentValue.length;
+        this.filter();
+      }
+    }
 
   ngOnInit(): void {
     this.selectedRows = this.appointments.filter((value) => value.selected);

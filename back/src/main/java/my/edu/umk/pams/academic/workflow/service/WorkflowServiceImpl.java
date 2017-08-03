@@ -367,6 +367,7 @@ public class WorkflowServiceImpl implements WorkflowService {
      */
     public void completeTask(Task task) {
         Validate.notNull(task, "Task cannot be null");
+        log.debug("test 1 {}", task);
         taskService.complete(task.getId());
     }
 
@@ -378,6 +379,7 @@ public class WorkflowServiceImpl implements WorkflowService {
      */
     public void completeTask(Task task, Map<String, Object> variables) {
         Validate.notNull(task, "Task cannot be null");
+        log.debug("test 2 {}", task);
         taskService.complete(task.getId(), variables);
     }
 }

@@ -66,7 +66,7 @@ export class AdmissionApplicationTaskCreatorDialog implements OnInit {
     this.dialog.close();
     
     this.assignedAdmissionApplicationTasks$.subscribe( val => console.log( 'Accumulated object admissionApplication$:', val['status'] ) );
-    window.alert("Alert:" + this.assignedAdmissionApplicationTasks$.subscribe(val => {val['status']}));
+    //window.alert("Alert:" + this.assignedAdmissionApplicationTasks$.subscribe(val => {val['status']}));
     
     //start subcribe
     

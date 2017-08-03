@@ -98,6 +98,7 @@ public class AdmissionApplicationWorkflowTest {
         // we're done, let's submit drafted task
         // transition to REGISTERED
         workflowService.completeTask(draftedTask);
+        LOG.debug("test1 {}", draftedTask);
 
         // ADVISOR
         // find and pick pooled registered application

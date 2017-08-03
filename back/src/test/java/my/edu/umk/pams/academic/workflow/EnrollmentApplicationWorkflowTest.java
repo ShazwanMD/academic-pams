@@ -101,9 +101,11 @@ public class EnrollmentApplicationWorkflowTest {
         item2.setAction(AdEnrollmentApplicationAction.ADD);
         item2.setSection(termService.findSectionByCanonicalCode("MGSEB-MBA-GST5023-201720181-02"));
         termService.addEnrollmentApplicationItem(draftedApplication, item2);
+        LOG.debug("Enrollment draftedtest 1 {}", draftedTask);
 
         // we're done, let's submit drafted task
         // transition to REGISTERED
         workflowService.completeTask(draftedTask);
+        LOG.debug("Enrollment draftedtest 2 {}", draftedTask);
     }
 }

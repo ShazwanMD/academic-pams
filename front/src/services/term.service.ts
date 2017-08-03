@@ -47,8 +47,8 @@ export class TermService {
     console.log('addAssessment:' + assessment);
     console.log('offering:' + offering.canonicalCode);
     return this._http.post(this.TERM_API + '/offerings/' + offering.canonicalCode + '/assessments', JSON.stringify(assessment))
-      .flatMap((res: Response) => Observable.of(res.text()))
-      .catch((error) => this.handleError(error));
+      .flatMap((res: Response) => Observable.of(res.text()));
+      //.catch((error) => this.handleError(error));
   }
 
   updateAssessment(offering: Offering, assessment: Assessment): Observable<String> {
@@ -107,8 +107,8 @@ export class TermService {
   startAdmissionApplicationTask(admissionApplication: AdmissionApplication): Observable<String> {
     console.log('start task');
     return this._http.post(this.TERM_API + '/admissionApplications/startTask', JSON.stringify(admissionApplication))
-      .flatMap((res: Response) => Observable.of(res.text()))
-      .catch((error) => this.handleError(error));
+      .flatMap((res: Response) => Observable.of(res.text()));
+      //.catch((error) => this.handleError(error));
   }
 
   updateAdmissionApplication(application: AdmissionApplication): Observable<String> {
@@ -226,8 +226,8 @@ export class TermService {
   startEnrollmentApplicationTask(enrollmentApplication: EnrollmentApplication): Observable<String> {
     console.log('proses startEnrollmentApplicationTask');
     return this._http.post(this.TERM_API + '/enrollmentApplications/startTask', JSON.stringify(enrollmentApplication))
-      .flatMap((res: Response) => Observable.of(res.text()))
-      .catch((error) => this.handleError(error));
+      .flatMap((res: Response) => Observable.of(res.text()));
+      //.catch((error) => this.handleError(error));
   }
 
   completeEnrollmentApplicationTask(enrollmentApplicationTask: EnrollmentApplicationTask): Observable<String> {
@@ -493,8 +493,8 @@ export class TermService {
     console.log('addAppointment');
     console.log(section);
     return this._http.post(this.TERM_API + '/sections/' + section.canonicalCode + '/appointments', JSON.stringify(appointment))
-      .flatMap((res: Response) => Observable.of(res.text()))
-      .catch((error) => this.handleError(error));
+      .flatMap((res: Response) => Observable.of(res.text()));
+      //.catch((error) => this.handleError(error));
   }
   
   // remove appointment by section

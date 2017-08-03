@@ -39,7 +39,9 @@ public class EnrollmentListener implements ApplicationListener<EnrollmentEvent> 
                 gradebook.setAssessment(assessment);
                 gradebook.setEnrollment(enrollment);
                 gradebook.setScore(ZERO);
+               
                 termService.addGradebook(section, enrollment, gradebook);
+              
             }
         }
     }
