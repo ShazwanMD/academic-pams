@@ -726,10 +726,10 @@ public class TermController {
 	public ResponseEntity<String> addSection(@PathVariable String canonicalCode, @RequestBody Section vo) {
 		dummyLogin();
 		
-		System.out.println("Before checking isExist");
+		System.out.println("Before checking isSectionExists");
 		
 		if (isSectionExists(vo.getCanonicalCode())) {
-			System.out.println("Duplicate section");
+			System.out.println("Duplicate section:" + canonicalCode);
 			// throw new IllegalArgumentException("Data offering already exists!.Please insert new data");
 			return new ResponseEntity<String>("Duplicate", HttpStatus.OK);
 		} else {
@@ -742,6 +742,8 @@ public class TermController {
 		section.setOrdinal(vo.getOrdinal());
 		section.setOffering(termService.findOfferingById(vo.getOffering().getId()));
 		termService.addSection(offering, section);
+		
+		System.out.println("Save new section:" + canonicalCode);
 		return new ResponseEntity<String>("success", HttpStatus.OK);
 	}
 }
@@ -751,9 +753,9 @@ public class TermController {
 		dummyLogin();
 		
 		if (isOfferingExists(vo.getCanonicalCode())) {
-			System.out.println("Passed data:Duplicate");
-			
+			System.out.println("Duplicate:");
 			// throw new IllegalArgumentException("Data offering already exists!.Please insert new data");
+			
 			return new ResponseEntity<String>("Duplicate", HttpStatus.OK);
 		} else {
 

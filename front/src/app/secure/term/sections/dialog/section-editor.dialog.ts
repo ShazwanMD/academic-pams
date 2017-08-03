@@ -49,7 +49,7 @@ export class SectionEditorDialog implements OnInit {
 
   ngOnInit(): void {
       
-      //this.store.dispatch(this.actions.findSections());   
+      this.store.dispatch(this.actions.findSections());   
       
       this.editorForm = this.formBuilder.group({
       id: undefined,
@@ -74,26 +74,30 @@ export class SectionEditorDialog implements OnInit {
     if (!section.id){
     
       this.store.dispatch(this.actions.addSection(this._offering, section));
-      this.section$.subscribe( val => console.log( 'Accumulated object section:', val['status'] ) );
+      this.section$.subscribe( val => console.log( '1.Accumulated object section:', val['status'] ) );
       this.dialog.close();
          
      //start subscribe
       this.section$.subscribe(val => {
           if(val['status']== 'Duplicate'){
-             console.log('Accumulated object:', val) 
-             window.alert('Duplicate new data');
-             
               
-          }else{
-              if(val['status']== 'success'){
-              window.alert('Success insert new data:');
-              console.log('Accumulated object:', val)
+              let snackBarRef = this.snackBar.open('Duplicate data: ' + section.code + ' Please insert new data', '', {duration:3000});
+              snackBarRef.afterDismissed().subscribe(() => {
+              console.log('The snack-bar was dismissed');
+              console.log('2.Accumulated object section:', val)
               val['status'] = '';
+             }); 
+              
+          }
+          
+          else {
+              if(val['status']== 'success'){
+                  window.alert('Success insert new data:');
+                  console.log('Accumulated object:', val)
+                  val['status'] = '';
+                  }
               }
           }
-      }
-      
-      
       );
      //end subscribe
      

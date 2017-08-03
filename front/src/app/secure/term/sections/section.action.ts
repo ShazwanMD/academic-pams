@@ -179,10 +179,11 @@ export class SectionActions {
 
     static ADD_SECTION_SUCCESS = '[Section] Add Section Success';
 
-    addSectionSuccess( message ): Action {
+    addSectionSuccess( section ): Action {
+        console.log("success here in section");
         return {
             type: SectionActions.ADD_SECTION_SUCCESS,
-            payload: {status: message}
+            payload: {status: section}
         };
     }
 
