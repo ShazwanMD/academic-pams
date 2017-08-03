@@ -515,13 +515,13 @@ public class PlannerController {
         return new ResponseEntity<List<Subject>>(plannerTransformer.toSubjectVos(subjects), HttpStatus.OK);
     }
     
-    @RequestMapping(value = "/curriculums/{code}/subjects/subjectType/{subjectType}", method = RequestMethod.GET)
+   /* @RequestMapping(value = "/curriculums/{code}/subjects/subjectType/{subjectType}", method = RequestMethod.GET)
     public ResponseEntity<List<Subject>> findSubjectsByCurriculumAndSubjectType(@PathVariable String code,@PathVariable String subjectType) throws UnsupportedEncodingException {
         AdCurriculum curriculum = plannerService.findCurriculumByCode(code);
         AdSubjectType subjType = AdSubjectType.valueOf(subjectType);
         List<AdSubject> subjects = plannerService.findSubjectsBySubjectType(curriculum, subjType);
         return new ResponseEntity<List<Subject>>(plannerTransformer.toSubjectVos(subjects), HttpStatus.OK);
-    }
+    }*/
     
     @RequestMapping(value = "/curriculums/{code}/singleSubjects", method = RequestMethod.POST)
     public ResponseEntity<String> addSingleSubject(@PathVariable String code, @RequestBody SingleSubject vo) {
@@ -648,13 +648,13 @@ public class PlannerController {
     }
 
     
-    @RequestMapping(value = "/curriculums/{code}/subjects/subjectType/{subjectType}", method = RequestMethod.GET)
+    /*@RequestMapping(value = "/curriculums/{code}/subjects/subjectType/{subjectType}", method = RequestMethod.GET)
     public ResponseEntity<List<Subject>> findSubjectsByCurriculumAndSubjectTypeCore(@PathVariable String code,@PathVariable String subjectType) throws UnsupportedEncodingException {
         AdCurriculum curriculum = plannerService.findCurriculumByCode(code);
         AdSubjectType subjType = AdSubjectType.valueOf(subjectType);
         List<AdSubject> subjects = plannerService.findSubjectsByCurriculumAndSubjectTypeCore(curriculum, subjType);
         return new ResponseEntity<List<Subject>>(plannerTransformer.toSubjectVos(subjects), HttpStatus.OK);
-    }
+    }*/
     
     @RequestMapping(value = "/curriculums/{code}/subjects/subjectType/{subjectType}", method = RequestMethod.GET)
     public ResponseEntity<List<Subject>> findSubjectsByCurriculumAndSubjectTypeElective(@PathVariable String code,@PathVariable String subjectType) throws UnsupportedEncodingException {

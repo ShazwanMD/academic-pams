@@ -13,7 +13,7 @@ export function sectionListReducer(state = initialState, action: Action): Sectio
     case SectionActions.FIND_SECTIONS_SUCCESS: {
       return action.payload;
     }
-    case SectionActions.SAVE_SECTION_SUCCESS: {
+    case SectionActions.ADD_SECTION_SUCCESS: {
       let index = _.findIndex(state, {id: action.payload.id});
       if (index >= 0) {
         return [
