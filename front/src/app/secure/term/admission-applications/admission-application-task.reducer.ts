@@ -11,6 +11,11 @@ export function admissionApplicationTaskReducer(state = initialState, action: Ac
     case AdmissionApplicationActions.FIND_ADMISSION_APPLICATION_TASK_BY_TASK_ID_SUCCESS: {
       return action.payload;
     }
+    
+    case AdmissionApplicationActions.START_ADMISSION_APPLICATION_TASK_SUCCESS: {
+        return action.payload;
+      }
+    
     default: {
       return state;
     }

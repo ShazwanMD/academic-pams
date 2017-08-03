@@ -16,6 +16,8 @@ import { Observable } from "rxjs/Observable";
 
 export class SectionEditorDialog implements OnInit {
 
+  private SECTIONS: string[] = 'termModuleState.offeringSections'.split('.');
+  private sections$: Observable<Section[]>;
   private SECTION: string[] = 'termModuleState.section'.split('.');
   private section$: Observable<Section[]>;
     
@@ -33,6 +35,7 @@ export class SectionEditorDialog implements OnInit {
               private dialog: MdDialogRef<SectionEditorDialog>,
               private viewContainerRef: ViewContainerRef) {
       
+      this.sections$ = this.store.select(...this.SECTIONS);
       this.section$ = this.store.select(...this.SECTION);
   }
 
@@ -74,7 +77,7 @@ export class SectionEditorDialog implements OnInit {
     if (!section.id){
     
       this.store.dispatch(this.actions.addSection(this._offering, section));
-      this.section$.subscribe( val => console.log( '1.Accumulated object section:', val['status'] ) );
+      this.section$.subscribe( val => console.log( '1.Accumulated object section:', val ) );
       this.dialog.close();
          
      //start subscribe
@@ -91,12 +94,13 @@ export class SectionEditorDialog implements OnInit {
           }
           
           else {
-              if(val['status']== 'success'){
+              if(val['status']== 'sucsess'){
                   window.alert('Success insert new data:');
-                  console.log('Accumulated object:', val)
+                  console.log('3.Accumulated object:', val)
                   val['status'] = '';
                   }
               }
+          console.log('4.Lompat terus', val)
           }
       );
      //end subscribe

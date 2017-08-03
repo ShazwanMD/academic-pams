@@ -13,6 +13,10 @@ export function admissionApplicationReducer(state = initialState, action: Action
     case AdmissionApplicationActions.FIND_ADMISSION_APPLICATION_BY_ID_SUCCESS: {
       return action.payload;
     }
+    
+    case AdmissionApplicationActions.START_ADMISSION_APPLICATION_TASK_SUCCESS: {
+        return action.payload;
+      }
 
     case AdmissionApplicationActions.FIND_ADMISSION_APPLICATIONS_SUCCESS: {
       return action.payload;

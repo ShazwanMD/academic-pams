@@ -11,6 +11,7 @@
         </pams-offering>
         <pams-offering-section-list
           [offering]="offering$ | async"
+          [section] = "section$ | async"
           [sections]="sections$ | async" (view)="deleteSection($event)">
         </pams-offering-section-list>
         <pams-offering-assessment-list

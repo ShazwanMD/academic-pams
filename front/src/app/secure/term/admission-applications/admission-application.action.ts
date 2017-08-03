@@ -112,7 +112,7 @@ export class AdmissionApplicationActions {
   startAdmissionApplicationTaskSuccess(task): Action {
     return {
       type: AdmissionApplicationActions.START_ADMISSION_APPLICATION_TASK_SUCCESS,
-      payload: task
+      payload: {status: task}
     };
   }
 

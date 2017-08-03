@@ -19,9 +19,11 @@ export class OfferingDetailPage implements OnInit {
 
   private OFFERING: string[] = 'termModuleState.offering'.split('.');
   private SECTIONS: string[] = 'termModuleState.offeringSections'.split('.');
+  private SECTION: string[] = 'termModuleState.section'.split('.');
   private ASSESSMENTS: string[] = 'termModuleState.offeringAssessments'.split('.');
   private offering$: Observable<Offering>;
   private sections$: Observable<Section[]>;
+  private section$: Observable<Section[]>;
   private assessments$: Observable<Assessment[]>;
   private editorDialogRef: MdDialogRef<OfferingUpdateDialog>;
 
@@ -36,6 +38,7 @@ export class OfferingDetailPage implements OnInit {
 
     this.offering$ = this.store.select(...this.OFFERING);
     this.sections$ = this.store.select(...this.SECTIONS);
+    this.section$ = this.store.select(...this.SECTION);
     this.assessments$ = this.store.select(...this.ASSESSMENTS);
   }
 
