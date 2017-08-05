@@ -96,10 +96,7 @@ export class OfferingListComponent implements AfterViewInit, OnChanges {
 
   viewOffering(offering: Offering): void {
     console.log('Emitting offering');
-    let snackBarRef = this.snackBar.open('Viewing offering info', 'OK');
-    snackBarRef.afterDismissed().subscribe(() => {
-      this.view.emit(offering);
-    });
+    this.view.emit(offering);
   }
 
 }
