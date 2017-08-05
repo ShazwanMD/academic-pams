@@ -4,7 +4,6 @@ import {AdmissionApplication} from '../app/shared/model/term/admission-applicati
 import {Assessment} from '../app/shared/model/term/assessment.interface';
 import {Offering} from '../app/shared/model/term/offering.interface';
 import {Injectable} from '@angular/core';
-import {Http} from '@angular/http';
 import {RequestOptions, Response, ResponseContentType, Headers} from '@angular/http';
 import {HttpInterceptorService} from '@covalent/http';
 import {Observable} from 'rxjs/Observable';
@@ -26,8 +25,7 @@ export class TermService {
 
   private TERM_API: string = environment.endpoint + '/api/term';
 
-  constructor(private _http: HttpInterceptorService,
-              private http: Http) {
+  constructor(private _http: HttpInterceptorService) {
   }
 
 
@@ -516,14 +514,13 @@ export class TermService {
 
   uploadGradebook(offering: Offering, file: File): Observable<String> {
     console.log('uploadGradebook', file);
-    let headers: Headers = new Headers({
-      'Content-Type': 'application/json',
-    });
+    // Pass empty Content-Type key for ng2 Upload bug workaround, see request.interceptor.ts
+    let headers: Headers = new Headers({'Content-Type': ''});
     let options: RequestOptions = new RequestOptions({headers: headers});
     let formData: FormData = new FormData();
     formData.append('file', file);
     console.log('formData', formData);
-    return this.http.post(this.TERM_API + '/offerings/' + offering.canonicalCode + '/uploadGradebook', formData)
+    return this._http.post(this.TERM_API + '/offerings/' + offering.canonicalCode + '/uploadGradebook', formData, options)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
