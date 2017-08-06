@@ -7,7 +7,7 @@ import { Store } from '@ngrx/store';
 import { TermModuleState } from '../../index';
 import { SectionEditorDialog } from '../../sections/dialog/section-editor.dialog';
 import { Offering } from '../../../../shared/model/term/offering.interface';
-import { TdDataTableSortingOrder, IPageChangeEvent, ITdDataTableSortChangeEvent, TdDataTableService} from "@covalent/core";
+import { TdDataTableSortingOrder, IPageChangeEvent, ITdDataTableSortChangeEvent, TdDataTableService } from "@covalent/core";
 import { FormBuilder } from "@angular/forms";
 
 @Component( {
@@ -16,12 +16,6 @@ import { FormBuilder } from "@angular/forms";
     changeDetection: ChangeDetectionStrategy.OnPush,
 } )
 export class OfferingSectionListComponent implements AfterViewInit, OnChanges {
-       
-
-    @Input() section: Section;
-    @Input() offering: Offering;
-    @Input() sections: Section[];
-    @Output() view = new EventEmitter<Section>();
 
     private selectedRows: Section[];
     private creatorDialogRef: MdDialogRef<SectionEditorDialog>;
@@ -42,28 +36,44 @@ export class OfferingSectionListComponent implements AfterViewInit, OnChanges {
     pageSize: number = 5;
     sortBy: string = 'code';
     sortOrder: TdDataTableSortingOrder = TdDataTableSortingOrder.Descending;
-   
-    constructor( private _dataTableService: TdDataTableService,
-            private router: Router,
-            private route: ActivatedRoute,
-            private actions: SectionActions,
-            private store: Store<TermModuleState>,
-            private formBuilder: FormBuilder,
-            private vcf: ViewContainerRef,
-            private snackBar: MdSnackBar,
-            private dialog: MdDialog  ) {
-     }
-    
-    ngOnChanges(changes: { [ propName: string]: SimpleChange }) {
-        console.log("changes", changes, changes['sections']);
-        if (changes['sections']) {
-          this.filteredData = changes['sections'].currentValue;
-          this.filteredTotal = changes['sections'].currentValue.length;
-          this.filter();
-        }
-      }
 
-   sort( sortEvent: ITdDataTableSortChangeEvent ): void {
+    @Input() section: Section;
+    @Input() offering: Offering;
+    @Input() sections: Section[];
+    @Output() view: EventEmitter<Section> = new EventEmitter<Section>();
+
+    constructor( private _dataTableService: TdDataTableService,
+        private router: Router,
+        private route: ActivatedRoute,
+        private actions: SectionActions,
+        private store: Store<TermModuleState>,
+        private formBuilder: FormBuilder,
+        private vcf: ViewContainerRef,
+        private snackBar: MdSnackBar,
+        private dialog: MdDialog ) {
+    }
+
+    ngOnChanges( changes: { [propName: string]: SimpleChange } ) {
+        console.log( "changes", changes, changes['sections'] );
+        if ( changes['sections'] ) {
+            this.filteredData = changes['sections'].currentValue;
+            this.filteredTotal = changes['sections'].currentValue.length;
+            this.filter();
+        }
+    }
+
+    ngOnInit(): void {
+        this.selectedRows = this.sections.filter(( value ) => value.selected );
+    }
+
+    ngAfterViewInit(): void {
+        this.filteredData = this.sections;
+        this.filteredTotal = this.sections.length;
+        this.filter();
+    }
+
+
+    sort( sortEvent: ITdDataTableSortChangeEvent ): void {
         this.sortBy = sortEvent.name;
         this.sortOrder = sortEvent.order;
         this.filter();
@@ -89,18 +99,6 @@ export class OfferingSectionListComponent implements AfterViewInit, OnChanges {
         newData = this._dataTableService.pageData( newData, this.fromRow, this.currentPage * this.pageSize );
         this.filteredData = newData;
     }
-
-
-    ngOnInit(): void {
-        this.selectedRows = this.sections.filter((value) => value.selected);
-      }
-
-      ngAfterViewInit(): void {
-        this.filteredData = this.sections;
-        this.filteredTotal = this.sections.length;
-        this.filter();
-      }
-
 
     selectRow( section: Section ): void {
     }

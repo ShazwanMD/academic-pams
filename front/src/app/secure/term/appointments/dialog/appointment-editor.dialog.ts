@@ -79,7 +79,6 @@ export class AppointmentEditorDialog implements OnInit {
 
             this.store.dispatch( this.actions.addAppointment( this._section, appointment ) );
             this.appointment$.subscribe( val => console.log( 'Accumulated object:', val['status'] ) );
-            this.appointment$.subscribe( val => { window.alert( 'Duplicate data' ); } );
             this.dialog.close();
 
         } else {

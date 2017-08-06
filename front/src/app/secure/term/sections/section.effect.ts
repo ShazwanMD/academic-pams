@@ -62,11 +62,11 @@ export class SectionEffects {
       .ofType(SectionActions.ADD_SECTION)
       .map((action) => action.payload)
       .switchMap((payload) => this.termService.addSection(payload.offering, payload.section))
-      .map((message) => this.sectionActions.addSectionSuccess(message));
-//      .withLatestFrom(this.store$.select(...this.OFFERING))
-//      .map((state) => state[1])
-//      .map((offering: Offering) => this.offeringActions.findOfferingByCanonicalCode(offering.canonicalCode))
-//      .mergeMap((action) => from([action, this.sectionActions.findSections()]));    
+      .map((message) => this.sectionActions.addSectionSuccess(message))
+      .withLatestFrom(this.store$.select(...this.OFFERING))
+      .map((state) => state[1])
+      .map((offering: Offering) => this.offeringActions.findOfferingByCanonicalCode(offering.canonicalCode));
+     //.mergeMap((action) => from([action, this.sectionActions.findSections()]));    
   //.catch((error) => this.notificationService.showError(error));
   
   @Effect() deleteSection$ = this.actions$

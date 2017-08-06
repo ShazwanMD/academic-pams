@@ -119,6 +119,7 @@ public class PlannerTransformer {
 
     public Curriculum toCurriculumVo(AdCurriculum e) {
         Curriculum vo = new Curriculum();
+        vo.setId(e.getId());
         vo.setCode(e.getCode());
         vo.setCoreCredit(e.getCoreCredit());
         vo.setCurriculumCredit(e.getCurriculumCredit());

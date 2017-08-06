@@ -17,6 +17,7 @@ export class CurriculumListComponent {
 
   // todo: credithours, etc etc
   private columns: any[] = [
+    {name: 'id', label: 'Id'},
     {name: 'code', label: 'Code'},
     {name: 'coreCredit.number', label: 'Core Credit'},
     {name: 'totalCredit.number', label: 'Total Credit'},

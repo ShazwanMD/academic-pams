@@ -77,7 +77,6 @@ export class SectionEditorDialog implements OnInit {
     if (!section.id){
     
       this.store.dispatch(this.actions.addSection(this._offering, section));
-//      this.section$.subscribe( val => console.log( '1.Accumulated object section:', val ) );
       this.dialog.close();
          
      //start subscribe
@@ -101,7 +100,7 @@ export class SectionEditorDialog implements OnInit {
                   val['status'] = '';
                   }
               }
-          console.log('4.Lompat terus', val)
+          
           }
       );
      //end subscribe

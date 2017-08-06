@@ -8,6 +8,7 @@ import {SectionActions} from '../sections/section.action';
 import {TermService} from '../../../../services/term.service';
 import {Section} from '../../../shared/model/term/section.interface';
 import { NotificationService } from "../../../../services/notification.service";
+import {from} from 'rxjs/observable/from';
 
 @Injectable()
 export class AppointmentEffects {
@@ -45,7 +46,7 @@ export class AppointmentEffects {
       .withLatestFrom(this.store$.select(...this.SECTION))
       .map((state) => state[1])
       .map((section: Section) => this.sectionActions.findSectionByCanonicalCode(section.canonicalCode))
-       .catch((error) => this.notificationService.showError(error));
+      // .catch((error) => this.notificationService.showError(error));
        
   //update appointment
   @Effect() updateAppointment$ = this.actions$
