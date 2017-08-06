@@ -1,5 +1,6 @@
 package my.edu.umk.pams.academic.workflow;
 
+import org.hibernate.Hibernate;
 import org.hibernate.SessionFactory;
 import org.junit.Before;
 import org.junit.Test;
@@ -34,6 +35,8 @@ import my.edu.umk.pams.academic.planner.model.AdSubject;
 import my.edu.umk.pams.academic.planner.model.AdSubjectType;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
 import my.edu.umk.pams.academic.term.service.TermService;
+import my.edu.umk.pams.academic.web.module.planner.vo.BundleSubject;
+import my.edu.umk.pams.academic.web.module.planner.vo.BundleSubjectPart;
 import my.edu.umk.pams.academic.workflow.service.WorkflowService;
 
 /**
@@ -84,10 +87,131 @@ public class CurriculumBundleTest {
     
 
     @Test
+    public void testInsertBundle() {
+    	 System.out.println("\n==> Testing Bundle Insert");
+    	 AdCurriculum curriculum = new AdCurriculumImpl();
+         
+         
+         String code = "HAKIMI-0001" + System.currentTimeMillis();
+         curriculum.setCode(code);
+         curriculum.setCoreCredit(100);
+         curriculum.setCurriculumCredit(10);
+         curriculum.setElectiveCredit(10);
+         curriculum.setGeneralCredit(10);
+         curriculum.setLanguageCredit(10);
+         curriculum.setMaxPeriod(10);
+         curriculum.setOrdinal(10);
+         curriculum.setOthersCredit(10);
+         curriculum.setPeriod(10);
+         curriculum.setProgram(plannerService.findProgramByCode("MGSEB-MBA"));
+         curriculum.setRequiredCredit(0);
+         curriculum.setSubjects(subjects);
+         curriculum.setTotalCredit(124);
+         plannerService.saveCurriculum(curriculum);
+         curriculum = plannerService.findCurriculumByCode(code);
+         LOG.debug("code: {}", curriculum.getCode());
+         
+         AdSingleSubject subject11 = new AdSingleSubjectImpl();
+         subject11.setCourse(plannerService.findCourseByCode("GST5013"));
+         subject11.setOrdinal(1); // semester 1
+         subject11.setSubjectType(AdSubjectType.CORE);
+         plannerService.addSubject(curriculum, subject11);
+         
+         AdSingleSubject subject12 = new AdSingleSubjectImpl();
+         subject12.setCourse(plannerService.findCourseByCode("GST5023"));
+         subject12.setOrdinal(1); // semester 1
+         subject12.setSubjectType(AdSubjectType.CORE);
+         plannerService.addSubject(curriculum, subject12);
+       
+         AdBundleSubject bundleSubject = new AdBundleSubjectImpl();
+         bundleSubject.setSubjectType(AdSubjectType.ELECTIVE);
+         bundleSubject.setOrdinal(1);
+         plannerService.addSubject(curriculum, bundleSubject);
+         AdBundleSubject addedBundleSubject = (AdBundleSubject)
+         plannerService.findSubject(curriculum, AdSubjectType.ELECTIVE, 1);
+         
+         // prepare part //PENGKHUSUSAN (ENTREPRENEURSHIP)
+         AdBundleSubjectPart part1 = new AdBundleSubjectPartImpl();
+         part1.setCourse(plannerService.findCourseByCode("GSK6153"));
+         AdBundleSubjectPart part2 = new AdBundleSubjectPartImpl();
+         part2.setCourse(plannerService.findCourseByCode("GSK6163"));
+         plannerService.addSubjectPart(addedBundleSubject, part1);
+         plannerService.addSubjectPart(addedBundleSubject, part2);
+         
+      
+        System.out.println("\n==> Single Proses Here..");
+     	String subjectType = "CORE";
+     	//String subjectType = "ELECTIVE";
+     	
+         curriculum = plannerService.findCurriculumByCode(code);
+         AdSubjectType subjType = AdSubjectType.valueOf(subjectType);
+         List<AdSubject> subjects = plannerService.findSubjectsBySubjectType(curriculum, subjType);
+         System.out.println("\n==> Size of single subjects " + subjects.size());
+         
+       
+ 		for (AdSubject subject : subjects) {
+ 			if (subject instanceof AdSingleSubject) {
+ 				System.out.println("--Instance of Single--");
+ 				System.out.println("==> Display subject list ");
+ 				AdCourse course = ((AdSingleSubject) subject).getCourse();
+ 				System.out.println("Code " + course.getCode());
+ 			}
+ 		}
+ 		
+ 		 System.out.println("\n==> Bundle Proses Here..");
+ 		//String subjectType = "CORE";
+     	subjectType = "ELECTIVE";
+     	
+         curriculum = plannerService.findCurriculumByCode(code);
+         subjType = AdSubjectType.valueOf(subjectType);
+         subjects = plannerService.findSubjectsBySubjectType(curriculum, subjType);
+         System.out.println("==> Size of bundle subjects " + subjects.size());
+         
+       
+ 		for (AdSubject subject : subjects) {
+ 			if (subject instanceof AdBundleSubject) {
+ 				System.out.println("--Instance of Bundle--");
+ 				System.out.println("==> Display subject list ");
+ 				//Hibernate.initialize(((AdBundleSubject) subject).getParts());
+ 				List<AdBundleSubjectPart> saya = ((AdBundleSubject) subject).getParts();
+ 				for(AdBundleSubjectPart bund : saya) {
+ 					System.out.println("Code " + bund.getCourse().getCode());
+ 				}
+ 	            
+ 			} 
+ 		}
+
+    }
+    
     @Rollback(false)
     public void testWorkflow() {
-        AdCurriculum curriculum = new AdCurriculumImpl();
-        String code = "MGSEB-MBA-CRLM-0001" + System.currentTimeMillis();
+    	String code = "HAKIMI-00011502031616867";
+    	String subjectType = "CORE";
+    	//String subjectType = "ELECTIVE";
+    	
+        AdCurriculum curriculum = plannerService.findCurriculumByCode(code);
+        AdSubjectType subjType = AdSubjectType.valueOf(subjectType);
+        List<AdSubject> subjects = plannerService.findSubjectsBySubjectType(curriculum, subjType);
+        System.out.println("\n==> Size of subjects " + subjects.size());
+        
+        System.out.println("\n==> Advance For Loop Example..");
+		for (AdSubject subject : subjects) {
+			if (subject instanceof AdSingleSubject) {
+				System.out.println("\n==> Instance of Single");
+				AdCourse course = ((AdSingleSubject) subject).getCourse();
+				System.out.println("Code " + course.getCode());
+			} else if (subject instanceof AdBundleSubject) {
+				System.out.println("Instance of Bundle " + subject.getSubjectType());
+				//Hibernate.initialize(((AdBundleSubject) subject).getParts());
+				List<AdBundleSubjectPart> saya = ((AdBundleSubject) subject).getParts();
+	            System.out.println("Size of parts" + saya.size());
+	           
+	        }
+		}
+        
+        
+      /*  AdCurriculum curriculum = new AdCurriculumImpl();
+        String code = "HAKIMI-0001" + System.currentTimeMillis();
         curriculum.setCode(code);
         curriculum.setCoreCredit(100);
         curriculum.setCurriculumCredit(10);
@@ -201,7 +325,7 @@ public class CurriculumBundleTest {
         AdBundleSubjectPart part34 = new AdBundleSubjectPartImpl();
         part34.setCourse(plannerService.findCourseByCode("GSE6013"));
         
-    /*    
+        
         //PENGKHUSUSAN (FINANCE)
         AdBundleSubjectPart part35 = new AdBundleSubjectPartImpl();
         part35.setCourse(plannerService.findCourseByCode("GSK6033"));
@@ -227,12 +351,12 @@ public class CurriculumBundleTest {
         part313.setCourse(plannerService.findCourseByCode("GSK6083"));
         AdBundleSubjectPart part314 = new AdBundleSubjectPartImpl();
         part314.setCourse(plannerService.findCourseByCode("GSE6133"));
-*/
+
         plannerService.addSubjectPart(addedBundleSubject, part31);
         plannerService.addSubjectPart(addedBundleSubject, part32);
         plannerService.addSubjectPart(addedBundleSubject, part33);
         plannerService.addSubjectPart(addedBundleSubject, part34);
-        /*
+        
         plannerService.addSubjectPart(addedBundleSubject, part35);
         plannerService.addSubjectPart(addedBundleSubject, part37);
         plannerService.addSubjectPart(addedBundleSubject, part38);

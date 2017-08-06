@@ -13,7 +13,7 @@ import java.util.List;
 @Table(name = "AD_BNDL_SBJT")
 public class AdBundleSubjectImpl extends AdSubjectImpl implements AdBundleSubject {
 
-    @OneToMany(targetEntity = AdBundleSubjectPartImpl.class, mappedBy = "bundle", fetch = FetchType.LAZY)
+    @OneToMany(targetEntity = AdBundleSubjectPartImpl.class, mappedBy = "bundle", fetch = FetchType.EAGER)
     private List<AdBundleSubjectPart> parts;
 
     @Override
