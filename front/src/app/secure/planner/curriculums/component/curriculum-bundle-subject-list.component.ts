@@ -1,9 +1,12 @@
+import {MdSnackBar} from '@angular/material/snack-bar';
 import {Store} from '@ngrx/store';
 import {
   ChangeDetectionStrategy,
   Component,
+  EventEmitter,
   Input,
   OnChanges,
+  Output,
   OnInit,
   SimpleChange,
   ViewContainerRef
@@ -30,24 +33,27 @@ export class CurriculumBundleSubjectListComponent implements OnInit, OnChanges {
 
   private selectedRows: Subject[];
   private bundleSubjectDialogRef: MdDialogRef<CurriculumBundleSubjectDialog>;
+   private bundleSubjectPartDialogRef: MdDialogRef<CurriculumBundleSubjectPartDialog>;
 
   private columns: any[] = [
     {name: 'id', label: 'Id'},
     {name: 'ordinal', label: 'Semester'},
     {name: 'subjectType', label: 'Type'},
-    {name: 'course.code', label: 'Course'},
-    {name: 'course.credit', label: 'Credit'},
+    // {name: 'course.code', label: 'Course'},
+    // {name: 'course.credit', label: 'Credit'},
     // {name: 'parts', label: 'Parts'},
     {name: 'action', label: ''},
   ];
 
   @Input() curriculum: Curriculum;
   @Input() subjects: Subject[];
+  @Output() view: EventEmitter<Subject> = new EventEmitter<Subject>();
 
   constructor(private router: Router,
               private route: ActivatedRoute,
               private actions: CurriculumActions,
               private vcf: ViewContainerRef,
+              private snackBar: MdSnackBar,
               private store: Store<PlannerModuleState>,
               private dialog: MdDialog,) {
   }
@@ -92,13 +98,37 @@ export class CurriculumBundleSubjectListComponent implements OnInit, OnChanges {
     });
 
   }
+
+   showBundleSubjectPartDialog(bundleSubjectPart: BundleSubjectPart) {
+    let config: MdDialogConfig = new MdDialogConfig();
+    config.viewContainerRef = this.vcf;
+    config.role = 'dialog';
+    config.width = '50%';
+    config.height = '60%';
+    config.position = {top: '65px'};
+    this.bundleSubjectPartDialogRef = this.dialog.open(CurriculumBundleSubjectPartDialog, config);
+    this.bundleSubjectPartDialogRef.componentInstance.curriculum = this.curriculum;
+    this.bundleSubjectPartDialogRef.afterClosed().subscribe((res) => {
+      // no op
+    });
+  }
+  
   selectRow(subject: Subject): void {
   }
 
   selectAllRows(subject: Subject[]): void {
   }
 
+  viewSubject(subject: Subject): void {
+    console.log('Emitting subject');
+    let snackBarRef = this.snackBar.open('Viewing subject info', 'OK');
+    snackBarRef.afterDismissed().subscribe(() => {
+      this.view.emit(subject);
+    });
+  }
+
   goBack(route: string): void {
     this.router.navigate(['/subjects']);
   }
 }
+

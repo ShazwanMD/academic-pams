@@ -543,8 +543,9 @@ public class PlannerController {
         LOG.debug("Adding bundle subject");
         AdCurriculum curriculum = plannerService.findCurriculumByCode(code);
         AdBundleSubject bundleSubject = new AdBundleSubjectImpl();
-        bundleSubject.setSubjectType(AdSubjectType.ELECTIVE);
-        bundleSubject.setOrdinal(1);
+//        bundleSubject.setSubjectType(AdSubjectType.ELECTIVE);
+        bundleSubject.setSubjectType(AdSubjectType.get(vo.getSubjectType().ordinal()));
+        bundleSubject.setOrdinal(vo.getOrdinal());
         plannerService.addSubject(curriculum, bundleSubject);
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }

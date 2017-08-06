@@ -69,6 +69,10 @@ export class CurriculumDetailPage implements OnInit {
     });
   }
 
+  viewSubject(subject: Subject): void {
+    this.router.navigate(['/secure/planner/curriculums', subject.id]);
+  }
+
   goBack(route: string): void {
     this.router.navigate(['/curriculums']);
   }

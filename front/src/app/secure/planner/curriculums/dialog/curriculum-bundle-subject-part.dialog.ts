@@ -63,3 +63,5 @@ export class CurriculumBundleSubjectPartDialog implements OnInit {
     this.dialog.close();
   }
 }
+
+

@@ -1,5 +1,9 @@
 <md-card>
   <div toolbar-buttons layout="row" layout-align="start center" flex>
+    <md-card-title>Subjects Elective</md-card-title>
+    <md-chip-list *ngIf="subjects?.length > 0">
+      <md-chip color="accent">{{subjects?.length}}</md-chip>
+    </md-chip-list>
     <span flex></span>
     <button md-icon-button [md-menu-trigger-for]="menu">
       <md-icon>add</md-icon>
@@ -22,15 +26,22 @@
       (rowSelect)="selectRow($event)"
       (selectAll)="selectAllRows($event)"
       dense>
-      <template tdDataTableTemplate="parts" let-value="value" let-row="row" let-column="columns.parts">
+      <template tdDataTableTemplate="parts" let-value="value" let-row="row" let-column="column">
         <div layout="row">
-          <span *ngIf="row.type=='bundle'" flex> </span>
-          <template *ngIf="row.type=='bundle'" let-group ngFor [ngForOf]="subjects">
-            <template let-part ngFor [ngForOf]="group.parts">
-              <span>{{part.course.code}}</span>
+              <span>{{value}}</span>
+              </div>
             </template>
-          </template>
-        </div>
+      <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
+     <div layout="row">
+    <!--<button md-icon-button [md-menu-trigger-for]="menu1" mdTooltip="Select section actions">
+      <md-icon>more_vert</md-icon>
+          </button>
+          <md-menu x-position="before" #menu1="mdMenu">-->
+             <a md-button color="accent" class="text-upper" (click)="showBundleSubjectPartDialog(row, true)">
+                <span>View</span>
+          <!--</md-menu>-->
+             </a>
+    </div>
       </template>
     </td-data-table>
   </md-card-content>

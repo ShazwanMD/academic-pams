@@ -94,6 +94,8 @@ export class CurriculumSubjectListComponent implements OnInit, OnChanges {
     });
 
   }
+
+  
   selectRow(subject: Subject): void {
   }
 

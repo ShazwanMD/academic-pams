@@ -18,7 +18,9 @@
             <pams-curriculum-subject-list [curriculum]="curriculum$ | async" [subjects]="singleSubjects$ | async"></pams-curriculum-subject-list>
           </md-tab>
           <md-tab label="Elective ({{(bundleSubjects$ | async)?.length}})">
-            <pams-curriculum-bundle-subject-list [curriculum]="curriculum$ | async" [subjects]="bundleSubjects$ | async"></pams-curriculum-bundle-subject-list>
+            <pams-curriculum-bundle-subject-list [curriculum]="curriculum$ | async" 
+            [subjects]="bundleSubjects$ | async">
+            </pams-curriculum-bundle-subject-list>
           </md-tab>
           </md-tab-group>
         </md-card>
