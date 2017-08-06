@@ -1,3 +1,4 @@
+import { StudentProfileModuleRoutes } from './secure/studentProfile/student-profile-module.routes';
 import {RouterModule, Routes} from '@angular/router';
 import {ProfileModuleRoutes} from './secure/profile/profile-module.routes';
 import {IdentityModuleRoutes} from './secure/identity/identity-module.routes';
@@ -26,6 +27,8 @@ const routes: Routes = [
       ...TermModuleRoutes,
       ...GraduationModuleRoutes,
       ...SetupModuleRoutes,
+      ...StudentProfileModuleRoutes,
+      
     ],
   },
 ];

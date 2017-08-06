@@ -3,11 +3,11 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {AuthorizationService} from '../../services/authorization.service';
 
 @Component({
-  selector: 'pams-administrator-dashboard-panel',
-  templateUrl: './administrator-dashboard.panel.html',
+  selector: 'pams-student-dashboard-panel',
+  templateUrl: './student-dashboard.panel.html',
 })
 
-export class AdministratorDashboardPanel implements OnInit {
+export class StudentDashboardPanel implements OnInit {
 
   private items: Object[];
 
@@ -25,15 +25,14 @@ export class AdministratorDashboardPanel implements OnInit {
         color: 'blue-700',
         description: '',
       },
-        {
-          title: 'Planner',
-          // route: '/secure/planner/academic-sessions',
-          route: '/secure/planner',
-          icon: 'assignment',
-          color: 'blue-700',
-          description: '',
-        }
-        ,
+        // {
+        //   title: 'Planner',
+        //   route: '/secure/planner',
+        //   icon: 'assignment',
+        //   color: 'blue-700',
+        //   description: '',
+        // }
+        // ,
         {
           title: 'Term',
           route: '/secure/term',
@@ -48,13 +47,13 @@ export class AdministratorDashboardPanel implements OnInit {
           color: 'blue-700',
           description: '',
         },
-        {
-          title: 'Setup',
-          route: '/secure/setup',
-          icon: 'assignment',
-          color: 'blue-700',
-          description: ' ',
-        },
+        // {
+        //   title: 'Setup',
+        //   route: '/secure/setup',
+        //   icon: 'assignment',
+        //   color: 'blue-700',
+        //   description: ' ',
+        // },
         {
          title: 'Student Profile',
          route: '/secure/studentProfile',

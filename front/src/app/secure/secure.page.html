@@ -22,6 +22,10 @@
         <md-icon>label</md-icon>
         Graduation
       </a>
+      <a md-list-item [routerLink]="['/secure/studentProfile']" (click)="layout.close()" authorizedShow="VIEW_STD">
+        <md-icon>label</md-icon>
+        Student Profile
+      </a>
       <a md-list-item (click)="logout()">
         <md-icon>label</md-icon>
         Logout

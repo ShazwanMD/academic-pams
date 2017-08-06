@@ -1,3 +1,5 @@
+import { StudentDashboardPanel } from './secure/student-dashboard.panel';
+import { StudentProfileModuleState, INITIAL_STUDENT_PROFILE_STATE, studentProfileModuleReducers, StudentProfileModule } from './secure/studentProfile/index';
 import {NgModule, Type} from '@angular/core';
 import {BrowserModule, Title} from '@angular/platform-browser';
 import {RequestInterceptor} from '../config/interceptors/request.interceptor';
@@ -76,6 +78,7 @@ export interface ApplicationState {
   termModuleState: TermModuleState;
   graduationModuleState: GraduationModuleState;
   setupModuleState: SetupModuleState;
+  studentProfileModuleState: StudentProfileModuleState;
 }
 
 // initial state
@@ -89,6 +92,7 @@ export const INITIAL_APP_STATE: ApplicationState =
     termModuleState: INITIAL_TERM_STATE,
     graduationModuleState: INITIAL_GRADUATION_STATE,
     setupModuleState: INITIAL_SETUP_STATE,
+    studentProfileModuleState: INITIAL_STUDENT_PROFILE_STATE,
 
   };
 
@@ -102,6 +106,7 @@ export const applicationReducers = {
   termModuleState: combineReducers({...termModuleReducers,}),
   graduationModuleState: combineReducers({...graduationModuleReducers,}),
   setupModuleState: combineReducers({...setupModuleReducers}),
+  studentProfileModuleState: combineReducers({...studentProfileModuleReducers}),
 };
 export const productionReducer: ActionReducer<ApplicationState> = combineReducers(applicationReducers);
 export function applicationReducer(applicationState: any = INITIAL_APP_STATE, action: any) {
@@ -121,6 +126,8 @@ export function applicationReducer(applicationState: any = INITIAL_APP_STATE, ac
     AuthorizedShowDirective,
     AuthenticatedShowDirective,
     NotAuthenticatedShowDirective,
+    //Student DashBoard Panel
+    StudentDashboardPanel,
   ],
   imports: [
     appRoutes,
@@ -152,6 +159,7 @@ export function applicationReducer(applicationState: any = INITIAL_APP_STATE, ac
     EffectsModule.run(AcademicSessionEffects),
     EffectsModule.run(AssessmentEffects),
     EffectsModule.run(OfferingEffects),
+    StudentProfileModule.forRoot(),
 
   ], // modules needed to run this module
   providers: [
@@ -168,6 +176,7 @@ export function applicationReducer(applicationState: any = INITIAL_APP_STATE, ac
   ],
   entryComponents: [
     AdministratorDashboardPanel,
+    StudentDashboardPanel,
   ],
   bootstrap: [AppComponent],
 })
