@@ -1,0 +1,43 @@
+<md-card>
+  <md-card-title>Student Personal Info</md-card-title>
+  <md-card-subtitle>Page under developments</md-card-subtitle>
+
+  <md-divider></md-divider>
+
+  <md-card-content>
+
+    <md-tab-group>
+      <!--Student Informations-->
+      <md-tab label="Student Personal Informations">
+        <div layout="column" layout-gt-md="row" class="insert">
+          <div flex-gt-md="20">
+            <img src="http://localhost:4200/assets/ico/student/{{student.identityNo}}.jpg" width="120" height="150">
+          </div>
+
+
+          <div flex-gt-md="40">
+            <b>Student ID</b> : {{student.identityNo}}<br/><br/>
+            <b>Current Semester</b> : {{student.cohort?.academicSession.semester}}<br/><br/>
+            <b>Name</b> : {{student.name}}<br/><br/>
+            <b>Email</b> : {{student.email}}<br/><br/>
+            <b>Phone</b> : {{student.phone}}<br/><br/>
+            <b>Mobile</b> : {{student.mobile}}
+          </div>
+
+          <div flex-gt-md="40">
+            <b>Status</b> : {{student.studentStatus}}<br/><br/>
+            <b>Study Mode</b> : {{student.studyMode?.description}}<br/><br/>
+            <b>Cohort</b> : {{student.cohort?.code}}<br/><br/>
+            <b>Program</b> : {{student.cohort?.program?.titleMs | uppercase}}<br/><br/>
+            <b>Faculty</b> : {{student.cohort?.program?.faculty?.description}}<br/><br/>
+          </div>
+
+        </div>
+      </md-tab>
+
+      <md-tab label="Student Enrollments">Content 2</md-tab>
+    </md-tab-group>
+
+  </md-card-content>
+
+</md-card>
