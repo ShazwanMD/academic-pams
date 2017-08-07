@@ -3,6 +3,7 @@ import { MdDialog, MdDialogConfig } from '@angular/material/dialog';
 import { BundleSubjectPart } from '../../../../shared/model/planner/bundle-subject-part.interface';
 import { BundleSubject } from '../../../../shared/model/planner/bundle-subject.interface';
 import { Course } from '../../../../shared/model/planner/course.interface';
+import {Observable} from 'rxjs';
 import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -22,12 +23,14 @@ import { SubjectType } from '../../../../shared/model/planner/subject-type.enum'
 export class CurriculumBundleSubjectDialog implements OnInit {
 
     private bundleSubjectPartDialogRef: MdDialogRef<CurriculumBundleSubjectPartDialog>;
+    private BUNDLE_SUBJECT: string[] = 'plannerModuleState.bundleSubjects'.split('.');
 
   private creatorForm: FormGroup;
   private create: boolean = false;
   private _subject: Subject;
   private _curriculum: Curriculum;
   private _bundleSubject: BundleSubject;
+  private bundleSubjects$: Observable<Subject[]>;
   private _bundleSubjectPart: BundleSubjectPart;
 
   constructor(private formBuilder: FormBuilder,
@@ -37,7 +40,10 @@ export class CurriculumBundleSubjectDialog implements OnInit {
     private vcf: ViewContainerRef,
     private route: ActivatedRoute,
     private dialogPart: MdDialog,
-    private dialog: MdDialogRef<CurriculumBundleSubjectDialog>, ) {
+    private dialog: MdDialogRef<CurriculumBundleSubjectDialog>, )
+    
+     {
+        this.bundleSubjects$= this.store.select(...this.BUNDLE_SUBJECT);
   }
 
   set curriculum(value: Curriculum) {

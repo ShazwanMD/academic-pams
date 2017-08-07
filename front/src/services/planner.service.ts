@@ -307,6 +307,12 @@ export class PlannerService {
       .map((res) => <Subject[]>res.json());
   }
 
+  findBundleSubjectsByCurriculum(curriculum: Curriculum): Observable<BundleSubject[]> {
+    console.log('findSubjects');
+    return this._http.get(this.PLANNER_API + '/curriculums/' + curriculum.code + '/bundleSubjects')
+      .map((res) => <Subject[]>res.json());
+  }
+  
   addSingleSubject(curriculum: Curriculum, subject: SingleSubject): Observable<String> {
     console.log('curriculum:' + curriculum.code);
     return this._http.post(this.PLANNER_API + '/curriculums/' + curriculum.code + '/singleSubjects', JSON.stringify(subject))

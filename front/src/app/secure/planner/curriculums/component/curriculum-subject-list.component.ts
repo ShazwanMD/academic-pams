@@ -99,10 +99,10 @@ export class CurriculumSubjectListComponent implements OnInit, OnChanges {
 
    deleteSubject( subject:Subject): void {
         if ( subject.id) {
-            console.log( "Don't delete this Section" ); //try to print at console
-            let snackBarRef = this.snackBar.open( 'Section cannot be deleted', 'OK' );
+            console.log( "Don't delete this Subject" ); //try to print at console
+            let snackBarRef = this.snackBar.open( 'Subject cannot be deleted', 'OK' );
         } else {
-            console.log( 'deleteSection' ); // move on
+            console.log( 'deleteSubject' ); // move on
             this.store.dispatch( this.actions.deleteSubject( this.curriculum, subject ) );
         }
     }

@@ -242,6 +242,25 @@ export class CurriculumActions {
     };
   }
 
+
+ static FIND_BUNDLE_SUBJECTS_BY_CURRICULUM= '[Subject] Find Bundle Subject Success';
+
+  findBundleSubjectsByCurriculum(curriculum, subject): Action {
+    return {
+      type: CurriculumActions.FIND_BUNDLE_SUBJECTS_BY_CURRICULUM,
+      payload: {curriculum: curriculum, subject: subject}
+    };
+  }
+
+  static FIND_BUNDLE_SUBJECTS_BY_CURRICULUM_SUCCESS = '[Subject] Add Bundle Subject Success';
+
+  findBundleSubjectsByCurriculumsSuccess(subjects): Action {
+    return {
+      type: CurriculumActions.FIND_BUNDLE_SUBJECTS_BY_CURRICULUM_SUCCESS,
+      payload: subjects
+    };
+  }
+
    static ADD_SUBJECT_PART = '[Subject] Add Bundle Subject Success';
 
   addSubjectPart(curriculum, subject): Action {
