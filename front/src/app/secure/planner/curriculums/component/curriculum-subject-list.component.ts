@@ -1,3 +1,4 @@
+import {MdSnackBar} from '@angular/material/snack-bar';
 import {Store} from '@ngrx/store';
 import {
   ChangeDetectionStrategy,
@@ -50,6 +51,7 @@ export class CurriculumSubjectListComponent implements OnInit, OnChanges {
               private route: ActivatedRoute,
               private actions: CurriculumActions,
               private vcf: ViewContainerRef,
+              private snackBar: MdSnackBar,
               private store: Store<PlannerModuleState>,
               private dialog: MdDialog,) {
   }
@@ -95,7 +97,16 @@ export class CurriculumSubjectListComponent implements OnInit, OnChanges {
 
   }
 
-  
+   deleteSubject( subject:Subject): void {
+        if ( subject.id) {
+            console.log( "Don't delete this Section" ); //try to print at console
+            let snackBarRef = this.snackBar.open( 'Section cannot be deleted', 'OK' );
+        } else {
+            console.log( 'deleteSection' ); // move on
+            this.store.dispatch( this.actions.deleteSubject( this.curriculum, subject ) );
+        }
+    }
+
   selectRow(subject: Subject): void {
   }
 
@@ -105,3 +116,5 @@ export class CurriculumSubjectListComponent implements OnInit, OnChanges {
     this.router.navigate(['/subjects']);
   }
 }
+
+

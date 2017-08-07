@@ -159,6 +159,26 @@ export class CurriculumActions {
     };
   }
 
+
+  static REMOVE_SUBJECT = '[Curriculum] Remove Curriculum';
+
+    deleteSubject( curriculum, subject ): Action {
+        console.log( "deleteSubject" );
+        return {
+            type: CurriculumActions.REMOVE_SUBJECT ,
+            payload: { curriculum: curriculum, subject: subject}
+        };
+    }
+
+    static REMOVE_SUBJECT_SUCCESS = '[Curriculum] Remove Curriculum Success';
+
+    deleteSectionSuccess( message ): Action {
+        console.log( "deleteSubjectSuccess" );
+        return {
+            type: CurriculumActions.REMOVE_SUBJECT_SUCCESS,
+            payload: message
+        };
+    }
   static ACTIVATE_CURRICULUM_SUCCESS = '[Curriculum] Activate AcademicSession Success';
 
   activateCurriculumSuccess(curriculum): Action {

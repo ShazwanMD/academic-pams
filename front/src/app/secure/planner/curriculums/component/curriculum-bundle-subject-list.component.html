@@ -1,12 +1,16 @@
 <md-card>
-  <div toolbar-buttons layout="row" layout-align="start center" flex>
-    <md-card-title>Subjects Elective</md-card-title>
-    <md-chip-list *ngIf="subjects?.length > 0">
-      <md-chip color="accent">{{subjects?.length}}</md-chip>
-    </md-chip-list>
+    <div toolbar-buttons layout="row" layout-align="start center" flex>
+   <md-card-title>Subjects Elective</md-card-title>
+   <md-chip-list *ngIf="subjects?.length > 0">
+     <md-chip color="accent">{{subjects?.length}}</md-chip>
+   </md-chip-list>
     <span flex></span>
     <button md-icon-button [md-menu-trigger-for]="menu">
       <md-icon>add</md-icon>
+    </button>
+    <button md-button class="md-icon-button" (click)="deleteBundleSubject(selectedRows[0])"
+            [disabled]="selectedRows.length != 1">
+      <md-icon class="md-24 tc-grey-300" [ngClass]="{'tc-grey-700': selectedRows.length === 1}">delete</md-icon>
     </button>
     <md-menu x-position="before" #menu="mdMenu">
       <button md-menu-item (click)="showBundleSubjectDialog()">Bundle Subject</button> 
@@ -26,23 +30,23 @@
       (rowSelect)="selectRow($event)"
       (selectAll)="selectAllRows($event)"
       dense>
-      <template tdDataTableTemplate="parts" let-value="value" let-row="row" let-column="column">
+      <template tdDataTableTemplate="parts" let-value="value" let-row="row" let-column="columns.parts">
         <div layout="row">
-              <span>{{value}}</span>
-              </div>
+          <span *ngIf="row.type=='bundle'" flex> </span>
+          <template *ngIf="row.type=='bundle'" let-group ngFor [ngForOf]="subjects">
+            <template let-part ngFor [ngForOf]="group.parts">
+              <span>{{part.course.code}}</span>
             </template>
-      <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
-     <div layout="row">
-    <!--<button md-icon-button [md-menu-trigger-for]="menu1" mdTooltip="Select section actions">
-      <md-icon>more_vert</md-icon>
-          </button>
-          <md-menu x-position="before" #menu1="mdMenu">-->
-             <a md-button color="accent" class="text-upper" (click)="showBundleSubjectPartDialog(row, true)">
-                <span>View</span>
-          <!--</md-menu>-->
-             </a>
-    </div>
+          </template>
+        </div>
       </template>
+      <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
+      <div layout="row">
+      <a md-button color="accent" class="text-upper" (click)="showBundleSubjectDialog(row, true)">
+      <span>View</span>
+      </a>
+    </div>
+     </template>
     </td-data-table>
   </md-card-content>
 </md-card>
