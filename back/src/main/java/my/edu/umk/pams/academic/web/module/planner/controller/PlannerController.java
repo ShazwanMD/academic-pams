@@ -487,7 +487,7 @@ public class PlannerController {
         Curriculum curriculum = plannerTransformer.toCurriculumVo(plannerService.findCurriculumByCode(code));
         return new ResponseEntity<Curriculum>(curriculum, HttpStatus.OK);
     }
-
+    
     @RequestMapping(value = "/curriculums/{code}/save", method = RequestMethod.POST)
     public ResponseEntity<String> saveCurriculum(@PathVariable String code, @RequestBody Curriculum vo) {
         dummyLogin();
@@ -515,6 +515,17 @@ public class PlannerController {
         AdCurriculum curriculum = plannerService.findCurriculumByCode(code);
         List<AdSubject> subjects = plannerService.findSubjects(curriculum);
         return new ResponseEntity<List<Subject>>(plannerTransformer.toSubjectVos(subjects), HttpStatus.OK);
+    }
+    
+    
+    @RequestMapping(value = "/curriculums/{code}/bundleSubjects", method = RequestMethod.GET)
+    public ResponseEntity<List<Subject>> findBundleSubjectsByCurriculum(@PathVariable String code) throws UnsupportedEncodingException {
+        AdCurriculum curriculum = plannerService.findCurriculumByCode(code);
+        AdSubject subject = plannerService.findSubjects();
+        List<AdBundleSubject> bundleSubjects = plannerService.findBundleSubjects(curriculum, subject);
+        List<AdSubject> subjects = plannerService.findSubjects(curriculum);
+        return new ResponseEntity<List<Subject>>(plannerTransformer.toSubjectVos(subjects), HttpStatus.OK);
+        
     }
     
    @RequestMapping(value = "/curriculums/{code}/subjects/subjectType/{subjectType}", method = RequestMethod.GET)

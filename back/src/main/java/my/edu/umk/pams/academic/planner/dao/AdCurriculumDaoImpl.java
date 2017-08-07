@@ -124,18 +124,18 @@ public class AdCurriculumDaoImpl extends GenericDaoSupport<Long, AdCurriculum> i
         return (List<AdCurriculum>) query.list();
     }
     
-    @Override
-    public List<AdSubject> find(AdProgram program, AdSubjectType subjectType) {
-        Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery("select s from AdCurriculum s where " +
-                "s.program = :program " +
-                "s.program = :program " +
-                "and s.metadata.state = :state ");
-        query.setInteger("state", AdMetaState.ACTIVE.ordinal());
-        query.setEntity("program", program);
-        query.setInteger("subjectType", subjectType.ordinal());
-        return (List<AdSubject>) query.list();
-    }
+//    @Override
+//    public List<AdSubject> find(AdProgram program, AdSubjectType subjectType) {
+//        Session session = sessionFactory.getCurrentSession();
+//        Query query = session.createQuery("select s from AdCurriculum s where " +
+//                "s.program = :program " +
+//                "s.program = :program " +
+//                "and s.metadata.state = :state ");
+//        query.setInteger("state", AdMetaState.ACTIVE.ordinal());
+//        query.setEntity("program", program);
+//        query.setInteger("subjectType", subjectType.ordinal());
+//        return (List<AdSubject>) query.list();
+//    }
 
     @Override
     public List<AdSubject> findSubjects(AdCurriculum curriculum) {
@@ -298,7 +298,6 @@ public class AdCurriculumDaoImpl extends GenericDaoSupport<Long, AdCurriculum> i
 		
 	}
 
-
     public void updateSubject(AdCurriculum curriculum, AdSubject subject, AdUser user) {
         Validate.notNull(user, "User cannot be null");
         Session session = sessionFactory.getCurrentSession();
@@ -341,6 +340,28 @@ public class AdCurriculumDaoImpl extends GenericDaoSupport<Long, AdCurriculum> i
         Session session = sessionFactory.getCurrentSession();
         session.delete(part);
     }
+
+	@Override
+	public List<AdBundleSubject> findBundleSubjects(AdCurriculum curriculum, AdSubject subject) {
+	
+		Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select s from AdBundleSubject s where " +
+                "s.curriculum = :curriculum " +
+                "and s.subject = :subject " +
+                "and s.metadata.state = :state " +
+                "order by s.course.code asc");
+        query.setInteger("state", AdMetaState.ACTIVE.ordinal());
+        query.setEntity("subject", subject);
+        query.setEntity("curriculum", curriculum);
+        query.setCacheable(true);
+        return (List<AdBundleSubject>) query.list();
+	}
+
+	@Override
+	public List<AdSubject> find(AdCurriculum curriculum, AdSubject subject) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 	
 }

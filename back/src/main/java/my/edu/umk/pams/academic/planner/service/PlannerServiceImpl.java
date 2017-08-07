@@ -313,6 +313,11 @@ public class PlannerServiceImpl implements PlannerService {
     public List<AdCurriculum> findCurriculums(AdProgram program) {
         return curriculumDao.find(program);
     }
+    
+    @Override
+    public List<AdBundleSubject> findBundleSubjects(AdCurriculum curriculum, AdSubject subject ) {
+        return curriculumDao.findBundleSubjects(curriculum, subject);
+    }
 
     @Override
     public List<AdCurriculum> findCurriculums(AdProgram program, Integer offset, Integer limit) {

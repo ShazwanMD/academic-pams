@@ -80,7 +80,7 @@ public interface PlannerService {
     List<AdSubject> findSubjects(String filter, AdCurriculum curriculum);
 
     List<AdSubject> findSubjectByCourse(AdCourse course);
-
+    
     Integer countCurriculum();
 
     Integer countCurriculum(String filter);
@@ -333,5 +333,8 @@ public interface PlannerService {
 	List<AdSubject> findSubjectsByCurriculumAndSubjectTypeCore (AdCurriculum curriculum, AdSubjectType subjectType);
 	
 	List<AdSubject> findSubjectsByCurriculumAndSubjectTypeElective  (AdCurriculum curriculum, AdSubjectType subjectType);
+
+	List<AdBundleSubject> findBundleSubjects(AdCurriculum curriculum, AdSubject subject);
+	
 
 }
