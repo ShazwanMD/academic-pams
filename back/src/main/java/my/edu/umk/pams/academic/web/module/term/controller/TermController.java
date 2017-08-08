@@ -529,13 +529,23 @@ public class TermController {
 		workflowService.claimTask(task);
 	}
 
-	@RequestMapping(value = "/enrollmentApplications/completeTask", method = RequestMethod.POST)
+	/*@RequestMapping(value = "/enrollmentApplications/completeTask", method = RequestMethod.POST)
 	public void completeEnrollmentApplicationTask(@RequestBody EnrollmentApplicationTask vo) {
 		dummyLogin();
 		Task task = termService.findEnrollmentApplicationTaskByTaskId(vo.getTaskId());
 		workflowService.completeTask(task);
-	}
+	}*/
 
+	@RequestMapping(value = "/enrollmentApplications/completeTask", method = RequestMethod.POST)
+	public void completeEnrollmentApplicationTask(@RequestBody EnrollmentApplicationTask vo) {
+		dummyLogin();
+		System.out.println("Test 1");
+		Task task = termService.findEnrollmentApplicationTaskByTaskId(vo.getTaskId());
+		System.out.println("Test 2");
+		workflowService.completeTask(task);
+		System.out.println("Test 3");
+	}
+	
 	@RequestMapping(value = "/enrollmentApplications/releaseTask", method = RequestMethod.POST)
 	public ResponseEntity<String> releaseEnrollmentApplicationTask(@RequestBody EnrollmentApplicationTask vo) {
 		dummyLogin();

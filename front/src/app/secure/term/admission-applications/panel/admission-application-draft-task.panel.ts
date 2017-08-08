@@ -24,6 +24,7 @@ export class AdmissionApplicationDraftTaskPanel implements OnInit {
   private _dialog: MdDialog;
   private editorDialogRef: MdDialogRef<AdmissionApplicationTaskEditorDialog>;
   private admissionApplicationTask: AdmissionApplicationTask = <AdmissionApplicationTask>{};
+
   @Input() admissionApplication: AdmissionApplication;
 
   constructor(router: Router,

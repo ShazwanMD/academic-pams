@@ -48,7 +48,7 @@
             <conditionExpression>${removeDecision}</conditionExpression>
         </sequenceFlow>
 
-        <sequenceFlow id="flow1.3" sourceRef="enrollmentApplication_draft_UT" targetRef="enrollmentApplication_register_ST">
+        <sequenceFlow id="flow1.3" sourceRef="enrollmentApplication_draft_UT" targetRef="enrollmentApplication_complete_ST">
             <conditionExpression>${!removeDecision}</conditionExpression>
         </sequenceFlow>
         <!--

@@ -38,6 +38,9 @@ export class EnrollmentApplicationTaskWorkflowPanel implements OnInit {
           case FlowState.DRAFTED:
             componentFactory = this.cfr.resolveComponentFactory(EnrollmentApplicationDraftTaskPanel);
             break;
+          /*case FlowState.REGISTERED:
+              componentFactory = this.cfr.resolveComponentFactory(EnrollmentApplicationRegisterTaskPanel);
+              break;*/
         }
         this.componentRef = this.taskPanel.createComponent(componentFactory);
         this.componentRef.instance.enrollmentApplicationTask = task;
