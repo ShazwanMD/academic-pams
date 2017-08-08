@@ -1,3 +1,6 @@
+import { StudentProfileCenterPage } from './studentProfile/student-profile-center.page';
+import { ProfileCenterPage } from './profile/profile-center.page';
+import { ProfileDetailPage } from './profile/profile-detail.page';
 import {
   Component,
   ComponentFactory,
@@ -34,7 +37,7 @@ export class DashboardPage implements OnInit, OnDestroy {
     if (this.authzService.hasRole('ROLE_ADMINISTRATOR') && this.authzService.hasRole('ROLE_USER')) {
       componentFactory = this.cfr.resolveComponentFactory(AdministratorDashboardPanel);
     } else if (this.authzService.hasRole('ROLE_USER')) {
-      componentFactory = this.cfr.resolveComponentFactory(StudentDashboardPanel);
+      componentFactory = this.cfr.resolveComponentFactory(StudentProfileCenterPage);
     }
 
     // handle null factory

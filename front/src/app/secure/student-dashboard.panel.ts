@@ -18,42 +18,7 @@ export class StudentDashboardPanel implements OnInit {
 
   ngOnInit(): void {
     {
-      this.items = [{
-        title: 'Profile',
-        route: '/secure/profile',
-        icon: 'contacts',
-        color: 'blue-700',
-        description: '',
-      },
-        // {
-        //   title: 'Planner',
-        //   route: '/secure/planner',
-        //   icon: 'assignment',
-        //   color: 'blue-700',
-        //   description: '',
-        // }
-        // ,
-        {
-          title: 'Term',
-          route: '/secure/term',
-          icon: 'description',
-          color: 'blue-700',
-          description: '',
-        },
-        {
-          title: 'Graduation',
-          route: '/secure/graduation',
-          icon: 'assignment',
-          color: 'blue-700',
-          description: '',
-        },
-        // {
-        //   title: 'Setup',
-        //   route: '/secure/setup',
-        //   icon: 'assignment',
-        //   color: 'blue-700',
-        //   description: ' ',
-        // },
+      this.items = [
         {
          title: 'Student Profile',
          route: '/secure/studentProfile',
@@ -61,6 +26,13 @@ export class StudentDashboardPanel implements OnInit {
          color: 'blue-700',
          description: ' ',
          },
+        {
+        title: 'Profile',
+        route: '/secure/profile',
+        icon: 'contacts',
+        color: 'blue-700',
+        description: '',
+      },
 
       ];
     }
