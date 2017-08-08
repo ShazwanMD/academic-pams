@@ -6,9 +6,7 @@ VALUES
 
 INSERT INTO AD_STDN (ID, STUDENT_STATUS, COHORT_ID,STUDY_MODE_ID) VALUES (currval('SQ_AD_ACTR'), 1, 1,1);
 
-UPDATE AD_USER
-SET actor_id = currval('SQ_AD_ACTR')
-WHERE email = 'ammar@umk.edu.my';
+UPDATE AD_USER SET ACTOR_ID = currval('SQ_AD_ACTR') WHERE email = 'ammar@umk.edu.my';
 
 -- student 2
 INSERT INTO AD_ACTR (ID, IDENTITY_NO, NAME, EMAIL, PHONE, MOBILE, FAX, ACTOR_TYPE, C_TS, C_ID, M_ST)
