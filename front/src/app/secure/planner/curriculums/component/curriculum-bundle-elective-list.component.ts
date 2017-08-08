@@ -92,7 +92,7 @@ export class CurriculumBundleElectiveListComponent implements OnInit, OnChanges 
     config.height = '60%';
     config.position = { top: '65px' };
     this.bundleElectiveDialogRef = this.dialog.open(CurriculumBundleElectiveDialog, config);
-    this.bundleElectiveDialogRef.componentInstance.curriculum = this.curriculum;
+   // this.bundleElectiveDialogRef.componentInstance.curriculum = this.curriculum;
     this.bundleElectiveDialogRef.afterClosed().subscribe((res) => {
       // no op
     });

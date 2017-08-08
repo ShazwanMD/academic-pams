@@ -79,6 +79,23 @@ export class CurriculumBndleCourseListComponent implements OnInit, OnChanges {
     // no op
   }
 
+
+  showBundleSubjectPartDialog(bundleSubjectPart: BundleSubjectPart): void {
+    console.log("open");
+    console.log(this.curriculum);
+    let config: MdDialogConfig = new MdDialogConfig();
+    config.viewContainerRef = this.vcf;
+    config.role = 'dialog';
+    config.width = '50%';
+    config.height = '60%';
+    config.position = { top: '65px' };
+    this.bundleSubjectPartDialogRef = this.dialog.open(CurriculumBundleSubjectPartDialog, config);
+    this.bundleSubjectPartDialogRef.componentInstance.curriculum = this.curriculum;
+    this.bundleSubjectPartDialogRef.afterClosed().subscribe((res) => {
+      // no op
+    });
+
+  }
   // showSingleSubjectDialog(singleSubject: SingleSubject): void {
   //   let config: MdDialogConfig = new MdDialogConfig();
   //   config.viewContainerRef = this.vcf;
