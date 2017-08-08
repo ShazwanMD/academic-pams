@@ -5,6 +5,7 @@ import {FacultyActions} from './faculty.action';
 import {PlannerService} from '../../../../services/planner.service';
 import {PlannerModuleState} from '../index';
 import {Faculty} from '../../../shared/model/planner/faculty.interface';
+import {from} from 'rxjs/observable/from';
 
 @Injectable()
 export class FacultyEffects {
@@ -32,7 +33,8 @@ export class FacultyEffects {
     .ofType(FacultyActions.SAVE_FACULTY)
     .map((action) => action.payload)
     .switchMap((faculty) => this.plannerService.saveFaculty(faculty))
-    .map((faculty) => this.facultyActions.saveFacultySuccess(faculty));
+    .map((faculty) => this.facultyActions.saveFacultySuccess(faculty))
+    .mergeMap((action) => from([action, this.facultyActions.findFaculties()]));
 
   @Effect() updatefaculty$ = this.actions$
     .ofType(FacultyActions.UPDATE_FACULTY)

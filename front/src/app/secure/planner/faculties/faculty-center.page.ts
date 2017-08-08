@@ -20,14 +20,6 @@ export class FacultyCenterPage implements OnInit {
   private faculties$: Observable<Faculty[]>;
 
   private creatorDialogRef: MdDialogRef<FacultyCreatorDialog>;
-  private columns: any[] = [
-    {name: 'code', label: 'Code'},
-    {name: 'description', label: 'Description'},
-    {name: 'name', label: 'Name'},
-    {name: 'prefix', label: 'Prefix'},
-    {name: 'status', label: 'FacultyStatus'},
-    {name: 'action', label: ''},
-  ];
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -43,8 +35,8 @@ export class FacultyCenterPage implements OnInit {
   }
 
   viewFaculty(faculty: Faculty) {
-    console.log('faculty: ' + faculty.id);
-    this.router.navigate(['/faculties-detail', faculty.id]);
+    console.log('faculty: ' + faculty.code);
+    this.router.navigate(['/secure/planner/faculties', faculty.code]);
   }
 
   createDialog(): void {
@@ -60,7 +52,7 @@ export class FacultyCenterPage implements OnInit {
     config.height = '75%';
     config.position = {top: '0px'};
     this.creatorDialogRef = this.dialog.open(FacultyCreatorDialog, config);
-    if (code) this.creatorDialogRef.componentInstance.faculty = code;
+    //if (code) this.creatorDialogRef.componentInstance.faculty = code;
 
     //set
     this.creatorDialogRef.afterClosed().subscribe((res) => {
