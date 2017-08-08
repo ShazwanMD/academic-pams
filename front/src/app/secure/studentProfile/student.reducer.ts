@@ -9,7 +9,7 @@ const initialState: StudentState = <Student>{};
 
 export function studentReducer(state = initialState, action: Action): StudentState {
   switch (action.type) {
-    case StudentProfileActions.FIND_STUDENT_BY_IDENTITY_NO_SUCCESS: {
+    case StudentProfileActions.FIND_STUDENT_BY_USER_SUCCESS: {
       return action.payload;
     }
     default: {

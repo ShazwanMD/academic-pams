@@ -1,24 +1,41 @@
 import { HttpInterceptorService } from '@covalent/http';
-import {Injectable} from '@angular/core';
-import {Http, Response} from '@angular/http';
-import {Observable} from 'rxjs';
-import {environment} from '../environments/environment';
+import { Injectable } from '@angular/core';
+import { Http, Response } from '@angular/http';
+import { Observable } from 'rxjs';
+import { environment } from '../environments/environment';
 
-import {Student} from '../app/shared/model/identity/student.interface';
-import {Address} from '../app/shared/model/profile/address.interface';
-import {Guardian} from '../app/shared/model/profile/guardian.interface';
-import {Contact} from '../app/shared/model/profile/contact.interface';
-import {Guarantor} from '../app/shared/model/profile/guarantor.interface';
-import {Enrollment} from '../app/shared/model/term/enrollment.interface';
-import {SwitchStudyMode} from '../app/shared/model/profile/switch-study-mode.interface';
-import {TransferCohort} from '../app/shared/model/profile/transfer-cohort.interface';
+import { Student } from '../app/shared/model/identity/student.interface';
+import { Address } from '../app/shared/model/profile/address.interface';
+import { Guardian } from '../app/shared/model/profile/guardian.interface';
+import { Contact } from '../app/shared/model/profile/contact.interface';
+import { Guarantor } from '../app/shared/model/profile/guarantor.interface';
+import { Enrollment } from '../app/shared/model/term/enrollment.interface';
+import { SwitchStudyMode } from '../app/shared/model/profile/switch-study-mode.interface';
+import { TransferCohort } from '../app/shared/model/profile/transfer-cohort.interface';
 
 @Injectable()
 export class ProfileService {
 
   private PROFILE_API: string = environment.endpoint + '/api/profile';
 
-  constructor(private http: Http,private _http: HttpInterceptorService) {
+  constructor(private http: Http, private _http: HttpInterceptorService) {
+  }
+  // ====================================================================================================
+  // STUDENT - Login
+  // ====================================================================================================
+
+  findStudentByUser(): Observable<Student> {
+    return this._http.get(this.PROFILE_API + '/studentLogins')
+      .map((res: Response) => <Student>res.json());
+  }
+  findAddressessByStudent(): Observable<Address[]> {
+    return this._http.get(this.PROFILE_API + '/studentLogins/addressessByStudent')
+      .map((res: Response) => <Address[]>res.json());
+  }
+
+  findStudentsByIdentityNo(matricNo: string): Observable<Student> {
+    return this._http.get(this.PROFILE_API + '/studentLogins/' + matricNo)
+      .map((res: Response) => <Student>res.json());
   }
 
   // ====================================================================================================
