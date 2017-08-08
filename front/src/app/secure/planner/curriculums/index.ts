@@ -1,3 +1,6 @@
+import {CurriculumBndleCourseListComponent} from './component/curriculum-bundle-course-list.component';
+import {CurriculumBundleElectiveListComponent} from './component/curriculum-bundle-elective-list.component';
+import {CurriculumBundleElectiveDialog} from './dialog/curriculum-bundle-elective.dialog';
 import {CurriculumBundleSubjectPartDialog} from './dialog/curriculum-bundle-subject-part.dialog';
 import {CurriculumBundleSubjectDialog} from './dialog/curriculum-bundle-subject.dialog';
 import {BundleSubjectComponent} from './component/curriculum-bundle-subject.component';
@@ -56,8 +59,10 @@ import {SubjectTypeSelectComponent} from './component/subject-type-select.compon
     CurriculumSubjectListComponent,
     SingleSubjectComponent,
     BundleSubjectComponent,
+    CurriculumBundleElectiveListComponent,
     SubjectTypeSelectComponent,
     CurriculumBundleSubjectListComponent,
+    CurriculumBndleCourseListComponent,
 
     // dialog
     CurriculumEditorDialog,
@@ -65,6 +70,7 @@ import {SubjectTypeSelectComponent} from './component/subject-type-select.compon
     CurriculumSingleSubjectDialog,
     CurriculumBundleSubjectDialog,
     CurriculumBundleSubjectPartDialog,
+    CurriculumBundleElectiveDialog,
     
   ],
   exports: [
@@ -73,6 +79,8 @@ import {SubjectTypeSelectComponent} from './component/subject-type-select.compon
     SingleSubjectComponent,
     BundleSubjectComponent,
     CurriculumSubjectListComponent,
+    CurriculumBundleElectiveListComponent,
+    CurriculumBndleCourseListComponent,
   ],
   entryComponents: [
     CurriculumEditorDialog,
@@ -83,9 +91,13 @@ import {SubjectTypeSelectComponent} from './component/subject-type-select.compon
     CurriculumSingleSubjectDialog,
     CurriculumBundleSubjectDialog,
     CurriculumBundleSubjectPartDialog,
+    CurriculumBundleElectiveDialog,
     SubjectTypeSelectComponent,
     CurriculumBundleSubjectListComponent,
     SingleSubjectComponent,
+    CurriculumBundleElectiveListComponent,
+    CurriculumBndleCourseListComponent,
+    CurriculumBndleCourseListComponent,
   ],
 })
 

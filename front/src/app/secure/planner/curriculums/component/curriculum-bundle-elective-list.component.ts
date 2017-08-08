@@ -26,18 +26,15 @@ import { MdDialog, MdDialogConfig, MdDialogRef } from '@angular/material';
 import { Subject } from '../../../../shared/model/planner/subject.interface';
 
 @Component({
-  selector: 'pams-curriculum-bundle-subject-list',
-  templateUrl: './curriculum-bundle-subject-list.component.html',
+  selector: 'pams-curriculum-bundle-elective-list',
+  templateUrl: './curriculum-bundle-elective-list.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CurriculumBundleSubjectListComponent implements OnInit, OnChanges {
+export class CurriculumBundleElectiveListComponent implements OnInit, OnChanges {
 
   private selectedRows: Subject[];
-  private bundleSubjectDialogRef: MdDialogRef<CurriculumBundleSubjectDialog>;
-  private bundleSubjectPartDialogRef: MdDialogRef<CurriculumBundleSubjectPartDialog>;
-   private bundleElectiveDialogRef: MdDialogRef<CurriculumBundleElectiveDialog>;
+  private bundleElectiveDialogRef: MdDialogRef<CurriculumBundleElectiveDialog>;
  
-
   private columns: any[] = [
     { name: 'id', label: 'Id' },
     { name: 'ordinal', label: 'Semester' },
@@ -87,38 +84,6 @@ export class CurriculumBundleSubjectListComponent implements OnInit, OnChanges {
     // no op
   }
 
-  showBundleSubjectDialog(bundleSubject: BundleSubject): void {
-    let config: MdDialogConfig = new MdDialogConfig();
-    config.viewContainerRef = this.vcf;
-    config.role = 'dialog';
-    config.width = '50%';
-    config.height = '60%';
-    config.position = { top: '65px' };
-    this.bundleSubjectDialogRef = this.dialog.open(CurriculumBundleSubjectDialog, config);
-    this.bundleSubjectDialogRef.componentInstance.curriculum = this.curriculum;
-    this.bundleSubjectDialogRef.afterClosed().subscribe((res) => {
-      // no op
-    });
-
-  }
-
-  showBundleSubjectPartDialog(bundleSubjectPart: BundleSubjectPart): void {
-    console.log("open");
-    console.log(this.curriculum);
-    let config: MdDialogConfig = new MdDialogConfig();
-    config.viewContainerRef = this.vcf;
-    config.role = 'dialog';
-    config.width = '50%';
-    config.height = '60%';
-    config.position = { top: '65px' };
-    this.bundleSubjectPartDialogRef = this.dialog.open(CurriculumBundleSubjectPartDialog, config);
-    this.bundleSubjectPartDialogRef.componentInstance.curriculum = this.curriculum;
-    this.bundleSubjectPartDialogRef.afterClosed().subscribe((res) => {
-      // no op
-    });
-
-  }
-
   showBundleElectiveDialog(bundleSubject: BundleSubject): void {
     let config: MdDialogConfig = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
@@ -127,12 +92,14 @@ export class CurriculumBundleSubjectListComponent implements OnInit, OnChanges {
     config.height = '60%';
     config.position = { top: '65px' };
     this.bundleElectiveDialogRef = this.dialog.open(CurriculumBundleElectiveDialog, config);
-    //this.bundleElectiveDialogRef.componentInstance.curriculum = this.curriculum;
+    this.bundleElectiveDialogRef.componentInstance.curriculum = this.curriculum;
     this.bundleElectiveDialogRef.afterClosed().subscribe((res) => {
       // no op
     });
 
   }
+
+
   selectRow(subject: Subject): void {
   }
 
