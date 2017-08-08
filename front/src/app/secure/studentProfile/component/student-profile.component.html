@@ -1,0 +1,40 @@
+<md-card>
+    <md-divider></md-divider>
+
+    <md-card-content>
+
+        <md-divider></md-divider>
+            <td-data-table 
+              [data]="addressess" 
+              [columns]="address" 
+              [sortBy]="summary" 
+              [sortOrder]="ASC" 
+              [sortable]="false" 
+              [multiple]="false"
+              [selectable]="false" 
+              (rowSelect)="edit.emit($event)" dense>
+
+                <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
+                  <div layout="row">
+                    <span flex>{{value}}</span>
+                  </div>
+                </template>
+
+                <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
+                  <div layout="row">
+                    <button md-icon-button [md-menu-trigger-for]="menuAddress">
+                            <md-icon>more_vert</md-icon>
+                          </button>
+                    <md-menu x-position="before" #menuAddress="mdMenu">
+                      <button md-menu-item (click)="editAddressDialog(row, true)">Update</button>
+                      <button md-menu-item (click)="deleteAddress(row, true)">Delete</button>
+                    </md-menu>
+                  </div>
+                </template>
+
+              </td-data-table>
+        <md-divider></md-divider>
+
+    </md-card-content>
+
+</md-card>
