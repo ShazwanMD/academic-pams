@@ -305,11 +305,11 @@ public class PlannerController {
     	return plannerService.isProgramExists(code,faculty);
 	}
 
-	//isCourseExists
+	/*//isCourseExists
     private boolean isCourseExists(String code, AdFaculty faculty) {
     	 System.out.println(plannerService.isCourseExists(code,faculty));
          return plannerService.isCourseExists(code,faculty);
-	}
+	}*/
     
     //isAcademicSessionCodeExists
     private boolean isAcademicSessionCodeExists(String code) {
@@ -393,9 +393,9 @@ public class PlannerController {
     public ResponseEntity<String> saveCourse(@PathVariable String code, @RequestBody Course vo) {
         dummyLogin();
         
-        AdFaculty faculty = plannerService.findFacultyByCode(code);
+        /*AdFaculty faculty = plannerService.findFacultyByCode(code);
         if (isCourseExists(code, faculty))
-            throw new IllegalArgumentException("Data course already exists! Please insert new data");
+            throw new IllegalArgumentException("Data course already exists! Please insert new data");*/
  
         AdCourse course = new AdCourseImpl();
         course.setCode(vo.getCode());
