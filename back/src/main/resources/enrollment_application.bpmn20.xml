@@ -31,7 +31,7 @@
         == USER TASK :
         ====================================================================================================
         -->
-        <serviceTask id="enrollmentApplication_draft_ST"
+         <serviceTask id="enrollmentApplication_draft_ST"
                      activiti:expression="#{enrollmentApplication_draft_ST.execute(execution)}"/>
 
         <sequenceFlow id="flow1.1" sourceRef="enrollmentApplication_draft_ST" targetRef="enrollmentApplication_draft_UT"/>
@@ -48,7 +48,7 @@
             <conditionExpression>${removeDecision}</conditionExpression>
         </sequenceFlow>
 
-        <sequenceFlow id="flow1.3" sourceRef="enrollmentApplication_draft_UT" targetRef="enrollmentApplication_complete_ST">
+        <sequenceFlow id="flow1.3" sourceRef="enrollmentApplication_draft_UT" targetRef="enrollmentApplication_register_ST">
             <conditionExpression>${!removeDecision}</conditionExpression>
         </sequenceFlow>
         <!--
