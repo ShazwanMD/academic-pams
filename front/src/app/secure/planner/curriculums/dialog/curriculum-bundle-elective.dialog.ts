@@ -55,4 +55,12 @@ export class CurriculumBundleElectiveDialog implements OnInit {
     
   }
 
+
+  submit(bundleSubject: BundleSubject,isValid: boolean): void {
+
+    console.log('subjectBundle: ' + bundleSubject);
+    this.store.dispatch(this.actions.addBundleSubject(this._curriculum, bundleSubject));
+    this.dialog.close();
+  }
 }
+

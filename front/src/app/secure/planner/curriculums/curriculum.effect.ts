@@ -83,15 +83,16 @@ export class CurriculumEffects {
       .map((state) => state[1])
       .map((curriculum: Curriculum) => this.curriculumActions.findCurriculumByCode(curriculum.code));
 
-  @Effect() addBundleSubject$ =
+  @Effect() addSubjectPart$ =
     this.actions$
-      .ofType(CurriculumActions.ADD_BUNDLE_SUBJECT)
+      .ofType(CurriculumActions.ADD_SUBJECT_PART)
       .map((action) => action.payload)
-      .switchMap((payload) => this.plannerService.addBundleSubject(payload.curriculum, payload.subject))
-      .map((message) => this.curriculumActions.addBundleSubjectSuccess(message))
+      .switchMap((payload) => this.plannerService.addSubjectPart(payload.curriculum, payload.subject))
+      .map((message) => this.curriculumActions.addSubjectPartSuccess(message))
       .withLatestFrom(this.store$.select(...this.CURRICULUM))
       .map((state) => state[1])
       .map((curriculum: Curriculum) => this.curriculumActions.findCurriculumByCode(curriculum.code));
+      
 
  @Effect() deleteSubject$ = this.actions$
     .ofType(CurriculumActions.REMOVE_SUBJECT)

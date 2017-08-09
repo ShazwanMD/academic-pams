@@ -36,7 +36,8 @@ export class CurriculumBndleCourseListComponent implements OnInit, OnChanges {
 
   private columns: any[] = [
     {name: 'id', label: 'Id'},
-    // {name: 'parts', label: 'Parts'},
+    {name: 'ordinal', label: 'Semester'},
+    {name: 'course.code', label: 'course'},
     {name: 'action', label: ''},
   ];
 
@@ -96,20 +97,6 @@ export class CurriculumBndleCourseListComponent implements OnInit, OnChanges {
     });
 
   }
-  // showSingleSubjectDialog(singleSubject: SingleSubject): void {
-  //   let config: MdDialogConfig = new MdDialogConfig();
-  //   config.viewContainerRef = this.vcf;
-  //   config.role = 'dialog';
-  //   config.width = '50%';
-  //   config.height = '60%';
-  //   config.position = {top: '65px'};
-  //   this.singleSubjectDialogRef = this.dialog.open(CurriculumSingleSubjectDialog, config);
-  //   this.singleSubjectDialogRef.componentInstance.curriculum = this.curriculum;
-  //   this.singleSubjectDialogRef.afterClosed().subscribe((res) => {
-  //     // no op
-  //   });
-
-  // }
 
    deleteSubject( subject:Subject): void {
         if ( subject.id) {

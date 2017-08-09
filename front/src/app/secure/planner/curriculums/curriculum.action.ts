@@ -261,7 +261,7 @@ export class CurriculumActions {
     };
   }
 
-   static ADD_SUBJECT_PART = '[Subject] Add Bundle Subject Success';
+   static ADD_SUBJECT_PART = '[Subject] Add Bundle Subject Parts Success';
 
   addSubjectPart(curriculum, subject): Action {
     return {
@@ -270,7 +270,7 @@ export class CurriculumActions {
     };
   }
 
-  static ADD_SUBJECT_PART_SUCCESS = '[Subject] Add Bundle Subject Success';
+  static ADD_SUBJECT_PART_SUCCESS = '[Subject] Add Bundle Subject Parts Success';
 
   addSubjectPartSuccess(message): Action {
     return {

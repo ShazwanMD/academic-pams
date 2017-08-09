@@ -97,11 +97,14 @@ export class CurriculumSubjectListComponent implements OnInit, OnChanges {
 
   }
 
-  deleteSubject(subject: Subject): void {
-    this.store.dispatch(this.actions.deleteSubject(this.curriculum, subject));
-    console.log(' deleteSubject:{}', subject);
+  deleteSubject(): void {
+    console.log('length: ' + this.selectedRows.length);
+    for (let i: number = 0; i < this.selectedRows.length; i++) {
+    this.store.dispatch(this.actions.deleteSubject(this.curriculum, this.selectedRows[i]));
+    }
+  
+    this.selectedRows = [];
   }
-
   selectRow(subject: Subject): void {
   }
 
