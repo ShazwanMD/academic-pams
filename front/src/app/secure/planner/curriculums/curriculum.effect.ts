@@ -24,11 +24,11 @@ export class CurriculumEffects {
     .map((curriculums) => this.curriculumActions.findCurriculumsSuccess(curriculums));
 
 
-     @Effect() findBundleSubjectsByCurriculum$ = this.actions$
-    .ofType(CurriculumActions.FIND_BUNDLE_SUBJECTS_BY_CURRICULUM)
-    .map((action) => action.payload)
-    .switchMap((curriculum) => this.plannerService.findBundleSubjectsByCurriculum(curriculum))
-    .map((subjects) => this.curriculumActions. findBundleSubjectsByCurriculumsSuccess(subjects));
+    //  @Effect() findBundleSubjectsByCurriculum$ = this.actions$
+    // .ofType(CurriculumActions.FIND_BUNDLE_SUBJECTS_BY_CURRICULUM)
+    // .map((action) => action.payload)
+    // .switchMap((curriculum) => this.plannerService.findBundleSubjectsByCurriculum(curriculum))
+    // .map((subjects) => this.curriculumActions. findBundleSubjectsByCurriculumsSuccess(subjects));
 
   @Effect() findCurriculumByCode$ = this.actions$
     .ofType(CurriculumActions.FIND_CURRICULUM_BY_CODE)
@@ -92,24 +92,13 @@ export class CurriculumEffects {
       .withLatestFrom(this.store$.select(...this.CURRICULUM))
       .map((state) => state[1])
       .map((curriculum: Curriculum) => this.curriculumActions.findCurriculumByCode(curriculum.code));
+
+ @Effect() deleteSubject$ = this.actions$
+    .ofType(CurriculumActions.REMOVE_SUBJECT)
+    .map((action) => action.payload)
+    .switchMap((payload) => this.plannerService.deleteSubject(payload.curriculum, payload.subject))
+    .map((message) => this.curriculumActions.deleteSubjectSuccess(message))
+    .withLatestFrom(this.store$.select(...this.CURRICULUM))
+    .map((state) => state[1])
+    .map((curriculum: Curriculum) => this.curriculumActions.findCurriculumByCode(curriculum.code));
 }
-
-//  @Effect()  deleteSubject$ = this.actions$
-//     .map((state) => state[1])
-//     .ofType(CurriculumActions.REMOVE_SUBJECT)
-//     .map((action) => action.payload)
-//     .switchMap((payload) => this.plannerService.deleteSubject(payload.curriculum, payload.subject))
-//     .map((message) => this.CurriculumActions.deleteSubjectSuccess(message))
-//     .withLatestFrom(this.store$.select(...this.CURRICULUM))
-//     .map((state) => state[1])
-//     .map((curriculum: Curriculum) => this.curriculumActions.findCurriculumByCode(curriculum.code));
-
-//  @Effect() addSubjectPart$ =
-//     this.actions$
-//       .ofType(CurriculumActions.ADD_SUBJECT_PART)
-//       .map((action) => action.payload)
-//       .switchMap((payload) => this.plannerService.addSubjectPart(payload.curriculum, payload.subject))
-//       .withLatestFrom(this.store$.select(...this.CURRICULUM))
-//       .map((state) => state[1])
-//       .map((curriculum: Curriculum) => this.curriculumActions.findCurriculumByCode(curriculum.code));
-// }

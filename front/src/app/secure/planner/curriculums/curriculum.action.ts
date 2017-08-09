@@ -172,7 +172,7 @@ export class CurriculumActions {
 
     static REMOVE_SUBJECT_SUCCESS = '[Curriculum] Remove Curriculum Success';
 
-    deleteSectionSuccess( message ): Action {
+    deleteSubjectSuccess( message ): Action {
         console.log( "deleteSubjectSuccess" );
         return {
             type: CurriculumActions.REMOVE_SUBJECT_SUCCESS,
