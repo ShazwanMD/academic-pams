@@ -307,11 +307,11 @@ export class PlannerService {
       .map((res) => <Subject[]>res.json());
   }
 
-  findBundleSubjectsByCurriculum(curriculum: Curriculum): Observable<BundleSubject[]> {
-    console.log('findSubjects');
-    return this._http.get(this.PLANNER_API + '/curriculums/' + curriculum.code + '/bundleSubjects')
-      .map((res) => <Subject[]>res.json());
-  }
+  // // findBundleSubjectsByCurriculum(curriculum: Curriculum): Observable<BundleSubject[]> {
+  // //   console.log('findSubjects');
+  // //   return this._http.get(this.PLANNER_API + '/curriculums/' + curriculum.code + '/bundleSubjects')
+  // //     .map((res) => <Subject[]>res.json());
+  // }
   
   addSingleSubject(curriculum: Curriculum, subject: SingleSubject): Observable<String> {
     console.log('curriculum:' + curriculum.code);
@@ -333,6 +333,10 @@ export class PlannerService {
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
+    deleteSubject(curriculum: Curriculum, subject: Subject) {
+    return this._http.delete(this.PLANNER_API + '/curriculums/' + curriculum.code + '/subjects/' + subject.id)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
 
 //   updateSubject(subject: Subject): Observable<String> {
 //     return this._http.put(this.PLANNER_API + '/subjects/' + subject.id, JSON.stringify(subject))
