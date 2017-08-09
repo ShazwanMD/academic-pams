@@ -262,6 +262,23 @@ public class TermController {
 			String referenceNo = termService.startAdmissionApplicationTask(application);
 
 			System.out.println("Success save data: " + student.getName());
+
+			// send email notification to student after admission process
+			String applicationUrl = systemService.findConfigurationByKey("application.url").getValue();
+			AdEmailQueue emailQueue = new AdEmailQueueImpl();
+			emailQueue.setCode("EQ" + System.currentTimeMillis());
+			emailQueue.setTo("asyikin.mr@umk.edu.my"); // set default email to
+														// test
+			emailQueue.setSubject("Application for semester registration:" + academicSession.getCode());
+			emailQueue.setQueueStatus(AdEmailQueueStatus.QUEUED);
+			emailQueue.setBody("Thank you" + student.getName() + " for the application. This application will be reviewed:" + referenceNo
+					+ " Please click this URL to view details:" + applicationUrl);
+			emailQueue.setRetryCount(1);
+			LOG.debug("test1: {}", emailQueue);
+
+			systemService.saveEmailQueue(emailQueue);
+			LOG.debug("test2: {}", emailQueue);
+
 			return new ResponseEntity<String>(referenceNo, HttpStatus.OK);
 		}
 	}
@@ -986,14 +1003,15 @@ public class TermController {
 			termService.addAppointment(section, appointment);
 
 			// send mail notification
-			String applicationUrl=systemService.findConfigurationByKey("application.url").getValue();
+			String applicationUrl = systemService.findConfigurationByKey("application.url").getValue();
 			AdEmailQueue emailQueue = new AdEmailQueueImpl();
 			emailQueue.setCode("EQ" + System.currentTimeMillis());
-			emailQueue.setTo("asyikin.mr@umk.edu.my"); //set default email to test
+			emailQueue.setTo("asyikin.mr@umk.edu.my"); // set default email to
+														// test
 			emailQueue.setSubject("Appointment class for section:" + section.getCode());
 			emailQueue.setQueueStatus(AdEmailQueueStatus.QUEUED);
-			emailQueue.setBody("Confirmation appointment to section:" + section.getOffering().getTitleEn()
-					+ "." + " Please click this URL to view details:" + applicationUrl);
+			emailQueue.setBody("Confirmation appointment to section:" + section.getOffering().getTitleEn() + "."
+					+ " Please click this URL to view details:" + applicationUrl);
 			emailQueue.setRetryCount(1);
 			LOG.debug("test1: {}", emailQueue);
 
