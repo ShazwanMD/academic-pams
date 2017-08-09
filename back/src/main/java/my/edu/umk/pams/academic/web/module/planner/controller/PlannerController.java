@@ -6,6 +6,7 @@ import my.edu.umk.pams.academic.planner.model.*;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
 import my.edu.umk.pams.academic.term.model.AdAssessment;
 import my.edu.umk.pams.academic.term.model.AdOffering;
+import my.edu.umk.pams.academic.term.model.AdSection;
 import my.edu.umk.pams.academic.web.module.planner.vo.*;
 
 import org.slf4j.Logger;
@@ -677,6 +678,7 @@ public class PlannerController {
         return new ResponseEntity<List<Subject>>(plannerTransformer.toSubjectVos(subjects), HttpStatus.OK);
     }
     
+ // delete subject by curriculum
 	@RequestMapping(value = "/curriculums/{code}/subjects/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<String> deleteSubject(@PathVariable String code, @PathVariable Long id) {
 		dummyLogin();
