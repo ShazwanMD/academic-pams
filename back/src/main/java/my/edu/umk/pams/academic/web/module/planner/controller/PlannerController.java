@@ -564,7 +564,7 @@ public class PlannerController {
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
     
-    @RequestMapping(value = "/curriculums/{code}/SubjectParts", method = RequestMethod.POST)
+    @RequestMapping(value = "/curriculums/{code}/subjectParts", method = RequestMethod.POST)
     public ResponseEntity<String> addSubjectPart(@PathVariable String code, @RequestBody BundleSubjectPart vo) {
         dummyLogin();
         LOG.info("Adding subject part");
