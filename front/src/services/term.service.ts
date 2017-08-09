@@ -233,8 +233,7 @@ export class TermService {
     return this._http.post(this.TERM_API + '/enrollmentApplications/completeTask', JSON.stringify(enrollmentApplicationTask))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
-  
-    
+     
   /*removeEnrollmentApplicationTask(enrollmentApplicationTask: EnrollmentApplicationTask): Observable<String> {
    console.log("TaskId: " + enrollmentApplicationTask.taskId);
    return this._http.delete(this.TERM_API + '/enrollmentApplications/deleteTask', JSON.stringify(enrollmentApplicationTask))
