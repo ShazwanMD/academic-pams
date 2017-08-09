@@ -130,17 +130,19 @@ export class CurriculumBundleSubjectListComponent implements OnInit, OnChanges {
     });
   }
 
+  deleteSubject(): void {
+    console.log('length: ' + this.selectedRows.length);
+    for (let i: number = 0; i < this.selectedRows.length; i++) {
+    this.store.dispatch(this.actions.deleteSubject(this.curriculum, this.selectedRows[i]));
+    }
+  
+    this.selectedRows = [];
+  }
 
-  deleteSubject(subject: Subject): void {
-    this.store.dispatch(this.actions.deleteSubject(this.curriculum, subject));
-    console.log(' deleteSubject:{}', subject);
+  goBack(route: string): void {
+    this.router.navigate(['/subjects']);
   }
 }
-
-//   goBack(route: string): void {
-//     this.router.navigate(['/subjects']);
-//   }
-// }
 
 
 

@@ -8,9 +8,8 @@
     <button md-icon-button [md-menu-trigger-for]="menu">
       <md-icon>add</md-icon>
     </button>
-    <button md-button class="md-icon-button" (click)="deleteSubject(selectedRows[0])"
-            [disabled]="selectedRows.length != 1">
-      <md-icon class="md-24 tc-grey-300" [ngClass]="{'tc-grey-700': selectedRows.length === 1}">delete</md-icon>
+     <button md-button class="md-icon-button" (click)="deleteSubject()">
+      <md-icon class="md-24 tc-grey-300" [ngClass]="{'tc-grey-700': selectedRows.length > 0}">delete</md-icon>
     </button>
     <md-menu x-position="before" #menu="mdMenu">
       <button md-menu-item (click)="showBundleSubjectDialog()">Bundle Subject</button> 
