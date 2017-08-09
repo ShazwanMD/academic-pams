@@ -102,23 +102,6 @@ export class CurriculumBundleSubjectListComponent implements OnInit, OnChanges {
 
   }
 
-  showBundleSubjectPartDialog(bundleSubjectPart: BundleSubjectPart): void {
-    console.log("open");
-    console.log(this.curriculum);
-    let config: MdDialogConfig = new MdDialogConfig();
-    config.viewContainerRef = this.vcf;
-    config.role = 'dialog';
-    config.width = '50%';
-    config.height = '60%';
-    config.position = { top: '65px' };
-    this.bundleSubjectPartDialogRef = this.dialog.open(CurriculumBundleSubjectPartDialog, config);
-    this.bundleSubjectPartDialogRef.componentInstance.curriculum = this.curriculum;
-    this.bundleSubjectPartDialogRef.afterClosed().subscribe((res) => {
-      // no op
-    });
-
-  }
-
   showBundleElectiveDialog(bundleSubject: BundleSubject): void {
     let config: MdDialogConfig = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
@@ -127,7 +110,7 @@ export class CurriculumBundleSubjectListComponent implements OnInit, OnChanges {
     config.height = '60%';
     config.position = { top: '65px' };
     this.bundleElectiveDialogRef = this.dialog.open(CurriculumBundleElectiveDialog, config);
-    //this.bundleElectiveDialogRef.componentInstance.curriculum = this.curriculum;
+    this.bundleElectiveDialogRef.componentInstance.curriculum = this.curriculum;
     this.bundleElectiveDialogRef.afterClosed().subscribe((res) => {
       // no op
     });
@@ -147,10 +130,17 @@ export class CurriculumBundleSubjectListComponent implements OnInit, OnChanges {
     });
   }
 
-  goBack(route: string): void {
-    this.router.navigate(['/subjects']);
+
+  deleteSubject(subject: Subject): void {
+    this.store.dispatch(this.actions.deleteSubject(this.curriculum, subject));
+    console.log(' deleteSubject:{}', subject);
   }
 }
+
+//   goBack(route: string): void {
+//     this.router.navigate(['/subjects']);
+//   }
+// }
 
 
 
