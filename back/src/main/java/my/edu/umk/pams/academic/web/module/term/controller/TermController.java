@@ -986,36 +986,14 @@ public class TermController {
 			termService.addAppointment(section, appointment);
 
 			// send mail notification
-			/*
-			 * //String applicationUrl=
-			 * systemService.findConfigurationByKey("application.url").getValue(
-			 * ); AdEmailQueue emailQueue = new AdEmailQueueImpl();
-			 * emailQueue.setCode("abc123");
-			 * emailQueue.setTo("asyikin.mr@umk.edu.my");
-			 * //emailQueue.setSubject("Notification For Appointment Section" +
-			 * section.getCanonicalCode() );
-			 * emailQueue.setSubject("Notification For Appointment Section");
-			 * emailQueue.setQueueStatus(AdEmailQueueStatus.QUEUED);
-			 * //emailQueue.setBody("Confirmation for appointment Id:" +
-			 * staff.getName() + "Section:" + section.getCanonicalCode() +
-			 * "Please click this URL to view details:" ); emailQueue.
-			 * setBody("Confirmation for appointment Id: Section: Please click this URL to view details:"
-			 * ); emailQueue.setRetryCount(1); LOG.debug("test1: {}",
-			 * emailQueue);
-			 * 
-			 * systemService.saveEmailQueue(emailQueue); LOG.debug("test2: {}",
-			 * emailQueue);
-			 */
-
-			// String applicationUrl=
-			// systemService.findConfigurationByKey("application.url").getValue();
+			String applicationUrl=systemService.findConfigurationByKey("application.url").getValue();
 			AdEmailQueue emailQueue = new AdEmailQueueImpl();
 			emailQueue.setCode("EQ" + System.currentTimeMillis());
-			emailQueue.setTo("asyikin.mr@umk.edu.my");
+			emailQueue.setTo("asyikin.mr@umk.edu.my"); //set default email to test
 			emailQueue.setSubject("Appointment class for section:" + section.getCode());
 			emailQueue.setQueueStatus(AdEmailQueueStatus.QUEUED);
 			emailQueue.setBody("Confirmation appointment to section:" + section.getOffering().getTitleEn()
-					+ " Please click this URL to view details:");
+					+ "." + " Please click this URL to view details:" + applicationUrl);
 			emailQueue.setRetryCount(1);
 			LOG.debug("test1: {}", emailQueue);
 
