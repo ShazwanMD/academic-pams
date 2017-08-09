@@ -32,6 +32,8 @@ export class CurriculumBundleElectiveDialog implements OnInit {
   private bundleSubjects$: Observable<Subject[]>;
    private bundleSubjectPartDialogRef: MdDialogRef<CurriculumBundleSubjectPartDialog>;
 
+   
+
   constructor(private formBuilder: FormBuilder,
     private store: Store<PlannerModuleState>,
     private actions: CurriculumActions,
@@ -44,6 +46,9 @@ export class CurriculumBundleElectiveDialog implements OnInit {
      {
   }
 
+  set curriculum(value: Curriculum) {
+    this._curriculum = value;
+  }
 
 
   ngOnInit(): void {
