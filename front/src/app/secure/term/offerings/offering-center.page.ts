@@ -63,5 +63,11 @@ export class OfferingCenterPage implements OnInit {
       // load something here
     });
   }
+  
+  sendEmail(): void {  
+      window.alert("Email notification for new offerings will be send!");
+      
+      
+    }
 
 }

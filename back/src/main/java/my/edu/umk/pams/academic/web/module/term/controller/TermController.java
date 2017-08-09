@@ -10,6 +10,9 @@ import my.edu.umk.pams.academic.identity.service.IdentityService;
 import my.edu.umk.pams.academic.planner.model.*;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
 import my.edu.umk.pams.academic.security.integration.AdAutoLoginToken;
+import my.edu.umk.pams.academic.system.model.AdEmailQueue;
+import my.edu.umk.pams.academic.system.model.AdEmailQueueImpl;
+import my.edu.umk.pams.academic.system.model.AdEmailQueueStatus;
 import my.edu.umk.pams.academic.system.service.SystemService;
 import my.edu.umk.pams.academic.term.model.*;
 import my.edu.umk.pams.academic.term.service.TermService;
@@ -234,32 +237,33 @@ public class TermController {
 		AdStaff advisor = identityService.findStaffByStaffNo("01615B"); // todo:
 		// dummy
 		// advisor
-		if (countAdmissionApplication(academicSession, student) > 0){
-			//throw new IllegalArgumentException("Data admission already exists! Please insert new data");
+		if (countAdmissionApplication(academicSession, student) > 0) {
+			// throw new IllegalArgumentException("Data admission already
+			// exists! Please insert new data");
 
 			System.out.println("Passed data");
-			System.out.println("Duplicate admission: "+ student.getName());
-		return new ResponseEntity<String>("Duplicate", HttpStatus.OK);
-	} else {
-			
-		AdAdmissionApplication application = new AdAdmissionApplicationImpl();
-		application.setDescription(vo.getDescription());
-		application.setReferenceNo(vo.getReferenceNo());
-		application.setStudent(student);
-		application.setSession(academicSession);
-		application.setStudyCenter(studyCenter);
-		application.setProgram(program);
-		application.setAdvisor(advisor);
-		application.setAuditNo(vo.getAuditNo());
-		application.setCancelComment(vo.getCancelComment());
-		application.setOrdinal(vo.getOrdinal());
-		application.setRemoveComment(vo.getRemoveComment());
-		application.setSourceNo(vo.getSourceNo());
-		String referenceNo = termService.startAdmissionApplicationTask(application);
-		
-		System.out.println("Success save data: " + student.getName());
-		return new ResponseEntity<String>(referenceNo, HttpStatus.OK);
-	}
+			System.out.println("Duplicate admission: " + student.getName());
+			return new ResponseEntity<String>("Duplicate", HttpStatus.OK);
+		} else {
+
+			AdAdmissionApplication application = new AdAdmissionApplicationImpl();
+			application.setDescription(vo.getDescription());
+			application.setReferenceNo(vo.getReferenceNo());
+			application.setStudent(student);
+			application.setSession(academicSession);
+			application.setStudyCenter(studyCenter);
+			application.setProgram(program);
+			application.setAdvisor(advisor);
+			application.setAuditNo(vo.getAuditNo());
+			application.setCancelComment(vo.getCancelComment());
+			application.setOrdinal(vo.getOrdinal());
+			application.setRemoveComment(vo.getRemoveComment());
+			application.setSourceNo(vo.getSourceNo());
+			String referenceNo = termService.startAdmissionApplicationTask(application);
+
+			System.out.println("Success save data: " + student.getName());
+			return new ResponseEntity<String>(referenceNo, HttpStatus.OK);
+		}
 	}
 
 	@RequestMapping(value = "/admissionApplications/viewTask/{taskId}", method = RequestMethod.GET)
@@ -529,12 +533,14 @@ public class TermController {
 		workflowService.claimTask(task);
 	}
 
-	/*@RequestMapping(value = "/enrollmentApplications/completeTask", method = RequestMethod.POST)
-	public void completeEnrollmentApplicationTask(@RequestBody EnrollmentApplicationTask vo) {
-		dummyLogin();
-		Task task = termService.findEnrollmentApplicationTaskByTaskId(vo.getTaskId());
-		workflowService.completeTask(task);
-	}*/
+	/*
+	 * @RequestMapping(value = "/enrollmentApplications/completeTask", method =
+	 * RequestMethod.POST) public void
+	 * completeEnrollmentApplicationTask(@RequestBody EnrollmentApplicationTask
+	 * vo) { dummyLogin(); Task task =
+	 * termService.findEnrollmentApplicationTaskByTaskId(vo.getTaskId());
+	 * workflowService.completeTask(task); }
+	 */
 
 	@RequestMapping(value = "/enrollmentApplications/completeTask", method = RequestMethod.POST)
 	public void completeEnrollmentApplicationTask(@RequestBody EnrollmentApplicationTask vo) {
@@ -545,7 +551,7 @@ public class TermController {
 		workflowService.completeTask(task);
 		System.out.println("Test 3");
 	}
-	
+
 	@RequestMapping(value = "/enrollmentApplications/releaseTask", method = RequestMethod.POST)
 	public ResponseEntity<String> releaseEnrollmentApplicationTask(@RequestBody EnrollmentApplicationTask vo) {
 		dummyLogin();
@@ -698,28 +704,29 @@ public class TermController {
 	@RequestMapping(value = "/offerings/{canonicalCode}/assessments", method = RequestMethod.POST)
 	public ResponseEntity<String> addAssessment(@PathVariable String canonicalCode, @RequestBody Assessment vo) {
 		dummyLogin();
-		
-		if (isAssessmentExists(vo.getCanonicalCode())){
-			//throw new IllegalArgumentException("Data assessment already exists! Please insert new data");
+
+		if (isAssessmentExists(vo.getCanonicalCode())) {
+			// throw new IllegalArgumentException("Data assessment already
+			// exists! Please insert new data");
 			System.out.println("Passed data");
-		return new ResponseEntity<String>("Duplicate", HttpStatus.OK);
-	  } else {
- 	 		
-		AdOffering offering = termService.findOfferingByCanonicalCode(canonicalCode);
-		AdAssessment assessment = new AdAssessmentImpl();
-		assessment.setCode(vo.getCode());
-		assessment.setCanonicalCode(vo.getCanonicalCode());
-		assessment.setDescription(vo.getDescription());
-		assessment.setOrdinal(vo.getOrdinal());
-		assessment.setWeight(vo.getWeight());
-		assessment.setTotalScore(vo.getTotalScore());
-		assessment.setType(AdAssessmentType.get(vo.getAssessmentType().ordinal()));
-		assessment.setCategory(AdAssessmentCategory.get(vo.getAssessmentCategory().ordinal()));
-		assessment.setOffering(termService.findOfferingById(vo.getOffering().getId()));
-		termService.addAssessment(offering, assessment);
-		return new ResponseEntity<String>("success", HttpStatus.OK);
+			return new ResponseEntity<String>("Duplicate", HttpStatus.OK);
+		} else {
+
+			AdOffering offering = termService.findOfferingByCanonicalCode(canonicalCode);
+			AdAssessment assessment = new AdAssessmentImpl();
+			assessment.setCode(vo.getCode());
+			assessment.setCanonicalCode(vo.getCanonicalCode());
+			assessment.setDescription(vo.getDescription());
+			assessment.setOrdinal(vo.getOrdinal());
+			assessment.setWeight(vo.getWeight());
+			assessment.setTotalScore(vo.getTotalScore());
+			assessment.setType(AdAssessmentType.get(vo.getAssessmentType().ordinal()));
+			assessment.setCategory(AdAssessmentCategory.get(vo.getAssessmentCategory().ordinal()));
+			assessment.setOffering(termService.findOfferingById(vo.getOffering().getId()));
+			termService.addAssessment(offering, assessment);
+			return new ResponseEntity<String>("success", HttpStatus.OK);
+		}
 	}
-}
 
 	@RequestMapping(value = "/offerings/{canonicalCode}/assessments/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<String> deleteAssessment(@PathVariable String canonicalCode, @PathVariable Long id) {
@@ -735,54 +742,56 @@ public class TermController {
 	@RequestMapping(value = "/offerings/{canonicalCode}/sections", method = RequestMethod.POST)
 	public ResponseEntity<String> addSection(@PathVariable String canonicalCode, @RequestBody Section vo) {
 		dummyLogin();
-		
+
 		System.out.println("Before checking isSectionExists");
-		
+
 		if (isSectionExists(vo.getCanonicalCode())) {
 			System.out.println("Duplicate section:" + canonicalCode);
-			// throw new IllegalArgumentException("Data offering already exists!.Please insert new data");
+			// throw new IllegalArgumentException("Data offering already
+			// exists!.Please insert new data");
 			return new ResponseEntity<String>("Duplicate", HttpStatus.OK);
 		} else {
-		
-		AdOffering offering = termService.findOfferingByCanonicalCode(canonicalCode);
-		AdSection section = new AdSectionImpl();
-		section.setCode(vo.getCode());
-		section.setCanonicalCode(vo.getCanonicalCode());
-		section.setCapacity(vo.getCapacity());
-		section.setOrdinal(vo.getOrdinal());
-		section.setOffering(termService.findOfferingById(vo.getOffering().getId()));
-		termService.addSection(offering, section);
-		
-		System.out.println("Save new section:" + canonicalCode);
-		return new ResponseEntity<String>("success", HttpStatus.OK);
+
+			AdOffering offering = termService.findOfferingByCanonicalCode(canonicalCode);
+			AdSection section = new AdSectionImpl();
+			section.setCode(vo.getCode());
+			section.setCanonicalCode(vo.getCanonicalCode());
+			section.setCapacity(vo.getCapacity());
+			section.setOrdinal(vo.getOrdinal());
+			section.setOffering(termService.findOfferingById(vo.getOffering().getId()));
+			termService.addSection(offering, section);
+
+			System.out.println("Save new section:" + canonicalCode);
+			return new ResponseEntity<String>("success", HttpStatus.OK);
+		}
 	}
-}
 
 	@RequestMapping(value = "/offerings", method = RequestMethod.POST)
 	public ResponseEntity<String> saveOffering(@RequestBody Offering vo) {
 		dummyLogin();
-		
+
 		if (isOfferingExists(vo.getCanonicalCode())) {
 			System.out.println("Duplicate:");
-			// throw new IllegalArgumentException("Data offering already exists!.Please insert new data");
-			
+			// throw new IllegalArgumentException("Data offering already
+			// exists!.Please insert new data");
+
 			return new ResponseEntity<String>("Duplicate", HttpStatus.OK);
 		} else {
 
-		// save data normally
-		AdOffering offering = new AdOfferingImpl();
-		offering.setCode(vo.getCode());
-		offering.setCanonicalCode(vo.getCanonicalCode());
-		offering.setCapacity(vo.getCapacity());
-		offering.setTitleMs(vo.getTitleMs());
-		offering.setTitleEn(vo.getTitleEn());
-		offering.setCourse(plannerService.findCourseByCode(vo.getCourse().getCode()));
-		offering.setProgram(plannerService.findProgramByCode(vo.getProgram().getCode()));
-		offering.setSession(plannerService.findAcademicSessionByCode(vo.getAcademicSession().getCode()));
+			// save data normally
+			AdOffering offering = new AdOfferingImpl();
+			offering.setCode(vo.getCode());
+			offering.setCanonicalCode(vo.getCanonicalCode());
+			offering.setCapacity(vo.getCapacity());
+			offering.setTitleMs(vo.getTitleMs());
+			offering.setTitleEn(vo.getTitleEn());
+			offering.setCourse(plannerService.findCourseByCode(vo.getCourse().getCode()));
+			offering.setProgram(plannerService.findProgramByCode(vo.getProgram().getCode()));
+			offering.setSession(plannerService.findAcademicSessionByCode(vo.getAcademicSession().getCode()));
 
-		termService.saveOffering(offering);
-		return new ResponseEntity<String>("success", HttpStatus.OK);
-	 }
+			termService.saveOffering(offering);
+			return new ResponseEntity<String>("success", HttpStatus.OK);
+		}
 	}
 
 	// isOfferingExists
@@ -961,20 +970,61 @@ public class TermController {
 		AdSection section = termService.findSectionById(vo.getSection().getId());
 		AdStaff staff = identityService.findStaffByIdentityNo(vo.getStaff().getIdentityNo());
 
-		if (isAppointmentExists(section, staff)){
-		//throw new IllegalArgumentException("Data appointment already exists! Please insert new data");
-		System.out.println("Passed data:Duplicate appointment");
-		return new ResponseEntity<String>("Duplicate", HttpStatus.OK);
-	} else {
-		
-		AdAppointment appointment = new AdAppointmentImpl();
-		appointment.setStatus(AdAppointmentStatus.get(vo.getAppointmentStatus().ordinal()));
-		// appointment.setStatus(AdAppointmentStatus.CONFIRMED);
-		appointment.setSection(section);
-		appointment.setStaff(identityService.findStaffById(vo.getStaff().getId()));
-		termService.addAppointment(section, appointment);
-		return new ResponseEntity<String>("success", HttpStatus.OK);
-	}
+		if (isAppointmentExists(section, staff)) {
+			// throw new IllegalArgumentException("Data appointment already
+			// exists! Please insert new data");
+			System.out.println("Passed data:Duplicate appointment");
+			return new ResponseEntity<String>("Duplicate", HttpStatus.OK);
+		} else {
+
+			AdAppointment appointment = new AdAppointmentImpl();
+			appointment.setStatus(AdAppointmentStatus.get(vo.getAppointmentStatus().ordinal()));
+			// appointment.setStatus(AdAppointmentStatus.CONFIRMED); //to set as
+			// default
+			appointment.setSection(section);
+			appointment.setStaff(identityService.findStaffById(vo.getStaff().getId()));
+			termService.addAppointment(section, appointment);
+
+			// send mail notification
+			/*
+			 * //String applicationUrl=
+			 * systemService.findConfigurationByKey("application.url").getValue(
+			 * ); AdEmailQueue emailQueue = new AdEmailQueueImpl();
+			 * emailQueue.setCode("abc123");
+			 * emailQueue.setTo("asyikin.mr@umk.edu.my");
+			 * //emailQueue.setSubject("Notification For Appointment Section" +
+			 * section.getCanonicalCode() );
+			 * emailQueue.setSubject("Notification For Appointment Section");
+			 * emailQueue.setQueueStatus(AdEmailQueueStatus.QUEUED);
+			 * //emailQueue.setBody("Confirmation for appointment Id:" +
+			 * staff.getName() + "Section:" + section.getCanonicalCode() +
+			 * "Please click this URL to view details:" ); emailQueue.
+			 * setBody("Confirmation for appointment Id: Section: Please click this URL to view details:"
+			 * ); emailQueue.setRetryCount(1); LOG.debug("test1: {}",
+			 * emailQueue);
+			 * 
+			 * systemService.saveEmailQueue(emailQueue); LOG.debug("test2: {}",
+			 * emailQueue);
+			 */
+
+			// String applicationUrl=
+			// systemService.findConfigurationByKey("application.url").getValue();
+			AdEmailQueue emailQueue = new AdEmailQueueImpl();
+			emailQueue.setCode("EQ" + System.currentTimeMillis());
+			emailQueue.setTo("asyikin.mr@umk.edu.my");
+			emailQueue.setSubject("Appointment class for section:" + section.getCode());
+			emailQueue.setQueueStatus(AdEmailQueueStatus.QUEUED);
+			emailQueue.setBody("Confirmation appointment to section:" + section.getOffering().getTitleEn()
+					+ " Please click this URL to view details:");
+			emailQueue.setRetryCount(1);
+			LOG.debug("test1: {}", emailQueue);
+
+			systemService.saveEmailQueue(emailQueue);
+			LOG.debug("test2: {}", emailQueue);
+
+			return new ResponseEntity<String>("success", HttpStatus.OK);
+
+		}
 	}
 
 	@RequestMapping(value = "/sections/{canonicalCode}/appointments/{id}", method = RequestMethod.PUT)
