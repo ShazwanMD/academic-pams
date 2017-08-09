@@ -327,9 +327,9 @@ export class PlannerService {
   }
 
    addSubjectPart(curriculum: Curriculum, subject: BundleSubjectPart): Observable<String> {
-    console.log('addSubjectPart:' + subject);
-    console.log('curriculum:' + curriculum.code);
-    return this._http.post(this.PLANNER_API + '/curriculums/' + curriculum.code + '/bundleSubjects', JSON.stringify(subject))
+    // console.log('addSubjectPart:' + subject);
+     console.log('curriculum:' + curriculum.code);
+    return this._http.post(this.PLANNER_API + '/curriculums/' + curriculum.code + '/subjectParts', JSON.stringify(subject))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 

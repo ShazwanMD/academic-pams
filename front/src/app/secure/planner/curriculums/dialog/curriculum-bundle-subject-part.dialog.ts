@@ -59,12 +59,10 @@ export class CurriculumBundleSubjectPartDialog implements OnInit {
     this.editorForm = this.formBuilder.group(<BundleSubjectPart>{
       course: <Course>{},
     });
-
-    // if (this.edit) this.editorForm.patchValue(this._bundleSubject);
   }
 
-  submit(bundleSubjectPart: BundleSubjectPart, isValid: boolean): void {
-    console.log('adding bundlesubject');
+submit(bundleSubjectPart: BundleSubjectPart, isValid: boolean): void {
+    console.log('adding bundlesubjectPart');
     console.log(this._curriculum)
     console.log('subject type: ' + bundleSubjectPart);
      console.log('adding subject to ' + this._curriculum);
