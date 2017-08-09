@@ -2,4 +2,10 @@
 <pams-curriculum-bundle-course-list
 [curriculum]="curriculum$ | async" 
             [subjects]="bundleSubjects$ | async">
-></pams-curriculum-bundle-course-list>
+</pams-curriculum-bundle-course-list>
+
+<md-dialog-actions align="end">
+  <button md-raised-button color="accent" (click)="submit(creatorForm.value, edit)">
+    Save
+  </button>
+</md-dialog-actions>
