@@ -284,10 +284,11 @@ public class PlannerController {
     @RequestMapping(value = "/programs/{code}/save", method = RequestMethod.POST)
     public ResponseEntity<String> saveProgram(@PathVariable String code, @RequestBody Program vo) {
         dummyLogin();
-        AdFaculty faculty = plannerService.findFacultyByCode(code);
-        if (isProgramExists(code, faculty))
-        	throw new IllegalArgumentException("Data program already exists! Please insert new data"); 
-         
+//        AdFaculty faculty = plannerService.findFacultyByCode(code);
+//        if (isProgramExists(code, faculty))
+//        	throw new IllegalArgumentException("Data program already exists! Please insert new data"); 
+//         
+        plannerService.isProgramExists(code,plannerService.findFacultyById(vo.getFaculty().getId()));
         AdProgram program = new AdProgramImpl();
         program.setCode(vo.getCode());
         program.setTitleMs(vo.getTitleMs());
