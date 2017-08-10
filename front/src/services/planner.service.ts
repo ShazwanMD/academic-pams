@@ -165,18 +165,15 @@ export class PlannerService {
   }
 
   findCourseByCode(code: string): Observable<Course> {
-    return this._http.get(this.PLANNER_API + '/courses/' + code)
-      .map((res: Response) => <Course>res.json());
-  }
-
-  saveCourse(course: Course): Observable<String> {
-    console.log(course.code);
-    return this._http.post(this.PLANNER_API + '/courses/' + course.code + '/save', JSON.stringify(course))
-      .flatMap((res: Response) => Observable.of(res.text()))
-      .catch((error) => this.handleError(error));
-  }
+      console.log("findCourseByCode", code);
+      return this._http.get(this.PLANNER_API + '/courses/' + code)
+        .map((res: Response) => <Course>res.json());
+    }
 
   addCourse(course: Course): Observable<String> {
+      console.log("addCourse", course.code);
+      console.log("JSON", JSON.stringify(course));
+      
     return this._http.post(this.PLANNER_API + '/courses/' + course.code + '/add', JSON.stringify(course))
       .flatMap((res: Response) => Observable.of(res.text()));
   }

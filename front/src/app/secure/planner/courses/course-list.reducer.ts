@@ -13,7 +13,7 @@ export function courseListReducer(state = initialState, action: Action): CourseL
     case CourseActions.FIND_COURSES_SUCCESS: {
       return action.payload;
     }
-    case CourseActions.SAVE_COURSE_SUCCESS: {
+    case CourseActions.ADD_COURSE_SUCCESS: {
       let index = _.findIndex(state, {id: action.payload.id});
       if (index >= 0) {
         return [
