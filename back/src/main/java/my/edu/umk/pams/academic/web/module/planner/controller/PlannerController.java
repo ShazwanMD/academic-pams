@@ -284,10 +284,11 @@ public class PlannerController {
     @RequestMapping(value = "/programs/{code}/save", method = RequestMethod.POST)
     public ResponseEntity<String> saveProgram(@PathVariable String code, @RequestBody Program vo) {
         dummyLogin();
-        AdFaculty faculty = plannerService.findFacultyByCode(code);
-        if (isProgramExists(code, faculty))
-        	throw new IllegalArgumentException("Data program already exists! Please insert new data"); 
-         
+//        AdFaculty faculty = plannerService.findFacultyByCode(code);
+//        if (isProgramExists(code, faculty))
+//        	throw new IllegalArgumentException("Data program already exists! Please insert new data"); 
+//         
+        plannerService.isProgramExists(code,plannerService.findFacultyById(vo.getFaculty().getId()));
         AdProgram program = new AdProgramImpl();
         program.setCode(vo.getCode());
         program.setTitleMs(vo.getTitleMs());
@@ -529,6 +530,15 @@ public class PlannerController {
         
     }
     
+    @RequestMapping(value = "/curriculums/bundleSubject/{id}/subjects", method = RequestMethod.GET)
+    public ResponseEntity<List<BundleSubjectPart>> findBundleSubjectsPart(@PathVariable Long id) throws UnsupportedEncodingException {
+      
+        AdBundleSubject bundle = plannerService.findBundleSubjectById(id);
+        List<AdBundleSubjectPart> subjectPart = plannerService.findBundleSubjectPartByBundleSubject(bundle);
+        return new ResponseEntity<List<BundleSubjectPart>>(plannerTransformer.toBundleSubjectPartVos(subjectPart), HttpStatus.OK);
+        
+    }
+    
    @RequestMapping(value = "/curriculums/{code}/subjects/subjectType/{subjectType}", method = RequestMethod.GET)
     public ResponseEntity<List<Subject>> findSubjectsByCurriculumAndSubjectType(@PathVariable String code,@PathVariable String subjectType) throws UnsupportedEncodingException {
         AdCurriculum curriculum = plannerService.findCurriculumByCode(code);
@@ -564,15 +574,15 @@ public class PlannerController {
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
     
-    @RequestMapping(value = "/curriculums/{code}/subjectParts", method = RequestMethod.POST)
-    public ResponseEntity<String> addSubjectPart(@PathVariable String code, @RequestBody BundleSubjectPart vo) {
+    @RequestMapping(value = "/curriculums/{id}/subjectParts", method = RequestMethod.POST)
+    public ResponseEntity<String> addSubjectPart(@PathVariable Long id, @RequestBody BundleSubjectPart vo) {
         dummyLogin();
         LOG.info("Adding subject part");
-        AdCurriculum curriculum = plannerService.findCurriculumByCode(code);
         AdCourse course = plannerService.findCourseByCode(vo.getCourse().getCode());
-        AdBundleSubject bundleSubject = new AdBundleSubjectImpl();
+        AdBundleSubject bundleSubject = plannerService.findBundleSubjectById(id);
         AdBundleSubjectPart part = new AdBundleSubjectPartImpl();
         part.setCourse(course);
+        part.setBundle(bundleSubject);
         plannerService.addSubjectPart(bundleSubject, part);
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }

@@ -45,6 +45,12 @@ export class CurriculumEffects {
     .map((action) => action.payload)
     .switchMap((curriculum) => this.plannerService.findSubjectsByCurriculum(curriculum))
     .map((subjects) => this.curriculumActions.findSubjectsByCurriculumSuccess(subjects));
+  
+  @Effect() findBundleSubjectsPart$ = this.actions$
+  .ofType(CurriculumActions.FIND_BUNDLE_SUBJECTS_PART)
+  .map((action) => action.payload)
+  .switchMap((payload) => this.plannerService.findBundleSubjectsPart(payload.bundleSubject))
+  .map((message) => this.curriculumActions.findBundleSubjectPartSuccess(message));
 
     @Effect() findSubjectsByCurriculumAndSubjectCoreType$ = this.actions$
     .ofType(CurriculumActions.FIND_SUBJECTS_BY_CURRICULUM_AND_SUBJECT_TYPE_CORE)
@@ -82,17 +88,26 @@ export class CurriculumEffects {
       .withLatestFrom(this.store$.select(...this.CURRICULUM))
       .map((state) => state[1])
       .map((curriculum: Curriculum) => this.curriculumActions.findCurriculumByCode(curriculum.code));
+  
+  @Effect() addBundleSubject$ =
+      this.actions$
+        .ofType(CurriculumActions.ADD_BUNDLE_SUBJECT)
+        .map((action) => action.payload)
+        .switchMap((payload) => this.plannerService.addBundleSubject(payload.curriculum, payload.subject))
+        .map((message) => this.curriculumActions.addBundleSubjectSuccess(message))
+        .withLatestFrom(this.store$.select(...this.CURRICULUM))
+        .map((state) => state[1])
+        .map((curriculum: Curriculum) => this.curriculumActions.findCurriculumByCode(curriculum.code));
 
   @Effect() addSubjectPart$ =
     this.actions$
       .ofType(CurriculumActions.ADD_SUBJECT_PART)
       .map((action) => action.payload)
-      .switchMap((payload) => this.plannerService.addSubjectPart(payload.curriculum, payload.subject))
+      .switchMap((payload) => this.plannerService.addSubjectPart(payload.bundleSubject, payload.subject))
       .map((message) => this.curriculumActions.addSubjectPartSuccess(message))
       .withLatestFrom(this.store$.select(...this.CURRICULUM))
       .map((state) => state[1])
       .map((curriculum: Curriculum) => this.curriculumActions.findCurriculumByCode(curriculum.code));
-      
 
  @Effect() deleteSubject$ = this.actions$
     .ofType(CurriculumActions.REMOVE_SUBJECT)

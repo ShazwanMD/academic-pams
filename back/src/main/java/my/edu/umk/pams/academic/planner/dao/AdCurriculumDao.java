@@ -74,6 +74,8 @@ public interface AdCurriculumDao extends GenericDao<Long, AdCurriculum> {
 	List<AdSubject> find(AdCurriculum curriculum, AdSubject subject);
 
 	List<AdBundleSubject> findBundleSubjects(AdCurriculum curriculum, AdSubject subject);
+
+	List<AdBundleSubjectPart> findBundleSubjectPartByBundleSubject(AdBundleSubject bundleSubject);
 	
 	
 	

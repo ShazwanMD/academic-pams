@@ -17,6 +17,7 @@ import my.edu.umk.pams.academic.web.module.planner.vo.Faculty;
 import my.edu.umk.pams.connector.payload.FacultyCodePayload;
 import my.edu.umk.pams.connector.payload.ProgramCodePayload;
 
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -317,6 +318,17 @@ public class PlannerServiceImpl implements PlannerService {
     @Override
     public List<AdBundleSubject> findBundleSubjects(AdCurriculum curriculum, AdSubject subject ) {
         return curriculumDao.findBundleSubjects(curriculum, subject);
+    }
+    
+    @Override
+    public AdBundleSubject findBundleSubjectById(Long id) {
+    	Session session = sessionFactory.getCurrentSession();
+        return (AdBundleSubject) session.get(AdBundleSubjectImpl.class, id);
+    }
+    
+    @Override
+    public List<AdBundleSubjectPart> findBundleSubjectPartByBundleSubject(AdBundleSubject bundle) {
+    	return curriculumDao.findBundleSubjectPartByBundleSubject(bundle);
     }
 
     @Override
@@ -626,12 +638,12 @@ public class PlannerServiceImpl implements PlannerService {
         LOG.info("saving faculty");
         facultyDao.save(faculty, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
-
-        LOG.info("broadcasting faculty payload");
-        FacultyCodePayload payload = new FacultyCodePayload();
-        payload.setCode(faculty.getCode());
-        payload.setDescription(faculty.getDescription());
-        applicationContext.publishEvent(new FacultyAddedEvent(payload));
+//
+//        LOG.info("broadcasting faculty payload");
+//        FacultyCodePayload payload = new FacultyCodePayload();
+//        payload.setCode(faculty.getCode());
+//        payload.setDescription(faculty.getDescription());
+//        applicationContext.publishEvent(new FacultyAddedEvent(payload));
     }
 
     @Override

@@ -8,7 +8,6 @@
     <div layout="column" layout-gt-md="row" class="inset">
       <div flex-gt-md="70">
         <pams-curriculum [curriculum]="curriculum$ | async"></pams-curriculum>
-
 	<md-card>
           <md-card-title>Subject</md-card-title>
           <md-card-subtitle>Subject for this Curriculum</md-card-subtitle>
@@ -18,8 +17,7 @@
             <pams-curriculum-subject-list [curriculum]="curriculum$ | async" [subjects]="singleSubjects$ | async"></pams-curriculum-subject-list>
           </md-tab>
           <md-tab label="Elective ({{(bundleSubjects$ | async)?.length}})">
-            <pams-curriculum-bundle-subject-list [curriculum]="curriculum$ | async" 
-            [subjects]="bundleSubjects$ | async">
+            <pams-curriculum-bundle-subject-list [curriculum]="curriculum$ | async" [subjects]="bundleSubjects$ | async">
             </pams-curriculum-bundle-subject-list>
           </md-tab>
           </md-tab-group>

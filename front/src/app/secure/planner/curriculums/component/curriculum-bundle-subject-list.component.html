@@ -29,7 +29,7 @@
       (rowSelect)="selectRow($event)"
       (selectAll)="selectAllRows($event)"
       dense>
-      <template tdDataTableTemplate="parts" let-value="value" let-row="row" let-column="columns.parts">
+      <!-- <template tdDataTableTemplate="parts" let-value="value" let-row="row" let-column="columns.parts">
         <div layout="row">
           <span *ngIf="row.type=='bundle'" flex> </span>
           <template *ngIf="row.type=='bundle'" let-group ngFor [ngForOf]="subjects">
@@ -38,7 +38,7 @@
             </template>
           </template>
         </div>
-      </template>
+      </template> -->
       <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
       <div layout="row">
       <a md-button color="accent" class="text-upper" (click)="showBundleElectiveDialog(row, true)">

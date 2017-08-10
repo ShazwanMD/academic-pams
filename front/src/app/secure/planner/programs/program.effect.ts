@@ -7,6 +7,7 @@ import {PlannerService} from '../../../../services/planner.service';
 import {Store} from '@ngrx/store';
 import {PlannerModuleState} from '../index';
 import { NotificationService } from "../../../../services/notification.service";
+import { from } from "rxjs/observable/from";
 
 @Injectable()
 export class ProgramEffects {
@@ -44,10 +45,7 @@ export class ProgramEffects {
     .map((action) => action.payload)
     .switchMap((program) => this.plannerService.saveProgram(program))
     .map((program) => this.programActions.saveProgramSuccess(program))
-    .withLatestFrom(this.store$.select(...this.PROGRAM))
-    .map((state) => state[1])
-    .map((program: Program) => this.programActions.findProgramByCode(program.code));
-    //.catch((error) => this.notificationService.showError(error));
+    .mergeMap((action) => from([action, this.programActions.findPrograms()]));
 
   @Effect() updateProgram$ = this.actions$
     .ofType(ProgramActions.UPDATE_PROGRAM)

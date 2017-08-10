@@ -36,14 +36,12 @@ export class CurriculumBndleCourseListComponent implements OnInit, OnChanges {
 
   private columns: any[] = [
     {name: 'id', label: 'Id'},
-    {name: 'ordinal', label: 'Semester'},
     {name: 'course.code', label: 'course'},
     {name: 'action', label: ''},
   ];
 
-  @Input() curriculum: Curriculum;
-  @Input() subjects: Subject[];
-  @Input() bundle: BundleSubject[];
+  @Input() bundle: BundleSubject;
+  @Input() subject: BundleSubjectPart[];
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -59,21 +57,7 @@ export class CurriculumBndleCourseListComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: { [propName: string]: SimpleChange }) {
-    if (changes['subjects'] && this.subjects) {
-      console.log('subject length:' + this.subjects.length);
-      this.subjects.forEach((s: Subject) => {
-        console.log('subject: ' + s.type);
-        console.log('subject: ' + s.ordinal);
-
-        if (s.type === 'single') {
-          console.log('single subject: ' + s.ordinal);
-        } else if (s.type === 'bundle') {
-          console.log('bundle subject: ' + s.ordinal);
-        } else {
-          console.log('subject');
-        }
-      });
-    }
+ 
   }
 
   filter(): void {
@@ -81,17 +65,16 @@ export class CurriculumBndleCourseListComponent implements OnInit, OnChanges {
   }
 
 
-  showBundleSubjectPartDialog(bundleSubjectPart: BundleSubjectPart): void {
-    console.log("open");
-    console.log(this.curriculum);
+  showBundleSubjectPartDialog(bundleSubject: BundleSubject): void {
+    console.log("open bundle : "+this.bundle.subjectType);
     let config: MdDialogConfig = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
     config.role = 'dialog';
-    config.width = '50%';
-    config.height = '60%';
+    config.width = '30%';
+    config.height = '30%';
     config.position = { top: '65px' };
     this.bundleSubjectPartDialogRef = this.dialog.open(CurriculumBundleSubjectPartDialog, config);
-    this.bundleSubjectPartDialogRef.componentInstance.curriculum = this.curriculum;
+    this.bundleSubjectPartDialogRef.componentInstance.bundleSubject = this.bundle;
     this.bundleSubjectPartDialogRef.afterClosed().subscribe((res) => {
       // no op
     });
@@ -104,7 +87,7 @@ export class CurriculumBndleCourseListComponent implements OnInit, OnChanges {
             let snackBarRef = this.snackBar.open( 'Subject cannot be deleted', 'OK' );
         } else {
             console.log( 'deleteSubject' ); // move on
-            this.store.dispatch( this.actions.deleteSubject( this.curriculum, subject ) );
+           // this.store.dispatch( this.actions.deleteSubject( this.curriculum, subject ) );
         }
     }
 

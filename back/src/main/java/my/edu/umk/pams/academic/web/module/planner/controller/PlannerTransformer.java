@@ -143,6 +143,19 @@ public class PlannerTransformer {
                 .collect(toList());
         return vos;
     }
+    
+    public List<BundleSubjectPart> toBundleSubjectPartVos(List<AdBundleSubjectPart> subjectsParts) {
+        List<BundleSubjectPart> vos = subjectsParts.stream()
+                .map((subjectsPart) -> toBundleSubjectPartVo(subjectsPart))
+                .collect(toList());
+        return vos;
+    }
+    
+    public BundleSubjectPart toBundleSubjectPartVo(AdBundleSubjectPart e) {
+    	BundleSubjectPart vo = new BundleSubjectPart();
+    	vo.setCourse(toCourseVo(e.getCourse()));
+		return vo;
+    }
 
     public Subject toSubjectVo(AdSubject subject) {
         Subject vo = null;
