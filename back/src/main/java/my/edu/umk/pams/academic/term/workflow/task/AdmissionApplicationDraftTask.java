@@ -38,6 +38,7 @@ public class AdmissionApplicationDraftTask extends BpmnActivityBehavior
         application.getFlowdata().setState(DRAFTED);
         application.getFlowdata().setDraftedDate(new Timestamp(currentTimeMillis()));
         application.getFlowdata().setDrafterId(securityService.getCurrentUser().getId());
+        
         termService.updateAdmissionApplication(application);
     }
 }

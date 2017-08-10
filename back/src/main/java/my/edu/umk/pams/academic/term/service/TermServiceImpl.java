@@ -1165,8 +1165,8 @@ public class TermServiceImpl implements TermService {
 			sessionFactory.getCurrentSession().refresh(enrollment);
 
 			// AdStudyCenter studyCenter = admission.getStudyCenter();
-			EnrollmentConfirmedEvent event = new EnrollmentConfirmedEvent(enrollment);
-			applicationContext.publishEvent(event);
+		//	EnrollmentConfirmedEvent event = new EnrollmentConfirmedEvent(enrollment);
+		//	applicationContext.publishEvent(event);
 		}
 	}
 

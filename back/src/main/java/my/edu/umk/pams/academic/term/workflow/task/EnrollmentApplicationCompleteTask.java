@@ -13,6 +13,8 @@ import org.springframework.stereotype.Component;
 
 import static my.edu.umk.pams.academic.AcademicConstants.ENROLLMENT_APPLICATION_ID;
 
+import java.sql.Timestamp;
+
 @Component("enrollmentApplication_complete_ST")
 public class EnrollmentApplicationCompleteTask extends BpmnActivityBehavior
         implements ActivityBehavior {
@@ -31,7 +33,11 @@ public class EnrollmentApplicationCompleteTask extends BpmnActivityBehavior
 
         LOG.debug("completing application {}", application.getReferenceNo());
 
+
+        termService.postToEnrollment(application);
+        
         application.getFlowdata().setState(AdFlowState.COMPLETED);
         termService.updateEnrollmentApplication(application);
+        
     }
 }

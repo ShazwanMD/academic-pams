@@ -788,7 +788,7 @@ public class TermController {
 		dummyLogin();
 
 		if (isOfferingExists(vo.getCanonicalCode())) {
-			System.out.println("Duplicate:");
+			System.out.println("Duplicate offering:" + vo.getCanonicalCode() );
 			// throw new IllegalArgumentException("Data offering already
 			// exists!.Please insert new data");
 
