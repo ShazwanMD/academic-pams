@@ -18,13 +18,12 @@
         <span flex>{{value}}</span>
       </div>
     </template>
-    <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
-      <div layout="row">
-        <a md-button color="accent" class="text-upper" [routerLink]="['/secure/planner/faculties',row['code']]">
-          <!-- (click)="viewAcademicSession(row)" -->
-          <span>View</span></a>
-      </div>
-    </template>
+  <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
+    <div layout="row">
+      <a md-button color="accent" class="text-upper" [routerLink]="['./program-detail', row['code']]">
+        <span>View</span></a>
+    </div>
+  </template>
   </td-data-table>
   <div class="md-padding" *ngIf="!dataTable.hasData" layout="row" layout-align="center center">
     <h3>No results to display.</h3>

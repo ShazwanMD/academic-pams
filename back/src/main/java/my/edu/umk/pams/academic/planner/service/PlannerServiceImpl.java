@@ -638,12 +638,12 @@ public class PlannerServiceImpl implements PlannerService {
         LOG.info("saving faculty");
         facultyDao.save(faculty, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
-
-        LOG.info("broadcasting faculty payload");
-        FacultyCodePayload payload = new FacultyCodePayload();
-        payload.setCode(faculty.getCode());
-        payload.setDescription(faculty.getDescription());
-        applicationContext.publishEvent(new FacultyAddedEvent(payload));
+//
+//        LOG.info("broadcasting faculty payload");
+//        FacultyCodePayload payload = new FacultyCodePayload();
+//        payload.setCode(faculty.getCode());
+//        payload.setDescription(faculty.getDescription());
+//        applicationContext.publishEvent(new FacultyAddedEvent(payload));
     }
 
     @Override
