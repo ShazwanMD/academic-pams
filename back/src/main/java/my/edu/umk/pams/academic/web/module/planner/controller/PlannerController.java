@@ -92,21 +92,43 @@ public class PlannerController {
     public ResponseEntity<String> saveAcademicSession(@PathVariable String code, @RequestBody AcademicSession vo) {
         dummyLogin();
         
-        if (isAcademicSessionCodeExists(code))
-            throw new IllegalArgumentException("Data course already exists! Please insert new data");
- 
-        AdAcademicSession academicSession = new AdAcademicSessionImpl();
-        academicSession.setCode(vo.getCode());
-        academicSession.setDescription(vo.getDescription());
-        academicSession.setCurrent(vo.isCurrent());
-        academicSession.setStartDate(vo.getstartDate());
-        academicSession.setEndDate(vo.getendDate());
-        academicSession.setSemester(AdAcademicSemester.get(vo.getSemester().ordinal()));
-        // academicSession.setYear(plannerTransformer.toAcademicYearVo(academicYear.getYear()));
-        academicSession.setYear(plannerService.findByCode(vo.getYear().getCode()));
-        plannerService.saveAcademicSession(academicSession);
-        return new ResponseEntity<String>("Success", HttpStatus.OK);
-    }
+        if (isAcademicSessionCodeExists(code)) {
+
+			System.out.println("Duplicate session:" + code);
+			return new ResponseEntity<String>("Duplicate", HttpStatus.OK);
+		} else {
+
+			System.out.println("Update previous session TRUE to FALSE first then save");
+			AdAcademicSession academicSession1 = plannerService.findCurrentAcademicSession();
+			if (isCurrent(true) == true) {
+				System.out.println("Check state TRUE" + isCurrent(true));
+				academicSession1.setCurrent(false);
+				plannerService.updateAcademicSession(academicSession1);
+				System.out.println("Updated session:" + academicSession1);
+				
+				AdAcademicSession academicSession = new AdAcademicSessionImpl();
+				academicSession.setCode(vo.getCode());
+				academicSession.setDescription(vo.getDescription());
+				academicSession.setCurrent(vo.isCurrent());
+				academicSession.setStartDate(vo.getstartDate());
+				academicSession.setEndDate(vo.getendDate());
+				academicSession.setSemester(AdAcademicSemester.get(vo.getSemester().ordinal()));
+				// academicSession.setYear(plannerTransformer.toAcademicYearVo(academicYear.getYear()));
+				academicSession.setYear(plannerService.findByCode(vo.getYear().getCode()));
+				plannerService.saveAcademicSession(academicSession);
+
+				System.out.println("Save session:" + code);
+				return new ResponseEntity<String>("Success", HttpStatus.OK);
+			}
+		}
+		return new ResponseEntity<String>("Success", HttpStatus.OK);
+
+	}
+
+	private boolean isCurrent(boolean b) {
+		System.out.println(plannerService.isCurrent(b));
+		return plannerService.isCurrent(b);
+	}
 
     @RequestMapping(value = "/academicSessions/{code}/activate", method = RequestMethod.GET)
     public ResponseEntity<String> activateAcademicSession(@PathVariable String code) {
@@ -284,11 +306,17 @@ public class PlannerController {
     @RequestMapping(value = "/programs/{code}/save", method = RequestMethod.POST)
     public ResponseEntity<String> saveProgram(@PathVariable String code, @RequestBody Program vo) {
         dummyLogin();
-//        AdFaculty faculty = plannerService.findFacultyByCode(code);
-//        if (isProgramExists(code, faculty))
-//        	throw new IllegalArgumentException("Data program already exists! Please insert new data"); 
-//         
-        plannerService.isProgramExists(code,plannerService.findFacultyById(vo.getFaculty().getId()));
+        if (isProgramExists(code, plannerService.findFacultyById(vo.getFaculty().getId()))){
+        	//throw new IllegalArgumentException("Data program already exists! Please insert new data"); 
+        
+        System.out.println("Faculty1" + plannerService.findFacultyById(vo.getFaculty().getId()));
+        System.out.println("Program Code1" + code );
+        System.out.println("Program Code2" + vo.getCode() );
+        System.out.println("Duplicate program:" + code );
+        	
+			return new ResponseEntity<String>("Duplicate", HttpStatus.OK);
+	} else {
+        
         AdProgram program = new AdProgramImpl();
         program.setCode(vo.getCode());
         program.setTitleMs(vo.getTitleMs());
@@ -297,13 +325,16 @@ public class PlannerController {
         program.setFaculty(plannerService.findFacultyById(vo.getFaculty().getId()));
         program.setLevel(plannerService.findProgramLevelById(vo.getLevel().getId()));
         plannerService.saveProgram(program);
+        
+        System.out.println("Save new program:" + code );
         return new ResponseEntity<String>("Success", HttpStatus.OK);
 
+    }
+        
     }
     
   //isProgramExists
     private boolean isProgramExists(String code, AdFaculty faculty) {
-    	System.out.println("Duplicate data");
     	return plannerService.isProgramExists(code,faculty);
 	}
 

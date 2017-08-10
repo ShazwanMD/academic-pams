@@ -136,11 +136,12 @@ public class AdAcademicSessionDaoImpl extends GenericDaoSupport<Long, AdAcademic
     }
 
     @Override
-    public boolean isCurrent() {
+    public boolean isCurrent(boolean b) {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select count(s) from AdAcademicSession s where " +
-                "s.current = true " +
-                "and s.metadata.state = :state ");
+                "s.current = true ");
         return ((Long) query.uniqueResult()).intValue() == 1;
     }
+
+	
 }

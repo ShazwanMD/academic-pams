@@ -34,6 +34,8 @@ public interface PlannerService {
     Integer countAcademicSession(String filter);
 
     boolean isAcademicSessionCodeExists(String code);
+    
+    boolean isCurrent(boolean b);
 
     void saveAcademicSession(AdAcademicSession academicSession);
 

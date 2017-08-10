@@ -36,6 +36,6 @@ public interface AdAcademicSessionDao extends GenericDao<Long, AdAcademicSession
 
     boolean isCodeExists(String code);
 
-    boolean isCurrent();
+    boolean isCurrent(boolean b);
 
 }
