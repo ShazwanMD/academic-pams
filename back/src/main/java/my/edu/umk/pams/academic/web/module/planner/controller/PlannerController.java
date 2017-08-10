@@ -578,7 +578,7 @@ public class PlannerController {
         dummyLogin();
         LOG.info("Adding subject part");
         AdCourse course = plannerService.findCourseByCode(vo.getCourse().getCode());
-        AdBundleSubject bundleSubject = new AdBundleSubjectImpl();
+        AdBundleSubject bundleSubject = plannerService.findBundleSubjectById(id);
         AdBundleSubjectPart part = new AdBundleSubjectPartImpl();
         part.setCourse(course);
         part.setBundle(bundleSubject);
