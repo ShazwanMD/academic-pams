@@ -356,6 +356,20 @@ public class AdCurriculumDaoImpl extends GenericDaoSupport<Long, AdCurriculum> i
         query.setCacheable(true);
         return (List<AdBundleSubject>) query.list();
 	}
+	
+	@Override
+	public List<AdBundleSubjectPart> findBundleSubjectPartByBundleSubject(AdBundleSubject bundle) {
+	
+		Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select s from AdBundleSubjectPart s where " +
+                "s.bundle = :bundle " +
+                "and s.metadata.state = :state " +
+                "order by s.course.code asc");
+        query.setInteger("state", AdMetaState.ACTIVE.ordinal());
+        query.setEntity("bundle", bundle);
+        query.setCacheable(true);
+        return (List<AdBundleSubjectPart>) query.list();
+	}
 
 	@Override
 	public List<AdSubject> find(AdCurriculum curriculum, AdSubject subject) {

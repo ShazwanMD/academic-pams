@@ -28,8 +28,6 @@ export class CurriculumDetailPage implements OnInit {
   private singleSubjects$: Observable<Subject[]>;
   private bundleSubjects$: Observable<Subject[]>;
   private editorDialogRef: MdDialogRef<CurriculumEditorDialog>;
-
-  @Input() curriculum: Curriculum;
   
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -53,7 +51,7 @@ export class CurriculumDetailPage implements OnInit {
     });
   }
 
-  showUpdateDialog(): void {
+/*  showUpdateDialog(): void {
     console.log('edit offering');
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
@@ -67,7 +65,7 @@ export class CurriculumDetailPage implements OnInit {
     this.editorDialogRef.afterClosed().subscribe((res) => {
       console.log('close dialog ');
     });
-  }
+  }*/
 
   viewSubject(subject: Subject): void {
     this.router.navigate(['/secure/planner/curriculums', subject.id]);

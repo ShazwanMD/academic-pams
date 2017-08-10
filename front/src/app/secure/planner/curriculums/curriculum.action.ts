@@ -224,7 +224,7 @@ export class CurriculumActions {
     };
   }
 
-  static ADD_BUNDLE_SUBJECT = '[Subject] Add Bundle Subject Success';
+  static ADD_BUNDLE_SUBJECT = '[Subject] Add Bundle Subject';
 
   addBundleSubject(curriculum, subject): Action {
     return {
@@ -243,7 +243,7 @@ export class CurriculumActions {
   }
 
 
- static FIND_BUNDLE_SUBJECTS_BY_CURRICULUM= '[Subject] Find Bundle Subject Success';
+ static FIND_BUNDLE_SUBJECTS_BY_CURRICULUM= '[Subject] Find Bundle Subject';
 
   findBundleSubjectsByCurriculum(curriculum, subject): Action {
     return {
@@ -252,7 +252,7 @@ export class CurriculumActions {
     };
   }
 
-  static FIND_BUNDLE_SUBJECTS_BY_CURRICULUM_SUCCESS = '[Subject] Add Bundle Subject Success';
+  static FIND_BUNDLE_SUBJECTS_BY_CURRICULUM_SUCCESS = '[Subject] Find Bundle Subject Success';
 
   findBundleSubjectsByCurriculumsSuccess(subjects): Action {
     return {
@@ -261,12 +261,12 @@ export class CurriculumActions {
     };
   }
 
-   static ADD_SUBJECT_PART = '[Subject] Add Bundle Subject Parts Success';
+   static ADD_SUBJECT_PART = '[Subject] Add Bundle Subject Parts';
 
-  addSubjectPart(curriculum, subject): Action {
+  addSubjectPart(bundleSubject, subject): Action {
     return {
       type: CurriculumActions.ADD_SUBJECT_PART,
-      payload: {curriculum: curriculum, subject: subject}
+      payload: {bundleSubject: bundleSubject, subject: subject}
     };
   }
 
@@ -275,6 +275,26 @@ export class CurriculumActions {
   addSubjectPartSuccess(message): Action {
     return {
       type: CurriculumActions.ADD_SUBJECT_PART_SUCCESS,
+      payload: message
+    };
+  }
+  
+  static FIND_BUNDLE_SUBJECTS_PART= '[Subject] Find Bundle Subject Part';
+
+  findBundleSubjectPart(bundleSubject): Action {
+      console.log("findBundleSubjectPart :"+bundleSubject);
+    return {
+      type: CurriculumActions.FIND_BUNDLE_SUBJECTS_PART,
+      payload: {bundleSubject: bundleSubject}
+    };
+  }
+
+  static FIND_BUNDLE_SUBJECTS_PART_SUCCESS = '[Subject] Find Bundle Subject Part Success';
+
+  findBundleSubjectPartSuccess(message): Action {
+      console.log("findBundleSubjectPartSuccess");
+    return {
+      type: CurriculumActions.FIND_BUNDLE_SUBJECTS_PART_SUCCESS,
       payload: message
     };
   }

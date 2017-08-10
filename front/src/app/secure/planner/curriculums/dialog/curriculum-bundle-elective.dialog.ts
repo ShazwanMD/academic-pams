@@ -30,7 +30,9 @@ export class CurriculumBundleElectiveDialog implements OnInit {
   private _bundleSubject: BundleSubject;
   private subjects$: Observable<Subject[]>;
   private bundleSubjects$: Observable<Subject[]>;
-   private bundleSubjectPartDialogRef: MdDialogRef<CurriculumBundleSubjectPartDialog>;
+  private bundleSubjectParts$: Observable<BundleSubjectPart[]>;
+  private bundleSubjectPartDialogRef: MdDialogRef<CurriculumBundleSubjectPartDialog>;
+  private BUNDLE_SUBJECT_PARTS: string[] = 'plannerModuleState.bundleSubjectParts'.split('.');
 
    
 
@@ -42,25 +44,19 @@ export class CurriculumBundleElectiveDialog implements OnInit {
     private route: ActivatedRoute,
     private dialogPart: MdDialog,
     private dialog: MdDialogRef<CurriculumBundleElectiveDialog>, )
-    
-     {
-  }
+    {
+      this.bundleSubjectParts$ = this.store.select(...this.BUNDLE_SUBJECT_PARTS);
+    }
 
-  set curriculum(value: Curriculum) {
-    this._curriculum = value;
+  set bundleSubject(value: BundleSubject) {
+    this._bundleSubject = value;
   }
 
 
   ngOnInit(): void {
-    
+      this.store.dispatch(this.actions.findBundleSubjectPart(this._bundleSubject));
   }
 
 
-  submit(bundleSubject: BundleSubject,isValid: boolean): void {
-
-    console.log('subjectBundle: ' + bundleSubject);
-    this.store.dispatch(this.actions.addBundleSubject(this._curriculum, bundleSubject));
-    this.dialog.close();
-  }
 }
 

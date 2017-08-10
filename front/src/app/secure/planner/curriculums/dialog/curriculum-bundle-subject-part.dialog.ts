@@ -19,7 +19,7 @@ import { CurriculumActions } from '../curriculum.action';
 // deprecated
 export class CurriculumBundleSubjectPartDialog implements OnInit {
 
-  @Input() curriculums : Curriculum[];
+  @Input() curriculums : Curriculum;
   private editorForm: FormGroup;
   private edit: boolean = false;
   private _bundleSubjectPart: BundleSubjectPart;
@@ -40,8 +40,9 @@ export class CurriculumBundleSubjectPartDialog implements OnInit {
     this.edit = true;
   }
 
-    set bundleSubject(value: BundleSubject) {
-    this._bundleSubject = value;
+    set bundleSubject(bundle: BundleSubject) {
+    console.log('this._bundleSubject value : '+bundle.id);
+    this._bundleSubject = bundle;
     this.edit = true;
   }
 
@@ -63,11 +64,9 @@ export class CurriculumBundleSubjectPartDialog implements OnInit {
 
 submit(bundleSubjectPart: BundleSubjectPart, isValid: boolean): void {
     console.log('adding bundlesubjectPart');
-    console.log(this._curriculum)
-    console.log('subject type: ' + bundleSubjectPart);
-     console.log('adding subject to ' + this._curriculum);
-    this.store.dispatch(this.actions.addSubjectPart(this._curriculum, bundleSubjectPart));
-    console.log('adding subject to ' + this._curriculum);
-    this.dialog.close();
+    this.store.dispatch(this.actions.addSubjectPart(this._bundleSubject, bundleSubjectPart));
+    this.dialog.afterClosed().subscribe((res) => {
+        this.store.dispatch(this.actions.findBundleSubjectPart(this._bundleSubject));
+      });
   }
 }

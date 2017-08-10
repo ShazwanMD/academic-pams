@@ -67,12 +67,10 @@ export class CurriculumBundleSubjectDialog implements OnInit {
 
   ngOnInit(): void {
     this.creatorForm = this.formBuilder.group({
-      id: undefined,
+      id: '',
       type: 'bundle',
       ordinal: 0,
       subjectType: SubjectType.ELECTIVE,
-      bundleSubjectPart: <BundleSubjectPart>{},
-      course: <Course>{}
     });
 
     if (this.create) this.creatorForm.patchValue(this._bundleSubject);
@@ -98,10 +96,9 @@ export class CurriculumBundleSubjectDialog implements OnInit {
 
   submit(bundleSubject: BundleSubject,isValid: boolean): void {
 
-    console.log('subjectBundle: ' + bundleSubject);
-    //  console.log('subjectParts: ' + bundleSubjectPart);
+    console.log('subjectBundle: ' + bundleSubject.subjectType);
+    console.log('curriculum: ' + this._curriculum.academicSession);
     this.store.dispatch(this.actions.addBundleSubject(this._curriculum, bundleSubject));
-    // this.store.dispatch(this.actions.addSubjectPart(this._curriculum, bundleSubjectPart));
     this.dialog.close();
   }
 }

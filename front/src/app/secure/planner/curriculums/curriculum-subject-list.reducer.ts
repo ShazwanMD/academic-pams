@@ -39,3 +39,14 @@ export function curriculumBundleSubjectListReducer(state = initialState, action:
     }
   }
 
+export function curriculumBundleSubjectPartsListReducer(state = initialState, action: Action): CurriculumSubjectListState {
+    switch (action.type) {
+      case CurriculumActions.FIND_BUNDLE_SUBJECTS_PART_SUCCESS: {
+        return action.payload;
+      }
+      default: {
+        return state;
+      }
+    }
+  }
+

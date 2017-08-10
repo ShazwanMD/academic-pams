@@ -88,6 +88,7 @@ export class CurriculumBundleSubjectListComponent implements OnInit, OnChanges {
   }
 
   showBundleSubjectDialog(bundleSubject: BundleSubject): void {
+      console.log("curriculum : "+this.curriculum.academicSession);
     let config: MdDialogConfig = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
     config.role = 'dialog';
@@ -110,12 +111,13 @@ export class CurriculumBundleSubjectListComponent implements OnInit, OnChanges {
     config.height = '60%';
     config.position = { top: '65px' };
     this.bundleElectiveDialogRef = this.dialog.open(CurriculumBundleElectiveDialog, config);
-    this.bundleElectiveDialogRef.componentInstance.curriculum = this.curriculum;
+    this.bundleElectiveDialogRef.componentInstance.bundleSubject = bundleSubject;
     this.bundleElectiveDialogRef.afterClosed().subscribe((res) => {
       // no op
     });
 
   }
+  
   selectRow(subject: Subject): void {
   }
 

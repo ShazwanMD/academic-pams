@@ -335,6 +335,10 @@ public interface PlannerService {
 	List<AdSubject> findSubjectsByCurriculumAndSubjectTypeElective  (AdCurriculum curriculum, AdSubjectType subjectType);
 
 	List<AdBundleSubject> findBundleSubjects(AdCurriculum curriculum, AdSubject subject);
+
+	AdBundleSubject findBundleSubjectById(Long id);
+
+	List<AdBundleSubjectPart> findBundleSubjectPartByBundleSubject(AdBundleSubject bundle);
 	
 
 }

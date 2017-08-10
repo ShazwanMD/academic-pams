@@ -83,6 +83,7 @@ export class CurriculumSubjectListComponent implements OnInit, OnChanges {
   }
 
   showSingleSubjectDialog(singleSubject: SingleSubject): void {
+      console.log("this.curriculum : "+this.curriculum.academicSession);
     let config: MdDialogConfig = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
     config.role = 'dialog';

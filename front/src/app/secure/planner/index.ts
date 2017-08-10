@@ -1,5 +1,5 @@
 import {CurriculumActions} from './curriculums/curriculum.action';
-import {curriculumSubjectListReducer, CurriculumSubjectListState, curriculumSingleSubjectListReducer, curriculumBundleSubjectListReducer} from './curriculums/curriculum-subject-list.reducer';
+import {curriculumSubjectListReducer, CurriculumSubjectListState, curriculumSingleSubjectListReducer, curriculumBundleSubjectListReducer, curriculumBundleSubjectPartsListReducer} from './curriculums/curriculum-subject-list.reducer';
 import {Subject} from '../../shared/model/planner/subject.interface';
 import {ModuleWithProviders, NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
@@ -70,6 +70,7 @@ export interface PlannerModuleState {
   curriculum: CurriculumState;
   singleSubjects: CurriculumSubjectListState;
   bundleSubjects: CurriculumSubjectListState;
+  bundleSubjectParts: CurriculumSubjectListState;
 }
 
 export const INITIAL_PLANNER_STATE: PlannerModuleState = <PlannerModuleState>{
@@ -92,6 +93,7 @@ export const INITIAL_PLANNER_STATE: PlannerModuleState = <PlannerModuleState>{
   subjects: <Subject[]>[],
   singleSubjects: <Subject[]>[],
   bundleSubjects: <Subject[]>[],
+  bundleSubjectParts:<Subject[]>[],
 };
 
 export const plannerModuleReducers = {
@@ -114,7 +116,7 @@ export const plannerModuleReducers = {
   subjects: curriculumSubjectListReducer,
   singleSubjects: curriculumSingleSubjectListReducer,
   bundleSubjects: curriculumBundleSubjectListReducer,
-
+  bundleSubjectParts:curriculumBundleSubjectPartsListReducer,
 };
 
 @NgModule({
