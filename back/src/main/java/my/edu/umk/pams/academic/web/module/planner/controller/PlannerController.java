@@ -306,11 +306,17 @@ public class PlannerController {
     @RequestMapping(value = "/programs/{code}/save", method = RequestMethod.POST)
     public ResponseEntity<String> saveProgram(@PathVariable String code, @RequestBody Program vo) {
         dummyLogin();
-//        AdFaculty faculty = plannerService.findFacultyByCode(code);
-//        if (isProgramExists(code, faculty))
-//        	throw new IllegalArgumentException("Data program already exists! Please insert new data"); 
-//         
-        plannerService.isProgramExists(code,plannerService.findFacultyById(vo.getFaculty().getId()));
+        if (isProgramExists(code, plannerService.findFacultyById(vo.getFaculty().getId()))){
+        	//throw new IllegalArgumentException("Data program already exists! Please insert new data"); 
+        
+        System.out.println("Faculty1" + plannerService.findFacultyById(vo.getFaculty().getId()));
+        System.out.println("Program Code1" + code );
+        System.out.println("Program Code2" + vo.getCode() );
+        System.out.println("Duplicate program:" + code );
+        	
+			return new ResponseEntity<String>("Duplicate", HttpStatus.OK);
+	} else {
+        
         AdProgram program = new AdProgramImpl();
         program.setCode(vo.getCode());
         program.setTitleMs(vo.getTitleMs());
@@ -319,13 +325,16 @@ public class PlannerController {
         program.setFaculty(plannerService.findFacultyById(vo.getFaculty().getId()));
         program.setLevel(plannerService.findProgramLevelById(vo.getLevel().getId()));
         plannerService.saveProgram(program);
+        
+        System.out.println("Save new program:" + code );
         return new ResponseEntity<String>("Success", HttpStatus.OK);
 
+    }
+        
     }
     
   //isProgramExists
     private boolean isProgramExists(String code, AdFaculty faculty) {
-    	System.out.println("Duplicate data");
     	return plannerService.isProgramExists(code,faculty);
 	}
 
