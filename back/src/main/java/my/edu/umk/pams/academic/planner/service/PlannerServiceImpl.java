@@ -138,6 +138,12 @@ public class PlannerServiceImpl implements PlannerService {
     public boolean isAcademicSessionCodeExists(String code) {
         return academicSessionDao.isCodeExists(code);
     }
+    
+    @Override
+	public boolean isCurrent(boolean b) {
+    	return academicSessionDao.isCurrent(b);
+	}
+
 
     @Override
     public AdAcademicYear findByCode(String code) {
