@@ -202,7 +202,7 @@ public interface PlannerService {
 
     void removeProgram(AdFaculty faculty, AdProgram program);
 
-    void addCourse(AdFaculty faculty, AdCourse course);
+    void addCourse( AdFaculty faculty, AdCourse course);
 
     void updateCourse(AdFaculty faculty, AdCourse course);
 
@@ -314,7 +314,9 @@ public interface PlannerService {
 
     boolean isCourseExists(String code, AdFaculty faculty);
     
-    void saveCourse(AdCourse course , AdFaculty faculty);
+    void saveCourse(AdCourse course);
+    
+    /*void saveCourse(AdCourse course , AdFaculty faculty);*/
 
     void updateCourse(AdCourse course);
 

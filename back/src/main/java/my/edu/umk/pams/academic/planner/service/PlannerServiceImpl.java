@@ -954,18 +954,11 @@ public class PlannerServiceImpl implements PlannerService {
         return courseDao.isExists(code, faculty);
     }
 
-    @Override
+    /*@Override
     public void saveCourse(AdCourse course, AdFaculty faculty) {
         courseDao.save(course, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
-    }
-
-
-//	@Override
-//	public void addCourse(AdCourse course) {
-//		courseDao.save(course, securityService.getCurrentUser());
-//        sessionFactory.getCurrentSession().flush();
-//	}
+    }*/
 
     @Override
     public void updateCourse(AdCourse course) {
@@ -978,13 +971,6 @@ public class PlannerServiceImpl implements PlannerService {
         courseDao.remove(course, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
-
-
-//    @Override
-//    public void addCourse(AdFaculty faculty, AdCourse course) {
-//        facultyDao.addCourse(faculty, course, securityService.getCurrentUser());
-//        sessionFactory.getCurrentSession().flush();
-//    }
 
     @Override
     public void updateCourse(AdFaculty faculty, AdCourse course) {
@@ -1020,10 +1006,18 @@ public class PlannerServiceImpl implements PlannerService {
     }
 
     @Override
-    public void addCourse(AdFaculty faculty, AdCourse course) {
-        // TODO Auto-generated method stub
-
+    public void saveCourse(AdCourse course) {
+        courseDao.save(course, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
     }
 
+	@Override
+	public void addCourse(AdFaculty faculty, AdCourse course) {
+		facultyDao.addCourse(faculty,course, securityService.getCurrentUser());
+        sessionFactory.getCurrentSession().flush();
+		
+	}
 
+	   
+    
 }

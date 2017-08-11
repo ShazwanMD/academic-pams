@@ -55,7 +55,7 @@ public class PlannerController {
     // ====================================================================================================
     @RequestMapping(value = "/academicSessions", method = RequestMethod.GET)
     public ResponseEntity<List<AcademicSession>> findAcademicSessions() {
-        List<AdAcademicSession> academicSessions = plannerService.findAcademicSessions(0, 100);
+        List<AdAcademicSession> academicSessions = plannerService.findAcademicSessions(0, 1000);
         return new ResponseEntity<List<AcademicSession>>(plannerTransformer.toAcademicSessionVos(academicSessions),
                 HttpStatus.OK);
     }
@@ -171,7 +171,7 @@ public class PlannerController {
 
     @RequestMapping(value = "/programLevels", method = RequestMethod.GET)
     public ResponseEntity<List<ProgramLevel>> findProgramLevels() {
-        List<AdProgramLevel> programLevels = plannerService.findProgramLevels(0, 100);
+        List<AdProgramLevel> programLevels = plannerService.findProgramLevels(0, 1000);
         return new ResponseEntity<List<ProgramLevel>>(plannerTransformer.toProgramLevelVos(programLevels),
                 HttpStatus.OK);
     }
@@ -254,7 +254,7 @@ public class PlannerController {
 
     @RequestMapping(value = "/faculties", method = RequestMethod.GET)
     public ResponseEntity<List<Faculty>> findFaculties() {
-        List<AdFaculty> faculties = plannerService.findFaculties(0, 100);
+        List<AdFaculty> faculties = plannerService.findFaculties(0, 1000);
         return new ResponseEntity<List<Faculty>>(plannerTransformer.toFacultyVos(faculties), HttpStatus.OK);
     }
 
@@ -286,7 +286,7 @@ public class PlannerController {
 
     @RequestMapping(value = "/programs", method = RequestMethod.GET)
     public ResponseEntity<List<Program>> findPrograms() {
-        List<AdProgram> programs = plannerService.findPrograms(0, 100);
+        List<AdProgram> programs = plannerService.findPrograms(0, 1000);
         return new ResponseEntity<List<Program>>(plannerTransformer.toProgramVos(programs), HttpStatus.OK);
     }
 
@@ -300,7 +300,7 @@ public class PlannerController {
     public ResponseEntity<List<Cohort>> findCohortsByProgram(@PathVariable String code) {
         AdProgram program = plannerService.findProgramByCode(code);
         return new ResponseEntity<List<Cohort>>(
-                plannerTransformer.toCohortVos(plannerService.findCohorts(program, 0, 100)), HttpStatus.OK);
+                plannerTransformer.toCohortVos(plannerService.findCohorts(program, 0, 1000)), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/programs/{code}/save", method = RequestMethod.POST)
@@ -327,6 +327,8 @@ public class PlannerController {
         plannerService.saveProgram(program);
         
         System.out.println("Save new program:" + code );
+        System.out.println(program.getCode());
+        System.out.println(program.getTitleEn());
         return new ResponseEntity<String>("Success", HttpStatus.OK);
 
     }
@@ -350,12 +352,6 @@ public class PlannerController {
         return plannerService.isAcademicSessionCodeExists(code);
 	}
     
-  /*//isProgramExists
-    private boolean isProgramExists(String code, AdFaculty faculty) {
-   	 System.out.println(plannerService.isProgramExists(code, faculty));
-        return plannerService.isProgramExists(code, faculty);
-	}*/
-
 	@RequestMapping(value = "/programs/{code}", method = RequestMethod.PUT)
     public ResponseEntity<String> updateProgram(@PathVariable String code, @RequestBody Program vo) {
         dummyLogin();
@@ -402,7 +398,7 @@ public class PlannerController {
 
     @RequestMapping(value = "/courses", method = RequestMethod.GET)
     public ResponseEntity<List<Course>> findCourses() {
-        return new ResponseEntity<List<Course>>(plannerTransformer.toCourseVos(plannerService.findCourses(0, 100)),
+        return new ResponseEntity<List<Course>>(plannerTransformer.toCourseVos(plannerService.findCourses(0, 1000)),
                 HttpStatus.OK);
     }
 
@@ -422,7 +418,7 @@ public class PlannerController {
         throw new UnsupportedOperationException();
     }
 
-   @RequestMapping(value = "/courses/{code}/add", method = RequestMethod.POST)
+   /*@RequestMapping(value = "/courses/{code}/add", method = RequestMethod.POST)
     public ResponseEntity<String> addCourse(@PathVariable String code, @RequestBody Course vo) {
         dummyLogin();
         
@@ -444,7 +440,7 @@ public class PlannerController {
         course.setStatus(AdCourseStatus.get(vo.getStatus().ordinal()));
         course.setFaculty(plannerService.findFacultyById(vo.getFaculty().getId()));
         course.setClassification(AdAcademicClassification.get(vo.getClassification().ordinal()));
-        plannerService.addCourse(new AdFacultyImpl(), course);
+        plannerService.addCourse(course);
         
         System.out.println("Add course success:" + code );
         System.out.println(course.getCode() );
@@ -453,7 +449,41 @@ public class PlannerController {
          
         return new ResponseEntity<String>("Success", HttpStatus.OK);
     }
-   }
+   }*/
+    
+    @RequestMapping(value = "/courses/{code}/save", method = RequestMethod.POST)
+    public ResponseEntity<String> saveCourse(@PathVariable String code, @RequestBody Course vo) {
+        dummyLogin();
+        if (isCourseExists(code, plannerService.findFacultyById(vo.getFaculty().getId()))){
+        	//throw new IllegalArgumentException("Data program already exists! Please insert new data"); 
+        
+        System.out.println("Faculty1" + plannerService.findFacultyById(vo.getFaculty().getId()));
+        System.out.println("Course Code1" + code );
+        System.out.println("Course Code2" + vo.getCode() );
+        System.out.println("Duplicate course:" + code );
+        	
+			return new ResponseEntity<String>("Duplicate", HttpStatus.OK);
+	} else {
+        
+		AdCourse course = new AdCourseImpl();
+        course.setCode(vo.getCode());
+        course.setTitleMs(vo.getTitleMs());
+        course.setTitleEn(vo.getTitleEn());
+        course.setStatus(AdCourseStatus.get(vo.getStatus().ordinal()));
+        course.setFaculty(plannerService.findFacultyById(vo.getFaculty().getId()));
+        course.setClassification(AdAcademicClassification.get(vo.getClassification().ordinal()));
+        plannerService.saveCourse(course);
+        
+        System.out.println("Add course success:" + code );
+        System.out.println(course.getCode() );
+        System.out.println(course.getTitleEn());
+        System.out.println(course.getClassification());
+         
+        return new ResponseEntity<String>("Success", HttpStatus.OK);
+
+    }
+        
+    }
 
     @RequestMapping(value = "/courses/{code}", method = RequestMethod.PUT)
     public ResponseEntity<String> updateCourse(@PathVariable String code, @RequestBody Course vo) {
@@ -500,7 +530,7 @@ public class PlannerController {
     @RequestMapping(value = "/academicYears", method = RequestMethod.GET)
     public ResponseEntity<List<AcademicYear>> findAcademicYears() {
         return new ResponseEntity<List<AcademicYear>>(
-                plannerTransformer.toAcademicYearVos(plannerService.findAcademicYears(0, 100)), HttpStatus.OK);
+                plannerTransformer.toAcademicYearVos(plannerService.findAcademicYears(0, 1000)), HttpStatus.OK);
     }
 
     // ====================================================================================================
@@ -509,7 +539,7 @@ public class PlannerController {
 
     @RequestMapping(value = "/curriculums", method = RequestMethod.GET)
     public ResponseEntity<List<Curriculum>> findCurriculums() {
-        return new ResponseEntity<List<Curriculum>>(plannerTransformer.toCurriculumVos(plannerService.findCurriculums(0, 100)),
+        return new ResponseEntity<List<Curriculum>>(plannerTransformer.toCurriculumVos(plannerService.findCurriculums(0, 1000)),
                 HttpStatus.OK);
     }
 
@@ -652,7 +682,7 @@ public class PlannerController {
 
     @RequestMapping(value = "/cohorts", method = RequestMethod.GET)
     public ResponseEntity<List<Cohort>> findCohorts() {
-        return new ResponseEntity<List<Cohort>>(plannerTransformer.toCohortVos(plannerService.findCohorts("%", 0, 100)),
+        return new ResponseEntity<List<Cohort>>(plannerTransformer.toCohortVos(plannerService.findCohorts("%", 0, 1000)),
                 HttpStatus.OK);
     }
 

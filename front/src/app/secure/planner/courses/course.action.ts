@@ -40,26 +40,26 @@ export class CourseActions {
             payload: course
         };
     }
+   
+    static SAVE_COURSE = '[Course] Save Course';
 
-    static ADD_COURSE = '[Course] Add Course';
-
-    addCourse( course ): Action {
+    saveCourse( course ): Action {
+        console.log( course );
         return {
-            type: CourseActions.ADD_COURSE,
+            type: CourseActions.SAVE_COURSE,
             payload: course
         };
     }
 
-    static ADD_COURSE_SUCCESS = '[Course] Add Course Success';
-
-    addCourseSuccess( course ): Action {
-        console.log( "addCourseSuccess" );
+    static SAVE_COURSE_SUCCESS = '[Course] Save Course Success';
+    
+    saveCourseSuccess( course ): Action {
+        console.log( "saveCourseSuccess" );
         return {
-            type: CourseActions.ADD_COURSE_SUCCESS,
+            type: CourseActions.SAVE_COURSE_SUCCESS,
             payload: course
         };
     }
-
 
    static UPDATE_COURSE = '[Course] Update course';
 

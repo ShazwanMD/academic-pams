@@ -57,8 +57,8 @@ export class CourseCreatorDialog implements OnInit {
     }
 
     save( course: Course, isValid: boolean ) {
-        /*console.log("adding course");*/
-        if ( !course.id ) this.store.dispatch( this.actions.addCourse( course ) );
+        console.log("save course");
+        if ( !course.id ) this.store.dispatch( this.actions.saveCourse( course ) );
         else this.store.dispatch( this.actions.updateCourse( course ) );
         this.dialog.close();
         console.log( course );

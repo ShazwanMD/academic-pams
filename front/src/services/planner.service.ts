@@ -127,6 +127,7 @@ export class PlannerService {
   }
 
   saveProgram(program: Program): Observable<String> {
+      console.log('saveProgram');
     return this._http.post(this.PLANNER_API + '/programs/' + program.code + '/save', JSON.stringify(program))
       .flatMap((res: Response) => Observable.of(res.text()));
       //.catch((error) => this.handleError(error));
@@ -170,12 +171,11 @@ export class PlannerService {
         .map((res: Response) => <Course>res.json());
     }
 
-  addCourse(course: Course): Observable<String> {
-      console.log("addCourse", course.code);
-      console.log("JSON", JSON.stringify(course));
-      
-    return this._http.post(this.PLANNER_API + '/courses/' + course.code + '/add', JSON.stringify(course))
+  saveCourse(course: Course): Observable<String> {
+      console.log('saveCourse');
+    return this._http.post(this.PLANNER_API + '/courses/' + course.code + '/save', JSON.stringify(course))
       .flatMap((res: Response) => Observable.of(res.text()));
+      //.catch((error) => this.handleError(error));
   }
 
   updateCourse(course: Course): Observable<String> {

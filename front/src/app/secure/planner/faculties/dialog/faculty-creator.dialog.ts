@@ -18,6 +18,7 @@ export class FacultyCreatorDialog implements OnInit {
   private create: boolean = false;
   private _faculty: Faculty;
   private minLength: number = 1;
+  private maxLength: number = 5;
 
   constructor(private formBuilder: FormBuilder,
               private store: Store<PlannerModuleState>,
@@ -36,7 +37,7 @@ export class FacultyCreatorDialog implements OnInit {
       code: ['', Validators.required],
       description: ['', Validators.minLength(this.minLength)],
       name: ['', Validators.minLength(this.minLength)],
-      prefix: '',
+      prefix: ['', Validators.maxLength(this.maxLength)],
       status: ['', Validators.required],
     });
     if (this.create) this.createForm.patchValue(this._faculty);

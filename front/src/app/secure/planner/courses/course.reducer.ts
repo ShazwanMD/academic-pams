@@ -14,9 +14,9 @@ export function courseReducer( state = initialState, action: Action ): CourseSta
         case CourseActions.CREATE_COURSE_SUCCESS: {
             return action.payload;
         }
-        case CourseActions.ADD_COURSE_SUCCESS: {
+        /*case CourseActions.ADD_COURSE_SUCCESS: {
             return action.payload;
-        }
+        }*/
         case CourseActions.FIND_COURSE_BY_CODE_SUCCESS: {
             return action.payload;
         }

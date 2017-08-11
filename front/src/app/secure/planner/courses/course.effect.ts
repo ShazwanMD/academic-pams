@@ -32,12 +32,12 @@ export class CourseEffects {
         .map( course => this.courseActions.findCourseByCodeSuccess( course ) );
 
    
-    @Effect() addCourse$ = this.actions$
-        .ofType( CourseActions.ADD_COURSE )
-        .map( action => action.payload )
-        .switchMap( course => this.plannerService.addCourse( course ) )
-        .map( course => this.courseActions.addCourseSuccess( course ) )
-        .mergeMap(( action ) => from( [action, this.courseActions.findCourses()] ) );
+    @Effect() saveCourse$ = this.actions$
+    .ofType(CourseActions.SAVE_COURSE)
+    .map((action) => action.payload)
+    .switchMap((course) => this.plannerService.saveCourse(course))
+    .map((course) => this.courseActions.saveCourseSuccess(course))
+    .mergeMap((action) => from([action, this.courseActions.findCourses()]));
 
 
     @Effect() updateCourse$ = this.actions$

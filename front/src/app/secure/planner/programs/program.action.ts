@@ -62,7 +62,7 @@ export class ProgramActions {
     static SAVE_PROGRAM = '[Program] Save Program';
 
     saveProgram( program ): Action {
-        console.log( program )
+        console.log( program );
         return {
             type: ProgramActions.SAVE_PROGRAM,
             payload: program
@@ -70,7 +70,9 @@ export class ProgramActions {
     }
 
     static SAVE_PROGRAM_SUCCESS = '[Program] Save Program Success';
+    
     saveProgramSuccess( program ): Action {
+        console.log( "saveProgramSuccess" );
         return {
             type: ProgramActions.SAVE_PROGRAM_SUCCESS,
             payload: program
