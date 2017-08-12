@@ -32,6 +32,23 @@ export class PlannerService {
     return this._http.get(this.PLANNER_API + '/academicYears')
       .map((res: Response) => <AcademicYear[]>res.json());
   }
+  
+  findAcademicYearByCode(code: string): Observable<AcademicYear> {
+      return this._http.get(this.PLANNER_API + '/academicYears/' + code)
+        .map((res: Response) => <AcademicYear>res.json());
+    }
+  
+  saveAcademicYear(academicYear: AcademicYear): Observable<String> {
+      return this._http.post(this.PLANNER_API + '/academicYears/' + academicYear.code + '/save', JSON.stringify(academicYear))
+        .flatMap((res: Response) => Observable.of(res.text()))
+        .catch((error) => this.handleError(error));
+    }
+
+    updateAcademicYear(academicYear: AcademicYear): Observable<String> {
+      return this._http.put(this.PLANNER_API + '/academicYears/' + academicYear.code + '/update', JSON.stringify(academicYear))
+        .flatMap((res: Response) => Observable.of(res.text()));
+    }
+
 
   // ====================================================================================================
   // ACADEMIC SESSION

@@ -4,23 +4,84 @@ import {Action} from '@ngrx/store';
 @Injectable()
 export class AcademicYearActions {
 
-  static FIND_ACADEMICYEARS = '[AcademicYear] Find AcademicYears';
+  static FIND_ACADEMIC_YEARS = '[AcademicYear] Find Academic Years';
 
   findAcademicYears(): Action {
     return {
-      type: AcademicYearActions.FIND_ACADEMICYEARS,
+      type: AcademicYearActions.FIND_ACADEMIC_YEARS,
     };
   }
 
-  static FIND_ACADEMICYEARS_SUCCESS = '[AcademicYear] Find AcademicYears Success';
+  static FIND_ACADEMIC_YEARS_SUCCESS = '[AcademicYear] Find Academic Years Success';
 
   findAcademicYearsSuccess(academicYears): Action {
     return {
-      type: AcademicYearActions.FIND_ACADEMICYEARS_SUCCESS,
+      type: AcademicYearActions.FIND_ACADEMIC_YEARS_SUCCESS,
       payload: academicYears
     };
   }
+  
+  static FIND_ACADEMIC_YEAR_BY_CODE = '[AcademicYear] Find AcademicYear By Code';
 
+  findAcademicYearByCode(code): Action {
+    return {
+      type: AcademicYearActions.FIND_ACADEMIC_YEAR_BY_CODE,
+      payload: code
+    };
+  }
 
+  static FIND_ACADEMIC_YEAR_BY_CODE_SUCCESS = '[AcademicYear] Find AcademicYear By Code Success';
+
+  findAcademicYearByCodeSuccess(code): Action {
+    console.log("findAcademicYearByCode");
+    console.log("academicYear" + code)
+    return {
+      type: AcademicYearActions.FIND_ACADEMIC_YEAR_BY_CODE_SUCCESS,
+      payload: code
+    };
+  }
+  
+  static SAVE_ACADEMIC_YEAR = '[AcademicYear] Save AcademicYear';
+
+  saveAcademicYear(academicYear): Action {
+    console.log("saveAcademicYear");
+    return {
+      type: AcademicYearActions.SAVE_ACADEMIC_YEAR,
+      payload: academicYear
+    };
+  }
+
+  static SAVE_ACADEMIC_YEAR_SUCCESS = '[AcademicYear] Save AcademicYear Success';
+
+  saveAcademicYearSuccess(message): Action {
+    console.log("saveAcademicYearSuccess");
+    return {
+      type: AcademicYearActions.SAVE_ACADEMIC_YEAR_SUCCESS,
+      payload: {status: message}
+    };
+  }
+
+  static UPDATE_ACADEMIC_YEAR = '[AcademicYear] Update AcademicYear';
+
+  updateAcademicYear(academicYear): Action {
+    console.log("updateAcademicYear")
+    return {
+      type: AcademicYearActions.UPDATE_ACADEMIC_YEAR,
+      payload: academicYear
+    };
+  }
+
+  static UPDATE_ACADEMIC_YEAR_SUCCESS = '[AcademicYear] Update AcademicYear';
+
+  updateAcademicYearSuccess(academicYear): Action {
+    console.log("updateAcademicYearSuccess");
+    console.log("academicYear: " + academicYear);
+    return {
+      type: AcademicYearActions.UPDATE_ACADEMIC_YEAR_SUCCESS,
+      payload: academicYear
+    };
+  }
+  
+  
 }
 

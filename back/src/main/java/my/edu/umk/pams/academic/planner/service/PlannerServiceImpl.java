@@ -994,7 +994,11 @@ public class PlannerServiceImpl implements PlannerService {
         sessionFactory.getCurrentSession().flush();
     }
 
-
+    @Override
+	public boolean isAcademicYearExists(String code) {
+    	 return academicYearDao.isExists(code);
+	}
+    
     @Override
     public List<AdAcademicYear> findAcademicYears(Integer offset, Integer limit) {
         return academicYearDao.find(offset, limit);
@@ -1017,6 +1021,8 @@ public class PlannerServiceImpl implements PlannerService {
         sessionFactory.getCurrentSession().flush();
 		
 	}
+
+	
 
 	   
     

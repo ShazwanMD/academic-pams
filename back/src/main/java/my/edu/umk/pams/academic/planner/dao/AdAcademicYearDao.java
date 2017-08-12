@@ -17,6 +17,8 @@ public interface AdAcademicYearDao extends GenericDao<Long, AdAcademicYear> {
     AdAcademicYear findByCode(String code);
 
     List<AdAcademicYear> find(String filter, Integer offset, Integer limit);
+    
+    boolean isExists(String code);
 
     // ====================================================================================================
     // HELPER

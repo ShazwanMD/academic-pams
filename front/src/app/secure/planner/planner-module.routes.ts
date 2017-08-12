@@ -5,10 +5,12 @@ import {FacultyRoutes} from './faculties/faculty.routes';
 import {CourseRoutes} from './courses/course.routes';
 import {CohortRoutes} from './cohorts/cohort.routes';
 import {AcademicSessionRoutes} from './academic-sessions/academic-session.routes';
+import {AcademicYearRoutes} from './academic-years/academic-year.routes';
 import {CurriculumRoutes} from './curriculums/curriculum.routes';
 
 export const PlannerModuleRoutes: Routes = [
   {path: 'planner', component: PlannerPage},
+  ...AcademicYearRoutes,
   ...AcademicSessionRoutes,
   ...FacultyRoutes,
   ...ProgramRoutes,

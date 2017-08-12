@@ -46,6 +46,17 @@ public class AdAcademicYearDaoImpl extends GenericDaoSupport<Long, AdAcademicYea
         query.setInteger("state", AdMetaState.ACTIVE.ordinal());
         return ((Long) query.uniqueResult()).intValue() > 0;
     }
+    
+    @Override
+    public boolean isExists(String code) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select count(s) from AdAcademicSession s where " +
+                "s.code = :code " +
+                "and s.metadata.state = :state ");
+        query.setString("code", code);
+        query.setInteger("state", AdMetaState.ACTIVE.ordinal());
+        return ((Long) query.uniqueResult()).intValue() > 0;
+    }
 
     @Override
     public List<AdAcademicYear> find(String filter, Integer offset, Integer limit) {

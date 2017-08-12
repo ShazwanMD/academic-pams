@@ -158,13 +158,21 @@ public class PlannerController {
 	@RequestMapping(value = "/academicYears/{code}/save", method = RequestMethod.POST)
 	public ResponseEntity<String> saveAcademicYear(@PathVariable String code, @RequestBody AcademicYear vo) {
 		dummyLogin();
-		AdAcademicYear year = new AdAcademicYearImpl();
-		year.setCode(vo.getCode());
-		year.setDescription(vo.getDescription());
-		year.setYear(vo.getYear());
-		plannerService.saveAcademicYear(year);
-		return new ResponseEntity<String>("Success", HttpStatus.OK);
-	}
+		if (isAcademicYearExists(vo.getCode())) {
+
+			System.out.println("Duplicate academicYear:" + vo.getCode());
+			return new ResponseEntity<String>("Duplicate", HttpStatus.OK);
+		} else {		
+				AdAcademicYear year = new AdAcademicYearImpl();
+				year.setCode(vo.getCode());
+				year.setDescription(vo.getDescription());
+				year.setYear(vo.getYear());
+				plannerService.saveAcademicYear(year);
+				
+				System.out.println("Save academicYear:" + vo.getCode());
+				return new ResponseEntity<String>("Success", HttpStatus.OK);
+			}
+		}
 
 	// ====================================================================================================
 	// PROGRAM LEVEL
@@ -353,6 +361,12 @@ public class PlannerController {
 		System.out.println(plannerService.isAcademicSessionCodeExists(code));
 		return plannerService.isAcademicSessionCodeExists(code);
 	}
+	
+	// isAcademicYearExists
+		private boolean isAcademicYearExists(String code) {
+			System.out.println(plannerService.isAcademicYearExists(code));
+			return plannerService.isAcademicYearExists(code);
+		}
 
 	// isCohortExists
 	private boolean isCohortExists(String code) {

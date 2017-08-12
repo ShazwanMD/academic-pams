@@ -331,6 +331,8 @@ public interface PlannerService {
     List<AdAcademicYear> findAcademicYears(String filter, Integer offset, Integer limit);
     
     void saveAcademicYear(AdAcademicYear year);
+    
+    boolean isAcademicYearExists(String code);
 
 	List<AdSubject> findSubjectsBySubjectType(AdCurriculum curriculum, AdSubjectType subjectType);
 
