@@ -109,7 +109,7 @@ public class PlannerController {
 
 				AdAcademicSession academicSession = new AdAcademicSessionImpl();
 				academicSession.setCode(vo.getCode());
-				academicSession.setDescription(vo.getDescription());
+				academicSession.setDescription("SESSION " + vo.getDescription());
 				academicSession.setCurrent(vo.isCurrent());
 				academicSession.setStartDate(vo.getstartDate());
 				academicSession.setEndDate(vo.getendDate());
@@ -353,12 +353,12 @@ public class PlannerController {
 		System.out.println(plannerService.isAcademicSessionCodeExists(code));
 		return plannerService.isAcademicSessionCodeExists(code);
 	}
-	
+
 	// isCohortExists
-		private boolean isCohortExists(String code) {
-			System.out.println(plannerService.isCohortExists(code));
-			return plannerService.isCohortExists(code);
-		}
+	private boolean isCohortExists(String code) {
+		System.out.println(plannerService.isCohortExists(code));
+		return plannerService.isCohortExists(code);
+	}
 
 	@RequestMapping(value = "/programs/{code}", method = RequestMethod.PUT)
 	public ResponseEntity<String> updateProgram(@PathVariable String code, @RequestBody Program vo) {
@@ -722,7 +722,7 @@ public class PlannerController {
 			cohort.setProgram(program);
 			cohort.setSession(academicSession);
 			plannerService.saveCohort(cohort);
-			
+
 			System.out.println("Save cohort:" + vo.getCode());
 			return new ResponseEntity<String>("Success", HttpStatus.OK);
 		}
