@@ -63,6 +63,7 @@ import {AuthenticatedShowDirective} from './secure/identity/directive/authentica
 import {NotAuthenticatedShowDirective} from './secure/identity/directive/not-authenticated-show.directive';
 import { AssessmentEffects } from "./secure/term/assessments/assessment.effect";
 import { OfferingEffects } from "./secure/term/offerings/offering.effect";
+import { CohortEffects } from "./secure/planner/cohorts/cohort.effect";
 // interceptor
 const httpInterceptorProviders: Type<any>[] = [
   RequestInterceptor,
@@ -157,6 +158,7 @@ export function applicationReducer(applicationState: any = INITIAL_APP_STATE, ac
     EffectsModule.run(AppointmentEffects),
     EffectsModule.run(StaffEffects),
     EffectsModule.run(AcademicSessionEffects),
+    EffectsModule.run(CohortEffects),
     EffectsModule.run(AssessmentEffects),
     EffectsModule.run(OfferingEffects),
     StudentProfileModule.forRoot(),

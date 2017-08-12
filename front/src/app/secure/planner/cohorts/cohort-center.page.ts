@@ -36,6 +36,7 @@ export class CohortCenterPage implements OnInit {
   }
   
   ngOnInit(): void {
+    console.log('findCohorts');
     this.store.dispatch(this.actions.findCohorts());
   }
 
@@ -49,9 +50,11 @@ export class CohortCenterPage implements OnInit {
     config.viewContainerRef = this.vcf;
     config.role = 'dialog';
     config.width = '40%';
-    config.position = {top: '0px'};
+    config.position = {top: '1px'};
     this.creatorDialogRef = this.dialog.open(CohortEditorDialog, config);
-    // this.creatorDialogRef.componentInstance.offering = this.offering;
+    if (code) this.creatorDialogRef.componentInstance.cohort = code;
+    ;
+   
     this.creatorDialogRef.afterClosed().subscribe(res => {
       console.log("close dialog");
 

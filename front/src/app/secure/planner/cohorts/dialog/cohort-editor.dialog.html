@@ -1,30 +1,26 @@
-<h2 md-dialog-title>Create New Cohort</h2>
+<h2 md-dialog-title>Create New Cohort v1</h2>
 <md-dialog-content>
   <form [formGroup]="createForm" novalidate>
 
-    <div layout="row" class="pad-bottom pad-top">
+    <div fxLayout fxLayout.xs="column" fxLayoutWrap fxLayoutGap="25px" class="inset">
       <pams-academic-session-select
         [placeholder]="'Select Session'"
         [innerFormControl]="createForm.controls.academicSession" fxFlex="calc(100%-25px)" class="pad-bottom">
       </pams-academic-session-select>
       <div class="tc-red-600"
            *ngIf="createForm.get('academicSession').invalid && createForm.get('academicSession').touched">
-        Please add your academic Session!
+        Please add academic session!
       </div>
-    </div>
-
-    <div layout="row" class="pad-bottom pad-top">
+    
       <pams-program-select mdTooltip="Please select program"
                            [placeholder]="'Select Program'"
                            [innerFormControl]="createForm.controls['program']"
                            fxFlex="calc(100%-25px)" class="pad-bottom">
       </pams-program-select>
       <div class="tc-red-600" *ngIf="createForm.get('program').invalid && createForm.get('program').touched">
-        Please add your program!
+        Please add program!
       </div>
-
     </div>
-
   </form>
 </md-dialog-content>
 <md-dialog-actions align="end">
