@@ -35,8 +35,10 @@ export class CurriculumBndleCourseListComponent implements OnInit, OnChanges {
   private bundleSubjectPartDialogRef: MdDialogRef<CurriculumBundleSubjectPartDialog>;
 
   private columns: any[] = [
-    {name: 'id', label: 'Id'},
+   // {name: 'id', label: 'Id'},
     {name: 'course.code', label: 'course'},
+    {name: 'course.titleEn', label: 'Title'},
+    {name: 'course.credit', label: 'Credit'},
     {name: 'action', label: ''},
   ];
 

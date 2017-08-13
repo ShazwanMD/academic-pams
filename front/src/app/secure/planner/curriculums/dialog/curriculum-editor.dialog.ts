@@ -1,12 +1,17 @@
-import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {ActivatedRoute, Router} from '@angular/router';
+import {AcademicSession} from '../../../../shared/model/planner/academic-session.interface';
+import {Program} from '../../../../shared/model/planner/program.interface';
 import {Curriculum} from '../../../../shared/model/planner/curriculum.interface';
-import {Subject} from '../../../../shared/model/planner/subject.interface';
+import {Component, OnInit} from '@angular/core';
+import {FormGroup} from '@angular/forms';
+import {FormBuilder} from '@angular/forms';
+import {Router, ActivatedRoute} from '@angular/router';
+
 import {CurriculumActions} from '../curriculum.action';
+;
 import {Store} from '@ngrx/store';
 import {PlannerModuleState} from '../../index';
 import {MdDialogRef} from '@angular/material';
+
 
 @Component({
   selector: 'pams-curriculum-editor',
@@ -15,10 +20,9 @@ import {MdDialogRef} from '@angular/material';
 
 export class CurriculumEditorDialog implements OnInit {
 
-  private editorForm: FormGroup;
-  private edit: boolean = false;
-  private _curriculum: Curriculum;
-  private _subject: Subject;
+    private editorForm: FormGroup;
+    private edit: boolean = false;
+    private curriculum: Curriculum;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -28,47 +32,35 @@ export class CurriculumEditorDialog implements OnInit {
               private dialog: MdDialogRef<CurriculumEditorDialog>) {
   }
 
-  set curriculum(value: Curriculum) {
-    this._curriculum = value;
-    this.edit = true;
-  }
-
-  set subject(value: Subject) {
-    this._subject = value;
-    this.edit = true;
-  }
-
   ngOnInit(): void {
-    this.editorForm = this.formBuilder.group({
-      id: [undefined],
-      code: ['', Validators.required],
-      description: '',
-      coreCredit: ['', Validators.required],
-      curriculumCredit: ['', Validators.required],
-      electiveCredit: ['', Validators.required],
-      generalCredit: ['', Validators.required],
-      languageCredit: ['', Validators.required],
-      otherCredit: ['', Validators.required],
-      requiredCredit: ['', Validators.required],
-      totalCredit: ['', Validators.required],
-      period: ['', Validators.required],
-      maxPeriod: ['', Validators.required],
-      ordinal: ['', Validators.required],
-      program: ['', Validators.required],
-      //academicSession: <AcademicSession>{},
-      //program: <Program>{},
-      //academicSession: <AcademicSession>{},
+    this.editorForm = this.formBuilder.group(<Curriculum>{
+      id:null,
+      code:'',
+      description:'',
+      coreCredit: 0,
+      curriculumCredit: 0,
+      electiveCredit: 0,
+      generalCredit: 0,
+      languageCredit: 0,
+      otherCredit: 0,
+      requiredCredit: 0,
+      totalCredit: 0,
+      period: 0,
+      maxPeriod: 0,
+      ordinal:0,
+      program: <Program>{},
+      academicSession: <AcademicSession>{},
     });
 
-    if (this.edit) this.editorForm.patchValue(this._curriculum);
+    if (this.edit) this.editorForm.patchValue(this.curriculum);
 
   }
 
   save(curriculum: Curriculum, isValid: boolean): void {
 
-    if (!curriculum.id) this.store.dispatch(this.actions.saveCurriculum(curriculum));
-    else this.store.dispatch(this.actions.updateCurriculum(curriculum));
-    this.dialog.close();
-
+ if (!curriculum.id) this.store.dispatch(this.actions.saveCurriculum(curriculum));
+        else this.store.dispatch(this.actions.updateCurriculum(curriculum));
+        this.dialog.close();
+    
   }
 }

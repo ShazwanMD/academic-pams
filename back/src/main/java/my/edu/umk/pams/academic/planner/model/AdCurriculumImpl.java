@@ -19,10 +19,10 @@ public class AdCurriculumImpl implements AdCurriculum {
     @SequenceGenerator(name = "SQ_AD_CRLM", sequenceName = "SQ_AD_CRLM", allocationSize = 1)
     private Long id;
 
-    @Column(name = "CODE", nullable = false, unique = true)
+    @Column(name = "CODE", nullable = false, unique = false)
     private String code;
 
-    @Column(name = "ORDINAL", nullable = false)
+    @Column(name = "ORDINAL", nullable = true)
     private Integer ordinal;
 
     // teras fakulti
@@ -46,11 +46,11 @@ public class AdCurriculumImpl implements AdCurriculum {
     private Integer languageCredit;
 
     // kokurikulum
-    @Column(name = "CURRICULUM", nullable = false)
+    @Column(name = "CURRICULUM", nullable = true)
     private Integer curriculumCredit;
 
     // kredit2 lain
-    @Column(name = "OTHERS", nullable = false)
+    @Column(name = "OTHERS", nullable = true)
     private Integer othersCredit;
 
     @Column(name = "TOTAL_CREDIT", nullable = false)

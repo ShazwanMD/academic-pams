@@ -39,7 +39,7 @@ export class CurriculumBundleSubjectListComponent implements OnInit, OnChanges {
  
 
   private columns: any[] = [
-    { name: 'id', label: 'Id' },
+   // { name: 'id', label: 'Id' },
     { name: 'ordinal', label: 'Semester' },
     { name: 'subjectType', label: 'Type' },
     // { name: 'course.code', label: 'Course' },
