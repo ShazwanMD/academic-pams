@@ -38,6 +38,8 @@ import { AppointmentEffects } from './secure/term/appointments/appointment.effec
 import { StaffEffects } from './secure/identity/staffs/staff.effect';
 import { EffectsModule } from '@ngrx/effects';
 import { AcademicSessionEffects } from './secure/planner/academic-sessions/academic-session.effect';
+import { AcademicYearEffects } from './secure/planner/academic-years/academic-year.effect';
+import { CohortEffects } from './secure/planner/cohorts/cohort.effect';
 import { PipeModule } from './app.pipe.module';
 import { environment } from '../environments/environment';
 import {
@@ -161,6 +163,8 @@ export function applicationReducer(applicationState: any = INITIAL_APP_STATE, ac
     EffectsModule.run(AppointmentEffects),
     EffectsModule.run(StaffEffects),
     EffectsModule.run(AcademicSessionEffects),
+    EffectsModule.run(AcademicYearEffects),
+    EffectsModule.run(CohortEffects),
     EffectsModule.run(AssessmentEffects),
     EffectsModule.run(OfferingEffects),
     StudentProfileModule.forRoot(),
