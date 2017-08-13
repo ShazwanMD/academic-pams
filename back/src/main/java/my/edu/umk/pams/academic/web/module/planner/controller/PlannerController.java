@@ -162,18 +162,33 @@ public class PlannerController {
 
 			System.out.println("Duplicate academicYear:" + vo.getCode());
 			return new ResponseEntity<String>("Duplicate", HttpStatus.OK);
-		} else {		
-				AdAcademicYear year = new AdAcademicYearImpl();
-				year.setCode(vo.getCode());
-				year.setDescription(vo.getDescription());
-				year.setYear(vo.getYear());
-				plannerService.saveAcademicYear(year);
-				
-				System.out.println("Save academicYear:" + vo.getCode());
-				return new ResponseEntity<String>("Success", HttpStatus.OK);
-			}
-		}
+		} else {
+			AdAcademicYear year = new AdAcademicYearImpl();
+			year.setCode(vo.getCode());
+			year.setDescription(vo.getDescription());
+			year.setYear(vo.getYear());
+			plannerService.saveAcademicYear(year);
 
+			System.out.println("Save academicYear:" + vo.getCode());
+			return new ResponseEntity<String>("Success", HttpStatus.OK);
+		}
+	}
+
+	// update academicYear
+	@RequestMapping(value = "/academicYears/{code}/update", method = RequestMethod.PUT)
+	public ResponseEntity<String> updateAcademicYear(@PathVariable String code, @RequestBody AcademicYear vo) {
+		dummyLogin();
+		System.out.println("Update academicYear:" + vo.getCode());
+		
+		AdAcademicYear academicYear = plannerService.findAcademicYearByCode(code);	
+		academicYear.setCode(vo.getCode());
+		academicYear.setDescription(vo.getDescription());
+		academicYear.setYear(vo.getYear());
+		plannerService.updateAcademicYear(academicYear);
+		return new ResponseEntity<String>("Success", HttpStatus.OK);
+	}
+	
+	
 	// ====================================================================================================
 	// PROGRAM LEVEL
 	// ====================================================================================================
@@ -361,12 +376,12 @@ public class PlannerController {
 		System.out.println(plannerService.isAcademicSessionCodeExists(code));
 		return plannerService.isAcademicSessionCodeExists(code);
 	}
-	
+
 	// isAcademicYearExists
-		private boolean isAcademicYearExists(String code) {
-			System.out.println(plannerService.isAcademicYearExists(code));
-			return plannerService.isAcademicYearExists(code);
-		}
+	private boolean isAcademicYearExists(String code) {
+		System.out.println(plannerService.isAcademicYearExists(code));
+		return plannerService.isAcademicYearExists(code);
+	}
 
 	// isCohortExists
 	private boolean isCohortExists(String code) {
@@ -588,7 +603,7 @@ public class PlannerController {
 		curriculum.setMaxPeriod(vo.getMaxPeriod());
 		curriculum.setOrdinal(vo.getOrdinal());
 		curriculum.setProgram(plannerService.findProgramByCode(vo.getProgram().getCode()));
-		//curriculum.setSubjects(plannerService.findSubjects(curriculum));
+		// curriculum.setSubjects(plannerService.findSubjects(curriculum));
 		plannerService.saveCurriculum(curriculum);
 		return new ResponseEntity<String>("Success", HttpStatus.OK);
 	}

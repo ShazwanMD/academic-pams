@@ -161,6 +161,8 @@ public class PlannerServiceImpl implements PlannerService {
         academicSessionDao.update(academicSession, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
+    
+    
 
     @Override
     public void removeAcademicSession(AdAcademicSession academicSession) {
@@ -989,10 +991,22 @@ public class PlannerServiceImpl implements PlannerService {
     //====================================================================================================
 
     @Override
+	public AdAcademicYear findAcademicYearByCode(String code) {
+    	 return academicYearDao.findByCode(code);
+	}
+     
+    @Override
     public void saveAcademicYear(AdAcademicYear year) {
         yearDao.save(year, securityService.getCurrentUser());
         sessionFactory.getCurrentSession().flush();
     }
+    
+    @Override
+	public void updateAcademicYear(AdAcademicYear academicYear) {
+    	 academicYearDao.update(academicYear, securityService.getCurrentUser());
+         sessionFactory.getCurrentSession().flush();
+		
+	}
 
     @Override
 	public boolean isAcademicYearExists(String code) {
@@ -1021,6 +1035,10 @@ public class PlannerServiceImpl implements PlannerService {
         sessionFactory.getCurrentSession().flush();
 		
 	}
+
+	
+
+	
 
 	
 

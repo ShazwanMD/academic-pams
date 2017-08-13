@@ -5,7 +5,7 @@
     <div fxLayout fxLayout.xs="column" fxLayoutWrap fxLayoutGap="25px" class="inset">
       <pams-academic-session-select
         [placeholder]="'Select Session'"
-        [innerFormControl]="createForm.controls.academicSession" fxFlex="calc(100%-25px)" class="pad-bottom">
+         [innerFormControl]="createForm.controls['academicSession']" fxFlex="calc(100%-25px)" class="pad-bottom">
       </pams-academic-session-select>
       <div class="tc-red-600"
            *ngIf="createForm.get('academicSession').invalid && createForm.get('academicSession').touched">

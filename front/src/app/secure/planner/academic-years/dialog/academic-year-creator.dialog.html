@@ -1,4 +1,4 @@
-<md-card-title>Academic Year Form</md-card-title>
+<md-card-title>Academic Year Form {{edit ? 'Update' : 'Save'}}  {{_academicYear?.code}}</md-card-title>
 <md-card-subtitle>Create New Academic Year</md-card-subtitle>
 
 <form [formGroup]="createForm" novalidate>
@@ -41,7 +41,7 @@
 </form>
 
 <md-dialog-actions align="end">
-  <button md-raised-button color="accent" [disabled]="createForm.invalid" (click)="save(createForm.value)"> 
+  <button md-raised-button color="accent" [disabled]="createForm.invalid" (click)="save(createForm.value, createForm.valid)"> 
   {{edit ? 'Update' : 'Save'}}
   </button>
 </md-dialog-actions>

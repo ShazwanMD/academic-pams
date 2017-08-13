@@ -326,11 +326,15 @@ public interface PlannerService {
   //====================================================================================================
     // ACADEMIC YEAR
     //====================================================================================================
+    AdAcademicYear findAcademicYearByCode(String code);
+    
     List<AdAcademicYear> findAcademicYears(Integer offset, Integer limit);
 
     List<AdAcademicYear> findAcademicYears(String filter, Integer offset, Integer limit);
     
     void saveAcademicYear(AdAcademicYear year);
+    
+    void updateAcademicYear(AdAcademicYear academicYear);
     
     boolean isAcademicYearExists(String code);
 

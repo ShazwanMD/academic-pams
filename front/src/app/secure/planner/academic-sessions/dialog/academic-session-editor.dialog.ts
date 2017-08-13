@@ -23,6 +23,7 @@ export class AcademicSessionEditorDialog implements OnInit {
   private _academicSession: AcademicSession;
   private session: Observable<AcademicSession[]>;
   private SESSION: string[] = 'termModuleState.session'.split('.');
+    private minLength: number = 5; // contoh
 
   constructor(private formBuilder: FormBuilder,
               private store: Store<PlannerModuleState>,
@@ -43,7 +44,7 @@ export class AcademicSessionEditorDialog implements OnInit {
     this.editorForm = this.formBuilder.group({
       id: [undefined],
       code: [''],
-      description: ['', Validators.minLength(10)],
+      description: ['', Validators.minLength(this.minLength)],
       current: [true],
       startDate: [undefined, Validators.required],
       endDate: [undefined, Validators.required],

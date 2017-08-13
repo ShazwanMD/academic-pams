@@ -24,6 +24,7 @@ export class AcademicYearActions {
   static FIND_ACADEMIC_YEAR_BY_CODE = '[AcademicYear] Find AcademicYear By Code';
 
   findAcademicYearByCode(code): Action {
+       console.log("findAcademicYearByCode1" + code)
     return {
       type: AcademicYearActions.FIND_ACADEMIC_YEAR_BY_CODE,
       payload: code
@@ -32,12 +33,12 @@ export class AcademicYearActions {
 
   static FIND_ACADEMIC_YEAR_BY_CODE_SUCCESS = '[AcademicYear] Find AcademicYear By Code Success';
 
-  findAcademicYearByCodeSuccess(code): Action {
-    console.log("findAcademicYearByCode");
-    console.log("academicYear" + code)
+  findAcademicYearByCodeSuccess(academicYear): Action {
+    console.log("findAcademicYearByCode2" + academicYear.code);
+   
     return {
       type: AcademicYearActions.FIND_ACADEMIC_YEAR_BY_CODE_SUCCESS,
-      payload: code
+      payload: academicYear
     };
   }
   
@@ -73,12 +74,12 @@ export class AcademicYearActions {
 
   static UPDATE_ACADEMIC_YEAR_SUCCESS = '[AcademicYear] Update AcademicYear';
 
-  updateAcademicYearSuccess(academicYear): Action {
+  updateAcademicYearSuccess(message): Action {
     console.log("updateAcademicYearSuccess");
-    console.log("academicYear: " + academicYear);
+    console.log("academicYear: " + message);
     return {
       type: AcademicYearActions.UPDATE_ACADEMIC_YEAR_SUCCESS,
-      payload: academicYear
+      payload: {status: message}
     };
   }
   

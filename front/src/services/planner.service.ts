@@ -34,19 +34,25 @@ export class PlannerService {
   }
   
   findAcademicYearByCode(code: string): Observable<AcademicYear> {
+      console.log('findAcademicYearByCode' + code);
       return this._http.get(this.PLANNER_API + '/academicYears/' + code)
         .map((res: Response) => <AcademicYear>res.json());
     }
-  
+    
+   
   saveAcademicYear(academicYear: AcademicYear): Observable<String> {
       return this._http.post(this.PLANNER_API + '/academicYears/' + academicYear.code + '/save', JSON.stringify(academicYear))
-        .flatMap((res: Response) => Observable.of(res.text()))
-        .catch((error) => this.handleError(error));
+        .flatMap((res: Response) => Observable.of(res.text()));
+        //.catch((error) => this.handleError(error));
     }
 
     updateAcademicYear(academicYear: AcademicYear): Observable<String> {
+     console.log('updateAcademicYear');
+     console.log(academicYear);
+       
       return this._http.put(this.PLANNER_API + '/academicYears/' + academicYear.code + '/update', JSON.stringify(academicYear))
         .flatMap((res: Response) => Observable.of(res.text()));
+            
     }
 
 

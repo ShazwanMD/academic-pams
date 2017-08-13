@@ -13,8 +13,6 @@ import {ProgramSubModule} from '../programs/index';
 import {CohortCenterPage} from './cohort-center.page';
 import {CohortListComponent} from './component/cohort-list.component';
 import {CohortActions} from './cohort.action';
-import {EffectsModule} from '@ngrx/effects';
-import {CohortEffects} from './cohort.effect';
 import {CohortEditorDialog} from './dialog/cohort-editor.dialog';
 import {CohortDetailPage} from './cohort-detail.page';
 import {CohortComponent} from './component/cohort.component';
@@ -29,7 +27,6 @@ import {CohortUpdateDialog} from './dialog/cohort-update.dialog';
     ReactiveFormsModule,
     ProgramSubModule.forRoot(),
     CovalentCoreModule.forRoot(),
-    //EffectsModule.run(CohortEffects),
     AcademicSessionSubModule.forRoot(),
     IdentityModule.forRoot(),
 

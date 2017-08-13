@@ -14,9 +14,9 @@ import {AcademicYearActions} from '../academic-year.action';
 export class AcademicYearCreatorDialog implements OnInit {
 
   private createForm: FormGroup;
-  private create: boolean = false;
+  private edit: boolean = false;
   private _academicYear: AcademicYear;
-  private minLength: number = 4; // contoh
+  private minLength: number = 4; 
 
   constructor(private formBuilder: FormBuilder,
               private store: Store<PlannerModuleState>,
@@ -26,7 +26,7 @@ export class AcademicYearCreatorDialog implements OnInit {
 
   set academicYear(value: AcademicYear) {
     this._academicYear = value;
-    this.create = true;
+    this.edit = true;
   }
 
   ngOnInit(): void {
@@ -38,12 +38,16 @@ export class AcademicYearCreatorDialog implements OnInit {
      
     });
 
-    if (this.create) this.createForm.patchValue(this._academicYear);
+    if (this.edit) this.createForm.patchValue(this._academicYear);
   }
 
-  save(academicYear: AcademicYear): void {
+  save(academicYear: AcademicYear): void { 
+  
     if (!academicYear.id) this.store.dispatch(this.actions.saveAcademicYear(academicYear));
-    else this.store.dispatch(this.actions.updateAcademicYear(academicYear));
+    else {
+        console.log("inside here",academicYear);   
+        this.store.dispatch(this.actions.updateAcademicYear(academicYear));
+        }
     this.dialog.close();
   }
 }

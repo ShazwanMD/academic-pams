@@ -6,8 +6,6 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {CovalentCoreModule} from '@covalent/core';
 import {AcademicYearActions} from './academic-year.action';
 import {CommonService, IdentityService, PlannerService} from '../../../../services';
-import {AcademicYearEffects} from './academic-year.effect';
-import {EffectsModule} from '@ngrx/effects';
 import {AcademicYearSelectComponent} from './component/academic-year-select.component';
 import {AcademicYearCenterPage} from './academic-year-center.page';
 import {AcademicYearDetailPage} from './academic-year-detail.page';
@@ -22,7 +20,7 @@ import { AcademicYearComponent } from "./component/academic-year.component";
     BrowserModule,
     ReactiveFormsModule,
     CovalentCoreModule.forRoot(),
-    //EffectsModule.run(AcademicYearEffects),
+   //effects for academicYear
   ],
   declarations: [
     // page
