@@ -18,9 +18,40 @@
             <span>{{curriculum?.program?.code}} </span>
           </div>
 
+        
+          <!-- <div layout="row" class="pad-bottom">
+         <span flex="15">Ordinal</span>
+         <span>{{curriculum?.ordinal}} </span>
+         </div>
+        </div>
+
+      </md-tab>
+      <md-tab label="Information">
+        <div layout="column" class="inset"> -->
+
           <div layout="row" class="pad-bottom">
+            <span flex="15">CoreCredit</span>
+            <span>{{curriculum?.coreCredit}}</span>
+          </div>
+
+          <!-- <div layout="row" class="pad-bottom">
+            <span flex="20">Curriculum Credit</span>
+            <span>{{curriculum?.curriculumCredit}} </span>
+          </div> -->
+
+          <div layout="row" class="pad-bottom">
+            <span flex="15">Elective Credit</span>
+            <span>{{curriculum?.electiveCredit}} </span>
+          </div>
+
+            <div layout="row" class="pad-bottom">
             <span flex="15"> Total Credit</span>
             <span>{{curriculum?.totalCredit}} </span>
+          </div>
+          
+           <div layout="row" class="pad-bottom">
+            <span flex="15"> Period</span>
+            <span>{{curriculum?.period}} </span>
           </div>
 
           <div layout="row" class="pad-bottom">
@@ -28,55 +59,26 @@
             <span>{{curriculum?.maxPeriod}} </span>
           </div>
 
-          <div layout="row" class="pad-bottom">
-            <span flex="15"> Period</span>
-            <span>{{curriculum?.period}} </span>
-          </div>
 
-          <!--<div layout="row" class="pad-bottom">
-         <span flex="15">Ordinal</span>
-         <span>{{curriculum?.ordinal}} </span>
-         </div>-->
-        </div>
-
-      </md-tab>
-      <md-tab label="Information">
-        <div layout="column" class="inset">
-
-          <div layout="row" class="pad-bottom">
-            <span flex="20">CoreCredit</span>
-            <span>{{curriculum?.coreCredit}}</span>
-          </div>
-
-          <div layout="row" class="pad-bottom">
-            <span flex="20">Curriculum Credit</span>
-            <span>{{curriculum?.curriculumCredit}} </span>
-          </div>
-
-          <div layout="row" class="pad-bottom">
-            <span flex="20">Elective Credit</span>
-            <span>{{curriculum?.electiveCredit}} </span>
-          </div>
-
-          <div layout="row" class="pad-bottom">
+          <!-- <div layout="row" class="pad-bottom">
             <span flex="20">General Credit</span>
             <span>{{curriculum?.generalCredit}} </span>
-          </div>
+          </div> -->
 
-          <div layout="row" class="pad-bottom">
+          <!-- <div layout="row" class="pad-bottom">
             <span flex="20">Language Credit</span>
             <span>{{curriculum?.languageCredit}} </span>
-          </div>
+          </div> -->
 
-          <div layout="row" class="pad-bottom">
+          <!-- <div layout="row" class="pad-bottom">
             <span flex="20"> Other Credit</span>
             <span>{{curriculum?.otherCredit}} </span>
-          </div>
+          </div> -->
 
-          <div layout="row" class="pad-bottom">
+          <!-- <div layout="row" class="pad-bottom">
             <span flex="20">Required Credit</span>
             <span>{{curriculum?.requiredCredit}} </span>
-          </div>
+          </div> -->
 
         </div>
       </md-tab>

@@ -309,7 +309,7 @@ export class PlannerService {
     console.log(curriculum.code);
     return this._http.post(this.PLANNER_API + '/curriculums/' + curriculum.code + '/save', JSON.stringify(curriculum))
       .flatMap((res: Response) => Observable.of(res.text()))
-      .catch((error) => this.handleError(error));
+      // .catch((error) => this.handleError(error));
   }
 
   updateCurriculum(curriculum: Curriculum): Observable<String> {

@@ -588,7 +588,7 @@ public class PlannerController {
 		curriculum.setMaxPeriod(vo.getMaxPeriod());
 		curriculum.setOrdinal(vo.getOrdinal());
 		curriculum.setProgram(plannerService.findProgramByCode(vo.getProgram().getCode()));
-		curriculum.setSubjects(plannerService.findSubjects(curriculum));
+		//curriculum.setSubjects(plannerService.findSubjects(curriculum));
 		plannerService.saveCurriculum(curriculum);
 		return new ResponseEntity<String>("Success", HttpStatus.OK);
 	}
