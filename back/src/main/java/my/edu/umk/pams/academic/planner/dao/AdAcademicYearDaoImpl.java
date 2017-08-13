@@ -50,7 +50,7 @@ public class AdAcademicYearDaoImpl extends GenericDaoSupport<Long, AdAcademicYea
     @Override
     public boolean isExists(String code) {
         Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery("select count(s) from AdAcademicSession s where " +
+        Query query = session.createQuery("select count(s) from AdAcademicYear s where " +
                 "s.code = :code " +
                 "and s.metadata.state = :state ");
         query.setString("code", code);
