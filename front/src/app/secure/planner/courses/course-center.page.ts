@@ -26,7 +26,7 @@ export class CourseCenterPage implements OnInit {
               private vcf: ViewContainerRef,
               private dialog: MdDialog) {
     this.courses$ = this.store.select(...this.COURSES);
-  }
+  } 
 
   viewCourse(course: Course) {
     console.log('course: ' + course.code);

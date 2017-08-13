@@ -6,6 +6,7 @@ import {Cohort} from '../../../shared/model/planner/cohort.interface';
 //import {PlannerModuleState} from "../index";
 import {Store} from '@ngrx/store';
 import {PlannerModuleState} from '../index';
+import { from } from "rxjs/observable/from";
 
 
 @Injectable()
@@ -31,10 +32,11 @@ export class CohortEffects {
     .map(cohort => this.cohortActions.findCohortByCodeSuccess(cohort));
 
   @Effect() saveCohort$ = this.actions$
-    .ofType(CohortActions.SAVE_COHORT)
-    .map(action => action.payload)
-    .switchMap(cohort => this.plannerService.saveCohort(cohort))
-    .map(cohort => this.cohortActions.saveCohortSuccess(cohort));
+  .ofType(CohortActions.SAVE_COHORT)
+  .map((action) => action.payload)
+  .switchMap((payload) => this.plannerService.saveCohort(payload.program, payload.academicSession, payload.cohort))
+  .map((cohort) => this.cohortActions.saveCohortSuccess(cohort))
+  .mergeMap((action) => from([action, this.cohortActions.findCohorts()]));
 
   @Effect() updateCohort$ = this.actions$
     .ofType(CohortActions.UPDATE_COHORT)

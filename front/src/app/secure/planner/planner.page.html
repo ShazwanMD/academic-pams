@@ -7,6 +7,10 @@
   <td-layout-manage-list #list title="Toolbar Title" logo="path/to/toolbar-logo.svg">
     <md-nav-list list-items dense>
       <h3 md-subheader>Planner</h3>
+       <a md-list-item [routerLink]="['/secure/planner/academic-years']">
+        <md-icon>label</md-icon>
+        Academic Year
+      </a>
       <a md-list-item [routerLink]="['/secure/planner/academic-sessions']">
         <md-icon>label</md-icon>
         Academic Session

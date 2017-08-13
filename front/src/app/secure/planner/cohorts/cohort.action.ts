@@ -44,20 +44,22 @@ export class CohortActions {
 
   static SAVE_COHORT = '[Cohort] Save Cohort';
 
-  saveCohort(cohort): Action {
-    return {
-      type: CohortActions.SAVE_COHORT,
-      payload: cohort
-    };
+  saveCohort( program, academicSession, cohort ): Action {
+      console.log( cohort );
+      return {
+          type: CohortActions.SAVE_COHORT,
+          payload: {program: program, academicSession: academicSession, cohort: cohort}
+      };
   }
 
   static SAVE_COHORT_SUCCESS = '[Cohort] Save Cohort Success';
-
-  saveCohortSuccess(cohort): Action {
-    return {
-      type: CohortActions.SAVE_COHORT_SUCCESS,
-      payload: cohort
-    };
+  
+  saveCohortSuccess( cohort ): Action {
+      console.log( "saveCohortSuccess" );
+      return {
+          type: CohortActions.SAVE_COHORT_SUCCESS,
+          payload: cohort
+      };
   }
 
   static UPDATE_COHORT = '[Cohort] Update Cohort';

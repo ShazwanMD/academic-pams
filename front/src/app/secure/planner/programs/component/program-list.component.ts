@@ -102,17 +102,3 @@ export class ProgramListComponent implements OnChanges, AfterViewInit {
   }
 
 }
-
-/*constructor(private store: Store<PlannerModuleState>,
- private actions: ProgramActions) {
- this.programs$ = this.store.select(...this.PROGRAMS);
- }
-
- ngOnInit() {
- this.store.dispatch(this.actions.findPrograms());
-
- }
-
- filter(): void {
- }
- }*/

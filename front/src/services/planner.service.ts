@@ -32,6 +32,23 @@ export class PlannerService {
     return this._http.get(this.PLANNER_API + '/academicYears')
       .map((res: Response) => <AcademicYear[]>res.json());
   }
+  
+  findAcademicYearByCode(code: string): Observable<AcademicYear> {
+      return this._http.get(this.PLANNER_API + '/academicYears/' + code)
+        .map((res: Response) => <AcademicYear>res.json());
+    }
+  
+  saveAcademicYear(academicYear: AcademicYear): Observable<String> {
+      return this._http.post(this.PLANNER_API + '/academicYears/' + academicYear.code + '/save', JSON.stringify(academicYear))
+        .flatMap((res: Response) => Observable.of(res.text()))
+        .catch((error) => this.handleError(error));
+    }
+
+    updateAcademicYear(academicYear: AcademicYear): Observable<String> {
+      return this._http.put(this.PLANNER_API + '/academicYears/' + academicYear.code + '/update', JSON.stringify(academicYear))
+        .flatMap((res: Response) => Observable.of(res.text()));
+    }
+
 
   // ====================================================================================================
   // ACADEMIC SESSION
@@ -127,6 +144,7 @@ export class PlannerService {
   }
 
   saveProgram(program: Program): Observable<String> {
+      console.log('saveProgram');
     return this._http.post(this.PLANNER_API + '/programs/' + program.code + '/save', JSON.stringify(program))
       .flatMap((res: Response) => Observable.of(res.text()));
       //.catch((error) => this.handleError(error));
@@ -165,20 +183,16 @@ export class PlannerService {
   }
 
   findCourseByCode(code: string): Observable<Course> {
-    return this._http.get(this.PLANNER_API + '/courses/' + code)
-      .map((res: Response) => <Course>res.json());
-  }
+      console.log("findCourseByCode", code);
+      return this._http.get(this.PLANNER_API + '/courses/' + code)
+        .map((res: Response) => <Course>res.json());
+    }
 
   saveCourse(course: Course): Observable<String> {
-    console.log(course.code);
+      console.log('saveCourse');
     return this._http.post(this.PLANNER_API + '/courses/' + course.code + '/save', JSON.stringify(course))
-      .flatMap((res: Response) => Observable.of(res.text()))
-      .catch((error) => this.handleError(error));
-  }
-
-  addCourse(course: Course): Observable<String> {
-    return this._http.post(this.PLANNER_API + '/courses/' + course.code + '/add', JSON.stringify(course))
       .flatMap((res: Response) => Observable.of(res.text()));
+      //.catch((error) => this.handleError(error));
   }
 
   updateCourse(course: Course): Observable<String> {
@@ -219,11 +233,16 @@ export class PlannerService {
       .map((res: Response) => <Cohort>res.json());
   }
 
-  saveCohort(cohort: Cohort): Observable<String> {
-    return this._http.post(this.PLANNER_API + '/cohorts/' + cohort.code + '/save', JSON.stringify(cohort))
-      .flatMap((res: Response) => Observable.of(res.text()))
-      .catch((error) => this.handleError(error));
-  }
+  saveCohort(program: Program, academicSession: AcademicSession, cohort: Cohort): Observable<String> {
+      console.log('saveCohort');
+      console.log('cohort:' + cohort.code);
+      console.log('program:' + program.code);
+      console.log('academicSession:' + academicSession.code);
+      console.log('save cohort');
+      return this._http.post(this.PLANNER_API + '/cohorts', JSON.stringify(cohort))
+        .flatMap((res: Response) => Observable.of(res.text()));
+        
+    }
 
   updateCohort(cohort: Cohort): Observable<String> {
     return this._http.put(this.PLANNER_API + '/cohorts/' + cohort.code, JSON.stringify(cohort))

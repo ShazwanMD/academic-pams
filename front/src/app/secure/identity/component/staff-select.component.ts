@@ -9,6 +9,7 @@ import {StaffActions} from '../staff.action';
 @Component({
   selector: 'pams-staff-select',
   templateUrl: './staff-select.component.html',
+  styleUrls: ['./staff-select.component.scss'],
 })
 export class StaffSelectComponent implements OnInit {
 

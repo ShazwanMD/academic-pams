@@ -1,18 +1,24 @@
 <h2 md-dialog-title>{{edit ? 'Update' : 'Save'}} Appointment</h2>
 <md-dialog-content>
   <form [formGroup]="editorForm" novalidate>
-    <div layout="row" class="inset" flex>
+  
+    <div fxLayout fxLayout.xs="column" fxLayoutWrap fxLayoutGap="25px" class="inset">
       <pams-appointment-status-select [placeholder]="'Appoinment Status'"
-                                      [innerFormControl]="editorForm.controls['appointmentStatus']">
+                                      [innerFormControl]="editorForm.controls['appointmentStatus']" 
+                                      fxFlex="calc(100%-25px)" class="pad-bottom" 
+                                      mdTooltip="Please choose appointment status">
       </pams-appointment-status-select>
       <div class="tc-red-600"
            *ngIf="editorForm.get('appointmentStatus').invalid && editorForm.get('appointmentStatus').touched">
         Please insert new appointment status!
       </div>
-    </div>
-    <div layout="row" class="inset" flex>
+    
+    
       <pams-staff-select [placeholder]="'Select Staff'"
-                         [innerFormControl]="editorForm.controls['staff']">
+                         [innerFormControl]="editorForm.controls['staff']" 
+                         fxFlex="calc(100%-25px)" 
+                         mdTooltip="Please choose staff" 
+                         class="pad-bottom">
       </pams-staff-select>
       <div class="tc-red-600" *ngIf="editorForm.get('staff').invalid && editorForm.get('staff').touched">
         Please insert new staff!

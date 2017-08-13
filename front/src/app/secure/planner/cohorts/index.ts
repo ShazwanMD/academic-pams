@@ -29,7 +29,7 @@ import {CohortUpdateDialog} from './dialog/cohort-update.dialog';
     ReactiveFormsModule,
     ProgramSubModule.forRoot(),
     CovalentCoreModule.forRoot(),
-    EffectsModule.run(CohortEffects),
+    //EffectsModule.run(CohortEffects),
     AcademicSessionSubModule.forRoot(),
     IdentityModule.forRoot(),
 

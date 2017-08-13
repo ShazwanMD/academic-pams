@@ -34,6 +34,8 @@ public interface PlannerService {
     Integer countAcademicSession(String filter);
 
     boolean isAcademicSessionCodeExists(String code);
+    
+    boolean isCurrent(boolean b);
 
     void saveAcademicSession(AdAcademicSession academicSession);
 
@@ -200,7 +202,7 @@ public interface PlannerService {
 
     void removeProgram(AdFaculty faculty, AdProgram program);
 
-    void addCourse(AdFaculty faculty, AdCourse course);
+    void addCourse( AdFaculty faculty, AdCourse course);
 
     void updateCourse(AdFaculty faculty, AdCourse course);
 
@@ -312,7 +314,9 @@ public interface PlannerService {
 
     boolean isCourseExists(String code, AdFaculty faculty);
     
-    void saveCourse(AdCourse course , AdFaculty faculty);
+    void saveCourse(AdCourse course);
+    
+    /*void saveCourse(AdCourse course , AdFaculty faculty);*/
 
     void updateCourse(AdCourse course);
 
@@ -327,6 +331,8 @@ public interface PlannerService {
     List<AdAcademicYear> findAcademicYears(String filter, Integer offset, Integer limit);
     
     void saveAcademicYear(AdAcademicYear year);
+    
+    boolean isAcademicYearExists(String code);
 
 	List<AdSubject> findSubjectsBySubjectType(AdCurriculum curriculum, AdSubjectType subjectType);
 

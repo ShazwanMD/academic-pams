@@ -1,171 +1,154 @@
-import {Injectable} from '@angular/core';
-import {Action} from '@ngrx/store';
+import { Injectable } from '@angular/core';
+import { Action } from '@ngrx/store';
 
 @Injectable()
 export class CourseActions {
 
-  static FIND_COURSES = '[Course] Find Courses';
+    static FIND_COURSES = '[Course] Find Courses';
 
-  findCourses(): Action {
-    return {
-      type: CourseActions.FIND_COURSES
-    };
-  }
+    findCourses(): Action {
+        return {
+            type: CourseActions.FIND_COURSES
+        };
+    }
 
-  static FIND_COURSES_SUCCESS = '[Course] Find Courses Success';
+    static FIND_COURSES_SUCCESS = '[Course] Find Courses Success';
 
-  findCoursesSuccess(courses): Action {
-    console.log("findCoursesSuccess");
-    console.log("courses: " + courses.length);
-    return {
-      type: CourseActions.FIND_COURSES_SUCCESS,
-      payload: courses
-    };
-  }
+    findCoursesSuccess( courses ): Action {
+        console.log( "findCoursesSuccess" );
+        console.log( "courses: " + courses.length );
+        return {
+            type: CourseActions.FIND_COURSES_SUCCESS,
+            payload: courses
+        };
+    }
 
-  static FIND_COURSE_BY_CODE = '[Course] Find Course';
+    static FIND_COURSE_BY_CODE = '[Course] Find Course';
 
-  findCourseByCode(code): Action {
-    return {
-      type: CourseActions.FIND_COURSE_BY_CODE,
-      payload: code
-    };
-  }
+    findCourseByCode( code ): Action {
+        return {
+            type: CourseActions.FIND_COURSE_BY_CODE,
+            payload: code
+        };
+    }
 
-  static FIND_COURSE_BY_CODE_SUCCESS = '[Course] Find Course Success';
+    static FIND_COURSE_BY_CODE_SUCCESS = '[Course] Find Course Success';
 
-  findCourseByCodeSuccess(course): Action {
-    return {
-      type: CourseActions.FIND_COURSE_BY_CODE_SUCCESS,
-      payload: course
-    };
-  }
+    findCourseByCodeSuccess( course ): Action {
+        return {
+            type: CourseActions.FIND_COURSE_BY_CODE_SUCCESS,
+            payload: course
+        };
+    }
+   
+    static SAVE_COURSE = '[Course] Save Course';
 
-  static ADD_COURSE = '[Course] Add Course';
+    saveCourse( course ): Action {
+        console.log( course );
+        return {
+            type: CourseActions.SAVE_COURSE,
+            payload: course
+        };
+    }
 
-  addCourse(course): Action {
-    return {
-      type: CourseActions.ADD_COURSE,
-      payload: course
-    };
-  }
+    static SAVE_COURSE_SUCCESS = '[Course] Save Course Success';
+    
+    saveCourseSuccess( course ): Action {
+        console.log( "saveCourseSuccess" );
+        return {
+            type: CourseActions.SAVE_COURSE_SUCCESS,
+            payload: course
+        };
+    }
 
-  static ADD_COURSE_SUCCESS = '[Course] Add Course Success';
+   static UPDATE_COURSE = '[Course] Update course';
 
-  addCourseSuccess(course): Action {
-    return {
-      type: CourseActions.ADD_COURSE_SUCCESS,
-      payload: course
-    };
-  }
+    updateCourse( course ): Action {
+        return {
+            type: CourseActions.UPDATE_COURSE,
+            payload: course
+        };
+    }
 
+    static UPDATE_COURSE_SUCCESS = '[Course] Update Course Success';
 
-  static SAVE_COURSE = '[Course] Add Course';
+    updateCourseSuccess( course ): Action {
+        return {
+            type: CourseActions.UPDATE_COURSE_SUCCESS,
+            payload: course
+        };
+    }
 
-  saveCourse(course): Action {
-    return {
-      type: CourseActions.SAVE_COURSE,
-      payload: course
-    };
-  }
+    static CREATE_COURSE = '[Course] Create Course';
 
-  static SAVE_COURSE_SUCCESS = '[Course] Add Course Success';
+    createCourse( course ): Action {
+        return {
+            type: CourseActions.CREATE_COURSE,
+            payload: course
+        };
+    }
 
-  saveCourseSuccess(course): Action {
-    return {
-      type: CourseActions.SAVE_COURSE_SUCCESS,
-      payload: course
-    };
-  }
+    static CREATE_COURSE_SUCCESS = '[Course] Create Course Success';
 
-  static UPDATE_COURSE = '[Course] Update course';
+    createCourseSuccess( course ): Action {
+        return {
+            type: CourseActions.CREATE_COURSE_SUCCESS,
+            payload: course
+        };
+    }
 
-  updateCourse(course): Action {
-    return {
-      type: CourseActions.UPDATE_COURSE,
-      payload: course
-    };
-  }
+    static REMOVE_COURSE = '[Course] Remove Course';
 
-  static UPDATE_COURSE_SUCCESS = '[Course] Update Course Success';
+    removeCourse( course ): Action {
+        return {
+            type: CourseActions.REMOVE_COURSE,
+            payload: course
+        };
+    }
 
-  updateCourseSuccess(course): Action {
-    return {
-      type: CourseActions.UPDATE_COURSE_SUCCESS,
-      payload: course
-    };
-  }
+    static REMOVE_COURSE_SUCCESS = '[Course] Remove Course Success';
 
-  static CREATE_COURSE = '[Course] Create Course';
+    removeCourseSuccess( course ): Action {
+        return {
+            type: CourseActions.REMOVE_COURSE_SUCCESS,
+            payload: course
+        };
+    }
 
-  createCourse(course): Action {
-    return {
-      type: CourseActions.CREATE_COURSE,
-      payload: course
-    };
-  }
+    static ACTIVATE_COURSE = '[Course] Activate Course';
 
-  static CREATE_COURSE_SUCCESS = '[Course] Create Course Success';
+    activateCourse( course ): Action {
+        return {
+            type: CourseActions.ACTIVATE_COURSE,
+            payload: course
+        };
+    }
 
-  createCourseSuccess(course): Action {
-    return {
-      type: CourseActions.CREATE_COURSE_SUCCESS,
-      payload: course
-    };
-  }
+    static ACTIVATE_COURSE_SUCCESS = '[Course] Activate Course Success';
 
-  static REMOVE_COURSE = '[Course] Remove Course';
+    activateCourseSuccess( course ): Action {
+        return {
+            type: CourseActions.ACTIVATE_COURSE_SUCCESS,
+            payload: course
+        };
+    }
 
-  removeCourse(course): Action {
-    return {
-      type: CourseActions.REMOVE_COURSE,
-      payload: course
-    };
-  }
+    //deactivate course 19/6/17
+    static DEACTIVATE_COURSE = '[Course] Deactivate Course';
 
-  static REMOVE_COURSE_SUCCESS = '[Course] Remove Course Success';
+    deactivateCourse( course ): Action {
+        return {
+            type: CourseActions.DEACTIVATE_COURSE,
+            payload: course
+        };
+    }
 
-  removeCourseSuccess(course): Action {
-    return {
-      type: CourseActions.REMOVE_COURSE_SUCCESS,
-      payload: course
-    };
-  }
+    static DEACTIVATE_COURSE_SUCCESS = '[Course] Activate Course Success';
 
-  static ACTIVATE_COURSE = '[Course] Activate Course';
-
-  activateCourse(course): Action {
-    return {
-      type: CourseActions.ACTIVATE_COURSE,
-      payload: course
-    };
-  }
-
-  static ACTIVATE_COURSE_SUCCESS = '[Course] Activate Course Success';
-
-  activateCourseSuccess(course): Action {
-    return {
-      type: CourseActions.ACTIVATE_COURSE_SUCCESS,
-      payload: course
-    };
-  }
-
-  //deactivate course 19/6/17
-  static DEACTIVATE_COURSE = '[Course] Deactivate Course';
-
-  deactivateCourse(course): Action {
-    return {
-      type: CourseActions.DEACTIVATE_COURSE,
-      payload: course
-    };
-  }
-
-  static DEACTIVATE_COURSE_SUCCESS = '[Course] Activate Course Success';
-
-  deactivateCourseSuccess(course): Action {
-    return {
-      type: CourseActions.DEACTIVATE_COURSE_SUCCESS,
-      payload: course
-    };
-  }
+    deactivateCourseSuccess( course ): Action {
+        return {
+            type: CourseActions.DEACTIVATE_COURSE_SUCCESS,
+            payload: course
+        };
+    }
 }

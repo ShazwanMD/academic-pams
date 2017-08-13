@@ -9,6 +9,12 @@ import {CommonService, IdentityService, PlannerService} from '../../../../servic
 import {AcademicYearEffects} from './academic-year.effect';
 import {EffectsModule} from '@ngrx/effects';
 import {AcademicYearSelectComponent} from './component/academic-year-select.component';
+import {AcademicYearCenterPage} from './academic-year-center.page';
+import {AcademicYearDetailPage} from './academic-year-detail.page';
+import { AcademicSessionCreatorDialog } from "../academic-sessions/dialog/academic-session-creator.dialog";
+import { AcademicYearCreatorDialog } from "./dialog/academic-year-creator.dialog";
+import {AcademicYearListComponent} from './component/academic-year-list.component';
+import { AcademicYearComponent } from "./component/academic-year.component";
 
 @NgModule({
   imports: [
@@ -16,16 +22,20 @@ import {AcademicYearSelectComponent} from './component/academic-year-select.comp
     BrowserModule,
     ReactiveFormsModule,
     CovalentCoreModule.forRoot(),
-    EffectsModule.run(AcademicYearEffects),
+    //EffectsModule.run(AcademicYearEffects),
   ],
   declarations: [
     // page
+    AcademicYearCenterPage,
+    AcademicYearDetailPage,
 
     // component
     AcademicYearSelectComponent,
+    AcademicYearListComponent,
+    AcademicYearComponent,
 
     // dialog
-
+    AcademicYearCreatorDialog,
   ],
   exports: [
     AcademicYearSelectComponent,
@@ -34,6 +44,7 @@ import {AcademicYearSelectComponent} from './component/academic-year-select.comp
 
   entryComponents: [
     AcademicYearSelectComponent,
+    AcademicYearCreatorDialog,
   ],
 })
 

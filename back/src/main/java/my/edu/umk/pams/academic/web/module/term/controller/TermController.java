@@ -271,8 +271,9 @@ public class TermController {
 														// test
 			emailQueue.setSubject("Application for semester registration:" + academicSession.getCode());
 			emailQueue.setQueueStatus(AdEmailQueueStatus.QUEUED);
-			emailQueue.setBody("Thank you" + student.getName() + " for the application. This application will be reviewed:" + referenceNo
-					+ " Please click this URL to view details:" + applicationUrl);
+			emailQueue.setBody(
+					"Thank you" + student.getName() + " for the application. This application will be reviewed:"
+							+ referenceNo + " Please click this URL to view details:" + applicationUrl);
 			emailQueue.setRetryCount(1);
 			LOG.debug("test1: {}", emailQueue);
 
@@ -788,7 +789,7 @@ public class TermController {
 		dummyLogin();
 
 		if (isOfferingExists(vo.getCanonicalCode())) {
-			System.out.println("Duplicate:");
+			System.out.println("Duplicate offering:" + vo.getCanonicalCode());
 			// throw new IllegalArgumentException("Data offering already
 			// exists!.Please insert new data");
 

@@ -11,6 +11,9 @@ export function cohortReducer(state = initialState, action: Action): CohortState
     case CohortActions.FIND_COHORT_BY_CODE_SUCCESS: {
       return action.payload;
     }
+    case CohortActions.SAVE_COHORT_SUCCESS: {
+        return action.payload;
+      }
     default: {
       return state;
     }

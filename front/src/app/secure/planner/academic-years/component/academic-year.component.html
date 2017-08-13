@@ -1,0 +1,29 @@
+<!-- Basic Card -->
+<md-card>
+  <md-card-title>{{academicYear.description}}</md-card-title>
+  <md-card-subtitle>{{academicYear.code}}</md-card-subtitle>
+  <md-divider></md-divider>
+  <md-card-content>
+    <!--Tab Section Here-->
+    <md-tab-group>
+      <md-tab label="Academic Year Detail"><br>
+
+        <div layout="column" class="inset">
+          <div layout="row" class="pad-bottom">
+            <span flex="15">Code</span>
+            <span>{{academicYear.code}}</span>
+          </div>
+
+          <div layout="row" class="pad-bottom">
+            <span flex="15">Description</span>
+            <span>{{academicYear.description}}</span>
+          </div>
+        </div>
+
+      </md-tab>
+    </md-tab-group>
+
+  </md-card-content>
+  <md-divider></md-divider>
+</md-card>
+

@@ -25,6 +25,7 @@ import {MdSnackBar} from '@angular/material';
 export class CourseListComponent implements AfterViewInit, OnChanges {
 
   private columns: any[] = [
+    {name: 'id', label: 'Id'},
     {name: 'code', label: 'Code'},
     {name: 'titleEn', label: 'Title(En)'},
     {name: 'titleMs', label: 'Title(Ms)'},
@@ -38,7 +39,7 @@ export class CourseListComponent implements AfterViewInit, OnChanges {
   fromRow: number = 1;
   currentPage: number = 1;
   pageSize: number = 5;
-  sortBy: string = 'code';
+  sortBy: string = 'id';
   sortOrder: TdDataTableSortingOrder = TdDataTableSortingOrder.Descending;
 
   @Input() courses: Course[];
