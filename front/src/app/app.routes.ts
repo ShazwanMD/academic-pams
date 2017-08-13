@@ -1,3 +1,4 @@
+import { registrationModuleRoutes } from './registration/registration-module.routes';
 import { StudentProfileModuleRoutes } from './secure/studentProfile/student-profile-module.routes';
 import {RouterModule, Routes} from '@angular/router';
 import {ProfileModuleRoutes} from './secure/profile/profile-module.routes';
@@ -17,6 +18,7 @@ const routes: Routes = [
   {path: '', component: HomePage},
   {path: 'login', component: LoginPage},
   {path: 'forget-password', component: ForgetPasswordPage},
+  ...registrationModuleRoutes,
   {
     path: 'secure', component: SecurePage, canActivate: [AuthenticationGuard],
     children: [

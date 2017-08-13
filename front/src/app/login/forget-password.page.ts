@@ -1,5 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {FormGroup, FormBuilder, Validators} from '@angular/forms';
+import {RegistrationModuleState} from '../registration/index';
+import {Store} from '@ngrx/store';
+import {RegistrationActions} from '../registration/registration.action';
 
 @Component({
   selector: 'pams-login-forget-password',
@@ -10,7 +13,10 @@ export class ForgetPasswordPage implements OnInit {
 
   private forgetPasswordForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder,
+              private store: Store<RegistrationModuleState>,
+              private registrationActions: RegistrationActions,
+  ) {
   }
 
   ngOnInit(): void {
@@ -25,5 +31,6 @@ export class ForgetPasswordPage implements OnInit {
 
   submit(forgetPasswordForm: any, isValid: boolean): void {
     console.log('submit email=: ', forgetPasswordForm.email);
+    this.store.dispatch(this.registrationActions.forgetPassword(forgetPasswordForm.email));
   }
 }
