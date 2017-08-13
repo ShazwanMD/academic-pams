@@ -24,7 +24,7 @@
       <input mdInput
              placeholder="Ordinal"
              typ="number"
-             formControlName="ordinal"/>
+             formControlName="ordinal" type="number"/>
     </md-input-container>
     <div class="tc-red-600" *ngIf="editorForm.get('ordinal').invalid && editorForm.get('ordinal').touched">
       Please insert new ordinal!
@@ -34,7 +34,7 @@
       <input mdInput
              placeholder="Total Score"
              typ="number"
-             formControlName="totalScore"/>
+             formControlName="totalScore" type="number"/>
     </md-input-container>
     <div class="tc-red-600" *ngIf="editorForm.get('totalScore').invalid && editorForm.get('totalScore').touched">
       Please insert new total score!
@@ -44,7 +44,7 @@
       <input mdInput
              placeholder="Weight"
              typ="number"
-             formControlName="weight"/>
+             formControlName="weight" type="number"/>
     </md-input-container>
     <div class="tc-red-600" *ngIf="editorForm.get('weight').invalid && editorForm.get('weight').touched">
       Please insert new weight!
