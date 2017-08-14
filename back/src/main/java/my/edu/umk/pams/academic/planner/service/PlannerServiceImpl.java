@@ -291,6 +291,11 @@ public class PlannerServiceImpl implements PlannerService {
         return curriculumDao.findSubjectById(id);
     }
 
+    @Override
+    public AdBundleSubjectPart findBundleSubjectPartById(Long id) {
+        return curriculumDao.findBundleSubjectPartById(id);
+    }
+
 
     @Override
     public AdSubject findSubjects() {

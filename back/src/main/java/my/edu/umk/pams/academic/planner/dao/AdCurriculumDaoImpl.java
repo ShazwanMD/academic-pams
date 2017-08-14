@@ -58,6 +58,13 @@ public class AdCurriculumDaoImpl extends GenericDaoSupport<Long, AdCurriculum> i
         Session session = sessionFactory.getCurrentSession();
         return (AdSubject) session.get(AdSubjectImpl.class, id);
     }
+   
+	 @Override
+	 public AdBundleSubjectPart findBundleSubjectPartById(Long id) {
+	 Session session = sessionFactory.getCurrentSession();
+	 return (AdBundleSubjectPart ) session.get(AdBundleSubjectPartImpl.class, id);
+	    }
+    
 
     @Override
     public AdSubject findSubjects() {

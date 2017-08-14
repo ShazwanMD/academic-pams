@@ -24,6 +24,13 @@ export class CurriculumEffects {
     .map((curriculums) => this.curriculumActions.findCurriculumsSuccess(curriculums));
 
 
+    @Effect() findBundleSubjectPartById$ = this.actions$
+    .ofType(CurriculumActions.FIND_BUNDLE_SUBJECT_PART_BY_ID)
+    .map((action) => action.payload)
+    .switchMap((id) => this.plannerService.findBundleSubjectPartById(id))
+    .map((message) => this.curriculumActions.findBundleSubjectPartByIdSuccess(message));
+
+
     //  @Effect() findBundleSubjectsByCurriculum$ = this.actions$
     // .ofType(CurriculumActions.FIND_BUNDLE_SUBJECTS_BY_CURRICULUM)
     // .map((action) => action.payload)

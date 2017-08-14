@@ -347,6 +347,8 @@ public interface PlannerService {
 	List<AdBundleSubject> findBundleSubjects(AdCurriculum curriculum, AdSubject subject);
 
 	AdBundleSubject findBundleSubjectById(Long id);
+	
+	AdBundleSubjectPart findBundleSubjectPartById(Long id);
 
 	List<AdBundleSubjectPart> findBundleSubjectPartByBundleSubject(AdBundleSubject bundle);
 	

@@ -96,6 +96,25 @@ export class CurriculumActions {
     };
   }
 
+
+   static FIND_BUNDLE_SUBJECT_PART_BY_ID = '[Curriculum] Find Bundle Subject Part By Id';
+
+  findBundleSubjectPartById(id): Action {
+    return {
+      type: CurriculumActions.FIND_BUNDLE_SUBJECT_PART_BY_ID,
+      payload: id
+    };
+  }
+
+  static FIND_BUNDLE_SUBJECT_PART_BY_ID_SUCCESS = '[Curriculum] Find Bundle Subject Part By Id';
+
+ findBundleSubjectPartByIdSuccess(message): Action {
+    return {
+      type: CurriculumActions.FIND_BUNDLE_SUBJECT_PART_BY_ID_SUCCESS,
+      payload: message
+    };
+  }
+
   static SAVE_CURRICULUM = '[Curriculum] Save Curriculum';
 
   saveCurriculum(curriculum): Action {
