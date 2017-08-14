@@ -5,6 +5,7 @@ import {MdDialogRef} from '@angular/material';
 import {AcademicSession} from '../../../../shared/model/planner/academic-session.interface';
 import {PlannerModuleState} from '../../index';
 import {AcademicSessionActions} from '../academic-session.action';
+import { DateValidation } from "../component/academic-session-date-validation.component";
 
 @Component({
   selector: 'pams-academic-session-creator',
@@ -39,9 +40,13 @@ export class AcademicSessionCreatorDialog implements OnInit {
       endDate: ['', Validators.required],
       semester: ['', Validators.required],
       year: ['', Validators.required],
-    });
+    },{
 
-    if (this.create) this.createForm.patchValue(this._academicSession);
+       validator: DateValidation.CheckDate // your validation method
+
+       // if (this.create) this.createForm.patchValue(this._academicSession);
+
+    })
   }
 
   save(academicSession: AcademicSession): void {

@@ -42,6 +42,13 @@
     <md-input-container flex>
       <input mdInput type="date" placeholder="End Date" formControlName="endDate" flex/>
     </md-input-container>
+        <div class="error" class="tc-red-600"
+        *ngIf="createForm.controls.endDate.errors?.CheckDate">
+        </div> 
+        <div class="error" class="tc-red-600"
+                 *ngIf="createForm.get('endDate').invalid && createForm.get('endDate').touched">
+             End Date should be greater and not equal to start date!
+        </div>  
   </div>
 
   <div layout="row" class="inset" flex>
