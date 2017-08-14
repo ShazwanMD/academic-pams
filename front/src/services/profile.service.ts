@@ -39,6 +39,18 @@ export class ProfileService {
   }
 
   // ====================================================================================================
+  // STUDENT - CONTACT
+  // ====================================================================================================
+
+  deleteStudentContact(student: Student, contact: Contact) {
+    console.log('delete student contact');
+    console.log("Service Student" + student);
+    console.log("Service Contact" + contact);
+    return this._http.delete(this.PROFILE_API + '/students/contacts/' + contact.id)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+  // ====================================================================================================
   // STUDENT - FINDING
   // ====================================================================================================
   findEnrollments(student: Student): Observable<Enrollment[]> {
@@ -162,6 +174,8 @@ export class ProfileService {
     return this._http.delete(this.PROFILE_API + '/students/' + student.identityNo + '/contacts/' + contact.id)
       .flatMap((res: Response) => Observable.of(res.text()));
   }
+
+
 
   /*==================================================================================================*/
   //STUDENT ACTIVATION/DEACTIVATE/BAR/TRANSFER/SWITCH

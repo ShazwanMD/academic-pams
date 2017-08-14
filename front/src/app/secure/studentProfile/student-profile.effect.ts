@@ -50,4 +50,15 @@ export class StudentProfileEffects {
     .map(action => action.payload)
     .switchMap(() => this.profileService.findAddressessByStudent())
     .map(addreesses => this.studentProfileActions.findAddressessByStudentSuccess(addreesses));
+
+  @Effect() deleteStudentContact$ = this.actions$
+    .ofType(StudentProfileActions.REMOVE_STUDENT_CONTACT)
+    .map(action => action.payload)
+    .switchMap(payload => this.profileService.deleteStudentContact(payload.student, payload.contact))
+    .map(message => this.studentProfileActions.deleteStudentContactSuccess(message))
+    .withLatestFrom(this.store$.select(...this.STUDENT))
+    .map(state => state[1])
+    .map(() => this.studentProfileActions.findStudentByUser());
+
+
 }
