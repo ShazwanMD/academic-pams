@@ -44,7 +44,7 @@ export class AcademicYearCreatorDialog implements OnInit {
             //properties
             this.createForm.get('code').disable();
             }
-       // this.createForm.patchValue(this._academicYear);
+       
          if (this.edit) this.createForm.patchValue(this._academicYear);
     }
 
