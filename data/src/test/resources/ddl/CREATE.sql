@@ -253,6 +253,7 @@
 
     create table AD_BNDL_SBJT (
         ID int8 not null,
+        SUBJECT_SPECIALIZE int4 not null,
         primary key (ID)
     );
 

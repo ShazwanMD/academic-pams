@@ -7,7 +7,11 @@ import java.util.List;
  */
 public interface AdBundleSubject extends AdSubject {
 
-    List<AdBundleSubjectPart> getParts();
+	AdSubjectElectiveStatus getSubjectElectiveStatus();
 
-    void setParts(List<AdBundleSubjectPart> parts);
+	void setSubjectElectiveStatus(AdSubjectElectiveStatus subjectElectiveStatus);
+
+	List<AdBundleSubjectPart> getParts();
+
+	void setParts(List<AdBundleSubjectPart> parts);
 }
