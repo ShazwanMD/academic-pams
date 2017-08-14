@@ -275,7 +275,7 @@ public class ProfileController {
 	@RequestMapping(value = "/studentLogins/{matricNo}", method = RequestMethod.GET)
 	public ResponseEntity<Student> findStudentsByMatricNo(@PathVariable String matricNo)
 			throws UnsupportedEncodingException {
-		
+
 		// Get Current User
 		AdUser user = securityService.getCurrentUser();
 
@@ -285,7 +285,7 @@ public class ProfileController {
 			student = (AdStudent) user.getActor();
 		if (null == student)
 			throw new IllegalArgumentException("Student does not exists");
-		
+
 		return new ResponseEntity<Student>(
 				profileTransformer.toStudentVo(profileService.findStudentByMatricNo(matricNo)), HttpStatus.OK);
 	}
@@ -307,10 +307,61 @@ public class ProfileController {
 		return new ResponseEntity<List<Address>>(
 				profileTransformer.toAddressVos(profileService.findAddresses(student1)), HttpStatus.OK);
 	}
-	
+
+	// ====================================================================================================
+	// STUDENT PROFILE CONTACT
+	// ====================================================================================================
+
 	@RequestMapping(value = "/students/contacts/{id}", method = RequestMethod.DELETE)
-	public ResponseEntity<String> deleteStudentContact(@PathVariable Long id ) {
-	
+	public ResponseEntity<String> deleteStudentContact(@PathVariable Long id) {
+
+		// dummyLogin();
+		AdUser user = securityService.getCurrentUser();
+
+		AdStudent student = null;
+
+		if (user.getActor() instanceof AdStudent)
+			student = (AdStudent) user.getActor();
+		if (null == student)
+			throw new IllegalArgumentException("Student does not exists");
+		String identityNo = student.getIdentityNo();
+
+		AdStudent student1 = profileService.findStudentByMatricNo(identityNo);
+		LOG.debug("Sini:{}", student1);
+		AdContact contact = profileService.findContactById(id);
+		profileService.deleteContact(student1, contact);
+		return new ResponseEntity<String>("Success", HttpStatus.OK);
+	}
+
+	@RequestMapping(value = "/students/contacts/{id}", method = RequestMethod.PUT)
+	public ResponseEntity<String> updateContact(@RequestBody Contact vo) {
+		// dummyLogin();
+		AdUser user = securityService.getCurrentUser();
+
+		AdStudent student = null;
+
+		if (user.getActor() instanceof AdStudent)
+			student = (AdStudent) user.getActor();
+		if (null == student)
+			throw new IllegalArgumentException("Student does not exists");
+		String identityNo = student.getIdentityNo();
+
+		AdStudent student1 = profileService.findStudentByMatricNo(identityNo);
+		LOG.debug("Sini:{}", student1);
+		LOG.debug("id contact:{}", vo.getId());
+
+		AdContact contact = profileService.findContactById(vo.getId());
+		contact.setName(vo.getName());
+		contact.setIdentityNo(vo.getIdentityNo());
+		contact.setPhone(vo.getPhone());
+		contact.setType(AdContactType.get(vo.getContactType().ordinal()));
+		contact.setStudent(student1);
+		profileService.updateContact(student1, contact);
+		return new ResponseEntity<String>("Success", HttpStatus.OK);
+	}
+
+	@RequestMapping(value = "/students/contacts", method = RequestMethod.POST)
+	public ResponseEntity<String> addContact(@RequestBody Contact vo) {
 		//dummyLogin();
 		AdUser user = securityService.getCurrentUser();
 
@@ -321,11 +372,16 @@ public class ProfileController {
 		if (null == student)
 			throw new IllegalArgumentException("Student does not exists");
 		String identityNo = student.getIdentityNo();
+
 		
 		AdStudent student1 = profileService.findStudentByMatricNo(identityNo);
-		LOG.debug("Sini:{}", student1);
-		AdContact contact = profileService.findContactById(id);
-		profileService.deleteContact(student1, contact);
+		AdContact contact = new AdContactImpl();
+		contact.setIdentityNo(vo.getIdentityNo());
+		contact.setName(vo.getName());
+		contact.setPhone(vo.getPhone());
+		contact.setType(AdContactType.get(vo.getContactType().ordinal()));
+		contact.setStudent(student1);
+		profileService.addContact(student1, contact);
 		return new ResponseEntity<String>("Success", HttpStatus.OK);
 	}
 

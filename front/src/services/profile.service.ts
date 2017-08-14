@@ -42,6 +42,15 @@ export class ProfileService {
   // STUDENT - CONTACT
   // ====================================================================================================
 
+  addStudentContact(student: Student, contact: Contact): Observable<String> {
+    return this._http.post(this.PROFILE_API + '/students/contacts', JSON.stringify(contact))
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+  updateStudentContact(student: Student, contact: Contact): Observable<String> {
+    return this._http.put(this.PROFILE_API + '/students/contacts/' + contact.id, JSON.stringify(contact))
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
   deleteStudentContact(student: Student, contact: Contact) {
     console.log('delete student contact');
     console.log("Service Student" + student);

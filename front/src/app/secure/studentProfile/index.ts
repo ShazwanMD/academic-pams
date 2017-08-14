@@ -1,3 +1,4 @@
+import { StudentContactEditorDialog } from './dialog/student-contact-editor.dialog';
 import { StudentProfilePage } from './component/student-profile.component';
 import { StudentProfileListPage } from './component/student-profile-list.component';
 import { ProfileModule } from './../profile/index';
@@ -88,13 +89,19 @@ export const studentProfileModuleReducers = {
         StudentProfilePage,
         StudentProfileListPage,
 
+        //Dialog
+        StudentContactEditorDialog,
+
     ],
 
     exports: [
+        StudentContactEditorDialog,
 
     ],
 
     entryComponents: [
+
+        StudentContactEditorDialog,
 
     ],
 

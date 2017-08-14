@@ -66,6 +66,46 @@ export class StudentProfileActions {
     };
   }
 
+  static ADD_STUDENT_CONTACT = '[Profile] Add Student Contact';
+
+  addStudentContact(student, contact): Action {
+    console.log("add student contact");
+    return {
+      type: StudentProfileActions.ADD_STUDENT_CONTACT,
+      payload: { student: student, contact: contact }
+    };
+  }
+
+  static ADD_STUDENT_CONTACT_SUCCESS = '[Profile] Add Student Contact Success';
+
+  addStudentContactSuccess(message): Action {
+    console.log("add student contact success");
+    return {
+      type: StudentProfileActions.ADD_STUDENT_CONTACT_SUCCESS,
+      payload: message
+    };
+  }
+
+  static UPDATE_STUDENT_CONTACT = '[Profile] Update Student Contact'
+
+  updateStudentContact(student, contact): Action {
+    console.log("update student contact");
+    return {
+      type: StudentProfileActions.UPDATE_STUDENT_CONTACT,
+      payload: { student: student, contact: contact }
+    };
+  }
+
+  static UPDATE_STUDENT_CONTACT_SUCCESS = '[Profile] Update Student Contact Success';
+
+  updateStudentContactSuccess(message): Action {
+    console.log("update student contact success");
+    return {
+      type: StudentProfileActions.UPDATE_STUDENT_CONTACT_SUCCESS,
+      payload: message
+    };
+  }
+
   static REMOVE_STUDENT_CONTACT = '[Profile] Remove Student Contact';
 
   deleteStudentContact(student, contact): Action {

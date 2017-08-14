@@ -1,4 +1,4 @@
-import { ContactEditorDialog } from './../../profile/dialog/contact-editor.dialog';
+import { StudentContactEditorDialog } from './../dialog/student-contact-editor.dialog';
 import { ProfileActions } from './../../profile/profile.action';
 import { Observable } from 'rxjs/Observable';
 import { MdDialog, MdDialogRef, MdDialogConfig } from '@angular/material';
@@ -23,7 +23,7 @@ import { Enrollment } from "../../../shared/model/term/enrollment.interface";
 })
 export class StudentProfileListPage implements OnInit {
 
-    private contactCreatorDialogRef: MdDialogRef<ContactEditorDialog>;
+    private studentContactEditorDialogRef: MdDialogRef<StudentContactEditorDialog>;
     //inputs
 
     @Input() student: Student;
@@ -101,33 +101,34 @@ export class StudentProfileListPage implements OnInit {
     /*=========================================================================================*/
     //ADD CONTACT DIALOG
     addContactDialog(): void {
-        console.log('edit');
+        console.log('Add Contact');
+        console.log("Add Contact"+ this.student.identityNo);
         let config = new MdDialogConfig();
         config.viewContainerRef = this.vcf;
         config.role = 'dialog';
         config.width = '70%';
         config.height = '80%';
         config.position = { top: '0px' };
-        this.contactCreatorDialogRef = this.dialog.open(ContactEditorDialog, config);
-        this.contactCreatorDialogRef.componentInstance.student = this.student;
-        this.contactCreatorDialogRef.afterClosed().subscribe((res) => {
+        this.studentContactEditorDialogRef = this.dialog.open(StudentContactEditorDialog, config);
+        this.studentContactEditorDialogRef.componentInstance.student = this.student;
+        this.studentContactEditorDialogRef.afterClosed().subscribe((res) => {
         });
     }
 
     //EDIT CONTACT DIALOG
     editContactDialog(contact: Contact, isValid: boolean): void {
+        console.log("Editing Contact");
+        console.log("EditContact"+ this.student.identityNo);
         let config = new MdDialogConfig();
         config.viewContainerRef = this.vcf;
         config.role = 'dialog';
         config.width = '70%';
         config.height = '80%';
         config.position = { top: '0px' };
-        this.contactCreatorDialogRef = this.dialog.open(ContactEditorDialog, config);
-        if (isValid) {
-            this.contactCreatorDialogRef.componentInstance.contact = contact;
-            this.contactCreatorDialogRef.componentInstance.student = this.student;
-        }
-        this.contactCreatorDialogRef.afterClosed().subscribe((res) => {
+        this.studentContactEditorDialogRef = this.dialog.open(StudentContactEditorDialog, config);
+        this.studentContactEditorDialogRef.componentInstance.contact = contact;
+        this.studentContactEditorDialogRef.componentInstance.student = this.student;
+        this.studentContactEditorDialogRef.afterClosed().subscribe((res) => {
         });
     }
 

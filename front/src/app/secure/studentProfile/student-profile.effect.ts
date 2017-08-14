@@ -50,6 +50,17 @@ export class StudentProfileEffects {
     .map(action => action.payload)
     .switchMap(() => this.profileService.findAddressessByStudent())
     .map(addreesses => this.studentProfileActions.findAddressessByStudentSuccess(addreesses));
+  /*==================================================================================================*/
+  /*CONTACT - EFFECT*/
+  /*==================================================================================================*/
+  @Effect() addStudentContact$ = this.actions$
+    .ofType(StudentProfileActions.ADD_STUDENT_CONTACT)
+    .map(action => action.payload)
+    .switchMap(payload => this.profileService.addStudentContact(payload.student, payload.contact))
+    .map(message => this.studentProfileActions.addStudentContactSuccess(message))
+    .withLatestFrom(this.store$.select(...this.STUDENT))
+    .map(state => state[1])
+    .map(() => this.studentProfileActions.findStudentByUser());
 
   @Effect() deleteStudentContact$ = this.actions$
     .ofType(StudentProfileActions.REMOVE_STUDENT_CONTACT)
@@ -59,6 +70,16 @@ export class StudentProfileEffects {
     .withLatestFrom(this.store$.select(...this.STUDENT))
     .map(state => state[1])
     .map(() => this.studentProfileActions.findStudentByUser());
+
+  @Effect() updateStudentContact$ = this.actions$
+    .ofType(StudentProfileActions.UPDATE_STUDENT_CONTACT)
+    .map(action => action.payload)
+    .switchMap(payload => this.profileService.updateStudentContact(payload.student, payload.contact))
+    .map(message => this.studentProfileActions.updateStudentContactSuccess(message))
+    .withLatestFrom(this.store$.select(...this.STUDENT))
+    .map(state => state[1])
+    .map(() => this.studentProfileActions.findStudentByUser());
+
 
 
 }
