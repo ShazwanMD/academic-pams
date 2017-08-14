@@ -297,6 +297,25 @@ export class CurriculumActions {
       payload: message
     };
   }
+
+
+  static REMOVE_SUBJECT_PART = '[Subject] delete Bundle Subject Parts';
+
+  deleteSubjectPart(bundleSubject, subject): Action {
+    return {
+      type: CurriculumActions.REMOVE_SUBJECT_PART,
+      payload: {bundleSubject: bundleSubject, subject: subject}
+    };
+  }
+
+  static REMOVE_SUBJECT_PART_SUCCESS = '[Subject] delete Bundle Subject Parts Success';
+
+  deleteSubjectPartSuccess(message): Action {
+    return {
+      type: CurriculumActions.REMOVE_SUBJECT_PART_SUCCESS,
+      payload: message
+    };
+  }
   
   static FIND_BUNDLE_SUBJECTS_PART= '[Subject] Find Bundle Subject Part';
 

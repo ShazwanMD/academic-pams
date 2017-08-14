@@ -375,6 +375,13 @@ export class PlannerService {
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
+   deleteSubjectPart(bundleSubject: BundleSubject, subject: BundleSubjectPart): Observable<String> {
+    // console.log('addSubjectPart:' + subject);
+     console.log('bundleSubject:' + bundleSubject.subjectType);
+    return this._http.post(this.PLANNER_API + '/curriculums/' + bundleSubject.id + '/bundleSubjectParts', JSON.stringify(subject))
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
 //   updateSubject(subject: Subject): Observable<String> {
 //     return this._http.put(this.PLANNER_API + '/subjects/' + subject.id, JSON.stringify(subject))
 //       .flatMap((res: Response) => Observable.of(res.text()));

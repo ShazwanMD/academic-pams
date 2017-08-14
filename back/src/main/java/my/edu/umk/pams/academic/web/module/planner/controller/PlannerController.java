@@ -807,6 +807,16 @@ public class PlannerController {
 		plannerService.deleteSubject(curriculum, subject);
 		return new ResponseEntity<String>("Success", HttpStatus.OK);
 	}
+	
+	@RequestMapping(value = "/curriculums/{id}/bundleSubjectParts", method = RequestMethod.POST)
+	public ResponseEntity<String> deleteSubjectPart(@PathVariable Long id, @RequestBody BundleSubjectPart vo) {
+		dummyLogin();
+		LOG.info("subject part");
+		AdBundleSubject bundleSubject = plannerService.findBundleSubjectById(id);
+		AdBundleSubjectPart part = plannerService.findBundleSubjectPartById(id);
+		plannerService.deleteSubjectPart(bundleSubject, part);
+		return new ResponseEntity<String>("Success", HttpStatus.OK);
+	}
 
 	@RequestMapping(value = "/subjects/{id}", method = RequestMethod.GET)
 	public ResponseEntity<Subject> findSubjectById(@PathVariable Long id) {
