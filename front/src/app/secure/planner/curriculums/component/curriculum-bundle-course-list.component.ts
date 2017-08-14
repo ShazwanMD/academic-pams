@@ -30,6 +30,8 @@ import {Subject} from '../../../../shared/model/planner/subject.interface';
 export class CurriculumBndleCourseListComponent implements OnInit, OnChanges {
 
   private selectedRows: Subject[];
+  private _bundleSubjectPart: BundleSubjectPart;
+  private _bundleSubject: BundleSubject;
   private singleSubjectDialogRef: MdDialogRef<CurriculumSingleSubjectDialog>;
   private bundleSubjectDialogRef: MdDialogRef<CurriculumBundleSubjectDialog>;
   private bundleSubjectPartDialogRef: MdDialogRef<CurriculumBundleSubjectPartDialog>;
@@ -83,15 +85,14 @@ export class CurriculumBndleCourseListComponent implements OnInit, OnChanges {
 
   }
 
-   deleteSubject( subject:Subject): void {
-        if ( subject.id) {
-            console.log( "Don't delete this Subject" ); //try to print at console
-            let snackBarRef = this.snackBar.open( 'Subject cannot be deleted', 'OK' );
-        } else {
-            console.log( 'deleteSubject' ); // move on
-           // this.store.dispatch( this.actions.deleteSubject( this.curriculum, subject ) );
-        }
+  deleteSubjectPart(): void {
+    console.log('length: ' + this.selectedRows.length);
+    for (let i: number = 0; i < this.selectedRows.length; i++) {
+    this.store.dispatch(this.actions.deleteSubjectPart(this._bundleSubject, this.selectedRows[i]));
     }
+  
+    this.selectedRows = [];
+  }
 
   selectRow(subject: Subject): void {
   }
