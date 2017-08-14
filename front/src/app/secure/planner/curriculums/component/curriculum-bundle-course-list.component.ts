@@ -29,15 +29,13 @@ import {Subject} from '../../../../shared/model/planner/subject.interface';
 })
 export class CurriculumBndleCourseListComponent implements OnInit, OnChanges {
 
-  private selectedRows: Subject[];
-  private _bundleSubjectPart: BundleSubjectPart;
-  private _bundleSubject: BundleSubject;
+  private selectedRows: BundleSubjectPart[];
   private singleSubjectDialogRef: MdDialogRef<CurriculumSingleSubjectDialog>;
   private bundleSubjectDialogRef: MdDialogRef<CurriculumBundleSubjectDialog>;
   private bundleSubjectPartDialogRef: MdDialogRef<CurriculumBundleSubjectPartDialog>;
 
   private columns: any[] = [
-   // {name: 'id', label: 'Id'},
+    {name: 'id', label: 'Id'},
     {name: 'course.code', label: 'course'},
     {name: 'course.titleEn', label: 'Title'},
     {name: 'course.credit', label: 'Credit'},
@@ -57,7 +55,7 @@ export class CurriculumBndleCourseListComponent implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {
-    //this.selectedRows = this.subjects.filter((value) => value.selected);
+    this.selectedRows = this.subject.filter((value) => value.selected);
   }
 
   ngOnChanges(changes: { [propName: string]: SimpleChange }) {
@@ -85,14 +83,22 @@ export class CurriculumBndleCourseListComponent implements OnInit, OnChanges {
 
   }
 
-  deleteSubjectPart(): void {
-    console.log('length: ' + this.selectedRows.length);
-    for (let i: number = 0; i < this.selectedRows.length; i++) {
-    this.store.dispatch(this.actions.deleteSubjectPart(this._bundleSubject, this.selectedRows[i]));
+   deleteSubjectPart(row: String): void {
+     console.log('subject detail: ', row);
+     console.log('subject detail: ', this.selectedRows);
+         for (let i: number = 0; i < this.selectedRows.length; i++) {
+     this.store.dispatch( this.actions.deleteSubjectPart( this.bundle, this.selectedRows[i] ) );
+     
+         }
+
+        // if ( subject.id) {
+        //     console.log( "Don't delete this Subject" ); //try to print at console
+        //     let snackBarRef = this.snackBar.open( 'Subject cannot be deleted', 'OK' );
+        // } else {
+        //     console.log( 'deleteSubject' ); // move on
+        //    // this.store.dispatch( this.actions.deleteSubject( this.curriculum, subject ) );
+        // }
     }
-  
-    this.selectedRows = [];
-  }
 
   selectRow(subject: Subject): void {
   }
@@ -103,5 +109,3 @@ export class CurriculumBndleCourseListComponent implements OnInit, OnChanges {
     this.router.navigate(['/subjects']);
   }
 }
-
-

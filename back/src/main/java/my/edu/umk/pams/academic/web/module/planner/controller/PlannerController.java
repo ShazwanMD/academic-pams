@@ -809,11 +809,11 @@ public class PlannerController {
 	}
 	
 	@RequestMapping(value = "/curriculums/{id}/bundleSubjectParts", method = RequestMethod.POST)
-	public ResponseEntity<String> deleteSubjectPart(@PathVariable Long id, @RequestBody BundleSubjectPart vo) {
+	public ResponseEntity<String> deleteSubjectPart(@PathVariable Long id,@RequestBody BundleSubjectPart vo) {
 		dummyLogin();
-		LOG.info("subject part");
+		
 		AdBundleSubject bundleSubject = plannerService.findBundleSubjectById(id);
-		AdBundleSubjectPart part = plannerService.findBundleSubjectPartById(id);
+		AdBundleSubjectPart part = plannerService.findBundleSubjectPartById(vo.getId());
 		plannerService.deleteSubjectPart(bundleSubject, part);
 		return new ResponseEntity<String>("Success", HttpStatus.OK);
 	}

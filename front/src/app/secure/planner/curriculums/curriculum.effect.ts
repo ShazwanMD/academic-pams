@@ -132,7 +132,9 @@ export class CurriculumEffects {
       .map((action) => action.payload)
       .switchMap((payload) => this.plannerService.deleteSubjectPart(payload.bundleSubject, payload.subject))
       .map((message) => this.curriculumActions.deleteSubjectPartSuccess(message))
+      // .mergeMap((action) => from([action, this.curriculumActions.findCurriculums()]));
       .withLatestFrom(this.store$.select(...this.CURRICULUM))
       .map((state) => state[1])
-      .map((curriculum: Curriculum) => this.curriculumActions.findCurriculumByCode(curriculum.code));
-}
+      .map((curriculum: Curriculum) => this.curriculumActions.findCurriculumByCode(curriculum.code));    
+
+    }

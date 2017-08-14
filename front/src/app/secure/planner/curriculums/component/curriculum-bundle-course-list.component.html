@@ -1,13 +1,17 @@
 <md-card>
   <div toolbar-buttons layout="row" layout-align="start center" flex>
-     <md-card-title>Elective Subjects</md-card-title>
+     <md-card-title>Elective Subjects<md-chip color="accent">{{subject?.length}}</md-chip></md-card-title>
     <span flex></span>
     <button md-icon-button [md-menu-trigger-for]="menu">
       <md-icon>add</md-icon>
     </button>
-      <!-- <button md-button class="md-icon-button" (click)="deleteSubjectPart()">
+     <!--  <button md-button class="md-icon-button" (click)="deleteSubject()"
+            [disabled]="">
+      <md-icon class="md-24 tc-grey-300" >delete</md-icon>
+    </button>  -->
+   <button md-button class="md-icon-button" (click)="deleteSubjectPart(selectedRows)">
       <md-icon class="md-24 tc-grey-300" [ngClass]="{'tc-grey-700': selectedRows.length > 0}">delete</md-icon>
-    </button> -->
+    </button>
     <md-menu x-position="before" #menu="mdMenu">
       <button md-menu-item (click)=" showBundleSubjectPartDialog()">Elective Subject</button>
     </md-menu>
@@ -15,7 +19,7 @@
   <md-divider></md-divider>
   <md-card-content>
     <td-data-table
-      [data]="subject"
+       [data]="subject"
       [columns]="columns"
       [sortBy]="summary"
       [sortOrder]="ASC"
@@ -36,6 +40,13 @@
           </template>
         </div>
       </template>
+      
+       <!--  <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
+        <div layout="row">
+          <span flex>{{value}}</span>
+        </div>
+      </template> -->
+      
     </td-data-table>
   </md-card-content>
 </md-card>

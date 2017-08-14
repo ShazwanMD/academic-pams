@@ -153,6 +153,7 @@ public class PlannerTransformer {
     
     public BundleSubjectPart toBundleSubjectPartVo(AdBundleSubjectPart e) {
     	BundleSubjectPart vo = new BundleSubjectPart();
+    	vo.setId(e.getId());
     	vo.setCourse(toCourseVo(e.getCourse()));
 		return vo;
     }
