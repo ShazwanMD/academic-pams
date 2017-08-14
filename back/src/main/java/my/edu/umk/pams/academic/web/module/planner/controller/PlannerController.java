@@ -181,7 +181,6 @@ public class PlannerController {
 		System.out.println("Update academicYear:" + vo.getCode());
 		
 		AdAcademicYear academicYear = plannerService.findAcademicYearByCode(code);	
-		academicYear.setCode(vo.getCode());
 		academicYear.setDescription(vo.getDescription());
 		academicYear.setYear(vo.getYear());
 		plannerService.updateAcademicYear(academicYear);
