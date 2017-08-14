@@ -1,13 +1,22 @@
 import {MdSnackBar} from '@angular/material/snack-bar';
 import {Store} from '@ngrx/store';
 import {
-  ChangeDetectionStrategy,
-  Component,
-  Input,
-  OnChanges,
-  OnInit,
-  SimpleChange,
-  ViewContainerRef
+    IPageChangeEvent,
+    ITdDataTableSortChangeEvent,
+    TdDataTableService,
+    TdDataTableSortingOrder
+} from '@covalent/core';
+import {
+    ChangeDetectionStrategy,
+    Component,
+    Input,
+    AfterViewInit,
+    OnChanges,
+    OnInit,
+    SimpleChange,
+    EventEmitter,
+    Output,
+    ViewContainerRef
 } from '@angular/core';
 import {Curriculum} from '../../../../shared/model/planner/curriculum.interface';
 import {BundleSubjectPart} from '../../../../shared/model/planner/bundle-subject-part.interface';
@@ -23,97 +32,129 @@ import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';
 import {Subject} from '../../../../shared/model/planner/subject.interface';
 
 @Component({
-  selector: 'pams-curriculum-subject-list',
-  templateUrl: './curriculum-subject-list.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'pams-curriculum-subject-list',
+    templateUrl: './curriculum-subject-list.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CurriculumSubjectListComponent implements OnInit, OnChanges {
+export class CurriculumSubjectListComponent implements AfterViewInit , OnChanges {
 
-  private selectedRows: Subject[];
-  private singleSubjectDialogRef: MdDialogRef<CurriculumSingleSubjectDialog>;
-  private bundleSubjectDialogRef: MdDialogRef<CurriculumBundleSubjectDialog>;
-  private bundleSubjectPartDialogRef: MdDialogRef<CurriculumBundleSubjectPartDialog>;
+    private selectedRows: Subject[];
+    private singleSubjectDialogRef: MdDialogRef<CurriculumSingleSubjectDialog>;
+    private bundleSubjectDialogRef: MdDialogRef<CurriculumBundleSubjectDialog>;
+    private bundleSubjectPartDialogRef: MdDialogRef<CurriculumBundleSubjectPartDialog>;
 
-  private columns: any[] = [
-   // {name: 'id', label: 'Id'},
-    {name: 'ordinal', label: 'Semester'},
-    {name: 'subjectType', label: 'Type'},
-    {name: 'course.code', label: 'Course'},
-    {name: 'course.titleEn', label: 'Title'},
-    {name: 'course.credit', label: 'Credit'},
-    {name: 'action', label: ''},
-  ];
+    private columns: any[] = [
+        { name: 'id', label: 'Id' },
+        { name: 'ordinal', label: 'Semester' },
+        { name: 'subjectType', label: 'Type' },
+        { name: 'course.code', label: 'Course' },
+        { name: 'course.titleEn', label: 'Title' },
+        { name: 'course.credit', label: 'Credit' },
+        { name: 'action', label: '' },
+    ];
 
-  @Input() curriculum: Curriculum;
-  @Input() subjects: Subject[];
+    filteredData: any[];
+    filteredTotal: number;
+    searchTerm: string = '';
+    fromRow: number = 1;
+    currentPage: number = 1;
+    pageSize: number = 5;
+    sortBy: string = 'id';
+    sortOrder: TdDataTableSortingOrder = TdDataTableSortingOrder.Descending;
 
-  constructor(private router: Router,
-              private route: ActivatedRoute,
-              private actions: CurriculumActions,
-              private vcf: ViewContainerRef,
-              private snackBar: MdSnackBar,
-              private store: Store<PlannerModuleState>,
-              private dialog: MdDialog,) {
+    @Input() curriculum: Curriculum;
+    @Input() subjects: Subject[];
+    @Output() view: EventEmitter<Subject> = new EventEmitter<Subject>();
+
+    constructor(private router: Router,
+        private route: ActivatedRoute,
+        private actions: CurriculumActions,
+        private vcf: ViewContainerRef,
+        private snackBar: MdSnackBar,
+        private store: Store<PlannerModuleState>,
+        private dialog: MdDialog,
+        private _dataTableService: TdDataTableService) {
+    }
+
+    ngOnInit(): void {
+        this.selectedRows = this.subjects.filter((value) => value.selected);
+    }
+
+      
+     ngOnChanges(changes: { [ propName: string]: SimpleChange }) {
+    console.log("changes", changes, changes['subjects']);
+    if (changes['subjects']) {
+      this.filteredData = changes['subjects'].currentValue;
+      this.filteredTotal = changes['subjects'].currentValue.length;
+      this.filter();
+    }
   }
 
-  ngOnInit(): void {
-    this.selectedRows = this.subjects.filter((value) => value.selected);
-  }
+    ngAfterViewInit(): void {
+        this.filteredData = this.subjects;
+        this.filteredTotal = this.subjects.length;
+        this.filter();
+    }
 
-  ngOnChanges(changes: { [propName: string]: SimpleChange }) {
-    if (changes['subjects'] && this.subjects) {
-      console.log('subject length:' + this.subjects.length);
-      this.subjects.forEach((s: Subject) => {
-        console.log('subject: ' + s.type);
-        console.log('subject: ' + s.ordinal);
+    sort(sortEvent: ITdDataTableSortChangeEvent): void {
+        this.sortBy = sortEvent.name;
+        this.sortOrder = sortEvent.order;
+        this.filter();
+    }
 
-        if (s.type === 'single') {
-          console.log('single subject: ' + s.ordinal);
-        } else if (s.type === 'bundle') {
-          console.log('bundle subject: ' + s.ordinal);
-        } else {
-          console.log('subject');
+    search(searchTerm: string): void {
+        this.searchTerm = searchTerm;
+        this.filter();
+    }
+
+    page(pagingEvent: IPageChangeEvent): void {
+        this.fromRow = pagingEvent.fromRow;
+        this.currentPage = pagingEvent.page;
+        this.pageSize = pagingEvent.pageSize;
+        this.filter();
+    }
+
+    filter(): void {
+        let newData: any[] = this.subjects;
+        newData = this._dataTableService.filterData(newData, this.searchTerm, true);
+        this.filteredTotal = newData.length;
+        newData = this._dataTableService.sortData(newData, this.sortBy, this.sortOrder);
+        newData = this._dataTableService.pageData(newData, this.fromRow, this.currentPage * this.pageSize);
+        this.filteredData = newData;
+    }
+
+
+    showSingleSubjectDialog(singleSubject: SingleSubject): void {
+        console.log("this.curriculum : " + this.curriculum.academicSession);
+        let config: MdDialogConfig = new MdDialogConfig();
+        config.viewContainerRef = this.vcf;
+        config.role = 'dialog';
+        config.width = '50%';
+        config.height = '60%';
+        config.position = { top: '65px' };
+        this.singleSubjectDialogRef = this.dialog.open(CurriculumSingleSubjectDialog, config);
+        this.singleSubjectDialogRef.componentInstance.curriculum = this.curriculum;
+        this.singleSubjectDialogRef.afterClosed().subscribe((res) => {
+            // no op
+        });
+
+    }
+
+    deleteSubject(): void {
+        console.log('length: ' + this.selectedRows.length);
+        for (let i: number = 0; i < this.selectedRows.length; i++) {
+            this.store.dispatch(this.actions.deleteSubject(this.curriculum, this.selectedRows[i]));
         }
-      });
+
+        this.selectedRows = [];
     }
-  }
-
-  filter(): void {
-    // no op
-  }
-
-  showSingleSubjectDialog(singleSubject: SingleSubject): void {
-      console.log("this.curriculum : "+this.curriculum.academicSession);
-    let config: MdDialogConfig = new MdDialogConfig();
-    config.viewContainerRef = this.vcf;
-    config.role = 'dialog';
-    config.width = '50%';
-    config.height = '60%';
-    config.position = {top: '65px'};
-    this.singleSubjectDialogRef = this.dialog.open(CurriculumSingleSubjectDialog, config);
-    this.singleSubjectDialogRef.componentInstance.curriculum = this.curriculum;
-    this.singleSubjectDialogRef.afterClosed().subscribe((res) => {
-      // no op
-    });
-
-  }
-
-  deleteSubject(): void {
-    console.log('length: ' + this.selectedRows.length);
-    for (let i: number = 0; i < this.selectedRows.length; i++) {
-    this.store.dispatch(this.actions.deleteSubject(this.curriculum, this.selectedRows[i]));
+    selectRow(subject: Subject): void {
     }
-  
-    this.selectedRows = [];
-  }
-  selectRow(subject: Subject): void {
-  }
 
-  selectAllRows(subject: Subject[]): void {
-  }
-  goBack(route: string): void {
-    this.router.navigate(['/subjects']);
-  }
+    selectAllRows(subject: Subject[]): void {
+    }
+
+    goBack(route: string): void {
+        this.router.navigate(['/subjects']);
+    }
 }
-
-

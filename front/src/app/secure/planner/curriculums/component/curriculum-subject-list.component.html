@@ -1,4 +1,4 @@
-<md-card>
+
   <div toolbar-buttons layout="row" layout-align="start center" flex>
      <md-card-title>Subjects Core</md-card-title>
     <md-chip-list *ngIf="subjects?.length > 0">
@@ -16,20 +16,22 @@
     </md-menu>
   </div>
   <md-divider></md-divider>
-  <md-card-content>
-    <td-data-table
-      [data]="subjects"
-      [columns]="columns"
-      [sortBy]="summary"
-      [sortOrder]="ASC"
-      [sortable]="false"
-      [multiple]="true"
-      [selectable]="true"
-      [(ngModel)]="selectedRows"
-      (rowSelect)="selectRow($event)"
-      (selectAll)="selectAllRows($event)"
-      dense>
-      <template tdDataTableTemplate="parts" let-value="value" let-row="row" let-column="columns.parts">
+ 
+  <div layout="row" layout-align="start center" class="pad-left-sm pad-right-sm">
+  <td-search-box #searchBox backIcon="arrow_back" class="push-right-sm" placeholder="Search here"
+                 (searchDebounce)="search($event)" [alwaysVisible]="true" flex>
+  </td-search-box>
+</div> 
+<md-divider></md-divider>
+<td-data-table
+  #dataTable
+  [data]="filteredData"
+  [columns]="columns"
+  [sortable]="true"
+  [sortBy]="sortBy"
+  [sortOrder]="sortOrder"
+  (sortChange)="sort($event)">
+     <template tdDataTableTemplate="parts" let-value="value" let-row="row" let-column="columns.parts">
         <div layout="row">
           <span *ngIf="row.type=='bundle'" flex> </span>
           <template *ngIf="row.type=='bundle'" let-group ngFor [ngForOf]="subjects">
@@ -39,6 +41,13 @@
           </template>
         </div>
       </template>
-    </td-data-table>
-  </md-card-content>
-</md-card>
+ 
+</td-data-table>
+<div class="md-padding" *ngIf="!dataTable.hasData" layout="row" layout-align="center center">
+  <h3>No results to display.</h3>
+</div>
+<td-paging-bar #pagingBar [pageSizes]="[5, 10, 15, 20, 30]" [total]="filteredTotal" (change)="page($event)">
+  <span td-paging-bar-label hide-xs>Row per page:</span>
+  {{pagingBar.range}} <span hide-xs>of {{pagingBar.total}}</span>
+</td-paging-bar>
+ 
