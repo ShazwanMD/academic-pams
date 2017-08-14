@@ -7,8 +7,8 @@
     <md-nav-list list-items>
       <a md-list-item (click)="createDialog()">
         <md-icon>create</md-icon>
-        Create Semester Registration
-      </a>
+        Apply Semester Registration 
+        </a>
       <md-divider></md-divider>
 
       <a md-list-item [routerLink]="['/secure/term/offerings/student-offering-center']">
@@ -34,7 +34,7 @@
 
     <md-card>
       <md-tab-group [selectedIndex]="0">
-        <md-tab label="Assigned Applications">
+        <md-tab label="My Application">
           <pams-assigned-admission-application-task-list
             [admissionApplicationTasks]="assignedAdmissionApplicationTasks$ | async"
             (view)="viewTask($event)"></pams-assigned-admission-application-task-list>
@@ -42,7 +42,7 @@
         <!--   <md-tab label="Pooled Applications">
             <pams-pooled-admission-application-task-list [admissionApplicationTasks]="pooledAdmissionApplicationTasks$ | async" (claim)="claimTask($event)"></pams-pooled-admission-application-task-list>
           </md-tab> -->
-        <md-tab label="Archived Applications">
+        <md-tab label="Completed Application">
           <pams-archived-admission-application-list [admissionApplications]="archivedAdmissionApplications$ | async"
                                                     (view)="viewAdmissionApplication($event)"></pams-archived-admission-application-list>
         </md-tab>
