@@ -21,6 +21,13 @@
                flex/>
     </md-input-container>
     </div>
+     <div layout="row" class="insert">
+     <pams-subject-elective-status-select [placeholder]="'Subject Elective Status'"
+                                      [innerFormControl]="creatorForm.controls['subjectElectiveStatus']" 
+                                      fxFlex="calc(100%-25px)" class="pad-bottom" 
+                                      mdTooltip="Please choose subject elective status">
+      </pams-subject-elective-status-select>
+    </div>
 
 
     <!--<div md-content flex md-scroll-y>

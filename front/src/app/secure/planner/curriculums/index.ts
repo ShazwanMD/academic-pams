@@ -33,6 +33,7 @@ import {IdentityModule} from '../../identity/index';
 import {AcademicSessionSubModule} from '../academic-sessions/index';
 import {CurriculumUpdateDialog} from './dialog/curriculum-update.dialog';
 import {SubjectTypeSelectComponent} from './component/subject-type-select.component';
+import {SubjectElectiveStatusSelectComponent} from './component/subject-elective-status-select.component';
 
 @NgModule({
   imports: [
@@ -63,6 +64,7 @@ import {SubjectTypeSelectComponent} from './component/subject-type-select.compon
     SubjectTypeSelectComponent,
     CurriculumBundleSubjectListComponent,
     CurriculumBndleCourseListComponent,
+    SubjectElectiveStatusSelectComponent,
 
     // dialog
     CurriculumEditorDialog,
@@ -81,6 +83,7 @@ import {SubjectTypeSelectComponent} from './component/subject-type-select.compon
     CurriculumSubjectListComponent,
     CurriculumBundleElectiveListComponent,
     CurriculumBndleCourseListComponent,
+    SubjectElectiveStatusSelectComponent,
   ],
   entryComponents: [
     CurriculumEditorDialog,
@@ -93,6 +96,7 @@ import {SubjectTypeSelectComponent} from './component/subject-type-select.compon
     CurriculumBundleSubjectPartDialog,
     CurriculumBundleElectiveDialog,
     SubjectTypeSelectComponent,
+    SubjectElectiveStatusSelectComponent,
     CurriculumBundleSubjectListComponent,
     SingleSubjectComponent,
     CurriculumBundleElectiveListComponent,

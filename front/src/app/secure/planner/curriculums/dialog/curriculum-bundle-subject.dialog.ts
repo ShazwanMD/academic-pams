@@ -14,6 +14,7 @@ import { PlannerModuleState } from '../../index';
 import { MdDialogRef } from '@angular/material';
 import { CurriculumActions } from '../curriculum.action';
 import { SubjectType } from '../../../../shared/model/planner/subject-type.enum';
+import { SubjectElectiveStatus } from "../../../../shared/model/planner/subject-elective-status.enum";
 
 @Component({
   selector: 'pams-curriculum-bundle-subject',
@@ -70,7 +71,9 @@ export class CurriculumBundleSubjectDialog implements OnInit {
       id: '',
       type: 'bundle',
       ordinal: 0,
+      description:'',
       subjectType: SubjectType.ELECTIVE,
+      subjectElectiveStatus: <SubjectElectiveStatus>{},
     });
 
     if (this.create) this.creatorForm.patchValue(this._bundleSubject);
