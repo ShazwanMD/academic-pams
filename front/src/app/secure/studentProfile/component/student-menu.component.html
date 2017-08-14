@@ -1,0 +1,21 @@
+
+<!-- create new component for student menu -->
+  
+    <md-nav-list list-items>
+      <a md-list-item (click)="admission()">
+        <md-icon>create</md-icon>
+        My Profile {{student.name}}
+      </a>
+      <md-divider></md-divider>
+       <a md-list-item [routerLink]="['/secure/term/admission-applications/admission-application-center2']">
+        <md-icon>create</md-icon>
+        Semester Registration
+      </a>
+       <a md-list-item [routerLink]="['/secure/term/enrollment-applications/student-enrollment-center']">
+        <md-icon>create</md-icon>
+        Course Enrollment
+      </a>
+    </md-nav-list>
+    <!-- create new component for student menu -->
+       
+

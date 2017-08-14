@@ -30,6 +30,7 @@ import { EnrollmentListState, enrollmentListReducer } from "../profile/enrollmen
 import { StudentProfileCenterPage } from "./student-profile-center.page";
 import { StudentListState, studentListReducer } from "./student-list.reducer";
 import { StudentState, studentReducer } from "./student.reducer";
+import { StudentMenu } from "./component/student-menu.component";
 
 
 export interface StudentProfileModuleState {
@@ -88,6 +89,7 @@ export const studentProfileModuleReducers = {
         //Component
         StudentProfilePage,
         StudentProfileListPage,
+        StudentMenu,
 
         //Dialog
         StudentContactEditorDialog,

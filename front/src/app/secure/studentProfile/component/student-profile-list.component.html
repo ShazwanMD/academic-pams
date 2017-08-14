@@ -1,5 +1,11 @@
-<md-card>
+
   <md-card-content>
+  <a md-raised-button layout-align="start center" color="accent" [routerLink]="['/secure/term/admission-applications/admission-application-center2/', student.identityNo]" class="text-upper" mdTooltip="View offerings info" align="right">
+        <span>Admission {{student.identityNo}}</span>
+      </a>
+       <a md-raised-button disabled layout-align="start center" color="accent" class="text-upper" mdTooltip="View offerings info" align="right">
+        <span>Course Enrollment</span>
+      </a>
     <md-tab-group>
       <md-tab label="Student Personal Information">
         <div layout="column" layout-gt-md="row" class="insert">
@@ -220,4 +226,3 @@
       </md-tab>
     </md-tab-group>
   </md-card-content>
-</md-card>
