@@ -66,4 +66,24 @@ export class StudentProfileActions {
     };
   }
 
+  static REMOVE_STUDENT_CONTACT = '[Profile] Remove Student Contact';
+
+  deleteStudentContact(student, contact): Action {
+    console.log("Remove student contact");
+    return {
+      type: StudentProfileActions.REMOVE_STUDENT_CONTACT,
+      payload: { student: student, contact: contact }
+    };
+  }
+
+  static REMOVE_STUDENT_CONTACT_SUCCESS = '[Profile] Remove Student Contact Success';
+
+  deleteStudentContactSuccess(message): Action {
+    console.log("Remove student contact success");
+    return {
+      type: StudentProfileActions.REMOVE_STUDENT_CONTACT_SUCCESS,
+      payload: message
+    };
+  }
+
 }

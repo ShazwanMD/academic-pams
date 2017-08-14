@@ -307,6 +307,27 @@ public class ProfileController {
 		return new ResponseEntity<List<Address>>(
 				profileTransformer.toAddressVos(profileService.findAddresses(student1)), HttpStatus.OK);
 	}
+	
+	@RequestMapping(value = "/students/contacts/{id}", method = RequestMethod.DELETE)
+	public ResponseEntity<String> deleteStudentContact(@PathVariable Long id ) {
+	
+		//dummyLogin();
+		AdUser user = securityService.getCurrentUser();
+
+		AdStudent student = null;
+
+		if (user.getActor() instanceof AdStudent)
+			student = (AdStudent) user.getActor();
+		if (null == student)
+			throw new IllegalArgumentException("Student does not exists");
+		String identityNo = student.getIdentityNo();
+		
+		AdStudent student1 = profileService.findStudentByMatricNo(identityNo);
+		LOG.debug("Sini:{}", student1);
+		AdContact contact = profileService.findContactById(id);
+		profileService.deleteContact(student1, contact);
+		return new ResponseEntity<String>("Success", HttpStatus.OK);
+	}
 
 	// ====================================================================================================
 	// PROFILE
