@@ -68,7 +68,8 @@ export class CurriculumEffects {
     .ofType(CurriculumActions.SAVE_CURRICULUM)
     .map((action) => action.payload)
     .switchMap((curriculum) => this.plannerService.saveCurriculum(curriculum))
-    .map((curriculum) => this.curriculumActions.saveCurriculumSuccess(curriculum));
+    .map((curriculum) => this.curriculumActions.saveCurriculumSuccess(curriculum))
+    .mergeMap((action) => from([action,this.curriculumActions.findCurriculums()]));
 
   @Effect() updateCurriculum$ = this.actions$
     .ofType(CurriculumActions.UPDATE_CURRICULUM)
