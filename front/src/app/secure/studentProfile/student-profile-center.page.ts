@@ -71,5 +71,10 @@ export class StudentProfileCenterPage implements OnInit {
 
 
   }
+
+    admission(): void {
+    
+    
+  }
 }
 

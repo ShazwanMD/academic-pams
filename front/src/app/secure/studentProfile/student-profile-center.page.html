@@ -1,21 +1,27 @@
-<md-card>
-  
-  <md-card-title >Student Personal Info</md-card-title>
-  <md-card-subtitle>Page under developments</md-card-subtitle>
+<td-layout-manage-list #list>
+      <md-nav-list list-items>
+      <a md-list-item (click)="admission()">
+        <md-icon>create</md-icon>
+        Admission
+      </a>
+      <md-divider></md-divider>
+    </md-nav-list>
+        <div toolbar-buttons layout="row" layout-align="start center" flex>
+      <span flex>Student Personal Info</span>
+    </div>
 
-  <md-divider></md-divider>
+  <md-card class="">
 
-  <md-card-content>
-    <pams-student-profile-list
-    [student]="student$ | async"
-    [addressess]="addressess$ | async"
+    <pams-student-profile-list 
+    [student]="student$ | async" 
+    [addressess]="addressess$ | async" 
     [guarantors]="guarantors$ | async"
-    [guardians]="guardians$ | async"
-    [contacts]="contacts$ | async"
-    [enrollments]="enrollments$ | async"
-    >
+    [guardians]="guardians$ | async" 
+    [contacts]="contacts$ | async" 
+    [enrollments]="enrollments$ | async">
     </pams-student-profile-list>
 
-  </md-card-content>
+    <md-divider></md-divider>
+  </md-card>
+</td-layout-manage-list>
 
-</md-card>
