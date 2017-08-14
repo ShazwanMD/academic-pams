@@ -27,6 +27,7 @@ export class AdmissionApplicationTaskCreatorDialog implements OnInit {
   private _academicSession: AcademicSession;
   private _student: Student;
   private create: boolean = false;
+  private edit: boolean = false;
   
 
   constructor(private formBuilder: FormBuilder,
@@ -40,6 +41,11 @@ export class AdmissionApplicationTaskCreatorDialog implements OnInit {
       this.admissionApplication$ = this.store.select(...this.ADMISSION_APPLICATION);
       this.assignedAdmissionApplicationTasks$ = this.store.select(...this.ASSIGNED_ADMISSION_APPLICATION_TASKS);
   }
+  
+  set student(value: Student) {
+      this._student = value;
+      this.edit = true;
+    }
 
   ngOnInit(): void {
       
@@ -51,6 +57,7 @@ export class AdmissionApplicationTaskCreatorDialog implements OnInit {
       academicSession: ['', Validators.required],
     });
   }
+  
 
   save(admissionApplication: AdmissionApplication, isValid: boolean): void {
 

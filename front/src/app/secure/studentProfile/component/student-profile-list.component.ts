@@ -15,6 +15,8 @@ import { Guarantor } from "../../../shared/model/profile/guarantor.interface";
 import { Guardian } from "../../../shared/model/profile/guardian.interface";
 import { Contact } from "../../../shared/model/profile/contact.interface";
 import { Enrollment } from "../../../shared/model/term/enrollment.interface";
+import { OfferingUpdateDialog } from "../../term/offerings/dialog/offering-update.dialog";
+import { AdmissionApplicationTaskCreatorDialog } from "../../term/admission-applications/dialog/admission-application-task-creator.dialog";
 
 
 @Component({
@@ -26,6 +28,7 @@ export class StudentProfileListPage implements OnInit {
 
     private studentContactEditorDialogRef: MdDialogRef<StudentContactEditorDialog>;
     private studentGuardianCreatorDialogRef: MdDialogRef<GuardianEditorDialog>;
+    private creatorDialogRef: MdDialogRef<AdmissionApplicationTaskCreatorDialog>;
     //inputs
 
     @Input() student: Student;
@@ -181,6 +184,22 @@ export class StudentProfileListPage implements OnInit {
         console.log(this.student.identityNo);
         this.store.dispatch(this.actions.deleteStudentGuardian(this.student.identityNo, guardian));
     }
+    
+    showDialog(): void {
+        console.log('showDialog');
+        let config = new MdDialogConfig();
+        config.viewContainerRef = this.vcf;
+        config.role = 'dialog';
+        config.width = '60%';
+        config.height = '70%';
+        config.position = {top: '0px'};
+        this.creatorDialogRef = this.dialog.open(AdmissionApplicationTaskCreatorDialog, config);
+        this.creatorDialogRef.componentInstance.student = this.student;
+        this.creatorDialogRef.afterClosed().subscribe((res) => {
+          console.log('close dialog');
+          // load something here
+        });
+      }
 
 
 }
