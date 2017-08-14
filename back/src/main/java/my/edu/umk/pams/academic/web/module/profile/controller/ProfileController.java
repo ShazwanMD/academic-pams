@@ -252,9 +252,9 @@ public class ProfileController {
 		profileService.deleteGuardian(student, guardian);
 		return new ResponseEntity<String>("Success", HttpStatus.OK);
 	}
-	// ====================================================================================================
+	// ===================================================================================================================================
 	// NEW DASHBOARD
-	// ====================================================================================================
+	// ===================================================================================================================================
 
 	@RequestMapping(value = "/studentLogins", method = RequestMethod.GET)
 	public ResponseEntity<Student> findStudentByUser() {
@@ -382,6 +382,84 @@ public class ProfileController {
 		contact.setType(AdContactType.get(vo.getContactType().ordinal()));
 		contact.setStudent(student1);
 		profileService.addContact(student1, contact);
+		return new ResponseEntity<String>("Success", HttpStatus.OK);
+	}
+	
+	// ====================================================================================================
+	// GUARDIAN
+	// ====================================================================================================
+
+	/* ADD GUARDIAN */
+	@RequestMapping(value = "/students/guardians", method = RequestMethod.POST)
+	public ResponseEntity<String> addStudentGuardian(@RequestBody Guardian vo) {
+		//dummyLogin();
+		AdUser user = securityService.getCurrentUser();
+
+		AdStudent student = null;
+
+		if (user.getActor() instanceof AdStudent)
+			student = (AdStudent) user.getActor();
+		if (null == student)
+			throw new IllegalArgumentException("Student does not exists");
+		String identityNo = student.getIdentityNo();
+
+		
+		AdStudent student1 = profileService.findStudentByMatricNo(identityNo);
+		
+		AdGuardian guardian = new AdGuardianImpl();
+		guardian.setIdentityNo(vo.getIdentityNo());
+		guardian.setName(vo.getName());
+		guardian.setPhone(vo.getPhone());
+		guardian.setType(AdGuardianType.get(vo.getGuardianType().ordinal()));
+		guardian.setStudent(student1);
+		profileService.addGuardian(student1, guardian);
+		return new ResponseEntity<String>("Success", HttpStatus.OK);
+	}
+
+	/* EDIT GUARDIAN */
+	@RequestMapping(value = "/students/guardians/{id}", method = RequestMethod.PUT)
+	public ResponseEntity<String> updateStudentGuardian(@RequestBody Guardian vo) {
+		//dummyLogin();
+		AdUser user = securityService.getCurrentUser();
+
+		AdStudent student = null;
+
+		if (user.getActor() instanceof AdStudent)
+			student = (AdStudent) user.getActor();
+		if (null == student)
+			throw new IllegalArgumentException("Student does not exists");
+		String identityNo = student.getIdentityNo();
+
+		
+		AdStudent student1 = profileService.findStudentByMatricNo(identityNo);
+		AdGuardian guardian = profileService.findGuardianById(vo.getId());
+		guardian.setName(vo.getName());
+		guardian.setPhone(vo.getPhone());
+		guardian.setIdentityNo(vo.getIdentityNo());
+		guardian.setType(AdGuardianType.get(vo.getGuardianType().ordinal()));
+		guardian.setStudent(student1);
+		profileService.updateGuardian(student1, guardian);
+		return new ResponseEntity<String>("Success", HttpStatus.OK);
+	}
+
+	/* DELETE GUARDIAN */
+	@RequestMapping(value = "/students/guardians/{id}", method = RequestMethod.DELETE)
+	public ResponseEntity<String> deleteStudentGuardian(@PathVariable Long id) {
+		//dummyLogin();
+		AdUser user = securityService.getCurrentUser();
+
+		AdStudent student = null;
+
+		if (user.getActor() instanceof AdStudent)
+			student = (AdStudent) user.getActor();
+		if (null == student)
+			throw new IllegalArgumentException("Student does not exists");
+		String identityNo = student.getIdentityNo();
+
+		
+		AdStudent student1 = profileService.findStudentByMatricNo(identityNo);
+		AdGuardian guardian = profileService.findGuardianById(id);
+		profileService.deleteGuardian(student1, guardian);
 		return new ResponseEntity<String>("Success", HttpStatus.OK);
 	}
 

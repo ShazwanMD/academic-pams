@@ -28,7 +28,7 @@ export class StudentProfileActions {
     };
   }
 
-  static FIND_STUDENTS_BY_IDENTITY_NO = '[Profile] Find Students By Identity No';
+  static FIND_STUDENTS_BY_IDENTITY_NO = '[StudentProfile] Find Students By Identity No';
 
   findStudentsByIdentityNo(identityNo): Action {
     return {
@@ -37,7 +37,7 @@ export class StudentProfileActions {
     };
   }
 
-  static FIND_STUDENTS_BY_IDENTITY_NO_SUCCESS = '[Profile] Find Students By Identity No Success';
+  static FIND_STUDENTS_BY_IDENTITY_NO_SUCCESS = '[StudentProfile] Find Students By Identity No Success';
 
   findStudentsByIdentityNoSuccess(student): Action {
     return {
@@ -66,7 +66,7 @@ export class StudentProfileActions {
     };
   }
 
-  static ADD_STUDENT_CONTACT = '[Profile] Add Student Contact';
+  static ADD_STUDENT_CONTACT = '[StudentProfile] Add Student Contact';
 
   addStudentContact(student, contact): Action {
     console.log("add student contact");
@@ -76,7 +76,7 @@ export class StudentProfileActions {
     };
   }
 
-  static ADD_STUDENT_CONTACT_SUCCESS = '[Profile] Add Student Contact Success';
+  static ADD_STUDENT_CONTACT_SUCCESS = '[StudentProfile] Add Student Contact Success';
 
   addStudentContactSuccess(message): Action {
     console.log("add student contact success");
@@ -86,7 +86,7 @@ export class StudentProfileActions {
     };
   }
 
-  static UPDATE_STUDENT_CONTACT = '[Profile] Update Student Contact'
+  static UPDATE_STUDENT_CONTACT = '[StudentProfile] Update Student Contact'
 
   updateStudentContact(student, contact): Action {
     console.log("update student contact");
@@ -96,7 +96,7 @@ export class StudentProfileActions {
     };
   }
 
-  static UPDATE_STUDENT_CONTACT_SUCCESS = '[Profile] Update Student Contact Success';
+  static UPDATE_STUDENT_CONTACT_SUCCESS = '[StudentProfile] Update Student Contact Success';
 
   updateStudentContactSuccess(message): Action {
     console.log("update student contact success");
@@ -106,7 +106,7 @@ export class StudentProfileActions {
     };
   }
 
-  static REMOVE_STUDENT_CONTACT = '[Profile] Remove Student Contact';
+  static REMOVE_STUDENT_CONTACT = '[StudentProfile] Remove Student Contact';
 
   deleteStudentContact(student, contact): Action {
     console.log("Remove student contact");
@@ -116,12 +116,75 @@ export class StudentProfileActions {
     };
   }
 
-  static REMOVE_STUDENT_CONTACT_SUCCESS = '[Profile] Remove Student Contact Success';
+  static REMOVE_STUDENT_CONTACT_SUCCESS = '[StudentProfile] Remove Student Contact Success';
 
   deleteStudentContactSuccess(message): Action {
     console.log("Remove student contact success");
     return {
       type: StudentProfileActions.REMOVE_STUDENT_CONTACT_SUCCESS,
+      payload: message
+    };
+  }
+
+  /*==================================================================================================*/
+  /*GUARDIAN
+  /*==================================================================================================*/
+  static ADD_STUDENT_GUARDIAN = '[StudentProfile] Add Student Guardian';
+
+  addStudentGuardian(student, guardian): Action {
+    console.log("add student guardian");
+    return {
+      type: StudentProfileActions.ADD_STUDENT_GUARDIAN,
+      payload: { student: student, guardian: guardian }
+    };
+  }
+
+  static ADD_STUDENT_GUARDIAN_SUCCESS = '[StudentProfile] Add Student Guardian Success';
+
+  addStudentGuardianSuccess(message): Action {
+    console.log("add student guardian success");
+    return {
+      type: StudentProfileActions.ADD_STUDENT_GUARDIAN_SUCCESS,
+      payload: message
+    };
+  }
+
+  static UPDATE_STUDENT_GUARDIAN = '[StudentProfile] Update Student Guardian';
+
+  updateStudentGuardian(student, guardian): Action {
+    console.log("update student guardian");
+    return {
+      type: StudentProfileActions.UPDATE_STUDENT_GUARDIAN,
+      payload: { student: student, guardian: guardian }
+    };
+  }
+
+  static UPDATE_STUDENT_GUARDIAN_SUCCESS = '[StudentProfile] Update Student Guardian Success';
+
+  updateStudentGuardianSuccess(message): Action {
+    console.log("update student guardian success");
+    return {
+      type: StudentProfileActions.UPDATE_STUDENT_GUARDIAN_SUCCESS,
+      payload: message
+    };
+  }
+
+  static REMOVE_STUDENT_GUARDIAN = '[StudentProfile] Remove Student Guardian';
+
+  deleteStudentGuardian(student, guardian): Action {
+    console.log("remove student guardian");
+    return {
+      type: StudentProfileActions.REMOVE_STUDENT_GUARDIAN,
+      payload: { student: student, guardian: guardian }
+    };
+  }
+
+  static REMOVE_STUDENT_GUARDIAN_SUCCESS = '[StudentProfile] Remove Student Guardian Success';
+
+  deleteStudentGuardianSuccess(message): Action {
+    console.log("remove student guardian success");
+    return {
+      type: StudentProfileActions.REMOVE_STUDENT_GUARDIAN_SUCCESS,
       payload: message
     };
   }

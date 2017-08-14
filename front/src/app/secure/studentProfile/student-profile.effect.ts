@@ -80,6 +80,36 @@ export class StudentProfileEffects {
     .map(state => state[1])
     .map(() => this.studentProfileActions.findStudentByUser());
 
+  /*==================================================================================================*/
+  /*GUARDIAN - EFFECT*/
+  /*==================================================================================================*/
+  @Effect() updateStudentGuardian$ = this.actions$
+    .ofType(StudentProfileActions.UPDATE_STUDENT_GUARDIAN)
+    .map(action => action.payload)
+    .switchMap(payload => this.profileService.updateStudentGuardian(payload.student, payload.guardian))
+    .map(message => this.studentProfileActions.updateStudentGuardianSuccess(message))
+    .withLatestFrom(this.store$.select(...this.STUDENT))
+    .map(state => state[1])
+    .map(() => this.studentProfileActions.findStudentByUser());
+
+  @Effect() addStudentGuardian$ = this.actions$
+    .ofType(StudentProfileActions.ADD_STUDENT_GUARDIAN)
+    .map(action => action.payload)
+    .switchMap(payload => this.profileService.addStudentGuardian(payload.student, payload.guardian))
+    .map(message => this.studentProfileActions.addStudentGuardianSuccess(message))
+    .withLatestFrom(this.store$.select(...this.STUDENT))
+    .map(state => state[1])
+    .map(() => this.studentProfileActions.findStudentByUser());
+
+  @Effect() deleteStudentGuardian$ = this.actions$
+    .ofType(StudentProfileActions.REMOVE_STUDENT_GUARDIAN)
+    .map(action => action.payload)
+    .switchMap(payload => this.profileService.deleteStudentGuardian(payload.student, payload.guardian))
+    .map(message => this.studentProfileActions.deleteStudentGuardianSuccess(message))
+    .withLatestFrom(this.store$.select(...this.STUDENT))
+    .map(state => state[1])
+    .map(() => this.studentProfileActions.findStudentByUser());
+
 
 
 }

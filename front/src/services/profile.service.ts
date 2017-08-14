@@ -59,6 +59,24 @@ export class ProfileService {
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
+  /*==================================================================================================*/
+  //STUDENT - GUARDIAN
+  /*==================================================================================================*/
+  addStudentGuardian(student: Student, guardian: Guardian): Observable<String> {
+    return this._http.post(this.PROFILE_API + '/students/guardians', JSON.stringify(guardian))
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+  updateStudentGuardian(student: Student, guardian: Guardian): Observable<String> {
+    return this._http.put(this.PROFILE_API + '/students/guardians/' + guardian.id, JSON.stringify(guardian))
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+  deleteStudentGuardian(student: Student, guardian: Guardian) {
+    return this._http.delete(this.PROFILE_API + '/students/guardians/' + guardian.id)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
   // ====================================================================================================
   // STUDENT - FINDING
   // ====================================================================================================

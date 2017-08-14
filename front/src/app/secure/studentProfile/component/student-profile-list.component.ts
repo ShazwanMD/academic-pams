@@ -1,3 +1,4 @@
+import { GuardianEditorDialog } from './../../profile/dialog/guardian-editor.dialog';
 import { StudentContactEditorDialog } from './../dialog/student-contact-editor.dialog';
 import { ProfileActions } from './../../profile/profile.action';
 import { Observable } from 'rxjs/Observable';
@@ -24,6 +25,7 @@ import { Enrollment } from "../../../shared/model/term/enrollment.interface";
 export class StudentProfileListPage implements OnInit {
 
     private studentContactEditorDialogRef: MdDialogRef<StudentContactEditorDialog>;
+    private studentGuardianCreatorDialogRef: MdDialogRef<GuardianEditorDialog>;
     //inputs
 
     @Input() student: Student;
@@ -102,7 +104,7 @@ export class StudentProfileListPage implements OnInit {
     //ADD CONTACT DIALOG
     addContactDialog(): void {
         console.log('Add Contact');
-        console.log("Add Contact"+ this.student.identityNo);
+        console.log("Add Contact" + this.student.identityNo);
         let config = new MdDialogConfig();
         config.viewContainerRef = this.vcf;
         config.role = 'dialog';
@@ -118,7 +120,7 @@ export class StudentProfileListPage implements OnInit {
     //EDIT CONTACT DIALOG
     editContactDialog(contact: Contact, isValid: boolean): void {
         console.log("Editing Contact");
-        console.log("EditContact"+ this.student.identityNo);
+        console.log("EditContact" + this.student.identityNo);
         let config = new MdDialogConfig();
         config.viewContainerRef = this.vcf;
         config.role = 'dialog';
@@ -138,6 +140,46 @@ export class StudentProfileListPage implements OnInit {
         console.log(contact);
         this.store.dispatch(this.actions.deleteStudentContact(this.student.identityNo, contact));
         //console.log("ini->",contact);
+    }
+
+    /*=========================================================================================*/
+    /*GUARDIAN*/
+    /*=========================================================================================*/
+    //ADD GUARDIAN DIALOG
+    addGuardianDialog(): void {
+        console.log('addGuardian');
+        let config = new MdDialogConfig();
+        config.viewContainerRef = this.vcf;
+        config.role = 'dialog';
+        config.width = '70%';
+        config.height = '80%';
+        config.position = { top: '0px' };
+        this.studentGuardianCreatorDialogRef = this.dialog.open(GuardianEditorDialog, config);
+        this.studentGuardianCreatorDialogRef.componentInstance.student = this.student;
+        this.studentGuardianCreatorDialogRef.afterClosed().subscribe((res) => {
+            console.log('close dialog');
+        });
+    }
+
+    //EDIT GUARDIAN DIALOG
+    editGuardianDialog(guardian: Guardian, isValid: boolean): void {
+        let config = new MdDialogConfig();
+        config.viewContainerRef = this.vcf;
+        config.role = 'dialog';
+        config.width = '70%';
+        config.height = '80%';
+        config.position = { top: '0px' };
+        this.studentGuardianCreatorDialogRef = this.dialog.open(GuardianEditorDialog, config);
+        this.studentGuardianCreatorDialogRef.componentInstance.guardian = guardian;
+        this.studentGuardianCreatorDialogRef.componentInstance.student = this.student;
+        this.studentGuardianCreatorDialogRef.afterClosed().subscribe((res) => {
+        });
+    }
+
+    //DELETE GUARDIAN
+    deleteGuardian(guardian: Guardian): void {
+        console.log(this.student.identityNo);
+        this.store.dispatch(this.actions.deleteStudentGuardian(this.student.identityNo, guardian));
     }
 
 
