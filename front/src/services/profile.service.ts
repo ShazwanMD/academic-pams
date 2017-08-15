@@ -38,6 +38,24 @@ export class ProfileService {
       .map((res: Response) => <Student>res.json());
   }
 
+  /*==================================================================================================*/
+  //STUDENT - ADDRESS
+  /*==================================================================================================*/
+  addStudentAddress(student: Student, address: Address): Observable<String> {
+    return this._http.post(this.PROFILE_API + '/students/addresses', JSON.stringify(address))
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+  updateStudentAddress(student: Student, address: Address): Observable<String> {
+    return this._http.put(this.PROFILE_API + '/students/addresses/' + address.id, JSON.stringify(address))
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+  deleteStudentAddress(student: Student, address: Address) {
+    return this._http.delete(this.PROFILE_API + '/students/addresses/' + address.id)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
   // ====================================================================================================
   // STUDENT - CONTACT
   // ====================================================================================================
