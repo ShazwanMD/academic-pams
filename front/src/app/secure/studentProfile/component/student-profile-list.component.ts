@@ -1,4 +1,3 @@
-import { GuardianEditorDialog } from './../../profile/dialog/guardian-editor.dialog';
 import { StudentContactEditorDialog } from './../dialog/student-contact-editor.dialog';
 import { ProfileActions } from './../../profile/profile.action';
 import { Observable } from 'rxjs/Observable';
@@ -18,6 +17,7 @@ import { Enrollment } from "../../../shared/model/term/enrollment.interface";
 import { OfferingUpdateDialog } from "../../term/offerings/dialog/offering-update.dialog";
 import { AdmissionApplicationTaskCreatorDialog } from "../../term/admission-applications/dialog/admission-application-task-creator.dialog";
 import { AdmissionApplicationTaskDialog } from "../../term/admission-applications/dialog/admission-application-task.dialog";
+import { StudentGuardianEditorDialog } from "../dialog/student-guardian-editor.dialog";
 
 
 @Component({
@@ -28,7 +28,7 @@ import { AdmissionApplicationTaskDialog } from "../../term/admission-application
 export class StudentProfileListPage implements OnInit {
 
     private studentContactEditorDialogRef: MdDialogRef<StudentContactEditorDialog>;
-    private studentGuardianCreatorDialogRef: MdDialogRef<GuardianEditorDialog>;
+    private studentGuardianCreatorDialogRef: MdDialogRef<StudentGuardianEditorDialog>;
     private creatorDialogRef: MdDialogRef<AdmissionApplicationTaskDialog>;
     //inputs
 
@@ -151,14 +151,14 @@ export class StudentProfileListPage implements OnInit {
     /*=========================================================================================*/
     //ADD GUARDIAN DIALOG
     addGuardianDialog(): void {
-        console.log('addGuardian');
+        console.log('add Student Guardian');
         let config = new MdDialogConfig();
         config.viewContainerRef = this.vcf;
         config.role = 'dialog';
         config.width = '70%';
         config.height = '80%';
         config.position = { top: '0px' };
-        this.studentGuardianCreatorDialogRef = this.dialog.open(GuardianEditorDialog, config);
+        this.studentGuardianCreatorDialogRef = this.dialog.open(StudentGuardianEditorDialog, config);
         this.studentGuardianCreatorDialogRef.componentInstance.student = this.student;
         this.studentGuardianCreatorDialogRef.afterClosed().subscribe((res) => {
             console.log('close dialog');
@@ -167,13 +167,14 @@ export class StudentProfileListPage implements OnInit {
 
     //EDIT GUARDIAN DIALOG
     editGuardianDialog(guardian: Guardian, isValid: boolean): void {
+        console.log('edit Student Guardian');
         let config = new MdDialogConfig();
         config.viewContainerRef = this.vcf;
         config.role = 'dialog';
         config.width = '70%';
         config.height = '80%';
         config.position = { top: '0px' };
-        this.studentGuardianCreatorDialogRef = this.dialog.open(GuardianEditorDialog, config);
+        this.studentGuardianCreatorDialogRef = this.dialog.open(StudentGuardianEditorDialog, config);
         this.studentGuardianCreatorDialogRef.componentInstance.guardian = guardian;
         this.studentGuardianCreatorDialogRef.componentInstance.student = this.student;
         this.studentGuardianCreatorDialogRef.afterClosed().subscribe((res) => {
@@ -185,8 +186,9 @@ export class StudentProfileListPage implements OnInit {
         console.log(this.student.identityNo);
         this.store.dispatch(this.actions.deleteStudentGuardian(this.student.identityNo, guardian));
     }
-    
-    showDialog(): void {
+
+    //SEMESTER REGISTRATION
+    semesterRegister(): void {
         console.log('showDialog');
         console.log(this.student);
         let config = new MdDialogConfig();
@@ -194,14 +196,14 @@ export class StudentProfileListPage implements OnInit {
         config.role = 'dialog';
         config.width = '60%';
         config.height = '70%';
-        config.position = {top: '0px'};
+        config.position = { top: '0px' };
         this.creatorDialogRef = this.dialog.open(AdmissionApplicationTaskDialog, config);
         this.creatorDialogRef.componentInstance.student = this.student;
         this.creatorDialogRef.afterClosed().subscribe((res) => {
-          console.log('close dialog');
-          // load something here
+            console.log('close dialog');
+            // load something here
         });
-      }
+    }
 
 
 }
