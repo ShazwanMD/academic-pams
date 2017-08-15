@@ -1,3 +1,4 @@
+import { StudentAddressEditorDialog } from './../dialog/student-address-editor.dialog';
 import { StudentContactEditorDialog } from './../dialog/student-contact-editor.dialog';
 import { ProfileActions } from './../../profile/profile.action';
 import { Observable } from 'rxjs/Observable';
@@ -31,6 +32,7 @@ export class StudentProfileListPage implements OnInit {
     private studentContactEditorDialogRef: MdDialogRef<StudentContactEditorDialog>;
     private studentGuardianCreatorDialogRef: MdDialogRef<StudentGuardianEditorDialog>;
     private studentGuarantorCreatorDialogRef: MdDialogRef<StudentGuarantorEditorDialog>;
+    private studentAddressCreatorDialogRef: MdDialogRef<StudentAddressEditorDialog>;
     private creatorDialogRef: MdDialogRef<AdmissionApplicationTaskDialog>;
     //inputs
 
@@ -102,6 +104,49 @@ export class StudentProfileListPage implements OnInit {
         //     let identityNo: string = params.identityNo;
         //     this.store.dispatch(this.profileActions.findStudentByIdentityNo(this.student.identityNo));
         // });
+    }
+
+
+    /*=========================================================================================*/
+    /*ADDRESS*/
+    /*=========================================================================================*/
+    //ADD ADDRESS DIALOG
+    addAddressDialog(): void {
+        console.log('add student address dialog');
+        let config = new MdDialogConfig();
+        config.viewContainerRef = this.vcf;
+        config.role = 'dialog';
+        config.width = '70%';
+        config.height = '80%';
+        config.position = { top: '0px' };
+        this.studentAddressCreatorDialogRef = this.dialog.open(StudentAddressEditorDialog, config);
+        this.studentAddressCreatorDialogRef.componentInstance.student = this.student;
+        this.studentAddressCreatorDialogRef.afterClosed().subscribe((res) => {
+        console.log('close this dialog');
+        });
+    }
+
+    //EDIT ADDRESS DIALOG
+    editAddressDialog(address: Address, isValid: boolean): void {
+        console.log("edit student address dialog");
+        let config = new MdDialogConfig();
+        config.viewContainerRef = this.vcf;
+        config.role = 'dialog';
+        config.width = '70%';
+        config.height = '80%';
+        config.position = { top: '0px' };
+        this.studentAddressCreatorDialogRef = this.dialog.open(StudentAddressEditorDialog, config);
+        this.studentAddressCreatorDialogRef.componentInstance.address = address;
+        this.studentAddressCreatorDialogRef.componentInstance.student = this.student;
+        this.studentAddressCreatorDialogRef.afterClosed().subscribe((res) => {
+        console.log("close dialog");
+        });
+    }
+
+    //DELETE ADDRESS
+    deleteAddress(contact: Contact): void {
+        console.log("delete student address");
+        this.store.dispatch(this.actions.deleteStudentAddress(this.student.identityNo, contact));
     }
 
     /*=========================================================================================*/
@@ -222,7 +267,7 @@ export class StudentProfileListPage implements OnInit {
         this.studentGuarantorCreatorDialogRef.componentInstance.guarantor = guarantor;
         this.studentGuarantorCreatorDialogRef.componentInstance.student = this.student;
         this.studentGuarantorCreatorDialogRef.afterClosed().subscribe((res) => {
-        
+
         });
     }
 
@@ -235,20 +280,20 @@ export class StudentProfileListPage implements OnInit {
     semesterRegister(): void {
         console.log('showDialog');
         console.log(this.student.identityNo);
-        
+
         let config = new MdDialogConfig();
         config.viewContainerRef = this.vcf;
         config.role = 'dialog';
         config.width = '40%';
         config.height = '40%';
-        config.position = {top: '0px'};
+        config.position = { top: '0px' };
         this.creatorDialogRef = this.dialog.open(AdmissionApplicationTaskDialog, config);
         this.creatorDialogRef.componentInstance.student = this.student;
         this.creatorDialogRef.afterClosed().subscribe((res) => {
-          console.log('close dialog');
-          this.router.navigate(['/secure/term/admission-applications/admission-application-center2']);
-          // load something here
+            console.log('close dialog');
+            this.router.navigate(['/secure/term/admission-applications/admission-application-center2']);
+            // load something here
         });
-      }
+    }
 
 }

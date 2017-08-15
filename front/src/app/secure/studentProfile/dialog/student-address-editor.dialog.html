@@ -1,0 +1,61 @@
+<h2 md-dialog-title>Address</h2>
+<md-dialog-content>
+  <form [formGroup]="editorForm">
+    <div layout="row" class="inset" flex>
+      <pams-address-type-select
+        [placeholder]="'Address Type'"
+        [innerFormControl]="editorForm.controls['addressType']">
+      </pams-address-type-select>
+    </div>
+    <div layout="row" class="inset" flex>
+      <md-input-container flex>
+        <input mdInput
+               placeholder="Address 1"
+               formControlName="address1"
+               flex/>
+      </md-input-container>
+    </div>
+    <div layout="row" class="inset" flex>
+      <md-input-container flex>
+        <input mdInput
+               placeholder="Address 2"
+               formControlName="address2"
+               flex/>
+      </md-input-container>
+    </div>
+    <div layout="row" class="inset" flex>
+      <md-input-container flex>
+        <input mdInput
+               placeholder="City"
+               formControlName="address3"
+               flex/>
+      </md-input-container>
+    </div>
+    <div layout="row" class="inset" flex>
+      <md-input-container flex>
+        <input mdInput
+               placeholder="Postcode"
+               formControlName="postcode"
+               flex/>
+      </md-input-container>
+    </div>
+
+    <div layout="row" class="pad-bottom pad-top" flex>
+      <pams-state-code-select
+        [placeholder]="'State'"
+        [innerFormControl]="editorForm.controls.stateCode">
+      </pams-state-code-select>
+    </div>
+    <div layout="row" class="pad-bottom pad-top" flex>
+      <pams-country-code-select
+        [placeholder]="'Country'"
+        [innerFormControl]="editorForm.controls.countryCode">
+      </pams-country-code-select>
+    </div>
+  </form>
+</md-dialog-content>
+<md-dialog-actions align="end">
+  <button md-raised-button color="accent" (click)="submit(editorForm.value, edit)">
+    {{edit ? 'Update' : 'Save'}}
+  </button>
+</md-dialog-actions>
