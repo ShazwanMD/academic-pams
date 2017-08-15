@@ -77,6 +77,24 @@ export class ProfileService {
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
+  /*==================================================================================================*/
+  //STUDENT - GUARANTOR
+  /*==================================================================================================*/
+  addStudentGuarantor(student: Student, guarantor: Guarantor): Observable<String> {
+    return this._http.post(this.PROFILE_API + '/students/guarantors', JSON.stringify(guarantor))
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+  updateStudentGuarantor(student: Student, guarantor: Guarantor): Observable<String> {
+    return this._http.put(this.PROFILE_API + '/students/guarantors/' + guarantor.id, JSON.stringify(guarantor))
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+  deleteStudentGuarantor(student: Student, guarantor: Guarantor) {
+    return this._http.delete(this.PROFILE_API + '/students/guarantors/' + guarantor.id)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
   // ====================================================================================================
   // STUDENT - FINDING
   // ====================================================================================================

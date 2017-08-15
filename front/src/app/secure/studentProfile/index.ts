@@ -1,3 +1,4 @@
+import { StudentGuarantorEditorDialog } from './dialog/student-guarantor-editor.dialog';
 import { StudentGuardianEditorDialog } from './dialog/student-guardian-editor.dialog';
 import { StudentContactEditorDialog } from './dialog/student-contact-editor.dialog';
 import { StudentProfilePage } from './component/student-profile.component';
@@ -95,12 +96,14 @@ export const studentProfileModuleReducers = {
         //Dialog
         StudentContactEditorDialog,
         StudentGuardianEditorDialog,
+        StudentGuarantorEditorDialog,
 
     ],
 
     exports: [
         StudentContactEditorDialog,
         StudentGuardianEditorDialog,
+        StudentGuarantorEditorDialog,
 
     ],
 
@@ -108,6 +111,7 @@ export const studentProfileModuleReducers = {
 
         StudentContactEditorDialog,
         StudentGuardianEditorDialog,
+        StudentGuarantorEditorDialog,
 
     ],
 

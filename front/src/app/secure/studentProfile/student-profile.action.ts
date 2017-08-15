@@ -189,4 +189,61 @@ export class StudentProfileActions {
     };
   }
 
+  /*==================================================================================================*/
+  /*GUARANTOR
+  /*==================================================================================================*/
+  static ADD_STUDENT_GUARANTOR = '[StudentProfile] Add Student Guarantor';
+
+  addStudentGuarantor(student, guarantor): Action {
+    return {
+      type: StudentProfileActions.ADD_STUDENT_GUARANTOR,
+      payload: { student: student, guarantor: guarantor }
+    };
+  }
+
+  static ADD_STUDENT_GUARANTOR_SUCCESS = '[StudentProfile] Add Student Guarantor Success';
+
+  addStudentGuarantorSuccess(message): Action {
+    return {
+      type: StudentProfileActions.ADD_STUDENT_GUARANTOR_SUCCESS,
+      payload: message
+    };
+  }
+
+  static UPDATE_STUDENT_GUARANTOR = '[StudentProfile] Update Student Guarantor';
+
+  updateStudentGuarantor(student, guarantor): Action {
+    return {
+      type: StudentProfileActions.UPDATE_STUDENT_GUARANTOR,
+      payload: { student: student, guarantor: guarantor }
+    };
+  }
+
+  static UPDATE_STUDENT_GUARANTOR_SUCCESS = '[StudentProfile] Update Student Guarantor Success';
+
+  updateStudentGuarantorSuccess(message): Action {
+    return {
+      type: StudentProfileActions.UPDATE_STUDENT_GUARANTOR_SUCCESS,
+      payload: message
+    };
+  }
+
+  static REMOVE_STUDENT_GUARANTOR = '[Profile] Remove Student Guarantor';
+
+  deleteStudentGuarantor(student, guarantor): Action {
+    return {
+      type: StudentProfileActions.REMOVE_STUDENT_GUARANTOR,
+      payload: { student: student, guarantor: guarantor }
+    };
+  }
+
+  static REMOVE_STUDENT_GUARANTOR_SUCCESS = '[Profile] Remove Student Guarantor Success';
+
+  deleteStudentGuarantorSuccess(message): Action {
+    return {
+      type: StudentProfileActions.REMOVE_STUDENT_GUARANTOR_SUCCESS,
+      payload: message
+    };
+  }
+
 }

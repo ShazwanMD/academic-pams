@@ -18,6 +18,7 @@ import { OfferingUpdateDialog } from "../../term/offerings/dialog/offering-updat
 import { AdmissionApplicationTaskCreatorDialog } from "../../term/admission-applications/dialog/admission-application-task-creator.dialog";
 import { AdmissionApplicationTaskDialog } from "../../term/admission-applications/dialog/admission-application-task.dialog";
 import { StudentGuardianEditorDialog } from "../dialog/student-guardian-editor.dialog";
+import { StudentGuarantorEditorDialog } from "../dialog/student-guarantor-editor.dialog";
 
 
 @Component({
@@ -29,6 +30,7 @@ export class StudentProfileListPage implements OnInit {
 
     private studentContactEditorDialogRef: MdDialogRef<StudentContactEditorDialog>;
     private studentGuardianCreatorDialogRef: MdDialogRef<StudentGuardianEditorDialog>;
+    private studentGuarantorCreatorDialogRef: MdDialogRef<StudentGuarantorEditorDialog>;
     private creatorDialogRef: MdDialogRef<AdmissionApplicationTaskDialog>;
     //inputs
 
@@ -185,6 +187,48 @@ export class StudentProfileListPage implements OnInit {
     deleteGuardian(guardian: Guardian): void {
         console.log(this.student.identityNo);
         this.store.dispatch(this.actions.deleteStudentGuardian(this.student.identityNo, guardian));
+    }
+
+
+    /*=========================================================================================*/
+    /*GUARANTOR*/
+    /*=========================================================================================*/
+    //ADD GUARANTOR DIALOG
+    addGuarantorDialog(): void {
+        console.log("add student guarantor");
+        let config = new MdDialogConfig();
+        config.viewContainerRef = this.vcf;
+        config.role = 'dialog';
+        config.width = '70%';
+        config.height = '80%';
+        config.position = { top: '0px' };
+        this.studentGuarantorCreatorDialogRef = this.dialog.open(StudentGuarantorEditorDialog, config);
+        this.studentGuarantorCreatorDialogRef.componentInstance.student = this.student;
+        this.studentGuarantorCreatorDialogRef.afterClosed().subscribe((res) => {
+            //console.log("close dialog");
+        });
+    }
+
+    //EDIT GUARANTOR DIALOG
+    editGuarantorDialog(guarantor: Guarantor, isValid: boolean): void {
+        console.log("edit student guarantor");
+        let config = new MdDialogConfig();
+        config.viewContainerRef = this.vcf;
+        config.role = 'dialog';
+        config.width = '70%';
+        config.height = '80%';
+        config.position = { top: '0px' };
+        this.studentGuarantorCreatorDialogRef = this.dialog.open(StudentGuarantorEditorDialog, config);
+        this.studentGuarantorCreatorDialogRef.componentInstance.guarantor = guarantor;
+        this.studentGuarantorCreatorDialogRef.componentInstance.student = this.student;
+        this.studentGuarantorCreatorDialogRef.afterClosed().subscribe((res) => {
+        
+        });
+    }
+
+    //DELETE GUARANTOR
+    deleteGuarantor(guarantor: Guarantor): void {
+        this.store.dispatch(this.actions.deleteStudentGuarantor(this.student.identityNo, guarantor));
     }
 
     //SEMESTER REGISTRATION

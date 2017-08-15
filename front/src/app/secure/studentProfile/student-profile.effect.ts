@@ -110,6 +110,36 @@ export class StudentProfileEffects {
     .map(state => state[1])
     .map(() => this.studentProfileActions.findStudentByUser());
 
+  /*==================================================================================================*/
+  /*GUARANTOR - EFFECT*/
+  /*==================================================================================================*/
+  @Effect() addStudentGuarantor$ = this.actions$
+    .ofType(StudentProfileActions.ADD_STUDENT_GUARANTOR)
+    .map(action => action.payload)
+    .switchMap(payload => this.profileService.addStudentGuarantor(payload.student, payload.guarantor))
+    .map(message => this.studentProfileActions.addStudentGuarantorSuccess(message))
+    .withLatestFrom(this.store$.select(...this.STUDENT))
+    .map(state => state[1])
+    .map(() => this.studentProfileActions.findStudentByUser());
+
+  @Effect() updateStudentGuarantor$ = this.actions$
+    .ofType(StudentProfileActions.UPDATE_STUDENT_GUARANTOR)
+    .map(action => action.payload)
+    .switchMap(payload => this.profileService.updateStudentGuarantor(payload.student, payload.guarantor))
+    .map(message => this.studentProfileActions.updateStudentGuarantorSuccess(message))
+    .withLatestFrom(this.store$.select(...this.STUDENT))
+    .map(state => state[1])
+    .map(() => this.studentProfileActions.findStudentByUser());
+
+  @Effect() deleteStudentGuarantor$ = this.actions$
+    .ofType(StudentProfileActions.REMOVE_STUDENT_GUARANTOR)
+    .map(action => action.payload)
+    .switchMap(payload => this.profileService.deleteStudentGuarantor(payload.student, payload.guarantor))
+    .map(message => this.studentProfileActions.deleteStudentGuarantorSuccess(message))
+    .withLatestFrom(this.store$.select(...this.STUDENT))
+    .map(state => state[1])
+    .map(() => this.studentProfileActions.findStudentByUser());
+
 
 
 }
