@@ -140,6 +140,35 @@ export class StudentProfileEffects {
     .map(state => state[1])
     .map(() => this.studentProfileActions.findStudentByUser());
 
+  /*==================================================================================================*/
+  /*ADDRESS - EFFECT*/
+  /*==================================================================================================*/
+  @Effect() addStudentAddress$ = this.actions$
+    .ofType(StudentProfileActions.ADD_STUDENT_ADDRESS)
+    .map(action => action.payload)
+    .switchMap(payload => this.profileService.addStudentAddress(payload.student, payload.address))
+    .map(message => this.studentProfileActions.addStudentAddressSuccess(message))
+    .withLatestFrom(this.store$.select(...this.STUDENT))
+    .map(state => state[1])
+    .map(() => this.studentProfileActions.findStudentByUser());
+
+  @Effect() updateStudentAddress$ = this.actions$
+    .ofType(StudentProfileActions.UPDATE_STUDENT_ADDRESS)
+    .map(action => action.payload)
+    .switchMap(payload => this.profileService.updateStudentAddress(payload.student, payload.address))
+    .map(message => this.studentProfileActions.updateStudentAddressSuccess(message))
+    .withLatestFrom(this.store$.select(...this.STUDENT))
+    .map(state => state[1])
+    .map(() => this.studentProfileActions.findStudentByUser());
+
+  @Effect() deleteStudentAddress$ = this.actions$
+    .ofType(StudentProfileActions.REMOVE_STUDENT_ADDRESS)
+    .map(action => action.payload)
+    .switchMap(payload => this.profileService.deleteStudentAddress(payload.student, payload.address))
+    .map(message => this.studentProfileActions.deleteStudentAddressSuccess(message))
+    .withLatestFrom(this.store$.select(...this.STUDENT))
+    .map(state => state[1])
+    .map(() => this.studentProfileActions.findStudentByUser());
 
 
 }

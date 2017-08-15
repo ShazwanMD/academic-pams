@@ -66,6 +66,74 @@ export class StudentProfileActions {
     };
   }
 
+  /*==================================================================================================*/
+  /*ADDRESS
+  /*==================================================================================================*/
+  static ADD_STUDENT_ADDRESS = '[StudentProfile] Add Student Address';
+
+  addStudentAddress(student, address): Action {
+    console.log("add student address");
+    return {
+      type: StudentProfileActions.ADD_STUDENT_ADDRESS,
+      payload: { student: student, address: address }
+    };
+  }
+
+  static ADD_STUDENT_ADDRESS_SUCCESS = '[StudentProfile] Add Student Address Success';
+
+  addStudentAddressSuccess(message): Action {
+    console.log("add student address success");
+    return {
+      type: StudentProfileActions.ADD_STUDENT_ADDRESS_SUCCESS,
+      payload: message
+    };
+  }
+
+  static UPDATE_STUDENT_ADDRESS = '[StudentProfile] Update Student Address';
+
+  updateStudentAddress(student, address): Action {
+    console.log("edit student address");
+    return {
+      type: StudentProfileActions.UPDATE_STUDENT_ADDRESS,
+      payload: { student: student, address: address }
+    };
+  }
+
+  static UPDATE_STUDENT_ADDRESS_SUCCESS = '[StudentProfile] Update Student Address Success';
+
+  updateStudentAddressSuccess(message): Action {
+    console.log("edit student address success");
+    return {
+      type: StudentProfileActions.UPDATE_STUDENT_ADDRESS_SUCCESS,
+      payload: message
+    };
+  }
+
+  static REMOVE_STUDENT_ADDRESS = '[StudentProfile] Remove Student Address';
+
+  deleteStudentAddress(student, address): Action {
+    console.log("delete student address");
+    return {
+      type: StudentProfileActions.REMOVE_STUDENT_ADDRESS,
+      payload: { student: student, address: address }
+    };
+  }
+
+  static REMOVE_STUDENT_ADDRESS_SUCCESS = '[StudentProfile] Remove Student Address Success';
+
+  deleteStudentAddressSuccess(message): Action {
+    console.log("delete student address success");
+    return {
+      type: StudentProfileActions.REMOVE_STUDENT_ADDRESS_SUCCESS,
+      payload: message
+    };
+  }
+
+  /*==================================================================================================*/
+  /*GUARDIAN
+  /*==================================================================================================*/
+
+
   static ADD_STUDENT_CONTACT = '[StudentProfile] Add Student Contact';
 
   addStudentContact(student, contact): Action {
