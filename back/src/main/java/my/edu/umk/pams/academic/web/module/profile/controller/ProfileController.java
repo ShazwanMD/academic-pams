@@ -466,7 +466,7 @@ public class ProfileController {
 	/* ADD GUARANTOR */
 	@RequestMapping(value = "/students/guarantors", method = RequestMethod.POST)
 	public ResponseEntity<String> addStudentGuarantor(@RequestBody Guarantor vo) {
-		//dummyLogin();
+		// dummyLogin();
 
 		AdUser user = securityService.getCurrentUser();
 
@@ -493,7 +493,7 @@ public class ProfileController {
 	/* EDIT GUARANTOR */
 	@RequestMapping(value = "/students/guarantors/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<String> updateStudentGuarantor(@RequestBody Guarantor vo) {
-		//dummyLogin();
+		// dummyLogin();
 		AdUser user = securityService.getCurrentUser();
 
 		AdStudent student = null;
@@ -518,7 +518,7 @@ public class ProfileController {
 	/* DELETE GUARANTOR */
 	@RequestMapping(value = "/students/guarantors/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<String> deleteStudentGuarantor(@PathVariable Long id) {
-		//dummyLogin();
+		// dummyLogin();
 		AdUser user = securityService.getCurrentUser();
 
 		AdStudent student = null;
@@ -532,6 +532,84 @@ public class ProfileController {
 		AdStudent student1 = profileService.findStudentByMatricNo(identityNo);
 		AdGuarantor guarantor = profileService.findGuarantorById(id);
 		profileService.deleteGuarantor(student1, guarantor);
+		return new ResponseEntity<String>("Success", HttpStatus.OK);
+	}
+
+	// ====================================================================================================
+	// STUDENT - ADDRESS
+	// ====================================================================================================
+
+	/* ADD ADDRESS */
+	@RequestMapping(value = "/students/addresses", method = RequestMethod.POST)
+	public ResponseEntity<String> addStudentAddress(@RequestBody Address vo) {
+		// dummyLogin();
+		AdUser user = securityService.getCurrentUser();
+
+		AdStudent student = null;
+
+		if (user.getActor() instanceof AdStudent)
+			student = (AdStudent) user.getActor();
+		if (null == student)
+			throw new IllegalArgumentException("Student does not exists");
+		String identityNo = student.getIdentityNo();
+
+		AdStudent student1 = profileService.findStudentByMatricNo(identityNo);
+		AdAddress address = new AdAddressImpl();
+		address.setAddress1(vo.getAddress1());
+		address.setAddress2(vo.getAddress2());
+		address.setAddress3(vo.getAddress3());
+		address.setPostCode(vo.getPostcode());
+		address.setType(AdAddressType.get(vo.getAddressType().ordinal()));
+		address.setStateCode(commonService.findStateCodeById(vo.getStateCode().getId()));
+		address.setCountryCode(commonService.findCountryCodeById(vo.getCountryCode().getId()));
+		address.setStudent(student1);
+		profileService.addAddress(student1, address);
+		return new ResponseEntity<String>("Success", HttpStatus.OK);
+	}
+
+	/* EDIT ADDRESS */
+	@RequestMapping(value = "/students/addresses/{id}", method = RequestMethod.PUT)
+	public ResponseEntity<String> updateStudentAddress(@RequestBody Address vo) {
+		// dummyLogin();
+		AdUser user = securityService.getCurrentUser();
+
+		AdStudent student = null;
+
+		if (user.getActor() instanceof AdStudent)
+			student = (AdStudent) user.getActor();
+		if (null == student)
+			throw new IllegalArgumentException("Student does not exists");
+		String identityNo = student.getIdentityNo();
+
+		AdStudent student1 = profileService.findStudentByMatricNo(identityNo);
+		AdAddress address = profileService.findAddressById(vo.getId());
+		address.setAddress1(vo.getAddress1());
+		address.setAddress2(vo.getAddress2());
+		address.setAddress3(vo.getAddress3());
+		address.setPostCode(vo.getPostcode());
+		address.setStateCode(commonService.findStateCodeById(vo.getStateCode().getId()));
+		address.setCountryCode(commonService.findCountryCodeById(vo.getCountryCode().getId()));
+		profileService.updateAddress(student1, address);
+		return new ResponseEntity<String>("Success", HttpStatus.OK);
+	}
+
+	/* DELETE ADDRESS */
+	@RequestMapping(value = "/students/addresses/{id}", method = RequestMethod.DELETE)
+	public ResponseEntity<String> deleteStudentAddress(@PathVariable Long id) {
+		// dummyLogin();
+		AdUser user = securityService.getCurrentUser();
+
+		AdStudent student = null;
+
+		if (user.getActor() instanceof AdStudent)
+			student = (AdStudent) user.getActor();
+		if (null == student)
+			throw new IllegalArgumentException("Student does not exists");
+		String identityNo = student.getIdentityNo();
+
+		AdStudent student1 = profileService.findStudentByMatricNo(identityNo);
+		AdAddress address = profileService.findAddressById(id);
+		profileService.deleteAddress(student1, address);
 		return new ResponseEntity<String>("Success", HttpStatus.OK);
 	}
 
