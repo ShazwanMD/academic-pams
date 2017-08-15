@@ -20,6 +20,7 @@ import { AdmissionApplicationTaskCreatorDialog } from "../../term/admission-appl
 import { AdmissionApplicationTaskDialog } from "../../term/admission-applications/dialog/admission-application-task.dialog";
 import { StudentGuardianEditorDialog } from "../dialog/student-guardian-editor.dialog";
 import { StudentGuarantorEditorDialog } from "../dialog/student-guarantor-editor.dialog";
+import { EnrollmentApplicationTaskCreatorDialog } from "../../term/enrollment-applications/dialog/enrollment-application-task-creator.dialog";
 
 
 @Component({
@@ -34,6 +35,7 @@ export class StudentProfileListPage implements OnInit {
     private studentGuarantorCreatorDialogRef: MdDialogRef<StudentGuarantorEditorDialog>;
     private studentAddressCreatorDialogRef: MdDialogRef<StudentAddressEditorDialog>;
     private creatorDialogRef: MdDialogRef<AdmissionApplicationTaskDialog>;
+    private creatorDialogRef2: MdDialogRef<EnrollmentApplicationTaskCreatorDialog>;
     //inputs
 
     @Input() student: Student;
@@ -295,5 +297,21 @@ export class StudentProfileListPage implements OnInit {
             // load something here
         });
     }
+    
+    //COURSE ENROLLMENT
+    courseEnroll(): void {
+        let config = new MdDialogConfig();
+        config.viewContainerRef = this.vcf;
+        config.role = 'dialog';
+        config.width = '70%';
+        config.height = '50%';
+        config.position = {top: '0px'};
+        this.creatorDialogRef2 = this.dialog.open(EnrollmentApplicationTaskCreatorDialog, config);
+        this.creatorDialogRef2.afterClosed().subscribe((res) => {
+          console.log('close dialog');
+          this.router.navigate(['/secure/term/enrollment-applications/student-enrollment-center']);
+          // load something here
+        });
+      }
 
 }
