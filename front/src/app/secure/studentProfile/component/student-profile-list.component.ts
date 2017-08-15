@@ -234,20 +234,21 @@ export class StudentProfileListPage implements OnInit {
     //SEMESTER REGISTRATION
     semesterRegister(): void {
         console.log('showDialog');
-        console.log(this.student);
+        console.log(this.student.identityNo);
+        
         let config = new MdDialogConfig();
         config.viewContainerRef = this.vcf;
         config.role = 'dialog';
-        config.width = '60%';
-        config.height = '70%';
-        config.position = { top: '0px' };
+        config.width = '40%';
+        config.height = '40%';
+        config.position = {top: '0px'};
         this.creatorDialogRef = this.dialog.open(AdmissionApplicationTaskDialog, config);
         this.creatorDialogRef.componentInstance.student = this.student;
         this.creatorDialogRef.afterClosed().subscribe((res) => {
-            console.log('close dialog');
-            // load something here
+          console.log('close dialog');
+          this.router.navigate(['/secure/term/admission-applications/admission-application-center2']);
+          // load something here
         });
-    }
-
+      }
 
 }

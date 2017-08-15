@@ -82,7 +82,7 @@ export class OfferingEditorDialog implements OnInit {
             titleMs: [''],
             titleEn: [''],
             academicSession: [undefined, Validators.required],
-            course: [undefined, Validators.required],
+            //course: [undefined, Validators.required],
             program: [undefined, Validators.required],
             courseCtrl: '',
         } );

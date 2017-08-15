@@ -5,10 +5,10 @@
   </div>
   <td-layout-manage-list #list>
     <md-nav-list list-items>
-      <a md-list-item (click)="createDialog()">
+      <a md-list-item [routerLink]="['/secure']">
         <md-icon>create</md-icon>
-        Apply Semester Registration 
-        </a>
+        My Profile 
+        </a> 
       <md-divider></md-divider>
 
      <!--  <a md-list-item [routerLink]="['/secure/term/offerings/student-offering-center']">
@@ -16,10 +16,10 @@
         Offerings
       </a> -->
 
-      <a md-list-item [routerLink]="['/secure/term/enrollment-applications/student-enrollment-center']">
+    <!--   <a md-list-item [routerLink]="['/secure/term/enrollment-applications/student-enrollment-center']">
         <md-icon>create</md-icon>
         Course Enrollments
-      </a>
+      </a> -->
 
     </md-nav-list>
     <div toolbar-buttons layout="row" layout-align="start center" flex>
@@ -39,10 +39,7 @@
             [admissionApplicationTasks]="assignedAdmissionApplicationTasks$ | async"
             (view)="viewTask($event)"></pams-assigned-admission-application-task-list>
         </md-tab>
-        <!--   <md-tab label="Pooled Applications">
-            <pams-pooled-admission-application-task-list [admissionApplicationTasks]="pooledAdmissionApplicationTasks$ | async" (claim)="claimTask($event)"></pams-pooled-admission-application-task-list>
-          </md-tab> -->
-        <md-tab label="Completed Application">
+          <md-tab label="Approved Status">
           <pams-archived-admission-application-list [admissionApplications]="archivedAdmissionApplications$ | async"
                                                     (view)="viewAdmissionApplication($event)"></pams-archived-admission-application-list>
         </md-tab>

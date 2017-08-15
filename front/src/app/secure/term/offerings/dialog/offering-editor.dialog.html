@@ -10,14 +10,14 @@
         Description should be in number type
       </div>
 
-      <pams-course-select mdTooltip="Please select course"
+       <pams-course-select mdTooltip="Please select course"
                           [placeholder]="'Select Course'"
                           [innerFormControl]="createForm.controls['course']"
                           fxFlex="calc(100%-25px)" class="pad-bottom">
       </pams-course-select>
       <div class="tc-red-600" *ngIf="createForm.get('course').invalid && createForm.get('course').touched">
         Please add your course!
-      </div>
+      </div> 
 
       <pams-program-select mdTooltip="Please select program"
                            [placeholder]="'Select Program'"

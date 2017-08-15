@@ -52,53 +52,18 @@ export class AdmissionApplicationTaskDialog implements OnInit {
     this.store.dispatch(this.actions.findAssignedAdmissionApplicationTasks());
       
     this.createForm = this.formBuilder.group({
-      id: [undefined],
+      
       student: '',
       academicSession: ['', Validators.required],
     });
+    
+    if (this.edit) this.createForm.patchValue(this._student);
   }
   
-
   save(admissionApplication: AdmissionApplication, isValid: boolean): void {
-
-    this._academicSession = admissionApplication.academicSession;
-    this._student = admissionApplication.student;
-    console.log('academicSession: ' + admissionApplication.academicSession.id);
-    console.log('student: ' + admissionApplication.student.id);
-    //console.log(JSON.stringify(admissionApplication));
-
-    // setup description
-    admissionApplication.description = admissionApplication.student.identityNo + ' ' + admissionApplication.academicSession.code;
+    console.log(JSON.stringify(admissionApplication));
     this.store.dispatch(this.actions.startAdmissionApplicationTask(admissionApplication));
-    this.dialog.close();
-    
-    this.assignedAdmissionApplicationTasks$.subscribe( val => console.log( 'Accumulated object admissionApplication$:', val['status'] ) );
-    //window.alert("Alert:" + this.assignedAdmissionApplicationTasks$.subscribe(val => {val['status']}));
-    
-    //start subcribe
-    
-    this.assignedAdmissionApplicationTasks$.subscribe(val => {
-        if(val['status']== 'Duplicate'){
-            
-            let snackBarRef = this.snackBar.open('Duplicate data. Please insert new data', '', {duration:3000});
-            snackBarRef.afterDismissed().subscribe(() => {
-            console.log('The snack-bar was dismissed');
-            console.log('Accumulated object:', val)
-            val['status'] = '';
-           }); 
-            
-        } else {
-            if(val['status']== 'success'){
-            window.alert('Success insert new data:');
-            console.log('Accumulated object:', val)
-            val['status'] = '';
-            }
-        }
-    } 
-  );
-    
-    //end subscribe
-    
-    
+    this.dialog.close(); 
   }
+  
 }
