@@ -362,7 +362,7 @@ public class ProfileController {
 
 	@RequestMapping(value = "/students/contacts", method = RequestMethod.POST)
 	public ResponseEntity<String> addContact(@RequestBody Contact vo) {
-		//dummyLogin();
+		// dummyLogin();
 		AdUser user = securityService.getCurrentUser();
 
 		AdStudent student = null;
@@ -373,7 +373,6 @@ public class ProfileController {
 			throw new IllegalArgumentException("Student does not exists");
 		String identityNo = student.getIdentityNo();
 
-		
 		AdStudent student1 = profileService.findStudentByMatricNo(identityNo);
 		AdContact contact = new AdContactImpl();
 		contact.setIdentityNo(vo.getIdentityNo());
@@ -384,7 +383,7 @@ public class ProfileController {
 		profileService.addContact(student1, contact);
 		return new ResponseEntity<String>("Success", HttpStatus.OK);
 	}
-	
+
 	// ====================================================================================================
 	// GUARDIAN
 	// ====================================================================================================
@@ -392,7 +391,7 @@ public class ProfileController {
 	/* ADD GUARDIAN */
 	@RequestMapping(value = "/students/guardians", method = RequestMethod.POST)
 	public ResponseEntity<String> addStudentGuardian(@RequestBody Guardian vo) {
-		//dummyLogin();
+		// dummyLogin();
 		AdUser user = securityService.getCurrentUser();
 
 		AdStudent student = null;
@@ -403,9 +402,8 @@ public class ProfileController {
 			throw new IllegalArgumentException("Student does not exists");
 		String identityNo = student.getIdentityNo();
 
-		
 		AdStudent student1 = profileService.findStudentByMatricNo(identityNo);
-		
+
 		AdGuardian guardian = new AdGuardianImpl();
 		guardian.setIdentityNo(vo.getIdentityNo());
 		guardian.setName(vo.getName());
@@ -419,7 +417,7 @@ public class ProfileController {
 	/* EDIT GUARDIAN */
 	@RequestMapping(value = "/students/guardians/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<String> updateStudentGuardian(@RequestBody Guardian vo) {
-		//dummyLogin();
+		// dummyLogin();
 		AdUser user = securityService.getCurrentUser();
 
 		AdStudent student = null;
@@ -430,7 +428,6 @@ public class ProfileController {
 			throw new IllegalArgumentException("Student does not exists");
 		String identityNo = student.getIdentityNo();
 
-		
 		AdStudent student1 = profileService.findStudentByMatricNo(identityNo);
 		AdGuardian guardian = profileService.findGuardianById(vo.getId());
 		guardian.setName(vo.getName());
@@ -445,6 +442,57 @@ public class ProfileController {
 	/* DELETE GUARDIAN */
 	@RequestMapping(value = "/students/guardians/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<String> deleteStudentGuardian(@PathVariable Long id) {
+		// dummyLogin();
+		AdUser user = securityService.getCurrentUser();
+
+		AdStudent student = null;
+
+		if (user.getActor() instanceof AdStudent)
+			student = (AdStudent) user.getActor();
+		if (null == student)
+			throw new IllegalArgumentException("Student does not exists");
+		String identityNo = student.getIdentityNo();
+
+		AdStudent student1 = profileService.findStudentByMatricNo(identityNo);
+		AdGuardian guardian = profileService.findGuardianById(id);
+		profileService.deleteGuardian(student1, guardian);
+		return new ResponseEntity<String>("Success", HttpStatus.OK);
+	}
+
+	// ====================================================================================================
+	// GUARANTOR
+	// ====================================================================================================
+
+	/* ADD GUARANTOR */
+	@RequestMapping(value = "/students/guarantors", method = RequestMethod.POST)
+	public ResponseEntity<String> addStudentGuarantor(@RequestBody Guarantor vo) {
+		//dummyLogin();
+
+		AdUser user = securityService.getCurrentUser();
+
+		AdStudent student = null;
+
+		if (user.getActor() instanceof AdStudent)
+			student = (AdStudent) user.getActor();
+		if (null == student)
+			throw new IllegalArgumentException("Student does not exists");
+		String identityNo = student.getIdentityNo();
+
+		AdStudent student1 = profileService.findStudentByMatricNo(identityNo);
+		AdGuarantor guarantor = new AdGuarantorImpl();
+		guarantor.setIdentityNo(vo.getIdentityNo());
+		guarantor.setName(vo.getName());
+		guarantor.setPhone(vo.getPhone());
+		guarantor.setType(AdGuarantorType.get(vo.getGuarantorType().ordinal()));
+		guarantor.setStudent(student1);
+		profileService.addGuarantor(student1, guarantor);
+		LOG.debug("Guarantor:{}", guarantor.getPhone());
+		return new ResponseEntity<String>("Success", HttpStatus.OK);
+	}
+
+	/* EDIT GUARANTOR */
+	@RequestMapping(value = "/students/guarantors/{id}", method = RequestMethod.PUT)
+	public ResponseEntity<String> updateStudentGuarantor(@RequestBody Guarantor vo) {
 		//dummyLogin();
 		AdUser user = securityService.getCurrentUser();
 
@@ -456,10 +504,34 @@ public class ProfileController {
 			throw new IllegalArgumentException("Student does not exists");
 		String identityNo = student.getIdentityNo();
 
-		
 		AdStudent student1 = profileService.findStudentByMatricNo(identityNo);
-		AdGuardian guardian = profileService.findGuardianById(id);
-		profileService.deleteGuardian(student1, guardian);
+		AdGuarantor guarantor = profileService.findGuarantorById(vo.getId());
+		guarantor.setName(vo.getName());
+		guarantor.setIdentityNo(vo.getIdentityNo());
+		guarantor.setPhone(vo.getPhone());
+		guarantor.setType(AdGuarantorType.get(vo.getGuarantorType().ordinal()));
+		guarantor.setStudent(student1);
+		profileService.updateGuarantor(student1, guarantor);
+		return new ResponseEntity<String>("Success", HttpStatus.OK);
+	}
+
+	/* DELETE GUARANTOR */
+	@RequestMapping(value = "/students/guarantors/{id}", method = RequestMethod.DELETE)
+	public ResponseEntity<String> deleteStudentGuarantor(@PathVariable Long id) {
+		//dummyLogin();
+		AdUser user = securityService.getCurrentUser();
+
+		AdStudent student = null;
+
+		if (user.getActor() instanceof AdStudent)
+			student = (AdStudent) user.getActor();
+		if (null == student)
+			throw new IllegalArgumentException("Student does not exists");
+		String identityNo = student.getIdentityNo();
+
+		AdStudent student1 = profileService.findStudentByMatricNo(identityNo);
+		AdGuarantor guarantor = profileService.findGuarantorById(id);
+		profileService.deleteGuarantor(student1, guarantor);
 		return new ResponseEntity<String>("Success", HttpStatus.OK);
 	}
 
