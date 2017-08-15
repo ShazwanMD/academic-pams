@@ -1,7 +1,7 @@
 
   <md-card-content>
   <a md-raised-button layout-align="start center" (click)="showDialog()" color="accent"  class="text-upper" mdTooltip="Apply semester registration" ><!-- [routerLink]="['/secure/term/admission-applications/admission-application-center2/', student.identityNo]" -->
-        <span>Admission {{student.identityNo}}</span>
+        <span>Semester Registration</span>
       </a>
        <a md-raised-button disabled layout-align="start center" color="accent" class="text-upper" mdTooltip="View offerings info" mdTooltip="Apply course enrollment">
         <span>Course Enrollment</span>
@@ -16,7 +16,6 @@
 
           <div flex-gt-md="40">
             <b>Student ID</b> : {{student.identityNo}}<br/><br/>
-
             <b>Name</b> : {{student.name}}<br/><br/>
             <b>Email</b> : {{student.email}}<br/><br/>
             <b>Phone</b> : {{student.phone}}<br/><br/>

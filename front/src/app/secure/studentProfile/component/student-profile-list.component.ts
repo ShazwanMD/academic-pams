@@ -17,6 +17,7 @@ import { Contact } from "../../../shared/model/profile/contact.interface";
 import { Enrollment } from "../../../shared/model/term/enrollment.interface";
 import { OfferingUpdateDialog } from "../../term/offerings/dialog/offering-update.dialog";
 import { AdmissionApplicationTaskCreatorDialog } from "../../term/admission-applications/dialog/admission-application-task-creator.dialog";
+import { AdmissionApplicationTaskDialog } from "../../term/admission-applications/dialog/admission-application-task.dialog";
 
 
 @Component({
@@ -28,7 +29,7 @@ export class StudentProfileListPage implements OnInit {
 
     private studentContactEditorDialogRef: MdDialogRef<StudentContactEditorDialog>;
     private studentGuardianCreatorDialogRef: MdDialogRef<GuardianEditorDialog>;
-    private creatorDialogRef: MdDialogRef<AdmissionApplicationTaskCreatorDialog>;
+    private creatorDialogRef: MdDialogRef<AdmissionApplicationTaskDialog>;
     //inputs
 
     @Input() student: Student;
@@ -193,7 +194,7 @@ export class StudentProfileListPage implements OnInit {
         config.width = '60%';
         config.height = '70%';
         config.position = {top: '0px'};
-        this.creatorDialogRef = this.dialog.open(AdmissionApplicationTaskCreatorDialog, config);
+        this.creatorDialogRef = this.dialog.open(AdmissionApplicationTaskDialog, config);
         this.creatorDialogRef.componentInstance.student = this.student;
         this.creatorDialogRef.afterClosed().subscribe((res) => {
           console.log('close dialog');

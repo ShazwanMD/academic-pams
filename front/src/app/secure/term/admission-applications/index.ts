@@ -36,6 +36,7 @@ import {AdmissionApplicationDetailPage} from './admission-application-detail.pag
 import {StudentAdmissionApplicationDetailPage} from './student-admission-application-detail.page';
 import {StudentAdmissionApplicationCenterPage} from './admission-application-center2.page';
 import {StudentAdmissionApplicationActionComponent} from './component/student-admission-application-action.component';
+import { AdmissionApplicationTaskDialog } from "./dialog/admission-application-task.dialog";
 
 @NgModule({
   imports: [
@@ -81,6 +82,7 @@ import {StudentAdmissionApplicationActionComponent} from './component/student-ad
     // dialog
     AdmissionApplicationTaskCreatorDialog,
     AdmissionApplicationTaskEditorDialog,
+    AdmissionApplicationTaskDialog,
   ],
 
   exports: [
@@ -98,6 +100,7 @@ import {StudentAdmissionApplicationActionComponent} from './component/student-ad
 
   entryComponents: [
     AdmissionApplicationTaskCreatorDialog,
+    AdmissionApplicationTaskDialog,
     AdmissionApplicationTaskEditorDialog,
     AdmissionApplicationDraftTaskPanel,
     StudentAdmissionApplicationDraftTaskPanel,
