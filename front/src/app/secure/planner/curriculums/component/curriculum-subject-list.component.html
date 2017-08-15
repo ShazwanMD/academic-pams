@@ -30,7 +30,12 @@
   [sortable]="true"
   [sortBy]="sortBy"
   [sortOrder]="sortOrder"
+  [selectable]="true"
+  [(ngModel)]="selectedRows"
+  (rowSelect)="selectRow($event)"
+  (selectAll)="selectAllRows($event)"
   (sortChange)="sort($event)">
+  
      <template tdDataTableTemplate="parts" let-value="value" let-row="row" let-column="columns.parts">
         <div layout="row">
           <span *ngIf="row.type=='bundle'" flex> </span>
