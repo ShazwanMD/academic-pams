@@ -1,24 +1,4 @@
-<td-layout-manage-list #list>
- <md-nav-list list-items>
-      <a md-list-item (click)="admission()">
-        <md-icon>create</md-icon>
-        My Profile
-      </a>
-      <md-divider></md-divider>
-     <!--   <a md-list-item [routerLink]="['/secure/term/admission-applications/admission-application-center2']">
-        <md-icon>create</md-icon>
-        Semester Registration
-      </a>
-       <a md-list-item [routerLink]="['/secure/term/enrollment-applications/student-enrollment-center']">
-        <md-icon>create</md-icon>
-        Course Enrollment
-      </a> -->
-    </md-nav-list>
-        <div toolbar-buttons layout="row" layout-align="start center" flex>
-      <span flex>Student Personal Info</span>
-    </div>
 
-  <md-card class="">
 
     <pams-student-profile-list 
     [student]="student$ | async" 
@@ -29,7 +9,5 @@
     [enrollments]="enrollments$ | async">
     </pams-student-profile-list>
 
-    <md-divider></md-divider>
-  </md-card>
-</td-layout-manage-list>
+
 

@@ -188,6 +188,7 @@ export class StudentProfileListPage implements OnInit {
     
     showDialog(): void {
         console.log('showDialog');
+        console.log(this.student);
         let config = new MdDialogConfig();
         config.viewContainerRef = this.vcf;
         config.role = 'dialog';

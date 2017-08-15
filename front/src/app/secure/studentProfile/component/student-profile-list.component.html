@@ -1,11 +1,18 @@
-
-  <md-card-content>
-  <a md-raised-button layout-align="start center" (click)="showDialog()" color="accent"  class="text-upper" mdTooltip="Apply semester registration" ><!-- [routerLink]="['/secure/term/admission-applications/admission-application-center2/', student.identityNo]" -->
-        <span>Semester Registration</span>
+<td-layout-manage-list #list>
+ <md-nav-list list-items>
+        <a md-list-item (click)="showDialog()" color="accent"  class="text-upper" mdTooltip="Apply semester registration" ><!-- [routerLink]="['/secure/term/admission-applications/admission-application-center2/', student.identityNo]" -->
+         <md-icon>create</md-icon>
+         <span>Semester Registration</span>
       </a>
-       <a md-raised-button disabled layout-align="start center" color="accent" class="text-upper" mdTooltip="View offerings info" mdTooltip="Apply course enrollment">
+       <a md-list-item color="accent" class="text-upper" mdTooltip="View offerings info" mdTooltip="Apply course enrollment">
+          <md-icon>create</md-icon>
         <span>Course Enrollment</span>
       </a>
+      <md-divider></md-divider>
+    </md-nav-list>
+    <md-card class="">
+  <md-card-content>
+
     <md-tab-group>
       <md-tab label="Student Personal Information">
         <div layout="column" layout-gt-md="row" class="insert">
@@ -225,3 +232,5 @@
       </md-tab>
     </md-tab-group>
   </md-card-content>
+    </md-card>
+  </td-layout-manage-list>

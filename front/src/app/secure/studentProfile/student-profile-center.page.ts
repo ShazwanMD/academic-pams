@@ -1,10 +1,11 @@
+import { MdDialogRef, MdDialogConfig, MdDialog } from '@angular/material';
 import { Contact } from './../../shared/model/profile/contact.interface';
 import { Guardian } from './../../shared/model/profile/guardian.interface';
 import { Guarantor } from './../../shared/model/profile/guarantor.interface';
 import { ProfileActions } from './../profile/profile.action';
 import { StudentProfileModuleState } from './index';
 import { StudentProfileActions } from './student-profile.action';
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output, ViewContainerRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { Store } from '@ngrx/store';
@@ -13,6 +14,7 @@ import { Observable } from 'rxjs';
 import { Student } from '../../shared/model/identity/student.interface';
 import { Address } from "../../shared/model/profile/address.interface";
 import { Enrollment } from "../../shared/model/term/enrollment.interface";
+import { FormBuilder } from "@angular/forms";
 
 @Component({
   selector: 'pams-student-profile-center',
@@ -20,6 +22,7 @@ import { Enrollment } from "../../shared/model/term/enrollment.interface";
 })
 
 export class StudentProfileCenterPage implements OnInit {
+
 
   @Input() student: Student;
   @Input() addressess: Address[];
@@ -40,13 +43,16 @@ export class StudentProfileCenterPage implements OnInit {
   private contacts$: Observable<Contact>;
   private enrollments$: Observable<Enrollment>;
 
-
+  private _student: Student;
   constructor(private router: Router,
     private route: ActivatedRoute,
     private actions: StudentProfileActions,
     private profileActions: ProfileActions,
+    private dialog: MdDialog,
+    private vcf: ViewContainerRef,
+    private formBuilder: FormBuilder,
     private store: Store<StudentProfileModuleState>) {
-      
+
     this.students$ = this.store.select(...this.STUDENTS);
     this.student$ = this.store.select(...this.STUDENT);
     this.addressess$ = this.store.select(...this.ADDRESSES);
@@ -70,11 +76,6 @@ export class StudentProfileCenterPage implements OnInit {
 
 
 
-  }
-
-    admission(): void {
-    
-    
   }
 }
 
