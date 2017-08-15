@@ -40,17 +40,17 @@
         [studentEnrollmentApplicationTasks]="studentEnrollmentApplicationTasks$ | async"
         (view)="viewTask($event)" mdTooltip="View enrollment info"></pams-student-enrollment-list>
     </md-card>
-    <md-card>
+    <!-- <md-card>
       <md-card-title>Curriculum</md-card-title>
-      <!-- <md-card-subtitle> SESSION 201720181
-      </md-card-subtitle> -->
+      <md-card-subtitle> SESSION 201720181
+      </md-card-subtitle>
       <md-divider></md-divider>
-      <!-- <td-search-box class="push-left push-right"
+      <td-search-box class="push-left push-right"
                           placeholder="search"
                           [alwaysVisible]="true"
                           >(searchDebounce)="filter($event)"
-           </td-search-box> -->
-      <md-card-content> <!--Tab Section Here-->
+           </td-search-box>
+      <md-card-content> Tab Section Here
         <md-tab-group>
           <md-tab label="Semester 1"><br>
             <pams-student-offering-list
@@ -78,16 +78,16 @@
           </md-tab>
 
 
-          <!-- <md-tab label="Semester 4"> <br>
+          <md-tab label="Semester 4"> <br>
 
           <md-card>
           <md-divider></md-divider> <md-card-content>
            <pams-student-offering-list
                   [offerings]="offerings$ | async" (view)="viewOffering($event)"></pams-student-offering-list>
           </md-card-content> </md-card>
-          </md-tab> -->
+          </md-tab>
         </md-tab-group>
       </md-card-content>
-    </md-card>
+    </md-card> -->
   </td-layout-manage-list>
 </td-layout-nav>

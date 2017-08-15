@@ -1,0 +1,40 @@
+<h2 md-dialog-title>Create New Enrollment Application </h2>
+<md-dialog-content>
+  <form [formGroup]="createForm" novalidate>
+  Name: {{_student.name}}
+    <div fxLayout fxLayout.xs="column" fxLayoutWrap fxLayoutGap="25px">
+
+      <md-input-container fxFlex="calc(100%-25px)">
+        <input mdInput placeholder="description" formControlName="description" value="Description"/>
+      </md-input-container>
+      <div class="tc-red-600" *ngIf="createForm.get('description').invalid && createForm.get('description').touched">
+        <font size="3" color="red">Pleasae insert description should be at least {{minLength}} characters!</font>
+      </div>
+      <pams-admission-select
+        [placeholder]="'Select Student'"
+        [innerFormControl]="createForm.controls.admission" fxFlex="calc(100%-25px)" class="pad-bottom">
+      </pams-admission-select>
+      <div class="tc-red-600" *ngIf="createForm.get('admission').invalid && createForm.get('admission').touched">
+        Please add your admission!
+      </div>
+
+      <pams-academic-session-select
+        [placeholder]="'Select Session'"
+        [innerFormControl]="createForm.controls.academicSession" fxFlex="calc(100%-25px)" class="pad-bottom">
+      </pams-academic-session-select>
+      <div class="tc-red-600"
+           *ngIf="createForm.get('academicSession').invalid && createForm.get('academicSession').touched">
+        Please add your academic Session!
+      </div>
+    </div>
+  </form>
+</md-dialog-content>
+<md-dialog-actions align="end">
+  <button md-raised-button color="accent" [disabled]="createForm.invalid" (click)="save(createForm.value)"> {{edit ?
+     'Submit Application'  : 'Save'}}
+  </button>
+  <!-- <button md-raised-button color="accent"
+          (click)="save(createForm.value, createForm.valid)">Save
+  </button> -->
+</md-dialog-actions>
+

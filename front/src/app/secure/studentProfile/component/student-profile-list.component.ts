@@ -21,6 +21,7 @@ import { AdmissionApplicationTaskDialog } from "../../term/admission-application
 import { StudentGuardianEditorDialog } from "../dialog/student-guardian-editor.dialog";
 import { StudentGuarantorEditorDialog } from "../dialog/student-guarantor-editor.dialog";
 import { EnrollmentApplicationTaskCreatorDialog } from "../../term/enrollment-applications/dialog/enrollment-application-task-creator.dialog";
+import { EnrollmentApplicationTaskDialog } from "../../term/enrollment-applications/dialog/enrollment-application-task.dialog";
 
 
 @Component({
@@ -35,7 +36,7 @@ export class StudentProfileListPage implements OnInit {
     private studentGuarantorCreatorDialogRef: MdDialogRef<StudentGuarantorEditorDialog>;
     private studentAddressCreatorDialogRef: MdDialogRef<StudentAddressEditorDialog>;
     private creatorDialogRef: MdDialogRef<AdmissionApplicationTaskDialog>;
-    private creatorDialogRef2: MdDialogRef<EnrollmentApplicationTaskCreatorDialog>;
+    private creatorDialogRef2: MdDialogRef<EnrollmentApplicationTaskDialog>;
     //inputs
 
     @Input() student: Student;
@@ -281,22 +282,19 @@ export class StudentProfileListPage implements OnInit {
     //SEMESTER REGISTRATION
     semesterRegister(): void {
         console.log('showDialog');
-        console.log(this.student.identityNo);
-
         let config = new MdDialogConfig();
         config.viewContainerRef = this.vcf;
         config.role = 'dialog';
-        config.width = '40%';
+        config.width = '60%';
         config.height = '40%';
-        config.position = { top: '0px' };
+        config.position = {top: '0px'};
         this.creatorDialogRef = this.dialog.open(AdmissionApplicationTaskDialog, config);
         this.creatorDialogRef.componentInstance.student = this.student;
         this.creatorDialogRef.afterClosed().subscribe((res) => {
             console.log('close dialog');
-            this.router.navigate(['/secure/term/admission-applications/admission-application-center2']);
-            // load something here
+          // load something here
         });
-    }
+      }
     
     //COURSE ENROLLMENT
     courseEnroll(): void {
@@ -306,10 +304,11 @@ export class StudentProfileListPage implements OnInit {
         config.width = '70%';
         config.height = '50%';
         config.position = {top: '0px'};
-        this.creatorDialogRef2 = this.dialog.open(EnrollmentApplicationTaskCreatorDialog, config);
+        this.creatorDialogRef2 = this.dialog.open(EnrollmentApplicationTaskDialog, config);
+        this.creatorDialogRef2.componentInstance.student = this.student;
         this.creatorDialogRef2.afterClosed().subscribe((res) => {
           console.log('close dialog');
-          this.router.navigate(['/secure/term/enrollment-applications/student-enrollment-center']);
+          
           // load something here
         });
       }

@@ -52,18 +52,26 @@ export class AdmissionApplicationTaskDialog implements OnInit {
     this.store.dispatch(this.actions.findAssignedAdmissionApplicationTasks());
       
     this.createForm = this.formBuilder.group({
-      
-      student: '',
+      id: [undefined],
+      student: ['', Validators.required],
       academicSession: ['', Validators.required],
     });
-    
-    if (this.edit) this.createForm.patchValue(this._student);
   }
   
+
   save(admissionApplication: AdmissionApplication, isValid: boolean): void {
-    console.log(JSON.stringify(admissionApplication));
+
+    this._academicSession = admissionApplication.academicSession;
+    this._student = admissionApplication.student;
+    console.log('academicSession: ' + admissionApplication.academicSession.id);
+    console.log('student: ' + admissionApplication.student.id);
+    //console.log(JSON.stringify(admissionApplication));
+
+    // setup description
+    admissionApplication.description = admissionApplication.student.identityNo + ' ' + admissionApplication.academicSession.code;
     this.store.dispatch(this.actions.startAdmissionApplicationTask(admissionApplication));
-    this.dialog.close(); 
+    this.dialog.close();
+    this.router.navigate(['/secure/term/admission-applications/admission-application-center2']);
+    
   }
-  
 }
