@@ -30,7 +30,7 @@ export class GraduationApplicationTaskDetailPage implements OnInit {
   }
 
   goBack(): void {
-    this.router.navigate(['/secure/graduation/graduationApplications']);
+    this.router.navigate(['/secure/graduation/graduation-Applications']);
   }
 }
 
