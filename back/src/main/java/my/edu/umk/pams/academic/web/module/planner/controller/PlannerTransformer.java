@@ -165,6 +165,7 @@ public class PlannerTransformer {
             ((SingleSubject) vo).setCourse(toCourseVo(((AdSingleSubject) subject).getCourse()));
         } else if (subject instanceof AdBundleSubject) {
             vo = new BundleSubject();
+            vo.setSubjectElectiveStatus(SubjectElectiveStatus.get(((AdBundleSubject) subject).getSubjectElectiveStatus().ordinal()));
             List<AdBundleSubjectPart> parts = ((AdBundleSubject) subject).getParts();
             for (AdBundleSubjectPart part : parts) {
                 BundleSubjectPart partVo = new BundleSubjectPart();

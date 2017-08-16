@@ -619,8 +619,6 @@ public class PlannerController {
 	public ResponseEntity<List<Subject>> findBundleSubjectsByCurriculum(@PathVariable String code)
 			throws UnsupportedEncodingException {
 		AdCurriculum curriculum = plannerService.findCurriculumByCode(code);
-		AdSubject subject = plannerService.findSubjects();
-		List<AdBundleSubject> bundleSubjects = plannerService.findBundleSubjects(curriculum, subject);
 		List<AdSubject> subjects = plannerService.findSubjects(curriculum);
 		return new ResponseEntity<List<Subject>>(plannerTransformer.toSubjectVos(subjects), HttpStatus.OK);
 
@@ -669,6 +667,7 @@ public class PlannerController {
 		// bundleSubject.setSubjectType(AdSubjectType.ELECTIVE);
 		bundleSubject.setSubjectType(AdSubjectType.get(vo.getSubjectType().ordinal()));
 		bundleSubject.setOrdinal(vo.getOrdinal());
+		bundleSubject.setSubjectElectiveStatus(AdSubjectElectiveStatus.get(vo.getSubjectElectiveStatus().ordinal()));
 		plannerService.addSubject(curriculum, bundleSubject);
 		return new ResponseEntity<String>("Success", HttpStatus.OK);
 	}

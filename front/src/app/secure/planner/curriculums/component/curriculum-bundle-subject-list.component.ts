@@ -42,6 +42,7 @@ export class CurriculumBundleSubjectListComponent implements OnInit, OnChanges {
    // { name: 'id', label: 'Id' },
     { name: 'ordinal', label: 'Semester' },
     { name: 'subjectType', label: 'Type' },
+    { name: 'subjectElectiveStatus', label: 'Status' },
     // { name: 'course.code', label: 'Course' },
     // { name: 'course.credit', label: 'Credit' },
     // {name: 'parts', label: 'Parts'},
@@ -71,6 +72,7 @@ export class CurriculumBundleSubjectListComponent implements OnInit, OnChanges {
       this.subjects.forEach((s: Subject) => {
         console.log('subject: ' + s.type);
         console.log('subject: ' + s.ordinal);
+        console.log('subject: ' + s.subjectElectiveStatus);
 
         if (s.type === 'single') {
           console.log('single subject: ' + s.ordinal);

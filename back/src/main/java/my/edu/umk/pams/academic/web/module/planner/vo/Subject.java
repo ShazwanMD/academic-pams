@@ -18,6 +18,7 @@ public class Subject extends MetaObject {
     private Integer ordinal;
     private SubjectType subjectType;
     private Curriculum curriculum;
+    private SubjectElectiveStatus subjectElectiveStatus;
     
     public Integer getOrdinal() {
         return ordinal;
@@ -43,8 +44,14 @@ public class Subject extends MetaObject {
 	public void setCurriculum(Curriculum curriculum) {
 		this.curriculum = curriculum;
 	}
-    
-    
+
+	public SubjectElectiveStatus getSubjectElectiveStatus() {
+		return subjectElectiveStatus;
+	}
+
+	public void setSubjectElectiveStatus(SubjectElectiveStatus subjectElectiveStatus) {
+		this.subjectElectiveStatus = subjectElectiveStatus;
+	}
    
 }
    
