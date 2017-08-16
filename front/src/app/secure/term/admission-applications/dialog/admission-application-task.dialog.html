@@ -1,29 +1,38 @@
 <h2 md-dialog-title>Application For Semester Registration</h2>
-<md-dialog-content>
+<md-dialog-content> <!-- Current AcademicSession: {{_academicSession.id}} -->
   <form [formGroup]="createForm" novalidate>
     <div fxLayout fxLayout.xs="column" fxLayoutWrap fxLayoutGap="25px">
-    Name: {{_student.name}}
- <pams-student-select
-        [placeholder]="'Select Student'"
-        [innerFormControl]="createForm.controls.student" fxFlex="calc(100%-25px)" class="pad-bottom">
-      </pams-student-select>
-      <div class="tc-red-600" *ngIf="createForm.get('student').invalid && createForm.get('student').touched">
-        Please add your student!
-      </div> 
+       <table style="height: 84px;" width="544">
+<tbody>
+<tr>
+<td>Name</td>
+<td>:</td>
+<td>{{_student.name}}</td>
+</tr>
+<tr>
+<td> Identity No</td>
+<td>:</td>
+<td>{{_student.identityNo}}</td>
+</tr>
+</tbody>
+</table>
       <pams-academic-session-select
         [placeholder]="'Select Session'"
         [innerFormControl]="createForm.controls.academicSession" fxFlex="calc(100%-25px)" class="pad-bottom">
       </pams-academic-session-select>
       <div class="tc-red-600"
            *ngIf="createForm.get('academicSession').invalid && createForm.get('academicSession').touched">
-        Please add your academic Session!
+        Please choose academic Session
       </div>
     </div>
   </form>
 </md-dialog-content>
 <md-dialog-actions align="end">
-  <button md-raised-button color="accent" [disabled]="createForm.invalid" (click)="save(createForm.value)"> {{edit ?
+ <!--  <button md-raised-button color="accent" [disabled]="createForm.invalid" (click)="save(createForm.value)"> {{edit ?
     'Submit Application' : 'Save'}}
+  </button> -->
+   <button md-raised-button color="accent" [disabled]="createForm.invalid" (click)="save(createForm.value, createForm.valid)">
+    {{edit ? 'Submit Application' : 'Save'}}
   </button>
 </md-dialog-actions>
 

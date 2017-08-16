@@ -65,16 +65,16 @@ export class StudentProfileCenterPage implements OnInit {
   goBack(route: string): void {
     this.router.navigate(['/studentProfiles']);
   }
+  
   viewDetail(student: Student) {
     console.log('profile: ' + student.identityNo);
     // this.router.navigate(['/profiles-detail', student.identityNo]);
   }
+  
   ngOnInit(): void {
     console.log("find Student Profile");
     this.store.dispatch(this.actions.findStudentByUser());
     //this.actions.findStudentByIdentityNo(student.identityNo);
-
-
 
   }
 }
