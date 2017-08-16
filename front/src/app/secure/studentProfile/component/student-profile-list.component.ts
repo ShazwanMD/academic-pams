@@ -1,3 +1,4 @@
+import { StudentDetailEditorDialog } from './../dialog/student-detail-editor.dialog';
 import { StudentAddressEditorDialog } from './../dialog/student-address-editor.dialog';
 import { StudentContactEditorDialog } from './../dialog/student-contact-editor.dialog';
 import { ProfileActions } from './../../profile/profile.action';
@@ -31,6 +32,7 @@ import { EnrollmentApplicationTaskDialog } from "../../term/enrollment-applicati
 })
 export class StudentProfileListPage implements OnInit {
 
+    private studentDialogRef: MdDialogRef<StudentDetailEditorDialog>;
     private studentContactEditorDialogRef: MdDialogRef<StudentContactEditorDialog>;
     private studentGuardianCreatorDialogRef: MdDialogRef<StudentGuardianEditorDialog>;
     private studentGuarantorCreatorDialogRef: MdDialogRef<StudentGuarantorEditorDialog>;
@@ -109,6 +111,29 @@ export class StudentProfileListPage implements OnInit {
         // });
     }
 
+    /*=========================================================================================*/
+    /*STUDENT INFORMATION*/
+    /*=========================================================================================*/
+
+    editStudent(): void {
+        this.showDialog(this.student);
+    }
+
+    private showDialog(student: Student): void {
+        console.log('edit student detail');
+        let config = new MdDialogConfig();
+        config.viewContainerRef = this.vcf;
+        config.role = 'dialog';
+        config.width = '70%';
+        config.height = '50%';
+        config.position = { top: '0px' };
+        this.studentDialogRef = this.dialog.open(StudentDetailEditorDialog, config);
+        this.studentDialogRef.componentInstance.student = this.student; // set
+        this.studentDialogRef.afterClosed().subscribe((res) => {
+            console.log('close dialog');
+        });
+    }
+
 
     /*=========================================================================================*/
     /*ADDRESS*/
@@ -125,7 +150,7 @@ export class StudentProfileListPage implements OnInit {
         this.studentAddressCreatorDialogRef = this.dialog.open(StudentAddressEditorDialog, config);
         this.studentAddressCreatorDialogRef.componentInstance.student = this.student;
         this.studentAddressCreatorDialogRef.afterClosed().subscribe((res) => {
-        console.log('close this dialog');
+            console.log('close this dialog');
         });
     }
 
@@ -142,7 +167,7 @@ export class StudentProfileListPage implements OnInit {
         this.studentAddressCreatorDialogRef.componentInstance.address = address;
         this.studentAddressCreatorDialogRef.componentInstance.student = this.student;
         this.studentAddressCreatorDialogRef.afterClosed().subscribe((res) => {
-        console.log("close dialog");
+            console.log("close dialog");
         });
     }
 
