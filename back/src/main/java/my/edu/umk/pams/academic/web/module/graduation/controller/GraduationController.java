@@ -4,6 +4,7 @@ import my.edu.umk.pams.academic.graduation.model.AdGraduationApplication;
 import my.edu.umk.pams.academic.graduation.model.AdGraduationApplicationImpl;
 import my.edu.umk.pams.academic.graduation.service.GraduationService;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
+import my.edu.umk.pams.academic.identity.model.AdStudentStatus;
 import my.edu.umk.pams.academic.identity.service.IdentityService;
 import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
@@ -128,6 +129,10 @@ public class GraduationController {
         dummyLogin();
         Task task = graduationService.findGraduationApplicationTaskByTaskId(vo.getTaskId());
         workflowService.completeTask(task);
+        
+        AdStudent student = profileService.findStudentByMatricNo(vo.getStudent().getIdentityNo());
+        student.setStudentStatus(AdStudentStatus.GRADUATED);
+        profileService.updateStudent(student);
     }
 
     // ====================================================================================================
