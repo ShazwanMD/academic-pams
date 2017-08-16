@@ -612,6 +612,38 @@ public class ProfileController {
 		profileService.deleteAddress(student1, address);
 		return new ResponseEntity<String>("Success", HttpStatus.OK);
 	}
+	
+	@RequestMapping(value = "/student", method = RequestMethod.PUT)
+	public ResponseEntity<String> updateStudentDetail(@RequestBody Student vo) {
+		//dummyLogin();
+		AdUser user = securityService.getCurrentUser();
+
+		AdStudent student = null;
+
+		if (user.getActor() instanceof AdStudent)
+			student = (AdStudent) user.getActor();
+		if (null == student)
+			throw new IllegalArgumentException("Student does not exists");
+		String identityNo = student.getIdentityNo();
+
+		AdStudent student1 = profileService.findStudentByMatricNo(identityNo);
+		//AdStudent studentById = profileService.findStudentById(vo.getId());
+		student1.setName(vo.getName());
+		student1.setPhone(vo.getPhone());
+		student1.setEmail(vo.getEmail());
+		student1.setMobile(vo.getMobile());
+		student1.setFax(vo.getFax());
+		student1.setStudyMode(commonService.findStudyModeById(vo.getStudyMode().getId()));
+		student1.setCohort(plannerService.findCohortById(vo.getCohort().getId()));
+		student1.setStudentStatus(AdStudentStatus.get(vo.getStudentStatus().ordinal()));
+		student1.setMemo(vo.getMemo());
+		profileService.updateStudent(student1);
+		LOG.debug("StudyMode:{}", student1.getStudyMode().getDescription());
+		LOG.debug("Cohort Student Baru:{}", student1.getCohort().getCode());
+		LOG.debug("StudentStatus:{}", student1.getStudentStatus().name());
+		return new ResponseEntity<String>("Success", HttpStatus.OK);
+
+	}
 
 	// ====================================================================================================
 	// PROFILE

@@ -15,224 +15,231 @@
   <md-card class="">
     <md-card-content>
 
-    <md-tab-group>
-      <md-tab label="Student Personal Information">
-        <div layout="column" layout-gt-md="row" class="insert">
-          <div flex-gt-md="20">
-            <img src="http://localhost:4200/assets/ico/student/{{student.identityNo}}.jpg" width="120" height="150">
+      <md-tab-group>
+        <md-tab label="Student Personal Information">
+          <div layout="column" layout-gt-md="row" class="insert">
+            <div flex-gt-md="20">
+              <img src="http://localhost:4200/assets/ico/student/{{student.identityNo}}.jpg" width="120" height="150">
+            </div>
+
+
+            <div flex-gt-md="35">
+              <b>Student ID</b> : {{student.identityNo}}<br/><br/>
+              <b>Name</b> : {{student.name}}<br/><br/>
+              <b>Email</b> : {{student.email}}<br/><br/>
+              <b>Phone</b> : {{student.phone}}<br/><br/>
+              <b>Mobile</b> : {{student.mobile}}
+            </div>
+
+            <div flex-gt-md="40">
+              <b>Status</b> : {{student.studentStatus}}<br/><br/>
+              <b>Study Mode</b> : {{student.studyMode?.description}}<br/><br/>
+
+              <b>Program</b> : {{student.cohort?.program?.titleMs | uppercase}}<br/><br/>
+              <b>Faculty</b> : {{student.cohort?.program?.faculty?.description}}<br/><br/>
+              <b>Current Semester</b> : {{student.cohort?.academicSession.semester}}<br/><br/>
+            </div>
+            <div flex-gt-md="5">
+              <button md-icon-button [md-menu-trigger-for]="menu1">
+                  <md-icon>edit</md-icon>
+                </button>
+              <md-menu x-position="before" #menu1="mdMenu" mdTooltip="Select student info actions">
+                <button md-menu-item (click)="editStudent()">Edit</button>
+              </md-menu>
+            </div>
           </div>
+          <md-divider>
+          </md-divider>
+          <td-expansion-panel label="Address Information" class="bgc-light-blue-400">
+            <div class="md-padding" class="bgc-light-blue-50">
+              <md-card>
+                <div md-content flex md-scroll-y>
+                  <div layout="column" layout-gt-md="row" class="insert">
 
+                    <div flex-gt-md="50">
+                      <md-card-title>Address Information</md-card-title>
+                    </div>
 
-          <div flex-gt-md="40">
-            <b>Student ID</b> : {{student.identityNo}}<br/><br/>
-            <b>Name</b> : {{student.name}}<br/><br/>
-            <b>Email</b> : {{student.email}}<br/><br/>
-            <b>Phone</b> : {{student.phone}}<br/><br/>
-            <b>Mobile</b> : {{student.mobile}}
-          </div>
-
-          <div flex-gt-md="40">
-            <b>Status</b> : {{student.studentStatus}}<br/><br/>
-            <b>Study Mode</b> : {{student.studyMode?.description}}<br/><br/>
-
-            <b>Program</b> : {{student.cohort?.program?.titleMs | uppercase}}<br/><br/>
-            <b>Faculty</b> : {{student.cohort?.program?.faculty?.description}}<br/><br/>
-            <b>Current Semester</b> : {{student.cohort?.academicSession.semester}}<br/><br/>
-          </div>
-
-        </div>
-        <md-divider>
-        </md-divider>
-        <td-expansion-panel label="Address Information" class="bgc-light-blue-400">
-          <div class="md-padding" class="bgc-light-blue-50">
-            <md-card>
-              <div md-content flex md-scroll-y>
-                <div layout="column" layout-gt-md="row" class="insert">
-
-                  <div flex-gt-md="50">
-                    <md-card-title>Address Information</md-card-title>
-                  </div>
-
-                  <div flex-gt-md="50" align="right">
-                    <button md-icon-button (click)="addAddressDialog(save)">
+                    <div flex-gt-md="50" align="right">
+                      <button md-icon-button (click)="addAddressDialog(save)">
                           <md-icon>add</md-icon>
                         </button>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <md-divider></md-divider>
-              <md-card-content>
+                <md-divider></md-divider>
+                <md-card-content>
 
-                <td-data-table [data]="addressess" [columns]="columnAddr" [sortBy]="summary" [sortOrder]="ASC" [sortable]="false" [multiple]="false"
-                  [selectable]="false" (rowSelect)="edit.emit($event)" dense>
+                  <td-data-table [data]="addressess" [columns]="columnAddr" [sortBy]="summary" [sortOrder]="ASC" [sortable]="false" [multiple]="false"
+                    [selectable]="false" (rowSelect)="edit.emit($event)" dense>
 
-                  <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
-                    <div layout="row">
-                      <span flex>{{value}}</span>
-                    </div>
-                  </template>
+                    <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
+                      <div layout="row">
+                        <span flex>{{value}}</span>
+                      </div>
+                    </template>
 
-                  <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
-                    <div layout="row">
-                      <button md-icon-button [md-menu-trigger-for]="menuAddress">
+                    <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
+                      <div layout="row">
+                        <button md-icon-button [md-menu-trigger-for]="menuAddress">
                             <md-icon>more_vert</md-icon>
                           </button>
-                      <md-menu x-position="before" #menuAddress="mdMenu">
-                        <button md-menu-item (click)="editAddressDialog(row, true)">Update</button>
-                        <button md-menu-item (click)="deleteAddress(row, true)">Delete</button>
-                      </md-menu>
+                        <md-menu x-position="before" #menuAddress="mdMenu">
+                          <button md-menu-item (click)="editAddressDialog(row, true)">Update</button>
+                          <button md-menu-item (click)="deleteAddress(row, true)">Delete</button>
+                        </md-menu>
+                      </div>
+                    </template>
+
+                  </td-data-table>
+
+                </md-card-content>
+              </md-card>
+            </div>
+          </td-expansion-panel>
+          <td-expansion-panel label="Guardian Information" class="bgc-light-blue-400">
+            <div class="md-padding" class="bgc-light-blue-50">
+              <md-card>
+                <div md-content flex md-scroll-y>
+                  <div layout="column" layout-gt-md="row" class="insert">
+
+                    <div flex-gt-md="50">
+                      <md-card-title>Guardian Information</md-card-title>
                     </div>
-                  </template>
 
-                </td-data-table>
-
-              </md-card-content>
-            </md-card>
-          </div>
-        </td-expansion-panel>
-        <td-expansion-panel label="Guardian Information" class="bgc-light-blue-400">
-          <div class="md-padding" class="bgc-light-blue-50">
-            <md-card>
-              <div md-content flex md-scroll-y>
-                <div layout="column" layout-gt-md="row" class="insert">
-
-                  <div flex-gt-md="50">
-                    <md-card-title>Guardian Information</md-card-title>
-                  </div>
-
-                  <div flex-gt-md="50" align="right">
-                    <button md-icon-button (click)="addGuardianDialog(save)">
+                    <div flex-gt-md="50" align="right">
+                      <button md-icon-button (click)="addGuardianDialog(save)">
                           <md-icon>add</md-icon>
                         </button>
-                  </div>
-
-                </div>
-              </div>
-              <md-divider></md-divider>
-              <md-card-content>
-                <td-data-table [data]="guardians" [columns]="columnGuardian" [sortBy]="summary" [sortOrder]="ASC" [sortable]="false" [multiple]="false"
-                  [selectable]="false" (rowSelect)="edit.emit($event)" dense>
-
-                  <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
-                    <div layout="row">
-                      <span flex>{{value}}</span>
                     </div>
-                  </template>
 
-                  <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
-                    <div layout="row">
-                      <button md-icon-button [md-menu-trigger-for]="menuGuardian">
+                  </div>
+                </div>
+                <md-divider></md-divider>
+                <md-card-content>
+                  <td-data-table [data]="guardians" [columns]="columnGuardian" [sortBy]="summary" [sortOrder]="ASC" [sortable]="false" [multiple]="false"
+                    [selectable]="false" (rowSelect)="edit.emit($event)" dense>
+
+                    <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
+                      <div layout="row">
+                        <span flex>{{value}}</span>
+                      </div>
+                    </template>
+
+                    <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
+                      <div layout="row">
+                        <button md-icon-button [md-menu-trigger-for]="menuGuardian">
                             <md-icon>more_vert</md-icon>
                           </button>
-                      <md-menu x-position="before" #menuGuardian="mdMenu">
-                        <button md-menu-item (click)="editGuardianDialog(row, true)">Update</button>
-                        <button md-menu-item (click)="deleteGuardian(row, true)">Delete</button>
-                      </md-menu>
+                        <md-menu x-position="before" #menuGuardian="mdMenu">
+                          <button md-menu-item (click)="editGuardianDialog(row, true)">Update</button>
+                          <button md-menu-item (click)="deleteGuardian(row, true)">Delete</button>
+                        </md-menu>
+                      </div>
+                    </template>
+                  </td-data-table>
+                </md-card-content>
+              </md-card>
+            </div>
+          </td-expansion-panel>
+
+          <td-expansion-panel label="Guarantor Information" class="bgc-light-blue-400">
+            <div class="md-padding" class="bgc-light-blue-50">
+              <md-card>
+                <div md-content flex md-scroll-y>
+                  <div layout="column" layout-gt-md="row" class="insert">
+
+                    <div flex-gt-md="50">
+                      <md-card-title>Guarantor Information</md-card-title>
                     </div>
-                  </template>
-                </td-data-table>
-              </md-card-content>
-            </md-card>
-          </div>
-        </td-expansion-panel>
 
-        <td-expansion-panel label="Guarantor Information" class="bgc-light-blue-400">
-          <div class="md-padding" class="bgc-light-blue-50">
-            <md-card>
-              <div md-content flex md-scroll-y>
-                <div layout="column" layout-gt-md="row" class="insert">
-
-                  <div flex-gt-md="50">
-                    <md-card-title>Guarantor Information</md-card-title>
-                  </div>
-
-                  <div flex-gt-md="50" align="right">
-                    <button md-icon-button (click)="addGuarantorDialog(save)">
+                    <div flex-gt-md="50" align="right">
+                      <button md-icon-button (click)="addGuarantorDialog(save)">
                           <md-icon>add</md-icon>
                         </button>
-                  </div>
-
-                </div>
-              </div>
-              <md-divider></md-divider>
-              <md-card-content>
-                <td-data-table [data]="guarantors" [columns]="columnGuarantor" [sortBy]="summary" [sortOrder]="ASC" [sortable]="false" [multiple]="false"
-                  [selectable]="false" (rowSelect)="edit.emit($event)" dense>
-
-                  <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
-                    <div layout="row">
-                      <span flex>{{value}}</span>
                     </div>
-                  </template>
 
-                  <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
-                    <div layout="row">
-                      <button md-icon-button [md-menu-trigger-for]="menuGuarantor">
+                  </div>
+                </div>
+                <md-divider></md-divider>
+                <md-card-content>
+                  <td-data-table [data]="guarantors" [columns]="columnGuarantor" [sortBy]="summary" [sortOrder]="ASC" [sortable]="false" [multiple]="false"
+                    [selectable]="false" (rowSelect)="edit.emit($event)" dense>
+
+                    <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
+                      <div layout="row">
+                        <span flex>{{value}}</span>
+                      </div>
+                    </template>
+
+                    <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
+                      <div layout="row">
+                        <button md-icon-button [md-menu-trigger-for]="menuGuarantor">
                             <md-icon>more_vert</md-icon>
                           </button>
-                      <md-menu x-position="before" #menuGuarantor="mdMenu">
-                        <button md-menu-item (click)="editGuarantorDialog(row, true)">Update</button>
-                        <button md-menu-item (click)="deleteGuarantor(row, true)">Delete</button>
-                      </md-menu>
+                        <md-menu x-position="before" #menuGuarantor="mdMenu">
+                          <button md-menu-item (click)="editGuarantorDialog(row, true)">Update</button>
+                          <button md-menu-item (click)="deleteGuarantor(row, true)">Delete</button>
+                        </md-menu>
+                      </div>
+                    </template>
+
+                  </td-data-table>
+                </md-card-content>
+              </md-card>
+            </div>
+          </td-expansion-panel>
+          <td-expansion-panel label="Contact Information" class="bgc-light-blue-400">
+            <div class="md-padding" class="bgc-light-blue-50">
+              <md-card>
+                <div md-content flex md-scroll-y>
+                  <div layout="column" layout-gt-md="row" class="insert">
+
+                    <div flex-gt-md="50">
+                      <md-card-title>Contact Information</md-card-title>
                     </div>
-                  </template>
 
-                </td-data-table>
-              </md-card-content>
-            </md-card>
-          </div>
-        </td-expansion-panel>
-        <td-expansion-panel label="Contact Information" class="bgc-light-blue-400">
-          <div class="md-padding" class="bgc-light-blue-50">
-            <md-card>
-              <div md-content flex md-scroll-y>
-                <div layout="column" layout-gt-md="row" class="insert">
-
-                  <div flex-gt-md="50">
-                    <md-card-title>Contact Information</md-card-title>
-                  </div>
-
-                  <div flex-gt-md="50" align="right">
-                    <button md-icon-button (click)="addContactDialog(save)">
+                    <div flex-gt-md="50" align="right">
+                      <button md-icon-button (click)="addContactDialog(save)">
                           <md-icon>add</md-icon>
                         </button>
-                  </div>
-
-                </div>
-              </div>
-              <md-divider></md-divider>
-              <md-card-content>
-                <td-data-table [data]="contacts" [columns]="columnContact" [sortBy]="summary" [sortOrder]="ASC" [sortable]="false" [multiple]="false"
-                  [selectable]="false" (rowSelect)="edit.emit($event)" dense>
-
-                  <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
-                    <div layout="row">
-                      <span flex>{{value}}</span>
                     </div>
-                  </template>
 
-                  <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
-                    <div layout="row">
-                      <button md-icon-button [md-menu-trigger-for]="menuContact">
+                  </div>
+                </div>
+                <md-divider></md-divider>
+                <md-card-content>
+                  <td-data-table [data]="contacts" [columns]="columnContact" [sortBy]="summary" [sortOrder]="ASC" [sortable]="false" [multiple]="false"
+                    [selectable]="false" (rowSelect)="edit.emit($event)" dense>
+
+                    <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
+                      <div layout="row">
+                        <span flex>{{value}}</span>
+                      </div>
+                    </template>
+
+                    <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
+                      <div layout="row">
+                        <button md-icon-button [md-menu-trigger-for]="menuContact">
                             <md-icon>more_vert</md-icon>
                           </button>
-                      <md-menu x-position="before" #menuContact="mdMenu">
-                        <button md-menu-item (click)="editContactDialog(row, true)">Update</button>
-                        <button md-menu-item (click)="deleteContact(row, true)">Delete</button>
-                      </md-menu>
-                    </div>
-                  </template>
-                </td-data-table>
-              </md-card-content>
-            </md-card>
-          </div>
-        </td-expansion-panel>
-      </md-tab>
+                        <md-menu x-position="before" #menuContact="mdMenu">
+                          <button md-menu-item (click)="editContactDialog(row, true)">Update</button>
+                          <button md-menu-item (click)="deleteContact(row, true)">Delete</button>
+                        </md-menu>
+                      </div>
+                    </template>
+                  </td-data-table>
+                </md-card-content>
+              </md-card>
+            </div>
+          </td-expansion-panel>
+        </md-tab>
 
-      <md-tab label="Cohort Information">
+        <md-tab label="Cohort Information">
 
-      </md-tab>
-    </md-tab-group>
-  </md-card-content>
-    </md-card>
-  </td-layout-manage-list>
+        </md-tab>
+      </md-tab-group>
+    </md-card-content>
+  </md-card>
+</td-layout-manage-list>

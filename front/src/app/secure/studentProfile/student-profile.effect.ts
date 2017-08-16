@@ -170,5 +170,16 @@ export class StudentProfileEffects {
     .map(state => state[1])
     .map(() => this.studentProfileActions.findStudentByUser());
 
+  /*==================================================================================================*/
+  /*STUDENT INFORMATION - EFFECT
+  /*==================================================================================================*/
+  @Effect() updateStudentDetail$ = this.actions$
+    .ofType(StudentProfileActions.UPDATE_STUDENT_DETAIL)
+    .map(action => action.payload)
+    .switchMap(student => this.profileService.updateStudentDetail(student))
+    .map(profile => this.studentProfileActions.updateStudentDetailSuccess(profile))
+    .withLatestFrom(this.store$.select(...this.STUDENT))
+    .map(state => state[1])
+    .map(() => this.studentProfileActions.findStudentByUser());
 
 }

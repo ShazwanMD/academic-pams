@@ -314,4 +314,27 @@ export class StudentProfileActions {
     };
   }
 
+  /*==================================================================================================*/
+  /*STUDENT
+  /*==================================================================================================*/
+  static UPDATE_STUDENT_DETAIL = '[StudentProfile] Update Student Detail';
+
+  updateStudentDetail(identityNo): Action {
+    console.log("update student detail");
+    return {
+      type: StudentProfileActions.UPDATE_STUDENT_DETAIL,
+      payload: identityNo
+    };
+  }
+
+  static UPDATE_STUDENT_DETAIL_SUCCESS = '[StudentProfile] Update Student Detail Success';
+
+  updateStudentDetailSuccess(message): Action {
+    console.log("update student detail success");
+    return {
+      type: StudentProfileActions.UPDATE_STUDENT_DETAIL_SUCCESS,
+      payload: message
+    };
+  }
+
 }

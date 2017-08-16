@@ -312,15 +312,15 @@ export class StudentProfileListPage implements OnInit {
         config.role = 'dialog';
         config.width = '60%';
         config.height = '40%';
-        config.position = {top: '0px'};
+        config.position = { top: '0px' };
         this.creatorDialogRef = this.dialog.open(AdmissionApplicationTaskDialog, config);
         this.creatorDialogRef.componentInstance.student = this.student;
         this.creatorDialogRef.afterClosed().subscribe((res) => {
             console.log('close dialog');
-          // load something here
+            // load something here
         });
-      }
-    
+    }
+
     //COURSE ENROLLMENT
     courseEnroll(): void {
         let config = new MdDialogConfig();
@@ -328,14 +328,14 @@ export class StudentProfileListPage implements OnInit {
         config.role = 'dialog';
         config.width = '70%';
         config.height = '50%';
-        config.position = {top: '0px'};
+        config.position = { top: '0px' };
         this.creatorDialogRef2 = this.dialog.open(EnrollmentApplicationTaskDialog, config);
         this.creatorDialogRef2.componentInstance.student = this.student;
         this.creatorDialogRef2.afterClosed().subscribe((res) => {
-          console.log('close dialog');
-          
-          // load something here
+            console.log('close dialog');
+
+            // load something here
         });
-      }
+    }
 
 }

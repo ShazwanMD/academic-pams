@@ -113,6 +113,14 @@ export class ProfileService {
       .flatMap((res: Response) => Observable.of(res.text()));
   }
 
+  /*==================================================================================================*/
+  /*STUDENT INFORMATION ADD/UPD*/
+  /*==================================================================================================*/
+  updateStudentDetail(student: Student): Observable<String> {
+    return this._http.put(this.PROFILE_API + '/student', JSON.stringify(student))
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
   // ====================================================================================================
   // STUDENT - FINDING
   // ====================================================================================================
