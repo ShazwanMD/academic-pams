@@ -33,6 +33,6 @@ export class GraduationApplicationRegisterTaskPanel implements OnInit {
   }
 
   goBack(): void {
-    this.router.navigate(['graduation/graduation-applications']);
+    this.router.navigate(['/secure/graduation/graduation-applications']);
   }
 }

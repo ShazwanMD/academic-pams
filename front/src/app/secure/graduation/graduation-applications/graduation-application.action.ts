@@ -80,10 +80,10 @@ export class GraduationApplicationActions {
 
   static COMPLETE_GRADUATION_APPLICATION_TASK = '[GraduationApplication] Complete GraduationApplication Task';
 
-  completeGraduationApplicationTask(invoice): Action {
+  completeGraduationApplicationTask(task): Action {
     return {
       type: GraduationApplicationActions.COMPLETE_GRADUATION_APPLICATION_TASK,
-      payload: invoice
+      payload: task
     };
   }
 
