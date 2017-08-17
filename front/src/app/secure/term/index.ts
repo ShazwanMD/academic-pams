@@ -120,7 +120,7 @@ export interface TermModuleState {
   
   //enrollment appication item 
   enrollmentApplicationItem: EnrollmentApplicationItemState;
-enrollmentApplicationItems: EnrollmentApplicationItemListState;
+  enrollmentApplicationItems: EnrollmentApplicationItemListState;
 
   // gradebook
   gradebook: GradebookState;

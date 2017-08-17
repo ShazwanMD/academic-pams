@@ -19,26 +19,12 @@ import { EnrollmentApplicationActions } from "./enrollment-application.action";
 })
 
 export class ItemDetailPage implements OnInit {
+ 
+ 
+  private ENROLLMENT_APPLICATION_ITEM: string[] = 'termModuleState.enrollmentApplication'.split('.');
+  private enrollmentApplicationItem$: Observable<EnrollmentApplicationItem>;
 
-  private OFFERING: string[] = 'termModuleState.offering'.split('.');
-  private SECTION: string[] = 'termModuleState.section'.split('.');
-  private ENROLLMENTS: string[] = 'termModuleState.enrollments'.split('.');
-  private APPOINTMENTS: string[] = 'termModuleState.appointments'.split('.');
-  private APPOINTMENT: string[] = 'termModuleState.appointment'.split('.');
-  private ITEM: string[] = 'termModuleState.item'.split('.');
-
-  private offering$: Observable<Offering>;
-  private section$: Observable<Section>;
-  private appointments$: Observable<Appointment[]>;
-  private appointment$: Observable<Appointment>;
-  private enrollments$: Observable<Enrollment[]>;
-  private item$: Observable<EnrollmentApplicationItem>;
-
-  @Input() section: Section;
-  @Input() offering: Offering;
-  @Input() appointment: Appointment;
-
-
+ 
   constructor(private router: Router,
               private route: ActivatedRoute,
               private actions: EnrollmentApplicationActions,
@@ -47,12 +33,7 @@ export class ItemDetailPage implements OnInit {
               private vcf: ViewContainerRef,
               private dialog: MdDialog) {
 
-    this.section$ = this.store.select(...this.SECTION);
-    this.offering$ = this.store.select(...this.OFFERING);
-    this.enrollments$ = this.store.select(...this.ENROLLMENTS);
-    this.appointments$ = this.store.select(...this.APPOINTMENTS);
-    this.appointment$ = this.store.select(...this.APPOINTMENT);
-    this.item$ = this.store.select(...this.ITEM);
+   this.enrollmentApplicationItem$ = this.store.select(...this.ENROLLMENT_APPLICATION_ITEM);
   }
 
   showDialog(): void {
@@ -64,7 +45,7 @@ export class ItemDetailPage implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe((params: { id: string }) => {
       let id: string = params.id;
-      this.store.dispatch(this.actions.findEnrollmentApplicationById(id));
+      this.store.dispatch(this.actions.findEnrollmentApplicationItemById(id));
     });
   }
 

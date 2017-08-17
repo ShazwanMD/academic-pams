@@ -4,11 +4,11 @@
   </div>
   <div md-content flex md-scroll-y>
     <div layout="column" layout-gt-md="row" class="inset">
-    <!--   <div flex-gt-md="70">
-        DISPLAY SECTION BY OFFERING 
-        <pams-section
-          [section]="section$ | async">
-        </pams-section>
+      <div flex-gt-md="70">
+         <pams-item
+          [enrollmentApplicationItem]="enrollmentApplicationItem$ | async">
+        </pams-item>
+      <!--  
         <pams-section-appointment-list
           [section]="section$ | async"
           [appointments]="appointments$ | async"
@@ -17,8 +17,8 @@
         <pams-section-enrollment-list
           [section]="section$ | async"
           [enrollments]="enrollments$ | async">
-        </pams-section-enrollment-list>
-      </div> -->
+        </pams-section-enrollment-list>-->
+      </div> 
       <div flex-gt-md="30">
        <!--  <pams-section-action
           [offering]="offering$ | async"
@@ -43,7 +43,7 @@
               <p md-line>Watch this offerings</p>
             </md-list-item>
           </md-nav-list>
-        </md-card>
+        </md-card> 
       </div>
     </div>
   </div>

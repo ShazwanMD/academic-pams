@@ -39,6 +39,7 @@ import {EnrollmentApplicationItemUpdateDialog} from './dialog/enrollment-applica
 import {EnrollmentApplicationDetailPage} from './enrollment-application-detail.page';
 import { EnrollmentApplicationTaskDialog } from "./dialog/enrollment-application-task.dialog";
 import { ItemDetailPage } from "./item-detail.page";
+import { ItemComponent } from "./component/item.component";
 
 @NgModule({
   imports: [
@@ -79,6 +80,7 @@ import { ItemDetailPage } from "./item-detail.page";
     PooledEnrollmentApplicationTaskListComponent,
     ArchivedEnrollmentApplicationListComponent,
     StudentEnrollmentApplicationItemComponent,
+    ItemComponent,
 
     //dialog
     EnrollmentApplicationTaskCreatorDialog,

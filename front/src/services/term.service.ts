@@ -290,7 +290,7 @@ export class TermService {
       return this._http.get(this.TERM_API + '/enrollmentApplicationItems/' + id)
         .map((res: Response) => <EnrollmentApplicationItem>res.json());
     }
-
+  
   deleteEnrollmentApplicationItem(application: EnrollmentApplication, item: EnrollmentApplicationItem) {
     return this._http.delete(this.TERM_API + '/enrollmentApplications/' + application.referenceNo + '/enrollmentApplicationItems/' + item.id)
       .flatMap((res: Response) => Observable.of(res.text()));

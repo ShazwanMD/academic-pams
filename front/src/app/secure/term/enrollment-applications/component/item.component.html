@@ -1,0 +1,57 @@
+<md-card>
+  <md-card-title>{{enrollmentApplicationItem?.section?.code}}</md-card-title>
+  <md-card-subtitle>{{enrollmentApplicationItem?.section?.canonicalCode}}</md-card-subtitle>
+  <md-divider></md-divider>
+  <md-card-content> <!--Tab Section Here-->
+    <md-tab-group>
+      <md-tab label="Section Detail">
+        <br>
+        <div layout="column" class="inset">
+          <div layout="row" class="pad-bottom">
+            <span flex="20">Code</span> <span>{{enrollmentApplicationItem?.section?.code}}</span>
+          </div>
+          <div layout="row" class="pad-bottom">
+            <span flex="20">Canonical Code</span> <span>{{enrollmentApplicationItem?.section?.canonicalCode}}</span>
+          </div>
+          <div layout="row" class="pad-bottom">
+            <span flex="20">Capacity</span> <span>{{enrollmentApplicationItem?.section?.capacity}}</span>
+          </div>
+           <div layout="row" class="pad-bottom">
+            <span flex="20">Semester</span> <span>{{enrollmentApplicationItem?.section?.ordinal}}</span>
+          </div>
+          
+        </div>
+      </md-tab>
+       <md-tab label="Faculty Detail">
+        <br>
+        <div layout="column" class="inset">
+         
+           <div layout="row" class="pad-bottom">
+            <span flex="20">Code</span> <span>{{enrollmentApplicationItem?.section?.offering?.program?.faculty?.code}}</span>
+          </div>
+           <div layout="row" class="pad-bottom">
+            <span flex="20">Description</span> <span>{{enrollmentApplicationItem?.section?.offering?.program?.faculty?.description}}</span>
+          </div>
+           <div layout="row" class="pad-bottom">
+            <span flex="20">Name</span> <span>{{enrollmentApplicationItem?.section?.offering?.program?.faculty?.name}}</span>
+          </div>
+        </div>
+      </md-tab>
+       <md-tab label="Program Detail">
+        <br>
+        <div layout="column" class="inset">
+         
+           <div layout="row" class="pad-bottom">
+            <span flex="20">Code</span> <span>{{enrollmentApplicationItem?.section?.offering?.program?.code}}</span>
+          </div>
+           <div layout="row" class="pad-bottom">
+            <span flex="20">Title (Malay)</span> <span>{{enrollmentApplicationItem?.section?.offering?.program?.titleEn}}</span>
+          </div>
+           <div layout="row" class="pad-bottom">
+            <span flex="20">Title (English)</span> <span>{{enrollmentApplicationItem?.section?.offering?.program?.titleMs}}</span>
+          </div>
+        </div>
+      </md-tab>
+    </md-tab-group>
+  </md-card-content>
+</md-card>

@@ -457,7 +457,15 @@ public class TermController {
 		return new ResponseEntity<List<EnrollmentApplicationItem>>(termTransformer.toEnrollmentApplicationItemVos(
 				termService.findEnrollmentApplicationItems(enrollmentApplication)), HttpStatus.OK);
 	}
-
+	
+	//find enrollment application by id
+	@RequestMapping(value = "/enrollmentApplicationItems/{id}", method = RequestMethod.GET)
+	public ResponseEntity<EnrollmentApplicationItem> findEnrollmentApplicationItemById(
+			@PathVariable Long id) {
+		AdEnrollmentApplicationItem enrollmentApplicationItem = termService				.findEnrollmentApplicationItemById(id);
+		return new ResponseEntity<EnrollmentApplicationItem>(termTransformer.toEnrollmentApplicationItemVo(enrollmentApplicationItem), HttpStatus.OK);
+	}
+	
 	@RequestMapping(value = "/enrollmentApplications/{referenceNo}/enrollmentApplicationItems", method = RequestMethod.POST)
 	public ResponseEntity<String> addEnrollmentApplicationItem(@PathVariable String referenceNo,
 			@RequestBody EnrollmentApplicationItem vo) {
