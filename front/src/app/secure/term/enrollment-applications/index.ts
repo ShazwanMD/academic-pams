@@ -38,6 +38,7 @@ import {StudentEnrollmentApplicationTaskDetailActionComponent} from './component
 import {EnrollmentApplicationItemUpdateDialog} from './dialog/enrollment-application-item-update.dialog';
 import {EnrollmentApplicationDetailPage} from './enrollment-application-detail.page';
 import { EnrollmentApplicationTaskDialog } from "./dialog/enrollment-application-task.dialog";
+import { ItemDetailPage } from "./item-detail.page";
 
 @NgModule({
   imports: [
@@ -57,6 +58,7 @@ import { EnrollmentApplicationTaskDialog } from "./dialog/enrollment-application
     StudentEnrollmentCenterPage,
     EnrollmentApplicationTaskDetailPage,
     EnrollmentApplicationDetailPage,
+    ItemDetailPage,
     StudentEnrollmentApplicationTaskDetailPage,
 
     // component

@@ -652,6 +652,12 @@ public class TermController {
 			@PathVariable String sectionCanonicalCode) {
 		throw new UnsupportedOperationException();
 	}
+	
+	@RequestMapping(value = "/items/{id}/sections/{sectionId}", method = RequestMethod.GET)
+	public ResponseEntity<Section> findSectionById(@PathVariable String id,
+			@PathVariable String sectionId) {
+		throw new UnsupportedOperationException();
+	}
 
 	@RequestMapping(value = "/offerings/{canonicalCode}/assessments", method = RequestMethod.GET)
 	public ResponseEntity<List<Assessment>> findAssessmentsByOffering(@PathVariable String canonicalCode)

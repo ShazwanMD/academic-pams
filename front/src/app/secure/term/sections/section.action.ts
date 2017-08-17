@@ -140,6 +140,24 @@ export class SectionActions {
             payload: section
         };
     }
+    
+    static FIND_SECTION_BY_ID = '[Section] Find Section By Id';
+
+    findSectionById( id ): Action {
+        return {
+            type: SectionActions.FIND_SECTION_BY_ID,
+            payload: id
+        };
+    }
+
+    static FIND_SECTION_BY_ID_SUCCESS = '[Section] Find Section By Id Success';
+
+    findSectionByIdSuccess( section ): Action {
+        return {
+            type: SectionActions.FIND_SECTION_BY_ID_SUCCESS,
+            payload: section
+        };
+    }
 
     static FIND_SECTION_BY_CURRENT = '[Section] Find Section By Current';
 
@@ -159,15 +177,7 @@ export class SectionActions {
         };
     }
 
-    static FIND_SECTION_BY_ID_SUCCESS = '[Section] Find Section By Id Success';
-
-    findSectionByIdSuccess( section ): Action {
-        return {
-            type: SectionActions.FIND_SECTION_BY_ID_SUCCESS,
-            payload: section
-        };
-    }
-
+   
     static ADD_SECTION = '[Section] Add Section';
 
     addSection( offering, section ): Action {

@@ -86,12 +86,12 @@
     </div>
   </template>
   <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
-    <!-- <div layout="row">
-      <a md-button color="accent" class="text-upper" (click)="viewEnrollmentApplicationItem(row)" mdTooltip="View items info">
-        [routerLink]="['/secure/term/offerings', row['canonicalCode']]"
-        <span>View</span>
+     <div layout="row">
+      <a md-button color="accent" class="text-upper" [routerLink]="['/secure/term/items', row['id']]" mdTooltip="View items info">
+        
+        <span>View Detail</span>
       </a>
-    </div> -->
+    </div> 
   </template>
 </td-data-table>
 <div class="md-padding" *ngIf="!dataTable.hasData" layout="row" layout-align="center center">

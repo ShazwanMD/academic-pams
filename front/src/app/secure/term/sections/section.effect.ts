@@ -38,6 +38,17 @@ export class SectionEffects {
       this.sectionActions.findGradebooksBySection(action.payload),
       this.sectionActions.findAppointmentsBySection(action.payload)]));
   
+  @Effect() findSectionById$ = this.actions$
+  .ofType(SectionActions.FIND_SECTION_BY_ID)
+  .map((action) => action.payload)
+  .switchMap((id) => this.termService.findSectionById(id))
+  .map((section) => this.sectionActions.findSectionByIdSuccess(section))
+  .mergeMap((action) => from([action,
+    this.sectionActions.findEnrollmentsBySection(action.payload),
+    this.sectionActions.findGradebooksBySection(action.payload),
+    this.sectionActions.findAppointmentsBySection(action.payload)]));
+  
+  
   @Effect() findEnrollmentsBySection$ = this.actions$
     .ofType(SectionActions.FIND_ENROLLMENTS_BY_SECTION)
     .map((action) => action.payload)

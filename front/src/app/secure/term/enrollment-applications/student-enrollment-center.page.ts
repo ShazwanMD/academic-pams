@@ -7,8 +7,7 @@ import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';
 import {EnrollmentApplicationActions} from './enrollment-application.action';
 import {TermModuleState} from '../index';
 import {EnrollmentApplicationTaskCreatorDialog} from './dialog/enrollment-application-task-creator.dialog';
-import {OfferingActions} from '../offerings/offering.action';
-import {Offering} from '../../../shared/model/term/offering.interface';
+import {EnrollmentApplication} from '../../../shared/model/term/enrollment-application.interface';
 
 @Component({
   selector: 'pams-student-enrollment-center',
@@ -17,28 +16,27 @@ import {Offering} from '../../../shared/model/term/offering.interface';
 
 export class StudentEnrollmentCenterPage implements OnInit {
 
-  private STUDENT_ENROLLMENT_APPLICATION_TASKS = 'termModuleState.assignedEnrollmentApplicationTasks'.split('.');
+  private ASSIGNED_ENROLLMENT_APPLICATION_TASKS = 'termModuleState.assignedEnrollmentApplicationTasks'.split('.');
+  private ENROLLMENT_APPLICATIONS = 'termModuleState.enrollmentApplications'.split('.');
   private POOLED_ENROLLMENT_APPLICATION_TASKS = 'termModuleState.pooledEnrollmentApplicationTasks'.split('.');
+  private ARCHIVED_ENROLLMENT_APPLICATIONS: string[] = 'termModuleState.archivedEnrollmentApplications'.split('.');
   private creatorDialogRef: MdDialogRef<EnrollmentApplicationTaskCreatorDialog>;
-
-  private studentEnrollmentApplicationTasks$: Observable<EnrollmentApplicationTask>;
+  private assignedEnrollmentApplicationTasks$: Observable<EnrollmentApplicationTask>;
+  private enrollmentApplications$: Observable<EnrollmentApplication>;
   private pooledEnrollmentApplicationTasks$: Observable<EnrollmentApplicationTask>;
-
-  private OFFERINGS: string[] = 'termModuleState.offerings'.split('.');
-  private offerings$: Observable<Offering[]>;
+  private archivedEnrollmentApplications$: Observable<EnrollmentApplication>;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
               private vcf: ViewContainerRef,
               private actions: EnrollmentApplicationActions,
-              private actions2: OfferingActions,
               private store: Store<TermModuleState>,
               private dialog: MdDialog) {
 
-    this.studentEnrollmentApplicationTasks$ = this.store.select(...this.STUDENT_ENROLLMENT_APPLICATION_TASKS);
+    this.assignedEnrollmentApplicationTasks$ = this.store.select(...this.ASSIGNED_ENROLLMENT_APPLICATION_TASKS);
+    this.enrollmentApplications$ = this.store.select(...this.ENROLLMENT_APPLICATIONS);
     this.pooledEnrollmentApplicationTasks$ = this.store.select(...this.POOLED_ENROLLMENT_APPLICATION_TASKS);
-
-    this.offerings$ = this.store.select(...this.OFFERINGS);
+    this.archivedEnrollmentApplications$ = this.store.select(...this.ARCHIVED_ENROLLMENT_APPLICATIONS);
   }
 
   showDialog(): void {
@@ -55,6 +53,11 @@ export class StudentEnrollmentCenterPage implements OnInit {
     });
   }
 
+  viewApplication(enrollmentApplication: EnrollmentApplication): void {
+    console.log('enrollmentApplication: ' + enrollmentApplication.id);
+    this.router.navigate(['/secure/term/enrollment-applications', enrollmentApplication.id]);
+  }
+
   claimTask(task: EnrollmentApplicationTask) {
     console.log('enrollmentApplication: ' + task.taskId);
     this.store.dispatch(this.actions.claimEnrollmentApplicationTask(task));
@@ -65,16 +68,17 @@ export class StudentEnrollmentCenterPage implements OnInit {
     this.router.navigate(['/secure/term/enrollment-applications/enrollment-application-task-detail', task.taskId]);
   }
 
-  viewOffering(offering: Offering) {
-    console.log('offering: ' + offering.id);
-    this.router.navigate(['/secure/term/offerings', offering.canonicalCode, 'student-offering-detail']);
+  viewEnrollmentApplication(enrollmentApplication: EnrollmentApplication) {
+    console.log('students applications: ' + enrollmentApplication.referenceNo);
+    this.router.navigate(['/secure/term/enrollment-applications', enrollmentApplication.referenceNo]);
+    //this.router.navigate(['/secure/term/offerings', offering.canonicalCode]);
   }
 
   ngOnInit(): void {
-
-    this.store.dispatch(this.actions2.findOfferings());
-    console.log('find assigned/pooled enrollment application tasks');
+    console.log('find assigned/pooled/archived enrollment application tasks');
     this.store.dispatch(this.actions.findAssignedEnrollmentApplicationTasks());
     this.store.dispatch(this.actions.findPooledEnrollmentApplicationTasks());
+    this.store.dispatch(this.actions.findEnrollmentApplications());
+    this.store.dispatch(this.actions.findArchivedEnrollmentApplications());
   }
 }

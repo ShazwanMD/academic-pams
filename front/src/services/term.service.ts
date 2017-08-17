@@ -284,6 +284,12 @@ export class TermService {
     return this._http.get(this.TERM_API + '/enrollmentApplications/' + application.referenceNo + '/enrollmentApplicationItems')
       .map((res: Response) => <EnrollmentApplicationItem[]>res.json());
   }
+  
+  findEnrollmentApplicationItemById(id: string): Observable<EnrollmentApplicationItem> {
+      console.log('findEnrollmentApplicationItemById');
+      return this._http.get(this.TERM_API + '/enrollmentApplicationItems/' + id)
+        .map((res: Response) => <EnrollmentApplicationItem>res.json());
+    }
 
   deleteEnrollmentApplicationItem(application: EnrollmentApplication, item: EnrollmentApplicationItem) {
     return this._http.delete(this.TERM_API + '/enrollmentApplications/' + application.referenceNo + '/enrollmentApplicationItems/' + item.id)
@@ -378,6 +384,12 @@ export class TermService {
     return this._http.get(this.TERM_API + '/sections/' + canonicalCode)
       .map((res: Response) => <Section>res.json());
   }
+  
+  findSectionById(id): Observable<Section> {
+      console.log('findSectionById');
+      return this._http.get(this.TERM_API + '/sections/' + id)
+        .map((res: Response) => <Section>res.json());
+    }
 
   //find enrollments by section
   findEnrollmentsBySection(section: Section): Observable<Enrollment[]> {

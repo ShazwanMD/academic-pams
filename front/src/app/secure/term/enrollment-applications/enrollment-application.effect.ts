@@ -76,6 +76,14 @@ export class EnrollmentApplicationEffects {
     .switchMap((enrollmentApplication) => this.termService.findEnrollmentApplicationItems(enrollmentApplication))
     .map((items) => this.enrollmentApplicationActions.findEnrollmentApplicationItemsSuccess(items));
 
+  //find enrollment application item by id
+  @Effect() findEnrollmentApplicationItemById$ = this.actions$
+  .ofType(EnrollmentApplicationActions.FIND_ENROLLMENT_APPLICATION_ITEM_BY_ID)
+  .map((action) => action.payload)
+  .switchMap((enrollmentApplication) => this.termService.findEnrollmentApplicationItemById(enrollmentApplication))
+  .map((item) => this.enrollmentApplicationActions.findEnrollmentApplicationByIdSuccess(item));
+
+  
   @Effect() startEnrollmentApplicationTask$ = this.actions$
     .ofType(EnrollmentApplicationActions.START_ENROLLMENT_APPLICATION_TASK)
     .map((action) => action.payload)

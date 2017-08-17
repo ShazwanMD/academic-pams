@@ -15,6 +15,11 @@ export function enrollmentApplicationReducer(state = initialState, action: Actio
     case EnrollmentApplicationActions.FIND_ENROLLMENT_APPLICATION_BY_ID_SUCCESS: {
       return action.payload;
     }
+    
+    case EnrollmentApplicationActions.FIND_ENROLLMENT_APPLICATION_ITEM_BY_ID_SUCCESS: {
+        return action.payload;
+      }
+    
     case EnrollmentApplicationActions.FIND_ENROLLMENT_APPLICATIONS_SUCCESS: {
       return action.payload;
     }

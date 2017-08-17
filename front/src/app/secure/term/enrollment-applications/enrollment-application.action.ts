@@ -186,6 +186,25 @@ export class EnrollmentApplicationActions {
       payload: application
     };
   }
+  
+  //find item by id
+  static FIND_ENROLLMENT_APPLICATION_ITEM_BY_ID = '[EnrollmentApplication] Find Item By Id';
+
+  findEnrollmentApplicationItemById(id): Action {
+    return {
+      type: EnrollmentApplicationActions.FIND_ENROLLMENT_APPLICATION_ITEM_BY_ID,
+      payload: id
+    };
+  }
+
+  static FIND_ENROLLMENT_APPLICATION_ITEM_BY_ID_SUCCESS = '[EnrollmentApplication] Find Item By Id Success';
+
+  findEnrollmentApplicationItemByIdSuccess(item): Action {
+    return {
+      type: EnrollmentApplicationActions.FIND_ENROLLMENT_APPLICATION_ITEM_BY_ID_SUCCESS,
+      payload: item
+    };
+  }
 
   static FIND_ENROLLMENT_APPLICATION_BY_REFERENCE_NO = '[EnrollmentApplication] Find EnrollmentApplication By Reference No';
 

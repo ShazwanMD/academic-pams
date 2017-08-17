@@ -67,8 +67,12 @@ import {sectionListReducer, SectionListState} from './sections/section-list.redu
 import {EnrollmentApplicationItem} from '../../shared/model/term/enrollment-application-item.interface';
 import {
   enrollmentApplicationItemListReducer,
-  EnrollmentApplicationItemListState
+  EnrollmentApplicationItemListState,
 } from './enrollment-applications/enrollment-application-item-list.reducer';
+import {
+enrollmentApplicationItemReducer,
+EnrollmentApplicationItemState
+} from './enrollment-applications/enrollment-application-item.reducer';
 
 import {offeringSectionListReducer, OfferingSectionListState} from './offerings/offering-section-list.reducer';
 import {
@@ -113,6 +117,10 @@ export interface TermModuleState {
   assessment: AssessmentState;
   enrollments: EnrollmentListState;
   enrollment: EnrollmentState;
+  
+  //enrollment appication item 
+  enrollmentApplicationItem: EnrollmentApplicationItemState;
+enrollmentApplicationItems: EnrollmentApplicationItemListState;
 
   // gradebook
   gradebook: GradebookState;
@@ -120,6 +128,7 @@ export interface TermModuleState {
 
   appointments: AppointmentListState;
   appointment: AppointmentState;
+
   // admission
   admissions: AdmissionListState;
   admission: AdmissionState;
@@ -134,7 +143,7 @@ export interface TermModuleState {
   pooledEnrollmentApplicationTasks: EnrollmentApplicationTaskListState;
   archivedEnrollmentApplications: EnrollmentApplicationListState;
   enrollmentApplicationTask: EnrollmentApplicationTaskState;
-  enrollmentApplicationItems: EnrollmentApplicationItemListState;
+  
   gradebookMatrices: GradebookMatrixListState;
 }
 ;
@@ -174,7 +183,11 @@ export const INITIAL_TERM_STATE: TermModuleState = <TermModuleState>{
   pooledEnrollmentApplicationTasks: <EnrollmentApplicationTask[]>[],
   archivedEnrollmentApplications: <EnrollmentApplication[]>[],
   enrollmentApplicationTask: <EnrollmentApplicationTask>{},
+  
+  //enrollment application item
   enrollmentApplicationItems: <EnrollmentApplicationItem[]>[],
+  enrollmentApplicationItem: <EnrollmentApplicationItem>{},
+  
   gradebookMatrices: <GradebookMatrix[]>[],
 };
 
@@ -193,6 +206,7 @@ export const termModuleReducers = {
   enrollment: enrollmentReducer,
   appointments: appointmentListReducer,
   appointment: appointmentReducer,
+  
   // admission
   admissions: admissionListReducer,
   admission: admissionReducer,
@@ -204,13 +218,18 @@ export const termModuleReducers = {
   pooledAdmissionApplicationTasks: pooledAdmissionApplicationTaskListReducer,
   archivedAdmissionApplications: archivedAdmissionApplicationListReducer,
   admissionApplicationTask: admissionApplicationTaskReducer,
+  
   // enrollment
   assignedEnrollmentApplicationTasks: assignedEnrollmentApplicationTaskListReducer,
   pooledEnrollmentApplicationTasks: pooledEnrollmentApplicationTaskListReducer,
   archivedEnrollmentApplications: archivedEnrollmentApplicationListReducer,
   enrollmentApplicationTask: enrollmentApplicationTaskReducer,
+  
+  //enrollment application item
   enrollmentApplicationItems: enrollmentApplicationItemListReducer,
+  enrollmentApplicationItem: enrollmentApplicationItemReducer,
   enrollmentApplication: enrollmentApplicationReducer,
+  
   gradebookMatrices: gradebookMatrixListReducer,
 };
 

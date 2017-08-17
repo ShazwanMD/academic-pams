@@ -4,6 +4,7 @@ import {StudentEnrollmentCenterPage} from './student-enrollment-center.page';
 import {EnrollmentApplicationTaskDetailPage} from './enrollment-application-task-detail.page';
 import {StudentEnrollmentApplicationTaskDetailPage} from './student-enrollment-application-task-detail.page';
 import {EnrollmentApplicationDetailPage} from './enrollment-application-detail.page';
+import { ItemDetailPage } from "./item-detail.page";
 
 export const EnrollmentApplicationRoutes: Routes = [
   {path: 'term/enrollment-applications', component: EnrollmentApplicationCenterPage},
@@ -12,6 +13,7 @@ export const EnrollmentApplicationRoutes: Routes = [
     path: 'term/enrollment-applications/enrollment-application-task-detail/:taskId',
     component: EnrollmentApplicationTaskDetailPage
   },
+  {path: 'term/items/:id', component: ItemDetailPage},
   {
       path: 'term/enrollment-applications/student-enrollment-application-task-detail/:taskId',
       component: StudentEnrollmentApplicationTaskDetailPage
