@@ -7,7 +7,7 @@
           <div class="md-display-1">Application Success</div>
           <div layout="column" layout-padding>
             <div class="md-subhead tc-grey-100">Application {{admissionApplicationTask?.referenceNo}} will be
-              processed.Thank You
+              processed. Thank you.
             </div>
 
           </div>
@@ -15,7 +15,7 @@
       </md-card>
       <md-card>
         <md-card-title>{{admissionApplicationTask?.application?.student?.name}}</md-card-title>
-        <md-card-subtitle>{{admissionApplicationTask?.description}}</md-card-subtitle>
+        <md-card-subtitle>File Desc.: {{admissionApplicationTask?.description}}</md-card-subtitle>
 
         <div layout="row" layout-wrap hide-xs hide-sm class="push-sm">
           <div layout="column" flex>
@@ -42,14 +42,14 @@
           <md-tab-group>
             <div md-content flex md-scroll-y>
 
-              <md-tab label="Application Detail"><br>
+            <!--   <md-tab label="Application Detail"><br>
                 <div layout="column" class="inset">
                   <div layout="row" class="pad-bottom">
                     <span flex="15">Description</span>
                     <span> {{admissionApplicationTask?.description}}</span>
                   </div>
                 </div>
-              </md-tab>
+              </md-tab> -->
 
               <md-tab label="Student Details"><br>
                 <div layout="column" class="inset">
@@ -133,15 +133,12 @@
             </div>
           </md-tab-group>
         </md-card-content>
-
-        <md-card-actions>
-        </md-card-actions>
       </md-card>
 
     </div>
     <div flex-gt-md="30">
-      <pams-admission-application-task-status [admissionApplicationTask]="admissionApplicationTask">
-      </pams-admission-application-task-status>
+     <!--  <pams-admission-application-task-status [admissionApplicationTask]="admissionApplicationTask">
+      </pams-admission-application-task-status> -->
 
       <!--   <md-card>
           <md-card-title>Action</md-card-title>

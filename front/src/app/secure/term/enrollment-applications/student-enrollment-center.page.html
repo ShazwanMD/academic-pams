@@ -4,15 +4,14 @@
     <span flex></span>
   </div>
   <td-layout-manage-list #list>
-    <!-- <md-nav-list list-items>
-      <a md-list-item (click)="showDialog()">
-        <md-icon>create</md-icon>
-        Course Enrollments
-      </a>
-      <md-divider></md-divider>
-    </md-nav-list> -->
+     
     <md-nav-list list-items>
-      <a md-list-item (click)="showDialog()">
+    <a md-list-item [routerLink]="['/secure']">
+        <md-icon>create</md-icon>
+        My Profile 
+        </a> 
+         <md-divider></md-divider>
+     <!--  <a md-list-item (click)="showDialog()">
         <md-icon>create</md-icon>
         Create New Enrollment Application
       </a>
@@ -21,7 +20,7 @@
       <a md-list-item [routerLink]="['/secure/term/admission-applications/admission-application-center2']">
         <md-icon>person_add</md-icon>
         Semester Registration
-      </a>
+      </a> -->
     </md-nav-list>
     <div toolbar-buttons layout="row" layout-align="start center" flex>
       <span flex>Student Enrollment Center</span>
@@ -36,10 +35,13 @@
 
     <md-card> <!-- <md-card-title>Course Enrollments</md-card-title> -->
       <md-divider></md-divider>
+      <!--  <md-tab label="My Application">   -->
       <pams-student-enrollment-list
         [studentEnrollmentApplicationTasks]="studentEnrollmentApplicationTasks$ | async"
         (view)="viewTask($event)" mdTooltip="View enrollment info"></pams-student-enrollment-list>
+     <!-- </md-tab> -->
     </md-card>
+    
     <!-- <md-card>
       <md-card-title>Curriculum</md-card-title>
       <md-card-subtitle> SESSION 201720181

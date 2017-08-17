@@ -16,12 +16,12 @@
   <md-divider></md-divider>
   <md-card-content>
     <md-tab-group>
-      <md-tab label="Application Information">
+     <!--  <md-tab label="Application Information">
         <div layout="column" class="inset">
           <div layout="row" class="pad-bottom">
             <span flex="15">Description</span> <span>{{admissionApplication?.description}}</span>
           </div>
-          <!-- <div layout="row" class="pad-bottom">
+          <div layout="row" class="pad-bottom">
                 <span flex="15">Source No </span> <span>{{admissionApplication?.sourceNo}}</span>
             </div>
             <div layout="row" class="pad-bottom">
@@ -35,11 +35,16 @@
             </div>
             <div layout="row" class="pad-bottom">
                 <span flex="15">Semester</span> <span>{{admissionApplication?.ordinal}}</span>
-            </div> -->
+            </div>
         </div>
-      </md-tab>
+      </md-tab> -->
       <md-tab label="Student Information">
         <div layout="column" class="inset">
+        <div layout="row" class="pad-bottom">
+            <span flex="15">Application Desc.</span> <span>{{admissionApplication?.description}}</span>
+           
+          </div>
+         
           <div layout="row" class="pad-bottom">
             <span flex="15">Name</span> <span>{{admissionApplication?.student?.name}}</span>
           </div>

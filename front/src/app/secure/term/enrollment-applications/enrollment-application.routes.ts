@@ -12,6 +12,10 @@ export const EnrollmentApplicationRoutes: Routes = [
     path: 'term/enrollment-applications/enrollment-application-task-detail/:taskId',
     component: EnrollmentApplicationTaskDetailPage
   },
+  {
+      path: 'term/enrollment-applications/student-enrollment-application-task-detail/:taskId',
+      component: StudentEnrollmentApplicationTaskDetailPage
+    },
   {path: 'term/enrollment-applications/:referenceNo', component: StudentEnrollmentApplicationTaskDetailPage},
   {
     path: 'term/enrollment-applications/:referenceNo/enrollment-application-detail',

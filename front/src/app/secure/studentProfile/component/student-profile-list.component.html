@@ -1,19 +1,27 @@
 <td-layout-manage-list #list>
-  <md-nav-list list-items>
-    <!-- class="text-upper" -->
-    <a md-list-item (click)="semesterRegister()" color="accent" mdTooltip="Apply semester registration">
-      <!-- [routerLink]="['/secure/term/admission-applications/admission-application-center2/', student.identityNo]" -->
-      <md-icon>create</md-icon>
-      <span>Semester Registration</span>
-    </a>
-    <a md-list-item (click)="courseEnroll()" color="accent" mdTooltip="View offerings info" mdTooltip="Apply course enrollment">
-      <md-icon>create</md-icon>
-      <span>Course Enrollment</span>
-    </a>
-    <md-divider></md-divider>
-  </md-nav-list>
-  <md-card class="">
-    <md-card-content>
+  <md-nav-list list-items><!-- class="text-upper" -->
+        <a md-list-item (click)="semesterRegister()" color="accent"   ><!-- [routerLink]="['/secure/term/admission-applications/admission-application-center2/', student.identityNo]" -->
+         <md-icon>create</md-icon>
+         <span>Apply Semester Registration</span>
+      </a>
+      <a md-list-item (click)="statusSemesterRegister()" color="accent"   ><!-- [routerLink]="['/secure/term/admission-applications/admission-application-center2/', student.identityNo]" -->
+         <md-icon>drafts</md-icon>
+         <span>Registration Status </span>
+      </a>
+      <md-divider></md-divider>
+       <a md-list-item (click)="courseEnroll()" color="accent"  mdTooltip="View offerings info" >
+          <md-icon>create</md-icon>
+        <span>Apply Course Enrollment</span>
+      </a>
+      <a md-list-item (click)="statusCourseEnroll()" color="accent"  mdTooltip="View offerings info">
+          <md-icon>drafts</md-icon>
+        <span>Enrollment Status</span>
+      </a>
+      <md-divider></md-divider>
+    </md-nav-list>
+    <md-card class="">
+  <md-card-content>
+
 
       <md-tab-group>
         <md-tab label="Student Personal Information">
