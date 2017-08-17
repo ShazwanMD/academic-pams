@@ -1,3 +1,4 @@
+import { StudentProfileEnrollmentsComponent } from './component/student-profile-enrollments.component';
 import { StudentDetailEditorDialog } from './dialog/student-detail-editor.dialog';
 import { StudentAddressEditorDialog } from './dialog/student-address-editor.dialog';
 import { StudentGuarantorEditorDialog } from './dialog/student-guarantor-editor.dialog';
@@ -94,6 +95,7 @@ export const studentProfileModuleReducers = {
         StudentProfilePage,
         StudentProfileListPage,
         StudentMenu,
+        StudentProfileEnrollmentsComponent,
 
         //Dialog
         StudentContactEditorDialog,
