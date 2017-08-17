@@ -39,6 +39,25 @@ export class GraduationApplicationActions {
       payload: tasks
     };
   }
+  
+//archived
+  static FIND_ARCHIVED_GRADUATION_APPLICATIONS = '[GraduationApplication] Find Archived GraduationApplication';
+
+  findArchivedGraduationApplications(): Action {
+    return {
+      type: GraduationApplicationActions.FIND_ARCHIVED_GRADUATION_APPLICATIONS
+    };
+  }
+
+  static FIND_ARCHIVED_GRADUATION_APPLICATIONS_SUCCESS = '[GraduationApplication] Find Archived GraduationApplication Success';
+
+  findArchivedGraduationApplicationsSuccess(graduationApplications): Action {
+    console.log("findArchivedGraduationApplicationsSuccess");
+    return {
+      type: GraduationApplicationActions.FIND_ARCHIVED_GRADUATION_APPLICATIONS_SUCCESS,
+      payload: graduationApplications
+    };
+  }
 
   static FIND_GRADUATION_APPLICATION_TASK_BY_TASK_ID = '[GraduationApplication] Find GraduationApplication Task By Task Id';
 

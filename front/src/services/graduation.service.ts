@@ -35,6 +35,13 @@ export class GraduationService {
     return this._http.get(this.GRADUATION_API + '/graduationApplications/pooledTasks')
       .map((res: Response) => <GraduationApplicationTask[]>res.json());
   }
+  
+  //find archived graduation application
+  findArchivedGraduationApplications(): Observable<GraduationApplication[]> {
+      console.log('findArchivedGraduationApplications');
+      return this._http.get(this.GRADUATION_API + '/graduationApplications/archived')
+        .map((res: Response) => <GraduationApplication[]>res.json());
+    }
 
   findGraduationApplicationTaskByTaskId(taskId: string): Observable<GraduationApplicationTask> {
     console.log('findGraduationApplicationTaskByTaskId');

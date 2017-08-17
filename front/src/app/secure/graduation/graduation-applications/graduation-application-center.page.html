@@ -24,17 +24,24 @@
 
     <md-card>
       <md-tab-group [selectedIndex]="0">
-        <md-tab label="Assigned">
+        <md-tab label="Assigned Applications">
           <pams-assigned-graduation-application-task-list
             [graduationApplicationTasks]="assignedGraduationApplicationTasks$ | async"
             (view)="viewTask($event)"></pams-assigned-graduation-application-task-list>
         </md-tab>
-        <md-tab label="Pooled">
+        <md-tab label="Pooled Applications">
           <pams-pooled-graduation-application-task-list
             [graduationApplicationTasks]="pooledGraduationApplicationTasks$ | async"
             (claim)="claimTask($event)"></pams-pooled-graduation-application-task-list>
         </md-tab>
-      </md-tab-group>
+         <md-tab label="Archived Applications">
+         <!--  <pams-archived-graduation-application-task-list
+            [graduationApplications]="archivedGraduationApplications$ | async"
+             (view)="viewGraduationApplication($event)">
+             </pams-archived-graduation-application-task-list> -->
+        </md-tab>
+                
+       </md-tab-group>
     </md-card>
 
   </td-layout-manage-list>

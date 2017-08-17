@@ -15,6 +15,7 @@ import {CommonModule} from '../../../common/index';
 import {GraduationApplicationCreatorDialog} from './dialog/graduation-application-creator.dialog';
 import {AssignedGraduationApplicationTaskListComponent} from './component/assigned-graduation-application-task-list.component';
 import {PooledGraduationApplicationTaskListComponent} from './component/pooled-graduation-application-task-list.component';
+import {ArchivedGraduationApplicationListComponent} from './component/archived-graduation-application-list.component';
 import {GraduationApplicationDraftTaskPanel} from './panel/graduation-application-draft-task.panel';
 import {GraduationApplicationTaskWorkflowPanel} from './panel/graduation-application-task-workflow.panel';
 import {GraduationApplicationCheckTaskPanel} from './panel/graduation-application-check-task.panel';
@@ -45,6 +46,7 @@ import {GraduationApplicationTaskDetailPage} from './graduation-application-task
     //component
     AssignedGraduationApplicationTaskListComponent,
     PooledGraduationApplicationTaskListComponent,
+    ArchivedGraduationApplicationListComponent,
     GraduationApplicationTaskWorkflowPanel,
     GraduationApplicationDraftTaskPanel,
     GraduationApplicationRegisterTaskPanel,

@@ -21,6 +21,13 @@ export class GraduationApplicationEffects {
     .switchMap(() => this.graduationService.findPooledGraduationApplicationTasks())
     .map((graduationApplications) => this.graduationApplicationActions.findPooledGraduationApplicationTasksSuccess(graduationApplications));
 
+  //archived
+  @Effect() findArchivedGraduationApplications$ = this.actions$
+    .ofType(GraduationApplicationActions.FIND_ARCHIVED_GRADUATION_APPLICATIONS)
+    .switchMap(() => this.graduationService.findArchivedGraduationApplications())
+    .map((graduationApplications) => this.graduationApplicationActions.findArchivedGraduationApplicationsSuccess(graduationApplications));
+
+  
   @Effect() findGraduationApplicationTaskByTaskId = this.actions$
     .ofType(GraduationApplicationActions.FIND_GRADUATION_APPLICATION_TASK_BY_TASK_ID)
     .map((action) => action.payload)

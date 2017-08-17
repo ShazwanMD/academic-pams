@@ -43,6 +43,7 @@ export class GraduationApplicationCreatorDialog implements OnInit {
   save(graduationApplicationCreator: GraduationApplication, isValid: boolean) {
     this.store.dispatch(this.actions.startGraduationApplicationTask(graduationApplicationCreator));
     this.dialog.close();
+    this.router.navigate(['/secure/graduation/graduation-applications']);
   }
 
 }

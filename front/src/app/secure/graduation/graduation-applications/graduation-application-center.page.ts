@@ -7,6 +7,7 @@ import {Observable} from 'rxjs/Observable';
 import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';
 import {GraduationApplicationCreatorDialog} from './dialog/graduation-application-creator.dialog';
 import {GraduationApplicationActions} from './graduation-application.action';
+import { GraduationApplication } from "../../../shared/model/graduation/graduation-application.interface";
 
 @Component({
   selector: 'pams-graduation-application-center',
@@ -17,9 +18,11 @@ export class GraduationApplicationCenterPage implements OnInit {
 
   private ASSIGNED_GRADUATION_APPLICATION_TASKS = 'graduationModuleState.assignedGraduationApplicationTasks'.split('.');
   private POOLED_GRADUATION_APPLICATION_TASKS = 'graduationModuleState.pooledGraduationApplicationTasks'.split('.');
+  private ARCHIVED_GRADUATION_APPLICATIONS: string[] = 'termModuleState.archivedGraduationApplications'.split('.');
   private creatorDialogRef: MdDialogRef<GraduationApplicationCreatorDialog>;
   private assignedGraduationApplicationTasks$: Observable<GraduationApplicationTask>;
   private pooledGraduationApplicationTasks$: Observable<GraduationApplicationTask>;
+  private archivedGraduationApplications$: Observable<GraduationApplicationTask>;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -30,6 +33,7 @@ export class GraduationApplicationCenterPage implements OnInit {
 
     this.assignedGraduationApplicationTasks$ = this.store.select(...this.ASSIGNED_GRADUATION_APPLICATION_TASKS);
     this.pooledGraduationApplicationTasks$ = this.store.select(...this.POOLED_GRADUATION_APPLICATION_TASKS);
+    this.archivedGraduationApplications$ = this.store.select(...this.ARCHIVED_GRADUATION_APPLICATIONS);
   }
 
   showDialog(): void {
@@ -55,6 +59,11 @@ export class GraduationApplicationCenterPage implements OnInit {
     console.log('graduationApplication: ' + task.taskId);
     this.router.navigate(['/secure/graduation/graduation-applications/graduation-application-task-detail', task.taskId]);
   }
+  
+  viewGraduationApplication(graduationApplication: GraduationApplication) {
+      console.log('graduation applications: ' + graduationApplication.referenceNo);
+      this.router.navigate(['/secure/term/graduation-applications', graduationApplication.referenceNo]);
+    }
 
   ngOnInit(): void {
     console.log('find assigned/pooled graduation application tasks');
