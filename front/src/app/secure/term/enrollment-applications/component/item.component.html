@@ -1,6 +1,6 @@
 <md-card>
-  <md-card-title>{{enrollmentApplicationItem?.section?.code}}</md-card-title>
-  <md-card-subtitle>{{enrollmentApplicationItem?.section?.canonicalCode}}</md-card-subtitle>
+  <md-card-title>{{enrollmentApplicationItem?.section?.offering?.titleEn}}</md-card-title>
+  <md-card-subtitle>{{enrollmentApplicationItem?.section?.offering?.titleMs}}</md-card-subtitle>
   <md-divider></md-divider>
   <md-card-content> <!--Tab Section Here-->
     <md-tab-group>
@@ -17,7 +17,7 @@
             <span flex="20">Capacity</span> <span>{{enrollmentApplicationItem?.section?.capacity}}</span>
           </div>
            <div layout="row" class="pad-bottom">
-            <span flex="20">Semester</span> <span>{{enrollmentApplicationItem?.section?.ordinal}}</span>
+            <span flex="20">Section</span> <span>{{enrollmentApplicationItem?.section?.ordinal}}</span>
           </div>
           
         </div>

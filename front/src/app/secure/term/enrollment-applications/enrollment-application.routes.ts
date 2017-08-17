@@ -5,22 +5,16 @@ import {EnrollmentApplicationTaskDetailPage} from './enrollment-application-task
 import {StudentEnrollmentApplicationTaskDetailPage} from './student-enrollment-application-task-detail.page';
 import {EnrollmentApplicationDetailPage} from './enrollment-application-detail.page';
 import { ItemDetailPage } from "./item-detail.page";
+import {StudentEnrollmentApplicationDetailPage } from "./student-enrollment-application-detail.page";
 
 export const EnrollmentApplicationRoutes: Routes = [
   {path: 'term/enrollment-applications', component: EnrollmentApplicationCenterPage},
   {path: 'term/enrollment-applications/student-enrollment-center', component: StudentEnrollmentCenterPage},
-  {
-    path: 'term/enrollment-applications/enrollment-application-task-detail/:taskId',
-    component: EnrollmentApplicationTaskDetailPage
-  },
+  {path: 'term/enrollment-applications/enrollment-application-task-detail/:taskId',component: EnrollmentApplicationTaskDetailPage},
   {path: 'term/items/:id', component: ItemDetailPage},
-  {
-      path: 'term/enrollment-applications/student-enrollment-application-task-detail/:taskId',
-      component: StudentEnrollmentApplicationTaskDetailPage
-    },
-  {path: 'term/enrollment-applications/:referenceNo', component: StudentEnrollmentApplicationTaskDetailPage},
-  {
-    path: 'term/enrollment-applications/:referenceNo/enrollment-application-detail',
-    component: EnrollmentApplicationDetailPage
-  },
+  {path: 'term/enrollment-applications/student-enrollment-application-task-detail/:taskId', component: StudentEnrollmentApplicationTaskDetailPage},
+  {path: 'term/enrollment-applications/:referenceNo', component: StudentEnrollmentApplicationTaskDetailPage},  
+  {path: 'term/enrollment-applications/:referenceNo/student-enrollment-application-detail', component: StudentEnrollmentApplicationDetailPage},
+  {path: 'term/enrollment-applications/:referenceNo/enrollment-application-detail',
+    component: EnrollmentApplicationDetailPage},
 ];

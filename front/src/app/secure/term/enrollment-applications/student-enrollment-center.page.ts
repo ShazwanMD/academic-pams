@@ -70,7 +70,7 @@ export class StudentEnrollmentCenterPage implements OnInit {
 
   viewEnrollmentApplication(enrollmentApplication: EnrollmentApplication) {
     console.log('students applications: ' + enrollmentApplication.referenceNo);
-    this.router.navigate(['/secure/term/enrollment-applications', enrollmentApplication.referenceNo]);
+    this.router.navigate(['/secure/term/enrollment-applications/', enrollmentApplication.referenceNo , 'student-enrollment-application-detail']);
     //this.router.navigate(['/secure/term/offerings', offering.canonicalCode]);
   }
 

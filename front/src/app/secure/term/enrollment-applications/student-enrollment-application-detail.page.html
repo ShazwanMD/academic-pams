@@ -5,24 +5,21 @@
   <div md-content flex md-scroll-y>
     <div layout="column" layout-gt-md="row" class="inset">
       <div flex-gt-md="70">
-         <pams-item
-          [enrollmentApplicationItem]="enrollmentApplicationItem$ | async">
-        </pams-item>
-      <!--  
-        <pams-section-appointment-list
-          [section]="section$ | async"
-          [appointments]="appointments$ | async"
-          [appointment]="appointment$ | async">
-        </pams-section-appointment-list>
-        <pams-section-enrollment-list
-          [section]="section$ | async"
-          [enrollments]="enrollments$ | async">
-        </pams-section-enrollment-list>-->
-      </div> 
+        <!-- DISPLAY ENROLLMENT APPLICATION BY ADMISSION  -->
+        <pams-student-enrollment-application-list
+          [enrollmentApplication]="enrollmentApplication$ | async">
+        </pams-student-enrollment-application-list>
+        <md-card class="">
+          <pams-student-enrollment-application-item
+            [enrollmentApplication]="enrollmentApplication$ | async"
+            [enrollmentApplicationItems]="enrollmentApplicationItems$ | async">
+          </pams-student-enrollment-application-item>
+        </md-card>
+      </div>
       <div flex-gt-md="30">
-        <pams-item-action
-          [enrollmentApplicationItem]="enrollmentApplicationItem$ | async">
-        </pams-item-action> 
+        <!--  <pams-student-enrollment-application-task-detail-action
+       [enrollmentApplication]="enrollmentApplication$ | async">
+        </pams-student-enrollment-application-task-detail-action> -->
         <md-card>
           <md-card-title>Term Menu</md-card-title>
           <md-card-subtitle>Actions
@@ -36,10 +33,11 @@
               <h4 md-line>My Profile</h4>
               <p md-line>Go to my profile</p>
             </md-list-item>
-           
+            
           </md-nav-list>
-        </md-card> 
+        </md-card>
       </div>
     </div>
   </div>
 </td-layout-nav>
+
