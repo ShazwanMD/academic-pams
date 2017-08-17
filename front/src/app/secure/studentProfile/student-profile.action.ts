@@ -66,6 +66,24 @@ export class StudentProfileActions {
     };
   }
 
+    static FIND_ACADEMICSESSION_BY_STUDENT = '[StudentProfile] Find AcademicSession By Student';
+
+  findAcademicSessionByStudent(code): Action {
+    return {
+      type: StudentProfileActions.FIND_ACADEMICSESSION_BY_STUDENT,
+      payload: code
+    };
+  }
+
+  static FIND_ACADEMICSESSION_BY_STUDENT_SUCCESS = '[StudentProfile] Find AcademicSession By Student Success';
+
+  findAcademicSessionByStudentSuccess(message): Action {
+    return {
+      type: StudentProfileActions.FIND_ACADEMICSESSION_BY_STUDENT_SUCCESS,
+      payload: message
+    };
+  }
+
   /*==================================================================================================*/
   /*ADDRESS
   /*==================================================================================================*/

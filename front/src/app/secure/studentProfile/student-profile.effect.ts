@@ -50,6 +50,12 @@ export class StudentProfileEffects {
     .map(action => action.payload)
     .switchMap(() => this.profileService.findAddressessByStudent())
     .map(addreesses => this.studentProfileActions.findAddressessByStudentSuccess(addreesses));
+
+  @Effect() findAcademicSessionByStudent$ = this.actions$
+    .ofType(StudentProfileActions.FIND_ACADEMICSESSION_BY_STUDENT)
+    .map(action => action.payload)
+    .switchMap(code => this.profileService.findAcademicSessionByStudent(code))
+    .map(message => this.studentProfileActions.findAcademicSessionByStudentSuccess(message));
   /*==================================================================================================*/
   /*CONTACT - EFFECT*/
   /*==================================================================================================*/

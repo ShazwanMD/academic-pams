@@ -1,3 +1,4 @@
+import { AcademicSession } from './../app/shared/model/planner/academic-session.interface';
 import { HttpInterceptorService } from '@covalent/http';
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
@@ -36,6 +37,11 @@ export class ProfileService {
   findStudentsByIdentityNo(matricNo: string): Observable<Student> {
     return this._http.get(this.PROFILE_API + '/studentLogins/' + matricNo)
       .map((res: Response) => <Student>res.json());
+  }
+
+  findAcademicSessionByStudent(code: string): Observable<AcademicSession> {
+    return this._http.get(this.PROFILE_API + '/studentLogins/academicSession' + code)
+      .map((res: Response) => <AcademicSession>res.json());
   }
 
   /*==================================================================================================*/

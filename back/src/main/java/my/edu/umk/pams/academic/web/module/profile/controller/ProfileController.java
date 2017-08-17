@@ -9,9 +9,11 @@ import my.edu.umk.pams.academic.planner.model.AdCohort;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
 import my.edu.umk.pams.academic.profile.service.ProfileService;
 import my.edu.umk.pams.academic.security.service.SecurityService;
+import my.edu.umk.pams.academic.term.model.AdAdmission;
 import my.edu.umk.pams.academic.term.model.AdEnrollment;
 import my.edu.umk.pams.academic.term.service.TermService;
 import my.edu.umk.pams.academic.web.module.identity.vo.Student;
+import my.edu.umk.pams.academic.web.module.planner.vo.AcademicSession;
 import my.edu.umk.pams.academic.web.module.profile.vo.*;
 import my.edu.umk.pams.academic.web.module.term.controller.TermTransformer;
 import my.edu.umk.pams.academic.web.module.term.vo.Enrollment;
@@ -307,6 +309,35 @@ public class ProfileController {
 		return new ResponseEntity<List<Address>>(
 				profileTransformer.toAddressVos(profileService.findAddresses(student1)), HttpStatus.OK);
 	}
+	
+	@RequestMapping(value = "/studentLogins/academicSession/{code}", method = RequestMethod.GET)
+	public ResponseEntity<AcademicSession> findAcademicSessionByStudent(@PathVariable String code) {
+		// Get Current User
+		AdUser user = securityService.getCurrentUser();
+
+		AdStudent student = null;
+
+		if (user.getActor() instanceof AdStudent)
+			student = (AdStudent) user.getActor();
+		if (null == student)
+			throw new IllegalArgumentException("Student does not exists");
+		String identityNo = student.getIdentityNo();
+		AdStudent student1 = profileService.findStudentByMatricNo(identityNo);
+		LOG.debug("address", profileService.findAddresses(student1));
+		
+		AdAcademicSession academicSession = plannerService.findAcademicSessionByCode(code);
+		List<AdAdmission> admissions = termService.findAdmissions(academicSession);
+		for (AdAdmission admission : admissions) {
+			List<AdEnrollment> enrollments = termService.findEnrollments(admission);
+			for (AdEnrollment enrollment : enrollments) {
+				
+			}
+		}
+		
+		return new ResponseEntity<AcademicSession>(HttpStatus.OK);
+	}
+	
+	
 
 	// ====================================================================================================
 	// STUDENT PROFILE CONTACT
