@@ -3,7 +3,7 @@ import { StudentAddressEditorDialog } from './../dialog/student-address-editor.d
 import { StudentContactEditorDialog } from './../dialog/student-contact-editor.dialog';
 import { ProfileActions } from './../../profile/profile.action';
 import { Observable } from 'rxjs/Observable';
-import { MdDialog, MdDialogRef, MdDialogConfig } from '@angular/material';
+import { MdDialog, MdDialogRef, MdDialogConfig, MdSnackBar } from '@angular/material';
 import { FormBuilder } from '@angular/forms';
 import { StudentProfileModuleState } from './../index';
 import { Store } from '@ngrx/store';
@@ -53,6 +53,8 @@ export class StudentProfileListPage implements OnInit {
     @Input() contacts: Contact[];
     @Input() enrollments: Enrollment[];
     @Input() admissions: Admission[];
+    
+    @Output() view2 = new EventEmitter<Admission>();
 
 
     //Constructor
@@ -63,6 +65,7 @@ export class StudentProfileListPage implements OnInit {
         private vcf: ViewContainerRef,
         private store: Store<StudentProfileModuleState>,
         private formBuilder: FormBuilder,
+        private snackBar: MdSnackBar,
         private dialog: MdDialog) {
 
     }
@@ -109,6 +112,7 @@ export class StudentProfileListPage implements OnInit {
   //Admission
     private columnAdmission: any[] = [
         { name: 'id', label: 'Id' },
+        { name: 'academicSession.code', label: 'Session' },
         { name: 'cgpa', label: 'CGPA' },
         { name: 'creditEarned', label: 'creditEarned' },
         { name: 'creditTaken', label: 'creditEarned' },
@@ -116,6 +120,7 @@ export class StudentProfileListPage implements OnInit {
         { name: 'ordinal', label: 'Ordinal' },
         { name: 'standing', label: 'Standing' },
         { name: 'status', label: 'Status' },
+        {name: 'action', label: ''},
         
     ];
     
@@ -388,5 +393,13 @@ export class StudentProfileListPage implements OnInit {
     statusGraduation(){
         this.router.navigate(['/secure/graduation/graduation-applications/student']);
     }
+    
+    /*viewAdmission(admission: Admission): void {
+        console.log('Emitting admission');
+        let snackBarRef = this.snackBar.open('Viewing semester registration', 'OK');
+        snackBarRef.afterDismissed().subscribe(() => {
+          this.view.emit(admission);
+        });
+      }*/
 
 }

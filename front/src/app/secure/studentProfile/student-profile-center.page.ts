@@ -81,5 +81,12 @@ export class StudentProfileCenterPage implements OnInit {
     //this.actions.findStudentByIdentityNo(student.identityNo);
 
   }
+  
+  /*viewAdmission(admission: Admission) {
+      console.log('admission: ' + admission.id);
+      this.router.navigate(['/secure/term/admissions', admission.id]);
+
+    }*/
+
 }
 

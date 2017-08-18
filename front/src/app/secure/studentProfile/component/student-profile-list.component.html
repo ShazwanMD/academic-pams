@@ -283,6 +283,13 @@
            <div *ngIf="value != null">{{value}}</div>       
         </div>
       </template>
+       <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
+    <div layout="row">
+      <a md-button color="accent" class="text-upper" [routerLink]="['/secure/term/admissions', row.id]"><!-- (click)="viewAdmission(row)" -->
+        <span>View </span>
+      </a>
+    </div>
+  </template>
                   </td-data-table>
                 </md-card-content>
               </md-card>
