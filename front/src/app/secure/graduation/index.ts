@@ -21,11 +21,19 @@ import {
   graduationApplicationTaskReducer,
   GraduationApplicationTaskState
 } from './graduation-applications/graduation-application-task.reducer';
+import {
+    graduationApplicationListReducer,
+    GraduationApplicationListState,
+    archivedGraduationApplicationListReducer
+  } from './graduation-applications/graduation-application-list.reducer';
 import {GraduationApplicationTask} from '../../shared/model/graduation/graduation-application-task.interface';
+import {GraduationApplication} from '../../shared/model/graduation/graduation-application.interface';
+
 
 export interface GraduationModuleState {
   assignedGraduationApplicationTasks: GraduationApplicationTaskListState;
   pooledGraduationApplicationTasks: GraduationApplicationTaskListState;
+  archivedGraduationApplications: GraduationApplicationListState;
   graduationApplicationTask: GraduationApplicationTaskState;
   graduationApplication: GraduationApplicationState;
 }
@@ -34,6 +42,7 @@ export const INITIAL_GRADUATION_STATE: GraduationModuleState =
   <GraduationModuleState>{
     assignedGraduationApplicationTasks: [],
     pooledGraduationApplicationTasks: [],
+    archivedGraduationApplications: <GraduationApplication[]>[],
     graduationApplicationTask: <GraduationApplicationTask>{},
     graduationApplication: {},
   };
@@ -41,6 +50,7 @@ export const INITIAL_GRADUATION_STATE: GraduationModuleState =
 export const graduationModuleReducers = {
   assignedGraduationApplicationTasks: assignedGraduationApplicationTaskListReducer,
   pooledGraduationApplicationTasks: pooledGraduationApplicationTaskListReducer,
+  archivedGraduationApplications: archivedGraduationApplicationListReducer,
   graduationApplicationTask: graduationApplicationTaskReducer,
   graduationApplication: graduationApplicationReducer,
 };

@@ -48,6 +48,7 @@ export class GraduationApplicationEffects {
     .mergeMap((action) => from([action,
         this.graduationApplicationActions.findAssignedGraduationApplicationTasks(),
         this.graduationApplicationActions.findPooledGraduationApplicationTasks(),
+        //this.graduationApplicationActions.findArchivedGraduationApplications(),
       ],
     ));
 

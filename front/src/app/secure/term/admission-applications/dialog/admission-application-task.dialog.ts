@@ -74,6 +74,10 @@ export class AdmissionApplicationTaskDialog implements OnInit {
         admissionApplication.description = admissionApplication.student.identityNo + ' ' + admissionApplication.academicSession.code;
         this.store.dispatch( this.actions.startAdmissionApplicationTask( admissionApplication ) );
         this.dialog.close();
+        let snackBarRef = this.snackBar.open( 'Thank you  ' + admissionApplication.student.name + '! Your application has been saved.', '', { duration: 5000 } );
+        snackBarRef.afterDismissed().subscribe(() => {
+                                 
+        } );
         this.router.navigate( ['/secure/term/admission-applications/admission-application-center2'] );
 
     }

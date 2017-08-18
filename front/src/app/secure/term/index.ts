@@ -138,6 +138,7 @@ export interface TermModuleState {
   pooledAdmissionApplicationTasks: AdmissionApplicationTaskListState;
   archivedAdmissionApplications: AdmissionApplicationListState;
   admissionApplicationTask: AdmissionApplicationTaskState;
+  
   // enrollment
   assignedEnrollmentApplicationTasks: EnrollmentApplicationTaskListState;
   pooledEnrollmentApplicationTasks: EnrollmentApplicationTaskListState;

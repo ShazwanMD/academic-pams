@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Store} from '@ngrx/store';
-import {MdDialogRef} from '@angular/material';
+import {MdDialogRef, MdSnackBar} from '@angular/material';
 import {EnrollmentApplicationActions} from '../enrollment-application.action';
 import {EnrollmentApplication} from '../../../../shared/model/term/enrollment-application.interface';
 import {TermModuleState} from '../../index';
@@ -28,6 +28,7 @@ export class EnrollmentApplicationTaskDialog implements OnInit {
   constructor(private router: Router,
               private formBuilder: FormBuilder,
               private route: ActivatedRoute,
+              private snackBar: MdSnackBar,
               private store: Store<TermModuleState>,
               private actions: EnrollmentApplicationActions,
               private dialog: MdDialogRef<EnrollmentApplicationTaskDialog>) {
@@ -65,6 +66,10 @@ export class EnrollmentApplicationTaskDialog implements OnInit {
     console.log(JSON.stringify(enrollmentApplication));
     this.store.dispatch(this.actions.startEnrollmentApplicationTask(enrollmentApplication));
     this.dialog.close();
+    let snackBarRef = this.snackBar.open( 'Thank you ' + enrollmentApplication.admission.student.name + '! New application has been saved.', '', { duration: 5000 } );
+    snackBarRef.afterDismissed().subscribe(() => {
+                             
+    } );
     this.router.navigate(['/secure/term/enrollment-applications/student-enrollment-center']);
   }
 }

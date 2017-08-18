@@ -6,6 +6,7 @@ import {appRoutes, appRoutingProviders} from '../../../app.routes';
 import {EffectsModule} from '@ngrx/effects';
 import {CovalentCoreModule} from '@covalent/core';
 import {GraduationApplicationCenterPage} from './graduation-application-center.page';
+import {StudentGraduationApplicationCenterPage} from './student-graduation-application-center.page';
 import {CommonService, IdentityService} from '../../../../services';
 import {GraduationService} from '../../../../services/graduation.service';
 import {GraduationApplicationEffects} from './graduation-application.effect';
@@ -41,6 +42,7 @@ import {GraduationApplicationTaskDetailPage} from './graduation-application-task
   declarations: [
     // page
     GraduationApplicationCenterPage,
+    StudentGraduationApplicationCenterPage,
     GraduationApplicationTaskDetailPage,
 
     //component

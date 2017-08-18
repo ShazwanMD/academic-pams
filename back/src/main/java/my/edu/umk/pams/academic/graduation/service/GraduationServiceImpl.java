@@ -10,6 +10,7 @@ import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
 import my.edu.umk.pams.academic.security.service.SecurityService;
 import my.edu.umk.pams.academic.system.service.SystemService;
+import my.edu.umk.pams.academic.term.model.AdAdmissionApplication;
 import my.edu.umk.pams.academic.workflow.service.WorkflowConstants;
 import my.edu.umk.pams.academic.workflow.service.WorkflowService;
 import org.activiti.engine.task.Task;
@@ -162,5 +163,10 @@ public class GraduationServiceImpl implements GraduationService {
         map.put(WorkflowConstants.CANCEL_DECISION, false);
         return map;
     }
+
+	@Override
+	public List<AdGraduationApplication> findGraduationApplicationsByFlowStates(AdFlowState... flowStates) {
+		return graduationApplicationDao.findByFlowStates(flowStates);
+	}
 
 }

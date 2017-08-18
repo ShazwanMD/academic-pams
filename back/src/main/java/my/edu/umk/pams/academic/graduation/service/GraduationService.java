@@ -1,7 +1,10 @@
 package my.edu.umk.pams.academic.graduation.service;
 
+import my.edu.umk.pams.academic.core.AdFlowState;
 import my.edu.umk.pams.academic.graduation.model.AdGraduationApplication;
 import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
+import my.edu.umk.pams.academic.term.model.AdAdmissionApplication;
+
 import org.activiti.engine.task.Task;
 
 import java.util.List;
@@ -23,6 +26,8 @@ public interface GraduationService {
     List<Task> findAssignedGraduationApplicationTasks(Integer offset, Integer limit);
 
     List<Task> findPooledGraduationApplicationTasks(Integer offset, Integer limit);
+    
+    List<AdGraduationApplication> findGraduationApplicationsByFlowStates(AdFlowState... flowStates);
 
     String startGraduationApplicationTask(AdGraduationApplication application);
 

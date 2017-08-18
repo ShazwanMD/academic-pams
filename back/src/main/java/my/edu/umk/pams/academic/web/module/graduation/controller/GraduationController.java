@@ -1,5 +1,7 @@
 package my.edu.umk.pams.academic.web.module.graduation.controller;
 
+import my.edu.umk.pams.academic.core.AdFlowState;
+
 import my.edu.umk.pams.academic.graduation.model.AdGraduationApplication;
 import my.edu.umk.pams.academic.graduation.model.AdGraduationApplicationImpl;
 import my.edu.umk.pams.academic.graduation.service.GraduationService;
@@ -11,8 +13,10 @@ import my.edu.umk.pams.academic.planner.service.PlannerService;
 import my.edu.umk.pams.academic.profile.service.ProfileService;
 import my.edu.umk.pams.academic.security.integration.AdAutoLoginToken;
 import my.edu.umk.pams.academic.system.service.SystemService;
+import my.edu.umk.pams.academic.term.model.AdAdmissionApplication;
 import my.edu.umk.pams.academic.web.module.graduation.vo.GraduationApplication;
 import my.edu.umk.pams.academic.web.module.graduation.vo.GraduationApplicationTask;
+import my.edu.umk.pams.academic.web.module.term.vo.AdmissionApplication;
 import my.edu.umk.pams.academic.workflow.service.WorkflowService;
 import org.activiti.engine.task.Task;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -91,6 +95,14 @@ public class GraduationController {
         List<Task> tasks = graduationService.findPooledGraduationApplicationTasks(0, 100);
         return new ResponseEntity<List<GraduationApplicationTask>>(graduationTransformer.toGraduationApplicationTaskVos(tasks), HttpStatus.OK);
     }
+    
+    @RequestMapping(value = "/graduationApplications/archived", method = RequestMethod.GET)
+	public ResponseEntity<List<GraduationApplication>> findArchivedGraduationsApplications() {
+		List<AdGraduationApplication> graduationApplications = graduationService.findGraduationApplicationsByFlowStates(
+				AdFlowState.COMPLETED, AdFlowState.REMOVED, AdFlowState.CANCELLED);
+		return new ResponseEntity<List<GraduationApplication>>(
+				graduationTransformer.toGraduationApplicationVos(graduationApplications), HttpStatus.OK);
+	}
 
     @RequestMapping(value = "/graduationApplications/startTask", method = RequestMethod.POST)
     public void startGraduationApplicationTask(@RequestBody GraduationApplication vo) throws Exception {

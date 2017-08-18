@@ -27,7 +27,7 @@ export class ArchivedGraduationApplicationListComponent implements AfterViewInit
   fromRow: number = 1;
   currentPage: number = 1;
   pageSize: number = 20;
-  sortBy: string = 'referenceNo';
+  sortBy: string = 'id';
   sortOrder: TdDataTableSortingOrder = TdDataTableSortingOrder.Descending;
 
   @Input() graduationApplications: GraduationApplication[];

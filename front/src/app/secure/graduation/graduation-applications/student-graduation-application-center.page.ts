@@ -10,11 +10,11 @@ import {GraduationApplicationActions} from './graduation-application.action';
 import { GraduationApplication } from "../../../shared/model/graduation/graduation-application.interface";
 
 @Component({
-  selector: 'pams-graduation-application-center',
-  templateUrl: './graduation-application-center.page.html',
+  selector: 'pams-student-graduation-application-center',
+  templateUrl: './student-graduation-application-center.page.html',
 })
 
-export class GraduationApplicationCenterPage implements OnInit {
+export class StudentGraduationApplicationCenterPage implements OnInit {
 
   private ASSIGNED_GRADUATION_APPLICATION_TASKS = 'graduationModuleState.assignedGraduationApplicationTasks'.split('.');
   private POOLED_GRADUATION_APPLICATION_TASKS = 'graduationModuleState.pooledGraduationApplicationTasks'.split('.');
@@ -22,7 +22,7 @@ export class GraduationApplicationCenterPage implements OnInit {
   private creatorDialogRef: MdDialogRef<GraduationApplicationCreatorDialog>;
   private assignedGraduationApplicationTasks$: Observable<GraduationApplicationTask>;
   private pooledGraduationApplicationTasks$: Observable<GraduationApplicationTask>;
-  private archivedGraduationApplications$: Observable<GraduationApplication>;
+  private archivedGraduationApplications$: Observable<GraduationApplicationTask>;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -66,10 +66,9 @@ export class GraduationApplicationCenterPage implements OnInit {
     }
 
   ngOnInit(): void {
-    console.log('find assigned/pooled graduation application tasks');
+    console.log('find assigned/archived graduation application tasks');
     this.store.dispatch(this.actions.findAssignedGraduationApplicationTasks());
     this.store.dispatch(this.actions.findPooledGraduationApplicationTasks());
-   // this.store.dispatch(this.actions.findArchivedGraduationApplications());
-    
+    this.store.dispatch(this.actions.findArchivedGraduationApplications());
   }
 }

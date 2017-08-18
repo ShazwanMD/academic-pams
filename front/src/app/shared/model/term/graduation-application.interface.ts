@@ -6,18 +6,13 @@ import {Program} from '../planner/program.interface';
 import {Student} from '../identity/student.interface';
 
 export interface GraduationApplication extends MetaObject {
-    //refer  front
-  /*referenceNo: string;
-  sourceNo: string;
-  auditNo: string;
-  description: string;
-  ordinal: number;
-  cancelComment: string;
-  removeComment: string;
-  actor: Actor;
-  student: Student;
-  academicSession: AcademicSession;
-  program: Program;
-  studyCenter: StudyCenter;*/
+    referenceNo: string;
+sourceNo: string;
+description: string;
+memo: string;
+cgpa: number;
+creditHour: number;
+student: Student;
+academicSession: AcademicSession;
 }
 

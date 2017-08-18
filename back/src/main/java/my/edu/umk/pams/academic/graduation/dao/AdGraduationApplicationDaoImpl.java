@@ -1,10 +1,13 @@
 package my.edu.umk.pams.academic.graduation.dao;
 
+import my.edu.umk.pams.academic.core.AdFlowState;
 import my.edu.umk.pams.academic.core.AdMetaState;
 import my.edu.umk.pams.academic.core.GenericDaoSupport;
 import my.edu.umk.pams.academic.graduation.model.AdGraduationApplication;
 import my.edu.umk.pams.academic.graduation.model.AdGraduationApplicationImpl;
 import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
+import my.edu.umk.pams.academic.term.model.AdAdmissionApplication;
+
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.slf4j.Logger;
@@ -68,4 +71,16 @@ public class AdGraduationApplicationDaoImpl extends GenericDaoSupport<Long, AdGr
         query.setInteger("metaState", AdMetaState.ACTIVE.ordinal());
         return ((Long) query.uniqueResult()).intValue();
     }
+
+	@Override
+    public List<AdGraduationApplication> findByFlowStates(AdFlowState... flowStates) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select p from AdGraduationApplication p where " +
+                "p.flowdata.state in (:flowStates) " +
+                "and p.metadata.state = :metaState");
+        query.setParameterList("flowStates", flowStates);
+        query.setInteger("metaState", AdMetaState.ACTIVE.ordinal());
+        return (List<AdGraduationApplication>) query.list();
+    }
+	
 }
