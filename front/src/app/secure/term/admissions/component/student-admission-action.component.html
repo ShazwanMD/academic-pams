@@ -8,7 +8,7 @@
     </div>
   </md-card-content>
 </md-card>
-<md-card>
+<!-- <md-card>
   <md-card-title>Action</md-card-title>
   <md-card-subtitle>Actions available on current semester registration</md-card-subtitle>
   <md-divider></md-divider>
@@ -22,4 +22,19 @@
 
     <md-divider></md-divider>
   </md-nav-list>
-</md-card>
+</md-card> -->
+<md-card>
+        <md-card-title>Menu</md-card-title>
+        <md-card-subtitle>Actions
+          available on current section
+        </md-card-subtitle>
+        <md-divider></md-divider>
+        <md-nav-list
+          flex dense>
+          <md-list-item [routerLink]="['/secure']">
+            <md-icon md-list-avatar>email</md-icon>
+            <h4 md-line>My Profile</h4>
+            <p md-line>Go to my profile </p>
+          </md-list-item>
+        </md-nav-list>
+      </md-card>
