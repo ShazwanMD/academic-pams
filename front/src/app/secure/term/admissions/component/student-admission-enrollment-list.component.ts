@@ -13,6 +13,7 @@ import {
   TdDataTableService,
   TdDataTableSortingOrder
 } from '@covalent/core';
+import { EnrollmentApplicationTaskDialog } from "../../enrollment-applications/dialog/enrollment-application-task.dialog";
 
 @Component({
   selector: 'pams-student-admission-enrollment-list',
@@ -34,6 +35,7 @@ export class StudentAdmissionEnrollmentListComponent implements OnInit {
   ];
   private selectedRows: Enrollment[];
   private creatorDialogRef: MdDialogRef<AdmissionEnrollmentDialog>;
+  private creatorDialogRef2: MdDialogRef<EnrollmentApplicationTaskDialog>;
 
   filteredData: any[];
   filteredTotal: number;
@@ -126,5 +128,22 @@ export class StudentAdmissionEnrollmentListComponent implements OnInit {
       this.view.emit(enrollment);
     });
   }
+  
+//COURSE ENROLLMENT
+  courseEnroll(): void {
+      let config = new MdDialogConfig();
+      config.viewContainerRef = this.vcf;
+      config.role = 'dialog';
+      config.width = '70%';
+      config.height = '50%';
+      config.position = {top: '0px'};
+      this.creatorDialogRef2 = this.dialog.open(EnrollmentApplicationTaskDialog, config);
+      this.creatorDialogRef2.componentInstance.admission = this.admission;
+      this.creatorDialogRef2.afterClosed().subscribe((res) => {
+        console.log('close dialog');
+        
+        // load something here
+      });
+    }
 
 }

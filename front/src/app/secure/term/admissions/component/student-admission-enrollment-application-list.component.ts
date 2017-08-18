@@ -16,10 +16,8 @@ import {AdmissionEnrollmentDialog} from '../dialog/admission-enrollment.dialog';
 export class StudentAdmissionEnrollmentApplicationListComponent implements OnInit {
 
   private columns: any[] = [
-    {name: 'id', label: 'Id'}, //referenceNo
+    {name: 'id', label: 'Id'},
     {name: 'referenceNo', label: 'Reference No.'},
-    {name: 'auditNo', label: 'Audit No.'},
-    {name: 'sourceNo', label: 'Source No.'},
     {name: 'description', label: 'Description'},
     {name: 'applicationType', label: 'Application Type'},
     {name: 'action', label: ''},

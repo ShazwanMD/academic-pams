@@ -53,7 +53,6 @@ export class AdmissionApplicationTaskDialog implements OnInit {
         this.createForm = this.formBuilder.group( {
             id: [undefined],
             //student: <Student>{},
-            //academicSession: <AcademicSession>{},
             academicSession: ['', Validators.required],
         } );
 

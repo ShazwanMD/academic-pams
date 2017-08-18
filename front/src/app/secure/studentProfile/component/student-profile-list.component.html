@@ -1,22 +1,15 @@
 <td-layout-manage-list #list>
   <md-nav-list list-items><!-- class="text-upper" -->
-        <a md-list-item (click)="semesterRegister()" color="accent"   ><!-- [routerLink]="['/secure/term/admission-applications/admission-application-center2/', student.identityNo]" -->
+        <a md-list-item (click)="semesterRegister()" color="accent"   >
          <md-icon>create</md-icon>
          <span>Apply Semester Registration</span>
       </a>
-      <a md-list-item (click)="statusSemesterRegister()" color="accent"   ><!-- [routerLink]="['/secure/term/admission-applications/admission-application-center2/', student.identityNo]" -->
+      <a md-list-item (click)="statusSemesterRegister()" color="accent">
          <md-icon>drafts</md-icon>
          <span>Registration Status </span>
       </a>
       <md-divider></md-divider>
-       <a md-list-item (click)="courseEnroll()" color="accent"  mdTooltip="View offerings info" >
-          <md-icon>create</md-icon>
-        <span>Apply Course Enrollment</span>
-      </a>
-      <a md-list-item (click)="statusCourseEnroll()" color="accent"  mdTooltip="View offerings info">
-          <md-icon>drafts</md-icon>
-        <span>Enrollment Status</span>
-      </a>
+     
      <!--  <md-divider></md-divider>
        <a md-list-item (click)="applyGraduation()" color="accent"  mdTooltip="View offerings info">
           <md-icon>create</md-icon>
@@ -285,7 +278,7 @@
       </template>
        <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
     <div layout="row">
-      <a md-button color="accent" class="text-upper" [routerLink]="['/secure/term/admissions', row.id]"><!-- (click)="viewAdmission(row)" -->
+      <a md-button color="accent" class="text-upper" [routerLink]="['/secure/term/admissions', row.id, 'student-admission-detail']"><!-- (click)="viewAdmission(row)" -->
         <span>View </span>
       </a>
     </div>

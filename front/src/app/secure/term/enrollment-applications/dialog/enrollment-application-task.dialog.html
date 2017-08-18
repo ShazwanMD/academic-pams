@@ -1,17 +1,17 @@
-<h2 md-dialog-title>Create New Course Enrollment</h2>
+<h2 md-dialog-title>Create New Course Enrollment {{_admission.id}}</h2>
 <md-dialog-content>
 <form [formGroup]="createForm" novalidate>
 	<table style="height: 84px;" width="544">
 		<tbody>
 			<tr>
 				<td>Name</td>
-				<td>:</td>
-				<td>{{_student.name}}</td>
+				<td>: {{_admission.student.name}}</td>
+				<td></td>
 			</tr>
 			<tr>
 				<td>Identity No</td>
-				<td>:</td>
-				<td>{{_student.identityNo}}</td>
+				<td>: {{_admission.student.identityNo}}</td>
+				<td></td>
 			</tr>
 		</tbody>
 	</table>
@@ -25,13 +25,13 @@
 			<font size="3" color="red">Please insert description should be
 				at least {{minLength}} characters!</font>
 		</div>
-		<pams-admission-select [placeholder]="'Select Student'"
+		<!-- <pams-admission-select [placeholder]="'Select Student'"
 			[innerFormControl]="createForm.controls.admission"
 			fxFlex="calc(100%-25px)" class="pad-bottom">
 		</pams-admission-select>
 		<div class="tc-red-600"
 			*ngIf="createForm.get('admission').invalid && createForm.get('admission').touched">
-			Please choose admission</div>
+			Please choose admission</div> -->
 
 		<pams-academic-session-select [placeholder]="'Select Session'"
 			[innerFormControl]="createForm.controls.academicSession"
@@ -45,7 +45,7 @@
 </md-dialog-content>
 <md-dialog-actions align="end">
 <button md-raised-button color="accent" [disabled]="createForm.invalid"
-	(click)="save(createForm.value)">{{edit ? 'Submit Application'
+	(click)="save(createForm.value, createForm.valid)">{{edit ? 'Submit Application'
 	: 'Save'}}</button>
 <!-- <button md-raised-button color="accent"
           (click)="save(createForm.value, createForm.valid)">Save

@@ -53,7 +53,7 @@ export class StudentProfileListPage implements OnInit {
     @Input() contacts: Contact[];
     @Input() enrollments: Enrollment[];
     @Input() admissions: Admission[];
-    
+        
     @Output() view2 = new EventEmitter<Admission>();
 
 
@@ -111,7 +111,6 @@ export class StudentProfileListPage implements OnInit {
       
   //Admission
     private columnAdmission: any[] = [
-        { name: 'id', label: 'Id' },
         { name: 'academicSession.code', label: 'Session' },
         { name: 'cgpa', label: 'CGPA' },
         { name: 'creditEarned', label: 'creditEarned' },
@@ -355,7 +354,6 @@ export class StudentProfileListPage implements OnInit {
         config.height = '50%';
         config.position = {top: '0px'};
         this.creatorDialogRef2 = this.dialog.open(EnrollmentApplicationTaskDialog, config);
-        this.creatorDialogRef2.componentInstance.student = this.student;
         this.creatorDialogRef2.afterClosed().subscribe((res) => {
           console.log('close dialog');
           

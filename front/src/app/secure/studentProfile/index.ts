@@ -49,6 +49,7 @@ export interface StudentProfileModuleState {
     contacts: ContactListState;
     enrollments: EnrollmentListState;
     admissions: AdmissionListState;
+    admission: AdmissionListState;
 
 
 };
@@ -63,6 +64,7 @@ export const INITIAL_STUDENT_PROFILE_STATE: StudentProfileModuleState =
         contacts: <Contact[]>[],
         enrollments: <Enrollment[]>[],
         admissions: <Admission[]>[],
+        admission: <Admission[]>[],
 
     };
 
@@ -76,6 +78,7 @@ export const studentProfileModuleReducers = {
     contacts: contactListReducer,
     enrollments: enrollmentListReducer,
     admissions: admissionListReducer,
+    admission: admissionListReducer,
 
 };
 

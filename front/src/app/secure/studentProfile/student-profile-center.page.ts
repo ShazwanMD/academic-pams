@@ -36,6 +36,7 @@ export class StudentProfileCenterPage implements OnInit {
   private CONTACTS: string[] = 'studentProfileModuleState.contacts'.split('.');
   private ENROLLMENTS: string[] = 'studentProfileModuleState.enrollments'.split('.');
   private ADMISSIONS: string[] = 'studentProfileModuleState.admissions'.split('.');
+  
 
   private students$: Observable<Student[]>;
   private student$: Observable<Student>;
@@ -45,6 +46,7 @@ export class StudentProfileCenterPage implements OnInit {
   private contacts$: Observable<Contact>;
   private enrollments$: Observable<Enrollment>;
   private admissions$: Observable<Admission>;
+  
 
   private _student: Student;
   constructor(private router: Router,
@@ -64,6 +66,7 @@ export class StudentProfileCenterPage implements OnInit {
     this.contacts$ = this.store.select(...this.CONTACTS);
     this.enrollments$ = this.store.select(...this.ENROLLMENTS);
     this.admissions$ = this.store.select(...this.ADMISSIONS);
+    
   }
 
   goBack(route: string): void {
