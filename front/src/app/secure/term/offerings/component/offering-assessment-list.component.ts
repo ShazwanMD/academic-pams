@@ -5,7 +5,7 @@ import {AssessmentActions} from '../../assessments/assessment.action';
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output, ViewContainerRef} from '@angular/core';
 import {Assessment} from '../../../../shared/model/term/assessment.interface';
 import {Offering} from '../../../../shared/model/term/offering.interface';
-import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';
+import {MdDialog, MdDialogConfig, MdDialogRef, MdSnackBar} from '@angular/material';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AssessmentEditorDialog} from '../../assessments/dialog/assessment-creator.dialog';
 
@@ -36,6 +36,7 @@ export class OfferingAssessmentListComponent implements OnInit {
               private store: Store<TermModuleState>,
               private formBuilder: FormBuilder,
               private vcf: ViewContainerRef,
+              private snackBar: MdSnackBar,
               private dialog: MdDialog,) {
   }
 
@@ -89,8 +90,23 @@ export class OfferingAssessmentListComponent implements OnInit {
   }
 
   deleteAssessment(assessment: Assessment): void {
-    this.store.dispatch(this.actions.deleteAssessment(this.offering, assessment));
-    console.log('deleteAssessment:{}', assessment);
+    // this.store.dispatch(this.actions.deleteAssessment(this.offering, assessment));
+    // console.log('deleteAssessment:{}', assessment);
+    
+  //start confirmation dialog
+    window.confirm("Are you sure to delete this assessment?");
+    if (confirm("Are you sure to delete this assessment?") == true) {
+        this.store.dispatch(this.actions.deleteAssessment(this.offering, assessment));
+        
+        let snackBarRef = this.snackBar.open( 'Assessment: ' + assessment.code + ' has been deleted', '', { duration: 3000 } );
+        snackBarRef.afterDismissed().subscribe(() => {
+        } );
+    } else {
+        let snackBarRef = this.snackBar.open( 'Assessment: ' + assessment.code + ' cancel deleted', '', { duration: 3000 } );
+        snackBarRef.afterDismissed().subscribe(() => {
+        } );
+    }
+    //end confirmation dialog
   }
 }
 

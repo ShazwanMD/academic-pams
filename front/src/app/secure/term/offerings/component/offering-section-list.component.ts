@@ -144,13 +144,13 @@ export class OfferingSectionListComponent implements AfterViewInit, OnChanges {
 
     deleteSection( section: Section ): void {
         if ( section.enrollmentCount || section.appointmentCount > 0 ) {
-            console.log( "Don't delete this Section" ); //try to print at console
+            console.log( "Don't delete this Section" );
             let snackBarRef = this.snackBar.open( 'Section cannot be deleted', 'OK' );
         } else {
-            console.log( 'deleteSection' ); // move on
-            this.store.dispatch( this.actions.deleteSection( this.offering, section ) );
+            //this.store.dispatch( this.actions.deleteSection( this.offering, section ) );
             window.confirm("Are you sure to delete this section?");
             if (confirm("Are you sure to delete this section?") == true) {
+              this.store.dispatch( this.actions.deleteSection( this.offering, section ) );
                 let snackBarRef = this.snackBar.open( 'Section: ' + section.code + ' has been deleted', '', { duration: 3000 } );
                 snackBarRef.afterDismissed().subscribe(() => {
                 } );

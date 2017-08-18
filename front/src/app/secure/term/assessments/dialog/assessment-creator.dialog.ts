@@ -5,7 +5,7 @@ import {Assessment} from '../../../../shared/model/term/assessment.interface';
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Store} from '@ngrx/store';
-import {MdDialogRef} from '@angular/material';
+import {MdDialogRef, MdSnackBar} from '@angular/material';
 import {TermModuleState} from '../../index';
 
 @Component({
@@ -25,6 +25,7 @@ export class AssessmentEditorDialog implements OnInit {
               private route: ActivatedRoute,
               private store: Store<TermModuleState>,
               private actions: AssessmentActions,
+              private snackBar: MdSnackBar,
               private dialog: MdDialogRef<AssessmentEditorDialog>) {
   }
 
@@ -66,5 +67,8 @@ export class AssessmentEditorDialog implements OnInit {
     if (this.edit) this.store.dispatch(this.actions.updateAssessment(this._offering, assessment));
     else this.store.dispatch(this.actions.addAssessment(this._offering, assessment));
     this.dialog.close();
+    let snackBarRef = this.snackBar.open( 'New assessment: ' + assessment.code + ' has been inserted', '', { duration: 3000 } );
+    snackBarRef.afterDismissed().subscribe(() => {
+       } );
   }
 }
