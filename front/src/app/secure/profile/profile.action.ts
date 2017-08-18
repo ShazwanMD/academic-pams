@@ -191,6 +191,25 @@ export class ProfileActions {
       payload: enrollments
     };
   }
+  
+  //find Admissions By Student
+  static FIND_ADMISSIONS_BY_STUDENT = '[Profile] Find Admissions';
+
+  findAdmissions(student): Action {
+    return {
+      type: ProfileActions.FIND_ADMISSIONS_BY_STUDENT,
+      payload: student
+    };
+  }
+
+  static FIND_ADMISSIONS_BY_STUDENT_SUCCESS = '[Profile] Find Admissions Success';
+
+  findAdmissionsSuccess(admissions): Action {
+    return {
+      type: ProfileActions.FIND_ADMISSIONS_BY_STUDENT_SUCCESS,
+      payload: admissions
+    };
+  }
 
   /*==================================================================================================*/
   /*ADD / UPD STUDENT*/

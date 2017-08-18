@@ -36,6 +36,8 @@ import { StudentProfileCenterPage } from "./student-profile-center.page";
 import { StudentListState, studentListReducer } from "./student-list.reducer";
 import { StudentState, studentReducer } from "./student.reducer";
 import { StudentMenu } from "./component/student-menu.component";
+import { Admission } from "../../shared/model/term/admission.interface";
+import { admissionListReducer, AdmissionListState } from "../term/admissions/admission-list.reducer";
 
 
 export interface StudentProfileModuleState {
@@ -46,6 +48,7 @@ export interface StudentProfileModuleState {
     guardians: GuardianListState;
     contacts: ContactListState;
     enrollments: EnrollmentListState;
+    admissions: AdmissionListState;
 
 
 };
@@ -59,6 +62,7 @@ export const INITIAL_STUDENT_PROFILE_STATE: StudentProfileModuleState =
         guardians: <Guardian[]>[],
         contacts: <Contact[]>[],
         enrollments: <Enrollment[]>[],
+        admissions: <Admission[]>[],
 
     };
 
@@ -71,6 +75,7 @@ export const studentProfileModuleReducers = {
     guardians: guardianListReducer,
     contacts: contactListReducer,
     enrollments: enrollmentListReducer,
+    admissions: admissionListReducer,
 
 };
 

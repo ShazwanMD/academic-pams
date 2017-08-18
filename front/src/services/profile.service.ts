@@ -13,6 +13,7 @@ import { Guarantor } from '../app/shared/model/profile/guarantor.interface';
 import { Enrollment } from '../app/shared/model/term/enrollment.interface';
 import { SwitchStudyMode } from '../app/shared/model/profile/switch-study-mode.interface';
 import { TransferCohort } from '../app/shared/model/profile/transfer-cohort.interface';
+import { Admission } from "../app/shared/model/term/admission.interface";
 
 @Injectable()
 export class ProfileService {
@@ -134,6 +135,12 @@ export class ProfileService {
     return this._http.get(this.PROFILE_API + '/students/' + student.identityNo + '/enrollments')
       .map((res: Response) => <Enrollment[]>res.json());
   }
+  
+  //find admissions
+  findAdmissions(student: Student): Observable<Admission[]> {
+      return this._http.get(this.PROFILE_API + '/students/' + student.identityNo + '/admissions')
+        .map((res: Response) => <Admission[]>res.json());
+    }
 
   findStudents(): Observable<Student[]> {
     return this._http.get(this.PROFILE_API + '/students')

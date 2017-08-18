@@ -16,6 +16,7 @@ import { Guarantor } from "../../../shared/model/profile/guarantor.interface";
 import { Guardian } from "../../../shared/model/profile/guardian.interface";
 import { Contact } from "../../../shared/model/profile/contact.interface";
 import { Enrollment } from "../../../shared/model/term/enrollment.interface";
+import { Admission } from "../../../shared/model/term/admission.interface";
 import { OfferingUpdateDialog } from "../../term/offerings/dialog/offering-update.dialog";
 import { AdmissionApplicationTaskCreatorDialog } from "../../term/admission-applications/dialog/admission-application-task-creator.dialog";
 import { AdmissionApplicationTaskDialog } from "../../term/admission-applications/dialog/admission-application-task.dialog";
@@ -51,6 +52,7 @@ export class StudentProfileListPage implements OnInit {
     @Input() guardians: Guardian[];
     @Input() contacts: Contact[];
     @Input() enrollments: Enrollment[];
+    @Input() admissions: Admission[];
 
 
     //Constructor
@@ -102,6 +104,18 @@ export class StudentProfileListPage implements OnInit {
         { name: 'phone', label: 'Mobile No' },
         { name: 'action', label: 'Action' },
     ];
+    
+      
+  //Admission
+    private columnAdmission: any[] = [
+        { name: 'id', label: 'Id' },
+        { name: 'cgpa', label: 'CGPA' },
+        { name: 'session', label: 'Session' },
+        { name: 'ordinal', label: 'Ordinal' },
+        { name: 'action', label: 'Action' },
+    ];
+    
+    
     goBack(route: string): void {
         this.router.navigate(['/studentProfile']);
     }

@@ -15,6 +15,7 @@ import { Student } from '../../shared/model/identity/student.interface';
 import { Address } from "../../shared/model/profile/address.interface";
 import { Enrollment } from "../../shared/model/term/enrollment.interface";
 import { FormBuilder } from "@angular/forms";
+import { Admission } from "../../shared/model/term/admission.interface";
 
 @Component({
   selector: 'pams-student-profile-center',
@@ -34,6 +35,7 @@ export class StudentProfileCenterPage implements OnInit {
   private GUARDIANS: string[] = 'studentProfileModuleState.guardians'.split('.');
   private CONTACTS: string[] = 'studentProfileModuleState.contacts'.split('.');
   private ENROLLMENTS: string[] = 'studentProfileModuleState.enrollments'.split('.');
+  private ADMISSIONS: string[] = 'studentProfileModuleState.admissions'.split('.');
 
   private students$: Observable<Student[]>;
   private student$: Observable<Student>;
@@ -42,6 +44,7 @@ export class StudentProfileCenterPage implements OnInit {
   private guardians$: Observable<Guardian>;
   private contacts$: Observable<Contact>;
   private enrollments$: Observable<Enrollment>;
+  private admissions$: Observable<Admission>;
 
   private _student: Student;
   constructor(private router: Router,
@@ -60,6 +63,7 @@ export class StudentProfileCenterPage implements OnInit {
     this.guarantors$ = this.store.select(...this.GUARANTORS);
     this.contacts$ = this.store.select(...this.CONTACTS);
     this.enrollments$ = this.store.select(...this.ENROLLMENTS);
+    this.admissions$ = this.store.select(...this.ADMISSIONS);
   }
 
   goBack(route: string): void {

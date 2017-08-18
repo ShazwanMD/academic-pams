@@ -117,6 +117,13 @@ export class ProfileEffects {
     .map(action => action.payload)
     .switchMap(student => this.profileService.findEnrollments(student))
     .map(enrollments => this.profileActions.findEnrollmentsSuccess(enrollments));
+  
+  //find admissions
+  @Effect() findAdmissions$ = this.actions$
+  .ofType(ProfileActions.FIND_ADMISSIONS_BY_STUDENT)
+  .map(action => action.payload)
+  .switchMap(student => this.profileService.findAdmissions(student))
+  .map(admissions => this.profileActions.findAdmissionsSuccess(admissions));
 
   /*==================================================================================================*/
   /*ADD / UPD STUDENT INFORMATION - EFFECT*/

@@ -45,6 +45,8 @@ import {AcademicSessionSubModule} from '../planner/academic-sessions/index';
 import {CohortTransfererDialog} from './dialog/cohort-transferer.dialog';
 import {ProfileCohortComponent} from './component/profile-cohort.component';
 import {ProfileEnrollmentListComponent} from './component/profile-enrollment-list.component';
+import { AdmissionListState, admissionListReducer } from "../term/admissions/admission-list.reducer";
+import { Admission } from "../../shared/model/term/admission.interface";
 
 export interface ProfileModuleState {
   students: StudentListState;
@@ -54,6 +56,7 @@ export interface ProfileModuleState {
   guardians: GuardianListState;
   contacts: ContactListState;
   enrollments: EnrollmentListState;
+  admissions: AdmissionListState;
 }
 ;
 
@@ -66,6 +69,7 @@ export const INITIAL_PROFILE_STATE: ProfileModuleState =
     guardians: <Guardian[]>[],
     contacts: <Contact[]>[],
     enrollments: <Enrollment[]>[],
+    admissions: <Admission[]>[],
   };
 
 export const profileModuleReducers = {
@@ -76,6 +80,7 @@ export const profileModuleReducers = {
   guardians: guardianListReducer,
   contacts: contactListReducer,
   enrollments: enrollmentListReducer,
+  admissions: admissionListReducer,
 };
 
 @NgModule({
