@@ -29,7 +29,8 @@ import {addressListReducer, AddressListState} from './address-list.reducer';
 import {contactListReducer, ContactListState} from './contact-list.reducer';
 import {guardianListReducer, GuardianListState} from './guardian-list.reducer';
 import {guarantorListReducer, GuarantorListState} from './guarantor-list.reducer';
-import {enrollmentListReducer, EnrollmentListState} from './enrollment-list.reducer';
+//import {enrollmentListReducer, EnrollmentListState} from './enrollment-list.reducer';
+import {admissionListReducer, AdmissionListState} from './admission-list.reducer';
 import {studentReducer, StudentState} from './student.reducer';
 import {studentListReducer, StudentListState} from './student-list.reducer';
 import {ContactEditorDialog} from './dialog/contact-editor.dialog';
@@ -45,7 +46,6 @@ import {AcademicSessionSubModule} from '../planner/academic-sessions/index';
 import {CohortTransfererDialog} from './dialog/cohort-transferer.dialog';
 import {ProfileCohortComponent} from './component/profile-cohort.component';
 import {ProfileEnrollmentListComponent} from './component/profile-enrollment-list.component';
-import { AdmissionListState, admissionListReducer } from "../term/admissions/admission-list.reducer";
 import { Admission } from "../../shared/model/term/admission.interface";
 
 export interface ProfileModuleState {
@@ -55,7 +55,7 @@ export interface ProfileModuleState {
   guarantors: GuarantorListState;
   guardians: GuardianListState;
   contacts: ContactListState;
-  enrollments: EnrollmentListState;
+  //enrollments: EnrollmentListState;
   admissions: AdmissionListState;
 }
 ;
@@ -68,7 +68,7 @@ export const INITIAL_PROFILE_STATE: ProfileModuleState =
     guarantors: <Guarantor[]>[],
     guardians: <Guardian[]>[],
     contacts: <Contact[]>[],
-    enrollments: <Enrollment[]>[],
+    //enrollments: <Enrollment[]>[],
     admissions: <Admission[]>[],
   };
 
@@ -79,7 +79,7 @@ export const profileModuleReducers = {
   guarantors: guarantorListReducer,
   guardians: guardianListReducer,
   contacts: contactListReducer,
-  enrollments: enrollmentListReducer,
+  //enrollments: enrollmentListReducer,
   admissions: admissionListReducer,
 };
 

@@ -37,7 +37,7 @@ import { StudentListState, studentListReducer } from "./student-list.reducer";
 import { StudentState, studentReducer } from "./student.reducer";
 import { StudentMenu } from "./component/student-menu.component";
 import { Admission } from "../../shared/model/term/admission.interface";
-import { admissionListReducer, AdmissionListState } from "../term/admissions/admission-list.reducer";
+import { admissionListReducer, AdmissionListState } from "../profile/admission-list.reducer";
 
 
 export interface StudentProfileModuleState {

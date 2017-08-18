@@ -173,8 +173,8 @@ export class ProfileActions {
       payload: guardians
     };
   }
-
-  static FIND_ENROLLMENTS_BY_STUDENT = '[Profile] Find Enrollments';
+  
+   static FIND_ENROLLMENTS_BY_STUDENT = '[Profile] Find Enrollments';
 
   findEnrollments(student): Action {
     return {

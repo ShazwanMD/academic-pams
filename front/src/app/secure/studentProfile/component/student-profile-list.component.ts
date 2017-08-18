@@ -110,9 +110,13 @@ export class StudentProfileListPage implements OnInit {
     private columnAdmission: any[] = [
         { name: 'id', label: 'Id' },
         { name: 'cgpa', label: 'CGPA' },
-        { name: 'session', label: 'Session' },
+        { name: 'creditEarned', label: 'creditEarned' },
+        { name: 'creditTaken', label: 'creditEarned' },
+        { name: 'gpa', label: 'GPA' },
         { name: 'ordinal', label: 'Ordinal' },
-        { name: 'action', label: 'Action' },
+        { name: 'standing', label: 'Standing' },
+        { name: 'status', label: 'Status' },
+        
     ];
     
     
