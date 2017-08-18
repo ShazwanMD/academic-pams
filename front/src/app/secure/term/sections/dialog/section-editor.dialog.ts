@@ -78,8 +78,12 @@ export class SectionEditorDialog implements OnInit {
     
       this.store.dispatch(this.actions.addSection(this._offering, section));
       this.dialog.close();
+      let snackBarRef = this.snackBar.open( 'New section: ' + section.code + ' has been inserted', '', { duration: 3000 } );
+      snackBarRef.afterDismissed().subscribe(() => {
+          console.log( 'The snack-bar was dismissed' );
+        } );
          
-     //start subscribe
+     /*//start subscribe
       this.section$.subscribe(val => {
           console.log( '1.Accumulated object section:', val );
           if(val['status']== 'Duplicate'){
@@ -104,7 +108,7 @@ export class SectionEditorDialog implements OnInit {
           }
       );
      //end subscribe
-     
+*/     
       
     } else { 
      

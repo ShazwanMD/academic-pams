@@ -149,6 +149,16 @@ export class OfferingSectionListComponent implements AfterViewInit, OnChanges {
         } else {
             console.log( 'deleteSection' ); // move on
             this.store.dispatch( this.actions.deleteSection( this.offering, section ) );
+            window.confirm("Are you sure to delete this section?");
+            if (confirm("Are you sure to delete this section?") == true) {
+                let snackBarRef = this.snackBar.open( 'Section: ' + section.code + ' has been deleted', '', { duration: 3000 } );
+                snackBarRef.afterDismissed().subscribe(() => {
+                } );
+            } else {
+                let snackBarRef = this.snackBar.open( 'Section: ' + section.code + ' cancel deleted', '', { duration: 3000 } );
+                snackBarRef.afterDismissed().subscribe(() => {
+                } );
+            }
         }
     }
 
