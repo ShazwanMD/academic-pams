@@ -29,8 +29,8 @@ export class AdmissionActionComponent {
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
     config.role = 'dialog';
-    config.width = '60%';
-    config.height = '95%';
+    config.width = '40%';
+    config.height = '87%';
     config.position = {top: '0px'};
     this.editorDialogRef = this.dialog.open(AdmissionCreateTaskCreatorDialog, config);
     this.editorDialogRef.componentInstance.admission = this.admission;

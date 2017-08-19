@@ -145,5 +145,5 @@ export class StudentAdmissionEnrollmentListComponent implements OnInit {
         // load something here
       });
     }
-
+  
 }

@@ -1,27 +1,25 @@
-<md-card>
-  <md-card-title>Action</md-card-title>
-  <md-card-subtitle>Actions available on current enrollment</md-card-subtitle>
-  <md-divider></md-divider>
-  <md-nav-list flex dense>
-    <md-list-item [routerLink]="['/secure/term/enrollment-applications']">
-      <md-icon md-list-avatar>assignment_ind</md-icon>
-      <h4 md-line>Add Course Enrollment</h4>
-      <p md-line>Add course to this enrollment</p>
-    </md-list-item><!-- [routerLink]="['/appointments-resolve', appointment?.code] -->
+<md-card class="bgc-green-600" flex>
+  <md-card-content
+    class="text-center">
+    <div class="md-display-1">{{enrollment?.section?.code}}</div>
+    <div layout="column" layout-padding>
+      <div class="md-subhead tc-grey-100">SECTION {{enrollment?.section?.ordinal}}</div>
 
-    <md-divider></md-divider>
-    <h3 md-subheader>Term Menu</h3>
-    <md-list-item [routerLink]="['/secure/term/admission-applications/admission-application-center2']">
-      <md-icon md-list-avatar>email</md-icon>
-      <h4 md-line>Semester Registration</h4>
-      <p md-line>List of semester registrations</p>
-    </md-list-item>
-    <md-list-item [routerLink]="['/secure/term/offerings/student-offering-center']">
-      <md-icon md-list-avatar>email</md-icon>
-      <h4 md-line>Offerings</h4>
-      <p md-line>List of offerings</p>
-    </md-list-item>
-
-
-  </md-nav-list>
+    </div>
+  </md-card-content>
 </md-card>
+ <md-card>
+        <md-card-title>Menu</md-card-title>
+        <md-card-subtitle>Actions
+          available on current section
+        </md-card-subtitle>
+        <md-divider></md-divider>
+        <md-nav-list
+          flex dense>
+          <md-list-item [routerLink]="['/secure']">
+            <md-icon md-list-avatar>email</md-icon>
+            <h4 md-line>My Profile</h4>
+            <p md-line>Go to my profile </p>
+          </md-list-item>
+        </md-nav-list>
+      </md-card>

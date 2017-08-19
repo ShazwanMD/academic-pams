@@ -1,30 +1,48 @@
 <h2 md-dialog-title>Create New Course Enrollment</h2>
 <md-dialog-content>
 <form [formGroup]="createForm" novalidate>
-	<table style="height: 84px;" width="544">
+<style>
+table, th, td {
+    border-collapse: collapse;
+}
+th, td {
+    padding: 10px;
+}
+</style>
+	<table style="width:100%">
 		<tbody>
-			<tr>
-				<td>Name</td>
+			<tr style="font-family:verdana;background-color:#4AC5F9" >
+				<td > <b>Name </b></td>
 				<td>: {{_admission.student.name}}</td>
 				<td></td>
 			</tr>
-			<tr>
-				<td>Identity No</td>
+			<tr style="font-family:verdana;background-color:#B2E4F9">
+				<td >  <b>Identity No  </b></td>
 				<td>: {{_admission.student.identityNo}}</td>
+				<td></td>
+			</tr>
+			<tr style="font-family:verdana;background-color:#B2E4F9">
+				<td > <b>Academic Session </b></td>
+				<td>: {{_admission.academicSession.code}}</td>
+				<td></td>
+			</tr>
+			<tr style="font-family:verdana;background-color:#B2E4F9">
+				<td><b> Description</b></td>
+				<td>: Register&nbsp;{{_admission.student.identityNo}} For Session&nbsp;{{_admission.academicSession.code}}</td>
 				<td></td>
 			</tr>
 		</tbody>
 	</table>
 	<div fxLayout fxLayout.xs="column" fxLayoutWrap fxLayoutGap="25px">
 
-		<md-input-container fxFlex="calc(100%-25px)"> <input
+		<!-- <md-input-container fxFlex="calc(100%-25px)"> <input
 			mdInput placeholder="description" formControlName="description"
 			value="Description" /> </md-input-container>
 		<div class="tc-red-600"
 			*ngIf="createForm.get('description').invalid && createForm.get('description').touched">
 			<font size="3" color="red">Please insert description should be
 				at least {{minLength}} characters!</font>
-		</div>
+		</div> -->
 		<!-- <pams-admission-select [placeholder]="'Select Student'"
 			[innerFormControl]="createForm.controls.admission"
 			fxFlex="calc(100%-25px)" class="pad-bottom">
@@ -33,13 +51,13 @@
 			*ngIf="createForm.get('admission').invalid && createForm.get('admission').touched">
 			Please choose admission</div> -->
 
-		<pams-academic-session-select [placeholder]="'Select Session'"
+		<!-- <pams-academic-session-select [placeholder]="'Select Session'"
 			[innerFormControl]="createForm.controls.academicSession"
 			fxFlex="calc(100%-25px)" class="pad-bottom">
 		</pams-academic-session-select>
 		<div class="tc-red-600"
 			*ngIf="createForm.get('academicSession').invalid && createForm.get('academicSession').touched">
-			Please choose academic session</div>
+			Please choose academic session</div> -->
 	</div>
 </form>
 </md-dialog-content>
@@ -47,7 +65,5 @@
 <button md-raised-button color="accent" [disabled]="createForm.invalid"
 	(click)="save(createForm.value, createForm.valid)">{{edit ? 'Submit Application'
 	: 'Save'}}</button>
-<!-- <button md-raised-button color="accent"
-          (click)="save(createForm.value, createForm.valid)">Save
-  </button> --> </md-dialog-actions>
+ </md-dialog-actions>
 
