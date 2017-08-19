@@ -2,28 +2,52 @@
 <md-dialog-content> <!-- Current AcademicSession: {{_academicSession.id}} -->
   <form [formGroup]="createForm" novalidate>
     <div fxLayout fxLayout.xs="column" fxLayoutWrap fxLayoutGap="25px">
-       <table style="height: 84px;" width="544">
-<tbody>
-<tr>
-<td>Name</td>
-<td>:</td>
-<td>{{_student.name}}</td>
-</tr>
-<tr>
-<td> Identity No</td>
-<td>:</td>
-<td>{{_student.identityNo}}</td>
-</tr>
-</tbody>
-</table>
-      <pams-academic-session-select
-        [placeholder]="'Select Session'"
+<style>
+table, th, td {
+    border-collapse: collapse;
+}
+th, td {
+    padding: 10px;
+}
+</style>
+	<table style="width:100%">
+		<tbody>
+			<tr style="font-family:verdana;background-color:#4AC5F9" >
+				<td > <b>Name </b></td>
+				<td>: {{_student.name}}</td>
+				<td></td>
+			</tr>
+			<tr style="font-family:verdana;background-color:#B2E4F9">
+				<td >  <b>Identity No  </b></td>
+				<td>: {{_student.identityNo}}</td>
+				<td></td>
+			</tr>
+			<tr style="font-family:verdana;background-color:#B2E4F9">
+				<td >  <b>Academic Session</b></td>
+				<td>: 
+     
+       <pams-academic-session-select
+        [placeholder]="'Select Session'" md-tooltip="Please choose academic session"
         [innerFormControl]="createForm.controls.academicSession" fxFlex="calc(100%-25px)" class="pad-bottom">
       </pams-academic-session-select>
       <div class="tc-red-600"
            *ngIf="createForm.get('academicSession').invalid && createForm.get('academicSession').touched">
         Please choose academic Session
       </div>
+
+               </td>
+				<td></td>
+			</tr>
+		</tbody>
+	</table>
+     <!--  <pams-academic-session-select
+        [placeholder]="'Select Session'" md-tooltip="Please choose academic session"
+        [innerFormControl]="createForm.controls.academicSession" fxFlex="calc(100%-25px)" class="pad-bottom">
+      </pams-academic-session-select>
+      <div class="tc-red-600"
+           *ngIf="createForm.get('academicSession').invalid && createForm.get('academicSession').touched">
+        Please choose academic Session
+      </div> -->
     </div>
   </form>
 </md-dialog-content>
