@@ -1,4 +1,22 @@
 <!-- Basic Card -->
-<md-card>
+<td-layout-manage-list>
+    <md-nav-list list-items><!-- class="text-upper" -->
+        <a md-list-item (click)="semesterRegister()" color="accent"   >
+         <md-icon>create</md-icon>
+         <span>Apply Semester Registration</span>
+      </a>
+      <a md-list-item (click)="statusSemesterRegister()" color="accent">
+         <md-icon>drafts</md-icon>
+         <span>Registration Status </span>
+      </a>
+      <md-divider></md-divider>
 
-</md-card>
+      <md-divider></md-divider>
+    </md-nav-list>
+    <md-card class="">
+      <md-card-content>
+
+
+      </md-card-content>
+    </md-card>
+</td-layout-manage-list>

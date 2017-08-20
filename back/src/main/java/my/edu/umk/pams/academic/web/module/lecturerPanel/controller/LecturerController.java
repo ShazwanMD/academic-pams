@@ -79,7 +79,7 @@ public class LecturerController {
 			lecturer = (AdStaff) user.getActor();
 		if (null == lecturer)
 			throw new IllegalArgumentException("Staff does not exists");
-		LOG.debug("Staff:{}", lecturer.getIdentityNo());
+		LOG.debug("Lecturer:{}", lecturer.getIdentityNo());
 		
 		return new ResponseEntity<Staff>(identityTransformer.toStaffVo(lecturer), HttpStatus.OK);
 	}
