@@ -150,8 +150,6 @@ export class CurriculumBundleSubjectListComponent implements OnInit, OnChanges {
 
   } else {
    //Proceed here if we CAN delete
-
-   window.confirm("Are you sure to delete this subject elective?");
     this.store.dispatch(this.actions.deleteSubject(this.curriculum, this.selectedRows[i]));
     let snackBarRef = this.snackBar.open('Subject Elective has been deleted', '',
          { duration: 3000 });
