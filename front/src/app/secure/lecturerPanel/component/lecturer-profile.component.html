@@ -1,21 +1,116 @@
 <!-- Basic Card -->
 <td-layout-manage-list>
     <md-nav-list list-items><!-- class="text-upper" -->
-        <a md-list-item (click)="semesterRegister()" color="accent"   >
+     <a md-list-item (click)="myProfile()" color="accent"   >
          <md-icon>create</md-icon>
-         <span>Apply Semester Registration</span>
+         <span>My Pofile</span>
       </a>
-      <a md-list-item (click)="statusSemesterRegister()" color="accent">
-         <md-icon>drafts</md-icon>
-         <span>Registration Status </span>
+        <a md-list-item (click)="insertGradebook()" color="accent"   >
+         <md-icon>create</md-icon>
+         <span>Insert gradebooks</span>
       </a>
+     
       <md-divider></md-divider>
 
       <md-divider></md-divider>
     </md-nav-list>
     <md-card class="">
       <md-card-content>
+<!-- start lecturer page -->
+ <md-tab-group>
+        <md-tab label="Staff Personal Information">
+          <div layout="column" layout-gt-md="row" class="insert">
+            <div flex-gt-md="20">
+              <img src="http://localhost:4200/assets/ico/lecturer/{{lecturer?.identityNo}}.jpg" width="120" height="150">
+            </div>
+            
+            <div flex-gt-md="35">
+              <b>Staff ID</b> : {{lecturer?.identityNo}}<br/><br/>
+              <b>Name</b> : {{lecturer?.name}}<br/><br/>
+              <b>Email</b> :{{lecturer?.email}}<br/><br/>
+              <b>Phone</b> : {{lecturer?.phone}}<br/><br/>
+              <b>Mobile</b> : {{lecturer?.mobile}}
+            </div>
 
+            <div flex-gt-md="40">
+              <b>Status</b> :  {{lecturer?.identityNo}}<br/><br/>
+              <b>Study Mode</b> :  {{lecturer?.identityNo}}<br/><br/>
+
+              <b>Program</b> :  {{lecturer?.identityNo}}<br/><br/>
+              <b>Faculty</b> :  {{lecturer?.identityNo}}<br/><br/>
+              <b>Current Semester</b> :  {{lecturer?.identityNo}}<br/><br/>
+            </div>
+            <div flex-gt-md="5">
+              <button md-icon-button [md-menu-trigger-for]="menu1">
+                  <md-icon>edit</md-icon>
+                </button>
+              <md-menu x-position="before" #menu1="mdMenu" mdTooltip="Select student info actions">
+                <button md-menu-item (click)="editStudent()">Edit</button>
+              </md-menu>
+            </div>
+          </div>
+          <md-divider></md-divider>
+
+        
+        <md-divider></md-divider>
+        <td-expansion-panel label="Section Information" class="bgc-light-blue-400">
+          <div class="md-padding" class="bgc-light-blue-50">
+           <!--  <md-card>
+              <div md-content flex md-scroll-y>
+                <div layout="column" layout-gt-md="row" class="insert">
+
+                  <div flex-gt-md="50">
+                    <md-card-title>Address Information</md-card-title>
+                  </div>
+
+                  <div flex-gt-md="50" align="right">
+                    <button md-icon-button (click)="addAddressDialog(save)">
+                          <md-icon>add</md-icon>
+                        </button>
+                    </div>
+                  </div>
+                </div>
+                <md-divider></md-divider>
+                <md-card-content>
+
+                  <td-data-table [data]="addressess" [columns]="columnAddr" [sortBy]="summary" [sortOrder]="ASC" [sortable]="false" [multiple]="false"
+                    [selectable]="false" (rowSelect)="edit.emit($event)" dense>
+
+                    <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
+                      <div layout="row">
+                        <span flex>{{value}}</span>
+                      </div>
+                    </template>
+
+                    <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
+                      <div layout="row">
+                        <button md-icon-button [md-menu-trigger-for]="menuAddress">
+                            <md-icon>more_vert</md-icon>
+                          </button>
+                        <md-menu x-position="before" #menuAddress="mdMenu">
+                          <button md-menu-item (click)="editAddressDialog(row, true)">Update</button>
+                          <button md-menu-item (click)="deleteAddress(row, true)">Delete</button>
+                        </md-menu>
+                      </div>
+                    </template>
+
+                  </td-data-table>
+
+                </md-card-content>
+              </md-card> -->
+            </div>
+          </td-expansion-panel>
+         
+
+        
+                   
+         
+          
+        </md-tab>
+
+       
+      </md-tab-group>
+<!-- end lecturer page -->
 
       </md-card-content>
     </md-card>

@@ -14,6 +14,7 @@ import { Staff } from "../../../shared/model/identity/staff.interface";
 export class LecturerProfileComponent implements OnInit {
 
 @Input() lecturer:Staff;
+@Output() view = new EventEmitter<Staff>();
 
   constructor(private router: Router,
     private route: ActivatedRoute,
@@ -25,6 +26,16 @@ export class LecturerProfileComponent implements OnInit {
 
   ngOnInit(): void {
    
+  }
+  
+  myProfile(){
+      this.router.navigate(['/secure']);
+      
+  }
+  
+  insertGradebook(){
+      this.router.navigate(['/secure/term/offerings/lecturer-offering-center']);
+      
   }
 
 }

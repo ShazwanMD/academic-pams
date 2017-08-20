@@ -7,6 +7,9 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class LecturerEffects {
+    
+    private LECTURER: string[] = "lecturerModuleState.lecturer".split(".");
+    
     constructor(private actions$: Actions,
         private lecturerActions: LecturerActions,
         private lecturerService: LecturerPanelService,
