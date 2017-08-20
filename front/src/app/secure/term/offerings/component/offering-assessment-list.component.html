@@ -9,10 +9,10 @@
     <button md-button class="md-icon-button" (click)="createDialog()" mdTooltip="Add new assessment">
       <md-icon class="md-24 tc-grey-300" [ngClass]="{'tc-grey-700': selectedRows.length === 0}">add</md-icon>
     </button>
-    <button md-button class="md-icon-button" (click)="deleteAssessment(selectedRows[0])"
+    <!-- <button md-button class="md-icon-button" (click)="deleteAssessment(selectedRows[0])"
             [disabled]="selectedRows.length != 1" mdTooltip="Delete this assessment">
       <md-icon class="md-24 tc-grey-300" [ngClass]="{'tc-grey-700': selectedRows.length === 1}">delete</md-icon>
-    </button>
+    </button> -->
   </div>
 
 
@@ -55,7 +55,7 @@
             <!-- <button md-menu-item [routerLink]="['/secure/term/assessments', offering.canonicalCode, row['id']]">View assesssment</button> -->
             <!--[routerLink]="['/secure/term/offerings', offering.canonicalCode, 'assessment-detail']"-->
             <button md-menu-item (click)="updateAssessment(row, true)">Update assesssment</button>
-            <button md-menu-item (click)="deleteAssessment(row)">Delete assesssment</button>
+            <!-- <button md-menu-item (click)="deleteAssessment(row)">Delete assesssment</button> -->
           </md-menu>
         </div>
       </template>
