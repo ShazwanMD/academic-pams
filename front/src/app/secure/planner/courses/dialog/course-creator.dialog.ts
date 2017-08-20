@@ -1,3 +1,4 @@
+import {MdSnackBar} from '@angular/material/snack-bar';
 import { Curriculum } from '../../../../shared/model/planner/curriculum.interface';
 import { CourseClassification } from '../../../../shared/model/planner/course-classification.enum';
 import { Course } from '../../../../shared/model/planner/course.interface';
@@ -26,6 +27,7 @@ export class CourseCreatorDialog implements OnInit {
     constructor( private formBuilder: FormBuilder,
         private store: Store<PlannerModuleState>,
         private actions: CourseActions,
+        private snackBar: MdSnackBar,
         /*private router: Router,
          private route: ActivatedRoute,
          private viewContainerRef: ViewContainerRef,*/
@@ -62,6 +64,10 @@ export class CourseCreatorDialog implements OnInit {
         else this.store.dispatch( this.actions.updateCourse( course ) );
         this.dialog.close();
         console.log( course );
+
+       let snackBarRef = this.snackBar.open( 'New Courses: ' + course.code + ' has been inserted', '', { duration: 3000 } );
+       snackBarRef.afterDismissed().subscribe(() => {
+       } );
     }
 
 }

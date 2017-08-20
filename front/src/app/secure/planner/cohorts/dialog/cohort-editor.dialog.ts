@@ -1,3 +1,4 @@
+import {MdSnackBar} from '@angular/material/snack-bar';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -29,6 +30,7 @@ export class CohortEditorDialog implements OnInit {
         private formBuilder: FormBuilder,
         private store: Store<PlannerModuleState>,
         private actions: CohortActions,
+        private snackBar: MdSnackBar,
         private dialog: MdDialogRef<CohortEditorDialog> ) {
     }
 
@@ -62,5 +64,11 @@ export class CohortEditorDialog implements OnInit {
         else this.store.dispatch( this.actions.updateCohort( cohort ) );
         this.dialog.close();
         console.log( cohort );
+
+        let snackBarRef = this.snackBar.open( 'New Cohorts: ' + cohort.code + ' has been inserted', '', { duration: 3000 } );
+        snackBarRef.afterDismissed().subscribe(() => {
+            
+         } );
+        
     }
 }

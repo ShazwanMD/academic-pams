@@ -1,3 +1,4 @@
+import {MdSnackBar} from '@angular/material/snack-bar';
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Store} from '@ngrx/store';
@@ -21,6 +22,7 @@ export class AcademicYearCreatorDialog implements OnInit {
     constructor(private formBuilder: FormBuilder,
         private store: Store<PlannerModuleState>,
         private actions: AcademicYearActions,
+        private snackBar: MdSnackBar,
         private dialog: MdDialogRef<AcademicYearCreatorDialog>) {
     }
 
@@ -58,5 +60,9 @@ export class AcademicYearCreatorDialog implements OnInit {
             this.store.dispatch(this.actions.updateAcademicYear(academicYear));
         }
         this.dialog.close();
+    
+        let snackBarRef = this.snackBar.open( 'New Academic Years: ' + academicYear.code + ' has been inserted', '', { duration: 3000 } );
+        snackBarRef.afterDismissed().subscribe(() => {
+       } );
     }
 }
