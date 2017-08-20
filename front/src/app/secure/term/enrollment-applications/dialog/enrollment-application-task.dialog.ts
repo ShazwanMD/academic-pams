@@ -67,7 +67,7 @@ export class EnrollmentApplicationTaskDialog implements OnInit {
     this._academicSession = enrollmentApplication.academicSession;
     enrollmentApplication.admission = this._admission;
     enrollmentApplication.academicSession = this._admission.academicSession;
-    enrollmentApplication.description = "Register" + this._admission.student.identityNo + "For Session" + this._admission.academicSession.code ;
+    enrollmentApplication.description = "Register " + this._admission.student.identityNo + " For Session " + this._admission.academicSession.code ;
     //this._admission = enrollmentApplication.admission;
 
     console.log(JSON.stringify(enrollmentApplication));
