@@ -35,6 +35,11 @@ export class LecturerProfileComponent implements OnInit {
   //view data appointments to review sections 
     private columns: any[] = [
         { name: 'id', label: 'Id' },
+        //{ name: 'status', label: 'Status' },
+        { name: 'section.ordinal', label: 'Section No.' },
+        { name: 'section.offering.titleEn', label: 'Title' },
+        { name: 'section.offering.program.code', label: 'Program' },
+        { name: 'section.offering.program.faculty.description', label: 'Faculty' },
         { name: 'action', label: '' },
     ];
     

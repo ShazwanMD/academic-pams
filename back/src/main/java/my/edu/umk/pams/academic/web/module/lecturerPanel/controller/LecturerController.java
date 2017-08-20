@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,11 +22,15 @@ import my.edu.umk.pams.academic.identity.model.AdUser;
 import my.edu.umk.pams.academic.identity.service.IdentityService;
 import my.edu.umk.pams.academic.security.service.SecurityService;
 import my.edu.umk.pams.academic.system.service.SystemService;
+import my.edu.umk.pams.academic.term.model.AdAdmission;
+import my.edu.umk.pams.academic.term.model.AdAppointment;
 import my.edu.umk.pams.academic.term.service.TermService;
 import my.edu.umk.pams.academic.web.module.identity.controller.IdentityTransformer;
 import my.edu.umk.pams.academic.web.module.identity.vo.Staff;
 import my.edu.umk.pams.academic.web.module.identity.vo.Student;
 import my.edu.umk.pams.academic.web.module.term.controller.TermTransformer;
+import my.edu.umk.pams.academic.web.module.term.vo.Admission;
+import my.edu.umk.pams.academic.web.module.term.vo.Appointment;
 import my.edu.umk.pams.academic.workflow.service.WorkflowService;
 
 /**
@@ -83,5 +88,16 @@ public class LecturerController {
 		
 		return new ResponseEntity<Staff>(identityTransformer.toStaffVo(lecturer), HttpStatus.OK);
 	}
+	
+	//find appointments by lecturer
+		@RequestMapping(value = "/lecturers/{identityNo}/appointments", method = RequestMethod.GET)
+		public ResponseEntity<List<Appointment>> findAppointmentsByLecturer(@PathVariable String identityNo) {
+			AdStaff staff = identityService.findStaffByIdentityNo(identityNo);
+			// AdAcademicSession academicSession =
+			// plannerService.findCurrentAcademicSession();
+			List<AdAppointment> appointments = termService.findAppointments(staff);
+			List<Appointment> vos = termTransformer.toAppointmentVos(appointments);
+			return new ResponseEntity<List<Appointment>>(vos, HttpStatus.OK);
+		}
 
 }

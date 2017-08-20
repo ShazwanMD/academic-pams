@@ -29,20 +29,20 @@ export class LecturerActions {
     }
     
     //find appointments by lecturer
-    static FIND_APPOINTMENTS = '[LecturerPanel] Find Appointments';
+    static FIND_APPOINTMENTS_BY_LECTURER = '[LecturerPanel] Find Appointments';
 
-    findAppointments(lecturer): Action {
+    findAppointmentsByLecturer(lecturer): Action {
       return {
-        type: LecturerActions.FIND_APPOINTMENTS,
+        type: LecturerActions.FIND_APPOINTMENTS_BY_LECTURER,
         payload: lecturer
       };
     }
 
-    static FIND_APPOINTMENTS_SUCCESS = '[LecturerPanel] Find Appointments Success';
+    static FIND_APPOINTMENTS_BY_LECTURER_SUCCESS = '[LecturerPanel] Find Appointments Success';
 
-    findAppointmentsSuccess(appointments): Action {
+    findAppointmentsByLecturerSuccess(appointments): Action {
       return {
-        type: LecturerActions.FIND_APPOINTMENTS_SUCCESS,
+        type: LecturerActions.FIND_APPOINTMENTS_BY_LECTURER_SUCCESS,
         payload: appointments
       };
     }

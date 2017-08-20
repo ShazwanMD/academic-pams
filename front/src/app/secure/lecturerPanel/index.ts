@@ -18,27 +18,32 @@ import { NgModule, ModuleWithProviders } from '@angular/core';
 import { Staff } from './../../shared/model/identity/staff.interface';
 import { LecturerState, lecturerReducer } from "./lecturer.reducer";
 import { LecturerListState, lecturerListReducer } from "./lecturer-list.reducer";
+import { Appointment } from "../../shared/model/term/appointment.interface";
+import { appointmentListReducer, AppointmentListState } from "./appointment-list.reducer";
 
 export interface LecturerModuleState {
 
     lecturer: LecturerState;
     lecturers: LecturerListState;
+    appointments: AppointmentListState;
 };
 
 export const INITIAL_LECTURER_PROFILE_STATE: LecturerModuleState =
     <LecturerModuleState>{
 
-        lecturers:<Staff[]>[],
+        lecturers: <Staff[]>[],
         lecturer: <Staff>{},
+        appointments: <Appointment[]>[],
     };
 
 export const lecturerModuleReducers = {
 
     lecturer: lecturerReducer,
     lecturers: lecturerListReducer,
+    appointments: appointmentListReducer,
 };
 
-@NgModule({
+@NgModule( {
     imports: [
         appRoutes,
         BrowserModule,
@@ -46,17 +51,17 @@ export const lecturerModuleReducers = {
         CovalentCoreModule.forRoot(),
         CommonModule.forRoot(),
         AcademicSessionSubModule.forRoot(),
-        EffectsModule.run(LecturerEffects),
+        EffectsModule.run( LecturerEffects ),
         CohortSubModule.forRoot(),
         ProfileModule.forRoot(),
     ],
     declarations: [
         //Page
         LecturerProfileCenterPage,
-        
+
         //Component
         LecturerProfileComponent,
-        
+
         //Dialog
 
     ],
@@ -67,7 +72,7 @@ export const lecturerModuleReducers = {
     entryComponents: [
 
     ]
-})
+} )
 
 export class LecturerModule {
     static forRoot(): ModuleWithProviders {
@@ -78,7 +83,7 @@ export class LecturerModule {
                 IdentityService,
                 CommonService,
                 LecturerPanelService,
-                LecturerActions,         
+                LecturerActions,
             ]
         }
     }

@@ -61,7 +61,7 @@
         [sortOrder]="ASC"
         [sortable]="false"
         [multiple]="true"
-        [selectable]="true"
+        [selectable]="false"
         [(ngModel)]="selectedRows"
         (rowSelect)="selectRow($event)"
         (selectAll)="selectAllRows($event)" dense>
@@ -69,7 +69,8 @@
     <div layout="row">
         <span flex>{{value | uppercase}}</span>
     </div>
-    </template> <template tdDataTableTemplate="action" let-value="value" let-row="row"
+    </template> 
+    <!-- <template tdDataTableTemplate="action" let-value="value" let-row="row"
         let-column="column">
     <div layout="row">
         <button md-icon-button [md-menu-trigger-for]="menu1"
@@ -85,7 +86,26 @@
             appointment</button>
         </md-menu>
     </div>
-    </template> </td-data-table> 
+    </template> --> 
+    <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
+        <div layout="row">
+          <!--  <button md-icon-button [md-menu-trigger-for]="menu1" mdTooltip="Select enrollment actions">
+                    <md-icon>more_vert</md-icon>
+                  </button>
+                   <md-menu x-position="before" #menu1="mdMenu">
+                    <button md-menu-item [routerLink]="['/term/appointments', row['id']]">View appointment details</button>
+                    <button md-menu-item (click)="editDialog(row, true)">Update appointment</button>
+                    <button md-menu-item (click)="removeAppointment(row)">Delete appointment</button>
+
+                  </md-menu></div>  -->
+          <a md-button color="accent" class="text-upper" mdTooltip="View section info"
+            ><!--  [routerLink]="['/secure/term/sections', row.section.canonicalCode, 'lecturer-section-detail']" -->
+            <span>View</span>
+          </a>
+        </div>
+      </template>
+    
+    </td-data-table> 
   </md-card-content>
 </md-card>
          <!-- end sections by lecturer --> 

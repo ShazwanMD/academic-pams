@@ -23,9 +23,9 @@ export class LecturerPanelService {
         return this._http.get(this.LECTURER_API + '/lecturerLogin')
         .map((res: Response) => <Staff>res.json());
         }
-    
-    //find appointments by lecturer
-    findAppointments(lecturer: Staff): Observable<Appointment[]> {
+        
+  //find appointments by lecturer
+    findAppointmentsByLecturer(lecturer: Staff): Observable<Appointment[]> {
         return this._http.get(this.LECTURER_API + '/lecturers/' + lecturer.identityNo + '/appointments')
           .map((res: Response) => <Appointment[]>res.json());
       }
