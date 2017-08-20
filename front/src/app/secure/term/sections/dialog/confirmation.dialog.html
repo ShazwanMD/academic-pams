@@ -1,0 +1,17 @@
+<h2 md-dialog-title>Confirmation Dialog</h2>
+<md-dialog-content>
+  <form [formGroup]="editorForm" novalidate>
+   Are you sure to delete this section {{_section.code}}?
+  </form>
+</md-dialog-content>
+<md-dialog-actions align="end">
+  <button md-raised-button color="accent" (click)="deleteOK()"
+          >
+    OK, Please proceed!
+  </button>
+   <button md-raised-button color="accent" (click)="cancel()"
+          >
+    NO, Thank You!
+  </button>
+</md-dialog-actions>
+

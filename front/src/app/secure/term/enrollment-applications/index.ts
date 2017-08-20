@@ -42,6 +42,9 @@ import { ItemDetailPage } from "./item-detail.page";
 import { ItemComponent } from "./component/item.component";
 import { ItemActionComponent } from "./component/item-action.component";
 import { StudentEnrollmentApplicationDetailPage } from "./student-enrollment-application-detail.page";
+import { StudentEnrollmentApplicationDraftTaskPanel } from "./panel/student-enrollment-application-draft-task.panel";
+import { StudentEnrollmentApplicationTaskWorkflowPanel } from "./panel/student-enrollment-application-task-workflow.panel";
+import { StudentEnrollmentApplicationHistoryPage } from "./student-enrollment-application-history.page";
 
 @NgModule({
   imports: [
@@ -63,11 +66,14 @@ import { StudentEnrollmentApplicationDetailPage } from "./student-enrollment-app
     EnrollmentApplicationDetailPage,
     ItemDetailPage,
     StudentEnrollmentApplicationTaskDetailPage,
+    StudentEnrollmentApplicationHistoryPage,
     StudentEnrollmentApplicationDetailPage,
 
     // component
     EnrollmentApplicationTaskWorkflowPanel,
+    StudentEnrollmentApplicationTaskWorkflowPanel,
     EnrollmentApplicationDraftTaskPanel,
+    StudentEnrollmentApplicationDraftTaskPanel,
     EnrollmentApplicationItemComponent,
     EnrollmentApplicationTaskListComponent,
     EnrollmentApplicationsListComponent,
@@ -102,6 +108,7 @@ import { StudentEnrollmentApplicationDetailPage } from "./student-enrollment-app
     EnrollmentApplicationItemEditorDialog,
     EnrollmentApplicationItemUpdateDialog,
     EnrollmentApplicationDraftTaskPanel,
+    StudentEnrollmentApplicationDraftTaskPanel,
   ],
 })
 
