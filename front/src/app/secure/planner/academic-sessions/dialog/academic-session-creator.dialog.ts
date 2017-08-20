@@ -1,3 +1,4 @@
+import {MdSnackBar} from '@angular/material/snack-bar';
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Store} from '@ngrx/store';
@@ -22,6 +23,7 @@ export class AcademicSessionCreatorDialog implements OnInit {
   constructor(private formBuilder: FormBuilder,
               private store: Store<PlannerModuleState>,
               private actions: AcademicSessionActions,
+              private snackBar: MdSnackBar,
               private dialog: MdDialogRef<AcademicSessionCreatorDialog>) {
   }
 
@@ -49,9 +51,12 @@ export class AcademicSessionCreatorDialog implements OnInit {
     })
   }
 
-  save(academicSession: AcademicSession): void {
+  submit(academicSession: AcademicSession): void {
     if (!academicSession.id) this.store.dispatch(this.actions.saveAcademicSession(academicSession));
     else this.store.dispatch(this.actions.updateAcademicSession(academicSession));
     this.dialog.close();
+    let snackBarRef = this.snackBar.open( 'New Academic Session: ' + academicSession.code + ' has been inserted', '', { duration: 3000 } );
+    snackBarRef.afterDismissed().subscribe(() => {
+       } );
   }
 }
