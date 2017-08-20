@@ -17,8 +17,8 @@ import { Component, OnChanges, OnInit, ViewContainerRef, Input } from '@angular/
 
 export class LecturerProfileCenterPage implements OnInit {
 
-    private LECTURER: string[] = 'lecturerModuleState.lecturer'.split('.');
-    private LECTURERS: string[] = 'lecturerModuleState.lecturers'.split('.');
+    private LECTURER: string[] = 'LecturerModuleState.lecturer'.split('.');
+    private LECTURERS: string[] = 'LecturerModuleState.lecturers'.split('.');
 
     private lecturer$: Observable<Staff>;
     private lecturers$: Observable<Staff[]>;
