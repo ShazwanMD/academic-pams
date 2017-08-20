@@ -1,3 +1,5 @@
+import { LecturerModuleState, INITIAL_LECTURER_PROFILE_STATE, lecturerModuleReducers, LecturerModule } from './secure/lecturerPanel/index';
+import { LecturerDashboardPanel } from './secure/lecturer-dashboard.panel';
 import { RegistrationModule, registrationModuleReducers, INITIAL_REGISTRATION_STATE, RegistrationModuleState } from './registration/index';
 import { StudentDashboardPanel } from './secure/student-dashboard.panel';
 import { StudentProfileModuleState, INITIAL_STUDENT_PROFILE_STATE, studentProfileModuleReducers, StudentProfileModule } from './secure/studentProfile/index';
@@ -83,6 +85,7 @@ export interface ApplicationState {
   setupModuleState: SetupModuleState;
   studentProfileModuleState: StudentProfileModuleState;
   registrationModuleState: RegistrationModuleState;
+  lecturerModuleState: LecturerModuleState;
 }
 
 // initial state
@@ -98,6 +101,7 @@ export const INITIAL_APP_STATE: ApplicationState =
     setupModuleState: INITIAL_SETUP_STATE,
     studentProfileModuleState: INITIAL_STUDENT_PROFILE_STATE,
     registrationModuleState: INITIAL_REGISTRATION_STATE,
+    lecturerModuleState: INITIAL_LECTURER_PROFILE_STATE,
 
   };
 
@@ -113,6 +117,7 @@ export const applicationReducers = {
   setupModuleState: combineReducers({ ...setupModuleReducers }),
   studentProfileModuleState: combineReducers({ ...studentProfileModuleReducers }),
   registrationModuleState: combineReducers({ ...registrationModuleReducers }),
+  LecturerModuleState: combineReducers({...lecturerModuleReducers}),
 };
 export const productionReducer: ActionReducer<ApplicationState> = combineReducers(applicationReducers);
 export function applicationReducer(applicationState: any = INITIAL_APP_STATE, action: any) {
@@ -134,6 +139,7 @@ export function applicationReducer(applicationState: any = INITIAL_APP_STATE, ac
     NotAuthenticatedShowDirective,
     //Student DashBoard Panel
     StudentDashboardPanel,
+    LecturerDashboardPanel,
   ],
   imports: [
     appRoutes,
@@ -169,6 +175,7 @@ export function applicationReducer(applicationState: any = INITIAL_APP_STATE, ac
     EffectsModule.run(OfferingEffects),
     StudentProfileModule.forRoot(),
     RegistrationModule.forRoot(),
+    LecturerModule.forRoot(),
 
   ], // modules needed to run this module
   providers: [
@@ -186,6 +193,7 @@ export function applicationReducer(applicationState: any = INITIAL_APP_STATE, ac
   entryComponents: [
     AdministratorDashboardPanel,
     StudentDashboardPanel,
+    LecturerDashboardPanel,
   ],
   bootstrap: [AppComponent],
 })

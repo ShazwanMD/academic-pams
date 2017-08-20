@@ -1,6 +1,5 @@
 <td-layout #layout>
-  <td-navigation-drawer logo="assets:covalent" sidenavTitle="PAMS Academic" name="{{authenticatedUser?.username}}"
-                        email="{{authenticatedUser?.email}}">
+  <td-navigation-drawer logo="assets:covalent" sidenavTitle="PAMS Academic" name="{{authenticatedUser?.username}}" email="{{authenticatedUser?.email}}">
     <md-nav-list>
       <a md-list-item [routerLink]="['/secure/setup']" (click)="layout.close()" authorizedShow="VIEW_STM">
         <md-icon>label</md-icon>
@@ -26,6 +25,12 @@
         <md-icon>label</md-icon>
         Student Profile
       </a>
+
+      <a md-list-item [routerLink]="['/secure/lecturerPanel']" (click)="layout.close()" authorizedShow="VIEW_LEC">
+        <md-icon>label</md-icon>
+        Lecturer Panel
+      </a>
+
       <a md-list-item (click)="logout()">
         <md-icon>label</md-icon>
         Logout
