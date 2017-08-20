@@ -24,6 +24,7 @@ import {LecturerSectionEnrollmentListComponent} from './component/lecturer-secti
 import {StudentSectionActionComponent} from './component/student-section-action.component';
 import { CapitalizePipe } from './capitalize.pipe';
 import {NotificationService} from '../../../../services/notification.service';
+import { ConfirmationDialog } from "./dialog/confirmation.dialog";
 
 @NgModule({
   imports: [
@@ -55,6 +56,7 @@ import {NotificationService} from '../../../../services/notification.service';
 
     //dialog
     SectionEditorDialog,
+    ConfirmationDialog,
 
   ],
   exports: [
@@ -67,9 +69,11 @@ import {NotificationService} from '../../../../services/notification.service';
     StudentSectionAppointmentListComponent,
     SectionGradebookListComponent,
     SectionEditorDialog,
+    ConfirmationDialog,
   ],
   entryComponents: [
     SectionEditorDialog,
+    ConfirmationDialog,
     SectionSelectComponent,
   ],
 })

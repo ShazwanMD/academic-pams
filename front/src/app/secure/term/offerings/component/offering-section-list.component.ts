@@ -9,6 +9,7 @@ import { SectionEditorDialog } from '../../sections/dialog/section-editor.dialog
 import { Offering } from '../../../../shared/model/term/offering.interface';
 import { TdDataTableSortingOrder, IPageChangeEvent, ITdDataTableSortChangeEvent, TdDataTableService } from "@covalent/core";
 import { FormBuilder } from "@angular/forms";
+import { ConfirmationDialog } from "../../sections/dialog/confirmation.dialog";
 
 @Component( {
     selector: 'pams-offering-section-list',
@@ -19,6 +20,7 @@ export class OfferingSectionListComponent implements AfterViewInit, OnChanges {
 
     private selectedRows: Section[];
     private creatorDialogRef: MdDialogRef<SectionEditorDialog>;
+    private creatorDialogRef2: MdDialogRef<ConfirmationDialog>;
     private columns: any[] = [
         { name: 'ordinal', label: 'Section No' },
         { name: 'code', label: 'Code' },
@@ -147,8 +149,8 @@ export class OfferingSectionListComponent implements AfterViewInit, OnChanges {
             console.log( "Don't delete this Section" );
             let snackBarRef = this.snackBar.open( 'Section cannot be deleted', 'OK' );
         } else {
-            //this.store.dispatch( this.actions.deleteSection( this.offering, section ) );
-            window.confirm("Are you sure to delete this section?");
+           //this.store.dispatch( this.actions.deleteSection( this.offering, section ) );
+            //window.confirm("Are you sure to delete this section?");
             if (confirm("Are you sure to delete this section?") == true) {
               this.store.dispatch( this.actions.deleteSection( this.offering, section ) );
                 let snackBarRef = this.snackBar.open( 'Section: ' + section.code + ' has been deleted', '', { duration: 3000 } );
@@ -159,6 +161,20 @@ export class OfferingSectionListComponent implements AfterViewInit, OnChanges {
                 snackBarRef.afterDismissed().subscribe(() => {
                 } );
             }
+            
+           /* let config = new MdDialogConfig();
+            config.viewContainerRef = this.vcf;
+            config.role = 'dialog';
+            config.width = '40%';
+            config.height = '30%';
+            config.position = { top: '0px' };
+            this.creatorDialogRef2 = this.dialog.open( ConfirmationDialog, config );
+            this.creatorDialogRef2.componentInstance.offering = this.offering;
+            this.creatorDialogRef2.componentInstance.section = section;
+            this.creatorDialogRef2.afterClosed().subscribe(( res ) => {
+                console.log( 'close dialog' );
+               
+            } );*/
         }
     }
 
