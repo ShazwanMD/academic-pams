@@ -5,37 +5,57 @@ import { MdDialog } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Staff } from "../../../shared/model/identity/staff.interface";
+import { Observable } from 'rxjs';
+import { Appointment } from "../../../shared/model/term/appointment.interface";
 
-@Component({
-  selector: 'pams-lecturer-profile',
-  templateUrl: 'lecturer-profile.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-})
+@Component( {
+    selector: 'pams-lecturer-profile',
+    templateUrl: 'lecturer-profile.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+} )
 export class LecturerProfileComponent implements OnInit {
 
-@Input() lecturer:Staff;
-@Output() view = new EventEmitter<Staff>();
-
-  constructor(private router: Router,
-    private route: ActivatedRoute,
-    private actions: LecturerActions,
-    private store: Store<LecturerModuleState>,
-    private vcf: ViewContainerRef,
-    private dialog: MdDialog) {
-  }
-
-  ngOnInit(): void {
-   
-  }
+    private selectedRows: Appointment[];
   
-  myProfile(){
-      this.router.navigate(['/secure']);
-      
-  }
-  
-  insertGradebook(){
-      this.router.navigate(['/secure/term/offerings/lecturer-offering-center']);
-      
-  }
+    @Input() lecturer: Staff;
+    @Input() appointments: Appointment[];
+    
+    @Output() view2 = new EventEmitter<Staff>();
+
+    constructor( 
+       
+        private router: Router,
+        private route: ActivatedRoute,
+        private actions: LecturerActions,
+        private store: Store<LecturerModuleState>,
+        private vcf: ViewContainerRef,
+        private dialog: MdDialog ) {
+    }
+    
+  //view data appointments to review sections 
+    private columns: any[] = [
+        { name: 'id', label: 'Id' },
+        { name: 'action', label: '' },
+    ];
+    
+    ngOnInit(): void {
+        
+      }
+
+      selectRow(appointment: Appointment): void {
+      }
+
+      selectAllRows(appointments: Appointment[]): void {
+      }
+
+    myProfile() {
+        this.router.navigate( ['/secure'] );
+
+    }
+
+    insertGradebook() {
+        this.router.navigate( ['/secure/term/offerings/lecturer-offering-center'] );
+
+    }
 
 }

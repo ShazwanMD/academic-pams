@@ -31,71 +31,67 @@
             <div flex-gt-md="40">
               <b>Fax</b> :  {{lecturer?.fax}}<br/><br/>
               <b>Actor Type</b> :  {{lecturer?.actorType}}<br/><br/>
-
               <b>Program</b> :  {{lecturer?.program?.titleEn | uppercase}}<br/><br/>
               <b>Program Level</b> :  {{lecturer?.program?.level?.description}}<br/><br/>
               <b>Faculty</b> :  {{lecturer?.program?.faculty?.description}}<br/><br/>
             </div>
-            <div flex-gt-md="5">
-              <button md-icon-button [md-menu-trigger-for]="menu1">
-                  <md-icon>edit</md-icon>
-                </button>
-              <md-menu x-position="before" #menu1="mdMenu" mdTooltip="Select student info actions">
-                <button md-menu-item (click)="editStudent()">Edit</button>
-              </md-menu>
-            </div>
           </div>
           <md-divider></md-divider>
         <md-divider></md-divider>
-        <td-expansion-panel label="Section Information" class="bgc-light-blue-400">
-          <div class="md-padding" class="bgc-light-blue-50">
-             <md-card>
-              <div md-content flex md-scroll-y>
-                <div layout="column" layout-gt-md="row" class="insert">
-
-                  <div flex-gt-md="50">
-                    <md-card-title>Section Information</md-card-title>
-                  </div>
-
-                  <div flex-gt-md="50" align="right">
-                    <button md-icon-button (click)="addAddressDialog(save)">
-                          <md-icon>add</md-icon>
-                        </button>
-                    </div>
-                  </div>
-                </div>
-                <md-divider></md-divider>
-                <md-card-content>
-                  <!-- <td-data-table [data]="addressess" [columns]="columnAddr" [sortBy]="summary" [sortOrder]="ASC" [sortable]="false" [multiple]="false"
-                    [selectable]="false" (rowSelect)="edit.emit($event)" dense>
-
-                    <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
-                      <div layout="row">
-                        <span flex>{{value}}</span>
-                      </div>
-                    </template>
-
-                    <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
-                      <div layout="row">
-                        <button md-icon-button [md-menu-trigger-for]="menuAddress">
-                            <md-icon>more_vert</md-icon>
-                          </button>
-                        <md-menu x-position="before" #menuAddress="mdMenu">
-                          <button md-menu-item (click)="editAddressDialog(row, true)">Update</button>
-                          <button md-menu-item (click)="deleteAddress(row, true)">Delete</button>
-                        </md-menu>
-                      </div>
-                    </template>
-
-                 </td-data-table> -->
-                </md-card-content>
-              </md-card>
-            </div>
-          </td-expansion-panel>
+        
+         <!-- start sections by lecturer -->
+         <md-card>
+  <div toolbar-buttons layout="row" layout-align="start center" flex>
+    <md-card-title>Section</md-card-title>
+    <md-chip-list *ngIf="appointments?.length > 0">
+      <md-chip
+        color="accent">{{appointments?.length}}
+      </md-chip>
+    </md-chip-list>
+    <span flex></span>
+   </div>
+  <md-divider></md-divider>
+  <md-card-content>
+   
+    <md-divider></md-divider>
+   <td-data-table
+        [data]="appointments"
+        [columns]="columns"
+        [sortBy]="summary"
+        [sortOrder]="ASC"
+        [sortable]="false"
+        [multiple]="true"
+        [selectable]="true"
+        [(ngModel)]="selectedRows"
+        (rowSelect)="selectRow($event)"
+        (selectAll)="selectAllRows($event)" dense>
+        <template	tdDataTableTemplate="key" let-value="value" let-row="row"	let-column="column">
+    <div layout="row">
+        <span flex>{{value | uppercase}}</span>
+    </div>
+    </template> <template tdDataTableTemplate="action" let-value="value" let-row="row"
+        let-column="column">
+    <div layout="row">
+        <button md-icon-button [md-menu-trigger-for]="menu1"
+            mdTooltip="Select appointment actions">
+            <md-icon>more_vert</md-icon>
+        </button>
+        <md-menu x-position="before" #menu1="mdMenu">
+        <button md-menu-item [routerLink]="['/term/appointments', row['id']]">View
+            appointment details</button>
+        <button md-menu-item (click)="editDialog(row, true)">Update
+            appointment</button>
+        <button md-menu-item (click)="removeAppointment(row)">Delete
+            appointment</button>
+        </md-menu>
+    </div>
+    </template> </td-data-table> 
+  </md-card-content>
+</md-card>
+         <!-- end sections by lecturer --> 
         </md-tab>
       </md-tab-group>
-<!-- end lecturer page -->
-
+  <!-- end lecturer page -->
       </md-card-content>
     </md-card>
 </td-layout-manage-list>

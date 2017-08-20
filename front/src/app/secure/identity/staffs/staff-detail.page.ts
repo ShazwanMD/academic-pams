@@ -20,6 +20,7 @@ export class StaffDetailPage implements OnInit {
   private APPOINTMENTS: string[] = 'identityModuleState.staffAppointments'.split('.');
   private staff$: Observable<Staff>;
   private appointments$: Observable<Appointment[]>;
+  
   @Input() staff: Staff;
 
   constructor(private router: Router,

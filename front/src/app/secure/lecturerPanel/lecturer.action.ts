@@ -27,4 +27,23 @@ export class LecturerActions {
             payload: lecturer
         };
     }
+    
+    //find appointments by lecturer
+    static FIND_APPOINTMENTS = '[LecturerPanel] Find Appointments';
+
+    findAppointments(lecturer): Action {
+      return {
+        type: LecturerActions.FIND_APPOINTMENTS,
+        payload: lecturer
+      };
+    }
+
+    static FIND_APPOINTMENTS_SUCCESS = '[LecturerPanel] Find Appointments Success';
+
+    findAppointmentsSuccess(appointments): Action {
+      return {
+        type: LecturerActions.FIND_APPOINTMENTS_SUCCESS,
+        payload: appointments
+      };
+    }
 }

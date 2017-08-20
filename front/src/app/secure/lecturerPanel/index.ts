@@ -53,11 +53,10 @@ export const lecturerModuleReducers = {
     declarations: [
         //Page
         LecturerProfileCenterPage,
-
+        
         //Component
         LecturerProfileComponent,
-
-
+        
         //Dialog
 
     ],
