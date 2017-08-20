@@ -1,3 +1,4 @@
+import {MdSnackBar} from '@angular/material/snack-bar';
 import {Store} from '@ngrx/store';
 import {MdDialogRef} from '@angular/material';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
@@ -23,6 +24,7 @@ export class FacultyCreatorDialog implements OnInit {
   constructor(private formBuilder: FormBuilder,
               private store: Store<PlannerModuleState>,
               private actions: FacultyActions,
+              private snackBar: MdSnackBar,
               private dialog: MdDialogRef<FacultyCreatorDialog>) {
   }
 
@@ -48,6 +50,11 @@ export class FacultyCreatorDialog implements OnInit {
     if (!faculty.id) this.store.dispatch(this.actions.saveFaculty(faculty));
     else this.store.dispatch(this.actions.updateFaculty(faculty));
     this.dialog.close();
+
+
+    let snackBarRef = this.snackBar.open( 'New Faculties: ' + faculty.code + ' has been inserted', '', { duration: 3000 } );
+    snackBarRef.afterDismissed().subscribe(() => {
+       } );
   }
 
 }

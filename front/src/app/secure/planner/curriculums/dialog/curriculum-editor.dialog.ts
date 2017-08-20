@@ -1,3 +1,4 @@
+import {MdSnackBar} from '@angular/material/snack-bar';
 import {AcademicSession} from '../../../../shared/model/planner/academic-session.interface';
 import {Program} from '../../../../shared/model/planner/program.interface';
 import {Curriculum} from '../../../../shared/model/planner/curriculum.interface';
@@ -27,6 +28,7 @@ export class CurriculumEditorDialog implements OnInit {
   constructor(private router: Router,
               private route: ActivatedRoute,
               private formBuilder: FormBuilder,
+              private snackBar: MdSnackBar,
               private store: Store<PlannerModuleState>,
               private actions: CurriculumActions,
               private dialog: MdDialogRef<CurriculumEditorDialog>) {
@@ -61,6 +63,9 @@ export class CurriculumEditorDialog implements OnInit {
  if (!curriculum.id) this.store.dispatch(this.actions.saveCurriculum(curriculum));
         else this.store.dispatch(this.actions.updateCurriculum(curriculum));
         this.dialog.close();
-    
+
+         let snackBarRef = this.snackBar.open( 'New assessment: ' + curriculum.code + ' has been inserted', '', { duration: 3000 } );
+         snackBarRef.afterDismissed().subscribe(() => {
+       } );
   }
 }

@@ -1,3 +1,4 @@
+import {MdSnackBar} from '@angular/material/snack-bar';
 import {Faculty} from '../../../../shared/model/planner/faculty.interface';
 import {Program} from '../../../../shared/model/planner/program.interface';
 import {Component, OnInit, ViewContainerRef} from '@angular/core';
@@ -26,6 +27,7 @@ export class ProgramCreatorDialog implements OnInit {
               private router: Router,
               private route: ActivatedRoute,
               private viewContainerRef: ViewContainerRef,
+              private snackBar: MdSnackBar,
               private dialog: MdDialogRef<ProgramCreatorDialog>) {
   }
 
@@ -58,5 +60,9 @@ export class ProgramCreatorDialog implements OnInit {
     else this.store.dispatch(this.actions.updateProgram(program));
     this.dialog.close();
     console.log(program);
+
+    let snackBarRef = this.snackBar.open( 'New Programs: ' + program.code + ' has been inserted', '', { duration: 3000 } );
+    snackBarRef.afterDismissed().subscribe(() => {
+       } );
   }
 }
