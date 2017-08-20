@@ -36,7 +36,7 @@ export class CurriculumBundleSubjectListComponent implements OnInit, OnChanges {
   private bundleSubjectDialogRef: MdDialogRef<CurriculumBundleSubjectDialog>;
   private bundleSubjectPartDialogRef: MdDialogRef<CurriculumBundleSubjectPartDialog>;
    private bundleElectiveDialogRef: MdDialogRef<CurriculumBundleElectiveDialog>;
- 
+ private numPart: Number;//Variable for subject part array
 
   private columns: any[] = [
    // { name: 'id', label: 'Id' },
@@ -67,6 +67,7 @@ export class CurriculumBundleSubjectListComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: { [propName: string]: SimpleChange }) {
+    this.selectedRows = [];
     if (changes['subjects'] && this.subjects) {
       console.log('subject length:' + this.subjects.length);
       this.subjects.forEach((s: Subject) => {
@@ -135,13 +136,29 @@ export class CurriculumBundleSubjectListComponent implements OnInit, OnChanges {
   }
 
   deleteSubject(): void {
-    console.log('length: ' + this.selectedRows.length);
-    for (let i: number = 0; i < this.selectedRows.length; i++) {
-    this.store.dispatch(this.actions.deleteSubject(this.curriculum, this.selectedRows[i]));
-    }
+
+  for (let i: number = 0; i < this.selectedRows.length; i++) {
   
-    this.selectedRows = [];
+    this.numPart = this.actions.findBundleSubjectPart(this.selectedRows[i]).payload.bundleSubject.parts.length;
+   
+
+  if(this.numPart > 0) {
+    //Proceed here if we CANNOT delete
+    alert("Please Delete the SUbject Part First");
+    let snackBarRef = this.snackBar.open( 'Subject Elective cannot be deleted', 'OK' )
+    console.log("Number numPart " + this.numPart)
+
+  } else {
+   //Proceed here if we CAN delete
+
+   window.confirm("Are you sure to delete this subject elective?");
+    this.store.dispatch(this.actions.deleteSubject(this.curriculum, this.selectedRows[i]));
+    let snackBarRef = this.snackBar.open('Subject Elective has been deleted', '',
+         { duration: 3000 });
   }
+
+  }
+}
 
   goBack(route: string): void {
     this.router.navigate(['/subjects']);

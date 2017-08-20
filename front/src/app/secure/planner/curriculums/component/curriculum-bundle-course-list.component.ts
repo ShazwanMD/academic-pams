@@ -84,20 +84,33 @@ export class CurriculumBndleCourseListComponent implements OnInit, OnChanges {
   }
 
    deleteSubjectPart(row: String): void {
-     console.log('subject detail: ', row);
-     console.log('subject detail: ', this.selectedRows);
-         for (let i: number = 0; i < this.selectedRows.length; i++) {
-     this.store.dispatch( this.actions.deleteSubjectPart( this.bundle, this.selectedRows[i] ) );
+    //  console.log('subject detail: ', row);
+    //  console.log('subject detail: ', this.selectedRows);
+    //      for (let i: number = 0; i < this.selectedRows.length; i++) {
+    //  this.store.dispatch( this.actions.deleteSubjectPart( this.bundle, this.selectedRows[i] ) );
      
-         }
+    //      }
+    // }
 
-        // if ( subject.id) {
-        //     console.log( "Don't delete this Subject" ); //try to print at console
-        //     let snackBarRef = this.snackBar.open( 'Subject cannot be deleted', 'OK' );
-        // } else {
-        //     console.log( 'deleteSubject' ); // move on
-        //    // this.store.dispatch( this.actions.deleteSubject( this.curriculum, subject ) );
-        // }
+    if (confirm("Are you sure to delete this subject?") == true) {
+    
+    for (let i: number = 0; i < this.selectedRows.length; i++) {
+    this.store.dispatch(this.actions.deleteSubjectPart(this.bundle, this.selectedRows[i]));
+     }
+       let snackBarRef = this.snackBar.open('Subject has been deleted', '',
+        { duration: 3000 });
+    
+        snackBarRef.afterDismissed().subscribe(() => {
+        this.selectedRows = [];
+     } );
+
+  } else {
+           
+        let snackBarRef = this.snackBar.open( 'subject cancel deleted', '', 
+        { duration: 3000 } );
+        snackBarRef.afterDismissed().subscribe(() => {
+    } );
+ }
     }
 
   selectRow(subject: Subject): void {

@@ -42,6 +42,7 @@ export class CurriculumSubjectListComponent implements AfterViewInit , OnChanges
     private singleSubjectDialogRef: MdDialogRef<CurriculumSingleSubjectDialog>;
     private bundleSubjectDialogRef: MdDialogRef<CurriculumBundleSubjectDialog>;
     private bundleSubjectPartDialogRef: MdDialogRef<CurriculumBundleSubjectPartDialog>;
+    
 
     private columns: any[] = [
         { name: 'id', label: 'Id' },
@@ -140,14 +141,33 @@ export class CurriculumSubjectListComponent implements AfterViewInit , OnChanges
 
     }
 
-    deleteSubject(): void {
-        console.log('length: ' + this.selectedRows.length);
-        for (let i: number = 0; i < this.selectedRows.length; i++) {
-            this.store.dispatch(this.actions.deleteSubject(this.curriculum, this.selectedRows[i]));
-        }
-
+    deleteSubject(subject: Subject): void {
+        // console.log('length: ' + this.selectedRows.length);
+        // window.confirm("Are you sure to delete this Subject?");
+        // for (let i: number = 0; i < this.selectedRows.length; i++) {
+        //     this.store.dispatch(this.actions.deleteSubject(this.curriculum, this.selectedRows[i]));
+        // }
+ if (confirm("Are you sure to delete this subject?") == true) {
+    
+    for (let i: number = 0; i < this.selectedRows.length; i++) {
+    this.store.dispatch(this.actions.deleteSubject(this.curriculum, this.selectedRows[i]));
+     }
+       let snackBarRef = this.snackBar.open('Subject has been deleted', '',
+        { duration: 3000 });
+    
+        snackBarRef.afterDismissed().subscribe(() => {
         this.selectedRows = [];
+     } );
+
+  } else {
+           
+        let snackBarRef = this.snackBar.open( 'subject cancel deleted', '', 
+        { duration: 3000 } );
+        snackBarRef.afterDismissed().subscribe(() => {
+    } );
+ }
     }
+
     selectRow(subject: Subject): void {
     }
 
