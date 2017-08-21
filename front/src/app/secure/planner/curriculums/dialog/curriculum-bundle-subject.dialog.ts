@@ -1,3 +1,4 @@
+import {MdSnackBar} from '@angular/material/snack-bar';
 import { CurriculumBundleSubjectPartDialog } from './curriculum-bundle-subject-part.dialog';
 import { MdDialog, MdDialogConfig } from '@angular/material/dialog';
 import { BundleSubjectPart } from '../../../../shared/model/planner/bundle-subject-part.interface';
@@ -39,6 +40,7 @@ export class CurriculumBundleSubjectDialog implements OnInit {
     private actions: CurriculumActions,
     private router: Router,
     private vcf: ViewContainerRef,
+    private snackBar: MdSnackBar,
     private route: ActivatedRoute,
     private dialogPart: MdDialog,
     private dialog: MdDialogRef<CurriculumBundleSubjectDialog>, )
@@ -103,5 +105,9 @@ export class CurriculumBundleSubjectDialog implements OnInit {
     console.log('curriculum: ' + this._curriculum.academicSession);
     this.store.dispatch(this.actions.addBundleSubject(this._curriculum, bundleSubject));
     this.dialog.close();
+
+    let snackBarRef = this.snackBar.open( 'New Subject Elective: ' + bundleSubject.subjectElectiveStatus + ' has been inserted', '', { duration: 3000 } );
+    snackBarRef.afterDismissed().subscribe(() => {
+    } );
   }
 }

@@ -1,3 +1,4 @@
+import {MdSnackBar} from '@angular/material/snack-bar';
 import {Course} from '../../../../shared/model/planner/course.interface';
 import {SingleSubject} from '../../../../shared/model/planner/single-subject.interface';
 import {Component, OnInit, ViewContainerRef} from '@angular/core';
@@ -29,6 +30,7 @@ export class CurriculumSingleSubjectDialog implements OnInit {
               private actions: CurriculumActions,
               private router: Router,
               private route: ActivatedRoute,
+              private snackBar: MdSnackBar,
               private viewContainerRef: ViewContainerRef,
               private dialog: MdDialogRef<CurriculumSingleSubjectDialog>) {
   }
@@ -68,5 +70,9 @@ export class CurriculumSingleSubjectDialog implements OnInit {
     this.store.dispatch(this.actions.addSingleSubject(this._curriculum, singleSubject));
     console.log('adding single subject to ' + this._curriculum);
     this.dialog.close();
+
+    let snackBarRef = this.snackBar.open( 'New Subject: ' + singleSubject.course.code + ' has been inserted', '', { duration: 3000 } );
+    snackBarRef.afterDismissed().subscribe(() => {
+    } );
   }
 }

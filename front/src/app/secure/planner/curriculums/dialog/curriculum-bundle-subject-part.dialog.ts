@@ -1,3 +1,4 @@
+import {MdSnackBar} from '@angular/material/snack-bar';
 import { BundleSubject } from './../../../../shared/model/planner/bundle-subject.interface';
 import { BundleSubjectPart } from '../../../../shared/model/planner/bundle-subject-part.interface';
 import { Course } from '../../../../shared/model/planner/course.interface';
@@ -30,6 +31,7 @@ export class CurriculumBundleSubjectPartDialog implements OnInit {
   constructor(private router: Router,
     private route: ActivatedRoute,
     private formBuilder: FormBuilder,
+    private snackBar: MdSnackBar,
     private store: Store<PlannerModuleState>,
     private actions: CurriculumActions,
     private dialog: MdDialogRef<CurriculumBundleSubjectPartDialog>) {
@@ -66,7 +68,11 @@ submit(bundleSubjectPart: BundleSubjectPart, isValid: boolean): void {
     console.log('adding bundlesubjectPart');
     this.store.dispatch(this.actions.addSubjectPart(this._bundleSubject, bundleSubjectPart));
     this.dialog.afterClosed().subscribe((res) => {
-        this.store.dispatch(this.actions.findBundleSubjectPart(this._bundleSubject));
+    this.store.dispatch(this.actions.findBundleSubjectPart(this._bundleSubject));
       });
+
+    let snackBarRef = this.snackBar.open( 'New Subject: ' + bundleSubjectPart.course.code + ' has been inserted', '', { duration: 3000 } );
+    snackBarRef.afterDismissed().subscribe(() => {
+    } );
   }
 }
