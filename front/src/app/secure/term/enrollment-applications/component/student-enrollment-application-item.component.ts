@@ -38,8 +38,8 @@ export class StudentEnrollmentApplicationItemComponent implements AfterViewInit 
     {name: 'section.code', label: 'Code'},
     {name: 'section.offering.titleEn', label: 'Title'},
     {name: 'section.offering.course.credit', label: 'Credit'},
-   // {name: 'action', label: 'Add/Drop Status'},
-    {name: 'action', label: ''},
+    {name: 'action', label: 'Add/Drop Status'},
+    {name: 'action2', label: ''},
 
   ];
 

@@ -51,9 +51,13 @@
     <span flex></span>
    </div>
   <md-divider></md-divider>
-  <md-card-content>
-   
-    <md-divider></md-divider>
+    <td-expansion-panel label="Section Information" class="bgc-light-blue-400">
+          <div class="md-padding" class="bgc-light-blue-50">
+            <md-card>
+            
+                <md-divider></md-divider>
+               
+  <md-card-content>  
    <td-data-table
         [data]="appointments"
         [columns]="columns"
@@ -106,8 +110,12 @@
       </template>
     
     </td-data-table> 
-  </md-card-content>
-</md-card>
+
+   </md-card-content>
+              </md-card>
+            </div>
+          </td-expansion-panel>
+     </md-card>
          <!-- end sections by lecturer --> 
         </md-tab>
       </md-tab-group>
