@@ -23,7 +23,6 @@ export class AppointmentEditorDialog implements OnInit {
     private APPOINTMENT: string[] = 'termModuleState.appointment'.split( '.' );
     private appointment$: Observable<Appointment[]>;
 
-
     private editorForm: FormGroup;
     private _section: Section;
     private _appointment: Appointment;

@@ -21,47 +21,24 @@
         Offerings
       </a>
       <a md-list-item [routerLink]="['/secure/term/admissions']">
-        <md-icon>person_add</md-icon>
+        <md-icon>create</md-icon>
         Semester Registration
       </a>
       <a md-list-item [routerLink]="['/secure/term/enrollment-applications']">
         <md-icon>create</md-icon>
         Course Enrollments
       </a>
+      <md-divider></md-divider>
        <a md-list-item [routerLink]="['/secure/identity/staffs']">
-        <md-icon>create</md-icon>
+        <md-icon>person_add</md-icon>
         Lecturer Info
       </a>
-
-      <!-- <a md-list-item [routerLink]="['/secure/term/appointments']">
-      <md-icon>create</md-icon>
-           Appointments
-      </a>  -->
-     <!--  <md-divider></md-divider>
-      <a md-list-item>
-        <md-icon></md-icon>
-        <span
-          style="color: red; font-weight: bold">STUDENT</span>
-      </a> <a md-list-item
-              [routerLink]="['/secure/term/admission-applications/admission-application-center2']">
-      <md-icon>person_add</md-icon>
-      Semester Registration
-    </a> <a md-list-item
-            [routerLink]="['/secure/term/enrollment-applications/student-enrollment-center']">
-      <md-icon>create</md-icon>
-      Course Enrollments
-    </a> -->
-      <md-divider></md-divider>
-      <a md-list-item>
-        <md-icon></md-icon>
-        <span
-          style="color: red; font-weight: bold">LECTURER</span>
-      </a>
-      <a md-list-item
-         [routerLink]="['/secure/identity/staffs']">
+       <a md-list-item [routerLink]="['/secure/profile/advisory']">
         <md-icon>person_add</md-icon>
-        Staff Center
+        Assign Supervisor
       </a>
+      
+     
     </md-nav-list>
     <div toolbar-buttons layout="row" layout-align="start center" flex>
       <span flex>Term Page Center</span>

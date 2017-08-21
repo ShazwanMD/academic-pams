@@ -151,6 +151,27 @@ export class AdmissionActions {
       payload: message
     };
   }
+  
+  //update admission application
+  static UPDATE_ADMISSION_APPLICATION = '[AdmissionApplication] Update AdmissionApplication';
+
+  updateAdmissionApplication(admissionApplication): Action {
+    console.log("updateAdmissionApplication");
+    return {
+      type: AdmissionActions.UPDATE_ADMISSION_APPLICATION,
+      payload: admissionApplication
+    };
+  }
+
+  static UPDATE_ADMISSION_APPLICATION_SUCCESS = '[AdmissionApplication] Update AdmissionApplication Success';
+
+  updateAdmissionApplicationSuccess(message): Action {
+    console.log("updateAdmissionApplicationSuccess");
+    return {
+      type: AdmissionActions.UPDATE_ADMISSION_APPLICATION_SUCCESS,
+      payload: message
+    };
+  }
 
 
 }

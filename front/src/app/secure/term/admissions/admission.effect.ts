@@ -77,5 +77,13 @@ export class AdmissionEffects {
     .map((state) => state[1])
     // .mergeMap(action => from([action, this.admissionActions.findAdmissions()]))
     .map((admission: Admission) => this.admissionActions.findAdmissionById(admission.id));
-;
+  
+  @Effect() updateAdmissionApplication$ = this.actions$
+  .ofType(AdmissionActions.UPDATE_ADMISSION_APPLICATION)
+  .map((action) => action.payload)
+  .switchMap((payload) => this.termService.updateAdmissionApplication(payload.admissionApplication))
+  .map((admissionApplication) => this.admissionActions.updateAdmissionApplicationSuccess(admissionApplication));
+ // .mergeMap((action) => from([action, this.admissionActions.findAdmissionApplications(),
+ // ]));
+
 }

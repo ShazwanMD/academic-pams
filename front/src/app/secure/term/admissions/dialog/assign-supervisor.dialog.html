@@ -1,0 +1,48 @@
+<h2 md-dialog-title>Assign Supervisor</h2>
+<md-dialog-content>
+  <form [formGroup]="creatorForm">
+ <div fxLayout fxLayout.xs="column" fxLayoutWrap fxLayoutGap="25px" class="inset"> 
+      <style>
+table, th, td {
+    border-collapse: collapse;
+}
+th, td {
+    padding: 10px;
+}
+</style>
+      <table style="width:100%">
+		<tbody>
+			<tr style="font-family:verdana;background-color:#F9DFD9" >
+				<td > <b>Name </b></td>
+				<td>: {{_admission?.student?.name}}</td>
+			</tr>
+			<tr style="font-family:verdana;background-color:#FCF4F1">
+				<td >  <b>Identity No  </b></td>
+				<td>: {{_admission?.student?.identityNo}}</td>
+			</tr>
+			<tr style="font-family:verdana;background-color:#FCF4F1">
+				<td >  <b>Lecturer </b></td>
+				<td>: 
+       <pams-staff-select [placeholder]="'Select Staff'"
+                         [innerFormControl]="creatorForm.controls['staff']" 
+                         fxFlex="calc(100%-25px)" 
+                         mdTooltip="Please choose staff" 
+                         class="pad-bottom">
+      </pams-staff-select>
+      <div class="tc-red-600" *ngIf="creatorForm.get('staff').invalid && creatorForm.get('staff').touched">
+        Please insert new staff!
+      </div>
+               </td>
+				
+			</tr>
+		</tbody>
+	</table> 
+    </div>
+  </form>
+</md-dialog-content>
+<md-dialog-actions align="end">
+ 
+  <button md-raised-button color="accent" (click)="save(creatorForm.value, creatorForm.valid)">
+    {{edit ? 'Update' : 'Save'}}
+  </button>
+</md-dialog-actions>

@@ -5,6 +5,7 @@ import {StudentAdmissionApplicationTaskDetailPage} from './student-admission-app
 import {AdmissionApplicationDetailPage} from './admission-application-detail.page';
 import {StudentAdmissionApplicationCenterPage} from './admission-application-center2.page';
 import {StudentAdmissionApplicationDetailPage} from './student-admission-application-detail.page';
+import {AdmissionProfileCenterPage2 } from "./admission-profile-center.page";
 
 export const AdmissionApplicationRoutes: Routes = [
   {path: 'term/admission-applications/admission-application-center2', component: StudentAdmissionApplicationCenterPage},
@@ -22,5 +23,6 @@ export const AdmissionApplicationRoutes: Routes = [
     path: 'term/admission-applications/student-admission-application-task-detail/:taskId',
     component: StudentAdmissionApplicationTaskDetailPage,
   },
+  {path: 'term/admission-applications/admission-profile-center', component: AdmissionProfileCenterPage2},
 
 ];

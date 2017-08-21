@@ -5,6 +5,7 @@ import {AdmissionActions} from '../admission.action';
 import {Store} from '@ngrx/store';
 import {TermModuleState} from '../../index';
 import {AdmissionCreateTaskCreatorDialog} from '../dialog/admission-create-task-creator.dialog';
+import { AssignSupervisorDialog } from "../dialog/assign-supervisor.dialog";
 
 @Component({
   selector: 'pams-admission-action',
@@ -14,6 +15,8 @@ import {AdmissionCreateTaskCreatorDialog} from '../dialog/admission-create-task-
 export class AdmissionActionComponent {
 
   private editorDialogRef: MdDialogRef<AdmissionCreateTaskCreatorDialog>;
+  private editorDialogRef2: MdDialogRef<AssignSupervisorDialog>;
+
   @Input() admission: Admission;
 
   constructor(private actions: AdmissionActions,
@@ -41,5 +44,25 @@ export class AdmissionActionComponent {
 
     });
   }
+  
+  //ASSIGN SUPERVISOR
+  assignSupervisor(): void {
+      console.log('open assign supervisor dialog');
+      console.log(this.admission.id);
+      let config = new MdDialogConfig();
+      config.viewContainerRef = this.vcf;
+      config.role = 'dialog';
+      config.width = '60%';
+      config.height = '40%';
+      config.position = {top: '0px'};
+      this.editorDialogRef2 = this.dialog.open(AssignSupervisorDialog, config);
+      this.editorDialogRef2.componentInstance.admission = this.admission;
+
+      // set
+      this.editorDialogRef2.afterClosed().subscribe((res) => {
+        console.log('close assign supervisor dialog');
+
+      });
+    }
 
 }

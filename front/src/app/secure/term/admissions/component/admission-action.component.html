@@ -14,7 +14,12 @@
   <md-divider></md-divider>
 
   <md-nav-list flex dense>
-
+  
+   <md-list-item (click)="assignSupervisor()">
+      <md-icon md-list-avatar>done_all</md-icon>
+      <h4 md-line>Assign supervisor</h4>
+      <p md-line>Assign supervisor to this student</p>
+    </md-list-item>
     <md-list-item (click)="updateDialog()">
       <md-icon md-list-avatar>done_all</md-icon>
       <h4 md-line>Edit Admission </h4>
@@ -25,6 +30,7 @@
       <h4 md-line>Create admission</h4>
       <p md-line>Create new admission </p>
     </md-list-item>
+    
 
     <md-divider></md-divider>
   </md-nav-list>

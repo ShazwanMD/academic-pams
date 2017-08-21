@@ -37,6 +37,7 @@ import {StudentAdmissionDetailPage} from './student-admission-detail.page';
 import {StudentAdmissionActionComponent} from './component/student-admission-action.component';
 import {StudentAdmissionEnrollmentListComponent} from './component/student-admission-enrollment-list.component';
 import {StudentAdmissionEnrollmentApplicationListComponent} from './component/student-admission-enrollment-application-list.component';
+import { AssignSupervisorDialog } from "./dialog/assign-supervisor.dialog";
 
 
 @NgModule({
@@ -76,6 +77,7 @@ import {StudentAdmissionEnrollmentApplicationListComponent} from './component/st
 
     // dialog
     AdmissionCreateTaskCreatorDialog,
+    AssignSupervisorDialog,
     AdmissionEnrollmentDialog,
     AdmissionUpdateTaskCreatorDialog,
     AdmissionDeleteTaskCreatorDialog,
@@ -83,8 +85,13 @@ import {StudentAdmissionEnrollmentApplicationListComponent} from './component/st
   exports: [
     AdmissionSelectComponent,
     AdmissionApplicationListComponent,
+    AssignSupervisorDialog,
   ],
-  entryComponents: [AdmissionEnrollmentDialog,]
+  entryComponents: [
+  AdmissionEnrollmentDialog,
+  AssignSupervisorDialog,
+                    
+  ]
 })
 
 export class AdmissionSubModule {

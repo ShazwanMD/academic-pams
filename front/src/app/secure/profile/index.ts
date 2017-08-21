@@ -19,6 +19,7 @@ import {ProfileCenterPage} from './profile-center.page';
 import {ProfileStatusComponent} from './component/profile-status.component';
 import {ProfileListComponent} from './component/profile-list.component';
 import {ProfileComponent} from './component/profile.component';
+
 import {ProfileDetailPage} from './profile-detail.page';
 import {EffectsModule} from '@ngrx/effects';
 import {ProfileEffects} from './profile.effect';
@@ -47,6 +48,10 @@ import {CohortTransfererDialog} from './dialog/cohort-transferer.dialog';
 import {ProfileCohortComponent} from './component/profile-cohort.component';
 import {ProfileEnrollmentListComponent} from './component/profile-enrollment-list.component';
 import { Admission } from "../../shared/model/term/admission.interface";
+import { AdvisoryCenterPage } from "./advisory-center.page";
+import {AdvisoryListComponent} from './component/advisory-list.component';
+import {AdvisoryDetailPage} from './advisory-detail.page';
+import {AdvisoryComponent} from './component/advisory.component';
 
 export interface ProfileModuleState {
   students: StudentListState;
@@ -97,13 +102,17 @@ export const profileModuleReducers = {
   declarations: [
     // page
     ProfileCenterPage,
+    AdvisoryCenterPage,
     ProfileDetailPage,
+    AdvisoryDetailPage,
 
     // component
     ProfileComponent,
+    AdvisoryComponent,
     ProfileCohortComponent,
     ProfileActionComponent,
     ProfileListComponent,
+    AdvisoryListComponent,
     ProfileStatusComponent,
     ProfileEnrollmentListComponent,
     ContactTypeSelectComponent,
