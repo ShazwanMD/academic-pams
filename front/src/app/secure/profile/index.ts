@@ -2,6 +2,7 @@ import {StudentStatusDialog} from './dialog/student-status.dialog';
 import {StudentStatusSelectComponent} from './component/student-status-select.component';
 import {CohortSubModule} from '../planner/cohorts/index';
 import {AddressEditorDialog} from './dialog/address-editor.dialog';
+import {AdvisoryEditorDialog} from './dialog/advisory-editor.dialog';
 import {GuardianEditorDialog} from './dialog/guardian-editor.dialog';
 import {GuarantorEditorDialog} from './dialog/guarantor-editor.dialog';
 import {Enrollment} from '../../shared/model/term/enrollment.interface';
@@ -132,6 +133,7 @@ export const profileModuleReducers = {
     GuarantorEditorDialog,
     GuardianEditorDialog,
     AddressEditorDialog,
+    AdvisoryEditorDialog,
     StudyModeSwitcherDialog,
     CohortTransfererDialog,
     StudentStatusDialog,
@@ -150,6 +152,7 @@ export const profileModuleReducers = {
     GuarantorEditorDialog,
     GuardianEditorDialog,
     AddressEditorDialog,
+    AdvisoryEditorDialog,
     StudyModeSwitcherDialog,
     CohortTransfererDialog,
     StudentStatusDialog,

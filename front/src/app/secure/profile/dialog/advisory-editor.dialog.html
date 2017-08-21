@@ -1,0 +1,24 @@
+<h2 md-dialog-title>Advisory Editor Form</h2>
+<md-dialog-content>
+  <form [formGroup]="editorForm">
+   <div layout="row" class="inset" flex>
+     Test {{_admissionApplication.id}} {{_admissionApplication.description}}
+     
+     <!--  <pams-staff-select [placeholder]="'Select Advisor'"
+                         [innerFormControl]="editorForm.controls['advisor']" 
+                         fxFlex="calc(100%-25px)" 
+                         mdTooltip="Please choose advisor" 
+                         class="pad-bottom">
+      </pams-staff-select>
+      <div class="tc-red-600" *ngIf="editorForm.get('advisor').invalid && editorForm.get('advisor').touched">
+        Please choose new advisor!
+      </div> -->
+      
+    </div> 
+  </form>
+</md-dialog-content>
+<md-dialog-actions align="end">
+  <button md-raised-button color="accent" (click)="submit(editorForm.value, edit)">
+    {{edit ? 'Update' : 'Save'}}
+  </button>
+</md-dialog-actions>

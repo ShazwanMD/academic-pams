@@ -18,6 +18,7 @@ import {Student} from '../../../shared/model/identity/student.interface';
 import {ContactEditorDialog} from '../dialog/contact-editor.dialog';
 import {DetailEditorDialog} from '../dialog/detail-editor.dialog';
 import {AddressEditorDialog} from '../dialog/address-editor.dialog';
+import {AdvisoryEditorDialog} from '../dialog/advisory-editor.dialog';
 import {GuardianEditorDialog} from '../dialog/guardian-editor.dialog';
 import {GuarantorEditorDialog} from '../dialog/guarantor-editor.dialog';
 
@@ -37,6 +38,7 @@ export class AdvisoryComponent implements OnInit {
   private guarantorCreatorDialogRef: MdDialogRef<GuarantorEditorDialog>;
   private guardianCreatorDialogRef: MdDialogRef<GuardianEditorDialog>;
   private addressCreatorDialogRef: MdDialogRef<AddressEditorDialog>;
+  private admissionApplicationCreatorDialogRef: MdDialogRef<AdvisoryEditorDialog>;
 
   //Student Information
   private columns: any[] = [
@@ -62,7 +64,14 @@ export class AdvisoryComponent implements OnInit {
  //AdmissionApplication
  private columnAdmissionApplication: any[] = [
   {name: 'id', label: 'Id'},
-  {name: 'action', label: 'Action'},
+  {name: 'description', label: 'Desc.'},
+  {name: 'advisor.name', label: 'Name'},
+  {name: 'advisor.identityNo', label: 'Staff.No'},
+  {name: 'advisor.email', label: 'Email'},
+  {name: 'advisor.mobile', label: 'Mobile'},
+  {name: 'advisor.phone', label: 'Phone'},
+  {name: 'advisor.fax', label: 'Fax'},
+  {name: 'action', label: ''},
 ];
 
   //Guarantor
@@ -71,7 +80,7 @@ export class AdvisoryComponent implements OnInit {
     {name: 'identityNo', label: 'Identity No'},
     {name: 'name', label: 'Name'},
     {name: 'phone', label: 'Mobile No'},
-    {name: 'action', label: 'Action'},
+    {name: 'action', label: ''},
   ];
 
   //Guardian
@@ -142,6 +151,23 @@ export class AdvisoryComponent implements OnInit {
     if (student) this.creatorDialogRef.componentInstance.student = this.student; // set
     this.creatorDialogRef.afterClosed().subscribe((res) => {
       console.log('close dialog');
+    });
+  }
+  
+  //EDIT SUPERVISOR DIALOG
+  editSupervisor(admissionApplication: AdmissionApplication, isValid: boolean): void {
+    let config = new MdDialogConfig();
+    config.viewContainerRef = this.vcf;
+    config.role = 'dialog';
+    config.width = '50%';
+    config.height = '30%';
+    config.position = {top: '0px'};
+    this.admissionApplicationCreatorDialogRef = this.dialog.open(AdvisoryEditorDialog, config);
+    if (isValid) {
+      this.admissionApplicationCreatorDialogRef.componentInstance.admissionApplication = admissionApplication;
+      this.admissionApplicationCreatorDialogRef.componentInstance.student = this.student;
+    }
+    this.admissionApplicationCreatorDialogRef.afterClosed().subscribe((res) => {
     });
   }
 
