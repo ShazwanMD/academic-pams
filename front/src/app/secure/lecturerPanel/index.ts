@@ -19,13 +19,16 @@ import { Staff } from './../../shared/model/identity/staff.interface';
 import { LecturerState, lecturerReducer } from "./lecturer.reducer";
 import { LecturerListState, lecturerListReducer } from "./lecturer-list.reducer";
 import { Appointment } from "../../shared/model/term/appointment.interface";
+import { AdmissionApplication } from "../../shared/model/term/admission-application.interface";
 import { appointmentListReducer, AppointmentListState } from "./appointment-list.reducer";
+import { admissionApplicationListReducer, AdmissionApplicationListState } from "./admissionApplication-list.reducer";
 
 export interface LecturerModuleState {
 
     lecturer: LecturerState;
     lecturers: LecturerListState;
     appointments: AppointmentListState;
+    admissionApplications: AdmissionApplicationListState;
 };
 
 export const INITIAL_LECTURER_PROFILE_STATE: LecturerModuleState =
@@ -34,6 +37,7 @@ export const INITIAL_LECTURER_PROFILE_STATE: LecturerModuleState =
         lecturers: <Staff[]>[],
         lecturer: <Staff>{},
         appointments: <Appointment[]>[],
+        admissionApplications: <AdmissionApplication[]>[],
     };
 
 export const lecturerModuleReducers = {
@@ -41,6 +45,7 @@ export const lecturerModuleReducers = {
     lecturer: lecturerReducer,
     lecturers: lecturerListReducer,
     appointments: appointmentListReducer,
+    admissionApplications: admissionApplicationListReducer,
 };
 
 @NgModule( {

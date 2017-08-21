@@ -652,6 +652,11 @@ public class TermServiceImpl implements TermService {
 	public List<AdAdmissionApplication> findAdmissionApplications(AdStudent student) {
 		return admissionApplicationDao.find(student);
 	}
+	
+	@Override
+	public List<AdAdmissionApplication> findAdmissionApplications(AdStaff staff) {
+		return admissionApplicationDao.find(staff);
+	}
 
 	@Override
 	public List<AdAdmissionApplication> findAdmissionApplications(AdAcademicSession session, Integer offset,
@@ -1661,5 +1666,7 @@ public class TermServiceImpl implements TermService {
 		admissionDao.removeEnrollmentApplication(admission, application, securityService.getCurrentUser());
 		sessionFactory.getCurrentSession().flush();
 	}
+
+	
 
 }

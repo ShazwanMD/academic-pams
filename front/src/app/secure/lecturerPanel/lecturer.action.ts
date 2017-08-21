@@ -12,7 +12,7 @@ export class LecturerActions {
     static FIND_LECTURER_BY_USER = '[LecturerPanel] Find Lecturer By User';
 
     findLecturerByUser(): Action {
-        console.log("Find Lecturer By User")
+        console.log( "Find Lecturer By User" )
         return {
             type: LecturerActions.FIND_LECTURER_BY_USER,
         };
@@ -20,30 +20,49 @@ export class LecturerActions {
 
     static FIND_LECTURER_BY_USER_SUCCESS = '[LecturerPanel] Find Lecturer By User Success';
 
-    findLecturerByUserSuccess(lecturer): Action {
-        console.log("Find Lecturer By User Success")
+    findLecturerByUserSuccess( lecturer ): Action {
+        console.log( "Find Lecturer By User Success" )
         return {
             type: LecturerActions.FIND_LECTURER_BY_USER_SUCCESS,
             payload: lecturer
         };
     }
-    
+
     //find appointments by lecturer
     static FIND_APPOINTMENTS_BY_LECTURER = '[LecturerPanel] Find Appointments';
 
-    findAppointmentsByLecturer(lecturer): Action {
-      return {
-        type: LecturerActions.FIND_APPOINTMENTS_BY_LECTURER,
-        payload: lecturer
-      };
+    findAppointmentsByLecturer( lecturer ): Action {
+        return {
+            type: LecturerActions.FIND_APPOINTMENTS_BY_LECTURER,
+            payload: lecturer
+        };
     }
 
     static FIND_APPOINTMENTS_BY_LECTURER_SUCCESS = '[LecturerPanel] Find Appointments Success';
 
-    findAppointmentsByLecturerSuccess(appointments): Action {
-      return {
-        type: LecturerActions.FIND_APPOINTMENTS_BY_LECTURER_SUCCESS,
-        payload: appointments
-      };
+    findAppointmentsByLecturerSuccess( appointments ): Action {
+        return {
+            type: LecturerActions.FIND_APPOINTMENTS_BY_LECTURER_SUCCESS,
+            payload: appointments
+        };
+    }
+
+    //find admission applications by lecturer
+    static FIND_ADMISSION_APPLICATIONS_BY_LECTURER = '[LecturerPanel] Find AdmissionApplications';
+
+    findAdmissionApplicationsByLecturer( lecturer ): Action {
+        return {
+            type: LecturerActions.FIND_ADMISSION_APPLICATIONS_BY_LECTURER,
+            payload: lecturer
+        };
+    }
+
+    static FIND_ADMISSION_APPLICATIONS_BY_LECTURER_SUCCESS = '[LecturerPanel] Find AdmissionApplications Success';
+
+    findAdmissionApplicationsByLecturerSuccess( admissionApplications ): Action {
+        return {
+            type: LecturerActions.FIND_ADMISSION_APPLICATIONS_BY_LECTURER_SUCCESS,
+            payload: admissionApplications
+        };
     }
 }

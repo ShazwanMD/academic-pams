@@ -26,6 +26,8 @@ public interface AdAdmissionApplicationDao extends GenericDao<Long, AdAdmissionA
     List<AdAdmissionApplication> find(AdAcademicSession session);
     
     List<AdAdmissionApplication> find(AdStudent student);
+    
+    List<AdAdmissionApplication> find(AdStaff staff);
 
     List<AdAdmissionApplication> find(AdAcademicSession session, Integer offset, Integer limit);
 

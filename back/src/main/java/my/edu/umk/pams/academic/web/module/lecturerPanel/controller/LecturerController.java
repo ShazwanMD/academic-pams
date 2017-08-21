@@ -23,6 +23,7 @@ import my.edu.umk.pams.academic.identity.service.IdentityService;
 import my.edu.umk.pams.academic.security.service.SecurityService;
 import my.edu.umk.pams.academic.system.service.SystemService;
 import my.edu.umk.pams.academic.term.model.AdAdmission;
+import my.edu.umk.pams.academic.term.model.AdAdmissionApplication;
 import my.edu.umk.pams.academic.term.model.AdAppointment;
 import my.edu.umk.pams.academic.term.service.TermService;
 import my.edu.umk.pams.academic.web.module.identity.controller.IdentityTransformer;
@@ -30,6 +31,7 @@ import my.edu.umk.pams.academic.web.module.identity.vo.Staff;
 import my.edu.umk.pams.academic.web.module.identity.vo.Student;
 import my.edu.umk.pams.academic.web.module.term.controller.TermTransformer;
 import my.edu.umk.pams.academic.web.module.term.vo.Admission;
+import my.edu.umk.pams.academic.web.module.term.vo.AdmissionApplication;
 import my.edu.umk.pams.academic.web.module.term.vo.Appointment;
 import my.edu.umk.pams.academic.workflow.service.WorkflowService;
 
@@ -99,5 +101,16 @@ public class LecturerController {
 			List<Appointment> vos = termTransformer.toAppointmentVos(appointments);
 			return new ResponseEntity<List<Appointment>>(vos, HttpStatus.OK);
 		}
+		
+		//find admissionApplications by lecturer
+				@RequestMapping(value = "/lecturers/{identityNo}/admissionApplications", method = RequestMethod.GET)
+				public ResponseEntity<List<AdmissionApplication>> findAdmissionApplicationsByLecturer(@PathVariable String identityNo) {
+					AdStaff staff = identityService.findStaffByIdentityNo(identityNo);
+					// AdAcademicSession academicSession =
+					// plannerService.findCurrentAcademicSession();
+					List<AdAdmissionApplication> admissionApplications = termService.findAdmissionApplications(staff);
+					List<AdmissionApplication> vos = termTransformer.toAdmissionApplicationVos(admissionApplications);
+					return new ResponseEntity<List<AdmissionApplication>>(vos, HttpStatus.OK);
+				}
 
 }

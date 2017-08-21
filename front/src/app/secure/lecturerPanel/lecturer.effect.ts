@@ -33,6 +33,7 @@ export class LecturerEffects {
         .map( payload => this.lecturerActions.findLecturerByUserSuccess( payload ) )
         .mergeMap( action => from( [action,
             this.lecturerActions.findAppointmentsByLecturer( action.payload ),
+            this.lecturerActions.findAdmissionApplicationsByLecturer( action.payload ),
         ] ) );
     
   //find appointments by lecturer
@@ -41,6 +42,13 @@ export class LecturerEffects {
     .map(action => action.payload)
     .switchMap(lecturer => this.lecturerService.findAppointmentsByLecturer(lecturer))
     .map(appointments => this.lecturerActions.findAppointmentsByLecturerSuccess(appointments));
+
+  //find admissionApplications by lecturer
+    @Effect() findAdmissionApplicationsByLecturer$ = this.actions$
+    .ofType(LecturerActions.FIND_ADMISSION_APPLICATIONS_BY_LECTURER)
+    .map(action => action.payload)
+    .switchMap(lecturer => this.lecturerService.findAdmissionApplicationsByLecturer(lecturer))
+    .map(admissionApplications => this.lecturerActions.findAdmissionApplicationsByLecturerSuccess(admissionApplications));
 
 
 }

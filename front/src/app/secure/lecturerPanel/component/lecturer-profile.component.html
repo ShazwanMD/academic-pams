@@ -1,10 +1,10 @@
 <!-- Basic Card -->
 <td-layout-manage-list>
     <md-nav-list list-items><!-- class="text-upper" -->
-     <a md-list-item (click)="myProfile()" color="accent"   >
+    <!--  <a md-list-item (click)="myProfile()" color="accent"   >
          <md-icon>create</md-icon>
          <span>My Pofile</span>
-      </a>
+      </a> -->
         <a md-list-item (click)="insertGradebook()" color="accent"   >
          <md-icon>create</md-icon>
          <span>Insert gradebooks</span>
@@ -12,11 +12,16 @@
       <md-divider></md-divider>
       <md-divider></md-divider>
     </md-nav-list>
+     <div toolbar-buttons layout="row" layout-align="start center" flex>
+      <span flex>Staff Personal Information</span>
+        
+    </div>
     <md-card class="">
+    
       <md-card-content>
 <!-- start lecturer page -->
- <md-tab-group>
-        <md-tab label="Staff Personal Information">
+ <!-- <md-tab-group>
+        <md-tab label="Staff Personal Information"> -->
           <div layout="column" layout-gt-md="row" class="insert">
             <div flex-gt-md="20">
               <img src="http://localhost:4200/assets/ico/lecturer/{{lecturer?.identityNo}}.jpg" width="120" height="150">
@@ -74,36 +79,61 @@
         <span flex>{{value | uppercase}}</span>
     </div>
     </template> 
-    <!-- <template tdDataTableTemplate="action" let-value="value" let-row="row"
-        let-column="column">
-    <div layout="row">
-        <button md-icon-button [md-menu-trigger-for]="menu1"
-            mdTooltip="Select appointment actions">
-            <md-icon>more_vert</md-icon>
-        </button>
-        <md-menu x-position="before" #menu1="mdMenu">
-        <button md-menu-item [routerLink]="['/term/appointments', row['id']]">View
-            appointment details</button>
-        <button md-menu-item (click)="editDialog(row, true)">Update
-            appointment</button>
-        <button md-menu-item (click)="removeAppointment(row)">Delete
-            appointment</button>
-        </md-menu>
-    </div>
-    </template> --> 
+   
     <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
         <div layout="row">
-          <!--  <button md-icon-button [md-menu-trigger-for]="menu1" mdTooltip="Select enrollment actions">
-                    <md-icon>more_vert</md-icon>
-                  </button>
-                   <md-menu x-position="before" #menu1="mdMenu">
-                    <button md-menu-item [routerLink]="['/term/appointments', row['id']]">View appointment details</button>
-                    <button md-menu-item (click)="editDialog(row, true)">Update appointment</button>
-                    <button md-menu-item (click)="removeAppointment(row)">Delete appointment</button>
-
-                  </md-menu></div>  -->
-          <a md-button color="accent" class="text-upper" mdTooltip="View section info"
-            [routerLink]="['/secure/term/sections', row.section.canonicalCode, 'lecturer-section-detail']"><!--  [routerLink]="['/secure/term/sections', row.section.canonicalCode, 'lecturer-section-detail']" -->
+          <a md-button color="accent" class="text-upper" mdTooltip="View section info" 
+          [routerLink]="['/secure/term/sections', row.section.canonicalCode, 'lecturer-section-detail']"><!--  [routerLink]="['/secure/term/sections', row.section.canonicalCode, 'lecturer-section-detail']" -->
+            <span>View</span>
+          </a>
+        </div>
+      </template>
+    </td-data-table> 
+   </md-card-content>
+              </md-card>
+            </div>
+          </td-expansion-panel>
+     </md-card>
+         <!-- end sections by lecturer --> 
+         
+          <!-- start supervisions by lecturer -->
+         <md-card>
+  <div toolbar-buttons layout="row" layout-align="start center" flex>
+    <md-card-title>Supervision</md-card-title>
+    <md-chip-list *ngIf="admissionApplications?.length > 0">
+      <md-chip
+        color="accent">{{admissionApplications?.length}}
+      </md-chip>
+    </md-chip-list>
+    <span flex></span>
+   </div>
+  <md-divider></md-divider>
+    <td-expansion-panel label="Supervision Information" class="bgc-light-blue-400">
+          <div class="md-padding" class="bgc-light-blue-50">
+            <md-card>
+            
+                <md-divider></md-divider>
+               
+  <md-card-content>  
+   <td-data-table
+        [data]="admissionApplications"
+        [columns]="columnAddmissionApplication"
+        [sortBy]="summary"
+        [sortOrder]="ASC"
+        [sortable]="false"
+        [multiple]="true"
+        [selectable]="false"
+        [(ngModel)]="selectedRows"
+        (rowSelect)="selectRow($event)"
+        (selectAll)="selectAllRows($event)" dense>
+        <template	tdDataTableTemplate="key" let-value="value" let-row="row"	let-column="column">
+    <div layout="row">
+        <span flex>{{value | uppercase}}</span>
+    </div>
+    </template> 
+    <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
+        <div layout="row">
+         <a md-button color="accent" class="text-upper" mdTooltip="View admission application info"><!--  [routerLink]="['/secure/term/sections', row.section.canonicalCode, 'lecturer-section-detail']" -->
             <span>View</span>
           </a>
         </div>
@@ -116,9 +146,11 @@
             </div>
           </td-expansion-panel>
      </md-card>
-         <!-- end sections by lecturer --> 
-        </md-tab>
-      </md-tab-group>
+         <!-- end supervision by lecturer --> 
+         
+         
+        <!-- </md-tab>
+      </md-tab-group> -->
   <!-- end lecturer page -->
       </md-card-content>
     </md-card>

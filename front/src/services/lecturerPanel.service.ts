@@ -5,6 +5,7 @@ import { Http, Response } from '@angular/http';
 import { environment } from './../environments/environment';
 import { Injectable } from '@angular/core';
 import { Appointment } from '../app/shared/model/term/appointment.interface';
+import { AdmissionApplication } from "../app/shared/model/term/admission-application.interface";
 
 @Injectable()
 export class LecturerPanelService {
@@ -28,6 +29,12 @@ export class LecturerPanelService {
     findAppointmentsByLecturer(lecturer: Staff): Observable<Appointment[]> {
         return this._http.get(this.LECTURER_API + '/lecturers/' + lecturer.identityNo + '/appointments')
           .map((res: Response) => <Appointment[]>res.json());
+      }
+    
+  //find admissionApplications by lecturer
+    findAdmissionApplicationsByLecturer(lecturer: Staff): Observable<AdmissionApplication[]> {
+        return this._http.get(this.LECTURER_API + '/lecturers/' + lecturer.identityNo + '/admissionApplications')
+          .map((res: Response) => <AdmissionApplication[]>res.json());
       }
     
 }

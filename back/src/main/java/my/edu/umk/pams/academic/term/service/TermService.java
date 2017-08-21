@@ -3,6 +3,7 @@ package my.edu.umk.pams.academic.term.service;
 import my.edu.umk.pams.academic.common.model.AdStudyCenter;
 
 import my.edu.umk.pams.academic.core.AdFlowState;
+import my.edu.umk.pams.academic.identity.model.AdActor;
 import my.edu.umk.pams.academic.identity.model.AdStaff;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.planner.model.*;
@@ -224,6 +225,8 @@ public interface TermService {
     List<AdAdmissionApplication> findAdmissionApplications(AdAcademicSession session);
     
     List<AdAdmissionApplication> findAdmissionApplications(AdStudent student);
+    
+    List<AdAdmissionApplication> findAdmissionApplications(AdStaff staff);
 
     List<AdAdmissionApplication> findAdmissionApplications(AdAcademicSession session, Integer offset, Integer limit);
 
