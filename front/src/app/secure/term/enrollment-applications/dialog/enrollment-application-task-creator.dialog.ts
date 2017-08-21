@@ -1,3 +1,4 @@
+import {MdSnackBar} from '@angular/material/snack-bar';
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Store} from '@ngrx/store';
@@ -24,6 +25,7 @@ export class EnrollmentApplicationTaskCreatorDialog implements OnInit {
 
   constructor(private router: Router,
               private formBuilder: FormBuilder,
+              private snackBar: MdSnackBar,
               private route: ActivatedRoute,
               private store: Store<TermModuleState>,
               private actions: EnrollmentApplicationActions,
@@ -57,6 +59,10 @@ export class EnrollmentApplicationTaskCreatorDialog implements OnInit {
     console.log(JSON.stringify(enrollmentApplication));
     this.store.dispatch(this.actions.startEnrollmentApplicationTask(enrollmentApplication));
     this.dialog.close();
+
+     let snackBarRef = this.snackBar.open( 'New Enrollment Application : ' + enrollmentApplication.admission.student.name + ' has been inserted', '', { duration: 3000 } );
+     snackBarRef.afterDismissed().subscribe(() => {
+       } );
   }
 }
 
