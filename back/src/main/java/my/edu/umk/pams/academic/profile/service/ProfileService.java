@@ -5,6 +5,7 @@ import my.edu.umk.pams.academic.identity.model.*;
 import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
 import my.edu.umk.pams.academic.planner.model.AdCohort;
 import my.edu.umk.pams.academic.planner.model.AdFaculty;
+import my.edu.umk.pams.academic.term.model.AdAdmissionApplication;
 
 import java.util.List;
 
@@ -30,6 +31,7 @@ public interface ProfileService {
 	List<AdStudent> findStudents(Integer offset, Integer limit);
 	List<AdStudent> findStudents(String filter, Integer offset, Integer limit);
 	List<AdAddress> findAddresses(AdStudent student);
+	List<AdAdmissionApplication> findAmissionApplications(AdStudent student);
 	List<AdGuarantor> findGuarantors(AdStudent student);
 	List<AdGuardian> findGuardians(AdStudent student);
 	List<AdContact> findContacts(AdStudent student);

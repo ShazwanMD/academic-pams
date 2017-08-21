@@ -647,6 +647,11 @@ public class TermServiceImpl implements TermService {
 	public List<AdAdmissionApplication> findAdmissionApplications(AdAcademicSession session) {
 		return admissionApplicationDao.find(session);
 	}
+	
+	@Override
+	public List<AdAdmissionApplication> findAdmissionApplications(AdStudent student) {
+		return admissionApplicationDao.find(student);
+	}
 
 	@Override
 	public List<AdAdmissionApplication> findAdmissionApplications(AdAcademicSession session, Integer offset,

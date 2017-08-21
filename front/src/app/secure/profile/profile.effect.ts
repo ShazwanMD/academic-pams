@@ -82,12 +82,20 @@ export class ProfileEffects {
     .map(student => this.profileActions.findStudentByIdentityNoSuccess(student))
     .mergeMap(action => from([action,
       this.profileActions.findAddresses(action.payload),
+      this.profileActions.findAdmissionApplications(action.payload),
       this.profileActions.findContacts(action.payload),
       this.profileActions.findGuarantors(action.payload),
       this.profileActions.findGuardians(action.payload),
       this.profileActions.findEnrollments(action.payload),
       this.profileActions.findAdmissions(action.payload),
     ]));
+  
+  //find admission applications by students
+  @Effect() findAdmissionApplications$ = this.actions$
+  .ofType(ProfileActions.FIND_ADMISSION_APPLICATIONS)
+  .map(action => action.payload)
+  .switchMap(student => this.profileService.findAdmissionApplications(student))
+  .map(admissionApplications => this.profileActions.findAdmissionApplicationsSuccess(admissionApplications));
 
   @Effect() findAddresses$ = this.actions$
     .ofType(ProfileActions.FIND_ADDRESSES)

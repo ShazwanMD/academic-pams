@@ -57,6 +57,15 @@ public class AdAdmissionApplicationDaoImpl extends GenericDaoSupport<Long, AdAdm
         query.setEntity("session", session);
         return (List<AdAdmissionApplication>) query.list();
     }
+    
+    @Override
+    public List<AdAdmissionApplication> find(AdStudent student) {
+        Session currentSession = sessionFactory.getCurrentSession();
+        Query query = currentSession
+                .createQuery("select p from AdAdmissionApplication p where " + "p.student = :student ");
+        query.setEntity("student", student);
+        return (List<AdAdmissionApplication>) query.list();
+    }
 
     @Override
     public List<AdAdmissionApplication> find(AdAcademicSession session, Integer offset, Integer limit) {

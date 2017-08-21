@@ -8,6 +8,7 @@ import {ProfileActions} from '../profile.action';
 import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';
 
 import {Enrollment} from '../../../shared/model/term/enrollment.interface';
+import {AdmissionApplication} from '../../../shared/model/term/admission-application.interface';
 import {Contact} from '../../../shared/model/profile/contact.interface';
 import {Guardian} from '../../../shared/model/profile/guardian.interface';
 import {Guarantor} from '../../../shared/model/profile/guarantor.interface';
@@ -29,6 +30,7 @@ import {FormBuilder} from '@angular/forms';
 })
 
 export class AdvisoryComponent implements OnInit {
+    
   private stateCode: StateCode;
   private creatorDialogRef: MdDialogRef<DetailEditorDialog>;
   private contactCreatorDialogRef: MdDialogRef<ContactEditorDialog>;
@@ -43,6 +45,8 @@ export class AdvisoryComponent implements OnInit {
     {name: 'mobile', label: 'Mobile'},
     {name: 'action', label: ''},
   ];
+
+
   //Address
   private columnAddr: any[] = [
     {name: 'addressType', label: 'Address Type'},
@@ -54,6 +58,12 @@ export class AdvisoryComponent implements OnInit {
     {name: 'countryCode.description', label: 'Country'},
     {name: 'action', label: 'Action'},
   ];
+
+ //AdmissionApplication
+ private columnAdmissionApplication: any[] = [
+  {name: 'id', label: 'Id'},
+  {name: 'action', label: 'Action'},
+];
 
   //Guarantor
   private columnGuarantor: any[] = [
@@ -83,6 +93,7 @@ export class AdvisoryComponent implements OnInit {
 
   @Input() student: Student;
   @Input() addressess: Address[];
+  @Input() admissionApplications: AdmissionApplication[];
   @Input() guarantors: Guarantor[];
   @Input() guardians: Guardian[];
   @Input() contacts: Contact[];

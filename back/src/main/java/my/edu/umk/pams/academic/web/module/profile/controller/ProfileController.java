@@ -17,6 +17,7 @@ import my.edu.umk.pams.academic.web.module.planner.vo.AcademicSession;
 import my.edu.umk.pams.academic.web.module.profile.vo.*;
 import my.edu.umk.pams.academic.web.module.term.controller.TermTransformer;
 import my.edu.umk.pams.academic.web.module.term.vo.Admission;
+import my.edu.umk.pams.academic.web.module.term.vo.AdmissionApplication;
 import my.edu.umk.pams.academic.web.module.term.vo.Enrollment;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -754,6 +755,13 @@ public class ProfileController {
 	public ResponseEntity<List<Address>> findAddressesByStudent(@PathVariable String identityNo) {
 		AdStudent student = profileService.findStudentByMatricNo(identityNo);
 		return new ResponseEntity<List<Address>>(profileTransformer.toAddressVos(profileService.findAddresses(student)),
+				HttpStatus.OK);
+	}
+	
+	@RequestMapping(value = "/students/{identityNo}/admissionApplications", method = RequestMethod.GET)
+	public ResponseEntity<List<AdmissionApplication>> findAmissionApplicationsByStudent(@PathVariable String identityNo) {
+		AdStudent student = profileService.findStudentByMatricNo(identityNo);
+		return new ResponseEntity<List<AdmissionApplication>>(termTransformer.toAdmissionApplicationVos(termService.findAdmissionApplications(student)),
 				HttpStatus.OK);
 	}
 

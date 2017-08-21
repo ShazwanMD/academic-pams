@@ -101,6 +101,25 @@ export class ProfileActions {
       payload: student
     };
   }
+  
+  //find admissionApplications by student
+  static FIND_ADMISSION_APPLICATIONS = '[Profile] Find AdmissionApplications';
+
+  findAdmissionApplications(student): Action {
+    return {
+      type: ProfileActions.FIND_ADMISSION_APPLICATIONS,
+      payload: student
+    };
+  }
+
+  static FIND_ADMISSION_APPLICATIONS_SUCCESS = '[Profile] Find AdmissionApplications Success';
+
+  findAdmissionApplicationsSuccess(admissionApplications): Action {
+    return {
+      type: ProfileActions.FIND_ADMISSION_APPLICATIONS_SUCCESS,
+      payload: admissionApplications
+    };
+  }
 
   static FIND_ADDRESSES = '[Profile] Find Addresses';
 

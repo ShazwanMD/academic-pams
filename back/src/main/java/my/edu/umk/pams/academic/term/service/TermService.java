@@ -222,6 +222,8 @@ public interface TermService {
     List<AdAdmissionApplication> findAdmissionApplicationsByFlowStates(AdFlowState... flowStates);
 
     List<AdAdmissionApplication> findAdmissionApplications(AdAcademicSession session);
+    
+    List<AdAdmissionApplication> findAdmissionApplications(AdStudent student);
 
     List<AdAdmissionApplication> findAdmissionApplications(AdAcademicSession session, Integer offset, Integer limit);
 

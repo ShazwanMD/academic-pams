@@ -14,6 +14,7 @@ import { Enrollment } from '../app/shared/model/term/enrollment.interface';
 import { SwitchStudyMode } from '../app/shared/model/profile/switch-study-mode.interface';
 import { TransferCohort } from '../app/shared/model/profile/transfer-cohort.interface';
 import { Admission } from "../app/shared/model/term/admission.interface";
+import { AdmissionApplication } from "../app/shared/model/term/admission-application.interface";
 
 @Injectable()
 export class ProfileService {
@@ -171,6 +172,11 @@ export class ProfileService {
     return this._http.get(this.PROFILE_API + '/students/' + student.identityNo + '/addresses')
       .map((res: Response) => <Address[]>res.json());
   }
+  
+  findAdmissionApplications(student: Student): Observable<AdmissionApplication[]> {
+      return this._http.get(this.PROFILE_API + '/students/' + student.identityNo + '/admissionApplications')
+        .map((res: Response) => <AdmissionApplication[]>res.json());
+    }
 
   /*==================================================================================================*/
   /*STUDENT INFORMATION ADD/UPD*/

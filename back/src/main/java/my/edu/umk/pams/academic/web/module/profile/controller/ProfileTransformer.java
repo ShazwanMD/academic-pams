@@ -6,6 +6,8 @@ import my.edu.umk.pams.academic.web.module.identity.vo.Student;
 import my.edu.umk.pams.academic.web.module.identity.vo.StudentStatus;
 import my.edu.umk.pams.academic.web.module.planner.controller.PlannerTransformer;
 import my.edu.umk.pams.academic.web.module.profile.vo.*;
+import my.edu.umk.pams.academic.web.module.term.vo.AdmissionApplication;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -111,7 +113,7 @@ public class ProfileTransformer {
                 .collect(toList());
         return vos;
     }
-
+    
     public List<Guarantor> toGuarantorVos(List<AdGuarantor> guarantors) {
         List<Guarantor> vos = guarantors.stream()
                 .map((guarantor) -> toGuarantorVo(guarantor))
