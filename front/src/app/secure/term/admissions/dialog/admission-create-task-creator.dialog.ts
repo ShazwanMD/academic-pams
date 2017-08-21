@@ -1,3 +1,4 @@
+import {MdSnackBar} from '@angular/material/snack-bar';
 import {Cohort} from '../../../../shared/model/planner/cohort.interface';
 import {StudyCenter} from '../../../setup/study-centers/study-center.interface';
 import {Student} from '../../../../shared/model/identity/student.interface';
@@ -34,6 +35,7 @@ export class AdmissionCreateTaskCreatorDialog implements OnInit {
               private actions: AdmissionActions,
               private dialog: MdDialogRef<AdmissionCreateTaskCreatorDialog>,
               private router: Router,
+              private snackBar: MdSnackBar,
               private route: ActivatedRoute,
               private vcf: ViewContainerRef) {
   }
@@ -69,5 +71,9 @@ export class AdmissionCreateTaskCreatorDialog implements OnInit {
     else this.store.dispatch(this.actions.updateAdmission(admission));
     this.dialog.close();
     console.log(admission);
+
+     let snackBarRef = this.snackBar.open( 'New Admission : ' + admission.student.name + ' has been inserted', '', { duration: 3000 } );
+    snackBarRef.afterDismissed().subscribe(() => {
+       } );
   }
 }

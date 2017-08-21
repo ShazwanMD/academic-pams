@@ -71,6 +71,10 @@ export class AdmissionApplicationTaskCreatorDialog implements OnInit {
     admissionApplication.description = admissionApplication.student.identityNo + ' ' + admissionApplication.academicSession.code;
     this.store.dispatch(this.actions.startAdmissionApplicationTask(admissionApplication));
     this.dialog.close();
+
+    let snackBarRef = this.snackBar.open( 'New Admission Application: ' + admissionApplication.student.name + ' has been inserted', '', { duration: 3000 } );
+    snackBarRef.afterDismissed().subscribe(() => {
+       } );
     
     this.assignedAdmissionApplicationTasks$.subscribe( val => console.log( 'Accumulated object admissionApplication$:', val['status'] ) );
     //window.alert("Alert:" + this.assignedAdmissionApplicationTasks$.subscribe(val => {val['status']}));
