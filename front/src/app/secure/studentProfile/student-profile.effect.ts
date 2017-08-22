@@ -37,6 +37,7 @@ export class StudentProfileEffects {
       this.profileActions.findGuardians(action.payload),
       this.profileActions.findEnrollments(action.payload),
       this.profileActions.findAdmissions(action.payload),
+      this.profileActions.findAdmissionApplications(action.payload),
     ]));
 
   @Effect() findStudentsByIdentityNo$ = this.actions$
