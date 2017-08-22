@@ -7,6 +7,7 @@ import {from} from 'rxjs/observable/from';
 import {TermModuleState} from '../term/index';
 import {Store} from '@ngrx/store';
 import {Router} from '@angular/router';
+import { TermService } from "../../../services/term.service";
 
 @Injectable()
 export class ProfileEffects {
@@ -16,6 +17,7 @@ export class ProfileEffects {
   constructor(private actions$: Actions,
               private profileActions: ProfileActions,
               private profileService: ProfileService,
+              private termService: TermService,
               private router: Router,
               private store$: Store<TermModuleState>) {
   }
@@ -155,6 +157,20 @@ export class ProfileEffects {
     .map(state => state[1])
     .map((student: Student) => this.profileActions.findStudentByIdentityNo(student.identityNo));
 
+  /*==================================================================================================*/
+  /*ADMISSION APPLICATION/ADVISORY - EFFECT*/
+  /*==================================================================================================*/
+  
+  @Effect() updateAdmissionApplication$ = this.actions$
+  .ofType(ProfileActions.UPDATE_ADMISSION_APPLICATION)
+  .map(action => action.payload)
+  .switchMap(payload => this.profileService.updateAdmissionApplication(payload.student, payload.admissionApplication))
+  .map(message => this.profileActions.updateAdmissionApplicationSuccess(message))
+  .withLatestFrom(this.store$.select(...this.STUDENT))
+  .map(state => state[1])
+  .map((student: Student) => this.profileActions.findStudentByIdentityNo(student.identityNo));
+
+  
   /*==================================================================================================*/
   /*ADDRESS - EFFECT*/
   /*==================================================================================================*/

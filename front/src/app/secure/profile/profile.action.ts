@@ -252,6 +252,31 @@ export class ProfileActions {
   }
 
   /*==================================================================================================*/
+  /*ADD / UPD / DEL ADMISSION APPLICATION-ADVISORY*/
+  /*==================================================================================================*/
+  
+
+  static UPDATE_ADMISSION_APPLICATION = '[Profile] Update AdmissionApplication';
+
+  updateAdmissionApplication(student, admissionApplication): Action {
+      console.log("updateAdmissionApplication");
+    return {
+      type: ProfileActions.UPDATE_ADMISSION_APPLICATION,
+      payload: {student: student, admissionApplication: admissionApplication}
+    };
+  }
+
+  static UPDATE_ADMISSION_APPLICATION_SUCCESS = '[Profile] Update AdmissionApplication Success';
+
+  updateAdmissionApplicationSuccess(message): Action {
+      console.log("updateAdmissionApplicationSuccess");
+    return {
+      type: ProfileActions.UPDATE_ADMISSION_APPLICATION_SUCCESS,
+      payload: message
+    };
+  }
+  
+  /*==================================================================================================*/
   /*ADD / UPD / DEL ADDRESS*/
   /*==================================================================================================*/
   static ADD_ADDRESS = '[Profile] Add Address';

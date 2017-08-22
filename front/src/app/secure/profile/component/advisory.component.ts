@@ -154,13 +154,17 @@ export class AdvisoryComponent implements OnInit {
     });
   }
   
+  /*=========================================================================================*/
+  /*ADMISION APPLICATION*/
+  /*=========================================================================================*/
+ 
   //EDIT SUPERVISOR DIALOG
   editSupervisor(admissionApplication: AdmissionApplication, isValid: boolean): void {
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
     config.role = 'dialog';
     config.width = '50%';
-    config.height = '30%';
+    config.height = '50%';
     config.position = {top: '0px'};
     this.admissionApplicationCreatorDialogRef = this.dialog.open(AdvisoryEditorDialog, config);
     if (isValid) {

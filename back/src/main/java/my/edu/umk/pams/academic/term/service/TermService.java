@@ -201,6 +201,8 @@ public interface TermService {
     String startAdmissionApplicationTask(AdAdmissionApplication application);
 
     void updateAdmissionApplication(AdAdmissionApplication application);
+    
+    void updateAdmissionApplication(AdStudent student, AdAdmissionApplication application);
 
     void cancelAdmissionApplication(AdAdmissionApplication application);
 

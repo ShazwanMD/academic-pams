@@ -596,6 +596,12 @@ public class TermServiceImpl implements TermService {
 		admissionApplicationDao.update(application, securityService.getCurrentUser());
 		sessionFactory.getCurrentSession().flush();
 	}
+	
+	@Override
+	public void updateAdmissionApplication(AdStudent student, AdAdmissionApplication application) {
+		admissionApplicationDao.updateAdmissionApplication(student,application, securityService.getCurrentUser());
+		sessionFactory.getCurrentSession().flush();		
+	}
 
 	@Override
 	public void updateAdmission(AdAdmission admission) {
@@ -1666,6 +1672,8 @@ public class TermServiceImpl implements TermService {
 		admissionDao.removeEnrollmentApplication(admission, application, securityService.getCurrentUser());
 		sessionFactory.getCurrentSession().flush();
 	}
+
+	
 
 	
 

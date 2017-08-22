@@ -10,6 +10,7 @@ import my.edu.umk.pams.academic.planner.service.PlannerService;
 import my.edu.umk.pams.academic.profile.service.ProfileService;
 import my.edu.umk.pams.academic.security.service.SecurityService;
 import my.edu.umk.pams.academic.term.model.AdAdmission;
+import my.edu.umk.pams.academic.term.model.AdAdmissionApplication;
 import my.edu.umk.pams.academic.term.model.AdEnrollment;
 import my.edu.umk.pams.academic.term.service.TermService;
 import my.edu.umk.pams.academic.web.module.identity.vo.Student;
@@ -71,7 +72,22 @@ public class ProfileController {
 
 	@Autowired
 	private SecurityService securityService;
+	
+	// ====================================================================================================
+	// ADMISSION APPLICATION
+	// ====================================================================================================
 
+	/* EDIT ADMISSION APPLICATION */
+	@RequestMapping(value = "/students/{identityNo}/admissionApplications/{id}", method = RequestMethod.PUT)
+	public ResponseEntity<String> updateAdmissionApplication(@PathVariable String identityNo, @RequestBody AdmissionApplication vo) {
+		dummyLogin();
+		LOG.debug("updateAdmissionApplication:{}", vo.getAdvisor());
+		AdStudent student = profileService.findStudentByMatricNo(identityNo);
+		AdAdmissionApplication application = termService.findAdmissionApplicationById(vo.getId());
+		application.setAdvisor(identityService.findStaffByIdentityNo(vo.getAdvisor().getIdentityNo()));
+		termService.updateAdmissionApplication(student, application);
+		return new ResponseEntity<String>("Success", HttpStatus.OK);
+	}
 	// ====================================================================================================
 	// ADDRESS
 	// ====================================================================================================

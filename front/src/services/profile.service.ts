@@ -190,6 +190,16 @@ export class ProfileService {
     return this._http.put(this.PROFILE_API + '/students/' + student.identityNo, JSON.stringify(student))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
+  
+  /*==================================================================================================*/
+  //ADMISSION APPLICATION/ADVISORY ADD/UPD/DEL
+  /*==================================================================================================*/
+  
+  updateAdmissionApplication(student: Student, admissionApplication: AdmissionApplication): Observable<String> {
+      console.log('admissionApplication', admissionApplication);
+      return this._http.put(this.PROFILE_API + '/students/' + student.identityNo + '/admissionApplications/' + admissionApplication.id, JSON.stringify(admissionApplication))
+        .flatMap((res: Response) => Observable.of(res.text()));
+    }
 
   /*==================================================================================================*/
   //ADDRESS ADD/UPD/DEL
