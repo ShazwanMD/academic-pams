@@ -72,14 +72,15 @@ public class ProfileController {
 
 	@Autowired
 	private SecurityService securityService;
-	
+
 	// ====================================================================================================
 	// ADMISSION APPLICATION
 	// ====================================================================================================
 
 	/* EDIT ADMISSION APPLICATION */
 	@RequestMapping(value = "/students/{identityNo}/admissionApplications/{id}", method = RequestMethod.PUT)
-	public ResponseEntity<String> updateAdmissionApplication(@PathVariable String identityNo, @RequestBody AdmissionApplication vo) {
+	public ResponseEntity<String> updateAdmissionApplication(@PathVariable String identityNo,
+			@RequestBody AdmissionApplication vo) {
 		dummyLogin();
 		LOG.debug("updateAdmissionApplication:{}", vo.getAdvisor());
 		AdStudent student = profileService.findStudentByMatricNo(identityNo);
@@ -327,7 +328,7 @@ public class ProfileController {
 		return new ResponseEntity<List<Address>>(
 				profileTransformer.toAddressVos(profileService.findAddresses(student1)), HttpStatus.OK);
 	}
-	
+
 	@RequestMapping(value = "/studentLogins/academicSession/{code}", method = RequestMethod.GET)
 	public ResponseEntity<AcademicSession> findAcademicSessionByStudent(@PathVariable String code) {
 		// Get Current User
@@ -342,20 +343,18 @@ public class ProfileController {
 		String identityNo = student.getIdentityNo();
 		AdStudent student1 = profileService.findStudentByMatricNo(identityNo);
 		LOG.debug("address", profileService.findAddresses(student1));
-		
+
 		AdAcademicSession academicSession = plannerService.findAcademicSessionByCode(code);
 		List<AdAdmission> admissions = termService.findAdmissions(academicSession);
 		for (AdAdmission admission : admissions) {
 			List<AdEnrollment> enrollments = termService.findEnrollments(admission);
 			for (AdEnrollment enrollment : enrollments) {
-				
+
 			}
 		}
-		
+
 		return new ResponseEntity<AcademicSession>(HttpStatus.OK);
 	}
-	
-	
 
 	// ====================================================================================================
 	// STUDENT PROFILE CONTACT
@@ -661,10 +660,10 @@ public class ProfileController {
 		profileService.deleteAddress(student1, address);
 		return new ResponseEntity<String>("Success", HttpStatus.OK);
 	}
-	
+
 	@RequestMapping(value = "/student", method = RequestMethod.PUT)
 	public ResponseEntity<String> updateStudentDetail(@RequestBody Student vo) {
-		//dummyLogin();
+		// dummyLogin();
 		AdUser user = securityService.getCurrentUser();
 
 		AdStudent student = null;
@@ -676,7 +675,7 @@ public class ProfileController {
 		String identityNo = student.getIdentityNo();
 
 		AdStudent student1 = profileService.findStudentByMatricNo(identityNo);
-		//AdStudent studentById = profileService.findStudentById(vo.getId());
+		// AdStudent studentById = profileService.findStudentById(vo.getId());
 		student1.setName(vo.getName());
 		student1.setPhone(vo.getPhone());
 		student1.setEmail(vo.getEmail());
@@ -755,8 +754,8 @@ public class ProfileController {
 		List<Enrollment> vos = termTransformer.toEnrollmentVos(enrollments);
 		return new ResponseEntity<List<Enrollment>>(vos, HttpStatus.OK);
 	}
-	
-	//find admissions by student
+
+	// find admissions by student
 	@RequestMapping(value = "/students/{identityNo}/admissions", method = RequestMethod.GET)
 	public ResponseEntity<List<Admission>> findAdmissionsByStudent(@PathVariable String identityNo) {
 		AdStudent student = profileService.findStudentByMatricNo(identityNo);
@@ -773,11 +772,13 @@ public class ProfileController {
 		return new ResponseEntity<List<Address>>(profileTransformer.toAddressVos(profileService.findAddresses(student)),
 				HttpStatus.OK);
 	}
-	
+
 	@RequestMapping(value = "/students/{identityNo}/admissionApplications", method = RequestMethod.GET)
-	public ResponseEntity<List<AdmissionApplication>> findAmissionApplicationsByStudent(@PathVariable String identityNo) {
+	public ResponseEntity<List<AdmissionApplication>> findAmissionApplicationsByStudent(
+			@PathVariable String identityNo) {
 		AdStudent student = profileService.findStudentByMatricNo(identityNo);
-		return new ResponseEntity<List<AdmissionApplication>>(termTransformer.toAdmissionApplicationVos(termService.findAdmissionApplications(student)),
+		return new ResponseEntity<List<AdmissionApplication>>(
+				termTransformer.toAdmissionApplicationVos(termService.findAdmissionApplications(student)),
 				HttpStatus.OK);
 	}
 
