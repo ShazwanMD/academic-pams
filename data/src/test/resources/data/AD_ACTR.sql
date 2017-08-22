@@ -121,7 +121,7 @@ WHERE email = 'noraani@umk.edu.my';
 -- lecturer 2
 INSERT INTO AD_ACTR (ID, IDENTITY_NO, NAME, EMAIL, PHONE, MOBILE, FAX, ACTOR_TYPE, C_TS, C_ID, M_ST)
 VALUES
-  (nextval('SQ_AD_ACTR'), '01002A', 'Prof. Madya Dr. Wee Yu Ghee', 'yughee@umk.edu.my', '09-7717000', '09-7717000', '09-7717000', 0,
+  (nextval('SQ_AD_ACTR'), '01002A', 'Prof. Madya Dr. Wee Yu Ghee', 'yughee@umk.edu.my', '09-7716000', '09-7717000', '09-7717000', 0,
                           CURRENT_TIMESTAMP, 1, 1);
 
 INSERT INTO AD_STAF (ID,STAFF_TYPE,FACULTY_ID,PROGRAM_ID) VALUES (currval('SQ_AD_ACTR'), 0, 1, 71);
