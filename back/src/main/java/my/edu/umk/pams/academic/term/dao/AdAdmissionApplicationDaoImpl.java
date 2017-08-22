@@ -2,9 +2,12 @@ package my.edu.umk.pams.academic.term.dao;
 
 import my.edu.umk.pams.academic.core.AdFlowState;
 import my.edu.umk.pams.academic.core.AdMetaState;
+import my.edu.umk.pams.academic.core.AdMetadata;
 import my.edu.umk.pams.academic.core.GenericDaoSupport;
+import my.edu.umk.pams.academic.identity.model.AdAddress;
 import my.edu.umk.pams.academic.identity.model.AdStaff;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
+import my.edu.umk.pams.academic.identity.model.AdUser;
 import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
 import my.edu.umk.pams.academic.planner.model.AdCohort;
 import my.edu.umk.pams.academic.planner.model.AdProgram;
@@ -12,10 +15,13 @@ import my.edu.umk.pams.academic.term.model.AdAdmission;
 import my.edu.umk.pams.academic.term.model.AdAdmissionApplication;
 import my.edu.umk.pams.academic.term.model.AdAdmissionApplicationImpl;
 import my.edu.umk.pams.academic.term.model.AdEnrollmentApplication;
+
+import org.apache.commons.lang.Validate;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 /**
@@ -206,6 +212,21 @@ public class AdAdmissionApplicationDaoImpl extends GenericDaoSupport<Long, AdAdm
         return ((Long) query.uniqueResult()).intValue();
 
     }
+
+	//update admissio application in advisory
+	 public void updateAdmissionApplication(AdStudent student, AdAdmissionApplication application, AdUser currentUser) {
+	        Validate.notNull(currentUser, "User cannot be null");
+	        Validate.notNull(application, "application cannot be null");
+	        Session session = sessionFactory.getCurrentSession();
+	        application.setStudent(student);
+
+	        // prepare metadata
+	        AdMetadata metadata = application.getMetadata();
+	        metadata.setModifiedDate(new Timestamp(System.currentTimeMillis()));
+	        metadata.setModifierId(currentUser.getId());
+	        application.setMetadata(metadata);
+	        session.update(application);
+	    }
 
 	
 

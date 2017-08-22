@@ -319,7 +319,7 @@ public class ProfileServiceImpl implements ProfileService {
     }
 
 	@Override
-	public List<AdAdmissionApplication> findAmissionApplications(AdStudent student) {
+	public List<AdAdmissionApplication> findAdmissionApplications(AdStudent student) {
 		// TODO Auto-generated method stub
 		return null;
 	}

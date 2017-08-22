@@ -1,3 +1,8 @@
+import { AcademicYear } from './../../shared/model/planner/academic-year.interface';
+import { AcademicSession } from './../../shared/model/planner/academic-session.interface';
+import { StudentProfileAcademicSessionComponent } from './component/student-profile-academicSession-list.component';
+import { StudentProfileDetailPage } from './student-profile-detail.page';
+import { PlannerModule } from './../planner/index';
 import { StudentProfileEnrollmentsComponent } from './component/student-profile-enrollments.component';
 import { StudentDetailEditorDialog } from './dialog/student-detail-editor.dialog';
 import { StudentAddressEditorDialog } from './dialog/student-address-editor.dialog';
@@ -39,6 +44,11 @@ import { StudentMenu } from "./component/student-menu.component";
 import { Admission } from "../../shared/model/term/admission.interface";
 import { admissionListReducer, AdmissionListState } from "../profile/admission-list.reducer";
 
+import { AcademicSessionState, academicSessionReducer } from "../planner/academic-sessions/academic-session.reducer";
+import { AcademicYearListState, academicYearListReducer } from "../planner/academic-years/academic-year-list.reducer";
+import { AcademicYearState, academicYearReducer } from "../planner/academic-years/academic-year.reducer";
+import { AcademicSessionListState, academicSessionListReducer } from "./academic-session-list.reducer";
+
 
 export interface StudentProfileModuleState {
     students: StudentListState;
@@ -50,6 +60,10 @@ export interface StudentProfileModuleState {
     enrollments: EnrollmentListState;
     admissions: AdmissionListState;
     admission: AdmissionListState;
+    academicSessions: AcademicSessionListState;
+    academicSession: AcademicSessionState;
+    academicYears: AcademicYearListState;
+    academicYear: AcademicYearState;
 
 
 };
@@ -65,6 +79,10 @@ export const INITIAL_STUDENT_PROFILE_STATE: StudentProfileModuleState =
         enrollments: <Enrollment[]>[],
         admissions: <Admission[]>[],
         admission: <Admission[]>[],
+        academicSession: <AcademicSession>{},
+        academicSessions: <AcademicSession[]>[],
+        academicYears: <AcademicYear[]>[],
+        academicYear: <AcademicYear>{},
 
     };
 
@@ -79,6 +97,10 @@ export const studentProfileModuleReducers = {
     enrollments: enrollmentListReducer,
     admissions: admissionListReducer,
     admission: admissionListReducer,
+    academicSession: academicSessionReducer,
+    academicSessions: academicSessionListReducer,
+    academicYears: academicYearListReducer,
+    academicYear: academicYearReducer,
 
 };
 
@@ -93,6 +115,8 @@ export const studentProfileModuleReducers = {
         EffectsModule.run(StudentProfileEffects),
         CohortSubModule.forRoot(),
         ProfileModule.forRoot(),
+        PlannerModule.forRoot(),
+        AcademicSessionSubModule.forRoot(),
 
     ],
     declarations: [
@@ -104,6 +128,8 @@ export const studentProfileModuleReducers = {
         StudentProfileListPage,
         StudentMenu,
         StudentProfileEnrollmentsComponent,
+        StudentProfileDetailPage,
+        StudentProfileAcademicSessionComponent,
 
         //Dialog
         StudentContactEditorDialog,
@@ -130,7 +156,6 @@ export const studentProfileModuleReducers = {
         StudentGuarantorEditorDialog,
         StudentAddressEditorDialog,
         StudentDetailEditorDialog,
-
     ],
 
 })

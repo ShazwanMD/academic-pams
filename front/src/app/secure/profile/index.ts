@@ -55,6 +55,7 @@ import { AdvisoryCenterPage } from "./advisory-center.page";
 import {AdvisoryListComponent} from './component/advisory-list.component';
 import {AdvisoryDetailPage} from './advisory-detail.page';
 import {AdvisoryComponent} from './component/advisory.component';
+import { IdentityModule } from "../identity/index";
 
 export interface ProfileModuleState {
   students: StudentListState;
@@ -102,6 +103,7 @@ export const profileModuleReducers = {
     CovalentCoreModule.forRoot(),
     CommonModule.forRoot(),
     AcademicSessionSubModule.forRoot(),
+    IdentityModule.forRoot(),
     EffectsModule.run(ProfileEffects),
     CohortSubModule.forRoot(),
   ],

@@ -1,3 +1,4 @@
+import { AcademicSession } from './../../shared/model/planner/academic-session.interface';
 import { MdDialogRef, MdDialogConfig, MdDialog } from '@angular/material';
 import { Contact } from './../../shared/model/profile/contact.interface';
 import { Guardian } from './../../shared/model/profile/guardian.interface';
@@ -36,6 +37,8 @@ export class StudentProfileCenterPage implements OnInit {
   private CONTACTS: string[] = 'studentProfileModuleState.contacts'.split('.');
   private ENROLLMENTS: string[] = 'studentProfileModuleState.enrollments'.split('.');
   private ADMISSIONS: string[] = 'studentProfileModuleState.admissions'.split('.');
+  private ACADEMICSESSIONS: string[] = 'plannerModuleState.academicSessions'.split('.');
+  private ACADEMICSESSION: string[] ='plannerModuleState.academicSession'.split('.');
   
 
   private students$: Observable<Student[]>;
@@ -46,6 +49,9 @@ export class StudentProfileCenterPage implements OnInit {
   private contacts$: Observable<Contact>;
   private enrollments$: Observable<Enrollment>;
   private admissions$: Observable<Admission>;
+  private academicSessions$: Observable<AcademicSession[]>;
+  private academicSession$: Observable<AcademicSession>;
+  
   
 
   private _student: Student;
@@ -66,6 +72,8 @@ export class StudentProfileCenterPage implements OnInit {
     this.contacts$ = this.store.select(...this.CONTACTS);
     this.enrollments$ = this.store.select(...this.ENROLLMENTS);
     this.admissions$ = this.store.select(...this.ADMISSIONS);
+    this.academicSessions$ = this.store.select(...this.ACADEMICSESSIONS);
+    this.academicSession$ = this.store.select(...this.ACADEMICSESSION);
     
   }
 
@@ -81,6 +89,7 @@ export class StudentProfileCenterPage implements OnInit {
   ngOnInit(): void {
     console.log("find Student Profile");
     this.store.dispatch(this.actions.findStudentByUser());
+    this.store.dispatch(this.actions.findAcademicSessionsByStudent());
     //this.actions.findStudentByIdentityNo(student.identityNo);
 
   }

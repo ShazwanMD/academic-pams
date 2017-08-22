@@ -66,20 +66,21 @@ export class StudentProfileActions {
     };
   }
 
-    static FIND_ACADEMICSESSION_BY_STUDENT = '[StudentProfile] Find AcademicSession By Student';
+    static FIND_ACADEMIC_SESSIONS_BY_STUDENT = '[StudentProfile] Find AcademicSessions By Student';
 
-  findAcademicSessionByStudent(code): Action {
+  findAcademicSessionsByStudent(): Action {
+    console.log("find academic session by student");
     return {
-      type: StudentProfileActions.FIND_ACADEMICSESSION_BY_STUDENT,
-      payload: code
-    };
+      type: StudentProfileActions.FIND_ACADEMIC_SESSIONS_BY_STUDENT,
+       };
   }
 
-  static FIND_ACADEMICSESSION_BY_STUDENT_SUCCESS = '[StudentProfile] Find AcademicSession By Student Success';
+  static FIND_ACADEMIC_SESSIONS_BY_STUDENT_SUCCESS = '[StudentProfile] Find AcademicSessions By Student Success';
 
-  findAcademicSessionByStudentSuccess(message): Action {
+  findAcademicSessionsByStudentSuccess(message): Action {
+        console.log("find academic session by student success");
     return {
-      type: StudentProfileActions.FIND_ACADEMICSESSION_BY_STUDENT_SUCCESS,
+      type: StudentProfileActions.FIND_ACADEMIC_SESSIONS_BY_STUDENT_SUCCESS,
       payload: message
     };
   }

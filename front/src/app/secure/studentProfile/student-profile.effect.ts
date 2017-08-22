@@ -52,11 +52,11 @@ export class StudentProfileEffects {
     .switchMap(() => this.profileService.findAddressessByStudent())
     .map(addreesses => this.studentProfileActions.findAddressessByStudentSuccess(addreesses));
 
-  @Effect() findAcademicSessionByStudent$ = this.actions$
-    .ofType(StudentProfileActions.FIND_ACADEMICSESSION_BY_STUDENT)
+  @Effect() findAcademicSessionsByStudent$ = this.actions$
+    .ofType(StudentProfileActions.FIND_ACADEMIC_SESSIONS_BY_STUDENT)
     .map(action => action.payload)
-    .switchMap(code => this.profileService.findAcademicSessionByStudent(code))
-    .map(message => this.studentProfileActions.findAcademicSessionByStudentSuccess(message));
+    .switchMap(() => this.profileService.findAcademicSessionsByStudent())
+    .map(message => this.studentProfileActions.findAcademicSessionsByStudentSuccess(message));
   /*==================================================================================================*/
   /*CONTACT - EFFECT*/
   /*==================================================================================================*/

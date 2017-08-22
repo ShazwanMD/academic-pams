@@ -4,6 +4,7 @@ import my.edu.umk.pams.academic.core.AdFlowState;
 import my.edu.umk.pams.academic.core.GenericDao;
 import my.edu.umk.pams.academic.identity.model.AdStaff;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
+import my.edu.umk.pams.academic.identity.model.AdUser;
 import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
 import my.edu.umk.pams.academic.planner.model.AdProgram;
 import my.edu.umk.pams.academic.term.model.AdAdmissionApplication;
@@ -56,6 +57,8 @@ public interface AdAdmissionApplicationDao extends GenericDao<Long, AdAdmissionA
     Integer count(AdAcademicSession session, AdStudent student);
 
     Integer count(String filter, AdAcademicSession session, AdStaff staff);
+
+	void updateAdmissionApplication(AdStudent student, AdAdmissionApplication application, AdUser currentUser);
 
     // ====================================================================================================
     // CRUD

@@ -1,3 +1,4 @@
+import { AcademicSession } from './../../../shared/model/planner/academic-session.interface';
 import { StudentDetailEditorDialog } from './../dialog/student-detail-editor.dialog';
 import { StudentAddressEditorDialog } from './../dialog/student-address-editor.dialog';
 import { StudentContactEditorDialog } from './../dialog/student-contact-editor.dialog';
@@ -53,7 +54,8 @@ export class StudentProfileListPage implements OnInit {
     @Input() contacts: Contact[];
     @Input() enrollments: Enrollment[];
     @Input() admissions: Admission[];
-        
+    @Input() academicSessions: AcademicSession[];
+
     @Output() view2 = new EventEmitter<Admission>();
 
 
@@ -107,9 +109,9 @@ export class StudentProfileListPage implements OnInit {
         { name: 'phone', label: 'Mobile No' },
         { name: 'action', label: 'Action' },
     ];
-    
-      
-  //Admission
+
+
+    //Admission
     private columnAdmission: any[] = [
         { name: 'academicSession.code', label: 'Session' },
         { name: 'cgpa', label: 'CGPA' },
@@ -119,11 +121,11 @@ export class StudentProfileListPage implements OnInit {
         { name: 'ordinal', label: 'Ordinal' },
         { name: 'standing', label: 'Standing' },
         { name: 'status', label: 'Status' },
-        {name: 'action', label: ''},
-        
+        { name: 'action', label: '' },
+
     ];
-    
-    
+
+
     goBack(route: string): void {
         this.router.navigate(['/studentProfile']);
     }
@@ -336,15 +338,15 @@ export class StudentProfileListPage implements OnInit {
         config.role = 'dialog';
         config.width = '60%';
         config.height = '40%';
-        config.position = {top: '0px'};
+        config.position = { top: '0px' };
         this.creatorDialogRef = this.dialog.open(AdmissionApplicationTaskDialog, config);
         this.creatorDialogRef.componentInstance.student = this.student;
         this.creatorDialogRef.afterClosed().subscribe((res) => {
             console.log('close dialog');
-          // load something here
+            // load something here
         });
-      }
-    
+    }
+
     //COURSE ENROLLMENT
     courseEnroll(): void {
         let config = new MdDialogConfig();
@@ -352,46 +354,46 @@ export class StudentProfileListPage implements OnInit {
         config.role = 'dialog';
         config.width = '70%';
         config.height = '50%';
-        config.position = {top: '0px'};
+        config.position = { top: '0px' };
         this.creatorDialogRef2 = this.dialog.open(EnrollmentApplicationTaskDialog, config);
         this.creatorDialogRef2.afterClosed().subscribe((res) => {
-          console.log('close dialog');
-          
-          // load something here
+            console.log('close dialog');
+
+            // load something here
         });
-      }
-    
-    //STATUS SEMESTER REGISTRATION
-    statusSemesterRegister(){
-        this.router.navigate(['/secure/term/admission-applications/admission-application-center2']);
-        
     }
-    
+
+    //STATUS SEMESTER REGISTRATION
+    statusSemesterRegister() {
+        this.router.navigate(['/secure/term/admission-applications/admission-application-center2']);
+
+    }
+
     //STATUS COURSE ENROLLMENT
-    statusCourseEnroll(){
+    statusCourseEnroll() {
         this.router.navigate(['/secure/term/enrollment-applications/student-enrollment-center']);
     }
-    
-  //APPLY GRADUATION
+
+    //APPLY GRADUATION
     applyGraduation(): void {
         let config = new MdDialogConfig();
         config.viewContainerRef = this.vcf;
         config.role = 'dialog';
         config.width = '70%';
         config.height = '80%';
-        config.position = {top: '0px'};
+        config.position = { top: '0px' };
         this.creatorDialogRef3 = this.dialog.open(GraduationApplicationCreatorDialog, config);
         this.creatorDialogRef3.afterClosed().subscribe((res) => {
-          console.log('close dialog');
-          // load something here
+            console.log('close dialog');
+            // load something here
         });
-      }
-    
+    }
+
     //STATUS GRADUATION
-    statusGraduation(){
+    statusGraduation() {
         this.router.navigate(['/secure/graduation/graduation-applications/student']);
     }
-    
+
     /*viewAdmission(admission: Admission): void {
         console.log('Emitting admission');
         let snackBarRef = this.snackBar.open('Viewing semester registration', 'OK');
@@ -399,5 +401,11 @@ export class StudentProfileListPage implements OnInit {
           this.view.emit(admission);
         });
       }*/
+
+    //STATUS 
+    academicSessionDetail() {
+        this.router.navigate(['/secure/academicSessions']);
+    }
+
 
 }
