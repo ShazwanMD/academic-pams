@@ -102,7 +102,7 @@ export class ProfileActions {
     };
   }
   
-  //find admissionApplications by student
+  /*//find admissionApplications by student 22/8/17
   static FIND_ADMISSION_APPLICATIONS = '[Profile] Find AdmissionApplications';
 
   findAdmissionApplications(student): Action {
@@ -119,7 +119,7 @@ export class ProfileActions {
       type: ProfileActions.FIND_ADMISSION_APPLICATIONS_SUCCESS,
       payload: admissionApplications
     };
-  }
+  }*/
 
   static FIND_ADDRESSES = '[Profile] Find Addresses';
 
@@ -229,6 +229,26 @@ export class ProfileActions {
       payload: admissions
     };
   }
+  
+  //find AdmissionApplications By Student 22/8/17
+  static FIND_ADMISSION_APPLICATIONS_BY_STUDENT = '[Profile] Find AdmissionApplications';
+
+  findAdmissionApplications(student): Action {
+    return {
+      type: ProfileActions.FIND_ADMISSION_APPLICATIONS_BY_STUDENT,
+      payload: student
+    };
+  }
+
+  static FIND_ADMISSION_APPLICATIONS_BY_STUDENT_SUCCESS = '[Profile] Find AdmissionApplications Success';
+
+  findAdmissionApplicationsSuccess(admissionApplications): Action {
+    return {
+      type: ProfileActions.FIND_ADMISSION_APPLICATIONS_BY_STUDENT_SUCCESS,
+      payload: admissionApplications
+    };
+  }
+
 
   /*==================================================================================================*/
   /*ADD / UPD STUDENT*/

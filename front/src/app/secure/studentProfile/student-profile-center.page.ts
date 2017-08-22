@@ -17,6 +17,7 @@ import { Address } from "../../shared/model/profile/address.interface";
 import { Enrollment } from "../../shared/model/term/enrollment.interface";
 import { FormBuilder } from "@angular/forms";
 import { Admission } from "../../shared/model/term/admission.interface";
+import { AdmissionApplication } from "../../shared/model/term/admission-application.interface";
 
 @Component({
   selector: 'pams-student-profile-center',
@@ -39,6 +40,7 @@ export class StudentProfileCenterPage implements OnInit {
   private ADMISSIONS: string[] = 'studentProfileModuleState.admissions'.split('.');
   private ACADEMICSESSIONS: string[] = 'plannerModuleState.academicSessions'.split('.');
   private ACADEMICSESSION: string[] ='plannerModuleState.academicSession'.split('.');
+  private ADMISSION_APPLICATIONS: string[] = 'profileModuleState.admissionApplications'.split( '.' );
   
 
   private students$: Observable<Student[]>;
@@ -51,6 +53,7 @@ export class StudentProfileCenterPage implements OnInit {
   private admissions$: Observable<Admission>;
   private academicSessions$: Observable<AcademicSession[]>;
   private academicSession$: Observable<AcademicSession>;
+  private admissionApplications$: Observable<AdmissionApplication>;
   
   
 
@@ -74,6 +77,7 @@ export class StudentProfileCenterPage implements OnInit {
     this.admissions$ = this.store.select(...this.ADMISSIONS);
     this.academicSessions$ = this.store.select(...this.ACADEMICSESSIONS);
     this.academicSession$ = this.store.select(...this.ACADEMICSESSION);
+    this.admissionApplications$ = this.store.select( ...this.ADMISSION_APPLICATIONS );
     
   }
 

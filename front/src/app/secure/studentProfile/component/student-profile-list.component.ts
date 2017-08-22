@@ -18,6 +18,7 @@ import { Guardian } from "../../../shared/model/profile/guardian.interface";
 import { Contact } from "../../../shared/model/profile/contact.interface";
 import { Enrollment } from "../../../shared/model/term/enrollment.interface";
 import { Admission } from "../../../shared/model/term/admission.interface";
+import { AdmissionApplication } from "../../../shared/model/term/admission-application.interface";
 import { OfferingUpdateDialog } from "../../term/offerings/dialog/offering-update.dialog";
 import { AdmissionApplicationTaskCreatorDialog } from "../../term/admission-applications/dialog/admission-application-task-creator.dialog";
 import { AdmissionApplicationTaskDialog } from "../../term/admission-applications/dialog/admission-application-task.dialog";
@@ -55,6 +56,7 @@ export class StudentProfileListPage implements OnInit {
     @Input() enrollments: Enrollment[];
     @Input() admissions: Admission[];
     @Input() academicSessions: AcademicSession[];
+    @Input() admissionApplications: AdmissionApplication[];
 
     @Output() view2 = new EventEmitter<Admission>();
 
@@ -123,6 +125,19 @@ export class StudentProfileListPage implements OnInit {
         { name: 'status', label: 'Status' },
         { name: 'action', label: '' },
 
+    ];
+    
+    //view data admissionApplications to review supervision 
+    private columnAdmissionApplication: any[] = [
+        { name: 'id', label: 'Id' },
+        { name: 'academicSession.code', label: 'Academic Session' },
+        { name: 'advisor.name', label: 'Name' },
+        { name: 'advisor.email', label: 'Email' },
+        { name: 'advisor.identityNo', label: 'IdentityNo.' },
+        { name: 'advisor.phone', label: 'Phone' },
+        { name: 'advisor.program.code', label: 'Program' },
+        { name: 'advisor.program.faculty.name', label: 'Faculty' },        
+        { name: 'action', label: '' },
     ];
 
 

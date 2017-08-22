@@ -8,7 +8,7 @@ const initialState: AdmissionApplicationListState = <AdmissionApplication[]>[];
 
 export function admissionApplicationListReducer(state = initialState, action: Action): AdmissionApplicationListState {
   switch (action.type) {
-    case ProfileActions.FIND_ADMISSION_APPLICATIONS_SUCCESS: {
+    case ProfileActions.FIND_ADMISSION_APPLICATIONS_BY_STUDENT_SUCCESS: {
       return action.payload;
     }
     default: {
