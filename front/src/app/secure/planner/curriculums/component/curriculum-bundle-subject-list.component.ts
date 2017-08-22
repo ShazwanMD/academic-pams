@@ -1,3 +1,4 @@
+import {AfterViewInit} from '@angular/core';
 import {CurriculumBundleElectiveDialog} from '../dialog/curriculum-bundle-elective.dialog';
 import {MdSnackBar} from '@angular/material/snack-bar';
 import { Store } from '@ngrx/store';
@@ -12,6 +13,12 @@ import {
   SimpleChange,
   ViewContainerRef
 } from '@angular/core';
+import {
+    IPageChangeEvent,
+    ITdDataTableSortChangeEvent,
+    TdDataTableService,
+    TdDataTableSortingOrder
+} from '@covalent/core';
 import { Curriculum } from '../../../../shared/model/planner/curriculum.interface';
 import { BundleSubjectPart } from '../../../../shared/model/planner/bundle-subject-part.interface';
 import { BundleSubject } from '../../../../shared/model/planner/bundle-subject.interface';
@@ -30,16 +37,17 @@ import { Subject } from '../../../../shared/model/planner/subject.interface';
   templateUrl: './curriculum-bundle-subject-list.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CurriculumBundleSubjectListComponent implements OnInit, OnChanges {
+export class CurriculumBundleSubjectListComponent implements OnInit, OnChanges, AfterViewInit{
 
   private selectedRows: Subject[];
   private bundleSubjectDialogRef: MdDialogRef<CurriculumBundleSubjectDialog>;
   private bundleSubjectPartDialogRef: MdDialogRef<CurriculumBundleSubjectPartDialog>;
    private bundleElectiveDialogRef: MdDialogRef<CurriculumBundleElectiveDialog>;
  private numPart: Number;//Variable for subject part array
+ private refreshCurriculum: boolean = false;
 
   private columns: any[] = [
-   // { name: 'id', label: 'Id' },
+    { name: 'id', label: 'Id' },
     { name: 'ordinal', label: 'Semester' },
     { name: 'subjectType', label: 'Type' },
     { name: 'subjectElectiveStatus', label: 'Status' },
@@ -48,6 +56,16 @@ export class CurriculumBundleSubjectListComponent implements OnInit, OnChanges {
     // {name: 'parts', label: 'Parts'},
     { name: 'action', label: '' },
   ];
+
+  filteredData: any[];
+    filteredTotal: number;
+    searchTerm: string = '';
+    fromRow: number = 1;
+    currentPage: number = 1;
+    pageSize: number = 5;
+    sortBy: string = 'id';
+    sortOrder: TdDataTableSortingOrder = TdDataTableSortingOrder.Descending;
+
 
   @Input() curriculum: Curriculum;
   @Input() subjects: Subject[];
@@ -59,7 +77,8 @@ export class CurriculumBundleSubjectListComponent implements OnInit, OnChanges {
               private vcf: ViewContainerRef,
               private snackBar: MdSnackBar,
               private store: Store<PlannerModuleState>,
-              private dialog: MdDialog,) {
+              private dialog: MdDialog,
+              private _dataTableService: TdDataTableService) {
   }
 
   ngOnInit(): void {
@@ -68,12 +87,26 @@ export class CurriculumBundleSubjectListComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: { [propName: string]: SimpleChange }) {
     this.selectedRows = [];
+    if(this.refreshCurriculum == true) {
+    this.store.dispatch(this.actions.findSubjectsByCurriculum(this.curriculum));
+    this.store.dispatch(this.actions.findSubjectsByCurriculumAndSubjectElectiveType(this.curriculum));
+    this.selectedRows = [];
+    this.refreshCurriculum = false;
+    console.log("Inside RefCur", this.actions.findSubjectsByCurriculumAndSubjectElectiveType(this.curriculum).payload.subjects.length)
+    this.subjects = [];
+    this.filter();
+    }
+      
     if (changes['subjects'] && this.subjects) {
       console.log('subject length:' + this.subjects.length);
       this.subjects.forEach((s: Subject) => {
         console.log('subject: ' + s.type);
         console.log('subject: ' + s.ordinal);
         console.log('subject: ' + s.subjectElectiveStatus);
+
+      this.filteredData = changes['subjects'].currentValue;
+      this.filteredTotal = changes['subjects'].currentValue.length;
+      this.filter();
 
         if (s.type === 'single') {
           console.log('single subject: ' + s.ordinal);
@@ -82,13 +115,44 @@ export class CurriculumBundleSubjectListComponent implements OnInit, OnChanges {
         } else {
           console.log('subject');
         }
+
       });
     }
+
   }
 
-  filter(): void {
-    // no op
-  }
+  ngAfterViewInit(): void {
+        this.filteredData = this.subjects;
+        this.filteredTotal = this.subjects.length;
+        this.filter();
+    }
+
+    sort(sortEvent: ITdDataTableSortChangeEvent): void {
+        this.sortBy = sortEvent.name;
+        this.sortOrder = sortEvent.order;
+        this.filter();
+    }
+
+    search(searchTerm: string): void {
+        this.searchTerm = searchTerm;
+        this.filter();
+    }
+
+    page(pagingEvent: IPageChangeEvent): void {
+        this.fromRow = pagingEvent.fromRow;
+        this.currentPage = pagingEvent.page;
+        this.pageSize = pagingEvent.pageSize;
+        this.filter();
+    }
+
+    filter(): void {
+        let newData: any[] = this.subjects;
+        newData = this._dataTableService.filterData(newData, this.searchTerm, true);
+        this.filteredTotal = newData.length;
+        newData = this._dataTableService.sortData(newData, this.sortBy, this.sortOrder);
+        newData = this._dataTableService.pageData(newData, this.fromRow, this.currentPage * this.pageSize);
+        this.filteredData = newData;
+    }
 
   showBundleSubjectDialog(bundleSubject: BundleSubject): void {
       console.log("curriculum : "+this.curriculum.academicSession);
@@ -127,11 +191,11 @@ export class CurriculumBundleSubjectListComponent implements OnInit, OnChanges {
   selectAllRows(subject: Subject[]): void {
   }
 
-   viewSubject(subject: Subject): void {
+  viewSubject(subject: Subject): void {
     console.log('Emitting subject');
     let snackBarRef = this.snackBar.open('Viewing subject info', 'OK');
     snackBarRef.afterDismissed().subscribe(() => {
-      this.view.emit(subject);
+    this.view.emit(subject);
     });
   }
 
@@ -144,19 +208,25 @@ export class CurriculumBundleSubjectListComponent implements OnInit, OnChanges {
 
   if(this.numPart > 0) {
     //Proceed here if we CANNOT delete
-    alert("Please Delete the SUbject Part First");
-    let snackBarRef = this.snackBar.open( 'Subject Elective cannot be deleted', 'OK' )
+    alert("Please Delete the Subject Part First");
+    let snackBarRef = this.snackBar.open( 'Subject Elective cannot be deleted','OK',{ duration: 3000 });
     console.log("Number numPart " + this.numPart)
+    snackBarRef.afterDismissed().subscribe(() => {
+  
+    } );
 
   } else {
    //Proceed here if we CAN delete
     this.store.dispatch(this.actions.deleteSubject(this.curriculum, this.selectedRows[i]));
-    let snackBarRef = this.snackBar.open('Subject Elective has been deleted', '',
-         { duration: 3000 });
-  }
+    this.refreshCurriculum= true;
+    let snackBarRef = this.snackBar.open('  Subject Elective has been deleted','',
+    { duration: 3000 });
+    snackBarRef.afterDismissed().subscribe(() => {
 
+    } );
   }
-}
+  }
+  }
 
   goBack(route: string): void {
     this.router.navigate(['/subjects']);

@@ -1,15 +1,5 @@
 
-  <div toolbar-buttons layout="row" layout-align="start center" flex>
-    <span flex></span>
-    <button md-icon-button [md-menu-trigger-for]="menu">
-      <md-icon>add</md-icon>
-    </button>
-    <md-menu x-position="before" #menu="mdMenu">
-      <button md-menu-item (click)="showBundleSubjectPartDialog()">Bundle Subject Part</button>
-    </md-menu>
-  </div>
-
-<h2 md-dialog-title> Bundle Subject</h2>
+<h2 md-dialog-title> Subjects Elective</h2>
 <md-dialog-content>
   <form [formGroup]="creatorForm">
 
@@ -46,7 +36,6 @@
       </pams-course-select>
     </div> -->
   </form>
-
 </md-dialog-content>
 <md-dialog-actions align="end">
   <button md-raised-button color="accent" (click)="submit(creatorForm.value, edit)">

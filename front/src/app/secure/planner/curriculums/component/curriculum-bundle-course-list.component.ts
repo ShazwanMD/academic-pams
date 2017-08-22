@@ -33,6 +33,7 @@ export class CurriculumBndleCourseListComponent implements OnInit, OnChanges {
   private singleSubjectDialogRef: MdDialogRef<CurriculumSingleSubjectDialog>;
   private bundleSubjectDialogRef: MdDialogRef<CurriculumBundleSubjectDialog>;
   private bundleSubjectPartDialogRef: MdDialogRef<CurriculumBundleSubjectPartDialog>;
+  private bundleRefresh: boolean = false;
 
   private columns: any[] = [
     {name: 'id', label: 'Id'},
@@ -59,17 +60,23 @@ export class CurriculumBndleCourseListComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: { [propName: string]: SimpleChange }) {
- 
+      if (changes['subject']) {
+        if(this.bundleRefresh== true) {
+         this.store.dispatch(this.actions.findBundleSubjectPart(this.bundle));
+         this.bundleRefresh = false;
+      }
+        }
+        console.log("changes ", changes)
   }
 
   filter(): void {
     // no op
   }
 
-
   showBundleSubjectPartDialog(bundleSubject: BundleSubject): void {
     console.log("open bundle : "+this.bundle.subjectType);
     let config: MdDialogConfig = new MdDialogConfig();
+    this.bundleRefresh = true;
     config.viewContainerRef = this.vcf;
     config.role = 'dialog';
     config.width = '30%';
@@ -77,41 +84,35 @@ export class CurriculumBndleCourseListComponent implements OnInit, OnChanges {
     config.position = { top: '65px' };
     this.bundleSubjectPartDialogRef = this.dialog.open(CurriculumBundleSubjectPartDialog, config);
     this.bundleSubjectPartDialogRef.componentInstance.bundleSubject = this.bundle;
+    this.store.dispatch(this.actions.findBundleSubjectPart(this.bundle));
     this.bundleSubjectPartDialogRef.afterClosed().subscribe((res) => {
-      // no op
+    this.bundleRefresh = true;
+    
     });
-
   }
 
    deleteSubjectPart(row: String): void {
-    //  console.log('subject detail: ', row);
-    //  console.log('subject detail: ', this.selectedRows);
-    //      for (let i: number = 0; i < this.selectedRows.length; i++) {
-    //  this.store.dispatch( this.actions.deleteSubjectPart( this.bundle, this.selectedRows[i] ) );
-     
-    //      }
-    // }
-
+  
     if (confirm("Are you sure to delete this subject?") == true) {
-    
-    for (let i: number = 0; i < this.selectedRows.length; i++) {
-    this.store.dispatch(this.actions.deleteSubjectPart(this.bundle, this.selectedRows[i]));
-     }
-       let snackBarRef = this.snackBar.open('Subject has been deleted', '',
-        { duration: 3000 });
-    
-        snackBarRef.afterDismissed().subscribe(() => {
-        this.selectedRows = [];
+        for (let i: number = 0; i < this.selectedRows.length; i++) {
+          this.store.dispatch(this.actions.deleteSubjectPart(this.bundle, this.selectedRows[i]));
+          this.bundleRefresh = true;   
+  }
+          let snackBarRef = this.snackBar.open('Subject has been deleted','',{ duration: 3000 });
+          this.selectedRows = [];
+          this.store.dispatch(this.actions.findBundleSubjectPart(this.bundle));
+          this.bundleRefresh = true;
+          snackBarRef.afterDismissed().subscribe(() => {
      } );
+          this.bundleRefresh = true;
 
   } else {
            
-        let snackBarRef = this.snackBar.open( 'subject cancel deleted', '', 
-        { duration: 3000 } );
-        snackBarRef.afterDismissed().subscribe(() => {
+          let snackBarRef = this.snackBar.open( 'subject cancel deleted','',{ duration: 3000 } );
+          snackBarRef.afterDismissed().subscribe(() => {
     } );
  }
-    }
+}
 
   selectRow(subject: Subject): void {
   }

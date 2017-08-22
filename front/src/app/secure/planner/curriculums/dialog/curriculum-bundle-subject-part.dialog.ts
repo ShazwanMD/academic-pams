@@ -19,6 +19,7 @@ import { CurriculumActions } from '../curriculum.action';
 
 // deprecated
 export class CurriculumBundleSubjectPartDialog implements OnInit {
+  dialogRef: any;
 
   @Input() curriculums : Curriculum;
   private editorForm: FormGroup;
@@ -69,10 +70,8 @@ submit(bundleSubjectPart: BundleSubjectPart, isValid: boolean): void {
     this.store.dispatch(this.actions.addSubjectPart(this._bundleSubject, bundleSubjectPart));
     this.dialog.afterClosed().subscribe((res) => {
     this.store.dispatch(this.actions.findBundleSubjectPart(this._bundleSubject));
-      });
-
-    let snackBarRef = this.snackBar.open( 'New Subject: ' + bundleSubjectPart.course.code + ' has been inserted', '', { duration: 3000 } );
-    snackBarRef.afterDismissed().subscribe(() => {
-    } );
+   });
+  
+    this.dialog.close();
   }
 }
