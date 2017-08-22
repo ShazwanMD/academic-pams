@@ -40,11 +40,9 @@ export class LecturerSectionEnrollmentListComponent implements AfterViewInit {
   private columns: any[] = [
     {name: 'id', label: 'Id'},
     {name: 'admission.student.name', label: 'Student'},
-    {name: 'admission.student.email', label: 'Email'},
     {name: 'enrollmentStatus', label: 'Status'},
     {name: 'enrollmentStanding', label: 'Standing'},
     {name: 'totalScore', label: 'TotalScore'},
-
     {name: 'gradeCode.code', label: 'Grade Code'},
     {name: 'action', label: ''},
   ];

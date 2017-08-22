@@ -1,11 +1,11 @@
 <md-card>
-  <md-card-title>{{enrollment?.section?.offering?.course?.titleEn}}</md-card-title>
-  <md-card-subtitle>{{enrollment?.section?.offering?.course?.titleMs}}</md-card-subtitle>
+  <md-card-title>{{enrollment?.admission?.student?.name}}</md-card-title>
+  <md-card-subtitle>{{enrollment?.section?.offering?.titleEn}}</md-card-subtitle>
   <md-divider></md-divider>
   <md-card-content>
     <!--Tab Section Here-->
     <md-tab-group>
-
+    
       <md-tab label="Section Detail">
         <br>
         <div layout="column" class="inset">
@@ -14,6 +14,12 @@
           </div>
           <div layout="row" class="pad-bottom">
             <span flex="20">CanonicalCode</span> <span>{{enrollment?.section?.canonicalCode}}</span>
+          </div>
+           <div layout="row" class="pad-bottom">
+            <span flex="20">CanonicalCode</span> <span>{{enrollment?.section?.offering?.titleEn}}</span>
+          </div>
+            <div layout="row" class="pad-bottom">
+            <span flex="20">CanonicalCode</span> <span>{{enrollment?.section?.offering?.titleMs}}</span>
           </div>
           <div layout="row" class="pad-bottom">
             <span flex="20">Capacity</span> <span>{{enrollment?.section?.capacity}}</span>
@@ -36,6 +42,24 @@
             <span flex="20">Faculty</span> <span>{{enrollment?.section?.offering?.program?.faculty?.description}}</span>
           </div>
 
+        </div>
+      </md-tab>
+      
+      <md-tab label="Student Detail">
+        <br>
+        <div layout="column" class="inset">
+          <div layout="row" class="pad-bottom">
+            <span flex="20">Code</span> <span>{{enrollment?.admission?.student?.name}}</span>
+          </div>
+          <div layout="row" class="pad-bottom">
+            <span flex="20">CanonicalCode</span> <span>{{enrollment?.admission?.student?.identityNo}}</span>
+          </div>
+          <div layout="row" class="pad-bottom">
+            <span flex="20">Capacity</span> <span>{{enrollment?.admission?.student?.email}}</span>
+          </div>
+          <div layout="row" class="pad-bottom">
+            <span flex="20">Section No.</span> <span>{{enrollment?.admission?.student?.phone}}</span>
+          </div>
         </div>
       </md-tab>
 
