@@ -21,6 +21,7 @@ export class StudentProfileAcademicSessionComponent implements OnInit {
 
     @Input() academicSessions: AcademicSession[];
     @Output() view = new EventEmitter<AcademicSession>();
+    @Input() student:Student;
 
     filteredData: any[];
     filteredTotal: number;

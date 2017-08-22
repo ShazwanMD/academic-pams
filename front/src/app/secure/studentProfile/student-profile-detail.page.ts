@@ -87,12 +87,14 @@ export class StudentProfileDetailPage implements OnInit {
     ngOnInit(): void {
         console.log("find Student Profile Detail");
         this.store.dispatch(this.actions.findAcademicSessionsByStudent());
+        this.store.dispatch(this.actions.findStudentByUser());
 
     }
 
     viewDetails(academicSession: AcademicSession) {
         console.log('academicSession: ' + academicSession.code);
-        this.router.navigate(['/academic-session-detail', academicSession.code]);
+        this.router.navigate(['/student-profile-exam', academicSession.code]);
+        
     }
 
 }

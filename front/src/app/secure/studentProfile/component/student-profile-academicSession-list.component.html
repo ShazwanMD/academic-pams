@@ -46,8 +46,8 @@
   </template>
   <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
     <div layout="row">
-      <a md-button color="accent" class="text-upper" [routerLink]="['/secure/planner/academic-sessions',row['code']]">
-        <!-- (click)="viewAcademicSession(row)" -->
+      <a md-button color="accent" class="text-upper" [routerLink]="['/secure/academicSessionExamPage',row['code']]">
+    
         <span>View</span></a>
     </div>
   </template>

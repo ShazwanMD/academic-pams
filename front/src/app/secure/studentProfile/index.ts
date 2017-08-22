@@ -1,3 +1,5 @@
+import { StudentProfileExamComponent } from './component/student-profile-exam.component';
+import { StudentProfileExamPage } from './student-profile-exam.page';
 import { AcademicYear } from './../../shared/model/planner/academic-year.interface';
 import { AcademicSession } from './../../shared/model/planner/academic-session.interface';
 import { StudentProfileAcademicSessionComponent } from './component/student-profile-academicSession-list.component';
@@ -44,10 +46,11 @@ import { StudentMenu } from "./component/student-menu.component";
 import { Admission } from "../../shared/model/term/admission.interface";
 import { admissionListReducer, AdmissionListState } from "../profile/admission-list.reducer";
 
-import { AcademicSessionState, academicSessionReducer } from "../planner/academic-sessions/academic-session.reducer";
+
 import { AcademicYearListState, academicYearListReducer } from "../planner/academic-years/academic-year-list.reducer";
 import { AcademicYearState, academicYearReducer } from "../planner/academic-years/academic-year.reducer";
 import { AcademicSessionListState, academicSessionListReducer } from "./academic-session-list.reducer";
+import { AcademicSessionState, academicSessionReducer } from "./academic-session.reducer";
 
 
 export interface StudentProfileModuleState {
@@ -130,6 +133,8 @@ export const studentProfileModuleReducers = {
         StudentProfileEnrollmentsComponent,
         StudentProfileDetailPage,
         StudentProfileAcademicSessionComponent,
+        StudentProfileExamPage,
+        StudentProfileExamComponent,
 
         //Dialog
         StudentContactEditorDialog,

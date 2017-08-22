@@ -15,6 +15,7 @@ import my.edu.umk.pams.academic.planner.service.PlannerService;
 import my.edu.umk.pams.academic.planner.dao.AdAcademicSessionDao;
 import my.edu.umk.pams.academic.security.service.SecurityService;
 import my.edu.umk.pams.academic.system.service.SystemService;
+import my.edu.umk.pams.academic.term.model.AdAdmission;
 import my.edu.umk.pams.academic.term.model.AdAdmissionApplication;
 
 import org.hibernate.SessionFactory;
@@ -322,5 +323,11 @@ public class ProfileServiceImpl implements ProfileService {
 	public List<AdAdmissionApplication> findAdmissionApplications(AdStudent student) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public AdAdmission findAdmissionByAcademicSessionAndStudent(AdAcademicSession academicSession,AdStudent student) {
+		
+		return studentDao.findAdmissionByAcademicSessionAndStudent(academicSession, student);
 	}
 }

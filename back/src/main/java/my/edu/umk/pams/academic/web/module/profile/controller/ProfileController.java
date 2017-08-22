@@ -354,6 +354,27 @@ public class ProfileController {
 		return new ResponseEntity<List<AcademicSession>>(
 				plannerTransformer.toAcademicSessionVos(academicSessions),HttpStatus.OK);
 	}
+	
+	@RequestMapping(value = "/studentLogins/academicSessions/{code}", method = RequestMethod.GET)
+
+	public ResponseEntity<AcademicSession> findAcademicSessionByCode(@PathVariable String code) {
+		// Get Current User
+		AdUser user = securityService.getCurrentUser();
+
+		AdStudent student = null;
+
+		if (user.getActor() instanceof AdStudent)
+			student = (AdStudent) user.getActor();
+		if (null == student)
+			throw new IllegalArgumentException("Student does not exists");
+		
+		String identityNo = student.getIdentityNo();
+		AdStudent student1 = profileService.findStudentByMatricNo(identityNo);
+		
+		
+		return new ResponseEntity<AcademicSession>(
+				plannerTransformer.toAcademicSessionVo(plannerService.findAcademicSessionByCode(code)), HttpStatus.OK);
+	}
 
 	// ====================================================================================================
 	// STUDENT PROFILE CONTACT

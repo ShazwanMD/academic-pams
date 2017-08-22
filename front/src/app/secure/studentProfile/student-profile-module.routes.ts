@@ -1,3 +1,4 @@
+import { StudentProfileExamPage } from './student-profile-exam.page';
 import { StudentProfileDetailPage } from './student-profile-detail.page';
 import { ProfileModuleRoutes } from './../profile/profile-module.routes';
 import { AuthenticationGuard } from './../identity/guard/authentication.guard';
@@ -9,6 +10,7 @@ import { StudentAdmissionApplicationCenterPage } from "../term/admission-applica
 export const StudentProfileModuleRoutes: Routes =[
     {path:'studentProfile', component: StudentProfileCenterPage, canActivate: [AuthenticationGuard]},
     {path:'academicSessions', component:StudentProfileDetailPage},
+    {path: 'academicSessionExamPage/:code', component:StudentProfileExamPage},
     {path: 'term/admission-applications/admission-application-center2/:id', component: StudentAdmissionApplicationCenterPage},
    
     ...ProfileModuleRoutes

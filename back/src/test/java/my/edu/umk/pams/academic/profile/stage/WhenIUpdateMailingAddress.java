@@ -11,7 +11,10 @@ import my.edu.umk.pams.academic.identity.model.AdAddress;
 import my.edu.umk.pams.academic.identity.model.AdAddressType;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.identity.model.AdStudentStatus;
+import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
+import my.edu.umk.pams.academic.planner.service.PlannerService;
 import my.edu.umk.pams.academic.profile.service.ProfileService;
+import my.edu.umk.pams.academic.term.model.AdAdmission;
 
 import org.hibernate.validator.constraints.NotEmpty;
 import org.slf4j.Logger;
@@ -35,6 +38,9 @@ public class WhenIUpdateMailingAddress extends Stage<WhenIUpdateMailingAddress> 
 
     @Autowired
     private CommonService commonService;
+    
+    @Autowired
+    private PlannerService plannerService;
 
     @ExpectedScenarioState
     private AdStudent student;
@@ -77,50 +83,16 @@ public class WhenIUpdateMailingAddress extends Stage<WhenIUpdateMailingAddress> 
     }
     
     public WhenIUpdateMailingAddress test_countryCode(){
-/*    	
-    	countryCodes = commonService.findCountryCodes("", 0, 10);
-    	Assert.notEmpty(countryCodes);
     	
-    	for(AdCountryCode countryCode:countryCodes)
-    		LOG.debug("CountryCode:{}", countryCode.getCode());*/
+    	AdAcademicSession academicSession = plannerService.findAcademicSessionByCode("201720181");
+    	AdStudent student = profileService.findStudentByMatricNo("A17P002");
+    	LOG.debug("admission:{}",student.getName());
     	
-    	AdStudent student = profileService.findStudentByMatricNo("A17P001");
-    	LOG.debug("Student Name:{}",student.getName());
-    	student.setStudentStatus(AdStudentStatus.ACTIVE);
-    	profileService.updateStudent(student);
-    	LOG.debug("Current Student Status:{}", student.getStudentStatus().name());
-    
-    	student.setBalance(BigDecimal.TEN);
+    	AdAdmission admission = profileService.findAdmissionByAcademicSessionAndStudent(academicSession,student);
     	
-    	//Check Balance and set Outstanding
-    	if(student.getBalance() != BigDecimal.ZERO){
-    		
-    		student.setOutstanding(true);
-    		
-    	}else{
-    		
-    		student.setOutstanding(true);
-    		
-    	}
-    
-    	//Check Outstanding and set student status
-    	if(student.isOutstanding() == true){
-    		
-    		student.setStudentStatus(AdStudentStatus.BARRED);
-    		student.setMemo("Ada Hutang!");
-    	}
-    	else if(student.isOutstanding() == false){
-    		
-    		student.setStudentStatus(AdStudentStatus.ACTIVE);
-    		student.setMemo("Bebas Hutang!");
-    			
-    		}
+    	LOG.debug("admission:{}",admission.getStudent().getName());
     	
-    	profileService.updateStudent(student);
-    	LOG.debug("Balance:{}",student.getBalance());
-    	LOG.debug("Outstanding:{}",student.isOutstanding());
-    	LOG.debug("Student Status After If:{}", student.getStudentStatus().name());
-    	LOG.debug("Memo:{}", student.getMemo());
-    	return self();
+		return self();
+    	
     }
 }

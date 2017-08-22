@@ -3,6 +3,8 @@ package my.edu.umk.pams.academic.identity.dao;
 
 import my.edu.umk.pams.academic.core.GenericDao;
 import my.edu.umk.pams.academic.identity.model.*;
+import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
+import my.edu.umk.pams.academic.term.model.AdAdmission;
 
 import java.util.List;
 
@@ -24,6 +26,9 @@ public interface AdStudentDao extends GenericDao<Long, AdStudent> {
     AdGuardian findGuardianByType(AdGuardianType guardianType, AdStudent student);
     AdContact findContactByType(AdContactType type, AdStudent student);
     AdAddress findAddressByType(AdAddressType type, AdStudent student);
+    
+    //FindAdmissionByAcademicSession
+    AdAdmission findAdmissionByAcademicSessionAndStudent(AdAcademicSession academicSession, AdStudent student);
 
     /*Listing All*/
     List<AdGuarantor> findGuarantors(AdStudent student);

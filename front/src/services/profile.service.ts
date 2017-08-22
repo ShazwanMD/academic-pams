@@ -45,6 +45,10 @@ export class ProfileService {
     return this._http.get(this.PROFILE_API + '/studentLogins/academicSessions')
       .map((res: Response) => <AcademicSession[]>res.json());
   }
+  findAcademicSessionByCode(code: string): Observable<AcademicSession> {
+    return this._http.get(this.PROFILE_API + '/studentLogins/academicSessions/' + code)
+      .map((res: Response) => <AcademicSession>res.json());
+  }
 
   /*==================================================================================================*/
   //STUDENT - ADDRESS
@@ -136,12 +140,12 @@ export class ProfileService {
     return this._http.get(this.PROFILE_API + '/students/' + student.identityNo + '/enrollments')
       .map((res: Response) => <Enrollment[]>res.json());
   }
-  
+
   //find admissions
   findAdmissions(student: Student): Observable<Admission[]> {
-      return this._http.get(this.PROFILE_API + '/students/' + student.identityNo + '/admissions')
-        .map((res: Response) => <Admission[]>res.json());
-    }
+    return this._http.get(this.PROFILE_API + '/students/' + student.identityNo + '/admissions')
+      .map((res: Response) => <Admission[]>res.json());
+  }
 
   findStudents(): Observable<Student[]> {
     return this._http.get(this.PROFILE_API + '/students')
@@ -172,11 +176,11 @@ export class ProfileService {
     return this._http.get(this.PROFILE_API + '/students/' + student.identityNo + '/addresses')
       .map((res: Response) => <Address[]>res.json());
   }
-  
+
   findAdmissionApplications(student: Student): Observable<AdmissionApplication[]> {
-      return this._http.get(this.PROFILE_API + '/students/' + student.identityNo + '/admissionApplications')
-        .map((res: Response) => <AdmissionApplication[]>res.json());
-    }
+    return this._http.get(this.PROFILE_API + '/students/' + student.identityNo + '/admissionApplications')
+      .map((res: Response) => <AdmissionApplication[]>res.json());
+  }
 
   /*==================================================================================================*/
   /*STUDENT INFORMATION ADD/UPD*/
@@ -190,16 +194,16 @@ export class ProfileService {
     return this._http.put(this.PROFILE_API + '/students/' + student.identityNo, JSON.stringify(student))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
-  
+
   /*==================================================================================================*/
   //ADMISSION APPLICATION/ADVISORY ADD/UPD/DEL
   /*==================================================================================================*/
-  
+
   updateAdmissionApplication(student: Student, admissionApplication: AdmissionApplication): Observable<String> {
-      console.log('admissionApplication', admissionApplication);
-      return this._http.put(this.PROFILE_API + '/students/' + student.identityNo + '/admissionApplications/' + admissionApplication.id, JSON.stringify(admissionApplication))
-        .flatMap((res: Response) => Observable.of(res.text()));
-    }
+    console.log('admissionApplication', admissionApplication);
+    return this._http.put(this.PROFILE_API + '/students/' + student.identityNo + '/admissionApplications/' + admissionApplication.id, JSON.stringify(admissionApplication))
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
 
   /*==================================================================================================*/
   //ADDRESS ADD/UPD/DEL
