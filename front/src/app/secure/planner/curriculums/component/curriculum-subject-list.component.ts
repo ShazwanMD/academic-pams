@@ -83,8 +83,10 @@ export class CurriculumSubjectListComponent implements AfterViewInit , OnChanges
 
       
      ngOnChanges(changes: { [ propName: string]: SimpleChange }) {
-    console.log("changes", changes, changes['subjects']);
-    if (changes['subjects']) {
+    // console.log("changes", changes, changes['subjects']);
+
+     console.log('subject length:' + this.subjects.length);
+    if (changes['subjects'] && this.subjects) {
       this.filteredData = changes['subjects'].currentValue;
       this.filteredTotal = changes['subjects'].currentValue.length;
       this.filter();

@@ -81,9 +81,7 @@ export class CurriculumBundleSubjectDialog implements OnInit {
     if (this.create) this.creatorForm.patchValue(this._bundleSubject);
   }
 
-    showBundleSubjectPartDialog(bundleSubjectPart: BundleSubjectPart): void {
-      console.log("open");
-      console.log(this._curriculum);
+  showBundleSubjectPartDialog(bundleSubjectPart: BundleSubjectPart): void {
     let config: MdDialogConfig = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
     config.role = 'dialog';
@@ -93,11 +91,10 @@ export class CurriculumBundleSubjectDialog implements OnInit {
     this.bundleSubjectPartDialogRef = this.dialogPart.open(CurriculumBundleSubjectPartDialog, config);
     this.bundleSubjectPartDialogRef.componentInstance.curriculum = this._curriculum;
     this.bundleSubjectPartDialogRef.afterClosed().subscribe((res) => {
-      // no op
+
     });
 
   }
-
 
   submit(bundleSubject: BundleSubject,isValid: boolean): void {
 
