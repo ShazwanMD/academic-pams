@@ -13,8 +13,7 @@
       <md-divider></md-divider>
     </md-nav-list>
      <div toolbar-buttons layout="row" layout-align="start center" flex>
-      <span flex>Staff Personal Information</span>
-        
+      <span flex>Staff Personal Information</span>    
     </div>
     <md-card class="">
     
@@ -133,14 +132,12 @@
     </template> 
     <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
         <div layout="row">
-         <a md-button color="accent" class="text-upper" mdTooltip="View admission application info"><!--  [routerLink]="['/secure/term/sections', row.section.canonicalCode, 'lecturer-section-detail']" -->
+         <a md-button color="accent" class="text-upper" mdTooltip="View admission application info" [routerLink]="['/secure/profile/advisory-detail', row.student.identityNo]"><!--  [routerLink]="['/secure/term/sections', row.section.canonicalCode, 'lecturer-section-detail']" -->
             <span>View</span>
           </a>
         </div>
       </template>
-    
     </td-data-table> 
-
    </md-card-content>
               </md-card>
             </div>

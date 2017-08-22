@@ -38,9 +38,10 @@ export class LecturerProfileComponent implements OnInit {
     private columns: any[] = [
         { name: 'id', label: 'Id' },
         { name: 'section.ordinal', label: 'Section No.' },
+         { name: 'section.code', label: 'Section Code.' },
         { name: 'section.offering.titleEn', label: 'Title' },
         { name: 'section.offering.program.code', label: 'Program' },
-        { name: 'section.offering.program.faculty.description', label: 'Faculty' },
+        { name: 'section.offering.program.faculty.name', label: 'Faculty' },
         { name: 'action', label: '' },
     ];
     
