@@ -1,3 +1,6 @@
-<pams-student-profile-exam
+<pams-student-profile-exam 
+[student]="student$ | async" 
+[enrollments]="enrollments$ | async" 
+[admissions]="admissions$ | async"
 [academicSession]="academicSession$ | async">
 </pams-student-profile-exam>

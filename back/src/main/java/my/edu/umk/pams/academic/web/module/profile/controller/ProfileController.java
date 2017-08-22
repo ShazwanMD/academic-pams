@@ -371,6 +371,19 @@ public class ProfileController {
 		String identityNo = student.getIdentityNo();
 		AdStudent student1 = profileService.findStudentByMatricNo(identityNo);
 		
+		AdAcademicSession academicSession = plannerService.findAcademicSessionByCode(code);
+		LOG.debug("Academic Session Code :{}", code);
+		
+		AdAdmission admission = profileService.findAdmissionByAcademicSessionAndStudent(academicSession, student1);
+		LOG.debug("admission",admission.getStudent().getIdentityNo());
+		
+		List<AdEnrollment> enrollments = termService.findEnrollments(academicSession, student1);
+		for (AdEnrollment enrollment : enrollments) {
+			LOG.debug("Offering:{}",enrollment.getSection().getOffering().getCode());
+			LOG.debug("Admission:{}",enrollment.getAdmission());
+			LOG.debug("Section:{}",enrollment.getSection().getCanonicalCode());
+		}
+		
 		
 		return new ResponseEntity<AcademicSession>(
 				plannerTransformer.toAcademicSessionVo(plannerService.findAcademicSessionByCode(code)), HttpStatus.OK);

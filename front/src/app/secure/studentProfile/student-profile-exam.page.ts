@@ -1,10 +1,13 @@
+import { Admission } from './../../shared/model/term/admission.interface';
+import { Student } from './../../shared/model/identity/student.interface';
 import { AcademicSession } from './../../shared/model/planner/academic-session.interface';
 import { StudentProfileModuleState } from './index';
 import { StudentProfileActions } from './student-profile.action';
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
-import {Store} from '@ngrx/store';
-import {Observable} from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { Enrollment } from "../../shared/model/term/enrollment.interface";
 
 
 @Component({
@@ -14,20 +17,33 @@ import {Observable} from 'rxjs';
 
 export class StudentProfileExamPage implements OnInit {
 
+  private STUDENT: string[] = 'studentProfileModuleState.student'.split('.');
+  private STUDENTS: string[] = 'studentProfileModuleState.students'.split('.');
   private ACADEMIC_SESSION: string[] = 'studentProfileModuleState.academicSession'.split('.');
+  private ENROLLMENTS: string[] = 'studentProfileModuleState.enrollments'.split('.');
+  private ADMISSIONS: string[] = 'studentProfileModuleState.admissions'.split('.');
+  private enrollments$: Observable<Enrollment>;
+  private admissions$: Observable<Admission>;
   private academicSession$: Observable<AcademicSession>;
+  private students$: Observable<Student[]>;
+  private student$: Observable<Student>;
 
   constructor(private router: Router,
-              private route: ActivatedRoute,
-              private actions: StudentProfileActions,
-              private store: Store<StudentProfileModuleState>) {
+    private route: ActivatedRoute,
+    private actions: StudentProfileActions,
+    private store: Store<StudentProfileModuleState>) {
     this.academicSession$ = this.store.select(...this.ACADEMIC_SESSION);
+    this.students$ = this.store.select(...this.STUDENTS);
+    this.student$ = this.store.select(...this.STUDENT);
+    this.enrollments$ = this.store.select(...this.ENROLLMENTS);
+    this.admissions$ = this.store.select(...this.ADMISSIONS);
   }
 
   ngOnInit(): void {
     this.route.params.subscribe((params: { code: string }) => {
       let code: string = params.code;
       this.store.dispatch(this.actions.findAcademicSessionByCode(code));
+      this.store.dispatch(this.actions.findStudentByUser());
     });
   }
 

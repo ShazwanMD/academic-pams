@@ -15,6 +15,8 @@ import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
 import my.edu.umk.pams.academic.profile.service.ProfileService;
 import my.edu.umk.pams.academic.term.model.AdAdmission;
+import my.edu.umk.pams.academic.term.model.AdEnrollment;
+import my.edu.umk.pams.academic.term.service.TermService;
 
 import org.hibernate.validator.constraints.NotEmpty;
 import org.slf4j.Logger;
@@ -41,6 +43,9 @@ public class WhenIUpdateMailingAddress extends Stage<WhenIUpdateMailingAddress> 
     
     @Autowired
     private PlannerService plannerService;
+    
+    @Autowired
+    private TermService termService;
 
     @ExpectedScenarioState
     private AdStudent student;
@@ -85,10 +90,21 @@ public class WhenIUpdateMailingAddress extends Stage<WhenIUpdateMailingAddress> 
     public WhenIUpdateMailingAddress test_countryCode(){
     	
     	AdAcademicSession academicSession = plannerService.findAcademicSessionByCode("201720181");
-    	AdStudent student = profileService.findStudentByMatricNo("A17P002");
+    	AdStudent student = profileService.findStudentByMatricNo("A17M0009F");
     	LOG.debug("admission:{}",student.getName());
     	
     	AdAdmission admission = profileService.findAdmissionByAcademicSessionAndStudent(academicSession,student);
+    	List<AdEnrollment> enrollments = termService.findEnrollments(academicSession, student);
+    	for (AdEnrollment enrollment : enrollments) {
+			enrollment.getSection().getOffering().getCourse();
+			enrollment.getAdmission().getStudent().getName();
+			enrollment.getStatus().name();
+			
+			LOG.debug("status:{}",enrollment.getStatus().name());
+			LOG.debug("name:{}",enrollment.getAdmission().getStudent().getName());
+			LOG.debug("code:{}",enrollment.getSection().getOffering().getCourse().getCode());
+		}
+    	
     	
     	LOG.debug("admission:{}",admission.getStudent().getName());
     	
