@@ -32,14 +32,14 @@
 
       <template tdDataTableTemplate="gradeCode.code" let-value="value" let-row="row" let-column="columns.gradeCode.code">
         <div layout="row">
-          <div *ngIf="value == null">None</div>
+          <div *ngIf="value == null"><font color="red">None</font></div>
            <div *ngIf="value != null">{{value}}</div>       
         </div>
       </template>
       
        <template tdDataTableTemplate="totalScore" let-value="value" let-row="row" let-column="columns.totalScore">
         <div layout="row">
-          <div *ngIf="value == null">None</div>
+          <div *ngIf="value == null"><font color="red">None</font></div>
            <div *ngIf="value != null">{{value}}</div>       
         </div>
       </template>
