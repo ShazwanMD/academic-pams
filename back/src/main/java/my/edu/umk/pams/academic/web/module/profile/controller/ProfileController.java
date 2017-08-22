@@ -13,6 +13,7 @@ import my.edu.umk.pams.academic.term.model.AdAdmission;
 import my.edu.umk.pams.academic.term.model.AdEnrollment;
 import my.edu.umk.pams.academic.term.service.TermService;
 import my.edu.umk.pams.academic.web.module.identity.vo.Student;
+import my.edu.umk.pams.academic.web.module.planner.controller.PlannerTransformer;
 import my.edu.umk.pams.academic.web.module.planner.vo.AcademicSession;
 import my.edu.umk.pams.academic.web.module.profile.vo.*;
 import my.edu.umk.pams.academic.web.module.term.controller.TermTransformer;
@@ -68,6 +69,9 @@ public class ProfileController {
 
 	@Autowired
 	private ProfileTransformer profileTransformer;
+	
+	@Autowired
+	private PlannerTransformer plannerTransformer;
 
 	@Autowired
 	private SecurityService securityService;
@@ -312,8 +316,8 @@ public class ProfileController {
 				profileTransformer.toAddressVos(profileService.findAddresses(student1)), HttpStatus.OK);
 	}
 	
-	@RequestMapping(value = "/studentLogins/academicSession/{code}", method = RequestMethod.GET)
-	public ResponseEntity<AcademicSession> findAcademicSessionByStudent(@PathVariable String code) {
+	@RequestMapping(value = "/studentLogins/academicSessions", method = RequestMethod.GET)
+	public ResponseEntity<List<AcademicSession>> findAcademicSessionsByStudent() {
 		// Get Current User
 		AdUser user = securityService.getCurrentUser();
 
@@ -323,20 +327,15 @@ public class ProfileController {
 			student = (AdStudent) user.getActor();
 		if (null == student)
 			throw new IllegalArgumentException("Student does not exists");
+		
 		String identityNo = student.getIdentityNo();
 		AdStudent student1 = profileService.findStudentByMatricNo(identityNo);
-		LOG.debug("address", profileService.findAddresses(student1));
 		
-		AdAcademicSession academicSession = plannerService.findAcademicSessionByCode(code);
-		List<AdAdmission> admissions = termService.findAdmissions(academicSession);
-		for (AdAdmission admission : admissions) {
-			List<AdEnrollment> enrollments = termService.findEnrollments(admission);
-			for (AdEnrollment enrollment : enrollments) {
-				
-			}
-		}
+		List<AdAcademicSession> academicSessions = plannerService.findAcademicSessions(0, Integer.MAX_VALUE);
+		LOG.debug("academicSession:{}", academicSessions);
 		
-		return new ResponseEntity<AcademicSession>(HttpStatus.OK);
+		return new ResponseEntity<List<AcademicSession>>(
+				plannerTransformer.toAcademicSessionVos(academicSessions),HttpStatus.OK);
 	}
 	
 	

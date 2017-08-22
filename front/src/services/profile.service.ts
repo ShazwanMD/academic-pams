@@ -41,9 +41,9 @@ export class ProfileService {
       .map((res: Response) => <Student>res.json());
   }
 
-  findAcademicSessionByStudent(code: string): Observable<AcademicSession> {
-    return this._http.get(this.PROFILE_API + '/studentLogins/academicSession' + code)
-      .map((res: Response) => <AcademicSession>res.json());
+  findAcademicSessionsByStudent(): Observable<AcademicSession[]> {
+    return this._http.get(this.PROFILE_API + '/studentLogins/academicSessions')
+      .map((res: Response) => <AcademicSession[]>res.json());
   }
 
   /*==================================================================================================*/
