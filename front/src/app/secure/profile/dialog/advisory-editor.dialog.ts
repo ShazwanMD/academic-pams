@@ -1,6 +1,7 @@
 import { CountryCode } from '../../../shared/model/common/country-code.interface';
 import { StateCode } from '../../../shared/model/common/state-code.interface';
 import { AdmissionApplication } from '../../../shared/model/term/admission-application.interface';
+import {MdSnackBar} from '@angular/material/snack-bar';
 import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -29,6 +30,7 @@ export class AdvisoryEditorDialog implements OnInit {
         private route: ActivatedRoute,
         private formBuilder: FormBuilder,
         private viewContainerRef: ViewContainerRef,
+        private snackBar: MdSnackBar,
         private dialog: MdDialogRef<AdvisoryEditorDialog>,
         private store: Store<ProfileModuleState>,
         private actions: ProfileActions ) {
@@ -63,8 +65,17 @@ export class AdvisoryEditorDialog implements OnInit {
         console.log( admissionApplication );
         console.log( this._student );
        
-        window.alert( this._admissionApplication.academicSession.code + ", " + this._student.name + "is saved" );
+        /*window.alert( this._admissionApplication.academicSession.code + ", " + this._student.name + "is saved" );*/
+        
         this.dialog.close();
+        
+        let snackBarRef = this.snackBar.open( 'New advisor has been assigned', '', { duration: 3000 } );
+        snackBarRef.afterDismissed().subscribe(() => {
+       } );
+            
+    }  
+ }
+
 
         /*if (isValid)
             _admissionApplication.id = this._admissionApplication.id;
@@ -73,5 +84,5 @@ export class AdvisoryEditorDialog implements OnInit {
         if (isValid) this.store.dispatch(this.actions.updateAddress(this._student, address));
         else this.store.dispatch(this.actions.addAddress(this._student, address));
         this.dialog.close();*/
-    }
-}
+    
+
