@@ -11,6 +11,7 @@ import my.edu.umk.pams.academic.web.module.planner.vo.Program;
 
 import java.io.IOException;
 
+
 /**
  * @author PAMS
  */
@@ -19,6 +20,7 @@ public class Staff extends Actor {
 	//private StaffType staffType;
 	private Faculty faculty;
 	private Program program;
+	private String title;
 	
 	public Faculty getFaculty() {
 	        return faculty;
@@ -35,10 +37,15 @@ public class Staff extends Actor {
     public void setProgram(Program program) {
         this.program = program;
     }
-	 
-	 
-	 
+    
+    public String getTitle() {
+        return title;
+    }
 
+    public void setTitle(String title) {
+        this.title = title;
+    }
+	 
     @JsonCreator
     public static Staff create(String jsonString) {
         Staff o = null;

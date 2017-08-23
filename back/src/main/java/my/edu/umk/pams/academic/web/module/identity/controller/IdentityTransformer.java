@@ -58,6 +58,7 @@ public class IdentityTransformer {
         vo.setMobile(staff.getMobile());
         vo.setPhone(staff.getPhone());
         vo.setFax(staff.getFax());
+        vo.setTitle(staff.getTitle());
         vo.setActorType(ActorType.get(staff.getActorType().ordinal()));
         vo.setProgram(plannerTransformer.toProgramVo(staff.getProgram()));
         vo.setFaculty(plannerTransformer.toFacultyVo(staff.getFaculty()));

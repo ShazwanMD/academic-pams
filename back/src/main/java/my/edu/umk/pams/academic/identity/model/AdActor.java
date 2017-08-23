@@ -10,7 +10,7 @@ public interface AdActor extends AdMetaObject {
 
     String getIdentityNo();
 
-    void setIdentityNo(String identityNo);
+    void setIdentityNo(String identityNo);   
 
     String getName();
 

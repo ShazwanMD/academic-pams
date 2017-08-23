@@ -1312,6 +1312,7 @@
     create table AD_STAF (
         STAFF_TYPE int4,
         ID int8 not null,
+        TITLE varchar(255),
         FACULTY_ID int8,
         PROGRAM_ID int8,
         primary key (ID)

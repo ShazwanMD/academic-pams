@@ -13,10 +13,14 @@ public interface AdStaff extends AdActor {
 
     void setStaffType(AdStaffType staffType);
     
+    String getTitle();
+
+	void setTitle(String title);
+    
     AdFaculty getFaculty();
     
 	void setFaculty(AdFaculty faculty);
-
+	
 	AdProgram getProgram();
 
 	void setProgram(AdProgram program);

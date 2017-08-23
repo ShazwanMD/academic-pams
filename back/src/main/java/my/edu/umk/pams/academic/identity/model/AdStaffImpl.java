@@ -26,6 +26,9 @@ public class AdStaffImpl extends AdActorImpl implements AdStaff {
 		setActorType(AdActorType.STAFF);
 	}
 	
+	@Column(name = "TITLE")
+	private String title;
+	
 	@OneToOne(targetEntity = AdFacultyImpl.class)
 	@JoinColumn(name = "FACULTY_ID")
 	private AdFaculty faculty;
@@ -38,6 +41,7 @@ public class AdStaffImpl extends AdActorImpl implements AdStaff {
 	public AdProgram getProgram() {
 		return program;
 	}
+	
 	@Override
 	public void setProgram(AdProgram program) {
 		this.program = program;
@@ -74,5 +78,14 @@ public class AdStaffImpl extends AdActorImpl implements AdStaff {
 	@Override
 	public Class<?> getInterfaceClass() {
 		return AdStaff.class;
+	}
+	@Override
+	public String getTitle() {
+		return title;
+	}
+	@Override
+	public void setTitle(String title) {
+		this.title = title;
+		
 	}
 }
