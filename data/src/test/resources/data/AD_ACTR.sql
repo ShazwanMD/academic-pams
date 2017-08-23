@@ -112,7 +112,7 @@ VALUES
   (nextval('SQ_AD_ACTR'), '01001A', 'Noraani Binti Mustapha', 'noraani@umk.edu.my', '09-7717000', '09-7717000', '09-7717000', 0,
                           CURRENT_TIMESTAMP, 1, 1);
 
-INSERT INTO AD_STAF (ID, STAFF_TYPE,TITLE,FACULTY_ID,PROGRAM_ID) VALUES (currval('SQ_AD_ACTR'), 0,'Prof Madya Dr.',10,79);
+INSERT INTO AD_STAF (ID, STAFF_TYPE,TITLE,FACULTY_ID,PROGRAM_ID) VALUES (currval('SQ_AD_ACTR'), 0,'Prof Madya Dr',10,79);
 
 UPDATE AD_USER
 SET actor_id = currval('SQ_AD_ACTR')
@@ -124,7 +124,7 @@ VALUES
   (nextval('SQ_AD_ACTR'), '01002A', 'Wee Yu Ghee', 'yughee@umk.edu.my', '09-7716000', '09-7717000', '09-7717000', 0,
                           CURRENT_TIMESTAMP, 1, 1);
 
-INSERT INTO AD_STAF (ID,STAFF_TYPE,TITLE,FACULTY_ID,PROGRAM_ID) VALUES (currval('SQ_AD_ACTR'), 0,'Prof Madya Dr.', 1, 71);
+INSERT INTO AD_STAF (ID,STAFF_TYPE,TITLE,FACULTY_ID,PROGRAM_ID) VALUES (currval('SQ_AD_ACTR'), 0,'Prof Madya Dr', 1, 71);
 
 
 UPDATE AD_USER
