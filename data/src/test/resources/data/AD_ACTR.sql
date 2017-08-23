@@ -112,7 +112,7 @@ VALUES
   (nextval('SQ_AD_ACTR'), '01001A', 'Noraani Binti Mustapha', 'noraani@umk.edu.my', '09-7717000', '09-7717000', '09-7717000', 0,
                           CURRENT_TIMESTAMP, 1, 1);
 
-INSERT INTO AD_STAF (ID, STAFF_TYPE,TITLE,FACULTY_ID,PROGRAM_ID) VALUES (currval('SQ_AD_ACTR'), 0,'Prof. Madya Dr.',10,79);
+INSERT INTO AD_STAF (ID, STAFF_TYPE,TITLE,FACULTY_ID,PROGRAM_ID) VALUES (currval('SQ_AD_ACTR'), 0,'Prof Madya Dr.',10,79);
 
 UPDATE AD_USER
 SET actor_id = currval('SQ_AD_ACTR')
@@ -124,7 +124,7 @@ VALUES
   (nextval('SQ_AD_ACTR'), '01002A', 'Wee Yu Ghee', 'yughee@umk.edu.my', '09-7716000', '09-7717000', '09-7717000', 0,
                           CURRENT_TIMESTAMP, 1, 1);
 
-INSERT INTO AD_STAF (ID,STAFF_TYPE,TITLE,FACULTY_ID,PROGRAM_ID) VALUES (currval('SQ_AD_ACTR'), 0,'Prof. Madya Dr.', 1, 71);
+INSERT INTO AD_STAF (ID,STAFF_TYPE,TITLE,FACULTY_ID,PROGRAM_ID) VALUES (currval('SQ_AD_ACTR'), 0,'Prof Madya Dr.', 1, 71);
 
 
 UPDATE AD_USER
@@ -134,10 +134,10 @@ WHERE email = 'yughee@umk.edu.my';
 -- lecturer 3
 INSERT INTO AD_ACTR (ID, IDENTITY_NO, NAME, EMAIL, PHONE, MOBILE, FAX, ACTOR_TYPE, C_TS, C_ID, M_ST)
 VALUES
-  (nextval('SQ_AD_ACTR'), '01003A', 'Encik Ahmed Hamdy Elbadawy Ahmed Mahmoud', 'ahmed.h@umk.edu.my', '09-7717000', '09-7717000', '09-7717000', 0,
+  (nextval('SQ_AD_ACTR'), '01003A', 'Ahmed Hamdy Elbadawy Ahmed Mahmoud', 'ahmed.h@umk.edu.my', '09-7717000', '09-7717000', '09-7717000', 0,
                           CURRENT_TIMESTAMP, 1, 1);
 
-INSERT INTO AD_STAF (ID,STAFF_TYPE,FACULTY_ID,PROGRAM_ID) VALUES (currval('SQ_AD_ACTR'), 0, 1,80);
+INSERT INTO AD_STAF (ID,STAFF_TYPE,TITLE,FACULTY_ID,PROGRAM_ID) VALUES (currval('SQ_AD_ACTR'), 0,'Encik', 1,80);
 
 
 UPDATE AD_USER
@@ -147,10 +147,10 @@ WHERE email = 'ahmed.h@umk.edu.my';
 -- admin staff 1
 INSERT INTO AD_ACTR (ID, IDENTITY_NO, NAME, EMAIL, PHONE, MOBILE, FAX, ACTOR_TYPE, C_TS, C_ID, M_ST)
 VALUES
-  (nextval('SQ_AD_ACTR'), '01607B', 'Dr. Muhamad Saufi Bin Che Rusuli', 'msaufi@umk.edu.my', '09-7717000', '09-7717000', '09-7717000', 0,
+  (nextval('SQ_AD_ACTR'), '01607B', 'Muhamad Saufi Bin Che Rusuli', 'msaufi@umk.edu.my', '09-7717000', '09-7717000', '09-7717000', 0,
                           CURRENT_TIMESTAMP, 1, 1);
 
-INSERT INTO AD_STAF (ID, STAFF_TYPE,FACULTY_ID,PROGRAM_ID) VALUES (currval('SQ_AD_ACTR'), 1, 10,80);
+INSERT INTO AD_STAF (ID,STAFF_TYPE,TITLE,FACULTY_ID,PROGRAM_ID) VALUES (currval('SQ_AD_ACTR'), 1,'Dr', 10,80);
 
 
 UPDATE AD_USER
@@ -161,10 +161,10 @@ WHERE email = 'msaufi@umk.edu.my';
 -- admin staff 2
 INSERT INTO AD_ACTR (ID, IDENTITY_NO, NAME, EMAIL, PHONE, MOBILE, FAX, ACTOR_TYPE, C_TS, C_ID, M_ST)
 VALUES
-  (nextval('SQ_AD_ACTR'), '01608B', 'Prof. Dr. Balakrishnan A/L Parasuraman', 'balakrishnan@umk.edu.my', '09-7717047/10861', '09-7717047/10861', '09-7717047/10861', 0,
+  (nextval('SQ_AD_ACTR'), '01608B', 'Balakrishnan A/L Parasuraman', 'balakrishnan@umk.edu.my', '09-7717047/10861', '09-7717047/10861', '09-7717047/10861', 0,
                           CURRENT_TIMESTAMP, 1, 1);
 
-INSERT INTO AD_STAF (ID, STAFF_TYPE,FACULTY_ID,PROGRAM_ID) VALUES (currval('SQ_AD_ACTR'), 1, 1,80);
+INSERT INTO AD_STAF (ID,STAFF_TYPE,TITLE,FACULTY_ID,PROGRAM_ID) VALUES (currval('SQ_AD_ACTR'), 1,'Prof Dr', 1,80);
 
 
 UPDATE AD_USER
@@ -174,10 +174,10 @@ WHERE email = 'balakrishnan@umk.edu.my';
 -- admin staff 3
 INSERT INTO AD_ACTR (ID, IDENTITY_NO, NAME, EMAIL, PHONE, MOBILE, FAX, ACTOR_TYPE, C_TS, C_ID, M_ST)
 VALUES
-  (nextval('SQ_AD_ACTR'), '01609B', 'Prof. Dr. Hishamuddin Bin Md Som', 'hishamuddin.ms@umk.edu.my', '097717000', '097717000', '097717000', 0,
+  (nextval('SQ_AD_ACTR'), '01609B', 'Hishamuddin Bin Md Som', 'hishamuddin.ms@umk.edu.my', '097717000', '097717000', '097717000', 0,
                           CURRENT_TIMESTAMP, 1, 1);
 
-INSERT INTO AD_STAF (ID, STAFF_TYPE,FACULTY_ID,PROGRAM_ID) VALUES (currval('SQ_AD_ACTR'), 1, 2,80);
+INSERT INTO AD_STAF (ID,STAFF_TYPE,TITLE,FACULTY_ID,PROGRAM_ID) VALUES (currval('SQ_AD_ACTR'), 1,'Prof Dr', 2,80);
 
 
 UPDATE AD_USER
@@ -187,10 +187,10 @@ WHERE email = 'hishamuddin.ms@umk.edu.my';
 -- admin staff 4
 INSERT INTO AD_ACTR (ID, IDENTITY_NO, NAME, EMAIL, PHONE, MOBILE, FAX, ACTOR_TYPE, C_TS, C_ID, M_ST)
 VALUES
-  (nextval('SQ_AD_ACTR'), '01610B', 'Prof. Dr. Nik Maheran Binti Nik Muhammad', 'nikmaheran@umk.edu.my', '097717301/7300', '097717301/7300', '097717301/7300', 0,
+  (nextval('SQ_AD_ACTR'), '01610B', 'Nik Maheran Binti Nik Muhammad', 'nikmaheran@umk.edu.my', '097717301/7300', '097717301/7300', '097717301/7300', 0,
                           CURRENT_TIMESTAMP, 1, 1);
 
-INSERT INTO AD_STAF (ID, STAFF_TYPE,FACULTY_ID,PROGRAM_ID) VALUES (currval('SQ_AD_ACTR'), 1,3,80);
+INSERT INTO AD_STAF (ID,STAFF_TYPE,TITLE,FACULTY_ID,PROGRAM_ID) VALUES (currval('SQ_AD_ACTR'), 1,'Prof Dr',3,80);
 
 
 UPDATE AD_USER
@@ -200,10 +200,10 @@ WHERE email = 'nikmaheran@umk.edu.my';
 -- admin staff 5
 INSERT INTO AD_ACTR (ID, IDENTITY_NO, NAME, EMAIL, PHONE, MOBILE, FAX, ACTOR_TYPE, C_TS, C_ID, M_ST)
 VALUES
-  (nextval('SQ_AD_ACTR'), '01611B', 'Prof. Dr. Raja Suzana Binti Raja Kasim', 'rajasuzana@umk.edu.my', '03-89923016', '03-89923016', '03-89923016', 0,
+  (nextval('SQ_AD_ACTR'), '01611B', 'Raja Suzana Binti Raja Kasim', 'rajasuzana@umk.edu.my', '03-89923016', '03-89923016', '03-89923016', 0,
                           CURRENT_TIMESTAMP, 1, 1);
 
-INSERT INTO AD_STAF (ID, STAFF_TYPE,FACULTY_ID,PROGRAM_ID) VALUES (currval('SQ_AD_ACTR'), 1, 4,80);
+INSERT INTO AD_STAF (ID,STAFF_TYPE,TITLE,FACULTY_ID,PROGRAM_ID) VALUES (currval('SQ_AD_ACTR'), 1,'Prof Dr', 4,80);
 
 
 UPDATE AD_USER
@@ -213,10 +213,10 @@ WHERE email = 'rajasuzana@umk.edu.my';
 -- admin staff 6
 INSERT INTO AD_ACTR (ID, IDENTITY_NO, NAME, EMAIL, PHONE, MOBILE, FAX, ACTOR_TYPE, C_TS, C_ID, M_ST)
 VALUES
-  (nextval('SQ_AD_ACTR'), '01612B', 'Prof. Dr. Razli Bin Che Razak', 'razlicr@umk.edu.my', '09-7717165', '09-7717165', '09-7717165', 0,
+  (nextval('SQ_AD_ACTR'), '01612B', 'Razli Bin Che Razak', 'razlicr@umk.edu.my', '09-7717165', '09-7717165', '09-7717165', 0,
                           CURRENT_TIMESTAMP, 1, 1);
 
-INSERT INTO AD_STAF (ID, STAFF_TYPE,FACULTY_ID,PROGRAM_ID) VALUES (currval('SQ_AD_ACTR'), 1, 5,80);
+INSERT INTO AD_STAF (ID,STAFF_TYPE,TITLE,FACULTY_ID,PROGRAM_ID) VALUES (currval('SQ_AD_ACTR'), 1,'Prof Dr', 5,80);
 
 
 UPDATE AD_USER
@@ -226,10 +226,10 @@ WHERE email = 'razlicr@umk.edu.my';
 -- admin staff 7
 INSERT INTO AD_ACTR (ID, IDENTITY_NO, NAME, EMAIL, PHONE, MOBILE, FAX, ACTOR_TYPE, C_TS, C_ID, M_ST)
 VALUES
-  (nextval('SQ_AD_ACTR'), '01613B', 'Prof. Dr. Sazali Bin Abd. Wahab', 'sazali@umk.edu.my', '09-7717049', '09-7717049', '09-7717049', 0,
+  (nextval('SQ_AD_ACTR'), '01613B', 'Sazali Bin Abd. Wahab', 'sazali@umk.edu.my', '09-7717049', '09-7717049', '09-7717049', 0,
                           CURRENT_TIMESTAMP, 1, 1);
 
-INSERT INTO AD_STAF (ID, STAFF_TYPE,FACULTY_ID,PROGRAM_ID) VALUES (currval('SQ_AD_ACTR'), 1, 6,80);
+INSERT INTO AD_STAF (ID,STAFF_TYPE,TITLE,FACULTY_ID,PROGRAM_ID) VALUES (currval('SQ_AD_ACTR'), 1,'Prof Dr', 6,80);
 
 
 UPDATE AD_USER
@@ -239,10 +239,10 @@ WHERE email = 'sazali@umk.edu.my';
 -- admin staff 8
 INSERT INTO AD_ACTR (ID, IDENTITY_NO, NAME, EMAIL, PHONE, MOBILE, FAX, ACTOR_TYPE, C_TS, C_ID, M_ST)
 VALUES
-  (nextval('SQ_AD_ACTR'), '01614B', 'Prof. Madya Dr. Mohd Rafi Bin Yaacob', 'rafi@umk.edu.my', '09-7717265', '09-7717265', '09-7717265', 0,
+  (nextval('SQ_AD_ACTR'), '01614B', ' Mohd Rafi Bin Yaacob', 'rafi@umk.edu.my', '09-7717265', '09-7717265', '09-7717265', 0,
                           CURRENT_TIMESTAMP, 1, 1);
 
-INSERT INTO AD_STAF (ID, STAFF_TYPE,FACULTY_ID,PROGRAM_ID) VALUES (currval('SQ_AD_ACTR'), 1, 7,80);
+INSERT INTO AD_STAF (ID,STAFF_TYPE,TITLE,FACULTY_ID,PROGRAM_ID) VALUES (currval('SQ_AD_ACTR'), 1,'Prof Madya Dr', 7,80);
 
 
 UPDATE AD_USER
@@ -252,10 +252,10 @@ WHERE email = 'rafi@umk.edu.my';
 -- admin staff 9
 INSERT INTO AD_ACTR (ID, IDENTITY_NO, NAME, EMAIL, PHONE, MOBILE, FAX, ACTOR_TYPE, C_TS, C_ID, M_ST)
 VALUES
-  (nextval('SQ_AD_ACTR'), '01615B', 'Prof. Madya Dr. Abu Sofian Bin Yaacob', 'abusofian@umk.edu.my', '09-7717245', '09-7717245', '09-7717245', 0,
+  (nextval('SQ_AD_ACTR'), '01615B', 'Abu Sofian Bin Yaacob', 'abusofian@umk.edu.my', '09-7717245', '09-7717245', '09-7717245', 0,
                           CURRENT_TIMESTAMP, 1, 1);
 
-INSERT INTO AD_STAF (ID, STAFF_TYPE,FACULTY_ID,PROGRAM_ID) VALUES (currval('SQ_AD_ACTR'), 1,8,80);
+INSERT INTO AD_STAF (ID,STAFF_TYPE,TITLE,FACULTY_ID,PROGRAM_ID) VALUES (currval('SQ_AD_ACTR'), 1,'Prof Madya Dr',8,80);
 
 
 UPDATE AD_USER
@@ -265,10 +265,10 @@ WHERE email = 'abusofian@umk.edu.my';
 -- admin staff 10
 INSERT INTO AD_ACTR (ID, IDENTITY_NO, NAME, EMAIL, PHONE, MOBILE, FAX, ACTOR_TYPE, C_TS, C_ID, M_ST)
 VALUES
-  (nextval('SQ_AD_ACTR'), '01616B', 'Prof. Madya Dr. Mohammad Bin Ismail', 'mohammad.i@umk.edu.my', '09-7717229', '09-7717229', '09-7717229', 0,
+  (nextval('SQ_AD_ACTR'), '01616B', 'Mohammad Bin Ismail', 'mohammad.i@umk.edu.my', '09-7717229', '09-7717229', '09-7717229', 0,
                           CURRENT_TIMESTAMP, 1, 1);
 
-INSERT INTO AD_STAF (ID, STAFF_TYPE,FACULTY_ID,PROGRAM_ID) VALUES (currval('SQ_AD_ACTR'), 1, 9,80);
+INSERT INTO AD_STAF (ID,STAFF_TYPE,TITLE,FACULTY_ID,PROGRAM_ID) VALUES (currval('SQ_AD_ACTR'), 1,'Prof Madya Dr', 9,80);
 
 
 UPDATE AD_USER
