@@ -4,8 +4,10 @@
     </md-card-title>
     <md-chip-list *ngIf="enrollmentApplicationItems?.length > 0">
       <md-chip color="accent">{{enrollmentApplicationItems?.length}}</md-chip>
+          
     </md-chip-list>
     <span flex></span>
+   
     <button md-button class="md-icon-button" (click)="createDialog()">
       <md-icon class="md-24 tc-grey-300" [ngClass]="{'tc-grey-700': selectedRows.length === 0}">add</md-icon>
     </button>
@@ -16,6 +18,8 @@
       <md-icon class="md-24 tc-grey-300" [ngClass]="{'tc-grey-700': selectedRows.length === 1}">delete</md-icon>
     </button>
   </div>
+ 
+  <span></span>
   <md-divider></md-divider>
   <td-data-table
     [data]="enrollmentApplicationItems"
@@ -29,14 +33,24 @@
     (selectAll)="selectAllRows($event)"
     dense>
     <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
+    
       <div layout="row" flex="40">
         <span>{{value}}</span>
-      </div>
+      </div>  
     </template>
     <template tdDataTableTemplate="section.ordinal" let-value="value" let-row="row" let-column="column">
       <div layout="row" flex="10">
         <span>{{value}}</span>
       </div>
     </template>
+     
   </td-data-table>
+    <md-divider></md-divider>
+  
+   <!-- <div toolbar-buttons layout="row" layout-align="end center"  flex >
+    <md-chip-list *ngIf="enrollmentApplicationItems?.length > 0">
+       <button md-raised-button color="accent">Register these courses</button>
+    </md-chip-list>
+  </div> -->
+  
 </md-card>
