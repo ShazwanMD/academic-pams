@@ -25,6 +25,8 @@ import {StudentSectionActionComponent} from './component/student-section-action.
 import { CapitalizePipe } from './capitalize.pipe';
 import {NotificationService} from '../../../../services/notification.service';
 import { ConfirmationDialog } from "./dialog/confirmation.dialog";
+import { AdminLecturerSectionDetailPage } from "./admin-lecturer-section-detail.page";
+import { AdminLecturerSectionEnrollmentListComponent } from "./component/admin-lecturer-section-enrollment-list.component";
 
 @NgModule({
   imports: [
@@ -39,6 +41,7 @@ import { ConfirmationDialog } from "./dialog/confirmation.dialog";
     SectionDetailPage,
     StudentSectionDetailPage,
     LecturerSectionDetailPage,
+    AdminLecturerSectionDetailPage,
     CapitalizePipe,
 
     // component
@@ -48,6 +51,7 @@ import { ConfirmationDialog } from "./dialog/confirmation.dialog";
     SectionEnrollmentListComponent,
     StudentSectionEnrollmentListComponent,
     LecturerSectionEnrollmentListComponent,
+    AdminLecturerSectionEnrollmentListComponent,
     SectionAppointmentListComponent,
     StudentSectionAppointmentListComponent,
     SectionGradebookListComponent,
@@ -65,6 +69,7 @@ import { ConfirmationDialog } from "./dialog/confirmation.dialog";
     SectionEnrollmentListComponent,
     StudentSectionEnrollmentListComponent,
     LecturerSectionEnrollmentListComponent,
+    AdminLecturerSectionEnrollmentListComponent,
     SectionAppointmentListComponent,
     StudentSectionAppointmentListComponent,
     SectionGradebookListComponent,

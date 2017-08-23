@@ -6,30 +6,28 @@
   <md-card-content>
     <!--Tab Section Here-->
     <md-tab-group>
-      <md-tab
-        label="Staff Detail">
+      <md-tab  label="Staff Detail">
         <br>
-        <div layout="column" layout-gt-md="row" class="insert">
-          <div flex-gt-md="20">
-            <img src=".\..\assets\ico\lecturer\{{staff?.identityNo}}.jpg" width="150" height="190"/>
-
+         <div layout="column" layout-gt-md="row" class="insert">
+            <div flex-gt-md="20">
+              <img src="http://localhost:4200/assets/ico/lecturer/{{staff?.identityNo}}.jpg" width="120" height="150">
+            </div>
+            <div flex-gt-md="35">
+              <b>Staff ID</b> : {{staff?.identityNo}}<br/><br/>
+              <b>Name</b> : {{staff?.name}}<br/><br/>
+              <b>Email</b> :{{staff?.email}}<br/><br/>
+              <b>Phone</b> : {{staff?.phone}}<br/><br/>
+              <b>Mobile</b> : {{staff?.mobile}}
+            </div>
+            <div flex-gt-md="40">
+              <b>Fax</b> :  {{staff?.fax}}<br/><br/>
+              <b>Actor Type</b> :  {{staff?.actorType}}<br/><br/>
+              <b>Program</b> :  {{staff?.program?.titleEn | uppercase}}<br/><br/>
+              <b>Program Level</b> :  {{staff?.program?.level?.description}}<br/><br/>
+              <b>Faculty</b> :  {{staff?.program?.faculty?.description}}<br/><br/>
+            </div>
           </div>
-          <div flex-gt-md="40"><br/>
-            <b>Name</b> : {{staff?.name}}<br/><br/>
-            <b>Staff ID </b> : {{staff?.identityNo}}<br/><br/>
-            <b>Email</b> : {{staff?.email}}<br/><br/>
-
-          </div>
-          <div flex-gt-md="40">
-            <b></b> <br/><br/>
-            <b></b> <br/><br/>
-            <b></b> <br/><br/>
-            <b></b> <br/><br/>
-            <b></b> <br/><br/>
-          </div>
-        </div>
-
-      </md-tab>
+           </md-tab>
     </md-tab-group>
   </md-card-content>
   <md-divider></md-divider>

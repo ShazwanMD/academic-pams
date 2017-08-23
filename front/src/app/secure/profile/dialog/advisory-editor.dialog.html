@@ -1,14 +1,8 @@
-<h2 md-dialog-title>Advisory Editor Form</h2>
+<h2 md-dialog-title>Advisory Editor Form v1</h2>
 <md-dialog-content>
-  <form [formGroup]="editorForm">
-   <!-- <div layout="row" class="inset" flex>
-     Test {{_admissionApplication.id}} {{_admissionApplication.description}}
-     
-     
-      
-    </div>  -->
-    <div fxLayout fxLayout.xs="column" fxLayoutWrap fxLayoutGap="25px" class="inset"> 
-      <style>
+  <form [formGroup]="editorForm" novalidate>
+      <div fxLayout fxLayout.xs="column" fxLayoutWrap fxLayoutGap="25px" class="inset"> 
+ <style>
 table, th, td {
     border-collapse: collapse;
 }
@@ -51,7 +45,7 @@ th, td {
   </form>
 </md-dialog-content>
 <md-dialog-actions align="end">
-  <button md-raised-button color="accent" (click)="submit(editorForm.value,edit)" [disabled]="!editorForm.valid">
+  <button md-raised-button color="accent" (click)="submit(editorForm.value,editorForm.valid)" [disabled]="!editorForm.valid">
     {{edit ? 'Update' : 'Save'}}
   </button>
 </md-dialog-actions>

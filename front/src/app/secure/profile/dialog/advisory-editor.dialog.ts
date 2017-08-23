@@ -47,8 +47,9 @@ export class AdvisoryEditorDialog implements OnInit {
 
     ngOnInit(): void {
         this.editorForm = this.formBuilder.group( {
-
-            advisor: ['', Validators.required],
+            id: [undefined],
+            //advisor: ['', Validators.required],
+            advisor: [undefined, Validators.required],
 
         } );
 

@@ -19,6 +19,7 @@ import {EnrollmentStatusSelectComponent} from './component/enrollment-status-sel
 import {EnrollmentGradebookListComponent} from './component/enrollment-gradebook-list.component';
 import {StudentEnrollmentDetailPage} from './student-enrollment-detail.page';
 import {LecturerEnrollmentDetailPage} from './lecturer-enrollment-detail.page';
+import { AdminLecturerEnrollmentDetailPage } from "./admin-lecturer-enrollment-detail.page";
 
 @NgModule({
   imports: [
@@ -33,6 +34,7 @@ import {LecturerEnrollmentDetailPage} from './lecturer-enrollment-detail.page';
     EnrollmentDetailPage,
     StudentEnrollmentDetailPage,
     LecturerEnrollmentDetailPage,
+    AdminLecturerEnrollmentDetailPage,
 
     // component
     EnrollmentListComponent,
