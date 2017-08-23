@@ -29,6 +29,7 @@ export class AdmissionApplicationTaskDialog implements OnInit {
     private createForm: FormGroup;
     private _academicSession: AcademicSession;
     private _student: Student;
+    private _admissionApplication: AdmissionApplication;
     private create: boolean = false;
     private edit: boolean = false;
 
@@ -70,35 +71,57 @@ export class AdmissionApplicationTaskDialog implements OnInit {
         this._academicSession = admissionApplication.academicSession;
         admissionApplication.student = this._student;
 
-        //console.log(JSON.stringify(admissionApplication));
         console.log( 'student: ' + admissionApplication.student.identityNo );
 
         // setup description
         admissionApplication.description = admissionApplication.student.identityNo + ' ' + admissionApplication.academicSession.code;
         this.store.dispatch( this.actions.startAdmissionApplicationTask( admissionApplication ) );
-       // this.dialog.close();
-        
-        //open dialog to confirm registration
-        console.log('showDialog');
-        let config = new MdDialogConfig();
-        config.viewContainerRef = this.vcf;
-        config.role = 'dialog';
-        config.width = '60%';
-        config.height = '50%';
-        config.position = { top: '0px' };
-        this.creatorDialogRefConfirm = this.dialog.open(AdmissionApplicationTaskConfirmDialog, config);
-        this.creatorDialogRefConfirm.componentInstance.student = this._student;
-        this.creatorDialogRefConfirm.afterClosed().subscribe((res) => {
-            console.log('close dialog');
-            this.dialog.closeAll();
-            // load something here
-        });
-        
-       /* let snackBarRef = this.snackBar.open( 'Thank you  ' + admissionApplication.student.name + '! Your application has been saved.', '', { duration: 5000 } );
-        snackBarRef.afterDismissed().subscribe(() => {
-                                 
-        } );*/
-       // this.router.navigate( ['/secure/term/admission-applications/admission-application-center2'] );
+       
+        //alert by snackbar if duplicate
+        console.log( "Test subscribe:", this.admissionApplication$.subscribe( val => { val['status'] } ) );
+        this.admissionApplication$.subscribe( val => console.log( 'Accumulated object display:', val['status'] ) );
 
+        this.admissionApplication$.subscribe( val => {
+            if ( val['status'] == 'Duplicate' ) {
+
+                let snackBarRef = this.snackBar.open( 'Duplicate data: ' + admissionApplication.id + ' Please insert new data', '', { duration: 3000 } );
+                snackBarRef.afterDismissed().subscribe(() => {
+                    console.log( 'The snack-bar was dismissed' );
+                    console.log( 'Accumulated object:', val )
+                    val['status'] = '';
+                    this.dialog.closeAll();
+                } );
+
+            } else {
+                if ( val['status'] == 'success' ) {
+                    /*let snackBarRef = this.snackBar.open( 'New admissionApplication: ' + admissionApplication.id + ' has been inserted', '', { duration: 3000 } );
+                    snackBarRef.afterDismissed().subscribe(() => {
+                        console.log( 'The snack-bar was dismissed' );
+                        console.log( 'Accumulated object:', val )
+                        val['status'] = '';
+                    } );*/
+                    
+                    
+                      //open dialog to confirm registration
+                    console.log('showDialog');
+                    let config = new MdDialogConfig();
+                    config.viewContainerRef = this.vcf;
+                    config.role = 'dialog';
+                    config.width = '60%';
+                    config.height = '50%';
+                    config.position = { top: '0px' };
+                    this.creatorDialogRefConfirm = this.dialog.open(AdmissionApplicationTaskConfirmDialog, config);
+                    this.creatorDialogRefConfirm.componentInstance.student = this._student;
+                    this.creatorDialogRefConfirm.afterClosed().subscribe((res) => {
+                        console.log('close dialog');
+                        this.dialog.closeAll();
+                        // load something here
+                    });
+                }
+            }
+        }
+        );
+        
+      
     }
 }

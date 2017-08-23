@@ -33,6 +33,7 @@ export class OfferingEditorDialog implements OnInit {
     private _course: Course;
     private _offering: Offering;
     private str: string;
+
     private OFFERINGS: string[] = 'termModuleState.offerings'.split( '.' );
     private OFFERING: string[] = 'termModuleState.offering'.split( '.' );
     private offerings$: Observable<Offering[]>;

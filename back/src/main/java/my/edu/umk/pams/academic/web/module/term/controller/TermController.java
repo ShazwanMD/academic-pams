@@ -245,6 +245,7 @@ public class TermController {
 			System.out.println("Passed data");
 			System.out.println("Duplicate admission: " + student.getName());
 			return new ResponseEntity<String>("Duplicate", HttpStatus.OK);
+			
 		} else {
 
 			AdAdmissionApplication application = new AdAdmissionApplicationImpl();
@@ -281,7 +282,8 @@ public class TermController {
 			systemService.saveEmailQueue(emailQueue);
 			LOG.debug("test2: {}", emailQueue);
 
-			return new ResponseEntity<String>(referenceNo, HttpStatus.OK);
+			//return new ResponseEntity<String>(referenceNo, HttpStatus.OK);
+			return new ResponseEntity<String>("success", HttpStatus.OK);
 		}
 	}
 
