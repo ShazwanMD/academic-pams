@@ -52,11 +52,11 @@ public class AdAdmissionApplicationImpl implements AdAdmissionApplication {
     private Integer ordinal;
 
     @ManyToOne(targetEntity = AdStudentImpl.class)
-    @JoinColumn(name = "STUDENT_ID")
+    @JoinColumn(name = "STUDENT_ID" )
     private AdStudent student;
 
     @ManyToOne(targetEntity = AdStaffImpl.class)
-    @JoinColumn(name = "ADVISOR_ID")
+    @JoinColumn(name = "ADVISOR_ID" , nullable = true)
     private AdStaff advisor;
 
     @ManyToOne(targetEntity = AdAcademicSessionImpl.class)

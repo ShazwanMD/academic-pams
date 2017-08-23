@@ -186,7 +186,7 @@ public class TermController {
 
 		LOG.debug("TermApplicationRef:{}", referenceNo);
 		AdAdmissionApplication application = termService.findAdmissionApplicationByReferenceNo(referenceNo);
-		AdStaff advisor = identityService.findStaffByStaffNo("01615B");
+		AdStaff advisor = identityService.findStaffByStaffNo("00280A");
 
 		application.setAuditNo(vo.getAuditNo());
 		application.setSourceNo(vo.getSourceNo());
@@ -221,6 +221,7 @@ public class TermController {
 				HttpStatus.OK);
 	}
 
+	//startAdmissionApplicationTasks
 	@RequestMapping(value = "/admissionApplications/startTask", method = RequestMethod.POST)
 	public ResponseEntity<String> startAdmissionApplicationTask(@RequestBody AdmissionApplication vo) throws Exception {
 
@@ -234,7 +235,7 @@ public class TermController {
 		// study
 		// center
 		AdProgram program = student.getCohort().getProgram();
-		AdStaff advisor = identityService.findStaffByStaffNo("01615B"); // todo:
+		AdStaff advisor = identityService.findStaffByStaffNo("00280A"); // todo:
 		// dummy
 		// advisor
 		if (countAdmissionApplication(academicSession, student) > 0) {

@@ -1,8 +1,8 @@
 import { ActivatedRoute, Router } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { MdDialogRef, MdSnackBar } from '@angular/material';
+import { MdDialogRef, MdSnackBar, MdDialogConfig, MdDialog } from '@angular/material';
 import { AdmissionApplicationActions } from '../admission-application.action';
 import { AdmissionApplication } from '../../../../shared/model/term/admission-application.interface';
 import { TermModuleState } from '../../index';
@@ -10,6 +10,7 @@ import { AcademicSession } from '../../../../shared/model/planner/academic-sessi
 import { Student } from '../../../../shared/model/identity/student.interface';
 import { Observable } from "rxjs/Observable";
 import { AdmissionApplicationTask } from "../../../../shared/model/term/admission-application-task.interface";
+import { AdmissionApplicationTaskConfirmDialog } from "./admission-application-task-confirm.dialog";
 
 @Component( {
     selector: 'pams-admission-application-task',
@@ -17,6 +18,8 @@ import { AdmissionApplicationTask } from "../../../../shared/model/term/admissio
 } )
 
 export class AdmissionApplicationTaskDialog implements OnInit {
+    
+    private creatorDialogRefConfirm: MdDialogRef<AdmissionApplicationTaskConfirmDialog>;
 
     private ADMISSION_APPLICATION: string[] = 'termModuleState.admissionApplication'.split( '.' );
     private ASSIGNED_ADMISSION_APPLICATION_TASKS: string[] = 'termModuleState.assignedAdmissionApplicationTasks'.split( '.' );
@@ -35,7 +38,8 @@ export class AdmissionApplicationTaskDialog implements OnInit {
         private router: Router,
         private route: ActivatedRoute,
         private snackBar: MdSnackBar,
-        private dialog: MdDialogRef<AdmissionApplicationTaskDialog> ) {
+        private vcf: ViewContainerRef,
+        private dialog: MdDialog,) {
 
         this.admissionApplication$ = this.store.select( ...this.ADMISSION_APPLICATION );
         this.assignedAdmissionApplicationTasks$ = this.store.select( ...this.ASSIGNED_ADMISSION_APPLICATION_TASKS );
@@ -72,12 +76,29 @@ export class AdmissionApplicationTaskDialog implements OnInit {
         // setup description
         admissionApplication.description = admissionApplication.student.identityNo + ' ' + admissionApplication.academicSession.code;
         this.store.dispatch( this.actions.startAdmissionApplicationTask( admissionApplication ) );
-        this.dialog.close();
-        let snackBarRef = this.snackBar.open( 'Thank you  ' + admissionApplication.student.name + '! Your application has been saved.', '', { duration: 5000 } );
+       // this.dialog.close();
+        
+        //open dialog to confirm registration
+        console.log('showDialog');
+        let config = new MdDialogConfig();
+        config.viewContainerRef = this.vcf;
+        config.role = 'dialog';
+        config.width = '60%';
+        config.height = '50%';
+        config.position = { top: '0px' };
+        this.creatorDialogRefConfirm = this.dialog.open(AdmissionApplicationTaskConfirmDialog, config);
+        this.creatorDialogRefConfirm.componentInstance.student = this._student;
+        this.creatorDialogRefConfirm.afterClosed().subscribe((res) => {
+            console.log('close dialog');
+            this.dialog.closeAll();
+            // load something here
+        });
+        
+       /* let snackBarRef = this.snackBar.open( 'Thank you  ' + admissionApplication.student.name + '! Your application has been saved.', '', { duration: 5000 } );
         snackBarRef.afterDismissed().subscribe(() => {
                                  
-        } );
-        this.router.navigate( ['/secure/term/admission-applications/admission-application-center2'] );
+        } );*/
+       // this.router.navigate( ['/secure/term/admission-applications/admission-application-center2'] );
 
     }
 }

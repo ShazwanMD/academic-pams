@@ -20,7 +20,7 @@ export class ArchivedAdmissionApplicationListComponent implements AfterViewInit 
     {name: 'referenceNo', label: 'Reference No'},
     {name: 'student.identityNo', label: 'Matric.No'},
     {name: 'student.name', label: 'Name'},
-    {name: 'advisor.identityNo', label: 'Advisor'},
+    //{name: 'advisor.identityNo', label: 'Advisor'},
     {name: 'student.cohort.program.code', label: 'Program'},
     {name: 'studyCenter.description', label: 'Study Center'},
     {name: 'action', label: ''},

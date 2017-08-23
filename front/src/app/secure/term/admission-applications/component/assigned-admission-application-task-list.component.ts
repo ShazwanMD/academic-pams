@@ -20,7 +20,7 @@ export class AssignedAdmissionApplicationTaskListComponent implements OnChanges 
     {name: 'referenceNo', label: 'Reference No'},
     {name: 'application.student.identityNo', label: 'Matric No.'},
     {name: 'application.student.name', label: 'Name'},
-    {name: 'application.advisor.identityNo', label: 'Advisor'},
+   // {name: 'application.advisor.identityNo', label: 'Advisor'},
     {name: 'application.student.cohort.program.code', label: 'Program'},
     {name: 'application.studyCenter.description', label: 'Study Center'},
     {name: 'flowState', label: 'Status'},
