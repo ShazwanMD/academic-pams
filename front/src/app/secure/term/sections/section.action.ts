@@ -141,6 +141,27 @@ export class SectionActions {
         };
     }
     
+    
+    //find gradebook matrix by section
+    static FIND_GRADEBOOK_MATRICESS_BY_SECTION = '[Section] Find Gradebook_matricess By Section';
+
+    findGradebookMatricessBySection(section): Action {
+      return {
+        type: SectionActions.FIND_GRADEBOOK_MATRICESS_BY_SECTION,
+        payload: section
+      };
+    }
+
+    static FIND_GRADEBOOK_MATRICESS_BY_SECTION_SUCCESS = '[Section] Find Gradebook_matricess By Section Success';
+
+    findGradebookMatricessBySectionSuccess(gradebook_matricess): Action {
+      return {
+        type: SectionActions.FIND_GRADEBOOK_MATRICESS_BY_SECTION_SUCCESS,
+        payload: gradebook_matricess
+      };
+    }
+
+    
     static FIND_SECTION_BY_ID = '[Section] Find Section By Id';
 
     findSectionById( id ): Action {

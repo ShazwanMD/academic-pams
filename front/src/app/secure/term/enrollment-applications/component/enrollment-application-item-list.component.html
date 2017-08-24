@@ -17,6 +17,8 @@
     <button md-button class="md-icon-button" (click)="delete(selectedRows[0])" [disabled]="selectedRows.length != 1">
       <md-icon class="md-24 tc-grey-300" [ngClass]="{'tc-grey-700': selectedRows.length === 1}">delete</md-icon>
     </button>
+       <button color="accent" md-raised-button *ngIf="enrollmentApplicationItems?.length > 0" (click)="register()">Register this course</button>
+  <span flex></span>
   </div>
  
   <span></span>
@@ -45,12 +47,5 @@
     </template>
      
   </td-data-table>
-    <md-divider></md-divider>
-  
-   <!-- <div toolbar-buttons layout="row" layout-align="end center"  flex >
-    <md-chip-list *ngIf="enrollmentApplicationItems?.length > 0">
-       <button md-raised-button color="accent">Register these courses</button>
-    </md-chip-list>
-  </div> -->
-  
+    <md-divider></md-divider>  
 </md-card>

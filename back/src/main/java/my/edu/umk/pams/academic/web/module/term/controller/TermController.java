@@ -1085,6 +1085,16 @@ public class TermController {
 		return new ResponseEntity<List<Gradebook>>(gradebookVos, HttpStatus.OK);
 
 	}
+	
+	//find gradebooksMatrixBySection 24/8/17
+	@RequestMapping(value = "/sections/{canonicalCode}/gradebookMatrices", method = RequestMethod.GET)
+	public ResponseEntity<List<Gradebook>> findGradebookMatricesBySection(@PathVariable String canonicalCode) {
+		AdSection section = termService.findSectionByCanonicalCode(canonicalCode);
+		List<AdGradebook> gradebooks = termService.findGradebooks(section);
+		List<Gradebook> gradebookVos = termTransformer.toGradebookVos(gradebooks);
+		return new ResponseEntity<List<Gradebook>>(gradebookVos, HttpStatus.OK);
+
+	}
 
 	@RequestMapping(value = "/sections/{canonicalCode}/appointments", method = RequestMethod.GET)
 	public ResponseEntity<List<Appointment>> findAppointmentsBySection(@PathVariable String canonicalCode) {

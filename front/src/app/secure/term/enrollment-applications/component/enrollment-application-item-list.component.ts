@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit, ViewContainerRef } from '@angular/core';
-import { MdDialog, MdDialogConfig, MdDialogRef } from '@angular/material';
+import { MdDialog, MdDialogConfig, MdDialogRef, MdSnackBar } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TermModuleState } from '../../index';
 import { Store } from '@ngrx/store';
@@ -17,6 +17,8 @@ export class EnrollmentApplicationItemComponent implements OnInit {
 
     private editorDialogRef: MdDialogRef<EnrollmentApplicationItemEditorDialog>;
     private selectedRows: EnrollmentApplicationItem[];
+    private _snackBar: MdSnackBar;
+
     private columns: any[] = [
         { name: 'section.ordinal', label: 'Section' },
         { name: 'section.code', label: 'Code' },
@@ -33,7 +35,10 @@ export class EnrollmentApplicationItemComponent implements OnInit {
         private actions: EnrollmentApplicationActions,
         private store: Store<TermModuleState>,
         private vcf: ViewContainerRef,
-        private dialog: MdDialog ) {
+        private dialog: MdDialog,
+        private snackBar: MdSnackBar,) {
+        
+        this._snackBar = snackBar;
     }
 
     ngOnInit(): void {
@@ -68,5 +73,26 @@ export class EnrollmentApplicationItemComponent implements OnInit {
         this.editorDialogRef.afterClosed().subscribe(( res ) => {
             // do something
         } );
+    }
+    
+    //click register button 
+    register() {   
+        
+        var r = confirm("Please choose your course first before submit the application.Thank you.");
+        if (r == true) {
+            
+            let snackBarRef = this._snackBar.open( 'Enrollment application completed', 'OK' );
+            snackBarRef.afterDismissed().subscribe(() => {
+                this.router.navigate( ['/secure'] );
+            } );
+           
+        } else {
+            let snackBarRef = this._snackBar.open( 'Please choose courses to enroll', 'OK', {duration:2000} );
+            snackBarRef.afterDismissed().subscribe(() => {
+                //this.router.navigate( ['/secure'] );
+            } );
+        }
+        
+          
     }
 }

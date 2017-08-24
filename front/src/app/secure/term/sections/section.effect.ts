@@ -62,6 +62,14 @@ export class SectionEffects {
         .switchMap(( section ) => this.termService.findGradebooksBySection( section ) )
         .map(( sections ) => this.sectionActions.findGradebooksBySectionSuccess( sections ) );
 
+    //find gradebook-matrix
+    @Effect() findGradebookMatrices = this.actions$
+    .ofType(SectionActions.FIND_GRADEBOOK_MATRICESS_BY_SECTION)
+    .map((action) => action.payload)
+    .switchMap((section) => this.termService.findGradebookMatricesBySection(section))
+    .map((sections) => this.sectionActions.findGradebookMatricessBySectionSuccess(sections));
+
+    
     @Effect() findAppointmentsBySection$ = this.actions$
         .ofType( SectionActions.FIND_APPOINTMENTS_BY_SECTION )
         .map(( action ) => action.payload )

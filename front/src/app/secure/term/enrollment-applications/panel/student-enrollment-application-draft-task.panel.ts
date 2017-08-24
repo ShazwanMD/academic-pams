@@ -72,7 +72,7 @@ export class StudentEnrollmentApplicationDraftTaskPanel implements OnInit {
             snackBarRef.afterDismissed().subscribe(() => {
                 this.router.navigate( ['/secure'] );
             } );
-            //txt = "You pressed OK!";
+            
         } else {
             let snackBarRef = this._snackBar.open( 'Please choose courses to enroll', 'OK', {duration:2000} );
             snackBarRef.afterDismissed().subscribe(() => {
@@ -80,11 +80,7 @@ export class StudentEnrollmentApplicationDraftTaskPanel implements OnInit {
             } );
         }
         
-           /* let snackBarRef = this._snackBar.open( 'Enrollment application completed', 'OK' );
-            snackBarRef.afterDismissed().subscribe(() => {
-                this.router.navigate( ['/secure'] );
-            } );*/
-              
+                       
     }
     
     remove() {
