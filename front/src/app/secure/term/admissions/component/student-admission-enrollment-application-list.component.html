@@ -37,7 +37,7 @@
             <md-icon>more_vert</md-icon>
           </button>
           <md-menu x-position="before" #menu1="mdMenu">
-            <button md-menu-item [routerLink]="['/secure/term/enrollment-applications/student-enrollment-center']">View My Application
+            <button md-menu-item [routerLink]="['/secure/term/enrollment-applications', row['referenceNo'], 'student-enrollment-application-center']">View My Application
             </button><!-- [routerLink]="['/secure/term/enrollment-applications', row['referenceNo']]" -->
           </md-menu>
         </div>

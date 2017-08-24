@@ -63,11 +63,27 @@ export class StudentEnrollmentApplicationDraftTaskPanel implements OnInit {
         editorDialogRef.componentInstance.enrollmentApplicationItem = item;
     }
 
-    register() {       
+    register() {   
+           
+        var r = confirm("Please choose your course first before submit the application.Thank you.");
+        if (r == true) {
+            
             let snackBarRef = this._snackBar.open( 'Enrollment application completed', 'OK' );
             snackBarRef.afterDismissed().subscribe(() => {
                 this.router.navigate( ['/secure'] );
             } );
+            //txt = "You pressed OK!";
+        } else {
+            let snackBarRef = this._snackBar.open( 'Please choose courses to enroll', 'OK', {duration:2000} );
+            snackBarRef.afterDismissed().subscribe(() => {
+                //this.router.navigate( ['/secure'] );
+            } );
+        }
+        
+           /* let snackBarRef = this._snackBar.open( 'Enrollment application completed', 'OK' );
+            snackBarRef.afterDismissed().subscribe(() => {
+                this.router.navigate( ['/secure'] );
+            } );*/
               
     }
     

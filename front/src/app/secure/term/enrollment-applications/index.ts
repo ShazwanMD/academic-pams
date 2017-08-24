@@ -45,6 +45,7 @@ import { StudentEnrollmentApplicationDetailPage } from "./student-enrollment-app
 import { StudentEnrollmentApplicationDraftTaskPanel } from "./panel/student-enrollment-application-draft-task.panel";
 import { StudentEnrollmentApplicationTaskWorkflowPanel } from "./panel/student-enrollment-application-task-workflow.panel";
 import { StudentEnrollmentApplicationHistoryPage } from "./student-enrollment-application-history.page";
+import { StudentEnrollmentApplicationCenterPage } from "./student-enrollment-application-center.page";
 
 @NgModule({
   imports: [
@@ -62,6 +63,7 @@ import { StudentEnrollmentApplicationHistoryPage } from "./student-enrollment-ap
     // page
     EnrollmentApplicationCenterPage,
     StudentEnrollmentCenterPage,
+    StudentEnrollmentApplicationCenterPage,
     EnrollmentApplicationTaskDetailPage,
     EnrollmentApplicationDetailPage,
     ItemDetailPage,
