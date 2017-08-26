@@ -1,3 +1,4 @@
+import { FacultyDashboardPanel } from './secure/faculty-dashboard.panel';
 import { LecturerModuleState, INITIAL_LECTURER_PROFILE_STATE, lecturerModuleReducers, LecturerModule } from './secure/lecturerPanel/index';
 import { LecturerDashboardPanel } from './secure/lecturer-dashboard.panel';
 import { RegistrationModule, registrationModuleReducers, INITIAL_REGISTRATION_STATE, RegistrationModuleState } from './registration/index';
@@ -140,6 +141,7 @@ export function applicationReducer(applicationState: any = INITIAL_APP_STATE, ac
     //Student DashBoard Panel
     StudentDashboardPanel,
     LecturerDashboardPanel,
+    FacultyDashboardPanel,
   ],
   imports: [
     appRoutes,
@@ -194,6 +196,7 @@ export function applicationReducer(applicationState: any = INITIAL_APP_STATE, ac
     AdministratorDashboardPanel,
     StudentDashboardPanel,
     LecturerDashboardPanel,
+    FacultyDashboardPanel,
   ],
   bootstrap: [AppComponent],
 })
