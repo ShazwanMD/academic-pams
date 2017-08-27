@@ -4,7 +4,7 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Program} from '../../../../shared/model/planner/program.interface';
 import {ProgramActions} from '../program.action';
-import {MdDialogRef} from '@angular/material';
+import { MdDialogRef, MdSnackBar } from '@angular/material';
 import {PlannerModuleState} from '../../index';
 import {Store} from '@ngrx/store';
 import {ProgramStatus} from '../../../../shared/model/planner/program-status.enum';
@@ -25,6 +25,7 @@ export class ProgramEditorDialog implements OnInit {
               private formBuilder: FormBuilder,
               private actions: ProgramActions,
               private store: Store<PlannerModuleState>,
+              private snackBar: MdSnackBar,
               private viewContainerRef: ViewContainerRef,
               private dialog: MdDialogRef<ProgramEditorDialog>) {
   }
@@ -54,6 +55,9 @@ export class ProgramEditorDialog implements OnInit {
     console.log(JSON.stringify(program));
     if (!program.id) this.store.dispatch(this.actions.saveProgram(program));
     else  this.store.dispatch(this.actions.updateProgram(program));
+    let snackBarRef = this.snackBar.open( 'New Program: ' + program.code + ' has been updated', '', { duration: 3000 } );
+    snackBarRef.afterDismissed().subscribe(() => {
+   } );
     this.dialog.close();
 
   }
