@@ -616,12 +616,22 @@ public class TermServiceImpl implements TermService {
 				"Admission Application can only be cancelled in COMPLETED state");
 		admissionApplicationDao.update(application, securityService.getCurrentUser());
 	}
-
+	
+	
+    
+	/*@Override
+	public void postToAdmission(AdAdmissionApplication application) {
+		Validate.notNull(application, "Application cannot be null");
+		admit(application.getSession(), application.getStudent(), application.getStudyCenter(), 
+				application.getProgram());
+	}*/
+	
+	//post to admission with auto semester data
 	@Override
 	public void postToAdmission(AdAdmissionApplication application) {
 		Validate.notNull(application, "Application cannot be null");
-		admit(application.getSession(), application.getStudent(), application.getStudyCenter(),
-				application.getProgram());
+		admit(application.getSession(), application.getStudent(), application.getStudyCenter(), 
+				application.getProgram(), application.getOrdinal());
 	}
 
 	@Override
@@ -770,9 +780,11 @@ public class TermServiceImpl implements TermService {
 		sessionFactory.getCurrentSession().flush();
 
 	}
-
+    //add ordinal to auto semester
 	@Override
-	public void admit(AdAcademicSession session, AdStudent student, AdStudyCenter studyCenter, AdProgram program) {
+	public void admit(AdAcademicSession session, AdStudent student, AdStudyCenter studyCenter, AdProgram program, Integer ordinal) {
+		
+				
 		AdAdmission admission = new AdAdmissionImpl();
 		admission.setSession(session);
 		admission.setStudent(student);
@@ -782,6 +794,8 @@ public class TermServiceImpl implements TermService {
 		admission.setCreditTaken(0);
 		admission.setCgpa(BigDecimal.ZERO); // todo
 		admission.setGpa(BigDecimal.ZERO); // todo
+		
+		admission.setOrdinal(ordinal);
 		admission.setCohort(student.getCohort());
 		saveAdmission(admission);
 		sessionFactory.getCurrentSession().refresh(admission);
@@ -1671,6 +1685,13 @@ public class TermServiceImpl implements TermService {
 	public void removeEnrollmentApplication(AdAdmission admission, AdEnrollmentApplication application) {
 		admissionDao.removeEnrollmentApplication(admission, application, securityService.getCurrentUser());
 		sessionFactory.getCurrentSession().flush();
+	}
+
+	@Override
+	public void admit(AdAcademicSession academicSession, AdStudent student, AdStudyCenter studyCenter,
+			AdProgram program) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	

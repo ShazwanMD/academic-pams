@@ -532,6 +532,9 @@ public interface TermService {
     void deleteGradebook(AdGradebook gradebook);
 
     BigDecimal normalizeGradebooks(AdEnrollment enrollment);
+    
+    void admit(AdAcademicSession session, AdStudent student, AdStudyCenter studyCenter, AdProgram program,
+			Integer ordinal);
 
 
 }

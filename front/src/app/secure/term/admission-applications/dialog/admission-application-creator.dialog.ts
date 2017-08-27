@@ -64,6 +64,7 @@ export class AdmissionApplicationCreatorDialog implements OnInit {
 
         this.createForm = this.formBuilder.group( {
             id: [undefined],
+            
             //student: <Student>{},
             academicSession: ['', Validators.required],
         } );
@@ -74,6 +75,21 @@ export class AdmissionApplicationCreatorDialog implements OnInit {
     save( admissionApplication: AdmissionApplication, isValid: boolean ): void {
 
         console.log( "_admission", this._admission );
+        console.log( "admissionApplication", admissionApplication );
+        
+        this._academicSession = admissionApplication.academicSession;
+        admissionApplication.student = this._admission.student;
+        admissionApplication.ordinal = this._admission.ordinal + 1;
+
+        console.log( 'student: ' + admissionApplication.student.identityNo );
+
+        // setup description
+        admissionApplication.description = admissionApplication.student.identityNo + ' ' + admissionApplication.academicSession.code;
+        console.log( 'admissionApplication.description: ' + admissionApplication.student.identityNo + ' ' + admissionApplication.academicSession.code );
+        console.log( "admissionApplication.ordinal", admissionApplication.ordinal );
+       
+        this.store.dispatch( this.actions.startAdmissionApplicationTask( admissionApplication ) );
+       
 
         
       
