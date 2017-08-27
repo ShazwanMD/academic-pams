@@ -1,0 +1,50 @@
+<md-card>
+  <md-card-title>{{enrollmentApplication?.admission?.student?.name}}</md-card-title>
+  <md-card-subtitle>{{enrollmentApplication?.referenceNo}}</md-card-subtitle>
+  <md-divider></md-divider>
+  <md-card-content> <!--Tab Enrollment Application Here-->
+    <md-tab-group>
+      <md-tab label="Enrollment Application Detail">
+        <br>
+        <div layout="column" class="inset">
+          <div layout="row" class="pad-bottom">
+            <span flex="20">Id</span> <span>{{enrollmentApplication?.id}}</span>
+          </div>
+          <div layout="row" class="pad-bottom">
+            <span flex="20">Description</span> <span>{{enrollmentApplication?.description}}</span>
+          </div>
+          <div layout="row" class="pad-bottom">
+            <span flex="20">Reference Number</span> <span>{{enrollmentApplication?.referenceNo}}</span>
+          </div>
+        </div>
+      </md-tab>
+
+      <md-tab label="Admission Information">
+        <div layout="column" class="inset">
+          <div layout="row" class="pad-bottom">
+            <span flex="20">Code</span> <span>{{enrollmentApplication?.id}}</span>
+          </div>
+          <div layout="row" class="pad-bottom">
+            <span flex="20">Title</span> <span>{{enrollmentApplication?.id}}</span>
+          </div>
+          <div layout="row" class="pad-bottom">
+            <span flex="20">Status</span> <span>{{enrollmentApplication?.id}}</span>
+          </div>
+        </div>
+      </md-tab>
+       <md-tab label="Academic Session Information">
+        <div layout="column" class="inset">
+          <div layout="row" class="pad-bottom">
+            <span flex="20">Code</span> <span>{{enrollmentApplication?.id}}</span>
+          </div>
+          <div layout="row" class="pad-bottom">
+            <span flex="20">Title</span> <span>{{enrollmentApplication?.id}}</span>
+          </div>
+          <div layout="row" class="pad-bottom">
+            <span flex="20">Status</span> <span>{{enrollmentApplication?.id}}</span>
+          </div>
+        </div>
+      </md-tab>
+    </md-tab-group>
+  </md-card-content>
+</md-card>

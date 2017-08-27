@@ -1,26 +1,26 @@
 <md-card>
   <div toolbar-buttons layout="row" layout-align="start center" flex>
-    <md-card-title>Courses/Sections
+    <md-card-title>Enrollment Applications History
     </md-card-title>
     <md-chip-list *ngIf="enrollmentApplicationItems?.length > 0">
       <md-chip color="accent">{{enrollmentApplicationItems?.length}}</md-chip>
           
     </md-chip-list>
     <span flex></span>
-   
-    <button md-button class="md-icon-button" (click)="createDialog()">
+  
+   <!--  <button md-button class="md-icon-button" (click)="createDialog()">
       <md-icon class="md-24 tc-grey-300" [ngClass]="{'tc-grey-700': selectedRows.length === 0}">add</md-icon>
     </button>
-  <!--   <button md-button class="md-icon-button" (click)="edit(selectedRows[0])" [disabled]="selectedRows.length != 1">
+    <button md-button class="md-icon-button" (click)="edit(selectedRows[0])" [disabled]="selectedRows.length != 1">
       <md-icon class="md-24 tc-grey-300" [ngClass]="{'tc-grey-700': selectedRows.length === 1}">edit</md-icon>
-    </button> -->
+    </button>
     <button md-button class="md-icon-button" (click)="delete(selectedRows[0])" [disabled]="selectedRows.length != 1">
       <md-icon class="md-24 tc-grey-300" [ngClass]="{'tc-grey-700': selectedRows.length === 1}">delete</md-icon>
     </button>
        <button color="accent" md-raised-button *ngIf="enrollmentApplicationItems?.length > 0" (click)="register()">Register this course
        </button>
       
-  <span flex></span>
+  <span flex></span> -->
   </div>
  
   <span></span>

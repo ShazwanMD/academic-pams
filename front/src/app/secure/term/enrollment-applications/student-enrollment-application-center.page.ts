@@ -8,6 +8,7 @@ import {EnrollmentApplicationActions} from './enrollment-application.action';
 import {TermModuleState} from '../index';
 import {EnrollmentApplicationTaskCreatorDialog} from './dialog/enrollment-application-task-creator.dialog';
 import {EnrollmentApplication} from '../../../shared/model/term/enrollment-application.interface';
+import { EnrollmentApplicationItem } from "../../../shared/model/term/enrollment-application-item.interface";
 
 @Component({
   selector: 'pams-student-enrollment-application-center',
@@ -18,11 +19,15 @@ export class StudentEnrollmentApplicationCenterPage implements OnInit {
 
   private ASSIGNED_ENROLLMENT_APPLICATION_TASKS = 'termModuleState.assignedEnrollmentApplicationTasks'.split('.');
   private ENROLLMENT_APPLICATIONS = 'termModuleState.enrollmentApplications'.split('.');
+  private ENROLLMENT_APPLICATION = 'termModuleState.enrollmentApplication'.split('.');
+  private ENROLLMENT_APPLICATION_ITEMS = 'termModuleState.enrollmentApplicationItems'.split('.');
   private POOLED_ENROLLMENT_APPLICATION_TASKS = 'termModuleState.pooledEnrollmentApplicationTasks'.split('.');
   private ARCHIVED_ENROLLMENT_APPLICATIONS: string[] = 'termModuleState.archivedEnrollmentApplications'.split('.');
   private creatorDialogRef: MdDialogRef<EnrollmentApplicationTaskCreatorDialog>;
   private assignedEnrollmentApplicationTasks$: Observable<EnrollmentApplicationTask>;
   private enrollmentApplications$: Observable<EnrollmentApplication>;
+  private enrollmentApplication$: Observable<EnrollmentApplication>;
+  private enrollmentApplicationItems$: Observable<EnrollmentApplicationItem>;
   private pooledEnrollmentApplicationTasks$: Observable<EnrollmentApplicationTask>;
   private archivedEnrollmentApplications$: Observable<EnrollmentApplication>;
 
@@ -35,6 +40,8 @@ export class StudentEnrollmentApplicationCenterPage implements OnInit {
 
     this.assignedEnrollmentApplicationTasks$ = this.store.select(...this.ASSIGNED_ENROLLMENT_APPLICATION_TASKS);
     this.enrollmentApplications$ = this.store.select(...this.ENROLLMENT_APPLICATIONS);
+    this.enrollmentApplication$ = this.store.select(...this.ENROLLMENT_APPLICATION);
+    this.enrollmentApplicationItems$ = this.store.select(...this.ENROLLMENT_APPLICATION_ITEMS);
     this.pooledEnrollmentApplicationTasks$ = this.store.select(...this.POOLED_ENROLLMENT_APPLICATION_TASKS);
     this.archivedEnrollmentApplications$ = this.store.select(...this.ARCHIVED_ENROLLMENT_APPLICATIONS);
   }
@@ -73,12 +80,11 @@ export class StudentEnrollmentApplicationCenterPage implements OnInit {
     this.router.navigate(['/secure/term/enrollment-applications/', enrollmentApplication.referenceNo , 'student-enrollment-application-detail']);
     //this.router.navigate(['/secure/term/offerings', offering.canonicalCode]);
   }
-
+  
   ngOnInit(): void {
-    console.log('find assigned/pooled/archived enrollment application tasks');
-    this.store.dispatch(this.actions.findAssignedEnrollmentApplicationTasks());
-    this.store.dispatch(this.actions.findPooledEnrollmentApplicationTasks());
-    this.store.dispatch(this.actions.findEnrollmentApplications());
-    this.store.dispatch(this.actions.findArchivedEnrollmentApplications());
-  }
+      this.route.params.subscribe((params: { referenceNo: string }) => {
+        let referenceNo: string = params.referenceNo;
+        this.store.dispatch(this.actions.findEnrollmentApplicationByReferenceNo(referenceNo));
+      });
+    }
 }

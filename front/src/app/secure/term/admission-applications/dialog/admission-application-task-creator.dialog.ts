@@ -79,7 +79,7 @@ export class AdmissionApplicationTaskCreatorDialog implements OnInit {
     this.assignedAdmissionApplicationTasks$.subscribe( val => console.log( 'Accumulated object admissionApplication$:', val['status'] ) );
     //window.alert("Alert:" + this.assignedAdmissionApplicationTasks$.subscribe(val => {val['status']}));
     
-    //start subcribe
+    //start subscribe
     
     this.assignedAdmissionApplicationTasks$.subscribe(val => {
         if(val['status']== 'Duplicate'){

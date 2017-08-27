@@ -53,7 +53,7 @@ import {
 } from './enrollment-applications/enrollment-application-task-list.reducer';
 import {sectionReducer, SectionState} from './sections/section.reducer';
 import {admissionApplicationReducer} from './admission-applications/admission-application.reducer';
-import {enrollmentApplicationReducer} from './enrollment-applications/enrollment-application.reducer';
+import {enrollmentApplicationReducer, EnrollmentApplicationState} from './enrollment-applications/enrollment-application.reducer';
 import {Section} from '../../shared/model/term/section.interface';
 import {SectionActions} from './sections/section.action';
 import {SectionSubModule} from './sections/index';
@@ -117,6 +117,7 @@ export interface TermModuleState {
   assessment: AssessmentState;
   enrollments: EnrollmentListState;
   enrollment: EnrollmentState;
+  enrollmentApplication: EnrollmentApplicationState;
   
   //enrollment appication item 
   enrollmentApplicationItem: EnrollmentApplicationItemState;
@@ -162,6 +163,7 @@ export const INITIAL_TERM_STATE: TermModuleState = <TermModuleState>{
   assessment: <Assessment[]>[],
   enrollments: <Enrollment[]>[],
   enrollment: <Enrollment>{},
+  enrollmentApplication: <EnrollmentApplication>{},
 
   gradebooks: <Gradebook[]>[],
   gradebook: <Gradebook>{},

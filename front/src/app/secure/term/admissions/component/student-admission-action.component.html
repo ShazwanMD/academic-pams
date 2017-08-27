@@ -8,21 +8,21 @@
     </div>
   </md-card-content>
 </md-card>
-<!-- <md-card>
+ <md-card>
   <md-card-title>Action</md-card-title>
   <md-card-subtitle>Actions available on current semester registration</md-card-subtitle>
   <md-divider></md-divider>
 
-  <md-nav-list flex dense>
-    <md-list-item [routerLink]="['/secure/term/admission-applications/admission-application-center2']">
-      <md-icon md-list-avatar>done_all</md-icon>
-      <h4 md-line>Create semester registration</h4>
+  <md-nav-list flex dense><!-- [routerLink]="['/secure/term/admission-applications/admission-application-center2']" -->
+    <md-list-item >
+      <md-icon md-list-avatar >done_all</md-icon>
+      <h4 md-line (click)="semesterRegister()">Create semester registration {{admission?.student?.identityNo}}, sem:{{admission?.ordinal}}</h4>
       <p md-line>Create new semester registration </p>
     </md-list-item>
 
     <md-divider></md-divider>
   </md-nav-list>
-</md-card> -->
+</md-card> 
 <md-card>
         <md-card-title>Menu</md-card-title>
         <md-card-subtitle>Actions
@@ -36,5 +36,6 @@
             <h4 md-line>My Profile</h4>
             <p md-line>Go to my profile </p>
           </md-list-item>
+         
         </md-nav-list>
       </md-card>

@@ -21,6 +21,25 @@ export class EnrollmentApplicationActions {
       payload: enrollmentApplications
     };
   }
+  
+  /*//find enrollment application by referenceNO
+  static FIND_ENROLLMENT_APPLICATION_BY_REFERENCENO = '[EnrollmentApplication] Find EnrollmentApplicationByReferenceNo';
+
+  findEnrollmentApplicationByReferenceNo(): Action {
+    return {
+      type: EnrollmentApplicationActions.FIND_ENROLLMENT_APPLICATION_BY_REFERENCENO
+    };
+  }
+
+  static FIND_ENROLLMENT_APPLICATION_BY_REFERENCENO_SUCCESS = '[EnrollmentApplication] Find EnrollmentApplicationByReferenceNo Success';
+
+  findEnrollmentApplicationByReferenceNoSuccess(enrollmentApplication): Action {
+    return {
+      type: EnrollmentApplicationActions.FIND_ENROLLMENT_APPLICATION_BY_REFERENCENO_SUCCESS,
+      payload: enrollmentApplication
+    };
+  }*/
+  
 
   static FIND_ASSIGNED_ENROLLMENT_APPLICATION_TASKS = '[EnrollmentApplication] Find Assigned EnrollmentApplication Tasks';
 

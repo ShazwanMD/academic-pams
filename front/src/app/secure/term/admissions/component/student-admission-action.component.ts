@@ -5,6 +5,8 @@ import {AdmissionActions} from '../admission.action';
 import {Store} from '@ngrx/store';
 import {TermModuleState} from '../../index';
 import {AdmissionCreateTaskCreatorDialog} from '../dialog/admission-create-task-creator.dialog';
+import { AdmissionApplicationTaskDialog } from "../../admission-applications/dialog/admission-application-task.dialog";
+import { AdmissionApplicationCreatorDialog } from "../../admission-applications/dialog/admission-application-creator.dialog";
 
 @Component({
   selector: 'pams-student-admission-action',
@@ -14,6 +16,8 @@ import {AdmissionCreateTaskCreatorDialog} from '../dialog/admission-create-task-
 export class StudentAdmissionActionComponent {
 
   private editorDialogRef: MdDialogRef<AdmissionCreateTaskCreatorDialog>;
+  private creatorDialogRef: MdDialogRef<AdmissionApplicationCreatorDialog>;
+
   @Input() admission: Admission;
 
   constructor(private actions: AdmissionActions,
@@ -40,6 +44,23 @@ export class StudentAdmissionActionComponent {
       console.log('close dialog admission update');
 
     });
+  }
+  
+//SEMESTER REGISTRATION
+  semesterRegister(): void {
+      console.log('showDialog');
+      let config = new MdDialogConfig();
+      config.viewContainerRef = this.vcf;
+      config.role = 'dialog';
+      config.width = '60%';
+      config.height = '40%';
+      config.position = { top: '0px' };
+      this.creatorDialogRef = this.dialog.open(AdmissionApplicationCreatorDialog, config);
+      this.creatorDialogRef.componentInstance.admission = this.admission;
+      this.creatorDialogRef.afterClosed().subscribe((res) => {
+          console.log('close dialog');
+          // load something here
+      });
   }
 
 }
