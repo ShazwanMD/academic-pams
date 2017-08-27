@@ -118,7 +118,7 @@ export class StudentProfileListPage implements OnInit {
         { name: 'academicSession.code', label: 'Session' },
         { name: 'cgpa', label: 'CGPA' },
         { name: 'gpa', label: 'GPA' },
-        { name: 'ordinal', label: 'Ordinal' },
+        { name: 'ordinal', label: 'Semester' },
         { name: 'standing', label: 'Standing' },
         { name: 'status', label: 'Status' },
         { name: 'enrollmentCount', label: 'Approved Course' },

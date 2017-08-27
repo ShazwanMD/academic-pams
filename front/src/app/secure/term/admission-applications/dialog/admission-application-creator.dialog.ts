@@ -12,6 +12,7 @@ import { Observable } from "rxjs/Observable";
 import { AdmissionApplicationTask } from "../../../../shared/model/term/admission-application-task.interface";
 import { AdmissionApplicationTaskConfirmDialog } from "./admission-application-task-confirm.dialog";
 import { Admission } from "../../../../shared/model/term/admission.interface";
+import { AdmissionApplicationConfirmDialog } from "./admission-application-confirm.dialog";
 
 @Component( {
     selector: 'pams-admission-application-creator',
@@ -20,7 +21,7 @@ import { Admission } from "../../../../shared/model/term/admission.interface";
 
 export class AdmissionApplicationCreatorDialog implements OnInit {
     
-    private creatorDialogRefConfirm: MdDialogRef<AdmissionApplicationTaskConfirmDialog>;
+    private creatorDialogRefConfirm: MdDialogRef<AdmissionApplicationConfirmDialog>;
 
     private ADMISSION_APPLICATION: string[] = 'termModuleState.admissionApplication'.split( '.' );
     private ASSIGNED_ADMISSION_APPLICATION_TASKS: string[] = 'termModuleState.assignedAdmissionApplicationTasks'.split( '.' );
@@ -90,7 +91,48 @@ export class AdmissionApplicationCreatorDialog implements OnInit {
        
         this.store.dispatch( this.actions.startAdmissionApplicationTask( admissionApplication ) );
        
+        //this.dialog.closeAll()
+        
+        //alert by snackbar if duplicate
+        console.log( "Test subscribe:", this.admissionApplication$.subscribe( val => { val['status'] } ) );
+        this.admissionApplication$.subscribe( val => console.log( 'Accumulated object display:', val['status'] ) );
 
+        this.admissionApplication$.subscribe( val => {
+            if ( val['status'] == 'Duplicate' ) {
+
+                let snackBarRef = this.snackBar.open( 'Duplicate data: ' + admissionApplication.student.identityNo + ' Application has been submitted', '', { duration: 5000 } );
+                snackBarRef.afterDismissed().subscribe(() => {
+                    console.log( 'The snack-bar was dismissed' );
+                    console.log( 'Accumulated object:', val )
+                    val['status'] = '';
+                    this.dialog.closeAll();
+                    this.router.navigate(['/secure']);
+                } );
+
+            } else {
+                if ( val['status'] == 'success' ) {
+                                 
+                    //open dialog to confirm registration
+                    console.log('showDialog');
+                    let config = new MdDialogConfig();
+                    config.viewContainerRef = this.vcf;
+                    config.role = 'dialog';
+                    config.width = '60%';
+                    config.height = '50%';
+                    config.position = { top: '0px' };
+                    this.creatorDialogRefConfirm = this.dialog.open(AdmissionApplicationConfirmDialog, config);
+                    this.creatorDialogRefConfirm.componentInstance.admission = this._admission;
+                    this.creatorDialogRefConfirm.afterClosed().subscribe((res) => {
+                        console.log('close dialog');
+                        this.dialog.closeAll();
+                        //router navigate to my profile
+                        this.router.navigate(['/secure']);
+                        
+                    });
+                }
+            }
+        }
+        );
         
       
     }

@@ -41,6 +41,7 @@ import {AdmissionProfileListComponent} from './component/admission-profile-list.
 import { AdmissionProfileCenterPage2 } from "./admission-profile-center.page";
 import { AdmissionApplicationTaskConfirmDialog } from "./dialog/admission-application-task-confirm.dialog";
 import { AdmissionApplicationCreatorDialog } from "./dialog/admission-application-creator.dialog";
+import { AdmissionApplicationConfirmDialog } from "./dialog/admission-application-confirm.dialog";
 
 @NgModule({
   imports: [
@@ -91,6 +92,7 @@ import { AdmissionApplicationCreatorDialog } from "./dialog/admission-applicatio
     AdmissionApplicationTaskDialog,
     AdmissionApplicationCreatorDialog,
     AdmissionApplicationTaskConfirmDialog,
+    AdmissionApplicationConfirmDialog,
   ],
 
   exports: [
@@ -112,6 +114,7 @@ import { AdmissionApplicationCreatorDialog } from "./dialog/admission-applicatio
     AdmissionApplicationTaskDialog,
     AdmissionApplicationCreatorDialog,
     AdmissionApplicationTaskConfirmDialog,
+    AdmissionApplicationConfirmDialog,
     AdmissionApplicationTaskEditorDialog,
     AdmissionApplicationDraftTaskPanel,
     StudentAdmissionApplicationDraftTaskPanel,

@@ -51,20 +51,20 @@
 
 
             <div flex-gt-md="35">
-              <b>Student ID</b> : {{student.identityNo}}<br/><br/>
-              <b>Name</b> : {{student.name}}<br/><br/>
-              <b>Email</b> : {{student.email}}<br/><br/>
-              <b>Phone</b> : {{student.phone}}<br/><br/>
-              <b>Mobile</b> : {{student.mobile}}
+              <b>Student ID</b> : {{student?.identityNo}}<br/><br/>
+              <b>Name</b> : {{student?.name}}<br/><br/>
+              <b>Email</b> : {{student?.email}}<br/><br/>
+              <b>Phone</b> : {{student?.phone}}<br/><br/>
+              <b>Mobile</b> : {{student?.mobile}}
             </div>
 
             <div flex-gt-md="40">
               <b>Status</b> : {{student.studentStatus}}<br/><br/>
               <b>Study Mode</b> : {{student.studyMode?.description}}<br/><br/>
 
-              <b>Program</b> : {{student.cohort?.program?.titleMs | uppercase}}<br/><br/>
-              <b>Faculty</b> : {{student.cohort?.program?.faculty?.description}}<br/><br/>
-              <b>Current Semester</b> : {{student.cohort?.academicSession.semester}}<br/><br/>
+              <b>Program</b> : {{student?.cohort?.program?.titleMs | uppercase}}<br/><br/>
+              <b>Faculty</b> : {{student?.cohort?.program?.faculty?.description}}<br/><br/>
+              <b>Cohort Session</b> : {{student?.cohort?.academicSession?.code}}<br/><br/>
             </div>
             <div flex-gt-md="5">
               <button md-icon-button [md-menu-trigger-for]="menu1">

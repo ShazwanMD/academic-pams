@@ -1,0 +1,28 @@
+<md-card class="bgc-grey-600" flex>
+  <md-card-header>
+    <img md-card-avatar src=".\..\assets\ico\student\{{_admission?.student?.identityNo}}.jpg">
+    <md-card-title>Name: {{_admission?.student?.name}}</md-card-title>
+    <md-card-subtitle>Identity No.:{{_admission?.student?.identityNo}} </md-card-subtitle>
+  </md-card-header>
+ </md-card>
+<md-card>
+  <md-card-title align="center">APPLICATION SUCCESS</md-card-title>
+  <md-card-subtitle align="center">Please check your inbox for new status notification </md-card-subtitle>
+ 
+  <md-card-content>
+    <md-tab-group>  
+    </md-tab-group>
+  </md-card-content>
+</md-card>
+<md-dialog-actions align="center">
+  <button md-raised-button color="accent" (click)="save()" > Thank You
+  </button>
+</md-dialog-actions>
+
+
+
+
+
+
+
+
