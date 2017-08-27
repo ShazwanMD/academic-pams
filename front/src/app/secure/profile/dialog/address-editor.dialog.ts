@@ -2,10 +2,10 @@ import {CountryCode} from '../../../shared/model/common/country-code.interface';
 import {StateCode} from '../../../shared/model/common/state-code.interface';
 import {Address} from '../../../shared/model/profile/address.interface';
 import {Component, OnInit, ViewContainerRef} from '@angular/core';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Store} from '@ngrx/store';
-import {MdDialogRef} from '@angular/material';
+import {MdDialogRef, MdSnackBar} from '@angular/material';
 import {Student} from '../../../shared/model/identity/student.interface';
 import {ProfileModuleState} from '../index';
 import {ProfileActions} from '../profile.action';
@@ -30,8 +30,10 @@ export class AddressEditorDialog implements OnInit {
               private viewContainerRef: ViewContainerRef,
               private dialog: MdDialogRef<AddressEditorDialog>,
               private store: Store<ProfileModuleState>,
+              private snackBar: MdSnackBar,
               private actions: ProfileActions) {
-  }
+           
+       }
 
   set student(value: Student) {
     this._student = value;
@@ -43,14 +45,16 @@ export class AddressEditorDialog implements OnInit {
   }
 
   ngOnInit(): void {
-    this.editorForm = this.formBuilder.group(<Address>{
-      addressType: AddressType.CURRENT,
-      address1: '',
-      address2: '',
-      address3: '',
-      postcode: '',
-      stateCode: <StateCode>{},
-      countryCode: <CountryCode>{},
+    this.editorForm = this.formBuilder.group({
+      id: [undefined],
+      addressType: ['', Validators.required],
+      address1: ['', Validators.required],
+      address2: ['', Validators.required],
+      address3: ['', Validators.required],
+      postcode: ['', Validators.required],
+      stateCode: ['', Validators.required],
+      countryCode: ['', Validators.required],
+        
     });
     //console.log(this._address, this._student)
     if (this.edit) this.editorForm.patchValue(this._address);
@@ -68,5 +72,9 @@ export class AddressEditorDialog implements OnInit {
     if (isValid) this.store.dispatch(this.actions.updateAddress(this._student, address));
     else this.store.dispatch(this.actions.addAddress(this._student, address));
     this.dialog.close();
+    let snackBarRef = this.snackBar.open( 'New Address has been saved', '', { duration: 3000 } );
+    snackBarRef.afterDismissed().subscribe(() => {
+    } );
+    
   }
 }

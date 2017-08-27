@@ -1,6 +1,6 @@
 <h2 md-dialog-title>Address</h2>
 <md-dialog-content>
-  <form [formGroup]="editorForm">
+<form [formGroup]="editorForm" novalidate>
     <div layout="row" class="inset" flex>
       <pams-address-type-select
         [placeholder]="'Address Type'"
@@ -39,23 +39,28 @@
                flex/>
       </md-input-container>
     </div>
-
-    <div layout="row" class="pad-bottom pad-top" flex>
+    
+     <div layout="row" class="inset" flex>
       <pams-state-code-select
-        [placeholder]="'State'"
-        [innerFormControl]="editorForm.controls.stateCode">
+        [placeholder]="'State Code'"
+        [innerFormControl]="editorForm.controls['stateCode']">
       </pams-state-code-select>
     </div>
-    <div layout="row" class="pad-bottom pad-top" flex>
+    
+    <div layout="row" class="inset" flex>
       <pams-country-code-select
-        [placeholder]="'Country'"
-        [innerFormControl]="editorForm.controls.countryCode">
+        [placeholder]="'Country Code'"
+        [innerFormControl]="editorForm.controls['countryCode']">
       </pams-country-code-select>
     </div>
+
   </form>
 </md-dialog-content>
 <md-dialog-actions align="end">
-  <button md-raised-button color="accent" (click)="submit(editorForm.value, edit)">
+  <button md-raised-button color="accent" [disabled]="editorForm.invalid" (click)="submit(editorForm.value, edit)">
     {{edit ? 'Update' : 'Save'}}
   </button>
 </md-dialog-actions>
+
+
+
