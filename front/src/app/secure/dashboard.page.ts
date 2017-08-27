@@ -1,3 +1,4 @@
+import { PTJDashboardPanel } from './ptj-dashboard.panel';
 import { FacultyDashboardPanel } from './faculty-dashboard.panel';
 import { LecturerProfileCenterPage } from './lecturerPanel/lecturer-profile-center.page';
 import { LecturerDashboardPanel } from './lecturer-dashboard.panel';
@@ -40,10 +41,13 @@ export class DashboardPage implements OnInit, OnDestroy {
 
     if (this.authzService.hasRole('ROLE_ADMINISTRATOR') && this.authzService.hasRole('ROLE_USER')) {
       componentFactory = this.cfr.resolveComponentFactory(AdministratorDashboardPanel);
-    } else if (this.authzService.hasRole('ROLE_FACULTY') && this.authzService.hasRole('ROLE_USER')) {
+    } 
+    else if (this.authzService.hasRole('ROLE_FACULTY') && this.authzService.hasRole('ROLE_USER')) {
       componentFactory = this.cfr.resolveComponentFactory(FacultyDashboardPanel);
     }
-
+    else if (this.authzService.hasRole('ROLE_PTJ') && this.authzService.hasRole('ROLE_USER')) {
+      componentFactory = this.cfr.resolveComponentFactory(PTJDashboardPanel);
+    }
     else if (this.authzService.hasRole('ROLE_LECTURER') && this.authzService.hasRole('ROLE_USER')) {
       componentFactory = this.cfr.resolveComponentFactory(LecturerProfileCenterPage);
     }

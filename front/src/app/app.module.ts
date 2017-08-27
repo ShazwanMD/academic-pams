@@ -1,3 +1,4 @@
+import { PTJDashboardPanel } from './secure/ptj-dashboard.panel';
 import { FacultyDashboardPanel } from './secure/faculty-dashboard.panel';
 import { LecturerModuleState, INITIAL_LECTURER_PROFILE_STATE, lecturerModuleReducers, LecturerModule } from './secure/lecturerPanel/index';
 import { LecturerDashboardPanel } from './secure/lecturer-dashboard.panel';
@@ -142,6 +143,7 @@ export function applicationReducer(applicationState: any = INITIAL_APP_STATE, ac
     StudentDashboardPanel,
     LecturerDashboardPanel,
     FacultyDashboardPanel,
+    PTJDashboardPanel,
   ],
   imports: [
     appRoutes,
@@ -197,6 +199,7 @@ export function applicationReducer(applicationState: any = INITIAL_APP_STATE, ac
     StudentDashboardPanel,
     LecturerDashboardPanel,
     FacultyDashboardPanel,
+    PTJDashboardPanel,
   ],
   bootstrap: [AppComponent],
 })
