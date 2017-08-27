@@ -1,8 +1,8 @@
 <td-layout-manage-list #list>
   <md-nav-list list-items>
     <!-- class="text-upper" -->
-    <a md-list-item (click)="semesterRegister()" color="accent">
-      <md-icon>create</md-icon>
+    <a md-list-item (click)="semesterRegister()" color="accent" *ngIf="admissions?.length < 1">
+      <md-icon>create</md-icon><!--  *ngIf="admissions?.length < 1" -->
       <span>Apply Semester Registration</span>
     </a>
     <a md-list-item (click)="statusSemesterRegister()" color="accent">
