@@ -14,11 +14,9 @@
         
             <!--   <img src="http://localhost:4200/assets/img/status.gif" width="50" height="50"> -->
                <!--   <md-chip-list *ngIf="admissions?.length > 0"> -->
-              
                <md-chip-list >
                        <md-chip color="accent" >{{admissions?.length}} Approved application </md-chip>
-               </md-chip-list>
-               
+               </md-chip-list>      
           </span>           
       </a>
     <div>
@@ -268,12 +266,11 @@
 
           <!-- Admission Info -->
           
-          <td-expansion-panel label="Semester Registration Information" class="bgc-light-blue-400" >
-            <!--  <md-chip-list *ngIf="admissions?.length > 0">
-                       <md-chip color="accent">{{admissions?.length}} Approved application</md-chip>
-                       </md-chip-list> -->
+          <td-expansion-panel label="Semester Registration Information " class="bgc-light-blue-400" >
+            <!-- <md-chip-list *ngIf="admissions?.length > 0">
+                       <md-chip color="accent">{{admissions?.length}}</md-chip>
+                       </md-chip-list>  -->
             <div class="md-padding" class="bgc-light-blue-50">
-
               <md-card>
                 
                 <div toolbar-buttons layout="row" layout-align="start center" flex>
@@ -288,17 +285,25 @@
                   <td-data-table [data]="admissions" [columns]="columnAdmission" [sortBy]="summary" [sortOrder]="ASC" [sortable]="false" [multiple]="false"
                     [selectable]="false" (rowSelect)="edit.emit($event)" dense>
 
-                    <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
+                   <!--  <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column"  color="accent">
                       <div layout="row">
-                        <span flex>{{value}}</span>
+                        <span flex >{{value}}</span>
                       </div>
-                    </template>
+                    </template> -->
+               <template tdDataTableTemplate="enrollmentCount" let-value="value" let-row="row" let-column="columnAdmission.enrollmentCount" >
+                   <div layout="row" >
+                   <div *ngIf="value == 0"><font size="3" color="red"><b>0</b></font><font size="2" color="red">   *Please enroll the courses</font></div>
+                   <div *ngIf="value != 0">{{value}}</div>       
+                   </div>
+               </template>
                     <template tdDataTableTemplate="gpa" let-value="value" let-row="row" let-column="columns.gpa">
                       <div layout="row">
                         <div *ngIf="value == null">None</div>
                         <div *ngIf="value != null">{{value}}</div>
                       </div>
                     </template>
+                    
+                    
                     <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
                       <div layout="row">
                         <a md-button color="accent" class="text-upper" [routerLink]="['/secure/term/admissions', row.id, 'student-admission-detail']">
