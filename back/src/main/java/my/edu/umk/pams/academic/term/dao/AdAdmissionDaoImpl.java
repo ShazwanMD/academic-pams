@@ -103,7 +103,7 @@ public class AdAdmissionDaoImpl extends GenericDaoSupport<Long, AdAdmission> imp
         Query query = session.createQuery("select s from AdAdmission s where " +
                 "s.student = :student " +
                 "and s.metadata.state = :state " +
-                "order by s.session.code asc");
+                "order by s.session.code desc");
         query.setInteger("state", AdMetaState.ACTIVE.ordinal());
         query.setEntity("student", student);
         query.setCacheable(true);
