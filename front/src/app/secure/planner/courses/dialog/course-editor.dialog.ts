@@ -4,7 +4,7 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Course} from '../../../../shared/model/planner/course.interface';
 import {CourseActions} from '../course.action';
-import {MdDialogRef} from '@angular/material';
+import { MdDialogRef, MdSnackBar } from '@angular/material';
 import {PlannerModuleState} from '../../index';
 import {Store} from '@ngrx/store';
 import {CourseStatus} from '../../../../shared/model/planner/course-status.enum';
@@ -25,6 +25,7 @@ export class CourseEditorDialog implements OnInit {
               private formBuilder: FormBuilder,
               private actions: CourseActions,
               private store: Store<PlannerModuleState>,
+              private snackBar: MdSnackBar,
               private viewContainerRef: ViewContainerRef,
               private dialog: MdDialogRef<CourseEditorDialog>) {
   }
@@ -57,6 +58,9 @@ export class CourseEditorDialog implements OnInit {
     console.log(JSON.stringify(course));
     if (!course.id) this.store.dispatch(this.actions.saveCourse(course));
     else  this.store.dispatch(this.actions.updateCourse(course));
+    let snackBarRef = this.snackBar.open( 'New Course: ' + course.code + ' has been updated', '', { duration: 3000 } );
+    snackBarRef.afterDismissed().subscribe(() => {
+   } );
     this.dialog.close();
 
   }
