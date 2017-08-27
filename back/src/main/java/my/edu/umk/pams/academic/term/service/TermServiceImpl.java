@@ -843,6 +843,11 @@ public class TermServiceImpl implements TermService {
 	}
 
 	@Override
+	public Integer countEnrollmentApplication(AdAdmission admission) {
+		return enrollmentApplicationDao.count(admission);
+	}
+	
+	@Override
 	public String startEnrollmentApplicationTask(AdEnrollmentApplication application) {
 		// setup params for refno generation
 		HashMap<String, Object> param = new HashMap<String, Object>();

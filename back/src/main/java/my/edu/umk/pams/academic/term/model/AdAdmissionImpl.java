@@ -67,8 +67,11 @@ public class AdAdmissionImpl implements AdAdmission {
     @JoinColumn(name = "SESSION_ID", nullable = false)
     private AdAcademicSession session;
     
-    @OneToMany(targetEntity = AdEnrollmentImpl.class, mappedBy = "section", fetch = FetchType.LAZY)
+    @OneToMany(targetEntity = AdEnrollmentImpl.class, mappedBy = "admission", fetch = FetchType.LAZY)
     private List<AdEnrollment> enrollments;
+    
+    @OneToMany(targetEntity = AdEnrollmentApplicationImpl.class, mappedBy = "admission", fetch = FetchType.LAZY)
+    private List<AdEnrollmentApplication> enrollmentApplications;
 
 
     @Embedded
@@ -77,6 +80,9 @@ public class AdAdmissionImpl implements AdAdmission {
     // transient
     @Transient
     private Integer enrollmentCount = 0;
+    
+    @Transient
+    private Integer enrollmentApplicationCount = 0;
 
     public Long getId() {
         return id;
@@ -206,6 +212,16 @@ public class AdAdmissionImpl implements AdAdmission {
     public void setEnrollments(List<AdEnrollment> enrollments) {
         this.enrollments = enrollments;
     }
+    
+    @Override
+    public List<AdEnrollmentApplication> getEnrollmentApplications() {
+        return enrollmentApplications;
+    }
+
+    @Override
+    public void setEnrollmentApplications(List<AdEnrollmentApplication> enrollmentApplications) {
+        this.enrollmentApplications = enrollmentApplications;
+    }
 
     @Override
     public AdMetadata getMetadata() {
@@ -231,6 +247,16 @@ public class AdAdmissionImpl implements AdAdmission {
     @Override
     public void setEnrollmentCount(Integer enrollmentCount) {
         this.enrollmentCount = enrollmentCount;
+    }
+    
+    @Override
+    public Integer getEnrollmentApplicationCount() {
+        return enrollmentApplicationCount;
+    }
+
+    @Override
+    public void setEnrollmentApplicationCount(Integer enrollmentApplicationCount) {
+        this.enrollmentApplicationCount = enrollmentApplicationCount;
     }
 
     

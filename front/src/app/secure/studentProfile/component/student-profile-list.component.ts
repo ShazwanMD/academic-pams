@@ -117,13 +117,12 @@ export class StudentProfileListPage implements OnInit {
     private columnAdmission: any[] = [
         { name: 'academicSession.code', label: 'Session' },
         { name: 'cgpa', label: 'CGPA' },
-        { name: 'creditEarned', label: 'Credit Earned' },
-        { name: 'creditTaken', label: 'Credit Taken' },
         { name: 'gpa', label: 'GPA' },
         { name: 'ordinal', label: 'Ordinal' },
         { name: 'standing', label: 'Standing' },
         { name: 'status', label: 'Status' },
-        { name: 'enrollmentCount', label: 'Enrollment' },
+        { name: 'enrollmentCount', label: 'Approved Course' },
+        { name: 'enrollmentApplicationCount', label: 'Course Registration' },
         { name: 'action', label: '' },
 
     ];
@@ -355,7 +354,7 @@ export class StudentProfileListPage implements OnInit {
         config.viewContainerRef = this.vcf;
         config.role = 'dialog';
         config.width = '60%';
-        config.height = '40%';
+        config.height = '50%';
         config.position = { top: '0px' };
         this.creatorDialogRef = this.dialog.open(AdmissionApplicationTaskDialog, config);
         this.creatorDialogRef.componentInstance.student = this.student;

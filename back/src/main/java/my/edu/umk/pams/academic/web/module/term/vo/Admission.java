@@ -35,6 +35,7 @@ public class Admission extends MetaObject {
 
 	// transient
 	private Integer enrollmentCount;
+	private Integer enrollmentApplicationCount;
 
 	public BigDecimal getGpa() {
 		return gpa;
@@ -130,6 +131,14 @@ public class Admission extends MetaObject {
 
 	public void setEnrollmentCount(Integer enrollmentCount) {
 		this.enrollmentCount = enrollmentCount;
+	}
+	
+	public Integer getEnrollmentApplicationCount() {
+		return enrollmentApplicationCount;
+	}
+
+	public void setEnrollmentApplicationCount(Integer enrollmentApplicationCount) {
+		this.enrollmentApplicationCount = enrollmentApplicationCount;
 	}
 
 	@JsonCreator

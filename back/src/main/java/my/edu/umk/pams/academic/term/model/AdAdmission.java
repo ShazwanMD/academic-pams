@@ -88,4 +88,12 @@ public interface AdAdmission extends AdMetaObject {
     Integer getEnrollmentCount();
 
     void setEnrollmentCount(Integer enrollmentCount);
+    
+    List<AdEnrollmentApplication> getEnrollmentApplications();
+
+    void setEnrollmentApplications(List<AdEnrollmentApplication> enrollmentApplications);
+    
+    Integer getEnrollmentApplicationCount();
+
+    void setEnrollmentApplicationCount(Integer enrollmentApplicationCount);
 }

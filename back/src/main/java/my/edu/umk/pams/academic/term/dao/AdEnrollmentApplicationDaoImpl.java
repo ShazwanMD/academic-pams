@@ -303,5 +303,16 @@ public class AdEnrollmentApplicationDaoImpl extends GenericDaoSupport<Long, AdEn
         return (List<AdEnrollmentApplication>) query.list();
     }
 
+	 @Override
+	    public Integer count(AdAdmission admission) {
+	        Session session = sessionFactory.getCurrentSession();
+	        Query query = session.createQuery("select count(s) from AdEnrollmentApplication s where " +
+	                "s.admission = :admission " +
+	                "and s.metadata.state = :state ");
+	        query.setInteger("state", AdMetaState.ACTIVE.ordinal());
+	        query.setEntity("admission", admission);
+	        return ((Long) query.uniqueResult()).intValue();
+	    }
+
 
 }

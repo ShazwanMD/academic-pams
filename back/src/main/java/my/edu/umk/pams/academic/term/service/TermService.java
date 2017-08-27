@@ -290,6 +290,8 @@ public interface TermService {
     Integer countAssignedEnrollmentApplicationTasks();
 
     Integer countPooledEnrollmentApplicationTasks();
+    
+    Integer countEnrollmentApplication(AdAdmission admission);
 
     String startEnrollmentApplicationTask(AdEnrollmentApplication application);
 
@@ -406,7 +408,7 @@ public interface TermService {
     Integer countEnrollment(AdStudent student);
 
     Integer countEnrollment(AdAdmission admission);
-
+    
     boolean isAnyEnrollmentExists(AdAcademicSession academicSession, AdOffering offering, AdStudent student);
 
     boolean isEnrollmentExists(AdSection section, AdStudent student);

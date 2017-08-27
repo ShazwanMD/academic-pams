@@ -5,10 +5,10 @@
       <md-icon>create</md-icon>
       <span>Apply Semester Registration</span>
     </a>
-    <a md-list-item (click)="statusSemesterRegister()" color="accent">
+   <!--  <a md-list-item (click)="statusSemesterRegister()" color="accent">
       <md-icon>drafts</md-icon>
       <span>Semester Registration Status </span>
-    </a>
+    </a> -->
     <a md-list-item color="accent">
         <span>
         
@@ -291,6 +291,12 @@
                       </div>
                     </template> -->
                <template tdDataTableTemplate="enrollmentCount" let-value="value" let-row="row" let-column="columnAdmission.enrollmentCount" >
+                   <div layout="row" >
+                   <div *ngIf="value == 0"><font size="3" color="red"><b>0</b></font></div>
+                   <div *ngIf="value != 0">{{value}}</div>       
+                   </div>
+               </template>
+                <template tdDataTableTemplate="enrollmentApplicationCount" let-value="value" let-row="row" let-column="columnAdmission.enrollmentApplicationCount" >
                    <div layout="row" >
                    <div *ngIf="value == 0"><font size="3" color="red"><b>0</b></font><font size="2" color="red">   *Please enroll the courses</font></div>
                    <div *ngIf="value != 0">{{value}}</div>       

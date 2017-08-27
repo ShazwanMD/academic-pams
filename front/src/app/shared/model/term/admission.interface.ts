@@ -23,6 +23,7 @@ export interface Admission extends MetaObject {
 
   //transient
   enrollmentCount?: number;
+  enrollmentApplicationCount?: number;
 
 
 

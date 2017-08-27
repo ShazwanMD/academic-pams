@@ -906,6 +906,7 @@ public class ProfileController {
 		for (Admission admission : admissions) {
 			AdAdmission s = termService.findAdmissionById(admission.getId());
 			admission.setEnrollmentCount(termService.countEnrollment(s));
+			admission.setEnrollmentApplicationCount(termService.countEnrollmentApplication(s));
 			// String canonicalCode = "FSB-MASTER-MFB-MBG1"; //test dummy value
 			// section.setSectionCount(termService.countSection(canonicalCode));
 
