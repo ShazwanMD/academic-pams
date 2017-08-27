@@ -5,14 +5,14 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {Component, OnInit, ViewContainerRef} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Store} from '@ngrx/store';
-import {MdDialogRef} from '@angular/material';
+import {MdDialogRef, MdSnackBar} from '@angular/material';
 import {TermModuleState} from '../../index';
 import {AcademicSession} from '../../../../shared/model/planner/academic-session.interface';
 import {Admission} from '../../../../shared/model/term/admission.interface';
 import {AdmissionActions} from '../admission.action';
 import {AcademicStanding} from '../../../../shared/model/term/academic-standing.enum';
 import {AdmissionStatus} from '../../../../shared/model/term/admission-status.enum';
-import { AdmissionApplication } from "../../../../shared/model/term/admission-application.interface";
+import {AdmissionApplication} from "../../../../shared/model/term/admission-application.interface";
 
 @Component({
   selector: 'pams-assign-supervisor',
@@ -26,15 +26,16 @@ export class AssignSupervisorDialog implements OnInit {
   private edit: boolean = false;
   private _admission: Admission;
   private cohort: Cohort;
-  
+
 
   constructor(private formBuilder: FormBuilder,
-              private store: Store<TermModuleState>,
-              private actions: AdmissionActions,
-              private dialog: MdDialogRef<AssignSupervisorDialog>,
-              private router: Router,
-              private route: ActivatedRoute,
-              private vcf: ViewContainerRef) {
+    private store: Store<TermModuleState>,
+    private actions: AdmissionActions,
+    private snackBar: MdSnackBar,
+    private dialog: MdDialogRef<AssignSupervisorDialog>,
+    private router: Router,
+    private route: ActivatedRoute,
+    private vcf: ViewContainerRef) {
   }
 
   set admission(value: Admission) {
@@ -43,15 +44,15 @@ export class AssignSupervisorDialog implements OnInit {
   }
 
   ngOnInit(): void {
-    this.creatorForm = this.formBuilder.group( {
+    this.creatorForm = this.formBuilder.group({
       id: undefined,
       staff: ['', Validators.required],
-    /*
-      ordinal: 0,
-      cohort: <Cohort>{},  
-      academicSession: <AcademicSession>{},
-      studyCenter: <StudyCenter>{},
-      student: <Student>{},*/
+      /*
+        ordinal: 0,
+        cohort: <Cohort>{},  
+        academicSession: <AcademicSession>{},
+        studyCenter: <StudyCenter>{},
+        student: <Student>{},*/
     });
 
     if (this.edit) this.creatorForm.patchValue(this._admission);
@@ -60,9 +61,11 @@ export class AssignSupervisorDialog implements OnInit {
   save(admissionApplication: AdmissionApplication, isValid: boolean) {
     console.log('adding admission');
     console.log(JSON.stringify(admissionApplication));
-    
+
     this.store.dispatch(this.actions.updateAdmissionApplication(admissionApplication));
     this.dialog.close();
+      let snackBarRef = this.snackBar.open('New supervisor has been assign', '', {duration: 3000});
     console.log(admissionApplication);
+   
   }
 }
