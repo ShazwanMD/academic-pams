@@ -3,7 +3,7 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Offering} from '../../../../shared/model/term/offering.interface';
 import {OfferingActions} from '../offering.action';
-import {MdDialogRef} from '@angular/material';
+import {MdDialogRef, MdSnackBar} from '@angular/material';
 import {Store} from '@ngrx/store';
 import {AcademicSession} from '../../../../shared/model/planner/academic-session.interface';
 import {Course} from '../../../../shared/model/planner/course.interface';
@@ -21,12 +21,13 @@ export class OfferingUpdateDialog implements OnInit {
   private _offering: Offering;
 
   constructor(private router: Router,
-              private route: ActivatedRoute,
-              private formBuilder: FormBuilder,
-              private store: Store<TermModuleState>,
-              private viewContainerRef: ViewContainerRef,
-              private actions: OfferingActions,
-              public dialog: MdDialogRef<OfferingUpdateDialog>) {
+    private route: ActivatedRoute,
+    private formBuilder: FormBuilder,
+    private store: Store<TermModuleState>,
+    private viewContainerRef: ViewContainerRef,
+    private actions: OfferingActions,
+    private snackBar: MdSnackBar,
+    public dialog: MdDialogRef<OfferingUpdateDialog>) {
   }
 
   set offering(value: Offering) {
@@ -55,6 +56,8 @@ export class OfferingUpdateDialog implements OnInit {
     console.log(JSON.stringify(offering));
     this.store.dispatch(this.actions.updateOffering(offering));
     this.dialog.close();
+    let snackBarRef = this.snackBar.open('New offering: ' + offering.code + ' has been updated', '', {duration: 3000});
+
   }
 
   //submit update button
