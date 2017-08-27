@@ -58,6 +58,7 @@ export class AdmissionApplicationTaskDialog implements OnInit {
         this.createForm = this.formBuilder.group( {
             id: [undefined],
             //student: <Student>{},
+            ordinal:[''],
             academicSession: ['', Validators.required],
         } );
 
@@ -70,8 +71,10 @@ export class AdmissionApplicationTaskDialog implements OnInit {
 
         this._academicSession = admissionApplication.academicSession;
         admissionApplication.student = this._student;
+        //admissionApplication.ordinal = 1;
 
         console.log( 'student: ' + admissionApplication.student.identityNo );
+        console.log( 'ordinal: ' + admissionApplication.ordinal );
 
         // setup description
         admissionApplication.description = admissionApplication.student.identityNo + ' ' + admissionApplication.academicSession.code;

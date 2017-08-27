@@ -86,9 +86,11 @@ export class AcademicSessionEditorDialog implements OnInit {
     }else{ 
         this.store.dispatch(this.actions.updateAcademicSession(academicSession));
         this.dialog.close();
+
+        let snackBarRef = this.snackBar.open( 'New Academic Sessions: ' + academicSession.code + ' has been updated', '', { duration: 3000 } );
+        snackBarRef.afterDismissed().subscribe(() => {
+       } );   
    
-    
-    
+    }
   }
 }
-  }

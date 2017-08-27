@@ -1,4 +1,4 @@
-import {MdDialogRef} from '@angular/material';
+import { MdDialogRef, MdSnackBar } from '@angular/material';
 import {Store} from '@ngrx/store';
 import {ActivatedRoute, Router} from '@angular/router';
 import {FormBuilder, FormGroup} from '@angular/forms';
@@ -23,6 +23,7 @@ export class FacultyEditorDialog implements OnInit {
               private store: Store<PlannerModuleState>,
               private actions: FacultyActions,
               private router: Router,
+              private snackBar: MdSnackBar,
               private route: ActivatedRoute,
               private vcf: ViewContainerRef,
               private dialog: MdDialogRef<FacultyEditorDialog>) {
@@ -49,6 +50,9 @@ export class FacultyEditorDialog implements OnInit {
     console.log('updating faculty');
     if (!faculty.id) this.store.dispatch(this.actions.saveFaculty(faculty));
     else this.store.dispatch(this.actions.updateFaculty(faculty));
+    let snackBarRef = this.snackBar.open( 'New Faculty: ' + faculty.code + ' has been updated', '', { duration: 3000 } );
+    snackBarRef.afterDismissed().subscribe(() => {
+   } );
     this.dialog.close();
   }
 
