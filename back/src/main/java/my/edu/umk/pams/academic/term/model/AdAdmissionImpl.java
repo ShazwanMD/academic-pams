@@ -11,6 +11,7 @@ import my.edu.umk.pams.academic.planner.model.*;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
+import java.util.List;
 
 /**
  * @author PAMS
@@ -65,9 +66,17 @@ public class AdAdmissionImpl implements AdAdmission {
     @ManyToOne(targetEntity = AdAcademicSessionImpl.class)
     @JoinColumn(name = "SESSION_ID", nullable = false)
     private AdAcademicSession session;
+    
+    @OneToMany(targetEntity = AdEnrollmentImpl.class, mappedBy = "section", fetch = FetchType.LAZY)
+    private List<AdEnrollment> enrollments;
+
 
     @Embedded
     private AdMetadata metadata;
+    
+    // transient
+    @Transient
+    private Integer enrollmentCount = 0;
 
     public Long getId() {
         return id;
@@ -187,6 +196,16 @@ public class AdAdmissionImpl implements AdAdmission {
     public void setSession(AdAcademicSession session) {
         this.session = session;
     }
+    
+    @Override
+    public List<AdEnrollment> getEnrollments() {
+        return enrollments;
+    }
+
+    @Override
+    public void setEnrollments(List<AdEnrollment> enrollments) {
+        this.enrollments = enrollments;
+    }
 
     @Override
     public AdMetadata getMetadata() {
@@ -202,7 +221,19 @@ public class AdAdmissionImpl implements AdAdmission {
     public Class<?> getInterfaceClass() {
         return AdAdmission.class;
     }
+    
+    // transient
+    @Override
+    public Integer getEnrollmentCount() {
+        return enrollmentCount;
+    }
 
+    @Override
+    public void setEnrollmentCount(Integer enrollmentCount) {
+        this.enrollmentCount = enrollmentCount;
+    }
+
+    
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

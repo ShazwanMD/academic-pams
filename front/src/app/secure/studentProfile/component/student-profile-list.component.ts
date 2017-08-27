@@ -123,6 +123,7 @@ export class StudentProfileListPage implements OnInit {
         { name: 'ordinal', label: 'Ordinal' },
         { name: 'standing', label: 'Standing' },
         { name: 'status', label: 'Status' },
+        { name: 'enrollmentCount', label: 'Enrollment' },
         { name: 'action', label: '' },
 
     ];
@@ -146,6 +147,8 @@ export class StudentProfileListPage implements OnInit {
     }
 
     ngOnInit(): void {
+        
+        
         // this.route.params.subscribe((params: { identityNo: string }) => {
         //     let identityNo: string = params.identityNo;
         //     this.store.dispatch(this.profileActions.findStudentByIdentityNo(this.student.identityNo));

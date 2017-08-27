@@ -21,4 +21,9 @@ export interface Admission extends MetaObject {
   status: AdmissionStatus;
   studyCenter: StudyCenter;
 
+  //transient
+  enrollmentCount?: number;
+
+
+
 }

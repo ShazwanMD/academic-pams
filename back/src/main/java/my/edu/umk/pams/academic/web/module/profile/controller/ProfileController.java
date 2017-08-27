@@ -12,6 +12,8 @@ import my.edu.umk.pams.academic.security.service.SecurityService;
 import my.edu.umk.pams.academic.term.model.AdAdmission;
 import my.edu.umk.pams.academic.term.model.AdAdmissionApplication;
 import my.edu.umk.pams.academic.term.model.AdEnrollment;
+import my.edu.umk.pams.academic.term.model.AdOffering;
+import my.edu.umk.pams.academic.term.model.AdSection;
 import my.edu.umk.pams.academic.term.service.TermService;
 import my.edu.umk.pams.academic.web.module.identity.vo.Student;
 import my.edu.umk.pams.academic.web.module.planner.controller.PlannerTransformer;
@@ -21,6 +23,8 @@ import my.edu.umk.pams.academic.web.module.term.controller.TermTransformer;
 import my.edu.umk.pams.academic.web.module.term.vo.Admission;
 import my.edu.umk.pams.academic.web.module.term.vo.AdmissionApplication;
 import my.edu.umk.pams.academic.web.module.term.vo.Enrollment;
+import my.edu.umk.pams.academic.web.module.term.vo.Section;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -70,7 +74,7 @@ public class ProfileController {
 
 	@Autowired
 	private ProfileTransformer profileTransformer;
-	
+
 	@Autowired
 	private PlannerTransformer plannerTransformer;
 
@@ -332,7 +336,7 @@ public class ProfileController {
 		return new ResponseEntity<List<Address>>(
 				profileTransformer.toAddressVos(profileService.findAddresses(student1)), HttpStatus.OK);
 	}
-	
+
 	@RequestMapping(value = "/studentLogins/academicSessions", method = RequestMethod.GET)
 	public ResponseEntity<List<AcademicSession>> findAcademicSessionsByStudent() {
 		// Get Current User
@@ -344,17 +348,17 @@ public class ProfileController {
 			student = (AdStudent) user.getActor();
 		if (null == student)
 			throw new IllegalArgumentException("Student does not exists");
-		
+
 		String identityNo = student.getIdentityNo();
 		AdStudent student1 = profileService.findStudentByMatricNo(identityNo);
-		
+
 		List<AdAcademicSession> academicSessions = plannerService.findAcademicSessions(0, Integer.MAX_VALUE);
 		LOG.debug("academicSession:{}", academicSessions);
-		
-		return new ResponseEntity<List<AcademicSession>>(
-				plannerTransformer.toAcademicSessionVos(academicSessions),HttpStatus.OK);
+
+		return new ResponseEntity<List<AcademicSession>>(plannerTransformer.toAcademicSessionVos(academicSessions),
+				HttpStatus.OK);
 	}
-	
+
 	@RequestMapping(value = "/studentLogins/academicSessions/{code}", method = RequestMethod.GET)
 
 	public ResponseEntity<AcademicSession> findAcademicSessionByCode(@PathVariable String code) {
@@ -367,24 +371,23 @@ public class ProfileController {
 			student = (AdStudent) user.getActor();
 		if (null == student)
 			throw new IllegalArgumentException("Student does not exists");
-		
+
 		String identityNo = student.getIdentityNo();
 		AdStudent student1 = profileService.findStudentByMatricNo(identityNo);
-		
+
 		AdAcademicSession academicSession = plannerService.findAcademicSessionByCode(code);
 		LOG.debug("Academic Session Code :{}", code);
-		
+
 		AdAdmission admission = profileService.findAdmissionByAcademicSessionAndStudent(academicSession, student1);
-		LOG.debug("admission",admission.getStudent().getIdentityNo());
-		
+		LOG.debug("admission", admission.getStudent().getIdentityNo());
+
 		List<AdEnrollment> enrollments = termService.findEnrollments(academicSession, student1);
 		for (AdEnrollment enrollment : enrollments) {
-			LOG.debug("Offering:{}",enrollment.getSection().getOffering().getCode());
-			LOG.debug("Admission:{}",enrollment.getAdmission());
-			LOG.debug("Section:{}",enrollment.getSection().getCanonicalCode());
+			LOG.debug("Offering:{}", enrollment.getSection().getOffering().getCode());
+			LOG.debug("Admission:{}", enrollment.getAdmission());
+			LOG.debug("Section:{}", enrollment.getSection().getCanonicalCode());
 		}
-		
-		
+
 		return new ResponseEntity<AcademicSession>(
 				plannerTransformer.toAcademicSessionVo(plannerService.findAcademicSessionByCode(code)), HttpStatus.OK);
 	}
@@ -795,9 +798,23 @@ public class ProfileController {
 		// AdAcademicSession academicSession =
 		// plannerService.findCurrentAcademicSession();
 		List<AdAdmission> admissions = termService.findAdmissions(student);
-		List<Admission> vos = termTransformer.toAdmissionVos(admissions);
-		return new ResponseEntity<List<Admission>>(vos, HttpStatus.OK);
+		// List<Admission> vos = termTransformer.toAdmissionVos(admissions);
+		List<Admission> admissionVos = decorateAdmission(termTransformer.toAdmissionVos(admissions));
+		return new ResponseEntity<List<Admission>>(admissionVos, HttpStatus.OK);
 	}
+
+	/*
+	 * //sample to delete
+	 * 
+	 * @RequestMapping(value = "/offerings/{canonicalCode}/sections", method =
+	 * RequestMethod.GET) public ResponseEntity<List<Section>>
+	 * findSectionsByOffering(@PathVariable String canonicalCode) throws
+	 * UnsupportedEncodingException { AdOffering offering =
+	 * termService.findOfferingByCanonicalCode(canonicalCode); List<AdSection>
+	 * sections = termService.findSections(offering); List<Section> sectionVos =
+	 * decorateSection(termTransformer.toSectionVos(sections)); return new
+	 * ResponseEntity<List<Section>>(sectionVos, HttpStatus.OK); }
+	 */
 
 	@RequestMapping(value = "/students/{identityNo}/addresses", method = RequestMethod.GET)
 	public ResponseEntity<List<Address>> findAddressesByStudent(@PathVariable String identityNo) {
@@ -884,4 +901,16 @@ public class ProfileController {
 		Authentication authed = authenticationManager.authenticate(token);
 		SecurityContextHolder.getContext().setAuthentication(authed);
 	}
+
+	private List<Admission> decorateAdmission(List<Admission> admissions) {
+		for (Admission admission : admissions) {
+			AdAdmission s = termService.findAdmissionById(admission.getId());
+			admission.setEnrollmentCount(termService.countEnrollment(s));
+			// String canonicalCode = "FSB-MASTER-MFB-MBG1"; //test dummy value
+			// section.setSectionCount(termService.countSection(canonicalCode));
+
+		}
+		return admissions;
+	}
+
 }

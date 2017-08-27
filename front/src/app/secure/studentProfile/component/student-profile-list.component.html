@@ -2,22 +2,24 @@
   <md-nav-list list-items>
     <!-- class="text-upper" -->
     <a md-list-item (click)="semesterRegister()" color="accent" *ngIf="admissions?.length < 1">
-      <md-icon>create</md-icon><!--  *ngIf="admissions?.length < 1" -->
+      <md-icon>create</md-icon>
       <span>Apply Semester Registration</span>
     </a>
     <a md-list-item (click)="statusSemesterRegister()" color="accent">
       <md-icon>drafts</md-icon>
-      <span>Registration Status </span>
+      <span>Semester Registration Status </span>
     </a>
     <a md-list-item color="accent">
         <span>
         
             <!--   <img src="http://localhost:4200/assets/img/status.gif" width="50" height="50"> -->
                <!--   <md-chip-list *ngIf="admissions?.length > 0"> -->
+              
                <md-chip-list >
-                       <md-chip color="accent">{{admissions?.length}} Approved application </md-chip>
-                       </md-chip-list>
-          </span>
+                       <md-chip color="accent" >{{admissions?.length}} Approved application </md-chip>
+               </md-chip-list>
+               
+          </span>           
       </a>
     <div>
       <a md-list-item (click)="academicSessionDetail()" color="accent">
@@ -265,7 +267,8 @@
           </td-expansion-panel>
 
           <!-- Admission Info -->
-          <td-expansion-panel label="Semester Registration Information" class="bgc-light-blue-400">
+          
+          <td-expansion-panel label="Semester Registration Information" class="bgc-light-blue-400" >
             <!--  <md-chip-list *ngIf="admissions?.length > 0">
                        <md-chip color="accent">{{admissions?.length}} Approved application</md-chip>
                        </md-chip-list> -->

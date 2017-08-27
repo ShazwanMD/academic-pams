@@ -7,6 +7,7 @@ import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.planner.model.*;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 /**
  * KUMULATIVE KREDIT
@@ -79,4 +80,12 @@ public interface AdAdmission extends AdMetaObject {
     AdCohort getCohort();
 
     void setCohort(AdCohort cohort);
+    
+    List<AdEnrollment> getEnrollments();
+
+    void setEnrollments(List<AdEnrollment> enrollments);
+    
+    Integer getEnrollmentCount();
+
+    void setEnrollmentCount(Integer enrollmentCount);
 }
