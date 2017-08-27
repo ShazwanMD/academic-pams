@@ -1,6 +1,6 @@
 <h2 md-dialog-title>Guarantor</h2>
 <md-dialog-content>
-  <form [formGroup]="editorForm">
+  <form [formGroup]="editorForm" novalidate>
     <div layout="row" class="inset" flex>
       <md-input-container flex>
         <input mdInput
@@ -37,7 +37,7 @@
   </form>
 </md-dialog-content>
 <md-dialog-actions align="end">
-  <button md-raised-button color="accent" (click)="submit(editorForm.value, edit)">
+  <button md-raised-button color="accent"[disabled]="editorForm.invalid"  (click)="submit(editorForm.value, edit)">
     {{edit ? 'Update' : 'Save'}}
   </button>
 </md-dialog-actions>

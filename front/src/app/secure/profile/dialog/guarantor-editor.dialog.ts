@@ -1,9 +1,9 @@
 import {Guarantor} from '../../../shared/model/profile/guarantor.interface';
 import {Component, OnInit, ViewContainerRef} from '@angular/core';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Store} from '@ngrx/store';
-import {MdDialogRef} from '@angular/material';
+import {MdDialogRef, MdSnackBar} from '@angular/material';
 import {Student} from '../../../shared/model/identity/student.interface';
 import {ProfileModuleState} from '../index';
 import {ProfileActions} from '../profile.action';
@@ -27,6 +27,7 @@ export class GuarantorEditorDialog implements OnInit {
               private viewContainerRef: ViewContainerRef,
               private dialog: MdDialogRef<GuarantorEditorDialog>,
               private store: Store<ProfileModuleState>,
+              private snackBar: MdSnackBar,
               private actions: ProfileActions) {
   }
 
@@ -40,12 +41,23 @@ export class GuarantorEditorDialog implements OnInit {
   }
 
   ngOnInit(): void {
-    this.editorForm = this.formBuilder.group(<Guarantor>{
-      id: null,
-      name: '',
-      identityNo: '',
-      phone: '',
-      guarantorType: GuarantorType.PRIMARY,
+    this.editorForm = this.formBuilder.group({
+      id: [undefined],
+      name:['', Validators.required], 
+      identityNo: ['', Validators.required],
+      phone: ['', Validators.required],
+      guarantorType: ['', Validators.required],
+      
+      /*this.editorForm = this.formBuilder.group({
+          id: [undefined],
+          addressType: ['', Validators.required],
+          address1: ['', Validators.required],
+          address2: ['', Validators.required],
+          address3: ['', Validators.required],
+          postcode: ['', Validators.required],
+          stateCode: ['', Validators.required],
+          countryCode: ['', Validators.required],*/
+      
     });
 
     if (this.edit) this.editorForm.patchValue(this._guarantor);
@@ -58,5 +70,8 @@ export class GuarantorEditorDialog implements OnInit {
     if (isValid) this.store.dispatch(this.actions.updateGuarantor(this._student, guarantor));
     else this.store.dispatch(this.actions.addGuarantor(this._student, guarantor));
     this.dialog.close();
+    let snackBarRef = this.snackBar.open( 'New Guarantor has been saved', '', { duration: 3000 } );
+    snackBarRef.afterDismissed().subscribe(() => {
+    } );
   }
 }
