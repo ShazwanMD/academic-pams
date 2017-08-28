@@ -15,10 +15,15 @@
 
   <md-nav-list flex dense>
   
-   <md-list-item (click)="assignSupervisor()">
+  <!--  <md-list-item (click)="assignSupervisor()">
       <md-icon md-list-avatar>done_all</md-icon>
       <h4 md-line>Assign supervisor</h4>
       <p md-line>Assign supervisor to this student</p>
+    </md-list-item> -->
+     <md-list-item >
+      <md-icon md-list-avatar >done_all</md-icon>
+      <h4 md-line (click)="semesterRegister()">Create semester registration {{admission?.student?.identityNo}}</h4>
+      <p md-line>Create new semester registration </p>
     </md-list-item>
     <md-list-item (click)="updateDialog()">
       <md-icon md-list-avatar>done_all</md-icon>
