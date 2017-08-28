@@ -53,8 +53,12 @@ export class AdmissionApplicationTaskConfirmDialog implements OnInit {
     }
     
     save(){
+        try {
+            this.dialog.close();    
+        } catch (ex) {
+            
+        }
         
-        this.dialog.close();
     }
 
    
