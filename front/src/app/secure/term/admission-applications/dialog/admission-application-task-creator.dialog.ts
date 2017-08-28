@@ -54,6 +54,7 @@ export class AdmissionApplicationTaskCreatorDialog implements OnInit {
     this.createForm = this.formBuilder.group({
       id: [undefined],
       student: ['', Validators.required],
+      ordinal: ['', Validators.required],
       academicSession: ['', Validators.required],
     });
   }
@@ -65,6 +66,7 @@ export class AdmissionApplicationTaskCreatorDialog implements OnInit {
     this._student = admissionApplication.student;
     console.log('academicSession: ' + admissionApplication.academicSession.id);
     console.log('student: ' + admissionApplication.student.id);
+    console.log('ordinal: ' + admissionApplication.ordinal);
     //console.log(JSON.stringify(admissionApplication));
 
     // setup description

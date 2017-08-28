@@ -1,4 +1,4 @@
-<h2 md-dialog-title>Semester Registration Form</h2>
+<h2 md-dialog-title>Semester Registration Form </h2>
 <md-dialog-content>
   <form [formGroup]="createForm" novalidate>
     <div fxLayout fxLayout.xs="column" fxLayoutWrap fxLayoutGap="25px">
@@ -16,6 +16,19 @@
       <div class="tc-red-600"
            *ngIf="createForm.get('academicSession').invalid && createForm.get('academicSession').touched">
         Please add your academic Session!
+      </div>
+      <!--   <md-input-container flex>
+            <input mdInput #ordinal
+               placeholder="Semester"  
+               value="1" readonly flex/>
+            </md-input-container> -->
+            
+             <md-input-container fxFlex="calc(100%-25px)" mdTooltip="Please insert ordinal">
+        <input mdInput placeholder="Semester" formControlName="ordinal" type="number" />
+      </md-input-container>
+        <div class="tc-red-600"
+           *ngIf="createForm.get('ordinal').invalid && createForm.get('ordinal').touched">
+        Please insert student's semester!
       </div>
     </div>
   </form>
