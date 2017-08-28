@@ -28,15 +28,15 @@ public class GraduationApplicationRouter extends RouterServiceSupport {
     
     @Autowired
     private AccessService accessService;
-
+    
     public List<String> findRegistererCandidates(Long graduationApplicationId) {
         Validate.notNull(graduationApplicationId, "Id must not be null");
 
         String pegawai = null;
-        String kerani = null;
+        //String kerani = null;
         AdGraduationApplication application = graduationService.findGraduationApplicationById(graduationApplicationId);
         pegawai = "GRP_PGW_ADM_CPS";
-        kerani = "GRP_KRN_ADM_CPS";
+        //kerani = "GRP_KRN_ADM_CPS";
 
 //        if(accessService.checkPermission(application, identityService.findGroupByName(kerani), AdPermission.VIEW)){
 //        	  publishAccessEvent(application, identityService.findGroupByName(kerani), AdPermission.VIEW);
@@ -51,7 +51,7 @@ public class GraduationApplicationRouter extends RouterServiceSupport {
          //publishAccessEvent(application, identityService.findGroupByName(kerani), AdPermission.UPDATE);
          
   
-        return Arrays.asList(pegawai,kerani);
+        return Arrays.asList(pegawai);
     }
 
     public List<String> findVerifierCandidates(Long graduationApplicationId) {
