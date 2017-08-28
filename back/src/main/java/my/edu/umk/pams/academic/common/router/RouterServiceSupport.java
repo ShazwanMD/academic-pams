@@ -30,8 +30,9 @@ public class RouterServiceSupport implements ApplicationContextAware {
         this.context = context;
     }
 
-    protected void publishAdcessEvent(AdDocument document, AdPrincipal principal, AdPermission read) {
-        AccessEvent accessEvent = new AccessEvent(document, principal, AdPermission.VIEW);
+    protected void publishAccessEvent(AdDocument document, AdPrincipal principal, AdPermission permission) {
+        AccessEvent accessEvent = new AccessEvent(document, principal, permission);
         context.publishEvent(accessEvent);
     }
+
 }

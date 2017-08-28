@@ -84,14 +84,14 @@ public class GraduationController {
 
     @RequestMapping(value = "/graduationApplications/assignedTasks", method = RequestMethod.GET)
     public ResponseEntity<List<GraduationApplicationTask>> findAssignedGraduationApplications() {
-        dummyLogin();
+        //dummyLogin();
         List<Task> tasks = graduationService.findAssignedGraduationApplicationTasks(0, 100);
         return new ResponseEntity<List<GraduationApplicationTask>>(graduationTransformer.toGraduationApplicationTaskVos(tasks), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/graduationApplications/pooledTasks", method = RequestMethod.GET)
     public ResponseEntity<List<GraduationApplicationTask>> findPooledGraduationApplications() {
-        dummyLogin();
+        //dummyLogin();
         List<Task> tasks = graduationService.findPooledGraduationApplicationTasks(0, 100);
         return new ResponseEntity<List<GraduationApplicationTask>>(graduationTransformer.toGraduationApplicationTaskVos(tasks), HttpStatus.OK);
     }
@@ -106,7 +106,8 @@ public class GraduationController {
 
     @RequestMapping(value = "/graduationApplications/startTask", method = RequestMethod.POST)
     public void startGraduationApplicationTask(@RequestBody GraduationApplication vo) throws Exception {
-        dummyLogin();
+       // dummyLogin();
+    	
 
         AdAcademicSession academicSession = plannerService.findAcademicSessionById(vo.getAcademicSession().getId());
         AdStudent student = identityService.findStudentById(vo.getStudent().getId());
@@ -131,14 +132,14 @@ public class GraduationController {
 
     @RequestMapping(value = "/graduationApplications/claimTask", method = RequestMethod.POST)
     public void claimGraduationApplicationTask(@RequestBody GraduationApplicationTask vo) {
-        dummyLogin();
+       // dummyLogin();
         Task task = graduationService.findGraduationApplicationTaskByTaskId(vo.getTaskId());
         workflowService.claimTask(task);
     }
 
     @RequestMapping(value = "/graduationApplications/completeTask", method = RequestMethod.POST)
     public void completeGraduationApplicationTask(@RequestBody GraduationApplicationTask vo) {
-        dummyLogin();
+        //dummyLogin();
         Task task = graduationService.findGraduationApplicationTaskByTaskId(vo.getTaskId());
         workflowService.completeTask(task);
         

@@ -3,6 +3,9 @@ package my.edu.umk.pams.academic.graduation.workflow.router;
 import my.edu.umk.pams.academic.common.router.RouterServiceSupport;
 import my.edu.umk.pams.academic.graduation.model.AdGraduationApplication;
 import my.edu.umk.pams.academic.graduation.service.GraduationService;
+import my.edu.umk.pams.academic.security.integration.AdPermission;
+import my.edu.umk.pams.academic.security.service.AccessService;
+
 import org.apache.commons.lang.Validate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,18 +25,33 @@ public class GraduationApplicationRouter extends RouterServiceSupport {
 
     @Autowired
     private GraduationService graduationService;
+    
+    @Autowired
+    private AccessService accessService;
 
     public List<String> findRegistererCandidates(Long graduationApplicationId) {
         Validate.notNull(graduationApplicationId, "Id must not be null");
 
-        String candidate = null;
+        String pegawai = null;
+        String kerani = null;
         AdGraduationApplication application = graduationService.findGraduationApplicationById(graduationApplicationId);
-        candidate = "GRP_ADM";
+        pegawai = "GRP_PGW_ADM_CPS";
+        kerani = "GRP_KRN_ADM_CPS";
 
+//        if(accessService.checkPermission(application, identityService.findGroupByName(kerani), AdPermission.VIEW)){
+//        	  publishAccessEvent(application, identityService.findGroupByName(kerani), AdPermission.VIEW);
+//        }else if(accessService.checkPermission(application, identityService.findGroupByName(pegawai), AdPermission.VIEW)
+//        		&& accessService.checkPermission(application, identityService.findGroupByName(pegawai), AdPermission.UPDATE)){
+//        	
+//            publishAccessEvent(application, identityService.findGroupByName(pegawai), AdPermission.VIEW);
+//            publishAccessEvent(application, identityService.findGroupByName(pegawai), AdPermission.UPDATE);
+//        }
         // publish access event
-        // publishAccessEvent(creditNote, identityService.findGroupByName(candidate), AcPermission.VIEW);
-
-        return Arrays.asList(candidate);
+        // publishAccessEvent(application, identityService.findGroupByName(kerani), AdPermission.VIEW);
+         //publishAccessEvent(application, identityService.findGroupByName(kerani), AdPermission.UPDATE);
+         
+  
+        return Arrays.asList(pegawai,kerani);
     }
 
     public List<String> findVerifierCandidates(Long graduationApplicationId) {
@@ -41,7 +59,7 @@ public class GraduationApplicationRouter extends RouterServiceSupport {
 
         String candidate = null;
         AdGraduationApplication application = graduationService.findGraduationApplicationById(graduationApplicationId);
-        candidate = "GRP_ADM";
+        candidate = "GRP_PGW_ADM_CPS";
 
         // publish access event
         // publishAccessEvent(creditNote, identityService.findGroupByName(candidate), AcPermission.VIEW);
