@@ -77,7 +77,9 @@ export class EnrollmentApplicationTaskDialog implements OnInit {
     snackBarRef.afterDismissed().subscribe(() => {
                              
     } );
-    this.router.navigate(['/secure/term/enrollment-applications/student-enrollment-center']);
+    //this.router.navigate(['/secure/term/enrollment-applications/student-enrollment-center']);
+    
+    //location.reload();
   }
 }
 

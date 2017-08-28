@@ -1,74 +1,94 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output, ViewContainerRef} from '@angular/core';
-import {EnrollmentApplication} from '../../../../shared/model/term/enrollment-application.interface';
-import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';
-import {ActivatedRoute, Router} from '@angular/router';
-import {EnrollmentApplicationActions} from '../../enrollment-applications/enrollment-application.action';
-import {Store} from '@ngrx/store';
-import {TermModuleState} from '../../index';
-import {Admission} from '../../../../shared/model/term/admission.interface';
-import {AdmissionEnrollmentDialog} from '../dialog/admission-enrollment.dialog';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output, ViewContainerRef } from '@angular/core';
+import { EnrollmentApplication } from '../../../../shared/model/term/enrollment-application.interface';
+import { MdDialog, MdDialogConfig, MdDialogRef } from '@angular/material';
+import { ActivatedRoute, Router } from '@angular/router';
+import { EnrollmentApplicationActions } from '../../enrollment-applications/enrollment-application.action';
+import { Store } from '@ngrx/store';
+import { TermModuleState } from '../../index';
+import { Admission } from '../../../../shared/model/term/admission.interface';
+import { AdmissionEnrollmentDialog } from '../dialog/admission-enrollment.dialog';
+import { EnrollmentApplicationTaskDialog } from "../../enrollment-applications/dialog/enrollment-application-task.dialog";
 
-@Component({
-  selector: 'pams-student-admission-enrollment-application-list',
-  templateUrl: './student-admission-enrollment-application-list.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-})
+@Component( {
+    selector: 'pams-student-admission-enrollment-application-list',
+    templateUrl: './student-admission-enrollment-application-list.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+} )
 export class StudentAdmissionEnrollmentApplicationListComponent implements OnInit {
 
-  private columns: any[] = [
-    {name: 'id', label: 'Id'},
-    {name: 'referenceNo', label: 'Reference No.'},
-    {name: 'description', label: 'Description'},
-    {name: 'applicationType', label: 'Application Type'},
-    {name: 'action', label: ''},
-  ];
-  private selectedRows: EnrollmentApplication[];
-  private creatorDialogRef: MdDialogRef<AdmissionEnrollmentDialog>;
+    private creatorDialogRef2: MdDialogRef<EnrollmentApplicationTaskDialog>;
 
-  @Input() enrollmentApplication: EnrollmentApplication;
-  @Input() admission: Admission;
-  @Input() enrollmentApplications: EnrollmentApplication[];
-  @Output() view: EventEmitter<EnrollmentApplication> = new EventEmitter<EnrollmentApplication>();
+    private columns: any[] = [
+        { name: 'id', label: 'Id' },
+        { name: 'referenceNo', label: 'Reference No.' },
+        { name: 'description', label: 'Description' },
+        { name: 'applicationType', label: 'Application Type' },
+        { name: 'action', label: '' },
+    ];
+    private selectedRows: EnrollmentApplication[];
+    private creatorDialogRef: MdDialogRef<AdmissionEnrollmentDialog>;
 
-  constructor(private router: Router,
-              private route: ActivatedRoute,
-              private actions: EnrollmentApplicationActions,
-              private store: Store<TermModuleState>,
-              private vcf: ViewContainerRef,
-              private dialog: MdDialog) {
-  }
+    @Input() enrollmentApplication: EnrollmentApplication;
+    @Input() admission: Admission;
+    @Input() enrollmentApplications: EnrollmentApplication[];
+    @Output() view: EventEmitter<EnrollmentApplication> = new EventEmitter<EnrollmentApplication>();
 
-  ngOnInit(): void {
-    this.selectedRows = this.enrollmentApplications.filter((value) => value.selected);
-  }
+    constructor( private router: Router,
+        private route: ActivatedRoute,
+        private actions: EnrollmentApplicationActions,
+        private store: Store<TermModuleState>,
+        private vcf: ViewContainerRef,
+        private dialog: MdDialog ) {
+    }
 
-  filter(): void {
-  }
+    ngOnInit(): void {
+        this.selectedRows = this.enrollmentApplications.filter(( value ) => value.selected );
+    }
 
-  selectRow(enrollmentApplication: EnrollmentApplication): void {
-  }
+    filter(): void {
+    }
 
-  selectAllRows(enrollmentApplications: EnrollmentApplication[]): void {
-  }
+    selectRow( enrollmentApplication: EnrollmentApplication ): void {
+    }
 
-  showDialog(): void {
-    console.log('showDialog details');
-    let config = new MdDialogConfig();
-    config.viewContainerRef = this.vcf;
-    config.role = 'dialog';
-    config.width = '90%';
-    config.height = '90%';
-    config.position = {top: '0px'};
-    this.creatorDialogRef = this.dialog.open(AdmissionEnrollmentDialog, config);
+    selectAllRows( enrollmentApplications: EnrollmentApplication[] ): void {
+    }
 
-    this.creatorDialogRef.afterClosed().subscribe((res) => {
-      console.log('close dialog');
-      // load something here
-    });
-  }
+    showDialog(): void {
+        console.log( 'showDialog details' );
+        let config = new MdDialogConfig();
+        config.viewContainerRef = this.vcf;
+        config.role = 'dialog';
+        config.width = '90%';
+        config.height = '90%';
+        config.position = { top: '0px' };
+        this.creatorDialogRef = this.dialog.open( AdmissionEnrollmentDialog, config );
 
-  delete(admission: Admission, application: EnrollmentApplication): void {
-    this.store.dispatch(this.actions.removeEnrollmentApplication(this.admission, application));
-  }
+        this.creatorDialogRef.afterClosed().subscribe(( res ) => {
+            console.log( 'close dialog' );
+            // load something here
+        } );
+    }
+
+    delete( admission: Admission, application: EnrollmentApplication ): void {
+        this.store.dispatch( this.actions.removeEnrollmentApplication( this.admission, application ) );
+    }
+
+    //COURSE ENROLLMENT
+    courseEnroll(): void {
+        let config = new MdDialogConfig();
+        config.viewContainerRef = this.vcf;
+        config.role = 'dialog';
+        config.width = '70%';
+        config.height = '50%';
+        config.position = { top: '0px' };
+        this.creatorDialogRef2 = this.dialog.open( EnrollmentApplicationTaskDialog, config );
+        this.creatorDialogRef2.componentInstance.admission = this.admission;
+        this.creatorDialogRef2.afterClosed().subscribe(( res ) => {
+            console.log( 'close dialog' );
+
+            // load something here
+        } );
+    }
 
 }

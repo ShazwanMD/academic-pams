@@ -296,7 +296,7 @@ public class AdEnrollmentApplicationDaoImpl extends GenericDaoSupport<Long, AdEn
         Query query = session.createQuery("select s from AdEnrollmentApplication s where " +
                 "s.admission = :admission " +
                 "and s.metadata.state = :state " +
-                "order by s.id asc");
+                "order by s.id desc");
         query.setInteger("state", AdMetaState.ACTIVE.ordinal());
         query.setEntity("admission", admission);
         query.setCacheable(true);

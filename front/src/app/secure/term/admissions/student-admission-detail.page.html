@@ -6,14 +6,15 @@
     <div layout="column" layout-gt-md="row" class="inset">
       <div flex-gt-md="70">
         <pams-admission [admission]="admission$ | async"></pams-admission>
+         <pams-student-admission-enrollment-application-list
+          [admission]="admission$ | async"
+          [enrollmentApplications]="enrollmentApplications$ | async">
+        </pams-student-admission-enrollment-application-list>
         <pams-student-admission-enrollment-list
           [admission]="admission$ | async"
           [enrollments]="enrollments$ | async" (view)="viewTask($event)">
         </pams-student-admission-enrollment-list>
-        <pams-student-admission-enrollment-application-list
-          [admission]="admission$ | async"
-          [enrollmentApplications]="enrollmentApplications$ | async">
-        </pams-student-admission-enrollment-application-list>
+       
       </div>
       <div flex-gt-md="30">
         <pams-student-admission-action [admission]="admission$ | async"></pams-student-admission-action>
