@@ -1,6 +1,6 @@
 <!-- Basic Card -->
 <md-card>
-  <md-card-title>{{staff?.name}}</md-card-title>
+  <md-card-title>{{staff?.title}}. {{staff?.name}}</md-card-title>
   <md-card-subtitle>Identity No. {{staff?.identityNo}}</md-card-subtitle>
   <md-divider></md-divider>
   <md-card-content>
@@ -15,7 +15,7 @@
             </div>
             <div flex-gt-md="35">
               <b>Staff ID</b> : {{staff?.identityNo}}<br/><br/>
-              <b>Name</b> : {{staff?.name}}<br/><br/>
+              <b>Name</b> : {{staff?.title}}. {{staff?.name}}<br/><br/>
               <b>Email</b> :{{staff?.email}}<br/><br/>
               <b>Phone</b> : {{staff?.phone}}<br/><br/>
               <b>Mobile</b> : {{staff?.mobile}}
