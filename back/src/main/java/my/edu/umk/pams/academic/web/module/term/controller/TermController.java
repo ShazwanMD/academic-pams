@@ -1086,7 +1086,7 @@ public class TermController {
 
 	}
 	
-	//find gradebooksMatrixBySection 24/8/17
+	//find gradebooksMatrixBySection 28/8/17
 	@RequestMapping(value = "/sections/{canonicalCode}/gradebookMatrices", method = RequestMethod.GET)
 	public ResponseEntity<List<Gradebook>> findGradebookMatricesBySection(@PathVariable String canonicalCode) {
 		AdSection section = termService.findSectionByCanonicalCode(canonicalCode);

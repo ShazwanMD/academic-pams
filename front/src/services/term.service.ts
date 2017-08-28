@@ -405,13 +405,7 @@ export class TermService {
       .map((res: Response) => <Gradebook[]>res.json());
   }
   
-  //find gradebook-matrix by section
-  findGradebookMatricesBySection(section: Section): Observable<GradebookMatrix[]> {
-      console.log('findGradebookMatricesBySection');
-      return this._http.get(this.TERM_API + '/sections/' + section.canonicalCode + '/gradebookMatrices')
-        .map((res: Response) => <GradebookMatrix[]>res.json());
-    }
-
+ 
   //find appointments by section
   findAppointmentsBySection(section: Section): Observable<Appointment[]> {
     console.log('findAppointmentsBySection');
@@ -470,8 +464,13 @@ export class TermService {
     return this._http.get(this.TERM_API + '/offerings/' + offering.canonicalCode + '/gradebookMatrices')
       .map((res: Response) => <GradebookMatrix[]>res.json());
   }
-
-   
+    
+   findGradebookMatricesBySection(section: Section): Observable<GradebookMatrix[]> {
+    console.log('findGradebookMatricesBySection');
+    return this._http.get(this.TERM_API + '/sections/' + section.canonicalCode + '/gradebookMatrices')
+      .map((res: Response) => <GradebookMatrix[]>res.json());
+  }
+ 
   saveOffering(program: Program, course: Course, offering: Offering): Observable<String> {
     console.log('saveOffering');
     console.log('offering:' + offering.canonicalCode);

@@ -32,10 +32,6 @@ import { GradebookMatrix } from "../../../../shared/model/term/gradebook-matrix.
 } )
 export class SectionGradebookListComponent implements AfterViewInit, OnChanges {
 
-   
-    
-   
-
     private creatorDialogRef: MdDialogRef<EnrollmentEditorDialog>;
     private selectedRows: Gradebook[];
     
