@@ -105,8 +105,11 @@ export class AdmissionApplicationCreatorDialog implements OnInit {
                     console.log( 'The snack-bar was dismissed' );
                     console.log( 'Accumulated object:', val )
                     val['status'] = '';
-                    this.dialog.closeAll();
-                    this.router.navigate(['/secure']);
+                    try{
+                        this.dialog.closeAll(); 
+                        
+                    } catch(ex){}  
+                    //this.router.navigate(['/secure']);
                 } );
 
             } else {
@@ -124,9 +127,12 @@ export class AdmissionApplicationCreatorDialog implements OnInit {
                     this.creatorDialogRefConfirm.componentInstance.admission = this._admission;
                     this.creatorDialogRefConfirm.afterClosed().subscribe((res) => {
                         console.log('close dialog');
-                        this.dialog.closeAll();
+                        try{
+                            this.dialog.closeAll(); 
+                            
+                        } catch(ex){}  
                         //router navigate to my profile
-                        this.router.navigate(['/secure']);
+                        //this.router.navigate(['/secure']);
                         
                     });
                 }

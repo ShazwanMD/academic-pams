@@ -6,6 +6,7 @@ import {Store} from '@ngrx/store';
 import {TermModuleState} from '../../index';
 import {AdmissionCreateTaskCreatorDialog} from '../dialog/admission-create-task-creator.dialog';
 import { AssignSupervisorDialog } from "../dialog/assign-supervisor.dialog";
+import { AdmissionApplicationCreatorDialog } from "../../admission-applications/dialog/admission-application-creator.dialog";
 
 @Component({
   selector: 'pams-admission-action',
@@ -16,6 +17,7 @@ export class AdmissionActionComponent {
 
   private editorDialogRef: MdDialogRef<AdmissionCreateTaskCreatorDialog>;
   private editorDialogRef2: MdDialogRef<AssignSupervisorDialog>;
+  private creatorDialogRef: MdDialogRef<AdmissionApplicationCreatorDialog>;
 
   @Input() admission: Admission;
 
@@ -64,5 +66,22 @@ export class AdmissionActionComponent {
 
       });
     }
+  
+//SEMESTER REGISTRATION
+  semesterRegister(): void {
+      console.log('showDialog');
+      let config = new MdDialogConfig();
+      config.viewContainerRef = this.vcf;
+      config.role = 'dialog';
+      config.width = '60%';
+      config.height = '40%';
+      config.position = { top: '0px' };
+      this.creatorDialogRef = this.dialog.open(AdmissionApplicationCreatorDialog, config);
+      this.creatorDialogRef.componentInstance.admission = this.admission;
+      this.creatorDialogRef.afterClosed().subscribe((res) => {
+          console.log('close dialog');
+          // load something here
+      });
+  }
 
 }

@@ -92,7 +92,10 @@ export class AdmissionApplicationTaskDialog implements OnInit {
                     console.log( 'The snack-bar was dismissed' );
                     console.log( 'Accumulated object:', val )
                     val['status'] = '';
-                    this.dialog.closeAll();
+                    try{
+                        this.dialog.closeAll(); 
+                        
+                    } catch(ex){}                   
                 } );
 
             } else {
@@ -110,7 +113,10 @@ export class AdmissionApplicationTaskDialog implements OnInit {
                     this.creatorDialogRefConfirm.componentInstance.student = this._student;
                     this.creatorDialogRefConfirm.afterClosed().subscribe((res) => {
                         console.log('close dialog');
-                        this.dialog.closeAll();
+                        try{
+                            this.dialog.closeAll(); 
+                            
+                        } catch(ex){}     
                         // load something here
                     });
                 }
