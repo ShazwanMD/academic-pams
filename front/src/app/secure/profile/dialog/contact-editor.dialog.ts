@@ -1,8 +1,8 @@
 import {Component, OnInit, ViewContainerRef} from '@angular/core';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Store} from '@ngrx/store';
-import {MdDialogRef} from '@angular/material';
+import {MdDialogRef, MdSnackBar} from '@angular/material';
 import {Contact} from '../../../shared/model/profile/contact.interface';
 import {Student} from '../../../shared/model/identity/student.interface';
 import {ProfileModuleState} from '../index';
@@ -27,6 +27,7 @@ export class ContactEditorDialog implements OnInit {
               private viewContainerRef: ViewContainerRef,
               private dialog: MdDialogRef<ContactEditorDialog>,
               private store: Store<ProfileModuleState>,
+              private snackBar: MdSnackBar,
               private actions: ProfileActions) {
   }
 
@@ -40,12 +41,12 @@ export class ContactEditorDialog implements OnInit {
   }
 
   ngOnInit(): void {
-    this.editorForm = this.formBuilder.group(<Contact>{
-      id: null,
-      name: '',
-      identityNo: '',
-      phone: '',
-      contactType: ContactType.FATHER,
+    this.editorForm = this.formBuilder.group({
+      id: [undefined],
+      name: ['', Validators.required],
+      identityNo: ['', Validators.required],
+      phone: ['', Validators.required],
+      contactType:['', Validators.required],
     });
 
     if (this.edit) this.editorForm.patchValue(this._contact);
@@ -59,5 +60,8 @@ export class ContactEditorDialog implements OnInit {
     if (isValid) this.store.dispatch(this.actions.updateContact(this._student, contact));
     else this.store.dispatch(this.actions.addContact(this._student, contact));
     this.dialog.close();
+    let snackBarRef = this.snackBar.open( 'New Contact has been saved', '', { duration: 3000 } );
+    snackBarRef.afterDismissed().subscribe(() => {
+    } );
   }
 }

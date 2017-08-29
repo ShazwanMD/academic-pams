@@ -1,9 +1,9 @@
 import {Guardian} from '../../../shared/model/profile/guardian.interface';
 import {Component, OnInit, ViewContainerRef} from '@angular/core';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Store} from '@ngrx/store';
-import {MdDialogRef} from '@angular/material';
+import {MdDialogRef, MdSnackBar} from '@angular/material';
 import {Student} from '../../../shared/model/identity/student.interface';
 import {ProfileModuleState} from '../index';
 import {ProfileActions} from '../profile.action';
@@ -27,6 +27,7 @@ export class GuardianEditorDialog implements OnInit {
               private viewContainerRef: ViewContainerRef,
               private dialog: MdDialogRef<GuardianEditorDialog>,
               private store: Store<ProfileModuleState>,
+              private snackBar: MdSnackBar,
               private actions: ProfileActions) {
   }
 
@@ -40,12 +41,13 @@ export class GuardianEditorDialog implements OnInit {
   }
 
   ngOnInit(): void {
-    this.editorForm = this.formBuilder.group(<Guardian>{
-      id: null,
-      name: '',
-      identityNo: '',
-      phone: '',
-      guardianType: GuardianType.GUARDIAN,
+    this.editorForm = this.formBuilder.group({
+      id: [undefined],
+      name: ['', Validators.required],
+      identityNo: ['', Validators.required],
+      phone: ['', Validators.required],
+      guardianType: ['', Validators.required],
+      
     });
 
     if (this.edit) this.editorForm.patchValue(this._guardian);
@@ -59,5 +61,8 @@ export class GuardianEditorDialog implements OnInit {
     if (isValid) this.store.dispatch(this.actions.updateGuardian(this._student, guardian));
     else this.store.dispatch(this.actions.addGuardian(this._student, guardian));
     this.dialog.close();
+    let snackBarRef = this.snackBar.open( 'New Guardian has been saved', '', { duration: 3000 } );
+    snackBarRef.afterDismissed().subscribe(() => {
+    } );
   }
 }
