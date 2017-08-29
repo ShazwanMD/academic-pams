@@ -65,7 +65,7 @@ export class CourseCreatorDialog implements OnInit {
         this.dialog.close();
         console.log( course );
 
-       let snackBarRef = this.snackBar.open( 'New Courses: ' + course.code + ' has been inserted', '', { duration: 3000 } );
+       let snackBarRef = this.snackBar.open( 'New Courses: ' + course.code + ' has been saved', '', { duration: 3000 } );
        snackBarRef.afterDismissed().subscribe(() => {
        } );
     }
