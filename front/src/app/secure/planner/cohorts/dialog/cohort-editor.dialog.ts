@@ -65,7 +65,7 @@ export class CohortEditorDialog implements OnInit {
         this.dialog.close();
         console.log( cohort );
 
-        let snackBarRef = this.snackBar.open( 'New Cohorts: ' + cohort.code + ' has been inserted', '', { duration: 3000 } );
+        let snackBarRef = this.snackBar.open( 'New Cohorts: ' + cohort.code + ' has been saved', '', { duration: 3000 } );
         snackBarRef.afterDismissed().subscribe(() => {
             
          } );
