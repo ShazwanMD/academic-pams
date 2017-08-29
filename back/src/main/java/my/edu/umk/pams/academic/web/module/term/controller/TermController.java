@@ -472,10 +472,17 @@ public class TermController {
 	public ResponseEntity<String> addEnrollmentApplicationItem(@PathVariable String referenceNo,
 			@RequestBody EnrollmentApplicationItem vo) {
 
+		//AdEnrollmentApplication application = termService.findEnrollmentApplicationById(vo.getApplication().getId());
+		AdEnrollmentApplication application = termService.findEnrollmentApplicationByReferenceNo(referenceNo);
 		AdSection section = termService.findSectionById(vo.getSection().getId());
-		if (isEnrollmentApplicationItemExists(section)) {
+		
+		System.out.println("section" + section.getCanonicalCode());
+		System.out.println("application" + application.getId());
+		
+		if (isEnrollmentApplicationItemExists(application, section)) {
 
-			System.out.println("Duplicate items" + vo.getSection().getCanonicalCode());
+			System.out.println("Duplicate items" + section.getCanonicalCode());
+			System.out.println("Duplicate items" + application.getReferenceNo());
 			return new ResponseEntity<String>("Duplicate", HttpStatus.OK);
 		} else {
 
@@ -862,9 +869,9 @@ public class TermController {
 	}
 
 	// isEnrollmentApplicationItemExists
-	private boolean isEnrollmentApplicationItemExists(AdSection section) {
-		System.out.println(termService.isEnrollmentApplicationItemExists(section));
-		return termService.isEnrollmentApplicationItemExists(section);
+	private boolean isEnrollmentApplicationItemExists(AdEnrollmentApplication application, AdSection section) {
+		System.out.println(termService.isEnrollmentApplicationItemExists(application, section));
+		return termService.isEnrollmentApplicationItemExists(application, section);
 	}
 
 	// countAdmissionApplication

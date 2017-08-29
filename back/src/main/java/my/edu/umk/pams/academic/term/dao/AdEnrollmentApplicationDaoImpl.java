@@ -316,11 +316,13 @@ public class AdEnrollmentApplicationDaoImpl extends GenericDaoSupport<Long, AdEn
 
 		
 	@Override
-    public boolean isExists(AdSection section) {
+    public boolean isExists(AdEnrollmentApplication application, AdSection section) {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select count(*) from AdEnrollmentApplicationItem s where " +
                 "s.section = :section " +
+                "and s.application = :application " +
                 "and s.metadata.state = :state ");
+        query.setEntity("application", application);
         query.setEntity("section", section);
         query.setInteger("state", AdMetaState.ACTIVE.ordinal());
         return 0 < ((Long) query.uniqueResult()).intValue();

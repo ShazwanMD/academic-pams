@@ -26,7 +26,12 @@ export function enrollmentApplicationReducer( state = initialState, action: Acti
         case EnrollmentApplicationActions.FIND_ENROLLMENT_APPLICATION_BY_REFERENCE_NO_SUCCESS: {
             return action.payload;
         }
+        //student
         case EnrollmentApplicationActions.START_ENROLLMENT_APPLICATION_TASK_SUCCESS: {
+            return action.payload;
+        }
+        //administrator
+        case EnrollmentApplicationActions.START_ADMIN_ENROLLMENT_APPLICATION_TASK_SUCCESS: {
             return action.payload;
         }
         case EnrollmentApplicationActions.ADD_STUDENT_ENROLLMENT_APPLICATION_ITEM_SUCCESS: {

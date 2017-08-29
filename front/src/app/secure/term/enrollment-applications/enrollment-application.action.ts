@@ -133,6 +133,25 @@ export class EnrollmentApplicationActions {
       payload: task
     };
   }
+  
+  //admin start enrollment application task
+  static START_ADMIN_ENROLLMENT_APPLICATION_TASK = '[EnrollmentApplication] Start Admin EnrollmentApplication Task';
+
+  startAdminEnrollmentApplicationTask(application): Action {
+    return {
+      type: EnrollmentApplicationActions.START_ADMIN_ENROLLMENT_APPLICATION_TASK,
+      payload: application
+    };
+  }
+
+  static START_ADMIN_ENROLLMENT_APPLICATION_TASK_SUCCESS = '[EnrollmentApplication] Start EnrollmentApplication Task Success';
+
+  startAdminEnrollmentApplicationTaskSuccess(task): Action {
+    return {
+      type: EnrollmentApplicationActions.START_ADMIN_ENROLLMENT_APPLICATION_TASK_SUCCESS,
+      payload: task
+    };
+  }
 
   static COMPLETE_ENROLLMENT_APPLICATION_TASK = '[EnrollmentApplication] Complete EnrollmentApplication Task';
 

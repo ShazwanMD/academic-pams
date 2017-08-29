@@ -997,8 +997,8 @@ public class TermServiceImpl implements TermService {
 	
 	//isExists
 	@Override
-	public boolean isEnrollmentApplicationItemExists(AdSection section) {
-		return enrollmentApplicationDao.isExists(section);
+	public boolean isEnrollmentApplicationItemExists(AdEnrollmentApplication application, AdSection section) {
+		return enrollmentApplicationDao.isExists(application, section);
 	}
 
 	// ====================================================================================================

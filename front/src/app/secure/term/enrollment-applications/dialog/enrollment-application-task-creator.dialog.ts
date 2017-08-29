@@ -57,7 +57,7 @@ export class EnrollmentApplicationTaskCreatorDialog implements OnInit {
     console.log('admission: ' + enrollmentApplication.admission.id);
     console.log('academicSession: ' + enrollmentApplication.academicSession.id);
     console.log(JSON.stringify(enrollmentApplication));
-    this.store.dispatch(this.actions.startEnrollmentApplicationTask(enrollmentApplication));
+    this.store.dispatch(this.actions.startAdminEnrollmentApplicationTask(enrollmentApplication));
     this.dialog.close();
 
      let snackBarRef = this.snackBar.open( 'New Enrollment Application : ' + enrollmentApplication.admission.student.name + ' has been inserted', '', { duration: 3000 } );

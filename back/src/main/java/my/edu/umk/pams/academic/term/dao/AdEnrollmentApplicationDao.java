@@ -74,7 +74,7 @@ public interface AdEnrollmentApplicationDao extends GenericDao<Long, AdEnrollmen
     
     Integer count(AdAdmission admission);
     
-    boolean isExists(AdSection section);
+    boolean isExists(AdEnrollmentApplication application, AdSection section);
 
 
     // ====================================================================================================
