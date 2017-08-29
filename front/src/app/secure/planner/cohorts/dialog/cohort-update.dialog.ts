@@ -1,3 +1,4 @@
+import {MdSnackBar} from '@angular/material/snack-bar';
 import {Program} from '../../../../shared/model/planner/program.interface';
 import {Component, OnInit, ViewContainerRef} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
@@ -27,6 +28,7 @@ export class CohortUpdateDialog implements OnInit {
               private route: ActivatedRoute,
               private formBuilder: FormBuilder,
               private actions: CohortActions,
+              private snackBar: MdSnackBar,
               private store: Store<PlannerModuleState>,
               private viewContainerRef: ViewContainerRef,
               private dialog: MdDialogRef<CohortUpdateDialog>) {
@@ -69,6 +71,11 @@ export class CohortUpdateDialog implements OnInit {
     if ( !cohort.id ) this.store.dispatch( this.actions.saveCohort( this._program, this._course, cohort ) );
     else this.store.dispatch(this.actions.updateCohort(cohort));
     this.dialog.close();
+
+    let snackBarRef = this.snackBar.open( 'New Cohorts: ' + cohort.code + ' has been updated', '', { duration: 3000 } );
+    snackBarRef.afterDismissed().subscribe(() => {
+        
+     } );
 
   }
 }
