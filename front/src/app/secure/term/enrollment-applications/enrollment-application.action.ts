@@ -303,6 +303,7 @@ export class EnrollmentApplicationActions {
   static ADD_ENROLLMENT_APPLICATION_ITEM = '[EnrollmentApplication] Add EnrollmentApplication Item';
 
   addEnrollmentApplicationItem(application, item): Action {
+      console.log("addEnrollmentApplicationItem" , application, item );
     return {
       type: EnrollmentApplicationActions.ADD_ENROLLMENT_APPLICATION_ITEM,
       payload: {application: application, item: item}
@@ -314,6 +315,25 @@ export class EnrollmentApplicationActions {
   addEnrollmentApplicationItemSuccess(message): Action {
     return {
       type: EnrollmentApplicationActions.ADD_ENROLLMENT_APPLICATION_ITEM_SUCCESS,
+      payload: message
+    };
+  }
+  
+  //addStudentEnrollmentApplicationItem 
+  static ADD_STUDENT_ENROLLMENT_APPLICATION_ITEM = '[EnrollmentApplication] Add Student EnrollmentApplication Item';
+  addStudentEnrollmentApplicationItem(application, item): Action {
+      console.log("addStudentEnrollmentApplicationItem" , application, item );
+    return {
+      type: EnrollmentApplicationActions.ADD_STUDENT_ENROLLMENT_APPLICATION_ITEM,
+      payload: {application: application, item: item}
+    };
+  }
+
+  static ADD_STUDENT_ENROLLMENT_APPLICATION_ITEM_SUCCESS = '[EnrollmentApplication] Add Student EnrollmentApplication Item Success';
+  addStudentEnrollmentApplicationItemSuccess(message): Action {
+      console.log("addStudentEnrollmentApplicationItemSuccess");
+    return {
+      type: EnrollmentApplicationActions.ADD_STUDENT_ENROLLMENT_APPLICATION_ITEM_SUCCESS,
       payload: message
     };
   }

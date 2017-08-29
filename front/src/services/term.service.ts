@@ -260,6 +260,12 @@ export class TermService {
       + '/enrollmentApplicationItems', JSON.stringify(item))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
+  
+  //add student enrollment application items
+  addStudentEnrollmentApplicationItem(enrollmentApplication: EnrollmentApplication, item: EnrollmentApplicationItem): Observable<String> {
+      return this._http.post(this.TERM_API + '/enrollmentApplications/' + enrollmentApplication.referenceNo + '/enrollmentApplicationItems', JSON.stringify(item))
+        .flatMap((res: Response) => Observable.of(res.text()));
+    }
 
   updateEnrollmentApplicationItem(application: EnrollmentApplication, item: EnrollmentApplicationItem): Observable<String> {
     console.log(item);

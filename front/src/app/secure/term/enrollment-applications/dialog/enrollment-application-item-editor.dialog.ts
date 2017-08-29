@@ -52,8 +52,8 @@ export class EnrollmentApplicationItemEditorDialog implements OnInit {
 
   save(item: EnrollmentApplicationItem, isValid: boolean) {
     console.log('enrollmentApplicationItem', item);
-    console.log('enrollmentApplication', this._enrollmentApplication);
-    this.store.dispatch(this.actions.addEnrollmentApplicationItem(this._enrollmentApplication, item));
+    console.log('save student enrollmentApplication', this._enrollmentApplication);
+    this.store.dispatch(this.actions.addStudentEnrollmentApplicationItem(this._enrollmentApplication, item));
     this.dialog.close();
   }
 }

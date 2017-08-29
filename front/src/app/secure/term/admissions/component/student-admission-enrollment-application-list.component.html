@@ -1,12 +1,11 @@
 <md-card>
   <div toolbar-buttons layout="row" layout-align="start center" flex>
-    <md-card-title>Course Enrollment Review
+    <md-card-title>Course Enrollments
     </md-card-title>
     <md-chip-list *ngIf="enrollmentApplications?.length > 0">
       <md-chip color="accent">{{enrollmentApplications?.length}}</md-chip>
     </md-chip-list>
     <span flex></span>
-
       <button md-button class="md-icon-button" mdTooltip="Add new enrollment" (click)="courseEnroll()" ><!-- [routerLink]="['/secure/term/enrollment-applications/student-enrollment-center']" -->
       <md-icon class="md-24 tc-grey-300" [ngClass]="{'tc-grey-700': selectedRows.length === 0}">add</md-icon>
     </button>
@@ -31,15 +30,21 @@
         </div>
       </template>
       <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
-        <div layout="row">
+       <!--  <div layout="row">
           <button md-icon-button [md-menu-trigger-for]="menu1" mdTooltip="Select enrollment application actions">
             <md-icon>more_vert</md-icon>
           </button>
           <md-menu x-position="before" #menu1="mdMenu">
             <button md-menu-item [routerLink]="['/secure/term/enrollment-applications', row['referenceNo'], 'student-enrollment-application-center']">Choose the courses to register
-            </button><!-- [routerLink]="['/secure/term/enrollment-applications', row['referenceNo']]" -->
+            </button>[routerLink]="['/secure/term/enrollment-applications', row['referenceNo']]"
           </md-menu>
-        </div>
+        </div> -->  
+    <div layout="row">
+      <a md-button color="accent" class="text-upper" [routerLink]="['/secure/term/enrollment-applications', row['referenceNo'], 'student-enrollment-application-center']" mdTooltip="Register the courses">
+        <span>Register</span>
+      </a>
+    </div>
+ 
       </template>
     </td-data-table>
   </md-card-content>

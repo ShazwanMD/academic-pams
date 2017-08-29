@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewContainerRef} from '@angular/core';
+import {Component, OnInit,Input, ViewContainerRef} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Store} from '@ngrx/store';
 import {EnrollmentApplicationTask} from '../../../shared/model/term/enrollment-application-task.interface';
@@ -31,6 +31,8 @@ export class StudentEnrollmentApplicationCenterPage implements OnInit {
   private pooledEnrollmentApplicationTasks$: Observable<EnrollmentApplicationTask>;
   private archivedEnrollmentApplications$: Observable<EnrollmentApplication>;
 
+  @Input() enrollmentApplication: EnrollmentApplication;
+  
   constructor(private router: Router,
               private route: ActivatedRoute,
               private vcf: ViewContainerRef,
@@ -85,6 +87,7 @@ export class StudentEnrollmentApplicationCenterPage implements OnInit {
       this.route.params.subscribe((params: { referenceNo: string }) => {
         let referenceNo: string = params.referenceNo;
         this.store.dispatch(this.actions.findEnrollmentApplicationByReferenceNo(referenceNo));
+        //this.store.dispatch( this.actions.findEnrollmentApplicationItems(this.enrollmentApplication) );
       });
     }
 }
