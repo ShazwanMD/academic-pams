@@ -61,7 +61,7 @@ export class AcademicYearCreatorDialog implements OnInit {
         }
         this.dialog.close();
     
-        let snackBarRef = this.snackBar.open( 'New Academic Years: ' + academicYear.code + ' has been inserted', '', { duration: 3000 } );
+        let snackBarRef = this.snackBar.open( 'New Academic Years: ' + academicYear.code + ' has been saved', '', { duration: 3000 } );
         snackBarRef.afterDismissed().subscribe(() => {
        } );
     }
