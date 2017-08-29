@@ -26,27 +26,30 @@ public class AdmissionApplicationRouter extends RouterServiceSupport {
     public List<String> findRegistererCandidates(Long admissionApplicationId) {
         Validate.notNull(admissionApplicationId, "Id must not be null");
 
-        String candidate = null;
+        String root = null;
+        String MGSEB = null;
         AdAdmissionApplication admissionApplication = termService.findAdmissionApplicationById(admissionApplicationId);
-        candidate = "GRP_ADM";
+        root = "GRP_ADM";
+        MGSEB = "GRP_PGW_ADM_MGSEB";
 
         // publish access event
         // publishAccessEvent(admissionApplication, identityService.findGroupByName(candidate), AcPermission.VIEW);
 
-        return Arrays.asList(candidate);
-    }
+        return Arrays.asList(root,MGSEB);
+    }	
 
     public List<String> findVerifierCandidates(Long admissionApplicationId) {
         Validate.notNull(admissionApplicationId, "Id must not be null");
 
-        String candidate = null;
-
+        String root = null;
+        String MGSEB = null;
         AdAdmissionApplication admissionApplication = termService.findAdmissionApplicationById(admissionApplicationId);
-        candidate = "GRP_ADM";
-
+        root = "GRP_ADM";
+        MGSEB = "GRP_PGW_ADM_MGSEB";
+        
         // publish access event
         // publishAccessEvent(admissionApplication, identityService.findGroupByName(candidate), AcPermission.VIEW);
 
-        return Arrays.asList(candidate);
+        return Arrays.asList(root,MGSEB);
     }
 }
