@@ -334,11 +334,12 @@ export class EnrollmentApplicationActions {
       console.log("addStudentEnrollmentApplicationItemSuccess");
     return {
       type: EnrollmentApplicationActions.ADD_STUDENT_ENROLLMENT_APPLICATION_ITEM_SUCCESS,
-      payload: message
+      //payload: message
+      payload: {status: message}
     };
   }
 
-
+ //administrator: delete items
   static DELETE_ENROLLMENT_APPLICATION_ITEM = '[EnrollmentApplication] Delete EnrollmentApplication Item';
 
   deleteEnrollmentApplicationItem(enrollmentApplication, item): Action {
@@ -353,6 +354,25 @@ export class EnrollmentApplicationActions {
   deleteEnrollmentApplicationItemSuccess(message): Action {
     return {
       type: EnrollmentApplicationActions.DELETE_ENROLLMENT_APPLICATION_ITEM_SUCCESS,
+      payload: message
+    };
+  }
+  
+  //student: delete items
+  static DELETE_STUDENT_ENROLLMENT_APPLICATION_ITEM = '[EnrollmentApplication] Delete Student EnrollmentApplication Item';
+
+  deleteStudentEnrollmentApplicationItem(enrollmentApplication, item): Action {
+    return {
+      type: EnrollmentApplicationActions.DELETE_STUDENT_ENROLLMENT_APPLICATION_ITEM,
+      payload: {application: enrollmentApplication, item: item}
+    };
+  }
+
+  static DELETE_STUDENT_ENROLLMENT_APPLICATION_ITEM_SUCCESS = '[EnrollmentApplication] Delete Student EnrollmentApplication Item Success';
+
+  deleteStudentEnrollmentApplicationItemSuccess(message): Action {
+    return {
+      type: EnrollmentApplicationActions.DELETE_STUDENT_ENROLLMENT_APPLICATION_ITEM_SUCCESS,
       payload: message
     };
   }

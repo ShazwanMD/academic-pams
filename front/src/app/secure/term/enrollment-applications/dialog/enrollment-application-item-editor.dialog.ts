@@ -7,8 +7,10 @@ import {EnrollmentApplicationAction} from '../../../../shared/model/term/enrollm
 import {TermModuleState} from '../../index';
 import {EnrollmentApplicationActions} from '../enrollment-application.action';
 import {Store} from '@ngrx/store';
-import {MdDialogRef} from '@angular/material';
+import {MdDialogRef, MdSnackBar} from '@angular/material';
 import {EnrollmentApplication} from '../../../../shared/model/term/enrollment-application.interface';
+import { Observable } from "rxjs/Observable";
+import { AdmissionApplicationConfirmDialog } from "../../admission-applications/dialog/admission-application-confirm.dialog";
 
 @Component({
   selector: 'pams-enrollment-application-item-editor',
@@ -17,6 +19,9 @@ import {EnrollmentApplication} from '../../../../shared/model/term/enrollment-ap
 
 export class EnrollmentApplicationItemEditorDialog implements OnInit {
 
+  private ENROLLMENT_APPLICATION_ITEM: string[] = 'termModuleState.enrollmentApplicationItem'.split( '.' );
+  private enrollmentApplicationItem$: Observable<EnrollmentApplicationItem[]>;
+    
   private editForm: FormGroup;
   private _enrollmentApplicationItem: EnrollmentApplicationItem;
   private _enrollmentApplication: EnrollmentApplication;
@@ -24,11 +29,14 @@ export class EnrollmentApplicationItemEditorDialog implements OnInit {
 
   constructor(private router: Router,
               private route: ActivatedRoute,
+              private snackBar: MdSnackBar,
               private formBuilder: FormBuilder,
               private viewContainerRef: ViewContainerRef,
               private store: Store<TermModuleState>,
               private actions: EnrollmentApplicationActions,
               private dialog: MdDialogRef<EnrollmentApplicationItemEditorDialog>) {
+      
+      this.enrollmentApplicationItem$ = this.store.select( ...this.ENROLLMENT_APPLICATION_ITEM );
 
   }
 
@@ -51,7 +59,7 @@ export class EnrollmentApplicationItemEditorDialog implements OnInit {
   }
 
   save(item: EnrollmentApplicationItem, isValid: boolean) {
-    console.log('enrollmentApplicationItem', item);
+    
     console.log('this._enrollmentApplicationItem', this._enrollmentApplicationItem);
     console.log('save student enrollmentApplication', this._enrollmentApplication);
     this.store.dispatch(this.actions.addStudentEnrollmentApplicationItem(this._enrollmentApplication, item));
@@ -59,19 +67,19 @@ export class EnrollmentApplicationItemEditorDialog implements OnInit {
     
      
     //alert by snackbar if duplicate
-    /* console.log( "Test subscribe:", this.enrollmentApplicationItem$.subscribe( val => { val['status'] } ) );
-      this.admissionApplication$.subscribe( val => console.log( 'Accumulated object display:', val['status'] ) );
+    console.log( "Test subscribe:", this.enrollmentApplicationItem$.subscribe( val => { val['status'] } ) );
+    this.enrollmentApplicationItem$.subscribe( val => console.log( 'Accumulated object display:', val['status'] ) );
 
-    this.admissionApplication$.subscribe( val => {
+    this.enrollmentApplicationItem$.subscribe( val => {
         if ( val['status'] == 'Duplicate' ) {
 
-            let snackBarRef = this.snackBar.open( 'Duplicate data: ' + admissionApplication.student.identityNo + ' Application has been submitted', '', { duration: 5000 } );
+            let snackBarRef = this.snackBar.open( 'Duplicate data', '', { duration: 5000 } );
             snackBarRef.afterDismissed().subscribe(() => {
                 console.log( 'The snack-bar was dismissed' );
                 console.log( 'Accumulated object:', val )
                 val['status'] = '';
                 try{
-                    this.dialog.closeAll(); 
+                    this.dialog.close(); 
                     
                 } catch(ex){}  
                 //this.router.navigate(['/secure']);
@@ -81,30 +89,23 @@ export class EnrollmentApplicationItemEditorDialog implements OnInit {
             if ( val['status'] == 'success' ) {
                              
                 //open dialog to confirm registration
-                console.log('showDialog');
-                let config = new MdDialogConfig();
-                config.viewContainerRef = this.vcf;
-                config.role = 'dialog';
-                config.width = '60%';
-                config.height = '50%';
-                config.position = { top: '0px' };
-                this.creatorDialogRefConfirm = this.dialog.open(AdmissionApplicationConfirmDialog, config);
-                this.creatorDialogRefConfirm.componentInstance.admission = this._admission;
-                this.creatorDialogRefConfirm.afterClosed().subscribe((res) => {
-                    console.log('close dialog');
+                let snackBarRef = this.snackBar.open( 'Success data', '', { duration: 5000 } );
+                snackBarRef.afterDismissed().subscribe(() => {
+                    console.log( 'The snack-bar was dismissed' );
+                    console.log( 'Accumulated object:', val )
+                    val['status'] = '';
                     try{
-                        this.dialog.closeAll(); 
+                        this.dialog.close(); 
                         
                     } catch(ex){}  
-                    //router navigate to my profile
                     //this.router.navigate(['/secure']);
-                    
-                });
+                } );
+               
             }
         }
     }
     );
-    */
+    
    //end validation duplicate status 
   
   }
