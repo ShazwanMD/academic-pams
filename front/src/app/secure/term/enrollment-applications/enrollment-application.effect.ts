@@ -163,6 +163,17 @@ export class EnrollmentApplicationEffects {
         .map(( state ) => state[1] )
         .map(( enrollmentApplication ) => this.enrollmentApplicationActions.findEnrollmentApplicationItems( enrollmentApplication ) );
 
+    //student: delete enrollment application item
+    @Effect() deleteStudentEnrollmentApplicationItem$ = this.actions$
+    .ofType( EnrollmentApplicationActions.DELETE_STUDENT_ENROLLMENT_APPLICATION_ITEM )
+    .map(( action ) => action.payload )
+    .switchMap(( payload ) => this.termService.deleteStudentEnrollmentApplicationItem( payload.application, payload.item ) )
+    .map(( message ) => this.enrollmentApplicationActions.deleteStudentEnrollmentApplicationItemSuccess( message ) )
+    .withLatestFrom( this.store$.select( ...this.ENROLLMENT_APPLICATION ) )
+    .map(( state ) => state[1] )
+    .map(( enrollmentApplication ) => this.enrollmentApplicationActions.findEnrollmentApplicationItems( enrollmentApplication ) );
+
+    
     @Effect() updateEnrollmentApplicationItem$ = this.actions$
         .ofType( EnrollmentApplicationActions.UPDATE_ENROLLMENT_APPLICATION_ITEM )
         .map(( action ) => action.payload )

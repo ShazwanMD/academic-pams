@@ -119,7 +119,7 @@ export interface TermModuleState {
   enrollment: EnrollmentState;
   enrollmentApplication: EnrollmentApplicationState;
   
-  //enrollment appication item 
+  //enrollment application item 
   enrollmentApplicationItem: EnrollmentApplicationItemState;
   enrollmentApplicationItems: EnrollmentApplicationItemListState;
 

@@ -55,7 +55,7 @@ export class EnrollmentApplicationItemHistoryComponent implements OnInit {
     }
 
     delete( item: EnrollmentApplicationItem ): void {
-        this.store.dispatch( this.actions.deleteEnrollmentApplicationItem( this.enrollmentApplication, item ) );
+        this.store.dispatch( this.actions.deleteStudentEnrollmentApplicationItem( this.enrollmentApplication, item ) );
     }
 
     createDialog(): void {
