@@ -49,6 +49,7 @@ import { StudentEnrollmentApplicationHistoryPage } from "./student-enrollment-ap
 import { StudentEnrollmentApplicationCenterPage } from "./student-enrollment-application-center.page";
 import { EnrollmentApplicationComponent } from "./component/enrollment-application.component";
 import { EnrollmentApplicationItemsComponent } from "./component/enrollment-application-items.component";
+import { AdminEnrollmentApplicationItemEditorDialog } from "./dialog/admin-enrollment-application-item-editor.dialog";
 
 @NgModule({
   imports: [
@@ -104,6 +105,7 @@ import { EnrollmentApplicationItemsComponent } from "./component/enrollment-appl
     EnrollmentApplicationTaskCreatorDialog,
     EnrollmentApplicationTaskDialog,
     EnrollmentApplicationItemEditorDialog,
+    AdminEnrollmentApplicationItemEditorDialog,
     EnrollmentApplicationItemUpdateDialog,
   ],
   exports: [
@@ -114,6 +116,7 @@ import { EnrollmentApplicationItemsComponent } from "./component/enrollment-appl
     EnrollmentApplicationTaskCreatorDialog,
     EnrollmentApplicationTaskDialog,
     EnrollmentApplicationItemEditorDialog,
+    AdminEnrollmentApplicationItemEditorDialog,
     EnrollmentApplicationItemUpdateDialog,
     EnrollmentApplicationDraftTaskPanel,
     StudentEnrollmentApplicationDraftTaskPanel,

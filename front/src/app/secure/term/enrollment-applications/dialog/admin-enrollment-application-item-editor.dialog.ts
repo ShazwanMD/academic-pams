@@ -11,11 +11,11 @@ import {MdDialogRef} from '@angular/material';
 import {EnrollmentApplication} from '../../../../shared/model/term/enrollment-application.interface';
 
 @Component({
-  selector: 'pams-enrollment-application-item-editor',
-  templateUrl: './enrollment-application-item-editor.dialog.html',
+  selector: 'pams-admin-enrollment-application-item-editor',
+  templateUrl: './admin-enrollment-application-item-editor.dialog.html',
 })
 
-export class EnrollmentApplicationItemEditorDialog implements OnInit {
+export class AdminEnrollmentApplicationItemEditorDialog implements OnInit {
 
   private editForm: FormGroup;
   private _enrollmentApplicationItem: EnrollmentApplicationItem;
@@ -28,7 +28,7 @@ export class EnrollmentApplicationItemEditorDialog implements OnInit {
               private viewContainerRef: ViewContainerRef,
               private store: Store<TermModuleState>,
               private actions: EnrollmentApplicationActions,
-              private dialog: MdDialogRef<EnrollmentApplicationItemEditorDialog>) {
+              private dialog: MdDialogRef<AdminEnrollmentApplicationItemEditorDialog>) {
 
   }
 
@@ -54,7 +54,7 @@ export class EnrollmentApplicationItemEditorDialog implements OnInit {
     console.log('enrollmentApplicationItem', item);
     console.log('this._enrollmentApplicationItem', this._enrollmentApplicationItem);
     console.log('save student enrollmentApplication', this._enrollmentApplication);
-    this.store.dispatch(this.actions.addStudentEnrollmentApplicationItem(this._enrollmentApplication, item));
+    this.store.dispatch(this.actions.addEnrollmentApplicationItem(this._enrollmentApplication, item));
     this.dialog.close();
     
      

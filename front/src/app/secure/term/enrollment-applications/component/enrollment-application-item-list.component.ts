@@ -7,6 +7,7 @@ import { EnrollmentApplication } from '../../../../shared/model/term/enrollment-
 import { EnrollmentApplicationItem } from '../../../../shared/model/term/enrollment-application-item.interface';
 import { EnrollmentApplicationItemEditorDialog } from '../dialog/enrollment-application-item-editor.dialog';
 import { EnrollmentApplicationActions } from '../enrollment-application.action';
+import { AdminEnrollmentApplicationItemEditorDialog } from "../dialog/admin-enrollment-application-item-editor.dialog";
 
 @Component( {
     selector: 'pams-enrollment-application-item-list',
@@ -15,7 +16,7 @@ import { EnrollmentApplicationActions } from '../enrollment-application.action';
 } )
 export class EnrollmentApplicationItemComponent implements OnInit {
 
-    private editorDialogRef: MdDialogRef<EnrollmentApplicationItemEditorDialog>;
+    private editorDialogRef: MdDialogRef<AdminEnrollmentApplicationItemEditorDialog>;
     private selectedRows: EnrollmentApplicationItem[];
     private _snackBar: MdSnackBar;
 
@@ -66,7 +67,7 @@ export class EnrollmentApplicationItemComponent implements OnInit {
         config.width = '50%';
         config.height = '40%';
         config.position = { top: '0px' };
-        this.editorDialogRef = this.dialog.open( EnrollmentApplicationItemEditorDialog, config );
+        this.editorDialogRef = this.dialog.open( AdminEnrollmentApplicationItemEditorDialog, config );
         this.editorDialogRef.componentInstance.enrollmentApplication = this.enrollmentApplication;
 
         // close
