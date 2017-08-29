@@ -37,6 +37,8 @@ public interface ProfileService {
 	List<AdGuardian> findGuardians(AdStudent student);
 	List<AdContact> findContacts(AdStudent student);
 	
+	List<AdStudent> findStudentsByFaculty(AdFaculty faculty);
+	
 	//AdmissionByAcademicSession
 	AdAdmission findAdmissionByAcademicSessionAndStudent(AdAcademicSession academicSession, AdStudent student);
 

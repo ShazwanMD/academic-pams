@@ -5,6 +5,7 @@ import my.edu.umk.pams.academic.core.AdMetadata;
 import my.edu.umk.pams.academic.core.GenericDaoSupport;
 import my.edu.umk.pams.academic.identity.model.*;
 import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
+import my.edu.umk.pams.academic.planner.model.AdFaculty;
 import my.edu.umk.pams.academic.term.model.AdAdmission;
 
 import org.apache.commons.lang.Validate;
@@ -165,6 +166,16 @@ public class AdStudentDaoImpl extends GenericDaoSupport<Long, AdStudent> impleme
 		Query query = session.createQuery(
 				"select o from AdAddress o where " + "o.student = :student " + "and o.metadata.state = :state");
 		query.setEntity("student", student);
+		query.setInteger("state", AdMetaState.ACTIVE.ordinal());
+		return query.list();
+	}
+	
+	@Override
+	public List<AdStudent> findStudentsByFaculty(AdFaculty faculty) {
+		Session session = sessionFactory.getCurrentSession();
+		Query query = session.createQuery(
+				"select o from AdStudent o where " + "o.cohort.program.faculty = :faculty " + "and o.metadata.state = :state");
+		query.setEntity("faculty", faculty);
 		query.setInteger("state", AdMetaState.ACTIVE.ordinal());
 		return query.list();
 	}

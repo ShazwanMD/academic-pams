@@ -128,6 +128,12 @@ public class ProfileServiceImpl implements ProfileService {
     public List<AdContact> findContacts(AdStudent student) {
         return studentDao.findContacts(student);
     }
+    
+
+    @Override
+    public List<AdStudent> findStudentsByFaculty(AdFaculty faculty) {
+        return studentDao.findStudentsByFaculty(faculty);
+    }
 
     @Override
     public void updateStudent(AdStudent student) {

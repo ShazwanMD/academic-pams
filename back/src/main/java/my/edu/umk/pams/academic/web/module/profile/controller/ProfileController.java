@@ -6,6 +6,7 @@ import my.edu.umk.pams.academic.identity.model.*;
 import my.edu.umk.pams.academic.identity.service.IdentityService;
 import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
 import my.edu.umk.pams.academic.planner.model.AdCohort;
+import my.edu.umk.pams.academic.planner.model.AdFaculty;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
 import my.edu.umk.pams.academic.profile.service.ProfileService;
 import my.edu.umk.pams.academic.security.service.SecurityService;
@@ -735,8 +736,21 @@ public class ProfileController {
 
 	@RequestMapping(value = "/students", method = RequestMethod.GET)
 	public ResponseEntity<List<Student>> findStudents() {
+		
+//		AdUser user = securityService.getCurrentUser();
+//		
+//		AdStaff staff = null;
+//		
+//		if (user.getActor() instanceof AdStaff){
+//			staff = (AdStaff) user.getActor();
+//		
+//		}else if (null == staff) throw new IllegalArgumentException("Student does not exists");
+//		
+//		AdFaculty faculty = plannerService.findFacultyByCode(staff.getFaculty().getCode());
+//		LOG.debug("Faculty Code Not MGSEB:{}",faculty.getName());
+//		List<AdStudent> students = profileService.findStudentsByFaculty(faculty);
 		List<AdStudent> students = profileService.findStudents(0, Integer.MAX_VALUE);
-		return new ResponseEntity<List<Student>>(profileTransformer.toStudentVos(students), HttpStatus.OK);
+		return new ResponseEntity<List<Student>>(profileTransformer.toStudentVos(students),HttpStatus.OK);
 	}
 
 	@RequestMapping(value = "/students/{matricNo}", method = RequestMethod.GET)

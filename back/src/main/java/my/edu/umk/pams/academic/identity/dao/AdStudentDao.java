@@ -4,6 +4,7 @@ package my.edu.umk.pams.academic.identity.dao;
 import my.edu.umk.pams.academic.core.GenericDao;
 import my.edu.umk.pams.academic.identity.model.*;
 import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
+import my.edu.umk.pams.academic.planner.model.AdFaculty;
 import my.edu.umk.pams.academic.term.model.AdAdmission;
 
 import java.util.List;
@@ -35,6 +36,7 @@ public interface AdStudentDao extends GenericDao<Long, AdStudent> {
     List<AdGuardian> findGuardians(AdStudent student);
     List<AdContact> findContacts(AdStudent student);
     List<AdAddress> findAddresses(AdStudent student);
+    List<AdStudent> findStudentsByFaculty(AdFaculty faculty);
 
     /*HELPER*/
     Integer count(String filter);
