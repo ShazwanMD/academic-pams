@@ -115,6 +115,9 @@ export class SectionEditorDialog implements OnInit {
       this.store.dispatch(this.actions.updateSection(this._offering, section));
       this.dialog.close();
 
-    }  
-   }
+      let snackBarRef = this.snackBar.open( 'New section: ' + section.code + ' has been updated', '', { duration: 3000 } );
+      snackBarRef.afterDismissed().subscribe(() => {
+      } );
+    }
+  }
 }
