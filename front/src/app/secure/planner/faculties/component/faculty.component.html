@@ -6,18 +6,29 @@
 
     <md-tab-group>
       <md-tab label="Faculty Detail"><br>
-        <div>Code : {{faculty?.code}}</div>
-        <br>
-        <div>Description : {{faculty?.description}}</div>
-        <br>
-        <div>Short Name : {{faculty?.name}}</div>
-        <br>
-        <div>Prefix : {{faculty?.prefix}}</div>
-        <br>
+        <div layout="column" class="inset">
+          <div layout="row" class="pad-bottom">
+            <span flex="15">Code</span>
+            <span>{{faculty?.code}}</span>
+          </div>
+          
+          <div layout="row" class="pad-bottom">
+            <span flex="15">Description </span>
+            <span>{{faculty?.description}} </span>
+          </div>
+
+          <div layout="row" class="pad-bottom">
+            <span flex="15">Short Name</span>
+            <span>{{faculty?.name}} </span>
+          </div>
+
+          <div layout="row" class="pad-bottom">
+            <span flex="15">Prefix</span>
+            <span>{{faculty?.prefix}} </span>
+          </div>
+        </div>
       </md-tab>
-
     </md-tab-group>
-
   </md-card-content>
   <md-divider></md-divider>
 </md-card>

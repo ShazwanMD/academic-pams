@@ -5,27 +5,37 @@
   <md-card-content>
     <!--Tab Section Here-->
     <md-tab-group>
-      <md-tab label=" Course Detail"><br>
-        <div>Code : {{course?.code | uppercase}}</div>
-        <br>
-        <div>Title(Ms) : {{course?.titleMs | uppercase}}</div>
-        <br>
-        <div>Title(En) : {{course?.titleEn | uppercase}}</div>
-        <br>
-      </md-tab>
-      <md-tab label="Faculty Information">
-        <br>
-        <div>Code : {{course?.faculty?.code}}</div>
-        <br>
-        <div>Short Name : {{course?.faculty?.name}}</div>
-        <br>
-        <div>Description : {{course?.faculty?.description}}</div>
-        <br>
+      <md-tab label=" Course Detail">
+        <div layout="column" class="inset">
+          <div layout="row" class="pad-bottom">
+           <span flex="15">Code </span> <span>{{course?.code | uppercase}}</span>
+            </div>
 
+            <div layout="row" class="pad-bottom">
+                <span flex="15">Title(Ms)</span> <span>{{course?.titleMs | uppercase}}</span>
+              </div>
+
+              <div layout="row" class="pad-bottom">
+                  <span flex="15">Title(En)</span> <span>{{course?.titleEn | uppercase}}</span>
+                </div>
+              </div>
+      </md-tab>
+
+      <md-tab label="Faculty Information">
+        <div layout="column" class="inset">
+           <div layout="row" class="pad-bottom">
+             <span flex="15">Code</span> <span>{{course?.faculty?.code}}</span>
+              </div>
+
+            <div layout="row" class="pad-bottom">
+              <span flex="15">Short Name</span> <span>{{course?.faculty?.name}}</span>
+            </div>
+
+            <div layout="row" class="pad-bottom">
+                <span flex="15">Description </span> <span>{{course?.faculty?.description}}</span>
+            </div>
+          </div>
       </md-tab>
     </md-tab-group>
-
   </md-card-content>
-  <md-card-actions layout-align="end center">
-  </md-card-actions>
 </md-card>

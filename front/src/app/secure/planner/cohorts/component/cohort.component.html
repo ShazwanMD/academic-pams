@@ -7,25 +7,33 @@
     <!--Tab Section Here-->
     <md-tab-group>
       <md-tab label="Cohort Detail"><br>
+        <div layout="column" class="inset">
+          <div layout="row" class="pad-bottom">
+            <span flex="15">Code</span>
+            <span>{{cohort?.code}}</span>
+          </div>
 
-        <div>Code : {{cohort?.code}}</div>
-        <br>
-        <div>Description : {{cohort?.description}}</div>
-        <br>
-        <!-- <div>Classification : {{cohort?.academicClassification}}</div>
-        <br> -->
-      </md-tab>
+          <div layout="row" class="pad-bottom">
+            <span flex="15">Description</span>
+            <span>{{cohort?.description}} </span>
+          </div>
 
-      <md-tab label="Information Details"><br>
+          <!-- <div layout="row" class="pad-bottom">
+            <span flex="15">Curriculum</span>
+            <span>{{cohort?.curriculum?.code}} </span>
+          </div> -->
 
-        <br>
-        <div>Code : {{cohort?.code}}</div>
-        <br>
-        <div>Curriculum :{{cohort?.description}}</div>
-        <br>
-        <div>Elective : {{cohort?.id}}</div>
-        <br>
+          <div layout="row" class="pad-bottom">
+            <span flex="15">Program Code</span>
+            <span>{{cohort?.program?.code}} </span>
+          </div>
 
+          <div layout="row" class="pad-bottom">
+            <span flex="15">Title</span>
+            <span>{{cohort?.program?.titleEn}} </span>
+          </div>
+        </div>
+  
       </md-tab>
     </md-tab-group>
 
