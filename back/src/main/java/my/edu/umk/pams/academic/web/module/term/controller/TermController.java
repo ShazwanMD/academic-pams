@@ -473,14 +473,25 @@ public class TermController {
 	public ResponseEntity<String> addEnrollmentApplicationItem(@PathVariable String referenceNo,
 			@RequestBody EnrollmentApplicationItem vo) {
 		//dummyLogin();
-
+		
+		AdSection section = termService.findSectionById(vo.getSection().getId());
+		if (isEnrollmentApplicationItemExists(section)) {
+			// throw new IllegalArgumentException("Data appointment already
+			// exists! Please insert new data");
+			System.out.println("Duplicate items" + vo.getSection().getId());
+			return new ResponseEntity<String>("Duplicate", HttpStatus.OK);
+		} else {
+		
 		LOG.debug("referenceNo: {}", referenceNo);
+		
 		AdEnrollmentApplication enrollmentApplication = termService.findEnrollmentApplicationByReferenceNo(referenceNo);
 		AdEnrollmentApplicationItem e = new AdEnrollmentApplicationItemImpl();
 		e.setAction(AdEnrollmentApplicationAction.get(vo.getAction().ordinal()));
 		e.setSection(termService.findSectionById(vo.getSection().getId()));
 		termService.addEnrollmentApplicationItem(enrollmentApplication, e);
-		return new ResponseEntity<String>("Success", HttpStatus.OK);
+		return new ResponseEntity<String>("success", HttpStatus.OK);
+	 } 
+		
 	}
 
 	@RequestMapping(value = "/enrollmentApplications/{referenceNo}/enrollmentApplicationItems", method = RequestMethod.PUT)
@@ -853,6 +864,12 @@ public class TermController {
 		System.out.println(termService.isAppointmentExists(section, staff));
 		return termService.isAppointmentExists(section, staff);
 	}
+	
+	// isEnrollmentApplicationItemExists
+		private boolean isEnrollmentApplicationItemExists(AdSection section) {
+			System.out.println(termService.isEnrollmentApplicationItemExists(section));
+			return termService.isEnrollmentApplicationItemExists(section);
+		}
 
 	// countAdmissionApplication
 	private Integer countAdmissionApplication(AdAcademicSession session, AdStudent student) {

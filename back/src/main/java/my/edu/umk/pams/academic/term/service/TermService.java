@@ -347,6 +347,8 @@ public interface TermService {
 
     Integer countEnrollmentApplication(String filter, AdAcademicSession session, AdStaff staff);
 
+    boolean isEnrollmentApplicationItemExists(AdSection section);
+    
     //====================================================================================================
     // ENROLLMENT
     //====================================================================================================

@@ -994,6 +994,12 @@ public class TermServiceImpl implements TermService {
 	public Integer countEnrollmentApplication(String filter, AdAcademicSession session, AdStaff staff) {
 		return enrollmentApplicationDao.count(filter, session, staff);
 	}
+	
+	//isExists
+	@Override
+	public boolean isEnrollmentApplicationItemExists(AdSection section) {
+		return enrollmentApplicationDao.isExists(section);
+	}
 
 	// ====================================================================================================
 	// ENROLLMENT
