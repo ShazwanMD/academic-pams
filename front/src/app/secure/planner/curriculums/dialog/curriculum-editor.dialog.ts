@@ -64,7 +64,7 @@ export class CurriculumEditorDialog implements OnInit {
         else this.store.dispatch(this.actions.updateCurriculum(curriculum));
         this.dialog.close();
 
-         let snackBarRef = this.snackBar.open( 'New assessment: ' + curriculum.code + ' has been inserted', '', { duration: 3000 } );
+         let snackBarRef = this.snackBar.open( 'New assessment: ' + curriculum.code + ' has been saved', '', { duration: 3000 } );
          snackBarRef.afterDismissed().subscribe(() => {
        } );
   }
