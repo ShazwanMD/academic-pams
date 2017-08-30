@@ -52,7 +52,7 @@ export class FacultyCreatorDialog implements OnInit {
     this.dialog.close();
 
 
-    let snackBarRef = this.snackBar.open( 'New Faculties: ' + faculty.code + ' has been inserted', '', { duration: 3000 } );
+    let snackBarRef = this.snackBar.open( 'New Faculties: ' + faculty.code + ' has been saved', '', { duration: 3000 } );
     snackBarRef.afterDismissed().subscribe(() => {
        } );
   }
