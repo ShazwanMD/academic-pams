@@ -61,7 +61,7 @@ export class ProgramCreatorDialog implements OnInit {
     this.dialog.close();
     console.log(program);
 
-    let snackBarRef = this.snackBar.open( 'New Programs: ' + program.code + ' has been inserted', '', { duration: 3000 } );
+    let snackBarRef = this.snackBar.open( 'New Programs: ' + program.code + ' has been saved', '', { duration: 3000 } );
     snackBarRef.afterDismissed().subscribe(() => {
        } );
   }
