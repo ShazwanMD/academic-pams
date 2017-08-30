@@ -63,7 +63,7 @@ export class StudentEnrollmentApplicationDraftTaskPanel implements OnInit {
         editorDialogRef.componentInstance.enrollmentApplicationItem = item;
     }
 
-    register() {   
+    /*register() {   
            
         var r = confirm("Please choose your course first before submit the application.Thank you.");
         if (r == true) {
@@ -81,14 +81,34 @@ export class StudentEnrollmentApplicationDraftTaskPanel implements OnInit {
         }
         
                        
+    }*/
+
+    register() {
+
+        var r = confirm( "Please add course/sections before submit the application.Thank you." );
+        if ( r == true ) {
+
+            let snackBarRef = this._snackBar.open( 'Proceed with course enrollments', 'OK' );
+            snackBarRef.afterDismissed().subscribe(() => {
+               // this.router.navigate( ['/secure'] );
+            } );
+            
+        } else {
+
+            let snackBarRef = this._snackBar.open( 'Course enrollments completed', 'OK' );
+            snackBarRef.afterDismissed().subscribe(() => {
+            } );
+            this.store.dispatch( this.actions.completeEnrollmentApplicationTask( this.enrollmentApplicationTask ) );
+            this.goBack();
+        }
     }
-    
+
     remove() {
         this.store.dispatch( this.actions.releaseEnrollmentApplicationTask( this.enrollmentApplicationTask ) );
         this.goBack();
     }
 
     goBack(): void {
-        this.router.navigate( ['/secure/term/enrollment-applications'] );
+        this.router.navigate( ['/secure/term/enrollment-applications/student-enrollment-center'] );
     }
 }

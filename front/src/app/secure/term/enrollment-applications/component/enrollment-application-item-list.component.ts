@@ -76,7 +76,7 @@ export class EnrollmentApplicationItemComponent implements OnInit {
         } );
     }
     
-    //click register button 
+ /*   //click register button 
     register() {   
         
         var r = confirm("Please choose your course first before submit the application.Thank you.");
@@ -95,5 +95,14 @@ export class EnrollmentApplicationItemComponent implements OnInit {
         }
         
           
+    }*/
+    
+    register() {
+       // this.store.dispatch( this.actions.completeEnrollmentApplicationTask( this.enrollmentApplicationTask ) );
+        this.goBack();
+    }
+    
+    goBack(): void {
+        this.router.navigate( ['/secure/term/enrollment-applications/student-enrollment-center'] );
     }
 }
