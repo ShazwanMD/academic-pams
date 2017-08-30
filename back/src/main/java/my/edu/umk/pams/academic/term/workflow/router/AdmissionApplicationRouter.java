@@ -22,6 +22,8 @@ public class AdmissionApplicationRouter extends RouterServiceSupport {
 
     @Autowired
     private TermService termService;
+    
+    
 
     public List<String> findRegistererCandidates(Long admissionApplicationId) {
         Validate.notNull(admissionApplicationId, "Id must not be null");

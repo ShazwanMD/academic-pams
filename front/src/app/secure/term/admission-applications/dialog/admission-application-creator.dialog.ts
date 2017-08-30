@@ -129,8 +129,8 @@ export class AdmissionApplicationCreatorDialog implements OnInit {
                             this.dialog.closeAll(); 
                             
                         } catch(ex){}  
-                        //router navigate to my profile
-                        //this.router.navigate(['/secure']);
+                        //router navigate to register student application
+                        this.router.navigate(['/secure/term/admission-applications/admission-application-center2']);
                         
                     });
                 }
