@@ -5,7 +5,7 @@ import {
   TdDataTableService,
   TdDataTableSortingOrder
 } from '@covalent/core';
-import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
+import {SimpleChange, ChangeDetectionStrategy,  Component,  EventEmitter,  Input,  Output} from '@angular/core';
 import {Curriculum} from '../../../../shared/model/planner/curriculum.interface';
 
 @Component({
@@ -76,6 +76,12 @@ export class CurriculumListComponent {
     newData = this._dataTableService.pageData(newData, this.fromRow, this.currentPage * this.pageSize);
     this.filteredData = newData;
 
+  }
+
+  ngOnChanges(changes: { [ propName: string]: SimpleChange }) {
+    // console.log("changes", changes, changes['subjects'])
+   
+      this.filter();
   }
 
   viewCurriculum(curriculum: Curriculum): void {

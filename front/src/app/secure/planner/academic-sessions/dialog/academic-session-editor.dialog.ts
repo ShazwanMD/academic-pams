@@ -59,8 +59,13 @@ export class AcademicSessionEditorDialog implements OnInit {
     if (!academicSession.id) {
         
         this.store.dispatch(this.actions.saveAcademicSession(academicSession));
+
+        let snackBarRef = this.snackBar.open( 'New Academic Sessions: ' + academicSession.code + ' has been saved', '', { duration: 3000 } );
+        snackBarRef.afterDismissed().subscribe(() => {
+       } ); 
+
         this.dialog.close();
-        
+
         this.session.subscribe(val => console.log('Accumulated object:', val));
         
         this.session.subscribe(val => {
@@ -85,12 +90,10 @@ export class AcademicSessionEditorDialog implements OnInit {
     
     }else{ 
         this.store.dispatch(this.actions.updateAcademicSession(academicSession));
-        this.dialog.close();
-
-        let snackBarRef = this.snackBar.open( 'New Academic Sessions: ' + academicSession.code + ' has been saved', '', { duration: 3000 } );
+        let snackBarRef = this.snackBar.open( 'New Academic Sessions: ' + academicSession.code + ' has been updated', '', { duration: 3000 } );
         snackBarRef.afterDismissed().subscribe(() => {
        } );   
-   
+        this.dialog.close();
     }
   }
 }

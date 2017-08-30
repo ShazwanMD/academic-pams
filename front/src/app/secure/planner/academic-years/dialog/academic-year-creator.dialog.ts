@@ -53,16 +53,22 @@ export class AcademicYearCreatorDialog implements OnInit {
     save(academicYear: AcademicYear): void {
                 
         if (!this.edit) this.store.dispatch(this.actions.saveAcademicYear(academicYear));
+
+        let snackBarRef1 = this.snackBar.open( 'New Academic Years: ' + academicYear.code + ' has been saved', '', { duration: 3000 } );
+        snackBarRef1.afterDismissed().subscribe(() => {
+       } );
+
         if (this.edit) {
             console.log("Entering edit part");
             //assign code to origal code value
             academicYear.code = this._academicYear.code;
             this.store.dispatch(this.actions.updateAcademicYear(academicYear));
+
+            let snackBarRef = this.snackBar.open( 'New Academic Years: ' + academicYear.code + ' has been updated', '', { duration: 3000 } );
+            snackBarRef.afterDismissed().subscribe(() => {
+           } );
         }
         this.dialog.close();
     
-        let snackBarRef = this.snackBar.open( 'New Academic Years: ' + academicYear.code + ' has been saved', '', { duration: 3000 } );
-        snackBarRef.afterDismissed().subscribe(() => {
-       } );
     }
 }
