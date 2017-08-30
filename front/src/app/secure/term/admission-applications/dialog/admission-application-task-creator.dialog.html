@@ -7,7 +7,7 @@
         [innerFormControl]="createForm.controls.student" fxFlex="calc(100%-25px)" class="pad-bottom">
       </pams-student-select>
       <div class="tc-red-600" *ngIf="createForm.get('student').invalid && createForm.get('student').touched">
-        Please add your student!
+        Please choose student
       </div> 
       <pams-academic-session-select
         [placeholder]="'Select Session'"
@@ -15,7 +15,7 @@
       </pams-academic-session-select>
       <div class="tc-red-600"
            *ngIf="createForm.get('academicSession').invalid && createForm.get('academicSession').touched">
-        Please add your academic Session!
+        Please choose academic session
       </div>
       <!--   <md-input-container flex>
             <input mdInput #ordinal
@@ -28,7 +28,7 @@
       </md-input-container>
         <div class="tc-red-600"
            *ngIf="createForm.get('ordinal').invalid && createForm.get('ordinal').touched">
-        Please insert student's semester!
+        Please insert student's semester
       </div>
     </div>
   </form>
