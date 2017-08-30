@@ -6,10 +6,12 @@ import my.edu.umk.pams.academic.common.service.CommonService;
 import my.edu.umk.pams.academic.core.AdFlowState;
 import my.edu.umk.pams.academic.identity.model.AdStaff;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
+import my.edu.umk.pams.academic.identity.model.AdUser;
 import my.edu.umk.pams.academic.identity.service.IdentityService;
 import my.edu.umk.pams.academic.planner.model.*;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
 import my.edu.umk.pams.academic.security.integration.AdAutoLoginToken;
+import my.edu.umk.pams.academic.security.service.SecurityService;
 import my.edu.umk.pams.academic.system.model.AdEmailQueue;
 import my.edu.umk.pams.academic.system.model.AdEmailQueueImpl;
 import my.edu.umk.pams.academic.system.model.AdEmailQueueStatus;
@@ -82,6 +84,9 @@ public class TermController {
 
 	@Autowired
 	private AuthenticationManager authenticationManager;
+	
+	@Autowired
+	private SecurityService securityService;
 	// ====================================================================================================
 	// ADMISSION
 	// ====================================================================================================
@@ -224,7 +229,6 @@ public class TermController {
 	// startAdmissionApplicationTasks
 	@RequestMapping(value = "/admissionApplications/startTask", method = RequestMethod.POST)
 	public ResponseEntity<String> startAdmissionApplicationTask(@RequestBody AdmissionApplication vo) throws Exception {
-
 		LOG.debug("start task");
 		
 		AdStudent student = identityService.findStudentById(vo.getStudent().getId());
@@ -280,10 +284,11 @@ public class TermController {
 
 			systemService.saveEmailQueue(emailQueue);
 			LOG.debug("test2: {}", emailQueue);
-
-			// return new ResponseEntity<String>(referenceNo, HttpStatus.OK);
-			return new ResponseEntity<String>("success", HttpStatus.OK);
 		}
+	
+		
+		// return new ResponseEntity<String>(referenceNo, HttpStatus.OK);
+		return new ResponseEntity<String>("success", HttpStatus.OK);
 	}
 
 	@RequestMapping(value = "/admissionApplications/viewTask/{taskId}", method = RequestMethod.GET)

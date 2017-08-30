@@ -55,6 +55,13 @@ export class AdministratorDashboardPanel implements OnInit {
           color: 'blue-700',
           description: ' ',
         },
+        {
+          title: 'Lecturer Profile',
+          route: '/secure/lecturerProfile',
+          icon: 'assignment',
+          color: 'blue-700',
+          description: ' ',
+        },
       ];
     }
   }
