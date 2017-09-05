@@ -17,98 +17,94 @@
 
     <md-card-content>
       <md-card>
+        <template let-admission let-last="last" ngFor [ngForOf]="admissions$ | async ">
 
-        <md-card-title>
-        <img src="http://localhost:4200\assets\ico\umk.png" width="30" height="30">
-            
-          {{academicSession.description}}</md-card-title>
-        <md-card-subtitle>{{academicSession.code}}</md-card-subtitle>
-        <md-divider></md-divider>
-        <md-card-content>
-          <!--Tab Section Here-->
-          <md-tab-group>
-            <md-tab label="Academic Session Detail"><br>
+          <md-card-title>
+            <img src="http://localhost:4200\assets\ico\umk.png" width="30" height="30"> {{academicSession.description}}
 
-              
-              <div layout="column" layout-gt-md="row" class="insert">
-                <div flex-gt-md="30">
+          </md-card-title>
+          <md-card-subtitle>{{academicSession.code}}</md-card-subtitle>
+          <md-divider></md-divider>
+          <md-card-content>
+            <!--Tab Section Here-->
+            <md-tab-group>
+              <md-tab label="Academic Session Detail"><br>
 
-                        <div layout="row" class="pad-bottom">
-                          <span flex="15">Student ID</span>
-                          <span>{{student.identityNo}}</span>
-                        </div>
 
-                        <div layout="row" class="pad-bottom">
-                          <span flex="15">Name</span>
-                          <span>{{student.name}}</span>
-                        </div>
+                <div layout="column" layout-gt-md="row" class="insert">
+                  <div flex-gt-md="30">
 
-                        <div layout="row" class="pad-bottom">
-                          <span flex="15">Semester</span>
-                          <span>{{student.cohort?.academicSession.semester}}</span>
-                        </div>
+                    <div layout="row" class="pad-bottom">
+                      <span flex="15">Student ID</span>
+                      <span>{{student.identityNo}}</span>
+                    </div>
+
+                    <div layout="row" class="pad-bottom">
+                      <span flex="15">Name</span>
+                      <span>{{student.name}}</span>
+                    </div>
+
+                    <div layout="row" class="pad-bottom">
+                      <span flex="15">Semester</span>
+                      <span>{{student.cohort?.academicSession.semester}}</span>
+                    </div>
+
+                  </div>
+
+                  <div flex-gt-md="30">
+                    <div layout="row" class="pad-bottom">
+                      <span flex="15">Status</span>
+                      <span>{{student.studentStatus}}</span>
+                    </div>
+
+                    <div layout="row" class="pad-bottom">
+                      <span flex="15">GPA</span>
+                      <span>{{admission.gpa}}</span>
+                    </div>
+
+                    <div layout="row" class="pad-bottom">
+                      <span flex="15">CGPA</span>
+                      <span>{{admission.cgpa}}</span>
+                    </div>
+
+                  </div>
 
                 </div>
+                <div>
+                  <!--COURSE INFORMATION-->
+                  <md-card>
+                    <div md-content flex md-scroll-y>
+                      <div layout="column" layout-gt-md="row" class="insert">
 
-                <div flex-gt-md="30">
-                        <div layout="row" class="pad-bottom">
-                          <span flex="15">Status</span>
-                          <span>{{student.studentStatus}}</span>
+                        <div flex-gt-md="50">
+                          <md-card-title>List Of Courses</md-card-title>
                         </div>
 
-                        <div layout="row" class="pad-bottom">
-                          <span flex="15">GPA</span>
-                          <span>{{enrollments.section?.code}}</span>
-                        </div>
+                      </div>
+                    </div>
+                    <md-divider></md-divider>
 
-                        <div layout="row" class="pad-bottom">
-                          <span flex="15">CGPA</span>
-                          <span>{{admissions?.status}}</span>
-                        </div>
+                    <md-card-content>
+                      <td-data-table [data]="enrollments" [columns]="columns" [sortBy]="summary" [sortOrder]="ASC" [sortable]="false" [multiple]="false"
+                        [selectable]="false" (rowSelect)="edit.emit($event)" dense>
 
+                        <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
+                          <div layout="row">
+                            <span flex>{{value}}</span>
+                          </div>
+                        </template>
+                      </td-data-table>
+                    </md-card-content>
+                  </md-card>
                 </div>
 
-              </div>
-              <div>
-               <!--COURSE INFORMATION-->
-<md-card>
-  <div md-content flex md-scroll-y>
-    <div layout="column" layout-gt-md="row" class="insert">
 
-      <div flex-gt-md="50">
-        <md-card-title>List Of Courses</md-card-title>
-      </div>
+              </md-tab>
+            </md-tab-group>
 
-    </div>
-  </div>
-  <md-divider></md-divider>
-
-  <md-card-content>
-    <td-data-table 
-    [data]="enrollments" 
-    [columns]="columns" 
-    [sortBy]="summary" 
-    [sortOrder]="ASC" 
-    [sortable]="false" 
-    [multiple]="false"
-    [selectable]="false" (rowSelect)="edit.emit($event)" dense>
-
-      <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
-        <div layout="row">
-          <span flex>{{value}}</span>
-        </div>
-      </template>
-    </td-data-table>
-  </md-card-content>
-</md-card>
-              </div>
-
-
-            </md-tab>
-          </md-tab-group>
-
-        </md-card-content>
-        <md-divider></md-divider>
+          </md-card-content>
+          <md-divider></md-divider>
+        </template>
       </md-card>
     </md-card-content>
   </md-card>

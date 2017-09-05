@@ -1,3 +1,4 @@
+import { TermModule } from './../term/index';
 import { StudentProfileExamComponent } from './component/student-profile-exam.component';
 import { StudentProfileExamPage } from './student-profile-exam.page';
 import { AcademicYear } from './../../shared/model/planner/academic-year.interface';
@@ -51,6 +52,8 @@ import { AcademicYearListState, academicYearListReducer } from "../planner/acade
 import { AcademicYearState, academicYearReducer } from "../planner/academic-years/academic-year.reducer";
 import { AcademicSessionListState, academicSessionListReducer } from "./academic-session-list.reducer";
 import { AcademicSessionState, academicSessionReducer } from "./academic-session.reducer";
+import { AdmissionState, admissionReducer } from "../term/admissions/admission.reducer";
+import { EnrollmentState, enrollmentReducer } from "../term/enrollments/enrollment.reducer";
 
 
 export interface StudentProfileModuleState {
@@ -61,8 +64,9 @@ export interface StudentProfileModuleState {
     guardians: GuardianListState;
     contacts: ContactListState;
     enrollments: EnrollmentListState;
+    enrollment: EnrollmentState;
     admissions: AdmissionListState;
-    admission: AdmissionListState;
+    admission: AdmissionState;
     academicSessions: AcademicSessionListState;
     academicSession: AcademicSessionState;
     academicYears: AcademicYearListState;
@@ -80,8 +84,9 @@ export const INITIAL_STUDENT_PROFILE_STATE: StudentProfileModuleState =
         guardians: <Guardian[]>[],
         contacts: <Contact[]>[],
         enrollments: <Enrollment[]>[],
+        enrollment: <Enrollment>{},
         admissions: <Admission[]>[],
-        admission: <Admission[]>[],
+        admission: <Admission>{},
         academicSession: <AcademicSession>{},
         academicSessions: <AcademicSession[]>[],
         academicYears: <AcademicYear[]>[],
@@ -98,8 +103,9 @@ export const studentProfileModuleReducers = {
     guardians: guardianListReducer,
     contacts: contactListReducer,
     enrollments: enrollmentListReducer,
+    enrollment: enrollmentReducer,
     admissions: admissionListReducer,
-    admission: admissionListReducer,
+    admission: admissionReducer,
     academicSession: academicSessionReducer,
     academicSessions: academicSessionListReducer,
     academicYears: academicYearListReducer,
@@ -120,6 +126,7 @@ export const studentProfileModuleReducers = {
         ProfileModule.forRoot(),
         PlannerModule.forRoot(),
         AcademicSessionSubModule.forRoot(),
+        TermModule.forRoot(),
 
     ],
     declarations: [

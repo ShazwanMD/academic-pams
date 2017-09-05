@@ -21,9 +21,13 @@ export class StudentProfileExamPage implements OnInit {
   private STUDENTS: string[] = 'studentProfileModuleState.students'.split('.');
   private ACADEMIC_SESSION: string[] = 'studentProfileModuleState.academicSession'.split('.');
   private ENROLLMENTS: string[] = 'studentProfileModuleState.enrollments'.split('.');
+  private ENROLLMENT: string[] = 'studentProfileModuleState.enrollment'.split('.');
   private ADMISSIONS: string[] = 'studentProfileModuleState.admissions'.split('.');
+  private ADMISSION: string[] = 'studentProfileModuleState.admission'.split('.');
   private enrollments$: Observable<Enrollment>;
-  private admissions$: Observable<Admission>;
+  private enrollment$: Observable<Enrollment>;
+  private admissions$: Observable<Admission[]>;
+  private admission$: Observable<Admission>;
   private academicSession$: Observable<AcademicSession>;
   private students$: Observable<Student[]>;
   private student$: Observable<Student>;
@@ -37,6 +41,8 @@ export class StudentProfileExamPage implements OnInit {
     this.student$ = this.store.select(...this.STUDENT);
     this.enrollments$ = this.store.select(...this.ENROLLMENTS);
     this.admissions$ = this.store.select(...this.ADMISSIONS);
+    this.admission$ = this.store.select(...this.ADMISSION);
+    this.enrollment$ = this.store.select(...this.ENROLLMENT);
   }
 
   ngOnInit(): void {

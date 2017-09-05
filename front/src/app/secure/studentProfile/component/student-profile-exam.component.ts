@@ -26,14 +26,18 @@ export class StudentProfileExamComponent implements OnInit {
   private ACADEMIC_SESSION: string[] = 'studentProfileModuleState.academicSession'.split('.');
   private ENROLLMENTS: string[] = 'studentProfileModuleState.enrollments'.split('.');
   private ADMISSIONS: string[] = 'studentProfileModuleState.admissions'.split('.');
+  private ADMISSION: string[] = 'studentProfileModuleState.admission'.split('.');
   private enrollments$: Observable<Enrollment>;
-  private admissions$: Observable<Admission>;
+  private admissions$: Observable<Admission[]>;
+  private admission$: Observable<Admission>;
   private academicSession$: Observable<AcademicSession>;
   private students$: Observable<Student[]>;
   private student$: Observable<Student>;
 
-  @Input() admissions: Admission;
+  @Input() admissions: Admission[];
+  @Input() admission: Admission;
   @Input() enrollments: Enrollment[];
+  @Input() enrollment: Enrollment;
   @Input() student: Student;
   @Input() academicSession: AcademicSession;
   @Input() semester: AcademicSemester;
@@ -56,11 +60,11 @@ export class StudentProfileExamComponent implements OnInit {
     this.admissions$ = this.store.select(...this.ADMISSIONS);
   }
 
-    private columns: any[] = [
+  private columns: any[] = [
     { name: 'section.offering.code', label: 'Course Code' },
     { name: 'section.offering.course.credit', label: 'Credit' },
     { name: 'gradeCode.code', label: 'Grade' },
-    
+
   ];
 
   ngOnInit(): void {
@@ -68,6 +72,7 @@ export class StudentProfileExamComponent implements OnInit {
       let code: string = params.code;
       this.store.dispatch(this.actions.findAcademicSessionByCode(code));
       this.store.dispatch(this.actions.findStudentByUser());
+      console.log(this.enrollment.id);
     });
   }
 

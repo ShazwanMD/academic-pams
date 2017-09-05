@@ -378,6 +378,8 @@ public class ProfileController {
 
 		AdAcademicSession academicSession = plannerService.findAcademicSessionByCode(code);
 		LOG.debug("Academic Session Code :{}", code);
+		
+		
 
 		AdAdmission admission = profileService.findAdmissionByAcademicSessionAndStudent(academicSession, student1);
 		LOG.debug("admission", admission.getStudent().getIdentityNo());
