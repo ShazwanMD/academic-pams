@@ -1,6 +1,6 @@
 <h2 md-dialog-title>Graduation Application Creator</h2>
 <md-dialog-content>
-  <form [formGroup]="createForm">
+  <form [formGroup]="createForm" novalidate>
     <div layout="row" class="pad-bottom">
       <md-input-container flex>
         <input mdInput #description
@@ -8,14 +8,21 @@
                formControlName="description"
                flex/>
       </md-input-container>
+    <div class="error" *ngIf="createForm.get('description').invalid && createForm.get('description').touched">
+      Description should be at least {{minLength}} characters!
+      </div>
+
     </div>
-    <div layout="row" class="pad-bottom">
+    <div layout="row" class="insert">
       <md-input-container flex>
         <input mdInput #reason
                placeholder="memo"
                formControlName="memo"
                flex/>
       </md-input-container>
+      <div class="error" *ngIf="createForm.get('memo').invalid && createForm.get('memo').touched">
+        Memo should be at least {{minLength}} characters!
+      </div>
     </div>
 
     <div layout="row" class="pad-bottom pad-top">
@@ -23,6 +30,9 @@
         [placeholder]="'Select Student'"
         [innerFormControl]="createForm.controls['student']">
       </pams-student-select>
+      <div class="tc-red-600" *ngIf="createForm.get('student').invalid && createForm.get('student').touched">
+        Please choose student!
+      </div>
     </div>
 
     <div layout="row" class="pad-bottom pad-top">
@@ -30,11 +40,14 @@
         [placeholder]="'Select Academic Session'"
         [innerFormControl]="createForm.controls['academicSession']">
       </pams-academic-session-select>
+    <div class="tc-red-600" *ngIf="createForm.get('academicSession').invalid && createForm.get('academicSession').touched">
+        Please choose academicSession!
+      </div>
     </div>
 
   </form>
 </md-dialog-content>
 <md-dialog-actions align="end">
-  <button md-raised-button color="accent" (click)="save(createForm.value, createForm.valid)">Save</button>
+  <button md-raised-button color="accent" (click)="save(createForm.value, createForm.valid)"   [disabled]="!createForm.valid">Save</button>
 </md-dialog-actions>
 

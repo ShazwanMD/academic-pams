@@ -1,5 +1,6 @@
+import {MdSnackBar} from '@angular/material/snack-bar';
 import {Component, OnInit, ViewContainerRef} from '@angular/core';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {Validators, FormBuilder,  FormGroup} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Store} from '@ngrx/store';
 import {MdDialogRef} from '@angular/material';
@@ -22,21 +23,22 @@ export class GraduationApplicationCreatorDialog implements OnInit {
               private route: ActivatedRoute,
               private formBuilder: FormBuilder,
               private viewContainerRef: ViewContainerRef,
+              private snackBar: MdSnackBar,
               private store: Store<GraduationModuleState>,
               private actions: GraduationApplicationActions,
               private dialog: MdDialogRef<GraduationApplicationCreatorDialog>) {
   }
 
   ngOnInit(): void {
-    this.createForm = this.formBuilder.group(<GraduationApplication>{
-      referenceNo: '',
-      sourceNo: '',
-      description: '',
-      memo: '',
-      cgpa: 0.00,
-      creditHour: 0,
-      student: <Student>{},
-      academicSession: <AcademicSession>{},
+    this.createForm = this.formBuilder.group({
+      referenceNo:  [''],
+      sourceNo: [''],
+      description: ['', Validators.required],
+      memo:  ['', Validators.required],
+      cgpa: [0.00],
+      creditHour: [0],
+      student:  ['', Validators.required],
+      academicSession: ['', Validators.required],
     });
   }
 
@@ -44,6 +46,10 @@ export class GraduationApplicationCreatorDialog implements OnInit {
     this.store.dispatch(this.actions.startGraduationApplicationTask(graduationApplicationCreator));
     this.dialog.close();
     this.router.navigate(['/secure/graduation/graduation-applications']);
+    let snackBarRef = this.snackBar.open( 'New graduation has been saved','',{ duration: 2000 } );
+    snackBarRef.afterDismissed().subscribe(() => {
+       } );
+  }
+    
   }
 
-}
