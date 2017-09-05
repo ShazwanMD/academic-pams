@@ -113,7 +113,7 @@ export class AdmissionApplicationCreatorDialog implements OnInit {
             } else {
                 if ( val['status'] == 'success' ) {
                                  
-                    //open dialog to confirm registration
+                  /*  //open dialog to confirm registration
                     console.log('showDialog');
                     let config = new MdDialogConfig();
                     config.viewContainerRef = this.vcf;
@@ -132,7 +132,19 @@ export class AdmissionApplicationCreatorDialog implements OnInit {
                         //router navigate to register student application
                         this.router.navigate(['/secure/term/admission-applications/admission-application-center2']);
                         
-                    });
+                    });*/
+                    
+                    let snackBarRef = this.snackBar.open( 'Reviewing semester registration ' + admissionApplication.student.identityNo , 'OK', { duration: 5000 } );
+                    snackBarRef.afterDismissed().subscribe(() => {
+                        console.log( 'The snack-bar was dismissed' );
+                        console.log( 'Accumulated object:', val )
+                        val['status'] = '';
+                        try{
+                            this.dialog.closeAll(); 
+                            
+                        } catch(ex){}  
+                        this.router.navigate(['/secure/term/admission-applications/admission-application-center2']);
+                    } );
                 }
             }
         }

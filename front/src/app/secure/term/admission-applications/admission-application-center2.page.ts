@@ -73,6 +73,8 @@ export class StudentAdmissionApplicationCenterPage implements OnInit {
     this.store.dispatch(this.actions.findAssignedAdmissionApplicationTasks());
     this.store.dispatch(this.actions.findPooledAdmissionApplicationTasks());
     this.store.dispatch(this.actions.findArchivedAdmissionApplications());
+    
+    //alert("Please VIEW your registration to register semester");
   }
 
   goBack(route: string): void {
