@@ -1,3 +1,4 @@
+import {MdSnackBar} from '@angular/material/snack-bar';
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -18,6 +19,7 @@ export class CurriculumEditorDialog implements OnInit {
   private _subject: Subject;
   constructor(private router: Router,
               private route: ActivatedRoute,
+              private snackBar: MdSnackBar,
               private formBuilder: FormBuilder,
               private store: Store<PlannerModuleState>,
               private actions: CurriculumActions,
@@ -57,6 +59,10 @@ export class CurriculumEditorDialog implements OnInit {
   save(curriculum: Curriculum, isValid: boolean): void {
     if (!curriculum.id) this.store.dispatch(this.actions.saveCurriculum(curriculum));
     else this.store.dispatch(this.actions.updateCurriculum(curriculum));
+
+    let snackBarRef = this.snackBar.open( 'New Academic Session: ' + curriculum.code + ' has been saved', '', { duration: 3000 } );
+    snackBarRef.afterDismissed().subscribe(() => {
+       } );
     this.dialog.close();
   }
 }
