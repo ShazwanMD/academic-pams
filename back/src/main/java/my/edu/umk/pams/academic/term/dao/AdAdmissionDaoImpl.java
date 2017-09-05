@@ -39,7 +39,7 @@ public class AdAdmissionDaoImpl extends GenericDaoSupport<Long, AdAdmission> imp
         query.setEntity("cohort", cohort);
         query.setEntity("student", student);
         query.setInteger("state", AdMetaState.ACTIVE.ordinal());
-        return (AdAdmission) query.uniqueResult();
+        return (AdAdmission) query.setMaxResults(1).uniqueResult();
     }
     
     @Override
