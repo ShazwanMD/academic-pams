@@ -1,13 +1,22 @@
+<md-card class="bgc-green-600" flex>
+  <md-card-content
+    class="text-center">
+    <div class="md-display-1">{{enrollmentApplication?.referenceNo}} </div>
+    <div layout="column" layout-padding>
+      <div class="md-subhead tc-grey-100">Reference No.</div>
+    </div>
+  </md-card-content>
+</md-card>
 <md-card>
   <md-card-title>Action</md-card-title>
   <md-card-subtitle>Actions available on current section</md-card-subtitle>
   <md-divider></md-divider>
   <md-nav-list flex dense>
-    <md-list-item [routerLink]="['/secure/term/admissions', enrollmentApplication.admission.id, 'student-admission-detail']" ><!-- (click)="updateDialog()"  [routerLink]="['/secure/term/admissions', enrollmentApplication.admission.id]"-->
+   <!--No need to edit if confirmation was made in workflow  <md-list-item  > [routerLink]="['/secure/term/admissions', enrollmentApplication.admission.id, 'student-admission-detail']"
       <md-icon md-list-avatar>done_all</md-icon>
       <h4 md-line>Edit Enrollment Application {{enrollmentApplication?.referenceNo}} </h4>
       <p md-line>Edit this enrollment application </p>
-    </md-list-item>
+    </md-list-item> -->
     <md-list-item [routerLink]="['/secure/term/offerings']">
       <md-icon md-list-avatar>done_all</md-icon>
       <h4 md-line>Create Offering</h4>

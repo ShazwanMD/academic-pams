@@ -153,4 +153,9 @@ export class AdmissionApplicationManualDialog implements OnInit {
        //end validation duplicate status 
       
     }
+    
+    //close dialog
+    close( ): void {
+    this.dialog.closeAll();
+    }
 }

@@ -65,13 +65,14 @@ export class StudentEnrollmentCenterPage implements OnInit {
 
   viewTask(task: EnrollmentApplicationTask) {
     console.log('enrollmentApplication: ' + task.taskId);
-    this.router.navigate(['/secure/term/enrollment-applications/student-enrollment-application-task-detail', task.taskId]);
+    //this.router.navigate(['/secure/term/enrollment-applications/student-enrollment-application-task-detail', task.taskId]);
+    this.router.navigate(['/secure/term/enrollment-applications']);
   }
 
   viewEnrollmentApplication(enrollmentApplication: EnrollmentApplication) {
     console.log('students applications: ' + enrollmentApplication.referenceNo);
     this.router.navigate(['/secure/term/enrollment-applications/', enrollmentApplication.referenceNo , 'student-enrollment-application-detail']);
-    //this.router.navigate(['/secure/term/offerings', offering.canonicalCode]);
+    
   }
 
   ngOnInit(): void {
