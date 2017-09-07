@@ -14,10 +14,15 @@
   <md-divider></md-divider>
 
   <md-nav-list flex dense><!-- [routerLink]="['/secure/term/admission-applications/admission-application-center2']" -->
-    <md-list-item >
+    <md-list-item  *ngIf="enrollmentApplications?.length > 0">
       <md-icon md-list-avatar >done_all</md-icon>
       <h4 md-line (click)="semesterRegister()">Create semester registration {{admission?.student?.identityNo}}</h4>
       <p md-line>Create new semester registration </p>
+    </md-list-item>
+     <md-list-item  *ngIf="enrollmentApplications?.length == 0">
+      <md-icon md-list-avatar >done_all</md-icon>
+      <h4 md-line (click)="courseEnrollManual()">Course enrollment</h4>
+      <p md-line>Please create new course enrollment </p>
     </md-list-item>
 
     <md-divider></md-divider>

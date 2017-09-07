@@ -1,0 +1,39 @@
+<h2 md-dialog-title>Course Enrollment Manual Info</h2>
+<md-dialog-content> <!-- Current AcademicSession: {{_academicSession.id}} -->
+  <form [formGroup]="createForm" novalidate>
+    <div fxLayout fxLayout.xs="column" fxLayoutWrap fxLayoutGap="25px">
+<style>
+table, th, td {
+    border-collapse: collapse;
+}
+th, td {
+    padding: 10px;
+}
+</style>
+	<table style="width:100%">
+		<tbody>
+			<tr style="font-family:verdana;background-color:#4AC5F9" >
+				<td > <b>{{_admission.student.name}}, Please make course enroll to proceed! </b></td><!-- {{_admission.id}} -->
+				<td></td>
+				<td></td>
+			</tr>
+			<tr style="font-family:verdana;background-color:#4AC5F9" >
+				<td >  <div flex-gt-md="20" align="center">
+              <img src="http://localhost:4200/assets/img/mCourseEnroll.png"><!--  width="120" height="150" -->
+            </div> </td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+		
+		</tbody>
+	</table>
+        </div>
+  </form>
+</md-dialog-content>
+<md-dialog-actions align="center">
+   <button md-raised-button color="accent"  (click)="close()">
+    Close Dialog
+  </button>
+</md-dialog-actions>
+

@@ -17,7 +17,10 @@
        
       </div>
       <div flex-gt-md="30">
-        <pams-student-admission-action [admission]="admission$ | async"></pams-student-admission-action>
+        <pams-student-admission-action 
+        [admission]="admission$ | async"
+        [enrollmentApplications]="enrollmentApplications$ | async">
+        </pams-student-admission-action>
       </div>
     </div>
   </div>
