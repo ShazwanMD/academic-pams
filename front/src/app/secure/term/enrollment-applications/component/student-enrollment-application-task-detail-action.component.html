@@ -3,7 +3,7 @@
   <md-card-subtitle>Actions available on current section</md-card-subtitle>
   <md-divider></md-divider>
   <md-nav-list flex dense>
-    <md-list-item [routerLink]="['/secure/term/admissions', admission.id]"><!-- (click)="updateDialog()" -->
+    <md-list-item [routerLink]="['/secure/term/admissions', enrollmentApplication.admission.id, 'student-admission-detail']" ><!-- (click)="updateDialog()"  [routerLink]="['/secure/term/admissions', enrollmentApplication.admission.id]"-->
       <md-icon md-list-avatar>done_all</md-icon>
       <h4 md-line>Edit Enrollment Application {{enrollmentApplication?.referenceNo}} </h4>
       <p md-line>Edit this enrollment application </p>
