@@ -15,13 +15,14 @@
       </a>
     </md-nav-list>
     <div toolbar-buttons layout="row" layout-align="start center" flex>
-      <span flex>Staff Center</span>
-      <button md-button class="md-icon-button">
+      <span flex>Staff Information</span>
+      <!-- <button md-button class="md-icon-button">
         <md-icon class="md-24">settings</md-icon>
       </button>
       <button md-button class="md-icon-button">
         <md-icon class="md-24">more_vert</md-icon>
-      </button>
+      </button> -->
+       {{today | date:'medium'}}
     </div>
     <md-card class="">
       <pams-staff-list
