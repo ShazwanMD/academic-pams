@@ -85,9 +85,9 @@ export class EnrollmentApplicationEffects {
             this.enrollmentApplicationActions.findAssignedEnrollmentApplicationTasks(),
             this.enrollmentApplicationActions.findPooledEnrollmentApplicationTasks(),
             this.enrollmentApplicationActions.findArchivedEnrollmentApplications(),], ) );
-        //.withLatestFrom( this.store$.select( ...this.ADMISSION ) )
-        //.map(( state ) => state[1] )
-        //.map(( admission: Admission ) => this.admissionActions.findAdmissionById( admission.id ) );
+    //.withLatestFrom( this.store$.select( ...this.ADMISSION ) )
+    //.map(( state ) => state[1] )
+    //.map(( admission: Admission ) => this.admissionActions.findAdmissionById( admission.id ) );
 
 
     //administrator startEnrollmentApplicationTask

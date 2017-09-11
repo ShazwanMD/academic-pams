@@ -84,7 +84,7 @@ public class TermController {
 
 	@Autowired
 	private AuthenticationManager authenticationManager;
-	
+
 	@Autowired
 	private SecurityService securityService;
 	// ====================================================================================================
@@ -212,7 +212,7 @@ public class TermController {
 
 	@RequestMapping(value = "/admissionApplications/assignedTasks", method = RequestMethod.GET)
 	public ResponseEntity<List<AdmissionApplicationTask>> findAssignedAdmissionApplications() {
-		// dummyLogin();
+		
 		List<Task> tasks = termService.findAssignedAdmissionApplicationTasks(0, 100);
 		return new ResponseEntity<List<AdmissionApplicationTask>>(termTransformer.toAdmissionApplicationTaskVos(tasks),
 				HttpStatus.OK);
@@ -220,7 +220,7 @@ public class TermController {
 
 	@RequestMapping(value = "/admissionApplications/pooledTasks", method = RequestMethod.GET)
 	public ResponseEntity<List<AdmissionApplicationTask>> findPooledAdmissionApplications() {
-		// dummyLogin();
+		
 		List<Task> tasks = termService.findPooledAdmissionApplicationTasks(0, 100);
 		return new ResponseEntity<List<AdmissionApplicationTask>>(termTransformer.toAdmissionApplicationTaskVos(tasks),
 				HttpStatus.OK);
@@ -230,7 +230,7 @@ public class TermController {
 	@RequestMapping(value = "/admissionApplications/startTask", method = RequestMethod.POST)
 	public ResponseEntity<String> startAdmissionApplicationTask(@RequestBody AdmissionApplication vo) throws Exception {
 		LOG.debug("start task");
-		
+
 		AdStudent student = identityService.findStudentById(vo.getStudent().getId());
 		AdAcademicSession academicSession = plannerService.findAcademicSessionById(vo.getAcademicSession().getId());
 		AdStudyCenter studyCenter = commonService.findStudyCenterById(1L); // todo:
@@ -285,8 +285,7 @@ public class TermController {
 			systemService.saveEmailQueue(emailQueue);
 			LOG.debug("test2: {}", emailQueue);
 		}
-	
-		
+
 		// return new ResponseEntity<String>(referenceNo, HttpStatus.OK);
 		return new ResponseEntity<String>("success", HttpStatus.OK);
 	}
@@ -300,22 +299,21 @@ public class TermController {
 
 	@RequestMapping(value = "/admissionApplications/claimTask", method = RequestMethod.POST)
 	public void claimAdmissionApplicationTask(@RequestBody AdmissionApplicationTask vo) {
-		// dummyLogin();
+		
 		Task task = termService.findAdmissionApplicationTaskByTaskId(vo.getTaskId());
 		workflowService.claimTask(task);
 	}
 
 	@RequestMapping(value = "/admissionApplications/completeTask", method = RequestMethod.POST)
 	public void completeAdmissionApplicationTask(@RequestBody AdmissionApplicationTask vo) {
-		// dummyLogin();
+		
 		Task task = termService.findAdmissionApplicationTaskByTaskId(vo.getTaskId());
 		workflowService.completeTask(task);
 	}
 
-	// release task admission application created 6/7/17
 	@RequestMapping(value = "/admissionApplications/releaseTask", method = RequestMethod.POST)
 	public ResponseEntity<String> releaseAdmissionApplicationTask(@RequestBody AdmissionApplicationTask vo) {
-		// dummyLogin();
+		
 		Task task = termService.findAdmissionApplicationTaskByTaskId(vo.getTaskId());
 		workflowService.releaseTask(task);
 		return new ResponseEntity<String>("Success", HttpStatus.OK);
@@ -324,13 +322,12 @@ public class TermController {
 	@RequestMapping(value = "/admissionApplications/{referenceNo}", method = RequestMethod.GET)
 	public ResponseEntity<AdmissionApplication> findAdmissionApplicationByReferenceNo(
 			@PathVariable String referenceNo) {
-		// dummyLogin();
+		
 		AdAdmissionApplication application = termService.findAdmissionApplicationByReferenceNo(referenceNo);
 		return new ResponseEntity<AdmissionApplication>(termTransformer.toAdmissionApplicationVo(application),
 				HttpStatus.OK);
 	}
 
-	// find enrollments by admission created on 14/6/17
 	@RequestMapping(value = "/admissions/{id}/enrollments", method = RequestMethod.GET)
 	public ResponseEntity<List<Enrollment>> findEnrollmentsByAdmission(@PathVariable Long id)
 			throws UnsupportedEncodingException {
@@ -340,7 +337,6 @@ public class TermController {
 		return new ResponseEntity<List<Enrollment>>(enrollmentVos, HttpStatus.OK);
 	}
 
-	// find enrollment applications by admission created on 18/6/17
 	@RequestMapping(value = "/admissions/{id}/enrollmentApplications", method = RequestMethod.GET)
 	public ResponseEntity<List<EnrollmentApplication>> findEnrollmentApplicationsByAdmission(@PathVariable Long id)
 			throws UnsupportedEncodingException {
@@ -351,12 +347,10 @@ public class TermController {
 		return new ResponseEntity<List<EnrollmentApplication>>(enrollmentApplicationVos, HttpStatus.OK);
 	}
 
-	// delete enrollmentApplication by admission
 	@RequestMapping(value = "/admissions/{id}/enrollment-applications/{enrollmentApplicationId}", method = RequestMethod.DELETE)
 	public ResponseEntity<String> removeEnrollmentApplication(@PathVariable Long id,
 			@PathVariable Long enrollmentApplicationId) {
-		// dummyLogin();
-
+		
 		LOG.debug("enrollmentApplicationId:{}", enrollmentApplicationId);
 		AdAdmission admission = termService.findAdmissionById(id);
 		AdEnrollmentApplication application = termService.findEnrollmentApplicationById(enrollmentApplicationId);
@@ -395,18 +389,15 @@ public class TermController {
 		return new ResponseEntity<Enrollment>(termTransformer.toEnrollmentVo(enrollment), HttpStatus.OK);
 	}
 
-	// update enrollment by section
 	@RequestMapping(value = "/sections/{canonicalCode}/enrollments/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<String> updateEnrollment(@PathVariable String canonicalCode, @RequestBody Enrollment vo) {
-		// dummyLogin();
-
+		
 		AdEnrollment enrollment = termService.findEnrollmentById(vo.getId());
 		enrollment.setStatus(AdEnrollmentStatus.get(vo.getEnrollmentStatus().ordinal()));
 		termService.updateEnrollment(enrollment);
 		return new ResponseEntity<>("Success", HttpStatus.OK);
 	}
 
-	// find gradebooksByEnrollment
 	@RequestMapping(value = "/enrollments/{id}/gradebooks", method = RequestMethod.GET)
 	public ResponseEntity<List<Gradebook>> findGradebooksByEnrollment(@PathVariable Long id) {
 		AdEnrollment enrollment = termService.findEnrollmentById(id);
@@ -465,7 +456,6 @@ public class TermController {
 				termService.findEnrollmentApplicationItems(enrollmentApplication)), HttpStatus.OK);
 	}
 
-	// find enrollment application by id
 	@RequestMapping(value = "/enrollmentApplicationItems/{id}", method = RequestMethod.GET)
 	public ResponseEntity<EnrollmentApplicationItem> findEnrollmentApplicationItemById(@PathVariable Long id) {
 		AdEnrollmentApplicationItem enrollmentApplicationItem = termService.findEnrollmentApplicationItemById(id);
@@ -477,13 +467,12 @@ public class TermController {
 	public ResponseEntity<String> addEnrollmentApplicationItem(@PathVariable String referenceNo,
 			@RequestBody EnrollmentApplicationItem vo) {
 
-		//AdEnrollmentApplication application = termService.findEnrollmentApplicationById(vo.getApplication().getId());
 		AdEnrollmentApplication application = termService.findEnrollmentApplicationByReferenceNo(referenceNo);
 		AdSection section = termService.findSectionById(vo.getSection().getId());
-		
+
 		System.out.println("section" + section.getCanonicalCode());
 		System.out.println("application" + application.getId());
-		
+
 		if (isEnrollmentApplicationItemExists(application, section)) {
 
 			System.out.println("Duplicate items" + section.getCanonicalCode());
@@ -506,7 +495,7 @@ public class TermController {
 	@RequestMapping(value = "/enrollmentApplications/{referenceNo}/enrollmentApplicationItems", method = RequestMethod.PUT)
 	public ResponseEntity<String> updateEnrollmentApplicationItems(@PathVariable String referenceNo,
 			@RequestBody EnrollmentApplicationItem item) {
-		// dummyLogin();
+		
 		AdEnrollmentApplication enrollmentApplication = termService.findEnrollmentApplicationByReferenceNo(referenceNo);
 		AdEnrollmentApplicationItem e = termService.findEnrollmentApplicationItemById(item.getId());
 		e.setAction(AdEnrollmentApplicationAction.ADD);
@@ -518,7 +507,7 @@ public class TermController {
 	@RequestMapping(value = "/enrollmentApplications/{referenceNo}/enrollmentApplicationItems/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<String> deleteEnrollmentApplicationItems(@PathVariable String referenceNo,
 			@PathVariable Long id) {
-		// dummyLogin();
+		
 		AdEnrollmentApplication enrollmentApplication = termService.findEnrollmentApplicationByReferenceNo(referenceNo);
 		AdEnrollmentApplicationItem e = termService.findEnrollmentApplicationItemById(id);
 		termService.deleteEnrollmentApplicationItem(enrollmentApplication, e);
@@ -527,7 +516,7 @@ public class TermController {
 
 	@RequestMapping(value = "/enrollmentApplications/assignedTasks", method = RequestMethod.GET)
 	public ResponseEntity<List<EnrollmentApplicationTask>> findAssignedEnrollmentApplications() {
-		// dummyLogin();
+		
 		List<Task> tasks = termService.findAssignedEnrollmentApplicationTasks(0, 100);
 		return new ResponseEntity<List<EnrollmentApplicationTask>>(
 				termTransformer.toEnrollmentApplicationTaskVos(tasks), HttpStatus.OK);
@@ -535,7 +524,7 @@ public class TermController {
 
 	@RequestMapping(value = "/enrollmentApplications/pooledTasks", method = RequestMethod.GET)
 	public ResponseEntity<List<EnrollmentApplicationTask>> findPooledEnrollmentApplications() {
-		// dummyLogin();
+		
 		List<Task> tasks = termService.findPooledEnrollmentApplicationTasks(0, 100);
 		return new ResponseEntity<List<EnrollmentApplicationTask>>(
 				termTransformer.toEnrollmentApplicationTaskVos(tasks), HttpStatus.OK);
@@ -603,7 +592,7 @@ public class TermController {
 
 	@RequestMapping(value = "/enrollmentApplications/releaseTask", method = RequestMethod.POST)
 	public ResponseEntity<String> releaseEnrollmentApplicationTask(@RequestBody EnrollmentApplicationTask vo) {
-		// dummyLogin();
+		
 		Task task = termService.findEnrollmentApplicationTaskByTaskId(vo.getTaskId());
 		workflowService.releaseTask(task);
 		return new ResponseEntity<String>("Success", HttpStatus.OK);
@@ -784,7 +773,7 @@ public class TermController {
 
 	@RequestMapping(value = "/offerings/{canonicalCode}/assessments/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<String> deleteAssessment(@PathVariable String canonicalCode, @PathVariable Long id) {
-		// dummyLogin();
+		
 		LOG.debug("assessment:{}", id);
 		LOG.debug("Offering Canonical:{}", canonicalCode);
 		AdOffering offering = termService.findOfferingByCanonicalCode(canonicalCode);
@@ -795,7 +784,7 @@ public class TermController {
 
 	@RequestMapping(value = "/offerings/{canonicalCode}/sections", method = RequestMethod.POST)
 	public ResponseEntity<String> addSection(@PathVariable String canonicalCode, @RequestBody Section vo) {
-		// dummyLogin();
+		
 
 		System.out.println("Before checking isSectionExists");
 
@@ -822,7 +811,7 @@ public class TermController {
 
 	@RequestMapping(value = "/offerings", method = RequestMethod.POST)
 	public ResponseEntity<String> saveOffering(@RequestBody Offering vo) {
-		// dummyLogin();
+		
 
 		if (isOfferingExists(vo.getCanonicalCode())) {
 			System.out.println("Duplicate offering:" + vo.getCanonicalCode());
@@ -885,17 +874,7 @@ public class TermController {
 		return termService.countAdmissionApplication(session, student);
 
 	}
-	/*
-	 * //countEnrollmentApplication private int
-	 * countEnrollmentApplication(String string, AdAcademicSession
-	 * academicSession, AdStudent student) {
-	 * System.out.println(termService.countEnrollmentApplication(null,
-	 * academicSession, student)); return
-	 * termService.countAdmissionApplication(null, academicSession, student);
-	 * 
-	 * }
-	 */
-
+	
 	@RequestMapping(value = "/offerings/{canonicalCode}", method = RequestMethod.PUT)
 	public ResponseEntity<String> updateOffering(@PathVariable String canonicalCode, @RequestBody Offering vo) {
 		// dummyLogin();
@@ -991,7 +970,6 @@ public class TermController {
 	// ASSESSMENT
 	// ====================================================================================================
 	// finder
-
 	@RequestMapping(value = "/assessments/{id}", method = RequestMethod.GET)
 	public ResponseEntity<Assessment> findAssessmentById(@PathVariable Long id) {
 		AdAssessment assessment = termService.findAssessmentById(id);
@@ -1024,8 +1002,7 @@ public class TermController {
 
 	@RequestMapping(value = "/sections/{canonicalCode}/appointments", method = RequestMethod.POST)
 	public ResponseEntity<String> addAppointment(@PathVariable String canonicalCode, @RequestBody Appointment vo) {
-		// dummyLogin();
-
+		
 		AdOffering offering = termService.findOfferingByCanonicalCode(canonicalCode);
 		AdSection section = termService.findSectionById(vo.getSection().getId());
 		AdStaff staff = identityService.findStaffByIdentityNo(vo.getStaff().getIdentityNo());
@@ -1068,8 +1045,7 @@ public class TermController {
 
 	@RequestMapping(value = "/sections/{canonicalCode}/appointments/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<String> updateAppointment(@PathVariable String canonicalCode, @RequestBody Appointment vo) {
-		// dummyLogin();
-
+		
 		AdSection section = termService.findSectionByCanonicalCode(canonicalCode);
 		AdAppointment appointment = termService.findAppointmentById(vo.getId());
 		appointment.setSection(section);
@@ -1082,8 +1058,7 @@ public class TermController {
 	@RequestMapping(value = "/sections/{canonicalCode}/appointments/{appointmentId}", method = RequestMethod.DELETE)
 	public ResponseEntity<String> removeAppointment(@PathVariable String canonicalCode,
 			@PathVariable Long appointmentId) {
-		// dummyLogin();
-
+		
 		LOG.debug("appointment:{}", appointmentId);
 		AdSection section = termService.findSectionByCanonicalCode(canonicalCode);
 		AdAppointment appointment = termService.findAppointmentById(appointmentId);
@@ -1100,8 +1075,6 @@ public class TermController {
 
 	}
 
-	// find gradebooksBySection
-
 	@RequestMapping(value = "/sections/{canonicalCode}/gradebooks", method = RequestMethod.GET)
 	public ResponseEntity<List<Gradebook>> findGradebooksBySection(@PathVariable String canonicalCode) {
 		AdSection section = termService.findSectionByCanonicalCode(canonicalCode);
@@ -1111,17 +1084,6 @@ public class TermController {
 
 	}
 
-	/*// find gradebooksMatrixBySection 28/8/17
-	@RequestMapping(value = "/sections/{canonicalCode}/gradebookMatrices", method = RequestMethod.GET)
-	public ResponseEntity<List<Gradebook>> findGradebookMatricesBySection(@PathVariable String canonicalCode) {
-		AdSection section = termService.findSectionByCanonicalCode(canonicalCode);
-		List<AdGradebook> gradebooks = termService.findGradebooks(section);
-		List<Gradebook> gradebookVos = termTransformer.toGradebookVos(gradebooks);
-		return new ResponseEntity<List<Gradebook>>(gradebookVos, HttpStatus.OK);
-
-	}*/
-	
-	//find gradebookmatrixBySection 7/9/17
 	@RequestMapping(value = "/sections/{canonicalCode}/gradebookMatrices", method = RequestMethod.GET)
 	public ResponseEntity<List<GradebookMatrix>> findGradebookMatricesBySection(@PathVariable String canonicalCode) {
 		AdSection section = termService.findSectionByCanonicalCode(canonicalCode);
@@ -1179,7 +1141,7 @@ public class TermController {
 	@RequestMapping(value = "/offerings/{canonicalCode}/gradebookMatrices", method = RequestMethod.GET)
 	public ResponseEntity<List<GradebookMatrix>> findGradebookMatrices(@PathVariable String canonicalCode) {
 		LOG.debug("offerings-gradebookMatrices:{}", canonicalCode);
-		
+
 		AdOffering offering = termService.findOfferingByCanonicalCode(canonicalCode);
 		List<AdEnrollment> enrollments = termService.findEnrollments(offering);
 		List<GradebookMatrix> matrices = new ArrayList<GradebookMatrix>();
@@ -1283,8 +1245,7 @@ public class TermController {
 
 	@RequestMapping(value = "/offerings/{canonicalCode}/downloadGradebook", method = RequestMethod.GET)
 	public ResponseEntity downloadGradebook(@PathVariable String canonicalCode) {
-		// dummyLogin();
-
+		
 		AdOffering offering = termService.findOfferingByCanonicalCode(canonicalCode);
 		ByteArrayResource resource = null;
 		try {

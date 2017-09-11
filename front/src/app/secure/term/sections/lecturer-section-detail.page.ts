@@ -21,13 +21,12 @@ import { Assessment } from "../../../shared/model/term/assessment.interface";
 
 export class LecturerSectionDetailPage implements OnInit {
 
-
     private OFFERING: string[] = 'termModuleState.offering'.split( '.' );
     private SECTION: string[] = 'termModuleState.section'.split( '.' );
     private GRADEBOOK_MATRICES: string[] = 'termModuleState.gradebookMatricesSection'.split( '.' );
     private ENROLLMENTS: string[] = 'termModuleState.enrollments'.split( '.' );
     private ASSESSMENTS: string[] = 'termModuleState.assessments'.split( '.' );
-    private GRADEBOOKS: string[] = 'termModuleState.sectionGradebooks'.split('.');
+    private GRADEBOOKS: string[] = 'termModuleState.sectionGradebooks'.split( '.' );
 
     private offering$: Observable<Offering>;
     private section$: Observable<Section>;
@@ -53,8 +52,8 @@ export class LecturerSectionDetailPage implements OnInit {
         this.offering$ = this.store.select( ...this.OFFERING );
         this.gradebookMatrices$ = this.store.select( ...this.GRADEBOOK_MATRICES );
         this.enrollments$ = this.store.select( ...this.ENROLLMENTS );
-        this.assessments$ = this.store.select(...this.ASSESSMENTS);
-        this.gradebooks$ = this.store.select( ...this.GRADEBOOKS );   
+        this.assessments$ = this.store.select( ...this.ASSESSMENTS );
+        this.gradebooks$ = this.store.select( ...this.GRADEBOOKS );
     }
 
     showDialog(): void {

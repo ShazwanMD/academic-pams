@@ -1,6 +1,5 @@
 import { Component, Input, OnInit, ViewContainerRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-
 import { TermService } from '../../../../services';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
@@ -29,7 +28,6 @@ export class AdminLecturerSectionDetailPage implements OnInit {
     /*
     private GRADEBOOKS: string[] = 'termModuleState.sectionGradebooks'.split('.');
    */
-
     private offering$: Observable<Offering>;
     private section$: Observable<Section>;
     //private gradebooks$: Observable<Gradebook[]>;
@@ -41,7 +39,6 @@ export class AdminLecturerSectionDetailPage implements OnInit {
     @Input() offering: Offering;
     @Input() gradebooks: Gradebook;
     @Input() gradebookMatrices: GradebookMatrix;
-
 
     constructor( private router: Router,
         private route: ActivatedRoute,
@@ -59,7 +56,6 @@ export class AdminLecturerSectionDetailPage implements OnInit {
         //this.gradebooks$ = this.store.select( ...this.GRADEBOOKS );
     }
 
-    
     showDialog(): void {
     }
 
@@ -67,7 +63,6 @@ export class AdminLecturerSectionDetailPage implements OnInit {
     }
 
     filter(): void {
-
     }
 
     ngOnInit(): void {

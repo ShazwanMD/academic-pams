@@ -69,7 +69,7 @@ public class TermTransformer {
 		task.setMetaState(MetaState.get(application.getMetadata().getState().ordinal()));
 		return task;
 	}
-	
+
 	public AdmissionApplication toAdmissionApplicationVo(AdAdmissionApplication application) {
 		AdmissionApplication vo = new AdmissionApplication();
 		vo.setId(application.getId());
@@ -225,7 +225,7 @@ public class TermTransformer {
 		// vo.setOffering(this.toOfferingVo(assessment.getOffering()));
 		return vo;
 	}
-	
+
 	public Gradebook toGradebookVo(AdGradebook gradebook) {
 		Gradebook vo = new Gradebook();
 		vo.setId(gradebook.getId());
@@ -251,14 +251,18 @@ public class TermTransformer {
 				.collect(toCollection(() -> new ArrayList<AdmissionApplication>()));
 	}
 
-	//enrollmentApplicationVos
-	/*public List<EnrollmentApplication> toEnrollmentApplicationVos(List<AdEnrollmentApplication> items) {
-		return items.stream().map((task) -> toEnrollmentApplicationVo(task))
-				.collect(toCollection(() -> new ArrayList<EnrollmentApplication>()));
-	}*/
-	
-	public List<EnrollmentApplication> toEnrollmentApplicationVos(List<AdEnrollmentApplication> enrollmentApplications) {
-		List<EnrollmentApplication> vos = enrollmentApplications.stream().map((enrollmentApplication) -> toEnrollmentApplicationVo(enrollmentApplication)).collect(toList());
+	// enrollmentApplicationVos
+	/*
+	 * public List<EnrollmentApplication>
+	 * toEnrollmentApplicationVos(List<AdEnrollmentApplication> items) { return
+	 * items.stream().map((task) -> toEnrollmentApplicationVo(task))
+	 * .collect(toCollection(() -> new ArrayList<EnrollmentApplication>())); }
+	 */
+
+	public List<EnrollmentApplication> toEnrollmentApplicationVos(
+			List<AdEnrollmentApplication> enrollmentApplications) {
+		List<EnrollmentApplication> vos = enrollmentApplications.stream()
+				.map((enrollmentApplication) -> toEnrollmentApplicationVo(enrollmentApplication)).collect(toList());
 		return vos;
 	}
 
@@ -276,7 +280,7 @@ public class TermTransformer {
 		List<Enrollment> vos = enrollments.stream().map((enrollment) -> toEnrollmentVo(enrollment)).collect(toList());
 		return vos;
 	}
-	
+
 	public List<Gradebook> toGradebookVos(List<AdGradebook> gradebooks) {
 		List<Gradebook> vos = gradebooks.stream().map((gradebook) -> toGradebookVo(gradebook)).collect(toList());
 		return vos;

@@ -86,7 +86,6 @@ export class StudentAdmissionEnrollmentApplicationListComponent implements OnIni
         this.creatorDialogRef2.componentInstance.admission = this.admission;
         this.creatorDialogRef2.afterClosed().subscribe(( res ) => {
             console.log( 'close dialog' );
-
             // load something here
         } );
     }

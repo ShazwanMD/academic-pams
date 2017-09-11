@@ -2,7 +2,6 @@
   <div toolbar-content layout="row" layout-align="center center" flex>
     <span>PAMS: Postgraduate Management System</span> <span flex></span>
   </div>
-
   <div md-content flex md-scroll-y>
     <div layout="column" layout-gt-md="row" class="inset">
       <div flex-gt-md="70">
@@ -19,7 +18,6 @@
           [assessments]="assessments$ | async">
         </pams-offering-assessment-list>
       </div>
-
       <div flex-gt-md="30">
         <pams-offering-action [offering]="offering$ | async"></pams-offering-action>
       </div>

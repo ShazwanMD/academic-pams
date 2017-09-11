@@ -24,7 +24,6 @@ export class SectionActions {
         };
     }
 
-
     static SAVE_SECTION = '[Section] Save Section';
 
     saveSection( section ): Action {
@@ -83,8 +82,8 @@ export class SectionActions {
             payload: gradebooks
         };
     }
-    
-  
+
+
     //find appointments by section
     static FIND_APPOINTMENTS_BY_SECTION = '[Section] Find Appointments By Section';
 
@@ -141,28 +140,27 @@ export class SectionActions {
             payload: section
         };
     }
-    
-    
+
     //find gradebook matrix by section
     static FIND_GRADEBOOK_MATRICESS_BY_SECTION = '[Section] Find Gradebook_matricess By Section';
 
-    findGradebookMatricessBySection(section): Action {
-      return {
-        type: SectionActions.FIND_GRADEBOOK_MATRICESS_BY_SECTION,
-        payload: section
-      };
+    findGradebookMatricessBySection( section ): Action {
+        return {
+            type: SectionActions.FIND_GRADEBOOK_MATRICESS_BY_SECTION,
+            payload: section
+        };
     }
 
     static FIND_GRADEBOOK_MATRICESS_BY_SECTION_SUCCESS = '[Section] Find Gradebook_matricess By Section Success';
 
-    findGradebookMatricessBySectionSuccess(gradebook_matricess): Action {
-      return {
-        type: SectionActions.FIND_GRADEBOOK_MATRICESS_BY_SECTION_SUCCESS,
-        payload: gradebook_matricess
-      };
+    findGradebookMatricessBySectionSuccess( gradebook_matricess ): Action {
+        return {
+            type: SectionActions.FIND_GRADEBOOK_MATRICESS_BY_SECTION_SUCCESS,
+            payload: gradebook_matricess
+        };
     }
 
-    
+
     static FIND_SECTION_BY_ID = '[Section] Find Section By Id';
 
     findSectionById( id ): Action {
@@ -199,7 +197,7 @@ export class SectionActions {
         };
     }
 
-   
+
     static ADD_SECTION = '[Section] Add Section';
 
     addSection( offering, section ): Action {
@@ -212,10 +210,10 @@ export class SectionActions {
     static ADD_SECTION_SUCCESS = '[Section] Add Section Success';
 
     addSectionSuccess( section ): Action {
-        console.log("success here in section");
+        console.log( "success here in section" );
         return {
             type: SectionActions.ADD_SECTION_SUCCESS,
-            payload: {status: section}
+            payload: { status: section }
         };
     }
 

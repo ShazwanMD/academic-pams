@@ -27,7 +27,6 @@
             [enrollmentApplicationTasks]="assignedEnrollmentApplicationTasks$ | async"
             (view)="viewTask($event)"></pams-assigned-enrollment-application-task-list>
         </md-tab>
-       
         <md-tab label="Approved Status">
           <pams-archived-enrollment-application-list [enrollmentApplications]="archivedEnrollmentApplications$ | async"
                                                      (view)="viewEnrollmentApplication($event)">
