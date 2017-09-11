@@ -38,7 +38,7 @@ export class AdminLecturerSectionEnrollmentListComponent implements AfterViewIni
   private selectedRows: Enrollment[];
 
   private columns: any[] = [
-    {name: 'id', label: 'Id'},
+   
     {name: 'admission.student.name', label: 'Student'},
     {name: 'enrollmentStatus', label: 'Status'},
     {name: 'enrollmentStanding', label: 'Standing'},
@@ -53,7 +53,7 @@ export class AdminLecturerSectionEnrollmentListComponent implements AfterViewIni
   fromRow: number = 1;
   currentPage: number = 1;
   pageSize: number = 5;
-  sortBy: string = 'id';
+  sortBy: string = 'admission.student.name';
   sortOrder: TdDataTableSortingOrder = TdDataTableSortingOrder.Descending;
 
   constructor(private _dataTableService: TdDataTableService,
