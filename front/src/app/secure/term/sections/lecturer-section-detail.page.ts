@@ -27,13 +27,11 @@ export class LecturerSectionDetailPage implements OnInit {
     private GRADEBOOK_MATRICES: string[] = 'termModuleState.gradebookMatricesSection'.split( '.' );
     private ENROLLMENTS: string[] = 'termModuleState.enrollments'.split( '.' );
     private ASSESSMENTS: string[] = 'termModuleState.assessments'.split( '.' );
-
-    //private GRADEBOOKS: string[] = 'termModuleState.sectionGradebooks'.split('.');
-
+    private GRADEBOOKS: string[] = 'termModuleState.sectionGradebooks'.split('.');
 
     private offering$: Observable<Offering>;
     private section$: Observable<Section>;
-    //private gradebooks$: Observable<Gradebook[]>;
+    private gradebooks$: Observable<Gradebook[]>;
     private gradebookMatrices$: Observable<GradebookMatrix>;
     private enrollments$: Observable<Enrollment>;
     private assessments$: Observable<Assessment>;
@@ -42,7 +40,6 @@ export class LecturerSectionDetailPage implements OnInit {
     @Input() offering: Offering;
     @Input() gradebooks: Gradebook;
     @Input() gradebookMatrices: GradebookMatrix;
-
 
     constructor( private router: Router,
         private route: ActivatedRoute,
@@ -57,8 +54,7 @@ export class LecturerSectionDetailPage implements OnInit {
         this.gradebookMatrices$ = this.store.select( ...this.GRADEBOOK_MATRICES );
         this.enrollments$ = this.store.select( ...this.ENROLLMENTS );
         this.assessments$ = this.store.select(...this.ASSESSMENTS);
-        //this.gradebooks$ = this.store.select( ...this.GRADEBOOKS );
-        
+        this.gradebooks$ = this.store.select( ...this.GRADEBOOKS );   
     }
 
     showDialog(): void {

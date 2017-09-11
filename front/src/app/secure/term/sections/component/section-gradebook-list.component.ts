@@ -152,6 +152,7 @@ import { TermModuleState } from '../../index';
 import { GradebookMatrix } from '../../../../shared/model/term/gradebook-matrix.interface';
 import { TdDataTableComponent } from '@covalent/core';
 import { Assessment } from '../../../../shared/model/term/assessment.interface';
+import { Gradebook } from '../../../../shared/model/term/gradebook.interface';
 import { Section } from '../../../../shared/model/term/section.interface';
 
 @Component( {
@@ -162,6 +163,7 @@ import { Section } from '../../../../shared/model/term/section.interface';
 export class SectionGradebookListComponent implements OnChanges {
 
     @Input() section: Section;
+    @Input() gradebooks: Gradebook[];
     @Input() gradebookMatrices: GradebookMatrix[];
     @Input() assessments: Assessment[];
     @ViewChild( 'dataTable' ) dataTable: TdDataTableComponent;
