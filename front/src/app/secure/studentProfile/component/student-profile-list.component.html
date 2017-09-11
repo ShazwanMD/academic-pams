@@ -39,6 +39,11 @@
       </a> -->
     <md-divider></md-divider>
   </md-nav-list>
+   <div toolbar-buttons layout="row" layout-align="start center" flex>
+      <span flex>Welcome, {{student?.name}}</span>
+      {{today | date:'medium'}}
+     
+    </div>
   <md-card class="">
     <md-card-content>
 
@@ -53,16 +58,16 @@
 
             <div flex-gt-md="35">
               <b>Student ID</b> : {{student?.identityNo}}<br/><br/>
-              <b>Name</b> : {{student?.name}}<br/><br/>
+             <!--  <b>Name</b> : {{student?.name}}<br/><br/> -->
               <b>Email</b> : {{student?.email}}<br/><br/>
               <b>Phone</b> : {{student?.phone}}<br/><br/>
-              <b>Mobile</b> : {{student?.mobile}}
+              <b>Mobile</b> : {{student?.mobile}}<br/><br/>
+               <b>Status</b> : {{student.studentStatus}}
             </div>
 
             <div flex-gt-md="40">
-              <b>Status</b> : {{student.studentStatus}}<br/><br/>
+             
               <b>Study Mode</b> : {{student.studyMode?.description}}<br/><br/>
-
               <b>Program</b> : {{student?.cohort?.program?.titleMs | uppercase}}<br/><br/>
               <b>Faculty</b> : {{student?.cohort?.program?.faculty?.description}}<br/><br/>
               <b>Cohort Session</b> : {{student?.cohort?.academicSession?.code}}<br/><br/>

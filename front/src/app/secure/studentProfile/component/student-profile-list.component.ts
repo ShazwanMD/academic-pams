@@ -27,14 +27,16 @@ import { StudentGuarantorEditorDialog } from "../dialog/student-guarantor-editor
 import { EnrollmentApplicationTaskCreatorDialog } from "../../term/enrollment-applications/dialog/enrollment-application-task-creator.dialog";
 import { EnrollmentApplicationTaskDialog } from "../../term/enrollment-applications/dialog/enrollment-application-task.dialog";
 import { GraduationApplicationCreatorDialog } from "../../graduation/graduation-applications/dialog/graduation-application-creator.dialog";
+import { DatePipe } from '@angular/common';
 
-
-@Component({
-    selector: 'pams-student-profile-list',
+@Component( {
+    selector: 'pams-student-profile-list', 
     templateUrl: 'student-profile-list.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
-})
+} )
 export class StudentProfileListPage implements OnInit {
+    
+    today: number = Date.now();
 
     private studentDialogRef: MdDialogRef<StudentDetailEditorDialog>;
     private studentContactEditorDialogRef: MdDialogRef<StudentContactEditorDialog>;
@@ -44,6 +46,8 @@ export class StudentProfileListPage implements OnInit {
     private creatorDialogRef: MdDialogRef<AdmissionApplicationTaskDialog>;
     private creatorDialogRef2: MdDialogRef<EnrollmentApplicationTaskDialog>;
     private creatorDialogRef3: MdDialogRef<GraduationApplicationCreatorDialog>;
+
+    
     //inputs
 
     @Input() student: Student;
@@ -59,10 +63,14 @@ export class StudentProfileListPage implements OnInit {
     @Input() admissionApplications: AdmissionApplication[];
 
     @Output() view2 = new EventEmitter<Admission>();
+    
+    
 
 
     //Constructor
-    constructor(private router: Router,
+    constructor( 
+        
+        private router: Router,
         private route: ActivatedRoute,
         private actions: StudentProfileActions,
         private profileActions: ProfileActions,
@@ -70,8 +78,9 @@ export class StudentProfileListPage implements OnInit {
         private store: Store<StudentProfileModuleState>,
         private formBuilder: FormBuilder,
         private snackBar: MdSnackBar,
-        private dialog: MdDialog) {
-
+        private dialog: MdDialog ) {
+        
+       
     }
 
     //Address
@@ -126,7 +135,7 @@ export class StudentProfileListPage implements OnInit {
         { name: 'action', label: '' },
 
     ];
-    
+
     //view data admissionApplications to review supervision 
     private columnAdmissionApplication: any[] = [
         { name: 'id', label: 'Id' },
@@ -136,18 +145,18 @@ export class StudentProfileListPage implements OnInit {
         { name: 'advisor.identityNo', label: 'IdentityNo.' },
         { name: 'advisor.phone', label: 'Phone' },
         { name: 'advisor.program.code', label: 'Program' },
-        { name: 'advisor.program.faculty.name', label: 'Faculty' },        
+        { name: 'advisor.program.faculty.name', label: 'Faculty' },
         { name: 'action', label: '' },
     ];
 
 
-    goBack(route: string): void {
-        this.router.navigate(['/studentProfile']);
+    goBack( route: string ): void {
+        this.router.navigate( ['/studentProfile'] );
     }
 
     ngOnInit(): void {
-        
-        
+
+
         // this.route.params.subscribe((params: { identityNo: string }) => {
         //     let identityNo: string = params.identityNo;
         //     this.store.dispatch(this.profileActions.findStudentByIdentityNo(this.student.identityNo));
@@ -159,22 +168,22 @@ export class StudentProfileListPage implements OnInit {
     /*=========================================================================================*/
 
     editStudent(): void {
-        this.showDialog(this.student);
+        this.showDialog( this.student );
     }
 
-    private showDialog(student: Student): void {
-        console.log('edit student detail');
+    private showDialog( student: Student ): void {
+        console.log( 'edit student detail' );
         let config = new MdDialogConfig();
         config.viewContainerRef = this.vcf;
         config.role = 'dialog';
         config.width = '70%';
         config.height = '50%';
         config.position = { top: '0px' };
-        this.studentDialogRef = this.dialog.open(StudentDetailEditorDialog, config);
+        this.studentDialogRef = this.dialog.open( StudentDetailEditorDialog, config );
         this.studentDialogRef.componentInstance.student = this.student; // set
-        this.studentDialogRef.afterClosed().subscribe((res) => {
-            console.log('close dialog');
-        });
+        this.studentDialogRef.afterClosed().subscribe(( res ) => {
+            console.log( 'close dialog' );
+        } );
     }
 
 
@@ -183,41 +192,41 @@ export class StudentProfileListPage implements OnInit {
     /*=========================================================================================*/
     //ADD ADDRESS DIALOG
     addAddressDialog(): void {
-        console.log('add student address dialog');
+        console.log( 'add student address dialog' );
         let config = new MdDialogConfig();
         config.viewContainerRef = this.vcf;
         config.role = 'dialog';
         config.width = '70%';
         config.height = '80%';
         config.position = { top: '0px' };
-        this.studentAddressCreatorDialogRef = this.dialog.open(StudentAddressEditorDialog, config);
+        this.studentAddressCreatorDialogRef = this.dialog.open( StudentAddressEditorDialog, config );
         this.studentAddressCreatorDialogRef.componentInstance.student = this.student;
-        this.studentAddressCreatorDialogRef.afterClosed().subscribe((res) => {
-            console.log('close this dialog');
-        });
+        this.studentAddressCreatorDialogRef.afterClosed().subscribe(( res ) => {
+            console.log( 'close this dialog' );
+        } );
     }
 
     //EDIT ADDRESS DIALOG
-    editAddressDialog(address: Address, isValid: boolean): void {
-        console.log("edit student address dialog");
+    editAddressDialog( address: Address, isValid: boolean ): void {
+        console.log( "edit student address dialog" );
         let config = new MdDialogConfig();
         config.viewContainerRef = this.vcf;
         config.role = 'dialog';
         config.width = '70%';
         config.height = '80%';
         config.position = { top: '0px' };
-        this.studentAddressCreatorDialogRef = this.dialog.open(StudentAddressEditorDialog, config);
+        this.studentAddressCreatorDialogRef = this.dialog.open( StudentAddressEditorDialog, config );
         this.studentAddressCreatorDialogRef.componentInstance.address = address;
         this.studentAddressCreatorDialogRef.componentInstance.student = this.student;
-        this.studentAddressCreatorDialogRef.afterClosed().subscribe((res) => {
-            console.log("close dialog");
-        });
+        this.studentAddressCreatorDialogRef.afterClosed().subscribe(( res ) => {
+            console.log( "close dialog" );
+        } );
     }
 
     //DELETE ADDRESS
-    deleteAddress(contact: Contact): void {
-        console.log("delete student address");
-        this.store.dispatch(this.actions.deleteStudentAddress(this.student.identityNo, contact));
+    deleteAddress( contact: Contact ): void {
+        console.log( "delete student address" );
+        this.store.dispatch( this.actions.deleteStudentAddress( this.student.identityNo, contact ) );
     }
 
     /*=========================================================================================*/
@@ -225,42 +234,42 @@ export class StudentProfileListPage implements OnInit {
     /*=========================================================================================*/
     //ADD CONTACT DIALOG
     addContactDialog(): void {
-        console.log('Add Contact');
-        console.log("Add Contact" + this.student.identityNo);
+        console.log( 'Add Contact' );
+        console.log( "Add Contact" + this.student.identityNo );
         let config = new MdDialogConfig();
         config.viewContainerRef = this.vcf;
         config.role = 'dialog';
         config.width = '70%';
         config.height = '80%';
         config.position = { top: '0px' };
-        this.studentContactEditorDialogRef = this.dialog.open(StudentContactEditorDialog, config);
+        this.studentContactEditorDialogRef = this.dialog.open( StudentContactEditorDialog, config );
         this.studentContactEditorDialogRef.componentInstance.student = this.student;
-        this.studentContactEditorDialogRef.afterClosed().subscribe((res) => {
-        });
+        this.studentContactEditorDialogRef.afterClosed().subscribe(( res ) => {
+        } );
     }
 
     //EDIT CONTACT DIALOG
-    editContactDialog(contact: Contact, isValid: boolean): void {
-        console.log("Editing Contact");
-        console.log("EditContact" + this.student.identityNo);
+    editContactDialog( contact: Contact, isValid: boolean ): void {
+        console.log( "Editing Contact" );
+        console.log( "EditContact" + this.student.identityNo );
         let config = new MdDialogConfig();
         config.viewContainerRef = this.vcf;
         config.role = 'dialog';
         config.width = '70%';
         config.height = '80%';
         config.position = { top: '0px' };
-        this.studentContactEditorDialogRef = this.dialog.open(StudentContactEditorDialog, config);
+        this.studentContactEditorDialogRef = this.dialog.open( StudentContactEditorDialog, config );
         this.studentContactEditorDialogRef.componentInstance.contact = contact;
         this.studentContactEditorDialogRef.componentInstance.student = this.student;
-        this.studentContactEditorDialogRef.afterClosed().subscribe((res) => {
-        });
+        this.studentContactEditorDialogRef.afterClosed().subscribe(( res ) => {
+        } );
     }
 
     //DELETE CONTACT
-    deleteContact(contact: Contact): void {
-        console.log(this.student.identityNo);
-        console.log(contact);
-        this.store.dispatch(this.actions.deleteStudentContact(this.student.identityNo, contact));
+    deleteContact( contact: Contact ): void {
+        console.log( this.student.identityNo );
+        console.log( contact );
+        this.store.dispatch( this.actions.deleteStudentContact( this.student.identityNo, contact ) );
         //console.log("ini->",contact);
     }
 
@@ -269,40 +278,40 @@ export class StudentProfileListPage implements OnInit {
     /*=========================================================================================*/
     //ADD GUARDIAN DIALOG
     addGuardianDialog(): void {
-        console.log('add Student Guardian');
+        console.log( 'add Student Guardian' );
         let config = new MdDialogConfig();
         config.viewContainerRef = this.vcf;
         config.role = 'dialog';
         config.width = '70%';
         config.height = '80%';
         config.position = { top: '0px' };
-        this.studentGuardianCreatorDialogRef = this.dialog.open(StudentGuardianEditorDialog, config);
+        this.studentGuardianCreatorDialogRef = this.dialog.open( StudentGuardianEditorDialog, config );
         this.studentGuardianCreatorDialogRef.componentInstance.student = this.student;
-        this.studentGuardianCreatorDialogRef.afterClosed().subscribe((res) => {
-            console.log('close dialog');
-        });
+        this.studentGuardianCreatorDialogRef.afterClosed().subscribe(( res ) => {
+            console.log( 'close dialog' );
+        } );
     }
 
     //EDIT GUARDIAN DIALOG
-    editGuardianDialog(guardian: Guardian, isValid: boolean): void {
-        console.log('edit Student Guardian');
+    editGuardianDialog( guardian: Guardian, isValid: boolean ): void {
+        console.log( 'edit Student Guardian' );
         let config = new MdDialogConfig();
         config.viewContainerRef = this.vcf;
         config.role = 'dialog';
         config.width = '70%';
         config.height = '80%';
         config.position = { top: '0px' };
-        this.studentGuardianCreatorDialogRef = this.dialog.open(StudentGuardianEditorDialog, config);
+        this.studentGuardianCreatorDialogRef = this.dialog.open( StudentGuardianEditorDialog, config );
         this.studentGuardianCreatorDialogRef.componentInstance.guardian = guardian;
         this.studentGuardianCreatorDialogRef.componentInstance.student = this.student;
-        this.studentGuardianCreatorDialogRef.afterClosed().subscribe((res) => {
-        });
+        this.studentGuardianCreatorDialogRef.afterClosed().subscribe(( res ) => {
+        } );
     }
 
     //DELETE GUARDIAN
-    deleteGuardian(guardian: Guardian): void {
-        console.log(this.student.identityNo);
-        this.store.dispatch(this.actions.deleteStudentGuardian(this.student.identityNo, guardian));
+    deleteGuardian( guardian: Guardian ): void {
+        console.log( this.student.identityNo );
+        this.store.dispatch( this.actions.deleteStudentGuardian( this.student.identityNo, guardian ) );
     }
 
 
@@ -311,57 +320,57 @@ export class StudentProfileListPage implements OnInit {
     /*=========================================================================================*/
     //ADD GUARANTOR DIALOG
     addGuarantorDialog(): void {
-        console.log("add student guarantor");
+        console.log( "add student guarantor" );
         let config = new MdDialogConfig();
         config.viewContainerRef = this.vcf;
         config.role = 'dialog';
         config.width = '70%';
         config.height = '80%';
         config.position = { top: '0px' };
-        this.studentGuarantorCreatorDialogRef = this.dialog.open(StudentGuarantorEditorDialog, config);
+        this.studentGuarantorCreatorDialogRef = this.dialog.open( StudentGuarantorEditorDialog, config );
         this.studentGuarantorCreatorDialogRef.componentInstance.student = this.student;
-        this.studentGuarantorCreatorDialogRef.afterClosed().subscribe((res) => {
+        this.studentGuarantorCreatorDialogRef.afterClosed().subscribe(( res ) => {
             //console.log("close dialog");
-        });
+        } );
     }
 
     //EDIT GUARANTOR DIALOG
-    editGuarantorDialog(guarantor: Guarantor, isValid: boolean): void {
-        console.log("edit student guarantor");
+    editGuarantorDialog( guarantor: Guarantor, isValid: boolean ): void {
+        console.log( "edit student guarantor" );
         let config = new MdDialogConfig();
         config.viewContainerRef = this.vcf;
         config.role = 'dialog';
         config.width = '70%';
         config.height = '80%';
         config.position = { top: '0px' };
-        this.studentGuarantorCreatorDialogRef = this.dialog.open(StudentGuarantorEditorDialog, config);
+        this.studentGuarantorCreatorDialogRef = this.dialog.open( StudentGuarantorEditorDialog, config );
         this.studentGuarantorCreatorDialogRef.componentInstance.guarantor = guarantor;
         this.studentGuarantorCreatorDialogRef.componentInstance.student = this.student;
-        this.studentGuarantorCreatorDialogRef.afterClosed().subscribe((res) => {
+        this.studentGuarantorCreatorDialogRef.afterClosed().subscribe(( res ) => {
 
-        });
+        } );
     }
 
     //DELETE GUARANTOR
-    deleteGuarantor(guarantor: Guarantor): void {
-        this.store.dispatch(this.actions.deleteStudentGuarantor(this.student.identityNo, guarantor));
+    deleteGuarantor( guarantor: Guarantor ): void {
+        this.store.dispatch( this.actions.deleteStudentGuarantor( this.student.identityNo, guarantor ) );
     }
 
     //SEMESTER REGISTRATION
     semesterRegister(): void {
-        console.log('showDialog');
+        console.log( 'showDialog' );
         let config = new MdDialogConfig();
         config.viewContainerRef = this.vcf;
         config.role = 'dialog';
         config.width = '60%';
         config.height = '50%';
         config.position = { top: '0px' };
-        this.creatorDialogRef = this.dialog.open(AdmissionApplicationTaskDialog, config);
+        this.creatorDialogRef = this.dialog.open( AdmissionApplicationTaskDialog, config );
         this.creatorDialogRef.componentInstance.student = this.student;
-        this.creatorDialogRef.afterClosed().subscribe((res) => {
-            console.log('close dialog');
+        this.creatorDialogRef.afterClosed().subscribe(( res ) => {
+            console.log( 'close dialog' );
             // load something here
-        });
+        } );
     }
 
     //COURSE ENROLLMENT
@@ -372,23 +381,23 @@ export class StudentProfileListPage implements OnInit {
         config.width = '70%';
         config.height = '50%';
         config.position = { top: '0px' };
-        this.creatorDialogRef2 = this.dialog.open(EnrollmentApplicationTaskDialog, config);
-        this.creatorDialogRef2.afterClosed().subscribe((res) => {
-            console.log('close dialog');
+        this.creatorDialogRef2 = this.dialog.open( EnrollmentApplicationTaskDialog, config );
+        this.creatorDialogRef2.afterClosed().subscribe(( res ) => {
+            console.log( 'close dialog' );
 
             // load something here
-        });
+        } );
     }
 
     //STATUS SEMESTER REGISTRATION
     statusSemesterRegister() {
-        this.router.navigate(['/secure/term/admission-applications/admission-application-center2']);
+        this.router.navigate( ['/secure/term/admission-applications/admission-application-center2'] );
 
     }
 
     //STATUS COURSE ENROLLMENT
     statusCourseEnroll() {
-        this.router.navigate(['/secure/term/enrollment-applications/student-enrollment-center']);
+        this.router.navigate( ['/secure/term/enrollment-applications/student-enrollment-center'] );
     }
 
     //APPLY GRADUATION
@@ -399,16 +408,16 @@ export class StudentProfileListPage implements OnInit {
         config.width = '70%';
         config.height = '80%';
         config.position = { top: '0px' };
-        this.creatorDialogRef3 = this.dialog.open(GraduationApplicationCreatorDialog, config);
-        this.creatorDialogRef3.afterClosed().subscribe((res) => {
-            console.log('close dialog');
+        this.creatorDialogRef3 = this.dialog.open( GraduationApplicationCreatorDialog, config );
+        this.creatorDialogRef3.afterClosed().subscribe(( res ) => {
+            console.log( 'close dialog' );
             // load something here
-        });
+        } );
     }
 
     //STATUS GRADUATION
     statusGraduation() {
-        this.router.navigate(['/secure/graduation/graduation-applications/student']);
+        this.router.navigate( ['/secure/graduation/graduation-applications/student'] );
     }
 
     /*viewAdmission(admission: Admission): void {
@@ -421,7 +430,7 @@ export class StudentProfileListPage implements OnInit {
 
     //STATUS 
     academicSessionDetail() {
-        this.router.navigate(['/secure/academicSessions']);
+        this.router.navigate( ['/secure/academicSessions'] );
     }
 
 
