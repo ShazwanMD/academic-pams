@@ -20,9 +20,13 @@ import java.math.BigDecimal;
 import java.util.List;
 
 import my.edu.umk.pams.academic.common.service.CommonService;
+import my.edu.umk.pams.academic.identity.model.AdActor;
+import my.edu.umk.pams.academic.identity.model.AdActorImpl;
 import my.edu.umk.pams.academic.identity.model.AdAddress;
 import my.edu.umk.pams.academic.identity.model.AdAddressImpl;
 import my.edu.umk.pams.academic.identity.model.AdAddressType;
+import my.edu.umk.pams.academic.identity.model.AdStaff;
+import my.edu.umk.pams.academic.identity.model.AdStaffImpl;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.identity.model.AdStudentImpl;
 import my.edu.umk.pams.academic.identity.model.AdStudentStatus;
@@ -41,6 +45,7 @@ import my.edu.umk.pams.academic.web.module.planner.controller.PlannerTransformer
 import my.edu.umk.pams.academic.web.module.planner.vo.AcademicSession;
 import my.edu.umk.pams.connector.payload.AccountPayload;
 import my.edu.umk.pams.connector.payload.CandidatePayload;
+import my.edu.umk.pams.connector.payload.StaffPayload;
 
 /**
  */
@@ -87,6 +92,24 @@ public class IntegrationController {
         logoutAsSystem(ctx);
         return new ResponseEntity<String>("sucess", HttpStatus.OK);
     }
+    
+    // ====================================================================================================
+    // STUDENT ACCOUNT
+    // ====================================================================================================
+    @RequestMapping(value = "/staff", method = RequestMethod.POST)
+    public ResponseEntity<String> saveStaff(@RequestBody StaffPayload payload) {
+        SecurityContext ctx = loginAsSystem();
+        LOG.debug("payload:{}",payload.getStaffId());
+       
+        AdStaff staff = new AdStaffImpl();
+        staff.setIdentityNo(payload.getStaffId());
+        staff.setName(payload.getStaffName());
+        identityService.saveStaff(staff);
+     
+        logoutAsSystem(ctx);
+        return new ResponseEntity<String>("success", HttpStatus.OK);
+    }
+    
  // ====================================================================================================
     // STUDENT ACCOUNT
     // ====================================================================================================
