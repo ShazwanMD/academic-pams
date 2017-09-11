@@ -18,45 +18,7 @@
   </div>
   <md-divider></md-divider>
   <md-card-content>
-   <!--  <td-data-table
-      [data]="appointments"
-      [columns]="columns"
-      [sortBy]="summary"
-      [sortOrder]="ASC"
-      [sortable]="false"
-      [multiple]="true"
-      [selectable]="true"
-      [(ngModel)]="selectedRows"
-      (rowSelect)="selectRow($event)"
-      (selectAll)="selectAllRows($event)" dense>
-      <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
-        <div layout="row">
-          <span flex>{{value | uppercase}}</span>
-        </div>
-      </template>
-      <template tdDataTableTemplate="action" let-value="value" let-row="row"
-                let-column="column">
-        <div layout="row">
-          <button md-icon-button [md-menu-trigger-for]="menu1"
-                  mdTooltip="Select appointment actions">
-            <md-icon>more_vert</md-icon>
-          </button>
-          <md-menu x-position="before" #menu1="mdMenu">
-            <button md-menu-item [routerLink]="['/secure/term/appointments', row['id']]">View
-                  staff details</button>
-            <button md-menu-item [routerLink]="['/secure/identity/staffs', row.staff.identityNo]">Staff details info</button>
-            <button md-menu-item (click)="editDialog(row, true)">Update
-              appointment
-            </button>
-            <button md-menu-item (click)="removeAppointment(row)">Delete
-              appointment
-            </button>
-          </md-menu>
-        </div>
-      </template>
-    </td-data-table> -->
-
-     <div layout="row" layout-align="start center" class="pad-left-sm pad-right-sm">
+        <div layout="row" layout-align="start center" class="pad-left-sm pad-right-sm">
       <td-search-box #searchBox backIcon="arrow_back" class="push-right-sm" placeholder="Search here" (searchDebounce)="search($event)" [alwaysVisible]="true" flex>
       </td-search-box>
   </div>
@@ -95,5 +57,4 @@
       <span td-paging-bar-label hide-xs>Row per page:</span>
       {{pagingBar.range}} <span hide-xs>of {{pagingBar.total}}</span>
   </td-paging-bar>
-
   </md-card-content> </md-card>

@@ -78,10 +78,18 @@ export class AppointmentEditorDialog implements OnInit {
             this.store.dispatch( this.actions.addAppointment( this._section, appointment ) );
             this.appointment$.subscribe( val => console.log( 'Accumulated object:', val['status'] ) );
             this.dialog.close();
+            let snackBarRef = this.snackBar.open( 'New appointment: ' + appointment.staff.name + ' has been saved', '', { duration: 3000 } );
+            snackBarRef.afterDismissed().subscribe(() => {
+                console.log( 'The snack-bar was dismissed' );
+              } );
 
         } else {
             this.store.dispatch( this.actions.updateAppointment( this._section, appointment ) );
             this.dialog.close();
+            let snackBarRef = this.snackBar.open( 'Appointment: ' + appointment.staff.name + ' has been updated', '', { duration: 3000 } );
+            snackBarRef.afterDismissed().subscribe(() => {
+                console.log( 'The snack-bar was dismissed' );
+              } );
         }
     }
 }
