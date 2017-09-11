@@ -24,7 +24,7 @@ export class LecturerSectionDetailPage implements OnInit {
 
     private OFFERING: string[] = 'termModuleState.offering'.split( '.' );
     private SECTION: string[] = 'termModuleState.section'.split( '.' );
-    private GRADEBOOK_MATRICES: string[] = 'termModuleState.gradebookMatrices'.split( '.' );
+    private GRADEBOOK_MATRICES: string[] = 'termModuleState.gradebookMatricesSection'.split( '.' );
     private ENROLLMENTS: string[] = 'termModuleState.enrollments'.split( '.' );
     private ASSESSMENTS: string[] = 'termModuleState.assessments'.split( '.' );
 
