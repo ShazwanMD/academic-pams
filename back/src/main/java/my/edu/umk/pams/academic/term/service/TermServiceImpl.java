@@ -1705,6 +1705,12 @@ public class TermServiceImpl implements TermService {
 		
 	}
 
+		
+	@Override
+	public AdOffering findOfferingByCode(String code) {
+		return offeringDao.findByCode(code);
+	}
+
 	
 
 	

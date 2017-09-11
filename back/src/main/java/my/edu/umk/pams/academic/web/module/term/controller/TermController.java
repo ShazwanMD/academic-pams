@@ -1111,7 +1111,7 @@ public class TermController {
 
 	}
 
-	// find gradebooksMatrixBySection 28/8/17
+	/*// find gradebooksMatrixBySection 28/8/17
 	@RequestMapping(value = "/sections/{canonicalCode}/gradebookMatrices", method = RequestMethod.GET)
 	public ResponseEntity<List<Gradebook>> findGradebookMatricesBySection(@PathVariable String canonicalCode) {
 		AdSection section = termService.findSectionByCanonicalCode(canonicalCode);
@@ -1119,6 +1119,52 @@ public class TermController {
 		List<Gradebook> gradebookVos = termTransformer.toGradebookVos(gradebooks);
 		return new ResponseEntity<List<Gradebook>>(gradebookVos, HttpStatus.OK);
 
+	}*/
+	
+	//find gradebookmatrixBySection 7/9/17
+	@RequestMapping(value = "/sections/{canonicalCode}/gradebookMatrices", method = RequestMethod.GET)
+	public ResponseEntity<List<GradebookMatrix>> findGradebookMatricesBySection(@PathVariable String canonicalCode) {
+		AdSection section = termService.findSectionByCanonicalCode(canonicalCode);
+		AdOffering offering = termService.findOfferingByCode(section.getCode());
+		List<AdEnrollment> enrollments = termService.findEnrollments(section);
+		List<GradebookMatrix> matrices = new ArrayList<GradebookMatrix>();
+		for (AdEnrollment enrollment : enrollments) {
+			GradebookMatrix matrix = new GradebookMatrix();
+			matrix.setEnrollment(termTransformer.toSimpleEnrollmentVo(enrollment));
+			List<AdAssessment> assessments = termService.findAssessments(offering);
+			for (AdAssessment assessment : assessments) {
+				// AdGradebook adGradebook =
+				// termService.findGradebookByAssessmentAndEnrollment(assessment,
+				// enrollment);
+				// Gradebook gradebook =
+				// termTransformer.toGradebookVo(adGradebook);
+				// matrix.addGradebook(gradebook);
+				AdGradebook adGradebook = termService.findGradebookByAssessmentAndEnrollment(assessment, enrollment);
+				// LOG.debug("adGradebook:{}",adGradebook.getScore());
+				Gradebook gradebook;
+				if (adGradebook != null) {
+					gradebook = termTransformer.toGradebookVo(adGradebook);
+				} else {
+					gradebook = new Gradebook();
+					gradebook.setScore(BigDecimal.ZERO);
+					gradebook.setAssessment(termTransformer.toAssessmentVo(assessment));
+					// gradebook.setEnrollment(termTransformer.toEnrollmentVo(enrollment));
+					// gradebook.setSection(termTransformer.toSectionVo(enrollment.getSection()));
+				}
+				matrix.addGradebook(gradebook);
+				// LOG.debug("adGradebook:{}",adGradebook.getScore());
+				// Gradebook gradebook = new Gradebook();
+				// gradebook.setScore(BigDecimal.ZERO);
+				// gradebook.setAssessment(termTransformer.toAssessmentVo(assessment));
+				// matrix.addGradebook(gradebook);
+
+			}
+
+			matrices.add(matrix);
+		}
+		LOG.debug("Enrollment-Section:{}", enrollments);
+
+		return new ResponseEntity<List<GradebookMatrix>>(matrices, HttpStatus.OK);
 	}
 
 	@RequestMapping(value = "/sections/{canonicalCode}/appointments", method = RequestMethod.GET)
@@ -1132,6 +1178,8 @@ public class TermController {
 
 	@RequestMapping(value = "/offerings/{canonicalCode}/gradebookMatrices", method = RequestMethod.GET)
 	public ResponseEntity<List<GradebookMatrix>> findGradebookMatrices(@PathVariable String canonicalCode) {
+		LOG.debug("offerings-gradebookMatrices:{}", canonicalCode);
+		
 		AdOffering offering = termService.findOfferingByCanonicalCode(canonicalCode);
 		List<AdEnrollment> enrollments = termService.findEnrollments(offering);
 		List<GradebookMatrix> matrices = new ArrayList<GradebookMatrix>();

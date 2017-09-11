@@ -34,6 +34,8 @@ public interface TermService {
     AdOffering findOfferingById(Long id);
 
     AdOffering findOfferingByCanonicalCode(String canonicalCode);
+    
+    AdOffering findOfferingByCode(String code);
 
     AdOffering findOfferingByProgramAndCourse(AdProgram program, AdCourse course);
 

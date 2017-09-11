@@ -65,8 +65,8 @@ export class StudentEnrollmentCenterPage implements OnInit {
 
   viewTask(task: EnrollmentApplicationTask) {
     console.log('enrollmentApplication: ' + task.taskId);
-    //this.router.navigate(['/secure/term/enrollment-applications/student-enrollment-application-task-detail', task.taskId]);
-    this.router.navigate(['/secure/term/enrollment-applications']);
+    this.router.navigate(['/secure/term/enrollment-applications/student-enrollment-application-task-detail', task.taskId]);
+    //this.router.navigate(['/secure/term/enrollment-applications']);
   }
 
   viewEnrollmentApplication(enrollmentApplication: EnrollmentApplication) {
