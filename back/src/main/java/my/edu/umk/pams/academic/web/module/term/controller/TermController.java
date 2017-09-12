@@ -1125,6 +1125,7 @@ public class TermController {
 			matrices.add(matrix);
 		}
 		LOG.debug("Enrollment-Section:{}", enrollments);
+		LOG.debug("Section code:{}", section.getCode());
 
 		return new ResponseEntity<List<GradebookMatrix>>(matrices, HttpStatus.OK);
 	}

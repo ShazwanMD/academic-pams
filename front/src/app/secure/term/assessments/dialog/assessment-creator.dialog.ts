@@ -47,7 +47,7 @@ export class AssessmentEditorDialog implements OnInit {
       totalScore: [100, Validators.required],
       ordinal: ['', Validators.required],
       weight: ['', Validators.required],
-      offering: ['', Validators.required],
+      offering: '',
       assessmentType: ['', Validators.required],
       assessmentCategory: ['', Validators.required]
 
