@@ -9,68 +9,76 @@ import { SetupModuleState } from '../index';
 import { Component, OnInit, ViewContainerRef } from '@angular/core';
 
 
-@Component({
-  selector: 'pams-study-center-list-page',
-  templateUrl: './study-center-list.page.html',
-})
+@Component( {
+    selector: 'pams-study-center-list-page',
+    templateUrl: './study-center-list.page.html',
+} )
 export class StudyCenterListPage implements OnInit {
 
-  private STUDY_CENTERS: string[] = "setupModuleState.studyCenters".split(".");
-  private studyCenters$: Observable<StudyCenter>;
-  private creatorDialogRef: MdDialogRef<StudyCenterEditorDialog>;
+    private STUDY_CENTERS: string[] = "setupModuleState.studyCenters".split( "." );
+    private studyCenters$: Observable<StudyCenter>;
+    private creatorDialogRef: MdDialogRef<StudyCenterEditorDialog>;
 
-  private columns: any[] = [
-    { name: 'code', label: 'Code' },
-    { name: 'description', label: 'Description' },
-    { name: 'action', label: '' }
-  ];
+    private columns: any[] = [
+        { name: 'code', label: 'Code' },
+        { name: 'description', label: 'Description' },
+        { name: 'action', label: '' }
+    ];
 
-  constructor(private store: Store<SetupModuleState>,
-    private actions: SetupActions,
-    private vcf: ViewContainerRef,
-    private router: Router,
-    private route: ActivatedRoute,
-    private dialog: MdDialog) {
-    this.studyCenters$ = this.store.select(...this.STUDY_CENTERS);
-  }
+    constructor( private store: Store<SetupModuleState>,
+        private actions: SetupActions,
+        private vcf: ViewContainerRef,
+        private router: Router,
+        private route: ActivatedRoute,
+        private dialog: MdDialog ) {
+        this.studyCenters$ = this.store.select( ...this.STUDY_CENTERS );
+    }
 
-  ngOnInit() {
-    this.store.dispatch(this.actions.findStudyCenters());
-    this.store.dispatch(this.actions.changeTitle("Study Centers"))
-  }
+    ngOnInit() {
+        this.store.dispatch( this.actions.findStudyCenters() );
+        this.store.dispatch( this.actions.changeTitle( "Study Centers" ) )
+    }
 
-  createDialog(): void {
-    this.showDialog(null);
-  }
+    createDialog(): void {
+        this.showDialog( null );
+    }
 
-  editDialog(code: StudyCenter): void {
-    this.showDialog(code);
-  }
+    editDialog( code: StudyCenter ): void {
+        this.showDialog( code );
+    }
 
-  delete(code: StudyCenter): void {
-    this.store.dispatch(this.actions.removeStudyCenter(code))
-  }
+    delete( code: StudyCenter ): void {
+        // this.store.dispatch(this.actions.removeStudyCenter(code))
+        var txt;
+        var r = confirm( "Are you sure to delete this data?" );
+        if ( r == true ) {
+            txt = "Data has been deleted!";
+            this.store.dispatch( this.actions.removeStudyCenter( code ) )
+        } else {
+            txt = "Cancel delete!";
+        }
+    }
 
-  filter(): void {
-  }
+    filter(): void {
+    }
 
-  goBack(route: string): void {
-    this.router.navigate(['/secure/setup']);
-  }
+    goBack( route: string ): void {
+        this.router.navigate( ['/secure/setup'] );
+    }
 
-  private showDialog(code: StudyCenter): void {
-    console.log("create");
-    let config = new MdDialogConfig();
-    config.viewContainerRef = this.vcf;
-    config.role = 'dialog';
-    config.width = '70%';
-    config.height = '65%';
-    config.position = { top: '0px' };
-    this.creatorDialogRef = this.dialog.open(StudyCenterEditorDialog, config);
-    if (code) this.creatorDialogRef.componentInstance.studyCenter = code; // set
-    this.creatorDialogRef.afterClosed().subscribe(res => {
-      console.log("close dialog");
-    });
-  }
+    private showDialog( code: StudyCenter ): void {
+        console.log( "create" );
+        let config = new MdDialogConfig();
+        config.viewContainerRef = this.vcf;
+        config.role = 'dialog';
+        config.width = '70%';
+        config.height = '65%';
+        config.position = { top: '0px' };
+        this.creatorDialogRef = this.dialog.open( StudyCenterEditorDialog, config );
+        if ( code ) this.creatorDialogRef.componentInstance.studyCenter = code; // set
+        this.creatorDialogRef.afterClosed().subscribe( res => {
+            console.log( "close dialog" );
+        } );
+    }
 
 }

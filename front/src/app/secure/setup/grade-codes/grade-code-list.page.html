@@ -1,9 +1,9 @@
 <md-card>
-  <td-search-box class="push-left push-right"
+ <!--  <td-search-box class="push-left push-right"
                  placeholder="search"
                  [alwaysVisible]="true"
                  (searchDebounce)="filter($event)">
-  </td-search-box>
+  </td-search-box> -->
 
   <td-data-table
     [data]="gradeCodes$ | async"
@@ -25,8 +25,8 @@
           <md-icon>more_vert</md-icon>
         </button>
         <md-menu x-position="before" #menu="mdMenu">
-          <button md-menu-item (click)="editDialog(row)">Edit</button>
-          <button md-menu-item (click)="delete(row)">Delete</button>
+          <button md-menu-item (click)="editDialog(row)">Edit grade code</button>
+          <button md-menu-item (click)="delete(row)">Delete grade code</button>
         </md-menu>
       </div>
     </template>
