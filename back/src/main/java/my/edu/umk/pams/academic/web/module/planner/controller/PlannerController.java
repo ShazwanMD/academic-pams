@@ -390,7 +390,7 @@ public class PlannerController {
 
 	@RequestMapping(value = "/programs/{code}", method = RequestMethod.PUT)
 	public ResponseEntity<String> updateProgram(@PathVariable String code, @RequestBody Program vo) {
-		dummyLogin();
+		//dummyLogin();
 		AdProgram program = plannerService.findProgramByCode(code);
 		program.setCode(vo.getCode());
 		program.setTitleMs(vo.getTitleMs());
@@ -399,7 +399,7 @@ public class PlannerController {
 		plannerService.updateProgram(program);
 		return new ResponseEntity<String>("Success", HttpStatus.OK);
 	}
-
+	
 	@RequestMapping(value = "/programs/{code}", method = RequestMethod.DELETE)
 	public ResponseEntity<String> removeProgram(@PathVariable String code) {
 		dummyLogin();
