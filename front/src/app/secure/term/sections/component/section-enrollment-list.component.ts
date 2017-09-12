@@ -6,7 +6,9 @@ import {
     EventEmitter,
     Input,
     Output,
-    ViewContainerRef
+    ViewContainerRef,
+SimpleChange,
+OnChanges
 } from '@angular/core';
 import { Enrollment } from '../../../../shared/model/term/enrollment.interface';
 import { Section } from '../../../../shared/model/term/section.interface';
@@ -27,7 +29,7 @@ import {
     templateUrl: './section-enrollment-list.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 } )
-export class SectionEnrollmentListComponent implements AfterViewInit {
+export class SectionEnrollmentListComponent implements AfterViewInit, OnChanges {
 
     private creatorDialogRef: MdDialogRef<EnrollmentEditorDialog>;
     private selectedRows: Enrollment[];
@@ -64,6 +66,15 @@ export class SectionEnrollmentListComponent implements AfterViewInit {
         private vcf: ViewContainerRef,
         private dialog: MdDialog ) {
     }
+    
+    ngOnChanges(changes: { [ propName: string]: SimpleChange }) {
+        console.log("changes", changes, changes['enrollments']);
+        if (changes['enrollments']) {
+          this.filteredData = changes['enrollments'].currentValue;
+          this.filteredTotal = changes['enrollments'].currentValue.length;
+          this.filter();
+        }
+      }
 
     ngAfterViewInit(): void {
         this.filteredData = this.enrollments;
