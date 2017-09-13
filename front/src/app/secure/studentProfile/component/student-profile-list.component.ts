@@ -30,12 +30,12 @@ import { GraduationApplicationCreatorDialog } from "../../graduation/graduation-
 import { DatePipe } from '@angular/common';
 
 @Component( {
-    selector: 'pams-student-profile-list', 
+    selector: 'pams-student-profile-list',
     templateUrl: 'student-profile-list.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 } )
 export class StudentProfileListPage implements OnInit {
-    
+
     today: number = Date.now();
 
     private studentDialogRef: MdDialogRef<StudentDetailEditorDialog>;
@@ -47,7 +47,7 @@ export class StudentProfileListPage implements OnInit {
     private creatorDialogRef2: MdDialogRef<EnrollmentApplicationTaskDialog>;
     private creatorDialogRef3: MdDialogRef<GraduationApplicationCreatorDialog>;
 
-    
+
     //inputs
 
     @Input() student: Student;
@@ -63,13 +63,13 @@ export class StudentProfileListPage implements OnInit {
     @Input() admissionApplications: AdmissionApplication[];
 
     @Output() view2 = new EventEmitter<Admission>();
-    
-    
+
+
 
 
     //Constructor
-    constructor( 
-        
+    constructor(
+
         private router: Router,
         private route: ActivatedRoute,
         private actions: StudentProfileActions,
@@ -79,8 +79,8 @@ export class StudentProfileListPage implements OnInit {
         private formBuilder: FormBuilder,
         private snackBar: MdSnackBar,
         private dialog: MdDialog ) {
-        
-       
+
+
     }
 
     //Address

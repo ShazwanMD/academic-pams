@@ -58,7 +58,7 @@ export class CourseEditorDialog implements OnInit {
     console.log(JSON.stringify(course));
     if (!course.id) this.store.dispatch(this.actions.saveCourse(course));
     else  this.store.dispatch(this.actions.updateCourse(course));
-    let snackBarRef = this.snackBar.open( 'New Course: ' + course.code + ' has been updated', '', { duration: 3000 } );
+    let snackBarRef = this.snackBar.open( 'New Course: ' + course.code + ' has been updated', 'OK', { duration: 3000 } );
     snackBarRef.afterDismissed().subscribe(() => {
    } );
     this.dialog.close();

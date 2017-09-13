@@ -50,7 +50,7 @@ export class FacultyEditorDialog implements OnInit {
     console.log('updating faculty');
     if (!faculty.id) this.store.dispatch(this.actions.saveFaculty(faculty));
     else this.store.dispatch(this.actions.updateFaculty(faculty));
-    let snackBarRef = this.snackBar.open( 'New Faculty: ' + faculty.code + ' has been updated', '', { duration: 3000 } );
+    let snackBarRef = this.snackBar.open( 'New Faculty: ' + faculty.code + ' has been updated', 'OK', { duration: 3000 } );
     snackBarRef.afterDismissed().subscribe(() => {
    } );
     this.dialog.close();

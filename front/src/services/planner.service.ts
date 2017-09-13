@@ -325,9 +325,17 @@ export class PlannerService {
   }
 
   updateCurriculum(curriculum: Curriculum): Observable<String> {
+      console.log(curriculum.code + "update curriculum service" );
     return this._http.put(this.PLANNER_API + '/curriculums/' + curriculum.code, JSON.stringify(curriculum))
       .flatMap((res: Response) => Observable.of(res.text()));
   }
+  
+  /*//sample to delete from program
+  updateProgram(program: Program): Observable<String> {
+      return this._http.put(this.PLANNER_API + '/programs/' + program.code, JSON.stringify(program))
+        .flatMap((res: Response) => Observable.of(res.text()));
+    }*/
+  
 
   removeCurriculum(curriculum: Curriculum): Observable<Curriculum> {
     return this._http.delete(this.PLANNER_API + '/curriculums/' + curriculum.code)

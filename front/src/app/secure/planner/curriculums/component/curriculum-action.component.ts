@@ -24,14 +24,14 @@ export class CurriculumActionComponent {
 
   }
 
-  updateDialog(): void {
+  editorDialog(): void {
     console.log('CurriculumAction');
     console.log(this.curriculum);
     let config = new MdDialogConfig();
     config.viewContainerRef = this.vcf;
     config.role = 'dialog';
     config.width = '60%';
-    config.height = '50%';
+    config.height = '80%';
     config.position = {top: '0px'};
     this.updateDialogRef = this.dialog.open(CurriculumUpdateDialog, config);
     this.updateDialogRef.componentInstance.curriculum = this.curriculum;

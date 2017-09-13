@@ -1,10 +1,10 @@
-<h2 md-dialog-title>curriculum</h2>
+<h2 md-dialog-title>Curriculum Editor Dialog</h2>
 <md-dialog-content>
   <form [formGroup]="updateForm">
     <div layout="column" class="inset" flex>
       <div layout="row" class="inset" flex>
         <md-input-container flex>
-          <input mdInput placeholder="Code"
+          <input mdInput readonly placeholder="Code"
                  formControlName="code" flex/>
         </md-input-container>
       </div>
@@ -14,6 +14,36 @@
                  formControlName="description" flex/>
         </md-input-container>
       </div>-->
+      
+       <md-input-container fxFlex="calc(100%-25px)" mdTooltip="Please insert coreCredit">
+        <input mdInput placeholder="Core Credit" formControlName="coreCredit" type="number"/>
+      </md-input-container>
+        <md-input-container fxFlex="calc(100%-25px)" mdTooltip="Please insert electiveCredit">
+        <input mdInput placeholder="Elective Credit" formControlName="electiveCredit" type="number"/>
+      </md-input-container>
+       <md-input-container fxFlex="calc(100%-25px)" mdTooltip="Please insert generalCredit">
+        <input mdInput placeholder="General Credit" formControlName="generalCredit" type="number"/>
+      </md-input-container>
+       <md-input-container fxFlex="calc(100%-25px)" mdTooltip="Please insert maxPeriod">
+        <input mdInput placeholder="Maximum Period" formControlName="maxPeriod" type="number"/>
+      </md-input-container>
+       <md-input-container fxFlex="calc(100%-25px)" mdTooltip="Please insert ordinal">
+        <input mdInput placeholder="Ordinal" formControlName="ordinal" type="number"/>
+      </md-input-container>
+       <md-input-container fxFlex="calc(100%-25px)" mdTooltip="Please insert period">
+        <input mdInput placeholder="Period" formControlName="period" type="number"/>
+      </md-input-container>
+       <md-input-container fxFlex="calc(100%-25px)" mdTooltip="Please insert requiredCredit">
+        <input mdInput placeholder="Required Credit" formControlName="requiredCredit" type="number"/>
+      </md-input-container>
+       <md-input-container fxFlex="calc(100%-25px)" mdTooltip="Please insert totalCredit">
+        <input mdInput placeholder="Total Credit" formControlName="totalCredit" type="number"/>
+      </md-input-container>
+      <pams-program-select mdTooltip="Please select program"
+                           [placeholder]="'Select Program'"
+                           [innerFormControl]="updateForm.controls['program']"
+                           fxFlex="calc(100%-25px)" class="pad-bottom">
+      </pams-program-select>
     </div>
   </form>
 </md-dialog-content>

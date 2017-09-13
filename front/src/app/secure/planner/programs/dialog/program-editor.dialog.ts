@@ -55,7 +55,7 @@ export class ProgramEditorDialog implements OnInit {
     console.log(JSON.stringify(program));
     if (!program.id) this.store.dispatch(this.actions.saveProgram(program));
     else  this.store.dispatch(this.actions.updateProgram(program));
-    let snackBarRef = this.snackBar.open( 'New Program: ' + program.code + ' has been updated', '', { duration: 3000 } );
+    let snackBarRef = this.snackBar.open( 'New Program: ' + program.code + ' has been updated', 'OK', { duration: 3000 } );
     snackBarRef.afterDismissed().subscribe(() => {
    } );
     this.dialog.close();

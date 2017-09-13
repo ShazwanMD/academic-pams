@@ -606,6 +606,24 @@ public class PlannerController {
 		plannerService.saveCurriculum(curriculum);
 		return new ResponseEntity<String>("Success", HttpStatus.OK);
 	}
+	
+	//update curriculum
+	@RequestMapping(value = "/curriculums/{code}", method = RequestMethod.PUT)
+	public ResponseEntity<String> updateCurriculum(@PathVariable String code, @RequestBody Curriculum vo) {
+		
+		AdCurriculum curriculum = plannerService.findCurriculumByCode(code);
+		curriculum.setCoreCredit(vo.getCoreCredit());
+		curriculum.setElectiveCredit(vo.getElectiveCredit());
+		curriculum.setGeneralCredit(vo.getGeneralCredit());
+		curriculum.setMaxPeriod(vo.getMaxPeriod());
+		curriculum.setOrdinal(vo.getOrdinal());
+		curriculum.setPeriod(vo.getPeriod());
+		curriculum.setRequiredCredit(vo.getRequiredCredit());
+		curriculum.setTotalCredit(vo.getTotalCredit());
+		curriculum.setProgram(plannerService.findProgramByCode(vo.getProgram().getCode()));
+		plannerService.updateCurriculum(curriculum);
+		return new ResponseEntity<String>("Success", HttpStatus.OK);
+	}
 
 	@RequestMapping(value = "/curriculums/{code}/subjects", method = RequestMethod.GET)
 	public ResponseEntity<List<Subject>> findSubjectsByCurriculum(@PathVariable String code)
