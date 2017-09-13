@@ -379,8 +379,6 @@ public class ProfileController {
 
 		AdAcademicSession academicSession = plannerService.findAcademicSessionByCode(code);
 		LOG.debug("Academic Session Code :{}", code);
-		
-		
 
 		AdAdmission admission = profileService.findAdmissionByAcademicSessionAndStudent(academicSession, student1);
 		LOG.debug("admission", admission.getStudent().getIdentityNo());
@@ -740,21 +738,24 @@ public class ProfileController {
 
 	@RequestMapping(value = "/students", method = RequestMethod.GET)
 	public ResponseEntity<List<Student>> findStudents() {
-		
-//		AdUser user = securityService.getCurrentUser();
-//		
-//		AdStaff staff = null;
-//		
-//		if (user.getActor() instanceof AdStaff){
-//			staff = (AdStaff) user.getActor();
-//		
-//		}else if (null == staff) throw new IllegalArgumentException("Student does not exists");
-//		
-//		AdFaculty faculty = plannerService.findFacultyByCode(staff.getFaculty().getCode());
-//		LOG.debug("Faculty Code Not MGSEB:{}",faculty.getName());
-//		List<AdStudent> students = profileService.findStudentsByFaculty(faculty);
+
+		// AdUser user = securityService.getCurrentUser();
+		//
+		// AdStaff staff = null;
+		//
+		// if (user.getActor() instanceof AdStaff){
+		// staff = (AdStaff) user.getActor();
+		//
+		// }else if (null == staff) throw new IllegalArgumentException("Student
+		// does not exists");
+		//
+		// AdFaculty faculty =
+		// plannerService.findFacultyByCode(staff.getFaculty().getCode());
+		// LOG.debug("Faculty Code Not MGSEB:{}",faculty.getName());
+		// List<AdStudent> students =
+		// profileService.findStudentsByFaculty(faculty);
 		List<AdStudent> students = profileService.findStudents(0, Integer.MAX_VALUE);
-		return new ResponseEntity<List<Student>>(profileTransformer.toStudentVos(students),HttpStatus.OK);
+		return new ResponseEntity<List<Student>>(profileTransformer.toStudentVos(students), HttpStatus.OK);
 	}
 
 	@RequestMapping(value = "/students/{matricNo}", method = RequestMethod.GET)
