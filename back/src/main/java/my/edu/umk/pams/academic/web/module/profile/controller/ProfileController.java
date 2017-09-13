@@ -671,6 +671,7 @@ public class ProfileController {
 
 		AdStudent student1 = profileService.findStudentByMatricNo(identityNo);
 		AdAddress address = profileService.findAddressById(vo.getId());
+		address.setType(AdAddressType.get(vo.getAddressType().ordinal()));
 		address.setAddress1(vo.getAddress1());
 		address.setAddress2(vo.getAddress2());
 		address.setAddress3(vo.getAddress3());

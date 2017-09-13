@@ -64,9 +64,6 @@ export class StudentProfileListPage implements OnInit {
 
     @Output() view2 = new EventEmitter<Admission>();
 
-
-
-
     //Constructor
     constructor(
 
@@ -155,7 +152,6 @@ export class StudentProfileListPage implements OnInit {
     }
 
     ngOnInit(): void {
-
 
         // this.route.params.subscribe((params: { identityNo: string }) => {
         //     let identityNo: string = params.identityNo;
