@@ -73,7 +73,6 @@ export class CurriculumUpdateDialog implements OnInit {
         if ( !curriculum.id ) {
             this.store.dispatch( this.actions.saveCurriculum( curriculum ) );
             console.log( 'save curriculum' );
-
         } else {
             this.store.dispatch( this.actions.updateCurriculum( curriculum ) );
             console.log( 'update curriculum' );
