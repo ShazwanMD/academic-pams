@@ -4,7 +4,7 @@
 
   <md-divider></md-divider>
   <md-card-content>
-    <!--Tab Section Here-->
+    <!--Tab Cohort Detail-->
     <md-tab-group>
       <md-tab label="Cohort Detail"><br>
         <div layout="column" class="inset">
@@ -18,11 +18,6 @@
             <span>{{cohort?.description}} </span>
           </div>
 
-          <!-- <div layout="row" class="pad-bottom">
-            <span flex="15">Curriculum</span>
-            <span>{{cohort?.curriculum?.code}} </span>
-          </div> -->
-
           <div layout="row" class="pad-bottom">
             <span flex="15">Program Code</span>
             <span>{{cohort?.program?.code}} </span>
@@ -35,8 +30,78 @@
         </div>
   
       </md-tab>
-    </md-tab-group>
+       <!--Tab Academic Session Detail-->
+       <md-tab label="Academic Session Detail"><br>
+        <div layout="column" class="inset">
+          <div layout="row" class="pad-bottom">
+            <span flex="15">Code</span>
+            <span>{{cohort?.academicSession?.code}}</span>
+          </div>
 
+          <div layout="row" class="pad-bottom">
+            <span flex="15">Description</span>
+            <span>{{cohort?.academicSession?.description}}</span>
+          </div>
+          <div layout="row" class="pad-bottom">
+            <span flex="15">Start Date</span>
+            <span>{{cohort?.academicSession?.startDate}} </span>
+          </div>
+          
+           <div layout="row" class="pad-bottom">
+            <span flex="15">End Date</span>
+            <span>{{cohort?.academicSession?.endDate}} </span>
+          </div>
+                  
+           <div layout="row" class="pad-bottom">
+            <span flex="15">Semester</span>
+            <span>{{cohort?.academicSession?.semester}} </span>
+          </div>
+          
+           <div layout="row" class="pad-bottom">
+            <span flex="15">Year</span>
+            <span>{{cohort?.academicSession?.year?.year}} </span>
+          </div>
+          
+           <div layout="row" class="pad-bottom">
+            <span flex="15">Current Status</span>
+            <span>{{cohort?.academicSession?.current }} </span>
+          </div> 
+        </div>
+      </md-tab>
+      
+      <!-- Tab Program Detail -->
+      
+         <md-tab label="Program Detail"><br>
+        <div layout="column" class="inset">
+          <div layout="row" class="pad-bottom">
+            <span flex="15">Code</span>
+            <span>{{cohort?.program?.code}}</span>
+          </div>
+
+          <div layout="row" class="pad-bottom">
+            <span flex="15">Title(EN)</span>
+            <span>{{cohort?.program?.titleEn}}</span>
+          </div>
+
+          <div layout="row" class="pad-bottom">
+            <span flex="15">Title(MS)</span>
+            <span>{{cohort?.program?.titleMs}} </span>
+          </div>
+
+          <div layout="row" class="pad-bottom">
+            <span flex="15">Faculty</span>
+            <span>{{cohort?.program?.faculty?.name}} </span>
+          </div>
+          
+            <div layout="row" class="pad-bottom">
+            <span flex="15">Faculty</span>
+            <span>{{cohort?.program?.faculty?.description}} </span>
+          </div>
+        </div>
+  
+      </md-tab>
+      
+    </md-tab-group>
   </md-card-content>
   <!-- <md-card-actions layout-align="end center">
   <button md-button color="accent" class="text-upper">UPDATE</button>

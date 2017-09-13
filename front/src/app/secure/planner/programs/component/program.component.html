@@ -64,6 +64,26 @@
         </div>
       </div>
       </md-tab>
+      
+       <md-tab label="Level Detail"><br>
+        <div layout="column" class="inset">
+          <div layout="row" class="pad-bottom">
+            <span flex="15">Code</span>
+            <span>{{program?.level?.code}}</span>
+          </div>
+
+          <div layout="row" class="pad-bottom">
+            <span flex="15">Description</span>
+            <span>{{program?.level?.description}} </span>
+          </div>
+
+          <div layout="row" class="pad-bottom">
+            <span flex="15">Prefix</span>
+            <span>{{program?.level?.prefix}} </span>
+          </div>
+        </div>
+      </md-tab>
+      
     </md-tab-group>
   </md-card-content>
 </md-card>

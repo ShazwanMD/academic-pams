@@ -1,8 +1,7 @@
-<md-card-title>Academic Year Form {{edit ? 'Update' : 'Save'}}  {{_academicYear?.code}}</md-card-title>
-<md-card-subtitle>Create New Academic Year</md-card-subtitle>
+<md-card-title>Academic Year Form </md-card-title>
+<md-card-subtitle>{{edit ? 'Update' : 'Save'}} Academic Year</md-card-subtitle>
 
 <form [formGroup]="createForm" novalidate>
-
   <div fxLayout fxLayout.xs="column" fxLayoutWrap fxLayoutGap="25px" class="inset">
     <md-input-container fxFlex="calc(100%-25px)" mdTooltip="Please insert code" >
       <input mdInput
@@ -12,10 +11,7 @@
     <div class="error" *ngIf="createForm.get('code').invalid && createForm.get('code').touched">
       Code should be at least {{minLength}} characters!
     </div>
-  
-
-
-    <md-input-container fxFlex="calc(100%-25px)" mdTooltip="Please insert description">
+      <md-input-container fxFlex="calc(100%-25px)" mdTooltip="Please insert description">
       <input mdInput
              placeholder="Description"
              formControlName="description"
@@ -24,10 +20,7 @@
     <div class="error" *ngIf="createForm.get('description').invalid && createForm.get('description').touched">
       Description should be at least {{minLength}} characters!
     </div>
-  
-  
-
-    <md-input-container fxFlex="calc(100%-25px)" mdTooltip="Please insert year">
+      <md-input-container fxFlex="calc(100%-25px)" mdTooltip="Please insert year">
       <input mdInput
              placeholder="Year"
              formControlName="year"
@@ -37,7 +30,6 @@
       Year should be at least {{minLength}} characters!
     </div>
   </div>
-
 </form>
 
 <md-dialog-actions align="end">
