@@ -12,36 +12,7 @@
   </div>
   <md-divider></md-divider>
   <md-card-content>
-    <!--   <td-data-table
-        [data]="enrollments"
-        [columns]="columns"
-        [sortBy]="summary"
-        [sortOrder]="ASC"
-        [sortable]="false"
-        [multiple]="true"
-        [selectable]="true" dense>
-        <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
-          <div layout="row">
-            <span flex>{{value}}</span>
-          </div>
-        </template>
-        <template tdDataTableTemplate="action" let-value="value" let-row="row"
-                  let-column="column">
-          <div layout="row">
-            <button md-icon-button [md-menu-trigger-for]="menu1" mdTooltip="Select enrollment actions">
-              <md-icon>more_vert</md-icon>
-            </button>
-            <md-menu x-position="before" #menu1="mdMenu">
-              <button md-menu-item [routerLink]="['/secure/term/enrollments', row['id']]">View enrollment</button>
-              <button md-menu-item (click)="editDialog(row, true)">Update enrollment</button>
-
-            </md-menu>
-          </div>
-        </template>
-
-      </td-data-table> -->
-
-    <div layout="row" layout-align="start center" class="pad-left-sm pad-right-sm">
+   <div layout="row" layout-align="start center" class="pad-left-sm pad-right-sm">
       <td-search-box #searchBox backIcon="arrow_back" class="push-right-sm" placeholder="Search here"
                      (searchDebounce)="search($event)" [alwaysVisible]="true" flex>
       </td-search-box>
@@ -67,7 +38,7 @@
            <div *ngIf="value != null">{{value}}</div>       
         </div>
       </template>
-      
+    
        <template tdDataTableTemplate="totalScore" let-value="value" let-row="row" let-column="columns.totalScore">
         <div layout="row">
           <div *ngIf="value == null">None</div>

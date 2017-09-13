@@ -61,9 +61,11 @@ export class StudentProfileExamComponent implements OnInit {
   }
 
   private columns: any[] = [
+    { name: 'section.offering.titleEn', label: 'Course Title' },
     { name: 'section.offering.code', label: 'Course Code' },
     { name: 'section.offering.course.credit', label: 'Credit' },
     { name: 'gradeCode.code', label: 'Grade' },
+    { name: 'gradeCode.description', label: 'Description' },
 
   ];
 
