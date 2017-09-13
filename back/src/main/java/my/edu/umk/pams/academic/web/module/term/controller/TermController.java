@@ -1087,6 +1087,7 @@ public class TermController {
 	@RequestMapping(value = "/sections/{canonicalCode}/gradebookMatrices", method = RequestMethod.GET)
 	public ResponseEntity<List<GradebookMatrix>> findGradebookMatricesBySection(@PathVariable String canonicalCode) {
 		AdSection section = termService.findSectionByCanonicalCode(canonicalCode);
+		System.out.println("Proses 1");
 		AdOffering offering = termService.findOfferingByCode(section.getCode());
 		List<AdEnrollment> enrollments = termService.findEnrollments(section);
 		List<GradebookMatrix> matrices = new ArrayList<GradebookMatrix>();

@@ -23,7 +23,7 @@ export class OfferingSectionListComponent implements AfterViewInit, OnChanges {
     private creatorDialogRef2: MdDialogRef<ConfirmationDialog>;
     private columns: any[] = [
         { name: 'ordinal', label: 'Section No' },
-        { name: 'code', label: 'Code' },
+        { name: 'canonicalCode', label: 'canonicalCode' },
         { name: 'capacity', label: 'Capacity' },
         { name: 'appointmentCount', label: 'Appointment' },
         { name: 'enrollmentCount', label: 'Enrollment' },
@@ -36,7 +36,7 @@ export class OfferingSectionListComponent implements AfterViewInit, OnChanges {
     fromRow: number = 1;
     currentPage: number = 1;
     pageSize: number = 5;
-    sortBy: string = 'code';
+    sortBy: string = 'ordinal';
     sortOrder: TdDataTableSortingOrder = TdDataTableSortingOrder.Descending;
 
     @Input() section: Section;
