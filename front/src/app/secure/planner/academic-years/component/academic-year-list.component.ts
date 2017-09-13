@@ -18,6 +18,9 @@ import {
 } from '@covalent/core';
 import { MdSnackBar, MdDialogConfig, MdDialogRef, MdDialog } from '@angular/material';
 import { AcademicYearCreatorDialog } from "../dialog/academic-year-creator.dialog";
+import { Store } from '@ngrx/store';
+import { PlannerModuleState } from "../../index";
+import { AcademicYearActions } from "../academic-year.action";
 
 @Component( {
     selector: 'pams-academic-year-list',
@@ -50,10 +53,13 @@ export class AcademicYearListComponent implements AfterViewInit, OnChanges {
     @Input() academicYears: AcademicYear[];
     @Output() view = new EventEmitter<AcademicYear>();
 
-    constructor( private _dataTableService: TdDataTableService,
+    constructor( 
+            private store: Store<PlannerModuleState>,
+            private actions: AcademicYearActions,
+            private _dataTableService: TdDataTableService,
             private vcf: ViewContainerRef,
             private dialog: MdDialog,
-        private snackBar: MdSnackBar ) {
+            private snackBar: MdSnackBar ) {
     }
 
     viewAcademicYear( academicYear: AcademicYear ): void {
@@ -125,6 +131,19 @@ export class AcademicYearListComponent implements AfterViewInit, OnChanges {
             console.log( 'close dialog academicYear' );
             // load something here
         } );
+    }
+    
+    //remove academic year
+    delete( academicYear: AcademicYear ): void {
+        
+        var txt;
+        var r = confirm( "Are you sure to delete this data?" );
+        if ( r == true ) {
+            txt = "Data has been deleted!";
+            this.store.dispatch( this.actions.removeAcademicYear( academicYear ) )
+        } else {
+            txt = "Cancel delete!";
+        }
     }
 
 }

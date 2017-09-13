@@ -83,6 +83,27 @@ export class AcademicYearActions {
     };
   }
   
+  //remove academicYear
+  static REMOVE_ACADEMIC_YEAR = '[Setup] Remove Academic Year';
+
+  removeAcademicYear(academicYear): Action {
+    console.log("removeAcademicYear");
+    return {
+      type: AcademicYearActions.REMOVE_ACADEMIC_YEAR,
+      payload: academicYear
+    };
+  }
+
+  static REMOVE_ACADEMIC_YEAR_SUCCESS = '[Setup] Remove Academic Year  Success';
+
+  removeAcademicYearSuccess(message): Action {
+    console.log("removeAcademicYearSuccess");
+    return {
+      type: AcademicYearActions.REMOVE_ACADEMIC_YEAR_SUCCESS,
+      payload: message
+    };
+  }
+  
   
 }
 

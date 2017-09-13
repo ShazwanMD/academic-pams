@@ -1,6 +1,7 @@
 package my.edu.umk.pams.academic.planner.service;
 
 import my.edu.umk.pams.academic.common.model.AdGradeCode;
+import my.edu.umk.pams.academic.common.model.AdStudyMode;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.planner.dao.*;
 import my.edu.umk.pams.academic.planner.event.FacultyAddedEvent;
@@ -1012,6 +1013,14 @@ public class PlannerServiceImpl implements PlannerService {
          sessionFactory.getCurrentSession().flush();
 		
 	}
+    
+    //remove academicYear
+    @Override
+	public void removeAcademicYear(AdAcademicYear academicYear) {
+    	academicYearDao.remove(academicYear, securityService.getCurrentUser());
+		sessionFactory.getCurrentSession().flush();
+	}
+
 
     @Override
 	public boolean isAcademicYearExists(String code) {

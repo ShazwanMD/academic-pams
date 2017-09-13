@@ -54,7 +54,13 @@ export class PlannerService {
         .flatMap((res: Response) => Observable.of(res.text()));
             
     }
-
+    
+    //remove academicYear
+    removeAcademicYear(academicYear: AcademicYear) {
+        console.log('removeAcademicYear');
+        return this._http.delete(this.PLANNER_API + '/academicYears/' + academicYear.code)
+          .flatMap((res: Response) => Observable.of(res.text()));
+      }
 
   // ====================================================================================================
   // ACADEMIC SESSION

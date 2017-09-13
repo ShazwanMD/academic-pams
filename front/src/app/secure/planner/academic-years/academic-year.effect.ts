@@ -47,4 +47,13 @@ export class AcademicYearEffects {
         //.mergeMap((action) => from([action, this.academicYearActions.findAcademicYears()]));
         .switchMap(() => this.plannerService.findAcademicYears())
         .map((academicYears) => this.academicYearActions.findAcademicYearsSuccess(academicYears));
+    
+    //remove academicYear
+    @Effect() removeAcademicYear$ = this.actions$
+    .ofType(AcademicYearActions.REMOVE_ACADEMIC_YEAR)
+    .map(action => action.payload)
+    .switchMap(payload => this.plannerService.removeAcademicYear(payload))
+    .map(message => this.academicYearActions.removeAcademicYearSuccess(message))
+    .mergeMap(action => from([action, this.academicYearActions.findAcademicYears()]));
+
 }

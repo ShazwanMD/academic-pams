@@ -27,9 +27,8 @@
             <md-icon>more_vert</md-icon>
           </button>
           <md-menu x-position="before" #menu1="mdMenu">
-           
-             <button md-menu-item (click)="editDialog(row, true)" >Update Academic Year</button>
-           <!--  <button md-menu-item (click)="deleteSection(row)">Delete academicYear</button> -->
+             <button md-menu-item (click)="editDialog(row, true)" >Update academic year</button>
+             <button md-menu-item (click)="delete(row)">Delete academic year</button>
           </md-menu>
         </div>
   </template>

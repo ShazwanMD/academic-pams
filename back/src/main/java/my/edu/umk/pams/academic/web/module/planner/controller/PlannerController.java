@@ -1,5 +1,6 @@
 package my.edu.umk.pams.academic.web.module.planner.controller;
 
+import my.edu.umk.pams.academic.common.model.AdStudyMode;
 import my.edu.umk.pams.academic.common.service.CommonService;
 import my.edu.umk.pams.academic.identity.service.IdentityService;
 import my.edu.umk.pams.academic.planner.model.*;
@@ -177,7 +178,7 @@ public class PlannerController {
 	// update academicYear
 	@RequestMapping(value = "/academicYears/{code}/update", method = RequestMethod.PUT)
 	public ResponseEntity<String> updateAcademicYear(@PathVariable String code, @RequestBody AcademicYear vo) {
-		dummyLogin();
+		//dummyLogin();
 		System.out.println("Update academicYear:" + vo.getCode());
 		
 		AdAcademicYear academicYear = plannerService.findAcademicYearByCode(code);	
@@ -186,6 +187,18 @@ public class PlannerController {
 		plannerService.updateAcademicYear(academicYear);
 		return new ResponseEntity<String>("Success", HttpStatus.OK);
 	}
+	
+	//remove academicYear
+	 @RequestMapping(value = "/academicYears/{code}", method = RequestMethod.DELETE)
+	  public ResponseEntity<String> removeAcademicYear(@PathVariable String code) {
+	          //dummyLogin();
+
+	          AdAcademicYear academicYear = plannerService.findAcademicYearByCode(code);
+	          plannerService.removeAcademicYear(academicYear);
+	          
+	          System.out.println("removeAcademicYear:" + academicYear);
+	          return new ResponseEntity<String>("Success", HttpStatus.OK);
+	          }
 	
 	
 	// ====================================================================================================

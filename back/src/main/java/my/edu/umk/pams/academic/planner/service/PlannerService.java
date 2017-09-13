@@ -1,5 +1,6 @@
 package my.edu.umk.pams.academic.planner.service;
 
+import my.edu.umk.pams.academic.common.model.AdStudyMode;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.planner.model.*;
 import my.edu.umk.pams.academic.term.model.AdAdmission;
@@ -335,6 +336,8 @@ public interface PlannerService {
     void saveAcademicYear(AdAcademicYear year);
     
     void updateAcademicYear(AdAcademicYear academicYear);
+    
+    void removeAcademicYear(AdAcademicYear academicYear);
     
     boolean isAcademicYearExists(String code);
 
