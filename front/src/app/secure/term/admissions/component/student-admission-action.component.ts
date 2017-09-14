@@ -73,7 +73,7 @@ export class StudentAdmissionActionComponent {
       let config = new MdDialogConfig();
       config.viewContainerRef = this.vcf;
       config.role = 'dialog';
-      config.width = '90%';
+      config.width = '75%';
       config.height = '50%';
       config.position = { top: '0px' };
       this.creatorDialogRef2 = this.dialog.open(AdmissionApplicationManualDialog, config);
