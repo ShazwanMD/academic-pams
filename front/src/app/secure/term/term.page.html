@@ -8,14 +8,8 @@
     {{item.title}}
   </a></md-nav-list>
   <td-layout-manage-list #list>
-    <md-nav-list
-      list-items>
-
-      <a md-list-item>
-        <md-icon></md-icon>
-        <span
-          style="color: red; font-weight: bold">ADMINISTRATOR</span>
-      </a>
+    <md-nav-list list-items dense>
+      <h3 md-subheader>Term Page</h3>
       <a md-list-item [routerLink]="['/secure/term/offerings']">
         <md-icon>create</md-icon>
         Offerings
@@ -37,7 +31,6 @@
         <md-icon>person_add</md-icon>
         Assign Supervisor
       </a>
-      
      
     </md-nav-list>
     <div toolbar-buttons layout="row" layout-align="start center" flex>
@@ -46,7 +39,7 @@
      
     </div>
     <md-card class="">
-      <md-card-title align="left">Welcome To Postgraduate Center
+      <md-card-title align="left">
       </md-card-title>
       <md-card-subtitle></md-card-subtitle>
       <md-divider></md-divider>

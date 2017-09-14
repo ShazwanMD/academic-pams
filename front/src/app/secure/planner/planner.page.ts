@@ -1,17 +1,20 @@
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { DatePipe } from '@angular/common';
 
-@Component({
-  selector: 'pams-planner-page',
-  templateUrl: './planner.page.html',
-})
+@Component( {
+    selector: 'pams-planner-page',
+    templateUrl: './planner.page.html',
+} )
 
 export class PlannerPage implements OnInit {
 
-  constructor(private router: Router,
-              private route: ActivatedRoute) {
-  }
+    today: number = Date.now();
 
-  ngOnInit(): void {
-  }
+    constructor( private router: Router,
+        private route: ActivatedRoute ) {
+    }
+
+    ngOnInit(): void {
+    }
 }
