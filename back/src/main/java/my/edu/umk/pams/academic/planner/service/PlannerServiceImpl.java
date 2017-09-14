@@ -1017,7 +1017,7 @@ public class PlannerServiceImpl implements PlannerService {
     //remove academicYear
     @Override
 	public void removeAcademicYear(AdAcademicYear academicYear) {
-    	academicYearDao.remove(academicYear, securityService.getCurrentUser());
+    	academicYearDao.delete(academicYear, securityService.getCurrentUser());
 		sessionFactory.getCurrentSession().flush();
 	}
 

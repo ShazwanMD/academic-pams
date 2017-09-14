@@ -141,6 +141,9 @@ export class AcademicYearListComponent implements AfterViewInit, OnChanges {
         if ( r == true ) {
             txt = "Data has been deleted!";
             this.store.dispatch( this.actions.removeAcademicYear( academicYear ) )
+            let snackBarRef = this.snackBar.open( 'Academic Years: ' + academicYear.code + ' has been deleted', '', { duration: 3000 } );
+            snackBarRef.afterDismissed().subscribe(() => {
+           } );
         } else {
             txt = "Cancel delete!";
         }
