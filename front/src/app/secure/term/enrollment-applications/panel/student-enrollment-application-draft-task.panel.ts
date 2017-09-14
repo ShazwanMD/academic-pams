@@ -10,6 +10,7 @@ import { EnrollmentApplicationActions } from '../enrollment-application.action';
 import { TermModuleState } from '../../index';
 import { Store } from '@ngrx/store';
 import { TermService } from "../../../../../services/term.service";
+import { AdmissionApplicationTaskConfirmDialog } from "../../admission-applications/dialog/admission-application-task-confirm.dialog";
 
 @Component( {
     selector: 'pams-student-enrollment-application-draft-task',
@@ -63,43 +64,26 @@ export class StudentEnrollmentApplicationDraftTaskPanel implements OnInit {
         editorDialogRef.componentInstance.enrollmentApplicationItem = item;
     }
 
-    /*register() {   
-           
-        var r = confirm("Please choose your course first before submit the application.Thank you.");
-        if (r == true) {
-            
-            let snackBarRef = this._snackBar.open( 'Enrollment application completed', 'OK' );
-            snackBarRef.afterDismissed().subscribe(() => {
-                this.router.navigate( ['/secure'] );
-            } );
-            
-        } else {
-            let snackBarRef = this._snackBar.open( 'Please choose courses to enroll', 'OK', {duration:2000} );
-            snackBarRef.afterDismissed().subscribe(() => {
-                //this.router.navigate( ['/secure'] );
-            } );
-        }
-        
-                       
-    }*/
-
     register() {
 
         var r = confirm( "Please add course/sections before submit the application.Thank you." );
         if ( r == true ) {
 
-            let snackBarRef = this._snackBar.open( 'Proceed with course enrollments', 'OK' );
+            let snackBarRef = this._snackBar.open( 'Proceed with add/drop course enrollments', 'OK' );
             snackBarRef.afterDismissed().subscribe(() => {
-               // this.router.navigate( ['/secure'] );
+                // this.router.navigate( ['/secure'] );
             } );
-            
+
         } else {
 
             let snackBarRef = this._snackBar.open( 'Course enrollments completed', 'OK' );
             snackBarRef.afterDismissed().subscribe(() => {
             } );
+
             this.store.dispatch( this.actions.completeEnrollmentApplicationTask( this.enrollmentApplicationTask ) );
-            this.goBack();
+            this.router.navigate( ['/secure'] );
+            //this.goBack();
+
         }
     }
 

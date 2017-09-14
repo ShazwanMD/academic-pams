@@ -27,11 +27,11 @@
             [enrollmentApplicationTasks]="assignedEnrollmentApplicationTasks$ | async"
             (view)="viewTask($event)"></pams-assigned-enrollment-application-task-list>
         </md-tab>
-        <md-tab label="Approved Status">
+      <!--   <md-tab label="Approved Status">
           <pams-archived-enrollment-application-list [enrollmentApplications]="archivedEnrollmentApplications$ | async"
                                                      (view)="viewEnrollmentApplication($event)">
           </pams-archived-enrollment-application-list>
-        </md-tab>
+        </md-tab> -->
       </md-tab-group>
     </md-card>
   </td-layout-manage-list>
