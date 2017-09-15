@@ -23,6 +23,7 @@ import { GraduationApplication } from "../../../shared/model/graduation/graduati
 import { OfferingUpdateDialog } from "../../term/offerings/dialog/offering-update.dialog";
 import { AdmissionApplicationTaskCreatorDialog } from "../../term/admission-applications/dialog/admission-application-task-creator.dialog";
 import { AdmissionApplicationTaskDialog } from "../../term/admission-applications/dialog/admission-application-task.dialog";
+import { GraduationApplicationTaskDialog } from "../../term/admission-applications/dialog/graduation-application-task.dialog";
 import { StudentGuardianEditorDialog } from "../dialog/student-guardian-editor.dialog";
 import { StudentGuarantorEditorDialog } from "../dialog/student-guarantor-editor.dialog";
 import { EnrollmentApplicationTaskCreatorDialog } from "../../term/enrollment-applications/dialog/enrollment-application-task-creator.dialog";
@@ -47,6 +48,7 @@ export class StudentProfileListPage implements OnInit {
     private creatorDialogRef: MdDialogRef<AdmissionApplicationTaskDialog>;
     private creatorDialogRef2: MdDialogRef<EnrollmentApplicationTaskDialog>;
     private creatorDialogRef3: MdDialogRef<GraduationApplicationCreatorDialog>;
+    private creatorDialogRef4: MdDialogRef<GraduationApplicationTaskDialog>;
 
 
     //inputs
@@ -147,8 +149,8 @@ export class StudentProfileListPage implements OnInit {
         { name: 'advisor.program.faculty.name', label: 'Faculty' },
         { name: 'action', label: '' },
     ];
-    
-  //view data graduationApplications
+
+    //view data graduationApplications
     private columnGraduationApplication: any[] = [
         { name: 'id', label: 'Id' },
         { name: 'cgpa', label: 'CGPA' },
@@ -382,7 +384,7 @@ export class StudentProfileListPage implements OnInit {
         } );
     }
 
-    //COURSE ENROLLMENT
+   //COURSE ENROLLMENT
     courseEnroll(): void {
         let config = new MdDialogConfig();
         config.viewContainerRef = this.vcf;
@@ -413,9 +415,9 @@ export class StudentProfileListPage implements OnInit {
     /*=========================================================================================*/
     /*GRADUATION APPLICATION*/
     /*=========================================================================================*/
-    
+
     //APPLY GRADUATION
-    applyGraduation(): void {
+    applyGraduation2(): void {
         let config = new MdDialogConfig();
         config.viewContainerRef = this.vcf;
         config.role = 'dialog';
@@ -428,16 +430,33 @@ export class StudentProfileListPage implements OnInit {
             // load something here
         } );
     }
+    
+    //GRADUATION APPLICATION
+    applyGraduation(): void {
+        console.log( 'showDialog' );
+        let config = new MdDialogConfig();
+        config.viewContainerRef = this.vcf;
+        config.role = 'dialog';
+        config.width = '60%';
+        config.height = '55%';
+        config.position = { top: '0px' };
+        this.creatorDialogRef4 = this.dialog.open( GraduationApplicationTaskDialog, config );
+        this.creatorDialogRef4.componentInstance.student = this.student;
+        this.creatorDialogRef4.afterClosed().subscribe(( res ) => {
+            console.log( 'close dialog' );
+            // load something here
+        } );
+    }
 
     //STATUS GRADUATION
     statusGraduation() {
         this.router.navigate( ['/secure/graduation/graduation-applications/student'] );
     }
-    
+
     /*=========================================================================================*/
     /*ACADEMIC SESSION HISTORY*/
     /*=========================================================================================*/
-    
+
     //STATUS 
     academicSessionDetail() {
         this.router.navigate( ['/secure/academicSessions'] );

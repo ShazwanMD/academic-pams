@@ -2,10 +2,10 @@
   <md-nav-list list-items>
   <h3 md-subheader>Enrollments</h3>
     <!-- class="text-upper" -->
-   <!--  <a md-list-item (click)="semesterRegister()" color="accent" *ngIf="admissions?.length < 1">
+    <!--  <a md-list-item (click)="semesterRegister()" color="accent" *ngIf="admissions?.length < 1">
       <md-icon>create</md-icon>
       <span>Apply Semester Registration</span>
-    </a> -->
+    </a>  -->
      <a md-list-item (click)="statusSemesterRegister()" color="accent">
       <md-icon>drafts</md-icon>
       <span>Semester Registration Status </span>
@@ -32,15 +32,22 @@
     <md-divider></md-divider>
 
       <md-divider></md-divider>
-      <h3 md-subheader>Graduation</h3>
-       <a md-list-item (click)="applyGraduation()" color="accent"  mdTooltip="View offerings info">
+     <h3 md-subheader>Graduation</h3>
+      <a md-list-item color="accent">
+        <span>
+               <md-chip-list *ngIf="graduationApplications?.length > 0">
+                    <md-chip color="accent">{{graduationApplications?.length}} Approved application</md-chip>
+                  </md-chip-list>     
+          </span>           
+      </a>
+      <!--   <a md-list-item (click)="applyGraduation()" color="accent"  mdTooltip="View offerings info">
           <md-icon>create</md-icon>
         <span>Apply Graduation</span>
       </a>
       <a md-list-item (click)="statusGraduation()" color="accent"  mdTooltip="View offerings info">
           <md-icon>drafts</md-icon>
         <span>Graduation Status</span>
-      </a> 
+      </a>  -->
     <md-divider></md-divider>
   </md-nav-list>
    <div toolbar-buttons layout="row" layout-align="start center" flex>

@@ -43,6 +43,7 @@ import { AdmissionApplicationTaskConfirmDialog } from "./dialog/admission-applic
 import { AdmissionApplicationCreatorDialog } from "./dialog/admission-application-creator.dialog";
 import { AdmissionApplicationConfirmDialog } from "./dialog/admission-application-confirm.dialog";
 import { AdmissionApplicationManualDialog } from "./dialog/admission-application-manual.dialog";
+import { GraduationApplicationTaskDialog } from "./dialog/graduation-application-task.dialog";
 
 @NgModule({
   imports: [
@@ -91,6 +92,7 @@ import { AdmissionApplicationManualDialog } from "./dialog/admission-application
     AdmissionApplicationTaskCreatorDialog,
     AdmissionApplicationTaskEditorDialog,
     AdmissionApplicationTaskDialog,
+    GraduationApplicationTaskDialog,
     AdmissionApplicationCreatorDialog,
     AdmissionApplicationManualDialog,
     AdmissionApplicationTaskConfirmDialog,
@@ -114,6 +116,7 @@ import { AdmissionApplicationManualDialog } from "./dialog/admission-application
   entryComponents: [
     AdmissionApplicationTaskCreatorDialog,
     AdmissionApplicationTaskDialog,
+    GraduationApplicationTaskDialog,
     AdmissionApplicationCreatorDialog,
     AdmissionApplicationManualDialog,
     AdmissionApplicationTaskConfirmDialog,

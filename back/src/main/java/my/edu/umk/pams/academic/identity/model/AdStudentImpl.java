@@ -79,7 +79,6 @@ public class AdStudentImpl extends AdActorImpl implements AdStudent {
 		this.memo = memo;
 	}
 
-
 	@Override
 	public String getMatricNo() {
 		return getIdentityNo();
