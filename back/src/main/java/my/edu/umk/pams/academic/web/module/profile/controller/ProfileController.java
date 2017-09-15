@@ -2,6 +2,8 @@ package my.edu.umk.pams.academic.web.module.profile.controller;
 
 import my.edu.umk.pams.academic.common.model.AdStudyMode;
 import my.edu.umk.pams.academic.common.service.CommonService;
+import my.edu.umk.pams.academic.graduation.model.AdGraduationApplication;
+import my.edu.umk.pams.academic.graduation.service.GraduationService;
 import my.edu.umk.pams.academic.identity.model.*;
 import my.edu.umk.pams.academic.identity.service.IdentityService;
 import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
@@ -16,6 +18,8 @@ import my.edu.umk.pams.academic.term.model.AdEnrollment;
 import my.edu.umk.pams.academic.term.model.AdOffering;
 import my.edu.umk.pams.academic.term.model.AdSection;
 import my.edu.umk.pams.academic.term.service.TermService;
+import my.edu.umk.pams.academic.web.module.graduation.controller.GraduationTransformer;
+import my.edu.umk.pams.academic.web.module.graduation.vo.GraduationApplication;
 import my.edu.umk.pams.academic.web.module.identity.vo.Student;
 import my.edu.umk.pams.academic.web.module.planner.controller.PlannerTransformer;
 import my.edu.umk.pams.academic.web.module.planner.vo.AcademicSession;
@@ -63,6 +67,9 @@ public class ProfileController {
 
 	@Autowired
 	private ProfileService profileService;
+	
+	@Autowired
+	private GraduationService graduationService;
 
 	@Autowired
 	private PlannerService plannerService;
@@ -75,6 +82,9 @@ public class ProfileController {
 
 	@Autowired
 	private ProfileTransformer profileTransformer;
+	
+	@Autowired
+	private GraduationTransformer graduationTransformer;
 
 	@Autowired
 	private PlannerTransformer plannerTransformer;
@@ -809,6 +819,15 @@ public class ProfileController {
 		List<Enrollment> vos = termTransformer.toEnrollmentVos(enrollments);
 		return new ResponseEntity<List<Enrollment>>(vos, HttpStatus.OK);
 	}
+	
+	//find graduation applications by student
+	@RequestMapping(value = "/students/{identityNo}/graduationApplications", method = RequestMethod.GET)
+	public ResponseEntity<List<GraduationApplication>> findGraduationApplicationsByStudent(@PathVariable String identityNo) {
+		AdStudent student = profileService.findStudentByMatricNo(identityNo);
+		return new ResponseEntity<List<GraduationApplication>>(
+				graduationTransformer.toGraduationApplicationVos(graduationService.findGraduationApplications(student)),
+				HttpStatus.OK);
+	}
 
 	// find admissions by student
 	@RequestMapping(value = "/students/{identityNo}/admissions", method = RequestMethod.GET)
@@ -821,20 +840,7 @@ public class ProfileController {
 		List<Admission> admissionVos = decorateAdmission(termTransformer.toAdmissionVos(admissions));
 		return new ResponseEntity<List<Admission>>(admissionVos, HttpStatus.OK);
 	}
-
-	/*
-	 * //sample to delete
-	 * 
-	 * @RequestMapping(value = "/offerings/{canonicalCode}/sections", method =
-	 * RequestMethod.GET) public ResponseEntity<List<Section>>
-	 * findSectionsByOffering(@PathVariable String canonicalCode) throws
-	 * UnsupportedEncodingException { AdOffering offering =
-	 * termService.findOfferingByCanonicalCode(canonicalCode); List<AdSection>
-	 * sections = termService.findSections(offering); List<Section> sectionVos =
-	 * decorateSection(termTransformer.toSectionVos(sections)); return new
-	 * ResponseEntity<List<Section>>(sectionVos, HttpStatus.OK); }
-	 */
-
+	
 	@RequestMapping(value = "/students/{identityNo}/addresses", method = RequestMethod.GET)
 	public ResponseEntity<List<Address>> findAddressesByStudent(@PathVariable String identityNo) {
 		AdStudent student = profileService.findStudentByMatricNo(identityNo);

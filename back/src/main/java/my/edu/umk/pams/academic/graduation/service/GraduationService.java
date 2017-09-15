@@ -2,6 +2,7 @@ package my.edu.umk.pams.academic.graduation.service;
 
 import my.edu.umk.pams.academic.core.AdFlowState;
 import my.edu.umk.pams.academic.graduation.model.AdGraduationApplication;
+import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
 import my.edu.umk.pams.academic.term.model.AdAdmissionApplication;
 
@@ -46,6 +47,8 @@ public interface GraduationService {
     List<AdGraduationApplication> findGraduationApplications(String filter, Integer offset, Integer limit);
 
     List<AdGraduationApplication> findGraduationApplications(AdAcademicSession academicSession, Integer offset, Integer limit);
+    
+    List<AdGraduationApplication> findGraduationApplications(AdStudent student);
 
     Integer countGraduationApplication(String filter);
 

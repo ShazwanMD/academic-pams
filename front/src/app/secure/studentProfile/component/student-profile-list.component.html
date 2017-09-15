@@ -1,5 +1,6 @@
 <td-layout-manage-list #list>
   <md-nav-list list-items>
+  <h3 md-subheader>Enrollments</h3>
     <!-- class="text-upper" -->
    <!--  <a md-list-item (click)="semesterRegister()" color="accent" *ngIf="admissions?.length < 1">
       <md-icon>create</md-icon>
@@ -20,15 +21,18 @@
                </md-chip-list>      
           </span>           
       </a>
+       <md-divider></md-divider>
+        <h3 md-subheader>Academic Session</h3>
     <div>
       <a md-list-item (click)="academicSessionDetail()" color="accent">
         <md-icon>library_books</md-icon>
-        <span> Status </span>
+        <span> Session Status </span>
       </a>
     </div>
     <md-divider></md-divider>
 
-    <!--  <md-divider></md-divider>
+      <md-divider></md-divider>
+      <h3 md-subheader>Graduation</h3>
        <a md-list-item (click)="applyGraduation()" color="accent"  mdTooltip="View offerings info">
           <md-icon>create</md-icon>
         <span>Apply Graduation</span>
@@ -36,7 +40,7 @@
       <a md-list-item (click)="statusGraduation()" color="accent"  mdTooltip="View offerings info">
           <md-icon>drafts</md-icon>
         <span>Graduation Status</span>
-      </a> -->
+      </a> 
     <md-divider></md-divider>
   </md-nav-list>
    <div toolbar-buttons layout="row" layout-align="start center" flex>
@@ -331,28 +335,9 @@
           
             <!-- Advisory Info -->
           <td-expansion-panel label="Advisor Information" class="bgc-light-blue-400">
-           <!--  <md-chip-list *ngIf="admissions?.length > 0">
-                       <md-chip color="accent">{{admissions?.length}} Approved application</md-chip>
-                       </md-chip-list> -->
             <div class="md-padding" class="bgc-light-blue-50">
-            
               <md-card>
-               <!--  <div md-content flex md-scroll-y>
-                  <div layout="column" layout-gt-md="row" class="insert">
-
-                    <div flex-gt-md="50">
-                      <md-card-title>Semester Registration Information 
-                       <md-chip-list *ngIf="admissions?.length > 0">
-                       <md-chip color="accent">{{admissions?.length}}</md-chip>
-                       </md-chip-list>
-                       </md-card-title>
-                      
-                      
-                    </div>
-
-                   </div>
-                </div> -->
-                <div toolbar-buttons layout="row" layout-align="start center" flex>
+               <div toolbar-buttons layout="row" layout-align="start center" flex>
     <md-card-title>Advisor Information</md-card-title>
     <md-chip-list *ngIf="admissionApplications?.length > 0">
       <md-chip color="accent">{{admissionApplications?.length}}</md-chip>
@@ -380,6 +365,50 @@
               </md-card>
             </div>
           </td-expansion-panel>
+          
+            <!-- Graduation Application Info -->
+          
+          <td-expansion-panel label="Graduation Application Information " class="bgc-light-blue-400" >
+             <div class="md-padding" class="bgc-light-blue-50">
+              <md-card>
+                <div toolbar-buttons layout="row" layout-align="start center" flex>
+                  <md-card-title>Graduation Application Information</md-card-title>
+                  <md-chip-list *ngIf="graduationApplications?.length > 0">
+                    <md-chip color="accent">{{graduationApplications?.length}}</md-chip>
+                  </md-chip-list>
+                  <span flex></span>
+                </div>
+                <md-divider></md-divider>
+                <md-card-content>
+                  <td-data-table 
+                  [data]="graduationApplications" 
+                  [columns]="columnGraduationApplication" 
+                  [sortBy]="summary" 
+                  [sortOrder]="ASC" 
+                  [sortable]="false" 
+                  [multiple]="false"
+                    [selectable]="false" 
+                    (rowSelect)="edit.emit($event)" dense>
+
+                    <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column"  color="accent">
+                      <div layout="row">
+                        <span flex >{{value}}</span>
+                      </div>
+                    </template>
+             
+                   <!--  <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
+                      <div layout="row">
+                        <a md-button color="accent" class="text-upper" >
+                        <span> </span>
+                        </a>
+                      </div>
+                    </template> -->
+                  </td-data-table>
+                </md-card-content>
+              </md-card>
+            </div>
+          </td-expansion-panel> 
+          
         </md-tab>
         <md-tab label="Cohort Information">
 

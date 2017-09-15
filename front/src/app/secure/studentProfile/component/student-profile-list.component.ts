@@ -19,6 +19,7 @@ import { Contact } from "../../../shared/model/profile/contact.interface";
 import { Enrollment } from "../../../shared/model/term/enrollment.interface";
 import { Admission } from "../../../shared/model/term/admission.interface";
 import { AdmissionApplication } from "../../../shared/model/term/admission-application.interface";
+import { GraduationApplication } from "../../../shared/model/graduation/graduation-application.interface";
 import { OfferingUpdateDialog } from "../../term/offerings/dialog/offering-update.dialog";
 import { AdmissionApplicationTaskCreatorDialog } from "../../term/admission-applications/dialog/admission-application-task-creator.dialog";
 import { AdmissionApplicationTaskDialog } from "../../term/admission-applications/dialog/admission-application-task.dialog";
@@ -61,6 +62,7 @@ export class StudentProfileListPage implements OnInit {
     @Input() admissions: Admission[];
     @Input() academicSessions: AcademicSession[];
     @Input() admissionApplications: AdmissionApplication[];
+    @Input() graduationApplications: GraduationApplication[];
 
     @Output() view2 = new EventEmitter<Admission>();
 
@@ -143,6 +145,17 @@ export class StudentProfileListPage implements OnInit {
         { name: 'advisor.phone', label: 'Phone' },
         { name: 'advisor.program.code', label: 'Program' },
         { name: 'advisor.program.faculty.name', label: 'Faculty' },
+        { name: 'action', label: '' },
+    ];
+    
+  //view data graduationApplications
+    private columnGraduationApplication: any[] = [
+        { name: 'id', label: 'Id' },
+        { name: 'cgpa', label: 'CGPA' },
+        { name: 'creditHour', label: 'Credit Hour' },
+        { name: 'referenceNo', label: 'Reference No' },
+        { name: 'description', label: 'Description' },
+        { name: 'academicSession.code', label: 'academicSession' },
         { name: 'action', label: '' },
     ];
 
@@ -396,6 +409,11 @@ export class StudentProfileListPage implements OnInit {
         this.router.navigate( ['/secure/term/enrollment-applications/student-enrollment-center'] );
     }
 
+
+    /*=========================================================================================*/
+    /*GRADUATION APPLICATION*/
+    /*=========================================================================================*/
+    
     //APPLY GRADUATION
     applyGraduation(): void {
         let config = new MdDialogConfig();
@@ -415,15 +433,11 @@ export class StudentProfileListPage implements OnInit {
     statusGraduation() {
         this.router.navigate( ['/secure/graduation/graduation-applications/student'] );
     }
-
-    /*viewAdmission(admission: Admission): void {
-        console.log('Emitting admission');
-        let snackBarRef = this.snackBar.open('Viewing semester registration', 'OK');
-        snackBarRef.afterDismissed().subscribe(() => {
-          this.view.emit(admission);
-        });
-      }*/
-
+    
+    /*=========================================================================================*/
+    /*ACADEMIC SESSION HISTORY*/
+    /*=========================================================================================*/
+    
     //STATUS 
     academicSessionDetail() {
         this.router.navigate( ['/secure/academicSessions'] );

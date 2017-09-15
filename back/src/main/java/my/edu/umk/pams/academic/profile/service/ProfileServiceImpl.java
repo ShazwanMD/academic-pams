@@ -2,6 +2,8 @@ package my.edu.umk.pams.academic.profile.service;
 
 import my.edu.umk.pams.academic.AcademicConstants;
 import my.edu.umk.pams.academic.common.model.AdStudyMode;
+import my.edu.umk.pams.academic.graduation.dao.AdGraduationApplicationDao;
+import my.edu.umk.pams.academic.graduation.model.AdGraduationApplication;
 import my.edu.umk.pams.academic.identity.dao.AdStudentDao;
 import my.edu.umk.pams.academic.identity.event.StudentActivatedEvent;
 import my.edu.umk.pams.academic.identity.event.StudentBarredEvent;
@@ -43,6 +45,9 @@ public class ProfileServiceImpl implements ProfileService {
 
     @Autowired
     private AdStudentDao studentDao;
+    
+    @Autowired
+    private AdGraduationApplicationDao graduationApplicationDao;
 
     @Autowired
     private SecurityService securityService;
@@ -336,4 +341,15 @@ public class ProfileServiceImpl implements ProfileService {
 		
 		return studentDao.findAdmissionByAcademicSessionAndStudent(academicSession, student);
 	}
+	
+	 /*============================================================================================*/
+    /*GRADUATION APPLICATION*/
+    /*============================================================================================*/
+
+	@Override
+	public List<AdGraduationApplication> findGraduationApplications(AdStudent student) {
+		 return graduationApplicationDao.findGraduationApplications(student);
+	}
+	
+	
 }

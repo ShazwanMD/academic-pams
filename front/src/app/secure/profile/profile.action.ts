@@ -230,6 +230,26 @@ export class ProfileActions {
     };
   }
   
+  //find Graduation Applications By Student
+  static FIND_GRADUATION_APPLICATIONS_BY_STUDENT = '[Profile] Find Graduation Applications';
+
+  findGraduationApplications(student): Action {
+    return {
+      type: ProfileActions.FIND_GRADUATION_APPLICATIONS_BY_STUDENT,
+      payload: student
+    };
+  }
+  
+  //find Graduation By Student Success
+  static FIND_GRADUATION_APPLICATIONS_BY_STUDENT_SUCCESS = '[Profile] Find Graduation Success';
+
+  findGraduationApplicationsSuccess(graduationApplications): Action {
+    return {
+      type: ProfileActions.FIND_GRADUATION_APPLICATIONS_BY_STUDENT_SUCCESS,
+      payload: graduationApplications
+    };
+  }
+  
   //find AdmissionApplications By Student 22/8/17
   static FIND_ADMISSION_APPLICATIONS_BY_STUDENT = '[Profile] Find AdmissionApplications';
 

@@ -5,6 +5,7 @@ import my.edu.umk.pams.academic.common.service.CommonService;
 import my.edu.umk.pams.academic.core.AdFlowState;
 import my.edu.umk.pams.academic.graduation.dao.AdGraduationApplicationDao;
 import my.edu.umk.pams.academic.graduation.model.AdGraduationApplication;
+import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.identity.service.IdentityService;
 import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
@@ -138,6 +139,11 @@ public class GraduationServiceImpl implements GraduationService {
     public List<AdGraduationApplication> findGraduationApplications(AdAcademicSession academicSession, Integer offset,
                                                                     Integer limit) {
         return graduationApplicationDao.find(academicSession, offset, limit);
+    }
+    
+    @Override
+    public List<AdGraduationApplication> findGraduationApplications(AdStudent student) {
+        return graduationApplicationDao.find(student);
     }
 
     @Override

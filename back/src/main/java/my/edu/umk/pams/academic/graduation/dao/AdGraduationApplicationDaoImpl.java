@@ -5,6 +5,8 @@ import my.edu.umk.pams.academic.core.AdMetaState;
 import my.edu.umk.pams.academic.core.GenericDaoSupport;
 import my.edu.umk.pams.academic.graduation.model.AdGraduationApplication;
 import my.edu.umk.pams.academic.graduation.model.AdGraduationApplicationImpl;
+import my.edu.umk.pams.academic.identity.model.AdGuarantor;
+import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
 import my.edu.umk.pams.academic.term.model.AdAdmissionApplication;
 
@@ -54,12 +56,25 @@ public class AdGraduationApplicationDaoImpl extends GenericDaoSupport<Long, AdGr
         query.setInteger("state", AdMetaState.ACTIVE.ordinal());
         return (List<AdGraduationApplication>) query.list();
     }
-
-
+    
+    @Override
+    public List<AdGraduationApplication> find(AdStudent student) {
+        Session session = sessionFactory.getCurrentSession();
+        /*Query query = session.createQuery("select a from AdGraduationApplication a where " +
+                "a.student = :student and "+
+                " a.metadata.state = :state");*/
+        Query query = session.createQuery("select a from AdGraduationApplication a where " +
+        "a.student = :student "+
+        "and a.metadata.state = :state");
+        query.setEntity("student", student);
+        query.setInteger("state", AdMetaState.ACTIVE.ordinal());
+        return (List<AdGraduationApplication>) query.list();
+    }
+    
+   
     // ====================================================================================================
     // HELPER
     // ====================================================================================================
-
 
     @Override
     public Integer count(AdAcademicSession academicSession) {
@@ -82,5 +97,20 @@ public class AdGraduationApplicationDaoImpl extends GenericDaoSupport<Long, AdGr
         query.setInteger("metaState", AdMetaState.ACTIVE.ordinal());
         return (List<AdGraduationApplication>) query.list();
     }
+
+	
+	//find graduation applications
+	@Override
+	public List<AdGraduationApplication> findGraduationApplications(AdStudent student) {
+		Session session = sessionFactory.getCurrentSession();
+		Query query = session.createQuery("select a from AdGraduationApplication a where " +
+				"a.student = :student " +
+                "and a.metadata.state = :state");
+		query.setEntity("student", student);
+		query.setInteger("state", AdMetaState.ACTIVE.ordinal());
+		return (List<AdGraduationApplication>) query.list();
+	}
+
+	
 	
 }

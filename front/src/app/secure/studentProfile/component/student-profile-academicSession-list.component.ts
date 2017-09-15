@@ -44,10 +44,6 @@ export class StudentProfileAcademicSessionComponent implements OnInit {
         private snackBar: MdSnackBar) {
     }
 
-
-
-
-
     ngOnInit(): void {
         console.log("find Student Profile Detail");
 

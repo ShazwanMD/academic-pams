@@ -34,6 +34,7 @@ import {guarantorListReducer, GuarantorListState} from './guarantor-list.reducer
 //import {enrollmentListReducer, EnrollmentListState} from './enrollment-list.reducer';
 import {admissionListReducer, AdmissionListState} from './admission-list.reducer';
 import {admissionApplicationListReducer, AdmissionApplicationListState} from './admissionApplication-list.reducer';
+import {graduationApplicationListReducer, GraduationApplicationListState} from './graduationApplication-list.reducer';
 import {studentReducer, StudentState} from './student.reducer';
 import {studentListReducer, StudentListState} from './student-list.reducer';
 import {ContactEditorDialog} from './dialog/contact-editor.dialog';
@@ -51,6 +52,7 @@ import {ProfileCohortComponent} from './component/profile-cohort.component';
 import {ProfileEnrollmentListComponent} from './component/profile-enrollment-list.component';
 import { Admission } from "../../shared/model/term/admission.interface";
 import { AdmissionApplication } from "../../shared/model/term/admission-application.interface";
+import { GraduationApplication } from "../../shared/model/graduation/graduation-application.interface";
 import { AdvisoryCenterPage } from "./advisory-center.page";
 import {AdvisoryListComponent} from './component/advisory-list.component';
 import {AdvisoryDetailPage} from './advisory-detail.page';
@@ -67,6 +69,7 @@ export interface ProfileModuleState {
   //enrollments: EnrollmentListState;
   admissions: AdmissionListState;
   admissionApplications: AdmissionApplicationListState;
+  graduationApplications: GraduationApplicationListState;
 }
 ;
 
@@ -81,6 +84,7 @@ export const INITIAL_PROFILE_STATE: ProfileModuleState =
     //enrollments: <Enrollment[]>[],
     admissions: <Admission[]>[],
     admissionApplications: <AdmissionApplication[]>[],
+    graduationApplications: <GraduationApplication[]>[],
   };
 
 export const profileModuleReducers = {
@@ -93,6 +97,7 @@ export const profileModuleReducers = {
   //enrollments: enrollmentListReducer,
   admissions: admissionListReducer,
   admissionApplications: admissionApplicationListReducer,
+  graduationApplications: graduationApplicationListReducer,
 };
 
 @NgModule({

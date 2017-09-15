@@ -18,6 +18,7 @@ import { Enrollment } from "../../shared/model/term/enrollment.interface";
 import { FormBuilder } from "@angular/forms";
 import { Admission } from "../../shared/model/term/admission.interface";
 import { AdmissionApplication } from "../../shared/model/term/admission-application.interface";
+import { GraduationApplication } from "../../shared/model/graduation/graduation-application.interface";
 
 @Component({
   selector: 'pams-student-profile-center',
@@ -31,6 +32,7 @@ export class StudentProfileCenterPage implements OnInit {
   @Input() addressess: Address[];
 
   private STUDENT: string[] = 'studentProfileModuleState.student'.split('.');
+  private GRADUATION_APPLICATIONS: string[] = 'profileModuleState.graduationApplications'.split('.');
   private ADDRESSES: string[] = 'studentProfileModuleState.addresses'.split('.');
   private STUDENTS: string[] = 'studentProfileModuleState.students'.split('.');
   private GUARANTORS: string[] = 'studentProfileModuleState.guarantors'.split('.');
@@ -44,6 +46,7 @@ export class StudentProfileCenterPage implements OnInit {
   
 
   private students$: Observable<Student[]>;
+  private graduationApplications$: Observable<GraduationApplication[]>;
   private student$: Observable<Student>;
   private addressess$: Observable<Address[]>;
   private guarantors$: Observable<Guarantor>;
@@ -55,9 +58,8 @@ export class StudentProfileCenterPage implements OnInit {
   private academicSession$: Observable<AcademicSession>;
   private admissionApplications$: Observable<AdmissionApplication>;
   
-  
-
   private _student: Student;
+  
   constructor(private router: Router,
     private route: ActivatedRoute,
     private actions: StudentProfileActions,
@@ -69,6 +71,7 @@ export class StudentProfileCenterPage implements OnInit {
 
     this.students$ = this.store.select(...this.STUDENTS);
     this.student$ = this.store.select(...this.STUDENT);
+    this.graduationApplications$ = this.store.select(...this.GRADUATION_APPLICATIONS);
     this.addressess$ = this.store.select(...this.ADDRESSES);
     this.guardians$ = this.store.select(...this.GUARDIANS);
     this.guarantors$ = this.store.select(...this.GUARANTORS);
@@ -97,12 +100,6 @@ export class StudentProfileCenterPage implements OnInit {
     //this.actions.findStudentByIdentityNo(student.identityNo);
 
   }
-  
-  /*viewAdmission(admission: Admission) {
-      console.log('admission: ' + admission.id);
-      this.router.navigate(['/secure/term/admissions', admission.id]);
-
-    }*/
-
+ 
 }
 

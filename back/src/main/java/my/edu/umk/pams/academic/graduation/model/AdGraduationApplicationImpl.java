@@ -13,7 +13,7 @@ import java.math.BigDecimal;
 
 /*
  * */
-@Entity(name = "AdGraduationApplicaation")
+@Entity(name = "AdGraduationApplication")
 @Table(name = "AD_GRDN_APLN")
 public class AdGraduationApplicationImpl implements AdGraduationApplication {
 
@@ -52,9 +52,13 @@ public class AdGraduationApplicationImpl implements AdGraduationApplication {
     @Column(name = "REMOVE_COMMENT")
     private String removeComment;
 
-    @NotNull
+   /* @NotNull
     @ManyToOne(targetEntity = AdStudentImpl.class)
     @JoinColumn(name = "STUDENT_ID")
+    private AdStudent student;*/
+    
+    @ManyToOne(targetEntity = AdStudentImpl.class)
+    @JoinColumn(name = "STUDENT_ID" )
     private AdStudent student;
 
     @NotNull
@@ -167,7 +171,7 @@ public class AdGraduationApplicationImpl implements AdGraduationApplication {
     public void setRemoveComment(String removeComment) {
         this.removeComment = removeComment;
     }
-
+  
     @Override
     public AdStudent getStudent() {
         return student;

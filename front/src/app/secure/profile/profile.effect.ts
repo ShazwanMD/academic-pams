@@ -92,13 +92,7 @@ export class ProfileEffects {
       this.profileActions.findAdmissions(action.payload),
     ]));
   
-  /*//find admission applications by students
-  @Effect() findAdmissionApplications$ = this.actions$
-  .ofType(ProfileActions.FIND_ADMISSION_APPLICATIONS)
-  .map(action => action.payload)
-  .switchMap(student => this.profileService.findAdmissionApplications(student))
-  .map(admissionApplications => this.profileActions.findAdmissionApplicationsSuccess(admissionApplications));
-*/
+ 
   @Effect() findAddresses$ = this.actions$
     .ofType(ProfileActions.FIND_ADDRESSES)
     .map(action => action.payload)
@@ -136,6 +130,13 @@ export class ProfileEffects {
   .switchMap(student => this.profileService.findAdmissions(student))
   .map(admissions => this.profileActions.findAdmissionsSuccess(admissions));
 
+  //find graduation
+//find admissions
+  @Effect() findGraduationApplications$ = this.actions$
+  .ofType(ProfileActions.FIND_GRADUATION_APPLICATIONS_BY_STUDENT)
+  .map(action => action.payload)
+  .switchMap(student => this.profileService.findGraduationApplications(student))
+  .map(graduationApplications => this.profileActions.findGraduationApplicationsSuccess(graduationApplications));
   
 //find admissionApplications
   @Effect() findAdmissionApplications$ = this.actions$
