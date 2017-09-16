@@ -28,12 +28,14 @@ import {
   } from './graduation-applications/graduation-application-list.reducer';
 import {GraduationApplicationTask} from '../../shared/model/graduation/graduation-application-task.interface';
 import {GraduationApplication} from '../../shared/model/graduation/graduation-application.interface';
+import { GraduationApplicationActions } from "./graduation-applications/graduation-application.action";
 
 
 export interface GraduationModuleState {
   assignedGraduationApplicationTasks: GraduationApplicationTaskListState;
   pooledGraduationApplicationTasks: GraduationApplicationTaskListState;
   archivedGraduationApplications: GraduationApplicationListState;
+  graduationApplications: GraduationApplicationListState;
   graduationApplicationTask: GraduationApplicationTaskState;
   graduationApplication: GraduationApplicationState;
 }
@@ -45,6 +47,7 @@ export const INITIAL_GRADUATION_STATE: GraduationModuleState =
     archivedGraduationApplications: <GraduationApplication[]>[],
     graduationApplicationTask: <GraduationApplicationTask>{},
     graduationApplication: {},
+    graduationApplications: <GraduationApplication[]>[],
   };
 
 export const graduationModuleReducers = {
@@ -53,6 +56,7 @@ export const graduationModuleReducers = {
   archivedGraduationApplications: archivedGraduationApplicationListReducer,
   graduationApplicationTask: graduationApplicationTaskReducer,
   graduationApplication: graduationApplicationReducer,
+  graduationApplications: graduationApplicationListReducer,
 };
 
 @NgModule({
@@ -78,6 +82,7 @@ export class GraduationModule {
         IdentityService,
         CommonService,
         GraduationService,
+        GraduationApplicationActions,
       ],
     };
   }

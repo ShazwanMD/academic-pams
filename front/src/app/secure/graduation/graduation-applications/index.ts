@@ -17,6 +17,7 @@ import {GraduationApplicationCreatorDialog} from './dialog/graduation-applicatio
 import {AssignedGraduationApplicationTaskListComponent} from './component/assigned-graduation-application-task-list.component';
 import {PooledGraduationApplicationTaskListComponent} from './component/pooled-graduation-application-task-list.component';
 import {ArchivedGraduationApplicationListComponent} from './component/archived-graduation-application-list.component';
+import {GraduationApplicationListComponent} from './component/graduation-application-list.component';
 import {GraduationApplicationDraftTaskPanel} from './panel/graduation-application-draft-task.panel';
 import {GraduationApplicationTaskWorkflowPanel} from './panel/graduation-application-task-workflow.panel';
 import {GraduationApplicationCheckTaskPanel} from './panel/graduation-application-check-task.panel';
@@ -26,6 +27,7 @@ import {GraduationApplicationEditorDialog} from './dialog/graduation-application
 import {AcademicSessionSubModule} from '../../planner/academic-sessions/index';
 import {ProfileModule} from '../../profile/index';
 import {GraduationApplicationTaskDetailPage} from './graduation-application-task-detail.page';
+import { GraduationListCenterPage } from "./graduation-list-center.page";
 
 @NgModule({
   imports: [
@@ -42,6 +44,7 @@ import {GraduationApplicationTaskDetailPage} from './graduation-application-task
   declarations: [
     // page
     GraduationApplicationCenterPage,
+    GraduationListCenterPage,
     StudentGraduationApplicationCenterPage,
     GraduationApplicationTaskDetailPage,
 
@@ -49,6 +52,7 @@ import {GraduationApplicationTaskDetailPage} from './graduation-application-task
     AssignedGraduationApplicationTaskListComponent,
     PooledGraduationApplicationTaskListComponent,
     ArchivedGraduationApplicationListComponent,
+    GraduationApplicationListComponent,
     GraduationApplicationTaskWorkflowPanel,
     GraduationApplicationDraftTaskPanel,
     GraduationApplicationRegisterTaskPanel,

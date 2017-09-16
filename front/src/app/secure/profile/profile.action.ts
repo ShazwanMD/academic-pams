@@ -83,6 +83,24 @@ export class ProfileActions {
       payload: students
     };
   }
+  
+  //find graduated students
+  static FIND_GRADUATED_STUDENTS = '[Profile] Find Graduated Students';
+
+  findGraduatedStudents(): Action {
+    return {
+      type: ProfileActions.FIND_GRADUATED_STUDENTS
+    };
+  }
+
+  static FIND_GRADUATED_STUDENTS_SUCCESS = '[Profile] Find Graduated Students Success';
+
+  findGraduatedStudentsSuccess(students): Action {
+    return {
+      type: ProfileActions.FIND_GRADUATED_STUDENTS_SUCCESS,
+      payload: students
+    };
+  }
 
   static FIND_STUDENT_BY_IDENTITY_NO = '[Profile] Find Student By Identity No';
 

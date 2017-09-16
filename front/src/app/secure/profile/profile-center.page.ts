@@ -21,7 +21,7 @@ export class ProfileCenterPage implements OnInit {
               private route: ActivatedRoute,
               private actions: ProfileActions,
               private store: Store<ProfileModuleState>) {
-
+      
     this.students$ = this.store.select(...this.STUDENTS);
   }
 

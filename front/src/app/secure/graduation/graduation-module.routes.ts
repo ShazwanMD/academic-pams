@@ -4,5 +4,6 @@ import {GraduationApplicationRoutes} from './graduation-applications/graduation-
 
 export const GraduationModuleRoutes: Routes = [
   {path: 'graduation', component: GraduationPage},
+  
   ...GraduationApplicationRoutes,
 ];

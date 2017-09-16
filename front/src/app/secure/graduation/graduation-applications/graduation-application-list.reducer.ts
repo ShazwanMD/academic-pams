@@ -19,9 +19,9 @@ export function archivedGraduationApplicationListReducer(state = initialState, a
 
 export function graduationApplicationListReducer(state = initialState, action: Action): GraduationApplicationListState {
   switch (action.type) {
-   /* case GraduationApplicationActions.FIND_GRADUATION_APPLICATIONS_SUCCESS: {
+    case GraduationApplicationActions.FIND_GRADUATION_APPLICATIONS_SUCCESS: {
       return action.payload;
-    }*/
+    }
     default: {
       return state;
     }

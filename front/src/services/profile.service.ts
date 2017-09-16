@@ -152,6 +152,13 @@ export class ProfileService {
         return this._http.get( this.PROFILE_API + '/students' )
             .map(( res: Response ) => <Student[]>res.json() );
     }
+    
+    //findGraduatedStudents
+    findGraduatedStudents(): Observable<Student[]> {
+        return this._http.get( this.PROFILE_API + '/graduatedStudents' )
+            .map(( res: Response ) => <Student[]>res.json() );
+    }
+    
 
     findStudentByIdentityNo( matricNo: string ): Observable<Student> {
         return this._http.get( this.PROFILE_API + '/students/' + matricNo )

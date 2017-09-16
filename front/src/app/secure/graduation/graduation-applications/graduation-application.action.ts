@@ -222,4 +222,22 @@ export class GraduationApplicationActions {
       payload: invoice
     };
   }
+  
+  //find graduation applications
+  static FIND_GRADUATION_APPLICATIONS = '[GraduationApplication] Find Graduation Applications';
+
+  findGraduationApplications(): Action {
+    return {
+      type: GraduationApplicationActions.FIND_GRADUATION_APPLICATIONS
+    };
+  }
+
+  static FIND_GRADUATION_APPLICATIONS_SUCCESS = '[GraduationApplication] Find Graduation Applications Success';
+
+  findGraduationApplicationsSuccess(graduationApplications): Action {
+    return {
+      type: GraduationApplicationActions.FIND_GRADUATION_APPLICATIONS_SUCCESS,
+      payload: graduationApplications
+    };
+  }
 }

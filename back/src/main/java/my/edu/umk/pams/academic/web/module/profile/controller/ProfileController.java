@@ -767,6 +767,14 @@ public class ProfileController {
 		List<AdStudent> students = profileService.findStudents(0, Integer.MAX_VALUE);
 		return new ResponseEntity<List<Student>>(profileTransformer.toStudentVos(students), HttpStatus.OK);
 	}
+	
+	//find graduatedStudents
+	@RequestMapping(value = "/graduatedStudents", method = RequestMethod.GET)
+	public ResponseEntity<List<Student>> findGraduatedStudents() {
+
+		List<AdStudent> students = profileService.findGraduatedStudents(0, Integer.MAX_VALUE);
+		return new ResponseEntity<List<Student>>(profileTransformer.toStudentVos(students), HttpStatus.OK);
+	}
 
 	@RequestMapping(value = "/students/{matricNo}", method = RequestMethod.GET)
 	public ResponseEntity<Student> findStudentByMatricNo(@PathVariable String matricNo)

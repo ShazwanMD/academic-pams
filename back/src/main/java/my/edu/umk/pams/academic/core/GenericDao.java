@@ -21,6 +21,8 @@ public interface GenericDao<K, I> {
     List<I> find();
 
     List<I> find(Integer offset, Integer limit);
+    
+    List<I> findGraduatedStudents(Integer offset, Integer limit);
 
     List<I> findAuthorized(Set<String> sids);
 

@@ -11,6 +11,12 @@ export class GraduationApplicationEffects {
               private graduationService: GraduationService) {
   }
 
+  @Effect() findGraduationApplications$ = this.actions$
+  .ofType( GraduationApplicationActions.FIND_GRADUATION_APPLICATIONS )
+  .switchMap(() => this.graduationService.findGraduationApplications() )
+  .map(( graduationApplications ) => this.graduationApplicationActions.findGraduationApplicationsSuccess( graduationApplications ) );
+
+  
   @Effect() findAssignedGraduationApplicationTasks$ = this.actions$
     .ofType(GraduationApplicationActions.FIND_ASSIGNED_GRADUATION_APPLICATION_TASKS)
     .switchMap(() => this.graduationService.findAssignedGraduationApplicationTasks())

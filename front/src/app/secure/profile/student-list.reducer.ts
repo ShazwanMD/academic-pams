@@ -12,6 +12,9 @@ export function studentListReducer(state = initialState, action: Action): Studen
     case ProfileActions.FIND_STUDENTS_SUCCESS: {
       return action.payload;
     }
+    case ProfileActions.FIND_GRADUATED_STUDENTS_SUCCESS: {
+        return action.payload;
+      }
     default: {
       return state;
     }

@@ -17,7 +17,6 @@ export class ArchivedGraduationApplicationListComponent implements AfterViewInit
 
   private columns: any[] = [
     {name: 'id', label: 'Id'},
-   
     {name: 'action', label: ''},
   ];
 

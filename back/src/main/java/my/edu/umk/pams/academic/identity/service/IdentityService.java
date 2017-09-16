@@ -181,6 +181,9 @@ public interface IdentityService {
     AdStudent findStudentByMatricNo(String matricNo);
 
     List<AdStudent> findStudents(Integer offset, Integer limit);
+    
+    //findGraduatedStudents
+    List<AdStudent> findGraduatedStudents(Integer offset, Integer limit);
 
     List<AdStudent> findStudents(String filter, Integer offset, Integer limit);
 

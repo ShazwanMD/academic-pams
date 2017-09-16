@@ -131,7 +131,17 @@ public class GenericDaoSupport<K, I> implements GenericDao<K, I>, InitializingBe
     public List<I> find(Integer offset, Integer limit) {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select a "
-                + " from " + entityClass.getName() + " a");
+                + " from " + entityClass.getName() + " a" );
+        query.setFirstResult(offset);
+        query.setMaxResults(limit);
+        return (List<I>) query.list();
+    }
+    
+    //findGraduatedStudents
+    public List<I> findGraduatedStudents(Integer offset, Integer limit) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select a "
+                + " from " + entityClass.getName() + "where a.studentStatus = 4 ");
         query.setFirstResult(offset);
         query.setMaxResults(limit);
         return (List<I>) query.list();

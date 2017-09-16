@@ -66,10 +66,10 @@ export class GraduationApplicationCenterPage implements OnInit {
     }
 
   ngOnInit(): void {
-    console.log('find assigned/pooled graduation application tasks');
+    console.log('find assigned/pooled/archived graduation application tasks');
     this.store.dispatch(this.actions.findAssignedGraduationApplicationTasks());
     this.store.dispatch(this.actions.findPooledGraduationApplicationTasks());
-   // this.store.dispatch(this.actions.findArchivedGraduationApplications());
+    this.store.dispatch(this.actions.findArchivedGraduationApplications());
     
   }
 }

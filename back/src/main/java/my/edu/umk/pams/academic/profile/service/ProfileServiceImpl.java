@@ -108,6 +108,12 @@ public class ProfileServiceImpl implements ProfileService {
     public List<AdStudent> findStudents(Integer offset, Integer limit) {
         return identityService.findStudents(offset, limit);
     }
+    
+    //findGraduatedStudents
+    @Override
+    public List<AdStudent> findGraduatedStudents(Integer offset, Integer limit) {
+        return identityService.findGraduatedStudents(offset, limit);
+    }
 
     @Override
     public List<AdStudent> findStudents(String filter, Integer offset, Integer limit) {
