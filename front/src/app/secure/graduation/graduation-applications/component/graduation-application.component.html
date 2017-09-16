@@ -1,19 +1,50 @@
-<td-data-table
-  [data]="graduationApplication"
-  [columns]="columns"
-  [sortBy]="summary"
-  [sortOrder]="ASC"
-  [sortable]="false"
-  [multiple]="false"
-  [selectable]="false"
-  (rowSelect)="view.emit($event)" dense>
-  <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
-    <div layout="row">
-      <span flex>{{value}}</span>
-    </div>
-  </template>
-  <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
-    <div layout="row">
-    </div>
-  </template>
-</td-data-table>
+ <md-card>
+  <md-card-title>{{graduationApplication?.id}}</md-card-title>
+  <md-card-subtitle>{{graduationApplication?.id}}</md-card-subtitle>
+  <md-divider></md-divider>
+  <md-card-content>
+    <md-tab-group>
+      <md-tab label="Graduation Application Information">
+        <div layout="column" class="inset">
+          <div layout="row" class="pad-bottom">
+            <span flex="15">Code </span> <span>{{graduationApplication?.id}}</span>
+          </div>
+          <div layout="row" class="pad-bottom">
+            <span flex="15">Capacity</span> <span>{{graduationApplication?.id}}</span>
+          </div>
+          <div layout="row" class="pad-bottom">
+            <span flex="15">Title(MS)</span> <span>{{graduationApplication?.id}}</span>
+          </div>
+         
+        </div>
+      </md-tab>
+      <md-tab label="Academic Session Information">
+        <div layout="column" class="inset">
+          <div layout="row" class="pad-bottom">
+            <span flex="15">Code</span> <span>{{graduationApplication?.id}}</span>
+          </div>
+          
+        </div>
+      </md-tab>
+       <md-tab label="Student Information">
+        <div layout="column" class="inset">
+          <div layout="row" class="pad-bottom">
+            <span flex="15">Code</span> <span>{{graduationApplication?.id}}</span>
+          </div>
+          <div layout="row" class="pad-bottom">
+            <span flex="15">Title(MS)</span> <span>{{graduationApplication?.id}}</span>
+          </div>
+          <div layout="row" class="pad-bottom">
+            <span flex="15">Title(EN)</span> <span>{{graduationApplication?.id}}</span>
+          </div>
+        </div>
+      </md-tab>
+    </md-tab-group>
+  </md-card-content>
+</md-card>
+
+
+
+
+
+ 

@@ -172,6 +172,7 @@ export class GraduationApplicationActions {
   static FIND_GRADUATION_APPLICATION_BY_REFERENCE_NO = '[GraduationApplication] Find GraduationApplication By Reference No';
 
   findGraduationApplicationByReferenceNo(referenceNo): Action {
+      console.log("findGraduationApplicationByReferenceNo");
     return {
       type: GraduationApplicationActions.FIND_GRADUATION_APPLICATION_BY_REFERENCE_NO,
       payload: referenceNo
@@ -181,6 +182,7 @@ export class GraduationApplicationActions {
   static FIND_GRADUATION_APPLICATION_BY_REFERENCE_NO_SUCCESS = '[GraduationApplication] Find GraduationApplication By Reference No Success';
 
   findGraduationApplicationByReferenceNoSuccess(invoice): Action {
+      console.log("findGraduationApplicationByReferenceNoSuccess");
     return {
       type: GraduationApplicationActions.FIND_GRADUATION_APPLICATION_BY_REFERENCE_NO_SUCCESS,
       payload: invoice
