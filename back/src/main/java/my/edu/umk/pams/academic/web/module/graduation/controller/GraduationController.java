@@ -9,13 +9,17 @@ import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.identity.model.AdStudentStatus;
 import my.edu.umk.pams.academic.identity.service.IdentityService;
 import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
+import my.edu.umk.pams.academic.planner.model.AdAcademicStanding;
+import my.edu.umk.pams.academic.planner.model.AdAdmissionStatus;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
 import my.edu.umk.pams.academic.profile.service.ProfileService;
 import my.edu.umk.pams.academic.security.integration.AdAutoLoginToken;
 import my.edu.umk.pams.academic.system.service.SystemService;
+import my.edu.umk.pams.academic.term.model.AdAdmission;
 import my.edu.umk.pams.academic.term.model.AdAdmissionApplication;
 import my.edu.umk.pams.academic.web.module.graduation.vo.GraduationApplication;
 import my.edu.umk.pams.academic.web.module.graduation.vo.GraduationApplicationTask;
+import my.edu.umk.pams.academic.web.module.term.vo.Admission;
 import my.edu.umk.pams.academic.web.module.term.vo.AdmissionApplication;
 import my.edu.umk.pams.academic.workflow.service.WorkflowService;
 import org.activiti.engine.task.Task;
@@ -76,12 +80,18 @@ public class GraduationController {
         return new ResponseEntity<GraduationApplication>(graduationTransformer.toGraduationApplicationVo(graduationApplication), HttpStatus.OK);
     }
 
+    //update graduationApplication
     @RequestMapping(value = "/graduationApplications/{referenceNo}", method = RequestMethod.PUT)
-    public ResponseEntity<GraduationApplication> updateGraduationApplication(@PathVariable String referenceNo, @RequestBody GraduationApplication vo) {
-        AdGraduationApplication graduationApplication = (AdGraduationApplication) graduationService.findGraduationApplicationByReferenceNo(referenceNo);
-        return new ResponseEntity<GraduationApplication>(graduationTransformer.toGraduationApplicationVo(graduationApplication), HttpStatus.OK);
+    public ResponseEntity<String> updateGraduationApplication(@PathVariable String referenceNo, @RequestBody GraduationApplication vo) {
+       AdGraduationApplication graduationApplication = graduationService.findGraduationApplicationByReferenceNo(referenceNo);
+       graduationApplication.setCgpa(vo.getCgpa());
+       graduationApplication.setCreditHour(vo.getCreditHour());
+       graduationApplication.setDescription(vo.getDescription());
+       graduationApplication.setMemo(vo.getMemo());
+       graduationService.updateGraduationApplication(graduationApplication);
+		return new ResponseEntity<String>("Success Update graduationApplication", HttpStatus.OK);
     }
-
+    
     @RequestMapping(value = "/graduationApplications/assignedTasks", method = RequestMethod.GET)
     public ResponseEntity<List<GraduationApplicationTask>> findAssignedGraduationApplications() {
         //dummyLogin();

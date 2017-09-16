@@ -12,12 +12,12 @@
   <md-card-subtitle>Actions available on current graduation application</md-card-subtitle>
   <md-divider></md-divider>
   <md-nav-list flex dense>
-    <md-list-item >
-      <md-icon md-list-avatar>done_all</md-icon>
+    <md-list-item (click)="updateDialog()" >
+      <md-icon md-list-avatar >done_all</md-icon>
       <h4 md-line>Edit Graduation Application {{graduationApplication?.referenceNo}} </h4>
       <p md-line>Edit this graduation application </p>
     </md-list-item>
-    <md-list-item [routerLink]="['/secure/term/offerings']">
+    <md-list-item [routerLink]="['/secure/graduation/graduation-application-lists']">
       <md-icon md-list-avatar>done_all</md-icon>
       <h4 md-line>List of  graduations</h4>
       <p md-line>List of  graduations </p>

@@ -191,19 +191,21 @@ export class GraduationApplicationActions {
 
   static UPDATE_GRADUATION_APPLICATION = '[GraduationApplication] Update GraduationApplication';
 
-  updateGraduationApplication(invoice): Action {
+  updateGraduationApplication(graduationApplication): Action {
+      console.log( "updateGraduationApplication" );
     return {
       type: GraduationApplicationActions.UPDATE_GRADUATION_APPLICATION,
-      payload: invoice
+      payload: graduationApplication
     };
   }
 
   static UPDATE_GRADUATION_APPLICATION_SUCCESS = '[GraduationApplication] Update GraduationApplication Success';
 
-  updateGraduationApplicationSuccess(invoice): Action {
+  updateGraduationApplicationSuccess(message): Action {
+      console.log( "updateGraduationApplicationSuccess" );
     return {
       type: GraduationApplicationActions.UPDATE_GRADUATION_APPLICATION_SUCCESS,
-      payload: invoice
+      payload: message
     };
   }
 

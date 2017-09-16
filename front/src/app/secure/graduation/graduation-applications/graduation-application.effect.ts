@@ -1,13 +1,20 @@
 import {Injectable} from '@angular/core';
 import {Actions, Effect} from '@ngrx/effects';
 import {from} from 'rxjs/observable/from';
+import { Store } from '@ngrx/store';
 import {GraduationApplicationActions} from './graduation-application.action';
 import {GraduationService} from '../../../../services/graduation.service';
+import { GraduationApplication } from '../../../shared/model/graduation/graduation-application.interface';
+import { GraduationModuleState } from "../index";
 
 @Injectable()
 export class GraduationApplicationEffects {
+    
+    private GRADUATION_APPLICATION: string[] = 'graduationModuleState.graduationApplication'.split( '.' );
+
   constructor(private actions$: Actions,
               private graduationApplicationActions: GraduationApplicationActions,
+              private store$: Store<GraduationModuleState>,
               private graduationService: GraduationService) {
   }
 
@@ -94,7 +101,10 @@ export class GraduationApplicationEffects {
   @Effect() updateGraduationApplication$ = this.actions$
     .ofType(GraduationApplicationActions.UPDATE_GRADUATION_APPLICATION)
     .map((action) => action.payload)
-    .switchMap((application) => this.graduationService.updateGraduationApplication(application))
-    .map((application) => this.graduationApplicationActions.updateGraduationApplicationSuccess(application));
+    .switchMap((payload) => this.graduationService.updateGraduationApplication(payload))
+    .map((message) => this.graduationApplicationActions.updateGraduationApplicationSuccess(message))
+  .withLatestFrom( this.store$.select( ...this.GRADUATION_APPLICATION ) )
+  .map(( state ) => state[1] )
+  .map(( graduationApplication: GraduationApplication ) => this.graduationApplicationActions.findGraduationApplicationByReferenceNo( graduationApplication.referenceNo ) );
 
 }
