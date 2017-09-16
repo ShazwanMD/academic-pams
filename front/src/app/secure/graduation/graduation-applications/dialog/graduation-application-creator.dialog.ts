@@ -11,7 +11,7 @@ import {Student} from '../../../../shared/model/identity/student.interface';
 import {AcademicSession} from '../../../../shared/model/planner/academic-session.interface';
 
 @Component({
-  selector: 'pams-graduation-application',
+  selector: 'pams-graduation-application-creator',
   templateUrl: './graduation-application-creator.dialog.html',
 })
 

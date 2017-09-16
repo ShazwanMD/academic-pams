@@ -30,6 +30,7 @@ import {ProfileModule} from '../../profile/index';
 import {GraduationApplicationTaskDetailPage} from './graduation-application-task-detail.page';
 import { GraduationListCenterPage } from "./graduation-list-center.page";
 import { GraduationApplicationDetailPage } from "./graduation-application-detail.page";
+import { GraduationApplicationActionComponent } from "./component/graduation-application-action.component";
 
 @NgModule({
   imports: [
@@ -63,6 +64,7 @@ import { GraduationApplicationDetailPage } from "./graduation-application-detail
     GraduationApplicationVerifyTaskPanel,
     GraduationApplicationCheckTaskPanel,
     GraduationApplicationTaskStatusComponent,
+    GraduationApplicationActionComponent,
 
     // dialog
     GraduationApplicationCreatorDialog,

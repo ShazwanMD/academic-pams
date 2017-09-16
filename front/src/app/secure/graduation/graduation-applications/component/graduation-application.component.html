@@ -1,19 +1,22 @@
  <md-card>
-  <md-card-title>{{graduationApplication?.id}}</md-card-title>
-  <md-card-subtitle>{{graduationApplication?.id}}</md-card-subtitle>
+  <md-card-title>{{graduationApplication?.student?.name}}</md-card-title>
+  <md-card-subtitle>{{graduationApplication?.student?.identityNo}}</md-card-subtitle>
   <md-divider></md-divider>
   <md-card-content>
     <md-tab-group>
       <md-tab label="Graduation Application Information">
         <div layout="column" class="inset">
           <div layout="row" class="pad-bottom">
-            <span flex="15">Code </span> <span>{{graduationApplication?.id}}</span>
+            <span flex="15">ReferenceNo </span> <span>{{graduationApplication?.referenceNo}}</span>
           </div>
           <div layout="row" class="pad-bottom">
-            <span flex="15">Capacity</span> <span>{{graduationApplication?.id}}</span>
+            <span flex="15">Cgpa</span> <span>{{graduationApplication?.cgpa}}</span>
           </div>
           <div layout="row" class="pad-bottom">
-            <span flex="15">Title(MS)</span> <span>{{graduationApplication?.id}}</span>
+            <span flex="15">Credit Hour</span> <span>{{graduationApplication?.creditHour}}</span>
+          </div>
+           <div layout="row" class="pad-bottom">
+            <span flex="15">Description</span> <span>{{graduationApplication?.description}}</span>
           </div>
          
         </div>
@@ -21,7 +24,10 @@
       <md-tab label="Academic Session Information">
         <div layout="column" class="inset">
           <div layout="row" class="pad-bottom">
-            <span flex="15">Code</span> <span>{{graduationApplication?.id}}</span>
+            <span flex="15">Code</span> <span>{{graduationApplication?.academicSession?.code}}</span>
+          </div>
+           <div layout="row" class="pad-bottom">
+            <span flex="15">Description</span> <span>{{graduationApplication?.academicSession?.description}}</span>
           </div>
           
         </div>
@@ -29,13 +35,13 @@
        <md-tab label="Student Information">
         <div layout="column" class="inset">
           <div layout="row" class="pad-bottom">
-            <span flex="15">Code</span> <span>{{graduationApplication?.id}}</span>
+            <span flex="15">Name</span> <span>{{graduationApplication?.student?.name}}</span>
           </div>
           <div layout="row" class="pad-bottom">
-            <span flex="15">Title(MS)</span> <span>{{graduationApplication?.id}}</span>
+            <span flex="15">IdentityNo</span> <span>{{graduationApplication?.student?.identityNo}}</span>
           </div>
           <div layout="row" class="pad-bottom">
-            <span flex="15">Title(EN)</span> <span>{{graduationApplication?.id}}</span>
+            <span flex="15">Email</span> <span>{{graduationApplication?.student?.email}}</span>
           </div>
         </div>
       </md-tab>
