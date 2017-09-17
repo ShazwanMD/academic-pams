@@ -6,20 +6,28 @@ import {
   Input,
   OnChanges,
   Output,
-  SimpleChange
+  SimpleChange,
+ViewContainerRef
 } from '@angular/core';
 import {GraduationApplication} from '../../../../shared/model/graduation/graduation-application.interface';
 import {  IPageChangeEvent,  ITdDataTableSortChangeEvent,  TdDataTableService,  TdDataTableSortingOrder} from '@covalent/core';
-import {MdSnackBar} from '@angular/material';
+import {MdSnackBar, MdDialog} from '@angular/material';
+import { Router, ActivatedRoute } from "@angular/router";
+import { GraduationApplicationActions } from "../graduation-application.action";
+import { FormBuilder } from "@angular/forms";
+import { Store } from "@ngrx/store";
+import { GraduationModuleState } from "../../index";
 
 @Component({
   selector: 'pams-graduation-application-list',
   templateUrl: './graduation-application-list.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-//export class GraduationApplicationListComponent implements AfterViewInit, OnChanges {
-    export class GraduationApplicationListComponent {
+export class GraduationApplicationListComponent implements AfterViewInit, OnChanges {
+   // export class GraduationApplicationListComponent {
 
+    private selectedRows: GraduationApplication[];
+    
   private columns: any[] = [
     {name: 'id', label: 'Id'},
     {name: 'referenceNo', label: 'Reference No'},
@@ -32,23 +40,30 @@ import {MdSnackBar} from '@angular/material';
     {name: 'action', label: ''},
   ];
 
-  /*filteredData: any[];
+  filteredData: any[];
   filteredTotal: number;
   searchTerm: string = '';
   fromRow: number = 1;
   currentPage: number = 1;
   pageSize: number = 5;
-  sortBy: string = 'id';
+  sortBy: string = 'referenceNo';
   sortOrder: TdDataTableSortingOrder = TdDataTableSortingOrder.Descending;
-*/
+
   @Input() graduationApplications: GraduationApplication[];
   @Output() view: EventEmitter<GraduationApplication> = new EventEmitter<GraduationApplication>();
 
   constructor(private _dataTableService: TdDataTableService,
-              private snackBar: MdSnackBar) {
+          private router: Router,
+          private route: ActivatedRoute,
+          private actions: GraduationApplicationActions,
+          private store: Store<GraduationModuleState>,
+          private formBuilder: FormBuilder,
+          private vcf: ViewContainerRef,
+          private snackBar: MdSnackBar,
+          private dialog: MdDialog) {
   }
 
-  /*ngOnChanges(changes: { [ propName: string]: SimpleChange }) {
+  ngOnChanges(changes: { [ propName: string]: SimpleChange }) {
     console.log("changes", changes, changes['graduationApplications']);
     if (changes['graduationApplications']) {
       this.filteredData = changes['graduationApplications'].currentValue;
@@ -89,6 +104,6 @@ import {MdSnackBar} from '@angular/material';
     newData = this._dataTableService.pageData(newData, this.fromRow, this.currentPage * this.pageSize);
     this.filteredData = newData;
   }
-*/
+
  
 }
