@@ -76,7 +76,7 @@ public class AdGraduationApplicationDaoImpl extends GenericDaoSupport<Long, AdGr
     // HELPER
     // ====================================================================================================
 
-    @Override
+    /*@Override
     public Integer count(AdAcademicSession academicSession) {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select count(a) from AdGraduationApplication a where " +
@@ -85,7 +85,17 @@ public class AdGraduationApplicationDaoImpl extends GenericDaoSupport<Long, AdGr
         query.setEntity("academicSession", academicSession);
         query.setInteger("metaState", AdMetaState.ACTIVE.ordinal());
         return ((Long) query.uniqueResult()).intValue();
-    }
+    }*/
+    
+    @Override
+	public Integer count(AdAcademicSession session, AdStudent student) {
+    	Session currentSession = sessionFactory.getCurrentSession();
+        Query query = currentSession.createQuery("select count(p) from AdGraduationApplication p " + "where "
+                + "p.session = :session " + "and p.student = :student");
+        query.setEntity("session", session);
+        query.setEntity("student", student);
+        return ((Long) query.uniqueResult()).intValue();
+	}
 
 	@Override
     public List<AdGraduationApplication> findByFlowStates(AdFlowState... flowStates) {
@@ -110,7 +120,7 @@ public class AdGraduationApplicationDaoImpl extends GenericDaoSupport<Long, AdGr
 		query.setInteger("state", AdMetaState.ACTIVE.ordinal());
 		return (List<AdGraduationApplication>) query.list();
 	}
-
+	
 	
 	
 }

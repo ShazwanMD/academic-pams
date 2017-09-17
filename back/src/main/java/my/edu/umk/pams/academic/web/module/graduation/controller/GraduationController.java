@@ -115,12 +115,20 @@ public class GraduationController {
 	}
 
     @RequestMapping(value = "/graduationApplications/startTask", method = RequestMethod.POST)
-    public void startGraduationApplicationTask(@RequestBody GraduationApplication vo) throws Exception {
-       // dummyLogin();
-    	
-
+    public ResponseEntity<String> startGraduationApplicationTask(@RequestBody GraduationApplication vo) throws Exception {
+       
         AdAcademicSession academicSession = plannerService.findAcademicSessionById(vo.getAcademicSession().getId());
         AdStudent student = identityService.findStudentById(vo.getStudent().getId());
+        
+        if (countGraduationApplication(academicSession, student) > 0) {
+			// throw new IllegalArgumentException("Data admission already
+			// exists! Please insert new data");
+
+			System.out.println("Duplicate graduation application: " + student.getName());
+			return new ResponseEntity<String>("Duplicate", HttpStatus.OK);
+
+		} else {
+
         AdGraduationApplication graduationApplication = new AdGraduationApplicationImpl();
         graduationApplication.setDescription(vo.getDescription());
 
@@ -131,7 +139,18 @@ public class GraduationController {
         graduationApplication.setStudent(student);
         graduationApplication.setSession(academicSession);
         graduationService.startGraduationApplicationTask(graduationApplication);
+        
+        System.out.println("Success save data: " + student.getName());
+		}
+        return new ResponseEntity<String>("success", HttpStatus.OK);
     }
+    
+ // countGraduationApplication
+ 	private Integer countGraduationApplication(AdAcademicSession session, AdStudent student) {
+ 		System.out.println(graduationService.countGraduationApplication(session, student));
+ 		return graduationService.countGraduationApplication(session, student);
+
+ 	}
 
     @RequestMapping(value = "/graduationApplications/viewTask/{taskId}", method = RequestMethod.GET)
     public ResponseEntity<GraduationApplicationTask> findGraduationApplicationTaskByTaskId(@PathVariable String taskId) {

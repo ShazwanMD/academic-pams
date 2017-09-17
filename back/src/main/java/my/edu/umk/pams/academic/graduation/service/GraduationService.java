@@ -52,5 +52,5 @@ public interface GraduationService {
 
     Integer countGraduationApplication(String filter);
 
-    Integer countGraduationApplication(AdAcademicSession academicSession);
+    Integer countGraduationApplication(AdAcademicSession session, AdStudent student);
 }

@@ -151,10 +151,16 @@ public class GraduationServiceImpl implements GraduationService {
         return graduationApplicationDao.count();
     }
 
-    @Override
+   /* @Override
     public Integer countGraduationApplication(AdAcademicSession academicSession) {
         return graduationApplicationDao.count(academicSession);
-    }
+    }*/
+    
+    @Override
+	public Integer countGraduationApplication(AdAcademicSession session, AdStudent student) {
+		return graduationApplicationDao.count(session, student);
+	}
+
 
     // ====================================================================================================
     // PRIVATE METHODS
@@ -175,4 +181,6 @@ public class GraduationServiceImpl implements GraduationService {
 		return graduationApplicationDao.findByFlowStates(flowStates);
 	}
 
+		
+	
 }

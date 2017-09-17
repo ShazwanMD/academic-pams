@@ -245,7 +245,6 @@ public class TermController {
 			// throw new IllegalArgumentException("Data admission already
 			// exists! Please insert new data");
 
-			System.out.println("Passed data");
 			System.out.println("Duplicate admission: " + student.getName());
 			return new ResponseEntity<String>("Duplicate", HttpStatus.OK);
 

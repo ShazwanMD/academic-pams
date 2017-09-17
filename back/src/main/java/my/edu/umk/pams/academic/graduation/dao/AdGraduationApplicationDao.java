@@ -33,6 +33,7 @@ public interface AdGraduationApplicationDao extends GenericDao<Long, AdGraduatio
     // HELPER
     // ====================================================================================================
 
-    Integer count(AdAcademicSession academicSession);
+      
+    Integer count(AdAcademicSession session, AdStudent student);
 
 }
