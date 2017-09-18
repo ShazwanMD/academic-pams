@@ -131,6 +131,7 @@ public class GraduationController {
 
         AdGraduationApplication graduationApplication = new AdGraduationApplicationImpl();
         graduationApplication.setDescription(vo.getDescription());
+        graduationApplication.setMemo(vo.getMemo());
 
         // todo: calculate with latest admission
         // todo: calculate with all enrollments

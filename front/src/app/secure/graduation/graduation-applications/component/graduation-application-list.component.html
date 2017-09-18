@@ -80,6 +80,14 @@
       <span flex>{{value}}</span>
     </div>
   </template>
+   <template tdDataTableTemplate="action" let-value="value" let-row="row"
+            let-column="column">
+    <div layout="row">
+      <a md-button color="accent" class="text-upper"
+         [routerLink]="['/secure/graduation/graduation-applications', row['referenceNo']]"> <span>View</span>
+      </a>
+    </div>
+  </template>
   
 </td-data-table>
 <div class="md-padding" *ngIf="!dataTable.hasData" layout="row" layout-align="center center">
