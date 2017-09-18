@@ -46,6 +46,12 @@
         SEMESTER int4 not null,
         START_DATE date not null,
         STATUS int4 not null,
+        ENROLL_STARTDATE date not null,
+        ENROLL_ENDDATE date not null,
+        ADMISSION_STARTDATE date not null,
+        ADMISSION_ENDDATE date not null,
+        GRADUATION_STARTDATE date not null,
+        GRADUATION_ENDDATE date not null,
         PREVIOUS_ID int8,
         YEAR_ID int8,
         primary key (ID)

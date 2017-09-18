@@ -31,6 +31,33 @@ public class AdAcademicSessionImpl implements AdAcademicSession {
     @Column(name = "END_DATE", nullable = false)
     @Temporal(TemporalType.DATE)
     private Date endDate;
+    
+    //enroll start-end date
+    @Column(name = "ENROLL_STARTDATE", nullable = false)
+    @Temporal(TemporalType.DATE)
+    private Date enrollStartDate;
+
+    @Column(name = "ENROLL_ENDDATE", nullable = false)
+    @Temporal(TemporalType.DATE)
+    private Date enrollEndDate;
+    
+  //admission start-end date
+    @Column(name = "ADMISSION_STARTDATE", nullable = false)
+    @Temporal(TemporalType.DATE)
+    private Date admissionStartDate;
+
+    @Column(name = "ADMISSION_ENDDATE", nullable = false)
+    @Temporal(TemporalType.DATE)
+    private Date admissionEndDate;
+    
+  //graduation start-end date
+    @Column(name = "GRADUATION_STARTDATE", nullable = false)
+    @Temporal(TemporalType.DATE)
+    private Date graduationStartDate;
+
+    @Column(name = "GRADUATION_ENDDATE", nullable = false)
+    @Temporal(TemporalType.DATE)
+	private Date graduationEndDate;
 
     @Column(name = "CURRENT_", nullable = false)
     private boolean current;
@@ -94,6 +121,57 @@ public class AdAcademicSessionImpl implements AdAcademicSession {
 
     public void setEndDate(Date endDate) {
         this.endDate = endDate;
+    }
+    
+    //enroll start-end date
+    public Date getEnrollStartDate() {
+        return enrollStartDate;
+    }
+
+    public void setEnrollStartDate(Date enrollStartDate) {
+        this.enrollStartDate = enrollStartDate;
+    }
+
+    public Date getEnrollEndDate() {
+        return enrollEndDate;
+    }
+
+    public void setEnrollEndDate(Date enrollEndDate) {
+        this.enrollEndDate = enrollEndDate;
+    }
+    
+  //admission start-end date
+    public Date getAdmissionStartDate() {
+        return admissionStartDate;
+    }
+
+    public void setAdmissionStartDate(Date admissionStartDate) {
+        this.admissionStartDate = admissionStartDate;
+    }
+
+    public Date getAdmissionEndDate() {
+        return admissionEndDate;
+    }
+
+    public void setAdmissionEndDate(Date admissionEndDate) {
+        this.admissionEndDate = admissionEndDate;
+    }
+    
+  //graduation start-end date
+    public Date getGraduationStartDate() {
+        return graduationStartDate;
+    }
+
+    public void setGraduationStartDate(Date graduationStartDate) {
+        this.graduationStartDate = graduationStartDate;
+    }
+
+    public Date getGraduationEndDate() {
+        return graduationEndDate;
+    }
+
+    public void setGraduationEndDate(Date graduationEndDate) {
+        this.graduationEndDate = graduationEndDate;
     }
 
     public boolean isCurrent() {

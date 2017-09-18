@@ -1,6 +1,5 @@
 package my.edu.umk.pams.academic.planner.model;
 
-
 import my.edu.umk.pams.academic.core.AdMetaObject;
 
 import java.util.Date;
@@ -10,56 +9,83 @@ import java.util.Date;
  * STARTED<br/>
  * CLOSING<br/>
  * CLOSED<br/>
-
+ * 
  * @author PAMS
  */
 public interface AdAcademicSession extends AdMetaObject {
 
-    String getCode();
+	String getCode();
 
-    void setCode(String code);
+	void setCode(String code);
 
-    String getDescription();
+	String getDescription();
 
-    void setDescription(String description);
+	void setDescription(String description);
 
-    boolean isCurrent();
+	boolean isCurrent();
 
-    void setCurrent(boolean current);
+	void setCurrent(boolean current);
 
-    Date getStartDate();
+	Date getStartDate();
 
-    void setStartDate(Date startDate);
+	void setStartDate(Date startDate);
 
-    Date getEndDate();
+	Date getEndDate();
 
-    void setEndDate(Date endDate);
+	void setEndDate(Date endDate);
 
-    AdAcademicStatus getStatus();
+	AdAcademicStatus getStatus();
 
-    void setStatus(AdAcademicStatus status);
+	void setStatus(AdAcademicStatus status);
 
-    AdAcademicSession getPrevious();
+	AdAcademicSession getPrevious();
 
-    void setPrevious(AdAcademicSession previous);
+	void setPrevious(AdAcademicSession previous);
 
-    AdAcademicSemester getSemester();
+	AdAcademicSemester getSemester();
 
-    void setSemester(AdAcademicSemester academicSemester);
+	void setSemester(AdAcademicSemester academicSemester);
 
-    AdAcademicYear getYear();
+	AdAcademicYear getYear();
 
-    void setYear(AdAcademicYear academicYear);
+	void setYear(AdAcademicYear academicYear);
 
-    // transient
-    public boolean isNew();
+	// enroll start-end date
+	Date getEnrollStartDate();
 
-    public boolean isClosed();
+	void setEnrollStartDate(Date enrollStartDate);
 
-    public boolean isStarted();
+	Date getEnrollEndDate();
 
-    public boolean isClosing();
+	void setEnrollEndDate(Date enrollEndDate);
 
-    public boolean isStarting();
+	// admission start-end date
+	Date getAdmissionStartDate();
+
+	void setAdmissionStartDate(Date admissionStartDate);
+
+	Date getAdmissionEndDate();
+
+	void setAdmissionEndDate(Date admissionEndDate);
+
+	// graduation start-end date
+	Date getGraduationStartDate();
+
+	void setGraduationStartDate(Date graduationStartDate);
+
+	Date getGraduationEndDate();
+
+	void setGraduationEndDate(Date graduationEndDate);
+
+	// transient
+	public boolean isNew();
+
+	public boolean isClosed();
+
+	public boolean isStarted();
+
+	public boolean isClosing();
+
+	public boolean isStarting();
 
 }

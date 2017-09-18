@@ -66,6 +66,61 @@
         </md-list-item>-->
 
       </md-tab>
+      
+      <!--START ENROLL START-END DATE INFO -->
+      <md-tab label="Course Enrollment Detail"><br>
+        <div layout="column" class="inset">
+          <div layout="row" class="pad-bottom">
+            <span flex="15">Start Date</span>
+            <span>{{academicSession.enrollStartDate}}</span>
+          </div>
+          <div layout="row" class="pad-bottom">
+            <span flex="15">End Date</span>
+            <span>{{academicSession.enrollEndDate}}</span>
+          </div>
+         </div>
+        <md-list-item (click)="editEnrollDateSetup()">
+          <button md-button color="accent" class="text-upper"> ENROLL UPDATE</button>
+        </md-list-item>
+      </md-tab>
+      <!--END ENROLL START-END DATE INFO -->
+      
+       <!--START ADMISSION START-END DATE INFO -->
+      <md-tab label="Admission Detail"><br>
+        <div layout="column" class="inset">
+          <div layout="row" class="pad-bottom">
+            <span flex="15">Start Date</span>
+            <span>{{academicSession.admissionStartDate}}</span>
+          </div>
+          <div layout="row" class="pad-bottom">
+            <span flex="15">End Date</span>
+            <span>{{academicSession.admissionEndDate}}</span>
+          </div>
+         </div>
+        <md-list-item (click)="editAdmissionDateSetup()">
+          <button md-button color="accent" class="text-upper"> ADMISSION UPDATE</button>
+        </md-list-item>
+      </md-tab>
+      <!--END ADMISSION START-END DATE INFO -->
+      
+      <!--START GRADUATION START-END DATE INFO -->
+      <md-tab label="Graduation Detail"><br>
+        <div layout="column" class="inset">
+          <div layout="row" class="pad-bottom">
+            <span flex="15">Start Date</span>
+            <span>{{academicSession.graduationStartDate}}</span>
+          </div>
+          <div layout="row" class="pad-bottom">
+            <span flex="15">End Date</span>
+            <span>{{academicSession.graduationEndDate}}</span>
+          </div>
+         </div>
+        <md-list-item (click)="editAdmissionDateSetup()">
+          <button md-button color="accent" class="text-upper">GRADUATION UPDATE</button>
+        </md-list-item>
+      </md-tab>
+      <!--END GRADUATION START-END DATE INFO -->
+      
     </md-tab-group>
 
   </md-card-content>
