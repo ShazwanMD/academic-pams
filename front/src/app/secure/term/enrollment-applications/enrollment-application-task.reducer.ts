@@ -11,6 +11,9 @@ export function enrollmentApplicationTaskReducer(state = initialState, action: A
     case EnrollmentApplicationActions.FIND_ENROLLMENT_APPLICATION_TASK_BY_TASK_ID_SUCCESS: {
       return action.payload;
     }
+    case EnrollmentApplicationActions.START_ENROLLMENT_APPLICATION_TASK_SUCCESS: {
+        return action.payload;
+      }
     default: {
       return state;
     }

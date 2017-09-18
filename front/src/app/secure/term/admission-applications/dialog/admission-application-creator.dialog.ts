@@ -90,7 +90,8 @@ export class AdmissionApplicationCreatorDialog implements OnInit {
         console.log( "admissionApplication.ordinal", admissionApplication.ordinal );
        
         this.store.dispatch( this.actions.startAdmissionApplicationTask( admissionApplication ) );
-               
+          
+        
         //alert by snackbar if duplicate
         console.log( "Test subscribe:", this.admissionApplication$.subscribe( val => { val['status'] } ) );
         this.admissionApplication$.subscribe( val => console.log( 'Accumulated object display:', val['status'] ) );

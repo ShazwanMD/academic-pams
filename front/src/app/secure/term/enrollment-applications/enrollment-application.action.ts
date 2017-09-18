@@ -130,7 +130,8 @@ export class EnrollmentApplicationActions {
   startEnrollmentApplicationTaskSuccess(task): Action {
     return {
       type: EnrollmentApplicationActions.START_ENROLLMENT_APPLICATION_TASK_SUCCESS,
-      payload: task
+      //payload: task
+      payload: {status: task}
     };
   }
   

@@ -240,21 +240,20 @@ public class TermController {
 		// dummy
 		// study
 		// center
-		
+
 		AdProgram program = student.getCohort().getProgram();
 		AdStaff advisor = identityService.findStaffByStaffNo("00280A"); // todo:
 		// dummy
 		// advisor
 
 		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
-		Date date1 = new Date(); // 2017-09-18
-		Date date2 = academicSession.getAdmissionEndDate(); // 2018-09-01
+		Date date1 = new Date();
+		Date date2 = academicSession.getAdmissionEndDate();
 		System.out.println("dateFormat.format(date)" + dateFormat.format(date1));
 		System.out.println("academicSession.getAdmissionEndDate()" + dateFormat.format(date2));
-
 		System.out.println("academicSession.getAdmissionEndDate()" + academicSession.getAdmissionEndDate());
 
-		if (date1.after(date2)) { //true (1)
+		if (date1.after(date2)) { // true (1)
 			System.out.println("Sorry,date admission for new semester is closed!");
 			return new ResponseEntity<String>("Duplicate", HttpStatus.OK);
 
@@ -307,7 +306,7 @@ public class TermController {
 				LOG.debug("test2: {}", emailQueue);
 
 			}
-			
+
 		} // if date2.after
 
 		// return new ResponseEntity<String>(referenceNo, HttpStatus.OK);
@@ -567,18 +566,37 @@ public class TermController {
 		 * IllegalArgumentException("Data EnrollmentApplication already exists! Please insert new data"
 		 * );
 		 */
-		AdEnrollmentApplication application = new AdEnrollmentApplicationImpl();
-		application.setDescription(vo.getDescription());
-		application.setAdmission(admission);
-		application.setSession(academicSession);
-		application.setAuditNo(vo.getAuditNo());
-		application.setCancelComment(vo.getCancelComment());
-		application.setRemoveComment(vo.getRemoveComment());
-		application.setSourceNo(vo.getSourceNo());
-		application.setType(AdEnrollmentApplicationType.get(vo.getApplicationType().ordinal()));
 
-		String referenceNo = termService.startEnrollmentApplicationTask(application);
-		return new ResponseEntity<String>(referenceNo, HttpStatus.OK);
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+		Date date1 = new Date();
+		Date date2 = academicSession.getEnrollEndDate();
+		System.out.println("dateFormat.format(date)" + dateFormat.format(date1));
+		System.out.println("academicSession.getAdmissionEndDate()" + dateFormat.format(date2));
+		System.out.println("academicSession.getAdmissionEndDate()" + academicSession.getEnrollEndDate());
+
+		if (date1.after(date2)) { // true (1)
+			System.out.println("Close date of couse enrollment");
+			return new ResponseEntity<String>("Duplicate", HttpStatus.OK);
+			
+		} else {
+
+			System.out.println("Open date of couse enrollment");
+
+			AdEnrollmentApplication application = new AdEnrollmentApplicationImpl();
+			application.setDescription(vo.getDescription());
+			application.setAdmission(admission);
+			application.setSession(academicSession);
+			application.setAuditNo(vo.getAuditNo());
+			application.setCancelComment(vo.getCancelComment());
+			application.setRemoveComment(vo.getRemoveComment());
+			application.setSourceNo(vo.getSourceNo());
+			application.setType(AdEnrollmentApplicationType.get(vo.getApplicationType().ordinal()));
+
+			String referenceNo = termService.startEnrollmentApplicationTask(application);
+			// return new ResponseEntity<String>(referenceNo, HttpStatus.OK);
+			
+		}
+		return new ResponseEntity<String>("success", HttpStatus.OK);
 	}
 
 	@RequestMapping(value = "/enrollmentApplications/viewTask/{taskId}", method = RequestMethod.GET)

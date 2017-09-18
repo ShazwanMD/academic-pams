@@ -87,9 +87,8 @@ export class EnrollmentApplicationEffects {
             this.enrollmentApplicationActions.findArchivedEnrollmentApplications(),], ) );
     //.withLatestFrom( this.store$.select( ...this.ADMISSION ) )
     //.map(( state ) => state[1] )
-    //.map(( admission: Admission ) => this.admissionActions.findAdmissionById( admission.id ) );
-
-
+    //.map(( admission: Admission ) => this.admissionActions.findAdmissionById( admission.id ) ); 
+    
     //administrator startEnrollmentApplicationTask
     @Effect() startAdminEnrollmentApplicationTask$ = this.actions$
         .ofType( EnrollmentApplicationActions.START_ADMIN_ENROLLMENT_APPLICATION_TASK )
