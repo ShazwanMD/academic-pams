@@ -24,8 +24,6 @@
           </div>
         </div>
 
-        <md-card-actions>
-        </md-card-actions>
       </md-card>
       <pams-enrollment-application-item-list
         [enrollmentApplication]="enrollmentApplicationTask.application"
@@ -37,8 +35,13 @@
 
       <pams-enrollment-application-task-status [enrollmentApplicationTask]="enrollmentApplicationTask">
       </pams-enrollment-application-task-status>
+      
+      <pams-enrollment-application-task-action 
+      [enrollmentApplicationTask]="enrollmentApplicationTask"
+      [enrollmentApplicationItems]="enrollmentApplicationItems$ | async">
+      </pams-enrollment-application-task-action>
 
-      <md-card>
+     <!--  <md-card>
         <md-card-title>Action</md-card-title>
         <md-card-subtitle>Actions available on current application</md-card-subtitle>
         <md-divider></md-divider>
@@ -54,7 +57,7 @@
             <p md-line>Remove this application </p>
           </md-list-item>
         </md-nav-list>
-      </md-card>
+      </md-card> -->
     </div>
   </div>
 </div>

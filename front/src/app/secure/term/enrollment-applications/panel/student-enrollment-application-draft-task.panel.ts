@@ -27,6 +27,7 @@ export class StudentEnrollmentApplicationDraftTaskPanel implements OnInit {
     private _termService: TermService;
     private _snackBar: MdSnackBar;
 
+
     @Input() enrollmentApplicationTask: EnrollmentApplicationTask;
 
     constructor( private router: Router,
@@ -66,23 +67,21 @@ export class StudentEnrollmentApplicationDraftTaskPanel implements OnInit {
 
     register() {
 
-        var r = confirm( "Please add course/sections before submit the application.Thank you." );
+        var r = confirm( "Are you sure to proceed in registering the courses?" );
         if ( r == true ) {
 
-            let snackBarRef = this._snackBar.open( 'Proceed with add/drop course enrollments', 'OK' );
+            let snackBarRef = this._snackBar.open( 'Course enrollments completed', 'OK' );
             snackBarRef.afterDismissed().subscribe(() => {
-                // this.router.navigate( ['/secure'] );
+                this.store.dispatch( this.actions.completeEnrollmentApplicationTask( this.enrollmentApplicationTask ) );
+                this.router.navigate( ['/secure'] );
+                //this.goBack();
             } );
 
         } else {
 
-            let snackBarRef = this._snackBar.open( 'Course enrollments completed', 'OK' );
+            let snackBarRef = this._snackBar.open( 'Continue to add/drop courses', 'OK' );
             snackBarRef.afterDismissed().subscribe(() => {
             } );
-
-            this.store.dispatch( this.actions.completeEnrollmentApplicationTask( this.enrollmentApplicationTask ) );
-            this.router.navigate( ['/secure'] );
-            //this.goBack();
 
         }
     }

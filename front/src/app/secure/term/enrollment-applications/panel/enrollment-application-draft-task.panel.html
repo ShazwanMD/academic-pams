@@ -37,9 +37,12 @@
 
       <pams-enrollment-application-task-status [enrollmentApplicationTask]="enrollmentApplicationTask">
       </pams-enrollment-application-task-status>
+      
+      <pams-enrollment-application-task-action [enrollmentApplicationItems]="enrollmentApplicationItems$ | async">
+      </pams-enrollment-application-task-action>
 
-      <md-card>
-        <md-card-title>Action</md-card-title>
+     <!--  <md-card>
+        <md-card-title>Action Test</md-card-title>
         <md-card-subtitle>Actions available on current application</md-card-subtitle>
         <md-divider></md-divider>
         <md-nav-list dense>
@@ -54,7 +57,7 @@
             <p md-line>Remove this application </p>
           </md-list-item>
         </md-nav-list>
-      </md-card>
+      </md-card> -->
     </div>
   </div>
 </div>

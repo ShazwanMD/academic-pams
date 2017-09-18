@@ -50,6 +50,7 @@ import { StudentEnrollmentApplicationCenterPage } from "./student-enrollment-app
 import { EnrollmentApplicationComponent } from "./component/enrollment-application.component";
 import { EnrollmentApplicationItemsComponent } from "./component/enrollment-application-items.component";
 import { AdminEnrollmentApplicationItemEditorDialog } from "./dialog/admin-enrollment-application-item-editor.dialog";
+import { EnrollmentApplicationTaskActionComponent } from "./component/enrollment-application-task-action.component";
 
 @NgModule({
   imports: [
@@ -86,6 +87,7 @@ import { AdminEnrollmentApplicationItemEditorDialog } from "./dialog/admin-enrol
     EnrollmentApplicationTaskListComponent,
     EnrollmentApplicationsListComponent,
     EnrollmentApplicationComponent,
+    EnrollmentApplicationTaskActionComponent,
 
     EnrollmentApplicationTaskStatusComponent,
     EnrollmentApplicationActionSelectComponent,
