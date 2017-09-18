@@ -97,8 +97,9 @@ export class AdmissionApplicationCreatorDialog implements OnInit {
 
         this.admissionApplication$.subscribe( val => {
             if ( val['status'] == 'Duplicate' ) {
+                
 
-                let snackBarRef = this.snackBar.open( 'Duplicate data: ' + admissionApplication.student.identityNo + ' Application has been submitted', '', { duration: 5000 } );
+                let snackBarRef = this.snackBar.open( 'Process failed: ' + admissionApplication.student.identityNo + ' Application cannot be submit', '', { duration: 5000 } );
                 snackBarRef.afterDismissed().subscribe(() => {
                     console.log( 'The snack-bar was dismissed' );
                     console.log( 'Accumulated object:', val )
