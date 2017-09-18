@@ -10,12 +10,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { EnrollmentApplicationTask } from '../../../../shared/model/term/enrollment-application-task.interface';
 
 @Component( {
-    selector: 'pams-enrollment-application-task-action',
-    templateUrl: './enrollment-application-task-action.component.html',
+    selector: 'pams-student-enrollment-application-task-action',
+    templateUrl: './student-enrollment-application-task-action.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 } )
 
-export class EnrollmentApplicationTaskActionComponent {
+export class StudentEnrollmentApplicationTaskActionComponent {
 
     private _snackBar: MdSnackBar;
 
@@ -42,8 +42,8 @@ export class EnrollmentApplicationTaskActionComponent {
             let snackBarRef = this._snackBar.open( 'Course enrollments completed', 'OK' );
             snackBarRef.afterDismissed().subscribe(() => {
                 this.store.dispatch( this.actions.completeEnrollmentApplicationTask( this.enrollmentApplicationTask ) );
-                //this.router.navigate( ['/secure'] );
-                this.goBack();
+                this.router.navigate( ['/secure'] );
+                //this.goBack();
             } );
 
         } else {

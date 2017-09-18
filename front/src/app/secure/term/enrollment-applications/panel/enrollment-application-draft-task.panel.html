@@ -37,8 +37,10 @@
 
       <pams-enrollment-application-task-status [enrollmentApplicationTask]="enrollmentApplicationTask">
       </pams-enrollment-application-task-status>
-      
-      <pams-enrollment-application-task-action [enrollmentApplicationItems]="enrollmentApplicationItems$ | async">
+           
+        <pams-enrollment-application-task-action 
+      [enrollmentApplicationTask]="enrollmentApplicationTask"
+      [enrollmentApplicationItems]="enrollmentApplicationItems$ | async">
       </pams-enrollment-application-task-action>
 
      <!--  <md-card>
