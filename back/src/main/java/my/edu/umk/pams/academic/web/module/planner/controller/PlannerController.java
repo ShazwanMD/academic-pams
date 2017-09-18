@@ -84,6 +84,12 @@ public class PlannerController {
 		academicSession.setCurrent(vo.isCurrent());
 		academicSession.setStartDate(vo.getstartDate());
 		academicSession.setEndDate(vo.getendDate());
+		academicSession.setEnrollStartDate(vo.getEnrollStartDate());
+		academicSession.setEnrollEndDate(vo.getEnrollEndDate());
+		academicSession.setAdmissionStartDate(vo.getAdmissionStartDate());
+		academicSession.setAdmissionEndDate(vo.getAdmissionEndDate());
+		academicSession.setGraduationStartDate(vo.getGraduationStartDate());
+		academicSession.setGraduationEndDate(vo.getGraduationEndDate());	
 		academicSession.setSemester(AdAcademicSemester.get(vo.getSemester().ordinal()));
 		// academicSession.setYear(plannerService.findByCode(academicSession.getYear().getYear()));
 		plannerService.updateAcademicSession(academicSession);
@@ -92,7 +98,7 @@ public class PlannerController {
 
 	@RequestMapping(value = "/academicSessions/{code}/save", method = RequestMethod.POST)
 	public ResponseEntity<String> saveAcademicSession(@PathVariable String code, @RequestBody AcademicSession vo) {
-		dummyLogin();
+		//dummyLogin();
 
 		if (isAcademicSessionCodeExists(code)) {
 
@@ -114,6 +120,12 @@ public class PlannerController {
 				academicSession.setCurrent(vo.isCurrent());
 				academicSession.setStartDate(vo.getstartDate());
 				academicSession.setEndDate(vo.getendDate());
+				academicSession.setEnrollStartDate(vo.getEnrollStartDate());
+				academicSession.setEnrollEndDate(vo.getEnrollEndDate());
+				academicSession.setAdmissionStartDate(vo.getAdmissionStartDate());
+				academicSession.setAdmissionEndDate(vo.getAdmissionEndDate());
+				academicSession.setGraduationStartDate(vo.getGraduationStartDate());
+				academicSession.setGraduationEndDate(vo.getGraduationEndDate());				
 				academicSession.setSemester(AdAcademicSemester.get(vo.getSemester().ordinal()));
 				// academicSession.setYear(plannerTransformer.toAcademicYearVo(academicYear.getYear()));
 				academicSession.setYear(plannerService.findByCode(vo.getYear().getCode()));
