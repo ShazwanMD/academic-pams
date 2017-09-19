@@ -145,7 +145,7 @@ export class AdmissionApplicationCreatorDialog implements OnInit {
                             this.dialog.closeAll(); 
                             
                         } catch(ex){}  
-                        this.router.navigate(['/secure/term/admission-applications/admission-application-center2']);
+                        this.router.navigate(['/secure/term/admission-applications']);
                     } );
                 }
             }
