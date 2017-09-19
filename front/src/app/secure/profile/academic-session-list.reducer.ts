@@ -8,9 +8,9 @@ const initialState: AcademicSessionListState = <AcademicSession[]>[];
 
 export function academicSessionListReducer(state = initialState, action: Action): AcademicSessionListState {
   switch (action.type) {
-    case ProfileActions.FIND_ACADEMIC_SESSIONS_BY_STUDENT_SUCCESS: {
+    /*case ProfileActions.FIND_ACADEMIC_SESSIONS_BY_STUDENT_SUCCESS: {
       return action.payload;
-    }
+    }*/
     default: {
       return state;
     }
