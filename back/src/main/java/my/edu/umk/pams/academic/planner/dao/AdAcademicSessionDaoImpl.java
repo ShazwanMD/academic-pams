@@ -2,9 +2,12 @@ package my.edu.umk.pams.academic.planner.dao;
 
 import my.edu.umk.pams.academic.core.AdMetaState;
 import my.edu.umk.pams.academic.core.GenericDaoSupport;
+import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.planner.model.AdAcademicSemester;
 import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
 import my.edu.umk.pams.academic.planner.model.AdAcademicSessionImpl;
+import my.edu.umk.pams.academic.term.model.AdAdmission;
+
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.slf4j.Logger;
@@ -95,7 +98,7 @@ public class AdAcademicSessionDaoImpl extends GenericDaoSupport<Long, AdAcademic
         query.setCacheable(true);
         return (List<AdAcademicSession>) query.list();
     }
-
+    
     @Override
     public List<AdAcademicSession> find(String filter, AdAcademicSemester semester, Integer offset, Integer limit) {
         Session session = sessionFactory.getCurrentSession();
@@ -143,5 +146,6 @@ public class AdAcademicSessionDaoImpl extends GenericDaoSupport<Long, AdAcademic
         return ((Long) query.uniqueResult()).intValue() == 1;
     }
 
+	
 	
 }

@@ -120,14 +120,14 @@ public class GraduationController {
         AdAcademicSession academicSession = plannerService.findAcademicSessionById(vo.getAcademicSession().getId());
         AdStudent student = identityService.findStudentById(vo.getStudent().getId());
         
-        if (countGraduationApplication(academicSession, student) > 0) {
+       /* if (countGraduationApplication(academicSession, student) > 0) {
 			// throw new IllegalArgumentException("Data admission already
 			// exists! Please insert new data");
 
 			System.out.println("Duplicate graduation application: " + student.getName());
 			return new ResponseEntity<String>("Duplicate", HttpStatus.OK);
 
-		} else {
+		} else {*/
 
         AdGraduationApplication graduationApplication = new AdGraduationApplicationImpl();
         graduationApplication.setDescription(vo.getDescription());
@@ -142,7 +142,7 @@ public class GraduationController {
         graduationService.startGraduationApplicationTask(graduationApplication);
         
         System.out.println("Success save data: " + student.getName());
-		}
+		/*}*/
         return new ResponseEntity<String>("success", HttpStatus.OK);
     }
     

@@ -247,7 +247,7 @@ export class ProfileActions {
       payload: admissions
     };
   }
-  
+    
   //find Graduation Applications By Student
   static FIND_GRADUATION_APPLICATIONS_BY_STUDENT = '[Profile] Find Graduation Applications';
 

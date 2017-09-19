@@ -2,8 +2,10 @@ package my.edu.umk.pams.academic.planner.dao;
 
 
 import my.edu.umk.pams.academic.core.GenericDao;
+import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.planner.model.AdAcademicSemester;
 import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
+import my.edu.umk.pams.academic.term.model.AdAdmission;
 
 import java.util.List;
 
@@ -28,6 +30,7 @@ public interface AdAcademicSessionDao extends GenericDao<Long, AdAcademicSession
 
     List<AdAcademicSession> find(String filter, AdAcademicSemester semester, Integer offset, Integer limit);
 
+        
     // ====================================================================================================
     // FINDER
     // ====================================================================================================

@@ -33,6 +33,7 @@ import {guardianListReducer, GuardianListState} from './guardian-list.reducer';
 import {guarantorListReducer, GuarantorListState} from './guarantor-list.reducer';
 //import {enrollmentListReducer, EnrollmentListState} from './enrollment-list.reducer';
 import {admissionListReducer, AdmissionListState} from './admission-list.reducer';
+import {academicSessionListReducer, AcademicSessionListState} from './academic-session-list.reducer';
 import {admissionApplicationListReducer, AdmissionApplicationListState} from './admissionApplication-list.reducer';
 import {graduationApplicationListReducer, GraduationApplicationListState} from './graduationApplication-list.reducer';
 import {studentReducer, StudentState} from './student.reducer';
@@ -51,6 +52,7 @@ import {CohortTransfererDialog} from './dialog/cohort-transferer.dialog';
 import {ProfileCohortComponent} from './component/profile-cohort.component';
 import {ProfileEnrollmentListComponent} from './component/profile-enrollment-list.component';
 import { Admission } from "../../shared/model/term/admission.interface";
+import { AcademicSession } from "../../shared/model/planner/academic-session.interface";
 import { AdmissionApplication } from "../../shared/model/term/admission-application.interface";
 import { GraduationApplication } from "../../shared/model/graduation/graduation-application.interface";
 import { AdvisoryCenterPage } from "./advisory-center.page";
@@ -68,6 +70,7 @@ export interface ProfileModuleState {
   contacts: ContactListState;
   //enrollments: EnrollmentListState;
   admissions: AdmissionListState;
+  academicSessions: AcademicSessionListState;
   admissionApplications: AdmissionApplicationListState;
   graduationApplications: GraduationApplicationListState;
 }
@@ -83,6 +86,7 @@ export const INITIAL_PROFILE_STATE: ProfileModuleState =
     contacts: <Contact[]>[],
     //enrollments: <Enrollment[]>[],
     admissions: <Admission[]>[],
+    academicSessions: <AcademicSession[]>[],
     admissionApplications: <AdmissionApplication[]>[],
     graduationApplications: <GraduationApplication[]>[],
   };
@@ -96,6 +100,7 @@ export const profileModuleReducers = {
   contacts: contactListReducer,
   //enrollments: enrollmentListReducer,
   admissions: admissionListReducer,
+  academicSessions: academicSessionListReducer,
   admissionApplications: admissionApplicationListReducer,
   graduationApplications: graduationApplicationListReducer,
 };

@@ -46,6 +46,7 @@ export class ProfileService {
         return this._http.get( this.PROFILE_API + '/studentLogins/academicSessions' )
             .map(( res: Response ) => <AcademicSession[]>res.json() );
     }
+    
     findAcademicSessionByCode( code: string ): Observable<AcademicSession> {
         return this._http.get( this.PROFILE_API + '/studentLogins/academicSessions/' + code )
             .map(( res: Response ) => <AcademicSession>res.json() );
@@ -147,7 +148,8 @@ export class ProfileService {
         return this._http.get( this.PROFILE_API + '/students/' + student.identityNo + '/admissions' )
             .map(( res: Response ) => <Admission[]>res.json() );
     }
-
+    
+ 
     findStudents(): Observable<Student[]> {
         return this._http.get( this.PROFILE_API + '/students' )
             .map(( res: Response ) => <Student[]>res.json() );

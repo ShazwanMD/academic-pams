@@ -135,8 +135,8 @@ export class ProfileEffects {
         .map( action => action.payload )
         .switchMap( student => this.profileService.findAdmissions( student ) )
         .map( admissions => this.profileActions.findAdmissionsSuccess( admissions ) );
-
-    //find admissions
+    
+     //find admissions
     @Effect() findGraduationApplications$ = this.actions$
         .ofType( ProfileActions.FIND_GRADUATION_APPLICATIONS_BY_STUDENT )
         .map( action => action.payload )

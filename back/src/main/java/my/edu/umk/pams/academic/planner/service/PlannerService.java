@@ -25,7 +25,7 @@ public interface PlannerService {
     AdAcademicSession findCurrentAcademicSession();
 
     List<AdAcademicSession> findAcademicSessions(Integer offset, Integer limit);
-
+    
     List<AdAcademicSession> findAcademicSessions(String filter, Integer offset, Integer limit);
 
 	AdAcademicYear findByCode(String code);

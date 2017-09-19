@@ -67,7 +67,7 @@ public class ProfileController {
 
 	@Autowired
 	private ProfileService profileService;
-	
+
 	@Autowired
 	private GraduationService graduationService;
 
@@ -82,7 +82,7 @@ public class ProfileController {
 
 	@Autowired
 	private ProfileTransformer profileTransformer;
-	
+
 	@Autowired
 	private GraduationTransformer graduationTransformer;
 
@@ -767,8 +767,8 @@ public class ProfileController {
 		List<AdStudent> students = profileService.findStudents(0, Integer.MAX_VALUE);
 		return new ResponseEntity<List<Student>>(profileTransformer.toStudentVos(students), HttpStatus.OK);
 	}
-	
-	//find graduatedStudents
+
+	// find graduatedStudents
 	@RequestMapping(value = "/graduatedStudents", method = RequestMethod.GET)
 	public ResponseEntity<List<Student>> findGraduatedStudents() {
 
@@ -827,10 +827,11 @@ public class ProfileController {
 		List<Enrollment> vos = termTransformer.toEnrollmentVos(enrollments);
 		return new ResponseEntity<List<Enrollment>>(vos, HttpStatus.OK);
 	}
-	
-	//find graduation applications by student
+
+	// find graduation applications by student
 	@RequestMapping(value = "/students/{identityNo}/graduationApplications", method = RequestMethod.GET)
-	public ResponseEntity<List<GraduationApplication>> findGraduationApplicationsByStudent(@PathVariable String identityNo) {
+	public ResponseEntity<List<GraduationApplication>> findGraduationApplicationsByStudent(
+			@PathVariable String identityNo) {
 		AdStudent student = profileService.findStudentByMatricNo(identityNo);
 		return new ResponseEntity<List<GraduationApplication>>(
 				graduationTransformer.toGraduationApplicationVos(graduationService.findGraduationApplications(student)),
@@ -848,7 +849,7 @@ public class ProfileController {
 		List<Admission> admissionVos = decorateAdmission(termTransformer.toAdmissionVos(admissions));
 		return new ResponseEntity<List<Admission>>(admissionVos, HttpStatus.OK);
 	}
-	
+
 	@RequestMapping(value = "/students/{identityNo}/addresses", method = RequestMethod.GET)
 	public ResponseEntity<List<Address>> findAddressesByStudent(@PathVariable String identityNo) {
 		AdStudent student = profileService.findStudentByMatricNo(identityNo);
