@@ -9,6 +9,7 @@ import {AdmissionCreateTaskCreatorDialog} from '../dialog/admission-create-task-
 import { AdmissionApplicationTaskDialog } from "../../admission-applications/dialog/admission-application-task.dialog";
 import { AdmissionApplicationCreatorDialog } from "../../admission-applications/dialog/admission-application-creator.dialog";
 import { AdmissionApplicationManualDialog } from "../../admission-applications/dialog/admission-application-manual.dialog";
+import { StudentAdmissionApplicationCreatorDialog } from "../../admission-applications/dialog/student-admission-application-creator.dialog";
 
 @Component({
   selector: 'pams-student-admission-action',
@@ -18,7 +19,7 @@ import { AdmissionApplicationManualDialog } from "../../admission-applications/d
 export class StudentAdmissionActionComponent {
 
   private editorDialogRef: MdDialogRef<AdmissionCreateTaskCreatorDialog>;
-  private creatorDialogRef: MdDialogRef<AdmissionApplicationCreatorDialog>;
+  private creatorDialogRef: MdDialogRef<StudentAdmissionApplicationCreatorDialog>;
   private creatorDialogRef2: MdDialogRef<AdmissionApplicationManualDialog>;
 
   @Input() admission: Admission;
@@ -59,7 +60,7 @@ export class StudentAdmissionActionComponent {
       config.width = '60%';
       config.height = '40%';
       config.position = { top: '0px' };
-      this.creatorDialogRef = this.dialog.open(AdmissionApplicationCreatorDialog, config);
+      this.creatorDialogRef = this.dialog.open(StudentAdmissionApplicationCreatorDialog, config);
       this.creatorDialogRef.componentInstance.admission = this.admission;
       this.creatorDialogRef.afterClosed().subscribe((res) => {
           console.log('close dialog');
