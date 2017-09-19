@@ -118,7 +118,7 @@ export class EnrollmentApplicationTaskDialog implements OnInit {
                             this.dialog.close(); 
                             
                         } catch(ex){}  
-                        this.router.navigate(['/secure/term/admission-applications/admission-application-center2']);
+                        this.router.navigate(['/secure/term/enrollment-applications/student-enrollment-center']);
                     } );
                 }
             }
