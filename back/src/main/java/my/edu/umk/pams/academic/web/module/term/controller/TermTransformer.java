@@ -83,7 +83,16 @@ public class TermTransformer {
 		vo.setAcademicSession(plannerTransformer.toAcademicSessionVo(application.getSession()));
 		vo.setStudent(identityTransformer.toStudentVo(application.getStudent()));
 		vo.setProgram(plannerTransformer.toProgramVo(application.getProgram()));
-		vo.setAdvisor(identityTransformer.toStaffVo(application.getAdvisor()));
+		//vo.setAdvisor(identityTransformer.toStaffVo(application.getAdvisor()));
+
+		
+		if (application.getAdvisor() != null) {
+			vo.setAdvisor(identityTransformer.toStaffVo(application.getAdvisor()));
+			System.out.println("Get application(1)" + application.getAdvisor());
+		} else {
+			System.out.println("Get application(0)" + application.getAdvisor());
+		}
+
 		vo.setStudyCenter(commonTransformer.toStudyCenterVo(application.getStudyCenter()));
 		return vo;
 	}
@@ -97,6 +106,14 @@ public class TermTransformer {
 		vo.setCreditTaken(admission.getCreditTaken());
 		vo.setOrdinal(admission.getOrdinal());
 		vo.setStudent(identityTransformer.toStudentVo(admission.getStudent()));
+
+		if (admission.getAdvisor() != null) {
+			vo.setAdvisor(identityTransformer.toStaffVo(admission.getAdvisor()));
+			System.out.println("Get Admission1" + admission.getAdvisor());
+		} else {
+			System.out.println("Get Admission0" + admission.getAdvisor());
+		}
+
 		vo.setAcademicSession(plannerTransformer.toAcademicSessionVo(admission.getSession()));
 		vo.setStudyCenter(commonTransformer.toStudyCenterVo(admission.getStudyCenter()));
 		vo.setCohort(plannerTransformer.toCohortVo(admission.getCohort()));

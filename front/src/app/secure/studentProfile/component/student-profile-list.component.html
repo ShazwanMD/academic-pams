@@ -365,7 +365,37 @@
                         <span flex>{{value}}</span>
                       </div>
                     </template>
-                     <template tdDataTableTemplate="gpa" let-value="value" let-row="row" let-column="columns.gpa">
+                     <template tdDataTableTemplate="advisor.name" let-value="value" let-row="row" let-column="columns.advisor.name">
+        <div layout="row">
+          <div *ngIf="value == null">None</div>
+           <div *ngIf="value != null">{{value}}</div>       
+        </div>
+      </template>
+       <template tdDataTableTemplate="advisor.email" let-value="value" let-row="row" let-column="columns.advisor.email">
+        <div layout="row">
+          <div *ngIf="value == null">None</div>
+           <div *ngIf="value != null">{{value}}</div>       
+        </div>
+      </template>
+       <template tdDataTableTemplate="advisor.identityNo" let-value="value" let-row="row" let-column="columns.advisor.identityNo">
+        <div layout="row">
+          <div *ngIf="value == null">None</div>
+           <div *ngIf="value != null">{{value}}</div>       
+        </div>
+      </template>
+       <template tdDataTableTemplate="advisor.phone" let-value="value" let-row="row" let-column="columns.advisor.phone">
+        <div layout="row">
+          <div *ngIf="value == null">None</div>
+           <div *ngIf="value != null">{{value}}</div>       
+        </div>
+      </template>
+       <template tdDataTableTemplate="advisor.program.code" let-value="value" let-row="row" let-column="columns.advisor.program.code">
+        <div layout="row">
+          <div *ngIf="value == null">None</div>
+           <div *ngIf="value != null">{{value}}</div>       
+        </div>
+      </template>
+       <template tdDataTableTemplate="advisor.program.faculty.name" let-value="value" let-row="row" let-column="columns.advisor.program.faculty.name">
         <div layout="row">
           <div *ngIf="value == null">None</div>
            <div *ngIf="value != null">{{value}}</div>       

@@ -3,6 +3,7 @@ package my.edu.umk.pams.academic.term.model;
 
 import my.edu.umk.pams.academic.common.model.AdStudyCenter;
 import my.edu.umk.pams.academic.core.AdMetaObject;
+import my.edu.umk.pams.academic.identity.model.AdStaff;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.planner.model.*;
 
@@ -60,6 +61,10 @@ public interface AdAdmission extends AdMetaObject {
     AdStudent getStudent();
 
     void setStudent(AdStudent student);
+    
+    AdStaff getAdvisor();
+
+    void setAdvisor(AdStaff advisor);
 
     AdAdmissionStatus getStatus();
 

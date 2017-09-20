@@ -132,6 +132,7 @@
         COHORT_ID int8 not null,
         SESSION_ID int8 not null,
         STUDENT_ID int8 not null,
+        ADVISOR_ID int8,
         STUDY_CENTER_ID int8,
         primary key (ID)
     );

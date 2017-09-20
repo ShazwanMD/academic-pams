@@ -4,6 +4,8 @@ package my.edu.umk.pams.academic.term.model;
 import my.edu.umk.pams.academic.common.model.AdStudyCenter;
 import my.edu.umk.pams.academic.common.model.AdStudyCenterImpl;
 import my.edu.umk.pams.academic.core.AdMetadata;
+import my.edu.umk.pams.academic.identity.model.AdStaff;
+import my.edu.umk.pams.academic.identity.model.AdStaffImpl;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.identity.model.AdStudentImpl;
 import my.edu.umk.pams.academic.planner.model.*;
@@ -54,6 +56,10 @@ public class AdAdmissionImpl implements AdAdmission {
     @ManyToOne(targetEntity = AdStudentImpl.class)
     @JoinColumn(name = "STUDENT_ID", nullable = false)
     private AdStudent student;
+    
+    @ManyToOne(targetEntity = AdStaffImpl.class)
+    @JoinColumn(name = "ADVISOR_ID")
+    private AdStaff advisor;
 
     @ManyToOne(targetEntity = AdCohortImpl.class)
     @JoinColumn(name = "COHORT_ID", nullable = false)
@@ -171,6 +177,16 @@ public class AdAdmissionImpl implements AdAdmission {
     @Override
     public void setStudent(AdStudent student) {
         this.student = student;
+    }
+    
+    @Override
+    public AdStaff getAdvisor() {
+        return advisor;
+    }
+
+    @Override
+    public void setAdvisor(AdStaff advisor) {
+        this.advisor = advisor;
     }
 
     @Override

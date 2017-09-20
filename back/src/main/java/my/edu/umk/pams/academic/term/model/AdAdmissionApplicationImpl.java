@@ -56,7 +56,7 @@ public class AdAdmissionApplicationImpl implements AdAdmissionApplication {
     private AdStudent student;
 
     @ManyToOne(targetEntity = AdStaffImpl.class)
-    @JoinColumn(name = "ADVISOR_ID" , nullable = true)
+    @JoinColumn(name = "ADVISOR_ID")
     private AdStaff advisor;
 
     @ManyToOne(targetEntity = AdAcademicSessionImpl.class)

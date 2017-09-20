@@ -4,6 +4,7 @@ import {StudyCenter} from '../../../secure/setup/study-centers/study-center.inte
 import {AcademicSession} from '../planner/academic-session.interface';
 import {Program} from '../planner/program.interface';
 import {Student} from '../identity/student.interface';
+import { Staff } from "../identity/staff.interface";
 
 export interface AdmissionApplication extends MetaObject {
   referenceNo: string;
@@ -13,7 +14,7 @@ export interface AdmissionApplication extends MetaObject {
   ordinal: number;
   cancelComment: string;
   removeComment: string;
-  actor: Actor;
+  advisor: Staff;
   student: Student;
   academicSession: AcademicSession;
   program: Program;

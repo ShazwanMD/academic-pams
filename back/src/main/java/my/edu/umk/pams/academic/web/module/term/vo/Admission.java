@@ -5,7 +5,7 @@ import my.edu.umk.pams.academic.planner.model.AdAcademicStanding;
 import my.edu.umk.pams.academic.planner.model.AdAdmissionStatus;
 import my.edu.umk.pams.academic.web.module.common.vo.StudyCenter;
 import my.edu.umk.pams.academic.web.module.core.vo.MetaObject;
-
+import my.edu.umk.pams.academic.web.module.identity.vo.Staff;
 import my.edu.umk.pams.academic.web.module.identity.vo.Student;
 import my.edu.umk.pams.academic.web.module.planner.vo.AcademicSession;
 import my.edu.umk.pams.academic.web.module.planner.vo.Cohort;
@@ -27,6 +27,7 @@ public class Admission extends MetaObject {
 	private Integer creditEarned;
 	private Integer ordinal;
 	private Student student;
+	private Staff advisor;
 	private AcademicSession academicSession;
 	private Cohort cohort;
 	private AdmissionStatus status;
@@ -83,6 +84,14 @@ public class Admission extends MetaObject {
 
 	public void setStudent(Student student) {
 		this.student = student;
+	}
+	
+	public Staff getAdvisor(){
+		return advisor;
+	}
+
+	public void setAdvisor(Staff advisor) {
+		this.advisor = advisor;
 	}
 
 	public AcademicSession getAcademicSession() {

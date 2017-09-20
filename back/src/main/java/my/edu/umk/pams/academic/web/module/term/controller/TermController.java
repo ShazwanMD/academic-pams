@@ -231,21 +231,25 @@ public class TermController {
 
 	// startAdmissionApplicationTasks
 	@RequestMapping(value = "/admissionApplications/startTask", method = RequestMethod.POST)
-	public ResponseEntity<String> startAdmissionApplicationTask(@RequestBody AdmissionApplication vo) throws Exception {
+	public ResponseEntity<String> startAdmissionApplicationTask(@RequestBody AdmissionApplication vo) {
 		LOG.debug("start task");
 
 		AdStudent student = identityService.findStudentById(vo.getStudent().getId());
 		AdAcademicSession academicSession = plannerService.findAcademicSessionById(vo.getAcademicSession().getId());
-		AdStudyCenter studyCenter = commonService.findStudyCenterById(1L); // todo:
-		// dummy
-		// study
-		// center
-
 		AdProgram program = student.getCohort().getProgram();
-		AdStaff advisor = identityService.findStaffByStaffNo("00280A"); // todo:
-		// dummy
-		// advisor
+		AdStudyCenter studyCenter = commonService.findStudyCenterById(vo.getStudyCenter().getId());
+		//AdStaff advisor = identityService.findStaffByStaffNo(vo.getAdvisor().getIdentityNo());
+			
+		System.out.println("Get student: " + vo.getStudent().getId());
+		System.out.println("Get session: " + vo.getAcademicSession().getId());
+		System.out.println("Get program: " + student.getCohort().getProgram());
+		System.out.println("Get studycenter: " + vo.getStudyCenter().getId());
+		//System.out.println("Get advisor: " + vo.getAdvisor().getIdentityNo());
+		//LOG.debug("start advisor" + vo.getAdvisor().getIdentityNo());
 
+		// AdStaff advisor = identityService.findStaffByStaffNo("00280A"); //
+		// todo:
+		
 		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
 		Date date1 = new Date();
 		Date date2 = academicSession.getAdmissionEndDate();
@@ -277,7 +281,17 @@ public class TermController {
 				application.setSession(academicSession);
 				application.setStudyCenter(studyCenter);
 				application.setProgram(program);
-				application.setAdvisor(advisor);
+
+				//application.setAdvisor(advisor);
+
+				/*if (vo.getAdvisor().getIdentityNo() != null) {
+					AdStaff advisor = identityService.findStaffByStaffNo(vo.getAdvisor().getIdentityNo());
+					application.setAdvisor(advisor);
+					System.out.println("Advisor: " + advisor);
+				} else {
+					System.out.println("No Advisor!");
+				}*/
+
 				application.setAuditNo(vo.getAuditNo());
 				application.setCancelComment(vo.getCancelComment());
 				application.setOrdinal(vo.getOrdinal());
@@ -577,7 +591,7 @@ public class TermController {
 		if (date1.after(date2)) { // true (1)
 			System.out.println("Close date of couse enrollment");
 			return new ResponseEntity<String>("Duplicate", HttpStatus.OK);
-			
+
 		} else {
 
 			System.out.println("Open date of couse enrollment");
@@ -594,7 +608,7 @@ public class TermController {
 
 			String referenceNo = termService.startEnrollmentApplicationTask(application);
 			// return new ResponseEntity<String>(referenceNo, HttpStatus.OK);
-			
+
 		}
 		return new ResponseEntity<String>("success", HttpStatus.OK);
 	}
