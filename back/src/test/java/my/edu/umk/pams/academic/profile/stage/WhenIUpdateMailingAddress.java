@@ -81,8 +81,7 @@ public class WhenIUpdateMailingAddress extends Stage<WhenIUpdateMailingAddress> 
                     address.getAddress2() + "," +
                     address.getAddress3() + "," +
                     address.getPostCode() + "," +
-                    address.getStateCode().getDescription() + "," +
-                    address.getCountryCode().getDescription());
+                    address.getCountryCode().getDescriptionEn());
 
         return self();
     }

@@ -9,30 +9,23 @@
      <a md-list-item (click)="statusSemesterRegister()" color="accent">
       <md-icon>drafts</md-icon>
       <span>Semester Registration Status </span>
+               <md-chip-list >
+                       <md-chip color="accent" >{{admissions?.length}} </md-chip>
+               </md-chip-list>        
     </a>
       <a md-list-item (click)="statusCourseEnroll()" color="accent">
       <md-icon>drafts</md-icon>
       <span>Course Enrollment Status </span>
     </a>
-    <a md-list-item color="accent">
-        <span>
-               <md-chip-list >
-                       <md-chip color="accent" >{{admissions?.length}} Approved application </md-chip>
-               </md-chip-list>      
-          </span>           
-      </a>
-       <md-divider></md-divider>
+         <md-divider></md-divider>
         <h3 md-subheader>Academic Session</h3>
     <div>
       <a md-list-item (click)="academicSessionDetail()" color="accent" >
         <md-icon>library_books</md-icon>
         <span> Session Status  </span>
-        
       </a>
-      
     </div>
     <md-divider></md-divider>
-
       <md-divider></md-divider>
      <h3 md-subheader>Graduation</h3>
     <a md-list-item color="accent" *ngIf="graduationApplications?.length == 0">

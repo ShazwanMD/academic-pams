@@ -66,7 +66,7 @@ public class WhenReviewStudentProfileInfo extends Stage<WhenReviewStudentProfile
            
             countryCode = address.getCountryCode();
             LOG.debug("Country Code:{}", countryCode.getCode());
-            LOG.debug("Country Code:{}", countryCode.getDescription());
+          
     }
 
         return self();

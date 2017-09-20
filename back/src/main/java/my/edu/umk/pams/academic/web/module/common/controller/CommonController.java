@@ -390,7 +390,8 @@ public ResponseEntity<String> saveCountryCode(@RequestBody CountryCode vo) {
 
         AdCountryCode countryCode = new AdCountryCodeImpl();
         countryCode.setCode(vo.getCode());
-        countryCode.setDescription(vo.getDescription());
+        countryCode.setDescriptionEn(vo.getDescriptionEn());
+        countryCode.setDescriptionMs(vo.getDescriptionMs());
     
         commonService.saveCountryCode(countryCode);
         return new ResponseEntity<String>("Success", HttpStatus.OK);
@@ -402,7 +403,8 @@ public ResponseEntity<String> updateCountryCode(@PathVariable String code, @Requ
 
         AdCountryCode countryCode = commonService.findCountryCodeById(vo.getId());
         countryCode.setCode(vo.getCode());
-        countryCode.setDescription(vo.getDescription());
+        countryCode.setDescriptionEn(vo.getDescriptionEn());
+        countryCode.setDescriptionMs(vo.getDescriptionMs());
         
         commonService.updateCountryCode(countryCode);
         return new ResponseEntity<String>("Success", HttpStatus.OK);
@@ -442,7 +444,8 @@ public ResponseEntity<String> removeCountryCode(@PathVariable String code) {
 
           AdStateCode stateCode = new AdStateCodeImpl();
           stateCode.setCode(vo.getCode());
-          stateCode.setDescription(vo.getDescription());
+          stateCode.setDescriptionEn(vo.getDescriptionEn());
+          stateCode.setDescriptionMs(vo.getDescriptionMs());
           stateCode.setCountryCode(commonService.findCountryCodeById(vo.getCountryCode().getId()));
           commonService.saveStateCode(stateCode);
           return new ResponseEntity<String>("Success", HttpStatus.OK);
@@ -454,7 +457,8 @@ public ResponseEntity<String> removeCountryCode(@PathVariable String code) {
 
           AdStateCode stateCode = commonService.findStateCodeById(vo.getId());
           stateCode.setCode(vo.getCode());
-          stateCode.setDescription(vo.getDescription());
+          stateCode.setDescriptionEn(vo.getDescriptionEn());
+          stateCode.setDescriptionMs(vo.getDescriptionMs());
           stateCode.setCountryCode(commonService.findCountryCodeById(vo.getCountryCode().getId()));
           commonService.updateStateCode(stateCode);
           return new ResponseEntity<String>("Success", HttpStatus.OK);

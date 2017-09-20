@@ -50,8 +50,8 @@ export class ProfileComponent implements OnInit {
     {name: 'address2', label: 'Address 2'},
     {name: 'address3', label: 'City'},
     {name: 'postcode', label: 'Postcode'},
-    {name: 'stateCode.description', label: 'State'},
-    {name: 'countryCode.description', label: 'Country'},
+    {name: 'stateCode.descriptionMs', label: 'State'},
+    {name: 'countryCode.descriptionMs', label: 'Country'},
     {name: 'action', label: 'Action'},
   ];
 

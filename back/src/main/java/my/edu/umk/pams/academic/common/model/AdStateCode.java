@@ -8,9 +8,13 @@ public interface AdStateCode extends AdMetaObject {
 
     void setCode(String code);
 
-    String getDescription();
+    String getDescriptionMs();
 
-    void setDescription(String description);
+    void setDescriptionMs(String descriptionMs);
+    
+    String getDescriptionEn();
+
+    void setDescriptionEn(String descriptionEn);
 
     AdCountryCode getCountryCode();
 

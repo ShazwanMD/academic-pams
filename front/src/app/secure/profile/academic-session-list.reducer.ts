@@ -17,3 +17,4 @@ export function academicSessionListReducer(state = initialState, action: Action)
     }
   }
 }
+

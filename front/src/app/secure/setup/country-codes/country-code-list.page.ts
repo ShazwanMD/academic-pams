@@ -17,7 +17,8 @@ export class CountryCodeListPage implements OnInit {
   private countryCodes$: Observable<CountryCode>;
   private columns: any[] = [
     {name: 'code', label: 'Code'},
-    {name: 'description', label: 'Description'},
+    {name: 'descriptionMs', label: 'Description MS'},
+    {name: 'descriptionEn', label: 'Description EN'},
     {name: 'action', label: ''}
   ];
 

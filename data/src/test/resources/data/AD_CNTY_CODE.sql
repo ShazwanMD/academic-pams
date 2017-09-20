@@ -1,235 +1,518 @@
--- drop sequence seq_AD_cnty_code;
--- create sequence seq_AD_cnty_code start with 1;
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'AF', 'Afghanistan', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'AX', '�land Islands', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'AL', 'Albania', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'DZ', 'Algeria', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'AS', 'American Samoa', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'AD', 'Andorra', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'AO', 'Angola', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'AI', 'Anguilla', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'AQ', 'Antarctica', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'AG', 'Antigua and Barbuda', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'AR', 'Argentina', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'AM', 'Armenia', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'AW', 'Aruba', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'AU', 'Australia', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'AT', 'Austria', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'AZ', 'Azerbaijan', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'BS', 'Bahamas', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'BH', 'Bahrain', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'BD', 'Bangladesh', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'BB', 'Barbados', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'BY', 'Belarus', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'BE', 'Belgium', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'BZ', 'Belize', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'BJ', 'Benin', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'BM', 'Bermuda', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'BT', 'Bhutan', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'BA', 'Bosnia and Herzegovina', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'BW', 'Botswana', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'BV', 'Bouvet Island', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'BR', 'Brazil', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'IO', 'British Indian Ocean Territory', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'BN', 'Brunei Darussalam', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'BG', 'Bulgaria', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'BF', 'Burkina Faso', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'BI', 'Burundi', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'KH', 'Cambodia', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'CM', 'Cameroon', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'CA', 'Canada', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'CV', 'Cape Verde', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'KY', 'Cayman Islands', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'CF', 'Central African Republic', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'TD', 'Chad', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'CL', 'Chile', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'CN', 'China', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'CX', 'Christmas Island', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'CC', 'Cocos (Keeling) Islands', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'CO', 'Colombia', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'KM', 'Comoros', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'CG', 'Congo', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'CK', 'Cook Islands', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'CR', 'Costa Rica', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'CI', 'Cote d''Ivoire', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'HR', 'Croatia', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'CU', 'Cuba', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'CW', 'Cura�ao', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'CY', 'Cyprus', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'CZ', 'Czech Republic', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'DK', 'Denmark', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'DJ', 'Djibouti', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'DM', 'Dominica', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'DO', 'Dominican Republic', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'EC', 'Ecuador', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'EG', 'Egypt', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'SV', 'El Salvador', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'GQ', 'Equatorial Guinea', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'ER', 'Eritrea', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'EE', 'Estonia', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'ET', 'Ethiopia', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'FK', 'Falkland Islands (Malvinas)', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'FO', 'Faroe Islands', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'FJ', 'Fiji', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'FI', 'Finland', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'FR', 'France', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'GF', 'French Guiana', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'PF', 'French Polynesia', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'TF', 'French Southern Territories', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'GA', 'Gabon', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'GM', 'Gambia', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'GE', 'Georgia', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'DE', 'Germany', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'GH', 'Ghana', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'GI', 'Gibraltar', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'GR', 'Greece', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'GL', 'Greenland', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'GD', 'Grenada', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'GP', 'Guadeloupe', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'GU', 'Guam', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'GT', 'Guatemala', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'GG', 'Guernsey', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'GN', 'Guinea', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'GW', 'Guinea-Bissau', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'GY', 'Guyana', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'HT', 'Haiti', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'HM', 'Heard Island and McDonald Islands', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'VA', 'Holy See (Vatican City State)', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'HN', 'Honduras', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'HK', 'Hong Kong', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'HU', 'Hungary', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'IS', 'Iceland', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'IN', 'India', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'ID', 'Indonesia', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'IQ', 'Iraq', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'IE', 'Ireland', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'IM', 'Isle of Man', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'IL', 'Israel', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'IT', 'Italy', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'JM', 'Jamaica', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'JP', 'Japan', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'JE', 'Jersey', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'JO', 'Jordan', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'KZ', 'Kazakhstan', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'KE', 'Kenya', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'KI', 'Kiribati', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'KW', 'Kuwait', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'KG', 'Kyrgyzstan', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'LA', 'Lao People''s Democratic Republic', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'LV', 'Latvia', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'LB', 'Lebanon', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'LS', 'Lesotho', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'LR', 'Liberia', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'LY', 'Libya', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'LI', 'Liechtenstein', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'LT', 'Lithuania', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'LU', 'Luxembourg', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'MO', 'Macao', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'MG', 'Madagascar', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'MW', 'Malawi', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'MY', 'Malaysia', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'MV', 'Maldives', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'ML', 'Mali', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'MT', 'Malta', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'MH', 'Marshall Islands', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'MQ', 'Martinique', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'MR', 'Mauritania', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'MU', 'Mauritius', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'YT', 'Mayotte', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'MX', 'Mexico', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'MC', 'Monaco', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'MN', 'Mongolia', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'ME', 'Montenegro', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'MS', 'Montserrat', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'MA', 'Morocco', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'MZ', 'Mozambique', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'MM', 'Myanmar', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'NA', 'Namibia', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'NR', 'Nauru', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'NP', 'Nepal', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'NL', 'Netherlands', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'NC', 'New Caledonia', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'NZ', 'New Zealand', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'NI', 'Nicaragua', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'NE', 'Niger', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'NG', 'Nigeria', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'NU', 'Niue', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'NF', 'Norfolk Island', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'MP', 'Northern Mariana Islands', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'NO', 'Norway', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'OM', 'Oman', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'PK', 'Pakistan', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'PW', 'Palau', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'PA', 'Panama', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'PG', 'Papua New Guinea', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'PY', 'Paraguay', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'PE', 'Peru', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'PH', 'Philippines', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'PN', 'Pitcairn', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'PL', 'Poland', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'PT', 'Portugal', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'PR', 'Puerto Rico', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'QA', 'Qatar', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'RE', 'R�union', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'RO', 'Romania', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'RU', 'Russian Federation', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'RW', 'Rwanda', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'BL', 'Saint Barth�lemy', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'KN', 'Saint Kitts and Nevis', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'LC', 'Saint Lucia', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'MF', 'Saint Martin (French part)', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'PM', 'Saint Pierre and Miquelon', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'VC', 'Saint Vincent and the Grenadines', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'WS', 'Samoa', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'SM', 'San Marino', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'ST', 'Sao Tome and Principe', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'SA', 'Saudi Arabia', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'SN', 'Senegal', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'RS', 'Serbia', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'SC', 'Seychelles', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'SL', 'Sierra Leone', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'SG', 'Singapore', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'SX', 'Sint Maarten (Dutch part)', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'SK', 'Slovakia', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'SI', 'Slovenia', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'SB', 'Solomon Islands', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'SO', 'Somalia', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'ZA', 'South Africa', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'GS', 'South Georgia and the South Sandwich Islands', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'SS', 'South Sudan', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'ES', 'Spain', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'LK', 'Sri Lanka', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'SD', 'Sudan', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'SR', 'Suriname', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'SJ', 'Svalbard and Jan Mayen', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'SZ', 'Swaziland', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'SE', 'Sweden', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'CH', 'Switzerland', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'SY', 'Syrian Arab Republic', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'TJ', 'Tajikistan', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'TH', 'Thailand', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'TL', 'Timor-Leste', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'TG', 'Togo', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'TK', 'Tokelau', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'TO', 'Tonga', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'TT', 'Trinidad and Tobago', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'TN', 'Tunisia', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'TR', 'Turkey', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'TM', 'Turkmenistan', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'TC', 'Turks and Caicos Islands', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'TV', 'Tuvalu', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'UG', 'Uganda', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'UA', 'Ukraine', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'AE', 'United Arab Emirates', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'GB', 'United Kingdom', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'US', 'United States', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'UM', 'United States Minor Outlying Islands', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'UY', 'Uruguay', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'UZ', 'Uzbekistan', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'VU', 'Vanuatu', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'VN', 'Viet Nam', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'WF', 'Wallis and Futuna', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'EH', 'Western Sahara', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'YE', 'Yemen', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'ZM', 'Zambia', null, 0, null, null, null, null, 1);
-insert into AD_CNTY_CODE (ID, CODE, DESCRIPTION, C_TS, C_ID, D_TS, D_ID, M_TS, M_ID, M_ST) values (nextval('SQ_AD_CNTY_CODE'), 'ZW', 'Zimbabwe', null, 0, null, null, null, null, 1);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), '-1', 'TIDAK DINYATAKAN', 'NOT SPECIFIED' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), '-2', 'TIDAK BERKENAAN', 'NOT APPLICABLE' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'A01', 'AFGHANISTAN', 'AFGHANISTAN' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'A02', 'ALBANIA', 'ALBANIA' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'A03', 'ALGERIA', 'ALGERIA' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'A04', 'ANDORRA', 'ANDORRA' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'A05', 'ANGOLA,ANTIGUA AND BARBUDA', 'ANGOLA,ANTIGUA AND BARBUDA', 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'A06', 'ARGENTINA', 'ARGENTINA' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'A07', 'ARMENIA', 'ARMENIA' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'A08', 'AUSTRALIA', 'AUSTRALIA' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'A09', 'AUSTRIA', 'AUSTRIA' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'A11', 'AZERBAIJAN', 'AZERBAIJAN' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'A12', 'AALAND ISLANDS', 'AALAND ISLANDS' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'A13', 'ANGUILLA', 'ANGUILLA' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'A14', 'ANTARTICA', 'ANTARTICA' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'A15', 'ARUBA', 'ARUBA' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'B01', 'BAHAMAS', 'BAHAMAS' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'B02', 'BAHRAIN', 'BAHRAIN' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'B03', 'BANGLADESH', 'BANGLADESH' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'B04', 'BARBADOS', 'BARBADOS' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'B05', 'BELARUS', 'BELARUS' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'B06', 'BELGIUM', 'BELGIUM' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'B07', 'BELIZE', 'BELIZE' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'B08', 'BENIN', 'BENIN' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'B09', 'BERMUDA', 'BERMUDA' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'B10', 'BHUTAN', 'BHUTAN' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'B11', 'BOLIVIA', 'BOLIVIA' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'B12', 'BOSNIA AND HERZEGOVINA', 'BOSNIA AND HERZEGOVINA' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'B13', 'BOTSWANA', 'BOTSWANA' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'B14', 'BRAZIL', 'BRAZIL' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'B15', 'BRUNEI DARUSSALAM', 'BRUNEI DARUSSALAM' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'B16', 'BULGARIA', 'BULGARIA' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'B17', 'BURKINA FASO', 'BURKINA FASO' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'B18', 'BURUNDI', 'BURUNDI' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'B19', 'KEPUALAUAN BOUVET', 'BOUVET ISLAND' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'B20', 'WILAYAH BRITISH INDIAN OCEAN', 'BRITISH INDIAN OCEAN  TERRITORY' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'C01', 'CAMBODIA', 'CAMBODIA' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'C02', 'CANADA', 'CANADA' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'C03', 'CAMEROON', 'CAMEROON' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'C04', 'CAPE VERDE', 'CAPE VERDE' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'C05', 'CENTRAL AFRICAN REPUBLIC', 'CENTRAL AFRICAN REPUBLIC' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'C06', 'CHAD', 'CHAD' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'C07', 'CHILE', 'CHILE' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'C08', 'CINA', 'CHINA' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'C09', 'KOLOMBIA', 'COLOMBIA' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'C10', 'KOMOROS', 'COMOROS' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'C11', 'KONGO', 'CONGO' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'C12', 'COSTA RICA', 'COSTA RICA' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'C13', 'CROATIA', 'CROATIA' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'C14', 'CUBA', 'CUBA' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'C15', 'CYPRUS', 'CYPRUS' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'C16', 'CZECH REPUBLIC', 'CZECH REPUBLIC' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'C18', 'CHECHNYA', 'CHECHNYA' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'C19', 'CAYMAN ISLANDS', 'CAYMAN ISLANDS' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'C20', 'CHRISTMAS ISLAND', 'CHRISTMAS ISLAND' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'C21', 'COCOS (KEELING) ISLANDS', 'COCOS (KEELING) ISLANDS' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'C22', 'COOK  ISLANDS', 'COOK  ISLANDS' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'C23', 'COTE D’IVOIRE', 'COTE D’IVOIRE', 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'C24', 'CURACAO', 'CURACAO' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'D01', 'DENMARK', 'DENMARK' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'D02', 'DJIBOUTI', 'DJIBOUTI' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'D03', 'DIGHESTAN', 'DIGHESTAN' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'D04', 'REPUBLIK DOMINICAN', 'DOMINICAN REPUBLIC' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'D05', 'DOMINICA', 'DOMINICA' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'D06', 'DAGESTAN', 'DAGESTAN' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'E01', 'ECUADOR', 'ECUADOR' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'E02', 'EGYPT', 'EGYPT' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'E03', 'EL SALVADOR', 'EL SALVADOR' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'E04', 'ENGLAND', 'ENGLAND' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'E05', 'EQUATORIAL GUINEA', 'EQUATORIAL GUINEA' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'E06', 'ESTONIA', 'ESTONIA' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'E07', 'ETHIOPIA', 'ETHIOPIA' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'E08', 'ERITREA', 'ERITREA' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'F01', 'FIJI', 'FIJI' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'F02', 'FINLAND', 'FINLAND' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'F04', 'FRANCE', 'FRANCE' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'F05', 'FALKLAND ISLANDS (MALVINAS)', 'FALKLAND ISLANDS (MALVINAS)' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'F06', 'FAROE ISLANDS', 'FAROE ISLANDS' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'F07', 'FRENCH GUIANA', 'FRENCH GUIANA' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'F08', 'FRENCH POLYNESIA', 'FRENCH POLYNESIA' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'F09', 'WILAYAH UTARA PRANCIS', 'FRENCH SOUTHERN TERRITORIES' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'G01', 'GABON', 'GABON' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'G02', 'GAMBIA', 'GAMBIA' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'G03', 'GERMANY', 'GERMANY' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'G04', 'GHANA', 'GHANA' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'G05', 'GREECE', 'GREECE' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'G06', 'GRENADA', 'GRENADA' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'G07', 'GUATEMALA', 'GUATEMALA' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'G08', 'GUINEA', 'GUINEA' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'G09', 'GUINEA-BISSAU', 'GUINEA-BISSAU', 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'G10', 'GUYANA', 'GUYANA' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'G11', 'GREENLAND', 'GREENLAND' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'G12', 'GUADELOUPE', 'GUADELOUPE' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'G13', 'GUAM', 'GUAM' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'G14', 'GEORGIA', 'GEORGIA' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'G15', 'GIBRALTAR', 'GIBRALTAR' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'H01', 'HAITI', 'HAITI' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'H02', 'HONDURAS', 'HONDURAS' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'H03', 'HONG  KONG', 'HONG  KONG' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'H04', 'HUNGARY', 'HUNGARY' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'I01', 'INDIA', 'INDIA' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'I02', 'INDONESIA', 'INDONESIA' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'I03', 'IRAN (ISLAM REPUBLIK)', 'IRAN (ISLAMIC REPUBLIC OF)' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'I04', 'IRAQ', 'IRAQ' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'I05', 'ISRAEL', 'ISRAEL' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'I06', 'ITALI', 'ITALY' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'I07', 'IVORY COAST', 'IVORY COAST' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'I08', 'ICELAND', 'ICELAND' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'I10', 'ISLE OF MAN', 'ISLE OF MAN' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'I09', 'REPUBLIK IRELAND', 'REPUBLIC OF IRELAND' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'J01', 'JAMAICA', 'JAMAICA' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'J02', 'JAPAN', 'JAPAN' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'J03', 'JORDAN', 'JORDAN' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'J04', 'JERSEY', 'JERSEY' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'K01', 'KAZAKSTAN', 'KAZAKSTAN' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'K02', 'KENYA', 'KENYA' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'K03', 'KIRIBATI', 'KIRIBATI' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'K04', 'KUWAIT', 'KUWAIT' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'K05', 'KOSOVO', 'KOSOVO' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'K06', 'KYRGHYZSTAN', 'KYRGHYZSTAN' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'K07', 'REPUBLIK KOREA, Demokratik Rakyat', 'KOREA,DEMOCRATIC PEOPLE’S REPUBLIC OF', 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'K08', 'KOREA', 'KOREA,REPUBLIC OF', 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'L01', 'LAOS', 'LAOS' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'L02', 'LEBANON', 'LEBANON' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'L03', 'LESOTHO', 'LESOTHO' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'L04', 'LIBERIA', 'LIBERIA' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'L05', 'LIBYAN ARAB JAMAHIRIYA', 'LIBYAN ARAB JAMAHIRIYA' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'L06', 'LIECHTENSTEIN', 'LIECHTENSTEIN' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'L07', 'LUXEMBOURG', 'LUXEMBOURG' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'L08', 'LATVIA', 'LATVIA' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'L09', 'LITHUANIA', 'LITHUANIA' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'M01', 'MALAYSIA', 'MALAYSIA' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'M02', 'MALAWI', 'MALAWI' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'M03', 'MADAGASCAR', 'MADAGASCAR' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'M04', 'MALDIVES', 'MALDIVES' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'M05', 'MALI', 'MALI' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'M06', 'MALTA', 'MALTA' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'M07', 'MAURITIUS', 'MAURITIUS' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'M08', 'MEXICO', 'MEXICO' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'M09', 'MONACO', 'MONACO' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'M10', 'MONGOLIA', 'MONGOLIA' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'M11', 'MOROCCO', 'MOROCCO' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'M12', 'MOZAMBIQUE', 'MOZAMBIQUE' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'M13', 'MYANMAR', 'MYANMAR' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'M14', 'MACEDONIA,REPUBIK YUGOSLAV',  'MACEDONIA,THE FORMER YUGOSLAV REPUBLIC OF', 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'M15', 'REPUBIK MOLDOVA',  'MOLDOVA,REPUBLIC OF', 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'M16', 'MAURITANIA', 'MAURITANIA' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'M17', 'MACAU', 'MACAU' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'M18', 'MARSHALL ISLANDS', 'MARSHALL ISLANDS' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'M19', 'MARTINIQUE', 'MARTINIQUE' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'M20', 'MAYOTTE', 'MAYOTTE' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'M21', 'NEGARA PERSEKUTUAN MICRONESIA', 'MICRONESIA,FEDERATED STATES OF', 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'N01', 'NAURU', 'NAURU' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'N02', 'NEPAL', 'NEPAL' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'N03', 'BELANDA', 'NETHERLANDS' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'N04', 'NEW ZEALAND', 'NEW ZEALAND' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'N05', 'NICARAGUA', 'NICARAGUA' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'N07', 'NIGERIA', 'NIGERIA' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'N10', 'NORWAY', 'NORWAY' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'N11', 'NAMIBIA', 'NAMIBIA' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'N12', 'NIGER', 'NIGER' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'N13', 'NETHERLANDS ANTILLES', 'NETHERLANDS ANTILLES' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'N14', 'NEW CALEDONIA', 'NEW CALEDONIA' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'N15', 'NIUE', 'NIUE' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'N16', 'KEPULAUAN NORFOLK', 'NORFOLK ISLAND' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'N17', 'KEPULAUAN MARIANA UTARA', 'NORTHERN MARIANA ISLANDS' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'O01', 'OMAN', 'OMAN' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'P01', 'PAKISTAN', 'PAKISTAN' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'P02', 'PANAMA', 'PANAMA' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'P03', 'PAPUA NEW GUINEA', 'PAPUA NEW GUINEA' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'P04', 'PARAGUAY', 'PARAGUAY' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'P05', 'PERU', 'PERU' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'P06', 'FILIPINA', 'PHILIPPINES' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'P07', 'POLAND', 'POLAND' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'P08', 'PORTUGIS', 'PORTUGAL' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'P09', 'WILAYAH PALESTIN,Occupied', 'PALESTINIAN TERRITORY,Occupied', 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'P10', 'PALAU', 'PALAU' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'P11', 'PITCAIRN', 'PITCAIRN' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'P12', 'PUERTO RICO', 'PUERTO RICO' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'Q01', 'QATAR', 'QATAR' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'R01', 'ROMANIA', 'ROMANIA' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'R02', 'RWANDA', 'RWANDA' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'R03', 'PERSEKUTUAN RUSSIA', 'RUSSIAN FEDERATION' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'R04', 'REUNION', 'REUNION' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'S01', 'ARAB SAUDI', 'SAUDI ARABIA' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'S02', 'SINGAPURA', 'SINGAPORE' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'S03', 'SALVADOR', 'SALVADOR' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'S04', 'SAINT KITTS-NEVIS', 'SAINT KITTS-NEVIS', 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'S05', 'SAINT LUCIA', 'SAINT LUCIA' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'S06', 'SAINT VINCENT AND THE GRENADINES', 'SAINT VINCENT AND THE GRENADINES' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'S07', 'SAN MARINO', 'SAN MARINO' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'S08', 'SAO TOME AND PRINCIPE', 'SAO TOME AND PRINCIPE' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'S09', 'SENEGAL', 'SENEGAL' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'S10', 'SEYCHELLES', 'SEYCHELLES' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'S11', 'SIERRA LEONE', 'SIERRA LEONE' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'S12', 'KEPULAUAN SOLOMON', 'SOLOMON  ISLANDS' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'S13', 'SOUTH KOREA', 'SOUTH KOREA' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'S14', 'SPAIN', 'SPAIN' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'S15', 'SRI LANKA', 'SRI LANKA' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'S16', 'SWEDEN', 'SWEDEN' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'S17', 'SWITZERLAND', 'SWITZERLAND' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'S18', 'SOMALIA', 'SOMALIA' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'S19', 'AFRIKA SELATAN', 'SOUTH AFRICA' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'S21', 'SUDAN', 'SUDAN' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'S22', 'SURINAM', 'SURINAM' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'S23', 'SWAZILAND', 'SWAZILAND' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'S24', 'REPUBLIK ARAB SYRIA', 'SYRIAN ARAB REPUBLIC' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'S25', 'SERBIA & MONTENEGRO', 'SERBIA & MONTENEGRO' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'S26', 'SLOVAKIA', 'SLOVAKIA' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'S27', 'SLOVENIA', 'SLOVENIA' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'S28', 'SAINT HELENA', 'SAINT HELENA' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'S29', 'SAINT PIERRE DAN MIQUELON', 'SAINT PIERRE AND MIQUELON' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'S30', 'SAMOA', 'SAMOA' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'S31', 'GEORGIA SELATAN DAN PULAU SANDWICH SELATAN', 'SOUTH GEORGIA AND THE SOUTH SANDWICH ISLANDS' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'S32', 'PULAU SVALBARD DAN JAN MAYEN', 'SVALBARD AND JAN MAYEN ISLANDS' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'S33', 'SOMALILAND', 'SOMALILAND' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'S34', 'SINT MAARTEN', 'SINT MAARTEN' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'S35', 'SAINT MARTIN', 'SAINT MARTIN' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'S36', 'SAINT BARTHELEMY', 'SAINT BARTHELEMY' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'S37', 'SELATAN SUDAN', 'SOUTH SUDAN' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'T01', 'TAIWAN', 'TAIWAN' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'T02', 'REPUBLIK BERSATU TANZANIA', 'UNITED REPUBLIC OF TANZANIA', 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'T03', 'THAILAND', 'THAILAND' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'T04', 'TIBET', 'TIBET' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'T05', 'TOGO', 'TOGO' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'T06', 'TONGA', 'TONGA' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'T07', 'TRINIDAD AND TOBAGO', 'TRINIDAD AND TOBAGO' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'T08', 'TUNISIA', 'TUNISIA' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'T09', 'TURKEY', 'TURKEY' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'T10', 'TUVALU', 'TUVALU' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'T11', 'TAJIKISTAN', 'TAJIKISTAN' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'T12', 'TARTAR', 'TARTAR' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'T13', 'TIMUR LESTE', 'TIMUR LESTE' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'T14', 'TOKELAU', 'TOKELAU' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'T15', 'TURKMENISTAN', 'TURKMENISTAN' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'T16', 'KEPULAUN TURKS DAN CAICOS', 'TURKS AND CAICOS ISLANDS' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'U01', 'UGANDA', 'UGANDA' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'U02', 'UKRAINE', 'UKRAINE' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'U03', 'EMIRIAH ARAB BERSATU', 'UNITED ARAB EMIRATES' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'U04', 'UNITED KINGDOM', 'UNITED KINGDOM' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'U05', 'AMERIKA SYARIKAT', 'UNITED STATES OF AMERICA' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'U06', 'URUGUAY', 'URUGUAY' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'U07', 'UZBEKISTAN', 'UZBEKISTAN' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'U08', 'KEPULAUAN UNITED STATES MINOR OUTLYING', 'UNITED STATES MINOR OUTLYING ISLANDS' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'V01', 'VANUATU', 'VANUATU' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'V02', 'VATICAN CITY STATE (HOLY SEE)', 'VATICAN CITY STATE (HOLY SEE)' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'V03', 'VENEZUELA', 'VENEZUELA' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'V04', 'VIETNAM', 'VIETNAM' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'V05', 'KEPULAUAN VIRGIN (U.S)','VIRGIN ISLANDS (U.S)', 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'V06', 'KEPULAUAN VIRGIN (BRITISH)', 'VIRGIN ISLANDS (BRITISH)' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'W01', 'WESTERN SAMOA', 'WESTERN SAMOA' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'W02', 'KEPUALAUAN WALLIS DAN FUTUNA', 'WALLIS AND FUTUNA ISLANDS' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'W03', 'WESTERN SAHARA', 'WESTERN SAHARA' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'Y01', 'YEMEN', 'YEMEN' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'Y02', 'YUGOSLAVIA', 'YUGOSLAVIA' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'Z01', 'ZAIRE', 'ZAIRE' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'Z02', 'ZAMBIA', 'ZAMBIA' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), 'Z03', 'ZIMBABWE', 'ZIMBABWE' , 1, 0, CURRENT_TIMESTAMP);
+INSERT INTO AD_CNTY_CODE (ID, CODE, DESCRIPTION_MS, DESCRIPTION_EN, M_ST, C_ID, C_TS)
+VALUES (nextval('SQ_AD_CNTY_CODE'), '999', 'LUAR NEGARA', 'OVERSEAS' , 1, 0, CURRENT_TIMESTAMP);

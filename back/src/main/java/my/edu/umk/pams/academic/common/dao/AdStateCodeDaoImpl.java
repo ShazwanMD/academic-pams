@@ -38,9 +38,8 @@ public class AdStateCodeDaoImpl extends GenericDaoSupport<Long, AdStateCode> imp
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select s from AdStateCode s where " +
                 "(upper(s.code) like upper(:filter) " +
-                "or upper(s.description) like upper(:filter) " +
-                "or upper(s.countryCode.code) like upper(:filter) " +
-                "or upper(s.countryCode.description) like upper(:filter)) " +
+                "or upper(s.descriptionEn) like upper(:filter) " +
+                "or upper(s.descriptionMs) like upper(:filter)) " +
                 "and s.metadata.state = :state ");
         query.setInteger("state", AdMetaState.ACTIVE.ordinal());
         query.setString("filter", WILDCARD + filter + WILDCARD);
@@ -72,7 +71,8 @@ public class AdStateCodeDaoImpl extends GenericDaoSupport<Long, AdStateCode> imp
                 "and (upper(s.code) like upper(:filter) " +
                 "or upper(s.description) like upper(:filter) " +
                 "or upper(s.countryCode.code) like upper(:filter) " +
-                "or upper(s.countryCode.description) like upper(:filter)) " +
+                "or upper(s.countryCode.descriptionEn) like upper(:filter) " +
+                "or upper(s.countryCode.descriptionMs) like upper(:filter)) " +
                 "and s.metadata.state = :state ");
         query.setEntity("countryCode", countryCode);
         query.setInteger("state", AdMetaState.ACTIVE.ordinal());

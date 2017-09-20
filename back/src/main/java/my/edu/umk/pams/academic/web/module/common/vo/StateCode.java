@@ -13,7 +13,8 @@ import java.io.IOException;
  */
 public class StateCode extends MetaObject {
     private String code;
-    private String description;
+    private String descriptionMs;
+    private String descriptionEn;
     private CountryCode countryCode;
     
 
@@ -23,18 +24,25 @@ public class StateCode extends MetaObject {
 
     public void setCode(String code) {
         this.code = code;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
+    }   
     
-    
-    public CountryCode getCountryCode() {
+    public String getDescriptionMs() {
+		return descriptionMs;
+	}
+
+	public void setDescriptionMs(String descriptionMs) {
+		this.descriptionMs = descriptionMs;
+	}
+
+	public String getDescriptionEn() {
+		return descriptionEn;
+	}
+
+	public void setDescriptionEn(String descriptionEn) {
+		this.descriptionEn = descriptionEn;
+	}
+
+	public CountryCode getCountryCode() {
         return countryCode;
     }
 

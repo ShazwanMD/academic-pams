@@ -194,7 +194,8 @@ public class CommonTransformer {
         CountryCode vo = new CountryCode();
         vo.setId(e.getId());
         vo.setCode(e.getCode());
-        vo.setDescription(e.getDescription());
+        vo.setDescriptionEn(e.getDescriptionEn());
+        vo.setDescriptionMs(e.getDescriptionMs());
         return vo;
     }
 
@@ -214,7 +215,8 @@ public class CommonTransformer {
         StateCode vo = new StateCode();
         vo.setId(e.getId());
         vo.setCode(e.getCode());
-        vo.setDescription(e.getDescription());
+        vo.setDescriptionEn(e.getDescriptionEn());
+        vo.setDescriptionMs(e.getDescriptionMs());
         vo.setCountryCode(toCountryCodeVo(e.getCountryCode()));
         return vo;
     }

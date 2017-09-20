@@ -29,8 +29,8 @@ export class StudentProfilePage {
         { name: 'address2', label: 'Address 2' },
         { name: 'address3', label: 'City' },
         { name: 'postcode', label: 'Postcode' },
-        { name: 'stateCode.description', label: 'State' },
-        { name: 'countryCode.description', label: 'Country' },
+        { name: 'stateCode.descriptionEn', label: 'State' },
+        { name: 'countryCode.descriptionEn', label: 'Country' },
         { name: 'action', label: 'Action' },
     ];
 

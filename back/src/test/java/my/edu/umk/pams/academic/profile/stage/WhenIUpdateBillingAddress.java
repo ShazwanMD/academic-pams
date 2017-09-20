@@ -69,8 +69,7 @@ public class WhenIUpdateBillingAddress extends Stage<WhenIUpdateBillingAddress> 
     													   address.getAddress2()+","+
     													   address.getAddress3()+","+
     													   address.getPostCode()+","+
-    													   address.getStateCode().getDescription()+","+
-    													   address.getCountryCode().getDescription());
+    													   address.getCountryCode().getDescriptionEn());
 
     	
     	return self();
