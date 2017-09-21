@@ -1,22 +1,22 @@
 <h2 md-dialog-title>{{edit ? 'Update' : 'Save'}} Admission Application Ref: {{_admissionApplication?.referenceNo}}</h2>
 <md-dialog-content>
   <form [formGroup]="editForm">
-    <div layout="row" class="pad-bottom">
+   <!--  <div layout="row" class="pad-bottom">
       <md-input-container flex>
         <input mdInput #sourceNo
                placeholder="Source No"
                formControlName="sourceNo"
                flex/>
       </md-input-container>
-    </div>
-    <div layout="row" class="pad-bottom">
+    </div> -->
+    <!-- <div layout="row" class="pad-bottom">
       <md-input-container flex>
         <input mdInput #auditNo
                placeholder="Audit No"
                formControlName="auditNo"
                flex/>
       </md-input-container>
-    </div>
+    </div> -->
     <div layout="row" class="pad-bottom">
       <md-input-container flex>
         <input mdInput #ordinal
@@ -25,6 +25,16 @@
                flex/>
       </md-input-container>
     </div>
+    <div>
+      <pams-staff-select [placeholder]="'Select Advisor'"
+                         [innerFormControl]="editForm.controls['advisor']" 
+                         fxFlex="calc(100%-25px)" 
+                         mdTooltip="Please choose advisor" 
+                         class="pad-bottom">
+      </pams-staff-select>
+      
+    </div>
+    
     <!--<div layout="row" class="pad-bottom">
       <md-input-container flex>
         <input mdInput #title

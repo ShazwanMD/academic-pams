@@ -65,12 +65,12 @@ export class AdvisoryComponent implements OnInit {
  private columnAdmissionApplication: any[] = [
   {name: 'id', label: 'Id'},
   {name: 'description', label: 'Desc.'},
+  //{name: 'advisor.title', label: 'Name'},
   {name: 'advisor.name', label: 'Name'},
   {name: 'advisor.identityNo', label: 'Staff.No'},
   {name: 'advisor.email', label: 'Email'},
   {name: 'advisor.mobile', label: 'Mobile'},
   {name: 'advisor.phone', label: 'Phone'},
-  {name: 'advisor.fax', label: 'Fax'},
   {name: 'action', label: ''},
 ];
 

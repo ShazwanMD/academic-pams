@@ -70,11 +70,42 @@
                           <span flex>{{value}}</span>
                         </div>
                       </template>
+                                  <template tdDataTableTemplate="advisor.name" let-value="value" let-row="row" let-column="columns.advisor.name">
+        <div layout="row">
+          <div *ngIf="value == null">None</div>
+           <div *ngIf="value != null">{{value}}</div>       
+        </div>
+      </template>
+       <template tdDataTableTemplate="advisor.email" let-value="value" let-row="row" let-column="columns.advisor.email">
+        <div layout="row">
+          <div *ngIf="value == null">None</div>
+           <div *ngIf="value != null">{{value}}</div>       
+        </div>
+      </template>
+       <template tdDataTableTemplate="advisor.identityNo" let-value="value" let-row="row" let-column="columns.advisor.identityNo">
+        <div layout="row">
+          <div *ngIf="value == null">None</div>
+           <div *ngIf="value != null">{{value}}</div>       
+        </div>
+      </template>
+       <template tdDataTableTemplate="advisor.phone" let-value="value" let-row="row" let-column="columns.advisor.phone">
+        <div layout="row">
+          <div *ngIf="value == null">None</div>
+           <div *ngIf="value != null">{{value}}</div>       
+        </div>
+      </template>
+       <template tdDataTableTemplate="advisor.mobile" let-value="value" let-row="row" let-column="columns.advisor.mobile">
+        <div layout="row">
+          <div *ngIf="value == null">None</div>
+           <div *ngIf="value != null">{{value}}</div>       
+        </div>
+      </template>
+      
 
                       <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
                         <div layout="row">                          
       <a md-raised-button color="accent" class="text-upper" (click)="editSupervisor(row, true)" >
-        <span>UPDATE SUPERVISOR</span>
+        <span>ASSIGN SUPERVISOR</span>
       </a>
     
                         </div>

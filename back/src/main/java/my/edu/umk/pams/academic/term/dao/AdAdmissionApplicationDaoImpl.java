@@ -213,13 +213,16 @@ public class AdAdmissionApplicationDaoImpl extends GenericDaoSupport<Long, AdAdm
 
     }
 
-	//update admissio application in advisory
-	 public void updateAdmissionApplication(AdStudent student, AdAdmissionApplication application, AdUser currentUser) {
+	//update admission application in advisory
+	 public void updateAdmissionApplication(AdStudent student, AdAdmissionApplication application, AdAdmission admission, AdUser currentUser) {
 	        Validate.notNull(currentUser, "User cannot be null");
 	        Validate.notNull(application, "application cannot be null");
+	        Validate.notNull(admission, "admission cannot be null");
 	        Session session = sessionFactory.getCurrentSession();
 	        application.setStudent(student);
-
+	        
+	        System.out.println("student update advisor: " + student.getName());
+	        
 	        // prepare metadata
 	        AdMetadata metadata = application.getMetadata();
 	        metadata.setModifiedDate(new Timestamp(System.currentTimeMillis()));
@@ -227,6 +230,25 @@ public class AdAdmissionApplicationDaoImpl extends GenericDaoSupport<Long, AdAdm
 	        application.setMetadata(metadata);
 	        session.update(application);
 	    }
+
+	@Override
+	public void updateAdmissionApplication(AdStudent student, AdAdmissionApplication application, AdUser currentUser) {
+		 Validate.notNull(currentUser, "User cannot be null");
+	        Validate.notNull(application, "application cannot be null");
+	        Session session = sessionFactory.getCurrentSession();
+	        application.setStudent(student);
+	        
+	        System.out.println("student update advisor: " + student);
+	        
+
+	        // prepare metadata
+	        AdMetadata metadata = application.getMetadata();
+	        metadata.setModifiedDate(new Timestamp(System.currentTimeMillis()));
+	        metadata.setModifierId(currentUser.getId());
+	        application.setMetadata(metadata);
+	        session.update(application);
+		
+	}
 
 	
 

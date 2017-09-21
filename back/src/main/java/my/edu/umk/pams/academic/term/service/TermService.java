@@ -204,7 +204,7 @@ public interface TermService {
 
     void updateAdmissionApplication(AdAdmissionApplication application);
     
-    void updateAdmissionApplication(AdStudent student, AdAdmissionApplication application);
+    void updateAdmissionApplication(AdStudent student, AdAdmissionApplication application, AdAdmission admission);
 
     void cancelAdmissionApplication(AdAdmissionApplication application);
 
@@ -275,6 +275,8 @@ public interface TermService {
     void saveAdmission(AdAdmission admission);
 
     void updateAdmission(AdAdmission admission);
+    
+    void updateAdmission(AdStudent student, AdAdmissionApplication application);
 
     //====================================================================================================
     // ENROLLMENT APPLICATION
@@ -541,6 +543,10 @@ public interface TermService {
     
     void admit(AdAcademicSession session, AdStudent student, AdStudyCenter studyCenter, AdProgram program,
 			Integer ordinal);
+
+	void updateAdmissionApplication(AdStudent student, AdAdmissionApplication application);
+	
+
 
 
 }

@@ -104,8 +104,12 @@ public class ProfileController {
 		LOG.debug("updateAdmissionApplication:{}", vo.getAdvisor());
 		AdStudent student = profileService.findStudentByMatricNo(identityNo);
 		AdAdmissionApplication application = termService.findAdmissionApplicationById(vo.getId());
+		AdAdmission admission = termService.findAdmissionById(vo.getId());
+		
 		application.setAdvisor(identityService.findStaffByIdentityNo(vo.getAdvisor().getIdentityNo()));
-		termService.updateAdmissionApplication(student, application);
+		admission.setAdvisor(identityService.findStaffByIdentityNo(vo.getAdvisor().getIdentityNo()));
+		
+		termService.updateAdmissionApplication(student, application, admission);		
 		return new ResponseEntity<String>("Success", HttpStatus.OK);
 	}
 	// ====================================================================================================

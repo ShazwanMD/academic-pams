@@ -7,6 +7,7 @@ import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.identity.model.AdUser;
 import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
 import my.edu.umk.pams.academic.planner.model.AdProgram;
+import my.edu.umk.pams.academic.term.model.AdAdmission;
 import my.edu.umk.pams.academic.term.model.AdAdmissionApplication;
 
 import java.util.List;
@@ -58,8 +59,9 @@ public interface AdAdmissionApplicationDao extends GenericDao<Long, AdAdmissionA
 
     Integer count(String filter, AdAcademicSession session, AdStaff staff);
 
-	void updateAdmissionApplication(AdStudent student, AdAdmissionApplication application, AdUser currentUser);
+	void updateAdmissionApplication(AdStudent student, AdAdmissionApplication application, AdAdmission admission, AdUser currentUser);
 
+	void updateAdmissionApplication(AdStudent student, AdAdmissionApplication application, AdUser currentUser); 
     // ====================================================================================================
     // CRUD
     // ====================================================================================================

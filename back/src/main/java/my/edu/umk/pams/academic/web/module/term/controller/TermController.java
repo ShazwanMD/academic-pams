@@ -194,8 +194,8 @@ public class TermController {
 
 		LOG.debug("TermApplicationRef:{}", referenceNo);
 		AdAdmissionApplication application = termService.findAdmissionApplicationByReferenceNo(referenceNo);
-		AdStaff advisor = identityService.findStaffByStaffNo("00280A");
-
+		AdStaff advisor = identityService.findStaffByStaffNo(vo.getAdvisor().getIdentityNo());
+				
 		application.setAuditNo(vo.getAuditNo());
 		application.setSourceNo(vo.getSourceNo());
 		application.setCancelComment(vo.getCancelComment());

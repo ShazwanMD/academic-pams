@@ -598,8 +598,8 @@ public class TermServiceImpl implements TermService {
 	}
 	
 	@Override
-	public void updateAdmissionApplication(AdStudent student, AdAdmissionApplication application) {
-		admissionApplicationDao.updateAdmissionApplication(student,application, securityService.getCurrentUser());
+	public void updateAdmissionApplication(AdStudent student, AdAdmissionApplication application, AdAdmission admission) {
+		admissionApplicationDao.updateAdmissionApplication(student, application, admission, securityService.getCurrentUser());
 		sessionFactory.getCurrentSession().flush();		
 	}
 
@@ -608,6 +608,12 @@ public class TermServiceImpl implements TermService {
 		admissionDao.update(admission, securityService.getCurrentUser());
 		sessionFactory.getCurrentSession().flush();
 	}
+	
+	/*
+	public void updateAdmission(AdStudent student, AdAdmissionApplication application) {
+		admissionDao.updateAdmission(student,application, securityService.getCurrentUser());
+		sessionFactory.getCurrentSession().flush();		
+	}*/
 
 	@Override
 	public void cancelAdmissionApplication(AdAdmissionApplication application) {
@@ -1711,7 +1717,18 @@ public class TermServiceImpl implements TermService {
 		return offeringDao.findByCode(code);
 	}
 
-	
+	@Override
+	public void updateAdmission(AdStudent student, AdAdmissionApplication application) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void updateAdmissionApplication(AdStudent student, AdAdmissionApplication application) {
+		/*admissionApplicationDao.updateAdmissionApplication(student, application, securityService.getCurrentUser());
+		sessionFactory.getCurrentSession().flush();	*/
+		
+	}
 
 	
 
