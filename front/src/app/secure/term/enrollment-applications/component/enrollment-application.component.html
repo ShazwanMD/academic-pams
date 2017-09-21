@@ -38,14 +38,14 @@
        <md-tab label="Academic Session Information">
         <div layout="column" class="inset">
           <div layout="row" class="pad-bottom">
-            <span flex="15">Code</span> <span>{{enrollmentApplication?.admission?.student?.cohort?.academicSession?.code}}</span>
+            <span flex="15">Code</span> <span>{{enrollmentApplication?.academicSession?.code}}</span>
           </div>
           <div layout="row" class="pad-bottom">
-            <span flex="15">Description</span> <span>{{enrollmentApplication?.admission?.student?.cohort?.academicSession?.description}}</span>
+            <span flex="15">Description</span> <span>{{enrollmentApplication?.academicSession?.description}}</span>
           </div>
           <div layout="row" class="pad-bottom">
-            <span flex="15">Semester</span> <span>{{enrollmentApplication?.admission?.student?.cohort?.academicSession?.semester}}</span>
-          </div>
+            <span flex="15">Semester</span> <span>{{enrollmentApplication?.academicSession?.semester}}</span>
+          </div> 
         </div>
       </md-tab>
     </md-tab-group>
