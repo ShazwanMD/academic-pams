@@ -226,6 +226,8 @@ public interface IdentityService {
 	AdSponsorship findSponsorshipById(Long id);
 
 	List<AdSponsorship> findSponsorships(AdSponsor sponsor);
+	
+	List<AdSponsorship> findSponsorships(AdStudent student);
 
 	List<AdSponsorship> findSponsorships(Integer offset, Integer limit);
 

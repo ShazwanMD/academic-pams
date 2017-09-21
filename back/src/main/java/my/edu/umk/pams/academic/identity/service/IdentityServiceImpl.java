@@ -626,6 +626,11 @@ public class IdentityServiceImpl implements IdentityService {
 	public List<AdSponsorship> findSponsorships(AdSponsor sponsor) {
 		 return sponsorshipDao.find();
 	}
+	
+	@Override
+	public List<AdSponsorship> findSponsorships(AdStudent student) {
+		 return sponsorshipDao.find();
+	}
 
 	@Override
 	public List<AdSponsorship> findSponsorships(Integer offset, Integer limit) {
