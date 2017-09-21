@@ -138,6 +138,7 @@ public class TermController {
 		admission.setCgpa(vo.getCgpa());
 		admission.setCreditEarned(vo.getCreditEarned());
 		admission.setCreditTaken(vo.getCreditTaken());
+		admission.setAdvisor(identityService.findStaffByStaffNo(vo.getAdvisor().getIdentityNo()));
 		admission.setOrdinal(vo.getOrdinal());
 		admission.setGpa(vo.getGpa());
 		admission.setStatus(AdAdmissionStatus.get(vo.getStatus().ordinal()));

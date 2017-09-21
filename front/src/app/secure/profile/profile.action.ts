@@ -310,7 +310,7 @@ export class ProfileActions {
   }
 
   /*==================================================================================================*/
-  /*ADD / UPD / DEL ADMISSION APPLICATION-ADVISORY*/
+  /*ADD / UPD / DEL ADMISSION -ADVISORY*/
   /*==================================================================================================*/
   
 
@@ -333,6 +333,27 @@ export class ProfileActions {
       payload: message
     };
   }
+  
+   static UPDATE_ADMISSION = '[Profile] Update Admission';
+
+  updateAdmission(student, admission): Action {
+      console.log("updateAdmission");
+    return {
+      type: ProfileActions.UPDATE_ADMISSION,
+      payload: {student: student, admission: admission}
+    };
+  }
+
+  static UPDATE_ADMISSION_SUCCESS = '[Profile] Update Admission Success';
+
+  updateAdmissionSuccess(message): Action {
+      console.log("updateAdmissionSuccess");
+    return {
+      type: ProfileActions.UPDATE_ADMISSION_SUCCESS,
+      payload: message
+    };
+  }
+  
   
   /*==================================================================================================*/
   /*ADD / UPD / DEL ADDRESS*/

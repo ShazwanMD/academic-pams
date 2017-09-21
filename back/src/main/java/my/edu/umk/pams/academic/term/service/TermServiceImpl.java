@@ -614,6 +614,12 @@ public class TermServiceImpl implements TermService {
 		admissionDao.updateAdmission(student,application, securityService.getCurrentUser());
 		sessionFactory.getCurrentSession().flush();		
 	}*/
+	
+	@Override
+	public void updateAdmission(AdStudent student, AdAdmission admission) {
+		admissionDao.updateAdmission(student, admission, securityService.getCurrentUser());
+		sessionFactory.getCurrentSession().flush();		
+	}
 
 	@Override
 	public void cancelAdmissionApplication(AdAdmissionApplication application) {
@@ -637,7 +643,7 @@ public class TermServiceImpl implements TermService {
 	public void postToAdmission(AdAdmissionApplication application) {
 		Validate.notNull(application, "Application cannot be null");
 		admit(application.getSession(), application.getStudent(), application.getStudyCenter(), 
-				application.getProgram(), application.getOrdinal());
+				application.getProgram(), application.getOrdinal(), application.getAdvisor());
 	}
 
 	@Override
@@ -788,13 +794,14 @@ public class TermServiceImpl implements TermService {
 	}
     //add ordinal to auto semester
 	@Override
-	public void admit(AdAcademicSession session, AdStudent student, AdStudyCenter studyCenter, AdProgram program, Integer ordinal) {
+	public void admit(AdAcademicSession session, AdStudent student, AdStudyCenter studyCenter, AdProgram program, Integer ordinal, AdStaff advisor) {
 		
 				
 		AdAdmission admission = new AdAdmissionImpl();
 		admission.setSession(session);
 		admission.setStudent(student);
 		admission.setStudyCenter(studyCenter);
+		admission.setAdvisor(advisor);
 		admission.setStanding(AdAcademicStanding.TBD);
 		admission.setCreditEarned(0);
 		admission.setCreditTaken(0);
@@ -1704,14 +1711,7 @@ public class TermServiceImpl implements TermService {
 		sessionFactory.getCurrentSession().flush();
 	}
 
-	@Override
-	public void admit(AdAcademicSession academicSession, AdStudent student, AdStudyCenter studyCenter,
-			AdProgram program) {
-		// TODO Auto-generated method stub
-		
-	}
-
-		
+			
 	@Override
 	public AdOffering findOfferingByCode(String code) {
 		return offeringDao.findByCode(code);
@@ -1727,6 +1727,21 @@ public class TermServiceImpl implements TermService {
 	public void updateAdmissionApplication(AdStudent student, AdAdmissionApplication application) {
 		/*admissionApplicationDao.updateAdmissionApplication(student, application, securityService.getCurrentUser());
 		sessionFactory.getCurrentSession().flush();	*/
+		
+	}
+
+	
+	@Override
+	public void admit(AdAcademicSession session, AdStudent student, AdStudyCenter studyCenter, AdProgram program,
+			Integer ordinal) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void admit(AdAcademicSession academicSession, AdStudent student, AdStudyCenter studyCenter,
+			AdProgram program, AdStaff advisor) {
+		// TODO Auto-generated method stub
 		
 	}
 

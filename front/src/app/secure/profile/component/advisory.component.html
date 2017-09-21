@@ -46,14 +46,14 @@
             <br/><br/><br/>
             <!--TAB OTHERS INFORMATION-->
             <md-tab-group>
-              <md-tab label="Supervisor">
-                <!--ADMISSION APPLICATION INFORMATION-->
+              <md-tab label="Advisor">
+                <!--ADMISSION INFORMATION-->
                 <md-card>
                   <div md-content flex md-scroll-y>
                     <div layout="column" layout-gt-md="row" class="insert">
 
                       <div flex-gt-md="50">
-                        <md-card-title>Supervisor Information</md-card-title>
+                        <md-card-title>Advisor Information</md-card-title>
                       </div>
 
                     </div>
@@ -61,7 +61,7 @@
                   <md-divider></md-divider>
                   <md-card-content>
 
-                    <td-data-table [data]="admissionApplications" [columns]="columnAdmissionApplication" [sortBy]="summary" [sortOrder]="ASC"
+                    <td-data-table [data]="admissions" [columns]="columnAdmission" [sortBy]="summary" [sortOrder]="ASC"
                                    [sortable]="false" [multiple]="false"
                                    [selectable]="false" (rowSelect)="edit.emit($event)" dense>
 
@@ -101,11 +101,10 @@
         </div>
       </template>
       
-
                       <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
                         <div layout="row">                          
-      <a md-raised-button color="accent" class="text-upper" (click)="editSupervisor(row, true)" >
-        <span>ASSIGN SUPERVISOR</span>
+      <a md-raised-button color="accent" class="text-upper" (click)="editAdvisor(row, true)" >
+        <span>ASSIGN ADVISOR</span>
       </a>
     
                         </div>
@@ -114,7 +113,9 @@
                   </md-card-content>
                 </md-card>
               </md-tab>  
-            </md-tab-group>
+            </md-tab-group>     
+            
+            
           </md-card-content>
         </md-card>
       </md-tab>

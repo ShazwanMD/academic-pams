@@ -14,6 +14,7 @@ import {Guarantor} from '../../shared/model/profile/guarantor.interface';
 import {MdDialog, MdDialogRef, MdSnackBar} from '@angular/material';
 import {Observable} from 'rxjs';
 import { AdmissionApplication } from "../../shared/model/term/admission-application.interface";
+import { Admission } from "../../shared/model/term/admission.interface";
 
 @Component({
   selector: 'pams-advisory-detail',
@@ -25,6 +26,7 @@ export class AdvisoryDetailPage implements OnInit {
   private STUDENT: string[] = 'profileModuleState.student'.split('.');
   private ADDRESSES: string[] = 'profileModuleState.addresses'.split('.');
   private ADMISSION_APPLICATIONS: string[] = 'profileModuleState.admissionApplications'.split('.');
+  private ADMISSIONS: string[] = 'profileModuleState.admissions'.split('.');
   private GUARANTORS: string[] = 'profileModuleState.guarantors'.split('.');
   private GUARDIANS: string[] = 'profileModuleState.guardians'.split('.');
   private CONTACTS: string[] = 'profileModuleState.contacts'.split('.');
@@ -32,6 +34,7 @@ export class AdvisoryDetailPage implements OnInit {
 
   private student$: Observable<Student>;
   private admissionApplications$: Observable<AdmissionApplication>;
+  private admissions$: Observable<Admission>;
   private addressess$: Observable<Student>;
   private guarantors$: Observable<Guarantor>;
   private guardians$: Observable<Guardian>;
@@ -52,6 +55,7 @@ export class AdvisoryDetailPage implements OnInit {
 
     this.student$ = this.store.select(...this.STUDENT);
     this.admissionApplications$ = this.store.select(...this.ADMISSION_APPLICATIONS);
+    this.admissions$ = this.store.select(...this.ADMISSIONS);
     this.addressess$ = this.store.select(...this.ADDRESSES);
     this.guardians$ = this.store.select(...this.GUARDIANS);
     this.guarantors$ = this.store.select(...this.GUARANTORS);

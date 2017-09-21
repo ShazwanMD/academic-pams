@@ -1,7 +1,6 @@
 package my.edu.umk.pams.academic.term.service;
 
 import my.edu.umk.pams.academic.common.model.AdStudyCenter;
-
 import my.edu.umk.pams.academic.core.AdFlowState;
 import my.edu.umk.pams.academic.identity.model.AdActor;
 import my.edu.umk.pams.academic.identity.model.AdStaff;
@@ -270,13 +269,18 @@ public interface TermService {
 
     Integer countAdmission(AdAcademicSession academicSession, AdStudent student);
 
-    void admit(AdAcademicSession academicSession, AdStudent student, AdStudyCenter studyCenter, AdProgram program);
+    void admit(AdAcademicSession academicSession, AdStudent student, AdStudyCenter studyCenter, AdProgram program, AdStaff advisor);
 
+    void admit(AdAcademicSession session, AdStudent student, AdStudyCenter studyCenter, AdProgram program,
+			Integer ordinal, AdStaff advisor);
+    
     void saveAdmission(AdAdmission admission);
 
     void updateAdmission(AdAdmission admission);
     
     void updateAdmission(AdStudent student, AdAdmissionApplication application);
+    
+    void updateAdmission(AdStudent student, AdAdmission admission);
 
     //====================================================================================================
     // ENROLLMENT APPLICATION
@@ -545,8 +549,5 @@ public interface TermService {
 			Integer ordinal);
 
 	void updateAdmissionApplication(AdStudent student, AdAdmissionApplication application);
-	
-
-
 
 }

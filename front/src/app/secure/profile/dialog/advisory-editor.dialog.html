@@ -1,4 +1,4 @@
-<h2 md-dialog-title>Advisory Editor Form v1</h2>
+<h2 md-dialog-title>Advisory Admission Editor Form</h2>
 <md-dialog-content>
   <form [formGroup]="editorForm" novalidate>
       <div fxLayout fxLayout.xs="column" fxLayoutWrap fxLayoutGap="25px" class="inset"> 
@@ -14,15 +14,15 @@ th, td {
 		<tbody>
 			<tr style="font-family:verdana;background-color:#F9DFD9" >
 				<td > <b>Name </b></td>
-				<td>: {{_admissionApplication?.student?.name}}</td>
+				<td>: {{_admission?.student?.name}}</td>
 			</tr>
 			<tr style="font-family:verdana;background-color:#FCF4F1">
 				<td >  <b>Identity No  </b></td>
-				<td>: {{_admissionApplication?.student?.identityNo}}</td>
+				<td>: {{_admission?.student?.identityNo}}</td>
 			</tr>
 			<tr style="font-family:verdana;background-color:#FCF4F1">
 				<td >  <b>Academic Session</b></td>
-				<td>: {{_admissionApplication?.academicSession?.code}}</td>
+				<td>: {{_admission?.academicSession?.code}}</td>
 			</tr>
 			<tr style="font-family:verdana;background-color:#FCF4F1">
 				<td >  <b>Lecturer </b></td>

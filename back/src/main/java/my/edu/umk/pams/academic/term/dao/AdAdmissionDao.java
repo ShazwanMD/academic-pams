@@ -75,4 +75,5 @@ public interface AdAdmissionDao extends GenericDao<Long, AdAdmission> {
     
     void removeEnrollmentApplication(AdAdmission admission, AdEnrollmentApplication application, AdUser user);
 
+    void updateAdmission(AdStudent student, AdAdmission admission, AdUser currentUser);
 }

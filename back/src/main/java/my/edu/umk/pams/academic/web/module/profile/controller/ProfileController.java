@@ -105,13 +105,32 @@ public class ProfileController {
 		AdStudent student = profileService.findStudentByMatricNo(identityNo);
 		AdAdmissionApplication application = termService.findAdmissionApplicationById(vo.getId());
 		AdAdmission admission = termService.findAdmissionById(vo.getId());
-		
+
 		application.setAdvisor(identityService.findStaffByIdentityNo(vo.getAdvisor().getIdentityNo()));
 		admission.setAdvisor(identityService.findStaffByIdentityNo(vo.getAdvisor().getIdentityNo()));
-		
-		termService.updateAdmissionApplication(student, application, admission);		
+
+		termService.updateAdmissionApplication(student, application, admission);
 		return new ResponseEntity<String>("Success", HttpStatus.OK);
 	}
+
+	// ====================================================================================================
+	// ADMISSION
+	// ====================================================================================================
+
+	/* EDIT ADMISSION */
+	@RequestMapping(value = "/students/{identityNo}/admissions/{id}", method = RequestMethod.PUT)
+	public ResponseEntity<String> updateAdmission(@PathVariable String identityNo, @RequestBody Admission vo) {
+		dummyLogin();
+		LOG.debug("updateAdmission:{}", vo.getAdvisor());
+		AdStudent student = profileService.findStudentByMatricNo(identityNo);
+		AdAdmission admission = termService.findAdmissionById(vo.getId());
+
+		admission.setAdvisor(identityService.findStaffByIdentityNo(vo.getAdvisor().getIdentityNo()));
+
+		termService.updateAdmission(student, admission);
+		return new ResponseEntity<String>("Success", HttpStatus.OK);
+	}
+
 	// ====================================================================================================
 	// ADDRESS
 	// ====================================================================================================

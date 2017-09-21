@@ -184,7 +184,15 @@ export class ProfileEffects {
         .withLatestFrom( this.store$.select( ...this.STUDENT ) )
         .map( state => state[1] )
         .map(( student: Student ) => this.profileActions.findStudentByIdentityNo( student.identityNo ) );
-
+    
+    @Effect() updateAdmission$ = this.actions$
+    .ofType( ProfileActions.UPDATE_ADMISSION)
+    .map( action => action.payload )
+    .switchMap( payload => this.profileService.updateAdmission( payload.student, payload.admission ) )
+    .map( message => this.profileActions.updateAdmissionSuccess( message ) )
+    .withLatestFrom( this.store$.select( ...this.STUDENT ) )
+    .map( state => state[1] )
+    .map(( student: Student ) => this.profileActions.findStudentByIdentityNo( student.identityNo ) );
 
     /*==================================================================================================*/
     /*ADDRESS - EFFECT*/

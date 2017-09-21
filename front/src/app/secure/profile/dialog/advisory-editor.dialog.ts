@@ -11,6 +11,7 @@ import { Student } from '../../../shared/model/identity/student.interface';
 import { ProfileModuleState } from '../index';
 import { ProfileActions } from '../profile.action';
 import { AddressType } from '../../../shared/model/profile/address-type.enum';
+import { Admission } from "../../../shared/model/term/admission.interface";
 
 @Component( {
     selector: 'pams-advisory-editor',
@@ -24,6 +25,7 @@ export class AdvisoryEditorDialog implements OnInit {
     private _student: Student;
 
     private _admissionApplication: AdmissionApplication;
+    private _admission: Admission;
     private stateCode: StateCode;
 
     constructor( private router: Router,
@@ -44,6 +46,11 @@ export class AdvisoryEditorDialog implements OnInit {
         this._admissionApplication = value;
         this.edit = true;
     }
+    
+    set admission( value: Admission) {
+        this._admission = value;
+        this.edit = true;
+    }
 
     ngOnInit(): void {
         this.editorForm = this.formBuilder.group( {
@@ -53,10 +60,11 @@ export class AdvisoryEditorDialog implements OnInit {
 
         } );
 
-        if ( this.edit ) this.editorForm.patchValue( this._admissionApplication );
+        //if ( this.edit ) this.editorForm.patchValue( this._admissionApplication );
+        if ( this.edit ) this.editorForm.patchValue( this._admission );
     }
 
-    submit( admissionApplication: AdmissionApplication, isValid: boolean ) {
+    /*submit( admissionApplication: AdmissionApplication, isValid: boolean ) {
         
         if (isValid)
             admissionApplication.id = this._admissionApplication.id;
@@ -64,6 +72,26 @@ export class AdvisoryEditorDialog implements OnInit {
         if ( isValid )
            this.store.dispatch( this.actions.updateAdmissionApplication( this._student, admissionApplication ) );
         console.log( admissionApplication );
+        console.log( this._student );
+       
+        window.alert( this._admissionApplication.academicSession.code + ", " + this._student.name + "is saved" );
+        
+        this.dialog.close();
+        
+        let snackBarRef = this.snackBar.open( 'New advisor has been assigned', '', { duration: 3000 } );
+        snackBarRef.afterDismissed().subscribe(() => {
+       } );
+            
+    }  */
+    
+   submit( admission: Admission, isValid: boolean ) {
+        
+        if (isValid)
+            admission.id = this._admission.id;
+        
+        if ( isValid )
+           this.store.dispatch( this.actions.updateAdmission( this._student, admission ) );
+        console.log( admission );
         console.log( this._student );
        
         /*window.alert( this._admissionApplication.academicSession.code + ", " + this._student.name + "is saved" );*/
@@ -75,6 +103,7 @@ export class AdvisoryEditorDialog implements OnInit {
        } );
             
     }  
+    
  }
 
 

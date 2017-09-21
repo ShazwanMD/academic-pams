@@ -9,6 +9,7 @@ import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';
 
 import {Enrollment} from '../../../shared/model/term/enrollment.interface';
 import {AdmissionApplication} from '../../../shared/model/term/admission-application.interface';
+import {Admission} from '../../../shared/model/term/admission.interface';
 import {Contact} from '../../../shared/model/profile/contact.interface';
 import {Guardian} from '../../../shared/model/profile/guardian.interface';
 import {Guarantor} from '../../../shared/model/profile/guarantor.interface';
@@ -39,6 +40,7 @@ export class AdvisoryComponent implements OnInit {
   private guardianCreatorDialogRef: MdDialogRef<GuardianEditorDialog>;
   private addressCreatorDialogRef: MdDialogRef<AddressEditorDialog>;
   private admissionApplicationCreatorDialogRef: MdDialogRef<AdvisoryEditorDialog>;
+  private admissionCreatorDialogRef: MdDialogRef<AdvisoryEditorDialog>;
 
   //Student Information
   private columns: any[] = [
@@ -74,6 +76,18 @@ export class AdvisoryComponent implements OnInit {
   {name: 'action', label: ''},
 ];
 
+//Admission to review supervisor
+private columnAdmission: any[] = [
+ //{name: 'id', label: 'Id'},
+ {name: 'academicSession.code', label: 'Academic Session'},
+ {name: 'advisor.name', label: 'Name'},
+ {name: 'advisor.identityNo', label: 'Staff.No'},
+ {name: 'advisor.email', label: 'Email'},
+ {name: 'advisor.mobile', label: 'Mobile'},
+ {name: 'advisor.phone', label: 'Phone'},
+ {name: 'action', label: ''},
+];
+
   //Guarantor
   private columnGuarantor: any[] = [
     {name: 'guarantorType', label: 'Guarantor Type'},
@@ -102,6 +116,7 @@ export class AdvisoryComponent implements OnInit {
 
   @Input() student: Student;
   @Input() addressess: Address[];
+  @Input() admissions: Admission[];
   @Input() admissionApplications: AdmissionApplication[];
   @Input() guarantors: Guarantor[];
   @Input() guardians: Guardian[];
@@ -172,6 +187,23 @@ export class AdvisoryComponent implements OnInit {
       this.admissionApplicationCreatorDialogRef.componentInstance.student = this.student;
     }
     this.admissionApplicationCreatorDialogRef.afterClosed().subscribe((res) => {
+    });
+  }
+  
+  //EDIT ADVISOR DIALOG
+  editAdvisor(admission: Admission, isValid: boolean): void {
+    let config = new MdDialogConfig();
+    config.viewContainerRef = this.vcf;
+    config.role = 'dialog';
+    config.width = '50%';
+    config.height = '50%';
+    config.position = {top: '0px'};
+    this.admissionCreatorDialogRef = this.dialog.open(AdvisoryEditorDialog, config);
+    if (isValid) {
+      this.admissionCreatorDialogRef.componentInstance.admission = admission;
+      this.admissionCreatorDialogRef.componentInstance.student = this.student;
+    }
+    this.admissionCreatorDialogRef.afterClosed().subscribe((res) => {
     });
   }
 

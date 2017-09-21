@@ -212,12 +212,18 @@ export class ProfileService {
     }
 
     /*==================================================================================================*/
-    //ADMISSION APPLICATION/ADVISORY ADD/UPD/DEL
+    //ADMISSION APPLICATION/ADMISSION/ADVISORY ADD/UPD/DEL
     /*==================================================================================================*/
 
     updateAdmissionApplication( student: Student, admissionApplication: AdmissionApplication ): Observable<String> {
         console.log( 'admissionApplication', admissionApplication );
         return this._http.put( this.PROFILE_API + '/students/' + student.identityNo + '/admissionApplications/' + admissionApplication.id, JSON.stringify( admissionApplication ) )
+            .flatMap(( res: Response ) => Observable.of( res.text() ) );
+    }
+    
+    updateAdmission( student: Student, admission: Admission ): Observable<String> {
+        console.log( 'admission', admission );
+        return this._http.put( this.PROFILE_API + '/students/' + student.identityNo + '/admissions/' + admission.id, JSON.stringify( admission ) )
             .flatMap(( res: Response ) => Observable.of( res.text() ) );
     }
 
