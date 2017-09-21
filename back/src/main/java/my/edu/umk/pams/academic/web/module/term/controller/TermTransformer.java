@@ -162,6 +162,7 @@ public class TermTransformer {
 		vo.setDescription(e.getDescription());
 		vo.setApplicationType(EnrollmentApplicationType.get(e.getType().ordinal()));
 		vo.setAdmission(toAdmissionVo(e.getAdmission()));
+		vo.setAcademicSession(plannerTransformer.toAcademicSessionVo(e.getSession()));
 		vo.setRemoveComment(e.getRemoveComment());
 		vo.setCancelComment(e.getCancelComment());
 		vo.setFlowState(FlowState.get(e.getFlowdata().getState().ordinal()));
