@@ -49,6 +49,9 @@ public class AdStudentImpl extends AdActorImpl implements AdStudent {
 	@Column(name = "OUTSTANDING")
 	private Boolean outstanding;
 
+	@Column(name = "NO_ID")
+	private String NoID;
+	
 	public AdStudentImpl() {
 		super();
 		setActorType(AdActorType.STUDENT);
@@ -163,6 +166,16 @@ public class AdStudentImpl extends AdActorImpl implements AdStudent {
 	public void setStudyMode(AdStudyMode studyMode) {
 		this.studyMode = studyMode;
 		
+	}
+
+	@Override
+	public String getNoID() {
+		return NoID;
+	}
+
+	@Override
+	public void setNoID(String NoID) {
+		this.NoID = NoID;
 	}
 
 }

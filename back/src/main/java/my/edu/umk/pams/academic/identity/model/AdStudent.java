@@ -11,6 +11,10 @@ import java.util.List;
  * @author PAMS
  */
 public interface AdStudent extends AdActor {
+	
+	String getNoID();
+
+	void setNoID(String NoID);
 
 	String getMatricNo();
 
