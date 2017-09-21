@@ -11,6 +11,7 @@ import my.edu.umk.pams.academic.term.model.AdAdmission;
 import org.apache.commons.lang.Validate;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.omg.PortableInterceptor.ACTIVE;
 import org.springframework.stereotype.Repository;
 
 import java.sql.Timestamp;
@@ -415,4 +416,15 @@ public class AdStudentDaoImpl extends GenericDaoSupport<Long, AdStudent> impleme
         query.setInteger("state", AdMetaState.ACTIVE.ordinal());
         return (AdAdmission) query.uniqueResult();
 	}
+	
+    @Override
+    public boolean hasSponsorship(AdStudent student) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select count(s) from AdSponsorship s where " +
+                "s.student = :student " +
+                "and s.metadata.state = :state ");
+        query.setEntity("student", student);
+        query.setInteger("state",AdMetaState.ACTIVE.ordinal());
+        return ((Long) query.uniqueResult()).intValue() >= 1;
+    }
 }

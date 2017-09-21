@@ -333,7 +333,7 @@
                                 <srcFile>src/test/resources/data/AD_GRDN.sql</srcFile>
                                 <srcFile>src/test/resources/data/AD_GRTR.sql</srcFile>
                                 <srcFile>src/test/resources/data/AD_CNTC.sql</srcFile>
-                                
+                                <srcFile>src/test/resources/data/AD_SPONSORSHIP.sql</srcFile>
 
                             </srcFiles>
                         </configuration>

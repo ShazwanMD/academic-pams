@@ -61,5 +61,7 @@ public interface AdStudentDao extends GenericDao<Long, AdStudent> {
     void addAddress(AdStudent student, AdAddress address, AdUser user);
     void updateAddress(AdStudent student, AdAddress address, AdUser user);
     void deleteAddress(AdStudent student, AdAddress address, AdUser user);
+    
+	boolean hasSponsorship(AdStudent student);
 
 }

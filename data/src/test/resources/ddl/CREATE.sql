@@ -1,3 +1,28 @@
+    create table AD_SPONSOR (
+        SPONSOR_TYPE int4,
+        ID int8 not null,
+        primary key (ID)
+    );
+    
+    create table AD_SPONSORSHIP (
+        ID int8 not null,
+        REFERENCE_NO varchar(255) not null,
+        AMOUNT numeric(19, 2) not null,
+        START_DATE timestamp,
+        END_DATE timestamp,
+        C_TS timestamp,
+        C_ID int8,
+        D_TS timestamp,
+        D_ID int8,
+        M_TS timestamp,
+        M_ID int8,
+        M_ST int4,
+        ACTIVE boolean,
+        SPONSOR_ID int8,
+        STUDENT_ID int8,
+        primary key (ID)
+    );
+
 
     create table AD_ACDM_AREA (
         ID int8 not null,
@@ -1417,7 +1442,19 @@
         USER_ID int8 not null,
         primary key (ID)
     );
+    
+    alter table AD_SPONSORSHIP 
+        add constraint UK_ojhm9q9q2f9cp1fp0qa5678c unique (REFERENCE_NO);  
 
+    alter table AD_SPONSOR
+        add constraint FK_16abykipvmbjv2dwcrni1kg3w
+        foreign key (ID)
+        references AD_ACTR;
+        
+    alter table AD_SPONSORSHIP
+        add constraint FK_st6klbsxd7yrnqvdrvy0b53n2
+        foreign key (SPONSOR_ID)
+        references AD_SPONSOR;
 
     alter table AD_ACDM_AREA
         add constraint uc_AD_ACDM_AREA_1 unique (CODE);
@@ -2137,3 +2174,5 @@
     create sequence SQ_AD_VENU_CODE;
 
     create sequence SQ_AD_WTCH;
+	
+    create sequence SQ_AD_SPONSORSHIP;
