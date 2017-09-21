@@ -25,11 +25,10 @@ public class AdmissionApplication extends Document {
 	private String cancelComment;
 	private String removeComment;
 	private Student student;
-    private AcademicSession academicSession;
-    private Program program;
-    private StudyCenter studyCenter;
-    private Staff advisor;
-
+	private AcademicSession academicSession;
+	private Program program;
+	private StudyCenter studyCenter;
+	private Staff advisor;
 
 	public String getAuditNo() {
 		return auditNo;
@@ -54,7 +53,7 @@ public class AdmissionApplication extends Document {
 	public void setReferenceNo(String referenceNo) {
 		this.referenceNo = referenceNo;
 	}
-	
+
 	public Integer getOrdinal() {
 		return ordinal;
 	}
@@ -118,8 +117,8 @@ public class AdmissionApplication extends Document {
 	public void setStudyCenter(StudyCenter studyCenter) {
 		this.studyCenter = studyCenter;
 	}
-    
-	public Staff getAdvisor(){
+
+	public Staff getAdvisor() {
 		return advisor;
 	}
 
@@ -127,17 +126,16 @@ public class AdmissionApplication extends Document {
 		this.advisor = advisor;
 	}
 
-
-    @JsonCreator
-    public static AdmissionApplication create(String jsonString) {
-        AdmissionApplication o = null;
-        try {
-            ObjectMapper mapper = new ObjectMapper();
-            o = mapper.readValue(jsonString, AdmissionApplication.class);
-        } catch (IOException e) {
-            // handle
-        }
-        return o;
-    }
+	@JsonCreator
+	public static AdmissionApplication create(String jsonString) {
+		AdmissionApplication o = null;
+		try {
+			ObjectMapper mapper = new ObjectMapper();
+			o = mapper.readValue(jsonString, AdmissionApplication.class);
+		} catch (IOException e) {
+			// handle
+		}
+		return o;
+	}
 
 }
