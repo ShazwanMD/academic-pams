@@ -25,11 +25,19 @@ import my.edu.umk.pams.academic.identity.model.AdActorImpl;
 import my.edu.umk.pams.academic.identity.model.AdAddress;
 import my.edu.umk.pams.academic.identity.model.AdAddressImpl;
 import my.edu.umk.pams.academic.identity.model.AdAddressType;
+import my.edu.umk.pams.academic.identity.model.AdPrincipal;
+import my.edu.umk.pams.academic.identity.model.AdPrincipalImpl;
+import my.edu.umk.pams.academic.identity.model.AdPrincipalRole;
+import my.edu.umk.pams.academic.identity.model.AdPrincipalRoleImpl;
+import my.edu.umk.pams.academic.identity.model.AdPrincipalType;
+import my.edu.umk.pams.academic.identity.model.AdRoleType;
 import my.edu.umk.pams.academic.identity.model.AdStaff;
 import my.edu.umk.pams.academic.identity.model.AdStaffImpl;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.identity.model.AdStudentImpl;
 import my.edu.umk.pams.academic.identity.model.AdStudentStatus;
+import my.edu.umk.pams.academic.identity.model.AdUser;
+import my.edu.umk.pams.academic.identity.model.AdUserImpl;
 import my.edu.umk.pams.academic.identity.service.IdentityService;
 import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
 import my.edu.umk.pams.academic.planner.model.AdCohort;
@@ -175,6 +183,23 @@ public class IntegrationController {
         permenantAddress.setStudent(student);
         permenantAddress.setType(AdAddressType.PERMANENT);
         profileService.addAddress(student, permenantAddress);
+        
+        AdUser user = new AdUserImpl();
+        user.setActor(student);
+        user.setEmail(payload.getEmail());
+        user.setUsername(payload.getEmail());
+        user.setEnabled(true);
+        user.setLocked(true);
+        user.setPassword("abc123");
+        user.setRealName(payload.getName());
+        
+        user.setName(payload.getName());
+        user.setPrincipalType(AdPrincipalType.USER);
+        identityService.saveUser(user);
+        
+        
+
+        
 
         // todo: refresh and save address etc
         // todo: save student sebagai users
