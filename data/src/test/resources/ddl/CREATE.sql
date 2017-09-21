@@ -1353,6 +1353,7 @@
 
     create table AD_STDN (
         MEMO varchar(255),
+        NO_ID varchar(255),
         STUDENT_STATUS int4,
         ID int8 not null,
         COHORT_ID int8,
@@ -2176,3 +2177,5 @@
     create sequence SQ_AD_WTCH;
 	
     create sequence SQ_AD_SPONSORSHIP;
+    
+    create sequence SQ_AD_SPONSOR;
