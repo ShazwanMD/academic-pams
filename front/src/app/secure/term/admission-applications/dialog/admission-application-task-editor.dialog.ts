@@ -12,6 +12,7 @@ import {AdmissionApplicationActions} from '../admission-application.action';
 import {AdmissionApplication} from '../../../../shared/model/term/admission-application.interface';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {Component, OnInit, ViewContainerRef} from '@angular/core';
+import { Staff } from "../../../../shared/model/identity/staff.interface";
 
 @Component({
   selector: 'pams-admission-application-task-editor',
@@ -50,7 +51,7 @@ export class AdmissionApplicationTaskEditorDialog implements OnInit {
       description: '',
       cancelComment: '',
       removeComment: '',
-      actor: <Actor>{},
+      advisor: <Staff>{},
       student: <Student>{},
       academicSession: <AcademicSession>{},
       program: <Program>{},

@@ -57,8 +57,8 @@ export class StudentAdmissionActionComponent {
       let config = new MdDialogConfig();
       config.viewContainerRef = this.vcf;
       config.role = 'dialog';
-      config.width = '60%';
-      config.height = '40%';
+      config.width = '70%';
+      config.height = '50%';
       config.position = { top: '0px' };
       this.creatorDialogRef = this.dialog.open(StudentAdmissionApplicationCreatorDialog, config);
       this.creatorDialogRef.componentInstance.admission = this.admission;
@@ -74,7 +74,7 @@ export class StudentAdmissionActionComponent {
       let config = new MdDialogConfig();
       config.viewContainerRef = this.vcf;
       config.role = 'dialog';
-      config.width = '75%';
+      config.width = '70%';
       config.height = '50%';
       config.position = { top: '0px' };
       this.creatorDialogRef2 = this.dialog.open(AdmissionApplicationManualDialog, config);

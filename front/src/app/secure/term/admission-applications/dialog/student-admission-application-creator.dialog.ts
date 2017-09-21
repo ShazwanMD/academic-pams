@@ -62,10 +62,11 @@ export class StudentAdmissionApplicationCreatorDialog implements OnInit {
     ngOnInit(): void {
 
         this.store.dispatch( this.actions.findAssignedAdmissionApplicationTasks() );
+        //_admission.advisor.name
+        console.log( "_admission.advisor", this._admission.advisor );
 
         this.createForm = this.formBuilder.group( {
             id: [undefined],
-            
             //student: <Student>{},
             academicSession: ['', Validators.required],
         } );
@@ -75,15 +76,19 @@ export class StudentAdmissionApplicationCreatorDialog implements OnInit {
 
     save( admissionApplication: AdmissionApplication, isValid: boolean ): void {
 
-        console.log( "_admission", this._admission );
-        console.log( "admissionApplication", admissionApplication );
         
         this._academicSession = admissionApplication.academicSession;
         admissionApplication.student = this._admission.student;
+        admissionApplication.studyCenter = this._admission.studyCenter;
+        admissionApplication.advisor = this._admission.advisor;
         admissionApplication.ordinal = this._admission.ordinal + 1;
 
         console.log( 'student: ' + admissionApplication.student.identityNo );
-
+        console.log( "_admission", this._admission );
+        console.log( "_admission.studyCenter", this._admission.studyCenter );
+        console.log( "_admission.advisor", this._admission.advisor );
+        console.log( "admissionApplication data", admissionApplication );
+        
         // setup description
         admissionApplication.description = admissionApplication.student.identityNo + ' ' + admissionApplication.academicSession.code;
         console.log( 'admissionApplication.description: ' + admissionApplication.student.identityNo + ' ' + admissionApplication.academicSession.code );

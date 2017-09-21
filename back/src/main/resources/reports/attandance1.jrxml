@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="attandance1" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4ea164f6-b47f-4abf-83ca-e98bed10a614">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="232"/>
+	<queryString>
+		<![CDATA[SELECT
+     ad_actr."id" AS ad_actr_id,
+     ad_actr."actor_type" AS ad_actr_actor_type,
+     ad_actr."email" AS ad_actr_email,
+     ad_actr."fax" AS ad_actr_fax,
+     ad_actr."identity_no" AS ad_actr_identity_no,
+     ad_actr."c_ts" AS ad_actr_c_ts,
+     ad_actr."c_id" AS ad_actr_c_id,
+     ad_actr."d_ts" AS ad_actr_d_ts,
+     ad_actr."d_id" AS ad_actr_d_id,
+     ad_actr."m_ts" AS ad_actr_m_ts,
+     ad_actr."m_id" AS ad_actr_m_id,
+     ad_actr."m_st" AS ad_actr_m_st,
+     ad_actr."mobile" AS ad_actr_mobile,
+     ad_actr."name" AS ad_actr_name,
+     ad_actr."phone" AS ad_actr_phone,
+     ad_stdn."memo" AS ad_stdn_memo,
+     ad_stdn."student_status" AS ad_stdn_student_status,
+     ad_stdn."id" AS ad_stdn_id,
+     ad_stdn."cohort_id" AS ad_stdn_cohort_id,
+     ad_stdn."study_mode_id" AS ad_stdn_study_mode_id,
+     ad_stdn."balance" AS ad_stdn_balance,
+     ad_stdn."outstanding" AS ad_stdn_outstanding
+FROM
+     "public"."ad_actr" ad_actr INNER JOIN "public"."ad_stdn" ad_stdn ON ad_actr."id" = ad_stdn."id"]]>
+	</queryString>
+	<field name="ad_actr_id" class="java.lang.Long"/>
+	<field name="ad_actr_actor_type" class="java.lang.Integer"/>
+	<field name="ad_actr_email" class="java.lang.String"/>
+	<field name="ad_actr_fax" class="java.lang.String"/>
+	<field name="ad_actr_identity_no" class="java.lang.String"/>
+	<field name="ad_actr_c_ts" class="java.sql.Timestamp"/>
+	<field name="ad_actr_c_id" class="java.lang.Long"/>
+	<field name="ad_actr_d_ts" class="java.sql.Timestamp"/>
+	<field name="ad_actr_d_id" class="java.lang.Long"/>
+	<field name="ad_actr_m_ts" class="java.sql.Timestamp"/>
+	<field name="ad_actr_m_id" class="java.lang.Long"/>
+	<field name="ad_actr_m_st" class="java.lang.Integer"/>
+	<field name="ad_actr_mobile" class="java.lang.String"/>
+	<field name="ad_actr_name" class="java.lang.String"/>
+	<field name="ad_actr_phone" class="java.lang.String"/>
+	<field name="ad_stdn_memo" class="java.lang.String"/>
+	<field name="ad_stdn_student_status" class="java.lang.Integer"/>
+	<field name="ad_stdn_id" class="java.lang.Long"/>
+	<field name="ad_stdn_cohort_id" class="java.lang.Long"/>
+	<field name="ad_stdn_study_mode_id" class="java.lang.Long"/>
+	<field name="ad_stdn_balance" class="java.math.BigDecimal"/>
+	<field name="ad_stdn_outstanding" class="java.lang.Boolean"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="140" splitType="Stretch">
+			<staticText>
+				<reportElement x="234" y="6" width="208" height="20" uuid="f9d935ac-58e0-4c11-aa75-7a1039cff157"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[MASTER BUSINESS OF ADMINISTRATOR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="266" y="26" width="139" height="20" uuid="a077348b-afb2-44a1-aab8-40eb76e8180c"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[UMK PENGKALAN CHEPA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="197" y="46" width="338" height="20" uuid="8fe406b4-1024-4255-acfe-9379d42c1d43"/>
+				<textElement textAlignment="Justified"/>
+				<text><![CDATA[OPERASION ANALYSIS (GST 5043)/DR.AINON @ JAMILAH BINTI RAMLI]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="247" y="66" width="184" height="20" uuid="891cc750-6b1a-40f9-9586-aed02caba82c"/>
+				<textElement textAlignment="Justified"/>
+				<text><![CDATA[SEMSETER SEPTEMBER 2016/2017]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="230" y="86" width="212" height="20" uuid="24fcfdd6-0b56-498d-8f52-55882f8192d9"/>
+				<text><![CDATA[VENUE : MGSEB ENTREPRENEURIAL LAB 4]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="266" y="106" width="131" height="20" uuid="f4666d6c-98a9-4eaf-a026-eed4b93ef1b0"/>
+				<text><![CDATA[ATTANDANCE BY MONTH]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="66" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="30" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="10" width="52" height="20" uuid="927801e9-92c2-44c0-8aa2-4bb859a0af03"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Bottom"/>
+				<text><![CDATA[NO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="52" y="10" width="145" height="20" uuid="374af761-e099-46b7-b38b-65fc9375ef51"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[NAME ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="197" y="10" width="100" height="20" uuid="6524d1ea-6ceb-4d73-b0b8-b9b8af63d750"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[MATRIC NO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="397" y="10" width="100" height="20" uuid="ae91306f-f491-414e-aba8-c38785cc2c89"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[PHONE NO]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="497" y="10" width="53" height="20" uuid="af5ff09d-7dbb-4381-bad2-0d8c82a4528c"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="550" y="10" width="42" height="20" uuid="72107ce0-a5e8-4560-bb8e-67f7c87282c0"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="593" y="10" width="45" height="20" uuid="2c4a08d9-9630-46de-b780-17b09f384c33"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="638" y="10" width="45" height="20" uuid="c0da4fe6-28c5-4d82-a182-2fd4c6d38f5f"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="297" y="10" width="100" height="20" uuid="b09dd427-cb8b-4747-91f0-6d2b0f24bf70"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[EMAIL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="497" y="9" width="53" height="20" uuid="171a4951-306a-4ebc-8422-75ea83836105"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[WEEK 1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="550" y="9" width="44" height="20" uuid="65b98cdd-ad65-4a77-9faa-d74fac1de1bb"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[WEEK 2]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="595" y="8" width="47" height="20" uuid="780db756-d753-4781-9ae0-a75620350605"/>
+				<textElement textAlignment="Justified"/>
+				<text><![CDATA[WEEK 3]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="642" y="9" width="47" height="20" uuid="7a7b906f-4022-49c7-af5a-738115519254"/>
+				<text><![CDATA[WEEK 4]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="1" width="52" height="20" uuid="42e5b769-8226-43e3-8d92-b446aa66d363"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{ad_actr_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="197" y="1" width="100" height="20" uuid="0f3a8be0-4538-4867-bd47-3174fb4a64f2"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{ad_actr_identity_no}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="297" y="1" width="100" height="20" uuid="39def6d0-c003-4a99-803a-71164ed36812"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{ad_actr_email}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="397" y="1" width="100" height="20" uuid="72879145-aa0c-4ebd-8b02-92d2e00c91ab"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{ad_actr_phone}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="497" y="1" width="54" height="20" uuid="7c00780d-d94e-4c1a-914e-58fba3f12834"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="497" y="1" width="54" height="20" uuid="7c00780d-d94e-4c1a-914e-58fba3f12834"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="551" y="1" width="42" height="20" uuid="eec5ef04-2df0-4fdf-b67a-254dbb948bd2"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="594" y="1" width="43" height="20" uuid="7ddb8b62-571f-426e-9991-408d831ad19e"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="638" y="1" width="45" height="20" uuid="e92fe88d-09bc-47e4-8e9d-ece9c12ad900"/>
+			</rectangle>
+			<textField>
+				<reportElement x="52" y="1" width="145" height="20" uuid="f46bf1ea-0052-4a71-87f3-8026f7f238ef"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{ad_actr_name}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="30" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="4" splitType="Stretch"/>
+	</summary>
+</jasperReport>

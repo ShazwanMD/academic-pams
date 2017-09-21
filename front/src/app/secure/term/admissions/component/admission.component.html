@@ -83,6 +83,27 @@
           </div>
         </div>
       </md-tab>
+       <md-tab label="Advisor Information" *ngIf=admission.advisor>
+
+        <div layout="column" class="inset">
+          <div layout="row" class="pad-bottom">
+            <span flex="15">Name</span>
+            <span>{{admission?.advisor?.name}}</span>
+          </div>
+          <div layout="row" class="pad-bottom">
+            <span flex="15">Email</span>
+            <span>{{admission?.advisor?.email}}</span>
+          </div>
+           <div layout="row" class="pad-bottom">
+            <span flex="15">Phone</span>
+            <span>{{admission?.advisor?.phone}}</span>
+          </div>
+           <div layout="row" class="pad-bottom">
+            <span flex="15">Mobile</span>
+            <span>{{admission?.advisor?.mobile}}</span>
+          </div>
+        </div>
+      </md-tab>
 
     </md-tab-group>
   </md-card-content>
