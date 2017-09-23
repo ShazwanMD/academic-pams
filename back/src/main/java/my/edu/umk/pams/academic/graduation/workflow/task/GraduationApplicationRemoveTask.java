@@ -24,14 +24,14 @@ public class GraduationApplicationRemoveTask extends BpmnActivityBehavior
     private static final org.slf4j.Logger LOG = LoggerFactory.getLogger(GraduationApplicationRemoveTask.class);
 
     @Autowired
-    private GraduationService financialAidService;
+    private GraduationService graduationService;
 
     @Autowired
     private SecurityService securityService;
 
     public void execute(ActivityExecution execution) throws Exception {
         Long applicationId = (Long) execution.getVariable(GRADUATION_APPLICATION_ID);
-        AdGraduationApplication application = financialAidService.findGraduationApplicationById(applicationId);
+        AdGraduationApplication application = graduationService.findGraduationApplicationById(applicationId);
 
         LOG.debug("removing application {}", application.getReferenceNo());
         String removeComment = (String) execution.getVariable(REMOVE_COMMENT);
@@ -40,6 +40,6 @@ public class GraduationApplicationRemoveTask extends BpmnActivityBehavior
         application.getFlowdata().setState(AdFlowState.REMOVED);
         application.getFlowdata().setRemovedDate(new Timestamp(System.currentTimeMillis()));
         application.getFlowdata().setRemoverId(securityService.getCurrentUser().getId());
-        financialAidService.updateGraduationApplication(application);
+        graduationService.updateGraduationApplication(application);
     }
 }

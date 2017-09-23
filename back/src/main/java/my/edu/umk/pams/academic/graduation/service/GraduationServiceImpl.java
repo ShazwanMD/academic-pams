@@ -47,193 +47,193 @@ import static my.edu.umk.pams.academic.AcademicConstants.GRADUATION_APPLICATION_
 @Service("graduationService")
 public class GraduationServiceImpl implements GraduationService {
 
-    private static final Logger LOG = LoggerFactory.getLogger(GraduationServiceImpl.class);
+	private static final Logger LOG = LoggerFactory.getLogger(GraduationServiceImpl.class);
 
-    @Autowired
-    private AdGraduationApplicationDao graduationApplicationDao;
-    
-    @Autowired
-    private AdGraduationDao graduationDao;
+	@Autowired
+	private AdGraduationApplicationDao graduationApplicationDao;
 
-    @Autowired
-    private PlannerService plannerService;
+	@Autowired
+	private AdGraduationDao graduationDao;
 
-    @Autowired
-    private SecurityService securityService;
+	@Autowired
+	private PlannerService plannerService;
 
-    @Autowired
-    private SystemService systemService;
+	@Autowired
+	private SecurityService securityService;
 
-    @Autowired
-    private IdentityService identityService;
+	@Autowired
+	private SystemService systemService;
 
-    @Autowired
-    private CommonService commonService;
+	@Autowired
+	private IdentityService identityService;
 
-    @Autowired
-    private WorkflowService workflowService;
+	@Autowired
+	private CommonService commonService;
 
-    @Autowired
-    private SessionFactory sessionFactory;
+	@Autowired
+	private WorkflowService workflowService;
 
-    // ====================================================================================================
-    // GRADUATION APPLICATION
-    // ====================================================================================================
+	@Autowired
+	private SessionFactory sessionFactory;
 
-    // workflow
-    @Override
-    public AdGraduationApplication findGraduationApplicationByTaskId(String taskId) {
-        Task task = workflowService.findTask(taskId);
-        Map<String, Object> map = workflowService.getVariables(task.getExecutionId());
-        return graduationApplicationDao.findById((Long) map.get(GRADUATION_APPLICATION_ID));
-    }
+	// ====================================================================================================
+	// GRADUATION APPLICATION
+	// ====================================================================================================
 
-    @Override
-    public Task findGraduationApplicationTaskByTaskId(String taskId) {
-        return workflowService.findTask(taskId);
-    }
+	// workflow
+	@Override
+	public AdGraduationApplication findGraduationApplicationByTaskId(String taskId) {
+		Task task = workflowService.findTask(taskId);
+		Map<String, Object> map = workflowService.getVariables(task.getExecutionId());
+		return graduationApplicationDao.findById((Long) map.get(GRADUATION_APPLICATION_ID));
+	}
 
-    @Override
-    public List<Task> findAssignedGraduationApplicationTasks(Integer offset, Integer limit) {
-        return workflowService.findAssignedTasks(AdGraduationApplication.class.getName(), offset, limit);
-    }
+	@Override
+	public Task findGraduationApplicationTaskByTaskId(String taskId) {
+		return workflowService.findTask(taskId);
+	}
 
-    @Override
-    public List<Task> findPooledGraduationApplicationTasks(Integer offset, Integer limit) {
-        return workflowService.findPooledTasks(AdGraduationApplication.class.getName(), offset, limit);
-    }
+	@Override
+	public List<Task> findAssignedGraduationApplicationTasks(Integer offset, Integer limit) {
+		return workflowService.findAssignedTasks(AdGraduationApplication.class.getName(), offset, limit);
+	}
 
-    @Override
-    public String startGraduationApplicationTask(AdGraduationApplication application) {
-        Map<String, Object> map = new HashMap<String, Object>();
-        map.put("academicSession", plannerService.findCurrentAcademicSession());
-        String referenceNo = systemService.generateFormattedReferenceNo(AcademicConstants.GRADUATION_APPLICATION_REFERENCE_NO, map);
-        application.setReferenceNo(referenceNo);
-        LOG.debug("Processing application with refNo {}", referenceNo);
+	@Override
+	public List<Task> findPooledGraduationApplicationTasks(Integer offset, Integer limit) {
+		return workflowService.findPooledTasks(AdGraduationApplication.class.getName(), offset, limit);
+	}
 
-        graduationApplicationDao.saveOrUpdate(application, securityService.getCurrentUser());
-        sessionFactory.getCurrentSession().flush();
-        sessionFactory.getCurrentSession().refresh(application);
+	@Override
+	public String startGraduationApplicationTask(AdGraduationApplication application) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("academicSession", plannerService.findCurrentAcademicSession());
+		String referenceNo = systemService
+				.generateFormattedReferenceNo(AcademicConstants.GRADUATION_APPLICATION_REFERENCE_NO, map);
+		application.setReferenceNo(referenceNo);
+		LOG.debug("Processing application with refNo {}", referenceNo);
 
-        workflowService.processWorkflow(application, prepareVariables(application));
-        return referenceNo;
-    }
+		graduationApplicationDao.saveOrUpdate(application, securityService.getCurrentUser());
+		sessionFactory.getCurrentSession().flush();
+		sessionFactory.getCurrentSession().refresh(application);
 
-    @Override
-    public void updateGraduationApplication(AdGraduationApplication application) {
-        graduationApplicationDao.update(application, securityService.getCurrentUser());
-        sessionFactory.getCurrentSession().flush();
-    }
+		workflowService.processWorkflow(application, prepareVariables(application));
+		return referenceNo;
+	}
 
-    @Override
-    public void cancelGraduationApplication(AdGraduationApplication application) {
-        application.getFlowdata().setState(AdFlowState.CANCELLED);
-        application.getFlowdata().setCancelledDate(new Timestamp(System.currentTimeMillis()));
-        application.getFlowdata().setCancelerId(securityService.getCurrentUser().getId());
-        graduationApplicationDao.update(application, securityService.getCurrentUser());
-        sessionFactory.getCurrentSession().flush();
-    }
+	@Override
+	public void updateGraduationApplication(AdGraduationApplication application) {
+		graduationApplicationDao.update(application, securityService.getCurrentUser());
+		sessionFactory.getCurrentSession().flush();
+	}
 
-    @Override
-    public AdGraduationApplication findGraduationApplicationById(Long id) {
-        return graduationApplicationDao.findById(id);
-    }
+	@Override
+	public void cancelGraduationApplication(AdGraduationApplication application) {
+		application.getFlowdata().setState(AdFlowState.CANCELLED);
+		application.getFlowdata().setCancelledDate(new Timestamp(System.currentTimeMillis()));
+		application.getFlowdata().setCancelerId(securityService.getCurrentUser().getId());
+		graduationApplicationDao.update(application, securityService.getCurrentUser());
+		sessionFactory.getCurrentSession().flush();
+	}
 
-    @Override
-    public AdGraduationApplication findGraduationApplicationByReferenceNo(String referenceNo) {
-        return graduationApplicationDao.findByReferenceNo(referenceNo);
-    }
+	@Override
+	public AdGraduationApplication findGraduationApplicationById(Long id) {
+		return graduationApplicationDao.findById(id);
+	}
 
-    @Override
-    public List<AdGraduationApplication> findGraduationApplications(String filter, Integer offset, Integer limit) {
-        return graduationApplicationDao.find(offset, limit);
-    }
+	@Override
+	public AdGraduationApplication findGraduationApplicationByReferenceNo(String referenceNo) {
+		return graduationApplicationDao.findByReferenceNo(referenceNo);
+	}
 
-    @Override
-    public List<AdGraduationApplication> findGraduationApplications(AdAcademicSession academicSession, Integer offset,
-                                                                    Integer limit) {
-        return graduationApplicationDao.find(academicSession, offset, limit);
-    }
-    
-    @Override
-    public List<AdGraduationApplication> findGraduationApplications(AdStudent student) {
-        return graduationApplicationDao.find(student);
-    }
+	@Override
+	public List<AdGraduationApplication> findGraduationApplications(String filter, Integer offset, Integer limit) {
+		return graduationApplicationDao.find(offset, limit);
+	}
 
-    @Override
-    public Integer countGraduationApplication(String filter) {
-        return graduationApplicationDao.count();
-    }
+	@Override
+	public List<AdGraduationApplication> findGraduationApplications(AdAcademicSession academicSession, Integer offset,
+			Integer limit) {
+		return graduationApplicationDao.find(academicSession, offset, limit);
+	}
 
-   /* @Override
-    public Integer countGraduationApplication(AdAcademicSession academicSession) {
-        return graduationApplicationDao.count(academicSession);
-    }*/
-    
-    @Override
+	@Override
+	public List<AdGraduationApplication> findGraduationApplications(AdStudent student) {
+		return graduationApplicationDao.find(student);
+	}
+
+	@Override
+	public Integer countGraduationApplication(String filter) {
+		return graduationApplicationDao.count();
+	}
+
+	@Override
 	public Integer countGraduationApplication(AdAcademicSession session, AdStudent student) {
 		return graduationApplicationDao.count(session, student);
 	}
 
+	@Override
+	public Integer countGraduation(AdAcademicSession session, AdStudent student) {
+		return graduationDao.count(session, student);
+	}
 
-    // ====================================================================================================
-    // PRIVATE METHODS
-    // ====================================================================================================
+	// ====================================================================================================
+	// PRIVATE METHODS
+	// ====================================================================================================
 
-    private Map<String, Object> prepareVariables(AdGraduationApplication application) {
-        Map<String, Object> map = new HashMap<String, Object>();
-        map.put(GRADUATION_APPLICATION_ID, application.getId());
-        map.put(WorkflowConstants.USER_CREATOR, securityService.getCurrentUser().getName());
-        map.put(WorkflowConstants.REFERENCE_NO, application.getReferenceNo());
-        map.put(WorkflowConstants.REMOVE_DECISION, false);
-        map.put(WorkflowConstants.CANCEL_DECISION, false);
-        return map;
-    }
+	private Map<String, Object> prepareVariables(AdGraduationApplication application) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put(GRADUATION_APPLICATION_ID, application.getId());
+		map.put(WorkflowConstants.USER_CREATOR, securityService.getCurrentUser().getName());
+		map.put(WorkflowConstants.REFERENCE_NO, application.getReferenceNo());
+		map.put(WorkflowConstants.REMOVE_DECISION, false);
+		map.put(WorkflowConstants.CANCEL_DECISION, false);
+		return map;
+	}
 
 	@Override
 	public List<AdGraduationApplication> findGraduationApplicationsByFlowStates(AdFlowState... flowStates) {
 		return graduationApplicationDao.findByFlowStates(flowStates);
 	}
 
-	//post to graduation
-		@Override
-		public void postToGraduation(AdGraduationApplication application) {
-			Validate.notNull(application, "Application cannot be null");
-			admit(application.getSession(), application.getStudent(), application.getCgpa(), application.getCreditHour(), application.getMemo(), application.getReferenceNo());
-		}
+	// post to graduation
+	@Override
+	public void postToGraduation(AdGraduationApplication application) {
+		Validate.notNull(application, "Application cannot be null");
+		admit(application.getSession(), application.getStudent(), application.getCgpa(), application.getCreditHour(),
+				application.getMemo(), application.getReferenceNo());
+	}
 
-		/*@Override
-		public void admit(AdAcademicSession session, AdStudent student, BigDecimal cgpa, Integer creditHour,String memo, String referenceNo) {
-			// TODO Auto-generated method stub
-			
-		}*/
-		
-		
-		@Override
-		public void saveGraduation(AdGraduation graduation) {
-			graduationDao.save(graduation, securityService.getCurrentUser());
-			sessionFactory.getCurrentSession().flush();
+	/*
+	 * @Override public void admit(AdAcademicSession session, AdStudent student,
+	 * BigDecimal cgpa, Integer creditHour,String memo, String referenceNo) { //
+	 * TODO Auto-generated method stub
+	 * 
+	 * }
+	 */
 
-		}
-		
-		 //add ordinal to auto semester
-		@Override
-		public void admit(AdAcademicSession session, AdStudent student, BigDecimal cgpa, Integer creditHour,String memo, String referenceNo) {
-			
-					
-			AdGraduation graduation = (AdGraduation) new AdGraduationImpl();
-			graduation.setSession(session);
-			graduation.setStudent(student);
-			graduation.setCgpa(cgpa);
-			graduation.setCreditHour(creditHour);
-			graduation.setMemo(memo);
-			graduation.setReferenceNo(referenceNo);
-			
-			saveGraduation(graduation);
-			sessionFactory.getCurrentSession().refresh(graduation);
+	@Override
+	public void saveGraduation(AdGraduation graduation) {
+		graduationDao.save(graduation, securityService.getCurrentUser());
+		sessionFactory.getCurrentSession().flush();
 
-		}
+	}
 
-		
-	
+	// add ordinal to auto semester
+	@Override
+	public void admit(AdAcademicSession session, AdStudent student, BigDecimal cgpa, Integer creditHour, String memo,
+			String referenceNo) {
+
+		AdGraduation graduation = new AdGraduationImpl();
+		graduation.setSession(session);
+		graduation.setStudent(student);
+		graduation.setCgpa(cgpa);
+		graduation.setCreditHour(creditHour);
+		graduation.setMemo(memo);
+		graduation.setReferenceNo(referenceNo);
+
+		saveGraduation(graduation);
+		sessionFactory.getCurrentSession().refresh(graduation);
+
+	}
+
 }

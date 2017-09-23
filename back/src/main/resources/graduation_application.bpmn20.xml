@@ -18,7 +18,7 @@
     ====================================================================================================
     -->
 
-    <process id="graduation_application_workflow" name="Graduation Graduation Application Workflow">
+    <process id="graduation_application_workflow" name="Graduation Application Workflow">
 
         <startEvent id="start"/>
 

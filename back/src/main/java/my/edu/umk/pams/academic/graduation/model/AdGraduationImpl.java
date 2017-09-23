@@ -15,7 +15,7 @@ import java.math.BigDecimal;
  * */
 @Entity(name = "AdGraduation")
 @Table(name = "AD_GRDTN")
-public class AdGraduationImpl implements AdGraduationApplication {
+public class AdGraduationImpl implements AdGraduation {
 
     @Id
     @GeneratedValue(generator = "SQ_AD_GRDTN")

@@ -24,20 +24,20 @@ public class GraduationApplicationDraftTask extends BpmnActivityBehavior
     private static Logger LOG = getLogger(GraduationApplicationDraftTask.class);
 
     @Autowired
-    private GraduationService financialAidService;
+    private GraduationService graduationService;
 
     @Autowired
     private SecurityService securityService;
 
     public void execute(ActivityExecution execution) throws Exception {
         Long applicationId = (Long) execution.getVariable(GRADUATION_APPLICATION_ID);
-        AdGraduationApplication application = financialAidService.findGraduationApplicationById(applicationId);
+        AdGraduationApplication application = graduationService.findGraduationApplicationById(applicationId);
 
         LOG.debug("drafting application {}", application.getReferenceNo());
 
         application.getFlowdata().setState(DRAFTED);
         application.getFlowdata().setDraftedDate(new Timestamp(currentTimeMillis()));
         application.getFlowdata().setDrafterId(securityService.getCurrentUser().getId());
-        financialAidService.updateGraduationApplication(application);
+        graduationService.updateGraduationApplication(application);
     }
 }

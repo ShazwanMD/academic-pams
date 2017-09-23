@@ -24,20 +24,20 @@ public class GraduationApplicationRegisterTask extends BpmnActivityBehavior
     private static final Logger LOG = LoggerFactory.getLogger(GraduationApplicationRegisterTask.class);
 
     @Autowired
-    private GraduationService financialAidService;
+    private GraduationService graduationService;
 
     @Autowired
     private SecurityService securityService;
 
     public void execute(ActivityExecution execution) throws Exception {
         Long applicationId = (Long) execution.getVariable(GRADUATION_APPLICATION_ID);
-        AdGraduationApplication application = financialAidService.findGraduationApplicationById(applicationId);
+        AdGraduationApplication application = graduationService.findGraduationApplicationById(applicationId);
 
         LOG.debug("registering application {}", application.getReferenceNo());
 
         application.getFlowdata().setState(AdFlowState.REGISTERED);
         application.getFlowdata().setRegisteredDate(new Timestamp(System.currentTimeMillis()));
         application.getFlowdata().setRegistererId(securityService.getCurrentUser().getId());
-        financialAidService.updateGraduationApplication(application);
+        graduationService.updateGraduationApplication(application);
     }
 }

@@ -76,7 +76,7 @@ export class GraduationService {
         return this._http.post( this.GRADUATION_API + '/graduationApplications/completeTask', JSON.stringify( graduationApplicationTask ) )
             .flatMap(( res: Response ) => Observable.of( res.text() ) );
     }
-
+    
     claimGraduationApplicationTask( graduationApplicationTask: GraduationApplicationTask ): Observable<String> {
         return this._http.post( this.GRADUATION_API + '/graduationApplications/claimTask', JSON.stringify( graduationApplicationTask ) )
             .flatMap(( res: Response ) => Observable.of( res.text() ) );

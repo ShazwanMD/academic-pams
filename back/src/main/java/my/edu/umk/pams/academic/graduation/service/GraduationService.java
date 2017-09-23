@@ -60,6 +60,8 @@ public interface GraduationService {
     Integer countGraduationApplication(String filter);
 
     Integer countGraduationApplication(AdAcademicSession session, AdStudent student);
+    
+    Integer countGraduation(AdAcademicSession session, AdStudent student);
 
 	void admit(AdAcademicSession session, AdStudent student, BigDecimal cgpa, Integer creditHour, String memo,
 			String referenceNo);

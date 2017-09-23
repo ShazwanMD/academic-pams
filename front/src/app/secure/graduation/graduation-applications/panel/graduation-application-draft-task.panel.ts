@@ -6,6 +6,7 @@ import {GraduationApplicationActions} from '../graduation-application.action';
 import {Store} from '@ngrx/store';
 import {GraduationModuleState} from '../../index';
 import {GraduationApplicationEditorDialog} from '../dialog/graduation-application-editor.dialog';
+import { GraduationService } from "../../../../../services/graduation.service";
 
 @Component({
   selector: 'pams-graduation-application-draft-task',
@@ -14,26 +15,48 @@ import {GraduationApplicationEditorDialog} from '../dialog/graduation-applicatio
 
 export class GraduationApplicationDraftTaskPanel implements OnInit {
 
+    
   @Input() graduationApplicationTask: GraduationApplicationTask;
   private creatorDialogRef: MdDialogRef<GraduationApplicationEditorDialog>;
+  private _route: ActivatedRoute;
+  private _graduationService: GraduationService;
+  private _snackBar: MdSnackBar;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
               private viewContainerRef: ViewContainerRef,
               private actions: GraduationApplicationActions,
               private store: Store<GraduationModuleState>,
+              graduationService: GraduationService,
               private dialog: MdDialog,
               private vcf: ViewContainerRef,
               private snackBar: MdSnackBar) {
+      
+      this._route = route;
+      this._graduationService = graduationService;
+      this._snackBar = snackBar;
   }
 
   ngOnInit(): void {
+      this._route.params.subscribe((params: { taskId: string }) => {
+          let taskId: string = params.taskId;
+          // ngrx
+        });
   }
 
-  register() {
+  /*register() {
     this.store.dispatch(this.actions.completeGraduationApplicationTask(this.graduationApplicationTask));
     this.goBack();
-  }
+  }*/
+  
+  register(): void {
+      this._graduationService.completeGraduationApplicationTask(this.graduationApplicationTask).subscribe((res) => {
+        let snackBarRef = this._snackBar.open('Graduation application completed', 'OK');
+        snackBarRef.afterDismissed().subscribe(() => {
+          this.goBack();
+        });
+      });
+    }
 
   goBack(): void {
     this.router.navigate(['secure/graduation/graduation-applications']);

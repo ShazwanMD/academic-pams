@@ -20,18 +20,18 @@ public class GraduationApplicationCompleteTask extends BpmnActivityBehavior
     private static final org.slf4j.Logger LOG = LoggerFactory.getLogger(GraduationApplicationCompleteTask.class);
 
     @Autowired
-    private GraduationService financialAidService;
+    private GraduationService graduationService;
 
     @Autowired
     private SecurityService securityService;
 
     public void execute(ActivityExecution execution) throws Exception {
         Long applicationId = (Long) execution.getVariable(GRADUATION_APPLICATION_ID);
-        AdGraduationApplication application = financialAidService.findGraduationApplicationById(applicationId);
+        AdGraduationApplication application = graduationService.findGraduationApplicationById(applicationId);
 
         LOG.debug("completing application {}", application.getReferenceNo());
 
         application.getFlowdata().setState(AdFlowState.COMPLETED);
-        financialAidService.updateGraduationApplication(application);
+        graduationService.updateGraduationApplication(application);
     }
 }

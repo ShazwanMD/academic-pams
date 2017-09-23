@@ -122,6 +122,16 @@ public class AdGraduationDaoImpl extends GenericDaoSupport<Long, AdGraduation> i
 		query.setInteger("state", AdMetaState.ACTIVE.ordinal());
 		return (List<AdGraduationApplication>) query.list();
 	}*/
+    
+    @Override
+	public Integer count(AdAcademicSession session, AdStudent student) {
+    	Session currentSession = sessionFactory.getCurrentSession();
+        Query query = currentSession.createQuery("select count(p) from AdGraduation p " + "where "
+                + "p.session = :session " + "and p.student = :student");
+        query.setEntity("session", session);
+        query.setEntity("student", student);
+        return ((Long) query.uniqueResult()).intValue();
+	}
 	
 	
 	

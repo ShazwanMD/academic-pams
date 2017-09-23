@@ -21,6 +21,7 @@ import my.edu.umk.pams.academic.web.module.graduation.vo.GraduationApplication;
 import my.edu.umk.pams.academic.web.module.graduation.vo.GraduationApplicationTask;
 import my.edu.umk.pams.academic.web.module.term.vo.Admission;
 import my.edu.umk.pams.academic.web.module.term.vo.AdmissionApplication;
+import my.edu.umk.pams.academic.web.module.term.vo.AdmissionApplicationTask;
 import my.edu.umk.pams.academic.workflow.service.WorkflowService;
 import org.activiti.engine.task.Task;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,73 +41,82 @@ import java.util.List;
 @RequestMapping("/api/graduation")
 public class GraduationController {
 
-    @Autowired
-    private GraduationService graduationService;
+	@Autowired
+	private GraduationService graduationService;
 
-    @Autowired
-    private GraduationTransformer graduationTransformer;
+	@Autowired
+	private GraduationTransformer graduationTransformer;
 
-    @Autowired
-    private ProfileService profileService;
+	@Autowired
+	private ProfileService profileService;
 
-    @Autowired
-    private PlannerService plannerService;
+	@Autowired
+	private PlannerService plannerService;
 
-    @Autowired
-    private IdentityService identityService;
+	@Autowired
+	private IdentityService identityService;
 
-    @Autowired
-    private SystemService systemService;
+	@Autowired
+	private SystemService systemService;
 
-    @Autowired
-    private WorkflowService workflowService;
+	@Autowired
+	private WorkflowService workflowService;
 
-    @Autowired
-    private AuthenticationManager authenticationManager;
+	@Autowired
+	private AuthenticationManager authenticationManager;
 
-    // ====================================================================================================
-    // GRADUATION APPLICATION
-    // ====================================================================================================
+	// ====================================================================================================
+	// GRADUATION APPLICATION
+	// ====================================================================================================
 
-    @RequestMapping(value = "/graduationApplications", method = RequestMethod.GET)
-    public ResponseEntity<List<GraduationApplication>> findGraduationApplications() {
-        List<AdGraduationApplication> graduationApplications = graduationService.findGraduationApplications("%", 0, 100);
-        return new ResponseEntity<List<GraduationApplication>>(graduationTransformer.toGraduationApplicationVos(graduationApplications), HttpStatus.OK);
-    }
+	@RequestMapping(value = "/graduationApplications", method = RequestMethod.GET)
+	public ResponseEntity<List<GraduationApplication>> findGraduationApplications() {
+		List<AdGraduationApplication> graduationApplications = graduationService.findGraduationApplications("%", 0,
+				100);
+		return new ResponseEntity<List<GraduationApplication>>(
+				graduationTransformer.toGraduationApplicationVos(graduationApplications), HttpStatus.OK);
+	}
 
-    @RequestMapping(value = "/graduationApplications/{referenceNo}", method = RequestMethod.GET)
-    public ResponseEntity<GraduationApplication> findGraduationApplicationByReferenceNo(@PathVariable String referenceNo) {
-        AdGraduationApplication graduationApplication = (AdGraduationApplication) graduationService.findGraduationApplicationByReferenceNo(referenceNo);
-        return new ResponseEntity<GraduationApplication>(graduationTransformer.toGraduationApplicationVo(graduationApplication), HttpStatus.OK);
-    }
+	@RequestMapping(value = "/graduationApplications/{referenceNo}", method = RequestMethod.GET)
+	public ResponseEntity<GraduationApplication> findGraduationApplicationByReferenceNo(
+			@PathVariable String referenceNo) {
+		AdGraduationApplication graduationApplication = (AdGraduationApplication) graduationService
+				.findGraduationApplicationByReferenceNo(referenceNo);
+		return new ResponseEntity<GraduationApplication>(
+				graduationTransformer.toGraduationApplicationVo(graduationApplication), HttpStatus.OK);
+	}
 
-    //update graduationApplication
-    @RequestMapping(value = "/graduationApplications/{referenceNo}", method = RequestMethod.PUT)
-    public ResponseEntity<String> updateGraduationApplication(@PathVariable String referenceNo, @RequestBody GraduationApplication vo) {
-       AdGraduationApplication graduationApplication = graduationService.findGraduationApplicationByReferenceNo(referenceNo);
-       graduationApplication.setCgpa(vo.getCgpa());
-       graduationApplication.setCreditHour(vo.getCreditHour());
-       graduationApplication.setDescription(vo.getDescription());
-       graduationApplication.setMemo(vo.getMemo());
-       graduationService.updateGraduationApplication(graduationApplication);
+	// update graduationApplication
+	@RequestMapping(value = "/graduationApplications/{referenceNo}", method = RequestMethod.PUT)
+	public ResponseEntity<String> updateGraduationApplication(@PathVariable String referenceNo,
+			@RequestBody GraduationApplication vo) {
+		AdGraduationApplication graduationApplication = graduationService
+				.findGraduationApplicationByReferenceNo(referenceNo);
+		graduationApplication.setCgpa(vo.getCgpa());
+		graduationApplication.setCreditHour(vo.getCreditHour());
+		graduationApplication.setDescription(vo.getDescription());
+		graduationApplication.setMemo(vo.getMemo());
+		graduationService.updateGraduationApplication(graduationApplication);
 		return new ResponseEntity<String>("Success Update graduationApplication", HttpStatus.OK);
-    }
-    
-    @RequestMapping(value = "/graduationApplications/assignedTasks", method = RequestMethod.GET)
-    public ResponseEntity<List<GraduationApplicationTask>> findAssignedGraduationApplications() {
-        //dummyLogin();
-        List<Task> tasks = graduationService.findAssignedGraduationApplicationTasks(0, 100);
-        return new ResponseEntity<List<GraduationApplicationTask>>(graduationTransformer.toGraduationApplicationTaskVos(tasks), HttpStatus.OK);
-    }
+	}
 
-    @RequestMapping(value = "/graduationApplications/pooledTasks", method = RequestMethod.GET)
-    public ResponseEntity<List<GraduationApplicationTask>> findPooledGraduationApplications() {
-        //dummyLogin();
-        List<Task> tasks = graduationService.findPooledGraduationApplicationTasks(0, 100);
-        return new ResponseEntity<List<GraduationApplicationTask>>(graduationTransformer.toGraduationApplicationTaskVos(tasks), HttpStatus.OK);
-    }
-    
-    @RequestMapping(value = "/graduationApplications/archived", method = RequestMethod.GET)
+	@RequestMapping(value = "/graduationApplications/assignedTasks", method = RequestMethod.GET)
+	public ResponseEntity<List<GraduationApplicationTask>> findAssignedGraduationApplications() {
+		// dummyLogin();
+		List<Task> tasks = graduationService.findAssignedGraduationApplicationTasks(0, 100);
+		return new ResponseEntity<List<GraduationApplicationTask>>(
+				graduationTransformer.toGraduationApplicationTaskVos(tasks), HttpStatus.OK);
+	}
+
+	@RequestMapping(value = "/graduationApplications/pooledTasks", method = RequestMethod.GET)
+	public ResponseEntity<List<GraduationApplicationTask>> findPooledGraduationApplications() {
+		// dummyLogin();
+		List<Task> tasks = graduationService.findPooledGraduationApplicationTasks(0, 100);
+		return new ResponseEntity<List<GraduationApplicationTask>>(
+				graduationTransformer.toGraduationApplicationTaskVos(tasks), HttpStatus.OK);
+	}
+
+	@RequestMapping(value = "/graduationApplications/archived", method = RequestMethod.GET)
 	public ResponseEntity<List<GraduationApplication>> findArchivedGraduationsApplications() {
 		List<AdGraduationApplication> graduationApplications = graduationService.findGraduationApplicationsByFlowStates(
 				AdFlowState.COMPLETED, AdFlowState.REMOVED, AdFlowState.CANCELLED);
@@ -114,77 +124,84 @@ public class GraduationController {
 				graduationTransformer.toGraduationApplicationVos(graduationApplications), HttpStatus.OK);
 	}
 
-    @RequestMapping(value = "/graduationApplications/startTask", method = RequestMethod.POST)
-    public ResponseEntity<String> startGraduationApplicationTask(@RequestBody GraduationApplication vo) throws Exception {
-       
-        AdAcademicSession academicSession = plannerService.findAcademicSessionById(vo.getAcademicSession().getId());
-        AdStudent student = identityService.findStudentById(vo.getStudent().getId());
-        
-       /* if (countGraduationApplication(academicSession, student) > 0) {
+	@RequestMapping(value = "/graduationApplications/startTask", method = RequestMethod.POST)
+	public ResponseEntity<String> startGraduationApplicationTask(@RequestBody GraduationApplication vo)
+			throws Exception {
+
+		AdAcademicSession academicSession = plannerService.findAcademicSessionById(vo.getAcademicSession().getId());
+		AdStudent student = identityService.findStudentById(vo.getStudent().getId());
+
+		if (countGraduation(academicSession, student) > 0) {
 			// throw new IllegalArgumentException("Data admission already
 			// exists! Please insert new data");
 
 			System.out.println("Duplicate graduation application: " + student.getName());
 			return new ResponseEntity<String>("Duplicate", HttpStatus.OK);
 
-		} else {*/
+		} else {
 
-        AdGraduationApplication graduationApplication = new AdGraduationApplicationImpl();
-        graduationApplication.setDescription(vo.getDescription());
-        graduationApplication.setMemo(vo.getMemo());
+			AdGraduationApplication graduationApplication = new AdGraduationApplicationImpl();
+			graduationApplication.setDescription(vo.getDescription());
+			graduationApplication.setMemo(vo.getMemo());
 
-        // todo: calculate with latest admission
-        // todo: calculate with all enrollments
-        graduationApplication.setCgpa(vo.getCgpa());
-        graduationApplication.setCreditHour(vo.getCreditHour());
-        graduationApplication.setStudent(student);
-        graduationApplication.setSession(academicSession);
-        graduationService.startGraduationApplicationTask(graduationApplication);
-        
-        System.out.println("Success save data: " + student.getName());
-		/*}*/
-        return new ResponseEntity<String>("success", HttpStatus.OK);
-    }
-    
- // countGraduationApplication
- 	private Integer countGraduationApplication(AdAcademicSession session, AdStudent student) {
- 		System.out.println(graduationService.countGraduationApplication(session, student));
- 		return graduationService.countGraduationApplication(session, student);
+			// todo: calculate with latest admission
+			// todo: calculate with all enrollments
+			graduationApplication.setCgpa(vo.getCgpa());
+			graduationApplication.setCreditHour(vo.getCreditHour());
+			graduationApplication.setStudent(student);
+			graduationApplication.setSession(academicSession);
+			graduationService.startGraduationApplicationTask(graduationApplication);
 
- 	}
+			System.out.println("Success save data: " + student.getName());
+		}
+		return new ResponseEntity<String>("success", HttpStatus.OK);
+	}
 
-    @RequestMapping(value = "/graduationApplications/viewTask/{taskId}", method = RequestMethod.GET)
-    public ResponseEntity<GraduationApplicationTask> findGraduationApplicationTaskByTaskId(@PathVariable String taskId) {
-        return new ResponseEntity<GraduationApplicationTask>(graduationTransformer
-                .toGraduationApplicationTaskVo(
-                        graduationService.findGraduationApplicationTaskByTaskId(taskId)), HttpStatus.OK);
-    }
+	// countGraduationApplication
+	private Integer countGraduationApplication(AdAcademicSession session, AdStudent student) {
+		System.out.println(graduationService.countGraduationApplication(session, student));
+		return graduationService.countGraduationApplication(session, student);
+	}
 
-    @RequestMapping(value = "/graduationApplications/claimTask", method = RequestMethod.POST)
-    public void claimGraduationApplicationTask(@RequestBody GraduationApplicationTask vo) {
-       // dummyLogin();
-        Task task = graduationService.findGraduationApplicationTaskByTaskId(vo.getTaskId());
-        workflowService.claimTask(task);
-    }
+	// countGraduation
+	private Integer countGraduation(AdAcademicSession session, AdStudent student) {
+		System.out.println(graduationService.countGraduation(session, student));
+		return graduationService.countGraduation(session, student);
+	}
 
-    @RequestMapping(value = "/graduationApplications/completeTask", method = RequestMethod.POST)
-    public void completeGraduationApplicationTask(@RequestBody GraduationApplicationTask vo) {
-        //dummyLogin();
-        Task task = graduationService.findGraduationApplicationTaskByTaskId(vo.getTaskId());
-        workflowService.completeTask(task);
-        
-        AdStudent student = profileService.findStudentByMatricNo(vo.getStudent().getIdentityNo());
-        student.setStudentStatus(AdStudentStatus.GRADUATED);
-        profileService.updateStudent(student);
-    }
+	@RequestMapping(value = "/graduationApplications/viewTask/{taskId}", method = RequestMethod.GET)
+	public ResponseEntity<GraduationApplicationTask> findGraduationApplicationTaskByTaskId(
+			@PathVariable String taskId) {
+		return new ResponseEntity<GraduationApplicationTask>(graduationTransformer.toGraduationApplicationTaskVo(
+				graduationService.findGraduationApplicationTaskByTaskId(taskId)), HttpStatus.OK);
+	}
 
-    // ====================================================================================================
-    // PRIVATE METHODS
-    // ====================================================================================================
+	@RequestMapping(value = "/graduationApplications/claimTask", method = RequestMethod.POST)
+	public void claimGraduationApplicationTask(@RequestBody GraduationApplicationTask vo) {
+		// dummyLogin();
+		Task task = graduationService.findGraduationApplicationTaskByTaskId(vo.getTaskId());
+		workflowService.claimTask(task);
+	}
 
-    private void dummyLogin() {
-        AdAutoLoginToken token = new AdAutoLoginToken("root");
-        Authentication authed = authenticationManager.authenticate(token);
-        SecurityContextHolder.getContext().setAuthentication(authed);
-    }
+	@RequestMapping(value = "/graduationApplications/completeTask", method = RequestMethod.POST)
+	public void completeGraduationApplicationTask(@RequestBody GraduationApplicationTask vo) {
+		// dummyLogin();
+		Task task = graduationService.findGraduationApplicationTaskByTaskId(vo.getTaskId());
+		workflowService.completeTask(task);
+
+		AdStudent student = profileService.findStudentByMatricNo(vo.getStudent().getIdentityNo());
+		student.setStudentStatus(AdStudentStatus.GRADUATED);
+		profileService.updateStudent(student);
+	}
+	
+	
+	// ====================================================================================================
+	// PRIVATE METHODS
+	// ====================================================================================================
+
+	private void dummyLogin() {
+		AdAutoLoginToken token = new AdAutoLoginToken("root");
+		Authentication authed = authenticationManager.authenticate(token);
+		SecurityContextHolder.getContext().setAuthentication(authed);
+	}
 }
