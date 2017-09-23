@@ -38,6 +38,7 @@ export class StudentProfileEffects {
       this.profileActions.findEnrollments(action.payload),
       this.profileActions.findAdmissions(action.payload),
       this.profileActions.findGraduationApplications(action.payload),
+      this.profileActions.findGraduations(action.payload),
       this.profileActions.findAdmissionApplications(action.payload),
     ]));
 

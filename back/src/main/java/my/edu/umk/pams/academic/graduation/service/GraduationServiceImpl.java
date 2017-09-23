@@ -160,6 +160,11 @@ public class GraduationServiceImpl implements GraduationService {
 	public List<AdGraduationApplication> findGraduationApplications(AdStudent student) {
 		return graduationApplicationDao.find(student);
 	}
+	
+	@Override
+	public List<AdGraduation> findGraduations(AdStudent student) {
+		return graduationDao.find(student);
+	}
 
 	@Override
 	public Integer countGraduationApplication(String filter) {

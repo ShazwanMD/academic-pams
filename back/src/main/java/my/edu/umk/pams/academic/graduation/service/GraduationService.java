@@ -56,6 +56,8 @@ public interface GraduationService {
     List<AdGraduationApplication> findGraduationApplications(AdAcademicSession academicSession, Integer offset, Integer limit);
     
     List<AdGraduationApplication> findGraduationApplications(AdStudent student);
+    
+    List<AdGraduation> findGraduations(AdStudent student);
 
     Integer countGraduationApplication(String filter);
 

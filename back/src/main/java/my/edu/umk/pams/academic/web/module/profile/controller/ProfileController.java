@@ -19,6 +19,7 @@ import my.edu.umk.pams.academic.term.model.AdOffering;
 import my.edu.umk.pams.academic.term.model.AdSection;
 import my.edu.umk.pams.academic.term.service.TermService;
 import my.edu.umk.pams.academic.web.module.graduation.controller.GraduationTransformer;
+import my.edu.umk.pams.academic.web.module.graduation.vo.Graduation;
 import my.edu.umk.pams.academic.web.module.graduation.vo.GraduationApplication;
 import my.edu.umk.pams.academic.web.module.identity.vo.Student;
 import my.edu.umk.pams.academic.web.module.planner.controller.PlannerTransformer;
@@ -860,6 +861,16 @@ public class ProfileController {
 				graduationTransformer.toGraduationApplicationVos(graduationService.findGraduationApplications(student)),
 				HttpStatus.OK);
 	}
+	
+	// find graduations by student
+		@RequestMapping(value = "/students/{identityNo}/graduations", method = RequestMethod.GET)
+		public ResponseEntity<List<Graduation>> findGraduationsByStudent(
+				@PathVariable String identityNo) {
+			AdStudent student = profileService.findStudentByMatricNo(identityNo);
+			return new ResponseEntity<List<Graduation>>(
+					graduationTransformer.toGraduationVos(graduationService.findGraduations(student)),
+					HttpStatus.OK);
+		}
 
 	// find admissions by student
 	@RequestMapping(value = "/students/{identityNo}/admissions", method = RequestMethod.GET)

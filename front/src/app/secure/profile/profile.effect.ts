@@ -122,12 +122,12 @@ export class ProfileEffects {
         .map( action => action.payload )
         .switchMap( student => this.profileService.findEnrollments( student ) )
         .map( enrollments => this.profileActions.findEnrollmentsSuccess( enrollments ) );
-    
+
     //find graduated students
     @Effect() findGraduatedStudents$ = this.actions$
-    .ofType( ProfileActions.FIND_GRADUATED_STUDENTS )
-    .switchMap(() => this.profileService.findGraduatedStudents() )
-    .map(( students ) => this.profileActions.findGraduatedStudentsSuccess( students ) );
+        .ofType( ProfileActions.FIND_GRADUATED_STUDENTS )
+        .switchMap(() => this.profileService.findGraduatedStudents() )
+        .map(( students ) => this.profileActions.findGraduatedStudentsSuccess( students ) );
 
     //find admissions
     @Effect() findAdmissions$ = this.actions$
@@ -135,13 +135,21 @@ export class ProfileEffects {
         .map( action => action.payload )
         .switchMap( student => this.profileService.findAdmissions( student ) )
         .map( admissions => this.profileActions.findAdmissionsSuccess( admissions ) );
-    
-     //find admissions
+
+    //find graduationApplications
     @Effect() findGraduationApplications$ = this.actions$
         .ofType( ProfileActions.FIND_GRADUATION_APPLICATIONS_BY_STUDENT )
         .map( action => action.payload )
         .switchMap( student => this.profileService.findGraduationApplications( student ) )
         .map( graduationApplications => this.profileActions.findGraduationApplicationsSuccess( graduationApplications ) );
+
+    //find graduations
+    @Effect() findGraduations$ = this.actions$
+        .ofType( ProfileActions.FIND_GRADUATIONS_BY_STUDENT )
+        .map( action => action.payload )
+        .switchMap( student => this.profileService.findGraduations( student ) )
+        .map( graduations => this.profileActions.findGraduationsSuccess( graduations ) );
+
 
     //find admissionApplications
     @Effect() findAdmissionApplications$ = this.actions$
@@ -184,15 +192,15 @@ export class ProfileEffects {
         .withLatestFrom( this.store$.select( ...this.STUDENT ) )
         .map( state => state[1] )
         .map(( student: Student ) => this.profileActions.findStudentByIdentityNo( student.identityNo ) );
-    
+
     @Effect() updateAdmission$ = this.actions$
-    .ofType( ProfileActions.UPDATE_ADMISSION)
-    .map( action => action.payload )
-    .switchMap( payload => this.profileService.updateAdmission( payload.student, payload.admission ) )
-    .map( message => this.profileActions.updateAdmissionSuccess( message ) )
-    .withLatestFrom( this.store$.select( ...this.STUDENT ) )
-    .map( state => state[1] )
-    .map(( student: Student ) => this.profileActions.findStudentByIdentityNo( student.identityNo ) );
+        .ofType( ProfileActions.UPDATE_ADMISSION )
+        .map( action => action.payload )
+        .switchMap( payload => this.profileService.updateAdmission( payload.student, payload.admission ) )
+        .map( message => this.profileActions.updateAdmissionSuccess( message ) )
+        .withLatestFrom( this.store$.select( ...this.STUDENT ) )
+        .map( state => state[1] )
+        .map(( student: Student ) => this.profileActions.findStudentByIdentityNo( student.identityNo ) );
 
     /*==================================================================================================*/
     /*ADDRESS - EFFECT*/

@@ -30,17 +30,32 @@
      <h3 md-subheader>Graduation</h3>
     <a md-list-item color="accent" *ngIf="graduationApplications?.length == 0">
         <md-icon>library_books</md-icon>
-        <span> Graduation Status </span>
+        <span> Application Status </span>
        
       </a>
        <a md-list-item color="accent" *ngIf="graduationApplications?.length > 0">
         <md-icon>library_books</md-icon>
-        <span> Graduation Status </span>
+        <span> Application Status </span>
         &nbsp;&nbsp;<span>
          <md-chip-list >
          <md-chip color="accent">{{graduationApplications?.length}}</md-chip>
              </md-chip-list> </span> 
       </a>
+      
+       <a md-list-item color="accent" *ngIf="graduations?.length == 0">
+        <md-icon>library_books</md-icon>
+        <span> Approval Status </span>
+       
+      </a>
+       <a md-list-item color="accent" *ngIf="graduations?.length > 0">
+        <md-icon>library_books</md-icon>
+        <span> Approval Status </span>
+        &nbsp;&nbsp;<span>
+         <md-chip-list >
+         <md-chip color="accent">{{graduations?.length}}</md-chip>
+             </md-chip-list> </span> 
+      </a>
+      
         <a md-list-item (click)="applyGraduation()" color="accent"  mdTooltip="View offerings info">
           <md-icon>create</md-icon>
         <span>Apply Graduation</span>
@@ -421,6 +436,49 @@
                   <td-data-table 
                   [data]="graduationApplications" 
                   [columns]="columnGraduationApplication" 
+                  [sortBy]="summary" 
+                  [sortOrder]="ASC" 
+                  [sortable]="false" 
+                  [multiple]="false"
+                    [selectable]="false" 
+                    (rowSelect)="edit.emit($event)" dense>
+
+                    <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column"  color="accent">
+                      <div layout="row">
+                        <span flex >{{value}}</span>
+                      </div>
+                    </template>
+             
+                   <!--  <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
+                      <div layout="row">
+                        <a md-button color="accent" class="text-upper" >
+                        <span> </span>
+                        </a>
+                      </div>
+                    </template> -->
+                  </td-data-table>
+                </md-card-content>
+              </md-card>
+            </div>
+          </td-expansion-panel> 
+          
+            <!-- Graduation Info -->
+          
+          <td-expansion-panel label="Graduation Information " class="bgc-light-blue-400" >
+             <div class="md-padding" class="bgc-light-blue-50">
+              <md-card>
+                <div toolbar-buttons layout="row" layout-align="start center" flex>
+                  <md-card-title>Graduation Information</md-card-title>
+                  <md-chip-list *ngIf="graduations?.length > 0">
+                    <md-chip color="accent">{{graduations?.length}}</md-chip>
+                  </md-chip-list>
+                  <span flex></span>
+                </div>
+                <md-divider></md-divider>
+                <md-card-content>
+                  <td-data-table 
+                  [data]="graduations" 
+                  [columns]="columnGraduation" 
                   [sortBy]="summary" 
                   [sortOrder]="ASC" 
                   [sortable]="false" 

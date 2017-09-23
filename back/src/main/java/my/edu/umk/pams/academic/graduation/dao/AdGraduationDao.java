@@ -21,6 +21,8 @@ public interface AdGraduationDao extends GenericDao<Long, AdGraduation> {
     // FINDER
     // ====================================================================================================
 
+	List<AdGraduation> find(AdStudent student);
+	
     /*AdGraduationApplication findByReferenceNo(String referenceNo);
     
     List<AdGraduationApplication> findGraduationApplications(AdStudent student);

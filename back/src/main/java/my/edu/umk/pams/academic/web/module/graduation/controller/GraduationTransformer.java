@@ -1,12 +1,14 @@
 package my.edu.umk.pams.academic.web.module.graduation.controller;
 
 import my.edu.umk.pams.academic.AcademicConstants;
+import my.edu.umk.pams.academic.graduation.model.AdGraduation;
 import my.edu.umk.pams.academic.graduation.model.AdGraduationApplication;
 import my.edu.umk.pams.academic.graduation.service.GraduationService;
 import my.edu.umk.pams.academic.term.model.AdAdmission;
 import my.edu.umk.pams.academic.term.model.AdAdmissionApplication;
 import my.edu.umk.pams.academic.web.module.core.vo.FlowState;
 import my.edu.umk.pams.academic.web.module.core.vo.MetaState;
+import my.edu.umk.pams.academic.web.module.graduation.vo.Graduation;
 import my.edu.umk.pams.academic.web.module.graduation.vo.GraduationApplication;
 import my.edu.umk.pams.academic.web.module.graduation.vo.GraduationApplicationTask;
 import my.edu.umk.pams.academic.web.module.identity.controller.IdentityTransformer;
@@ -83,6 +85,22 @@ public class GraduationTransformer {
 		vo.setMetaState(MetaState.get(e.getMetadata().getState().ordinal()));
 		return vo;
 	}
+	
+	public Graduation toGraduationVo(AdGraduation e) {
+		Graduation vo = new Graduation();
+		vo.setId(e.getId());
+		vo.setDescription(e.getDescription());
+		vo.setReferenceNo(e.getReferenceNo());
+		vo.setCgpa(e.getCgpa());
+		vo.setCreditHour(e.getCreditHour());
+		vo.setSourceNo(e.getSourceNo());
+		vo.setDescription(e.getDescription());
+		vo.setStudent(identityTransformer.toStudentVo(e.getStudent()));
+		vo.setAcademicSession(plannerTransformer.toAcademicSessionVo(e.getSession()));
+		vo.setFlowState(FlowState.get(e.getFlowdata().getState().ordinal()));
+		vo.setMetaState(MetaState.get(e.getMetadata().getState().ordinal()));
+		return vo;
+	}
 
 	public List<GraduationApplicationTask> toGraduationApplicationTaskVos(List<Task> tasks) {
 		return tasks.stream().map((task) -> toGraduationApplicationTaskVo(task))
@@ -99,6 +117,11 @@ public class GraduationTransformer {
 	public List<GraduationApplication> toGraduationApplicationVos(List<AdGraduationApplication> entries) {
 		return entries.stream().map((entry) -> toGraduationApplicationVo(entry))
 				.collect(toCollection(() -> new ArrayList<GraduationApplication>()));
+	}
+
+	public List<Graduation> toGraduationVos(List<AdGraduation> entries) {
+		return entries.stream().map((entry) -> toGraduationVo(entry))
+				.collect(toCollection(() -> new ArrayList<Graduation>()));
 	}
 
 	

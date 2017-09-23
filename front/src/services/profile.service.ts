@@ -16,6 +16,7 @@ import { TransferCohort } from '../app/shared/model/profile/transfer-cohort.inte
 import { Admission } from "../app/shared/model/term/admission.interface";
 import { AdmissionApplication } from "../app/shared/model/term/admission-application.interface";
 import { GraduationApplication } from "../app/shared/model/graduation/graduation-application.interface";
+import { Graduation } from "../app/shared/model/graduation/graduation.interface";
 
 @Injectable()
 export class ProfileService {
@@ -191,6 +192,12 @@ export class ProfileService {
     findGraduationApplications( student: Student ): Observable<GraduationApplication[]> {
         return this._http.get( this.PROFILE_API + '/students/' + student.identityNo + '/graduationApplications' )
             .map(( res: Response ) => <GraduationApplication[]>res.json() );
+    }
+    
+    //find graduations
+    findGraduations( student: Student ): Observable<Graduation[]> {
+        return this._http.get( this.PROFILE_API + '/students/' + student.identityNo + '/graduations' )
+            .map(( res: Response ) => <Graduation[]>res.json() );
     }
 
     findAdmissionApplications( student: Student ): Observable<AdmissionApplication[]> {

@@ -36,6 +36,7 @@ import {admissionListReducer, AdmissionListState} from './admission-list.reducer
 import {academicSessionListReducer, AcademicSessionListState} from './academic-session-list.reducer';
 import {admissionApplicationListReducer, AdmissionApplicationListState} from './admissionApplication-list.reducer';
 import {graduationApplicationListReducer, GraduationApplicationListState} from './graduationApplication-list.reducer';
+import {graduationListReducer, GraduationListState} from './graduation-list.reducer';
 import {studentReducer, StudentState} from './student.reducer';
 import {studentListReducer, StudentListState} from './student-list.reducer';
 import {ContactEditorDialog} from './dialog/contact-editor.dialog';
@@ -55,6 +56,7 @@ import { Admission } from "../../shared/model/term/admission.interface";
 import { AcademicSession } from "../../shared/model/planner/academic-session.interface";
 import { AdmissionApplication } from "../../shared/model/term/admission-application.interface";
 import { GraduationApplication } from "../../shared/model/graduation/graduation-application.interface";
+import { Graduation } from "../../shared/model/graduation/graduation.interface";
 import { AdvisoryCenterPage } from "./advisory-center.page";
 import {AdvisoryListComponent} from './component/advisory-list.component';
 import {AdvisoryDetailPage} from './advisory-detail.page';
@@ -73,6 +75,7 @@ export interface ProfileModuleState {
   academicSessions: AcademicSessionListState;
   admissionApplications: AdmissionApplicationListState;
   graduationApplications: GraduationApplicationListState;
+graduations: GraduationListState;
 }
 ;
 
@@ -89,6 +92,7 @@ export const INITIAL_PROFILE_STATE: ProfileModuleState =
     academicSessions: <AcademicSession[]>[],
     admissionApplications: <AdmissionApplication[]>[],
     graduationApplications: <GraduationApplication[]>[],
+    graduations: <Graduation[]>[],
   };
 
 export const profileModuleReducers = {
@@ -103,6 +107,7 @@ export const profileModuleReducers = {
   academicSessions: academicSessionListReducer,
   admissionApplications: admissionApplicationListReducer,
   graduationApplications: graduationApplicationListReducer,
+  graduations: graduationListReducer,
 };
 
 @NgModule({

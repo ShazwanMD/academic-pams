@@ -19,6 +19,7 @@ import { FormBuilder } from "@angular/forms";
 import { Admission } from "../../shared/model/term/admission.interface";
 import { AdmissionApplication } from "../../shared/model/term/admission-application.interface";
 import { GraduationApplication } from "../../shared/model/graduation/graduation-application.interface";
+import { Graduation } from "../../shared/model/graduation/graduation.interface";
 
 @Component({
   selector: 'pams-student-profile-center',
@@ -33,6 +34,7 @@ export class StudentProfileCenterPage implements OnInit {
 
   private STUDENT: string[] = 'studentProfileModuleState.student'.split('.');
   private GRADUATION_APPLICATIONS: string[] = 'profileModuleState.graduationApplications'.split('.');
+  private GRADUATIONS: string[] = 'profileModuleState.graduations'.split('.');
   private ADDRESSES: string[] = 'studentProfileModuleState.addresses'.split('.');
   private STUDENTS: string[] = 'studentProfileModuleState.students'.split('.');
   private GUARANTORS: string[] = 'studentProfileModuleState.guarantors'.split('.');
@@ -47,6 +49,7 @@ export class StudentProfileCenterPage implements OnInit {
 
   private students$: Observable<Student[]>;
   private graduationApplications$: Observable<GraduationApplication[]>;
+  private graduations$: Observable<Graduation[]>;
   private student$: Observable<Student>;
   private addressess$: Observable<Address[]>;
   private guarantors$: Observable<Guarantor>;
@@ -72,6 +75,7 @@ export class StudentProfileCenterPage implements OnInit {
     this.students$ = this.store.select(...this.STUDENTS);
     this.student$ = this.store.select(...this.STUDENT);
     this.graduationApplications$ = this.store.select(...this.GRADUATION_APPLICATIONS);
+    this.graduations$ = this.store.select(...this.GRADUATIONS);
     this.addressess$ = this.store.select(...this.ADDRESSES);
     this.guardians$ = this.store.select(...this.GUARDIANS);
     this.guarantors$ = this.store.select(...this.GUARANTORS);

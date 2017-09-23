@@ -20,6 +20,7 @@ import { Enrollment } from "../../../shared/model/term/enrollment.interface";
 import { Admission } from "../../../shared/model/term/admission.interface";
 import { AdmissionApplication } from "../../../shared/model/term/admission-application.interface";
 import { GraduationApplication } from "../../../shared/model/graduation/graduation-application.interface";
+import { Graduation } from "../../../shared/model/graduation/graduation.interface";
 import { OfferingUpdateDialog } from "../../term/offerings/dialog/offering-update.dialog";
 import { AdmissionApplicationTaskCreatorDialog } from "../../term/admission-applications/dialog/admission-application-task-creator.dialog";
 import { AdmissionApplicationTaskDialog } from "../../term/admission-applications/dialog/admission-application-task.dialog";
@@ -65,6 +66,7 @@ export class StudentProfileListPage implements OnInit {
     @Input() academicSessions: AcademicSession[];
     @Input() admissionApplications: AdmissionApplication[];
     @Input() graduationApplications: GraduationApplication[];
+    @Input() graduations: Graduation[];
 
     @Output() view2 = new EventEmitter<Admission>();
 
@@ -157,6 +159,17 @@ export class StudentProfileListPage implements OnInit {
         { name: 'creditHour', label: 'Credit Hour' },
         { name: 'referenceNo', label: 'Reference No' },
         { name: 'description', label: 'Description' },
+        { name: 'academicSession.code', label: 'academicSession' },
+        { name: 'action', label: '' },
+    ];
+    
+    //view data graduations
+    private columnGraduation: any[] = [
+        { name: 'id', label: 'Id' },
+        { name: 'cgpa', label: 'CGPA' },
+        { name: 'creditHour', label: 'Credit Hour' },
+        { name: 'referenceNo', label: 'Reference No' },
+        //{ name: 'description', label: 'Description' },
         { name: 'academicSession.code', label: 'academicSession' },
         { name: 'action', label: '' },
     ];
