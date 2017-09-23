@@ -52,6 +52,8 @@ public interface GraduationService {
     AdGraduationApplication findGraduationApplicationByReferenceNo(String referenceNo);
 
     List<AdGraduationApplication> findGraduationApplications(String filter, Integer offset, Integer limit);
+    
+    List<AdGraduation> findGraduations(String filter, Integer offset, Integer limit);
 
     List<AdGraduationApplication> findGraduationApplications(AdAcademicSession academicSession, Integer offset, Integer limit);
     

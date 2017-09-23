@@ -18,6 +18,7 @@ import {AssignedGraduationApplicationTaskListComponent} from './component/assign
 import {PooledGraduationApplicationTaskListComponent} from './component/pooled-graduation-application-task-list.component';
 import {ArchivedGraduationApplicationListComponent} from './component/archived-graduation-application-list.component';
 import {GraduationApplicationListComponent} from './component/graduation-application-list.component';
+import {GraduationListComponent} from './component/graduation-list.component';
 import {GraduationApplicationComponent} from './component/graduation-application.component';
 import {GraduationApplicationDraftTaskPanel} from './panel/graduation-application-draft-task.panel';
 import {GraduationApplicationTaskWorkflowPanel} from './panel/graduation-application-task-workflow.panel';
@@ -29,6 +30,7 @@ import {AcademicSessionSubModule} from '../../planner/academic-sessions/index';
 import {ProfileModule} from '../../profile/index';
 import {GraduationApplicationTaskDetailPage} from './graduation-application-task-detail.page';
 import { GraduationListCenterPage } from "./graduation-list-center.page";
+import { GraduationsListCenterPage } from "./graduations-list-center.page";
 import { GraduationApplicationDetailPage } from "./graduation-application-detail.page";
 import { GraduationApplicationActionComponent } from "./component/graduation-application-action.component";
 import { StudentGraduationApplicationDraftTaskPanel } from "./panel/student-graduation-application-draft-task.panel";
@@ -52,6 +54,7 @@ import { StudentGraduationApplicationTaskWorkflowPanel } from "./panel/student-g
     GraduationApplicationCenterPage,
     GraduationApplicationDetailPage,
     GraduationListCenterPage,
+    GraduationsListCenterPage,
     StudentGraduationApplicationCenterPage,
     GraduationApplicationTaskDetailPage,
     StudentGraduationApplicationTaskDetailPage,
@@ -61,6 +64,7 @@ import { StudentGraduationApplicationTaskWorkflowPanel } from "./panel/student-g
     PooledGraduationApplicationTaskListComponent,
     ArchivedGraduationApplicationListComponent,
     GraduationApplicationListComponent,
+    GraduationListComponent,
     GraduationApplicationComponent,
     GraduationApplicationTaskWorkflowPanel,
     StudentGraduationApplicationTaskWorkflowPanel,

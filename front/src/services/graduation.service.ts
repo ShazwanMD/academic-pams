@@ -5,6 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import { GraduationApplication } from '../app/shared/model/graduation/graduation-application.interface';
 import { environment } from '../environments/environment';
 import { GraduationApplicationTask } from '../app/shared/model/graduation/graduation-application-task.interface';
+import { Graduation } from "../app/shared/model/graduation/graduation.interface";
 
 @Injectable()
 export class GraduationService {
@@ -35,6 +36,13 @@ export class GraduationService {
         console.log( 'findGraduationApplications' );
         return this._http.get( this.GRADUATION_API + '/graduationApplications' )
             .map(( res: Response ) => <GraduationApplication[]>res.json() );
+    }
+    
+  //find graduations
+    findGraduations(): Observable<Graduation[]> {
+        console.log( 'findGraduations' );
+        return this._http.get( this.GRADUATION_API + '/graduations' )
+            .map(( res: Response ) => <Graduation[]>res.json() );
     }
 
     findPooledGraduationApplicationTasks(): Observable<GraduationApplicationTask[]> {

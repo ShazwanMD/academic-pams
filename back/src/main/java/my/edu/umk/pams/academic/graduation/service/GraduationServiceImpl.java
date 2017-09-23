@@ -149,6 +149,11 @@ public class GraduationServiceImpl implements GraduationService {
 	public List<AdGraduationApplication> findGraduationApplications(String filter, Integer offset, Integer limit) {
 		return graduationApplicationDao.find(offset, limit);
 	}
+	
+	@Override
+	public List<AdGraduation> findGraduations(String filter, Integer offset, Integer limit) {
+		return graduationDao.find(offset, limit);
+	}
 
 	@Override
 	public List<AdGraduationApplication> findGraduationApplications(AdAcademicSession academicSession, Integer offset,

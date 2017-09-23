@@ -1,7 +1,7 @@
 package my.edu.umk.pams.academic.web.module.graduation.controller;
 
 import my.edu.umk.pams.academic.core.AdFlowState;
-
+import my.edu.umk.pams.academic.graduation.model.AdGraduation;
 import my.edu.umk.pams.academic.graduation.model.AdGraduationApplication;
 import my.edu.umk.pams.academic.graduation.model.AdGraduationApplicationImpl;
 import my.edu.umk.pams.academic.graduation.service.GraduationService;
@@ -17,6 +17,7 @@ import my.edu.umk.pams.academic.security.integration.AdAutoLoginToken;
 import my.edu.umk.pams.academic.system.service.SystemService;
 import my.edu.umk.pams.academic.term.model.AdAdmission;
 import my.edu.umk.pams.academic.term.model.AdAdmissionApplication;
+import my.edu.umk.pams.academic.web.module.graduation.vo.Graduation;
 import my.edu.umk.pams.academic.web.module.graduation.vo.GraduationApplication;
 import my.edu.umk.pams.academic.web.module.graduation.vo.GraduationApplicationTask;
 import my.edu.umk.pams.academic.web.module.term.vo.Admission;
@@ -76,6 +77,15 @@ public class GraduationController {
 		return new ResponseEntity<List<GraduationApplication>>(
 				graduationTransformer.toGraduationApplicationVos(graduationApplications), HttpStatus.OK);
 	}
+	
+	@RequestMapping(value = "/graduations", method = RequestMethod.GET)
+	public ResponseEntity<List<Graduation>> findGraduations() {
+		List<AdGraduation> graduations = graduationService.findGraduations("%", 0,
+				100);
+		return new ResponseEntity<List<Graduation>>(
+				graduationTransformer.toGraduationVos(graduations), HttpStatus.OK);
+	}
+
 
 	@RequestMapping(value = "/graduationApplications/{referenceNo}", method = RequestMethod.GET)
 	public ResponseEntity<GraduationApplication> findGraduationApplicationByReferenceNo(

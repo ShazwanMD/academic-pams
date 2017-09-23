@@ -244,4 +244,23 @@ export class GraduationApplicationActions {
       payload: graduationApplications
     };
   }
+  
+  //find graduations
+  static FIND_GRADUATIONS = '[GraduationApplication] Find Graduations';
+
+  findGraduations(): Action {
+    return {
+      type: GraduationApplicationActions.FIND_GRADUATIONS
+    };
+  }
+
+  static FIND_GRADUATIONS_SUCCESS = '[GraduationApplication] Find Graduations Success';
+
+  findGraduationsSuccess(graduations): Action {
+    return {
+      type: GraduationApplicationActions.FIND_GRADUATIONS_SUCCESS,
+      payload: graduations
+    };
+  }
+  
 }
