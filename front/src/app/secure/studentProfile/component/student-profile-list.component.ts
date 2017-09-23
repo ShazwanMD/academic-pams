@@ -450,7 +450,7 @@ export class StudentProfileListPage implements OnInit {
 
     //STATUS GRADUATION
     statusGraduation() {
-        this.router.navigate( ['/secure/graduation/graduation-applications/student'] );
+        this.router.navigate( ['/secure/graduation/graduation-applications/student-graduation-application-center'] );
     }
 
     /*=========================================================================================*/
