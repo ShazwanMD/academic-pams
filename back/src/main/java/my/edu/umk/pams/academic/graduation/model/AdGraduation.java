@@ -8,7 +8,7 @@ import java.math.BigDecimal;
 
 /*
 **/
-public interface AdGraduationApplication extends AdDocument {
+public interface AdGraduation extends AdDocument {
 
     String getMemo();
 

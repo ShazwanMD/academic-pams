@@ -51,21 +51,8 @@
 
               <md-tab label="Student Details"><br>
                 <div layout="column" class="inset">
-                  <!-- <div layout="row" class="pad-bottom">
-                    <span flex="15">Advisor ID </span>
-                    <span> {{admissionApplicationTask?.application?.advisor?.identityNo}}</span>
-                  </div>
-                  <div layout="row" class="pad-bottom">
-                    <span flex="15">Advisor Name</span>
-                    <span> {{admissionApplicationTask?.application?.advisor?.name}}</span>
-                  </div>
-                  <div layout="row" class="pad-bottom">
-                    <span flex="15">Advisor Type</span>
-                    <span> {{admissionApplicationTask?.application?.advisor?.staffType}}</span>
-                  </div>
-                  -->
-
-                  <div layout="row" class="pad-bottom">
+                                 
+                   <div layout="row" class="pad-bottom">
                     <span flex="15">Matric No. </span>
                     <span> {{admissionApplicationTask?.application?.student?.identityNo}}</span>
                   </div>
@@ -86,6 +73,19 @@
                     <span> {{admissionApplicationTask?.application?.student?.mobile}}</span>
                   </div>
                 </div>
+              </md-tab>
+              
+               <md-tab label="Advisor Details" *ngIf=admissionApplicationTask.application.advisor.identityNo><br>
+                <div layout="column" class="inset">
+                  <div layout="row" class="pad-bottom">
+                    <span flex="15">Advisor ID </span>
+                    <span>{{admissionApplicationTask?.application?.advisor?.identityNo}}</span>
+                  </div>
+                  <div layout="row" class="pad-bottom">
+                    <span flex="15">Advisor Name</span>
+                    <span> {{admissionApplicationTask?.application?.advisor?.title}}  {{admissionApplicationTask?.application?.advisor?.name}}</span>
+                  </div>
+                 </div>
               </md-tab>
 
               <md-tab label="Program Detail"><br>

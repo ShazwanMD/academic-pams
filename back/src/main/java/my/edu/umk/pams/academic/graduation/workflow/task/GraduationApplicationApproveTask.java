@@ -24,20 +24,24 @@ public class GraduationApplicationApproveTask extends BpmnActivityBehavior
     private static final Logger LOG = LoggerFactory.getLogger(GraduationApplicationApproveTask.class);
 
     @Autowired
-    private GraduationService financialAidService;
+    private GraduationService graduationService;
 
     @Autowired
     private SecurityService securityService;
 
     public void execute(ActivityExecution execution) throws Exception {
         Long applicationId = (Long) execution.getVariable(GRADUATION_APPLICATION_ID);
-        AdGraduationApplication application = financialAidService.findGraduationApplicationById(applicationId);
-        LOG.debug("approving application {}", application.getReferenceNo());
+        AdGraduationApplication application = graduationService.findGraduationApplicationById(applicationId);
+        LOG.debug("approving graduation application {}", application.getReferenceNo());
 
         // update flow state
         application.getFlowdata().setState(AdFlowState.APPROVED);
         application.getFlowdata().setApprovedDate(new Timestamp(System.currentTimeMillis()));
         application.getFlowdata().setApproverId(securityService.getCurrentUser().getId());
-        financialAidService.updateGraduationApplication(application);
+        graduationService.updateGraduationApplication(application);
+        
+        // todo: fire event
+        graduationService.postToGraduation(application);
+        
     }
 }

@@ -13,13 +13,13 @@ import java.math.BigDecimal;
 
 /*
  * */
-@Entity(name = "AdGraduationApplication")
-@Table(name = "AD_GRDN_APLN")
-public class AdGraduationApplicationImpl implements AdGraduationApplication {
+@Entity(name = "AdGraduation")
+@Table(name = "AD_GRDTN")
+public class AdGraduationImpl implements AdGraduationApplication {
 
     @Id
-    @GeneratedValue(generator = "SQ_AD_GRDN_APLN")
-    @SequenceGenerator(name = "SQ_AD_GRDN_APLN", sequenceName = "SQ_AD_GRDN_APLN", allocationSize = 1)
+    @GeneratedValue(generator = "SQ_AD_GRDTN")
+    @SequenceGenerator(name = "SQ_AD_GRDTN", sequenceName = "SQ_AD_GRDTN", allocationSize = 1)
     @Column(name = "ID")
     private Long id;
 

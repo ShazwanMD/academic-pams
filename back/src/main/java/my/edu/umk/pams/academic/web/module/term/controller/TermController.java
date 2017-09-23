@@ -240,17 +240,13 @@ public class TermController {
 		AdProgram program = student.getCohort().getProgram();
 		AdStudyCenter studyCenter = commonService.findStudyCenterById(vo.getStudyCenter().getId());
 		//AdStaff advisor = identityService.findStaffByStaffNo(vo.getAdvisor().getIdentityNo());
+		//AdStaff advisor = identityService.findStaffByStaffNo("00179A");
 			
 		System.out.println("Get student: " + vo.getStudent().getId());
 		System.out.println("Get session: " + vo.getAcademicSession().getId());
 		System.out.println("Get program: " + student.getCohort().getProgram());
 		System.out.println("Get studycenter: " + vo.getStudyCenter().getId());
-		//System.out.println("Get advisor: " + vo.getAdvisor().getIdentityNo());
-		//LOG.debug("start advisor" + vo.getAdvisor().getIdentityNo());
-
-		// AdStaff advisor = identityService.findStaffByStaffNo("00280A"); //
-		// todo:
-		
+						
 		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
 		Date date1 = new Date();
 		Date date2 = academicSession.getAdmissionEndDate();
@@ -266,7 +262,7 @@ public class TermController {
 
 			System.out.println("Continue to admission new semester!");
 
-			if (countAdmissionApplication(academicSession, student) > 0) {
+			if (countAdmission(academicSession, student) > 0) {
 				// throw new IllegalArgumentException("Data admission already
 				// exists! Please insert new data");
 
@@ -306,9 +302,8 @@ public class TermController {
 				String applicationUrl = systemService.findConfigurationByKey("application.url").getValue();
 				AdEmailQueue emailQueue = new AdEmailQueueImpl();
 				emailQueue.setCode("EQ" + System.currentTimeMillis());
-				emailQueue.setTo("asyikin.mr@umk.edu.my"); // set default email
-															// to
-															// test
+				emailQueue.setTo("asyikin.mr@umk.edu.my"); // set default email to test
+															
 				emailQueue.setSubject("Application for semester registration:" + academicSession.getCode());
 				emailQueue.setQueueStatus(AdEmailQueueStatus.QUEUED);
 				emailQueue.setBody(
@@ -929,6 +924,13 @@ public class TermController {
 		return termService.countAdmissionApplication(session, student);
 
 	}
+	
+	// countAdmission
+		private Integer countAdmission(AdAcademicSession session, AdStudent student) {
+			System.out.println(termService.countAdmission(session, student));
+			return termService.countAdmission(session, student);
+
+		}
 
 	@RequestMapping(value = "/offerings/{canonicalCode}", method = RequestMethod.PUT)
 	public ResponseEntity<String> updateOffering(@PathVariable String canonicalCode, @RequestBody Offering vo) {

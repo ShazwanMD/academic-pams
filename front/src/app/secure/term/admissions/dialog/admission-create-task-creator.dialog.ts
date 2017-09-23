@@ -13,6 +13,7 @@ import {Admission} from '../../../../shared/model/term/admission.interface';
 import {AdmissionActions} from '../admission.action';
 import {AcademicStanding} from '../../../../shared/model/term/academic-standing.enum';
 import {AdmissionStatus} from '../../../../shared/model/term/admission-status.enum';
+import { Staff } from "../../../../shared/model/identity/staff.interface";
 
 @Component({
   selector: 'pams-admission-create-task-creator',
@@ -58,6 +59,7 @@ export class AdmissionCreateTaskCreatorDialog implements OnInit {
       cohort: <Cohort>{},
       academicSession: <AcademicSession>{},
       studyCenter: <StudyCenter>{},
+      advisor: <Staff>{},
       student: <Student>{},
     });
 

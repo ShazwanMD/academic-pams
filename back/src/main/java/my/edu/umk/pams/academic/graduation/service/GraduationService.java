@@ -1,13 +1,16 @@
 package my.edu.umk.pams.academic.graduation.service;
 
 import my.edu.umk.pams.academic.core.AdFlowState;
+import my.edu.umk.pams.academic.graduation.model.AdGraduation;
 import my.edu.umk.pams.academic.graduation.model.AdGraduationApplication;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
+import my.edu.umk.pams.academic.term.model.AdAdmission;
 import my.edu.umk.pams.academic.term.model.AdAdmissionApplication;
 
 import org.activiti.engine.task.Task;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -35,6 +38,10 @@ public interface GraduationService {
     void updateGraduationApplication(AdGraduationApplication application);
 
     void cancelGraduationApplication(AdGraduationApplication application);
+    
+    void postToGraduation(AdGraduationApplication application);
+    
+    void saveGraduation(AdGraduation graduation);
 
     // ==================================================================================================== //
     // GRADUATION APPLICATION
@@ -53,4 +60,7 @@ public interface GraduationService {
     Integer countGraduationApplication(String filter);
 
     Integer countGraduationApplication(AdAcademicSession session, AdStudent student);
+
+	void admit(AdAcademicSession session, AdStudent student, BigDecimal cgpa, Integer creditHour, String memo,
+			String referenceNo);
 }

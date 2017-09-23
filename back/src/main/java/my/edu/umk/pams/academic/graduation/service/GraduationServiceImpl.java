@@ -1,20 +1,30 @@
 package my.edu.umk.pams.academic.graduation.service;
 
 import my.edu.umk.pams.academic.AcademicConstants;
+import my.edu.umk.pams.academic.common.model.AdStudyCenter;
 import my.edu.umk.pams.academic.common.service.CommonService;
 import my.edu.umk.pams.academic.core.AdFlowState;
 import my.edu.umk.pams.academic.graduation.dao.AdGraduationApplicationDao;
+import my.edu.umk.pams.academic.graduation.dao.AdGraduationDao;
+import my.edu.umk.pams.academic.graduation.model.AdGraduation;
 import my.edu.umk.pams.academic.graduation.model.AdGraduationApplication;
+import my.edu.umk.pams.academic.graduation.model.AdGraduationImpl;
+import my.edu.umk.pams.academic.identity.model.AdStaff;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.identity.service.IdentityService;
 import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
+import my.edu.umk.pams.academic.planner.model.AdAcademicStanding;
+import my.edu.umk.pams.academic.planner.model.AdProgram;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
 import my.edu.umk.pams.academic.security.service.SecurityService;
 import my.edu.umk.pams.academic.system.service.SystemService;
+import my.edu.umk.pams.academic.term.model.AdAdmission;
 import my.edu.umk.pams.academic.term.model.AdAdmissionApplication;
+import my.edu.umk.pams.academic.term.model.AdAdmissionImpl;
 import my.edu.umk.pams.academic.workflow.service.WorkflowConstants;
 import my.edu.umk.pams.academic.workflow.service.WorkflowService;
 import org.activiti.engine.task.Task;
+import org.apache.commons.lang.Validate;
 import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,6 +32,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.List;
@@ -40,6 +51,9 @@ public class GraduationServiceImpl implements GraduationService {
 
     @Autowired
     private AdGraduationApplicationDao graduationApplicationDao;
+    
+    @Autowired
+    private AdGraduationDao graduationDao;
 
     @Autowired
     private PlannerService plannerService;
@@ -180,6 +194,45 @@ public class GraduationServiceImpl implements GraduationService {
 	public List<AdGraduationApplication> findGraduationApplicationsByFlowStates(AdFlowState... flowStates) {
 		return graduationApplicationDao.findByFlowStates(flowStates);
 	}
+
+	//post to graduation
+		@Override
+		public void postToGraduation(AdGraduationApplication application) {
+			Validate.notNull(application, "Application cannot be null");
+			admit(application.getSession(), application.getStudent(), application.getCgpa(), application.getCreditHour(), application.getMemo(), application.getReferenceNo());
+		}
+
+		/*@Override
+		public void admit(AdAcademicSession session, AdStudent student, BigDecimal cgpa, Integer creditHour,String memo, String referenceNo) {
+			// TODO Auto-generated method stub
+			
+		}*/
+		
+		
+		@Override
+		public void saveGraduation(AdGraduation graduation) {
+			graduationDao.save(graduation, securityService.getCurrentUser());
+			sessionFactory.getCurrentSession().flush();
+
+		}
+		
+		 //add ordinal to auto semester
+		@Override
+		public void admit(AdAcademicSession session, AdStudent student, BigDecimal cgpa, Integer creditHour,String memo, String referenceNo) {
+			
+					
+			AdGraduation graduation = (AdGraduation) new AdGraduationImpl();
+			graduation.setSession(session);
+			graduation.setStudent(student);
+			graduation.setCgpa(cgpa);
+			graduation.setCreditHour(creditHour);
+			graduation.setMemo(memo);
+			graduation.setReferenceNo(referenceNo);
+			
+			saveGraduation(graduation);
+			sessionFactory.getCurrentSession().refresh(graduation);
+
+		}
 
 		
 	

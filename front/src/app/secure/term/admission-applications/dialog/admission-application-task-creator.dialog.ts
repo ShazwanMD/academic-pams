@@ -55,6 +55,7 @@ export class AdmissionApplicationTaskCreatorDialog implements OnInit {
       id: [undefined],
       student: ['', Validators.required],
       ordinal: ['', Validators.required],
+      studyCenter:['', Validators.required],
       academicSession: ['', Validators.required],
     });
   }
@@ -93,6 +94,7 @@ export class AdmissionApplicationTaskCreatorDialog implements OnInit {
             val['status'] = '';
            }); 
             
+            
         } else {
             if(val['status']== 'success'){
             window.alert('Success insert new data:');
@@ -103,8 +105,6 @@ export class AdmissionApplicationTaskCreatorDialog implements OnInit {
     } 
   );
     
-    //end subscribe
-    
-    
+    //end subscribe  
   }
 }
