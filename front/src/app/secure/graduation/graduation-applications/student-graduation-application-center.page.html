@@ -1,6 +1,6 @@
 <td-layout-nav>
   <div toolbar-content layout="row" layout-align="center center" flex>
-    <span>STUDENT PAMS: Postgraduate Management System</span>
+    <span>PAMS: Postgraduate Management System</span>
     <span flex></span>
   </div>
 
@@ -11,6 +11,10 @@
         Create Graduation Application
       </a>
       <md-divider></md-divider>
+       <a md-list-item [routerLink]="['/secure/graduation/graduation-application-lists']">
+        <md-icon>label</md-icon>
+        List of Graduations
+      </a>
     </md-nav-list>
     <div toolbar-buttons layout="row" layout-align="start center" flex>
       <span flex>Graduation Center</span>
@@ -24,17 +28,23 @@
 
     <md-card>
       <md-tab-group [selectedIndex]="0">
-        <md-tab label="My Application">
+        <md-tab label="My Applications">
           <pams-assigned-graduation-application-task-list
             [graduationApplicationTasks]="assignedGraduationApplicationTasks$ | async"
             (view)="viewTask($event)"></pams-assigned-graduation-application-task-list>
         </md-tab>
-        <md-tab label="Approved Application">
-           <pams-archived-graduation-application-list
+       <!--  <md-tab label="Pooled Applications">
+          <pams-pooled-graduation-application-task-list
+            [graduationApplicationTasks]="pooledGraduationApplicationTasks$ | async"
+            (claim)="claimTask($event)"></pams-pooled-graduation-application-task-list>
+        </md-tab> -->
+          <md-tab label="Complete Applications">
+            <pams-archived-graduation-application-list
             [graduationApplications]="archivedGraduationApplications$ | async"
              (view)="viewGraduationApplication($event)">
              </pams-archived-graduation-application-list>
-        </md-tab>    
+        </md-tab> 
+                
        </md-tab-group>
     </md-card>
 

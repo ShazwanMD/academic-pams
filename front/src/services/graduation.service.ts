@@ -70,10 +70,17 @@ export class GraduationService {
         return this._http.post( this.GRADUATION_API + '/graduationApplications/startTask', JSON.stringify( graduationApplication ) )
             .flatMap(( res: Response ) => Observable.of( res.text() ) );
     }
-
+    //graduation application by administrator
     completeGraduationApplicationTask( graduationApplicationTask: GraduationApplicationTask ): Observable<String> {
         console.log( 'TaskId: ' + graduationApplicationTask.taskId );
         return this._http.post( this.GRADUATION_API + '/graduationApplications/completeTask', JSON.stringify( graduationApplicationTask ) )
+            .flatMap(( res: Response ) => Observable.of( res.text() ) );
+    }
+    
+  //graduation application by student
+    studentCompleteGraduationApplicationTask( graduationApplicationTask: GraduationApplicationTask ): Observable<String> {
+        console.log( 'Student TaskId: ' + graduationApplicationTask.taskId );
+        return this._http.post( this.GRADUATION_API + '/graduationApplications/studentCompleteTask', JSON.stringify( graduationApplicationTask ) )
             .flatMap(( res: Response ) => Observable.of( res.text() ) );
     }
     

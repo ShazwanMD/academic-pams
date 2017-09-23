@@ -151,8 +151,9 @@ export class GraduationApplicationTaskDialog implements OnInit {
         console.log( 'student: ' + graduationApplication.student.identityNo );
 
         this.store.dispatch(this.actions.startGraduationApplicationTask(graduationApplication));
+        console.log(JSON.stringify(graduationApplication));
         this.dialog.closeAll();
-        this.router.navigate(['/secure/graduation/graduation-applications']);
+        this.router.navigate(['/secure/graduation/graduation-applications/student-graduation-application-center']);
         let snackBarRef = this.snackBar.open( 'New graduation has been saved','',{ duration: 2000 } );
         snackBarRef.afterDismissed().subscribe(() => {
            } );

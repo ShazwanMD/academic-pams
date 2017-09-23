@@ -22,7 +22,7 @@ export class StudentGraduationApplicationCenterPage implements OnInit {
   private creatorDialogRef: MdDialogRef<GraduationApplicationCreatorDialog>;
   private assignedGraduationApplicationTasks$: Observable<GraduationApplicationTask>;
   private pooledGraduationApplicationTasks$: Observable<GraduationApplicationTask>;
-  private archivedGraduationApplications$: Observable<GraduationApplicationTask>;
+  private archivedGraduationApplications$: Observable<GraduationApplication>;
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -57,7 +57,7 @@ export class StudentGraduationApplicationCenterPage implements OnInit {
 
   viewTask(task: GraduationApplicationTask) {
     console.log('graduationApplication: ' + task.taskId);
-    this.router.navigate(['/secure/graduation/graduation-applications/graduation-application-task-detail', task.taskId]);
+    this.router.navigate(['/secure/graduation/graduation-applications/student-graduation-application-task-detail', task.taskId]);
   }
   
   viewGraduationApplication(graduationApplication: GraduationApplication) {
@@ -66,9 +66,10 @@ export class StudentGraduationApplicationCenterPage implements OnInit {
     }
 
   ngOnInit(): void {
-    console.log('find assigned/archived graduation application tasks');
+    console.log('find assigned/pooled/archived graduation application tasks');
     this.store.dispatch(this.actions.findAssignedGraduationApplicationTasks());
     this.store.dispatch(this.actions.findPooledGraduationApplicationTasks());
     this.store.dispatch(this.actions.findArchivedGraduationApplications());
+    
   }
 }

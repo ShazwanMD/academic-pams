@@ -9,11 +9,11 @@ import {GraduationApplicationEditorDialog} from '../dialog/graduation-applicatio
 import { GraduationService } from "../../../../../services/graduation.service";
 
 @Component({
-  selector: 'pams-graduation-application-draft-task',
-  templateUrl: './graduation-application-draft-task.panel.html',
+  selector: 'pams-student-graduation-application-draft-task',
+  templateUrl: './student-graduation-application-draft-task.panel.html',
 })
 
-export class GraduationApplicationDraftTaskPanel implements OnInit {
+export class StudentGraduationApplicationDraftTaskPanel implements OnInit {
 
     
   @Input() graduationApplicationTask: GraduationApplicationTask;
@@ -50,9 +50,8 @@ export class GraduationApplicationDraftTaskPanel implements OnInit {
   }*/
   
   register(): void {
-      this._graduationService.completeGraduationApplicationTask(this.graduationApplicationTask).subscribe((res) => {
-          console.log(this.graduationApplicationTask);
-          let snackBarRef = this._snackBar.open('Graduation application completed', 'OK');
+      this._graduationService.studentCompleteGraduationApplicationTask(this.graduationApplicationTask).subscribe((res) => {
+        let snackBarRef = this._snackBar.open('Graduation application completed', 'OK');
         snackBarRef.afterDismissed().subscribe(() => {
           this.goBack();
         });
@@ -61,7 +60,7 @@ export class GraduationApplicationDraftTaskPanel implements OnInit {
   
  
   goBack(): void {
-    this.router.navigate(['secure/graduation/graduation-applications']);
+    this.router.navigate(['secure/graduation/graduation-applications/student-graduation-application-center']);
   }
 
   showDialog(): void {

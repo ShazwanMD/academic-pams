@@ -183,15 +183,32 @@ public class GraduationController {
 		workflowService.claimTask(task);
 	}
 
+	//graduation apply by admin
 	@RequestMapping(value = "/graduationApplications/completeTask", method = RequestMethod.POST)
 	public void completeGraduationApplicationTask(@RequestBody GraduationApplicationTask vo) {
 		// dummyLogin();
 		Task task = graduationService.findGraduationApplicationTaskByTaskId(vo.getTaskId());
 		workflowService.completeTask(task);
 
+		
+		System.out.println("vo.getStudent().getIdentityNo() "+ vo.getStudent().getIdentityNo());
+		
+		if (vo.getStudent().getIdentityNo()!=null){
 		AdStudent student = profileService.findStudentByMatricNo(vo.getStudent().getIdentityNo());
 		student.setStudentStatus(AdStudentStatus.GRADUATED);
 		profileService.updateStudent(student);
+		}
+	}
+	
+	//graduation apply by student
+	@RequestMapping(value = "/graduationApplications/studentCompleteTask", method = RequestMethod.POST)
+	public void studentCompleteGraduationApplicationTask(@RequestBody GraduationApplicationTask vo) {
+		// dummyLogin();
+		Task task = graduationService.findGraduationApplicationTaskByTaskId(vo.getTaskId());
+		workflowService.completeTask(task);
+		
+		System.out.println("studentCompleteTask success");
+
 	}
 	
 	
