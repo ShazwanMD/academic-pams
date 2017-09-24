@@ -75,7 +75,7 @@
                 </div>
               </md-tab>
               
-               <md-tab label="Advisor Details" *ngIf=admissionApplicationTask.application.advisor.identityNo><br>
+               <md-tab label="Advisor Details" *ngIf=admissionApplicationTask.application.advisor><br>
                 <div layout="column" class="inset">
                   <div layout="row" class="pad-bottom">
                     <span flex="15">Advisor ID </span>
@@ -84,6 +84,14 @@
                   <div layout="row" class="pad-bottom">
                     <span flex="15">Advisor Name</span>
                     <span> {{admissionApplicationTask?.application?.advisor?.title}}  {{admissionApplicationTask?.application?.advisor?.name}}</span>
+                  </div>
+                    <div layout="row" class="pad-bottom">
+                    <span flex="15">Advisor Email</span>
+                    <span>{{admissionApplicationTask?.application?.advisor?.email}}</span>
+                  </div>
+                   <div layout="row" class="pad-bottom">
+                    <span flex="15">Advisor Phone</span>
+                    <span>{{admissionApplicationTask?.application?.advisor?.phone}}</span>
                   </div>
                  </div>
               </md-tab>

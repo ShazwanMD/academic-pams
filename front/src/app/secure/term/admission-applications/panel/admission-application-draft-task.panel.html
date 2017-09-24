@@ -44,10 +44,10 @@
                     <span flex="15">Description</span>
                     <span> {{admissionApplicationTask?.description}}</span>
                   </div>
-                   <!-- <div layout="row" class="pad-bottom">
+                    <div layout="row" class="pad-bottom">
                     <span flex="15">Semester</span>
-                    <span> {{admissionApplicationTask?.ordinal}}</span>
-                  </div> -->
+                    <span> {{admissionApplicationTask?.application?.ordinal}}</span>
+                  </div>
                 </div>
               </md-tab>
               <md-tab label="Program Details"><br>
@@ -67,22 +67,9 @@
                 </div>
               </md-tab>
 
-              <md-tab label="Advisor and Student Details"><br>
+             <md-tab label="Student Details"><br>
                 <div layout="column" class="inset">
-                  <div layout="row" class="pad-bottom">
-                    <span flex="15">Advisor ID </span>
-                    <span> {{admissionApplicationTask?.application?.advisor?.identityNo}}</span>
-                  </div>
-                  <div layout="row" class="pad-bottom">
-                    <span flex="15">Advisor Name</span>
-                    <span> {{admissionApplicationTask?.application?.advisor?.name}}</span>
-                  </div>
-                  <div layout="row" class="pad-bottom">
-                    <span flex="15">Advisor Type</span>
-                    <span> {{admissionApplicationTask?.application?.advisor?.staffType}}</span>
-                  </div>
-                  <md-divider></md-divider>
-                  <br>
+                                 
                   <div layout="row" class="pad-bottom">
                     <span flex="15">Student ID </span>
                     <span> {{admissionApplicationTask?.application?.student?.identityNo}}</span>
@@ -93,6 +80,32 @@
                   </div>
                 </div>
               </md-tab>
+              
+               <md-tab label="Advisor Details" *ngIf=admissionApplicationTask.application.advisor>
+               <br>
+                <div layout="column" class="inset">
+                  <div layout="row" class="pad-bottom">
+                    <span flex="15">Advisor ID </span>
+                    <span> {{admissionApplicationTask?.application?.advisor?.identityNo}}</span>
+                  </div>
+                  <div layout="row" class="pad-bottom">
+                    <span flex="15">Advisor Name</span>
+                    <span> {{admissionApplicationTask?.application?.advisor?.name}}</span>
+                  </div>
+                   <div layout="row" class="pad-bottom">
+                    <span flex="15">Advisor Email</span>
+                    <span> {{admissionApplicationTask?.application?.advisor?.email}}</span>
+                  </div>
+                   <div layout="row" class="pad-bottom">
+                    <span flex="15">Advisor Phone</span>
+                    <span> {{admissionApplicationTask?.application?.advisor?.phone}}</span>
+                  </div>
+                                   
+                  <br>
+                 
+                </div>
+              </md-tab>
+              
 
               <md-tab label="Academic Session and Study Center"><br>
                 <div layout="column" class="inset">

@@ -43,6 +43,14 @@
       <span flex>{{value}}</span>
     </div>
   </template>
+  
+   <template tdDataTableTemplate="application.advisor.identityNo" let-value="value" let-row="row" let-column="columns.application.advisor.identityNo">
+        <div layout="row">
+          <div *ngIf="value == null">None</div>
+           <div *ngIf="value != null">{{value}}</div>       
+        </div>
+      </template>
+  
   <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
     <div layout="row">
       <a md-button color="accent" class="text-upper" (click)="claimTask(row)"

@@ -72,10 +72,23 @@ export class StudentAdmissionApplicationDraftTaskPanel implements OnInit {
     });
   }
 
-  remove() {
+  /*remove() {
     this.store.dispatch(this.actions.releaseAdmissionApplicationTask(this.admissionApplicationTask));
     this.goBack();
+  }*/
+  
+  remove() {
+      
+      var txt;
+      var r = confirm("Are you sure to remove this  application?");
+      if (r == true) {
+          this.store.dispatch(this.actions.releaseAdmissionApplicationTask(this.admissionApplicationTask));
+          this.goBack();
+      } else {
+          txt = "Removed application has been cancelled";
+      }
   }
+  
 
   goBack(): void {
     // this._router.navigate(['/secure/term/admission-applications/student-admission-application-center']);
