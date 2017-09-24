@@ -7,12 +7,26 @@
             <md-icon md-list-avatar>done</md-icon>
             <h4 md-line> Register this application </h4>
             <p md-line>Register these {{enrollmentApplicationItems?.length}} courses</p>
-          </md-list-item>
+            </md-list-item>
+            
+            <md-list-item (click)="remove()" *ngIf="enrollmentApplicationItems?.length > 0" >
+              <md-icon md-list-avatar>remove_circle</md-icon>
+            <h4 md-line> Remove this application </h4>
+            <p md-line>Remove these {{enrollmentApplicationItems?.length}} courses</p>
+            </md-list-item>
+            
            <md-list-item *ngIf="enrollmentApplicationItems?.length == 0" >
             <md-icon md-list-avatar>done</md-icon>
             <h4 md-line> Register this application </h4>
-            <p md-line>Register these {{enrollmentApplicationItems?.length}} courses</p>
+            <p md-line>Register these {{enrollmentApplicationItems?.length}} courses</p>        
           </md-list-item>
+          
+            <md-list-item *ngIf="enrollmentApplicationItems?.length == 0" >
+             <md-icon md-list-avatar>remove_circle</md-icon>
+            <h4 md-line> Remove this application </h4>
+            <p md-line>Remove these {{enrollmentApplicationItems?.length}} courses</p>
+          </md-list-item>
+          
           
         </md-nav-list>
       </md-card>
