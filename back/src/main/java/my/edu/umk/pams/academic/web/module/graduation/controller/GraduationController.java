@@ -249,6 +249,15 @@ public class GraduationController {
 		System.out.println("studentCompleteTask success");
 
 	}
+	
+	//release application
+	@RequestMapping(value = "/graduationApplications/releaseTask", method = RequestMethod.POST)
+	public ResponseEntity<String> releaseGraduationApplicationTask(@RequestBody GraduationApplicationTask vo) {
+
+		Task task = graduationService.findGraduationApplicationTaskByTaskId(vo.getTaskId());
+		workflowService.releaseTask(task);
+		return new ResponseEntity<String>("Success", HttpStatus.OK);
+	}
 
 	// ====================================================================================================
 	// PRIVATE METHODS

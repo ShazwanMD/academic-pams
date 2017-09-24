@@ -75,8 +75,8 @@ export class GraduationApplicationTaskDialog implements OnInit {
             sourceNo: '',
             description: '',
             memo:  '',
-            cgpa: [0.00],
-            creditHour: [0],
+            //cgpa: [0.00],
+            //creditHour: [0],
             //student:  ['', Validators.required],
             academicSession: ['', Validators.required],
           });
@@ -198,11 +198,6 @@ export class GraduationApplicationTaskDialog implements OnInit {
         
        //end validation duplicate status 
         
-        
-       /* this.router.navigate(['/secure/graduation/graduation-applications/student-graduation-application-center']);
-        let snackBarRef = this.snackBar.open( 'New graduation has been saved','',{ duration: 2000 } );
-        snackBarRef.afterDismissed().subscribe(() => {
-           } );*/
       }
     
 }

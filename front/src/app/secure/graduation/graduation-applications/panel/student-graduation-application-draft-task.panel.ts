@@ -1,83 +1,102 @@
-import {Component, Input, OnInit, ViewContainerRef} from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
-import {MdDialog, MdDialogConfig, MdDialogRef, MdSnackBar} from '@angular/material';
-import {GraduationApplicationTask} from '../../../../shared/model/graduation/graduation-application-task.interface';
-import {GraduationApplicationActions} from '../graduation-application.action';
-import {Store} from '@ngrx/store';
-import {GraduationModuleState} from '../../index';
-import {GraduationApplicationEditorDialog} from '../dialog/graduation-application-editor.dialog';
+import { Component, Input, OnInit, ViewContainerRef } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { MdDialog, MdDialogConfig, MdDialogRef, MdSnackBar } from '@angular/material';
+import { GraduationApplicationTask } from '../../../../shared/model/graduation/graduation-application-task.interface';
+import { GraduationApplicationActions } from '../graduation-application.action';
+import { Store } from '@ngrx/store';
+import { GraduationModuleState } from '../../index';
+import { GraduationApplicationEditorDialog } from '../dialog/graduation-application-editor.dialog';
 import { GraduationService } from "../../../../../services/graduation.service";
 
-@Component({
-  selector: 'pams-student-graduation-application-draft-task',
-  templateUrl: './student-graduation-application-draft-task.panel.html',
-})
+@Component( {
+    selector: 'pams-student-graduation-application-draft-task',
+    templateUrl: './student-graduation-application-draft-task.panel.html',
+} )
 
 export class StudentGraduationApplicationDraftTaskPanel implements OnInit {
 
-    
-  @Input() graduationApplicationTask: GraduationApplicationTask;
-  private creatorDialogRef: MdDialogRef<GraduationApplicationEditorDialog>;
-  private _route: ActivatedRoute;
-  private _graduationService: GraduationService;
-  private _snackBar: MdSnackBar;
 
-  constructor(private router: Router,
-              private route: ActivatedRoute,
-              private viewContainerRef: ViewContainerRef,
-              private actions: GraduationApplicationActions,
-              private store: Store<GraduationModuleState>,
-              graduationService: GraduationService,
-              private dialog: MdDialog,
-              private vcf: ViewContainerRef,
-              private snackBar: MdSnackBar) {
-      
-      this._route = route;
-      this._graduationService = graduationService;
-      this._snackBar = snackBar;
-  }
+    @Input() graduationApplicationTask: GraduationApplicationTask;
+    private creatorDialogRef: MdDialogRef<GraduationApplicationEditorDialog>;
+    private _route: ActivatedRoute;
+    private _graduationService: GraduationService;
+    private _snackBar: MdSnackBar;
 
-  ngOnInit(): void {
-      this._route.params.subscribe((params: { taskId: string }) => {
-          let taskId: string = params.taskId;
-          // ngrx
-        });
-  }
+    constructor( private router: Router,
+        private route: ActivatedRoute,
+        private viewContainerRef: ViewContainerRef,
+        private actions: GraduationApplicationActions,
+        private store: Store<GraduationModuleState>,
+        graduationService: GraduationService,
+        private dialog: MdDialog,
+        private vcf: ViewContainerRef,
+        private snackBar: MdSnackBar ) {
 
-  /*register() {
-    this.store.dispatch(this.actions.completeGraduationApplicationTask(this.graduationApplicationTask));
-    this.goBack();
-  }*/
-  
-  register(): void {
-      this._graduationService.studentCompleteGraduationApplicationTask(this.graduationApplicationTask).subscribe((res) => {
-        let snackBarRef = this._snackBar.open('Graduation application completed', 'OK');
-        snackBarRef.afterDismissed().subscribe(() => {
-          this.goBack();
-        });
-      });
+        this._route = route;
+        this._graduationService = graduationService;
+        this._snackBar = snackBar;
     }
-  
- 
-  goBack(): void {
-    this.router.navigate(['secure/graduation/graduation-applications/student-graduation-application-center']);
-  }
 
-  showDialog(): void {
-    let config = new MdDialogConfig();
-    config.viewContainerRef = this.vcf;
-    config.role = 'dialog';
-    config.width = '50%';
-    config.height = '40%';
-    config.position = {top: '65px'};
-    this.creatorDialogRef = this.dialog.open(GraduationApplicationEditorDialog, config);
-    this.creatorDialogRef.componentInstance.application = this.graduationApplicationTask.application;
+    ngOnInit(): void {
+        this._route.params.subscribe(( params: { taskId: string } ) => {
+            let taskId: string = params.taskId;
+            // ngrx
+        } );
+    }
 
-    // close
-    this.creatorDialogRef.afterClosed().subscribe((res) => {
-      console.log('close dialog');
-      // load something here
-    });
-  }
+    /*register() {
+      this.store.dispatch(this.actions.completeGraduationApplicationTask(this.graduationApplicationTask));
+      this.goBack();
+    }*/
+
+    register(): void {
+        this._graduationService.studentCompleteGraduationApplicationTask( this.graduationApplicationTask ).subscribe(( res ) => {
+            let snackBarRef = this._snackBar.open( 'Graduation application completed', 'OK' );
+            snackBarRef.afterDismissed().subscribe(() => {
+                this.goBack();
+            } );
+        } );
+    }
+
+    remove() {
+
+        var txt;
+        var r = confirm( "Are you sure to remove this  application?" );
+        if ( r == true ) {
+            this.store.dispatch( this.actions.releaseGraduationApplicationTask( this.graduationApplicationTask ) );
+            let snackBarRef = this._snackBar.open( 'Graduation application has been released', 'OK', {duration: 3000,}  );
+            snackBarRef.afterDismissed().subscribe(() => {
+                this.goBack();
+            } );
+           
+        } else {
+            let snackBarRef = this._snackBar.open( 'Release graduation application has been cancelled', 'OK', {duration: 3000,} );
+            snackBarRef.afterDismissed().subscribe(() => {
+                this.goBack();
+            } );
+        }
+    }
+
+
+    goBack(): void {
+        this.router.navigate( ['secure/graduation/graduation-applications/student-graduation-application-center'] );
+    }
+
+    showDialog(): void {
+        let config = new MdDialogConfig();
+        config.viewContainerRef = this.vcf;
+        config.role = 'dialog';
+        config.width = '50%';
+        config.height = '40%';
+        config.position = { top: '65px' };
+        this.creatorDialogRef = this.dialog.open( GraduationApplicationEditorDialog, config );
+        this.creatorDialogRef.componentInstance.application = this.graduationApplicationTask.application;
+
+        // close
+        this.creatorDialogRef.afterClosed().subscribe(( res ) => {
+            console.log( 'close dialog' );
+            // load something here
+        } );
+    }
 
 }
