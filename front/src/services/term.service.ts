@@ -243,7 +243,7 @@ export class TermService {
         return this._http.post( this.TERM_API + '/enrollmentApplications/releaseTask', JSON.stringify( enrollmentApplicationTask ) )
             .flatMap(( res: Response ) => Observable.of( res.text() ) );
     }
-
+    
     updateEnrollmentApplication( enrollmentApplication: EnrollmentApplication ): Observable<String> {
         return this._http.put( this.TERM_API + '/enrollmentApplications', JSON.stringify( enrollmentApplication ) )
             .flatMap(( res: Response ) => Observable.of( res.text() ) );

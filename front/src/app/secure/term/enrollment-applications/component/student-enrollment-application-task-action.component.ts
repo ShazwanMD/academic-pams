@@ -60,12 +60,20 @@ export class StudentEnrollmentApplicationTaskActionComponent {
     }*/
 
     remove() {
-        this.store.dispatch( this.actions.releaseEnrollmentApplicationTask( this.enrollmentApplicationTask ) );
-        this.goBack();
+        
+        var txt;
+        var r = confirm("Are you sure to remove this application?");
+        if (r == true) {
+            this.store.dispatch( this.actions.releaseEnrollmentApplicationTask( this.enrollmentApplicationTask ) );
+            this.goBack();
+        } else {
+            txt = "Remove application has been cancelled";
+        }
+       
     }
 
     goBack(): void {
-        this.router.navigate( ['/secure/term/enrollment-applications'] );
+        this.router.navigate( ['/secure/term/enrollment-applications/student-enrollment-center'] );
     }
 
     /* editDialog(): void {
