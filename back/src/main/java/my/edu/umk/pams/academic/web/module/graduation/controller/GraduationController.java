@@ -11,20 +11,25 @@ import my.edu.umk.pams.academic.identity.service.IdentityService;
 import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
 import my.edu.umk.pams.academic.planner.model.AdAcademicStanding;
 import my.edu.umk.pams.academic.planner.model.AdAdmissionStatus;
+import my.edu.umk.pams.academic.planner.model.AdCohort;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
 import my.edu.umk.pams.academic.profile.service.ProfileService;
 import my.edu.umk.pams.academic.security.integration.AdAutoLoginToken;
 import my.edu.umk.pams.academic.system.service.SystemService;
 import my.edu.umk.pams.academic.term.model.AdAdmission;
 import my.edu.umk.pams.academic.term.model.AdAdmissionApplication;
+import my.edu.umk.pams.academic.term.service.TermService;
 import my.edu.umk.pams.academic.web.module.graduation.vo.Graduation;
 import my.edu.umk.pams.academic.web.module.graduation.vo.GraduationApplication;
 import my.edu.umk.pams.academic.web.module.graduation.vo.GraduationApplicationTask;
+import my.edu.umk.pams.academic.web.module.identity.controller.IdentityController;
 import my.edu.umk.pams.academic.web.module.term.vo.Admission;
 import my.edu.umk.pams.academic.web.module.term.vo.AdmissionApplication;
 import my.edu.umk.pams.academic.web.module.term.vo.AdmissionApplicationTask;
 import my.edu.umk.pams.academic.workflow.service.WorkflowService;
 import org.activiti.engine.task.Task;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -33,6 +38,9 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
+import groovy.util.logging.Log;
+
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -58,6 +66,9 @@ public class GraduationController {
 	private IdentityService identityService;
 
 	@Autowired
+	private TermService termService;
+	
+	@Autowired
 	private SystemService systemService;
 
 	@Autowired
@@ -65,6 +76,8 @@ public class GraduationController {
 
 	@Autowired
 	private AuthenticationManager authenticationManager;
+	
+    private static final Logger LOG = LoggerFactory.getLogger(GraduationController.class);
 
 	// ====================================================================================================
 	// GRADUATION APPLICATION
@@ -140,6 +153,8 @@ public class GraduationController {
 
 		AdAcademicSession academicSession = plannerService.findAcademicSessionById(vo.getAcademicSession().getId());
 		AdStudent student = identityService.findStudentById(vo.getStudent().getId());
+		AdCohort cohort = student.getCohort();
+		
 
 		if (countGraduation(academicSession, student) > 0) {
 			// throw new IllegalArgumentException("Data admission already
@@ -153,16 +168,23 @@ public class GraduationController {
 			AdGraduationApplication graduationApplication = new AdGraduationApplicationImpl();
 			graduationApplication.setDescription(vo.getDescription());
 			graduationApplication.setMemo(vo.getMemo());
-
+			
+			AdAcademicSession session = plannerService.findCurrentAcademicSession();
+			AdAdmission admission = termService.findAdmissionByAcademicSessionCohortAndStudent(session, cohort, student);
+			BigDecimal cgpa = admission.getCgpa();
+			int creditHour = admission.getCreditEarned();
 			// todo: calculate with latest admission
 			// todo: calculate with all enrollments
-			graduationApplication.setCgpa(vo.getCgpa());
-			graduationApplication.setCreditHour(vo.getCreditHour());
+			graduationApplication.setCgpa(cgpa);
+			graduationApplication.setCreditHour(creditHour);
 			graduationApplication.setStudent(student);
 			graduationApplication.setSession(academicSession);
 			graduationService.startGraduationApplicationTask(graduationApplication);
 
-			System.out.println("Success save data: " + student.getName());
+			LOG.debug("Success save data: " + student.getName());
+			LOG.debug("Cohort:" + student.getCohort());
+			LOG.debug("CGPA:" + graduationApplication.getCgpa());
+			LOG.debug("Credit Hour:" + graduationApplication.getCreditHour());
 		}
 		return new ResponseEntity<String>("success", HttpStatus.OK);
 	}
