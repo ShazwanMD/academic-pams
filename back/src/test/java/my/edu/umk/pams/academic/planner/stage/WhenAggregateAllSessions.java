@@ -73,7 +73,7 @@ public class WhenAggregateAllSessions extends Stage<WhenAggregateAllSessions> {
 		AdAdmissionApplication application = new AdAdmissionApplicationImpl();
         application.setOrdinal(1);
         application.setStudent(student);
-        application.setAdvisor(identityService.findStaffByIdentityNo("01610B"));
+        application.setAdvisor(identityService.findStaffByIdentityNo("00179A"));
         application.setProgram(plannerService.findProgramByCode("MGSEB-MBA"));
         application.setStudyCenter(commonService.findStudyCenterByCode("A"));
         application.setSession(plannerService.findAcademicSessionByCode("201720181"));
@@ -205,7 +205,7 @@ public class WhenAggregateAllSessions extends Stage<WhenAggregateAllSessions> {
         AdAdmissionApplication application2 = new AdAdmissionApplicationImpl();
         application2.setOrdinal(1);
         application2.setStudent(student);
-        application2.setAdvisor(identityService.findStaffByIdentityNo("01610B"));
+        application2.setAdvisor(identityService.findStaffByIdentityNo("00179A"));
         application2.setProgram(plannerService.findProgramByCode("MGSEB-MBA"));
         application2.setStudyCenter(commonService.findStudyCenterByCode("A"));
         application2.setSession(plannerService.findAcademicSessionByCode("201720182"));
@@ -334,7 +334,7 @@ public class WhenAggregateAllSessions extends Stage<WhenAggregateAllSessions> {
         AdAdmissionApplication application3 = new AdAdmissionApplicationImpl();
         application3.setOrdinal(1);
         application3.setStudent(student);
-        application3.setAdvisor(identityService.findStaffByIdentityNo("01610B"));
+        application3.setAdvisor(identityService.findStaffByIdentityNo("00179A"));
         application3.setProgram(plannerService.findProgramByCode("MGSEB-MBA"));
         application3.setStudyCenter(commonService.findStudyCenterByCode("A"));
         application3.setSession(plannerService.findAcademicSessionByCode("201720183"));

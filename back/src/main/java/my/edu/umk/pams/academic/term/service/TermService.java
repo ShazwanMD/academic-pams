@@ -266,6 +266,8 @@ public interface TermService {
     List<AdAdmission> findAdmissions(AdAcademicSession academicSession, Integer offset, Integer limit);
     
     List<AdAdmission> findAdmissions(AdAcademicSession academicSession);
+    
+    List<AdAdmission> findAdmissions(AdAcademicSession academicSession, AdStudent student);
 
     Integer countAdmission(AdAcademicSession academicSession, AdStudent student);
 

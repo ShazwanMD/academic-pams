@@ -67,7 +67,7 @@ public class GraduationController {
 
 	@Autowired
 	private TermService termService;
-	
+
 	@Autowired
 	private SystemService systemService;
 
@@ -76,8 +76,8 @@ public class GraduationController {
 
 	@Autowired
 	private AuthenticationManager authenticationManager;
-	
-    private static final Logger LOG = LoggerFactory.getLogger(GraduationController.class);
+
+	private static final Logger LOG = LoggerFactory.getLogger(GraduationController.class);
 
 	// ====================================================================================================
 	// GRADUATION APPLICATION
@@ -90,15 +90,12 @@ public class GraduationController {
 		return new ResponseEntity<List<GraduationApplication>>(
 				graduationTransformer.toGraduationApplicationVos(graduationApplications), HttpStatus.OK);
 	}
-	
+
 	@RequestMapping(value = "/graduations", method = RequestMethod.GET)
 	public ResponseEntity<List<Graduation>> findGraduations() {
-		List<AdGraduation> graduations = graduationService.findGraduations("%", 0,
-				100);
-		return new ResponseEntity<List<Graduation>>(
-				graduationTransformer.toGraduationVos(graduations), HttpStatus.OK);
+		List<AdGraduation> graduations = graduationService.findGraduations("%", 0, 100);
+		return new ResponseEntity<List<Graduation>>(graduationTransformer.toGraduationVos(graduations), HttpStatus.OK);
 	}
-
 
 	@RequestMapping(value = "/graduationApplications/{referenceNo}", method = RequestMethod.GET)
 	public ResponseEntity<GraduationApplication> findGraduationApplicationByReferenceNo(
@@ -152,9 +149,12 @@ public class GraduationController {
 			throws Exception {
 
 		AdAcademicSession academicSession = plannerService.findAcademicSessionById(vo.getAcademicSession().getId());
+		LOG.debug("Session:{}", academicSession.getCode());
 		AdStudent student = identityService.findStudentById(vo.getStudent().getId());
 		AdCohort cohort = student.getCohort();
-		
+		LOG.debug("Student MatricNo:{}", student.getMatricNo());
+		LOG.debug("Student Name:{}", student.getName());
+		LOG.debug("Cohort:{}", student.getCohort());
 
 		if (countGraduation(academicSession, student) > 0) {
 			// throw new IllegalArgumentException("Data admission already
@@ -168,18 +168,26 @@ public class GraduationController {
 			AdGraduationApplication graduationApplication = new AdGraduationApplicationImpl();
 			graduationApplication.setDescription(vo.getDescription());
 			graduationApplication.setMemo(vo.getMemo());
-			
-			AdAcademicSession session = plannerService.findCurrentAcademicSession();
-			AdAdmission admission = termService.findAdmissionByAcademicSessionCohortAndStudent(session, cohort, student);
-			BigDecimal cgpa = admission.getCgpa();
-			int creditHour = admission.getCreditEarned();
-			// todo: calculate with latest admission
-			// todo: calculate with all enrollments
-			graduationApplication.setCgpa(cgpa);
-			graduationApplication.setCreditHour(creditHour);
+
+			// AdAcademicSession session =
+			// plannerService.findCurrentAcademicSession();
+			List<AdAdmission> admissions = termService.findAdmissions(academicSession, student);
+			for (AdAdmission adAdmission : admissions) {
+				LOG.debug("CGPA:" + adAdmission);
+				LOG.debug("CGPA:" + adAdmission.getCgpa());
+
+				BigDecimal cgpa = adAdmission.getCgpa();
+				int creditHour = adAdmission.getCreditEarned();
+				graduationApplication.setCgpa(cgpa);
+				graduationApplication.setCreditHour(creditHour);
+
+			}
+
 			graduationApplication.setStudent(student);
 			graduationApplication.setSession(academicSession);
 			graduationService.startGraduationApplicationTask(graduationApplication);
+			LOG.debug("After Start:{}",graduationApplication.getCgpa());
+			LOG.debug("After Start:{}", graduationApplication.getCreditHour());
 
 			LOG.debug("Success save data: " + student.getName());
 			LOG.debug("Cohort:" + student.getCohort());
@@ -215,35 +223,33 @@ public class GraduationController {
 		workflowService.claimTask(task);
 	}
 
-	//graduation apply by admin
+	// graduation apply by admin
 	@RequestMapping(value = "/graduationApplications/completeTask", method = RequestMethod.POST)
 	public void completeGraduationApplicationTask(@RequestBody GraduationApplicationTask vo) {
 		// dummyLogin();
 		Task task = graduationService.findGraduationApplicationTaskByTaskId(vo.getTaskId());
 		workflowService.completeTask(task);
 
-		
-		System.out.println("vo.getStudent().getIdentityNo() "+ vo.getStudent().getIdentityNo());
-		
-		if (vo.getStudent().getIdentityNo()!=null){
-		AdStudent student = profileService.findStudentByMatricNo(vo.getStudent().getIdentityNo());
-		student.setStudentStatus(AdStudentStatus.GRADUATED);
-		profileService.updateStudent(student);
+		System.out.println("vo.getStudent().getIdentityNo() " + vo.getStudent().getIdentityNo());
+
+		if (vo.getStudent().getIdentityNo() != null) {
+			AdStudent student = profileService.findStudentByMatricNo(vo.getStudent().getIdentityNo());
+			student.setStudentStatus(AdStudentStatus.GRADUATED);
+			profileService.updateStudent(student);
 		}
 	}
-	
-	//graduation apply by student
+
+	// graduation apply by student
 	@RequestMapping(value = "/graduationApplications/studentCompleteTask", method = RequestMethod.POST)
 	public void studentCompleteGraduationApplicationTask(@RequestBody GraduationApplicationTask vo) {
 		// dummyLogin();
 		Task task = graduationService.findGraduationApplicationTaskByTaskId(vo.getTaskId());
 		workflowService.completeTask(task);
-		
+
 		System.out.println("studentCompleteTask success");
 
 	}
-	
-	
+
 	// ====================================================================================================
 	// PRIVATE METHODS
 	// ====================================================================================================

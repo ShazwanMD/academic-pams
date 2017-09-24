@@ -186,9 +186,12 @@ public class PlannerServiceImpl implements PlannerService {
 
         BigDecimal cgpa = pointHoursPerStudent.divide(hoursPerStudent, TWO, HALF_UP).setScale(TWO, HALF_UP);
         LOG.debug("CGPA:{}", cgpa);
-
+       
+        int creditEarned = hoursPerStudent.toBigInteger().intValue();
         admission.setGpa(gpa);
         admission.setCgpa(cgpa);
+        admission.setCreditEarned(creditEarned);
+        LOG.debug("creditEarned:{}",creditEarned);
         
         //Condition To Check Standing
         if(cgpa.doubleValue() >= 0.00 && cgpa.doubleValue() <= 1.99){

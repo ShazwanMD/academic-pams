@@ -30,7 +30,7 @@ public interface AdAdmissionDao extends GenericDao<Long, AdAdmission> {
     List<AdAdmission> findByProgramAndStudent(AdProgram program, AdStudent student);
 
     List<AdAdmission> find(AdAcademicSession academicSession);
-
+    
     List<AdAdmission> find(AdProgram program);
 
     List<AdAdmission> find(AdStudent student);
