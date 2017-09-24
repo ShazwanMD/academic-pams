@@ -228,7 +228,6 @@ public class GraduationServiceImpl implements GraduationService {
 
 	}
 
-	// add ordinal to auto semester
 	@Override
 	public void admit(AdAcademicSession session, AdStudent student, BigDecimal cgpa, Integer creditHour, String memo,
 			String referenceNo) {

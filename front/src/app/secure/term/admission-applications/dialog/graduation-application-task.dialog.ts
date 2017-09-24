@@ -71,8 +71,7 @@ export class GraduationApplicationTaskDialog implements OnInit {
         } );*/
         
         this.createForm = this.formBuilder.group({
-            referenceNo:  '',
-            sourceNo: '',
+            id: [undefined],
             description: '',
             memo:  '',
             //cgpa: [0.00],
@@ -84,68 +83,7 @@ export class GraduationApplicationTaskDialog implements OnInit {
         if ( this.edit ) this.createForm.patchValue( this._student );
     }
 
-    /*save( graduationApplication: GraduationApplication, isValid: boolean ): void {
-
-        console.log( "_student", this._student );
-
-        this._academicSession = graduationApplication.academicSession;
-        graduationApplication.student = this._student;
-        //admissionApplication.ordinal = 1;
-
-        console.log( 'student: ' + graduationApplication.student.identityNo );
-        //console.log( 'ordinal: ' + graduationApplication.ordinal );
-
-        // setup description
-        graduationApplication.description = graduationApplication.student.identityNo + ' ' + graduationApplication.academicSession.code;
-        this.store.dispatch( this.actions.startGraduationApplicationTask( graduationApplication ) );
-
-        //alert by snackbar if duplicate
-        console.log( "Test subscribe:", this.graduationApplication$.subscribe( val => { val['status'] } ) );
-        this.graduationApplication$.subscribe( val => console.log( 'Accumulated object display:', val['status'] ) );
-
-        this.graduationApplication$.subscribe( val => {
-            if ( val['status'] == 'Duplicate' ) {
-
-                let snackBarRef = this.snackBar.open( 'Duplicate data: ' + graduationApplication.student.identityNo + ' Application has been submitted', '', { duration: 3000 } );
-                snackBarRef.afterDismissed().subscribe(() => {
-                    console.log( 'The snack-bar was dismissed' );
-                    console.log( 'Accumulated object:', val )
-                    val['status'] = '';
-                    try {
-                        this.dialog.closeAll();
-
-                    } catch ( ex ) { }
-                } );
-
-            } else {
-                if ( val['status'] == 'success' ) {
-
-                    //open dialog to confirm registration
-                    console.log( 'showDialog' );
-                    let config = new MdDialogConfig();
-                    config.viewContainerRef = this.vcf;
-                    config.role = 'dialog';
-                    config.width = '60%';
-                    config.height = '50%';
-                    config.position = { top: '0px' };
-                    this.creatorDialogRefConfirm = this.dialog.open( AdmissionApplicationTaskConfirmDialog, config );
-                    this.creatorDialogRefConfirm.componentInstance.student = this._student;
-                    this.creatorDialogRefConfirm.afterClosed().subscribe(( res ) => {
-                        console.log( 'close dialog' );
-                        try {
-                            this.dialog.closeAll();
-
-                        } catch ( ex ) { }
-                        // load something here
-                    } );
-                }
-            }
-        }
-        );
-
-
-    }*/
-    
+   
     save(graduationApplication: GraduationApplication, isValid: boolean) {
         
         console.log( "_student", this._student );
