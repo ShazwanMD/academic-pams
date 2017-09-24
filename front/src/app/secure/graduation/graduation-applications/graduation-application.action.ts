@@ -1,266 +1,266 @@
-import {Injectable} from '@angular/core';
-import {Action} from '@ngrx/store';
+import { Injectable } from '@angular/core';
+import { Action } from '@ngrx/store';
 
 @Injectable()
 export class GraduationApplicationActions {
 
-  static FIND_ASSIGNED_GRADUATION_APPLICATION_TASKS = '[GraduationApplication] Find Assigned GraduationApplication Tasks';
+    static FIND_ASSIGNED_GRADUATION_APPLICATION_TASKS = '[GraduationApplication] Find Assigned GraduationApplication Tasks';
 
-  findAssignedGraduationApplicationTasks(): Action {
-    return {
-      type: GraduationApplicationActions.FIND_ASSIGNED_GRADUATION_APPLICATION_TASKS
-    };
-  }
+    findAssignedGraduationApplicationTasks(): Action {
+        return {
+            type: GraduationApplicationActions.FIND_ASSIGNED_GRADUATION_APPLICATION_TASKS
+        };
+    }
 
-  static FIND_ASSIGNED_GRADUATION_APPLICATION_TASKS_SUCCESS = '[GraduationApplication] Find Assigned GraduationApplication Tasks Success';
+    static FIND_ASSIGNED_GRADUATION_APPLICATION_TASKS_SUCCESS = '[GraduationApplication] Find Assigned GraduationApplication Tasks Success';
 
-  findAssignedGraduationApplicationTasksSuccess(tasks): Action {
-    console.log("findAssignedGraduationApplicationTasksSuccess");
-    return {
-      type: GraduationApplicationActions.FIND_ASSIGNED_GRADUATION_APPLICATION_TASKS_SUCCESS,
-      payload: tasks
-    };
-  }
+    findAssignedGraduationApplicationTasksSuccess( tasks ): Action {
+        console.log( "findAssignedGraduationApplicationTasksSuccess" );
+        return {
+            type: GraduationApplicationActions.FIND_ASSIGNED_GRADUATION_APPLICATION_TASKS_SUCCESS,
+            payload: tasks
+        };
+    }
 
-  static FIND_POOLED_GRADUATION_APPLICATION_TASKS = '[GraduationApplication] Find Pooled GraduationApplication Tasks';
+    static FIND_POOLED_GRADUATION_APPLICATION_TASKS = '[GraduationApplication] Find Pooled GraduationApplication Tasks';
 
-  findPooledGraduationApplicationTasks(): Action {
-    return {
-      type: GraduationApplicationActions.FIND_POOLED_GRADUATION_APPLICATION_TASKS
-    };
-  }
+    findPooledGraduationApplicationTasks(): Action {
+        return {
+            type: GraduationApplicationActions.FIND_POOLED_GRADUATION_APPLICATION_TASKS
+        };
+    }
 
-  static FIND_POOLED_GRADUATION_APPLICATION_TASKS_SUCCESS = '[GraduationApplication] Find Pooled GraduationApplication Tasks Success';
+    static FIND_POOLED_GRADUATION_APPLICATION_TASKS_SUCCESS = '[GraduationApplication] Find Pooled GraduationApplication Tasks Success';
 
-  findPooledGraduationApplicationTasksSuccess(tasks): Action {
-    console.log("findPooledGraduationApplicationTasksSuccess");
-    return {
-      type: GraduationApplicationActions.FIND_POOLED_GRADUATION_APPLICATION_TASKS_SUCCESS,
-      payload: tasks
-    };
-  }
-  
-//archived
-  static FIND_ARCHIVED_GRADUATION_APPLICATIONS = '[GraduationApplication] Find Archived GraduationApplication';
+    findPooledGraduationApplicationTasksSuccess( tasks ): Action {
+        console.log( "findPooledGraduationApplicationTasksSuccess" );
+        return {
+            type: GraduationApplicationActions.FIND_POOLED_GRADUATION_APPLICATION_TASKS_SUCCESS,
+            payload: tasks
+        };
+    }
 
-  findArchivedGraduationApplications(): Action {
-    return {
-      type: GraduationApplicationActions.FIND_ARCHIVED_GRADUATION_APPLICATIONS
-    };
-  }
+    //archived
+    static FIND_ARCHIVED_GRADUATION_APPLICATIONS = '[GraduationApplication] Find Archived GraduationApplication';
 
-  static FIND_ARCHIVED_GRADUATION_APPLICATIONS_SUCCESS = '[GraduationApplication] Find Archived GraduationApplication Success';
+    findArchivedGraduationApplications(): Action {
+        return {
+            type: GraduationApplicationActions.FIND_ARCHIVED_GRADUATION_APPLICATIONS
+        };
+    }
 
-  findArchivedGraduationApplicationsSuccess(graduationApplications): Action {
-    console.log("findArchivedGraduationApplicationsSuccess");
-    return {
-      type: GraduationApplicationActions.FIND_ARCHIVED_GRADUATION_APPLICATIONS_SUCCESS,
-      payload: graduationApplications
-    };
-  }
+    static FIND_ARCHIVED_GRADUATION_APPLICATIONS_SUCCESS = '[GraduationApplication] Find Archived GraduationApplication Success';
 
-  static FIND_GRADUATION_APPLICATION_TASK_BY_TASK_ID = '[GraduationApplication] Find GraduationApplication Task By Task Id';
+    findArchivedGraduationApplicationsSuccess( graduationApplications ): Action {
+        console.log( "findArchivedGraduationApplicationsSuccess" );
+        return {
+            type: GraduationApplicationActions.FIND_ARCHIVED_GRADUATION_APPLICATIONS_SUCCESS,
+            payload: graduationApplications
+        };
+    }
 
-  findGraduationApplicationTaskByTaskId(taskId): Action {
-    console.log("findGraduationApplicationTaskByTaskId");
-    return {
-      type: GraduationApplicationActions.FIND_GRADUATION_APPLICATION_TASK_BY_TASK_ID,
-      payload: taskId
-    };
-  }
+    static FIND_GRADUATION_APPLICATION_TASK_BY_TASK_ID = '[GraduationApplication] Find GraduationApplication Task By Task Id';
 
-  static FIND_GRADUATION_APPLICATION_TASK_BY_TASK_ID_SUCCESS = '[GraduationApplication] Find GraduationApplication Task By Task Id Success';
+    findGraduationApplicationTaskByTaskId( taskId ): Action {
+        console.log( "findGraduationApplicationTaskByTaskId" );
+        return {
+            type: GraduationApplicationActions.FIND_GRADUATION_APPLICATION_TASK_BY_TASK_ID,
+            payload: taskId
+        };
+    }
 
-  findGraduationApplicationTaskByTaskIdSuccess(task): Action {
-    console.log("findGraduationApplicationTaskByTaskIdSuccess");
-    return {
-      type: GraduationApplicationActions.FIND_GRADUATION_APPLICATION_TASK_BY_TASK_ID_SUCCESS,
-      payload: task
-    };
-  }
+    static FIND_GRADUATION_APPLICATION_TASK_BY_TASK_ID_SUCCESS = '[GraduationApplication] Find GraduationApplication Task By Task Id Success';
 
-  static START_GRADUATION_APPLICATION_TASK = '[GraduationApplication] Start GraduationApplication Task';
+    findGraduationApplicationTaskByTaskIdSuccess( task ): Action {
+        console.log( "findGraduationApplicationTaskByTaskIdSuccess" );
+        return {
+            type: GraduationApplicationActions.FIND_GRADUATION_APPLICATION_TASK_BY_TASK_ID_SUCCESS,
+            payload: task
+        };
+    }
 
-  startGraduationApplicationTask(graduationApplication): Action {
-    return {
-      type: GraduationApplicationActions.START_GRADUATION_APPLICATION_TASK,
-      payload: graduationApplication
-    };
-  }
+    static START_GRADUATION_APPLICATION_TASK = '[GraduationApplication] Start GraduationApplication Task';
 
-  static START_GRADUATION_APPLICATION_TASK_SUCCESS = '[GraduationApplication] Start GraduationApplication Task Success';
+    startGraduationApplicationTask( graduationApplication ): Action {
+        return {
+            type: GraduationApplicationActions.START_GRADUATION_APPLICATION_TASK,
+            payload: graduationApplication
+        };
+    }
 
-  startGraduationApplicationTaskSuccess(task): Action {
-    return {
-      type: GraduationApplicationActions.START_GRADUATION_APPLICATION_TASK_SUCCESS,
-      payload: task
-    };
-  }
+    static START_GRADUATION_APPLICATION_TASK_SUCCESS = '[GraduationApplication] Start GraduationApplication Task Success';
 
-  static COMPLETE_GRADUATION_APPLICATION_TASK = '[GraduationApplication] Complete GraduationApplication Task';
+    startGraduationApplicationTaskSuccess( task ): Action {
+        return {
+            type: GraduationApplicationActions.START_GRADUATION_APPLICATION_TASK_SUCCESS,
+            payload: { status: task }
+        };
+    }
 
-  completeGraduationApplicationTask(task): Action {
-    return {
-      type: GraduationApplicationActions.COMPLETE_GRADUATION_APPLICATION_TASK,
-      payload: task
-    };
-  }
+    static COMPLETE_GRADUATION_APPLICATION_TASK = '[GraduationApplication] Complete GraduationApplication Task';
 
-  static COMPLETE_GRADUATION_APPLICATION_TASK_SUCCESS = '[GraduationApplication] Complete GraduationApplication Task Success';
+    completeGraduationApplicationTask( task ): Action {
+        return {
+            type: GraduationApplicationActions.COMPLETE_GRADUATION_APPLICATION_TASK,
+            payload: task
+        };
+    }
 
-  completeGraduationApplicationTaskSuccess(task): Action {
-    return {
-      type: GraduationApplicationActions.COMPLETE_GRADUATION_APPLICATION_TASK_SUCCESS,
-      payload: task
-    };
-  }
+    static COMPLETE_GRADUATION_APPLICATION_TASK_SUCCESS = '[GraduationApplication] Complete GraduationApplication Task Success';
 
-  static CLAIM_GRADUATION_APPLICATION_TASK = '[GraduationApplication] Claim GraduationApplication Task';
+    completeGraduationApplicationTaskSuccess( task ): Action {
+        return {
+            type: GraduationApplicationActions.COMPLETE_GRADUATION_APPLICATION_TASK_SUCCESS,
+            payload: task
+        };
+    }
 
-  claimGraduationApplicationTask(invoice): Action {
-    return {
-      type: GraduationApplicationActions.CLAIM_GRADUATION_APPLICATION_TASK,
-      payload: invoice
-    };
-  }
+    static CLAIM_GRADUATION_APPLICATION_TASK = '[GraduationApplication] Claim GraduationApplication Task';
 
-  static CLAIM_GRADUATION_APPLICATION_TASK_SUCCESS = '[GraduationApplication] Claim GraduationApplication Task Success';
+    claimGraduationApplicationTask( invoice ): Action {
+        return {
+            type: GraduationApplicationActions.CLAIM_GRADUATION_APPLICATION_TASK,
+            payload: invoice
+        };
+    }
 
-  claimGraduationApplicationTaskSuccess(task): Action {
-    return {
-      type: GraduationApplicationActions.CLAIM_GRADUATION_APPLICATION_TASK_SUCCESS,
-      payload: task
-    };
-  }
+    static CLAIM_GRADUATION_APPLICATION_TASK_SUCCESS = '[GraduationApplication] Claim GraduationApplication Task Success';
 
-  static RELEASE_GRADUATION_APPLICATION_TASK = '[GraduationApplication] Release GraduationApplication Task';
+    claimGraduationApplicationTaskSuccess( task ): Action {
+        return {
+            type: GraduationApplicationActions.CLAIM_GRADUATION_APPLICATION_TASK_SUCCESS,
+            payload: task
+        };
+    }
 
-  releaseGraduationApplicationTask(invoice): Action {
-    return {
-      type: GraduationApplicationActions.RELEASE_GRADUATION_APPLICATION_TASK,
-      payload: invoice
-    };
-  }
+    static RELEASE_GRADUATION_APPLICATION_TASK = '[GraduationApplication] Release GraduationApplication Task';
 
-  static RELEASE_GRADUATION_APPLICATION_TASK_SUCCESS = '[GraduationApplication] Release GraduationApplication Task Success';
+    releaseGraduationApplicationTask( invoice ): Action {
+        return {
+            type: GraduationApplicationActions.RELEASE_GRADUATION_APPLICATION_TASK,
+            payload: invoice
+        };
+    }
 
-  releaseGraduationApplicationTaskSuccess(task): Action {
-    return {
-      type: GraduationApplicationActions.RELEASE_GRADUATION_APPLICATION_TASK_SUCCESS,
-      payload: task
-    };
-  }
+    static RELEASE_GRADUATION_APPLICATION_TASK_SUCCESS = '[GraduationApplication] Release GraduationApplication Task Success';
 
-  static FIND_GRADUATION_APPLICATION_BY_ID = '[GraduationApplication] Find GraduationApplication By Id';
+    releaseGraduationApplicationTaskSuccess( task ): Action {
+        return {
+            type: GraduationApplicationActions.RELEASE_GRADUATION_APPLICATION_TASK_SUCCESS,
+            payload: task
+        };
+    }
 
-  findGraduationApplicationById(id): Action {
-    return {
-      type: GraduationApplicationActions.FIND_GRADUATION_APPLICATION_BY_ID,
-      payload: id
-    };
-  }
+    static FIND_GRADUATION_APPLICATION_BY_ID = '[GraduationApplication] Find GraduationApplication By Id';
 
-  static FIND_GRADUATION_APPLICATION_BY_ID_SUCCESS = '[GraduationApplication] Find GraduationApplication By Id Success';
+    findGraduationApplicationById( id ): Action {
+        return {
+            type: GraduationApplicationActions.FIND_GRADUATION_APPLICATION_BY_ID,
+            payload: id
+        };
+    }
 
-  findGraduationApplicationByIdSuccess(invoice): Action {
-    return {
-      type: GraduationApplicationActions.FIND_GRADUATION_APPLICATION_BY_ID_SUCCESS,
-      payload: invoice
-    };
-  }
+    static FIND_GRADUATION_APPLICATION_BY_ID_SUCCESS = '[GraduationApplication] Find GraduationApplication By Id Success';
 
-  static FIND_GRADUATION_APPLICATION_BY_REFERENCE_NO = '[GraduationApplication] Find GraduationApplication By Reference No';
+    findGraduationApplicationByIdSuccess( invoice ): Action {
+        return {
+            type: GraduationApplicationActions.FIND_GRADUATION_APPLICATION_BY_ID_SUCCESS,
+            payload: invoice
+        };
+    }
 
-  findGraduationApplicationByReferenceNo(referenceNo): Action {
-      console.log("findGraduationApplicationByReferenceNo");
-    return {
-      type: GraduationApplicationActions.FIND_GRADUATION_APPLICATION_BY_REFERENCE_NO,
-      payload: referenceNo
-    };
-  }
+    static FIND_GRADUATION_APPLICATION_BY_REFERENCE_NO = '[GraduationApplication] Find GraduationApplication By Reference No';
 
-  static FIND_GRADUATION_APPLICATION_BY_REFERENCE_NO_SUCCESS = '[GraduationApplication] Find GraduationApplication By Reference No Success';
+    findGraduationApplicationByReferenceNo( referenceNo ): Action {
+        console.log( "findGraduationApplicationByReferenceNo" );
+        return {
+            type: GraduationApplicationActions.FIND_GRADUATION_APPLICATION_BY_REFERENCE_NO,
+            payload: referenceNo
+        };
+    }
 
-  findGraduationApplicationByReferenceNoSuccess(invoice): Action {
-      console.log("findGraduationApplicationByReferenceNoSuccess");
-    return {
-      type: GraduationApplicationActions.FIND_GRADUATION_APPLICATION_BY_REFERENCE_NO_SUCCESS,
-      payload: invoice
-    };
-  }
+    static FIND_GRADUATION_APPLICATION_BY_REFERENCE_NO_SUCCESS = '[GraduationApplication] Find GraduationApplication By Reference No Success';
 
-  static UPDATE_GRADUATION_APPLICATION = '[GraduationApplication] Update GraduationApplication';
+    findGraduationApplicationByReferenceNoSuccess( invoice ): Action {
+        console.log( "findGraduationApplicationByReferenceNoSuccess" );
+        return {
+            type: GraduationApplicationActions.FIND_GRADUATION_APPLICATION_BY_REFERENCE_NO_SUCCESS,
+            payload: invoice
+        };
+    }
 
-  updateGraduationApplication(graduationApplication): Action {
-      console.log( "updateGraduationApplication" );
-    return {
-      type: GraduationApplicationActions.UPDATE_GRADUATION_APPLICATION,
-      payload: graduationApplication
-    };
-  }
+    static UPDATE_GRADUATION_APPLICATION = '[GraduationApplication] Update GraduationApplication';
 
-  static UPDATE_GRADUATION_APPLICATION_SUCCESS = '[GraduationApplication] Update GraduationApplication Success';
+    updateGraduationApplication( graduationApplication ): Action {
+        console.log( "updateGraduationApplication" );
+        return {
+            type: GraduationApplicationActions.UPDATE_GRADUATION_APPLICATION,
+            payload: graduationApplication
+        };
+    }
 
-  updateGraduationApplicationSuccess(message): Action {
-      console.log( "updateGraduationApplicationSuccess" );
-    return {
-      type: GraduationApplicationActions.UPDATE_GRADUATION_APPLICATION_SUCCESS,
-      payload: message
-    };
-  }
+    static UPDATE_GRADUATION_APPLICATION_SUCCESS = '[GraduationApplication] Update GraduationApplication Success';
 
-  static REMOVE_GRADUATION_APPLICATION = '[GraduationApplication] Remove GraduationApplication';
+    updateGraduationApplicationSuccess( message ): Action {
+        console.log( "updateGraduationApplicationSuccess" );
+        return {
+            type: GraduationApplicationActions.UPDATE_GRADUATION_APPLICATION_SUCCESS,
+            payload: message
+        };
+    }
 
-  removeGraduationApplication(invoice): Action {
-    return {
-      type: GraduationApplicationActions.REMOVE_GRADUATION_APPLICATION,
-      payload: invoice
-    };
-  }
+    static REMOVE_GRADUATION_APPLICATION = '[GraduationApplication] Remove GraduationApplication';
 
-  static REMOVE_GRADUATION_APPLICATION_SUCCESS = '[GraduationApplication] Remove GraduationApplication Success';
+    removeGraduationApplication( invoice ): Action {
+        return {
+            type: GraduationApplicationActions.REMOVE_GRADUATION_APPLICATION,
+            payload: invoice
+        };
+    }
 
-  removeGraduationApplicationSuccess(invoice): Action {
-    return {
-      type: GraduationApplicationActions.REMOVE_GRADUATION_APPLICATION_SUCCESS,
-      payload: invoice
-    };
-  }
-  
-  //find graduation applications
-  static FIND_GRADUATION_APPLICATIONS = '[GraduationApplication] Find Graduation Applications';
+    static REMOVE_GRADUATION_APPLICATION_SUCCESS = '[GraduationApplication] Remove GraduationApplication Success';
 
-  findGraduationApplications(): Action {
-    return {
-      type: GraduationApplicationActions.FIND_GRADUATION_APPLICATIONS
-    };
-  }
+    removeGraduationApplicationSuccess( invoice ): Action {
+        return {
+            type: GraduationApplicationActions.REMOVE_GRADUATION_APPLICATION_SUCCESS,
+            payload: invoice
+        };
+    }
 
-  static FIND_GRADUATION_APPLICATIONS_SUCCESS = '[GraduationApplication] Find Graduation Applications Success';
+    //find graduation applications
+    static FIND_GRADUATION_APPLICATIONS = '[GraduationApplication] Find Graduation Applications';
 
-  findGraduationApplicationsSuccess(graduationApplications): Action {
-    return {
-      type: GraduationApplicationActions.FIND_GRADUATION_APPLICATIONS_SUCCESS,
-      payload: graduationApplications
-    };
-  }
-  
-  //find graduations
-  static FIND_GRADUATIONS = '[GraduationApplication] Find Graduations';
+    findGraduationApplications(): Action {
+        return {
+            type: GraduationApplicationActions.FIND_GRADUATION_APPLICATIONS
+        };
+    }
 
-  findGraduations(): Action {
-    return {
-      type: GraduationApplicationActions.FIND_GRADUATIONS
-    };
-  }
+    static FIND_GRADUATION_APPLICATIONS_SUCCESS = '[GraduationApplication] Find Graduation Applications Success';
 
-  static FIND_GRADUATIONS_SUCCESS = '[GraduationApplication] Find Graduations Success';
+    findGraduationApplicationsSuccess( graduationApplications ): Action {
+        return {
+            type: GraduationApplicationActions.FIND_GRADUATION_APPLICATIONS_SUCCESS,
+            payload: graduationApplications
+        };
+    }
 
-  findGraduationsSuccess(graduations): Action {
-    return {
-      type: GraduationApplicationActions.FIND_GRADUATIONS_SUCCESS,
-      payload: graduations
-    };
-  }
-  
+    //find graduations
+    static FIND_GRADUATIONS = '[GraduationApplication] Find Graduations';
+
+    findGraduations(): Action {
+        return {
+            type: GraduationApplicationActions.FIND_GRADUATIONS
+        };
+    }
+
+    static FIND_GRADUATIONS_SUCCESS = '[GraduationApplication] Find Graduations Success';
+
+    findGraduationsSuccess( graduations ): Action {
+        return {
+            type: GraduationApplicationActions.FIND_GRADUATIONS_SUCCESS,
+            payload: graduations
+        };
+    }
+
 }
