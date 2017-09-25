@@ -36,7 +36,7 @@ public interface AdStudent extends AdActor {
 	
 	void setMemo(String memo);
 	
-	Boolean isOutstanding();
+	Boolean getOutstanding();
 	
 	void setOutstanding(Boolean outstanding);
 	

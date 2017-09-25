@@ -66,7 +66,7 @@ public class AdStudentImpl extends AdActorImpl implements AdStudent {
 		this.balance = balance;
 	}
 	@Override
-	public Boolean isOutstanding() {
+	public Boolean getOutstanding() {
 		return outstanding;
 	}
 	@Override

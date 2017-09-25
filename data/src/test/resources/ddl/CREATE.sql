@@ -1411,6 +1411,8 @@
         ID int8 not null,
         COHORT_ID int8,
         STUDY_MODE_ID int8,
+        BALANCE numeric(19, 2),
+        OUTSTANDING boolean,
         primary key (ID)
     );
 

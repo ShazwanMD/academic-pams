@@ -1,12 +1,7 @@
 <td-layout-manage-list #list>
   <md-nav-list list-items>
   <h3 md-subheader>Enrollments</h3>
-    <!-- class="text-upper" -->
-    <!--  <a md-list-item (click)="semesterRegister()" color="accent" *ngIf="admissions?.length < 1">
-      <md-icon>create</md-icon>
-      <span>Apply Semester Registration</span>
-    </a>  -->
-     <a md-list-item (click)="statusSemesterRegister()" color="accent">
+        <a md-list-item (click)="statusSemesterRegister()" color="accent">
       <md-icon>drafts</md-icon>
       <span>Semester Registration Status </span>
                <md-chip-list >
@@ -22,7 +17,7 @@
      <div>
       <a md-list-item color="accent" >
         <md-icon>library_books</md-icon>
-        <span> Session Status <!-- <a href="#sessionStatus"> Session Status </a>  --> </span>
+        <span> Session Status </span>
          <md-chip-list >
          <md-chip color="accent" >{{admissions?.length}} </md-chip>
          </md-chip-list>   
@@ -93,7 +88,8 @@
               <b>Email</b> : {{student?.email}}<br/><br/>
               <b>Phone</b> : {{student?.phone}}<br/><br/>
               <b>Mobile</b> : {{student?.mobile}}<br/><br/>
-               <b>Status</b> : {{student.studentStatus}}
+               <b>Status</b> : {{student?.studentStatus}}<br/><br/>
+                
             </div>
 
             <div flex-gt-md="40">
@@ -102,6 +98,9 @@
               <b>Program</b> : {{student?.cohort?.program?.titleMs | uppercase}}<br/><br/>
               <b>Faculty</b> : {{student?.cohort?.program?.faculty?.description}}<br/><br/>
               <b>Cohort Session</b> : {{student?.cohort?.academicSession?.code}}<br/><br/>
+              <b>Memo</b> : {{student?.memo}}<br/><br/>
+              <!--  <b>Balance</b> : {{student?.balance}}<br/><br/>
+                <b>Outstanding</b> : {{student?.outstanding}}<br/><br/> -->
             </div>
             <div flex-gt-md="5">
               <button md-icon-button [md-menu-trigger-for]="menu1">
@@ -298,9 +297,71 @@
               </md-card>
             </div>
           </td-expansion-panel>
+          
+          <!-- Advisory Info -->
+          <td-expansion-panel label="Advisor Information" class="bgc-light-blue-400">
+            <div class="md-padding" class="bgc-light-blue-50">
+              <md-card>
+               <div toolbar-buttons layout="row" layout-align="start center" flex>
+    <md-card-title>Advisor Information</md-card-title>
+    <md-chip-list *ngIf="admissionApplications?.length > 0">
+      <md-chip color="accent">{{admissionApplications?.length}}</md-chip>
+    </md-chip-list>
+    <span flex></span>
+  </div>
+                <md-divider></md-divider>
+                <md-card-content>
+                  <td-data-table [data]="admissions" [columns]="columnAdmissionAdvisor" [sortBy]="summary" [sortOrder]="ASC" [sortable]="false" [multiple]="false"
+                    [selectable]="false" (rowSelect)="edit.emit($event)" dense>
+
+                    <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
+                      <div layout="row">
+                        <span flex>{{value}}</span>
+                      </div>
+                    </template>
+                     <template tdDataTableTemplate="advisor.name" let-value="value" let-row="row" let-column="columns.advisor.name">
+        <div layout="row">
+          <div *ngIf="value == null">None</div>
+           <div *ngIf="value != null">{{value}}</div>       
+        </div>
+      </template>
+       <template tdDataTableTemplate="advisor.email" let-value="value" let-row="row" let-column="columns.advisor.email">
+        <div layout="row">
+          <div *ngIf="value == null">None</div>
+           <div *ngIf="value != null">{{value}}</div>       
+        </div>
+      </template>
+       <template tdDataTableTemplate="advisor.identityNo" let-value="value" let-row="row" let-column="columns.advisor.identityNo">
+        <div layout="row">
+          <div *ngIf="value == null">None</div>
+           <div *ngIf="value != null">{{value}}</div>       
+        </div>
+      </template>
+       <template tdDataTableTemplate="advisor.phone" let-value="value" let-row="row" let-column="columns.advisor.phone">
+        <div layout="row">
+          <div *ngIf="value == null">None</div>
+           <div *ngIf="value != null">{{value}}</div>       
+        </div>
+      </template>
+       <template tdDataTableTemplate="advisor.program.code" let-value="value" let-row="row" let-column="columns.advisor.program.code">
+        <div layout="row">
+          <div *ngIf="value == null">None</div>
+           <div *ngIf="value != null">{{value}}</div>       
+        </div>
+      </template>
+       <template tdDataTableTemplate="advisor.program.faculty.name" let-value="value" let-row="row" let-column="columns.advisor.program.faculty.name">
+        <div layout="row">
+          <div *ngIf="value == null">None</div>
+           <div *ngIf="value != null">{{value}}</div>       
+        </div>
+      </template>
+                  </td-data-table>
+                </md-card-content>
+              </md-card>
+            </div>
+          </td-expansion-panel>
 
           <!-- Admission Info -->
-          
           <td-expansion-panel label="Semester Registration Information " class="bgc-light-blue-400" >
             <!-- <md-chip-list *ngIf="admissions?.length > 0">
                        <md-chip color="accent">{{admissions?.length}}</md-chip>
@@ -358,74 +419,8 @@
               </md-card>
             </div>
           </td-expansion-panel>
-          
-            <!-- Advisory Info -->
-          <td-expansion-panel label="Advisor Information" class="bgc-light-blue-400">
-            <div class="md-padding" class="bgc-light-blue-50">
-              <md-card>
-               <div toolbar-buttons layout="row" layout-align="start center" flex>
-    <md-card-title>Advisor Information</md-card-title>
-    <md-chip-list *ngIf="admissionApplications?.length > 0">
-      <md-chip color="accent">{{admissionApplications?.length}}</md-chip>
-    </md-chip-list>
-    <span flex></span>
-  </div>
-                <md-divider></md-divider>
-                <md-card-content>
-                  <td-data-table [data]="admissionApplications" [columns]="columnAdmissionApplication" [sortBy]="summary" [sortOrder]="ASC" [sortable]="false" [multiple]="false"
-                    [selectable]="false" (rowSelect)="edit.emit($event)" dense>
-
-                    <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
-                      <div layout="row">
-                        <span flex>{{value}}</span>
-                      </div>
-                    </template>
-                     <template tdDataTableTemplate="advisor.name" let-value="value" let-row="row" let-column="columns.advisor.name">
-        <div layout="row">
-          <div *ngIf="value == null">None</div>
-           <div *ngIf="value != null">{{value}}</div>       
-        </div>
-      </template>
-       <template tdDataTableTemplate="advisor.email" let-value="value" let-row="row" let-column="columns.advisor.email">
-        <div layout="row">
-          <div *ngIf="value == null">None</div>
-           <div *ngIf="value != null">{{value}}</div>       
-        </div>
-      </template>
-       <template tdDataTableTemplate="advisor.identityNo" let-value="value" let-row="row" let-column="columns.advisor.identityNo">
-        <div layout="row">
-          <div *ngIf="value == null">None</div>
-           <div *ngIf="value != null">{{value}}</div>       
-        </div>
-      </template>
-       <template tdDataTableTemplate="advisor.phone" let-value="value" let-row="row" let-column="columns.advisor.phone">
-        <div layout="row">
-          <div *ngIf="value == null">None</div>
-           <div *ngIf="value != null">{{value}}</div>       
-        </div>
-      </template>
-       <template tdDataTableTemplate="advisor.program.code" let-value="value" let-row="row" let-column="columns.advisor.program.code">
-        <div layout="row">
-          <div *ngIf="value == null">None</div>
-           <div *ngIf="value != null">{{value}}</div>       
-        </div>
-      </template>
-       <template tdDataTableTemplate="advisor.program.faculty.name" let-value="value" let-row="row" let-column="columns.advisor.program.faculty.name">
-        <div layout="row">
-          <div *ngIf="value == null">None</div>
-           <div *ngIf="value != null">{{value}}</div>       
-        </div>
-      </template>
-                  </td-data-table>
-                </md-card-content>
-                             
-                
-              </md-card>
-            </div>
-          </td-expansion-panel>
-          
+                   
            <!-- Academic Session Info -->
-           
           <td-expansion-panel label="Academic Session Information" class="bgc-light-blue-400">
             <div id="sessionStatus" class="md-padding" class="bgc-light-blue-50">
               <md-card>

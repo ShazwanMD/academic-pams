@@ -77,6 +77,9 @@ public class IdentityTransformer {
         vo.setPhone(student.getPhone());
         vo.setFax(student.getFax());
         vo.setStudentStatus(StudentStatus.get(student.getStudentStatus().ordinal()));
+        vo.setBalance(student.getBalance());
+        vo.setOutstanding(student.getOutstanding());
+        vo.setMemo(student.getMemo());
         vo.setCohort(plannerTransformer.toCohortVo(student.getCohort()));
        
         return vo;

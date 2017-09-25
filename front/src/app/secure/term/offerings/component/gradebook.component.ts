@@ -37,6 +37,7 @@ export class GradebookComponent implements OnChanges {
                         for ( let j = 0; j < b.length; j++ ) {
                             this.columns[j + 1] = {
                                 label: b[j].assessment.description,
+                                
                                 name: 'gradebooks.' + j + '.score',
                             };
                         }

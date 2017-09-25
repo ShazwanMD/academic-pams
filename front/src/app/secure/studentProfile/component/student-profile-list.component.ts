@@ -151,8 +151,8 @@ export class StudentProfileListPage implements OnInit {
     ];
 
 
-    //view data admissionApplications to review supervision 
-    private columnAdmissionApplication: any[] = [
+    //view data admissions to review supervision 
+    private columnAdmissionAdvisor: any[] = [
         { name: 'id', label: 'Id' },
         { name: 'academicSession.code', label: 'Academic Session' },
         { name: 'advisor.name', label: 'Name' },
@@ -167,25 +167,23 @@ export class StudentProfileListPage implements OnInit {
     //view data graduationApplications
     private columnGraduationApplication: any[] = [
         { name: 'id', label: 'Id' },
+        { name: 'referenceNo', label: 'Reference No' },
+        { name: 'academicSession.code', label: 'academicSession' },
         { name: 'cgpa', label: 'CGPA' },
         { name: 'creditHour', label: 'Credit Hour' },
-        { name: 'referenceNo', label: 'Reference No' },
         { name: 'description', label: 'Description' },
-        { name: 'academicSession.code', label: 'academicSession' },
         { name: 'action', label: '' },
     ];
     
     //view data graduations
     private columnGraduation: any[] = [
         { name: 'id', label: 'Id' },
+        { name: 'referenceNo', label: 'Reference No' },
+        { name: 'academicSession.code', label: 'academicSession' },
         { name: 'cgpa', label: 'CGPA' },
         { name: 'creditHour', label: 'Credit Hour' },
-        { name: 'referenceNo', label: 'Reference No' },
-        //{ name: 'description', label: 'Description' },
-        { name: 'academicSession.code', label: 'academicSession' },
         { name: 'action', label: '' },
     ];
-
 
     goBack( route: string ): void {
         this.router.navigate( ['/studentProfile'] );
