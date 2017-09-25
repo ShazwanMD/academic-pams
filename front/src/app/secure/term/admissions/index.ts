@@ -17,6 +17,7 @@ import {EffectsModule} from '@ngrx/effects';
 import {AdmissionActions} from './admission.action';
 import {AdmissionListComponent} from './component/admission-list.component';
 import {AdmissionComponent} from './component/admission.component';
+import {AdmissionSessionComponent} from './component/admission-session.component';
 import {AdmissionEnrollmentInfoComponent} from './component/admission-enrollment-info.component';
 import {AdmissionDetailPage} from './admission-detail.page';
 import {AdmissionCenterPage} from './admission-center.page';
@@ -38,6 +39,7 @@ import {StudentAdmissionActionComponent} from './component/student-admission-act
 import {StudentAdmissionEnrollmentListComponent} from './component/student-admission-enrollment-list.component';
 import {StudentAdmissionEnrollmentApplicationListComponent} from './component/student-admission-enrollment-application-list.component';
 import { AssignSupervisorDialog } from "./dialog/assign-supervisor.dialog";
+import { AdmissionSessionDetailPage } from "./admission-session-detail.page";
 
 
 @NgModule({
@@ -58,12 +60,14 @@ import { AssignSupervisorDialog } from "./dialog/assign-supervisor.dialog";
     AdmissionCenterPage,
     StudentAdmissionCenterPage,
     AdmissionDetailPage,
+    AdmissionSessionDetailPage,
     StudentAdmissionDetailPage,
 
     // component
     AdmissionListComponent,
     AdmissionApplicationListComponent,
     AdmissionComponent,
+    AdmissionSessionComponent,
     AdmissionActionComponent,
     StudentAdmissionActionComponent,
     AdmissionEnrollmentInfoComponent,

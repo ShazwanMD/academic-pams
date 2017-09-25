@@ -17,14 +17,17 @@
       <md-icon>drafts</md-icon>
       <span>Course Enrollment Status </span>
     </a>
-         <!-- <md-divider></md-divider>
-        <h3 md-subheader>Academic Session</h3> -->
-    <!-- <div>
-      <a md-list-item (click)="academicSessionDetail()" color="accent" >
+        <md-divider></md-divider>
+        <h3 md-subheader>Academic Session</h3>
+     <div>
+      <a md-list-item color="accent" >
         <md-icon>library_books</md-icon>
-        <span> Session Status  </span>
+        <span> Session Status <!-- <a href="#sessionStatus"> Session Status </a>  --> </span>
+         <md-chip-list >
+         <md-chip color="accent" >{{admissions?.length}} </md-chip>
+         </md-chip-list>   
       </a>
-    </div> -->
+    </div> 
     <md-divider></md-divider>
       <md-divider></md-divider>
      <h3 md-subheader>Graduation</h3>
@@ -415,9 +418,57 @@
       </template>
                   </td-data-table>
                 </md-card-content>
+                             
+                
               </md-card>
             </div>
           </td-expansion-panel>
+          
+           <!-- Academic Session Info -->
+           
+          <td-expansion-panel label="Academic Session Information" class="bgc-light-blue-400">
+            <div id="sessionStatus" class="md-padding" class="bgc-light-blue-50">
+              <md-card>
+               <div toolbar-buttons layout="row" layout-align="start center" flex>
+    <md-card-title>Academic Session Information</md-card-title>
+    <md-chip-list *ngIf="admissions?.length > 0">
+      <md-chip color="accent">{{admissions?.length}}</md-chip>
+    </md-chip-list>
+    <span flex></span>
+  </div>
+                <md-divider></md-divider>
+                <md-card-content>
+                  <td-data-table [data]="admissions" [columns]="columnAdmissionSession" [sortBy]="summary" [sortOrder]="ASC" [sortable]="false" [multiple]="false"
+                    [selectable]="false" (rowSelect)="edit.emit($event)" dense>
+
+                    <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
+                      <div layout="row">
+                        <span flex>{{value}}</span>
+                      </div>
+                    </template>
+                      <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
+                      <div layout="row">
+                        <a md-button color="accent" class="text-upper" [routerLink]="['/secure/term/admission-sessions', row.id]">
+                          <!-- (click)="viewAdmission(row)" -->
+                          <span>View </span>
+                        </a>
+                      </div>
+                    </template>
+             
+      <!--  <template tdDataTableTemplate="advisor.program.faculty.name" let-value="value" let-row="row" let-column="columns.advisor.program.faculty.name">
+        <div layout="row">
+          <div *ngIf="value == null">None</div>
+           <div *ngIf="value != null">{{value}}</div>       
+        </div>
+      </template> -->
+                  </td-data-table>
+                </md-card-content>
+                             
+                
+              </md-card>
+            </div>
+          </td-expansion-panel>
+          
           
             <!-- Graduation Application Info -->
           

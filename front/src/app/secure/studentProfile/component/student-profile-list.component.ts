@@ -138,6 +138,18 @@ export class StudentProfileListPage implements OnInit {
         { name: 'action', label: '' },
 
     ];
+    
+  //Admission to review sessions
+    private columnAdmissionSession: any[] = [
+        { name: 'academicSession.code', label: 'Session' },
+        { name: 'academicSession.description', label: 'Session' },
+        { name: 'academicSession.current', label: 'Status' },
+        { name: 'academicSession.semester', label: 'Semester' },
+        { name: 'academicSession.year.year', label: 'Year' },
+        { name: 'action', label: '' },
+
+    ];
+
 
     //view data admissionApplications to review supervision 
     private columnAdmissionApplication: any[] = [
@@ -471,7 +483,7 @@ export class StudentProfileListPage implements OnInit {
     /*=========================================================================================*/
 
     //STATUS 
-    academicSessionDetail() {
+    admissionSessionDetail() {
         this.router.navigate( ['/secure/academicSessions'] );
     }
 

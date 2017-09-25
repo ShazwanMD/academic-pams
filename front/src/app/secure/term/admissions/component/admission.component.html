@@ -54,6 +54,14 @@
             <span flex="15">Phone</span>
             <span>{{admission?.student?.phone}}</span>
           </div>
+           <div layout="row" class="pad-bottom">
+            <span flex="15">Fax</span>
+            <span>{{admission?.student?.fax}}</span>
+          </div>
+           <div layout="row" class="pad-bottom">
+            <span flex="15">Status</span>
+            <span>{{admission?.student?.studentStatus}}</span>
+          </div>
 
         </div>
       </md-tab>
@@ -67,6 +75,10 @@
           <div layout="row" class="pad-bottom">
             <span flex="15">Description</span>
             <span>{{admission?.academicSession?.description}}</span>
+          </div>
+          <div layout="row" class="pad-bottom">
+            <span flex="15">Description</span>
+            <span>{{admission?.academicSession?.semester}}</span>
           </div>
         </div>
       </md-tab>

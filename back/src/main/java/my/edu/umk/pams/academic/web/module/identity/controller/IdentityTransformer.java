@@ -11,6 +11,7 @@ import my.edu.umk.pams.academic.web.module.identity.vo.Actor;
 import my.edu.umk.pams.academic.web.module.identity.vo.ActorType;
 import my.edu.umk.pams.academic.web.module.identity.vo.Staff;
 import my.edu.umk.pams.academic.web.module.identity.vo.Student;
+import my.edu.umk.pams.academic.web.module.identity.vo.StudentStatus;
 import my.edu.umk.pams.academic.web.module.planner.controller.PlannerTransformer;
 import my.edu.umk.pams.academic.web.module.term.controller.TermTransformer;
 import my.edu.umk.pams.academic.workflow.service.WorkflowService;
@@ -75,6 +76,7 @@ public class IdentityTransformer {
         vo.setMobile(student.getMobile());
         vo.setPhone(student.getPhone());
         vo.setFax(student.getFax());
+        vo.setStudentStatus(StudentStatus.get(student.getStudentStatus().ordinal()));
         vo.setCohort(plannerTransformer.toCohortVo(student.getCohort()));
        
         return vo;

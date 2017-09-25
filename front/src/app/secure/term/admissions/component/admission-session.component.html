@@ -1,0 +1,300 @@
+ <md-card>
+   <md-card-title>
+            <img src="http://localhost:4200\assets\ico\umk.png" width="30" height="30"> {{admission?.academicSession?.description}}
+          </md-card-title>
+          <md-card-subtitle>{{admission?.academicSession?.code}}</md-card-subtitle>
+          <md-divider></md-divider>
+  <md-card-content>     
+ <!--  <md-tab-group>
+      <md-tab label="Admission Session Information">
+
+        <div layout="column" class="inset">
+          <div layout="row" class="pad-bottom">
+            <span flex="15">GPA </span>
+            <span>{{admission?.gpa}}</span>
+          </div>
+          <div layout="row" class="pad-bottom">
+            <span flex="15">CGPA</span>
+            <span>{{admission?.cgpa}}</span>
+          </div>
+
+          <div layout="row" class="pad-bottom">
+            <span flex="15">Credit Taken </span>
+            <span>{{admission?.creditTaken}}</span>
+          </div>
+          <div layout="row" class="pad-bottom">
+            <span flex="15">Credit Earned </span>
+            <span>{{admission?.creditEarned}}</span>
+          </div>
+          <div layout="row" class="pad-bottom">
+            <span flex="15">Semester</span>
+            <span>{{admission?.ordinal}}</span>
+          </div>
+
+        </div>
+      </md-tab>
+
+      <md-tab label="Student Information">
+
+        <div layout="column" class="inset">
+          <div layout="row" class="pad-bottom">
+            <span flex="15">Identity No. </span>
+            <span>{{admission?.student?.identityNo}}</span>
+          </div>
+          <div layout="row" class="pad-bottom">
+            <span flex="15">Name</span>
+            <span>{{admission?.student?.name}}</span>
+          </div>
+
+          <div layout="row" class="pad-bottom">
+            <span flex="15">Email</span>
+            <span>{{admission?.student?.email}}</span>
+          </div>
+          <div layout="row" class="pad-bottom">
+            <span flex="15">Phone</span>
+            <span>{{admission?.student?.phone}}</span>
+          </div>
+           <div layout="row" class="pad-bottom">
+            <span flex="15">Fax</span>
+            <span>{{admission?.student?.fax}}</span>
+          </div>
+           <div layout="row" class="pad-bottom">
+            <span flex="15">Status</span>
+            <span>{{admission?.student?.studentStatus}}</span>
+          </div>
+
+        </div>
+      </md-tab>
+      <md-tab label="Academic Information">
+
+        <div layout="column" class="inset">
+          <div layout="row" class="pad-bottom">
+            <span flex="15">Code</span>
+            <span>{{admission?.academicSession?.code}}</span>
+          </div>
+          <div layout="row" class="pad-bottom">
+            <span flex="15">Description</span>
+            <span>{{admission?.academicSession?.description}}</span>
+          </div>
+          <div layout="row" class="pad-bottom">
+            <span flex="15">Description</span>
+            <span>{{admission?.academicSession?.semester}}</span>
+          </div>
+        </div>
+      </md-tab>
+      <md-tab label="Cohort Information">
+
+        <div layout="column" class="inset">
+          <div layout="row" class="pad-bottom">
+            <span flex="15">Code</span>
+            <span>{{admission?.cohort?.code}}</span>
+          </div>
+          <div layout="row" class="pad-bottom">
+            <span flex="15">Description</span>
+            <span>{{admission?.cohort?.description}}</span>
+          </div>
+        </div>
+      </md-tab>
+       <md-tab label="Advisor Information" *ngIf=admission.advisor>
+
+        <div layout="column" class="inset">
+          <div layout="row" class="pad-bottom">
+            <span flex="15">Name</span>
+            <span>{{admission?.advisor?.name}}</span>
+          </div>
+          <div layout="row" class="pad-bottom">
+            <span flex="15">Email</span>
+            <span>{{admission?.advisor?.email}}</span>
+          </div>
+           <div layout="row" class="pad-bottom">
+            <span flex="15">Phone</span>
+            <span>{{admission?.advisor?.phone}}</span>
+          </div>
+           <div layout="row" class="pad-bottom">
+            <span flex="15">Mobile</span>
+            <span>{{admission?.advisor?.mobile}}</span>
+          </div>
+        </div>
+      </md-tab>
+
+    </md-tab-group> -->
+    
+     <md-tab-group>
+              <md-tab label="Academic Session Detail"><br>
+                <div layout="column" layout-gt-md="row" class="insert">
+                  <div flex-gt-md="30">
+
+                    <div layout="row" class="pad-bottom">
+                      <span flex="15">Student ID</span>
+                      <span>{{admission?.student?.identityNo}}</span>
+                    </div>
+                    <div layout="row" class="pad-bottom">
+                      <span flex="15">Name</span>
+                      <span>{{admission?.student?.name}}</span>
+                    </div>
+                    <div layout="row" class="pad-bottom">
+                      <span flex="15">Semester</span>
+                      <span>{{admission?.student?.cohort?.academicSession?.semester}}</span>
+                    </div>
+                  </div>
+                  <div flex-gt-md="30">
+                    <div layout="row" class="pad-bottom">
+                      <span flex="15">Status</span>
+                      <span>{{admission?.student?.studentStatus}}</span>
+                    </div>
+
+                    <div layout="row" class="pad-bottom">
+                      <span flex="15">GPA</span>
+                      <span>{{admission?.gpa}}</span>
+                    </div>
+                    <div layout="row" class="pad-bottom">
+                      <span flex="15">CGPA</span>
+                      <span>{{admission?.cgpa}}</span>
+                    </div>
+                  </div>
+                </div>
+               <div>
+                <!--COURSE INFORMATION-->
+                  <md-card>
+                    <div md-content flex md-scroll-y>
+                      <div layout="column" layout-gt-md="row" class="insert">
+                        <div flex-gt-md="50">
+                          <md-card-title>List Of Courses</md-card-title>
+                        </div>
+                      </div>
+                    </div>
+                    <md-divider></md-divider>
+                    <md-card-content>
+                      <td-data-table 
+                      [data]="enrollments" 
+                      [columns]="columns" 
+                      [sortBy]="summary" 
+                      [sortOrder]="ASC" 
+                      [sortable]="false" 
+                      [multiple]="false"
+                      [selectable]="false" 
+                      (rowSelect)="edit.emit($event)" dense>
+                        <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
+                          <div layout="row">
+                            <span flex>{{value}}</span>
+                          </div>
+                        </template>
+                         <template tdDataTableTemplate="gradeCode.code" let-value="value" let-row="row" let-column="columns.gradeCode.code">
+                        <div layout="row">
+                       <div *ngIf="value == null">0</div>
+                        <div *ngIf="value != null">{{value}}</div>       
+                       </div>
+                        </template>
+                        
+                          <template tdDataTableTemplate="gradeCode.description" let-value="value" let-row="row" let-column="columns.gradeCode.description">
+                        <div layout="row">
+                       <div *ngIf="value == null">0</div>
+                        <div *ngIf="value != null">{{value}}</div>       
+                       </div>
+                        </template>
+                        
+                      </td-data-table>
+                    </md-card-content>
+                  </md-card>
+               </div>
+              </md-tab>
+            </md-tab-group>
+    
+  </md-card-content>
+</md-card>
+ 
+ 
+ <!-- <md-card>
+        <template let-admission let-last="last" ngFor [ngForOf]="admissions$ | async ">
+
+          <md-card-title>
+            <img src="http://localhost:4200\assets\ico\umk.png" width="30" height="30"> {{admission?.academicSession?.description}}
+          </md-card-title>
+          <md-card-subtitle>{{admission?.academicSession?.code}}</md-card-subtitle>
+          <md-divider></md-divider>
+          <md-card-content>
+            Tab Section Here
+            <md-tab-group>
+              <md-tab label="Academic Session Detail"><br>
+                <div layout="column" layout-gt-md="row" class="insert">
+                  <div flex-gt-md="30">
+
+                    <div layout="row" class="pad-bottom">
+                      <span flex="15">Student ID</span>
+                      <span>{{admission?.student?.identityNo}}</span>
+                    </div>
+                    <div layout="row" class="pad-bottom">
+                      <span flex="15">Name</span>
+                      <span>{{admission?.student?.name}}</span>
+                    </div>
+                    <div layout="row" class="pad-bottom">
+                      <span flex="15">Semester</span>
+                      <span>{{admission?.student?.cohort?.academicSession?.semester}}</span>
+                    </div>
+                  </div>
+                  <div flex-gt-md="30">
+                    <div layout="row" class="pad-bottom">
+                      <span flex="15">Status</span>
+                      <span>{{admission?.student?.studentStatus}}</span>
+                    </div>
+
+                    <div layout="row" class="pad-bottom">
+                      <span flex="15">GPA</span>
+                      <span>{{admission.gpa}}</span>
+                    </div>
+                    <div layout="row" class="pad-bottom">
+                      <span flex="15">CGPA</span>
+                      <span>{{admission.cgpa}}</span>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  COURSE INFORMATION
+                  <md-card>
+                    <div md-content flex md-scroll-y>
+                      <div layout="column" layout-gt-md="row" class="insert">
+                        <div flex-gt-md="50">
+                          <md-card-title>List Of Courses</md-card-title>
+                        </div>
+                      </div>
+                    </div>
+                    <md-divider></md-divider>
+                    <md-card-content>
+                      <td-data-table 
+                      [data]="enrollments" 
+                      [columns]="columns" 
+                      [sortBy]="summary" 
+                      [sortOrder]="ASC" 
+                      [sortable]="false" 
+                      [multiple]="false"
+                      [selectable]="false" 
+                      (rowSelect)="edit.emit($event)" dense>
+                        <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
+                          <div layout="row">
+                            <span flex>{{value}}</span>
+                          </div>
+                        </template>
+                         <template tdDataTableTemplate="gradeCode.code" let-value="value" let-row="row" let-column="columns.gradeCode.code">
+                        <div layout="row">
+                       <div *ngIf="value == null">0</div>
+                        <div *ngIf="value != null">{{value}}</div>       
+                       </div>
+                        </template>
+                        
+                          <template tdDataTableTemplate="gradeCode.description" let-value="value" let-row="row" let-column="columns.gradeCode.description">
+                        <div layout="row">
+                       <div *ngIf="value == null">0</div>
+                        <div *ngIf="value != null">{{value}}</div>       
+                       </div>
+                        </template>
+                        
+                      </td-data-table>
+                    </md-card-content>
+                  </md-card>
+                </div>
+              </md-tab>
+            </md-tab-group>
+          </md-card-content>
+          <md-divider></md-divider>
+        </template>
+      </md-card> -->
