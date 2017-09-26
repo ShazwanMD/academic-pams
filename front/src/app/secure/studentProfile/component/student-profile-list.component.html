@@ -24,8 +24,18 @@
       </a>
     </div> 
     <md-divider></md-divider>
-      <md-divider></md-divider>
+     
      <h3 md-subheader>Graduation</h3>
+     
+      <a md-list-item (click)="applyGraduation()" color="accent"  mdTooltip="Apply graduation">
+          <md-icon>create</md-icon>
+        <span>Apply Graduation</span>
+      </a>
+      <a md-list-item (click)="statusGraduation()" color="accent"  mdTooltip="View my graduation application">
+          <md-icon>drafts</md-icon>
+        <span>Graduation Status</span>
+      </a>
+     
     <a md-list-item color="accent" *ngIf="graduationApplications?.length == 0">
         <md-icon>library_books</md-icon>
         <span> Application Status </span>
@@ -54,14 +64,7 @@
              </md-chip-list> </span> 
       </a>
       
-        <a md-list-item (click)="applyGraduation()" color="accent"  mdTooltip="View offerings info">
-          <md-icon>create</md-icon>
-        <span>Apply Graduation</span>
-      </a>
-      <a md-list-item (click)="statusGraduation()" color="accent"  mdTooltip="View offerings info">
-          <md-icon>drafts</md-icon>
-        <span>Graduation Status</span>
-      </a>
+       
     <md-divider></md-divider>
   </md-nav-list>
    <div toolbar-buttons layout="row" layout-align="start center" flex>
