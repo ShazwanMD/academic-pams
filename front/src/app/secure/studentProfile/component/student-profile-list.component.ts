@@ -145,7 +145,7 @@ export class StudentProfileListPage implements OnInit {
         { name: 'description', label: 'Description' },
         { name: 'referenceNo', label: 'Reference No' },
         { name: 'ordinal', label: 'Semester' },
-        { name: 'academicSession.code', label: 'Session' },
+       
         { name: 'action', label: '' },
 
     ];
