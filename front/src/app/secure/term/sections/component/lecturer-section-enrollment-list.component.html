@@ -1,10 +1,12 @@
 <md-card>
   <div toolbar-buttons layout="row" layout-align="start center" flex>
-    <md-card-title>Student Enrollments</md-card-title>
+    <md-card-title>Student Enrollments </md-card-title>
     <md-chip-list *ngIf="enrollments?.length > 0">
       <md-chip color="accent">{{enrollments?.length}}</md-chip>
     </md-chip-list>
     <span flex></span>
+    <a md-raised-button color="accent" class="text-upper">
+      <span>Student Status Report</span> </a>
   </div>
   <md-divider></md-divider>
   <md-card-content>
@@ -36,6 +38,7 @@
            <div *ngIf="value != null">{{value}}</div>       
         </div>
       </template>
+
       
        <template tdDataTableTemplate="totalScore" let-value="value" let-row="row" let-column="columns.totalScore">
         <div layout="row">
