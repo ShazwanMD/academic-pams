@@ -65,7 +65,7 @@ export class AdmissionApplicationDraftTaskPanel implements OnInit {
 
   register(): void {
     this._termService.completeAdmissionApplicationTask(this.admissionApplicationTask).subscribe((res) => {
-      let snackBarRef = this._snackBar.open('Admission application completed', 'OK');
+      let snackBarRef = this._snackBar.open('Admission application completed', 'OK', {duration:3000});
       snackBarRef.afterDismissed().subscribe(() => {
         this.goBack();
       });

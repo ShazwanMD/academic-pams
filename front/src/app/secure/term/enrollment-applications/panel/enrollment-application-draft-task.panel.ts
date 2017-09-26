@@ -65,7 +65,11 @@ export class EnrollmentApplicationDraftTaskPanel implements OnInit {
 
     register() {
         this.store.dispatch( this.actions.completeEnrollmentApplicationTask( this.enrollmentApplicationTask ) );
-        this.goBack();
+        //this.goBack();
+        let snackBarRef = this._snackBar.open('Enrollment application completed', 'OK', {duration:3000});
+        snackBarRef.afterDismissed().subscribe(() => {
+          this.goBack();
+        });
     }
 
    /* //sample from admission
