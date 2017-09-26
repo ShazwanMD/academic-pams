@@ -750,7 +750,7 @@ FROM
 				<text><![CDATA[/]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="189" y="8" width="100" height="20" uuid="7eb4b6d1-2d55-41eb-9edf-826b719fb340"/>
+				<reportElement x="180" y="8" width="100" height="20" uuid="7eb4b6d1-2d55-41eb-9edf-826b719fb340"/>
 				<textFieldExpression><![CDATA[$F{ad_sctn_ordinal}]]></textFieldExpression>
 			</textField>
 			<textField>
