@@ -1,4 +1,4 @@
-<h2 md-dialog-title>{{edit ? 'Update' : 'Save'}} Admission Application Ref: {{_admissionApplication?.referenceNo}}</h2>
+<h2 md-dialog-title>{{edit ? 'Update' : 'Save'}} Admission Application Ref: {{_admissionApplication?.referenceNo}} {{_admissionApplication?.ordinal}}</h2>
 <md-dialog-content>
   <form [formGroup]="editForm">
    <!--  <div layout="row" class="pad-bottom">
@@ -25,7 +25,7 @@
                flex/>
       </md-input-container>
     </div>
-    <div>
+    <div *ngIf="_admissionApplication?.ordinal==3">
       <pams-staff-select [placeholder]="'Select Advisor'"
                          [innerFormControl]="editForm.controls['advisor']" 
                          fxFlex="calc(100%-25px)" 

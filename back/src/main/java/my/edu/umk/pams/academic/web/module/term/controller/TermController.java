@@ -191,19 +191,33 @@ public class TermController {
 	@RequestMapping(value = "/admissionApplications/{referenceNo}/update", method = RequestMethod.PUT)
 	public ResponseEntity<String> updateAdmissionApplication(@PathVariable String referenceNo,
 			@RequestBody AdmissionApplication vo) {
-		// dummyLogin();
 
-		LOG.debug("TermApplicationRef:{}", referenceNo);
+		LOG.debug("AdmissionApplicationUpdateRef:{}", referenceNo);
 		AdAdmissionApplication application = termService.findAdmissionApplicationByReferenceNo(referenceNo);
-		AdStaff advisor = identityService.findStaffByStaffNo(vo.getAdvisor().getIdentityNo());
-				
+
+		if (vo.getAdvisor() != null) {
+			System.out.println("vo.getAdvisor().getIdentityNo()" + vo.getAdvisor().getIdentityNo());
+			System.out.println("vo.getAdvisor()" + vo.getAdvisor().getName());
+		}
+
 		application.setAuditNo(vo.getAuditNo());
 		application.setSourceNo(vo.getSourceNo());
 		application.setCancelComment(vo.getCancelComment());
 		application.setDescription(vo.getDescription());
 		application.setOrdinal(vo.getOrdinal());
 		application.setReferenceNo(vo.getReferenceNo());
-		application.setAdvisor(advisor);
+
+		if (vo.getAdvisor() != null) {
+			application.setAdvisor(identityService.findStaffByIdentityNo(vo.getAdvisor().getIdentityNo()));
+		}
+
+		/*
+		 * if(vo.getAdvisor().getIdentityNo()!=null){ AdStaff advisor =
+		 * identityService.findStaffByStaffNo(vo.getAdvisor().getIdentityNo());
+		 * application.setAdvisor(advisor);
+		 * System.out.println("Advisor is updated" + advisor); }
+		 */
+
 		application.setRemoveComment(vo.getRemoveComment());
 		application.setProgram(plannerService.findProgramByCode(vo.getProgram().getCode()));
 		application.setStudent(identityService.findStudentByMatricNo(vo.getStudent().getIdentityNo()));
@@ -239,14 +253,15 @@ public class TermController {
 		AdAcademicSession academicSession = plannerService.findAcademicSessionById(vo.getAcademicSession().getId());
 		AdProgram program = student.getCohort().getProgram();
 		AdStudyCenter studyCenter = commonService.findStudyCenterById(vo.getStudyCenter().getId());
-		//AdStaff advisor = identityService.findStaffByStaffNo(vo.getAdvisor().getIdentityNo());
-		//AdStaff advisor = identityService.findStaffByStaffNo("00179A");
-			
+		// AdStaff advisor =
+		// identityService.findStaffByStaffNo(vo.getAdvisor().getIdentityNo());
+		// AdStaff advisor = identityService.findStaffByStaffNo("00179A");
+
 		System.out.println("Get student: " + vo.getStudent().getId());
 		System.out.println("Get session: " + vo.getAcademicSession().getId());
 		System.out.println("Get program: " + student.getCohort().getProgram());
 		System.out.println("Get studycenter: " + vo.getStudyCenter().getId());
-						
+
 		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
 		Date date1 = new Date();
 		Date date2 = academicSession.getAdmissionEndDate();
@@ -279,15 +294,15 @@ public class TermController {
 				application.setStudyCenter(studyCenter);
 				application.setProgram(program);
 
-				//application.setAdvisor(advisor);
+				// application.setAdvisor(advisor);
 
-				/*if (vo.getAdvisor().getIdentityNo() != null) {
-					AdStaff advisor = identityService.findStaffByStaffNo(vo.getAdvisor().getIdentityNo());
-					application.setAdvisor(advisor);
-					System.out.println("Advisor: " + advisor);
-				} else {
-					System.out.println("No Advisor!");
-				}*/
+				/*
+				 * if (vo.getAdvisor().getIdentityNo() != null) { AdStaff
+				 * advisor = identityService.findStaffByStaffNo(vo.getAdvisor().
+				 * getIdentityNo()); application.setAdvisor(advisor);
+				 * System.out.println("Advisor: " + advisor); } else {
+				 * System.out.println("No Advisor!"); }
+				 */
 
 				application.setAuditNo(vo.getAuditNo());
 				application.setCancelComment(vo.getCancelComment());
@@ -302,8 +317,9 @@ public class TermController {
 				String applicationUrl = systemService.findConfigurationByKey("application.url").getValue();
 				AdEmailQueue emailQueue = new AdEmailQueueImpl();
 				emailQueue.setCode("EQ" + System.currentTimeMillis());
-				emailQueue.setTo("asyikin.mr@umk.edu.my"); // set default email to test
-															
+				emailQueue.setTo("asyikin.mr@umk.edu.my"); // set default email
+															// to test
+
 				emailQueue.setSubject("Application for semester registration:" + academicSession.getCode());
 				emailQueue.setQueueStatus(AdEmailQueueStatus.QUEUED);
 				emailQueue.setBody(
@@ -649,7 +665,7 @@ public class TermController {
 		workflowService.releaseTask(task);
 		return new ResponseEntity<String>("Success", HttpStatus.OK);
 	}
-	
+
 	// ====================================================================================================
 	// APPOINTMENT
 	// ====================================================================================================
@@ -924,13 +940,13 @@ public class TermController {
 		return termService.countAdmissionApplication(session, student);
 
 	}
-	
-	// countAdmission
-		private Integer countAdmission(AdAcademicSession session, AdStudent student) {
-			System.out.println(termService.countAdmission(session, student));
-			return termService.countAdmission(session, student);
 
-		}
+	// countAdmission
+	private Integer countAdmission(AdAcademicSession session, AdStudent student) {
+		System.out.println(termService.countAdmission(session, student));
+		return termService.countAdmission(session, student);
+
+	}
 
 	@RequestMapping(value = "/offerings/{canonicalCode}", method = RequestMethod.PUT)
 	public ResponseEntity<String> updateOffering(@PathVariable String canonicalCode, @RequestBody Offering vo) {
