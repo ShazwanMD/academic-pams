@@ -419,7 +419,59 @@
               </md-card>
             </div>
           </td-expansion-panel>
+          
+           <!-- Admission Application Info -->
+          <td-expansion-panel label="Semester Registration Application History " class="bgc-light-blue-400" >
+            <!-- <md-chip-list *ngIf="admissions?.length > 0">
+                       <md-chip color="accent">{{admissions?.length}}</md-chip>
+                       </md-chip-list>  -->
+            <div class="md-padding" class="bgc-light-blue-50">
+              <md-card>
+                
+                <div toolbar-buttons layout="row" layout-align="start center" flex>
+                  <md-card-title>Semester Registration Application History</md-card-title>
+                  <md-chip-list *ngIf="admissionApplications?.length > 0">
+                    <md-chip color="accent">{{admissionApplications?.length}}</md-chip>
+                  </md-chip-list>
+                  <span flex></span>
+                </div>
+                <md-divider></md-divider>
+                <md-card-content>
+                  <td-data-table 
+                  [data]="admissionApplications" 
+                  [columns]="columnAdmissionApplication" 
+                  [sortBy]="summary" 
+                  [sortOrder]="ASC" 
+                  [sortable]="false" 
+                  [multiple]="false"
+                    [selectable]="false" 
+                    (rowSelect)="edit.emit($event)" dense>
+
+                     <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column"  color="accent">
+                      <div layout="row">
+                        <span flex >{{value}}</span>
+                      </div>
+                    </template>
+              
+                   <!--  <template tdDataTableTemplate="gpa" let-value="value" let-row="row" let-column="columns.gpa">
+                      <div layout="row">
+                        <div *ngIf="value == null">None</div>
+                        <div *ngIf="value != null">{{value}}</div>
+                      </div>
+                    </template> -->
                    
+                   <!--  <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
+                      <div layout="row">
+                        <a md-button color="accent" class="text-upper" [routerLink]="['/secure/term/admission-applications', row.id]">
+                         <span>View </span>
+                        </a>
+                      </div>
+                    </template> -->
+                  </td-data-table>
+                </md-card-content>
+              </md-card>
+            </div>
+          </td-expansion-panel>     
            <!-- Academic Session Info -->
           <td-expansion-panel label="Academic Session Information" class="bgc-light-blue-400">
             <div id="sessionStatus" class="md-padding" class="bgc-light-blue-50">
@@ -435,7 +487,6 @@
                 <md-card-content>
                   <td-data-table [data]="admissions" [columns]="columnAdmissionSession" [sortBy]="summary" [sortOrder]="ASC" [sortable]="false" [multiple]="false"
                     [selectable]="false" (rowSelect)="edit.emit($event)" dense>
-
                     <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
                       <div layout="row">
                         <span flex>{{value}}</span>

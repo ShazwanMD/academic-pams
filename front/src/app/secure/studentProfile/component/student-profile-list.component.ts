@@ -139,6 +139,17 @@ export class StudentProfileListPage implements OnInit {
 
     ];
     
+    //Admission Application
+    private columnAdmissionApplication: any[] = [
+        { name: 'academicSession.code', label: 'Session' },
+        { name: 'description', label: 'Description' },
+        { name: 'referenceNo', label: 'Reference No' },
+        { name: 'ordinal', label: 'Semester' },
+        { name: 'academicSession.code', label: 'Session' },
+        { name: 'action', label: '' },
+
+    ];
+    
   //Admission to review sessions
     private columnAdmissionSession: any[] = [
         { name: 'academicSession.code', label: 'Session' },
