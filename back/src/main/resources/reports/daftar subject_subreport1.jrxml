@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="daftar subject_subreport1" language="groovy" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="1c7c2c83-51c3-4910-bdc9-dca12756b429">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="student_id" class="java.lang.Long"/>
+	<queryString>
+		<![CDATA[SELECT
+     ad_sponsor."sponsor_type" AS ad_sponsor_sponsor_type,
+     ad_sponsor."id" AS ad_sponsor_id,
+     ad_sponsorship."id" AS ad_sponsorship_id,
+     ad_sponsorship."reference_no" AS ad_sponsorship_reference_no,
+     ad_sponsorship."amount" AS ad_sponsorship_amount,
+     ad_sponsorship."start_date" AS ad_sponsorship_start_date,
+     ad_sponsorship."end_date" AS ad_sponsorship_end_date,
+     ad_sponsorship."c_ts" AS ad_sponsorship_c_ts,
+     ad_sponsorship."c_id" AS ad_sponsorship_c_id,
+     ad_sponsorship."d_ts" AS ad_sponsorship_d_ts,
+     ad_sponsorship."d_id" AS ad_sponsorship_d_id,
+     ad_sponsorship."m_ts" AS ad_sponsorship_m_ts,
+     ad_sponsorship."m_id" AS ad_sponsorship_m_id,
+     ad_sponsorship."m_st" AS ad_sponsorship_m_st,
+     ad_sponsorship."active" AS ad_sponsorship_active,
+     ad_sponsorship."sponsor_id" AS ad_sponsorship_sponsor_id,
+     ad_sponsorship."student_id" AS ad_sponsorship_student_id,
+     ad_actr."id" AS ad_actr_id,
+     ad_actr."actor_type" AS ad_actr_actor_type,
+     ad_actr."email" AS ad_actr_email,
+     ad_actr."fax" AS ad_actr_fax,
+     ad_actr."identity_no" AS ad_actr_identity_no,
+     ad_actr."c_ts" AS ad_actr_c_ts,
+     ad_actr."c_id" AS ad_actr_c_id,
+     ad_actr."d_ts" AS ad_actr_d_ts,
+     ad_actr."d_id" AS ad_actr_d_id,
+     ad_actr."m_ts" AS ad_actr_m_ts,
+     ad_actr."m_id" AS ad_actr_m_id,
+     ad_actr."m_st" AS ad_actr_m_st,
+     ad_actr."mobile" AS ad_actr_mobile,
+     ad_actr."name" AS ad_actr_name,
+     ad_actr."phone" AS ad_actr_phone
+FROM
+     "public"."ad_sponsor" ad_sponsor INNER JOIN "public"."ad_sponsorship" ad_sponsorship ON ad_sponsor."id" = ad_sponsorship."sponsor_id"
+     INNER JOIN "public"."ad_actr" ad_actr ON ad_sponsor."id" = ad_actr."id"]]>
+	</queryString>
+	<field name="ad_sponsor_sponsor_type" class="java.lang.Integer"/>
+	<field name="ad_sponsor_id" class="java.lang.Long"/>
+	<field name="ad_sponsorship_id" class="java.lang.Long"/>
+	<field name="ad_sponsorship_reference_no" class="java.lang.String"/>
+	<field name="ad_sponsorship_amount" class="java.math.BigDecimal"/>
+	<field name="ad_sponsorship_start_date" class="java.sql.Timestamp"/>
+	<field name="ad_sponsorship_end_date" class="java.sql.Timestamp"/>
+	<field name="ad_sponsorship_c_ts" class="java.sql.Timestamp"/>
+	<field name="ad_sponsorship_c_id" class="java.lang.Long"/>
+	<field name="ad_sponsorship_d_ts" class="java.sql.Timestamp"/>
+	<field name="ad_sponsorship_d_id" class="java.lang.Long"/>
+	<field name="ad_sponsorship_m_ts" class="java.sql.Timestamp"/>
+	<field name="ad_sponsorship_m_id" class="java.lang.Long"/>
+	<field name="ad_sponsorship_m_st" class="java.lang.Integer"/>
+	<field name="ad_sponsorship_active" class="java.lang.Boolean"/>
+	<field name="ad_sponsorship_sponsor_id" class="java.lang.Long"/>
+	<field name="ad_sponsorship_student_id" class="java.lang.Long"/>
+	<field name="ad_actr_id" class="java.lang.Long"/>
+	<field name="ad_actr_actor_type" class="java.lang.Integer"/>
+	<field name="ad_actr_email" class="java.lang.String"/>
+	<field name="ad_actr_fax" class="java.lang.String"/>
+	<field name="ad_actr_identity_no" class="java.lang.String"/>
+	<field name="ad_actr_c_ts" class="java.sql.Timestamp"/>
+	<field name="ad_actr_c_id" class="java.lang.Long"/>
+	<field name="ad_actr_d_ts" class="java.sql.Timestamp"/>
+	<field name="ad_actr_d_id" class="java.lang.Long"/>
+	<field name="ad_actr_m_ts" class="java.sql.Timestamp"/>
+	<field name="ad_actr_m_id" class="java.lang.Long"/>
+	<field name="ad_actr_m_st" class="java.lang.Integer"/>
+	<field name="ad_actr_mobile" class="java.lang.String"/>
+	<field name="ad_actr_name" class="java.lang.String"/>
+	<field name="ad_actr_phone" class="java.lang.String"/>
+	<filterExpression><![CDATA[$F{ad_sponsorship_student_id}.equals( $P{student_id} )]]></filterExpression>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="417" height="20" uuid="ba362ae1-6b47-4266-9b47-bcc43ff4fa13"/>
+				<textFieldExpression><![CDATA[$F{ad_actr_name}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="1" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="2" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
