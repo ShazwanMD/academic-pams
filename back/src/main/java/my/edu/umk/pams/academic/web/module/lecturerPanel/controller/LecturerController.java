@@ -42,36 +42,36 @@ import my.edu.umk.pams.academic.workflow.service.WorkflowService;
 @Transactional
 @RequestMapping("/api/lecturer")
 public class LecturerController {
-	
-    private static final Logger LOG = LoggerFactory.getLogger(LecturerController.class);
 
-    @Autowired
-    private IdentityService identityService;
+	private static final Logger LOG = LoggerFactory.getLogger(LecturerController.class);
 
-    @Autowired
-    private TermService termService;
+	@Autowired
+	private IdentityService identityService;
 
-    @Autowired
-    private SecurityService securityService;
+	@Autowired
+	private TermService termService;
 
-    @Autowired
-    private WorkflowService workflowService;
+	@Autowired
+	private SecurityService securityService;
 
-    @Autowired
-    private CommonService commonService;
+	@Autowired
+	private WorkflowService workflowService;
 
-    @Autowired
-    private SystemService systemService;
+	@Autowired
+	private CommonService commonService;
 
-    @Autowired
-    private IdentityTransformer identityTransformer;
-    
-    @Autowired
-    private TermTransformer termTransformer;
+	@Autowired
+	private SystemService systemService;
 
-    @Autowired
-    AuthenticationManager authenticationManager;
-    
+	@Autowired
+	private IdentityTransformer identityTransformer;
+
+	@Autowired
+	private TermTransformer termTransformer;
+
+	@Autowired
+	AuthenticationManager authenticationManager;
+
 	// ===================================================================================================================================
 	// LECTURER DASHBOARD
 	// ===================================================================================================================================
@@ -87,30 +87,43 @@ public class LecturerController {
 		if (null == lecturer)
 			throw new IllegalArgumentException("Staff does not exists");
 		LOG.debug("Lecturer:{}", lecturer.getIdentityNo());
-		
+
 		return new ResponseEntity<Staff>(identityTransformer.toStaffVo(lecturer), HttpStatus.OK);
 	}
-	
-	//find appointments by lecturer
-		@RequestMapping(value = "/lecturers/{identityNo}/appointments", method = RequestMethod.GET)
-		public ResponseEntity<List<Appointment>> findAppointmentsByLecturer(@PathVariable String identityNo) {
-			AdStaff staff = identityService.findStaffByIdentityNo(identityNo);
-			// AdAcademicSession academicSession =
-			// plannerService.findCurrentAcademicSession();
-			List<AdAppointment> appointments = termService.findAppointments(staff);
-			List<Appointment> vos = termTransformer.toAppointmentVos(appointments);
-			return new ResponseEntity<List<Appointment>>(vos, HttpStatus.OK);
-		}
-		
-		//find admissionApplications by lecturer
-				@RequestMapping(value = "/lecturers/{identityNo}/admissionApplications", method = RequestMethod.GET)
-				public ResponseEntity<List<AdmissionApplication>> findAdmissionApplicationsByLecturer(@PathVariable String identityNo) {
-					AdStaff staff = identityService.findStaffByIdentityNo(identityNo);
-					// AdAcademicSession academicSession =
-					// plannerService.findCurrentAcademicSession();
-					List<AdAdmissionApplication> admissionApplications = termService.findAdmissionApplications(staff);
-					List<AdmissionApplication> vos = termTransformer.toAdmissionApplicationVos(admissionApplications);
-					return new ResponseEntity<List<AdmissionApplication>>(vos, HttpStatus.OK);
-				}
+
+	// find appointments by lecturer
+	@RequestMapping(value = "/lecturers/{identityNo}/appointments", method = RequestMethod.GET)
+	public ResponseEntity<List<Appointment>> findAppointmentsByLecturer(@PathVariable String identityNo) {
+		AdStaff staff = identityService.findStaffByIdentityNo(identityNo);
+		// AdAcademicSession academicSession =
+		// plannerService.findCurrentAcademicSession();
+		List<AdAppointment> appointments = termService.findAppointments(staff);
+		List<Appointment> vos = termTransformer.toAppointmentVos(appointments);
+		return new ResponseEntity<List<Appointment>>(vos, HttpStatus.OK);
+	}
+
+	// find admissionApplications by lecturer
+	@RequestMapping(value = "/lecturers/{identityNo}/admissionApplications", method = RequestMethod.GET)
+	public ResponseEntity<List<AdmissionApplication>> findAdmissionApplicationsByLecturer(
+			@PathVariable String identityNo) {
+		AdStaff staff = identityService.findStaffByIdentityNo(identityNo);
+		// AdAcademicSession academicSession =
+		// plannerService.findCurrentAcademicSession();
+		List<AdAdmissionApplication> admissionApplications = termService.findAdmissionApplications(staff);
+		List<AdmissionApplication> vos = termTransformer.toAdmissionApplicationVos(admissionApplications);
+		return new ResponseEntity<List<AdmissionApplication>>(vos, HttpStatus.OK);
+	}
+
+	// find admissions by lecturer
+	@RequestMapping(value = "/lecturers/{identityNo}/admissions", method = RequestMethod.GET)
+	public ResponseEntity<List<Admission>> findAdmissionsByLecturer(
+			@PathVariable String identityNo) {
+		AdStaff staff = identityService.findStaffByIdentityNo(identityNo);
+		// AdAcademicSession academicSession =
+		// plannerService.findCurrentAcademicSession();
+		List<AdAdmission> admissions = termService.findAdmissions(staff);
+		List<Admission> vos = termTransformer.toAdmissionVos(admissions);
+		return new ResponseEntity<List<Admission>>(vos, HttpStatus.OK);
+	}
 
 }

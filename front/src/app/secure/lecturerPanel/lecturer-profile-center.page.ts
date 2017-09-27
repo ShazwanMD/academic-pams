@@ -10,6 +10,7 @@ import { Staff } from './../../shared/model/identity/staff.interface';
 import { Component, OnChanges, OnInit, ViewContainerRef, Input } from '@angular/core';
 import { Appointment } from "../../shared/model/term/appointment.interface";
 import { AdmissionApplication } from "../../shared/model/term/admission-application.interface";
+import { Admission } from "../../shared/model/term/admission.interface";
 
 
 @Component( {
@@ -23,11 +24,13 @@ export class LecturerProfileCenterPage implements OnInit {
     private LECTURERS: string[] = 'LecturerModuleState.lecturers'.split( '.' );
     private APPOINTMENTS: string[] = 'LecturerModuleState.appointments'.split( '.' );
     private ADMISSION_APPLICATIONS: string[] = 'LecturerModuleState.admissionApplications'.split( '.' );
+private ADMISSIONS: string[] = 'LecturerModuleState.admissions'.split( '.' );
 
     private lecturer$: Observable<Staff>;
     private lecturers$: Observable<Staff[]>;
     private appointments$: Observable<Appointment>;
     private admissionApplications$: Observable<AdmissionApplication>;
+private admissions$: Observable<Admission>;
 
     constructor( private router: Router,
         private route: ActivatedRoute,
@@ -41,6 +44,7 @@ export class LecturerProfileCenterPage implements OnInit {
         this.lecturers$ = this.store.select( ...this.LECTURERS );
         this.appointments$ = this.store.select( ...this.APPOINTMENTS );
         this.admissionApplications$ = this.store.select( ...this.ADMISSION_APPLICATIONS );
+        this.admissions$ = this.store.select( ...this.ADMISSIONS );
     }
 
     ngOnInit(): void {

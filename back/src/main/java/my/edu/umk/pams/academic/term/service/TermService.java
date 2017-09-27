@@ -230,6 +230,8 @@ public interface TermService {
     List<AdAdmissionApplication> findAdmissionApplications(AdStudent student);
     
     List<AdAdmissionApplication> findAdmissionApplications(AdStaff staff);
+    
+    List<AdAdmission> findAdmissions(AdStaff staff);
 
     List<AdAdmissionApplication> findAdmissionApplications(AdAcademicSession session, Integer offset, Integer limit);
 

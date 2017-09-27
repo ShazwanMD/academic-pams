@@ -101,9 +101,9 @@
          <md-card>
   <div toolbar-buttons layout="row" layout-align="start center" flex>
     <md-card-title>Supervision</md-card-title>
-    <md-chip-list *ngIf="admissionApplications?.length > 0">
+    <md-chip-list *ngIf="admissions?.length > 0">
       <md-chip
-        color="accent">{{admissionApplications?.length}}
+        color="accent">{{admissions?.length}}
       </md-chip>
     </md-chip-list>
     <span flex></span>
@@ -117,8 +117,8 @@
                
   <md-card-content>  
    <td-data-table
-        [data]="admissionApplications"
-        [columns]="columnAddmissionApplication"
+        [data]="admissions"
+        [columns]="columnAdmission"
         [sortBy]="summary"
         [sortOrder]="ASC"
         [sortable]="false"
@@ -134,7 +134,7 @@
     </template> 
     <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
         <div layout="row">
-         <a md-button color="accent" class="text-upper" mdTooltip="View admission application info" [routerLink]="['/secure/profile/advisory-detail', row.student.identityNo]"><!--  [routerLink]="['/secure/term/sections', row.section.canonicalCode, 'lecturer-section-detail']" -->
+         <a md-button color="accent" class="text-upper" mdTooltip="View admission info" [routerLink]="['/secure/profile/advisory-detail', row.student.identityNo]"><!--  [routerLink]="['/secure/term/sections', row.section.canonicalCode, 'lecturer-section-detail']" -->
             <span>View</span>
           </a>
         </div>

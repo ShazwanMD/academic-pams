@@ -3,10 +3,12 @@ package my.edu.umk.pams.academic.term.dao;
 import my.edu.umk.pams.academic.core.AdMetaState;
 import my.edu.umk.pams.academic.core.AdMetadata;
 import my.edu.umk.pams.academic.core.GenericDaoSupport;
+import my.edu.umk.pams.academic.identity.model.AdStaff;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.identity.model.AdUser;
 import my.edu.umk.pams.academic.planner.model.AdCohort;
 import my.edu.umk.pams.academic.term.model.AdAdmission;
+import my.edu.umk.pams.academic.term.model.AdAdmissionApplication;
 import my.edu.umk.pams.academic.term.model.AdAdmissionImpl;
 import my.edu.umk.pams.academic.term.model.AdEnrollmentApplication;
 import my.edu.umk.pams.academic.term.model.AdOffering;
@@ -213,6 +215,15 @@ public class AdAdmissionDaoImpl extends GenericDaoSupport<Long, AdAdmission> imp
 		query.setCacheable(true);
 		return (List<AdStudent>) query.list();
 	}
+	
+	 @Override
+	    public List<AdAdmission> find(AdStaff staff) {
+	        Session currentSession = sessionFactory.getCurrentSession();
+	        Query query = currentSession
+	                .createQuery("select p from AdAdmission p where " + "p.advisor = :staff ");
+	        query.setEntity("staff", staff);
+	        return (List<AdAdmission>) query.list();
+	    }
 
 	// ====================================================================================================
 	// HELPER

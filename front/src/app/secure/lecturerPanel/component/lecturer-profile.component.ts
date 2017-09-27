@@ -8,6 +8,7 @@ import { Staff } from "../../../shared/model/identity/staff.interface";
 import { Observable } from 'rxjs';
 import { Appointment } from "../../../shared/model/term/appointment.interface";
 import { AdmissionApplication } from "../../../shared/model/term/admission-application.interface";
+import { Admission } from "../../../shared/model/term/admission.interface";
 
 @Component( {
     selector: 'pams-lecturer-profile',
@@ -21,6 +22,7 @@ export class LecturerProfileComponent implements OnInit {
     @Input() lecturer: Staff;
     @Input() appointments: Appointment[];
     @Input() admissionApplications: AdmissionApplication[];
+    @Input() admissions: Admission[];
     
     @Output() view2 = new EventEmitter<Staff>();
 
@@ -45,14 +47,16 @@ export class LecturerProfileComponent implements OnInit {
         { name: 'action', label: '' },
     ];
     
-    //view data admissionApplications to review supervision 
-    private columnAddmissionApplication: any[] = [
+    //view data admissions to review supervision 
+    private columnAdmission: any[] = [
         { name: 'id', label: 'Id' },
         { name: 'academicSession.code', label: 'Academic Session' },
         { name: 'student.name', label: 'Student Name' },
         { name: 'student.identityNo', label: 'Student Identity No.' },
-        { name: 'program.code', label: 'Program' },
-        { name: 'program.faculty.description', label: 'Faculty' },
+        { name: 'ordinal', label: 'Semester' },
+        { name: 'cgpa', label: 'CGPA' },
+        { name: 'gpa', label: 'GPA' },
+        { name: 'studyCenter.description', label: 'Study Center' },
         
         
         { name: 'action', label: '' },

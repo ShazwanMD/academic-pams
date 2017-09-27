@@ -65,4 +65,25 @@ export class LecturerActions {
             payload: admissionApplications
         };
     }
+    
+    //find admissions by lecturer
+    static FIND_ADMISSIONS_BY_LECTURER = '[LecturerPanel] Find Admissions';
+
+    findAdmissionsByLecturer( lecturer ): Action {
+        return {
+            type: LecturerActions.FIND_ADMISSIONS_BY_LECTURER,
+            payload: lecturer
+        };
+    }
+
+    static FIND_ADMISSIONS_BY_LECTURER_SUCCESS = '[LecturerPanel] Find Admissions Success';
+
+    findAdmissionsByLecturerSuccess( admissions ): Action {
+        return {
+            type: LecturerActions.FIND_ADMISSIONS_BY_LECTURER_SUCCESS,
+            payload: admissions
+        };
+    }
+    
+    
 }
