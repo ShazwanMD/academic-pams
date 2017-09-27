@@ -44,6 +44,7 @@ export class AdminLecturerSectionEnrollmentListComponent implements AfterViewIni
     {name: 'enrollmentStanding', label: 'Standing'},
     {name: 'totalScore', label: 'TotalScore'},
     {name: 'gradeCode.code', label: 'Grade Code'},
+    {name: 'admission.student.studentStatus', label: 'studentStatus'},
     {name: 'action', label: ''},
   ];
 
