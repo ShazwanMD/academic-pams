@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reportAkhirNew" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="833aeb46-bbba-4d7c-aa22-f2a8dfbd7612">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reportAkhirNew" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="833aeb46-bbba-4d7c-aa22-f2a8dfbd7612">
 	<property name="ireport.zoom" value="2.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="17"/>
-	<parameter name="student_status" class="java.lang.Integer"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="student_status" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
 	<queryString>
 		<![CDATA[SELECT
      ad_actr."id" AS ad_actr_id,
@@ -28,9 +30,7 @@
      ad_stdn."cohort_id" AS ad_stdn_cohort_id,
      ad_stdn."study_mode_id" AS ad_stdn_study_mode_id
 FROM
-     "public"."ad_actr" ad_actr INNER JOIN "public"."ad_stdn" ad_stdn ON ad_actr."id" = ad_stdn."id"
-WHERE
- ad_stdn."student_status"=$P{student_status}]]>
+     "public"."ad_actr" ad_actr INNER JOIN "public"."ad_stdn" ad_stdn ON ad_actr."id" = ad_stdn."id"]]>
 	</queryString>
 	<field name="ad_actr_id" class="java.lang.Long"/>
 	<field name="ad_actr_actor_type" class="java.lang.Integer"/>
@@ -49,10 +49,11 @@ WHERE
 	<field name="ad_actr_phone" class="java.lang.String"/>
 	<field name="ad_stdn_memo" class="java.lang.String"/>
 	<field name="ad_stdn_no_id" class="java.lang.String"/>
-	<field name="ad_stdn_student_status" class="java.lang.Integer"/>
+	<field name="ad_stdn_student_status" class="java.lang.String"/>
 	<field name="ad_stdn_id" class="java.lang.Long"/>
 	<field name="ad_stdn_cohort_id" class="java.lang.Long"/>
 	<field name="ad_stdn_study_mode_id" class="java.lang.Long"/>
+	<filterExpression><![CDATA[$F{ad_stdn_student_status}.equals( $P{student_status} )]]></filterExpression>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -94,7 +95,7 @@ WHERE
 				<text><![CDATA[VENUE          :  ENTREPRENEURIAL LAB 3, MGSEB, BAHAGIAN BELAKANG BAGUNAN DOBI]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="62" y="46" width="379" height="20" uuid="728e0dd9-0781-4c1b-a3bc-1a4c95cc0dfa"/>
+				<reportElement x="62" y="46" width="389" height="20" uuid="728e0dd9-0781-4c1b-a3bc-1a4c95cc0dfa"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Arial" isBold="true"/>
 				</textElement>
@@ -262,13 +263,13 @@ WHERE
 					<font fontName="Arial" size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[(
-    $F{ad_stdn_student_status} == 0 ?
+    $F{ad_stdn_student_status}.equals("0") ?
     "MATRICULATED" :
-    $F{ad_stdn_student_status} == 1 ?
+    $F{ad_stdn_student_status}.equals("1") ?
     "ACTIVE" :
-    $F{ad_stdn_student_status} == 2 ?
+    $F{ad_stdn_student_status}.equals("2") ?
     "BARRED" :
-    $F{ad_stdn_student_status} == 3 ?
+    $F{ad_stdn_student_status}.equals("3") ?
     "INACTIVE" :
     "GRADUATED"
 )]]></textFieldExpression>
