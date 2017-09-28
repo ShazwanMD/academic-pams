@@ -322,7 +322,7 @@ ORDER BY  ad_actr."name"]]>
 	<field name="ad_acdm_sesn_current_" class="java.lang.Boolean"/>
 	<field name="ad_acdm_sesn_description" class="java.lang.String"/>
 	<field name="ad_acdm_sesn_year_id" class="java.lang.Long"/>
-	<field name="ad_acdm_sesn_semester" class="java.lang.Integer"/>
+	<field name="ad_acdm_sesn_semester" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
