@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report4" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="fe6eae38-dbac-492a-9522-077445b8487d">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="41"/>
+	<parameter name="identity_no" class="java.lang.String"/>
+	<parameter name="session_id" class="java.lang.Integer"/>
+	<queryString>
+		<![CDATA[SELECT
+     a."name",
+     a."identity_no",
+     b."cohort_id",
+     c."cgpa",
+     c."gpa",
+     c."ordinal",
+     d."standing",
+     e."code",
+     c."session_id",
+     f."title_en",
+     g."credit",
+     b."student_status",
+     h."code",
+     h."title_en" AS h_title_en,
+     h."title_ms" AS h_title_ms
+FROM
+     "ad_actr" a INNER JOIN "ad_stdn" b ON a."id" = b."id"
+     INNER JOIN "ad_admn" c ON b."id" = c."student_id"
+     INNER JOIN "ad_enmt" d ON c."id" = d."admission_id"
+     INNER JOIN "ad_sctn" e ON d."section_id" = e."id"
+     INNER JOIN "ad_ofrg" f ON e."offering_id" = f."id"
+     INNER JOIN "ad_crse" g ON f."course_id" = g."id"
+     INNER JOIN "ad_prgm" h ON f."program_id" = h."id"
+WHERE
+     a.identity_no = 'A17P001'
+     and c.session_id = '31']]>
+	</queryString>
+	<field name="name" class="java.lang.String"/>
+	<field name="identity_no" class="java.lang.String"/>
+	<field name="cohort_id" class="java.lang.Long"/>
+	<field name="cgpa" class="java.math.BigDecimal"/>
+	<field name="gpa" class="java.math.BigDecimal"/>
+	<field name="ordinal" class="java.lang.Integer"/>
+	<field name="standing" class="java.lang.Integer"/>
+	<field name="code" class="java.lang.String"/>
+	<field name="session_id" class="java.lang.Long"/>
+	<field name="title_en" class="java.lang.String"/>
+	<field name="credit" class="java.lang.Integer"/>
+	<field name="student_status" class="java.lang.Integer"/>
+	<field name="h_title_en" class="java.lang.String"/>
+	<field name="h_title_ms" class="java.lang.String"/>
+	<variable name="credit_1" class="java.lang.Integer" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{credit}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="93" splitType="Stretch">
+			<image>
+				<reportElement x="122" y="15" width="55" height="67" uuid="7e7f8a60-fbfb-4490-95da-dfc45fc2d3c4"/>
+				<imageExpression><![CDATA["C:\\Users\\PAMS05\\git\\academic\\back\\src\\main\\resources\\reports\\img\\logo_universiti_malaysia_kelantan.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="166" y="26" width="231" height="20" uuid="5f5f94b0-f20e-4221-af6e-e8d8e8317001"/>
+				<textElement textAlignment="Justified">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[COURSE REGISTRATION SLIP]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="166" y="46" width="339" height="20" uuid="2ae9f282-a674-4571-9022-0dcf20881b7a"/>
+				<textElement textAlignment="Justified">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Malaysian Graduate School of Entreprenuership and Business (MGSEB)]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="115" splitType="Stretch">
+			<textField>
+				<reportElement x="87" y="4" width="222" height="20" uuid="fc22aa3d-d99a-45d1-8aaa-79512bbb4634"/>
+				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="28" y="4" width="59" height="20" uuid="4f7b3cc0-fa8e-4f76-857f-9cdc2dc0e0d9"/>
+				<text><![CDATA[Name :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="87" y="24" width="100" height="20" uuid="4991b021-c2dd-4964-9fff-5847a406fe5a"/>
+				<textFieldExpression><![CDATA[$F{identity_no}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="29" y="24" width="58" height="20" uuid="a1012da5-0c62-489f-b137-7f9e4da80d11"/>
+				<text><![CDATA[IdentityNo :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="87" y="44" width="100" height="20" uuid="ad66c676-74c6-4098-88af-cce07ae02295"/>
+				<textFieldExpression><![CDATA[$F{ordinal}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="29" y="44" width="58" height="20" uuid="b0aadd7b-6b90-4d7d-9823-be4e1a781313"/>
+				<text><![CDATA[Semester :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="434" y="4" width="100" height="20" uuid="af222a51-5df0-40d4-b5ca-033dfa0a6ba3"/>
+				<textFieldExpression><![CDATA[$F{session_id}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="375" y="4" width="59" height="20" uuid="5ecb9703-7abe-4722-bae7-8cfbeadf0605"/>
+				<text><![CDATA[Session :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="434" y="24" width="100" height="20" uuid="75eee7ac-9d74-4e51-bec7-5e8a66017a3b"/>
+				<textFieldExpression><![CDATA[$F{cohort_id}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="375" y="24" width="59" height="20" uuid="4452bff4-6e38-44d1-8695-203a73c67ac5"/>
+				<text><![CDATA[Cohort :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="434" y="44" width="100" height="20" uuid="a4fada1c-2379-4179-8529-7effccf5e497"/>
+				<textFieldExpression><![CDATA[$F{cgpa}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="434" y="64" width="100" height="20" uuid="42be5ed9-c3ae-4c89-a467-e92a6d85866d"/>
+				<textFieldExpression><![CDATA[$F{gpa}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="375" y="44" width="59" height="20" uuid="dd5a5358-9e8a-4470-903d-8f9e07ce97d5"/>
+				<text><![CDATA[CGPA :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="375" y="64" width="59" height="20" uuid="f6af3a75-08be-4016-88f0-062e4aef4ddb"/>
+				<text><![CDATA[GPA :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="28" y="64" width="58" height="20" uuid="a3ec48f3-3a69-4921-a489-0bea03965ef1"/>
+				<text><![CDATA[Status :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="87" y="64" width="58" height="20" uuid="4837e25c-9e10-474b-9613-8bb7f7a0e533"/>
+				<text><![CDATA[Active]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="27" splitType="Stretch">
+			<staticText>
+				<reportElement x="28" y="0" width="69" height="20" uuid="d213eae4-2d0b-4d91-af37-d04ef122e16d"/>
+				<text><![CDATA[CODE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="99" y="0" width="118" height="20" uuid="38df7720-067d-4dce-a988-6cb4d7ab2111"/>
+				<text><![CDATA[TITLE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="217" y="0" width="51" height="20" uuid="b9ed9ed9-589f-4f54-85d8-3667015b3d91"/>
+				<text><![CDATA[CREDIT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="268" y="0" width="129" height="20" uuid="78d4623a-0082-42fb-9a33-d330c395566c"/>
+				<text><![CDATA[PROGRAM]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="26" splitType="Stretch">
+			<textField>
+				<reportElement x="29" y="6" width="70" height="20" uuid="93c221c7-a80c-43d1-82cd-cdf9274da8bc"/>
+				<textFieldExpression><![CDATA[$F{code}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="217" y="3" width="30" height="20" uuid="08eeca28-c048-4bdf-99cc-1bcf215bd8d7"/>
+				<textFieldExpression><![CDATA[$F{credit}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="98" y="3" width="119" height="20" uuid="26092da9-fefb-4a33-81c2-2a1a7f1e241f"/>
+				<textFieldExpression><![CDATA[$F{title_en}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="268" y="0" width="129" height="20" uuid="90a6b304-6d6f-420f-b3ca-87f3d10c123a"/>
+				<textFieldExpression><![CDATA[$F{h_title_en}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement x="397" y="0" width="58" height="20" uuid="4c23bd8d-0481-4345-aca6-48e08fbd9bb4"/>
+				<text><![CDATA[Total Credit:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="455" y="0" width="100" height="20" uuid="72c3afac-9527-4aa6-9b34-979d313c567a"/>
+				<textFieldExpression><![CDATA[$V{credit_1}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement x="217" y="3" width="142" height="17" uuid="e3afdabd-5597-4734-b4bc-181e47f4f57e"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle"/>
+				<text><![CDATA[MGSEB UMK Kelantan]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
