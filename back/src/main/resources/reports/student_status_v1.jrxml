@@ -120,16 +120,56 @@
      ad_staf."title" AS ad_staf_title,
      ad_staf."faculty_id" AS ad_staf_faculty_id,
      ad_staf."program_id" AS ad_staf_program_id,
-     ad_staf."id" AS ad_staf_id
+     ad_staf."id" AS ad_staf_id,
+     ad_prgm."id" AS ad_prgm_id,
+     ad_prgm."code" AS ad_prgm_code,
+     ad_prgm."c_ts" AS ad_prgm_c_ts,
+     ad_prgm."c_id" AS ad_prgm_c_id,
+     ad_prgm."d_ts" AS ad_prgm_d_ts,
+     ad_prgm."d_id" AS ad_prgm_d_id,
+     ad_prgm."m_ts" AS ad_prgm_m_ts,
+     ad_prgm."m_id" AS ad_prgm_m_id,
+     ad_prgm."m_st" AS ad_prgm_m_st,
+     ad_prgm."status" AS ad_prgm_status,
+     ad_prgm."title_en" AS ad_prgm_title_en,
+     ad_prgm."title_ms" AS ad_prgm_title_ms,
+     ad_prgm."faculty_id" AS ad_prgm_faculty_id,
+     ad_prgm."level_id" AS ad_prgm_level_id,
+     ad_fcty."id" AS ad_fcty_id,
+     ad_fcty."code" AS ad_fcty_code,
+     ad_fcty."description" AS ad_fcty_description,
+     ad_fcty."c_ts" AS ad_fcty_c_ts,
+     ad_fcty."c_id" AS ad_fcty_c_id,
+     ad_fcty."d_ts" AS ad_fcty_d_ts,
+     ad_fcty."d_id" AS ad_fcty_d_id,
+     ad_fcty."m_ts" AS ad_fcty_m_ts,
+     ad_fcty."m_id" AS ad_fcty_m_id,
+     ad_fcty."m_st" AS ad_fcty_m_st,
+     ad_fcty."name" AS ad_fcty_name,
+     ad_fcty."prefix" AS ad_fcty_prefix,
+     ad_fcty."status" AS ad_fcty_status,
+     ad_acdm_sesn."id" AS ad_acdm_sesn_id,
+     ad_acdm_sesn."code" AS ad_acdm_sesn_code,
+     ad_acdm_sesn."current_" AS ad_acdm_sesn_current_,
+     ad_acdm_sesn."description" AS ad_acdm_sesn_description,
+     ad_acdm_sesn."year_id" AS ad_acdm_sesn_year_id,
+     ad_acdm_sesn."semester" AS ad_acdm_sesn_semester
 FROM
      "public"."ad_actr" ad_actr INNER JOIN "public"."ad_stdn" ad_stdn ON ad_actr."id" = ad_stdn."id"
      INNER JOIN "public"."ad_admn" ad_admn ON ad_stdn."id" = ad_admn."student_id"
      INNER JOIN "public"."ad_enmt" ad_enmt ON ad_admn."id" = ad_enmt."admission_id"
-     INNER JOIN "public"."ad_sctn" ad_sctn ON ad_enmt."section_id" = ad_sctn."id"
-     INNER JOIN "public"."ad_apmt" ad_apmt ON ad_sctn."id" = ad_apmt."section_id"
-     INNER JOIN "public"."ad_ofrg" ad_ofrg ON ad_sctn."offering_id" = ad_ofrg."id"
+     INNER JOIN "public"."ad_acdm_sesn" ad_acdm_sesn ON ad_admn."session_id" = ad_acdm_sesn."id"
+     INNER JOIN "public"."ad_ofrg" ad_ofrg ON ad_acdm_sesn."id" = ad_ofrg."session_id"
+     INNER JOIN "public"."ad_sctn" ad_sctn ON ad_ofrg."id" = ad_sctn."offering_id"
      INNER JOIN "public"."ad_crse" ad_crse ON ad_ofrg."course_id" = ad_crse."id"
-     INNER JOIN "public"."ad_staf" ad_staf ON ad_apmt."staff_id" = ad_staf."id"
+     INNER JOIN "public"."ad_prgm" ad_prgm ON ad_ofrg."program_id" = ad_prgm."id"
+     INNER JOIN "public"."ad_staf" ad_staf ON ad_prgm."id" = ad_staf."program_id"
+     INNER JOIN "public"."ad_fcty" ad_fcty ON ad_prgm."faculty_id" = ad_fcty."id"
+     AND ad_fcty."id" = ad_staf."faculty_id"
+     AND ad_fcty."id" = ad_crse."faculty_id"
+     INNER JOIN "public"."ad_apmt" ad_apmt ON ad_staf."id" = ad_apmt."staff_id"
+     AND ad_sctn."id" = ad_apmt."section_id"
+     AND ad_enmt."section_id" = ad_sctn."id"
 WHERE
      ad_sctn."code" = $P{section_code}]]>
 	</queryString>
@@ -248,18 +288,44 @@ WHERE
 	<field name="ad_staf_faculty_id" class="java.lang.Long"/>
 	<field name="ad_staf_program_id" class="java.lang.Long"/>
 	<field name="ad_staf_id" class="java.lang.Long"/>
+	<field name="ad_prgm_id" class="java.lang.Long"/>
+	<field name="ad_prgm_code" class="java.lang.String"/>
+	<field name="ad_prgm_c_ts" class="java.sql.Timestamp"/>
+	<field name="ad_prgm_c_id" class="java.lang.Long"/>
+	<field name="ad_prgm_d_ts" class="java.sql.Timestamp"/>
+	<field name="ad_prgm_d_id" class="java.lang.Long"/>
+	<field name="ad_prgm_m_ts" class="java.sql.Timestamp"/>
+	<field name="ad_prgm_m_id" class="java.lang.Long"/>
+	<field name="ad_prgm_m_st" class="java.lang.Integer"/>
+	<field name="ad_prgm_status" class="java.lang.Integer"/>
+	<field name="ad_prgm_title_en" class="java.lang.String"/>
+	<field name="ad_prgm_title_ms" class="java.lang.String"/>
+	<field name="ad_prgm_faculty_id" class="java.lang.Long"/>
+	<field name="ad_prgm_level_id" class="java.lang.Long"/>
+	<field name="ad_fcty_id" class="java.lang.Long"/>
+	<field name="ad_fcty_code" class="java.lang.String"/>
+	<field name="ad_fcty_description" class="java.lang.String"/>
+	<field name="ad_fcty_c_ts" class="java.sql.Timestamp"/>
+	<field name="ad_fcty_c_id" class="java.lang.Long"/>
+	<field name="ad_fcty_d_ts" class="java.sql.Timestamp"/>
+	<field name="ad_fcty_d_id" class="java.lang.Long"/>
+	<field name="ad_fcty_m_ts" class="java.sql.Timestamp"/>
+	<field name="ad_fcty_m_id" class="java.lang.Long"/>
+	<field name="ad_fcty_m_st" class="java.lang.Integer"/>
+	<field name="ad_fcty_name" class="java.lang.String"/>
+	<field name="ad_fcty_prefix" class="java.lang.String"/>
+	<field name="ad_fcty_status" class="java.lang.Integer"/>
+	<field name="ad_acdm_sesn_id" class="java.lang.Long"/>
+	<field name="ad_acdm_sesn_code" class="java.lang.String"/>
+	<field name="ad_acdm_sesn_current_" class="java.lang.Boolean"/>
+	<field name="ad_acdm_sesn_description" class="java.lang.String"/>
+	<field name="ad_acdm_sesn_year_id" class="java.lang.Long"/>
+	<field name="ad_acdm_sesn_semester" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="120" splitType="Stretch">
-			<staticText>
-				<reportElement x="62" y="63" width="70" height="20" uuid="60be16c6-9b5b-4b32-a00c-de9b5ab33700"/>
-				<textElement verticalAlignment="Middle">
-					<font fontName="Arial" isBold="true"/>
-				</textElement>
-				<text><![CDATA[LECTURER   : ]]></text>
-			</staticText>
+		<band height="129" splitType="Stretch">
 			<staticText>
 				<reportElement mode="Transparent" x="153" y="2" width="275" height="20" backcolor="#FFFFFF" uuid="909b5952-b190-4d80-8b65-341f4a4cba21"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -268,78 +334,116 @@ WHERE
 				<text><![CDATA[MASTER OF BUSINESS ADMINISTRATION]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="62" y="97" width="201" height="20" uuid="bfccea49-1847-40dd-8aeb-1de9b1e1b0c6"/>
+				<reportElement x="265" y="93" width="70" height="15" uuid="bfccea49-1847-40dd-8aeb-1de9b1e1b0c6"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Arial" isBold="true"/>
 				</textElement>
-				<text><![CDATA[TIME              : 9.00  AM - 12.00  PM (TUESDAY)]]></text>
+				<text><![CDATA[FACULTY :]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Transparent" x="120" y="22" width="338" height="20" backcolor="#FFFFFF" uuid="24bdafea-c408-4845-8a47-bd29d56c6220"/>
+				<reportElement mode="Transparent" x="288" y="18" width="100" height="20" backcolor="#FFFFFF" uuid="24bdafea-c408-4845-8a47-bd29d56c6220"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial" size="11" isBold="true"/>
 				</textElement>
-				<text><![CDATA[SEMESTER 2 FEBRUARY SESI AKADEMIK 2016/2017 / KAMPUS PC]]></text>
+				<text><![CDATA[SESI AKADEMIK]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="62" y="80" width="436" height="20" uuid="7c6566aa-4400-40d7-94fd-44ea0117434d"/>
+				<reportElement x="265" y="76" width="70" height="17" uuid="7c6566aa-4400-40d7-94fd-44ea0117434d"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Arial" isBold="true"/>
 				</textElement>
-				<text><![CDATA[VENUE          :  ENTREPRENEURIAL LAB 3, MGSEB, BAHAGIAN BELAKANG BAGUNAN DOBI]]></text>
+				<text><![CDATA[PROGRAM:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="62" y="46" width="70" height="20" uuid="728e0dd9-0781-4c1b-a3bc-1a4c95cc0dfa"/>
+				<reportElement x="56" y="63" width="70" height="16" uuid="728e0dd9-0781-4c1b-a3bc-1a4c95cc0dfa"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Arial" isBold="true"/>
 				</textElement>
-				<text><![CDATA[SUBJECT      : ]]></text>
+				<text><![CDATA[SUBJECT : ]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="132" y="47" width="137" height="20" uuid="363d36d8-85ca-4f8e-8a47-13a841175f5b"/>
+				<reportElement x="126" y="65" width="137" height="20" uuid="363d36d8-85ca-4f8e-8a47-13a841175f5b"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{ad_crse_title_en}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="269" y="47" width="44" height="20" uuid="639d669d-977a-4699-ad88-75ea64d51a4c"/>
+				<reportElement x="56" y="79" width="44" height="20" uuid="639d669d-977a-4699-ad88-75ea64d51a4c"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Arial" isBold="true"/>
 				</textElement>
 				<text><![CDATA[CODE :]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="313" y="47" width="100" height="20" uuid="74d31ad9-57e4-41cf-ad84-3ea943dee7b7"/>
+				<reportElement x="126" y="82" width="100" height="20" uuid="74d31ad9-57e4-41cf-ad84-3ea943dee7b7"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{ad_crse_code}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="416" y="48" width="66" height="20" uuid="6b636077-1a48-49aa-a3ef-c30b1b1b2e55"/>
+				<reportElement x="264" y="59" width="66" height="20" uuid="6b636077-1a48-49aa-a3ef-c30b1b1b2e55"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Arial" isBold="true"/>
 				</textElement>
 				<text><![CDATA[SECTION :]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="482" y="52" width="100" height="20" uuid="d077f61c-e0a7-4f25-a863-a04afa33ac85"/>
+				<reportElement x="330" y="62" width="79" height="20" uuid="d077f61c-e0a7-4f25-a863-a04afa33ac85"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{ad_sctn_ordinal}]]></textFieldExpression>
 			</textField>
+			<image>
+				<reportElement x="85" y="0" width="37" height="52" uuid="a0de9006-dd85-4662-9fb9-a0410884037c"/>
+				<imageExpression><![CDATA["C:\\Users\\PAMS05\\git\\academic\\back\\src\\main\\resources\\reports\\img\\logo_universiti_malaysia_kelantan.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="56" y="99" width="108" height="20" uuid="ebd310a8-15fe-41fc-b825-f4b7f1d7272c"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ACADEMIC SESSION :]]></text>
+			</staticText>
 			<textField>
-				<reportElement x="132" y="68" width="100" height="20" uuid="a92b598e-8602-4338-8094-21abcca29ec4"/>
+				<reportElement x="335" y="79" width="216" height="20" uuid="af36d72b-dab6-4436-b04c-631a08107c37"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{ad_apmt_staff_id}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{ad_prgm_title_en}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="232" y="68" width="100" height="20" uuid="ba07587e-8f40-4cd8-952b-6f0aa0b60bab"/>
-				<textFieldExpression><![CDATA[$F{ad_staf_title}]]></textFieldExpression>
+				<reportElement x="335" y="96" width="100" height="20" uuid="d4993762-7e68-4fec-b668-e3e2b08e650f"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ad_fcty_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="164" y="102" width="100" height="20" uuid="cf2b0768-6d1c-4960-a0df-3a187d5cafa7"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ad_acdm_sesn_code}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="147" y="22" width="158" height="20" uuid="a2e19d61-05d0-474d-b160-1743515f3cca"/>
+				<textElement>
+					<font fontName="Arial" size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($F{ad_acdm_sesn_semester}.equals( "0" )? "SEMESTER 1 SEPTEMBER":
+$F{ad_acdm_sesn_semester}.equals( "1" )? "SEMESTER 2 FEBRUARI":
+$F{ad_acdm_sesn_semester}.equals( "2" )? "SEMESTER 3 DISEMBER":
+"OTHERS")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="387" y="21" width="100" height="20" uuid="17776704-fe83-4aca-b2ff-fd5905f165ff"/>
+				<textElement>
+					<font fontName="Arial" size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ad_acdm_sesn_code}]]></textFieldExpression>
 			</textField>
 		</band>
 	</title>
@@ -444,7 +548,7 @@ WHERE
 					<bottomPen lineWidth="0.5"/>
 					<rightPen lineWidth="0.5"/>
 				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
+				<textElement verticalAlignment="Middle">
 					<font fontName="Arial" size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{ad_actr_name}]]></textFieldExpression>
@@ -503,7 +607,7 @@ $F{ad_stdn_student_status}.equals( "4" )? "GRADUATED" :
 				</graphicElement>
 			</rectangle>
 			<textField>
-				<reportElement x="0" y="0" width="25" height="20" uuid="41172885-df25-49b2-a00f-b18364a9ecd4"/>
+				<reportElement x="1" y="0" width="25" height="20" uuid="41172885-df25-49b2-a00f-b18364a9ecd4"/>
 				<textElement textAlignment="Center">
 					<font size="9"/>
 				</textElement>

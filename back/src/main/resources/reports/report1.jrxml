@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9eedbdee-b4a6-4197-b5a7-0a6ee38c11a2">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+     *,
+     ad_sctn."id" AS ad_sctn_id,
+     ad_sctn."canonical_code" AS ad_sctn_canonical_code,
+     ad_sctn."code" AS ad_sctn_code,
+     ad_sctn."ordinal" AS ad_sctn_ordinal,
+     ad_sctn."offering_id" AS ad_sctn_offering_id,
+     ad_enmt."id" AS ad_enmt_id,
+     ad_enmt."total_score" AS ad_enmt_total_score,
+     ad_enmt."admission_id" AS ad_enmt_admission_id,
+     ad_enmt."section_id" AS ad_enmt_section_id,
+     ad_admn."id" AS ad_admn_id,
+     ad_admn."cgpa" AS ad_admn_cgpa,
+     ad_admn."credit_earned" AS ad_admn_credit_earned,
+     ad_admn."credit_taken" AS ad_admn_credit_taken,
+     ad_admn."gpa" AS ad_admn_gpa,
+     ad_admn."ordinal" AS ad_admn_ordinal,
+     ad_admn."status" AS ad_admn_status,
+     ad_admn."student_id" AS ad_admn_student_id,
+     ad_admn."advisor_id" AS ad_admn_advisor_id,
+     ad_apmt."id" AS ad_apmt_id,
+     ad_apmt."status" AS ad_apmt_status,
+     ad_apmt."section_id" AS ad_apmt_section_id,
+     ad_apmt."staff_id" AS ad_apmt_staff_id,
+     ad_actr."id" AS ad_actr_id,
+     ad_actr."actor_type" AS ad_actr_actor_type,
+     ad_actr."email" AS ad_actr_email,
+     ad_actr."identity_no" AS ad_actr_identity_no,
+     ad_actr."name" AS ad_actr_name,
+     ad_actr."phone" AS ad_actr_phone,
+     ad_stdn."memo" AS ad_stdn_memo,
+     ad_stdn."no_id" AS ad_stdn_no_id,
+     ad_stdn."student_status" AS ad_stdn_student_status,
+     ad_stdn."id" AS ad_stdn_id,
+     ad_stdn."cohort_id" AS ad_stdn_cohort_id,
+     ad_stdn."study_mode_id" AS ad_stdn_study_mode_id,
+     ad_stdn."balance" AS ad_stdn_balance,
+     ad_stdn."outstanding" AS ad_stdn_outstanding
+FROM
+     "public"."ad_sctn" ad_sctn INNER JOIN "public"."ad_enmt" ad_enmt ON ad_sctn."id" = ad_enmt."section_id"
+     INNER JOIN "public"."ad_admn" ad_admn ON ad_enmt."admission_id" = ad_admn."id"
+     INNER JOIN "public"."ad_stdn" ad_stdn ON ad_admn."student_id" = ad_stdn."id"
+     INNER JOIN "public"."ad_actr" ad_actr ON ad_stdn."id" = ad_actr."id"
+     INNER JOIN "public"."ad_apmt" ad_apmt ON ad_sctn."id" = ad_apmt."section_id"]]>
+	</queryString>
+	<field name="id" class="java.lang.Long"/>
+	<field name="canonical_code" class="java.lang.String"/>
+	<field name="capacity" class="java.lang.Integer"/>
+	<field name="code" class="java.lang.String"/>
+	<field name="c_ts" class="java.sql.Timestamp"/>
+	<field name="c_id" class="java.lang.Long"/>
+	<field name="d_ts" class="java.sql.Timestamp"/>
+	<field name="d_id" class="java.lang.Long"/>
+	<field name="m_ts" class="java.sql.Timestamp"/>
+	<field name="m_id" class="java.lang.Long"/>
+	<field name="m_st" class="java.lang.Integer"/>
+	<field name="ordinal" class="java.lang.Integer"/>
+	<field name="offering_id" class="java.lang.Long"/>
+	<field name="standing" class="java.lang.Integer"/>
+	<field name="status" class="java.lang.Integer"/>
+	<field name="total_score" class="java.math.BigDecimal"/>
+	<field name="admission_id" class="java.lang.Long"/>
+	<field name="grade_code_id" class="java.lang.Long"/>
+	<field name="section_id" class="java.lang.Long"/>
+	<field name="cgpa" class="java.math.BigDecimal"/>
+	<field name="credit_earned" class="java.lang.Integer"/>
+	<field name="credit_taken" class="java.lang.Integer"/>
+	<field name="gpa" class="java.math.BigDecimal"/>
+	<field name="cohort_id" class="java.lang.Long"/>
+	<field name="session_id" class="java.lang.Long"/>
+	<field name="student_id" class="java.lang.Long"/>
+	<field name="advisor_id" class="java.lang.Long"/>
+	<field name="study_center_id" class="java.lang.Long"/>
+	<field name="memo" class="java.lang.String"/>
+	<field name="no_id" class="java.lang.String"/>
+	<field name="student_status" class="java.lang.Integer"/>
+	<field name="study_mode_id" class="java.lang.Long"/>
+	<field name="balance" class="java.math.BigDecimal"/>
+	<field name="outstanding" class="java.lang.Boolean"/>
+	<field name="actor_type" class="java.lang.Integer"/>
+	<field name="email" class="java.lang.String"/>
+	<field name="fax" class="java.lang.String"/>
+	<field name="identity_no" class="java.lang.String"/>
+	<field name="mobile" class="java.lang.String"/>
+	<field name="name" class="java.lang.String"/>
+	<field name="phone" class="java.lang.String"/>
+	<field name="staff_id" class="java.lang.Long"/>
+	<field name="ad_sctn_id" class="java.lang.Long"/>
+	<field name="ad_sctn_canonical_code" class="java.lang.String"/>
+	<field name="ad_sctn_code" class="java.lang.String"/>
+	<field name="ad_sctn_ordinal" class="java.lang.Integer"/>
+	<field name="ad_sctn_offering_id" class="java.lang.Long"/>
+	<field name="ad_enmt_id" class="java.lang.Long"/>
+	<field name="ad_enmt_total_score" class="java.math.BigDecimal"/>
+	<field name="ad_enmt_admission_id" class="java.lang.Long"/>
+	<field name="ad_enmt_section_id" class="java.lang.Long"/>
+	<field name="ad_admn_id" class="java.lang.Long"/>
+	<field name="ad_admn_cgpa" class="java.math.BigDecimal"/>
+	<field name="ad_admn_credit_earned" class="java.lang.Integer"/>
+	<field name="ad_admn_credit_taken" class="java.lang.Integer"/>
+	<field name="ad_admn_gpa" class="java.math.BigDecimal"/>
+	<field name="ad_admn_ordinal" class="java.lang.Integer"/>
+	<field name="ad_admn_status" class="java.lang.Integer"/>
+	<field name="ad_admn_student_id" class="java.lang.Long"/>
+	<field name="ad_admn_advisor_id" class="java.lang.Long"/>
+	<field name="ad_apmt_id" class="java.lang.Long"/>
+	<field name="ad_apmt_status" class="java.lang.Integer"/>
+	<field name="ad_apmt_section_id" class="java.lang.Long"/>
+	<field name="ad_apmt_staff_id" class="java.lang.Long"/>
+	<field name="ad_actr_id" class="java.lang.Long"/>
+	<field name="ad_actr_actor_type" class="java.lang.Integer"/>
+	<field name="ad_actr_email" class="java.lang.String"/>
+	<field name="ad_actr_identity_no" class="java.lang.String"/>
+	<field name="ad_actr_name" class="java.lang.String"/>
+	<field name="ad_actr_phone" class="java.lang.String"/>
+	<field name="ad_stdn_memo" class="java.lang.String"/>
+	<field name="ad_stdn_no_id" class="java.lang.String"/>
+	<field name="ad_stdn_student_status" class="java.lang.Integer"/>
+	<field name="ad_stdn_id" class="java.lang.Long"/>
+	<field name="ad_stdn_cohort_id" class="java.lang.Long"/>
+	<field name="ad_stdn_study_mode_id" class="java.lang.Long"/>
+	<field name="ad_stdn_balance" class="java.math.BigDecimal"/>
+	<field name="ad_stdn_outstanding" class="java.lang.Boolean"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="38" y="2" width="100" height="20" uuid="fa20e22c-2ef4-4b95-ac75-b067628fcd14"/>
+				<text><![CDATA[canonical_code]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement x="17" y="12" width="100" height="20" uuid="91804ff2-0acc-4dda-85df-4085a568ff51"/>
+				<textFieldExpression><![CDATA[$F{canonical_code}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
