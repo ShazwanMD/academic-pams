@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reportAkhirNew" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="833aeb46-bbba-4d7c-aa22-f2a8dfbd7612">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reportAkhirNew" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="833aeb46-bbba-4d7c-aa22-f2a8dfbd7612">
 	<property name="ireport.zoom" value="2.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
@@ -171,7 +171,9 @@ FROM
      AND ad_sctn."id" = ad_apmt."section_id"
      AND ad_enmt."section_id" = ad_sctn."id"
 WHERE
-     ad_sctn."code" = $P{section_code}]]>
+     ad_sctn."code" = $P{section_code}
+
+ORDER BY  ad_actr."name"]]>
 	</queryString>
 	<field name="ad_actr_id" class="java.lang.Long"/>
 	<field name="ad_actr_actor_type" class="java.lang.Integer"/>
@@ -190,7 +192,7 @@ WHERE
 	<field name="ad_actr_phone" class="java.lang.String"/>
 	<field name="ad_stdn_memo" class="java.lang.String"/>
 	<field name="ad_stdn_no_id" class="java.lang.String"/>
-	<field name="ad_stdn_student_status" class="java.lang.String"/>
+	<field name="ad_stdn_student_status" class="java.lang.Integer"/>
 	<field name="ad_stdn_id" class="java.lang.Long"/>
 	<field name="ad_stdn_cohort_id" class="java.lang.Long"/>
 	<field name="ad_stdn_study_mode_id" class="java.lang.Long"/>
@@ -320,116 +322,116 @@ WHERE
 	<field name="ad_acdm_sesn_current_" class="java.lang.Boolean"/>
 	<field name="ad_acdm_sesn_description" class="java.lang.String"/>
 	<field name="ad_acdm_sesn_year_id" class="java.lang.Long"/>
-	<field name="ad_acdm_sesn_semester" class="java.lang.String"/>
+	<field name="ad_acdm_sesn_semester" class="java.lang.Integer"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
 		<band height="129" splitType="Stretch">
 			<staticText>
-				<reportElement mode="Transparent" x="153" y="2" width="275" height="20" backcolor="#FFFFFF" uuid="909b5952-b190-4d80-8b65-341f4a4cba21"/>
+				<reportElement mode="Transparent" x="262" y="2" width="275" height="20" backcolor="#FFFFFF" uuid="909b5952-b190-4d80-8b65-341f4a4cba21"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial" size="13" isBold="true"/>
 				</textElement>
 				<text><![CDATA[MASTER OF BUSINESS ADMINISTRATION]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="265" y="93" width="70" height="15" uuid="bfccea49-1847-40dd-8aeb-1de9b1e1b0c6"/>
+				<reportElement x="392" y="89" width="70" height="15" uuid="bfccea49-1847-40dd-8aeb-1de9b1e1b0c6"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Arial" isBold="true"/>
 				</textElement>
 				<text><![CDATA[FACULTY :]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Transparent" x="288" y="18" width="100" height="20" backcolor="#FFFFFF" uuid="24bdafea-c408-4845-8a47-bd29d56c6220"/>
+				<reportElement mode="Transparent" x="397" y="18" width="100" height="20" backcolor="#FFFFFF" uuid="24bdafea-c408-4845-8a47-bd29d56c6220"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial" size="11" isBold="true"/>
 				</textElement>
 				<text><![CDATA[SESI AKADEMIK]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="265" y="76" width="70" height="17" uuid="7c6566aa-4400-40d7-94fd-44ea0117434d"/>
+				<reportElement x="392" y="72" width="70" height="17" uuid="7c6566aa-4400-40d7-94fd-44ea0117434d"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Arial" isBold="true"/>
 				</textElement>
 				<text><![CDATA[PROGRAM:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="56" y="63" width="70" height="16" uuid="728e0dd9-0781-4c1b-a3bc-1a4c95cc0dfa"/>
+				<reportElement x="183" y="59" width="70" height="16" uuid="728e0dd9-0781-4c1b-a3bc-1a4c95cc0dfa"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Arial" isBold="true"/>
 				</textElement>
 				<text><![CDATA[SUBJECT : ]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="126" y="65" width="137" height="20" uuid="363d36d8-85ca-4f8e-8a47-13a841175f5b"/>
+				<reportElement x="253" y="61" width="137" height="20" uuid="363d36d8-85ca-4f8e-8a47-13a841175f5b"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{ad_crse_title_en}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="56" y="79" width="44" height="20" uuid="639d669d-977a-4699-ad88-75ea64d51a4c"/>
+				<reportElement x="183" y="75" width="44" height="20" uuid="639d669d-977a-4699-ad88-75ea64d51a4c"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Arial" isBold="true"/>
 				</textElement>
 				<text><![CDATA[CODE :]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="126" y="82" width="100" height="20" uuid="74d31ad9-57e4-41cf-ad84-3ea943dee7b7"/>
+				<reportElement x="253" y="78" width="100" height="20" uuid="74d31ad9-57e4-41cf-ad84-3ea943dee7b7"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{ad_crse_code}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="264" y="59" width="66" height="20" uuid="6b636077-1a48-49aa-a3ef-c30b1b1b2e55"/>
+				<reportElement x="391" y="55" width="66" height="20" uuid="6b636077-1a48-49aa-a3ef-c30b1b1b2e55"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Arial" isBold="true"/>
 				</textElement>
 				<text><![CDATA[SECTION :]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="330" y="62" width="79" height="20" uuid="d077f61c-e0a7-4f25-a863-a04afa33ac85"/>
+				<reportElement x="462" y="60" width="79" height="20" uuid="d077f61c-e0a7-4f25-a863-a04afa33ac85"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{ad_sctn_ordinal}]]></textFieldExpression>
 			</textField>
 			<image>
-				<reportElement x="85" y="0" width="37" height="52" uuid="a0de9006-dd85-4662-9fb9-a0410884037c"/>
+				<reportElement x="217" y="0" width="37" height="52" uuid="a0de9006-dd85-4662-9fb9-a0410884037c"/>
 				<imageExpression><![CDATA["C:\\Users\\PAMS05\\git\\academic\\back\\src\\main\\resources\\reports\\img\\logo_universiti_malaysia_kelantan.png"]]></imageExpression>
 			</image>
 			<staticText>
-				<reportElement x="56" y="97" width="108" height="20" uuid="ebd310a8-15fe-41fc-b825-f4b7f1d7272c"/>
+				<reportElement x="183" y="93" width="108" height="20" uuid="ebd310a8-15fe-41fc-b825-f4b7f1d7272c"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Arial" isBold="true"/>
 				</textElement>
 				<text><![CDATA[ACADEMIC SESSION :]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="335" y="79" width="216" height="20" uuid="af36d72b-dab6-4436-b04c-631a08107c37"/>
+				<reportElement x="462" y="75" width="216" height="20" uuid="af36d72b-dab6-4436-b04c-631a08107c37"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{ad_prgm_title_en}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="335" y="96" width="100" height="20" uuid="d4993762-7e68-4fec-b668-e3e2b08e650f"/>
+				<reportElement x="462" y="92" width="100" height="20" uuid="d4993762-7e68-4fec-b668-e3e2b08e650f"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{ad_fcty_name}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="164" y="101" width="100" height="20" uuid="cf2b0768-6d1c-4960-a0df-3a187d5cafa7"/>
+				<reportElement x="291" y="97" width="100" height="20" uuid="cf2b0768-6d1c-4960-a0df-3a187d5cafa7"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{ad_acdm_sesn_code}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="147" y="22" width="158" height="20" uuid="a2e19d61-05d0-474d-b160-1743515f3cca"/>
+				<reportElement x="256" y="22" width="158" height="20" uuid="a2e19d61-05d0-474d-b160-1743515f3cca"/>
 				<textElement>
 					<font fontName="Arial" size="11" isBold="true"/>
 				</textElement>
@@ -439,7 +441,7 @@ $F{ad_acdm_sesn_semester}.equals( "2" )? "SEMESTER 3 DISEMBER":
 "OTHERS")]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="387" y="21" width="100" height="20" uuid="17776704-fe83-4aca-b2ff-fd5905f165ff"/>
+				<reportElement x="496" y="21" width="100" height="20" uuid="17776704-fe83-4aca-b2ff-fd5905f165ff"/>
 				<textElement>
 					<font fontName="Arial" size="11" isBold="true"/>
 				</textElement>
@@ -464,7 +466,7 @@ $F{ad_acdm_sesn_semester}.equals( "2" )? "SEMESTER 3 DISEMBER":
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial" size="9" isBold="true"/>
 				</textElement>
-				<text><![CDATA[H/P NO.]]></text>
+				<text><![CDATA[PHONE]]></text>
 			</staticText>
 			<staticText>
 				<reportElement mode="Opaque" x="269" y="1" width="140" height="16" backcolor="#CCCCCC" uuid="cdf73409-c1a1-4f35-ab57-8921c667e33c"/>
@@ -534,7 +536,49 @@ $F{ad_acdm_sesn_semester}.equals( "2" )? "SEMESTER 3 DISEMBER":
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial" size="9" isBold="true"/>
 				</textElement>
-				<text><![CDATA[STATUS]]></text>
+				<text><![CDATA[WEEK 1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="555" y="1" width="79" height="16" backcolor="#CCCCCC" uuid="e5464eec-4560-4d1f-9c5a-7e021289f4ea"/>
+				<box>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[WEEK 2]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="633" y="1" width="79" height="16" backcolor="#CCCCCC" uuid="1d0a1c26-cfec-4ff2-b070-4b32f9576c54"/>
+				<box>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[WEEK 3]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="712" y="1" width="79" height="16" backcolor="#CCCCCC" uuid="d2ab1577-7710-4eab-94d0-6b10fbc93f21"/>
+				<box>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[WEEK 4]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
@@ -580,7 +624,7 @@ $F{ad_acdm_sesn_semester}.equals( "2" )? "SEMESTER 3 DISEMBER":
 				</textElement>
 				<textFieldExpression><![CDATA[$F{ad_actr_email}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField isBlankWhenNull="true">
 				<reportElement x="476" y="0" width="79" height="20" uuid="ebf0e05f-7725-4e9d-b93a-7041cf7c592b"/>
 				<box>
 					<pen lineWidth="0.5"/>
@@ -592,13 +636,6 @@ $F{ad_acdm_sesn_semester}.equals( "2" )? "SEMESTER 3 DISEMBER":
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial" size="9"/>
 				</textElement>
-				<textFieldExpression><![CDATA[($F{ad_stdn_student_status}.equals( "0" )? "MATRICULATED" :
-$F{ad_stdn_student_status}.equals( "1" )? "ACTIVE" :
-$F{ad_stdn_student_status}.equals( "2" )? "BARRED" :
-$F{ad_stdn_student_status}.equals( "3" )? "INACTIVE" :
-$F{ad_stdn_student_status}.equals( "4" )? "GRADUATED" :
-"OTHERS"
-)]]></textFieldExpression>
 			</textField>
 			<rectangle>
 				<reportElement x="0" y="0" width="24" height="20" uuid="5f69e18f-af73-456b-8558-782b3a1581a2"/>
@@ -626,6 +663,45 @@ $F{ad_stdn_student_status}.equals( "4" )? "GRADUATED" :
 					<font fontName="Arial" size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{ad_actr_mobile}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="555" y="0" width="78" height="20" uuid="8df9c7bf-f842-4868-9163-7dd2f16a304f"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="9"/>
+				</textElement>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="633" y="0" width="79" height="20" uuid="1c3adca3-7e54-488c-8304-40cb93bfd124"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="9"/>
+				</textElement>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="712" y="0" width="79" height="20" uuid="8ab581d4-bbc0-4bc3-ac4e-841644089f0a"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="9"/>
+				</textElement>
 			</textField>
 		</band>
 	</detail>

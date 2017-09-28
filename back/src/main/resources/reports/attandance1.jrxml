@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="attandance1" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4ea164f6-b47f-4abf-83ca-e98bed10a614">
 	<property name="ireport.zoom" value="2.0"/>
-	<property name="ireport.x" value="738"/>
-	<property name="ireport.y" value="242"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="144"/>
 	<queryString>
 		<![CDATA[SELECT
      ad_actr."id" AS ad_actr_id,
@@ -75,7 +75,7 @@ FROM
 			<staticText>
 				<reportElement x="247" y="66" width="184" height="20" uuid="891cc750-6b1a-40f9-9586-aed02caba82c"/>
 				<textElement textAlignment="Justified"/>
-				<text><![CDATA[SEMSETER SEPTEMBER 2016/2017]]></text>
+				<text><![CDATA[SEMESTER SEPTEMBER 2016/2017]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="230" y="86" width="212" height="20" uuid="24fcfdd6-0b56-498d-8f52-55882f8192d9"/>
@@ -83,12 +83,12 @@ FROM
 			</staticText>
 			<staticText>
 				<reportElement x="266" y="106" width="131" height="20" uuid="f4666d6c-98a9-4eaf-a026-eed4b93ef1b0"/>
-				<text><![CDATA[ATTANDANCE BY MONTH]]></text>
+				<text><![CDATA[ATTENDANCE BY MONTH]]></text>
 			</staticText>
 		</band>
 	</title>
 	<pageHeader>
-		<band height="71" splitType="Stretch"/>
+		<band height="7" splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
 		<band height="30" splitType="Stretch">
