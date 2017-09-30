@@ -42,6 +42,25 @@ export class AcademicSessionActions {
       payload: code
     };
   }
+  
+  //find graduation by session
+  static FIND_GRADUATIONS_BY_ACADEMICSESSION = '[AcademicSession] Find Graduations By Session';
+
+  findGraduationsByAcademicSession( academicSession ): Action {
+      return {
+          type: AcademicSessionActions.FIND_GRADUATIONS_BY_ACADEMICSESSION,
+          payload: academicSession
+      };
+  }
+
+  static FIND_GRADUATIONS_BY_ACADEMICSESSION_SUCCESS = '[AcademicSession] Find Graduations By Session Success';
+
+  findGraduationsByAcademicSessionSuccess( graduations ): Action {
+      return {
+          type: AcademicSessionActions.FIND_GRADUATIONS_BY_ACADEMICSESSION_SUCCESS,
+          payload: graduations
+      };
+  }
 
   static SAVE_ACADEMIC_SESSION = '[AcademicSession] Save AcademicSession';
 

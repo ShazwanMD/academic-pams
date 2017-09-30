@@ -10,7 +10,9 @@ import {PlannerService, NotificationService} from '../../../../services';
 import {AcademicSessionCenterPage} from './academic-session-center.page';
 import {AcademicSessionListComponent} from './component/academic-session-list.component';
 import {AcademicSessionComponent} from './component/academic-session.component';
+import {AcademicSessionGraduationListComponent} from './component/academic-session-graduation-list.component';
 import {AcademicSessionDetailPage} from './academic-session-detail.page';
+import {AcademicSessionGraduationDetailPage} from './academic-session-graduation-detail.page';
 import {AcademicSessionActions} from './academic-session.action';
 import {AcademicSessionSelectComponent} from './component/academic-session-select.component';
 import {AcademicSessionCreatorDialog} from './dialog/academic-session-creator.dialog';
@@ -34,10 +36,12 @@ import {AcademicYearSubModule} from '../academic-years/index';
     //page
     AcademicSessionCenterPage,
     AcademicSessionDetailPage,
+    AcademicSessionGraduationDetailPage,
 
     //component
     AcademicSessionListComponent,
     AcademicSessionComponent,
+    AcademicSessionGraduationListComponent,
     AcademicSessionSelectComponent,
     AcademicSessionStatusComponent,
     AcademicSemesterSelectComponent,

@@ -19,7 +19,6 @@
         <md-icon>label</md-icon>
         List of Graduations
       </a>
-      
     </md-nav-list>
     <div toolbar-buttons layout="row" layout-align="start center" flex>
       <span flex>Graduation Center</span>
@@ -32,13 +31,13 @@
     </div>
 
     <md-card class="">
-      <md-card-title>List of graduations</md-card-title>
-      <md-card-subtitle>List of graduations</md-card-subtitle>
+      <md-card-title>List of graduations by sessions</md-card-title>
+      <md-card-subtitle>List of graduations by sessions</md-card-subtitle>
       <md-divider></md-divider>
 
-       <pams-graduation-list
-        [graduations]="graduations$ | async">
-        </pams-graduation-list> 
+       <pams-graduation-session-list
+        [academicSessions]="academicSessions$ | async">
+        </pams-graduation-session-list> 
 
       <md-divider></md-divider>
 

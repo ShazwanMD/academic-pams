@@ -34,9 +34,11 @@ import {Cohort} from '../../shared/model/planner/cohort.interface';
 import {Course} from '../../shared/model/planner/course.interface';
 
 import {AcademicSession} from '../../shared/model/planner/academic-session.interface';
+import {Graduation} from '../../shared/model/graduation/graduation.interface';
 import {AcademicSessionSubModule} from './academic-sessions/index';
 import {academicSessionReducer, AcademicSessionState} from './academic-sessions/academic-session.reducer';
 import {academicSessionListReducer, AcademicSessionListState} from './academic-sessions/academic-session-list.reducer';
+import {academicSessionGraduationListReducer, AcademicSessionGraduationListState} from './academic-sessions/academic-session-graduation-list.reducer';
 
 import {academicYearListReducer, AcademicYearListState} from './academic-years/academic-year-list.reducer';
 import {AcademicYear} from '../../shared/model/planner/academic-year.interface';
@@ -52,6 +54,7 @@ import {Curriculum} from '../../shared/model/planner/curriculum.interface';
 import {CurriculumSubModule} from './curriculums/index';
 
 export interface PlannerModuleState {
+  graduations: AcademicSessionGraduationListState,
   academicSessions: AcademicSessionListState;
   academicSession: AcademicSessionState;
   academicYears: AcademicYearListState;
@@ -74,6 +77,7 @@ export interface PlannerModuleState {
 }
 
 export const INITIAL_PLANNER_STATE: PlannerModuleState = <PlannerModuleState>{
+  graduations: <Graduation[]>[],
   academicSession: <AcademicSession>{},
   academicSessions: <AcademicSession[]>[],
   academicYears: <AcademicYear[]>[],
@@ -97,6 +101,7 @@ export const INITIAL_PLANNER_STATE: PlannerModuleState = <PlannerModuleState>{
 };
 
 export const plannerModuleReducers = {
+  graduations: academicSessionGraduationListReducer,
   academicSession: academicSessionReducer,
   academicSessions: academicSessionListReducer,
   academicYears: academicYearListReducer,
@@ -127,6 +132,7 @@ export const plannerModuleReducers = {
     CovalentCoreModule.forRoot(),
 
     // our modules
+    //GraduationSubModule.forRoot(),
     AcademicSessionSubModule.forRoot(),
     AcademicYearSubModule.forRoot(),
     ProgramLevelSubModule.forRoot(),

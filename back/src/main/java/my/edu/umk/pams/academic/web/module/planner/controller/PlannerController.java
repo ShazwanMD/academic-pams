@@ -1,7 +1,10 @@
 package my.edu.umk.pams.academic.web.module.planner.controller;
 
 import my.edu.umk.pams.academic.common.model.AdStudyMode;
+
 import my.edu.umk.pams.academic.common.service.CommonService;
+import my.edu.umk.pams.academic.graduation.model.AdGraduation;
+import my.edu.umk.pams.academic.graduation.service.GraduationService;
 import my.edu.umk.pams.academic.identity.service.IdentityService;
 import my.edu.umk.pams.academic.planner.model.*;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
@@ -9,8 +12,12 @@ import my.edu.umk.pams.academic.term.model.AdAssessment;
 import my.edu.umk.pams.academic.term.model.AdOffering;
 import my.edu.umk.pams.academic.term.model.AdOfferingImpl;
 import my.edu.umk.pams.academic.term.model.AdSection;
+import my.edu.umk.pams.academic.web.module.graduation.controller.GraduationTransformer;
+import my.edu.umk.pams.academic.web.module.graduation.vo.Graduation;
 import my.edu.umk.pams.academic.web.module.planner.vo.*;
+import my.edu.umk.pams.academic.web.module.term.vo.Assessment;
 import my.edu.umk.pams.academic.web.module.term.vo.Offering;
+import my.edu.umk.pams.academic.web.module.term.vo.Section;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -42,6 +49,9 @@ public class PlannerController {
 
 	@Autowired
 	private CommonService commonService;
+	
+	@Autowired
+	private GraduationService graduationService;
 
 	@Autowired
 	private IdentityService identityService;
@@ -51,6 +61,9 @@ public class PlannerController {
 
 	@Autowired
 	private PlannerTransformer plannerTransformer;
+	
+	@Autowired
+	private GraduationTransformer graduationTransformer;
 
 	// ====================================================================================================
 	// ACADEMIC SESSION
@@ -73,6 +86,19 @@ public class PlannerController {
 	public ResponseEntity<AcademicSession> findAcademicSessionByCode(@PathVariable String code) {
 		return new ResponseEntity<AcademicSession>(
 				plannerTransformer.toAcademicSessionVo(plannerService.findAcademicSessionByCode(code)), HttpStatus.OK);
+	}
+	
+	//find graduation by session
+	@RequestMapping(value = "/academicSessions/{code}/graduations", method = RequestMethod.GET)
+	public ResponseEntity<List<Graduation>> findGraduationsByAcademicSession(@PathVariable String code)
+			throws UnsupportedEncodingException {
+		AdAcademicSession academicSession = plannerService.findAcademicSessionByCode(code);
+		List<AdGraduation> graduations = graduationService.findGraduations(academicSession);
+		
+		
+		List<Graduation> graduationVos = graduationTransformer.toGraduationVos(graduations);
+		
+		return new ResponseEntity<List<Graduation>>(graduationVos, HttpStatus.OK);
 	}
 
 	@RequestMapping(value = "/academicSessions/{code}/update", method = RequestMethod.PUT)

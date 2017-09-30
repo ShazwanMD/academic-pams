@@ -245,4 +245,11 @@ public class GraduationServiceImpl implements GraduationService {
 
 	}
 
+	
+	//find graduation by session
+	@Override
+	public List<AdGraduation> findGraduations(AdAcademicSession academicSession) {
+		return graduationDao.find(academicSession);
+	}
+
 }

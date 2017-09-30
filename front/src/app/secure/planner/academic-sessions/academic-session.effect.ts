@@ -29,7 +29,17 @@ export class AcademicSessionEffects {
     .ofType(AcademicSessionActions.FIND_ACADEMIC_SESSION_BY_CODE)
     .map((action) => action.payload)
     .switchMap((code) => this.plannerService.findAcademicSessionByCode(code))
-    .map((academicSession) => this.academicSessionActions.findAcademicSessionByCodeSuccess(academicSession));
+    .map((academicSession) => this.academicSessionActions.findAcademicSessionByCodeSuccess(academicSession))
+     .mergeMap(( action ) => from( [action,
+            this.academicSessionActions.findGraduationsByAcademicSession( action.payload ),
+           
+        ] ) );
+  
+  @Effect() findGraduationsByAcademicSession$ = this.actions$
+  .ofType( AcademicSessionActions.FIND_GRADUATIONS_BY_ACADEMICSESSION )
+  .map(( action ) => action.payload )
+  .switchMap(( academicSession ) => this.plannerService.findGraduationsByAcademicSession( academicSession ) )
+  .map(( graduations ) => this.academicSessionActions.findGraduationsByAcademicSessionSuccess( graduations ) );
 
   @Effect() activateAcademicSession$ = this.actions$
     .ofType(AcademicSessionActions.ACTIVATE_ACADEMIC_SESSION)

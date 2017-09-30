@@ -36,6 +36,8 @@ import { GraduationApplicationActionComponent } from "./component/graduation-app
 import { StudentGraduationApplicationDraftTaskPanel } from "./panel/student-graduation-application-draft-task.panel";
 import { StudentGraduationApplicationTaskDetailPage } from "./student-graduation-application-task-detail.page";
 import { StudentGraduationApplicationTaskWorkflowPanel } from "./panel/student-graduation-application-task-workflow.panel";
+import { GraduationSessionListCenterPage } from "./graduation-session-list-center.page";
+import { GraduationSessionListComponent } from "./component/graduation-session-list.component";
 
 @NgModule({
   imports: [
@@ -55,6 +57,7 @@ import { StudentGraduationApplicationTaskWorkflowPanel } from "./panel/student-g
     GraduationApplicationDetailPage,
     GraduationListCenterPage,
     GraduationsListCenterPage,
+    GraduationSessionListCenterPage,
     StudentGraduationApplicationCenterPage,
     GraduationApplicationTaskDetailPage,
     StudentGraduationApplicationTaskDetailPage,
@@ -65,6 +68,7 @@ import { StudentGraduationApplicationTaskWorkflowPanel } from "./panel/student-g
     ArchivedGraduationApplicationListComponent,
     GraduationApplicationListComponent,
     GraduationListComponent,
+    GraduationSessionListComponent,
     GraduationApplicationComponent,
     GraduationApplicationTaskWorkflowPanel,
     StudentGraduationApplicationTaskWorkflowPanel,

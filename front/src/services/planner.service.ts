@@ -15,6 +15,7 @@ import {AcademicSession} from '../app/shared/model/planner/academic-session.inte
 import {AcademicYear} from '../app/shared/model/planner/academic-year.interface';
 import {ProgramLevel} from '../app/shared/model/planner/program-level.interface';
 import {Curriculum} from '../app/shared/model/planner/curriculum.interface';
+import { Graduation } from "../app/shared/model/graduation/graduation.interface";
 
 @Injectable()
 export class PlannerService {
@@ -74,6 +75,13 @@ export class PlannerService {
   findAcademicSessionByCode(code: string): Observable<AcademicSession> {
     return this._http.get(this.PLANNER_API + '/academicSessions/' + code)
       .map((res: Response) => <AcademicSession>res.json());
+  }
+  
+  //find graduation by session
+  findGraduationsByAcademicSession( academicSession: AcademicSession ): Observable<Graduation[]> {
+      console.log( 'findGraduationsByAcademicSession' );
+      return this._http.get( this.PLANNER_API + '/academicSessions/' + academicSession.code + '/graduations' )
+          .map(( res: Response ) => <Graduation[]>res.json() );
   }
 
   activateAcademicSession(academicSession: AcademicSession): Observable<String> {

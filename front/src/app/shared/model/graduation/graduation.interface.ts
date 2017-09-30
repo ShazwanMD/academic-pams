@@ -11,5 +11,7 @@ export interface Graduation extends Document {
   creditHour: number;
   student: Student;
   academicSession: AcademicSession;
+
+  selected: boolean;
 }
 

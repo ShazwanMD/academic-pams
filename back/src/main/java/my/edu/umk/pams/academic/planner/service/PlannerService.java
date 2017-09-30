@@ -4,6 +4,8 @@ import my.edu.umk.pams.academic.common.model.AdStudyMode;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.planner.model.*;
 import my.edu.umk.pams.academic.term.model.AdAdmission;
+import my.edu.umk.pams.academic.term.model.AdOffering;
+import my.edu.umk.pams.academic.term.model.AdSection;
 import my.edu.umk.pams.academic.web.module.planner.vo.AcademicYear;
 
 import java.util.List;
@@ -27,8 +29,8 @@ public interface PlannerService {
     List<AdAcademicSession> findAcademicSessions(Integer offset, Integer limit);
     
     List<AdAcademicSession> findAcademicSessions(String filter, Integer offset, Integer limit);
-
-	AdAcademicYear findByCode(String code);
+    
+    AdAcademicYear findByCode(String code);
     
     Integer countAcademicSession();
 

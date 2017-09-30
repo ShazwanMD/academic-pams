@@ -48,6 +48,18 @@ public class AdGraduationDaoImpl extends GenericDaoSupport<Long, AdGraduation> i
         query.setInteger("state", AdMetaState.ACTIVE.ordinal());
         return (List<AdGraduation>) query.list();
     }
+    
+    @Override
+    public List<AdGraduation> find(AdAcademicSession academicSession) {
+        Session session = sessionFactory.getCurrentSession();
+        
+        Query query = session.createQuery("select a from AdGraduation a where " +
+        "a.session = :academicSession "+
+        "and a.metadata.state = :state");
+        query.setEntity("academicSession", academicSession);
+        query.setInteger("state", AdMetaState.ACTIVE.ordinal());
+        return (List<AdGraduation>) query.list();
+    }
    
     // ====================================================================================================
     // HELPER
