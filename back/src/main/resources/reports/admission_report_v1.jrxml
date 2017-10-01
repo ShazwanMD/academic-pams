@@ -2,9 +2,10 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="jasper_report_template" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="03800e79-2e08-4188-b0d9-084bf32d8f7c">
 	<property name="ireport.zoom" value="2.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="529"/>
+	<property name="ireport.y" value="487"/>
 	<parameter name="identity_no" class="java.lang.String"/>
 	<parameter name="session_code" class="java.lang.String"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[SELECT
      ad_admn."id" AS ad_admn_id,
@@ -424,7 +425,7 @@ WHERE
 		</band>
 	</title>
 	<columnHeader>
-		<band height="263" splitType="Stretch">
+		<band height="273" splitType="Stretch">
 			<rectangle>
 				<reportElement x="1" y="62" width="555" height="33" backcolor="#CCCCCC" uuid="f2b29a12-5459-45a9-a327-9f268571839e"/>
 				<graphicElement>
@@ -474,20 +475,20 @@ WHERE
 				<textFieldExpression><![CDATA[$F{ad_actr_email}]]></textFieldExpression>
 			</textField>
 			<rectangle>
-				<reportElement x="-1" y="208" width="555" height="33" backcolor="#CCCCCC" uuid="527fc8f0-6c13-4203-a135-4a4082b77700"/>
+				<reportElement x="-1" y="217" width="555" height="33" backcolor="#CCCCCC" uuid="527fc8f0-6c13-4203-a135-4a4082b77700"/>
 				<graphicElement>
 					<pen lineWidth="0.5"/>
 				</graphicElement>
 			</rectangle>
 			<staticText>
-				<reportElement x="3" y="222" width="454" height="13" uuid="41c8a18c-c429-4350-bb5e-3986229fc6d9"/>
+				<reportElement x="3" y="231" width="454" height="13" uuid="41c8a18c-c429-4350-bb5e-3986229fc6d9"/>
 				<textElement>
 					<font fontName="Arial" size="10" isItalic="true"/>
 				</textElement>
 				<text><![CDATA[PART A          : STUDENT 'S SESSION INFORMATION]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Transparent" x="2" y="209" width="505" height="14" backcolor="#CCCCCC" uuid="069d9d96-2ac3-4a73-8daf-3de1d7dbef8e"/>
+				<reportElement mode="Transparent" x="2" y="218" width="505" height="14" backcolor="#CCCCCC" uuid="069d9d96-2ac3-4a73-8daf-3de1d7dbef8e"/>
 				<textElement verticalAlignment="Middle" rotation="None">
 					<font fontName="Arial" size="10" isBold="true"/>
 				</textElement>
@@ -563,7 +564,7 @@ WHERE
 				<text><![CDATA[Date: ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="43" y="247" width="199" height="16" backcolor="#CCCCCC" uuid="a8bd802a-8e0f-459d-8082-7e4a4570ec57"/>
+				<reportElement mode="Opaque" x="43" y="256" width="199" height="16" backcolor="#CCCCCC" uuid="a8bd802a-8e0f-459d-8082-7e4a4570ec57"/>
 				<box>
 					<pen lineWidth="0.0"/>
 					<topPen lineWidth="1.0"/>
@@ -577,7 +578,7 @@ WHERE
 				<text><![CDATA[COURSE TITLE]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="479" y="247" width="75" height="16" backcolor="#CCCCCC" uuid="e20b2da5-01d6-4290-8262-aae0a8b97cd1"/>
+				<reportElement mode="Opaque" x="479" y="256" width="75" height="16" backcolor="#CCCCCC" uuid="e20b2da5-01d6-4290-8262-aae0a8b97cd1"/>
 				<box>
 					<pen lineWidth="0.0"/>
 					<topPen lineWidth="1.0"/>
@@ -591,7 +592,7 @@ WHERE
 				<text><![CDATA[FACULTY]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="242" y="247" width="51" height="16" backcolor="#CCCCCC" uuid="6ea963bc-f20a-4e94-bbff-65bd7ec33cd1"/>
+				<reportElement mode="Opaque" x="242" y="256" width="51" height="16" backcolor="#CCCCCC" uuid="6ea963bc-f20a-4e94-bbff-65bd7ec33cd1"/>
 				<box>
 					<pen lineWidth="0.0"/>
 					<topPen lineWidth="1.0"/>
@@ -605,7 +606,7 @@ WHERE
 				<text><![CDATA[CREDIT]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="-1" y="247" width="44" height="16" backcolor="#CCCCCC" uuid="c06c4383-a56b-4c26-9802-4ae4796cd04e"/>
+				<reportElement mode="Opaque" x="-1" y="256" width="44" height="16" backcolor="#CCCCCC" uuid="c06c4383-a56b-4c26-9802-4ae4796cd04e"/>
 				<box>
 					<pen lineWidth="0.0"/>
 					<topPen lineWidth="1.0"/>
@@ -619,7 +620,7 @@ WHERE
 				<text><![CDATA[NO. ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="293" y="247" width="186" height="16" backcolor="#CCCCCC" uuid="6c356f91-8d9a-45c6-ab72-21e977fddc29"/>
+				<reportElement mode="Opaque" x="293" y="256" width="186" height="16" backcolor="#CCCCCC" uuid="6c356f91-8d9a-45c6-ab72-21e977fddc29"/>
 				<box>
 					<pen lineWidth="0.0"/>
 					<topPen lineWidth="1.0"/>
@@ -631,6 +632,24 @@ WHERE
 					<font fontName="Arial" size="9" isBold="true"/>
 				</textElement>
 				<text><![CDATA[PROGRAM]]></text>
+			</staticText>
+			<subreport>
+				<reportElement x="101" y="184" width="193" height="24" uuid="2cdbd9c1-2c60-4aaf-a29c-88fb0f0fbe5c"/>
+				<subreportParameter name="SUBREPORT_DIR">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_DIR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="student_id">
+					<subreportParameterExpression><![CDATA[$F{ad_actr_id}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "daftar subject_subreport1.jasper"]]></subreportExpression>
+			</subreport>
+			<staticText>
+				<reportElement x="29" y="185" width="78" height="20" uuid="38ce74fb-8a9d-4448-b387-b5baf5cecfa6"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Scholarship: ]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
