@@ -1,0 +1,27 @@
+<md-card>
+  <md-card-title>Action</md-card-title>
+  <md-card-subtitle>Actions available on current academic session</md-card-subtitle>
+  <md-divider></md-divider>
+  <md-nav-list flex dense>
+
+    <h3 md-subheader>Graduation Menu</h3>
+    <md-list-item [routerLink]="['/secure/graduation/graduation-application-lists']">
+      <md-icon md-list-avatar>menu</md-icon>
+      <h4 md-line>List of Graduation Applications</h4>
+      <p md-line>List of Graduation Applications</p>
+    </md-list-item>
+
+    <md-list-item [routerLink]="['/secure/graduation/graduation-lists']">
+      <md-icon md-list-avatar>menu</md-icon>
+      <h4 md-line>List of Graduations</h4>
+      <p md-line>List of Graduations</p>
+    </md-list-item>
+    
+      <md-list-item [routerLink]="['/secure/planner/faculties']">
+      <md-icon md-list-avatar>description</md-icon>
+      <h4 md-line>Graduation Report </h4>
+      <p md-line>Graduation report {{academicSession.code}}</p>
+    </md-list-item>
+ 
+  </md-nav-list>
+</md-card>

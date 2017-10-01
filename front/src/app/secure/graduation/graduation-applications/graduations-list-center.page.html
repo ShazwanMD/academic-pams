@@ -19,6 +19,11 @@
         <md-icon>label</md-icon>
         List of Graduations
       </a>
+        <button md-button [mdMenuTriggerFor]="menu" dense>Search by</button>
+      <md-menu #menu="mdMenu">
+      <button md-menu-item [routerLink]="['/secure/graduation/graduation-lists']" dense>All Graduations</button>
+       <button md-menu-item [routerLink]="['/secure/graduation/graduation-session-lists']" dense>Academic session</button>
+       </md-menu>
       
     </md-nav-list>
     <div toolbar-buttons layout="row" layout-align="start center" flex>

@@ -22,6 +22,7 @@ import {AcademicSessionEditorDialog} from './dialog/academic-session-editor.dial
 import {AcademicSemesterSelectComponent} from './component/academic-semester-select.component';
 import {AcademicSessionActionComponent} from './component/academic-session-action.component';
 import {AcademicYearSubModule} from '../academic-years/index';
+import { AcademicSessionGraduationActionComponent } from "./component/academic-session-graduation-action.component";
 
 @NgModule({
   imports: [
@@ -46,6 +47,7 @@ import {AcademicYearSubModule} from '../academic-years/index';
     AcademicSessionStatusComponent,
     AcademicSemesterSelectComponent,
     AcademicSessionActionComponent,
+    AcademicSessionGraduationActionComponent,
 
     //dialog
     AcademicSessionCreatorDialog,
@@ -57,6 +59,7 @@ import {AcademicYearSubModule} from '../academic-years/index';
     AcademicSessionStatusComponent,
     AcademicSemesterSelectComponent,
     AcademicSessionActionComponent,
+    AcademicSessionGraduationActionComponent,
 
   ],
 
@@ -65,6 +68,7 @@ import {AcademicYearSubModule} from '../academic-years/index';
     AcademicSessionEditorDialog,
     AcademicSessionSelectComponent,
     AcademicSessionActionComponent,
+    AcademicSessionGraduationActionComponent,
 
   ],
 

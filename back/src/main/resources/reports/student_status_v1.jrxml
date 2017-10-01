@@ -171,7 +171,9 @@ FROM
      AND ad_sctn."id" = ad_apmt."section_id"
      AND ad_enmt."section_id" = ad_sctn."id"
 WHERE
-     ad_sctn."code" = $P{section_code}]]>
+     ad_sctn."code" = $P{section_code}
+ORDER BY  ad_actr."name"
+]]>
 	</queryString>
 	<field name="ad_actr_id" class="java.lang.Long"/>
 	<field name="ad_actr_actor_type" class="java.lang.Integer"/>
@@ -190,7 +192,7 @@ WHERE
 	<field name="ad_actr_phone" class="java.lang.String"/>
 	<field name="ad_stdn_memo" class="java.lang.String"/>
 	<field name="ad_stdn_no_id" class="java.lang.String"/>
-	<field name="ad_stdn_student_status" class="java.lang.String"/>
+	<field name="ad_stdn_student_status" class="java.lang.Integer"/>
 	<field name="ad_stdn_id" class="java.lang.Long"/>
 	<field name="ad_stdn_cohort_id" class="java.lang.Long"/>
 	<field name="ad_stdn_study_mode_id" class="java.lang.Long"/>
@@ -320,7 +322,7 @@ WHERE
 	<field name="ad_acdm_sesn_current_" class="java.lang.Boolean"/>
 	<field name="ad_acdm_sesn_description" class="java.lang.String"/>
 	<field name="ad_acdm_sesn_year_id" class="java.lang.Long"/>
-	<field name="ad_acdm_sesn_semester" class="java.lang.String"/>
+	<field name="ad_acdm_sesn_semester" class="java.lang.Integer"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
