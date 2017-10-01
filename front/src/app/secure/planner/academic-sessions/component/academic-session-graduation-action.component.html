@@ -16,12 +16,13 @@
       <h4 md-line>List of Graduations</h4>
       <p md-line>List of Graduations</p>
     </md-list-item>
-    
-      <md-list-item [routerLink]="['/secure/planner/faculties']">
+       
+     <a href="http://localhost:8080/servlet/report?report=graduation_session.jrxml&report.pdf&session_code={{academicSession.code}}" [target]="'_blank'"> 
+    <md-list-item >
       <md-icon md-list-avatar>description</md-icon>
-      <h4 md-line>Graduation Report </h4>
-      <p md-line>Graduation report {{academicSession.code}}</p>
-    </md-list-item>
+     <h4 md-line>Graduation Report </h4>
+      <p md-line>View graduation report {{academicSession.code}}</p> 
+    </md-list-item></a>
  
   </md-nav-list>
 </md-card>
