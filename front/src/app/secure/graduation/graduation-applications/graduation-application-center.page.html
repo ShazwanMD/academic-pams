@@ -10,15 +10,22 @@
         <md-icon>create</md-icon>
         Create Graduation Application
       </a>
-      <md-divider></md-divider>
+      
        <a md-list-item [routerLink]="['/secure/graduation/graduation-application-lists']">
         <md-icon>label</md-icon>
         List of Graduation Applications
       </a>
-       <a md-list-item [routerLink]="['/secure/graduation/graduation-lists']">
+       <md-divider></md-divider>
+       <a md-list-item >
         <md-icon>label</md-icon>
         List of Graduations
       </a>
+     
+      <button md-button [mdMenuTriggerFor]="menu" dense>Search by</button>
+      <md-menu #menu="mdMenu">
+      <button md-menu-item [routerLink]="['/secure/graduation/graduation-lists']" dense>All Graduations</button>
+       <button md-menu-item [routerLink]="['/secure/graduation/graduation-session-lists']" dense>Academic session</button>
+       </md-menu>
     </md-nav-list>
     <div toolbar-buttons layout="row" layout-align="start center" flex>
       <span flex>Graduation Center</span>
