@@ -628,9 +628,9 @@ $F{ad_acdm_sesn_semester}.equals( "2" )? "SEMESTER 3 DISEMBER":
 				<textFieldExpression><![CDATA[(
 $F{ad_stdn_student_status}.equals( "0" )? "MATRICULATED":
 $F{ad_stdn_student_status}.equals( "1" )? "ACTIVE":
-$F{ad_stdn_student_status}.equals( "2" )? "INACTIVE":
-$F{ad_stdn_student_status}.equals( "3" )? "GRADUATED":
-"OTHERS"
+$F{ad_stdn_student_status}.equals( "2" )? "BARRED":
+$F{ad_stdn_student_status}.equals( "3" )? "INACTIVE":
+"GRADUATED"
 )]]></textFieldExpression>
 			</textField>
 		</band>
