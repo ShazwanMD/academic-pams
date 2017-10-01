@@ -27,6 +27,7 @@ import {NotificationService} from '../../../../services/notification.service';
 import { ConfirmationDialog } from "./dialog/confirmation.dialog";
 import { AdminLecturerSectionDetailPage } from "./admin-lecturer-section-detail.page";
 import { AdminLecturerSectionEnrollmentListComponent } from "./component/admin-lecturer-section-enrollment-list.component";
+import { LecturerSectionActionComponent } from "./component/lecturer-section-action.component";
 
 @NgModule({
   imports: [
@@ -56,6 +57,7 @@ import { AdminLecturerSectionEnrollmentListComponent } from "./component/admin-l
     StudentSectionAppointmentListComponent,
     SectionGradebookListComponent,
     SectionActionComponent,
+    LecturerSectionActionComponent,
     StudentSectionActionComponent,
 
     //dialog

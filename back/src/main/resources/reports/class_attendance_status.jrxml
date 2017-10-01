@@ -336,7 +336,7 @@ ORDER BY  ad_actr."name"]]>
 				<text><![CDATA[MASTER OF BUSINESS ADMINISTRATION]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="288" y="106" width="70" height="15" uuid="bfccea49-1847-40dd-8aeb-1de9b1e1b0c6"/>
+				<reportElement x="289" y="122" width="70" height="15" uuid="bfccea49-1847-40dd-8aeb-1de9b1e1b0c6"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Arial" isBold="true"/>
 				</textElement>
@@ -350,49 +350,49 @@ ORDER BY  ad_actr."name"]]>
 				<text><![CDATA[SESI AKADEMIK]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="288" y="87" width="70" height="17" uuid="7c6566aa-4400-40d7-94fd-44ea0117434d"/>
+				<reportElement x="289" y="100" width="70" height="18" uuid="7c6566aa-4400-40d7-94fd-44ea0117434d"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Arial" isBold="true"/>
 				</textElement>
 				<text><![CDATA[PROGRAM:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="79" y="68" width="70" height="16" uuid="728e0dd9-0781-4c1b-a3bc-1a4c95cc0dfa"/>
+				<reportElement x="80" y="84" width="70" height="16" uuid="728e0dd9-0781-4c1b-a3bc-1a4c95cc0dfa"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Arial" isBold="true"/>
 				</textElement>
 				<text><![CDATA[SUBJECT : ]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="149" y="70" width="120" height="20" uuid="363d36d8-85ca-4f8e-8a47-13a841175f5b"/>
+				<reportElement x="150" y="86" width="120" height="20" uuid="363d36d8-85ca-4f8e-8a47-13a841175f5b"/>
 				<textElement>
 					<font fontName="Arial" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{ad_crse_title_en}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="79" y="84" width="70" height="20" uuid="639d669d-977a-4699-ad88-75ea64d51a4c"/>
+				<reportElement x="80" y="100" width="70" height="20" uuid="639d669d-977a-4699-ad88-75ea64d51a4c"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Arial" isBold="true"/>
 				</textElement>
 				<text><![CDATA[CODE :]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="149" y="87" width="120" height="20" uuid="74d31ad9-57e4-41cf-ad84-3ea943dee7b7"/>
+				<reportElement x="150" y="103" width="120" height="20" uuid="74d31ad9-57e4-41cf-ad84-3ea943dee7b7"/>
 				<textElement>
 					<font fontName="Arial" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{ad_crse_code}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="288" y="64" width="70" height="20" uuid="6b636077-1a48-49aa-a3ef-c30b1b1b2e55"/>
+				<reportElement x="289" y="80" width="70" height="20" uuid="6b636077-1a48-49aa-a3ef-c30b1b1b2e55"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Arial" isBold="true"/>
 				</textElement>
 				<text><![CDATA[SECTION :]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="358" y="64" width="79" height="20" uuid="d077f61c-e0a7-4f25-a863-a04afa33ac85"/>
+				<reportElement x="359" y="80" width="79" height="20" uuid="d077f61c-e0a7-4f25-a863-a04afa33ac85"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Arial" isBold="true"/>
 				</textElement>
@@ -403,28 +403,28 @@ ORDER BY  ad_actr."name"]]>
 				<imageExpression><![CDATA["C:\\Users\\PAMS05\\git\\academic\\back\\src\\main\\resources\\reports\\img\\logo_universiti_malaysia_kelantan.png"]]></imageExpression>
 			</image>
 			<staticText>
-				<reportElement x="79" y="102" width="108" height="20" uuid="ebd310a8-15fe-41fc-b825-f4b7f1d7272c"/>
+				<reportElement x="80" y="118" width="108" height="20" uuid="ebd310a8-15fe-41fc-b825-f4b7f1d7272c"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Arial" isBold="true"/>
 				</textElement>
 				<text><![CDATA[ACADEMIC SESSION :]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="358" y="86" width="120" height="20" uuid="af36d72b-dab6-4436-b04c-631a08107c37"/>
+				<reportElement x="359" y="102" width="197" height="20" uuid="af36d72b-dab6-4436-b04c-631a08107c37"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Arial" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{ad_prgm_title_en}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="358" y="104" width="100" height="20" uuid="d4993762-7e68-4fec-b668-e3e2b08e650f"/>
+				<reportElement x="359" y="120" width="100" height="20" uuid="d4993762-7e68-4fec-b668-e3e2b08e650f"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Arial" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{ad_fcty_name}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="187" y="106" width="82" height="20" uuid="cf2b0768-6d1c-4960-a0df-3a187d5cafa7"/>
+				<reportElement x="188" y="122" width="82" height="20" uuid="cf2b0768-6d1c-4960-a0df-3a187d5cafa7"/>
 				<textElement>
 					<font fontName="Arial" isBold="true"/>
 				</textElement>
