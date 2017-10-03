@@ -153,7 +153,22 @@
      ad_acdm_sesn."current_" AS ad_acdm_sesn_current_,
      ad_acdm_sesn."description" AS ad_acdm_sesn_description,
      ad_acdm_sesn."year_id" AS ad_acdm_sesn_year_id,
-     ad_acdm_sesn."semester" AS ad_acdm_sesn_semester
+     ad_acdm_sesn."semester" AS ad_acdm_sesn_semester,
+     ad_actr_A."id" AS ad_actr_A_id,
+     ad_actr_A."actor_type" AS ad_actr_A_actor_type,
+     ad_actr_A."email" AS ad_actr_A_email,
+     ad_actr_A."fax" AS ad_actr_A_fax,
+     ad_actr_A."identity_no" AS ad_actr_A_identity_no,
+     ad_actr_A."c_ts" AS ad_actr_A_c_ts,
+     ad_actr_A."c_id" AS ad_actr_A_c_id,
+     ad_actr_A."d_ts" AS ad_actr_A_d_ts,
+     ad_actr_A."d_id" AS ad_actr_A_d_id,
+     ad_actr_A."m_ts" AS ad_actr_A_m_ts,
+     ad_actr_A."m_id" AS ad_actr_A_m_id,
+     ad_actr_A."m_st" AS ad_actr_A_m_st,
+     ad_actr_A."mobile" AS ad_actr_A_mobile,
+     ad_actr_A."name" AS ad_actr_A_name,
+     ad_actr_A."phone" AS ad_actr_A_phone
 FROM
      "public"."ad_actr" ad_actr INNER JOIN "public"."ad_stdn" ad_stdn ON ad_actr."id" = ad_stdn."id"
      INNER JOIN "public"."ad_admn" ad_admn ON ad_stdn."id" = ad_admn."student_id"
@@ -168,12 +183,13 @@ FROM
      AND ad_fcty."id" = ad_staf."faculty_id"
      AND ad_fcty."id" = ad_crse."faculty_id"
      INNER JOIN "public"."ad_apmt" ad_apmt ON ad_staf."id" = ad_apmt."staff_id"
+     INNER JOIN "public"."ad_actr" ad_actr_A ON ad_staf."id" = ad_actr_A."id"
      AND ad_sctn."id" = ad_apmt."section_id"
      AND ad_enmt."section_id" = ad_sctn."id"
 WHERE
      ad_sctn."code" = $P{section_code}
-
-ORDER BY  ad_actr."name"]]>
+ORDER BY
+     ad_actr."name" ASC]]>
 	</queryString>
 	<field name="ad_actr_id" class="java.lang.Long"/>
 	<field name="ad_actr_actor_type" class="java.lang.Integer"/>
@@ -323,6 +339,21 @@ ORDER BY  ad_actr."name"]]>
 	<field name="ad_acdm_sesn_description" class="java.lang.String"/>
 	<field name="ad_acdm_sesn_year_id" class="java.lang.Long"/>
 	<field name="ad_acdm_sesn_semester" class="java.lang.String"/>
+	<field name="ad_actr_a_id" class="java.lang.Long"/>
+	<field name="ad_actr_a_actor_type" class="java.lang.Integer"/>
+	<field name="ad_actr_a_email" class="java.lang.String"/>
+	<field name="ad_actr_a_fax" class="java.lang.String"/>
+	<field name="ad_actr_a_identity_no" class="java.lang.String"/>
+	<field name="ad_actr_a_c_ts" class="java.sql.Timestamp"/>
+	<field name="ad_actr_a_c_id" class="java.lang.Long"/>
+	<field name="ad_actr_a_d_ts" class="java.sql.Timestamp"/>
+	<field name="ad_actr_a_d_id" class="java.lang.Long"/>
+	<field name="ad_actr_a_m_ts" class="java.sql.Timestamp"/>
+	<field name="ad_actr_a_m_id" class="java.lang.Long"/>
+	<field name="ad_actr_a_m_st" class="java.lang.Integer"/>
+	<field name="ad_actr_a_mobile" class="java.lang.String"/>
+	<field name="ad_actr_a_name" class="java.lang.String"/>
+	<field name="ad_actr_a_phone" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -336,7 +367,7 @@ ORDER BY  ad_actr."name"]]>
 				<text><![CDATA[MASTER OF BUSINESS ADMINISTRATION]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="289" y="122" width="70" height="15" uuid="bfccea49-1847-40dd-8aeb-1de9b1e1b0c6"/>
+				<reportElement x="289" y="102" width="70" height="15" uuid="bfccea49-1847-40dd-8aeb-1de9b1e1b0c6"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Arial" isBold="true"/>
 				</textElement>
@@ -350,81 +381,77 @@ ORDER BY  ad_actr."name"]]>
 				<text><![CDATA[SESI AKADEMIK]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="289" y="100" width="70" height="18" uuid="7c6566aa-4400-40d7-94fd-44ea0117434d"/>
+				<reportElement x="289" y="80" width="70" height="18" uuid="7c6566aa-4400-40d7-94fd-44ea0117434d"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Arial" isBold="true"/>
 				</textElement>
 				<text><![CDATA[PROGRAM:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="80" y="84" width="70" height="16" uuid="728e0dd9-0781-4c1b-a3bc-1a4c95cc0dfa"/>
+				<reportElement x="80" y="64" width="70" height="16" uuid="728e0dd9-0781-4c1b-a3bc-1a4c95cc0dfa"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Arial" isBold="true"/>
 				</textElement>
 				<text><![CDATA[SUBJECT : ]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="150" y="86" width="120" height="20" uuid="363d36d8-85ca-4f8e-8a47-13a841175f5b"/>
+				<reportElement x="150" y="66" width="120" height="20" uuid="363d36d8-85ca-4f8e-8a47-13a841175f5b"/>
 				<textElement>
 					<font fontName="Arial" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{ad_crse_title_en}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="80" y="100" width="70" height="20" uuid="639d669d-977a-4699-ad88-75ea64d51a4c"/>
+				<reportElement x="80" y="80" width="70" height="20" uuid="639d669d-977a-4699-ad88-75ea64d51a4c"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Arial" isBold="true"/>
 				</textElement>
 				<text><![CDATA[CODE :]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="150" y="103" width="120" height="20" uuid="74d31ad9-57e4-41cf-ad84-3ea943dee7b7"/>
+				<reportElement x="150" y="83" width="120" height="20" uuid="74d31ad9-57e4-41cf-ad84-3ea943dee7b7"/>
 				<textElement>
 					<font fontName="Arial" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{ad_crse_code}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="289" y="80" width="70" height="20" uuid="6b636077-1a48-49aa-a3ef-c30b1b1b2e55"/>
+				<reportElement x="289" y="60" width="70" height="20" uuid="6b636077-1a48-49aa-a3ef-c30b1b1b2e55"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Arial" isBold="true"/>
 				</textElement>
 				<text><![CDATA[SECTION :]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="359" y="80" width="79" height="20" uuid="d077f61c-e0a7-4f25-a863-a04afa33ac85"/>
+				<reportElement x="359" y="60" width="79" height="20" uuid="d077f61c-e0a7-4f25-a863-a04afa33ac85"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Arial" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{ad_sctn_ordinal}]]></textFieldExpression>
 			</textField>
-			<image>
-				<reportElement x="94" y="0" width="47" height="64" uuid="a0de9006-dd85-4662-9fb9-a0410884037c"/>
-				<imageExpression><![CDATA["C:\\Users\\PAMS05\\git\\academic\\back\\src\\main\\resources\\reports\\img\\logo_universiti_malaysia_kelantan.png"]]></imageExpression>
-			</image>
 			<staticText>
-				<reportElement x="80" y="118" width="108" height="20" uuid="ebd310a8-15fe-41fc-b825-f4b7f1d7272c"/>
+				<reportElement x="80" y="98" width="108" height="20" uuid="ebd310a8-15fe-41fc-b825-f4b7f1d7272c"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Arial" isBold="true"/>
 				</textElement>
 				<text><![CDATA[ACADEMIC SESSION :]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="359" y="102" width="197" height="20" uuid="af36d72b-dab6-4436-b04c-631a08107c37"/>
+				<reportElement x="359" y="79" width="197" height="20" uuid="af36d72b-dab6-4436-b04c-631a08107c37"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Arial" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{ad_prgm_title_en}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="359" y="120" width="100" height="20" uuid="d4993762-7e68-4fec-b668-e3e2b08e650f"/>
+				<reportElement x="359" y="100" width="100" height="20" uuid="d4993762-7e68-4fec-b668-e3e2b08e650f"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Arial" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{ad_fcty_name}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="188" y="122" width="82" height="20" uuid="cf2b0768-6d1c-4960-a0df-3a187d5cafa7"/>
+				<reportElement x="188" y="102" width="82" height="20" uuid="cf2b0768-6d1c-4960-a0df-3a187d5cafa7"/>
 				<textElement>
 					<font fontName="Arial" isBold="true"/>
 				</textElement>
@@ -446,6 +473,27 @@ $F{ad_acdm_sesn_semester}.equals( "2" )? "SEMESTER 3 DISEMBER":
 					<font fontName="Arial" size="11" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{ad_acdm_sesn_code}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="80" y="118" width="108" height="20" uuid="1e1b4f94-e378-4d30-b77a-67e6f3bb855a"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[LECTURER :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="149" y="121" width="100" height="20" uuid="2fdbdc08-d7e9-45ff-816f-5fb3607c2422"/>
+				<textElement>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ad_staf_title}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="220" y="122" width="152" height="20" uuid="3b497f62-d5e7-4524-8488-974f45f64e49"/>
+				<textElement>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ad_actr_a_name}]]></textFieldExpression>
 			</textField>
 		</band>
 	</title>
