@@ -15,18 +15,20 @@
 
   <md-nav-list flex dense>
    
-     <a href="http://localhost:8080/servlet/report?report=class_attendance_status.jrxml&report.pdf&section_code={{section?.code}}" [target]="'_blank'">  
+     <a href="http://localhost:8080/servlet/report?report=class_attendance_status.jrxml&report.pdf&section_code={{section?.code}}&session_code={{section?.offering?.academicSession?.code}}&section_canonicalCode={{section?.canonicalCode}}" [target]="'_blank'">  
     <md-list-item >
       <md-icon md-list-avatar>description</md-icon>
      <h4 md-line>Student Status Report </h4>
-      <p md-line>View student status report {{section?.code}} {{section?.offering?.academicSession?.code}}</p> 
+      <p md-line>View student status report</p> 
+      <!--  <p md-line>View student status report {{section?.code}} {{section?.offering?.academicSession?.code}} {{section?.canonicalCode}}</p>  -->
     </md-list-item></a>
     
-     <a href="http://localhost:8080/servlet/report?report=class_attendance.jrxml&report.pdf&section_code={{section?.code}}&session_code={{section?.offering?.academicSession?.code}}" [target]="'_blank'">  
+     <a href="http://localhost:8080/servlet/report?report=class_attendance.jrxml&report.pdf&section_code={{section?.code}}&session_code={{section?.offering?.academicSession?.code}}&section_canonicalCode={{section?.canonicalCode}}" [target]="'_blank'">  
     <md-list-item >
       <md-icon md-list-avatar>description</md-icon>
      <h4 md-line>Class Attendance Report </h4>
-      <p md-line>View class attendance report {{section?.code}} {{section?.offering?.academicSession?.code}}</p> 
+      <p md-line>View class attendance report</p> 
+     <!--  <p md-line>View class attendance report {{section?.code}} {{section?.offering?.academicSession?.code}}  {{section?.canonicalCode}} </p>  -->
     </md-list-item></a>
     
     <md-divider></md-divider>

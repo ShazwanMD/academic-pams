@@ -5,6 +5,7 @@
 	<property name="ireport.y" value="0"/>
 	<parameter name="section_code" class="java.lang.String"/>
 	<parameter name="session_code" class="java.lang.String"/>
+	<parameter name="section_canonicalCode" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[SELECT
      ad_actr."id" AS ad_actr_id,
@@ -188,7 +189,11 @@ FROM
      AND ad_sctn."id" = ad_apmt."section_id"
      AND ad_enmt."section_id" = ad_sctn."id"
 WHERE
-     ad_sctn."code" = $P{section_code} AND ad_acdm_sesn."code" = $P{session_code}
+ ad_sctn."code" = $P{section_code}
+ AND ad_acdm_sesn."code" = $P{session_code} AND
+  ad_sctn."canonical_code" = $P{section_canonicalCode}
+
+
 ORDER BY
      ad_actr."name" ASC]]>
 	</queryString>
@@ -339,7 +344,7 @@ ORDER BY
 	<field name="ad_acdm_sesn_current_" class="java.lang.Boolean"/>
 	<field name="ad_acdm_sesn_description" class="java.lang.String"/>
 	<field name="ad_acdm_sesn_year_id" class="java.lang.Long"/>
-	<field name="ad_acdm_sesn_semester" class="java.lang.Integer"/>
+	<field name="ad_acdm_sesn_semester" class="java.lang.String"/>
 	<field name="ad_actr_a_id" class="java.lang.Long"/>
 	<field name="ad_actr_a_actor_type" class="java.lang.Integer"/>
 	<field name="ad_actr_a_email" class="java.lang.String"/>
@@ -462,23 +467,6 @@ ORDER BY
 				</textElement>
 				<textFieldExpression><![CDATA[$F{ad_acdm_sesn_code}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement x="256" y="22" width="158" height="20" uuid="a2e19d61-05d0-474d-b160-1743515f3cca"/>
-				<textElement>
-					<font fontName="Arial" size="11" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[($F{ad_acdm_sesn_semester}.equals( "0" )? "SEMESTER 1 SEPTEMBER":
-$F{ad_acdm_sesn_semester}.equals( "1" )? "SEMESTER 2 FEBRUARI":
-$F{ad_acdm_sesn_semester}.equals( "2" )? "SEMESTER 3 DISEMBER":
-"OTHERS")]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="496" y="21" width="100" height="20" uuid="17776704-fe83-4aca-b2ff-fd5905f165ff"/>
-				<textElement>
-					<font fontName="Arial" size="11" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{ad_acdm_sesn_code}]]></textFieldExpression>
-			</textField>
 			<staticText>
 				<reportElement x="157" y="112" width="108" height="20" uuid="3b1dc606-823f-481d-a1b5-5863822619d6"/>
 				<textElement verticalAlignment="Middle">
@@ -487,18 +475,35 @@ $F{ad_acdm_sesn_semester}.equals( "2" )? "SEMESTER 3 DISEMBER":
 				<text><![CDATA[LECTURER                :]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="346" y="112" width="386" height="20" uuid="595cd3ae-6d72-493e-a858-b238bce6096b"/>
+				<reportElement x="265" y="112" width="100" height="20" uuid="b68bd02d-b70a-4137-9373-58ba4c17b526"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ad_staf_title}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="335" y="112" width="314" height="20" uuid="de39c96b-bcfa-42df-9bb1-5c577d6238c1"/>
 				<textElement verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{ad_actr_a_name}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="265" y="112" width="100" height="20" uuid="070f8410-4c11-42d3-829e-4f9a71d0a9e1"/>
+				<reportElement x="260" y="18" width="158" height="20" uuid="d775bdc0-ae01-45fe-8937-d73844c66072"/>
 				<textElement verticalAlignment="Middle">
-					<font isBold="true"/>
+					<font fontName="Arial" size="11" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{ad_staf_title}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[($F{ad_acdm_sesn_semester}.equals( "0" )? "SEMESTER 1 SEPTEMBER":
+$F{ad_acdm_sesn_semester}.equals( "1" )? "SEMESTER 2 FEBRUARI":
+$F{ad_acdm_sesn_semester}.equals( "2" )? "SEMESTER 3 DISEMBER":
+"ETC")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="497" y="22" width="100" height="20" uuid="e473bf23-a8c9-4818-b4f2-861e3a8f8ff5"/>
+				<textElement>
+					<font fontName="Arial" size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ad_acdm_sesn_code}]]></textFieldExpression>
 			</textField>
 		</band>
 	</title>
