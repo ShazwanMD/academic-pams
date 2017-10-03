@@ -4,6 +4,8 @@
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<parameter name="section_code" class="java.lang.String"/>
+	<parameter name="session_code" class="java.lang.String"/>
+	<parameter name="section_canonicalCode" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[SELECT
      ad_actr."id" AS ad_actr_id,
@@ -187,7 +189,7 @@ FROM
      AND ad_sctn."id" = ad_apmt."section_id"
      AND ad_enmt."section_id" = ad_sctn."id"
 WHERE
-     ad_sctn."code" = $P{section_code}
+     ad_sctn."code" = $P{section_code} AND ad_acdm_sesn."code" = $P{session_code} AND   ad_sctn."canonical_code" = $P{section_canonicalCode}
 ORDER BY
      ad_actr."name" ASC]]>
 	</queryString>
@@ -465,7 +467,7 @@ ORDER BY
 				<textFieldExpression><![CDATA[($F{ad_acdm_sesn_semester}.equals( "0" )? "SEMESTER 1 SEPTEMBER":
 $F{ad_acdm_sesn_semester}.equals( "1" )? "SEMESTER 2 FEBRUARI":
 $F{ad_acdm_sesn_semester}.equals( "2" )? "SEMESTER 3 DISEMBER":
-"OTHERS")]]></textFieldExpression>
+"OTHER")]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="383" y="21" width="100" height="20" uuid="17776704-fe83-4aca-b2ff-fd5905f165ff"/>
@@ -489,7 +491,7 @@ $F{ad_acdm_sesn_semester}.equals( "2" )? "SEMESTER 3 DISEMBER":
 				<textFieldExpression><![CDATA[$F{ad_staf_title}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="220" y="122" width="152" height="20" uuid="3b497f62-d5e7-4524-8488-974f45f64e49"/>
+				<reportElement x="220" y="121" width="152" height="20" uuid="3b497f62-d5e7-4524-8488-974f45f64e49"/>
 				<textElement>
 					<font fontName="Arial" isBold="true"/>
 				</textElement>
