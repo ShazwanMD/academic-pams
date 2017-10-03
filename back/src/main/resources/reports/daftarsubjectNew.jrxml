@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="daftar subject" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ee4f06ca-386d-429a-b565-0b8654d39855">
 	<property name="ireport.zoom" value="1.6105100000000039"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="240"/>
+	<property name="ireport.y" value="0"/>
 	<style name="table">
 		<box>
 			<topPen lineWidth="1.0" lineColor="#000000"/>
@@ -330,10 +330,6 @@ FROM
 				</textElement>
 				<text><![CDATA[TEL:09-7717028        FAKS:09-7717162]]></text>
 			</staticText>
-			<image>
-				<reportElement x="43" y="5" width="113" height="70" uuid="97f46eaf-9e50-42ce-bcb3-c4ae3a58bacb"/>
-				<imageExpression><![CDATA["C:\\Users\\Nurain\\Desktop\\Logo_Universiti_Malaysia_Kelantan.png"]]></imageExpression>
-			</image>
 			<line>
 				<reportElement x="0" y="81" width="555" height="1" uuid="22d7243a-4136-40c4-9dd8-de91221f5309"/>
 				<graphicElement>

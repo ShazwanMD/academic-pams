@@ -757,7 +757,7 @@ WHERE
 				<text><![CDATA[Salinan : (      ) Fail Pelajar]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="315" y="87" width="155" height="20" uuid="4860210b-e4da-42b8-83f2-eafbf9587a29"/>
+				<reportElement x="344" y="87" width="155" height="20" uuid="4860210b-e4da-42b8-83f2-eafbf9587a29"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
