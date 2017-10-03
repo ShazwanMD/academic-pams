@@ -634,7 +634,7 @@ WHERE
 				<text><![CDATA[PROGRAM]]></text>
 			</staticText>
 			<subreport>
-				<reportElement x="101" y="184" width="193" height="24" uuid="2cdbd9c1-2c60-4aaf-a29c-88fb0f0fbe5c"/>
+				<reportElement x="100" y="185" width="193" height="24" uuid="2cdbd9c1-2c60-4aaf-a29c-88fb0f0fbe5c"/>
 				<subreportParameter name="SUBREPORT_DIR">
 					<subreportParameterExpression><![CDATA[$P{SUBREPORT_DIR}]]></subreportParameterExpression>
 				</subreportParameter>

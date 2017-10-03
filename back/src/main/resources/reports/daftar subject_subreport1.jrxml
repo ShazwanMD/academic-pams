@@ -88,15 +88,15 @@ FROM
 		<band splitType="Stretch"/>
 	</columnHeader>
 	<detail>
-		<band height="21" splitType="Stretch">
+		<band height="40" splitType="Stretch">
 			<textField>
-				<reportElement x="0" y="0" width="417" height="20" uuid="ba362ae1-6b47-4266-9b47-bcc43ff4fa13"/>
+				<reportElement x="32" y="0" width="310" height="20" uuid="ba362ae1-6b47-4266-9b47-bcc43ff4fa13"/>
 				<textFieldExpression><![CDATA[$F{ad_actr_name}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="1" splitType="Stretch"/>
+		<band height="50" splitType="Stretch"/>
 	</columnFooter>
 	<pageFooter>
 		<band height="2" splitType="Stretch"/>
