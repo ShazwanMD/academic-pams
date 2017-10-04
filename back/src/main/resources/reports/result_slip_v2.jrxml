@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="jasper_report_template" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="03800e79-2e08-4188-b0d9-084bf32d8f7c">
 	<property name="ireport.zoom" value="2.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="143"/>
+	<property name="ireport.y" value="206"/>
 	<parameter name="identity_no" class="java.lang.String"/>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
 		<defaultValueExpression><![CDATA["C:\\Users\\PAMS05\\git\\academic\\back\\src\\main\\resources\\reports\\"]]></defaultValueExpression>
@@ -653,9 +653,9 @@ $F{ad_stdn_student_status}.equals( "2" )? "FEBRUARI":
 		</band>
 	</detail>
 	<pageFooter>
-		<band height="175">
+		<band height="113">
 			<staticText>
-				<reportElement x="170" y="138" width="246" height="20" uuid="4aa3bf32-8d9c-4723-a8cf-bb19bc5cc7d4"/>
+				<reportElement x="156" y="92" width="246" height="20" uuid="4aa3bf32-8d9c-4723-a8cf-bb19bc5cc7d4"/>
 				<text><![CDATA[This is computer generated report by MGSEB UMK]]></text>
 			</staticText>
 			<staticText>
@@ -732,7 +732,7 @@ $F{ad_stdn_student_status}.equals( "2" )? "FEBRUARI":
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$V{ad_grde_code_point_1}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField pattern="###0.00">
 				<reportElement x="438" y="47" width="116" height="20" uuid="efebbe9e-5355-4e14-bdb0-e7203db2a641"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$V{ad_grde_code_point_2}]]></textFieldExpression>
@@ -743,7 +743,10 @@ $F{ad_stdn_student_status}.equals( "2" )? "FEBRUARI":
 					<subreportParameterExpression><![CDATA[$P{SUBREPORT_DIR}]]></subreportParameterExpression>
 				</subreportParameter>
 				<subreportParameter name="identity_no">
-					<subreportParameterExpression><![CDATA[$F{ad_actr_identity_no}]]></subreportParameterExpression>
+					<subreportParameterExpression><![CDATA[$P{identity_no}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="session_code">
+					<subreportParameterExpression><![CDATA[$P{session_code}]]></subreportParameterExpression>
 				</subreportParameter>
 				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "report slip_subreport_v1.jasper"]]></subreportExpression>

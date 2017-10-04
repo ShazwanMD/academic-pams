@@ -4,7 +4,9 @@
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<parameter name="identity_no" class="java.lang.String"/>
-	<parameter name="session_code" class="java.lang.String"/>
+	<parameter name="session_code" class="java.lang.String">
+		<parameterDescription><![CDATA[]]></parameterDescription>
+	</parameter>
 	<queryString>
 		<![CDATA[SELECT
      ad_actr."id" AS ad_actr_id,
@@ -153,7 +155,9 @@ FROM
      INNER JOIN "public"."ad_sctn" ad_sctn ON ad_enmt."section_id" = ad_sctn."id"
      INNER JOIN "public"."ad_grde_code" ad_grde_code ON ad_enmt."grade_code_id" = ad_grde_code."id"
      INNER JOIN "public"."ad_ofrg" ad_ofrg ON ad_sctn."offering_id" = ad_ofrg."id"
-     INNER JOIN "public"."ad_crse" ad_crse ON ad_ofrg."course_id" = ad_crse."id"]]>
+     INNER JOIN "public"."ad_crse" ad_crse ON ad_ofrg."course_id" = ad_crse."id"
+
+ORDER BY ad_enmt."id"]]>
 	</queryString>
 	<field name="ad_actr_id" class="java.lang.Long"/>
 	<field name="ad_actr_actor_type" class="java.lang.Integer"/>
@@ -302,7 +306,7 @@ FROM
 	<variable name="ad_grde_code_point_2" class="java.math.BigDecimal" resetType="Column" calculation="Average">
 		<variableExpression><![CDATA[$F{ad_grde_code_point}]]></variableExpression>
 	</variable>
-	<filterExpression><![CDATA[$F{ad_actr_identity_no}.equals( $P{identity_no} );
+	<filterExpression><![CDATA[$F{ad_actr_identity_no}.equals( $P{identity_no} )&&
 $F{ad_acdm_sesn_code}.equals( $P{session_code} )]]></filterExpression>
 	<background>
 		<band splitType="Stretch"/>
@@ -331,7 +335,7 @@ $F{ad_acdm_sesn_code}.equals( $P{session_code} )]]></filterExpression>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$V{ad_crse_credit_1}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField pattern="###0.00">
 				<reportElement x="270" y="1" width="112" height="20" uuid="fd364e4d-0585-40e4-b92f-79c3d39ec5ac"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$V{ad_grde_code_point_2}]]></textFieldExpression>
