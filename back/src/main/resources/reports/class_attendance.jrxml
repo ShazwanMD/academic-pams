@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reportAkhirNew" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="833aeb46-bbba-4d7c-aa22-f2a8dfbd7612">
 	<property name="ireport.zoom" value="2.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="9"/>
 	<parameter name="section_code" class="java.lang.String"/>
 	<parameter name="session_code" class="java.lang.String"/>
 	<parameter name="section_canonicalCode" class="java.lang.String"/>
@@ -435,10 +435,6 @@ ORDER BY
 				</textElement>
 				<textFieldExpression><![CDATA[$F{ad_sctn_ordinal}]]></textFieldExpression>
 			</textField>
-			<image>
-				<reportElement x="217" y="0" width="37" height="52" uuid="a0de9006-dd85-4662-9fb9-a0410884037c"/>
-				<imageExpression><![CDATA["C:\\Users\\PAMS05\\git\\academic\\back\\src\\main\\resources\\reports\\img\\logo_universiti_malaysia_kelantan.png"]]></imageExpression>
-			</image>
 			<staticText>
 				<reportElement x="157" y="93" width="108" height="20" uuid="ebd310a8-15fe-41fc-b825-f4b7f1d7272c"/>
 				<textElement verticalAlignment="Middle">
@@ -767,9 +763,14 @@ $F{ad_acdm_sesn_semester}.equals( "2" )? "SEMESTER 3 DISEMBER":
 		<band height="4" splitType="Stretch"/>
 	</columnFooter>
 	<pageFooter>
-		<band height="5" splitType="Stretch"/>
+		<band height="21" splitType="Stretch">
+			<staticText>
+				<reportElement x="269" y="0" width="211" height="20" uuid="0a07443d-322f-435e-b57a-f89e1d30fc2f"/>
+				<text><![CDATA[This is computer generated report by MGSEB UMK ]]></text>
+			</staticText>
+		</band>
 	</pageFooter>
 	<summary>
-		<band height="11" splitType="Stretch"/>
+		<band height="29" splitType="Stretch"/>
 	</summary>
 </jasperReport>
