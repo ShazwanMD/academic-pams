@@ -11,7 +11,7 @@
                 <div layout="column" layout-gt-md="row" class="insert">
 
                     <div flex-gt-md="50">
-                        <md-card-title>List Of Academic Session Registered</md-card-title>
+                        <md-card-title>List Of Admissions</md-card-title>
                     </div>
                 </div>
             </div>
@@ -38,7 +38,7 @@
   </template>
   <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
     <div layout="row">
-      <a md-button color="accent" class="text-upper" [routerLink]="['/secure/academicSessionExamPage',row['code']]">
+      <a md-button color="accent" class="text-upper" [routerLink]="['/secure/academicSessionExamPage',row['id']]">
         <span>View</span></a>
     </div>
   </template>

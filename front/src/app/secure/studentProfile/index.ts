@@ -52,8 +52,9 @@ import { AcademicYearListState, academicYearListReducer } from "../planner/acade
 import { AcademicYearState, academicYearReducer } from "../planner/academic-years/academic-year.reducer";
 import { AcademicSessionListState, academicSessionListReducer } from "./academic-session-list.reducer";
 import { AcademicSessionState, academicSessionReducer } from "./academic-session.reducer";
-import { AdmissionState, admissionReducer } from "../term/admissions/admission.reducer";
 import { EnrollmentState, enrollmentReducer } from "../term/enrollments/enrollment.reducer";
+import { enrollmentStudentListReducer, EnrollmentStudentListState } from "./enrollment-list.reducer";
+import { AdmissionState, admissionReducer } from "./admission.reducer";
 
 
 export interface StudentProfileModuleState {
@@ -71,6 +72,7 @@ export interface StudentProfileModuleState {
     academicSession: AcademicSessionState;
     academicYears: AcademicYearListState;
     academicYear: AcademicYearState;
+    enrollmentStudents: EnrollmentStudentListState;
 
 
 };
@@ -110,6 +112,8 @@ export const studentProfileModuleReducers = {
     academicSessions: academicSessionListReducer,
     academicYears: academicYearListReducer,
     academicYear: academicYearReducer,
+    enrollmentStudents: enrollmentStudentListReducer,
+
 
 };
 

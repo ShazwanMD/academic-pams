@@ -10,6 +10,7 @@ import { Store } from "@ngrx/store";
 import { FormBuilder } from "@angular/forms";
 import { MdDialog, MdDialogConfig, MdDialogRef, MdSnackBar } from "@angular/material";
 import { AcademicSession } from "../../../shared/model/planner/academic-session.interface";
+import { Admission } from "../../../shared/model/term/admission.interface";
 
 @Component({
     selector: 'pams-student-profile-academicSession-list',
@@ -20,8 +21,9 @@ export class StudentProfileAcademicSessionComponent implements OnInit {
     [x: string]: any;
 
     @Input() academicSessions: AcademicSession[];
-    @Output() view = new EventEmitter<AcademicSession>();
-    @Input() student:Student;
+    @Input() admissions: Admission[];
+    @Output() view = new EventEmitter<Admission>();
+    @Input() student: Student;
 
     filteredData: any[];
     filteredTotal: number;
@@ -29,14 +31,14 @@ export class StudentProfileAcademicSessionComponent implements OnInit {
     fromRow: number = 1;
     currentPage: number = 1;
     pageSize: number = 5;
-    sortBy: string = 'code';
+    sortBy: string = 'academicSession.semester';
     sortOrder: TdDataTableSortingOrder = TdDataTableSortingOrder.Ascending;
 
 
     private columns: any[] = [
-        { name: 'code', label: 'Code' },
-        { name: 'description', label: 'Description' },
-        { name: 'semester', label: 'AcademicSemester' },
+        { name: 'academicSession.semester', label: 'ACADEMIC SEMESTER' },
+        { name: 'gpa', label: 'GPA' },
+        { name: 'cgpa', label: 'CGPA' },
         { name: 'action', label: '' },
     ];
 
@@ -49,17 +51,17 @@ export class StudentProfileAcademicSessionComponent implements OnInit {
 
     }
     ngOnChanges(changes: { [propName: string]: SimpleChange }) {
-        console.log('changes', changes, changes['academicSessions']);
-        if (changes['academicSessions']) {
-            this.filteredData = changes['academicSessions'].currentValue;
-            this.filteredTotal = changes['academicSessions'].currentValue.length;
+        console.log('changes', changes, changes['admissions']);
+        if (changes['admissions']) {
+            this.filteredData = changes['admissions'].currentValue;
+            this.filteredTotal = changes['admissions'].currentValue.length;
             this.filter();
         }
     }
 
     ngAfterViewInit(): void {
-        this.filteredData = this.academicSessions;
-        this.filteredTotal = this.academicSessions.length;
+        this.filteredData = this.admissions;
+        this.filteredTotal = this.admissions.length;
         this.filter();
     }
 
@@ -83,7 +85,7 @@ export class StudentProfileAcademicSessionComponent implements OnInit {
     }
 
     filter(): void {
-        let newData: any[] = this.academicSessions;
+        let newData: any[] = this.admissions;
         newData = this._dataTableService.filterData(newData, this.searchTerm, true);
         this.filteredTotal = newData.length;
         newData = this._dataTableService.sortData(newData, this.sortBy, this.sortOrder);

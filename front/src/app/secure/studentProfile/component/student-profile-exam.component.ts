@@ -18,64 +18,17 @@ import { Student } from "../../../shared/model/identity/student.interface";
   templateUrl: './student-profile-exam.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class StudentProfileExamComponent implements OnInit {
+export class StudentProfileExamComponent {
 
-
-  private STUDENT: string[] = 'studentProfileModuleState.student'.split('.');
-  private STUDENTS: string[] = 'studentProfileModuleState.students'.split('.');
-  private ACADEMIC_SESSION: string[] = 'studentProfileModuleState.academicSession'.split('.');
-  private ENROLLMENTS: string[] = 'studentProfileModuleState.enrollments'.split('.');
-  private ADMISSIONS: string[] = 'studentProfileModuleState.admissions'.split('.');
-  private ADMISSION: string[] = 'studentProfileModuleState.admission'.split('.');
-  private enrollments$: Observable<Enrollment>;
-  private admissions$: Observable<Admission[]>;
-  private admission$: Observable<Admission>;
-  private academicSession$: Observable<AcademicSession>;
-  private students$: Observable<Student[]>;
-  private student$: Observable<Student>;
-
-  @Input() admissions: Admission[];
   @Input() admission: Admission;
-  @Input() enrollments: Enrollment[];
-  @Input() enrollment: Enrollment;
   @Input() student: Student;
-  @Input() academicSession: AcademicSession;
-  @Input() semester: AcademicSemester;
-  @Input() year: AcademicYear;
-  @Input() placeholder: string;
-  @Input() innerFormControl: FormControl;
-  @Output() view = new EventEmitter<AcademicSession>();
+  @Input() enrollments: Enrollment[];
 
-
-  constructor(private router: Router,
-    private route: ActivatedRoute,
-    private actions: StudentProfileActions,
-    private vcf: ViewContainerRef,
-    private store: Store<StudentProfileModuleState>,
-    private dialog: MdDialog) {
-    this.academicSession$ = this.store.select(...this.ACADEMIC_SESSION);
-    this.students$ = this.store.select(...this.STUDENTS);
-    this.student$ = this.store.select(...this.STUDENT);
-    this.enrollments$ = this.store.select(...this.ENROLLMENTS);
-    this.admissions$ = this.store.select(...this.ADMISSIONS);
-  }
 
   private columns: any[] = [
-    { name: 'section.offering.titleEn', label: 'Course Title' },
+    { name: 'admission.academicSession.code', label: 'Semester' },
     { name: 'section.offering.code', label: 'Course Code' },
     { name: 'section.offering.course.credit', label: 'Credit' },
     { name: 'gradeCode.code', label: 'Grade' },
-    { name: 'gradeCode.description', label: 'Description' },
-
   ];
-
-  ngOnInit(): void {
-    this.route.params.subscribe((params: { code: string }) => {
-      let code: string = params.code;
-      this.store.dispatch(this.actions.findAcademicSessionByCode(code));
-      this.store.dispatch(this.actions.findStudentByUser());
-      console.log(this.enrollment.id);
-    });
-  }
-
 }

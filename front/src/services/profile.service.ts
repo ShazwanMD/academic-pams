@@ -23,289 +23,307 @@ export class ProfileService {
 
     private PROFILE_API: string = environment.endpoint + '/api/profile';
 
-    constructor( private http: Http, private _http: HttpInterceptorService ) {
+    constructor(private http: Http, private _http: HttpInterceptorService) {
     }
     // ====================================================================================================
     // STUDENT - Login
     // ====================================================================================================
 
     findStudentByUser(): Observable<Student> {
-        return this._http.get( this.PROFILE_API + '/studentLogins' )
-            .map(( res: Response ) => <Student>res.json() );
+        return this._http.get(this.PROFILE_API + '/studentLogins')
+            .map((res: Response) => <Student>res.json());
     }
     findAddressessByStudent(): Observable<Address[]> {
-        return this._http.get( this.PROFILE_API + '/studentLogins/addressessByStudent' )
-            .map(( res: Response ) => <Address[]>res.json() );
+        return this._http.get(this.PROFILE_API + '/studentLogins/addressessByStudent')
+            .map((res: Response) => <Address[]>res.json());
     }
 
-    findStudentsByIdentityNo( matricNo: string ): Observable<Student> {
-        return this._http.get( this.PROFILE_API + '/studentLogins/' + matricNo )
-            .map(( res: Response ) => <Student>res.json() );
+    findStudentsByIdentityNo(matricNo: string): Observable<Student> {
+        return this._http.get(this.PROFILE_API + '/studentLogins/' + matricNo)
+            .map((res: Response) => <Student>res.json());
     }
 
     findAcademicSessionsByStudent(): Observable<AcademicSession[]> {
-        return this._http.get( this.PROFILE_API + '/studentLogins/academicSessions' )
-            .map(( res: Response ) => <AcademicSession[]>res.json() );
+        return this._http.get(this.PROFILE_API + '/studentLogins/academicSessions')
+            .map((res: Response) => <AcademicSession[]>res.json());
     }
-    
-    findAcademicSessionByCode( code: string ): Observable<AcademicSession> {
-        return this._http.get( this.PROFILE_API + '/studentLogins/academicSessions/' + code )
-            .map(( res: Response ) => <AcademicSession>res.json() );
+
+    findAcademicSessionByCode(code: string): Observable<AcademicSession> {
+        return this._http.get(this.PROFILE_API + '/studentLogins/academicSessions/' + code)
+            .map((res: Response) => <AcademicSession>res.json());
+    }
+
+    findAdmissionsByStudent(): Observable<Admission[]> {
+        console.log("find Admissions By Student Service");
+        return this._http.get(this.PROFILE_API + '/studentLogins/admissions')
+            .map((res: Response) => <Admission[]>res.json());
+    }
+
+    findAdmissionsById(id: number): Observable<Admission> {
+        console.log("find Admissions By Id Service:{}", id);
+        return this._http.get(this.PROFILE_API + '/studentLogins/admissions/' + id)
+            .map((res: Response) => <Admission>res.json());
+    }
+
+    findEnrollmentsByAdmissionsID(id: number): Observable<Enrollment[]> {
+        console.log("FrontEnd Service:{}", id);
+        return this._http.get(this.PROFILE_API + '/studentLogins/admissions/' + id + '/enrollments')
+            .map((res: Response) => <Enrollment[]>res.json());
     }
 
     /*==================================================================================================*/
     //STUDENT - ADDRESS
     /*==================================================================================================*/
-    addStudentAddress( student: Student, address: Address ): Observable<String> {
-        return this._http.post( this.PROFILE_API + '/students/addresses', JSON.stringify( address ) )
-            .flatMap(( res: Response ) => Observable.of( res.text() ) );
+    addStudentAddress(student: Student, address: Address): Observable<String> {
+        return this._http.post(this.PROFILE_API + '/students/addresses', JSON.stringify(address))
+            .flatMap((res: Response) => Observable.of(res.text()));
     }
 
-    updateStudentAddress( student: Student, address: Address ): Observable<String> {
-        return this._http.put( this.PROFILE_API + '/students/addresses/' + address.id, JSON.stringify( address ) )
-            .flatMap(( res: Response ) => Observable.of( res.text() ) );
+    updateStudentAddress(student: Student, address: Address): Observable<String> {
+        return this._http.put(this.PROFILE_API + '/students/addresses/' + address.id, JSON.stringify(address))
+            .flatMap((res: Response) => Observable.of(res.text()));
     }
 
-    deleteStudentAddress( student: Student, address: Address ) {
-        return this._http.delete( this.PROFILE_API + '/students/addresses/' + address.id )
-            .flatMap(( res: Response ) => Observable.of( res.text() ) );
+    deleteStudentAddress(student: Student, address: Address) {
+        return this._http.delete(this.PROFILE_API + '/students/addresses/' + address.id)
+            .flatMap((res: Response) => Observable.of(res.text()));
     }
 
     // ====================================================================================================
     // STUDENT - CONTACT
     // ====================================================================================================
 
-    addStudentContact( student: Student, contact: Contact ): Observable<String> {
-        return this._http.post( this.PROFILE_API + '/students/contacts', JSON.stringify( contact ) )
-            .flatMap(( res: Response ) => Observable.of( res.text() ) );
+    addStudentContact(student: Student, contact: Contact): Observable<String> {
+        return this._http.post(this.PROFILE_API + '/students/contacts', JSON.stringify(contact))
+            .flatMap((res: Response) => Observable.of(res.text()));
     }
-    updateStudentContact( student: Student, contact: Contact ): Observable<String> {
-        return this._http.put( this.PROFILE_API + '/students/contacts/' + contact.id, JSON.stringify( contact ) )
-            .flatMap(( res: Response ) => Observable.of( res.text() ) );
+    updateStudentContact(student: Student, contact: Contact): Observable<String> {
+        return this._http.put(this.PROFILE_API + '/students/contacts/' + contact.id, JSON.stringify(contact))
+            .flatMap((res: Response) => Observable.of(res.text()));
     }
 
-    deleteStudentContact( student: Student, contact: Contact ) {
-        console.log( 'delete student contact' );
-        console.log( "Service Student" + student );
-        console.log( "Service Contact" + contact );
-        return this._http.delete( this.PROFILE_API + '/students/contacts/' + contact.id )
-            .flatMap(( res: Response ) => Observable.of( res.text() ) );
+    deleteStudentContact(student: Student, contact: Contact) {
+        console.log('delete student contact');
+        console.log("Service Student" + student);
+        console.log("Service Contact" + contact);
+        return this._http.delete(this.PROFILE_API + '/students/contacts/' + contact.id)
+            .flatMap((res: Response) => Observable.of(res.text()));
     }
 
     /*==================================================================================================*/
     //STUDENT - GUARDIAN
     /*==================================================================================================*/
-    addStudentGuardian( student: Student, guardian: Guardian ): Observable<String> {
-        return this._http.post( this.PROFILE_API + '/students/guardians', JSON.stringify( guardian ) )
-            .flatMap(( res: Response ) => Observable.of( res.text() ) );
+    addStudentGuardian(student: Student, guardian: Guardian): Observable<String> {
+        return this._http.post(this.PROFILE_API + '/students/guardians', JSON.stringify(guardian))
+            .flatMap((res: Response) => Observable.of(res.text()));
     }
 
-    updateStudentGuardian( student: Student, guardian: Guardian ): Observable<String> {
-        return this._http.put( this.PROFILE_API + '/students/guardians/' + guardian.id, JSON.stringify( guardian ) )
-            .flatMap(( res: Response ) => Observable.of( res.text() ) );
+    updateStudentGuardian(student: Student, guardian: Guardian): Observable<String> {
+        return this._http.put(this.PROFILE_API + '/students/guardians/' + guardian.id, JSON.stringify(guardian))
+            .flatMap((res: Response) => Observable.of(res.text()));
     }
 
-    deleteStudentGuardian( student: Student, guardian: Guardian ) {
-        return this._http.delete( this.PROFILE_API + '/students/guardians/' + guardian.id )
-            .flatMap(( res: Response ) => Observable.of( res.text() ) );
+    deleteStudentGuardian(student: Student, guardian: Guardian) {
+        return this._http.delete(this.PROFILE_API + '/students/guardians/' + guardian.id)
+            .flatMap((res: Response) => Observable.of(res.text()));
     }
 
     /*==================================================================================================*/
     //STUDENT - GUARANTOR
     /*==================================================================================================*/
-    addStudentGuarantor( student: Student, guarantor: Guarantor ): Observable<String> {
-        return this._http.post( this.PROFILE_API + '/students/guarantors', JSON.stringify( guarantor ) )
-            .flatMap(( res: Response ) => Observable.of( res.text() ) );
+    addStudentGuarantor(student: Student, guarantor: Guarantor): Observable<String> {
+        return this._http.post(this.PROFILE_API + '/students/guarantors', JSON.stringify(guarantor))
+            .flatMap((res: Response) => Observable.of(res.text()));
     }
 
-    updateStudentGuarantor( student: Student, guarantor: Guarantor ): Observable<String> {
-        return this._http.put( this.PROFILE_API + '/students/guarantors/' + guarantor.id, JSON.stringify( guarantor ) )
-            .flatMap(( res: Response ) => Observable.of( res.text() ) );
+    updateStudentGuarantor(student: Student, guarantor: Guarantor): Observable<String> {
+        return this._http.put(this.PROFILE_API + '/students/guarantors/' + guarantor.id, JSON.stringify(guarantor))
+            .flatMap((res: Response) => Observable.of(res.text()));
     }
 
-    deleteStudentGuarantor( student: Student, guarantor: Guarantor ) {
-        return this._http.delete( this.PROFILE_API + '/students/guarantors/' + guarantor.id )
-            .flatMap(( res: Response ) => Observable.of( res.text() ) );
+    deleteStudentGuarantor(student: Student, guarantor: Guarantor) {
+        return this._http.delete(this.PROFILE_API + '/students/guarantors/' + guarantor.id)
+            .flatMap((res: Response) => Observable.of(res.text()));
     }
 
     /*==================================================================================================*/
     /*STUDENT INFORMATION ADD/UPD*/
     /*==================================================================================================*/
-    updateStudentDetail( student: Student ): Observable<String> {
-        return this._http.put( this.PROFILE_API + '/student', JSON.stringify( student ) )
-            .flatMap(( res: Response ) => Observable.of( res.text() ) );
+    updateStudentDetail(student: Student): Observable<String> {
+        return this._http.put(this.PROFILE_API + '/student', JSON.stringify(student))
+            .flatMap((res: Response) => Observable.of(res.text()));
     }
 
     // ====================================================================================================
     // STUDENT - FINDING
     // ====================================================================================================
-    findEnrollments( student: Student ): Observable<Enrollment[]> {
-        return this._http.get( this.PROFILE_API + '/students/' + student.identityNo + '/enrollments' )
-            .map(( res: Response ) => <Enrollment[]>res.json() );
+    findEnrollments(student: Student): Observable<Enrollment[]> {
+        return this._http.get(this.PROFILE_API + '/students/' + student.identityNo + '/enrollments')
+            .map((res: Response) => <Enrollment[]>res.json());
     }
 
     //find admissions
-    findAdmissions( student: Student ): Observable<Admission[]> {
-        return this._http.get( this.PROFILE_API + '/students/' + student.identityNo + '/admissions' )
-            .map(( res: Response ) => <Admission[]>res.json() );
+    findAdmissions(student: Student): Observable<Admission[]> {
+        return this._http.get(this.PROFILE_API + '/students/' + student.identityNo + '/admissions')
+            .map((res: Response) => <Admission[]>res.json());
     }
-    
- 
+
+
     findStudents(): Observable<Student[]> {
-        return this._http.get( this.PROFILE_API + '/students' )
-            .map(( res: Response ) => <Student[]>res.json() );
+        return this._http.get(this.PROFILE_API + '/students')
+            .map((res: Response) => <Student[]>res.json());
     }
-    
+
     //findGraduatedStudents
     findGraduatedStudents(): Observable<Student[]> {
-        return this._http.get( this.PROFILE_API + '/graduatedStudents' )
-            .map(( res: Response ) => <Student[]>res.json() );
-    }
-    
-
-    findStudentByIdentityNo( matricNo: string ): Observable<Student> {
-        return this._http.get( this.PROFILE_API + '/students/' + matricNo )
-            .map(( res: Response ) => <Student>res.json() );
+        return this._http.get(this.PROFILE_API + '/graduatedStudents')
+            .map((res: Response) => <Student[]>res.json());
     }
 
-    findGuardians( student: Student ): Observable<Guardian[]> {
-        return this._http.get( this.PROFILE_API + '/students/' + student.identityNo + '/guardians' )
-            .map(( res: Response ) => <Guardian[]>res.json() );
+
+    findStudentByIdentityNo(matricNo: string): Observable<Student> {
+        return this._http.get(this.PROFILE_API + '/students/' + matricNo)
+            .map((res: Response) => <Student>res.json());
     }
 
-    findGuarantors( student: Student ): Observable<Guarantor[]> {
-        return this._http.get( this.PROFILE_API + '/students/' + student.identityNo + '/guarantors' )
-            .map(( res: Response ) => <Guarantor[]>res.json() );
+    findGuardians(student: Student): Observable<Guardian[]> {
+        return this._http.get(this.PROFILE_API + '/students/' + student.identityNo + '/guardians')
+            .map((res: Response) => <Guardian[]>res.json());
     }
 
-    findContacts( student: Student ): Observable<Contact[]> {
-        return this._http.get( this.PROFILE_API + '/students/' + student.identityNo + '/contacts' )
-            .map(( res: Response ) => <Contact[]>res.json() );
+    findGuarantors(student: Student): Observable<Guarantor[]> {
+        return this._http.get(this.PROFILE_API + '/students/' + student.identityNo + '/guarantors')
+            .map((res: Response) => <Guarantor[]>res.json());
     }
 
-    findAddresses( student: Student ): Observable<Address[]> {
-        return this._http.get( this.PROFILE_API + '/students/' + student.identityNo + '/addresses' )
-            .map(( res: Response ) => <Address[]>res.json() );
+    findContacts(student: Student): Observable<Contact[]> {
+        return this._http.get(this.PROFILE_API + '/students/' + student.identityNo + '/contacts')
+            .map((res: Response) => <Contact[]>res.json());
     }
-    
+
+    findAddresses(student: Student): Observable<Address[]> {
+        return this._http.get(this.PROFILE_API + '/students/' + student.identityNo + '/addresses')
+            .map((res: Response) => <Address[]>res.json());
+    }
+
     //find graduation applications
-    findGraduationApplications( student: Student ): Observable<GraduationApplication[]> {
-        return this._http.get( this.PROFILE_API + '/students/' + student.identityNo + '/graduationApplications' )
-            .map(( res: Response ) => <GraduationApplication[]>res.json() );
-    }
-    
-    //find graduations
-    findGraduations( student: Student ): Observable<Graduation[]> {
-        return this._http.get( this.PROFILE_API + '/students/' + student.identityNo + '/graduations' )
-            .map(( res: Response ) => <Graduation[]>res.json() );
+    findGraduationApplications(student: Student): Observable<GraduationApplication[]> {
+        return this._http.get(this.PROFILE_API + '/students/' + student.identityNo + '/graduationApplications')
+            .map((res: Response) => <GraduationApplication[]>res.json());
     }
 
-    findAdmissionApplications( student: Student ): Observable<AdmissionApplication[]> {
-        return this._http.get( this.PROFILE_API + '/students/' + student.identityNo + '/admissionApplications' )
-            .map(( res: Response ) => <AdmissionApplication[]>res.json() );
+    //find graduations
+    findGraduations(student: Student): Observable<Graduation[]> {
+        return this._http.get(this.PROFILE_API + '/students/' + student.identityNo + '/graduations')
+            .map((res: Response) => <Graduation[]>res.json());
+    }
+
+    findAdmissionApplications(student: Student): Observable<AdmissionApplication[]> {
+        return this._http.get(this.PROFILE_API + '/students/' + student.identityNo + '/admissionApplications')
+            .map((res: Response) => <AdmissionApplication[]>res.json());
     }
 
     /*==================================================================================================*/
     /*STUDENT INFORMATION ADD/UPD*/
     /*==================================================================================================*/
-    saveStudent( student: Student ): Observable<String> {
-        return this._http.post( this.PROFILE_API + '/students', JSON.stringify( student ) )
-            .flatMap(( res: Response ) => Observable.of( res.text() ) );
+    saveStudent(student: Student): Observable<String> {
+        return this._http.post(this.PROFILE_API + '/students', JSON.stringify(student))
+            .flatMap((res: Response) => Observable.of(res.text()));
     }
 
-    updateStudent( student: Student ): Observable<String> {
-        return this._http.put( this.PROFILE_API + '/students/' + student.identityNo, JSON.stringify( student ) )
-            .flatMap(( res: Response ) => Observable.of( res.text() ) );
+    updateStudent(student: Student): Observable<String> {
+        return this._http.put(this.PROFILE_API + '/students/' + student.identityNo, JSON.stringify(student))
+            .flatMap((res: Response) => Observable.of(res.text()));
     }
 
     /*==================================================================================================*/
     //ADMISSION APPLICATION/ADMISSION/ADVISORY ADD/UPD/DEL
     /*==================================================================================================*/
 
-    updateAdmissionApplication( student: Student, admissionApplication: AdmissionApplication ): Observable<String> {
-        console.log( 'admissionApplication', admissionApplication );
-        return this._http.put( this.PROFILE_API + '/students/' + student.identityNo + '/admissionApplications/' + admissionApplication.id, JSON.stringify( admissionApplication ) )
-            .flatMap(( res: Response ) => Observable.of( res.text() ) );
+    updateAdmissionApplication(student: Student, admissionApplication: AdmissionApplication): Observable<String> {
+        console.log('admissionApplication', admissionApplication);
+        return this._http.put(this.PROFILE_API + '/students/' + student.identityNo + '/admissionApplications/' + admissionApplication.id, JSON.stringify(admissionApplication))
+            .flatMap((res: Response) => Observable.of(res.text()));
     }
-    
-    updateAdmission( student: Student, admission: Admission ): Observable<String> {
-        console.log( 'admission', admission );
-        return this._http.put( this.PROFILE_API + '/students/' + student.identityNo + '/admissions/' + admission.id, JSON.stringify( admission ) )
-            .flatMap(( res: Response ) => Observable.of( res.text() ) );
+
+    updateAdmission(student: Student, admission: Admission): Observable<String> {
+        console.log('admission', admission);
+        return this._http.put(this.PROFILE_API + '/students/' + student.identityNo + '/admissions/' + admission.id, JSON.stringify(admission))
+            .flatMap((res: Response) => Observable.of(res.text()));
     }
 
     /*==================================================================================================*/
     //ADDRESS ADD/UPD/DEL
     /*==================================================================================================*/
-    addAddress( student: Student, address: Address ): Observable<String> {
-        return this._http.post( this.PROFILE_API + '/students/' + student.identityNo + '/addresses', JSON.stringify( address ) )
-            .flatMap(( res: Response ) => Observable.of( res.text() ) );
+    addAddress(student: Student, address: Address): Observable<String> {
+        return this._http.post(this.PROFILE_API + '/students/' + student.identityNo + '/addresses', JSON.stringify(address))
+            .flatMap((res: Response) => Observable.of(res.text()));
     }
 
-    updateAddress( student: Student, address: Address ): Observable<String> {
-        console.log( 'woi', address );
-        return this._http.put( this.PROFILE_API + '/students/' + student.identityNo + '/addresses/' + address.id, JSON.stringify( address ) )
-            .flatMap(( res: Response ) => Observable.of( res.text() ) );
+    updateAddress(student: Student, address: Address): Observable<String> {
+        console.log('woi', address);
+        return this._http.put(this.PROFILE_API + '/students/' + student.identityNo + '/addresses/' + address.id, JSON.stringify(address))
+            .flatMap((res: Response) => Observable.of(res.text()));
     }
 
-    deleteAddress( student: Student, address: Address ) {
-        return this._http.delete( this.PROFILE_API + '/students/' + student.identityNo + '/addresses/' + address.id )
-            .flatMap(( res: Response ) => Observable.of( res.text() ) );
+    deleteAddress(student: Student, address: Address) {
+        return this._http.delete(this.PROFILE_API + '/students/' + student.identityNo + '/addresses/' + address.id)
+            .flatMap((res: Response) => Observable.of(res.text()));
     }
 
     /*==================================================================================================*/
     //GUARDIAN ADD/UPD/DEL
     /*==================================================================================================*/
-    addGuardian( student: Student, guardian: Guardian ): Observable<String> {
-        return this._http.post( this.PROFILE_API + '/students/' + student.identityNo + '/guardians', JSON.stringify( guardian ) )
-            .flatMap(( res: Response ) => Observable.of( res.text() ) );
+    addGuardian(student: Student, guardian: Guardian): Observable<String> {
+        return this._http.post(this.PROFILE_API + '/students/' + student.identityNo + '/guardians', JSON.stringify(guardian))
+            .flatMap((res: Response) => Observable.of(res.text()));
     }
 
-    updateGuardian( student: Student, guardian: Guardian ): Observable<String> {
-        return this._http.put( this.PROFILE_API + '/students/' + student.identityNo + '/guardians/' + guardian.id, JSON.stringify( guardian ) )
-            .flatMap(( res: Response ) => Observable.of( res.text() ) );
+    updateGuardian(student: Student, guardian: Guardian): Observable<String> {
+        return this._http.put(this.PROFILE_API + '/students/' + student.identityNo + '/guardians/' + guardian.id, JSON.stringify(guardian))
+            .flatMap((res: Response) => Observable.of(res.text()));
     }
 
-    deleteGuardian( student: Student, guardian: Guardian ) {
-        return this._http.delete( this.PROFILE_API + '/students/' + student.identityNo + '/guardians/' + guardian.id )
-            .flatMap(( res: Response ) => Observable.of( res.text() ) );
+    deleteGuardian(student: Student, guardian: Guardian) {
+        return this._http.delete(this.PROFILE_API + '/students/' + student.identityNo + '/guardians/' + guardian.id)
+            .flatMap((res: Response) => Observable.of(res.text()));
     }
 
     /*==================================================================================================*/
     //GUARANTOR ADD/UPD/DEL
     /*==================================================================================================*/
-    addGuarantor( student: Student, guarantor: Guarantor ): Observable<String> {
-        return this._http.post( this.PROFILE_API + '/students/' + student.identityNo + '/guarantors', JSON.stringify( guarantor ) )
-            .flatMap(( res: Response ) => Observable.of( res.text() ) );
+    addGuarantor(student: Student, guarantor: Guarantor): Observable<String> {
+        return this._http.post(this.PROFILE_API + '/students/' + student.identityNo + '/guarantors', JSON.stringify(guarantor))
+            .flatMap((res: Response) => Observable.of(res.text()));
     }
 
-    updateGuarantor( student: Student, guarantor: Guarantor ): Observable<String> {
-        return this._http.put( this.PROFILE_API + '/students/' + student.identityNo + '/guarantors/' + guarantor.id, JSON.stringify( guarantor ) )
-            .flatMap(( res: Response ) => Observable.of( res.text() ) );
+    updateGuarantor(student: Student, guarantor: Guarantor): Observable<String> {
+        return this._http.put(this.PROFILE_API + '/students/' + student.identityNo + '/guarantors/' + guarantor.id, JSON.stringify(guarantor))
+            .flatMap((res: Response) => Observable.of(res.text()));
     }
 
-    deleteGuarantor( student: Student, guarantor: Guarantor ) {
-        return this._http.delete( this.PROFILE_API + '/students/' + student.identityNo + '/guarantors/' + guarantor.id )
-            .flatMap(( res: Response ) => Observable.of( res.text() ) );
+    deleteGuarantor(student: Student, guarantor: Guarantor) {
+        return this._http.delete(this.PROFILE_API + '/students/' + student.identityNo + '/guarantors/' + guarantor.id)
+            .flatMap((res: Response) => Observable.of(res.text()));
     }
 
     /*==================================================================================================*/
     //CONTACT ADD/UPD/DEL
     /*==================================================================================================*/
-    addContact( student: Student, contact: Contact ): Observable<String> {
-        return this._http.post( this.PROFILE_API + '/students/' + student.identityNo + '/contacts', JSON.stringify( contact ) )
-            .flatMap(( res: Response ) => Observable.of( res.text() ) );
+    addContact(student: Student, contact: Contact): Observable<String> {
+        return this._http.post(this.PROFILE_API + '/students/' + student.identityNo + '/contacts', JSON.stringify(contact))
+            .flatMap((res: Response) => Observable.of(res.text()));
     }
 
-    updateContact( student: Student, contact: Contact ): Observable<String> {
-        return this._http.put( this.PROFILE_API + '/students/' + student.identityNo + '/contacts/' + contact.id, JSON.stringify( contact ) )
-            .flatMap(( res: Response ) => Observable.of( res.text() ) );
+    updateContact(student: Student, contact: Contact): Observable<String> {
+        return this._http.put(this.PROFILE_API + '/students/' + student.identityNo + '/contacts/' + contact.id, JSON.stringify(contact))
+            .flatMap((res: Response) => Observable.of(res.text()));
     }
 
-    deleteContact( student: Student, contact: Contact ) {
-        console.log( 'delete contact' );
-        return this._http.delete( this.PROFILE_API + '/students/' + student.identityNo + '/contacts/' + contact.id )
-            .flatMap(( res: Response ) => Observable.of( res.text() ) );
+    deleteContact(student: Student, contact: Contact) {
+        console.log('delete contact');
+        return this._http.delete(this.PROFILE_API + '/students/' + student.identityNo + '/contacts/' + contact.id)
+            .flatMap((res: Response) => Observable.of(res.text()));
     }
 
 
@@ -313,34 +331,34 @@ export class ProfileService {
     /*==================================================================================================*/
     //STUDENT ACTIVATION/DEACTIVATE/BAR/TRANSFER/SWITCH
     /*==================================================================================================*/
-    deactivateStudent( student: Student ): Observable<String> {
-        console.log( 'deactivate student' );
-        return this._http.post( this.PROFILE_API + '/students/' + student.identityNo + '/deactivate', JSON.stringify( student ) )
-            .flatMap(( res: Response ) => Observable.of( res.text() ) );
+    deactivateStudent(student: Student): Observable<String> {
+        console.log('deactivate student');
+        return this._http.post(this.PROFILE_API + '/students/' + student.identityNo + '/deactivate', JSON.stringify(student))
+            .flatMap((res: Response) => Observable.of(res.text()));
     }
 
-    activateStudent( student: Student ): Observable<String> {
-        console.log( 'activate student' );
-        return this._http.post( this.PROFILE_API + '/students/' + student.identityNo + '/activate', JSON.stringify( student ) )
-            .flatMap(( res: Response ) => Observable.of( res.text() ) );
+    activateStudent(student: Student): Observable<String> {
+        console.log('activate student');
+        return this._http.post(this.PROFILE_API + '/students/' + student.identityNo + '/activate', JSON.stringify(student))
+            .flatMap((res: Response) => Observable.of(res.text()));
     }
 
-    barStudent( student: Student ): Observable<String> {
-        console.log( 'bar student' );
-        return this._http.post( this.PROFILE_API + '/students/' + student.identityNo + '/barStudent', JSON.stringify( student ) )
-            .flatMap(( res: Response ) => Observable.of( res.text() ) );
+    barStudent(student: Student): Observable<String> {
+        console.log('bar student');
+        return this._http.post(this.PROFILE_API + '/students/' + student.identityNo + '/barStudent', JSON.stringify(student))
+            .flatMap((res: Response) => Observable.of(res.text()));
     }
 
-    switchStudyMode( student: Student, switcher: SwitchStudyMode ): Observable<String> {
-        console.log( switcher );
-        return this._http.post( this.PROFILE_API + '/students/' + student.identityNo + '/switchStudyMode', JSON.stringify( switcher ) )
-            .flatMap(( res: Response ) => Observable.of( res.text() ) );
+    switchStudyMode(student: Student, switcher: SwitchStudyMode): Observable<String> {
+        console.log(switcher);
+        return this._http.post(this.PROFILE_API + '/students/' + student.identityNo + '/switchStudyMode', JSON.stringify(switcher))
+            .flatMap((res: Response) => Observable.of(res.text()));
     }
 
-    transferCohort( student: Student, transferer: TransferCohort ): Observable<String> {
-        console.log( transferer );
-        return this._http.post( this.PROFILE_API + '/students/' + student.identityNo + '/transferCohort', JSON.stringify( transferer ) )
-            .flatMap(( res: Response ) => Observable.of( res.text() ) );
+    transferCohort(student: Student, transferer: TransferCohort): Observable<String> {
+        console.log(transferer);
+        return this._http.post(this.PROFILE_API + '/students/' + student.identityNo + '/transferCohort', JSON.stringify(transferer))
+            .flatMap((res: Response) => Observable.of(res.text()));
     }
 
 
@@ -348,8 +366,8 @@ export class ProfileService {
     // PRIVATE METHODS
     // ====================================================================================================
 
-    private handleError( error: Response | any ) {
+    private handleError(error: Response | any) {
         let body: any = error.json();
-        return Observable.throw( body );
+        return Observable.throw(body);
     }
 }

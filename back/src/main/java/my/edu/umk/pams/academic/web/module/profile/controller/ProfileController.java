@@ -427,6 +427,75 @@ public class ProfileController {
 		return new ResponseEntity<AcademicSession>(
 				plannerTransformer.toAcademicSessionVo(plannerService.findAcademicSessionByCode(code)), HttpStatus.OK);
 	}
+	
+	@RequestMapping(value = "/studentLogins/admissions", method = RequestMethod.GET)
+	public ResponseEntity<List<Admission>> findAdmissionsByStudent() {
+		// Get Current User
+		AdUser user = securityService.getCurrentUser();
+
+		AdStudent student = null;
+
+		if (user.getActor() instanceof AdStudent)
+			student = (AdStudent) user.getActor();
+		if (null == student)
+			throw new IllegalArgumentException("Student does not exists");
+
+		String identityNo = student.getIdentityNo();
+		AdStudent studentByIdentityNo = profileService.findStudentByMatricNo(identityNo);
+		LOG.debug("Student By IdentityNo:{}",identityNo);
+		
+		List<AdAdmission> admissions = termService.findAdmissions(studentByIdentityNo);
+		for (AdAdmission adAdmission : admissions) {
+			
+			LOG.debug("Admission:{}",adAdmission.getSession().getCode());
+		}
+		
+		return new ResponseEntity<List<Admission>>(termTransformer.toAdmissionVos(admissions),HttpStatus.OK);
+	}
+	
+	@RequestMapping(value = "/studentLogins/admissions/{id}", method = RequestMethod.GET)
+	public ResponseEntity<Admission> findAdmissionsById(@PathVariable Long id) throws UnsupportedEncodingException {
+		// Get Current User
+		AdUser user = securityService.getCurrentUser();
+
+		AdStudent student = null;
+
+		if (user.getActor() instanceof AdStudent)
+			student = (AdStudent) user.getActor();
+		if (null == student)
+			throw new IllegalArgumentException("Student does not exists");
+		
+		LOG.debug("Student ID:{}",student.getIdentityNo());
+
+		AdAdmission admission = termService.findAdmissionById(id);
+		LOG.debug("Admission:{}",admission.getId());
+		
+		return new ResponseEntity<Admission>(termTransformer.toAdmissionVo(admission), HttpStatus.OK);
+	}
+	
+	
+	@RequestMapping(value = "/studentLogins/admissions/{id}/enrollments", method = RequestMethod.GET)
+	public ResponseEntity<List<Enrollment>> findEnrollmentsByAdmissionsID(@PathVariable Long id) {
+		// Get Current User
+		AdUser user = securityService.getCurrentUser();
+
+		AdStudent student = null;
+
+		if (user.getActor() instanceof AdStudent)
+			student = (AdStudent) user.getActor();
+		if (null == student)
+			throw new IllegalArgumentException("Student does not exists");
+			
+		AdAdmission admission = termService.findAdmissionById(id);
+		LOG.debug("Admission:{}",admission.getId());
+		
+		List<AdEnrollment> enrollments = termService.findEnrollments(admission);
+		for (AdEnrollment enrollment : enrollments) {
+			LOG.debug("Enrollment:{}",enrollment.getSection().getOffering().getCourse().getCode());
+		}
+
+		return new ResponseEntity<List<Enrollment>>(termTransformer.toEnrollmentVos(enrollments), HttpStatus.OK);
+	}
 
 	// ====================================================================================================
 	// STUDENT PROFILE CONTACT

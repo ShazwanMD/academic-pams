@@ -86,7 +86,7 @@ export class StudentProfileDetailPage implements OnInit {
 
     ngOnInit(): void {
         console.log("find Student Profile Detail");
-        this.store.dispatch(this.actions.findAcademicSessionsByStudent());
+        this.store.dispatch(this.actions.findAdmissionsByStudent());
         this.store.dispatch(this.actions.findStudentByUser());
 
     }

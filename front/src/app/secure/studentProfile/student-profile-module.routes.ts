@@ -10,7 +10,7 @@ import { StudentAdmissionApplicationCenterPage } from "../term/admission-applica
 export const StudentProfileModuleRoutes: Routes =[
     {path:'studentProfile', component: StudentProfileCenterPage, canActivate: [AuthenticationGuard]},
     {path:'academicSessions', component:StudentProfileDetailPage},
-    {path: 'academicSessionExamPage/:code', component:StudentProfileExamPage},
+    {path: 'academicSessionExamPage/:id', component:StudentProfileExamPage},
     {path: 'term/admission-applications/admission-application-center2/:id', component: StudentAdmissionApplicationCenterPage},
    
     ...ProfileModuleRoutes

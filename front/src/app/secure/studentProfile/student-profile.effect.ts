@@ -66,6 +66,24 @@ export class StudentProfileEffects {
     .map((action) => action.payload)
     .switchMap((code) => this.profileService.findAcademicSessionByCode(code))
     .map((academicSession) => this.studentProfileActions.findAcademicSessionByCodeSuccess(academicSession));
+
+  @Effect() findAdmissionsByStudent$ = this.actions$
+    .ofType(StudentProfileActions.FIND_ADMISSIONS_BY_STUDENT)
+    .map(action => action.payload)
+    .switchMap(() => this.profileService.findAdmissionsByStudent())
+    .map(message => this.studentProfileActions.findAdmissionsByStudentSuccess(message));
+
+  @Effect() findAdmissionsById$ = this.actions$
+    .ofType(StudentProfileActions.FIND_ADMISSIONS_BY_ID)
+    .map(action => action.payload)
+    .switchMap((id) => this.profileService.findAdmissionsById(id))
+    .map(message => this.studentProfileActions.findAdmissionsByIdSuccess(message));
+
+  @Effect() findEnrollmentsByAdmissionsID$ = this.actions$
+    .ofType(StudentProfileActions.FIND_ENROLLMENTS_BY_ADMISSIONS_ID)
+    .map(action => action.payload)
+    .switchMap((id) => this.profileService.findEnrollmentsByAdmissionsID(id))
+    .map(message => this.studentProfileActions.findEnrollmentsByAdmissionsIDSuccess(message));
   /*==================================================================================================*/
   /*CONTACT - EFFECT*/
   /*==================================================================================================*/

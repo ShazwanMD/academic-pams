@@ -20,7 +20,7 @@ export class StudentProfileExamPage implements OnInit {
   private STUDENT: string[] = 'studentProfileModuleState.student'.split('.');
   private STUDENTS: string[] = 'studentProfileModuleState.students'.split('.');
   private ACADEMIC_SESSION: string[] = 'studentProfileModuleState.academicSession'.split('.');
-  private ENROLLMENTS: string[] = 'studentProfileModuleState.enrollments'.split('.');
+  private ENROLLMENTS: string[] = 'studentProfileModuleState.enrollmentStudents'.split('.');
   private ENROLLMENT: string[] = 'studentProfileModuleState.enrollment'.split('.');
   private ADMISSIONS: string[] = 'studentProfileModuleState.admissions'.split('.');
   private ADMISSION: string[] = 'studentProfileModuleState.admission'.split('.');
@@ -46,10 +46,11 @@ export class StudentProfileExamPage implements OnInit {
   }
 
   ngOnInit(): void {
-    this.route.params.subscribe((params: { code: string }) => {
-      let code: string = params.code;
-      this.store.dispatch(this.actions.findAcademicSessionByCode(code));
-      this.store.dispatch(this.actions.findStudentByUser());
+    this.route.params.subscribe((params: { id: number }) => {
+      let id: number = params.id;
+      this.store.dispatch(this.actions.findAdmissionsById(id));
+      this.store.dispatch(this.actions.findEnrollmentsByAdmissionsID(id));
+
     });
   }
 
