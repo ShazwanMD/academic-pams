@@ -16,6 +16,14 @@ import my.edu.umk.pams.academic.term.event.*;
 import my.edu.umk.pams.academic.term.model.*;
 import my.edu.umk.pams.academic.workflow.service.WorkflowConstants;
 import my.edu.umk.pams.academic.workflow.service.WorkflowService;
+import my.edu.umk.pams.connector.payload.AcademicSessionCodePayload;
+import my.edu.umk.pams.connector.payload.AdmissionPayload;
+import my.edu.umk.pams.connector.payload.CohortCodePayload;
+import my.edu.umk.pams.connector.payload.FacultyCodePayload;
+import my.edu.umk.pams.connector.payload.ProgramCodePayload;
+import my.edu.umk.pams.connector.payload.ProgramLevelPayload;
+import my.edu.umk.pams.connector.payload.StudentPayload;
+import my.edu.umk.pams.connector.payload.StudyModePayload;
 
 import org.activiti.engine.task.Task;
 import org.apache.commons.lang.Validate;
@@ -205,12 +213,11 @@ public class TermServiceImpl implements TermService {
 	}
 
 	@Override
-	public void saveOffering(AdOffering offering) {	
-	  
+	public void saveOffering(AdOffering offering) {
+
 		offeringDao.save(offering, securityService.getCurrentUser());
-		sessionFactory.getCurrentSession().flush();	
+		sessionFactory.getCurrentSession().flush();
 	}
-	
 
 	@Override
 	public void updateOffering(AdOffering offering) {
@@ -233,11 +240,10 @@ public class TermServiceImpl implements TermService {
 			enrollment.setTotalScore(totalScore);
 			enrollment.setGradeCode(commonService.findByScore(enrollment.getTotalScore()));
 			updateEnrollment(enrollment);
-			LOG.debug("calculateGradebookTotalScore:{}",enrollment.getTotalScore());
-			LOG.debug("calculateGradebookGradeCode:{}",enrollment.getGradeCode().getCode());
-			
-			
-//			calculateGPA(offering);
+			LOG.debug("calculateGradebookTotalScore:{}", enrollment.getTotalScore());
+			LOG.debug("calculateGradebookGradeCode:{}", enrollment.getGradeCode().getCode());
+
+			// calculateGPA(offering);
 		}
 
 	}
@@ -245,15 +251,12 @@ public class TermServiceImpl implements TermService {
 	public void calculateGPA(AdOffering offering) {
 		List<AdEnrollment> enrollments = findEnrollments(offering);
 		for (AdEnrollment enrollment : enrollments) {
-			
+
 			plannerService.calculateGpa(enrollment.getAdmission());
-			
+
 		}
-		
-	
 
 	}
-	
 
 	// ====================================================================================================
 	// SECTION
@@ -328,12 +331,11 @@ public class TermServiceImpl implements TermService {
 	public Integer countSection(AdOffering offering) {
 		return sectionDao.count(offering);
 	}
-	
-		
+
 	@Override
 	public Integer countSection(String canonicalCode) {
 		return sectionDao.count(canonicalCode);
-		//return sectionDao.isExists(canonicalCode);
+		// return sectionDao.isExists(canonicalCode);
 	}
 
 	@Override
@@ -375,7 +377,7 @@ public class TermServiceImpl implements TermService {
 	public boolean isSectionExists(String canonicalCode) {
 		return sectionDao.isExists(canonicalCode);
 	}
-	
+
 	@Override
 	public void openSection(AdSection section) {
 		// todo(uda): exception = Section already exists
@@ -410,11 +412,11 @@ public class TermServiceImpl implements TermService {
 
 	@Override
 	public void addSection(AdOffering offering, AdSection section) {
-			offeringDao.addSection(offering, section, securityService.getCurrentUser());
-			sessionFactory.getCurrentSession().flush();
-		
+		offeringDao.addSection(offering, section, securityService.getCurrentUser());
+		sessionFactory.getCurrentSession().flush();
+
 	}
-		
+
 	@Override
 	public void deleteSection(AdOffering offering, AdSection section) {
 		offeringDao.deleteSection(offering, section, securityService.getCurrentUser());
@@ -506,15 +508,16 @@ public class TermServiceImpl implements TermService {
 
 	@Override
 	public void addAssessment(AdOffering offering, AdAssessment assessment) {
-		
-		/*if (isAssessmentExists(assessment.getCanonicalCode())) {
-			//throw new Exception("Duplicate section record");
-			System.out.println("Duplicate data assessment");
-		} else {*/
+
+		/*
+		 * if (isAssessmentExists(assessment.getCanonicalCode())) { //throw new
+		 * Exception("Duplicate section record");
+		 * System.out.println("Duplicate data assessment"); } else {
+		 */
 		assessment.setOffering(offering);
 		assessmentDao.save(assessment, securityService.getCurrentUser());
 		sessionFactory.getCurrentSession().flush();
-	//}
+		// }
 	}
 
 	@Override
@@ -574,20 +577,20 @@ public class TermServiceImpl implements TermService {
 		String refNo = systemService.generateFormattedReferenceNo(ADMISSION_APPLICATION_REFERENCE_NO, param);
 		application.setReferenceNo(refNo);
 
-		if(countAdmissionApplication(application.getSession(), application.getStudent()) > 0){
+		if (countAdmissionApplication(application.getSession(), application.getStudent()) > 0) {
 			LOG.debug("DUPLICATE refno {}", refNo);
-			
-		}else{
-		LOG.debug("saving application with refno {}", refNo);
 
-		admissionApplicationDao.save(application, securityService.getCurrentUser());
-		sessionFactory.getCurrentSession().flush();
-		sessionFactory.getCurrentSession().refresh(application);
+		} else {
+			LOG.debug("saving application with refno {}", refNo);
 
-		// trigger workflow
-		workflowService.processWorkflow(application, prepareVariables(application));
-		return refNo;
-	}
+			admissionApplicationDao.save(application, securityService.getCurrentUser());
+			sessionFactory.getCurrentSession().flush();
+			sessionFactory.getCurrentSession().refresh(application);
+
+			// trigger workflow
+			workflowService.processWorkflow(application, prepareVariables(application));
+			return refNo;
+		}
 		return refNo;
 	}
 
@@ -596,11 +599,13 @@ public class TermServiceImpl implements TermService {
 		admissionApplicationDao.update(application, securityService.getCurrentUser());
 		sessionFactory.getCurrentSession().flush();
 	}
-	
+
 	@Override
-	public void updateAdmissionApplication(AdStudent student, AdAdmissionApplication application, AdAdmission admission) {
-		admissionApplicationDao.updateAdmissionApplication(student, application, admission, securityService.getCurrentUser());
-		sessionFactory.getCurrentSession().flush();		
+	public void updateAdmissionApplication(AdStudent student, AdAdmissionApplication application,
+			AdAdmission admission) {
+		admissionApplicationDao.updateAdmissionApplication(student, application, admission,
+				securityService.getCurrentUser());
+		sessionFactory.getCurrentSession().flush();
 	}
 
 	@Override
@@ -608,17 +613,18 @@ public class TermServiceImpl implements TermService {
 		admissionDao.update(admission, securityService.getCurrentUser());
 		sessionFactory.getCurrentSession().flush();
 	}
-	
+
 	/*
-	public void updateAdmission(AdStudent student, AdAdmissionApplication application) {
-		admissionDao.updateAdmission(student,application, securityService.getCurrentUser());
-		sessionFactory.getCurrentSession().flush();		
-	}*/
-	
+	 * public void updateAdmission(AdStudent student, AdAdmissionApplication
+	 * application) { admissionDao.updateAdmission(student,application,
+	 * securityService.getCurrentUser());
+	 * sessionFactory.getCurrentSession().flush(); }
+	 */
+
 	@Override
 	public void updateAdmission(AdStudent student, AdAdmission admission) {
 		admissionDao.updateAdmission(student, admission, securityService.getCurrentUser());
-		sessionFactory.getCurrentSession().flush();		
+		sessionFactory.getCurrentSession().flush();
 	}
 
 	@Override
@@ -628,21 +634,19 @@ public class TermServiceImpl implements TermService {
 				"Admission Application can only be cancelled in COMPLETED state");
 		admissionApplicationDao.update(application, securityService.getCurrentUser());
 	}
-	
-	
-    
-	/*@Override
-	public void postToAdmission(AdAdmissionApplication application) {
-		Validate.notNull(application, "Application cannot be null");
-		admit(application.getSession(), application.getStudent(), application.getStudyCenter(), 
-				application.getProgram());
-	}*/
-	
-	//post to admission with auto semester data
+
+	/*
+	 * @Override public void postToAdmission(AdAdmissionApplication application)
+	 * { Validate.notNull(application, "Application cannot be null");
+	 * admit(application.getSession(), application.getStudent(),
+	 * application.getStudyCenter(), application.getProgram()); }
+	 */
+
+	// post to admission with auto semester data
 	@Override
 	public void postToAdmission(AdAdmissionApplication application) {
 		Validate.notNull(application, "Application cannot be null");
-		admit(application.getSession(), application.getStudent(), application.getStudyCenter(), 
+		admit(application.getSession(), application.getStudent(), application.getStudyCenter(),
 				application.getProgram(), application.getOrdinal(), application.getAdvisor());
 	}
 
@@ -675,17 +679,17 @@ public class TermServiceImpl implements TermService {
 	public List<AdAdmissionApplication> findAdmissionApplications(AdAcademicSession session) {
 		return admissionApplicationDao.find(session);
 	}
-	
+
 	@Override
 	public List<AdAdmissionApplication> findAdmissionApplications(AdStudent student) {
 		return admissionApplicationDao.find(student);
 	}
-	
+
 	@Override
 	public List<AdAdmissionApplication> findAdmissionApplications(AdStaff staff) {
 		return admissionApplicationDao.find(staff);
 	}
-	
+
 	@Override
 	public List<AdAdmission> findAdmissions(AdStaff staff) {
 		return admissionDao.find(staff);
@@ -729,7 +733,7 @@ public class TermServiceImpl implements TermService {
 	public Integer countAdmissionApplication(String filter, AdAcademicSession session, AdStudent student) {
 		return admissionApplicationDao.count(filter, session, student);
 	}
-	
+
 	@Override
 	public Integer countAdmissionApplication(AdAcademicSession session, AdStudent student) {
 		return admissionApplicationDao.count(session, student);
@@ -765,7 +769,7 @@ public class TermServiceImpl implements TermService {
 	public List<AdAdmission> findAdmissions(Integer offset, Integer limit) {
 		return admissionDao.find(offset, limit);
 	}
-	
+
 	@Override
 	public List<AdAdmission> findAdmissions(AdStudent student) {
 		return admissionDao.find(student);
@@ -785,10 +789,10 @@ public class TermServiceImpl implements TermService {
 	public List<AdAdmission> findAdmissions(AdAcademicSession academicSession) {
 		return admissionDao.find(academicSession);
 	}
-	
+
 	@Override
 	public List<AdAdmission> findAdmissions(AdAcademicSession academicSession, AdStudent student) {
-		return admissionDao.find(academicSession,student);
+		return admissionDao.find(academicSession, student);
 	}
 
 	@Override
@@ -802,11 +806,12 @@ public class TermServiceImpl implements TermService {
 		sessionFactory.getCurrentSession().flush();
 
 	}
-    //add ordinal to auto semester
+
+	// add ordinal to auto semester
 	@Override
-	public void admit(AdAcademicSession session, AdStudent student, AdStudyCenter studyCenter, AdProgram program, Integer ordinal, AdStaff advisor) {
-		
-				
+	public void admit(AdAcademicSession session, AdStudent student, AdStudyCenter studyCenter, AdProgram program,
+			Integer ordinal, AdStaff advisor) {
+
 		AdAdmission admission = new AdAdmissionImpl();
 		admission.setSession(session);
 		admission.setStudent(student);
@@ -817,7 +822,7 @@ public class TermServiceImpl implements TermService {
 		admission.setCreditTaken(0);
 		admission.setCgpa(BigDecimal.ZERO); // todo
 		admission.setGpa(BigDecimal.ZERO); // todo
-		
+
 		admission.setOrdinal(ordinal);
 		admission.setCohort(student.getCohort());
 		saveAdmission(admission);
@@ -827,6 +832,58 @@ public class TermServiceImpl implements TermService {
 		// todo:
 		// AdmissionConfirmedEvent event = new AdmissionConfirmedEvent();
 		// applicationContext.publishEvent(event);
+
+/*		LOG.info("Broadcast Admission Payload");
+		AcademicSessionCodePayload academicSessionPayload = new AcademicSessionCodePayload();
+		academicSessionPayload.setCode(session.getCode());
+		academicSessionPayload.setDescription(session.getDescription());
+		LOG.debug("Broadcast academicSessionPayload:{}",academicSessionPayload.getCode());
+		
+		FacultyCodePayload facultyPayload = new FacultyCodePayload();
+		facultyPayload.setCode(student.getCohort().getProgram().getFaculty().getCode());
+		facultyPayload.setDescription(student.getCohort().getProgram().getFaculty().getDescription());
+		LOG.debug("Broadcast facultyPayload:{}",facultyPayload.getCode());
+
+		ProgramLevelPayload levelPayload = new ProgramLevelPayload();
+		levelPayload.setCode(student.getCohort().getProgram().getLevel().getCode());
+		levelPayload.setDescription(student.getCohort().getProgram().getLevel().getDescription());
+		LOG.debug("Broadcast levelPayload:{}",levelPayload.getCode());
+		
+		ProgramCodePayload programPayload = new ProgramCodePayload();
+		programPayload.setCode(student.getCohort().getProgram().getCode());
+		programPayload.setDescription(student.getCohort().getProgram().getTitleEn());
+		programPayload.setFacultyCode(facultyPayload);
+		programPayload.setProgramLevel(levelPayload);
+		LOG.debug("Broadcast programPayload:{}",programPayload.getCode());
+
+		CohortCodePayload cohortPayload = new CohortCodePayload();
+		cohortPayload.setCode(student.getCohort().getCode());
+		cohortPayload.setDescription(student.getCohort().getDescription());
+		cohortPayload.setProgramCode(programPayload);
+		LOG.debug("Broadcast cohortPayload:{}",cohortPayload.getCode());
+		
+		StudentPayload studentPayload = new StudentPayload();
+		studentPayload.setMatricNo(student.getMatricNo());
+		studentPayload.setName(student.getName());
+		LOG.debug("Broadcast studentPayload:{}",studentPayload.getMatricNo());
+		
+		StudyModePayload studyModePayload = new StudyModePayload();
+		studyModePayload.setCode(student.getStudyMode().getCode());
+		studyModePayload.setDescription(student.getStudyMode().getDescription());
+		LOG.debug("Broadcast studyModePayload:{}",studyModePayload.getCode());
+		
+		AdmissionPayload payload = new AdmissionPayload();
+		payload.setAcademicSession(academicSessionPayload);
+		payload.setCohortCode(cohortPayload);
+		payload.setStudent(studentPayload);
+		payload.setStudyMode(studyModePayload);
+		payload.setOrdinal(admission.getOrdinal());
+		LOG.info("Broadcast payload");
+
+		AdmissionConfirmedEvent event = new AdmissionConfirmedEvent(payload);
+		applicationContext.publishEvent(event);
+		LOG.info("PublishEvent payload");*/
+
 	}
 
 	// ====================================================================================================
@@ -869,7 +926,7 @@ public class TermServiceImpl implements TermService {
 	public Integer countEnrollmentApplication(AdAdmission admission) {
 		return enrollmentApplicationDao.count(admission);
 	}
-	
+
 	@Override
 	public String startEnrollmentApplicationTask(AdEnrollmentApplication application) {
 		// setup params for refno generation
@@ -1017,8 +1074,8 @@ public class TermServiceImpl implements TermService {
 	public Integer countEnrollmentApplication(String filter, AdAcademicSession session, AdStaff staff) {
 		return enrollmentApplicationDao.count(filter, session, staff);
 	}
-	
-	//isExists
+
+	// isExists
 	@Override
 	public boolean isEnrollmentApplicationItemExists(AdEnrollmentApplication application, AdSection section) {
 		return enrollmentApplicationDao.isExists(application, section);
@@ -1229,8 +1286,9 @@ public class TermServiceImpl implements TermService {
 			sessionFactory.getCurrentSession().refresh(enrollment);
 
 			// AdStudyCenter studyCenter = admission.getStudyCenter();
-		//	EnrollmentConfirmedEvent event = new EnrollmentConfirmedEvent(enrollment);
-		//	applicationContext.publishEvent(event);
+			// EnrollmentConfirmedEvent event = new
+			// EnrollmentConfirmedEvent(enrollment);
+			// applicationContext.publishEvent(event);
 		}
 	}
 
@@ -1448,14 +1506,16 @@ public class TermServiceImpl implements TermService {
 
 	@Override
 	public void addAppointment(AdSection section, AdAppointment appointment) {
-		/*if (isAppointmentExists(appointment.getSection(), appointment.getStaff())) {
-			//throw new Exception("Duplicate section record");
-			System.out.println("Duplicate data appointment");
-		} else {*/
+		/*
+		 * if (isAppointmentExists(appointment.getSection(),
+		 * appointment.getStaff())) { //throw new
+		 * Exception("Duplicate section record");
+		 * System.out.println("Duplicate data appointment"); } else {
+		 */
 		appointment.setSection(section);
 		appointmentDao.save(appointment, securityService.getCurrentUser());
 		sessionFactory.getCurrentSession().flush();
-	//s}
+		// s}
 	}
 
 	// update appointment by section
@@ -1721,7 +1781,6 @@ public class TermServiceImpl implements TermService {
 		sessionFactory.getCurrentSession().flush();
 	}
 
-			
 	@Override
 	public AdOffering findOfferingByCode(String code) {
 		return offeringDao.findByCode(code);
@@ -1730,31 +1789,31 @@ public class TermServiceImpl implements TermService {
 	@Override
 	public void updateAdmission(AdStudent student, AdAdmissionApplication application) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void updateAdmissionApplication(AdStudent student, AdAdmissionApplication application) {
-		/*admissionApplicationDao.updateAdmissionApplication(student, application, securityService.getCurrentUser());
-		sessionFactory.getCurrentSession().flush();	*/
-		
+		/*
+		 * admissionApplicationDao.updateAdmissionApplication(student,
+		 * application, securityService.getCurrentUser());
+		 * sessionFactory.getCurrentSession().flush();
+		 */
+
 	}
 
-	
 	@Override
 	public void admit(AdAcademicSession session, AdStudent student, AdStudyCenter studyCenter, AdProgram program,
 			Integer ordinal) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void admit(AdAcademicSession academicSession, AdStudent student, AdStudyCenter studyCenter,
 			AdProgram program, AdStaff advisor) {
 		// TODO Auto-generated method stub
-		
-	}
 
-	
+	}
 
 }
