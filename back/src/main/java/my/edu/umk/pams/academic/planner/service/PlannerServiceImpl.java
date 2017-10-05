@@ -5,9 +5,11 @@ import my.edu.umk.pams.academic.common.model.AdStudyMode;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.planner.dao.*;
 import my.edu.umk.pams.academic.planner.event.CohortAddedEvent;
+import my.edu.umk.pams.academic.planner.event.CohortRemovedEvent;
 import my.edu.umk.pams.academic.planner.event.FacultyAddedEvent;
 import my.edu.umk.pams.academic.planner.event.ProgramAddedEvent;
 import my.edu.umk.pams.academic.planner.event.ProgramEvent;
+import my.edu.umk.pams.academic.planner.event.ProgramRemovedEvent;
 import my.edu.umk.pams.academic.planner.model.*;
 import my.edu.umk.pams.academic.security.service.SecurityService;
 import my.edu.umk.pams.academic.term.dao.AdAssessmentDao;
@@ -618,12 +620,16 @@ public class PlannerServiceImpl implements PlannerService {
 	public void updateCohort(AdCohort cohort) {
 		cohortDao.update(cohort, securityService.getCurrentUser());
 		sessionFactory.getCurrentSession().flush();
+		
+
 	}
 
 	@Override
 	public void removeCohort(AdCohort cohort) {
 		cohortDao.remove(cohort, securityService.getCurrentUser());
 		sessionFactory.getCurrentSession().flush();
+		
+		
 	}
 
 	// ====================================================================================================
@@ -711,16 +717,21 @@ public class PlannerServiceImpl implements PlannerService {
 		facultyDao.addProgram(faculty, program, securityService.getCurrentUser());
 		sessionFactory.getCurrentSession().flush();
 
-		// prepare payload
+		// Prepare Faculty Payload
 		LOG.debug("prepare payload");
 		FacultyCodePayload f = new FacultyCodePayload();
 		f.setCode(faculty.getCode());
 		f.setDescription(faculty.getDescription());
-
+		// Prepare Program Level Payload
+		ProgramLevelPayload l = new ProgramLevelPayload();
+		l.setCode(program.getLevel().getCode());
+		l.setDescription(program.getLevel().getDescription());
+		// Prepare Program Payload
 		ProgramCodePayload p = new ProgramCodePayload();
 		p.setCode(program.getCode());
 		p.setDescription(program.getTitleMs());
 		p.setFacultyCode(f);
+		p.setProgramLevel(l);
 
 		ProgramAddedEvent event = new ProgramAddedEvent(p);
 		applicationContext.publishEvent(event);
@@ -736,6 +747,8 @@ public class PlannerServiceImpl implements PlannerService {
 	public void removeProgram(AdFaculty faculty, AdProgram program) {
 		facultyDao.removeProgram(faculty, program, securityService.getCurrentUser());
 		sessionFactory.getCurrentSession().flush();
+
+		
 	}
 
 	// ====================================================================================================
