@@ -128,6 +128,9 @@ public class IntegrationController {
         AdStudent student = identityService.findStudentByMatricNo(payload.getMatricNo());
         student.setBalance(payload.getBalance());
         student.setOutstanding(payload.isOutstanding());
+        if(student.getOutstanding() == true){
+        	student.setMemo("There Are Outstanding Payments.Please Refer To Bursary");
+        }
         identityService.updateStudent(student);
      
         logoutAsSystem(ctx);
@@ -152,7 +155,7 @@ public class IntegrationController {
         student.setMobile(payload.getMobile());
 
         // status, mode and cohort
-        student.setStudentStatus(AdStudentStatus.MATRICULATED);
+        student.setStudentStatus(AdStudentStatus.ACTIVE);
         student.setStudyMode(commonService.findStudyModeByCode(payload.getStudyMode().getCode()));
         student.setCohort(plannerService.findCohortByCode(payload.getCohortCode()));
         student.setBalance(BigDecimal.ZERO);
