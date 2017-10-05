@@ -76,20 +76,6 @@
      ad_acdm_year."m_id" AS ad_acdm_year_m_id,
      ad_acdm_year."m_st" AS ad_acdm_year_m_st,
      ad_acdm_year."year" AS ad_acdm_year_year,
-     ad_chrt."id" AS ad_chrt_id,
-     ad_chrt."classification" AS ad_chrt_classification,
-     ad_chrt."code" AS ad_chrt_code,
-     ad_chrt."description" AS ad_chrt_description,
-     ad_chrt."c_ts" AS ad_chrt_c_ts,
-     ad_chrt."c_id" AS ad_chrt_c_id,
-     ad_chrt."d_ts" AS ad_chrt_d_ts,
-     ad_chrt."d_id" AS ad_chrt_d_id,
-     ad_chrt."m_ts" AS ad_chrt_m_ts,
-     ad_chrt."m_id" AS ad_chrt_m_id,
-     ad_chrt."m_st" AS ad_chrt_m_st,
-     ad_chrt."curriculum_id" AS ad_chrt_curriculum_id,
-     ad_chrt."program_id" AS ad_chrt_program_id,
-     ad_chrt."session_id" AS ad_chrt_session_id,
      ad_prgm."id" AS ad_prgm_id,
      ad_prgm."code" AS ad_prgm_code,
      ad_prgm."c_ts" AS ad_prgm_c_ts,
@@ -103,14 +89,27 @@
      ad_prgm."title_en" AS ad_prgm_title_en,
      ad_prgm."title_ms" AS ad_prgm_title_ms,
      ad_prgm."faculty_id" AS ad_prgm_faculty_id,
-     ad_prgm."level_id" AS ad_prgm_level_id
+     ad_prgm."level_id" AS ad_prgm_level_id,
+     ad_chrt."id" AS ad_chrt_id,
+     ad_chrt."classification" AS ad_chrt_classification,
+     ad_chrt."code" AS ad_chrt_code,
+     ad_chrt."description" AS ad_chrt_description,
+     ad_chrt."c_ts" AS ad_chrt_c_ts,
+     ad_chrt."c_id" AS ad_chrt_c_id,
+     ad_chrt."d_ts" AS ad_chrt_d_ts,
+     ad_chrt."d_id" AS ad_chrt_d_id,
+     ad_chrt."m_ts" AS ad_chrt_m_ts,
+     ad_chrt."m_id" AS ad_chrt_m_id,
+     ad_chrt."m_st" AS ad_chrt_m_st,
+     ad_chrt."curriculum_id" AS ad_chrt_curriculum_id,
+     ad_chrt."program_id" AS ad_chrt_program_id,
+     ad_chrt."session_id" AS ad_chrt_session_id
 FROM
      "public"."ad_stdn" ad_stdn INNER JOIN "public"."ad_grdtn" ad_grdtn ON ad_stdn."id" = ad_grdtn."student_id"
      INNER JOIN "public"."ad_actr" ad_actr ON ad_stdn."id" = ad_actr."id"
      INNER JOIN "public"."ad_chrt" ad_chrt ON ad_stdn."cohort_id" = ad_chrt."id"
-     INNER JOIN "public"."ad_acdm_sesn" ad_acdm_sesn ON ad_chrt."session_id" = ad_acdm_sesn."id"
      INNER JOIN "public"."ad_prgm" ad_prgm ON ad_chrt."program_id" = ad_prgm."id"
-     AND ad_grdtn."session_id" = ad_acdm_sesn."id"
+     INNER JOIN "public"."ad_acdm_sesn" ad_acdm_sesn ON ad_grdtn."session_id" = ad_acdm_sesn."id"
      INNER JOIN "public"."ad_acdm_year" ad_acdm_year ON ad_acdm_sesn."year_id" = ad_acdm_year."id"
 WHERE
      ad_acdm_sesn."code" = $P{session_code}
@@ -188,20 +187,6 @@ ORDER BY
 	<field name="ad_acdm_year_m_id" class="java.lang.Long"/>
 	<field name="ad_acdm_year_m_st" class="java.lang.Integer"/>
 	<field name="ad_acdm_year_year" class="java.lang.String"/>
-	<field name="ad_chrt_id" class="java.lang.Long"/>
-	<field name="ad_chrt_classification" class="java.lang.Integer"/>
-	<field name="ad_chrt_code" class="java.lang.String"/>
-	<field name="ad_chrt_description" class="java.lang.String"/>
-	<field name="ad_chrt_c_ts" class="java.sql.Timestamp"/>
-	<field name="ad_chrt_c_id" class="java.lang.Long"/>
-	<field name="ad_chrt_d_ts" class="java.sql.Timestamp"/>
-	<field name="ad_chrt_d_id" class="java.lang.Long"/>
-	<field name="ad_chrt_m_ts" class="java.sql.Timestamp"/>
-	<field name="ad_chrt_m_id" class="java.lang.Long"/>
-	<field name="ad_chrt_m_st" class="java.lang.Integer"/>
-	<field name="ad_chrt_curriculum_id" class="java.lang.Long"/>
-	<field name="ad_chrt_program_id" class="java.lang.Long"/>
-	<field name="ad_chrt_session_id" class="java.lang.Long"/>
 	<field name="ad_prgm_id" class="java.lang.Long"/>
 	<field name="ad_prgm_code" class="java.lang.String"/>
 	<field name="ad_prgm_c_ts" class="java.sql.Timestamp"/>
@@ -216,6 +201,20 @@ ORDER BY
 	<field name="ad_prgm_title_ms" class="java.lang.String"/>
 	<field name="ad_prgm_faculty_id" class="java.lang.Long"/>
 	<field name="ad_prgm_level_id" class="java.lang.Long"/>
+	<field name="ad_chrt_id" class="java.lang.Long"/>
+	<field name="ad_chrt_classification" class="java.lang.Integer"/>
+	<field name="ad_chrt_code" class="java.lang.String"/>
+	<field name="ad_chrt_description" class="java.lang.String"/>
+	<field name="ad_chrt_c_ts" class="java.sql.Timestamp"/>
+	<field name="ad_chrt_c_id" class="java.lang.Long"/>
+	<field name="ad_chrt_d_ts" class="java.sql.Timestamp"/>
+	<field name="ad_chrt_d_id" class="java.lang.Long"/>
+	<field name="ad_chrt_m_ts" class="java.sql.Timestamp"/>
+	<field name="ad_chrt_m_id" class="java.lang.Long"/>
+	<field name="ad_chrt_m_st" class="java.lang.Integer"/>
+	<field name="ad_chrt_curriculum_id" class="java.lang.Long"/>
+	<field name="ad_chrt_program_id" class="java.lang.Long"/>
+	<field name="ad_chrt_session_id" class="java.lang.Long"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
