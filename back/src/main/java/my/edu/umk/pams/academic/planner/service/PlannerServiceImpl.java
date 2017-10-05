@@ -581,7 +581,7 @@ public class PlannerServiceImpl implements PlannerService {
 		cohortDao.save(cohort, securityService.getCurrentUser());
 		sessionFactory.getCurrentSession().flush();
 
-		LOG.info("Start Broadcasting Cohort Payload");
+/*		LOG.info("Start Broadcasting Cohort Payload");
 
 		// Prepare Faculty Payload
 		FacultyCodePayload facultyPayload = new FacultyCodePayload();
@@ -612,7 +612,7 @@ public class PlannerServiceImpl implements PlannerService {
 		applicationContext.publishEvent(new CohortAddedEvent(payload));
 
 		LOG.info("Finish Broadcasting Cohort Payload");
-	}
+*/	}
 
 	@Override
 	public void updateCohort(AdCohort cohort) {
