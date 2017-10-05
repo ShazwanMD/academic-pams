@@ -54,7 +54,7 @@
       <p md-line>View examination result slip {{admission?.academicSession?.code}}</p> 
     </md-list-item></a>
     
-     <a href="http://localhost:8080/servlet/report?report=result_slip_v2.jrxml&report.pdf&identity_no={{admission?.student?.identityNo}}&session_code={{admission?.academicSession?.code}}" [target]="'_blank'"> 
+     <a href="http://localhost:8080/servlet/report?report=result_slip.jrxml&report.pdf&identity_no={{admission?.student?.identityNo}}&session_code={{admission?.academicSession?.code}}" [target]="'_blank'"> 
     <md-list-item >
       <md-icon md-list-avatar>description</md-icon>
      <h4 md-line>Transkrip Report {{admission?.student?.identityNo}}</h4>
