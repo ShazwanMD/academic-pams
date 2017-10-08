@@ -1413,6 +1413,7 @@
         STUDY_MODE_ID int8,
         BALANCE numeric(19, 2),
         OUTSTANDING boolean,
+        MIN_AMOUNT numeric(19, 2),
         primary key (ID)
     );
 

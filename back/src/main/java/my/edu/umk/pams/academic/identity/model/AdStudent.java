@@ -60,6 +60,12 @@ public interface AdStudent extends AdActor {
 
 	void setGuarantors(List<AdGuarantor> guarantors);
 	
+	BigDecimal getMinimalAmount();
+	
+	void setMinimalAmount(BigDecimal minimalAmount);
+	
+	
+	
 
 	
 }
