@@ -156,6 +156,12 @@ public class ProfileServiceImpl implements ProfileService {
 		sessionFactory.getCurrentSession().flush();
 	}
 
+	@Override
+	public void addMinAmount(AdStudent student) {
+		studentDao.update(student, securityService.getCurrentUser());
+		sessionFactory.getCurrentSession().flush();
+	}
+
 	/*
 	 * =========================================================================
 	 * ===================

@@ -894,6 +894,19 @@ public class ProfileController {
 		return new ResponseEntity<String>("Success", HttpStatus.OK);
 
 	}
+	
+	@RequestMapping(value = "/students/{matricNo}/minAmount", method = RequestMethod.PUT)
+	public ResponseEntity<String> addMinAmount(@PathVariable String matricNo, @RequestBody Student vo) {
+			
+		AdStudent student = profileService.findStudentById(vo.getId());
+		student.setMinimalAmount(vo.getMinAmount());
+		student.setStudentStatus(AdStudentStatus.ACTIVE);	
+		profileService.updateStudent(student);
+		
+
+		return new ResponseEntity<String>("Success", HttpStatus.OK);
+
+	}
 
 	@RequestMapping(value = "/students/{identityNo}/guardians", method = RequestMethod.GET)
 	public ResponseEntity<List<Guardian>> findGuardiansByStudent(@PathVariable String identityNo) {
