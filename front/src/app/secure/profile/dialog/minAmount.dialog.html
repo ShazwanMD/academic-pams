@@ -1,0 +1,16 @@
+<h2 md-dialog-title>Add Student Account Minimal Ammount</h2>
+<md-dialog-content>
+  <form [formGroup]="switchForm">
+    <div layout="row" class="pad-bottom pad-top" flex>
+      <span>Current Status : {{_student.studentStatus}}</span>
+    </div>
+    <div layout="row" class="inset" flex>
+      <md-input-container flex>
+        <input mdInput placeholder="MIN AMOUNT" formControlName="minAmount" flex/>
+      </md-input-container>
+    </div>
+  </form>
+</md-dialog-content>
+<md-dialog-actions align="end">
+  <button md-raised-button color="accent" (click)="switch(switchForm.value, switchForm.valid)"> Add</button>
+</md-dialog-actions>

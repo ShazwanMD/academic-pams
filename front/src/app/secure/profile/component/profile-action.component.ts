@@ -1,3 +1,4 @@
+import { MinAmountDialog } from './../dialog/minAmount.dialog';
 import {StudentStatusDialog} from '../dialog/student-status.dialog';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Observable} from 'rxjs';
@@ -22,6 +23,7 @@ export class ProfileActionComponent {
   private switcherDialogRef: MdDialogRef<StudyModeSwitcherDialog>;
   private transfererDialogRef: MdDialogRef<CohortTransfererDialog>;
   private studentStatusDialogRef: MdDialogRef<StudentStatusDialog>;
+  private minAmountDialogRef: MdDialogRef<MinAmountDialog>;
   @Input() student: Student;
 
   constructor(private router: Router,
@@ -81,6 +83,21 @@ export class ProfileActionComponent {
     this.studentStatusDialogRef = this.dialog.open(StudentStatusDialog, config);
     this.studentStatusDialogRef.componentInstance.student = this.student;
     this.studentStatusDialogRef.afterClosed().subscribe((res) => {
+      console.log('close dialog');
+      // load something here
+    });
+  }
+
+    addMinAmountDialog(student: Student): void {
+    let config = new MdDialogConfig();
+    config.viewContainerRef = this.vcf;
+    config.role = 'dialog';
+    config.width = '60%';
+    config.height = '80%';
+    config.position = {top: '0px'};
+    this.minAmountDialogRef = this.dialog.open(MinAmountDialog, config);
+    this.minAmountDialogRef.componentInstance.student = this.student;
+    this.minAmountDialogRef.afterClosed().subscribe((res) => {
       console.log('close dialog');
       // load something here
     });
