@@ -427,7 +427,7 @@ public class ProfileController {
 		return new ResponseEntity<AcademicSession>(
 				plannerTransformer.toAcademicSessionVo(plannerService.findAcademicSessionByCode(code)), HttpStatus.OK);
 	}
-	
+
 	@RequestMapping(value = "/studentLogins/admissions", method = RequestMethod.GET)
 	public ResponseEntity<List<Admission>> findAdmissionsByStudent() {
 		// Get Current User
@@ -442,17 +442,17 @@ public class ProfileController {
 
 		String identityNo = student.getIdentityNo();
 		AdStudent studentByIdentityNo = profileService.findStudentByMatricNo(identityNo);
-		LOG.debug("Student By IdentityNo:{}",identityNo);
-		
+		LOG.debug("Student By IdentityNo:{}", identityNo);
+
 		List<AdAdmission> admissions = termService.findAdmissions(studentByIdentityNo);
 		for (AdAdmission adAdmission : admissions) {
-			
-			LOG.debug("Admission:{}",adAdmission.getSession().getCode());
+
+			LOG.debug("Admission:{}", adAdmission.getSession().getCode());
 		}
-		
-		return new ResponseEntity<List<Admission>>(termTransformer.toAdmissionVos(admissions),HttpStatus.OK);
+
+		return new ResponseEntity<List<Admission>>(termTransformer.toAdmissionVos(admissions), HttpStatus.OK);
 	}
-	
+
 	@RequestMapping(value = "/studentLogins/admissions/{id}", method = RequestMethod.GET)
 	public ResponseEntity<Admission> findAdmissionsById(@PathVariable Long id) throws UnsupportedEncodingException {
 		// Get Current User
@@ -464,16 +464,15 @@ public class ProfileController {
 			student = (AdStudent) user.getActor();
 		if (null == student)
 			throw new IllegalArgumentException("Student does not exists");
-		
-		LOG.debug("Student ID:{}",student.getIdentityNo());
+
+		LOG.debug("Student ID:{}", student.getIdentityNo());
 
 		AdAdmission admission = termService.findAdmissionById(id);
-		LOG.debug("Admission:{}",admission.getId());
-		
+		LOG.debug("Admission:{}", admission.getId());
+
 		return new ResponseEntity<Admission>(termTransformer.toAdmissionVo(admission), HttpStatus.OK);
 	}
-	
-	
+
 	@RequestMapping(value = "/studentLogins/admissions/{id}/enrollments", method = RequestMethod.GET)
 	public ResponseEntity<List<Enrollment>> findEnrollmentsByAdmissionsID(@PathVariable Long id) {
 		// Get Current User
@@ -485,13 +484,13 @@ public class ProfileController {
 			student = (AdStudent) user.getActor();
 		if (null == student)
 			throw new IllegalArgumentException("Student does not exists");
-			
+
 		AdAdmission admission = termService.findAdmissionById(id);
-		LOG.debug("Admission:{}",admission.getId());
-		
+		LOG.debug("Admission:{}", admission.getId());
+
 		List<AdEnrollment> enrollments = termService.findEnrollments(admission);
 		for (AdEnrollment enrollment : enrollments) {
-			LOG.debug("Enrollment:{}",enrollment.getSection().getOffering().getCourse().getCode());
+			LOG.debug("Enrollment:{}", enrollment.getSection().getOffering().getCourse().getCode());
 		}
 
 		return new ResponseEntity<List<Enrollment>>(termTransformer.toEnrollmentVos(enrollments), HttpStatus.OK);
@@ -842,22 +841,21 @@ public class ProfileController {
 	@RequestMapping(value = "/students", method = RequestMethod.GET)
 	public ResponseEntity<List<Student>> findStudents() {
 
-		// AdUser user = securityService.getCurrentUser();
-		//
-		// AdStaff staff = null;
-		//
-		// if (user.getActor() instanceof AdStaff){
-		// staff = (AdStaff) user.getActor();
-		//
-		// }else if (null == staff) throw new IllegalArgumentException("Student
-		// does not exists");
-		//
-		// AdFaculty faculty =
-		// plannerService.findFacultyByCode(staff.getFaculty().getCode());
-		// LOG.debug("Faculty Code Not MGSEB:{}",faculty.getName());
-		// List<AdStudent> students =
-		// profileService.findStudentsByFaculty(faculty);
-		List<AdStudent> students = profileService.findStudents(0, Integer.MAX_VALUE);
+		AdUser user = securityService.getCurrentUser();
+
+		AdStaff staff = null;
+		List<AdStudent> students =  null;
+		if (user.getActor() instanceof AdStaff) {
+			staff = (AdStaff) user.getActor();
+			AdFaculty faculty = plannerService.findFacultyByCode(staff.getFaculty().getCode());
+			LOG.debug("Faculty Code Not MGSEB:{}", faculty.getName());
+			students = profileService.findStudentsByFaculty(faculty);
+
+		}else{
+		 students = profileService.findStudents(0, Integer.MAX_VALUE);
+			LOG.info("lepas if atas");
+		}
+		
 		return new ResponseEntity<List<Student>>(profileTransformer.toStudentVos(students), HttpStatus.OK);
 	}
 
@@ -930,16 +928,14 @@ public class ProfileController {
 				graduationTransformer.toGraduationApplicationVos(graduationService.findGraduationApplications(student)),
 				HttpStatus.OK);
 	}
-	
+
 	// find graduations by student
-		@RequestMapping(value = "/students/{identityNo}/graduations", method = RequestMethod.GET)
-		public ResponseEntity<List<Graduation>> findGraduationsByStudent(
-				@PathVariable String identityNo) {
-			AdStudent student = profileService.findStudentByMatricNo(identityNo);
-			return new ResponseEntity<List<Graduation>>(
-					graduationTransformer.toGraduationVos(graduationService.findGraduations(student)),
-					HttpStatus.OK);
-		}
+	@RequestMapping(value = "/students/{identityNo}/graduations", method = RequestMethod.GET)
+	public ResponseEntity<List<Graduation>> findGraduationsByStudent(@PathVariable String identityNo) {
+		AdStudent student = profileService.findStudentByMatricNo(identityNo);
+		return new ResponseEntity<List<Graduation>>(
+				graduationTransformer.toGraduationVos(graduationService.findGraduations(student)), HttpStatus.OK);
+	}
 
 	// find admissions by student
 	@RequestMapping(value = "/students/{identityNo}/admissions", method = RequestMethod.GET)
