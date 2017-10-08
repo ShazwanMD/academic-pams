@@ -23,6 +23,7 @@ import my.edu.umk.pams.connector.payload.AdmissionPayload;
 import my.edu.umk.pams.connector.payload.CandidatePayload;
 import my.edu.umk.pams.connector.payload.CohortCodePayload;
 import my.edu.umk.pams.connector.payload.FacultyCodePayload;
+import my.edu.umk.pams.connector.payload.GuardianPayload;
 import my.edu.umk.pams.connector.payload.ProgramCodePayload;
 
 @Configuration
@@ -52,6 +53,7 @@ public class JmsConfig {
             queueMap.put(FacultyCodePayload.class.getName(), new ActiveMQQueue("facultyCodeQueue2"));
             queueMap.put(AdmissionPayload.class.getName(), new ActiveMQQueue("AdmissionPayloadQueue"));
             queueMap.put(CohortCodePayload.class.getName(), new ActiveMQQueue("CohortCodePayloadQueue"));
+            queueMap.put(GuardianPayload.class.getName(), new ActiveMQQueue("GuardianPayloadQueue"));
         }
 
         @Override
