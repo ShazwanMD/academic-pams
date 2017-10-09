@@ -236,6 +236,11 @@ export class ProfileService {
             .flatMap((res: Response) => Observable.of(res.text()));
     }
 
+    addMinAmount(student: Student): Observable<String> {
+        return this._http.put(this.PROFILE_API + '/students/' + student.identityNo + '/minAmount', JSON.stringify(student))
+            .flatMap((res: Response) => Observable.of(res.text()));
+    }
+
     /*==================================================================================================*/
     //ADMISSION APPLICATION/ADMISSION/ADVISORY ADD/UPD/DEL
     /*==================================================================================================*/

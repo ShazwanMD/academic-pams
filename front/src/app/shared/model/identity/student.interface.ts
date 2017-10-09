@@ -8,4 +8,5 @@ export interface Student extends Actor {
   memo: string;
   balance: number;
   outstanding: boolean;
+  minAmount: number;
 }

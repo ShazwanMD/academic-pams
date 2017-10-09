@@ -19,6 +19,15 @@ public class Student extends Actor {
 	private boolean outstanding;
 	private BigDecimal balance;
 	private String memo;
+	private BigDecimal minAmount;
+
+	public BigDecimal getMinAmount() {
+		return minAmount;
+	}
+
+	public void setMinAmount(BigDecimal minAmount) {
+		this.minAmount = minAmount;
+	}
 
 	public boolean getOutstanding() {
 		return outstanding;

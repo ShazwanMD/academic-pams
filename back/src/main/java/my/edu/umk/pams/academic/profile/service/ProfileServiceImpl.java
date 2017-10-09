@@ -5,6 +5,7 @@ import my.edu.umk.pams.academic.common.model.AdStudyMode;
 import my.edu.umk.pams.academic.graduation.dao.AdGraduationApplicationDao;
 import my.edu.umk.pams.academic.graduation.model.AdGraduationApplication;
 import my.edu.umk.pams.academic.identity.dao.AdStudentDao;
+import my.edu.umk.pams.academic.identity.event.GuardianAddedEvent;
 import my.edu.umk.pams.academic.identity.event.StudentActivatedEvent;
 import my.edu.umk.pams.academic.identity.event.StudentBarredEvent;
 import my.edu.umk.pams.academic.identity.model.*;
@@ -19,6 +20,10 @@ import my.edu.umk.pams.academic.security.service.SecurityService;
 import my.edu.umk.pams.academic.system.service.SystemService;
 import my.edu.umk.pams.academic.term.model.AdAdmission;
 import my.edu.umk.pams.academic.term.model.AdAdmissionApplication;
+import my.edu.umk.pams.connector.payload.CandidatePayload;
+import my.edu.umk.pams.connector.payload.GuardianPayload;
+import my.edu.umk.pams.connector.payload.GuardianTypePayload;
+import my.edu.umk.pams.connector.payload.StudentPayload;
 
 import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
@@ -39,302 +44,367 @@ import java.util.Map;
 @Service("profileService")
 public class ProfileServiceImpl implements ProfileService {
 
-    private static final Logger LOG = LoggerFactory.getLogger(ProfileServiceImpl.class);
+	private static final Logger LOG = LoggerFactory.getLogger(ProfileServiceImpl.class);
 
-    private String academicSesion = "201720181";
+	private String academicSesion = "201720181";
 
-    @Autowired
-    private AdStudentDao studentDao;
-    
-    @Autowired
-    private AdGraduationApplicationDao graduationApplicationDao;
+	@Autowired
+	private AdStudentDao studentDao;
 
-    @Autowired
-    private SecurityService securityService;
+	@Autowired
+	private AdGraduationApplicationDao graduationApplicationDao;
 
-    @Autowired
-    private SystemService systemService;
+	@Autowired
+	private SecurityService securityService;
 
-    @Autowired
-    private IdentityService identityService;
+	@Autowired
+	private SystemService systemService;
 
-    @Autowired
-    private PlannerService plannerService;
+	@Autowired
+	private IdentityService identityService;
 
-    @Autowired
-    private SessionFactory sessionFactory;
+	@Autowired
+	private PlannerService plannerService;
 
-    @Autowired
-    private ApplicationContext applicationContext;
+	@Autowired
+	private SessionFactory sessionFactory;
 
-    @Autowired
-    private AdAcademicSessionDao academicSessionDao;
+	@Autowired
+	private ApplicationContext applicationContext;
 
-    //====================================================================================================
-    // STUDENT
-    //====================================================================================================
+	@Autowired
+	private AdAcademicSessionDao academicSessionDao;
 
-    @Override
-    public AdStudent findStudentById(Long id) {
-        return studentDao.findById(id);
-    }
+	// ====================================================================================================
+	// STUDENT
+	// ====================================================================================================
 
-    @Override
-    public AdGuarantor findGuarantorById(Long id) {
-        return studentDao.findGuarantorById(id);
-    }
+	@Override
+	public AdStudent findStudentById(Long id) {
+		return studentDao.findById(id);
+	}
 
-    @Override
-    public AdAddress findAddressById(Long id) {
-        return studentDao.findAddressById(id);
-    }
+	@Override
+	public AdGuarantor findGuarantorById(Long id) {
+		return studentDao.findGuarantorById(id);
+	}
 
-    @Override
-    public AdGuardian findGuardianById(Long id) {
-        return studentDao.findGuardianById(id);
-    }
+	@Override
+	public AdAddress findAddressById(Long id) {
+		return studentDao.findAddressById(id);
+	}
 
-    @Override
-    public AdContact findContactById(Long id) {
-        return studentDao.findContactById(id);
-    }
+	@Override
+	public AdGuardian findGuardianById(Long id) {
+		return studentDao.findGuardianById(id);
+	}
 
-    @Override
-    public AdStudent findStudentByMatricNo(String matricNo) {
-        return identityService.findStudentByMatricNo(matricNo);
-    }
+	@Override
+	public AdContact findContactById(Long id) {
+		return studentDao.findContactById(id);
+	}
 
-    @Override
-    public List<AdStudent> findStudents(Integer offset, Integer limit) {
-        return identityService.findStudents(offset, limit);
-    }
-    
-    //findGraduatedStudents
-    @Override
-    public List<AdStudent> findGraduatedStudents(Integer offset, Integer limit) {
-        return identityService.findGraduatedStudents(offset, limit);
-    }
+	@Override
+	public AdStudent findStudentByMatricNo(String matricNo) {
+		return identityService.findStudentByMatricNo(matricNo);
+	}
 
-    @Override
-    public List<AdStudent> findStudents(String filter, Integer offset, Integer limit) {
-        return identityService.findStudents(offset, limit);
-    }
+	@Override
+	public List<AdStudent> findStudents(Integer offset, Integer limit) {
+		return identityService.findStudents(offset, limit);
+	}
 
-    @Override
-    public List<AdAddress> findAddresses(AdStudent student) {
-        return studentDao.findAddresses(student);
-    }
+	// findGraduatedStudents
+	@Override
+	public List<AdStudent> findGraduatedStudents(Integer offset, Integer limit) {
+		return identityService.findGraduatedStudents(offset, limit);
+	}
 
-    @Override
-    public List<AdGuarantor> findGuarantors(AdStudent student) {
-        return studentDao.findGuarantors(student);
-    }
+	@Override
+	public List<AdStudent> findStudents(String filter, Integer offset, Integer limit) {
+		return identityService.findStudents(offset, limit);
+	}
 
-    @Override
-    public List<AdGuardian> findGuardians(AdStudent student) {
-        return studentDao.findGuardians(student);
-    }
+	@Override
+	public List<AdAddress> findAddresses(AdStudent student) {
+		return studentDao.findAddresses(student);
+	}
 
-    @Override
-    public List<AdContact> findContacts(AdStudent student) {
-        return studentDao.findContacts(student);
-    }
-    
+	@Override
+	public List<AdGuarantor> findGuarantors(AdStudent student) {
+		return studentDao.findGuarantors(student);
+	}
 
-    @Override
-    public List<AdStudent> findStudentsByFaculty(AdFaculty faculty) {
-        return studentDao.findStudentsByFaculty(faculty);
-    }
+	@Override
+	public List<AdGuardian> findGuardians(AdStudent student) {
+		return studentDao.findGuardians(student);
+	}
 
-    @Override
-    public void updateStudent(AdStudent student) {
-        studentDao.update(student, securityService.getCurrentUser());
-        sessionFactory.getCurrentSession().flush();
-    }
+	@Override
+	public List<AdContact> findContacts(AdStudent student) {
+		return studentDao.findContacts(student);
+	}
 
+	@Override
+	public List<AdStudent> findStudentsByFaculty(AdFaculty faculty) {
+		return studentDao.findStudentsByFaculty(faculty);
+	}
 
-    /*============================================================================================*/
-    /*ADDRESS*/
-    /*============================================================================================*/
-    @Override
-    public void addAddress(AdStudent student, AdAddress address) {
-        studentDao.addAddress(student, address, securityService.getCurrentUser());
-        sessionFactory.getCurrentSession().flush();
-    }
+	@Override
+	public void updateStudent(AdStudent student) {
+		studentDao.update(student, securityService.getCurrentUser());
+		sessionFactory.getCurrentSession().flush();
+	}
 
-    @Override
-    public void updateAddress(AdStudent student, AdAddress address) {
-        studentDao.updateAddress(student, address, securityService.getCurrentUser());
-        sessionFactory.getCurrentSession().flush();
-    }
+	@Override
+	public void addMinAmount(AdStudent student) {
+		studentDao.update(student, securityService.getCurrentUser());
+		sessionFactory.getCurrentSession().flush();
+	}
 
-    @Override
-    public void deleteAddress(AdStudent student, AdAddress address) {
-        studentDao.deleteAddress(student, address, securityService.getCurrentUser());
-        sessionFactory.getCurrentSession().flush();
-    }
+	/*
+	 * =========================================================================
+	 * ===================
+	 */
+	/* ADDRESS */
+	/*
+	 * =========================================================================
+	 * ===================
+	 */
+	@Override
+	public void addAddress(AdStudent student, AdAddress address) {
+		studentDao.addAddress(student, address, securityService.getCurrentUser());
+		sessionFactory.getCurrentSession().flush();
+	}
 
-    /*============================================================================================*/
-    /*GUARANTOR*/
-    /*============================================================================================*/
-    @Override
-    public void addGuarantor(AdStudent student, AdGuarantor guarantor) {
-        studentDao.addGuarantor(student, guarantor, securityService.getCurrentUser());
-        sessionFactory.getCurrentSession().flush();
-    }
+	@Override
+	public void updateAddress(AdStudent student, AdAddress address) {
+		studentDao.updateAddress(student, address, securityService.getCurrentUser());
+		sessionFactory.getCurrentSession().flush();
+	}
 
+	@Override
+	public void deleteAddress(AdStudent student, AdAddress address) {
+		studentDao.deleteAddress(student, address, securityService.getCurrentUser());
+		sessionFactory.getCurrentSession().flush();
+	}
 
-    @Override
-    public void updateGuarantor(AdStudent student, AdGuarantor guarantor) {
-        studentDao.updateGuarantor(student, guarantor, securityService.getCurrentUser());
-        sessionFactory.getCurrentSession().flush();
-    }
+	/*
+	 * =========================================================================
+	 * ===================
+	 */
+	/* GUARANTOR */
+	/*
+	 * =========================================================================
+	 * ===================
+	 */
+	@Override
+	public void addGuarantor(AdStudent student, AdGuarantor guarantor) {
+		studentDao.addGuarantor(student, guarantor, securityService.getCurrentUser());
+		sessionFactory.getCurrentSession().flush();
+	}
 
-    @Override
-    public void deleteGuarantor(AdStudent student, AdGuarantor guarantor) {
-        studentDao.deleteGuarantor(student, guarantor, securityService.getCurrentUser());
-        sessionFactory.getCurrentSession().flush();
-    }
+	@Override
+	public void updateGuarantor(AdStudent student, AdGuarantor guarantor) {
+		studentDao.updateGuarantor(student, guarantor, securityService.getCurrentUser());
+		sessionFactory.getCurrentSession().flush();
+	}
 
-    /*============================================================================================*/
-    /*GUARDIAN*/
-    /*============================================================================================*/
-    @Override
-    public void addGuardian(AdStudent student, AdGuardian guardian) {
-        studentDao.addGuardian(student, guardian, securityService.getCurrentUser());
-        sessionFactory.getCurrentSession().flush();
-    }
+	@Override
+	public void deleteGuarantor(AdStudent student, AdGuarantor guarantor) {
+		studentDao.deleteGuarantor(student, guarantor, securityService.getCurrentUser());
+		sessionFactory.getCurrentSession().flush();
+	}
 
-    @Override
-    public void updateGuardian(AdStudent student, AdGuardian guardian) {
-        studentDao.updateGuardian(student, guardian, securityService.getCurrentUser());
-        sessionFactory.getCurrentSession().flush();
-    }
+	/*
+	 * =========================================================================
+	 * ===================
+	 */
+	/* GUARDIAN */
+	/*
+	 * =========================================================================
+	 * ===================
+	 */
+	@Override
+	public void addGuardian(AdStudent student, AdGuardian guardian) {
+		studentDao.addGuardian(student, guardian, securityService.getCurrentUser());
+		sessionFactory.getCurrentSession().flush();
 
-    @Override
-    public void deleteGuardian(AdStudent student, AdGuardian guardian) {
-        studentDao.deleteGuardian(student, guardian, securityService.getCurrentUser());
-        sessionFactory.getCurrentSession().flush();
-    }
+		LOG.info("Start Broadcast Guardian Payload");
 
-    /*============================================================================================*/
-    /*CONTACT*/
-    /*============================================================================================*/
-    @Override
-    public void addContact(AdStudent student, AdContact contact) {
-        studentDao.addContact(student, contact, securityService.getCurrentUser());
-        sessionFactory.getCurrentSession().flush();
-    }
+		StudentPayload studentId = new StudentPayload();
+		studentId.setMatricNo(student.getIdentityNo());
+		studentId.setName(student.getName());
 
-    @Override
-    public void updateContact(AdStudent student, AdContact contact) {
-        studentDao.updateContact(student, contact, securityService.getCurrentUser());
-        sessionFactory.getCurrentSession().flush();
-    }
+		GuardianPayload payload = new GuardianPayload();
+		payload.setIdentityNo(guardian.getIdentityNo());
+		payload.setName(guardian.getName());
+		payload.setPhone(guardian.getPhone());
+		payload.setStudentPayload(studentId);
+		payload.setType(GuardianTypePayload.get(guardian.getType().ordinal()));
 
-    @Override
-    public void deleteContact(AdStudent student, AdContact contact) {
-        studentDao.deleteContact(student, contact, securityService.getCurrentUser());
-        sessionFactory.getCurrentSession().flush();
-    }
+		applicationContext.publishEvent(new GuardianAddedEvent(payload));
 
-    /*============================================================================================*/
-    /*BUSSINESS - ACTIVATE/BAR/ PROCESS*/
-    /*============================================================================================*/
+		LOG.info("Finish Broadcast Guardian Payload");
+	}
 
-    @Override
-    public void activateStudent(AdStudent student) {
-        student.setStudentStatus(AdStudentStatus.ACTIVE);
-        updateStudent(student);
+	@Override
+	public void updateGuardian(AdStudent student, AdGuardian guardian) {
+		studentDao.updateGuardian(student, guardian, securityService.getCurrentUser());
+		sessionFactory.getCurrentSession().flush();
+	}
 
-        // trigger event
-        applicationContext.publishEvent(new StudentActivatedEvent(student));
-    }
+	@Override
+	public void deleteGuardian(AdStudent student, AdGuardian guardian) {
+		studentDao.deleteGuardian(student, guardian, securityService.getCurrentUser());
+		sessionFactory.getCurrentSession().flush();
+	}
 
-    @Override
-    public void deactivateStudent(AdStudent student) {
-        student.setStudentStatus(AdStudentStatus.INACTIVE);
-        updateStudent(student);
+	/*
+	 * =========================================================================
+	 * ===================
+	 */
+	/* CONTACT */
+	/*
+	 * =========================================================================
+	 * ===================
+	 */
+	@Override
+	public void addContact(AdStudent student, AdContact contact) {
+		studentDao.addContact(student, contact, securityService.getCurrentUser());
+		sessionFactory.getCurrentSession().flush();
+	}
 
-        // trigger event
-        applicationContext.publishEvent(new StudentActivatedEvent(student));
-    }
+	@Override
+	public void updateContact(AdStudent student, AdContact contact) {
+		studentDao.updateContact(student, contact, securityService.getCurrentUser());
+		sessionFactory.getCurrentSession().flush();
+	}
 
-    @Override
-    public void barStudent(AdStudent student) {
-        student.setStudentStatus(AdStudentStatus.BARRED);
-        updateStudent(student);
+	@Override
+	public void deleteContact(AdStudent student, AdContact contact) {
+		studentDao.deleteContact(student, contact, securityService.getCurrentUser());
+		sessionFactory.getCurrentSession().flush();
+	}
 
-        // trigger event
-        applicationContext.publishEvent(new StudentBarredEvent(student));
-    }
+	/*
+	 * =========================================================================
+	 * ===================
+	 */
+	/* BUSSINESS - ACTIVATE/BAR/ PROCESS */
+	/*
+	 * =========================================================================
+	 * ===================
+	 */
 
-    /*============================================================================================*/
-    /*BUSSINESS - TRANSFER FACULTY*/
-    /*============================================================================================*/
+	@Override
+	public void activateStudent(AdStudent student) {
+		student.setStudentStatus(AdStudentStatus.ACTIVE);
+		updateStudent(student);
 
-    @Override
-    public String transferFaculty(AdStudent student, AdAcademicSession academicSession, AdFaculty fromFaculty, AdFaculty toFaculty) {
-        AdProgramLevel programLevel = student.getCohort().getProgram().getLevel();
-        AdStudyMode studyMode = student.getStudyMode();
+		// trigger event
+		applicationContext.publishEvent(new StudentActivatedEvent(student));
+	}
 
-        Map<String, Object> map = new HashMap<String, Object>();
-        map.put("facultyCode", toFaculty);
-        map.put("academicSession", academicSession);
-        map.put("programLevel", programLevel);
-        map.put("studyMode", studyMode);
+	@Override
+	public void deactivateStudent(AdStudent student) {
+		student.setStudentStatus(AdStudentStatus.INACTIVE);
+		updateStudent(student);
 
-        String generatedMatricNo = systemService.generateFormattedReferenceNo(AcademicConstants.STUDENT_MATRIC_NO, map);
-        student.setMatricNo(generatedMatricNo);
-        updateStudent(student);
-        LOG.debug("Student New MatricNo:{}", student.getMatricNo());
+		// trigger event
+		applicationContext.publishEvent(new StudentActivatedEvent(student));
+	}
 
-        return generatedMatricNo;
-    }
+	@Override
+	public void barStudent(AdStudent student) {
+		student.setStudentStatus(AdStudentStatus.BARRED);
+		updateStudent(student);
 
-    @Override
-    public String transferCohort(AdStudent student, AdAcademicSession academicSession, AdCohort fromCohort, AdCohort toCohort) {
-        AdProgramLevel programLevel = student.getCohort().getProgram().getLevel();
-        AdFaculty faculty = student.getCohort().getProgram().getFaculty();
-        AdStudyMode studyMode = student.getStudyMode();
+		// trigger event
+		applicationContext.publishEvent(new StudentBarredEvent(student));
+	}
 
-        Map<String, Object> map = new HashMap<String, Object>();
-        map.put("facultyCode", faculty);
-        map.put("academicSession", academicSession);
-        map.put("programLevel", programLevel);
-        map.put("studyMode", studyMode);
+	/*
+	 * =========================================================================
+	 * ===================
+	 */
+	/* BUSSINESS - TRANSFER FACULTY */
+	/*
+	 * =========================================================================
+	 * ===================
+	 */
 
-        String generatedMatricNo = systemService.generateFormattedReferenceNo(AcademicConstants.STUDENT_MATRIC_NO, map);
-        student.setMatricNo(generatedMatricNo);
-        student.setCohort(toCohort);
-        updateStudent(student);
-        LOG.debug("Student New MatricNo:{}", student.getMatricNo());
-        LOG.debug("Student New Cohort:{}", student.getCohort().getCode());
+	@Override
+	public String transferFaculty(AdStudent student, AdAcademicSession academicSession, AdFaculty fromFaculty,
+			AdFaculty toFaculty) {
+		AdProgramLevel programLevel = student.getCohort().getProgram().getLevel();
+		AdStudyMode studyMode = student.getStudyMode();
 
-        return generatedMatricNo;
-    }
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("facultyCode", toFaculty);
+		map.put("academicSession", academicSession);
+		map.put("programLevel", programLevel);
+		map.put("studyMode", studyMode);
 
-    /*============================================================================================*/
-    /*BUSSINESS - SWITCH STUDYMODE*/
-    /*============================================================================================*/
-    @Override
-    public String switchStudyMode(AdStudent student, AdAcademicSession academicSession, AdStudyMode fromMode, AdStudyMode toMode) {
-        AdFaculty facultyCode = student.getCohort().getProgram().getFaculty();
-        AdProgramLevel programLevel = student.getCohort().getProgram().getLevel();
+		String generatedMatricNo = systemService.generateFormattedReferenceNo(AcademicConstants.STUDENT_MATRIC_NO, map);
+		student.setMatricNo(generatedMatricNo);
+		updateStudent(student);
+		LOG.debug("Student New MatricNo:{}", student.getMatricNo());
 
-        Map<String, Object> map = new HashMap<String, Object>();
-        map.put("facultyCode", facultyCode);
-        map.put("academicSession", academicSession);
-        map.put("programLevel", programLevel);
-        map.put("studyMode", toMode);
+		return generatedMatricNo;
+	}
 
-        String generatedMatricNo = systemService.generateFormattedReferenceNo(AcademicConstants.STUDENT_MATRIC_NO, map);
-        student.setMatricNo(generatedMatricNo);
-        student.setStudyMode(toMode);
-        updateStudent(student);
-        LOG.debug("Student New MatricNo :{}", student.getMatricNo());
-        return generatedMatricNo;
-    }
+	@Override
+	public String transferCohort(AdStudent student, AdAcademicSession academicSession, AdCohort fromCohort,
+			AdCohort toCohort) {
+		AdProgramLevel programLevel = student.getCohort().getProgram().getLevel();
+		AdFaculty faculty = student.getCohort().getProgram().getFaculty();
+		AdStudyMode studyMode = student.getStudyMode();
+
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("facultyCode", faculty);
+		map.put("academicSession", academicSession);
+		map.put("programLevel", programLevel);
+		map.put("studyMode", studyMode);
+
+		String generatedMatricNo = systemService.generateFormattedReferenceNo(AcademicConstants.STUDENT_MATRIC_NO, map);
+		student.setMatricNo(generatedMatricNo);
+		student.setCohort(toCohort);
+		updateStudent(student);
+		LOG.debug("Student New MatricNo:{}", student.getMatricNo());
+		LOG.debug("Student New Cohort:{}", student.getCohort().getCode());
+
+		return generatedMatricNo;
+	}
+
+	/*
+	 * =========================================================================
+	 * ===================
+	 */
+	/* BUSSINESS - SWITCH STUDYMODE */
+	/*
+	 * =========================================================================
+	 * ===================
+	 */
+	@Override
+	public String switchStudyMode(AdStudent student, AdAcademicSession academicSession, AdStudyMode fromMode,
+			AdStudyMode toMode) {
+		AdFaculty facultyCode = student.getCohort().getProgram().getFaculty();
+		AdProgramLevel programLevel = student.getCohort().getProgram().getLevel();
+
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("facultyCode", facultyCode);
+		map.put("academicSession", academicSession);
+		map.put("programLevel", programLevel);
+		map.put("studyMode", toMode);
+
+		String generatedMatricNo = systemService.generateFormattedReferenceNo(AcademicConstants.STUDENT_MATRIC_NO, map);
+		student.setMatricNo(generatedMatricNo);
+		student.setStudyMode(toMode);
+		updateStudent(student);
+		LOG.debug("Student New MatricNo :{}", student.getMatricNo());
+		return generatedMatricNo;
+	}
 
 	@Override
 	public List<AdAdmissionApplication> findAdmissionApplications(AdStudent student) {
@@ -343,19 +413,24 @@ public class ProfileServiceImpl implements ProfileService {
 	}
 
 	@Override
-	public AdAdmission findAdmissionByAcademicSessionAndStudent(AdAcademicSession academicSession,AdStudent student) {
-		
+	public AdAdmission findAdmissionByAcademicSessionAndStudent(AdAcademicSession academicSession, AdStudent student) {
+
 		return studentDao.findAdmissionByAcademicSessionAndStudent(academicSession, student);
 	}
-	
-	 /*============================================================================================*/
-    /*GRADUATION APPLICATION*/
-    /*============================================================================================*/
+
+	/*
+	 * =========================================================================
+	 * ===================
+	 */
+	/* GRADUATION APPLICATION */
+	/*
+	 * =========================================================================
+	 * ===================
+	 */
 
 	@Override
 	public List<AdGraduationApplication> findGraduationApplications(AdStudent student) {
-		 return graduationApplicationDao.findGraduationApplications(student);
+		return graduationApplicationDao.findGraduationApplications(student);
 	}
-	
-	
+
 }

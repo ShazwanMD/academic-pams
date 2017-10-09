@@ -24,6 +24,14 @@
       <h4 md-line >Course enrollment</h4>
       <p md-line>Please create new course enrollment </p>
     </md-list-item>
+    
+      <a href="http://localhost:8080/servlet/report?report=course_registration.jrxml&report.pdf&identity_no={{admission?.student?.identityNo}}&session_code={{admission?.academicSession?.code}}" [target]="'_blank'"> 
+    <md-list-item >
+      <md-icon md-list-avatar>description</md-icon>
+     <h4 md-line>Course Registration Slip </h4>
+      <p md-line>View course registration slip </p> 
+    </md-list-item></a>
+         
 
     <md-divider></md-divider>
   </md-nav-list>
@@ -41,6 +49,7 @@
             <h4 md-line>My Profile</h4>
             <p md-line>Go to my profile </p>
           </md-list-item>
-         
+          
+          
         </md-nav-list>
       </md-card>

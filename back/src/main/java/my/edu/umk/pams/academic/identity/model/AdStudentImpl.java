@@ -52,6 +52,9 @@ public class AdStudentImpl extends AdActorImpl implements AdStudent {
 	@Column(name = "NO_ID")
 	private String NoID;
 	
+	@Column(name = "MIN_AMOUNT")
+	private BigDecimal minimalAmount = BigDecimal.ZERO;
+	
 	public AdStudentImpl() {
 		super();
 		setActorType(AdActorType.STUDENT);
@@ -176,6 +179,17 @@ public class AdStudentImpl extends AdActorImpl implements AdStudent {
 	@Override
 	public void setNoID(String NoID) {
 		this.NoID = NoID;
+	}
+
+	@Override
+	public BigDecimal getMinimalAmount() {
+		return minimalAmount;
+	}
+
+	@Override
+	public void setMinimalAmount(BigDecimal minimalAmount) {
+		this.minimalAmount = minimalAmount;
+		
 	}
 
 }

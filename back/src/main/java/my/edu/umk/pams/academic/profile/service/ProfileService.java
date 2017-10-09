@@ -47,6 +47,7 @@ public interface ProfileService {
 
 	/*Student Information*/
 	void updateStudent(AdStudent student);
+	void addMinAmount(AdStudent student);
 
 	/*Address*/
 	void addAddress(AdStudent student, AdAddress address);
@@ -84,4 +85,6 @@ public interface ProfileService {
     String switchStudyMode(AdStudent student, AdAcademicSession academicSession, AdStudyMode fromMode, AdStudyMode toMode);
 
 	void barStudent(AdStudent student);
+	
+	
 }
