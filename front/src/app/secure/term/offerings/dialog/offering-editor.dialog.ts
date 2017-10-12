@@ -12,6 +12,7 @@ import { Observable } from 'rxjs/Observable';
 import { PlannerModuleState } from "../../../planner/index";
 import { CourseActions } from "../../../planner/courses/course.action";
 import { PlannerService } from "../../../../../services/planner.service";
+import { AcademicSession } from "../../../../shared/model/planner/academic-session.interface";
 
 @Component( {
     selector: 'pams-offering-editor',
@@ -31,6 +32,7 @@ export class OfferingEditorDialog implements OnInit {
     private createForm: FormGroup;
     private _program: Program;
     private _course: Course;
+    private _academicSession: AcademicSession;
     private _offering: Offering;
     private str: string;
 
@@ -94,8 +96,9 @@ export class OfferingEditorDialog implements OnInit {
         // workaround
         this._program = offering.program;
         this._course = offering.course;
+        this._academicSession = offering.academicSession;
 
-        offering.canonicalCode = this._program.code + '-' + this._course.code;
+        offering.canonicalCode = this._program.code + '-' + this._course.code + '-' + this._academicSession.code ;
         offering.code = this._course.code;
         offering.titleMs = this._course.titleMs;
         offering.titleEn = this._course.titleEn;

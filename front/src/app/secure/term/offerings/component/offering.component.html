@@ -9,6 +9,9 @@
           <div layout="row" class="pad-bottom">
             <span flex="15">Code </span> <span>{{offering?.course?.code}}</span>
           </div>
+           <div layout="row" class="pad-bottom">
+            <span flex="15">Code </span> <span>{{offering?.canonicalCode}}</span>
+          </div>
           <div layout="row" class="pad-bottom">
             <span flex="15">Capacity</span> <span>{{offering?.capacity}}</span>
           </div>
@@ -33,6 +36,21 @@
           </div>
         </div>
       </md-tab>
+      
+       <md-tab label="Academic Session Information">
+        <div layout="column" class="inset">
+          <div layout="row" class="pad-bottom">
+            <span flex="15">Code</span> <span>{{offering?.academicSession?.code}}</span>
+          </div>
+          <div layout="row" class="pad-bottom">
+            <span flex="15">Description</span> <span>{{offering?.academicSession?.description}}</span>
+          </div>
+          <div layout="row" class="pad-bottom">
+            <span flex="15">Year</span> <span>{{offering?.academicSession?.year?.year}}</span>
+          </div>
+        </div>
+      </md-tab>
+      
     </md-tab-group>
   </md-card-content>
 </md-card>
