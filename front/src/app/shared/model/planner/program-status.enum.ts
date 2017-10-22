@@ -1,5 +1,5 @@
 export enum ProgramStatus {
   NEW, // 0
-  ACTIVATED,// 1
-  INACTIVATED,// 2
+  ACTIVE,// 1
+  INACTIVE// 2
 }

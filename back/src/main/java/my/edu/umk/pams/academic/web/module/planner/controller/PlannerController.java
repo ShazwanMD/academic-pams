@@ -464,17 +464,19 @@ public class PlannerController {
 		dummyLogin();
 		LOG.debug("activate program");
 		AdProgram program = plannerService.findProgramByCode(code);
-		program.setStatus(AdProgramStatus.ACTIVATED);
+		program.setStatus(AdProgramStatus.ACTIVE);
 		plannerService.updateProgram(program);
 		return new ResponseEntity<String>(program.getCode(), HttpStatus.OK);
 	}
+	
+	
 
 	@RequestMapping(value = "/programs/{code}/deactivate", method = RequestMethod.GET)
 	public ResponseEntity<String> deactivateProgram(@PathVariable String code) {
 		dummyLogin();
 		LOG.debug("deactivate program");
 		AdProgram program = plannerService.findProgramByCode(code);
-		program.setStatus(AdProgramStatus.INACTIVATED);
+		program.setStatus(AdProgramStatus.INACTIVE);
 		plannerService.updateProgram(program);
 		return new ResponseEntity<String>(program.getCode(), HttpStatus.OK);
 	}

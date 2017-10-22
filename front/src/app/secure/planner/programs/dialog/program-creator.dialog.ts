@@ -42,7 +42,7 @@ export class ProgramCreatorDialog implements OnInit {
       code: ['', Validators.required],
       titleMs: ['', Validators.required],
       titleEn: ['', Validators.required],
-      status: [ProgramStatus.INACTIVATED, Validators.required],
+      status: [ProgramStatus.INACTIVE, Validators.required],
       faculty: ['', Validators.required],
       level: ['', Validators.required],
       //status: ProgramStatus.INACTIVATED,
