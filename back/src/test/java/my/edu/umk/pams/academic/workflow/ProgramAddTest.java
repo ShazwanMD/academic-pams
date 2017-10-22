@@ -88,7 +88,7 @@ public class ProgramAddTest {
         AdProgram program = new AdProgramImpl();
         program.setCode("CCI-" + UUID.randomUUID().toString().substring(0,4));
         program.setLevel(plannerService.findProgramLevelByCode("MASTER"));
-        program.setStatus(AdProgramStatus.ACTIVATED);
+        program.setStatus(AdProgramStatus.ACTIVE);
         program.setTitleEn("TEST");
         program.setTitleMs("TEST");
         plannerService.addProgram(faculty, program);
