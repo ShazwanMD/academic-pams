@@ -49,6 +49,7 @@ export class CourseCreatorDialog implements OnInit {
             code: ['', Validators.required],
             titleMs: ['', Validators.required],
             titleEn: ['', Validators.required],
+            credit:[0,Validators.required],
             classification: CourseClassification.LEVEL_100,
             status: ['', Validators.required],
             faculty: ['', Validators.required],

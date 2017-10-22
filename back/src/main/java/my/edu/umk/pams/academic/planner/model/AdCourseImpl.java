@@ -34,7 +34,7 @@ public class AdCourseImpl implements AdCourse {
     private AdCourseStatus status = AdCourseStatus.NEW;    
 
     @Column(name = "CREDIT", nullable = false)
-    private Integer credit = 0;
+    private Integer credit;
 
     @Column(name = "CLASSIFICATION", nullable = false)
     private AdAcademicClassification classification;

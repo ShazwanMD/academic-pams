@@ -27,7 +27,14 @@
            *ngIf="createForm.get('titleEn').invalid && createForm.get('titleEn').touched">
         titleEn should be at least {{minLength}} characters!
       </div>
-  
+
+
+      <md-input-container fxFlex="calc(100%-25px)" mdTooltip="Please insert credit">
+          <input mdInput placeholder="Credit" formControlName="credit" type="number"/>
+        </md-input-container>
+        <div class="tc-red-600" *ngIf="createForm.get('credit').invalid && createForm.get('credit').touched">
+          Credit should be in number type
+        </div>
 
       <pams-course-status-select [placeholder]="'Status'" required
                                  md-maxlength="10" [innerFormControl]="createForm.controls.status"
