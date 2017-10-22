@@ -559,6 +559,7 @@ public class PlannerController {
 			course.setTitleEn(vo.getTitleEn());
 			course.setStatus(AdCourseStatus.get(vo.getStatus().ordinal()));
 			course.setFaculty(plannerService.findFacultyById(vo.getFaculty().getId()));
+			course.setCredit(vo.getCredit());
 			course.setClassification(AdAcademicClassification.get(vo.getClassification().ordinal()));
 			plannerService.saveCourse(course);
 
