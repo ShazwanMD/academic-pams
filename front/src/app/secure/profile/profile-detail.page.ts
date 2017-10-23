@@ -25,7 +25,7 @@ export class ProfileDetailPage implements OnInit {
   private GUARANTORS: string[] = 'profileModuleState.guarantors'.split('.');
   private GUARDIANS: string[] = 'profileModuleState.guardians'.split('.');
   private CONTACTS: string[] = 'profileModuleState.contacts'.split('.');
-  private ENROLLMENTS: string[] = 'profileModuleState.enrollments'.split('.');
+  private ENROLLMENTS: string[] = 'studentProfileModuleState.enrollments'.split('.');
 
   private student$: Observable<Student>;
   private addressess$: Observable<Student>;
