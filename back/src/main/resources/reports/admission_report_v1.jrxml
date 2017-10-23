@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="jasper_report_template" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="03800e79-2e08-4188-b0d9-084bf32d8f7c">
 	<property name="ireport.zoom" value="2.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="438"/>
+	<property name="ireport.y" value="0"/>
 	<subDataset name="sponsorship" uuid="6b82b54c-a5ad-49d3-98c5-d3f208158bf8">
 		<parameter name="student_id" class="java.lang.Long"/>
 		<queryString>
@@ -476,10 +476,6 @@ $F{ad_acdm_sesn_code}.equals( $P{session_code} )]]></filterExpression>
 				</textElement>
 				<text><![CDATA[16100 KOTA BHARU,KELANTAN,DARULNAIM]]></text>
 			</staticText>
-			<image>
-				<reportElement x="55" y="10" width="74" height="77" uuid="6f1dd4aa-288c-4122-9f10-690f8238a73d"/>
-				<imageExpression><![CDATA["C:\\Users\\Nurain\\git\\academic\\back\\src\\main\\resources\\reports\\img\\logo_universiti_malaysia_kelantan.png"]]></imageExpression>
-			</image>
 			<staticText>
 				<reportElement x="104" y="67" width="258" height="20" uuid="4677f856-ba90-4c7b-890e-41a26c36f360"/>
 				<textElement>
@@ -714,8 +710,8 @@ $F{ad_acdm_sesn_code}.equals( $P{session_code} )]]></filterExpression>
 			</staticText>
 			<componentElement>
 				<reportElement x="107" y="185" width="400" height="20" uuid="5f8fb6a1-eccf-423d-8c00-d6a61403e460"/>
-				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
-					<datasetRun subDataset="sponsorship" uuid="4bd1c1da-adbd-491a-9554-a4c4df87e09b">
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+					<datasetRun subDataset="sponsorship" uuid="a694154c-5a36-455c-8a0e-58b6098e1474">
 						<datasetParameter name="student_id">
 							<datasetParameterExpression><![CDATA[$F{ad_actr_id}]]></datasetParameterExpression>
 						</datasetParameter>

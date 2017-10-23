@@ -70,7 +70,7 @@ FROM
      INNER JOIN "public"."ad_acdm_sesn" ad_acdm_sesn ON ad_chrt."session_id" = ad_acdm_sesn."id"
      INNER JOIN "public"."ad_sngl_sbjt" ad_sngl_sbjt ON ad_sbjt."id" = ad_sngl_sbjt."id"
      INNER JOIN "public"."ad_crse" ad_crse ON ad_sngl_sbjt."course_id" = ad_crse."id"
-     INNER JOIN "public"."ad_fcty" ad_fcty ON ad_prgm."faculty_id" = ad_fcty."id"]]>
+     INNER JOIN "public"."ad_fcty" ad_fcty ON ad_crse."faculty_id" = ad_fcty."id"]]>
 	</queryString>
 	<field name="ad_crlm_id" class="java.lang.Long"/>
 	<field name="ad_crlm_code" class="java.lang.String"/>
@@ -169,10 +169,6 @@ FROM
 				</textElement>
 				<text><![CDATA[UNIVERSITI MALAYSIA KELANTAN]]></text>
 			</staticText>
-			<image>
-				<reportElement x="10" y="10" width="74" height="77" uuid="c87b3229-fcdc-4252-9894-dd4dbf615933"/>
-				<imageExpression><![CDATA["C:\\Users\\PAMS05\\git\\academic\\back\\src\\main\\resources\\reports\\img\\logo_universiti_malaysia_kelantan.png"]]></imageExpression>
-			</image>
 			<staticText>
 				<reportElement x="60" y="24" width="238" height="20" uuid="11099d13-a329-4fcc-951b-37f5c49f50e5"/>
 				<textElement>
@@ -289,13 +285,6 @@ FROM
 				<text><![CDATA[  CORE COURSES]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="397" y="61" width="157" height="20" uuid="de9f50fb-b849-4440-972c-29da3a60b3c2"/>
-				<textElement>
-					<font fontName="Arial" size="9"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{ad_acdm_sesn_description}]]></textFieldExpression>
-			</textField>
-			<textField>
 				<reportElement x="397" y="41" width="157" height="20" uuid="2cb463f9-34cc-45ed-9593-39e323022f87"/>
 				<textElement>
 					<font fontName="Arial" size="9"/>
@@ -308,6 +297,10 @@ FROM
 					<font fontName="Arial" size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{ad_prgm_code}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="397" y="61" width="100" height="20" uuid="027d1ec1-d712-4f69-b6db-e96c3eab84b0"/>
+				<textFieldExpression><![CDATA[$F{ad_acdm_sesn_code}]]></textFieldExpression>
 			</textField>
 		</band>
 	</pageHeader>
@@ -356,7 +349,7 @@ FROM
 				<text><![CDATA[CREDIT]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="28" y="0" width="74" height="16" backcolor="#CCCCCC" uuid="d8f7811c-aed1-4e38-82b5-bf144fa00efb"/>
+				<reportElement mode="Opaque" x="29" y="0" width="73" height="16" backcolor="#CCCCCC" uuid="d8f7811c-aed1-4e38-82b5-bf144fa00efb"/>
 				<box>
 					<pen lineWidth="0.0"/>
 					<topPen lineWidth="1.0"/>
@@ -389,26 +382,61 @@ FROM
 		<band height="20" splitType="Stretch">
 			<textField>
 				<reportElement x="0" y="0" width="29" height="20" uuid="a5e7e5ee-bcd8-4954-9747-e4f42f74cd19"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$V{COLUMN_COUNT}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="430" y="0" width="48" height="20" uuid="5954a7ce-dea8-47de-bbcb-9b2995c6b7e6"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{ad_crse_credit}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="102" y="0" width="328" height="20" uuid="1a2e31bb-d29b-4dac-842e-9c481f94af19"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
 				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{ad_crse_title_en}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="28" y="0" width="74" height="20" uuid="4f3c121b-76ab-43fa-b97a-25b974bbf569"/>
+				<reportElement x="29" y="0" width="73" height="20" uuid="4f3c121b-76ab-43fa-b97a-25b974bbf569"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{ad_crse_code}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="478" y="0" width="77" height="20" uuid="ccaad475-bfcf-4178-b46e-88c47f8ca629"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{ad_sbjt_ordinal}]]></textFieldExpression>
 			</textField>

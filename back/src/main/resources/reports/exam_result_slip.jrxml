@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report4" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="fe6eae38-dbac-492a-9522-077445b8487d">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="119"/>
+	<property name="ireport.y" value="47"/>
 	<parameter name="identity_no" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
@@ -322,10 +322,6 @@ $F{ad_acdm_sesn_code}.equals( $P{session_code} )]]></filterExpression>
 				</textElement>
 				<text><![CDATA[MALAYSIAN GRADUATE SCHOOL OF ENTREPRENEURSHIP & BUSINESS (MGSEB)]]></text>
 			</staticText>
-			<image>
-				<reportElement x="50" y="10" width="74" height="77" uuid="af1d4773-9e72-43c5-a4a4-c441f12ef7d7"/>
-				<imageExpression><![CDATA["C:\\Users\\PAMS05\\git\\academic\\back\\src\\main\\resources\\reports\\img\\logo_universiti_malaysia_kelantan.png"]]></imageExpression>
-			</image>
 			<staticText>
 				<reportElement x="172" y="128" width="213" height="20" uuid="4cad9dcb-ef95-4ef8-85b8-b0d172c27ece"/>
 				<textElement textAlignment="Center">
@@ -518,7 +514,7 @@ $F{ad_acdm_sesn_semester}.equals( "2" )? "SEMESTER 3 DISEMBER":
 				<text><![CDATA[DESCRIPTION]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="0" y="0" width="50" height="16" backcolor="#CCCCCC" uuid="c1ea67b2-e19e-4417-8270-2a33f92701bd"/>
+				<reportElement mode="Opaque" x="0" y="0" width="51" height="16" backcolor="#CCCCCC" uuid="c1ea67b2-e19e-4417-8270-2a33f92701bd"/>
 				<box>
 					<pen lineWidth="0.0"/>
 					<topPen lineWidth="1.0"/>
@@ -565,36 +561,85 @@ $F{ad_acdm_sesn_semester}.equals( "2" )? "SEMESTER 3 DISEMBER":
 		<band height="20" splitType="Stretch">
 			<textField>
 				<reportElement x="51" y="0" width="73" height="20" uuid="20a22449-1845-4059-95ef-3d108b56b6e4"/>
-				<textElement verticalAlignment="Middle"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{ad_ofrg_code}]]></textFieldExpression>
 			</textField>
 			<textField pattern="">
-				<reportElement x="0" y="0" width="50" height="20" uuid="7c007ca1-d6e5-405c-931e-278085e0c686"/>
+				<reportElement x="0" y="0" width="51" height="20" uuid="7c007ca1-d6e5-405c-931e-278085e0c686"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$V{COLUMN_COUNT}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="280" y="0" width="47" height="20" uuid="3b77bdd6-9db8-4206-a66e-32a66901db1c"/>
+				<reportElement x="276" y="0" width="51" height="20" uuid="3b77bdd6-9db8-4206-a66e-32a66901db1c"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{ad_crse_credit}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="327" y="0" width="48" height="20" uuid="d1479221-6ae2-4ff4-9b8a-85d2ee8758dc"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{ad_grde_code_code}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="124" y="0" width="152" height="20" uuid="9b7b038f-8e58-454c-ae78-4187b3b904df"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
 				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{ad_ofrg_title_en}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="434" y="0" width="121" height="20" uuid="c9626bc8-49cc-44fa-be71-32150048b20e"/>
-				<textElement verticalAlignment="Middle"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{ad_grde_code_description}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="375" y="0" width="59" height="20" uuid="a8189403-073a-4452-8495-e73fc046c765"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{ad_grde_code_point}]]></textFieldExpression>
 			</textField>
@@ -660,18 +705,50 @@ $F{ad_acdm_sesn_semester}.equals( "2" )? "SEMESTER 3 DISEMBER":
 			</staticText>
 			<textField>
 				<reportElement x="276" y="16" width="124" height="20" uuid="9bfc6ff3-f3f5-4a29-a002-e71e7e37d407"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$V{ad_crse_credit_1}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="124" y="16" width="152" height="20" uuid="60415149-b829-44cd-b7e1-36ee95c6e6ef"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$V{ad_grde_code_point_2}]]></textFieldExpression>
 			</textField>
 			<textField pattern="###0.00">
 				<reportElement x="400" y="16" width="155" height="20" uuid="ef72278e-3dcc-4d4f-9a43-3ccd358b4228"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$V{ad_grde_code_point_3}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="0" y="16" width="124" height="20" uuid="d36124cc-0f0c-41e3-aced-d84191f157f6"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 			</textField>
 		</band>
 	</columnFooter>
