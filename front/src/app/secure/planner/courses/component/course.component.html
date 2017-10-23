@@ -14,12 +14,18 @@
             <div layout="row" class="pad-bottom">
                 <span flex="15">Title(Ms)</span> <span>{{course?.titleMs | uppercase}}</span>
               </div>
+              <div layout="row" class="pad-bottom">
+                <span flex="15">Credit</span> <span>{{course.credit}}</span>
+              </div>
 
               <div layout="row" class="pad-bottom">
                   <span flex="15">Title(En)</span> <span>{{course?.titleEn | uppercase}}</span>
                 </div>
               </div>
       </md-tab>
+
+
+      
 
       <md-tab label="Faculty Information">
         <div layout="column" class="inset">

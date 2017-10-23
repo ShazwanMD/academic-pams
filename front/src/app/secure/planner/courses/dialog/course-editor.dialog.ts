@@ -45,6 +45,7 @@ export class CourseEditorDialog implements OnInit {
       code: '',
       titleMs: '',
       titleEn: '',
+      credit:0,
       status: CourseStatus.NEW,
       // faculty:<Faculty>{},
       // classification: CourseClassification.NEW,
