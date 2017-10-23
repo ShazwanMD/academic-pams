@@ -1,3 +1,4 @@
+import {CurriculumSubModule} from '../curriculums/index';
 import {CohortActionComponent} from './component/cohort-action.component';
 import {AcademicClassificationSelectComponent} from './component/academic-classification-select.component';
 import {CohortSelectComponent} from './component/cohort-select.component';
@@ -28,6 +29,9 @@ import {CohortUpdateDialog} from './dialog/cohort-update.dialog';
     ProgramSubModule.forRoot(),
     CovalentCoreModule.forRoot(),
     AcademicSessionSubModule.forRoot(),
+    CurriculumSubModule.forRoot(),
+    
+
     IdentityModule.forRoot(),
 
   ],

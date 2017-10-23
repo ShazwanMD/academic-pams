@@ -44,6 +44,7 @@ export class CohortEditorDialog implements OnInit {
             id: [undefined],
             code: [''],
             program: ['', Validators.required],
+            curriculum:['', Validators.required],
             academicSession: ['', Validators.required],
         } );
     }

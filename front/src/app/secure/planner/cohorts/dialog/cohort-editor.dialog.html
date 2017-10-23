@@ -22,6 +22,26 @@
       <div class="tc-red-600" *ngIf="createForm.get('program').invalid && createForm.get('program').touched">
         Please add program!
       </div>
+
+        <pams-program-select mdTooltip="Please select program"
+                           [placeholder]="'Select Program'"
+                           [innerFormControl]="createForm.controls['program']"
+                           fxFlex="calc(100%-25px)" class="pad-bottom">
+      </pams-program-select>
+      <div class="tc-red-600" *ngIf="createForm.get('program').invalid && createForm.get('program').touched">
+        Please add program!
+      </div>
+
+      <!-- <pams-curriculum-select
+      [placeholder]="'Select Curriculum'"
+       [innerFormControl]="createForm.controls['curriculum']" fxFlex="calc(100%-25px)" class="pad-bottom">
+    </pams-curriculum-select>
+    <div class="tc-red-600"
+         *ngIf="createForm.get('curriculum').invalid && createForm.get('curriculum').touched">
+      Please add curriculum!
+    </div> -->
+
+
     </div>
   </form>
 </md-dialog-content>
