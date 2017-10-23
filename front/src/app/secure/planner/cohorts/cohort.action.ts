@@ -44,11 +44,11 @@ export class CohortActions {
 
   static SAVE_COHORT = '[Cohort] Save Cohort';
 
-  saveCohort( program, academicSession, cohort ): Action {
+  saveCohort( program, academicSession, curriculum, cohort ): Action {
       console.log( cohort );
       return {
           type: CohortActions.SAVE_COHORT,
-          payload: {program: program, academicSession: academicSession, cohort: cohort}
+          payload: {program: program, academicSession: academicSession, curriculum: curriculum, cohort: cohort}
       };
   }
 

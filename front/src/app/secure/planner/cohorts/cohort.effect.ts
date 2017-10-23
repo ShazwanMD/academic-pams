@@ -34,7 +34,7 @@ export class CohortEffects {
   @Effect() saveCohort$ = this.actions$
   .ofType(CohortActions.SAVE_COHORT)
   .map((action) => action.payload)
-  .switchMap((payload) => this.plannerService.saveCohort(payload.program, payload.academicSession, payload.cohort))
+  .switchMap((payload) => this.plannerService.saveCohort(payload.program, payload.academicSession,payload.curriculum, payload.cohort))
   .map((cohort) => this.cohortActions.saveCohortSuccess(cohort))
   .mergeMap((action) => from([action, this.cohortActions.findCohorts()]));
 

@@ -193,6 +193,7 @@ public class PlannerTransformer {
         vo.setCode(e.getCode());
         vo.setDescription(e.getDescription());
         vo.setProgram(toProgramVo(e.getProgram()));
+        vo.setCurriculum(toCurriculumVo(e.getCurriculum()));
         vo.setAcademicSession(toAcademicSessionVo(e.getSession()));
         vo.setProgram(plannerTransformer.toProgramVo(e.getProgram()));
         vo.setCurriculum(plannerTransformer.toCurriculumVo(e.getCurriculum()));

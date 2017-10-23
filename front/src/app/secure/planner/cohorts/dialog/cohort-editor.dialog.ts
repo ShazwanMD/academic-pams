@@ -10,6 +10,7 @@ import { MdDialogRef } from '@angular/material';
 import { Program } from "../../../../shared/model/planner/program.interface";
 import { Course } from "../../../../shared/model/planner/course.interface";
 import { AcademicSession } from "../../../../shared/model/planner/academic-session.interface";
+import { Curriculum } from "../../../../shared/model/planner/curriculum.interface";
 ;
 
 @Component( {
@@ -24,6 +25,7 @@ export class CohortEditorDialog implements OnInit {
     private _cohort: Cohort;
     private _program: Program;
     private _academicSession: AcademicSession;
+    private _curriculum: Curriculum;
 
     constructor( private router: Router,
         private route: ActivatedRoute,
@@ -53,15 +55,17 @@ export class CohortEditorDialog implements OnInit {
         
         this._program = cohort.program;
         this._academicSession = cohort.academicSession;
+        this._curriculum = cohort.curriculum;
         cohort.code = this._program.code + '-' + this._academicSession.code;
         
         console.log( this._program );
         console.log( this._academicSession );
+        console.log( this._curriculum );
         console.log( cohort.code );
         console.log( "save click" );
         
         //this.store.dispatch(this.actions.saveCohort(cohort));
-        if ( !cohort.id ) this.store.dispatch( this.actions.saveCohort( this._program, this._academicSession, cohort ) );
+        if ( !cohort.id ) this.store.dispatch( this.actions.saveCohort( this._program, this._academicSession,this._curriculum, cohort ) );
         else this.store.dispatch( this.actions.updateCohort( cohort ) );
         this.dialog.close();
         console.log( cohort );

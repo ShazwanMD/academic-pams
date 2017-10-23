@@ -11,6 +11,7 @@ import {Store} from '@ngrx/store';
 import {AcademicClassification} from '../../../../shared/model/planner/academic-classification.enum';
 import {AcademicSession} from '../../../../shared/model/planner/academic-session.interface';
 import { Course } from "../../../../shared/model/planner/course.interface";
+import { Curriculum } from "../../../../shared/model/planner/curriculum.interface";
 @Component({
   selector: 'pams-cohort-update',
   templateUrl: './cohort-update.dialog.html',
@@ -21,6 +22,7 @@ export class CohortUpdateDialog implements OnInit {
   private _program: Program;
   private _course: Course;
   private _cohort: Cohort;
+  private _curriculum: Curriculum;
   private updateForm: FormGroup;
   private update: boolean = false;
 
@@ -41,6 +43,10 @@ export class CohortUpdateDialog implements OnInit {
   
   set course(value: Course) {
       this._course = value;
+    }
+  
+  set curriculum(value: Curriculum) {
+      this._curriculum = value;
     }
 
   set session(value: AcademicSession) {
@@ -68,7 +74,7 @@ export class CohortUpdateDialog implements OnInit {
     console.log(JSON.stringify(cohort));
     cohort.code = this._cohort.code;
 
-    if ( !cohort.id ) this.store.dispatch( this.actions.saveCohort( this._program, this._course, cohort ) );
+    if ( !cohort.id ) this.store.dispatch( this.actions.saveCohort( this._program, this._course, this._curriculum, cohort ) );
     else this.store.dispatch(this.actions.updateCohort(cohort));
     this.dialog.close();
 

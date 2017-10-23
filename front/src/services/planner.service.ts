@@ -253,11 +253,12 @@ export class PlannerService {
       .map((res: Response) => <Cohort>res.json());
   }
 
-  saveCohort(program: Program, academicSession: AcademicSession, cohort: Cohort): Observable<String> {
+  saveCohort(program: Program, academicSession: AcademicSession,curriculum: Curriculum, cohort: Cohort): Observable<String> {
       console.log('saveCohort');
       console.log('cohort:' + cohort.code);
       console.log('program:' + program.code);
       console.log('academicSession:' + academicSession.code);
+      console.log('curriculum:' + curriculum.code);
       console.log('save cohort');
       return this._http.post(this.PLANNER_API + '/cohorts', JSON.stringify(cohort))
         .flatMap((res: Response) => Observable.of(res.text()));
