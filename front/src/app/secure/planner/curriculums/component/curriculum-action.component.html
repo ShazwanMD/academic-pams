@@ -7,9 +7,24 @@
 
     <md-list-item (click)="editorDialog()">
       <md-icon md-list-avatar>done_all</md-icon>
-      <h4 md-line>Edit curriculum {{curriculum.code}}</h4>
+      <h4 md-line>Edit curriculum </h4>
       <p md-line>Edit this curriculum</p>
     </md-list-item>
+    
+     <a href="http://localhost:8080/servlet/report?report=curriculum_structure.jrxml&report.pdf&curriculum_code={{curriculum.code}}" [target]="'_blank'"> 
+    <md-list-item >
+      <md-icon md-list-avatar>description</md-icon>
+     <h4 md-line>Core Subject Report</h4>
+      <p md-line>View core subject report {{curriculum.code}}</p> 
+    </md-list-item></a>
+    
+     <a href="http://localhost:8080/servlet/report?report=curriculum_structure_specialize.jrxml&report.pdf&curriculum_code={{curriculum.code}}" [target]="'_blank'"> 
+    <md-list-item >
+      <md-icon md-list-avatar>description</md-icon>
+     <h4 md-line>Elective Subject Report</h4>
+      <p md-line>View elective subject report {{curriculum.code}}</p> 
+    </md-list-item></a>
+    
 
     <md-divider></md-divider>
     <h3 md-subheader>Planner Menu</h3>
