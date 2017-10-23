@@ -195,6 +195,7 @@ public class PlannerTransformer {
         vo.setProgram(toProgramVo(e.getProgram()));
         vo.setAcademicSession(toAcademicSessionVo(e.getSession()));
         vo.setProgram(plannerTransformer.toProgramVo(e.getProgram()));
+        vo.setCurriculum(plannerTransformer.toCurriculumVo(e.getCurriculum()));
         vo.setClassification(AcademicClassification.get(e.getClassification().ordinal()));
         return vo;
     }

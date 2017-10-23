@@ -582,7 +582,7 @@ public class PlannerController {
 		AdCourse course = plannerService.findCourseByCode(code);
 		// course.setClassification(AdAcademicClassification.get(vo.getClassification().ordinal()));
 		course.setCode(vo.getCode());
-		// course.setCredit(vo.getCredit());
+		course.setCredit(vo.getCredit());
 		course.setStatus(AdCourseStatus.get(vo.getStatus().ordinal()));
 		course.setTitleEn(vo.getTitleEn());
 		course.setTitleMs(vo.getTitleMs());
@@ -815,11 +815,13 @@ public class PlannerController {
 			// save data normally
 			AdProgram program = plannerService.findProgramById(vo.getProgram().getId());
 			AdAcademicSession academicSession = plannerService.findAcademicSessionById(vo.getAcademicSession().getId());
+			AdCurriculum curriculum = plannerService.findCurriculumByCode(vo.getCode());
 			AdCohort cohort = new AdCohortImpl();
 			cohort.setCode(program.getCode() + "-" + academicSession.getCode());
 			cohort.setDescription("COHORT " + program.getCode());
 			cohort.setProgram(program);
 			cohort.setSession(academicSession);
+			cohort.setCurriculum(curriculum);
 			plannerService.saveCohort(cohort);
 
 			System.out.println("Save cohort:" + vo.getCode());
