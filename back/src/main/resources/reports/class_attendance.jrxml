@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reportAkhirNew" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="833aeb46-bbba-4d7c-aa22-f2a8dfbd7612">
 	<property name="ireport.zoom" value="2.0"/>
-	<property name="ireport.x" value="370"/>
+	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="29"/>
 	<parameter name="section_code" class="java.lang.String"/>
 	<parameter name="session_code" class="java.lang.String"/>
@@ -343,10 +343,6 @@ $F{ad_acdm_sesn_semester}.equals( "2" )? "SEMESTER 3 DISEMBER":
 				</textElement>
 				<textFieldExpression><![CDATA[$F{ad_acdm_sesn_code}]]></textFieldExpression>
 			</textField>
-			<image>
-				<reportElement x="235" y="2" width="27" height="60" uuid="17f5012d-c322-4d55-af6a-50e0f08b41b4"/>
-				<imageExpression><![CDATA["C:\\Users\\PAMS05\\git\\academic\\back\\src\\main\\resources\\reports\\img\\logo_universiti_malaysia_kelantan.png"]]></imageExpression>
-			</image>
 		</band>
 	</title>
 	<pageHeader>
