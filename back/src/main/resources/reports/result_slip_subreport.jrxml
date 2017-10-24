@@ -326,17 +326,20 @@ $F{ad_acdm_sesn_code}.equals( $P{session_code} )]]></filterExpression>
 	<pageFooter>
 		<band height="66" splitType="Stretch">
 			<textField>
-				<reportElement x="2" y="1" width="160" height="20" uuid="ac077049-3115-4047-b8eb-75572cbd99e1"/>
+				<reportElement x="0" y="1" width="166" height="22" uuid="ac077049-3115-4047-b8eb-75572cbd99e1"/>
+			
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$V{ad_grde_code_point_1}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="166" y="1" width="100" height="20" uuid="c3729c19-695b-4250-8301-4ff5bf469c0a"/>
+				<reportElement x="166" y="1" width="100" height="22" uuid="c3729c19-695b-4250-8301-4ff5bf469c0a"/>
+				
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$V{ad_crse_credit_1}]]></textFieldExpression>
 			</textField>
 			<textField pattern="###0.00">
-				<reportElement x="270" y="1" width="112" height="20" uuid="fd364e4d-0585-40e4-b92f-79c3d39ec5ac"/>
+				<reportElement x="266" y="1" width="111" height="22" uuid="fd364e4d-0585-40e4-b92f-79c3d39ec5ac"/>
+			
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$V{ad_grde_code_point_2}]]></textFieldExpression>
 			</textField>

@@ -9,6 +9,7 @@
 	<parameter name="session_code" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[SELECT
+     ad_grde_code."point"*ad_crse."credit" AS TotalGredPoint,
      ad_enmt."id" AS ad_enmt_id,
      ad_enmt."standing" AS ad_enmt_standing,
      ad_enmt."status" AS ad_enmt_status,
@@ -128,6 +129,7 @@ FROM
      INNER JOIN "public"."ad_acdm_sesn" ad_acdm_sesn ON ad_admn."session_id" = ad_acdm_sesn."id"
      INNER JOIN "public"."ad_acdm_year" ad_acdm_year ON ad_acdm_sesn."year_id" = ad_acdm_year."id"]]>
 	</queryString>
+	<field name="totalgredpoint" class="java.math.BigDecimal"/>
 	<field name="ad_enmt_id" class="java.lang.Long"/>
 	<field name="ad_enmt_standing" class="java.lang.Integer"/>
 	<field name="ad_enmt_status" class="java.lang.Integer"/>
@@ -164,7 +166,7 @@ FROM
 	<field name="ad_ofrg_session_id" class="java.lang.Long"/>
 	<field name="ad_stdn_memo" class="java.lang.String"/>
 	<field name="ad_stdn_no_id" class="java.lang.String"/>
-	<field name="ad_stdn_student_status" class="java.lang.String"/>
+	<field name="ad_stdn_student_status" class="java.lang.Integer"/>
 	<field name="ad_stdn_id" class="java.lang.Long"/>
 	<field name="ad_stdn_cohort_id" class="java.lang.Long"/>
 	<field name="ad_stdn_study_mode_id" class="java.lang.Long"/>
@@ -197,7 +199,7 @@ FROM
 	<field name="ad_acdm_sesn_code" class="java.lang.String"/>
 	<field name="ad_acdm_sesn_current_" class="java.lang.Boolean"/>
 	<field name="ad_acdm_sesn_description" class="java.lang.String"/>
-	<field name="ad_acdm_sesn_semester" class="java.lang.String"/>
+	<field name="ad_acdm_sesn_semester" class="java.lang.Integer"/>
 	<field name="ad_acdm_sesn_start_date" class="java.sql.Date"/>
 	<field name="ad_acdm_sesn_status" class="java.lang.Integer"/>
 	<field name="ad_acdm_sesn_year_id" class="java.lang.Long"/>
@@ -244,6 +246,9 @@ FROM
 	</variable>
 	<variable name="ad_grde_code_point_3" class="java.math.BigDecimal" resetType="Column" calculation="Average">
 		<variableExpression><![CDATA[$F{ad_grde_code_point}]]></variableExpression>
+	</variable>
+	<variable name="totalgredpoint_1" class="java.math.BigDecimal" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{totalgredpoint}]]></variableExpression>
 	</variable>
 	<filterExpression><![CDATA[$F{ad_actr_identity_no}.equals( $P{identity_no} )&&
 $F{ad_acdm_sesn_code}.equals( $P{session_code} )]]></filterExpression>
@@ -715,18 +720,6 @@ $F{ad_acdm_sesn_semester}.equals( "2" )? "SEMESTER 3 DISEMBER":
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$V{ad_crse_credit_1}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement x="124" y="16" width="152" height="20" uuid="60415149-b829-44cd-b7e1-36ee95c6e6ef"/>
-				<box>
-					<pen lineWidth="0.5"/>
-					<topPen lineWidth="0.5"/>
-					<leftPen lineWidth="0.5"/>
-					<bottomPen lineWidth="0.5"/>
-					<rightPen lineWidth="0.5"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$V{ad_grde_code_point_2}]]></textFieldExpression>
-			</textField>
 			<textField pattern="###0.00">
 				<reportElement x="400" y="16" width="155" height="20" uuid="ef72278e-3dcc-4d4f-9a43-3ccd358b4228"/>
 				<box>
@@ -749,6 +742,18 @@ $F{ad_acdm_sesn_semester}.equals( "2" )? "SEMESTER 3 DISEMBER":
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+			</textField>
+			<textField>
+				<reportElement x="124" y="16" width="152" height="20" uuid="51aa497e-0bdf-46e3-a7c1-21800a3e9e28"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{totalgredpoint_1}]]></textFieldExpression>
 			</textField>
 		</band>
 	</columnFooter>

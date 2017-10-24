@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="jasper_report_template" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="03800e79-2e08-4188-b0d9-084bf32d8f7c">
 	<property name="ireport.zoom" value="2.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="156"/>
+	<property name="ireport.y" value="158"/>
 	<parameter name="identity_no" class="java.lang.String"/>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
 		<defaultValueExpression><![CDATA["C:\\Users\\PAMS05\\git\\academic\\back\\src\\main\\resources\\reports\\"]]></defaultValueExpression>
@@ -10,7 +10,6 @@
 	<parameter name="session_code" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[SELECT
-
      ad_grde_code."point"*ad_crse."credit" AS TotalGredPoint,
      ad_enmt."id" AS ad_enmt_id,
      ad_enmt."c_ts" AS ad_enmt_c_ts,
@@ -358,7 +357,7 @@ FROM
 	<field name="ad_acdm_sesn_m_ts" class="java.sql.Timestamp"/>
 	<field name="ad_acdm_sesn_m_id" class="java.lang.Long"/>
 	<field name="ad_acdm_sesn_m_st" class="java.lang.Integer"/>
-	<field name="ad_acdm_sesn_semester" class="java.lang.String"/>
+	<field name="ad_acdm_sesn_semester" class="java.lang.Integer"/>
 	<field name="ad_acdm_sesn_start_date" class="java.sql.Date"/>
 	<field name="ad_acdm_sesn_status" class="java.lang.Integer"/>
 	<field name="ad_acdm_sesn_enroll_startdate" class="java.sql.Date"/>
@@ -453,10 +452,6 @@ FROM
 				</textElement>
 				<text><![CDATA[16100 KOTA BHARU,KELANTAN,DARULNAIM]]></text>
 			</staticText>
-			<image>
-				<reportElement x="57" y="10" width="74" height="77" uuid="6f1dd4aa-288c-4122-9f10-690f8238a73d"/>
-				<imageExpression><![CDATA["C:\\Users\\PAMS05\\git\\academic\\back\\src\\main\\resources\\reports\\img\\logo_universiti_malaysia_kelantan.png"]]></imageExpression>
-			</image>
 			<staticText>
 				<reportElement x="106" y="67" width="258" height="20" uuid="4677f856-ba90-4c7b-890e-41a26c36f360"/>
 				<textElement>
@@ -623,30 +618,73 @@ $F{ad_stdn_student_status}.equals( "2" )? "FEBRUARI":
 		<band height="28" splitType="Stretch">
 			<textField>
 				<reportElement x="1" y="0" width="56" height="20" uuid="b62cdcb2-b258-4937-bf06-6eec58bb76c1"/>
-				<textElement verticalAlignment="Middle"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{ad_sctn_code}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="57" y="0" width="226" height="20" uuid="fd743129-8a3d-4de3-a8ac-bbd4b55eec5e"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{ad_ofrg_title_en}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="283" y="0" width="41" height="20" uuid="c5f66e01-58aa-486c-afa8-48d5c08867a5"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{ad_crse_credit}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="324" y="0" width="41" height="20" uuid="57b520af-4541-4e00-9f80-2ddc3cf3fac9"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{ad_grde_code_code}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="365" y="0" width="73" height="20" uuid="a1f3145b-fbdb-4567-a87d-8ec68cff4e54"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{ad_grde_code_point}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="438" y="0" width="116" height="20" uuid="3a5b0688-cb5e-40f8-ba2e-f1b3215e0c3e"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{totalgredpoint}]]></textFieldExpression>
 			</textField>
@@ -715,25 +753,32 @@ $F{ad_stdn_student_status}.equals( "2" )? "FEBRUARI":
 				<text><![CDATA[CREDIT TOTAL]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="27" width="170" height="20" uuid="cf4710a4-1a62-4a10-a304-2e9c3a16cfaa"/>
+				<reportElement x="0" y="17" width="170" height="30" uuid="cf4710a4-1a62-4a10-a304-2e9c3a16cfaa"/>
+				
+				<textElement verticalAlignment="Middle"/>
 				<text><![CDATA[CURRENT SEMESTER]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="0" y="47" width="170" height="20" uuid="2ba16f70-7576-40a2-87a9-e58b304a6d48"/>
+				
+				<textElement verticalAlignment="Middle"/>
 				<text><![CDATA[SEMESTER TOTAL (CUMULATIVE)]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="334" y="47" width="104" height="20" uuid="181f852e-d6b9-4498-9ed5-395a5db3724d"/>
+				<reportElement x="335" y="47" width="103" height="20" uuid="181f852e-d6b9-4498-9ed5-395a5db3724d"/>
+				
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$V{ad_crse_credit_2}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="170" y="47" width="165" height="20" uuid="e44e0e9d-ec44-4b35-8850-c991ded78450"/>
+				
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$V{ad_grde_code_point_1}]]></textFieldExpression>
 			</textField>
 			<textField pattern="###0.00">
 				<reportElement x="438" y="47" width="116" height="20" uuid="efebbe9e-5355-4e14-bdb0-e7203db2a641"/>
+				
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$V{ad_grde_code_point_2}]]></textFieldExpression>
 			</textField>

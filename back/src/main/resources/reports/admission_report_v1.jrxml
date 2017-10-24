@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="jasper_report_template" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="03800e79-2e08-4188-b0d9-084bf32d8f7c">
-	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="301"/>
 	<subDataset name="sponsorship" uuid="6b82b54c-a5ad-49d3-98c5-d3f208158bf8">
 		<parameter name="student_id" class="java.lang.Long"/>
 		<queryString>
@@ -563,32 +563,32 @@ $F{ad_acdm_sesn_code}.equals( $P{session_code} )]]></filterExpression>
 				<text><![CDATA[BAHAGIAN A : MAKLUMAT KEMASUKAN SESI PELAJAR]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="29" y="105" width="46" height="20" uuid="217fcccc-17cf-45f8-ac97-8eeb5cf4a6d6"/>
+				<reportElement x="29" y="105" width="71" height="20" uuid="217fcccc-17cf-45f8-ac97-8eeb5cf4a6d6"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[Nama: ]]></text>
+				<text><![CDATA[Nama         : ]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="29" y="125" width="71" height="20" uuid="d38676d2-d061-4771-ae82-7bd01d6534be"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[Matric No]]></text>
+				<text><![CDATA[Matric No   :]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="29" y="145" width="46" height="20" uuid="ff5994d4-d2ac-46ce-a2c0-fc0f4222925f"/>
+				<reportElement x="29" y="145" width="71" height="20" uuid="ff5994d4-d2ac-46ce-a2c0-fc0f4222925f"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[Email: ]]></text>
+				<text><![CDATA[Email          : ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="29" y="165" width="46" height="20" uuid="408b240d-a28b-49ad-8305-c611586be44a"/>
+				<reportElement x="29" y="165" width="71" height="20" uuid="408b240d-a28b-49ad-8305-c611586be44a"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[Phone]]></text>
+				<text><![CDATA[Phone        :]]></text>
 			</staticText>
 			<textField>
 				<reportElement x="100" y="165" width="100" height="20" uuid="591dae24-feb7-4826-bd9f-b66a65d9e0e7"/>
@@ -622,17 +622,17 @@ $F{ad_acdm_sesn_code}.equals( $P{session_code} )]]></filterExpression>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[Session: ]]></text>
+				<text><![CDATA[Session        : ]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="318" y="145" width="78" height="20" uuid="0c4eda08-1547-491d-9bc8-30d1fb67b3d1"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[Date: ]]></text>
+				<text><![CDATA[Date             : ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="43" y="256" width="199" height="16" backcolor="#CCCCCC" uuid="a8bd802a-8e0f-459d-8082-7e4a4570ec57"/>
+				<reportElement mode="Opaque" x="108" y="256" width="185" height="16" backcolor="#CCCCCC" uuid="a8bd802a-8e0f-459d-8082-7e4a4570ec57"/>
 				<box>
 					<pen lineWidth="0.0"/>
 					<topPen lineWidth="1.0"/>
@@ -660,7 +660,7 @@ $F{ad_acdm_sesn_code}.equals( $P{session_code} )]]></filterExpression>
 				<text><![CDATA[FACULTY]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="242" y="256" width="51" height="16" backcolor="#CCCCCC" uuid="6ea963bc-f20a-4e94-bbff-65bd7ec33cd1"/>
+				<reportElement mode="Opaque" x="293" y="256" width="51" height="16" backcolor="#CCCCCC" uuid="6ea963bc-f20a-4e94-bbff-65bd7ec33cd1"/>
 				<box>
 					<pen lineWidth="0.0"/>
 					<topPen lineWidth="1.0"/>
@@ -688,7 +688,7 @@ $F{ad_acdm_sesn_code}.equals( $P{session_code} )]]></filterExpression>
 				<text><![CDATA[NO. ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="293" y="256" width="186" height="16" backcolor="#CCCCCC" uuid="6c356f91-8d9a-45c6-ab72-21e977fddc29"/>
+				<reportElement mode="Opaque" x="344" y="256" width="135" height="16" backcolor="#CCCCCC" uuid="6c356f91-8d9a-45c6-ab72-21e977fddc29"/>
 				<box>
 					<pen lineWidth="0.0"/>
 					<topPen lineWidth="1.0"/>
@@ -702,35 +702,49 @@ $F{ad_acdm_sesn_code}.equals( $P{session_code} )]]></filterExpression>
 				<text><![CDATA[PROGRAM]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="29" y="185" width="78" height="20" uuid="38ce74fb-8a9d-4448-b387-b5baf5cecfa6"/>
+				<reportElement x="29" y="185" width="71" height="20" uuid="38ce74fb-8a9d-4448-b387-b5baf5cecfa6"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Scholarship: ]]></text>
 			</staticText>
 			<componentElement>
-				<reportElement x="107" y="185" width="400" height="20" uuid="5f8fb6a1-eccf-423d-8c00-d6a61403e460"/>
+				<reportElement x="100" y="185" width="382" height="20" uuid="5f8fb6a1-eccf-423d-8c00-d6a61403e460"/>
 				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
-					<datasetRun subDataset="sponsorship" uuid="a694154c-5a36-455c-8a0e-58b6098e1474">
+					<datasetRun subDataset="sponsorship" uuid="ab204008-dc39-45e7-b487-fc6642eb7818">
 						<datasetParameter name="student_id">
 							<datasetParameterExpression><![CDATA[$F{ad_actr_id}]]></datasetParameterExpression>
 						</datasetParameter>
 						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 					</datasetRun>
-					<jr:listContents height="20" width="400">
+					<jr:listContents height="20" width="382">
 						<textField>
-							<reportElement x="1" y="0" width="308" height="20" uuid="5e18cdbb-cc2a-4251-8c96-48143f3159e9"/>
+							<reportElement x="0" y="0" width="309" height="20" uuid="5e18cdbb-cc2a-4251-8c96-48143f3159e9"/>
 							<textFieldExpression><![CDATA[$F{ad_actr_name}]]></textFieldExpression>
 						</textField>
 					</jr:listContents>
 				</jr:list>
 			</componentElement>
+			<staticText>
+				<reportElement mode="Opaque" x="43" y="256" width="65" height="16" backcolor="#CCCCCC" uuid="62bf3c23-cf5a-46d6-8081-215d372b8a72"/>
+				<box>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SECTION]]></text>
+			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="19" splitType="Stretch">
+		<band height="20" splitType="Stretch">
 			<textField>
-				<reportElement x="-1" y="-1" width="44" height="20" backcolor="#CCCCCC" uuid="822c1682-9e03-44a4-82af-7e4e9e4a7f1c"/>
+				<reportElement x="479" y="0" width="75" height="20" uuid="be3186d8-6d55-45dc-837f-9621080b2a28"/>
 				<box>
 					<topPen lineWidth="0.5"/>
 					<leftPen lineWidth="0.5"/>
@@ -738,21 +752,21 @@ $F{ad_acdm_sesn_code}.equals( $P{session_code} )]]></filterExpression>
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{ad_sctn_ordinal}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{ad_fcty_name}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="43" y="-1" width="199" height="20" uuid="409bfba4-c647-448c-8e83-bbfd5f7d9268"/>
+				<reportElement x="344" y="0" width="135" height="20" uuid="d7aa6f3d-6e54-4fab-b85c-7cbfedf92669"/>
 				<box>
 					<topPen lineWidth="0.5"/>
 					<leftPen lineWidth="0.5"/>
 					<bottomPen lineWidth="0.5"/>
 					<rightPen lineWidth="0.5"/>
 				</box>
-				<textElement verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{ad_ofrg_title_en}]]></textFieldExpression>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{ad_prgm_code}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="242" y="-1" width="51" height="20" uuid="e7682e04-29f3-4c3a-91e5-f1e8aec03105"/>
+				<reportElement x="293" y="0" width="51" height="20" uuid="e7682e04-29f3-4c3a-91e5-f1e8aec03105"/>
 				<box>
 					<topPen lineWidth="0.5"/>
 					<leftPen lineWidth="0.5"/>
@@ -763,7 +777,7 @@ $F{ad_acdm_sesn_code}.equals( $P{session_code} )]]></filterExpression>
 				<textFieldExpression><![CDATA[$F{ad_crse_credit}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="293" y="-1" width="186" height="20" uuid="add5cabd-a413-425b-9d04-49ce93595413"/>
+				<reportElement x="108" y="0" width="185" height="20" uuid="409bfba4-c647-448c-8e83-bbfd5f7d9268"/>
 				<box>
 					<topPen lineWidth="0.5"/>
 					<leftPen lineWidth="0.5"/>
@@ -771,10 +785,10 @@ $F{ad_acdm_sesn_code}.equals( $P{session_code} )]]></filterExpression>
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{ad_prgm_title_en}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{ad_ofrg_title_en}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="479" y="-1" width="75" height="20" uuid="be3186d8-6d55-45dc-837f-9621080b2a28"/>
+				<reportElement x="43" y="0" width="65" height="20" backcolor="#CCCCCC" uuid="822c1682-9e03-44a4-82af-7e4e9e4a7f1c"/>
 				<box>
 					<topPen lineWidth="0.5"/>
 					<leftPen lineWidth="0.5"/>
@@ -782,7 +796,18 @@ $F{ad_acdm_sesn_code}.equals( $P{session_code} )]]></filterExpression>
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{ad_fcty_name}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{ad_sctn_ordinal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="43" height="20" uuid="3be2d742-7cb9-4052-82cc-4eb1506e0043"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{COLUMN_COUNT}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

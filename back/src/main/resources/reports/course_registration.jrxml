@@ -233,10 +233,6 @@ $F{ad_acdm_sesn_code}.equals( $P{session_code} )]]></filterExpression>
 				</textElement>
 				<text><![CDATA[UNIVERSITI MALAYSIA KELANTAN]]></text>
 			</staticText>
-			<image>
-				<reportElement x="10" y="10" width="74" height="77" uuid="c87b3229-fcdc-4252-9894-dd4dbf615933"/>
-				<imageExpression><![CDATA["C:\\Users\\PAMS05\\git\\academic\\back\\src\\main\\resources\\reports\\img\\logo_universiti_malaysia_kelantan.png"]]></imageExpression>
-			</image>
 			<staticText>
 				<reportElement x="60" y="24" width="238" height="20" uuid="11099d13-a329-4fcc-951b-37f5c49f50e5"/>
 				<textElement>
@@ -447,7 +443,7 @@ $F{ad_stdn_student_status}.equals( "3" )? "INACTIVE":
 				<text><![CDATA[CODE]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="397" y="0" width="157" height="16" backcolor="#CCCCCC" uuid="4e456275-45f2-48b7-9901-2a2291b30322"/>
+				<reportElement mode="Opaque" x="397" y="0" width="158" height="16" backcolor="#CCCCCC" uuid="4e456275-45f2-48b7-9901-2a2291b30322"/>
 				<box>
 					<pen lineWidth="0.0"/>
 					<topPen lineWidth="1.0"/>
@@ -466,31 +462,73 @@ $F{ad_stdn_student_status}.equals( "3" )? "INACTIVE":
 		<band height="20" splitType="Stretch">
 			<textField>
 				<reportElement x="29" y="0" width="73" height="20" uuid="2e246f5b-9d76-4a27-95f1-ec5873e1d14e"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{ad_sctn_code}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="102" y="0" width="53" height="20" uuid="64658d6c-e262-497e-b8ce-2e566066b1c4"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{ad_sctn_ordinal}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="349" y="0" width="48" height="20" uuid="5ec1eacd-e4d8-469f-99a7-9a842fcad15d"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{ad_crse_credit}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="155" y="0" width="194" height="20" uuid="e872e5d1-1741-44df-abae-9139a8e30e7b"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
 				<textElement verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{ad_ofrg_title_en}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[ $F{ad_ofrg_title_en}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="2" y="0" width="27" height="20" uuid="a5e7e5ee-bcd8-4954-9747-e4f42f74cd19"/>
+				<reportElement x="0" y="0" width="29" height="20" uuid="a5e7e5ee-bcd8-4954-9747-e4f42f74cd19"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$V{COLUMN_COUNT}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="397" y="0" width="158" height="20" uuid="0f288999-4bda-48bf-878c-58eb77e687f4"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{ad_prgm_code}]]></textFieldExpression>
 			</textField>
@@ -512,7 +550,7 @@ $F{ad_stdn_student_status}.equals( "3" )? "INACTIVE":
 				<text><![CDATA[Total Credit:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="434" y="0" width="120" height="20" uuid="fced57ec-570a-4f81-9a93-776576bd6364"/>
+				<reportElement x="474" y="0" width="80" height="20" uuid="fced57ec-570a-4f81-9a93-776576bd6364"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$V{ad_crse_credit_1}]]></textFieldExpression>
 			</textField>
