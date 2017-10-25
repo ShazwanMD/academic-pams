@@ -10,22 +10,23 @@
            *ngIf="createForm.get('code').invalid && createForm.get('code').touched">
         Code should be at least {{minLength}} characters!
       </div>
-   
-      <md-input-container fxFlex="calc(100%-25px)"><input
-        mdInput #title placeholder="TitleMs" formControlName="titleMs" flex/>
-      </md-input-container>
-      <div class="error"
-           *ngIf="createForm.get('titleMs').invalid && createForm.get('titleMs').touched">
-        titleMs should be at least {{minLength}} characters!
-      </div>
-  
 
       <md-input-container fxFlex="calc(100%-25px)"><input
-        mdInput #title placeholder="TitleEn" formControlName="titleEn" flex/>
+        mdInput #title placeholder="TitleEn (English)
+        " formControlName="titleEn" flex/>
       </md-input-container>
       <div class="error"
            *ngIf="createForm.get('titleEn').invalid && createForm.get('titleEn').touched">
         titleEn should be at least {{minLength}} characters!
+      </div>
+
+
+      <md-input-container fxFlex="calc(100%-25px)"><input
+        mdInput #title placeholder="TitleMs (Malay)" formControlName="titleMs" flex/>
+      </md-input-container>
+      <div class="error"
+           *ngIf="createForm.get('titleMs').invalid && createForm.get('titleMs').touched">
+        titleMs should be at least {{minLength}} characters!
       </div>
 
 

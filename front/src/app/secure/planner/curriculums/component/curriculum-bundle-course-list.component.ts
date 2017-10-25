@@ -79,8 +79,8 @@ export class CurriculumBndleCourseListComponent implements OnInit, OnChanges {
     this.bundleRefresh = true;
     config.viewContainerRef = this.vcf;
     config.role = 'dialog';
-    config.width = '30%';
-    config.height = '30%';
+    config.width = '50%';
+    config.height = '53%';
     config.position = { top: '65px' };
     this.bundleSubjectPartDialogRef = this.dialog.open(CurriculumBundleSubjectPartDialog, config);
     this.bundleSubjectPartDialogRef.componentInstance.bundleSubject = this.bundle;
