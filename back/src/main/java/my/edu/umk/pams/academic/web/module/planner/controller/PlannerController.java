@@ -815,7 +815,7 @@ public class PlannerController {
 			// save data normally
 			AdProgram program = plannerService.findProgramById(vo.getProgram().getId());
 			AdAcademicSession academicSession = plannerService.findAcademicSessionById(vo.getAcademicSession().getId());
-			//AdCurriculum curriculum = plannerService.findCurriculumByCode(vo.getCode());
+			//AdCurriculum curriculum = plannerService.findCurriculumByCode(vo.getCurriculum().getCode());
 			AdCohort cohort = new AdCohortImpl();
 			cohort.setCode(program.getCode() + "-" + academicSession.getCode());
 			cohort.setDescription("COHORT " + program.getCode());

@@ -41,6 +41,7 @@ export class LecturerProfileComponent implements OnInit {
         { name: 'id', label: 'Id' },
         { name: 'section.ordinal', label: 'Section No.' },
          { name: 'section.code', label: 'Section Code.' },
+         { name: 'section.offering.academicSession.code', label: 'Academic Session' },
         { name: 'section.offering.titleEn', label: 'Title' },
         { name: 'section.offering.program.code', label: 'Program' },
         { name: 'section.offering.program.faculty.name', label: 'Faculty' },
