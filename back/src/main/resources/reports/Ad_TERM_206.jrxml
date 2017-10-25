@@ -1,0 +1,612 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report4" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="fe6eae38-dbac-492a-9522-077445b8487d">
+	<property name="ireport.zoom" value="1.5026296018031562"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="638"/>
+	<parameter name="identity_no" class="java.lang.String"/>
+	<parameter name="session_code" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     ad_admn."id" AS ad_admn_id,
+     ad_admn."cgpa" AS ad_admn_cgpa,
+     ad_admn."credit_earned" AS ad_admn_credit_earned,
+     ad_admn."credit_taken" AS ad_admn_credit_taken,
+     ad_admn."gpa" AS ad_admn_gpa,
+     ad_admn."ordinal" AS ad_admn_ordinal,
+     ad_admn."standing" AS ad_admn_standing,
+     ad_admn."status" AS ad_admn_status,
+     ad_admn."cohort_id" AS ad_admn_cohort_id,
+     ad_admn."session_id" AS ad_admn_session_id,
+     ad_admn."student_id" AS ad_admn_student_id,
+     ad_admn."advisor_id" AS ad_admn_advisor_id,
+     ad_admn."study_center_id" AS ad_admn_study_center_id,
+     ad_enmt."id" AS ad_enmt_id,
+     ad_enmt."standing" AS ad_enmt_standing,
+     ad_enmt."status" AS ad_enmt_status,
+     ad_enmt."total_score" AS ad_enmt_total_score,
+     ad_enmt."admission_id" AS ad_enmt_admission_id,
+     ad_enmt."grade_code_id" AS ad_enmt_grade_code_id,
+     ad_enmt."section_id" AS ad_enmt_section_id,
+     ad_sctn."id" AS ad_sctn_id,
+     ad_sctn."canonical_code" AS ad_sctn_canonical_code,
+     ad_sctn."capacity" AS ad_sctn_capacity,
+     ad_sctn."code" AS ad_sctn_code,
+     ad_sctn."ordinal" AS ad_sctn_ordinal,
+     ad_sctn."offering_id" AS ad_sctn_offering_id,
+     ad_ofrg."id" AS ad_ofrg_id,
+     ad_ofrg."canonical_code" AS ad_ofrg_canonical_code,
+     ad_ofrg."capacity" AS ad_ofrg_capacity,
+     ad_ofrg."code" AS ad_ofrg_code,
+     ad_ofrg."title_en" AS ad_ofrg_title_en,
+     ad_ofrg."title_ms" AS ad_ofrg_title_ms,
+     ad_ofrg."course_id" AS ad_ofrg_course_id,
+     ad_ofrg."program_id" AS ad_ofrg_program_id,
+     ad_ofrg."session_id" AS ad_ofrg_session_id,
+     ad_crse."id" AS ad_crse_id,
+     ad_crse."classification" AS ad_crse_classification,
+     ad_crse."credit" AS ad_crse_credit,
+     ad_crse."status" AS ad_crse_status,
+     ad_crse."title_en" AS ad_crse_title_en,
+     ad_crse."title_ms" AS ad_crse_title_ms,
+     ad_crse."faculty_id" AS ad_crse_faculty_id,
+     ad_prgm."id" AS ad_prgm_id,
+     ad_prgm."code" AS ad_prgm_code,
+     ad_prgm."status" AS ad_prgm_status,
+     ad_prgm."title_en" AS ad_prgm_title_en,
+     ad_prgm."title_ms" AS ad_prgm_title_ms,
+     ad_prgm."faculty_id" AS ad_prgm_faculty_id,
+     ad_prgm."level_id" AS ad_prgm_level_id,
+     ad_acdm_sesn."id" AS ad_acdm_sesn_id,
+     ad_acdm_sesn."code" AS ad_acdm_sesn_code,
+     ad_acdm_sesn."current_" AS ad_acdm_sesn_current_,
+     ad_acdm_sesn."description" AS ad_acdm_sesn_description,
+     ad_acdm_sesn."end_date" AS ad_acdm_sesn_end_date,
+     ad_acdm_sesn."semester" AS ad_acdm_sesn_semester,
+     ad_acdm_sesn."start_date" AS ad_acdm_sesn_start_date,
+     ad_acdm_sesn."status" AS ad_acdm_sesn_status,
+     ad_acdm_sesn."enroll_startdate" AS ad_acdm_sesn_enroll_startdate,
+     ad_acdm_sesn."enroll_enddate" AS ad_acdm_sesn_enroll_enddate,
+     ad_acdm_sesn."admission_startdate" AS ad_acdm_sesn_admission_startdate,
+     ad_acdm_sesn."admission_enddate" AS ad_acdm_sesn_admission_enddate,
+     ad_acdm_sesn."graduation_startdate" AS ad_acdm_sesn_graduation_startdate,
+     ad_acdm_sesn."graduation_enddate" AS ad_acdm_sesn_graduation_enddate,
+     ad_acdm_sesn."previous_id" AS ad_acdm_sesn_previous_id,
+     ad_acdm_sesn."year_id" AS ad_acdm_sesn_year_id,
+     ad_actr."id" AS ad_actr_id,
+     ad_actr."actor_type" AS ad_actr_actor_type,
+     ad_actr."email" AS ad_actr_email,
+     ad_actr."fax" AS ad_actr_fax,
+     ad_actr."identity_no" AS ad_actr_identity_no,
+     ad_actr."mobile" AS ad_actr_mobile,
+     ad_actr."name" AS ad_actr_name,
+     ad_actr."phone" AS ad_actr_phone,
+     ad_stdn."memo" AS ad_stdn_memo,
+     ad_stdn."no_id" AS ad_stdn_no_id,
+     ad_stdn."student_status" AS ad_stdn_student_status,
+     ad_stdn."id" AS ad_stdn_id,
+     ad_stdn."cohort_id" AS ad_stdn_cohort_id,
+     ad_stdn."study_mode_id" AS ad_stdn_study_mode_id,
+     ad_stdn."balance" AS ad_stdn_balance,
+     ad_stdn."outstanding" AS ad_stdn_outstanding,
+     ad_chrt."id" AS ad_chrt_id,
+     ad_chrt."classification" AS ad_chrt_classification,
+     ad_chrt."code" AS ad_chrt_code,
+     ad_chrt."description" AS ad_chrt_description,
+     ad_chrt."curriculum_id" AS ad_chrt_curriculum_id,
+     ad_chrt."program_id" AS ad_chrt_program_id,
+     ad_chrt."session_id" AS ad_chrt_session_id,
+     ad_addr."id" AS ad_addr_id,
+     ad_addr."address1" AS ad_addr_address1,
+     ad_addr."address2" AS ad_addr_address2,
+     ad_addr."address3" AS ad_addr_address3,
+     ad_addr."postcode" AS ad_addr_postcode,
+     ad_addr."address_type" AS ad_addr_address_type,
+     ad_addr."country_code_id" AS ad_addr_country_code_id,
+     ad_addr."dun_code_id" AS ad_addr_dun_code_id,
+     ad_addr."parliament_code_id" AS ad_addr_parliament_code_id,
+     ad_addr."state_code_id" AS ad_addr_state_code_id,
+     ad_addr."student_id" AS ad_addr_student_id
+FROM
+     "public"."ad_admn" ad_admn INNER JOIN "public"."ad_enmt" ad_enmt ON ad_admn."id" = ad_enmt."admission_id"
+     INNER JOIN "public"."ad_sctn" ad_sctn ON ad_enmt."section_id" = ad_sctn."id"
+     INNER JOIN "public"."ad_ofrg" ad_ofrg ON ad_sctn."offering_id" = ad_ofrg."id"
+     INNER JOIN "public"."ad_crse" ad_crse ON ad_ofrg."course_id" = ad_crse."id"
+     INNER JOIN "public"."ad_prgm" ad_prgm ON ad_ofrg."program_id" = ad_prgm."id"
+     INNER JOIN "public"."ad_chrt" ad_chrt ON ad_prgm."id" = ad_chrt."program_id"
+     INNER JOIN "public"."ad_stdn" ad_stdn ON ad_chrt."id" = ad_stdn."cohort_id"
+     AND ad_admn."student_id" = ad_stdn."id"
+     INNER JOIN "public"."ad_actr" ad_actr ON ad_stdn."id" = ad_actr."id"
+     INNER JOIN "public"."ad_addr" ad_addr ON ad_stdn."id" = ad_addr."student_id"
+     INNER JOIN "public"."ad_acdm_sesn" ad_acdm_sesn ON ad_admn."session_id" = ad_acdm_sesn."id"]]>
+	</queryString>
+	<field name="ad_admn_id" class="java.lang.Long"/>
+	<field name="ad_admn_cgpa" class="java.math.BigDecimal"/>
+	<field name="ad_admn_credit_earned" class="java.lang.Integer"/>
+	<field name="ad_admn_credit_taken" class="java.lang.Integer"/>
+	<field name="ad_admn_gpa" class="java.math.BigDecimal"/>
+	<field name="ad_admn_ordinal" class="java.lang.Integer"/>
+	<field name="ad_admn_standing" class="java.lang.Integer"/>
+	<field name="ad_admn_status" class="java.lang.Integer"/>
+	<field name="ad_admn_cohort_id" class="java.lang.Long"/>
+	<field name="ad_admn_session_id" class="java.lang.Long"/>
+	<field name="ad_admn_student_id" class="java.lang.Long"/>
+	<field name="ad_admn_advisor_id" class="java.lang.Long"/>
+	<field name="ad_admn_study_center_id" class="java.lang.Long"/>
+	<field name="ad_enmt_id" class="java.lang.Long"/>
+	<field name="ad_enmt_standing" class="java.lang.Integer"/>
+	<field name="ad_enmt_status" class="java.lang.Integer"/>
+	<field name="ad_enmt_total_score" class="java.math.BigDecimal"/>
+	<field name="ad_enmt_admission_id" class="java.lang.Long"/>
+	<field name="ad_enmt_grade_code_id" class="java.lang.Long"/>
+	<field name="ad_enmt_section_id" class="java.lang.Long"/>
+	<field name="ad_sctn_id" class="java.lang.Long"/>
+	<field name="ad_sctn_canonical_code" class="java.lang.String"/>
+	<field name="ad_sctn_capacity" class="java.lang.Integer"/>
+	<field name="ad_sctn_code" class="java.lang.String"/>
+	<field name="ad_sctn_ordinal" class="java.lang.Integer"/>
+	<field name="ad_sctn_offering_id" class="java.lang.Long"/>
+	<field name="ad_ofrg_id" class="java.lang.Long"/>
+	<field name="ad_ofrg_canonical_code" class="java.lang.String"/>
+	<field name="ad_ofrg_capacity" class="java.lang.Integer"/>
+	<field name="ad_ofrg_code" class="java.lang.String"/>
+	<field name="ad_ofrg_title_en" class="java.lang.String"/>
+	<field name="ad_ofrg_title_ms" class="java.lang.String"/>
+	<field name="ad_ofrg_course_id" class="java.lang.Long"/>
+	<field name="ad_ofrg_program_id" class="java.lang.Long"/>
+	<field name="ad_ofrg_session_id" class="java.lang.Long"/>
+	<field name="ad_crse_id" class="java.lang.Long"/>
+	<field name="ad_crse_classification" class="java.lang.Integer"/>
+	<field name="ad_crse_credit" class="java.lang.Integer"/>
+	<field name="ad_crse_status" class="java.lang.Integer"/>
+	<field name="ad_crse_title_en" class="java.lang.String"/>
+	<field name="ad_crse_title_ms" class="java.lang.String"/>
+	<field name="ad_crse_faculty_id" class="java.lang.Long"/>
+	<field name="ad_prgm_id" class="java.lang.Long"/>
+	<field name="ad_prgm_code" class="java.lang.String"/>
+	<field name="ad_prgm_status" class="java.lang.Integer"/>
+	<field name="ad_prgm_title_en" class="java.lang.String"/>
+	<field name="ad_prgm_title_ms" class="java.lang.String"/>
+	<field name="ad_prgm_faculty_id" class="java.lang.Long"/>
+	<field name="ad_prgm_level_id" class="java.lang.Long"/>
+	<field name="ad_acdm_sesn_id" class="java.lang.Long"/>
+	<field name="ad_acdm_sesn_code" class="java.lang.String"/>
+	<field name="ad_acdm_sesn_current_" class="java.lang.Boolean"/>
+	<field name="ad_acdm_sesn_description" class="java.lang.String"/>
+	<field name="ad_acdm_sesn_end_date" class="java.sql.Date"/>
+	<field name="ad_acdm_sesn_semester" class="java.lang.Integer"/>
+	<field name="ad_acdm_sesn_start_date" class="java.sql.Date"/>
+	<field name="ad_acdm_sesn_status" class="java.lang.Integer"/>
+	<field name="ad_acdm_sesn_enroll_startdate" class="java.sql.Date"/>
+	<field name="ad_acdm_sesn_enroll_enddate" class="java.sql.Date"/>
+	<field name="ad_acdm_sesn_admission_startdate" class="java.sql.Date"/>
+	<field name="ad_acdm_sesn_admission_enddate" class="java.sql.Date"/>
+	<field name="ad_acdm_sesn_graduation_startdate" class="java.sql.Date"/>
+	<field name="ad_acdm_sesn_graduation_enddate" class="java.sql.Date"/>
+	<field name="ad_acdm_sesn_previous_id" class="java.lang.Long"/>
+	<field name="ad_acdm_sesn_year_id" class="java.lang.Long"/>
+	<field name="ad_actr_id" class="java.lang.Long"/>
+	<field name="ad_actr_actor_type" class="java.lang.Integer"/>
+	<field name="ad_actr_email" class="java.lang.String"/>
+	<field name="ad_actr_fax" class="java.lang.String"/>
+	<field name="ad_actr_identity_no" class="java.lang.String"/>
+	<field name="ad_actr_mobile" class="java.lang.String"/>
+	<field name="ad_actr_name" class="java.lang.String"/>
+	<field name="ad_actr_phone" class="java.lang.String"/>
+	<field name="ad_stdn_memo" class="java.lang.String"/>
+	<field name="ad_stdn_no_id" class="java.lang.String"/>
+	<field name="ad_stdn_student_status" class="java.lang.Integer"/>
+	<field name="ad_stdn_id" class="java.lang.Long"/>
+	<field name="ad_stdn_cohort_id" class="java.lang.Long"/>
+	<field name="ad_stdn_study_mode_id" class="java.lang.Long"/>
+	<field name="ad_stdn_balance" class="java.math.BigDecimal"/>
+	<field name="ad_stdn_outstanding" class="java.lang.Boolean"/>
+	<field name="ad_chrt_id" class="java.lang.Long"/>
+	<field name="ad_chrt_classification" class="java.lang.Integer"/>
+	<field name="ad_chrt_code" class="java.lang.String"/>
+	<field name="ad_chrt_description" class="java.lang.String"/>
+	<field name="ad_chrt_curriculum_id" class="java.lang.Long"/>
+	<field name="ad_chrt_program_id" class="java.lang.Long"/>
+	<field name="ad_chrt_session_id" class="java.lang.Long"/>
+	<field name="ad_addr_id" class="java.lang.Long"/>
+	<field name="ad_addr_address1" class="java.lang.String"/>
+	<field name="ad_addr_address2" class="java.lang.String"/>
+	<field name="ad_addr_address3" class="java.lang.String"/>
+	<field name="ad_addr_postcode" class="java.lang.String"/>
+	<field name="ad_addr_address_type" class="java.lang.Integer"/>
+	<field name="ad_addr_country_code_id" class="java.lang.Long"/>
+	<field name="ad_addr_dun_code_id" class="java.lang.Long"/>
+	<field name="ad_addr_parliament_code_id" class="java.lang.Long"/>
+	<field name="ad_addr_state_code_id" class="java.lang.Long"/>
+	<field name="ad_addr_student_id" class="java.lang.Long"/>
+	<variable name="ad_crse_credit_1" class="java.lang.Integer" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{ad_crse_credit}]]></variableExpression>
+	</variable>
+	<filterExpression><![CDATA[$F{ad_actr_identity_no}.equals( $P{identity_no} )&&
+$F{ad_acdm_sesn_code}.equals( $P{session_code} )]]></filterExpression>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="242" splitType="Stretch">
+			<staticText>
+				<reportElement x="51" y="63" width="259" height="20" uuid="b35434cf-1b93-411d-8e68-969779bbeef9"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[16300 BACHOK, KELANTAN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="51" y="79" width="257" height="20" uuid="c8d21e0d-a93d-4693-8e83-976d6ea7df86"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[TEL:09-7797003/7004/ 7010/ 7013/ 7014/ 7026/ 7027  ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="52" y="9" width="464" height="20" uuid="d9a80061-85f7-48dd-8e64-414b356957ef"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[PEJABAT TIMBALAN NAIB CANSELOR (AKADEMIK & ANTARABANGSA)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="52" y="37" width="238" height="20" uuid="b171603a-725a-4701-a4a3-5aeaf4e4244c"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[UNIVERSITI MALAYSIA KELANTAN]]></text>
+			</staticText>
+			<image>
+				<reportElement x="4" y="10" width="74" height="87" uuid="c87b3229-fcdc-4252-9894-dd4dbf615933"/>
+				<imageExpression><![CDATA["C:\\Users\\PAMS05\\git\\academic\\back\\src\\main\\resources\\reports\\img\\logo_universiti_malaysia_kelantan.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="51" y="23" width="238" height="20" uuid="11099d13-a329-4fcc-951b-37f5c49f50e5"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[BAHAGIAN PENTADBIRAN AKADEMIK]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="52" y="51" width="227" height="20" uuid="d8011c56-917d-4dde-ab49-a3eb16bd4fe7"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[KARUNG BERKUNCI NO. 01,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="52" y="94" width="256" height="20" uuid="81a52da2-6a5d-4608-b978-8e01303a4bb9"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[FAKS:09-7797002]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="116" width="554" height="1" uuid="3fe8a73f-bda8-4a32-9951-e154031c7b59"/>
+			</line>
+			<textField>
+				<reportElement x="0" y="123" width="209" height="20" uuid="54b80e5c-e886-468d-b902-0540983d9bbc"/>
+				<textElement>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ad_actr_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="453" y="123" width="101" height="20" uuid="f7aa5bf7-5567-46c1-a14a-c6b7fa16faf8"/>
+				<textElement>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ad_actr_identity_no}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd-MMM-yyyy">
+				<reportElement x="455" y="152" width="100" height="20" uuid="006cf4ab-58cf-433d-b005-70fc7de5f75f"/>
+				<textElement>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="213" width="100" height="20" uuid="0ee99b35-48e6-450c-a726-8a43be939d6c"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Saudari,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="335" y="123" width="100" height="20" uuid="f30945a2-3f63-4cb8-8e98-d8676aa5ada2"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Rujukan Tuan        :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="335" y="137" width="100" height="20" uuid="b4521775-8557-4ea1-a26f-2815bb5cd09d"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Rujukan Kami        :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="335" y="152" width="100" height="20" uuid="6703dd72-7429-4ea6-ba88-2e817a6fa607"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Tarikh                    :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="137" width="209" height="20" uuid="f5924531-85f5-44f7-8c36-c6cf285050ea"/>
+				<textElement>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ad_addr_address1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="152" width="100" height="20" uuid="3b34a020-c0b9-4109-bce9-846401c6d07e"/>
+				<textElement>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ad_addr_address2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="32" y="169" width="100" height="20" uuid="8d2cabe2-56df-4a5d-9e54-6f447129dfeb"/>
+				<textElement>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ad_addr_address3}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="169" width="48" height="20" uuid="f3fed9f6-a248-43ed-a9b8-980ccc112da4"/>
+				<textElement>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ad_addr_postcode}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="183" width="51" height="20" uuid="0ba78b2e-b575-4c2e-9c20-b12098b2ca1a"/>
+				<textElement>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ad_addr_state_code_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="453" y="139" width="101" height="20" uuid="14aa68af-d824-4668-a94f-a034fa5632d8"/>
+				<textElement>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ad_actr_identity_no}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="112" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="554" height="20" uuid="b2cde419-d663-46c3-87ac-fececcb7114d"/>
+				<textElement>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[JEMPUTAN KE ISTIADAT KONVOKESYEN KALI KE-7 UNIVERSITI MALAYSIA KELANTAN (UMK)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="20" width="554" height="18" uuid="98504cd3-2171-4950-94ef-979365040f1e"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Pihak Universiti merakamkan ucapan tahniah di atas kejayaan saudara/i menamatkan pengajian di UMK dengan jayanya. Sukacita]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="32" width="554" height="18" uuid="2a4c6de1-42fd-45ad-9838-94a6d69f1204"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Sukacita dimaklumkan saudara/i dijemput ke istiadat Konvokesyen UMK sepertimana ketetapan berikut:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="132" y="56" width="100" height="20" uuid="d41f553f-00c8-4627-9851-0d57b04f6932"/>
+				<textElement>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tarikh                :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="132" y="79" width="100" height="20" uuid="aab361bd-a296-4841-ac9e-573ac034b775"/>
+				<textElement>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tempat              :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="132" y="67" width="100" height="20" uuid="ed4b670d-ef25-4e92-a464-3587b1f37a16"/>
+				<textElement>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Masa                  :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="132" y="91" width="100" height="20" uuid="784758dd-47a8-4c9b-a28a-22cbefa98b54"/>
+				<textElement>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Kadar Bayaran :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="232" y="56" width="100" height="20" uuid="0f99f280-d0a6-4c18-bce2-c7b47921e0a0"/>
+				<textElement>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[9 OKTOBER 2017]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="232" y="67" width="100" height="20" uuid="653e7aae-efb6-4e55-9435-b80ad43c26c2"/>
+				<textElement>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[7.15 PAGI]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="232" y="79" width="323" height="20" uuid="4f3813c7-f14e-4b55-aced-ceb6d0e5f40b"/>
+				<textElement>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DEWAN KEUSAHAWANAN, UMK KAMPUS KOTA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="232" y="91" width="100" height="20" uuid="e0590ca3-7c1b-4641-a6b3-846a6d412a92"/>
+				<textElement>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[RM270.00]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="273" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="555" height="273" uuid="9da80421-16ec-4280-965a-5adde92f88ba"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="20" uuid="b9357489-998a-4d39-89d7-98d62eb6f705"/>
+				<textElement>
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MUSTAHAK]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="20" width="554" height="18" uuid="d48a6ee1-37ae-4592-873e-8397b229f2b5"/>
+				<textElement textAlignment="Justified"/>
+				<text><![CDATA[ 1. Pengesahan kehadiran boleh dibuat mulai 10 SEPTEMBER 2017 (AHAD) hingga  5 OKTOBER 2017 (Khamis) mulai laman ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="34" width="554" height="18" uuid="5943171e-d7e3-41b7-89a8-9a5a8863d9eb"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[ laman sesawang http://egraduasi.umk.edu.my]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="54" width="554" height="18" uuid="bdd03cae-3da1-4e55-91f7-3932f68354b7"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[ 2. Tarikh raptai Istiadat Konvokesyen Kali ke-7 UMK ialah pada 8 OKTOBER 2017 (Ahad) jam 8.00 pagi bertempat di Dewan  ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="67" width="554" height="18" uuid="5a2add22-366d-4565-a99b-5c4a5acd1ec1"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[ Keusahawanan , Universiti Malaysia Kelantan, Kampus Kota, Pengkalan Chepa.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="89" width="554" height="18" uuid="8bc32db8-3e15-4dde-abe2-6ca1b27cd143"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[ 3. Maklumat sesi Istiadat Konvokesyen, tarikh, masa dan tempat pengambilan dan pemulangan pakaian konvokesyen adalah ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="104" width="554" height="18" uuid="cc9c9473-dd34-4a68-a591-869333150d48"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[ adalah sepertimana tercatat dalam Buku Peraturan dan Syarat Istiadat Konvokesyen Kali ke-7 UMK yang boleh didapati di laman]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="117" width="554" height="18" uuid="20a8c594-6120-417a-9069-c7b514cd6eea"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[ laman sesawang http://konvo.umk.edu.my/konvo/]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="135" width="554" height="18" uuid="806613b3-dc82-477c-91ae-70f0525e64f7"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[ 4. Graduan yang masih berhutang dengan pihak Universiti dikehendaki menjelaskan hutang masing-masing selewat-lewatnya pada ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="147" width="554" height="18" uuid="1cdc535d-7d73-480b-86b6-0d4ab7334773"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[ pada 5 OKTOBER 2017 (Khamis) . Sila pastikan setiap pembayaran dibuktikan dengan resit. Jika pembayaran tidak dibuat dalam]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="162" width="554" height="18" uuid="838b8854-0385-4666-8733-8ebc16055c16"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[ dalam tempoh yang ditetapkan, sijil dan transkrip akan ditahan. Sebarang pertanyaan mengenai perkaran ini, sila hubungi:-]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="5" y="182" width="554" height="18" uuid="7ddead6a-360e-4e96-9fce-5eab81392850"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[ i) Bahagian Terimaan & Kewangan Pelajar Pejabat Bendahari 09-7717105 (Kampus Kota)/ 09-7797045 (Kampus Bachok)/ 09-9477228 (Kampus Jeli) ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="12" y="198" width="554" height="18" uuid="f3950861-61cd-4c02-b809-6918d9cdc813"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[ 09-9477228 (Kampus Jeli), ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="5" y="213" width="554" height="18" uuid="16b241d6-30f1-43cc-908c-33e01fc4fbb3"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[ ii) Pejabat Perpustakaan & Pengurusan Ilmu 09-7717199 (Kampus Kota)/ 09-7797200 (Kampus Bachok) / 09-9477236 (Kampus Jei)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="226" width="554" height="18" uuid="b1651aae-ea48-4c09-85e4-dec779888413"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[  (Kampus Jeli)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="248" width="554" height="18" uuid="41c6b3a7-3ef4-4105-a09d-d096a6301033"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[ 5. Surat jemputan ini hendaklah dibawa semasa mengambil pakaian konvokesyen dan pada hari pendaftaran.]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<columnFooter>
+		<band height="155" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="246" height="20" uuid="a8b52902-8b08-4e24-bba5-905cc2745eef"/>
+				<text><![CDATA[Sekian, terima kasih.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="20" width="246" height="20" uuid="2250065f-442a-4b22-a0d0-79db7337c4b0"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA["BERKHIDMAT UNTUK NEGARA"]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="40" width="246" height="20" uuid="26fbfafc-150b-41b5-8bad-7eab76e839d2"/>
+				<text><![CDATA[Saya yang menurut perintah,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="103" width="246" height="20" uuid="104072e6-4bea-435e-a393-4920dd1b1451"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[PAUZI BIN PAK CHU]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="117" width="246" height="20" uuid="f35cf523-3f65-45f1-b398-4de3dd2dde02"/>
+				<text><![CDATA[Pendaftar]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="131" width="246" height="20" uuid="e980a14e-0461-443b-8fd0-9f8a92b3e950"/>
+				<text><![CDATA[Universiti  Malaysia Kelantan]]></text>
+			</staticText>
+		</band>
+	</columnFooter>
+</jasperReport>
