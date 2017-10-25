@@ -1,0 +1,612 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reportAkhirNew" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="833aeb46-bbba-4d7c-aa22-f2a8dfbd7612">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="29"/>
+	<parameter name="section_code" class="java.lang.String"/>
+	<parameter name="session_code" class="java.lang.String"/>
+	<parameter name="section_canonicalCode" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     ad_enmt."id" AS ad_enmt_id,
+     ad_enmt."standing" AS ad_enmt_standing,
+     ad_enmt."status" AS ad_enmt_status,
+     ad_enmt."total_score" AS ad_enmt_total_score,
+     ad_enmt."admission_id" AS ad_enmt_admission_id,
+     ad_enmt."grade_code_id" AS ad_enmt_grade_code_id,
+     ad_enmt."section_id" AS ad_enmt_section_id,
+     ad_admn."id" AS ad_admn_id,
+     ad_admn."cgpa" AS ad_admn_cgpa,
+     ad_admn."credit_earned" AS ad_admn_credit_earned,
+     ad_admn."credit_taken" AS ad_admn_credit_taken,
+     ad_admn."gpa" AS ad_admn_gpa,
+     ad_admn."ordinal" AS ad_admn_ordinal,
+     ad_admn."standing" AS ad_admn_standing,
+     ad_admn."status" AS ad_admn_status,
+     ad_admn."cohort_id" AS ad_admn_cohort_id,
+     ad_admn."session_id" AS ad_admn_session_id,
+     ad_admn."student_id" AS ad_admn_student_id,
+     ad_admn."advisor_id" AS ad_admn_advisor_id,
+     ad_admn."study_center_id" AS ad_admn_study_center_id,
+     ad_sctn."id" AS ad_sctn_id,
+     ad_sctn."canonical_code" AS ad_sctn_canonical_code,
+     ad_sctn."capacity" AS ad_sctn_capacity,
+     ad_sctn."code" AS ad_sctn_code,
+     ad_sctn."ordinal" AS ad_sctn_ordinal,
+     ad_sctn."offering_id" AS ad_sctn_offering_id,
+     ad_acdm_sesn."id" AS ad_acdm_sesn_id,
+     ad_acdm_sesn."code" AS ad_acdm_sesn_code,
+     ad_acdm_sesn."current_" AS ad_acdm_sesn_current_,
+     ad_acdm_sesn."description" AS ad_acdm_sesn_description,
+     ad_acdm_sesn."end_date" AS ad_acdm_sesn_end_date,
+     ad_acdm_sesn."semester" AS ad_acdm_sesn_semester,
+     ad_acdm_sesn."start_date" AS ad_acdm_sesn_start_date,
+     ad_acdm_sesn."status" AS ad_acdm_sesn_status,
+     ad_acdm_sesn."previous_id" AS ad_acdm_sesn_previous_id,
+     ad_acdm_sesn."year_id" AS ad_acdm_sesn_year_id,
+     ad_ofrg."id" AS ad_ofrg_id,
+     ad_ofrg."canonical_code" AS ad_ofrg_canonical_code,
+     ad_ofrg."capacity" AS ad_ofrg_capacity,
+     ad_ofrg."code" AS ad_ofrg_code,
+     ad_ofrg."title_en" AS ad_ofrg_title_en,
+     ad_ofrg."title_ms" AS ad_ofrg_title_ms,
+     ad_ofrg."course_id" AS ad_ofrg_course_id,
+     ad_ofrg."program_id" AS ad_ofrg_program_id,
+     ad_ofrg."session_id" AS ad_ofrg_session_id,
+     ad_stdn."memo" AS ad_stdn_memo,
+     ad_stdn."no_id" AS ad_stdn_no_id,
+     ad_stdn."student_status" AS ad_stdn_student_status,
+     ad_stdn."id" AS ad_stdn_id,
+     ad_stdn."cohort_id" AS ad_stdn_cohort_id,
+     ad_stdn."study_mode_id" AS ad_stdn_study_mode_id,
+     ad_stdn."balance" AS ad_stdn_balance,
+     ad_stdn."outstanding" AS ad_stdn_outstanding,
+     ad_actr."id" AS ad_actr_id,
+     ad_actr."actor_type" AS ad_actr_actor_type,
+     ad_actr."email" AS ad_actr_email,
+     ad_actr."fax" AS ad_actr_fax,
+     ad_actr."identity_no" AS ad_actr_identity_no,
+     ad_actr."mobile" AS ad_actr_mobile,
+     ad_actr."name" AS ad_actr_name,
+     ad_actr."phone" AS ad_actr_phone,
+     ad_prgm."id" AS ad_prgm_id,
+     ad_prgm."code" AS ad_prgm_code,
+     ad_prgm."status" AS ad_prgm_status,
+     ad_prgm."title_en" AS ad_prgm_title_en,
+     ad_prgm."title_ms" AS ad_prgm_title_ms,
+     ad_prgm."faculty_id" AS ad_prgm_faculty_id,
+     ad_prgm."level_id" AS ad_prgm_level_id,
+     ad_fcty."id" AS ad_fcty_id,
+     ad_fcty."code" AS ad_fcty_code,
+     ad_fcty."description" AS ad_fcty_description,
+     ad_fcty."c_ts" AS ad_fcty_c_ts,
+     ad_fcty."c_id" AS ad_fcty_c_id,
+     ad_fcty."d_ts" AS ad_fcty_d_ts,
+     ad_fcty."d_id" AS ad_fcty_d_id,
+     ad_fcty."m_ts" AS ad_fcty_m_ts,
+     ad_fcty."m_id" AS ad_fcty_m_id,
+     ad_fcty."m_st" AS ad_fcty_m_st,
+     ad_fcty."name" AS ad_fcty_name,
+     ad_fcty."prefix" AS ad_fcty_prefix,
+     ad_fcty."status" AS ad_fcty_status,
+     ad_actr_A."id" AS ad_actr_A_id,
+     ad_actr_A."actor_type" AS ad_actr_A_actor_type,
+     ad_actr_A."email" AS ad_actr_A_email,
+     ad_actr_A."fax" AS ad_actr_A_fax,
+     ad_actr_A."identity_no" AS ad_actr_A_identity_no,
+     ad_actr_A."mobile" AS ad_actr_A_mobile,
+     ad_actr_A."name" AS ad_actr_A_name,
+     ad_actr_A."phone" AS ad_actr_A_phone,
+     ad_apmt."id" AS ad_apmt_id,
+     ad_apmt."c_ts" AS ad_apmt_c_ts,
+     ad_apmt."status" AS ad_apmt_status,
+     ad_apmt."section_id" AS ad_apmt_section_id,
+     ad_apmt."staff_id" AS ad_apmt_staff_id,
+     ad_staf."staff_type" AS ad_staf_staff_type,
+     ad_staf."id" AS ad_staf_id,
+     ad_staf."title" AS ad_staf_title,
+     ad_staf."faculty_id" AS ad_staf_faculty_id,
+     ad_staf."program_id" AS ad_staf_program_id
+FROM
+     "public"."ad_admn" ad_admn INNER JOIN "public"."ad_enmt" ad_enmt ON ad_admn."id" = ad_enmt."admission_id"
+     INNER JOIN "public"."ad_sctn" ad_sctn ON ad_enmt."section_id" = ad_sctn."id"
+     INNER JOIN "public"."ad_ofrg" ad_ofrg ON ad_sctn."offering_id" = ad_ofrg."id"
+     INNER JOIN "public"."ad_apmt" ad_apmt ON ad_sctn."id" = ad_apmt."section_id"
+     INNER JOIN "public"."ad_actr" ad_actr_A ON ad_apmt."staff_id" = ad_actr_A."id"
+     INNER JOIN "public"."ad_staf" ad_staf ON ad_apmt."staff_id" = ad_staf."id"
+     INNER JOIN "public"."ad_prgm" ad_prgm ON ad_ofrg."program_id" = ad_prgm."id"
+     INNER JOIN "public"."ad_acdm_sesn" ad_acdm_sesn ON ad_ofrg."session_id" = ad_acdm_sesn."id"
+     INNER JOIN "public"."ad_fcty" ad_fcty ON ad_prgm."faculty_id" = ad_fcty."id"
+     INNER JOIN "public"."ad_stdn" ad_stdn ON ad_admn."student_id" = ad_stdn."id"
+     INNER JOIN "public"."ad_actr" ad_actr ON ad_stdn."id" = ad_actr."id"
+WHERE
+     ad_sctn."code" = $P{section_code}
+ AND ad_acdm_sesn."code" = $P{session_code}
+ AND ad_sctn."canonical_code" = $P{section_canonicalCode}]]>
+	</queryString>
+	<field name="ad_enmt_id" class="java.lang.Long"/>
+	<field name="ad_enmt_standing" class="java.lang.Integer"/>
+	<field name="ad_enmt_status" class="java.lang.Integer"/>
+	<field name="ad_enmt_total_score" class="java.math.BigDecimal"/>
+	<field name="ad_enmt_admission_id" class="java.lang.Long"/>
+	<field name="ad_enmt_grade_code_id" class="java.lang.Long"/>
+	<field name="ad_enmt_section_id" class="java.lang.Long"/>
+	<field name="ad_admn_id" class="java.lang.Long"/>
+	<field name="ad_admn_cgpa" class="java.math.BigDecimal"/>
+	<field name="ad_admn_credit_earned" class="java.lang.Integer"/>
+	<field name="ad_admn_credit_taken" class="java.lang.Integer"/>
+	<field name="ad_admn_gpa" class="java.math.BigDecimal"/>
+	<field name="ad_admn_ordinal" class="java.lang.Integer"/>
+	<field name="ad_admn_standing" class="java.lang.Integer"/>
+	<field name="ad_admn_status" class="java.lang.Integer"/>
+	<field name="ad_admn_cohort_id" class="java.lang.Long"/>
+	<field name="ad_admn_session_id" class="java.lang.Long"/>
+	<field name="ad_admn_student_id" class="java.lang.Long"/>
+	<field name="ad_admn_advisor_id" class="java.lang.Long"/>
+	<field name="ad_admn_study_center_id" class="java.lang.Long"/>
+	<field name="ad_sctn_id" class="java.lang.Long"/>
+	<field name="ad_sctn_canonical_code" class="java.lang.String"/>
+	<field name="ad_sctn_capacity" class="java.lang.Integer"/>
+	<field name="ad_sctn_code" class="java.lang.String"/>
+	<field name="ad_sctn_ordinal" class="java.lang.Integer"/>
+	<field name="ad_sctn_offering_id" class="java.lang.Long"/>
+	<field name="ad_acdm_sesn_id" class="java.lang.Long"/>
+	<field name="ad_acdm_sesn_code" class="java.lang.String"/>
+	<field name="ad_acdm_sesn_current_" class="java.lang.Boolean"/>
+	<field name="ad_acdm_sesn_description" class="java.lang.String"/>
+	<field name="ad_acdm_sesn_end_date" class="java.sql.Date"/>
+	<field name="ad_acdm_sesn_semester" class="java.lang.String"/>
+	<field name="ad_acdm_sesn_start_date" class="java.sql.Date"/>
+	<field name="ad_acdm_sesn_status" class="java.lang.Integer"/>
+	<field name="ad_acdm_sesn_previous_id" class="java.lang.Long"/>
+	<field name="ad_acdm_sesn_year_id" class="java.lang.Long"/>
+	<field name="ad_ofrg_id" class="java.lang.Long"/>
+	<field name="ad_ofrg_canonical_code" class="java.lang.String"/>
+	<field name="ad_ofrg_capacity" class="java.lang.Integer"/>
+	<field name="ad_ofrg_code" class="java.lang.String"/>
+	<field name="ad_ofrg_title_en" class="java.lang.String"/>
+	<field name="ad_ofrg_title_ms" class="java.lang.String"/>
+	<field name="ad_ofrg_course_id" class="java.lang.Long"/>
+	<field name="ad_ofrg_program_id" class="java.lang.Long"/>
+	<field name="ad_ofrg_session_id" class="java.lang.Long"/>
+	<field name="ad_stdn_memo" class="java.lang.String"/>
+	<field name="ad_stdn_no_id" class="java.lang.String"/>
+	<field name="ad_stdn_student_status" class="java.lang.Integer"/>
+	<field name="ad_stdn_id" class="java.lang.Long"/>
+	<field name="ad_stdn_cohort_id" class="java.lang.Long"/>
+	<field name="ad_stdn_study_mode_id" class="java.lang.Long"/>
+	<field name="ad_stdn_balance" class="java.math.BigDecimal"/>
+	<field name="ad_stdn_outstanding" class="java.lang.Boolean"/>
+	<field name="ad_actr_id" class="java.lang.Long"/>
+	<field name="ad_actr_actor_type" class="java.lang.Integer"/>
+	<field name="ad_actr_email" class="java.lang.String"/>
+	<field name="ad_actr_fax" class="java.lang.String"/>
+	<field name="ad_actr_identity_no" class="java.lang.String"/>
+	<field name="ad_actr_mobile" class="java.lang.String"/>
+	<field name="ad_actr_name" class="java.lang.String"/>
+	<field name="ad_actr_phone" class="java.lang.String"/>
+	<field name="ad_prgm_id" class="java.lang.Long"/>
+	<field name="ad_prgm_code" class="java.lang.String"/>
+	<field name="ad_prgm_status" class="java.lang.Integer"/>
+	<field name="ad_prgm_title_en" class="java.lang.String"/>
+	<field name="ad_prgm_title_ms" class="java.lang.String"/>
+	<field name="ad_prgm_faculty_id" class="java.lang.Long"/>
+	<field name="ad_prgm_level_id" class="java.lang.Long"/>
+	<field name="ad_fcty_id" class="java.lang.Long"/>
+	<field name="ad_fcty_code" class="java.lang.String"/>
+	<field name="ad_fcty_description" class="java.lang.String"/>
+	<field name="ad_fcty_c_ts" class="java.sql.Timestamp"/>
+	<field name="ad_fcty_c_id" class="java.lang.Long"/>
+	<field name="ad_fcty_d_ts" class="java.sql.Timestamp"/>
+	<field name="ad_fcty_d_id" class="java.lang.Long"/>
+	<field name="ad_fcty_m_ts" class="java.sql.Timestamp"/>
+	<field name="ad_fcty_m_id" class="java.lang.Long"/>
+	<field name="ad_fcty_m_st" class="java.lang.Integer"/>
+	<field name="ad_fcty_name" class="java.lang.String"/>
+	<field name="ad_fcty_prefix" class="java.lang.String"/>
+	<field name="ad_fcty_status" class="java.lang.Integer"/>
+	<field name="ad_actr_a_id" class="java.lang.Long"/>
+	<field name="ad_actr_a_actor_type" class="java.lang.Integer"/>
+	<field name="ad_actr_a_email" class="java.lang.String"/>
+	<field name="ad_actr_a_fax" class="java.lang.String"/>
+	<field name="ad_actr_a_identity_no" class="java.lang.String"/>
+	<field name="ad_actr_a_mobile" class="java.lang.String"/>
+	<field name="ad_actr_a_name" class="java.lang.String"/>
+	<field name="ad_actr_a_phone" class="java.lang.String"/>
+	<field name="ad_apmt_id" class="java.lang.Long"/>
+	<field name="ad_apmt_c_ts" class="java.sql.Timestamp"/>
+	<field name="ad_apmt_status" class="java.lang.Integer"/>
+	<field name="ad_apmt_section_id" class="java.lang.Long"/>
+	<field name="ad_apmt_staff_id" class="java.lang.Long"/>
+	<field name="ad_staf_staff_type" class="java.lang.Integer"/>
+	<field name="ad_staf_id" class="java.lang.Long"/>
+	<field name="ad_staf_title" class="java.lang.String"/>
+	<field name="ad_staf_faculty_id" class="java.lang.Long"/>
+	<field name="ad_staf_program_id" class="java.lang.Long"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="176" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Transparent" x="262" y="2" width="275" height="20" backcolor="#FFFFFF" uuid="909b5952-b190-4d80-8b65-341f4a4cba21"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MASTER OF BUSINESS ADMINISTRATION]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="410" y="121" width="70" height="15" uuid="bfccea49-1847-40dd-8aeb-1de9b1e1b0c6"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FACULTY     :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Transparent" x="351" y="22" width="100" height="20" backcolor="#FFFFFF" uuid="24bdafea-c408-4845-8a47-bd29d56c6220"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SESI AKADEMIK]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="410" y="103" width="70" height="17" uuid="7c6566aa-4400-40d7-94fd-44ea0117434d"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PROGRAM   :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="101" y="85" width="108" height="16" uuid="728e0dd9-0781-4c1b-a3bc-1a4c95cc0dfa"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SUBJECT                  : ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="101" y="100" width="108" height="20" uuid="639d669d-977a-4699-ad88-75ea64d51a4c"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CODE                        :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="410" y="85" width="70" height="20" uuid="6b636077-1a48-49aa-a3ef-c30b1b1b2e55"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SECTION      :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="101" y="118" width="108" height="20" uuid="ebd310a8-15fe-41fc-b825-f4b7f1d7272c"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ACADEMIC SESSION :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="101" y="137" width="108" height="20" uuid="3b1dc606-823f-481d-a1b5-5863822619d6"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[LECTURER                :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="212" y="101" width="197" height="20" uuid="f293fb53-29b4-4fea-8142-6e5a5ffc3f6d"/>
+				<textFieldExpression><![CDATA[$F{ad_sctn_code}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="211" y="121" width="198" height="20" uuid="0c9a3ace-ad33-4b53-9001-2290ba060fec"/>
+				<textFieldExpression><![CDATA[$F{ad_acdm_sesn_code}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="480" y="85" width="268" height="20" uuid="8942290b-e854-4425-8172-932462216375"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{ad_sctn_ordinal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="211" y="85" width="198" height="20" uuid="4dc98068-180e-4c07-8f0a-6b32c4ac5389"/>
+				<textFieldExpression><![CDATA[$F{ad_ofrg_title_en}.toUpperCase()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="480" y="102" width="268" height="20" uuid="7780b68c-e42d-4ca5-bdc9-7edf9d0a2590"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{ad_prgm_title_en}.toUpperCase()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="480" y="118" width="268" height="20" uuid="a4d09e87-52af-4fd2-b08a-cc4a507431df"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{ad_fcty_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="281" y="140" width="274" height="20" uuid="516ab2c9-6dd7-484f-a7d4-ecc522537753"/>
+				<textFieldExpression><![CDATA[$F{ad_actr_a_name}.toUpperCase()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="211" y="140" width="70" height="20" uuid="86faed17-481d-4e97-8c61-75c0b047df15"/>
+				<textFieldExpression><![CDATA[$F{ad_staf_title}.toUpperCase()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="281" y="22" width="70" height="20" uuid="680d8c00-bfd0-49b2-a305-1fe1642a5894"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($F{ad_acdm_sesn_semester}.equals( "0" )? "SEMESTER 1 SEPTEMBER":
+$F{ad_acdm_sesn_semester}.equals( "1" )? "SEMESTER 2 FEBRUARI":
+$F{ad_acdm_sesn_semester}.equals( "2" )? "SEMESTER 3 DISEMBER":
+"OTHERS")]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="451" y="22" width="100" height="20" uuid="d3f8120a-968b-44ed-8780-09e2fa865d95"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Arial" size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ad_acdm_sesn_code}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="18" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="409" y="1" width="67" height="16" backcolor="#CCCCCC" uuid="5432d443-dd43-4657-bd35-f05f5a54ea98"/>
+				<box>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PHONE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="269" y="1" width="140" height="16" backcolor="#CCCCCC" uuid="cdf73409-c1a1-4f35-ab57-8921c667e33c"/>
+				<box>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[EMAIL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="199" y="1" width="70" height="16" backcolor="#CCCCCC" uuid="a7d1627f-a896-4b48-bdd6-194ff832c309"/>
+				<box>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MATRIC NO.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="24" y="1" width="175" height="16" backcolor="#CCCCCC" uuid="20b128c9-8eee-4af5-9ea0-ea3e4485e72f"/>
+				<box>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NAMA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="1" width="24" height="16" backcolor="#CCCCCC" uuid="a039854a-7c0c-48bb-b90c-373d4df8cc7f"/>
+				<box>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NO. ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="476" y="1" width="79" height="16" backcolor="#CCCCCC" uuid="775ba204-424e-48e3-8234-231909ec4e35"/>
+				<box>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[WEEK 1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="555" y="1" width="79" height="16" backcolor="#CCCCCC" uuid="e5464eec-4560-4d1f-9c5a-7e021289f4ea"/>
+				<box>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[WEEK 2]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="633" y="1" width="79" height="16" backcolor="#CCCCCC" uuid="1d0a1c26-cfec-4ff2-b070-4b32f9576c54"/>
+				<box>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[WEEK 3]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="712" y="1" width="79" height="16" backcolor="#CCCCCC" uuid="d2ab1577-7710-4eab-94d0-6b10fbc93f21"/>
+				<box>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[WEEK 4]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement x="476" y="0" width="79" height="20" uuid="ebf0e05f-7725-4e9d-b93a-7041cf7c592b"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="9"/>
+				</textElement>
+			</textField>
+			<rectangle>
+				<reportElement x="0" y="0" width="24" height="20" uuid="5f69e18f-af73-456b-8558-782b3a1581a2"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<textField isBlankWhenNull="true">
+				<reportElement x="555" y="0" width="78" height="20" uuid="8df9c7bf-f842-4868-9163-7dd2f16a304f"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="9"/>
+				</textElement>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="633" y="0" width="79" height="20" uuid="1c3adca3-7e54-488c-8304-40cb93bfd124"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="9"/>
+				</textElement>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="712" y="0" width="79" height="20" uuid="8ab581d4-bbc0-4bc3-ac4e-841644089f0a"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="9"/>
+				</textElement>
+			</textField>
+			<textField>
+				<reportElement x="24" y="0" width="175" height="20" uuid="e9c16bea-343c-4877-b6d6-53823e717205"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{ad_actr_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="199" y="0" width="70" height="20" uuid="a7384759-3b1e-49b6-bce6-7469b960ab53"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{ad_actr_identity_no}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="269" y="0" width="141" height="20" uuid="13c7c330-cff2-4f03-a10d-9534e4c0a11d"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{ad_actr_email}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="410" y="0" width="66" height="20" uuid="476c10e0-ac58-4107-8d22-f7965f6ebf1c"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{ad_actr_phone}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="24" height="20" uuid="e5f268d9-fbf6-49d3-b1a9-f75ebbd80a70"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textFieldExpression><![CDATA[$V{COLUMN_COUNT}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="14" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="21" splitType="Stretch">
+			<staticText>
+				<reportElement x="269" y="0" width="211" height="20" uuid="0a07443d-322f-435e-b57a-f89e1d30fc2f"/>
+				<text><![CDATA[This is computer generated report by MGSEB UMK ]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="29" splitType="Stretch"/>
+	</summary>
+</jasperReport>
