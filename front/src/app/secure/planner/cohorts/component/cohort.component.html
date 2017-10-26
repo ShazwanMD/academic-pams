@@ -101,6 +101,41 @@
   
       </md-tab>
       
+       <md-tab label="Curriculum Detail"><br>
+        <div layout="column" class="inset">
+          <div layout="row" class="pad-bottom">
+            <span flex="15">Code</span>
+            <span>{{cohort?.curriculum?.code}}</span>
+          </div>
+
+          <div layout="row" class="pad-bottom">
+            <span flex="15">Core Credit</span>
+            <span>{{cohort?.curriculum?.coreCredit}}</span>
+          </div>
+
+          <div layout="row" class="pad-bottom">
+            <span flex="15">Elective Credit</span>
+            <span>{{cohort?.curriculum?.electiveCredit}} </span>
+          </div>
+          
+            <div layout="row" class="pad-bottom">
+            <span flex="15">Maximum Period</span>
+            <span>{{cohort?.curriculum?.maxPeriod}} </span>
+          </div>
+
+          <div layout="row" class="pad-bottom">
+            <span flex="15">Period</span>
+            <span>{{cohort?.curriculum?.period}} </span>
+          </div>
+          
+            <div layout="row" class="pad-bottom">
+            <span flex="15">Total Credit</span>
+            <span>{{cohort?.curriculum?.totalCredit}}</span>
+          </div>
+        </div>
+  
+      </md-tab>
+      
     </md-tab-group>
   </md-card-content>
   <!-- <md-card-actions layout-align="end center">
