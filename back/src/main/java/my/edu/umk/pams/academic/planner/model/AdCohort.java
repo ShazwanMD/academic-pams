@@ -1,6 +1,4 @@
 package my.edu.umk.pams.academic.planner.model;
-
-
 import my.edu.umk.pams.academic.core.AdMetaObject;
 
 /**

@@ -1,6 +1,7 @@
 package my.edu.umk.pams.academic.web.module.graduation.controller;
 
 import my.edu.umk.pams.academic.core.AdFlowState;
+
 import my.edu.umk.pams.academic.graduation.model.AdGraduation;
 import my.edu.umk.pams.academic.graduation.model.AdGraduationApplication;
 import my.edu.umk.pams.academic.graduation.model.AdGraduationApplicationImpl;
@@ -39,6 +40,9 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -154,44 +158,60 @@ public class GraduationController {
 		LOG.debug("Student Name:{}", student.getName());
 		LOG.debug("Cohort:{}", student.getCohort());
 
-		if (countGraduation(academicSession, student) > 0) {
-			// throw new IllegalArgumentException("Data admission already
-			// exists! Please insert new data");
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+		Date date1 = new Date();
+		Date date2 = academicSession.getGraduationEndDate();
+		System.out.println("dateFormat.format(date)" + dateFormat.format(date1));
+		System.out.println("academicSession.getGraduationEndDate()" + dateFormat.format(date2));
+		System.out.println("academicSession.getGraduationEndDate()" + academicSession.getGraduationEndDate());
 
-			System.out.println("Duplicate graduation application: " + student.getName());
+		if (date1.after(date2)) { // true (1)
+			System.out.println("Sorry,date application graduation is closed!");
 			return new ResponseEntity<String>("Duplicate", HttpStatus.OK);
 
 		} else {
 
-			AdGraduationApplication graduationApplication = new AdGraduationApplicationImpl();
-			graduationApplication.setDescription(vo.getDescription());
-			graduationApplication.setMemo(vo.getMemo());
+			System.out.println("Continue to admission new semester!");
 
-			// AdAcademicSession session =
-			// plannerService.findCurrentAcademicSession();
-			List<AdAdmission> admissions = termService.findAdmissions(academicSession, student);
-			for (AdAdmission adAdmission : admissions) {
-				LOG.debug("CGPA:" + adAdmission);
-				LOG.debug("CGPA:" + adAdmission.getCgpa());
+			if (countGraduation(academicSession, student) > 0) {
 
-				BigDecimal cgpa = adAdmission.getCgpa();
-				int creditHour = adAdmission.getCreditEarned();
-				graduationApplication.setCgpa(cgpa);
-				graduationApplication.setCreditHour(creditHour);
+				System.out.println("Duplicate graduation application: " + student.getName());
+				return new ResponseEntity<String>("Duplicate", HttpStatus.OK);
 
+			} else {
+
+				AdGraduationApplication graduationApplication = new AdGraduationApplicationImpl();
+				graduationApplication.setDescription(vo.getDescription());
+				graduationApplication.setMemo(vo.getMemo());
+
+				// AdAcademicSession session =
+				// plannerService.findCurrentAcademicSession();
+				List<AdAdmission> admissions = termService.findAdmissions(academicSession, student);
+				for (AdAdmission adAdmission : admissions) {
+					LOG.debug("CGPA:" + adAdmission);
+					LOG.debug("CGPA:" + adAdmission.getCgpa());
+
+					BigDecimal cgpa = adAdmission.getCgpa();
+					int creditHour = adAdmission.getCreditEarned();
+					graduationApplication.setCgpa(cgpa);
+					graduationApplication.setCreditHour(creditHour);
+
+				}
+
+				graduationApplication.setStudent(student);
+				graduationApplication.setSession(academicSession);
+				graduationService.startGraduationApplicationTask(graduationApplication);
+				LOG.debug("After Start:{}", graduationApplication.getCgpa());
+				LOG.debug("After Start:{}", graduationApplication.getCreditHour());
+
+				LOG.debug("Success save data: " + student.getName());
+				LOG.debug("Cohort:" + student.getCohort());
+				LOG.debug("CGPA:" + graduationApplication.getCgpa());
+				LOG.debug("Credit Hour:" + graduationApplication.getCreditHour());
 			}
 
-			graduationApplication.setStudent(student);
-			graduationApplication.setSession(academicSession);
-			graduationService.startGraduationApplicationTask(graduationApplication);
-			LOG.debug("After Start:{}",graduationApplication.getCgpa());
-			LOG.debug("After Start:{}", graduationApplication.getCreditHour());
+		} // if date2.after
 
-			LOG.debug("Success save data: " + student.getName());
-			LOG.debug("Cohort:" + student.getCohort());
-			LOG.debug("CGPA:" + graduationApplication.getCgpa());
-			LOG.debug("Credit Hour:" + graduationApplication.getCreditHour());
-		}
 		return new ResponseEntity<String>("success", HttpStatus.OK);
 	}
 
@@ -247,8 +267,8 @@ public class GraduationController {
 		System.out.println("studentCompleteTask success");
 
 	}
-	
-	//release application
+
+	// release application
 	@RequestMapping(value = "/graduationApplications/releaseTask", method = RequestMethod.POST)
 	public ResponseEntity<String> releaseGraduationApplicationTask(@RequestBody GraduationApplicationTask vo) {
 
