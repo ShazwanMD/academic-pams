@@ -138,7 +138,7 @@ public class PlannerTransformer {
         vo.setPeriod(e.getPeriod());
         vo.setMaxPeriod(e.getMaxPeriod());
         vo.setOrdinal(e.getOrdinal());
-        vo.setSubjects(plannerTransformer.toSubjectVos(e.getSubjects()));
+       // vo.setSubjects(plannerTransformer.toSubjectVos(e.getSubjects()));
         vo.setProgram(plannerTransformer.toProgramVo(e.getProgram()));
         return vo;
     }
@@ -182,7 +182,8 @@ public class PlannerTransformer {
         vo.setId(subject.getId());
         vo.setOrdinal(subject.getOrdinal());
         vo.setSubjectType(SubjectType.get(subject.getSubjectType().ordinal()));
-//        vo.setCurriculum(toCurriculumVo(subject.getCurriculum()));
+        //vo.setCurriculum(toCurriculumVo(subject.getCurriculum()));
+        vo.setCurriculum(plannerTransformer.toCurriculumVo(subject.getCurriculum()));
     
         return vo;
     }
