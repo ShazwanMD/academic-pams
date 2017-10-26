@@ -1,7 +1,7 @@
 import {MdSnackBar} from '@angular/material/snack-bar';
 import {Program} from '../../../../shared/model/planner/program.interface';
 import {Component, OnInit, ViewContainerRef} from '@angular/core';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Cohort} from '../../../../shared/model/planner/cohort.interface';
 import {CohortActions} from '../cohort.action';
@@ -59,16 +59,18 @@ export class CohortUpdateDialog implements OnInit {
   }
 
   ngOnInit(): void {
-    this.updateForm = this.formBuilder.group(<Cohort>{
-      id: null,
-      code: '',
-      description: '',
-      academicClassification: AcademicClassification.LEVEL_MASTER,
+    this.updateForm = this.formBuilder.group( {
+        id: [undefined],
+        code: [''],
+      description: [''],
+      curriculum:['', Validators.required],
+      academicClassification: [AcademicClassification.LEVEL_MASTER],
 
     });
 
     if (this.update) this.updateForm.patchValue(this._cohort);
   }
+  
 
   save(cohort: Cohort, isValid: boolean) {
     console.log(JSON.stringify(cohort));

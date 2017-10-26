@@ -836,6 +836,7 @@ public class PlannerController {
 		AdCohort cohort = plannerService.findCohortByCode(code);
 		cohort.setCode(vo.getCode());
 		cohort.setDescription(vo.getDescription());
+		cohort.setCurriculum(plannerService.findCurriculumByCode(vo.getCurriculum().getCode()));
 		plannerService.updateCohort(cohort);
 		return new ResponseEntity<String>("Success", HttpStatus.OK);
 	}

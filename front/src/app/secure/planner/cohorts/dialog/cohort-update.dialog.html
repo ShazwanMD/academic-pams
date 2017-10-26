@@ -3,7 +3,7 @@
 <md-card-subtitle>Update Cohort</md-card-subtitle>
 
 <md-dialog-content>
-  <form [formGroup]="updateForm">
+  <form [formGroup]="updateForm" novalidate>
     <div layout="column" class="inset" flex>
       <div layout="row" class="inset" flex>
         <md-input-container flex>
@@ -18,6 +18,20 @@
                  formControlName="description" flex/>
         </md-input-container>
       </div>
+      
+       <div layout="row" class="inset" flex>
+        <pams-curriculum-select
+      [placeholder]="'Select Curriculum'"
+       [innerFormControl]="updateForm.controls['curriculum']" fxFlex="calc(100%-25px)" class="pad-bottom">
+    </pams-curriculum-select>
+     <div class="tc-red-600"
+         *ngIf="updateForm.get('curriculum').invalid && updateForm.get('curriculum').touched">
+      Please add curriculum!
+    </div> 
+      
+      </div>
+      
+      
     </div>
   </form>
 </md-dialog-content>
