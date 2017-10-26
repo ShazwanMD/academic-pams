@@ -48,42 +48,10 @@
      ad_fcty."m_st" AS ad_fcty_m_st,
      ad_fcty."name" AS ad_fcty_name,
      ad_fcty."prefix" AS ad_fcty_prefix,
-     ad_fcty."status" AS ad_fcty_status,
-     ad_chrt."id" AS ad_chrt_id,
-     ad_chrt."classification" AS ad_chrt_classification,
-     ad_chrt."code" AS ad_chrt_code,
-     ad_chrt."description" AS ad_chrt_description,
-     ad_chrt."c_ts" AS ad_chrt_c_ts,
-     ad_chrt."c_id" AS ad_chrt_c_id,
-     ad_chrt."d_ts" AS ad_chrt_d_ts,
-     ad_chrt."d_id" AS ad_chrt_d_id,
-     ad_chrt."m_ts" AS ad_chrt_m_ts,
-     ad_chrt."m_id" AS ad_chrt_m_id,
-     ad_chrt."m_st" AS ad_chrt_m_st,
-     ad_chrt."curriculum_id" AS ad_chrt_curriculum_id,
-     ad_chrt."program_id" AS ad_chrt_program_id,
-     ad_chrt."session_id" AS ad_chrt_session_id,
-     ad_acdm_sesn."id" AS ad_acdm_sesn_id,
-     ad_acdm_sesn."code" AS ad_acdm_sesn_code,
-     ad_acdm_sesn."current_" AS ad_acdm_sesn_current_,
-     ad_acdm_sesn."description" AS ad_acdm_sesn_description,
-     ad_acdm_sesn."end_date" AS ad_acdm_sesn_end_date,
-     ad_acdm_sesn."semester" AS ad_acdm_sesn_semester,
-     ad_acdm_sesn."start_date" AS ad_acdm_sesn_start_date,
-     ad_acdm_sesn."status" AS ad_acdm_sesn_status,
-     ad_acdm_sesn."enroll_startdate" AS ad_acdm_sesn_enroll_startdate,
-     ad_acdm_sesn."enroll_enddate" AS ad_acdm_sesn_enroll_enddate,
-     ad_acdm_sesn."admission_startdate" AS ad_acdm_sesn_admission_startdate,
-     ad_acdm_sesn."admission_enddate" AS ad_acdm_sesn_admission_enddate,
-     ad_acdm_sesn."graduation_startdate" AS ad_acdm_sesn_graduation_startdate,
-     ad_acdm_sesn."graduation_enddate" AS ad_acdm_sesn_graduation_enddate,
-     ad_acdm_sesn."previous_id" AS ad_acdm_sesn_previous_id,
-     ad_acdm_sesn."year_id" AS ad_acdm_sesn_year_id
+     ad_fcty."status" AS ad_fcty_status
 FROM
      "public"."ad_prgm" ad_prgm INNER JOIN "public"."ad_crlm" ad_crlm ON ad_prgm."id" = ad_crlm."program_id"
      INNER JOIN "public"."ad_sbjt" ad_sbjt ON ad_crlm."id" = ad_sbjt."curriculum_id"
-     INNER JOIN "public"."ad_chrt" ad_chrt ON ad_crlm."id" = ad_chrt."curriculum_id"
-     INNER JOIN "public"."ad_acdm_sesn" ad_acdm_sesn ON ad_chrt."session_id" = ad_acdm_sesn."id"
      INNER JOIN "public"."ad_bndl_sbjt" ad_bndl_sbjt ON ad_sbjt."id" = ad_bndl_sbjt."id"
      INNER JOIN "public"."ad_bndl_sbjt_part" ad_bndl_sbjt_part ON ad_bndl_sbjt."id" = ad_bndl_sbjt_part."bundle_id"
      INNER JOIN "public"."ad_crse" ad_crse ON ad_bndl_sbjt_part."course_id" = ad_crse."id"
@@ -132,36 +100,6 @@ FROM
 	<field name="ad_fcty_name" class="java.lang.String"/>
 	<field name="ad_fcty_prefix" class="java.lang.String"/>
 	<field name="ad_fcty_status" class="java.lang.Integer"/>
-	<field name="ad_chrt_id" class="java.lang.Long"/>
-	<field name="ad_chrt_classification" class="java.lang.Integer"/>
-	<field name="ad_chrt_code" class="java.lang.String"/>
-	<field name="ad_chrt_description" class="java.lang.String"/>
-	<field name="ad_chrt_c_ts" class="java.sql.Timestamp"/>
-	<field name="ad_chrt_c_id" class="java.lang.Long"/>
-	<field name="ad_chrt_d_ts" class="java.sql.Timestamp"/>
-	<field name="ad_chrt_d_id" class="java.lang.Long"/>
-	<field name="ad_chrt_m_ts" class="java.sql.Timestamp"/>
-	<field name="ad_chrt_m_id" class="java.lang.Long"/>
-	<field name="ad_chrt_m_st" class="java.lang.Integer"/>
-	<field name="ad_chrt_curriculum_id" class="java.lang.Long"/>
-	<field name="ad_chrt_program_id" class="java.lang.Long"/>
-	<field name="ad_chrt_session_id" class="java.lang.Long"/>
-	<field name="ad_acdm_sesn_id" class="java.lang.Long"/>
-	<field name="ad_acdm_sesn_code" class="java.lang.String"/>
-	<field name="ad_acdm_sesn_current_" class="java.lang.Boolean"/>
-	<field name="ad_acdm_sesn_description" class="java.lang.String"/>
-	<field name="ad_acdm_sesn_end_date" class="java.sql.Date"/>
-	<field name="ad_acdm_sesn_semester" class="java.lang.Integer"/>
-	<field name="ad_acdm_sesn_start_date" class="java.sql.Date"/>
-	<field name="ad_acdm_sesn_status" class="java.lang.Integer"/>
-	<field name="ad_acdm_sesn_enroll_startdate" class="java.sql.Date"/>
-	<field name="ad_acdm_sesn_enroll_enddate" class="java.sql.Date"/>
-	<field name="ad_acdm_sesn_admission_startdate" class="java.sql.Date"/>
-	<field name="ad_acdm_sesn_admission_enddate" class="java.sql.Date"/>
-	<field name="ad_acdm_sesn_graduation_startdate" class="java.sql.Date"/>
-	<field name="ad_acdm_sesn_graduation_enddate" class="java.sql.Date"/>
-	<field name="ad_acdm_sesn_previous_id" class="java.lang.Long"/>
-	<field name="ad_acdm_sesn_year_id" class="java.lang.Long"/>
 	<variable name="ad_crse_credit_1" class="java.lang.Integer" resetType="Column" calculation="Sum">
 		<variableExpression><![CDATA[$F{ad_crse_credit}]]></variableExpression>
 	</variable>
@@ -256,25 +194,11 @@ FROM
 				<text><![CDATA[Faculty                   :]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="336" y="61" width="58" height="20" uuid="b0aadd7b-6b90-4d7d-9823-be4e1a781313"/>
-				<textElement>
-					<font isBold="true"/>
-				</textElement>
-				<text><![CDATA[Session  :]]></text>
-			</staticText>
-			<staticText>
 				<reportElement x="30" y="40" width="98" height="20" uuid="5ecb9703-7abe-4722-bae7-8cfbeadf0605"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Curriculum            :]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="336" y="41" width="59" height="20" uuid="4452bff4-6e38-44d1-8695-203a73c67ac5"/>
-				<textElement>
-					<font isBold="true"/>
-				</textElement>
-				<text><![CDATA[Cohort      :]]></text>
 			</staticText>
 			<rectangle>
 				<reportElement x="0" y="0" width="554" height="20" backcolor="#CCCCCC" uuid="4c299d96-b32d-40a6-ae5a-76d64e81fc5f"/>
@@ -317,20 +241,6 @@ FROM
 				</textElement>
 				<text><![CDATA[ ELECTIVE COURSES]]></text>
 			</staticText>
-			<textField>
-				<reportElement x="394" y="40" width="161" height="20" uuid="1a0ba2f8-3603-4771-9f2f-cd125b97050a"/>
-				<textElement>
-					<font fontName="Arial" size="9"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{ad_chrt_code}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="394" y="60" width="160" height="20" uuid="f1ece689-7a45-43a2-aaaf-789505876b85"/>
-				<textElement>
-					<font fontName="Arial" size="9"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{ad_acdm_sesn_code}]]></textFieldExpression>
-			</textField>
 			<textField>
 				<reportElement x="128" y="60" width="190" height="20" uuid="4c623bae-53ad-4055-9387-e33ccc675d20"/>
 				<textElement>
@@ -467,7 +377,7 @@ FROM
 					<bottomPen lineWidth="0.5"/>
 					<rightPen lineWidth="0.5"/>
 				</box>
-				<textElement verticalAlignment="Middle">
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial" size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{ad_crse_title_en}]]></textFieldExpression>
@@ -509,7 +419,7 @@ FROM
 					<bottomPen lineWidth="0.5"/>
 					<rightPen lineWidth="0.5"/>
 				</box>
-				<textElement verticalAlignment="Middle">
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial" size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[(
@@ -518,7 +428,7 @@ $F{ad_bndl_sbjt_subject_specialize}.equals( "1" )? "Entrepreneurship":
 $F{ad_bndl_sbjt_subject_specialize}.equals( "2" )? "Finance":
 $F{ad_bndl_sbjt_subject_specialize}.equals( "3" )? "Marketing":
 $F{ad_bndl_sbjt_subject_specialize}.equals( "4" )? "Human Resource Management":
-"OTHER"
+"ETC"
 )]]></textFieldExpression>
 			</textField>
 		</band>
