@@ -9,6 +9,7 @@ import { AssignSupervisorDialog } from "../dialog/assign-supervisor.dialog";
 import { AdmissionApplicationCreatorDialog } from "../../admission-applications/dialog/admission-application-creator.dialog";
 import { EnrollmentApplication } from '../../../../shared/model/term/enrollment-application.interface';
 import { AdmissionApplicationManualDialog } from "../../admission-applications/dialog/admission-application-manual.dialog";
+import { ReportActions } from '../../../../shared/report/report.action';
 
 @Component( {
     selector: 'pams-admission-action',
@@ -27,6 +28,7 @@ export class AdmissionActionComponent {
 
     constructor( private actions: AdmissionActions,
         private store: Store<TermModuleState>,
+        private reportActions: ReportActions,
         private vcf: ViewContainerRef,
         private dialog: MdDialog ) {
 
@@ -103,6 +105,12 @@ export class AdmissionActionComponent {
             console.log( 'close dialog' );
             // load something here
         } );
+    }
+
+    //download report
+    downloadReport( reportId, parameterReport: Admission ): void {
+        let repParam = reportId + '&identity_no=' + parameterReport.student.identityNo + '&session_code=' + parameterReport.academicSession.code ;
+        this.store.dispatch( this.reportActions.downloadReport( repParam ) );
     }
 
 }

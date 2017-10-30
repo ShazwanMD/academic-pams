@@ -19,7 +19,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {ReactiveFormsModule} from '@angular/forms';
 import {CovalentCoreModule} from '@covalent/core';
 
-import {CommonService, IdentityService, PlannerService} from '../../../../services';
+import {CommonService, IdentityService, PlannerService, ReportService} from '../../../../services';
 import {ProgramSubModule} from '../programs/index';
 import {CurriculumCenterPage} from './curriculum-center.page';
 import {CurriculumListComponent} from './component/curriculum-list.component';
@@ -34,6 +34,8 @@ import {AcademicSessionSubModule} from '../academic-sessions/index';
 import {CurriculumUpdateDialog} from './dialog/curriculum-update.dialog';
 import {SubjectTypeSelectComponent} from './component/subject-type-select.component';
 import {SubjectElectiveStatusSelectComponent} from './component/subject-elective-status-select.component';
+import { ReportActions } from "../../../shared/report/report.action";
+import { ReportModule } from "../../../shared/report/index";
 
 @NgModule({
   imports: [

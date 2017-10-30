@@ -25,12 +25,13 @@
       <p md-line>Please create new course enrollment </p>
     </md-list-item>
     
-      <a href="http://localhost:8080/servlet/report?report=Ad_STD_300.jrxml&report.pdf&identity_no={{admission?.student?.identityNo}}&session_code={{admission?.academicSession?.code}}" [target]="'_blank'"> 
-    <md-list-item >
+     <!--  <a href="http://localhost:8080/servlet/report?report=Ad_STD_300.jrxml&report.pdf&identity_no={{admission?.student?.identityNo}}&session_code={{admission?.academicSession?.code}}" [target]="'_blank'">  -->
+    <md-list-item (click)="downloadReport('Ad_STD_300.jrxml&report.pdf',admission)"  >
       <md-icon md-list-avatar>description</md-icon>
      <h4 md-line>Course Registration Slip </h4>
       <p md-line>View course registration slip </p> 
-    </md-list-item></a>
+    </md-list-item>
+    <!-- </a> -->
          
 
     <md-divider></md-divider>

@@ -11,19 +11,21 @@
       <p md-line>Edit this curriculum</p>
     </md-list-item>
     
-     <a href="http://localhost:8080/servlet/report?report=Ad_TERM_203.jrxml&report.pdf&curriculum_code={{curriculum.code}}" [target]="'_blank'"> 
-    <md-list-item >
+    <!--  <a href="http://localhost:8080/servlet/report?report=Ad_TERM_203.jrxml&report.pdf&curriculum_code={{curriculum.code}}" [target]="'_blank'">  -->
+    <md-list-item (click)="downloadReport('Ad_TERM_203.jrxml&report.pdf',curriculum)">
       <md-icon md-list-avatar>description</md-icon>
      <h4 md-line>Core Subject Report</h4>
       <p md-line>View core subject report {{curriculum.code}}</p> 
-    </md-list-item></a>
+    </md-list-item>
+   <!--  </a> -->
     
-     <a href="http://localhost:8080/servlet/report?report=Ad_TERM_204.jrxml&report.pdf&curriculum_code={{curriculum.code}}" [target]="'_blank'"> 
-    <md-list-item >
+    <!--  <a href="http://localhost:8080/servlet/report?report=Ad_TERM_204.jrxml&report.pdf&curriculum_code={{curriculum.code}}" [target]="'_blank'">  -->
+    <md-list-item (click)="downloadReport('Ad_TERM_204.jrxml&report.pdf',curriculum)" >
       <md-icon md-list-avatar>description</md-icon>
      <h4 md-line>Elective Subject Report</h4>
       <p md-line>View elective subject report {{curriculum.code}}</p> 
-    </md-list-item></a>
+    </md-list-item>
+    <!-- </a> -->
     
 
     <md-divider></md-divider>

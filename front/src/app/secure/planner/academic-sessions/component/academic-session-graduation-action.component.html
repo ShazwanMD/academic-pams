@@ -17,12 +17,13 @@
       <p md-line>List of Graduations</p>
     </md-list-item>
        
-     <a href="http://localhost:8080/servlet/report?report=Ad_TERM_205.jrxml&report.pdf&session_code={{academicSession.code}}" [target]="'_blank'"> 
-    <md-list-item >
+    <!--  <a href="http://localhost:8080/servlet/report?report=Ad_TERM_205.jrxml&report.pdf&session_code={{academicSession.code}}" [target]="'_blank'">  -->
+    <md-list-item (click)="downloadReport('Ad_TERM_205.jrxml&report.pdf',academicSession)" >
       <md-icon md-list-avatar>description</md-icon>
      <h4 md-line>Graduation Report </h4>
       <p md-line>View graduation report {{academicSession.code}}</p> 
-    </md-list-item></a>
+    </md-list-item>
+    <!-- </a> -->
  
   </md-nav-list>
 </md-card>

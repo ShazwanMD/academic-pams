@@ -131,6 +131,8 @@ export const plannerModuleReducers = {
     ReactiveFormsModule,
     CovalentCoreModule.forRoot(),
 
+   
+
     // our modules
     //GraduationSubModule.forRoot(),
     AcademicSessionSubModule.forRoot(),
@@ -158,7 +160,7 @@ export class PlannerModule {
         IdentityService,
         CommonService,
         PlannerService,
-        CurriculumActions,
+       
       ],
     };
   }

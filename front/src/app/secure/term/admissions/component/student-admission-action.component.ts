@@ -10,6 +10,7 @@ import { AdmissionApplicationTaskDialog } from "../../admission-applications/dia
 import { AdmissionApplicationCreatorDialog } from "../../admission-applications/dialog/admission-application-creator.dialog";
 import { AdmissionApplicationManualDialog } from "../../admission-applications/dialog/admission-application-manual.dialog";
 import { StudentAdmissionApplicationCreatorDialog } from "../../admission-applications/dialog/student-admission-application-creator.dialog";
+import { ReportActions } from "../../../../shared/report/report.action";
 
 @Component({
   selector: 'pams-student-admission-action',
@@ -28,6 +29,7 @@ export class StudentAdmissionActionComponent {
   constructor(private actions: AdmissionActions,
               private store: Store<TermModuleState>,
               private vcf: ViewContainerRef,
+              private reportActions: ReportActions,
               private dialog: MdDialog) {
 
   }
@@ -83,6 +85,12 @@ export class StudentAdmissionActionComponent {
           console.log('close dialog');
           // load something here
       });
+  }
+  
+  //download report
+  downloadReport( reportId, parameterReport: Admission ): void {
+      let repParam = reportId + '&identity_no=' + parameterReport.student.identityNo + '&session_code=' + parameterReport.academicSession.code ;
+      this.store.dispatch( this.reportActions.downloadReport( repParam ) );
   }
 
 }

@@ -23,6 +23,7 @@ import {AcademicSemesterSelectComponent} from './component/academic-semester-sel
 import {AcademicSessionActionComponent} from './component/academic-session-action.component';
 import {AcademicYearSubModule} from '../academic-years/index';
 import { AcademicSessionGraduationActionComponent } from "./component/academic-session-graduation-action.component";
+import { ReportActions } from "../../../shared/report/report.action";
 
 @NgModule({
   imports: [

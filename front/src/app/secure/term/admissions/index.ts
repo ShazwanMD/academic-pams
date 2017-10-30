@@ -40,6 +40,8 @@ import {StudentAdmissionEnrollmentListComponent} from './component/student-admis
 import {StudentAdmissionEnrollmentApplicationListComponent} from './component/student-admission-enrollment-application-list.component';
 import { AssignSupervisorDialog } from "./dialog/assign-supervisor.dialog";
 import { AdmissionSessionDetailPage } from "./admission-session-detail.page";
+import { ReportActions } from "../../../shared/report/report.action";
+import { ReportModule } from "../../../shared/report/index";
 
 
 @NgModule({

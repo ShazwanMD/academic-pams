@@ -6,6 +6,7 @@ import { MdDialog, MdDialogConfig, MdDialogRef } from '@angular/material';
 import { SectionActions } from '../section.action';
 import { Store } from '@ngrx/store';
 import { TermModuleState } from '../../index';
+import { ReportActions } from "../../../../shared/report/report.action";
 
 @Component( {
     selector: 'pams-lecturer-section-action',
@@ -21,6 +22,7 @@ export class LecturerSectionActionComponent {
     constructor( private actions: SectionActions,
         private store: Store<TermModuleState>,
         private vcf: ViewContainerRef,
+        private reportActions: ReportActions,
         private dialog: MdDialog ) {
 
     }
@@ -44,4 +46,12 @@ export class LecturerSectionActionComponent {
 
         } );
     }
+    
+    //download report
+    downloadReport( reportId, parameterReport: Section ): void {
+        let repParam = reportId + '&section_code=' + parameterReport.code + '&session_code=' + parameterReport.offering.academicSession.code + '&section_canonicalCode=' + parameterReport.canonicalCode ;
+        this.store.dispatch( this.reportActions.downloadReport( repParam ) );
+    }
+
+    
 }

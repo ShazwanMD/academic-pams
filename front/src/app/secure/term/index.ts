@@ -104,6 +104,7 @@ import {
     EnrollmentApplicationListState
 } from './enrollment-applications/enrollment-application-list.reducer';
 import { AdmissionApplication } from '../../shared/model/term/admission-application.interface';
+import { ReportModule } from "../../shared/report/index";
 
 export interface TermModuleState {
     offerings: OfferingListState;
@@ -255,7 +256,7 @@ export const termModuleReducers = {
         AppointmentSubModule.forRoot(),
         SectionSubModule.forRoot(),
         AssessmentSubModule.forRoot(),
-
+        
     ],
     declarations: [
         // page

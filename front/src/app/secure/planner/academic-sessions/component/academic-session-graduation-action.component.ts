@@ -7,6 +7,7 @@ import {Store} from '@ngrx/store';
 import {PlannerModuleState} from '../../index';
 import {AcademicSession} from '../../../../shared/model/planner/academic-session.interface';
 import {AcademicSessionActions} from '../academic-session.action';
+import { ReportActions } from "../../../../shared/report/report.action";
 
 @Component({
   selector: 'pams-academic-session-graduation-action',
@@ -23,6 +24,7 @@ export class AcademicSessionGraduationActionComponent {
   constructor(private actions: AcademicSessionActions,
               private store: Store<PlannerModuleState>,
               private vcf: ViewContainerRef,
+              private reportActions: ReportActions,
               private dialog: MdDialog,
               private snackBar: MdSnackBar) {
 
@@ -60,5 +62,12 @@ export class AcademicSessionGraduationActionComponent {
       },
     );
   }
+  
+  //download report
+  downloadReport( reportId, parameterReport: AcademicSession ): void {
+      let repParam = reportId + '&session_code=' + parameterReport.code;
+      this.store.dispatch( this.reportActions.downloadReport( repParam ) );
+  }
+  
 }
 

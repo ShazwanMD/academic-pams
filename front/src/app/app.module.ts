@@ -70,6 +70,8 @@ import { AuthenticatedShowDirective } from './secure/identity/directive/authenti
 import { NotAuthenticatedShowDirective } from './secure/identity/directive/not-authenticated-show.directive';
 import { AssessmentEffects } from "./secure/term/assessments/assessment.effect";
 import { OfferingEffects } from "./secure/term/offerings/offering.effect";
+import { CurriculumEffects } from "./secure/planner/curriculums/curriculum.effect";
+import { ReportModule } from "./shared/report/index";
 // interceptor
 const httpInterceptorProviders: Type<any>[] = [
   RequestInterceptor,
@@ -169,10 +171,12 @@ export function applicationReducer(applicationState: any = INITIAL_APP_STATE, ac
     TermModule.forRoot(),
     GraduationModule.forRoot(),
     SetupModule.forRoot(),
+    ReportModule.forRoot(),
     EffectsModule.run(SectionEffects), // lazy load bug, moved from section root. Fix in Angular 4
     EffectsModule.run(AppointmentEffects),
     EffectsModule.run(StaffEffects),
     EffectsModule.run(AcademicSessionEffects),
+    
     EffectsModule.run(AcademicYearEffects),
     EffectsModule.run(CohortEffects),
     EffectsModule.run(AssessmentEffects),
