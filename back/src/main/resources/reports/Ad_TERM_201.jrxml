@@ -199,7 +199,7 @@ FROM
 	<field name="ad_acdm_sesn_code" class="java.lang.String"/>
 	<field name="ad_acdm_sesn_current_" class="java.lang.Boolean"/>
 	<field name="ad_acdm_sesn_description" class="java.lang.String"/>
-	<field name="ad_acdm_sesn_semester" class="java.lang.Integer"/>
+	<field name="ad_acdm_sesn_semester" class="java.lang.String"/>
 	<field name="ad_acdm_sesn_start_date" class="java.sql.Date"/>
 	<field name="ad_acdm_sesn_status" class="java.lang.Integer"/>
 	<field name="ad_acdm_sesn_year_id" class="java.lang.Long"/>
@@ -411,18 +411,30 @@ $F{ad_acdm_sesn_code}.equals( $P{session_code} )]]></filterExpression>
 			</staticText>
 			<textField>
 				<reportElement x="87" y="12" width="288" height="20" uuid="1bdb43cb-cfa7-414f-93d5-50c454eef3cb"/>
+				<textElement>
+					<font fontName="Arial" size="9"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{ad_actr_name}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="434" y="12" width="121" height="20" uuid="0a58aa9b-f6d3-4f3f-aa26-fc00bb9f2cd8"/>
+				<textElement>
+					<font fontName="Arial" size="9"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{ad_actr_identity_no}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="434" y="32" width="100" height="20" uuid="61456922-8ffc-40cd-961f-aee8269a752b"/>
+				<textElement>
+					<font fontName="Arial" size="9"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{ad_admn_ordinal}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="434" y="52" width="100" height="20" uuid="5cfe9d0b-f8a5-4f2f-b37a-9afaed1c9031"/>
+				<textElement>
+					<font fontName="Arial" size="9"/>
+				</textElement>
 				<textFieldExpression><![CDATA[(
 $F{ad_stdn_student_status}.equals( "0" )? "MATRICULATED":
 $F{ad_stdn_student_status}.equals( "1" )? "ACTIVE":
@@ -433,6 +445,9 @@ $F{ad_stdn_student_status}.equals( "3" )? "INACTIVE":
 			</textField>
 			<textField>
 				<reportElement x="88" y="72" width="100" height="20" uuid="e714af3e-6ddf-4710-9bf7-3ada0e94768a"/>
+				<textElement>
+					<font fontName="Arial" size="9"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{ad_acdm_sesn_code}]]></textFieldExpression>
 			</textField>
 			<staticText>
@@ -441,18 +456,30 @@ $F{ad_stdn_student_status}.equals( "3" )? "INACTIVE":
 			</staticText>
 			<textField>
 				<reportElement x="86" y="32" width="289" height="20" uuid="35ff62b7-3b82-43b2-9d8a-1540f5f9e2f9"/>
-				<textFieldExpression><![CDATA[$F{ad_prgm_title_en}]]></textFieldExpression>
+				<textElement>
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ad_prgm_title_en}.toUpperCase()]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="87" y="52" width="53" height="20" uuid="3c82e800-9d0b-464f-a057-e9b6fe8897c2"/>
+				<textElement>
+					<font fontName="Arial" size="9"/>
+				</textElement>
 				<text><![CDATA[INTAKE]]></text>
 			</staticText>
 			<textField>
 				<reportElement x="276" y="52" width="62" height="20" uuid="1a80ce42-fe26-4025-a4b5-4a1fdedc758c"/>
+				<textElement>
+					<font fontName="Arial" size="9"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{ad_acdm_year_year}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="140" y="52" width="136" height="20" uuid="c2a6ca9c-44e3-4f80-9e89-5abaec4c9af7"/>
+				<textElement>
+					<font fontName="Arial" size="9"/>
+				</textElement>
 				<textFieldExpression><![CDATA[($F{ad_acdm_sesn_semester}.equals( "0" )? "SEMESTER 1 SEPTEMBER":
 $F{ad_acdm_sesn_semester}.equals( "1" )? "SEMESTER 2 FEBRUARI":
 $F{ad_acdm_sesn_semester}.equals( "2" )? "SEMESTER 3 DISEMBER":
