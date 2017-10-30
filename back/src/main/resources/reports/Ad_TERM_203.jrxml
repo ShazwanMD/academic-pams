@@ -106,7 +106,7 @@ FROM
 				<text><![CDATA[TEL:09-7717028        FAKS:09-7717162]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="60" y="10" width="464" height="20" uuid="d9a80061-85f7-48dd-8e64-414b356957ef"/>
+				<reportElement x="60" y="10" width="464" height="14" uuid="d9a80061-85f7-48dd-8e64-414b356957ef"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
@@ -159,25 +159,25 @@ FROM
 	<pageHeader>
 		<band height="120" splitType="Stretch">
 			<staticText>
-				<reportElement x="314" y="41" width="83" height="20" uuid="4f7b3cc0-fa8e-4f76-857f-9cdc2dc0e0d9"/>
+				<reportElement x="298" y="41" width="99" height="20" uuid="4f7b3cc0-fa8e-4f76-857f-9cdc2dc0e0d9"/>
 				<textElement verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[Programme       :]]></text>
+				<text><![CDATA[PROGRAMME       :]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="26" y="61" width="76" height="20" uuid="a1012da5-0c62-489f-b137-7f9e4da80d11"/>
+				<reportElement x="26" y="61" width="91" height="20" uuid="a1012da5-0c62-489f-b137-7f9e4da80d11"/>
 				<textElement verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[Faculty            :]]></text>
+				<text><![CDATA[FACULTY             :]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="26" y="41" width="76" height="20" uuid="5ecb9703-7abe-4722-bae7-8cfbeadf0605"/>
+				<reportElement x="26" y="41" width="91" height="20" uuid="5ecb9703-7abe-4722-bae7-8cfbeadf0605"/>
 				<textElement verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[Curriculum     :]]></text>
+				<text><![CDATA[CURRICULUM     :]]></text>
 			</staticText>
 			<rectangle>
 				<reportElement x="0" y="0" width="554" height="20" backcolor="#CCCCCC" uuid="4c299d96-b32d-40a6-ae5a-76d64e81fc5f"/>
@@ -188,21 +188,21 @@ FROM
 			<staticText>
 				<reportElement mode="Opaque" x="0" y="0" width="102" height="20" forecolor="#333333" backcolor="#FF0033" uuid="25daa1f0-f119-4a18-9dbf-577da3cce9c7"/>
 				<textElement verticalAlignment="Middle" rotation="None" markup="styled">
-					<font fontName="Arial" size="10" isBold="true" isUnderline="false" isStrikeThrough="false"/>
+					<font fontName="SansSerif" size="10" isBold="true" isUnderline="false" isStrikeThrough="false"/>
 				</textElement>
 				<text><![CDATA[  LIST OF COURSES]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="102" y="41" width="191" height="20" uuid="86f57d11-d4e3-4851-8834-2088dc5bd169"/>
+				<reportElement x="117" y="41" width="176" height="20" uuid="86f57d11-d4e3-4851-8834-2088dc5bd169"/>
 				<textElement verticalAlignment="Middle">
-					<font fontName="Arial" size="9"/>
+					<font fontName="SansSerif" size="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{ad_crlm_code}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="102" y="61" width="431" height="20" uuid="ce540fb8-d1cf-4716-b784-57f62f6b6083"/>
+				<reportElement x="117" y="61" width="416" height="20" uuid="ce540fb8-d1cf-4716-b784-57f62f6b6083"/>
 				<textElement verticalAlignment="Middle">
-					<font fontName="Arial" size="9"/>
+					<font fontName="SansSerif" size="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{ad_fcty_description}]]></textFieldExpression>
 			</textField>
@@ -216,14 +216,14 @@ FROM
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement verticalAlignment="Middle">
-					<font fontName="Arial" size="9" isBold="true"/>
+					<font fontName="SansSerif" size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[  CORE COURSES]]></text>
 			</staticText>
 			<textField>
 				<reportElement x="397" y="41" width="157" height="20" uuid="7cc1ad03-c023-4382-acd3-c96941331159"/>
 				<textElement verticalAlignment="Middle">
-					<font fontName="Arial" size="9"/>
+					<font fontName="SansSerif" size="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{ad_prgm_code}]]></textFieldExpression>
 			</textField>
@@ -241,7 +241,7 @@ FROM
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="9" isBold="true"/>
+					<font fontName="SansSerif" size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[COURSE TITLE]]></text>
 			</staticText>
@@ -255,7 +255,7 @@ FROM
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="9" isBold="true"/>
+					<font fontName="SansSerif" size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[NO.]]></text>
 			</staticText>
@@ -269,7 +269,7 @@ FROM
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="9" isBold="true"/>
+					<font fontName="SansSerif" size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[CREDIT]]></text>
 			</staticText>
@@ -283,7 +283,7 @@ FROM
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="9" isBold="true"/>
+					<font fontName="SansSerif" size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[CODE]]></text>
 			</staticText>
@@ -297,7 +297,7 @@ FROM
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="9" isBold="true"/>
+					<font fontName="SansSerif" size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[SEMESTER]]></text>
 			</staticText>
@@ -385,7 +385,9 @@ FROM
 			</staticText>
 			<textField>
 				<reportElement x="474" y="0" width="81" height="20" uuid="e1d8c107-c7f3-4995-ba23-0f0d7d889488"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$V{ad_crse_credit_2}]]></textFieldExpression>
 			</textField>
 		</band>

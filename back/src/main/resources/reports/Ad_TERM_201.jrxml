@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report4" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="fe6eae38-dbac-492a-9522-077445b8487d">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="47"/>
+	<property name="ireport.y" value="27"/>
 	<parameter name="identity_no" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
@@ -343,7 +343,7 @@ $F{ad_acdm_sesn_code}.equals( $P{session_code} )]]></filterExpression>
 			<staticText>
 				<reportElement x="172" y="109" width="212" height="20" uuid="ef095ce7-87d2-4544-8217-ed1c58252152"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="styled">
-					<font fontName="Arial" size="10" isBold="true" isUnderline="false" isStrikeThrough="false"/>
+					<font fontName="SansSerif" size="10" isBold="true" isUnderline="false" isStrikeThrough="false"/>
 				</textElement>
 				<text><![CDATA[SLIP KEPUTUSAN PEPERIKSAAN]]></text>
 			</staticText>
@@ -377,7 +377,7 @@ $F{ad_acdm_sesn_code}.equals( $P{session_code} )]]></filterExpression>
 			<staticText>
 				<reportElement x="459" y="161" width="42" height="20" uuid="13060ca8-aaaa-477f-a0cd-d7ab8341fb40"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="styled">
-					<font fontName="Arial" size="10" isBold="true" isUnderline="false" isStrikeThrough="false"/>
+					<font fontName="SansSerif" size="10" isBold="true" isUnderline="false" isStrikeThrough="false"/>
 				</textElement>
 				<text><![CDATA[DATE :]]></text>
 			</staticText>
@@ -412,28 +412,28 @@ $F{ad_acdm_sesn_code}.equals( $P{session_code} )]]></filterExpression>
 			<textField>
 				<reportElement x="87" y="12" width="288" height="20" uuid="1bdb43cb-cfa7-414f-93d5-50c454eef3cb"/>
 				<textElement>
-					<font fontName="Arial" size="9"/>
+					<font fontName="SansSerif" size="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{ad_actr_name}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="434" y="12" width="121" height="20" uuid="0a58aa9b-f6d3-4f3f-aa26-fc00bb9f2cd8"/>
 				<textElement>
-					<font fontName="Arial" size="9"/>
+					<font fontName="SansSerif" size="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{ad_actr_identity_no}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="434" y="32" width="100" height="20" uuid="61456922-8ffc-40cd-961f-aee8269a752b"/>
+				<reportElement x="434" y="32" width="121" height="20" uuid="61456922-8ffc-40cd-961f-aee8269a752b"/>
 				<textElement>
-					<font fontName="Arial" size="9"/>
+					<font fontName="SansSerif" size="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{ad_admn_ordinal}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="434" y="52" width="100" height="20" uuid="5cfe9d0b-f8a5-4f2f-b37a-9afaed1c9031"/>
+				<reportElement x="434" y="52" width="121" height="20" uuid="5cfe9d0b-f8a5-4f2f-b37a-9afaed1c9031"/>
 				<textElement>
-					<font fontName="Arial" size="9"/>
+					<font fontName="SansSerif" size="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA[(
 $F{ad_stdn_student_status}.equals( "0" )? "MATRICULATED":
@@ -446,7 +446,7 @@ $F{ad_stdn_student_status}.equals( "3" )? "INACTIVE":
 			<textField>
 				<reportElement x="88" y="72" width="100" height="20" uuid="e714af3e-6ddf-4710-9bf7-3ada0e94768a"/>
 				<textElement>
-					<font fontName="Arial" size="9"/>
+					<font fontName="SansSerif" size="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{ad_acdm_sesn_code}]]></textFieldExpression>
 			</textField>
@@ -457,28 +457,28 @@ $F{ad_stdn_student_status}.equals( "3" )? "INACTIVE":
 			<textField>
 				<reportElement x="86" y="32" width="289" height="20" uuid="35ff62b7-3b82-43b2-9d8a-1540f5f9e2f9"/>
 				<textElement>
-					<font fontName="Arial" size="9"/>
+					<font fontName="SansSerif" size="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{ad_prgm_title_en}.toUpperCase()]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="87" y="52" width="53" height="20" uuid="3c82e800-9d0b-464f-a057-e9b6fe8897c2"/>
 				<textElement>
-					<font fontName="Arial" size="9"/>
+					<font fontName="SansSerif" size="10"/>
 				</textElement>
 				<text><![CDATA[INTAKE]]></text>
 			</staticText>
 			<textField>
 				<reportElement x="276" y="52" width="62" height="20" uuid="1a80ce42-fe26-4025-a4b5-4a1fdedc758c"/>
 				<textElement>
-					<font fontName="Arial" size="9"/>
+					<font fontName="SansSerif" size="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{ad_acdm_year_year}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="140" y="52" width="136" height="20" uuid="c2a6ca9c-44e3-4f80-9e89-5abaec4c9af7"/>
 				<textElement>
-					<font fontName="Arial" size="9"/>
+					<font fontName="SansSerif" size="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA[($F{ad_acdm_sesn_semester}.equals( "0" )? "SEMESTER 1 SEPTEMBER":
 $F{ad_acdm_sesn_semester}.equals( "1" )? "SEMESTER 2 FEBRUARI":
@@ -499,7 +499,7 @@ $F{ad_acdm_sesn_semester}.equals( "2" )? "SEMESTER 3 DISEMBER":
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="9" isBold="true"/>
+					<font fontName="SansSerif" size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[CODE]]></text>
 			</staticText>
@@ -513,7 +513,7 @@ $F{ad_acdm_sesn_semester}.equals( "2" )? "SEMESTER 3 DISEMBER":
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="9" isBold="true"/>
+					<font fontName="SansSerif" size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[TITLE]]></text>
 			</staticText>
@@ -527,7 +527,7 @@ $F{ad_acdm_sesn_semester}.equals( "2" )? "SEMESTER 3 DISEMBER":
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="9" isBold="true"/>
+					<font fontName="SansSerif" size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[CREDIT]]></text>
 			</staticText>
@@ -541,7 +541,7 @@ $F{ad_acdm_sesn_semester}.equals( "2" )? "SEMESTER 3 DISEMBER":
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="9" isBold="true"/>
+					<font fontName="SansSerif" size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[DESCRIPTION]]></text>
 			</staticText>
@@ -555,7 +555,7 @@ $F{ad_acdm_sesn_semester}.equals( "2" )? "SEMESTER 3 DISEMBER":
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="9" isBold="true"/>
+					<font fontName="SansSerif" size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[NO.]]></text>
 			</staticText>
@@ -569,7 +569,7 @@ $F{ad_acdm_sesn_semester}.equals( "2" )? "SEMESTER 3 DISEMBER":
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="9" isBold="true"/>
+					<font fontName="SansSerif" size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[GRADE]]></text>
 			</staticText>
@@ -583,7 +583,7 @@ $F{ad_acdm_sesn_semester}.equals( "2" )? "SEMESTER 3 DISEMBER":
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="9" isBold="true"/>
+					<font fontName="SansSerif" size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[POINT]]></text>
 			</staticText>
@@ -689,7 +689,7 @@ $F{ad_acdm_sesn_semester}.equals( "2" )? "SEMESTER 3 DISEMBER":
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="9" isBold="true"/>
+					<font fontName="SansSerif" size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[GRED POINT TOTAL]]></text>
 			</staticText>
@@ -703,7 +703,7 @@ $F{ad_acdm_sesn_semester}.equals( "2" )? "SEMESTER 3 DISEMBER":
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="9" isBold="true"/>
+					<font fontName="SansSerif" size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[CREDIT TOTAL]]></text>
 			</staticText>
@@ -731,7 +731,7 @@ $F{ad_acdm_sesn_semester}.equals( "2" )? "SEMESTER 3 DISEMBER":
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="9" isBold="true"/>
+					<font fontName="SansSerif" size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[GRADE POINT AVERAGE]]></text>
 			</staticText>

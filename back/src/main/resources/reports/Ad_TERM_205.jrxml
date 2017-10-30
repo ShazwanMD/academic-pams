@@ -223,14 +223,14 @@ ORDER BY
 			<staticText>
 				<reportElement x="457" y="116" width="70" height="20" uuid="7c6566aa-4400-40d7-94fd-44ea0117434d"/>
 				<textElement verticalAlignment="Middle">
-					<font fontName="Arial" isBold="true"/>
+					<font fontName="SansSerif" isBold="true"/>
 				</textElement>
 				<text><![CDATA[YEAR         :]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="178" y="116" width="108" height="20" uuid="ebd310a8-15fe-41fc-b825-f4b7f1d7272c"/>
 				<textElement verticalAlignment="Middle">
-					<font fontName="Arial" isBold="true"/>
+					<font fontName="SansSerif" isBold="true"/>
 				</textElement>
 				<text><![CDATA[ACADEMIC SESSION :]]></text>
 			</staticText>
@@ -307,10 +307,6 @@ ORDER BY
 				</textElement>
 				<text><![CDATA[KARUNG BERKUNCI 36, PENGKALAN CHEPA]]></text>
 			</staticText>
-			<image>
-				<reportElement x="167" y="3" width="78" height="77" uuid="1463535a-8594-4c71-92bf-d9683c511561"/>
-				<imageExpression><![CDATA["C:\\Users\\PAMS05\\git\\academic\\back\\src\\main\\resources\\reports\\img\\logo_universiti_malaysia_kelantan.png"]]></imageExpression>
-			</image>
 			<staticText>
 				<reportElement x="217" y="31" width="231" height="20" uuid="c1d7c89e-590d-46b1-9fa8-d6ca8c072125"/>
 				<textElement>
@@ -342,7 +338,7 @@ ORDER BY
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="9" isBold="true"/>
+					<font fontName="SansSerif" size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[CGPA]]></text>
 			</staticText>
@@ -356,7 +352,7 @@ ORDER BY
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="9" isBold="true"/>
+					<font fontName="SansSerif" size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[MATRIC NO.]]></text>
 			</staticText>
@@ -370,7 +366,7 @@ ORDER BY
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="9" isBold="true"/>
+					<font fontName="SansSerif" size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[NAMA]]></text>
 			</staticText>
@@ -384,7 +380,7 @@ ORDER BY
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="9" isBold="true"/>
+					<font fontName="SansSerif" size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[NO. ]]></text>
 			</staticText>
@@ -398,7 +394,7 @@ ORDER BY
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="9" isBold="true"/>
+					<font fontName="SansSerif" size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[REFERENCE NO.]]></text>
 			</staticText>
@@ -412,7 +408,7 @@ ORDER BY
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="9" isBold="true"/>
+					<font fontName="SansSerif" size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[CREDIT HOUR]]></text>
 			</staticText>
@@ -426,7 +422,7 @@ ORDER BY
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="9" isBold="true"/>
+					<font fontName="SansSerif" size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[PROGRAM]]></text>
 			</staticText>
@@ -487,7 +483,7 @@ ORDER BY
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement verticalAlignment="Middle">
-					<font fontName="Arial" size="9"/>
+					<font fontName="SansSerif" size="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{ad_actr_name}]]></textFieldExpression>
 			</textField>
@@ -500,7 +496,7 @@ ORDER BY
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="9"/>
+					<font size="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{PAGE_COUNT}]]></textFieldExpression>
 			</textField>

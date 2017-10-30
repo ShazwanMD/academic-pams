@@ -271,7 +271,7 @@ $F{ad_acdm_sesn_code}.equals( $P{session_code} )]]></filterExpression>
 		</band>
 	</title>
 	<pageHeader>
-		<band height="154" splitType="Stretch">
+		<band height="136" splitType="Stretch">
 			<staticText>
 				<reportElement x="29" y="41" width="98" height="20" uuid="4f7b3cc0-fa8e-4f76-857f-9cdc2dc0e0d9"/>
 				<textElement>
@@ -323,9 +323,9 @@ $F{ad_acdm_sesn_code}.equals( $P{session_code} )]]></filterExpression>
 			<staticText>
 				<reportElement mode="Opaque" x="0" y="0" width="166" height="20" forecolor="#333333" backcolor="#FF0033" uuid="25daa1f0-f119-4a18-9dbf-577da3cce9c7"/>
 				<textElement verticalAlignment="Middle" rotation="None" markup="styled">
-					<font fontName="Arial" size="10" isBold="true" isUnderline="false" isStrikeThrough="false"/>
+					<font fontName="SansSerif" size="10" isBold="true" isUnderline="false" isStrikeThrough="false"/>
 				</textElement>
-				<text><![CDATA[COURSE REGISTRATION SLIP]]></text>
+				<text><![CDATA[  COURSE REGISTRATION SLIP]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="336" y="61" width="58" height="20" uuid="aec21f76-31b5-4f67-b485-0a0e68794644"/>
@@ -382,7 +382,7 @@ $F{ad_stdn_student_status}.equals( "3" )? "INACTIVE":
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="9" isBold="true"/>
+					<font fontName="SansSerif" size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[COURSE TITLE]]></text>
 			</staticText>
@@ -396,7 +396,7 @@ $F{ad_stdn_student_status}.equals( "3" )? "INACTIVE":
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="9" isBold="true"/>
+					<font fontName="SansSerif" size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[NO.]]></text>
 			</staticText>
@@ -410,7 +410,7 @@ $F{ad_stdn_student_status}.equals( "3" )? "INACTIVE":
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="9" isBold="true"/>
+					<font fontName="SansSerif" size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[CREDIT]]></text>
 			</staticText>
@@ -424,7 +424,7 @@ $F{ad_stdn_student_status}.equals( "3" )? "INACTIVE":
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="9" isBold="true"/>
+					<font fontName="SansSerif" size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[SECTION]]></text>
 			</staticText>
@@ -438,7 +438,7 @@ $F{ad_stdn_student_status}.equals( "3" )? "INACTIVE":
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="9" isBold="true"/>
+					<font fontName="SansSerif" size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[CODE]]></text>
 			</staticText>
@@ -452,7 +452,7 @@ $F{ad_stdn_student_status}.equals( "3" )? "INACTIVE":
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="9" isBold="true"/>
+					<font fontName="SansSerif" size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[PROGRAM]]></text>
 			</staticText>
@@ -506,7 +506,7 @@ $F{ad_stdn_student_status}.equals( "3" )? "INACTIVE":
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{ad_ofrg_title_en}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[   $F{ad_ofrg_title_en}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="0" y="0" width="29" height="20" uuid="a5e7e5ee-bcd8-4954-9747-e4f42f74cd19"/>
@@ -551,7 +551,9 @@ $F{ad_stdn_student_status}.equals( "3" )? "INACTIVE":
 			</staticText>
 			<textField>
 				<reportElement x="474" y="0" width="80" height="20" uuid="fced57ec-570a-4f81-9a93-776576bd6364"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$V{ad_crse_credit_1}]]></textFieldExpression>
 			</textField>
 		</band>

@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report4" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="fe6eae38-dbac-492a-9522-077445b8487d">
 	<property name="ireport.zoom" value="1.5026296018031562"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="638"/>
+	<property name="ireport.y" value="359"/>
 	<parameter name="identity_no" class="java.lang.String"/>
 	<parameter name="session_code" class="java.lang.String"/>
 	<queryString>
@@ -256,10 +256,6 @@ $F{ad_acdm_sesn_code}.equals( $P{session_code} )]]></filterExpression>
 				</textElement>
 				<text><![CDATA[UNIVERSITI MALAYSIA KELANTAN]]></text>
 			</staticText>
-			<image>
-				<reportElement x="4" y="10" width="74" height="87" uuid="c87b3229-fcdc-4252-9894-dd4dbf615933"/>
-				<imageExpression><![CDATA["C:\\Users\\PAMS05\\git\\academic\\back\\src\\main\\resources\\reports\\img\\logo_universiti_malaysia_kelantan.png"]]></imageExpression>
-			</image>
 			<staticText>
 				<reportElement x="51" y="23" width="238" height="20" uuid="11099d13-a329-4fcc-951b-37f5c49f50e5"/>
 				<textElement>
@@ -287,91 +283,91 @@ $F{ad_acdm_sesn_code}.equals( $P{session_code} )]]></filterExpression>
 			<textField>
 				<reportElement x="0" y="123" width="209" height="20" uuid="54b80e5c-e886-468d-b902-0540983d9bbc"/>
 				<textElement>
-					<font fontName="Arial" isBold="true"/>
+					<font fontName="SansSerif" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{ad_actr_name}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="453" y="123" width="101" height="20" uuid="f7aa5bf7-5567-46c1-a14a-c6b7fa16faf8"/>
 				<textElement>
-					<font fontName="Arial" isBold="true"/>
+					<font fontName="SansSerif" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{ad_actr_identity_no}]]></textFieldExpression>
 			</textField>
 			<textField pattern="dd-MMM-yyyy">
 				<reportElement x="455" y="152" width="100" height="20" uuid="006cf4ab-58cf-433d-b005-70fc7de5f75f"/>
 				<textElement>
-					<font fontName="Arial" isBold="true"/>
+					<font fontName="SansSerif" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="0" y="213" width="100" height="20" uuid="0ee99b35-48e6-450c-a726-8a43be939d6c"/>
 				<textElement>
-					<font fontName="Arial"/>
+					<font fontName="SansSerif"/>
 				</textElement>
 				<text><![CDATA[Saudari,]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="335" y="123" width="100" height="20" uuid="f30945a2-3f63-4cb8-8e98-d8676aa5ada2"/>
 				<textElement>
-					<font fontName="Arial"/>
+					<font fontName="SansSerif"/>
 				</textElement>
 				<text><![CDATA[Rujukan Tuan        :]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="335" y="137" width="100" height="20" uuid="b4521775-8557-4ea1-a26f-2815bb5cd09d"/>
 				<textElement>
-					<font fontName="Arial"/>
+					<font fontName="SansSerif"/>
 				</textElement>
 				<text><![CDATA[Rujukan Kami        :]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="335" y="152" width="100" height="20" uuid="6703dd72-7429-4ea6-ba88-2e817a6fa607"/>
 				<textElement>
-					<font fontName="Arial"/>
+					<font fontName="SansSerif"/>
 				</textElement>
 				<text><![CDATA[Tarikh                    :]]></text>
 			</staticText>
 			<textField>
 				<reportElement x="0" y="137" width="209" height="20" uuid="f5924531-85f5-44f7-8c36-c6cf285050ea"/>
 				<textElement>
-					<font fontName="Arial" isBold="true"/>
+					<font fontName="SansSerif" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{ad_addr_address1}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="0" y="152" width="100" height="20" uuid="3b34a020-c0b9-4109-bce9-846401c6d07e"/>
 				<textElement>
-					<font fontName="Arial" isBold="true"/>
+					<font fontName="SansSerif" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{ad_addr_address2}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="32" y="169" width="100" height="20" uuid="8d2cabe2-56df-4a5d-9e54-6f447129dfeb"/>
 				<textElement>
-					<font fontName="Arial" isBold="true"/>
+					<font fontName="SansSerif" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{ad_addr_address3}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="0" y="169" width="48" height="20" uuid="f3fed9f6-a248-43ed-a9b8-980ccc112da4"/>
 				<textElement>
-					<font fontName="Arial" isBold="true"/>
+					<font fontName="SansSerif" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{ad_addr_postcode}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="0" y="183" width="51" height="20" uuid="0ba78b2e-b575-4c2e-9c20-b12098b2ca1a"/>
 				<textElement>
-					<font fontName="Arial" isBold="true"/>
+					<font fontName="SansSerif" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{ad_addr_state_code_id}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="453" y="139" width="101" height="20" uuid="14aa68af-d824-4668-a94f-a034fa5632d8"/>
 				<textElement>
-					<font fontName="Arial" isBold="true"/>
+					<font fontName="SansSerif" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{ad_actr_identity_no}]]></textFieldExpression>
 			</textField>
@@ -382,77 +378,77 @@ $F{ad_acdm_sesn_code}.equals( $P{session_code} )]]></filterExpression>
 			<staticText>
 				<reportElement x="0" y="0" width="554" height="20" uuid="b2cde419-d663-46c3-87ac-fececcb7114d"/>
 				<textElement>
-					<font fontName="Arial" isBold="true"/>
+					<font fontName="SansSerif" isBold="true"/>
 				</textElement>
 				<text><![CDATA[JEMPUTAN KE ISTIADAT KONVOKESYEN KALI KE-7 UNIVERSITI MALAYSIA KELANTAN (UMK)]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="0" y="20" width="554" height="18" uuid="98504cd3-2171-4950-94ef-979365040f1e"/>
 				<textElement>
-					<font fontName="Arial"/>
+					<font fontName="SansSerif"/>
 				</textElement>
 				<text><![CDATA[Pihak Universiti merakamkan ucapan tahniah di atas kejayaan saudara/i menamatkan pengajian di UMK dengan jayanya. Sukacita]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="0" y="32" width="554" height="18" uuid="2a4c6de1-42fd-45ad-9838-94a6d69f1204"/>
 				<textElement>
-					<font fontName="Arial"/>
+					<font fontName="SansSerif"/>
 				</textElement>
 				<text><![CDATA[Sukacita dimaklumkan saudara/i dijemput ke istiadat Konvokesyen UMK sepertimana ketetapan berikut:]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="132" y="56" width="100" height="20" uuid="d41f553f-00c8-4627-9851-0d57b04f6932"/>
 				<textElement>
-					<font fontName="Arial" isBold="true"/>
+					<font fontName="SansSerif" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Tarikh                :]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="132" y="79" width="100" height="20" uuid="aab361bd-a296-4841-ac9e-573ac034b775"/>
 				<textElement>
-					<font fontName="Arial" isBold="true"/>
+					<font fontName="SansSerif" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Tempat              :]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="132" y="67" width="100" height="20" uuid="ed4b670d-ef25-4e92-a464-3587b1f37a16"/>
 				<textElement>
-					<font fontName="Arial" isBold="true"/>
+					<font fontName="SansSerif" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Masa                  :]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="132" y="91" width="100" height="20" uuid="784758dd-47a8-4c9b-a28a-22cbefa98b54"/>
 				<textElement>
-					<font fontName="Arial" isBold="true"/>
+					<font fontName="SansSerif" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Kadar Bayaran :]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="232" y="56" width="100" height="20" uuid="0f99f280-d0a6-4c18-bce2-c7b47921e0a0"/>
 				<textElement>
-					<font fontName="Arial" isBold="true"/>
+					<font fontName="SansSerif" isBold="true"/>
 				</textElement>
 				<text><![CDATA[9 OKTOBER 2017]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="232" y="67" width="100" height="20" uuid="653e7aae-efb6-4e55-9435-b80ad43c26c2"/>
 				<textElement>
-					<font fontName="Arial" isBold="true"/>
+					<font fontName="SansSerif" isBold="true"/>
 				</textElement>
 				<text><![CDATA[7.15 PAGI]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="232" y="79" width="323" height="20" uuid="4f3813c7-f14e-4b55-aced-ceb6d0e5f40b"/>
 				<textElement>
-					<font fontName="Arial" isBold="true"/>
+					<font fontName="SansSerif" isBold="true"/>
 				</textElement>
 				<text><![CDATA[DEWAN KEUSAHAWANAN, UMK KAMPUS KOTA]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="232" y="91" width="100" height="20" uuid="e0590ca3-7c1b-4641-a6b3-846a6d412a92"/>
 				<textElement>
-					<font fontName="Arial" isBold="true"/>
+					<font fontName="SansSerif" isBold="true"/>
 				</textElement>
 				<text><![CDATA[RM270.00]]></text>
 			</staticText>
@@ -466,7 +462,7 @@ $F{ad_acdm_sesn_code}.equals( $P{session_code} )]]></filterExpression>
 			<staticText>
 				<reportElement x="0" y="0" width="100" height="20" uuid="b9357489-998a-4d39-89d7-98d62eb6f705"/>
 				<textElement>
-					<font fontName="Arial" isBold="true"/>
+					<font fontName="SansSerif" isBold="true"/>
 				</textElement>
 				<text><![CDATA[MUSTAHAK]]></text>
 			</staticText>
@@ -478,98 +474,98 @@ $F{ad_acdm_sesn_code}.equals( $P{session_code} )]]></filterExpression>
 			<staticText>
 				<reportElement x="0" y="34" width="554" height="18" uuid="5943171e-d7e3-41b7-89a8-9a5a8863d9eb"/>
 				<textElement textAlignment="Justified">
-					<font fontName="Arial"/>
+					<font fontName="SansSerif"/>
 				</textElement>
 				<text><![CDATA[ laman sesawang http://egraduasi.umk.edu.my]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="1" y="54" width="554" height="18" uuid="bdd03cae-3da1-4e55-91f7-3932f68354b7"/>
 				<textElement textAlignment="Justified">
-					<font fontName="Arial"/>
+					<font fontName="SansSerif"/>
 				</textElement>
 				<text><![CDATA[ 2. Tarikh raptai Istiadat Konvokesyen Kali ke-7 UMK ialah pada 8 OKTOBER 2017 (Ahad) jam 8.00 pagi bertempat di Dewan  ]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="0" y="67" width="554" height="18" uuid="5a2add22-366d-4565-a99b-5c4a5acd1ec1"/>
 				<textElement>
-					<font fontName="Arial"/>
+					<font fontName="SansSerif"/>
 				</textElement>
 				<text><![CDATA[ Keusahawanan , Universiti Malaysia Kelantan, Kampus Kota, Pengkalan Chepa.]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="0" y="89" width="554" height="18" uuid="8bc32db8-3e15-4dde-abe2-6ca1b27cd143"/>
 				<textElement textAlignment="Justified">
-					<font fontName="Arial"/>
+					<font fontName="SansSerif"/>
 				</textElement>
 				<text><![CDATA[ 3. Maklumat sesi Istiadat Konvokesyen, tarikh, masa dan tempat pengambilan dan pemulangan pakaian konvokesyen adalah ]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="1" y="104" width="554" height="18" uuid="cc9c9473-dd34-4a68-a591-869333150d48"/>
 				<textElement textAlignment="Justified">
-					<font fontName="Arial"/>
+					<font fontName="SansSerif"/>
 				</textElement>
 				<text><![CDATA[ adalah sepertimana tercatat dalam Buku Peraturan dan Syarat Istiadat Konvokesyen Kali ke-7 UMK yang boleh didapati di laman]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="0" y="117" width="554" height="18" uuid="20a8c594-6120-417a-9069-c7b514cd6eea"/>
 				<textElement textAlignment="Justified">
-					<font fontName="Arial"/>
+					<font fontName="SansSerif"/>
 				</textElement>
 				<text><![CDATA[ laman sesawang http://konvo.umk.edu.my/konvo/]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="1" y="135" width="554" height="18" uuid="806613b3-dc82-477c-91ae-70f0525e64f7"/>
 				<textElement textAlignment="Justified">
-					<font fontName="Arial"/>
+					<font fontName="SansSerif"/>
 				</textElement>
 				<text><![CDATA[ 4. Graduan yang masih berhutang dengan pihak Universiti dikehendaki menjelaskan hutang masing-masing selewat-lewatnya pada ]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="0" y="147" width="554" height="18" uuid="1cdc535d-7d73-480b-86b6-0d4ab7334773"/>
 				<textElement textAlignment="Justified">
-					<font fontName="Arial"/>
+					<font fontName="SansSerif"/>
 				</textElement>
 				<text><![CDATA[ pada 5 OKTOBER 2017 (Khamis) . Sila pastikan setiap pembayaran dibuktikan dengan resit. Jika pembayaran tidak dibuat dalam]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="0" y="162" width="554" height="18" uuid="838b8854-0385-4666-8733-8ebc16055c16"/>
 				<textElement textAlignment="Justified">
-					<font fontName="Arial"/>
+					<font fontName="SansSerif"/>
 				</textElement>
 				<text><![CDATA[ dalam tempoh yang ditetapkan, sijil dan transkrip akan ditahan. Sebarang pertanyaan mengenai perkaran ini, sila hubungi:-]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="5" y="182" width="554" height="18" uuid="7ddead6a-360e-4e96-9fce-5eab81392850"/>
 				<textElement textAlignment="Justified">
-					<font fontName="Arial"/>
+					<font fontName="SansSerif"/>
 				</textElement>
 				<text><![CDATA[ i) Bahagian Terimaan & Kewangan Pelajar Pejabat Bendahari 09-7717105 (Kampus Kota)/ 09-7797045 (Kampus Bachok)/ 09-9477228 (Kampus Jeli) ]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="12" y="198" width="554" height="18" uuid="f3950861-61cd-4c02-b809-6918d9cdc813"/>
 				<textElement textAlignment="Justified">
-					<font fontName="Arial"/>
+					<font fontName="SansSerif"/>
 				</textElement>
 				<text><![CDATA[ 09-9477228 (Kampus Jeli), ]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="5" y="213" width="554" height="18" uuid="16b241d6-30f1-43cc-908c-33e01fc4fbb3"/>
 				<textElement textAlignment="Justified">
-					<font fontName="Arial"/>
+					<font fontName="SansSerif"/>
 				</textElement>
 				<text><![CDATA[ ii) Pejabat Perpustakaan & Pengurusan Ilmu 09-7717199 (Kampus Kota)/ 09-7797200 (Kampus Bachok) / 09-9477236 (Kampus Jei)]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="10" y="226" width="554" height="18" uuid="b1651aae-ea48-4c09-85e4-dec779888413"/>
 				<textElement textAlignment="Justified">
-					<font fontName="Arial"/>
+					<font fontName="SansSerif"/>
 				</textElement>
 				<text><![CDATA[  (Kampus Jeli)]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="1" y="248" width="554" height="18" uuid="41c6b3a7-3ef4-4105-a09d-d096a6301033"/>
 				<textElement textAlignment="Justified">
-					<font fontName="Arial"/>
+					<font fontName="SansSerif"/>
 				</textElement>
 				<text><![CDATA[ 5. Surat jemputan ini hendaklah dibawa semasa mengambil pakaian konvokesyen dan pada hari pendaftaran.]]></text>
 			</staticText>
