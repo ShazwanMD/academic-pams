@@ -5,6 +5,9 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {MdDialog, MdDialogConfig, MdDialogRef, MdSnackBar} from '@angular/material';
 import {TermService} from '../../../../../services/term.service';
 import {AdmissionApplicationTask} from '../../../../shared/model/term/admission-application-task.interface';
+import {Store} from '@ngrx/store';
+import { TermModuleState } from "../../index";
+import {AdmissionApplicationActions} from '../admission-application.action';
 
 @Component({
   selector: 'pams-admission-application-register-task',
@@ -27,6 +30,8 @@ export class AdmissionApplicationRegisterTaskPanel implements OnInit {
   constructor(router: Router,
               route: ActivatedRoute,
               viewContainerRef: ViewContainerRef,
+              private store: Store<TermModuleState>,
+              private actions: AdmissionApplicationActions,
               dialog: MdDialog,
               termService: TermService,
               snackBar: MdSnackBar) {
@@ -71,4 +76,9 @@ export class AdmissionApplicationRegisterTaskPanel implements OnInit {
     //this._router.navigate(['/secure/term/admission-applications/student-admission-application-center']);
     this._router.navigate(['/secure/term/admission-applications']);
   }
+  
+  remove() {
+      this.store.dispatch(this.actions.releaseAdmissionApplicationTask(this.admissionApplicationTask));
+      this.goBack();
+    }
 }

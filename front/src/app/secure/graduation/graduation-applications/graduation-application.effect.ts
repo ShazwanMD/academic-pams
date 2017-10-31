@@ -6,11 +6,13 @@ import {GraduationApplicationActions} from './graduation-application.action';
 import {GraduationService} from '../../../../services/graduation.service';
 import { GraduationApplication } from '../../../shared/model/graduation/graduation-application.interface';
 import { GraduationModuleState } from "../index";
+import {GraduationApplicationTask} from '../../../shared/model/graduation/graduation-application-task.interface';
 
 @Injectable()
 export class GraduationApplicationEffects {
     
     private GRADUATION_APPLICATION: string[] = 'graduationModuleState.graduationApplication'.split( '.' );
+    private GRADUATION_APPLICATION_TASK: string[] = 'graduationModuleState.graduationApplicationTask'.split('.');
 
   constructor(private actions$: Actions,
               private graduationApplicationActions: GraduationApplicationActions,
@@ -28,8 +30,6 @@ export class GraduationApplicationEffects {
   .switchMap(() => this.graduationService.findGraduations() )
   .map(( graduations ) => this.graduationApplicationActions.findGraduationsSuccess( graduations ) );
 
-  
-  
   @Effect() findAssignedGraduationApplicationTasks$ = this.actions$
     .ofType(GraduationApplicationActions.FIND_ASSIGNED_GRADUATION_APPLICATION_TASKS)
     .switchMap(() => this.graduationService.findAssignedGraduationApplicationTasks())
@@ -113,4 +113,17 @@ export class GraduationApplicationEffects {
   .map(( state ) => state[1] )
   .map(( graduationApplication: GraduationApplication ) => this.graduationApplicationActions.findGraduationApplicationByReferenceNo( graduationApplication.referenceNo ) );
 
+  
+ /* @Effect() updateGraduationApplicationTask$ = this.actions$
+  .ofType(GraduationApplicationActions.UPDATE_GRADUATION_APPLICATION)
+  .map((action) => action.payload)
+  .switchMap((payload) => this.graduationService.updateGraduationApplication(payload))
+  .map((message) => this.graduationApplicationActions.updateGraduationApplicationSuccess(message))
+
+      .withLatestFrom( this.store$.select( ...this.GRADUATION_APPLICATION_TASK))
+  .map((state) => state[1])
+  .map((graduationApplicationTask: GraduationApplicationTask) => this.graduationApplicationActions.findGraduationApplicationTaskByTaskId(graduationApplicationTask.taskId));
+*/
+  
+  
 }

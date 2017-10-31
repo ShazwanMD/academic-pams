@@ -7,6 +7,7 @@ import { Store } from '@ngrx/store';
 import { GraduationModuleState } from '../../index';
 import { GraduationApplicationEditorDialog } from '../dialog/graduation-application-editor.dialog';
 import { GraduationService } from "../../../../../services/graduation.service";
+import {GraduationApplication} from '../../../../shared/model/term/graduation-application.interface';
 
 @Component( {
     selector: 'pams-student-graduation-application-draft-task',
@@ -16,11 +17,16 @@ import { GraduationService } from "../../../../../services/graduation.service";
 export class StudentGraduationApplicationDraftTaskPanel implements OnInit {
 
 
-    @Input() graduationApplicationTask: GraduationApplicationTask;
-    private creatorDialogRef: MdDialogRef<GraduationApplicationEditorDialog>;
+    //@Input() graduationApplicationTask: GraduationApplicationTask;
+    @Input() graduationApplication: GraduationApplication;
+    
+    private editorDialogRef: MdDialogRef<GraduationApplicationEditorDialog>;
     private _route: ActivatedRoute;
     private _graduationService: GraduationService;
     private _snackBar: MdSnackBar;
+    private _viewContainerRef: ViewContainerRef;
+    private _dialog: MdDialog;
+    private graduationApplicationTask: GraduationApplicationTask = <GraduationApplicationTask>{};
 
     constructor( private router: Router,
         private route: ActivatedRoute,
@@ -35,6 +41,8 @@ export class StudentGraduationApplicationDraftTaskPanel implements OnInit {
         this._route = route;
         this._graduationService = graduationService;
         this._snackBar = snackBar;
+        this._viewContainerRef = viewContainerRef;
+        this._dialog = dialog;
     }
 
     ngOnInit(): void {
@@ -82,7 +90,7 @@ export class StudentGraduationApplicationDraftTaskPanel implements OnInit {
         this.router.navigate( ['secure/graduation/graduation-applications/student-graduation-application-center'] );
     }
 
-    showDialog(): void {
+   /* showDialog(): void {
         let config = new MdDialogConfig();
         config.viewContainerRef = this.vcf;
         config.role = 'dialog';
@@ -97,6 +105,19 @@ export class StudentGraduationApplicationDraftTaskPanel implements OnInit {
             console.log( 'close dialog' );
             // load something here
         } );
-    }
+    }*/
+    
+    showDialog(): void {
+        console.log('open graduation app update dialog');
+        console.log(this.graduationApplicationTask.id);
+        let config = new MdDialogConfig();
+        config.viewContainerRef = this._viewContainerRef;
+        config.role = 'dialog';
+        config.width = '60%';
+        config.height = '50%';
+        config.position = {top: '0px'};
+        this.editorDialogRef = this._dialog.open(GraduationApplicationEditorDialog, config);
+        this.editorDialogRef.componentInstance.graduationApplication = this.graduationApplicationTask.application;
+      }
 
 }

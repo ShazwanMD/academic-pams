@@ -26,6 +26,7 @@ export class AdmissionApplicationTaskEditorDialog implements OnInit {
   private _admissionApplicationTask: AdmissionApplicationTask;
   private admissionApplicationTask: AdmissionApplicationTask = <AdmissionApplicationTask>{};
 
+
   constructor(private router: Router,
               private route: ActivatedRoute,
               private formBuilder: FormBuilder,

@@ -12,6 +12,7 @@ import {AdmissionApplicationTask} from '../../../../shared/model/term/admission-
 import {FlowState} from '../../../../core/flow-state.enum';
 import {AdmissionApplicationDraftTaskPanel} from './admission-application-draft-task.panel';
 import {AdmissionApplicationRegisterTaskPanel} from './admission-application-register-task.panel';
+import { AdmissionApplicationVerifyTaskPanel } from "./admission-application-verify-task.panel";
 
 @Component({
   selector: 'pams-admission-application-task-workflow',
@@ -42,6 +43,9 @@ export class AdmissionApplicationTaskWorkflowPanel implements OnInit {
           case FlowState.REGISTERED:
             componentFactory = this.cfr.resolveComponentFactory(AdmissionApplicationRegisterTaskPanel);
             break;
+          case FlowState.VERIFIED:
+              componentFactory = this.cfr.resolveComponentFactory(AdmissionApplicationVerifyTaskPanel);
+              break;
         }
         this.componentRef = this.taskPanel.createComponent(componentFactory);
         this.componentRef.instance.admissionApplicationTask = task;

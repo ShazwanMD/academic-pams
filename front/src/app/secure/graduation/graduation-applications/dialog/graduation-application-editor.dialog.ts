@@ -8,6 +8,7 @@ import { GraduationApplicationActions } from '../graduation-application.action';
 import { GraduationApplication } from '../../../../shared/model/graduation/graduation-application.interface';
 import { AcademicSession } from '../../../../shared/model/planner/academic-session.interface';
 import { Student } from '../../../../shared/model/identity/student.interface';
+import { GraduationApplicationTask } from "../../../../shared/model/graduation/graduation-application-task.interface";
 
 @Component( {
     selector: 'pams-graduation-application-editor',
@@ -18,8 +19,10 @@ export class GraduationApplicationEditorDialog implements OnInit {
 
     private editForm: FormGroup;
     private edit: boolean = false;
-    private _application: GraduationApplication;
+
     private _graduationApplication: GraduationApplication;
+    private _graduationApplicationTask: GraduationApplicationTask;
+    private graduationApplicationTask: GraduationApplicationTask = <GraduationApplicationTask>{};
 
     constructor( private router: Router,
         private route: ActivatedRoute,
@@ -36,6 +39,7 @@ export class GraduationApplicationEditorDialog implements OnInit {
         this.edit = true;
     }
 
+
     ngOnInit(): void {
         this.editForm = this.formBuilder.group( <GraduationApplication>{
             referenceNo: '',
@@ -48,18 +52,23 @@ export class GraduationApplicationEditorDialog implements OnInit {
             academicSession: <AcademicSession>{},
         } );
 
-        if (this.edit) this.editForm.patchValue(this._graduationApplication);
+        if ( this.edit ) this.editForm.patchValue( this._graduationApplication );
         //if ( this._graduationApplication ) this.editForm.patchValue( this._graduationApplication );
     }
 
-    set application( value: GraduationApplication ) {
-        this._application = value;
-    }
-
-    save( graduationApplication: GraduationApplication, isValid: boolean ) {
-        console.log(JSON.stringify(graduationApplication));
+   /* save( graduationApplication: GraduationApplication, isValid: boolean ) {
+        console.log( JSON.stringify( graduationApplication ) );
         this.store.dispatch( this.actions.updateGraduationApplication( graduationApplication ) );
         this.dialog.close();
-        let snackBarRef = this.snackBar.open('Graduation info: ' + this._graduationApplication.referenceNo + ' has been updated', '', {duration: 3000});
-    }
+        let snackBarRef = this.snackBar.open( 'Graduation info: ' + this._graduationApplication.referenceNo + ' has been updated', '', { duration: 3000 } );
+    }*/
+    
+    submit(graduationApplication: GraduationApplication, isValid: boolean) {
+        console.log('updating application');
+        console.log('referenceNo: ' + graduationApplication.referenceNo);
+        console.log(JSON.stringify(graduationApplication));
+        this.store.dispatch(this.actions.updateGraduationApplication(graduationApplication));
+        this.dialog.close();
+      }
+    
 }
