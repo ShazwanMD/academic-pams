@@ -176,6 +176,7 @@ public class PlannerServiceImpl implements PlannerService {
 
 	public void calculateGpa(AdAdmission admission) {
 		LOG.debug("admission:{}", admission.getSession().getCode());
+		LOG.debug("admission:{}", admission.getStudent().getName());
 
 		BigDecimal hoursPerSemester = getHoursPerSemester(admission);
 		BigDecimal pointHoursPerSemester = getPointHoursPerSemester(admission);
@@ -209,6 +210,8 @@ public class PlannerServiceImpl implements PlannerService {
 
 	private BigDecimal getCreditHour(AdEnrollment enrollment) {
 		LOG.debug("Enrollment:{}", enrollment.getGradeCode().getCode());
+		LOG.debug("Enrollment:{}", enrollment.getSection().getCode());
+		LOG.debug("Enrollment:{}", enrollment.getSection().getOffering().getTitleEn());
 		// Offering
 		AdOffering offering = enrollment.getSection().getOffering();
 		LOG.debug("offering:{}", offering.getCanonicalCode());

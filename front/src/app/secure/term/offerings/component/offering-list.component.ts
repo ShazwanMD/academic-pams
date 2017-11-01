@@ -26,12 +26,13 @@ export class OfferingListComponent implements AfterViewInit, OnChanges {
 
   private columns: any[] = [
     {name: 'id', label: 'Id'},
+    {name: 'academicSession.code', label: 'Academic Session'},
     {name: 'code', label: 'Code'},
     {name: 'course.status', label: 'Status'},
     {name: 'titleEn', label: 'TitleEn'},
     {name: 'capacity', label: 'Capacity'},
     {name: 'program.code', label: 'Program'},
-    {name: 'course.faculty.name', label: 'Faculty'},
+    //{name: 'course.faculty.name', label: 'Faculty'},
     {name: 'program.level.code', label: 'Level'},
     {name: 'action', label: ''},
   ];

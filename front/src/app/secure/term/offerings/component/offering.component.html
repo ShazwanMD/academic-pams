@@ -37,6 +37,21 @@
         </div>
       </md-tab>
       
+       <md-tab label="Faculty Information">
+        <div layout="column" class="inset">
+          <div layout="row" class="pad-bottom">
+            <span flex="15">Code </span> <span>{{offering?.course?.faculty?.code}}</span>
+          </div>
+           <div layout="row" class="pad-bottom">
+            <span flex="15">Name </span> <span>{{offering?.course?.faculty?.name}}</span>
+          </div>
+          <div layout="row" class="pad-bottom">
+            <span flex="15">Description</span> <span>{{offering?.course?.faculty?.description}}</span>
+          </div>
+        
+        </div>
+      </md-tab>
+      
        <md-tab label="Academic Session Information">
         <div layout="column" class="inset">
           <div layout="row" class="pad-bottom">

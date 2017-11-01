@@ -83,7 +83,7 @@ export class OfferingActionComponent {
     this.GpaCalculateDialog = this.dialog.open(GpaCalculateDialog, config);
     this.GpaCalculateDialog.componentInstance.offering = this.offering;
     this.GpaCalculateDialog.afterClosed().subscribe((res) => {
-      console.log('Close Calculate Alert Box');
+      console.log('Close Calculate Alert Box', this.offering);
 
     });
   }
