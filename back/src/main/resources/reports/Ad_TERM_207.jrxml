@@ -173,7 +173,7 @@ FROM
 	<field name="ad_ofrg_session_id" class="java.lang.Long"/>
 	<field name="ad_stdn_memo" class="java.lang.String"/>
 	<field name="ad_stdn_no_id" class="java.lang.String"/>
-	<field name="ad_stdn_student_status" class="java.lang.Integer"/>
+	<field name="ad_stdn_student_status" class="java.lang.String"/>
 	<field name="ad_stdn_id" class="java.lang.Long"/>
 	<field name="ad_stdn_cohort_id" class="java.lang.Long"/>
 	<field name="ad_stdn_study_mode_id" class="java.lang.Long"/>
@@ -477,7 +477,8 @@ $F{ad_stdn_student_status}.equals( "0" )? "MATRICULATED":
 $F{ad_stdn_student_status}.equals( "1" )? "ACTIVE":
 $F{ad_stdn_student_status}.equals( "2" )? "BARRED":
 $F{ad_stdn_student_status}.equals( "3" )? "INACTIVE":
-"GRADUATED"
+$F{ad_stdn_student_status}.equals( "4" )? "GRADUATED":
+"OTHERS"
 )]]></textFieldExpression>
 			</textField>
 			<textField>
