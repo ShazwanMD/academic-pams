@@ -21,6 +21,7 @@ export class EnrollmentApplicationItemComponent implements OnInit {
     private _snackBar: MdSnackBar;
 
     private columns: any[] = [
+        { name: 'section.offering.academicSession.code', label: 'Academic Session' },
         { name: 'section.ordinal', label: 'Section' },
         { name: 'section.code', label: 'Code' },
         { name: 'section.offering.titleEn', label: 'Title' },
