@@ -36,7 +36,9 @@ export class StudentProfileAcademicSessionComponent implements OnInit {
 
 
     private columns: any[] = [
+        { name: 'academicSession.code', label: 'SESSION CODE' },
         { name: 'academicSession.semester', label: 'ACADEMIC SEMESTER' },
+        { name: 'academicSession.year.year', label: 'YEAR' },
         { name: 'gpa', label: 'GPA' },
         { name: 'cgpa', label: 'CGPA' },
         { name: 'action', label: '' },

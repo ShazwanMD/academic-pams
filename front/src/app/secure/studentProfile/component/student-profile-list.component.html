@@ -476,7 +476,7 @@
             </div>
           </td-expansion-panel>     
            <!-- Academic Session Info -->
-          <td-expansion-panel label="Academic Session Information" class="bgc-light-blue-400">
+         <!--  <td-expansion-panel label="Academic Session Information" class="bgc-light-blue-400">
             <div id="sessionStatus" class="md-padding" class="bgc-light-blue-50">
               <md-card>
                <div toolbar-buttons layout="row" layout-align="start center" flex>
@@ -498,25 +498,25 @@
                       <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
                       <div layout="row">
                         <a md-button color="accent" class="text-upper" [routerLink]="['/secure/term/admission-sessions', row.id]">
-                          <!-- (click)="viewAdmission(row)" -->
+                          (click)="viewAdmission(row)"
                           <span>View </span>
                         </a>
                       </div>
                     </template>
              
-      <!--  <template tdDataTableTemplate="advisor.program.faculty.name" let-value="value" let-row="row" let-column="columns.advisor.program.faculty.name">
+       <template tdDataTableTemplate="advisor.program.faculty.name" let-value="value" let-row="row" let-column="columns.advisor.program.faculty.name">
         <div layout="row">
           <div *ngIf="value == null">None</div>
            <div *ngIf="value != null">{{value}}</div>       
         </div>
-      </template> -->
+      </template>
                   </td-data-table>
                 </md-card-content>
                              
                 
               </md-card>
             </div>
-          </td-expansion-panel>
+          </td-expansion-panel> -->
           
           
             <!-- Graduation Application Info -->
