@@ -124,6 +124,7 @@ public class PlannerTransformer {
     }
 
     public Curriculum toCurriculumVo(AdCurriculum e) {
+    	if(null == e)return null;
         Curriculum vo = new Curriculum();
         vo.setId(e.getId());
         vo.setCode(e.getCode());
@@ -189,6 +190,7 @@ public class PlannerTransformer {
     }
 
     public Cohort toCohortVo(AdCohort e) {
+    	if(null == e)return null;
         Cohort vo = new Cohort();
         vo.setId(e.getId());
         vo.setCode(e.getCode());

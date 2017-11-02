@@ -694,12 +694,12 @@ public class PlannerServiceImpl implements PlannerService {
 		LOG.info("saving faculty");
 		facultyDao.save(faculty, securityService.getCurrentUser());
 		sessionFactory.getCurrentSession().flush();
-		//
-		// LOG.info("broadcasting faculty payload");
-		// FacultyCodePayload payload = new FacultyCodePayload();
-		// payload.setCode(faculty.getCode());
-		// payload.setDescription(faculty.getDescription());
-		// applicationContext.publishEvent(new FacultyAddedEvent(payload));
+		
+		 LOG.info("broadcasting faculty payload");
+		 FacultyCodePayload payload = new FacultyCodePayload();
+		 payload.setCode(faculty.getCode());
+		 payload.setDescription(faculty.getDescription());
+		 applicationContext.publishEvent(new FacultyAddedEvent(payload));
 	}
 
 	@Override
@@ -719,25 +719,6 @@ public class PlannerServiceImpl implements PlannerService {
 		LOG.debug("adding a program to faculty");
 		facultyDao.addProgram(faculty, program, securityService.getCurrentUser());
 		sessionFactory.getCurrentSession().flush();
-
-		// Prepare Faculty Payload
-		LOG.debug("prepare payload");
-		FacultyCodePayload f = new FacultyCodePayload();
-		f.setCode(faculty.getCode());
-		f.setDescription(faculty.getDescription());
-		// Prepare Program Level Payload
-		ProgramLevelPayload l = new ProgramLevelPayload();
-		l.setCode(program.getLevel().getCode());
-		l.setDescription(program.getLevel().getDescription());
-		// Prepare Program Payload
-		ProgramCodePayload p = new ProgramCodePayload();
-		p.setCode(program.getCode());
-		p.setDescription(program.getTitleMs());
-		p.setFacultyCode(f);
-		p.setProgramLevel(l);
-
-		ProgramAddedEvent event = new ProgramAddedEvent(p);
-		applicationContext.publishEvent(event);
 	}
 
 	@Override
@@ -915,6 +896,29 @@ public class PlannerServiceImpl implements PlannerService {
 	public void saveProgram(AdProgram program) {
 		programDao.save(program, securityService.getCurrentUser());
 		sessionFactory.getCurrentSession().flush();
+		
+		AdFaculty faculty = facultyDao.findByCode(program.getFaculty().getCode());
+
+		LOG.debug("Start Broadcast Program");
+		// Prepare Faculty Payload
+		LOG.debug("prepare payload");
+		FacultyCodePayload f = new FacultyCodePayload();
+		f.setCode(faculty.getCode());
+		f.setDescription(faculty.getDescription());
+		// Prepare Program Level Payload
+		ProgramLevelPayload l = new ProgramLevelPayload();
+		l.setCode(program.getLevel().getCode());
+		l.setDescription(program.getLevel().getDescription());
+		// Prepare Program Payload
+		ProgramCodePayload p = new ProgramCodePayload();
+		p.setCode(program.getCode());
+		p.setDescription(program.getTitleMs());
+		p.setFacultyCode(f);
+		p.setProgramLevel(l);
+
+		ProgramAddedEvent event = new ProgramAddedEvent(p);
+		applicationContext.publishEvent(event);
+		LOG.debug("Broadcast Program");
 	}
 
 	@Override

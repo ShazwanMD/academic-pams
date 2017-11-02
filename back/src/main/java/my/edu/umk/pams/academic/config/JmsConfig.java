@@ -48,7 +48,7 @@ public class JmsConfig {
         // map to queue or topic
         public DestinationExpressionFunction() {
             queueMap = new HashMap<>();
-            queueMap.put(ProgramCodePayload.class.getName(), new ActiveMQQueue("programCodeQueue"));
+            queueMap.put(ProgramCodePayload.class.getName(), new ActiveMQQueue("programCodeQueue2"));
             queueMap.put(CandidatePayload.class.getName(), new ActiveMQQueue("candidateQueue"));
             queueMap.put(FacultyCodePayload.class.getName(), new ActiveMQQueue("facultyCodeQueue2"));
             queueMap.put(AdmissionPayload.class.getName(), new ActiveMQQueue("AdmissionPayloadQueue"));

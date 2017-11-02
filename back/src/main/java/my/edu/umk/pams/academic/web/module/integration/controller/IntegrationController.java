@@ -20,11 +20,15 @@ import java.math.BigDecimal;
 import java.util.List;
 
 import my.edu.umk.pams.academic.common.service.CommonService;
+import my.edu.umk.pams.academic.identity.dao.RecursiveGroupException;
 import my.edu.umk.pams.academic.identity.model.AdActor;
 import my.edu.umk.pams.academic.identity.model.AdActorImpl;
 import my.edu.umk.pams.academic.identity.model.AdAddress;
 import my.edu.umk.pams.academic.identity.model.AdAddressImpl;
 import my.edu.umk.pams.academic.identity.model.AdAddressType;
+import my.edu.umk.pams.academic.identity.model.AdGroup;
+import my.edu.umk.pams.academic.identity.model.AdGroupMember;
+import my.edu.umk.pams.academic.identity.model.AdGroupMemberImpl;
 import my.edu.umk.pams.academic.identity.model.AdPrincipal;
 import my.edu.umk.pams.academic.identity.model.AdPrincipalImpl;
 import my.edu.umk.pams.academic.identity.model.AdPrincipalRole;
@@ -142,8 +146,16 @@ public class IntegrationController {
     // CANDIDATE
     // ====================================================================================================
     @RequestMapping(value = "/candidates", method = RequestMethod.POST)
-    public ResponseEntity<String> saveCandidate(@RequestBody CandidatePayload payload) {
+    public ResponseEntity<String> saveCandidate(@RequestBody CandidatePayload payload) throws RecursiveGroupException {
         SecurityContext ctx = loginAsSystem();
+        
+        
+        AdCohort cohort = new AdCohortImpl();
+        cohort.setCode(payload.getCohortCode());
+        cohort.setDescription(payload.getCohortCode());
+        cohort.setProgram(plannerService.findProgramByCode(payload.getProgramCode()));
+        cohort.setSession(plannerService.findCurrentAcademicSession());
+        plannerService.saveCohort(cohort);
 
         // student info
         AdStudent student = new AdStudentImpl();
@@ -187,23 +199,38 @@ public class IntegrationController {
         permenantAddress.setType(AdAddressType.PERMANENT);
         profileService.addAddress(student, permenantAddress);
         
+        //User
         AdUser user = new AdUserImpl();
         user.setActor(student);
         user.setEmail(payload.getEmail());
         user.setUsername(payload.getEmail());
-        user.setEnabled(true);
-        user.setLocked(true);
-        user.setPassword("abc123");
+        user.setPassword(payload.getUserPayload().getPassword());
         user.setRealName(payload.getName());
-        
-        user.setName(payload.getName());
-        user.setPrincipalType(AdPrincipalType.USER);
         identityService.saveUser(user);
-        
-        
 
+        //Principal
+        AdPrincipal principal = identityService.findPrincipalByName(payload.getEmail());
+        principal.setName(payload.getEmail());
+        principal.setPrincipalType(AdPrincipalType.USER);
+        principal.setEnabled(true);
+        principal.setLocked(true);
         
-
+        //Principal Role
+        AdPrincipalRole role = new AdPrincipalRoleImpl();
+        role.setPrincipal(principal);
+        role.setRole(AdRoleType.ROLE_USER);
+        identityService.addPrincipalRole(principal, role);
+        
+        //Group
+        AdGroup group = identityService.findGroupByName("GRP_STDN");
+        //GroupMember
+        AdGroupMember member = new AdGroupMemberImpl();
+        member.setGroup(group);
+        member.setPrincipal(principal);
+        identityService.addGroupMember(group, principal);
+        
+        LOG.info("Finish integration candidate controller");
+        
         // todo: refresh and save address etc
         // todo: save student sebagai users
         // todo: set initial password
