@@ -66,193 +66,204 @@ import my.edu.umk.pams.connector.payload.StaffPayload;
 @RequestMapping("/api/integration")
 public class IntegrationController {
 
-    private static final Logger LOG = LoggerFactory.getLogger(IntegrationController.class);
+	private static final Logger LOG = LoggerFactory.getLogger(IntegrationController.class);
 
-    @Autowired
-    private AuthenticationManager authenticationManager;
+	@Autowired
+	private AuthenticationManager authenticationManager;
 
-    @Autowired
-    private CommonService commonService;
+	@Autowired
+	private CommonService commonService;
 
-    @Autowired
-    private IdentityService identityService;
+	@Autowired
+	private IdentityService identityService;
 
-    @Autowired
-    private PlannerService plannerService;
+	@Autowired
+	private PlannerService plannerService;
 
-    @Autowired
-    private TermService termService;
-    
-    @Autowired
-    private ProfileService profileService;
+	@Autowired
+	private TermService termService;
 
-    // ====================================================================================================
-    // COHORT
-    // ====================================================================================================
-    @RequestMapping(value = "/cohort", method = RequestMethod.POST)
-    public ResponseEntity<String> saveCohort() {
-        SecurityContext ctx = loginAsSystem();
+	@Autowired
+	private ProfileService profileService;
 
-        AdCohort cohort = new AdCohortImpl();
-        cohort.setCode("TODO");
-        cohort.setDescription("TODO");
-        cohort.setProgram(plannerService.findProgramByCode("TODO"));
-        cohort.setCurriculum(plannerService.findCurriculumByCode("TODO"));
-        cohort.setSession(plannerService.findCurrentAcademicSession());
-        plannerService.saveCohort(cohort);
+	// ====================================================================================================
+	// COHORT
+	// ====================================================================================================
+	@RequestMapping(value = "/cohort", method = RequestMethod.POST)
+	public ResponseEntity<String> saveCohort() {
+		SecurityContext ctx = loginAsSystem();
 
-        logoutAsSystem(ctx);
-        return new ResponseEntity<String>("sucess", HttpStatus.OK);
-    }
-    
-    // ====================================================================================================
-    // STUDENT ACCOUNT
-    // ====================================================================================================
-    @RequestMapping(value = "/staff", method = RequestMethod.POST)
-    public ResponseEntity<String> saveStaff(@RequestBody StaffPayload payload) {
-        SecurityContext ctx = loginAsSystem();
-        LOG.debug("payload:{}",payload.getStaffId());
-       
-        AdStaff staff = new AdStaffImpl();
-        staff.setIdentityNo(payload.getStaffId());
-        staff.setName(payload.getStaffName());
-        identityService.saveStaff(staff);
-     
-        logoutAsSystem(ctx);
-        return new ResponseEntity<String>("success", HttpStatus.OK);
-    }
-    
- // ====================================================================================================
-    // STUDENT ACCOUNT
-    // ====================================================================================================
-    @RequestMapping(value = "/studentAccounts", method = RequestMethod.PUT)
-    public ResponseEntity<String> saveStudentAccount(@RequestBody AccountPayload payload) {
-        SecurityContext ctx = loginAsSystem();
-        
-        AdStudent student = identityService.findStudentByMatricNo(payload.getMatricNo());
-        student.setBalance(payload.getBalance());
-        student.setOutstanding(payload.isOutstanding());
-        if(student.getOutstanding() == true){
-        	student.setMemo("There Are Outstanding Payments.Please Refer To Bursary");
-        }
-        identityService.updateStudent(student);
-     
-        logoutAsSystem(ctx);
-        return new ResponseEntity<String>("sucess", HttpStatus.OK);
-    }
-       
+		AdCohort cohort = new AdCohortImpl();
+		cohort.setCode("TODO");
+		cohort.setDescription("TODO");
+		cohort.setProgram(plannerService.findProgramByCode("TODO"));
+		cohort.setCurriculum(plannerService.findCurriculumByCode("TODO"));
+		cohort.setSession(plannerService.findCurrentAcademicSession());
+		plannerService.saveCohort(cohort);
 
-    // ====================================================================================================
-    // CANDIDATE
-    // ====================================================================================================
-    @RequestMapping(value = "/candidates", method = RequestMethod.POST)
-    public ResponseEntity<String> saveCandidate(@RequestBody CandidatePayload payload) throws RecursiveGroupException {
-        SecurityContext ctx = loginAsSystem();
-        
-        
-        AdCohort cohort = new AdCohortImpl();
-        cohort.setCode(payload.getCohortCode());
-        cohort.setDescription(payload.getCohortCode());
-        cohort.setProgram(plannerService.findProgramByCode(payload.getProgramCode()));
-        cohort.setSession(plannerService.findCurrentAcademicSession());
-        plannerService.saveCohort(cohort);
+		logoutAsSystem(ctx);
+		return new ResponseEntity<String>("sucess", HttpStatus.OK);
+	}
 
-        // student info
-        AdStudent student = new AdStudentImpl();
-        student.setMatricNo(payload.getMatricNo());
-        student.setName(payload.getName());
-        student.setEmail(payload.getEmail());
-        student.setFax(payload.getFax());
-        student.setPhone(payload.getPhone());
-        student.setMobile(payload.getMobile());
+	// ====================================================================================================
+	// STUDENT ACCOUNT
+	// ====================================================================================================
+	@RequestMapping(value = "/staff", method = RequestMethod.POST)
+	public ResponseEntity<String> saveStaff(@RequestBody StaffPayload payload) {
+		SecurityContext ctx = loginAsSystem();
+		LOG.debug("payload:{}", payload.getStaffId());
 
-        // status, mode and cohort
-        student.setStudentStatus(AdStudentStatus.ACTIVE);
-        student.setStudyMode(commonService.findStudyModeByCode(payload.getStudyMode().getCode()));
-        student.setCohort(plannerService.findCohortByCode(payload.getCohortCode()));
-        student.setBalance(BigDecimal.ZERO);
-        student.setOutstanding(false);
+		AdStaff staff = new AdStaffImpl();
+		staff.setIdentityNo(payload.getStaffId());
+		staff.setName(payload.getStaffName());
+		identityService.saveStaff(staff);
 
-        identityService.saveStudent(student);
-               
-        //Mailing Address
-        AdAddress currentAddress = new AdAddressImpl();
-        currentAddress.setAddress1(payload.getSecondaryAddress().getAddress1());
-        currentAddress.setAddress2(payload.getSecondaryAddress().getAddress2());
-        currentAddress.setAddress3(payload.getSecondaryAddress().getAddress3());
-        currentAddress.setPostCode(payload.getSecondaryAddress().getPostcode());
-        currentAddress.setStateCode(commonService.findStateCodeByCode(payload.getSecondaryAddress().getStateCode()));
-        currentAddress.setCountryCode(commonService.findCountryCodeByCode(payload.getSecondaryAddress().getCountryCode()));
-        currentAddress.setStudent(student);
-        currentAddress.setType(AdAddressType.CURRENT);
-        profileService.addAddress(student, currentAddress);
+		logoutAsSystem(ctx);
+		return new ResponseEntity<String>("success", HttpStatus.OK);
+	}
 
-        //Billing Address
-        AdAddress permenantAddress = new AdAddressImpl();
-        permenantAddress.setAddress1(payload.getPrimaryAddress().getAddress1());
-        permenantAddress.setAddress2(payload.getPrimaryAddress().getAddress2());
-        permenantAddress.setAddress3(payload.getPrimaryAddress().getAddress3());
-        permenantAddress.setPostCode(payload.getPrimaryAddress().getPostcode());
-        permenantAddress.setStateCode(commonService.findStateCodeByCode(payload.getPrimaryAddress().getStateCode()));
-        permenantAddress.setCountryCode(commonService.findCountryCodeByCode(payload.getPrimaryAddress().getCountryCode()));
-        permenantAddress.setStudent(student);
-        permenantAddress.setType(AdAddressType.PERMANENT);
-        profileService.addAddress(student, permenantAddress);
-        
-        //User
-        AdUser user = new AdUserImpl();
-        user.setActor(student);
-        user.setEmail(payload.getEmail());
-        user.setUsername(payload.getEmail());
-        user.setPassword(payload.getUserPayload().getPassword());
-        user.setRealName(payload.getName());
-        identityService.saveUser(user);
+	// ====================================================================================================
+	// STUDENT ACCOUNT
+	// ====================================================================================================
+	@RequestMapping(value = "/studentAccounts", method = RequestMethod.PUT)
+	public ResponseEntity<String> saveStudentAccount(@RequestBody AccountPayload payload) {
+		SecurityContext ctx = loginAsSystem();
 
-        //Principal
-        AdPrincipal principal = identityService.findPrincipalByName(payload.getEmail());
-        principal.setName(payload.getEmail());
-        principal.setPrincipalType(AdPrincipalType.USER);
-        principal.setEnabled(true);
-        principal.setLocked(true);
-        
-        //Principal Role
-        AdPrincipalRole role = new AdPrincipalRoleImpl();
-        role.setPrincipal(principal);
-        role.setRole(AdRoleType.ROLE_USER);
-        identityService.addPrincipalRole(principal, role);
-        
-        //Group
-        AdGroup group = identityService.findGroupByName("GRP_STDN");
-        //GroupMember
-        AdGroupMember member = new AdGroupMemberImpl();
-        member.setGroup(group);
-        member.setPrincipal(principal);
-        identityService.addGroupMember(group, principal);
-        
-        LOG.info("Finish integration candidate controller");
-        
-        // todo: refresh and save address etc
-        // todo: save student sebagai users
-        // todo: set initial password
-        // todo: hantar email notification dan sebagainnya
-        // todo: current, permanent
-        
+		AdStudent student = identityService.findStudentByMatricNo(payload.getMatricNo());
+		student.setBalance(payload.getBalance());
+		student.setOutstanding(payload.isOutstanding());
+		if (student.getOutstanding() == true) {
+			student.setMemo("There Are Outstanding Payments.Please Refer To Bursary");
+		}
+		identityService.updateStudent(student);
 
-        logoutAsSystem(ctx);
-        return new ResponseEntity<String>("sucess", HttpStatus.OK);
-    }
+		logoutAsSystem(ctx);
+		return new ResponseEntity<String>("sucess", HttpStatus.OK);
+	}
 
-    private SecurityContext loginAsSystem() {
-        SecurityContext savedCtx = SecurityContextHolder.getContext();
-        AdAutoLoginToken authenticationToken = new AdAutoLoginToken("system");
-        Authentication authed = authenticationManager.authenticate(authenticationToken);
-        SecurityContext system = new NonSerializableSecurityContext();
-        system.setAuthentication(authed);
-        SecurityContextHolder.setContext(system);
-        return savedCtx;
-    }
+	// ====================================================================================================
+	// CANDIDATE
+	// ====================================================================================================
+	@RequestMapping(value = "/candidates", method = RequestMethod.POST)
+	public ResponseEntity<String> saveCandidate(@RequestBody CandidatePayload payload) throws RecursiveGroupException {
+		SecurityContext ctx = loginAsSystem();
 
-    private void logoutAsSystem(SecurityContext context) {
-        SecurityContextHolder.setContext(context);
-    }
+		LOG.info("Start integration candidate controller");
+		
+		if(plannerService.isCohortExists(payload.getCohortCode())){
+			LOG.info("cohort already exists");
+		}else{
+			//Cohort
+			AdCohort cohort = new AdCohortImpl();
+			cohort.setCode(payload.getCohortCode());
+			cohort.setDescription(payload.getCohortCode());
+			cohort.setProgram(plannerService.findProgramByCode(payload.getProgramCode()));
+			cohort.setSession(plannerService.findCurrentAcademicSession());
+			plannerService.saveCohort(cohort);
+			
+			LOG.info("cohort not exists");
+			
+		}
+
+		
+
+		// student info
+		AdStudent student = new AdStudentImpl();
+		student.setMatricNo(payload.getMatricNo());
+		student.setName(payload.getName());
+		student.setEmail(payload.getEmail());
+		student.setFax(payload.getFax());
+		student.setPhone(payload.getPhone());
+		student.setMobile(payload.getMobile());
+
+		// status, mode and cohort
+		student.setStudentStatus(AdStudentStatus.ACTIVE);
+		student.setStudyMode(commonService.findStudyModeByCode(payload.getStudyMode().getCode()));
+		student.setCohort(plannerService.findCohortByCode(payload.getCohortCode()));
+		student.setBalance(BigDecimal.ZERO);
+		student.setOutstanding(false);
+
+		identityService.saveStudent(student);
+
+		// Mailing Address
+		AdAddress currentAddress = new AdAddressImpl();
+		currentAddress.setAddress1(payload.getSecondaryAddress().getAddress1());
+		currentAddress.setAddress2(payload.getSecondaryAddress().getAddress2());
+		currentAddress.setAddress3(payload.getSecondaryAddress().getAddress3());
+		currentAddress.setPostCode(payload.getSecondaryAddress().getPostcode());
+		currentAddress.setStateCode(commonService.findStateCodeByCode(payload.getSecondaryAddress().getStateCode()));
+		currentAddress
+				.setCountryCode(commonService.findCountryCodeByCode(payload.getSecondaryAddress().getCountryCode()));
+		currentAddress.setStudent(student);
+		currentAddress.setType(AdAddressType.CURRENT);
+		profileService.addAddress(student, currentAddress);
+
+		// Billing Address
+		AdAddress permenantAddress = new AdAddressImpl();
+		permenantAddress.setAddress1(payload.getPrimaryAddress().getAddress1());
+		permenantAddress.setAddress2(payload.getPrimaryAddress().getAddress2());
+		permenantAddress.setAddress3(payload.getPrimaryAddress().getAddress3());
+		permenantAddress.setPostCode(payload.getPrimaryAddress().getPostcode());
+		permenantAddress.setStateCode(commonService.findStateCodeByCode(payload.getPrimaryAddress().getStateCode()));
+		permenantAddress
+				.setCountryCode(commonService.findCountryCodeByCode(payload.getPrimaryAddress().getCountryCode()));
+		permenantAddress.setStudent(student);
+		permenantAddress.setType(AdAddressType.PERMANENT);
+		profileService.addAddress(student, permenantAddress);
+
+		// User
+		AdUser user = new AdUserImpl();
+		user.setActor(student);
+		user.setEmail(payload.getEmail());
+		user.setUsername(payload.getEmail());
+		user.setPassword(payload.getUserPayload().getPassword());
+		user.setRealName(payload.getName());
+		identityService.saveUser(user);
+
+		// Principal
+		AdPrincipal principal = identityService.findPrincipalByName(payload.getEmail());
+		principal.setName(payload.getEmail());
+		principal.setPrincipalType(AdPrincipalType.USER);
+		principal.setEnabled(true);
+		principal.setLocked(true);
+
+		// Principal Role
+		AdPrincipalRole role = new AdPrincipalRoleImpl();
+		role.setPrincipal(principal);
+		role.setRole(AdRoleType.ROLE_USER);
+		identityService.addPrincipalRole(principal, role);
+
+		// Group
+		AdGroup group = identityService.findGroupByName("GRP_STDN");
+		// GroupMember
+		AdGroupMember member = new AdGroupMemberImpl();
+		member.setGroup(group);
+		member.setPrincipal(principal);
+		identityService.addGroupMember(group, principal);
+
+		LOG.info("Finish integration candidate controller");
+
+		// todo: refresh and save address etc
+		// todo: save student sebagai users
+		// todo: set initial password
+		// todo: hantar email notification dan sebagainnya
+		// todo: current, permanent
+
+		logoutAsSystem(ctx);
+		return new ResponseEntity<String>("sucess", HttpStatus.OK);
+	}
+
+	private SecurityContext loginAsSystem() {
+		SecurityContext savedCtx = SecurityContextHolder.getContext();
+		AdAutoLoginToken authenticationToken = new AdAutoLoginToken("system");
+		Authentication authed = authenticationManager.authenticate(authenticationToken);
+		SecurityContext system = new NonSerializableSecurityContext();
+		system.setAuthentication(authed);
+		SecurityContextHolder.setContext(system);
+		return savedCtx;
+	}
+
+	private void logoutAsSystem(SecurityContext context) {
+		SecurityContextHolder.setContext(context);
+	}
 }
