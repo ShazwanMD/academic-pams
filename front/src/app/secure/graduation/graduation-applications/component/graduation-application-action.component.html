@@ -14,7 +14,7 @@
   <md-nav-list flex dense>
     <md-list-item (click)="updateDialog()" >
       <md-icon md-list-avatar >done_all</md-icon>
-      <h4 md-line>Edit Graduation Application {{graduationApplication?.referenceNo}} </h4>
+      <h4 md-line>Edit {{graduationApplication?.referenceNo}} </h4>
       <p md-line>Edit this graduation application </p>
     </md-list-item>
     <md-list-item [routerLink]="['/secure/graduation/graduation-application-lists']">

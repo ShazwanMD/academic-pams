@@ -1,6 +1,14 @@
-<h2 md-dialog-title>Graduation Application Editor {{_graduationApplication?.referenceNo}} </h2>
+<h2 md-dialog-title>Graduation Application Editor </h2>
 <md-dialog-content>
   <form [formGroup]="editForm">
+   <div layout="row" class="pad-bottom">
+      <md-input-container flex>
+        <input mdInput readonly
+               placeholder="Reference No"
+               formControlName="referenceNo"
+               flex/>
+      </md-input-container>
+    </div>
     <div layout="row" class="pad-bottom">
       <md-input-container flex>
         <input mdInput
@@ -17,6 +25,7 @@
                flex/>
       </md-input-container>
     </div>
+    
   </form>
 </md-dialog-content>
 <md-dialog-actions align="end">

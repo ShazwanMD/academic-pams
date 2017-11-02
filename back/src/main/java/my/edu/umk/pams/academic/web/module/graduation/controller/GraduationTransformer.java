@@ -79,6 +79,7 @@ public class GraduationTransformer {
 		vo.setCreditHour(e.getCreditHour());
 		vo.setSourceNo(e.getSourceNo());
 		vo.setDescription(e.getDescription());
+		vo.setMemo(e.getMemo());
 		vo.setStudent(identityTransformer.toStudentVo(e.getStudent()));
 		vo.setAcademicSession(plannerTransformer.toAcademicSessionVo(e.getSession()));
 		vo.setFlowState(FlowState.get(e.getFlowdata().getState().ordinal()));
