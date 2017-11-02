@@ -41,7 +41,7 @@ export class AssessmentEditorDialog implements OnInit {
     ngOnInit(): void {
         this.editorForm = this.formBuilder.group( {
             id: 0,
-            code: ['', Validators.required],
+            code: '',
             canonicalCode: '',
             description: ['', Validators.required],
             totalScore: [100, Validators.required],
@@ -60,7 +60,12 @@ export class AssessmentEditorDialog implements OnInit {
 
     submit( assessment: Assessment, isValid: boolean ) {
         console.log( assessment );
+        console.log( 'code: ' + this._offering.code + '-' + assessment.assessmentType + '-'  + assessment.ordinal );
         console.log( 'canonical Code: ' + this._offering.canonicalCode + '-' + assessment.code );
+        
+        //set code
+        assessment.code = this._offering.code + '-' + assessment.assessmentType + '-' + assessment.ordinal;
+        
         // set canonical code
         assessment.canonicalCode = this._offering.canonicalCode + '-' + assessment.code;
 

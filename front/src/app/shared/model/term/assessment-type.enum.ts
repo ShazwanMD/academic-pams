@@ -1,26 +1,30 @@
 export enum AssessmentType{
+        
   QUIZ,               // 0   // cw
   TEST,               // 1
   REPORT,             // 2
   ASSIGNMENT,         // 3
-  PROJECT,            // 4
-  PRESENTATION,       // 5
-  VIVA,               // 6
-  LAB_REPORT,         // 7
-  LAB_PRACTICAL,      // 8
-  FINAL_EXAM,         // 9  // ew
-  THESIS,             // 10
-  SURVEY,             // 12
-  EVALUATION,         // 13
-  TUTORIAL,           // 14
-  CASE_STUDIES,       // 15
-  FINAL_YEAR_PROJECT, // 16
-  IN_CLASS_EXERCISE,  // 17
-  REFLECTION_JOURNAL, // 18
-  PAIR_TEST,          // 19
-  PEER_GRADING,       // 20
-  PEER_EVALUATION,    // 21
-  JOURNAL,            // 22
-  HOMEWORK,           // 23
-  OTHER           // 24
+  REACTION_PAPERS,     //4
+  PROJECT,            // 5
+  PRESENTATION,       // 6
+  VIVA,               // 7
+  LAB_REPORT,         // 8
+  LAB_PRACTICAL,      // 9
+  MID_TERM_EXAM,      //10
+  FINAL_EXAM,         // 11  // ew
+  THESIS,             // 12
+  SURVEY,             // 13
+  EVALUATION,         // 14
+  TUTORIAL,           // 15
+  CASE_STUDIES,       // 16
+  FINAL_YEAR_PROJECT, // 17
+  IN_CLASS_EXERCISE,  // 18
+  REFLECTION_JOURNAL, // 19
+  PAIR_TEST,          // 20
+  PEER_GRADING,       // 21
+  PEER_EVALUATION,    // 22
+  JOURNAL,            // 23
+  HOMEWORK,           // 24
+  OTHERS           // 25
+  
 }
