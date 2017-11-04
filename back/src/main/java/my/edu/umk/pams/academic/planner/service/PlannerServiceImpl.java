@@ -1,6 +1,7 @@
 package my.edu.umk.pams.academic.planner.service;
 
 import my.edu.umk.pams.academic.common.model.AdGradeCode;
+
 import my.edu.umk.pams.academic.common.model.AdStudyMode;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.planner.dao.*;
@@ -191,10 +192,13 @@ public class PlannerServiceImpl implements PlannerService {
 		LOG.debug("CGPA:{}", cgpa);
 
 		int creditEarned = hoursPerStudent.toBigInteger().intValue();
+		int creditTaken = hoursPerStudent.toBigInteger().intValue();
 		admission.setGpa(gpa);
 		admission.setCgpa(cgpa);
 		admission.setCreditEarned(creditEarned);
+		admission.setCreditTaken(creditTaken);
 		LOG.debug("creditEarned:{}", creditEarned);
+		LOG.debug("creditTaken:{}", creditTaken);
 
 		// Condition To Check Standing
 		if (cgpa.doubleValue() >= 0.00 && cgpa.doubleValue() <= 1.99) {
