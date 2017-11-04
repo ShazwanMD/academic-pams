@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report4" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="fe6eae38-dbac-492a-9522-077445b8487d">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="27"/>
+	<property name="ireport.y" value="0"/>
 	<parameter name="identity_no" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
@@ -166,7 +166,7 @@ FROM
 	<field name="ad_ofrg_session_id" class="java.lang.Long"/>
 	<field name="ad_stdn_memo" class="java.lang.String"/>
 	<field name="ad_stdn_no_id" class="java.lang.String"/>
-	<field name="ad_stdn_student_status" class="java.lang.Integer"/>
+	<field name="ad_stdn_student_status" class="java.lang.String"/>
 	<field name="ad_stdn_id" class="java.lang.Long"/>
 	<field name="ad_stdn_cohort_id" class="java.lang.Long"/>
 	<field name="ad_stdn_study_mode_id" class="java.lang.Long"/>
@@ -260,77 +260,77 @@ $F{ad_acdm_sesn_code}.equals( $P{session_code} )]]></filterExpression>
 			<staticText>
 				<reportElement x="99" y="52" width="259" height="20" uuid="48b968ec-52b4-441a-ad09-6d32a18a342e"/>
 				<textElement>
-					<font isBold="true"/>
+					<font fontName="SansSerif" isBold="true"/>
 				</textElement>
 				<text><![CDATA[16100 KOTA BHARU,KELANTAN,DARULNAIM]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="99" y="52" width="259" height="20" uuid="3d9edbf5-0934-420a-ad37-58d2defdebf9"/>
 				<textElement>
-					<font isBold="true"/>
+					<font fontName="SansSerif" isBold="true"/>
 				</textElement>
 				<text><![CDATA[16100 KOTA BHARU,KELANTAN,DARULNAIM]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="99" y="67" width="258" height="20" uuid="bcbeeccc-dd35-480e-a21c-bcb4aa274ad5"/>
 				<textElement>
-					<font isBold="true"/>
+					<font fontName="SansSerif" isBold="true"/>
 				</textElement>
 				<text><![CDATA[TEL:09-7717028        FAKS:09-7717162]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="100" y="24" width="238" height="20" uuid="89222047-f68a-4629-a2a6-11bd71df8dcc"/>
 				<textElement>
-					<font isBold="true"/>
+					<font fontName="SansSerif" isBold="true"/>
 				</textElement>
 				<text><![CDATA[UNIVERSITI MALAYSIA KELANTAN]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="100" y="10" width="445" height="20" uuid="9626acb2-e179-454a-a426-5dbdde78bfab"/>
 				<textElement>
-					<font isBold="true"/>
+					<font fontName="SansSerif" isBold="true"/>
 				</textElement>
 				<text><![CDATA[MALAYSIAN GRADUATE SCHOOL OF ENTREPRENEURSHIP & BUSINESS (MGSEB)]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="100" y="24" width="238" height="20" uuid="e72e9d1b-77dd-49fa-af04-6019acf05a85"/>
 				<textElement>
-					<font isBold="true"/>
+					<font fontName="SansSerif" isBold="true"/>
 				</textElement>
 				<text><![CDATA[UNIVERSITI MALAYSIA KELANTAN]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="100" y="38" width="227" height="20" uuid="dca5c2a9-2300-4f68-8f55-a588766048f9"/>
 				<textElement>
-					<font isBold="true"/>
+					<font fontName="SansSerif" isBold="true"/>
 				</textElement>
 				<text><![CDATA[KARUNG BERKUNCI 36, PENGKALAN CHEPA]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="99" y="67" width="258" height="20" uuid="e7dbffff-7f60-4c4e-97dd-8c2f27a67605"/>
 				<textElement>
-					<font isBold="true"/>
+					<font fontName="SansSerif" isBold="true"/>
 				</textElement>
 				<text><![CDATA[TEL:09-7717028        FAKS:09-7717162]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="100" y="38" width="227" height="20" uuid="8772595f-e163-4a58-a794-011fd198944d"/>
 				<textElement>
-					<font isBold="true"/>
+					<font fontName="SansSerif" isBold="true"/>
 				</textElement>
 				<text><![CDATA[KARUNG BERKUNCI 36, PENGKALAN CHEPA]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="100" y="10" width="445" height="20" uuid="71485a6a-a4fc-4671-9ba8-8281a1625b15"/>
 				<textElement>
-					<font isBold="true"/>
+					<font fontName="SansSerif" isBold="true"/>
 				</textElement>
 				<text><![CDATA[MALAYSIAN GRADUATE SCHOOL OF ENTREPRENEURSHIP & BUSINESS (MGSEB)]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="172" y="128" width="213" height="20" uuid="4cad9dcb-ef95-4ef8-85b8-b0d172c27ece"/>
 				<textElement textAlignment="Center">
-					<font isBold="false" isItalic="true"/>
+					<font fontName="SansSerif" isBold="false" isItalic="true"/>
 				</textElement>
 				<text><![CDATA[REGISTRATION MODULE : (MBA) / (DBA)]]></text>
 			</staticText>
@@ -350,7 +350,7 @@ $F{ad_acdm_sesn_code}.equals( $P{session_code} )]]></filterExpression>
 			<staticText>
 				<reportElement x="171" y="128" width="213" height="20" uuid="be6d1840-7b38-4bcc-9383-d91ee3ce579f"/>
 				<textElement textAlignment="Center">
-					<font isBold="false" isItalic="true"/>
+					<font fontName="SansSerif" isBold="false" isItalic="true"/>
 				</textElement>
 				<text><![CDATA[EXAMINATION RESULT SLIP]]></text>
 			</staticText>
@@ -363,14 +363,14 @@ $F{ad_acdm_sesn_code}.equals( $P{session_code} )]]></filterExpression>
 			<staticText>
 				<reportElement x="13" y="161" width="263" height="20" uuid="0aafffb6-c775-4b6d-8311-9b804469e30a"/>
 				<textElement verticalAlignment="Middle">
-					<font isBold="true"/>
+					<font fontName="SansSerif" isBold="true"/>
 				</textElement>
 				<text><![CDATA[STUDENT'S  INFORMATION]]></text>
 			</staticText>
 			<textField pattern="dd/MM/yy">
 				<reportElement x="482" y="161" width="63" height="20" uuid="2390d96b-71c5-456f-8584-861632275430"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font isBold="true"/>
+					<font fontName="SansSerif" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
@@ -387,26 +387,44 @@ $F{ad_acdm_sesn_code}.equals( $P{session_code} )]]></filterExpression>
 		<band height="111" splitType="Stretch">
 			<staticText>
 				<reportElement x="28" y="12" width="59" height="20" uuid="4f7b3cc0-fa8e-4f76-857f-9cdc2dc0e0d9"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
 				<text><![CDATA[Name :]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="376" y="12" width="58" height="20" uuid="a1012da5-0c62-489f-b137-7f9e4da80d11"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
 				<text><![CDATA[Matric No :]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="376" y="32" width="58" height="20" uuid="b0aadd7b-6b90-4d7d-9823-be4e1a781313"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
 				<text><![CDATA[Semester :]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="29" y="72" width="59" height="20" uuid="5ecb9703-7abe-4722-bae7-8cfbeadf0605"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
 				<text><![CDATA[Session :]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="29" y="52" width="59" height="20" uuid="4452bff4-6e38-44d1-8695-203a73c67ac5"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
 				<text><![CDATA[Intake :]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="376" y="52" width="58" height="20" uuid="a3ec48f3-3a69-4921-a489-0bea03965ef1"/>
+				<textElement>
+					<font fontName="SansSerif"/>
+				</textElement>
 				<text><![CDATA[Status :]]></text>
 			</staticText>
 			<textField>
@@ -440,7 +458,8 @@ $F{ad_stdn_student_status}.equals( "0" )? "MATRICULATED":
 $F{ad_stdn_student_status}.equals( "1" )? "ACTIVE":
 $F{ad_stdn_student_status}.equals( "2" )? "BARRED":
 $F{ad_stdn_student_status}.equals( "3" )? "INACTIVE":
-"GRADUATED"
+$F{ad_stdn_student_status}.equals( "4" )? "GRADUATED":
+"OTHERS"
 )]]></textFieldExpression>
 			</textField>
 			<textField>
@@ -452,6 +471,9 @@ $F{ad_stdn_student_status}.equals( "3" )? "INACTIVE":
 			</textField>
 			<staticText>
 				<reportElement x="29" y="32" width="59" height="20" uuid="2b084358-c214-4e36-acb8-7bb02d2f5a71"/>
+				<textElement>
+					<font fontName="SansSerif" size="10"/>
+				</textElement>
 				<text><![CDATA[Program :]]></text>
 			</staticText>
 			<textField>
@@ -469,14 +491,14 @@ $F{ad_stdn_student_status}.equals( "3" )? "INACTIVE":
 				<text><![CDATA[INTAKE]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="276" y="52" width="62" height="20" uuid="1a80ce42-fe26-4025-a4b5-4a1fdedc758c"/>
+				<reportElement x="248" y="52" width="62" height="20" uuid="1a80ce42-fe26-4025-a4b5-4a1fdedc758c"/>
 				<textElement>
 					<font fontName="SansSerif" size="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{ad_acdm_year_year}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="140" y="52" width="136" height="20" uuid="c2a6ca9c-44e3-4f80-9e89-5abaec4c9af7"/>
+				<reportElement x="127" y="52" width="136" height="20" uuid="c2a6ca9c-44e3-4f80-9e89-5abaec4c9af7"/>
 				<textElement>
 					<font fontName="SansSerif" size="10"/>
 				</textElement>
@@ -600,7 +622,9 @@ $F{ad_acdm_sesn_semester}.equals( "2" )? "SEMESTER 3 DISEMBER":
 					<bottomPen lineWidth="0.5"/>
 					<rightPen lineWidth="0.5"/>
 				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{ad_ofrg_code}]]></textFieldExpression>
 			</textField>
 			<textField pattern="">
@@ -612,7 +636,9 @@ $F{ad_acdm_sesn_semester}.equals( "2" )? "SEMESTER 3 DISEMBER":
 					<bottomPen lineWidth="0.5"/>
 					<rightPen lineWidth="0.5"/>
 				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$V{COLUMN_COUNT}]]></textFieldExpression>
 			</textField>
 			<textField>
@@ -624,7 +650,9 @@ $F{ad_acdm_sesn_semester}.equals( "2" )? "SEMESTER 3 DISEMBER":
 					<bottomPen lineWidth="0.5"/>
 					<rightPen lineWidth="0.5"/>
 				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{ad_crse_credit}]]></textFieldExpression>
 			</textField>
 			<textField>
@@ -636,7 +664,9 @@ $F{ad_acdm_sesn_semester}.equals( "2" )? "SEMESTER 3 DISEMBER":
 					<bottomPen lineWidth="0.5"/>
 					<rightPen lineWidth="0.5"/>
 				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{ad_grde_code_code}]]></textFieldExpression>
 			</textField>
 			<textField>
@@ -648,7 +678,9 @@ $F{ad_acdm_sesn_semester}.equals( "2" )? "SEMESTER 3 DISEMBER":
 					<bottomPen lineWidth="0.5"/>
 					<rightPen lineWidth="0.5"/>
 				</box>
-				<textElement verticalAlignment="Middle"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{ad_ofrg_title_en}]]></textFieldExpression>
 			</textField>
 			<textField>
@@ -660,7 +692,9 @@ $F{ad_acdm_sesn_semester}.equals( "2" )? "SEMESTER 3 DISEMBER":
 					<bottomPen lineWidth="0.5"/>
 					<rightPen lineWidth="0.5"/>
 				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{ad_grde_code_description}]]></textFieldExpression>
 			</textField>
 			<textField>
@@ -672,7 +706,9 @@ $F{ad_acdm_sesn_semester}.equals( "2" )? "SEMESTER 3 DISEMBER":
 					<bottomPen lineWidth="0.5"/>
 					<rightPen lineWidth="0.5"/>
 				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{ad_grde_code_point}]]></textFieldExpression>
 			</textField>
 		</band>
@@ -717,7 +753,7 @@ $F{ad_acdm_sesn_semester}.equals( "2" )? "SEMESTER 3 DISEMBER":
 					<rightPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="9" isBold="true"/>
+					<font fontName="SansSerif" size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[]]></text>
 			</staticText>
@@ -744,7 +780,9 @@ $F{ad_acdm_sesn_semester}.equals( "2" )? "SEMESTER 3 DISEMBER":
 					<bottomPen lineWidth="0.5"/>
 					<rightPen lineWidth="0.5"/>
 				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$V{ad_crse_credit_1}]]></textFieldExpression>
 			</textField>
 			<textField pattern="###0.00">
@@ -756,7 +794,9 @@ $F{ad_acdm_sesn_semester}.equals( "2" )? "SEMESTER 3 DISEMBER":
 					<bottomPen lineWidth="0.5"/>
 					<rightPen lineWidth="0.5"/>
 				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$V{ad_grde_code_point_3}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
@@ -768,7 +808,9 @@ $F{ad_acdm_sesn_semester}.equals( "2" )? "SEMESTER 3 DISEMBER":
 					<bottomPen lineWidth="0.5"/>
 					<rightPen lineWidth="0.5"/>
 				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif"/>
+				</textElement>
 			</textField>
 			<textField>
 				<reportElement x="124" y="16" width="152" height="20" uuid="51aa497e-0bdf-46e3-a7c1-21800a3e9e28"/>
@@ -779,7 +821,9 @@ $F{ad_acdm_sesn_semester}.equals( "2" )? "SEMESTER 3 DISEMBER":
 					<bottomPen lineWidth="0.5"/>
 					<rightPen lineWidth="0.5"/>
 				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$V{totalgredpoint_1}]]></textFieldExpression>
 			</textField>
 		</band>
@@ -789,14 +833,14 @@ $F{ad_acdm_sesn_semester}.equals( "2" )? "SEMESTER 3 DISEMBER":
 			<textField>
 				<reportElement x="219" y="27" width="80" height="20" uuid="dce40d4b-f4fa-4943-a0d5-8c779aad8317"/>
 				<textElement textAlignment="Right">
-					<font size="10"/>
+					<font fontName="SansSerif" size="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
 			</textField>
 			<textField evaluationTime="Report">
 				<reportElement x="299" y="27" width="40" height="20" uuid="8b8d34bf-9a0d-470a-b264-974f45715870"/>
 				<textElement>
-					<font size="10"/>
+					<font fontName="SansSerif" size="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
