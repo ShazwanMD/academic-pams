@@ -113,6 +113,13 @@ public class TermController {
 		return new ResponseEntity<Admission>(termTransformer.toAdmissionVo(termService.findAdmissionById(id)),
 				HttpStatus.OK);
 	}
+	
+	/*//findAdmissionByStudentAndSession
+	@RequestMapping(value = "/admissions/{student, academicSession}", method = RequestMethod.GET)
+	public ResponseEntity<Admission> findAdmissionByStudentAndSession(@PathVariable String identityNo, String session ) throws UnsupportedEncodingException {
+		return new ResponseEntity<Admission>(termTransformer.toAdmissionVo(termService.findAdmissionByStudentAndSession(identityNo, session)),
+				HttpStatus.OK);
+	}*/
 
 	@RequestMapping(value = "/admissions", method = RequestMethod.POST)
 	public ResponseEntity<String> saveAdmission(@RequestBody Admission vo) {
@@ -139,7 +146,11 @@ public class TermController {
 		admission.setCgpa(vo.getCgpa());
 		admission.setCreditEarned(vo.getCreditEarned());
 		admission.setCreditTaken(vo.getCreditTaken());
+		
+		if (vo.getAdvisor()!=null){
 		admission.setAdvisor(identityService.findStaffByStaffNo(vo.getAdvisor().getIdentityNo()));
+		}
+		
 		admission.setOrdinal(vo.getOrdinal());
 		admission.setGpa(vo.getGpa());
 		admission.setStatus(AdAdmissionStatus.get(vo.getStatus().ordinal()));
@@ -1027,6 +1038,10 @@ public class TermController {
 		// dummyLogin();
 		AdAcademicSession academicSession = plannerService.findCurrentAcademicSession();
 		AdOffering offering = termService.findOfferingByCanonicalCode(canonicalCode);
+		
+		LOG.debug("academicSession:{}", academicSession);
+		LOG.debug("offering:{}", offering);
+		
 		termService.calculateGradebook(offering);
 		return new ResponseEntity<String>("Success", HttpStatus.OK);
 	}
@@ -1034,8 +1049,12 @@ public class TermController {
 	@RequestMapping(value = "/offerings/{canonicalCode}/calculateGPA", method = RequestMethod.POST)
 	public ResponseEntity<String> calculateGPA(@PathVariable String canonicalCode) {
 		// dummyLogin();
+		
+		LOG.debug("offering:{}", canonicalCode);
+		
 		AdAcademicSession academicSession = plannerService.findCurrentAcademicSession();
 		AdOffering offering = termService.findOfferingByCanonicalCode(canonicalCode);
+		LOG.debug("offering:{}", offering.getCanonicalCode());
 		termService.calculateGPA(offering);
 		return new ResponseEntity<String>("Success", HttpStatus.OK);
 	}
