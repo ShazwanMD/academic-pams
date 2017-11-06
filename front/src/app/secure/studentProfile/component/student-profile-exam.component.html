@@ -43,11 +43,11 @@
 
                                     <div layout="row" class="pad-bottom">
                                         <span flex="15">GPA</span>
-                                        <span>{{admission.gpa}}</span>
+                                        <span>{{admission.gpa | number : '1.2-2'}}</span>
                                     </div>
                                     <div layout="row" class="pad-bottom">
                                         <span flex="15">CGPA</span>
-                                        <span>{{admission.cgpa}}</span>
+                                        <span>{{admission.cgpa | number : '1.2-2'}}</span>
                                     </div>
                                     <template let-enrollment let-last="last" ngFor [ngForOf]="enrollments$ | async ">
 
