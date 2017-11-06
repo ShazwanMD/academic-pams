@@ -589,39 +589,7 @@ public class PlannerServiceImpl implements PlannerService {
 	public void saveCohort(AdCohort cohort) {
 		cohortDao.save(cohort, securityService.getCurrentUser());
 		sessionFactory.getCurrentSession().flush();
-
-/*		LOG.info("Start Broadcasting Cohort Payload");
-
-		// Prepare Faculty Payload
-		FacultyCodePayload facultyPayload = new FacultyCodePayload();
-		facultyPayload.setCode(cohort.getProgram().getFaculty().getCode());
-		facultyPayload.setDescription(cohort.getProgram().getFaculty().getDescription());
-		LOG.info("Finish Prepare Faculty Payload");
-		
-		// Prepare Program Level Payload
-		ProgramLevelPayload programLevelPayload = new ProgramLevelPayload();
-		programLevelPayload.setCode(cohort.getProgram().getLevel().getCode());
-		programLevelPayload.setDescription(cohort.getProgram().getLevel().getDescription());
-		LOG.info("Finish Prepare Program Level Payload");
-		
-		// Prepare Program Payload
-		ProgramCodePayload programPayload = new ProgramCodePayload();
-		programPayload.setCode(cohort.getProgram().getCode());
-		programPayload.setDescription(cohort.getProgram().getTitleEn());
-		programPayload.setFacultyCode(facultyPayload);
-		programPayload.setProgramLevel(programLevelPayload);
-		LOG.info("Finish Prepare Program Payload");
-		
-		// Added Cohort
-		CohortCodePayload payload = new CohortCodePayload();
-		payload.setCode(cohort.getCode());
-		payload.setDescription(cohort.getDescription());
-		payload.setProgramCode(programPayload);
-
-		applicationContext.publishEvent(new CohortAddedEvent(payload));
-
-		LOG.info("Finish Broadcasting Cohort Payload");
-*/	}
+	}
 
 	@Override
 	public void updateCohort(AdCohort cohort) {
