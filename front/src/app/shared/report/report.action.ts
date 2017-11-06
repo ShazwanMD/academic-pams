@@ -23,4 +23,28 @@ export class ReportActions {
         payload: message,
       };
     }
+
+    //-------------------------------------------------------------------
+    // Download Financial Report
+    //-------------------------------------------------------------------
+
+    static DOWNLOAD_FINANCE_REPORT = '[Report] Download Finance Report';
+    
+        downloadReportFinance(repParam) {
+          console.log('repParam1 :'+repParam);
+          return {
+            type: ReportActions.DOWNLOAD_FINANCE_REPORT,
+            payload: {repParam},
+          };
+        }
+    
+        static DOWNLOAD_FINANCE_REPORT_SUCCESS = '[Report] Download Finance Report Success';
+    
+        downloadReportFinanceSucces(message) {
+          console.log('downloadReportSucces');
+          return {
+            type: ReportActions.DOWNLOAD_FINANCE_REPORT_SUCCESS,
+            payload: message,
+          };
+        }
 }
