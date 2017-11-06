@@ -49,7 +49,7 @@ public class JmsConfig {
         public DestinationExpressionFunction() {
             queueMap = new HashMap<>();
             queueMap.put(ProgramCodePayload.class.getName(), new ActiveMQQueue("programCodeQueue2"));
-            queueMap.put(CandidatePayload.class.getName(), new ActiveMQQueue("candidateQueue"));
+            queueMap.put(CandidatePayload.class.getName(), new ActiveMQQueue("candidateQueue3"));
             queueMap.put(FacultyCodePayload.class.getName(), new ActiveMQQueue("facultyCodeQueue2"));
             queueMap.put(AdmissionPayload.class.getName(), new ActiveMQQueue("AdmissionPayloadQueue1"));
             queueMap.put(CohortCodePayload.class.getName(), new ActiveMQQueue("CohortCodePayloadQueue"));
