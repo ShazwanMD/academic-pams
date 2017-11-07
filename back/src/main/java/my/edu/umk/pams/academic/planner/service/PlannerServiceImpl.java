@@ -667,11 +667,12 @@ public class PlannerServiceImpl implements PlannerService {
 		facultyDao.save(faculty, securityService.getCurrentUser());
 		sessionFactory.getCurrentSession().flush();
 		
-		 LOG.info("broadcasting faculty payload");
+		 LOG.info("Start broadcasting faculty payload");
 		 FacultyCodePayload payload = new FacultyCodePayload();
 		 payload.setCode(faculty.getCode());
 		 payload.setDescription(faculty.getDescription());
 		 applicationContext.publishEvent(new FacultyAddedEvent(payload));
+		 LOG.info("Finish broadcasting faculty payload");
 	}
 
 	@Override
@@ -890,7 +891,7 @@ public class PlannerServiceImpl implements PlannerService {
 
 		ProgramAddedEvent event = new ProgramAddedEvent(p);
 		applicationContext.publishEvent(event);
-		LOG.debug("Broadcast Program");
+		LOG.debug("Finsh Broadcast Program");
 	}
 
 	@Override
