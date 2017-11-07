@@ -7,6 +7,9 @@
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<parameter name="session_code" class="java.lang.String"/>
+	<parameter name="curDate" class="java.util.Date" isForPrompting="false">
+		<defaultValueExpression><![CDATA[new Date()]]></defaultValueExpression>
+	</parameter>
 	<queryString>
 		<![CDATA[SELECT
      ad_grde_code."point"*ad_crse."credit" AS TotalGredPoint,
@@ -367,20 +370,18 @@ $F{ad_acdm_sesn_code}.equals( $P{session_code} )]]></filterExpression>
 				</textElement>
 				<text><![CDATA[STUDENT'S  INFORMATION]]></text>
 			</staticText>
-			<textField pattern="dd/MM/yy">
-				<reportElement x="482" y="161" width="63" height="20" uuid="2390d96b-71c5-456f-8584-861632275430"/>
-				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font fontName="SansSerif" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
-			</textField>
 			<staticText>
-				<reportElement x="459" y="161" width="42" height="20" uuid="13060ca8-aaaa-477f-a0cd-d7ab8341fb40"/>
+				<reportElement x="409" y="161" width="42" height="20" uuid="13060ca8-aaaa-477f-a0cd-d7ab8341fb40"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="styled">
 					<font fontName="SansSerif" size="10" isBold="true" isUnderline="false" isStrikeThrough="false"/>
 				</textElement>
 				<text><![CDATA[DATE :]]></text>
 			</staticText>
+			<textField>
+				<reportElement x="451" y="161" width="94" height="20" uuid="d6f3e149-b97a-4b16-a5fa-288d90f61ab7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{curDate}]]></textFieldExpression>
+			</textField>
 		</band>
 	</title>
 	<pageHeader>
@@ -491,7 +492,7 @@ $F{ad_stdn_student_status}.equals( "4" )? "GRADUATED":
 				<text><![CDATA[INTAKE]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="248" y="52" width="62" height="20" uuid="1a80ce42-fe26-4025-a4b5-4a1fdedc758c"/>
+				<reportElement x="257" y="52" width="62" height="20" uuid="1a80ce42-fe26-4025-a4b5-4a1fdedc758c"/>
 				<textElement>
 					<font fontName="SansSerif" size="10"/>
 				</textElement>
