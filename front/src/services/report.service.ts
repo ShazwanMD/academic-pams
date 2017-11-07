@@ -1,3 +1,4 @@
+import { environmentAccount } from './../environments/environment.account';
 import {Injectable} from '@angular/core';
 import {Response, RequestOptions, ResponseContentType} from '@angular/http';
 import {HttpInterceptorService} from '@covalent/http';
@@ -8,6 +9,8 @@ import {environment} from '../environments/environment';
 export class ReportService {
 
   private REPORT_API: string = environment.endpoint + '/servlet/report?report=';
+
+  private REPORT_FINANCE_API: string = environmentAccount.endpoint + '/servlet/report?report=';
 
   constructor(private _http: HttpInterceptorService) {
   }
@@ -28,6 +31,16 @@ export class ReportService {
       console.log('downloadReportService');
       let options: RequestOptions = new RequestOptions({responseType: ResponseContentType.Blob});
       return this._http.get(this.REPORT_API +repParam.repParam, options)
+        .map((res: Response) => {
+          return new Blob([res.blob()], {type: "application/pdf"})
+        })
+        .catch((error) => this.handleError(error));
+    }
+
+    downloadReportFinance(repParam): Observable<Blob> {
+      console.log('downloadReportService');
+      let options: RequestOptions = new RequestOptions({responseType: ResponseContentType.Blob});
+      return this._http.get(this.REPORT_FINANCE_API +repParam.repParam, options)
         .map((res: Response) => {
           return new Blob([res.blob()], {type: "application/pdf"})
         })

@@ -1,3 +1,4 @@
+import { ReportActions } from './../../../shared/report/report.action';
 import { AcademicSession } from './../../../shared/model/planner/academic-session.interface';
 import { StudentDetailEditorDialog } from './../dialog/student-detail-editor.dialog';
 import { StudentAddressEditorDialog } from './../dialog/student-address-editor.dialog';
@@ -5,7 +6,7 @@ import { StudentContactEditorDialog } from './../dialog/student-contact-editor.d
 import { ProfileActions } from './../../profile/profile.action';
 import { Observable } from 'rxjs/Observable';
 import { MdDialog, MdDialogRef, MdDialogConfig, MdSnackBar } from '@angular/material';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { StudentProfileModuleState } from './../index';
 import { Store } from '@ngrx/store';
 import { StudentProfileActions } from './../student-profile.action';
@@ -77,6 +78,7 @@ export class StudentProfileListPage implements OnInit {
         private route: ActivatedRoute,
         private actions: StudentProfileActions,
         private profileActions: ProfileActions,
+        private reportActions: ReportActions,
         private vcf: ViewContainerRef,
         private store: Store<StudentProfileModuleState>,
         private formBuilder: FormBuilder,
@@ -495,6 +497,15 @@ export class StudentProfileListPage implements OnInit {
     admissionSessionDetail() {
         this.router.navigate( ['/secure/academicSessions'] );
     }
+
+
+    /*=========================================================================================*/
+    /*Payment Statement
+    /*=========================================================================================*/
+    downloadReport(reportId,parameterReport:Student): void {
+        let repParam = reportId+'&IDENTITY_NO='+ parameterReport.identityNo;  
+        this.store.dispatch(this.reportActions.downloadReportFinance(repParam));
+        }
 
 
 }

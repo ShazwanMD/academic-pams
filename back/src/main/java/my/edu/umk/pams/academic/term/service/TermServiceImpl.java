@@ -833,7 +833,7 @@ public class TermServiceImpl implements TermService {
 		// AdmissionConfirmedEvent event = new AdmissionConfirmedEvent();
 		// applicationContext.publishEvent(event);
 
-/*		LOG.info("Broadcast Admission Payload");
+		LOG.info("Start Broadcast Admission Payload");
 		AcademicSessionCodePayload academicSessionPayload = new AcademicSessionCodePayload();
 		academicSessionPayload.setCode(session.getCode());
 		academicSessionPayload.setDescription(session.getDescription());
@@ -882,7 +882,7 @@ public class TermServiceImpl implements TermService {
 
 		AdmissionConfirmedEvent event = new AdmissionConfirmedEvent(payload);
 		applicationContext.publishEvent(event);
-		LOG.info("PublishEvent payload");*/
+		LOG.info("Start PublishEvent payload");
 
 	}
 

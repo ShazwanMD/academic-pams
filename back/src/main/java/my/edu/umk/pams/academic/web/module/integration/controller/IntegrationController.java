@@ -129,14 +129,20 @@ public class IntegrationController {
 	public ResponseEntity<String> saveStudentAccount(@RequestBody AccountPayload payload) {
 		SecurityContext ctx = loginAsSystem();
 
+		LOG.info("Start Receiving Student Account");
 		AdStudent student = identityService.findStudentByMatricNo(payload.getMatricNo());
+		LOG.debug("Student Name:{}",student.getName());
+		
 		student.setBalance(payload.getBalance());
 		student.setOutstanding(payload.isOutstanding());
 		if (student.getOutstanding() == true) {
 			student.setMemo("There Are Outstanding Payments.Please Refer To Bursary");
+		}else{
+			student.setMemo("N/A");
 		}
 		identityService.updateStudent(student);
-
+		
+		LOG.info("Finish Receiving Student Account");
 		logoutAsSystem(ctx);
 		return new ResponseEntity<String>("sucess", HttpStatus.OK);
 	}
