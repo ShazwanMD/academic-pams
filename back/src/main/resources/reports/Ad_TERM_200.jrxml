@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="jasper_report_template" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="03800e79-2e08-4188-b0d9-084bf32d8f7c">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="313"/>
+	<property name="ireport.y" value="192"/>
 	<subDataset name="sponsorship" uuid="6b82b54c-a5ad-49d3-98c5-d3f208158bf8">
 		<parameter name="student_id" class="java.lang.Long"/>
 		<queryString>
@@ -80,64 +80,198 @@ FROM
 	<subDataset name="dataset1" uuid="89a3e99e-6618-45b2-b1f1-8e3b0ff15d9f"/>
 	<parameter name="identity_no" class="java.lang.String"/>
 	<parameter name="session_code" class="java.lang.String"/>
+	<parameter name="curDate" class="java.util.Date" isForPrompting="false">
+		<parameterDescription><![CDATA[]]></parameterDescription>
+		<defaultValueExpression><![CDATA[new Date()]]></defaultValueExpression>
+	</parameter>
 	<queryString>
-		<![CDATA[select
-   ad_actr."name" AS ad_actr_name,
-   ad_actr."identity_no" AS ad_actr_identity_no,
-   ad_actr."mobile" AS ad_actr_mobile,
-   ad_actr."phone" AS ad_actr_phone,
-   ad_actr."email" AS ad_actr_email,
-   ad_actr."c_ts" AS ad_actr_c_ts,
-   ad_actr."id" AS ad_actr_id,
-   ad_fcty."name" AS ad_fcty_name,
-   ad_prgm."code" AS ad_prgm_code,
-   ad_ofrg."title_en" AS ad_ofrg_title_en,
-   ad_sctn."ordinal" AS ad_sctn_ordinal,
-   ad_crse."credit" AS ad_crse_credit,
-   ad_admn.student_id AS "ad_admn_stdn_id",
-   ad_admn.session_id AS "ad_admn_acdm_sesn_id",
-   ad_admn.study_center_id AS "ad_admn_study_center_id",
-   ad_stdy_cntr.description AS "ad_stdy_cntr_description",
-   ad_acdm_sesn."code" AS ad_acdm_sesn_code,
-   ad_sponsorship."sponsor_id" As ad_sponsorship_sponsor_id,
-   ad_sponsorship."id" AS ad_sponsorship_id
+		<![CDATA[SELECT
+     ad_fcty."name" AS ad_fcty_name,
+     ad_enmt."id" AS ad_enmt_id,
+     ad_enmt."total_score" AS ad_enmt_total_score,
+     ad_enmt."admission_id" AS ad_enmt_admission_id,
+     ad_enmt."grade_code_id" AS ad_enmt_grade_code_id,
+     ad_enmt."section_id" AS ad_enmt_section_id,
+     ad_admn."id" AS ad_admn_id,
+     ad_admn."cgpa" AS ad_admn_cgpa,
+     ad_admn."ordinal" AS ad_admn_ordinal,
+     ad_admn."cohort_id" AS ad_admn_cohort_id,
+     ad_admn."session_id" AS ad_admn_session_id,
+     ad_admn."student_id" AS ad_admn_student_id,
+     ad_admn."advisor_id" AS ad_admn_advisor_id,
+     ad_admn."study_center_id" AS ad_admn_study_center_id,
+     ad_admn."gpa" AS ad_admn_gpa,
+     ad_acdm_sesn."code" AS ad_acdm_sesn_code,
+     ad_acdm_sesn."current_" AS ad_acdm_sesn_current_,
+     ad_acdm_sesn."description" AS ad_acdm_sesn_description,
+     ad_acdm_sesn."semester" AS ad_acdm_sesn_semester,
+     ad_acdm_sesn."status" AS ad_acdm_sesn_status,
+     ad_acdm_sesn."year_id" AS ad_acdm_sesn_year_id,
+     ad_ofrg."id" AS ad_ofrg_id,
+     ad_ofrg."canonical_code" AS ad_ofrg_canonical_code,
+     ad_ofrg."capacity" AS ad_ofrg_capacity,
+     ad_ofrg."code" AS ad_ofrg_code,
+     ad_ofrg."title_en" AS ad_ofrg_title_en,
+     ad_ofrg."title_ms" AS ad_ofrg_title_ms,
+     ad_ofrg."course_id" AS ad_ofrg_course_id,
+     ad_ofrg."program_id" AS ad_ofrg_program_id,
+     ad_ofrg."session_id" AS ad_ofrg_session_id,
+     ad_stdy_cntr."id" AS ad_stdy_cntr_id,
+     ad_stdy_cntr."code" AS ad_stdy_cntr_code,
+     ad_stdy_cntr."description" AS ad_stdy_cntr_description,
+     ad_sctn."id" AS ad_sctn_id,
+     ad_sctn."canonical_code" AS ad_sctn_canonical_code,
+     ad_sctn."capacity" AS ad_sctn_capacity,
+     ad_sctn."code" AS ad_sctn_code,
+     ad_sctn."ordinal" AS ad_sctn_ordinal,
+     ad_sctn."offering_id" AS ad_sctn_offering_id,
+     ad_crse."id" AS ad_crse_id,
+     ad_crse."classification" AS ad_crse_classification,
+     ad_crse."code" AS ad_crse_code,
+     ad_crse."credit" AS ad_crse_credit,
+     ad_crse."status" AS ad_crse_status,
+     ad_crse."title_en" AS ad_crse_title_en,
+     ad_crse."title_ms" AS ad_crse_title_ms,
+     ad_crse."faculty_id" AS ad_crse_faculty_id,
+     ad_acdm_sesn."id" AS ad_acdm_sesn_id,
+     ad_stdn."memo" AS ad_stdn_memo,
+     ad_stdn."no_id" AS ad_stdn_no_id,
+     ad_stdn."student_status" AS ad_stdn_student_status,
+     ad_stdn."id" AS ad_stdn_id,
+     ad_stdn."cohort_id" AS ad_stdn_cohort_id,
+     ad_stdn."study_mode_id" AS ad_stdn_study_mode_id,
+     ad_stdn."balance" AS ad_stdn_balance,
+     ad_stdn."outstanding" AS ad_stdn_outstanding,
+     ad_stdn."min_amount" AS ad_stdn_min_amount,
+     ad_sponsor."sponsor_type" AS ad_sponsor_sponsor_type,
+     ad_sponsor."id" AS ad_sponsor_id,
+     ad_sponsorship."id" AS ad_sponsorship_id,
+     ad_sponsorship."reference_no" AS ad_sponsorship_reference_no,
+     ad_sponsorship."amount" AS ad_sponsorship_amount,
+     ad_sponsorship."start_date" AS ad_sponsorship_start_date,
+     ad_sponsorship."end_date" AS ad_sponsorship_end_date,
+     ad_sponsorship."active" AS ad_sponsorship_active,
+     ad_sponsorship."sponsor_id" AS ad_sponsorship_sponsor_id,
+     ad_sponsorship."student_id" AS ad_sponsorship_student_id,
+     ad_actr."id" AS ad_actr_id,
+     ad_actr."actor_type" AS ad_actr_actor_type,
+     ad_actr."email" AS ad_actr_email,
+     ad_actr."fax" AS ad_actr_fax,
+     ad_actr."identity_no" AS ad_actr_identity_no,
+     ad_actr."mobile" AS ad_actr_mobile,
+     ad_actr."name" AS ad_actr_name,
+     ad_actr."phone" AS ad_actr_phone,
+     ad_prgm."id" AS ad_prgm_id,
+     ad_prgm."code" AS ad_prgm_code,
+     ad_prgm."status" AS ad_prgm_status,
+     ad_prgm."title_en" AS ad_prgm_title_en,
+     ad_prgm."title_ms" AS ad_prgm_title_ms,
+     ad_prgm."faculty_id" AS ad_prgm_faculty_id,
+     ad_prgm."level_id" AS ad_prgm_level_id
+FROM
+     "public"."ad_admn" ad_admn INNER JOIN "public"."ad_enmt" ad_enmt ON ad_admn."id" = ad_enmt."admission_id"
+     INNER JOIN "public"."ad_stdy_cntr" ad_stdy_cntr ON ad_admn."study_center_id" = ad_stdy_cntr."id"
+     INNER JOIN "public"."ad_stdn" ad_stdn ON ad_admn."student_id" = ad_stdn."id"
+     INNER JOIN "public"."ad_acdm_sesn" ad_acdm_sesn ON ad_admn."session_id" = ad_acdm_sesn."id"
+    -- INNER JOIN "public"."ad_sponsorship" ad_sponsorship ON ad_stdn."id" = ad_sponsorship."student_id"
 
+    LEFT OUTER JOIN "ad_sponsorship" ad_sponsorship ON ad_stdn."id" = ad_sponsorship."id"
 
-from
+     INNER JOIN "public"."ad_actr" ad_actr ON ad_stdn."id" = ad_actr."id"
+    -- INNER JOIN "public"."ad_sponsor" ad_sponsor ON ad_sponsorship."sponsor_id" = ad_sponsor."id"
+     LEFT OUTER JOIN "ad_sponsor" ad_sponsor ON ad_sponsorship."sponsor_id" = ad_sponsor."id"
 
-ad_admn
-
-inner join ad_stdn on ad_admn.student_id=ad_stdn.id
-inner join ad_actr on ad_stdn.id= ad_actr.id
-left outer join ad_sponsorship on ad_stdn.id = ad_sponsorship.id
-left outer join ad_sponsor on ad_sponsorship.sponsor_id = ad_sponsor.id
-inner join ad_stdy_cntr on ad_admn.study_center_id=ad_stdy_cntr.id
-inner join ad_acdm_sesn on ad_admn.session_id=ad_acdm_sesn.id
-inner join ad_ofrg on ad_acdm_sesn.id= ad_ofrg.session_id
-inner join ad_sctn on ad_ofrg.id =ad_sctn.id
-INNER JOIN ad_crse ON ad_ofrg.course_id = ad_crse.id
-INNER JOIN ad_prgm ON ad_ofrg.program_id = ad_prgm.id
-INNER JOIN ad_fcty ON ad_prgm.faculty_id= ad_fcty.id]]>
+     INNER JOIN "public"."ad_sctn" ad_sctn ON ad_enmt."section_id" = ad_sctn."id"
+     INNER JOIN "public"."ad_ofrg" ad_ofrg ON ad_sctn."offering_id" = ad_ofrg."id"
+     INNER JOIN "public"."ad_crse" ad_crse ON ad_ofrg."course_id" = ad_crse."id"
+     INNER JOIN "public"."ad_prgm" ad_prgm ON ad_ofrg."program_id" = ad_prgm."id"
+     INNER JOIN "ad_fcty" ad_fcty ON ad_crse."faculty_id" = ad_fcty."id"]]>
 	</queryString>
-	<field name="ad_actr_name" class="java.lang.String"/>
+	<field name="ad_fcty_name" class="java.lang.String"/>
+	<field name="ad_enmt_id" class="java.lang.Long"/>
+	<field name="ad_enmt_total_score" class="java.math.BigDecimal"/>
+	<field name="ad_enmt_admission_id" class="java.lang.Long"/>
+	<field name="ad_enmt_grade_code_id" class="java.lang.Long"/>
+	<field name="ad_enmt_section_id" class="java.lang.Long"/>
+	<field name="ad_admn_id" class="java.lang.Long"/>
+	<field name="ad_admn_cgpa" class="java.math.BigDecimal"/>
+	<field name="ad_admn_ordinal" class="java.lang.Integer"/>
+	<field name="ad_admn_cohort_id" class="java.lang.Long"/>
+	<field name="ad_admn_session_id" class="java.lang.Long"/>
+	<field name="ad_admn_student_id" class="java.lang.Long"/>
+	<field name="ad_admn_advisor_id" class="java.lang.Long"/>
+	<field name="ad_admn_study_center_id" class="java.lang.Long"/>
+	<field name="ad_admn_gpa" class="java.math.BigDecimal"/>
+	<field name="ad_acdm_sesn_code" class="java.lang.String"/>
+	<field name="ad_acdm_sesn_current_" class="java.lang.Boolean"/>
+	<field name="ad_acdm_sesn_description" class="java.lang.String"/>
+	<field name="ad_acdm_sesn_semester" class="java.lang.Integer"/>
+	<field name="ad_acdm_sesn_status" class="java.lang.Integer"/>
+	<field name="ad_acdm_sesn_year_id" class="java.lang.Long"/>
+	<field name="ad_ofrg_id" class="java.lang.Long"/>
+	<field name="ad_ofrg_canonical_code" class="java.lang.String"/>
+	<field name="ad_ofrg_capacity" class="java.lang.Integer"/>
+	<field name="ad_ofrg_code" class="java.lang.String"/>
+	<field name="ad_ofrg_title_en" class="java.lang.String"/>
+	<field name="ad_ofrg_title_ms" class="java.lang.String"/>
+	<field name="ad_ofrg_course_id" class="java.lang.Long"/>
+	<field name="ad_ofrg_program_id" class="java.lang.Long"/>
+	<field name="ad_ofrg_session_id" class="java.lang.Long"/>
+	<field name="ad_stdy_cntr_id" class="java.lang.Long"/>
+	<field name="ad_stdy_cntr_code" class="java.lang.String"/>
+	<field name="ad_stdy_cntr_description" class="java.lang.String"/>
+	<field name="ad_sctn_id" class="java.lang.Long"/>
+	<field name="ad_sctn_canonical_code" class="java.lang.String"/>
+	<field name="ad_sctn_capacity" class="java.lang.Integer"/>
+	<field name="ad_sctn_code" class="java.lang.String"/>
+	<field name="ad_sctn_ordinal" class="java.lang.Integer"/>
+	<field name="ad_sctn_offering_id" class="java.lang.Long"/>
+	<field name="ad_crse_id" class="java.lang.Long"/>
+	<field name="ad_crse_classification" class="java.lang.Integer"/>
+	<field name="ad_crse_code" class="java.lang.String"/>
+	<field name="ad_crse_credit" class="java.lang.Integer"/>
+	<field name="ad_crse_status" class="java.lang.Integer"/>
+	<field name="ad_crse_title_en" class="java.lang.String"/>
+	<field name="ad_crse_title_ms" class="java.lang.String"/>
+	<field name="ad_crse_faculty_id" class="java.lang.Long"/>
+	<field name="ad_acdm_sesn_id" class="java.lang.Long"/>
+	<field name="ad_stdn_memo" class="java.lang.String"/>
+	<field name="ad_stdn_no_id" class="java.lang.String"/>
+	<field name="ad_stdn_student_status" class="java.lang.Integer"/>
+	<field name="ad_stdn_id" class="java.lang.Long"/>
+	<field name="ad_stdn_cohort_id" class="java.lang.Long"/>
+	<field name="ad_stdn_study_mode_id" class="java.lang.Long"/>
+	<field name="ad_stdn_balance" class="java.math.BigDecimal"/>
+	<field name="ad_stdn_outstanding" class="java.lang.Boolean"/>
+	<field name="ad_stdn_min_amount" class="java.math.BigDecimal"/>
+	<field name="ad_sponsor_sponsor_type" class="java.lang.Integer"/>
+	<field name="ad_sponsor_id" class="java.lang.Long"/>
+	<field name="ad_sponsorship_id" class="java.lang.Long"/>
+	<field name="ad_sponsorship_reference_no" class="java.lang.String"/>
+	<field name="ad_sponsorship_amount" class="java.math.BigDecimal"/>
+	<field name="ad_sponsorship_start_date" class="java.sql.Timestamp"/>
+	<field name="ad_sponsorship_end_date" class="java.sql.Timestamp"/>
+	<field name="ad_sponsorship_active" class="java.lang.Boolean"/>
+	<field name="ad_sponsorship_sponsor_id" class="java.lang.Long"/>
+	<field name="ad_sponsorship_student_id" class="java.lang.Long"/>
+	<field name="ad_actr_id" class="java.lang.Long"/>
+	<field name="ad_actr_actor_type" class="java.lang.Integer"/>
+	<field name="ad_actr_email" class="java.lang.String"/>
+	<field name="ad_actr_fax" class="java.lang.String"/>
 	<field name="ad_actr_identity_no" class="java.lang.String"/>
 	<field name="ad_actr_mobile" class="java.lang.String"/>
+	<field name="ad_actr_name" class="java.lang.String"/>
 	<field name="ad_actr_phone" class="java.lang.String"/>
-	<field name="ad_actr_email" class="java.lang.String"/>
-	<field name="ad_actr_c_ts" class="java.sql.Timestamp"/>
-	<field name="ad_actr_id" class="java.lang.Long"/>
-	<field name="ad_fcty_name" class="java.lang.String"/>
+	<field name="ad_prgm_id" class="java.lang.Long"/>
 	<field name="ad_prgm_code" class="java.lang.String"/>
-	<field name="ad_ofrg_title_en" class="java.lang.String"/>
-	<field name="ad_sctn_ordinal" class="java.lang.Integer"/>
-	<field name="ad_crse_credit" class="java.lang.Integer"/>
-	<field name="ad_admn_stdn_id" class="java.lang.Long"/>
-	<field name="ad_admn_acdm_sesn_id" class="java.lang.Long"/>
-	<field name="ad_admn_study_center_id" class="java.lang.Long"/>
-	<field name="ad_stdy_cntr_description" class="java.lang.String"/>
-	<field name="ad_acdm_sesn_code" class="java.lang.String"/>
-	<field name="ad_sponsorship_sponsor_id" class="java.lang.Long"/>
-	<field name="ad_sponsorship_id" class="java.lang.Long"/>
+	<field name="ad_prgm_status" class="java.lang.Integer"/>
+	<field name="ad_prgm_title_en" class="java.lang.String"/>
+	<field name="ad_prgm_title_ms" class="java.lang.String"/>
+	<field name="ad_prgm_faculty_id" class="java.lang.Long"/>
+	<field name="ad_prgm_level_id" class="java.lang.Long"/>
+	<variable name="curDate" class="java.lang.String">
+		<variableExpression><![CDATA[(new SimpleDateFormat("yyyy/MM/dd")).format(new Date())]]></variableExpression>
+	</variable>
 	<filterExpression><![CDATA[$F{ad_actr_identity_no}.equals( $P{identity_no} )&&
 $F{ad_acdm_sesn_code}.equals( $P{session_code} )]]></filterExpression>
 	<title>
@@ -328,10 +462,6 @@ $F{ad_acdm_sesn_code}.equals( $P{session_code} )]]></filterExpression>
 				<reportElement x="100" y="125" width="100" height="20" uuid="2f76d698-d995-414b-b2ca-1c8664e93ac1"/>
 				<textFieldExpression><![CDATA[$F{ad_actr_identity_no}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement x="396" y="145" width="100" height="20" uuid="2f456ffc-7947-412d-ba05-9cc458ba66b5"/>
-				<textFieldExpression><![CDATA[$F{ad_actr_c_ts}]]></textFieldExpression>
-			</textField>
 			<staticText>
 				<reportElement x="317" y="105" width="78" height="20" uuid="4b742044-c2a6-4fea-94a6-cf72795db0e8"/>
 				<textElement>
@@ -354,7 +484,7 @@ $F{ad_acdm_sesn_code}.equals( $P{session_code} )]]></filterExpression>
 				<text><![CDATA[Date             : ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="108" y="256" width="185" height="16" backcolor="#CCCCCC" uuid="a8bd802a-8e0f-459d-8082-7e4a4570ec57"/>
+				<reportElement mode="Opaque" x="170" y="256" width="174" height="16" backcolor="#CCCCCC" uuid="a8bd802a-8e0f-459d-8082-7e4a4570ec57"/>
 				<box>
 					<pen lineWidth="0.0"/>
 					<topPen lineWidth="1.0"/>
@@ -365,10 +495,10 @@ $F{ad_acdm_sesn_code}.equals( $P{session_code} )]]></filterExpression>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="SansSerif" size="10" isBold="true"/>
 				</textElement>
-				<text><![CDATA[COURSE TITLE]]></text>
+				<text><![CDATA[TITLE]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="479" y="256" width="75" height="16" backcolor="#CCCCCC" uuid="e20b2da5-01d6-4290-8262-aae0a8b97cd1"/>
+				<reportElement mode="Opaque" x="495" y="256" width="59" height="16" backcolor="#CCCCCC" uuid="e20b2da5-01d6-4290-8262-aae0a8b97cd1"/>
 				<box>
 					<pen lineWidth="0.0"/>
 					<topPen lineWidth="1.0"/>
@@ -382,7 +512,7 @@ $F{ad_acdm_sesn_code}.equals( $P{session_code} )]]></filterExpression>
 				<text><![CDATA[FACULTY]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="293" y="256" width="51" height="16" backcolor="#CCCCCC" uuid="6ea963bc-f20a-4e94-bbff-65bd7ec33cd1"/>
+				<reportElement mode="Opaque" x="344" y="256" width="52" height="16" backcolor="#CCCCCC" uuid="6ea963bc-f20a-4e94-bbff-65bd7ec33cd1"/>
 				<box>
 					<pen lineWidth="0.0"/>
 					<topPen lineWidth="1.0"/>
@@ -410,7 +540,7 @@ $F{ad_acdm_sesn_code}.equals( $P{session_code} )]]></filterExpression>
 				<text><![CDATA[NO. ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="344" y="256" width="135" height="16" backcolor="#CCCCCC" uuid="6c356f91-8d9a-45c6-ab72-21e977fddc29"/>
+				<reportElement mode="Opaque" x="396" y="256" width="99" height="16" backcolor="#CCCCCC" uuid="6c356f91-8d9a-45c6-ab72-21e977fddc29"/>
 				<box>
 					<pen lineWidth="0.0"/>
 					<topPen lineWidth="1.0"/>
@@ -448,7 +578,7 @@ $F{ad_acdm_sesn_code}.equals( $P{session_code} )]]></filterExpression>
 				</jr:list>
 			</componentElement>
 			<staticText>
-				<reportElement mode="Opaque" x="43" y="256" width="65" height="16" backcolor="#CCCCCC" uuid="62bf3c23-cf5a-46d6-8081-215d372b8a72"/>
+				<reportElement mode="Opaque" x="43" y="256" width="57" height="16" backcolor="#CCCCCC" uuid="62bf3c23-cf5a-46d6-8081-215d372b8a72"/>
 				<box>
 					<pen lineWidth="0.0"/>
 					<topPen lineWidth="1.0"/>
@@ -461,57 +591,56 @@ $F{ad_acdm_sesn_code}.equals( $P{session_code} )]]></filterExpression>
 				</textElement>
 				<text><![CDATA[SECTION]]></text>
 			</staticText>
+			<textField>
+				<reportElement x="395" y="145" width="100" height="20" uuid="d58dd5e4-af32-4ffd-9b43-b5ca9566dc38"/>
+				<textFieldExpression><![CDATA[$P{curDate}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="100" y="256" width="70" height="16" backcolor="#CCCCCC" uuid="ef58e196-e6c5-499e-9193-140614800b7e"/>
+				<box>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CODE]]></text>
+			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
 		<band height="20" splitType="Stretch">
 			<textField>
-				<reportElement x="479" y="0" width="75" height="20" uuid="be3186d8-6d55-45dc-837f-9621080b2a28"/>
+				<reportElement x="170" y="0" width="174" height="20" uuid="bc2b0a78-59b2-4e42-b986-34c7850557ba"/>
 				<box>
-					<topPen lineWidth="0.5"/>
-					<leftPen lineWidth="0.5"/>
-					<bottomPen lineWidth="0.5"/>
-					<rightPen lineWidth="0.5"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{ad_fcty_name}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="344" y="0" width="135" height="20" uuid="d7aa6f3d-6e54-4fab-b85c-7cbfedf92669"/>
-				<box>
-					<topPen lineWidth="0.5"/>
-					<leftPen lineWidth="0.5"/>
-					<bottomPen lineWidth="0.5"/>
-					<rightPen lineWidth="0.5"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{ad_prgm_code}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="293" y="0" width="51" height="20" uuid="e7682e04-29f3-4c3a-91e5-f1e8aec03105"/>
-				<box>
-					<topPen lineWidth="0.5"/>
-					<leftPen lineWidth="0.5"/>
-					<bottomPen lineWidth="0.5"/>
-					<rightPen lineWidth="0.5"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{ad_crse_credit}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="108" y="0" width="185" height="20" uuid="409bfba4-c647-448c-8e83-bbfd5f7d9268"/>
-				<box>
+					<pen lineWidth="0.5"/>
 					<topPen lineWidth="0.5"/>
 					<leftPen lineWidth="0.5"/>
 					<bottomPen lineWidth="0.5"/>
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{ad_ofrg_title_en}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{ad_crse_title_en}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="43" y="0" width="65" height="20" backcolor="#CCCCCC" uuid="822c1682-9e03-44a4-82af-7e4e9e4a7f1c"/>
+				<reportElement x="100" y="0" width="70" height="20" uuid="a9fef5f2-16bf-449f-9ab9-9ac31d2d5d9c"/>
 				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{ad_crse_code}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="43" y="0" width="57" height="20" uuid="cdd4d390-1cf1-4e6d-8de1-de73118c02a9"/>
+				<box>
+					<pen lineWidth="0.5"/>
 					<topPen lineWidth="0.5"/>
 					<leftPen lineWidth="0.5"/>
 					<bottomPen lineWidth="0.5"/>
@@ -521,8 +650,9 @@ $F{ad_acdm_sesn_code}.equals( $P{session_code} )]]></filterExpression>
 				<textFieldExpression><![CDATA[$F{ad_sctn_ordinal}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="0" y="0" width="43" height="20" uuid="3be2d742-7cb9-4052-82cc-4eb1506e0043"/>
+				<reportElement x="-1" y="0" width="44" height="20" uuid="ee5c6a54-340d-4964-a251-7a0eb207dd5c"/>
 				<box>
+					<pen lineWidth="0.5"/>
 					<topPen lineWidth="0.5"/>
 					<leftPen lineWidth="0.5"/>
 					<bottomPen lineWidth="0.5"/>
@@ -530,6 +660,42 @@ $F{ad_acdm_sesn_code}.equals( $P{session_code} )]]></filterExpression>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$V{COLUMN_COUNT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="344" y="0" width="52" height="20" uuid="53108b04-2eca-4b81-9ec3-72e88858779e"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{ad_crse_credit}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="396" y="0" width="99" height="20" uuid="80248750-2487-4a99-8904-c6c20c82a48c"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{ad_prgm_code}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="495" y="0" width="59" height="20" uuid="d0d1f2a9-e576-444f-a8ec-fc891ee95cb7"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{ad_fcty_name}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
