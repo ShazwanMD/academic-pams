@@ -46,6 +46,7 @@ public class CommonTransformer {
 	//====================================================================================================
 
 	public StudyCenter toStudyCenterVo(AdStudyCenter e) {
+        if (null == e) return null;
 		StudyCenter vo = new StudyCenter();
 	        vo.setId(e.getId());
 	        vo.setCode(e.getCode());

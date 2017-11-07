@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.math.BigDecimal;
 import java.util.List;
 
+import my.edu.umk.pams.academic.common.model.AdStudyCenter;
 import my.edu.umk.pams.academic.common.service.CommonService;
 import my.edu.umk.pams.academic.identity.dao.RecursiveGroupException;
 import my.edu.umk.pams.academic.identity.model.AdActor;
@@ -44,6 +45,8 @@ import my.edu.umk.pams.academic.identity.model.AdUser;
 import my.edu.umk.pams.academic.identity.model.AdUserImpl;
 import my.edu.umk.pams.academic.identity.service.IdentityService;
 import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
+import my.edu.umk.pams.academic.planner.model.AdAcademicStanding;
+import my.edu.umk.pams.academic.planner.model.AdAdmissionStatus;
 import my.edu.umk.pams.academic.planner.model.AdCohort;
 import my.edu.umk.pams.academic.planner.model.AdCohortImpl;
 import my.edu.umk.pams.academic.planner.model.AdFaculty;
@@ -52,6 +55,8 @@ import my.edu.umk.pams.academic.planner.service.PlannerService;
 import my.edu.umk.pams.academic.profile.service.ProfileService;
 import my.edu.umk.pams.academic.security.integration.AdAutoLoginToken;
 import my.edu.umk.pams.academic.security.integration.NonSerializableSecurityContext;
+import my.edu.umk.pams.academic.term.model.AdAdmission;
+import my.edu.umk.pams.academic.term.model.AdAdmissionImpl;
 import my.edu.umk.pams.academic.term.service.TermService;
 import my.edu.umk.pams.academic.web.module.planner.controller.PlannerTransformer;
 import my.edu.umk.pams.academic.web.module.planner.vo.AcademicSession;
@@ -246,6 +251,45 @@ public class IntegrationController {
 		member.setGroup(group);
 		member.setPrincipal(principal);
 		identityService.addGroupMember(group, principal);
+		
+		LOG.info("Start Admission");
+		AdAcademicSession session = plannerService.findCurrentAcademicSession();
+		AdAdmission admission = new AdAdmissionImpl();
+		admission.setSession(session);
+		admission.setStudent(student);
+		admission.setOrdinal(1);
+		
+		//Advisor
+		if (payload.getFacultyCode().equals("A10")) {
+			admission.setAdvisor(null);
+		} else {
+			AdStaff advisor = identityService.findStaffByIdentityNo(payload.getSupervisorCode());
+			LOG.debug("advisor name:{}",advisor.getName());
+			admission.setAdvisor(advisor);
+		}
+		LOG.info("Finish Supervisor");
+
+		admission.setCgpa(BigDecimal.ZERO);
+		admission.setCohort(plannerService.findCohortByCode(payload.getCohortCode()));
+		admission.setGpa(BigDecimal.ZERO);
+		admission.setStanding(AdAcademicStanding.TBD);
+		admission.setStatus(AdAdmissionStatus.REGULAR);
+
+		//StudyCenter
+		if (payload.getFacultyCode().equals("A10")) {
+			LOG.debug("Faculty:{}",payload.getFacultyCode());
+			
+			String studyCenterCode = payload.getStudyCenter().getCode();
+			admission.setStudyCenter(commonService.findStudyCenterByCode(studyCenterCode));
+		}else{
+			LOG.debug("Faculty:{}",payload.getFacultyCode());
+			LOG.info("StudyCenter NULL");
+			admission.setStudyCenter(null);
+		}
+		LOG.info("Finish StudyCenter");
+
+		termService.saveAdmission(admission);
+		LOG.info("Finish Admission");
 
 		LOG.info("Finish integration candidate controller");
 
