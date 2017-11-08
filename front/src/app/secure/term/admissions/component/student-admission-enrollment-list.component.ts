@@ -30,7 +30,7 @@ export class StudentAdmissionEnrollmentListComponent implements OnInit {
     {name: 'section.offering.program.code', label: 'Program'},
     {name: 'enrollmentStanding', label: 'Standing'},
     {name: 'enrollmentStatus', label: 'Status'},
-    {name: 'totalScore', label: 'Total Score'},
+    {name: 'totalScore', label: 'Total Score', numeric: true, format: (v) => v.toFixed(0), filter: true},
     {name: 'gradeCode.code', label: 'Grade'},
     {name: 'gradeCode.description', label: 'Description'},
     {name: 'action', label: ''},
