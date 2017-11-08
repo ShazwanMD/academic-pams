@@ -130,8 +130,8 @@ export class StudentProfileListPage implements OnInit {
     //Admission
     private columnAdmission: any[] = [
         { name: 'academicSession.code', label: 'Session' },
-        { name: 'cgpa', label: 'CGPA' },
-        { name: 'gpa', label: 'GPA' },
+        { name: 'cgpa', label: 'CGPA' , numeric: true, format: (v) => v.toFixed(2), filter: true  },
+        { name: 'gpa', label: 'GPA' , numeric: true, format: (v) => v.toFixed(2), filter: true },
         { name: 'ordinal', label: 'Semester' },
         { name: 'standing', label: 'Standing' },
         { name: 'status', label: 'Status' },
