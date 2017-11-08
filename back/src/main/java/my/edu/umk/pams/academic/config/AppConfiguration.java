@@ -34,6 +34,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
         "my.edu.umk.pams.academic.planner",
         "my.edu.umk.pams.academic.term",
         "my.edu.umk.pams.academic.graduation",
+        "my.edu.umk.pams.academic.registration",
 
         // web modules
         "my.edu.umk.pams.academic.web.module.identity",
@@ -42,6 +43,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
         "my.edu.umk.pams.academic.web.module.planner",
         "my.edu.umk.pams.academic.web.module.term",
         "my.edu.umk.pams.academic.web.module.graduation",
+        "my.edu.umk.pams.academic.web.module.registration",
 }
 )
 @Import({

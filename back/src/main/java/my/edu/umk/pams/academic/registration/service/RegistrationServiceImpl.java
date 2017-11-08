@@ -71,7 +71,7 @@ public class RegistrationServiceImpl implements RegistrationService {
 		// save user and refresh
 		identityService.saveUser(user);
 		try {
-			AdGroup group = identityService.findGroupByName("GRP_APCN");
+			AdGroup group = identityService.findGroupByName("GRP_USR");
 			AdPrincipal principal = identityService.findPrincipalByName(user.getName());
 			System.out.println("group :" + group);
 			identityService.addGroupMember(group, principal);
