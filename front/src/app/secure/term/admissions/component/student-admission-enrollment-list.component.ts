@@ -30,7 +30,9 @@ export class StudentAdmissionEnrollmentListComponent implements OnInit {
     {name: 'section.offering.program.code', label: 'Program'},
     {name: 'enrollmentStanding', label: 'Standing'},
     {name: 'enrollmentStatus', label: 'Status'},
-    {name: 'totalScore', label: 'Total Score'},
+    {name: 'totalScore', label: 'Score'},
+    {name: 'gradeCode.code', label: 'Grade'},
+    {name: 'gradeCode.description', label: 'Desc.'},
     {name: 'action', label: ''},
   ];
   private selectedRows: Enrollment[];
