@@ -130,8 +130,8 @@ export class StudentProfileListPage implements OnInit {
     //Admission
     private columnAdmission: any[] = [
         { name: 'academicSession.code', label: 'Session' },
-        { name: 'cgpa', label: 'CGPA' , numeric: true, format: (v) => v.toFixed(2), filter: true  },
-        { name: 'gpa', label: 'GPA' , numeric: true, format: (v) => v.toFixed(2), filter: true },
+        { name: 'gpa', label: 'GPA', numeric: true, format: ( v ) => v.toFixed( 2 ), filter: true },
+        { name: 'cgpa', label: 'CGPA', numeric: true, format: ( v ) => v.toFixed( 2 ), filter: true },
         { name: 'ordinal', label: 'Semester' },
         { name: 'standing', label: 'Standing' },
         { name: 'status', label: 'Status' },
@@ -140,19 +140,19 @@ export class StudentProfileListPage implements OnInit {
         { name: 'action', label: '' },
 
     ];
-    
+
     //Admission Application
     private columnAdmissionApplication: any[] = [
         { name: 'academicSession.code', label: 'Session' },
         { name: 'description', label: 'Description' },
         { name: 'referenceNo', label: 'Reference No' },
         { name: 'ordinal', label: 'Semester' },
-       
+
         { name: 'action', label: '' },
 
     ];
-    
-  //Admission to review sessions
+
+    //Admission to review sessions
     private columnAdmissionSession: any[] = [
         { name: 'academicSession.code', label: 'Session' },
         { name: 'academicSession.description', label: 'Session' },
@@ -187,7 +187,7 @@ export class StudentProfileListPage implements OnInit {
         { name: 'description', label: 'Description' },
         { name: 'action', label: '' },
     ];
-    
+
     //view data graduations
     private columnGraduation: any[] = [
         { name: 'id', label: 'Id' },
@@ -420,7 +420,7 @@ export class StudentProfileListPage implements OnInit {
         } );
     }
 
-   //COURSE ENROLLMENT
+    //COURSE ENROLLMENT
     courseEnroll(): void {
         let config = new MdDialogConfig();
         config.viewContainerRef = this.vcf;
@@ -466,7 +466,7 @@ export class StudentProfileListPage implements OnInit {
             // load something here
         } );
     }
-    
+
     //GRADUATION APPLICATION
     applyGraduation(): void {
         console.log( 'showDialog' );
@@ -502,10 +502,10 @@ export class StudentProfileListPage implements OnInit {
     /*=========================================================================================*/
     /*Payment Statement
     /*=========================================================================================*/
-    downloadReport(reportId,parameterReport:Student): void {
-        let repParam = reportId+'&IDENTITY_NO='+ parameterReport.identityNo;  
-        this.store.dispatch(this.reportActions.downloadReportFinance(repParam));
-        }
+    downloadReport( reportId, parameterReport: Student ): void {
+        let repParam = reportId + '&IDENTITY_NO=' + parameterReport.identityNo;
+        this.store.dispatch( this.reportActions.downloadReportFinance( repParam ) );
+    }
 
 
 }

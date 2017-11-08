@@ -39,8 +39,8 @@ export class StudentProfileAcademicSessionComponent implements OnInit {
         { name: 'academicSession.code', label: 'SESSION CODE' },
         { name: 'academicSession.semester', label: 'ACADEMIC SEMESTER' },
         { name: 'academicSession.year.year', label: 'YEAR' },
-        { name: 'gpa', label: 'GPA' },
-        { name: 'cgpa', label: 'CGPA' },
+        { name: 'gpa', label: 'GPA', numeric: true, format: (v) => v.toFixed(2), filter: true },
+        { name: 'cgpa', label: 'CGPA', numeric: true, format: (v) => v.toFixed(2), filter: true },
         { name: 'action', label: '' },
     ];
 
