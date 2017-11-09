@@ -136,17 +136,17 @@ export class AcademicYearListComponent implements AfterViewInit, OnChanges {
     //remove academic year
     delete( academicYear: AcademicYear ): void {
         
-        var txt;
-        var r = confirm( "Are you sure to delete this data?" );
-        if ( r == true ) {
-            txt = "Data has been deleted!";
+        if (confirm("Are you sure to delete this academic year?") == true) {
             this.store.dispatch( this.actions.removeAcademicYear( academicYear ) )
-            let snackBarRef = this.snackBar.open( 'Academic Years: ' + academicYear.code + ' has been deleted', '', { duration: 3000 } );
-            snackBarRef.afterDismissed().subscribe(() => {
-           } );
-        } else {
-            txt = "Cancel delete!";
-        }
+              let snackBarRef = this.snackBar.open( 'Academic Year: ' + academicYear.code + ' has been deleted', '', { duration: 3000 } );
+              snackBarRef.afterDismissed().subscribe(() => {
+              } );
+          } else {
+              let snackBarRef = this.snackBar.open( 'Academic Year: ' + academicYear.code + ' has been cancel deleted', '', { duration: 3000 } );
+              snackBarRef.afterDismissed().subscribe(() => {
+              } );
+          }   
+       
     }
 
 }
