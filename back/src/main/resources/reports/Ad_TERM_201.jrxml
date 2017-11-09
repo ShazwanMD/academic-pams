@@ -117,7 +117,17 @@
      ad_acdm_year."m_ts" AS ad_acdm_year_m_ts,
      ad_acdm_year."m_id" AS ad_acdm_year_m_id,
      ad_acdm_year."m_st" AS ad_acdm_year_m_st,
-     ad_acdm_year."year" AS ad_acdm_year_year
+     ad_acdm_year."year" AS ad_acdm_year_year,
+     ad_acdm_sesn_A."id" AS ad_acdm_sesn_A_id,
+     ad_acdm_sesn_A."code" AS ad_acdm_sesn_A_code,
+     ad_acdm_sesn_A."current_" AS ad_acdm_sesn_A_current_,
+     ad_acdm_sesn_A."description" AS ad_acdm_sesn_A_description,
+     ad_acdm_sesn_A."end_date" AS ad_acdm_sesn_A_end_date,
+     ad_acdm_sesn_A."semester" AS ad_acdm_sesn_A_semester,
+     ad_acdm_sesn_A."start_date" AS ad_acdm_sesn_A_start_date,
+     ad_acdm_sesn_A."status" AS ad_acdm_sesn_A_status,
+     ad_acdm_sesn_A."previous_id" AS ad_acdm_sesn_A_previous_id,
+     ad_acdm_sesn_A."year_id" AS ad_acdm_sesn_A_year_id
 FROM
      "public"."ad_admn" ad_admn INNER JOIN "public"."ad_enmt" ad_enmt ON ad_admn."id" = ad_enmt."admission_id"
      INNER JOIN "public"."ad_sctn" ad_sctn ON ad_enmt."section_id" = ad_sctn."id"
@@ -127,6 +137,7 @@ FROM
      INNER JOIN "public"."ad_prgm" ad_prgm ON ad_ofrg."program_id" = ad_prgm."id"
      INNER JOIN "public"."ad_chrt" ad_chrt ON ad_prgm."id" = ad_chrt."program_id"
      INNER JOIN "public"."ad_stdn" ad_stdn ON ad_chrt."id" = ad_stdn."cohort_id"
+     INNER JOIN "public"."ad_acdm_sesn" ad_acdm_sesn_A ON ad_chrt."session_id" = ad_acdm_sesn_A."id"
      AND ad_admn."student_id" = ad_stdn."id"
      INNER JOIN "public"."ad_actr" ad_actr ON ad_stdn."id" = ad_actr."id"
      INNER JOIN "public"."ad_acdm_sesn" ad_acdm_sesn ON ad_admn."session_id" = ad_acdm_sesn."id"
@@ -238,6 +249,16 @@ FROM
 	<field name="ad_acdm_year_m_id" class="java.lang.Long"/>
 	<field name="ad_acdm_year_m_st" class="java.lang.Integer"/>
 	<field name="ad_acdm_year_year" class="java.lang.String"/>
+	<field name="ad_acdm_sesn_a_id" class="java.lang.Long"/>
+	<field name="ad_acdm_sesn_a_code" class="java.lang.String"/>
+	<field name="ad_acdm_sesn_a_current_" class="java.lang.Boolean"/>
+	<field name="ad_acdm_sesn_a_description" class="java.lang.String"/>
+	<field name="ad_acdm_sesn_a_end_date" class="java.sql.Date"/>
+	<field name="ad_acdm_sesn_a_semester" class="java.lang.String"/>
+	<field name="ad_acdm_sesn_a_start_date" class="java.sql.Date"/>
+	<field name="ad_acdm_sesn_a_status" class="java.lang.Integer"/>
+	<field name="ad_acdm_sesn_a_previous_id" class="java.lang.Long"/>
+	<field name="ad_acdm_sesn_a_year_id" class="java.lang.Long"/>
 	<variable name="ad_grde_code_point_1" class="java.math.BigDecimal" resetType="Page" calculation="Average">
 		<variableExpression><![CDATA[$F{ad_grde_code_point}]]></variableExpression>
 	</variable>
@@ -492,21 +513,20 @@ $F{ad_stdn_student_status}.equals( "4" )? "GRADUATED":
 				<text><![CDATA[INTAKE]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="257" y="52" width="62" height="20" uuid="1a80ce42-fe26-4025-a4b5-4a1fdedc758c"/>
+				<reportElement x="266" y="52" width="62" height="20" uuid="1a80ce42-fe26-4025-a4b5-4a1fdedc758c"/>
 				<textElement>
 					<font fontName="SansSerif" size="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{ad_acdm_year_year}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="127" y="52" width="136" height="20" uuid="c2a6ca9c-44e3-4f80-9e89-5abaec4c9af7"/>
-				<textElement>
-					<font fontName="SansSerif" size="10"/>
-				</textElement>
-				<textFieldExpression><![CDATA[($F{ad_acdm_sesn_semester}.equals( "0" )? "SEMESTER 1 SEPTEMBER":
-$F{ad_acdm_sesn_semester}.equals( "1" )? "SEMESTER 2 FEBRUARI":
-$F{ad_acdm_sesn_semester}.equals( "2" )? "SEMESTER 3 DISEMBER":
-"OTHERS")]]></textFieldExpression>
+				<reportElement x="132" y="52" width="136" height="20" uuid="a1a215fd-21e7-4a44-8a42-ae2aec737566"/>
+				<textFieldExpression><![CDATA[(
+$F{ad_acdm_sesn_a_semester}.equals( "0" )? "SEMESTER 1 SEPTEMBER":
+$F{ad_acdm_sesn_a_semester}.equals( "1" )? "SEMESTER 2 FEBRUARI":
+$F{ad_acdm_sesn_a_semester}.equals( "2" )? "SEMESTER 3 DISEMBER":
+"OTHERS"
+)]]></textFieldExpression>
 			</textField>
 		</band>
 	</pageHeader>
