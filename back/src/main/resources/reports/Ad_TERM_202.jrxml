@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="jasper_report_template" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="03800e79-2e08-4188-b0d9-084bf32d8f7c">
 	<property name="ireport.zoom" value="1.6528925619834713"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="27"/>
+	<property name="ireport.y" value="2"/>
 	<subDataset name="dataset1" uuid="6336ba5d-1742-4c90-a5af-57e66fd450f2">
 		<parameter name="identity_no" class="java.lang.String"/>
 		<parameter name="session_code" class="java.lang.String"/>
@@ -372,7 +372,7 @@ FROM
 		</band>
 	</title>
 	<columnHeader>
-		<band height="164" splitType="Stretch">
+		<band height="148" splitType="Stretch">
 			<rectangle>
 				<reportElement x="1" y="1" width="554" height="20" backcolor="#CCCCCC" uuid="7f463865-a3db-4d27-aa3d-e152d745bb43"/>
 				<graphicElement>
@@ -380,7 +380,7 @@ FROM
 				</graphicElement>
 			</rectangle>
 			<staticText>
-				<reportElement mode="Opaque" x="57" y="147" width="226" height="16" backcolor="#CCCCCC" uuid="a8bd802a-8e0f-459d-8082-7e4a4570ec57"/>
+				<reportElement mode="Opaque" x="57" y="132" width="226" height="16" backcolor="#CCCCCC" uuid="a8bd802a-8e0f-459d-8082-7e4a4570ec57"/>
 				<box>
 					<pen lineWidth="0.0"/>
 					<topPen lineWidth="1.0"/>
@@ -394,7 +394,7 @@ FROM
 				<text><![CDATA[SUBJECT]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="438" y="147" width="117" height="16" backcolor="#CCCCCC" uuid="e20b2da5-01d6-4290-8262-aae0a8b97cd1"/>
+				<reportElement mode="Opaque" x="438" y="132" width="117" height="16" backcolor="#CCCCCC" uuid="e20b2da5-01d6-4290-8262-aae0a8b97cd1"/>
 				<box>
 					<pen lineWidth="0.0"/>
 					<topPen lineWidth="1.0"/>
@@ -408,7 +408,7 @@ FROM
 				<text><![CDATA[TOTAL GRADE POINT]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="283" y="147" width="41" height="16" backcolor="#CCCCCC" uuid="6ea963bc-f20a-4e94-bbff-65bd7ec33cd1"/>
+				<reportElement mode="Opaque" x="283" y="132" width="41" height="16" backcolor="#CCCCCC" uuid="6ea963bc-f20a-4e94-bbff-65bd7ec33cd1"/>
 				<box>
 					<pen lineWidth="0.0"/>
 					<topPen lineWidth="1.0"/>
@@ -422,7 +422,7 @@ FROM
 				<text><![CDATA[CREDIT]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="0" y="147" width="57" height="16" backcolor="#CCCCCC" uuid="c06c4383-a56b-4c26-9802-4ae4796cd04e"/>
+				<reportElement mode="Opaque" x="0" y="132" width="57" height="16" backcolor="#CCCCCC" uuid="c06c4383-a56b-4c26-9802-4ae4796cd04e"/>
 				<box>
 					<pen lineWidth="0.0"/>
 					<topPen lineWidth="1.0"/>
@@ -436,7 +436,7 @@ FROM
 				<text><![CDATA[CODE]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="365" y="147" width="73" height="16" backcolor="#CCCCCC" uuid="6c356f91-8d9a-45c6-ab72-21e977fddc29"/>
+				<reportElement mode="Opaque" x="365" y="132" width="73" height="16" backcolor="#CCCCCC" uuid="6c356f91-8d9a-45c6-ab72-21e977fddc29"/>
 				<box>
 					<pen lineWidth="0.0"/>
 					<topPen lineWidth="1.0"/>
@@ -450,7 +450,7 @@ FROM
 				<text><![CDATA[GRADE POINT]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="324" y="147" width="41" height="16" backcolor="#CCCCCC" uuid="d8adaa33-7628-428c-b850-8025be601a82"/>
+				<reportElement mode="Opaque" x="324" y="132" width="41" height="16" backcolor="#CCCCCC" uuid="d8adaa33-7628-428c-b850-8025be601a82"/>
 				<box>
 					<pen lineWidth="0.0"/>
 					<topPen lineWidth="1.0"/>
@@ -464,42 +464,42 @@ FROM
 				<text><![CDATA[GRADE]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="129" y="32" width="309" height="20" uuid="4691313c-0262-4d05-8809-0c7320293272"/>
+				<reportElement x="131" y="33" width="309" height="20" uuid="4691313c-0262-4d05-8809-0c7320293272"/>
 				<textElement>
 					<font fontName="SansSerif" size="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{ad_actr_name}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="18" y="32" width="111" height="20" uuid="96c18131-715a-459d-901d-7c9f43d29ce7"/>
+				<reportElement x="20" y="33" width="111" height="20" uuid="96c18131-715a-459d-901d-7c9f43d29ce7"/>
 				<textElement>
 					<font fontName="SansSerif" size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[NAME                         : ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="18" y="52" width="111" height="20" uuid="c82edd13-e10a-4921-bb17-e58a6ee46b59"/>
+				<reportElement x="20" y="53" width="111" height="20" uuid="c82edd13-e10a-4921-bb17-e58a6ee46b59"/>
 				<textElement>
 					<font fontName="SansSerif" size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[MATRIC NO.              :]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="129" y="52" width="309" height="20" uuid="1751daa2-a4ce-4b11-bddd-d83fed70b4a4"/>
+				<reportElement x="131" y="53" width="309" height="20" uuid="1751daa2-a4ce-4b11-bddd-d83fed70b4a4"/>
 				<textElement>
 					<font fontName="SansSerif" size="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{ad_actr_identity_no}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="18" y="72" width="111" height="20" uuid="6167afe1-dd17-4e6b-bc3f-5cd56e18256a"/>
+				<reportElement x="20" y="73" width="111" height="20" uuid="6167afe1-dd17-4e6b-bc3f-5cd56e18256a"/>
 				<textElement>
 					<font fontName="SansSerif" size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[PROGRAM                 :]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="18" y="92" width="111" height="20" uuid="ee1abf6b-fcbb-4df5-9f5a-dbcc0d716ccb"/>
+				<reportElement x="20" y="93" width="111" height="20" uuid="ee1abf6b-fcbb-4df5-9f5a-dbcc0d716ccb"/>
 				<textElement>
 					<font fontName="SansSerif" size="10" isBold="true"/>
 				</textElement>
@@ -513,21 +513,21 @@ FROM
 				<text><![CDATA[RESULT SLIP]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="129" y="72" width="309" height="20" uuid="2c2954e4-2bed-4301-94e5-b51088686542"/>
+				<reportElement x="131" y="73" width="309" height="20" uuid="2c2954e4-2bed-4301-94e5-b51088686542"/>
 				<textElement>
 					<font fontName="SansSerif" size="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{ad_prgm_title_en}.toUpperCase()]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="129" y="92" width="41" height="20" uuid="fa75cea1-f484-42da-b199-f374fd85835e"/>
+				<reportElement x="131" y="93" width="41" height="20" uuid="fa75cea1-f484-42da-b199-f374fd85835e"/>
 				<textElement>
 					<font fontName="SansSerif" size="10"/>
 				</textElement>
 				<text><![CDATA[INTAKE]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="170" y="92" width="69" height="20" uuid="bb4e558a-71a5-482a-8790-205c61d7c7da"/>
+				<reportElement x="172" y="93" width="69" height="20" uuid="bb4e558a-71a5-482a-8790-205c61d7c7da"/>
 				<textElement>
 					<font fontName="SansSerif" size="10"/>
 				</textElement>
@@ -539,22 +539,11 @@ $F{ad_acdm_sesn_semester}.equals( "2" )? "FEBRUARI":
 )]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="239" y="92" width="199" height="20" uuid="21618e61-086a-4080-a9e5-0bd416764753"/>
+				<reportElement x="241" y="93" width="199" height="20" uuid="21618e61-086a-4080-a9e5-0bd416764753"/>
 				<textElement>
 					<font fontName="SansSerif" size="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{ad_acdm_year_year}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="18" y="112" width="111" height="20" uuid="e5eb6355-f752-42a3-96cd-9290e3c21a18"/>
-				<textElement>
-					<font fontName="SansSerif" size="10" isBold="true"/>
-				</textElement>
-				<text><![CDATA[CURRENT SESSION :]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="129" y="112" width="100" height="20" uuid="5f59227d-7ee4-4052-8972-35cba33ed305"/>
-				<textFieldExpression><![CDATA[$F{ad_acdm_sesn_code}]]></textFieldExpression>
 			</textField>
 		</band>
 	</columnHeader>
