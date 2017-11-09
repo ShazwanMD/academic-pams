@@ -15,7 +15,7 @@ import {Appointment} from '../../../../shared/model/term/appointment.interface';
 import {Section} from '../../../../shared/model/term/section.interface';
 import {Store} from '@ngrx/store';
 import {ActivatedRoute, Router} from '@angular/router';
-import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';
+import {MdDialog, MdDialogConfig, MdDialogRef, MdSnackBar} from '@angular/material';
 import {TermModuleState} from '../../index';
 import {AppointmentEditorDialog} from '../../appointments/dialog/appointment-editor.dialog';
 import {
@@ -65,6 +65,7 @@ export class SectionAppointmentListComponent implements AfterViewInit, OnChanges
               private store: Store<TermModuleState>,
               private formBuilder: FormBuilder,
               private vcf: ViewContainerRef,
+              private snackBar: MdSnackBar,
               private dialog: MdDialog) {
   }
   
@@ -152,15 +153,28 @@ export class SectionAppointmentListComponent implements AfterViewInit, OnChanges
     }
     this.creatorDialogRef.afterClosed().subscribe((res) => {
       console.log('close dialog');
-      // load something here
+      
     });
   }
 
   removeAppointment(appointment: Appointment): void {
-    console.log('removeAppointment:{}', appointment);
+      
+      if (confirm("Are you sure to delete this appointment?") == true) {
+          this.store.dispatch(this.actions.removeAppointment(this.section, appointment));
+            let snackBarRef = this.snackBar.open( 'Appointment: ' + appointment.staff.name + ' has been deleted', '', { duration: 3000 } );
+            snackBarRef.afterDismissed().subscribe(() => {
+            } );
+        } else {
+            let snackBarRef = this.snackBar.open( 'Appointment: ' + appointment.staff.name + ' cancel deleted', '', { duration: 3000 } );
+            snackBarRef.afterDismissed().subscribe(() => {
+            } );
+        }
+      
+      
+   /* console.log('removeAppointment:{}', appointment);
     this.store.dispatch(this.actions.removeAppointment(this.section, appointment));
 
-    console.log('deleteAppoiment:{}', appointment);
+    console.log('deleteAppoiment:{}', appointment);*/
 
   }
 }

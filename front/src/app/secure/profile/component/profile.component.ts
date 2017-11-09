@@ -5,7 +5,7 @@ import {ChangeDetectionStrategy, Component, Input, OnInit, ViewContainerRef} fro
 
 import {ProfileModuleState} from '../index';
 import {ProfileActions} from '../profile.action';
-import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';
+import {MdDialog, MdDialogConfig, MdDialogRef, MdSnackBar} from '@angular/material';
 
 import {Enrollment} from '../../../shared/model/term/enrollment.interface';
 import {Contact} from '../../../shared/model/profile/contact.interface';
@@ -96,6 +96,7 @@ export class ProfileComponent implements OnInit {
               private vcf: ViewContainerRef,
               private store: Store<ProfileModuleState>,
               private formBuilder: FormBuilder,
+              private snackBar: MdSnackBar,
               private dialog: MdDialog) {
   }
 
@@ -171,7 +172,19 @@ export class ProfileComponent implements OnInit {
 
   //DELETE CONTACT
   deleteContact(contact: Contact): void {
-    this.store.dispatch(this.actions.deleteContact(this.student, contact));
+      
+      if (confirm("Are you sure to delete this contact?") == true) {
+          this.store.dispatch(this.actions.deleteContact(this.student, contact));
+            let snackBarRef = this.snackBar.open( 'Contact has been deleted', '', { duration: 3000 } );
+            snackBarRef.afterDismissed().subscribe(() => {
+            } );
+        } else {
+            let snackBarRef = this.snackBar.open( 'Contact has been cancel deleted', '', { duration: 3000 } );
+            snackBarRef.afterDismissed().subscribe(() => {
+            } );
+        }   
+      
+   
     //console.log("ini->",contact);
   }
 
@@ -214,7 +227,18 @@ export class ProfileComponent implements OnInit {
 
   //DELETE ADDRESS
   deleteAddress(contact: Contact): void {
-    this.store.dispatch(this.actions.deleteAddress(this.student, contact));
+      
+      if (confirm("Are you sure to delete this address?") == true) {
+          this.store.dispatch(this.actions.deleteAddress(this.student, contact));
+            let snackBarRef = this.snackBar.open( 'Address has been deleted', '', { duration: 3000 } );
+            snackBarRef.afterDismissed().subscribe(() => {
+            } );
+        } else {
+            let snackBarRef = this.snackBar.open( 'Address has been cancel deleted', '', { duration: 3000 } );
+            snackBarRef.afterDismissed().subscribe(() => {
+            } );
+        }   
+    
   }
 
   /*=========================================================================================*/
@@ -259,7 +283,18 @@ export class ProfileComponent implements OnInit {
 
   //DELETE GUARANTOR
   deleteGuarantor(guarantor: Guarantor): void {
-    this.store.dispatch(this.actions.deleteGuarantor(this.student, guarantor));
+      
+      if (confirm("Are you sure to delete this guarantor?") == true) {
+          this.store.dispatch(this.actions.deleteGuarantor(this.student, guarantor));
+            let snackBarRef = this.snackBar.open( 'Guarantor has been deleted', '', { duration: 3000 } );
+            snackBarRef.afterDismissed().subscribe(() => {
+            } );
+        } else {
+            let snackBarRef = this.snackBar.open( 'Guarantor has been cancel deleted', '', { duration: 3000 } );
+            snackBarRef.afterDismissed().subscribe(() => {
+            } );
+        }   
+     
   }
 
   /*=========================================================================================*/
@@ -300,6 +335,17 @@ export class ProfileComponent implements OnInit {
 
   //DELETE GUARDIAN
   deleteGuardian(guardian: Guardian): void {
-    this.store.dispatch(this.actions.deleteGuardian(this.student, guardian));
+      
+      if (confirm("Are you sure to delete this contact?") == true) {
+          this.store.dispatch(this.actions.deleteGuardian(this.student, guardian));
+            let snackBarRef = this.snackBar.open( 'Guardian has been deleted', '', { duration: 3000 } );
+            snackBarRef.afterDismissed().subscribe(() => {
+            } );
+        } else {
+            let snackBarRef = this.snackBar.open( 'Guardian has been cancel deleted', '', { duration: 3000 } );
+            snackBarRef.afterDismissed().subscribe(() => {
+            } );
+        }   
+    
   }
 }
