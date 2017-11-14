@@ -92,7 +92,7 @@ export class CurriculumBundleSubjectListComponent implements OnInit, OnChanges, 
     this.store.dispatch(this.actions.findSubjectsByCurriculumAndSubjectElectiveType(this.curriculum));
     this.selectedRows = [];
     this.refreshCurriculum = false;
-    console.log("Inside RefCur", this.actions.findSubjectsByCurriculumAndSubjectElectiveType(this.curriculum).payload.subjects.length)
+  //  console.log("Inside RefCur", this.actions.findSubjectsByCurriculumAndSubjectElectiveType(this.curriculum).payload.subjects.length)
     this.subjects = [];
     this.filter();
     }
