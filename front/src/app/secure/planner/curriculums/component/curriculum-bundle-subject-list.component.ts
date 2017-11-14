@@ -81,6 +81,7 @@ export class CurriculumBundleSubjectListComponent implements OnInit, OnChanges, 
               private _dataTableService: TdDataTableService) {
   }
 
+  
   ngOnInit(): void {
     this.selectedRows = this.subjects.filter((value) => value.selected);
   }
