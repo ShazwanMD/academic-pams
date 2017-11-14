@@ -86,7 +86,7 @@
 
                       <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
                         <div layout="row">
-                          <span flex>{{value}}</span>
+                          <span flex>{{value | uppercase}}</span>
                         </div>
                       </template>
 
@@ -133,7 +133,7 @@
 
                       <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
                         <div layout="row">
-                          <span flex>{{value}}</span>
+                          <span flex>{{value | uppercase}}</span>
                         </div>
                       </template>
 
@@ -143,8 +143,8 @@
                             <md-icon>more_vert</md-icon>
                           </button>
                           <md-menu x-position="before" #menuGuarantor="mdMenu">
-                            <button md-menu-item (click)="editGuarantorDialog(row, true)">Update</button>
-                            <button md-menu-item (click)="deleteGuarantor(row, true)">Delete</button>
+                            <button md-menu-item (click)="editGuarantorDialog(row, true)">Update Guarantor</button>
+                            <button md-menu-item (click)="deleteGuarantor(row, true)">Delete Guarantor</button>
                           </md-menu>
                         </div>
                       </template>
@@ -179,7 +179,7 @@
 
                       <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
                         <div layout="row">
-                          <span flex>{{value}}</span>
+                          <span flex>{{value | uppercase}}</span>
                         </div>
                       </template>
 
@@ -189,8 +189,8 @@
                             <md-icon>more_vert</md-icon>
                           </button>
                           <md-menu x-position="before" #menuGuardian="mdMenu">
-                            <button md-menu-item (click)="editGuardianDialog(row, true)">Update</button>
-                            <button md-menu-item (click)="deleteGuardian(row, true)">Delete</button>
+                            <button md-menu-item (click)="editGuardianDialog(row, true)">Update Guardian</button>
+                            <button md-menu-item (click)="deleteGuardian(row, true)">Delete Guardian</button>
                           </md-menu>
                         </div>
                       </template>
@@ -224,7 +224,7 @@
 
                       <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column">
                         <div layout="row">
-                          <span flex>{{value}}</span>
+                          <span flex>{{value | uppercase}}</span>
                         </div>
                       </template>
 
@@ -234,8 +234,8 @@
                             <md-icon>more_vert</md-icon>
                           </button>
                           <md-menu x-position="before" #menuContact="mdMenu">
-                            <button md-menu-item (click)="editContactDialog(row, true)">Update</button>
-                            <button md-menu-item (click)="deleteContact(row, true)">Delete</button>
+                            <button md-menu-item (click)="editContactDialog(row, true)">Update Contact</button>
+                            <button md-menu-item (click)="deleteContact(row, true)">Delete Contact</button>
                           </md-menu>
                         </div>
                       </template>

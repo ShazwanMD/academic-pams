@@ -273,7 +273,18 @@ export class StudentProfileListPage implements OnInit {
     //DELETE ADDRESS
     deleteAddress( contact: Contact ): void {
         console.log( "delete student address" );
-        this.store.dispatch( this.actions.deleteStudentAddress( this.student.identityNo, contact ) );
+        
+        if (confirm("Are you sure to delete this address?") == true) {
+            this.store.dispatch( this.actions.deleteStudentAddress( this.student.identityNo, contact ) );
+              let snackBarRef = this.snackBar.open( 'Address has been deleted', '', { duration: 3000 } );
+              snackBarRef.afterDismissed().subscribe(() => {
+              } );
+          } else {
+              let snackBarRef = this.snackBar.open( 'Address has been cancel deleted', '', { duration: 3000 } );
+              snackBarRef.afterDismissed().subscribe(() => {
+              } );
+          }   
+       
     }
 
     /*=========================================================================================*/
@@ -314,11 +325,23 @@ export class StudentProfileListPage implements OnInit {
 
     //DELETE CONTACT
     deleteContact( contact: Contact ): void {
-        console.log( this.student.identityNo );
+        
+        if (confirm("Are you sure to delete this contact?") == true) {
+            this.store.dispatch( this.actions.deleteStudentContact( this.student.identityNo, contact ) );
+              let snackBarRef = this.snackBar.open( 'Contact has been deleted', '', { duration: 3000 } );
+              snackBarRef.afterDismissed().subscribe(() => {
+              } );
+          } else {
+              let snackBarRef = this.snackBar.open( 'Contact has been cancel deleted', '', { duration: 3000 } );
+              snackBarRef.afterDismissed().subscribe(() => {
+              } );
+          }   
+        
+       /* console.log( this.student.identityNo );
         console.log( contact );
         this.store.dispatch( this.actions.deleteStudentContact( this.student.identityNo, contact ) );
         //console.log("ini->",contact);
-    }
+*/    }
 
     /*=========================================================================================*/
     /*GUARDIAN*/
@@ -358,7 +381,19 @@ export class StudentProfileListPage implements OnInit {
     //DELETE GUARDIAN
     deleteGuardian( guardian: Guardian ): void {
         console.log( this.student.identityNo );
-        this.store.dispatch( this.actions.deleteStudentGuardian( this.student.identityNo, guardian ) );
+        
+        if (confirm("Are you sure to delete this guardian?") == true) {
+            this.store.dispatch( this.actions.deleteStudentGuardian( this.student.identityNo, guardian ) );
+              let snackBarRef = this.snackBar.open( 'Guardian has been deleted', '', { duration: 3000 } );
+              snackBarRef.afterDismissed().subscribe(() => {
+              } );
+          } else {
+              let snackBarRef = this.snackBar.open( 'Guardian has been cancel deleted', '', { duration: 3000 } );
+              snackBarRef.afterDismissed().subscribe(() => {
+              } );
+          }   
+        
+        
     }
 
 
@@ -400,7 +435,18 @@ export class StudentProfileListPage implements OnInit {
 
     //DELETE GUARANTOR
     deleteGuarantor( guarantor: Guarantor ): void {
-        this.store.dispatch( this.actions.deleteStudentGuarantor( this.student.identityNo, guarantor ) );
+        
+        if (confirm("Are you sure to delete this guarantor?") == true) {
+            this.store.dispatch( this.actions.deleteStudentGuarantor( this.student.identityNo, guarantor ) );
+              let snackBarRef = this.snackBar.open( 'Guarantor has been deleted', '', { duration: 3000 } );
+              snackBarRef.afterDismissed().subscribe(() => {
+              } );
+          } else {
+              let snackBarRef = this.snackBar.open( 'Guarantor has been cancel deleted', '', { duration: 3000 } );
+              snackBarRef.afterDismissed().subscribe(() => {
+              } );
+          }   
+       
     }
 
     //SEMESTER REGISTRATION
