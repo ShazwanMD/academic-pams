@@ -2,7 +2,6 @@ package my.edu.umk.pams.academic.web.module.term.controller;
 
 import my.edu.umk.pams.academic.common.model.AdStudyCenter;
 
-
 import my.edu.umk.pams.academic.common.service.CommonService;
 import my.edu.umk.pams.academic.core.AdFlowState;
 import my.edu.umk.pams.academic.identity.model.AdStaff;
@@ -113,13 +112,17 @@ public class TermController {
 		return new ResponseEntity<Admission>(termTransformer.toAdmissionVo(termService.findAdmissionById(id)),
 				HttpStatus.OK);
 	}
-	
-	/*//findAdmissionByStudentAndSession
-	@RequestMapping(value = "/admissions/{student, academicSession}", method = RequestMethod.GET)
-	public ResponseEntity<Admission> findAdmissionByStudentAndSession(@PathVariable String identityNo, String session ) throws UnsupportedEncodingException {
-		return new ResponseEntity<Admission>(termTransformer.toAdmissionVo(termService.findAdmissionByStudentAndSession(identityNo, session)),
-				HttpStatus.OK);
-	}*/
+
+	/*
+	 * //findAdmissionByStudentAndSession
+	 * 
+	 * @RequestMapping(value = "/admissions/{student, academicSession}", method
+	 * = RequestMethod.GET) public ResponseEntity<Admission>
+	 * findAdmissionByStudentAndSession(@PathVariable String identityNo, String
+	 * session ) throws UnsupportedEncodingException { return new
+	 * ResponseEntity<Admission>(termTransformer.toAdmissionVo(termService.
+	 * findAdmissionByStudentAndSession(identityNo, session)), HttpStatus.OK); }
+	 */
 
 	@RequestMapping(value = "/admissions", method = RequestMethod.POST)
 	public ResponseEntity<String> saveAdmission(@RequestBody Admission vo) {
@@ -146,18 +149,24 @@ public class TermController {
 		admission.setCgpa(vo.getCgpa());
 		admission.setCreditEarned(vo.getCreditEarned());
 		admission.setCreditTaken(vo.getCreditTaken());
-		
-		if (vo.getAdvisor()!=null){
-		admission.setAdvisor(identityService.findStaffByStaffNo(vo.getAdvisor().getIdentityNo()));
+
+		if (vo.getAdvisor() != null) {
+			admission.setAdvisor(identityService.findStaffByStaffNo(vo.getAdvisor().getIdentityNo()));
 		}
-		
+
+		// if studyCenter is null
+		if (vo.getStudyCenter() != null) {
+			admission.setStudyCenter(commonService.findStudyCenterByCode(vo.getStudyCenter().getCode()));
+		}
+
 		admission.setOrdinal(vo.getOrdinal());
 		admission.setGpa(vo.getGpa());
 		admission.setStatus(AdAdmissionStatus.get(vo.getStatus().ordinal()));
 		admission.setStanding(AdAcademicStanding.get(vo.getStanding().ordinal()));
 		admission.setCohort(plannerService.findCohortByCode(vo.getCohort().getCode()));
 		admission.setStudent(identityService.findStudentByMatricNo(vo.getStudent().getIdentityNo()));
-		admission.setStudyCenter(commonService.findStudyCenterByCode(vo.getStudyCenter().getCode()));
+		// admission.setStudyCenter(commonService.findStudyCenterByCode(vo.getStudyCenter().getCode()));
+
 		admission.setSession(plannerService.findAcademicSessionByCode(vo.getAcademicSession().getCode()));
 		termService.updateAdmission(admission);
 		return new ResponseEntity<String>("Success Update Admission", HttpStatus.OK);
@@ -219,22 +228,21 @@ public class TermController {
 		application.setOrdinal(vo.getOrdinal());
 		application.setReferenceNo(vo.getReferenceNo());
 
+		// if advisor is null
 		if (vo.getAdvisor() != null) {
 			application.setAdvisor(identityService.findStaffByIdentityNo(vo.getAdvisor().getIdentityNo()));
 		}
 
-		/*
-		 * if(vo.getAdvisor().getIdentityNo()!=null){ AdStaff advisor =
-		 * identityService.findStaffByStaffNo(vo.getAdvisor().getIdentityNo());
-		 * application.setAdvisor(advisor);
-		 * System.out.println("Advisor is updated" + advisor); }
-		 */
+		// if studyCenter is null
+		if (vo.getStudyCenter() != null) {
+			application.setStudyCenter(commonService.findStudyCenterByCode(vo.getStudyCenter().getCode()));
+		}
 
 		application.setRemoveComment(vo.getRemoveComment());
 		application.setProgram(plannerService.findProgramByCode(vo.getProgram().getCode()));
 		application.setStudent(identityService.findStudentByMatricNo(vo.getStudent().getIdentityNo()));
 		application.setSession(plannerService.findAcademicSessionByCode(vo.getAcademicSession().getCode()));
-		application.setStudyCenter(commonService.findStudyCenterByCode(vo.getStudyCenter().getCode()));
+		// application.setStudyCenter(commonService.findStudyCenterByCode(vo.getStudyCenter().getCode()));
 
 		termService.updateAdmissionApplication(application);
 		return new ResponseEntity<String>("Success Update Admission Application", HttpStatus.OK);
@@ -264,7 +272,15 @@ public class TermController {
 		AdStudent student = identityService.findStudentById(vo.getStudent().getId());
 		AdAcademicSession academicSession = plannerService.findAcademicSessionById(vo.getAcademicSession().getId());
 		AdProgram program = student.getCohort().getProgram();
-		AdStudyCenter studyCenter = commonService.findStudyCenterById(vo.getStudyCenter().getId());
+		// AdStudyCenter studyCenter =
+		// commonService.findStudyCenterById(vo.getStudyCenter().getId());
+
+		/*
+		 * if (vo.getStudyCenter() != null) { AdStudyCenter studyCenter =
+		 * commonService.findStudyCenterById(vo.getStudyCenter().getId());
+		 * System.out.println("studyCenter1"); } else {
+		 * System.out.println("studyCenter0"); }
+		 */
 		// AdStaff advisor =
 		// identityService.findStaffByStaffNo(vo.getAdvisor().getIdentityNo());
 		// AdStaff advisor = identityService.findStaffByStaffNo("00179A");
@@ -272,7 +288,6 @@ public class TermController {
 		System.out.println("Get student: " + vo.getStudent().getId());
 		System.out.println("Get session: " + vo.getAcademicSession().getId());
 		System.out.println("Get program: " + student.getCohort().getProgram());
-		System.out.println("Get studycenter: " + vo.getStudyCenter().getId());
 
 		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
 		Date date1 = new Date();
@@ -303,9 +318,16 @@ public class TermController {
 				application.setReferenceNo(vo.getReferenceNo());
 				application.setStudent(student);
 				application.setSession(academicSession);
-				application.setStudyCenter(studyCenter);
-				application.setProgram(program);
 
+				if (vo.getStudyCenter() != null) {
+					AdStudyCenter studyCenter = commonService.findStudyCenterById(vo.getStudyCenter().getId());
+					application.setStudyCenter(studyCenter);
+					System.out.println("studyCenter1");
+				} else {
+					System.out.println("studyCenter0");
+				}
+
+				application.setProgram(program);
 				// application.setAdvisor(advisor);
 
 				/*
@@ -332,11 +354,11 @@ public class TermController {
 				emailQueue.setTo("asyikin.mr@umk.edu.my"); // set default email
 															// to test
 
-				emailQueue.setSubject("Application for semester registration:" + academicSession.getCode());
+				emailQueue.setSubject(" Application for semester registration: " + academicSession.getCode());
 				emailQueue.setQueueStatus(AdEmailQueueStatus.QUEUED);
 				emailQueue.setBody(
-						"Thank you" + student.getName() + " for the application. This application will be reviewed:"
-								+ referenceNo + " Please click this URL to view details:" + applicationUrl);
+						"Thank you " + student.getName() + " for the application. This application will be reviewed: "
+								+ referenceNo + " Please click this URL to view details: " + applicationUrl);
 				emailQueue.setRetryCount(1);
 				LOG.debug("test1: {}", emailQueue);
 
@@ -1038,10 +1060,10 @@ public class TermController {
 		// dummyLogin();
 		AdAcademicSession academicSession = plannerService.findCurrentAcademicSession();
 		AdOffering offering = termService.findOfferingByCanonicalCode(canonicalCode);
-		
+
 		LOG.debug("academicSession:{}", academicSession);
 		LOG.debug("offering:{}", offering);
-		
+
 		termService.calculateGradebook(offering);
 		return new ResponseEntity<String>("Success", HttpStatus.OK);
 	}
@@ -1049,9 +1071,9 @@ public class TermController {
 	@RequestMapping(value = "/offerings/{canonicalCode}/calculateGPA", method = RequestMethod.POST)
 	public ResponseEntity<String> calculateGPA(@PathVariable String canonicalCode) {
 		// dummyLogin();
-		
+
 		LOG.debug("offering:{}", canonicalCode);
-		
+
 		AdAcademicSession academicSession = plannerService.findCurrentAcademicSession();
 		AdOffering offering = termService.findOfferingByCanonicalCode(canonicalCode);
 		LOG.debug("offering:{}", offering.getCanonicalCode());

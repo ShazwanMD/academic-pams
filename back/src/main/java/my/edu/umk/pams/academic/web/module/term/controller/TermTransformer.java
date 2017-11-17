@@ -84,6 +84,7 @@ public class TermTransformer {
 		vo.setStudent(identityTransformer.toStudentVo(application.getStudent()));
 		vo.setProgram(plannerTransformer.toProgramVo(application.getProgram()));
 		//vo.setAdvisor(identityTransformer.toStaffVo(application.getAdvisor()));
+		
 
 		
 		if (application.getAdvisor() != null) {
@@ -92,8 +93,16 @@ public class TermTransformer {
 		} else {
 			System.out.println("Get application(0)" + application.getAdvisor());
 		}
+		
+		if (application.getStudyCenter() != null) {
+			vo.setStudyCenter(commonTransformer.toStudyCenterVo(application.getStudyCenter()));
+			System.out.println("Get studyCenter(1)" + application.getStudyCenter());
+		} else {
+			System.out.println("Get studyCenter(0)" + application.getStudyCenter());
+		}
 
-		vo.setStudyCenter(commonTransformer.toStudyCenterVo(application.getStudyCenter()));
+		//vo.setStudyCenter(commonTransformer.toStudyCenterVo(application.getStudyCenter()));
+		
 		return vo;
 	}
 
@@ -107,18 +116,27 @@ public class TermTransformer {
 		vo.setOrdinal(admission.getOrdinal());
 		vo.setStudent(identityTransformer.toStudentVo(admission.getStudent()));
 
+		//if advisor is null
 		if (admission.getAdvisor() != null) {
 			vo.setAdvisor(identityTransformer.toStaffVo(admission.getAdvisor()));
-			System.out.println("Get Admission1" + admission.getAdvisor());
+			System.out.println("Get Advisor1" + admission.getAdvisor());
 		} else {
-			System.out.println("Get Admission0" + admission.getAdvisor());
+			System.out.println("Get Advisor0" + admission.getAdvisor());
+		}
+		
+		//if studyCenter is null
+		if (admission.getStudyCenter() != null) {
+			vo.setStudyCenter(commonTransformer.toStudyCenterVo(admission.getStudyCenter()));
+			System.out.println("Get StudyCenter1" + admission.getStudyCenter());
+		} else {
+			System.out.println("Get StudyCenter0" + admission.getStudyCenter());
 		}
 
 		vo.setAcademicSession(plannerTransformer.toAcademicSessionVo(admission.getSession()));
-		vo.setStudyCenter(commonTransformer.toStudyCenterVo(admission.getStudyCenter()));
 		vo.setCohort(plannerTransformer.toCohortVo(admission.getCohort()));
 		vo.setStatus(AdmissionStatus.get(admission.getStatus().ordinal()));
 		vo.setStanding(AcademicStanding.get(admission.getStanding().ordinal()));
+		//vo.setStudyCenter(commonTransformer.toStudyCenterVo(admission.getStudyCenter()));
 		// vo.setEnrollmentStanding(EnrollmentStanding.get(enrollment.getStanding().ordinal()));
 		return vo;
 	}

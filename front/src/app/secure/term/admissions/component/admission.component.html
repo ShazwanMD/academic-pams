@@ -116,6 +116,21 @@
           </div>
         </div>
       </md-tab>
+      
+        <md-tab label="Study Center Information" *ngIf=admission.studyCenter>
+
+        <div layout="column" class="inset">
+          <div layout="row" class="pad-bottom">
+            <span flex="15">Code</span>
+            <span>{{admission?.studyCenter?.code}}</span>
+          </div>
+          <div layout="row" class="pad-bottom">
+            <span flex="15">Description</span>
+            <span>{{admission?.studyCenter?.description}}</span>
+          </div>
+         
+        </div>
+      </md-tab>
 
     </md-tab-group>
   </md-card-content>

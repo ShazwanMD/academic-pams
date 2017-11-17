@@ -13,12 +13,15 @@
           [guarantors]="guarantors$ | async"
           [guardians]="guardians$ | async"
           [contacts]="contacts$ | async"
-          [enrollments]="enrollments$ | async">
+          [enrollments]="enrollments$ | async"
+          [admissions]="admissions$ | async">
         </pams-profile>
       </div>
       <md-card>
 
-        <pams-profile-status [profile]="student$ | async"></pams-profile-status>
+        <pams-profile-status 
+        [profile]="student$ | async">
+        </pams-profile-status>
         <pams-profile-action [student]="student$ | async"></pams-profile-action>
 
         <!-- <md-nav-list flex dense>

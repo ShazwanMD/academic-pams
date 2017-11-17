@@ -78,6 +78,21 @@
           <span flex>{{value}}</span>
         </div>
       </template>
+      
+        <template tdDataTableTemplate="gradeCode.code" let-value="value" let-row="row" let-column="columns.gradeCode.code">
+        <div layout="row">
+          <div *ngIf="value == null">0</div>
+           <div *ngIf="value != null">{{value}}</div>       
+        </div>
+      </template>
+      
+       <template tdDataTableTemplate="gradeCode.description" let-value="value" let-row="row" let-column="columns.gradeCode.description">
+        <div layout="row">
+          <div *ngIf="value == null">0</div>
+           <div *ngIf="value != null">{{value}}</div>       
+        </div>
+      </template>
+      
       <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
         <div layout="row">
           <a md-button color="accent" class="text-upper" (click)="viewTask(row)" mdTooltip="View enrollment info">

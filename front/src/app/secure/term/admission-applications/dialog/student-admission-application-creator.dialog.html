@@ -27,14 +27,19 @@ th, td {
 				<td>: {{_admission.ordinal}}</td>
 				<td></td>
 			</tr>
-			<tr style="font-family:verdana;background-color:#B2E4F9" >
+			<tr style="font-family:verdana;background-color:#B2E4F9" *ngIf="!_admission.studyCenter" >
+				<td > <b>Study Center</b></td>
+				<td>: None </td>
+				<td></td>
+			</tr>
+			<tr style="font-family:verdana;background-color:#B2E4F9" *ngIf="_admission.studyCenter" >
 				<td > <b>Study Center </b></td>
 				<td>: {{_admission.studyCenter.description}} </td>
 				<td></td>
 			</tr>
 			<tr style="font-family:verdana;background-color:#B2E4F9" *ngIf="!_admission.advisor" >
 				<td > <b>Advisor</b></td>
-				<td>: None </td><!-- {{_admission.advisor.name}} -->
+				<td>: None </td>
 				<td></td>
 			</tr>
 			<tr style="font-family:verdana;background-color:#B2E4F9" *ngIf="_admission.advisor" >

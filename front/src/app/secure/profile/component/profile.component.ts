@@ -8,6 +8,7 @@ import {ProfileActions} from '../profile.action';
 import {MdDialog, MdDialogConfig, MdDialogRef, MdSnackBar} from '@angular/material';
 
 import {Enrollment} from '../../../shared/model/term/enrollment.interface';
+import { Admission } from '../../../shared/model/term/admission.interface';
 import {Contact} from '../../../shared/model/profile/contact.interface';
 import {Guardian} from '../../../shared/model/profile/guardian.interface';
 import {Guarantor} from '../../../shared/model/profile/guarantor.interface';
@@ -87,6 +88,7 @@ export class ProfileComponent implements OnInit {
   @Input() guardians: Guardian[];
   @Input() contacts: Contact[];
   @Input() enrollments: Enrollment[];
+  @Input() admissions: Admission[];
 
 
   //Constructor
