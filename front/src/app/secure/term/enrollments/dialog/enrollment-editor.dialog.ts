@@ -7,6 +7,7 @@ import {Section} from '../../../../shared/model/term/section.interface';
 import {Store} from '@ngrx/store';
 import {MdDialogRef} from '@angular/material';
 import {EnrollmentStatus} from '../../../../shared/model/term/enrollment-status.enum';
+import {EnrollmentStanding} from '../../../../shared/model/term/enrollment-standing.enum';
 import {TermModuleState} from '../../index';
 
 @Component({
@@ -43,6 +44,7 @@ export class EnrollmentEditorDialog implements OnInit {
     this.editorForm = this.formBuilder.group(<Enrollment>{
       id: undefined,
       enrollmentStatus: <EnrollmentStatus>{},
+      enrollmentStanding: <EnrollmentStanding>{},
 
     });
 

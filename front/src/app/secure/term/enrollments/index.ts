@@ -16,6 +16,7 @@ import {StudentEnrollmentActionComponent} from './component/student-enrollment-a
 import {LecturerEnrollmentActionComponent} from './component/lecturer-enrollment-action.component';
 import {EnrollmentEditorDialog} from './dialog/enrollment-editor.dialog';
 import {EnrollmentStatusSelectComponent} from './component/enrollment-status-select.component';
+import {EnrollmentStandingSelectComponent} from './component/enrollment-standing-select.component';
 import {EnrollmentGradebookListComponent} from './component/enrollment-gradebook-list.component';
 import {StudentEnrollmentDetailPage} from './student-enrollment-detail.page';
 import {LecturerEnrollmentDetailPage} from './lecturer-enrollment-detail.page';
@@ -44,6 +45,7 @@ import { AdminLecturerEnrollmentDetailPage } from "./admin-lecturer-enrollment-d
     StudentEnrollmentActionComponent,
     LecturerEnrollmentActionComponent,
     EnrollmentStatusSelectComponent,
+    EnrollmentStandingSelectComponent,
 
     //dialog
     EnrollmentEditorDialog,

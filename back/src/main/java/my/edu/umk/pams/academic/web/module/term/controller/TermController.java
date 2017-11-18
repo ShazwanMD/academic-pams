@@ -477,6 +477,7 @@ public class TermController {
 
 		AdEnrollment enrollment = termService.findEnrollmentById(vo.getId());
 		enrollment.setStatus(AdEnrollmentStatus.get(vo.getEnrollmentStatus().ordinal()));
+		enrollment.setStanding(AdEnrollmentStanding.get(vo.getEnrollmentStanding().ordinal()));
 		termService.updateEnrollment(enrollment);
 		return new ResponseEntity<>("Success", HttpStatus.OK);
 	}

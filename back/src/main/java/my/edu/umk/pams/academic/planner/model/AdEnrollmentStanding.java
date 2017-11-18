@@ -5,16 +5,19 @@ package my.edu.umk.pams.academic.planner.model;
  */
 public enum AdEnrollmentStanding {
 
-    UM("Ulang Kursus"), // DS - daftar semula bila kursus gagal
-    UG("Ulang Gred"),   // DS - daftar semula untuk improve gred
-    HS("Hadir Sahaja"),   // tak perlu ada
-    HW("Hadir Wajib"),		// tak perlu ada
-    MN("Kursus Minor");		//tak perlu ada
+    UM, // DS - daftar semula bila kursus gagal
+    UG,   // DS - daftar semula untuk improve gred
+    HS,   // tak perlu ada
+    HW,		// tak perlu ada
+    MN;		//tak perlu ada
 
-    private String description;
+  /*  private String description;
 
     AdEnrollmentStanding(String description) {
         this.description = description;
-    }
+    }*/
+	 public static AdEnrollmentStanding get(int index){
+	        return values()[index];
+	    }
 
 }
