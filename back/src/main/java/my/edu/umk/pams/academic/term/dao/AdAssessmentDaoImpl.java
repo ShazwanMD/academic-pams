@@ -150,6 +150,7 @@ public class AdAssessmentDaoImpl extends GenericDaoSupport<Long, AdAssessment> i
         return 0 < ((Long) query.uniqueResult()).intValue();
     }
 
+        
     @Override
     public boolean isExists(String canonicalCode) {
         Session session = sessionFactory.getCurrentSession();

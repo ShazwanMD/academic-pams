@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="jasper_report_template" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="03800e79-2e08-4188-b0d9-084bf32d8f7c">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="91"/>
 	<subDataset name="sponsorship" uuid="6b82b54c-a5ad-49d3-98c5-d3f208158bf8">
 		<parameter name="student_id" class="java.lang.Long"/>
 		<queryString>
@@ -80,9 +80,9 @@ FROM
 	<subDataset name="dataset1" uuid="89a3e99e-6618-45b2-b1f1-8e3b0ff15d9f"/>
 	<parameter name="identity_no" class="java.lang.String"/>
 	<parameter name="session_code" class="java.lang.String"/>
-	<parameter name="curDate" class="java.util.Date" isForPrompting="false">
+	<parameter name="curDate" class="java.lang.String" isForPrompting="false">
 		<parameterDescription><![CDATA[]]></parameterDescription>
-		<defaultValueExpression><![CDATA[new Date()]]></defaultValueExpression>
+		<defaultValueExpression><![CDATA[new SimpleDateFormat("dd-MM-yyyy").format(new Date().getTime())]]></defaultValueExpression>
 	</parameter>
 	<queryString>
 		<![CDATA[SELECT
@@ -170,7 +170,9 @@ FROM
      ad_prgm."level_id" AS ad_prgm_level_id
 FROM
      "public"."ad_admn" ad_admn INNER JOIN "public"."ad_enmt" ad_enmt ON ad_admn."id" = ad_enmt."admission_id"
-     INNER JOIN "public"."ad_stdy_cntr" ad_stdy_cntr ON ad_admn."study_center_id" = ad_stdy_cntr."id"
+    -- INNER JOIN "public"."ad_stdy_cntr" ad_stdy_cntr ON ad_admn."study_center_id" = ad_stdy_cntr."id"
+      LEFT OUTER JOIN "ad_stdy_cntr" ad_stdy_cntr ON ad_admn."study_center_id" = ad_stdy_cntr."id"
+
      INNER JOIN "public"."ad_stdn" ad_stdn ON ad_admn."student_id" = ad_stdn."id"
      INNER JOIN "public"."ad_acdm_sesn" ad_acdm_sesn ON ad_admn."session_id" = ad_acdm_sesn."id"
     -- INNER JOIN "public"."ad_sponsorship" ad_sponsorship ON ad_stdn."id" = ad_sponsorship."student_id"
@@ -269,9 +271,6 @@ FROM
 	<field name="ad_prgm_title_ms" class="java.lang.String"/>
 	<field name="ad_prgm_faculty_id" class="java.lang.Long"/>
 	<field name="ad_prgm_level_id" class="java.lang.Long"/>
-	<variable name="curDate" class="java.lang.String">
-		<variableExpression><![CDATA[(new SimpleDateFormat("yyyy/MM/dd")).format(new Date())]]></variableExpression>
-	</variable>
 	<filterExpression><![CDATA[$F{ad_actr_identity_no}.equals( $P{identity_no} )&&
 $F{ad_acdm_sesn_code}.equals( $P{session_code} )]]></filterExpression>
 	<title>
@@ -374,14 +373,14 @@ $F{ad_acdm_sesn_code}.equals( $P{session_code} )]]></filterExpression>
 				<textElement>
 					<font fontName="SansSerif" size="10" isItalic="true"/>
 				</textElement>
-				<text><![CDATA[PART A         : STUDENT'S DETAIL INFORMATION]]></text>
+				<text><![CDATA[BAHAGIAN A         : MAKLUMAT PELAJAR]]></text>
 			</staticText>
 			<staticText>
 				<reportElement mode="Transparent" x="4" y="63" width="264" height="14" backcolor="#CCCCCC" uuid="208d4d1d-c8db-4770-912e-8a95ccaa16ab"/>
 				<textElement verticalAlignment="Middle" rotation="None">
 					<font fontName="SansSerif" size="10" isBold="true"/>
 				</textElement>
-				<text><![CDATA[BAHAGIAN A : MAKLUMAT PELAJAR]]></text>
+				<text><![CDATA[PART A         : STUDENT'S DETAIL INFORMATION]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="170" y="6" width="225" height="20" uuid="430bd62c-87af-4dd5-93e7-945faf1f23fa"/>
@@ -395,7 +394,7 @@ $F{ad_acdm_sesn_code}.equals( $P{session_code} )]]></filterExpression>
 				<textFieldExpression><![CDATA[$F{ad_actr_name}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="100" y="145" width="180" height="20" uuid="50f89952-7bf8-4c07-913a-6d194e48701a"/>
+				<reportElement x="100" y="125" width="180" height="20" uuid="50f89952-7bf8-4c07-913a-6d194e48701a"/>
 				<textFieldExpression><![CDATA[$F{ad_actr_email}]]></textFieldExpression>
 			</textField>
 			<rectangle>
@@ -409,49 +408,49 @@ $F{ad_acdm_sesn_code}.equals( $P{session_code} )]]></filterExpression>
 				<textElement>
 					<font fontName="SansSerif" size="10" isItalic="true"/>
 				</textElement>
-				<text><![CDATA[PART A          : STUDENT 'S SESSION INFORMATION]]></text>
+				<text><![CDATA[BAHAGIAN B: MAKLUMAT  SESI KEMASUKKAN PELAJAR]]></text>
 			</staticText>
 			<staticText>
 				<reportElement mode="Transparent" x="2" y="218" width="505" height="14" backcolor="#CCCCCC" uuid="069d9d96-2ac3-4a73-8daf-3de1d7dbef8e"/>
 				<textElement verticalAlignment="Middle" rotation="None">
 					<font fontName="SansSerif" size="10" isBold="true"/>
 				</textElement>
-				<text><![CDATA[BAHAGIAN A : MAKLUMAT KEMASUKAN SESI PELAJAR]]></text>
+				<text><![CDATA[PART B          : STUDENT 'S SESSION INFORMATION]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="29" y="105" width="71" height="20" uuid="217fcccc-17cf-45f8-ac97-8eeb5cf4a6d6"/>
 				<textElement>
 					<font fontName="SansSerif" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Nama         : ]]></text>
+				<text><![CDATA[Nama : ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="29" y="125" width="71" height="20" uuid="d38676d2-d061-4771-ae82-7bd01d6534be"/>
+				<reportElement x="318" y="105" width="78" height="20" uuid="d38676d2-d061-4771-ae82-7bd01d6534be"/>
 				<textElement>
 					<font fontName="SansSerif" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Matric No   :]]></text>
+				<text><![CDATA[Matric No. :]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="29" y="145" width="71" height="20" uuid="ff5994d4-d2ac-46ce-a2c0-fc0f4222925f"/>
+				<reportElement x="29" y="125" width="71" height="20" uuid="ff5994d4-d2ac-46ce-a2c0-fc0f4222925f"/>
 				<textElement>
 					<font fontName="SansSerif" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Email          : ]]></text>
+				<text><![CDATA[Email : ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="29" y="165" width="71" height="20" uuid="408b240d-a28b-49ad-8305-c611586be44a"/>
+				<reportElement x="29" y="145" width="71" height="20" uuid="408b240d-a28b-49ad-8305-c611586be44a"/>
 				<textElement>
 					<font fontName="SansSerif" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Phone        :]]></text>
+				<text><![CDATA[Phone :]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="100" y="165" width="100" height="20" uuid="591dae24-feb7-4826-bd9f-b66a65d9e0e7"/>
+				<reportElement x="100" y="145" width="100" height="20" uuid="591dae24-feb7-4826-bd9f-b66a65d9e0e7"/>
 				<textFieldExpression><![CDATA[$F{ad_actr_phone}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement x="395" y="105" width="100" height="20" uuid="66dec2e2-bd20-4708-8321-b39d52b31f65"/>
+			<textField isBlankWhenNull="true">
+				<reportElement x="395" y="145" width="100" height="20" uuid="66dec2e2-bd20-4708-8321-b39d52b31f65"/>
 				<textFieldExpression><![CDATA[$F{ad_stdy_cntr_description}]]></textFieldExpression>
 			</textField>
 			<textField>
@@ -459,29 +458,29 @@ $F{ad_acdm_sesn_code}.equals( $P{session_code} )]]></filterExpression>
 				<textFieldExpression><![CDATA[$F{ad_acdm_sesn_code}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="100" y="125" width="100" height="20" uuid="2f76d698-d995-414b-b2ca-1c8664e93ac1"/>
+				<reportElement x="395" y="105" width="100" height="20" uuid="2f76d698-d995-414b-b2ca-1c8664e93ac1"/>
 				<textFieldExpression><![CDATA[$F{ad_actr_identity_no}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="317" y="105" width="78" height="20" uuid="4b742044-c2a6-4fea-94a6-cf72795db0e8"/>
+				<reportElement x="318" y="145" width="78" height="20" uuid="4b742044-c2a6-4fea-94a6-cf72795db0e8"/>
 				<textElement>
 					<font fontName="SansSerif" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Study Center: ]]></text>
+				<text><![CDATA[Study Center : ]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="318" y="125" width="78" height="20" uuid="3f05093f-be22-4bdd-98bb-6c35f4492583"/>
 				<textElement>
 					<font fontName="SansSerif" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Session        : ]]></text>
+				<text><![CDATA[Session : ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="318" y="145" width="78" height="20" uuid="0c4eda08-1547-491d-9bc8-30d1fb67b3d1"/>
-				<textElement>
+				<reportElement x="409" y="62" width="48" height="20" uuid="0c4eda08-1547-491d-9bc8-30d1fb67b3d1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="SansSerif" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Date             : ]]></text>
+				<text><![CDATA[Date : ]]></text>
 			</staticText>
 			<staticText>
 				<reportElement mode="Opaque" x="170" y="256" width="174" height="16" backcolor="#CCCCCC" uuid="a8bd802a-8e0f-459d-8082-7e4a4570ec57"/>
@@ -554,14 +553,14 @@ $F{ad_acdm_sesn_code}.equals( $P{session_code} )]]></filterExpression>
 				<text><![CDATA[PROGRAM]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="29" y="185" width="71" height="20" uuid="38ce74fb-8a9d-4448-b387-b5baf5cecfa6"/>
+				<reportElement x="29" y="165" width="71" height="20" uuid="38ce74fb-8a9d-4448-b387-b5baf5cecfa6"/>
 				<textElement>
 					<font fontName="SansSerif" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Scholarship: ]]></text>
 			</staticText>
 			<componentElement>
-				<reportElement x="100" y="185" width="382" height="20" uuid="5f8fb6a1-eccf-423d-8c00-d6a61403e460"/>
+				<reportElement x="100" y="165" width="218" height="20" uuid="5f8fb6a1-eccf-423d-8c00-d6a61403e460"/>
 				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
 					<datasetRun subDataset="sponsorship" uuid="ab204008-dc39-45e7-b487-fc6642eb7818">
 						<datasetParameter name="student_id">
@@ -569,9 +568,9 @@ $F{ad_acdm_sesn_code}.equals( $P{session_code} )]]></filterExpression>
 						</datasetParameter>
 						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 					</datasetRun>
-					<jr:listContents height="20" width="382">
+					<jr:listContents height="20" width="218">
 						<textField>
-							<reportElement x="0" y="0" width="309" height="20" uuid="5e18cdbb-cc2a-4251-8c96-48143f3159e9"/>
+							<reportElement x="0" y="0" width="193" height="20" uuid="5e18cdbb-cc2a-4251-8c96-48143f3159e9"/>
 							<textFieldExpression><![CDATA[$F{ad_actr_name}]]></textFieldExpression>
 						</textField>
 					</jr:listContents>
@@ -591,10 +590,6 @@ $F{ad_acdm_sesn_code}.equals( $P{session_code} )]]></filterExpression>
 				</textElement>
 				<text><![CDATA[SECTION]]></text>
 			</staticText>
-			<textField>
-				<reportElement x="395" y="145" width="100" height="20" uuid="d58dd5e4-af32-4ffd-9b43-b5ca9566dc38"/>
-				<textFieldExpression><![CDATA[$P{curDate}]]></textFieldExpression>
-			</textField>
 			<staticText>
 				<reportElement mode="Opaque" x="100" y="256" width="70" height="16" backcolor="#CCCCCC" uuid="ef58e196-e6c5-499e-9193-140614800b7e"/>
 				<box>
@@ -609,6 +604,11 @@ $F{ad_acdm_sesn_code}.equals( $P{session_code} )]]></filterExpression>
 				</textElement>
 				<text><![CDATA[CODE]]></text>
 			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="454" y="63" width="100" height="20" uuid="9a26c425-8f2f-4156-a3b3-8a75cd943a9f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
 		</band>
 	</columnHeader>
 	<detail>
@@ -737,18 +737,18 @@ $F{ad_acdm_sesn_code}.equals( $P{session_code} )]]></filterExpression>
 				<text><![CDATA[Tarikh:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="125" y="84" width="155" height="20" uuid="91f98df0-4bd9-4b91-8561-fbe0c4eaa7c1"/>
+				<reportElement x="100" y="84" width="180" height="20" uuid="91f98df0-4bd9-4b91-8561-fbe0c4eaa7c1"/>
 				<textElement>
 					<font fontName="SansSerif" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Salinan : (      ) Fail Pelajar]]></text>
+				<text><![CDATA[Copy : (      ) Student's File]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="344" y="84" width="155" height="20" uuid="4860210b-e4da-42b8-83f2-eafbf9587a29"/>
 				<textElement>
 					<font fontName="SansSerif" isBold="true"/>
 				</textElement>
-				<text><![CDATA[(      ) Bendahari]]></text>
+				<text><![CDATA[(      ) Bursary]]></text>
 			</staticText>
 		</band>
 	</pageFooter>

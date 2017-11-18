@@ -27,6 +27,8 @@ public interface AdAdmissionDao extends GenericDao<Long, AdAdmission> {
 
 	AdAdmission findById(Long id);
 	
+	//AdAdmission findByStudentAndSession(String identityNo, String session);
+	
 	AdAdmission findBySessionCohortAndStudent(AdAcademicSession academicSession, AdCohort cohort, AdStudent student);
 
     List<AdAdmission> findByProgramAndStudent(AdProgram program, AdStudent student);

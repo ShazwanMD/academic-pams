@@ -256,6 +256,8 @@ public interface TermService {
     //====================================================================================================
 
     AdAdmission findAdmissionById(Long id);
+    
+    //AdAdmission findAdmissionByStudentAndSession(String identityNo, String session);
 
     AdAdmission findAdmissionByAcademicSessionCohortAndStudent(AdAcademicSession academicSession, AdCohort cohort, AdStudent student);
 

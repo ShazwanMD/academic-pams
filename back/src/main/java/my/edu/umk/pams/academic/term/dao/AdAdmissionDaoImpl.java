@@ -54,6 +54,16 @@ public class AdAdmissionDaoImpl extends GenericDaoSupport<Long, AdAdmission> imp
 		query.setInteger("state", AdMetaState.ACTIVE.ordinal());
 		return (AdAdmission) query.uniqueResult();
 	}
+	
+	/*@Override
+	public AdAdmission findByStudentAndSession(String identityNo, String session) {
+		Session session1 = sessionFactory.getCurrentSession();
+		Query query = session1.createQuery("select o from AdAdmission o where " + "o.identityNo = :identityNo "  + "o.session = :session " + "and o.metadata.state = :state");
+		query.setString("identityNo", identityNo);
+		query.setString("session", session);
+		query.setInteger("state", AdMetaState.ACTIVE.ordinal());
+		return (AdAdmission) query.uniqueResult();
+	}*/
 
 	// ====================================================================================================
 	// FINDER
