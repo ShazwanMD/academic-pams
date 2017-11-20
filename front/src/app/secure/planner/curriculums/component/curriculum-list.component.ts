@@ -86,7 +86,7 @@ export class CurriculumListComponent {
 
   viewCurriculum(curriculum: Curriculum): void {
     console.log("Emitting curriculums");
-    let snackBarRef = this.snackBar.open("Viewing curriculums info", "OK");
+    let snackBarRef = this.snackBar.open("Viewing curriculums info", "" , { duration: 3000 } );
     snackBarRef.afterDismissed().subscribe(() => {
       this.view.emit(curriculum);
     });

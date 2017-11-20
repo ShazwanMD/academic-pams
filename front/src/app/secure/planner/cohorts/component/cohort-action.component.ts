@@ -42,7 +42,7 @@ export class CohortActionComponent {
   }
 
   delate(): void {
-    let snackBarRef = this.snackBar.open('Delate Cohort', 'OK');
+    let snackBarRef = this.snackBar.open('Delete Cohort', '' , { duration: 3000 } );
     // snackBarRef.afterDismissed().subscribe(() => this.store.dispatch(this.actions.delateCohort(this.cohort)));
   }
 }

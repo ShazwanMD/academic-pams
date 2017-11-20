@@ -28,7 +28,7 @@ export class AssignedGraduationApplicationTaskListComponent {
 
     viewTask( task: GraduationApplicationTask ): void {
         console.log( 'Emitting task' );
-        let snackBarRef = this.snackBar.open( 'Viewing Graduate Applicant', 'OK' );
+        let snackBarRef = this.snackBar.open( 'Viewing Graduate Applicant', '' , { duration: 3000 }  );
         snackBarRef.afterDismissed().subscribe(() => {
             this.view.emit( task );
         } );

@@ -47,13 +47,13 @@ export class FacultyActionComponent {
   }
 
   activate(): void {
-    let snackBarRef = this.snackBar.open('Activating Faculty', 'OK');
+    let snackBarRef = this.snackBar.open('Activating Faculty', '' , { duration: 3000 } );
     snackBarRef.afterDismissed().subscribe(() =>
       this.store.dispatch(this.actions.activateFaculty(this.faculty)));
   }
 
   deactivate(): void {
-    let snackBarRef = this.snackBar.open('Deactivating Faculty', 'OK');
+    let snackBarRef = this.snackBar.open('Deactivating Faculty', '' , { duration: 3000 } );
     snackBarRef.afterDismissed().subscribe(() =>
       this.store.dispatch(this.actions.deactivateFaculty(this.faculty)));
   }

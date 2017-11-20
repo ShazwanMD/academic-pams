@@ -77,7 +77,7 @@ export class ArchivedGraduationApplicationListComponent implements AfterViewInit
 
     viewGraduationApplication( graduationApplication: GraduationApplication ): void {
         console.log( 'Emitting task' );
-        let snackBarRef = this.snackBar.open( 'Viewing graduation application', 'OK' );
+        let snackBarRef = this.snackBar.open( 'Viewing graduation application', '', { duration: 3000 }  );
         snackBarRef.afterDismissed().subscribe(() => {
             this.view.emit( graduationApplication );
         } );

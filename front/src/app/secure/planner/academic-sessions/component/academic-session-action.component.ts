@@ -46,7 +46,7 @@ export class AcademicSessionActionComponent {
   }
 
   activate(): void {
-    let snackBarRef = this.snackBar.open('Activating Academic Session', 'OK');
+    let snackBarRef = this.snackBar.open('Activating Academic Session', '' , { duration: 3000 } );
     snackBarRef.afterDismissed().subscribe(() => {
         this.store.dispatch(this.actions.activateAcademicSession(this.academicSession));
       },
@@ -54,7 +54,7 @@ export class AcademicSessionActionComponent {
   }
 
   deactivate(): void {
-    let snackBarRef = this.snackBar.open('Deactivating Academic Session', 'OK');
+    let snackBarRef = this.snackBar.open('Deactivating Academic Session', '' , { duration: 3000 } );
     snackBarRef.afterDismissed().subscribe(() => {
         this.store.dispatch(this.actions.deactivateAcademicSession(this.academicSession));
       },

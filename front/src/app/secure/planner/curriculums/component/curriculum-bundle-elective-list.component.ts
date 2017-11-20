@@ -108,7 +108,7 @@ export class CurriculumBundleElectiveListComponent implements OnInit, OnChanges 
 
    viewSubject(subject: Subject): void {
     console.log('Emitting subject');
-    let snackBarRef = this.snackBar.open('Viewing subject info', 'OK');
+    let snackBarRef = this.snackBar.open('Viewing subject info', '' , { duration: 3000 } );
     snackBarRef.afterDismissed().subscribe(() => {
       this.view.emit(subject);
     });
