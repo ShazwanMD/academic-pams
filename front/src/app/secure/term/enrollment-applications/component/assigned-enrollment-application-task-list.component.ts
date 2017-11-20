@@ -94,7 +94,7 @@ export class AssignedEnrollmentApplicationTaskListComponent implements AfterView
 
   viewTask(task: EnrollmentApplicationTask): void {
     console.log('Emitting task');
-    let snackBarRef = this.snackBar.open('Viewing enrollment applications', 'OK');
+    let snackBarRef = this.snackBar.open('Viewing enrollment applications', '', {duration:3000});
     snackBarRef.afterDismissed().subscribe(() => {
       this.view.emit(task);
     });

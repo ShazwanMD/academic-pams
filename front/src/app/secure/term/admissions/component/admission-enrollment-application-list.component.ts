@@ -98,7 +98,7 @@ export class AdmissionEnrollmentApplicationListComponent implements AfterViewIni
 
   viewTask(enrollmentApplication: EnrollmentApplication): void {
     console.log('Emitting enrollmentApplication');
-    let snackBarRef = this.snackBar.open('Viewing enrollment application info', 'OK');
+    let snackBarRef = this.snackBar.open('Viewing enrollment application info', '', {duration:3000});
     snackBarRef.afterDismissed().subscribe(() => {
       this.view.emit(enrollmentApplication);
     });

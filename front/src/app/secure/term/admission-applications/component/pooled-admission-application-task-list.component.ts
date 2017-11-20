@@ -87,7 +87,7 @@ export class PooledAdmissionApplicationTaskListComponent implements OnChanges {
 
   claimTask(task: AdmissionApplicationTask): void {
     console.log('Emitting task');
-    let snackBarRef = this.snackBar.open('Claiming registration application', 'OK');
+    let snackBarRef = this.snackBar.open('Claiming registration application', '' , {duration:3000});
     snackBarRef.afterDismissed().subscribe(() => {
       this.claim.emit(task);
     });

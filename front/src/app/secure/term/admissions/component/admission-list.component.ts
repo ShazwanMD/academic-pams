@@ -80,7 +80,7 @@ export class AdmissionListComponent implements AfterViewInit {
 
   viewAdmission(admission: Admission): void {
     console.log('Emitting admission');
-    let snackBarRef = this.snackBar.open('Viewing semester registration', 'OK');
+    let snackBarRef = this.snackBar.open('Viewing semester registration', '', {duration:3000});
     snackBarRef.afterDismissed().subscribe(() => {
       this.view.emit(admission);
     });

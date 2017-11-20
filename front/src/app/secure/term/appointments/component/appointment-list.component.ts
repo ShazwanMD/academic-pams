@@ -75,7 +75,7 @@ export class AppointmentListComponent implements AfterViewInit {
 
   viewAppointment(appointment: Appointment): void {
     console.log('Emitting appointment');
-    let snackBarRef = this.snackBar.open('Viewing appointment', 'OK');
+    let snackBarRef = this.snackBar.open('Viewing appointment', '', {duration:3000});
     snackBarRef.afterDismissed().subscribe(() => {
       this.view.emit(appointment);
     });
