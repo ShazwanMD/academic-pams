@@ -44,6 +44,7 @@ export class CurriculumEffects {
     .map((curriculum) => this.curriculumActions.findCurriculumByCodeSuccess(curriculum))
     .mergeMap((action) => from([action,
       this.curriculumActions.findSubjectsByCurriculumAndSubjectCoreType(action.payload),
+      this.curriculumActions.findSubjectsByCurriculumAndSubjectCoreElectiveType(action.payload),
       this.curriculumActions.findSubjectsByCurriculumAndSubjectElectiveType(action.payload),
     ]));
 
@@ -65,6 +66,14 @@ export class CurriculumEffects {
     .switchMap((curriculum) => this.plannerService.findSubjectsByCurriculumAndSubjectTypeCore(curriculum))
     .map((subjects) => this.curriculumActions.findSubjectsByCurriculumAndSubjectCoreTypeSuccess(subjects));
 
+    //core elective
+    @Effect() findSubjectsByCurriculumAndSubjectCoreElectiveType$ = this.actions$
+    .ofType(CurriculumActions.FIND_SUBJECTS_BY_CURRICULUM_AND_SUBJECT_TYPE_CORE_ELECTIVE)
+    .map((action) => action.payload)
+    .switchMap((curriculum) => this.plannerService.findSubjectsByCurriculumAndSubjectTypeCoreElective(curriculum))
+    .map((subjects) => this.curriculumActions.findSubjectsByCurriculumAndSubjectCoreElectiveTypeSuccess(subjects));
+
+    
      @Effect() findSubjectsByCurriculumAndSubjectElectiveType$ = this.actions$
     .ofType(CurriculumActions.FIND_SUBJECTS_BY_CURRICULUM_AND_SUBJECT_TYPE_ELECTIVE)
     .map((action) => action.payload)

@@ -1,8 +1,8 @@
 export enum SubjectType {
-  CORE, // teras fakulti
-  CORE_ELECTIVE, // Teras program/pengkhususan
-  ELECTIVE, // elektif/Opsyen
-  GENERAL, //Umum Universiti
+  CORE, //0 teras fakulti
+  CORE_ELECTIVE, //1 Teras program/pengkhususan
+  ELECTIVE, //2 elektif/Opsyen
+  GENERAL, //3 Umum Universiti
   LANGUAGE, // english
   CURRICULUM,// kokurikulum
   OTHERS
