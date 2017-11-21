@@ -30,6 +30,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {PlannerModuleState} from '../../index';
 import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';
 import {Subject} from '../../../../shared/model/planner/subject.interface';
+import { CurriculumElectiveSubjectDialog } from "../dialog/curriculum-elective-subject.dialog";
 
 @Component({
     selector: 'pams-curriculum-elective-subject-list',
@@ -39,7 +40,7 @@ import {Subject} from '../../../../shared/model/planner/subject.interface';
 export class CurriculumElectiveSubjectListComponent implements AfterViewInit , OnChanges {
 
     private selectedRows: Subject[];
-    private singleSubjectDialogRef: MdDialogRef<CurriculumSingleSubjectDialog>;
+    private singleSubjectDialogRef: MdDialogRef<CurriculumElectiveSubjectDialog>;
     private bundleSubjectDialogRef: MdDialogRef<CurriculumBundleSubjectDialog>;
     private bundleSubjectPartDialogRef: MdDialogRef<CurriculumBundleSubjectPartDialog>;
     
@@ -127,7 +128,7 @@ export class CurriculumElectiveSubjectListComponent implements AfterViewInit , O
     }
 
 
-    showSingleSubjectDialog(singleSubject: SingleSubject): void {
+    showElectiveSubjectDialog(singleSubject: SingleSubject): void {
         console.log("this.curriculum : " + this.curriculum.academicSession);
         let config: MdDialogConfig = new MdDialogConfig();
         config.viewContainerRef = this.vcf;
@@ -135,7 +136,7 @@ export class CurriculumElectiveSubjectListComponent implements AfterViewInit , O
         config.width = '50%';
         config.height = '60%';
         config.position = { top: '65px' };
-        this.singleSubjectDialogRef = this.dialog.open(CurriculumSingleSubjectDialog, config);
+        this.singleSubjectDialogRef = this.dialog.open(CurriculumElectiveSubjectDialog, config);
         this.singleSubjectDialogRef.componentInstance.curriculum = this.curriculum;
         this.singleSubjectDialogRef.afterClosed().subscribe((res) => {
             // no op

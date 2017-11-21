@@ -37,6 +37,7 @@ import {SubjectTypeSelectComponent} from './component/subject-type-select.compon
 import {SubjectElectiveStatusSelectComponent} from './component/subject-elective-status-select.component';
 import { ReportActions } from "../../../shared/report/report.action";
 import { ReportModule } from "../../../shared/report/index";
+import { CurriculumElectiveSubjectDialog } from "./dialog/curriculum-elective-subject.dialog";
 
 @NgModule({
   imports: [
@@ -74,6 +75,7 @@ import { ReportModule } from "../../../shared/report/index";
     CurriculumEditorDialog,
     CurriculumUpdateDialog,
     CurriculumSingleSubjectDialog,
+    CurriculumElectiveSubjectDialog,
     CurriculumBundleSubjectDialog,
     CurriculumBundleSubjectPartDialog,
     CurriculumBundleElectiveDialog,
@@ -98,6 +100,7 @@ import { ReportModule } from "../../../shared/report/index";
     CurriculumSubjectListComponent,
     CurriculumElectiveSubjectListComponent,
     CurriculumSingleSubjectDialog,
+    CurriculumElectiveSubjectDialog,
     CurriculumBundleSubjectDialog,
     CurriculumBundleSubjectPartDialog,
     CurriculumBundleElectiveDialog,
