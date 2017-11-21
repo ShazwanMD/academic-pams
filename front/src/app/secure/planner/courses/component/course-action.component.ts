@@ -46,12 +46,12 @@ export class CourseActionComponent {
   // }
 
   deactivate(): void {
-    let snackBarRef = this.snackBar.open('Deactivating Course', 'OK');
+    let snackBarRef = this.snackBar.open('Deactivating Course', '' , { duration: 3000 } );
     snackBarRef.afterDismissed().subscribe(() => this.store.dispatch(this.actions.deactivateCourse(this.course)));
   }
 
   activate(): void {
-    let snackBarRef = this.snackBar.open('Activating Course', 'OK');
+    let snackBarRef = this.snackBar.open('Activating Course', '' , { duration: 3000 } );
     snackBarRef.afterDismissed().subscribe(() => this.store.dispatch(this.actions.activateCourse(this.course)));
   }
 }

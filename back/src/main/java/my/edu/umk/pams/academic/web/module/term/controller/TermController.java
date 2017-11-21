@@ -158,13 +158,22 @@ public class TermController {
 			admission.setAdvisor(identityService.findStaffByStaffNo(vo.getAdvisor().getIdentityNo()));
 		}
 
+<<<<<<< HEAD
+=======
+		// if studyCenter is null
+		if (vo.getStudyCenter() != null) {
+			admission.setStudyCenter(commonService.findStudyCenterByCode(vo.getStudyCenter().getCode()));
+		}
+
+>>>>>>> bec953c960ff92f3b8c66ca1875874ff1e165d71
 		admission.setOrdinal(vo.getOrdinal());
 		admission.setGpa(vo.getGpa());
 		admission.setStatus(AdAdmissionStatus.get(vo.getStatus().ordinal()));
 		admission.setStanding(AdAcademicStanding.get(vo.getStanding().ordinal()));
 		admission.setCohort(plannerService.findCohortByCode(vo.getCohort().getCode()));
 		admission.setStudent(identityService.findStudentByMatricNo(vo.getStudent().getIdentityNo()));
-		admission.setStudyCenter(commonService.findStudyCenterByCode(vo.getStudyCenter().getCode()));
+		// admission.setStudyCenter(commonService.findStudyCenterByCode(vo.getStudyCenter().getCode()));
+
 		admission.setSession(plannerService.findAcademicSessionByCode(vo.getAcademicSession().getCode()));
 		termService.updateAdmission(admission);
 		return new ResponseEntity<String>("Success Update Admission", HttpStatus.OK);
@@ -226,22 +235,21 @@ public class TermController {
 		application.setOrdinal(vo.getOrdinal());
 		application.setReferenceNo(vo.getReferenceNo());
 
+		// if advisor is null
 		if (vo.getAdvisor() != null) {
 			application.setAdvisor(identityService.findStaffByIdentityNo(vo.getAdvisor().getIdentityNo()));
 		}
 
-		/*
-		 * if(vo.getAdvisor().getIdentityNo()!=null){ AdStaff advisor =
-		 * identityService.findStaffByStaffNo(vo.getAdvisor().getIdentityNo());
-		 * application.setAdvisor(advisor);
-		 * System.out.println("Advisor is updated" + advisor); }
-		 */
+		// if studyCenter is null
+		if (vo.getStudyCenter() != null) {
+			application.setStudyCenter(commonService.findStudyCenterByCode(vo.getStudyCenter().getCode()));
+		}
 
 		application.setRemoveComment(vo.getRemoveComment());
 		application.setProgram(plannerService.findProgramByCode(vo.getProgram().getCode()));
 		application.setStudent(identityService.findStudentByMatricNo(vo.getStudent().getIdentityNo()));
 		application.setSession(plannerService.findAcademicSessionByCode(vo.getAcademicSession().getCode()));
-		application.setStudyCenter(commonService.findStudyCenterByCode(vo.getStudyCenter().getCode()));
+		// application.setStudyCenter(commonService.findStudyCenterByCode(vo.getStudyCenter().getCode()));
 
 		termService.updateAdmissionApplication(application);
 		return new ResponseEntity<String>("Success Update Admission Application", HttpStatus.OK);
@@ -271,7 +279,15 @@ public class TermController {
 		AdStudent student = identityService.findStudentById(vo.getStudent().getId());
 		AdAcademicSession academicSession = plannerService.findAcademicSessionById(vo.getAcademicSession().getId());
 		AdProgram program = student.getCohort().getProgram();
-		AdStudyCenter studyCenter = commonService.findStudyCenterById(vo.getStudyCenter().getId());
+		// AdStudyCenter studyCenter =
+		// commonService.findStudyCenterById(vo.getStudyCenter().getId());
+
+		/*
+		 * if (vo.getStudyCenter() != null) { AdStudyCenter studyCenter =
+		 * commonService.findStudyCenterById(vo.getStudyCenter().getId());
+		 * System.out.println("studyCenter1"); } else {
+		 * System.out.println("studyCenter0"); }
+		 */
 		// AdStaff advisor =
 		// identityService.findStaffByStaffNo(vo.getAdvisor().getIdentityNo());
 		// AdStaff advisor = identityService.findStaffByStaffNo("00179A");
@@ -279,7 +295,6 @@ public class TermController {
 		System.out.println("Get student: " + vo.getStudent().getId());
 		System.out.println("Get session: " + vo.getAcademicSession().getId());
 		System.out.println("Get program: " + student.getCohort().getProgram());
-		System.out.println("Get studycenter: " + vo.getStudyCenter().getId());
 
 		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
 		Date date1 = new Date();
@@ -310,9 +325,16 @@ public class TermController {
 				application.setReferenceNo(vo.getReferenceNo());
 				application.setStudent(student);
 				application.setSession(academicSession);
-				application.setStudyCenter(studyCenter);
-				application.setProgram(program);
 
+				if (vo.getStudyCenter() != null) {
+					AdStudyCenter studyCenter = commonService.findStudyCenterById(vo.getStudyCenter().getId());
+					application.setStudyCenter(studyCenter);
+					System.out.println("studyCenter1");
+				} else {
+					System.out.println("studyCenter0");
+				}
+
+				application.setProgram(program);
 				// application.setAdvisor(advisor);
 
 				/*
@@ -337,11 +359,11 @@ public class TermController {
 				emailQueue.setTo(student.getEmail()); // set default email
 															// to test
 
-				emailQueue.setSubject("Application for semester registration:" + academicSession.getCode());
+				emailQueue.setSubject(" Application for semester registration: " + academicSession.getCode());
 				emailQueue.setQueueStatus(AdEmailQueueStatus.QUEUED);
 				emailQueue.setBody(
-						"Thank you" + student.getName() + " for the application. This application will be reviewed:"
-								+ referenceNo + " Please click this URL to view details:" + applicationUrl);
+						"Thank you " + student.getName() + " for the application. This application will be reviewed: "
+								+ referenceNo + " Please click this URL to view details: " + applicationUrl);
 				emailQueue.setRetryCount(1);
 				LOG.debug("Admission Application Email Queue: {}", emailQueue);
 
@@ -460,6 +482,7 @@ public class TermController {
 
 		AdEnrollment enrollment = termService.findEnrollmentById(vo.getId());
 		enrollment.setStatus(AdEnrollmentStatus.get(vo.getEnrollmentStatus().ordinal()));
+		enrollment.setStanding(AdEnrollmentStanding.get(vo.getEnrollmentStanding().ordinal()));
 		termService.updateEnrollment(enrollment);
 		return new ResponseEntity<>("Success", HttpStatus.OK);
 	}

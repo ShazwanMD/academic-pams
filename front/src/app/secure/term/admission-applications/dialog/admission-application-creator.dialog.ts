@@ -100,7 +100,7 @@ export class AdmissionApplicationCreatorDialog implements OnInit {
             if ( val['status'] == 'Duplicate' ) {
                 
 
-                let snackBarRef = this.snackBar.open( 'Process failed: ' + admissionApplication.student.identityNo + ' Application cannot be submit', '', { duration: 5000 } );
+                let snackBarRef = this.snackBar.open( 'Process failed: ' + admissionApplication.student.identityNo + ' Application cannot be submit', '', { duration: 3000 } );
                 snackBarRef.afterDismissed().subscribe(() => {
                     console.log( 'The snack-bar was dismissed' );
                     console.log( 'Accumulated object:', val )
@@ -136,7 +136,7 @@ export class AdmissionApplicationCreatorDialog implements OnInit {
                         
                     });*/
                     
-                    let snackBarRef = this.snackBar.open( 'Reviewing semester registration ' + admissionApplication.student.identityNo , 'OK', { duration: 5000 } );
+                    let snackBarRef = this.snackBar.open( 'Reviewing semester registration ' + admissionApplication.student.identityNo , '', { duration: 3000 } );
                     snackBarRef.afterDismissed().subscribe(() => {
                         console.log( 'The snack-bar was dismissed' );
                         console.log( 'Accumulated object:', val )

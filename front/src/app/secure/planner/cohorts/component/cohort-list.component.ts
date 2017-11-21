@@ -92,7 +92,7 @@ export class CohortListComponent implements AfterViewInit, OnChanges {
 
     viewCohort(cohort: Cohort): void {
       console.log('Emitting cohort');
-      let snackBarRef = this.snackBar.open('Viewing cohort info', 'OK');
+      let snackBarRef = this.snackBar.open('Viewing cohort info', '' , { duration: 3000 } );
       snackBarRef.afterDismissed().subscribe(() => {
         this.view.emit(cohort);
       });

@@ -398,10 +398,10 @@ $F{ad_acdm_sesn_code}.equals( $P{session_code} )]]></filterExpression>
 				</textElement>
 				<text><![CDATA[DATE :]]></text>
 			</staticText>
-			<textField>
-				<reportElement x="451" y="161" width="94" height="20" uuid="d6f3e149-b97a-4b16-a5fa-288d90f61ab7"/>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="455" y="161" width="100" height="20" uuid="2b9a5458-05be-47ed-8c1f-91f682e1e5f0"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$P{curDate}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 		</band>
 	</title>

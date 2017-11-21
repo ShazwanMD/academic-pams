@@ -125,7 +125,7 @@ export class StudentAdmissionEnrollmentListComponent implements OnInit {
 
   viewTask(enrollment: Enrollment): void {
     console.log('Emitting enrollment');
-    let snackBarRef = this.snackBar.open('Viewing enrollment info', 'OK');
+    let snackBarRef = this.snackBar.open('Viewing enrollment info', '', {duration:3000});
     snackBarRef.afterDismissed().subscribe(() => {
       this.view.emit(enrollment);
     });

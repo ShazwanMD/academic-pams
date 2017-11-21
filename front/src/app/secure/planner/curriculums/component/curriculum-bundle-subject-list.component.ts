@@ -81,6 +81,7 @@ export class CurriculumBundleSubjectListComponent implements OnInit, OnChanges, 
               private _dataTableService: TdDataTableService) {
   }
 
+  
   ngOnInit(): void {
     this.selectedRows = this.subjects.filter((value) => value.selected);
   }
@@ -92,7 +93,7 @@ export class CurriculumBundleSubjectListComponent implements OnInit, OnChanges, 
     this.store.dispatch(this.actions.findSubjectsByCurriculumAndSubjectElectiveType(this.curriculum));
     this.selectedRows = [];
     this.refreshCurriculum = false;
-    console.log("Inside RefCur", this.actions.findSubjectsByCurriculumAndSubjectElectiveType(this.curriculum).payload.subjects.length)
+  //  console.log("Inside RefCur", this.actions.findSubjectsByCurriculumAndSubjectElectiveType(this.curriculum).payload.subjects.length)
     this.subjects = [];
     this.filter();
     }
@@ -193,7 +194,7 @@ export class CurriculumBundleSubjectListComponent implements OnInit, OnChanges, 
 
   viewSubject(subject: Subject): void {
     console.log('Emitting subject');
-    let snackBarRef = this.snackBar.open('Viewing subject info', 'OK');
+    let snackBarRef = this.snackBar.open('Viewing subject info', '' , { duration: 3000 } );
     snackBarRef.afterDismissed().subscribe(() => {
     this.view.emit(subject);
     });
@@ -209,7 +210,7 @@ export class CurriculumBundleSubjectListComponent implements OnInit, OnChanges, 
   if(this.numPart > 0) {
     //Proceed here if we CANNOT delete
     alert("Please Delete the Subject Part First");
-    let snackBarRef = this.snackBar.open( 'Subject Elective cannot be deleted','OK',{ duration: 3000 });
+    let snackBarRef = this.snackBar.open( 'Subject Elective cannot be deleted','',{ duration: 3000 });
     console.log("Number numPart " + this.numPart)
     snackBarRef.afterDismissed().subscribe(() => {
   

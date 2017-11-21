@@ -19,6 +19,8 @@ import { Appointment } from '../app/shared/model/term/appointment.interface';
 import { Section } from '../app/shared/model/term/section.interface';
 import { GradebookMatrix } from '../app/shared/model/term/gradebook-matrix.interface';
 import { Gradebook } from "../app/shared/model/term/gradebook.interface";
+import { Student } from "../app/shared/model/identity/student.interface";
+import { AcademicSession } from "../app/shared/model/planner/academic-session.interface";
 
 @Injectable()
 export class TermService {
@@ -163,6 +165,13 @@ export class TermService {
         return this._http.get( this.TERM_API + '/admissions/' + id )
             .map(( res: Response ) => <Admission>res.json() );
     }
+    
+   /* //find admissionbystudentandsession
+    findAdmissionByStudentAndSession( student: Student, academicSession: AcademicSession ): Observable<Admission> {
+        console.log( 'findAdmissionByStudentAndSession' );
+        return this._http.get( this.TERM_API + '/admissions/' + student + academicSession )
+            .map(( res: Response ) => <Admission>res.json() );
+    }*/
 
     findEnrollmentsByAdmission( admission: Admission ): Observable<Enrollment[]> {
         console.log( 'findEnrollmentsByAdmission' );
@@ -561,6 +570,7 @@ export class TermService {
 
     calculateGradebook( offering: Offering ): Observable<String> {
         console.log( 'CalculateTotalScore' );
+        console.log( offering );
         let options: RequestOptions = new RequestOptions( { responseType: ResponseContentType.ArrayBuffer } );
         return this._http.post( this.TERM_API + '/offerings/' + offering.canonicalCode + '/calculateGradebook', options )
             .flatMap(( res: Response ) => Observable.of( res.text() ) );

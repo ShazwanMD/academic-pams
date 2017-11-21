@@ -18,9 +18,11 @@ export class StudentProfileEnrollmentsComponent {
 
   private columns: any[] = [
     { name: 'admission.academicSession.code', label: 'Semester' },
-    { name: 'section.offering.code', label: 'Course Code' },
+    { name: 'section.offering.code', label: 'Code' },
+    { name: 'section.offering.titleEn', label: 'Title' },
     { name: 'section.offering.course.credit', label: 'Credit' },
     { name: 'gradeCode.code', label: 'Grade' },
+    { name: 'gradeCode.description', label: 'Desc.' },
   ];
 
   @Input() enrollments: Enrollment[];

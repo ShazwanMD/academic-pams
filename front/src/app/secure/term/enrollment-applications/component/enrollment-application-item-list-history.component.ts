@@ -81,13 +81,13 @@ export class EnrollmentApplicationItemHistoryComponent implements OnInit {
         var r = confirm("Please choose your course first before submit the application.Thank you.");
         if (r == true) {
             
-            let snackBarRef = this._snackBar.open( 'Enrollment application completed', 'OK' );
+            let snackBarRef = this._snackBar.open( 'Enrollment application completed', '', {duration:3000} );
             snackBarRef.afterDismissed().subscribe(() => {
                 this.router.navigate( ['/secure'] );
             } );
            
         } else {
-            let snackBarRef = this._snackBar.open( 'Please choose courses to enroll', 'OK', {duration:2000} );
+            let snackBarRef = this._snackBar.open( 'Please choose courses to enroll', '', {duration:3000} );
             snackBarRef.afterDismissed().subscribe(() => {
                 //this.router.navigate( ['/secure'] );
             } );

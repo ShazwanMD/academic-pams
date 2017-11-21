@@ -9,8 +9,8 @@
     <div layout="column" class="pad-right" flex>
       <div layout="row">
         <td-file-upload #fileUpload (upload)="upload($event)" defaultColor="accent"
-                        activeColor="warn"
-                        cancelColor="primary">
+                        activeColor="accent"
+                        cancelColor="warn">
           <md-icon>file_upload</md-icon>
           <span>{{ fileUpload.files?.name }}</span>
           <template td-file-input-label>

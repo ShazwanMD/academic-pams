@@ -13,6 +13,7 @@ import {Guardian} from '../../shared/model/profile/guardian.interface';
 import {Guarantor} from '../../shared/model/profile/guarantor.interface';
 import {MdDialog, MdDialogRef, MdSnackBar} from '@angular/material';
 import {Observable} from 'rxjs';
+import { Admission } from "../../shared/model/term/admission.interface";
 
 @Component({
   selector: 'pams-profile-detail',
@@ -26,6 +27,7 @@ export class ProfileDetailPage implements OnInit {
   private GUARDIANS: string[] = 'profileModuleState.guardians'.split('.');
   private CONTACTS: string[] = 'profileModuleState.contacts'.split('.');
   private ENROLLMENTS: string[] = 'studentProfileModuleState.enrollments'.split('.');
+  private ADMISSIONS: string[] = 'studentProfileModuleState.admissions'.split('.');
 
   private student$: Observable<Student>;
   private addressess$: Observable<Student>;
@@ -33,6 +35,7 @@ export class ProfileDetailPage implements OnInit {
   private guardians$: Observable<Guardian>;
   private contacts$: Observable<Contact>;
   private enrollments$: Observable<Enrollment>;
+  private admissions$: Observable<Admission>;
   private switcherDialogRef: MdDialogRef<StudyModeSwitcherDialog>;
   private transfererDialogRef: MdDialogRef<CohortTransfererDialog>;
 
@@ -52,6 +55,7 @@ export class ProfileDetailPage implements OnInit {
     this.guarantors$ = this.store.select(...this.GUARANTORS);
     this.contacts$ = this.store.select(...this.CONTACTS);
     this.enrollments$ = this.store.select(...this.ENROLLMENTS);
+    this.admissions$ = this.store.select(...this.ADMISSIONS);
   }
 
   goBack(route: string): void {
@@ -66,7 +70,7 @@ export class ProfileDetailPage implements OnInit {
   }
 
   deactivate(): void {
-    let snackBarRef = this.snackBar.open('Deactivating Student : ?', 'OK');
+    let snackBarRef = this.snackBar.open('Deactivating Student : ?', '', {duration:3000});
     snackBarRef.afterDismissed().subscribe(() => {
         this.student$.take(1).subscribe((student) =>
           this.store.dispatch(this.actions.deactivateStudent(student)));
@@ -76,7 +80,7 @@ export class ProfileDetailPage implements OnInit {
   }
 
   activate(): void {
-    let snackBarRef = this.snackBar.open('Activating Student : ?', 'OK');
+    let snackBarRef = this.snackBar.open('Activating Student : ?', '', {duration:3000});
     snackBarRef.afterDismissed().subscribe(() => {
         this.student$.take(1).subscribe((student) =>
           this.store.dispatch(this.actions.activateStudent(student)));
@@ -86,7 +90,7 @@ export class ProfileDetailPage implements OnInit {
   }
 
   bar(): void {
-    let snackBarRef = this.snackBar.open('Barred Student : ?', 'OK');
+    let snackBarRef = this.snackBar.open('Barred Student : ?', '' , {duration:3000});
     snackBarRef.afterDismissed().subscribe(() => {
         this.student$.take(1).subscribe((student) =>
           this.store.dispatch(this.actions.barStudent(student)));

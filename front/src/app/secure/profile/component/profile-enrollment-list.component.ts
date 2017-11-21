@@ -14,6 +14,9 @@ export class ProfileEnrollmentListComponent {
     {name: 'section.offering.titleEn', label: 'Course Name'},
     {name: 'section.offering.course.credit', label: 'Credit'},
     {name: 'gradeCode.code', label: 'Grade'},
+    {name: 'gradeCode.description', label: 'Desc.'},
+    {name: 'enrollmentStatus', label: 'Status'},
+    {name: 'enrollmentStanding', label: 'Standing'},
   ];
 
   @Input() enrollments: Enrollment[];

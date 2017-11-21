@@ -57,7 +57,27 @@ export class AdmissionActions {
       payload: admission
     };
   }
+  
+  
+ /* //find admissionbystudentandsession
+  static FIND_ADMISSION_BY_STUDENT_AND_SESSION = '[Admission] Find Admission By Student And Session';
 
+  findAdmissionByStudentAndSession(identityNo,session): Action {
+    return {
+      type: AdmissionActions.FIND_ADMISSION_BY_STUDENT_AND_SESSION,
+      payload: {identityNo, session}
+    };
+  }
+
+  static FIND_ADMISSION_BY_STUDENT_AND_SESSION_SUCCESS = '[Admission] Find Admission By Student And Session Success';
+
+  findAdmissionByStudentAndSessionSuccess(admission): Action {
+    return {
+      type: AdmissionActions.FIND_ADMISSION_BY_STUDENT_AND_SESSION_SUCCESS,
+      payload: admission
+    };
+  }
+*/
   //FIND ENROLLMENTS BY ADMISSION
   static FIND_ENROLLMENTS_BY_ADMISSION = '[Admission] Find Enrollments By Admission';
 

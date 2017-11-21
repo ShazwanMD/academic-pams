@@ -44,7 +44,7 @@ export class CurriculumActionComponent {
     }
 
     delate(): void {
-        let snackBarRef = this.snackBar.open( 'Delate Curriculum', 'OK' );
+        let snackBarRef = this.snackBar.open( 'Delate Curriculum', '' , { duration: 3000 }  );
         // snackBarRef.afterDismissed().subscribe(() => this.store.dispatch(this.actionsq.delateCurriculum(this.curriculum)));
     }
 

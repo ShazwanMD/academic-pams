@@ -9,4 +9,5 @@ import {Student} from '../../../shared/model/identity/student.interface';
 })
 export class ProfileStatusComponent {
   @Input() profile: Student;
+  
 }

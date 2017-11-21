@@ -53,6 +53,7 @@ import { AcademicSessionSubModule } from '../planner/academic-sessions/index';
 import { CohortTransfererDialog } from './dialog/cohort-transferer.dialog';
 import { ProfileCohortComponent } from './component/profile-cohort.component';
 import { ProfileEnrollmentListComponent } from './component/profile-enrollment-list.component';
+import { ProfileAdmissionListComponent } from './component/profile-admission-list.component';
 import { Admission } from "../../shared/model/term/admission.interface";
 import { AcademicSession } from "../../shared/model/planner/academic-session.interface";
 import { AdmissionApplication } from "../../shared/model/term/admission-application.interface";
@@ -139,6 +140,7 @@ export const profileModuleReducers = {
     AdvisoryListComponent,
     ProfileStatusComponent,
     ProfileEnrollmentListComponent,
+    ProfileAdmissionListComponent,
     ContactTypeSelectComponent,
     GuarantorTypeSelectComponent,
     GuardianTypeSelectComponent,

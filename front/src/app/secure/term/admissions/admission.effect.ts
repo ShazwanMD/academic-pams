@@ -35,7 +35,7 @@ export class AdmissionEffects {
     .map((admissionApplications) => this.admissionActions.findAdmissionApplicationsSuccess(admissionApplications));
 
   
-  //created on 14/6/17
+  
   @Effect() findAdmissionById$ = this.actions$
     .ofType(AdmissionActions.FIND_ADMISSION_BY_ID)
     .map((action) => action.payload)
@@ -45,6 +45,14 @@ export class AdmissionEffects {
       this.admissionActions.findEnrollmentsByAdmission(action.payload),
       this.admissionActions.findEnrollmentApplicationsByAdmission(action.payload),
     ]));
+  
+  
+/*  @Effect() findAdmissionByStudentAndSession$ = this.actions$
+    .ofType(AdmissionActions.FIND_ADMISSION_BY_STUDENT_AND_SESSION)
+    .map((action) => action.payload)
+    .switchMap((identityNo, session) => this.termService.findAdmissionByStudentAndSession(student, academicSession))
+    .map((admission) => this.admissionActions.findAdmissionByStudentAndSessionSuccess(admission));
+      */
 
   @Effect() findEnrollmentsByAdmission$ = this.actions$
     .ofType(AdmissionActions.FIND_ENROLLMENTS_BY_ADMISSION)

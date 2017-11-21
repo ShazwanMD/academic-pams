@@ -39,7 +39,7 @@
 
               <div flex-gt-md="40">
                 <b>Student ID</b> : {{student.identityNo}}<br/><br/>
-                <b>Current Semester</b> : {{student.cohort?.academicSession.semester}}<br/><br/>
+                <b>Semester Intake</b> : {{student.cohort?.academicSession.semester}}<br/><br/>
                 <b>Name</b> : {{student.name}}<br/><br/>
                 <b>Email</b> : {{student.email}}<br/><br/>
                 <b>Phone</b> : {{student.phone}}<br/><br/>
@@ -258,6 +258,12 @@
         <pams-profile-enrollment-list [enrollments]="enrollments">
         </pams-profile-enrollment-list>
       </md-tab>
+      
+       <md-tab label="Admission Information">
+        <pams-profile-admission-list [admissions]="admissions">
+        </pams-profile-admission-list>
+      </md-tab>
+      
     </md-tab-group>
 
   </md-card-content>

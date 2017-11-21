@@ -55,6 +55,22 @@
            <div *ngIf="value != null">{{value}}</div>       
         </div>
       </template>
+      
+        <template tdDataTableTemplate="enrollmentStatus" let-value="value" let-row="row" let-column="columns.enrollmentStatus">
+        <div layout="row">
+          <div class="md-24 tc-grey-700"   *ngIf="value == 'WITHDRAWN'" ><strong><font color='red'>{{value}}</font></strong></div>
+           <div   *ngIf="value != 'WITHDRAWN'" >{{value}}</div>
+          
+        </div>
+      </template>
+      
+      <!--  <template tdDataTableTemplate="enrollmentStanding" let-value="value" let-row="row" let-column="columns.enrollmentStanding">
+        <div layout="row">
+          <div class="md-24 tc-grey-700"   *ngIf="value == 'UM'||'UG'" ><strong><font color='red'>{{value}}</font></strong></div>
+            <div   *ngIf="value != 'UM'||'UG'" >{{value}}</div>
+          
+        </div>
+      </template> -->
 
       <!-- <template tdDataTableTemplate="action" let-value="value" let-row="row" let-column="column">
         <div layout="row">
