@@ -44,7 +44,6 @@ public class SystemSchedulerImpl implements SystemScheduler {
 
         try {
             List<AdEmailQueue> queues = systemService.findEmailQueues(AdEmailQueueStatus.QUEUED);
-           // LOG.debug("{} email to be sent", queues.size());
             for (AdEmailQueue queue : queues) {
                 MimeMessage mimeMessage = mailSender.createMimeMessage();
                 MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true);

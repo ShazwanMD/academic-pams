@@ -1,6 +1,10 @@
 package my.edu.umk.pams.academic.planner.model;
 
 
+import my.edu.umk.pams.academic.common.model.AdGraduateCenter;
+import my.edu.umk.pams.academic.common.model.AdGraduateCenterImpl;
+import my.edu.umk.pams.academic.common.model.AdStudyMode;
+import my.edu.umk.pams.academic.common.model.AdStudyModeImpl;
 import my.edu.umk.pams.academic.core.AdMetadata;
 
 import javax.persistence.*;
@@ -39,6 +43,10 @@ public class AdFacultyImpl implements AdFaculty {
 
     @OneToMany(targetEntity = AdCourseImpl.class, mappedBy = "faculty", fetch = FetchType.LAZY)
     private List<AdCourse> courses;
+    
+	@OneToOne(targetEntity = AdGraduateCenterImpl.class)
+	@JoinColumn(name = "GRADUATE_CENTER_ID", nullable = true)
+	private AdGraduateCenter center;
 
     @Embedded
     private AdMetadata metadata;
@@ -126,8 +134,16 @@ public class AdFacultyImpl implements AdFaculty {
     public void setMetadata(AdMetadata metadata) {
         this.metadata = metadata;
     }
+    
+    public AdGraduateCenter getCenter() {
+		return center;
+	}
 
-    @Override
+	public void setCenter(AdGraduateCenter center) {
+		this.center = center;
+	}
+
+	@Override
     public Class<?> getInterfaceClass() {
         return AdFaculty.class;
     }

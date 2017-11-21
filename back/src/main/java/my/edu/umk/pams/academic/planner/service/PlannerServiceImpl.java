@@ -175,7 +175,7 @@ public class PlannerServiceImpl implements PlannerService {
 
 	static int TWO = 2;
 
-	public void calculateGpa(AdAdmission admission) {
+	public void calculateGpa(AdAdmission admission, AdEnrollmentStatus status) {
 		LOG.debug("admission:{}", admission.getSession().getCode());
 		LOG.debug("admission:{}", admission.getStudent().getName());
 
@@ -213,9 +213,12 @@ public class PlannerServiceImpl implements PlannerService {
 	}
 
 	private BigDecimal getCreditHour(AdEnrollment enrollment) {
+		if(enrollment.getStatus().equals(AdEnrollmentStatus.CONFIRMED))
 		LOG.debug("Enrollment:{}", enrollment.getGradeCode().getCode());
 		LOG.debug("Enrollment:{}", enrollment.getSection().getCode());
 		LOG.debug("Enrollment:{}", enrollment.getSection().getOffering().getTitleEn());
+		
+		LOG.debug("Enrollment Status:{}", enrollment.getStatus().name());
 		// Offering
 		AdOffering offering = enrollment.getSection().getOffering();
 		LOG.debug("offering:{}", offering.getCanonicalCode());
@@ -237,7 +240,7 @@ public class PlannerServiceImpl implements PlannerService {
 	private BigDecimal getHoursPerSemester(AdAdmission admission) {
 		BigDecimal hoursPerSemester = BigDecimal.ZERO;
 
-		for (AdEnrollment enrollment : termService.findEnrollments(admission)) {
+		for (AdEnrollment enrollment : termService.findEnrollments(admission, AdEnrollmentStatus.CONFIRMED)) {
 			hoursPerSemester = hoursPerSemester.add(getCreditHour(enrollment));
 			LOG.debug("hoursPerSemester:{}", hoursPerSemester);
 		}
@@ -246,8 +249,9 @@ public class PlannerServiceImpl implements PlannerService {
 
 	private BigDecimal getPointHoursPerSemester(AdAdmission admission) {
 		BigDecimal pointHoursPerSemester = BigDecimal.ZERO;
-
-		for (AdEnrollment enrollment : termService.findEnrollments(admission)) {
+		
+		for (AdEnrollment enrollment : termService.findEnrollments(admission, AdEnrollmentStatus.CONFIRMED)) {
+			
 			BigDecimal creditHour = getCreditHour(enrollment);
 
 			AdGradeCode gradeCode = enrollment.getGradeCode();
@@ -885,7 +889,8 @@ public class PlannerServiceImpl implements PlannerService {
 		// Prepare Program Payload
 		ProgramCodePayload p = new ProgramCodePayload();
 		p.setCode(program.getCode());
-		p.setDescription(program.getTitleMs());
+		p.setDescriptionMs(program.getTitleMs());
+		p.setDescriptionEn(program.getTitleEn());
 		p.setFacultyCode(f);
 		p.setProgramLevel(l);
 

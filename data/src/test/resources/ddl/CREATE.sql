@@ -736,6 +736,7 @@
         NAME varchar(255) not null,
         PREFIX varchar(5),
         STATUS int4 not null,
+        GRADUATE_CENTER_ID int8,
         primary key (ID)
     );
 
@@ -1500,6 +1501,21 @@
         primary key (ID)
     );
     
+    CREATE TABLE AD_GRDT_CNTR (
+        ID INT8 NOT NULL,
+        CODE VARCHAR(255) NOT NULL,
+        DESCRIPTION_EN VARCHAR(255) NOT NULL,
+        DESCRIPTION_MS VARCHAR(255) NOT NULL,
+        C_TS TIMESTAMP,
+        C_ID INT8,
+        D_TS TIMESTAMP,
+        D_ID INT8,
+        M_TS TIMESTAMP,
+        M_ID INT8,
+        M_ST INT4,
+        PRIMARY KEY (ID)
+    );
+    
     alter table AD_SPONSORSHIP 
         add constraint UK_ojhm9q9q2f9cp1fp0qa5678c unique (REFERENCE_NO);  
 
@@ -1799,6 +1815,9 @@
         add constraint FK784966CE41D87DF5
         foreign key (SECTION_ID)
         references AD_SCTN;
+        
+    alter table AD_ENMT_APLN
+        add constraint uc_AD_ENMT_APLN_1 unique (REFERENCE_NO);   
 
     alter table AD_ETNY_CODE
         add constraint uc_AD_ETNY_CODE_1 unique (CODE);
@@ -2077,6 +2096,7 @@
 
     alter table AD_VENU_CODE
         add constraint uc_AD_VENU_CODE_1 unique (CODE);
+        
 
     create sequence SQ_AD_ACDM_AREA;
 
@@ -2235,3 +2255,5 @@
     create sequence SQ_AD_SPONSORSHIP;
     
     create sequence SQ_AD_SPONSOR;
+    
+    CREATE SEQUENCE SQ_AD_GRDT_CNTR;

@@ -141,7 +141,7 @@ public class IntegrationController {
 		student.setBalance(payload.getBalance());
 		student.setOutstanding(payload.isOutstanding());
 		if (student.getOutstanding() == true) {
-			student.setMemo("There Are Outstanding Payments.Please Refer To Bursary");
+			student.setMemo("Outstanding Payments");
 		}else{
 			student.setMemo("N/A");
 		}
@@ -292,12 +292,6 @@ public class IntegrationController {
 		LOG.info("Finish Admission");
 
 		LOG.info("Finish integration candidate controller");
-
-		// todo: refresh and save address etc
-		// todo: save student sebagai users
-		// todo: set initial password
-		// todo: hantar email notification dan sebagainnya
-		// todo: current, permanent
 
 		logoutAsSystem(ctx);
 		return new ResponseEntity<String>("sucess", HttpStatus.OK);

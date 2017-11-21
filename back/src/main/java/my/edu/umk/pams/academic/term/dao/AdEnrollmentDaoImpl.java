@@ -198,6 +198,23 @@ public class AdEnrollmentDaoImpl extends GenericDaoSupport<Long, AdEnrollment> i
         query.setCacheable(true);
         return (List<AdEnrollment>) query.list();
     }
+    
+    @Override
+    public List<AdEnrollment> find(AdEnrollmentStatus status, AdOffering offering, Integer offset, Integer limit) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select s from AdEnrollment s where " +
+                "s.section.offering = :offering " +
+                "and s.status = :status " +
+                "and s.metadata.state = :state " +
+                "order by s.admission.student.name asc");
+        query.setInteger("state", AdMetaState.ACTIVE.ordinal());
+        query.setEntity("offering", offering);
+        query.setInteger("status", status.ordinal());
+        query.setFirstResult(offset);
+        query.setMaxResults(limit);
+        query.setCacheable(true);
+        return (List<AdEnrollment>) query.list();
+    }
 
     @Override
     public List<AdEnrollment> find(AdAcademicSession academicSession, AdOffering offering, Integer offset, Integer limit) {
@@ -298,6 +315,21 @@ public class AdEnrollmentDaoImpl extends GenericDaoSupport<Long, AdEnrollment> i
                 "and s.metadata.state = :state " +
                 "order by s.section.offering.code asc");
         query.setInteger("state", AdMetaState.ACTIVE.ordinal());
+        query.setEntity("admission", admission);
+        query.setCacheable(true);
+        return (List<AdEnrollment>) query.list();
+    }
+    
+    @Override
+    public List<AdEnrollment> find(AdAdmission admission, AdEnrollmentStatus status) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select s from AdEnrollment s where " +
+                "s.admission = :admission " +
+                "and s.status = :status " +
+                "and s.metadata.state = :state " +
+                "order by s.section.offering.code asc");
+        query.setInteger("state", AdMetaState.ACTIVE.ordinal());
+        query.setInteger("status", status.ordinal());
         query.setEntity("admission", admission);
         query.setCacheable(true);
         return (List<AdEnrollment>) query.list();

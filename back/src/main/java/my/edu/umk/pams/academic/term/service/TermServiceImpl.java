@@ -226,7 +226,27 @@ public class TermServiceImpl implements TermService {
 	}
 
 	public void calculateGradebook(AdOffering offering) {
-		List<AdEnrollment> enrollments = findEnrollments(offering);
+/*		List<AdEnrollment> enrollments = findEnrollments(offering);
+		for (AdEnrollment enrollment : enrollments) {
+			List<AdGradebook> gradebooks = findGradebooks(enrollment);
+			LOG.debug("Found " + gradebooks.size() + " gradebooks");
+			BigDecimal totalScore = BigDecimal.ZERO;
+			for (AdGradebook gradebook : gradebooks) {
+				BigDecimal assessmentScore = gradebook.getScore().multiply(gradebook.getAssessment().getWeight())
+						.divide(BigDecimal.valueOf(100)).setScale(2, RoundingMode.HALF_UP);
+				totalScore = totalScore.add(assessmentScore);
+
+			}
+			enrollment.setTotalScore(totalScore);
+			enrollment.setGradeCode(commonService.findByScore(enrollment.getTotalScore()));
+			updateEnrollment(enrollment);
+			LOG.debug("calculateGradebookTotalScore:{}", enrollment.getTotalScore());
+			LOG.debug("calculateGradebookGradeCode:{}", enrollment.getGradeCode().getCode());
+
+			// calculateGPA(offering);
+		}*/
+
+		List<AdEnrollment> enrollments = findEnrollments(AdEnrollmentStatus.CONFIRMED,offering, 0,Integer.MAX_VALUE);
 		for (AdEnrollment enrollment : enrollments) {
 			List<AdGradebook> gradebooks = findGradebooks(enrollment);
 			LOG.debug("Found " + gradebooks.size() + " gradebooks");
@@ -249,10 +269,10 @@ public class TermServiceImpl implements TermService {
 	}
 
 	public void calculateGPA(AdOffering offering) {
-		List<AdEnrollment> enrollments = findEnrollments(offering);
+		List<AdEnrollment> enrollments = findEnrollments(AdEnrollmentStatus.CONFIRMED,offering, 0,Integer.MAX_VALUE);
 		for (AdEnrollment enrollment : enrollments) {
 
-			plannerService.calculateGpa(enrollment.getAdmission());
+			plannerService.calculateGpa(enrollment.getAdmission(),AdEnrollmentStatus.CONFIRMED);
 
 		}
 
@@ -851,7 +871,8 @@ public class TermServiceImpl implements TermService {
 		
 		ProgramCodePayload programPayload = new ProgramCodePayload();
 		programPayload.setCode(student.getCohort().getProgram().getCode());
-		programPayload.setDescription(student.getCohort().getProgram().getTitleEn());
+		programPayload.setDescriptionEn(student.getCohort().getProgram().getTitleEn());
+		programPayload.setDescriptionMs(student.getCohort().getProgram().getTitleMs());
 		programPayload.setFacultyCode(facultyPayload);
 		programPayload.setProgramLevel(levelPayload);
 		LOG.debug("Broadcast programPayload:{}",programPayload.getCode());
@@ -1104,6 +1125,11 @@ public class TermServiceImpl implements TermService {
 	public List<AdEnrollment> findEnrollments(AdAdmission admission) {
 		return enrollmentDao.find(admission);
 	}
+	
+	@Override
+	public List<AdEnrollment> findEnrollments(AdAdmission admission, AdEnrollmentStatus status) {
+		return enrollmentDao.find(admission,status);
+	}
 
 	@Override
 	public List<AdEnrollment> findEnrollments(Integer offset, Integer limit) {
@@ -1148,6 +1174,11 @@ public class TermServiceImpl implements TermService {
 	@Override
 	public List<AdEnrollment> findEnrollments(String filter, AdOffering offering, Integer offset, Integer limit) {
 		return enrollmentDao.find(filter, offering, offset, limit);
+	}
+	
+	@Override
+	public List<AdEnrollment> findEnrollments(AdEnrollmentStatus status, AdOffering offering, Integer offset, Integer limit) {
+		return enrollmentDao.find(status, offering, offset, limit);
 	}
 
 	@Override
@@ -1303,10 +1334,10 @@ public class TermServiceImpl implements TermService {
 		enrollment.setStatus(AdEnrollmentStatus.WITHDRAWN);
 		updateEnrollment(enrollment);
 
-		AdStudyCenter studyCenter = admission.getStudyCenter();
-		AdCohort cohort = student.getCohort();
-		EnrollmentWithdrawnEvent event = new EnrollmentWithdrawnEvent(enrollment);
-		applicationContext.publishEvent(event);
+//		AdStudyCenter studyCenter = admission.getStudyCenter();
+//		AdCohort cohort = student.getCohort();
+//		EnrollmentWithdrawnEvent event = new EnrollmentWithdrawnEvent(enrollment);
+//		applicationContext.publishEvent(event);
 	}
 
 	@Override

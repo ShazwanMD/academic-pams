@@ -4,6 +4,16 @@ import java.math.BigDecimal;
 import java.util.List;
 
 public class RouterStrategySupport implements RouterStrategy {
+	
+    @Override
+    public List<String> findVerifierCandidates() {
+        return null;
+    }
+	
+    @Override
+    public List<String> findRegistererCandidates() {
+        return null;
+    }
 
 	@Override
 	public String findDrafterCandidate() {

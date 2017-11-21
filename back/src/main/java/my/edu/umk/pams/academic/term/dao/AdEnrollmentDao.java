@@ -43,6 +43,9 @@ public interface AdEnrollmentDao extends GenericDao<Long, AdEnrollment> {
     List<AdEnrollment> find(AdOffering offering, Integer offset, Integer limit);
 
     List<AdEnrollment> find(String filter, AdOffering offering, Integer offset, Integer limit);
+    
+    List<AdEnrollment> find(AdEnrollmentStatus status, AdOffering offering, Integer offset, Integer limit);
+
 
     List<AdEnrollment> find(AdAcademicSession academicSession, AdOffering offering, Integer offset, Integer limit);
 
@@ -55,6 +58,8 @@ public interface AdEnrollmentDao extends GenericDao<Long, AdEnrollment> {
     List<AdEnrollment> find(AdStudent student, Integer offset, Integer limit);
 
     List<AdEnrollment> find(AdAdmission admission);
+    
+    List<AdEnrollment> find(AdAdmission admission, AdEnrollmentStatus status);
 
     List<AdStudent> findStudents(AdProgram program, Integer offset, Integer limit);
 

@@ -446,8 +446,8 @@ public class IdentityServiceImpl implements IdentityService {
     }
 
     @Override
-    public List<AdStaff> findStaffs(String filter, Integer offset, Integer limit) {
-        return staffDao.find(filter, offset, limit);
+    public List<AdStaff> findStaffs(AdStaffType type, Integer offset, Integer limit) {
+        return staffDao.find(type, offset, limit);
     }
 
     @Override

@@ -28,6 +28,7 @@ public class ProfileTransformer {
     private PlannerTransformer plannerTransformer;
 
     public Student toStudentVo(AdStudent e) {
+    	if(null == e)return null;
         Student vo = new Student();
         vo.setId(e.getId());
         vo.setIdentityNo(e.getIdentityNo());
@@ -40,6 +41,9 @@ public class ProfileTransformer {
         vo.setStudyMode(commonTransformer.toStudyModeVo(e.getStudyMode()));
         vo.setCohort(plannerTransformer.toCohortVo(e.getCohort()));
         vo.setMemo(e.getMemo());
+        vo.setBalance(e.getBalance());
+        vo.setMinAmount(e.getMinimalAmount());
+        
         return vo;
     }
 

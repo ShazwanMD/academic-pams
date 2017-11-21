@@ -1,11 +1,13 @@
 package my.edu.umk.pams.academic.profile.service;
 
 import my.edu.umk.pams.academic.AcademicConstants;
+import my.edu.umk.pams.academic.common.model.AdGraduateCenter;
 import my.edu.umk.pams.academic.common.model.AdStudyMode;
 import my.edu.umk.pams.academic.graduation.dao.AdGraduationApplicationDao;
 import my.edu.umk.pams.academic.graduation.model.AdGraduationApplication;
 import my.edu.umk.pams.academic.identity.dao.AdStudentDao;
 import my.edu.umk.pams.academic.identity.event.GuardianAddedEvent;
+import my.edu.umk.pams.academic.identity.event.MinAmountAddedEvent;
 import my.edu.umk.pams.academic.identity.event.StudentActivatedEvent;
 import my.edu.umk.pams.academic.identity.event.StudentBarredEvent;
 import my.edu.umk.pams.academic.identity.model.*;
@@ -20,9 +22,9 @@ import my.edu.umk.pams.academic.security.service.SecurityService;
 import my.edu.umk.pams.academic.system.service.SystemService;
 import my.edu.umk.pams.academic.term.model.AdAdmission;
 import my.edu.umk.pams.academic.term.model.AdAdmissionApplication;
-import my.edu.umk.pams.connector.payload.CandidatePayload;
 import my.edu.umk.pams.connector.payload.GuardianPayload;
 import my.edu.umk.pams.connector.payload.GuardianTypePayload;
+import my.edu.umk.pams.connector.payload.MinAmountPayload;
 import my.edu.umk.pams.connector.payload.StudentPayload;
 
 import org.hibernate.SessionFactory;
@@ -149,6 +151,11 @@ public class ProfileServiceImpl implements ProfileService {
 	public List<AdStudent> findStudentsByFaculty(AdFaculty faculty) {
 		return studentDao.findStudentsByFaculty(faculty);
 	}
+	
+	@Override
+	public List<AdStudent> findStudentsByGraduateCenter(AdGraduateCenter graduateCenter) {
+		return studentDao.findStudentsByGraduateCenter(graduateCenter);
+	}
 
 	@Override
 	public void updateStudent(AdStudent student) {
@@ -160,6 +167,20 @@ public class ProfileServiceImpl implements ProfileService {
 	public void addMinAmount(AdStudent student) {
 		studentDao.update(student, securityService.getCurrentUser());
 		sessionFactory.getCurrentSession().flush();
+
+		LOG.info("Start Broadcast MinAmount Payload");
+		
+		StudentPayload studentPayload = new StudentPayload();
+		studentPayload.setMatricNo(student.getMatricNo());
+		studentPayload.setName(student.getName());
+		
+		MinAmountPayload payload = new MinAmountPayload();
+		payload.setMinimalAmount(student.getMinimalAmount());
+		payload.setStudentPayload(studentPayload);
+		
+		applicationContext.publishEvent(new MinAmountAddedEvent(payload));
+		LOG.debug("Payload:{}",payload.getMinimalAmount());
+		LOG.info("Finish Broadcast MinAmount Payload");
 	}
 
 	/*

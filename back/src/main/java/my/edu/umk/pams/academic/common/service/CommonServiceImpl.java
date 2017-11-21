@@ -3,7 +3,9 @@ package my.edu.umk.pams.academic.common.service;
 import my.edu.umk.pams.academic.common.dao.*;
 
 import my.edu.umk.pams.academic.common.model.*;
+import my.edu.umk.pams.academic.planner.model.AdFaculty;
 import my.edu.umk.pams.academic.security.service.SecurityService;
+
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -114,6 +116,9 @@ public class CommonServiceImpl implements CommonService {
 
 	@Autowired
 	private SecurityService securityService;
+	
+	@Autowired
+	private AdGraduateCenterDao graduateCenterDao;
 
 	// ====================================================================================================
 	// COUNTRY CODE
@@ -1689,6 +1694,51 @@ public class CommonServiceImpl implements CommonService {
 		parliamentCodeDao.remove(ParliamentCode, securityService.getCurrentUser());
 		sessionFactory.getCurrentSession().flush();
 	}
+
+	 @Override
+	    public AdGraduateCenter findGraduateCenterById(Long id) {
+	        return graduateCenterDao.findById(id);
+	    }
+
+	    @Override
+	    public AdGraduateCenter findGraduateCenterByCode(String code) {
+	        return graduateCenterDao.findByCode(code);
+	    }
+	    
+		@Override
+		public AdGraduateCenter findGraduateCenterByFacultyCode(AdFaculty facultyCode) {
+			return graduateCenterDao.findByFacultyCode(facultyCode);
+		}
+
+	    @Override
+	    public List<AdGraduateCenter> findGraduateCenters() {
+	        return graduateCenterDao.find();
+	    }
+
+	    @Override
+	    public List<AdGraduateCenter> findGraduateCenters(String filter, Integer offset, Integer limit) {
+	        return graduateCenterDao.find(filter, offset, limit);
+	    }
+
+	    @Override
+	    public void saveGraduateCenter(AdGraduateCenter graduateCenter) {
+	        graduateCenterDao.save(graduateCenter, securityService.getCurrentUser());
+	        sessionFactory.getCurrentSession().flush();
+	    }
+
+	    @Override
+	    public void updateGraduateCenter(AdGraduateCenter graduateCenter) {
+	        graduateCenterDao.update(graduateCenter, securityService.getCurrentUser());
+	        sessionFactory.getCurrentSession().flush();
+	    }
+
+	    @Override
+	    public void removeGraduateCenter(AdGraduateCenter graduateCenter) {
+	        graduateCenterDao.remove(graduateCenter, securityService.getCurrentUser());
+	        sessionFactory.getCurrentSession().flush();
+	    }
+
+
 
 
 

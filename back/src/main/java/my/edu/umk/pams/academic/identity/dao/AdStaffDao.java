@@ -3,6 +3,7 @@ package my.edu.umk.pams.academic.identity.dao;
 
 import my.edu.umk.pams.academic.core.GenericDao;
 import my.edu.umk.pams.academic.identity.model.AdStaff;
+import my.edu.umk.pams.academic.identity.model.AdStaffType;
 
 import java.util.List;
 
@@ -22,7 +23,7 @@ public interface AdStaffDao extends GenericDao<Long, AdStaff> {
 
     AdStaff findByName(String name);
 
-    List<AdStaff> find(String filter, Integer offset, Integer limit);
+    List<AdStaff> find(AdStaffType type, Integer offset, Integer limit);
 
     Integer count(String filter);
 

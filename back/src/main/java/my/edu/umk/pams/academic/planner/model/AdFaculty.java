@@ -1,6 +1,7 @@
 package my.edu.umk.pams.academic.planner.model;
 
 
+import my.edu.umk.pams.academic.common.model.AdGraduateCenter;
 import my.edu.umk.pams.academic.core.AdMetaObject;
 
 import java.util.List;
@@ -37,4 +38,9 @@ public interface AdFaculty extends AdMetaObject {
     List<AdCourse> getCourses();
 
     void setCourses(List<AdCourse> courses);
+    
+    AdGraduateCenter getCenter();
+    
+    void setCenter(AdGraduateCenter center);
+    
 }

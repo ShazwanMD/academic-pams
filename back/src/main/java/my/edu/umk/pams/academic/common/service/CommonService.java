@@ -1,6 +1,7 @@
 package my.edu.umk.pams.academic.common.service;
 
 import my.edu.umk.pams.academic.common.model.*;
+import my.edu.umk.pams.academic.planner.model.AdFaculty;
 import my.edu.umk.pams.academic.web.module.common.vo.StudyCenter;
 
 import java.math.BigDecimal;
@@ -683,6 +684,27 @@ public  interface CommonService{
     void updateParliamentCode(AdParliamentCode ParliamentCode);
 
     void removeParliamentCode(AdParliamentCode ParliamentCode);
+    
+	// ====================================================================================================
+	// GRADUATE CENTER
+	// ====================================================================================================
+
+	AdGraduateCenter findGraduateCenterById(Long id);
+
+	AdGraduateCenter findGraduateCenterByCode(String code);
+
+	AdGraduateCenter findGraduateCenterByFacultyCode(AdFaculty facultyCode);
+	
+	List<AdGraduateCenter> findGraduateCenters();
+
+	List<AdGraduateCenter> findGraduateCenters(String filter, Integer offset, Integer limit);
+
+	void saveGraduateCenter(AdGraduateCenter graduateCenter);
+
+	void updateGraduateCenter(AdGraduateCenter graduateCenter);
+
+	void removeGraduateCenter(AdGraduateCenter graduateCenter);
+
 
 
 

@@ -47,7 +47,7 @@ public interface PlannerService {
     void removeAcademicSession(AdAcademicSession academicSession);
     
     //CalculateGPA
-    void calculateGpa(AdAdmission admission);
+    void calculateGpa(AdAdmission admission, AdEnrollmentStatus status);
 
     //====================================================================================================
     // ADMISSION aka ADMISSION_SESSION aka SEMESTER

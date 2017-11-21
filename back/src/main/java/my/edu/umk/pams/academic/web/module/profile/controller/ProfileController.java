@@ -1,5 +1,6 @@
 package my.edu.umk.pams.academic.web.module.profile.controller;
 
+import my.edu.umk.pams.academic.common.model.AdGraduateCenter;
 import my.edu.umk.pams.academic.common.model.AdStudyMode;
 import my.edu.umk.pams.academic.common.service.CommonService;
 import my.edu.umk.pams.academic.graduation.model.AdGraduationApplication;
@@ -101,7 +102,7 @@ public class ProfileController {
 	@RequestMapping(value = "/students/{identityNo}/admissionApplications/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<String> updateAdmissionApplication(@PathVariable String identityNo,
 			@RequestBody AdmissionApplication vo) {
-		dummyLogin();
+//		dummyLogin();
 		LOG.debug("updateAdmissionApplication:{}", vo.getAdvisor());
 		AdStudent student = profileService.findStudentByMatricNo(identityNo);
 		AdAdmissionApplication application = termService.findAdmissionApplicationById(vo.getId());
@@ -121,7 +122,7 @@ public class ProfileController {
 	/* EDIT ADMISSION */
 	@RequestMapping(value = "/students/{identityNo}/admissions/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<String> updateAdmission(@PathVariable String identityNo, @RequestBody Admission vo) {
-		dummyLogin();
+//		dummyLogin();
 		LOG.debug("updateAdmission:{}", vo.getAdvisor());
 		AdStudent student = profileService.findStudentByMatricNo(identityNo);
 		AdAdmission admission = termService.findAdmissionById(vo.getId());
@@ -139,7 +140,7 @@ public class ProfileController {
 	/* ADD ADDRESS */
 	@RequestMapping(value = "/students/{identityNo}/addresses", method = RequestMethod.POST)
 	public ResponseEntity<String> addAddress(@PathVariable String identityNo, @RequestBody Address vo) {
-		dummyLogin();
+//		dummyLogin();
 		AdStudent student = profileService.findStudentByMatricNo(identityNo);
 		AdAddress address = new AdAddressImpl();
 		address.setAddress1(vo.getAddress1());
@@ -157,7 +158,7 @@ public class ProfileController {
 	/* EDIT ADDRESS */
 	@RequestMapping(value = "/students/{identityNo}/addresses/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<String> updateAddress(@PathVariable String identityNo, @RequestBody Address vo) {
-		dummyLogin();
+//		dummyLogin();
 		AdStudent student = profileService.findStudentByMatricNo(identityNo);
 		AdAddress address = profileService.findAddressById(vo.getId());
 		address.setType(AdAddressType.get(vo.getAddressType().ordinal()));
@@ -174,7 +175,7 @@ public class ProfileController {
 	/* DELETE ADDRESS */
 	@RequestMapping(value = "/students/{identityNo}/addresses/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<String> deleteAddress(@PathVariable String identityNo, @PathVariable Long id) {
-		dummyLogin();
+//		dummyLogin();
 		LOG.debug("id address masa nak delete:{}", id);
 		AdStudent student = profileService.findStudentByMatricNo(identityNo);
 		AdAddress address = profileService.findAddressById(id);
@@ -189,7 +190,7 @@ public class ProfileController {
 	/* ADD CONTACT */
 	@RequestMapping(value = "/students/{identityNo}/contacts", method = RequestMethod.POST)
 	public ResponseEntity<String> addContact(@PathVariable String identityNo, @RequestBody Contact vo) {
-		dummyLogin();
+//		dummyLogin();
 		AdStudent student = profileService.findStudentByMatricNo(identityNo);
 		AdContact contact = new AdContactImpl();
 		contact.setIdentityNo(vo.getIdentityNo());
@@ -204,7 +205,7 @@ public class ProfileController {
 	/* EDIT CONTACT */
 	@RequestMapping(value = "/students/{identityNo}/contacts/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<String> updateContact(@PathVariable String identityNo, @RequestBody Contact vo) {
-		dummyLogin();
+//		dummyLogin();
 		LOG.debug("id contact:{}", vo.getId());
 		AdStudent student = profileService.findStudentByMatricNo(identityNo);
 		AdContact contact = profileService.findContactById(vo.getId());
@@ -219,7 +220,7 @@ public class ProfileController {
 
 	@RequestMapping(value = "/students/{identityNo}/contacts/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<String> deleteContact(@PathVariable String identityNo, @PathVariable Long id) {
-		dummyLogin();
+//		dummyLogin();
 		AdStudent student = profileService.findStudentByMatricNo(identityNo);
 		AdContact contact = profileService.findContactById(id);
 		profileService.deleteContact(student, contact);
@@ -233,7 +234,7 @@ public class ProfileController {
 	/* ADD GUARANTOR */
 	@RequestMapping(value = "/students/{identityNo}/guarantors", method = RequestMethod.POST)
 	public ResponseEntity<String> addGuarantor(@PathVariable String identityNo, @RequestBody Guarantor vo) {
-		dummyLogin();
+//		dummyLogin();
 
 		AdStudent student = profileService.findStudentByMatricNo(identityNo);
 		AdGuarantor guarantor = new AdGuarantorImpl();
@@ -250,7 +251,7 @@ public class ProfileController {
 	/* EDIT GUARANTOR */
 	@RequestMapping(value = "/students/{identityNo}/guarantors/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<String> updateGuarantor(@PathVariable String identityNo, @RequestBody Guarantor vo) {
-		dummyLogin();
+//		dummyLogin();
 		LOG.debug("id guarantor:{}", vo.getId());
 		AdStudent student = profileService.findStudentByMatricNo(identityNo);
 		AdGuarantor guarantor = profileService.findGuarantorById(vo.getId());
@@ -266,7 +267,7 @@ public class ProfileController {
 	/* DELETE GUARANTOR */
 	@RequestMapping(value = "/students/{identityNo}/guarantors/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<String> deleteGuarantor(@PathVariable String identityNo, @PathVariable Long id) {
-		dummyLogin();
+//		dummyLogin();
 		AdStudent student = profileService.findStudentByMatricNo(identityNo);
 		AdGuarantor guarantor = profileService.findGuarantorById(id);
 		profileService.deleteGuarantor(student, guarantor);
@@ -280,7 +281,7 @@ public class ProfileController {
 	/* ADD GUARDIAN */
 	@RequestMapping(value = "/students/{identityNo}/guardians", method = RequestMethod.POST)
 	public ResponseEntity<String> addGuardian(@PathVariable String identityNo, @RequestBody Guardian vo) {
-		dummyLogin();
+//		dummyLogin();
 		AdStudent student = profileService.findStudentByMatricNo(identityNo);
 		AdGuardian guardian = new AdGuardianImpl();
 		guardian.setIdentityNo(vo.getIdentityNo());
@@ -295,7 +296,7 @@ public class ProfileController {
 	/* EDIT GUARDIAN */
 	@RequestMapping(value = "/students/{identityNo}/guardians/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<String> updateGuardian(@PathVariable String identityNo, @RequestBody Guardian vo) {
-		dummyLogin();
+//		dummyLogin();
 		LOG.debug("id guardian:{}", vo.getId());
 		AdStudent student = profileService.findStudentByMatricNo(identityNo);
 		AdGuardian guardian = profileService.findGuardianById(vo.getId());
@@ -311,7 +312,7 @@ public class ProfileController {
 	/* DELETE GUARDIAN */
 	@RequestMapping(value = "/students/{identityNo}/guardians/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<String> deleteGuardian(@PathVariable String identityNo, @PathVariable Long id) {
-		dummyLogin();
+//		dummyLogin();
 		AdStudent student = profileService.findStudentByMatricNo(identityNo);
 		AdGuardian guardian = profileService.findGuardianById(id);
 		profileService.deleteGuardian(student, guardian);
@@ -847,9 +848,14 @@ public class ProfileController {
 		List<AdStudent> students =  null;
 		if (user.getActor() instanceof AdStaff) {
 			staff = (AdStaff) user.getActor();
+			
 			AdFaculty faculty = plannerService.findFacultyByCode(staff.getFaculty().getCode());
-			LOG.debug("Faculty Code Not MGSEB:{}", faculty.getName());
-			students = profileService.findStudentsByFaculty(faculty);
+			
+			String graduateCenterCode = faculty.getCenter().getCode();
+			
+			AdGraduateCenter center = commonService.findGraduateCenterByCode(graduateCenterCode);
+		
+			students = profileService.findStudentsByGraduateCenter(center);
 
 		}else{
 		 students = profileService.findStudents(0, Integer.MAX_VALUE);
@@ -876,7 +882,7 @@ public class ProfileController {
 
 	@RequestMapping(value = "/students/{matricNo}", method = RequestMethod.PUT)
 	public ResponseEntity<String> updateStudent(@PathVariable String matricNo, @RequestBody Student vo) {
-		dummyLogin();
+//		dummyLogin();
 		AdStudent student = profileService.findStudentById(vo.getId());
 		student.setName(vo.getName());
 		student.setPhone(vo.getPhone());
@@ -901,7 +907,7 @@ public class ProfileController {
 		AdStudent student = profileService.findStudentById(vo.getId());
 		student.setMinimalAmount(vo.getMinAmount());
 		student.setStudentStatus(AdStudentStatus.ACTIVE);	
-		profileService.updateStudent(student);
+		profileService.addMinAmount(student);
 		
 
 		return new ResponseEntity<String>("Success", HttpStatus.OK);
@@ -987,7 +993,7 @@ public class ProfileController {
 
 	@RequestMapping(value = "/students/{identityNo}/activate", method = RequestMethod.POST)
 	public ResponseEntity<AdStudentStatus> activateStudent(@PathVariable String identityNo) {
-		dummyLogin();
+//		dummyLogin();
 		AdStudent student = profileService.findStudentByMatricNo(identityNo);
 		student.setStudentStatus(AdStudentStatus.ACTIVE);
 		profileService.activateStudent(student);
@@ -996,7 +1002,7 @@ public class ProfileController {
 
 	@RequestMapping(value = "/students/{identityNo}/deactivate", method = RequestMethod.POST)
 	public ResponseEntity<AdStudentStatus> deactivateStudent(@PathVariable String identityNo) {
-		dummyLogin();
+//		dummyLogin();
 		AdStudent student = profileService.findStudentByMatricNo(identityNo);
 		student.setStudentStatus(AdStudentStatus.INACTIVE);
 		profileService.deactivateStudent(student);
@@ -1005,7 +1011,7 @@ public class ProfileController {
 
 	@RequestMapping(value = "/students/{identityNo}/barStudent", method = RequestMethod.POST)
 	public ResponseEntity<AdStudentStatus> barStudent(@PathVariable String identityNo) {
-		dummyLogin();
+//		dummyLogin();
 		AdStudent student = profileService.findStudentByMatricNo(identityNo);
 		student.setStudentStatus(AdStudentStatus.BARRED);
 		profileService.barStudent(student);
@@ -1014,7 +1020,7 @@ public class ProfileController {
 
 	@RequestMapping(value = "/students/{identityNo}/switchStudyMode", method = RequestMethod.POST)
 	public ResponseEntity<String> switchStudyMode(@PathVariable String identityNo, @RequestBody SwitchStudyMode vo) {
-		dummyLogin();
+//		dummyLogin();
 		AdStudent student = profileService.findStudentByMatricNo(identityNo);
 		AdAcademicSession academicSession = plannerService.findAcademicSessionById(vo.getAcademicSession().getId());
 		AdStudyMode from = commonService.findStudyModeById(vo.getFrom().getId());
@@ -1026,7 +1032,7 @@ public class ProfileController {
 
 	@RequestMapping(value = "/students/{identityNo}/transferCohort", method = RequestMethod.POST)
 	public ResponseEntity<String> transferCohort(@PathVariable String identityNo, @RequestBody TransferCohort vo) {
-		dummyLogin();
+//		dummyLogin();
 
 		AdStudent student = profileService.findStudentByMatricNo(identityNo);
 		AdAcademicSession academicSession = plannerService.findAcademicSessionById(vo.getAcademicSession().getId());
@@ -1042,11 +1048,11 @@ public class ProfileController {
 	// PRIVATE METHODS
 	// ====================================================================================================
 
-	private void dummyLogin() {
-		UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken("root", "abc123");
-		Authentication authed = authenticationManager.authenticate(token);
-		SecurityContextHolder.getContext().setAuthentication(authed);
-	}
+//	private void dummyLogin() {
+//		UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken("root", "abc123");
+//		Authentication authed = authenticationManager.authenticate(token);
+//		SecurityContextHolder.getContext().setAuthentication(authed);
+//	}
 
 	private List<Admission> decorateAdmission(List<Admission> admissions) {
 		for (Admission admission : admissions) {

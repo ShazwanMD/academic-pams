@@ -1,5 +1,6 @@
 package my.edu.umk.pams.academic.profile.service;
 
+import my.edu.umk.pams.academic.common.model.AdGraduateCenter;
 import my.edu.umk.pams.academic.common.model.AdStudyMode;
 import my.edu.umk.pams.academic.graduation.model.AdGraduationApplication;
 import my.edu.umk.pams.academic.identity.model.*;
@@ -41,6 +42,8 @@ public interface ProfileService {
 	List<AdContact> findContacts(AdStudent student);
 	
 	List<AdStudent> findStudentsByFaculty(AdFaculty faculty);
+	
+	List<AdStudent> findStudentsByGraduateCenter(AdGraduateCenter graduateCenter);
 	
 	//AdmissionByAcademicSession
 	AdAdmission findAdmissionByAcademicSessionAndStudent(AdAcademicSession academicSession, AdStudent student);

@@ -2,6 +2,7 @@ package my.edu.umk.pams.academic.web.module.identity.controller;
 
 import my.edu.umk.pams.academic.common.service.CommonService;
 import my.edu.umk.pams.academic.identity.model.AdStaff;
+import my.edu.umk.pams.academic.identity.model.AdStaffType;
 import my.edu.umk.pams.academic.identity.service.IdentityService;
 import my.edu.umk.pams.academic.planner.model.AdAppointmentStatus;
 import my.edu.umk.pams.academic.security.service.SecurityService;
@@ -86,7 +87,7 @@ public class IdentityController {
     @RequestMapping(value = "/staffs", method = RequestMethod.GET)
     public ResponseEntity<List<Staff>> findStaffs() {
         return new ResponseEntity<List<Staff>>(identityTransformer
-                .toStaffVos(identityService.findStaffs(0, 100)), HttpStatus.OK);
+                .toStaffVos(identityService.findStaffs(AdStaffType.ACADEMIC, 0, Integer.MAX_VALUE)), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/staffs/{identityNo}", method = RequestMethod.GET)

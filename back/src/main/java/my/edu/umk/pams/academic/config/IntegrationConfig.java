@@ -16,6 +16,7 @@ import org.springframework.messaging.MessageChannel;
 import org.springframework.messaging.MessageHandler;
 
 import my.edu.umk.pams.academic.identity.event.GuardianEvent;
+import my.edu.umk.pams.academic.identity.event.MinAmountEvent;
 import my.edu.umk.pams.academic.planner.event.CohortEvent;
 import my.edu.umk.pams.academic.planner.event.FacultyEvent;
 import my.edu.umk.pams.academic.planner.event.ProgramEvent;
@@ -52,7 +53,8 @@ public class IntegrationConfig {
                 ProgramEvent.class,
                 CohortEvent.class,
                 GuardianEvent.class,
-                FacultyEvent.class);
+                FacultyEvent.class,
+                MinAmountEvent.class);
         producer.setPayloadExpressionString("payload");
         return producer;
     }

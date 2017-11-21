@@ -1,6 +1,7 @@
 package my.edu.umk.pams.academic.identity.dao;
 
 
+import my.edu.umk.pams.academic.common.model.AdGraduateCenter;
 import my.edu.umk.pams.academic.core.GenericDao;
 import my.edu.umk.pams.academic.identity.model.*;
 import my.edu.umk.pams.academic.planner.model.AdAcademicSession;
@@ -37,6 +38,7 @@ public interface AdStudentDao extends GenericDao<Long, AdStudent> {
     List<AdContact> findContacts(AdStudent student);
     List<AdAddress> findAddresses(AdStudent student);
     List<AdStudent> findStudentsByFaculty(AdFaculty faculty);
+    List<AdStudent> findStudentsByGraduateCenter(AdGraduateCenter graduateCenter);
 
     /*HELPER*/
     Integer count(String filter);

@@ -4,6 +4,8 @@ import my.edu.umk.pams.academic.core.GenericDaoSupport;
 import my.edu.umk.pams.academic.core.AdMetaState;
 import my.edu.umk.pams.academic.identity.model.AdStaff;
 import my.edu.umk.pams.academic.identity.model.AdStaffImpl;
+import my.edu.umk.pams.academic.identity.model.AdStaffType;
+
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
@@ -67,15 +69,15 @@ public class AdStaffDaoImpl extends GenericDaoSupport<Long, AdStaff> implements 
     }
 
     @Override
-    public List<AdStaff> find(String filter, Integer offset, Integer limit) {
+    public List<AdStaff> find(AdStaffType type, Integer offset, Integer limit) {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery("select s from AdStaff s where " +
-                "(upper(s.identityNo) like upper(:filter) " +
-                "or upper(s.name) like upper(:filter)) " +
-                "and s.metadata.state = :state order by s.name asc ");
-        query.setString("filter", WILDCARD + filter + WILDCARD);
-        query.setInteger("state", AdMetaState.ACTIVE.ordinal());
-        return (List<AdStaff>) query.list();
+                "s.staffType = :staffType " +
+                "order by s.name asc ");
+        query.setInteger("staffType", type.ordinal());
+        query.setFirstResult(offset);
+        query.setMaxResults(limit);
+        return query.list();
     }
 
     @Override

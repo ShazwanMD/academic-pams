@@ -24,6 +24,7 @@ import my.edu.umk.pams.connector.payload.CandidatePayload;
 import my.edu.umk.pams.connector.payload.CohortCodePayload;
 import my.edu.umk.pams.connector.payload.FacultyCodePayload;
 import my.edu.umk.pams.connector.payload.GuardianPayload;
+import my.edu.umk.pams.connector.payload.MinAmountPayload;
 import my.edu.umk.pams.connector.payload.ProgramCodePayload;
 
 @Configuration
@@ -48,11 +49,11 @@ public class JmsConfig {
         // map to queue or topic
         public DestinationExpressionFunction() {
             queueMap = new HashMap<>();
-            queueMap.put(ProgramCodePayload.class.getName(), new ActiveMQQueue("programCodeQueue2"));
-            queueMap.put(CandidatePayload.class.getName(), new ActiveMQQueue("candidateQueue3"));
-            queueMap.put(FacultyCodePayload.class.getName(), new ActiveMQQueue("facultyCodeQueue2"));
-            queueMap.put(AdmissionPayload.class.getName(), new ActiveMQQueue("AdmissionPayloadQueue1"));
-            queueMap.put(GuardianPayload.class.getName(), new ActiveMQQueue("GuardianPayloadQueue"));
+            queueMap.put(ProgramCodePayload.class.getName(), new ActiveMQTopic("programCodeTopic5"));
+            queueMap.put(FacultyCodePayload.class.getName(), new ActiveMQTopic("facultyCodeTopic5"));
+            queueMap.put(AdmissionPayload.class.getName(), new ActiveMQQueue("AdmissionPayloadQueue5"));
+            queueMap.put(GuardianPayload.class.getName(), new ActiveMQQueue("GuardianPayloadQueue5"));
+            queueMap.put(MinAmountPayload.class.getName(), new ActiveMQQueue("MinAmountPayloadQueue5"));
         }
 
         @Override

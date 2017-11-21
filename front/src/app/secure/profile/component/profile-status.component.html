@@ -2,8 +2,9 @@
   <md-card-content class="text-center">
     <div class="md-display-1">{{profile.studentStatus}}</div>
     <div layout="column" layout-padding>
-      <div class="md-subhead tc-grey-100">Student Status Memo</div>
-      <div class="md-caption  tc-grey-100">{{profile.memo | uppercase}}</div>
+       <div class="md-subhead tc-grey-100">Bal.Amount: {{profile.balance | currency:'MYR':true:'1.2-2'}}</div>
+      <div class="md-subhead  tc-grey-100">Memo : {{profile.memo | uppercase}}</div>
+      <div class="md-subhead tc-grey-100">Min.Amount: {{profile.minAmount | currency:'MYR':true:'1.2-2'}}</div>
     </div>
   </md-card-content>
 </md-card>

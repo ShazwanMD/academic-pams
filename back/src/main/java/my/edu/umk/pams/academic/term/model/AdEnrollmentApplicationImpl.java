@@ -26,7 +26,7 @@ public class AdEnrollmentApplicationImpl implements AdEnrollmentApplication {
     private Long id;
 
     @NotNull
-    @Column(name = "REFERENCE_NO", nullable = false)
+    @Column(name = "REFERENCE_NO", nullable = false, unique=true)
     private String referenceNo;
 
     @Column(name = "SOURCE_NO")

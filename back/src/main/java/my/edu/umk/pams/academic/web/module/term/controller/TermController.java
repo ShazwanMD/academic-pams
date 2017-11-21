@@ -2,7 +2,6 @@ package my.edu.umk.pams.academic.web.module.term.controller;
 
 import my.edu.umk.pams.academic.common.model.AdStudyCenter;
 
-
 import my.edu.umk.pams.academic.common.service.CommonService;
 import my.edu.umk.pams.academic.core.AdFlowState;
 import my.edu.umk.pams.academic.identity.model.AdStaff;
@@ -16,6 +15,7 @@ import my.edu.umk.pams.academic.security.service.SecurityService;
 import my.edu.umk.pams.academic.system.model.AdEmailQueue;
 import my.edu.umk.pams.academic.system.model.AdEmailQueueImpl;
 import my.edu.umk.pams.academic.system.model.AdEmailQueueStatus;
+import my.edu.umk.pams.academic.system.service.SystemScheduler;
 import my.edu.umk.pams.academic.system.service.SystemService;
 import my.edu.umk.pams.academic.term.model.*;
 import my.edu.umk.pams.academic.term.service.TermService;
@@ -91,6 +91,9 @@ public class TermController {
 
 	@Autowired
 	private SecurityService securityService;
+
+	@Autowired
+	private SystemScheduler systemScheduler;
 	// ====================================================================================================
 	// ADMISSION
 	// ====================================================================================================
@@ -113,13 +116,17 @@ public class TermController {
 		return new ResponseEntity<Admission>(termTransformer.toAdmissionVo(termService.findAdmissionById(id)),
 				HttpStatus.OK);
 	}
-	
-	/*//findAdmissionByStudentAndSession
-	@RequestMapping(value = "/admissions/{student, academicSession}", method = RequestMethod.GET)
-	public ResponseEntity<Admission> findAdmissionByStudentAndSession(@PathVariable String identityNo, String session ) throws UnsupportedEncodingException {
-		return new ResponseEntity<Admission>(termTransformer.toAdmissionVo(termService.findAdmissionByStudentAndSession(identityNo, session)),
-				HttpStatus.OK);
-	}*/
+
+	/*
+	 * //findAdmissionByStudentAndSession
+	 * 
+	 * @RequestMapping(value = "/admissions/{student, academicSession}", method
+	 * = RequestMethod.GET) public ResponseEntity<Admission>
+	 * findAdmissionByStudentAndSession(@PathVariable String identityNo, String
+	 * session ) throws UnsupportedEncodingException { return new
+	 * ResponseEntity<Admission>(termTransformer.toAdmissionVo(termService.
+	 * findAdmissionByStudentAndSession(identityNo, session)), HttpStatus.OK); }
+	 */
 
 	@RequestMapping(value = "/admissions", method = RequestMethod.POST)
 	public ResponseEntity<String> saveAdmission(@RequestBody Admission vo) {
@@ -146,11 +153,11 @@ public class TermController {
 		admission.setCgpa(vo.getCgpa());
 		admission.setCreditEarned(vo.getCreditEarned());
 		admission.setCreditTaken(vo.getCreditTaken());
-		
-		if (vo.getAdvisor()!=null){
-		admission.setAdvisor(identityService.findStaffByStaffNo(vo.getAdvisor().getIdentityNo()));
+
+		if (vo.getAdvisor() != null) {
+			admission.setAdvisor(identityService.findStaffByStaffNo(vo.getAdvisor().getIdentityNo()));
 		}
-		
+
 		admission.setOrdinal(vo.getOrdinal());
 		admission.setGpa(vo.getGpa());
 		admission.setStatus(AdAdmissionStatus.get(vo.getStatus().ordinal()));
@@ -323,13 +330,11 @@ public class TermController {
 				application.setSourceNo(vo.getSourceNo());
 				String referenceNo = termService.startAdmissionApplicationTask(application);
 
-				System.out.println("Success save data: " + student.getName());
-
 				// send email notification to student after admission process
 				String applicationUrl = systemService.findConfigurationByKey("application.url").getValue();
 				AdEmailQueue emailQueue = new AdEmailQueueImpl();
 				emailQueue.setCode("EQ" + System.currentTimeMillis());
-				emailQueue.setTo("asyikin.mr@umk.edu.my"); // set default email
+				emailQueue.setTo(student.getEmail()); // set default email
 															// to test
 
 				emailQueue.setSubject("Application for semester registration:" + academicSession.getCode());
@@ -338,10 +343,10 @@ public class TermController {
 						"Thank you" + student.getName() + " for the application. This application will be reviewed:"
 								+ referenceNo + " Please click this URL to view details:" + applicationUrl);
 				emailQueue.setRetryCount(1);
-				LOG.debug("test1: {}", emailQueue);
+				LOG.debug("Admission Application Email Queue: {}", emailQueue);
 
 				systemService.saveEmailQueue(emailQueue);
-				LOG.debug("test2: {}", emailQueue);
+				LOG.debug("Admission Application Email Queue: {}", emailQueue);
 
 			}
 
@@ -1038,10 +1043,10 @@ public class TermController {
 		// dummyLogin();
 		AdAcademicSession academicSession = plannerService.findCurrentAcademicSession();
 		AdOffering offering = termService.findOfferingByCanonicalCode(canonicalCode);
-		
+
 		LOG.debug("academicSession:{}", academicSession);
 		LOG.debug("offering:{}", offering);
-		
+
 		termService.calculateGradebook(offering);
 		return new ResponseEntity<String>("Success", HttpStatus.OK);
 	}
@@ -1049,9 +1054,9 @@ public class TermController {
 	@RequestMapping(value = "/offerings/{canonicalCode}/calculateGPA", method = RequestMethod.POST)
 	public ResponseEntity<String> calculateGPA(@PathVariable String canonicalCode) {
 		// dummyLogin();
-		
+
 		LOG.debug("offering:{}", canonicalCode);
-		
+
 		AdAcademicSession academicSession = plannerService.findCurrentAcademicSession();
 		AdOffering offering = termService.findOfferingByCanonicalCode(canonicalCode);
 		LOG.debug("offering:{}", offering.getCanonicalCode());
@@ -1119,7 +1124,7 @@ public class TermController {
 			String applicationUrl = systemService.findConfigurationByKey("application.url").getValue();
 			AdEmailQueue emailQueue = new AdEmailQueueImpl();
 			emailQueue.setCode("EQ" + System.currentTimeMillis());
-			emailQueue.setTo("asyikin.mr@umk.edu.my"); // set default email to
+			emailQueue.setTo("shaz0179@gmail.com"); // set default email to
 														// test
 			emailQueue.setSubject("Appointment class for section:" + section.getCode());
 			emailQueue.setQueueStatus(AdEmailQueueStatus.QUEUED);

@@ -18,10 +18,14 @@ public interface RouterStrategy {
 	public String findRequesterCandidate(BigDecimal amount, Enum type);
 
 	public String findRegistererCandidate();
-
+	
+    public List<String> findRegistererCandidates();
+	
 	public String findRegistererCandidate(BigDecimal amount, Enum Type);
 
 	public String findVerifierCandidate();
+	
+    public List<String> findVerifierCandidates();
 
 	public String findUpperVerifierCandidate();
 

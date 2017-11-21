@@ -1,5 +1,6 @@
 package my.edu.umk.pams.academic.identity.dao;
 
+import my.edu.umk.pams.academic.common.model.AdGraduateCenter;
 import my.edu.umk.pams.academic.core.AdMetaState;
 import my.edu.umk.pams.academic.core.AdMetadata;
 import my.edu.umk.pams.academic.core.GenericDaoSupport;
@@ -170,13 +171,24 @@ public class AdStudentDaoImpl extends GenericDaoSupport<Long, AdStudent> impleme
 		query.setInteger("state", AdMetaState.ACTIVE.ordinal());
 		return query.list();
 	}
-	
 	@Override
 	public List<AdStudent> findStudentsByFaculty(AdFaculty faculty) {
 		Session session = sessionFactory.getCurrentSession();
 		Query query = session.createQuery(
-				"select o from AdStudent o where " + "o.cohort.program.faculty = :faculty " + "and o.metadata.state = :state");
+				"select o from AdStudent o where "
+		+"o.cohort.program.faculty = :faculty " 
+						+ "and o.metadata.state = :state");
 		query.setEntity("faculty", faculty);
+		query.setInteger("state", AdMetaState.ACTIVE.ordinal());
+		return query.list();
+	}
+	
+	@Override
+	public List<AdStudent> findStudentsByGraduateCenter(AdGraduateCenter graduateCenter) {
+		Session session = sessionFactory.getCurrentSession();
+		Query query = session.createQuery(
+				"select o from AdStudent o where " + "o.cohort.program.faculty.center = :center " + "and o.metadata.state = :state");
+		query.setEntity("center", graduateCenter);
 		query.setInteger("state", AdMetaState.ACTIVE.ordinal());
 		return query.list();
 	}
@@ -427,4 +439,6 @@ public class AdStudentDaoImpl extends GenericDaoSupport<Long, AdStudent> impleme
         query.setInteger("state",AdMetaState.ACTIVE.ordinal());
         return ((Long) query.uniqueResult()).intValue() >= 1;
     }
+
+
 }

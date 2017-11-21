@@ -150,7 +150,7 @@ public interface IdentityService {
 
 	List<AdStaff> findStaffs(Integer offset, Integer limit);
 
-	List<AdStaff> findStaffs(String filter, Integer offset, Integer limit);
+	List<AdStaff> findStaffs(AdStaffType type, Integer offset, Integer limit);
 
 	Integer countStaff();
 

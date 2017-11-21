@@ -386,10 +386,14 @@ public interface TermService {
     List<AdEnrollment> findEnrollments(AdStudent student);
 
     List<AdEnrollment> findEnrollments(AdAdmission admission);
+    
+    List<AdEnrollment> findEnrollments(AdAdmission admission, AdEnrollmentStatus status);
 
     List<AdEnrollment> findEnrollments(AdOffering offering, Integer offset, Integer limit);
 
     List<AdEnrollment> findEnrollments(String filter, AdOffering offering, Integer offset, Integer limit);
+    
+    List<AdEnrollment> findEnrollments(AdEnrollmentStatus status, AdOffering offering, Integer offset, Integer limit);
 
     List<AdEnrollment> findEnrollments(String filter, AdAcademicSession academicSession, AdOffering offering, Integer offset, Integer limit);
 
