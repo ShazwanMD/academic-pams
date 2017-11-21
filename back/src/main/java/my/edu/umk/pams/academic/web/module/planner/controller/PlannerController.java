@@ -858,7 +858,19 @@ public class PlannerController {
 			@PathVariable String subjectType) throws UnsupportedEncodingException {
 		AdCurriculum curriculum = plannerService.findCurriculumByCode(code);
 		AdSubjectType subjType = AdSubjectType.valueOf(subjectType);
+		System.out.println("subjType" + subjType);
 		List<AdSubject> subjects = plannerService.findSubjectsByCurriculumAndSubjectTypeCore(curriculum, subjType);
+		return new ResponseEntity<List<Subject>>(plannerTransformer.toSubjectVos(subjects), HttpStatus.OK);
+	}
+	
+	//core elective
+	@RequestMapping(value = "/curriculums/{code}/subjects/subjectTypeCoreElective/{subjectType}", method = RequestMethod.GET)
+	public ResponseEntity<List<Subject>> findSubjectsByCurriculumAndSubjectTypeCoreElective(@PathVariable String code,
+			@PathVariable String subjectType) throws UnsupportedEncodingException {
+		AdCurriculum curriculum = plannerService.findCurriculumByCode(code);
+		AdSubjectType subjType = AdSubjectType.valueOf(subjectType);
+		System.out.println("subjType" + subjType);
+		List<AdSubject> subjects = plannerService.findSubjectsByCurriculumAndSubjectTypeCoreElective(curriculum, subjType);
 		return new ResponseEntity<List<Subject>>(plannerTransformer.toSubjectVos(subjects), HttpStatus.OK);
 	}
 
@@ -867,6 +879,7 @@ public class PlannerController {
 			@PathVariable String subjectType) throws UnsupportedEncodingException {
 		AdCurriculum curriculum = plannerService.findCurriculumByCode(code);
 		AdSubjectType subjType = AdSubjectType.valueOf(subjectType);
+		System.out.println("subjType" + subjType);
 		List<AdSubject> subjects = plannerService.findSubjectsByCurriculumAndSubjectTypeElective(curriculum, subjType);
 		return new ResponseEntity<List<Subject>>(plannerTransformer.toSubjectVos(subjects), HttpStatus.OK);
 	}

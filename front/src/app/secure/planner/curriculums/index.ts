@@ -11,6 +11,7 @@ import {CurriculumSingleSubjectDialog} from './dialog/curriculum-single-subject.
 import {CurriculumActionComponent} from './component/curriculum-action.component';
 import {CurriculumSelectComponent} from './component/curriculum-select.component';
 import {CurriculumSubjectListComponent} from './component/curriculum-subject-list.component';
+import {CurriculumElectiveSubjectListComponent} from './component/curriculum-elective-subject-list.component';
 import {CurriculumBundleSubjectListComponent} from './component/curriculum-bundle-subject-list.component';
 import '@ngrx/core/add/operator/select';
 import {appRoutes, appRoutingProviders} from '../../../app.routes';
@@ -60,6 +61,7 @@ import { ReportModule } from "../../../shared/report/index";
     CurriculumSelectComponent,
     CurriculumActionComponent,
     CurriculumSubjectListComponent,
+    CurriculumElectiveSubjectListComponent,
     SingleSubjectComponent,
     BundleSubjectComponent,
     CurriculumBundleElectiveListComponent,
@@ -83,6 +85,7 @@ import { ReportModule } from "../../../shared/report/index";
     SingleSubjectComponent,
     BundleSubjectComponent,
     CurriculumSubjectListComponent,
+    CurriculumElectiveSubjectListComponent,
     CurriculumBundleElectiveListComponent,
     CurriculumBndleCourseListComponent,
     SubjectElectiveStatusSelectComponent,
@@ -93,6 +96,7 @@ import { ReportModule } from "../../../shared/report/index";
     CurriculumSelectComponent,
     CurriculumActionComponent,
     CurriculumSubjectListComponent,
+    CurriculumElectiveSubjectListComponent,
     CurriculumSingleSubjectDialog,
     CurriculumBundleSubjectDialog,
     CurriculumBundleSubjectPartDialog,

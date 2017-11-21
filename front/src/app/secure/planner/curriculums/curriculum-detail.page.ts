@@ -22,10 +22,12 @@ export class CurriculumDetailPage implements OnInit {
   private CURRICULUM: string[] = 'plannerModuleState.curriculum'.split('.');
   private SUBJECTS: string[] = 'plannerModuleState.subjects'.split('.');
   private SINGLE_SUBJECT: string[] = 'plannerModuleState.singleSubjects'.split('.');
+  private ELECTIVE_SUBJECT: string[] = 'plannerModuleState.electiveSubjects'.split('.');
   private BUNDLE_SUBJECT: string[] = 'plannerModuleState.bundleSubjects'.split('.');
   private curriculum$: Observable<Curriculum>;
   private subjects$: Observable<Subject[]>;
   private singleSubjects$: Observable<Subject[]>;
+  private electiveSubjects$: Observable<Subject[]>;
   private bundleSubjects$: Observable<Subject[]>;
   private editorDialogRef: MdDialogRef<CurriculumEditorDialog>;
   
@@ -40,6 +42,7 @@ export class CurriculumDetailPage implements OnInit {
     this.curriculum$ = this.store.select(...this.CURRICULUM);
     this.subjects$ = this.store.select(...this.SUBJECTS);    
     this.singleSubjects$ = this.store.select(...this.SINGLE_SUBJECT);
+    this.electiveSubjects$ = this.store.select(...this.ELECTIVE_SUBJECT);
     this.bundleSubjects$= this.store.select(...this.BUNDLE_SUBJECT);
   }
 

@@ -32,11 +32,11 @@ import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';
 import {Subject} from '../../../../shared/model/planner/subject.interface';
 
 @Component({
-    selector: 'pams-curriculum-subject-list',
-    templateUrl: './curriculum-subject-list.component.html',
+    selector: 'pams-curriculum-elective-subject-list',
+    templateUrl: './curriculum-elective-subject-list.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CurriculumSubjectListComponent implements AfterViewInit , OnChanges {
+export class CurriculumElectiveSubjectListComponent implements AfterViewInit , OnChanges {
 
     private selectedRows: Subject[];
     private singleSubjectDialogRef: MdDialogRef<CurriculumSingleSubjectDialog>;

@@ -213,11 +213,11 @@ public class PlannerServiceImpl implements PlannerService {
 	}
 
 	private BigDecimal getCreditHour(AdEnrollment enrollment) {
-		if(enrollment.getStatus().equals(AdEnrollmentStatus.CONFIRMED))
-		LOG.debug("Enrollment:{}", enrollment.getGradeCode().getCode());
+		if (enrollment.getStatus().equals(AdEnrollmentStatus.CONFIRMED))
+			LOG.debug("Enrollment:{}", enrollment.getGradeCode().getCode());
 		LOG.debug("Enrollment:{}", enrollment.getSection().getCode());
 		LOG.debug("Enrollment:{}", enrollment.getSection().getOffering().getTitleEn());
-		
+
 		LOG.debug("Enrollment Status:{}", enrollment.getStatus().name());
 		// Offering
 		AdOffering offering = enrollment.getSection().getOffering();
@@ -249,9 +249,9 @@ public class PlannerServiceImpl implements PlannerService {
 
 	private BigDecimal getPointHoursPerSemester(AdAdmission admission) {
 		BigDecimal pointHoursPerSemester = BigDecimal.ZERO;
-		
+
 		for (AdEnrollment enrollment : termService.findEnrollments(admission, AdEnrollmentStatus.CONFIRMED)) {
-			
+
 			BigDecimal creditHour = getCreditHour(enrollment);
 
 			AdGradeCode gradeCode = enrollment.getGradeCode();
@@ -370,6 +370,13 @@ public class PlannerServiceImpl implements PlannerService {
 
 	@Override
 	public List<AdSubject> findSubjectsBySubjectType(AdCurriculum curriculum, AdSubjectType subjectType) {
+		return subjectDao.find(curriculum, subjectType);
+	}
+
+	// core elective
+	@Override
+	public List<AdSubject> findSubjectsByCurriculumAndSubjectTypeCoreElective(AdCurriculum curriculum,
+			AdSubjectType subjectType) {
 		return subjectDao.find(curriculum, subjectType);
 	}
 
@@ -599,7 +606,6 @@ public class PlannerServiceImpl implements PlannerService {
 	public void updateCohort(AdCohort cohort) {
 		cohortDao.update(cohort, securityService.getCurrentUser());
 		sessionFactory.getCurrentSession().flush();
-		
 
 	}
 
@@ -607,8 +613,7 @@ public class PlannerServiceImpl implements PlannerService {
 	public void removeCohort(AdCohort cohort) {
 		cohortDao.remove(cohort, securityService.getCurrentUser());
 		sessionFactory.getCurrentSession().flush();
-		
-		
+
 	}
 
 	// ====================================================================================================
@@ -670,13 +675,13 @@ public class PlannerServiceImpl implements PlannerService {
 		LOG.info("saving faculty");
 		facultyDao.save(faculty, securityService.getCurrentUser());
 		sessionFactory.getCurrentSession().flush();
-		
-		 LOG.info("Start broadcasting faculty payload");
-		 FacultyCodePayload payload = new FacultyCodePayload();
-		 payload.setCode(faculty.getCode());
-		 payload.setDescription(faculty.getDescription());
-		 applicationContext.publishEvent(new FacultyAddedEvent(payload));
-		 LOG.info("Finish broadcasting faculty payload");
+
+		LOG.info("Start broadcasting faculty payload");
+		FacultyCodePayload payload = new FacultyCodePayload();
+		payload.setCode(faculty.getCode());
+		payload.setDescription(faculty.getDescription());
+		applicationContext.publishEvent(new FacultyAddedEvent(payload));
+		LOG.info("Finish broadcasting faculty payload");
 	}
 
 	@Override
@@ -709,7 +714,6 @@ public class PlannerServiceImpl implements PlannerService {
 		facultyDao.removeProgram(faculty, program, securityService.getCurrentUser());
 		sessionFactory.getCurrentSession().flush();
 
-		
 	}
 
 	// ====================================================================================================
@@ -873,7 +877,7 @@ public class PlannerServiceImpl implements PlannerService {
 	public void saveProgram(AdProgram program) {
 		programDao.save(program, securityService.getCurrentUser());
 		sessionFactory.getCurrentSession().flush();
-		
+
 		AdFaculty faculty = facultyDao.findByCode(program.getFaculty().getCode());
 
 		LOG.debug("Start Broadcast Program");

@@ -59,6 +59,7 @@ export class CurriculumActions {
     };
   }
 
+  //subject core
   static FIND_SUBJECTS_BY_CURRICULUM_AND_SUBJECT_TYPE_CORE= '[Curriculum] Find Subject By Curriculum and Subject Core Type';
 
   findSubjectsByCurriculumAndSubjectCoreType(curriculum): Action {
@@ -73,6 +74,25 @@ export class CurriculumActions {
   findSubjectsByCurriculumAndSubjectCoreTypeSuccess(subjects): Action {
     return {
       type: CurriculumActions.FIND_SUBJECTS_BY_CURRICULUM_AND_SUBJECT_TYPE_CORE_SUCCESS,
+      payload: subjects,
+    };
+  }
+  
+  //subject core elective
+  static FIND_SUBJECTS_BY_CURRICULUM_AND_SUBJECT_TYPE_CORE_ELECTIVE= '[Curriculum] Find Subject By Curriculum and Subject Core Elective Type';
+
+  findSubjectsByCurriculumAndSubjectCoreElectiveType(curriculum): Action {
+    return {
+      type: CurriculumActions.FIND_SUBJECTS_BY_CURRICULUM_AND_SUBJECT_TYPE_CORE_ELECTIVE,
+      payload: curriculum,
+    };
+  }
+
+  static FIND_SUBJECTS_BY_CURRICULUM_AND_SUBJECT_TYPE_CORE_ELECTIVE_SUCCESS = '[Curriculum] Find Subject By Curriculum and Subject Core Elective Type Success';
+
+  findSubjectsByCurriculumAndSubjectCoreElectiveTypeSuccess(subjects): Action {
+    return {
+      type: CurriculumActions.FIND_SUBJECTS_BY_CURRICULUM_AND_SUBJECT_TYPE_CORE_ELECTIVE_SUCCESS,
       payload: subjects,
     };
   }

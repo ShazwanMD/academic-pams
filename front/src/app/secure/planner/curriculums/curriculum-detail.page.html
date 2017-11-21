@@ -15,10 +15,13 @@
           <md-tab label="Core ({{(singleSubjects$ | async)?.length}})">
             <pams-curriculum-subject-list [curriculum]="curriculum$ | async" [subjects]="singleSubjects$ | async"></pams-curriculum-subject-list>
           </md-tab>
-          <md-tab label="Elective ({{(bundleSubjects$ | async)?.length}})">
-            <pams-curriculum-bundle-subject-list [curriculum]="curriculum$ | async" [subjects]="bundleSubjects$ | async">
-            </pams-curriculum-bundle-subject-list>
+           <md-tab label="Elective ({{(electiveSubjects$ | async)?.length}})">
+            <pams-curriculum-elective-subject-list [curriculum]="curriculum$ | async" [subjects]="electiveSubjects$ | async"></pams-curriculum-elective-subject-list>
           </md-tab>
+          <!--  <md-tab label="Bundle ({{(bundleSubjects$ | async)?.length}})">
+            <pams-curriculum-subject-list [curriculum]="curriculum$ | async" [subjects]="bundleSubjects$ | async"></pams-curriculum-subject-list>
+          </md-tab> -->
+        
           </md-tab-group>
         </md-card>
 
