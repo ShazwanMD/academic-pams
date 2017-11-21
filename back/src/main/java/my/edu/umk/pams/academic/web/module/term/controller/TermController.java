@@ -158,14 +158,11 @@ public class TermController {
 			admission.setAdvisor(identityService.findStaffByStaffNo(vo.getAdvisor().getIdentityNo()));
 		}
 
-<<<<<<< HEAD
-=======
 		// if studyCenter is null
 		if (vo.getStudyCenter() != null) {
 			admission.setStudyCenter(commonService.findStudyCenterByCode(vo.getStudyCenter().getCode()));
 		}
 
->>>>>>> bec953c960ff92f3b8c66ca1875874ff1e165d71
 		admission.setOrdinal(vo.getOrdinal());
 		admission.setGpa(vo.getGpa());
 		admission.setStatus(AdAdmissionStatus.get(vo.getStatus().ordinal()));
