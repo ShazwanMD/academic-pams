@@ -1,0 +1,691 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="jasper_report_template" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="03800e79-2e08-4188-b0d9-084bf32d8f7c">
+	<property name="ireport.zoom" value="1.3660269107301417"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="172"/>
+	<subDataset name="dataset1" uuid="46f25e4d-6347-4d17-af5c-c1b6d6a0c568">
+		<parameter name="identity_no" class="java.lang.String"/>
+		<queryString>
+			<![CDATA[SELECT
+
+     ad_crse."code" AS ad_crse_code,
+     ad_crse."credit" AS ad_crse_credit,
+     ad_crse."title_en" AS ad_crse_title_en,
+     ad_grde_code."code" AS ad_grde_code_code,
+     ad_acdm_sesn."code" AS ad_acdm_sesn_code,
+     ad_actr."identity_no" AS ad_actr_identity_no
+
+FROM
+     "public"."ad_admn" ad_admn INNER JOIN "public"."ad_enmt" ad_enmt ON ad_admn."id" = ad_enmt."admission_id"
+     INNER JOIN "public"."ad_stdn" ad_stdn ON ad_admn."student_id" = ad_stdn."id"
+     INNER JOIN "public"."ad_acdm_sesn" ad_acdm_sesn ON ad_admn."session_id" = ad_acdm_sesn."id"
+     INNER JOIN "public"."ad_chrt" ad_chrt ON ad_admn."cohort_id" = ad_chrt."id"
+     INNER JOIN "public"."ad_prgm" ad_prgm ON ad_chrt."program_id" = ad_prgm."id"
+     INNER JOIN "public"."ad_acdm_year" ad_acdm_year ON ad_acdm_sesn."year_id" = ad_acdm_year."id"
+     INNER JOIN "public"."ad_actr" ad_actr ON ad_stdn."id" = ad_actr."id"
+     INNER JOIN "public"."ad_sctn" ad_sctn ON ad_enmt."section_id" = ad_sctn."id"
+     INNER JOIN "public"."ad_grde_code" ad_grde_code ON ad_enmt."grade_code_id" = ad_grde_code."id"
+     INNER JOIN "public"."ad_ofrg" ad_ofrg ON ad_sctn."offering_id" = ad_ofrg."id"
+     INNER JOIN "public"."ad_crse" ad_crse ON ad_ofrg."course_id" = ad_crse."id"
+
+GROUP BY ad_acdm_sesn_code,ad_crse_code,ad_crse_credit,ad_crse_title_en,ad_grde_code_code, ad_actr_identity_no
+
+ORDER BY  ad_acdm_sesn_code DESC]]>
+		</queryString>
+		<field name="ad_crse_code" class="java.lang.String"/>
+		<field name="ad_crse_credit" class="java.lang.Integer"/>
+		<field name="ad_crse_title_en" class="java.lang.String"/>
+		<field name="ad_grde_code_code" class="java.lang.String"/>
+		<field name="ad_acdm_sesn_code" class="java.lang.String"/>
+		<field name="ad_actr_identity_no" class="java.lang.String"/>
+		<filterExpression><![CDATA[$F{ad_actr_identity_no}.equals( $P{identity_no})]]></filterExpression>
+	</subDataset>
+	<parameter name="identity_no" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     ad_grde_code."point"*ad_crse."credit" AS TotalGredPoint,
+     ad_enmt."id" AS ad_enmt_id,
+     ad_enmt."standing" AS ad_enmt_standing,
+     ad_enmt."status" AS ad_enmt_status,
+     ad_enmt."total_score" AS ad_enmt_total_score,
+     ad_enmt."admission_id" AS ad_enmt_admission_id,
+     ad_enmt."grade_code_id" AS ad_enmt_grade_code_id,
+     ad_enmt."section_id" AS ad_enmt_section_id,
+     ad_admn."id" AS ad_admn_id,
+     ad_admn."cgpa" AS ad_admn_cgpa,
+     ad_admn."credit_earned" AS ad_admn_credit_earned,
+     ad_admn."credit_taken" AS ad_admn_credit_taken,
+     ad_admn."gpa" AS ad_admn_gpa,
+     ad_admn."ordinal" AS ad_admn_ordinal,
+     ad_admn."standing" AS ad_admn_standing,
+     ad_admn."status" AS ad_admn_status,
+     ad_admn."cohort_id" AS ad_admn_cohort_id,
+     ad_admn."session_id" AS ad_admn_session_id,
+     ad_admn."student_id" AS ad_admn_student_id,
+     ad_admn."advisor_id" AS ad_admn_advisor_id,
+     ad_admn."study_center_id" AS ad_admn_study_center_id,
+     ad_actr."id" AS ad_actr_id,
+     ad_actr."actor_type" AS ad_actr_actor_type,
+     ad_actr."email" AS ad_actr_email,
+     ad_actr."fax" AS ad_actr_fax,
+     ad_actr."identity_no" AS ad_actr_identity_no,
+     ad_actr."mobile" AS ad_actr_mobile,
+     ad_actr."name" AS ad_actr_name,
+     ad_actr."phone" AS ad_actr_phone,
+     ad_stdn."memo" AS ad_stdn_memo,
+     ad_stdn."no_id" AS ad_stdn_no_id,
+     ad_stdn."student_status" AS ad_stdn_student_status,
+     ad_stdn."id" AS ad_stdn_id,
+     ad_stdn."cohort_id" AS ad_stdn_cohort_id,
+     ad_stdn."study_mode_id" AS ad_stdn_study_mode_id,
+     ad_stdn."balance" AS ad_stdn_balance,
+     ad_stdn."outstanding" AS ad_stdn_outstanding,
+     ad_sctn."id" AS ad_sctn_id,
+     ad_sctn."canonical_code" AS ad_sctn_canonical_code,
+     ad_sctn."capacity" AS ad_sctn_capacity,
+     ad_sctn."code" AS ad_sctn_code,
+     ad_sctn."ordinal" AS ad_sctn_ordinal,
+     ad_sctn."offering_id" AS ad_sctn_offering_id,
+     ad_ofrg."id" AS ad_ofrg_id,
+     ad_ofrg."canonical_code" AS ad_ofrg_canonical_code,
+     ad_ofrg."capacity" AS ad_ofrg_capacity,
+     ad_ofrg."code" AS ad_ofrg_code,
+     ad_ofrg."m_id" AS ad_ofrg_m_id,
+     ad_ofrg."m_st" AS ad_ofrg_m_st,
+     ad_ofrg."title_en" AS ad_ofrg_title_en,
+     ad_ofrg."title_ms" AS ad_ofrg_title_ms,
+     ad_ofrg."course_id" AS ad_ofrg_course_id,
+     ad_ofrg."program_id" AS ad_ofrg_program_id,
+     ad_ofrg."session_id" AS ad_ofrg_session_id,
+     ad_crse."id" AS ad_crse_id,
+     ad_crse."classification" AS ad_crse_classification,
+     ad_crse."code" AS ad_crse_code,
+     ad_crse."credit" AS ad_crse_credit,
+     ad_crse."title_en" AS ad_crse_title_en,
+     ad_crse."title_ms" AS ad_crse_title_ms,
+     ad_crse."faculty_id" AS ad_crse_faculty_id,
+     ad_grde_code."id" AS ad_grde_code_id,
+     ad_grde_code."code" AS ad_grde_code_code,
+     ad_grde_code."description" AS ad_grde_code_description,
+     ad_grde_code."max" AS ad_grde_code_max,
+     ad_grde_code."min" AS ad_grde_code_min,
+     ad_grde_code."ordinal" AS ad_grde_code_ordinal,
+     ad_grde_code."point" AS ad_grde_code_point,
+     ad_acdm_sesn."id" AS ad_acdm_sesn_id,
+     ad_acdm_sesn."code" AS ad_acdm_sesn_code,
+     ad_acdm_sesn."current_" AS ad_acdm_sesn_current_,
+     ad_acdm_sesn."description" AS ad_acdm_sesn_description,
+     ad_acdm_sesn."end_date" AS ad_acdm_sesn_end_date,
+     ad_acdm_sesn."semester" AS ad_acdm_sesn_semester,
+     ad_acdm_sesn."start_date" AS ad_acdm_sesn_start_date,
+     ad_acdm_sesn."status" AS ad_acdm_sesn_status,
+     ad_acdm_sesn."previous_id" AS ad_acdm_sesn_previous_id,
+     ad_acdm_sesn."year_id" AS ad_acdm_sesn_year_id,
+     ad_chrt."id" AS ad_chrt_id,
+     ad_chrt."classification" AS ad_chrt_classification,
+     ad_chrt."code" AS ad_chrt_code,
+     ad_chrt."description" AS ad_chrt_description,
+     ad_chrt."c_ts" AS ad_chrt_c_ts,
+     ad_chrt."c_id" AS ad_chrt_c_id,
+     ad_chrt."d_ts" AS ad_chrt_d_ts,
+     ad_chrt."d_id" AS ad_chrt_d_id,
+     ad_chrt."m_ts" AS ad_chrt_m_ts,
+     ad_chrt."m_id" AS ad_chrt_m_id,
+     ad_chrt."m_st" AS ad_chrt_m_st,
+     ad_chrt."curriculum_id" AS ad_chrt_curriculum_id,
+     ad_chrt."program_id" AS ad_chrt_program_id,
+     ad_chrt."session_id" AS ad_chrt_session_id,
+     ad_prgm."id" AS ad_prgm_id,
+     ad_prgm."code" AS ad_prgm_code,
+     ad_prgm."c_ts" AS ad_prgm_c_ts,
+     ad_prgm."c_id" AS ad_prgm_c_id,
+     ad_prgm."d_ts" AS ad_prgm_d_ts,
+     ad_prgm."d_id" AS ad_prgm_d_id,
+     ad_prgm."m_ts" AS ad_prgm_m_ts,
+     ad_prgm."m_id" AS ad_prgm_m_id,
+     ad_prgm."m_st" AS ad_prgm_m_st,
+     ad_prgm."status" AS ad_prgm_status,
+     ad_prgm."title_en" AS ad_prgm_title_en,
+     ad_prgm."title_ms" AS ad_prgm_title_ms,
+     ad_prgm."faculty_id" AS ad_prgm_faculty_id,
+     ad_prgm."level_id" AS ad_prgm_level_id,
+     ad_acdm_year."id" AS ad_acdm_year_id,
+     ad_acdm_year."code" AS ad_acdm_year_code,
+     ad_acdm_year."description" AS ad_acdm_year_description,
+     ad_acdm_year."c_ts" AS ad_acdm_year_c_ts,
+     ad_acdm_year."c_id" AS ad_acdm_year_c_id,
+     ad_acdm_year."d_ts" AS ad_acdm_year_d_ts,
+     ad_acdm_year."d_id" AS ad_acdm_year_d_id,
+     ad_acdm_year."m_ts" AS ad_acdm_year_m_ts,
+     ad_acdm_year."m_id" AS ad_acdm_year_m_id,
+     ad_acdm_year."m_st" AS ad_acdm_year_m_st,
+     ad_acdm_year."year" AS ad_acdm_year_year
+FROM
+     "public"."ad_admn" ad_admn INNER JOIN "public"."ad_enmt" ad_enmt ON ad_admn."id" = ad_enmt."admission_id"
+     INNER JOIN "public"."ad_stdn" ad_stdn ON ad_admn."student_id" = ad_stdn."id"
+     INNER JOIN "public"."ad_acdm_sesn" ad_acdm_sesn ON ad_admn."session_id" = ad_acdm_sesn."id"
+     INNER JOIN "public"."ad_chrt" ad_chrt ON ad_admn."cohort_id" = ad_chrt."id"
+     INNER JOIN "public"."ad_prgm" ad_prgm ON ad_chrt."program_id" = ad_prgm."id"
+     INNER JOIN "public"."ad_acdm_year" ad_acdm_year ON ad_acdm_sesn."year_id" = ad_acdm_year."id"
+     INNER JOIN "public"."ad_actr" ad_actr ON ad_stdn."id" = ad_actr."id"
+     INNER JOIN "public"."ad_sctn" ad_sctn ON ad_enmt."section_id" = ad_sctn."id"
+     INNER JOIN "public"."ad_grde_code" ad_grde_code ON ad_enmt."grade_code_id" = ad_grde_code."id"
+     INNER JOIN "public"."ad_ofrg" ad_ofrg ON ad_sctn."offering_id" = ad_ofrg."id"
+     INNER JOIN "public"."ad_crse" ad_crse ON ad_ofrg."course_id" = ad_crse."id"]]>
+	</queryString>
+	<field name="totalgredpoint" class="java.math.BigDecimal"/>
+	<field name="ad_enmt_id" class="java.lang.Long"/>
+	<field name="ad_enmt_standing" class="java.lang.Integer"/>
+	<field name="ad_enmt_status" class="java.lang.Integer"/>
+	<field name="ad_enmt_total_score" class="java.math.BigDecimal"/>
+	<field name="ad_enmt_admission_id" class="java.lang.Long"/>
+	<field name="ad_enmt_grade_code_id" class="java.lang.Long"/>
+	<field name="ad_enmt_section_id" class="java.lang.Long"/>
+	<field name="ad_admn_id" class="java.lang.Long"/>
+	<field name="ad_admn_cgpa" class="java.math.BigDecimal"/>
+	<field name="ad_admn_credit_earned" class="java.lang.Integer"/>
+	<field name="ad_admn_credit_taken" class="java.lang.Integer"/>
+	<field name="ad_admn_gpa" class="java.math.BigDecimal"/>
+	<field name="ad_admn_ordinal" class="java.lang.Integer"/>
+	<field name="ad_admn_standing" class="java.lang.String"/>
+	<field name="ad_admn_status" class="java.lang.Integer"/>
+	<field name="ad_admn_cohort_id" class="java.lang.Long"/>
+	<field name="ad_admn_session_id" class="java.lang.Long"/>
+	<field name="ad_admn_student_id" class="java.lang.Long"/>
+	<field name="ad_admn_advisor_id" class="java.lang.Long"/>
+	<field name="ad_admn_study_center_id" class="java.lang.Long"/>
+	<field name="ad_actr_id" class="java.lang.Long"/>
+	<field name="ad_actr_actor_type" class="java.lang.Integer"/>
+	<field name="ad_actr_email" class="java.lang.String"/>
+	<field name="ad_actr_fax" class="java.lang.String"/>
+	<field name="ad_actr_identity_no" class="java.lang.String"/>
+	<field name="ad_actr_mobile" class="java.lang.String"/>
+	<field name="ad_actr_name" class="java.lang.String"/>
+	<field name="ad_actr_phone" class="java.lang.String"/>
+	<field name="ad_stdn_memo" class="java.lang.String"/>
+	<field name="ad_stdn_no_id" class="java.lang.String"/>
+	<field name="ad_stdn_student_status" class="java.lang.Integer"/>
+	<field name="ad_stdn_id" class="java.lang.Long"/>
+	<field name="ad_stdn_cohort_id" class="java.lang.Long"/>
+	<field name="ad_stdn_study_mode_id" class="java.lang.Long"/>
+	<field name="ad_stdn_balance" class="java.math.BigDecimal"/>
+	<field name="ad_stdn_outstanding" class="java.lang.Boolean"/>
+	<field name="ad_sctn_id" class="java.lang.Long"/>
+	<field name="ad_sctn_canonical_code" class="java.lang.String"/>
+	<field name="ad_sctn_capacity" class="java.lang.Integer"/>
+	<field name="ad_sctn_code" class="java.lang.String"/>
+	<field name="ad_sctn_ordinal" class="java.lang.Integer"/>
+	<field name="ad_sctn_offering_id" class="java.lang.Long"/>
+	<field name="ad_ofrg_id" class="java.lang.Long"/>
+	<field name="ad_ofrg_canonical_code" class="java.lang.String"/>
+	<field name="ad_ofrg_capacity" class="java.lang.Integer"/>
+	<field name="ad_ofrg_code" class="java.lang.String"/>
+	<field name="ad_ofrg_m_id" class="java.lang.Long"/>
+	<field name="ad_ofrg_m_st" class="java.lang.Integer"/>
+	<field name="ad_ofrg_title_en" class="java.lang.String"/>
+	<field name="ad_ofrg_title_ms" class="java.lang.String"/>
+	<field name="ad_ofrg_course_id" class="java.lang.Long"/>
+	<field name="ad_ofrg_program_id" class="java.lang.Long"/>
+	<field name="ad_ofrg_session_id" class="java.lang.Long"/>
+	<field name="ad_crse_id" class="java.lang.Long"/>
+	<field name="ad_crse_classification" class="java.lang.Integer"/>
+	<field name="ad_crse_code" class="java.lang.String"/>
+	<field name="ad_crse_credit" class="java.lang.Integer"/>
+	<field name="ad_crse_title_en" class="java.lang.String"/>
+	<field name="ad_crse_title_ms" class="java.lang.String"/>
+	<field name="ad_crse_faculty_id" class="java.lang.Long"/>
+	<field name="ad_grde_code_id" class="java.lang.Long"/>
+	<field name="ad_grde_code_code" class="java.lang.String"/>
+	<field name="ad_grde_code_description" class="java.lang.String"/>
+	<field name="ad_grde_code_max" class="java.math.BigDecimal"/>
+	<field name="ad_grde_code_min" class="java.math.BigDecimal"/>
+	<field name="ad_grde_code_ordinal" class="java.lang.Integer"/>
+	<field name="ad_grde_code_point" class="java.math.BigDecimal"/>
+	<field name="ad_acdm_sesn_id" class="java.lang.Long"/>
+	<field name="ad_acdm_sesn_code" class="java.lang.String"/>
+	<field name="ad_acdm_sesn_current_" class="java.lang.Boolean"/>
+	<field name="ad_acdm_sesn_description" class="java.lang.String"/>
+	<field name="ad_acdm_sesn_end_date" class="java.sql.Date"/>
+	<field name="ad_acdm_sesn_semester" class="java.lang.String"/>
+	<field name="ad_acdm_sesn_start_date" class="java.sql.Date"/>
+	<field name="ad_acdm_sesn_status" class="java.lang.Integer"/>
+	<field name="ad_acdm_sesn_previous_id" class="java.lang.Long"/>
+	<field name="ad_acdm_sesn_year_id" class="java.lang.Long"/>
+	<field name="ad_chrt_id" class="java.lang.Long"/>
+	<field name="ad_chrt_classification" class="java.lang.Integer"/>
+	<field name="ad_chrt_code" class="java.lang.String"/>
+	<field name="ad_chrt_description" class="java.lang.String"/>
+	<field name="ad_chrt_c_ts" class="java.sql.Timestamp"/>
+	<field name="ad_chrt_c_id" class="java.lang.Long"/>
+	<field name="ad_chrt_d_ts" class="java.sql.Timestamp"/>
+	<field name="ad_chrt_d_id" class="java.lang.Long"/>
+	<field name="ad_chrt_m_ts" class="java.sql.Timestamp"/>
+	<field name="ad_chrt_m_id" class="java.lang.Long"/>
+	<field name="ad_chrt_m_st" class="java.lang.Integer"/>
+	<field name="ad_chrt_curriculum_id" class="java.lang.Long"/>
+	<field name="ad_chrt_program_id" class="java.lang.Long"/>
+	<field name="ad_chrt_session_id" class="java.lang.Long"/>
+	<field name="ad_prgm_id" class="java.lang.Long"/>
+	<field name="ad_prgm_code" class="java.lang.String"/>
+	<field name="ad_prgm_c_ts" class="java.sql.Timestamp"/>
+	<field name="ad_prgm_c_id" class="java.lang.Long"/>
+	<field name="ad_prgm_d_ts" class="java.sql.Timestamp"/>
+	<field name="ad_prgm_d_id" class="java.lang.Long"/>
+	<field name="ad_prgm_m_ts" class="java.sql.Timestamp"/>
+	<field name="ad_prgm_m_id" class="java.lang.Long"/>
+	<field name="ad_prgm_m_st" class="java.lang.Integer"/>
+	<field name="ad_prgm_status" class="java.lang.Integer"/>
+	<field name="ad_prgm_title_en" class="java.lang.String"/>
+	<field name="ad_prgm_title_ms" class="java.lang.String"/>
+	<field name="ad_prgm_faculty_id" class="java.lang.Long"/>
+	<field name="ad_prgm_level_id" class="java.lang.Long"/>
+	<field name="ad_acdm_year_id" class="java.lang.Long"/>
+	<field name="ad_acdm_year_code" class="java.lang.String"/>
+	<field name="ad_acdm_year_description" class="java.lang.String"/>
+	<field name="ad_acdm_year_c_ts" class="java.sql.Timestamp"/>
+	<field name="ad_acdm_year_c_id" class="java.lang.Long"/>
+	<field name="ad_acdm_year_d_ts" class="java.sql.Timestamp"/>
+	<field name="ad_acdm_year_d_id" class="java.lang.Long"/>
+	<field name="ad_acdm_year_m_ts" class="java.sql.Timestamp"/>
+	<field name="ad_acdm_year_m_id" class="java.lang.Long"/>
+	<field name="ad_acdm_year_m_st" class="java.lang.Integer"/>
+	<field name="ad_acdm_year_year" class="java.lang.String"/>
+	<variable name="ad_crse_credit_2" class="java.lang.Integer" resetType="Page" calculation="Sum">
+		<variableExpression><![CDATA[$F{ad_crse_credit}]]></variableExpression>
+	</variable>
+	<variable name="ad_grde_code_point_1" class="java.math.BigDecimal" resetType="Page" calculation="Sum">
+		<variableExpression><![CDATA[$F{ad_grde_code_point}]]></variableExpression>
+	</variable>
+	<variable name="ad_grde_code_point_2" class="java.math.BigDecimal" resetType="Page" calculation="Average">
+		<variableExpression><![CDATA[$F{ad_grde_code_point}]]></variableExpression>
+	</variable>
+	<variable name="totalgredpoint_1" class="java.math.BigDecimal" resetType="Page" calculation="Sum">
+		<variableExpression><![CDATA[$F{totalgredpoint}]]></variableExpression>
+	</variable>
+	<filterExpression><![CDATA[$F{ad_actr_identity_no}.equals( $P{identity_no} )]]></filterExpression>
+	<group name="academicSession">
+		<groupExpression><![CDATA[$F{ad_acdm_sesn_code}]]></groupExpression>
+		<groupHeader>
+			<band height="63">
+				<textField>
+					<reportElement x="3" y="20" width="70" height="20" uuid="9b6db359-250f-44d2-aa07-395976ce00b7"/>
+					<textElement verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$F{ad_crse_code}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="382" y="20" width="32" height="20" uuid="7d179823-1f98-4293-b530-088bef36761d"/>
+					<textElement verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$F{ad_crse_credit}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="73" y="20" width="217" height="20" uuid="98166aba-86c1-4d6e-8650-40c9ecf11e96"/>
+					<textElement verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$F{ad_crse_title_en}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="502" y="20" width="53" height="20" uuid="22417027-4d5f-4c6e-a17b-880cefe3d948"/>
+					<textElement verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$F{ad_grde_code_code}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="40" y="40" width="74" height="20" uuid="f5d639a4-fd44-4e37-93f8-ed27055a68e8"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{ad_admn_cgpa}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="196" y="40" width="78" height="20" uuid="37ccad39-dae0-45c8-9509-b5a0c2f93159"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{ad_admn_gpa}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="3" y="40" width="37" height="20" uuid="98e1364e-07e6-48a2-9519-22740ae4fe4b"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[CGPA:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="159" y="40" width="37" height="20" uuid="1817a01d-b6d1-4fd0-b90b-d7a375693af1"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[GPA:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="3" y="0" width="238" height="20" uuid="1bcf2d6e-7a92-4503-8ccd-d1affd34a2ff"/>
+					<textElement verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{ad_acdm_sesn_description}]]></textFieldExpression>
+				</textField>
+				<textField isBlankWhenNull="true">
+					<reportElement x="433" y="40" width="60" height="20" uuid="1026fc84-1cde-4147-91e2-31540f245570"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[(
+$F{ad_admn_standing}.equals( "0" )? "PASS":
+$F{ad_admn_standing}.equals( "1" )? "KS":
+$F{ad_admn_standing}.equals( "2" )? "KG":
+$F{ad_admn_standing}.equals( "2" )? "TBD":
+"OTHERS"
+)]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="8"/>
+		</groupFooter>
+	</group>
+	<title>
+		<band height="96">
+			<staticText>
+				<reportElement x="84" y="38" width="227" height="20" uuid="92e13e4d-f733-4d1e-9ecb-9c0f466232f4"/>
+				<textElement>
+					<font fontName="SansSerif" isBold="true"/>
+				</textElement>
+				<text><![CDATA[KARUNG BERKUNCI 36, PENGKALAN CHEPA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="83" y="52" width="259" height="20" uuid="32f09dfb-81ae-4ab7-9463-8e55408e257d"/>
+				<textElement>
+					<font fontName="SansSerif" isBold="true"/>
+				</textElement>
+				<text><![CDATA[16100 KOTA BHARU,KELANTAN,DARULNAIM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="83" y="67" width="258" height="20" uuid="b7f67bc8-8dd5-460f-8c2d-a41946c518f6"/>
+				<textElement>
+					<font fontName="SansSerif" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TEL:09-7717028        FAKS:09-7717162]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="84" y="24" width="238" height="20" uuid="d5d195f9-0512-4626-8da3-8fca43e7daf1"/>
+				<textElement>
+					<font fontName="SansSerif" isBold="true"/>
+				</textElement>
+				<text><![CDATA[UNIVERSITI MALAYSIA KELANTAN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="84" y="10" width="415" height="14" uuid="0d672e53-e634-4323-9b53-a0cc7a45ae31"/>
+				<textElement>
+					<font fontName="SansSerif" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MALAYSIAN GRADUATE SCHOOL OF ENTREPRENEURSHIP & BUSINESS (MGSEB)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="84" y="24" width="238" height="20" uuid="819ceb8a-b95f-4c00-a1da-b641f2ebdefc"/>
+				<textElement>
+					<font fontName="SansSerif" isBold="true"/>
+				</textElement>
+				<text><![CDATA[UNIVERSITI MALAYSIA KELANTAN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="83" y="52" width="259" height="20" uuid="0e4dd626-de2f-4d07-9479-bc28b52f7a7a"/>
+				<textElement>
+					<font fontName="SansSerif" isBold="true"/>
+				</textElement>
+				<text><![CDATA[16100 KOTA BHARU,KELANTAN,DARULNAIM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="83" y="67" width="258" height="20" uuid="4677f856-ba90-4c7b-890e-41a26c36f360"/>
+				<textElement>
+					<font fontName="SansSerif" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TEL:09-7717028        FAKS:09-7717162]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="84" y="38" width="227" height="20" uuid="24a098f8-62fa-4856-811e-06a1b026d348"/>
+				<textElement>
+					<font fontName="SansSerif" isBold="true"/>
+				</textElement>
+				<text><![CDATA[KARUNG BERKUNCI 36, PENGKALAN CHEPA]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="143" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="44" y="126" width="327" height="16" backcolor="#CCCCCC" uuid="a8bd802a-8e0f-459d-8082-7e4a4570ec57"/>
+				<box>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[COURSE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="371" y="126" width="62" height="16" backcolor="#CCCCCC" uuid="6ea963bc-f20a-4e94-bbff-65bd7ec33cd1"/>
+				<box>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CREDIT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="126" width="44" height="16" backcolor="#CCCCCC" uuid="c06c4383-a56b-4c26-9802-4ae4796cd04e"/>
+				<box>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CODE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="495" y="126" width="60" height="16" backcolor="#CCCCCC" uuid="6c356f91-8d9a-45c6-ab72-21e977fddc29"/>
+				<box>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[GRADE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="433" y="126" width="62" height="16" backcolor="#CCCCCC" uuid="d8adaa33-7628-428c-b850-8025be601a82"/>
+				<box>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[STATUS]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="114" y="4" width="191" height="20" uuid="4691313c-0262-4d05-8809-0c7320293272"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ad_actr_name}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="3" y="4" width="111" height="20" uuid="96c18131-715a-459d-901d-7c9f43d29ce7"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NAME  : ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="322" y="4" width="113" height="20" uuid="c82edd13-e10a-4921-bb17-e58a6ee46b59"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MATRIC NO.:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="435" y="4" width="118" height="20" uuid="1751daa2-a4ce-4b11-bddd-d83fed70b4a4"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ad_actr_identity_no}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="3" y="44" width="111" height="20" uuid="6167afe1-dd17-4e6b-bc3f-5cd56e18256a"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PROGRAM :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="24" width="111" height="20" uuid="ee1abf6b-fcbb-4df5-9f5a-dbcc0d716ccb"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[INTAKE  :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="114" y="44" width="191" height="20" uuid="2c2954e4-2bed-4301-94e5-b51088686542"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ad_prgm_title_en}.toUpperCase()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="114" y="24" width="41" height="20" uuid="fa75cea1-f484-42da-b199-f374fd85835e"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="9"/>
+				</textElement>
+				<text><![CDATA[INTAKE]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="155" y="24" width="69" height="20" uuid="bb4e558a-71a5-482a-8790-205c61d7c7da"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[(
+$F{ad_acdm_sesn_semester}.equals( "0" )? "SEPTEMBER":
+$F{ad_acdm_sesn_semester}.equals( "1" )? "DISEMBER":
+$F{ad_acdm_sesn_semester}.equals( "2" )? "FEBRUARI":
+"OTHERS"
+)]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="224" y="24" width="81" height="20" uuid="21618e61-086a-4080-a9e5-0bd416764753"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ad_acdm_year_year}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="322" y="24" width="113" height="20" uuid="313cfca8-778d-46c9-a94d-add5dcca1b1c"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[IC/PASSPORT NO. :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="64" width="111" height="20" uuid="8b744495-63eb-4287-a422-d493162d0c28"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CREDIT TAKEN :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="322" y="64" width="111" height="20" uuid="fb623636-0f48-4015-b8ff-e275f884429b"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CREDIT EARNED :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="84" width="111" height="20" uuid="002c2c85-9a37-438e-9416-b61833f276d5"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CREDIT TRANFERED :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="114" y="64" width="191" height="20" uuid="2b5b0e69-9e8d-4817-82e4-4a3ba138adb7"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{ad_admn_credit_taken}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="433" y="64" width="120" height="20" uuid="9f88ec8d-5d93-44cf-a8ba-1566e9a3e7fa"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{ad_admn_credit_earned}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="9" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="16">
+			<line>
+				<reportElement x="0" y="12" width="550" height="1" uuid="58153570-c2d7-4c64-a583-b5ee4b2b25f1"/>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="64">
+			<staticText>
+				<reportElement x="0" y="8" width="552" height="20" uuid="e84e4d35-fe02-4d48-aafd-d262e877a980"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[LOCKED BAG 36, PENGKALAN CHEPA, 16100 KOTA BHARU, KELANTAN, MALAYSIA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="152" y="28" width="100" height="20" uuid="cb18d97e-edb5-4963-9d9f-b86045712df8"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[TEL: 09 – 771 7000]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="271" y="28" width="100" height="20" uuid="974b63d5-93b8-4d6c-9cfd-338cd0775c85"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[FAX: 09 – 771 702]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="181">
+			<staticText>
+				<reportElement x="4" y="20" width="495" height="142" uuid="bb762450-3c43-4f12-8693-b66a9a9a6a92"/>
+				<text><![CDATA[HAVING FULFILLED ALL CONDITIONS TO BE AWARDED THE
+MASTER OF BUSINESS ADMINISTRATION
+
+
+CONFIRMED BY THE SENATE ON 20 AUGUST 2017
+
+…………………………………………..
+Registrar
+Universiti Malaysia Kelantan
+Date:
+]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>
