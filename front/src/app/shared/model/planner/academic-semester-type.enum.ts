@@ -1,6 +1,6 @@
 export enum AcademicSemester {
-  SEMESTER_1, // 0
-  SEMESTER_2, // 1
-  SEMESTER_3  // 2
+  SEPTEMBER, // 0 SEMESTER_1
+  FEBRUARY, // 1 SEMESTER_2
+  DISEMBER  // 2 SEMESTER_3
 
 }
