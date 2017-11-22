@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report4" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="fe6eae38-dbac-492a-9522-077445b8487d">
 	<property name="ireport.zoom" value="1.5026296018031566"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="160"/>
+	<property name="ireport.y" value="0"/>
 	<parameter name="curriculum_code" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[SELECT
@@ -111,7 +111,7 @@ WHERE  ad_sbjt."subject_type" = '2' ORDER BY ad_sbjt."ordinal"]]>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[MALAYSIAN GRADUATE SCHOOL OF ENTREPRENEURSHIP & BUSINESS (MGSEB)]]></text>
+				<text><![CDATA[CENTER OF POSTGRADUATE STUDIES (CPS)]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="60" y="24" width="238" height="20" uuid="b171603a-725a-4701-a4a3-5aeaf4e4244c"/>
