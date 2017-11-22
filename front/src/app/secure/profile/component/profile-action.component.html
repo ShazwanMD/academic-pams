@@ -27,23 +27,23 @@
     <md-divider></md-divider>
   </md-nav-list>
   
-   <md-nav-list flex dense *ngIf="student.cohort.program.faculty.name != 'MGSEB'">
+   <md-nav-list flex dense *ngIf="student.cohort.program.faculty.name != 'MGSEB'" >
     <md-divider></md-divider>
     <md-list-item (click)="downloadReport('Ad_STD_303.jrxml&report.pdf',student)" >
       <md-icon md-list-avatar>description</md-icon>
       <h4 md-line>Print Student Details Info</h4>
-      <p md-line>Print student detail information ({{student.cohort.program.faculty.name}}) </p>
+      <p md-line>Print student detail information  ({{student?.cohort?.program?.faculty?.name}}) </p>
     </md-list-item>
    
     <md-divider></md-divider>
   </md-nav-list>
   
-   <md-nav-list flex dense *ngIf="student.cohort.program.faculty.name == 'MGSEB'">
+    <md-nav-list flex dense *ngIf="student.cohort.program.faculty.name == 'MGSEB'">
     <md-divider></md-divider>
     <md-list-item (click)="downloadReport('Ad_STD_301.jrxml&report.pdf',student)" >
       <md-icon md-list-avatar>description</md-icon>
       <h4 md-line>Print Student Details Info</h4>
-      <p md-line>Print student detail information ({{student.cohort.program.faculty.name}}) </p>
+      <p md-line>Print student detail information ({{student?.cohort?.program?.faculty?.name}}) </p>
     </md-list-item>
    
     <md-divider></md-divider>
