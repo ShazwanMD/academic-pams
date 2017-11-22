@@ -523,8 +523,8 @@ $F{ad_stdn_student_status}.equals( "4" )? "GRADUATED":
 				<reportElement x="132" y="52" width="136" height="20" uuid="a1a215fd-21e7-4a44-8a42-ae2aec737566"/>
 				<textFieldExpression><![CDATA[(
 $F{ad_acdm_sesn_a_semester}.equals( "0" )? "SEMESTER 1 SEPTEMBER":
-$F{ad_acdm_sesn_a_semester}.equals( "1" )? "SEMESTER 2 FEBRUARI":
-$F{ad_acdm_sesn_a_semester}.equals( "2" )? "SEMESTER 3 DISEMBER":
+$F{ad_acdm_sesn_a_semester}.equals( "1" )? "SEMESTER 2 FEBRUARY":
+$F{ad_acdm_sesn_a_semester}.equals( "2" )? "SEMESTER 3 DECEMBER":
 "OTHERS"
 )]]></textFieldExpression>
 			</textField>
