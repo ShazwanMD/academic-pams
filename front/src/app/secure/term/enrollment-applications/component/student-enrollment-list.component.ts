@@ -85,7 +85,7 @@ export class StudentEnrollmentListComponent implements OnChanges {
 
   viewTask(task: EnrollmentApplicationTask): void {
     console.log('Emitting task');
-    let snackBarRef = this.snackBar.open('Viewing student enrollment application', 'OK');
+    let snackBarRef = this.snackBar.open('Viewing student enrollment application', 'OK' , {duration:2000});
     snackBarRef.afterDismissed().subscribe(() => {
       this.view.emit(task);
     });

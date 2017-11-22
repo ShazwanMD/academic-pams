@@ -98,7 +98,7 @@ export class AdmissionApplicationManualDialog implements OnInit {
         this.admissionApplication$.subscribe( val => {
             if ( val['status'] == 'Duplicate' ) {
 
-                let snackBarRef = this.snackBar.open( 'Duplicate data: ' + admissionApplication.student.identityNo + ' Application has been submitted', '', { duration: 3000 } );
+                let snackBarRef = this.snackBar.open( 'Duplicate data: ' + admissionApplication.student.identityNo + ' Application has been submitted', 'OK', { duration: 2000 } );
                 snackBarRef.afterDismissed().subscribe(() => {
                     console.log( 'The snack-bar was dismissed' );
                     console.log( 'Accumulated object:', val )
@@ -134,7 +134,7 @@ export class AdmissionApplicationManualDialog implements OnInit {
                         
                     });*/
                     
-                    let snackBarRef = this.snackBar.open( 'Reviewing semester registration ' + admissionApplication.student.identityNo , '', { duration: 3000 } );
+                    let snackBarRef = this.snackBar.open( 'Reviewing semester registration ' + admissionApplication.student.identityNo , 'OK', { duration: 2000 } );
                     snackBarRef.afterDismissed().subscribe(() => {
                         console.log( 'The snack-bar was dismissed' );
                         console.log( 'Accumulated object:', val )

@@ -26,7 +26,7 @@ export class PooledEnrollmentApplicationTaskListComponent {
 
   claimTask(task: EnrollmentApplicationTask): void {
     console.log('Emitting task');
-    let snackBarRef = this.snackBar.open('Claiming enrollmentApplication', 'OK');
+    let snackBarRef = this.snackBar.open('Claiming enrollmentApplication', 'OK' , {duration:2000});
     snackBarRef.afterDismissed().subscribe(() => {
       this.claim.emit(task);
     });

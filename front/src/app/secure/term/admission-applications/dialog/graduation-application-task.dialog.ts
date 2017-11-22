@@ -103,7 +103,7 @@ export class GraduationApplicationTaskDialog implements OnInit {
             if ( val['status'] == 'Duplicate' ) {
                 
 
-                let snackBarRef = this.snackBar.open( 'Process failed: ' + graduationApplication.student.identityNo + ' Application cannot be submit', '', { duration: 5000 } );
+                let snackBarRef = this.snackBar.open( 'Process failed: ' + graduationApplication.student.identityNo + ' Application cannot be submit', 'OK', { duration: 2000 } );
                 snackBarRef.afterDismissed().subscribe(() => {
                     console.log( 'The snack-bar was dismissed' );
                     console.log( 'Accumulated object:', val )
@@ -118,7 +118,7 @@ export class GraduationApplicationTaskDialog implements OnInit {
             } else {
                 if ( val['status'] == 'success' ) {
                                                     
-                    let snackBarRef = this.snackBar.open( 'Reviewing semester registration ' + graduationApplication.student.identityNo , 'OK', { duration: 5000 } );
+                    let snackBarRef = this.snackBar.open( 'Reviewing semester registration ' + graduationApplication.student.identityNo , 'OK', { duration: 2000 } );
                     snackBarRef.afterDismissed().subscribe(() => {
                         console.log( 'The snack-bar was dismissed' );
                         console.log( 'Accumulated object:', val )

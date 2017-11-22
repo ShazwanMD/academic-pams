@@ -102,7 +102,7 @@ export class StudentEnrollmentApplicationItemComponent implements AfterViewInit 
 
   viewEnrollmentApplicationItem(enrollmentApplicationItem: EnrollmentApplicationItem): void {
     console.log('Emitting enrollmentApplicationItem');
-    let snackBarRef = this.snackBar.open('Viewing enrollmentApplicationItem info', 'OK');
+    let snackBarRef = this.snackBar.open('Viewing enrollmentApplicationItem info', 'OK' , {duration:2000});
     snackBarRef.afterDismissed().subscribe(() => {
       this.view.emit(enrollmentApplicationItem);
     });

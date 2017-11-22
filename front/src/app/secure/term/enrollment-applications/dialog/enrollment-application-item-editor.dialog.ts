@@ -73,7 +73,7 @@ export class EnrollmentApplicationItemEditorDialog implements OnInit {
     this.enrollmentApplicationItem$.subscribe( val => {
         if ( val['status'] == 'Duplicate' ) {
 
-            let snackBarRef = this.snackBar.open( 'Duplicate data', '', { duration: 5000 } );
+            let snackBarRef = this.snackBar.open( 'Duplicate data', 'OK', { duration: 2000 } );
             snackBarRef.afterDismissed().subscribe(() => {
                 console.log( 'The snack-bar was dismissed' );
                 console.log( 'Accumulated object:', val )
@@ -89,7 +89,7 @@ export class EnrollmentApplicationItemEditorDialog implements OnInit {
             if ( val['status'] == 'success' ) {
                              
                 //open dialog to confirm registration
-                let snackBarRef = this.snackBar.open( 'Success data', '', { duration: 5000 } );
+                let snackBarRef = this.snackBar.open( 'Success data', 'OK', { duration: 2000 } );
                 snackBarRef.afterDismissed().subscribe(() => {
                     console.log( 'The snack-bar was dismissed' );
                     console.log( 'Accumulated object:', val )

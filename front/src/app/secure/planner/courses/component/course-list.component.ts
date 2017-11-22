@@ -94,7 +94,7 @@ export class CourseListComponent implements AfterViewInit, OnChanges {
 
   viewCourse(course: Course): void {
     console.log('Emitting courses');
-    let snackBarRef = this.snackBar.open('Viewing courses info', '' , { duration: 3000 } );
+    let snackBarRef = this.snackBar.open('Viewing courses info', 'OK' , { duration: 2000 } );
     snackBarRef.afterDismissed().subscribe(() => {
       this.view.emit(course);
     });

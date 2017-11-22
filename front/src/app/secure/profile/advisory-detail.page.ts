@@ -75,7 +75,7 @@ export class AdvisoryDetailPage implements OnInit {
   }
 
   deactivate(): void {
-    let snackBarRef = this.snackBar.open('Deactivating Student : ?', 'OK');
+    let snackBarRef = this.snackBar.open('Deactivating Student : ?', 'OK' , { duration: 2000 });
     snackBarRef.afterDismissed().subscribe(() => {
         this.student$.take(1).subscribe((student) =>
           this.store.dispatch(this.actions.deactivateStudent(student)));
@@ -85,7 +85,7 @@ export class AdvisoryDetailPage implements OnInit {
   }
 
   activate(): void {
-    let snackBarRef = this.snackBar.open('Activating Student : ?', 'OK');
+    let snackBarRef = this.snackBar.open('Activating Student : ?', 'OK' , { duration: 2000 });
     snackBarRef.afterDismissed().subscribe(() => {
         this.student$.take(1).subscribe((student) =>
           this.store.dispatch(this.actions.activateStudent(student)));
@@ -95,7 +95,7 @@ export class AdvisoryDetailPage implements OnInit {
   }
 
   bar(): void {
-    let snackBarRef = this.snackBar.open('Barred Student : ?', 'OK');
+    let snackBarRef = this.snackBar.open('Barred Student : ?', 'OK' , { duration: 2000 });
     snackBarRef.afterDismissed().subscribe(() => {
         this.student$.take(1).subscribe((student) =>
           this.store.dispatch(this.actions.barStudent(student)));

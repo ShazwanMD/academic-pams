@@ -47,12 +47,12 @@ export class ProgramActionComponent {
   // }
 
   deactivate(): void {
-    let snackBarRef = this.snackBar.open('Deactivating Program', '' , { duration: 3000 } );
+    let snackBarRef = this.snackBar.open('Deactivating Program', 'OK' , { duration: 2000 } );
     snackBarRef.afterDismissed().subscribe(() => this.store.dispatch(this.actions.deactivateProgram(this.program)));
   }
 
   activate(): void {
-    let snackBarRef = this.snackBar.open('Activating Program', '' , { duration: 3000 } );
+    let snackBarRef = this.snackBar.open('Activating Program', 'OK' , { duration: 2000 } );
     snackBarRef.afterDismissed().subscribe(() => this.store.dispatch(this.actions.activateProgram(this.program)));
   }
 }

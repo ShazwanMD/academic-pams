@@ -28,7 +28,7 @@ export class PooledGraduationApplicationTaskListComponent {
 
     claimTask( task: GraduationApplicationTask ): void {
         console.log( 'Emitting task' );
-        let snackBarRef = this.snackBar.open( 'Claiming Graduate Applicant', '' , { duration: 3000 }  );
+        let snackBarRef = this.snackBar.open( 'Claiming Graduate Applicant', 'OK' , { duration: 2000 }  );
         snackBarRef.afterDismissed().subscribe(() => {
             this.claim.emit( task );
         } );

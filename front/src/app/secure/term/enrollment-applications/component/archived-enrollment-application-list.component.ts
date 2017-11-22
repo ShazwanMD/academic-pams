@@ -79,7 +79,7 @@ export class ArchivedEnrollmentApplicationListComponent implements AfterViewInit
 
   viewEnrollmentApplication(enrollmentApplication: EnrollmentApplication): void {
     console.log('Emitting task');
-    let snackBarRef = this.snackBar.open('Viewing enrollment application', '', {duration:3000});
+    let snackBarRef = this.snackBar.open('Viewing enrollment application', 'OK', {duration:2000});
     snackBarRef.afterDismissed().subscribe(() => {
       this.view.emit(enrollmentApplication);
     });

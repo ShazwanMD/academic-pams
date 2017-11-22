@@ -76,7 +76,7 @@ export class StudentOfferingListComponent implements AfterViewInit {
 
   viewOffering(offering: Offering): void {
     console.log('Emitting offering');
-    let snackBarRef = this.snackBar.open('Viewing offering info', 'OK');
+    let snackBarRef = this.snackBar.open('Viewing offering info', 'OK', {duration:2000});
     snackBarRef.afterDismissed().subscribe(() => {
       this.view.emit(offering);
     });
