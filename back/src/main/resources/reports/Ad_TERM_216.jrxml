@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="jasper_report_template" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="03800e79-2e08-4188-b0d9-084bf32d8f7c">
 	<property name="ireport.zoom" value="1.3660269107301417"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="172"/>
+	<property name="ireport.y" value="0"/>
 	<subDataset name="dataset1" uuid="46f25e4d-6347-4d17-af5c-c1b6d6a0c568">
 		<parameter name="identity_no" class="java.lang.String"/>
 		<queryString>
@@ -306,152 +306,72 @@ FROM
 	<group name="academicSession">
 		<groupExpression><![CDATA[$F{ad_acdm_sesn_code}]]></groupExpression>
 		<groupHeader>
-			<band height="63">
+			<band height="20">
 				<textField>
-					<reportElement x="3" y="20" width="70" height="20" uuid="9b6db359-250f-44d2-aa07-395976ce00b7"/>
-					<textElement verticalAlignment="Middle"/>
-					<textFieldExpression><![CDATA[$F{ad_crse_code}]]></textFieldExpression>
-				</textField>
-				<textField>
-					<reportElement x="382" y="20" width="32" height="20" uuid="7d179823-1f98-4293-b530-088bef36761d"/>
-					<textElement verticalAlignment="Middle"/>
-					<textFieldExpression><![CDATA[$F{ad_crse_credit}]]></textFieldExpression>
-				</textField>
-				<textField>
-					<reportElement x="73" y="20" width="217" height="20" uuid="98166aba-86c1-4d6e-8650-40c9ecf11e96"/>
-					<textElement verticalAlignment="Middle"/>
-					<textFieldExpression><![CDATA[$F{ad_crse_title_en}]]></textFieldExpression>
-				</textField>
-				<textField>
-					<reportElement x="502" y="20" width="53" height="20" uuid="22417027-4d5f-4c6e-a17b-880cefe3d948"/>
-					<textElement verticalAlignment="Middle"/>
-					<textFieldExpression><![CDATA[$F{ad_grde_code_code}]]></textFieldExpression>
-				</textField>
-				<textField>
-					<reportElement x="40" y="40" width="74" height="20" uuid="f5d639a4-fd44-4e37-93f8-ed27055a68e8"/>
-					<textElement>
-						<font isBold="true"/>
+					<reportElement x="3" y="0" width="238" height="20" uuid="1bcf2d6e-7a92-4503-8ccd-d1affd34a2ff"/>
+					<textElement verticalAlignment="Middle">
+						<font size="9" isBold="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{ad_admn_cgpa}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{ad_acdm_sesn_description}]]></textFieldExpression>
 				</textField>
-				<textField>
-					<reportElement x="196" y="40" width="78" height="20" uuid="37ccad39-dae0-45c8-9509-b5a0c2f93159"/>
-					<textElement>
-						<font isBold="true"/>
-					</textElement>
-					<textFieldExpression><![CDATA[$F{ad_admn_gpa}]]></textFieldExpression>
-				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="21">
 				<staticText>
-					<reportElement x="3" y="40" width="37" height="20" uuid="98e1364e-07e6-48a2-9519-22740ae4fe4b"/>
+					<reportElement x="4" y="0" width="37" height="20" uuid="98e1364e-07e6-48a2-9519-22740ae4fe4b"/>
 					<textElement>
-						<font isBold="true"/>
+						<font size="9" isBold="true"/>
 					</textElement>
 					<text><![CDATA[CGPA:]]></text>
 				</staticText>
-				<staticText>
-					<reportElement x="159" y="40" width="37" height="20" uuid="1817a01d-b6d1-4fd0-b90b-d7a375693af1"/>
+				<textField>
+					<reportElement x="40" y="0" width="74" height="20" uuid="f5d639a4-fd44-4e37-93f8-ed27055a68e8"/>
 					<textElement>
-						<font isBold="true"/>
+						<font size="9" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{ad_admn_cgpa}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="136" y="0" width="37" height="20" uuid="1817a01d-b6d1-4fd0-b90b-d7a375693af1"/>
+					<textElement>
+						<font size="9" isBold="true"/>
 					</textElement>
 					<text><![CDATA[GPA:]]></text>
 				</staticText>
 				<textField>
-					<reportElement x="3" y="0" width="238" height="20" uuid="1bcf2d6e-7a92-4503-8ccd-d1affd34a2ff"/>
-					<textElement verticalAlignment="Middle">
-						<font isBold="true"/>
+					<reportElement x="174" y="0" width="78" height="20" uuid="37ccad39-dae0-45c8-9509-b5a0c2f93159"/>
+					<textElement>
+						<font size="9" isBold="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$F{ad_acdm_sesn_description}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{ad_admn_gpa}]]></textFieldExpression>
 				</textField>
 				<textField isBlankWhenNull="true">
-					<reportElement x="433" y="40" width="60" height="20" uuid="1026fc84-1cde-4147-91e2-31540f245570"/>
+					<reportElement x="286" y="1" width="60" height="20" uuid="1026fc84-1cde-4147-91e2-31540f245570"/>
 					<textElement>
-						<font isBold="true"/>
+						<font size="9" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[(
 $F{ad_admn_standing}.equals( "0" )? "PASS":
-$F{ad_admn_standing}.equals( "1" )? "KS":
+$F{ad_admn_standing}.equals( "1" )? "PASS":
 $F{ad_admn_standing}.equals( "2" )? "KG":
 $F{ad_admn_standing}.equals( "2" )? "TBD":
 "OTHERS"
 )]]></textFieldExpression>
 				</textField>
 			</band>
-		</groupHeader>
-		<groupFooter>
-			<band height="8"/>
 		</groupFooter>
 	</group>
 	<title>
-		<band height="96">
-			<staticText>
-				<reportElement x="84" y="38" width="227" height="20" uuid="92e13e4d-f733-4d1e-9ecb-9c0f466232f4"/>
-				<textElement>
-					<font fontName="SansSerif" isBold="true"/>
-				</textElement>
-				<text><![CDATA[KARUNG BERKUNCI 36, PENGKALAN CHEPA]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="83" y="52" width="259" height="20" uuid="32f09dfb-81ae-4ab7-9463-8e55408e257d"/>
-				<textElement>
-					<font fontName="SansSerif" isBold="true"/>
-				</textElement>
-				<text><![CDATA[16100 KOTA BHARU,KELANTAN,DARULNAIM]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="83" y="67" width="258" height="20" uuid="b7f67bc8-8dd5-460f-8c2d-a41946c518f6"/>
-				<textElement>
-					<font fontName="SansSerif" isBold="true"/>
-				</textElement>
-				<text><![CDATA[TEL:09-7717028        FAKS:09-7717162]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="84" y="24" width="238" height="20" uuid="d5d195f9-0512-4626-8da3-8fca43e7daf1"/>
-				<textElement>
-					<font fontName="SansSerif" isBold="true"/>
-				</textElement>
-				<text><![CDATA[UNIVERSITI MALAYSIA KELANTAN]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="84" y="10" width="415" height="14" uuid="0d672e53-e634-4323-9b53-a0cc7a45ae31"/>
-				<textElement>
-					<font fontName="SansSerif" isBold="true"/>
-				</textElement>
-				<text><![CDATA[MALAYSIAN GRADUATE SCHOOL OF ENTREPRENEURSHIP & BUSINESS (MGSEB)]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="84" y="24" width="238" height="20" uuid="819ceb8a-b95f-4c00-a1da-b641f2ebdefc"/>
-				<textElement>
-					<font fontName="SansSerif" isBold="true"/>
-				</textElement>
-				<text><![CDATA[UNIVERSITI MALAYSIA KELANTAN]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="83" y="52" width="259" height="20" uuid="0e4dd626-de2f-4d07-9479-bc28b52f7a7a"/>
-				<textElement>
-					<font fontName="SansSerif" isBold="true"/>
-				</textElement>
-				<text><![CDATA[16100 KOTA BHARU,KELANTAN,DARULNAIM]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="83" y="67" width="258" height="20" uuid="4677f856-ba90-4c7b-890e-41a26c36f360"/>
-				<textElement>
-					<font fontName="SansSerif" isBold="true"/>
-				</textElement>
-				<text><![CDATA[TEL:09-7717028        FAKS:09-7717162]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="84" y="38" width="227" height="20" uuid="24a098f8-62fa-4856-811e-06a1b026d348"/>
-				<textElement>
-					<font fontName="SansSerif" isBold="true"/>
-				</textElement>
-				<text><![CDATA[KARUNG BERKUNCI 36, PENGKALAN CHEPA]]></text>
-			</staticText>
-		</band>
+		<band height="6"/>
 	</title>
+	<pageHeader>
+		<band height="99"/>
+	</pageHeader>
 	<columnHeader>
-		<band height="143" splitType="Stretch">
+		<band height="117" splitType="Stretch">
 			<staticText>
-				<reportElement mode="Opaque" x="44" y="126" width="327" height="16" backcolor="#CCCCCC" uuid="a8bd802a-8e0f-459d-8082-7e4a4570ec57"/>
+				<reportElement mode="Opaque" x="44" y="100" width="327" height="16" backcolor="#CCCCCC" uuid="a8bd802a-8e0f-459d-8082-7e4a4570ec57"/>
 				<box>
 					<pen lineWidth="0.0"/>
 					<topPen lineWidth="1.0"/>
@@ -465,7 +385,7 @@ $F{ad_admn_standing}.equals( "2" )? "TBD":
 				<text><![CDATA[COURSE]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="371" y="126" width="62" height="16" backcolor="#CCCCCC" uuid="6ea963bc-f20a-4e94-bbff-65bd7ec33cd1"/>
+				<reportElement mode="Opaque" x="371" y="100" width="62" height="16" backcolor="#CCCCCC" uuid="6ea963bc-f20a-4e94-bbff-65bd7ec33cd1"/>
 				<box>
 					<pen lineWidth="0.0"/>
 					<topPen lineWidth="1.0"/>
@@ -479,7 +399,7 @@ $F{ad_admn_standing}.equals( "2" )? "TBD":
 				<text><![CDATA[CREDIT]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="0" y="126" width="44" height="16" backcolor="#CCCCCC" uuid="c06c4383-a56b-4c26-9802-4ae4796cd04e"/>
+				<reportElement mode="Opaque" x="0" y="100" width="44" height="16" backcolor="#CCCCCC" uuid="c06c4383-a56b-4c26-9802-4ae4796cd04e"/>
 				<box>
 					<pen lineWidth="0.0"/>
 					<topPen lineWidth="1.0"/>
@@ -493,7 +413,7 @@ $F{ad_admn_standing}.equals( "2" )? "TBD":
 				<text><![CDATA[CODE]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="495" y="126" width="60" height="16" backcolor="#CCCCCC" uuid="6c356f91-8d9a-45c6-ab72-21e977fddc29"/>
+				<reportElement mode="Opaque" x="495" y="100" width="60" height="16" backcolor="#CCCCCC" uuid="6c356f91-8d9a-45c6-ab72-21e977fddc29"/>
 				<box>
 					<pen lineWidth="0.0"/>
 					<topPen lineWidth="1.0"/>
@@ -507,7 +427,7 @@ $F{ad_admn_standing}.equals( "2" )? "TBD":
 				<text><![CDATA[GRADE]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="433" y="126" width="62" height="16" backcolor="#CCCCCC" uuid="d8adaa33-7628-428c-b850-8025be601a82"/>
+				<reportElement mode="Opaque" x="433" y="100" width="62" height="16" backcolor="#CCCCCC" uuid="d8adaa33-7628-428c-b850-8025be601a82"/>
 				<box>
 					<pen lineWidth="0.0"/>
 					<topPen lineWidth="1.0"/>
@@ -610,14 +530,14 @@ $F{ad_acdm_sesn_semester}.equals( "2" )? "FEBRUARI":
 				<text><![CDATA[CREDIT TAKEN :]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="322" y="64" width="111" height="20" uuid="fb623636-0f48-4015-b8ff-e275f884429b"/>
+				<reportElement x="322" y="44" width="113" height="20" uuid="fb623636-0f48-4015-b8ff-e275f884429b"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="SansSerif" size="9" isBold="true"/>
 				</textElement>
 				<text><![CDATA[CREDIT EARNED :]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="3" y="84" width="111" height="20" uuid="002c2c85-9a37-438e-9416-b61833f276d5"/>
+				<reportElement x="322" y="64" width="111" height="20" uuid="002c2c85-9a37-438e-9416-b61833f276d5"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="SansSerif" size="9" isBold="true"/>
 				</textElement>
@@ -625,46 +545,79 @@ $F{ad_acdm_sesn_semester}.equals( "2" )? "FEBRUARI":
 			</staticText>
 			<textField>
 				<reportElement x="114" y="64" width="191" height="20" uuid="2b5b0e69-9e8d-4817-82e4-4a3ba138adb7"/>
-				<textElement verticalAlignment="Middle"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{ad_admn_credit_taken}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="433" y="64" width="120" height="20" uuid="9f88ec8d-5d93-44cf-a8ba-1566e9a3e7fa"/>
-				<textElement verticalAlignment="Middle"/>
+				<reportElement x="433" y="44" width="120" height="20" uuid="9f88ec8d-5d93-44cf-a8ba-1566e9a3e7fa"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{ad_admn_credit_earned}]]></textFieldExpression>
 			</textField>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="9" splitType="Stretch"/>
+		<band height="21" splitType="Stretch">
+			<textField>
+				<reportElement x="3" y="0" width="70" height="20" uuid="9b6db359-250f-44d2-aa07-395976ce00b7"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ad_crse_code}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="73" y="0" width="217" height="20" uuid="98166aba-86c1-4d6e-8650-40c9ecf11e96"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ad_crse_title_en}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="381" y="0" width="32" height="20" uuid="7d179823-1f98-4293-b530-088bef36761d"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ad_crse_credit}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="500" y="0" width="53" height="20" uuid="22417027-4d5f-4c6e-a17b-880cefe3d948"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ad_grde_code_code}]]></textFieldExpression>
+			</textField>
+		</band>
 	</detail>
 	<columnFooter>
-		<band height="16">
+		<band height="7">
 			<line>
-				<reportElement x="0" y="12" width="550" height="1" uuid="58153570-c2d7-4c64-a583-b5ee4b2b25f1"/>
+				<reportElement x="0" y="3" width="550" height="1" uuid="58153570-c2d7-4c64-a583-b5ee4b2b25f1"/>
 			</line>
 		</band>
 	</columnFooter>
 	<pageFooter>
 		<band height="64">
 			<staticText>
-				<reportElement x="0" y="8" width="552" height="20" uuid="e84e4d35-fe02-4d48-aafd-d262e877a980"/>
+				<reportElement x="0" y="0" width="552" height="20" uuid="e84e4d35-fe02-4d48-aafd-d262e877a980"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font isBold="true"/>
+					<font size="9" isBold="true"/>
 				</textElement>
 				<text><![CDATA[LOCKED BAG 36, PENGKALAN CHEPA, 16100 KOTA BHARU, KELANTAN, MALAYSIA]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="152" y="28" width="100" height="20" uuid="cb18d97e-edb5-4963-9d9f-b86045712df8"/>
+				<reportElement x="152" y="20" width="100" height="20" uuid="cb18d97e-edb5-4963-9d9f-b86045712df8"/>
 				<textElement textAlignment="Center">
-					<font isBold="true"/>
+					<font size="9" isBold="true"/>
 				</textElement>
 				<text><![CDATA[TEL: 09 – 771 7000]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="271" y="28" width="100" height="20" uuid="974b63d5-93b8-4d6c-9cfd-338cd0775c85"/>
+				<reportElement x="271" y="20" width="100" height="20" uuid="974b63d5-93b8-4d6c-9cfd-338cd0775c85"/>
 				<textElement textAlignment="Center">
-					<font isBold="true"/>
+					<font size="9" isBold="true"/>
 				</textElement>
 				<text><![CDATA[FAX: 09 – 771 702]]></text>
 			</staticText>
@@ -673,7 +626,10 @@ $F{ad_acdm_sesn_semester}.equals( "2" )? "FEBRUARI":
 	<summary>
 		<band height="181">
 			<staticText>
-				<reportElement x="4" y="20" width="495" height="142" uuid="bb762450-3c43-4f12-8693-b66a9a9a6a92"/>
+				<reportElement x="4" y="20" width="495" height="161" uuid="bb762450-3c43-4f12-8693-b66a9a9a6a92"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
 				<text><![CDATA[HAVING FULFILLED ALL CONDITIONS TO BE AWARDED THE
 MASTER OF BUSINESS ADMINISTRATION
 
@@ -686,6 +642,13 @@ Universiti Malaysia Kelantan
 Date:
 ]]></text>
 			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="30" y="121" width="100" height="20" uuid="6def33ee-518b-480d-a2d3-1761fab30b86"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
 		</band>
 	</summary>
 </jasperReport>
