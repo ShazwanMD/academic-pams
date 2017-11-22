@@ -201,9 +201,9 @@ public class PlannerServiceImpl implements PlannerService {
 		LOG.debug("creditTaken:{}", creditTaken);
 
 		// Condition To Check Standing
-		if (cgpa.doubleValue() >= 0.00 && cgpa.doubleValue() <= 1.99) {
+		if (cgpa.doubleValue() >= 0.00 && cgpa.doubleValue() <= 2.99) {
 			admission.setStanding(AdAcademicStanding.KG);
-		} else if (cgpa.doubleValue() >= 2.00 && cgpa.doubleValue() <= 4.00) {
+		} else if (cgpa.doubleValue() >= 3.00 && cgpa.doubleValue() <= 4.00) {
 			admission.setStanding(AdAcademicStanding.KB);
 		}
 
