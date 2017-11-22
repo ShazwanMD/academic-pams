@@ -1,6 +1,6 @@
 
   <div toolbar-buttons layout="row" layout-align="start center" flex>
-     <md-card-title>Subjects Core</md-card-title>
+     <md-card-title>Subjects Elective</md-card-title>
     <md-chip-list *ngIf="subjects?.length > 0">
       <md-chip color="accent">{{subjects?.length}}</md-chip>
     </md-chip-list>
@@ -14,7 +14,7 @@
     </button>
     
     <md-menu x-position="before" #menu="mdMenu">
-      <button md-menu-item (click)="showSingleSubjectDialog()"> Add Subject Core</button>
+      <button md-menu-item (click)="showElectiveSubjectDialog()"> Add Subject Elective</button>
     </md-menu>
   </div>
   <md-divider></md-divider>

@@ -44,7 +44,8 @@ FROM
      INNER JOIN "public"."ad_sbjt" ad_sbjt ON ad_crlm."id" = ad_sbjt."curriculum_id"
      INNER JOIN "public"."ad_sngl_sbjt" ad_sngl_sbjt ON ad_sbjt."id" = ad_sngl_sbjt."id"
      INNER JOIN "public"."ad_crse" ad_crse ON ad_sngl_sbjt."course_id" = ad_crse."id"
-     INNER JOIN "public"."ad_fcty" ad_fcty ON ad_crse."faculty_id" = ad_fcty."id"]]>
+     INNER JOIN "public"."ad_fcty" ad_fcty ON ad_crse."faculty_id" = ad_fcty."id"
+WHERE  ad_sbjt."subject_type" = '0' ORDER BY ad_sbjt."ordinal"]]>
 	</queryString>
 	<field name="ad_crlm_id" class="java.lang.Long"/>
 	<field name="ad_crlm_code" class="java.lang.String"/>

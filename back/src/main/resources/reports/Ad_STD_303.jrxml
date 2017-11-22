@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="jasper_report_template" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="03800e79-2e08-4188-b0d9-084bf32d8f7c">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="76"/>
 	<subDataset name="sponsorship" uuid="6b82b54c-a5ad-49d3-98c5-d3f208158bf8">
 		<parameter name="student_id" class="java.lang.Long"/>
 		<queryString>
@@ -79,10 +79,9 @@ FROM
 	</subDataset>
 	<subDataset name="dataset1" uuid="89a3e99e-6618-45b2-b1f1-8e3b0ff15d9f"/>
 	<parameter name="identity_no" class="java.lang.String"/>
-	<parameter name="session_code" class="java.lang.String"/>
-	<parameter name="curDate" class="java.util.Date" isForPrompting="false">
+	<parameter name="curDate" class="java.lang.String" isForPrompting="false">
 		<parameterDescription><![CDATA[]]></parameterDescription>
-		<defaultValueExpression><![CDATA[new Date()]]></defaultValueExpression>
+		<defaultValueExpression><![CDATA[new SimpleDateFormat("dd-MM-yyyy").format(new Date().getTime())]]></defaultValueExpression>
 	</parameter>
 	<queryString>
 		<![CDATA[SELECT
@@ -167,25 +166,64 @@ FROM
      ad_prgm."title_en" AS ad_prgm_title_en,
      ad_prgm."title_ms" AS ad_prgm_title_ms,
      ad_prgm."faculty_id" AS ad_prgm_faculty_id,
-     ad_prgm."level_id" AS ad_prgm_level_id
+     ad_prgm."level_id" AS ad_prgm_level_id,
+     ad_stdy_mode."id" AS ad_stdy_mode_id,
+     ad_stdy_mode."code" AS ad_stdy_mode_code,
+     ad_stdy_mode."description" AS ad_stdy_mode_description,
+     ad_stdy_mode."prefix" AS ad_stdy_mode_prefix,
+     ad_chrt."id" AS ad_chrt_id,
+     ad_chrt."classification" AS ad_chrt_classification,
+     ad_chrt."code" AS ad_chrt_code,
+     ad_chrt."description" AS ad_chrt_description,
+     ad_chrt."curriculum_id" AS ad_chrt_curriculum_id,
+     ad_chrt."program_id" AS ad_chrt_program_id,
+     ad_chrt."session_id" AS ad_chrt_session_id,
+     ad_admn."credit_earned" AS ad_admn_credit_earned,
+     ad_admn."credit_taken" AS ad_admn_credit_taken,
+     ad_admn."standing" AS ad_admn_standing,
+     ad_admn."status" AS ad_admn_status,
+     ad_addr."id" AS ad_addr_id,
+     ad_addr."address1" AS ad_addr_address1,
+     ad_addr."address2" AS ad_addr_address2,
+     ad_addr."address3" AS ad_addr_address3,
+     ad_addr."postcode" AS ad_addr_postcode,
+     ad_addr."address_type" AS ad_addr_address_type,
+     ad_addr."country_code_id" AS ad_addr_country_code_id,
+     ad_addr."dun_code_id" AS ad_addr_dun_code_id,
+     ad_addr."parliament_code_id" AS ad_addr_parliament_code_id,
+     ad_addr."state_code_id" AS ad_addr_state_code_id,
+     ad_addr."student_id" AS ad_addr_student_id,
+     ad_grtr."name" AS ad_grtr_name,
+     ad_grtr."phone" AS ad_grtr_phone,
+     ad_grtr."identity_no" AS ad_grtr_identityNO,
+     ad_prgm_levl."id" AS ad_prgm_levl_id,
+     ad_prgm_levl."code" AS ad_prgm_levl_code,
+     ad_prgm_levl."description" AS ad_prgm_levl_description,
+     ad_prgm_levl."prefix" AS ad_prgm_levl_prefix,
+     ad_prgm_levl."adprogram_type" AS ad_prgm_levl_adprogram_type
 FROM
      "public"."ad_admn" ad_admn INNER JOIN "public"."ad_enmt" ad_enmt ON ad_admn."id" = ad_enmt."admission_id"
-     INNER JOIN "public"."ad_stdy_cntr" ad_stdy_cntr ON ad_admn."study_center_id" = ad_stdy_cntr."id"
+    -- INNER JOIN "public"."ad_stdy_cntr" ad_stdy_cntr ON ad_admn."study_center_id" = ad_stdy_cntr."id"
+     LEFT OUTER JOIN "ad_stdy_cntr" ad_stdy_cntr ON ad_admn."study_center_id" = ad_stdy_cntr."id"
      INNER JOIN "public"."ad_stdn" ad_stdn ON ad_admn."student_id" = ad_stdn."id"
      INNER JOIN "public"."ad_acdm_sesn" ad_acdm_sesn ON ad_admn."session_id" = ad_acdm_sesn."id"
     -- INNER JOIN "public"."ad_sponsorship" ad_sponsorship ON ad_stdn."id" = ad_sponsorship."student_id"
-
-    LEFT OUTER JOIN "ad_sponsorship" ad_sponsorship ON ad_stdn."id" = ad_sponsorship."id"
-
+     LEFT OUTER JOIN "ad_sponsorship" ad_sponsorship ON ad_stdn."id" = ad_sponsorship."id"
      INNER JOIN "public"."ad_actr" ad_actr ON ad_stdn."id" = ad_actr."id"
+     INNER JOIN "public"."ad_stdy_mode" ad_stdy_mode ON ad_stdn."study_mode_id" = ad_stdy_mode."id"
+     INNER JOIN "public"."ad_chrt" ad_chrt ON ad_stdn."cohort_id" = ad_chrt."id"
+     INNER JOIN "public"."ad_addr" ad_addr ON ad_stdn."id" = ad_addr."student_id"
+     INNER JOIN "public"."ad_grtr" ad_grtr ON ad_stdn."id" = ad_grtr."student_id"
     -- INNER JOIN "public"."ad_sponsor" ad_sponsor ON ad_sponsorship."sponsor_id" = ad_sponsor."id"
      LEFT OUTER JOIN "ad_sponsor" ad_sponsor ON ad_sponsorship."sponsor_id" = ad_sponsor."id"
-
      INNER JOIN "public"."ad_sctn" ad_sctn ON ad_enmt."section_id" = ad_sctn."id"
      INNER JOIN "public"."ad_ofrg" ad_ofrg ON ad_sctn."offering_id" = ad_ofrg."id"
      INNER JOIN "public"."ad_crse" ad_crse ON ad_ofrg."course_id" = ad_crse."id"
      INNER JOIN "public"."ad_prgm" ad_prgm ON ad_ofrg."program_id" = ad_prgm."id"
-     INNER JOIN "ad_fcty" ad_fcty ON ad_crse."faculty_id" = ad_fcty."id"]]>
+     INNER JOIN "public"."ad_prgm_levl" ad_prgm_levl ON ad_prgm."level_id" = ad_prgm_levl."id"
+     INNER JOIN "ad_fcty" ad_fcty ON ad_crse."faculty_id" = ad_fcty."id"
+ORDER BY
+     ad_admn."id" DESC]]>
 	</queryString>
 	<field name="ad_fcty_name" class="java.lang.String"/>
 	<field name="ad_enmt_id" class="java.lang.Long"/>
@@ -237,7 +275,7 @@ FROM
 	<field name="ad_acdm_sesn_id" class="java.lang.Long"/>
 	<field name="ad_stdn_memo" class="java.lang.String"/>
 	<field name="ad_stdn_no_id" class="java.lang.String"/>
-	<field name="ad_stdn_student_status" class="java.lang.String"/>
+	<field name="ad_stdn_student_status" class="java.lang.Integer"/>
 	<field name="ad_stdn_id" class="java.lang.Long"/>
 	<field name="ad_stdn_cohort_id" class="java.lang.Long"/>
 	<field name="ad_stdn_study_mode_id" class="java.lang.Long"/>
@@ -269,295 +307,143 @@ FROM
 	<field name="ad_prgm_title_ms" class="java.lang.String"/>
 	<field name="ad_prgm_faculty_id" class="java.lang.Long"/>
 	<field name="ad_prgm_level_id" class="java.lang.Long"/>
-	<variable name="curDate" class="java.lang.String">
-		<variableExpression><![CDATA[(new SimpleDateFormat("yyyy/MM/dd")).format(new Date())]]></variableExpression>
-	</variable>
+	<field name="ad_stdy_mode_id" class="java.lang.Long"/>
+	<field name="ad_stdy_mode_code" class="java.lang.String"/>
+	<field name="ad_stdy_mode_description" class="java.lang.String"/>
+	<field name="ad_stdy_mode_prefix" class="java.lang.String"/>
+	<field name="ad_chrt_id" class="java.lang.Long"/>
+	<field name="ad_chrt_classification" class="java.lang.Integer"/>
+	<field name="ad_chrt_code" class="java.lang.String"/>
+	<field name="ad_chrt_description" class="java.lang.String"/>
+	<field name="ad_chrt_curriculum_id" class="java.lang.Long"/>
+	<field name="ad_chrt_program_id" class="java.lang.Long"/>
+	<field name="ad_chrt_session_id" class="java.lang.Long"/>
+	<field name="ad_admn_credit_earned" class="java.lang.Integer"/>
+	<field name="ad_admn_credit_taken" class="java.lang.Integer"/>
+	<field name="ad_admn_standing" class="java.lang.Integer"/>
+	<field name="ad_admn_status" class="java.lang.Integer"/>
+	<field name="ad_addr_id" class="java.lang.Long"/>
+	<field name="ad_addr_address1" class="java.lang.String"/>
+	<field name="ad_addr_address2" class="java.lang.String"/>
+	<field name="ad_addr_address3" class="java.lang.String"/>
+	<field name="ad_addr_postcode" class="java.lang.String"/>
+	<field name="ad_addr_address_type" class="java.lang.Integer"/>
+	<field name="ad_addr_country_code_id" class="java.lang.Long"/>
+	<field name="ad_addr_dun_code_id" class="java.lang.Long"/>
+	<field name="ad_addr_parliament_code_id" class="java.lang.Long"/>
+	<field name="ad_addr_state_code_id" class="java.lang.Long"/>
+	<field name="ad_addr_student_id" class="java.lang.Long"/>
+	<field name="ad_grtr_name" class="java.lang.String"/>
+	<field name="ad_grtr_phone" class="java.lang.String"/>
+	<field name="ad_grtr_identityno" class="java.lang.String"/>
+	<field name="ad_prgm_levl_id" class="java.lang.Long"/>
+	<field name="ad_prgm_levl_code" class="java.lang.String"/>
+	<field name="ad_prgm_levl_description" class="java.lang.String"/>
+	<field name="ad_prgm_levl_prefix" class="java.lang.String"/>
+	<field name="ad_prgm_levl_adprogram_type" class="java.lang.Integer"/>
 	<variable name="ad_crse_credit_1" class="java.lang.Integer" resetType="Page" calculation="Sum">
 		<variableExpression><![CDATA[$F{ad_crse_credit}]]></variableExpression>
 	</variable>
-	<filterExpression><![CDATA[$F{ad_actr_identity_no}.equals( $P{identity_no} )&&
-$F{ad_acdm_sesn_code}.equals( $P{session_code} )]]></filterExpression>
+	<filterExpression><![CDATA[$F{ad_actr_identity_no}.equals( $P{identity_no} )]]></filterExpression>
 	<title>
-		<band height="93">
-			<staticText>
-				<reportElement x="105" y="38" width="227" height="20" uuid="92e13e4d-f733-4d1e-9ecb-9c0f466232f4"/>
-				<textElement>
-					<font fontName="SansSerif" isBold="true"/>
-				</textElement>
-				<text><![CDATA[KARUNG BERKUNCI 36, PENGKALAN CHEPA]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="104" y="52" width="259" height="20" uuid="32f09dfb-81ae-4ab7-9463-8e55408e257d"/>
-				<textElement>
-					<font fontName="SansSerif" isBold="true"/>
-				</textElement>
-				<text><![CDATA[16100 KOTA BHARU,KELANTAN,DARULNAIM]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="104" y="67" width="258" height="20" uuid="b7f67bc8-8dd5-460f-8c2d-a41946c518f6"/>
-				<textElement>
-					<font fontName="SansSerif" isBold="true"/>
-				</textElement>
-				<text><![CDATA[TEL:09-7717028        FAKS:09-7717162]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="105" y="24" width="238" height="20" uuid="d5d195f9-0512-4626-8da3-8fca43e7daf1"/>
-				<textElement>
-					<font fontName="SansSerif" isBold="true"/>
-				</textElement>
-				<text><![CDATA[UNIVERSITI MALAYSIA KELANTAN]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="105" y="10" width="464" height="20" uuid="0d672e53-e634-4323-9b53-a0cc7a45ae31"/>
-				<textElement>
-					<font fontName="SansSerif" isBold="true"/>
-				</textElement>
-				<text><![CDATA[]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="105" y="24" width="238" height="20" uuid="819ceb8a-b95f-4c00-a1da-b641f2ebdefc"/>
-				<textElement>
-					<font fontName="SansSerif" isBold="true"/>
-				</textElement>
-				<text><![CDATA[UNIVERSITI MALAYSIA KELANTAN]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="104" y="52" width="259" height="20" uuid="0e4dd626-de2f-4d07-9479-bc28b52f7a7a"/>
-				<textElement>
-					<font fontName="SansSerif" isBold="true"/>
-				</textElement>
-				<text><![CDATA[16100 KOTA BHARU,KELANTAN,DARULNAIM]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="104" y="67" width="258" height="20" uuid="4677f856-ba90-4c7b-890e-41a26c36f360"/>
-				<textElement>
-					<font fontName="SansSerif" isBold="true"/>
-				</textElement>
-				<text><![CDATA[TEL:09-7717028        FAKS:09-7717162]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="105" y="38" width="227" height="20" uuid="24a098f8-62fa-4856-811e-06a1b026d348"/>
-				<textElement>
-					<font fontName="SansSerif" isBold="true"/>
-				</textElement>
-				<text><![CDATA[KARUNG BERKUNCI 36, PENGKALAN CHEPA]]></text>
-			</staticText>
-		</band>
-	</title>
-	<columnHeader>
-		<band height="268" splitType="Stretch">
+		<band height="107">
+			<image>
+				<reportElement x="63" y="27" width="65" height="80" uuid="07614383-24cb-4143-891b-e52af50cbbc2"/>
+				<imageExpression><![CDATA["C:\\Users\\PAMS05\\git\\academic\\back\\src\\main\\resources\\reports\\img\\A17P001.jpg"]]></imageExpression>
+			</image>
 			<rectangle>
-				<reportElement x="1" y="62" width="555" height="33" backcolor="#CCCCCC" uuid="f2b29a12-5459-45a9-a327-9f268571839e"/>
+				<reportElement x="1" y="0" width="555" height="21" backcolor="#CCCCCC" uuid="a26452c4-fc54-4bd0-b6f6-65360e670f26"/>
 				<graphicElement>
 					<pen lineWidth="0.5"/>
 				</graphicElement>
 			</rectangle>
-			<rectangle>
-				<reportElement x="148" y="5" width="268" height="40" uuid="7f463865-a3db-4d27-aa3d-e152d745bb43"/>
-				<graphicElement>
-					<pen lineWidth="3.0" lineStyle="Double"/>
-				</graphicElement>
-			</rectangle>
 			<staticText>
-				<reportElement x="170" y="25" width="225" height="20" uuid="b1f208f3-25a0-49fb-8dd3-070cc2d2ffca"/>
-				<textElement textAlignment="Center">
-					<font fontName="SansSerif" size="11" isBold="false" isItalic="true"/>
-				</textElement>
-				<text><![CDATA[EXAMINATION SLIP]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="5" y="76" width="251" height="13" uuid="f1af65aa-67b7-480d-ab9f-9dd2fccca148"/>
-				<textElement>
-					<font fontName="SansSerif" size="10" isItalic="true"/>
-				</textElement>
-				<text><![CDATA[PART A         : STUDENT'S DETAIL INFORMATION]]></text>
-			</staticText>
-			<staticText>
-				<reportElement mode="Transparent" x="4" y="63" width="264" height="14" backcolor="#CCCCCC" uuid="208d4d1d-c8db-4770-912e-8a95ccaa16ab"/>
+				<reportElement mode="Opaque" x="1" y="0" width="124" height="21" backcolor="#FFFF00" uuid="804b988b-f82e-45da-b59b-482880b40986"/>
 				<textElement verticalAlignment="Middle" rotation="None">
 					<font fontName="SansSerif" size="10" isBold="true"/>
 				</textElement>
-				<text><![CDATA[BAHAGIAN A : MAKLUMAT PELAJAR]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="170" y="6" width="225" height="20" uuid="430bd62c-87af-4dd5-93e7-945faf1f23fa"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="styled">
-					<font fontName="SansSerif" size="11" isBold="true" isUnderline="false" isStrikeThrough="false"/>
-				</textElement>
-				<text><![CDATA[SLIP PEPERIKSAAN]]></text>
+				<text><![CDATA[  STUDENT PROFILE]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="100" y="105" width="205" height="20" uuid="bc671dbc-5b5d-4cab-8f01-01aef21eb9b4"/>
+				<reportElement x="150" y="31" width="335" height="22" uuid="bc671dbc-5b5d-4cab-8f01-01aef21eb9b4"/>
+				<textElement textAlignment="Center">
+					<font size="14"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{ad_actr_name}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="100" y="145" width="180" height="20" uuid="50f89952-7bf8-4c07-913a-6d194e48701a"/>
+				<reportElement x="150" y="63" width="335" height="20" uuid="50f89952-7bf8-4c07-913a-6d194e48701a"/>
+				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{ad_actr_email}]]></textFieldExpression>
 			</textField>
+			<textField>
+				<reportElement x="150" y="73" width="335" height="20" uuid="591dae24-feb7-4826-bd9f-b66a65d9e0e7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{ad_actr_phone}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="150" y="49" width="335" height="20" uuid="2f76d698-d995-414b-b2ca-1c8664e93ac1"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{ad_actr_identity_no}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="139" splitType="Stretch">
 			<rectangle>
-				<reportElement x="-1" y="217" width="555" height="51" backcolor="#CCCCCC" uuid="527fc8f0-6c13-4203-a135-4a4082b77700"/>
+				<reportElement x="0" y="119" width="555" height="20" backcolor="#CCCCCC" uuid="c33772ce-5f19-43ce-8c49-398a1618fffb"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="1" y="0" width="555" height="17" backcolor="#CCCCCC" uuid="f2b29a12-5459-45a9-a327-9f268571839e"/>
 				<graphicElement>
 					<pen lineWidth="0.5"/>
 				</graphicElement>
 			</rectangle>
 			<staticText>
-				<reportElement x="3" y="231" width="454" height="13" uuid="41c8a18c-c429-4350-bb5e-3986229fc6d9"/>
-				<textElement>
-					<font fontName="SansSerif" size="10" isItalic="true"/>
-				</textElement>
-				<text><![CDATA[PART B          : COURSE INFORMATION]]></text>
-			</staticText>
-			<staticText>
-				<reportElement mode="Transparent" x="2" y="218" width="505" height="14" backcolor="#CCCCCC" uuid="069d9d96-2ac3-4a73-8daf-3de1d7dbef8e"/>
+				<reportElement mode="Transparent" x="4" y="3" width="264" height="14" backcolor="#CCCCCC" uuid="208d4d1d-c8db-4770-912e-8a95ccaa16ab"/>
 				<textElement verticalAlignment="Middle" rotation="None">
 					<font fontName="SansSerif" size="10" isBold="true"/>
 				</textElement>
-				<text><![CDATA[BAHAGIAN B : MAKLUMAT KURSUS]]></text>
+				<text><![CDATA[ PART A: DETAILS INFORMATION]]></text>
 			</staticText>
-			<staticText>
-				<reportElement x="29" y="105" width="71" height="20" uuid="217fcccc-17cf-45f8-ac97-8eeb5cf4a6d6"/>
-				<textElement>
-					<font fontName="SansSerif" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Nama         : ]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="29" y="125" width="71" height="20" uuid="d38676d2-d061-4771-ae82-7bd01d6534be"/>
-				<textElement>
-					<font fontName="SansSerif" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Matric No   :]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="29" y="145" width="71" height="20" uuid="ff5994d4-d2ac-46ce-a2c0-fc0f4222925f"/>
-				<textElement>
-					<font fontName="SansSerif" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Email          : ]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="29" y="165" width="71" height="20" uuid="408b240d-a28b-49ad-8305-c611586be44a"/>
-				<textElement>
-					<font fontName="SansSerif" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Phone        :]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="100" y="165" width="100" height="20" uuid="591dae24-feb7-4826-bd9f-b66a65d9e0e7"/>
-				<textFieldExpression><![CDATA[$F{ad_actr_phone}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="395" y="105" width="100" height="20" uuid="66dec2e2-bd20-4708-8321-b39d52b31f65"/>
+			<textField isBlankWhenNull="true">
+				<reportElement x="330" y="51" width="172" height="20" uuid="66dec2e2-bd20-4708-8321-b39d52b31f65"/>
+				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{ad_stdy_cntr_description}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement x="396" y="125" width="100" height="20" uuid="972e4e98-4d54-4e7c-aefb-bf84d9db9efc"/>
-				<textFieldExpression><![CDATA[$F{ad_acdm_sesn_code}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="100" y="125" width="100" height="20" uuid="2f76d698-d995-414b-b2ca-1c8664e93ac1"/>
-				<textFieldExpression><![CDATA[$F{ad_actr_identity_no}]]></textFieldExpression>
-			</textField>
 			<staticText>
-				<reportElement x="317" y="105" width="78" height="20" uuid="4b742044-c2a6-4fea-94a6-cf72795db0e8"/>
-				<textElement>
+				<reportElement x="237" y="51" width="93" height="20" uuid="4b742044-c2a6-4fea-94a6-cf72795db0e8"/>
+				<textElement verticalAlignment="Middle">
 					<font fontName="SansSerif" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Study Center: ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="318" y="125" width="78" height="20" uuid="3f05093f-be22-4bdd-98bb-6c35f4492583"/>
-				<textElement>
+				<reportElement x="11" y="18" width="78" height="20" uuid="3f05093f-be22-4bdd-98bb-6c35f4492583"/>
+				<textElement verticalAlignment="Middle">
 					<font fontName="SansSerif" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Session        : ]]></text>
+				<text><![CDATA[Program Level: ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="409" y="63" width="48" height="20" uuid="0c4eda08-1547-491d-9bc8-30d1fb67b3d1"/>
-				<textElement>
+				<reportElement x="409" y="0" width="48" height="20" uuid="0c4eda08-1547-491d-9bc8-30d1fb67b3d1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="SansSerif" isBold="true"/>
 				</textElement>
-				<text><![CDATA[DATE  : ]]></text>
+				<text><![CDATA[Date : ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="170" y="252" width="174" height="16" backcolor="#CCCCCC" uuid="a8bd802a-8e0f-459d-8082-7e4a4570ec57"/>
-				<box>
-					<pen lineWidth="0.0"/>
-					<topPen lineWidth="1.0"/>
-					<leftPen lineWidth="1.0"/>
-					<bottomPen lineWidth="1.0"/>
-					<rightPen lineWidth="1.0"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="SansSerif" size="10" isBold="true"/>
-				</textElement>
-				<text><![CDATA[TITLE]]></text>
-			</staticText>
-			<staticText>
-				<reportElement mode="Opaque" x="495" y="252" width="59" height="16" backcolor="#CCCCCC" uuid="e20b2da5-01d6-4290-8262-aae0a8b97cd1"/>
-				<box>
-					<pen lineWidth="0.0"/>
-					<topPen lineWidth="1.0"/>
-					<leftPen lineWidth="1.0"/>
-					<bottomPen lineWidth="1.0"/>
-					<rightPen lineWidth="1.0"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="SansSerif" size="10" isBold="true"/>
-				</textElement>
-				<text><![CDATA[FACULTY]]></text>
-			</staticText>
-			<staticText>
-				<reportElement mode="Opaque" x="344" y="252" width="52" height="16" backcolor="#CCCCCC" uuid="6ea963bc-f20a-4e94-bbff-65bd7ec33cd1"/>
-				<box>
-					<pen lineWidth="0.0"/>
-					<topPen lineWidth="1.0"/>
-					<leftPen lineWidth="1.0"/>
-					<bottomPen lineWidth="1.0"/>
-					<rightPen lineWidth="1.0"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="SansSerif" size="10" isBold="true"/>
-				</textElement>
-				<text><![CDATA[CREDIT]]></text>
-			</staticText>
-			<staticText>
-				<reportElement mode="Opaque" x="-1" y="252" width="44" height="16" backcolor="#CCCCCC" uuid="c06c4383-a56b-4c26-9802-4ae4796cd04e"/>
-				<box>
-					<pen lineWidth="0.0"/>
-					<topPen lineWidth="1.0"/>
-					<leftPen lineWidth="1.0"/>
-					<bottomPen lineWidth="1.0"/>
-					<rightPen lineWidth="1.0"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="SansSerif" size="10" isBold="true"/>
-				</textElement>
-				<text><![CDATA[NO. ]]></text>
-			</staticText>
-			<staticText>
-				<reportElement mode="Opaque" x="396" y="252" width="99" height="16" backcolor="#CCCCCC" uuid="6c356f91-8d9a-45c6-ab72-21e977fddc29"/>
-				<box>
-					<pen lineWidth="0.0"/>
-					<topPen lineWidth="1.0"/>
-					<leftPen lineWidth="1.0"/>
-					<bottomPen lineWidth="1.0"/>
-					<rightPen lineWidth="1.0"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="SansSerif" size="10" isBold="true"/>
-				</textElement>
-				<text><![CDATA[PROGRAM]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="29" y="185" width="71" height="20" uuid="38ce74fb-8a9d-4448-b387-b5baf5cecfa6"/>
-				<textElement>
+				<reportElement x="10" y="85" width="71" height="20" uuid="38ce74fb-8a9d-4448-b387-b5baf5cecfa6"/>
+				<textElement verticalAlignment="Middle">
 					<font fontName="SansSerif" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Scholarship: ]]></text>
 			</staticText>
 			<componentElement>
-				<reportElement x="100" y="185" width="382" height="20" uuid="5f8fb6a1-eccf-423d-8c00-d6a61403e460"/>
+				<reportElement x="88" y="83" width="263" height="35" uuid="5f8fb6a1-eccf-423d-8c00-d6a61403e460"/>
 				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
 					<datasetRun subDataset="sponsorship" uuid="ab204008-dc39-45e7-b487-fc6642eb7818">
 						<datasetParameter name="student_id">
@@ -565,179 +451,122 @@ $F{ad_acdm_sesn_code}.equals( $P{session_code} )]]></filterExpression>
 						</datasetParameter>
 						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 					</datasetRun>
-					<jr:listContents height="20" width="382">
+					<jr:listContents height="35" width="263">
 						<textField>
-							<reportElement x="0" y="0" width="309" height="20" uuid="5e18cdbb-cc2a-4251-8c96-48143f3159e9"/>
+							<reportElement x="1" y="3" width="180" height="20" uuid="5e18cdbb-cc2a-4251-8c96-48143f3159e9"/>
+							<textElement verticalAlignment="Middle"/>
 							<textFieldExpression><![CDATA[$F{ad_actr_name}]]></textFieldExpression>
 						</textField>
 					</jr:listContents>
 				</jr:list>
 			</componentElement>
-			<staticText>
-				<reportElement mode="Opaque" x="43" y="252" width="57" height="16" backcolor="#CCCCCC" uuid="62bf3c23-cf5a-46d6-8081-215d372b8a72"/>
-				<box>
-					<pen lineWidth="0.0"/>
-					<topPen lineWidth="1.0"/>
-					<leftPen lineWidth="1.0"/>
-					<bottomPen lineWidth="1.0"/>
-					<rightPen lineWidth="1.0"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="SansSerif" size="10" isBold="true"/>
-				</textElement>
-				<text><![CDATA[SECTION]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="454" y="63" width="100" height="20" uuid="d58dd5e4-af32-4ffd-9b43-b5ca9566dc38"/>
-				<textFieldExpression><![CDATA[$P{curDate}]]></textFieldExpression>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="457" y="1" width="100" height="16" uuid="0f1b0b92-8812-48bf-ba61-f7c780dc2416"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement mode="Opaque" x="100" y="252" width="70" height="16" backcolor="#CCCCCC" uuid="ef58e196-e6c5-499e-9193-140614800b7e"/>
-				<box>
-					<pen lineWidth="0.0"/>
-					<topPen lineWidth="1.0"/>
-					<leftPen lineWidth="1.0"/>
-					<bottomPen lineWidth="1.0"/>
-					<rightPen lineWidth="1.0"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="SansSerif" size="10" isBold="true"/>
-				</textElement>
-				<text><![CDATA[CODE]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="318" y="145" width="78" height="20" uuid="cce3ad93-75bc-4462-8fb1-9c843047e479"/>
-				<textElement>
+				<reportElement x="237" y="34" width="93" height="20" uuid="7a25f89b-e929-4bd5-a1d1-d2fe173ced84"/>
+				<textElement verticalAlignment="Middle">
 					<font fontName="SansSerif" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Status           : ]]></text>
+				<text><![CDATA[Student Status:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="237" y="18" width="93" height="20" uuid="bff2bb37-d848-4fe3-bdea-d2f3661f3ce1"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cohort: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="11" y="34" width="78" height="20" uuid="83295538-d268-433c-b012-c218ca69e476"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Study Mode:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="11" y="52" width="78" height="20" uuid="f0dc1469-4c71-46b8-ad2c-1003583bb771"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Program:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="11" y="69" width="78" height="20" uuid="eb9877b2-1012-4b38-a2a8-50226bea716a"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Faculty:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="396" y="145" width="100" height="20" uuid="28f0e1ca-779f-4eeb-bc06-156a402376cb"/>
+				<reportElement x="88" y="70" width="133" height="20" uuid="e29a6676-c4a0-4477-98ad-cfcb965cf368"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{ad_fcty_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="89" y="53" width="132" height="20" uuid="79a277a0-3766-454b-a3df-859b280ea337"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{ad_prgm_code}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="89" y="35" width="132" height="20" uuid="0209b8b0-eefc-4fcc-8bff-9e75f701a053"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{ad_stdy_mode_description}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="330" y="35" width="172" height="20" uuid="565d4437-3353-4208-b46d-a303dfa32e99"/>
+				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[(
 $F{ad_stdn_student_status}.equals( "0" )? "MATRICULATED":
 $F{ad_stdn_student_status}.equals( "1" )? "ACTIVE":
-$F{ad_stdn_student_status}.equals( "2" )? "INACTIVE":
-$F{ad_stdn_student_status}.equals( "3" )? "BARRED":
-$F{ad_stdn_student_status}.equals( "3" )? "GRADUATED":
+$F{ad_stdn_student_status}.equals( "2" )? "BARRED":
+$F{ad_stdn_student_status}.equals( "3" )? "INACTIVE":
+$F{ad_stdn_student_status}.equals( "4" )? "GRADUATED":
 "OTHERS"
 )]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Transparent" x="2" y="119" width="264" height="20" backcolor="#CCCCCC" uuid="44e599c1-2f5d-4c84-ab1a-79013d8f117e"/>
+				<textElement verticalAlignment="Middle" rotation="None">
+					<font fontName="SansSerif" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ PART B: MISCELANEOUS INFO]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="330" y="18" width="172" height="20" uuid="5442bf21-0806-43fa-baef-26575c337d18"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{ad_chrt_code}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="237" y="68" width="93" height="20" uuid="daccd102-6585-41e7-9b65-e96c30b6b461"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CGPA:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="330" y="69" width="100" height="20" uuid="9fd3265c-b7ca-44c7-b2aa-fe35364c88f2"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{ad_admn_cgpa}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="89" y="18" width="132" height="20" uuid="18c6a7a2-5a48-4605-880f-f7fda38fbae5"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{ad_prgm_levl_description}]]></textFieldExpression>
 			</textField>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="20" splitType="Stretch">
-			<textField>
-				<reportElement x="170" y="0" width="174" height="20" uuid="bc2b0a78-59b2-4e42-b986-34c7850557ba"/>
-				<box>
-					<pen lineWidth="0.5"/>
-					<topPen lineWidth="0.5"/>
-					<leftPen lineWidth="0.5"/>
-					<bottomPen lineWidth="0.5"/>
-					<rightPen lineWidth="0.5"/>
-				</box>
-				<textElement verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{ad_crse_title_en}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="100" y="0" width="70" height="20" uuid="a9fef5f2-16bf-449f-9ab9-9ac31d2d5d9c"/>
-				<box>
-					<pen lineWidth="0.5"/>
-					<topPen lineWidth="0.5"/>
-					<leftPen lineWidth="0.5"/>
-					<bottomPen lineWidth="0.5"/>
-					<rightPen lineWidth="0.5"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{ad_crse_code}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="43" y="0" width="57" height="20" uuid="cdd4d390-1cf1-4e6d-8de1-de73118c02a9"/>
-				<box>
-					<pen lineWidth="0.5"/>
-					<topPen lineWidth="0.5"/>
-					<leftPen lineWidth="0.5"/>
-					<bottomPen lineWidth="0.5"/>
-					<rightPen lineWidth="0.5"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{ad_sctn_ordinal}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="-1" y="0" width="44" height="20" uuid="ee5c6a54-340d-4964-a251-7a0eb207dd5c"/>
-				<box>
-					<pen lineWidth="0.5"/>
-					<topPen lineWidth="0.5"/>
-					<leftPen lineWidth="0.5"/>
-					<bottomPen lineWidth="0.5"/>
-					<rightPen lineWidth="0.5"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$V{COLUMN_COUNT}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="344" y="0" width="52" height="20" uuid="53108b04-2eca-4b81-9ec3-72e88858779e"/>
-				<box>
-					<pen lineWidth="0.5"/>
-					<topPen lineWidth="0.5"/>
-					<leftPen lineWidth="0.5"/>
-					<bottomPen lineWidth="0.5"/>
-					<rightPen lineWidth="0.5"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{ad_crse_credit}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="396" y="0" width="99" height="20" uuid="80248750-2487-4a99-8904-c6c20c82a48c"/>
-				<box>
-					<pen lineWidth="0.5"/>
-					<topPen lineWidth="0.5"/>
-					<leftPen lineWidth="0.5"/>
-					<bottomPen lineWidth="0.5"/>
-					<rightPen lineWidth="0.5"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{ad_prgm_code}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="495" y="0" width="59" height="20" uuid="d0d1f2a9-e576-444f-a8ec-fc891ee95cb7"/>
-				<box>
-					<pen lineWidth="0.5"/>
-					<topPen lineWidth="0.5"/>
-					<leftPen lineWidth="0.5"/>
-					<bottomPen lineWidth="0.5"/>
-					<rightPen lineWidth="0.5"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{ad_fcty_name}]]></textFieldExpression>
-			</textField>
-		</band>
+		<band height="96" splitType="Stretch"/>
 	</detail>
 	<pageFooter>
-		<band height="140">
+		<band height="63">
 			<staticText>
-				<reportElement x="170" y="119" width="246" height="20" uuid="4aa3bf32-8d9c-4723-a8cf-bb19bc5cc7d4"/>
-				<text><![CDATA[This is computer generated report by MGSEB UMK]]></text>
+				<reportElement x="167" y="39" width="246" height="20" uuid="4aa3bf32-8d9c-4723-a8cf-bb19bc5cc7d4"/>
+				<text><![CDATA[This is computer generated report by CPS UMK]]></text>
 			</staticText>
-			<staticText>
-				<reportElement mode="Opaque" x="-1" y="0" width="555" height="20" backcolor="#CCCCCC" uuid="46750e86-6de2-43ef-b392-84ea45b76da0"/>
-				<box>
-					<pen lineWidth="0.0"/>
-					<topPen lineWidth="1.0"/>
-					<leftPen lineWidth="1.0"/>
-					<bottomPen lineWidth="1.0"/>
-					<rightPen lineWidth="1.0"/>
-				</box>
-				<textElement verticalAlignment="Middle">
-					<font fontName="SansSerif" size="10" isBold="true"/>
-				</textElement>
-				<text><![CDATA[  TOTAL CREDIT : ]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="85" y="0" width="100" height="20" uuid="cf3ff2c2-2182-405c-aa96-95a997251f78"/>
-				<textElement verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$V{ad_crse_credit_1}]]></textFieldExpression>
-			</textField>
 		</band>
 	</pageFooter>
 </jasperReport>

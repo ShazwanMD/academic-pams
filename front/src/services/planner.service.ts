@@ -325,6 +325,12 @@ export class PlannerService {
     return this._http.get(this.PLANNER_API + '/curriculums/' + curriculum.code + '/subjects/subjectTypeCore/CORE')
       .map((res: Response) => <Subject[]>res.json());
   }
+  
+  findSubjectsByCurriculumAndSubjectTypeCoreElective(curriculum: Curriculum): Observable<Subject[]> {
+      console.log('findSubjectsByCurriculumAndSubjectTypeCoreElective');
+      return this._http.get(this.PLANNER_API + '/curriculums/' + curriculum.code + '/subjects/subjectTypeElective/ELECTIVE')
+        .map((res: Response) => <Subject[]>res.json());
+    }
 
   findSubjectsByCurriculumAndSubjectTypeElective(curriculum: Curriculum): Observable<Subject[]> {
     console.log('findSubjectsByCurriculumAndSubjectTypeElective');

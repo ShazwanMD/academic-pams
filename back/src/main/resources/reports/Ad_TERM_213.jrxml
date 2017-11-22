@@ -503,7 +503,7 @@ ORDER BY
 		<band height="21" splitType="Stretch">
 			<staticText>
 				<reportElement x="281" y="0" width="246" height="20" uuid="d5a807f6-c831-4db8-be09-dc69c2c82286"/>
-				<text><![CDATA[This is computer generated report by MGSEB UMK]]></text>
+				<text><![CDATA[This is computer generated report by CPS UMK]]></text>
 			</staticText>
 		</band>
 	</pageFooter>

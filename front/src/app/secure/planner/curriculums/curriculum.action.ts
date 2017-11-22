@@ -59,6 +59,7 @@ export class CurriculumActions {
     };
   }
 
+  //subject core
   static FIND_SUBJECTS_BY_CURRICULUM_AND_SUBJECT_TYPE_CORE= '[Curriculum] Find Subject By Curriculum and Subject Core Type';
 
   findSubjectsByCurriculumAndSubjectCoreType(curriculum): Action {
@@ -73,6 +74,25 @@ export class CurriculumActions {
   findSubjectsByCurriculumAndSubjectCoreTypeSuccess(subjects): Action {
     return {
       type: CurriculumActions.FIND_SUBJECTS_BY_CURRICULUM_AND_SUBJECT_TYPE_CORE_SUCCESS,
+      payload: subjects,
+    };
+  }
+  
+  //subject core elective
+  static FIND_SUBJECTS_BY_CURRICULUM_AND_SUBJECT_TYPE_CORE_ELECTIVE= '[Curriculum] Find Subject By Curriculum and Subject Core Elective Type';
+
+  findSubjectsByCurriculumAndSubjectCoreElectiveType(curriculum): Action {
+    return {
+      type: CurriculumActions.FIND_SUBJECTS_BY_CURRICULUM_AND_SUBJECT_TYPE_CORE_ELECTIVE,
+      payload: curriculum,
+    };
+  }
+
+  static FIND_SUBJECTS_BY_CURRICULUM_AND_SUBJECT_TYPE_CORE_ELECTIVE_SUCCESS = '[Curriculum] Find Subject By Curriculum and Subject Core Elective Type Success';
+
+  findSubjectsByCurriculumAndSubjectCoreElectiveTypeSuccess(subjects): Action {
+    return {
+      type: CurriculumActions.FIND_SUBJECTS_BY_CURRICULUM_AND_SUBJECT_TYPE_CORE_ELECTIVE_SUCCESS,
       payload: subjects,
     };
   }
@@ -228,6 +248,7 @@ export class CurriculumActions {
   static ADD_SINGLE_SUBJECT = '[Subject] Add Single Subject';
 
   addSingleSubject(curriculum, subject): Action {
+      console.log( "addSingleSubject" );
     return {
       type: CurriculumActions.ADD_SINGLE_SUBJECT,
       payload: {curriculum: curriculum, subject: subject}
@@ -237,6 +258,7 @@ export class CurriculumActions {
   static ADD_SINGLE_SUBJECT_SUCCESS = '[Subject] Add Single Subject Success';
 
   addSingleSubjectSuccess(message): Action {
+      console.log( "addSingleSubjectSuccess" );
     return {
       type: CurriculumActions.ADD_SINGLE_SUBJECT_SUCCESS,
       payload: message

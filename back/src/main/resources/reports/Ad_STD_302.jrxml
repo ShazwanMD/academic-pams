@@ -562,7 +562,7 @@ $F{ad_stdn_student_status}.equals( "3" )? "INACTIVE":
 		<band height="20" splitType="Stretch">
 			<staticText>
 				<reportElement x="151" y="0" width="246" height="20" uuid="eea297a3-972f-4f16-b288-ee279d179147"/>
-				<text><![CDATA[This is computer generated report by MGSEB UMK]]></text>
+				<text><![CDATA[This is computer generated report by CPS UMK]]></text>
 			</staticText>
 		</band>
 	</pageFooter>

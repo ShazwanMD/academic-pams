@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report4" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="fe6eae38-dbac-492a-9522-077445b8487d">
 	<property name="ireport.zoom" value="1.5026296018031566"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="160"/>
+	<property name="ireport.y" value="0"/>
 	<parameter name="curriculum_code" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[SELECT
@@ -44,8 +44,7 @@ FROM
      INNER JOIN "public"."ad_sbjt" ad_sbjt ON ad_crlm."id" = ad_sbjt."curriculum_id"
      INNER JOIN "public"."ad_sngl_sbjt" ad_sngl_sbjt ON ad_sbjt."id" = ad_sngl_sbjt."id"
      INNER JOIN "public"."ad_crse" ad_crse ON ad_sngl_sbjt."course_id" = ad_crse."id"
-     INNER JOIN "public"."ad_fcty" ad_fcty ON ad_crse."faculty_id" = ad_fcty."id"
-WHERE  ad_sbjt."subject_type" = '2' ORDER BY ad_sbjt."ordinal"]]>
+     INNER JOIN "public"."ad_fcty" ad_fcty ON ad_crse."faculty_id" = ad_fcty."id"]]>
 	</queryString>
 	<field name="ad_crlm_id" class="java.lang.Long"/>
 	<field name="ad_crlm_code" class="java.lang.String"/>
@@ -104,14 +103,14 @@ WHERE  ad_sbjt."subject_type" = '2' ORDER BY ad_sbjt."ordinal"]]>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[TEL:09-7717028        FAKS:09-7717162]]></text>
+				<text><![CDATA[TEL: 609-7717049       FAKS: 609-7717162]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="60" y="10" width="464" height="14" uuid="d9a80061-85f7-48dd-8e64-414b356957ef"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[MALAYSIAN GRADUATE SCHOOL OF ENTREPRENEURSHIP & BUSINESS (MGSEB)]]></text>
+				<text><![CDATA[CENTER OF POSTGRADUATE STUDIES (CPS)]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="60" y="24" width="238" height="20" uuid="b171603a-725a-4701-a4a3-5aeaf4e4244c"/>
@@ -132,21 +131,7 @@ WHERE  ad_sbjt."subject_type" = '2' ORDER BY ad_sbjt."ordinal"]]>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[KARUNG BERKUNCI 36, PENGKALAN CHEPA]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="59" y="67" width="258" height="20" uuid="7dff62b7-207f-4e78-a1be-76c1056d78ad"/>
-				<textElement>
-					<font isBold="true"/>
-				</textElement>
-				<text><![CDATA[TEL:09-7717028        FAKS:09-7717162]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="60" y="38" width="227" height="20" uuid="d57bb92c-b6f7-41fb-8dd8-72d67f88f83f"/>
-				<textElement>
-					<font isBold="true"/>
-				</textElement>
-				<text><![CDATA[KARUNG BERKUNCI 36, PENGKALAN CHEPA]]></text>
+				<text><![CDATA[LOCKED BAG 36, PENGKALAN CHEPA]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="59" y="52" width="259" height="20" uuid="c2e77bc1-9f3f-4cdc-90a7-93fbc9075646"/>

@@ -30,16 +30,17 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {PlannerModuleState} from '../../index';
 import {MdDialog, MdDialogConfig, MdDialogRef} from '@angular/material';
 import {Subject} from '../../../../shared/model/planner/subject.interface';
+import { CurriculumElectiveSubjectDialog } from "../dialog/curriculum-elective-subject.dialog";
 
 @Component({
-    selector: 'pams-curriculum-subject-list',
-    templateUrl: './curriculum-subject-list.component.html',
+    selector: 'pams-curriculum-elective-subject-list',
+    templateUrl: './curriculum-elective-subject-list.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CurriculumSubjectListComponent implements AfterViewInit , OnChanges {
+export class CurriculumElectiveSubjectListComponent implements AfterViewInit , OnChanges {
 
     private selectedRows: Subject[];
-    private singleSubjectDialogRef: MdDialogRef<CurriculumSingleSubjectDialog>;
+    private singleSubjectDialogRef: MdDialogRef<CurriculumElectiveSubjectDialog>;
     private bundleSubjectDialogRef: MdDialogRef<CurriculumBundleSubjectDialog>;
     private bundleSubjectPartDialogRef: MdDialogRef<CurriculumBundleSubjectPartDialog>;
     
@@ -127,7 +128,7 @@ export class CurriculumSubjectListComponent implements AfterViewInit , OnChanges
     }
 
 
-    showSingleSubjectDialog(singleSubject: SingleSubject): void {
+    showElectiveSubjectDialog(singleSubject: SingleSubject): void {
         console.log("this.curriculum : " + this.curriculum.academicSession);
         let config: MdDialogConfig = new MdDialogConfig();
         config.viewContainerRef = this.vcf;
@@ -135,7 +136,7 @@ export class CurriculumSubjectListComponent implements AfterViewInit , OnChanges
         config.width = '50%';
         config.height = '60%';
         config.position = { top: '65px' };
-        this.singleSubjectDialogRef = this.dialog.open(CurriculumSingleSubjectDialog, config);
+        this.singleSubjectDialogRef = this.dialog.open(CurriculumElectiveSubjectDialog, config);
         this.singleSubjectDialogRef.componentInstance.curriculum = this.curriculum;
         this.singleSubjectDialogRef.afterClosed().subscribe((res) => {
             // no op

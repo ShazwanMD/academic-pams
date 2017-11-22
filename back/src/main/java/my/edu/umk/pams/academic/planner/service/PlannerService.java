@@ -347,6 +347,8 @@ public interface PlannerService {
 
 	List<AdSubject> findSubjectsByCurriculumAndSubjectTypeCore (AdCurriculum curriculum, AdSubjectType subjectType);
 	
+	List<AdSubject> findSubjectsByCurriculumAndSubjectTypeCoreElective (AdCurriculum curriculum, AdSubjectType subjectType);
+	
 	List<AdSubject> findSubjectsByCurriculumAndSubjectTypeElective  (AdCurriculum curriculum, AdSubjectType subjectType);
 
 	List<AdBundleSubject> findBundleSubjects(AdCurriculum curriculum, AdSubject subject);
