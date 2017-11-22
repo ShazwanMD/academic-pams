@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="jasper_report_template" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="03800e79-2e08-4188-b0d9-084bf32d8f7c">
-	<property name="ireport.zoom" value="1.3660269107301417"/>
+	<property name="ireport.zoom" value="1.6528925619834718"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="199"/>
 	<subDataset name="dataset1" uuid="46f25e4d-6347-4d17-af5c-c1b6d6a0c568">
 		<parameter name="identity_no" class="java.lang.String"/>
 		<queryString>
@@ -125,25 +125,11 @@ ORDER BY  ad_acdm_sesn_code DESC]]>
      ad_chrt."classification" AS ad_chrt_classification,
      ad_chrt."code" AS ad_chrt_code,
      ad_chrt."description" AS ad_chrt_description,
-     ad_chrt."c_ts" AS ad_chrt_c_ts,
-     ad_chrt."c_id" AS ad_chrt_c_id,
-     ad_chrt."d_ts" AS ad_chrt_d_ts,
-     ad_chrt."d_id" AS ad_chrt_d_id,
-     ad_chrt."m_ts" AS ad_chrt_m_ts,
-     ad_chrt."m_id" AS ad_chrt_m_id,
-     ad_chrt."m_st" AS ad_chrt_m_st,
      ad_chrt."curriculum_id" AS ad_chrt_curriculum_id,
      ad_chrt."program_id" AS ad_chrt_program_id,
      ad_chrt."session_id" AS ad_chrt_session_id,
      ad_prgm."id" AS ad_prgm_id,
      ad_prgm."code" AS ad_prgm_code,
-     ad_prgm."c_ts" AS ad_prgm_c_ts,
-     ad_prgm."c_id" AS ad_prgm_c_id,
-     ad_prgm."d_ts" AS ad_prgm_d_ts,
-     ad_prgm."d_id" AS ad_prgm_d_id,
-     ad_prgm."m_ts" AS ad_prgm_m_ts,
-     ad_prgm."m_id" AS ad_prgm_m_id,
-     ad_prgm."m_st" AS ad_prgm_m_st,
      ad_prgm."status" AS ad_prgm_status,
      ad_prgm."title_en" AS ad_prgm_title_en,
      ad_prgm."title_ms" AS ad_prgm_title_ms,
@@ -152,13 +138,6 @@ ORDER BY  ad_acdm_sesn_code DESC]]>
      ad_acdm_year."id" AS ad_acdm_year_id,
      ad_acdm_year."code" AS ad_acdm_year_code,
      ad_acdm_year."description" AS ad_acdm_year_description,
-     ad_acdm_year."c_ts" AS ad_acdm_year_c_ts,
-     ad_acdm_year."c_id" AS ad_acdm_year_c_id,
-     ad_acdm_year."d_ts" AS ad_acdm_year_d_ts,
-     ad_acdm_year."d_id" AS ad_acdm_year_d_id,
-     ad_acdm_year."m_ts" AS ad_acdm_year_m_ts,
-     ad_acdm_year."m_id" AS ad_acdm_year_m_id,
-     ad_acdm_year."m_st" AS ad_acdm_year_m_st,
      ad_acdm_year."year" AS ad_acdm_year_year
 FROM
      "public"."ad_admn" ad_admn INNER JOIN "public"."ad_enmt" ad_enmt ON ad_admn."id" = ad_enmt."admission_id"
@@ -175,7 +154,7 @@ FROM
 	</queryString>
 	<field name="totalgredpoint" class="java.math.BigDecimal"/>
 	<field name="ad_enmt_id" class="java.lang.Long"/>
-	<field name="ad_enmt_standing" class="java.lang.Integer"/>
+	<field name="ad_enmt_standing" class="java.lang.String"/>
 	<field name="ad_enmt_status" class="java.lang.Integer"/>
 	<field name="ad_enmt_total_score" class="java.math.BigDecimal"/>
 	<field name="ad_enmt_admission_id" class="java.lang.Long"/>
@@ -188,7 +167,7 @@ FROM
 	<field name="ad_admn_gpa" class="java.math.BigDecimal"/>
 	<field name="ad_admn_ordinal" class="java.lang.Integer"/>
 	<field name="ad_admn_standing" class="java.lang.String"/>
-	<field name="ad_admn_status" class="java.lang.Integer"/>
+	<field name="ad_admn_status" class="java.lang.String"/>
 	<field name="ad_admn_cohort_id" class="java.lang.Long"/>
 	<field name="ad_admn_session_id" class="java.lang.Long"/>
 	<field name="ad_admn_student_id" class="java.lang.Long"/>
@@ -204,7 +183,7 @@ FROM
 	<field name="ad_actr_phone" class="java.lang.String"/>
 	<field name="ad_stdn_memo" class="java.lang.String"/>
 	<field name="ad_stdn_no_id" class="java.lang.String"/>
-	<field name="ad_stdn_student_status" class="java.lang.Integer"/>
+	<field name="ad_stdn_student_status" class="java.lang.String"/>
 	<field name="ad_stdn_id" class="java.lang.Long"/>
 	<field name="ad_stdn_cohort_id" class="java.lang.Long"/>
 	<field name="ad_stdn_study_mode_id" class="java.lang.Long"/>
@@ -246,34 +225,20 @@ FROM
 	<field name="ad_acdm_sesn_current_" class="java.lang.Boolean"/>
 	<field name="ad_acdm_sesn_description" class="java.lang.String"/>
 	<field name="ad_acdm_sesn_end_date" class="java.sql.Date"/>
-	<field name="ad_acdm_sesn_semester" class="java.lang.String"/>
+	<field name="ad_acdm_sesn_semester" class="java.lang.Integer"/>
 	<field name="ad_acdm_sesn_start_date" class="java.sql.Date"/>
-	<field name="ad_acdm_sesn_status" class="java.lang.Integer"/>
+	<field name="ad_acdm_sesn_status" class="java.lang.String"/>
 	<field name="ad_acdm_sesn_previous_id" class="java.lang.Long"/>
 	<field name="ad_acdm_sesn_year_id" class="java.lang.Long"/>
 	<field name="ad_chrt_id" class="java.lang.Long"/>
 	<field name="ad_chrt_classification" class="java.lang.Integer"/>
 	<field name="ad_chrt_code" class="java.lang.String"/>
 	<field name="ad_chrt_description" class="java.lang.String"/>
-	<field name="ad_chrt_c_ts" class="java.sql.Timestamp"/>
-	<field name="ad_chrt_c_id" class="java.lang.Long"/>
-	<field name="ad_chrt_d_ts" class="java.sql.Timestamp"/>
-	<field name="ad_chrt_d_id" class="java.lang.Long"/>
-	<field name="ad_chrt_m_ts" class="java.sql.Timestamp"/>
-	<field name="ad_chrt_m_id" class="java.lang.Long"/>
-	<field name="ad_chrt_m_st" class="java.lang.Integer"/>
 	<field name="ad_chrt_curriculum_id" class="java.lang.Long"/>
 	<field name="ad_chrt_program_id" class="java.lang.Long"/>
 	<field name="ad_chrt_session_id" class="java.lang.Long"/>
 	<field name="ad_prgm_id" class="java.lang.Long"/>
 	<field name="ad_prgm_code" class="java.lang.String"/>
-	<field name="ad_prgm_c_ts" class="java.sql.Timestamp"/>
-	<field name="ad_prgm_c_id" class="java.lang.Long"/>
-	<field name="ad_prgm_d_ts" class="java.sql.Timestamp"/>
-	<field name="ad_prgm_d_id" class="java.lang.Long"/>
-	<field name="ad_prgm_m_ts" class="java.sql.Timestamp"/>
-	<field name="ad_prgm_m_id" class="java.lang.Long"/>
-	<field name="ad_prgm_m_st" class="java.lang.Integer"/>
 	<field name="ad_prgm_status" class="java.lang.Integer"/>
 	<field name="ad_prgm_title_en" class="java.lang.String"/>
 	<field name="ad_prgm_title_ms" class="java.lang.String"/>
@@ -282,13 +247,6 @@ FROM
 	<field name="ad_acdm_year_id" class="java.lang.Long"/>
 	<field name="ad_acdm_year_code" class="java.lang.String"/>
 	<field name="ad_acdm_year_description" class="java.lang.String"/>
-	<field name="ad_acdm_year_c_ts" class="java.sql.Timestamp"/>
-	<field name="ad_acdm_year_c_id" class="java.lang.Long"/>
-	<field name="ad_acdm_year_d_ts" class="java.sql.Timestamp"/>
-	<field name="ad_acdm_year_d_id" class="java.lang.Long"/>
-	<field name="ad_acdm_year_m_ts" class="java.sql.Timestamp"/>
-	<field name="ad_acdm_year_m_id" class="java.lang.Long"/>
-	<field name="ad_acdm_year_m_st" class="java.lang.Integer"/>
 	<field name="ad_acdm_year_year" class="java.lang.String"/>
 	<variable name="ad_crse_credit_2" class="java.lang.Integer" resetType="Page" calculation="Sum">
 		<variableExpression><![CDATA[$F{ad_crse_credit}]]></variableExpression>
@@ -317,7 +275,7 @@ FROM
 			</band>
 		</groupHeader>
 		<groupFooter>
-			<band height="21">
+			<band height="35">
 				<staticText>
 					<reportElement x="4" y="0" width="37" height="20" uuid="98e1364e-07e6-48a2-9519-22740ae4fe4b"/>
 					<textElement>
@@ -326,28 +284,56 @@ FROM
 					<text><![CDATA[CGPA:]]></text>
 				</staticText>
 				<textField>
-					<reportElement x="40" y="0" width="74" height="20" uuid="f5d639a4-fd44-4e37-93f8-ed27055a68e8"/>
+					<reportElement x="40" y="0" width="33" height="20" uuid="f5d639a4-fd44-4e37-93f8-ed27055a68e8"/>
 					<textElement>
 						<font size="9" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{ad_admn_cgpa}]]></textFieldExpression>
 				</textField>
 				<staticText>
-					<reportElement x="136" y="0" width="37" height="20" uuid="1817a01d-b6d1-4fd0-b90b-d7a375693af1"/>
+					<reportElement x="93" y="0" width="37" height="20" uuid="1817a01d-b6d1-4fd0-b90b-d7a375693af1"/>
 					<textElement>
 						<font size="9" isBold="true"/>
 					</textElement>
 					<text><![CDATA[GPA:]]></text>
 				</staticText>
 				<textField>
-					<reportElement x="174" y="0" width="78" height="20" uuid="37ccad39-dae0-45c8-9509-b5a0c2f93159"/>
+					<reportElement x="352" y="1" width="58" height="20" uuid="cebef696-5218-41f9-95cd-15492935f9a1"/>
+					<textElement>
+						<font size="9"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{ad_admn_credit_earned}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="495" y="1" width="58" height="20" uuid="c1d0f920-f3ed-4097-9a5c-dce3c8344527"/>
+					<textElement>
+						<font size="9"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{ad_admn_credit_taken}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="271" y="1" width="81" height="20" uuid="a754f512-aa0c-4a0d-b83e-24fded0c50e9"/>
+					<textElement>
+						<font size="9" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Credit Earned:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="413" y="1" width="81" height="20" uuid="278d8bd1-0ea3-41b7-8696-92687ff5d2b2"/>
+					<textElement>
+						<font size="9" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Credit Taken:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="130" y="1" width="39" height="20" uuid="37ccad39-dae0-45c8-9509-b5a0c2f93159"/>
 					<textElement>
 						<font size="9" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{ad_admn_gpa}]]></textFieldExpression>
 				</textField>
 				<textField isBlankWhenNull="true">
-					<reportElement x="286" y="1" width="60" height="20" uuid="1026fc84-1cde-4147-91e2-31540f245570"/>
+					<reportElement x="197" y="1" width="55" height="20" uuid="1026fc84-1cde-4147-91e2-31540f245570"/>
 					<textElement>
 						<font size="9" isBold="true"/>
 					</textElement>
@@ -363,7 +349,7 @@ $F{ad_admn_standing}.equals( "2" )? "TBD":
 		</groupFooter>
 	</group>
 	<title>
-		<band height="6"/>
+		<band height="26"/>
 	</title>
 	<pageHeader>
 		<band height="99"/>
@@ -522,41 +508,6 @@ $F{ad_acdm_sesn_semester}.equals( "2" )? "FEBRUARI":
 				</textElement>
 				<text><![CDATA[IC/PASSPORT NO. :]]></text>
 			</staticText>
-			<staticText>
-				<reportElement x="3" y="64" width="111" height="20" uuid="8b744495-63eb-4287-a422-d493162d0c28"/>
-				<textElement verticalAlignment="Middle">
-					<font fontName="SansSerif" size="9" isBold="true"/>
-				</textElement>
-				<text><![CDATA[CREDIT TAKEN :]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="322" y="44" width="113" height="20" uuid="fb623636-0f48-4015-b8ff-e275f884429b"/>
-				<textElement verticalAlignment="Middle">
-					<font fontName="SansSerif" size="9" isBold="true"/>
-				</textElement>
-				<text><![CDATA[CREDIT EARNED :]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="322" y="64" width="111" height="20" uuid="002c2c85-9a37-438e-9416-b61833f276d5"/>
-				<textElement verticalAlignment="Middle">
-					<font fontName="SansSerif" size="9" isBold="true"/>
-				</textElement>
-				<text><![CDATA[CREDIT TRANFERED :]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="114" y="64" width="191" height="20" uuid="2b5b0e69-9e8d-4817-82e4-4a3ba138adb7"/>
-				<textElement verticalAlignment="Middle">
-					<font size="9"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{ad_admn_credit_taken}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="433" y="44" width="120" height="20" uuid="9f88ec8d-5d93-44cf-a8ba-1566e9a3e7fa"/>
-				<textElement verticalAlignment="Middle">
-					<font size="9"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{ad_admn_credit_earned}]]></textFieldExpression>
-			</textField>
 		</band>
 	</columnHeader>
 	<detail>

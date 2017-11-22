@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="jasper_report_template" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="03800e79-2e08-4188-b0d9-084bf32d8f7c">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="76"/>
+	<property name="ireport.y" value="144"/>
 	<subDataset name="sponsorship" uuid="6b82b54c-a5ad-49d3-98c5-d3f208158bf8">
 		<parameter name="student_id" class="java.lang.Long"/>
 		<queryString>
@@ -77,7 +77,6 @@ FROM
 		<field name="ad_sponsorship_student_id" class="java.lang.Long"/>
 		<filterExpression><![CDATA[$P{student_id}.equals( $F{ad_sponsorship_student_id} )]]></filterExpression>
 	</subDataset>
-	<subDataset name="dataset1" uuid="89a3e99e-6618-45b2-b1f1-8e3b0ff15d9f"/>
 	<parameter name="identity_no" class="java.lang.String"/>
 	<parameter name="curDate" class="java.lang.String" isForPrompting="false">
 		<parameterDescription><![CDATA[]]></parameterDescription>
@@ -275,7 +274,7 @@ ORDER BY
 	<field name="ad_acdm_sesn_id" class="java.lang.Long"/>
 	<field name="ad_stdn_memo" class="java.lang.String"/>
 	<field name="ad_stdn_no_id" class="java.lang.String"/>
-	<field name="ad_stdn_student_status" class="java.lang.Integer"/>
+	<field name="ad_stdn_student_status" class="java.lang.String"/>
 	<field name="ad_stdn_id" class="java.lang.Long"/>
 	<field name="ad_stdn_cohort_id" class="java.lang.Long"/>
 	<field name="ad_stdn_study_mode_id" class="java.lang.Long"/>
@@ -347,10 +346,6 @@ ORDER BY
 	<filterExpression><![CDATA[$F{ad_actr_identity_no}.equals( $P{identity_no} )]]></filterExpression>
 	<title>
 		<band height="107">
-			<image>
-				<reportElement x="63" y="27" width="65" height="80" uuid="07614383-24cb-4143-891b-e52af50cbbc2"/>
-				<imageExpression><![CDATA["C:\\Users\\PAMS05\\git\\academic\\back\\src\\main\\resources\\reports\\img\\A17P001.jpg"]]></imageExpression>
-			</image>
 			<rectangle>
 				<reportElement x="1" y="0" width="555" height="21" backcolor="#CCCCCC" uuid="a26452c4-fc54-4bd0-b6f6-65360e670f26"/>
 				<graphicElement>
@@ -386,6 +381,9 @@ ORDER BY
 				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{ad_actr_identity_no}]]></textFieldExpression>
 			</textField>
+			<rectangle>
+				<reportElement x="63" y="31" width="83" height="62" uuid="84879637-1ad1-4e1c-8767-776d8048f915"/>
+			</rectangle>
 		</band>
 	</title>
 	<columnHeader>
@@ -410,21 +408,23 @@ ORDER BY
 				<text><![CDATA[ PART A: DETAILS INFORMATION]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="330" y="51" width="172" height="20" uuid="66dec2e2-bd20-4708-8321-b39d52b31f65"/>
-				<textElement verticalAlignment="Middle"/>
+				<reportElement x="369" y="51" width="172" height="20" uuid="66dec2e2-bd20-4708-8321-b39d52b31f65"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{ad_stdy_cntr_description}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="237" y="51" width="93" height="20" uuid="4b742044-c2a6-4fea-94a6-cf72795db0e8"/>
+				<reportElement x="276" y="51" width="93" height="20" uuid="4b742044-c2a6-4fea-94a6-cf72795db0e8"/>
 				<textElement verticalAlignment="Middle">
-					<font fontName="SansSerif" isBold="true"/>
+					<font fontName="SansSerif" size="9" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Study Center: ]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="11" y="18" width="78" height="20" uuid="3f05093f-be22-4bdd-98bb-6c35f4492583"/>
 				<textElement verticalAlignment="Middle">
-					<font fontName="SansSerif" isBold="true"/>
+					<font fontName="SansSerif" size="9" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Program Level: ]]></text>
 			</staticText>
@@ -438,7 +438,7 @@ ORDER BY
 			<staticText>
 				<reportElement x="10" y="85" width="71" height="20" uuid="38ce74fb-8a9d-4448-b387-b5baf5cecfa6"/>
 				<textElement verticalAlignment="Middle">
-					<font fontName="SansSerif" isBold="true"/>
+					<font fontName="SansSerif" size="9" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Scholarship: ]]></text>
 			</staticText>
@@ -454,7 +454,9 @@ ORDER BY
 					<jr:listContents height="35" width="263">
 						<textField>
 							<reportElement x="1" y="3" width="180" height="20" uuid="5e18cdbb-cc2a-4251-8c96-48143f3159e9"/>
-							<textElement verticalAlignment="Middle"/>
+							<textElement verticalAlignment="Middle">
+								<font size="9"/>
+							</textElement>
 							<textFieldExpression><![CDATA[$F{ad_actr_name}]]></textFieldExpression>
 						</textField>
 					</jr:listContents>
@@ -466,58 +468,66 @@ ORDER BY
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="237" y="34" width="93" height="20" uuid="7a25f89b-e929-4bd5-a1d1-d2fe173ced84"/>
+				<reportElement x="276" y="34" width="93" height="20" uuid="7a25f89b-e929-4bd5-a1d1-d2fe173ced84"/>
 				<textElement verticalAlignment="Middle">
-					<font fontName="SansSerif" isBold="true"/>
+					<font fontName="SansSerif" size="9" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Student Status:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="237" y="18" width="93" height="20" uuid="bff2bb37-d848-4fe3-bdea-d2f3661f3ce1"/>
+				<reportElement x="276" y="18" width="93" height="20" uuid="bff2bb37-d848-4fe3-bdea-d2f3661f3ce1"/>
 				<textElement verticalAlignment="Middle">
-					<font fontName="SansSerif" isBold="true"/>
+					<font fontName="SansSerif" size="9" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Cohort: ]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="11" y="34" width="78" height="20" uuid="83295538-d268-433c-b012-c218ca69e476"/>
 				<textElement verticalAlignment="Middle">
-					<font fontName="SansSerif" isBold="true"/>
+					<font fontName="SansSerif" size="9" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Study Mode:]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="11" y="52" width="78" height="20" uuid="f0dc1469-4c71-46b8-ad2c-1003583bb771"/>
 				<textElement verticalAlignment="Middle">
-					<font fontName="SansSerif" isBold="true"/>
+					<font fontName="SansSerif" size="9" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Program:]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="11" y="69" width="78" height="20" uuid="eb9877b2-1012-4b38-a2a8-50226bea716a"/>
 				<textElement verticalAlignment="Middle">
-					<font fontName="SansSerif" isBold="true"/>
+					<font fontName="SansSerif" size="9" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Faculty:]]></text>
 			</staticText>
 			<textField>
 				<reportElement x="88" y="70" width="133" height="20" uuid="e29a6676-c4a0-4477-98ad-cfcb965cf368"/>
-				<textElement verticalAlignment="Middle"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{ad_fcty_name}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="89" y="53" width="132" height="20" uuid="79a277a0-3766-454b-a3df-859b280ea337"/>
-				<textElement verticalAlignment="Middle"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{ad_prgm_code}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="89" y="35" width="132" height="20" uuid="0209b8b0-eefc-4fcc-8bff-9e75f701a053"/>
-				<textElement verticalAlignment="Middle"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{ad_stdy_mode_description}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="330" y="35" width="172" height="20" uuid="565d4437-3353-4208-b46d-a303dfa32e99"/>
-				<textElement verticalAlignment="Middle"/>
+				<reportElement x="369" y="35" width="172" height="20" uuid="565d4437-3353-4208-b46d-a303dfa32e99"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
 				<textFieldExpression><![CDATA[(
 $F{ad_stdn_student_status}.equals( "0" )? "MATRICULATED":
 $F{ad_stdn_student_status}.equals( "1" )? "ACTIVE":
@@ -535,38 +545,50 @@ $F{ad_stdn_student_status}.equals( "4" )? "GRADUATED":
 				<text><![CDATA[ PART B: MISCELANEOUS INFO]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="330" y="18" width="172" height="20" uuid="5442bf21-0806-43fa-baef-26575c337d18"/>
-				<textElement verticalAlignment="Middle"/>
+				<reportElement x="369" y="18" width="172" height="20" uuid="5442bf21-0806-43fa-baef-26575c337d18"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{ad_chrt_code}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="237" y="68" width="93" height="20" uuid="daccd102-6585-41e7-9b65-e96c30b6b461"/>
+				<reportElement x="276" y="68" width="93" height="20" uuid="daccd102-6585-41e7-9b65-e96c30b6b461"/>
 				<textElement verticalAlignment="Middle">
-					<font fontName="SansSerif" isBold="true"/>
+					<font fontName="SansSerif" size="9" isBold="true"/>
 				</textElement>
 				<text><![CDATA[CGPA:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="330" y="69" width="100" height="20" uuid="9fd3265c-b7ca-44c7-b2aa-fe35364c88f2"/>
-				<textElement verticalAlignment="Middle"/>
+				<reportElement x="369" y="69" width="100" height="20" uuid="9fd3265c-b7ca-44c7-b2aa-fe35364c88f2"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{ad_admn_cgpa}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="89" y="18" width="132" height="20" uuid="18c6a7a2-5a48-4605-880f-f7fda38fbae5"/>
-				<textElement verticalAlignment="Middle"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{ad_prgm_levl_description}]]></textFieldExpression>
 			</textField>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="96" splitType="Stretch"/>
+		<band height="29" splitType="Stretch"/>
 	</detail>
 	<pageFooter>
-		<band height="63">
+		<band height="63"/>
+	</pageFooter>
+	<lastPageFooter>
+		<band height="50">
 			<staticText>
-				<reportElement x="167" y="39" width="246" height="20" uuid="4aa3bf32-8d9c-4723-a8cf-bb19bc5cc7d4"/>
+				<reportElement x="174" y="30" width="246" height="20" uuid="4aa3bf32-8d9c-4723-a8cf-bb19bc5cc7d4"/>
 				<text><![CDATA[This is computer generated report by CPS UMK]]></text>
 			</staticText>
 		</band>
-	</pageFooter>
+	</lastPageFooter>
+	<summary>
+		<band height="50"/>
+	</summary>
 </jasperReport>
