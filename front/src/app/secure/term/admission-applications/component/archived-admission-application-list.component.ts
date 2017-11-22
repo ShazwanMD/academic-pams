@@ -77,7 +77,7 @@ export class ArchivedAdmissionApplicationListComponent implements AfterViewInit 
 
   viewAdmissionApplication(admissionApplication: AdmissionApplication): void {
     console.log('Emitting task');
-    let snackBarRef = this.snackBar.open('Viewing admission application', '', {duration:3000});
+    let snackBarRef = this.snackBar.open('Viewing admission application', 'OK', {duration:2000});
     snackBarRef.afterDismissed().subscribe(() => {
       this.view.emit(admissionApplication);
     });

@@ -5,7 +5,7 @@
   <div fxLayout fxLayout.xs="column" fxLayoutWrap fxLayoutGap="25px" class="inset">
     <md-input-container fxFlex="calc(100%-25px)" mdTooltip="Please insert code" >
       <input mdInput
-             placeholder="Code"
+             placeholder="Code (ex: 20172018)"
              formControlName="code" flex >
     </md-input-container>
     <div class="error" *ngIf="createForm.get('code').invalid && createForm.get('code').touched">
@@ -13,7 +13,7 @@
     </div>
       <md-input-container fxFlex="calc(100%-25px)" mdTooltip="Please insert description">
       <input mdInput
-             placeholder="Description"
+             placeholder="Description (ex: 2017/2018)"
              formControlName="description"
              flex/>
     </md-input-container>
@@ -22,7 +22,7 @@
     </div>
       <md-input-container fxFlex="calc(100%-25px)" mdTooltip="Please insert year">
       <input mdInput
-             placeholder="Year"
+             placeholder="Year (ex: 2017)"
              formControlName="year"
              flex/>
     </md-input-container>

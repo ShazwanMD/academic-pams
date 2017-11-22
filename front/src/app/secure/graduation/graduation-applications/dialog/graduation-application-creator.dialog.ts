@@ -46,7 +46,7 @@ export class GraduationApplicationCreatorDialog implements OnInit {
     this.store.dispatch(this.actions.startGraduationApplicationTask(graduationApplication));
     this.dialog.close();
     this.router.navigate(['/secure/graduation/graduation-applications']);
-    let snackBarRef = this.snackBar.open( 'New graduation has been saved','',{ duration: 3000 } );
+    let snackBarRef = this.snackBar.open( 'New graduation has been saved','OK',{ duration: 2000 } );
     snackBarRef.afterDismissed().subscribe(() => {
        } );
   }

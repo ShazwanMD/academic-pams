@@ -39,7 +39,7 @@ export class EnrollmentApplicationTaskActionComponent {
         var r = confirm( "Are you sure to proceed in registering the courses?" );
         if ( r == true ) {
 
-            let snackBarRef = this._snackBar.open( 'Course enrollments completed', 'OK' );
+            let snackBarRef = this._snackBar.open( 'Course enrollments completed', 'OK', {duration:2000}  );
             snackBarRef.afterDismissed().subscribe(() => {
                 this.store.dispatch( this.actions.completeEnrollmentApplicationTask( this.enrollmentApplicationTask ) );
                 //this.router.navigate( ['/secure'] );
@@ -48,7 +48,7 @@ export class EnrollmentApplicationTaskActionComponent {
 
         } else {
 
-            let snackBarRef = this._snackBar.open( 'Continue to add/drop courses', 'OK' );
+            let snackBarRef = this._snackBar.open( 'Continue to add/drop courses', 'OK' , {duration:2000} );
             snackBarRef.afterDismissed().subscribe(() => {
             } );
         }

@@ -50,7 +50,7 @@ export class AcademicSessionListComponent implements AfterViewInit, OnChanges {
 
   viewAcademicSession(academicSession: AcademicSession): void {
     console.log('Emitting academicSessions');
-    let snackBarRef = this.snackBar.open('Viewing academicSession info', '' , { duration: 3000 } );
+    let snackBarRef = this.snackBar.open('Viewing academicSession info', 'OK' , { duration: 2000 } );
     snackBarRef.afterDismissed().subscribe(() => {
       this.view.emit(academicSession);
     });

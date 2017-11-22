@@ -70,7 +70,7 @@ export class ProfileDetailPage implements OnInit {
   }
 
   deactivate(): void {
-    let snackBarRef = this.snackBar.open('Deactivating Student : ?', '', {duration:3000});
+    let snackBarRef = this.snackBar.open('Deactivating Student : ?', 'OK', {duration:2000});
     snackBarRef.afterDismissed().subscribe(() => {
         this.student$.take(1).subscribe((student) =>
           this.store.dispatch(this.actions.deactivateStudent(student)));
@@ -80,7 +80,7 @@ export class ProfileDetailPage implements OnInit {
   }
 
   activate(): void {
-    let snackBarRef = this.snackBar.open('Activating Student : ?', '', {duration:3000});
+    let snackBarRef = this.snackBar.open('Activating Student : ?', 'OK', {duration:2000});
     snackBarRef.afterDismissed().subscribe(() => {
         this.student$.take(1).subscribe((student) =>
           this.store.dispatch(this.actions.activateStudent(student)));
@@ -90,7 +90,7 @@ export class ProfileDetailPage implements OnInit {
   }
 
   bar(): void {
-    let snackBarRef = this.snackBar.open('Barred Student : ?', '' , {duration:3000});
+    let snackBarRef = this.snackBar.open('Barred Student : ?', 'OK' , {duration:2000});
     snackBarRef.afterDismissed().subscribe(() => {
         this.student$.take(1).subscribe((student) =>
           this.store.dispatch(this.actions.barStudent(student)));

@@ -42,7 +42,7 @@ export class ProgramListComponent implements OnChanges, AfterViewInit {
 
   viewProgram(program: Program): void {
     console.log('Emitting programs');
-    let snackBarRef = this.snackBar.open('Viewing program info', '' , { duration: 3000 } );
+    let snackBarRef = this.snackBar.open('Viewing program info', 'OK' , { duration: 2000 } );
     snackBarRef.afterDismissed().subscribe(() => {
       this.view.emit(program);
     });

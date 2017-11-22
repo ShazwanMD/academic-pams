@@ -58,7 +58,7 @@ export class AcademicSessionEditorDialog implements OnInit {
             graduationStartDate: [undefined, Validators.required],
             graduationEndDate: [undefined, Validators.required],
 
-            semester: [AcademicSemester.SEMESTER_1, Validators.required],
+            semester: [AcademicSemester.SEPTEMBER, Validators.required],
         } );
 
         if ( this.edit ) this.editorForm.patchValue( this._academicSession );

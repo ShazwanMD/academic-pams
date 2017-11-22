@@ -32,7 +32,18 @@
     <md-list-item >
       <md-icon md-list-avatar>description</md-icon>
       <h4 md-line>Print Student Details Info</h4>
-      <p md-line>Print student detail information</p>
+      <p md-line>Print student detail information </p>
+    </md-list-item>
+   
+    <md-divider></md-divider>
+  </md-nav-list>
+  
+   <md-nav-list flex dense *ngIf="student.studentStatus == 'GRADUATED'" >
+    <md-divider></md-divider>
+    <md-list-item (click)="downloadReport('Ad_TERM_216.jrxml&report.pdf',student)" >
+      <md-icon md-list-avatar>description</md-icon>
+      <h4 md-line>Print Transcript Convocation UMK</h4>
+      <p md-line>Print official transcript</p>
     </md-list-item>
    
     <md-divider></md-divider>

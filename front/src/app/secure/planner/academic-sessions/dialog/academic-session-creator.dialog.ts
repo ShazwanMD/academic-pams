@@ -36,7 +36,7 @@ export class AcademicSessionCreatorDialog implements OnInit {
         this.createForm = this.formBuilder.group( {
             id: [undefined],
             code: ['', Validators.required],
-            description: ['', Validators.minLength( this.minLength )],
+            //description: ['', Validators.minLength( this.minLength )],
             current: [true],
             startDate: ['', Validators.required],
             endDate: ['', Validators.required],

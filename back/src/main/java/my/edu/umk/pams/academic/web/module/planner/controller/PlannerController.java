@@ -142,7 +142,10 @@ public class PlannerController {
 
 				AdAcademicSession academicSession = new AdAcademicSessionImpl();
 				academicSession.setCode(vo.getCode());
-				academicSession.setDescription("SESSION " + vo.getDescription());
+				
+				System.out.println("setDescription: SEMESTER " + vo.getSemester() + " " + vo.getYear().getDescription());
+				
+				academicSession.setDescription("SEMESTER " + vo.getSemester() + " " + vo.getYear().getDescription());
 				academicSession.setCurrent(vo.isCurrent());
 				academicSession.setStartDate(vo.getstartDate());
 				academicSession.setEndDate(vo.getendDate());

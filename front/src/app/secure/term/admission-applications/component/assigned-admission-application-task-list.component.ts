@@ -87,7 +87,7 @@ export class AssignedAdmissionApplicationTaskListComponent implements OnChanges 
 
   viewTask(task: AdmissionApplicationTask): void {
     console.log('viewing task');
-    let snackBarRef = this.snackBar.open('Viewing semester registration', '', {duration:3000});
+    let snackBarRef = this.snackBar.open('Viewing semester registration', 'OK', {duration:2000});
     snackBarRef.afterDismissed().subscribe(() => {
       this.view.emit(task);
     });
