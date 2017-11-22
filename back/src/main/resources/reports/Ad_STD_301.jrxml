@@ -346,46 +346,53 @@ ORDER BY
 	</variable>
 	<filterExpression><![CDATA[$F{ad_actr_identity_no}.equals( $P{identity_no} )]]></filterExpression>
 	<title>
-		<band height="107">
+		<band height="146">
 			<image>
-				<reportElement x="63" y="27" width="65" height="80" uuid="07614383-24cb-4143-891b-e52af50cbbc2"/>
+				<reportElement x="63" y="63" width="65" height="80" uuid="07614383-24cb-4143-891b-e52af50cbbc2"/>
 				<imageExpression><![CDATA["C:\\Users\\PAMS05\\git\\academic\\back\\src\\main\\resources\\reports\\img\\A17P001.jpg"]]></imageExpression>
 			</image>
 			<rectangle>
-				<reportElement x="1" y="0" width="555" height="21" backcolor="#CCCCCC" uuid="a26452c4-fc54-4bd0-b6f6-65360e670f26"/>
+				<reportElement x="1" y="36" width="555" height="21" backcolor="#CCCCCC" uuid="a26452c4-fc54-4bd0-b6f6-65360e670f26"/>
 				<graphicElement>
 					<pen lineWidth="0.5"/>
 				</graphicElement>
 			</rectangle>
 			<staticText>
-				<reportElement mode="Opaque" x="1" y="0" width="124" height="21" backcolor="#FFFF00" uuid="804b988b-f82e-45da-b59b-482880b40986"/>
+				<reportElement mode="Opaque" x="1" y="36" width="124" height="21" backcolor="#FFFF00" uuid="804b988b-f82e-45da-b59b-482880b40986"/>
 				<textElement verticalAlignment="Middle" rotation="None">
 					<font fontName="SansSerif" size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[  STUDENT PROFILE]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="150" y="31" width="335" height="22" uuid="bc671dbc-5b5d-4cab-8f01-01aef21eb9b4"/>
+				<reportElement x="150" y="67" width="335" height="22" uuid="bc671dbc-5b5d-4cab-8f01-01aef21eb9b4"/>
 				<textElement textAlignment="Center">
 					<font size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{ad_actr_name}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="150" y="63" width="335" height="20" uuid="50f89952-7bf8-4c07-913a-6d194e48701a"/>
+				<reportElement x="150" y="99" width="335" height="20" uuid="50f89952-7bf8-4c07-913a-6d194e48701a"/>
 				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{ad_actr_email}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="150" y="73" width="335" height="20" uuid="591dae24-feb7-4826-bd9f-b66a65d9e0e7"/>
+				<reportElement x="150" y="109" width="335" height="20" uuid="591dae24-feb7-4826-bd9f-b66a65d9e0e7"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{ad_actr_phone}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="150" y="49" width="335" height="20" uuid="2f76d698-d995-414b-b2ca-1c8664e93ac1"/>
+				<reportElement x="150" y="85" width="335" height="20" uuid="2f76d698-d995-414b-b2ca-1c8664e93ac1"/>
 				<textElement textAlignment="Center"/>
 				<textFieldExpression><![CDATA[$F{ad_actr_identity_no}]]></textFieldExpression>
 			</textField>
+			<staticText>
+				<reportElement x="23" y="3" width="513" height="20" uuid="6dcae580-58f6-45cc-8003-889486a184e1"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[MALAYSIAN GRADUATE SCHOOL OF ENTREPRENEURSHIP & BUSINESS (MGSEB)]]></text>
+			</staticText>
 		</band>
 	</title>
 	<columnHeader>
