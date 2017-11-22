@@ -669,7 +669,7 @@ $F{ad_acdm_sesn_semester}.equals( "2" )? "SEMESTER 3 DISEMBER":
 				<textElement>
 					<font fontName="SansSerif"/>
 				</textElement>
-				<text><![CDATA[This is computer generated report by MGSEB UMK ]]></text>
+				<text><![CDATA[This is computer generated report by CPS UMK ]]></text>
 			</staticText>
 		</band>
 	</pageFooter>
