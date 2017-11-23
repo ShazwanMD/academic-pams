@@ -1,6 +1,8 @@
 package my.edu.umk.pams.academic.planner.model;
 
 
+import my.edu.umk.pams.academic.common.model.AdCampus;
+import my.edu.umk.pams.academic.common.model.AdCampusImpl;
 import my.edu.umk.pams.academic.common.model.AdGraduateCenter;
 import my.edu.umk.pams.academic.common.model.AdGraduateCenterImpl;
 import my.edu.umk.pams.academic.common.model.AdStudyMode;
@@ -48,6 +50,11 @@ public class AdFacultyImpl implements AdFaculty {
 	@JoinColumn(name = "GRADUATE_CENTER_ID", nullable = true)
 	private AdGraduateCenter center;
 
+	@ManyToOne(targetEntity = AdCampusImpl.class)
+	@JoinColumn(name = "CAMPUS_ID", nullable = true)
+	private AdCampus campus;
+
+	
     @Embedded
     private AdMetadata metadata;
 
@@ -141,6 +148,14 @@ public class AdFacultyImpl implements AdFaculty {
 
 	public void setCenter(AdGraduateCenter center) {
 		this.center = center;
+	}
+
+	public AdCampus getCampus() {
+		return campus;
+	}
+
+	public void setCampus(AdCampus campus) {
+		this.campus = campus;
 	}
 
 	@Override
