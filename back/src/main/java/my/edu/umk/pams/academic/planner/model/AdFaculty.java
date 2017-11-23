@@ -1,6 +1,7 @@
 package my.edu.umk.pams.academic.planner.model;
 
 
+import my.edu.umk.pams.academic.common.model.AdCampus;
 import my.edu.umk.pams.academic.common.model.AdGraduateCenter;
 import my.edu.umk.pams.academic.core.AdMetaObject;
 
@@ -42,5 +43,11 @@ public interface AdFaculty extends AdMetaObject {
     AdGraduateCenter getCenter();
     
     void setCenter(AdGraduateCenter center);
+    
+    AdCampus getCampus();
+    
+    void setCampus(AdCampus campus);
+    
+    
     
 }

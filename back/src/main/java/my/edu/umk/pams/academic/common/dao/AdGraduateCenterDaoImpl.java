@@ -63,7 +63,6 @@ public class AdGraduateCenterDaoImpl extends GenericDaoSupport<Long, AdGraduateC
 
 	@Override
 	public Integer count(String filter) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

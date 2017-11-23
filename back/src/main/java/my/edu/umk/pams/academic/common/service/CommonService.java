@@ -705,6 +705,27 @@ public  interface CommonService{
 
 	void removeGraduateCenter(AdGraduateCenter graduateCenter);
 
+	
+	// ====================================================================================================
+	// CAMPUS
+	// ====================================================================================================
+
+	AdCampus findCampusById(Long id);
+
+	AdCampus findCampusByCode(String code);
+
+	AdCampus findCampusByFacultyCode(AdFaculty facultyCode);
+	
+	List<AdCampus> findCampuss();
+
+	List<AdCampus> findCampuss(String filter, Integer offset, Integer limit);
+
+	void saveCampus(AdCampus campus);
+
+	void updateCampus(AdCampus campus);
+
+	void removeCampus(AdCampus campus);
+
 
 
 

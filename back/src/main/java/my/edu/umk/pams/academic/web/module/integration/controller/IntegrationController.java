@@ -24,6 +24,7 @@ import my.edu.umk.pams.academic.common.service.CommonService;
 import my.edu.umk.pams.academic.identity.dao.RecursiveGroupException;
 import my.edu.umk.pams.academic.identity.model.AdActor;
 import my.edu.umk.pams.academic.identity.model.AdActorImpl;
+import my.edu.umk.pams.academic.identity.model.AdActorType;
 import my.edu.umk.pams.academic.identity.model.AdAddress;
 import my.edu.umk.pams.academic.identity.model.AdAddressImpl;
 import my.edu.umk.pams.academic.identity.model.AdAddressType;
@@ -116,13 +117,21 @@ public class IntegrationController {
 	@RequestMapping(value = "/staff", method = RequestMethod.POST)
 	public ResponseEntity<String> saveStaff(@RequestBody StaffPayload payload) {
 		SecurityContext ctx = loginAsSystem();
-		LOG.debug("payload:{}", payload.getStaffId());
-
+		
+		LOG.info("Start Receive Staff From IMS");
+		
+		LOG.debug("Staff Staff_No:{}", payload.getStaffId());
+		LOG.debug("Staff Name:{}", payload.getStaffName());
+		
 		AdStaff staff = new AdStaffImpl();
 		staff.setIdentityNo(payload.getStaffId());
 		staff.setName(payload.getStaffName());
+		staff.setActorType(AdActorType.STAFF);
+		
 		identityService.saveStaff(staff);
 
+		LOG.info("Finish Receive Staff From IMS");
+		
 		logoutAsSystem(ctx);
 		return new ResponseEntity<String>("success", HttpStatus.OK);
 	}

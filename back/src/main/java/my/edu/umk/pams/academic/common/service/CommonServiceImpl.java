@@ -116,9 +116,12 @@ public class CommonServiceImpl implements CommonService {
 
 	@Autowired
 	private SecurityService securityService;
-	
+
 	@Autowired
 	private AdGraduateCenterDao graduateCenterDao;
+
+	@Autowired
+	private AdCampusDao campusDao;
 
 	// ====================================================================================================
 	// COUNTRY CODE
@@ -180,7 +183,7 @@ public class CommonServiceImpl implements CommonService {
 	public AdStateCode findStateCodeByCode(String code) {
 		return stateCodeDao.findByCode(code);
 	}
-	
+
 	@Override
 	public List<AdStateCode> findStateCodes() {
 		return stateCodeDao.find();
@@ -413,7 +416,7 @@ public class CommonServiceImpl implements CommonService {
 	public AdGradeCode findGradeCodeById(Long id) {
 		return gradeCodeDao.findById(id);
 	}
-	
+
 	@Override
 	public AdGradeCode findByScore(BigDecimal score) {
 		return gradeCodeDao.findByScore(score);
@@ -947,14 +950,12 @@ public class CommonServiceImpl implements CommonService {
 	public AdStudyCenter findStudyCenterByCode(String code) {
 		return studyCenterDao.findByCode(code);
 	}
-	
+
 	@Override
 	public AdStudyCenter findStudyCenterById(Long id) {
 		return studyCenterDao.findById(id);
 	}
 
-	
-	
 	@Override
 	public List<AdStudyCenter> findStudyCenters(String filter, Integer offset, Integer limit) {
 		return studyCenterDao.find(filter, offset, limit);
@@ -1695,51 +1696,98 @@ public class CommonServiceImpl implements CommonService {
 		sessionFactory.getCurrentSession().flush();
 	}
 
-	 @Override
-	    public AdGraduateCenter findGraduateCenterById(Long id) {
-	        return graduateCenterDao.findById(id);
-	    }
+	// ====================================================================================================
+	// GRADUATE CENTER
+	// ====================================================================================================
 
-	    @Override
-	    public AdGraduateCenter findGraduateCenterByCode(String code) {
-	        return graduateCenterDao.findByCode(code);
-	    }
-	    
-		@Override
-		public AdGraduateCenter findGraduateCenterByFacultyCode(AdFaculty facultyCode) {
-			return graduateCenterDao.findByFacultyCode(facultyCode);
-		}
+	@Override
+	public AdGraduateCenter findGraduateCenterById(Long id) {
+		return graduateCenterDao.findById(id);
+	}
 
-	    @Override
-	    public List<AdGraduateCenter> findGraduateCenters() {
-	        return graduateCenterDao.find();
-	    }
+	@Override
+	public AdGraduateCenter findGraduateCenterByCode(String code) {
+		return graduateCenterDao.findByCode(code);
+	}
 
-	    @Override
-	    public List<AdGraduateCenter> findGraduateCenters(String filter, Integer offset, Integer limit) {
-	        return graduateCenterDao.find(filter, offset, limit);
-	    }
+	@Override
+	public AdGraduateCenter findGraduateCenterByFacultyCode(AdFaculty facultyCode) {
+		return graduateCenterDao.findByFacultyCode(facultyCode);
+	}
 
-	    @Override
-	    public void saveGraduateCenter(AdGraduateCenter graduateCenter) {
-	        graduateCenterDao.save(graduateCenter, securityService.getCurrentUser());
-	        sessionFactory.getCurrentSession().flush();
-	    }
+	@Override
+	public List<AdGraduateCenter> findGraduateCenters() {
+		return graduateCenterDao.find();
+	}
 
-	    @Override
-	    public void updateGraduateCenter(AdGraduateCenter graduateCenter) {
-	        graduateCenterDao.update(graduateCenter, securityService.getCurrentUser());
-	        sessionFactory.getCurrentSession().flush();
-	    }
+	@Override
+	public List<AdGraduateCenter> findGraduateCenters(String filter, Integer offset, Integer limit) {
+		return graduateCenterDao.find(filter, offset, limit);
+	}
 
-	    @Override
-	    public void removeGraduateCenter(AdGraduateCenter graduateCenter) {
-	        graduateCenterDao.remove(graduateCenter, securityService.getCurrentUser());
-	        sessionFactory.getCurrentSession().flush();
-	    }
+	@Override
+	public void saveGraduateCenter(AdGraduateCenter graduateCenter) {
+		graduateCenterDao.save(graduateCenter, securityService.getCurrentUser());
+		sessionFactory.getCurrentSession().flush();
+	}
 
+	@Override
+	public void updateGraduateCenter(AdGraduateCenter graduateCenter) {
+		graduateCenterDao.update(graduateCenter, securityService.getCurrentUser());
+		sessionFactory.getCurrentSession().flush();
+	}
 
+	@Override
+	public void removeGraduateCenter(AdGraduateCenter graduateCenter) {
+		graduateCenterDao.remove(graduateCenter, securityService.getCurrentUser());
+		sessionFactory.getCurrentSession().flush();
+	}
 
+	// ====================================================================================================
+	// CAMPUS
+	// ====================================================================================================
 
+	@Override
+	public AdCampus findCampusById(Long id) {
+		return campusDao.findById(id);
+	}
+
+	@Override
+	public AdCampus findCampusByCode(String code) {
+		return campusDao.findByCode(code);
+	}
+
+	@Override
+	public AdCampus findCampusByFacultyCode(AdFaculty facultyCode) {
+		return campusDao.findByFacultyCode(facultyCode);
+	}
+
+	@Override
+	public List<AdCampus> findCampuss() {
+		return campusDao.find();
+	}
+
+	@Override
+	public List<AdCampus> findCampuss(String filter, Integer offset, Integer limit) {
+		return campusDao.find(filter, offset, limit);
+	}
+
+	@Override
+	public void saveCampus(AdCampus campus) {
+		campusDao.save(campus, securityService.getCurrentUser());
+		sessionFactory.getCurrentSession().flush();
+	}
+
+	@Override
+	public void updateCampus(AdCampus campus) {
+		campusDao.update(campus, securityService.getCurrentUser());
+		sessionFactory.getCurrentSession().flush();
+	}
+
+	@Override
+	public void removeCampus(AdCampus campus) {
+		campusDao.remove(campus, securityService.getCurrentUser());
+		sessionFactory.getCurrentSession().flush();
+	}
 
 }
