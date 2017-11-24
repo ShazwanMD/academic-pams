@@ -24,4 +24,8 @@ public interface AdStaff extends AdActor {
 	AdProgram getProgram();
 
 	void setProgram(AdProgram program);
+	
+	String getStaffCategory();
+	
+	void setStaffCategory(String category);
 }

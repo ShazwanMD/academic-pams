@@ -2,6 +2,7 @@ package my.edu.umk.pams.academic.identity.service;
 
 import my.edu.umk.pams.academic.identity.dao.RecursiveGroupException;
 import my.edu.umk.pams.academic.identity.model.*;
+import my.edu.umk.pams.connector.payload.StaffPayload;
 
 import java.util.List;
 import java.util.Set;
@@ -161,8 +162,12 @@ public interface IdentityService {
 	boolean isStaffNoExists(String StaffNo);
 
 	void saveStaff(AdStaff Staff);
+	
+	void saveStaffIMSNonAcademicActive(AdStaff staff);
 
 	void updateStaff(AdStaff Staff);
+	
+	void updateStaffIMSNonAcademicActive(AdStaff staff, StaffPayload payload);
 
 	void deleteStaff(AdStaff Staff);
 

@@ -100,7 +100,7 @@ public class AdStaffDaoImpl extends GenericDaoSupport<Long, AdStaff> implements 
                 "and s.metadata.state = :state ");
         query.setString("staffNo", staffNo);
         query.setInteger("state", AdMetaState.ACTIVE.ordinal());
-        return ((Integer) query.uniqueResult() > 0);
+        return 0 < ((Long) query.uniqueResult()).intValue();
     }
 
     @Override

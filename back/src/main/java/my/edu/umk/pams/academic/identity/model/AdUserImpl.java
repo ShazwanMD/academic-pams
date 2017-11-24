@@ -22,7 +22,7 @@ public class AdUserImpl extends AdPrincipalImpl implements AdUser {
     private String realName;
 
     @NotNull
-    @Column(name = "EMAIL", nullable = false, unique = true)
+    @Column(name = "EMAIL", nullable = true, unique = true)
     private String email;
 
     @OneToOne(targetEntity = AdActorImpl.class)

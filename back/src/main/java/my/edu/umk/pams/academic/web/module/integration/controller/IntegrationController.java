@@ -112,26 +112,73 @@ public class IntegrationController {
 	}
 
 	// ====================================================================================================
-	// STUDENT ACCOUNT
+	// STAFF
 	// ====================================================================================================
-	@RequestMapping(value = "/staff", method = RequestMethod.POST)
-	public ResponseEntity<String> saveStaff(@RequestBody StaffPayload payload) {
+	@RequestMapping(value = "/staff/nonAcademicActive", method = RequestMethod.POST)
+	public ResponseEntity<String> saveStaff(@RequestBody List<StaffPayload> staffPayload)
+			throws RecursiveGroupException {
 		SecurityContext ctx = loginAsSystem();
-		
-		LOG.info("Start Receive Staff From IMS");
-		
-		LOG.debug("Staff Staff_No:{}", payload.getStaffId());
-		LOG.debug("Staff Name:{}", payload.getStaffName());
-		
-		AdStaff staff = new AdStaffImpl();
-		staff.setIdentityNo(payload.getStaffId());
-		staff.setName(payload.getStaffName());
-		staff.setActorType(AdActorType.STAFF);
-		
-		identityService.saveStaff(staff);
 
+		LOG.info("Start Receive Staff From IMS");
+		for (StaffPayload payload : staffPayload) {
+
+			boolean staffReceive = identityService.isStaffNoExists(payload.getStaffId());
+			
+			if (staffReceive ) {
+				
+				LOG.info("Staff already exists");
+				LOG.debug("Staff Staff_No:{}", payload.getStaffId());
+				LOG.debug("Staff Name:{}", payload.getStaffName());
+				
+				String facultyCode = payload.getStaffDepartmentCode();
+				AdFaculty faculty = plannerService.findFacultyByCode(facultyCode);
+				
+				AdStaff staff = identityService.findStaffByIdentityNo(payload.getStaffId());
+				staff.setIdentityNo(payload.getStaffId());
+				staff.setName(payload.getStaffName());
+				staff.setActorType(AdActorType.STAFF);
+				staff.setPhone(payload.getStaffPhoneNo());
+				staff.setFaculty(faculty);
+				staff.setStaffCategory(payload.getStaffCategory());
+				staff.setEmail(payload.getStaffEmail());
+				identityService.updateStaff(staff);
+
+			}else{
+				
+				
+				LOG.info("Staff not exists");
+				LOG.debug("Staff Staff_No:{}", payload.getStaffId());
+				LOG.debug("Staff Name:{}", payload.getStaffName());
+				LOG.debug("Staff Department_Code:{}", payload.getStaffDepartmentCode());
+				LOG.debug("Staff Category:{}", payload.getStaffCategory());
+				
+				String facultyCode = payload.getStaffDepartmentCode();
+				AdFaculty faculty = plannerService.findFacultyByCode(facultyCode);
+				
+				AdStaff staff = new AdStaffImpl();
+				staff.setIdentityNo(payload.getStaffId());
+				staff.setName(payload.getStaffName());
+				staff.setActorType(AdActorType.STAFF);
+				staff.setPhone(payload.getStaffPhoneNo());
+				staff.setFaculty(faculty);
+				staff.setStaffCategory(payload.getStaffCategory());
+				staff.setEmail(payload.getStaffEmail());
+				if (plannerService.isFacultyExists(payload.getStaffDepartmentCode()))
+				{	
+					LOG.info("if faculty exists");
+					identityService.saveStaffIMSNonAcademicActive(staff);
+				
+				}
+				else
+				{
+					LOG.info("if faculty not exists");
+					identityService.saveStaff(staff);
+				
+				}
+			}
+		}
 		LOG.info("Finish Receive Staff From IMS");
-		
+
 		logoutAsSystem(ctx);
 		return new ResponseEntity<String>("success", HttpStatus.OK);
 	}
@@ -145,17 +192,17 @@ public class IntegrationController {
 
 		LOG.info("Start Receiving Student Account");
 		AdStudent student = identityService.findStudentByMatricNo(payload.getMatricNo());
-		LOG.debug("Student Name:{}",student.getName());
-		
+		LOG.debug("Student Name:{}", student.getName());
+
 		student.setBalance(payload.getBalance());
 		student.setOutstanding(payload.isOutstanding());
 		if (student.getOutstanding() == true) {
 			student.setMemo("Outstanding Payments");
-		}else{
+		} else {
 			student.setMemo("N/A");
 		}
 		identityService.updateStudent(student);
-		
+
 		LOG.info("Finish Receiving Student Account");
 		logoutAsSystem(ctx);
 		return new ResponseEntity<String>("sucess", HttpStatus.OK);
@@ -169,23 +216,21 @@ public class IntegrationController {
 		SecurityContext ctx = loginAsSystem();
 
 		LOG.info("Start integration candidate controller");
-		
-		if(plannerService.isCohortExists(payload.getCohortCode())){
+
+		if (plannerService.isCohortExists(payload.getCohortCode())) {
 			LOG.info("cohort already exists");
-		}else{
-			//Cohort
+		} else {
+			// Cohort
 			AdCohort cohort = new AdCohortImpl();
 			cohort.setCode(payload.getCohortCode());
 			cohort.setDescription(payload.getCohortCode());
 			cohort.setProgram(plannerService.findProgramByCode(payload.getProgramCode()));
 			cohort.setSession(plannerService.findCurrentAcademicSession());
 			plannerService.saveCohort(cohort);
-			
-			LOG.info("cohort not exists");
-			
-		}
 
-		
+			LOG.info("cohort not exists");
+
+		}
 
 		// student info
 		AdStudent student = new AdStudentImpl();
@@ -260,20 +305,20 @@ public class IntegrationController {
 		member.setGroup(group);
 		member.setPrincipal(principal);
 		identityService.addGroupMember(group, principal);
-		
+
 		LOG.info("Start Admission");
 		AdAcademicSession session = plannerService.findCurrentAcademicSession();
 		AdAdmission admission = new AdAdmissionImpl();
 		admission.setSession(session);
 		admission.setStudent(student);
 		admission.setOrdinal(1);
-		
-		//Advisor
+
+		// Advisor
 		if (payload.getFacultyCode().equals("A10")) {
 			admission.setAdvisor(null);
 		} else {
 			AdStaff advisor = identityService.findStaffByIdentityNo(payload.getSupervisorCode());
-			LOG.debug("advisor name:{}",advisor.getName());
+			LOG.debug("advisor name:{}", advisor.getName());
 			admission.setAdvisor(advisor);
 		}
 		LOG.info("Finish Supervisor");
@@ -284,14 +329,14 @@ public class IntegrationController {
 		admission.setStanding(AdAcademicStanding.TBD);
 		admission.setStatus(AdAdmissionStatus.REGULAR);
 
-		//StudyCenter
+		// StudyCenter
 		if (payload.getFacultyCode().equals("A10")) {
-			LOG.debug("Faculty:{}",payload.getFacultyCode());
-			
+			LOG.debug("Faculty:{}", payload.getFacultyCode());
+
 			String studyCenterCode = payload.getStudyCenter().getCode();
 			admission.setStudyCenter(commonService.findStudyCenterByCode(studyCenterCode));
-		}else{
-			LOG.debug("Faculty:{}",payload.getFacultyCode());
+		} else {
+			LOG.debug("Faculty:{}", payload.getFacultyCode());
 			LOG.info("StudyCenter NULL");
 			admission.setStudyCenter(null);
 		}

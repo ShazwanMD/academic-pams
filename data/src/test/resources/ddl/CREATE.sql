@@ -1403,6 +1403,7 @@
         TITLE varchar(255),
         FACULTY_ID int8,
         PROGRAM_ID int8,
+        STAFF_CATEGORY varchar(255),
         primary key (ID)
     );
 

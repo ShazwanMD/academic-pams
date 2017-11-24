@@ -37,6 +37,9 @@ public class AdStaffImpl extends AdActorImpl implements AdStaff {
 	@JoinColumn(name = "PROGRAM_ID")
 	private AdProgram program;
 	
+	@Column(name = "STAFF_CATEGORY")
+	private String staffCategory;
+	
 	@Override
 	public AdProgram getProgram() {
 		return program;
@@ -73,6 +76,14 @@ public class AdStaffImpl extends AdActorImpl implements AdStaff {
 	@Override
 	public void setStaffType(AdStaffType staffType) {
 		this.staffType = staffType;
+	}
+	
+	public String getStaffCategory() {
+		return staffCategory;
+	}
+
+	public void setStaffCategory(String staffCategory) {
+		this.staffCategory = staffCategory;
 	}
 
 	@Override

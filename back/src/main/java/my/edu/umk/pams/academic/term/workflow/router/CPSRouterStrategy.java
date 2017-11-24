@@ -12,17 +12,17 @@ public class CPSRouterStrategy extends RouterStrategySupport {
 
 	    @Override
 	    public String findVerifierCandidate() {
-	        return "GRP_KRN_ADM_CPS";  //cps-kerani
+	        return "GRP_KRN_ADM_A09";  //cps-kerani
 	    }
 
 	    @Override
 	    public List<String> findRegistererCandidates(){
-	    	return Arrays.asList("GRP_PGW_ADM_CPS","GRP_ADM");
+	    	return Arrays.asList("GRP_PGW_ADM_A09","GRP_ADM");
 	    }
 	    
 	    @Override
 	    public List<String> findVerifierCandidates(){
-	    	return Arrays.asList("GRP_PGW_ADM_CPS","GRP_ADM");
+	    	return Arrays.asList("GRP_PGW_ADM_A09","GRP_ADM");
 	    }
 
 

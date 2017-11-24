@@ -62,8 +62,8 @@ public class GraduationApplicationRouter extends RouterServiceSupport {
         //String kerani = null;
         AdGraduationApplication application = graduationService.findGraduationApplicationById(graduationApplicationId);
         root = "GRP_ADM";
-        CPS = "GRP_PGW_ADM_CPS";
-        MGSEB = "GRP_PGW_ADM_MGSEB";
+        CPS = "GRP_PGW_ADM_A09";
+        MGSEB = "GRP_PGW_ADM_A10";
 
         return Arrays.asList(root,MGSEB,CPS);
     }
@@ -75,9 +75,9 @@ public class GraduationApplicationRouter extends RouterServiceSupport {
         String root = null;
         String MGSEB = null;
         AdGraduationApplication application = graduationService.findGraduationApplicationById(graduationApplicationId);
-        CPS = "GRP_PGW_ADM_CPS";
+        CPS = "GRP_PGW_ADM_A09";
         root = "GRP_ADM";
-        MGSEB = "GRP_PGW_ADM_MGSEB";
+        MGSEB = "GRP_PGW_ADM_A10";
 
         return Arrays.asList(CPS,root,MGSEB);
     }
