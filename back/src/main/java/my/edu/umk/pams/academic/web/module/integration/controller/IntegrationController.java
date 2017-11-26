@@ -158,7 +158,7 @@ public class IntegrationController {
 				AdStaff staff = new AdStaffImpl();
 				staff.setIdentityNo(payload.getStaffId());
 				staff.setName(payload.getStaffName());
-				staff.setActorType(AdActorType.STAFF);
+ 				staff.setActorType(AdActorType.STAFF);
 				staff.setPhone(payload.getStaffPhoneNo());
 				staff.setFaculty(faculty);
 				staff.setStaffCategory(payload.getStaffCategory());

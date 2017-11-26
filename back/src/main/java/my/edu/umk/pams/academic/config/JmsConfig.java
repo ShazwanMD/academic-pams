@@ -19,6 +19,7 @@ import java.util.Map;
 
 import javax.jms.ConnectionFactory;
 
+import my.edu.umk.pams.connector.payload.AcademicSessionCodePayload;
 import my.edu.umk.pams.connector.payload.AdmissionPayload;
 import my.edu.umk.pams.connector.payload.CandidatePayload;
 import my.edu.umk.pams.connector.payload.CohortCodePayload;
@@ -54,6 +55,7 @@ public class JmsConfig {
             queueMap.put(AdmissionPayload.class.getName(), new ActiveMQQueue("AdmissionPayloadQueue5"));
             queueMap.put(GuardianPayload.class.getName(), new ActiveMQQueue("GuardianPayloadQueue5"));
             queueMap.put(MinAmountPayload.class.getName(), new ActiveMQQueue("MinAmountPayloadQueue5"));
+            queueMap.put(AcademicSessionCodePayload.class.getName(), new ActiveMQQueue("AcademicSessionCodeQueue5"));
         }
 
         @Override

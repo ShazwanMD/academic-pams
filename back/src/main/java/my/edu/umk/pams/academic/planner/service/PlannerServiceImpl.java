@@ -5,6 +5,7 @@ import my.edu.umk.pams.academic.common.model.AdGradeCode;
 import my.edu.umk.pams.academic.common.model.AdStudyMode;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.planner.dao.*;
+import my.edu.umk.pams.academic.planner.event.AcademicSessionAddedEvent;
 import my.edu.umk.pams.academic.planner.event.CohortAddedEvent;
 import my.edu.umk.pams.academic.planner.event.CohortRemovedEvent;
 import my.edu.umk.pams.academic.planner.event.FacultyAddedEvent;
@@ -19,6 +20,7 @@ import my.edu.umk.pams.academic.term.dao.AdSectionDao;
 import my.edu.umk.pams.academic.term.model.*;
 import my.edu.umk.pams.academic.term.service.TermService;
 import my.edu.umk.pams.academic.web.module.planner.vo.Faculty;
+import my.edu.umk.pams.connector.payload.AcademicSessionCodePayload;
 import my.edu.umk.pams.connector.payload.CohortCodePayload;
 import my.edu.umk.pams.connector.payload.FacultyCodePayload;
 import my.edu.umk.pams.connector.payload.ProgramCodePayload;
@@ -159,6 +161,22 @@ public class PlannerServiceImpl implements PlannerService {
 	public void saveAcademicSession(AdAcademicSession academicSession) {
 		academicSessionDao.save(academicSession, securityService.getCurrentUser());
 		sessionFactory.getCurrentSession().flush();
+		LOG.info("saving academicSession");
+
+		LOG.info("Start Broadcasting Academic Session Payload");
+		
+		AcademicSessionCodePayload payload = new AcademicSessionCodePayload();
+		payload.setCode(academicSession.getCode());
+		payload.setDescription(academicSession.getDescription());
+		payload.setStartDate(academicSession.getStartDate());
+		payload.setEndDate(academicSession.getEndDate());
+		applicationContext.publishEvent(new AcademicSessionAddedEvent(payload));
+		LOG.debug("Academic Session Code:{}",payload.getCode());
+		LOG.info("Finish Broadcasting Academic Session Payload");
+		
+		
+		
+		
 	}
 
 	@Override
