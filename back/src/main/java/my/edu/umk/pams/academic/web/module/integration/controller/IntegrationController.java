@@ -39,6 +39,7 @@ import my.edu.umk.pams.academic.identity.model.AdPrincipalType;
 import my.edu.umk.pams.academic.identity.model.AdRoleType;
 import my.edu.umk.pams.academic.identity.model.AdStaff;
 import my.edu.umk.pams.academic.identity.model.AdStaffImpl;
+import my.edu.umk.pams.academic.identity.model.AdStaffType;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.identity.model.AdStudentImpl;
 import my.edu.umk.pams.academic.identity.model.AdStudentStatus;
@@ -123,57 +124,104 @@ public class IntegrationController {
 		for (StaffPayload payload : staffPayload) {
 
 			boolean staffReceive = identityService.isStaffNoExists(payload.getStaffId());
-			
-			if (staffReceive ) {
-				
+
+			if (staffReceive) {
+
 				LOG.info("Staff already exists");
 				LOG.debug("Staff Staff_No:{}", payload.getStaffId());
 				LOG.debug("Staff Name:{}", payload.getStaffName());
-				
+				// Find Staff
+				AdStaff staff = identityService.findStaffByIdentityNo(payload.getStaffId());
+
+				// Find Department Code
+				if (plannerService.isFacultyExists(payload.getStaffDepartmentCode())) {
+
+					LOG.debug("Has Faculty");
+					AdFaculty departmentCode = plannerService.findFacultyByCode(staff.getFaculty().getCode());
+					// Find User
+					AdUser user = identityService.findUserByUsername(staff.getIdentityNo());
+					// Find Group
+					AdGroup group = identityService.findGroupByUser(user);
+
+					if (departmentCode.equals(payload.getStaffDepartmentCode())
+							&& identityService.isGroupExists(group.getName())) {
+
+						AdFaculty faculty = plannerService.findFacultyByCode(payload.getStaffDepartmentCode());
+
+						AdStaff staffUpdate = identityService.findStaffByIdentityNo(payload.getStaffId());
+						staffUpdate.setIdentityNo(payload.getStaffId());
+						staffUpdate.setName(payload.getStaffName());
+						staffUpdate.setActorType(AdActorType.STAFF);
+						staff.setStaffType(AdStaffType.NON_ACADEMIC);
+						staffUpdate.setPhone(payload.getStaffPhoneNo());
+						staffUpdate.setFaculty(faculty);
+						staffUpdate.setStaffCategory(payload.getStaffCategory());
+						staffUpdate.setEmail(payload.getStaffEmail());
+						identityService.updateStaff(staffUpdate);
+						
+					} 
+/*					else if ((!departmentCode.equals(payload.getStaffDepartmentCode()))
+							&& identityService.isGroupExists(group.getName())) {
+
+						AdFaculty faculty = plannerService.findFacultyByCode(payload.getStaffDepartmentCode());
+
+						AdStaff staffUpdate = identityService.findStaffByIdentityNo(payload.getStaffId());
+						staffUpdate.setIdentityNo(payload.getStaffId());
+						staffUpdate.setName(payload.getStaffName());
+						staffUpdate.setActorType(AdActorType.STAFF);
+						staff.setStaffType(AdStaffType.NON_ACADEMIC);
+						staffUpdate.setPhone(payload.getStaffPhoneNo());
+						staffUpdate.setFaculty(faculty);
+						staffUpdate.setStaffCategory(payload.getStaffCategory());
+						staffUpdate.setEmail(payload.getStaffEmail());
+						identityService.updateStaff(staffUpdate);
+					}
+*/
+				} else {
+
+					LOG.debug("NoFaculty");
+					AdFaculty faculty = plannerService.findFacultyByCode(payload.getStaffDepartmentCode());
+
+					AdStaff staffUpdate = identityService.findStaffByIdentityNo(payload.getStaffId());
+					staffUpdate.setIdentityNo(payload.getStaffId());
+					staffUpdate.setName(payload.getStaffName());
+					staffUpdate.setActorType(AdActorType.STAFF);
+					staff.setStaffType(AdStaffType.NON_ACADEMIC);
+					staffUpdate.setPhone(payload.getStaffPhoneNo());
+					staffUpdate.setFaculty(faculty);
+					staffUpdate.setStaffCategory(payload.getStaffCategory());
+					staffUpdate.setEmail(payload.getStaffEmail());
+					identityService.updateStaff(staffUpdate);
+				}
+
+			} else {
+
+				LOG.info("Staff not exists");
+				LOG.debug("Staff Staff_No:{}", payload.getStaffId());
+				LOG.debug("Staff Name:{}", payload.getStaffName());
+				LOG.debug("Staff Department_Code:{}", payload.getStaffDepartmentCode());
+				LOG.debug("Staff Category:{}", payload.getStaffCategory());
+
 				String facultyCode = payload.getStaffDepartmentCode();
 				AdFaculty faculty = plannerService.findFacultyByCode(facultyCode);
-				
-				AdStaff staff = identityService.findStaffByIdentityNo(payload.getStaffId());
+
+				AdStaff staff = new AdStaffImpl();
 				staff.setIdentityNo(payload.getStaffId());
+				staff.setStaffType(AdStaffType.NON_ACADEMIC);
 				staff.setName(payload.getStaffName());
 				staff.setActorType(AdActorType.STAFF);
 				staff.setPhone(payload.getStaffPhoneNo());
 				staff.setFaculty(faculty);
 				staff.setStaffCategory(payload.getStaffCategory());
 				staff.setEmail(payload.getStaffEmail());
-				identityService.updateStaff(staff);
-
-			}else{
-				
-				
-				LOG.info("Staff not exists");
-				LOG.debug("Staff Staff_No:{}", payload.getStaffId());
-				LOG.debug("Staff Name:{}", payload.getStaffName());
-				LOG.debug("Staff Department_Code:{}", payload.getStaffDepartmentCode());
-				LOG.debug("Staff Category:{}", payload.getStaffCategory());
-				
-				String facultyCode = payload.getStaffDepartmentCode();
-				AdFaculty faculty = plannerService.findFacultyByCode(facultyCode);
-				
-				AdStaff staff = new AdStaffImpl();
-				staff.setIdentityNo(payload.getStaffId());
-				staff.setName(payload.getStaffName());
- 				staff.setActorType(AdActorType.STAFF);
-				staff.setPhone(payload.getStaffPhoneNo());
-				staff.setFaculty(faculty);
-				staff.setStaffCategory(payload.getStaffCategory());
-				staff.setEmail(payload.getStaffEmail());
-				if (plannerService.isFacultyExists(payload.getStaffDepartmentCode()))
-				{	
+				if (plannerService.isFacultyExists(payload.getStaffDepartmentCode())) {
 					LOG.info("if faculty exists");
 					identityService.saveStaffIMSNonAcademicActive(staff);
-				
-				}
-				else
-				{
+
+				} else {
 					LOG.info("if faculty not exists");
 					identityService.saveStaff(staff);
-				
+
 				}
 			}
 		}

@@ -38,6 +38,8 @@ public interface AdGroupDao extends GenericDao<Long, AdGroup> {
     Set<AdGroup> findEffectiveAsNative(AdPrincipal principal);
 
     List<AdGroup> findAvailableGroups(AdUser user);
+    
+    AdGroup findGroupByUser(AdUser user);
 
     List<AdPrincipal> findAvailableMembers(AdGroup group);
 

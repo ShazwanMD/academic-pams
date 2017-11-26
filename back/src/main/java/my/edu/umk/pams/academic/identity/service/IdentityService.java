@@ -86,6 +86,8 @@ public interface IdentityService {
 	Set<String> findEffectiveGroupsAsString(AdPrincipal principal);
 
 	List<AdGroup> findAvailableUserGroups(AdUser user);
+	
+	AdGroup findGroupByUser(AdUser user);
 
 	List<AdPrincipal> findAvailableGroupMembers(AdGroup group);
 

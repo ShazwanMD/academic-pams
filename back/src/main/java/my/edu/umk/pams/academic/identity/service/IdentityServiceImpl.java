@@ -275,6 +275,11 @@ public class IdentityServiceImpl implements IdentityService {
     public List<AdGroup> findAvailableUserGroups(AdUser user) {
         return groupDao.findAvailableGroups(user);
     }
+    
+    @Override
+    public AdGroup findGroupByUser(AdUser user) {
+        return groupDao.findGroupByUser(user);
+    }
 
     @Override
     public List<AdPrincipal> findAvailableGroupMembers(AdGroup group) {
@@ -550,7 +555,7 @@ public class IdentityServiceImpl implements IdentityService {
 
 			try{
 			// Group
-			AdGroup group = findGroupByName("GRP_PGW_ADM_A10");
+			AdGroup group = findGroupByName("GRP_PGW_ADM_A09");
 			// GroupMember
 			AdGroupMember member = new AdGroupMemberImpl();
 			member.setGroup(group);
@@ -571,7 +576,7 @@ public class IdentityServiceImpl implements IdentityService {
 
 			try{
 			// Group
-			AdGroup group = findGroupByName("GRP_KRN_ADM_A10");
+			AdGroup group = findGroupByName("GRP_KRN_ADM_A09");
 			// GroupMember
 			AdGroupMember member = new AdGroupMemberImpl();
 			member.setGroup(group);

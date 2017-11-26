@@ -107,6 +107,18 @@ public class AdGroupDaoImpl extends GenericDaoSupport<Long, AdGroup> implements 
         query.setEntity("user", user);
         return (List<AdGroup>) query.list();
     }
+    
+    @Override
+    public AdGroup findGroupByUser(AdUser user) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select p from AdGroup p where " +
+                "p in (select gm.group from AdGroupMember gm where gm.principal = :user)" +
+                "and p.metadata.state = :state " +
+                "order by p.name asc");
+        query.setInteger("state", ACTIVE.ordinal());
+        query.setEntity("user", user);
+        return (AdGroup) query.uniqueResult();
+    }
 
     @Override
     public List<AdPrincipal> findAvailableMembers(AdGroup group) {

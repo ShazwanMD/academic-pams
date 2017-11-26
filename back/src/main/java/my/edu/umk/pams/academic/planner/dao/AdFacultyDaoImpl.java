@@ -109,12 +109,13 @@ public class AdFacultyDaoImpl extends GenericDaoSupport<Long, AdFaculty> impleme
     @Override
     public boolean isExists(String code) {
         Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery("select count(*) from AdFaculty s where " +
+        Query query = session.createQuery("select count(s) from AdFaculty s where " +
                 "s.code = :code " +
                 "and s.metadata.state = :state ");
         query.setString("code", code);
         query.setInteger("state", AdMetaState.ACTIVE.ordinal());
-        return 0 < ((Long) query.uniqueResult()).intValue();
+//        return 0 < ((Long) query.uniqueResult()).intValue();
+        return ((Long) query.uniqueResult()).intValue() >= 1;
     }
 
     // ====================================================================================================
