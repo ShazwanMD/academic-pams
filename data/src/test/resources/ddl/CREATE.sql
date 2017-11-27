@@ -1417,6 +1417,11 @@
         BALANCE numeric(19, 2),
         OUTSTANDING boolean,
         MIN_AMOUNT numeric(19, 2),
+        GENDER_ID INT8,
+        MARITAL_ID INT8,
+        NATIONALITY_ID INT8,
+        RACE_CODE_ID INT8,
+        RELIGION_ID INT8,
         primary key (ID)
     );
 

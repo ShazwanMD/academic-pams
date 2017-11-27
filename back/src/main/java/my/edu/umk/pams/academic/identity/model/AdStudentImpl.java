@@ -1,5 +1,15 @@
 package my.edu.umk.pams.academic.identity.model;
 
+import my.edu.umk.pams.academic.common.model.AdGenderCode;
+import my.edu.umk.pams.academic.common.model.AdGenderCodeImpl;
+import my.edu.umk.pams.academic.common.model.AdMaritalCode;
+import my.edu.umk.pams.academic.common.model.AdMaritalCodeImpl;
+import my.edu.umk.pams.academic.common.model.AdNationalityCode;
+import my.edu.umk.pams.academic.common.model.AdNationalityCodeImpl;
+import my.edu.umk.pams.academic.common.model.AdRaceCode;
+import my.edu.umk.pams.academic.common.model.AdRaceCodeImpl;
+import my.edu.umk.pams.academic.common.model.AdReligionCode;
+import my.edu.umk.pams.academic.common.model.AdReligionCodeImpl;
 import my.edu.umk.pams.academic.common.model.AdStudyMode;
 import my.edu.umk.pams.academic.common.model.AdStudyModeImpl;
 import my.edu.umk.pams.academic.planner.model.AdCohort;
@@ -54,6 +64,27 @@ public class AdStudentImpl extends AdActorImpl implements AdStudent {
 	
 	@Column(name = "MIN_AMOUNT")
 	private BigDecimal minimalAmount = BigDecimal.ZERO;
+	
+	@OneToOne(targetEntity = AdGenderCodeImpl.class)
+	@JoinColumn(name = "GENDER_ID", nullable = true)
+	private AdGenderCode genderCode;
+	
+	@OneToOne(targetEntity = AdReligionCodeImpl.class)
+	@JoinColumn(name = "RELIGION_ID", nullable = true)
+	private AdReligionCode religionCode;
+	
+	@OneToOne(targetEntity = AdMaritalCodeImpl.class)
+	@JoinColumn(name = "MARITAL_ID", nullable = true)
+	private AdMaritalCode maritalCode;
+	
+	@OneToOne(targetEntity = AdNationalityCodeImpl.class)
+	@JoinColumn(name = "NATIONALITY_ID", nullable = true)
+	private AdNationalityCode nationalityCode;
+	
+	@OneToOne(targetEntity = AdRaceCodeImpl.class)
+	@JoinColumn(name = "RACE_CODE_ID", nullable = true)
+	private AdRaceCode raceCode;
+	
 	
 	public AdStudentImpl() {
 		super();
@@ -191,5 +222,48 @@ public class AdStudentImpl extends AdActorImpl implements AdStudent {
 		this.minimalAmount = minimalAmount;
 		
 	}
+
+	public AdGenderCode getGenderCode() {
+		return genderCode;
+	}
+
+	public void setGenderCode(AdGenderCode genderCode) {
+		this.genderCode = genderCode;
+	}
+
+	public AdReligionCode getReligionCode() {
+		return religionCode;
+	}
+
+	public void setReligionCode(AdReligionCode religionCode) {
+		this.religionCode = religionCode;
+	}
+
+	public AdMaritalCode getMaritalCode() {
+		return maritalCode;
+	}
+
+	public void setMaritalCode(AdMaritalCode maritalCode) {
+		this.maritalCode = maritalCode;
+	}
+
+	public AdNationalityCode getNationalityCode() {
+		return nationalityCode;
+	}
+
+	public void setNationalityCode(AdNationalityCode nationalityCode) {
+		this.nationalityCode = nationalityCode;
+	}
+
+	public AdRaceCode getRaceCode() {
+		return raceCode;
+	}
+
+	public void setRaceCode(AdRaceCode raceCode) {
+		this.raceCode = raceCode;
+	}
+
+	
+	
 
 }

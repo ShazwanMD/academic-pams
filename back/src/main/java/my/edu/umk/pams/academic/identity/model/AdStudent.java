@@ -1,5 +1,10 @@
 package my.edu.umk.pams.academic.identity.model;
 
+import my.edu.umk.pams.academic.common.model.AdGenderCode;
+import my.edu.umk.pams.academic.common.model.AdMaritalCode;
+import my.edu.umk.pams.academic.common.model.AdNationalityCode;
+import my.edu.umk.pams.academic.common.model.AdRaceCode;
+import my.edu.umk.pams.academic.common.model.AdReligionCode;
 import my.edu.umk.pams.academic.common.model.AdStudyMode;
 import my.edu.umk.pams.academic.planner.model.AdCohort;
 
@@ -63,6 +68,26 @@ public interface AdStudent extends AdActor {
 	BigDecimal getMinimalAmount();
 	
 	void setMinimalAmount(BigDecimal minimalAmount);
+	
+	AdGenderCode getGenderCode();
+	
+	void setGenderCode(AdGenderCode genderCode);
+	
+	AdReligionCode getReligionCode();
+	
+	void setReligionCode(AdReligionCode religionCode);
+	
+	AdMaritalCode getMaritalCode();
+	
+	void setMaritalCode(AdMaritalCode maritalCode);
+	
+	AdNationalityCode getNationalityCode();
+	
+	void setNationalityCode(AdNationalityCode nationalityCode);
+	
+	AdRaceCode getRaceCode();
+	
+	void setRaceCode(AdRaceCode raceCode);
 	
 	
 	
