@@ -292,7 +292,12 @@ public class IntegrationController {
 		student.setFax(payload.getFax());
 		student.setPhone(payload.getPhone());
 		student.setMobile(payload.getMobile());
-
+		student.setGenderCode(commonService.findGenderCodeByCode(payload.getGender()));
+		student.setMaritalCode(commonService.findMaritalCodeByCode(payload.getMartialStatus()));
+		student.setRaceCode(commonService.findRaceCodeByCode(payload.getRace()));
+		student.setReligionCode(commonService.findReligionCodeByCode(payload.getReligion()));
+		student.setNationalityCode(commonService.findNationalityCodeByCode(payload.getNationalityCode().getCode()));
+		
 		// status, mode and cohort
 		student.setStudentStatus(AdStudentStatus.ACTIVE);
 		student.setStudyMode(commonService.findStudyModeByCode(payload.getStudyMode().getCode()));
@@ -327,6 +332,8 @@ public class IntegrationController {
 		permenantAddress.setStudent(student);
 		permenantAddress.setType(AdAddressType.PERMANENT);
 		profileService.addAddress(student, permenantAddress);
+		
+		
 
 		// User
 		AdUser user = new AdUserImpl();
