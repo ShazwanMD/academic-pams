@@ -1,10 +1,12 @@
 package my.edu.umk.pams.academic.planner.dao;
 
 
+import my.edu.umk.pams.academic.common.model.AdGraduateCenter;
 import my.edu.umk.pams.academic.core.GenericDao;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.planner.model.AdCohort;
 import my.edu.umk.pams.academic.planner.model.AdCurriculum;
+import my.edu.umk.pams.academic.planner.model.AdFaculty;
 import my.edu.umk.pams.academic.planner.model.AdIntakeCode;
 import my.edu.umk.pams.academic.planner.model.AdProgram;
 
@@ -32,6 +34,8 @@ public interface AdCohortDao extends GenericDao<Long, AdCohort> {
     List<AdCohort> findByProgram(AdProgram program);
 
     List<AdCohort> find(String filter, Integer offset, Integer limit);
+    
+    List<AdCohort> find(AdGraduateCenter graduateCenter);
 
     List<AdCohort> find(AdProgram program, Integer offset, Integer limit);
 

@@ -1,7 +1,7 @@
 package my.edu.umk.pams.academic.planner.service;
 
 import my.edu.umk.pams.academic.common.model.AdGradeCode;
-
+import my.edu.umk.pams.academic.common.model.AdGraduateCenter;
 import my.edu.umk.pams.academic.common.model.AdStudyMode;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.planner.dao.*;
@@ -558,6 +558,11 @@ public class PlannerServiceImpl implements PlannerService {
 	public List<AdCohort> findCohorts(String filter, Integer offset, Integer limit) {
 		return cohortDao.find(filter, offset, limit);
 	}
+	
+	@Override
+	public List<AdCohort> findCohorts(AdGraduateCenter graduateCenter) {
+		return cohortDao.find(graduateCenter);
+	}
 
 	@Override
 	public List<AdCohort> findCohorts(AdCurriculum curriculum, Integer offset, Integer limit) {
@@ -829,6 +834,11 @@ public class PlannerServiceImpl implements PlannerService {
 	public List<AdProgram> findPrograms(AdFaculty faculty) {
 		return programDao.find(faculty);
 	}
+	
+	@Override
+	public List<AdProgram> findPrograms(AdGraduateCenter graduateCenter) {
+		return programDao.find(graduateCenter);
+	}
 
 	@Override
 	public List<AdProgram> findPrograms(AdProgramType type, AdFaculty faculty) {
@@ -970,6 +980,11 @@ public class PlannerServiceImpl implements PlannerService {
 	@Override
 	public List<AdCourse> findCourses(AdFaculty faculty) {
 		return courseDao.find(faculty);
+	}
+	
+	@Override
+	public List<AdCourse> findCourses(AdGraduateCenter graduateCenter) {
+		return courseDao.find(graduateCenter);
 	}
 
 	@Override

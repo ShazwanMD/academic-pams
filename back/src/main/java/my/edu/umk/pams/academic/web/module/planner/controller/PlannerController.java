@@ -5,9 +5,12 @@ import my.edu.umk.pams.academic.common.model.AdStudyMode;
 import my.edu.umk.pams.academic.common.service.CommonService;
 import my.edu.umk.pams.academic.graduation.model.AdGraduation;
 import my.edu.umk.pams.academic.graduation.service.GraduationService;
+import my.edu.umk.pams.academic.identity.model.AdStaff;
+import my.edu.umk.pams.academic.identity.model.AdUser;
 import my.edu.umk.pams.academic.identity.service.IdentityService;
 import my.edu.umk.pams.academic.planner.model.*;
 import my.edu.umk.pams.academic.planner.service.PlannerService;
+import my.edu.umk.pams.academic.security.service.SecurityService;
 import my.edu.umk.pams.academic.term.model.AdAssessment;
 import my.edu.umk.pams.academic.term.model.AdOffering;
 import my.edu.umk.pams.academic.term.model.AdOfferingImpl;
@@ -64,6 +67,9 @@ public class PlannerController {
 	
 	@Autowired
 	private GraduationTransformer graduationTransformer;
+	
+	@Autowired
+	private SecurityService securityService;
 
 	// ====================================================================================================
 	// ACADEMIC SESSION
@@ -363,7 +369,19 @@ public class PlannerController {
 
 	@RequestMapping(value = "/programs", method = RequestMethod.GET)
 	public ResponseEntity<List<Program>> findPrograms() {
-		List<AdProgram> programs = plannerService.findPrograms(0, 1000);
+		
+		AdUser user = securityService.getCurrentUser();
+		AdStaff staff = null;
+		List<AdProgram> programs = null;
+		if(user.getActor() instanceof AdStaff){
+			staff = (AdStaff) user.getActor();
+			programs = plannerService.findPrograms(staff.getFaculty().getCenter());
+			
+		}else{
+			LOG.info("User Login Have No Faculty");
+			programs = plannerService.findPrograms(0, Integer.MAX_VALUE);
+		}
+		
 		return new ResponseEntity<List<Program>>(plannerTransformer.toProgramVos(programs), HttpStatus.OK);
 	}
 
@@ -490,7 +508,22 @@ public class PlannerController {
 
 	@RequestMapping(value = "/courses", method = RequestMethod.GET)
 	public ResponseEntity<List<Course>> findCourses() {
-		return new ResponseEntity<List<Course>>(plannerTransformer.toCourseVos(plannerService.findCourses(0, 1000)),
+	
+		AdUser user = securityService.getCurrentUser();
+		AdStaff staff = null;
+		List<AdCourse> courses = null;
+		if(user.getActor() instanceof AdStaff){
+			staff = (AdStaff) user.getActor();
+			
+			courses = plannerService.findCourses(staff.getFaculty().getCenter());
+			
+		}else{
+			LOG.info("User Login Have No Faculty");
+			courses = plannerService.findCourses(0, Integer.MAX_VALUE);
+		}
+	
+		
+		return new ResponseEntity<List<Course>>(plannerTransformer.toCourseVos(courses),
 				HttpStatus.OK);
 	}
 
@@ -795,8 +828,21 @@ public class PlannerController {
 
 	@RequestMapping(value = "/cohorts", method = RequestMethod.GET)
 	public ResponseEntity<List<Cohort>> findCohorts() {
+		
+		AdUser user = securityService.getCurrentUser();
+		AdStaff staff = null;
+		List<AdCohort> cohorts = null;
+		if(user.getActor() instanceof AdStaff){
+			staff = (AdStaff) user.getActor();
+			cohorts = plannerService.findCohorts(staff.getFaculty().getCenter());
+			
+		}else{
+			LOG.info("User Login Have No Faculty");
+			cohorts = plannerService.findCohorts("%", 0, Integer.MAX_VALUE);
+		}
+		
 		return new ResponseEntity<List<Cohort>>(
-				plannerTransformer.toCohortVos(plannerService.findCohorts("%", 0, 1000)), HttpStatus.OK);
+				plannerTransformer.toCohortVos(cohorts), HttpStatus.OK);
 	}
 
 	@RequestMapping(value = "/cohorts/{code}", method = RequestMethod.GET)

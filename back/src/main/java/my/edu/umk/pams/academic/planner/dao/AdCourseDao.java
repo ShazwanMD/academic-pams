@@ -1,6 +1,7 @@
 package my.edu.umk.pams.academic.planner.dao;
 
 
+import my.edu.umk.pams.academic.common.model.AdGraduateCenter;
 import my.edu.umk.pams.academic.core.GenericDao;
 import my.edu.umk.pams.academic.identity.model.AdUser;
 import my.edu.umk.pams.academic.planner.model.*;
@@ -22,6 +23,8 @@ public interface AdCourseDao extends GenericDao<Long, AdCourse> {
     List<AdCourse> find(String filter, Integer offset, Integer limit);
     
     List<AdCourse> find(AdFaculty faculty);
+    
+    List<AdCourse> find(AdGraduateCenter graduateCenter);
 
     List<AdCourse> find(String filter, AdFaculty faculty, Integer offset, Integer limit);
 

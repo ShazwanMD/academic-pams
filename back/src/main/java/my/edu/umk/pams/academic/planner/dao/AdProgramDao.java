@@ -2,6 +2,7 @@ package my.edu.umk.pams.academic.planner.dao;
 
 
 import my.edu.umk.pams.academic.common.model.AdGradeCode;
+import my.edu.umk.pams.academic.common.model.AdGraduateCenter;
 import my.edu.umk.pams.academic.core.GenericDao;
 import my.edu.umk.pams.academic.identity.model.AdUser;
 import my.edu.umk.pams.academic.term.model.AdOffering;
@@ -31,6 +32,8 @@ public interface AdProgramDao extends GenericDao<Long, AdProgram> {
     List<AdProgram> find(String filter, AdProgramType type, AdFaculty faculty, Integer offset, Integer limit);
 
     List<AdProgram> find(AdFaculty faculty);
+    
+    List<AdProgram> find(AdGraduateCenter graduateCenter);
 
     List<AdProgram> find(AdProgramType type, AdFaculty faculty);
 

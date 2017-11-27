@@ -1,5 +1,6 @@
 package my.edu.umk.pams.academic.planner.service;
 
+import my.edu.umk.pams.academic.common.model.AdGraduateCenter;
 import my.edu.umk.pams.academic.common.model.AdStudyMode;
 import my.edu.umk.pams.academic.identity.model.AdStudent;
 import my.edu.umk.pams.academic.planner.model.*;
@@ -138,6 +139,8 @@ public interface PlannerService {
     List<AdCohort> findCohortRoots();
 
     List<AdCohort> findCohorts(String filter, Integer offset, Integer limit);
+    
+    List<AdCohort> findCohorts(AdGraduateCenter graduateCenter);
 
     List<AdCohort> findCohorts(AdCurriculum curriculum, Integer offset, Integer limit);
 
@@ -253,6 +256,8 @@ public interface PlannerService {
     List<AdProgram> findPrograms(String filter, Integer offset, Integer limit);
 
     List<AdProgram> findPrograms(AdFaculty faculty);
+    
+    List<AdProgram> findPrograms(AdGraduateCenter graduateCenter);
 
     List<AdProgram> findPrograms(AdProgramType type, AdFaculty faculty);
 
@@ -300,6 +305,8 @@ public interface PlannerService {
     List<AdCourse> findCourses(String filter, Integer offset, Integer limit);
 
     List<AdCourse> findCourses(AdFaculty faculty);
+    
+    List<AdCourse> findCourses(AdGraduateCenter graduateCenter);
 
     List<AdCourse> findCourses(String filter, AdFaculty faculty, Integer offset, Integer limit);
 

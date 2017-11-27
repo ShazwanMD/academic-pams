@@ -1,5 +1,6 @@
 package my.edu.umk.pams.academic.planner.dao;
 
+import my.edu.umk.pams.academic.common.model.AdGraduateCenter;
 import my.edu.umk.pams.academic.core.AdMetaState;
 import my.edu.umk.pams.academic.core.AdMetadata;
 import my.edu.umk.pams.academic.core.GenericDaoSupport;
@@ -83,6 +84,18 @@ public class AdCourseDaoImpl extends GenericDaoSupport<Long, AdCourse> implement
                 "and s.metadata.state = :state ");
         query.setInteger("state", AdMetaState.ACTIVE.ordinal());
         query.setEntity("faculty", faculty);
+        query.setCacheable(true);
+        return (List<AdCourse>) query.list();
+    }
+    
+    @Override
+    public List<AdCourse> find(AdGraduateCenter graduateCenter) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery("select s from AdCourse s where " +
+                "s.faculty.center = :center " +
+                "and s.metadata.state = :state ");
+        query.setInteger("state", AdMetaState.ACTIVE.ordinal());
+        query.setEntity("center", graduateCenter);
         query.setCacheable(true);
         return (List<AdCourse>) query.list();
     }
