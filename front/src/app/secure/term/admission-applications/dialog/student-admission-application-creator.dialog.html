@@ -67,9 +67,17 @@ th, td {
         </div>
   </form>
 </md-dialog-content>
-<md-dialog-actions align="end">
+<md-dialog-actions align="end" *ngIf="_admission.student?.studentStatus ==='ACTIVE'">
+	
    <button md-raised-button color="accent" [disabled]="createForm.invalid" (click)="save(createForm.value, createForm.valid)">
     {{edit ? 'Submit Application' : 'Save'}}
   </button>
+</md-dialog-actions>
+
+<md-dialog-actions align="center" *ngIf="_admission.student?.studentStatus ==='BARRED'">
+		
+		<div><h1>Academic Status : {{_admission.student?.studentStatus}}</h1><br>
+			<p>Memo : Outstanding Payments. Please Refer To Administration</p></div>
+
 </md-dialog-actions>
 

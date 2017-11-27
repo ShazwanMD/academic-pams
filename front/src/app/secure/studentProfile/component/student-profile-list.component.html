@@ -397,8 +397,15 @@
                 </div>
                 <md-divider></md-divider>
                 <md-card-content>
-                  <td-data-table [data]="admissions" [columns]="columnAdmission" [sortBy]="summary" [sortOrder]="ASC" [sortable]="false" [multiple]="false"
-                    [selectable]="false" (rowSelect)="edit.emit($event)" dense>
+                  <td-data-table 
+                  [data]="admissions" 
+                  [columns]="columnAdmission" 
+                  [sortBy]="summary" 
+                  [sortOrder]="ASC" 
+                  [sortable]="false" 
+                  [multiple]="false"
+                  [selectable]="false" 
+                  (rowSelect)="edit.emit($event)" dense>
 
                    <!--  <template tdDataTableTemplate="key" let-value="value" let-row="row" let-column="column"  color="accent">
                       <div layout="row">

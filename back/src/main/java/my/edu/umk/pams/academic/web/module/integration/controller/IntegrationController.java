@@ -245,9 +245,13 @@ public class IntegrationController {
 		student.setBalance(payload.getBalance());
 		student.setOutstanding(payload.isOutstanding());
 		if (student.getOutstanding() == true) {
+			LOG.info("Student Has Outstanding");
 			student.setMemo("Outstanding Payments");
+			student.setStudentStatus(AdStudentStatus.BARRED);
 		} else {
+			LOG.info("Student Has No Outstanding");
 			student.setMemo("N/A");
+			student.setStudentStatus(AdStudentStatus.ACTIVE);
 		}
 		identityService.updateStudent(student);
 

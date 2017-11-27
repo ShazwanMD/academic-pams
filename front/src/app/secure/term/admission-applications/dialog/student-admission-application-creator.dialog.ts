@@ -1,5 +1,5 @@
 import { ActivatedRoute, Router } from '@angular/router';
-import { Component, OnInit, ViewContainerRef } from '@angular/core';
+import { Component, OnInit, ViewContainerRef} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { MdDialogRef, MdSnackBar, MdDialogConfig, MdDialog } from '@angular/material';
@@ -20,7 +20,7 @@ import { AdmissionApplicationConfirmDialog } from "./admission-application-confi
 } )
 
 export class StudentAdmissionApplicationCreatorDialog implements OnInit {
-    
+  
     private creatorDialogRefConfirm: MdDialogRef<AdmissionApplicationConfirmDialog>;
 
     private ADMISSION_APPLICATION: string[] = 'termModuleState.admissionApplication'.split( '.' );
@@ -73,7 +73,6 @@ export class StudentAdmissionApplicationCreatorDialog implements OnInit {
 
         if ( this.edit ) this.createForm.patchValue( this._admission );
     }
-
     save( admissionApplication: AdmissionApplication, isValid: boolean ): void {
 
         
