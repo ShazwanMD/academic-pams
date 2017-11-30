@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="studentProfil" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="05907e35-b022-4733-9b67-9550d76e72f3">
 	<property name="ireport.zoom" value="1.210000000000005"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="388"/>
 	<subDataset name="address" uuid="06e2d23e-b7b4-46e4-a274-16762b10a073">
 		<queryString>
 			<![CDATA[SELECT
@@ -134,6 +134,7 @@ GROUP BY
 		<field name="ad_grtr_phone" class="java.lang.String"/>
 		<field name="ad_grtr_guarantor_type" class="java.lang.String"/>
 		<field name="ad_grtr_student_id" class="java.lang.Long"/>
+		<filterExpression><![CDATA[$F{ad_actr_id}.equals( $F{ad_grtr_student_id} )]]></filterExpression>
 	</subDataset>
 	<subDataset name="guardian" uuid="2ebcc8ec-038b-4915-82ba-9b652621f1ab">
 		<queryString>
@@ -178,8 +179,10 @@ GROUP BY
 		<field name="ad_grdn_guardian_type" class="java.lang.String"/>
 		<field name="ad_grdn_student_id" class="java.lang.Long"/>
 		<field name="ad_grdn_identity_no" class="java.lang.String"/>
+		<filterExpression><![CDATA[$F{ad_grdn_student_id}.equals( $F{ad_actr_id} )]]></filterExpression>
 	</subDataset>
 	<subDataset name="contact" uuid="c81b70d4-8b23-4089-975f-f63a666d5ea0">
+		<parameter name="student_id" class="java.lang.String"/>
 		<queryString>
 			<![CDATA[SELECT
      ad_actr."id" AS ad_actr_id,
@@ -234,6 +237,7 @@ GROUP BY
 		<field name="ad_cntc_student_id" class="java.lang.Long"/>
 		<field name="ad_actr_actor_type" class="java.lang.Integer"/>
 		<field name="ad_cntc_name" class="java.lang.String"/>
+		<filterExpression><![CDATA[$F{ad_actr_id}.equals( $F{ad_cntc_student_id} )]]></filterExpression>
 	</subDataset>
 	<parameter name="identity_no" class="java.lang.String"/>
 	<queryString>
@@ -252,14 +256,7 @@ GROUP BY
      ad_stdn."id" AS ad_stdn_id,
      ad_stdn."cohort_id" AS ad_stdn_cohort_id,
      ad_stdn."study_mode_id" AS ad_stdn_study_mode_id,
-     ad_addr."id" AS ad_addr_id,
-     ad_addr."address1" AS ad_addr_address1,
-     ad_addr."address2" AS ad_addr_address2,
-     ad_addr."address3" AS ad_addr_address3,
-     ad_addr."postcode" AS ad_addr_postcode,
-     ad_addr."address_type" AS ad_addr_address_type,
-     ad_addr."state_code_id" AS ad_addr_state_code_id,
-     ad_addr."student_id" AS ad_addr_student_id,
+
      ad_chrt."id" AS ad_chrt_id,
      ad_chrt."classification" AS ad_chrt_classification,
      ad_chrt."code" AS ad_chrt_code,
@@ -289,32 +286,7 @@ GROUP BY
      ad_prgm_levl."id" AS ad_prgm_levl_id,
      ad_prgm_levl."code" AS ad_prgm_levl_code,
      ad_prgm_levl."description" AS ad_prgm_levl_description,
-     ad_stte_code."id" AS ad_stte_code_id,
-     ad_stte_code."code" AS ad_stte_code_code,
-     ad_stte_code."description_ms" AS ad_stte_code_description_ms,
-     ad_stte_code."description_en" AS ad_stte_code_description_en,
-     ad_cnty_code."id" AS ad_cnty_code_id,
-     ad_cnty_code."code" AS ad_cnty_code_code,
-     ad_cnty_code."description_ms" AS ad_cnty_code_description_ms,
-     ad_cnty_code."description_en" AS ad_cnty_code_description_en,
-     ad_grdn."id" AS ad_grdn_id,
-     ad_grdn."identity_no" AS ad_grdn_identity_no,
-     ad_grdn."name" AS ad_grdn_name,
-     ad_grdn."phone" AS ad_grdn_phone,
-     ad_grdn."guardian_type" AS ad_grdn_guardian_type,
-     ad_grdn."student_id" AS ad_grdn_student_id,
-     ad_cntc."id" AS ad_cntc_id,
-     ad_cntc."identity_no" AS ad_cntc_identity_no,
-     ad_cntc."phone" AS ad_cntc_phone,
-     ad_cntc."contact_type" AS ad_cntc_contact_type,
-     ad_cntc."student_id" AS ad_cntc_student_id,
-     ad_grtr."id" AS ad_grtr_id,
-     ad_grtr."identity_no" AS ad_grtr_identity_no,
-     ad_grtr."name" AS ad_grtr_name,
-     ad_grtr."phone" AS ad_grtr_phone,
-     ad_grtr."guarantor_type" AS ad_grtr_guarantor_type,
-     ad_grtr."student_id" AS ad_grtr_student_id,
-     ad_cntc."name" AS ad_cntc_name,
+
      ad_stdy_mode."id" AS ad_stdy_mode_id,
      ad_stdy_mode."code" AS ad_stdy_mode_code,
      ad_stdy_mode."description" AS ad_stdy_mode_description,
@@ -337,11 +309,7 @@ GROUP BY
      ad_stdy_cntr."description" AS ad_stdy_cntr_description
 FROM
      "public"."ad_actr" ad_actr INNER JOIN "public"."ad_stdn" ad_stdn ON ad_actr."id" = ad_stdn."id"
-     INNER JOIN "public"."ad_addr" ad_addr ON ad_stdn."id" = ad_addr."student_id"
      INNER JOIN "public"."ad_chrt" ad_chrt ON ad_stdn."cohort_id" = ad_chrt."id"
-     INNER JOIN "public"."ad_grdn" ad_grdn ON ad_stdn."id" = ad_grdn."student_id"
-     INNER JOIN "public"."ad_cntc" ad_cntc ON ad_stdn."id" = ad_cntc."student_id"
-     INNER JOIN "public"."ad_grtr" ad_grtr ON ad_stdn."id" = ad_grtr."student_id"
      INNER JOIN "public"."ad_stdy_mode" ad_stdy_mode ON ad_stdn."study_mode_id" = ad_stdy_mode."id"
      INNER JOIN "public"."ad_admn" ad_admn ON ad_stdn."id" = ad_admn."student_id"
      AND ad_chrt."id" = ad_admn."cohort_id"
@@ -350,9 +318,7 @@ FROM
      AND ad_chrt."session_id" = ad_acdm_sesn."id"
      INNER JOIN "public"."ad_prgm" ad_prgm ON ad_chrt."program_id" = ad_prgm."id"
      INNER JOIN "public"."ad_fcty" ad_fcty ON ad_prgm."faculty_id" = ad_fcty."id"
-     INNER JOIN "public"."ad_prgm_levl" ad_prgm_levl ON ad_prgm."level_id" = ad_prgm_levl."id"
-     INNER JOIN "public"."ad_stte_code" ad_stte_code ON ad_addr."state_code_id" = ad_stte_code."id"
-     INNER JOIN "public"."ad_cnty_code" ad_cnty_code ON ad_addr."country_code_id" = ad_cnty_code."id"]]>
+     INNER JOIN "public"."ad_prgm_levl" ad_prgm_levl ON ad_prgm."level_id" = ad_prgm_levl."id"]]>
 	</queryString>
 	<field name="ad_actr_id" class="java.lang.Long"/>
 	<field name="ad_actr_actor_type" class="java.lang.Integer"/>
@@ -368,14 +334,6 @@ FROM
 	<field name="ad_stdn_id" class="java.lang.Long"/>
 	<field name="ad_stdn_cohort_id" class="java.lang.Long"/>
 	<field name="ad_stdn_study_mode_id" class="java.lang.Long"/>
-	<field name="ad_addr_id" class="java.lang.Long"/>
-	<field name="ad_addr_address1" class="java.lang.String"/>
-	<field name="ad_addr_address2" class="java.lang.String"/>
-	<field name="ad_addr_address3" class="java.lang.String"/>
-	<field name="ad_addr_postcode" class="java.lang.String"/>
-	<field name="ad_addr_address_type" class="java.lang.String"/>
-	<field name="ad_addr_state_code_id" class="java.lang.Long"/>
-	<field name="ad_addr_student_id" class="java.lang.Long"/>
 	<field name="ad_chrt_id" class="java.lang.Long"/>
 	<field name="ad_chrt_classification" class="java.lang.Integer"/>
 	<field name="ad_chrt_code" class="java.lang.String"/>
@@ -389,7 +347,7 @@ FROM
 	<field name="ad_prgm_level_id" class="java.lang.Long"/>
 	<field name="ad_prgm_code" class="java.lang.String"/>
 	<field name="ad_prgm_title_en" class="java.lang.String"/>
-	<field name="ad_prgm_status" class="java.lang.String"/>
+	<field name="ad_prgm_status" class="java.lang.Integer"/>
 	<field name="ad_acdm_sesn_id" class="java.lang.Long"/>
 	<field name="ad_acdm_sesn_code" class="java.lang.String"/>
 	<field name="ad_acdm_sesn_current_" class="java.lang.Boolean"/>
@@ -405,32 +363,6 @@ FROM
 	<field name="ad_prgm_levl_id" class="java.lang.Long"/>
 	<field name="ad_prgm_levl_code" class="java.lang.String"/>
 	<field name="ad_prgm_levl_description" class="java.lang.String"/>
-	<field name="ad_stte_code_id" class="java.lang.Long"/>
-	<field name="ad_stte_code_code" class="java.lang.String"/>
-	<field name="ad_stte_code_description_ms" class="java.lang.String"/>
-	<field name="ad_stte_code_description_en" class="java.lang.String"/>
-	<field name="ad_cnty_code_id" class="java.lang.Long"/>
-	<field name="ad_cnty_code_code" class="java.lang.String"/>
-	<field name="ad_cnty_code_description_ms" class="java.lang.String"/>
-	<field name="ad_cnty_code_description_en" class="java.lang.String"/>
-	<field name="ad_grdn_id" class="java.lang.Long"/>
-	<field name="ad_grdn_identity_no" class="java.lang.String"/>
-	<field name="ad_grdn_name" class="java.lang.String"/>
-	<field name="ad_grdn_phone" class="java.lang.String"/>
-	<field name="ad_grdn_guardian_type" class="java.lang.String"/>
-	<field name="ad_grdn_student_id" class="java.lang.Long"/>
-	<field name="ad_cntc_id" class="java.lang.Long"/>
-	<field name="ad_cntc_identity_no" class="java.lang.String"/>
-	<field name="ad_cntc_phone" class="java.lang.String"/>
-	<field name="ad_cntc_contact_type" class="java.lang.String"/>
-	<field name="ad_cntc_student_id" class="java.lang.Long"/>
-	<field name="ad_grtr_id" class="java.lang.Long"/>
-	<field name="ad_grtr_identity_no" class="java.lang.String"/>
-	<field name="ad_grtr_name" class="java.lang.String"/>
-	<field name="ad_grtr_phone" class="java.lang.String"/>
-	<field name="ad_grtr_guarantor_type" class="java.lang.String"/>
-	<field name="ad_grtr_student_id" class="java.lang.Long"/>
-	<field name="ad_cntc_name" class="java.lang.String"/>
 	<field name="ad_stdy_mode_id" class="java.lang.Long"/>
 	<field name="ad_stdy_mode_code" class="java.lang.String"/>
 	<field name="ad_stdy_mode_description" class="java.lang.String"/>
@@ -711,50 +643,50 @@ FROM
 				<text><![CDATA[ADDRESS INFORMATION]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="9" y="158" width="78" height="20" uuid="4c2fd92a-7918-4554-af1a-f8076d88f826"/>
+				<reportElement x="9" y="156" width="78" height="20" uuid="4c2fd92a-7918-4554-af1a-f8076d88f826"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Address]]></text>
 			</staticText>
 			<frame>
-				<reportElement x="60" y="132" width="466" height="105" uuid="af6e400d-5649-43d3-aded-8a101f7f4077"/>
+				<reportElement x="60" y="123" width="466" height="160" uuid="af6e400d-5649-43d3-aded-8a101f7f4077"/>
 				<componentElement>
-					<reportElement x="29" y="17" width="423" height="79" uuid="ddad3a44-f1fe-4acf-9709-03c165905148"/>
+					<reportElement x="29" y="17" width="423" height="143" uuid="ddad3a44-f1fe-4acf-9709-03c165905148"/>
 					<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
 						<datasetRun subDataset="address" uuid="dcc57bdf-8124-429a-96da-fe0be91dc9c2">
 							<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 						</datasetRun>
-						<jr:listContents height="79" width="423">
+						<jr:listContents height="143" width="423">
 							<textField>
-								<reportElement x="7" y="8" width="125" height="20" uuid="cca75f3d-0b62-41ac-8bd7-8d6ca300f579"/>
+								<reportElement x="8" y="15" width="167" height="20" uuid="cca75f3d-0b62-41ac-8bd7-8d6ca300f579"/>
 								<textFieldExpression><![CDATA[$F{ad_addr_address_1}]]></textFieldExpression>
 							</textField>
 							<textField>
-								<reportElement x="122" y="9" width="127" height="20" uuid="335f7c5b-9dee-49fd-abde-bb021277afff"/>
+								<reportElement x="7" y="33" width="168" height="20" uuid="335f7c5b-9dee-49fd-abde-bb021277afff"/>
 								<textFieldExpression><![CDATA[$F{ad_addr_address_2}]]></textFieldExpression>
 							</textField>
 							<textField>
-								<reportElement x="7" y="28" width="115" height="20" uuid="cb6e76e0-124f-4f20-bacb-8d1ac85dabea"/>
+								<reportElement x="7" y="72" width="168" height="20" uuid="cb6e76e0-124f-4f20-bacb-8d1ac85dabea"/>
 								<textFieldExpression><![CDATA[$F{ad_addr_pcode}]]></textFieldExpression>
 							</textField>
 							<textField>
-								<reportElement x="53" y="28" width="161" height="20" uuid="ce8bb205-34f9-44f7-88c7-673d64bf20e5"/>
+								<reportElement x="7" y="92" width="168" height="20" uuid="ce8bb205-34f9-44f7-88c7-673d64bf20e5"/>
 								<textFieldExpression><![CDATA[$F{ad_stte_code_dscrptn_ms}]]></textFieldExpression>
 							</textField>
 							<textField>
-								<reportElement x="6" y="47" width="168" height="20" uuid="8748e169-ecab-42fc-ad53-7745547bcb21"/>
+								<reportElement x="7" y="112" width="168" height="20" uuid="8748e169-ecab-42fc-ad53-7745547bcb21"/>
 								<textFieldExpression><![CDATA[$F{ad_cnty_code_dscrptn_ms}]]></textFieldExpression>
 							</textField>
 							<textField>
-								<reportElement x="207" y="9" width="132" height="20" uuid="8044aa34-2fe5-4d42-b047-10a7bdceb4d9"/>
+								<reportElement x="7" y="53" width="168" height="20" uuid="8044aa34-2fe5-4d42-b047-10a7bdceb4d9"/>
 								<textFieldExpression><![CDATA[$F{ad_addr_address_3}]]></textFieldExpression>
 							</textField>
 						</jr:listContents>
 					</jr:list>
 				</componentElement>
 				<staticText>
-					<reportElement x="26" y="26" width="20" height="20" uuid="4c8db77d-a0e2-4c00-a07a-622afcdd99c8"/>
+					<reportElement x="26" y="32" width="20" height="20" uuid="4c8db77d-a0e2-4c00-a07a-622afcdd99c8"/>
 					<textElement>
 						<font isBold="true"/>
 					</textElement>
@@ -762,7 +694,7 @@ FROM
 				</staticText>
 			</frame>
 			<textField>
-				<reportElement x="380" y="32" width="122" height="20" uuid="1c4e06ef-85c9-4eb5-909b-a8fcd854a326"/>
+				<reportElement x="380" y="32" width="146" height="20" uuid="69622165-0b90-471f-88b6-b915977a8a93"/>
 				<textFieldExpression><![CDATA[(
 $F{ad_stdn_student_status}.equals( "0" )? "MATRICULATED":
 $F{ad_stdn_student_status}.equals( "1" )? "ACTIVE":
@@ -775,7 +707,7 @@ $F{ad_stdn_student_status}.equals( "4" )? "GRADUATED":
 		</band>
 	</columnHeader>
 	<summary>
-		<band height="769" splitType="Stretch">
+		<band height="731" splitType="Stretch">
 			<staticText>
 				<reportElement mode="Transparent" x="5" y="166" width="264" height="20" backcolor="#CCCCCC" uuid="70d8378e-9480-491d-afc0-a17430461b83"/>
 				<textElement verticalAlignment="Middle" rotation="None">
@@ -797,7 +729,7 @@ $F{ad_stdn_student_status}.equals( "4" )? "GRADUATED":
 				<text><![CDATA[GUARDIAN INFORMATION]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="148" y="196" width="148" height="20" forecolor="#000000" backcolor="#CCCCCC" uuid="27e380dc-52dd-4e43-bbea-d22e97797d56"/>
+				<reportElement mode="Opaque" x="108" y="196" width="188" height="20" forecolor="#000000" backcolor="#CCCCCC" uuid="27e380dc-52dd-4e43-bbea-d22e97797d56"/>
 				<box>
 					<pen lineWidth="0.75"/>
 					<topPen lineWidth="0.75"/>
@@ -825,7 +757,7 @@ $F{ad_stdn_student_status}.equals( "4" )? "GRADUATED":
 				<text><![CDATA[Mobile No]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="0" y="196" width="148" height="20" backcolor="#CCCCCC" uuid="a81da37c-7812-4a9b-9d42-566f11a89187"/>
+				<reportElement mode="Opaque" x="0" y="196" width="108" height="20" backcolor="#CCCCCC" uuid="a81da37c-7812-4a9b-9d42-566f11a89187"/>
 				<box>
 					<pen lineWidth="0.75"/>
 					<topPen lineWidth="0.75"/>
@@ -853,26 +785,14 @@ $F{ad_stdn_student_status}.equals( "4" )? "GRADUATED":
 				<text><![CDATA[Identity No]]></text>
 			</staticText>
 			<componentElement>
-				<reportElement x="1" y="216" width="554" height="20" uuid="b4a24ed6-2499-4ca8-bcf4-bbedceb2f3bd"/>
+				<reportElement stretchType="RelativeToTallestObject" x="0" y="216" width="555" height="20" uuid="b4a24ed6-2499-4ca8-bcf4-bbedceb2f3bd"/>
 				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
-					<datasetRun subDataset="guardian" uuid="0c7b6f53-91b7-41e8-8884-5cb61e57849f">
+					<datasetRun subDataset="guardian" uuid="ed1f5a44-529a-4e81-a8ee-b030095b18b2">
 						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 					</datasetRun>
-					<jr:listContents height="20" width="554">
+					<jr:listContents height="20" width="555">
 						<textField>
-							<reportElement x="148" y="0" width="147" height="20" uuid="f33fa67a-5242-41e2-bdcc-a62354b61928"/>
-							<box>
-								<pen lineWidth="0.25"/>
-								<topPen lineWidth="0.25"/>
-								<leftPen lineWidth="0.25"/>
-								<bottomPen lineWidth="0.25"/>
-								<rightPen lineWidth="0.25"/>
-							</box>
-							<textElement textAlignment="Center" verticalAlignment="Middle"/>
-							<textFieldExpression><![CDATA[$F{ad_grdn_name}]]></textFieldExpression>
-						</textField>
-						<textField>
-							<reportElement x="0" y="0" width="148" height="20" uuid="c2960e42-d089-4121-8e76-d722e948b568"/>
+							<reportElement x="0" y="0" width="108" height="20" uuid="10f64a6d-277a-4ba0-9f1d-7d5a9b6c7db0"/>
 							<box>
 								<pen lineWidth="0.25"/>
 								<topPen lineWidth="0.25"/>
@@ -889,7 +809,19 @@ $F{ad_grdn_guardian_type}.equals( "2" )? " GUARDIAN":
 )]]></textFieldExpression>
 						</textField>
 						<textField>
-							<reportElement x="295" y="0" width="132" height="20" uuid="fab7a20d-a741-4e5c-a5af-3870f920c298"/>
+							<reportElement x="108" y="0" width="188" height="20" uuid="c6b1e938-1a48-4999-b9e7-f5e4a6c48302"/>
+							<box>
+								<pen lineWidth="0.25"/>
+								<topPen lineWidth="0.25"/>
+								<leftPen lineWidth="0.25"/>
+								<bottomPen lineWidth="0.25"/>
+								<rightPen lineWidth="0.25"/>
+							</box>
+							<textElement textAlignment="Center" verticalAlignment="Middle"/>
+							<textFieldExpression><![CDATA[$F{ad_grdn_name}]]></textFieldExpression>
+						</textField>
+						<textField>
+							<reportElement x="296" y="0" width="132" height="20" uuid="49ff9348-b9ac-49d3-8d45-e31c7c38379b"/>
 							<box>
 								<pen lineWidth="0.25"/>
 								<topPen lineWidth="0.25"/>
@@ -899,6 +831,18 @@ $F{ad_grdn_guardian_type}.equals( "2" )? " GUARDIAN":
 							</box>
 							<textElement textAlignment="Center" verticalAlignment="Middle"/>
 							<textFieldExpression><![CDATA[$F{ad_grdn_identity_no}]]></textFieldExpression>
+						</textField>
+						<textField>
+							<reportElement x="428" y="0" width="127" height="20" uuid="6ad741e6-c18e-4894-beb0-cdf2ee943655"/>
+							<box>
+								<pen lineWidth="0.25"/>
+								<topPen lineWidth="0.25"/>
+								<leftPen lineWidth="0.25"/>
+								<bottomPen lineWidth="0.25"/>
+								<rightPen lineWidth="0.25"/>
+							</box>
+							<textElement textAlignment="Center" verticalAlignment="Middle"/>
+							<textFieldExpression><![CDATA[$F{ad_grdn_phone}]]></textFieldExpression>
 						</textField>
 					</jr:listContents>
 				</jr:list>
@@ -917,7 +861,7 @@ $F{ad_grdn_guardian_type}.equals( "2" )? " GUARDIAN":
 				<text><![CDATA[CONTACT INFORMATION]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="0" y="392" width="153" height="20" backcolor="#CCCCCC" uuid="679f4846-8380-4e41-adb8-d88b9d8aeee7"/>
+				<reportElement mode="Opaque" x="0" y="392" width="108" height="20" backcolor="#CCCCCC" uuid="679f4846-8380-4e41-adb8-d88b9d8aeee7"/>
 				<box>
 					<pen lineWidth="0.75"/>
 					<topPen lineWidth="0.75"/>
@@ -931,7 +875,7 @@ $F{ad_grdn_guardian_type}.equals( "2" )? " GUARDIAN":
 				<text><![CDATA[Contact Type]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="153" y="392" width="145" height="20" forecolor="#000000" backcolor="#CCCCCC" uuid="ab64db88-d42f-4e8f-869c-bb2d748b3ac8"/>
+				<reportElement mode="Opaque" x="108" y="392" width="190" height="20" forecolor="#000000" backcolor="#CCCCCC" uuid="ab64db88-d42f-4e8f-869c-bb2d748b3ac8"/>
 				<box>
 					<pen lineWidth="0.75"/>
 					<topPen lineWidth="0.75"/>
@@ -980,7 +924,47 @@ $F{ad_grdn_guardian_type}.equals( "2" )? " GUARDIAN":
 					</datasetRun>
 					<jr:listContents height="20" width="554">
 						<textField>
-							<reportElement x="297" y="0" width="131" height="20" uuid="3f52f1a6-da29-4883-b4aa-0738d56e0764"/>
+							<reportElement x="0" y="0" width="108" height="20" uuid="308bfa46-3e5c-49a2-971c-ff0b3c7606ef"/>
+							<box>
+								<pen lineWidth="0.25"/>
+								<topPen lineWidth="0.25"/>
+								<leftPen lineWidth="0.25"/>
+								<bottomPen lineWidth="0.25"/>
+								<rightPen lineWidth="0.25"/>
+							</box>
+							<textElement textAlignment="Center" verticalAlignment="Middle"/>
+							<textFieldExpression><![CDATA[(
+$F{ad_cntc_contact_type}.equals( "0" )? "HUSBAND":
+$F{ad_cntc_contact_type}.equals( "1" )? " WIFE":
+$F{ad_cntc_contact_type}.equals( "2" )? "SON":
+$F{ad_cntc_contact_type}.equals( "3" )? "DAUGHTER":
+$F{ad_cntc_contact_type}.equals( "4" )? "FATHER":
+$F{ad_cntc_contact_type}.equals( "5" )? "MOTHER":
+$F{ad_cntc_contact_type}.equals( "6" )? "BROTHER":
+$F{ad_cntc_contact_type}.equals( "7" )? "SISTER":
+$F{ad_cntc_contact_type}.equals( "8" )? "GRANDPARENT":
+$F{ad_cntc_contact_type}.equals( "9" )? "GRANDCHILD":
+$F{ad_cntc_contact_type}.equals( "10" )? "UNCLE":
+$F{ad_cntc_contact_type}.equals( "11" )? "AUNT":
+$F{ad_cntc_contact_type}.equals( "12" )? "NEPHEW":
+$F{ad_cntc_contact_type}.equals( "13" )? "NIECE":
+"OTHERS"
+)]]></textFieldExpression>
+						</textField>
+						<textField>
+							<reportElement x="108" y="0" width="190" height="20" uuid="63ea8f44-3827-4f78-a47b-4ca28969e1f9"/>
+							<box>
+								<pen lineWidth="0.25"/>
+								<topPen lineWidth="0.25"/>
+								<leftPen lineWidth="0.25"/>
+								<bottomPen lineWidth="0.25"/>
+								<rightPen lineWidth="0.25"/>
+							</box>
+							<textElement textAlignment="Center" verticalAlignment="Middle"/>
+							<textFieldExpression><![CDATA[$F{ad_cntc_name}]]></textFieldExpression>
+						</textField>
+						<textField>
+							<reportElement x="298" y="0" width="131" height="20" uuid="f0716ce3-47e8-4b52-813b-a3eabece86f7"/>
 							<box>
 								<pen lineWidth="0.25"/>
 								<topPen lineWidth="0.25"/>
@@ -991,11 +975,23 @@ $F{ad_grdn_guardian_type}.equals( "2" )? " GUARDIAN":
 							<textElement textAlignment="Center" verticalAlignment="Middle"/>
 							<textFieldExpression><![CDATA[$F{ad_cntc_identity_no}]]></textFieldExpression>
 						</textField>
+						<textField>
+							<reportElement x="429" y="0" width="124" height="20" uuid="b68cc88f-1986-459d-aac7-f671c1e82015"/>
+							<box>
+								<pen lineWidth="0.25"/>
+								<topPen lineWidth="0.25"/>
+								<leftPen lineWidth="0.25"/>
+								<bottomPen lineWidth="0.25"/>
+								<rightPen lineWidth="0.25"/>
+							</box>
+							<textElement textAlignment="Center" verticalAlignment="Middle"/>
+							<textFieldExpression><![CDATA[$F{ad_cntc_phone}]]></textFieldExpression>
+						</textField>
 					</jr:listContents>
 				</jr:list>
 			</componentElement>
 			<staticText>
-				<reportElement x="148" y="747" width="246" height="20" uuid="044ed50a-5828-42f2-ad48-48ff7cfe0de7"/>
+				<reportElement x="149" y="711" width="246" height="20" uuid="044ed50a-5828-42f2-ad48-48ff7cfe0de7"/>
 				<text><![CDATA[This is computer generated report by MGSEB UMK]]></text>
 			</staticText>
 			<rectangle>
@@ -1005,7 +1001,7 @@ $F{ad_grdn_guardian_type}.equals( "2" )? " GUARDIAN":
 				</graphicElement>
 			</rectangle>
 			<staticText>
-				<reportElement mode="Opaque" x="147" y="30" width="149" height="20" forecolor="#000000" backcolor="#CCCCCC" uuid="5a49a37a-ddf0-44df-862c-2df400424225"/>
+				<reportElement mode="Opaque" x="108" y="30" width="188" height="20" forecolor="#000000" backcolor="#CCCCCC" uuid="5a49a37a-ddf0-44df-862c-2df400424225"/>
 				<box>
 					<pen lineWidth="0.75"/>
 					<topPen lineWidth="0.75"/>
@@ -1033,7 +1029,7 @@ $F{ad_grdn_guardian_type}.equals( "2" )? " GUARDIAN":
 				<text><![CDATA[Mobile No]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="1" y="30" width="147" height="20" backcolor="#CCCCCC" uuid="4a34f747-7230-4ab0-bc05-003d576f4ab6"/>
+				<reportElement mode="Opaque" x="1" y="30" width="107" height="20" backcolor="#CCCCCC" uuid="4a34f747-7230-4ab0-bc05-003d576f4ab6"/>
 				<box>
 					<pen lineWidth="0.75"/>
 					<topPen lineWidth="0.75"/>
@@ -1070,12 +1066,12 @@ $F{ad_grdn_guardian_type}.equals( "2" )? " GUARDIAN":
 			<componentElement>
 				<reportElement x="0" y="50" width="555" height="20" uuid="8aa75be1-121a-4194-b4df-31e58938c2cd"/>
 				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
-					<datasetRun subDataset="guarantor" uuid="530f30b4-100c-4d7c-ad42-a35f86a45dd7">
+					<datasetRun subDataset="guarantor" uuid="ce6aa13c-3e1f-44b5-ae45-d3cdeaf3b4ed">
 						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 					</datasetRun>
 					<jr:listContents height="20" width="555">
 						<textField>
-							<reportElement x="428" y="0" width="127" height="20" uuid="c76ba4d8-af65-44ce-9e86-ab8785dbf164"/>
+							<reportElement x="108" y="0" width="188" height="20" uuid="5b4e3758-d6e3-4f4b-aa22-c02f53a7ebc4"/>
 							<box>
 								<pen lineWidth="0.25"/>
 								<topPen lineWidth="0.25"/>
@@ -1084,10 +1080,10 @@ $F{ad_grdn_guardian_type}.equals( "2" )? " GUARDIAN":
 								<rightPen lineWidth="0.25"/>
 							</box>
 							<textElement textAlignment="Center" verticalAlignment="Middle"/>
-							<textFieldExpression><![CDATA[$F{ad_grtr_phone}]]></textFieldExpression>
+							<textFieldExpression><![CDATA[$F{ad_grtr_name}]]></textFieldExpression>
 						</textField>
 						<textField>
-							<reportElement x="297" y="0" width="132" height="20" uuid="99e1d0ee-6880-40f3-8661-204b4f160fd7"/>
+							<reportElement x="296" y="0" width="132" height="20" uuid="bd40b782-65da-4a14-a103-0eb508810264"/>
 							<box>
 								<pen lineWidth="0.25"/>
 								<topPen lineWidth="0.25"/>
@@ -1099,7 +1095,19 @@ $F{ad_grdn_guardian_type}.equals( "2" )? " GUARDIAN":
 							<textFieldExpression><![CDATA[$F{ad_grtr_identity_no}]]></textFieldExpression>
 						</textField>
 						<textField>
-							<reportElement x="1" y="0" width="148" height="20" uuid="a51d2961-f691-43cf-bdb3-25910d2d964d"/>
+							<reportElement x="428" y="0" width="127" height="20" uuid="248ddca9-36dd-4021-a9e9-197f55aa3cb7"/>
+							<box>
+								<pen lineWidth="0.25"/>
+								<topPen lineWidth="0.25"/>
+								<leftPen lineWidth="0.25"/>
+								<bottomPen lineWidth="0.25"/>
+								<rightPen lineWidth="0.25"/>
+							</box>
+							<textElement textAlignment="Center" verticalAlignment="Middle"/>
+							<textFieldExpression><![CDATA[$F{ad_grtr_phone}]]></textFieldExpression>
+						</textField>
+						<textField>
+							<reportElement x="0" y="0" width="108" height="20" uuid="ecabef5b-8dcf-411f-b06f-3933671ce8e4"/>
 							<box>
 								<pen lineWidth="0.25"/>
 								<topPen lineWidth="0.25"/>
@@ -1114,85 +1122,9 @@ $F{ad_grtr_guarantor_type}.equals( "1" )? "SECONDARY":
 "OTHERS"
 )]]></textFieldExpression>
 						</textField>
-						<textField>
-							<reportElement x="149" y="0" width="148" height="20" uuid="b1debd2e-e656-4f7a-984b-f9d2c64db363"/>
-							<box>
-								<pen lineWidth="0.25"/>
-								<topPen lineWidth="0.25"/>
-								<leftPen lineWidth="0.25"/>
-								<bottomPen lineWidth="0.25"/>
-								<rightPen lineWidth="0.25"/>
-							</box>
-							<textElement textAlignment="Center" verticalAlignment="Middle"/>
-							<textFieldExpression><![CDATA[$F{ad_grtr_name}]]></textFieldExpression>
-						</textField>
 					</jr:listContents>
 				</jr:list>
 			</componentElement>
-			<textField>
-				<reportElement x="428" y="216" width="127" height="20" uuid="f3a8e5a0-e957-4139-b9b5-307489866e6d"/>
-				<box>
-					<pen lineWidth="0.25"/>
-					<topPen lineWidth="0.25"/>
-					<leftPen lineWidth="0.25"/>
-					<bottomPen lineWidth="0.25"/>
-					<rightPen lineWidth="0.25"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{ad_grdn_phone}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="153" y="412" width="144" height="20" uuid="84e9c01f-a971-49bc-8a4b-eba08f8b4b72"/>
-				<box>
-					<pen lineWidth="0.25"/>
-					<topPen lineWidth="0.25"/>
-					<leftPen lineWidth="0.25"/>
-					<bottomPen lineWidth="0.25"/>
-					<rightPen lineWidth="0.25"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{ad_cntc_name}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="0" y="412" width="153" height="20" uuid="9e71d2dd-a0ac-4c59-9673-f6e9498de98b"/>
-				<box>
-					<pen lineWidth="0.25"/>
-					<topPen lineWidth="0.25"/>
-					<leftPen lineWidth="0.25"/>
-					<bottomPen lineWidth="0.25"/>
-					<rightPen lineWidth="0.25"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[(
-$F{ad_cntc_contact_type}.equals( "0" )? "HUSBAND":
-$F{ad_cntc_contact_type}.equals( "1" )? " WIFE":
-$F{ad_cntc_contact_type}.equals( "2" )? "SON":
-$F{ad_cntc_contact_type}.equals( "3" )? "DAUGHTER":
-$F{ad_cntc_contact_type}.equals( "4" )? "FATHER":
-$F{ad_cntc_contact_type}.equals( "5" )? "MOTHER":
-$F{ad_cntc_contact_type}.equals( "6" )? "BROTHER":
-$F{ad_cntc_contact_type}.equals( "7" )? "SISTER":
-$F{ad_cntc_contact_type}.equals( "8" )? "GRANDPARENT":
-$F{ad_cntc_contact_type}.equals( "9" )? "GRANDCHILD":
-$F{ad_cntc_contact_type}.equals( "10" )? "UNCLE":
-$F{ad_cntc_contact_type}.equals( "11" )? "AUNT":
-$F{ad_cntc_contact_type}.equals( "12" )? "NEPHEW":
-$F{ad_cntc_contact_type}.equals( "13" )? "NIECE":
-"OTHERS"
-)]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="428" y="412" width="125" height="20" uuid="d8adb4a4-d009-41cd-9c60-8b951f25fd78"/>
-				<box>
-					<pen lineWidth="0.25"/>
-					<topPen lineWidth="0.25"/>
-					<leftPen lineWidth="0.25"/>
-					<bottomPen lineWidth="0.25"/>
-					<rightPen lineWidth="0.25"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{ad_cntc_phone}]]></textFieldExpression>
-			</textField>
 		</band>
 	</summary>
 </jasperReport>
