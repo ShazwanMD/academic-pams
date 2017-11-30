@@ -239,19 +239,31 @@ public class IntegrationController {
 		SecurityContext ctx = loginAsSystem();
 
 		LOG.info("Start Receiving Student Account");
+		//Find Student By Matric No
 		AdStudent student = identityService.findStudentByMatricNo(payload.getMatricNo());
 		LOG.debug("Student Name:{}", student.getName());
 
 		student.setBalance(payload.getBalance());
 		student.setOutstanding(payload.isOutstanding());
-		if (student.getOutstanding() == true) {
-			LOG.info("Student Has Outstanding");
+		
+		//Condition Boolean Outstanding == true
+		if (payload.isOutstanding() == true) {
+			
+			LOG.info("Student Has Outstanding Payments");
+			
 			student.setMemo("Outstanding Payments");
 			student.setStudentStatus(AdStudentStatus.BARRED);
-		} else {
+			
+		}
+		
+		//Condition Boolean Outstanding == false
+		else {
+			
 			LOG.info("Student Has No Outstanding");
+			
 			student.setMemo("N/A");
 			student.setStudentStatus(AdStudentStatus.ACTIVE);
+		
 		}
 		identityService.updateStudent(student);
 
@@ -272,6 +284,9 @@ public class IntegrationController {
 		if (plannerService.isCohortExists(payload.getCohortCode())) {
 			LOG.info("cohort already exists");
 		} else {
+			
+			LOG.info("if cohort not exists");
+
 			// Cohort
 			AdCohort cohort = new AdCohortImpl();
 			cohort.setCode(payload.getCohortCode());
@@ -280,8 +295,7 @@ public class IntegrationController {
 			cohort.setSession(plannerService.findCurrentAcademicSession());
 			plannerService.saveCohort(cohort);
 
-			LOG.info("cohort not exists");
-
+			
 		}
 
 		// student info
