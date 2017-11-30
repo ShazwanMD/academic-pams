@@ -2,8 +2,9 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="studentProfil" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="05907e35-b022-4733-9b67-9550d76e72f3">
 	<property name="ireport.zoom" value="1.210000000000005"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="672"/>
 	<subDataset name="address" uuid="06e2d23e-b7b4-46e4-a274-16762b10a073">
+		<parameter name="student_id" class="java.lang.Long"/>
 		<queryString>
 			<![CDATA[SELECT
      ad_addr."address1" AS ad_addr_address_1,
@@ -13,7 +14,6 @@
      ad_addr."address_type" AS ad_addr_addrss_type,
      ad_addr."country_code_id" AS ad_addr_cntry_code_id,
      ad_addr."state_code_id" AS ad_addr_stte_code_id,
-     ad_addr."student_id" AS ad_addr_stdnt_id,
      ad_cnty_code."id" AS ad_cnty_cde_id,
      ad_cnty_code."code" AS ad_cnty_cde_code,
      ad_cnty_code."description_ms" AS ad_cnty_code_dscrptn_ms,
@@ -21,26 +21,14 @@
      ad_stte_code."id" AS ad_stte_code_id,
      ad_stte_code."description_ms" AS ad_stte_code_dscrptn_ms,
      ad_stte_code."description_en" AS ad_stte_code_dscrptn_en,
-     ad_stdn."no_id" AS ad_stud_no_id,
      ad_stte_code."code" AS ad_stte_cde_code,
      ad_actr."id" AS ad_actor_id,
-     ad_actr."identity_no" AS ad_actr_idntty_no
+     ad_actr."identity_no" AS ad_actr_idntty_no,
+     ad_stdn."id" AS ad_stdn_id,
+     ad_addr."student_id" AS ad_addr_student_id
 FROM
      "public"."ad_actr" ad_actr INNER JOIN "public"."ad_stdn" ad_stdn ON ad_actr."id" = ad_stdn."id"
      INNER JOIN "public"."ad_addr" ad_addr ON ad_stdn."id" = ad_addr."student_id"
-     INNER JOIN "public"."ad_chrt" ad_chrt ON ad_stdn."cohort_id" = ad_chrt."id"
-     INNER JOIN "public"."ad_grdn" ad_grdn ON ad_stdn."id" = ad_grdn."student_id"
-     INNER JOIN "public"."ad_cntc" ad_cntc ON ad_stdn."id" = ad_cntc."student_id"
-     INNER JOIN "public"."ad_grtr" ad_grtr ON ad_stdn."id" = ad_grtr."student_id"
-     INNER JOIN "public"."ad_stdy_mode" ad_stdy_mode ON ad_stdn."study_mode_id" = ad_stdy_mode."id"
-     INNER JOIN "public"."ad_admn" ad_admn ON ad_stdn."id" = ad_admn."student_id"
-     AND ad_chrt."id" = ad_admn."cohort_id"
-     INNER JOIN "public"."ad_acdm_sesn" ad_acdm_sesn ON ad_admn."session_id" = ad_acdm_sesn."id"
-     INNER JOIN "public"."ad_stdy_cntr" ad_stdy_cntr ON ad_admn."study_center_id" = ad_stdy_cntr."id"
-     AND ad_chrt."session_id" = ad_acdm_sesn."id"
-     INNER JOIN "public"."ad_prgm" ad_prgm ON ad_chrt."program_id" = ad_prgm."id"
-     INNER JOIN "public"."ad_fcty" ad_fcty ON ad_prgm."faculty_id" = ad_fcty."id"
-     INNER JOIN "public"."ad_prgm_levl" ad_prgm_levl ON ad_prgm."level_id" = ad_prgm_levl."id"
      INNER JOIN "public"."ad_stte_code" ad_stte_code ON ad_addr."state_code_id" = ad_stte_code."id"
      INNER JOIN "public"."ad_cnty_code" ad_cnty_code ON ad_addr."country_code_id" = ad_cnty_code."id"
 GROUP BY
@@ -59,7 +47,7 @@ GROUP BY
      ad_stte_code."id",
      ad_stte_code."description_ms",
      ad_stte_code."description_en",
-     ad_stdn."no_id",
+     ad_stdn."id",
      ad_stte_code."code",
      ad_actr."id",
      ad_actr."identity_no"]]>
@@ -71,7 +59,6 @@ GROUP BY
 		<field name="ad_addr_addrss_type" class="java.lang.Integer"/>
 		<field name="ad_addr_cntry_code_id" class="java.lang.Long"/>
 		<field name="ad_addr_stte_code_id" class="java.lang.Long"/>
-		<field name="ad_addr_stdnt_id" class="java.lang.Long"/>
 		<field name="ad_cnty_cde_id" class="java.lang.Long"/>
 		<field name="ad_cnty_cde_code" class="java.lang.String"/>
 		<field name="ad_cnty_code_dscrptn_ms" class="java.lang.String"/>
@@ -79,14 +66,18 @@ GROUP BY
 		<field name="ad_stte_code_id" class="java.lang.Long"/>
 		<field name="ad_stte_code_dscrptn_ms" class="java.lang.String"/>
 		<field name="ad_stte_code_dscrptn_en" class="java.lang.String"/>
-		<field name="ad_stud_no_id" class="java.lang.String"/>
 		<field name="ad_stte_cde_code" class="java.lang.String"/>
 		<field name="ad_actor_id" class="java.lang.Long"/>
 		<field name="ad_actr_idntty_no" class="java.lang.String"/>
-		<filterExpression><![CDATA[$F{ad_actor_id}.equals( $F{ad_addr_stdnt_id} )]]></filterExpression>
+		<field name="ad_stdn_id" class="java.lang.Long"/>
+		<field name="ad_addr_student_id" class="java.lang.Long"/>
+		<filterExpression><![CDATA[$P{student_id}.equals( $F{ad_addr_student_id} )]]></filterExpression>
 		<group name="group1"/>
 	</subDataset>
 	<subDataset name="guarantor" uuid="8111c375-5e0d-4659-8192-9f013fe9904a">
+		<parameter name="student_id" class="java.lang.Long">
+			<parameterDescription><![CDATA[]]></parameterDescription>
+		</parameter>
 		<queryString>
 			<![CDATA[SELECT
      ad_actr."id" AS ad_actr_id,
@@ -135,9 +126,10 @@ GROUP BY
 		<field name="ad_grtr_phone" class="java.lang.String"/>
 		<field name="ad_grtr_guarantor_type" class="java.lang.String"/>
 		<field name="ad_grtr_student_id" class="java.lang.Long"/>
-		<filterExpression><![CDATA[$F{ad_actr_id}.equals( $F{ad_grtr_student_id} )]]></filterExpression>
+		<filterExpression><![CDATA[$P{student_id}.equals( $F{ad_grtr_student_id} )]]></filterExpression>
 	</subDataset>
 	<subDataset name="guardian" uuid="2ebcc8ec-038b-4915-82ba-9b652621f1ab">
+		<parameter name="student_id" class="java.lang.Long"/>
 		<queryString>
 			<![CDATA[SELECT
      ad_actr."id" AS ad_actr_id,
@@ -180,10 +172,10 @@ GROUP BY
 		<field name="ad_grdn_guardian_type" class="java.lang.String"/>
 		<field name="ad_grdn_student_id" class="java.lang.Long"/>
 		<field name="ad_grdn_identity_no" class="java.lang.String"/>
-		<filterExpression><![CDATA[$F{ad_grdn_student_id}.equals( $F{ad_actr_id} )]]></filterExpression>
+		<filterExpression><![CDATA[$P{student_id}.equals( $F{ad_grdn_student_id} )]]></filterExpression>
 	</subDataset>
 	<subDataset name="contact" uuid="c81b70d4-8b23-4089-975f-f63a666d5ea0">
-		<parameter name="student_id" class="java.lang.String"/>
+		<parameter name="student_id" class="java.lang.Long"/>
 		<queryString>
 			<![CDATA[SELECT
      ad_actr."id" AS ad_actr_id,
@@ -238,7 +230,7 @@ GROUP BY
 		<field name="ad_cntc_student_id" class="java.lang.Long"/>
 		<field name="ad_actr_actor_type" class="java.lang.Integer"/>
 		<field name="ad_cntc_name" class="java.lang.String"/>
-		<filterExpression><![CDATA[$F{ad_actr_id}.equals( $F{ad_cntc_student_id} )]]></filterExpression>
+		<filterExpression><![CDATA[$P{student_id}.equals($F{ad_cntc_student_id} )]]></filterExpression>
 	</subDataset>
 	<parameter name="identity_no" class="java.lang.String"/>
 	<queryString>
@@ -655,7 +647,10 @@ FROM
 				<componentElement>
 					<reportElement x="29" y="17" width="423" height="143" uuid="ddad3a44-f1fe-4acf-9709-03c165905148"/>
 					<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
-						<datasetRun subDataset="address" uuid="dcc57bdf-8124-429a-96da-fe0be91dc9c2">
+						<datasetRun subDataset="address" uuid="8fa6719a-8c78-4cbe-90ed-0a71b07af855">
+							<datasetParameter name="student_id">
+								<datasetParameterExpression><![CDATA[$F{ad_actr_id}]]></datasetParameterExpression>
+							</datasetParameter>
 							<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 						</datasetRun>
 						<jr:listContents height="143" width="423">
@@ -788,7 +783,10 @@ $F{ad_stdn_student_status}.equals( "4" )? "GRADUATED":
 			<componentElement>
 				<reportElement stretchType="RelativeToTallestObject" x="0" y="216" width="555" height="20" uuid="b4a24ed6-2499-4ca8-bcf4-bbedceb2f3bd"/>
 				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
-					<datasetRun subDataset="guardian" uuid="ed1f5a44-529a-4e81-a8ee-b030095b18b2">
+					<datasetRun subDataset="guardian" uuid="086f175d-916a-4f61-be3a-a796be00aabe">
+						<datasetParameter name="student_id">
+							<datasetParameterExpression><![CDATA[$F{ad_actr_id}]]></datasetParameterExpression>
+						</datasetParameter>
 						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 					</datasetRun>
 					<jr:listContents height="20" width="555">
@@ -920,7 +918,10 @@ $F{ad_grdn_guardian_type}.equals( "2" )? " GUARDIAN":
 			<componentElement>
 				<reportElement x="0" y="412" width="554" height="20" uuid="777ec5ce-dc1c-4c42-8e04-9615a542a8c7"/>
 				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
-					<datasetRun subDataset="contact" uuid="989cd8e0-2e2f-4b0a-91de-4314c1a1ead6">
+					<datasetRun subDataset="contact" uuid="fe63ed80-9245-45ee-9cdb-ffeb7c0a6fdf">
+						<datasetParameter name="student_id">
+							<datasetParameterExpression><![CDATA[$F{ad_actr_id}]]></datasetParameterExpression>
+						</datasetParameter>
 						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 					</datasetRun>
 					<jr:listContents height="20" width="554">
@@ -1067,7 +1068,10 @@ $F{ad_cntc_contact_type}.equals( "13" )? "NIECE":
 			<componentElement>
 				<reportElement x="0" y="50" width="555" height="20" uuid="8aa75be1-121a-4194-b4df-31e58938c2cd"/>
 				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
-					<datasetRun subDataset="guarantor" uuid="ce6aa13c-3e1f-44b5-ae45-d3cdeaf3b4ed">
+					<datasetRun subDataset="guarantor" uuid="91c9075a-30ae-472e-94d9-012d8bf67eaa">
+						<datasetParameter name="student_id">
+							<datasetParameterExpression><![CDATA[$F{ad_actr_id}]]></datasetParameterExpression>
+						</datasetParameter>
 						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 					</datasetRun>
 					<jr:listContents height="20" width="555">
