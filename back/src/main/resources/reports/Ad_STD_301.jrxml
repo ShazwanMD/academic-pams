@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="studentProfil" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="05907e35-b022-4733-9b67-9550d76e72f3">
 	<property name="ireport.zoom" value="1.210000000000005"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="388"/>
+	<property name="ireport.y" value="0"/>
 	<subDataset name="address" uuid="06e2d23e-b7b4-46e4-a274-16762b10a073">
 		<queryString>
 			<![CDATA[SELECT
@@ -83,6 +83,7 @@ GROUP BY
 		<field name="ad_stte_cde_code" class="java.lang.String"/>
 		<field name="ad_actor_id" class="java.lang.Long"/>
 		<field name="ad_actr_idntty_no" class="java.lang.String"/>
+		<filterExpression><![CDATA[$F{ad_actor_id}.equals( $F{ad_addr_stdnt_id} )]]></filterExpression>
 		<group name="group1"/>
 	</subDataset>
 	<subDataset name="guarantor" uuid="8111c375-5e0d-4659-8192-9f013fe9904a">
