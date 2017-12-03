@@ -112,8 +112,7 @@ public class AdPrincipalDaoImpl extends GenericDaoSupport<Long, AdPrincipal> imp
     @Override
     public AdPrincipal findByName(String name) {
         Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery("select p from AdPrincipal p where " +
-                "upper(p.name) = upper(:name) ");
+        Query query = session.createQuery("select p from AdPrincipal p where p.name = :name ");
         query.setString("name", name);
         return (AdPrincipal) query.uniqueResult();
     }

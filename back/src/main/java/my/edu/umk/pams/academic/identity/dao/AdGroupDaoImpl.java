@@ -255,7 +255,7 @@ public class AdGroupDaoImpl extends GenericDaoSupport<Long, AdGroup> implements 
         AdGroupMember groupMember = new AdGroupMemberImpl();
         groupMember.setGroup(group);
         groupMember.setPrincipal(member);
-        session.save(groupMember);
+        session.saveOrUpdate(groupMember);
     }
 
     @Override

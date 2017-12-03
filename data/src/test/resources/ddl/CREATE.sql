@@ -2119,6 +2119,31 @@
 
     alter table AD_VENU_CODE
         add constraint uc_AD_VENU_CODE_1 unique (CODE);
+		
+		    alter table AD_STDN
+        add constraint FKE7D7E28D54FCB0018157
+        foreign key (GENDER_ID)
+        references AD_GNDR_CODE;      
+    
+    alter table AD_STDN
+        add constraint FKE7D7E28D54FCB0018147
+        foreign key (MARITAL_ID)
+        references AD_MRTL_CODE;     
+     
+    alter table AD_STDN
+        add constraint FKE7D7E28D54FCB0018137
+        foreign key (NATIONALITY_ID)
+        references AD_NTLY_CODE;       
+        
+    alter table AD_STDN
+        add constraint FKE7D7E28D54FCB0018127
+        foreign key (RACE_CODE_ID)
+        references AD_RACE_CODE;          
+
+    alter table AD_STDN
+        add constraint FKE7D7E28D54FCB0018117
+        foreign key (RELIGION_ID)
+        references AD_RLGN_CODE;		
         
 
     create sequence SQ_AD_ACDM_AREA;
