@@ -785,59 +785,72 @@ public class IdentityServiceImpl implements IdentityService {
 	}
 
 	@Override
-    public void saveStaffIMSAcademicActive(AdStaff staff) {
+	public void saveStaffIMSAcademicActive(AdStaff staff) {
 		staffDao.save(staff, securityService.getCurrentUser());
 		LOG.info("Save Staff IMS Service");
-		
-		LOG.debug("Staff Email In Service:{}",staff.getEmail());
-		LOG.debug("Lecturer Faculty:{}",staff.getFaculty().getCode());
+
+		LOG.debug("Staff Email In Service:{}", staff.getEmail());
+		LOG.debug("Lecturer Faculty:{}", staff.getFaculty().getCode());
 		// User
 		AdUser user = new AdUserImpl();
 		user.setActor(staff);
-		user.setEmail(staff.getEmail());
+		if (staff.getEmail() == null) {
+			user.setEmail(staff.getIdentityNo());
+		} else {
+			user.setEmail(staff.getEmail());
+		}
 		user.setUsername(staff.getEmail());
 		user.setPassword(staff.getStaffNo());
 		user.setRealName(staff.getName());
-		//Username Principal
-		user.setName(staff.getEmail());
+		// Username Principal
+		if (staff.getEmail() == null) {
+			user.setName(staff.getIdentityNo());
+		} else {
+			user.setName(staff.getEmail());
+		}
+
 		user.setEnabled(true);
 		user.setLocked(true);
 		user.setPrincipalType(AdPrincipalType.USER);
 		saveUser(user);
-				
+
 		// Principal
-		AdPrincipal principal = findPrincipalByName(staff.getEmail());
-		
+		AdPrincipal principal = null;
+
+		if (staff.getEmail() == null) {
+			principal = findPrincipalByName(staff.getIdentityNo());
+		} else {
+			principal = findPrincipalByName(staff.getEmail());
+		}
 		// Principal Role
 		AdPrincipalRole role = new AdPrincipalRoleImpl();
 		role.setPrincipal(principal);
 		role.setRole(AdRoleType.ROLE_LECTURER);
 		addPrincipalRole(principal, role);
 
-		try{
-		// Group
-		AdGroup group = findGroupByName("GRP_LEC");
-		// GroupMember
-		AdGroupMember member = new AdGroupMemberImpl();
-		member.setGroup(group);
-		member.setPrincipal(principal);
-		addGroupMember(group, principal);
+		try {
+			// Group
+			AdGroup group = findGroupByName("GRP_LEC");
+			// GroupMember
+			AdGroupMember member = new AdGroupMemberImpl();
+			member.setGroup(group);
+			member.setPrincipal(principal);
+			addGroupMember(group, principal);
 		} catch (RecursiveGroupException e) {
-			
+
 			e.printStackTrace();
 		}
-	
-	
-	sessionFactory.getCurrentSession().flush();
+
+		sessionFactory.getCurrentSession().flush();
 	}
-	
+
 	@Override
-    public void saveStaffIMSAcademicInActive(AdStaff staff) {
+	public void saveStaffIMSAcademicInActive(AdStaff staff) {
 		staffDao.save(staff, securityService.getCurrentUser());
 		LOG.info("Save Staff IMS Service");
-		
-		LOG.debug("Staff Email In Service:{}",staff.getEmail());
-		LOG.debug("Lecturer Faculty:{}",staff.getFaculty().getCode());
+
+		LOG.debug("Staff Email In Service:{}", staff.getEmail());
+		LOG.debug("Lecturer Faculty:{}", staff.getFaculty().getCode());
 		// User
 		AdUser user = new AdUserImpl();
 		user.setActor(staff);
@@ -845,104 +858,102 @@ public class IdentityServiceImpl implements IdentityService {
 		user.setUsername(staff.getEmail());
 		user.setPassword(staff.getStaffNo());
 		user.setRealName(staff.getName());
-		//Username Principal
+		// Username Principal
 		user.setName(staff.getEmail());
 		user.setEnabled(false);
 		user.setLocked(true);
 		user.setPrincipalType(AdPrincipalType.USER);
 		saveUser(user);
-				
+
 		// Principal
 		AdPrincipal principal = findPrincipalByName(staff.getEmail());
-		
+
 		// Principal Role
 		AdPrincipalRole role = new AdPrincipalRoleImpl();
 		role.setPrincipal(principal);
 		role.setRole(AdRoleType.ROLE_LECTURER);
 		addPrincipalRole(principal, role);
 
-		try{
-		// Group
-		AdGroup group = findGroupByName("GRP_LEC");
-		// GroupMember
-		AdGroupMember member = new AdGroupMemberImpl();
-		member.setGroup(group);
-		member.setPrincipal(principal);
-		addGroupMember(group, principal);
+		try {
+			// Group
+			AdGroup group = findGroupByName("GRP_LEC");
+			// GroupMember
+			AdGroupMember member = new AdGroupMemberImpl();
+			member.setGroup(group);
+			member.setPrincipal(principal);
+			addGroupMember(group, principal);
 		} catch (RecursiveGroupException e) {
-			
+
 			e.printStackTrace();
 		}
-	
-	
-	sessionFactory.getCurrentSession().flush();
+
+		sessionFactory.getCurrentSession().flush();
 	}
 
+	@Override
+	public void updateStaff(AdStaff staff) {
+		staffDao.update(staff, securityService.getCurrentUser());
+		sessionFactory.getCurrentSession().flush();
+	}
 
 	@Override
-    public void updateStaff(AdStaff staff) {
-        staffDao.update(staff, securityService.getCurrentUser());
-        sessionFactory.getCurrentSession().flush();
-    }
+	public void updateStaffIMSNonAcademicActive(AdStaff staff, StaffPayload payload) {
+		staffDao.update(staff, securityService.getCurrentUser());
+		sessionFactory.getCurrentSession().flush();
+	}
 
 	@Override
-    public void updateStaffIMSNonAcademicActive(AdStaff staff, StaffPayload payload){
-        staffDao.update(staff, securityService.getCurrentUser());
-        sessionFactory.getCurrentSession().flush();
-    }
+	public void deleteStaff(AdStaff staff) {
+		staffDao.delete(staff, securityService.getCurrentUser());
+		sessionFactory.getCurrentSession().flush();
+	}
 
 	@Override
-    public void deleteStaff(AdStaff staff) {
-        staffDao.delete(staff, securityService.getCurrentUser());
-        sessionFactory.getCurrentSession().flush();
-    }
+	public void broadcastCreated(AdStaff staff) {
+		StaffCreatedEvent event = new StaffCreatedEvent(staff);
+		applicationContext.publishEvent(event);
+	}
 
 	@Override
-    public void broadcastCreated(AdStaff staff) {
-        StaffCreatedEvent event = new StaffCreatedEvent(staff);
-        applicationContext.publishEvent(event);
-    }
-
-	@Override
-    public void broadcastUpdated(AdStaff staff) {
-        StaffUpdatedEvent event = new StaffUpdatedEvent(staff);
-        applicationContext.publishEvent(event);
-    }
+	public void broadcastUpdated(AdStaff staff) {
+		StaffUpdatedEvent event = new StaffUpdatedEvent(staff);
+		applicationContext.publishEvent(event);
+	}
 
 	// ====================================================================================================
 	// student
 	// ====================================================================================================
 
 	@Override
-    public AdStudent findStudentById(Long id) {
-        return studentDao.findById(id);
-    }
+	public AdStudent findStudentById(Long id) {
+		return studentDao.findById(id);
+	}
 
 	@Override
-    public AdStudent findStudentByMatricNo(String matricNo) {
-        return studentDao.findByStudentNo(matricNo);
-    }
+	public AdStudent findStudentByMatricNo(String matricNo) {
+		return studentDao.findByStudentNo(matricNo);
+	}
 
 	@Override
-    public List<AdStudent> findStudents(Integer offset, Integer limit) {
-        return studentDao.find(offset, limit);
-    }
+	public List<AdStudent> findStudents(Integer offset, Integer limit) {
+		return studentDao.find(offset, limit);
+	}
 
 	// findGraduatedStudents
 	@Override
-    public List<AdStudent> findGraduatedStudents(Integer offset, Integer limit) {
-        return studentDao.findGraduatedStudents(offset, limit);
-    }
+	public List<AdStudent> findGraduatedStudents(Integer offset, Integer limit) {
+		return studentDao.findGraduatedStudents(offset, limit);
+	}
 
 	@Override
-    public List<AdStudent> findStudents(String filter, Integer offset, Integer limit) {
-        return studentDao.find(offset, limit);
-    }
+	public List<AdStudent> findStudents(String filter, Integer offset, Integer limit) {
+		return studentDao.find(offset, limit);
+	}
 
 	@Override
-    public Integer countStudent() {
-        return studentDao.count();
-    }
+	public Integer countStudent() {
+		return studentDao.count();
+	}
 
 	@Override
 	public Integer countStudent(String filter) {
