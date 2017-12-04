@@ -86,7 +86,7 @@ public interface IdentityService {
 	Set<String> findEffectiveGroupsAsString(AdPrincipal principal);
 
 	List<AdGroup> findAvailableUserGroups(AdUser user);
-	
+
 	AdGroup findGroupByUser(AdUser user);
 
 	List<AdPrincipal> findAvailableGroupMembers(AdGroup group);
@@ -164,11 +164,17 @@ public interface IdentityService {
 	boolean isStaffNoExists(String StaffNo);
 
 	void saveStaff(AdStaff Staff);
-	
+
 	void saveStaffIMSNonAcademicActive(AdStaff staff);
 
+	// InActive Staff
+	void saveStaffIMSNonAcademicInActive(AdStaff staff);
+
+	// Academic Active Staff
+	void saveStaffIMSAcademicActive(AdStaff staff);
+
 	void updateStaff(AdStaff Staff);
-	
+
 	void updateStaffIMSNonAcademicActive(AdStaff staff, StaffPayload payload);
 
 	void deleteStaff(AdStaff Staff);
@@ -233,7 +239,7 @@ public interface IdentityService {
 	AdSponsorship findSponsorshipById(Long id);
 
 	List<AdSponsorship> findSponsorships(AdSponsor sponsor);
-	
+
 	List<AdSponsorship> findSponsorships(AdStudent student);
 
 	List<AdSponsorship> findSponsorships(Integer offset, Integer limit);

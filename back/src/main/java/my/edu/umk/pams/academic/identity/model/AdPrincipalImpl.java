@@ -20,7 +20,7 @@ public abstract class AdPrincipalImpl implements AdPrincipal {
     @SequenceGenerator(name = "SQ_AD_PCPL", sequenceName = "SQ_AD_PCPL", allocationSize = 1)
     private Long id;
 
-    @Column(name = "NAME", unique = true, nullable = false)
+    @Column(name = "NAME", unique = true, nullable = true)
     private String name;
 
     @Column(name = "ENABLED", nullable = false)

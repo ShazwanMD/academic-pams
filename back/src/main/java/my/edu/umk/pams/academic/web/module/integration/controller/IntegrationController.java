@@ -156,7 +156,7 @@ public class IntegrationController {
 	}
 
 	// ====================================================================================================
-	// STAFF
+	// STAFF BUKAN AKADEMIC ACTIVE
 	// ====================================================================================================
 	@RequestMapping(value = "/staff/nonAcademicActive", method = RequestMethod.POST)
 	public ResponseEntity<String> saveStaff(@RequestBody List<StaffPayload> staffPayload)
@@ -431,6 +431,436 @@ public class IntegrationController {
 				if (plannerService.isFacultyExists(payload.getStaffDepartmentCode())) {
 					LOG.info("if faculty exists");
 					identityService.saveStaffIMSNonAcademicActive(staff);
+
+				} else {
+					LOG.info("if faculty not exists");
+					identityService.saveStaff(staff);
+
+				}
+			}
+		}
+		LOG.info("Finish Receive Staff From IMS");
+
+		logoutAsSystem(ctx);
+		return new ResponseEntity<String>("success", HttpStatus.OK);
+	}
+
+	// ====================================================================================================
+	// STAFF BUKAN AKADEMIC INACTIVE
+	// ====================================================================================================
+	@RequestMapping(value = "/staff/nonAcademicInActive", method = RequestMethod.POST)
+	public ResponseEntity<String> saveStaffInActive(@RequestBody List<StaffPayload> staffPayload)
+			throws RecursiveGroupException {
+		SecurityContext ctx = loginAsSystem();
+
+		LOG.info("Start Receive Staff From IMS");
+		for (StaffPayload payload : staffPayload) {
+
+			boolean staffReceive = identityService.isStaffNoExists(payload.getStaffId());
+
+			if (staffReceive) {
+
+				LOG.info("Staff already exists");
+				LOG.debug("Staff Staff_No:{}", payload.getStaffId());
+				LOG.debug("Staff Name:{}", payload.getStaffName());
+
+				// Find Staff By Identity No
+				AdStaff staff = identityService.findStaffByIdentityNo(payload.getStaffId());
+
+				// Find Department Code Existence
+				if (plannerService.isFacultyExists(payload.getStaffDepartmentCode())) {
+
+					LOG.info("Faculty Already Exists");
+
+					// Find Department Code
+					AdFaculty departmentCode = plannerService.findFacultyByCode(staff.getFaculty().getCode());
+
+					// Find User
+					AdUser user = identityService.findUserByUsername(staff.getEmail());
+
+					// Find Group
+					AdGroup group = identityService.findGroupByUser(user);
+
+					if (departmentCode.equals(payload.getStaffDepartmentCode())
+							&& identityService.isGroupExists(group.getName())) {
+
+						AdFaculty faculty = plannerService.findFacultyByCode(payload.getStaffDepartmentCode());
+
+						AdStaff staffUpdate = identityService.findStaffByIdentityNo(payload.getStaffId());
+						staffUpdate.setIdentityNo(payload.getStaffId());
+						staffUpdate.setName(payload.getStaffName());
+						staffUpdate.setActorType(AdActorType.STAFF);
+						staffUpdate.setStaffType(AdStaffType.NON_ACADEMIC);
+						staffUpdate.setPhone(payload.getStaffPhoneNo());
+						staffUpdate.setFaculty(faculty);
+						staffUpdate.setStaffCategory(payload.getStaffCategory());
+						staffUpdate.setEmail(payload.getStaffEmail());
+						identityService.updateStaff(staffUpdate);
+
+					} else if ((!departmentCode.equals(payload.getStaffDepartmentCode()))) {
+
+						AdFaculty faculty = plannerService.findFacultyByCode(payload.getStaffDepartmentCode());
+
+						AdStaff staffUpdate = identityService.findStaffByIdentityNo(payload.getStaffId());
+						staffUpdate.setIdentityNo(payload.getStaffId());
+						staffUpdate.setName(payload.getStaffName());
+						staffUpdate.setActorType(AdActorType.STAFF);
+						staffUpdate.setStaffType(AdStaffType.NON_ACADEMIC);
+						staffUpdate.setPhone(payload.getStaffPhoneNo());
+						staffUpdate.setFaculty(faculty);
+						staffUpdate.setStaffCategory(payload.getStaffCategory());
+						staffUpdate.setEmail(payload.getStaffEmail());
+
+						AdUser updateUser = identityService.findUserByUsername(payload.getStaffEmail());
+						updateUser.setActor(staffUpdate);
+						updateUser.setEmail(payload.getStaffEmail());
+						updateUser.setUsername(payload.getStaffEmail());
+						updateUser.setPassword(payload.getStaffId());
+						updateUser.setRealName(payload.getStaffName());
+						updateUser.setName(payload.getStaffEmail());
+						updateUser.setEnabled(false);
+						updateUser.setLocked(true);
+						updateUser.setPrincipalType(AdPrincipalType.USER);
+						identityService.saveUser(updateUser);
+
+						AdPrincipal principal = identityService.findPrincipalByName(payload.getStaffEmail());
+						LOG.debug("Principal Atas:{}", principal);
+
+						// Check Group Existence
+						if (identityService.isGroupExists(group.getName())) {
+
+							// setting roles of MGSEB
+							if (payload.getStaffDepartmentCode().equals("A10")) {
+
+								if (payload.getStaffCategory().equals("A")) {
+
+									// Principal Role
+									AdPrincipalRole roleA10 = new AdPrincipalRoleImpl();
+									roleA10.setPrincipal(principal);
+									roleA10.setRole(AdRoleType.ROLE_MGSEB);
+									identityService.addPrincipalRole(principal, roleA10);
+
+									try {
+										// Group
+										AdGroup groupPegawaiA10 = identityService.findGroupByName("GRP_PGW_ADM_A10");
+										// GroupMember
+										if (!identityService.isGroupExists(groupPegawaiA10.getName())) {
+
+											identityService.addGroupMember(groupPegawaiA10, principal);
+										}
+
+									} catch (RecursiveGroupException e) {
+
+										e.printStackTrace();
+									}
+
+								} else {
+
+									// Principal Role
+									AdPrincipalRole roleKRNA10 = new AdPrincipalRoleImpl();
+									roleKRNA10.setPrincipal(principal);
+									roleKRNA10.setRole(AdRoleType.ROLE_MGSEB);
+									identityService.addPrincipalRole(principal, roleKRNA10);
+
+									try {
+										// Group
+										AdGroup groupKRNA10 = identityService.findGroupByName("GRP_KRN_ADM_A10");
+										// GroupMember
+										if (!identityService.isGroupExists(groupKRNA10.getName())) {
+
+											identityService.addGroupMember(groupKRNA10, principal);
+										}
+
+									} catch (RecursiveGroupException e) {
+
+										e.printStackTrace();
+									}
+
+								}
+							}
+							// Setting roles of CPS
+							else if (payload.getStaffDepartmentCode().equals("A09")) {
+
+								if (payload.getStaffCategory().equals("A")) {
+
+									// Principal Role
+									AdPrincipalRole roleA09 = new AdPrincipalRoleImpl();
+									roleA09.setPrincipal(principal);
+									roleA09.setRole(AdRoleType.ROLE_CPS);
+									identityService.addPrincipalRole(principal, roleA09);
+
+									try {
+										// Group
+										AdGroup groupPegawaiA09 = identityService.findGroupByName("GRP_PGW_ADM_A09");
+										// GroupMember
+										if (!identityService.isGroupExists(groupPegawaiA09.getName())) {
+
+											identityService.addGroupMember(groupPegawaiA09, principal);
+										}
+									} catch (RecursiveGroupException e) {
+
+										e.printStackTrace();
+									}
+
+								} else {
+
+									// Principal Role
+									AdPrincipalRole roleKRNA09 = new AdPrincipalRoleImpl();
+									roleKRNA09.setPrincipal(principal);
+									roleKRNA09.setRole(AdRoleType.ROLE_CPS);
+									identityService.addPrincipalRole(principal, roleKRNA09);
+
+									try {
+										// Group
+										AdGroup groupKRNA09 = identityService.findGroupByName("GRP_KRN_ADM_A09");
+										// GroupMember
+										if (!identityService.isGroupExists(groupKRNA09.getName())) {
+
+											identityService.addGroupMember(groupKRNA09, principal);
+										}
+
+									} catch (RecursiveGroupException e) {
+
+										e.printStackTrace();
+									}
+
+								}
+							}
+							// Setting roles of Others Faculty
+							else {
+								if (payload.getStaffCategory().equals("A")) {
+									LOG.info("If All Faculty and Category A Only");
+
+									// Principal Role
+									AdPrincipalRole roleAllFac = new AdPrincipalRoleImpl();
+									roleAllFac.setPrincipal(principal);
+									roleAllFac.setRole(AdRoleType.ROLE_FACULTY);
+									identityService.addPrincipalRole(principal, roleAllFac);
+									LOG.debug("roleAllFac:{}", roleAllFac);
+									try {
+										// Group
+
+										AdGroup groupAllFac = identityService
+												.findGroupByName("GRP_PGW_FCTY_" + payload.getStaffDepartmentCode());
+										LOG.debug("Group:{}", groupAllFac);
+										// GroupMember
+										if (!identityService.isGroupExists(groupAllFac.getName())) {
+
+											identityService.addGroupMember(groupAllFac, principal);
+										}
+									} catch (RecursiveGroupException e) {
+
+										e.printStackTrace();
+									}
+								} else {
+									LOG.info("If All Faculty Only");
+
+									// Principal Role
+									AdPrincipalRole roleAllFaculty = new AdPrincipalRoleImpl();
+									roleAllFaculty.setPrincipal(principal);
+									roleAllFaculty.setRole(AdRoleType.ROLE_FACULTY);
+									identityService.addPrincipalRole(principal, roleAllFaculty);
+
+									try {
+										// Group
+										AdGroup groupAllFaculty = identityService
+												.findGroupByName("GRP_KRN_FCTY_" + payload.getStaffDepartmentCode());
+										LOG.debug("Group:{}", groupAllFaculty);
+										// GroupMember
+										if (!identityService.isGroupExists(groupAllFaculty.getName())) {
+
+											identityService.addGroupMember(groupAllFaculty, principal);
+										}
+
+									} catch (RecursiveGroupException e) {
+
+										e.printStackTrace();
+									}
+								}
+							}
+						}
+
+						identityService.updateStaff(staffUpdate);
+					}
+
+				} else {
+					LOG.info("Faculty Not Exists");
+
+					// update staff
+					AdStaff staffUpdate = identityService.findStaffByIdentityNo(payload.getStaffId());
+					staffUpdate.setIdentityNo(payload.getStaffId());
+					staffUpdate.setName(payload.getStaffName());
+					staffUpdate.setActorType(AdActorType.STAFF);
+					staffUpdate.setStaffType(AdStaffType.NON_ACADEMIC);
+					staffUpdate.setPhone(payload.getStaffPhoneNo());
+					staffUpdate.setStaffCategory(payload.getStaffCategory());
+					staffUpdate.setEmail(payload.getStaffEmail());
+					identityService.updateStaff(staffUpdate);
+				}
+
+			} else {
+
+				LOG.info("Staff not exists");
+				LOG.debug("Staff Staff_No:{}", payload.getStaffId());
+				LOG.debug("Staff Name:{}", payload.getStaffName());
+				LOG.debug("Staff Department_Code:{}", payload.getStaffDepartmentCode());
+				LOG.debug("Staff Category:{}", payload.getStaffCategory());
+
+				String facultyCode = payload.getStaffDepartmentCode();
+				AdFaculty faculty = plannerService.findFacultyByCode(facultyCode);
+
+				AdStaff staff = new AdStaffImpl();
+				staff.setIdentityNo(payload.getStaffId());
+				staff.setStaffType(AdStaffType.NON_ACADEMIC);
+				staff.setName(payload.getStaffName());
+				staff.setActorType(AdActorType.STAFF);
+				staff.setPhone(payload.getStaffPhoneNo());
+				staff.setFaculty(faculty);
+				staff.setStaffCategory(payload.getStaffCategory());
+				staff.setEmail(payload.getStaffEmail());
+				if (plannerService.isFacultyExists(payload.getStaffDepartmentCode())) {
+					LOG.info("if faculty exists");
+					identityService.saveStaffIMSNonAcademicInActive(staff);
+
+				} else {
+					LOG.info("if faculty not exists");
+					identityService.saveStaff(staff);
+
+				}
+			}
+		}
+		LOG.info("Finish Receive Staff From IMS");
+
+		logoutAsSystem(ctx);
+		return new ResponseEntity<String>("success", HttpStatus.OK);
+	}
+
+	// ====================================================================================================
+	// STAFF AKADEMIC ACTIVE
+	// ====================================================================================================
+	@RequestMapping(value = "/staff/academicActive", method = RequestMethod.POST)
+	public ResponseEntity<String> saveStaffAcademicActive(@RequestBody List<StaffPayload> staffPayload)
+			throws RecursiveGroupException {
+		SecurityContext ctx = loginAsSystem();
+
+		LOG.info("Start Receive Academic Staff From IMS");
+		for (StaffPayload payload : staffPayload) {
+
+			boolean staffReceive = identityService.isStaffNoExists(payload.getStaffId());
+
+			if (staffReceive) {
+
+				LOG.info("Staff already exists");
+				LOG.debug("Staff Staff_No:{}", payload.getStaffId());
+				LOG.debug("Staff Name:{}", payload.getStaffName());
+
+				// Find Staff By Identity No
+				AdStaff staff = identityService.findStaffByIdentityNo(payload.getStaffId());
+
+				// Find Department Code Existence
+				if (plannerService.isFacultyExists(payload.getStaffDepartmentCode())) {
+
+					// Find Department Code
+					AdFaculty departmentCode = plannerService.findFacultyByCode(staff.getFaculty().getCode());
+
+					// Find User
+					AdUser user = identityService.findUserByUsername(staff.getEmail());
+
+					// Find Group
+					AdGroup group = identityService.findGroupByUser(user);
+
+					if (departmentCode.equals(payload.getStaffDepartmentCode())
+							&& identityService.isGroupExists(group.getName())) {
+
+						AdFaculty faculty = plannerService.findFacultyByCode(payload.getStaffDepartmentCode());
+
+						AdStaff staffUpdate = identityService.findStaffByIdentityNo(payload.getStaffId());
+						staffUpdate.setIdentityNo(payload.getStaffId());
+						staffUpdate.setName(payload.getStaffName());
+						staffUpdate.setActorType(AdActorType.STAFF);
+						staffUpdate.setStaffType(AdStaffType.ACADEMIC);
+						staffUpdate.setPhone(payload.getStaffPhoneNo());
+						staffUpdate.setFaculty(faculty);
+						staffUpdate.setEmail(payload.getStaffEmail());
+						identityService.updateStaff(staffUpdate);
+
+					} else if ((!departmentCode.equals(payload.getStaffDepartmentCode()))) {
+
+						AdFaculty faculty = plannerService.findFacultyByCode(payload.getStaffDepartmentCode());
+
+						AdStaff staffUpdate = identityService.findStaffByIdentityNo(payload.getStaffId());
+						staffUpdate.setIdentityNo(payload.getStaffId());
+						staffUpdate.setName(payload.getStaffName());
+						staffUpdate.setActorType(AdActorType.STAFF);
+						staffUpdate.setStaffType(AdStaffType.ACADEMIC);
+						staffUpdate.setPhone(payload.getStaffPhoneNo());
+						staffUpdate.setFaculty(faculty);
+						staffUpdate.setEmail(payload.getStaffEmail());
+
+						AdUser updateUser = identityService.findUserByUsername(payload.getStaffEmail());
+						updateUser.setActor(staffUpdate);
+						updateUser.setEmail(payload.getStaffEmail());
+						updateUser.setUsername(payload.getStaffEmail());
+						updateUser.setPassword(payload.getStaffId());
+						updateUser.setRealName(payload.getStaffName());
+						updateUser.setName(payload.getStaffEmail());
+						updateUser.setEnabled(true);
+						updateUser.setLocked(true);
+						updateUser.setPrincipalType(AdPrincipalType.USER);
+						identityService.saveUser(updateUser);
+
+						AdPrincipal principal = identityService.findPrincipalByName(payload.getStaffEmail());
+						if (identityService.isGroupExists(group.getName())) {
+
+							LOG.info("If Group Academic Exists");
+
+							// Principal Role
+							AdPrincipalRole role = new AdPrincipalRoleImpl();
+							role.setPrincipal(principal);
+							role.setRole(AdRoleType.ROLE_LECTURER);
+							identityService.addPrincipalRole(principal, role);
+
+							try {
+								// Group
+								AdGroup groupLec = identityService.findGroupByName("GRP_LEC");
+								LOG.debug("Group:{}", groupLec);
+								// GroupMember
+								if (!identityService.isGroupExists(groupLec.getName())) {
+
+									identityService.addGroupMember(groupLec, principal);
+								}
+
+							} catch (RecursiveGroupException e) {
+
+								e.printStackTrace();
+							}
+						}
+						identityService.updateStaff(staffUpdate);
+					}
+				}
+
+			} else {
+
+				LOG.info("Staff not exists");
+				LOG.debug("Staff Staff_No:{}", payload.getStaffId());
+				LOG.debug("Staff Name:{}", payload.getStaffName());
+				LOG.debug("Staff Department_Code:{}", payload.getStaffDepartmentCode());
+
+				String facultyCode = payload.getStaffDepartmentCode();
+				AdFaculty faculty = plannerService.findFacultyByCode(facultyCode);
+
+				AdStaff staff = new AdStaffImpl();
+				staff.setIdentityNo(payload.getStaffId());
+				staff.setStaffType(AdStaffType.ACADEMIC);
+				staff.setName(payload.getStaffName());
+				staff.setActorType(AdActorType.STAFF);
+				staff.setPhone(payload.getStaffPhoneNo());
+				staff.setFaculty(faculty);
+				staff.setStaffCategory(payload.getStaffCategory());
+				staff.setEmail(payload.getStaffEmail());
+				if (plannerService.isFacultyExists(payload.getStaffDepartmentCode())) {
+					LOG.info("if faculty exists");
+					identityService.saveStaffIMSAcademicActive(staff);
 
 				} else {
 					LOG.info("if faculty not exists");
