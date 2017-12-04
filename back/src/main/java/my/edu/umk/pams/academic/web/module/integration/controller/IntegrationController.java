@@ -874,6 +874,148 @@ public class IntegrationController {
 		logoutAsSystem(ctx);
 		return new ResponseEntity<String>("success", HttpStatus.OK);
 	}
+	
+	
+	// ====================================================================================================
+		// STAFF AKADEMIC INACTIVE
+		// ====================================================================================================
+		@RequestMapping(value = "/staff/academicInActive", method = RequestMethod.POST)
+		public ResponseEntity<String> saveStaffAcademicInActive(@RequestBody List<StaffPayload> staffPayload)
+				throws RecursiveGroupException {
+			SecurityContext ctx = loginAsSystem();
+
+			LOG.info("Start Receive Academic Staff From IMS");
+			for (StaffPayload payload : staffPayload) {
+
+				boolean staffReceive = identityService.isStaffNoExists(payload.getStaffId());
+
+				if (staffReceive) {
+
+					LOG.info("Staff already exists");
+					LOG.debug("Staff Staff_No:{}", payload.getStaffId());
+					LOG.debug("Staff Name:{}", payload.getStaffName());
+
+					// Find Staff By Identity No
+					AdStaff staff = identityService.findStaffByIdentityNo(payload.getStaffId());
+
+					// Find Department Code Existence
+					if (plannerService.isFacultyExists(payload.getStaffDepartmentCode())) {
+
+						// Find Department Code
+						AdFaculty departmentCode = plannerService.findFacultyByCode(staff.getFaculty().getCode());
+
+						// Find User
+						AdUser user = identityService.findUserByUsername(staff.getEmail());
+
+						// Find Group
+						AdGroup group = identityService.findGroupByUser(user);
+
+						if (departmentCode.equals(payload.getStaffDepartmentCode())
+								&& identityService.isGroupExists(group.getName())) {
+
+							AdFaculty faculty = plannerService.findFacultyByCode(payload.getStaffDepartmentCode());
+
+							AdStaff staffUpdate = identityService.findStaffByIdentityNo(payload.getStaffId());
+							staffUpdate.setIdentityNo(payload.getStaffId());
+							staffUpdate.setName(payload.getStaffName());
+							staffUpdate.setActorType(AdActorType.STAFF);
+							staffUpdate.setStaffType(AdStaffType.ACADEMIC);
+							staffUpdate.setPhone(payload.getStaffPhoneNo());
+							staffUpdate.setFaculty(faculty);
+							staffUpdate.setEmail(payload.getStaffEmail());
+							identityService.updateStaff(staffUpdate);
+
+						} else if ((!departmentCode.equals(payload.getStaffDepartmentCode()))) {
+
+							AdFaculty faculty = plannerService.findFacultyByCode(payload.getStaffDepartmentCode());
+
+							AdStaff staffUpdate = identityService.findStaffByIdentityNo(payload.getStaffId());
+							staffUpdate.setIdentityNo(payload.getStaffId());
+							staffUpdate.setName(payload.getStaffName());
+							staffUpdate.setActorType(AdActorType.STAFF);
+							staffUpdate.setStaffType(AdStaffType.ACADEMIC);
+							staffUpdate.setPhone(payload.getStaffPhoneNo());
+							staffUpdate.setFaculty(faculty);
+							staffUpdate.setEmail(payload.getStaffEmail());
+
+							AdUser updateUser = identityService.findUserByUsername(payload.getStaffEmail());
+							updateUser.setActor(staffUpdate);
+							updateUser.setEmail(payload.getStaffEmail());
+							updateUser.setUsername(payload.getStaffEmail());
+							updateUser.setPassword(payload.getStaffId());
+							updateUser.setRealName(payload.getStaffName());
+							updateUser.setName(payload.getStaffEmail());
+							updateUser.setEnabled(false);
+							updateUser.setLocked(true);
+							updateUser.setPrincipalType(AdPrincipalType.USER);
+							identityService.saveUser(updateUser);
+
+							AdPrincipal principal = identityService.findPrincipalByName(payload.getStaffEmail());
+							if (identityService.isGroupExists(group.getName())) {
+
+								LOG.info("If Group Academic Exists");
+
+								// Principal Role
+								AdPrincipalRole role = new AdPrincipalRoleImpl();
+								role.setPrincipal(principal);
+								role.setRole(AdRoleType.ROLE_LECTURER);
+								identityService.addPrincipalRole(principal, role);
+
+								try {
+									// Group
+									AdGroup groupLec = identityService.findGroupByName("GRP_LEC");
+									LOG.debug("Group:{}", groupLec);
+									// GroupMember
+									if (!identityService.isGroupExists(groupLec.getName())) {
+
+										identityService.addGroupMember(groupLec, principal);
+									}
+
+								} catch (RecursiveGroupException e) {
+
+									e.printStackTrace();
+								}
+							}
+							identityService.updateStaff(staffUpdate);
+						}
+					}
+
+				} else {
+
+					LOG.info("Staff not exists");
+					LOG.debug("Staff Staff_No:{}", payload.getStaffId());
+					LOG.debug("Staff Name:{}", payload.getStaffName());
+					LOG.debug("Staff Department_Code:{}", payload.getStaffDepartmentCode());
+
+					String facultyCode = payload.getStaffDepartmentCode();
+					AdFaculty faculty = plannerService.findFacultyByCode(facultyCode);
+
+					AdStaff staff = new AdStaffImpl();
+					staff.setIdentityNo(payload.getStaffId());
+					staff.setStaffType(AdStaffType.ACADEMIC);
+					staff.setName(payload.getStaffName());
+					staff.setActorType(AdActorType.STAFF);
+					staff.setPhone(payload.getStaffPhoneNo());
+					staff.setFaculty(faculty);
+					staff.setStaffCategory(payload.getStaffCategory());
+					staff.setEmail(payload.getStaffEmail());
+					if (plannerService.isFacultyExists(payload.getStaffDepartmentCode())) {
+						LOG.info("if faculty exists");
+						identityService.saveStaffIMSAcademicInActive(staff);
+
+					} else {
+						LOG.info("if faculty not exists");
+						identityService.saveStaff(staff);
+
+					}
+				}
+			}
+			LOG.info("Finish Receive Staff From IMS");
+
+			logoutAsSystem(ctx);
+			return new ResponseEntity<String>("success", HttpStatus.OK);
+		}
+
 
 	// ====================================================================================================
 	// STUDENT ACCOUNT
@@ -935,7 +1077,7 @@ public class IntegrationController {
 			AdCohort cohort = new AdCohortImpl();
 			cohort.setCode(payload.getCohortCode());
 			cohort.setDescription(payload.getCohortCode());
-			cohort.setProgram(plannerService.findProgramByCode(payload.getProgramCode()));
+			cohort.setProgram(plannerService.findProgramByCode(payload.getProgramCode().getCode()));
 			cohort.setSession(plannerService.findCurrentAcademicSession());
 			plannerService.saveCohort(cohort);
 

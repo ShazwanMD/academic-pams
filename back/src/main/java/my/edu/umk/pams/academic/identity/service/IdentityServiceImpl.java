@@ -830,6 +830,54 @@ public class IdentityServiceImpl implements IdentityService {
 	
 	sessionFactory.getCurrentSession().flush();
 	}
+	
+	@Override
+    public void saveStaffIMSAcademicInActive(AdStaff staff) {
+		staffDao.save(staff, securityService.getCurrentUser());
+		LOG.info("Save Staff IMS Service");
+		
+		LOG.debug("Staff Email In Service:{}",staff.getEmail());
+		LOG.debug("Lecturer Faculty:{}",staff.getFaculty().getCode());
+		// User
+		AdUser user = new AdUserImpl();
+		user.setActor(staff);
+		user.setEmail(staff.getEmail());
+		user.setUsername(staff.getEmail());
+		user.setPassword(staff.getStaffNo());
+		user.setRealName(staff.getName());
+		//Username Principal
+		user.setName(staff.getEmail());
+		user.setEnabled(false);
+		user.setLocked(true);
+		user.setPrincipalType(AdPrincipalType.USER);
+		saveUser(user);
+				
+		// Principal
+		AdPrincipal principal = findPrincipalByName(staff.getEmail());
+		
+		// Principal Role
+		AdPrincipalRole role = new AdPrincipalRoleImpl();
+		role.setPrincipal(principal);
+		role.setRole(AdRoleType.ROLE_LECTURER);
+		addPrincipalRole(principal, role);
+
+		try{
+		// Group
+		AdGroup group = findGroupByName("GRP_LEC");
+		// GroupMember
+		AdGroupMember member = new AdGroupMemberImpl();
+		member.setGroup(group);
+		member.setPrincipal(principal);
+		addGroupMember(group, principal);
+		} catch (RecursiveGroupException e) {
+			
+			e.printStackTrace();
+		}
+	
+	
+	sessionFactory.getCurrentSession().flush();
+	}
+
 
 	@Override
     public void updateStaff(AdStaff staff) {

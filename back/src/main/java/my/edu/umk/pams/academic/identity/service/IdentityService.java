@@ -172,6 +172,9 @@ public interface IdentityService {
 
 	// Academic Active Staff
 	void saveStaffIMSAcademicActive(AdStaff staff);
+	
+	// Academic InActive Staff
+	void saveStaffIMSAcademicInActive(AdStaff staff);
 
 	void updateStaff(AdStaff Staff);
 
