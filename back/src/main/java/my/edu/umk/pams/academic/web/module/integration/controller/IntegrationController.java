@@ -64,6 +64,7 @@ import my.edu.umk.pams.academic.web.module.planner.controller.PlannerTransformer
 import my.edu.umk.pams.academic.web.module.planner.vo.AcademicSession;
 import my.edu.umk.pams.connector.payload.AccountPayload;
 import my.edu.umk.pams.connector.payload.CandidatePayload;
+import my.edu.umk.pams.connector.payload.FacultyCodePayload;
 import my.edu.umk.pams.connector.payload.StaffPayload;
 
 /**
@@ -92,6 +93,48 @@ public class IntegrationController {
 
 	@Autowired
 	private ProfileService profileService;
+
+	// ====================================================================================================
+	// Faculty/Department Code
+	// ====================================================================================================
+
+	@RequestMapping(value = "/facultyCodes", method = RequestMethod.POST)
+	public ResponseEntity<String> saveFacultyCode(@RequestBody List<FacultyCodePayload> facultyCodePayload) {
+		SecurityContext ctx = loginAsSystem();
+
+		LOG.info("Start Receive Faculty");
+		for (FacultyCodePayload payload : facultyCodePayload) {
+			LOG.debug("Faculty Code:{}", payload.getCode());
+
+			if (plannerService.isFacultyExists(payload.getCode())) {
+
+				LOG.info("DepartmentCode Already Exists");
+				AdFaculty faculty = plannerService.findFacultyByCode(payload.getCode());
+				faculty.setCode(payload.getCode());
+				faculty.setPrefix(payload.getPrefix()); // prefix
+				faculty.setDescription(payload.getDescription());
+				plannerService.updateFaculty(faculty);
+
+			} else {
+				LOG.info("DepartmentCode Not Exists");
+				AdFaculty faculty = new AdFacultyImpl();
+				faculty.setCode(payload.getCode());
+				faculty.setPrefix(payload.getPrefix()); // prefix
+				faculty.setDescription(payload.getDescription());
+				faculty.setName(payload.getCode());
+				;
+				if (payload.getCode().equals("A10")) {
+					faculty.setCenter(commonService.findGraduateCenterByCode("MGSEB"));
+				} else {
+					faculty.setCenter(commonService.findGraduateCenterByCode("CPS"));
+				}
+				plannerService.saveFaculty(faculty);
+			}
+		}
+		LOG.info("Finish Receive Faculty");
+		logoutAsSystem(ctx);
+		return new ResponseEntity<String>("success", HttpStatus.OK);
+	}
 
 	// ====================================================================================================
 	// COHORT
@@ -215,7 +258,7 @@ public class IntegrationController {
 
 											identityService.addGroupMember(groupPegawaiA10, principal);
 										}
-										
+
 									} catch (RecursiveGroupException e) {
 
 										e.printStackTrace();
@@ -237,7 +280,7 @@ public class IntegrationController {
 
 											identityService.addGroupMember(groupKRNA10, principal);
 										}
-										
+
 									} catch (RecursiveGroupException e) {
 
 										e.printStackTrace();
@@ -285,7 +328,7 @@ public class IntegrationController {
 
 											identityService.addGroupMember(groupKRNA09, principal);
 										}
-										
+
 									} catch (RecursiveGroupException e) {
 
 										e.printStackTrace();
@@ -338,7 +381,7 @@ public class IntegrationController {
 
 											identityService.addGroupMember(groupAllFaculty, principal);
 										}
-										
+
 									} catch (RecursiveGroupException e) {
 
 										e.printStackTrace();

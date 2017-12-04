@@ -31,7 +31,7 @@ public class AdFacultyImpl implements AdFaculty {
     @Column(name = "PREFIX", nullable = true, length = 5)
     private String prefix;
 
-    @Column(name = "NAME", nullable = false)
+    @Column(name = "NAME", nullable = true)
     private String name;
 
     @Column(name = "DESCRIPTION", nullable = true)
