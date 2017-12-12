@@ -487,19 +487,32 @@ public class IdentityServiceImpl implements IdentityService {
 		// User
 		AdUser user = new AdUserImpl();
 		user.setActor(staff);
-		user.setEmail(staff.getEmail());
+		if (staff.getEmail() == null) {
+			user.setEmail(staff.getIdentityNo());
+		} else {
+			user.setEmail(staff.getEmail());
+		}
 		user.setUsername(staff.getEmail());
 		user.setPassword(staff.getStaffNo());
 		user.setRealName(staff.getName());
 		// Username Principal
-		user.setName(staff.getEmail());
+		if (staff.getEmail() == null) {
+			user.setName(staff.getIdentityNo());
+		} else {
+			user.setName(staff.getEmail());
+		}
 		user.setEnabled(true);
 		user.setLocked(true);
 		user.setPrincipalType(AdPrincipalType.USER);
 		saveUser(user);
 
 		// Principal
-		AdPrincipal principal = findPrincipalByName(staff.getEmail());
+		AdPrincipal principal = null;
+		if (staff.getEmail() == null) {
+			principal = findPrincipalByName(staff.getIdentityNo());
+		} else {
+			principal = findPrincipalByName(staff.getEmail());
+		}
 		if (staff.getFaculty().getCode().equals("A10") && staff.getStaffCategory().equals("A")) {
 			LOG.info("If Faculty A10 MGSEB && Category A");
 
@@ -854,20 +867,33 @@ public class IdentityServiceImpl implements IdentityService {
 		// User
 		AdUser user = new AdUserImpl();
 		user.setActor(staff);
-		user.setEmail(staff.getEmail());
+		if (staff.getEmail() == null) {
+			user.setEmail(staff.getIdentityNo());
+		} else {
+			user.setEmail(staff.getEmail());
+		}
 		user.setUsername(staff.getEmail());
 		user.setPassword(staff.getStaffNo());
 		user.setRealName(staff.getName());
 		// Username Principal
-		user.setName(staff.getEmail());
+		if (staff.getEmail() == null) {
+			user.setName(staff.getIdentityNo());
+		} else {
+			user.setName(staff.getEmail());
+		}
 		user.setEnabled(false);
 		user.setLocked(true);
 		user.setPrincipalType(AdPrincipalType.USER);
 		saveUser(user);
 
 		// Principal
-		AdPrincipal principal = findPrincipalByName(staff.getEmail());
+		AdPrincipal principal = null;
+		if (staff.getEmail() == null) {
 
+			principal = findPrincipalByName(staff.getIdentityNo());
+		} else {
+			principal = findPrincipalByName(staff.getEmail());
+		}
 		// Principal Role
 		AdPrincipalRole role = new AdPrincipalRoleImpl();
 		role.setPrincipal(principal);
