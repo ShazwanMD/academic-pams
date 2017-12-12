@@ -186,7 +186,13 @@ public class IntegrationController {
 					AdFaculty departmentCode = plannerService.findFacultyByCode(staff.getFaculty().getCode());
 
 					// Find User
-					AdUser user = identityService.findUserByUsername(staff.getEmail());
+					AdUser user = null;
+
+					if (staff.getEmail() == null) {
+						user = identityService.findUserByUsername(staff.getIdentityNo());
+					} else {
+						user = identityService.findUserByUsername(staff.getEmail());
+					}
 
 					// Find Group
 					AdGroup group = identityService.findGroupByUser(user);
@@ -223,17 +229,30 @@ public class IntegrationController {
 
 						AdUser updateUser = identityService.findUserByUsername(payload.getStaffEmail());
 						updateUser.setActor(staffUpdate);
-						updateUser.setEmail(payload.getStaffEmail());
+						if (staff.getEmail() == null) {
+							updateUser.setEmail(payload.getStaffId());
+						} else {
+							updateUser.setEmail(payload.getStaffEmail());
+						}
 						updateUser.setUsername(payload.getStaffEmail());
 						updateUser.setPassword(payload.getStaffId());
 						updateUser.setRealName(payload.getStaffName());
-						updateUser.setName(payload.getStaffEmail());
+						if (staff.getEmail() == null) {
+							updateUser.setName(payload.getStaffId());
+						} else {
+							updateUser.setName(payload.getStaffEmail());
+						}
 						updateUser.setEnabled(true);
 						updateUser.setLocked(true);
 						updateUser.setPrincipalType(AdPrincipalType.USER);
 						identityService.saveUser(updateUser);
 
-						AdPrincipal principal = identityService.findPrincipalByName(payload.getStaffEmail());
+						AdPrincipal principal = null;
+						if (staff.getEmail() == null) {
+							principal = identityService.findPrincipalByName(payload.getStaffId());
+						} else {
+							principal = identityService.findPrincipalByName(payload.getStaffEmail());
+						}
 						LOG.debug("Principal Atas:{}", principal);
 
 						// Check Group Existence
@@ -476,7 +495,13 @@ public class IntegrationController {
 					AdFaculty departmentCode = plannerService.findFacultyByCode(staff.getFaculty().getCode());
 
 					// Find User
-					AdUser user = identityService.findUserByUsername(staff.getEmail());
+					AdUser user = null;
+
+					if (staff.getEmail() == null) {
+						user = identityService.findUserByUsername(staff.getIdentityNo());
+					} else {
+						user = identityService.findUserByUsername(staff.getEmail());
+					}
 
 					// Find Group
 					AdGroup group = identityService.findGroupByUser(user);
@@ -513,17 +538,31 @@ public class IntegrationController {
 
 						AdUser updateUser = identityService.findUserByUsername(payload.getStaffEmail());
 						updateUser.setActor(staffUpdate);
-						updateUser.setEmail(payload.getStaffEmail());
+						if (staff.getEmail() == null) {
+							updateUser.setEmail(payload.getStaffId());
+						} else {
+							updateUser.setEmail(payload.getStaffEmail());
+						}
 						updateUser.setUsername(payload.getStaffEmail());
 						updateUser.setPassword(payload.getStaffId());
 						updateUser.setRealName(payload.getStaffName());
-						updateUser.setName(payload.getStaffEmail());
+						if (staff.getEmail() == null) {
+							updateUser.setName(payload.getStaffId());
+						} else {
+							updateUser.setName(payload.getStaffEmail());
+						}
 						updateUser.setEnabled(false);
 						updateUser.setLocked(true);
 						updateUser.setPrincipalType(AdPrincipalType.USER);
 						identityService.saveUser(updateUser);
 
-						AdPrincipal principal = identityService.findPrincipalByName(payload.getStaffEmail());
+						AdPrincipal principal = null;
+						if (staff.getEmail() == null) {
+							principal = identityService.findPrincipalByName(payload.getStaffId());
+						} else {
+							principal = identityService.findPrincipalByName(payload.getStaffEmail());
+						}
+
 						LOG.debug("Principal Atas:{}", principal);
 
 						// Check Group Existence
@@ -800,8 +839,11 @@ public class IntegrationController {
 						staffUpdate2.setStaffType(AdStaffType.ACADEMIC);
 						staffUpdate2.setPhone(payload.getStaffPhoneNo());
 						staffUpdate2.setFaculty(faculty);
-						staffUpdate2.setEmail(payload.getStaffEmail());
-
+						if (staff.getEmail() == null) {
+							staffUpdate2.setEmail(payload.getStaffId());
+						} else {
+							staffUpdate2.setEmail(payload.getStaffEmail());
+						}
 						AdUser updateUser = null;
 
 						if (staff.getEmail() == null) {
@@ -931,7 +973,13 @@ public class IntegrationController {
 					AdFaculty departmentCode = plannerService.findFacultyByCode(staff.getFaculty().getCode());
 
 					// Find User
-					AdUser user = identityService.findUserByUsername(staff.getEmail());
+					AdUser user = null;
+
+					if (staff.getEmail() == null) {
+						user = identityService.findUserByUsername(staff.getIdentityNo());
+					} else {
+						user = identityService.findUserByUsername(staff.getEmail());
+					}
 
 					// Find Group
 					AdGroup group = identityService.findGroupByUser(user);
@@ -949,6 +997,7 @@ public class IntegrationController {
 						staffUpdate.setPhone(payload.getStaffPhoneNo());
 						staffUpdate.setFaculty(faculty);
 						staffUpdate.setEmail(payload.getStaffEmail());
+
 						identityService.updateStaff(staffUpdate);
 
 					} else if ((!departmentCode.equals(payload.getStaffDepartmentCode()))) {
@@ -964,19 +1013,39 @@ public class IntegrationController {
 						staffUpdate.setFaculty(faculty);
 						staffUpdate.setEmail(payload.getStaffEmail());
 
-						AdUser updateUser = identityService.findUserByUsername(payload.getStaffEmail());
+						AdUser updateUser = null;
+
+						if (staff.getEmail() == null) {
+							updateUser = identityService.findUserByUsername(payload.getStaffId());
+						} else {
+							updateUser = identityService.findUserByUsername(payload.getStaffEmail());
+						}
 						updateUser.setActor(staffUpdate);
-						updateUser.setEmail(payload.getStaffEmail());
+						if (staffUpdate.getEmail() == null) {
+							updateUser.setEmail(payload.getStaffId());
+						} else {
+							updateUser.setEmail(payload.getStaffEmail());
+						}
 						updateUser.setUsername(payload.getStaffEmail());
 						updateUser.setPassword(payload.getStaffId());
 						updateUser.setRealName(payload.getStaffName());
-						updateUser.setName(payload.getStaffEmail());
+						if (staff.getEmail() == null) {
+							updateUser.setName(payload.getStaffId());
+						} else {
+							updateUser.setName(payload.getStaffEmail());
+						}
 						updateUser.setEnabled(false);
 						updateUser.setLocked(true);
 						updateUser.setPrincipalType(AdPrincipalType.USER);
 						identityService.saveUser(updateUser);
 
-						AdPrincipal principal = identityService.findPrincipalByName(payload.getStaffEmail());
+						AdPrincipal principal = null;
+						if (staff.getEmail() == null) {
+							principal = identityService.findPrincipalByName(payload.getStaffId());
+						} else {
+							principal = identityService.findPrincipalByName(payload.getStaffEmail());
+						}
+
 						if (identityService.isGroupExists(group.getName())) {
 
 							LOG.info("If Group Academic Exists");
