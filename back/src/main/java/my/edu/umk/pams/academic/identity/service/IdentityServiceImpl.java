@@ -608,13 +608,21 @@ public class IdentityServiceImpl implements IdentityService {
 
 			try {
 				// Group
-				AdGroup group = findGroupByName("GRP_PGW_FCTY_" + staff.getFaculty().getCode());
-				// GroupMember
+				AdGroup group = null;
+				if(isGroupExists("GRP_PGW_FCTY_" + staff.getFaculty().getCode())){
+					
+					group = findGroupByName("GRP_PGW_FCTY_" + staff.getFaculty().getCode());
+					
+					// GroupMember
+					AdGroupMember member = new AdGroupMemberImpl();
+					member.setGroup(group);
+					member.setPrincipal(principal);
+					addGroupMember(group, principal);
+				}else{
+					LOG.debug("Not Exist");
+				}
+				
 
-				AdGroupMember member = new AdGroupMemberImpl();
-				member.setGroup(group);
-				member.setPrincipal(principal);
-				addGroupMember(group, principal);
 			} catch (RecursiveGroupException e) {
 
 				e.printStackTrace();
@@ -630,12 +638,17 @@ public class IdentityServiceImpl implements IdentityService {
 
 			try {
 				// Group
-				AdGroup group = findGroupByName("GRP_KRN_FCTY_" + staff.getFaculty().getCode());
-				// GroupMember
-				AdGroupMember member = new AdGroupMemberImpl();
-				member.setGroup(group);
-				member.setPrincipal(principal);
-				addGroupMember(group, principal);
+				AdGroup group = null;
+				if(isGroupExists("GRP_KRN_FCTY_" + staff.getFaculty().getCode())){
+					group = findGroupByName("GRP_KRN_FCTY_" + staff.getFaculty().getCode());
+					
+					// GroupMember
+					AdGroupMember member = new AdGroupMemberImpl();
+					member.setGroup(group);
+					member.setPrincipal(principal);
+					addGroupMember(group, principal);
+				}
+
 			} catch (RecursiveGroupException e) {
 
 				e.printStackTrace();

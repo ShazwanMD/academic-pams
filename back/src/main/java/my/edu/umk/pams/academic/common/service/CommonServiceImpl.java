@@ -1742,6 +1742,11 @@ public class CommonServiceImpl implements CommonService {
 		graduateCenterDao.remove(graduateCenter, securityService.getCurrentUser());
 		sessionFactory.getCurrentSession().flush();
 	}
+	
+	@Override
+	public boolean isGraduateCenterExists(String code) {
+		return graduateCenterDao.isExists(code);
+	}
 
 	// ====================================================================================================
 	// CAMPUS

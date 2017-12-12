@@ -704,6 +704,8 @@ public  interface CommonService{
 	void updateGraduateCenter(AdGraduateCenter graduateCenter);
 
 	void removeGraduateCenter(AdGraduateCenter graduateCenter);
+	
+    boolean isGraduateCenterExists(String code);
 
 	
 	// ====================================================================================================

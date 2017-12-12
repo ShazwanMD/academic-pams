@@ -74,7 +74,7 @@ public class AdGraduateCenterDaoImpl extends GenericDaoSupport<Long, AdGraduateC
                 "and s.metadata.state = :state ");
         query.setString("code", code);
         query.setInteger("state", AdMetaState.ACTIVE.ordinal());
-        return 0 < ((Long) query.uniqueResult()).intValue();
+        return ((Long) query.uniqueResult()).intValue() >= 1;
 	}
 
 
