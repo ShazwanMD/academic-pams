@@ -1201,6 +1201,7 @@ public class IntegrationController {
 		student.setFax(payload.getFax());
 		student.setPhone(payload.getPhone());
 		student.setMobile(payload.getMobile());
+		student.setNoID(payload.getUserPayload().getNric());
 		student.setGenderCode(commonService.findGenderCodeByCode(payload.getGender()));
 		student.setMaritalCode(commonService.findMaritalCodeByCode(payload.getMartialStatus()));
 		student.setRaceCode(commonService.findRaceCodeByCode(payload.getRace()));
@@ -1280,7 +1281,7 @@ public class IntegrationController {
 		admission.setOrdinal(1);
 
 		// Advisor
-		if (payload.getFacultyCode().equals("A10")) {
+		if (payload.getFacultyCode().getCode().equals("A10")) {
 			admission.setAdvisor(null);
 		} else {
 			AdStaff advisor = identityService.findStaffByIdentityNo(payload.getSupervisorCode());
@@ -1296,7 +1297,7 @@ public class IntegrationController {
 		admission.setStatus(AdAdmissionStatus.REGULAR);
 
 		// StudyCenter
-		if (payload.getFacultyCode().equals("A10")) {
+		if (payload.getFacultyCode().getCode().equals("A10")) {
 			LOG.debug("Faculty:{}", payload.getFacultyCode());
 
 			String studyCenterCode = payload.getStudyCenter().getCode();
