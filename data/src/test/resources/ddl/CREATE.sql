@@ -1329,6 +1329,7 @@
         M_ST int4,
         ORDINAL int4 not null,
         OFFERING_ID int8 not null,
+        STUDY_MODE_ID int8,
         primary key (ID)
     );
 
@@ -2021,6 +2022,11 @@
         add constraint FKE7E00F66207B8BFF
         foreign key (OFFERING_ID)
         references AD_OFRG;
+        
+    alter table AD_SCTN
+        add constraint FKE7E00F66207B8BFFSAM
+        foreign key (STUDY_MODE_ID)
+        references AD_STDY_MODE;    
 
     alter table AD_SCTN_PLCY
         add constraint FK503FDCAB57A98791

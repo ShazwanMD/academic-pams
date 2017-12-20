@@ -1,7 +1,7 @@
 package my.edu.umk.pams.academic.web.module.term.controller;
 
 import my.edu.umk.pams.academic.common.model.AdStudyCenter;
-
+import my.edu.umk.pams.academic.common.model.AdStudyMode;
 import my.edu.umk.pams.academic.common.service.CommonService;
 import my.edu.umk.pams.academic.core.AdFlowState;
 import my.edu.umk.pams.academic.identity.model.AdStaff;
@@ -906,6 +906,7 @@ public class TermController {
 			section.setCapacity(vo.getCapacity());
 			section.setOrdinal(vo.getOrdinal());
 			section.setOffering(termService.findOfferingById(vo.getOffering().getId()));
+			section.setStudyMode(commonService.findStudyModeById(vo.getStudyMode().getId()));
 			termService.addSection(offering, section);
 
 			System.out.println("Save new section:" + canonicalCode);
@@ -1009,12 +1010,14 @@ public class TermController {
 		// dummyLogin();
 
 		AdOffering offering = termService.findOfferingByCanonicalCode(canonicalCode);
+		AdStudyMode studyMode = commonService.findStudyModeById(vo.getStudyMode().getId());
 		AdSection section = termService.findSectionById(id);
 		section.setCanonicalCode(vo.getCanonicalCode());
 		section.setCode(vo.getCode());
 		section.setCapacity(vo.getCapacity());
 		section.setOrdinal(vo.getOrdinal());
 		section.setOffering(offering);
+		section.setStudyMode(studyMode);
 		termService.updateSection(offering, section);
 		return new ResponseEntity<String>("Success", HttpStatus.OK);
 	}

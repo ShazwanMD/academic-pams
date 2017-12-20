@@ -1,5 +1,6 @@
 package my.edu.umk.pams.academic.term.model;
 
+import my.edu.umk.pams.academic.common.model.AdStudyMode;
 import my.edu.umk.pams.academic.core.AdMetaObject;
 
 import java.util.List;
@@ -52,4 +53,8 @@ public interface AdSection extends AdMetaObject {
     Integer getSectionCount();
 
     void setSectionCount(Integer sectionCount);
+    
+	AdStudyMode getStudyMode();
+	
+	void setStudyMode(AdStudyMode studyMode);
 }

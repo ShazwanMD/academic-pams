@@ -1,6 +1,8 @@
 package my.edu.umk.pams.academic.term.model;
 
 
+import my.edu.umk.pams.academic.common.model.AdStudyMode;
+import my.edu.umk.pams.academic.common.model.AdStudyModeImpl;
 import my.edu.umk.pams.academic.core.AdMetadata;
 
 import javax.persistence.*;
@@ -45,6 +47,10 @@ public class AdSectionImpl implements AdSection {
 
     @OneToMany(targetEntity = AdAppointmentImpl.class, mappedBy = "section", fetch = FetchType.LAZY)
     private List<AdAppointment> appointments;
+    
+	@OneToOne(targetEntity = AdStudyModeImpl.class)
+	@JoinColumn(name = "STUDY_MODE_ID", nullable = true)
+	private AdStudyMode studyMode;
 
     @Embedded
     private AdMetadata metadata;
@@ -196,6 +202,17 @@ public class AdSectionImpl implements AdSection {
     public void setSectionCount(Integer sectionCount) {
         this.sectionCount = sectionCount;
     }
+    
+	@Override
+	public AdStudyMode getStudyMode() {
+		return studyMode;
+	}
+
+	@Override
+	public void setStudyMode(AdStudyMode studyMode) {
+		this.studyMode = studyMode;
+		
+	}
     
     
     

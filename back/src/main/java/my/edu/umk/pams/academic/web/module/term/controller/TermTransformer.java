@@ -237,6 +237,7 @@ public class TermTransformer {
 	}
 
 	public Section toSectionVo(AdSection section) {
+	   	if(null == section)return null;
 		Section vo = new Section();
 		vo.setId(section.getId());
 		vo.setCode(section.getCode());
@@ -244,6 +245,7 @@ public class TermTransformer {
 		vo.setCapacity(section.getCapacity());
 		vo.setOrdinal(section.getOrdinal());
 		vo.setOffering(this.toOfferingVo(section.getOffering()));
+		vo.setStudyMode(commonTransformer.toStudyModeVo(section.getStudyMode()));
 		return vo;
 	}
 

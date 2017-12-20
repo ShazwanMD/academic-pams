@@ -2,6 +2,8 @@ package my.edu.umk.pams.academic.web.module.term.vo;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+import my.edu.umk.pams.academic.web.module.common.vo.StudyMode;
 import my.edu.umk.pams.academic.web.module.core.vo.MetaObject;
 
 import java.io.IOException;
@@ -16,6 +18,7 @@ public class Section extends MetaObject {
 	private String canonicalCode;
 	private Integer ordinal;
 	private Offering offering;
+	private StudyMode studyMode;
 
 	// transient
 	private Integer enrollmentCount;
@@ -84,6 +87,14 @@ public class Section extends MetaObject {
 
 	public void setOffering(Offering offering) {
 		this.offering = offering;
+	}
+	
+	public StudyMode getStudyMode() {
+		return studyMode;
+	}
+
+	public void setStudyMode(StudyMode studyMode) {
+		this.studyMode = studyMode;
 	}
 
 	@JsonCreator
