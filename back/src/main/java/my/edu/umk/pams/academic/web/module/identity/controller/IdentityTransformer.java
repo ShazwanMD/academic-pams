@@ -52,18 +52,34 @@ public class IdentityTransformer {
 
 	public Staff toStaffVo(AdStaff staff) {
 		Staff vo = new Staff();
-		vo.setId(staff.getId());
-		vo.setIdentityNo(staff.getIdentityNo());
-		vo.setName(staff.getName());
-		vo.setEmail(staff.getEmail());
-		vo.setMobile(staff.getMobile());
-		vo.setPhone(staff.getPhone());
-		vo.setFax(staff.getFax());
-		vo.setTitle(staff.getTitle());
-		vo.setActorType(ActorType.get(staff.getActorType().ordinal()));
-		vo.setProgram(plannerTransformer.toProgramVo(staff.getProgram()));
-		vo.setFaculty(plannerTransformer.toFacultyVo(staff.getFaculty()));
+		if (staff.getProgram() != null) {
 
+			vo.setId(staff.getId());
+			vo.setIdentityNo(staff.getIdentityNo());
+			vo.setName(staff.getName());
+			vo.setEmail(staff.getEmail());
+			vo.setMobile(staff.getMobile());
+			vo.setPhone(staff.getPhone());
+			vo.setFax(staff.getFax());
+			vo.setTitle(staff.getTitle());
+			vo.setActorType(ActorType.get(staff.getActorType().ordinal()));
+			vo.setProgram(plannerTransformer.toProgramVo(staff.getProgram()));
+			vo.setFaculty(plannerTransformer.toFacultyVo(staff.getFaculty()));
+
+		} else {
+
+			vo.setId(staff.getId());
+			vo.setIdentityNo(staff.getIdentityNo());
+			vo.setName(staff.getName());
+			vo.setEmail(staff.getEmail());
+			vo.setMobile(staff.getMobile());
+			vo.setPhone(staff.getPhone());
+			vo.setFax(staff.getFax());
+			vo.setTitle(staff.getTitle());
+			vo.setActorType(ActorType.get(staff.getActorType().ordinal()));
+			//vo.setProgram(plannerTransformer.toProgramVo(staff.getProgram()));
+			vo.setFaculty(plannerTransformer.toFacultyVo(staff.getFaculty()));
+		}
 		return vo;
 	}
 
