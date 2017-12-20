@@ -422,6 +422,65 @@ export class SetupActions {
     };
   }
 
+  static SAVE_BANK_CODE = '[Setup] Save Bank Code';
+  
+    saveBankCode(bankCode): Action {
+      console.log("saveBankCode");
+      return {
+        type: SetupActions.SAVE_BANK_CODE,
+        payload: bankCode
+      };
+    }
+  
+    static SAVE_BANK_CODE_SUCCESS = '[Setup] Save Bank Code Success';
+  
+    saveBankCodeSuccess(message): Action {
+      console.log("saveBankCodeSuccess");
+      return {
+        type: SetupActions.SAVE_BANK_CODE_SUCCESS,
+        payload: message
+      };
+    }
+  
+    static UPDATE_BANK_CODE = '[Setup] Update Bank Code';
+  
+    updateBankCode(bankCode): Action {
+      console.log("updateBankCode");
+      return {
+        type: SetupActions.UPDATE_BANK_CODE,
+        payload: bankCode
+      };
+    }
+  
+    static UPDATE_BANK_CODE_SUCCESS = '[Setup] Update Bank Code  Success';
+  
+    updateBankCodeSuccess(message): Action {
+      console.log("updateBankCodeSuccess");
+      return {
+        type: SetupActions.UPDATE_BANK_CODE_SUCCESS,
+        payload: message
+      };
+    }
+  
+    static REMOVE_BANK_CODE = '[Setup] Remove Bank Code';
+  
+    removeBankCode(bankCode): Action {
+      console.log("removeBankCode");
+      return {
+        type: SetupActions.REMOVE_BANK_CODE,
+        payload: bankCode
+      };
+    }
+  
+    static REMOVE_BANK_CODE_SUCCESS = '[Setup] Remove Bank Code  Success';
+  
+    removeBankCodeSuccess(message): Action {
+      console.log("removeBankCodeSuccess");
+      return {
+        type: SetupActions.REMOVE_BANK_CODE_SUCCESS,
+        payload: message
+      };
+    }
 
 //====================================================================================
 // STATE CODES

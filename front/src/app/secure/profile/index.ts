@@ -1,3 +1,5 @@
+import { BankCodeListState } from './../setup/bank-codes/bank-code-list.reducer';
+import { BankCode } from './../../shared/model/common/bank-code.interface';
 import { MinAmountDialog } from './dialog/minAmount.dialog';
 import { StudentStatusDialog } from './dialog/student-status.dialog';
 import { StudentStatusSelectComponent } from './component/student-status-select.component';
@@ -64,6 +66,7 @@ import { AdvisoryListComponent } from './component/advisory-list.component';
 import { AdvisoryDetailPage } from './advisory-detail.page';
 import { AdvisoryComponent } from './component/advisory.component';
 import { IdentityModule } from "../identity/index";
+import { bankCodeListReducer } from '../setup/bank-codes/bank-code-list.reducer';
 
 export interface ProfileModuleState {
   students: StudentListState;
@@ -78,6 +81,7 @@ export interface ProfileModuleState {
   admissionApplications: AdmissionApplicationListState;
   graduationApplications: GraduationApplicationListState;
   graduations: GraduationListState;
+  bankCodes: BankCodeListState;
 }
 ;
 
@@ -95,6 +99,7 @@ export const INITIAL_PROFILE_STATE: ProfileModuleState =
     admissionApplications: <AdmissionApplication[]>[],
     graduationApplications: <GraduationApplication[]>[],
     graduations: <Graduation[]>[],
+    bankCodes:<BankCode[]>[],
   };
 
 export const profileModuleReducers = {
@@ -110,6 +115,7 @@ export const profileModuleReducers = {
   admissionApplications: admissionApplicationListReducer,
   graduationApplications: graduationApplicationListReducer,
   graduations: graduationListReducer,
+  bankCodes: bankCodeListReducer,
 };
 
 @NgModule({

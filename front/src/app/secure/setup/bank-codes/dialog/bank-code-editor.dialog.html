@@ -1,0 +1,35 @@
+<h2 md-dialog-title>Bank Code</h2>
+<md-dialog-content>
+  <form [formGroup]="editorForm" novalidate>
+    <div fxLayout fxLayout.xs="column" fxLayoutWrap fxLayoutGap="25px" class="inset">
+      <md-input-container flex mdTooltip="Please insert Bank Code">
+        <input mdInput
+               placeholder="Bank Code"
+               formControlName="code"
+               fxFlex="calc(100%-25px)"/>
+      </md-input-container>
+      <div class="tc-red-600" *ngIf="editorForm.get('code').invalid && editorForm.get('code').touched">
+        Please insert Bank Code!
+      </div>
+    </div>
+
+    <div fxLayout fxLayout.xs="column" fxLayoutWrap fxLayoutGap="25px" class="inset">
+      <md-input-container flex mdTooltip="Please insert Bank Name">
+        <input mdInput
+               placeholder="Bank Name"
+               formControlName="name"
+               fxFlex="calc(100%-25px)"/>
+      </md-input-container>
+      <div class="tc-red-600" *ngIf="editorForm.get('name').invalid && editorForm.get('name').touched">
+        Please insert Bank Name!
+      </div>
+    </div>
+
+
+  </form>
+</md-dialog-content>
+<md-dialog-actions align="end">
+  <button md-raised-button color="accent" (click)="submit(editorForm.value,edit)" [disabled]="!editorForm.valid">
+    {{edit ? 'Update' : 'Save'}}
+  </button>
+</md-dialog-actions>

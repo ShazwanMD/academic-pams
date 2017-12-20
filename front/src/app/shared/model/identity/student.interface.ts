@@ -1,3 +1,4 @@
+import { BankCode } from './../common/bank-code.interface';
 import {Actor} from './actor.interface';
 import {Cohort} from '../planner/cohort.interface';
 import {StudyMode} from '../common/study-mode.interface';
@@ -11,4 +12,7 @@ export interface Student extends Actor {
   balance: number;
   outstanding: boolean;
   minAmount: number;
+  NoID: string;
+  bankAccountNo: string;
+  bankCode: BankCode;
 }

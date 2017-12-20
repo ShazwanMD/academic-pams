@@ -1,3 +1,4 @@
+import { BankCode } from './../../../shared/model/common/bank-code.interface';
 import { ReportActions } from './../../../shared/report/report.action';
 import { AcademicSession } from './../../../shared/model/planner/academic-session.interface';
 import { StudentDetailEditorDialog } from './../dialog/student-detail-editor.dialog';
@@ -32,12 +33,14 @@ import { EnrollmentApplicationTaskCreatorDialog } from "../../term/enrollment-ap
 import { EnrollmentApplicationTaskDialog } from "../../term/enrollment-applications/dialog/enrollment-application-task.dialog";
 import { GraduationApplicationCreatorDialog } from "../../graduation/graduation-applications/dialog/graduation-application-creator.dialog";
 import { DatePipe } from '@angular/common';
+import { SetupActions } from '../../setup/setup.action';
+import { StudentBankEditorDialog } from '../dialog/student-bank-editor.dialog';
 
-@Component( {
+@Component({
     selector: 'pams-student-profile-list',
     templateUrl: 'student-profile-list.component.html',
     changeDetection: ChangeDetectionStrategy.OnPush,
-} )
+})
 export class StudentProfileListPage implements OnInit {
 
     today: number = Date.now();
@@ -51,6 +54,7 @@ export class StudentProfileListPage implements OnInit {
     private creatorDialogRef2: MdDialogRef<EnrollmentApplicationTaskDialog>;
     private creatorDialogRef3: MdDialogRef<GraduationApplicationCreatorDialog>;
     private creatorDialogRef4: MdDialogRef<GraduationApplicationTaskDialog>;
+    private studentBankDialogRef: MdDialogRef<StudentBankEditorDialog>;
 
 
     //inputs
@@ -68,6 +72,7 @@ export class StudentProfileListPage implements OnInit {
     @Input() admissionApplications: AdmissionApplication[];
     @Input() graduationApplications: GraduationApplication[];
     @Input() graduations: Graduation[];
+    @Input() bankCodes: BankCode[];
 
     @Output() view2 = new EventEmitter<Admission>();
 
@@ -78,12 +83,13 @@ export class StudentProfileListPage implements OnInit {
         private route: ActivatedRoute,
         private actions: StudentProfileActions,
         private profileActions: ProfileActions,
+        private setupActions: SetupActions,
         private reportActions: ReportActions,
         private vcf: ViewContainerRef,
         private store: Store<StudentProfileModuleState>,
         private formBuilder: FormBuilder,
         private snackBar: MdSnackBar,
-        private dialog: MdDialog ) {
+        private dialog: MdDialog) {
 
 
     }
@@ -130,8 +136,8 @@ export class StudentProfileListPage implements OnInit {
     //Admission
     private columnAdmission: any[] = [
         { name: 'academicSession.code', label: 'Session' },
-        { name: 'gpa', label: 'GPA', numeric: true, format: ( v ) => v.toFixed( 2 ), filter: true },
-        { name: 'cgpa', label: 'CGPA', numeric: true, format: ( v ) => v.toFixed( 2 ), filter: true },
+        { name: 'gpa', label: 'GPA', numeric: true, format: (v) => v.toFixed(2), filter: true },
+        { name: 'cgpa', label: 'CGPA', numeric: true, format: (v) => v.toFixed(2), filter: true },
         { name: 'ordinal', label: 'Semester' },
         { name: 'standing', label: 'Standing' },
         { name: 'status', label: 'Status' },
@@ -198,8 +204,8 @@ export class StudentProfileListPage implements OnInit {
         { name: 'action', label: '' },
     ];
 
-    goBack( route: string ): void {
-        this.router.navigate( ['/studentProfile'] );
+    goBack(route: string): void {
+        this.router.navigate(['/studentProfile']);
     }
 
     ngOnInit(): void {
@@ -215,22 +221,45 @@ export class StudentProfileListPage implements OnInit {
     /*=========================================================================================*/
 
     editStudent(): void {
-        this.showDialog( this.student );
+        this.showDialog(this.student);
     }
 
-    private showDialog( student: Student ): void {
-        console.log( 'edit student detail' );
+    private showDialog(student: Student): void {
+        console.log('edit student detail');
         let config = new MdDialogConfig();
         config.viewContainerRef = this.vcf;
         config.role = 'dialog';
         config.width = '70%';
         config.height = '50%';
         config.position = { top: '0px' };
-        this.studentDialogRef = this.dialog.open( StudentDetailEditorDialog, config );
+        this.studentDialogRef = this.dialog.open(StudentDetailEditorDialog, config);
         this.studentDialogRef.componentInstance.student = this.student; // set
-        this.studentDialogRef.afterClosed().subscribe(( res ) => {
-            console.log( 'close dialog' );
-        } );
+        this.studentDialogRef.afterClosed().subscribe((res) => {
+            console.log('close dialog');
+        });
+    }
+
+    /*=========================================================================================*/
+    /*STUDENT BANK ACCOUNT INFORMATION*/
+    /*=========================================================================================*/
+
+    addBankCodeDialog(): void {
+        this.showDialogBankAccount(this.student);
+    }
+
+    private showDialogBankAccount(student: Student): void {
+        console.log('edit student detail');
+        let config = new MdDialogConfig();
+        config.viewContainerRef = this.vcf;
+        config.role = 'dialog';
+        config.width = '70%';
+        config.height = '50%';
+        config.position = { top: '0px' };
+        this.studentBankDialogRef = this.dialog.open(StudentBankEditorDialog, config);
+        this.studentBankDialogRef.componentInstance.student = this.student; // set
+        this.studentBankDialogRef.afterClosed().subscribe((res) => {
+            console.log('close dialog');
+        });
     }
 
 
@@ -239,52 +268,52 @@ export class StudentProfileListPage implements OnInit {
     /*=========================================================================================*/
     //ADD ADDRESS DIALOG
     addAddressDialog(): void {
-        console.log( 'add student address dialog' );
+        console.log('add student address dialog');
         let config = new MdDialogConfig();
         config.viewContainerRef = this.vcf;
         config.role = 'dialog';
         config.width = '70%';
         config.height = '80%';
         config.position = { top: '0px' };
-        this.studentAddressCreatorDialogRef = this.dialog.open( StudentAddressEditorDialog, config );
+        this.studentAddressCreatorDialogRef = this.dialog.open(StudentAddressEditorDialog, config);
         this.studentAddressCreatorDialogRef.componentInstance.student = this.student;
-        this.studentAddressCreatorDialogRef.afterClosed().subscribe(( res ) => {
-            console.log( 'close this dialog' );
-        } );
+        this.studentAddressCreatorDialogRef.afterClosed().subscribe((res) => {
+            console.log('close this dialog');
+        });
     }
 
     //EDIT ADDRESS DIALOG
-    editAddressDialog( address: Address, isValid: boolean ): void {
-        console.log( "edit student address dialog" );
+    editAddressDialog(address: Address, isValid: boolean): void {
+        console.log("edit student address dialog");
         let config = new MdDialogConfig();
         config.viewContainerRef = this.vcf;
         config.role = 'dialog';
         config.width = '70%';
         config.height = '80%';
         config.position = { top: '0px' };
-        this.studentAddressCreatorDialogRef = this.dialog.open( StudentAddressEditorDialog, config );
+        this.studentAddressCreatorDialogRef = this.dialog.open(StudentAddressEditorDialog, config);
         this.studentAddressCreatorDialogRef.componentInstance.address = address;
         this.studentAddressCreatorDialogRef.componentInstance.student = this.student;
-        this.studentAddressCreatorDialogRef.afterClosed().subscribe(( res ) => {
-            console.log( "close dialog" );
-        } );
+        this.studentAddressCreatorDialogRef.afterClosed().subscribe((res) => {
+            console.log("close dialog");
+        });
     }
 
     //DELETE ADDRESS
-    deleteAddress( contact: Contact ): void {
-        console.log( "delete student address" );
-        
+    deleteAddress(contact: Contact): void {
+        console.log("delete student address");
+
         if (confirm("Are you sure to delete this address?") == true) {
-            this.store.dispatch( this.actions.deleteStudentAddress( this.student.identityNo, contact ) );
-              let snackBarRef = this.snackBar.open( 'Address has been deleted', '', { duration: 3000 } );
-              snackBarRef.afterDismissed().subscribe(() => {
-              } );
-          } else {
-              let snackBarRef = this.snackBar.open( 'Address has been cancel deleted', '', { duration: 3000 } );
-              snackBarRef.afterDismissed().subscribe(() => {
-              } );
-          }   
-       
+            this.store.dispatch(this.actions.deleteStudentAddress(this.student.identityNo, contact));
+            let snackBarRef = this.snackBar.open('Address has been deleted', '', { duration: 3000 });
+            snackBarRef.afterDismissed().subscribe(() => {
+            });
+        } else {
+            let snackBarRef = this.snackBar.open('Address has been cancel deleted', '', { duration: 3000 });
+            snackBarRef.afterDismissed().subscribe(() => {
+            });
+        }
+
     }
 
     /*=========================================================================================*/
@@ -292,51 +321,51 @@ export class StudentProfileListPage implements OnInit {
     /*=========================================================================================*/
     //ADD CONTACT DIALOG
     addContactDialog(): void {
-        console.log( 'Add Contact' );
-        console.log( "Add Contact" + this.student.identityNo );
+        console.log('Add Contact');
+        console.log("Add Contact" + this.student.identityNo);
         let config = new MdDialogConfig();
         config.viewContainerRef = this.vcf;
         config.role = 'dialog';
         config.width = '70%';
         config.height = '80%';
         config.position = { top: '0px' };
-        this.studentContactEditorDialogRef = this.dialog.open( StudentContactEditorDialog, config );
+        this.studentContactEditorDialogRef = this.dialog.open(StudentContactEditorDialog, config);
         this.studentContactEditorDialogRef.componentInstance.student = this.student;
-        this.studentContactEditorDialogRef.afterClosed().subscribe(( res ) => {
-        } );
+        this.studentContactEditorDialogRef.afterClosed().subscribe((res) => {
+        });
     }
 
     //EDIT CONTACT DIALOG
-    editContactDialog( contact: Contact, isValid: boolean ): void {
-        console.log( "Editing Contact" );
-        console.log( "EditContact" + this.student.identityNo );
+    editContactDialog(contact: Contact, isValid: boolean): void {
+        console.log("Editing Contact");
+        console.log("EditContact" + this.student.identityNo);
         let config = new MdDialogConfig();
         config.viewContainerRef = this.vcf;
         config.role = 'dialog';
         config.width = '70%';
         config.height = '80%';
         config.position = { top: '0px' };
-        this.studentContactEditorDialogRef = this.dialog.open( StudentContactEditorDialog, config );
+        this.studentContactEditorDialogRef = this.dialog.open(StudentContactEditorDialog, config);
         this.studentContactEditorDialogRef.componentInstance.contact = contact;
         this.studentContactEditorDialogRef.componentInstance.student = this.student;
-        this.studentContactEditorDialogRef.afterClosed().subscribe(( res ) => {
-        } );
+        this.studentContactEditorDialogRef.afterClosed().subscribe((res) => {
+        });
     }
 
     //DELETE CONTACT
-    deleteContact( contact: Contact ): void {
-        
+    deleteContact(contact: Contact): void {
+
         if (confirm("Are you sure to delete this contact?") == true) {
-            this.store.dispatch( this.actions.deleteStudentContact( this.student.identityNo, contact ) );
-              let snackBarRef = this.snackBar.open( 'Contact has been deleted', '', { duration: 3000 } );
-              snackBarRef.afterDismissed().subscribe(() => {
-              } );
-          } else {
-              let snackBarRef = this.snackBar.open( 'Contact has been cancel deleted', '', { duration: 3000 } );
-              snackBarRef.afterDismissed().subscribe(() => {
-              } );
-          }   
-        
+            this.store.dispatch(this.actions.deleteStudentContact(this.student.identityNo, contact));
+            let snackBarRef = this.snackBar.open('Contact has been deleted', '', { duration: 3000 });
+            snackBarRef.afterDismissed().subscribe(() => {
+            });
+        } else {
+            let snackBarRef = this.snackBar.open('Contact has been cancel deleted', '', { duration: 3000 });
+            snackBarRef.afterDismissed().subscribe(() => {
+            });
+        }
+
        /* console.log( this.student.identityNo );
         console.log( contact );
         this.store.dispatch( this.actions.deleteStudentContact( this.student.identityNo, contact ) );
@@ -348,52 +377,52 @@ export class StudentProfileListPage implements OnInit {
     /*=========================================================================================*/
     //ADD GUARDIAN DIALOG
     addGuardianDialog(): void {
-        console.log( 'add Student Guardian' );
+        console.log('add Student Guardian');
         let config = new MdDialogConfig();
         config.viewContainerRef = this.vcf;
         config.role = 'dialog';
         config.width = '70%';
         config.height = '80%';
         config.position = { top: '0px' };
-        this.studentGuardianCreatorDialogRef = this.dialog.open( StudentGuardianEditorDialog, config );
+        this.studentGuardianCreatorDialogRef = this.dialog.open(StudentGuardianEditorDialog, config);
         this.studentGuardianCreatorDialogRef.componentInstance.student = this.student;
-        this.studentGuardianCreatorDialogRef.afterClosed().subscribe(( res ) => {
-            console.log( 'close dialog' );
-        } );
+        this.studentGuardianCreatorDialogRef.afterClosed().subscribe((res) => {
+            console.log('close dialog');
+        });
     }
 
     //EDIT GUARDIAN DIALOG
-    editGuardianDialog( guardian: Guardian, isValid: boolean ): void {
-        console.log( 'edit Student Guardian' );
+    editGuardianDialog(guardian: Guardian, isValid: boolean): void {
+        console.log('edit Student Guardian');
         let config = new MdDialogConfig();
         config.viewContainerRef = this.vcf;
         config.role = 'dialog';
         config.width = '70%';
         config.height = '80%';
         config.position = { top: '0px' };
-        this.studentGuardianCreatorDialogRef = this.dialog.open( StudentGuardianEditorDialog, config );
+        this.studentGuardianCreatorDialogRef = this.dialog.open(StudentGuardianEditorDialog, config);
         this.studentGuardianCreatorDialogRef.componentInstance.guardian = guardian;
         this.studentGuardianCreatorDialogRef.componentInstance.student = this.student;
-        this.studentGuardianCreatorDialogRef.afterClosed().subscribe(( res ) => {
-        } );
+        this.studentGuardianCreatorDialogRef.afterClosed().subscribe((res) => {
+        });
     }
 
     //DELETE GUARDIAN
-    deleteGuardian( guardian: Guardian ): void {
-        console.log( this.student.identityNo );
-        
+    deleteGuardian(guardian: Guardian): void {
+        console.log(this.student.identityNo);
+
         if (confirm("Are you sure to delete this guardian?") == true) {
-            this.store.dispatch( this.actions.deleteStudentGuardian( this.student.identityNo, guardian ) );
-              let snackBarRef = this.snackBar.open( 'Guardian has been deleted', '', { duration: 3000 } );
-              snackBarRef.afterDismissed().subscribe(() => {
-              } );
-          } else {
-              let snackBarRef = this.snackBar.open( 'Guardian has been cancel deleted', '', { duration: 3000 } );
-              snackBarRef.afterDismissed().subscribe(() => {
-              } );
-          }   
-        
-        
+            this.store.dispatch(this.actions.deleteStudentGuardian(this.student.identityNo, guardian));
+            let snackBarRef = this.snackBar.open('Guardian has been deleted', '', { duration: 3000 });
+            snackBarRef.afterDismissed().subscribe(() => {
+            });
+        } else {
+            let snackBarRef = this.snackBar.open('Guardian has been cancel deleted', '', { duration: 3000 });
+            snackBarRef.afterDismissed().subscribe(() => {
+            });
+        }
+
+
     }
 
 
@@ -402,68 +431,68 @@ export class StudentProfileListPage implements OnInit {
     /*=========================================================================================*/
     //ADD GUARANTOR DIALOG
     addGuarantorDialog(): void {
-        console.log( "add student guarantor" );
+        console.log("add student guarantor");
         let config = new MdDialogConfig();
         config.viewContainerRef = this.vcf;
         config.role = 'dialog';
         config.width = '70%';
         config.height = '80%';
         config.position = { top: '0px' };
-        this.studentGuarantorCreatorDialogRef = this.dialog.open( StudentGuarantorEditorDialog, config );
+        this.studentGuarantorCreatorDialogRef = this.dialog.open(StudentGuarantorEditorDialog, config);
         this.studentGuarantorCreatorDialogRef.componentInstance.student = this.student;
-        this.studentGuarantorCreatorDialogRef.afterClosed().subscribe(( res ) => {
+        this.studentGuarantorCreatorDialogRef.afterClosed().subscribe((res) => {
             //console.log("close dialog");
-        } );
+        });
     }
 
     //EDIT GUARANTOR DIALOG
-    editGuarantorDialog( guarantor: Guarantor, isValid: boolean ): void {
-        console.log( "edit student guarantor" );
+    editGuarantorDialog(guarantor: Guarantor, isValid: boolean): void {
+        console.log("edit student guarantor");
         let config = new MdDialogConfig();
         config.viewContainerRef = this.vcf;
         config.role = 'dialog';
         config.width = '70%';
         config.height = '80%';
         config.position = { top: '0px' };
-        this.studentGuarantorCreatorDialogRef = this.dialog.open( StudentGuarantorEditorDialog, config );
+        this.studentGuarantorCreatorDialogRef = this.dialog.open(StudentGuarantorEditorDialog, config);
         this.studentGuarantorCreatorDialogRef.componentInstance.guarantor = guarantor;
         this.studentGuarantorCreatorDialogRef.componentInstance.student = this.student;
-        this.studentGuarantorCreatorDialogRef.afterClosed().subscribe(( res ) => {
+        this.studentGuarantorCreatorDialogRef.afterClosed().subscribe((res) => {
 
-        } );
+        });
     }
 
     //DELETE GUARANTOR
-    deleteGuarantor( guarantor: Guarantor ): void {
-        
+    deleteGuarantor(guarantor: Guarantor): void {
+
         if (confirm("Are you sure to delete this guarantor?") == true) {
-            this.store.dispatch( this.actions.deleteStudentGuarantor( this.student.identityNo, guarantor ) );
-              let snackBarRef = this.snackBar.open( 'Guarantor has been deleted', '', { duration: 3000 } );
-              snackBarRef.afterDismissed().subscribe(() => {
-              } );
-          } else {
-              let snackBarRef = this.snackBar.open( 'Guarantor has been cancel deleted', '', { duration: 3000 } );
-              snackBarRef.afterDismissed().subscribe(() => {
-              } );
-          }   
-       
+            this.store.dispatch(this.actions.deleteStudentGuarantor(this.student.identityNo, guarantor));
+            let snackBarRef = this.snackBar.open('Guarantor has been deleted', '', { duration: 3000 });
+            snackBarRef.afterDismissed().subscribe(() => {
+            });
+        } else {
+            let snackBarRef = this.snackBar.open('Guarantor has been cancel deleted', '', { duration: 3000 });
+            snackBarRef.afterDismissed().subscribe(() => {
+            });
+        }
+
     }
 
     //SEMESTER REGISTRATION
     semesterRegister(): void {
-        console.log( 'showDialog' );
+        console.log('showDialog');
         let config = new MdDialogConfig();
         config.viewContainerRef = this.vcf;
         config.role = 'dialog';
         config.width = '60%';
         config.height = '50%';
         config.position = { top: '0px' };
-        this.creatorDialogRef = this.dialog.open( AdmissionApplicationTaskDialog, config );
+        this.creatorDialogRef = this.dialog.open(AdmissionApplicationTaskDialog, config);
         this.creatorDialogRef.componentInstance.student = this.student;
-        this.creatorDialogRef.afterClosed().subscribe(( res ) => {
-            console.log( 'close dialog' );
+        this.creatorDialogRef.afterClosed().subscribe((res) => {
+            console.log('close dialog');
             // load something here
-        } );
+        });
     }
 
     //COURSE ENROLLMENT
@@ -474,23 +503,23 @@ export class StudentProfileListPage implements OnInit {
         config.width = '70%';
         config.height = '50%';
         config.position = { top: '0px' };
-        this.creatorDialogRef2 = this.dialog.open( EnrollmentApplicationTaskDialog, config );
-        this.creatorDialogRef2.afterClosed().subscribe(( res ) => {
-            console.log( 'close dialog' );
+        this.creatorDialogRef2 = this.dialog.open(EnrollmentApplicationTaskDialog, config);
+        this.creatorDialogRef2.afterClosed().subscribe((res) => {
+            console.log('close dialog');
 
             // load something here
-        } );
+        });
     }
 
     //STATUS SEMESTER REGISTRATION
     statusSemesterRegister() {
-        this.router.navigate( ['/secure/term/admission-applications/admission-application-center2'] );
+        this.router.navigate(['/secure/term/admission-applications/admission-application-center2']);
 
     }
 
     //STATUS COURSE ENROLLMENT
     statusCourseEnroll() {
-        this.router.navigate( ['/secure/term/enrollment-applications/student-enrollment-center'] );
+        this.router.navigate(['/secure/term/enrollment-applications/student-enrollment-center']);
     }
 
 
@@ -506,33 +535,33 @@ export class StudentProfileListPage implements OnInit {
         config.width = '70%';
         config.height = '80%';
         config.position = { top: '0px' };
-        this.creatorDialogRef3 = this.dialog.open( GraduationApplicationCreatorDialog, config );
-        this.creatorDialogRef3.afterClosed().subscribe(( res ) => {
-            console.log( 'close dialog' );
+        this.creatorDialogRef3 = this.dialog.open(GraduationApplicationCreatorDialog, config);
+        this.creatorDialogRef3.afterClosed().subscribe((res) => {
+            console.log('close dialog');
             // load something here
-        } );
+        });
     }
 
     //GRADUATION APPLICATION
     applyGraduation(): void {
-        console.log( 'showDialog' );
+        console.log('showDialog');
         let config = new MdDialogConfig();
         config.viewContainerRef = this.vcf;
         config.role = 'dialog';
         config.width = '60%';
         config.height = '55%';
         config.position = { top: '0px' };
-        this.creatorDialogRef4 = this.dialog.open( GraduationApplicationTaskDialog, config );
+        this.creatorDialogRef4 = this.dialog.open(GraduationApplicationTaskDialog, config);
         this.creatorDialogRef4.componentInstance.student = this.student;
-        this.creatorDialogRef4.afterClosed().subscribe(( res ) => {
-            console.log( 'close dialog' );
+        this.creatorDialogRef4.afterClosed().subscribe((res) => {
+            console.log('close dialog');
             // load something here
-        } );
+        });
     }
 
     //STATUS GRADUATION
     statusGraduation() {
-        this.router.navigate( ['/secure/graduation/graduation-applications/student-graduation-application-center'] );
+        this.router.navigate(['/secure/graduation/graduation-applications/student-graduation-application-center']);
     }
 
     /*=========================================================================================*/
@@ -541,16 +570,16 @@ export class StudentProfileListPage implements OnInit {
 
     //STATUS 
     admissionSessionDetail() {
-        this.router.navigate( ['/secure/academicSessions'] );
+        this.router.navigate(['/secure/academicSessions']);
     }
 
 
     /*=========================================================================================*/
     /*Payment Statement
     /*=========================================================================================*/
-    downloadReport( reportId, parameterReport: Student ): void {
+    downloadReport(reportId, parameterReport: Student): void {
         let repParam = reportId + '&IDENTITY_NO=' + parameterReport.identityNo;
-        this.store.dispatch( this.reportActions.downloadReportFinance( repParam ) );
+        this.store.dispatch(this.reportActions.downloadReportFinance(repParam));
     }
 
 

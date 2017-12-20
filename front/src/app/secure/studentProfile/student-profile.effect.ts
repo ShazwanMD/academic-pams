@@ -8,6 +8,7 @@ import { Store } from '@ngrx/store';
 import { Router } from '@angular/router';
 import { StudentProfileActions } from "./student-profile.action";
 import { Student } from "../../shared/model/identity/student.interface";
+import { SetupActions } from '../setup/setup.action';
 
 @Injectable()
 export class StudentProfileEffects {
@@ -17,6 +18,7 @@ export class StudentProfileEffects {
   constructor(private actions$: Actions,
     private studentProfileActions: StudentProfileActions,
     private profileActions: ProfileActions,
+    private setupActions: SetupActions,
     private profileService: ProfileService,
     private router: Router,
     private store$: Store<TermModuleState>) {
@@ -40,6 +42,7 @@ export class StudentProfileEffects {
       this.profileActions.findGraduationApplications(action.payload),
       this.profileActions.findGraduations(action.payload),
       this.profileActions.findAdmissionApplications(action.payload),
+      this.setupActions.findBankCodes(),
     ]));
 
   @Effect() findStudentsByIdentityNo$ = this.actions$

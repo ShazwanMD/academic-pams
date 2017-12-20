@@ -1,15 +1,15 @@
-import {SetupActions} from './setup.action';
-import {Actions, Effect} from '@ngrx/effects';
-import {Injectable} from '@angular/core';
-import {from} from 'rxjs/observable/from';
-import {CommonService} from '../../../services/common.service';
+import { SetupActions } from './setup.action';
+import { Actions, Effect } from '@ngrx/effects';
+import { Injectable } from '@angular/core';
+import { from } from 'rxjs/observable/from';
+import { CommonService } from '../../../services/common.service';
 
 @Injectable()
 export class SetupEffects {
 
   constructor(private actions$: Actions,
-              private setupActions: SetupActions,
-              private commonService: CommonService) {
+    private setupActions: SetupActions,
+    private commonService: CommonService) {
 
   }
 
@@ -161,6 +161,27 @@ export class SetupEffects {
     .map(action => action.payload)
     .switchMap(() => this.commonService.findBankCodes())
     .map(codes => this.setupActions.findBankCodesSuccess(codes));
+
+  @Effect() saveBankCodes$ = this.actions$
+    .ofType(SetupActions.SAVE_BANK_CODE)
+    .map(action => action.payload)
+    .switchMap(payload => this.commonService.saveBankCode(payload))
+    .map(message => this.setupActions.saveBankCodeSuccess(message))
+    .mergeMap(action => from([action, this.setupActions.findBankCodes()]));
+
+  @Effect() updateBankCodes$ = this.actions$
+    .ofType(SetupActions.UPDATE_BANK_CODE)
+    .map(action => action.payload)
+    .switchMap(payload => this.commonService.updateBankCode(payload))
+    .map(message => this.setupActions.updateBankCodeSuccess(message))
+    .mergeMap(action => from([action, this.setupActions.findBankCodes()]));
+
+  @Effect() removeBankCode$ = this.actions$
+    .ofType(SetupActions.REMOVE_BANK_CODE)
+    .map(action => action.payload)
+    .switchMap(payload => this.commonService.removeBankCode(payload))
+    .map(message => this.setupActions.removeBankCodeSuccess(message))
+    .mergeMap(action => from([action, this.setupActions.findBankCodes()]));
 
   //=================================================================================
   // STATE CODE

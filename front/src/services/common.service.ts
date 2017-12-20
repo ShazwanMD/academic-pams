@@ -175,11 +175,27 @@ export class CommonService {
       .map((res: Response) => <BankCode[]>res.json());
   }
 
-  findBankCodeByCode(code: string): Observable<BankCode> {
+  findBankCodeByCode(bankCode: string): Observable<BankCode> {
     console.log('findBankCodeByCode');
-    return this._http.get(this.COMMON_API + '/bankCodes/' + code)
+    return this._http.get(this.COMMON_API + '/bankCodes/' + bankCode)
       .map((res: Response) => <BankCode>res.json());
   }
+
+  saveBankCode(bankCode: BankCode) {
+    return this._http.post(this.COMMON_API + '/bankCodes', JSON.stringify(bankCode))
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+  updateBankCode(bankCode: BankCode) {
+    return this._http.put(this.COMMON_API + '/bankCodes/' + bankCode.code, JSON.stringify(bankCode))
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
+  removeBankCode(bankCode: BankCode) {
+    return this._http.delete(this.COMMON_API + '/bankCodes/' + bankCode.code)
+      .flatMap((res: Response) => Observable.of(res.text()));
+  }
+
 
 
   // ====================================================================================================

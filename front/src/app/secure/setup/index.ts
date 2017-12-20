@@ -1,3 +1,7 @@
+import { BankCodeSelectComponent } from './bank-codes/component/bank-code-select.component';
+import { BankCodeEditorDialog } from './bank-codes/dialog/bank-code-editor.dialog';
+import { BankCode } from './../../shared/model/common/bank-code.interface';
+import { BankCodeListState, bankCodeListReducer } from './bank-codes/bank-code-list.reducer';
 import {StudyCentreSelectComponent} from './study-centers/component/study-center-select.component';
 import {StudyCenterEditorDialog} from './study-centers/dialog/study-center-editor.dialog';
 import {StudyCenterListPage} from './study-centers/study-center-list.page';
@@ -76,6 +80,7 @@ export interface SetupModuleState {
   ethnicityCodes: EthnicityCodeListState;
   studyModes: StudyModeListState;
   studyCenters: StudyCenterListState;
+  bankCodes: BankCodeListState;
 }
 ;
 export const INITIAL_SETUP_STATE: SetupModuleState =
@@ -94,6 +99,7 @@ export const INITIAL_SETUP_STATE: SetupModuleState =
     ethnicityCodes: <EthnicityCode[]>[],
     studyModes: <StudyMode[]>[],
     studyCenters: <StudyCenter[]>[],
+    bankCodes: <BankCode[]>[],
   };
 export const setupModuleReducers = {
   title: titleReducer,
@@ -110,6 +116,7 @@ export const setupModuleReducers = {
   ethnicityCodes: ethnicityCodeListReducer,
   studyModes: studyModeListReducer,
   studyCenters: studyCenterListReducer,
+  bankCodes: bankCodeListReducer,
 };
 
 @NgModule({
@@ -150,13 +157,17 @@ export const setupModuleReducers = {
     StateCodeEditorDialog,
     StudyModeEditorDialog,
     StudyCenterEditorDialog,
+    BankCodeEditorDialog,
 
     //Component
     StudyCentreSelectComponent,
+    BankCodeSelectComponent,
   ],
 
   exports: [
     StudyCentreSelectComponent,
+    BankCodeSelectComponent,
+   
   ],
 
   entryComponents: [
@@ -168,6 +179,7 @@ export const setupModuleReducers = {
     StudyModeEditorDialog,
     StateCodeEditorDialog,
     StudyCenterEditorDialog,
+    BankCodeEditorDialog,
   ],
 
 })

@@ -1,3 +1,7 @@
+import { StudentBankEditorDialog } from './dialog/student-bank-editor.dialog';
+import { BankCode } from './../../shared/model/common/bank-code.interface';
+import { BankCodeListState, bankCodeListReducer } from './../setup/bank-codes/bank-code-list.reducer';
+import { SetupModule } from './../setup/index';
 import { TermModule } from './../term/index';
 import { StudentProfileExamComponent } from './component/student-profile-exam.component';
 import { StudentProfileExamPage } from './student-profile-exam.page';
@@ -73,6 +77,7 @@ export interface StudentProfileModuleState {
     academicYears: AcademicYearListState;
     academicYear: AcademicYearState;
     enrollmentStudents: EnrollmentStudentListState;
+    bankCodes: BankCodeListState;
 
 
 };
@@ -93,6 +98,7 @@ export const INITIAL_STUDENT_PROFILE_STATE: StudentProfileModuleState =
         academicSessions: <AcademicSession[]>[],
         academicYears: <AcademicYear[]>[],
         academicYear: <AcademicYear>{},
+        bankCodes:<BankCode[]>[],
 
     };
 
@@ -113,6 +119,7 @@ export const studentProfileModuleReducers = {
     academicYears: academicYearListReducer,
     academicYear: academicYearReducer,
     enrollmentStudents: enrollmentStudentListReducer,
+    bankCodes: bankCodeListReducer,
 
 
 };
@@ -131,6 +138,7 @@ export const studentProfileModuleReducers = {
         PlannerModule.forRoot(),
         AcademicSessionSubModule.forRoot(),
         TermModule.forRoot(),
+        SetupModule.forRoot(),
 
     ],
     declarations: [
@@ -153,6 +161,7 @@ export const studentProfileModuleReducers = {
         StudentGuarantorEditorDialog,
         StudentAddressEditorDialog,
         StudentDetailEditorDialog,
+        StudentBankEditorDialog,
 
     ],
 
@@ -162,6 +171,7 @@ export const studentProfileModuleReducers = {
         StudentGuarantorEditorDialog,
         StudentAddressEditorDialog,
         StudentDetailEditorDialog,
+        StudentBankEditorDialog,
 
     ],
 
@@ -172,6 +182,7 @@ export const studentProfileModuleReducers = {
         StudentGuarantorEditorDialog,
         StudentAddressEditorDialog,
         StudentDetailEditorDialog,
+        StudentBankEditorDialog,
     ],
 
 })

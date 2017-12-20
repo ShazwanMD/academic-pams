@@ -1,3 +1,4 @@
+import { BankCode } from './../../shared/model/common/bank-code.interface';
 import { AcademicSession } from './../../shared/model/planner/academic-session.interface';
 import { MdDialogRef, MdDialogConfig, MdDialog } from '@angular/material';
 import { Contact } from './../../shared/model/profile/contact.interface';
@@ -45,6 +46,7 @@ export class StudentProfileCenterPage implements OnInit {
   private ACADEMICSESSIONS: string[] = 'plannerModuleState.academicSessions'.split('.');
   private ACADEMICSESSION: string[] ='plannerModuleState.academicSession'.split('.');
   private ADMISSION_APPLICATIONS: string[] = 'profileModuleState.admissionApplications'.split( '.' );
+  private BANK_CODES: string[] = 'setupModuleState.bankCodes'.split('.');
   
 
   private students$: Observable<Student[]>;
@@ -60,6 +62,7 @@ export class StudentProfileCenterPage implements OnInit {
   private academicSessions$: Observable<AcademicSession[]>;
   private academicSession$: Observable<AcademicSession>;
   private admissionApplications$: Observable<AdmissionApplication>;
+  private bankCodes$: Observable<BankCode>;
   
   private _student: Student;
   
@@ -85,6 +88,7 @@ export class StudentProfileCenterPage implements OnInit {
     this.academicSessions$ = this.store.select(...this.ACADEMICSESSIONS);
     this.academicSession$ = this.store.select(...this.ACADEMICSESSION);
     this.admissionApplications$ = this.store.select( ...this.ADMISSION_APPLICATIONS );
+    this.bankCodes$ = this.store.select(...this.BANK_CODES);
     
   }
 
@@ -99,6 +103,7 @@ export class StudentProfileCenterPage implements OnInit {
   
   ngOnInit(): void {
     console.log("find Student Profile");
+    
     this.store.dispatch(this.actions.findStudentByUser());
     this.store.dispatch(this.actions.findAcademicSessionsByStudent());
     //this.actions.findStudentByIdentityNo(student.identityNo);
