@@ -270,7 +270,7 @@
     create table AD_BANK_CODE (
         ID int8 not null,
         CODE varchar(255) not null,
-        IBG_CODE varchar(255) not null,
+        IBG_CODE varchar(255),
         C_TS timestamp,
         C_ID int8,
         D_TS timestamp,
@@ -278,8 +278,8 @@
         M_TS timestamp,
         M_ID int8,
         M_ST int4,
-        NAME varchar(255) not null,
-        SWIFT_CODE varchar(255) not null,
+        NAME varchar(255),
+        SWIFT_CODE varchar(255),
         primary key (ID)
     );
 
@@ -1423,6 +1423,8 @@
         NATIONALITY_ID INT8,
         RACE_CODE_ID INT8,
         RELIGION_ID INT8,
+        BANK_CODE_ID INT8,
+        BANK_ACCT_NO varchar(255),
         primary key (ID)
     );
 
@@ -2085,6 +2087,11 @@
         add constraint FKE7E04D471EBD8A63
         foreign key (COHORT_ID)
         references AD_CHRT;
+        
+    alter table AD_STDN
+        add constraint FKE7E04D471EBD8A63SAM1
+        foreign key (BANK_CODE_ID)
+        references AD_BANK_CODE;     
 
     alter table AD_STDN
         add constraint FKE7E04D475ADBFEE7
@@ -2126,7 +2133,7 @@
     alter table AD_VENU_CODE
         add constraint uc_AD_VENU_CODE_1 unique (CODE);
 		
-		    alter table AD_STDN
+	alter table AD_STDN
         add constraint FKE7D7E28D54FCB0018157
         foreign key (GENDER_ID)
         references AD_GNDR_CODE;      

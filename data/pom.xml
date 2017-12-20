@@ -305,6 +305,7 @@
                                 <srcFile>src/test/resources/data/AD_GRDE_CODE.sql</srcFile>
                                 <srcFile>src/test/resources/data/AD_ETNY_CODE.sql</srcFile>
                                 <srcFile>src/test/resources/data/AD_GRDT_CNTR.sql</srcFile>
+                                <srcFile>src/test/resources/data/AD_BANK_CODE.sql</srcFile>
 
                                 <!--PLANNER-->
                                 <srcFile>src/test/resources/data/AD_ACDM_SESN.sql</srcFile>
