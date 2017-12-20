@@ -23,6 +23,12 @@
         Section number should be in number type!
       </div>
     </div>
+    <div layout="row" class="pad-bottom">
+        <pams-study-mode-select
+        [placeholder]="'StudyMode'"
+        [innerFormControl]="editorForm.controls['studyMode']">
+      </pams-study-mode-select>
+    </div>
   </form>
 </md-dialog-content>
 <md-dialog-actions align="end">

@@ -61,6 +61,7 @@ export class SectionEditorDialog implements OnInit {
       capacity: ['', Validators.required],
       ordinal: ['', Validators.required],
       offering: ['', Validators.required],
+      studyMode:['', Validators.required],
       //offering: <Offering>{},
     });
 

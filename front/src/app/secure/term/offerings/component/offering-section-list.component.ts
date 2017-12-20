@@ -23,7 +23,8 @@ export class OfferingSectionListComponent implements AfterViewInit, OnChanges {
     private creatorDialogRef2: MdDialogRef<ConfirmationDialog>;
     private columns: any[] = [
         { name: 'ordinal', label: 'Section No' },
-        { name: 'canonicalCode', label: 'canonicalCode' },
+        { name: 'studyMode.description', label: 'Study Mode' },
+        { name: 'code', label: 'Section Code' },
         { name: 'capacity', label: 'Capacity' },
         { name: 'appointmentCount', label: 'Appointment' },
         { name: 'enrollmentCount', label: 'Enrollment' },

@@ -1,3 +1,4 @@
+import { CommonModule } from './../../../common/index';
 import '@ngrx/core/add/operator/select';
 import {appRoutes, appRoutingProviders} from '../../../app.routes';
 import {ModuleWithProviders, NgModule} from '@angular/core';
@@ -36,6 +37,7 @@ import { ReportModule } from "../../../shared/report/index";
     BrowserModule,
     ReactiveFormsModule,
     CovalentCoreModule.forRoot(),
+    CommonModule.forRoot(),
     // EffectsModule.run(SectionEffects), // lazy load bug, moved to app root. Fix in Angular 4
   ],
   declarations: [
