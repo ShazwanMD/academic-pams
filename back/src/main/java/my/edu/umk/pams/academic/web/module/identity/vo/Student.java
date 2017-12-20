@@ -2,6 +2,8 @@ package my.edu.umk.pams.academic.web.module.identity.vo;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+import my.edu.umk.pams.academic.web.module.common.vo.BankCode;
 import my.edu.umk.pams.academic.web.module.common.vo.StudyMode;
 import my.edu.umk.pams.academic.web.module.planner.vo.Cohort;
 
@@ -20,6 +22,18 @@ public class Student extends Actor {
 	private BigDecimal balance;
 	private String memo;
 	private BigDecimal minAmount;
+	private String NoID;
+	private String bankAccountNo;
+	private BankCode bankCode;
+	
+
+	public String getNoID() {
+		return NoID;
+	}
+
+	public void setNoID(String noID) {
+		NoID = noID;
+	}
 
 	public BigDecimal getMinAmount() {
 		return minAmount;
@@ -75,6 +89,22 @@ public class Student extends Actor {
 
 	public void setStudentStatus(StudentStatus studentStatus) {
 		this.studentStatus = studentStatus;
+	}
+
+	public String getBankAccountNo() {
+		return bankAccountNo;
+	}
+
+	public void setBankAccountNo(String bankAccountNo) {
+		this.bankAccountNo = bankAccountNo;
+	}
+
+	public BankCode getBankCode() {
+		return bankCode;
+	}
+
+	public void setBankCode(BankCode bankCode) {
+		this.bankCode = bankCode;
 	}
 
 	@JsonCreator

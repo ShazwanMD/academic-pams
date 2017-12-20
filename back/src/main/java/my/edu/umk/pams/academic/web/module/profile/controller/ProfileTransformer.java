@@ -43,6 +43,9 @@ public class ProfileTransformer {
         vo.setMemo(e.getMemo());
         vo.setBalance(e.getBalance());
         vo.setMinAmount(e.getMinimalAmount());
+        vo.setNoID(e.getNoID());
+        vo.setBankAccountNo(e.getBankAccountNo());
+        vo.setBankCode(commonTransformer.toBankCodeVo(e.getBankCode()));
         
         return vo;
     }

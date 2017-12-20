@@ -827,6 +827,8 @@ public class ProfileController {
 		student1.setCohort(plannerService.findCohortById(vo.getCohort().getId()));
 		student1.setStudentStatus(AdStudentStatus.get(vo.getStudentStatus().ordinal()));
 		student1.setMemo(vo.getMemo());
+		student1.setBankAccountNo(vo.getBankAccountNo());
+		student1.setBankCode(commonService.findBankCodeById(vo.getBankCode().getId()));;
 		profileService.updateStudent(student1);
 		LOG.debug("StudyMode:{}", student1.getStudyMode().getDescription());
 		LOG.debug("Cohort Student Baru:{}", student1.getCohort().getCode());

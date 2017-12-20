@@ -20,15 +20,15 @@ public class AdBankCodeImpl implements AdBankCode {
     private String code;
 
     @NotNull
-    @Column(name = "NAME", nullable = false)
+    @Column(name = "NAME", nullable = true)
     private String name;
 
     @NotNull
-    @Column(name = "SWIFT_CODE", unique = true, nullable = false)
+    @Column(name = "SWIFT_CODE", unique = true, nullable = true)
     private String swiftCode;
 
     @NotNull
-    @Column(name = "IBG_CODE", unique = true, nullable = false)
+    @Column(name = "IBG_CODE", unique = true, nullable = true)
     private String ibgCode;
 
     @Embedded

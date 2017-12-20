@@ -1,5 +1,7 @@
 package my.edu.umk.pams.academic.identity.model;
 
+import my.edu.umk.pams.academic.common.model.AdBankCode;
+import my.edu.umk.pams.academic.common.model.AdBankCodeImpl;
 import my.edu.umk.pams.academic.common.model.AdGenderCode;
 import my.edu.umk.pams.academic.common.model.AdGenderCodeImpl;
 import my.edu.umk.pams.academic.common.model.AdMaritalCode;
@@ -62,6 +64,9 @@ public class AdStudentImpl extends AdActorImpl implements AdStudent {
 	@Column(name = "NO_ID")
 	private String NoID;
 	
+	@Column(name = "BANK_ACCT_NO")
+	private String bankAccountNo;
+	
 	@Column(name = "MIN_AMOUNT")
 	private BigDecimal minimalAmount = BigDecimal.ZERO;
 	
@@ -84,6 +89,10 @@ public class AdStudentImpl extends AdActorImpl implements AdStudent {
 	@OneToOne(targetEntity = AdRaceCodeImpl.class)
 	@JoinColumn(name = "RACE_CODE_ID", nullable = true)
 	private AdRaceCode raceCode;
+	
+	@OneToOne(targetEntity = AdBankCodeImpl.class)
+	@JoinColumn(name = "BANK_CODE_ID", nullable = true)
+	private AdBankCode bankCode;
 	
 	
 	public AdStudentImpl() {
@@ -263,6 +272,25 @@ public class AdStudentImpl extends AdActorImpl implements AdStudent {
 		this.raceCode = raceCode;
 	}
 
+	public AdBankCode getBankCode() {
+		return bankCode;
+	}
+
+	public void setBankCode(AdBankCode bankCode) {
+		this.bankCode = bankCode;
+	}
+
+	public String getBankAccountNo() {
+		return bankAccountNo;
+	}
+
+	public void setBankAccountNo(String bankAccountNo) {
+		this.bankAccountNo = bankAccountNo;
+	}
+	
+	
+
+	
 	
 	
 

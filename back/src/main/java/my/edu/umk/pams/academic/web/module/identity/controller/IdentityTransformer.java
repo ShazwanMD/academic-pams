@@ -84,6 +84,7 @@ public class IdentityTransformer {
 	}
 
 	public Student toStudentVo(AdStudent student) {
+	 	if(null == student)return null;
 		Student vo = new Student();
 		vo.setId(student.getId());
 		vo.setIdentityNo(student.getIdentityNo());
@@ -98,6 +99,9 @@ public class IdentityTransformer {
 		vo.setMemo(student.getMemo());
 		vo.setCohort(plannerTransformer.toCohortVo(student.getCohort()));
 		vo.setMinAmount(student.getMinimalAmount());
+		vo.setNoID(student.getNoID());
+        vo.setBankAccountNo(student.getBankAccountNo());
+        vo.setBankCode(commonTransformer.toBankCodeVo(student.getBankCode()));
 
 		return vo;
 	}

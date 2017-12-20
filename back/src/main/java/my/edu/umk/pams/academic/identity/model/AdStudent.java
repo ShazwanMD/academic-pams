@@ -1,5 +1,6 @@
 package my.edu.umk.pams.academic.identity.model;
 
+import my.edu.umk.pams.academic.common.model.AdBankCode;
 import my.edu.umk.pams.academic.common.model.AdGenderCode;
 import my.edu.umk.pams.academic.common.model.AdMaritalCode;
 import my.edu.umk.pams.academic.common.model.AdNationalityCode;
@@ -16,6 +17,8 @@ import java.util.List;
  * @author PAMS
  */
 public interface AdStudent extends AdActor {
+	
+	
 	
 	String getNoID();
 
@@ -88,6 +91,14 @@ public interface AdStudent extends AdActor {
 	AdRaceCode getRaceCode();
 	
 	void setRaceCode(AdRaceCode raceCode);
+	
+	String getBankAccountNo();
+	
+	void setBankAccountNo(String bankAccountNo);
+	
+	AdBankCode getBankCode();
+	
+	void setBankCode(AdBankCode bankCode);
 	
 	
 	
