@@ -287,13 +287,6 @@ ORDER BY
 				<text><![CDATA[]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="216" y="-5" width="401" height="20" uuid="eca0b0b0-be87-425f-a757-da38214bd79b"/>
-				<textElement>
-					<font isBold="true"/>
-				</textElement>
-				<text><![CDATA[CENTER OF POSTGRADUATE STUDIES (CPS)]]></text>
-			</staticText>
-			<staticText>
 				<reportElement x="216" y="25" width="231" height="20" uuid="c1d7c89e-590d-46b1-9fa8-d6ca8c072125"/>
 				<textElement>
 					<font isBold="true"/>
