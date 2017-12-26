@@ -857,11 +857,14 @@ public class TermServiceImpl implements TermService {
 		AcademicSessionCodePayload academicSessionPayload = new AcademicSessionCodePayload();
 		academicSessionPayload.setCode(session.getCode());
 		academicSessionPayload.setDescription(session.getDescription());
+		academicSessionPayload.setStartDate(session.getStartDate());
+		academicSessionPayload.setEndDate(session.getEndDate());
 		LOG.debug("Broadcast academicSessionPayload:{}",academicSessionPayload.getCode());
 		
 		FacultyCodePayload facultyPayload = new FacultyCodePayload();
 		facultyPayload.setCode(student.getCohort().getProgram().getFaculty().getCode());
 		facultyPayload.setDescription(student.getCohort().getProgram().getFaculty().getDescription());
+		facultyPayload.setPrefix(student.getCohort().getProgram().getFaculty().getCode());
 		LOG.debug("Broadcast facultyPayload:{}",facultyPayload.getCode());
 
 		ProgramLevelPayload levelPayload = new ProgramLevelPayload();
