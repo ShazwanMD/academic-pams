@@ -304,13 +304,6 @@ $F{ad_acdm_sesn_code}.equals( $P{session_code} )]]></filterExpression>
 				<text><![CDATA[UNIVERSITI MALAYSIA KELANTAN]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="105" y="10" width="464" height="20" uuid="0d672e53-e634-4323-9b53-a0cc7a45ae31"/>
-				<textElement>
-					<font fontName="SansSerif" isBold="true"/>
-				</textElement>
-				<text><![CDATA[CENTER OF POSTGRADUATE STUDIES (CPS)]]></text>
-			</staticText>
-			<staticText>
 				<reportElement x="105" y="24" width="238" height="20" uuid="819ceb8a-b95f-4c00-a1da-b641f2ebdefc"/>
 				<textElement>
 					<font fontName="SansSerif" isBold="true"/>

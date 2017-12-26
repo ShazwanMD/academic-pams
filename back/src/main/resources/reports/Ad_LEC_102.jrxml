@@ -171,7 +171,7 @@ WHERE
 	<field name="ad_ofrg_session_id" class="java.lang.Long"/>
 	<field name="ad_stdn_memo" class="java.lang.String"/>
 	<field name="ad_stdn_no_id" class="java.lang.String"/>
-	<field name="ad_stdn_student_status" class="java.lang.Integer"/>
+	<field name="ad_stdn_student_status" class="java.lang.String"/>
 	<field name="ad_stdn_id" class="java.lang.Long"/>
 	<field name="ad_stdn_cohort_id" class="java.lang.Long"/>
 	<field name="ad_stdn_study_mode_id" class="java.lang.Long"/>
@@ -228,13 +228,6 @@ WHERE
 	</background>
 	<title>
 		<band height="187" splitType="Stretch">
-			<staticText>
-				<reportElement mode="Transparent" x="218" y="0" width="275" height="20" backcolor="#FFFFFF" uuid="909b5952-b190-4d80-8b65-341f4a4cba21"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="SansSerif" size="10" isBold="true"/>
-				</textElement>
-				<text><![CDATA[CENTER OF POSTGRADUATE STUDIES (CPS)]]></text>
-			</staticText>
 			<staticText>
 				<reportElement x="433" y="121" width="70" height="15" uuid="bfccea49-1847-40dd-8aeb-1de9b1e1b0c6"/>
 				<textElement verticalAlignment="Middle">
