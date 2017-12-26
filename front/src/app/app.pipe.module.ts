@@ -1,3 +1,4 @@
+import { AcademicSessionPipe } from './secure/planner/academic-sessions/academic-session.pipe';
 import {NgModule} from '@angular/core';
 import {FlowStatePipe} from './core/flow-state.pipe';
 import {AssessmentCategoryPipe} from './secure/term/assessments/assessment-category.pipe';
@@ -13,6 +14,7 @@ import {AcademicStandingPipe} from './secure/term/admissions/academic-standing.p
     AdmissionStatusPipe,
     AssessmentCategoryPipe,
     AssessmentTypePipe,
+    AcademicSessionPipe,
   ],
   exports: [
     FlowStatePipe,
@@ -21,6 +23,7 @@ import {AcademicStandingPipe} from './secure/term/admissions/academic-standing.p
     AdmissionStatusPipe,
     AssessmentCategoryPipe,
     AssessmentTypePipe,
+    AcademicSessionPipe,
   ],
 })
 

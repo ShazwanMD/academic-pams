@@ -1,3 +1,4 @@
+import { PipeModule } from './../../../app.pipe.module';
 import '@ngrx/core/add/operator/select';
 import {appRoutes, appRoutingProviders} from '../../../app.routes';
 import {ModuleWithProviders, NgModule} from '@angular/core';
@@ -33,6 +34,7 @@ import { ReportActions } from "../../../shared/report/report.action";
     AcademicYearSubModule.forRoot(),
     CovalentCoreModule.forRoot(),
     // EffectsModule.run(AcademicSessionEffects), // lazy load bug, moved to app root. Fix in Angular 4
+    PipeModule,
   ],
   declarations: [
     //page
