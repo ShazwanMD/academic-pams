@@ -12,14 +12,7 @@
 	</parameter>
 	<queryString>
 		<![CDATA[SELECT
-     ad_grde_code."point"*ad_crse."credit" AS TotalGredPoint,
-     ad_enmt."id" AS ad_enmt_id,
-     ad_enmt."standing" AS ad_enmt_standing,
-     ad_enmt."status" AS ad_enmt_status,
-     ad_enmt."total_score" AS ad_enmt_total_score,
-     ad_enmt."admission_id" AS ad_enmt_admission_id,
-     ad_enmt."grade_code_id" AS ad_enmt_grade_code_id,
-     ad_enmt."section_id" AS ad_enmt_section_id,
+ ad_grde_code."point"*ad_crse."credit" AS TotalGredPoint,
      ad_admn."id" AS ad_admn_id,
      ad_admn."cgpa" AS ad_admn_cgpa,
      ad_admn."credit_earned" AS ad_admn_credit_earned,
@@ -33,43 +26,46 @@
      ad_admn."student_id" AS ad_admn_student_id,
      ad_admn."advisor_id" AS ad_admn_advisor_id,
      ad_admn."study_center_id" AS ad_admn_study_center_id,
+     ad_enmt."id" AS ad_enmt_id,
+     ad_enmt."standing" AS ad_enmt_standing,
+     ad_enmt."status" AS ad_enmt_status,
+     ad_enmt."total_score" AS ad_enmt_total_score,
+     ad_enmt."admission_id" AS ad_enmt_admission_id,
+     ad_enmt."grade_code_id" AS ad_enmt_grade_code_id,
+     ad_enmt."section_id" AS ad_enmt_section_id,
      ad_sctn."id" AS ad_sctn_id,
      ad_sctn."canonical_code" AS ad_sctn_canonical_code,
      ad_sctn."capacity" AS ad_sctn_capacity,
      ad_sctn."code" AS ad_sctn_code,
      ad_sctn."ordinal" AS ad_sctn_ordinal,
      ad_sctn."offering_id" AS ad_sctn_offering_id,
-     ad_ofrg."id" AS ad_ofrg_id,
-     ad_ofrg."capacity" AS ad_ofrg_capacity,
-     ad_ofrg."code" AS ad_ofrg_code,
-     ad_ofrg."title_en" AS ad_ofrg_title_en,
-     ad_ofrg."title_ms" AS ad_ofrg_title_ms,
-     ad_ofrg."course_id" AS ad_ofrg_course_id,
-     ad_ofrg."program_id" AS ad_ofrg_program_id,
-     ad_ofrg."session_id" AS ad_ofrg_session_id,
-     ad_stdn."memo" AS ad_stdn_memo,
-     ad_stdn."no_id" AS ad_stdn_no_id,
-     ad_stdn."student_status" AS ad_stdn_student_status,
-     ad_stdn."id" AS ad_stdn_id,
-     ad_stdn."cohort_id" AS ad_stdn_cohort_id,
-     ad_stdn."study_mode_id" AS ad_stdn_study_mode_id,
-     ad_stdn."balance" AS ad_stdn_balance,
-     ad_stdn."outstanding" AS ad_stdn_outstanding,
-     ad_actr."id" AS ad_actr_id,
-     ad_actr."actor_type" AS ad_actr_actor_type,
-     ad_actr."email" AS ad_actr_email,
-     ad_actr."fax" AS ad_actr_fax,
-     ad_actr."identity_no" AS ad_actr_identity_no,
-     ad_actr."mobile" AS ad_actr_mobile,
-     ad_actr."name" AS ad_actr_name,
-     ad_actr."phone" AS ad_actr_phone,
+     ad_sctn."study_mode_id" AS ad_sctn_study_mode_id,
      ad_grde_code."id" AS ad_grde_code_id,
      ad_grde_code."code" AS ad_grde_code_code,
      ad_grde_code."description" AS ad_grde_code_description,
      ad_grde_code."max" AS ad_grde_code_max,
-     ad_grde_code."min" AS ad_grde_code_min,
      ad_grde_code."ordinal" AS ad_grde_code_ordinal,
      ad_grde_code."point" AS ad_grde_code_point,
+     ad_grde_code."min" AS ad_grde_code_min,
+     ad_ofrg."id" AS ad_ofrg_id,
+     ad_ofrg."canonical_code" AS ad_ofrg_canonical_code,
+     ad_ofrg."capacity" AS ad_ofrg_capacity,
+     ad_ofrg."code" AS ad_ofrg_code,
+     ad_ofrg."c_ts" AS ad_ofrg_c_ts,
+     ad_ofrg."c_id" AS ad_ofrg_c_id,
+     ad_ofrg."d_ts" AS ad_ofrg_d_ts,
+     ad_ofrg."d_id" AS ad_ofrg_d_id,
+     ad_ofrg."m_ts" AS ad_ofrg_m_ts,
+     ad_ofrg."m_id" AS ad_ofrg_m_id,
+     ad_ofrg."m_st" AS ad_ofrg_m_st,
+     ad_ofrg."title_en" AS ad_ofrg_title_en,
+     ad_ofrg."title_ms" AS ad_ofrg_title_ms,
+     ad_ofrg."course_id" AS ad_ofrg_course_id,
+     ad_ofrg."program_id" AS ad_ofrg_program_id,
+     ad_stdy_mode."id" AS ad_stdy_mode_id,
+     ad_stdy_mode."code" AS ad_stdy_mode_code,
+     ad_stdy_mode."description" AS ad_stdy_mode_description,
+     ad_stdy_mode."prefix" AS ad_stdy_mode_prefix,
      ad_crse."id" AS ad_crse_id,
      ad_crse."classification" AS ad_crse_classification,
      ad_crse."code" AS ad_crse_code,
@@ -78,14 +74,13 @@
      ad_crse."title_en" AS ad_crse_title_en,
      ad_crse."title_ms" AS ad_crse_title_ms,
      ad_crse."faculty_id" AS ad_crse_faculty_id,
-     ad_acdm_sesn."id" AS ad_acdm_sesn_id,
-     ad_acdm_sesn."code" AS ad_acdm_sesn_code,
-     ad_acdm_sesn."current_" AS ad_acdm_sesn_current_,
-     ad_acdm_sesn."description" AS ad_acdm_sesn_description,
-     ad_acdm_sesn."semester" AS ad_acdm_sesn_semester,
-     ad_acdm_sesn."start_date" AS ad_acdm_sesn_start_date,
-     ad_acdm_sesn."status" AS ad_acdm_sesn_status,
-     ad_acdm_sesn."year_id" AS ad_acdm_sesn_year_id,
+     ad_prgm."id" AS ad_prgm_id,
+     ad_prgm."code" AS ad_prgm_code,
+     ad_prgm."title_ms" AS ad_prgm_title_ms,
+     ad_prgm."faculty_id" AS ad_prgm_faculty_id,
+     ad_prgm."level_id" AS ad_prgm_level_id,
+     ad_prgm."title_en" AS ad_prgm_title_en,
+     ad_prgm."status" AS ad_prgm_status,
      ad_chrt."id" AS ad_chrt_id,
      ad_chrt."classification" AS ad_chrt_classification,
      ad_chrt."code" AS ad_chrt_code,
@@ -93,64 +88,88 @@
      ad_chrt."curriculum_id" AS ad_chrt_curriculum_id,
      ad_chrt."program_id" AS ad_chrt_program_id,
      ad_chrt."session_id" AS ad_chrt_session_id,
-     ad_prgm."id" AS ad_prgm_id,
-     ad_prgm."code" AS ad_prgm_code,
-     ad_prgm."c_ts" AS ad_prgm_c_ts,
-     ad_prgm."c_id" AS ad_prgm_c_id,
-     ad_prgm."d_ts" AS ad_prgm_d_ts,
-     ad_prgm."d_id" AS ad_prgm_d_id,
-     ad_prgm."m_ts" AS ad_prgm_m_ts,
-     ad_prgm."m_id" AS ad_prgm_m_id,
-     ad_prgm."m_st" AS ad_prgm_m_st,
-     ad_prgm."status" AS ad_prgm_status,
-     ad_prgm."title_en" AS ad_prgm_title_en,
-     ad_prgm."title_ms" AS ad_prgm_title_ms,
-     ad_prgm."faculty_id" AS ad_prgm_faculty_id,
-     ad_prgm."level_id" AS ad_prgm_level_id,
-     ad_acdm_year."id" AS ad_acdm_year_id,
-     ad_acdm_year."code" AS ad_acdm_year_code,
-     ad_acdm_year."description" AS ad_acdm_year_description,
-     ad_acdm_year."c_ts" AS ad_acdm_year_c_ts,
-     ad_acdm_year."c_id" AS ad_acdm_year_c_id,
-     ad_acdm_year."d_ts" AS ad_acdm_year_d_ts,
-     ad_acdm_year."d_id" AS ad_acdm_year_d_id,
-     ad_acdm_year."m_ts" AS ad_acdm_year_m_ts,
-     ad_acdm_year."m_id" AS ad_acdm_year_m_id,
-     ad_acdm_year."m_st" AS ad_acdm_year_m_st,
-     ad_acdm_year."year" AS ad_acdm_year_year,
+     ad_acdm_sesn."id" AS ad_acdm_sesn_id,
+     ad_acdm_sesn."code" AS ad_acdm_sesn_code,
+     ad_acdm_sesn."current_" AS ad_acdm_sesn_current_,
+     ad_acdm_sesn."description" AS ad_acdm_sesn_description,
+     ad_acdm_sesn."end_date" AS ad_acdm_sesn_end_date,
+     ad_acdm_sesn."semester" AS ad_acdm_sesn_semester,
+     ad_acdm_sesn."start_date" AS ad_acdm_sesn_start_date,
+     ad_acdm_sesn."status" AS ad_acdm_sesn_status,
+     ad_acdm_sesn."enroll_startdate" AS ad_acdm_sesn_enroll_startdate,
+     ad_acdm_sesn."enroll_enddate" AS ad_acdm_sesn_enroll_enddate,
+     ad_acdm_sesn."admission_startdate" AS ad_acdm_sesn_admission_startdate,
+     ad_acdm_sesn."admission_enddate" AS ad_acdm_sesn_admission_enddate,
+     ad_acdm_sesn."graduation_startdate" AS ad_acdm_sesn_graduation_startdate,
+     ad_acdm_sesn."graduation_enddate" AS ad_acdm_sesn_graduation_enddate,
+     ad_acdm_sesn."previous_id" AS ad_acdm_sesn_previous_id,
+     ad_acdm_sesn."year_id" AS ad_acdm_sesn_year_id,
      ad_acdm_sesn_A."id" AS ad_acdm_sesn_A_id,
      ad_acdm_sesn_A."code" AS ad_acdm_sesn_A_code,
      ad_acdm_sesn_A."current_" AS ad_acdm_sesn_A_current_,
      ad_acdm_sesn_A."description" AS ad_acdm_sesn_A_description,
      ad_acdm_sesn_A."end_date" AS ad_acdm_sesn_A_end_date,
+     ad_acdm_sesn_A."c_ts" AS ad_acdm_sesn_A_c_ts,
+     ad_acdm_sesn_A."c_id" AS ad_acdm_sesn_A_c_id,
+     ad_acdm_sesn_A."d_ts" AS ad_acdm_sesn_A_d_ts,
+     ad_acdm_sesn_A."d_id" AS ad_acdm_sesn_A_d_id,
+     ad_acdm_sesn_A."m_ts" AS ad_acdm_sesn_A_m_ts,
+     ad_acdm_sesn_A."m_id" AS ad_acdm_sesn_A_m_id,
+     ad_acdm_sesn_A."m_st" AS ad_acdm_sesn_A_m_st,
      ad_acdm_sesn_A."semester" AS ad_acdm_sesn_A_semester,
      ad_acdm_sesn_A."start_date" AS ad_acdm_sesn_A_start_date,
      ad_acdm_sesn_A."status" AS ad_acdm_sesn_A_status,
+     ad_acdm_sesn_A."enroll_startdate" AS ad_acdm_sesn_A_enroll_startdate,
+     ad_acdm_sesn_A."enroll_enddate" AS ad_acdm_sesn_A_enroll_enddate,
+     ad_acdm_sesn_A."admission_startdate" AS ad_acdm_sesn_A_admission_startdate,
+     ad_acdm_sesn_A."admission_enddate" AS ad_acdm_sesn_A_admission_enddate,
+     ad_acdm_sesn_A."graduation_startdate" AS ad_acdm_sesn_A_graduation_startdate,
+     ad_acdm_sesn_A."graduation_enddate" AS ad_acdm_sesn_A_graduation_enddate,
      ad_acdm_sesn_A."previous_id" AS ad_acdm_sesn_A_previous_id,
-     ad_acdm_sesn_A."year_id" AS ad_acdm_sesn_A_year_id
+     ad_acdm_sesn_A."year_id" AS ad_acdm_sesn_A_year_id,
+     ad_stdn."memo" AS ad_stdn_memo,
+     ad_stdn."no_id" AS ad_stdn_no_id,
+     ad_stdn."student_status" AS ad_stdn_student_status,
+     ad_stdn."id" AS ad_stdn_id,
+     ad_stdn."cohort_id" AS ad_stdn_cohort_id,
+     ad_stdn."balance" AS ad_stdn_balance,
+     ad_stdn."outstanding" AS ad_stdn_outstanding,
+     ad_stdn."min_amount" AS ad_stdn_min_amount,
+     ad_stdn."gender_id" AS ad_stdn_gender_id,
+     ad_stdn."marital_id" AS ad_stdn_marital_id,
+     ad_stdn."nationality_id" AS ad_stdn_nationality_id,
+     ad_stdn."race_code_id" AS ad_stdn_race_code_id,
+     ad_stdn."religion_id" AS ad_stdn_religion_id,
+     ad_stdn."bank_code_id" AS ad_stdn_bank_code_id,
+     ad_stdn."bank_acct_no" AS ad_stdn_bank_acct_no,
+     ad_actr."id" AS ad_actr_id,
+     ad_actr."actor_type" AS ad_actr_actor_type,
+     ad_actr."email" AS ad_actr_email,
+     ad_actr."fax" AS ad_actr_fax,
+     ad_actr."identity_no" AS ad_actr_identity_no,
+     ad_actr."mobile" AS ad_actr_mobile,
+     ad_actr."name" AS ad_actr_name,
+     ad_actr."phone" AS ad_actr_phone,
+     ad_acdm_year."id" AS ad_acdm_year_id,
+     ad_acdm_year."code" AS ad_acdm_year_code,
+     ad_acdm_year."description" AS ad_acdm_year_description,
+     ad_acdm_year."year" AS ad_acdm_year_year
 FROM
      "public"."ad_admn" ad_admn INNER JOIN "public"."ad_enmt" ad_enmt ON ad_admn."id" = ad_enmt."admission_id"
      INNER JOIN "public"."ad_sctn" ad_sctn ON ad_enmt."section_id" = ad_sctn."id"
      INNER JOIN "public"."ad_grde_code" ad_grde_code ON ad_enmt."grade_code_id" = ad_grde_code."id"
      INNER JOIN "public"."ad_ofrg" ad_ofrg ON ad_sctn."offering_id" = ad_ofrg."id"
+     INNER JOIN "public"."ad_stdy_mode" ad_stdy_mode ON ad_sctn."study_mode_id" = ad_stdy_mode."id"
      INNER JOIN "public"."ad_crse" ad_crse ON ad_ofrg."course_id" = ad_crse."id"
      INNER JOIN "public"."ad_prgm" ad_prgm ON ad_ofrg."program_id" = ad_prgm."id"
-     INNER JOIN "public"."ad_chrt" ad_chrt ON ad_prgm."id" = ad_chrt."program_id"
-     INNER JOIN "public"."ad_stdn" ad_stdn ON ad_chrt."id" = ad_stdn."cohort_id"
-     INNER JOIN "public"."ad_acdm_sesn" ad_acdm_sesn_A ON ad_chrt."session_id" = ad_acdm_sesn_A."id"
-     AND ad_admn."student_id" = ad_stdn."id"
-     INNER JOIN "public"."ad_actr" ad_actr ON ad_stdn."id" = ad_actr."id"
+     INNER JOIN "public"."ad_chrt" ad_chrt ON ad_admn."cohort_id" = ad_chrt."id"
      INNER JOIN "public"."ad_acdm_sesn" ad_acdm_sesn ON ad_admn."session_id" = ad_acdm_sesn."id"
-     INNER JOIN "public"."ad_acdm_year" ad_acdm_year ON ad_acdm_sesn."year_id" = ad_acdm_year."id"]]>
+     INNER JOIN "public"."ad_stdn" ad_stdn ON ad_admn."student_id" = ad_stdn."id"
+     INNER JOIN "public"."ad_actr" ad_actr ON ad_stdn."id" = ad_actr."id"
+     INNER JOIN "public"."ad_acdm_year" ad_acdm_year ON ad_acdm_sesn."year_id" = ad_acdm_year."id"
+     INNER JOIN "public"."ad_acdm_sesn" ad_acdm_sesn_A ON ad_chrt."session_id" = ad_acdm_sesn_A."id"]]>
 	</queryString>
 	<field name="totalgredpoint" class="java.math.BigDecimal"/>
-	<field name="ad_enmt_id" class="java.lang.Long"/>
-	<field name="ad_enmt_standing" class="java.lang.Integer"/>
-	<field name="ad_enmt_status" class="java.lang.Integer"/>
-	<field name="ad_enmt_total_score" class="java.math.BigDecimal"/>
-	<field name="ad_enmt_admission_id" class="java.lang.Long"/>
-	<field name="ad_enmt_grade_code_id" class="java.lang.Long"/>
-	<field name="ad_enmt_section_id" class="java.lang.Long"/>
 	<field name="ad_admn_id" class="java.lang.Long"/>
 	<field name="ad_admn_cgpa" class="java.math.BigDecimal"/>
 	<field name="ad_admn_credit_earned" class="java.lang.Integer"/>
@@ -164,43 +183,46 @@ FROM
 	<field name="ad_admn_student_id" class="java.lang.Long"/>
 	<field name="ad_admn_advisor_id" class="java.lang.Long"/>
 	<field name="ad_admn_study_center_id" class="java.lang.Long"/>
+	<field name="ad_enmt_id" class="java.lang.Long"/>
+	<field name="ad_enmt_standing" class="java.lang.Integer"/>
+	<field name="ad_enmt_status" class="java.lang.Integer"/>
+	<field name="ad_enmt_total_score" class="java.math.BigDecimal"/>
+	<field name="ad_enmt_admission_id" class="java.lang.Long"/>
+	<field name="ad_enmt_grade_code_id" class="java.lang.Long"/>
+	<field name="ad_enmt_section_id" class="java.lang.Long"/>
 	<field name="ad_sctn_id" class="java.lang.Long"/>
 	<field name="ad_sctn_canonical_code" class="java.lang.String"/>
 	<field name="ad_sctn_capacity" class="java.lang.Integer"/>
 	<field name="ad_sctn_code" class="java.lang.String"/>
 	<field name="ad_sctn_ordinal" class="java.lang.Integer"/>
 	<field name="ad_sctn_offering_id" class="java.lang.Long"/>
-	<field name="ad_ofrg_id" class="java.lang.Long"/>
-	<field name="ad_ofrg_capacity" class="java.lang.Integer"/>
-	<field name="ad_ofrg_code" class="java.lang.String"/>
-	<field name="ad_ofrg_title_en" class="java.lang.String"/>
-	<field name="ad_ofrg_title_ms" class="java.lang.String"/>
-	<field name="ad_ofrg_course_id" class="java.lang.Long"/>
-	<field name="ad_ofrg_program_id" class="java.lang.Long"/>
-	<field name="ad_ofrg_session_id" class="java.lang.Long"/>
-	<field name="ad_stdn_memo" class="java.lang.String"/>
-	<field name="ad_stdn_no_id" class="java.lang.String"/>
-	<field name="ad_stdn_student_status" class="java.lang.String"/>
-	<field name="ad_stdn_id" class="java.lang.Long"/>
-	<field name="ad_stdn_cohort_id" class="java.lang.Long"/>
-	<field name="ad_stdn_study_mode_id" class="java.lang.Long"/>
-	<field name="ad_stdn_balance" class="java.math.BigDecimal"/>
-	<field name="ad_stdn_outstanding" class="java.lang.Boolean"/>
-	<field name="ad_actr_id" class="java.lang.Long"/>
-	<field name="ad_actr_actor_type" class="java.lang.Integer"/>
-	<field name="ad_actr_email" class="java.lang.String"/>
-	<field name="ad_actr_fax" class="java.lang.String"/>
-	<field name="ad_actr_identity_no" class="java.lang.String"/>
-	<field name="ad_actr_mobile" class="java.lang.String"/>
-	<field name="ad_actr_name" class="java.lang.String"/>
-	<field name="ad_actr_phone" class="java.lang.String"/>
+	<field name="ad_sctn_study_mode_id" class="java.lang.Long"/>
 	<field name="ad_grde_code_id" class="java.lang.Long"/>
 	<field name="ad_grde_code_code" class="java.lang.String"/>
 	<field name="ad_grde_code_description" class="java.lang.String"/>
 	<field name="ad_grde_code_max" class="java.math.BigDecimal"/>
-	<field name="ad_grde_code_min" class="java.math.BigDecimal"/>
 	<field name="ad_grde_code_ordinal" class="java.lang.Integer"/>
 	<field name="ad_grde_code_point" class="java.math.BigDecimal"/>
+	<field name="ad_grde_code_min" class="java.math.BigDecimal"/>
+	<field name="ad_ofrg_id" class="java.lang.Long"/>
+	<field name="ad_ofrg_canonical_code" class="java.lang.String"/>
+	<field name="ad_ofrg_capacity" class="java.lang.Integer"/>
+	<field name="ad_ofrg_code" class="java.lang.String"/>
+	<field name="ad_ofrg_c_ts" class="java.sql.Timestamp"/>
+	<field name="ad_ofrg_c_id" class="java.lang.Long"/>
+	<field name="ad_ofrg_d_ts" class="java.sql.Timestamp"/>
+	<field name="ad_ofrg_d_id" class="java.lang.Long"/>
+	<field name="ad_ofrg_m_ts" class="java.sql.Timestamp"/>
+	<field name="ad_ofrg_m_id" class="java.lang.Long"/>
+	<field name="ad_ofrg_m_st" class="java.lang.Integer"/>
+	<field name="ad_ofrg_title_en" class="java.lang.String"/>
+	<field name="ad_ofrg_title_ms" class="java.lang.String"/>
+	<field name="ad_ofrg_course_id" class="java.lang.Long"/>
+	<field name="ad_ofrg_program_id" class="java.lang.Long"/>
+	<field name="ad_stdy_mode_id" class="java.lang.Long"/>
+	<field name="ad_stdy_mode_code" class="java.lang.String"/>
+	<field name="ad_stdy_mode_description" class="java.lang.String"/>
+	<field name="ad_stdy_mode_prefix" class="java.lang.String"/>
 	<field name="ad_crse_id" class="java.lang.Long"/>
 	<field name="ad_crse_classification" class="java.lang.Integer"/>
 	<field name="ad_crse_code" class="java.lang.String"/>
@@ -209,14 +231,13 @@ FROM
 	<field name="ad_crse_title_en" class="java.lang.String"/>
 	<field name="ad_crse_title_ms" class="java.lang.String"/>
 	<field name="ad_crse_faculty_id" class="java.lang.Long"/>
-	<field name="ad_acdm_sesn_id" class="java.lang.Long"/>
-	<field name="ad_acdm_sesn_code" class="java.lang.String"/>
-	<field name="ad_acdm_sesn_current_" class="java.lang.Boolean"/>
-	<field name="ad_acdm_sesn_description" class="java.lang.String"/>
-	<field name="ad_acdm_sesn_semester" class="java.lang.String"/>
-	<field name="ad_acdm_sesn_start_date" class="java.sql.Date"/>
-	<field name="ad_acdm_sesn_status" class="java.lang.Integer"/>
-	<field name="ad_acdm_sesn_year_id" class="java.lang.Long"/>
+	<field name="ad_prgm_id" class="java.lang.Long"/>
+	<field name="ad_prgm_code" class="java.lang.String"/>
+	<field name="ad_prgm_title_ms" class="java.lang.String"/>
+	<field name="ad_prgm_faculty_id" class="java.lang.Long"/>
+	<field name="ad_prgm_level_id" class="java.lang.Long"/>
+	<field name="ad_prgm_title_en" class="java.lang.String"/>
+	<field name="ad_prgm_status" class="java.lang.Integer"/>
 	<field name="ad_chrt_id" class="java.lang.Long"/>
 	<field name="ad_chrt_classification" class="java.lang.Integer"/>
 	<field name="ad_chrt_code" class="java.lang.String"/>
@@ -224,41 +245,72 @@ FROM
 	<field name="ad_chrt_curriculum_id" class="java.lang.Long"/>
 	<field name="ad_chrt_program_id" class="java.lang.Long"/>
 	<field name="ad_chrt_session_id" class="java.lang.Long"/>
-	<field name="ad_prgm_id" class="java.lang.Long"/>
-	<field name="ad_prgm_code" class="java.lang.String"/>
-	<field name="ad_prgm_c_ts" class="java.sql.Timestamp"/>
-	<field name="ad_prgm_c_id" class="java.lang.Long"/>
-	<field name="ad_prgm_d_ts" class="java.sql.Timestamp"/>
-	<field name="ad_prgm_d_id" class="java.lang.Long"/>
-	<field name="ad_prgm_m_ts" class="java.sql.Timestamp"/>
-	<field name="ad_prgm_m_id" class="java.lang.Long"/>
-	<field name="ad_prgm_m_st" class="java.lang.Integer"/>
-	<field name="ad_prgm_status" class="java.lang.Integer"/>
-	<field name="ad_prgm_title_en" class="java.lang.String"/>
-	<field name="ad_prgm_title_ms" class="java.lang.String"/>
-	<field name="ad_prgm_faculty_id" class="java.lang.Long"/>
-	<field name="ad_prgm_level_id" class="java.lang.Long"/>
-	<field name="ad_acdm_year_id" class="java.lang.Long"/>
-	<field name="ad_acdm_year_code" class="java.lang.String"/>
-	<field name="ad_acdm_year_description" class="java.lang.String"/>
-	<field name="ad_acdm_year_c_ts" class="java.sql.Timestamp"/>
-	<field name="ad_acdm_year_c_id" class="java.lang.Long"/>
-	<field name="ad_acdm_year_d_ts" class="java.sql.Timestamp"/>
-	<field name="ad_acdm_year_d_id" class="java.lang.Long"/>
-	<field name="ad_acdm_year_m_ts" class="java.sql.Timestamp"/>
-	<field name="ad_acdm_year_m_id" class="java.lang.Long"/>
-	<field name="ad_acdm_year_m_st" class="java.lang.Integer"/>
-	<field name="ad_acdm_year_year" class="java.lang.String"/>
+	<field name="ad_acdm_sesn_id" class="java.lang.Long"/>
+	<field name="ad_acdm_sesn_code" class="java.lang.String"/>
+	<field name="ad_acdm_sesn_current_" class="java.lang.Boolean"/>
+	<field name="ad_acdm_sesn_description" class="java.lang.String"/>
+	<field name="ad_acdm_sesn_end_date" class="java.sql.Date"/>
+	<field name="ad_acdm_sesn_semester" class="java.lang.Integer"/>
+	<field name="ad_acdm_sesn_start_date" class="java.sql.Date"/>
+	<field name="ad_acdm_sesn_status" class="java.lang.Integer"/>
+	<field name="ad_acdm_sesn_enroll_startdate" class="java.sql.Date"/>
+	<field name="ad_acdm_sesn_enroll_enddate" class="java.sql.Date"/>
+	<field name="ad_acdm_sesn_admission_startdate" class="java.sql.Date"/>
+	<field name="ad_acdm_sesn_admission_enddate" class="java.sql.Date"/>
+	<field name="ad_acdm_sesn_graduation_startdate" class="java.sql.Date"/>
+	<field name="ad_acdm_sesn_graduation_enddate" class="java.sql.Date"/>
+	<field name="ad_acdm_sesn_previous_id" class="java.lang.Long"/>
+	<field name="ad_acdm_sesn_year_id" class="java.lang.Long"/>
 	<field name="ad_acdm_sesn_a_id" class="java.lang.Long"/>
 	<field name="ad_acdm_sesn_a_code" class="java.lang.String"/>
 	<field name="ad_acdm_sesn_a_current_" class="java.lang.Boolean"/>
 	<field name="ad_acdm_sesn_a_description" class="java.lang.String"/>
 	<field name="ad_acdm_sesn_a_end_date" class="java.sql.Date"/>
+	<field name="ad_acdm_sesn_a_c_ts" class="java.sql.Timestamp"/>
+	<field name="ad_acdm_sesn_a_c_id" class="java.lang.Long"/>
+	<field name="ad_acdm_sesn_a_d_ts" class="java.sql.Timestamp"/>
+	<field name="ad_acdm_sesn_a_d_id" class="java.lang.Long"/>
+	<field name="ad_acdm_sesn_a_m_ts" class="java.sql.Timestamp"/>
+	<field name="ad_acdm_sesn_a_m_id" class="java.lang.Long"/>
+	<field name="ad_acdm_sesn_a_m_st" class="java.lang.Integer"/>
 	<field name="ad_acdm_sesn_a_semester" class="java.lang.String"/>
 	<field name="ad_acdm_sesn_a_start_date" class="java.sql.Date"/>
 	<field name="ad_acdm_sesn_a_status" class="java.lang.Integer"/>
+	<field name="ad_acdm_sesn_a_enroll_startdate" class="java.sql.Date"/>
+	<field name="ad_acdm_sesn_a_enroll_enddate" class="java.sql.Date"/>
+	<field name="ad_acdm_sesn_a_admission_startdate" class="java.sql.Date"/>
+	<field name="ad_acdm_sesn_a_admission_enddate" class="java.sql.Date"/>
+	<field name="ad_acdm_sesn_a_graduation_startdate" class="java.sql.Date"/>
+	<field name="ad_acdm_sesn_a_graduation_enddate" class="java.sql.Date"/>
 	<field name="ad_acdm_sesn_a_previous_id" class="java.lang.Long"/>
 	<field name="ad_acdm_sesn_a_year_id" class="java.lang.Long"/>
+	<field name="ad_stdn_memo" class="java.lang.String"/>
+	<field name="ad_stdn_no_id" class="java.lang.String"/>
+	<field name="ad_stdn_student_status" class="java.lang.Integer"/>
+	<field name="ad_stdn_id" class="java.lang.Long"/>
+	<field name="ad_stdn_cohort_id" class="java.lang.Long"/>
+	<field name="ad_stdn_balance" class="java.math.BigDecimal"/>
+	<field name="ad_stdn_outstanding" class="java.lang.Boolean"/>
+	<field name="ad_stdn_min_amount" class="java.math.BigDecimal"/>
+	<field name="ad_stdn_gender_id" class="java.lang.Long"/>
+	<field name="ad_stdn_marital_id" class="java.lang.Long"/>
+	<field name="ad_stdn_nationality_id" class="java.lang.Long"/>
+	<field name="ad_stdn_race_code_id" class="java.lang.Long"/>
+	<field name="ad_stdn_religion_id" class="java.lang.Long"/>
+	<field name="ad_stdn_bank_code_id" class="java.lang.Long"/>
+	<field name="ad_stdn_bank_acct_no" class="java.lang.String"/>
+	<field name="ad_actr_id" class="java.lang.Long"/>
+	<field name="ad_actr_actor_type" class="java.lang.Integer"/>
+	<field name="ad_actr_email" class="java.lang.String"/>
+	<field name="ad_actr_fax" class="java.lang.String"/>
+	<field name="ad_actr_identity_no" class="java.lang.String"/>
+	<field name="ad_actr_mobile" class="java.lang.String"/>
+	<field name="ad_actr_name" class="java.lang.String"/>
+	<field name="ad_actr_phone" class="java.lang.String"/>
+	<field name="ad_acdm_year_id" class="java.lang.Long"/>
+	<field name="ad_acdm_year_code" class="java.lang.String"/>
+	<field name="ad_acdm_year_description" class="java.lang.String"/>
+	<field name="ad_acdm_year_year" class="java.lang.String"/>
 	<variable name="ad_grde_code_point_1" class="java.math.BigDecimal" resetType="Page" calculation="Average">
 		<variableExpression><![CDATA[$F{ad_grde_code_point}]]></variableExpression>
 	</variable>
