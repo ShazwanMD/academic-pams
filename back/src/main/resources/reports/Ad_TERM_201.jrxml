@@ -286,7 +286,7 @@ FROM
 	<field name="ad_acdm_sesn_a_year_id" class="java.lang.Long"/>
 	<field name="ad_stdn_memo" class="java.lang.String"/>
 	<field name="ad_stdn_no_id" class="java.lang.String"/>
-	<field name="ad_stdn_student_status" class="java.lang.Integer"/>
+	<field name="ad_stdn_student_status" class="java.lang.String"/>
 	<field name="ad_stdn_id" class="java.lang.Long"/>
 	<field name="ad_stdn_cohort_id" class="java.lang.Long"/>
 	<field name="ad_stdn_balance" class="java.math.BigDecimal"/>
@@ -421,14 +421,14 @@ $F{ad_acdm_sesn_code}.equals( $P{session_code} )]]></filterExpression>
 				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="styled">
 					<font fontName="SansSerif" size="10" isBold="true" isUnderline="false" isStrikeThrough="false"/>
 				</textElement>
-				<text><![CDATA[SLIP KEPUTUSAN PEPERIKSAAN]]></text>
+				<text><![CDATA[SLIP PEPERIKSAAN]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="171" y="128" width="213" height="20" uuid="be6d1840-7b38-4bcc-9383-d91ee3ce579f"/>
 				<textElement textAlignment="Center">
 					<font fontName="SansSerif" isBold="false" isItalic="true"/>
 				</textElement>
-				<text><![CDATA[EXAMINATION RESULT SLIP]]></text>
+				<text><![CDATA[EXAMINATION SLIP]]></text>
 			</staticText>
 			<rectangle>
 				<reportElement x="0" y="161" width="555" height="20" backcolor="#CCCCCC" uuid="45ea2599-eaa7-4164-a929-63a6cda18e57"/>

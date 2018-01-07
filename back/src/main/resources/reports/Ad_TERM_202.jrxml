@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="jasper_report_template" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="03800e79-2e08-4188-b0d9-084bf32d8f7c">
-	<property name="ireport.zoom" value="1.6528925619834713"/>
+	<property name="ireport.zoom" value="1.4641000000000006"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="2"/>
+	<property name="ireport.y" value="0"/>
 	<subDataset name="dataset1" uuid="6336ba5d-1742-4c90-a5af-57e66fd450f2">
 		<parameter name="identity_no" class="java.lang.String"/>
 		<parameter name="session_code" class="java.lang.String"/>
@@ -14,20 +14,19 @@
        ROUND(SUM(ad_grde_code."point"*ad_crse."credit")/SUM(ad_crse."credit"),2) AS GradePointAverage,
        ad_actr."identity_no" AS ad_actr_identity_no,
        ad_acdm_sesn."code" AS ad_acdm_sesn_code
-
 FROM
-     "public"."ad_admn" ad_admn INNER JOIN "public"."ad_enmt" ad_enmt ON ad_admn."id" = ad_enmt."admission_id"
+
+  "public"."ad_admn" ad_admn INNER JOIN "public"."ad_enmt" ad_enmt ON ad_admn."id" = ad_enmt."admission_id"
+     INNER JOIN "public"."ad_stdn" ad_stdn ON ad_admn."student_id" = ad_stdn."id"
+     INNER JOIN "public"."ad_acdm_sesn" ad_acdm_sesn ON ad_admn."session_id" = ad_acdm_sesn."id"
+     INNER JOIN "public"."ad_chrt" ad_chrt ON ad_admn."cohort_id" = ad_chrt."id"
+     INNER JOIN "public"."ad_prgm" ad_prgm ON ad_chrt."program_id" = ad_prgm."id"
+     INNER JOIN "public"."ad_acdm_year" ad_acdm_year ON ad_acdm_sesn."year_id" = ad_acdm_year."id"
+     INNER JOIN "public"."ad_actr" ad_actr ON ad_stdn."id" = ad_actr."id"
      INNER JOIN "public"."ad_sctn" ad_sctn ON ad_enmt."section_id" = ad_sctn."id"
      INNER JOIN "public"."ad_grde_code" ad_grde_code ON ad_enmt."grade_code_id" = ad_grde_code."id"
      INNER JOIN "public"."ad_ofrg" ad_ofrg ON ad_sctn."offering_id" = ad_ofrg."id"
      INNER JOIN "public"."ad_crse" ad_crse ON ad_ofrg."course_id" = ad_crse."id"
-     INNER JOIN "public"."ad_prgm" ad_prgm ON ad_ofrg."program_id" = ad_prgm."id"
-     INNER JOIN "public"."ad_chrt" ad_chrt ON ad_prgm."id" = ad_chrt."program_id"
-     INNER JOIN "public"."ad_stdn" ad_stdn ON ad_chrt."id" = ad_stdn."cohort_id"
-     AND ad_admn."student_id" = ad_stdn."id"
-     INNER JOIN "public"."ad_actr" ad_actr ON ad_stdn."id" = ad_actr."id"
-     INNER JOIN "public"."ad_acdm_sesn" ad_acdm_sesn ON ad_admn."session_id" = ad_acdm_sesn."id"
-     INNER JOIN "public"."ad_acdm_year" ad_acdm_year ON ad_acdm_sesn."year_id" = ad_acdm_year."id"
 
 
      GROUP BY ad_acdm_sesn."code", ad_actr."identity_no"]]>
@@ -41,7 +40,6 @@ FROM
 $F{ad_actr_identity_no}.equals( $P{identity_no} )]]></filterExpression>
 	</subDataset>
 	<parameter name="identity_no" class="java.lang.String"/>
-	<parameter name="session_code" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[SELECT
      ad_grde_code."point"*ad_crse."credit" AS TotalGredPoint,
