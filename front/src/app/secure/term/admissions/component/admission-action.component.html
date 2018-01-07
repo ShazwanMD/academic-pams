@@ -52,8 +52,8 @@
      <!--  <a href="http://localhost:8080/servlet/report?report=Ad_TERM_201.jrxml&report.pdf&identity_no={{admission?.student?.identityNo}}&session_code={{admission?.academicSession?.code}}" [target]="'_blank'">  -->
     <md-list-item (click)="downloadReport('Ad_TERM_201.jrxml&report.pdf',admission)" >
       <md-icon md-list-avatar>description</md-icon>
-     <h4 md-line>Examination Result Slip {{admission?.student?.identityNo}}</h4>
-      <p md-line>View examination result slip {{admission?.academicSession?.code}}</p> 
+     <h4 md-line>Examination Result  {{admission?.student?.identityNo}}</h4>
+      <p md-line>View examination result {{admission?.academicSession?.code}}</p> 
     </md-list-item>
     <!-- </a> -->
     
