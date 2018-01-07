@@ -421,14 +421,14 @@ $F{ad_acdm_sesn_code}.equals( $P{session_code} )]]></filterExpression>
 				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="styled">
 					<font fontName="SansSerif" size="10" isBold="true" isUnderline="false" isStrikeThrough="false"/>
 				</textElement>
-				<text><![CDATA[SLIP PEPERIKSAAN]]></text>
+				<text><![CDATA[KEPUTUSAN PEPERIKSAAN]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="171" y="128" width="213" height="20" uuid="be6d1840-7b38-4bcc-9383-d91ee3ce579f"/>
 				<textElement textAlignment="Center">
 					<font fontName="SansSerif" isBold="false" isItalic="true"/>
 				</textElement>
-				<text><![CDATA[EXAMINATION SLIP]]></text>
+				<text><![CDATA[EXAMINATION RESULT]]></text>
 			</staticText>
 			<rectangle>
 				<reportElement x="0" y="161" width="555" height="20" backcolor="#CCCCCC" uuid="45ea2599-eaa7-4164-a929-63a6cda18e57"/>
@@ -845,7 +845,7 @@ $F{ad_acdm_sesn_a_semester}.equals( "2" )? "SEMESTER 3 DECEMBER":
 				<text><![CDATA[GPA]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="203" y="17" width="124" height="19" uuid="9bfc6ff3-f3f5-4a29-a002-e71e7e37d407"/>
+				<reportElement x="203" y="16" width="124" height="20" uuid="9bfc6ff3-f3f5-4a29-a002-e71e7e37d407"/>
 				<box>
 					<pen lineWidth="0.5"/>
 					<topPen lineWidth="0.5"/>
