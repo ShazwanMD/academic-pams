@@ -609,19 +609,18 @@ public class IdentityServiceImpl implements IdentityService {
 			try {
 				// Group
 				AdGroup group = null;
-				if(isGroupExists("GRP_PGW_FCTY_" + staff.getFaculty().getCode())){
-					
+				if (isGroupExists("GRP_PGW_FCTY_" + staff.getFaculty().getCode())) {
+
 					group = findGroupByName("GRP_PGW_FCTY_" + staff.getFaculty().getCode());
-					
+
 					// GroupMember
 					AdGroupMember member = new AdGroupMemberImpl();
 					member.setGroup(group);
 					member.setPrincipal(principal);
 					addGroupMember(group, principal);
-				}else{
+				} else {
 					LOG.debug("Not Exist");
 				}
-				
 
 			} catch (RecursiveGroupException e) {
 
@@ -639,9 +638,9 @@ public class IdentityServiceImpl implements IdentityService {
 			try {
 				// Group
 				AdGroup group = null;
-				if(isGroupExists("GRP_KRN_FCTY_" + staff.getFaculty().getCode())){
+				if (isGroupExists("GRP_KRN_FCTY_" + staff.getFaculty().getCode())) {
 					group = findGroupByName("GRP_KRN_FCTY_" + staff.getFaculty().getCode());
-					
+
 					// GroupMember
 					AdGroupMember member = new AdGroupMemberImpl();
 					member.setGroup(group);
@@ -786,25 +785,32 @@ public class IdentityServiceImpl implements IdentityService {
 				e.printStackTrace();
 			}
 		} else {
-			LOG.info("If All Faculty Only");
+			AdGroup group = null;
+			if ((group = findGroupByName("GRP_KRN_FCTY_" + staff.getFaculty().getCode())) != null) {
+				LOG.info("If All Faculty Only");
 
-			// Principal Role
-			AdPrincipalRole role = new AdPrincipalRoleImpl();
-			role.setPrincipal(principal);
-			role.setRole(AdRoleType.ROLE_FACULTY);
-			addPrincipalRole(principal, role);
+				// Principal Role
+				AdPrincipalRole role = new AdPrincipalRoleImpl();
+				role.setPrincipal(principal);
+				role.setRole(AdRoleType.ROLE_FACULTY);
+				addPrincipalRole(principal, role);
 
-			try {
-				// Group
-				AdGroup group = findGroupByName("GRP_KRN_FCTY_" + staff.getFaculty().getCode());
-				// GroupMember
-				AdGroupMember member = new AdGroupMemberImpl();
-				member.setGroup(group);
-				member.setPrincipal(principal);
-				addGroupMember(group, principal);
-			} catch (RecursiveGroupException e) {
+				try {
+					// Group
+					group = findGroupByName("GRP_KRN_FCTY_" + staff.getFaculty().getCode());
+					// GroupMember
+					AdGroupMember member = new AdGroupMemberImpl();
+					member.setGroup(group);
+					member.setPrincipal(principal);
+					addGroupMember(group, principal);
+				} catch (RecursiveGroupException e) {
 
-				e.printStackTrace();
+					e.printStackTrace();
+				}
+			} else {
+
+				LOG.debug("No Group");
+
 			}
 		}
 		sessionFactory.getCurrentSession().flush();
