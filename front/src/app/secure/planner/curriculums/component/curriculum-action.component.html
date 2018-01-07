@@ -26,6 +26,14 @@
       <p md-line>View elective subject report {{curriculum.code}}</p> 
     </md-list-item>
     <!-- </a> -->
+
+    <!--  <a href="http://localhost:8080/servlet/report?report=Ad_TERM_204.jrxml&report.pdf&curriculum_code={{curriculum.code}}" [target]="'_blank'">  -->
+      <md-list-item (click)="downloadReport('Ad_TERM_2019.jrxml&report.pdf',curriculum)" >
+        <md-icon md-list-avatar>description</md-icon>
+       <h4 md-line>Core and Elective Subject Report</h4>
+        <p md-line>View core and elective subject report {{curriculum.code}}</p> 
+      </md-list-item>
+      <!-- </a> -->
     
 
     <md-divider></md-divider>
