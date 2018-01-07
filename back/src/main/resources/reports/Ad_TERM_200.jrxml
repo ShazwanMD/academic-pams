@@ -317,6 +317,13 @@ $F{ad_acdm_sesn_code}.equals( $P{session_code} )]]></filterExpression>
 				</textElement>
 				<text><![CDATA[16100 KOTA BHARU,KELANTAN,DARULNAIM]]></text>
 			</staticText>
+			<staticText>
+				<reportElement x="105" y="9" width="445" height="20" uuid="40b744e8-eb21-4a14-8e05-0d82d08c650f"/>
+				<textElement>
+					<font fontName="SansSerif" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MALAYSIAN GRADUATE SCHOOL OF ENTREPRENEURSHIP & BUSINESS (MGSEB)]]></text>
+			</staticText>
 		</band>
 	</title>
 	<columnHeader>
