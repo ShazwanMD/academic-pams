@@ -1,0 +1,620 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report4" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="fe6eae38-dbac-492a-9522-077445b8487d">
+	<property name="ireport.zoom" value="1.5026296018031566"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<subDataset name="elective" uuid="b28500e8-4a16-402b-aa09-70ddeaf439d9">
+		<parameter name="curriculum_code" class="java.lang.String"/>
+		<queryString>
+			<![CDATA[SELECT
+     ad_crlm."id" AS ad_crlm_id,
+     ad_crlm."code" AS ad_crlm_code,
+     ad_crlm."core" AS ad_crlm_core,
+     ad_crlm."curriculum" AS ad_crlm_curriculum,
+     ad_crlm."total_credit" AS ad_crlm_total_credit,
+     ad_crlm."program_id" AS ad_crlm_program_id,
+     ad_prgm."id" AS ad_prgm_id,
+     ad_prgm."code" AS ad_prgm_code,
+     ad_prgm."status" AS ad_prgm_status,
+     ad_prgm."title_en" AS ad_prgm_title_en,
+     ad_prgm."title_ms" AS ad_prgm_title_ms,
+     ad_prgm."faculty_id" AS ad_prgm_faculty_id,
+     ad_prgm."level_id" AS ad_prgm_level_id,
+     ad_sbjt."id" AS ad_sbjt_id,
+     ad_sbjt."ordinal" AS ad_sbjt_ordinal,
+     ad_sbjt."subject_type" AS ad_sbjt_subject_type,
+     ad_sbjt."curriculum_id" AS ad_sbjt_curriculum_id,
+     ad_crse."id" AS ad_crse_id,
+     ad_crse."classification" AS ad_crse_classification,
+     ad_crse."code" AS ad_crse_code,
+     ad_crse."credit" AS ad_crse_credit,
+     ad_crse."status" AS ad_crse_status,
+     ad_crse."title_en" AS ad_crse_title_en,
+     ad_crse."title_ms" AS ad_crse_title_ms,
+     ad_crse."faculty_id" AS ad_crse_faculty_id,
+     ad_fcty."id" AS ad_fcty_id,
+     ad_fcty."code" AS ad_fcty_code,
+     ad_fcty."description" AS ad_fcty_description,
+     ad_fcty."name" AS ad_fcty_name,
+     ad_fcty."prefix" AS ad_fcty_prefix,
+     ad_fcty."status" AS ad_fcty_status,
+     ad_sngl_sbjt."id" AS ad_sngl_sbjt_id,
+     ad_sngl_sbjt."course_id" AS ad_sngl_sbjt_course_id
+FROM
+     "public"."ad_prgm" ad_prgm INNER JOIN "public"."ad_crlm" ad_crlm ON ad_prgm."id" = ad_crlm."program_id"
+     INNER JOIN "public"."ad_sbjt" ad_sbjt ON ad_crlm."id" = ad_sbjt."curriculum_id"
+     INNER JOIN "public"."ad_sngl_sbjt" ad_sngl_sbjt ON ad_sbjt."id" = ad_sngl_sbjt."id"
+     INNER JOIN "public"."ad_crse" ad_crse ON ad_sngl_sbjt."course_id" = ad_crse."id"
+     INNER JOIN "public"."ad_fcty" ad_fcty ON ad_crse."faculty_id" = ad_fcty."id"
+WHERE  ad_sbjt."subject_type" = '2' ORDER BY ad_sbjt."ordinal"]]>
+		</queryString>
+		<field name="ad_crlm_id" class="java.lang.Long"/>
+		<field name="ad_crlm_code" class="java.lang.String"/>
+		<field name="ad_crlm_core" class="java.lang.Integer"/>
+		<field name="ad_crlm_curriculum" class="java.lang.Integer"/>
+		<field name="ad_crlm_total_credit" class="java.lang.Integer"/>
+		<field name="ad_crlm_program_id" class="java.lang.Long"/>
+		<field name="ad_prgm_id" class="java.lang.Long"/>
+		<field name="ad_prgm_code" class="java.lang.String"/>
+		<field name="ad_prgm_status" class="java.lang.Integer"/>
+		<field name="ad_prgm_title_en" class="java.lang.String"/>
+		<field name="ad_prgm_title_ms" class="java.lang.String"/>
+		<field name="ad_prgm_faculty_id" class="java.lang.Long"/>
+		<field name="ad_prgm_level_id" class="java.lang.Long"/>
+		<field name="ad_sbjt_id" class="java.lang.Long"/>
+		<field name="ad_sbjt_ordinal" class="java.lang.Integer"/>
+		<field name="ad_sbjt_subject_type" class="java.lang.Integer"/>
+		<field name="ad_sbjt_curriculum_id" class="java.lang.Long"/>
+		<field name="ad_crse_id" class="java.lang.Long"/>
+		<field name="ad_crse_classification" class="java.lang.Integer"/>
+		<field name="ad_crse_code" class="java.lang.String"/>
+		<field name="ad_crse_credit" class="java.lang.Integer"/>
+		<field name="ad_crse_status" class="java.lang.Integer"/>
+		<field name="ad_crse_title_en" class="java.lang.String"/>
+		<field name="ad_crse_title_ms" class="java.lang.String"/>
+		<field name="ad_crse_faculty_id" class="java.lang.Long"/>
+		<field name="ad_fcty_id" class="java.lang.Long"/>
+		<field name="ad_fcty_code" class="java.lang.String"/>
+		<field name="ad_fcty_description" class="java.lang.String"/>
+		<field name="ad_fcty_name" class="java.lang.String"/>
+		<field name="ad_fcty_prefix" class="java.lang.String"/>
+		<field name="ad_fcty_status" class="java.lang.Integer"/>
+		<field name="ad_sngl_sbjt_id" class="java.lang.Long"/>
+		<field name="ad_sngl_sbjt_course_id" class="java.lang.Long"/>
+		<filterExpression><![CDATA[$F{ad_crlm_code}.equals( $P{curriculum_code} )]]></filterExpression>
+	</subDataset>
+	<parameter name="curriculum_code" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+     ad_crlm."id" AS ad_crlm_id,
+     ad_crlm."code" AS ad_crlm_code,
+     ad_crlm."core" AS ad_crlm_core,
+     ad_crlm."curriculum" AS ad_crlm_curriculum,
+     ad_crlm."total_credit" AS ad_crlm_total_credit,
+     ad_crlm."program_id" AS ad_crlm_program_id,
+     ad_prgm."id" AS ad_prgm_id,
+     ad_prgm."code" AS ad_prgm_code,
+     ad_prgm."status" AS ad_prgm_status,
+     ad_prgm."title_en" AS ad_prgm_title_en,
+     ad_prgm."title_ms" AS ad_prgm_title_ms,
+     ad_prgm."faculty_id" AS ad_prgm_faculty_id,
+     ad_prgm."level_id" AS ad_prgm_level_id,
+     ad_sbjt."id" AS ad_sbjt_id,
+     ad_sbjt."ordinal" AS ad_sbjt_ordinal,
+     ad_sbjt."subject_type" AS ad_sbjt_subject_type,
+     ad_sbjt."curriculum_id" AS ad_sbjt_curriculum_id,
+     ad_crse."id" AS ad_crse_id,
+     ad_crse."classification" AS ad_crse_classification,
+     ad_crse."code" AS ad_crse_code,
+     ad_crse."credit" AS ad_crse_credit,
+     ad_crse."status" AS ad_crse_status,
+     ad_crse."title_en" AS ad_crse_title_en,
+     ad_crse."title_ms" AS ad_crse_title_ms,
+     ad_crse."faculty_id" AS ad_crse_faculty_id,
+     ad_fcty."id" AS ad_fcty_id,
+     ad_fcty."code" AS ad_fcty_code,
+     ad_fcty."description" AS ad_fcty_description,
+     ad_fcty."name" AS ad_fcty_name,
+     ad_fcty."prefix" AS ad_fcty_prefix,
+     ad_fcty."status" AS ad_fcty_status,
+     ad_sngl_sbjt."id" AS ad_sngl_sbjt_id,
+     ad_sngl_sbjt."course_id" AS ad_sngl_sbjt_course_id
+FROM
+     "public"."ad_prgm" ad_prgm INNER JOIN "public"."ad_crlm" ad_crlm ON ad_prgm."id" = ad_crlm."program_id"
+     INNER JOIN "public"."ad_sbjt" ad_sbjt ON ad_crlm."id" = ad_sbjt."curriculum_id"
+     INNER JOIN "public"."ad_sngl_sbjt" ad_sngl_sbjt ON ad_sbjt."id" = ad_sngl_sbjt."id"
+     INNER JOIN "public"."ad_crse" ad_crse ON ad_sngl_sbjt."course_id" = ad_crse."id"
+     INNER JOIN "public"."ad_fcty" ad_fcty ON ad_crse."faculty_id" = ad_fcty."id"
+WHERE  ad_sbjt."subject_type" = '0' ORDER BY ad_sbjt."ordinal"]]>
+	</queryString>
+	<field name="ad_crlm_id" class="java.lang.Long"/>
+	<field name="ad_crlm_code" class="java.lang.String"/>
+	<field name="ad_crlm_core" class="java.lang.Integer"/>
+	<field name="ad_crlm_curriculum" class="java.lang.Integer"/>
+	<field name="ad_crlm_total_credit" class="java.lang.Integer"/>
+	<field name="ad_crlm_program_id" class="java.lang.Long"/>
+	<field name="ad_prgm_id" class="java.lang.Long"/>
+	<field name="ad_prgm_code" class="java.lang.String"/>
+	<field name="ad_prgm_status" class="java.lang.Integer"/>
+	<field name="ad_prgm_title_en" class="java.lang.String"/>
+	<field name="ad_prgm_title_ms" class="java.lang.String"/>
+	<field name="ad_prgm_faculty_id" class="java.lang.Long"/>
+	<field name="ad_prgm_level_id" class="java.lang.Long"/>
+	<field name="ad_sbjt_id" class="java.lang.Long"/>
+	<field name="ad_sbjt_ordinal" class="java.lang.Integer"/>
+	<field name="ad_sbjt_subject_type" class="java.lang.Integer"/>
+	<field name="ad_sbjt_curriculum_id" class="java.lang.Long"/>
+	<field name="ad_crse_id" class="java.lang.Long"/>
+	<field name="ad_crse_classification" class="java.lang.Integer"/>
+	<field name="ad_crse_code" class="java.lang.String"/>
+	<field name="ad_crse_credit" class="java.lang.Integer"/>
+	<field name="ad_crse_status" class="java.lang.Integer"/>
+	<field name="ad_crse_title_en" class="java.lang.String"/>
+	<field name="ad_crse_title_ms" class="java.lang.String"/>
+	<field name="ad_crse_faculty_id" class="java.lang.Long"/>
+	<field name="ad_fcty_id" class="java.lang.Long"/>
+	<field name="ad_fcty_code" class="java.lang.String"/>
+	<field name="ad_fcty_description" class="java.lang.String"/>
+	<field name="ad_fcty_name" class="java.lang.String"/>
+	<field name="ad_fcty_prefix" class="java.lang.String"/>
+	<field name="ad_fcty_status" class="java.lang.Integer"/>
+	<field name="ad_sngl_sbjt_id" class="java.lang.Long"/>
+	<field name="ad_sngl_sbjt_course_id" class="java.lang.Long"/>
+	<variable name="ad_crse_credit_1" class="java.lang.Integer" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{ad_crse_credit}]]></variableExpression>
+	</variable>
+	<variable name="ad_crse_credit_2" class="java.lang.Integer" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{ad_crse_credit}]]></variableExpression>
+	</variable>
+	<filterExpression><![CDATA[$F{ad_crlm_code}.equals( $P{curriculum_code} )]]></filterExpression>
+	<group name="core">
+		<groupExpression><![CDATA[$F{ad_crlm_code}]]></groupExpression>
+		<groupHeader>
+			<band height="50">
+				<staticText>
+					<reportElement mode="Opaque" x="0" y="18" width="102" height="16" backcolor="#CCCCCC" uuid="31992aea-cd9e-4b8c-94b7-16e93c2d5283"/>
+					<box>
+						<pen lineWidth="0.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font fontName="SansSerif" size="10" isBold="true"/>
+					</textElement>
+					<text><![CDATA[  CORE COURSES]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="102" y="34" width="328" height="16" backcolor="#CCCCCC" uuid="60a0e721-770f-4e1b-8ead-43e3d12903c9"/>
+					<box>
+						<pen lineWidth="0.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="SansSerif" size="10" isBold="true"/>
+					</textElement>
+					<text><![CDATA[COURSE TITLE]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="0" y="34" width="29" height="16" backcolor="#CCCCCC" uuid="8c116a8e-7ae4-40e5-bf43-e67928e00f62"/>
+					<box>
+						<pen lineWidth="0.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="SansSerif" size="10" isBold="true"/>
+					</textElement>
+					<text><![CDATA[NO.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="430" y="34" width="48" height="16" backcolor="#CCCCCC" uuid="ab3f9a16-8361-4a15-b4d2-4965b512e4cc"/>
+					<box>
+						<pen lineWidth="0.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="SansSerif" size="10" isBold="true"/>
+					</textElement>
+					<text><![CDATA[CREDIT]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="29" y="34" width="73" height="16" backcolor="#CCCCCC" uuid="d8f7811c-aed1-4e38-82b5-bf144fa00efb"/>
+					<box>
+						<pen lineWidth="0.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="SansSerif" size="10" isBold="true"/>
+					</textElement>
+					<text><![CDATA[CODE]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="478" y="34" width="77" height="16" backcolor="#CCCCCC" uuid="4e456275-45f2-48b7-9901-2a2291b30322"/>
+					<box>
+						<pen lineWidth="0.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="SansSerif" size="10" isBold="true"/>
+					</textElement>
+					<text><![CDATA[SEMESTER]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="50"/>
+		</groupFooter>
+	</group>
+	<group name="elective">
+		<groupExpression><![CDATA[$F{ad_crlm_code}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="105" splitType="Stretch">
+			<staticText>
+				<reportElement x="59" y="52" width="259" height="20" uuid="b35434cf-1b93-411d-8e68-969779bbeef9"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[16100 KOTA BHARU,KELANTAN,DARULNAIM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="59" y="67" width="258" height="20" uuid="c8d21e0d-a93d-4693-8e83-976d6ea7df86"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[TEL:09-7717028        FAKS:09-7717162]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="60" y="10" width="464" height="14" uuid="d9a80061-85f7-48dd-8e64-414b356957ef"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[MALAYSIAN GRADUATE SCHOOL OF ENTREPRENEURSHIP & BUSINESS (MGSEB)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="60" y="24" width="238" height="20" uuid="b171603a-725a-4701-a4a3-5aeaf4e4244c"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[UNIVERSITI MALAYSIA KELANTAN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="60" y="24" width="238" height="20" uuid="11099d13-a329-4fcc-951b-37f5c49f50e5"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[UNIVERSITI MALAYSIA KELANTAN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="60" y="38" width="227" height="20" uuid="d8011c56-917d-4dde-ab49-a3eb16bd4fe7"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[KARUNG BERKUNCI 36, PENGKALAN CHEPA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="59" y="67" width="258" height="20" uuid="7dff62b7-207f-4e78-a1be-76c1056d78ad"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[TEL:09-7717028        FAKS:09-7717162]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="60" y="38" width="227" height="20" uuid="d57bb92c-b6f7-41fb-8dd8-72d67f88f83f"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[KARUNG BERKUNCI 36, PENGKALAN CHEPA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="59" y="52" width="259" height="20" uuid="c2e77bc1-9f3f-4cdc-90a7-93fbc9075646"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[16100 KOTA BHARU,KELANTAN,DARULNAIM]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="96" splitType="Stretch">
+			<staticText>
+				<reportElement x="298" y="41" width="99" height="20" uuid="4f7b3cc0-fa8e-4f76-857f-9cdc2dc0e0d9"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[PROGRAMME       :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="26" y="61" width="91" height="20" uuid="a1012da5-0c62-489f-b137-7f9e4da80d11"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[FACULTY             :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="26" y="41" width="91" height="20" uuid="5ecb9703-7abe-4722-bae7-8cfbeadf0605"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[CURRICULUM     :]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="0" y="0" width="554" height="20" backcolor="#CCCCCC" uuid="4c299d96-b32d-40a6-ae5a-76d64e81fc5f"/>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="102" height="20" forecolor="#333333" backcolor="#FF0033" uuid="25daa1f0-f119-4a18-9dbf-577da3cce9c7"/>
+				<textElement verticalAlignment="Middle" rotation="None" markup="styled">
+					<font fontName="SansSerif" size="10" isBold="true" isUnderline="false" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[  LIST OF COURSES]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="117" y="41" width="176" height="20" uuid="86f57d11-d4e3-4851-8834-2088dc5bd169"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ad_crlm_code}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="117" y="61" width="416" height="20" uuid="ce540fb8-d1cf-4716-b784-57f62f6b6083"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ad_fcty_description}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="397" y="41" width="157" height="20" uuid="7cc1ad03-c023-4382-acd3-c96941331159"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ad_prgm_code}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="29" height="20" uuid="a5e7e5ee-bcd8-4954-9747-e4f42f74cd19"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{COLUMN_COUNT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="430" y="0" width="48" height="20" uuid="5954a7ce-dea8-47de-bbcb-9b2995c6b7e6"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{ad_crse_credit}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="102" y="0" width="328" height="20" uuid="1a2e31bb-d29b-4dac-842e-9c481f94af19"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{ad_crse_title_en}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="29" y="0" width="73" height="20" uuid="4f3c121b-76ab-43fa-b97a-25b974bbf569"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{ad_crse_code}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="478" y="0" width="77" height="20" uuid="ccaad475-bfcf-4178-b46e-88c47f8ca629"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{ad_sbjt_ordinal}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="69">
+			<componentElement>
+				<reportElement x="0" y="32" width="554" height="20" uuid="360c42ae-6f50-4cfc-be48-03031a352bb6"/>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+					<datasetRun subDataset="elective" uuid="9d3b551c-89b2-4911-98e5-5d39b90f25b8">
+						<datasetParameter name="curriculum_code">
+							<datasetParameterExpression><![CDATA[$F{ad_crlm_code}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:listContents height="20" width="554">
+						<textField>
+							<reportElement x="0" y="0" width="29" height="20" uuid="4b5f0e6b-7f6d-4385-9321-31bac681d301"/>
+							<box>
+								<pen lineWidth="0.25"/>
+								<topPen lineWidth="0.25"/>
+								<leftPen lineWidth="0.25"/>
+								<bottomPen lineWidth="0.25"/>
+								<rightPen lineWidth="0.25"/>
+							</box>
+							<textElement textAlignment="Center" verticalAlignment="Middle"/>
+							<textFieldExpression><![CDATA[$V{COLUMN_COUNT}]]></textFieldExpression>
+						</textField>
+						<textField>
+							<reportElement x="29" y="0" width="73" height="20" uuid="481d3a6a-ba8b-4668-ac5d-3d8da303501f"/>
+							<box>
+								<pen lineWidth="0.25"/>
+								<topPen lineWidth="0.25"/>
+								<leftPen lineWidth="0.25"/>
+								<bottomPen lineWidth="0.25"/>
+								<rightPen lineWidth="0.25"/>
+							</box>
+							<textElement verticalAlignment="Middle"/>
+							<textFieldExpression><![CDATA[$F{ad_crse_code}]]></textFieldExpression>
+						</textField>
+						<textField>
+							<reportElement x="102" y="0" width="328" height="20" uuid="ffac2ce8-70e3-4fb1-a8bf-ef88ad5a9b1a"/>
+							<box>
+								<pen lineWidth="0.25"/>
+								<topPen lineWidth="0.25"/>
+								<leftPen lineWidth="0.25"/>
+								<bottomPen lineWidth="0.25"/>
+								<rightPen lineWidth="0.25"/>
+							</box>
+							<textFieldExpression><![CDATA[$F{ad_crse_title_en}]]></textFieldExpression>
+						</textField>
+						<textField>
+							<reportElement x="430" y="0" width="48" height="20" uuid="4863ec75-53bc-4d03-8783-e757a6674b4d"/>
+							<box>
+								<pen lineWidth="0.25"/>
+								<topPen lineWidth="0.25"/>
+								<leftPen lineWidth="0.25"/>
+								<bottomPen lineWidth="0.25"/>
+								<rightPen lineWidth="0.25"/>
+							</box>
+							<textElement textAlignment="Center" verticalAlignment="Middle"/>
+							<textFieldExpression><![CDATA[$F{ad_crse_credit}]]></textFieldExpression>
+						</textField>
+						<textField>
+							<reportElement x="478" y="0" width="76" height="20" uuid="b57a759e-5bdd-4329-a513-d0e603e79420"/>
+							<box>
+								<pen lineWidth="0.25"/>
+								<topPen lineWidth="0.25"/>
+								<leftPen lineWidth="0.25"/>
+								<bottomPen lineWidth="0.25"/>
+								<rightPen lineWidth="0.25"/>
+							</box>
+							<textElement textAlignment="Center" verticalAlignment="Middle"/>
+							<textFieldExpression><![CDATA[$F{ad_sbjt_ordinal}]]></textFieldExpression>
+						</textField>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+			<staticText>
+				<reportElement mode="Opaque" x="430" y="16" width="48" height="16" backcolor="#CCCCCC" uuid="184239c2-219e-4cef-951d-3acb12cb8657"/>
+				<box>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CREDIT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="29" y="16" width="73" height="16" backcolor="#CCCCCC" uuid="85750e29-c213-4927-ad77-20345634aa7e"/>
+				<box>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CODE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="117" height="16" backcolor="#CCCCCC" uuid="da215861-dd0a-4057-9a88-968996e36881"/>
+				<box>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[  ELECTIVE COURSES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="478" y="16" width="77" height="16" backcolor="#CCCCCC" uuid="cc84eef5-0d92-4756-8441-02f3e1b2955c"/>
+				<box>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SEMESTER]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="102" y="16" width="328" height="16" backcolor="#CCCCCC" uuid="7fdea647-917a-4520-b1c9-6e68c72d99e2"/>
+				<box>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[COURSE TITLE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="16" width="29" height="16" backcolor="#CCCCCC" uuid="8499c913-117e-4bba-93b5-b45b96313279"/>
+				<box>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NO.]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>
