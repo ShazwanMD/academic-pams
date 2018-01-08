@@ -2,8 +2,40 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report4" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="fe6eae38-dbac-492a-9522-077445b8487d">
 	<property name="ireport.zoom" value="1.5026296018031566"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
-	<subDataset name="elective" uuid="b28500e8-4a16-402b-aa09-70ddeaf439d9">
+	<property name="ireport.y" value="77"/>
+	<subDataset name="elective" uuid="487336d3-5650-4bc1-b08e-b59555a5dff9">
+		<parameter name="curriculum_code" class="java.lang.String"/>
+		<parameter name="credit" class="java.lang.String">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[SELECT
+
+SUM(ad_crse."credit") AS ad_crse_credit_amt,
+ad_crlm."code" AS ad_crlm_code
+
+
+
+FROM
+     "public"."ad_prgm" ad_prgm INNER JOIN "public"."ad_crlm" ad_crlm ON ad_prgm."id" = ad_crlm."program_id"
+     INNER JOIN "public"."ad_sbjt" ad_sbjt ON ad_crlm."id" = ad_sbjt."curriculum_id"
+     INNER JOIN "public"."ad_sngl_sbjt" ad_sngl_sbjt ON ad_sbjt."id" = ad_sngl_sbjt."id"
+     INNER JOIN "public"."ad_crse" ad_crse ON ad_sngl_sbjt."course_id" = ad_crse."id"
+     INNER JOIN "public"."ad_fcty" ad_fcty ON ad_crse."faculty_id" = ad_fcty."id"
+
+
+WHERE  ad_sbjt."subject_type" = '2'
+
+
+group by
+
+
+ad_crlm."code"]]>
+		</queryString>
+		<field name="ad_crse_credit_amt" class="java.lang.Long"/>
+		<field name="ad_crlm_code" class="java.lang.String"/>
+	</subDataset>
+	<subDataset name="elective2" uuid="3ae3837b-2db2-417a-9bbb-eb351d18bab7">
 		<parameter name="curriculum_code" class="java.lang.String"/>
 		<queryString>
 			<![CDATA[SELECT
@@ -81,8 +113,8 @@ WHERE  ad_sbjt."subject_type" = '2' ORDER BY ad_sbjt."ordinal"]]>
 		<field name="ad_fcty_status" class="java.lang.Integer"/>
 		<field name="ad_sngl_sbjt_id" class="java.lang.Long"/>
 		<field name="ad_sngl_sbjt_course_id" class="java.lang.Long"/>
-		<filterExpression><![CDATA[$F{ad_crlm_code}.equals( $P{curriculum_code} )]]></filterExpression>
 	</subDataset>
+	<subDataset name="dataset1" uuid="56feb127-0417-4ca8-a6b2-a2329f80e071"/>
 	<parameter name="curriculum_code" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[SELECT
@@ -160,19 +192,142 @@ WHERE  ad_sbjt."subject_type" = '0' ORDER BY ad_sbjt."ordinal"]]>
 	<field name="ad_fcty_status" class="java.lang.Integer"/>
 	<field name="ad_sngl_sbjt_id" class="java.lang.Long"/>
 	<field name="ad_sngl_sbjt_course_id" class="java.lang.Long"/>
-	<variable name="ad_crse_credit_1" class="java.lang.Integer" resetType="Column" calculation="Sum">
+	<variable name="ad_crse_credit_1" class="java.math.BigDecimal" resetType="Group" resetGroup="group elective" calculation="Sum">
 		<variableExpression><![CDATA[$F{ad_crse_credit}]]></variableExpression>
 	</variable>
 	<variable name="ad_crse_credit_2" class="java.lang.Integer" resetType="Column" calculation="Sum">
 		<variableExpression><![CDATA[$F{ad_crse_credit}]]></variableExpression>
 	</variable>
+	<variable name="ad_crse_credit_3" class="java.lang.Integer" resetType="Group" resetGroup="group elective" calculation="Sum">
+		<variableExpression><![CDATA[$F{ad_crse_credit}]]></variableExpression>
+	</variable>
+	<variable name="ad_crse_credit_4" class="java.lang.Integer" resetType="Group" resetGroup="group elective" calculation="Sum">
+		<variableExpression><![CDATA[$F{ad_crse_credit}]]></variableExpression>
+	</variable>
 	<filterExpression><![CDATA[$F{ad_crlm_code}.equals( $P{curriculum_code} )]]></filterExpression>
-	<group name="core">
+	<group name="group elective">
 		<groupExpression><![CDATA[$F{ad_crlm_code}]]></groupExpression>
 		<groupHeader>
-			<band height="50">
+			<band height="21">
+				<componentElement>
+					<reportElement x="1" y="0" width="555" height="20" uuid="f47f60d0-b4f5-43a3-848a-0f0b5b7a6cc3"/>
+					<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+						<datasetRun subDataset="elective2" uuid="a008eabc-154b-47d5-9758-7091157cc421">
+							<datasetParameter name="curriculum_code">
+								<datasetParameterExpression><![CDATA[$F{ad_crlm_code}]]></datasetParameterExpression>
+							</datasetParameter>
+							<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+						</datasetRun>
+						<jr:listContents height="20" width="555">
+							<textField>
+								<reportElement x="430" y="0" width="48" height="20" uuid="ef19eade-f1c9-4ae8-b896-31f56230df53"/>
+								<box>
+									<pen lineWidth="0.25"/>
+									<topPen lineWidth="0.25"/>
+									<leftPen lineWidth="0.25"/>
+									<bottomPen lineWidth="0.25"/>
+									<rightPen lineWidth="0.25"/>
+								</box>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{ad_crse_credit}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement x="102" y="0" width="328" height="20" uuid="48d147d0-e0a2-4134-b40f-973d92fb8310"/>
+								<box>
+									<pen lineWidth="0.25"/>
+									<topPen lineWidth="0.25"/>
+									<leftPen lineWidth="0.25"/>
+									<bottomPen lineWidth="0.25"/>
+									<rightPen lineWidth="0.25"/>
+								</box>
+								<textElement verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{ad_crse_title_en}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement x="478" y="0" width="77" height="20" uuid="8f274c71-b3d2-4456-b703-5d3d9084d5d4"/>
+								<box>
+									<pen lineWidth="0.25"/>
+									<topPen lineWidth="0.25"/>
+									<leftPen lineWidth="0.25"/>
+									<bottomPen lineWidth="0.25"/>
+									<rightPen lineWidth="0.25"/>
+								</box>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{ad_sbjt_ordinal}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement x="29" y="0" width="73" height="20" uuid="a82a859c-2860-483e-bc1a-b8deca1f2c69"/>
+								<box>
+									<pen lineWidth="0.25"/>
+									<topPen lineWidth="0.25"/>
+									<leftPen lineWidth="0.25"/>
+									<bottomPen lineWidth="0.25"/>
+									<rightPen lineWidth="0.25"/>
+								</box>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{ad_crse_code}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement x="0" y="0" width="29" height="20" uuid="0c7dca70-f367-403e-886e-6c76e9334f25"/>
+								<box>
+									<pen lineWidth="0.25"/>
+									<topPen lineWidth="0.25"/>
+									<leftPen lineWidth="0.25"/>
+									<bottomPen lineWidth="0.25"/>
+									<rightPen lineWidth="0.25"/>
+								</box>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$V{COLUMN_COUNT}]]></textFieldExpression>
+							</textField>
+						</jr:listContents>
+					</jr:list>
+				</componentElement>
+			</band>
+			<band height="44">
+				<componentElement>
+					<reportElement x="1" y="-1" width="555" height="22" uuid="e4fd6482-4cd0-46dd-8761-15632be2fdec"/>
+					<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+						<datasetRun subDataset="elective" uuid="3088648f-a8e2-4dd3-8e39-f3c27b9e07ca">
+							<datasetParameter name="curriculum_code">
+								<datasetParameterExpression><![CDATA[$F{ad_crlm_code}]]></datasetParameterExpression>
+							</datasetParameter>
+							<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+						</datasetRun>
+						<jr:listContents height="22" width="555">
+							<textField>
+								<reportElement mode="Opaque" x="429" y="0" width="48" height="20" backcolor="#CCCCCC" uuid="98ea0637-e3c8-4b66-ab04-b9149469fb82"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{ad_crse_credit_amt}]]></textFieldExpression>
+							</textField>
+							<staticText>
+								<reportElement mode="Opaque" x="0" y="0" width="429" height="20" backcolor="#CCCCCC" uuid="22c9b02c-7a67-41ed-bacc-f9dc5ebc8717"/>
+								<text><![CDATA[]]></text>
+							</staticText>
+							<staticText>
+								<reportElement mode="Opaque" x="477" y="0" width="78" height="20" backcolor="#CCCCCC" uuid="b93f5a00-bade-45f9-a620-30fd472c0dac"/>
+								<text><![CDATA[]]></text>
+							</staticText>
+						</jr:listContents>
+					</jr:list>
+				</componentElement>
 				<staticText>
-					<reportElement mode="Opaque" x="0" y="18" width="102" height="16" backcolor="#CCCCCC" uuid="31992aea-cd9e-4b8c-94b7-16e93c2d5283"/>
+					<reportElement x="333" y="-1" width="82" height="20" uuid="7c9afec6-6b7d-47ec-b184-dda7923bb14c"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Total Credit:]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="group core">
+		<groupExpression><![CDATA[$F{ad_crlm_code}]]></groupExpression>
+		<groupHeader>
+			<band height="32">
+				<staticText>
+					<reportElement mode="Opaque" x="0" y="0" width="102" height="16" backcolor="#CCCCCC" uuid="31992aea-cd9e-4b8c-94b7-16e93c2d5283"/>
 					<box>
 						<pen lineWidth="0.0"/>
 						<topPen lineWidth="1.0"/>
@@ -186,13 +341,13 @@ WHERE  ad_sbjt."subject_type" = '0' ORDER BY ad_sbjt."ordinal"]]>
 					<text><![CDATA[  CORE COURSES]]></text>
 				</staticText>
 				<staticText>
-					<reportElement mode="Opaque" x="102" y="34" width="328" height="16" backcolor="#CCCCCC" uuid="60a0e721-770f-4e1b-8ead-43e3d12903c9"/>
+					<reportElement mode="Opaque" x="102" y="16" width="328" height="16" backcolor="#CCCCCC" uuid="60a0e721-770f-4e1b-8ead-43e3d12903c9"/>
 					<box>
-						<pen lineWidth="0.0"/>
-						<topPen lineWidth="1.0"/>
-						<leftPen lineWidth="1.0"/>
-						<bottomPen lineWidth="1.0"/>
-						<rightPen lineWidth="1.0"/>
+						<pen lineWidth="0.75"/>
+						<topPen lineWidth="0.75"/>
+						<leftPen lineWidth="0.75"/>
+						<bottomPen lineWidth="0.75"/>
+						<rightPen lineWidth="0.75"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="SansSerif" size="10" isBold="true"/>
@@ -200,13 +355,13 @@ WHERE  ad_sbjt."subject_type" = '0' ORDER BY ad_sbjt."ordinal"]]>
 					<text><![CDATA[COURSE TITLE]]></text>
 				</staticText>
 				<staticText>
-					<reportElement mode="Opaque" x="0" y="34" width="29" height="16" backcolor="#CCCCCC" uuid="8c116a8e-7ae4-40e5-bf43-e67928e00f62"/>
+					<reportElement mode="Opaque" x="0" y="16" width="29" height="16" backcolor="#CCCCCC" uuid="8c116a8e-7ae4-40e5-bf43-e67928e00f62"/>
 					<box>
-						<pen lineWidth="0.0"/>
-						<topPen lineWidth="1.0"/>
-						<leftPen lineWidth="1.0"/>
-						<bottomPen lineWidth="1.0"/>
-						<rightPen lineWidth="1.0"/>
+						<pen lineWidth="0.75"/>
+						<topPen lineWidth="0.75"/>
+						<leftPen lineWidth="0.75"/>
+						<bottomPen lineWidth="0.75"/>
+						<rightPen lineWidth="0.75"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="SansSerif" size="10" isBold="true"/>
@@ -214,13 +369,13 @@ WHERE  ad_sbjt."subject_type" = '0' ORDER BY ad_sbjt."ordinal"]]>
 					<text><![CDATA[NO.]]></text>
 				</staticText>
 				<staticText>
-					<reportElement mode="Opaque" x="430" y="34" width="48" height="16" backcolor="#CCCCCC" uuid="ab3f9a16-8361-4a15-b4d2-4965b512e4cc"/>
+					<reportElement mode="Opaque" x="430" y="16" width="48" height="16" backcolor="#CCCCCC" uuid="ab3f9a16-8361-4a15-b4d2-4965b512e4cc"/>
 					<box>
-						<pen lineWidth="0.0"/>
-						<topPen lineWidth="1.0"/>
-						<leftPen lineWidth="1.0"/>
-						<bottomPen lineWidth="1.0"/>
-						<rightPen lineWidth="1.0"/>
+						<pen lineWidth="0.75"/>
+						<topPen lineWidth="0.75"/>
+						<leftPen lineWidth="0.75"/>
+						<bottomPen lineWidth="0.75"/>
+						<rightPen lineWidth="0.75"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="SansSerif" size="10" isBold="true"/>
@@ -228,13 +383,13 @@ WHERE  ad_sbjt."subject_type" = '0' ORDER BY ad_sbjt."ordinal"]]>
 					<text><![CDATA[CREDIT]]></text>
 				</staticText>
 				<staticText>
-					<reportElement mode="Opaque" x="29" y="34" width="73" height="16" backcolor="#CCCCCC" uuid="d8f7811c-aed1-4e38-82b5-bf144fa00efb"/>
+					<reportElement mode="Opaque" x="29" y="16" width="73" height="16" backcolor="#CCCCCC" uuid="d8f7811c-aed1-4e38-82b5-bf144fa00efb"/>
 					<box>
-						<pen lineWidth="0.0"/>
-						<topPen lineWidth="1.0"/>
-						<leftPen lineWidth="1.0"/>
-						<bottomPen lineWidth="1.0"/>
-						<rightPen lineWidth="1.0"/>
+						<pen lineWidth="0.75"/>
+						<topPen lineWidth="0.75"/>
+						<leftPen lineWidth="0.75"/>
+						<bottomPen lineWidth="0.75"/>
+						<rightPen lineWidth="0.75"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="SansSerif" size="10" isBold="true"/>
@@ -242,13 +397,13 @@ WHERE  ad_sbjt."subject_type" = '0' ORDER BY ad_sbjt."ordinal"]]>
 					<text><![CDATA[CODE]]></text>
 				</staticText>
 				<staticText>
-					<reportElement mode="Opaque" x="478" y="34" width="77" height="16" backcolor="#CCCCCC" uuid="4e456275-45f2-48b7-9901-2a2291b30322"/>
+					<reportElement mode="Opaque" x="478" y="16" width="77" height="16" backcolor="#CCCCCC" uuid="4e456275-45f2-48b7-9901-2a2291b30322"/>
 					<box>
-						<pen lineWidth="0.0"/>
-						<topPen lineWidth="1.0"/>
-						<leftPen lineWidth="1.0"/>
-						<bottomPen lineWidth="1.0"/>
-						<rightPen lineWidth="1.0"/>
+						<pen lineWidth="0.75"/>
+						<topPen lineWidth="0.75"/>
+						<leftPen lineWidth="0.75"/>
+						<bottomPen lineWidth="0.75"/>
+						<rightPen lineWidth="0.75"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font fontName="SansSerif" size="10" isBold="true"/>
@@ -258,11 +413,29 @@ WHERE  ad_sbjt."subject_type" = '0' ORDER BY ad_sbjt."ordinal"]]>
 			</band>
 		</groupHeader>
 		<groupFooter>
-			<band height="50"/>
+			<band height="20">
+				<rectangle>
+					<reportElement x="0" y="0" width="556" height="20" backcolor="#CCCCCC" uuid="2b7338ed-ddce-4be4-b51f-f3bbd5dfd0dc"/>
+					<graphicElement>
+						<pen lineWidth="0.0" lineStyle="Solid"/>
+					</graphicElement>
+				</rectangle>
+				<staticText>
+					<reportElement x="333" y="0" width="80" height="20" uuid="4c23bd8d-0481-4345-aca6-48e08fbd9bb4"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Total Credit:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="413" y="0" width="81" height="20" uuid="e1d8c107-c7f3-4995-ba23-0f0d7d889488"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{ad_crse_credit_2}]]></textFieldExpression>
+				</textField>
+			</band>
 		</groupFooter>
-	</group>
-	<group name="elective">
-		<groupExpression><![CDATA[$F{ad_crlm_code}]]></groupExpression>
 	</group>
 	<background>
 		<band splitType="Stretch"/>
@@ -335,7 +508,7 @@ WHERE  ad_sbjt."subject_type" = '0' ORDER BY ad_sbjt."ordinal"]]>
 		</band>
 	</title>
 	<pageHeader>
-		<band height="96" splitType="Stretch">
+		<band height="102" splitType="Stretch">
 			<staticText>
 				<reportElement x="298" y="41" width="99" height="20" uuid="4f7b3cc0-fa8e-4f76-857f-9cdc2dc0e0d9"/>
 				<textElement verticalAlignment="Middle">
@@ -393,174 +566,10 @@ WHERE  ad_sbjt."subject_type" = '0' ORDER BY ad_sbjt."ordinal"]]>
 			</textField>
 		</band>
 	</pageHeader>
-	<detail>
-		<band height="20" splitType="Stretch">
-			<textField>
-				<reportElement x="0" y="0" width="29" height="20" uuid="a5e7e5ee-bcd8-4954-9747-e4f42f74cd19"/>
-				<box>
-					<pen lineWidth="0.5"/>
-					<topPen lineWidth="0.5"/>
-					<leftPen lineWidth="0.5"/>
-					<bottomPen lineWidth="0.5"/>
-					<rightPen lineWidth="0.5"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$V{COLUMN_COUNT}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="430" y="0" width="48" height="20" uuid="5954a7ce-dea8-47de-bbcb-9b2995c6b7e6"/>
-				<box>
-					<pen lineWidth="0.5"/>
-					<topPen lineWidth="0.5"/>
-					<leftPen lineWidth="0.5"/>
-					<bottomPen lineWidth="0.5"/>
-					<rightPen lineWidth="0.5"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{ad_crse_credit}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="102" y="0" width="328" height="20" uuid="1a2e31bb-d29b-4dac-842e-9c481f94af19"/>
-				<box>
-					<pen lineWidth="0.5"/>
-					<topPen lineWidth="0.5"/>
-					<leftPen lineWidth="0.5"/>
-					<bottomPen lineWidth="0.5"/>
-					<rightPen lineWidth="0.5"/>
-				</box>
-				<textElement verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{ad_crse_title_en}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="29" y="0" width="73" height="20" uuid="4f3c121b-76ab-43fa-b97a-25b974bbf569"/>
-				<box>
-					<pen lineWidth="0.5"/>
-					<topPen lineWidth="0.5"/>
-					<leftPen lineWidth="0.5"/>
-					<bottomPen lineWidth="0.5"/>
-					<rightPen lineWidth="0.5"/>
-				</box>
-				<textElement verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{ad_crse_code}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="478" y="0" width="77" height="20" uuid="ccaad475-bfcf-4178-b46e-88c47f8ca629"/>
-				<box>
-					<pen lineWidth="0.5"/>
-					<topPen lineWidth="0.5"/>
-					<leftPen lineWidth="0.5"/>
-					<bottomPen lineWidth="0.5"/>
-					<rightPen lineWidth="0.5"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{ad_sbjt_ordinal}]]></textFieldExpression>
-			</textField>
-		</band>
-	</detail>
-	<summary>
-		<band height="69">
-			<componentElement>
-				<reportElement x="0" y="32" width="554" height="20" uuid="360c42ae-6f50-4cfc-be48-03031a352bb6"/>
-				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
-					<datasetRun subDataset="elective" uuid="9d3b551c-89b2-4911-98e5-5d39b90f25b8">
-						<datasetParameter name="curriculum_code">
-							<datasetParameterExpression><![CDATA[$F{ad_crlm_code}]]></datasetParameterExpression>
-						</datasetParameter>
-						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
-					</datasetRun>
-					<jr:listContents height="20" width="554">
-						<textField>
-							<reportElement x="0" y="0" width="29" height="20" uuid="4b5f0e6b-7f6d-4385-9321-31bac681d301"/>
-							<box>
-								<pen lineWidth="0.25"/>
-								<topPen lineWidth="0.25"/>
-								<leftPen lineWidth="0.25"/>
-								<bottomPen lineWidth="0.25"/>
-								<rightPen lineWidth="0.25"/>
-							</box>
-							<textElement textAlignment="Center" verticalAlignment="Middle"/>
-							<textFieldExpression><![CDATA[$V{COLUMN_COUNT}]]></textFieldExpression>
-						</textField>
-						<textField>
-							<reportElement x="29" y="0" width="73" height="20" uuid="481d3a6a-ba8b-4668-ac5d-3d8da303501f"/>
-							<box>
-								<pen lineWidth="0.25"/>
-								<topPen lineWidth="0.25"/>
-								<leftPen lineWidth="0.25"/>
-								<bottomPen lineWidth="0.25"/>
-								<rightPen lineWidth="0.25"/>
-							</box>
-							<textElement verticalAlignment="Middle"/>
-							<textFieldExpression><![CDATA[$F{ad_crse_code}]]></textFieldExpression>
-						</textField>
-						<textField>
-							<reportElement x="102" y="0" width="328" height="20" uuid="ffac2ce8-70e3-4fb1-a8bf-ef88ad5a9b1a"/>
-							<box>
-								<pen lineWidth="0.25"/>
-								<topPen lineWidth="0.25"/>
-								<leftPen lineWidth="0.25"/>
-								<bottomPen lineWidth="0.25"/>
-								<rightPen lineWidth="0.25"/>
-							</box>
-							<textFieldExpression><![CDATA[$F{ad_crse_title_en}]]></textFieldExpression>
-						</textField>
-						<textField>
-							<reportElement x="430" y="0" width="48" height="20" uuid="4863ec75-53bc-4d03-8783-e757a6674b4d"/>
-							<box>
-								<pen lineWidth="0.25"/>
-								<topPen lineWidth="0.25"/>
-								<leftPen lineWidth="0.25"/>
-								<bottomPen lineWidth="0.25"/>
-								<rightPen lineWidth="0.25"/>
-							</box>
-							<textElement textAlignment="Center" verticalAlignment="Middle"/>
-							<textFieldExpression><![CDATA[$F{ad_crse_credit}]]></textFieldExpression>
-						</textField>
-						<textField>
-							<reportElement x="478" y="0" width="76" height="20" uuid="b57a759e-5bdd-4329-a513-d0e603e79420"/>
-							<box>
-								<pen lineWidth="0.25"/>
-								<topPen lineWidth="0.25"/>
-								<leftPen lineWidth="0.25"/>
-								<bottomPen lineWidth="0.25"/>
-								<rightPen lineWidth="0.25"/>
-							</box>
-							<textElement textAlignment="Center" verticalAlignment="Middle"/>
-							<textFieldExpression><![CDATA[$F{ad_sbjt_ordinal}]]></textFieldExpression>
-						</textField>
-					</jr:listContents>
-				</jr:list>
-			</componentElement>
+	<columnHeader>
+		<band height="46" splitType="Stretch">
 			<staticText>
-				<reportElement mode="Opaque" x="430" y="16" width="48" height="16" backcolor="#CCCCCC" uuid="184239c2-219e-4cef-951d-3acb12cb8657"/>
-				<box>
-					<pen lineWidth="0.0"/>
-					<topPen lineWidth="1.0"/>
-					<leftPen lineWidth="1.0"/>
-					<bottomPen lineWidth="1.0"/>
-					<rightPen lineWidth="1.0"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="SansSerif" size="10" isBold="true"/>
-				</textElement>
-				<text><![CDATA[CREDIT]]></text>
-			</staticText>
-			<staticText>
-				<reportElement mode="Opaque" x="29" y="16" width="73" height="16" backcolor="#CCCCCC" uuid="85750e29-c213-4927-ad77-20345634aa7e"/>
-				<box>
-					<pen lineWidth="0.0"/>
-					<topPen lineWidth="1.0"/>
-					<leftPen lineWidth="1.0"/>
-					<bottomPen lineWidth="1.0"/>
-					<rightPen lineWidth="1.0"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="SansSerif" size="10" isBold="true"/>
-				</textElement>
-				<text><![CDATA[CODE]]></text>
-			</staticText>
-			<staticText>
-				<reportElement mode="Opaque" x="0" y="0" width="117" height="16" backcolor="#CCCCCC" uuid="da215861-dd0a-4057-9a88-968996e36881"/>
+				<reportElement mode="Opaque" x="1" y="14" width="116" height="16" backcolor="#CCCCCC" uuid="3bcf30a2-b126-4947-b1a2-19fac1b6ad17"/>
 				<box>
 					<pen lineWidth="0.0"/>
 					<topPen lineWidth="1.0"/>
@@ -571,30 +580,16 @@ WHERE  ad_sbjt."subject_type" = '0' ORDER BY ad_sbjt."ordinal"]]>
 				<textElement verticalAlignment="Middle">
 					<font fontName="SansSerif" size="10" isBold="true"/>
 				</textElement>
-				<text><![CDATA[  ELECTIVE COURSES]]></text>
+				<text><![CDATA[ ELECTIVE COURSES]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="478" y="16" width="77" height="16" backcolor="#CCCCCC" uuid="cc84eef5-0d92-4756-8441-02f3e1b2955c"/>
+				<reportElement mode="Opaque" x="103" y="30" width="328" height="16" backcolor="#CCCCCC" uuid="8113f3b5-df3c-431b-a0f4-46f018b2e2ac"/>
 				<box>
-					<pen lineWidth="0.0"/>
-					<topPen lineWidth="1.0"/>
-					<leftPen lineWidth="1.0"/>
-					<bottomPen lineWidth="1.0"/>
-					<rightPen lineWidth="1.0"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="SansSerif" size="10" isBold="true"/>
-				</textElement>
-				<text><![CDATA[SEMESTER]]></text>
-			</staticText>
-			<staticText>
-				<reportElement mode="Opaque" x="102" y="16" width="328" height="16" backcolor="#CCCCCC" uuid="7fdea647-917a-4520-b1c9-6e68c72d99e2"/>
-				<box>
-					<pen lineWidth="0.0"/>
-					<topPen lineWidth="1.0"/>
-					<leftPen lineWidth="1.0"/>
-					<bottomPen lineWidth="1.0"/>
-					<rightPen lineWidth="1.0"/>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="SansSerif" size="10" isBold="true"/>
@@ -602,19 +597,131 @@ WHERE  ad_sbjt."subject_type" = '0' ORDER BY ad_sbjt."ordinal"]]>
 				<text><![CDATA[COURSE TITLE]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="0" y="16" width="29" height="16" backcolor="#CCCCCC" uuid="8499c913-117e-4bba-93b5-b45b96313279"/>
+				<reportElement mode="Opaque" x="1" y="30" width="29" height="16" backcolor="#CCCCCC" uuid="cd04f7c0-3b36-4e45-acec-de86ad221042"/>
 				<box>
-					<pen lineWidth="0.0"/>
-					<topPen lineWidth="1.0"/>
-					<leftPen lineWidth="1.0"/>
-					<bottomPen lineWidth="1.0"/>
-					<rightPen lineWidth="1.0"/>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="SansSerif" size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[NO.]]></text>
 			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="431" y="30" width="48" height="16" backcolor="#CCCCCC" uuid="7144db4a-4ac6-4a12-8869-08ad2cf2dd59"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CREDIT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="30" y="30" width="73" height="16" backcolor="#CCCCCC" uuid="7c1ae831-9d40-45da-9d33-e9319f30af98"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CODE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="479" y="30" width="77" height="16" backcolor="#CCCCCC" uuid="ac0124fc-ddaa-40bd-b7ef-f294429169c8"/>
+				<box>
+					<pen lineWidth="0.75"/>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SEMESTER]]></text>
+			</staticText>
 		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="29" y="0" width="73" height="20" uuid="ef375c8c-94ae-4361-97e7-1a9cb918d4cf"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{ad_crse_code}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="102" y="0" width="328" height="20" uuid="9fc1ad70-8539-4588-94c4-bd51a30495a5"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{ad_crse_title_en}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="430" y="0" width="48" height="20" uuid="65b97be7-53ca-4dbc-9af4-c3f65428f053"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{ad_crse_credit}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="478" y="0" width="77" height="20" uuid="f5d0a65c-92d8-4b11-a4f7-7871914a3107"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{ad_sbjt_ordinal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1" y="0" width="28" height="20" uuid="cb3d337f-4921-4f6b-9a02-e607847897b2"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{COLUMN_COUNT}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="64" splitType="Stretch"/>
+	</columnFooter>
+	<summary>
+		<band height="94"/>
 	</summary>
 </jasperReport>
